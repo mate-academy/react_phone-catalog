@@ -1,4 +1,4 @@
-/*--- DEFAULT STYLE ---*/
+                    /*--- DEFAULT STYLE ---*/
 * {
   margin: 0;
   padding: 0;
@@ -10,6 +10,7 @@ html,
 body,
 #root {
   height: 100%;
+  overflow-y: scroll;
 }
 
 .phones-catalog {
@@ -24,11 +25,8 @@ h1 {
   text-align: center;
   color: rgba(24, 98, 73, 0.558);
 }
-/*--- DEFAULT STYLE ---*/
 
-
-/*--- HEADER ---*/
-
+                    /*--- HEADER ---*/
 .header-container {
   display: flex;
   flex: 0 0 auto;
@@ -36,20 +34,33 @@ h1 {
   align-items: center;
   height: 80px;
   padding: 0 5%;
-  background-color: antiquewhite;
+  margin-bottom: 15px;
+  background-color: #adfff513;
 }
 
 .nav-items {
   display: flex;
+  padding: 15px 10px;
+  border: 1px solid rgba(128, 128, 128, 0.204);
+  border-radius: 10px;
+  background-color: #adfff513;
 }
 
 .nav-item {
-  padding-left:  30px;
+  margin:0 15px;
   list-style-type: none;
   font-size: 18px;
-  text-transform: uppercase
+  font-weight: 500;
+  text-transform: uppercase;
+  padding: 5px;
+  background-color: #45b1a132;
+  border-radius: 10px;
 }
 
+.nav-item:hover {
+  color: #000000ad;
+  background-color: #5b7dc132;
+}
 
 ul > a {
   text-decoration: none;
@@ -64,9 +75,9 @@ ul > .active:not(:last-child) {
 ul > .active > .nav-item .cart-items {
   text-decoration: none;
 }
-/*--- HEADER ---*/
 
-/*--- SEARCH PANEL ---*/
+
+                    /*--- SEARCH PANEL ---*/
 .search-panel {
   display: flex;
   justify-content: center;
@@ -89,12 +100,12 @@ ul > .active > .nav-item .cart-items {
 .search-sort {
   padding: 0 5px;
 }
-/*--- SEARCH PANEL ---*/
 
-/*--- CONTENT-CONTAINER ---*/
+
+                    /*--- CONTENT-CONTAINER ---*/
 .content-container {
   flex: 1 0 auto;
-  width: 90%;
+  width: 70%;
   margin: 0 auto 40px;
 }
 
@@ -104,90 +115,181 @@ ul > .active > .nav-item .cart-items {
 
 .phones-item {
   display: flex;
-  height: 130px;
-  padding: 5px 0;
-
+  height: 100px;
+  margin: 15px 0;
 }
 
 .phones-item-info {
   display: flex;
-  border: 1px solid rgba(22, 22, 145, 0.435);
+  width: 100%;
+  border: 1px solid rgba(115, 115, 117, 0.435);
   border-radius: 20px;
   padding: 2px;
+  box-shadow: 2px 4px 8px rgba(128, 128, 128, 0.245);
 }
 
-
 .phones-main-photo {
-  display: flex;
-  height: 100%;
+  height: 94px;
+  width: 94px;
   border-radius: 20px;
 }
 
 .phones-item-text {
   padding: 2px 10px;
-
 }
 
-/*--- CONTENT-CONTAINER ---*/
+.phones-item-title {
+  text-decoration: none;
+  color: #101a849f;
+}
 
-/*--- PHONES-CONTENT ---*/
+.phones-item-title:hover {
+  color: rgba(13, 13, 117, 0.707);
+}
 
+                    /*--- PHONE-DETAILS ---*/
 .btn-back {
-  padding: 5px 3px;
-  margin: 2px;
-  border: 1px solid black;
-  outline-style: none;
-  border-radius: 15px;
-  font-size: 15px;
-  color: #4f1f1f;
-  background-color: transparent;
-  cursor: pointer;
+  width: 48%;
+  background-color: #ce157121;
+
 }
 
 .btn-back:hover {
   color: #6f2424;
-  background-color: #faf5f5
-}
-/*--- PHONES-CONTENT ---*/
+  background-color: #faf5f5;
+  box-shadow: 1px 1px 5px #a9a9a9;
 
-/*--- FOOTER ---*/
+}
+
+.btn-buy {
+  width: 50%;
+background-color: #2fff4e30;
+}
+
+.btn-buy:hover {
+  background-color: #2fff4e66;
+  color: #033d10;
+  box-shadow: 1px 1px 5px #6e6d6d;
+}
+
+.extra-details {
+  display: flex;
+  flex: 2 0 auto;
+  width: 100%;
+  margin: 20px 0;
+}
+
+.extra-details-title {
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.extra-details-photo-selected {
+  width: 350px;
+  height: 350px;
+  margin-right: 40px;
+}
+
+.selected-photo {
+  display: block;
+  height: 100%;
+}
+
+.main-photo {
+  display: none;
+}
+
+.extra-details-description{
+  margin: 10px 0;
+}
+.extra-details-photos {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 15px 0;
+  list-style-type: none;
+  justify-content: flex-start;
+}
+
+.extra-details-photos-item {
+  height: 80px;
+  width: 80px;
+  border: 1px solid gray;
+  border-radius: 5px;
+  padding: 5px;
+  margin-right: 5px;
+}
+
+                    /*--- PHONE-MORE-DETAILS ---*/
+.extra-details-more-details {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  font-size: 13px;
+}
+
+.more-info {
+  width: 24%;
+  margin-top: 35px;
+}
+
+
+                    /*--- FOOTER ---*/
 .footer-container {
   display: flex;
   flex: 0 0 auto;
   height: 80px;
   width: 100%;
-  justify-content: center;
   align-items: center;
-  background-color: antiquewhite;
-
+  background-color: #47474750;
 }
 
 .footer-info {
+  font-size: 20px;
+  display: flex;
+  justify-content: space-evenly;
   width: 100%;
   text-align: center;
-  color: #1862498e;
+  color: #5858588e;
+}
+
+.footer-info > span > a {
+  text-decoration: none;
+  color: rgba(105, 105, 105, 0.707);
+}
+
+.footer-info > span > a:hover {
+  color: rgb(43, 44, 43);
+}
+
+                    /*--- CART ---*/
+.order-container {
 
 }
-/*--- FOOTER ---*/
 
-/*--- LOADER ---*/
+.order-content {
+
+}
+
+.order-btn-block {
+
+}
+
+
+                    /*--- LOADER ---*/
 .sweet-loading {
   width: 100px;
   margin: 100px auto;
 }
-/*--- LOADER ---*/
 
-
-/*--- BUTTON DEFAULT ---*/
+                    /*--- BUTTON DEFAULT ---*/
  .btn {
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif ;
   padding: 5px 3px;
   margin: 2px;
   border: 1px solid black;
   outline-style: none;
-  border-radius: 15px;
-  font-size: 15px;
-  color: #4f1f1f;
-  background-color: transparent;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 800;
   cursor: pointer;
 }
-/*--- BUTTON DEFAULT ---*/

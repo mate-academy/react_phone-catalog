@@ -40,36 +40,122 @@ class PhoneDetails extends Component {
 
     return (
       <>
-        {id === extraData.id ? (
-          <div className="extra-details">
-            <h2>THIS IS PhoneDetails Page</h2>
-            <Link to="/phones">
-              <button className="btn btn-back" type="button">
-                {"<<- Back to all phones <<-"}
-              </button>
-            </Link>
-            <ul>
-              <li>
-                <h3>{extraData.name}</h3>
-                <p>{extraData.description}</p>
-                <section>
-                  <img src={extraData.images} alt={extraData.name} />
+        <div>
+          <Link to="/phones">
+            <button className="btn btn-back" type="button">
+              {"<<- Back to all phones"}
+            </button>
+          </Link>
+          <Link to="/cart">
+            <button className="btn btn-buy" type="button">
+              {"->> BUY NOW  <<-"}
+            </button>
+          </Link>
+          {id === extraData.id ? (
+            <>
+              <div className="extra-details">
+                <div className="extra-details-photo-selected">
+                  <img
+                    className="selected-photo"
+                    src={extraData.images[0]}
+                  />
+                </div>
+                <article>
+                  <span className="extra-details-title">
+                    {extraData.name}
+                  </span>
+                  <div className="extra-details-description">
+                    <div className="extra-details-text">
+                      {extraData.description}
+                    </div>
+                    <ul className="extra-details-photos">
+                      {extraData.images.map(img => (
+                        <li key={img}>
+                          <img
+                            className="extra-details-photos-item"
+                            src={img}
+                            alt={img}
+                          />
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </article>
+              </div>
+              <div className="extra-details-more-details">
+                <section class="more-info">
+                  <h3>Camera</h3>
+                  <i>features:</i>
+                  {extraData.camera.features.map(i => (
+                    <>{i}</>
+                  ))}
+                  <p>
+                    <i>primary:</i>
+                    <p>{extraData.camera.primary}</p>
+                  </p>
                 </section>
-              </li>
-            </ul>
-          </div>
-        ) : (
-          <>
-            <Loader />
-            <p>
-              {'Maybe this page is not available, '}
-              <Link to="/phones">
-                go back
-              </Link>
-              {' and try checking late'}
-            </p>
-          </>
-        )}
+
+                <section class="more-info">
+                  <h3>Battery</h3>
+                  <i>standbyTime:</i>
+                  {extraData.battery.standbyTime}
+                  <p>
+                    <i>talkTime:</i>
+                    {extraData.battery.talkTime}
+                  </p>
+                  <p>
+                    <i>type:</i>
+                  </p>
+                  {extraData.battery.type}
+                </section>
+
+                <section class="more-info">
+                  <h3>Hardware</h3>
+                  <i>audioJack:</i> {extraData.hardware.audioJack}
+                  <p>
+                    <i>cpu:</i>
+                  </p>{" "}
+                  {extraData.hardware.cpu}
+                  <p>
+                    <i>usb:</i>
+                    {extraData.hardware.usb}
+                  </p>
+                </section>
+
+                <section class="more-info">
+                  <h3>Size and Weight</h3>
+                  <i>dimensions:</i>
+                  <>
+                    {extraData.sizeAndWeight.dimensions.map(d => (
+                      <p>{d}</p>
+                    ))}
+                  </>
+                  weight: {extraData.sizeAndWeight.weight}
+                </section>
+
+                {/* as
+    "sizeAndWeight": {
+        "dimensions": [
+            "63.0 mm (w)",
+            "123.9 mm (h)",
+            "10.88 mm (d)"
+        ],
+        "weight": "129.0 grams"
+
+d */}
+              </div>
+            </>
+          ) : (
+            <>
+              <Loader />
+              <p>
+                {"Maybe this page is not available, "}
+                <Link to="/phones">go back</Link>
+                {" and try checking late"}
+              </p>
+            </>
+          )}
+        </div>
       </>
     );
   }

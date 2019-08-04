@@ -6,7 +6,14 @@ const Footer = () => {
   return (
     <footer className="footer-container">
       <div className="footer-info">
-        <h2>THIS IS FOOTER</h2>
+        <span>
+          {'Task: '}
+          <a href="/#">phones catalog</a>
+        </span>
+        <span>
+          {'Pull request: '}
+          <a href="/#">Hlybchenko</a>
+        </span>
       </div>
     </footer>
   );

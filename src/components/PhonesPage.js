@@ -34,14 +34,18 @@ export default class PhonesPage extends Component {
               {phones.map(phone => (
                 <li key={phone.id} className="phones-item">
                   <section className="phones-item-info">
-                    <img
-                      className="phones-main-photo"
-                      src={phone.imageUrl}
-                      alt={phone.name}
-                    />
+                    <Link to={`/phones/${phone.id}`}>
+                      <img
+                        style={{height: '100%'}}
+                        className="phones-main-photo"
+                        src={phone.imageUrl}
+                        alt={phone.name}
+                      />
+                    </Link>
+
                     <div className="phones-item-text">
                       <h3>
-                        <Link to={`/phones/${phone.id}`}>{phone.name}</Link>
+                        <Link className="phones-item-title" to={`/phones/${phone.id}`}>{phone.name}</Link>
                       </h3>
                       <p>{phone.snippet}</p>
                     </div>

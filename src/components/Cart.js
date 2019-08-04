@@ -5,14 +5,24 @@ export default class Cart extends Component {
 
   render() {
     return (
-      <div>
-        <h3>Shopping CART</h3>
-        <div>
-          <p>Ваш заказ: </p>
+      <div className="order-container">
+        <h3>Your order:</h3>
+        <div className="order-content">
+          1
+          <br />
+          2
+          <br />
+          3
+          <br />
+          4
+          <p>Total:______</p>
         </div>
-        <button className="btn btn-buy">BUY NOW!</button>
+        <div className="order-btn-block">
+          <button type="button" className="btn btn-buy">
+            {"->> BUY NOW  <<-"}
+          </button>
+        </div>
       </div>
     );
   }
-
 }
