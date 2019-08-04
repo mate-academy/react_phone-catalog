@@ -19,7 +19,13 @@ const Header = () => (
         </NavLink>
         <NavLink to="/cart">
           <li className="nav-item cart-item">
-            <span role="img">&#x1F6D2;</span>
+            <a>
+              <img
+                className="cart-icon"
+                src={true ? './img/empty-cart.png' : './img/full-cart.png'}
+                alt="shopping-cart"
+              />
+            </a>
           </li>
         </NavLink>
       </ul>

@@ -54,6 +54,10 @@ export default class PhonesPage extends Component {
     }
   }
 
+  handleAddtoCart = () => {
+
+  }
+
   render() {
     const { phones, copyPhones } = this.state;
 
@@ -94,7 +98,11 @@ export default class PhonesPage extends Component {
                     </div>
                     <div className="phones-item-add-btn">
                       <Link to="/cart">
-                        <button className="add-btn" type="button">
+                        <button
+                          onClick={this.handleAddtoCart}
+                          className="add-btn"
+                          type="button"
+                        >
                           {'ADD TO CART'}
                         </button>
                       </Link>

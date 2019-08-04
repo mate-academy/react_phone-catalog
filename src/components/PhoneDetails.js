@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable react/no-did-update-set-state */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
@@ -7,20 +9,26 @@ import Loader from './Loader';
 import { getExtraDetails } from '../api/getPhones';
 
 class PhoneDetails extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      extraData: {},
-    };
-  }
+  state = {
+    extraData: {},
+    selectedPhoto: '',
+  };
 
   async componentDidMount() {
     const { id } = this.props;
     const extraData = await getExtraDetails(id);
 
-    this.setState({ extraData });
+    this.setState({
+      extraData,
+      selectedPhoto: extraData.images[0],
+    });
   }
+
+  handleChoosePhoto = (event) => {
+    const { name } = event.target;
+
+    this.setState({ selectedPhoto: name });
+  };
 
   render() {
     const { extraData } = this.state;
@@ -29,24 +37,24 @@ class PhoneDetails extends Component {
     return (
       <>
         <div>
-          <Link to="/phones">
-            <button className="btn btn-back" type="button">
-              {'<<- Back to all phones'}
-            </button>
-          </Link>
-          <Link to="/cart">
-            <button className="btn btn-buy" type="button">
-              {'->> BUY NOW  <<-'}
-            </button>
-          </Link>
           {id === extraData.id ? (
             <>
+              <Link to="/phones">
+                <button className="btn btn-back" type="button">
+                  {"<<- Back to all phones"}
+                </button>
+              </Link>
+              <Link to="/cart">
+                <button className="btn btn-buy" type="button">
+                  {"->> BUY NOW  <<-"}
+                </button>
+              </Link>
               <div className="extra-details">
                 <div className="extra-details-photo-selected">
                   <img
                     className="selected-photo"
-                    src={extraData.images[0]}
-                    alt="mobile-phone"
+                    src={this.state.selectedPhoto}
+                    alt={this.state.selectedPhoto}
                   />
                 </div>
                 <article>
@@ -59,14 +67,23 @@ class PhoneDetails extends Component {
                     </div>
                     <ul className="extra-details-photos">
                       {extraData.images.map(img => (
-                        <li key={img}>
+                        <li onClick={this.handleChoosePhoto} key={img}>
                           <img
                             className="extra-details-photos-item"
                             src={img}
                             alt={img}
+                            name={img}
                           />
                         </li>
                       ))}
+                      <li>
+                        <img
+                          className="extra-details-photos-item extra-details-photos-item-cart-add "
+                          src="./img/cart-add.png"
+                          alt="add-to-cart"
+                          title="Click for adding to cart "
+                        />
+                      </li>
                     </ul>
                   </div>
                 </article>
@@ -129,9 +146,9 @@ class PhoneDetails extends Component {
             <>
               <Loader />
               <p>
-                {'Maybe this page is not available, '}
+                {"Maybe this page is not available, "}
                 <Link to="/phones">go back</Link>
-                {' and try checking late'}
+                {" and try checking late"}
               </p>
             </>
           )}

@@ -2,13 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Route, Switch } from 'react-router-dom';
 
-import HomePage from './components/HomePage';
-import PhonesPage from './components/PhonesPage';
+import Cart from './components/Cart';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import NotFoundPage from './components/NotFoundPage';
+import HomePage from './components/HomePage';
+import PhonesPage from './components/PhonesPage';
 import PhoneDetails from './components/PhoneDetails';
-import Cart from './components/Cart';
+import NotFoundPage from './components/NotFoundPage';
 
 const App = () => (
   <div className="phones-catalog">
@@ -27,7 +27,7 @@ const App = () => (
           exact
           render={props => <PhoneDetails id={props.match.params.id} />}
         />
-        <Route path="*" component={NotFoundPage} />
+        <Route component={NotFoundPage} />
       </Switch>
     </main>
 
@@ -40,7 +40,7 @@ App.propTypes = {
     params: PropTypes.shape({
       id: PropTypes.string.isRequired,
     }).isRequired,
-  }).isRequired,
+  }),
 };
 
 export default App;

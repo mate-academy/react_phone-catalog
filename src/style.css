@@ -52,6 +52,10 @@ h1 {
   max-height: 70px;
 }
 
+.header-logo:hover {
+  transform: scale(1.02);
+}
+
 .nav-items {
   display: flex;
   padding: 15px 10px;
@@ -88,7 +92,12 @@ ul > .active:not(:last-child) {
 }
 
 .cart-item {
-  text-decoration: none;
+  background-color:  #adfff513;
+  height: 36px;
+}
+
+.cart-icon {
+  height: 100%;
 }
 
 /*--- SEARCH PANEL ---*//*--- SEARCH PANEL ---*/
@@ -184,7 +193,7 @@ ul > .active:not(:last-child) {
   height: 90px;
   border: 1px solid black;
   background-color: #45b1a132;
-  opacity: 0.05;
+  opacity: 0;
   outline-style: none;
   border-radius: 15px;
   font-size: 13px;
@@ -196,12 +205,18 @@ ul > .active:not(:last-child) {
   opacity: 1;
 }
 
+.phones-item-info:hover .add-btn {
+  opacity: 0.8;
+}
+
 .add-btn:hover {
   background-color: #2fff4e57;
   color: #130c73;
   opacity: 1;
   box-shadow: 1px 1px 5px #6e6d6d;
 }
+
+
 
 /*--- PHONE-DETAILS ---*//*--- PHONE-DETAILS ---*/
 
@@ -246,12 +261,7 @@ ul > .active:not(:last-child) {
 }
 
 .selected-photo {
-  display: block;
   height: 100%;
-}
-
-.main-photo {
-  display: none;
 }
 
 .extra-details-description {
@@ -273,6 +283,20 @@ ul > .active:not(:last-child) {
   border-radius: 5px;
   padding: 5px;
   margin-right: 5px;
+  opacity: 0.85;
+  cursor: pointer;
+}
+.extra-details-photos-item:hover {
+  opacity: 1;
+}
+
+.extra-details-photos-item-cart-add {
+  border: 1px solid #940a0a;
+}
+
+
+.extra-details-photos-item-cart-add:hover {
+  border: 1px solid #0a9426;
 }
 
 /*--- PHONE-MORE-DETAILS ---*//*--- PHONE-MORE-DETAILS ---*/
