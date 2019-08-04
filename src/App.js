@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Route, Switch } from 'react-router-dom';
 
 import HomePage from './components/HomePage';
@@ -6,10 +7,8 @@ import PhonesPage from './components/PhonesPage';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import NotFoundPage from './components/NotFoundPage';
-import Loader from './components/Loader';
-import PhoneDetails from "./components/PhoneDetails";
+import PhoneDetails from './components/PhoneDetails';
 import Cart from './components/Cart';
-
 
 const App = () => (
   <div className="phones-catalog">
@@ -35,5 +34,13 @@ const App = () => (
     <Footer />
   </div>
 );
+
+App.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
+};
 
 export default App;

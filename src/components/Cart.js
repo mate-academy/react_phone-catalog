@@ -19,7 +19,7 @@ export default class Cart extends Component {
         </div>
         <div className="order-btn-block">
           <button type="button" className="btn btn-buy">
-            {"->> BUY NOW  <<-"}
+            {'->> BUY NOW  <<-'}
           </button>
         </div>
       </div>

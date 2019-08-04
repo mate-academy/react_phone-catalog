@@ -1,16 +1,13 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-const NotFoundPage = () => {
-
-  return (
+const NotFoundPage = () => (
+  <div>
+    <h2>NO NO NO NO NO NO NO</h2>
     <div>
-      <h2>NO NO NO NO NO NO NO</h2>
-      <center>
-        <Link to="/">Return to Home Page</Link>
-      </center>
+      <Link to="/">Return to Home Page</Link>
     </div>
-  );
-};
+  </div>
+);
 
 export default NotFoundPage;

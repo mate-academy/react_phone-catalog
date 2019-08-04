@@ -1,8 +1,18 @@
-                    /*--- DEFAULT STYLE ---*/
+/*--- DEFAULT STYLE ---*//*--- DEFAULT STYLE ---*/
+
 * {
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    "Open Sans",
+    "Helvetica Neue",
+    sans-serif;
   box-sizing: border-box;
 }
 
@@ -17,16 +27,16 @@ body,
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
   min-height: 100%;
 }
 
 h1 {
   text-align: center;
-  color: rgba(24, 98, 73, 0.558);
+  color: #1862498e;
 }
 
-                    /*--- HEADER ---*/
+/*--- HEADER ---*//*--- HEADER ---*/
+
 .header-container {
   display: flex;
   flex: 0 0 auto;
@@ -38,28 +48,33 @@ h1 {
   background-color: #adfff513;
 }
 
+.header-logo > a > img {
+  max-height: 70px;
+}
+
 .nav-items {
   display: flex;
   padding: 15px 10px;
-  border: 1px solid rgba(128, 128, 128, 0.204);
+  border: 1px solid #80808034;
   border-radius: 10px;
   background-color: #adfff513;
 }
 
 .nav-item {
-  margin:0 15px;
+  margin: 0 15px;
   list-style-type: none;
   font-size: 18px;
   font-weight: 500;
   text-transform: uppercase;
   padding: 5px;
   background-color: #45b1a132;
+  border: 1px solid #80808030;
   border-radius: 10px;
 }
 
 .nav-item:hover {
   color: #000000ad;
-  background-color: #5b7dc132;
+  background-color: #0ab81e32;
 }
 
 ul > a {
@@ -68,41 +83,46 @@ ul > a {
 }
 
 ul > .active:not(:last-child) {
-  color: rgb(10, 10, 95);
+  color: #0a0a5f;
   text-decoration: underline;
 }
 
-ul > .active > .nav-item .cart-items {
+.cart-item {
   text-decoration: none;
 }
 
+/*--- SEARCH PANEL ---*//*--- SEARCH PANEL ---*/
 
-                    /*--- SEARCH PANEL ---*/
 .search-panel {
   display: flex;
   justify-content: center;
   height: 40px;
   min-width: 200px;
   margin: 10px auto 30px;
-  line-height:
-  40px;
+  line-height: 40px;
 }
 
-.search-panel-text{
+.search-panel-text {
   padding-right: 4px;
 }
 
 .search-field {
   width: 40%;
   padding: 0 5px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  outline-style: none;
 }
 
 .search-sort {
   padding: 0 5px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  outline-style: none;
 }
 
+/*--- CONTENT-CONTAINER ---*//*--- CONTENT-CONTAINER ---*/
 
-                    /*--- CONTENT-CONTAINER ---*/
 .content-container {
   flex: 1 0 auto;
   width: 70%;
@@ -121,11 +141,13 @@ ul > .active > .nav-item .cart-items {
 
 .phones-item-info {
   display: flex;
+  justify-content: space-between;
   width: 100%;
-  border: 1px solid rgba(115, 115, 117, 0.435);
+  border: 1px solid #7373756f;
   border-radius: 20px;
   padding: 2px;
-  box-shadow: 2px 4px 8px rgba(128, 128, 128, 0.245);
+  box-shadow: 2px 4px 8px #8080803e;
+  opacity: 0.85;
 }
 
 .phones-main-photo {
@@ -136,6 +158,7 @@ ul > .active > .nav-item .cart-items {
 
 .phones-item-text {
   padding: 2px 10px;
+  width: 100%;
 }
 
 .phones-item-title {
@@ -144,26 +167,58 @@ ul > .active > .nav-item .cart-items {
 }
 
 .phones-item-title:hover {
-  color: rgba(13, 13, 117, 0.707);
+  color: #0d0d75b4;
 }
 
-                    /*--- PHONE-DETAILS ---*/
+.add-btn {
+  font-family: "Lucida Sans",
+    "Lucida Sans Regular",
+    "Lucida Grande",
+    "Lucida Sans Unicode",
+    Geneva,
+    Verdana,
+    sans-serif;
+  padding: 5px 3px;
+  margin: 2px;
+  width: 43px;
+  height: 90px;
+  border: 1px solid black;
+  background-color: #45b1a132;
+  opacity: 0.05;
+  outline-style: none;
+  border-radius: 15px;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.phones-item-info:hover {
+  opacity: 1;
+}
+
+.add-btn:hover {
+  background-color: #2fff4e57;
+  color: #130c73;
+  opacity: 1;
+  box-shadow: 1px 1px 5px #6e6d6d;
+}
+
+/*--- PHONE-DETAILS ---*//*--- PHONE-DETAILS ---*/
+
 .btn-back {
   width: 48%;
   background-color: #ce157121;
-
 }
 
 .btn-back:hover {
   color: #6f2424;
   background-color: #faf5f5;
   box-shadow: 1px 1px 5px #a9a9a9;
-
 }
 
 .btn-buy {
   width: 50%;
-background-color: #2fff4e30;
+  background-color: #2fff4e30;
 }
 
 .btn-buy:hover {
@@ -199,9 +254,10 @@ background-color: #2fff4e30;
   display: none;
 }
 
-.extra-details-description{
+.extra-details-description {
   margin: 10px 0;
 }
+
 .extra-details-photos {
   display: flex;
   flex-wrap: wrap;
@@ -219,7 +275,8 @@ background-color: #2fff4e30;
   margin-right: 5px;
 }
 
-                    /*--- PHONE-MORE-DETAILS ---*/
+/*--- PHONE-MORE-DETAILS ---*//*--- PHONE-MORE-DETAILS ---*/
+
 .extra-details-more-details {
   display: flex;
   flex-wrap: wrap;
@@ -232,8 +289,8 @@ background-color: #2fff4e30;
   margin-top: 35px;
 }
 
+/*--- FOOTER ---*//*--- FOOTER ---*/
 
-                    /*--- FOOTER ---*/
 .footer-container {
   display: flex;
   flex: 0 0 auto;
@@ -254,36 +311,30 @@ background-color: #2fff4e30;
 
 .footer-info > span > a {
   text-decoration: none;
-  color: rgba(105, 105, 105, 0.707);
+  color: #696969b4;
 }
 
 .footer-info > span > a:hover {
-  color: rgb(43, 44, 43);
+  color: #2b2c2b;
 }
 
-                    /*--- CART ---*/
-.order-container {
+/*--- LOADER ---*//*--- LOADER ---*/
 
-}
-
-.order-content {
-
-}
-
-.order-btn-block {
-
-}
-
-
-                    /*--- LOADER ---*/
 .sweet-loading {
   width: 100px;
   margin: 100px auto;
 }
 
-                    /*--- BUTTON DEFAULT ---*/
- .btn {
-  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif ;
+/*--- BUTTON DEFAULT ---*//*--- BUTTON DEFAULT ---*/
+
+.btn {
+  font-family: "Lucida Sans",
+    "Lucida Sans Regular",
+    "Lucida Grande",
+    "Lucida Sans Unicode",
+    Geneva,
+    Verdana,
+    sans-serif ;
   padding: 5px 3px;
   margin: 2px;
   border: 1px solid black;

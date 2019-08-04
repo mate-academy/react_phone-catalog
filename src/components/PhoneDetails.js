@@ -1,11 +1,10 @@
 /* eslint-disable react/no-did-update-set-state */
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import Loader from "./Loader";
+import Loader from './Loader';
 
 import { getExtraDetails } from '../api/getPhones';
-import NotFoundPage from './NotFoundPage';
-
 
 class PhoneDetails extends Component {
   constructor(props) {
@@ -23,18 +22,7 @@ class PhoneDetails extends Component {
     this.setState({ extraData });
   }
 
-  // async componentDidUpdate() {
-  //   const { id } = this.props;
-  //   const extraData = await getExtraDetails(id);
-
-  //   if (this.state.extraData.id !== id) {
-  //     this.setState({ extraData });
-  //   }
-  // }
-
   render() {
-    console.log(this.props.id);
-    console.log(this.state.extraData);
     const { extraData } = this.state;
     const { id } = this.props;
 
@@ -43,12 +31,12 @@ class PhoneDetails extends Component {
         <div>
           <Link to="/phones">
             <button className="btn btn-back" type="button">
-              {"<<- Back to all phones"}
+              {'<<- Back to all phones'}
             </button>
           </Link>
           <Link to="/cart">
             <button className="btn btn-buy" type="button">
-              {"->> BUY NOW  <<-"}
+              {'->> BUY NOW  <<-'}
             </button>
           </Link>
           {id === extraData.id ? (
@@ -58,6 +46,7 @@ class PhoneDetails extends Component {
                   <img
                     className="selected-photo"
                     src={extraData.images[0]}
+                    alt="mobile-phone"
                   />
                 </div>
                 <article>
@@ -83,22 +72,22 @@ class PhoneDetails extends Component {
                 </article>
               </div>
               <div className="extra-details-more-details">
-                <section class="more-info">
+                <section className="more-info">
                   <h3>Camera</h3>
                   <i>features:</i>
                   {extraData.camera.features.map(i => (
-                    <>{i}</>
+                    <span key={i}>{i}</span>
                   ))}
                   <p>
                     <i>primary:</i>
-                    <p>{extraData.camera.primary}</p>
+                    <span>{extraData.camera.primary}</span>
                   </p>
                 </section>
 
-                <section class="more-info">
+                <section className="more-info">
                   <h3>Battery</h3>
                   <i>standbyTime:</i>
-                  {extraData.battery.standbyTime}
+                  <span>{extraData.battery.standbyTime}</span>
                   <p>
                     <i>talkTime:</i>
                     {extraData.battery.talkTime}
@@ -109,49 +98,40 @@ class PhoneDetails extends Component {
                   {extraData.battery.type}
                 </section>
 
-                <section class="more-info">
+                <section className="more-info">
                   <h3>Hardware</h3>
-                  <i>audioJack:</i> {extraData.hardware.audioJack}
+                  <i>audioJack:</i>
+                  {extraData.hardware.audioJack}
                   <p>
                     <i>cpu:</i>
-                  </p>{" "}
-                  {extraData.hardware.cpu}
+                    {extraData.hardware.cpu}
+                  </p>
                   <p>
                     <i>usb:</i>
                     {extraData.hardware.usb}
                   </p>
                 </section>
 
-                <section class="more-info">
+                <section className="more-info">
                   <h3>Size and Weight</h3>
                   <i>dimensions:</i>
                   <>
                     {extraData.sizeAndWeight.dimensions.map(d => (
-                      <p>{d}</p>
+                      <span key={d}>{d}</span>
                     ))}
                   </>
-                  weight: {extraData.sizeAndWeight.weight}
+                  weight:
+                  {extraData.sizeAndWeight.weight}
                 </section>
-
-                {/* as
-    "sizeAndWeight": {
-        "dimensions": [
-            "63.0 mm (w)",
-            "123.9 mm (h)",
-            "10.88 mm (d)"
-        ],
-        "weight": "129.0 grams"
-
-d */}
               </div>
             </>
           ) : (
             <>
               <Loader />
               <p>
-                {"Maybe this page is not available, "}
+                {'Maybe this page is not available, '}
                 <Link to="/phones">go back</Link>
-                {" and try checking late"}
+                {' and try checking late'}
               </p>
             </>
           )}
@@ -160,5 +140,9 @@ d */}
     );
   }
 }
+
+PhoneDetails.propTypes = {
+  id: PropTypes.string.isRequired,
+};
 
 export default PhoneDetails;
