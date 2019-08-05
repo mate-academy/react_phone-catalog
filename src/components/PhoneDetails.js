@@ -11,7 +11,7 @@ import { getExtraDetails } from '../api/getPhones';
 class PhoneDetails extends Component {
   state = {
     extraData: {},
-    selectedPhoto: "",
+    selectedPhoto: '',
   };
 
   async componentDidMount() {
@@ -20,7 +20,7 @@ class PhoneDetails extends Component {
 
     this.setState({
       extraData,
-      selectedPhoto: extraData.images[0]
+      selectedPhoto: extraData.images[0],
     });
   }
 
@@ -30,13 +30,12 @@ class PhoneDetails extends Component {
     this.setState({ selectedPhoto: name });
   };
 
-  handleAddtoCart = (event) => {
-    const { name } = event.target;
+  // handleAddtoCart = (event) => {
+  //   const { name } = event.target;
 
-    this.setState({  });
-    console.log(this.state.phoneID);
-
-  }
+  //   this.setState({ });
+  //   console.log(this.state.phoneID);
+  // }
 
   render() {
     const { extraData } = this.state;
@@ -49,12 +48,12 @@ class PhoneDetails extends Component {
             <>
               <Link to="/phones">
                 <button className="btn btn-back" type="button">
-                  {"<<- Back to all phones"}
+                  {'<<- Back to all phones'}
                 </button>
               </Link>
               <Link to={`/cart/${extraData.id}`}>
                 <button className="btn btn-buy" type="button">
-                  {"->> BUY NOW  <<-"}
+                  {'->> BUY NOW  <<-'}
                 </button>
               </Link>
               <div className="extra-details">
@@ -85,7 +84,7 @@ class PhoneDetails extends Component {
                           />
                         </li>
                       ))}
-                      <li key={"add-to-cart"}>
+                      <li key="add-to-cart">
                         <img
                           onClick={this.handleAddtoCart}
                           className="extra-details-photos-item
@@ -158,9 +157,9 @@ class PhoneDetails extends Component {
             <>
               <Loader />
               <p>
-                {"Maybe this page is not available, "}
+                {'Maybe this page is not available, '}
                 <Link to="/phones">go back</Link>
-                {" and try checking late"}
+                {' and try checking late'}
               </p>
             </>
           )}

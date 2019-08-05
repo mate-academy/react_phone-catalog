@@ -92,7 +92,7 @@ ul > .active:not(:last-child) {
 }
 
 .cart-item {
-  background-color:  #adfff513;
+  background-color: #adfff513;
   height: 36px;
 }
 
@@ -216,8 +216,6 @@ ul > .active:not(:last-child) {
   box-shadow: 1px 1px 5px #6e6d6d;
 }
 
-
-
 /*--- PHONE-DETAILS ---*//*--- PHONE-DETAILS ---*/
 
 .btn-back {
@@ -286,6 +284,7 @@ ul > .active:not(:last-child) {
   opacity: 0.85;
   cursor: pointer;
 }
+
 .extra-details-photos-item:hover {
   opacity: 1;
 }
@@ -293,7 +292,6 @@ ul > .active:not(:last-child) {
 .extra-details-photos-item-cart-add {
   border: 1px solid #940a0a;
 }
-
 
 .extra-details-photos-item-cart-add:hover {
   border: 1px solid #0a9426;
@@ -369,12 +367,8 @@ ul > .active:not(:last-child) {
   cursor: pointer;
 }
 
+/*--- CART ---*//*--- CART ---*/
 
 .order-list {
   list-style-type: none;
-
-}
-
-.cart-item {
-  border: 1px solid black;
 }

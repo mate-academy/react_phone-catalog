@@ -1,7 +1,8 @@
 /* eslint-disable no-param-reassign */
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import {getPhones} from '../api/getPhones';
+import { getPhones } from '../api/getPhones';
 
 export default class Cart extends Component {
   state = {
@@ -16,22 +17,20 @@ export default class Cart extends Component {
     const cartItem = this.createCartItem();
     const filteredCart = cartData
       .filter(phone => phone.id === matchId)
-      .map(
-        phone =>
-          (phone = {
-            ...phone,
-            ...cartItem,
-          })
-      );
-      
-    this.setState(state => ({ addedPhones: [...state.addedPhones, ...filteredCart] }));
+      .map(phone => (phone = {
+        ...phone,
+        ...cartItem,
+      }));
+
+    this.setState(state => ({
+      addedPhones: [...state.addedPhones, ...filteredCart],
+    }));
 
     this.saveToLocalStorage(this.state.addedPhones);
 
     const storage = this.getFromLocalStorage();
 
     this.setState({ addedPhones: storage });
-    console.log(storage);
   }
 
   createCartItem = () => ({
@@ -41,7 +40,8 @@ export default class Cart extends Component {
 
   getFromLocalStorage = () => JSON.parse(localStorage.getItem('addedPhones'));
 
-  saveToLocalStorage = phones => localStorage.setItem('addedPhones', JSON.stringify(phones));
+  saveToLocalStorage = phones => localStorage
+    .setItem('addedPhones', JSON.stringify(phones));
 
   render() {
     return (
@@ -83,3 +83,19 @@ export default class Cart extends Component {
     );
   }
 }
+
+Cart.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+    }).isRequired,
+  }),
+};
+
+Cart.defaultProps = {
+  match: {
+    params: {
+      id: '',
+    },
+  },
+};

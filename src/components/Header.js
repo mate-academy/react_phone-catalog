@@ -19,11 +19,12 @@ const Header = () => (
         </NavLink>
         <NavLink to="/cart">
           <li className="nav-item cart-item">
-              <img
-                className="cart-icon"
-                src={true ? './img/empty-cart.png' : './img/full-cart.png'}
-                alt="shopping-cart"
-              />
+            <img
+              className="cart-icon"
+              // src={true ? './img/empty-cart.png' : './img/full-cart.png'}
+              src="./img/empty-cart.png"
+              alt="shopping-cart"
+            />
 
           </li>
         </NavLink>

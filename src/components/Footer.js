@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React from 'react';
 
 const Footer = () => (
@@ -11,7 +12,7 @@ const Footer = () => (
       </span>
       <span>
         {'Pull request: '}
-        <a href="https://github.com/mate-academy/react_phone-catalog/pull/1">
+        <a href="https://github.com/mate-academy/react_phone-catalog/pull/1/files?file-filters%5B%5D=.js">
           Hlybchenko
         </a>
       </span>

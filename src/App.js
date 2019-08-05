@@ -43,4 +43,13 @@ App.propTypes = {
   }),
 };
 
+App.defaultProps = {
+  match: {
+    params: {
+
+      id: '',
+    },
+  },
+};
+
 export default App;
