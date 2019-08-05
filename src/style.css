@@ -368,3 +368,13 @@ ul > .active:not(:last-child) {
   font-weight: 800;
   cursor: pointer;
 }
+
+
+.order-list {
+  list-style-type: none;
+
+}
+
+.cart-item {
+  border: 1px solid black;
+}

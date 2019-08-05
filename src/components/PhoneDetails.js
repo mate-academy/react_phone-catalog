@@ -11,7 +11,7 @@ import { getExtraDetails } from '../api/getPhones';
 class PhoneDetails extends Component {
   state = {
     extraData: {},
-    selectedPhoto: '',
+    selectedPhoto: "",
   };
 
   async componentDidMount() {
@@ -20,7 +20,7 @@ class PhoneDetails extends Component {
 
     this.setState({
       extraData,
-      selectedPhoto: extraData.images[0],
+      selectedPhoto: extraData.images[0]
     });
   }
 
@@ -29,6 +29,14 @@ class PhoneDetails extends Component {
 
     this.setState({ selectedPhoto: name });
   };
+
+  handleAddtoCart = (event) => {
+    const { name } = event.target;
+
+    this.setState({  });
+    console.log(this.state.phoneID);
+
+  }
 
   render() {
     const { extraData } = this.state;
@@ -44,7 +52,7 @@ class PhoneDetails extends Component {
                   {"<<- Back to all phones"}
                 </button>
               </Link>
-              <Link to="/cart">
+              <Link to={`/cart/${extraData.id}`}>
                 <button className="btn btn-buy" type="button">
                   {"->> BUY NOW  <<-"}
                 </button>
@@ -67,8 +75,9 @@ class PhoneDetails extends Component {
                     </div>
                     <ul className="extra-details-photos">
                       {extraData.images.map(img => (
-                        <li onClick={this.handleChoosePhoto} key={img}>
+                        <li key={img}>
                           <img
+                            onClick={this.handleChoosePhoto}
                             className="extra-details-photos-item"
                             src={img}
                             alt={img}
@@ -76,12 +85,15 @@ class PhoneDetails extends Component {
                           />
                         </li>
                       ))}
-                      <li>
+                      <li key={"add-to-cart"}>
                         <img
-                          className="extra-details-photos-item extra-details-photos-item-cart-add "
+                          onClick={this.handleAddtoCart}
+                          className="extra-details-photos-item
+                            extra-details-photos-item-cart-add "
                           src="./img/cart-add.png"
                           alt="add-to-cart"
                           title="Click for adding to cart "
+                          name={extraData.id}
                         />
                       </li>
                     </ul>
