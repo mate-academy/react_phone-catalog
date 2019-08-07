@@ -19,19 +19,31 @@ import NotFoundPage from './components/NotFoundPage'
 class App extends React.Component {
   state = {
     phones: '',
+    isLoading: false,
+    isLoaded: false,
   }
 
   loadData = async () => {
+    this.setState({
+      isLoading: true,
+    })
+
     const responsePhones = await
       fetch('https://mate-academy.github.io/phone-catalogue-static/api/phones.json')
     const phones = await responsePhones.json();
 
-    this.setState({
-      phones: phones,
-    })
+    setTimeout(() => {
+      this.setState({
+        phones: phones,
+        isLoading: false,
+        isLoaded: true,
+      })
+    }, 1500)
   }
 
   render() {
+    const {phones, isLoading, isLoaded} = this.state;
+
     return (
       <div>
         <nav className="nav-menu-header">
@@ -54,10 +66,12 @@ class App extends React.Component {
 
         <Switch>
           <Route path='/' exact component={HomePage}/>
-          <Route path='/phones/' render={({ match }) =>
+          <Route path='/phones/' exact render={({ match }) =>
             <PhonesPage 
               loadData={this.loadData}
-              phones={this.state.phones}
+              phones={phones}
+              isLoading={isLoading}
+              isLoaded={isLoaded}
             />
           }/>
           <Route component={NotFoundPage}/>

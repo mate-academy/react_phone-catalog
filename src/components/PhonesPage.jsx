@@ -1,4 +1,5 @@
 import React from 'react'
+import Loader from './Loader'
 
 class PhonesPage extends React.Component {
   componentDidMount = () => {
@@ -6,10 +7,17 @@ class PhonesPage extends React.Component {
   }
 
   render() {
-    console.log(this.props.phones);
-    return(
+    const { phones, isLoading, isLoaded } = this.props;
+    console.log(phones);
+    return (
       <div>
-        <h2>Phones page</h2>
+        {
+          isLoaded
+            ? <h2>Phones page</h2>
+            : <Loader
+              isLoading={isLoading}
+            />
+        }
       </div>
     )
   }

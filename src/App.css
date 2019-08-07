@@ -28,3 +28,20 @@
 .active {
   color: white;
 }
+
+.loading {
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  width:50px; height:50px;
+  border:5px solid #6c757d;
+  border-bottom-color:#343a40;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-radius:100%;
+  animation: load_cyrcle 800ms infinite linear;
+}
+
+@keyframes load_cyrcle{
+100%{transform:rotate(360deg);}
+}
