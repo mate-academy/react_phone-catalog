@@ -38,16 +38,14 @@ const BasketItems = (props) => {
                 className="button"
                 onClick={() => {
                   if (phone.quantity > 1) {
-                    basketPhones
+                    chandgeBasketItems(basketPhones
                       .map(basketPhone => (
                         basketPhone.id === phone.id
-                          ? ({
+                          ? {
                             ...basketPhone,
-                            quantity: basketPhone.quantity + 1,
-                          })
-                          : basketPhone));
-
-                    return chandgeBasketItems(basketPhones);
+                            quantity: basketPhone.quantity - 1,
+                          }
+                          : basketPhone)));
                   }
 
                   return basketPhones;
@@ -60,18 +58,14 @@ const BasketItems = (props) => {
                 name={phone.id}
                 type="button"
                 className="button"
-                onClick={() => {
-                  basketPhones
-                    .map(basketPhone => (
-                      basketPhone.id === phone.id
-                        ? ({
-                          ...basketPhone,
-                          quantity: basketPhone.quantity + 1,
-                        })
-                        : basketPhone));
-
-                  return chandgeBasketItems(basketPhones);
-                }}
+                onClick={() => chandgeBasketItems(basketPhones
+                  .map(basketPhone => (
+                    basketPhone.id === phone.id
+                      ? {
+                        ...basketPhone,
+                        quantity: basketPhone.quantity + 1,
+                      }
+                      : basketPhone)))}
               >
                   +
               </button>
