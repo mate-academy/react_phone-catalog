@@ -3,14 +3,19 @@ body {
 }
 
 .header {
+  display: flex;
+  box-sizing: border-box;
+  padding: 0 10px;
+  justify-content: space-between;
   background-color: coral;
 
   &__nav {
-    display: flex;
+    display: inline-block;
     align-items: center;
   }
 
   &__nav--list {
+    height: 40px;
     margin: 0;
     padding: 0;
     list-style: none;
@@ -18,16 +23,31 @@ body {
   }
 
   &__nav--list li {
-    display: inline-flex;
+    display: inline-block;
   }
 
   &__nav--list a {
     display: inherit;
-    height: 40px;
+    height: inherit;
     padding: 10px;
-    box-sizing: border-box;
     text-decoration: none;
     color: inherit;
+  }
+
+  &__basket {
+    display: inline-block;
+    justify-self: end;
+  }
+
+  &__basket a {
+    display: inherit;
+    width: 40px;
+    height: 30px;
+    padding: 5px;
+  }
+
+  &__basket img {
+    width: 100%;
   }
 }
 

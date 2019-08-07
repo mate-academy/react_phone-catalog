@@ -3,28 +3,67 @@ body {
 }
 
 .header {
+  position: relative;
+  display: flex;
+  box-sizing: border-box;
+  padding: 0 10px;
+  justify-content: space-between;
   background-color: coral;
 }
+
 .header__nav {
-  display: flex;
+  display: inline-block;
   align-items: center;
 }
+
 .header__nav--list {
+  height: 40px;
   margin: 0;
   padding: 0;
   list-style: none;
   color: black;
 }
+
 .header__nav--list li {
-  display: inline-flex;
+  display: inline-block;
 }
+
 .header__nav--list a {
   display: inherit;
-  height: 40px;
+  height: inherit;
   padding: 10px;
-  box-sizing: border-box;
   text-decoration: none;
   color: inherit;
+}
+
+.header__basket {
+  display: inline-block;
+  justify-self: end;
+}
+
+.header__basket a {
+  display: inherit;
+  box-sizing: border-box;
+  width: 40px;
+  height: 40px;
+  padding: 10px 0 5px;
+  margin-right: 5px;
+}
+
+.header__basket img {
+  width: 100%;
+}
+
+.header__basket--count {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: white;
+  text-align: center;
+  line-height: 20px;
 }
 
 a.active {
