@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { Route, Switch, BrowserRouter, NavLink } from 'react-router-dom';
+import { Route, Switch, HashRouter, NavLink } from 'react-router-dom';
 
 import Home from './components/Home';
 import Phones from './components/Phones';
