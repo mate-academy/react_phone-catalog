@@ -100,6 +100,32 @@ ul > .active:not(:last-child) {
   height: 100%;
 }
 
+/*--- HOME_PAGE ---*//*--- HOME PAGE ---*/
+
+.welcome-container {
+  max-width: max-content;
+  margin: 100px auto;
+  text-align: center;
+
+}
+
+.welcome-container > a {
+  text-decoration: none;
+  color: #e10edda0;
+  transition: all 1s;
+
+}
+
+.welcome-container > a:hover {
+  color: #0ca2e2aa;
+  transition: 0.5 s;
+}
+
+.welcome-text {
+  font-size: 40px;
+  text-decoration: none;
+}
+
 /*--- SEARCH PANEL ---*//*--- SEARCH PANEL ---*/
 
 .search-panel {
@@ -371,4 +397,60 @@ ul > .active:not(:last-child) {
 
 .order-list {
   list-style-type: none;
+}
+
+/*--- PAGINATION ---*//*--- PAGINATION ---*/
+
+.pagination-box {
+  /* max-width: max-content; */
+  margin: 0 auto;
+}
+
+.pagination-panel {
+  display: flex;
+  list-style-type: none;
+}
+
+.selected {
+  font-size: bold;
+  color: black;
+  background-color: lightblue;
+  transform: scale(1.05);
+  opacity: 1;
+  transition: all 0.2s;
+
+}
+
+.total-range {
+  padding-left: 40px;
+}
+
+input {
+  width: 280px;
+}
+
+.btn-pgn {
+  width: 36px;
+  opacity: 0.8;
+  transition: all 0.2s;
+
+}
+
+.btn-pgn:hover {
+  transform: scale(1.05);
+  background-color: #b1cad17d;
+  opacity: 1;
+  transition: all 0.2s;
+}
+
+.btn-pgn:active {
+  background-color: rgb(115, 185, 208);
+  color: #fff;
+  transition: color 0.4s;
+  transform: scale(1);
+}
+
+.per-page-select {
+  border-radius: 10px;
+  background-color: #b28bd83d;
 }
