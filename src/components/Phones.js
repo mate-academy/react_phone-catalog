@@ -43,6 +43,8 @@ class Phones extends React.Component {
     switch (value) {
       case 'alphabetical':
         this.setState(prevState => ({
+          phones: prevState.filterPhones
+          .sort((a, b) => a.name.localeCompare(b.name)),
           filterPhones: prevState.filterPhones
             .sort((a, b) => a.name.localeCompare(b.name)),
         }));
@@ -50,13 +52,15 @@ class Phones extends React.Component {
         break;
       case 'newest':
         this.setState(prevState => ({
+          phones: prevState.filterPhones.sort((a, b) => a.age - b.age),
           filterPhones: prevState.filterPhones.sort((a, b) => a.age - b.age),
         }));
 
         break;
       default:
         this.setState(prevState => ({
-          copyPhones: prevState.copyPhones,
+          phones: prevState.phones,
+          filterPhones: prevState.filterPhones,
         }));
     }
   }
