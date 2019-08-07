@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 
 class PhoneDetails extends React.Component {
   state = {
@@ -16,17 +17,24 @@ class PhoneDetails extends React.Component {
 
     return (
       <div>
-        <h2>{details.name}</h2>
+        <img
+          src={details.images[imageNumber]}
+          alt="phone"
+          className="increased-img"
+        />
 
-        <p>{details.description}</p>
+        <h2 className="phone__title">{details.name}</h2>
 
-        <img src={details.images[imageNumber]} alt="phone" />
+        <p className="phone__description">{details.description}</p>
 
         <ul className="phone-thumbs">
           {details.images.map((image, index) => (
             <li key={image}>
               <img
                 onClick={() => this.switchImage(index)}
+                className={classnames('phone-thumbs__img', {
+                  selected: imageNumber === index,
+                })}
                 src={image}
                 alt="phone"
               />
