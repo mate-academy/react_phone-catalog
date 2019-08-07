@@ -11,11 +11,11 @@
 
 .navlink {
   font-size: 20px;
-  color: #000;
+  color: blue;
   text-decoration: none;
 }
 
 .active {
   font-weight: bold;
-  border-bottom: 2px solid #000;
+  border-bottom: 2px solid blue;
 }

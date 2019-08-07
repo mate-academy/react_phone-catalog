@@ -16,10 +16,6 @@ class App extends React.Component {
 
   }
 
-  componentDidMount() {
-
-  }
-
   render() {
     return (
       <HashRouter>
@@ -49,30 +45,30 @@ class App extends React.Component {
 
             </ul>
           </nav>
-
-          <Switch>
-
-            <Route
-              path="/"
-              exact
-              component={HomePage}
-            />
-
-            <Route
-              path="/phones/:phoneId?"
-              exact
-              component={PhonesPage}
-            />
-
-            <Route
-              path="*"
-              exact
-              component={NotFoundPage}
-            />
-
-          </Switch>
-
         </div>
+
+        <Switch>
+
+          <Route
+            path="/"
+            exact
+            component={HomePage}
+          />
+
+          <Route
+            path="/phones/:phoneId?"
+            exact
+            component={PhonesPage}
+          />
+
+          <Route
+            path="*"
+            exact
+            component={NotFoundPage}
+          />
+
+        </Switch>
+
       </HashRouter>
     );
   }
