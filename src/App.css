@@ -1,1 +1,21 @@
+.App {
+  margin: 0;
+  padding: 0;
+}
 
+.nav li {
+  display: inline;
+  list-style: none;
+  margin-right: 10px;
+}
+
+.navlink {
+  font-size: 20px;
+  color: #000;
+  text-decoration: none;
+}
+
+.active {
+  font-weight: bold;
+  border-bottom: 2px solid #000;
+}
