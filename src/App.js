@@ -12,8 +12,12 @@ import NotFoundPage from './components/NotFoundPage'
 /**
  * [x] - переделать стиль CSS, чтобы без bootstrap
  * [x] - передать функцию компоненту PhonePage
- * [] - Implement a Loader to show it while 
+ * [x] - Implement a Loader to show it while 
  *      waiting for the data from server
+ * [] - PhoneDetailsPage + router
+ *    [] - прокинуть расширенные данные
+ *       
+ * 
  */
 
 class App extends React.Component {
@@ -47,26 +51,26 @@ class App extends React.Component {
     return (
       <div>
         <nav className="nav-menu-header">
-              <NavLink 
-                className="nav-menu-header__item"
-                href="#"
-                exact to='/'
-              >
-                  Home
-              </NavLink>
+          <NavLink 
+            className="nav-menu-header__item"
+            href="#"
+            exact to='/'
+          >
+              Home
+          </NavLink>
 
-              <NavLink 
-                className="nav-menu-header__item" 
-                href="#"
-                to='/phones'
-              >
-                Phones
-              </NavLink>
+          <NavLink 
+            className="nav-menu-header__item" 
+            href="#"
+            to='/phones'
+          >
+            Phones
+          </NavLink>
         </nav>
 
         <Switch>
           <Route path='/' exact component={HomePage}/>
-          <Route path='/phones/' exact render={({ match }) =>
+          <Route path='/phones/' exact render={() =>
             <PhonesPage 
               loadData={this.loadData}
               phones={phones}
