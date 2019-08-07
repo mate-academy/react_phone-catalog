@@ -2,9 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { getPhones, getPhoneDetails } from '../api/getPhones';
 
+import Loading from './Loading';
+
 class Phones extends React.Component {
   state = {
     phones: [],
+    loading: false,
   }
 
   async componentDidMount() {
@@ -12,18 +15,20 @@ class Phones extends React.Component {
 
     this.setState({
       phones,
+      loading: true,
     })
   }
 
   render() {
-    const { phones } = this.state;
+    const { phones, loading } = this.state;
 
     return (
-      <div className="phones-catalog">
+      loading ?
+      (<div className="phones-catalog">
         <form className="search-form">
           <label>
             Search:
-         <input class="form-control search-phone" type="text" placeholder=""></input>
+          <input class="form-control search-phone" type="text" placeholder=""></input>
           </label>
           <label> Sort by:
           <select class="form-control sort-phone">
@@ -59,7 +64,8 @@ class Phones extends React.Component {
             </li>
           ))}
         </ul>
-      </div>
+      </div>) :
+      (<Loading />)
     )
   }
 };
