@@ -4,6 +4,7 @@ import { Route, Switch, NavLink } from 'react-router-dom';
 import Home from './Home';
 import Phones from './Phones';
 import NotFoundPage from './NotFoundPage';
+import PhoneDetailsPage from './PhoneDetailsPage';
 
 class Header extends React.Component {
 
@@ -66,6 +67,12 @@ class Header extends React.Component {
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/phones/" exact component={Phones} />
+          <Route
+            path="/phones/:phoneId"
+            exact
+            render={props =>
+              <PhoneDetailsPage phoneId={props.match.params.phoneId} />}
+          />
           <Route component={NotFoundPage} />
         </Switch>
       </>

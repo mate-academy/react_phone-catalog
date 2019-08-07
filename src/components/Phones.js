@@ -1,12 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { getPhones, getPhoneDetails } from '../api/getPhones';
+import { getPhones } from '../api/getPhones';
 
+import PhoneCatalog from './PhoneCatalog';
 import Loading from './Loading';
+import Filter from './Filter';
 
 class Phones extends React.Component {
   state = {
     phones: [],
+    filterPhones: [],
     loading: false,
   }
 
@@ -15,57 +17,63 @@ class Phones extends React.Component {
 
     this.setState({
       phones,
+      filterPhones: phones,
       loading: true,
     })
   }
 
+  filterPhoneByName = (query) => {
+    return this.state.phones.filter(phone => {
+        return phone.name.toLowerCase().indexOf(query.toLowerCase()) !== -1;
+    })
+  }
+
+  filterPhone = (event) => {
+    const { value } = event.target;
+
+    console.log(value);
+    this.setState({
+      filterPhones: this.filterPhoneByName(value),
+    })
+  }
+
+  sortPhone = (event) => {
+    const {value} = event.target;
+
+    switch (value) {
+      case 'alphabetical':
+        this.setState(prevState => ({
+          filterPhones: prevState.filterPhones
+            .sort((a, b) => a.name.localeCompare(b.name)),
+        }));
+
+        break;
+      case 'newest':
+        this.setState(prevState => ({
+          filterPhones: prevState.filterPhones.sort((a, b) => a.age - b.age),
+        }));
+
+        break;
+      default:
+        this.setState(prevState => ({
+          copyPhones: prevState.copyPhones,
+        }));
+    }
+  }
+
   render() {
-    const { phones, loading } = this.state;
+    const { filterPhones, loading } = this.state;
+    console.log(filterPhones);
 
     return (
-      loading ?
-      (<div className="phones-catalog">
-        <form className="search-form">
-          <label>
-            Search:
-          <input class="form-control search-phone" type="text" placeholder=""></input>
-          </label>
-          <label> Sort by:
-          <select class="form-control sort-phone">
-              <option>Newest</option>
-              <option>Alphabetical</option>
-            </select>
-          </label>
-        </form>
-        <ul className="phones-info">
-          {phones.map(phone => (
-            <li key={phone.id} className="phones">
-              <section className="phones-content">
-                <Link to={`/phones/${phone.id}`}>
-                  <img
-                    className="phones-image"
-                    src={phone.imageUrl}
-                    alt={phone.name}
-                  />
-                </Link>
-
-                <div className="phones-item">
-                  <p className="phones-name">
-                    <Link
-                      className="phones-title"
-                      to={`/phones/${phone.id}`}
-                    >
-                      {phone.name}
-                    </Link>
-                  </p>
-                  <span>{phone.snippet}</span>
-                </div>
-              </section>
-            </li>
-          ))}
-        </ul>
-      </div>) :
-      (<Loading />)
+      loading
+        ? (
+          <div className="phones-catalog">
+            <Filter filterPhone={this.filterPhone} sortPhone={this.sortPhone}/>
+            <PhoneCatalog phones={filterPhones} />
+          </div>
+        )
+        : <Loading />
     )
   }
 };
