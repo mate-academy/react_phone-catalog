@@ -71,3 +71,10 @@ body {
   font-size: 14px;
   text-align: left;
 }
+
+.Loader {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100vh;
+}
