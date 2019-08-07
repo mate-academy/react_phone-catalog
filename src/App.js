@@ -9,15 +9,31 @@ import HomePage from './components/HomePage'
 import PhonesPage from './components/PhonesPage'
 import NotFoundPage from './components/NotFoundPage'
 
+/**
+ * [] - переделать стиль CSS, чтобы без bootstrap
+ */
+
 class App extends React.Component {
+  state = {
+    phones: '',
+  }
+
+  loadData = async () => {
+    const responsePhones = await
+      fetch('https://mate-academy.github.io/phone-catalogue-static/api/phones.json')
+    const phones = await responsePhones.json();
+
+    this.setState({
+      phones: phones,
+    })
+  }
+
   render() {
     return (
       <div>
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
-          <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div className="navbar-nav">
+        <nav className="nav-menu-header">
               <NavLink 
-                className="nav-item nav-link"
+                className="nav-menu-header__item"
                 href="#"
                 exact to='/'
               >
@@ -25,19 +41,17 @@ class App extends React.Component {
               </NavLink>
 
               <NavLink 
-                className="nav-item nav-link" 
+                className="nav-menu-header__item" 
                 href="#"
                 to='/phones'
               >
                 Phones
               </NavLink>
-            </div>
-          </div>
         </nav>
 
         <Switch>
           <Route path='/' exact component={HomePage}/>
-          <Route path='/phones/' component={PhonesPage}/>
+          <Route path='/phones/' exact component={PhonesPage}/>
           <Route component={NotFoundPage}/>
         </Switch>
       </div>
