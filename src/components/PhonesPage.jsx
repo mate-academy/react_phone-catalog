@@ -1,5 +1,6 @@
 import React from 'react'
 import Loader from './Loader'
+import PhoneCatalog from './PhoneCatalog'
 
 class PhonesPage extends React.Component {
   componentDidMount = () => {
@@ -13,7 +14,9 @@ class PhonesPage extends React.Component {
       <div>
         {
           isLoaded
-            ? <h2>Phones page</h2>
+            ? <PhoneCatalog 
+              phones={phones}
+            />
             : <Loader
               isLoading={isLoading}
             />
