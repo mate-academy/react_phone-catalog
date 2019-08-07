@@ -10,7 +10,10 @@ import PhonesPage from './components/PhonesPage'
 import NotFoundPage from './components/NotFoundPage'
 
 /**
- * [] - переделать стиль CSS, чтобы без bootstrap
+ * [x] - переделать стиль CSS, чтобы без bootstrap
+ * [x] - передать функцию компоненту PhonePage
+ * [] - Implement a Loader to show it while 
+ *      waiting for the data from server
  */
 
 class App extends React.Component {
@@ -51,7 +54,12 @@ class App extends React.Component {
 
         <Switch>
           <Route path='/' exact component={HomePage}/>
-          <Route path='/phones/' exact component={PhonesPage}/>
+          <Route path='/phones/' render={({ match }) =>
+            <PhonesPage 
+              loadData={this.loadData}
+              phones={this.state.phones}
+            />
+          }/>
           <Route component={NotFoundPage}/>
         </Switch>
       </div>
