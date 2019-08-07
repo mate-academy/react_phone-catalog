@@ -1,0 +1,8 @@
+.filter {
+  padding: 10px 5px;
+}
+
+.filter__query {
+  width: 200px;
+  margin-right: 10px;
+}

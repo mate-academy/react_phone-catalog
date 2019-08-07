@@ -1,1 +1,35 @@
+body {
+  margin: 0;
+}
 
+.header {
+  background-color: coral;
+}
+.header__nav {
+  display: flex;
+  align-items: center;
+}
+.header__nav--list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: black;
+}
+.header__nav--list li {
+  display: inline-flex;
+}
+.header__nav--list a {
+  display: inherit;
+  height: 40px;
+  padding: 10px;
+  box-sizing: border-box;
+  text-decoration: none;
+  color: inherit;
+}
+
+a.active {
+  background-color: #ffc4af;
+  font-weight: 700;
+}
+
+/*# sourceMappingURL=App.css.map */
