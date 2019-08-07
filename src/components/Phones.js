@@ -39,7 +39,7 @@ class Phones extends React.Component {
                 <Link to={`/phones/${phone.id}`}>
                   <img
                     className="phones-image"
-                    src={`../${phone.imageUrl}`}
+                    src={phone.imageUrl}
                     alt={phone.name}
                   />
                 </Link>

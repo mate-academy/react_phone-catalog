@@ -14,7 +14,7 @@ const App = () => (
           <div className="navbar__main-points">
 
             <li><NavLink className="navlink" to="/" exact>
-              <img class="logo-img" src="../images/logo.png" alt="Logo" title="Logo" />
+              <img class="logo-img" src="images/logo.png" alt="Logo" title="Logo" />
             </NavLink></li>
 
             <li><NavLink className="navlink" to="/" activeClassName="active-navlink" exact>Home</NavLink></li>
@@ -25,7 +25,7 @@ const App = () => (
           <div class="input-group input-group-sm mb-3">
             <div class="input-group-prepend">
               <button class="btn btn-outline-secondary no-border" type="button">
-                <img class="search-img" src="../images/search.svg" alt="search" title="search" />
+                <img class="search-img" src="images/search.svg" alt="search" title="search" />
               </button>
             </div>
             <input
@@ -40,7 +40,7 @@ const App = () => (
           <div className="basket-content">
 
             <li><NavLink className="navlink dynamic_basket" to="/phones/">
-              <img class="basket-img" src="../images/basket.svg" alt="basket" title="basket" />
+              <img class="basket-img" src="images/basket.svg" alt="basket" title="basket" />
               My basket(0)
             </NavLink></li>
 
