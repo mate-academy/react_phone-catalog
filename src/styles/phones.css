@@ -1,0 +1,21 @@
+.phones {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+}
+
+.phones-catalog__item {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  align-items: center;
+  grid-column-gap: 40px;
+  background: #fff;
+  border: 2px solid;
+  border-radius: 24px;
+  margin-bottom: 24px;
+  padding: 12px;
+}
+
+.item-description--name {
+  font-size: 24px;
+  color: #42485b;
+}

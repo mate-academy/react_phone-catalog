@@ -1,0 +1,14 @@
+.phones-filter__area {
+  margin: 12px 0;
+  display: block;
+  width: 200px;
+  height: 40px;
+  font-size: 18px;
+  padding-left: 6px;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.phones-filter__area:focus {
+  border: 2px solid #66d690;
+}
