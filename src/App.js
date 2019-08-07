@@ -7,7 +7,7 @@ import Phones from './components/Phones';
 import NotFoundPage from './components/NotFoundPage';
 
 const App = () => (
-  <BrowserRouter>
+  <HashRouter>
     <div className="App">
       <nav>
         <ul className="navbar">
@@ -54,7 +54,7 @@ const App = () => (
         <Route component={NotFoundPage} />
       </Switch>
     </div>
-  </BrowserRouter>
+  </HashRouter>
 )
 
 export default App;
