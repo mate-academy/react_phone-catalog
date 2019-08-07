@@ -19,19 +19,15 @@ class PhoneDetails extends React.Component {
         <img src={imageUrl} alt={phoneDetails.name} />
 
         {phoneDetails.images.map(imgUrl => (
-          <button
+          <input
             name={imgUrl}
             onClick={this.handleImageIndex}
             key={imgUrl}
-            type="button"
+            type="image"
             className="phone__galery"
-          >
-            <img
-              src={imgUrl}
-              alt={phoneDetails.name}
-              className="phone__preview"
-            />
-          </button>
+            src={imgUrl}
+            alt={phoneDetails.name}
+          />
         ))}
 
         <p>
