@@ -31,7 +31,7 @@ class App extends React.Component {
         </div>
         <Switch>
           <Route path="/" exact component={Home} />
-          <Route path="/catalog" component={Catalog} />
+          <Route path="/catalog/:phoneId?" component={Catalog} />
           <Route path="*" component={NotFoundPage} />
         </Switch>
       </div>
