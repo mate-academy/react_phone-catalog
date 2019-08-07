@@ -1,1 +1,172 @@
+/**App*/
+.navbar {
+  list-style: none;
+  color: #313131;
+  font-family: "Roboto";
+  font-size: 17px;
+  padding: 10px;
+  border: 1px solid whitesmoke;
+  box-shadow: 0 0 10px rgba(221, 218, 218, 0.5);
+}
 
+.input-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 35%;
+  padding-top: 10px;
+}
+
+.no-border {
+  border: none;
+}
+
+.search-img {
+  height: 25px;
+  width: 25px;
+  margin-right: 10px;
+}
+
+.no-border:hover {
+  background-color: rgb(255, 255, 255);
+}
+
+.border-bottom {
+  border: none;
+  border-bottom: 1px solid rgb(206, 204, 204);
+  border-radius: 0 !important;
+}
+
+.input-group > .form-control {
+  font-size: 17px;
+  color: inherit;
+}
+
+.form-control::placeholder {
+  color: inherit;
+}
+
+.navbar__main-points {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.logo-img {
+  height: 40px;
+  margin-right: 20px;
+}
+
+.basket-img {
+  height: 25px;
+  width: 25px;
+  margin: 0 10px;
+}
+
+.basket-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 15px;
+}
+
+.navlink {
+  text-decoration: none;
+  color: inherit;
+  margin: 0 15px;
+  cursor: pointer;
+}
+
+.navlink:hover {
+  text-decoration: none;
+  color: #007bff;
+}
+
+.active-navlink {
+  border-bottom: 3px solid #416dfd;
+  padding: 5px;
+}
+
+textarea:hover,
+input:hover,
+textarea:active,
+input:active,
+textarea:focus,
+input:focus,
+button:focus,
+button:active,
+button:hover,
+label:focus,
+.btn:active,
+.btn.active {
+  outline: 0 !important;
+  -webkit-appearance: none;
+  box-shadow: none !important;
+}
+
+/**NotFoundPage*/
+.col-md-12 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #313131;
+}
+
+.error-title {
+  padding: 95px 0 10px;
+}
+
+.error-actions {
+  padding-top: 25px;
+}
+
+/**Phones*/
+.phones-catalog {
+  display: flex;
+  color: #313131;
+  font-family: "Roboto";
+}
+
+.phones-info {
+  padding: 0;
+  margin-right: 20px;
+}
+
+.search-form {
+  margin-left: 30px;
+  padding-top: 5px;
+}
+
+.search-phone {
+  width: 280px;
+}
+
+.phones {
+  list-style: none;
+  border: 1px solid rgb(196, 196, 196);
+  margin: 15px;
+  padding-right: 5px;
+}
+
+.phones-content {
+  display: flex;
+}
+
+.phones-image {
+  height: 100px;
+  width: 100px;
+  margin: 5px 25px;
+}
+
+.phones-name {
+  margin: 5px 0;
+}
+
+.phones-item {
+  padding: 15px 0;
+}
+
+.sort-phone {
+  width: 135px;
+}
