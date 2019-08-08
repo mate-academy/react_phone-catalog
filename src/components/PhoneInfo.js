@@ -29,6 +29,12 @@ class PhoneInfo extends React.Component {
       });
     }
   }
+  
+  imageChange = (url) => {
+    this.setState({
+      activeImageUrl: url
+    })
+  };
 
   render() {
     const { phoneId } = this.props.match.params;
@@ -58,8 +64,11 @@ class PhoneInfo extends React.Component {
           <div className="Phone-info-main__images-row">
             {phoneInfo.images.map(image => (
               <img
+                onMouseOver={() => this.imageChange(image)}
                 key={image}
-                className="Phone-info-main__images-row-image"
+                className={image === this.state.activeImageUrl
+                  ? 'Phone-info-main__images-row-image Phone-info-main__images-row-image--active'
+                  : 'Phone-info-main__images-row-image'}
                 src={image}/>
             ))}
           </div>

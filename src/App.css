@@ -116,6 +116,10 @@ a {
   border-radius: 3px;
   align-self: center;
   justify-self: center;
+  cursor: pointer;
+}
+.Phone-info-main__images-row-image--active {
+  opacity: 0.5;
 }
 .Phone-info-main__name-discription {
   display: flex;

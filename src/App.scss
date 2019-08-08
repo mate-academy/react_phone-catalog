@@ -129,6 +129,11 @@ a {
     border-radius: 3px;
     align-self: center;
     justify-self: center;
+    cursor: pointer;
+  }
+
+  &__images-row-image--active {
+    opacity: 0.5;
   }
 
   &__name-discription {
