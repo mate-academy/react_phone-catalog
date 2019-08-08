@@ -1,28 +1,59 @@
 import React from 'react';
+import propTypes from 'prop-types';
 import './styles/filter.css';
 
-const Filter = () => (
+const Filter = ({
+  filterStr,
+  onHandlerFilter,
+  clearFilter,
+  onHandlerSort,
+}) => (
   <form className="phones-filter">
-    <label htmlFor="filterBy">
-      Search:
-      <input
-        placeholder="Searching..."
-        id="filterBy"
-        className="phones-filter__area"
-      />
-    </label>
-    <label htmlFor="sortBy">
-      Sort by:
+    <div className="phones-filter__row">
+      <label htmlFor="filterBy">
+        Search:
+        <input
+          type="text"
+          name="filter"
+          placeholder="Searching..."
+          id="filterBy"
+          className="phones-filter__area"
+          value={filterStr}
+          onChange={onHandlerFilter}
+        />
+        <button
+          className={filterStr
+            ? 'search-post__clear'
+            : 'invisible'
+          }
+          onClick={clearFilter}
+          type="button"
+        >
+          X
+        </button>
+      </label>
+    </div>
+
+    <div className="phones-filter__row">
+        Sort by:
       <select
         id="sortBy"
+        name="sortBy"
         className="phones-filter__area"
+        onChange={onHandlerSort}
       >
-        <option>Alphabetical</option>
-        <option>Newest</option>
+        <option value="newest">Newest</option>
+        <option value="alpha">Alphabetical</option>
       </select>
-    </label>
+    </div>
   </form>
-
 );
+
+Filter.propTypes = {
+  filterStr: propTypes.string.isRequired,
+  onHandlerFilter: propTypes.func.isRequired,
+  clearFilter: propTypes.func.isRequired,
+  onHandlerSort: propTypes.func.isRequired,
+};
 
 export default Filter;

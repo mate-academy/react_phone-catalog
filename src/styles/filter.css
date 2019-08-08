@@ -12,3 +12,26 @@
 .phones-filter__area:focus {
   border: 2px solid #66d690;
 }
+
+.phones-filter__row {
+  position: relative;
+}
+
+.invisible {
+  visibility: hidden;
+  position: absolute;
+  bottom: 0;
+  right: 45px;
+}
+
+.search-post__clear {
+  visibility: visible;
+  width: 30px;
+  height: 34px;
+  background: transparent;
+  position: absolute;
+  bottom: 0;
+  right: 45px;
+  cursor: pointer;
+  border: none;
+}

@@ -1,9 +1,10 @@
 import React from 'react';
 import propTypes from 'prop-types';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import PhoneDetailsPage from './PhoneDetailsPage';
 
-const PhoneCatalog = ({ phones, phoneId }) => {
+const PhoneCatalog = ({ phones, match }) => {
+  const phoneId = match.params.id;
   const phone = phones.find(phoneItem => phoneItem.id === phoneId);
 
   if (phoneId && !phone) {
@@ -18,17 +19,17 @@ const PhoneCatalog = ({ phones, phoneId }) => {
         phoneId
           ? <PhoneDetailsPage phone={phone} />
           : phones.map(phoneItem => (
-            <div className="phones-catalog__item">
+            <div className="phones-catalog__item" key={phoneItem.id}>
               <div className="phones-catalog__item-img">
                 <img src={`img/phones/${phoneItem.id}.0.jpg`} alt="phone" />
               </div>
               <article className="phones-catalog__item-description">
-                <NavLink
+                <Link
                   to={`/phones-catalog/${phoneItem.id}`}
                   className="item-description--name"
                 >
                   {phoneItem.name}
-                </NavLink>
+                </Link>
                 <p>{phoneItem.snippet}</p>
               </article>
             </div>
@@ -40,7 +41,7 @@ const PhoneCatalog = ({ phones, phoneId }) => {
 
 PhoneCatalog.propTypes = {
   phones: propTypes.shape().isRequired,
-  phoneId: propTypes.string.isRequired,
+  match: propTypes.objectOf.isRequired,
 };
 
 export default PhoneCatalog;

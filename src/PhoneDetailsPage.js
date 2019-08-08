@@ -11,6 +11,7 @@ class PhoneDetailsPage extends React.Component {
   }
 
   componentDidMount() {
+    console.log(this.state.phone);
     this.getDetails();
   }
 
@@ -20,6 +21,7 @@ class PhoneDetailsPage extends React.Component {
     const phoneDetails = await getPhoneDetails(url);
 
     this.setState({ phoneDetails });
+    console.log(phoneDetails);
   };
 
   render() {
