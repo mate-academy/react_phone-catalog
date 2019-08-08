@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Route, Switch } from 'react-router-dom';
 
+import { getExtraDetails } from './api/getPhones';
 import Cart from './components/Cart';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -11,37 +12,116 @@ import SearchPanel from './components/SearchPanel';
 import PhoneDetails from './components/PhoneDetails';
 import NotFoundPage from './components/NotFoundPage';
 
-const App = () => (
-  <div className="phones-catalog">
-    <Header />
+export default class App extends Component {
+  state = {
+    orderedPhones: [],
+  }
 
-    {/* <h1>Phones catalog</h1> */}
+  componentWillUnmount() {
+    this.handleAddToCart();
+  }
 
-    <main className="content-container">
-      <Switch>
-        <Route path="/" exact component={HomePage} />
-        <Route path="/phones" exact component={PhonesPage} />
-        <Route path="/cart/:id?" exact component={Cart} />
+  handleAddToCart = async(event) => {
+    const { id } = event.target;
+    const quantity = 1;
+    const link = `/phones/${id}`;
+    const phone = { ...await getExtraDetails(id), quantity, link };
+    const checkId = phoneId => phoneId.id === id;
 
-        <Route
-          exact
-          path="/phones/?query=&sort="
-          component={SearchPanel}
-        />
+    if (!this.state.orderedPhones.some(checkId)) {
+      this.setState(state => ({
+        orderedPhones: [...state.orderedPhones, phone],
+      }));
+    }
+  }
 
-        <Route
-          path="/phones/:id"
-          exact
-          render={props => <PhoneDetails id={props.match.params.id} />}
-        />
+  handleIncreasQuantity = (event) => {
+    const { id } = event.target;
 
-        <Route component={NotFoundPage} />
-      </Switch>
-    </main>
+    const phone = this.state.orderedPhones
+      .filter(item => item.id === id)[0];
 
-    <Footer />
-  </div>
-);
+    phone.quantity += 1;
+
+    this.setState(state => ({ orderedPhones: state.orderedPhones }));
+  }
+
+  handleDecreasQuantity = (event) => {
+    const { id } = event.target;
+
+    const phone = this.state.orderedPhones
+      .filter(item => item.id === id)[0];
+
+    if (phone.quantity > 1) {
+      phone.quantity -= 1;
+    }
+
+    this.setState(state => ({ orderedPhones: state.orderedPhones }));
+  }
+
+  handleDeleteItem = (event) => {
+    const { id } = event.target;
+
+    const phoneIndex = this.state.orderedPhones.findIndex(
+      phone => phone.id === id
+    );
+
+    this.state.orderedPhones.splice(phoneIndex, 1);
+    this.setState(state => ({
+      orderedPhones: state.orderedPhones,
+    }));
+  }
+
+  render() {
+    return (
+      <div className="phones-catalog">
+        <Header orderedPhonesLength={this.state.orderedPhones.length} />
+        <main className="content-container">
+          <Switch>
+            <Route path="/" exact component={HomePage} />
+
+            <Route
+              path="/phones"
+              exact
+              component={() => (
+                <PhonesPage handleAddToCart={this.handleAddToCart} />
+              )}
+            />
+            <Route
+              path="/cart"
+              exact
+              component={() => (
+                <Cart
+                  orderedPhones={this.state.orderedPhones}
+                  handleIncreasQuantity={this.handleIncreasQuantity}
+                  handleDecreasQuantity={this.handleDecreasQuantity}
+                  handleDeleteItem={this.handleDeleteItem}
+                />
+              )}
+            />
+            <Route
+              exact
+              path="/phones/?query=&sort="
+              component={SearchPanel}
+            />
+            <Route
+              path="/phones/:id"
+              exact
+              component={props => (
+                <PhoneDetails
+                  id={props.match.params.id}
+                  handleAddToCart={this.handleAddToCart}
+                />
+              )}
+            />
+            <Route component={NotFoundPage} />
+          </Switch>
+        </main>
+        <Footer />
+      </div>
+    );
+  }
+}
 
 App.propTypes = {
   match: PropTypes.shape({
@@ -54,10 +134,7 @@ App.propTypes = {
 App.defaultProps = {
   match: {
     params: {
-
       id: '',
     },
   },
 };
-
-export default App;

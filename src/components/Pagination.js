@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-// import { Link, Switch, Route } from 'react-router-dom';
 
 export default class Pagination extends Component {
   state = {
@@ -24,8 +23,6 @@ export default class Pagination extends Component {
     this.setState({
       pages: Array.from({ length: pagesNum }, (a, b) => b + 1),
     });
-
-    //  this.props.togglePaginationPerPage(this.state.perPage);
   }
 
   handlePrev = () => {
@@ -47,9 +44,7 @@ export default class Pagination extends Component {
 
   toggleContentPerPage = (event) => {
     const { phones } = this.state;
-
     const { value } = event.target;
-    // const { perPage } = this.state;
     const pagesNum = Math.ceil(phones.length / +value);
 
     this.setState({
@@ -62,7 +57,6 @@ export default class Pagination extends Component {
   }
 
   render() {
-    // console.log(this.state.perPage);
     const {
       pages, page, perPage,
     } = this.state;
@@ -78,7 +72,6 @@ export default class Pagination extends Component {
                 disabled={page <= 1}
                 onClick={() => this.handlePrev()}
               >
-                {/* &laquo; */}
                 {'<<'}
               </button>
             </li>
@@ -110,7 +103,6 @@ export default class Pagination extends Component {
                 disabled={page > pages.length - 1}
               >
                 {'>>'}
-                {/* &raquo; */}
               </button>
             </li>
             <select

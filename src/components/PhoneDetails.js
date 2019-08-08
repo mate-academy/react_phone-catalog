@@ -1,12 +1,10 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-/* eslint-disable react/no-did-update-set-state */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Loader from './Loader';
 
 import { getExtraDetails } from '../api/getPhones';
+import PhoneDetailsItem from './PhoneDetailsItem';
 
 class PhoneDetails extends Component {
   state = {
@@ -30,15 +28,8 @@ class PhoneDetails extends Component {
     this.setState({ selectedPhoto: name });
   };
 
-  // handleAddtoCart = (event) => {
-  //   const { name } = event.target;
-
-  //   this.setState({ });
-  //   console.log(this.state.phoneID);
-  // }
-
   render() {
-    const { extraData } = this.state;
+    const { extraData, selectedPhoto } = this.state;
     const { id } = this.props;
 
     return (
@@ -51,107 +42,22 @@ class PhoneDetails extends Component {
                   {'<<- Back to all phones'}
                 </button>
               </Link>
-              <Link to={`/cart/${extraData.id}`}>
-                <button className="btn btn-buy" type="button">
+              <Link to="/cart/">
+                <button
+                  onClick={this.props.handleAddToCart}
+                  id={extraData.id}
+                  className="btn btn-buy"
+                  type="button"
+                >
                   {'->> BUY NOW  <<-'}
                 </button>
               </Link>
-              <div className="extra-details">
-                <div className="extra-details-photo-selected">
-                  <img
-                    className="selected-photo"
-                    src={this.state.selectedPhoto}
-                    alt={this.state.selectedPhoto}
-                  />
-                </div>
-                <article>
-                  <span className="extra-details-title">
-                    {extraData.name}
-                  </span>
-                  <div className="extra-details-description">
-                    <div className="extra-details-text">
-                      {extraData.description}
-                    </div>
-                    <ul className="extra-details-photos">
-                      {extraData.images.map(img => (
-                        <li key={img}>
-                          <img
-                            onClick={this.handleChoosePhoto}
-                            className="extra-details-photos-item"
-                            src={img}
-                            alt={img}
-                            name={img}
-                          />
-                        </li>
-                      ))}
-                      <li key="add-to-cart">
-                        <img
-                          onClick={this.handleAddtoCart}
-                          className="extra-details-photos-item
-                            extra-details-photos-item-cart-add "
-                          src="./img/cart-add.png"
-                          alt="add-to-cart"
-                          title="Click for adding to cart "
-                          name={extraData.id}
-                        />
-                      </li>
-                    </ul>
-                  </div>
-                </article>
-              </div>
-              <div className="extra-details-more-details">
-                <section className="more-info">
-                  <h3>Camera</h3>
-                  <i>features:</i>
-                  {extraData.camera.features.map(i => (
-                    <span key={i}>{i}</span>
-                  ))}
-                  <p>
-                    <i>primary:</i>
-                    <span>{extraData.camera.primary}</span>
-                  </p>
-                </section>
-
-                <section className="more-info">
-                  <h3>Battery</h3>
-                  <i>standbyTime:</i>
-                  <span>{extraData.battery.standbyTime}</span>
-                  <p>
-                    <i>talkTime:</i>
-                    {extraData.battery.talkTime}
-                  </p>
-                  <p>
-                    <i>type:</i>
-                  </p>
-                  {extraData.battery.type}
-                </section>
-
-                <section className="more-info">
-                  <h3>Hardware</h3>
-                  <i>audioJack:</i>
-                  {extraData.hardware.audioJack}
-                  <p>
-                    <i>cpu:</i>
-                    {extraData.hardware.cpu}
-                  </p>
-                  <p>
-                    <i>usb:</i>
-                    {extraData.hardware.usb}
-                  </p>
-                </section>
-
-                <section className="more-info">
-                  <h3>Size and Weight</h3>
-                  <i>dimensions:</i>
-                  <>
-                    {extraData.sizeAndWeight.dimensions.map(d => (
-                      <span key={d}>{d}</span>
-                    ))}
-                  </>
-                  weight:
-                  {extraData.sizeAndWeight.weight}
-                </section>
-              </div>
+              <PhoneDetailsItem
+                extraData={extraData}
+                selectedPhoto={selectedPhoto}
+                handleChoosePhoto={this.handleChoosePhoto}
+                handleAddToCart={this.props.handleAddToCart}
+              />
             </>
           ) : (
             <>
@@ -171,6 +77,7 @@ class PhoneDetails extends Component {
 
 PhoneDetails.propTypes = {
   id: PropTypes.string.isRequired,
+  handleAddToCart: PropTypes.func.isRequired,
 };
 
 export default PhoneDetails;

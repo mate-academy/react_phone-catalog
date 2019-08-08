@@ -242,6 +242,11 @@ ul > .active:not(:last-child) {
   box-shadow: 1px 1px 5px #6e6d6d;
 }
 
+.add-btn:active {
+  background-color: #10d82e63;
+  transform: scale(0.99);
+}
+
 /*--- PHONE-DETAILS ---*//*--- PHONE-DETAILS ---*/
 
 .btn-back {
@@ -395,8 +400,105 @@ ul > .active:not(:last-child) {
 
 /*--- CART ---*//*--- CART ---*/
 
+.order-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.order-box {
+  width: 100%;
+}
+
+.order-content {
+  border-radius: 15px;
+  margin-bottom: 25px;
+}
+
 .order-list {
   list-style-type: none;
+}
+
+.order-item {
+  text-align: center;
+  width: 100%;
+  padding: 0 10px;
+  border: 1px solid #7373756f;
+  border-radius: 20px;
+  box-shadow: 2px 4px 8px #8080803e;
+  opacity: 0.85;
+}
+
+.linked-order-photo {
+  height: 80px;
+  cursor: pointer;
+}
+
+.order-total {
+  color: #9d1cbaad;
+}
+
+.order-quantity {
+  font-size: 22px;
+  font-weight: 500;
+}
+
+th {
+  width: 32%;
+}
+
+.order-control-block {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn-control {
+  background-color: #fff;
+  border: none;
+  width: 29px;
+  height: 31px;
+  opacity: 0.6;
+  transition: all 0.2s;
+}
+
+.btn-control:hover {
+  opacity: 1;
+  transform: scale(1.02);
+  transition: all 0.2s;
+}
+
+.btn-control:active {
+  color: #fff;
+  transform: scale(0.9);
+}
+
+.control-btn-icons {
+  width: 20px;
+  height: 20px;
+}
+
+.order-btn-block {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.order-total {
+  line-height: 36px;
+  font-size: 20px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.btn-pay {
+  transition: 0.1s;
+}
+
+.btn-pay:active {
+  transform: scale(0.99);
+  color: #1606c6;
+  background-color: #6cec859a;
+  transition: 0.1s;
 }
 
 /*--- PAGINATION ---*//*--- PAGINATION ---*/
@@ -433,7 +535,6 @@ input {
   width: 36px;
   opacity: 0.8;
   transition: all 0.2s;
-
 }
 
 .btn-pgn:hover {
@@ -444,7 +545,7 @@ input {
 }
 
 .btn-pgn:active {
-  background-color: rgb(115, 185, 208);
+  background-color: #73b9d0;
   color: #fff;
   transition: color 0.4s;
   transform: scale(1);

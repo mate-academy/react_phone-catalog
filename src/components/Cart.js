@@ -1,101 +1,120 @@
-/* eslint-disable no-param-reassign */
-import React, { Component } from 'react';
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { getPhones } from '../api/getPhones';
 
-export default class Cart extends Component {
-  state = {
-    addedPhones: [],
-    matchId: this.props.match.params.id,
-  }
-
-  async componentWillMount() {
-    const { matchId } = this.state;
-
-    const cartData = await getPhones();
-    const cartItem = this.createCartItem();
-    const filteredCart = cartData
-      .filter(phone => phone.id === matchId)
-      .map(phone => (phone = {
-        ...phone,
-        ...cartItem,
-      }));
-
-    this.setState(state => ({
-      addedPhones: [...state.addedPhones, ...filteredCart],
-    }));
-
-    this.saveToLocalStorage(this.state.addedPhones);
-
-    const storage = this.getFromLocalStorage();
-
-    this.setState({ addedPhones: storage });
-  }
-
-  createCartItem = () => ({
-    phoneQuantity: 0, // HERE WILL BE COUNTER
-    phoneExtraLink: `/phones/${this.props.match.params.id}`,
-  })
-
-  getFromLocalStorage = () => JSON.parse(localStorage.getItem('addedPhones'));
-
-  saveToLocalStorage = phones => localStorage
-    .setItem('addedPhones', JSON.stringify(phones));
-
-  render() {
-    return (
-      <div className="order-container">
-        <h3>Your order:</h3>
-        <div className="order-content">
-          <ul className="order-list">
-            {this.state.addedPhones.map(phone => (
-              <li key={phone.id}>
-                <section>
-                  <table className="cart-item">
+const Cart = ({
+  orderedPhones,
+  handleIncreasQuantity,
+  handleDecreasQuantity,
+  handleDeleteItem,
+}) => (
+  <div className="order-container">
+    <div className="order-box">
+      <h3>Your order:</h3>
+      <ul className="order-list">
+        {orderedPhones.map(phone => (
+          <li key={phone.id}>
+            <section className="order-content">
+              <div className="order-control-block">
+                <button type="button" className="btn btn-control">
+                  <img
+                    onClick={handleDecreasQuantity}
+                    name={phone.name}
+                    id={phone.id}
+                    className="control-btn-icons"
+                    src="/img/minus-icon.png"
+                    alt="minus-button"
+                  />
+                </button>
+                <button type="button" className="btn btn-control">
+                  <img
+                    onClick={handleIncreasQuantity}
+                    name={phone.name}
+                    id={phone.id}
+                    className="control-btn-icons"
+                    src="/img/add-icon.png"
+                    alt="add-button"
+                  />
+                </button>
+                <button type="button" className="btn btn-control">
+                  <img
+                    onClick={handleDeleteItem}
+                    name={phone.name}
+                    id={phone.id}
+                    className="control-btn-icons"
+                    src="/img/Delete.png"
+                    alt="delete-button"
+                  />
+                </button>
+              </div>
+              <table className="order-item">
+                <thead>
+                  <tr>
+                    <th>Phone:</th>
+                    <th>Quantity:</th>
+                    <th>Extra details link:</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>{phone.name}</td>
                     <td>
-                      <tr>Phone:</tr>
-                      <tr>Quantity:</tr>
-                      <tr>Link:</tr>
+                      <span className="order-quantity">{phone.quantity}</span>
                     </td>
-
                     <td>
-                      <tr>{phone.name}</tr>
-                      <tr>{phone.phoneQuantity}</tr>
-                      <tr>
-                        <Link to={phone.phoneExtraLink}>
-                          see phone details again
-                        </Link>
-                      </tr>
+                      <Link to={phone.link}>
+                        <img
+                          className="linked-order-photo"
+                          src={phone.images[0]}
+                          alt={phone.name}
+                          title="see phone details again"
+                        />
+                      </Link>
                     </td>
-                  </table>
-                </section>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className="order-btn-block">
-          <button type="button" className="btn btn-buy">
-            {'->> BUY NOW  <<-'}
-          </button>
-        </div>
+                  </tr>
+                </tbody>
+              </table>
+            </section>
+          </li>
+        ))}
+      </ul>
+    </div>
+    <div className="order-btn-block">
+      <div className="order-total">
+        {orderedPhones.length > 1 ? (
+          <>
+            <span className="order-total-text">
+              {`Total phones in cart: `}
+            </span>
+            {orderedPhones
+              .map(phone => phone.quantity)
+              .reduce((acc, val) => acc + val)}
+          </>
+        ) : (
+          ''
+        )}
       </div>
-    );
-  }
-}
+      <button type="button" className="btn btn-buy btn-pay">
+        {'->> TO PAY <<-'}
+      </button>
+    </div>
+  </div>
+);
 
 Cart.propTypes = {
-  match: PropTypes.shape({
-    params: PropTypes.shape({
+  handleIncreasQuantity: PropTypes.func.isRequired,
+  handleDecreasQuantity: PropTypes.func.isRequired,
+  handleDeleteItem: PropTypes.func.isRequired,
+  orderedPhones: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      link: PropTypes.string.isRequired,
+      quantity: PropTypes.number.isRequired,
       id: PropTypes.string.isRequired,
-    }).isRequired,
-  }),
+    }).isRequired
+  ).isRequired,
 };
 
-Cart.defaultProps = {
-  match: {
-    params: {
-      id: '',
-    },
-  },
-};
+export default React.memo(Cart);

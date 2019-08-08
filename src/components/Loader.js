@@ -9,7 +9,7 @@ export default class Loader extends Component {
   render() {
     return (
       <div className="sweet-loading">
-        <PulseLoader color="#1862498e" loading={this.state.loading} />
+        <PulseLoader color="#0ca2e2aa" loading={this.state.loading} />
       </div>
     );
   }

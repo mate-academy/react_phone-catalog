@@ -1,8 +1,9 @@
 /* eslint-disable jsx-a11y/accessible-emoji */
 import React from 'react';
+import PropTypes from 'prop-types';
 import { NavLink, Link } from 'react-router-dom';
 
-const Header = () => (
+const Header = ({ orderedPhonesLength }) => (
   <header className="header-container">
     <div className="header-logo">
       <Link to="/">
@@ -21,16 +22,20 @@ const Header = () => (
           <li className="nav-item cart-item">
             <img
               className="cart-icon"
-              // src={true ? './img/empty-cart.png' : './img/full-cart.png'}
-              src="./img/empty-cart.png"
+              src={orderedPhonesLength < 1
+                ? './img/empty-cart.png'
+                : './img/full-cart.png'}
               alt="shopping-cart"
             />
-
           </li>
         </NavLink>
       </ul>
     </nav>
   </header>
 );
+
+Header.propTypes = {
+  orderedPhonesLength: PropTypes.number.isRequired,
+};
 
 export default Header;
