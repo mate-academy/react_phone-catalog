@@ -41,8 +41,12 @@ class PhoneDetailsPage extends React.Component {
           : (
             <>
               {isLoaded
-                ? <PhoneDetails details={phoneDetails} />
-                : (
+                ? (
+                  <PhoneDetails
+                    details={phoneDetails}
+                    addPhone={this.props.addPhone}
+                  />
+                ) : (
                   <Loader
                     type="ThreeDots"
                     color="#049dfcde"
@@ -61,6 +65,7 @@ class PhoneDetailsPage extends React.Component {
 
 PhoneDetailsPage.propTypes = {
   phoneId: PropTypes.string.isRequired,
+  addPhone: PropTypes.func.isRequired,
 };
 
 export default PhoneDetailsPage;

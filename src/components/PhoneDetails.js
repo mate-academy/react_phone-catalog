@@ -12,7 +12,7 @@ class PhoneDetails extends React.Component {
   }
 
   render() {
-    const { details } = this.props;
+    const { details, addPhone } = this.props;
     const { imageNumber } = this.state;
 
     return (
@@ -41,6 +41,13 @@ class PhoneDetails extends React.Component {
             </li>
           ))}
         </ul>
+        <button
+          type="button"
+          className="cart-btn remove-btn"
+          onClick={() => addPhone(details)}
+        >
+          Add to basket
+        </button>
       </div>
     );
   }
@@ -48,6 +55,7 @@ class PhoneDetails extends React.Component {
 
 PhoneDetails.propTypes = {
   details: PropTypes.objectOf(PropTypes.object).isRequired,
+  addPhone: PropTypes.func.isRequired,
 };
 
 export default PhoneDetails;

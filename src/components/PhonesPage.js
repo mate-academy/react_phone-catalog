@@ -1,6 +1,7 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 import Loader from 'react-loader-spinner';
+
 import getData from '../api/getData';
 import PhoneCatalog from './PhoneCatalog';
 
@@ -9,6 +10,8 @@ class PhonesPage extends React.Component {
     phones: [],
     isLoaded: false,
     filterValue: '',
+    currentPage: 1,
+    phonesPerPage: 10,
   }
 
   componentDidMount() {
@@ -66,8 +69,16 @@ class PhonesPage extends React.Component {
   }
 
   render() {
-    const { isLoaded, filterValue } = this.state;
+    const {
+      isLoaded,
+      filterValue,
+      currentPage,
+      phonesPerPage,
+    } = this.state;
+
     const visiblePhones = this.filterPhones(filterValue);
+    const firstIndex = currentPage * phonesPerPage - phonesPerPage;
+    const lastIndex = currentPage * phonesPerPage;
 
     return (
       <div>
@@ -109,7 +120,10 @@ class PhonesPage extends React.Component {
                 </div>
               </div>
 
-              <PhoneCatalog phones={visiblePhones} />
+              <PhoneCatalog
+                phones={visiblePhones.slice(firstIndex, lastIndex)}
+                addPhone={this.props.addPhone}
+              />
             </main>
           ) : (
             <Loader
@@ -124,5 +138,9 @@ class PhonesPage extends React.Component {
     );
   }
 }
+
+PhonesPage.propTypes = {
+  addPhone: PropTypes.func.isRequired,
+};
 
 export default PhonesPage;
