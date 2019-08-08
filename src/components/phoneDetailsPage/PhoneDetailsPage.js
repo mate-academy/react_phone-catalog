@@ -54,13 +54,15 @@ class PhoneDetailsPage extends React.Component {
 
   render() {
     const { phone, mainImg, isError } = this.state;
+    const countBasketItems
+      = localStorage.buy ? localStorage.buy.split('&').length : 0;
 
     return (
       <div className="phone-details-page">
         {
-          localStorage.length !== 0 && (
+          countBasketItems !== 0 && (
             <div className="header__basket--count">
-              {localStorage.length !== 0 && localStorage.length - 1}
+              {countBasketItems !== 0 && countBasketItems}
             </div>
           )
         }

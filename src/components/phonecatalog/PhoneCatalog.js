@@ -5,6 +5,8 @@ import './phonecatalog.css';
 
 const PhoneCatalog = ({ phones, match, history }) => {
   const { url } = match;
+  const countBasketItems
+    = localStorage.buy ? localStorage.buy.split('&').length : 0;
 
   const addToBasket = (id, name) => {
     if (localStorage.getItem('buy')) {
@@ -21,9 +23,9 @@ const PhoneCatalog = ({ phones, match, history }) => {
   return (
     <main className="phone-catalog">
       {
-        localStorage.length !== 0 && (
+        countBasketItems !== 0 && (
           <div className="header__basket--count">
-            {localStorage.length !== 0 && localStorage.length - 1}
+            {countBasketItems !== 0 && countBasketItems}
           </div>
         )
       }

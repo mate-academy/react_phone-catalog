@@ -1,17 +1,22 @@
 import React from 'react';
 
-const HomePage = () => (
-  <>
-    {
-      localStorage.length !== 0 && (
-        <div className="header__basket--count">
-          {localStorage.length !== 0 && localStorage.length - 1}
-        </div>
-      )
-    }
+const HomePage = () => {
+  const countBasketItems
+    = localStorage.buy ? localStorage.buy.split('&').length : 0;
 
-    <h1>Home</h1>
-  </>
-);
+  return (
+    <>
+      {
+        countBasketItems !== 0 && (
+          <div className="header__basket--count">
+            {countBasketItems !== 0 && countBasketItems}
+          </div>
+        )
+      }
+
+      <h1>Home</h1>
+    </>
+  );
+};
 
 export default HomePage;
