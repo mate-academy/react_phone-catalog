@@ -20,13 +20,13 @@ class PhoneDetailsPage extends React.Component {
       <section>
       {
         isLoaded
-          ? <div>
+          ? <>
               {
                 id === details.id
                   ? 'I show the details!'
                   : 'Phone was not found'
               }
-            </div>
+            </>
           : <Loader 
             isLoading={isLoading}
           />
