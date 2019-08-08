@@ -30,21 +30,19 @@ class PhoneDetails extends React.Component {
           />
         ))}
 
-        <p>
-          {phoneDetails.description}
-        </p>
-
         <table>
           <tbody>
-            <tr>
-              <td>Additional Features:</td>
+            {phoneDetails.additionalFeatures && (
+              <tr>
+                <td>Additional Features:</td>
 
-              <td>
-                <ul>
-                  <li>{phoneDetails.additionalFeatures}</li>
-                </ul>
-              </td>
-            </tr>
+                <td>
+                  <ul>
+                    <li>{phoneDetails.additionalFeatures}</li>
+                  </ul>
+                </td>
+              </tr>
+            )}
 
             <tr>
               <td>android:</td>

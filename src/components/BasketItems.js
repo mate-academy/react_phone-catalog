@@ -6,36 +6,37 @@ const BasketItems = (props) => {
   const { basketPhones, chandgeBasketItems } = props;
 
   return (
-    <div>
+    <main className="main-container">
       <h2>
         Chosen phones:
         {basketPhones.length}
       </h2>
 
-      <ul className="phone__card-list">
+      <ul className="backet__card-list">
         {basketPhones.map(phone => (
-          <li key={phone.id} className="phone__card-item">
-            <div>
-              <div>
+          <li key={phone.id} className="backet__card-item">
+            <div className="basket__preview-name-container">
+              <div className="backet__card-image">
                 <img src={phone.imageUrl} alt="phone" width="100" />
               </div>
 
               <Link to={`/phones/${phone.id}`}>
                 {phone.name}
               </Link>
+            </div>
 
-              <p>{phone.snippet}</p>
+            <p>{phone.snippet}</p>
+
+            <div className="phone__buttons">
               <p>
                 quantity:
                 {phone.quantity}
               </p>
-            </div>
 
-            <div className="phone__buttons">
               <button
                 name={phone.id}
                 type="button"
-                className="button"
+                className="button button--basket"
                 onClick={() => {
                   if (phone.quantity > 1) {
                     chandgeBasketItems(basketPhones
@@ -57,7 +58,7 @@ const BasketItems = (props) => {
               <button
                 name={phone.id}
                 type="button"
-                className="button"
+                className="button button--basket"
                 onClick={() => chandgeBasketItems(basketPhones
                   .map(basketPhone => (
                     basketPhone.id === phone.id
@@ -73,7 +74,7 @@ const BasketItems = (props) => {
               <button
                 name={phone.id}
                 type="button"
-                className="button"
+                className="button button--basket"
                 onClick={() => chandgeBasketItems(basketPhones
                   .filter(basketPhone => basketPhone.id !== phone.id))}
               >
@@ -84,21 +85,23 @@ const BasketItems = (props) => {
         ))}
       </ul>
 
-      {
-        basketPhones.length > 0
-          && (
-            <button
-              type="button"
-              onClick={() => chandgeBasketItems(basketPhones
-                .filter(i => false))}
-            >
-            Delete all Items from Card
-            </button>
-          )
-      }
+      <div className="basket__controls">
+        {
+          basketPhones.length > 0
+            && (
+              <button
+                type="button"
+                onClick={() => chandgeBasketItems(basketPhones
+                  .filter(i => false))}
+              >
+              Delete all Items from Card
+              </button>
+            )
+        }
 
-      <Link to="/phones">Back to Catalog</Link>
-    </div>
+        <Link to="/phones">Back to Catalog</Link>
+      </div>
+    </main>
   );
 };
 

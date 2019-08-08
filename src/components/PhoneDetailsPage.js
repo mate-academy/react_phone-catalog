@@ -12,13 +12,10 @@ class PhoneDetailsPage extends React.Component {
   };
 
   async componentDidMount() {
-    if (this.props.phoneId) {
-      const { phoneId } = this.props;
+    const { phoneId } = this.props;
+    const temp = await getPhoneDetails(phoneId);
 
-      const temp = await getPhoneDetails(phoneId);
-
-      this.setState({ phoneDetails: temp, isLoaded: true });
-    }
+    this.setState({ phoneDetails: temp, isLoaded: true });
   }
 
   render() {
@@ -33,14 +30,14 @@ class PhoneDetailsPage extends React.Component {
     }
 
     return (
-      <div>
-        <h1>{isLoaded && phone.name}</h1>
-        <h3>{isLoaded && phone.snippet}</h3>
+      <main className="main-container">
+        <h1>{isLoaded && phoneDetails.name}</h1>
+        <h3>{isLoaded && phoneDetails.description}</h3>
 
         {!isLoaded && <img src={loaderUrl} alt="loader" />}
 
         {isLoaded && <PhoneDetails phoneDetails={phoneDetails} />}
-      </div>
+      </main>
     );
   }
 }

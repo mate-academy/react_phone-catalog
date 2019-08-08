@@ -51,7 +51,7 @@ class PhoneCatalog extends React.Component {
                 </div>
 
                 <Link to={`/phones/${phone.id}`}>
-                  {phone.name}
+                  <h4>{phone.name}</h4>
                 </Link>
 
                 <p>{phone.snippet}</p>
@@ -61,33 +61,32 @@ class PhoneCatalog extends React.Component {
                 name={phone.id}
                 type="button"
                 className="button"
+
                 onClick={() => {
                   if (basketPhones
                     .some(basketPhone => basketPhone.id === phone.id)) {
-                    const samePhone = basketPhones
-                      .find(basketPhone => basketPhone.id === phone.id);
-
-                    samePhone.quantity += 1;
-
-                    return basketPhones;
+                    return chandgeBasketItems(basketPhones.map(basketPhone => (
+                      basketPhone.id === phone.id
+                        ? { ...basketPhone, quantity: basketPhone.quantity + 1 }
+                        : basketPhone
+                    )));
                   }
 
-                  return (chandgeBasketItems(
-                    [
-                      ...basketPhones,
-                      {
-                        id: phone.id,
-                        quantity: 1,
-                        name: phone.name,
-                        imageUrl: phone.imageUrl,
-                      },
-                    ]
-                  ));
+                  return chandgeBasketItems([
+                    ...basketPhones,
+                    {
+                      id: phone.id,
+                      quantity: 1,
+                      name: phone.name,
+                      imageUrl: phone.imageUrl,
+                    },
+                  ]);
                 }}
               >
                 Add to card
               </button>
             </li>
+
           ))}
         </ul>
       </div>
