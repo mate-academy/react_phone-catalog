@@ -42,6 +42,7 @@ class PhoneCatalog extends React.Component {
                     key={phone.id}
                   >
                     <NavLink
+                      className="catalog_phone-text-decoration"
                       to={`/phones/${phone.id}`}
                     >
                       <img className="catalog_phone-img" src={phone.imageUrl} alt=""/>

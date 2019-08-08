@@ -2,7 +2,7 @@
 .nav-list {
   list-style: none;
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
+  grid-template-columns: 130px 1fr 1fr;
   align-items: center;
   padding-bottom: 45px;
 }
@@ -30,6 +30,7 @@
   height: 60px;
   background-size: cover;
   background-repeat: no-repeat;
+  margin-right: 200px;
 }
 
 .cart {
@@ -38,6 +39,7 @@
   height: 70px;
   background-size: cover;
   background-repeat: no-repeat;
+  margin: 0 400px;
 }
 
 .phone {
@@ -64,6 +66,10 @@
   box-shadow: 0 0 10px gray;
 }
 
+.catalog_phone-text-decoration {
+  text-decoration: none;
+}
+
 .catalog_phone-img {
   width: 300px;
   height: 350px;
@@ -81,23 +87,22 @@
 
 .phone-details_header {
   display: grid;
-  grid-template-columns: 200px 1fr;
+  justify-items: center;
+  grid-template-columns: 1fr;
 }
 
 .phone-details_images {
   padding: 10px 5px 10px 5px;
-  display: grid;
-  justify-content: center;
-  border: 1px solid black;
-  width: 150px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px gray;
+  display: flex;
+  flex-wrap: nowrap;
 }
 
 .phone-details_images-img {
   width: 150px;
   height: 150px;
   cursor: pointer;
+  margin-left: 10px;
+
 }
 
 .phone-details_images-current-img {
@@ -105,16 +110,89 @@
   height: 400px;
 }
 
-.phone-details_name {
-  border: 1px solid black;
+.phone-details_images-img:hover {
+  box-shadow: 0 0 10px gray;
   border-radius: 10px;
+}
+
+.phone-details_name {
   text-align: center;
   font-size: 35px;
-  box-shadow: 0 0 10px gray;
   font-weight: 400;
   margin-bottom: 10px;
 }
 
+.phone-details_additionalFeatures {
+  text-align: center;
+  padding-top: 20px;
+  font-size: 30px;
+  font-weight: 100;
+}
+
+.phone-details_description {
+  text-align: center;
+  padding-top: 20px;
+  font-size: 30px;
+  font-weight: 100;
+}
+
+.error-message {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+}
+
+.error-image {
+  margin-top: 100px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  height: 400px;
+  background-image: url('./components/image/404.jpg')
+}
+
+.back-to-home-error-button {
+  text-decoration: none;
+  color: black;
+  border: 1px solid black;
+  padding: 10px;
+  font-size: 30px;
+  border-radius: 10px;
+  transition: 0.4s;
+}
+
+.back-to-home-error-button:hover {
+  background-color: black;
+  color: white;
+}
+
+.specifications {
+  display: grid;
+  color: white;
+  background-color: black;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.specifications_sign {
+  color: white;
+  background-color: black;
+  margin-top: 30px;
+  text-align: center;
+  font-size: 30px;
+  padding: 10px;
+}
+
+.specifications_details {
+  font-size: 22px;
+  border: 1px solid black;
+  padding: 20px;
+}
+
+.specifications_details-sign {
+  font-weight: bold;
+}
 
 .animation {
   position: absolute;
