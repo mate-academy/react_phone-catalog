@@ -3,19 +3,152 @@
   padding: 0;
 }
 
-.nav li {
-  display: inline;
+.header {
+  display: flex;
+  justify-content: space-between;
+  vertical-align: middle;
+  height: 80px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  padding: 0 50px;
+  margin-bottom: 50px;
+}
+
+.header__logo {
+  margin: 10px 0;
+}
+.main-menu {
+  display: flex;
+  justify-content: space-between;
+  width: 250px;
+}
+.main-menu li {
   list-style: none;
   margin-right: 10px;
 }
 
 .navlink {
-  font-size: 20px;
-  color: blue;
+  font-size: 32px;
+  color: rgb(7, 32, 32);
   text-decoration: none;
+  font-weight: bold;
+  opacity: 0.8;
+}
+
+.navlink:hover {
+
+  color: rgb(22, 105, 105);
 }
 
 .active {
+  border-bottom: 2px solid rgb(16, 75, 75);
+  color: rgb(22, 105, 105);
+}
+
+.loader {
+  text-align: center;
+}
+
+.HomePage {
+  font-size: 100px;
+  color: rgb(18, 52, 58);
+  opacity: 0.6;
+  text-align: center;
+}
+
+.NotFoundPage {
+  text-align: center;
+}
+
+.PhonesPage {
+  display: flex;
+  justify-content: space-between;
+}
+
+.PhonesPage__sorting {
+  position: sticky;
+  top: 2em;
+  height: 100px;
+  border: 1px solid #fff;
+}
+
+.search {
+  margin: 15px 0;
+}
+
+.search__fieled {
+  font-size: 16px;
+}
+
+.catalog {
+  list-style: none;
+}
+
+.phone {
+  display: flex;
+  height: 120px;
+  border: 2px solid rgb(168, 163, 163);
+  border-radius: 6px;
+  box-shadow: 10px 5px 5px rgba(154, 147, 140, 0.5);
+  padding: 15px 15px 0;
+  margin-bottom: 20px;
+}
+
+.phone__img {
+  height: 100px;
+  margin-right: 20px;
+}
+
+.phone__description {
+  font-size: 18px;
   font-weight: bold;
-  border-bottom: 2px solid blue;
+  text-decoration: none;
+  color: rgb(8, 93, 189);
+}
+
+.phone__description:hover {
+  color: rgb(24, 53, 87);
+  border-bottom: 1px solid rgb(24, 53, 87);
+}
+
+.phone-details {
+  display: flex;
+  margin: 0 auto;
+}
+
+.phone-info {
+  margin: 0 80px;
+}
+
+.phone-name {
+  border-bottom: 1px solid rgb(50, 46, 75);
+  font-size: 26px;
+  color: rgb(50, 46, 75);
+}
+
+.photo-list {
+  display: flex;
+  list-style: none;
+}
+
+.photo-detail {
+  border: 1px solid #000;
+  width: 80px;
+  height: 80px;
+  margin-right: 30px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.phone-specifications {
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  justify-content: space-between;
+  grid-gap: 50px 50px;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.phone-specifications__section {
+  line-height: 8px;
 }
