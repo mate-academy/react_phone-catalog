@@ -1,6 +1,7 @@
 /* eslint-disable */
 import React from 'react';
 import { NavLink, Route, Switch } from 'react-router-dom';
+import './fonts.css';
 import './App.css';
 import Home from './components/Home';
 import Catalog from './components/Catalog';

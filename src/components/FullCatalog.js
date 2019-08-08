@@ -21,7 +21,6 @@ class FullCatalog extends React.Component {
 
   render() {
     const { isLoaded } = this.state;
-    console.log(this.state.phones);
     if (!isLoaded) {
       return (
         <div className="Loader">
