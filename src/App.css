@@ -141,4 +141,25 @@ a {
   font-size: 14px;
 }
 
+.sidebar-search {
+  display: flex;
+  flex-direction: column;
+  border-collapse: collapse;
+}
+.sidebar-search__head {
+  font-size: 13px;
+  margin: 15px 0 5px;
+  text-align: center;
+}
+.sidebar-search__input {
+  border: 1px solid #3e3e3e;
+  border-radius: 3px 3px 0 0;
+}
+.sidebar-search__select {
+  border: 1px solid #3e3e3e;
+  border-radius: 0 0 3px 3px;
+  position: relative;
+  top: -1px;
+}
+
 /*# sourceMappingURL=App.css.map */

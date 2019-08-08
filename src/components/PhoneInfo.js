@@ -60,7 +60,8 @@ class PhoneInfo extends React.Component {
         <div className="Phone-info-main__images">
           <img
             className="Phone-info-main__image"
-            src={this.state.activeImageUrl}/>
+            src={this.state.activeImageUrl}
+          />
           <div className="Phone-info-main__images-row">
             {phoneInfo.images.map(image => (
               <img
@@ -69,7 +70,8 @@ class PhoneInfo extends React.Component {
                 className={image === this.state.activeImageUrl
                   ? 'Phone-info-main__images-row-image Phone-info-main__images-row-image--active'
                   : 'Phone-info-main__images-row-image'}
-                src={image}/>
+                src={image}
+              />
             ))}
           </div>
         </div>

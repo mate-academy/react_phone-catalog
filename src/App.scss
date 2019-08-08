@@ -159,3 +159,27 @@ a {
     font-size: 14px;
   }
 }
+
+.sidebar-search {
+  display: flex;
+  flex-direction: column;
+  border-collapse: collapse;
+
+  &__head {
+    font-size: 13px;
+    margin: 15px 0 5px;
+    text-align: center;
+  }
+
+  &__input {
+    border: 1px solid #3e3e3e;
+    border-radius: 3px 3px 0 0;
+  }
+
+  &__select {
+    border: 1px solid #3e3e3e;
+    border-radius: 0 0 3px 3px;
+    position: relative;
+    top: -1px;
+  }
+}

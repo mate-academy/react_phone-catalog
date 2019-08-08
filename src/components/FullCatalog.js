@@ -4,9 +4,11 @@ import { Link } from 'react-router-dom';
 import GetData from './GetData';
 import Loader from 'react-loader-spinner';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
+import Filter from "./Filter";
 
 class FullCatalog extends React.Component {
   state = {
+    initialPhones: [],
     phones: [],
     isLoaded: false,
   };
@@ -14,13 +16,20 @@ class FullCatalog extends React.Component {
   async componentDidMount() {
     const phones = await GetData('https://mate-academy.github.io/phone-catalogue-static/api/phones.json');
     this.setState({
+      initialPhones: phones,
       phones: phones,
       isLoaded: true,
     });
   }
+  
+  injectFilteredPhones = (filteredPhones) => {
+      this.setState({
+        phones: filteredPhones,
+      })
+  };
 
   render() {
-    const { isLoaded } = this.state;
+    const { isLoaded, initialPhones, phones } = this.state;
     if (!isLoaded) {
       return (
         <div className="Loader">
@@ -34,17 +43,12 @@ class FullCatalog extends React.Component {
 
     return(
       <div className="Catalog-container">
-        <div className="sidebar">
-          <div className="sidebar-search">
-            <p className="sidebar-search__head">Search Phone</p>
-            <input
-              className="sidebar-search__input"
-              placeholder="Phone name"
-            />
-          </div>
-        </div>
+       <Filter
+         injectFilteredPhones={this.injectFilteredPhones}
+         initialPhones={initialPhones}
+       />
         <div className="catalog">
-          {this.state.phones.map(phone => (
+          {phones.map(phone => (
             <Link
               key={phone.id}
               className="catalog__item"
