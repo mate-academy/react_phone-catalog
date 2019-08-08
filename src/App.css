@@ -1,1 +1,233 @@
 
+.nav-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  align-items: center;
+  padding-bottom: 45px;
+}
+
+.nav-list-link {
+  box-shadow: 5px 5px 5px gray;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 20px;
+  outline: none;
+  color: black;
+  border: 1px solid black;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.active-nav_link {
+  background-color: black;
+  color: white;
+}
+
+.logo {
+  background-image: url(./components/image/logo.svg);
+  width: 120px;
+  height: 60px;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.cart {
+  background-image: url(./components/image/cart.png);
+  width: 70px;
+  height: 70px;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.phone {
+  width: 300px;
+  height: 300px;
+}
+
+.catalog {
+  display: grid;
+  grid-template-columns: repeat(3, 300px);
+  justify-content: center;
+  justify-items: center;
+  grid-gap: 70px;
+  margin-bottom: 100px;
+}
+
+.catalog_phone {
+  border-radius: 10px;
+  padding: 10px;
+  transition: 0.3s;
+}
+
+.catalog_phone:hover {
+  box-shadow: 0 0 10px gray;
+}
+
+.catalog_phone-img {
+  width: 300px;
+  height: 350px;
+}
+
+.catalog_phone-name {
+  text-align: center;
+  text-decoration: none;
+  font-size: 20px;
+  outline: none;
+  color: black;
+  padding: 20px;
+  text-transform: uppercase;
+}
+
+.phone-details_header {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+}
+
+.phone-details_images {
+  padding: 10px 5px 10px 5px;
+  display: grid;
+  justify-content: center;
+  border: 1px solid black;
+  width: 150px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px gray;
+}
+
+.phone-details_images-img {
+  width: 150px;
+  height: 150px;
+  cursor: pointer;
+}
+
+.phone-details_images-current-img {
+  width: 400px;
+  height: 400px;
+}
+
+.phone-details_name {
+  border: 1px solid black;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 35px;
+  box-shadow: 0 0 10px gray;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+
+
+.animation {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.cssload-square {
+	width: 8px;
+	height: 29px;
+	background: rgb(0,0,0);
+	border-radius: 10px;
+	display: block;
+	animation: cssload-turn 1.995s ease infinite;
+		-o-animation: cssload-turn 1.995s ease infinite;
+		-ms-animation: cssload-turn 1.995s ease infinite;
+		-webkit-animation: cssload-turn 1.995s ease infinite;
+		-moz-animation: cssload-turn 1.995s ease infinite;
+}
+.cssload-top {
+	position: absolute;
+	left: 40%;
+	top: 50%;
+	transform: rotate(90deg);
+		-o-transform: rotate(90deg);
+		-ms-transform: rotate(90deg);
+		-webkit-transform: rotate(90deg);
+		-moz-transform: rotate(90deg);
+}
+.cssload-bottom {
+	position: absolute;
+	left: 40%;
+	top: 50%;
+	transform: rotate(-90deg);
+		-o-transform: rotate(-90deg);
+		-ms-transform: rotate(-90deg);
+		-webkit-transform: rotate(-90deg);
+		-moz-transform: rotate(-90deg);
+}
+.cssload-left {
+	position: absolute;
+	left: 40%;
+	top: 50%;
+}
+.cssload-right {
+	position: absolute;
+	left: 40%;
+	top: 50%;
+	transform: rotate(-180deg);
+		-o-transform: rotate(-180deg);
+		-ms-transform: rotate(-180deg);
+		-webkit-transform: rotate(-180deg);
+		-moz-transform: rotate(-180deg);
+}
+
+
+@keyframes cssload-turn {
+	0% {
+		transform: translateX(0) translateY(0) rotate(0);
+	}
+	50% {
+		transform: translateX(400%) translateY(100%) rotate(90deg);
+	}
+	100% {
+		transform: translateX(0) translateY(0) rotate(0);
+	}
+}
+
+@-o-keyframes cssload-turn {
+	0% {
+		-o-transform: translateX(0) translateY(0) rotate(0);
+	}
+	50% {
+		-o-transform: translateX(400%) translateY(100%) rotate(90deg);
+	}
+	100% {
+		-o-transform: translateX(0) translateY(0) rotate(0);
+	}
+}
+
+@-ms-keyframes cssload-turn {
+	0% {
+		-ms-transform: translateX(0) translateY(0) rotate(0);
+	}
+	50% {
+		-ms-transform: translateX(400%) translateY(100%) rotate(90deg);
+	}
+	100% {
+		-ms-transform: translateX(0) translateY(0) rotate(0);
+	}
+}
+
+@-webkit-keyframes cssload-turn {
+	0% {
+		-webkit-transform: translateX(0) translateY(0) rotate(0);
+	}
+	50% {
+		-webkit-transform: translateX(400%) translateY(100%) rotate(90deg);
+	}
+	100% {
+		-webkit-transform: translateX(0) translateY(0) rotate(0);
+	}
+}
+
+@-moz-keyframes cssload-turn {
+	0% {
+		-moz-transform: translateX(0) translateY(0) rotate(0);
+	}
+	50% {
+		-moz-transform: translateX(400%) translateY(100%) rotate(90deg);
+	}
+	100% {
+		-moz-transform: translateX(0) translateY(0) rotate(0);
+	}
+}
