@@ -8,6 +8,7 @@ import {
 import HomePage from './components/HomePage'
 import PhonesPage from './components/PhonesPage'
 import NotFoundPage from './components/NotFoundPage'
+import PhoneDetailsPage from './components/PhoneDetailsPage'
 
 /**
  * [x] - переделать стиль CSS, чтобы без bootstrap
@@ -15,7 +16,12 @@ import NotFoundPage from './components/NotFoundPage'
  * [x] - Implement a Loader to show it while 
  *      waiting for the data from server
  * [] - PhoneDetailsPage + router
- *    [] - прокинуть расширенные данные
+ *    [x] - почистить код
+ *    [x] - прокинуть расширенные данные
+ *    [x] - прикрутить Loader
+ *      [x] - уточка, почему работает не так?
+ *      [x] - создать отдельную функцию
+ *      [x] - исправить старую функцию
  *       
  * 
  */
@@ -23,11 +29,12 @@ import NotFoundPage from './components/NotFoundPage'
 class App extends React.Component {
   state = {
     phones: '',
+    details: '',
     isLoading: false,
     isLoaded: false,
   }
 
-  loadData = async () => {
+  loadDataPhones = async () => {
     this.setState({
       isLoading: true,
     })
@@ -44,9 +51,28 @@ class App extends React.Component {
       })
     }, 1500)
   }
+  
+  loadDataDetails = async () => {
+    this.setState({
+      isLoaded: false,
+      isLoading: true,
+    })
+
+    const responseDetails = await
+      fetch('https://mate-academy.github.io/phone-catalogue-static/api/phones/motorola-xoom.json')
+    const details = await responseDetails.json();
+
+    setTimeout(() => {
+      this.setState({
+        details: details,
+        isLoading: false,
+        isLoaded: true,
+      })
+    }, 1500)
+  }
 
   render() {
-    const {phones, isLoading, isLoaded} = this.state;
+    const {phones, isLoading, isLoaded, details} = this.state;
 
     return (
       <div>
@@ -72,12 +98,21 @@ class App extends React.Component {
           <Route path='/' exact component={HomePage}/>
           <Route path='/phones/' exact render={() =>
             <PhonesPage 
-              loadData={this.loadData}
+              loadDataPhones={this.loadDataPhones}
               phones={phones}
               isLoading={isLoading}
               isLoaded={isLoaded}
             />
           }/>
+          <Route path='/phones/:id?' render={({ match }) =>
+            <PhoneDetailsPage 
+              loadDataDetails={this.loadDataDetails}
+              details={details}
+              id={match.params.id}
+              isLoading={isLoading}
+              isLoaded={isLoaded}
+            />
+          } />
           <Route component={NotFoundPage}/>
         </Switch>
       </div>

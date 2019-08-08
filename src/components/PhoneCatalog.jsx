@@ -1,12 +1,11 @@
 import React from 'react'
-import PhoneDetailsPage from './PhoneDetailsPage'
 import {
-  Switch,
-  Route,
   Link
 } from 'react-router-dom'
 
-const PhoneCatalog = ({phones}) => (
+const PhoneCatalog = ({
+  phones, 
+}) => (
   <div>
     <ul>
       {
@@ -21,15 +20,6 @@ const PhoneCatalog = ({phones}) => (
         ))
       }
     </ul>
-
-    <Switch>
-      <Route path='/phones/:id?' render={({ match }) =>
-        <PhoneDetailsPage 
-          phones={phones}
-          id={match.params.id}
-        />
-      } />
-    </Switch>
   </div>
 )
 
