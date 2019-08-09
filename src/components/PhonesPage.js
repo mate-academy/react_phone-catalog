@@ -19,7 +19,7 @@ export default class PhonesPage extends Component {
     const value = event.target.value.toLowerCase().trim();
 
     this.setState(state => ({
-      phones: state.copyPhones.filter(phone => [phone.snippet, phone.name]
+      phones: [...state.copyPhones].filter(phone => [phone.snippet, phone.name]
         .join('')
         .toLowerCase()
         .includes(value)),

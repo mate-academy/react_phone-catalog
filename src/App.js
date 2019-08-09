@@ -110,7 +110,7 @@ export default class App extends Component {
             <Route
               path="/phones"
               exact
-              component={() => (
+              render={() => (
                 <PhonesPage
                   handleAddToCart={this.handleAddToCart}
                   initialPhones={this.state.initialPhones}
@@ -120,7 +120,7 @@ export default class App extends Component {
             <Route
               path="/cart"
               exact
-              component={() => (
+              render={() => (
                 <Cart
                   orderedPhones={this.state.orderedPhones}
                   handleIncreasQuantity={this.handleIncreasQuantity}
@@ -137,7 +137,7 @@ export default class App extends Component {
             <Route
               path="/phones/:id"
               exact
-              component={props => (
+              render={props => (
                 <PhoneDetails
                   id={props.match.params.id}
                   handleAddToCart={this.handleAddToCart}
