@@ -15,14 +15,17 @@ import PhoneDetailsPage from './components/PhoneDetailsPage'
  * [x] - передать функцию компоненту PhonePage
  * [x] - Implement a Loader to show it while 
  *      waiting for the data from server
- * [] - PhoneDetailsPage + router
+ * [x] - сделать из списка блоки с информацией
+ * [x] - PhoneDetailsPage + router
  *    [x] - почистить код
  *    [x] - прокинуть расширенные данные
  *    [x] - прикрутить Loader
  *      [x] - уточка, почему работает не так?
  *      [x] - создать отдельную функцию
  *      [x] - исправить старую функцию
- *       
+ * [x] - сделать страницу с основной информацией
+ *      текущего телефона
+ * [] - в конце доделать основную информацию
  * 
  */
 
@@ -49,7 +52,7 @@ class App extends React.Component {
         isLoading: false,
         isLoaded: true,
       })
-    }, 1500)
+    }, 1000)
   }
   
   loadDataDetails = async () => {
@@ -68,7 +71,7 @@ class App extends React.Component {
         isLoading: false,
         isLoaded: true,
       })
-    }, 1500)
+    }, 1000)
   }
 
   render() {
@@ -106,7 +109,9 @@ class App extends React.Component {
           }/>
           <Route path='/phones/:id?' render={({ match }) =>
             <PhoneDetailsPage 
+              loadDataPhones={this.loadDataPhones}
               loadDataDetails={this.loadDataDetails}
+              phones={phones}
               details={details}
               id={match.params.id}
               isLoading={isLoading}

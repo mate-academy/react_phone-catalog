@@ -1,36 +1,48 @@
 import React from 'react'
 import Loader from './Loader'
+import PhoneDetails from './PhoneDetails'
 
 class PhoneDetailsPage extends React.Component {
   componentDidMount = () => {
+    this.props.loadDataPhones()
     this.props.loadDataDetails()
   }
 
   render() {
     const {
       id,
+      phones,
       details,
       isLoading,
       isLoaded
     } = this.props;
 
-    console.log(details);
-
     return (
       <section>
-      {
-        isLoaded
-          ? <>
+        {
+          isLoaded
+            ? <>
               {
                 id === details.id
-                  ? 'I show the details!'
+                  ? <>
+                    {
+                      phones
+                        .filter(phone => phone.id === id)
+                        .map(phone =>
+                          <PhoneDetails
+                            phone={phone}
+                            details={details}
+                          />
+                        )
+                    }
+                  </>
                   : 'Phone was not found'
               }
             </>
-          : <Loader 
-            isLoading={isLoading}
-          />
-      }
+            : <Loader
+              isLoading={isLoading}
+            />
+        }
       </section>
     )
   }

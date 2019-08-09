@@ -4,18 +4,27 @@ import {
 } from 'react-router-dom'
 
 const PhoneCatalog = ({
-  phones, 
+  phones,
 }) => (
   <div>
-    <ul>
+    <ul className='listOfPhones'>
       {
         phones.map(phone => (
-          <li>
-            <Link
-              to={`/phones/${phone.id}`}
-            >
-              {phone.name}
-            </Link>
+          <li className='listOfPhones__item'>
+              <img 
+                className='listOfPhones__item-img'
+                src={`${phone.imageUrl}`} 
+                alt="altImg"
+                />
+               <Link
+                 className='listOfPhones__item-link'
+                 to={`/phones/${phone.id}`}
+               >
+                 {phone.name}
+              </Link>
+              <section className='listOfPhones__item-snippet'>
+                {phone.snippet}
+              </section>
           </li>
         ))
       }
