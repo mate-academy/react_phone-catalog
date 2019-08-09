@@ -26,7 +26,12 @@ class PhoneCatalog extends React.Component {
     );
 
     return (
-      <div>
+      <main className="main-container">
+        <h1>
+          Phones per page:
+          {sortedAndFilteredPhones.length}
+        </h1>
+
         <div className="catalog__sort-filter-container">
           <input
             name="filterValue"
@@ -106,7 +111,7 @@ class PhoneCatalog extends React.Component {
 
           ))}
         </ul>
-      </div>
+      </main>
     );
   }
 }

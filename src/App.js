@@ -33,18 +33,11 @@ const App = () => {
           path="/phones"
           exact
           render={() => (
-            <main className="main-container">
-              <h1>
-                Phones number:
-                {phones.length}
-              </h1>
-
-              <PhoneCatalog
-                phones={phones}
-                chandgeBasketItems={chandgeBasketItems}
-                basketPhones={basketPhones}
-              />
-            </main>
+            <PhoneCatalog
+              phones={phones}
+              chandgeBasketItems={chandgeBasketItems}
+              basketPhones={basketPhones}
+            />
           )}
         />
 
