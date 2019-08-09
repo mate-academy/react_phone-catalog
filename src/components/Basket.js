@@ -42,7 +42,9 @@ const Basket = ({
               </button>
 
               <div className="shopping-list__quantity">
-                {`${phone.quantity} item(s)`}
+                {`${phone.quantity}
+                  ${phone.quantity > 1 ? 'items' : 'item'}
+                `}
               </div>
 
               <button
