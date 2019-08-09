@@ -1,15 +1,18 @@
 import React from 'react';
-import { getPhones } from '../api/getPhones';
 
 import PhoneCatalog from './PhoneCatalog';
 import Loading from './Loading';
 import Filter from './Filter';
+
+import { getPhones } from '../api/getPhones';
 
 class Phones extends React.Component {
   state = {
     phones: [],
     filterPhones: [],
     loading: false,
+    basketItems: [],
+    filter: '',
   }
 
   async componentDidMount() {
@@ -22,59 +25,74 @@ class Phones extends React.Component {
     })
   }
 
-  filterPhoneByName = (query) => {
+  filterPhoneByName = (filter) => {
     return this.state.phones.filter(phone => {
-        return phone.name.toLowerCase().indexOf(query.toLowerCase()) !== -1;
+      return phone.name.toLowerCase().indexOf(filter.toLowerCase()) !== -1;
     })
   }
 
   filterPhone = (event) => {
     const { value } = event.target;
 
-    console.log(value);
     this.setState({
-      filterPhones: this.filterPhoneByName(value),
+      filter: value,
     })
   }
 
-  sortPhone = (event) => {
-    const {value} = event.target;
+  sortPhones = (event) => {
+    const { value } = event.target;
+    const { filterPhones } = this.state;
+    console.log(filterPhones);
 
     switch (value) {
       case 'alphabetical':
         this.setState(prevState => ({
-          phones: prevState.filterPhones
-          .sort((a, b) => a.name.localeCompare(b.name)),
-          filterPhones: prevState.filterPhones
-            .sort((a, b) => a.name.localeCompare(b.name)),
+          filterPhones: prevState.phones.sort((a, b) => a.name.localeCompare(b.name)),
         }));
 
         break;
       case 'newest':
         this.setState(prevState => ({
-          phones: prevState.filterPhones.sort((a, b) => a.age - b.age),
-          filterPhones: prevState.filterPhones.sort((a, b) => a.age - b.age),
+          filterPhones: prevState.phones.sort((a, b) => a.age - b.age),
         }));
 
         break;
       default:
         this.setState(prevState => ({
-          phones: prevState.phones,
-          filterPhones: prevState.filterPhones,
+          filterPhones: prevState.phones,
         }));
     }
   }
 
+  addToBasketPhone = (event) => {
+    const { phones } = this.state;
+    const { name } = event.target;
+
+    const addToBasketPhone = {
+      id: name,
+      phoneName: (phones.find(phone => phone.id === name)).name,
+      quantity: 1,
+    }
+
+    this.props.addToBasket(addToBasketPhone);
+  }
+
   render() {
-    const { filterPhones, loading } = this.state;
-    console.log(filterPhones);
+    const { loading, filter } = this.state;
+    const filterPhones = this.filterPhoneByName(filter);
 
     return (
       loading
         ? (
           <div className="phones-catalog">
-            <Filter filterPhone={this.filterPhone} sortPhone={this.sortPhone}/>
-            <PhoneCatalog phones={filterPhones} />
+            <Filter
+              filterPhone={this.filterPhone}
+              sortPhone={this.sortPhones}
+            />
+            <PhoneCatalog
+              phones={filterPhones}
+              addToBasket={this.addToBasketPhone}
+            />
           </div>
         )
         : <Loading />

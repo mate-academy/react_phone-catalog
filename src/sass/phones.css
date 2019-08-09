@@ -1,0 +1,78 @@
+/* stylelint-disable */
+.phones-catalog {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: #313131;
+  font-family: "Roboto";
+}
+
+.phones-info {
+  padding: 0;
+  margin-right: 20px;
+}
+
+.search-form {
+  margin-left: 30px;
+  padding-top: 5px;
+}
+
+.search-phone {
+  width: 280px;
+}
+
+.phone-section {
+  border: 1px solid #c4c4c4;
+  border-radius: 5px;
+  margin: 15px;
+}
+
+.phone-cart-section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.phone-add-on-basket {
+  padding: 5px 25px;
+  background-color: dodgerblue;
+  color: white;
+  margin: -15px 0 15px 150px;
+  border-radius: 5px;
+}
+
+.phone-add-on-basket:hover {
+  background-color: #2e4b8b;
+  text-decoration: none;
+  color: white;
+}
+
+.phones {
+  list-style: none;
+  padding-right: 5px;
+}
+
+.phones-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.phones-image {
+  height: 100px;
+  width: 100px;
+  margin: 5px 25px;
+}
+
+.phones-name {
+  margin: 5px 0;
+}
+
+.phones-item {
+  padding: 15px 0;
+}
+
+.sort-phone {
+  width: 135px;
+}
+/*# sourceMappingURL=phones.css.map */

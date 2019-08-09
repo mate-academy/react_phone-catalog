@@ -28,13 +28,30 @@ class PhoneDetailsPage extends React.Component {
     };
   }
 
+  addToBasketPhone = (event) => {
+    const { phoneDetails } = this.state;
+    const id = event.target.name;
+
+    const addToBasketPhone = {
+      id,
+      phoneName: phoneDetails.name,
+      quantity: 1,
+    }
+
+    this.props.addToBasket(addToBasketPhone);
+  }
+
   render() {
     const { loading, phoneDetails, errors } = this.state;
+    const { addToBasket } = this.props;
 
     return (
       (errors === "")
         ? (loading
-          ? <PhoneDetail phoneDetails={phoneDetails} />
+          ? <PhoneDetail
+            phoneDetails={phoneDetails}
+            addToBasketPhone={this.addToBasketPhone}
+          />
           : <Loading />
         ) : (
           <h1 className="error-title centr">{errors}</h1>

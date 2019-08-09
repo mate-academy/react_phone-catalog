@@ -1,3 +1,9 @@
+@import "./sass/basket.css";
+@import "./sass/loading.css";
+@import "./sass/phoneDetails.css";
+@import "./sass/phones.css";
+@import "./sass/notFoundPage.css";
+@import "./sass/home.css";
 /**App*/
 .navbar {
   list-style: none;
@@ -7,6 +13,11 @@
   padding: 10px;
   border: 1px solid whitesmoke;
   box-shadow: 0 0 10px rgba(221, 218, 218, 0.5);
+}
+
+.active-basket {
+  padding: 15px;
+  border: 2px solid rgb(201, 13, 13);
 }
 
 .input-group {
@@ -104,143 +115,8 @@ label:focus,
   box-shadow: none !important;
 }
 
-/**NotFoundPage*/
-.col-md-12 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  color: #313131;
-}
-
-.error-title {
-  padding: 95px 0 10px;
-  color: darkgrey;
-}
-
-.centr {
-  text-align: center;
-}
-
-.error-actions {
-  padding-top: 25px;
-}
-
-/**Phones*/
-.phones-catalog {
-  display: flex;
-  color: #313131;
-  font-family: "Roboto";
-}
-
-.phones-info {
-  padding: 0;
-  margin-right: 20px;
-}
-
-.search-form {
-  margin-left: 30px;
-  padding-top: 5px;
-}
-
-.search-phone {
-  width: 280px;
-}
-
-.phones {
-  list-style: none;
-  border: 1px solid rgb(196, 196, 196);
-  margin: 15px;
-  padding-right: 5px;
-}
-
-.phones-content {
-  display: flex;
-}
-
-.phones-image {
-  height: 100px;
-  width: 100px;
-  margin: 5px 25px;
-}
-
-.phones-name {
-  margin: 5px 0;
-}
-
-.phones-item {
-  padding: 15px 0;
-}
-
-.sort-phone {
-  width: 135px;
-}
-
 /**Filter*/
 .search_section {
   display: flex;
   flex-flow: column;
-}
-
-/*PhoneDetails*/
-.phone-details {
-  display: flex;
-  margin: 0 25px;
-}
-
-.phone-details_characteristics {
-  width: 200px;
-}
-
-.phone-details_title {
-  border-bottom: 1px solid #cfcdcd;
-  margin-bottom: 25px;
-}
-
-.phone-details_characteristics__title-section {
-  font-weight: bold;
-  font-size: 26px;
-  color: #313131;
-}
-
-.phone-details_selected-photo {
-  max-height: 400px;
-  max-width: 400px;
-  margin: 0 100px 30px 25px;
-}
-
-.phone-details_selected-photo img {
-  height: inherit;
-  width: inherit;
-  transition: 1s;
-}
-
-.phone-details_selected-photo img:hover {
-  transform: scale(1.05);
-}
-
-.phone-details_main-info {
-  margin: 40px 0;
-}
-
-.phone-details_info {
-  display: flex;
-  justify-content: space-around;
-  margin: 0 25px;
-}
-
-.phone-details_photos {
-  display: flex;
-  margin-top: 30px;
-  padding: 0;
-  list-style: none;
-  cursor: pointer;
-}
-
-.phone-details_photo {
-  width: 100px;
-  height: 100px;
-  border: 1px solid #313131;
-  padding: 14px;
-  margin: 5px 10px;
 }

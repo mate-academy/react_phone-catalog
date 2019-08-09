@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const PhoneCatalog = ({phones}) => (
-    <ul className="phones-info">
-      {phones.map(phone => (
+const PhoneCatalog = ({ phones, addToBasket }) => (
+  <ul className="phones-info">
+    {phones.map(phone => (
+      <div className="phone-section">
         <li key={phone.id} className="phones">
           <section className="phones-content">
             <Link to={`/phones/${phone.id}`}>
@@ -27,8 +28,19 @@ const PhoneCatalog = ({phones}) => (
             </div>
           </section>
         </li>
-      ))}
-    </ul>
+        <div className="phone-cart-section">
+          <Link
+            onClick={addToBasket}
+            className="phone-add-on-basket"
+            name={phone.id}
+            phoneName={phone.name}
+          >
+            Add To Cart
+          </Link>
+        </div>
+      </div>
+    ))}
+  </ul>
 );
 
 export default PhoneCatalog;

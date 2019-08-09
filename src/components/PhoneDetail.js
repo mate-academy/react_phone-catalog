@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class PhoneDetail extends React.Component {
   state = {
@@ -14,7 +15,7 @@ class PhoneDetail extends React.Component {
   }
 
   handleSelectPhoto = (event) => {
-    const {name} = event.target;
+    const { name } = event.target;
 
     this.setState({
       selectedPhoto: name,
@@ -22,7 +23,7 @@ class PhoneDetail extends React.Component {
   }
 
   render() {
-    const { phoneDetails } = this.props;
+    const { phoneDetails, addToBasketPhone } = this.props;
     const { selectedPhoto } = this.state;
 
     return (
@@ -56,7 +57,19 @@ class PhoneDetail extends React.Component {
                 </li>
               ))}
             </ul>
+
+            <div className="phone-details_cart-section">
+              <Link
+                className="phone-details_add-on-basket"
+                onClick={addToBasketPhone}
+                name={phoneDetails.id}
+              >
+                Add To Cart
+          </Link>
+            </div>
+
           </div>
+
         </div>
         <div className="phone-details_info">
           <section className="phone-details_characteristics">
@@ -78,9 +91,9 @@ class PhoneDetail extends React.Component {
               <dt>Cell:</dt>
               <dd>{phoneDetails.connectivity.cell}</dd>
               <dt>GPS:</dt>
-              <dd>{phoneDetails.connectivity.gps ? '+': '-'}</dd>
+              <dd>{phoneDetails.connectivity.gps ? '+' : '-'}</dd>
               <dt>Infrared:</dt>
-              <dd>{phoneDetails.connectivity.infrared ? '+': '-'}</dd>
+              <dd>{phoneDetails.connectivity.infrared ? '+' : '-'}</dd>
               <dt>Wi-fi:</dt>
               <dd>{phoneDetails.connectivity.wifi}</dd>
             </dl>
