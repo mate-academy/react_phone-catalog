@@ -2,11 +2,26 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 const NoMatch = () => (
-  <div>
-    <h1>404</h1>
-    <img src="https://i.gifer.com/MbHR.gif" alt="You are lost" />
+  <main className="main-container">
+    <NavLink to="/" exact>
+      <img src="./img/404-drib23.gif" alt="You are lost" />
+    </NavLink>
+
+    <p className="author">
+Author
+      <a
+        // eslint-disable-next-line max-len
+        href="https://dribbble.com/shots/2597126-404-Got-Lost?ref=blogduwebdesign.com"
+        title="link to gif author"
+        target="blank"
+      >
+        Anastasiia Andriichuk
+      </a>
+    </p>
+
+    <h2>404</h2>
     <NavLink to="/" exact>Back to Home</NavLink>
-  </div>
+  </main>
 );
 
 export default NoMatch;

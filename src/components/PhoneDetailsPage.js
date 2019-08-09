@@ -23,7 +23,7 @@ class PhoneDetailsPage extends React.Component {
     const { phoneDetails, isLoaded } = this.state;
     const loaderUrl = './img/giphy.webp';
 
-    if (!isLoaded && !phone) {
+    if (isLoaded && !phone) {
       return (
         <NoPhone />
       );

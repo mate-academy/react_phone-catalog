@@ -27,20 +27,25 @@ class PhoneCatalog extends React.Component {
 
     return (
       <div>
-        <input
-          name="filterValue"
-          value={filterValue}
-          onChange={this.handleFilter}
-        />
+        <div className="catalog__sort-filter-container">
+          <input
+            name="filterValue"
+            value={filterValue}
+            onChange={this.handleFilter}
+            className="catalog__filter"
+            placeholder="Filter phones by names"
+          />
 
-        <select
-          name="sortValue"
-          value={sortValue}
-          onChange={this.handleFilter}
-        >
-          <option value="abc">Alphabet</option>
-          <option value="newest">Newst</option>
-        </select>
+          <select
+            name="sortValue"
+            value={sortValue}
+            onChange={this.handleFilter}
+            className="catalog__sort-select"
+          >
+            <option value="abc">Alphabet</option>
+            <option value="newest">Newest</option>
+          </select>
+        </div>
 
         <ul className="phone__card-list">
           {sortedAndFilteredPhones.map(phone => (
@@ -50,9 +55,11 @@ class PhoneCatalog extends React.Component {
                   <img src={phone.imageUrl} alt="phone" width="100" />
                 </div>
 
-                <Link to={`/phones/${phone.id}`}>
-                  <h4>{phone.name}</h4>
-                </Link>
+                <h4 className="phone__card-header">
+                  <Link to={`/phones/${phone.id}`}>
+                    {phone.name}
+                  </Link>
+                </h4>
 
                 <p>{phone.snippet}</p>
               </div>
@@ -60,7 +67,11 @@ class PhoneCatalog extends React.Component {
               <button
                 name={phone.id}
                 type="button"
-                className="button"
+                className={
+                  basketPhones.some(bp => bp.id === phone.id)
+                    ? 'button button--added'
+                    : 'button'
+                }
 
                 onClick={() => {
                   if (basketPhones
@@ -83,7 +94,13 @@ class PhoneCatalog extends React.Component {
                   ]);
                 }}
               >
-                Add to card
+                {
+                  basketPhones.some(bp => bp.id === phone.id)
+                    ? `Phone in Basket ${
+                      basketPhones.find(bp => bp.id === phone.id).quantity
+                    }`
+                    : 'Add to Basket'
+                }
               </button>
             </li>
 

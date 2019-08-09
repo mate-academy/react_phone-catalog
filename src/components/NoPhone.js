@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const NoPhone = () => (
-  <div>
+  <main className="main-container">
     <h1>Unfortunatly there is no such phone anymore</h1>
 
     <img src="./img/boys_500.jpg" alt="sad boys" />
@@ -16,7 +16,7 @@ const NoPhone = () => (
         <Link to="/">Back To Home</Link>
       </li>
     </ul>
-  </div>
+  </main>
 );
 
 export default NoPhone;
