@@ -26,6 +26,10 @@ a {
   font-size: 27px;
 }
 
+.Home-page {
+  text-align: center;
+}
+
 .main-link {
   color: white;
   text-decoration: none;
@@ -173,6 +177,18 @@ a {
     font-weight: bold;
   }
 
+  &__button--active {
+    width: 93px;
+    height: 40px;
+    background-color: #d51f1f;
+    border: none;
+    border-radius: 3px;
+    color: white;
+    font-weight: bold;
+    opacity: 0.5;
+    cursor: pointer;
+  }
+
   &__button:hover {
     background-color: #e02d2d;
     cursor: pointer;
@@ -307,5 +323,20 @@ a {
   &__item-remove-button:hover {
     background-color: #e02d2d;
     cursor: pointer;
+  }
+}
+
+.Not-found-page {
+  text-align: center;
+  &__link {
+    background-color: #0072bc;
+    padding: 5px 10px;
+    border-radius: 3px;
+    color: white;
+  }
+
+  &__link:hover {
+    cursor: pointer;
+    background-color: #007fd1;
   }
 }

@@ -36,7 +36,7 @@ class PhoneInfo extends React.Component {
     })
   };
   
-  addCart = () => {
+  addCart = (event) => {
     const { phoneInfo } = this.state;
     const { url } = this.props.match;
     const basketItem = {
@@ -46,11 +46,13 @@ class PhoneInfo extends React.Component {
       name: phoneInfo.name,
       image: phoneInfo.images[0],
     };
+    console.log(event.target.className);
     this.props.basketInject(basketItem)
   };
 
   render() {
     const { phoneId } = this.props.match.params;
+    const { basket } = this.props;
     const { phoneInfo, isLoaded, errorLoading } = this.state;
     if(!isLoaded){
       return(
@@ -92,9 +94,13 @@ class PhoneInfo extends React.Component {
             <h3 className="Phone-info-main__name">{phoneInfo.name}</h3>
             <button
               onClick={this.addCart}
-              className="Phone-info-main__button"
+              className={basket.find(item => item.id === phoneInfo.id)
+                ? 'Phone-info-main__button--active'
+                : 'Phone-info-main__button'}
             >
-              Add to cart
+              {basket.find(item => item.id === phoneInfo.id)
+                ? 'Added'
+                : 'Add to cart'}
             </button>
           </div>
           <p className="Phone-info-main__discription">{phoneInfo.description}</p>

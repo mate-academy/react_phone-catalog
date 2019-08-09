@@ -48,6 +48,7 @@ class App extends React.Component {
   };
   
   render() {
+    const { basket } = this.state
     return (
       <div className="App">
         <div className="main-link__container">
@@ -88,6 +89,7 @@ class App extends React.Component {
             render={({ match }) =>
               <PhoneInfo
                 basketInject={this.basketInject}
+                basket={basket}
                 match={match}
               />}/>
           <Route
@@ -95,7 +97,7 @@ class App extends React.Component {
             render={() => (
               <Basket
                 basketRemoveItem={this.basketRemoveItem}
-                basket={this.state.basket}
+                basket={basket}
                 basketChangeItemQuantity={this.basketChangeItemQuantity}
               />)} />
           <Route path="*" component={NotFoundPage} />
