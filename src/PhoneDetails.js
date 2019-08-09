@@ -2,8 +2,16 @@ import React from 'react';
 
 import './styles/details.css';
 
-const PhoneDetails = ({ phone }) =>
+const PhoneDetails = ({ phone, handleClick }) =>
   <div className="Details_List">
+    <div>
+      <button
+        onClick={() => handleClick(phone)}
+        className="add-to-basket_button-details"
+      >
+        Add to Basket
+       </button>
+    </div>
     <ul className="Details_Li-ul">
       <b>Description: </b>
       <li>

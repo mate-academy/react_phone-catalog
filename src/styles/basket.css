@@ -9,13 +9,20 @@
 
 .basket_phones_item {
   display: grid;
-  grid-template-columns: 300px auto 140px;
+  grid-template-columns: 300px auto  50px 140px;
 }
 
 .phone_names {
   width: 100%;
   font-weight: 700;
   list-style-type: none;
+}
+
+.phone_quantity {
+  /* width: 100%; */
+  font-weight: 700;
+  list-style-type: none;
+  margin: 50px 15px;
 }
 
 .delete-button {
@@ -51,6 +58,39 @@
   background: rgb(238,238,238) linear-gradient(#f7f7f7, #f1f1f1);
   box-shadow: -2px 2px 3px 2px rgba(0,0,0,.1);
   font-size: 21px;
+}
+
+.small_delete-button {
+  width: 20px;
+  height: 20px;
+  font-size: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  color: rgb(68,68,68);
+  text-decoration: none;
+  user-select: none;
+  outline: none;
+  border: 1px solid rgba(0,0,0,.1);
+  border-radius: 4px;
+  background: rgb(245,245,245) linear-gradient(#f4f4f4, #f1f1f1);
+  box-shadow: -2px 2px 5px 2px rgba(0,0,0,.1);
+  transition: all .218s ease 0s;
+}
+
+.small_delete-button:hover {
+  cursor: pointer;
+  color: rgb(68,68,68);
+  border: 1px solid rgb(198,198,198);
+  background: #f7f7f7 linear-gradient(#f7f7f7, #f1f1f1);
+  box-shadow: -5px 5px 3px 2px rgba(0,0,0,.1);
+  color: brown;
+}
+
+.small_delete-button:active {
+  color: rgb(51,51,51);
+  border: 1px solid rgb(204,204,204);
+  background: rgb(238,238,238) linear-gradient(#f7f7f7, #f1f1f1);
+  box-shadow: -2px 2px 3px 2px rgba(0,0,0,.1);
 }
 
 .img_preview_basket {

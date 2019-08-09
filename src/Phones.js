@@ -5,7 +5,6 @@ import Loader from './Loader';
 import Pagination from './Pagination';
 import './styles/phones.css';
 
-
 const imageFromUrl = 'https://mate-academy.github.io/phone-catalogue-static';
 
 class Phones extends React.Component {
@@ -32,7 +31,7 @@ class Phones extends React.Component {
     this.setState({
       page: currentPage,
       })
-    };
+  };
 
   handleInput = ({target: {value}}) => {
      this.setState({
@@ -111,16 +110,16 @@ class Phones extends React.Component {
               <div  key={phone.id}>
                 <ul>
                   <li className="details_list">
-                  <Link
-                    to={`/phones/${phone.id}`}
-                    className="phone_names"
-                    >
-                    <img
-                      src={`${imageFromUrl}/${phone.imageUrl}`}
-                      className="img_preview"
-                      alt={`${phone.name}`}
-                    />
-                  </Link>
+                    <Link
+                      to={`/phones/${phone.id}`}
+                      className="phone_names"
+                      >
+                      <img
+                        src={`${imageFromUrl}/${phone.imageUrl}`}
+                        className="img_preview"
+                        alt={`${phone.name}`}
+                      />
+                    </Link>
                   </li>
                   <li className="details_list">
                     <Link
@@ -134,24 +133,23 @@ class Phones extends React.Component {
                     {phone.snippet}
                   </li>
                 </ul>
-                  <div>
-                    <button
-                    onClick={() => handleClick(phone)}
-                    className="add-to-basket_button"
-                    >
-                      Add to Basket
-                    </button>
-                  </div>
+                <div>
+                  <button
+                  onClick={() => handleClick(phone)}
+                  className="add-to-basket_button"
+                  >
+                    Add to Basket
+                  </button>
+                </div>
               </div>
-
             ))}
+            <Pagination
+              page={page}
+              perPage={perPage}
+              total={filteredPhones.length}
+              handlePageChange={this.handlePageChange}
+            />
           </div>
-          <Pagination
-            page={page}
-            perPage={perPage}
-            total={filteredPhones.length}
-            handlePageChange={this.handlePageChange}
-          />
         </div>
         : <Loader />}
       </div>

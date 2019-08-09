@@ -16,7 +16,7 @@ class Phones extends React.Component {
   }
 
   componentDidMount() {
-    const id = this.props.match.params.phoneId;
+    const id = this.props.phoneId;
     fetch(`${dataFromUrl}/${id+ '.json'}`)
       .then(response => response.json())
       .then(data => {
@@ -43,49 +43,53 @@ class Phones extends React.Component {
   render() {
     const phoneImages = (`/${this.state.phone.images}`).split(',');
     const {phone, isLoaded, imageIndex, isShown} = this.state;
+    const {handleClick} = this.props;
 
     return (
-      <div>
-        {isLoaded ?
-          <>
-            {isShown ?
-            <div className="change_img_block">
-            <div>
-              {imageIndex > 0 &&
-              <button  onClick={() => this.handleSwitchImage(imageIndex -1)} className="change-button">
-              {'<'}
-              </button>}
-              </div>
+      <div className="Phone">
+          {isLoaded ?
+            <>
+              {isShown ?
+              <div className="change_img_block">
               <div>
-                <img
-                  src={`${imageFromUrl}/${phoneImages[imageIndex]}`}
-                  alt="Phone"
-                />
+                {imageIndex > 0 &&
+                <button  onClick={() => this.handleSwitchImage(imageIndex -1)} className="change-button">
+                {'<'}
+                </button>}
                 </div>
                 <div>
-              {imageIndex < phoneImages.length-1 &&
-              <button  onClick={() => this.handleSwitchImage(imageIndex +1)} className="change-button">
-                {'>'}
-              </button>}
+                  <img
+                    src={`${imageFromUrl}/${phoneImages[imageIndex]}`}
+                    alt="Phone"
+                  />
+                  </div>
+                  <div>
+                {imageIndex < phoneImages.length-1 &&
+                <button  onClick={() => this.handleSwitchImage(imageIndex +1)} className="change-button">
+                  {'>'}
+                </button>}
+                </div>
+                <button className="change-button" onClick={()=> this.handleCloseImage()} >{'Close'}</button>
               </div>
-              <button className="change-button" onClick={()=> this.handleCloseImage()} >{'Close'}</button>
-            </div>
-              :  '' }
-          <div className="phoneimage">
-            {phoneImages.map((image, index) => (
-              <img
-                  src={`${imageFromUrl}/${image}`}
-                className="img_preview"
-                key={Math.random()}
-                alt="Phone"
-                onClick={() => this.handleSwitchImage(index)}
+                :  '' }
+              <div className="phoneimage">
+                {phoneImages.map((image, index) => (
+                  <img
+                    src={`${imageFromUrl}/${image}`}
+                    className="img_preview"
+                    key={Math.random()}
+                    alt="Phone"
+                    onClick={() => this.handleSwitchImage(index)}
+                  />
+                ))}
+              </div>
+              <PhoneDetails
+                phone={phone}
+                handleClick={handleClick}
               />
-            ))}
-          </div>
-          <PhoneDetails phone={phone} />
-          </>
-          : <Loader />
-        }
+            </>
+            : <Loader />
+          }
       </div>
     )
   };

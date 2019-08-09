@@ -40,9 +40,10 @@
 }
 
 .phones_list {
+  position: relative;
   display: grid;
-  grid-template-columns: 23% 23% 23% 23%;
-  height: 350px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 600px;
   padding: 10px;
 }
 
@@ -64,8 +65,8 @@
 }
 
 .add-to-basket_button {
-  position: fixed;
-  bottom:25%;
+  position: absolute;
+  bottom: 20%;
   font-family: arial,sans-serif;
   font-size: 14px;
   font-weight: bold;

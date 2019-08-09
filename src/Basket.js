@@ -9,13 +9,20 @@ class Basket extends React.Component {
   state = {
     addeSelectedPhones: [],
   }
+
   render() {
-    const {selectedPhones, handleItemDelete} = this.props;
+    const {
+      selectedPhones,
+      handleItemDelete,
+      decreaseQuantity,
+      increaseQuantity
+      } = this.props;
     return(
       <div className="basket_phones_list">
         <h6 >Basket with {selectedPhones.length} item</h6>
         {selectedPhones.map(phone => (
-          <div key={Math.random()}
+          <div
+            key={Math.random()}
             className="basket_phones_item"
           >
             <div>
@@ -39,8 +46,28 @@ class Basket extends React.Component {
               </Link>
               <p> {phone.snippet}</p>
             </div>
+            <div className="phone_quantity">
+              <button
+                onClick={() => increaseQuantity(phone.id)}
+                className="small_delete-button"
+              >
+                +
+              </button>
+              <p>{phone.quantity}</p>
+              <button
+                onClick={() => decreaseQuantity(phone.id)}
+                className="small_delete-button"
+              >
+                -
+              </button>
+            </div>
             <div>
-              <button onClick={() => handleItemDelete(phone.id)} className="delete-button">Delete</button>
+              <button
+                onClick={() => handleItemDelete(phone.id)}
+                className="delete-button"
+              >
+                Delete
+              </button>
             </div>
         </div>
         ))}
