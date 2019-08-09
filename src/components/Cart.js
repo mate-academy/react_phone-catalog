@@ -24,31 +24,34 @@ const Cart = ({
                     name={phone.name}
                     id={phone.id}
                     className="control-btn-icons"
-                    src="/img/minus-icon.png"
+                    src="./img/minus-icon.png"
                     alt="minus-button"
                   />
                 </button>
+
                 <button type="button" className="btn btn-control">
                   <img
                     onClick={handleIncreasQuantity}
                     name={phone.name}
                     id={phone.id}
                     className="control-btn-icons"
-                    src="/img/add-icon.png"
+                    src="./img/add.png"
                     alt="add-button"
                   />
                 </button>
+
                 <button type="button" className="btn btn-control">
                   <img
                     onClick={handleDeleteItem}
                     name={phone.name}
                     id={phone.id}
                     className="control-btn-icons"
-                    src="/img/Delete.png"
+                    src="./img/Delete.png"
                     alt="delete-button"
                   />
                 </button>
               </div>
+
               <table className="order-item">
                 <thead>
                   <tr>
@@ -57,6 +60,7 @@ const Cart = ({
                     <th>Extra details link:</th>
                   </tr>
                 </thead>
+
                 <tbody>
                   <tr>
                     <td>{phone.name}</td>
@@ -117,4 +121,4 @@ Cart.propTypes = {
   ).isRequired,
 };
 
-export default React.memo(Cart);
+export default Cart;

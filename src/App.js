@@ -21,6 +21,19 @@ export default class App extends Component {
     this.handleAddToCart();
   }
 
+  getFromLocalStorage = () => {
+    const storageData = localStorage.getItem('orderedPhones');
+    const getCart = JSON.parse(storageData);
+
+    return getCart;
+  };
+
+  saveToLocalStorage = () => {
+    const data = this.state.orderedPhones;
+
+    localStorage.setItem('orderedPhones', JSON.stringify(data));
+  };
+
   handleAddToCart = async(event) => {
     const { id } = event.target;
     const quantity = 1;
@@ -33,6 +46,8 @@ export default class App extends Component {
         orderedPhones: [...state.orderedPhones, phone],
       }));
     }
+
+    this.saveToLocalStorage();
   }
 
   handleIncreasQuantity = (event) => {
