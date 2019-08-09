@@ -22,13 +22,19 @@ export default class App extends Component {
     const data = await getPhones();
 
     this.setState({ initialPhones: data });
+
+    const storage = this.getFromLocalStorage();
+
+    this.setState({ orderedPhones: storage });
+
+    this.saveToLocalStorage();
   }
 
   getFromLocalStorage = () => {
     const storageData = localStorage.getItem('orderedPhones');
     const getCart = JSON.parse(storageData);
 
-    return getCart;
+    return getCart || [];
   };
 
   saveToLocalStorage = () => {
@@ -37,7 +43,7 @@ export default class App extends Component {
     localStorage.setItem('orderedPhones', JSON.stringify(data));
   };
 
-  handleAddToCart = (event) => {
+  handleAddToCart =(event) => {
     const { id } = event.target;
     const quantity = 1;
     const link = `/phones/${id}`;
@@ -100,6 +106,10 @@ export default class App extends Component {
   }
 
   render() {
+    setTimeout(() => {
+      this.saveToLocalStorage();
+    }, 200);
+
     return (
       <div className="phones-catalog">
         <Header orderedPhonesLength={this.state.orderedPhones.length} />
@@ -113,7 +123,6 @@ export default class App extends Component {
               render={() => (
                 <PhonesPage
                   handleAddToCart={this.handleAddToCart}
-                  initialPhones={this.state.initialPhones}
                 />
               )}
             />

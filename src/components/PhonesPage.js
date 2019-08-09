@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import { getPhones } from '../api/getPhones';
 import Loader from './Loader';
 import SearchPanel from './SearchPanel';
 import Pagination from './Pagination';
@@ -9,11 +10,20 @@ import PhoneItem from './PhoneItem';
 
 export default class PhonesPage extends Component {
   state = {
-    phones: [...this.props.initialPhones],
-    copyPhones: [...this.props.initialPhones],
+    phones: [],
+    copyPhones: [],
     lastPhone: '',
     firstPhone: '',
   };
+
+  async componentDidMount() {
+    const data = await getPhones();
+
+    this.setState({
+      phones: data,
+      copyPhones: data,
+    });
+  }
 
   handleSearchChange = (event) => {
     const value = event.target.value.toLowerCase().trim();
@@ -109,7 +119,4 @@ export default class PhonesPage extends Component {
 
 PhonesPage.propTypes = {
   handleAddToCart: PropTypes.func.isRequired,
-  initialPhones: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.string.isRequired,
-  })).isRequired,
 };
