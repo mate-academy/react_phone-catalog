@@ -14,7 +14,14 @@ class App extends React.Component {
     basket: [],
   };
   
-  basketInject = (item) => {
+  basketInject = (itemId, itemUrl, itemName, itemImage) => {
+    const item = {
+      id: itemId,
+      quantity: 1,
+      phone: itemUrl,
+      name: itemName,
+      image: itemImage,
+    }
     this.setState(prevState => ({
       basket: !prevState.basket.find(basketItem => basketItem.id === item.id)
         ? [...prevState.basket, item]
@@ -48,7 +55,7 @@ class App extends React.Component {
   };
   
   render() {
-    const { basket } = this.state
+    const { basket } = this.state;
     return (
       <div className="App">
         <div className="main-link__container">
@@ -83,7 +90,12 @@ class App extends React.Component {
         </div>
         <Switch>
           <Route path="/" exact component={Home} />
-          <Route  exact path='/catalog' component={FullCatalog}/>
+          <Route  exact path='/catalog' render={({ match}) =>
+            <FullCatalog
+              match={match}
+              basketInject={this.basketInject} />
+            }
+            />
           <Route
             path="/catalog/:phoneId?"
             render={({ match }) =>

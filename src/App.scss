@@ -86,6 +86,9 @@ a {
   &__item {
     display: flex;
     flex-direction: column;
+    border: 1px solid rgba(62,62,62,0.5);
+    border-radius: 3px;
+    padding: 10px;
   }
 
   &__item:hover &__item-head {
@@ -105,9 +108,25 @@ a {
   }
 
   &__item-snippet {
-    margin: 10px 0 0;
+    margin: 10px 0 20px;
     font-size: 14px;
     text-align: left;
+  }
+
+  &__item-button {
+    width: 93px;
+    height: 40px;
+    background-color: #d51f1f;
+    border: none;
+    border-radius: 3px;
+    color: white;
+    font-weight: bold;
+    margin: auto auto 0;
+  }
+
+  &__item-button:hover {
+    background-color: #e02d2d;
+    cursor: pointer;
   }
 }
 

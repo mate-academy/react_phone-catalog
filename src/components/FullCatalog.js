@@ -27,9 +27,16 @@ class FullCatalog extends React.Component {
         phones: filteredPhones,
       })
   };
+  
+  basketAdd = (event) => {
+    event.preventDefault();
+    const { basketInject } = this.props;
+    
+  };
 
   render() {
     const { isLoaded, initialPhones, phones } = this.state;
+    const { basketInject } = this.props;
     if (!isLoaded) {
       return (
         <div className="Loader">
@@ -61,6 +68,15 @@ class FullCatalog extends React.Component {
               />
               <h3 className="catalog__item-head">{phone.name}</h3>
               <p className="catalog__item-snippet">{phone.snippet}</p>
+              <button
+                className="catalog__item-button"
+                onClick={(event) => {
+                  event.preventDefault();
+                  return basketInject(phone.id, `/catalog/${phone.id}`, phone.name, phone.imageUrl)
+                }}
+              >
+                Add to cart
+              </button>
             </Link>
           ))}
         </div>

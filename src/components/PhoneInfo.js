@@ -37,16 +37,10 @@ class PhoneInfo extends React.Component {
   };
   
   addCart = (event) => {
+    event.preventDefault();
     const { phoneInfo } = this.state;
     const { url } = this.props.match;
-    const basketItem = {
-      id: phoneInfo.id,
-      quantity: 1,
-      phone: url,
-      name: phoneInfo.name,
-      image: phoneInfo.images[0],
-    };
-    this.props.basketInject(basketItem)
+    this.props.basketInject(phoneInfo.id, url, phoneInfo.name, phoneInfo.images[0])
   };
 
   render() {
