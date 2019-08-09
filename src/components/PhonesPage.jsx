@@ -4,9 +4,23 @@ import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import Loader from 'react-loader-spinner';
 import { getPhones } from '../api/utils';
 
+const sortPhones = (a, b) => {
+  if (a.name < b.name) {
+    return -1;
+  }
+
+  if (a.name > b.name) {
+    return 1;
+  }
+
+  return 0;
+};
+
 class PhonesPage extends React.Component {
   state = {
     phones: [],
+    sortedPhones: [],
+    searchText: '',
     isLoading: true,
   }
 
@@ -14,13 +28,47 @@ class PhonesPage extends React.Component {
     const phonesFromApi = await getPhones();
 
     this.setState({
-      phones: phonesFromApi,
+      phones: [...phonesFromApi],
+      sortedPhones: [...phonesFromApi],
       isLoading: false,
     });
   }
 
+  handleSetSearchText = (event) => {
+    const { value } = event.target;
+
+    this.setState({
+      searchText: value,
+    });
+  };
+
+  getPhonesByFilter = (phones, searchText) => {
+    const filteringPhones = [...phones].filter(phone => (
+      (phone.id.includes(searchText) || phone.snippet.includes(searchText))
+    ));
+
+    return filteringPhones;
+  };
+
+  handleSort = (event) => {
+    const { value } = event.target;
+
+    if (value === 'alphabetial') {
+      this.setState(prevState => ({
+        phones: prevState.phones.sort(sortPhones),
+      }));
+    }
+
+    if (value === 'newest') {
+      this.setState(prevState => ({
+        phones: prevState.sortedPhones,
+      }));
+    }
+  };
+
   render() {
-    const { isLoading, phones } = this.state;
+    const { isLoading, phones, searchText } = this.state;
+    const shownPhones = this.getPhonesByFilter(phones, searchText);
 
     return (
       <div className="PhonesPage">
@@ -33,14 +81,15 @@ class PhonesPage extends React.Component {
               className="search__fieled"
               type="search"
               placeholder="Tap for searching"
+              onChange={this.handleSetSearchText}
             />
           </div>
 
           <div>
             <span>Sort by:</span>
-            <select>
-              <option value="">Newest</option>
-              <option value="">Alphabetial</option>
+            <select onChange={this.handleSort}>
+              <option value="newest">Newest</option>
+              <option value="alphabetial">Alphabetial</option>
             </select>
           </div>
 
@@ -57,7 +106,7 @@ class PhonesPage extends React.Component {
         )}
 
         <ul className="catalog">
-          {phones.map(phone => (
+          {shownPhones.map(phone => (
             <li key={phone.id}>
               <div className="phone">
 

@@ -144,7 +144,7 @@
   display: grid;
   grid-template-columns: repeat(4, auto);
   justify-content: space-between;
-  grid-gap: 50px 50px;
+  grid-row-gap: 50px;
   width: 80%;
   margin: 0 auto;
 }
