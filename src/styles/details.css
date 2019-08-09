@@ -1,0 +1,9 @@
+.Details_List {
+  width: 900px;
+  padding: 0 0 0 200px;
+  font-size: 12px;
+}
+
+.Details_Li-ul {
+  list-style-type: none;
+}
