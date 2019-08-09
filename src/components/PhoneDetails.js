@@ -25,9 +25,6 @@ const PhoneDetais = ({ phone }) => {
         <div className="section__content">
           <h2 className="indent-mb-m">{name}</h2>
           <p className="indent-mb-l">{description}</p>
-          <div className="section__button">
-            <button type="button">Add</button>
-          </div>
         </div>
       </div>
       <div className="section__gallery">

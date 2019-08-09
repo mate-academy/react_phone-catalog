@@ -132,7 +132,7 @@ const PhonesPage = () => {
                     component={PhoneDetailsPage}
                   />
                   <Route
-                    path="/phones:queryParams?"
+                    path="/phones"
                     exact
                     render={() => (
                       <PhoneCatalog

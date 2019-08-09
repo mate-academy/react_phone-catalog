@@ -7,7 +7,7 @@ const PhoneDetailsPage = ({ match }) => {
   useEffect(() => {
     fetchPhone();
     setTimeout(() => setLoader(true), 1000);
-  }, []);
+  }, [match]);
 
   const [phone, setPhone] = useState([]);
   const [loader, setLoader] = useState(0);
