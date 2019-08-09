@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Loader from './Loader';
 import { getPhones } from './sources';
 
-const PhonesPage = ( props ) => {
+const PhonesPage = (props) => {
   const [phones, setPhones] = useState([]);
   useEffect(() => {
     (async () => {
@@ -11,22 +11,36 @@ const PhonesPage = ( props ) => {
       setPhones(phonesFromServer);
     })();
   }, []);
-  console.log(props);
+
+  console.log(phones);
   return (
     <>
-    <h1>Phone page</h1>
-    <ul>
-      {phones.map(phone => (
-        <li>
-          <Link
-            to={`${props.match.path}/${phone.id}`}
-            className="link"
-          >
-          {phone.name}
-          </Link>
-        </li>
-      ))}
-    </ul>
+      <ul className="catalog-container">
+        {phones.map(phone => (
+          <li className="catalog-item">
+            <Link
+              to={`${props.match.path}/${phone.id}`}
+              className="link card-link"
+            >
+              <img src={phone.imageUrl}
+                className="product-image"
+                alt={phone.id}
+              />
+              <p className="title">
+                {phone.name}
+              </p>
+              <p className="overview">
+                {phone.snippet}
+              </p>
+
+            </Link>
+            <button className="buy-button" type="button">
+              ADD TO CART
+            </button>
+
+          </li>
+        ))}
+      </ul>
     </>
   )
 }
