@@ -11,6 +11,9 @@ class Basket extends React.Component {
   quantityChange = (event) => {
     event.preventDefault();
     const { value, dataset } = event.target;
+    if (dataset.quantity <= 1 && dataset.direction === 'minus') {
+      return
+    }
     this.props.basketChangeItemQuantity(value, dataset.direction);
   };
   
@@ -41,6 +44,7 @@ class Basket extends React.Component {
                      {item.quantity}
                     <button
                       value={item.id}
+                      data-quantity={item.quantity}
                       data-direction="minus"
                       onClick={this.quantityChange}
                       className="Basket__item-quantity-minus"

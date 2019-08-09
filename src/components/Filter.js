@@ -15,7 +15,7 @@ const Filter = ({ injectFilteredPhones, initialPhones }) => {
     switch (value) {
       case 'alphabet':
         filterePhones = [...initialPhones]
-          .sort((a, b) => (a.name > b.name)? 1 : -1);
+          .sort((a, b) => a.name.localeCompare(b.name) > b.name.localeCompare(a.name) ? 1 : -1);
         break;
       case 'begin':
         filterePhones = [...initialPhones]
