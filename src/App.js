@@ -69,11 +69,13 @@ class App extends React.Component {
           </NavLink>
           <NavLink
             to="/basket"
-            className="main-link"
+            className={this.state.basket.length !== 0
+              ? 'main-link main-link__have-item'
+              : 'main-link'}
             activeClassName="main-link__active"
           >
             <img
-              className="main-link__basket"
+              className='main-link__basket'
               src="img/shopping-cart.svg"
             />
           </NavLink>

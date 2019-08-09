@@ -35,6 +35,7 @@ a {
   padding: 0 25px;
   box-sizing: border-box;
   align-items: center;
+  position: relative;
 
   &:hover {
     background: #007fd1;
@@ -49,6 +50,18 @@ a {
   &__basket {
     width: 27px;
     color: white;
+    position: relative;
+  }
+
+  &__have-item::after {
+    content: " ";
+    background-color: #d51f1f;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    top: 4px;
+    right: 24px;
   }
 }
 
