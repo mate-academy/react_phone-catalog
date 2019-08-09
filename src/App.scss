@@ -45,9 +45,12 @@ a {
     background: #0467a6;
     box-shadow: inset 0 0 5px 1px rgba(0,63,104,1);
   }
+
+  &__basket {
+    width: 27px;
+    color: white;
+  }
 }
-
-
 
 .Catalog-container {
   display: flex;
@@ -142,6 +145,30 @@ a {
     padding: 50px;
   }
 
+  &__head-and-button {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__button {
+    width: 93px;
+    height: 40px;
+    background-color: #d51f1f;
+    border: none;
+    border-radius: 3px;
+    color: white;
+    font-weight: bold;
+  }
+
+  &__button:hover {
+    background-color: #e02d2d;
+    cursor: pointer;
+  }
+
+  &__button:focus {
+    outline: none;
+  }
+
   &__discription-details {
     display: grid;
     grid-template-columns: repeat(3,1fr);
@@ -181,5 +208,49 @@ a {
     border-radius: 0 0 3px 3px;
     position: relative;
     top: -1px;
+  }
+}
+
+.Basket {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px;
+
+  &__item {
+    display: flex;
+    align-items: center;
+    border: 1px solid #3e3e3e;
+    border-radius: 3px;
+    margin: 4px;
+    padding: 10px;
+  }
+
+  &__item p {
+    margin: 0;
+    font-size: 12px;
+  }
+
+  &__item-image {
+    width: 70px;
+    margin-right: 10px;
+  }
+
+  &__item-name {
+    margin: 0;
+    font-size: 13px;
+    margin-right: 10px;
+  }
+
+  &__item-remove-button {
+    border: none;
+    background-color: #d51f1f;
+    border-radius: 3px;
+    color: white;
+  }
+
+  &__item-remove-button:hover {
+    background-color: #e02d2d;
+    cursor: pointer;
   }
 }

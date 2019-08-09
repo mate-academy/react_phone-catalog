@@ -43,6 +43,10 @@ a {
   background: #0467a6;
   box-shadow: inset 0 0 5px 1px #003f68;
 }
+.main-link__basket {
+  width: 27px;
+  color: white;
+}
 
 .Catalog-container {
   display: flex;
@@ -126,6 +130,26 @@ a {
   flex-direction: column;
   padding: 50px;
 }
+.Phone-info-main__head-and-button {
+  display: flex;
+  justify-content: space-between;
+}
+.Phone-info-main__button {
+  width: 93px;
+  height: 40px;
+  background-color: #d51f1f;
+  border: none;
+  border-radius: 3px;
+  color: white;
+  font-weight: bold;
+}
+.Phone-info-main__button:hover {
+  background-color: #e02d2d;
+  cursor: pointer;
+}
+.Phone-info-main__button:focus {
+  outline: none;
+}
 .Phone-info-main__discription-details {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -160,6 +184,44 @@ a {
   border-radius: 0 0 3px 3px;
   position: relative;
   top: -1px;
+}
+
+.Basket {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px;
+}
+.Basket__item {
+  display: flex;
+  align-items: center;
+  border: 1px solid #3e3e3e;
+  border-radius: 3px;
+  margin: 4px;
+  padding: 10px;
+}
+.Basket__item p {
+  margin: 0;
+  font-size: 12px;
+}
+.Basket__item-image {
+  width: 70px;
+  margin-right: 10px;
+}
+.Basket__item-name {
+  margin: 0;
+  font-size: 13px;
+  margin-right: 10px;
+}
+.Basket__item-remove-button {
+  border: none;
+  background-color: #d51f1f;
+  border-radius: 3px;
+  color: white;
+}
+.Basket__item-remove-button:hover {
+  background-color: #e02d2d;
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=App.css.map */
