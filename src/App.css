@@ -1,1 +1,177 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
 
+body {
+  font-size: 14px;
+  background-color: #fafaf4;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+header {
+  padding: 1rem 2rem;
+  background-color: #fff;
+}
+
+main {
+  padding: 2rem;
+}
+
+.nav ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.nav li {
+  margin: 1rem;
+}
+
+.nav a {
+  opacity: 0.5;
+  transition: opacity 0.5s ease;
+}
+
+.nav a.active {
+  opacity: 1;
+}
+
+h1 {
+  text-align: center;
+}
+
+.catalog__card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: #fff;
+  margin-bottom: 2rem;
+  padding: 2rem;
+}
+
+.image-container {
+  position: relative;
+  display: block;
+  width: 100px;
+  height: 100px;
+}
+
+.image-container img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.catalog__card .image-container {
+  margin: 0 2rem;
+}
+
+.indent-mb-sm {
+  margin-bottom: 1rem;
+}
+
+.indent-mb-m {
+  margin-bottom: 2rem;
+}
+
+.indent-mb-l {
+  margin-bottom: 3rem;
+}
+
+.basket__button {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin: 0 0.5rem;
+}
+
+.basket {
+  width: 50%;
+}
+
+.basket__quantity {
+  display: flex;
+  align-items: center;
+  margin: 0 1.5rem;
+}
+
+.basket__title {
+  flex: auto;
+}
+
+.basket__item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff;
+  padding: 1.5rem;
+}
+
+.card__description {
+  flex: auto;
+}
+
+.card__button {
+  margin-left: 2rem;
+  width: 4rem;
+  height: 2.5rem;
+}
+
+button {
+  border: none;
+  background-color: #101010;
+  color: white;
+  width: 100%;
+  height: 100%;
+}
+
+input,
+select {
+  background-color: white;
+  height: 2rem;
+}
+
+label {
+  margin-right: 1rem;
+}
+
+.input-block {
+  margin-right: 2rem;
+}
+
+.inputs-field {
+  display: flex;
+  flex-direction: row;
+}
+
+.error {
+  text-align: center;
+}
+
+.section__main-content {
+  display: flex;
+  flex-direction: row;
+}
+
+.section__content {
+  padding: 3rem;
+}
+
+.section__button {
+  width: 5rem;
+  height: 2.5rem;
+}
