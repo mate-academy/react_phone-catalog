@@ -400,6 +400,43 @@ ul > .active:not(:last-child) {
 
 /*--- CART ---*//*--- CART ---*/
 
+.cart-empty {
+  max-width: max-content;
+  margin: 100px auto;
+  text-align: center;
+
+}
+
+.cart-empty > a {
+  text-decoration: none;
+  color: #e10edda0;
+  transition: all 1s;
+
+}
+
+.cart-empty > a:hover {
+  color: #0ca2e2aa;
+  transition: 0.5 s;
+}
+
+.cart-empty-link {
+  display: block;
+  width: max-content;
+  margin: 30px auto;
+  font-size: 45px;
+}
+
+.cart-empty-link:hover {
+  transform: scale(1.1);
+}
+
+.cart-empty {
+  width: 70%;
+  margin: 100px auto;
+  font-size: 32px;
+  text-decoration: none;
+}
+
 .order-container {
   display: flex;
   flex-wrap: wrap;

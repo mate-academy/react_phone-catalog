@@ -1,61 +1,50 @@
 /* eslint-disable react/jsx-one-expression-per-line */
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import Loader from './Loader';
-import { getPhones } from '../api/getPhones';
 import SearchPanel from './SearchPanel';
 import Pagination from './Pagination';
 import PhoneItem from './PhoneItem';
 
-export default class PhonesPage extends PureComponent {
+export default class PhonesPage extends Component {
   state = {
-    phones: [],
-    copyPhones: [],
+    phones: [...this.props.initialPhones],
+    copyPhones: [...this.props.initialPhones],
     lastPhone: '',
     firstPhone: '',
   };
 
-  async componentDidMount() {
-    const data = await getPhones();
-
-    this.setState({ phones: data, copyPhones: data });
-  }
-
   handleSearchChange = (event) => {
-    const searchedValue = event;
+    const value = event.target.value.toLowerCase().trim();
 
     this.setState(state => ({
       phones: state.copyPhones.filter(phone => [phone.snippet, phone.name]
         .join('')
         .toLowerCase()
-        .includes(searchedValue)),
+        .includes(value)),
     }));
   };
 
   handleSortChange = (event) => {
-    switch (event) {
+    const { value } = event.target;
+
+    switch (value) {
       case 'alphabet':
         return this.setState(state => ({
           phones: state.phones.sort((a, b) => a.name.localeCompare(b.name)),
-          copyPhones: state.copyPhones.sort(
-            (a, b) => a.name.localeCompare(b.name)
-          ),
+          copyPhones: state.copyPhones
+            .sort((a, b) => a.name.localeCompare(b.name)),
         }));
 
       case 'age':
         return this.setState(state => ({
           phones: state.phones.sort((a, b) => a.age - b.age),
-          copyPhones: state.copyPhones.sort(
-            (a, b) => a.age - b.age
-          ),
+          copyPhones: state.copyPhones.sort((a, b) => a.age - b.age),
         }));
 
       default:
-        return this.setState(state => ({
-          phones: state.phones,
-          copyPhones: state.copyPhones,
-        }));
+        return 0;
     }
   };
 
@@ -78,10 +67,10 @@ export default class PhonesPage extends PureComponent {
         {firstPhone}
         {firstPhone
           ? '-'
-          : `${[...copyPhones].length} `}
+          : `${copyPhones.length} `}
         {lastPhone
-        > `${[...copyPhones].length}`
-          ? `${[...copyPhones].length} `
+        > `${copyPhones.length}`
+          ? `${copyPhones.length} `
           : `${lastPhone} `}
         of
         {` ${copyPhones.length}`}
@@ -120,4 +109,7 @@ export default class PhonesPage extends PureComponent {
 
 PhonesPage.propTypes = {
   handleAddToCart: PropTypes.func.isRequired,
+  initialPhones: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string.isRequired,
+  })).isRequired,
 };

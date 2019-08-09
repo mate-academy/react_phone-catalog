@@ -1,8 +1,8 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+
+import CartItem from './CartItem';
 
 const Cart = ({
   orderedPhones,
@@ -13,78 +13,25 @@ const Cart = ({
   <div className="order-container">
     <div className="order-box">
       <h3>Your order:</h3>
-      <ul className="order-list">
-        {orderedPhones.map(phone => (
-          <li key={phone.id}>
-            <section className="order-content">
-              <div className="order-control-block">
-                <button type="button" className="btn btn-control">
-                  <img
-                    onClick={handleDecreasQuantity}
-                    name={phone.name}
-                    id={phone.id}
-                    className="control-btn-icons"
-                    src="./img/minus-icon.png"
-                    alt="minus-button"
-                  />
-                </button>
-
-                <button type="button" className="btn btn-control">
-                  <img
-                    onClick={handleIncreasQuantity}
-                    name={phone.name}
-                    id={phone.id}
-                    className="control-btn-icons"
-                    src="./img/add.png"
-                    alt="add-button"
-                  />
-                </button>
-
-                <button type="button" className="btn btn-control">
-                  <img
-                    onClick={handleDeleteItem}
-                    name={phone.name}
-                    id={phone.id}
-                    className="control-btn-icons"
-                    src="./img/Delete.png"
-                    alt="delete-button"
-                  />
-                </button>
-              </div>
-
-              <table className="order-item">
-                <thead>
-                  <tr>
-                    <th>Phone:</th>
-                    <th>Quantity:</th>
-                    <th>Extra details link:</th>
-                  </tr>
-                </thead>
-
-                <tbody>
-                  <tr>
-                    <td>{phone.name}</td>
-                    <td>
-                      <span className="order-quantity">{phone.quantity}</span>
-                    </td>
-                    <td>
-                      <Link to={phone.link}>
-                        <img
-                          className="linked-order-photo"
-                          src={phone.images[0]}
-                          alt={phone.name}
-                          title="see phone details again"
-                        />
-                      </Link>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </section>
-          </li>
-        ))}
-      </ul>
+      <div
+        style={!orderedPhones.length < 1 ? { display: 'none' } : {}}
+        className="cart-empty"
+      >
+        <span>
+          {`You haven’t chosen anything yet. But it's not too late to fix :)`}
+        </span>
+        <Link className="cart-empty-link" to="/phones">
+          Open catalog
+        </Link>
+      </div>
+      <CartItem
+        orderedPhones={orderedPhones}
+        handleIncreasQuantity={handleIncreasQuantity}
+        handleDecreasQuantity={handleDecreasQuantity}
+        handleDeleteItem={handleDeleteItem}
+      />
     </div>
+
     <div className="order-btn-block">
       <div className="order-total">
         {orderedPhones.length > 1 ? (
@@ -100,7 +47,11 @@ const Cart = ({
           ''
         )}
       </div>
-      <button type="button" className="btn btn-buy btn-pay">
+      <button
+        style={orderedPhones.length < 1 ? { display: 'none' } : {}}
+        type="button"
+        className="btn btn-buy btn-pay"
+      >
         {'->> TO PAY <<-'}
       </button>
     </div>
@@ -117,7 +68,7 @@ Cart.propTypes = {
       link: PropTypes.string.isRequired,
       quantity: PropTypes.number.isRequired,
       id: PropTypes.string.isRequired,
-    }).isRequired
+    }).isRequired,
   ).isRequired,
 };
 

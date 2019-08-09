@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Route, Switch } from 'react-router-dom';
 
-import { getExtraDetails } from './api/getPhones';
+import { getPhones } from './api/getPhones';
 import Cart from './components/Cart';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -14,11 +14,14 @@ import NotFoundPage from './components/NotFoundPage';
 
 export default class App extends Component {
   state = {
+    initialPhones: [],
     orderedPhones: [],
   }
 
-  componentWillUnmount() {
-    this.handleAddToCart();
+  async componentDidMount() {
+    const data = await getPhones();
+
+    this.setState({ initialPhones: data });
   }
 
   getFromLocalStorage = () => {
@@ -34,11 +37,14 @@ export default class App extends Component {
     localStorage.setItem('orderedPhones', JSON.stringify(data));
   };
 
-  handleAddToCart = async(event) => {
+  handleAddToCart = (event) => {
     const { id } = event.target;
     const quantity = 1;
     const link = `/phones/${id}`;
-    const phone = { ...await getExtraDetails(id), quantity, link };
+    const matchedPhone = this.state.initialPhones
+      .filter(phone => phone.id === id)[0];
+
+    const phone = { ...matchedPhone, quantity, link };
     const checkId = phoneId => phoneId.id === id;
 
     if (!this.state.orderedPhones.some(checkId)) {
@@ -59,6 +65,8 @@ export default class App extends Component {
     phone.quantity += 1;
 
     this.setState(state => ({ orderedPhones: state.orderedPhones }));
+
+    this.saveToLocalStorage();
   }
 
   handleDecreasQuantity = (event) => {
@@ -72,6 +80,8 @@ export default class App extends Component {
     }
 
     this.setState(state => ({ orderedPhones: state.orderedPhones }));
+
+    this.saveToLocalStorage();
   }
 
   handleDeleteItem = (event) => {
@@ -85,6 +95,8 @@ export default class App extends Component {
     this.setState(state => ({
       orderedPhones: state.orderedPhones,
     }));
+
+    this.saveToLocalStorage();
   }
 
   render() {
@@ -99,7 +111,10 @@ export default class App extends Component {
               path="/phones"
               exact
               component={() => (
-                <PhonesPage handleAddToCart={this.handleAddToCart} />
+                <PhonesPage
+                  handleAddToCart={this.handleAddToCart}
+                  initialPhones={this.state.initialPhones}
+                />
               )}
             />
             <Route

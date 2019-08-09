@@ -54,4 +54,4 @@ PhoneItem.propTypes = {
   handleAddToCart: PropTypes.func.isRequired,
 };
 
-export default React.memo(PhoneItem);
+export default PhoneItem;
