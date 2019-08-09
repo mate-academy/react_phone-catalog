@@ -200,9 +200,44 @@ a {
   margin: 4px;
   padding: 10px;
 }
-.Basket__item p {
+.Basket__item:hover .Basket__item-name {
+  color: #0072bc;
+}
+.Basket__item-quantity {
   margin: 0;
   font-size: 12px;
+  display: flex;
+  align-items: center;
+}
+.Basket__item-quantity button {
+  width: 25px;
+  height: 20px;
+  padding: 0;
+  background: #0072bc;
+  border: none;
+  border-radius: 3px;
+  color: white;
+  font-size: 17px;
+  box-sizing: border-box;
+  margin: 0 4px;
+  cursor: pointer;
+}
+.Basket__item-quantity button:hover {
+  background-color: #007fd1;
+}
+.Basket__item-quantity button:hover {
+  color: black;
+}
+.Basket__item-quantity button:focus {
+  outline: none;
+}
+.Basket__item-quantity-plus::before {
+  content: "+";
+}
+.Basket__item-quantity-minus::before {
+  content: "-";
+  position: relative;
+  top: -1px;
 }
 .Basket__item-image {
   width: 70px;

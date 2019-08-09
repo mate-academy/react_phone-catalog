@@ -31,6 +31,22 @@ class App extends React.Component {
     }))
   };
   
+  basketChangeItemQuantity =(id, direction) => {
+    direction === 'plus'
+      ? this.setState(prevState => ({
+        basket: prevState.basket
+          .map(basketItem => basketItem.id === id
+            ? { ...basketItem, quantity: basketItem.quantity +1 }
+            : basketItem)
+      }))
+      : this.setState(prevState => ({
+        basket: prevState.basket
+          .map(basketItem => basketItem.id === id
+            ? { ...basketItem, quantity: basketItem.quantity -1 }
+            : basketItem)
+      }))
+  };
+  
   render() {
     return (
       <div className="App">
@@ -78,6 +94,7 @@ class App extends React.Component {
               <Basket
                 basketRemoveItem={this.basketRemoveItem}
                 basket={this.state.basket}
+                basketChangeItemQuantity={this.basketChangeItemQuantity}
               />)} />
           <Route path="*" component={NotFoundPage} />
         </Switch>

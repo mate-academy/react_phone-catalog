@@ -226,9 +226,51 @@ a {
     padding: 10px;
   }
 
-  &__item p {
+  &__item:hover &__item-name {
+    color: #0072bc;
+  }
+
+  &__item-quantity {
     margin: 0;
     font-size: 12px;
+    display: flex;
+    align-items: center;
+  }
+
+  &__item-quantity button {
+    width: 25px;
+    height: 20px;
+    padding: 0;
+    background: #0072bc;
+    border: none;
+    border-radius: 3px;
+    color: white;
+    font-size: 17px;
+    box-sizing: border-box;
+    margin: 0 4px;
+    cursor: pointer;
+  }
+
+  &__item-quantity button:hover  {
+    background-color: #007fd1;
+  }
+
+  &__item-quantity button:hover{
+    color: black;
+  }
+
+  &__item-quantity button:focus {
+    outline: none;
+  }
+
+  &__item-quantity-plus::before {
+    content: '+';
+  }
+
+  &__item-quantity-minus::before {
+    content: '-';
+    position: relative;
+    top: -1px;
   }
 
   &__item-image {
