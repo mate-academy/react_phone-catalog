@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { Route, NavLink } from 'react-router-dom';
+import { Route, NavLink, Switch } from 'react-router-dom';
 
 import PhonesPage from './PhonesPage';
 import NotFoundPage from './NotFoundPage';
@@ -13,28 +13,28 @@ const HomePage = () => (
 
 const App = () => (
   <div className="App">
-    <h1>Phone catalog</h1>
-    <nav>
+    <nav className="nav__main_container">
       <NavLink
         to="/"
         exact
-        className="tabs__home tabs__position"
+        className="page__home phone__position"
         activeClassName="phoneClassActive"
       >
           Home
       </NavLink>
       <NavLink
         to="/phones"
-        className="tabs__home"
+        className="Phones__page"
         activeClassName="phoneClassActive"
       >
-          tabsPage
+        PhonesPage
       </NavLink>
     </nav>
-    <Route path="/" exact component={HomePage} />
-    <Route path="/phones" component={PhonesPage} />
-    <Route path="/*" component={NotFoundPage} />
-
+    <Switch>
+      <Route path="/" exact component={HomePage} />
+      <Route path="/phones" component={PhonesPage} />
+      <Route path="*" exact component={NotFoundPage} />
+    </Switch>
   </div>
 );
 

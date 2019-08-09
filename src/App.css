@@ -1,4 +1,27 @@
 
 .phoneClassActive {
-  background: black;
+  font-weight: bold;
+  border-bottom: 2px solid #000;
+}
+
+.App {
+  margin: 0;
+  padding: 0;
+}
+
+.nav__main_container {
+  border: 1px solid black;
+  height: 30px;
+  background: cyan;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 45px;
+}
+
+.Phones__page {
+  text-decoration: none;
+}
+
+.page__home {
+  text-decoration: none;
 }
