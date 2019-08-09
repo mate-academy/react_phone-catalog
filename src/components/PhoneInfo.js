@@ -46,7 +46,6 @@ class PhoneInfo extends React.Component {
       name: phoneInfo.name,
       image: phoneInfo.images[0],
     };
-    console.log(event.target.className);
     this.props.basketInject(basketItem)
   };
 
@@ -113,7 +112,7 @@ class PhoneInfo extends React.Component {
               <h5>-Operation system</h5>
               <div>
                 {Object.entries(phoneInfo.android).map(item => (
-                  <p>{item.join(': ')}</p>
+                  <p key={item[0]}>{item.join(': ')}</p>
                 ))}
               </div>
             </div>
@@ -125,7 +124,7 @@ class PhoneInfo extends React.Component {
               <h5>Battery</h5>
               <div>
                 {Object.entries(phoneInfo.battery).map(item => (
-                  <p>{item.join(': ')}</p>
+                  <p key={item[0]}>{item.join(': ')}</p>
                 ))}
               </div>
             </div>
@@ -133,7 +132,7 @@ class PhoneInfo extends React.Component {
               <h5>Camera</h5>
               <div>
                 {Object.entries(phoneInfo.camera).map(item => (
-                  <p>{item.join(': ')}</p>
+                  <p key={item[0]}>{item.join(': ')}</p>
                 ))}
               </div>
             </div>
@@ -141,7 +140,7 @@ class PhoneInfo extends React.Component {
               <h5>Connectivity</h5>
               <div>
                 {Object.entries(phoneInfo.connectivity).map(item => (
-                  <p>{item.join(': ')}</p>
+                  <p key={item[0]}>{item.join(': ')}</p>
                 ))}
               </div>
             </div>
@@ -149,7 +148,7 @@ class PhoneInfo extends React.Component {
               <h5>Hardware</h5>
               <div>
                 {Object.entries(phoneInfo.hardware).map(item => (
-                  <p>{item.join(': ')}</p>
+                  <p key={item[0]}>{item.join(': ')}</p>
                 ))}
               </div>
             </div>
@@ -157,7 +156,7 @@ class PhoneInfo extends React.Component {
               <h5>Size and weight</h5>
               <div>
                 {Object.entries(phoneInfo.sizeAndWeight).map(item => (
-                  <p>{item.join(': ')}</p>
+                  <p key={item[0]}>{item.join(': ')}</p>
                 ))}
               </div>
             </div>
@@ -165,7 +164,7 @@ class PhoneInfo extends React.Component {
               <h5>Storage</h5>
               <div>
                 {Object.entries(phoneInfo.storage).map(item => (
-                  <p>{item.join(': ')}</p>
+                  <p key={item[0]}>{item.join(': ')}</p>
                 ))}
               </div>
             </div>
