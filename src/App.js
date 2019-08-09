@@ -47,28 +47,29 @@ class App extends React.Component {
     }));
   };
 
-  increaseQuantity = () => (
-    this.setState(prevState => ({
-      selectedPhones: prevState.selectedPhones.map(phone => ({
-        ...phone,
-        quantity: phone.quantity + 1,
-      })),
-    }))
+  increaseQuantity = currentPhone => (
+    this.setState((prevState) => {
+      const increasindItem = prevState.selectedPhones
+        .filter(phone => phone.id === currentPhone)[0];
+
+      increasindItem.quantity += 1;
+
+      return { selectedPhones: prevState.selectedPhones };
+    })
   )
 
-  decreaseQuantity = () => (
-    this.setState(prevState => ({
-      selectedPhones: prevState.selectedPhones
-        .map(phone => (
-          phone.quantity > 0
-            ? {
-              ...phone,
-              quantity: phone.quantity - 1,
-            }
-            : phone
-        ))
-        .filter(phone => phone.quantity > 0),
-    }))
+  decreaseQuantity = currentPhone => (
+    this.setState((prevState) => {
+      const decreasindItem = prevState.selectedPhones
+        .filter(phone => phone.id === currentPhone)[0];
+
+      decreasindItem.quantity -= 1;
+
+      return {
+        selectedPhones: prevState.selectedPhones
+          .filter(phone => phone.quantity > 0),
+      };
+    })
   )
 
   render() {

@@ -36,7 +36,7 @@ const Basket = ({
                 type="button"
                 name="-"
                 className="cart-btn minus-btn"
-                onClick={decreaseQuantity}
+                onClick={() => decreaseQuantity(phone.id)}
               >
                 -
               </button>
@@ -51,7 +51,7 @@ const Basket = ({
                 type="button"
                 name="+"
                 className="cart-btn plus-btn"
-                onClick={increaseQuantity}
+                onClick={() => increaseQuantity(phone.id)}
               >
                 +
               </button>
