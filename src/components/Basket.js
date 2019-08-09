@@ -2,7 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-const Basket = ({ selectedPhones, removePhone }) => (
+const Basket = ({
+  selectedPhones,
+  removePhone,
+  decreaseQuantity,
+  increaseQuantity,
+}) => (
   <div>
     <h1 className="basket-title">Added items</h1>
 
@@ -27,9 +32,27 @@ const Basket = ({ selectedPhones, removePhone }) => (
                 {phone.id}
               </Link>
 
-              <div>
+              <button
+                type="button"
+                name="-"
+                className="cart-btn minus-btn"
+                onClick={decreaseQuantity}
+              >
+                -
+              </button>
+
+              <div className="shopping-list__quantity">
                 {`${phone.quantity} item(s)`}
               </div>
+
+              <button
+                type="button"
+                name="+"
+                className="cart-btn plus-btn"
+                onClick={increaseQuantity}
+              >
+                +
+              </button>
 
               <button
                 type="button"
@@ -49,6 +72,8 @@ const Basket = ({ selectedPhones, removePhone }) => (
 Basket.propTypes = {
   selectedPhones: PropTypes.arrayOf(PropTypes.object).isRequired,
   removePhone: PropTypes.func.isRequired,
+  increaseQuantity: PropTypes.func.isRequired,
+  decreaseQuantity: PropTypes.func.isRequired,
 };
 
 export default Basket;

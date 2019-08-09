@@ -43,7 +43,7 @@ class PhoneDetails extends React.Component {
         </ul>
         <button
           type="button"
-          className="cart-btn remove-btn"
+          className="cart-btn details-btn"
           onClick={() => addPhone(details)}
         >
           Add to basket

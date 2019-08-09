@@ -47,6 +47,30 @@ class App extends React.Component {
     }));
   };
 
+  increaseQuantity = () => (
+    this.setState(prevState => ({
+      selectedPhones: prevState.selectedPhones.map(phone => ({
+        ...phone,
+        quantity: phone.quantity + 1,
+      })),
+    }))
+  )
+
+  decreaseQuantity = () => (
+    this.setState(prevState => ({
+      selectedPhones: prevState.selectedPhones
+        .map(phone => (
+          phone.quantity > 0
+            ? {
+              ...phone,
+              quantity: phone.quantity - 1,
+            }
+            : phone
+        ))
+        .filter(phone => phone.quantity > 0),
+    }))
+  )
+
   render() {
     const { selectedPhones } = this.state;
 
@@ -75,18 +99,29 @@ class App extends React.Component {
                 Phones
               </NavLink>
             </li>
-
-            <li className="navigation__list-paragraph">
-              <NavLink
-                to="/basket"
-                exact
-                className="navigation__link"
-                activeClassName="is-active"
-              >
-                Basket
-              </NavLink>
-            </li>
           </ul>
+          <div className="navigation__list-paragraph">
+            <NavLink
+              to="/basket"
+              exact
+              className="navigation__link basket"
+              activeClassName="is-active"
+            >
+              <img
+                src="img/basket.png"
+                className="basket__img"
+                alt="basket"
+              />
+            </NavLink>
+
+            {selectedPhones.length > 0
+              ? (
+                <span className="basket__added-items-quantity">
+                  {selectedPhones.length}
+                </span>
+              ) : <></>
+            }
+          </div>
         </nav>
 
         <Switch>
@@ -123,6 +158,8 @@ class App extends React.Component {
               <Basket
                 selectedPhones={selectedPhones}
                 removePhone={this.removePhone}
+                increaseQuantity={this.increaseQuantity}
+                decreaseQuantity={this.decreaseQuantity}
               />
             )}
           />
