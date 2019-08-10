@@ -3,6 +3,7 @@ import './App.css';
 import { Route, NavLink, Switch } from 'react-router-dom';
 
 import PhonesPage from './PhonesPage';
+import PhoneDetailsPage from './PhoneDetailsPage';
 import NotFoundPage from './NotFoundPage';
 
 const HomePage = () => (
@@ -30,13 +31,12 @@ class App extends React.Component {
   async componentDidMount() {
     const phones = await getPhones();
 
-    this.setState(prevState => ({
-      phones,
-    }));
+    this.setState({ phones });
   }
 
   render() {
     const { phones } = this.state;
+    const urlImg = 'https://mate-academy.github.io/phone-catalogue-static/';
 
     return (
       <div className="App">
@@ -61,15 +61,25 @@ class App extends React.Component {
 
           <Route path="/" exact component={HomePage} />
           <Route
-            path="/phones/:id?"
+            path="/phones"
+            exact
             render={({ match }) => (
               <PhonesPage
                 phones={phones}
-                match={match.params.id}
+                urlImg={urlImg}
+                phoneId={match.params.phoneId}
               />
             )}
           />
-          <Route component={NotFoundPage} />
+          <Route
+            path="/phones/:phoneId"
+            exact
+            component={PhoneDetailsPage}
+          />
+          <Route
+            path="*"
+            component={NotFoundPage}
+          />
         </Switch>
       </div>
     );

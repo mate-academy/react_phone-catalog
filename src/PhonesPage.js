@@ -1,45 +1,50 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
+
 import Loading from './Loading';
 
-const PhonesPage = ({ phones }) => (
-  phones.length === 0 ? <Loading />
+const PhonesPage = ({ phones, phoneId, urlImg }) => (
+  phones.length === 0 && phoneId === null
+    ? <Loading />
     : (
-      <div className="card" data-qa="card">
-        <img
-          src={phones.map(img => img.imageUrl)}
-          alt="iMac"
-          className="card__img"
-        />
-        <div className="card__text">{phones.map(phone => phone.name)}</div>
-        <div>Код товара: 195434</div>
-
-        <div className="card__line">
-          <div className="start__container">
-            <div className="star start-active" />
-            <div className="star start-active" />
-            <div className="star start-active" />
-            <div className="star start-active" />
-            <div className="star" />
+      phones.map(phone => (
+        <div
+          key={phone.id}
+          className="catalog__phones"
+        >
+          <div className="card" data-qa="card">
+            <img
+              src={
+                `${urlImg}/${phone.imageUrl}`
+              }
+              alt="Motorrola"
+              className="card__img"
+            />
+            <div className="card__text">{phone.name}</div>
+            <div>
+              <NavLink to={`/phones/${phone.id}`}>{ phone.id}</NavLink>
+            </div>
+            <div className="card__block-price">
+              <div className="card__price">details:</div>
+              <div className="card__price-number">{phone.snippet}</div>
+            </div>
+            <button type="submit">
+              Add
+            </button>
           </div>
-
-          <div className="card__reviev">Отзывов: 5</div>
         </div>
-
-        <div className="card__block-price">
-          <div className="card__price">Цена:</div>
-          <div className="card__price-number">69 999 грн</div>
-        </div>
-      </div>
-    )
+      )))
 );
 
 PhonesPage.propTypes = {
   phones: PropTypes.shape(
-    PropTypes.array,
+    PropTypes.string,
     PropTypes.string,
     PropTypes.object,
   ).isRequired,
+  phoneId: PropTypes.string.isRequired,
+  urlImg: PropTypes.string.isRequired,
 };
 
 export default PhonesPage;

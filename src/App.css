@@ -96,8 +96,8 @@ card
 ?? */
 
 .card {
-  height: 403px;
-  width: 202px;
+  height: 350px;
+  width: 100%;
   background: #fff;
   border: 1px solid #f3f3f3;
   border-radius: 5px;
@@ -122,19 +122,6 @@ card
   padding: 0;
 }
 
-.card__line {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 15px;
-  margin-bottom: 20px;
-}
-
-.start__container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
 .card__block-price {
   display: flex;
   justify-content: space-between;
@@ -143,9 +130,8 @@ card
 }
 
 .card__price-number {
-  font-size: 16px;
-  line-height: 19px;
-  font-weight: bold;
+  font-size: 10px;
+  line-height: 10px;
 }
 
 .card__button {
@@ -169,4 +155,10 @@ card
 .card__button:hover {
   background: #fff;
   color: #00acdc;
+}
+
+.catalog__phones {
+  display: grid;
+  justify-content: center;
+  margin: 50px 0;
 }
