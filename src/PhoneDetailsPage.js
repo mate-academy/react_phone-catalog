@@ -29,7 +29,17 @@ class PhoneDetailsPage extends React.Component {
 
   render() {
     const { phoneDetails, imgChoseUrl } = this.state;
-    const { urlImg } = this.props;
+    const { urlImg, phoneId, phones } = this.props;
+
+    const isPhoneId = phones.find(phone => phone.id === phoneId);
+
+    if (phoneId && !isPhoneId) {
+      return (
+        <div className="wrraper__was__not_phone">
+          <h1 className="phone__was__not">Phone Was Not Found</h1>
+        </div>
+      );
+    }
 
     return (
       phoneDetails === null ? <Loading />
@@ -67,7 +77,12 @@ class PhoneDetailsPage extends React.Component {
 }
 
 PhoneDetailsPage.propTypes = {
-  urlImg: PropTypes.string.isRequired,
+  // eslint-disable-next-line react/require-default-props
+  urlImg: PropTypes.string,
+  // eslint-disable-next-line react/forbid-prop-types
+  phones: PropTypes.array.isRequired,
+  // eslint-disable-next-line react/require-default-props
+  phoneId: PropTypes.string,
 };
 
 export default PhoneDetailsPage;

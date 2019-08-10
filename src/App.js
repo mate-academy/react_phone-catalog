@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import { Route, NavLink, Switch } from 'react-router-dom';
 
-import PhonesPage from './PhonesPage';
+import PhoneCatalog from './PhoneCatalog';
 import PhoneDetailsPage from './PhoneDetailsPage';
 import NotFoundPage from './NotFoundPage';
 
@@ -63,18 +63,23 @@ class App extends React.Component {
           <Route
             path="/phones"
             exact
-            render={({ match }) => (
-              <PhonesPage
+            render={() => (
+              <PhoneCatalog
                 phones={phones}
                 urlImg={urlImg}
-                phoneId={match.params.phoneId}
               />
             )}
           />
           <Route
             path="/phones/:phoneId"
             exact
-            render={() => <PhoneDetailsPage urlImg={urlImg} />}
+            render={({ match }) => (
+              <PhoneDetailsPage
+                phoneId={match.params.phoneId}
+                urlImg={urlImg}
+                phones={phones}
+              />
+            )}
           />
           <Route
             path="*"
