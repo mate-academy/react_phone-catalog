@@ -10,12 +10,18 @@
 .basket_phones_item {
   display: grid;
   grid-template-columns: 300px auto  50px 140px;
+  grid-template-rows: 300px;
 }
 
 .phone_names {
   width: 100%;
   font-weight: 700;
   list-style-type: none;
+}
+.phone_names:hover {
+  color: brown;
+  transition: 100ms
+
 }
 
 .phone_quantity {
@@ -95,8 +101,17 @@
 
 .img_preview_basket {
   width: 230px;
-  height: 230px;
+  width: 230px;
   position: relative;
   left: 10%;
+  top: -10%;
+}
+
+.img_preview_basket:hover {
+  width: 235px;
+  width: 235px;
+  left: 9%;
+  top: -15%;
+  transition: 100ms
 }
 

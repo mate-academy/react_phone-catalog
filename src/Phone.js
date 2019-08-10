@@ -57,7 +57,7 @@ class Phones extends React.Component {
                 {'<'}
                 </button>}
                 </div>
-                <div>
+                <div className="phoneimage_preview">
                   <img
                     src={`${imageFromUrl}/${phoneImages[imageIndex]}`}
                     alt="Phone"
