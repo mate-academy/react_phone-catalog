@@ -1,6 +1,8 @@
 import React from 'react'
 import { loadPhoneDetailsAPI } from '../api/API_DATA';
+import { Link } from 'react-router-dom';
 import LoadAnimation from './LoadAnimation'
+import ImagesCarousel from './ImagesCarousel';
 
 
 class Phone extends React.Component {
@@ -38,33 +40,32 @@ class Phone extends React.Component {
       return (
         <main>
 
-          <div className="phone-details_name">
-            {currentPhone.name}
-          </div>
+          <section className="phone-details">
+            <button
+              className="phone-details_add"
+              onClick={() => this.props.handleClickAddPhoneToCart(currentPhone)}
+            >Add to Cart
+            </button>
+
+            <div className="phone-details_name">
+              {currentPhone.name}
+            </div>
+
+            <Link
+              className="cart-phones_link-back"
+              to='/phones'
+            >Go back to catalog
+            </Link>
+          </section>
 
           <div className="phone-details_additionalFeatures">
             {currentPhone.additionalFeatures}
           </div>
 
           <article className="phone-details_header">
-            <div>
-              <img
-                src={currentPhone.images[currentImage]}
-                alt={currentPhone.name}
-                className="phone-details_images-current-img"
-              />
-            </div>
 
             <div className="phone-details_images">
-              {currentPhone.images.map((image, index) => (
-                <img
-                  name={image}
-                  onClick={() => this.handleChangePhoto(index)}
-                  src={image}
-                  alt={currentPhone.name}
-                  className="phone-details_images-img"
-                />
-              ))}
+                <ImagesCarousel image={currentPhone.images} />
             </div>
           </article>
 

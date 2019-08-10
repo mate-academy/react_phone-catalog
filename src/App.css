@@ -1,10 +1,15 @@
 
+body {
+  font-family: 'lato',sans-serif;
+}
+
 .nav-list {
   list-style: none;
   display: grid;
-  grid-template-columns: 130px 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
-  padding-bottom: 45px;
+  justify-items: center;
+  margin-right: 50px;
 }
 
 .nav-list-link {
@@ -30,7 +35,6 @@
   height: 60px;
   background-size: cover;
   background-repeat: no-repeat;
-  margin-right: 200px;
 }
 
 .cart {
@@ -39,12 +43,57 @@
   height: 70px;
   background-size: cover;
   background-repeat: no-repeat;
-  margin: 0 400px;
+  margin-top: -50px;
+}
+
+.cart-amount {
+  position: relative;
+  text-align: center;
+  width: 13px;
+  left: 50px;
+  border: 1px solid black;
+  font-size: 18px;
+  border-radius: 10px;
+  font-weight: bold;
+  color: white;
+  background-color: black
 }
 
 .phone {
   width: 300px;
   height: 300px;
+}
+
+.search_list {
+  display: grid;
+  justify-content: center;
+}
+
+.search_field {
+  width: 600px;
+  margin: 0 0 20px 0;
+  padding: 0 20px;
+  font-size: 24px;
+  height: 50px;
+  border-radius: 30px;
+  border: 0;
+  box-shadow: 0 0 4px gray;
+  outline: none;
+}
+
+.sorting {
+  text-align: center;
+}
+
+.sort-field-sign {
+  font-size: 25px;
+}
+
+.sort-field {
+  border: 0;
+  width: 90px;
+  font-size: 20px;
+  outline: none;
 }
 
 .catalog {
@@ -68,6 +117,29 @@
 
 .catalog_phone-text-decoration {
   text-decoration: none;
+  color: black;
+}
+
+.catalog_phone-add-grid {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  margin: 20px;
+}
+
+.catalog_phone-add {
+  background-color: white;
+  text-decoration: none;
+  color: black;
+  border: 0;
+  font-size: 25px;
+  padding: 10px;
+  transition: 0.3s;
+}
+
+.catalog_phone-add:hover {
+  box-shadow: 0 0 5px gray;
+  border-radius: 10px;
 }
 
 .catalog_phone-img {
@@ -194,6 +266,116 @@
   font-weight: bold;
 }
 
+.phone-details {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  justify-items: center;
+  align-items: center;
+}
+
+.phone-details_add {
+  background-color: white;
+  text-decoration: none;
+  color: black;
+  border: 1px solid black;
+  padding: 10px;
+  transition: 0.3s;
+}
+
+.phone-details_add:hover {
+  background-color: black;
+  color: white;
+  border-radius: 10px;
+}
+
+.cart-phones_link-back {
+  text-decoration: none;
+  color: black;
+  border: 1px solid black;
+  padding: 10px;
+  transition: 0.3s;
+}
+
+.cart-phones_link-back:hover {
+  background-color: black;
+  color: white;
+  border-radius: 10px;
+}
+
+.cart-phones {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  justify-items: flex-start;
+  align-items: center;
+}
+
+.cart-phone_sign {
+  font-weight: 300;
+  margin-left: 85px;
+  text-align: center;
+  font-size: 22px;
+}
+
+.cart-phone_table-grid {
+  display: grid;
+  justify-items: center;
+}
+
+.cart-phone_table {
+  grid-template-columns: 1fr 1fr;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+}
+
+.cart-phone_table-img {
+  width: 300px;
+  height: 300px;
+  text-align: center;
+}
+
+.cart-phone_table-name {
+  text-align: center;
+}
+
+.cart-phone_table-amount-btn {
+  background-color: white;
+  border: 1px solid black;
+  user-select: none;
+  outline: none;
+  width: 30px;
+  height: 30px;
+  transition: 0.3s;
+}
+
+.cart-phone_table-amount-btn:hover {
+  background-color: black;
+  color: white;
+  border-radius: 10px;
+}
+
+.cart-phone_table-amount-sign {
+  font-size: 24px;
+}
+
+.cart-phone_table-remove-btn {
+  margin: 30px 0;
+  background-color: white;
+  border: 1px solid black;
+  user-select: none;
+  outline: none;
+  width: 30px;
+  height: 30px;
+  transition: 0.3s;
+  width: 200px;
+}
+
+.cart-phone_table-remove-btn:hover {
+  background-color: black;
+  color: white;
+  border-radius: 10px;
+}
+
 .animation {
   position: absolute;
   top: 50%;
@@ -307,5 +489,185 @@
 	}
 	100% {
 		-moz-transform: translateX(0) translateY(0) rotate(0);
+	}
+}
+
+.cssload-wrap {
+	width: 195px;
+	height: 195px;
+	margin: 97px auto;
+	position: relative;
+	perspective: 3900px;
+		-o-perspective: 3900px;
+		-ms-perspective: 3900px;
+		-webkit-perspective: 3900px;
+		-moz-perspective: 3900px;
+	transform-style: preserve-3d;
+		-o-transform-style: preserve-3d;
+		-ms-transform-style: preserve-3d;
+		-webkit-transform-style: preserve-3d;
+		-moz-transform-style: preserve-3d;
+}
+
+.cssload-circle {
+	transform-style: preserve-3d;
+		-o-transform-style: preserve-3d;
+		-ms-transform-style: preserve-3d;
+		-webkit-transform-style: preserve-3d;
+		-moz-transform-style: preserve-3d;
+	box-sizing: border-box;
+		-o-box-sizing: border-box;
+		-ms-box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+	opacity: 0;
+	width: 195px;
+	height: 195px;
+	border: 2px solid rgba(0,0,0,0.8);
+	border-radius: 146px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	animation: cssload-spin 34.5s ease-in-out alternate infinite;
+		-o-animation: cssload-spin 34.5s ease-in-out alternate infinite;
+		-ms-animation: cssload-spin 34.5s ease-in-out alternate infinite;
+		-webkit-animation: cssload-spin 34.5s ease-in-out alternate infinite;
+		-moz-animation: cssload-spin 34.5s ease-in-out alternate infinite;
+}
+.cssload-circle:nth-of-type(1) {
+	animation-delay: 575ms;
+		-o-animation-delay: 575ms;
+		-ms-animation-delay: 575ms;
+		-webkit-animation-delay: 575ms;
+		-moz-animation-delay: 575ms;
+}
+.cssload-circle:nth-of-type(2) {
+	animation-delay: 1150ms;
+		-o-animation-delay: 1150ms;
+		-ms-animation-delay: 1150ms;
+		-webkit-animation-delay: 1150ms;
+		-moz-animation-delay: 1150ms;
+}
+.cssload-circle:nth-of-type(3) {
+	animation-delay: 1725ms;
+		-o-animation-delay: 1725ms;
+		-ms-animation-delay: 1725ms;
+		-webkit-animation-delay: 1725ms;
+		-moz-animation-delay: 1725ms;
+}
+.cssload-circle:nth-of-type(4) {
+	animation-delay: 2300ms;
+		-o-animation-delay: 2300ms;
+		-ms-animation-delay: 2300ms;
+		-webkit-animation-delay: 2300ms;
+		-moz-animation-delay: 2300ms;
+}
+.cssload-circle:nth-of-type(5) {
+	animation-delay: 2875ms;
+		-o-animation-delay: 2875ms;
+		-ms-animation-delay: 2875ms;
+		-webkit-animation-delay: 2875ms;
+		-moz-animation-delay: 2875ms;
+}
+
+
+
+@keyframes cssload-spin {
+	0% {
+		transform: rotateY(0deg) rotateX(0deg);
+		opacity: 1;
+	}
+	25% {
+		transform: rotateY(180deg) rotateX(360deg);
+	}
+	50% {
+		transform: rotateY(540deg) rotateX(540deg);
+	}
+	75% {
+		transform: rotateY(720deg) rotateX(900deg);
+	}
+	100% {
+		transform: rotateY(900deg) rotateX(1080deg);
+		opacity: 1;
+	}
+}
+
+@-o-keyframes cssload-spin {
+	0% {
+		-o-transform: rotateY(0deg) rotateX(0deg);
+		opacity: 1;
+	}
+	25% {
+		-o-transform: rotateY(180deg) rotateX(360deg);
+	}
+	50% {
+		-o-transform: rotateY(540deg) rotateX(540deg);
+	}
+	75% {
+		-o-transform: rotateY(720deg) rotateX(900deg);
+	}
+	100% {
+		-o-transform: rotateY(900deg) rotateX(1080deg);
+		opacity: 1;
+	}
+}
+
+@-ms-keyframes cssload-spin {
+	0% {
+		-ms-transform: rotateY(0deg) rotateX(0deg);
+		opacity: 1;
+	}
+	25% {
+		-ms-transform: rotateY(180deg) rotateX(360deg);
+	}
+	50% {
+		-ms-transform: rotateY(540deg) rotateX(540deg);
+	}
+	75% {
+		-ms-transform: rotateY(720deg) rotateX(900deg);
+	}
+	100% {
+		-ms-transform: rotateY(900deg) rotateX(1080deg);
+		opacity: 1;
+	}
+}
+
+@-webkit-keyframes cssload-spin {
+	0% {
+		-webkit-transform: rotateY(0deg) rotateX(0deg);
+		opacity: 1;
+	}
+	25% {
+		-webkit-transform: rotateY(180deg) rotateX(360deg);
+	}
+	50% {
+		-webkit-transform: rotateY(540deg) rotateX(540deg);
+	}
+	75% {
+		-webkit-transform: rotateY(720deg) rotateX(900deg);
+	}
+	100% {
+		-webkit-transform: rotateY(900deg) rotateX(1080deg);
+		opacity: 1;
+	}
+}
+
+@-moz-keyframes cssload-spin {
+	0% {
+		-moz-transform: rotateY(0deg) rotateX(0deg);
+		opacity: 1;
+	}
+	25% {
+		-moz-transform: rotateY(180deg) rotateX(360deg);
+	}
+	50% {
+		-moz-transform: rotateY(540deg) rotateX(540deg);
+	}
+	75% {
+		-moz-transform: rotateY(720deg) rotateX(900deg);
+	}
+	100% {
+		-moz-transform: rotateY(900deg) rotateX(1080deg);
+		opacity: 1;
 	}
 }
