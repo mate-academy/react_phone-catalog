@@ -407,7 +407,7 @@ body {
 
   .search_field {
     margin-top: 20px;
-    width: 330px;
+    width: 290px;
   }
 
   .phone-details_name {
@@ -415,7 +415,7 @@ body {
   }
 
   .specifications {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
   }
 
   .cart-phones_link-back {
