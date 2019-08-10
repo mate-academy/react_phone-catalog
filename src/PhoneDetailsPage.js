@@ -4,6 +4,7 @@ import Loader from './Loader';
 
 const PhoneDetailsPage = ({ match }) => {
   const [details, setDetails] = useState([]);
+  const [activeImage, setActiveImage] = useState(0);
   useEffect(() => {
     (async () => {
       const detailsFromServer = await getDetails(match.params.idPhone);
@@ -11,17 +12,45 @@ const PhoneDetailsPage = ({ match }) => {
     })();
   }, []);
 
+  const handleClickImage = (id) => {
+    setActiveImage(id);
+  }
+
+  const handleClickNext = () => {
+    let newActiveId = 0;
+    if (activeImage !== details.images.length - 1) {
+      newActiveId = activeImage + 1;
+    }
+    setActiveImage(newActiveId);
+  }
+
+  console.log(details.description)
+
   return (
     <>
-      <h1>{details.id}</h1>
-      {details.images && details.images.map(image => {
+    <section>
+      {details.images && details.images.map((image, i) => {
 
         return (
-          <img src={`/${image}`} alt={details.id} height="42" width="42"></img>
+
+          <img className={`image-detail ${i === activeImage && `active-image`}`} src={`/${image}`}
+            alt={details.id}
+            onClick={() => handleClickImage(i)}
+
+          />
         )
       }
       )
       }
+
+      <img
+        onClick={() => handleClickNext()}
+        src={`/${details.images && details.images[activeImage]}`}
+        alt={details.id}
+      />
+</section>
+      <p>{details.description}</p>
+      <h1>{details.id}</h1>
     </>
   )
 }

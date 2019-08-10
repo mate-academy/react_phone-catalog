@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import ScrollUpButton from "react-scroll-up-button";
 import { Link } from "react-router-dom";
 import Loader from './Loader';
 import { getPhones } from './sources';
@@ -41,6 +42,13 @@ const PhonesPage = (props) => {
           </li>
         ))}
       </ul>
+
+      <ScrollUpButton
+        ContainerClassName="scroll-button"
+        EasingType="easeInOutSine"
+        StopPosition={1}
+        ShowAtPosition={250}
+      />
     </>
   )
 }

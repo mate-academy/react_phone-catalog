@@ -18,13 +18,18 @@ body {
   padding: 0;
 }
 
+
 .head {
+  background-color: white;
   height: 58px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top:0;
+  z-index: 9999;
 }
 
 .head ul {
@@ -62,14 +67,14 @@ body {
   margin: 0 auto;
   text-align: center;
   display: block;
-  height: 180px;
-  width: 180px;
+  height: 150px;
+  width: 150px;
 }
 
 .catalog-container {
   margin: 20px auto;
   box-sizing: border-box;
-  max-width: 1200px;
+  max-width: 1000px;
   display: flex;
   justify-content: space-between;
   flex-direction: row;
@@ -80,14 +85,15 @@ body {
 }
 
 .catalog-item {
+  background-color: #ffffff;
   box-sizing: border-box;
   margin: 1rem .25em;
-  height: 400px;
+  height: 380px;
   border: 2px solid #ed5564;
   border-radius: 3px;
   margin: 5px;
   flex: 1 0 500px;
-  min-width: 200px;
+  min-width: 100px;
   display: flex;
   align-items: center;
   vertical-align: middle;
@@ -126,12 +132,13 @@ body {
 
 .title {
   text-align: center;
-  color: white;
+  color: #ffffff;
   background-color: #ed5564;
 }
 
 .overview {
   font-size: 14px;
+  overflow: hidden;
 }
 
 .buy-button {
@@ -153,3 +160,24 @@ body {
   color: #ed5564;
   border: 1px solid #ed5564;
 }
+
+.image-detail {
+  cursor: pointer;
+  border: 1px solid white;
+  height: 50px;
+  width: 50px;
+}
+
+.active-image {
+  border: 1px solid #ed5564;
+  transition: 0.5s;
+}
+
+img {
+  cursor: pointer;
+}
+
+.section {
+  display: flex;
+}
+

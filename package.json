@@ -11,7 +11,9 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.1",
-    "react-scripts": "3.0.1"
+    "react-scripts": "3.0.1",
+    "react-scroll-up-button": "^1.6.4",
+    "react-sticky-el": "^1.0.20"
   },
   "devDependencies": {
     "@mate-academy/eslint-config-react": "*",

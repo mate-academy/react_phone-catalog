@@ -11,12 +11,12 @@ import NotFoundPage from './NotFoundPage';
 const App = () => (
   <Router>
     <div className="App">
-      <Header />
+      <Header  className ="Header"/>
       <main>
         <Switch>
           <Route path="/" exact component={HomePage} />
           <Route path="/basket" component ={Basket} />
-          <Route path="/phones" exact component={props => <PhonesPage {...props} />} />
+          <Route path="/phones" exact component={props => <PhonesPage className="PhonePage" {...props} />} />
           <Route path="/phones/:idPhone" component={props => <PhoneDetailsPage {...props} />} />
           <Route component={NotFoundPage} />
         </Switch>
