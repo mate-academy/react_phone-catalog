@@ -438,6 +438,15 @@ body {
   .animation {
     margin-top: 140px;
   }
+
+  .cart-phone_table {
+    grid-template-columns: 1fr;
+  }
+
+  .cart-phone_table-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 .animation {
