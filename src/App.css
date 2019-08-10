@@ -30,6 +30,7 @@
 }
 
 .listOfPhones {
+  margin: 0 35px 0 75px;
 }
 
 .listOfPhones__item {
@@ -38,7 +39,8 @@
   grid-template-rows: 30px 80px;
   grid-row-gap: 10px;
   border: 1px solid grey; 
-  margin: 10px;
+  border-radius: 5px;
+  margin: 20px 0;
 }
 
 .listOfPhones__item-img {
