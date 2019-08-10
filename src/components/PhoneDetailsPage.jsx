@@ -1,7 +1,7 @@
 import React from 'react';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import Loader from 'react-loader-spinner';
-import { getPhoneDetail } from '../api/utils';
+import { getPhoneDetail } from '../api/getData';
 
 class PhoneDetailsPage extends React.Component {
   state = {

@@ -8,14 +8,79 @@ import {
   Switch,
 } from 'react-router-dom';
 
-import logo from './img/logo.png';
 import HomePage from './components/HomePage';
 import PhonesPage from './components/PhonesPage';
 import NotFoundPage from './components/NotFoundPage';
 import PhoneDetailsPage from './components/PhoneDetailsPage';
+import Basket from './components/Basket';
 
 class App extends React.Component {
-  state = {}
+  state = {
+    basketItems: [],
+  }
+
+  handleAddToBasket = (currentPhone) => {
+    this.setState((prevState) => {
+      const phonesInBasket = prevState.basketItems
+        .find(phone => phone.id === currentPhone.id)
+        ? (
+          prevState.basketItems.map(phone => (
+            phone.id === currentPhone.id
+              ? {
+                ...phone,
+                quantity: phone.quantity + 1,
+              }
+              : phone
+          ))
+        ) : (
+          [...prevState.basketItems, {
+            id: currentPhone.id,
+            quantity: 1,
+            img: currentPhone.imageUrl,
+          }]
+        );
+
+      return {
+        basketItems: phonesInBasket,
+      };
+    });
+  };
+
+  handleRemovePhone = (phoneId) => {
+    this.setState(prevState => ({
+      basketItems: prevState.basketItems.filter(phone => phone.id !== phoneId),
+    }));
+  };
+
+  handleIncQuantity = (phoneId) => {
+    this.setState(prevState => ({
+      basketItems: prevState.basketItems.map(phone => (
+        phone.id !== phoneId
+          ? phone
+          : {
+            ...phone,
+            quantity: phone.quantity + 1,
+          }
+      )),
+    }));
+  };
+
+  handleDecQuantity = (phoneId) => {
+    this.setState((prevState) => {
+      const phonesInBasket = prevState.basketItems.map(phone => (
+        phone.id !== phoneId
+          ? phone
+          : {
+            ...phone,
+            quantity: phone.quantity - 1,
+          }
+      ));
+
+      return {
+        basketItems: phonesInBasket.filter(phone => phone.quantity > 0),
+      };
+    });
+  };
 
   render() {
     return (
@@ -25,7 +90,7 @@ class App extends React.Component {
 
             <div className="header__logo">
               <Link to="/">
-                <img src={logo} alt="Phone Catalog" />
+                <img src="./img/logo.png" alt="Phone Catalog" />
               </Link>
             </div>
 
@@ -51,6 +116,16 @@ class App extends React.Component {
                   </NavLink>
                 </li>
 
+                <li>
+                  <Link to="/basket/">
+                    <img
+                      className="basket"
+                      src="./img/basket.png"
+                      alt="Basket"
+                    />
+                  </Link>
+                </li>
+
               </ul>
             </nav>
           </header>
@@ -66,13 +141,28 @@ class App extends React.Component {
             <Route
               path="/phones/"
               exact
-              component={PhonesPage}
+              component={() => (
+                <PhonesPage handleAddToBasket={this.handleAddToBasket} />
+              )}
             />
 
             <Route
               path="/phones/:phoneId"
               exact
               component={PhoneDetailsPage}
+            />
+
+            <Route
+              path="/basket/"
+              exact
+              component={() => (
+                <Basket
+                  basketItems={this.state.basketItems}
+                  handleRemovePhone={this.handleRemovePhone}
+                  handleIncQuantity={this.handleIncQuantity}
+                  handleDecQuantity={this.handleDecQuantity}
+                />
+              )}
             />
 
             <Route

@@ -10,7 +10,7 @@
   height: 80px;
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  padding: 0 50px;
+  padding: 0 40px;
   margin-bottom: 50px;
 }
 
@@ -43,6 +43,15 @@
 .active {
   border-bottom: 2px solid rgb(16, 75, 75);
   color: rgb(22, 105, 105);
+}
+
+.basket {
+  width: 40px;
+  height: 40px;
+}
+
+.basket:hover {
+  opacity: 0.7;
 }
 
 .loader {
@@ -82,21 +91,29 @@
 
 .catalog {
   list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  justify-content: space-between;
+  grid-gap: 50px 20px;
 }
 
 .phone {
-  display: flex;
-  height: 120px;
+  position: relative;
+  width: 240px;
+  height: 350px;
   border: 2px solid rgb(168, 163, 163);
   border-radius: 6px;
   box-shadow: 10px 5px 5px rgba(154, 147, 140, 0.5);
-  padding: 15px 15px 0;
-  margin-bottom: 20px;
+  text-align: center;
+  padding: 15px;
+}
+.phone:hover {
+  transform: scale(1.05);
+  transition: 0.2s linear;
 }
 
 .phone__img {
-  height: 100px;
-  margin-right: 20px;
+  height: 130px;
 }
 
 .phone__description {
@@ -147,6 +164,25 @@
   grid-row-gap: 50px;
   width: 80%;
   margin: 0 auto;
+}
+
+.addPhone {
+  position: absolute;
+  top: 320px;
+  left: 65px;
+  border-radius: 10px;
+  background-color: rgb(170, 207, 219);
+  color: rgb(8, 49, 49);
+  font-size: 16px;
+  font-weight: bold;
+  width: 140px;
+  height: 50px;
+}
+
+.addPhone:hover {
+  background-color: rgb(12, 97, 97);
+  color: rgb(170, 207, 219);
+  cursor: pointer;
 }
 
 .phone-specifications__section {

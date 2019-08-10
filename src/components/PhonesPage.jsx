@@ -2,19 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import Loader from 'react-loader-spinner';
-import { getPhones } from '../api/utils';
-
-const sortPhones = (a, b) => {
-  if (a.name < b.name) {
-    return -1;
-  }
-
-  if (a.name > b.name) {
-    return 1;
-  }
-
-  return 0;
-};
+import { getPhones } from '../api/getData';
+import sortPhones from '../utils';
 
 class PhonesPage extends React.Component {
   state = {
@@ -128,6 +117,15 @@ class PhonesPage extends React.Component {
                     {phone.name}
                   </Link>
                   <p>{phone.snippet}</p>
+
+                  <button
+                    type="button"
+                    className="addPhone"
+                    onClick={() => this.props.handleAddToBasket(phone)}
+                  >
+                    Add to basket
+                  </button>
+
                 </div>
 
               </div>
