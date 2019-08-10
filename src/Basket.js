@@ -5,18 +5,13 @@ import './styles/basket.css';
 
 const imageFromUrl = 'https://mate-academy.github.io/phone-catalogue-static';
 
-class Basket extends React.Component {
-  state = {
-    addeSelectedPhones: [],
-  }
-
-  render() {
+const Basket = (props) => {
     const {
       selectedPhones,
       handleItemDelete,
       decreaseQuantity,
       increaseQuantity
-      } = this.props;
+      } = props;
     return(
       <div className="basket_phones_list">
         <h6 >Basket with {selectedPhones.length} item</h6>
@@ -74,7 +69,7 @@ class Basket extends React.Component {
       </div>
     )
   };
-}
+
 
 
 export default Basket;
