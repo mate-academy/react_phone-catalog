@@ -446,7 +446,9 @@ body {
   .cart-phone_table-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    align-items: center;
   }
+
 }
 
 .animation {
