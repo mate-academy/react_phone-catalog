@@ -29,7 +29,31 @@
   color: white;
 }
 
+.phoneCatalog {
+  font-family: Roboto, sans-serif;
+}
+
+.searchField {
+  font-size: 14px;
+  display: inline-block;
+  margin-top: 40px;
+  margin-left: 35px;
+}
+
+.searchField__input {
+  width: 175px;
+  height: 25px;
+}
+
+.sortField {
+  display: block;
+  margin-top: 10px;
+  margin-left: 35px;
+  font-size: 14px;
+}
+
 .listOfPhones {
+  font-size: 14px;
   margin: 0 35px 0 75px;
 }
 
@@ -74,6 +98,7 @@
   grid-row-start: 2;
   grid-row-end: 3;
   align-self: start;
+  line-height: 1.5;
 }
 
 .currentPhone__top-block {

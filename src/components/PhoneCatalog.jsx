@@ -51,20 +51,27 @@ class PhoneCatalog extends React.Component {
     console.log(this.state.inputValue);
 
     return (
-      <div>
-        <label htmlFor="search_field">
+      <div className='phoneCatalog'>
+        <label 
+          className='searchField'
+          htmlFor="search_field"
+        >
           Search: 
           <input 
             onChange={this.handleInput}
+            className='searchField__input'
             id='search_field'
             type="text"/>
         </label>
 
-        <label htmlFor="sort_select">
+        <label 
+          className='sortField'
+          htmlFor="sort_select"
+        >
           Sort by: 
           <select 
             onChange={this.sortFunc}
-            name="" 
+            className='sortField-select'
             id="sort_select">
             <option selected value="age">Newest</option>
             <option value="name">Alphabetical</option>
