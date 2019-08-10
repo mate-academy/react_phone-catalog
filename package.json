@@ -29,7 +29,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint --ext .jsx,.js ./src/",
+    "lint": "eslint --ext .jsx,.js ./src/ --fix",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },

@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 const PageError = () => (
@@ -12,6 +12,6 @@ const PageError = () => (
       Back to Home Page
     </Link>
   </div>
-)
+);
 
-export default PageError
+export default PageError;

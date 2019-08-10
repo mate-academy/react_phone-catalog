@@ -1,11 +1,10 @@
 import React from 'react';
-import { loadPhonesAPI } from '../api/API_DATA';
 import { NavLink, Route, Switch } from 'react-router-dom';
-import Phone from './Phone'
-import LoadAnimation from './LoadAnimation'
-import PageError from './PageError'
-import SearchField from './SearchField'
-
+import { loadPhonesAPI } from '../api/API_DATA';
+import Phone from './Phone';
+import LoadAnimation from './LoadAnimation';
+import PageError from './PageError';
+import SearchField from './SearchField';
 
 class PhoneCatalog extends React.Component {
   state = {
@@ -32,7 +31,7 @@ class PhoneCatalog extends React.Component {
   }
 
   handleChangeFilter = (event) => {
-    const { value } = event.target
+    const { value } = event.target;
 
     this.setState({
       visipblePhones: this.state.phones.filter(phone => (
@@ -40,8 +39,8 @@ class PhoneCatalog extends React.Component {
           .join('')
           .toLowerCase()
           .includes(value.toLowerCase())
-      ))
-    })
+      )),
+    });
   }
 
   getSortedBy = (event) => {
@@ -73,11 +72,14 @@ class PhoneCatalog extends React.Component {
       return (
 
         id
-        ? <Phone
+          ? (
+            <Phone
               phone={visipblePhones.find(phone => phone.id === id)}
               handleClickAddPhoneToCart={this.props.handleClickAddPhoneToCart}
             />
-          : <>
+          )
+          : (
+            <>
               <SearchField handleChangeFilter={this.handleChangeFilter} />
               <div className="sorting">
                 <label htmlFor="sort-field">
@@ -98,7 +100,7 @@ class PhoneCatalog extends React.Component {
                   </select>
                 </label>
               </div>
-              <div  className="catalog">
+              <div className="catalog">
                 {visipblePhones.map(phone => (
                   <div
                     className="catalog_phone"
@@ -108,14 +110,15 @@ class PhoneCatalog extends React.Component {
                       <button
                         className="catalog_phone-add"
                         onClick={() => this.props.handleClickAddPhoneToCart(phone)}
-                        >Add to Cart
+                      >
+Add to Cart
                       </button>
                     </section>
                     <NavLink
                       className="catalog_phone-text-decoration"
                       to={`/phones/${phone.id}`}
                     >
-                      <img className="catalog_phone-img" src={phone.imageUrl} alt=""/>
+                      <img className="catalog_phone-img" src={phone.imageUrl} alt="" />
                       <div className="catalog_phone-name">
                         {phone.name}
                       </div>
@@ -124,12 +127,13 @@ class PhoneCatalog extends React.Component {
                 ))}
               </div>
             </>
-      )
+          )
+      );
     }
 
     return (
-      <div className="load-sign" >
-          {isLoading ? <LoadAnimation /> : ''}
+      <div className="load-sign">
+        {isLoading ? <LoadAnimation /> : ''}
       </div>
     );
   }

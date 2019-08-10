@@ -1,18 +1,17 @@
-import React from "react";
-import { Gallery, GalleryImage } from "react-gesture-gallery";
+import React from 'react';
+import { Gallery, GalleryImage } from 'react-gesture-gallery';
 
-
-const ImagesCarousel = ({image}) => {
+const ImagesCarousel = ({ image }) => {
   const [index, setIndex] = React.useState(0);
 
   return (
     <Gallery
       style={{
-        height: "60vh",
-        width: "60vw"
+        height: '60vh',
+        width: '60vw',
       }}
       index={index}
-      onRequestChange={i => {
+      onRequestChange={(i) => {
         setIndex(i);
       }}
     >
@@ -21,6 +20,6 @@ const ImagesCarousel = ({image}) => {
       ))}
     </Gallery>
   );
-}
+};
 
-export default ImagesCarousel
+export default ImagesCarousel;

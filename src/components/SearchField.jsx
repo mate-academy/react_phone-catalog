@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 const SearchField = ({ handleChangeFilter }) => (
   <div className="search_list">
@@ -9,6 +9,6 @@ const SearchField = ({ handleChangeFilter }) => (
       placeholder="Search"
     />
   </div>
-)
+);
 
-export default SearchField
+export default SearchField;

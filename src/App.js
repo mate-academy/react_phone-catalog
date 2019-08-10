@@ -1,66 +1,61 @@
 import React from 'react';
 import { Route, NavLink, Switch } from 'react-router-dom';
 import './App.css';
-import HomePage from './components/HomePage'
-import PhoneCatalog from './components/PhoneCatalog'
-import PageError from './components/PageError'
-import Cart from './components/Cart'
+import HomePage from './components/HomePage';
+import PhoneCatalog from './components/PhoneCatalog';
+import PageError from './components/PageError';
+import Cart from './components/Cart';
 
 class App extends React.Component {
   state = {
     selectedPhone: [],
   }
 
-  handleClickAddPhoneToCart = currentPhone => {
-    this.setState(prevState => {
+  handleClickAddPhoneToCart = (currentPhone) => {
+    this.setState((prevState) => {
       const phoneToCard = prevState.selectedPhone.find(phone => phone.id === currentPhone.id)
         ? (prevState.selectedPhone.map(phone => (
-            phone.id === currentPhone.id
-             ? {
-               ...phone,
-               amount: phone.amount + 1,
-              }
-             : phone
-          ))
+          phone.id === currentPhone.id
+            ? {
+              ...phone,
+              amount: phone.amount + 1,
+            }
+            : phone
+        ))
         ) : ([...prevState.selectedPhone, {
-                name: currentPhone.name,
-                id: currentPhone.id,
-                image: currentPhone.imageUrl || currentPhone.images[0],
-                amount: 1,
-        }])
+          name: currentPhone.name,
+          id: currentPhone.id,
+          image: currentPhone.imageUrl || currentPhone.images[0],
+          amount: 1,
+        }]);
 
-      return { selectedPhone: phoneToCard, }
-    })
+      return { selectedPhone: phoneToCard };
+    });
   }
 
-  deletePhone = currentPhone => {
+  deletePhone = (currentPhone) => {
     this.setState(prevState => ({
-      selectedPhone: prevState.selectedPhone.filter(phone => phone.id !== currentPhone)
-    }))
+      selectedPhone: prevState.selectedPhone.filter(phone => phone.id !== currentPhone),
+    }));
   };
 
   changeAmountPlus = (currentPhone) => {
     this.setState(prevState => ({
-      selectedPhone: prevState.selectedPhone.map(phone =>
-        (phone.id === currentPhone)
-          ? { ...phone, amount: phone.amount + 1 }
-          : { ...phone }
-      )
-    }))
+      selectedPhone: prevState.selectedPhone.map(phone => ((phone.id === currentPhone)
+        ? { ...phone, amount: phone.amount + 1 }
+        : { ...phone })),
+    }));
   }
 
-  changeAmountMinus = currentPhone => {
+  changeAmountMinus = (currentPhone) => {
     this.setState(prevState => ({
-      selectedPhone: prevState.selectedPhone.map(phone =>
-        (phone.id === currentPhone) && (phone.amount > 1)
-          ? { ...phone, amount: phone.amount -1 }
-          : { ...phone }
-      )
-    }))
+      selectedPhone: prevState.selectedPhone.map(phone => ((phone.id === currentPhone) && (phone.amount > 1)
+        ? { ...phone, amount: phone.amount - 1 }
+        : { ...phone })),
+    }));
   }
 
-
-  render () {
+  render() {
     return (
       <div className="App">
         <nav>
@@ -71,7 +66,7 @@ class App extends React.Component {
                 exact
               >
                 <div className="logo-size">
-                  <div className="logo"></div>
+                  <div className="logo" />
                 </div>
               </NavLink>
             </li>
@@ -80,7 +75,7 @@ class App extends React.Component {
                 to="/cart"
               >
                 <p className="cart-amount">{this.state.selectedPhone.length}</p>
-                <div className="cart"></div>
+                <div className="cart" />
               </NavLink>
             </li>
             <li>
@@ -104,12 +99,12 @@ class App extends React.Component {
           />
           <Route
             exact
-            path={`/phones/:id?`}
+            path="/phones/:id?"
             render={({ match }) => (
               <PhoneCatalog
-              handleClickAddPhoneToCart={this.handleClickAddPhoneToCart}
-              deletePhone={this.deletePhone}
-              id={match.params.id}
+                handleClickAddPhoneToCart={this.handleClickAddPhoneToCart}
+                deletePhone={this.deletePhone}
+                id={match.params.id}
               />
             )}
           />
@@ -127,9 +122,8 @@ class App extends React.Component {
           <Route component={PageError} />
         </Switch>
       </div>
-    )
+    );
   }
 }
-
 
 export default App;
