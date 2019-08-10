@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Loading from './Loading';
 
 const getDetails = async() => {
@@ -13,6 +14,7 @@ const getDetails = async() => {
 class PhoneDetailsPage extends React.Component {
   state = {
     phoneDetails: [],
+    imgChoseUrl: '',
   }
 
   async componentDidMount() {
@@ -21,25 +23,51 @@ class PhoneDetailsPage extends React.Component {
     this.setState({ phoneDetails });
   }
 
+  handleChose = (imgUrl) => {
+    this.setState({ imgChoseUrl: imgUrl });
+  }
+
   render() {
-    const { phoneDetails } = this.state;
+    const { phoneDetails, imgChoseUrl } = this.state;
+    const { urlImg } = this.props;
 
     return (
-      phoneDetails.length === 0 ? <Loading />
+      phoneDetails === null ? <Loading />
         : (
-
           <div
             className="catalog__phones"
           >
-            <img
-              src=""
-              alt="Motorrola"
-              className="card__img"
-            />
-
+            {imgChoseUrl
+              ? (
+                <img
+                  src={`${urlImg}/${imgChoseUrl}`}
+                  alt="Motorrola"
+                  className="card__img"
+                />
+              )
+              : ''
+            }
+            {phoneDetails.images
+              ? phoneDetails.images.map(imgUrl => (
+                <img
+                  onMouseOver={() => this.handleChose(`${imgUrl}`)}
+                  key={imgUrl}
+                  src={`${urlImg}/${imgUrl}`}
+                  alt="Motorrola"
+                  className="card__img"
+                  onFocus
+                />
+              ))
+              : ''
+            }
+            <p>{`${urlImg}/${phoneDetails.description}`}</p>
           </div>
         ));
   }
 }
+
+PhoneDetailsPage.propTypes = {
+  urlImg: PropTypes.string.isRequired,
+};
 
 export default PhoneDetailsPage;

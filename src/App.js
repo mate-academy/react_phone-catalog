@@ -74,7 +74,7 @@ class App extends React.Component {
           <Route
             path="/phones/:phoneId"
             exact
-            component={PhoneDetailsPage}
+            render={() => <PhoneDetailsPage urlImg={urlImg} />}
           />
           <Route
             path="*"
