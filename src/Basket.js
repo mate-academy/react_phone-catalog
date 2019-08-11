@@ -1,10 +1,19 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import { BasketContext } from './App';
 
 const Basket = () => {
+    const { items } = useContext(BasketContext);
+    const unique = Array.from(items);
+
+    console.log(unique);
 
   return (
-
-    <div>Basket</div>
+    <>
+    <div className="basket-container">
+    <img className="basket-image" src="/img/icos/cart4.png" />
+    {items.length >= 1 && <div className="basket-items"><span>{items.length}</span></div>}
+    </div>
+    </>
   )
 }
 

@@ -1,7 +1,7 @@
-h1 {
+.greatings-header {
   text-align: center;
   font-weight: 500;
-  padding-top: 30px;
+  margin-top: 50px;
 }
 
 ul {
@@ -36,13 +36,14 @@ body {
   font-size: 18px;
   display: flex;
   flex-direction: row;
+  margin-left: 20px;
 }
 
 .basket-image {
   display: block;
   height: 40px;
   width: 40px;
-  margin: auto 15px;
+  margin: auto 20px auto 0;
 }
 
 .header-link {
@@ -164,6 +165,8 @@ body {
 .image-detail {
   cursor: pointer;
   border: 1px solid white;
+  padding: 1px;
+  border-radius: 2px;
   height: 50px;
   width: 50px;
 }
@@ -181,3 +184,122 @@ img {
   display: flex;
 }
 
+.lds-hourglass {
+  display: inline-block;
+  margin: 23% 50%;
+  position: relative;
+  width: 64px;
+  height: 64px;
+}
+
+.lds-hourglass:after {
+  content: " ";
+  display: block;
+  border-radius: 50%;
+  width: 0;
+  height: 0;
+  margin: 6px;
+  box-sizing: border-box;
+  border: 26px solid #ed5564;
+  border-color: #ed5564 transparent #ed5564 transparent;
+  animation: lds-hourglass 1.2s infinite;
+}
+
+@keyframes lds-hourglass {
+  0% {
+    transform: rotate(0);
+    animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  }
+  50% {
+    transform: rotate(900deg);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  100% {
+    transform: rotate(1800deg);
+  }
+}
+
+.searchPhone {
+  font-size: 14px;
+  border: none;
+  border-left: 2px solid grey;
+  padding:3px 6px;
+}
+
+.searchPhone:focus {
+  outline-color: #ed5564;
+  border: none;
+  padding-left: 8px;
+
+}
+
+.searchSubmit {
+  color: white;
+  font-weight: 600;
+  background-color: #ed5564;
+  padding:2px;
+  border-color: #ed5564;
+  margin-left: 3px;
+}
+
+.phone-container {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: row;
+}
+
+.phone-pictures-container {
+  margin: 10px;
+}
+
+.main-picture  {
+  border-bottom: 2px solid grey;
+}
+
+.item-header {
+  border-bottom: 1px solid grey;
+  margin-right: 5px;
+  padding-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.phone-detail-container {
+  margin: 10px;
+}
+
+.phone-additional-container{
+  margin: 10px;
+}
+.add-button {
+  height: 40px;
+  cursor: pointer;
+  box-sizing: border-box;
+  color: white;
+  background-color: #ed5564;
+  border-radius: 3px;
+  border: 1px solid white;
+  font-weight: 600;
+}
+
+.add-button:hover {
+  background-color: white;
+  color: #ed5564;
+  border: 1px solid #ed5564;
+}
+
+.basket-items {
+  display: block;
+  font-size: 11px;
+  width: 8px;
+  font-weight: 600;
+  position: absolute;
+  top: 8px;
+  right: 20px;
+  border: 1px solid #ed5564;
+  background-color: white;
+  border-radius: 30%;
+  padding: 2px;
+}

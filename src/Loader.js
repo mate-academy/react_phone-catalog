@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Loader = ( ) => {
+const Loader = () => {
 
   return (
-    <p>Loading...</p>
+    <div className="lds-hourglass"></div>
   )
 }
 
