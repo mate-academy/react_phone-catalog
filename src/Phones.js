@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import Loader from './Loader';
+import SomeError from './SomeError';
 import Pagination from './Pagination';
 import './styles/phones.css';
 
@@ -14,6 +15,7 @@ class Phones extends React.Component {
     phones: [],
     isLoaded: false,
     inputedValue: '',
+    error: false,
   }
 
   componentDidMount() {
@@ -25,6 +27,12 @@ class Phones extends React.Component {
           isLoaded: true,
         })
       })
+      .catch(() => {
+        this.setState({
+          error: true,
+          isLoaded: false,
+        })
+    });
   };
 
   handlePageChange = (currentPage) => {
@@ -71,14 +79,15 @@ class Phones extends React.Component {
   };
 
   render() {
-    const {inputedValue, page, perPage} = this.state;
+    const {inputedValue, page, perPage, isLoaded, error} = this.state;
     const {handleClick} = this.props;
     const filteredPhones = this.getFilteredPhones(inputedValue);
     const firstPosition = page * perPage;
     const lastPosition = page * perPage + perPage;
     return (
       <div>
-        {this.state.isLoaded ?
+        {error ? <SomeError /> : ''}
+        {isLoaded ?
         <div>
           <label htmlFor="filter-input">
             <input

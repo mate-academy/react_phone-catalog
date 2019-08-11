@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Loader from './Loader';
+import SomeError from './SomeError';
 import PhoneDetails from './PhoneDetails';
 import './styles/phone.css';
 
@@ -13,6 +13,7 @@ class Phones extends React.Component {
     isLoaded: false,
     imageIndex: 0,
     isShown: false,
+    error: false,
   }
 
   componentDidMount() {
@@ -25,6 +26,12 @@ class Phones extends React.Component {
           isLoaded: true,
         })
       })
+      .catch(() => {
+        this.setState({
+          error: true,
+          isLoaded: false,
+        })
+    });
   };
 
   handleSwitchImage = (index) => {
@@ -42,12 +49,13 @@ class Phones extends React.Component {
 
   render() {
     const phoneImages = (`/${this.state.phone.images}`).split(',');
-    const {phone, isLoaded, imageIndex, isShown} = this.state;
+    const {phone, isLoaded, imageIndex, isShown, error} = this.state;
     const {handleClick} = this.props;
 
     return (
       <div className="Phone">
-          {isLoaded ?
+        {error ? <SomeError /> : ''}
+           {isLoaded ?
             <>
               {isShown ?
               <div className="change_img_block">
@@ -88,7 +96,7 @@ class Phones extends React.Component {
                 handleClick={handleClick}
               />
             </>
-            : <Loader />
+            : ''
           }
       </div>
     )
