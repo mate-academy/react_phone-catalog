@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const Basket = ({ itemsAtBasket, basketManagerIncrease }) => {
+const Basket = ({ itemsAtBasket, basketManager }) => {
   return (
     <div className='basketPage'>
       {
@@ -29,7 +29,8 @@ const Basket = ({ itemsAtBasket, basketManagerIncrease }) => {
                        </Link>
                      </td>
                      <td>
-                      <button 
+                      <button
+                        onClick={() => basketManager(item.id, 'remove')}
                         className='basketPage__table-quantity-remove'
                       >
                         x
@@ -37,13 +38,14 @@ const Basket = ({ itemsAtBasket, basketManagerIncrease }) => {
                      </td>
                      <td className='basketPage__table-tbody-td'>
                       <button 
+                        onClick={() => basketManager(item.id, 'decrease')}
                         className='basketPage__table-quantity-minus'
                         >
                         -
                       </button>
                       {item.quantity}
                       <button
-                        // onClick={() => basketManager(item.id, 'increase')}
+                        onClick={() => basketManager(item.id, 'increase')}
                         className='basketPage__table-quantity-plus'
                       >
                         +

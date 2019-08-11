@@ -46,19 +46,31 @@ class App extends React.Component {
     itemsAtBasket: [],
   }
 
-  // basketManager = (id, operation) => {
-  //   const currentIndex = this.state.itemsAtBasket
-  //     .findIndex(element => element.id === id)
+  basketManager = (id, operation) => {
+    const currentIndex = this.state.itemsAtBasket
+      .findIndex(element => element.id === id)
 
-  //   this.setState(prevState => {
-  //     const changedArray = 
+    this.setState(prevState => {
+      let changedArray = [...prevState.itemsAtBasket];
 
-  //     return {
+      switch (operation) {
+        case 'increase':
+          return changedArray[currentIndex].quantity += 1;
+        case 'decrease':
+          changedArray[currentIndex].quantity === 1
+            ? changedArray = changedArray.filter(obj => obj.id !== id)
+            : changedArray[currentIndex].quantity -= 1
+          break;
+        case 'remove':
+          changedArray = changedArray.filter(obj => obj.id !== id)
+          break;
+      }
 
-  //     }
-  //   })
-
-  // }
+      return {
+        itemsAtBasket: changedArray,
+      }
+    })
+  }
 
   addItemToBasket = (itemToAdd) => {
     const currentIndex = this.state.itemsAtBasket
@@ -126,6 +138,7 @@ class App extends React.Component {
 
   render() {
     const {phones, isLoading, isLoaded, details, itemsAtBasket} = this.state;
+    console.log(this.state.itemsAtBasket);
 
     return (
       <div>
@@ -179,7 +192,7 @@ class App extends React.Component {
           <Route path='/basket/' render={() =>
             <Basket 
               itemsAtBasket={itemsAtBasket}
-              // basketManagerIncrease={this.basketManagerIncrease}
+              basketManager={this.basketManager}
             />
           }
           />
