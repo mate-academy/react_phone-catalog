@@ -1,0 +1,42 @@
+.pagination-and-selector {
+  display: flex;
+  justify-content: space-between;
+}
+
+.pagination {
+  display: flex;
+  list-style: none;
+
+  &__page {
+    box-sizing: border-box;
+
+    width: 30px;
+    height: 30px;
+    margin: 0 5px;
+
+    text-align: center;
+    line-height: 30px;
+
+    background: linear-gradient(0deg, #047CC7 0%, #049dfc 50%, #047CC7 100%);
+    border: 1px solid #acadaede;
+    border-radius: 5px;
+  }
+
+  &__page-selected,
+  &__page:hover,
+  &__page:active {
+    background: #e9eceede;
+    border: 2px solid #047CC7;
+  }
+
+  &__page a {
+    display: block;
+
+    color: #000;
+    text-decoration: none;
+  }
+
+  &__posts-ammount {
+    border-radius: 5px;
+  }
+}

@@ -1,0 +1,41 @@
+.basket-page {
+  &__title {
+    text-align : center;
+    text-transform : uppercase;
+  }
+
+  &__shopping-list {
+    display : flex;
+    flex-wrap : wrap;
+    list-style : none;
+  }
+
+  &__shopping-list li {
+    height : 350px;
+    width : 200px;
+    margin : 10px;
+    text-align : center;
+  }
+
+  &__shopping-list-item-link {
+    text-transform : uppercase;
+  }
+
+  &__shopping-list-img {
+    max-width : 200px;
+  }
+
+  &__change-quantity-btns {
+    position: absolute;
+    bottom: 60px;
+    left: 0;
+
+    width: 160px;
+
+    padding: 0 30px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

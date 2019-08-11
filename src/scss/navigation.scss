@@ -1,0 +1,39 @@
+header {
+  height: 100px;
+}
+.navigation {
+  position: fixed;
+  z-index: 10;
+
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(0deg, #0471B5 0%, #049dfc 50%, #0471B5 100%);
+  box-shadow: 0 2px 4px #00000033;
+
+  ul {
+    display: flex;
+    list-style: none;
+  }
+
+  &__link {
+    display: block;
+    margin: 0 20px;
+    padding: 20px;
+
+    color: #000;
+    font-weight: bold;
+
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  &__link:hover,
+  .is-active {
+    background: #8dccf3;
+    box-shadow: 0px 0px 10px #013c60de inset;
+    border-radius: 5px;
+  }
+}

@@ -1,0 +1,15 @@
+.page-content {
+  display: flex;
+  justify-content: space-around;
+
+  margin: 0 40px;
+
+  &__catalog {
+    width: 1000px;
+  }
+
+  &__with-info {
+    margin: 20px 0 40px;
+    text-align: center;
+  }
+}

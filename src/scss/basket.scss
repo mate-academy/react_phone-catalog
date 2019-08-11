@@ -1,0 +1,26 @@
+.basket {
+  padding: 0 10px !important;
+
+  &__img {
+    max-height: 60px;
+  }
+
+  &__added-items-quantity {
+    display: block;
+    position: absolute;
+
+    width: 20px;
+    height: 20px;
+
+    right: 23px;
+    top: 38px;
+
+    text-align: center;
+    font-weight: bold;
+    line-height: 20px;
+
+    background: #fff;
+    box-shadow: 0px 0px 2px #013c60de inset;
+    border-radius: 50%;
+  }
+}
