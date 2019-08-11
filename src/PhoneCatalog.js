@@ -10,17 +10,22 @@ class PhoneCatalog extends React.Component {
   }
 
   render() {
-    const { phoneId, urlImg, phones } = this.props;
+    const {
+      phoneId, urlImg, phones, handleFilter,
+    } = this.props;
     const { phoneArrays } = this.state;
 
     return (
       <div>
-        <input
-          type="text"
-          className="input"
-          placeholder="search"
-          onChange={this.handleFindInform}
-        />
+        <form>
+          <input
+            type="text"
+            className="input"
+            placeholder="search"
+            onChange={handleFilter}
+          />
+        </form>
+
         {phoneArrays}
 
         {phones.length === 0 && phoneId === null
@@ -42,8 +47,10 @@ class PhoneCatalog extends React.Component {
 PhoneCatalog.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   phones: PropTypes.array.isRequired,
-  phoneId: PropTypes.string.isRequired,
+  // eslint-disable-next-line react/require-default-props
+  phoneId: PropTypes.string,
   urlImg: PropTypes.string.isRequired,
+  handleFilter: PropTypes.func.isRequired,
 };
 
 export default PhoneCatalog;

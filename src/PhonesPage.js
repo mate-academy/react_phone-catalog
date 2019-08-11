@@ -31,11 +31,8 @@ const PhonesPage = ({ phone, urlImg }) => (
 );
 
 PhonesPage.propTypes = {
-  phone: PropTypes.shape(
-    PropTypes.string,
-    PropTypes.string,
-    PropTypes.object,
-  ).isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  phone: PropTypes.object.isRequired,
   urlImg: PropTypes.string.isRequired,
 };
 

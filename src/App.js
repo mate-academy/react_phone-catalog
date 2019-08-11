@@ -26,16 +26,32 @@ const getPhones = async() => {
 class App extends React.Component {
   state = {
     phones: [],
+    phonesVisible: [],
   }
 
   async componentDidMount() {
     const phones = await getPhones();
 
-    this.setState({ phones });
+    this.setState({
+      phones,
+      phonesVisible: phones,
+    });
+  }
+
+  handleFilter = (event) => {
+    const { value } = event.target;
+
+    this.setState(prevState => ({
+      phonesVisible: prevState.phones
+        .filter(phone => [phone.name]
+          .join()
+          .toLowerCase()
+          .includes(value.toLowerCase())),
+    }));
   }
 
   render() {
-    const { phones } = this.state;
+    const { phonesVisible } = this.state;
     const urlImg = 'https://mate-academy.github.io/phone-catalogue-static/';
 
     return (
@@ -65,8 +81,9 @@ class App extends React.Component {
             exact
             render={() => (
               <PhoneCatalog
-                phones={phones}
+                phones={phonesVisible}
                 urlImg={urlImg}
+                handleFilter={this.handleFilter}
               />
             )}
           />
@@ -77,7 +94,7 @@ class App extends React.Component {
               <PhoneDetailsPage
                 phoneId={match.params.phoneId}
                 urlImg={urlImg}
-                phones={phones}
+                phones={phonesVisible}
               />
             )}
           />
