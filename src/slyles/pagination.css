@@ -1,0 +1,52 @@
+.pagination {
+  margin: 0;
+  padding: 0;
+  align-self: center;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  position: sticky;
+  bottom: 20px;
+}
+
+.pagButton, .noBtn, .dropDown {
+  height: 35px;
+  min-width: 35px;
+  margin: 0 5px;
+  line-height: 35px;
+  text-decoration: none;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 0.8em;
+  font-weight: bold;
+  border: 2px solid #fff;
+  border-radius: 12px;
+  background-color: dimgrey;
+  color: #fff;
+}
+
+.dropDown {
+  outline: none;
+}
+
+.pagButton:hover, .dropDown:hover {
+  background-color: #b22222;
+  border: 4px solid #fff;
+  min-width: 37px;
+  box-shadow: 0 0 4px 2px #fff;
+}
+
+.pagDelay {
+  width: auto;
+  height: 30px;
+  margin: 0 5px;
+  font-size: 1.5em;
+  background-color: dimgrey;
+  color: #fff;
+  text-align: center;
+}
+
+.currPage {
+  background-color: #b22222;
+  border: 3px solid #fff;
+}

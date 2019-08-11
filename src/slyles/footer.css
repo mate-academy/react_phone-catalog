@@ -1,0 +1,85 @@
+.footer {
+  margin: 15px 0 0 0;
+  display: grid;
+  grid-template-columns: 2fr 9fr 2fr;
+  grid-template-rows: 20px 40px 10px;
+  grid-template-areas:
+    "bottomLogo bottomMenu developer"
+    "bottomLogo none developer"
+    "end end end";
+  justify-content: center;
+  align-content: center;
+  justify-items: center;
+  border-top: 2px solid #fff;
+}
+
+.footerMenu {
+  grid-area: bottomMenu;
+  color: #fff;
+  font-size: 18px;
+  line-height: 20px;
+}
+
+.footerMenuLink {
+  text-decoration: none;
+  color: #fff;
+  font-size: 18px;
+  line-height: 20px;
+}
+
+.footerMenuLink:hover {
+  color: #b22222;
+}
+
+.footerLogo {
+  grid-area: bottomLogo;
+  width: 100%;
+
+  background-color: #000;
+  text-decoration: none;
+  text-align: center;
+  color: #fff;
+  font-size: 25px;
+  line-height: 40px;
+}
+
+.footerLogo:hover {
+  color: #b22222;
+  font-size: 30px;
+}
+
+.developer {
+  grid-area: developer;
+  width: 100%;
+  background-color: #000;
+  cursor: pointer;
+  color: #fff;
+}
+
+.developer > p {
+  margin: 0;
+  padding: 2px;
+  text-align: center;
+  font-size: 12px;
+  line-height: 15px;
+  color: #fff;
+}
+
+.developer > h6 {
+  margin: 0;
+  padding: 2px;
+  text-align: center;
+  font-size: 35px;
+  line-height: 37px;
+}
+
+.developer:hover {
+  color: #b22222;
+}
+
+.end {
+  grid-area: end;
+  background-color: #b22222;
+  width: 100%;
+  height: 100%;
+}
