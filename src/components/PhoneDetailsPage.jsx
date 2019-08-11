@@ -36,7 +36,7 @@ class PhoneDetailsPage extends React.Component {
                         )
                     }
                   </>
-                  : 'Phone was not found'
+                  : 'No any data for this phone'
               }
             </>
             : <Loader

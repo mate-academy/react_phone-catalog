@@ -43,6 +43,48 @@ class App extends React.Component {
     details: '',
     isLoading: false,
     isLoaded: false,
+    itemsAtBasket: [],
+  }
+
+  // basketManager = (id, operation) => {
+  //   const currentIndex = this.state.itemsAtBasket
+  //     .findIndex(element => element.id === id)
+
+  //   this.setState(prevState => {
+  //     const changedArray = 
+
+  //     return {
+
+  //     }
+  //   })
+
+  // }
+
+  addItemToBasket = (itemToAdd) => {
+    const currentIndex = this.state.itemsAtBasket
+      .findIndex(element => element.id === itemToAdd.id);
+    
+    if (currentIndex >= 0) {
+      this.setState(prevState => {
+        const changedArray = [...prevState.itemsAtBasket];
+        changedArray[currentIndex].quantity += 1;
+
+        return {
+          itemsAtBasket: changedArray,
+        }
+      })
+    } else {
+      const requiredItem = {...itemToAdd};
+      requiredItem.quantity = 1;
+      delete requiredItem.imageUrl;
+      delete requiredItem.snippet;
+      delete requiredItem.age;
+      delete requiredItem.carrier;
+  
+      this.setState(prevState => ({
+        itemsAtBasket: [...prevState.itemsAtBasket, requiredItem],
+      }))
+    }
   }
 
   loadDataPhones = async () => {
@@ -83,7 +125,7 @@ class App extends React.Component {
   }
 
   render() {
-    const {phones, isLoading, isLoaded, details} = this.state;
+    const {phones, isLoading, isLoaded, details, itemsAtBasket} = this.state;
 
     return (
       <div>
@@ -116,6 +158,7 @@ class App extends React.Component {
           <Route path='/' exact component={HomePage}/>
           <Route path='/phones/' exact render={() =>
             <PhonesPage 
+              addItemToBasket={this.addItemToBasket}
               loadDataPhones={this.loadDataPhones}
               phones={phones}
               isLoading={isLoading}
@@ -134,7 +177,10 @@ class App extends React.Component {
             />  
           } />
           <Route path='/basket/' render={() =>
-            <Basket />
+            <Basket 
+              itemsAtBasket={itemsAtBasket}
+              // basketManagerIncrease={this.basketManagerIncrease}
+            />
           }
           />
           <Route component={NotFoundPage}/>

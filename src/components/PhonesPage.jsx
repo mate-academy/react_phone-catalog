@@ -11,14 +11,16 @@ class PhonesPage extends React.Component {
     const { 
       phones,
       isLoading, 
-      isLoaded, 
+      isLoaded,
+      addItemToBasket
     } = this.props;
 
     return (
       <div>
         {
           isLoaded
-            ? <PhoneCatalog 
+            ? <PhoneCatalog
+              addItemToBasket={addItemToBasket}
               phones={phones}
               isLoading={isLoading}
               isLoaded={isLoaded}

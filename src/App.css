@@ -2,6 +2,7 @@
 * {
   margin: 0;
   padding: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .nav-menu-header {
@@ -9,7 +10,8 @@
   grid-template-columns: 70px 70px 70px 1fr;
   width: 100%;
   height: 50px;
-  background:#343a40
+  background:#343a40;
+  font-size: 14px;
 }
 
 .nav-menu-header__item {
@@ -159,6 +161,60 @@
   padding: 14px;
   margin: 0 15px;
   border: 1px solid black;
+}
+
+.basketPage {
+  display: grid;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.basketPage__table {
+  border-radius: 50px;
+  border-collapse: collapse;
+  color: #d7d7db;
+}
+
+.basketPage__table-thead {
+  background: #343A40;
+}
+
+.basketPage__table-thead-td {
+  padding: 20px;
+  text-align: center;
+}
+
+.basketPage__table-tbody-td {
+  padding: 20px;
+  text-align: center;
+  color: #343A40;
+}
+
+.basketPage__table-tbody-td-link {
+  width: 100%;
+  display: block;
+  text-align: left;
+  text-decoration: none;
+  color: #343A40;
+}
+
+.basketPage__table-quantity-remove {
+  padding: 0 5px;
+}
+
+.basketPage__table-quantity-minus {
+  padding: 0 5px;
+  margin-right: 15px;
+}
+
+.basketPage__table-quantity-plus {
+  padding: 0 5px;
+  margin-left: 15px;
+}
+
+
+.basketPage__table-tbody-tr:hover {
+  background: #F5F5F5;
 }
 
 .loading {

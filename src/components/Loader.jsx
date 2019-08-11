@@ -3,7 +3,7 @@ import React from 'react'
 const Loader = ({isLoading}) => (
   <div>
     {
-      isLoading && <div class="loading"></div>
+      isLoading && <div className="loading"></div>
     }
   </div>
 )

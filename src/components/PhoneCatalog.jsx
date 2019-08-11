@@ -7,7 +7,6 @@ class PhoneCatalog extends React.Component {
   state = {
     phones: [],
     phonesForShowing: [],
-    itemsAtBasket: [],
   }
 
   componentDidMount = () => {
@@ -47,36 +46,8 @@ class PhoneCatalog extends React.Component {
     }))
   }
 
-  addItemToBasket = (itemToAdd) => {
-    const currentIndex = this.state.itemsAtBasket
-      .findIndex(element => element.id === itemToAdd.id)
-    
-    if (currentIndex >= 0) {
-      this.setState(prevState => {
-        let changedArray = [...prevState.itemsAtBasket];
-        changedArray[currentIndex].quantity += 1;
-
-        return {
-          itemsAtBasket: changedArray,
-        }
-      })
-    } else {
-      const requiredItem = {...itemToAdd};
-      requiredItem.quantity = 1;
-      delete requiredItem.imageUrl;
-      delete requiredItem.snippet;
-      delete requiredItem.age;
-      delete requiredItem.carrier;
-  
-      this.setState(prevState => ({
-        itemsAtBasket: [...prevState.itemsAtBasket, requiredItem],
-      }))
-    }
-  }
-
   render() {
     const { phonesForShowing } = this.state;
-    console.log(this.state.itemsAtBasket);
 
     return (
       <div className='phoneCatalog'>
@@ -128,7 +99,7 @@ class PhoneCatalog extends React.Component {
                 </section>
 
                 <button
-                  onClick={() => this.addItemToBasket(phone)}
+                  onClick={() => this.props.addItemToBasket(phone)}
                 >
                   Add to cart
                 </button>
