@@ -1,7 +1,7 @@
 const getFilteredByNamePhones = (phones, filterValue) => {
   if (filterValue) {
     const filterPhones = phones.filter(phone => (
-      phone.name.toLowerCase().includes(filterValue)
+      phone.name.toLowerCase().includes(filterValue.toLowerCase())
     ));
 
     return filterPhones;
@@ -17,11 +17,9 @@ const getSortedPhones = (phones, sortValue) => {
         return a.name.localeCompare(b.name);
 
       case 'newest':
-
         return a.age - b.age;
 
       default:
-
         return 0;
     }
   });

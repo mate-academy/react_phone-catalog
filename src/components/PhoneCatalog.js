@@ -4,22 +4,31 @@ import PropTypes from 'prop-types';
 import { cashedFilteredPhones, cashedSorteredPhones } from '../helpers';
 
 class PhoneCatalog extends React.Component {
-  state={
-    perPage: 20,
-    currentPage: 1,
-  }
-
-  handleFilter = (event) => {
+  handleControls = (event) => {
     const { name, value } = event.target;
 
-    this.setState({ [name]: +value, currentPage: 1 });
-
     const params = new URLSearchParams(this.props.location.search);
+    const curPage = +params.get('curpage');
 
     if (name === 'filterValue') {
       params.set('filter', value);
+      params.set('curpage', 1);
     } else if (name === 'sortValue') {
       params.set('sort', value);
+      params.set('curpage', 1);
+    } else if (name === 'perPage') {
+      params.set('perpage', value);
+      params.set('curpage', 1);
+    } else if (name === 'currentPage') {
+      params.set('curpage', value);
+    } else if (name === 'back') {
+      if (curPage > 1) {
+        params.set('curpage', curPage - 1);
+      }
+    } else if (name === 'next') {
+      if (curPage < +value) {
+        params.set('curpage', curPage + 1);
+      }
     }
 
     this.props.history.push({
@@ -28,51 +37,25 @@ class PhoneCatalog extends React.Component {
     });
   }
 
-  handlePagination = (event) => {
-    const { value } = event.target;
-
-    this.setState({ currentPage: +value });
-  }
-
-  handlePaginationButtons = (event) => {
-    const { name, value } = event.target;
-
-    switch (name) {
-      case 'back':
-        return this.state.currentPage > 1
-          ? (this.setState(prevState => (
-            { currentPage: prevState.currentPage - 1 })))
-          : this.state.currentPage;
-
-      case 'next':
-        return this.state.currentPage < value
-          ? (this.setState(prevState => (
-            { currentPage: prevState.currentPage + 1 })))
-          : this.state.currentPage;
-
-      default: return this.state.currentPage;
-    }
-  }
-
   render() {
-    const { perPage, currentPage } = this.state;
-    const { location } = this.props;
+    const {
+      phones, chandgeBasketItems, basketPhones, location,
+    } = this.props;
 
     const params = new URLSearchParams(location.search);
-
     const filterValue = params.get('filter') ? params.get('filter') : '';
-    const sortValue = params.get('sort') ? params.get('sort') : '';
+    const sortValue = params.get('sort') ? params.get('sort') : 'newest';
+    const perPage = params.get('perpage') ? params.get('perpage') : 20;
+    const currentPage = params.get('curpage') ? +params.get('curpage') : 1;
 
-    const { phones, chandgeBasketItems, basketPhones } = this.props;
     const filterPhones = cashedFilteredPhones(phones, filterValue);
-
     const sortedAndFilteredPhones = cashedSorteredPhones(
       filterPhones, sortValue
     );
 
     const pageQuantity = Math.ceil(sortedAndFilteredPhones.length / perPage);
+    const paginationButtons = Array.from(Array(pageQuantity), (b, i) => i + 1);
 
-    const pagButtons = Array.from(Array(pageQuantity), (b, i) => i + 1);
     const firsShownIndex = (currentPage * perPage) - perPage;
     const lastShownIndex = (currentPage * perPage);
     const lastShownPhone = currentPage === pageQuantity
@@ -94,7 +77,7 @@ class PhoneCatalog extends React.Component {
           <input
             name="filterValue"
             value={filterValue}
-            onChange={this.handleFilter}
+            onChange={this.handleControls}
             className="catalog__filter"
             placeholder="Filter phones by names"
           />
@@ -102,7 +85,7 @@ class PhoneCatalog extends React.Component {
           <select
             name="sortValue"
             value={sortValue}
-            onChange={this.handleFilter}
+            onChange={this.handleControls}
             className="catalog__sort-select"
           >
             <option value="abc">Alphabet</option>
@@ -112,7 +95,7 @@ class PhoneCatalog extends React.Component {
           <select
             name="perPage"
             value={perPage}
-            onChange={this.handleFilter}
+            onChange={this.handleControls}
             className="catalog__items-per-page"
           >
             <option value="3">Per Page: 3</option>
@@ -189,7 +172,7 @@ class PhoneCatalog extends React.Component {
           ))}
         </ul>
 
-        {pagButtons.length > 1
+        {paginationButtons.length > 1
           && (
             <div className="pagination">
               <p className="pagination__description">
@@ -213,7 +196,7 @@ class PhoneCatalog extends React.Component {
                 <li>
                   <button
                     name="back"
-                    onClick={this.handlePaginationButtons}
+                    onClick={this.handleControls}
                     type="button"
                     className={currentPage <= 1
                       ? 'button button--pugination button--pugination-disabled'
@@ -223,12 +206,12 @@ class PhoneCatalog extends React.Component {
                   </button>
                 </li>
 
-                {pagButtons.map(pagButton => (
+                {paginationButtons.map(pagButton => (
                   <li key={pagButton}>
                     <button
                       name="currentPage"
                       value={pagButton}
-                      onClick={this.handlePagination}
+                      onClick={this.handleControls}
                       type="button"
                       className={pagButton === currentPage
                         ? 'button button--pugination button--pugination-active'
@@ -243,7 +226,7 @@ class PhoneCatalog extends React.Component {
                   <button
                     name="next"
                     value={pageQuantity}
-                    onClick={this.handlePaginationButtons}
+                    onClick={this.handleControls}
                     type="button"
                     className={currentPage >= pageQuantity
                       ? 'button button--pugination button--pugination-disabled'
