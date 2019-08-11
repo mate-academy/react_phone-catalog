@@ -2,7 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-const PhoneCatalog = ({ phones, addPhone }) => (
+const PhoneCatalog = ({
+  phones,
+  addPhone,
+  selectedPhones,
+  increaseQuantity,
+  decreaseQuantity,
+}) => (
   <div className="phones-catalog">
     <h1>Phones</h1>
 
@@ -11,7 +17,7 @@ const PhoneCatalog = ({ phones, addPhone }) => (
         key={phone.id}
         className="phone-card"
       >
-        <Link to={`/phones/${phone.id}`}>
+        <Link to={`/details/${phone.id}`}>
           <img
             src={phone.imageUrl}
             alt="phone"
@@ -19,19 +25,56 @@ const PhoneCatalog = ({ phones, addPhone }) => (
           />
         </Link>
 
-        <Link to={`/phones/${phone.id}`}>
+        <Link to={`/details/${phone.id}`}>
           {phone.name}
         </Link>
 
         <p>{phone.snippet}</p>
 
-        <button
-          type="button"
-          className="cart-btn"
-          onClick={() => addPhone(phone)}
-        >
-          Add to basket
-        </button>
+        {selectedPhones.find(item => item.id === phone.id)
+          ? (
+            <>
+              {selectedPhones
+                .filter(item => item.id === phone.id)
+                .map(item => (
+                  <div key={item.id}>
+                    <button
+                      type="button"
+                      name="-"
+                      className="cart-btn phone-card__minus-btn quantity-btn"
+                      onClick={() => decreaseQuantity(item.id)}
+                    >
+                      -
+                    </button>
+
+                    <div className="phone-card__quantity">
+                      {`${phone.quantity}
+                        ${phone.quantity > 1 ? 'items' : 'item'}
+                      `}
+                    </div>
+
+                    <button
+                      type="button"
+                      name="+"
+                      className="cart-btn phone-card__plus-btn quantity-btn"
+                      onClick={() => increaseQuantity(phone.id)}
+                    >
+                      +
+                    </button>
+                  </div>
+                ))
+              }
+            </>
+          ) : (
+            <button
+              type="button"
+              className="cart-btn"
+              onClick={() => addPhone(phone)}
+            >
+              Add to basket
+            </button>
+          )
+        }
       </article>
     ))}
   </div>
@@ -40,6 +83,9 @@ const PhoneCatalog = ({ phones, addPhone }) => (
 PhoneCatalog.propTypes = {
   phones: PropTypes.arrayOf(PropTypes.object).isRequired,
   addPhone: PropTypes.func.isRequired,
+  increaseQuantity: PropTypes.func.isRequired,
+  decreaseQuantity: PropTypes.func.isRequired,
+  selectedPhones: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default PhoneCatalog;

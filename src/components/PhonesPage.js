@@ -1,9 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
 import Loader from 'react-loader-spinner';
+import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 
 import getData from '../api/getData';
 import PhoneCatalog from './PhoneCatalog';
+import Filters from './Filters';
+import Pagination from './Pagination';
+import SelectPhonesAmmount from './SelectPhonesAmmount';
 
 class PhonesPage extends React.Component {
   state = {
@@ -11,7 +16,7 @@ class PhonesPage extends React.Component {
     isLoaded: false,
     filterValue: '',
     currentPage: 1,
-    phonesPerPage: 10,
+    phonesPerPage: 5,
   }
 
   componentDidMount() {
@@ -68,6 +73,28 @@ class PhonesPage extends React.Component {
     }
   }
 
+  changeCurrentPage = (currentPage) => {
+    this.setState({ currentPage });
+  }
+
+  changePerPageAmmount = (event) => {
+    const { value } = event.target;
+    const { location, history } = this.props;
+    const search = new URLSearchParams(location.search);
+
+    this.setState({
+      phonesPerPage: +value,
+      currentPage: 1,
+    });
+
+    search.append('perPage', value);
+
+    history.replace({
+      pathname: '/phones/1',
+      search: `? ${search.toString()}`,
+    });
+  }
+
   render() {
     const {
       isLoaded,
@@ -75,6 +102,13 @@ class PhonesPage extends React.Component {
       currentPage,
       phonesPerPage,
     } = this.state;
+
+    const {
+      addPhone,
+      selectedPhones,
+      increaseQuantity,
+      decreaseQuantity,
+    } = this.props;
 
     const visiblePhones = this.filterPhones(filterValue);
     const firstIndex = currentPage * phonesPerPage - phonesPerPage;
@@ -85,52 +119,51 @@ class PhonesPage extends React.Component {
         {isLoaded
           ? (
             <main className="page-content">
-              <div className="filter">
-                <div>
-                  <label htmlFor="filter-input">
-                    Search:
-                    <input
-                      type="text"
-                      id="filter-input"
-                      className="filter__input"
-                      value={filterValue}
-                      onChange={this.handleFilter}
-                    />
-                  </label>
+              <Filters
+                filterValue={filterValue}
+                handleFilter={this.handleFilter}
+                getSortedPhones={this.getSortedPhones}
+              />
+
+              <div className="page-content__catalog">
+                <div className="pagination-and-selector">
+                  <Pagination
+                    phonesPerPage={phonesPerPage}
+                    totalPhones={visiblePhones.length}
+                    changeCurrentPage={this.changeCurrentPage}
+                  />
+
+                  <SelectPhonesAmmount
+                    changePerPageAmmount={this.changePerPageAmmount}
+                  />
                 </div>
 
-                <div>
-                  <label htmlFor="sort-field">
-                    Sort by:
-                    <select
-                      id="sort-field"
-                      name="sort-field"
-                      className="filter__selector"
-                      onChange={this.getSortedPhones}
-                    >
-                      <option value="age">
-                        Newest
-                      </option>
+                <PhoneCatalog
+                  phones={visiblePhones.slice(firstIndex, lastIndex)}
+                  addPhone={addPhone}
+                  selectedPhones={selectedPhones}
+                  increaseQuantity={increaseQuantity}
+                  decreaseQuantity={decreaseQuantity}
+                />
 
-                      <option value="alphabet">
-                        Alphabetical
-                      </option>
-                    </select>
-                  </label>
+                <Pagination
+                  phonesPerPage={phonesPerPage}
+                  totalPhones={visiblePhones.length}
+                  changeCurrentPage={this.changeCurrentPage}
+                />
+
+                <div className="page-content__with-info">
+                  {`${firstIndex + 1} - ${lastIndex <= visiblePhones.length
+                    ? lastIndex
+                    : visiblePhones.length
+                  } of ${visiblePhones.length} posts`}
                 </div>
               </div>
-
-              <PhoneCatalog
-                phones={visiblePhones.slice(firstIndex, lastIndex)}
-                addPhone={this.props.addPhone}
-              />
             </main>
           ) : (
             <Loader
               type="ThreeDots"
               color="#049dfcde"
-              height="100"
-              width="100"
             />
           )
         }
@@ -141,6 +174,9 @@ class PhonesPage extends React.Component {
 
 PhonesPage.propTypes = {
   addPhone: PropTypes.func.isRequired,
+  increaseQuantity: PropTypes.func.isRequired,
+  decreaseQuantity: PropTypes.func.isRequired,
+  selectedPhones: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
-export default PhonesPage;
+export default withRouter(PhonesPage);

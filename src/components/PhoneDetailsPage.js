@@ -33,6 +33,12 @@ class PhoneDetailsPage extends React.Component {
 
   render() {
     const { phoneDetails, isLoaded, error } = this.state;
+    const {
+      addPhone,
+      selectedPhones,
+      increaseQuantity,
+      decreaseQuantity,
+    } = this.props;
 
     return (
       <div>
@@ -44,14 +50,15 @@ class PhoneDetailsPage extends React.Component {
                 ? (
                   <PhoneDetails
                     details={phoneDetails}
-                    addPhone={this.props.addPhone}
+                    addPhone={addPhone}
+                    selectedPhones={selectedPhones}
+                    increaseQuantity={increaseQuantity}
+                    decreaseQuantity={decreaseQuantity}
                   />
                 ) : (
                   <Loader
                     type="ThreeDots"
                     color="#049dfcde"
-                    height="100"
-                    width="100"
                   />
                 )
               }
@@ -66,6 +73,9 @@ class PhoneDetailsPage extends React.Component {
 PhoneDetailsPage.propTypes = {
   phoneId: PropTypes.string.isRequired,
   addPhone: PropTypes.func.isRequired,
+  increaseQuantity: PropTypes.func.isRequired,
+  decreaseQuantity: PropTypes.func.isRequired,
+  selectedPhones: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default PhoneDetailsPage;
