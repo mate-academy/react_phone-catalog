@@ -12,6 +12,16 @@ const HomePage = () => (
   </div>
 );
 
+const getSorted = (array, sortField) => {
+  const sortBy = {
+    alphabet: (a, b) => a.name.localeCompare(b.name),
+  };
+
+  const callback = sortBy[sortField];
+
+  return [...array].sort(callback);
+};
+
 const getPhones = async() => {
   const url = 'https://mate-academy.github.io/phone-catalogue-static';
   const response = await fetch(
@@ -50,6 +60,14 @@ class App extends React.Component {
     }));
   }
 
+  handleSort = (sortField) => {
+    const { value } = sortField.target;
+
+    this.setState(prevState => ({
+      phonesVisible: getSorted(prevState.phones, value),
+    }));
+  }
+
   render() {
     const { phonesVisible } = this.state;
     const urlImg = 'https://mate-academy.github.io/phone-catalogue-static/';
@@ -84,6 +102,7 @@ class App extends React.Component {
                 phones={phonesVisible}
                 urlImg={urlImg}
                 handleFilter={this.handleFilter}
+                handleSort={this.handleSort}
               />
             )}
           />

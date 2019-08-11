@@ -11,13 +11,26 @@ class PhoneCatalog extends React.Component {
 
   render() {
     const {
-      phoneId, urlImg, phones, handleFilter,
+      phoneId, urlImg, phones, handleFilter, handleSort,
     } = this.props;
     const { phoneArrays } = this.state;
 
     return (
       <div>
-        <form>
+        <form action="/" className="adress-delivery__header">
+          <span>choose sort</span>
+          <div
+            className="destination-details"
+          >
+            <select
+              name=""
+              onClick={handleSort}
+              className="adress-delivery__destination-details"
+            >
+              <option value="alphabet">sort By Alphabet</option>
+              <option value="">sort order</option>
+            </select>
+          </div>
           <input
             type="text"
             className="input"
@@ -52,6 +65,7 @@ PhoneCatalog.propTypes = {
   phoneId: PropTypes.string,
   urlImg: PropTypes.string.isRequired,
   handleFilter: PropTypes.func.isRequired,
+  handleSort: PropTypes.func.isRequired,
 };
 
 export default PhoneCatalog;
