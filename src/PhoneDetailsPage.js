@@ -45,13 +45,13 @@ const PhoneDetailsPage = ({ match }) => {
           <img
             className="main-picture"
             onClick={() => handleClickNext()}
-            src={`/${details.images && details.images[activeImage]}`}
+            src={`${details.images && details.images[activeImage]}`}
             alt={details.id}
           />
 
           {details.images && details.images.map((image, i) => (
 
-            <img className={`image-detail ${i === activeImage && `active-image`}`} src={`/${image}`}
+            <img className={`image-detail ${i === activeImage && `active-image`}`} src={`${image}`}
               alt={details.id}
               onClick={() => handleClickImage(i)}
             />
