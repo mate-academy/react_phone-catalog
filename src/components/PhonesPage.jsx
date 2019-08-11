@@ -117,16 +117,15 @@ class PhonesPage extends React.Component {
                     {phone.name}
                   </Link>
                   <p>{phone.snippet}</p>
-
-                  <button
-                    type="button"
-                    className="addPhone"
-                    onClick={() => this.props.handleAddToBasket(phone)}
-                  >
-                    Add to basket
-                  </button>
-
                 </div>
+
+                <button
+                  type="button"
+                  className="addPhone styleAddToBasket"
+                  onClick={() => this.props.handleAddToBasket(phone)}
+                >
+                  Add to basket
+                </button>
 
               </div>
             </li>

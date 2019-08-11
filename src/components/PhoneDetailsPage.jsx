@@ -11,7 +11,7 @@ class PhoneDetailsPage extends React.Component {
   }
 
   async componentDidMount() {
-    const { phoneId } = this.props.match.params;
+    const { phoneId } = this.props;
     const phoneDetailFromApi = await getPhoneDetail(phoneId);
 
     this.setState({
@@ -29,7 +29,7 @@ class PhoneDetailsPage extends React.Component {
 
   render() {
     const { phoneDetail, selectedPhoto, isLoading } = this.state;
-    const { phoneId } = this.props.match.params;
+    const { phoneId } = this.props;
 
     return (
       <>
@@ -71,8 +71,19 @@ class PhoneDetailsPage extends React.Component {
                       />
                     </li>
                   ))}
+
+                  <button
+                    type="button"
+                    className="styleAddToBasket"
+                    onClick={() => this.props.handleAddToBasket(phoneDetail)}
+                    >
+                    Add to basket
+                  </button>
+
                 </ul>
+
               </div>
+
             </div>
             <div className="phone-specifications">
 
@@ -80,8 +91,10 @@ class PhoneDetailsPage extends React.Component {
                 <h2>Display</h2>
                 <h3>Screen size:</h3>
                 <p>{phoneDetail.display.screenSize}</p>
+
                 <h3>Screen Resolution:</h3>
                 <p>{phoneDetail.display.screenResolution}</p>
+
                 <h3>Touch Screen:</h3>
                 <p>{phoneDetail.display.touchScreen ? 'Yes' : 'No'}</p>
               </section>
@@ -90,6 +103,7 @@ class PhoneDetailsPage extends React.Component {
                 <h2>Camera</h2>
                 <h3>Features:</h3>
                 <p>{phoneDetail.camera.features.join(', ')}</p>
+
                 <h3>Primary:</h3>
                 <p>{phoneDetail.camera.primary}</p>
               </section>
@@ -99,10 +113,13 @@ class PhoneDetailsPage extends React.Component {
                 <h3>Network Support</h3>
                 <h3>Bluetooth:</h3>
                 <p>{phoneDetail.connectivity.bluetooth}</p>
+
                 <h3>Infrared:</h3>
                 <p>{phoneDetail.connectivity.infrared ? 'Yes' : 'No'}</p>
+
                 <h3>Wifi:</h3>
                 <p>{phoneDetail.connectivity.wifi}</p>
+
                 <h3>GPS:</h3>
                 <p>{phoneDetail.connectivity.gps ? 'Yes' : 'No'}</p>
               </section>
@@ -111,6 +128,7 @@ class PhoneDetailsPage extends React.Component {
                 <h2>Android</h2>
                 <h3>OS Version:</h3>
                 <p>{phoneDetail.android.os}</p>
+
                 <h3>UI:</h3>
                 <p>{phoneDetail.android.ui}</p>
               </section>
@@ -119,8 +137,10 @@ class PhoneDetailsPage extends React.Component {
                 <h2>Battery</h2>
                 <h3>Type:</h3>
                 <p>{phoneDetail.battery.type}</p>
+
                 <h3>Talk Time:</h3>
                 <p>{phoneDetail.battery.talkTime}</p>
+
                 <h3>Standby time (max):</h3>
                 <p>{phoneDetail.battery.standbyTime}</p>
               </section>
@@ -129,14 +149,19 @@ class PhoneDetailsPage extends React.Component {
                 <h2>Hardware</h2>
                 <h3>CPU:</h3>
                 <p>{phoneDetail.hardware.cpu}</p>
+
                 <h3>USB:</h3>
                 <p>{phoneDetail.hardware.usb}</p>
+
                 <h3>Audio / headphone jack:</h3>
                 <p>{phoneDetail.hardware.audioJack}</p>
+
                 <h3>FM Radio:</h3>
                 <p>{phoneDetail.hardware.fmRadio ? 'Yes' : 'No'}</p>
+
                 <h3>Accelerometer:</h3>
                 <p>{phoneDetail.hardware.accelerometer ? 'Yes' : 'No'}</p>
+
                 <h3>Physical keyboard:</h3>
                 <p>{phoneDetail.hardware.physicalKeyboard ? 'Yes' : 'No'}</p>
               </section>
@@ -145,6 +170,7 @@ class PhoneDetailsPage extends React.Component {
                 <h2>Size and Weight</h2>
                 <h3>Dimensions:</h3>
                 <p>{phoneDetail.sizeAndWeight.dimensions.join(', ')}</p>
+
                 <h3>Weight:</h3>
                 <p>{phoneDetail.sizeAndWeight.weight}</p>
               </section>
@@ -153,6 +179,7 @@ class PhoneDetailsPage extends React.Component {
                 <h2>Storage and Memory</h2>
                 <h3>RAM:</h3>
                 <p>{phoneDetail.storage.ram}</p>
+
                 <h3>Internal Storage:</h3>
                 <p>{phoneDetail.storage.flash}</p>
               </section>

@@ -170,6 +170,9 @@
   position: absolute;
   top: 320px;
   left: 65px;
+}
+
+.styleAddToBasket {
   border-radius: 10px;
   background-color: rgb(170, 207, 219);
   color: rgb(8, 49, 49);
@@ -179,7 +182,8 @@
   height: 50px;
 }
 
-.addPhone:hover {
+.addPhone:hover,
+.styleAddToBasket:hover {
   background-color: rgb(12, 97, 97);
   color: rgb(170, 207, 219);
   cursor: pointer;

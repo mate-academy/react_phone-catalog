@@ -40,9 +40,10 @@ class App extends React.Component {
           }]
         );
 
-      return {
+      return ({
+        ...prevState,
         basketItems: phonesInBasket,
-      };
+       });
     });
   };
 
@@ -141,7 +142,7 @@ class App extends React.Component {
             <Route
               path="/phones/"
               exact
-              component={() => (
+              render={() => (
                 <PhonesPage handleAddToBasket={this.handleAddToBasket} />
               )}
             />
@@ -149,7 +150,12 @@ class App extends React.Component {
             <Route
               path="/phones/:phoneId"
               exact
-              component={PhoneDetailsPage}
+              render={props => (
+                <PhoneDetailsPage
+                  phoneId={props.match.params.phoneId}
+                  handleAddToBasket={this.handleAddToBasket}
+                />
+              )}
             />
 
             <Route
