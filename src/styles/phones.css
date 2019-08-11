@@ -58,10 +58,9 @@
 }
 
 .img_preview {
-  width: 230px;
-  height: 230px;
+  width: 200px;
+  height: 200px;
   position: relative;
-  left: 10%;
 }
 
 .add-to-basket_button {

@@ -1,12 +1,12 @@
 .Details_List {
   position: relative;
-  width: 900px;
-  padding: 0 0 0 200px;
+  /* width: 100%; */
   font-size: 12px;
 }
 
 .Details_Li-ul {
   list-style-type: none;
+  padding: 0;
 }
 
 .add-to-basket_button-details {
@@ -43,4 +43,21 @@
   background: rgb(238,238,238) linear-gradient(#f7f7f7, #f1f1f1);
   box-shadow: -2px 2px 3px 2px rgba(0,0,0,.1);
   font-size: 14px;
+}
+
+.phone-details {
+
+  display: flex;
+  flex-wrap: wrap;
+
+  justify-content: center;
+}
+
+.phone-details_item {
+  width: 150px;
+  margin: 5px;
+}
+
+.phone-details_description {
+  width: 80%;
 }

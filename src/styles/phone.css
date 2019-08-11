@@ -38,13 +38,33 @@
 .change_img_block {
   margin: 0 200px 0 200px;
   display: grid;
-  grid-template-columns: 130px 500px 130px 130px;
+  grid-template-columns: 1fr auto 1fr 1fr;
   justify-content: center;
   justify-items: center;
 }
 
-
-
 .Phone {
   position: relative;
+  width: 100%;
 }
+
+.phoneimage_detail {
+  display: flex;
+  justify-content: center;
+  width:100%;
+  flex-wrap: wrap;
+  padding: auto;
+  position: relative;
+}
+
+.phoneimage_detail-small {
+  display: flex;
+  justify-content: center;
+  width: 70px;
+  height: 70px;
+}
+
+.phoneimage_detail-small:hover {
+  cursor: pointer;
+}
+

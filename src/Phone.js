@@ -1,4 +1,5 @@
 import React from 'react';
+import classnames from 'classnames';
 
 import SomeError from './SomeError';
 import PhoneDetails from './PhoneDetails';
@@ -80,16 +81,19 @@ class Phones extends React.Component {
                 <button className="change-button" onClick={()=> this.handleCloseImage()} >{'Close'}</button>
               </div>
                 :  '' }
-              <div className="phoneimage">
-                {phoneImages.map((image, index) => (
-                  <img
-                    src={`${imageFromUrl}/${image}`}
-                    className="img_preview"
-                    key={Math.random()}
-                    alt="Phone"
-                    onClick={() => this.handleSwitchImage(index)}
-                  />
-                ))}
+              <div className="phoneimage_detail">
+                  {phoneImages.map((image, index) => (
+                    <img
+                      src={`${imageFromUrl}/${image}`}
+                      className={classnames({
+                        'img_preview': true,
+                        'phoneimage_detail-small': this.state.isShown,
+                      })}
+                      key={Math.random()}
+                      alt="Phone"
+                      onClick={() => this.handleSwitchImage(index)}
+                    />
+                  ))}
               </div>
               <PhoneDetails
                 phone={phone}
