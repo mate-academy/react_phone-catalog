@@ -14,8 +14,7 @@ const Cart = ({
     <div className="order-box">
       <h3>Your order:</h3>
       <div
-        style={!orderedPhones.length < 1 ? { display: 'none' } : {}}
-        className="cart-empty"
+        className={orderedPhones.length ? 'cart-empty hidden' : 'cart-empty'}
       >
         <span>
           {`You haven’t chosen anything yet. But it's not too late to fix :)`}
@@ -24,33 +23,53 @@ const Cart = ({
           Open catalog
         </Link>
       </div>
-      <CartItem
-        orderedPhones={orderedPhones}
-        handleIncreasQuantity={handleIncreasQuantity}
-        handleDecreasQuantity={handleDecreasQuantity}
-        handleDeleteItem={handleDeleteItem}
-      />
+      <ul className="order-list">
+        {orderedPhones.map(phone => (
+          <li key={phone.id}>
+            <CartItem
+              phone={phone}
+              orderedPhones={orderedPhones}
+              handleIncreasQuantity={handleIncreasQuantity}
+              handleDecreasQuantity={handleDecreasQuantity}
+              handleDeleteItem={handleDeleteItem}
+            />
+          </li>
+        ))}
+      </ul>
+      <section className="order-content">
+        <Link to="/phones">
+          <button
+            type="button"
+            className={
+              !orderedPhones.length
+                ? 'btn btn-buy btn-add-more hidden'
+                : 'btn btn-buy btn-add-more'
+            }
+          >
+            + Add more phones +
+          </button>
+        </Link>
+      </section>
     </div>
 
     <div className="order-btn-block">
       <div className="order-total">
-        {orderedPhones.length > 1 ? (
+        {orderedPhones.length > 1 && (
           <>
-            <span className="order-total-text">
-              {`Total phones in cart: `}
-            </span>
+            <span className="order-total-text">Total phones in cart: </span>
             {orderedPhones
               .map(phone => phone.quantity)
               .reduce((acc, val) => acc + val)}
           </>
-        ) : (
-          ''
         )}
       </div>
       <button
-        style={orderedPhones.length < 1 ? { display: 'none' } : {}}
         type="button"
-        className="btn btn-buy btn-pay"
+        className={
+          orderedPhones.length < 1
+            ? 'btn btn-buy btn-pay hidden'
+            : 'btn btn-buy btn-pay'
+        }
       >
         {'->> TO PAY <<-'}
       </button>

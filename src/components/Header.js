@@ -15,7 +15,11 @@ const Header = ({ orderedPhonesLength }) => (
         <NavLink to="/" exact>
           <li className="nav-item">Home</li>
         </NavLink>
-        <NavLink to="/phones">
+        <NavLink to={{
+          pathname: '/phones',
+          search: '',
+        }}
+        >
           <li className="nav-item">Phones</li>
         </NavLink>
         <NavLink to="/cart">

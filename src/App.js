@@ -8,7 +8,6 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import HomePage from './components/HomePage';
 import PhonesPage from './components/PhonesPage';
-import SearchPanel from './components/SearchPanel';
 import PhoneDetails from './components/PhoneDetails';
 import NotFoundPage from './components/NotFoundPage';
 
@@ -27,7 +26,7 @@ export default class App extends Component {
 
     this.setState({ orderedPhones: storage });
 
-    this.saveToLocalStorage();
+    setTimeout(() => this.saveToLocalStorage(), 0);
   }
 
   getFromLocalStorage = () => {
@@ -43,12 +42,12 @@ export default class App extends Component {
     localStorage.setItem('orderedPhones', JSON.stringify(data));
   };
 
-  handleAddToCart =(event) => {
+  handleAddToCart = (event) => {
     const { id } = event.target;
     const quantity = 1;
     const link = `/phones/${id}`;
     const matchedPhone = this.state.initialPhones
-      .filter(phone => phone.id === id)[0];
+      .find(phone => phone.id === id);
 
     const phone = { ...matchedPhone, quantity, link };
     const checkId = phoneId => phoneId.id === id;
@@ -59,57 +58,51 @@ export default class App extends Component {
       }));
     }
 
-    this.saveToLocalStorage();
+    setTimeout(() => this.saveToLocalStorage(), 100);
   }
 
   handleIncreasQuantity = (event) => {
     const { id } = event.target;
 
-    const phone = this.state.orderedPhones
-      .filter(item => item.id === id)[0];
+    this.setState(state => ({
+      orderedPhones: state.orderedPhones.map(phone => (
+        phone.id === id
+          ? { ...phone, quantity: phone.quantity + 1 }
+          : phone)),
+    }));
 
-    phone.quantity += 1;
-
-    this.setState(state => ({ orderedPhones: state.orderedPhones }));
-
-    this.saveToLocalStorage();
+    setTimeout(() => this.saveToLocalStorage(), 0);
   }
 
   handleDecreasQuantity = (event) => {
     const { id } = event.target;
 
-    const phone = this.state.orderedPhones
-      .filter(item => item.id === id)[0];
+    const matchedPhone = this.state.orderedPhones
+      .find(item => item.id === id);
 
-    if (phone.quantity > 1) {
-      phone.quantity -= 1;
+    if (matchedPhone.quantity > 1) {
+      this.setState(state => ({
+        orderedPhones: state.orderedPhones.map(phone => (
+          phone.id === id
+            ? { ...phone, quantity: phone.quantity - 1 }
+            : phone)),
+      }));
     }
 
-    this.setState(state => ({ orderedPhones: state.orderedPhones }));
-
-    this.saveToLocalStorage();
+    setTimeout(() => this.saveToLocalStorage(), 0);
   }
 
   handleDeleteItem = (event) => {
     const { id } = event.target;
 
-    const phoneIndex = this.state.orderedPhones.findIndex(
-      phone => phone.id === id
-    );
-
-    this.state.orderedPhones.splice(phoneIndex, 1);
     this.setState(state => ({
-      orderedPhones: state.orderedPhones,
+      orderedPhones: state.orderedPhones.filter(phone => phone.id !== id),
     }));
 
-    this.saveToLocalStorage();
+    setTimeout(() => this.saveToLocalStorage(), 0);
   }
 
   render() {
-    setTimeout(() => {
-      this.saveToLocalStorage();
-    }, 200);
-
     return (
       <div className="phones-catalog">
         <Header orderedPhonesLength={this.state.orderedPhones.length} />
@@ -120,9 +113,12 @@ export default class App extends Component {
             <Route
               path="/phones"
               exact
-              render={() => (
+              render={props => (
                 <PhonesPage
+                  initialPhones={this.state.initialPhones}
                   handleAddToCart={this.handleAddToCart}
+                  location={props.location}
+                  history={props.history}
                 />
               )}
             />
@@ -138,11 +134,7 @@ export default class App extends Component {
                 />
               )}
             />
-            <Route
-              exact
-              path="/phones/?query=&sort="
-              component={SearchPanel}
-            />
+
             <Route
               path="/phones/:id"
               exact

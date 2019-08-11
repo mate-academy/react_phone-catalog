@@ -468,6 +468,13 @@ ul > .active:not(:last-child) {
 .linked-order-photo {
   height: 80px;
   cursor: pointer;
+  opacity: 0.9;
+}
+
+.linked-order-photo:hover {
+  opacity: 1;
+  transform: scale(1.05);
+  transition: transform 0.3s;
 }
 
 .order-total {
@@ -511,6 +518,7 @@ th {
 .control-btn-icons {
   width: 20px;
   height: 20px;
+  user-select: none;
 }
 
 .order-btn-block {
@@ -527,6 +535,26 @@ th {
   text-transform: uppercase;
 }
 
+.btn-add-more {
+  width: 100%;
+  background-color: #1effb809;
+  text-transform: uppercase;
+  opacity: 0.5;
+  transition: 0.3s;
+}
+
+.btn-add-more:hover {
+  color: #000;
+  background-color: #1effb809;
+  opacity: 1;
+}
+
+.btn-add-more:active {
+  color: #000;
+  background-color: #1effb816;
+  transform: scale(0.99);
+}
+
 .btn-pay {
   transition: 0.1s;
 }
@@ -538,10 +566,15 @@ th {
   transition: 0.1s;
 }
 
+.hidden {
+  display: none;
+}
+
 /*--- PAGINATION ---*//*--- PAGINATION ---*/
 
 .pagination-box {
-  /* max-width: max-content; */
+  display: flex;
+  justify-content: space-between;
   margin: 0 auto;
 }
 
@@ -589,6 +622,8 @@ input {
 }
 
 .per-page-select {
+  margin-left: 20px;
+  height: 39px;
   border-radius: 10px;
   background-color: #b28bd83d;
 }

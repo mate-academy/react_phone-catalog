@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 
 export default class Pagination extends Component {
   state = {
-    phones: this.props.phones,
     pages: [],
     perPage: 20,
     page: 1,
@@ -13,12 +12,12 @@ export default class Pagination extends Component {
     { label: 3 },
     { label: 6 },
     { label: 10 },
-    { label: this.state.phones.length },
+    { label: 20 },
   ];
 
-  componentWillMount() {
-    const { phones, perPage } = this.state;
-    const pagesNum = Math.ceil(phones.length / perPage);
+  componentDidMount() {
+    const { perPage } = this.state;
+    const pagesNum = Math.ceil(this.props.total / perPage);
 
     this.setState({
       pages: Array.from({ length: pagesNum }, (a, b) => b + 1),
@@ -43,9 +42,8 @@ export default class Pagination extends Component {
   }
 
   toggleContentPerPage = (event) => {
-    const { phones } = this.state;
     const { value } = event.target;
-    const pagesNum = Math.ceil(phones.length / +value);
+    const pagesNum = Math.ceil(this.props.total / +value);
 
     this.setState({
       perPage: +value,
@@ -64,10 +62,19 @@ export default class Pagination extends Component {
     return (
       <>
         <div className="pagination-box">
-          <ul className="pagination-panel">
+          <ul className={
+            this.state.perPage === 20
+              ? 'pagination-panel hidden'
+              : 'pagination-panel'
+          }
+          >
             <li>
               <button
-                className="btn btn-pgn prev-next"
+                className={
+                  this.state.perPage === 20
+                    ? 'btn btn-pgn prev-next hidden'
+                    : 'btn btn-pgn prev-next'
+                }
                 type="button"
                 disabled={page <= 1}
                 onClick={() => this.handlePrev()}
@@ -97,7 +104,11 @@ export default class Pagination extends Component {
 
             <li>
               <button
-                className="btn btn-pgn prev-next"
+                className={
+                  this.state.perPage === 20
+                    ? 'btn btn-pgn prev-next hidden'
+                    : 'btn btn-pgn prev-next'
+                }
                 type="button"
                 onClick={this.handleNext}
                 disabled={page > pages.length - 1}
@@ -105,19 +116,19 @@ export default class Pagination extends Component {
                 {'>>'}
               </button>
             </li>
-            <select
-              className="per-page-select"
-              defaultValue={perPage}
-              onChange={this.toggleContentPerPage}
-              title="perPage"
-            >
-              {this.contentPerPage.map(item => (
-                <option key={item.label} value={item.label}>
-                  {item.label}
-                </option>
-              ))}
-            </select>
           </ul>
+          <select
+            className="per-page-select"
+            defaultValue={perPage}
+            onChange={this.toggleContentPerPage}
+            title="perPage"
+          >
+            {this.contentPerPage.map(item => (
+              <option key={item.label} value={item.label}>
+                {item.label}
+              </option>
+            ))}
+          </select>
         </div>
       </>
     );
@@ -126,5 +137,5 @@ export default class Pagination extends Component {
 
 Pagination.propTypes = {
   togglePagination: PropTypes.func.isRequired,
-  phones: PropTypes.arrayOf(PropTypes.object).isRequired,
+  total: PropTypes.number.isRequired,
 };

@@ -62,11 +62,6 @@ class PhoneDetails extends Component {
           ) : (
             <>
               <Loader />
-              <p>
-                {'Maybe this page is not available, '}
-                <Link to="/phones">go back</Link>
-                {' and try checking late'}
-              </p>
             </>
           )}
         </div>
