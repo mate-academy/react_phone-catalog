@@ -28,7 +28,7 @@ class PhoneCatalog extends React.Component {
 
         {phoneArrays}
 
-        {phones.length === 0 && phoneId === null
+        {phones.length === 0 && phoneId === 0
           ? <Loading />
           : (
             phones.map(phone => (
@@ -38,7 +38,8 @@ class PhoneCatalog extends React.Component {
                 phoneId={phoneId}
                 urlImg={urlImg}
               />
-            )))}
+            )))
+        }
       </div>
     );
   }
