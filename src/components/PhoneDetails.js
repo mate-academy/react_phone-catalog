@@ -1,207 +1,254 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-class PhoneDetails extends React.Component {
-  state={
-    imageUrl: this.props.phoneDetails.images[0],
-  }
+const PhoneDetails = ({ phoneDetails }) => (
+  <div className="phone__details">
+    <h3>Phone details</h3>
+    <ul className="phone__details-list">
+      <li className="phone__details-item">
+        <h4>Android:</h4>
 
-  handleImageIndex = (event) => {
-    this.setState({ imageUrl: event.target.name });
-  }
+        <dl>
+          <dt>OS:</dt>
+          <dd>{phoneDetails.android.os}</dd>
 
-  render() {
-    const { phoneDetails } = this.props;
-    const { imageUrl } = this.state;
+          <dt>UI:</dt>
+          <dd>{phoneDetails.android.ui}</dd>
+        </dl>
+      </li>
 
-    return (
-      <div className="phone__details">
-        <img src={imageUrl} alt={phoneDetails.name} />
+      <li className="phone__details-item">
+        <h4>Battery:</h4>
 
-        {phoneDetails.images.map(imgUrl => (
-          <input
-            name={imgUrl}
-            onClick={this.handleImageIndex}
-            key={imgUrl}
-            type="image"
-            className="phone__galery"
-            src={imgUrl}
-            alt={phoneDetails.name}
-          />
-        ))}
+        <dl>
+          <dt>Stand by Time:</dt>
+          <dd>{phoneDetails.battery.standbyTime}</dd>
 
-        <table>
-          <tbody>
-            <tr>
-              <td>Additional Features:</td>
+          <dt>Talk Time:</dt>
+          <dd>{phoneDetails.battery.talkTime}</dd>
 
-              <td>
-                <ul>
-                  <li>{phoneDetails.additionalFeatures}</li>
-                </ul>
-              </td>
-            </tr>
+          <dt>Type:</dt>
+          <dd>{phoneDetails.battery.type}</dd>
+        </dl>
+      </li>
 
-            <tr>
-              <td>android:</td>
+      <li className="phone__details-item">
+        <h4>Camera:</h4>
 
-              <td>
-                <ul>
-                  <li>
-os:
-                    {`${phoneDetails.android.os}`}
-                  </li>
-                  <li>
-ui:
-                    {`${phoneDetails.android.ui}`}
-                  </li>
-                </ul>
-              </td>
-            </tr>
+        <dl>
+          <dt>Screen Resolution:</dt>
+          <dd>
+            {phoneDetails.camera.features
+              ? (
+                <img
+                  src="./img/check_circle.svg"
+                  alt="Yes"
+                  className="phone__detail-availabilty"
+                />
+              )
+              : (
+                <img
+                  src="./img/no_circle.svg"
+                  alt="Yes"
+                  className="phone__detail-availabilty"
+                />
+              )}
+          </dd>
 
-            <tr>
-              <td>battery:</td>
+          <dt>Primary:</dt>
+          <dd>
+            {phoneDetails.camera.primary
+              ? (
+                <img
+                  src="./img/check_circle.svg"
+                  alt="Yes"
+                  className="phone__detail-availabilty"
+                />
+              )
+              : (
+                <img
+                  src="./img/no_circle.svg"
+                  alt="Yes"
+                  className="phone__detail-availabilty"
+                />
+              )}
+          </dd>
+        </dl>
+      </li>
 
-              <td>
-                <ul>
-                  <li>
-standbyTime:
-                    {`${phoneDetails.battery.standbyTime}`}
-                  </li>
-                  <li>
-talkTime:
-                    {`${phoneDetails.battery.talkTime}`}
-                  </li>
-                  <li>
-type:
-                    {`${phoneDetails.battery.type}`}
-                  </li>
-                </ul>
-              </td>
-            </tr>
+      <li className="phone__details-item">
+        <h4>Connectivity:</h4>
 
-            <tr>
-              <td>camera:</td>
+        <dl>
+          <dt>Bluetooth:</dt>
+          <dd>{phoneDetails.connectivity.bluetooth}</dd>
 
-              <td>
-                <ul>
-                  <li>
-screenResolution:
-                    {`${phoneDetails.camera.features}`}
-                  </li>
-                  <li>
-primary:
-                    {`${phoneDetails.camera.primary}`}
-                  </li>
-                </ul>
-              </td>
-            </tr>
+          <dt>Cell:</dt>
+          <dd>{phoneDetails.connectivity.cell}</dd>
 
-            <tr>
-              <td>connectivity:</td>
+          <dt>Gps:</dt>
+          <dd>
+            {phoneDetails.connectivity.gps
+              ? (
+                <img
+                  src="./img/check_circle.svg"
+                  alt="Yes"
+                  className="phone__detail-availabilty"
+                />
+              )
+              : (
+                <img
+                  src="./img/no_circle.svg"
+                  alt="Yes"
+                  className="phone__detail-availabilty"
+                />
+              )}
+          </dd>
 
-              <td>
-                <ul>
-                  <li>
-bluetooth:
-                    {`${phoneDetails.connectivity.bluetooth}`}
-                  </li>
-                  <li>
-cell:
-                    {`${phoneDetails.connectivity.cell}`}
-                  </li>
-                  <li>
-gps:
-                    {`${phoneDetails.connectivity.gps}`}
-                  </li>
-                  <li>
-infrared:
-                    {`${phoneDetails.connectivity.infrared}`}
-                  </li>
-                  <li>
-wifi:
-                    {`${phoneDetails.connectivity.wifi}`}
-                  </li>
-                </ul>
-              </td>
-            </tr>
+          <dt>Infrared:</dt>
+          <dd>
+            {phoneDetails.connectivity.infrared
+              ? (
+                <img
+                  src="./img/check_circle.svg"
+                  alt="Yes"
+                  className="phone__detail-availabilty"
+                />
+              )
+              : (
+                <img
+                  src="./img/no_circle.svg"
+                  alt="Yes"
+                  className="phone__detail-availabilty"
+                />
+              )}
+          </dd>
 
-            <tr>
-              <td>display:</td>
+          <dt>Wifi:</dt>
+          <dd>{phoneDetails.connectivity.wifi}</dd>
+        </dl>
+      </li>
 
-              <td>
-                <ul>
-                  <li>
-screenResolution:
-                    {`${phoneDetails.display.screenResolution}`}
-                  </li>
-                  <li>
-screenSize:
-                    {`${phoneDetails.display.screenSize}`}
-                  </li>
-                  <li>
-touchScreen:
-                    {`${phoneDetails.display.touchScreen}`}
-                  </li>
-                </ul>
-              </td>
-            </tr>
+      <li className="phone__details-item">
+        <h4>Display:</h4>
 
-            <tr>
-              <td>hardware:</td>
+        <dl>
+          <dt>Screen Resolution:</dt>
+          <dd>{phoneDetails.display.screenResolution}</dd>
 
-              <td>
-                <ul>
-                  <li>
-accelerometer:
-                    {`${phoneDetails.hardware.accelerometer}`}
-                  </li>
-                  <li>
-audioJack:
-                    {`${phoneDetails.hardware.audioJack} `}
-                  </li>
-                  <li>
-cpu:
-                    {`${phoneDetails.hardware.cpu} `}
-                  </li>
-                  <li>
-fmRadio:
-                    {`${phoneDetails.hardware.fmRadio} `}
-                  </li>
-                  <li>
-physicalKeyboard:
-                    {`${phoneDetails.hardware.physicalKeyboard} `}
-                  </li>
-                  <li>
-usb:
-                    {`${phoneDetails.hardware.usb} `}
-                  </li>
-                </ul>
-              </td>
-            </tr>
+          <dt>Sreen Size:</dt>
+          <dd>{phoneDetails.display.screenSize}</dd>
 
-            <tr>
-              <td>sizeAndWeight:</td>
+          <dt>TouchScreen:</dt>
+          <dd>
+            {phoneDetails.display.touchScreen
+              ? (
+                <img
+                  src="./img/check_circle.svg"
+                  alt="Yes"
+                  className="phone__detail-availabilty"
+                />
+              )
+              : (
+                <img
+                  src="./img/no_circle.svg"
+                  alt="Yes"
+                  className="phone__detail-availabilty"
+                />
+              )}
+          </dd>
+        </dl>
+      </li>
 
-              <td>
-                <ul>
-                  <li>
-dimensions:
-                    {phoneDetails.sizeAndWeight.dimensions}
-                  </li>
-                  <li>
-weight:
-                    {phoneDetails.sizeAndWeight.weight}
-                  </li>
-                </ul>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    );
-  }
-}
+      <li className="phone__details-item">
+        <h4>Hardware:</h4>
+
+        <dl>
+          <dt>Accelerometer:</dt>
+          <dd>
+            {phoneDetails.hardware.accelerometer
+
+              ? (
+                <img
+                  src="./img/check_circle.svg"
+                  alt="Yes"
+                  className="phone__detail-availabilty"
+                />
+              )
+              : (
+                <img
+                  src="./img/no_circle.svg"
+                  alt="Yes"
+                  className="phone__detail-availabilty"
+                />
+              )}
+          </dd>
+
+          <dt>AudioJack:</dt>
+          <dd>{phoneDetails.hardware.audioJack}</dd>
+
+          <dt>CPU:</dt>
+          <dd>{phoneDetails.hardware.cpu}</dd>
+
+          <dt>Fm Radio:</dt>
+          <dd>
+            {phoneDetails.hardware.fmRadio
+
+              ? (
+                <img
+                  src="./img/check_circle.svg"
+                  alt="Yes"
+                  className="phone__detail-availabilty"
+                />
+              )
+              : (
+                <img
+                  src="./img/no_circle.svg"
+                  alt="Yes"
+                  className="phone__detail-availabilty"
+                />
+              )}
+          </dd>
+
+          <dt>Physical Keyboard:</dt>
+          <dd>
+            {phoneDetails.hardware.fmRadio
+
+              ? (
+                <img
+                  src="./img/check_circle.svg"
+                  alt="Yes"
+                  className="phone__detail-availabilty"
+                />
+              )
+              : (
+                <img
+                  src="./img/no_circle.svg"
+                  alt="Yes"
+                  className="phone__detail-availabilty"
+                />
+              )}
+          </dd>
+
+          <dt>USB:</dt>
+          <dd>{phoneDetails.hardware.usb}</dd>
+        </dl>
+      </li>
+
+      <li className="phone__details-item">
+        <h4>Size And Weight:</h4>
+
+        <dl>
+          <dt>Dimensions:</dt>
+          <dd>{phoneDetails.sizeAndWeight.dimensions}</dd>
+
+          <dt>Weight:</dt>
+          <dd>{phoneDetails.sizeAndWeight.dimensions}</dd>
+        </dl>
+      </li>
+    </ul>
+  </div>
+);
 
 PhoneDetails.propTypes = {
   phoneDetails: PropTypes.shape({

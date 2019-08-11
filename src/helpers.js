@@ -1,9 +1,13 @@
 const getFilteredByNamePhones = (phones, filterValue) => {
-  const filterPhones = phones.filter(phone => (
-    phone.name.toLowerCase().includes(filterValue.toLowerCase())
-  ));
+  if (filterValue) {
+    const filterPhones = phones.filter(phone => (
+      phone.name.toLowerCase().includes(filterValue)
+    ));
 
-  return filterPhones;
+    return filterPhones;
+  }
+
+  return phones;
 };
 
 const getSortedPhones = (phones, sortValue) => {
