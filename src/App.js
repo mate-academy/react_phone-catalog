@@ -9,6 +9,7 @@ import HomePage from './components/HomePage'
 import PhonesPage from './components/PhonesPage'
 import NotFoundPage from './components/NotFoundPage'
 import PhoneDetailsPage from './components/PhoneDetailsPage'
+import Basket from './components/Basket'
 
 /**
  * [x] - переделать стиль CSS, чтобы без bootstrap
@@ -99,6 +100,13 @@ class App extends React.Component {
           >
             Phones
           </NavLink>
+          
+          <NavLink
+            className="nav-menu-header__item basket" 
+            href='#'
+            to='/basket/'
+          >
+          </NavLink>
         </nav>
 
         <Switch>
@@ -112,7 +120,7 @@ class App extends React.Component {
             />
           }/>
           <Route path='/phones/:id?' render={({ match }) =>
-            <PhoneDetailsPage 
+            <PhoneDetailsPage
               loadDataPhones={this.loadDataPhones}
               loadDataDetails={this.loadDataDetails}
               phones={phones}
@@ -120,8 +128,12 @@ class App extends React.Component {
               id={match.params.id}
               isLoading={isLoading}
               isLoaded={isLoaded}
-            />
+            />  
           } />
+          <Route path='/basket/' render={() =>
+            <Basket />
+          }
+          />
           <Route component={NotFoundPage}/>
         </Switch>
       </div>

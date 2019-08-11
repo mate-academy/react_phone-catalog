@@ -6,7 +6,7 @@
 
 .nav-menu-header {
   display: grid;
-  grid-template-columns: 70px 70px 1fr;
+  grid-template-columns: 70px 70px 70px 1fr;
   width: 100%;
   height: 50px;
   background:#343a40
@@ -19,6 +19,18 @@
   text-decoration: none;
   width: 100%;
   line-height: 50px;
+}
+
+.basket {
+  margin-top: 10px;
+  margin-left: 15px;
+  background-color: #6c757d;
+  -webkit-mask: url('/img/shopping-online.svg') no-repeat;
+  background-size: 50px 50px;
+}
+
+.basket:hover {
+  background-color: #d7d7db;
 }
 
 .nav-menu-header__item:hover {

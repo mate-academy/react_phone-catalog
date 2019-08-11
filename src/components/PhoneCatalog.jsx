@@ -7,6 +7,7 @@ class PhoneCatalog extends React.Component {
   state = {
     phones: [],
     phonesForShowing: [],
+    itemsAtBasket: [],
   }
 
   componentDidMount = () => {
@@ -46,13 +47,40 @@ class PhoneCatalog extends React.Component {
     }))
   }
 
+  addItemToBasket = (itemToAdd) => {
+    const currentIndex = this.state.itemsAtBasket
+      .findIndex(element => element.id === itemToAdd.id)
+    
+    if (currentIndex >= 0) {
+      this.setState(prevState => {
+        let changedArray = [...prevState.itemsAtBasket];
+        changedArray[currentIndex].quantity += 1;
+
+        return {
+          itemsAtBasket: changedArray,
+        }
+      })
+    } else {
+      const requiredItem = {...itemToAdd};
+      requiredItem.quantity = 1;
+      delete requiredItem.imageUrl;
+      delete requiredItem.snippet;
+      delete requiredItem.age;
+      delete requiredItem.carrier;
+  
+      this.setState(prevState => ({
+        itemsAtBasket: [...prevState.itemsAtBasket, requiredItem],
+      }))
+    }
+  }
+
   render() {
     const { phonesForShowing } = this.state;
-    console.log(this.state.inputValue);
+    console.log(this.state.itemsAtBasket);
 
     return (
       <div className='phoneCatalog'>
-        <label 
+        <label
           className='searchField'
           htmlFor="search_field"
         >
@@ -87,15 +115,23 @@ class PhoneCatalog extends React.Component {
                   src={`${phone.imageUrl}`} 
                   alt="altImg"
                   />
-                 <Link
-                   className='listOfPhones__item-link'
-                   to={`/phones/${phone.id}`}
-                 >
-                   {phone.name}
+
+                <Link
+                  className='listOfPhones__item-link'
+                  to={`/phones/${phone.id}`}
+                >
+                  {phone.name}
                 </Link>
+
                 <section className='listOfPhones__item-snippet'>
                   {phone.snippet}
                 </section>
+
+                <button
+                  onClick={() => this.addItemToBasket(phone)}
+                >
+                  Add to cart
+                </button>
               </li>
             ))
           }
