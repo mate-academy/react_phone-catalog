@@ -9,20 +9,6 @@ class PhoneCatalog extends React.Component {
     phoneArrays: [],
   }
 
-  // handleFindInform = (text) => {
-  //   const search = text.value.target;
-
-  //   const { phones } = this.props;
-
-  //   console.log(search);
-  //   console.log(phones);
-
-  //   this.setState(prevState => ({
-  //     phoneArrays: prevState.phones.filter(worlds => worlds.toLowerCase()
-  //       .includes(search.toLowerCase())),
-  //   }));
-  // }
-
   render() {
     const { phoneId, urlImg, phones } = this.props;
     const { phoneArrays } = this.state;

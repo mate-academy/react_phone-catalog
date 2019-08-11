@@ -2,13 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Loading from './Loading';
 
-const getDetails = async() => {
-  const url = 'https://mate-academy.github.io/phone-catalogue-static';
-  const response = await fetch(`${url}/api/phones/motorola-xoom.json`);
+export const getDetails = async(phoneId) => {
+  const url = `https://mate-academy.github.io/phone-catalogue-static`;
+  const response = await fetch(`${url}/api/phones/${phoneId}.json`);
+  const data = response.json();
 
-  const currentContent = await response.json();
-
-  return currentContent;
+  return data;
 };
 
 class PhoneDetailsPage extends React.Component {
@@ -18,7 +17,7 @@ class PhoneDetailsPage extends React.Component {
   }
 
   async componentDidMount() {
-    const phoneDetails = await getDetails();
+    const phoneDetails = await getDetails(this.props.phoneId);
 
     this.setState({ phoneDetails });
   }
