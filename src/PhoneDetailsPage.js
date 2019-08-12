@@ -4,7 +4,7 @@ import { getDetails } from './sources';
 import Loader from './Loader';
 
 const PhoneDetailsPage = ({ match }) => {
-  const { handleCliCkAdd , items } = useContext(BasketContext);
+  const { handleCliCkAdd, items } = useContext(BasketContext);
   const [isLoaded, setLoaded] = useState(false);
   const [details, setDetails] = useState([]);
   const [activeImage, setActiveImage] = useState(0);
@@ -45,13 +45,13 @@ const PhoneDetailsPage = ({ match }) => {
           <img
             className="main-picture"
             onClick={() => handleClickNext()}
-            src={`${details.images && details.images[activeImage]}`}
+            src={`/${details.images && details.images[activeImage]}`}
             alt={details.id}
           />
 
           {details.images && details.images.map((image, i) => (
 
-            <img className={`image-detail ${i === activeImage && `active-image`}`} src={`${image}`}
+            <img className={`image-detail ${i === activeImage && `active-image`}`} src={`/${image}`}
               alt={details.id}
               onClick={() => handleClickImage(i)}
             />
@@ -61,9 +61,10 @@ const PhoneDetailsPage = ({ match }) => {
         <section className="phone-detail-container">
           <div className="item-header">
             <h2>{details.id}</h2>
-            <button className="add-button" type="button" onClick={()=>handleCliCkAdd({id: details.id, imageUrl: details.images[0] })}>
-              {items.some(item => item.id===details.id) ? "ADD MORE" : "ADD TO CART" }
-              </button>
+            <button disabled={items.some(item => item.id === details.id)} className={`add-button ${items.some(item => item.id === details.id) && "disabled-button"}`} type="button"
+              onClick={(event) => handleCliCkAdd(event, { id: details.id, imageUrl: details.images[0], count: 1 })}>
+              {items.some(item => item.id === details.id) ? "IN YOUR CART" : "ADD TO CART"}
+            </button>
           </div>
 
           <p>{details.description}</p>

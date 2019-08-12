@@ -34,7 +34,7 @@ const PhonesPage = (props) => {
               to={`${props.match.path}/${phone.id}`}
               className="link card-link"
             >
-              <img src={`${phone.imageUrl}`}
+              <img src={`/${phone.imageUrl}`}
                 className="product-image"
                 alt={phone.id}
               />
@@ -46,8 +46,13 @@ const PhonesPage = (props) => {
               </p>
 
             </Link>
-            <button className="buy-button" type="button" onClick={() => handleCliCkAdd({ id: phone.id, imageUrl: phone.imageUrl })}>
-              {items.some(item => item.id === phone.id) ? "ADD MORE" : "ADD TO CART"}
+
+            <button disabled={items.some(item => item.id === phone.id)}
+              className={`buy-button ${items.some(item => item.id === phone.id) && "disabled-button"}`}
+              type="button"
+              onClick={(event) => handleCliCkAdd(event, { id: phone.id, imageUrl: phone.imageUrl, count: 1 })}
+            >
+              {items.some(item => item.id === phone.id) ? "IN YOUR CART" : "ADD TO CART"}
             </button>
 
           </li>
