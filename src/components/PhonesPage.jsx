@@ -20,7 +20,7 @@ class PhonesPage extends React.Component {
         {
           isLoaded
             ? <PhoneCatalog
-              addItemToBasket={addItemToBasket}
+              addItemToBasket={addItemToBasket} 
               phones={phones}
               isLoading={isLoading}
               isLoaded={isLoaded}

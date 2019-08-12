@@ -36,13 +36,16 @@ import Basket from './components/Basket'
  *    [x] - реализовать саму страницу basket
  *    [] - починить css активной корзины
  * [] - поработать над стилями всей страницы
+ * [x] - исправить ссылки для github
+ * [х] - исправить доп. инфу по телефонам
+ * [x] - рефакторинг PhoneDetailsPage по state, loadDataDetails, очистка App
+ * 
  * 
  */
 
 class App extends React.Component {
   state = {
     phones: '',
-    details: '',
     isLoading: false,
     isLoaded: false,
     itemsAtBasket: [],
@@ -118,29 +121,9 @@ class App extends React.Component {
       })
     }, 1000)
   }
-  
-  loadDataDetails = async () => {
-    this.setState({
-      isLoaded: false,
-      isLoading: true,
-    })
-
-    const responseDetails = await
-      fetch('https://mate-academy.github.io/phone-catalogue-static/api/phones/motorola-xoom.json')
-    const details = await responseDetails.json();
-
-    setTimeout(() => {
-      this.setState({
-        details: details,
-        isLoading: false,
-        isLoaded: true,
-      })
-    }, 1000)
-  }
 
   render() {
-    const {phones, isLoading, isLoaded, details, itemsAtBasket} = this.state;
-    console.log(this.state.itemsAtBasket);
+    const {phones, isLoading, isLoaded, itemsAtBasket} = this.state;
 
     return (
       <div>
@@ -183,12 +166,8 @@ class App extends React.Component {
           <Route path='/phones/:id?' render={({ match }) =>
             <PhoneDetailsPage
               loadDataPhones={this.loadDataPhones}
-              loadDataDetails={this.loadDataDetails}
               phones={phones}
-              details={details}
               id={match.params.id}
-              isLoading={isLoading}
-              isLoaded={isLoaded}
             />  
           } />
           <Route path='/basket/' render={() =>
