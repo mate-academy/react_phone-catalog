@@ -13,11 +13,13 @@ class Phone extends React.Component {
   }
 
   componentDidMount = async() => {
+    const { phone } = this.props;
+
     this.setState({
       isLoading: true,
     });
 
-    const loadPhoneDetails = await loadPhoneDetailsAPI(this.props.phone.id);
+    const loadPhoneDetails = await loadPhoneDetailsAPI(phone.id);
 
     this.setState({
       currentPhone: loadPhoneDetails,
@@ -31,11 +33,8 @@ class Phone extends React.Component {
   }
 
   render() {
-    const {
-      currentPhone, isLoading, isLoaded, currentImage,
-    } = this.state;
-
-    console.log(currentPhone);
+    const { currentPhone, isLoading, isLoaded } = this.state;
+    const { handleClickAddPhoneToCart } = this.props
 
     if (isLoaded) {
       return (
@@ -44,7 +43,7 @@ class Phone extends React.Component {
           <section className="phone-details">
             <button
               className="phone-details_add"
-              onClick={() => this.props.handleClickAddPhoneToCart(currentPhone)}
+              onClick={() => handleClickAddPhoneToCart(currentPhone)}
             >
 Add to Cart
             </button>

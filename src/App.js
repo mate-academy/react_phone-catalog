@@ -56,6 +56,8 @@ class App extends React.Component {
   }
 
   render() {
+    const { selectedPhone } = this.state;
+
     return (
       <div className="App">
         <nav>
@@ -74,7 +76,7 @@ class App extends React.Component {
               <NavLink
                 to="/cart"
               >
-                <p className="cart-amount">{this.state.selectedPhone.length}</p>
+                <p className="cart-amount">{selectedPhone.length}</p>
                 <div className="cart" />
               </NavLink>
             </li>
@@ -112,7 +114,7 @@ class App extends React.Component {
             path="/cart"
             render={() => (
               <Cart
-                selectedPhone={this.state.selectedPhone}
+                selectedPhone={selectedPhone}
                 deletePhone={this.deletePhone}
                 changeAmountPlus={this.changeAmountPlus}
                 changeAmountMinus={this.changeAmountMinus}

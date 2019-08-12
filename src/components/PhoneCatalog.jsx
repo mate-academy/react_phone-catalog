@@ -1,9 +1,8 @@
 import React from 'react';
-import { NavLink, Route, Switch } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { loadPhonesAPI } from '../api/API_DATA';
 import Phone from './Phone';
 import LoadAnimation from './LoadAnimation';
-import PageError from './PageError';
 import SearchField from './SearchField';
 
 class PhoneCatalog extends React.Component {
@@ -13,6 +12,7 @@ class PhoneCatalog extends React.Component {
     isLoaded: false,
     isLoading: false,
     direction: 1,
+    valueForSearch: '',
   }
 
   componentDidMount = async() => {
@@ -30,18 +30,19 @@ class PhoneCatalog extends React.Component {
     });
   }
 
-  handleChangeFilter = (event) => {
-    const { value } = event.target;
-
+  handleChangeFilter = ({target: {value}}) => {
     this.setState({
-      visipblePhones: this.state.phones.filter(phone => (
-        [phone.name]
-          .join('')
-          .toLowerCase()
-          .includes(value.toLowerCase())
-      )),
+      valueForSearch: value.toLowerCase(),
     });
-  }
+  };
+
+  getFilteredPhones = (value) => {
+    const { visipblePhones } = this.state;
+
+    return visipblePhones.filter(phone =>
+      (phone.name.toLowerCase().includes(value))
+    );
+  };
 
   getSortedBy = (event) => {
     const { value } = event.target;
@@ -65,8 +66,9 @@ class PhoneCatalog extends React.Component {
   }
 
   render() {
-    const { visipblePhones, isLoading, isLoaded } = this.state;
+    const { valueForSearch, isLoading, isLoaded } = this.state;
     const { id } = this.props;
+    const visipblePhones = this.getFilteredPhones(valueForSearch)
 
     if (isLoaded) {
       return (
@@ -80,7 +82,11 @@ class PhoneCatalog extends React.Component {
           )
           : (
             <>
-              <SearchField handleChangeFilter={this.handleChangeFilter} />
+              <SearchField
+                visipblePhones={visipblePhones}
+                handleChangeFilter={this.handleChangeFilter}
+
+              />
               <div className="sorting">
                 <label htmlFor="sort-field">
                   <p className="sort-field-sign">Select sorting method</p>
