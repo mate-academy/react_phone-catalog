@@ -45,6 +45,13 @@ class PhoneDetailsPage extends React.Component {
 
         {phoneId === phoneDetail.id && (
           <>
+            <button
+              className="goBackButton"
+              type="button"
+              onClick={() => this.props.history.goBack()}
+            >
+              Go back
+            </button>
             <div className="phone-details">
 
               <div>

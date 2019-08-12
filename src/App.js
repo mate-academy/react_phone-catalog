@@ -36,7 +36,7 @@ class App extends React.Component {
           [...prevState.basketItems, {
             id: currentPhone.id,
             quantity: 1,
-            img: currentPhone.imageUrl,
+            img: currentPhone.imageUrl || currentPhone.images[0],
           }]
         );
 
@@ -143,7 +143,9 @@ class App extends React.Component {
               path="/phones/"
               exact
               render={() => (
-                <PhonesPage handleAddToBasket={this.handleAddToBasket} />
+                <PhonesPage
+                  handleAddToBasket={this.handleAddToBasket}
+                />
               )}
             />
 
@@ -152,6 +154,7 @@ class App extends React.Component {
               exact
               render={props => (
                 <PhoneDetailsPage
+                  history={props.history}
                   phoneId={props.match.params.phoneId}
                   handleAddToBasket={this.handleAddToBasket}
                 />

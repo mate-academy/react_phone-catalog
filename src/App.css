@@ -133,6 +133,20 @@
   margin: 0 auto;
 }
 
+.goBackButton {
+  width: 90px;
+  height: 30px;
+  border-radius: 6px;
+  font-size: 16px;
+  color: rgb(14, 95, 95);
+}
+
+.goBackButton:hover {
+  color: #fff;
+  background-color: rgb(14, 95, 95);
+  cursor: pointer;
+}
+
 .phone-info {
   margin: 0 80px;
 }
