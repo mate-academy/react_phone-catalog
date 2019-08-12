@@ -10,25 +10,41 @@ class PhoneCatalog extends React.Component {
     const params = new URLSearchParams(this.props.location.search);
     const curPage = +params.get('curpage');
 
-    if (name === 'filterValue') {
-      params.set('filter', value);
-      params.set('curpage', 1);
-    } else if (name === 'sortValue') {
-      params.set('sort', value);
-      params.set('curpage', 1);
-    } else if (name === 'perPage') {
-      params.set('perpage', value);
-      params.set('curpage', 1);
-    } else if (name === 'currentPage') {
-      params.set('curpage', value);
-    } else if (name === 'back') {
-      if (curPage > 1) {
-        params.set('curpage', curPage - 1);
-      }
-    } else if (name === 'next') {
-      if (curPage < +value) {
-        params.set('curpage', curPage + 1);
-      }
+    switch (name) {
+      case 'filterValue':
+        params.set('filter', value);
+        params.set('curpage', 1);
+        break;
+
+      case 'sortValue':
+        params.set('sort', value);
+        params.set('curpage', 1);
+        break;
+
+      case 'perPage':
+        params.set('perpage', value);
+        params.set('curpage', 1);
+        break;
+
+      case 'currentPage':
+        params.set('curpage', value);
+        break;
+
+      case 'back':
+        if (curPage > 1) {
+          params.set('curpage', curPage - 1);
+        }
+
+        break;
+
+      case 'next':
+        if (curPage < +value) {
+          params.set('curpage', curPage + 1);
+        }
+
+        break;
+
+      default:
     }
 
     this.props.history.push({
@@ -64,6 +80,33 @@ class PhoneCatalog extends React.Component {
 
     const shownPhones = sortedAndFilteredPhones.filter((phone, index) => (
       index >= firsShownIndex && index < lastShownIndex));
+
+    const addPhoneToBasket = (phone) => {
+      if (basketPhones
+        .some(basketPhone => basketPhone.id === phone.id)) {
+        return basketPhones;
+      }
+
+      localStorage.setItem('basketPhones', JSON.stringify([
+        ...basketPhones,
+        {
+          id: phone.id,
+          quantity: 1,
+          name: phone.name,
+          imageUrl: phone.imageUrl,
+        },
+      ]));
+
+      return chandgeBasketItems([
+        ...basketPhones,
+        {
+          id: phone.id,
+          quantity: 1,
+          name: phone.name,
+          imageUrl: phone.imageUrl,
+        },
+      ]);
+    };
 
     return (
       <main className="main-container">
@@ -134,32 +177,7 @@ class PhoneCatalog extends React.Component {
                     : 'button'
                 }
 
-                onClick={() => {
-                  if (basketPhones
-                    .some(basketPhone => basketPhone.id === phone.id)) {
-                    return basketPhones;
-                  }
-
-                  localStorage.setItem('basketPhones', JSON.stringify([
-                    ...basketPhones,
-                    {
-                      id: phone.id,
-                      quantity: 1,
-                      name: phone.name,
-                      imageUrl: phone.imageUrl,
-                    },
-                  ]));
-
-                  return chandgeBasketItems([
-                    ...basketPhones,
-                    {
-                      id: phone.id,
-                      quantity: 1,
-                      name: phone.name,
-                      imageUrl: phone.imageUrl,
-                    },
-                  ]);
-                }}
+                onClick={() => addPhoneToBasket(phone)}
               >
                 {
                   basketPhones.some(bp => bp.id === phone.id)
@@ -178,16 +196,13 @@ class PhoneCatalog extends React.Component {
               <p className="pagination__description">
               Shown
                 {' '}
-                {' '}
                 {firsShownIndex + 1}
                 {' '}
                 -
                 {' '}
                 {lastShownPhone}
                 {' '}
-                {' '}
                 of
-                {' '}
                 {' '}
                 {sortedAndFilteredPhones.length}
               </p>

@@ -5,22 +5,59 @@ import PropTypes from 'prop-types';
 const BasketItems = (props) => {
   const { basketPhones, chandgeBasketItems } = props;
 
-  const changeBasketPhones = (basketPhone, phoneId, operand) => (
-    basketPhone.id === phoneId
-      ? {
-        ...basketPhone,
-        quantity: operand === '-'
-          ? (basketPhone.quantity - 1)
-          : (basketPhone.quantity + 1),
-      }
-      : basketPhone);
-
-  const plusMinusBasketItem = (phones, phoneId, operand) => (
+  const changeItemQuanity = (phones, phoneId, operand) => (
     phones.map(basketPhone => (
-      changeBasketPhones(basketPhone, phoneId, operand))));
+      basketPhone.id === phoneId
+        ? {
+          ...basketPhone,
+          quantity: operand === '-'
+            ? (basketPhone.quantity - 1)
+            : (basketPhone.quantity + 1),
+        }
+        : basketPhone)));
 
-  const deleteBasketItem = (phones, phoneId) => (
-    phones.filter(basketPhone => basketPhone.id !== phoneId));
+  const minusQuantity = (phone) => {
+    if (phone.quantity > 1) {
+      localStorage.setItem('basketPhones', JSON.stringify(
+        changeItemQuanity(basketPhones, phone.id, '-')
+      ));
+
+      return chandgeBasketItems(
+        changeItemQuanity(basketPhones, phone.id, '-')
+      );
+    }
+
+    return basketPhones;
+  };
+
+  const plusQuantity = (phone) => {
+    localStorage.setItem('basketPhones', JSON.stringify(
+      changeItemQuanity(basketPhones, phone.id, '+')
+    ));
+
+    return chandgeBasketItems(
+      changeItemQuanity(basketPhones, phone.id, '+')
+    );
+  };
+
+  const deleteItem = (phones, phoneId) => {
+    localStorage.setItem('basketPhones', JSON.stringify(
+      phones.filter(basketPhone => basketPhone.id !== phoneId)
+    ));
+
+    return chandgeBasketItems(
+      phones.filter(basketPhone => basketPhone.id !== phoneId)
+    );
+  };
+
+  const deleteAllBasketPhones = (phones) => {
+    localStorage.setItem('basketPhones', JSON.stringify(
+      phones.filter(basketPhone => null)
+    ));
+
+    return chandgeBasketItems(basketPhones
+      .filter(basketPhone => null));
+  };
 
   return (
     <main className="main-container">
@@ -59,19 +96,7 @@ const BasketItems = (props) => {
                     ? 'button button--basket'
                     : 'button button--basket button--basket-disabled'
                 }
-                onClick={() => {
-                  if (phone.quantity > 1) {
-                    localStorage.setItem('basketPhones', JSON.stringify(
-                      plusMinusBasketItem(basketPhones, phone.id, '-')
-                    ));
-
-                    return chandgeBasketItems(
-                      plusMinusBasketItem(basketPhones, phone.id, '-')
-                    );
-                  }
-
-                  return basketPhones;
-                }}
+                onClick={() => minusQuantity(phone)}
               >
                 -
               </button>
@@ -84,15 +109,7 @@ const BasketItems = (props) => {
                 name={phone.id}
                 type="button"
                 className="button button--basket"
-                onClick={() => {
-                  localStorage.setItem('basketPhones', JSON.stringify(
-                    plusMinusBasketItem(basketPhones, phone.id, '+')
-                  ));
-
-                  return chandgeBasketItems(
-                    plusMinusBasketItem(basketPhones, phone.id, '+')
-                  );
-                }}
+                onClick={() => plusQuantity(phone)}
               >
                 +
               </button>
@@ -101,17 +118,9 @@ const BasketItems = (props) => {
                 name={phone.id}
                 type="button"
                 className="button button--basket-delete"
-                onClick={() => {
-                  localStorage.setItem('basketPhones', JSON.stringify(
-                    deleteBasketItem(basketPhones, phone.id)
-                  ));
-
-                  return chandgeBasketItems(
-                    deleteBasketItem(basketPhones, phone.id)
-                  );
-                }}
+                onClick={() => deleteItem(basketPhones, phone.id)}
               >
-                  X
+                X
               </button>
             </div>
           </li>
@@ -127,14 +136,7 @@ const BasketItems = (props) => {
             && (
               <button
                 type="button"
-                onClick={() => {
-                  localStorage.setItem('basketPhones', JSON.stringify(
-                    basketPhones.filter(basketPhone => null)
-                  ));
-
-                  return chandgeBasketItems(basketPhones
-                    .filter(basketPhone => null));
-                }}
+                onClick={() => deleteAllBasketPhones(basketPhones)}
                 className="button button--delete-all-items"
               >
                 Delete all Items from Basket
