@@ -1,5 +1,5 @@
 {
-  "homepage": "https://mate-academy.github.io/react_phone-catalog",
+  "homepage": "https://GitHubForDmitry.github.io/react_phone-catalog",
   "name": "react_phone-catalog",
   "version": "0.1.0",
   "private": true,
@@ -16,7 +16,6 @@
   "devDependencies": {
     "@mate-academy/eslint-config-react": "*",
     "@mate-academy/stylelint-config": "*",
-    "eslint": "^5.16.0",
     "gh-pages": "^2.0.1",
     "husky": "^1.3.1",
     "lint-staged": "^8.1.5",
