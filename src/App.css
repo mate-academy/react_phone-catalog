@@ -27,7 +27,7 @@
   margin-top: 10px;
   margin-left: 15px;
   background-color: #6c757d;
-  -webkit-mask: url('/img/shopping-online.svg') no-repeat;
+  -webkit-mask: url('/react_phone-catalog/shopping-online.svg') no-repeat;
   background-size: 50px 50px;
 }
 

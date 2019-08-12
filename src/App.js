@@ -156,7 +156,7 @@ class App extends React.Component {
           <NavLink 
             className="nav-menu-header__item" 
             href="#"
-            to='/phones'
+            to='/phones/'
           >
             Phones
           </NavLink>

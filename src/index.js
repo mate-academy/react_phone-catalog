@@ -5,7 +5,7 @@ import App from './App';
 import { BrowserRouter } from 'react-router-dom'
 
 ReactDOM.render(
-  <BrowserRouter>
+  <BrowserRouter basename='/react_phone-catalog'>
     <App />
   </BrowserRouter>, 
   document.getElementById('root')
