@@ -2,11 +2,12 @@ import React from 'react'
 
 class PhoneDetails extends React.Component {
   state = {
-    currentImg: `/${this.props.phone.imageUrl}`,
+    currentImg: '',
   }
 
   componentDidMount = () => {
-    const currentImage = `/${this.props.phone.imageUrl}`;
+    const BASE_IMAGE_URL = 'https://mate-academy.github.io/phone-catalogue-static';
+    const currentImage = `${BASE_IMAGE_URL}/${this.props.phone.imageUrl}`;
 
     this.setState({
       currentImg: currentImage,
