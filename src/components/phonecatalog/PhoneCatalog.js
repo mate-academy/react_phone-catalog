@@ -2,33 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, withRouter } from 'react-router-dom';
 import './phonecatalog.css';
+import Basket from '../basket/Basket';
 
-const PhoneCatalog = ({ phones, match, history }) => {
+const PhoneCatalog = ({ phones, match }) => {
   const { url } = match;
-  const countBasketItems
-    = localStorage.buy ? localStorage.buy.split('&').length : 0;
-
-  const addToBasket = (id, name) => {
-    if (localStorage.getItem('buy')) {
-      localStorage.buy += `&${id}*1`;
-    } else {
-      localStorage.buy = `${id}*1`;
-    }
-
-    localStorage.setItem(id, name);
-
-    history.replace(history.location);
-  };
 
   return (
     <main className="phone-catalog">
-      {
-        countBasketItems !== 0 && (
-          <div className="header__basket--count">
-            {countBasketItems !== 0 && countBasketItems}
-          </div>
-        )
-      }
 
       {phones.map(phone => (
         <div className="phone-catalog__phone" key={phone.id}>
@@ -46,18 +26,7 @@ const PhoneCatalog = ({ phones, match, history }) => {
             </p>
           </div>
 
-          <button
-            type="button"
-            disabled={localStorage.getItem(phone.id) && true}
-            className="phone-catalog__phone--buy"
-            onClick={() => addToBasket(phone.id, phone.name)}
-          >
-            {
-              localStorage.getItem(phone.id)
-                ? 'Added to basket'
-                : 'Buy'
-            }
-          </button>
+          <Basket.AddButton phone={phone} />
         </div>
       ))}
     </main>
@@ -73,9 +42,6 @@ PhoneCatalog.propTypes = {
   }).isRequired,
   match: PropTypes.shape({
     url: PropTypes.string,
-  }).isRequired,
-  history: PropTypes.shape({
-    replace: PropTypes.func,
   }).isRequired,
 };
 

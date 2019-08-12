@@ -17,7 +17,7 @@ const Filter = ({ history, searchValues }) => {
         .filter(prop => prop[1] !== '')
         .map(prop => `${prop[0]}=${prop[1]}`);
 
-      history.push(`${pathname}?${newSearch.join('&')}`);
+      history.push(`${pathname}?${encodeURI(newSearch.join('&'))}`);
     }
   };
 

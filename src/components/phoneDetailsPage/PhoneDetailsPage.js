@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { getPhoneDetails } from '../loadingData';
 import PhoneDetails from '../phoneDetails/PhoneDetails';
 import './phoneDetailsPage.css';
+import Basket from '../basket/Basket';
 
 class PhoneDetailsPage extends React.Component {
   state = {
@@ -38,41 +39,22 @@ class PhoneDetailsPage extends React.Component {
     })
   );
 
-  addToBasket = (id, name) => {
-    const { history } = this.props;
-
-    if (localStorage.getItem('buy')) {
-      localStorage.buy += `&${id}*1`;
-    } else {
-      localStorage.buy = `${id}*1`;
-    }
-
-    localStorage.setItem(id, name);
-
-    history.replace(history.location);
-  };
-
   render() {
     const { phone, mainImg, isError } = this.state;
-    const countBasketItems
-      = localStorage.buy ? localStorage.buy.split('&').length : 0;
 
     return (
       <div className="phone-details-page">
         {
-          countBasketItems !== 0 && (
-            <div className="header__basket--count">
-              {countBasketItems !== 0 && countBasketItems}
-            </div>
-          )
-        }
-
-        {
-          !isError
+          isError
             ? (
+              <div>
+                Sorry, we cannot find a page.
+              </div>
+            )
+            : (
               <>
                 <div className="phone-details-page__main-img">
-                  <img src={mainImg} alt="" />
+                  <img src={mainImg} alt="phone" />
                 </div>
 
                 <div className="phone-details-page__info">
@@ -81,18 +63,7 @@ class PhoneDetailsPage extends React.Component {
                       {phone.name}
                     </h1>
 
-                    <button
-                      type="button"
-                      disabled={localStorage.getItem(phone.id) && true}
-                      className="phone-catalog__phone--buy"
-                      onClick={() => this.addToBasket(phone.id, phone.name)}
-                    >
-                      {
-                        localStorage.getItem(phone.id)
-                          ? 'Added to basket'
-                          : 'Buy'
-                      }
-                    </button>
+                    <Basket.AddButton phone={phone} />
                   </div>
 
                   <p>
@@ -109,7 +80,7 @@ class PhoneDetailsPage extends React.Component {
                           >
                             <img
                               src={`./${image}`}
-                              alt=""
+                              alt="what the phone looks"
                               onClick={() => this.changeImg(image)}
                             />
                           </div>
@@ -119,14 +90,9 @@ class PhoneDetailsPage extends React.Component {
                 </div>
 
                 <div id="details" className="phone-details-page__details">
-                  <PhoneDetails />
+                  <PhoneDetails phone={phone} />
                 </div>
               </>
-            )
-            : (
-              <div>
-                Sorry, we cannot find a page.
-              </div>
             )
         }
       </div>

@@ -1,0 +1,12 @@
+.phone-details {
+  margin: 50px;
+}
+
+.phone-details__tabl {
+  width: 100%;
+  border: 1px solid coral;
+}
+
+.phone-details__tabl--property {
+  background-color: rgb(255, 216, 202);
+}

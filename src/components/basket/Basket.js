@@ -1,52 +1,56 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import CatalogContext from '../CatalogContext';
 import './basket.css';
 
 const Basket = ({ history }) => {
-  const currentBuy = localStorage.buy
-    && localStorage.buy
+  const { setStorage } = useContext(CatalogContext);
+
+  const currentBuy = sessionStorage.buy
+    && sessionStorage.buy
       .split('&')
       .map(item => item.split('*'));
 
-  const deleteItem = (id) => {
-    let newBuy = currentBuy.filter(item => item[0] !== id);
+  const nestNewBuy = (buy) => {
+    const newBuy = buy.map(item => item.join('*')).join('&');
 
-    localStorage.removeItem(id);
+    sessionStorage.setItem('buy', newBuy);
+  };
+
+  const deleteItem = (id) => {
+    const newBuy = currentBuy.filter(item => item[0] !== id);
+
+    sessionStorage.removeItem(id);
 
     if (newBuy.length !== 0) {
-      newBuy = newBuy.map(item => item.join('*')).join('&');
-      localStorage.setItem('buy', newBuy);
+      nestNewBuy(newBuy);
     } else {
-      localStorage.removeItem('buy');
+      sessionStorage.removeItem('buy');
     }
 
-    history.replace(history.location);
+    setStorage(prevBasket => prevBasket - 1);
   };
 
   const increase = (id) => {
-    let newBuy = [...currentBuy];
+    const newBuy = [...currentBuy];
     const index = currentBuy.indexOf(id);
 
     newBuy[index] = [id[0], +id[1] + 1];
 
-    newBuy = newBuy.map(item => item.join('*')).join('&');
-
-    localStorage.setItem('buy', newBuy);
+    nestNewBuy(newBuy);
 
     history.replace(history.location);
   };
 
   const decrease = (id) => {
-    let newBuy = [...currentBuy];
+    const newBuy = [...currentBuy];
     const index = currentBuy.indexOf(id);
 
     if (+id[1] - 1 !== 0) {
       newBuy[index] = [id[0], +id[1] - 1];
 
-      newBuy = newBuy.map(item => item.join('*')).join('&');
-
-      localStorage.setItem('buy', newBuy);
+      nestNewBuy(newBuy);
 
       history.replace(history.location);
     } else {
@@ -70,7 +74,7 @@ const Basket = ({ history }) => {
                     to={`/phones/${item[0]}`}
                     className=""
                   >
-                    {localStorage[item[0]]}
+                    {sessionStorage[item[0]]}
                   </Link>
                 </div>
 
@@ -106,7 +110,7 @@ const Basket = ({ history }) => {
             ))
             : (
               <div className="basket__empty">
-                Basket is empty
+                Cart is empty
               </div>
             )
         }
@@ -115,9 +119,59 @@ const Basket = ({ history }) => {
   );
 };
 
+Basket.Count = ({ countOfItem }) => (
+  countOfItem !== 0 && (
+    <div className="header__basket--count">
+      {countOfItem}
+    </div>
+  )
+);
+
+Basket.AddButton = ({ phone }) => {
+  const addToBasket = (id, name, setStorage) => {
+    if (sessionStorage.getItem('buy')) {
+      sessionStorage.buy += `&${id}*1`;
+    } else {
+      sessionStorage.buy = `${id}*1`;
+    }
+
+    sessionStorage.setItem(id, name);
+
+    setStorage(prevBasket => prevBasket + 1);
+  };
+
+  return (
+    <CatalogContext.Consumer>
+      {
+        ({ setStorage }) => (
+          <button
+            type="button"
+            disabled={sessionStorage.getItem(phone.id) && true}
+            className="phone-catalog__phone--buy"
+            onClick={() => addToBasket(phone.id, phone.name, setStorage)}
+          >
+            {
+              sessionStorage.getItem(phone.id)
+                ? 'Added to cart'
+                : 'Buy'
+            }
+          </button>
+        )
+      }
+    </CatalogContext.Consumer>
+  );
+};
+
 Basket.propTypes = {
   history: PropTypes.shape({
     replace: PropTypes.func,
+  }).isRequired,
+};
+
+Basket.AddButton.propTypes = {
+  phone: PropTypes.shape({
+    id: PropTypes.string,
+    name: PropTypes.string,
   }).isRequired,
 };
 

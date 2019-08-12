@@ -62,7 +62,7 @@ class PhonePage extends React.Component {
     };
 
     if (search) {
-      const partsOfSeach = search.slice(1).split('&');
+      const partsOfSeach = decodeURI(search).slice(1).split('&');
 
       for (let i = 0; i < partsOfSeach.length; i += 1) {
         const [key, value] = partsOfSeach[i].split('=');
