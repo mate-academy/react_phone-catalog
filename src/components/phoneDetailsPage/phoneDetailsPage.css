@@ -1,0 +1,51 @@
+.phone-details-page {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  grid-column-gap: 40px;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.phone-details-page__main-img {
+  width: 360px;
+  padding: 20px 0;
+}
+
+.phone-details-page__main-img img {
+  width: inherit;
+}
+
+.phone-details-page__info {
+  min-width: 460px;
+  text-align: justify;
+}
+
+.phone-details-page__info--name {
+  border-bottom: 2px solid coral;
+}
+
+.phone-details-page__info--img {
+  display: inline-block;
+  width: 100px;
+  margin: 0 20px;
+  padding: 5px;
+  border: 1px solid white;
+}
+
+.phone-details-page__info--img:hover {
+  border: 1px solid coral;
+  cursor: pointer;
+}
+
+.phone-details-page__info--img.select {
+  border: 1px solid coral;
+}
+
+.phone-details-page__info--img img {
+  width: 100%;
+}
+
+.phone-details-page__details {
+  grid-column-start: 1;
+  grid-column-end: 3;
+}

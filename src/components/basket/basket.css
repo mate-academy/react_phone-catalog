@@ -1,0 +1,45 @@
+.basket {
+  margin: 10px auto;
+  padding: 20px;
+  width: 80%;
+  border: 1px solid coral;
+}
+
+.basket__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.basket__list--item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.basket__list--item:hover {
+  background-color: rgb(255, 242, 235);
+}
+
+.basket__list--item a {
+  text-decoration: none;
+  color: black;
+}
+
+.basket__list--item a:hover {
+  text-decoration: underline rgb(228, 78, 24);
+  color: rgb(228, 78, 24);
+}
+
+.basket__count {
+  width: 50px;
+}
+
+.basket__empty {
+  height: 100px;
+  text-align: center;
+  background-color: rgb(255, 242, 235);
+  font-size: 50px;
+  line-height: 100px;
+  color: rgb(175, 175, 175);
+}

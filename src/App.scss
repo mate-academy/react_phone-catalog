@@ -1,0 +1,57 @@
+body {
+  margin: 0;
+}
+
+.header {
+  display: flex;
+  box-sizing: border-box;
+  padding: 0 10px;
+  justify-content: space-between;
+  background-color: coral;
+
+  &__nav {
+    display: inline-block;
+    align-items: center;
+  }
+
+  &__nav--list {
+    height: 40px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    color: black;
+  }
+
+  &__nav--list li {
+    display: inline-block;
+  }
+
+  &__nav--list a {
+    display: inherit;
+    height: inherit;
+    padding: 10px;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  &__basket {
+    display: inline-block;
+    justify-self: end;
+  }
+
+  &__basket a {
+    display: inherit;
+    width: 40px;
+    height: 30px;
+    padding: 5px;
+  }
+
+  &__basket img {
+    width: 100%;
+  }
+}
+
+a.active {
+  background-color: rgb(255, 196, 175);
+  font-weight: 700;
+}
