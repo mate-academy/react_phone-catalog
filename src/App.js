@@ -15,23 +15,26 @@ const App = () => {
     event.preventDefault();
 
     if (cart.find(item => item.id === obj.id)) {
-      cart.map((item) => {
-        if (obj.id === item.id) {
-          setCart([{ ...obj, count: item.count + 1 }]);
-        } else {
-          console.log(setCart([...cart, { ...obj, count: 1 }]));
-        }
-      });
+      setCart(cart.map((item) => (
+        obj.id === item.id
+          ? { ...item, count: item.count + 1 }
+          : { ...item }
+      )));
     } else {
       setCart([...cart, { ...obj, count: 1 }]);
     }
+
+    return 0;
   };
 
   return (
     <div className="App">
       <NavLink to="/" exact>Home</NavLink>
       <NavLink to="/phones">Phones</NavLink>
-      <NavLink to="/basket">Cart {cart.length}</NavLink>
+      <NavLink to="/basket">
+        Cart
+        {cart.length}
+      </NavLink>
       <Switch>
         <Route path="/" exact component={Home} />
         <Route
@@ -42,7 +45,7 @@ const App = () => {
         <Route path="/phones/:phoneId" component={PhoneDetailsPage} />
         <Route
           path="/basket"
-          render={() => <Basket cart={cart} />}
+          render={() => <Basket cart={cart} setCart={setCart} />}
         />
         <Route path="/" component={NotFound} />
       </Switch>

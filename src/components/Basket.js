@@ -1,8 +1,35 @@
 import React from 'react';
-import url from "./url";
+import url from './url';
 
-const Basket = ({ cart }) => {
-  console.log(cart);
+const Basket = ({ cart, setCart }) => {
+  const changeValue = (event, id) => {
+    switch (event.target.value) {
+      case 'plus':
+        setCart(cart.map(item => (
+          id === item.id
+            ? { ...item, count: item.count + 1 }
+            : { ...item }
+        )));
+        break;
+      case 'minus':
+        setCart(cart.map(item => (
+          id === item.id
+            ? { ...item, count: item.count - 1 }
+            : { ...item }
+        )));
+        break;
+      default:
+        setCart(cart.map(item => (
+          id === item.id
+            ? { ...item, count: event.target.value }
+            : { ...item }
+        )));
+    }
+  };
+
+  const deleteItem = (id) => {
+    setCart(cart.filter(item => id !== item.id));
+  };
 
   return (
     <ul>
@@ -12,12 +39,28 @@ const Basket = ({ cart }) => {
             <img src={url + item.imageUrl} alt="" />
             <h2>{item.name}</h2>
             <p>{item.snippet}</p>
-            <input type="number" value={item.count}/>
+            <button
+              onClick={event => changeValue(event, item.id)}
+              value="minus"
+            >
+              -
+            </button>
+            <input
+              type="number"
+              value={item.count}
+              onChange={event => changeValue(event, item.id)}
+            />
+            <button
+              onClick={event => changeValue(event, item.id)}
+              value="plus">
+              +
+            </button>
+            <button onClick={() => deleteItem(item.id)}>Delete</button>
           </li>
         ))
       }
     </ul>
   );
-}
+};
 
 export default Basket;
