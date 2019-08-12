@@ -91,7 +91,7 @@ class App extends React.Component {
                 <NavLink
                   to={{
                     pathname: '/phones',
-                    search: 'page=1&perPage=5&sort=age',
+                    search: 'page=1&perPage=8&sort=age',
                   }}
                   exact
                   className="navigation__link"

@@ -1,6 +1,9 @@
 .phones-catalog {
+  width: 100%;
   display: flex;
   flex-direction: column;
+
+  padding: 30px 0;
 
   h1 {
     margin: 0;
@@ -10,30 +13,82 @@
   }
 }
 
+.phone-cards-wrapper {
+  width: 100%;
+  display: grid;
+
+  grid-template-columns: repeat(auto-fill, 240px);
+  grid-gap: 20px;
+
+  justify-content: center;
+}
+
 .phone-card {
   position: relative;
-
-  margin: 10px 0;
-  padding: 10px;
-
-  background: #fff;
-  box-shadow: 0px 0px 10px #013c60de inset;
-  border-radius: 10px;
+  width: 100%;
+  height: 400px;
 
   a {
+    display: block;
+    width: 100%;
+
     text-decoration: none;
+    text-align: center;
+    color: #000;
+    font-weight: bold;
   }
 
   &__img {
-    margin-right: 10px;
-    max-width: 100px;
-    float: left;
+    margin: 10px 0 30px 0;
+    max-width: 100%;
+  }
+
+  &__wrapper {
+    box-sizing: border-box;
+    position: absolute;
+
+    width: 100%;
+    min-height: 400px;
+
+    margin: 10px 0;
+    padding: 10px;
+
+    background: #fff;
+    box-shadow: 0px 0px 10px #013c60de inset;
+    border-radius: 10px;
+
+    transition: all 1s;
+  }
+
+  &__wrapper:hover {
+    z-index: 2;
+    min-height: 500px;
+
+    transition: all 1s;
+  }
+
+  &__wrapper:hover &__description {
+    color: #000;
+    font-size: 14px;
+  }
+
+  &__wrapper:not(:hover) {
+    z-index: 1;
+  }
+
+  &__description {
+    display: block;
+    margin: 15px 0 60px;
+
+    font-size: 1px;
+
+    color: #fff;
+
+    transition: all 0.5s;
   }
 
   &__quantity {
-    position: absolute;
-
-    bottom: 25px;
-    right: 115px;
+    text-transform: uppercase;
   }
 }
+

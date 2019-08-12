@@ -4,12 +4,13 @@ button {
 
 .cart-btn {
   box-sizing: border-box;
-  width: 180px;
+
+  width: 200px;
   height: 30px;
 
   position: absolute;
-  right: 50px;
   bottom: 20px;
+  left: 20px;
 
   background: linear-gradient(0deg, #047CC7 0%, #049dfc 50%, #047CC7 100%);
   border: 1px solid #acadaede;
@@ -56,14 +57,31 @@ button {
 }
 
 .phone-card {
-  &__plus-btn {
-    right: 50px;
+  &__quantity-btns {
+    box-sizing: border-box;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 200px;
+    height: 30px;
+
+    position: absolute;
     bottom: 20px;
+    left: 20px;
+
+    background: #fff;
+    box-shadow: 0 0 6px #fff;
+    border-radius: 10px;
   }
 
-  &__minus-btn {
-    right: 200px;
-    bottom: 20px;
+  &__quantity-btns-btn {
+    padding: 0;
+    position: initial;
+
+    width: 30px;
+    height: 30px;
   }
 }
 
