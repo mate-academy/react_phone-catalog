@@ -89,7 +89,10 @@ class App extends React.Component {
 
               <li className="navigation__list-paragraph">
                 <NavLink
-                  to="/phones/1"
+                  to={{
+                    pathname: '/phones',
+                    search: 'page=1&perPage=5&sort=age',
+                  }}
                   exact
                   className="navigation__link"
                   activeClassName="is-active"
@@ -131,7 +134,7 @@ class App extends React.Component {
           />
 
           <Route
-            path="/phones/:page"
+            path="/phones"
             exact
             render={() => (
               <PhonesPage

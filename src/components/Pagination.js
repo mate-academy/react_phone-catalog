@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 const Pagination = ({
@@ -20,15 +19,16 @@ const Pagination = ({
       {pages.map(number => (
         <li
           key={number}
-          className="pagination__page"
+
         >
-          <Link
-            to={`/phones/${number}?perPage=${phonesPerPage}`}
-            className="page-link"
-            onClick={() => changeCurrentPage(number)}
+          <button
+            type="button"
+            className="pagination__page"
+            value={number}
+            onClick={changeCurrentPage}
           >
             {number}
-          </Link>
+          </button>
         </li>
       ))}
     </ul>

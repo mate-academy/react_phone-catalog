@@ -22,21 +22,15 @@
     border-radius: 5px;
   }
 
-  &__page-selected,
+  &__page--selected,
   &__page:hover,
   &__page:active {
     background: #e9eceede;
     border: 2px solid #047CC7;
   }
 
-  &__page a {
-    display: block;
-
-    color: #000;
-    text-decoration: none;
-  }
-
   &__posts-ammount {
+    margin-left: 5px;
     border-radius: 5px;
   }
 }

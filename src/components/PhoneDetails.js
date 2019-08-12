@@ -151,6 +151,9 @@ PhoneDetails.propTypes = {
   increaseQuantity: PropTypes.func.isRequired,
   decreaseQuantity: PropTypes.func.isRequired,
   selectedPhones: PropTypes.arrayOf(PropTypes.object).isRequired,
+  history: PropTypes.shape({
+    goBack: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
 export default withRouter(PhoneDetails);

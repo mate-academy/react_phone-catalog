@@ -9,14 +9,12 @@ import PhoneCatalog from './PhoneCatalog';
 import Filters from './Filters';
 import Pagination from './Pagination';
 import SelectPhonesAmmount from './SelectPhonesAmmount';
+import getSortedPhones from './getSortedPhones';
 
 class PhonesPage extends React.Component {
   state = {
     phones: [],
     isLoaded: false,
-    filterValue: '',
-    currentPage: 1,
-    phonesPerPage: 5,
   }
 
   componentDidMount() {
@@ -34,9 +32,18 @@ class PhonesPage extends React.Component {
 
   handleFilter = (event) => {
     const { value } = event.target;
+    const { location, history } = this.props;
+    const params = new URLSearchParams(location.search);
 
-    this.setState({
-      filterValue: value.toLowerCase(),
+    value === ''
+      ? params.delete('querry')
+      : params.set('querry', value);
+
+    params.set('page', 1);
+
+    history.push({
+      pathname: '/phones',
+      search: `?${params.toString()}`,
     });
   }
 
@@ -52,55 +59,49 @@ class PhonesPage extends React.Component {
     );
   }
 
-  getSortedPhones = (event) => {
+  handleSort = (event) => {
     const { value } = event.target;
+    const { location, history } = this.props;
+    const params = new URLSearchParams(location.search);
 
-    switch (value) {
-      case 'age':
-        return this.setState(prevState => ({
-          phones: [...prevState.phones]
-            .sort((a, b) => a.age - b.age),
-        }));
-      case 'alphabet':
-        return this.setState(prevState => ({
-          phones: [...prevState.phones]
-            .sort((a, b) => a.name.localeCompare(b.name)),
-        }));
-      default:
-        return this.setState(prevState => ({
-          phones: prevState.phones,
-        }));
-    }
+    params.set('sort', value);
+
+    history.push({
+      pathname: '/phones',
+      search: `?${params.toString()}`,
+    });
   }
 
-  changeCurrentPage = (currentPage) => {
-    this.setState({ currentPage });
+  changeCurrentPage = (event) => {
+    const { value } = event.target;
+    const { location, history } = this.props;
+    const params = new URLSearchParams(location.search);
+
+    params.set('page', value);
+
+    history.push({
+      pathname: '/phones',
+      search: `?${params.toString()}`,
+    });
   }
 
   changePerPageAmmount = (event) => {
     const { value } = event.target;
     const { location, history } = this.props;
-    const search = new URLSearchParams(location.search);
+    const params = new URLSearchParams(location.search);
 
-    this.setState({
-      phonesPerPage: +value,
-      currentPage: 1,
-    });
+    params.set('perPage', value);
+    params.set('page', 1);
 
-    search.append('perPage', value);
-
-    history.replace({
-      pathname: '/phones/1',
-      search: `? ${search.toString()}`,
+    history.push({
+      pathname: '/phones',
+      search: `?${params.toString()}`,
     });
   }
 
   render() {
     const {
       isLoaded,
-      filterValue,
-      currentPage,
-      phonesPerPage,
     } = this.state;
 
     const {
@@ -108,9 +109,17 @@ class PhonesPage extends React.Component {
       selectedPhones,
       increaseQuantity,
       decreaseQuantity,
+      location,
     } = this.props;
 
-    const visiblePhones = this.filterPhones(filterValue);
+    const params = new URLSearchParams(location.search);
+
+    const phonesPerPage = params.get('perPage');
+    const currentPage = params.get('page');
+    const filterValue = params.get('querry') ? params.get('querry') : '';
+    const sortField = params.get('sort');
+    const filteredPhones = this.filterPhones(filterValue);
+    const visiblePhones = getSortedPhones(filteredPhones, sortField);
     const firstIndex = currentPage * phonesPerPage - phonesPerPage;
     const lastIndex = currentPage * phonesPerPage;
 
@@ -122,7 +131,7 @@ class PhonesPage extends React.Component {
               <Filters
                 filterValue={filterValue}
                 handleFilter={this.handleFilter}
-                getSortedPhones={this.getSortedPhones}
+                getSortedPhones={this.SortPhones}
               />
 
               <div className="page-content__catalog">
@@ -173,6 +182,12 @@ class PhonesPage extends React.Component {
 }
 
 PhonesPage.propTypes = {
+  location: PropTypes.shape({
+    search: PropTypes.func.isRequired,
+  }).isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+  }).isRequired,
   addPhone: PropTypes.func.isRequired,
   increaseQuantity: PropTypes.func.isRequired,
   decreaseQuantity: PropTypes.func.isRequired,
