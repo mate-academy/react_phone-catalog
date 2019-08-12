@@ -7,7 +7,7 @@ const Phone = ({ phones }) => {
   const listOfPhones = phones.map(phone => (
     <div className="phone-catalogue__phone" key={phone.age}>
       <div className="phone-catalogue__phone--img">
-        <img src={`./${phone.imageUrl}`} alt={phone.id} />
+        <img src={`https://githubfordmitry.github.io/phones/${phone.imageUrl}`} alt={phone.id} />
         <NavLink
           className="phone-catalogue__phone--link"
           to="/"
