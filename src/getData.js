@@ -1,4 +1,4 @@
-const apiUrl = 'https://mate-academy.github.io/phone-catalogue-static/api';
+const APIURL = 'https://mate-academy.github.io/phone-catalogue-static/api';
 
 export const getData = async(url) => {
   const response = await fetch(url);
@@ -8,13 +8,13 @@ export const getData = async(url) => {
 };
 
 export const getPhones = async() => {
-  const phones = getData(`${apiUrl}/phones.json`);
+  const phones = getData(`${APIURL}/phones.json`);
 
   return phones;
 };
 
 export const getDetails = async(phoneId) => {
-  const phonesDetails = getData(`${apiUrl}/${phoneId}.json`);
+  const phonesDetails = getData(`${APIURL}/${phoneId}.json`);
 
   return phonesDetails;
 };

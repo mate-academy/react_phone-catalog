@@ -3,11 +3,12 @@ import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import './Phone.css';
 
+const APIURL = 'https://mate-academy.github.io/phone-catalogue-static/api';
 const Phone = ({ phones }) => {
   const listOfPhones = phones.map(phone => (
     <div className="phone-catalogue__phone" key={phone.age}>
       <div className="phone-catalogue__phone--img">
-        <img src={`https://GitHubForDmitry.github.io/${phone.imageUrl}`} alt={phone.id} />
+        <img src={`${APIURL}/${phone.imageUrl}`} alt={phone.id} />
         <NavLink
           className="phone-catalogue__phone--link"
           to="/"
