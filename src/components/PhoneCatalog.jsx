@@ -48,6 +48,7 @@ class PhoneCatalog extends React.Component {
 
   render() {
     const { phonesForShowing } = this.state;
+    const BASE_IMAGE_URL = 'https://mate-academy.github.io/phone-catalogue-static';
 
     return (
       <div className='phoneCatalog'>
@@ -83,7 +84,7 @@ class PhoneCatalog extends React.Component {
               <li className='listOfPhones__item'>
                 <img 
                   className='listOfPhones__item-img'
-                  src={`${phone.imageUrl}`} 
+                  src={`${BASE_IMAGE_URL}/${phone.imageUrl}`}
                   alt="altImg"
                   />
 

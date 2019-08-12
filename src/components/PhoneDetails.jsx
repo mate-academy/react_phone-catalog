@@ -24,6 +24,8 @@ class PhoneDetails extends React.Component {
   render() {
     const { id, phone, details } = this.props;
     const { currentImg } = this.state;
+    const imageFromUrl = 'https://mate-academy.github.io/phone-catalogue-static';
+
 
     return (
       <div>
@@ -49,7 +51,7 @@ class PhoneDetails extends React.Component {
                 <img
                   onClick={this.chooseCurrentImg}
                   className='currentPhone__top-block-all-imgs-item'
-                  src={`/${image}`}
+                  src={`${imageFromUrl}/${image}`}
                   alt=""
                 />
               )
