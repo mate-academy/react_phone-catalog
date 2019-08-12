@@ -48,8 +48,8 @@ const PhoneCatalog = ({
                     </button>
 
                     <div className="phone-card__quantity">
-                      {`${phone.quantity}
-                        ${phone.quantity > 1 ? 'items' : 'item'}
+                      {`${item.quantity}
+                        ${item.quantity > 1 ? 'items' : 'item'}
                       `}
                     </div>
 
@@ -57,7 +57,7 @@ const PhoneCatalog = ({
                       type="button"
                       name="+"
                       className="cart-btn phone-card__plus-btn quantity-btn"
-                      onClick={() => increaseQuantity(phone.id)}
+                      onClick={() => increaseQuantity(item.id)}
                     >
                       +
                     </button>
