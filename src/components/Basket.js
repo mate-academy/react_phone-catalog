@@ -16,7 +16,7 @@ const Basket = ({
       : (
         <ul className="basket-page__shopping-list">
           {selectedPhones.map(phone => (
-            <li className="phone-card">
+            <li className="basket-page__phone-card">
               <Link to={`/${phone.id}`}>
                 <img
                   src={phone.image}
