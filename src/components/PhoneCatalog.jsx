@@ -48,7 +48,8 @@ class PhoneCatalog extends React.Component {
 
   render() {
     const { phonesForShowing } = this.state;
-    const BASE_IMAGE_URL = 'https://mate-academy.github.io/phone-catalogue-static';
+    const BASE_IMAGE_URL = 
+      'https://mate-academy.github.io/phone-catalogue-static';
 
     return (
       <div className='phoneCatalog'>

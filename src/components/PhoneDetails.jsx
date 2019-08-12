@@ -6,7 +6,8 @@ class PhoneDetails extends React.Component {
   }
 
   componentDidMount = () => {
-    const BASE_IMAGE_URL = 'https://mate-academy.github.io/phone-catalogue-static';
+    const BASE_IMAGE_URL = 
+      'https://mate-academy.github.io/phone-catalogue-static';
     const currentImage = `${BASE_IMAGE_URL}/${this.props.phone.imageUrl}`;
 
     this.setState({
@@ -25,7 +26,8 @@ class PhoneDetails extends React.Component {
   render() {
     const { id, phone, details } = this.props;
     const { currentImg } = this.state;
-    const BASE_IMAGE_URL = 'https://mate-academy.github.io/phone-catalogue-static';
+    const BASE_IMAGE_URL = 
+      'https://mate-academy.github.io/phone-catalogue-static';
 
 
     return (
