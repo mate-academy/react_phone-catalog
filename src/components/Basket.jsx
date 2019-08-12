@@ -21,7 +21,7 @@ class Basket extends React.Component {
           <tbody>
 
             {this.props.basketItems.map(item => (
-              <tr>
+              <tr key={item.id}>
 
                 <td>
                   <button
