@@ -131,7 +131,7 @@ class PhonesPage extends React.Component {
               <Filters
                 filterValue={filterValue}
                 handleFilter={this.handleFilter}
-                getSortedPhones={this.SortPhones}
+                getSortedPhones={this.handleSort}
               />
 
               <div className="page-content__catalog">
