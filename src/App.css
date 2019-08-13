@@ -1,1 +1,332 @@
+/* stylelint-disable */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Roboto, sans-serif;
+}
 
+a {
+  color: #3e3e3e;
+  text-decoration: none;
+}
+
+.main-link__container {
+  display: flex;
+  min-height: 40px;
+  background-color: #0072bc;
+  align-items: center;
+  overflow: hidden;
+}
+
+.logo {
+  margin-left: 31px;
+  margin-right: auto;
+  color: white;
+  font-weight: bold;
+  font-size: 27px;
+}
+
+.Home-page {
+  text-align: center;
+}
+
+.main-link {
+  color: white;
+  text-decoration: none;
+  margin: 0 20px;
+  display: flex;
+  min-height: 40px;
+  padding: 0 25px;
+  box-sizing: border-box;
+  align-items: center;
+  position: relative;
+}
+.main-link:hover {
+  background: #007fd1;
+}
+.main-link__active, .main-link__active:hover {
+  background: #0467a6;
+  box-shadow: inset 0 0 5px 1px #003f68;
+}
+.main-link__basket {
+  width: 27px;
+  color: white;
+  position: relative;
+}
+.main-link__have-item::after {
+  content: " ";
+  background-color: #d51f1f;
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  top: 4px;
+  right: 24px;
+}
+
+.Catalog-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.catalog {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+  max-width: 768px;
+  margin: auto;
+}
+.catalog__item {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(62, 62, 62, 0.5);
+  border-radius: 3px;
+  padding: 10px;
+}
+.catalog__item:hover .catalog__item-head {
+  color: #0072bc;
+}
+.catalog__item-head {
+  margin: 10px 0 0 10px;
+  font-size: 15px;
+  text-align: center;
+}
+.catalog__item-img {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+}
+.catalog__item-snippet {
+  margin: 10px 0 20px;
+  font-size: 14px;
+  text-align: left;
+}
+.catalog__item-button {
+  width: 93px;
+  height: 40px;
+  background-color: #d51f1f;
+  border: none;
+  border-radius: 3px;
+  color: white;
+  font-weight: bold;
+  margin: auto auto 0;
+}
+.catalog__item-button:hover {
+  background-color: #e02d2d;
+  cursor: pointer;
+}
+.catalog__item-button:disabled {
+  width: 93px;
+  height: 40px;
+  background-color: #d51f1f;
+  border: none;
+  border-radius: 3px;
+  color: white;
+  font-weight: bold;
+  opacity: 0.5;
+  cursor: auto;
+}
+
+.Loader {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 90vh;
+}
+
+.Phone-info-main {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+.Phone-info-main__images {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+}
+.Phone-info-main__image {
+  width: 300px;
+  height: 300px;
+}
+.Phone-info-main__images-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 3px;
+  grid-row-gap: 5px;
+}
+.Phone-info-main__images-row-image {
+  width: 72px;
+  height: 72px;
+  padding: 10px;
+  border: 1px solid #3e3e3e;
+  border-radius: 3px;
+  align-self: center;
+  justify-self: center;
+  cursor: pointer;
+}
+.Phone-info-main__images-row-image--active {
+  opacity: 0.5;
+}
+.Phone-info-main__name-discription {
+  display: flex;
+  flex-direction: column;
+  padding: 50px;
+}
+.Phone-info-main__head-and-button {
+  display: flex;
+  justify-content: space-between;
+}
+.Phone-info-main__button {
+  width: 93px;
+  height: 40px;
+  background-color: #d51f1f;
+  border: none;
+  border-radius: 3px;
+  color: white;
+  font-weight: bold;
+}
+.Phone-info-main__button:disabled {
+  width: 93px;
+  height: 40px;
+  background-color: #d51f1f;
+  border: none;
+  border-radius: 3px;
+  color: white;
+  font-weight: bold;
+  opacity: 0.5;
+  cursor: auto;
+}
+.Phone-info-main__button:hover {
+  background-color: #e02d2d;
+  cursor: pointer;
+}
+.Phone-info-main__button:focus {
+  outline: none;
+}
+.Phone-info-main__discription-details {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  grid-column-gap: 20px;
+}
+.Phone-info-main__discription-details h5 {
+  margin: 5px 0;
+  font-size: 14px;
+}
+.Phone-info-main__discription-details p {
+  margin: 3px 0;
+  font-size: 14px;
+}
+
+.sidebar-search {
+  display: flex;
+  flex-direction: column;
+  border-collapse: collapse;
+}
+.sidebar-search__head {
+  font-size: 13px;
+  margin: 15px 0 5px;
+  text-align: center;
+}
+.sidebar-search__input {
+  border: 1px solid #3e3e3e;
+  border-radius: 3px 3px 0 0;
+}
+.sidebar-search__select {
+  border: 1px solid #3e3e3e;
+  border-radius: 0 0 3px 3px;
+  position: relative;
+  top: -1px;
+}
+
+.Basket {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  padding: 50px;
+}
+.Basket__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border: 1px solid #3e3e3e;
+  border-radius: 3px;
+  margin: 4px;
+  padding: 10px;
+}
+.Basket__item:hover .Basket__item-name {
+  color: #0072bc;
+}
+.Basket__item-quantity {
+  margin: 0;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+}
+.Basket__item-quantity button {
+  width: 25px;
+  height: 20px;
+  padding: 0;
+  background: #0072bc;
+  border: none;
+  border-radius: 3px;
+  color: white;
+  font-size: 17px;
+  box-sizing: border-box;
+  margin: 0 4px;
+  cursor: pointer;
+}
+.Basket__item-quantity button:hover {
+  background-color: #007fd1;
+}
+.Basket__item-quantity button:hover {
+  color: black;
+}
+.Basket__item-quantity button:focus {
+  outline: none;
+}
+.Basket__item-quantity-plus::before {
+  content: "+";
+}
+.Basket__item-quantity-minus::before {
+  content: "-";
+  position: relative;
+  top: -1px;
+}
+.Basket__item-image {
+  width: 70px;
+  margin-right: 10px;
+}
+.Basket__item-name {
+  margin: 0;
+  font-size: 13px;
+  margin-right: 10px;
+}
+.Basket__item-remove-button {
+  border: none;
+  background-color: #d51f1f;
+  border-radius: 3px;
+  color: white;
+}
+.Basket__item-remove-button:hover {
+  background-color: #e02d2d;
+  cursor: pointer;
+}
+
+.Not-found-page {
+  text-align: center;
+}
+.Not-found-page__link {
+  background-color: #0072bc;
+  padding: 5px 10px;
+  border-radius: 3px;
+  color: white;
+}
+.Not-found-page__link:hover {
+  cursor: pointer;
+  background-color: #007fd1;
+}
+
+/*# sourceMappingURL=App.css.map */
