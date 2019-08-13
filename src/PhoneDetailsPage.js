@@ -1,18 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Loading from './Loading';
-
-export const getDetails = async(phoneId) => {
-  const url = `https://mate-academy.github.io/phone-catalogue-static`;
-  const response = await fetch(`${url}/api/phones/${phoneId}.json`);
-  const data = response.json();
-
-  return data;
-};
+import { getDetails } from './getAPIDoc';
 
 class PhoneDetailsPage extends React.Component {
   state = {
-    phoneDetails: [],
+    phoneDetails: null,
     imgChoseUrl: '',
   }
 
@@ -32,7 +25,7 @@ class PhoneDetailsPage extends React.Component {
 
     const isPhoneId = phones.find(phone => phone.id === phoneId);
 
-    if (phoneId && !isPhoneId) {
+    if (!isPhoneId) {
       return (
         <div className="wrraper__was__not_phone">
           <h1 className="phone__was__not">Phone Was Not Found</h1>
@@ -50,7 +43,7 @@ class PhoneDetailsPage extends React.Component {
               ? (
                 <img
                   src={`${urlImg}/${imgChoseUrl}`}
-                  alt="Motorrola"
+                  alt={`${imgChoseUrl}`}
                   className="card__img"
                 />
               )
@@ -62,14 +55,25 @@ class PhoneDetailsPage extends React.Component {
                   onMouseOver={() => this.handleChose(`${imgUrl}`)}
                   key={imgUrl}
                   src={`${urlImg}/${imgUrl}`}
-                  alt="Motorrola"
+                  alt="phone"
                   className="card__img"
                   onFocus
                 />
               ))
               : ''
             }
+            <h1>description</h1>
             <p>{`${phoneDetails.description}`}</p>
+            <h3>Display</h3>
+            <p>{`${phoneDetails.display.screenResolution}`}</p>
+            <p>{`${phoneDetails.display.screenSize}`}</p>
+            <h3>android</h3>
+            <p>{`${phoneDetails.android.os}`}</p>
+            <p>{`${phoneDetails.android.ui}`}</p>
+            <h3>hardware</h3>
+            <p>{`${phoneDetails.hardware.audioJack}`}</p>
+            <p>{`${phoneDetails.hardware.cpu}`}</p>
+            <p>{`${phoneDetails.hardware.usb}`}</p>
           </div>
         ));
   }

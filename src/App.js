@@ -6,6 +6,7 @@ import PhoneCatalog from './PhoneCatalog';
 import PhoneDetailsPage from './PhoneDetailsPage';
 import NotFoundPage from './NotFoundPage';
 import BasketItems from './BasketItems';
+import { getPhones } from './getAPIDoc';
 
 const HomePage = () => (
   <div className="home_page">
@@ -21,17 +22,6 @@ const getSorted = (array, sortField) => {
   const callback = sortBy[sortField];
 
   return [...array].sort(callback);
-};
-
-const getPhones = async() => {
-  const url = 'https://mate-academy.github.io/phone-catalogue-static';
-  const response = await fetch(
-    `${url}/api/phones.json`
-  );
-
-  const currentContent = await response.json();
-
-  return currentContent;
 };
 
 class App extends React.Component {

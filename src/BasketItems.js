@@ -16,7 +16,7 @@ const BasketItems = ({ phonesToBasket }) => (
 );
 
 BasketItems.propTypes = {
-  phonesToBasket: PropTypes.func.isRequired,
+  phonesToBasket: PropTypes.shape().isRequired,
 };
 
 export default BasketItems;
