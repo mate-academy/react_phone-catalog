@@ -106,6 +106,7 @@ class App extends React.Component {
 
   loadDataPhones = async () => {
     this.setState({
+      isLoaded: false,
       isLoading: true,
     })
 
