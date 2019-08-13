@@ -27,6 +27,10 @@ main {
   padding: 2rem;
 }
 
+.nav {
+  display: block;
+}
+
 .nav ul {
   display: flex;
   flex-direction: row;
@@ -45,6 +49,7 @@ main {
 
 .nav a.active {
   opacity: 1;
+  pointer-events: none;
 }
 
 h1 {
@@ -174,4 +179,9 @@ label {
 .section__button {
   width: 5rem;
   height: 2.5rem;
+}
+
+.custom-form-control .form-control {
+  display: inline-block;
+  width: 3rem;
 }

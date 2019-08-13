@@ -10,7 +10,7 @@ const Nav = () => (
       <li>
         <NavLink
           to={{
-            pathname: '/phones',
+            pathname: '/phones/',
             search: '?&query=&sort=',
           }}
         >

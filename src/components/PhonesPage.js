@@ -1,10 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
+import shortid from 'shortid';
 import Loader from './Loader';
 import PhoneCatalog from './PhoneCatalog';
 import PhoneDetailsPage from './PhoneDetailsPage';
 import Filter from './Filter';
 import Basket from './Basket';
+import Pagination from './Pagination';
+
+const getPageNumbers = (itemsPerPage, itemsNumber) => {
+  const pageNumbers = [];
+
+  for (let i = 1; i <= Math.ceil(itemsNumber / itemsPerPage); i += 1) {
+    pageNumbers.push(i);
+  }
+
+  return pageNumbers;
+};
 
 /* eslint-disable-next-line */
 const PhonesPage = ({ history, location }) => {
@@ -14,6 +26,11 @@ const PhonesPage = ({ history, location }) => {
   const [basketItems, setBasketItems] = useState([]);
   const [searchValue, setSearchValue] = useState('');
   const [sortType, setSortType] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(5);
+  const [pageNumbers, setPageNumbers] = useState([]);
+
+  const selectOptions = [3, 5, 10, 20];
 
   const { search } = location;
 
@@ -29,14 +46,22 @@ const PhonesPage = ({ history, location }) => {
 
         const queryValue = searchParams.get('query') || '';
         const sortValue = searchParams.get('sort') || '';
+        const page = searchParams.get('page') || 1;
+        const perPage = searchParams.get('perPage') || 5;
 
         setSearchValue(queryValue);
         setSortType(sortValue);
-
-        setFilteredPhones(getSortedPhonesBy(
+        setCurrentPage(+page);
+        setItemsPerPage(+perPage);
+        const sortedPhones = getSortedPhonesBy(
           getFilteredPhones(phonesData, queryValue),
           sortValue
-        ));
+        );
+
+        setPageNumbers(getPageNumbers(perPage,
+          sortedPhones.length));
+
+        setFilteredPhones(sortedPhones);
       } catch (error) {
         setPhones([]);
       }
@@ -58,7 +83,11 @@ const PhonesPage = ({ history, location }) => {
 
     const queryValue = searchParams.get('query') || '';
     const sortValue = searchParams.get('sort') || '';
+    const page = searchParams.get('page') || '';
+    const perPage = searchParams.get('perPage') || '';
 
+    setCurrentPage(page);
+    setItemsPerPage(perPage);
     setSearchValue(queryValue);
     setSortType(sortValue);
   }, [history]);
@@ -68,6 +97,9 @@ const PhonesPage = ({ history, location }) => {
 
     searchParams.append('query', searchValue.toString());
     searchParams.append('sort', sortType.toString());
+    searchParams.append('page', currentPage.toString());
+    searchParams.append('perPage', itemsPerPage.toString());
+
     if (search !== `?${searchParams.toString()}`) {
       history.push({
         pathname: '/phones/',
@@ -75,11 +107,16 @@ const PhonesPage = ({ history, location }) => {
       });
     }
 
-    setFilteredPhones(getSortedPhonesBy(
+    const sortedPhones = getSortedPhonesBy(
       getFilteredPhones(phones, searchValue),
       sortType
-    ));
-  }, [searchValue, sortType]);
+    );
+
+    setFilteredPhones(sortedPhones);
+
+    setPageNumbers(getPageNumbers(itemsPerPage,
+      sortedPhones.length));
+  }, [searchValue, sortType, itemsPerPage]);
 
   const onAddToBasket = (phoneId, phoneName) => {
     const items = [...basketItems];
@@ -131,6 +168,7 @@ const PhonesPage = ({ history, location }) => {
   };
 
   const getSearchValue = (event) => {
+    setCurrentPage(1);
     setSearchValue(event.target.value.toLowerCase().trim());
   };
 
@@ -156,17 +194,96 @@ const PhonesPage = ({ history, location }) => {
       [name, snippet].join('').toLowerCase().includes(value))
   );
 
+  const onPageChange = (event) => {
+    const { name, id } = event.target;
+
+    setPageNumbers(getPageNumbers(itemsPerPage, filteredPhones.length));
+    if (name.toLowerCase().trim().includes('next')
+      && currentPage < pageNumbers.length) {
+      setCurrentPage(currentPage + 1);
+    } else if (name.toLowerCase().trim().includes('prev') && currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    } else {
+      setCurrentPage(+id);
+    }
+  };
+
+  const onSelectChange = ({ target: { value } }) => {
+    setItemsPerPage(+value);
+    setCurrentPage(1);
+  };
+
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const paginationInfo = `Showing ${
+    filteredPhones.length > 0 ? indexOfFirstItem + 1 : 0
+  } to ${
+    indexOfLastItem > filteredPhones.length
+      ? filteredPhones.length
+      : indexOfLastItem
+  }
+    of ${filteredPhones.length} phones`;
+  const currentPhonesForShowing = filteredPhones
+    .slice(indexOfFirstItem, indexOfLastItem);
+
   return (
     <section className="section">
       <div className="sidebar">
-        <Filter
-          onFilterPhones={getSearchValue}
-          onSortPhonesBy={getSortType}
+        <Route
+          path="/phones/"
+          exact
+          render={() => (
+            <Filter
+              onFilterPhones={getSearchValue}
+              onSortPhonesBy={getSortType}
+              sortValue={sortType}
+              searchValue={searchValue}
+            />
+          )}
         />
         <Basket
           basketItems={basketItems}
           onChangeQuantity={onChangeQuantity}
           onRemoveFormBasket={onRemoveFormBasket}
+        />
+        <Route
+          path="/phones/"
+          exact
+          render={() => (
+            <>
+              <form>
+                {/* eslint-disable-next-line jsx-a11y/label-has-for */}
+                <label
+                  className="custom-form-control"
+                  htmlFor="formControlSelect"
+                >
+                  Show
+                  <select
+                    onChange={onSelectChange}
+                    id="formControlSelect"
+                    className="form-control"
+                    value={itemsPerPage}
+                  >
+                    {selectOptions.map(item => (
+                      <option
+                        key={shortid.generate()}
+                        value={item}
+                      >
+                        {item}
+                      </option>
+                    ))}
+                  </select>
+                  countries
+                </label>
+              </form>
+              <Pagination
+                buttons={pageNumbers}
+                currentPage={currentPage}
+                withInfo={paginationInfo}
+                onPageChange={onPageChange}
+              />
+            </>
+          )}
         />
       </div>
       <div>
@@ -193,7 +310,7 @@ const PhonesPage = ({ history, location }) => {
                     render={({ match }) => (
                       <PhoneCatalog
                         match={match}
-                        phones={filteredPhones}
+                        phones={currentPhonesForShowing}
                         onAddToBasket={onAddToBasket}
                       />
                     )}
