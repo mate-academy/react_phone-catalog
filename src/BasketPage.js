@@ -13,7 +13,7 @@ const BasketPage = () => {
     return (
       <>
         <h1 className="greatings-header">
-          Basket is empty,
+          {`Basket is empty, `}
           <Link
             className="link-to-phones"
             to="phones"
