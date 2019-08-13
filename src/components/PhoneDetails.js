@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 
 /* eslint-disable-next-line */
-const PhoneDetais = ({ phone }) => {
+const PhoneDetais = ({ phone, onAddToBasket, history }) => {
   const {
-    name, images, description,
+    id, name, images, description,
   } = phone;
 
   const [mainImage, setMainImage] = useState(images[0]);
@@ -14,6 +14,14 @@ const PhoneDetais = ({ phone }) => {
 
   return (
     <div className="section section_details">
+      <div className="section__button indent-mb-m">
+        <button
+          type="button"
+          onClick={history.goBack}
+        >
+          GO BACK
+        </button>
+      </div>
       <div className="section__main-content">
         <div className="section__image">
           <img
@@ -25,6 +33,14 @@ const PhoneDetais = ({ phone }) => {
         <div className="section__content">
           <h2 className="indent-mb-m">{name}</h2>
           <p className="indent-mb-l">{description}</p>
+          <div className="card__button">
+            <button
+              type="button"
+              onClick={() => onAddToBasket(id, name)}
+            >
+              Add
+            </button>
+          </div>
         </div>
       </div>
       <div className="section__gallery">

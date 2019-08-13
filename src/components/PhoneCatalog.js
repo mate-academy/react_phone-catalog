@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 /* eslint-disable-next-line */
-const PhoneCatalog = ({ phones, onAddToBasket }) => (
+const PhoneCatalog = ({ match, phones, onAddToBasket }) => (
   <div>
     {phones.map((phone) => {
       const {
@@ -12,7 +12,7 @@ const PhoneCatalog = ({ phones, onAddToBasket }) => (
       return (
         <div key={id} className="catalog__card card">
           <div className="card__image image-container">
-            <Link to={`/phones/${id}`}>
+            <Link to={`${match.url}${id}`}>
               <img
                 /* eslint-disable-next-line max-len */
                 src={`https://mate-academy.github.io/phone-catalogue-static/${imageUrl}`}
@@ -22,7 +22,7 @@ const PhoneCatalog = ({ phones, onAddToBasket }) => (
           </div>
 
           <div className="card__description">
-            <Link to={`/phones/${id}`}>
+            <Link to={`${match.url}${id}`}>
               <h3 className="indent-mb-sm">{name}</h3>
             </Link>
             <p>{snippet}</p>

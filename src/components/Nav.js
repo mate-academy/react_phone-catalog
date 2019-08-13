@@ -8,7 +8,14 @@ const Nav = () => (
         <NavLink to="/" exact>Home page</NavLink>
       </li>
       <li>
-        <NavLink to="/phones">Phones page</NavLink>
+        <NavLink
+          to={{
+            pathname: '/phones',
+            search: '?&query=&sort=',
+          }}
+        >
+          Phones page
+        </NavLink>
       </li>
 
     </ul>

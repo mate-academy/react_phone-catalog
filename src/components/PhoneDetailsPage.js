@@ -3,26 +3,26 @@ import Loader from './Loader';
 import PhoneDetais from './PhoneDetails';
 
 /* eslint-disable-next-line */
-const PhoneDetailsPage = ({ match }) => {
-  useEffect(() => {
-    fetchPhone();
-    setTimeout(() => setLoader(true), 1000);
-  }, [match]);
-
+const PhoneDetailsPage = ({ match, history, onAddToBasket }) => {
   const [phone, setPhone] = useState([]);
   const [loader, setLoader] = useState(0);
   const [error, setError] = useState(0);
-  const fetchPhone = async() => {
-    try {
-      /* eslint-disable-next-line */
-      const data = await fetch(`https://mate-academy.github.io/phone-catalogue-static/api/phones/${match.params.id}.json`);
-      const phoneData = await data.json();
 
-      setPhone(phoneData);
-    } catch (err) {
-      setError(err);
-    }
-  };
+  useEffect(() => {
+    (async() => {
+      try {
+        /* eslint-disable-next-line */
+        const data = await fetch(`https://mate-academy.github.io/phone-catalogue-static/api/phones/${match.params.id}.json`);
+        const phoneData = await data.json();
+
+        setPhone(phoneData);
+      } catch (err) {
+        setError(err);
+      }
+    })();
+
+    setTimeout(() => setLoader(true), 1000);
+  }, []);
 
   return (
     <div>
@@ -34,7 +34,11 @@ const PhoneDetailsPage = ({ match }) => {
         <>
           { loader ? (
             <div>
-              <PhoneDetais phone={phone} />
+              <PhoneDetais
+                phone={phone}
+                history={history}
+                onAddToBasket={onAddToBasket}
+              />
             </div>
           ) : (
             <Loader />
@@ -45,4 +49,4 @@ const PhoneDetailsPage = ({ match }) => {
   );
 };
 
-export default PhoneDetailsPage;
+export default React.memo(PhoneDetailsPage);

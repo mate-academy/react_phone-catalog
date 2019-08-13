@@ -15,7 +15,17 @@ const App = () => (
       <main>
         <Switch>
           <Route path="/" exact component={HomePage} />
-          <Route path="/phones" component={PhonesPage} />
+
+          <Route
+            path="/phones"
+            render={({ match, location, history }) => (
+              <PhonesPage
+                match={match}
+                location={location}
+                history={history}
+              />
+            )}
+          />
           <Route component={NotFoundPage} />
         </Switch>
       </main>

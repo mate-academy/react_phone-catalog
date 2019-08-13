@@ -1,33 +1,85 @@
-import React, { useState, useEffect } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Route, Switch } from 'react-router-dom';
 import Loader from './Loader';
 import PhoneCatalog from './PhoneCatalog';
 import PhoneDetailsPage from './PhoneDetailsPage';
 import Filter from './Filter';
 import Basket from './Basket';
 
-const PhonesPage = () => {
-  useEffect(() => {
-    fetchPhones();
-    setPhonesLoader(true);
-  }, []);
+/* eslint-disable-next-line */
+const PhonesPage = ({ history, location }) => {
   const [phones, setPhones] = useState([]);
   const [filteredPhones, setFilteredPhones] = useState([]);
   const [phonesLoaded, setPhonesLoader] = useState(false);
   const [basketItems, setBasketItems] = useState([]);
+  const [searchValue, setSearchValue] = useState('');
+  const [sortType, setSortType] = useState(0);
 
-  const fetchPhones = async() => {
-    try {
-      // eslint-disable-next-line max-len
-      const data = await fetch('https://mate-academy.github.io/phone-catalogue-static/api/phones.json');
-      const phonesData = await data.json();
+  const { search } = location;
 
-      setPhones(phonesData);
-      setFilteredPhones(phonesData);
-    } catch (error) {
-      setPhones([]);
+  useEffect(() => {
+    (async() => {
+      try {
+        // eslint-disable-next-line max-len
+        const data = await fetch('https://mate-academy.github.io/phone-catalogue-static/api/phones.json');
+        const phonesData = await data.json();
+
+        setPhones(phonesData);
+        const searchParams = new URLSearchParams(search);
+
+        const queryValue = searchParams.get('query') || '';
+        const sortValue = searchParams.get('sort') || '';
+
+        setSearchValue(queryValue);
+        setSortType(sortValue);
+
+        setFilteredPhones(getSortedPhonesBy(
+          getFilteredPhones(phonesData, queryValue),
+          sortValue
+        ));
+      } catch (error) {
+        setPhones([]);
+      }
+    })();
+
+    if (localStorage.getItem('basketItems')) {
+      setBasketItems(JSON.parse(localStorage.getItem('basketItems')));
     }
-  };
+
+    setPhonesLoader(true);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('basketItems', JSON.stringify(basketItems));
+  }, [basketItems]);
+
+  useEffect(() => {
+    const searchParams = new URLSearchParams(search);
+
+    const queryValue = searchParams.get('query') || '';
+    const sortValue = searchParams.get('sort') || '';
+
+    setSearchValue(queryValue);
+    setSortType(sortValue);
+  }, [history]);
+
+  useEffect(() => {
+    const searchParams = new URLSearchParams();
+
+    searchParams.append('query', searchValue.toString());
+    searchParams.append('sort', sortType.toString());
+    if (search !== `?${searchParams.toString()}`) {
+      history.push({
+        pathname: '/phones/',
+        search: `?${searchParams.toString()}`,
+      });
+    }
+
+    setFilteredPhones(getSortedPhonesBy(
+      getFilteredPhones(phones, searchValue),
+      sortType
+    ));
+  }, [searchValue, sortType]);
 
   const onAddToBasket = (phoneId, phoneName) => {
     const items = [...basketItems];
@@ -78,40 +130,38 @@ const PhonesPage = () => {
     }
   };
 
-  const onFilterPhones = (event) => {
-    setFilteredPhones(phones.filter(phone => (
-      phone.name.toLowerCase()
-        .search(event.target.value.toLowerCase()) !== -1
-    )));
+  const getSearchValue = (event) => {
+    setSearchValue(event.target.value.toLowerCase().trim());
   };
 
-  const sortByName = () => {
-    setFilteredPhones([...phones].sort((a, b) => a.name.localeCompare(b.name)));
+  const getSortType = (event) => {
+    setSortType(event.target.value);
   };
 
-  const sortByAge = () => {
-    setFilteredPhones([...phones].sort((a, b) => a.age - b.age));
-  };
-
-  const onSortPhonesBy = (event) => {
-    switch (event.target.value) {
+  const getSortedPhonesBy = (phonesAfterFilter, type) => {
+    switch (type) {
       case 'name':
-        sortByName();
-        break;
+        return phonesAfterFilter.sort((a, b) => a.name.localeCompare(b.name));
+
       case 'age':
-        sortByAge();
-        break;
+        return phonesAfterFilter.sort((a, b) => a.age - b.age);
+
       default:
-        sortByAge();
+        return phonesAfterFilter;
     }
   };
+
+  const getFilteredPhones = (phonesToFilter, value) => phonesToFilter.filter(
+    ({ name, snippet }) => (
+      [name, snippet].join('').toLowerCase().includes(value))
+  );
 
   return (
     <section className="section">
       <div className="sidebar">
         <Filter
-          onFilterPhones={onFilterPhones}
-          onSortPhonesBy={onSortPhonesBy}
+          onFilterPhones={getSearchValue}
+          onSortPhonesBy={getSortType}
         />
         <Basket
           basketItems={basketItems}
@@ -129,13 +179,20 @@ const PhonesPage = () => {
                   <Route
                     path="/phones/:id"
                     exact
-                    component={PhoneDetailsPage}
+                    render={({ match }) => (
+                      <PhoneDetailsPage
+                        match={match}
+                        history={history}
+                        onAddToBasket={onAddToBasket}
+                      />
+                    )}
                   />
                   <Route
-                    path="/phones"
+                    path="/phones/:queryParams?"
                     exact
-                    render={() => (
+                    render={({ match }) => (
                       <PhoneCatalog
+                        match={match}
                         phones={filteredPhones}
                         onAddToBasket={onAddToBasket}
                       />
