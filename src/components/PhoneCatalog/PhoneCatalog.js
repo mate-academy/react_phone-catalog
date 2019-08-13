@@ -33,7 +33,7 @@ const PhoneCatalog = ({ phones, addPhoneToBasket }) => (
           <button
             type="button"
             className="phone__btn"
-            onClick={() => addPhoneToBasket(phone.id)}
+            onClick={() => addPhoneToBasket(phone.name)}
           >
             Add to basket
           </button>
@@ -48,7 +48,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToState = dispatch => ({
-  addPhoneToBasket: phoneId => dispatch(addToBasket(phoneId)),
+  addPhoneToBasket: phoneName => dispatch(addToBasket(phoneName)),
 });
 
 PhoneCatalog.propTypes = {

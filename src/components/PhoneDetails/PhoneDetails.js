@@ -40,7 +40,7 @@ class PhoneDetails extends React.Component {
             <button
               type="button"
               className="phone-details__btn"
-              onClick={() => addPhoneToBasket(phone.id)}
+              onClick={() => addPhoneToBasket(phone.name)}
             >
               Add to basket
             </button>
@@ -74,7 +74,7 @@ class PhoneDetails extends React.Component {
 }
 
 const mapDispatchToState = dispatch => ({
-  addPhoneToBasket: phoneId => dispatch(addToBasket(phoneId)),
+  addPhoneToBasket: phoneName => dispatch(addToBasket(phoneName)),
 });
 
 PhoneDetails.propTypes = {

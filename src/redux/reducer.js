@@ -28,14 +28,14 @@ const reducer = (state = initialState, action) => {
       };
 
     case ADD_TO_BASKET:
-      if (state.basketItems[action.phoneId]) {
+      if (state.basketItems[action.phoneName]) {
         return {
           ...state,
           basketItems: {
             ...state.basketItems,
-            [action.phoneId]: {
-              ...state.basketItems[action.phoneId],
-              count: state.basketItems[action.phoneId].count + 1,
+            [action.phoneName]: {
+              ...state.basketItems[action.phoneName],
+              count: state.basketItems[action.phoneName].count + 1,
             },
           },
         };
@@ -45,10 +45,10 @@ const reducer = (state = initialState, action) => {
         ...state,
         basketItems: {
           ...state.basketItems,
-          [action.phoneId]: {
-            ...state.basketItems[action.phoneId],
+          [action.phoneName]: {
+            ...state.basketItems[action.phoneName],
             id: new Date(),
-            phone: action.phoneId,
+            phone: action.phoneName,
             count: 1,
           },
         },
@@ -59,9 +59,9 @@ const reducer = (state = initialState, action) => {
         ...state,
         basketItems: {
           ...state.basketItems,
-          [action.phoneId]: {
-            ...state.basketItems[action.phoneId],
-            count: state.basketItems[action.phoneId].count + 1,
+          [action.phoneName]: {
+            ...state.basketItems[action.phoneName],
+            count: state.basketItems[action.phoneName].count + 1,
           },
         },
       };
@@ -71,17 +71,17 @@ const reducer = (state = initialState, action) => {
         ...state,
         basketItems: {
           ...state.basketItems,
-          [action.phoneId]: {
-            ...state.basketItems[action.phoneId],
-            count: state.basketItems[action.phoneId].count > 1
-              ? state.basketItems[action.phoneId].count - 1
+          [action.phoneName]: {
+            ...state.basketItems[action.phoneName],
+            count: state.basketItems[action.phoneName].count > 1
+              ? state.basketItems[action.phoneName].count - 1
               : 1,
           },
         },
       };
 
     case BASKET_ITEM_REMOVED:
-      delete copyBasketItems[action.phoneId];
+      delete copyBasketItems[action.phoneName];
 
       return {
         ...state,

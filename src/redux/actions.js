@@ -19,24 +19,24 @@ export const receivePhones = phones => ({
   phones,
 });
 
-export const addToBasket = phoneId => ({
+export const addToBasket = phoneName => ({
   type: ADD_TO_BASKET,
-  phoneId,
+  phoneName,
 });
 
-export const increaseBasketItem = phoneId => ({
+export const increaseBasketItem = phoneName => ({
   type: BASKET_ITEM_INCREASED,
-  phoneId,
+  phoneName,
 });
 
-export const decreaseBasketItem = phoneId => ({
+export const decreaseBasketItem = phoneName => ({
   type: BASKET_ITEM_DECREASED,
-  phoneId,
+  phoneName,
 });
 
-export const removeBasketItem = phoneId => ({
+export const removeBasketItem = phoneName => ({
   type: BASKET_ITEM_REMOVED,
-  phoneId,
+  phoneName,
 });
 
 export const filterBy = value => ({

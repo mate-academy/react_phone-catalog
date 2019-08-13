@@ -54,8 +54,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  increaseItem: phoneId => dispatch(increaseBasketItem(phoneId)),
-  decreaseItem: phoneId => dispatch(decreaseBasketItem(phoneId)),
+  increaseItem: phoneName => dispatch(increaseBasketItem(phoneName)),
+  decreaseItem: phoneName => dispatch(decreaseBasketItem(phoneName)),
   removeItem: (phoneId, count) => dispatch(removeBasketItem(phoneId, count)),
 });
 
