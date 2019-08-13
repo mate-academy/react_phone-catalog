@@ -43,7 +43,7 @@ class App extends React.Component {
       return ({
         ...prevState,
         basketItems: phonesInBasket,
-       });
+      });
     });
   };
 
@@ -124,6 +124,14 @@ class App extends React.Component {
                       src="./img/basket.png"
                       alt="Basket"
                     />
+                    {
+                      this.state.basketItems.length >= 1
+                      && (
+                        <div className="basket-items">
+                          <span>{this.state.basketItems.length}</span>
+                        </div>
+                      )
+                    }
                   </Link>
                 </li>
 
@@ -164,8 +172,9 @@ class App extends React.Component {
             <Route
               path="/basket/"
               exact
-              component={() => (
+              component={props => (
                 <Basket
+                  history={props.history}
                   basketItems={this.state.basketItems}
                   handleRemovePhone={this.handleRemovePhone}
                   handleIncQuantity={this.handleIncQuantity}

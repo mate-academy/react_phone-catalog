@@ -5,77 +5,107 @@ class Basket extends React.Component {
   state= {}
 
   render() {
+    const {
+      basketItems,
+      handleDecQuantity,
+      handleIncQuantity,
+      handleRemovePhone,
+      history,
+    } = this.props;
+
     return (
       <>
-        <table>
+        <button
+          className="goBackButton"
+          type="button"
+          onClick={() => history.goBack()}
+        >
+          Go back
+        </button>
 
-          <thead>
-            <tr>
-              <th>Quantity</th>
-              <th>Product</th>
-              <th>Id</th>
-              <th />
-            </tr>
-          </thead>
+        {basketItems.length < 1
+          && (
+            <h1 className="HomePage">Basket is empty</h1>
+          )
+        }
 
-          <tbody>
+        {basketItems.length >= 1
+          && (
+            <table className="busketItems">
 
-            {this.props.basketItems.map(item => (
-              <tr key={item.id}>
+              <thead>
+                <tr className="busketItems__title">
+                  <th>Quantity</th>
+                  <th>Product</th>
+                  <th>Id</th>
+                  <th />
+                </tr>
+              </thead>
 
-                <td>
-                  <button
-                    onClick={() => this.props.handleDecQuantity(item.id)}
-                    type="button"
-                  >
-                    -
-                  </button>
+              <tbody>
 
-                  {item.quantity}
+                {basketItems.map(item => (
+                  <tr key={item.id}>
 
-                  <button
-                    onClick={() => this.props.handleIncQuantity(item.id)}
-                    type="button"
-                  >
-                    +
-                  </button>
-                </td>
+                    <td>
+                      <button
+                        onClick={() => handleDecQuantity(item.id)}
+                        type="button"
+                      >
+                        -
+                      </button>
 
-                <td>
-                  <Link to={`/phones/${item.id}`}>
-                    <div>
-                      <img
-                        className="phone__img"
-                        src={item.img}
-                        alt="Phone"
-                      />
-                    </div>
-                  </Link>
-                </td>
+                      <span
+                        className="busketItems__quantity"
+                      >
+                        {item.quantity}
+                      </span>
 
-                <td>
-                  <Link
-                    to={`/phones/${item.id}`}
-                    className="phone__description"
-                  >
-                    {item.id}
-                  </Link>
-                </td>
+                      <button
+                        onClick={() => handleIncQuantity(item.id)}
+                        type="button"
+                      >
+                        +
+                      </button>
+                    </td>
 
-                <td>
-                  <button
-                    type="button"
-                    onClick={() => this.props.handleRemovePhone(item.id)}
-                  >
-                    x
-                  </button>
-                </td>
+                    <td>
+                      <Link to={`/phones/${item.id}`}>
+                        <div>
+                          <img
+                            className="phone__img"
+                            src={item.img}
+                            alt="Phone"
+                          />
+                        </div>
+                      </Link>
+                    </td>
 
-              </tr>
-            ))}
+                    <td>
+                      <Link
+                        to={`/phones/${item.id}`}
+                        className="phone__description"
+                      >
+                        {item.id}
+                      </Link>
+                    </td>
 
-          </tbody>
-        </table>
+                    <td>
+                      <button
+                        type="button"
+                        onClick={() => handleRemovePhone(item.id)}
+                      >
+                        x
+                      </button>
+                    </td>
+
+                  </tr>
+                ))}
+
+              </tbody>
+            </table>
+          )
+        }
       </>
     );
   }

@@ -97,7 +97,7 @@ class PhoneDetailsPage extends React.Component {
                     type="button"
                     className="styleAddToBasket"
                     onClick={() => handleAddToBasket(phoneDetail)}
-                    >
+                  >
                     Add to basket
                   </button>
 
