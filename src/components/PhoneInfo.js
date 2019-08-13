@@ -3,6 +3,7 @@ import React from 'react';
 import GetData from './GetData';
 import NotFoundPage from './NotFoundPage';
 import Loader from 'react-loader-spinner';
+import PhoneInfoDetails from "./PhoneInfoDetails";
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 
 class PhoneInfo extends React.Component {
@@ -46,7 +47,7 @@ class PhoneInfo extends React.Component {
   render() {
     const { phoneId } = this.props.match.params;
     const { basket } = this.props;
-    const { phoneInfo, isLoaded, errorLoading } = this.state;
+    const { phoneInfo, isLoaded, errorLoading, activeImageUrl } = this.state;
     if(!isLoaded){
       return(
         <div className="Loader">
@@ -67,14 +68,14 @@ class PhoneInfo extends React.Component {
         <div className="Phone-info-main__images">
           <img
             className="Phone-info-main__image"
-            src={this.state.activeImageUrl}
+            src={activeImageUrl}
           />
           <div className="Phone-info-main__images-row">
             {phoneInfo.images.map(image => (
               <img
                 onMouseOver={() => this.imageChange(image)}
                 key={image}
-                className={image === this.state.activeImageUrl
+                className={image === activeImageUrl
                   ? 'Phone-info-main__images-row-image Phone-info-main__images-row-image--active'
                   : 'Phone-info-main__images-row-image'}
                 src={image}
@@ -87,9 +88,10 @@ class PhoneInfo extends React.Component {
             <h3 className="Phone-info-main__name">{phoneInfo.name}</h3>
             <button
               onClick={this.addCart}
-              className={basket.find(item => item.id === phoneInfo.id)
-                ? 'Phone-info-main__button--active'
-                : 'Phone-info-main__button'}
+              disabled={basket.find(item => item.id === phoneInfo.id)
+                ? 'disable'
+                : ''}
+              className='Phone-info-main__button'
             >
               {basket.find(item => item.id === phoneInfo.id)
                 ? 'Added'
@@ -97,72 +99,7 @@ class PhoneInfo extends React.Component {
             </button>
           </div>
           <p className="Phone-info-main__discription">{phoneInfo.description}</p>
-          <div className="Phone-info-main__discription-details">
-            <div>
-              <h5>-Additional Features</h5>
-              <p>{phoneInfo.additionalFeatures}</p>
-            </div>
-            <div>
-              <h5>-Operation system</h5>
-              <div>
-                {Object.entries(phoneInfo.android).map(item => (
-                  <p key={item[0]}>{item.join(': ')}</p>
-                ))}
-              </div>
-            </div>
-            <div>
-              <h5>-Availability</h5>
-              <p>{phoneInfo.availability}</p>
-            </div>
-            <div>
-              <h5>Battery</h5>
-              <div>
-                {Object.entries(phoneInfo.battery).map(item => (
-                  <p key={item[0]}>{item.join(': ')}</p>
-                ))}
-              </div>
-            </div>
-            <div>
-              <h5>Camera</h5>
-              <div>
-                {Object.entries(phoneInfo.camera).map(item => (
-                  <p key={item[0]}>{item.join(': ')}</p>
-                ))}
-              </div>
-            </div>
-            <div>
-              <h5>Connectivity</h5>
-              <div>
-                {Object.entries(phoneInfo.connectivity).map(item => (
-                  <p key={item[0]}>{item.join(': ')}</p>
-                ))}
-              </div>
-            </div>
-            <div>
-              <h5>Hardware</h5>
-              <div>
-                {Object.entries(phoneInfo.hardware).map(item => (
-                  <p key={item[0]}>{item.join(': ')}</p>
-                ))}
-              </div>
-            </div>
-            <div>
-              <h5>Size and weight</h5>
-              <div>
-                {Object.entries(phoneInfo.sizeAndWeight).map(item => (
-                  <p key={item[0]}>{item.join(': ')}</p>
-                ))}
-              </div>
-            </div>
-            <div>
-              <h5>Storage</h5>
-              <div>
-                {Object.entries(phoneInfo.storage).map(item => (
-                  <p key={item[0]}>{item.join(': ')}</p>
-                ))}
-              </div>
-            </div>
-          </div>
+          <PhoneInfoDetails phoneInfo={phoneInfo} />
         </div>
         
       </div>

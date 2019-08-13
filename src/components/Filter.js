@@ -4,23 +4,23 @@ import React from 'react';
 const Filter = ({ injectFilteredPhones, initialPhones }) => {
   const filterPhones = (event) => {
     const { value } = event.target;
-    const filterePhones = [...initialPhones]
+    const filteredPhones = [...initialPhones]
       .filter(item => item.name.toLowerCase().includes(value.toLowerCase()));
-    injectFilteredPhones(filterePhones);
+    injectFilteredPhones(filteredPhones);
   };
   
   const selectFilter = (event) => {
     const { value } = event.target;
-    let filterePhones = [];
+    let filteredPhones = [];
     switch (value) {
       case 'alphabet':
-        filterePhones = [...initialPhones]
+        filteredPhones = [...initialPhones]
           .sort((a, b) => a.name.localeCompare(b.name) > b.name.localeCompare(a.name) ? 1 : -1);
         break;
       case 'begin':
-        filterePhones = [...initialPhones]
+        filteredPhones = [...initialPhones]
     }
-    injectFilteredPhones(filterePhones);
+    injectFilteredPhones(filteredPhones);
   };
   
   return (

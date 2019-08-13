@@ -21,7 +21,7 @@ class App extends React.Component {
       phone: itemUrl,
       name: itemName,
       image: itemImage,
-    }
+    };
     this.setState(prevState => ({
       basket: !prevState.basket.find(basketItem => basketItem.id === item.id)
         ? [...prevState.basket, item]
@@ -77,7 +77,7 @@ class App extends React.Component {
           </NavLink>
           <NavLink
             to="/basket"
-            className={this.state.basket.length !== 0
+            className={basket.length !== 0
               ? 'main-link main-link__have-item'
               : 'main-link'}
             activeClassName="main-link__active"
@@ -90,10 +90,11 @@ class App extends React.Component {
         </div>
         <Switch>
           <Route path="/" exact component={Home} />
-          <Route  exact path='/catalog' render={({ match}) =>
+          <Route  exact path='/catalog' render={() =>
             <FullCatalog
-              match={match}
-              basketInject={this.basketInject} />
+              basketInject={this.basketInject}
+              basket={basket}
+            />
             }
             />
           <Route
