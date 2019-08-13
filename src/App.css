@@ -219,21 +219,27 @@ img {
   }
 }
 
-.searchPhone {
+.search-Phone {
+  margin: 0 auto;
   font-size: 14px;
   border: none;
   border-left: 2px solid grey;
   padding:3px 6px;
 }
 
-.searchPhone:focus {
+.search-Phone:focus {
   outline-color: #ed5564;
   border: none;
   padding-left: 8px;
 
 }
 
-.searchSubmit {
+.search-Form {
+  text-align: center;
+margin: 10px auto;
+}
+
+.search-Submit {
   color: white;
   font-weight: 600;
   background-color: #ed5564;
@@ -316,7 +322,7 @@ img {
 
 .basket-items-group {
   margin: 0 auto;
-  max-width: 400px;
+  max-width: 480px;
   justify-content: space-between;
   vertical-align: middle;
   justify-items: center;

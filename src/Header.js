@@ -30,11 +30,6 @@ const Header = () => {
         </li>
       </ul>
 
-      <form>
-        <input size="30" placeholder="try to find something" className="searchPhone" type="search" name="searchfield" />
-        <button className="searchSubmit" type="submit">Go</button>
-      </form>
-
       <Link to={"/basket"} className="basket">
         <Basket />
       </Link>
