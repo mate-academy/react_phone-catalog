@@ -183,5 +183,6 @@ label {
 
 .custom-form-control .form-control {
   display: inline-block;
-  width: 3rem;
+  width: 6rem;
+  margin: 0 1rem;
 }
