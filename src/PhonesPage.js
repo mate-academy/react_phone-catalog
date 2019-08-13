@@ -1,6 +1,7 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import { getPhones } from './GetData';
+import Loader from './Loader';
 import Filter from './Filter';
 import PhoneCatalog from './PhoneCatalog';
 import './styles/phones.css';
@@ -10,6 +11,7 @@ class PhonesPage extends React.Component {
     phones: [],
     phonesToShow: [],
     filterStr: '',
+    loading: false,
   };
 
   componentDidMount() {
@@ -20,6 +22,7 @@ class PhonesPage extends React.Component {
     const phones = await getPhones();
 
     this.setState({
+      loading: true,
       phones,
       phonesToShow: phones,
     });
@@ -92,21 +95,24 @@ class PhonesPage extends React.Component {
   };
 
   render() {
-    const { filterStr, phonesToShow } = this.state;
+    const { filterStr, phonesToShow, loading } = this.state;
 
     return (
-      <div className="phones">
-        <Filter
-          filterStr={filterStr}
-          onHandlerFilter={this.onHandlerFilter}
-          clearFilter={this.getClearFilter}
-          onHandlerSort={this.onHandlerSort}
-        />
-        <PhoneCatalog
-          phones={phonesToShow}
-          match={this.props.match}
-        />
-      </div>
+      loading ? (
+        <div className="phones">
+          <Filter
+            filterStr={filterStr}
+            onHandlerFilter={this.onHandlerFilter}
+            clearFilter={this.getClearFilter}
+            onHandlerSort={this.onHandlerSort}
+          />
+          <PhoneCatalog
+            phones={phonesToShow}
+          />
+        </div>
+      ) : (
+        <Loader />
+      )
     );
   }
 }

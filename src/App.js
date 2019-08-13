@@ -5,53 +5,61 @@ import { Route, NavLink, Switch } from 'react-router-dom';
 import Home from './Home';
 import NotFoundPage from './NotFoundPage';
 import PhonesPage from './PhonesPage';
-import Basket from './Basket';
+import PhoneDetailsPage from './PhoneDetailsPage';
 
-const App = () => (
-  <div className="App">
-    <header className="App-header">
-      <nav>
-        <ul className="App__nav">
-          <li className="App__nav-link">
-            <NavLink
-              className="nav-link"
-              to="/"
-              activeClassName="nav-link__active"
-              exact
-            >
-              Home
-            </NavLink>
-          </li>
-          <li className="App__nav-link">
-            <NavLink
-              className="nav-link"
-              to="/phone-catalog"
-              activeClassName="nav-link__active"
-            >
-              Phone Catalog
-            </NavLink>
-          </li>
-        </ul>
-      </nav>
+class App extends React.Component {
+  state: {
+    basketItems: [],
+  };
 
-      <Basket />
-    </header>
+  render() {
+    return (
+      <div className="App">
+        <header className="App-header">
+          <nav>
+            <ul className="App__nav">
+              <li className="App__nav-link">
+                <NavLink
+                  className="nav-link"
+                  to="/"
+                  activeClassName="nav-link__active"
+                  exact
+                >
+                  Home
+                </NavLink>
+              </li>
+              <li className="App__nav-link">
+                <NavLink
+                  className="nav-link"
+                  to="/phone-catalog"
+                  activeClassName="nav-link__active"
+                >
+                  Phone Catalog
+                </NavLink>
+              </li>
+            </ul>
+          </nav>
+          <div className="basket App-header__basket">
+            <img src="./img/basket-icon.png" alt="basket" />
+          </div>
+        </header>
 
-    <main className="App-container">
-      <Switch>
-        <Route path="/" exact component={Home} />
-        <Route
-          path="/phone-catalog/:id?"
-          render={({ match }) => (
-            <PhonesPage
-              match={match}
+        <main className="App-container">
+          <Switch>
+            <Route path="/" exact component={Home} />
+            <Route path="/phone-catalog/" exact component={PhonesPage} />
+            <Route
+              path="/phone-catalog/:phoneId"
+              render={({ match }) => (
+                <PhoneDetailsPage phoneId={match.params.phoneId} />
+              )}
             />
-          )}
-        />
-        <Route component={NotFoundPage} />
-      </Switch>
-    </main>
-  </div>
-);
+            <Route component={NotFoundPage} />
+          </Switch>
+        </main>
+      </div>
+    );
+  }
+}
 
 export default App;

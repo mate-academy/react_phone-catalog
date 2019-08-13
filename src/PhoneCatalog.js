@@ -3,6 +3,36 @@ import propTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import PhoneDetailsPage from './PhoneDetailsPage';
 
+const PhoneCatalog = ({ phones }) => (
+  <main className="phones-catalog">
+    {
+      phones.map(phoneItem => (
+        <div className="phones-catalog__item" key={phoneItem.id}>
+          <div className="phones-catalog__item-img">
+            <img src={phoneItem.imageUrl} alt="phone" />
+          </div>
+          <article className="phones-catalog__item-description">
+            <Link
+              to={`/phone-catalog/${phoneItem.id}`}
+              className="item-description--name"
+            >
+              {phoneItem.name}
+            </Link>
+            <p className="item-description--content">{phoneItem.snippet}</p>
+            <button
+              type="button"
+              className="phones-catalog__item--add"
+            >
+              Add to basket
+            </button>
+          </article>
+        </div>
+      ))
+    }
+  </main>
+);
+
+/*
 const PhoneCatalog = ({ phones, match }) => {
   const phoneId = match.params.id;
   const phone = phones.find(phoneItem => phoneItem.id === phoneId);
@@ -38,6 +68,8 @@ const PhoneCatalog = ({ phones, match }) => {
     </main>
   );
 };
+
+*/
 
 PhoneCatalog.propTypes = {
   phones: propTypes.shape().isRequired,

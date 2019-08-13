@@ -1,5 +1,7 @@
 import React from 'react';
 import { getPhoneDetails } from './GetData';
+import PhoneDetails from './PhoneDetails';
+import Loader from './Loader';
 
 class PhoneDetailsPage extends React.Component {
   constructor(props) {
@@ -7,30 +9,35 @@ class PhoneDetailsPage extends React.Component {
 
     this.state = {
       phoneDetails: [],
+      loading: false,
     };
   }
 
-  componentDidMount() {
-    console.log(this.state.phone);
-    this.getDetails();
+  async componentDidMount() {
+    const { phoneId } = this.props;
+
+    this.getDetails(phoneId);
   }
 
-  getDetails = async() => {
-    const url = `https://mate-academy.github.io/
-    phone-catalogue-static/api/phones/${this.state.phone.id}.json`;
+  getDetails = async(phoneId) => {
+    const staticUrl = `https://mate-academy.github.io/phone-catalogue-static/api/phones/`;
+    const url = `${staticUrl}${phoneId}.json`;
     const phoneDetails = await getPhoneDetails(url);
 
-    this.setState({ phoneDetails });
-    console.log(phoneDetails);
+    this.setState({
+      phoneDetails,
+      loading: true,
+    });
   };
 
   render() {
-    const { phoneDetails } = this.state;
+    const { phoneDetails, loading } = this.state;
+    console.log(phoneDetails);
 
     return (
-      <div className="">
-        {phoneDetails.id}
-      </div>
+      loading
+        ? <PhoneDetails phoneDetails={phoneDetails} />
+        : <Loader />
     );
   }
 

@@ -1,10 +1,11 @@
 body {
   padding: 0;
   margin: 0;
-  background-image: linear-gradient(90deg,#e1fcee, #fff9aa);
 }
 
 ul,
+dl,
+dd,
 h1,
 h2,
 h3 {
@@ -54,6 +55,11 @@ li {
   background: #e1fbca;
   margin-bottom: 24px;
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.7);
+}
+
+.App__nav {
+  display: flex;
+  align-items: center;
 }
 
 .App__nav-link {

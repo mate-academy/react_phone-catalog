@@ -19,3 +19,26 @@
   font-size: 24px;
   color: #42485b;
 }
+
+.item-description--content {
+  font-size: 16px;
+  height: 35px;
+}
+
+.phones-catalog__item--add {
+  width: 130px;
+  height: 50px;
+  font-size: 15px;
+  color: white;
+  background-image: linear-gradient(90deg, #084914, #58b87d);
+  border: #66d690;
+  font-weight: 700;
+  border-radius: 24px;
+  cursor: pointer;
+}
+
+.phones-catalog__item--add:hover {
+  background: #084914;
+  opacity: 0.9;
+  color: #fff9aa;
+}

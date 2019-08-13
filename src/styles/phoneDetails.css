@@ -1,0 +1,92 @@
+.phone-details {
+  padding: 20px;
+  display: grid;
+  grid-gap: 40px;
+  grid-auto-columns: 400px 1fr;
+  grid-template-areas:
+    "gallery main-info"
+    "characters characters";
+}
+
+.phone-details__gallery {
+  grid-area: gallery;
+}
+
+.phone-details__gallery--main-img {
+  margin-bottom: 32px;
+  transition: all 0.5s ease-in-out;
+}
+
+.phone-details__gallery--main-img:hover {
+  transform: scale(1.1);
+}
+
+.phone-details__gallery--list {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid;
+  border-top: 2px solid;
+}
+
+.phone-details__gallery--list-item {
+  width: 60px;
+  cursor: pointer;
+}
+
+.phone-details__main-info {
+  grid-area: main-info;
+  padding: 0 40px;
+}
+
+.phone-details__description {
+  margin: 40px 0;
+  text-align: justify;
+}
+
+.phone-details__basket-add {
+  display: inline-block;
+  color: #084914;
+  text-decoration: none;
+  border: 1px solid;
+  padding: 15px;
+}
+
+.phone-details__characters {
+  grid-area: characters;
+}
+
+.phone-details__characters-show {
+  display: block;
+  margin-bottom: 40px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 30px;
+  font-weight: 600;
+  border-top: 2px solid;
+  border-bottom: 2px solid;
+  padding: 10px;
+}
+
+.phone-details__characters--hide {
+  display: none;
+}
+
+.phone-details__characters--specs {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 250px);
+  justify-content: space-around;
+  gap: 30px;
+}
+
+.phone-details__characters--specs-name span {
+  font-weight: bolder;
+  font-size: 20px;
+  margin-bottom: 6px;
+  display: inline-block;
+}
+
+.phone-details__characters--specs-name dt {
+  font-weight: bolder;
+  margin: 6px 0;
+  font-size: 16px;
+}
