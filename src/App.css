@@ -76,7 +76,6 @@ body {
   box-sizing: border-box;
   max-width: 1000px;
   display: flex;
-  justify-content: space-between;
   flex-direction: row;
   flex-wrap: wrap;
   align-content: flex-end;
