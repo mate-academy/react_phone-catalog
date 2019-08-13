@@ -51,7 +51,7 @@ class App extends React.Component {
             <Route
               path="/phone-catalog/:phoneId"
               render={({ match }) => (
-                <PhoneDetailsPage phoneId={match.params.phoneId} />
+                <PhoneDetailsPage match={match} />
               )}
             />
             <Route component={NotFoundPage} />

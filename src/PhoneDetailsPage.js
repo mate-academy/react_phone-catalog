@@ -4,40 +4,40 @@ import PhoneDetails from './PhoneDetails';
 import Loader from './Loader';
 
 class PhoneDetailsPage extends React.Component {
-  constructor(props) {
-    super(props);
+  state = {
+    rightUrl: '',
+    phoneDetails: [],
+    loading: false,
+  };
 
-    this.state = {
-      phoneDetails: [],
-      loading: false,
-    };
-  }
+  phoneId = this.props.match.params.phoneId;
 
   async componentDidMount() {
-    const { phoneId } = this.props;
-
-    this.getDetails(phoneId);
-  }
-
-  getDetails = async(phoneId) => {
     const staticUrl = `https://mate-academy.github.io/phone-catalogue-static/api/phones/`;
-    const url = `${staticUrl}${phoneId}.json`;
+    const url = `${staticUrl}${this.phoneId}.json`;
     const phoneDetails = await getPhoneDetails(url);
+
+    if (phoneDetails) {
+      this.setState({ rightUrl: url });
+    }
 
     this.setState({
       phoneDetails,
       loading: true,
     });
-  };
+  }
 
   render() {
-    const { phoneDetails, loading } = this.state;
-    console.log(phoneDetails);
+    const { phoneDetails, loading, rightUrl } = this.state;
 
     return (
-      loading
-        ? <PhoneDetails phoneDetails={phoneDetails} />
-        : <Loader />
+      rightUrl ? (
+        loading
+          ? <PhoneDetails phoneDetails={phoneDetails} />
+          : <Loader />
+      ) : (
+        <h2>Phone was not found</h2>
+      )
     );
   }
 
