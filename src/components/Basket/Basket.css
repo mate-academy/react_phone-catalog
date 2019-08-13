@@ -1,0 +1,54 @@
+.basket {
+  background: #f6f6f6;
+  display: flex;
+  flex-direction: column;
+  padding: 0 100px 25px;
+  align-items: center;
+}
+
+.basket__title {
+  flex: 0 0 37px;
+  margin: 20px 0;
+  font-weight: 600;
+}
+
+.basket__phone {
+  background: #fff;
+  padding: 20px;
+  flex: 0 0 auto;
+  width: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #f1f1f1;
+  box-shadow: 0 0 0.4rem 0 #b2b0c4;
+  margin-bottom: 15px;
+}
+
+.basket__phone-name {
+  flex: 0 0 60%;
+  color: #000;
+  font-size: 20px;
+}
+
+.basket__phone-count {
+  flex: 0 0 2%;
+  text-align: center;
+}
+
+.basket__phone-btn {
+  background: #f74258;
+  color: #fff;
+  border: none;
+  flex: 0 0 5%;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.basket__phone-btn-delete {
+  background: none;
+  border: none;
+  flex: 0 0 10%;
+  font-size: 20px;
+  cursor: pointer;
+}

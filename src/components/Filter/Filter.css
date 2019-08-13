@@ -1,0 +1,27 @@
+.filter-wrap {
+  background: #00a1b1;
+  padding: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.field {
+  background: #00818e;
+  padding: 10px;
+  color: #fff;
+  border: none;
+  font-size: 14px;
+}
+
+.filter-field::-webkit-input-placeholder,
+.sort-field__option {
+  color: #b3d9dd;
+}
+
+.filter-field {
+  flex: 0 0 20%;
+}
+
+.sort-field {
+  flex: 0 0 10%;
+}

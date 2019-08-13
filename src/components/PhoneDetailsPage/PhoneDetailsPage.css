@@ -1,0 +1,13 @@
+.error {
+  text-align: center;
+  margin: 25px;
+  font-weight: 600;
+}
+
+.error-link {
+  text-decoration: underline;
+  font-size: 35px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
