@@ -20,32 +20,32 @@ const App = () => {
   }
 
   const handleClickClear = (index) => {
-    addBasketItem(basketItems.filter((item, i) => i!==index));
+    addBasketItem(basketItems.filter((item, i) => i !== index));
   }
 
-  const handleClickChangeCount = (direction ,index) => {
+  const handleClickChangeCount = (direction, index) => {
     switch (direction) {
       case 'up': addBasketItem(basketItems.map((item, i) => {
-        if(i ===index) {
-          return {...item, count: item.count + 1 }
+        if (i === index) {
+          return { ...item, count: item.count + 1 }
         } else {
           return item;
         }
       }))
-      break;
+        break;
       case 'down': addBasketItem(basketItems.map((item, i) => {
-        if(i ===index) {
-          return {...item, count: (item.count===0) ? 0 : item.count - 1 }
+        if (i === index) {
+          return { ...item, count: (item.count === 0) ? 0 : item.count - 1 }
         } else {
           return item;
         }
       }))
-      break;
+        break;
     }
   }
 
   return (
-    <BasketContext.Provider value={{items: basketItems, handleCliCkAdd: handleClickAdd, handleClickClear: handleClickClear, handleClickChangeCount: handleClickChangeCount }}>
+    <BasketContext.Provider value={{ items: basketItems, handleCliCkAdd: handleClickAdd, handleClickClear: handleClickClear, handleClickChangeCount: handleClickChangeCount }}>
       <Router>
         <div className="App">
           <Header className="Header" />

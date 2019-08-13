@@ -3,9 +3,6 @@ import { BasketContext } from './App';
 
 const Basket = () => {
     const { items } = useContext(BasketContext);
-    const unique = Array.from(items);
-
-    console.log(unique);
 
   return (
     <>

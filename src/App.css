@@ -368,6 +368,13 @@ margin: 10px auto;
 }
 
 .items-counter {
-
   margin-left: 13px;
+}
+
+.link-to-phones {
+  color: #ed5564;
+}
+
+.link-to-phones:hover {
+  text-decoration: none;
 }

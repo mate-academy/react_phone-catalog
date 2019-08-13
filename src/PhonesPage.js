@@ -39,8 +39,8 @@ const PhonesPage = (props) => {
 
   return (
     <>
-      <form className="search-Form" onSubmit ={(event) => event.preventDefault()} >
-        <input onChange ={(event) => handleChangeInput(event)} size="40" placeholder="try to find something" className="search-Phone" type="input" name="searchfield" />
+      <form className="search-Form" onSubmit={(event) => event.preventDefault()} >
+        <input onChange={(event) => handleChangeInput(event)} size="40" placeholder="try to find something" className="search-Phone" type="input" name="searchfield" />
       </form>
 
       <ul className="catalog-container">
