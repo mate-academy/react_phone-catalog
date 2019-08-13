@@ -2,7 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Cart = ({
-  selectedPhone, deletePhone, changeAmountPlus, changeAmountMinus,
+  selectedPhones,
+  deletePhone,
+  increaseAmount,
+  decreaseAmount,
 }) => (
   <div>
     <div className="cart-phones">
@@ -10,19 +13,19 @@ const Cart = ({
         className="cart-phones_link-back"
         to="/phones"
       >
-Go back to catalog
+        Go back to catalog
       </Link>
       <p className="cart-phone_sign">
         There are
         {' '}
-        {selectedPhone.length}
+        {selectedPhones.length}
         {' '}
-        {selectedPhone.length >= 2 ? 'phones' : 'phone'}
+        {selectedPhones.length >= 2 ? 'phones' : 'phone'}
         {' '}
-in your cart
+        in your cart
       </p>
     </div>
-    {selectedPhone.map(phone => (
+    {selectedPhones.map(phone => (
       <>
         <section className="cart-phone_table">
           <Link
@@ -31,7 +34,7 @@ in your cart
           >
             <img
               src={phone.image}
-              alt=""
+              alt={phone.name}
               className="cart-phone_table-img"
             />
             <p className="cart-phone_table-name">{phone.name}</p>
@@ -39,7 +42,7 @@ in your cart
           <div className="cart-phone_table-grid">
             <button
               className="cart-phone_table-amount-btn"
-              onClick={() => changeAmountPlus(phone.id)}
+              onClick={() => increaseAmount(phone.id)}
             >
 +
             </button>
@@ -49,7 +52,7 @@ Amount:
             </p>
             <button
               className="cart-phone_table-amount-btn"
-              onClick={() => changeAmountMinus(phone.id)}
+              onClick={() => decreaseAmount(phone.id)}
             >
 -
             </button>

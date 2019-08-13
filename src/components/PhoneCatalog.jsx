@@ -117,14 +117,14 @@ class PhoneCatalog extends React.Component {
                         className="catalog_phone-add"
                         onClick={() => this.props.handleClickAddPhoneToCart(phone)}
                       >
-Add to Cart
+                        Add to Cart
                       </button>
                     </section>
                     <NavLink
                       className="catalog_phone-text-decoration"
                       to={`/phones/${phone.id}`}
                     >
-                      <img className="catalog_phone-img" src={phone.imageUrl} alt="" />
+                      <img className="catalog_phone-img" src={phone.imageUrl} alt={phone.name} />
                       <div className="catalog_phone-name">
                         {phone.name}
                       </div>

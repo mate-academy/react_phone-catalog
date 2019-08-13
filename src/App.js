@@ -8,13 +8,13 @@ import Cart from './components/Cart';
 
 class App extends React.Component {
   state = {
-    selectedPhone: [],
+    selectedPhones: [],
   }
 
   handleClickAddPhoneToCart = (currentPhone) => {
     this.setState((prevState) => {
-      const phoneToCard = prevState.selectedPhone.find(phone => phone.id === currentPhone.id)
-        ? (prevState.selectedPhone.map(phone => (
+      const phoneToCard = prevState.selectedPhones.find(phone => phone.id === currentPhone.id)
+        ? (prevState.selectedPhones.map(phone => (
           phone.id === currentPhone.id
             ? {
               ...phone,
@@ -22,61 +22,56 @@ class App extends React.Component {
             }
             : phone
         ))
-        ) : ([...prevState.selectedPhone, {
+        ) : ([...prevState.selectedPhones, {
           name: currentPhone.name,
           id: currentPhone.id,
           image: currentPhone.imageUrl || currentPhone.images[0],
           amount: 1,
         }]);
 
-      return { selectedPhone: phoneToCard };
+      return { selectedPhones: phoneToCard };
     });
   }
 
   deletePhone = (currentPhone) => {
     this.setState(prevState => ({
-      selectedPhone: prevState.selectedPhone.filter(phone => phone.id !== currentPhone),
+      selectedPhones: prevState.selectedPhones.filter(phone => phone.id !== currentPhone),
     }));
   };
 
-  changeAmountPlus = (currentPhone) => {
+  increaseAmount = (currentPhone) => {
     this.setState(prevState => ({
-      selectedPhone: prevState.selectedPhone.map(phone => ((phone.id === currentPhone)
+      selectedPhones: prevState.selectedPhones.map(phone => ((phone.id === currentPhone)
         ? { ...phone, amount: phone.amount + 1 }
         : { ...phone })),
     }));
   }
 
-  changeAmountMinus = (currentPhone) => {
+  decreaseAmount = (currentPhone) => {
     this.setState(prevState => ({
-      selectedPhone: prevState.selectedPhone.map(phone => ((phone.id === currentPhone) && (phone.amount > 1)
+      selectedPhones: prevState.selectedPhones.map(phone => ((phone.id === currentPhone) && (phone.amount > 1)
         ? { ...phone, amount: phone.amount - 1 }
         : { ...phone })),
     }));
   }
 
   render() {
-    const { selectedPhone } = this.state;
+    const { selectedPhones } = this.state;
 
     return (
       <div className="App">
         <nav>
           <ul className="nav-list">
             <li>
-              <NavLink
-                to="/"
-                exact
-              >
+              <NavLink to="/" exact >
                 <div className="logo-size">
                   <div className="logo" />
                 </div>
               </NavLink>
             </li>
             <li>
-              <NavLink
-                to="/cart"
-              >
-                <p className="cart-amount">{selectedPhone.length}</p>
+              <NavLink to="/cart">
+                <p className="cart-amount">{selectedPhones.length}</p>
                 <div className="cart" />
               </NavLink>
             </li>
@@ -92,13 +87,7 @@ class App extends React.Component {
           </ul>
         </nav>
         <Switch>
-          <Route
-            exact
-            path="/"
-            render={() => (
-              <HomePage />
-            )}
-          />
+          <Route exact path="/" render={() => (<HomePage />)}/>
           <Route
             exact
             path="/phones/:id?"
@@ -114,10 +103,10 @@ class App extends React.Component {
             path="/cart"
             render={() => (
               <Cart
-                selectedPhone={selectedPhone}
+                selectedPhones={selectedPhones}
                 deletePhone={this.deletePhone}
-                changeAmountPlus={this.changeAmountPlus}
-                changeAmountMinus={this.changeAmountMinus}
+                increaseAmount={this.increaseAmount}
+                decreaseAmount={this.decreaseAmount}
               />
             )}
           />
