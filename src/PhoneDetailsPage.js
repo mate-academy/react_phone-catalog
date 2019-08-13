@@ -4,36 +4,39 @@ import { getDetails } from './sources';
 import Loader from './Loader';
 
 const PhoneDetailsPage = ({ match }) => {
-  const { handleCliCkAdd, items } = useContext(BasketContext);
+  const { handleClickAdd, items } = useContext(BasketContext);
   const [isLoaded, setLoaded] = useState(false);
   const [details, setDetails] = useState([]);
   const [activeImage, setActiveImage] = useState(0);
 
-
   useEffect(() => {
-    (async () => {
+    (async() => {
       const detailsFromServer = await getDetails(match.params.idPhone);
+
       setDetails(detailsFromServer);
+
       setLoaded(true);
     })();
   }, []);
 
   const handleClickImage = (id) => {
     setActiveImage(id);
-  }
+  };
 
   const handleClickNext = () => {
     let newActiveId = 0;
+
     if (activeImage !== details.images.length - 1) {
       newActiveId = activeImage + 1;
     }
+
     setActiveImage(newActiveId);
-  }
+  };
 
   if (!isLoaded) {
     return (
       <Loader />
-    )
+    );
   }
 
   return (
@@ -49,7 +52,9 @@ const PhoneDetailsPage = ({ match }) => {
 
           {details.images && details.images.map((image, i) => (
 
-            <img className={`image-detail ${i === activeImage && `active-image`}`} src={`${image}`}
+            <img
+              className={`image-detail ${i === activeImage && `active-image`}`}
+              src={image}
               alt={details.id}
               onClick={() => handleClickImage(i)}
             />
@@ -59,9 +64,18 @@ const PhoneDetailsPage = ({ match }) => {
         <section className="phone-detail-container">
           <div className="item-header">
             <h2>{details.id}</h2>
-            <button disabled={items.some(item => item.id === details.id)} className={`add-button ${items.some(item => item.id === details.id) && "disabled-button"}`} type="button"
-              onClick={(event) => handleCliCkAdd(event, { id: details.id, imageUrl: details.images[0], count: 1 })}>
-              {items.some(item => item.id === details.id) ? "IN YOUR CART" : "ADD TO CART"}
+            <button
+              type="button"
+              disabled={items.some(item => item.id === details.id)}
+              className={`add-button
+                ${items.some(item => item.id === details.id)
+                && 'disabled-button'}`}
+              onClick={event => handleClickAdd(event,
+                { id: details.id, imageUrl: details.images[0], count: 1 })}
+            >
+              {items.some(item => item.id === details.id)
+                ? 'IN YOUR CART'
+                : 'ADD TO CART'}
             </button>
           </div>
 
@@ -73,7 +87,7 @@ const PhoneDetailsPage = ({ match }) => {
 
       </div>
     </>
-  )
-}
+  );
+};
 
 export default PhoneDetailsPage;

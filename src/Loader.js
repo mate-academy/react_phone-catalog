@@ -1,10 +1,7 @@
 import React from 'react';
 
-const Loader = () => {
-
-  return (
-    <div className="lds-hourglass"></div>
-  )
-}
+const Loader = () => (
+  <div className="lds-hourglass" />
+);
 
 export default Loader;
