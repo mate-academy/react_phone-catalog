@@ -11,7 +11,7 @@ class PhoneCatalog extends React.Component {
 
   render() {
     const {
-      phoneId, urlImg, phones, handleFilter, handleSort,
+      phoneId, urlImg, phones, handleFilter, handleSort, setItemToBasket,
     } = this.props;
     const { phoneArrays } = this.state;
 
@@ -50,6 +50,7 @@ class PhoneCatalog extends React.Component {
                 phone={phone}
                 phoneId={phoneId}
                 urlImg={urlImg}
+                setItemToBasket={setItemToBasket}
               />
             )))
         }
@@ -66,6 +67,7 @@ PhoneCatalog.propTypes = {
   urlImg: PropTypes.string.isRequired,
   handleFilter: PropTypes.func.isRequired,
   handleSort: PropTypes.func.isRequired,
+  setItemToBasket: PropTypes.func.isRequired,
 };
 
 export default PhoneCatalog;

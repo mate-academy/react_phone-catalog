@@ -5,6 +5,7 @@ import { Route, NavLink, Switch } from 'react-router-dom';
 import PhoneCatalog from './PhoneCatalog';
 import PhoneDetailsPage from './PhoneDetailsPage';
 import NotFoundPage from './NotFoundPage';
+import BasketItems from './BasketItems';
 
 const HomePage = () => (
   <div className="home_page">
@@ -37,6 +38,7 @@ class App extends React.Component {
   state = {
     phones: [],
     phonesVisible: [],
+    phonesToBasket: [],
   }
 
   async componentDidMount() {
@@ -46,6 +48,19 @@ class App extends React.Component {
       phones,
       phonesVisible: phones,
     });
+  }
+
+  setItemToBasket = (phoneName, imgUrl) => {
+    this.setState(prevState => ({
+      phonesToBasket: [
+        ...prevState.phonesToBasket,
+        {
+          quantity: 1,
+          phone: phoneName,
+          imageUrl: imgUrl,
+        },
+      ],
+    }));
   }
 
   handleFilter = (event) => {
@@ -69,7 +84,7 @@ class App extends React.Component {
   }
 
   render() {
-    const { phonesVisible } = this.state;
+    const { phonesVisible, phonesToBasket } = this.state;
     const urlImg = 'https://mate-academy.github.io/phone-catalogue-static/';
 
     return (
@@ -90,6 +105,13 @@ class App extends React.Component {
           >
         PhonesPage
           </NavLink>
+          <NavLink
+            to="/basket"
+            className="Phones__page"
+            activeClassName="phoneClassActive"
+          >
+        BasketItems
+          </NavLink>
         </nav>
         <Switch>
 
@@ -103,6 +125,7 @@ class App extends React.Component {
                 urlImg={urlImg}
                 handleFilter={this.handleFilter}
                 handleSort={this.handleSort}
+                setItemToBasket={this.setItemToBasket}
               />
             )}
           />
@@ -114,6 +137,14 @@ class App extends React.Component {
                 phoneId={match.params.phoneId}
                 urlImg={urlImg}
                 phones={phonesVisible}
+              />
+            )}
+          />
+          <Route
+            path="/basket"
+            render={() => (
+              <BasketItems
+                phonesToBasket={phonesToBasket}
               />
             )}
           />

@@ -69,7 +69,7 @@ class PhoneDetailsPage extends React.Component {
               ))
               : ''
             }
-            <p>{`${urlImg}/${phoneDetails.description}`}</p>
+            <p>{`${phoneDetails.description}`}</p>
           </div>
         ));
   }
