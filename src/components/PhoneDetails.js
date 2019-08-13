@@ -35,111 +35,117 @@ class PhoneDetails extends React.Component {
 
     return (
       <div className="phone">
-        <div className="phone__main-info">
-          <div className="phone__images">
-            {details.images.map((image, index) => (
-              <img
-                className={classnames('phone__images-img', {
-                  'phone__images-img-selected': imageNumber === index,
-                })}
-                src={image}
-                alt="phone"
-                key={image}
-              />
-            ))}
-          </div>
-
-          <h2 className="phone__title">{details.name}</h2>
-
-          <p className="phone__description">{details.description}</p>
-
-          <ul className="phone-thumbs">
-            {details.images.map((image, index) => (
-              <li key={image}>
+        <div className="phone__wrapper">
+          <div className="phone__main-info">
+            <div className="phone__images">
+              {details.images.map((image, index) => (
                 <img
-                  onClick={() => this.switchImage(index)}
-                  className={classnames('phone-thumbs__img', {
-                    'phone-thumbs__img-selected': imageNumber === index,
+                  className={classnames('phone__images-img', {
+                    'phone__images-img-selected': imageNumber === index,
                   })}
                   src={image}
                   alt="phone"
+                  key={image}
                 />
-              </li>
-            ))}
-          </ul>
+              ))}
+            </div>
 
-          {selectedPhones.find(item => item.id === details.id)
-            ? (
-              <>
-                {selectedPhones
-                  .filter(item => item.id === details.id)
-                  .map(phone => (
-                    <div
-                      key={phone.id}
-                      className="phone__quantity-btns-wrapper"
-                    >
-                      <div className="quantity-btns">
-                        <button
-                          type="button"
-                          name="-"
-                          className="
-                          cart-btn
-                          phone-card__minus-btn
-                          quantity-btns__btn
-                          "
-                          onClick={() => decreaseQuantity(phone.id)}
+            <h2 className="phone__title">{details.name}</h2>
+
+            <p className="phone__description">{details.description}</p>
+
+            <ul className="phone-thumbs">
+              {details.images.map((image, index) => (
+                <li key={image}>
+                  <img
+                    onClick={() => this.switchImage(index)}
+                    className={classnames('phone-thumbs__img', {
+                      'phone-thumbs__img-selected': imageNumber === index,
+                    })}
+                    src={image}
+                    alt="phone"
+                  />
+                </li>
+              ))}
+            </ul>
+
+            <div className="phone__btns">
+              {selectedPhones.find(item => item.id === details.id)
+                ? (
+                  <>
+                    {(function() {
+                      const foundPhone = selectedPhones
+                        .find(item => item.id === details.id);
+
+                      return (
+                        <div
+                          key={foundPhone.id}
+                          className="phone__quantity-btns-wrapper"
                         >
-                          -
-                        </button>
+                          <div className="quantity-btns">
+                            <button
+                              type="button"
+                              name="-"
+                              className="
+                              cart-btn
+                              phone-card__minus-btn
+                              quantity-btns__btn
+                              "
+                              onClick={() => decreaseQuantity(foundPhone.id)}
+                            >
+                              -
+                            </button>
 
-                        <div className="phone__quantity">
-                          {`${phone.quantity}
-                            ${phone.quantity > 1 ? 'items' : 'item'}
-                          `}
+                            <div className="phone__quantity">
+                              {`${foundPhone.quantity}
+                                ${foundPhone.quantity > 1 ? 'items' : 'item'}
+                              `}
+                            </div>
+
+                            <button
+                              type="button"
+                              name="+"
+                              className="
+                              cart-btn
+                              phone-card__plus-btn
+                              quantity-btns__btn
+                              "
+                              onClick={() => increaseQuantity(foundPhone.id)}
+                            >
+                              +
+                            </button>
+                          </div>
                         </div>
+                      );
+                    }())}
+                  </>
+                ) : (
+                  <button
+                    type="button"
+                    className="cart-btn return-and-add-btn"
+                    onClick={() => addPhone(details)}
+                  >
+                    Add to basket
+                  </button>
+                )
+              }
 
-                        <button
-                          type="button"
-                          name="+"
-                          className="
-                          cart-btn
-                          phone-card__plus-btn
-                          quantity-btns__btn
-                          "
-                          onClick={() => increaseQuantity(phone.id)}
-                        >
-                          +
-                        </button>
-                      </div>
-                    </div>
-                  ))
-                }
-              </>
-            ) : (
               <button
                 type="button"
                 className="cart-btn return-and-add-btn"
-                onClick={() => addPhone(details)}
+                onClick={() => history.goBack()}
               >
-                Add to basket
+                Return to catalog
               </button>
-            )
-          }
+            </div>
+          </div>
 
-          <button
-            type="button"
-            className="cart-btn return-and-add-btn"
-            onClick={() => history.goBack()}
-          >
-            Return to catalog
-          </button>
+          <PhoneSpecifications
+            isVisible={isVisible}
+            toggleParams={this.toggleParams}
+            details={details}
+          />
         </div>
-
-        <PhoneSpecifications
-          isVisible={isVisible}
-          toggleParams={this.toggleParams}
-          details={details}
-        />
       </div>
     );
   }

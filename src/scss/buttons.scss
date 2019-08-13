@@ -1,5 +1,8 @@
+@import "./variables";
+
 button {
   cursor: pointer;
+  background: $main-color;
 }
 
 .cart-btn {
@@ -9,22 +12,25 @@ button {
   height: 30px;
 
   position: absolute;
-  bottom: 20px;
+  top: 350px;
   left: 20px;
+  z-index: 2;
 
-  background: linear-gradient(0deg, #047CC7 0%, #049dfc 50%, #047CC7 100%);
-  border: 1px solid #acadaede;
-  border-radius: 5px;
+  background: $main-color;
+  border: 1px solid $btns-second-color;
+  border-radius: $border-radius;
 
   text-transform: uppercase;
   font-weight: bold;
   line-height: 30px;
+
+  transition: all 0.3s;
 }
 
 .cart-btn:hover,
 .cart-btn:active {
-  border: 2px solid #047CC7;
-  background: #e9eceede;
+  background: $btns-second-color;
+  border: 1px solid $main-color;
 }
 
 .return-and-add-btn {
@@ -68,7 +74,7 @@ button {
     height: 30px;
 
     position: absolute;
-    bottom: 20px;
+    top: 350px;
     left: 20px;
 
     background: #fff;
@@ -104,12 +110,14 @@ button {
 .basket-page {
   &__change-quantity-btns-btn {
     position: initial;
+
+    width: 30px;
   }
 
   &__shopping-list-remove-btn {
-    margin-left: 9px;
-    width: 200px;
+    width: 210px;
 
-    left: 0;
+    left: 15px;
+    bottom: 20px;
   }
 }

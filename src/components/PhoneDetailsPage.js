@@ -1,6 +1,7 @@
 import React from 'react';
 import Loader from 'react-loader-spinner';
 import PropTypes from 'prop-types';
+import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 
 import getData from '../api/getData';
 import PhoneDetails from './PhoneDetails';
@@ -56,10 +57,12 @@ class PhoneDetailsPage extends React.Component {
                     decreaseQuantity={decreaseQuantity}
                   />
                 ) : (
-                  <Loader
-                    type="ThreeDots"
-                    color="#049dfcde"
-                  />
+                  <div className="loader">
+                    <Loader
+                      type="ThreeDots"
+                      color="#049dfcde"
+                    />
+                  </div>
                 )
               }
             </>

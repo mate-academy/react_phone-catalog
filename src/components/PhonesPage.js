@@ -6,10 +6,11 @@ import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 
 import getData from '../api/getData';
 import PhoneCatalog from './PhoneCatalog';
-import Filters from './Filters';
+import Filter from './Filter';
 import Pagination from './Pagination';
-import SelectPhonesAmmount from './SelectPhonesAmmount';
+import SelectPhonesAmount from './SelectPhonesAmount';
 import getSortedPhones from './getSortedPhones';
+import Sorter from './Sorter';
 
 class PhonesPage extends React.Component {
   state = {
@@ -59,8 +60,7 @@ class PhonesPage extends React.Component {
     );
   }
 
-  handleSort = (event) => {
-    const { value } = event.target;
+  handleSort = (value) => {
     const { location, history } = this.props;
     const params = new URLSearchParams(location.search);
 
@@ -85,7 +85,7 @@ class PhonesPage extends React.Component {
     });
   }
 
-  changePerPageAmmount = (event) => {
+  changePerPageAmount = (event) => {
     const { value } = event.target;
     const { location, history } = this.props;
     const params = new URLSearchParams(location.search);
@@ -128,13 +128,17 @@ class PhonesPage extends React.Component {
         {isLoaded
           ? (
             <main className="page-content">
-              <Filters
+              <Filter
                 filterValue={filterValue}
                 handleFilter={this.handleFilter}
-                getSortedPhones={this.handleSort}
               />
 
               <div className="page-content__catalog">
+                <Sorter
+                  getSortedPhones={this.handleSort}
+                  sortField={sortField}
+                />
+
                 <div className="pagination-and-selector">
                   <Pagination
                     phonesPerPage={phonesPerPage}
@@ -142,8 +146,8 @@ class PhonesPage extends React.Component {
                     changeCurrentPage={this.changeCurrentPage}
                   />
 
-                  <SelectPhonesAmmount
-                    changePerPageAmmount={this.changePerPageAmmount}
+                  <SelectPhonesAmount
+                    changePerPageAmount={this.changePerPageAmount}
                   />
                 </div>
 
@@ -170,10 +174,12 @@ class PhonesPage extends React.Component {
               </div>
             </main>
           ) : (
-            <Loader
-              type="ThreeDots"
-              color="#049dfcde"
-            />
+            <div className="loader">
+              <Loader
+                type="ThreeDots"
+                color="#049dfcde"
+              />
+            </div>
           )
         }
       </div>

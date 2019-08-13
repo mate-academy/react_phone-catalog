@@ -1,11 +1,17 @@
+@import './variables';
+
 .pagination-and-selector {
   display: flex;
   justify-content: space-between;
+
+  margin: 15px 0;
 }
 
 .pagination {
   display: flex;
   list-style: none;
+
+  margin-left: 15px;
 
   &__page {
     box-sizing: border-box;
@@ -17,20 +23,27 @@
     text-align: center;
     line-height: 30px;
 
-    background: linear-gradient(0deg, #047CC7 0%, #049dfc 50%, #047CC7 100%);
-    border: 1px solid #acadaede;
-    border-radius: 5px;
+    background: $main-color;
+    border: 1px solid $btns-second-color;
+    border-radius: $border-radius;
+
+    transition: all 0.3s;
   }
 
-  &__page--selected,
   &__page:hover,
   &__page:active {
-    background: #e9eceede;
-    border: 2px solid #047CC7;
+    background: $btns-second-color;
+    border: 1px solid $main-color;
   }
 
-  &__posts-ammount {
+
+}
+
+.selector {
+  margin: 0 20px;
+
+  &__phones-amount {
     margin-left: 5px;
-    border-radius: 5px;
+    border-radius: $border-radius;
   }
 }

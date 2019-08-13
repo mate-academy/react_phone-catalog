@@ -8,76 +8,83 @@ const Basket = ({
   decreaseQuantity,
   increaseQuantity,
 }) => (
-  <div>
-    <h1 className="basket-page__title">Added items</h1>
+  <div className="basket-page">
+    <div className="basket-page__wrapper">
+      <h1 className="basket-page__title">Added items</h1>
 
-    {selectedPhones.length < 1
-      ? <p className="basket-page__text">Shopping Cart is empty</p>
-      : (
-        <ul className="basket-page__shopping-list">
-          {selectedPhones.map(phone => (
-            <li className="basket-page__phone-card">
-              <Link to={`/${phone.id}`}>
-                <img
-                  src={phone.image}
-                  alt="phone"
-                  className="basket-page__shopping-list-img"
-                />
-              </Link>
-
-              <Link
-                to={`/details/${phone.id}`}
-                className="basket-page__shopping-list-item-link"
+      {selectedPhones.length < 1
+        ? <p className="basket-page__text">Shopping Cart is empty</p>
+        : (
+          <ul className="basket-page__shopping-list">
+            {selectedPhones.map(phone => (
+              <li
+                key={phone.id}
               >
-                {phone.id}
-              </Link>
+                <Link to={`/${phone.id}`}>
+                  <img
+                    src={phone.image}
+                    alt="phone"
+                    className="basket-page__shopping-list-img"
+                  />
+                </Link>
 
-              <div className="basket-page__change-quantity-btns">
-                <button
-                  type="button"
-                  name="-"
-                  className="
-                  cart-btn
-                  basket-page__change-quantity-btns-btn
-                  quantity-btn
-                  "
-                  onClick={() => decreaseQuantity(phone.id)}
+                <Link
+                  to={`/details/${phone.id}`}
+                  className="basket-page__shopping-list-item-link"
                 >
-                  -
-                </button>
+                  {phone.id}
+                </Link>
 
-                <div className="basket-page__shopping-list-quantity">
-                  {`${phone.quantity}
-                    ${phone.quantity > 1 ? 'items' : 'item'}
-                  `}
+                <div className="basket-page__change-quantity-btns">
+                  <button
+                    type="button"
+                    name="-"
+                    className="
+                    cart-btn
+                    basket-page__change-quantity-btns-btn
+                    quantity-btn
+                    "
+                    onClick={() => decreaseQuantity(phone.id)}
+                  >
+                    -
+                  </button>
+
+                  <div className="basket-page__shopping-list-quantity">
+                    {`${phone.quantity}
+                      ${phone.quantity > 1 ? 'items' : 'item'}
+                    `}
+                  </div>
+
+                  <button
+                    type="button"
+                    name="+"
+                    className="
+                    cart-btn
+                    basket-page__change-quantity-btns-btn
+                    quantity-btn
+                    "
+                    onClick={() => increaseQuantity(phone.id)}
+                  >
+                    +
+                  </button>
                 </div>
 
                 <button
                   type="button"
-                  name="+"
                   className="
                   cart-btn
-                  basket-page__change-quantity-btns-btn
-                  quantity-btn
+                  basket-page__shopping-list-remove-btn
                   "
-                  onClick={() => increaseQuantity(phone.id)}
+                  onClick={() => removePhone(phone.id)}
                 >
-                  +
+                  remove
                 </button>
-              </div>
-
-              <button
-                type="button"
-                className="cart-btn basket-page__shopping-list-remove-btn"
-                onClick={() => removePhone(phone.id)}
-              >
-                remove
-              </button>
-            </li>
-          ))}
-        </ul>
-      )
-    }
+              </li>
+            ))}
+          </ul>
+        )
+      }
+    </div>
   </div>
 );
 

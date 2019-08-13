@@ -1,39 +1,75 @@
+@import "./variables";
+
 .basket-page {
+  display: flex;
+  justify-content: center;
+
+  &__wrapper {
+    max-width: 1060px;
+
+    margin: 20px;
+    padding: 20px 20px 30px;
+
+    background: #fff;
+    box-shadow: 0 1px 2px $shadow-color;
+  }
+
   &__title {
+    margin: 20px;
     text-align : center;
     text-transform : uppercase;
   }
 
-  &__phone-card {
-    position: relative;
-
-    margin: 10px 0;
-    padding: 15px 10px 10px;
-
-    background: #fff;
-    box-shadow: 0px 0px 10px #013c60de inset;
-    border-radius: 10px;
-  }
 
   &__shopping-list {
-    display : flex;
-    flex-wrap : wrap;
+    display: grid;
+    grid-template-columns: repeat(4, 240px);
+    grid-gap: 20px;
+    justify-content: center;
     list-style : none;
   }
 
   &__shopping-list li {
-    height : 350px;
-    width : 200px;
-    margin : 10px;
+    box-sizing: border-box;
+    position: relative;
+
+    padding: 15px 10px 10px;
+
+    height : 400px;
+    width : 100%;
+
     text-align : center;
+
+    box-shadow: 0px 0px 3px $shadow-color;
+    border-radius: $border-radius;
+
+    transition: all 0.5s;
+  }
+
+  &__shopping-list li:hover {
+    box-shadow: 0px 0px 8px $shadow-color;
   }
 
   &__shopping-list-item-link {
-    text-transform : uppercase;
+    display: block;
+    width: 100%;
+
+    text-decoration: none;
+    text-transform: uppercase;
+    text-align: center;
+    color: #000;
+    font-weight: bold;
+
+    transition: all 0.3s;
+  }
+
+  &__shopping-list-item-link:hover {
+    color: $shadow-color;
   }
 
   &__shopping-list-img {
-    max-width : 200px;
+    width: 100%;
+    margin-bottom: 15px;
   }
 
   &__change-quantity-btns {
@@ -41,9 +77,9 @@
     bottom: 60px;
     left: 0;
 
-    width: 160px;
+    width: 100%;
 
-    padding: 0 30px;
+    padding: 0 15px;
 
     display: flex;
     justify-content: space-between;

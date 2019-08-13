@@ -1,4 +1,19 @@
+@import "./variables";
+
 .phone {
+  display: flex;
+  justify-content: center;
+
+  &__wrapper {
+    max-width: 1060px;
+
+    margin: 20px;
+    padding: 20px;
+
+    background: #fff;
+    box-shadow: 0 1px 2px $shadow-color;
+  }
+
   &__main-info {
     margin-bottom: 30px;
   }
@@ -6,7 +21,7 @@
   &__title {
     display: inline-block;
 
-    margin-bottom: 15px;
+    margin: 15px 0;
     padding: 0 50px;
 
     text-shadow: 5px 5px 8px #000000d2;
@@ -18,7 +33,7 @@
     width: 400px;
     height: 400px;
 
-    padding: 25px;
+    margin: 0 25px;
 
     float: left;
   }
@@ -39,12 +54,19 @@
     margin: 10px;
   }
 
+  &__btns {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px 50px;
+  }
+
   &__params {
     padding: 0 50px;
   }
 
   &__params-list {
     list-style: none;
+    margin-bottom: 30px;
   }
 
   h3 {
@@ -86,12 +108,15 @@
 }
 
 .phone-thumbs {
-  margin: 0;
+  margin-bottom: 15px;
   list-style: none;
+
+  display: flex;
+  flex-wrap: wrap;
 
   li {
     display: inline-block;
-    margin: 1em;
+    margin: 5px;
     background-color: white;
   }
 
@@ -105,7 +130,7 @@
 
   &__img:hover,
   &__img-selected {
-    box-shadow: 0px 0px 10px #013c60de inset;
-    border-radius: 5px;
+    box-shadow: 0px 0px 3px $shadow-color;
+    border-radius: $border-radius;
   }
 }

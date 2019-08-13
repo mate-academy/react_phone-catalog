@@ -27,22 +27,23 @@ const PhoneCatalog = ({
               />
             </Link>
 
-            <Link to={`/details/${phone.id}`}>
+            <Link
+              to={`/details/${phone.id}`}
+              className="phone-card__title"
+            >
               {phone.name}
             </Link>
-
-            <p className="phone-card__description">
-              {phone.snippet}
-            </p>
 
             {selectedPhones.find(item => item.id === phone.id)
               ? (
                 <>
-                  {selectedPhones
-                    .filter(item => item.id === phone.id)
-                    .map(item => (
+                  {(function() {
+                    const foundPhone = selectedPhones
+                      .find(item => item.id === phone.id);
+
+                    return (
                       <div
-                        key={item.id}
+                        key={foundPhone.id}
                         className="phone-card__quantity-btns"
                       >
                         <button
@@ -53,14 +54,14 @@ const PhoneCatalog = ({
                           phone-card__quantity-btns-btn
                           quantity-btn
                           "
-                          onClick={() => decreaseQuantity(item.id)}
+                          onClick={() => decreaseQuantity(foundPhone.id)}
                         >
                           -
                         </button>
 
                         <div className="phone-card__quantity">
-                          {`${item.quantity}
-                            ${item.quantity > 1 ? 'items' : 'item'}
+                          {`${foundPhone.quantity}
+                            ${foundPhone.quantity > 1 ? 'items' : 'item'}
                           `}
                         </div>
 
@@ -72,13 +73,13 @@ const PhoneCatalog = ({
                           phone-card__quantity-btns-btn
                           quantity-btn
                           "
-                          onClick={() => increaseQuantity(item.id)}
+                          onClick={() => increaseQuantity(foundPhone.id)}
                         >
                           +
                         </button>
                       </div>
-                    ))
-                  }
+                    );
+                  }())}
                 </>
               ) : (
                 <button
@@ -90,6 +91,12 @@ const PhoneCatalog = ({
                 </button>
               )
             }
+
+            <div className="phone-card__description-wrapper">
+              <p className="phone-card__description">
+                {phone.snippet}
+              </p>
+            </div>
           </div>
         </article>
       ))}

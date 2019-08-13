@@ -1,3 +1,5 @@
+@import "./variables";
+
 .basket {
   padding: 0 10px !important;
 
@@ -12,7 +14,7 @@
     width: 20px;
     height: 20px;
 
-    right: 23px;
+    right: 43px;
     top: 38px;
 
     text-align: center;
@@ -20,7 +22,7 @@
     line-height: 20px;
 
     background: #fff;
-    box-shadow: 0px 0px 2px #013c60de inset;
+    box-shadow: 0px 0px 2px $shadow-color inset;
     border-radius: 50%;
   }
 }
