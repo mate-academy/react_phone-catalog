@@ -1,10 +1,10 @@
 {
-  "homepage": "https://mate-academy.github.io/react_phone-catalog",
+  "homepage": "https://djkamry22.github.io/react_phone-catalog/",
   "name": "react_phone-catalog",
   "version": "0.1.0",
   "private": true,
   "keywords": [],
-  "author": "Mate Academy",
+  "author": "Kamran",
   "license": "GPL-3.0",
   "dependencies": {
     "lint": "^0.7.0",
