@@ -1,1 +1,380 @@
+.greatings-header {
+  text-align: center;
+  font-weight: 500;
+  margin-top: 50px;
+}
 
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.App {
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.head {
+  background-color: white;
+  height: 58px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top:0;
+  z-index: 9999;
+}
+
+.head ul {
+  font-size: 18px;
+  display: flex;
+  flex-direction: row;
+  margin-left: 20px;
+}
+
+.basket-image {
+  display: block;
+  height: 40px;
+  width: 40px;
+  margin: auto 20px auto 0;
+}
+
+.header-link {
+  transition: 0.7s;
+  color: black;
+  height: 58px;
+  margin-left: 15px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.header-link:hover {
+  color: #ed5564;
+
+}
+
+.active-link {
+  color: #ed5564;
+}
+
+.product-image {
+  margin: 0 auto;
+  text-align: center;
+  display: block;
+  height: 150px;
+  width: 150px;
+}
+
+.catalog-container {
+  margin: 20px auto;
+  box-sizing: border-box;
+  max-width: 1000px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: flex-end;
+}
+
+.catalog-item {
+  background-color: #ffffff;
+  box-sizing: border-box;
+  margin: 1rem .25em;
+  height: 380px;
+  border: 2px solid #ed5564;
+  border-radius: 3px;
+  margin: 5px;
+  flex: 1 0 500px;
+  min-width: 100px;
+  display: flex;
+  align-items: center;
+  vertical-align: middle;
+  flex-direction: column;
+  align-content: center;
+  padding: 10px;
+  overflow: hidden;
+  transition: all 0.5s ease-out;
+  position: relative;
+}
+
+.catalog-item:hover {
+  transform: scale(1.04);
+}
+
+@media screen and (min-width: 40em) {
+
+  .catalog-item {
+    max-width: calc(50% - 1em);
+  }
+}
+
+@media screen and (min-width: 60em) {
+
+
+  .catalog-item {
+    max-width: calc(25% - 1em);
+  }
+}
+
+.card-link {
+  display: block;
+}
+
+.link {
+  color: black;
+  text-decoration: none;
+}
+
+.title {
+  text-align: center;
+  color: #ffffff;
+  background-color: #ed5564;
+}
+
+.overview {
+  font-size: 14px;
+  overflow: hidden;
+}
+
+.buy-button {
+  cursor: pointer;
+  position: absolute;
+  box-sizing: border-box;
+  color: white;
+  background-color: #ed5564;
+  border-radius: 3px;
+  border: 1px solid white;
+  font-weight: 600;
+  bottom: 5px;
+  height: 40px;
+  width: 95%;
+}
+
+.buy-button:hover {
+  background-color: white;
+  color: #ed5564;
+  border: 1px solid #ed5564;
+}
+
+.image-detail {
+  cursor: pointer;
+  border: 1px solid white;
+  padding: 1px;
+  border-radius: 2px;
+  height: 50px;
+  width: 50px;
+}
+
+.active-image {
+  border: 1px solid #ed5564;
+  transition: 0.5s;
+}
+
+img {
+  cursor: pointer;
+}
+
+.section {
+  display: flex;
+}
+
+.lds-hourglass {
+  display: inline-block;
+  margin: 23% 50%;
+  position: relative;
+  width: 64px;
+  height: 64px;
+}
+
+.lds-hourglass:after {
+  content: " ";
+  display: block;
+  border-radius: 50%;
+  width: 0;
+  height: 0;
+  margin: 6px;
+  box-sizing: border-box;
+  border: 26px solid #ed5564;
+  border-color: #ed5564 transparent #ed5564 transparent;
+  animation: lds-hourglass 1.2s infinite;
+}
+
+@keyframes lds-hourglass {
+  0% {
+    transform: rotate(0);
+    animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  }
+  50% {
+    transform: rotate(900deg);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  100% {
+    transform: rotate(1800deg);
+  }
+}
+
+.search-Phone {
+  margin: 0 auto;
+  font-size: 14px;
+  border: none;
+  border-left: 2px solid grey;
+  padding:3px 6px;
+}
+
+.search-Phone:focus {
+  outline-color: #ed5564;
+  border: none;
+  padding-left: 8px;
+
+}
+
+.search-Form {
+  text-align: center;
+margin: 10px auto;
+}
+
+.search-Submit {
+  color: white;
+  font-weight: 600;
+  background-color: #ed5564;
+  padding:2px;
+  border-color: #ed5564;
+  margin-left: 3px;
+}
+
+.phone-container {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: row;
+}
+
+.phone-pictures-container {
+  margin: 10px;
+}
+
+.main-picture  {
+  border-bottom: 2px solid grey;
+}
+
+.item-header {
+  border-bottom: 1px solid grey;
+  margin-right: 5px;
+  padding-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.phone-detail-container {
+  margin: 10px;
+}
+
+.phone-additional-container{
+  margin: 10px;
+}
+.add-button {
+  height: 40px;
+  cursor: pointer;
+  box-sizing: border-box;
+  color: white;
+  background-color: #ed5564;
+  border-radius: 3px;
+  border: 1px solid white;
+  font-weight: 600;
+}
+
+.add-button:hover {
+  background-color: white;
+  color: #ed5564;
+  border: 1px solid #ed5564;
+}
+
+.basket-items {
+  display: block;
+  font-size: 11px;
+  width: 8px;
+  font-weight: 600;
+  position: absolute;
+  top: 8px;
+  right: 20px;
+  border: 1px solid #ed5564;
+  background-color: white;
+  border-radius: 30%;
+  padding: 2px;
+}
+
+.disabled-button {
+  background-color: green;
+}
+
+.disabled-button:hover {
+  background-color: green;
+  color: white;
+  border: 1px solid white;
+}
+
+.basket-items-group {
+  margin: 0 auto;
+  max-width: 480px;
+  justify-content: space-between;
+  vertical-align: middle;
+  justify-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.basket-item-container {
+  position: relative;
+  display: flex;
+  padding: 10px;
+  box-sizing: border-box;
+  margin-top: 30px;
+  height: 160px;
+  background-color: white;
+  border: 2px solid #ed5564;
+  border-radius: 4px;
+}
+
+.basket-item-container h3 {
+
+  display: inline;
+  font-weight: 500;
+  color: white;
+  background-color: #ed5564;
+}
+
+.product-image-basket {
+  height: 120px;
+  width: 120px;
+  margin: auto 5px;
+}
+
+.close-button {
+  background-color: white;
+  position: absolute;
+  top: -10px;
+  right: -10px;
+}
+
+.basket-count {
+  margin-top: 7px;
+  margin-bottom: 3px;
+}
+
+.items-counter {
+  margin-left: 13px;
+}
+
+.link-to-phones {
+  color: #ed5564;
+}
+
+.link-to-phones:hover {
+  text-decoration: none;
+}
