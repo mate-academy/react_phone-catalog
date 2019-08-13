@@ -9,7 +9,6 @@ const PhonesPage = (props) => {
   const { handleCliCkAdd, items } = useContext(BasketContext);
   const [isLoaded, setLoaded] = useState(false);
   const [phones, setPhones] = useState([]);
-  const [input, setInput] = useState("");
   const [filtredPhones, setFiltredPhones] = useState([]);
 
   useEffect(() => {
@@ -22,12 +21,12 @@ const PhonesPage = (props) => {
   }, []);
 
   const handleChangeInput = (event) => {
+    const value = event.target.value;
     event.preventDefault();
-    setInput(event.target.value);
-    filteredPhones(input, phones);
+    filteredPhones(value, phones);
   }
 
-  const filteredPhones = (value ,phones) => {
+  const filteredPhones = (value, phones) => {
     const result = phones.filter(phone => phone.id.toUpperCase().includes(value.toUpperCase()));
     setFiltredPhones(result);
   }
@@ -40,8 +39,8 @@ const PhonesPage = (props) => {
 
   return (
     <>
-      <form className="search-Form">
-        <input onChange ={(event) => handleChangeInput(event)} size="40" placeholder="try to find something" className="search-Phone" type="search" name="searchfield" />
+      <form className="search-Form" onSubmit ={(event) => event.preventDefault()} >
+        <input onChange ={(event) => handleChangeInput(event)} size="40" placeholder="try to find something" className="search-Phone" type="input" name="searchfield" />
       </form>
 
       <ul className="catalog-container">
