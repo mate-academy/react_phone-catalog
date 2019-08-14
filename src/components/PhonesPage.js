@@ -32,14 +32,6 @@ export default class PhonesPage extends PureComponent {
     });
   }
 
-  // static getDerivedStateFromProps(props, state) {
-  //   if (props.initialPhones.length !== state.phones.length) {
-  //     return { phones: props.initialPhones };
-  //   }
-
-  //   return null;
-  // }
-
   componentDidUpdate() {
     const searchParams = new URLSearchParams();
     const { searchValue, sortType } = this.state;
@@ -58,14 +50,10 @@ export default class PhonesPage extends PureComponent {
   setSearchValue = (event) => {
     const searchValue = event.target.value.toLowerCase().trim();
 
-    this.setState(state => ({
+    this.setState({
       searchValue,
-      phones: this.sortBy(
-        this.handleSearch(this.props.initialPhones, searchValue),
-        state.sortType
-      ),
       page: 1,
-    }));
+    });
   };
 
   setSortType = (event) => {
@@ -108,10 +96,9 @@ export default class PhonesPage extends PureComponent {
     const firstIndex = page * perPage - perPage;
     const lastIndex = page * perPage;
 
-    const preparedPhones = sortBy(
-      handleSearch(phones, searchValue),
-      sortType
-    ).slice(firstIndex, lastIndex);
+    const preparedPhones = sortBy(handleSearch(phones, searchValue), sortType);
+
+    const phonesPerPage = preparedPhones.slice(firstIndex, lastIndex);
 
     return (
       <>
@@ -123,16 +110,23 @@ export default class PhonesPage extends PureComponent {
               getSearchValue={this.setSearchValue}
               getSortType={this.setSortType}
             />
-            <h2>Phones Page</h2>
+            <h2>
+              Phones Page ({firstIndex + 1}-
+              {lastIndex > preparedPhones.length
+                ? `${preparedPhones.length}`
+                : `${lastIndex}`}
+              {' of '}
+              {preparedPhones.length})
+            </h2>
             <Pagination
               page={page}
               perPage={perPage}
-              total={phones.length}
+              total={preparedPhones.length}
               togglePagination={this.togglePagination}
             />
 
             <ul className="phones-list">
-              {preparedPhones.map(phone => (
+              {phonesPerPage.map(phone => (
                 <li key={phone.id} className="phones-item">
                   <PhoneItem
                     phone={phone}
