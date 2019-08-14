@@ -3,6 +3,8 @@ import propTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import './styles/phoneDetails.css';
 
+const MyContext = React.createContext();
+
 class PhoneDetails extends React.Component {
   state = {
     selectedImg: '',
@@ -32,7 +34,7 @@ class PhoneDetails extends React.Component {
 
   render() {
     const { selectedImg, showDetails } = this.state;
-    const { handlerAddToBasket } = this.state;
+    const { handlerAddToBasket, phoneDetails } = this.props;
     const {
       name,
       images,
@@ -47,7 +49,13 @@ class PhoneDetails extends React.Component {
       hardware,
       camera,
       additionalFeatures,
-    } = this.props.phoneDetails;
+    } = phoneDetails;
+
+    const phoneToAdd = {
+      id,
+      name,
+      imageUrl: images[0],
+    };
 
     return (
       <div className="phone-details">
@@ -68,7 +76,7 @@ class PhoneDetails extends React.Component {
                   <img
                     onClick={this.handlerSelectImg}
                     src={image}
-                    alt="phone photo"
+                    alt={name}
                   />
                 </li>
               ))
@@ -85,7 +93,7 @@ class PhoneDetails extends React.Component {
           <div className="phone-details__basket">
             <Link
               className="phone-details__basket-add"
-              onClick={handlerAddToBasket}
+              onClick={() => handlerAddToBasket(phoneToAdd)}
               name={id}
             >
               Add to basket
@@ -93,24 +101,27 @@ class PhoneDetails extends React.Component {
           </div>
         </article>
         <div className="phone-details__characters">
-          <buttom
+          <button
             type="button"
             onClick={() => this.handlerShowDetails()}
             className="phone-details__characters-show"
           >
-            {showDetails ? 'Hide details' : 'Show getails'}
-          </buttom>
+            {showDetails ? 'Hide details' : 'Show details'}
+          </button>
           <ul
             className={showDetails ? 'phone-details__characters--specs'
               : `phone-details__characters--hide`}
           >
-            <li className="phone-details__characters--specs-name">
+            <li
+              className="phone-details__characters--specs-name"
+              key="availability"
+            >
               <span>Availability and Networks</span>
               <dl>
                 <dt>Availability</dt>
               </dl>
             </li>
-            <li className="phone-details__characters--specs-name">
+            <li className="phone-details__characters--specs-name" key="battery">
               <span>Battery</span>
               <dl>
                 <dt>Type</dt>
@@ -121,7 +132,7 @@ class PhoneDetails extends React.Component {
                 <dd>{battery.standbyTime}</dd>
               </dl>
             </li>
-            <li className="phone-details__characters--specs-name">
+            <li className="phone-details__characters--specs-name" key="memory">
               <span>Storage and Memory</span>
               <dl>
                 <dt>RAM</dt>
@@ -130,7 +141,10 @@ class PhoneDetails extends React.Component {
                 <dd>{storage.flash}</dd>
               </dl>
             </li>
-            <li className="phone-details__characters--specs-name">
+            <li
+              className="phone-details__characters--specs-name"
+              key="connectivity"
+            >
               <span>Connectivity</span>
               <dl>
                 <dt>Network Support</dt>
@@ -148,7 +162,7 @@ class PhoneDetails extends React.Component {
                 </dd>
               </dl>
             </li>
-            <li className="phone-details__characters--specs-name">
+            <li className="phone-details__characters--specs-name" key="android">
               <span>Android</span>
               <dl>
                 <dt>OS Version</dt>
@@ -157,20 +171,20 @@ class PhoneDetails extends React.Component {
                 <dd>{android.ui}</dd>
               </dl>
             </li>
-            <li className="phone-details__characters--specs-name">
+            <li className="phone-details__characters--specs-name" key="size">
               <span>Size and Weight</span>
               <dl>
                 <dt>Dimensions</dt>
                 {
                   sizeAndWeight.dimensions.map(size => (
-                    <dd>{size}</dd>
+                    <dd key={size}>{size}</dd>
                   ))
                 }
                 <dt>Weight</dt>
                 <dd>{sizeAndWeight.weight}</dd>
               </dl>
             </li>
-            <li className="phone-details__characters--specs-name">
+            <li className="phone-details__characters--specs-name" key="display">
               Display
               <dl>
                 <dt>Screen size</dt>
@@ -181,7 +195,10 @@ class PhoneDetails extends React.Component {
                 <dd>{display.touchScreen ? '✓' : '✘'}</dd>
               </dl>
             </li>
-            <li className="phone-details__characters--specs-name">
+            <li
+              className="phone-details__characters--specs-name"
+              key="hardware"
+            >
               <span>Hardware</span>
               <dl>
                 <dt>CPU</dt>
@@ -196,7 +213,7 @@ class PhoneDetails extends React.Component {
                 <dd>{hardware.accelerometer ? '✓' : '✘'}</dd>
               </dl>
             </li>
-            <li className="phone-details__characters--specs-name">
+            <li className="phone-details__characters--specs-name" key="camera">
               <span>Camera</span>
               <dl>
                 <dt>Primary</dt>
@@ -204,12 +221,15 @@ class PhoneDetails extends React.Component {
                 <dt>Features</dt>
                 {
                   camera.features.map(feature => (
-                    <dd>{feature}</dd>
+                    <dd key={feature}>{feature}</dd>
                   ))
                 }
               </dl>
             </li>
-            <li className="phone-details__characters--specs-name">
+            <li
+              className="phone-details__characters--specs-name"
+              key="features"
+            >
               <span>Additional Features</span>
               <dl>
                 <dt>Additional Features</dt>
@@ -226,6 +246,8 @@ class PhoneDetails extends React.Component {
     );
   }
 }
+
+PhoneDetails.context = MyContext;
 
 PhoneDetails.propTypes = {
   phoneDetails: propTypes.shape().isRequired,

@@ -1,4 +1,5 @@
 import React from 'react';
+import propTypes from 'prop-types';
 import { getPhoneDetails } from './GetData';
 import PhoneDetails from './PhoneDetails';
 import Loader from './Loader';
@@ -29,18 +30,28 @@ class PhoneDetailsPage extends React.Component {
 
   render() {
     const { phoneDetails, loading, rightUrl } = this.state;
+    const { handlerAddToBasket } = this.props;
 
     return (
-      rightUrl ? (
-        loading
-          ? <PhoneDetails phoneDetails={phoneDetails} />
-          : <Loader />
-      ) : (
+      !rightUrl ? (
         <h2>Phone was not found</h2>
+      ) : (
+        loading
+          ? (
+            <PhoneDetails
+              phoneDetails={phoneDetails}
+              handlerAddToBasket={handlerAddToBasket}
+            />
+          )
+          : <Loader />
       )
     );
   }
-
 }
+
+PhoneDetailsPage.propTypes = {
+  match: propTypes.shape().isRequired,
+  addPhoneToBasket: propTypes.func.isRequired,
+};
 
 export default PhoneDetailsPage;

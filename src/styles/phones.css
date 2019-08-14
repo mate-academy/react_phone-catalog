@@ -29,16 +29,17 @@
   width: 130px;
   height: 50px;
   font-size: 15px;
-  color: white;
-  background-image: linear-gradient(90deg, #084914, #58b87d);
-  border: #66d690;
-  font-weight: 700;
-  border-radius: 24px;
+  color: #084914;
+  background: #fff;
+  border: 1px solid #084914;
   cursor: pointer;
+  font-weight: 600;
+  border-radius: 12px;
 }
 
-.phones-catalog__item--add:hover {
-  background: #084914;
+.phones-catalog__item--add:hover,
+.phones-catalog__item--add:focus {
+  background: #e1fbca;
   opacity: 0.9;
-  color: #fff9aa;
+  border: 1px solid #084914;
 }

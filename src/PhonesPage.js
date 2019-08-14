@@ -96,6 +96,7 @@ class PhonesPage extends React.Component {
 
   render() {
     const { filterStr, phonesToShow, loading } = this.state;
+    const { handlerAddToBasket } = this.props;
 
     return (
       loading ? (
@@ -108,6 +109,7 @@ class PhonesPage extends React.Component {
           />
           <PhoneCatalog
             phones={phonesToShow}
+            handlerAddToBasket={handlerAddToBasket}
           />
         </div>
       ) : (
@@ -118,7 +120,7 @@ class PhonesPage extends React.Component {
 }
 
 PhonesPage.propTypes = {
-  match: propTypes.shape().isRequired,
+  handlerAddToBasket: propTypes.func.isRequired,
 };
 
 export default PhonesPage;

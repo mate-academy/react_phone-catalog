@@ -49,9 +49,6 @@ li {
 }
 
 .App-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   background: #e1fbca;
   margin-bottom: 24px;
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.7);
@@ -63,7 +60,7 @@ li {
 }
 
 .App__nav-link {
-  margin: 24px;
+  margin: 24px 48px 24px 0;
   font-size: 24px;
 }
 
@@ -78,4 +75,25 @@ li {
 .App-header__basket {
   width: 50px;
   margin-right: 40px;
+  position: relative;
+}
+
+.basket-items {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: auto;
+  background: transparent;
+  color: red;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.container--header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

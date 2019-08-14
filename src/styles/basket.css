@@ -1,0 +1,30 @@
+.basket-item {
+  margin: 30px 0;
+  padding: 15px 30px;
+  display: flex;
+  border: 2px solid;
+  border-radius: 24px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.basket-item__info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.basket-item__info--image-link {
+  width: 150px;
+  margin-right: 30px;
+}
+
+.basket-item__info--title-link {
+  color: #42485b;
+  text-decoration: none;
+}
+
+.basket-buttons {
+  display: flex;
+  justify-content: space-between;
+}
