@@ -169,7 +169,7 @@ const PhonesPage = ({ history, location }) => {
 
   const getSearchValue = (event) => {
     setCurrentPage(1);
-    setSearchValue(event.target.value.toLowerCase().trim());
+    setSearchValue(event.target.value.toLowerCase());
   };
 
   const getSortType = (event) => {
@@ -191,7 +191,7 @@ const PhonesPage = ({ history, location }) => {
 
   const getFilteredPhones = (phonesToFilter, value) => phonesToFilter.filter(
     ({ name, snippet }) => (
-      [name, snippet].join('').toLowerCase().includes(value))
+      [name, snippet].join('').toLowerCase().includes(value.trim()))
   );
 
   const onPageChange = (event) => {
