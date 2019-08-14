@@ -81,10 +81,10 @@ const PhonesPage = ({ history, location }) => {
   useEffect(() => {
     const searchParams = new URLSearchParams(search);
 
-    const queryValue = searchParams.get('query') || '';
-    const sortValue = searchParams.get('sort') || '';
-    const page = searchParams.get('page') || '';
-    const perPage = searchParams.get('perPage') || '';
+    const queryValue = searchParams.get('query') || searchValue;
+    const sortValue = searchParams.get('sort') || sortType;
+    const page = searchParams.get('page') || currentPage;
+    const perPage = searchParams.get('perPage') || itemsPerPage;
 
     setCurrentPage(page);
     setItemsPerPage(perPage);
@@ -116,7 +116,7 @@ const PhonesPage = ({ history, location }) => {
 
     setPageNumbers(getPageNumbers(itemsPerPage,
       sortedPhones.length));
-  }, [searchValue, sortType, itemsPerPage]);
+  }, [searchValue, sortType, itemsPerPage, currentPage]);
 
   const onAddToBasket = (phoneId, phoneName) => {
     const items = [...basketItems];
