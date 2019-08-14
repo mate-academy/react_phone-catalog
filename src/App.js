@@ -40,6 +40,34 @@ class App extends React.Component {
     });
   }
 
+  handleBasket = (id, operation) => {
+    const indexPhone = this.state.phonesToBasket
+      .findIndex((phone, i) => i === id);
+
+    this.setState((prevState) => {
+      let currentArray = [...prevState.phonesToBasket];
+
+      // eslint-disable-next-line default-case
+      switch (operation) {
+        case 'increase':
+          // eslint-disable-next-line no-return-assign
+          return currentArray[indexPhone].quantity += 1;
+        case 'decrease':
+          currentArray[indexPhone].quantity === 1
+            ? currentArray = currentArray.filter(obj => obj.id !== id)
+            : currentArray[indexPhone].quantity -= 1;
+          break;
+        case 'remove':
+          currentArray = currentArray.filter(obj => obj.id !== id);
+          break;
+      }
+
+      return {
+        itemsAtBasket: currentArray,
+      };
+    });
+  }
+
   setItemToBasket = (phoneName, imgUrl) => {
     this.setState(prevState => ({
       phonesToBasket: [
@@ -135,6 +163,7 @@ class App extends React.Component {
             render={() => (
               <BasketItems
                 phonesToBasket={phonesToBasket}
+                handleBasket={this.handleBasket}
               />
             )}
           />

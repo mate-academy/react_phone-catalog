@@ -36,6 +36,7 @@ class PhoneDetailsPage extends React.Component {
     return (
       phoneDetails === null ? <Loading />
         : (
+
           <div
             className="catalog__phones"
           >
@@ -50,30 +51,39 @@ class PhoneDetailsPage extends React.Component {
               : ''
             }
             {phoneDetails.images
-              ? phoneDetails.images.map(imgUrl => (
-                <img
-                  onMouseOver={() => this.handleChose(`${imgUrl}`)}
-                  key={imgUrl}
-                  src={`${urlImg}/${imgUrl}`}
-                  alt="phone"
-                  className="card__img"
-                  onFocus
-                />
-              ))
+              ? (
+                <div>
+                  <div className="container__for__images">
+                    {phoneDetails.images.map(imgUrl => (
+                      <img
+                        onMouseOver={() => this.handleChose(`${imgUrl}`)}
+                        key={imgUrl}
+                        src={`${urlImg}/${imgUrl}`}
+                        alt="phone"
+                        className="card__img"
+                        onFocus
+                      />
+                    ))}
+                  </div>
+                </div>
+              )
               : ''
             }
-            <h1>description</h1>
-            <p>{`${phoneDetails.description}`}</p>
-            <h3>Display</h3>
-            <p>{`${phoneDetails.display.screenResolution}`}</p>
-            <p>{`${phoneDetails.display.screenSize}`}</p>
-            <h3>android</h3>
-            <p>{`${phoneDetails.android.os}`}</p>
-            <p>{`${phoneDetails.android.ui}`}</p>
-            <h3>hardware</h3>
-            <p>{`${phoneDetails.hardware.audioJack}`}</p>
-            <p>{`${phoneDetails.hardware.cpu}`}</p>
-            <p>{`${phoneDetails.hardware.usb}`}</p>
+            <div className="details">
+
+              <h1>description</h1>
+              <p>{`${phoneDetails.description}`}</p>
+              <h3>Display</h3>
+              <p>{`${phoneDetails.display.screenResolution}`}</p>
+              <p>{`${phoneDetails.display.screenSize}`}</p>
+              <h3>android</h3>
+              <p>{`${phoneDetails.android.os}`}</p>
+              <p>{`${phoneDetails.android.ui}`}</p>
+              <h3>hardware</h3>
+              <p>{`${phoneDetails.hardware.audioJack}`}</p>
+              <p>{`${phoneDetails.hardware.cpu}`}</p>
+              <p>{`${phoneDetails.hardware.usb}`}</p>
+            </div>
           </div>
         ));
   }

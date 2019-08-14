@@ -97,7 +97,7 @@ card
 
 .card {
   height: 350px;
-  width: 100%;
+  width: 360px;
   background: #fff;
   border: 1px solid #f3f3f3;
   border-radius: 5px;
@@ -110,7 +110,6 @@ card
 .card__img {
   width: 160px;
   height: 134px;
-  margin: 0 auto 45px;
   display: block;
 }
 
@@ -178,4 +177,9 @@ ______________________________________________________________ */
   height: 40px;
   padding: 0 12px;
   border: 1px solid #e0e0e0;
+}
+
+.details {
+  margin-top: 10px;
+
 }
