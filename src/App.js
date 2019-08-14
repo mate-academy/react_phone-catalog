@@ -7,12 +7,7 @@ import PhoneDetailsPage from './PhoneDetailsPage';
 import NotFoundPage from './NotFoundPage';
 import BasketItems from './BasketItems';
 import { getPhones } from './getAPIDoc';
-
-const HomePage = () => (
-  <div className="home_page">
-    Hello
-  </div>
-);
+import HomePage from './HomePage';
 
 const getSorted = (array, sortField) => {
   const sortBy = {
@@ -29,6 +24,7 @@ class App extends React.Component {
     phones: [],
     phonesVisible: [],
     phonesToBasket: [],
+    sortField: '',
   }
 
   async componentDidMount() {
@@ -85,13 +81,15 @@ class App extends React.Component {
   handleFilter = (event) => {
     const { value } = event.target;
 
-    this.setState(prevState => ({
-      phonesVisible: prevState.phones
+    this.setState((prevState) => {
+      const filterArray = prevState.phones
         .filter(phone => [phone.name]
           .join()
           .toLowerCase()
-          .includes(value.toLowerCase())),
-    }));
+          .includes(value.toLowerCase()));
+
+      return { phonesVisible: getSorted(filterArray, prevState.sortField) };
+    });
   }
 
   handleSort = (sortField) => {
@@ -99,11 +97,12 @@ class App extends React.Component {
 
     this.setState(prevState => ({
       phonesVisible: getSorted(prevState.phones, value),
+      sortField: value,
     }));
   }
 
   render() {
-    const { phonesVisible, phonesToBasket } = this.state;
+    const { phonesVisible, phonesToBasket, sortField } = this.state;
     const urlImg = 'https://mate-academy.github.io/phone-catalogue-static/';
 
     return (
@@ -112,7 +111,7 @@ class App extends React.Component {
           <NavLink
             to="/"
             exact
-            className="page__home phone__position"
+            className="page__home phone__position Phones__page"
             activeClassName="phoneClassActive"
           >
           Home
@@ -145,6 +144,7 @@ class App extends React.Component {
                 handleFilter={this.handleFilter}
                 handleSort={this.handleSort}
                 setItemToBasket={this.setItemToBasket}
+                sortField={sortField}
               />
             )}
           />

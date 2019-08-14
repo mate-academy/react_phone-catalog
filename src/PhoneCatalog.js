@@ -11,7 +11,8 @@ class PhoneCatalog extends React.Component {
 
   render() {
     const {
-      phoneId, urlImg, phones, handleFilter, handleSort, setItemToBasket,
+      phoneId, urlImg, phones, handleFilter,
+      handleSort, setItemToBasket, sortField,
     } = this.props;
     const { phoneArrays } = this.state;
 
@@ -31,12 +32,17 @@ class PhoneCatalog extends React.Component {
               <option value="">sort order</option>
             </select>
           </div>
-          <input
-            type="text"
-            className="input"
-            placeholder="search"
-            onChange={handleFilter}
-          />
+          <div>
+            по полю
+            {sortField}
+            <input
+              type="text"
+              className="input"
+              placeholder="search"
+              onChange={handleFilter}
+            />
+
+          </div>
         </form>
 
         {phoneArrays}
@@ -68,6 +74,7 @@ PhoneCatalog.propTypes = {
   handleFilter: PropTypes.func.isRequired,
   handleSort: PropTypes.func.isRequired,
   setItemToBasket: PropTypes.func.isRequired,
+  sortField: PropTypes.string.isRequired,
 };
 
 export default PhoneCatalog;
