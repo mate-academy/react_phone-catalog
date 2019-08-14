@@ -21,7 +21,7 @@ const Basket = ({
             <th className="basket-th"></th>
           </tr>
           {basketItems.map((basketItem, i) =>
-            <tr>
+            <tr key={basketItem.id}>
               <td className="basket-td">
                 {i + 1}
               </td>
