@@ -46,59 +46,64 @@ export default class Pagination extends Component {
     return (
       <>
         <div className="pagination-box">
-          <ul className="pagination-panel">
-            <li>
-              <button
-                className={
-                  perPage === 20
-                    ? 'btn btn-pgn prev-next hidden'
-                    : 'btn btn-pgn prev-next'
-                }
-                type="button"
-                disabled={page <= 1}
-                onClick={() => this.handlePrev()}
-              >
-                {'<<'}
-              </button>
-            </li>
-
-            {pages.map((pageItem, index) => (
-              <li
-                className={perPage === 20 ? 'hidden' : ''}
-                key={pageItem}
-              >
-                {
-                  <button
-                    type="button"
-                    className={
-                      index + 1 === page
-                        ? 'btn btn-pgn selected'
-                        : 'btn btn-pgn'
-                    }
-                    id={index + 1}
-                    onClick={this.handleNum}
-                  >
-                    {pageItem}
-                  </button>
-                }
+          {pages.length === 1 ? (
+            <div>{' '}</div>
+          ) : (
+            <ul className="pagination-panel">
+              <li>
+                <button
+                  className={
+                    perPage === 20
+                      ? 'btn btn-pgn prev-next hidden'
+                      : 'btn btn-pgn prev-next'
+                  }
+                  type="button"
+                  disabled={page <= 1}
+                  onClick={() => this.handlePrev()}
+                >
+                  {'<<'}
+                </button>
               </li>
-            ))}
 
-            <li>
-              <button
-                className={
-                  perPage === 20
-                    ? 'btn btn-pgn prev-next hidden'
-                    : 'btn btn-pgn prev-next'
-                }
-                type="button"
-                onClick={this.handleNext}
-                disabled={page > pages.length - 1}
-              >
-                {'>>'}
-              </button>
-            </li>
-          </ul>
+              {pages.map((pageItem, index) => (
+                <li
+                  className={perPage === 20 ? 'hidden' : ''}
+                  key={pageItem}
+                >
+                  {
+                    <button
+                      type="button"
+                      className={
+                        index + 1 === page
+                          ? 'btn btn-pgn selected'
+                          : 'btn btn-pgn'
+                      }
+                      id={index + 1}
+                      onClick={this.handleNum}
+                    >
+                      {pageItem}
+                    </button>
+                  }
+                </li>
+              ))}
+
+              <li>
+                <button
+                  className={
+                    perPage === 20
+                      ? 'btn btn-pgn prev-next hidden'
+                      : 'btn btn-pgn prev-next'
+                  }
+                  type="button"
+                  onClick={this.handleNext}
+                  disabled={page > pages.length - 1}
+                >
+                  {'>>'}
+                </button>
+              </li>
+            </ul>
+          )}
+
           <select
             className="per-page-select"
             defaultValue={perPage}

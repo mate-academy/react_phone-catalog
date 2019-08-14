@@ -150,36 +150,4 @@ PhoneDetailsItem.propTypes = {
   handleAddToCart: PropTypes.func.isRequired,
 };
 
-// PhoneDetailsItem.DefaultProps = {
-//   name: '',
-//   description: '',
-//   images: [],
-//   id: '',
-
-//   camera: {
-//     features: [],
-//     primary: '',
-//   },
-
-//   hardware: {
-//     audiJack: '',
-//     cpu: '',
-//     usb: '',
-//   },
-//   battery: {
-//     standbyTime: '',
-//     talkTime: '',
-//     type: '',
-//   },
-//   sizeAndWeight: {
-//     dimensions: [],
-//     weight: '',
-//   // },
-//   // selectedPhoto: PropTypes.string.isRequired,
-//   // handleChoosePhoto: PropTypes.func.isRequired,
-//   // handleAddToCart: PropTypes.func.isRequired
-// },
-
-// };
-
 export default PhoneDetailsItem;
