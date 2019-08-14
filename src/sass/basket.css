@@ -1,0 +1,71 @@
+/* stylelint-disable */
+.basket-table {
+  width: 50%;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+  border-collapse: collapse;
+  color: #686461;
+  border: 1px solid #9f9fa7;
+  margin: 25px auto;
+}
+
+.basket-caption {
+  padding: 10px;
+  color: dodgerblue;
+  background: #f7f4f4;
+  font-size: 18px;
+  text-align: left;
+  font-weight: bold;
+}
+
+.basket-th {
+  border-bottom: 3px solid #B9B29F;
+  padding: 10px;
+  text-align: left;
+}
+
+.basket-td {
+  padding: 10px;
+}
+
+.basket-buy-button {
+  display: table;
+  padding: 10px 35px;
+  text-transform: uppercase;
+  background: #28a745;
+  border: none;
+  color: #ffffff;
+  font-weight: 600;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 0 5px forestgreen;
+          box-shadow: 0 0 5px forestgreen;
+  margin: 25px auto;
+}
+
+.basket-buy-button:hover {
+  -webkit-box-shadow: 0 0 10px forestgreen;
+          box-shadow: 0 0 10px forestgreen;
+  text-decoration: none;
+  color: #ffffff;
+  background: #00a12e;
+}
+
+.basket-buy-button:focus {
+  outline: none;
+}
+
+.basket-delete {
+  color: red;
+  text-decoration: none;
+}
+
+.basket-delete:hover {
+  color: red;
+  text-decoration: none;
+}
+
+.basket-header {
+  color: #d3cfc3;
+  text-align: center;
+  margin-top: 25px;
+}
+/*# sourceMappingURL=basket.css.map */

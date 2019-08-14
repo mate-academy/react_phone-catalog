@@ -1,0 +1,108 @@
+/* stylelint-disable */
+.phone-details {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0 25px;
+}
+
+.phone-details_characteristics {
+  width: 200px;
+}
+
+.phone-details_title {
+  border-bottom: 1px solid #cfcdcd;
+  margin-bottom: 25px;
+}
+
+.phone-details_description {
+  text-align: justify;
+}
+
+.phone-details_characteristics__title-section {
+  font-weight: bold;
+  font-size: 26px;
+  color: #313131;
+}
+
+.phone-details_selected-photo {
+  max-height: 400px;
+  max-width: 400px;
+  margin: 0 100px 30px 25px;
+}
+
+.phone-details_selected-photo img {
+  height: inherit;
+  width: inherit;
+  -webkit-transition: 1s;
+  transition: 1s;
+}
+
+.phone-details_selected-photo img:hover {
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+}
+
+.phone-details_cart-section {
+  display: block;
+}
+
+.phone-details_main-info {
+  margin: 20px 0;
+}
+
+.phone-details_add-on-basket {
+  position: relative;
+  display: inline-block;
+  width: 12em;
+  height: 2.7em;
+  line-height: 2.5em;
+  vertical-align: middle;
+  text-align: center;
+  text-decoration: none;
+  text-shadow: 0 -1px 1px #777;
+  color: #fff;
+  font-weight: 700;
+  outline: none;
+  border: 2px solid #F64C2B;
+  border-radius: 5px;
+  margin-top: 15px;
+  -webkit-box-shadow: 0 0 0 60px rgba(0, 0, 0, 0) inset, 0.1em 0.1em 0.2em #c5c0c0;
+          box-shadow: 0 0 0 60px rgba(0, 0, 0, 0) inset, 0.1em 0.1em 0.2em #c5c0c0;
+  background: -webkit-gradient(linear, left top, left bottom, from(#FB9575), color-stop(48%, #F45A38), color-stop(52%, #EA1502), to(#F02F17));
+  background: linear-gradient(#FB9575, #F45A38 48%, #EA1502 52%, #F02F17);
+}
+
+.phone-details_add-on-basket:hover {
+  color: #fff;
+  background: #aa180b;
+  text-decoration: none;
+}
+
+.phone-details_info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  margin: 0 25px;
+}
+
+.phone-details_photos {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 30px;
+  padding: 0;
+  list-style: none;
+  cursor: pointer;
+}
+
+.phone-details_photo {
+  width: 100px;
+  height: 100px;
+  border: 1px solid #313131;
+  padding: 14px;
+  margin-right: 15px;
+}
+/*# sourceMappingURL=phoneDetails.css.map */

@@ -1,0 +1,97 @@
+.phone-details {
+  & {
+    display: flex;
+    margin: 0 25px;
+  }
+
+  &_characteristics {
+    width: 200px;
+  }
+
+  &_title {
+    border-bottom: 1px solid #cfcdcd;
+    margin-bottom: 25px;
+  }
+
+  &_description {
+    text-align: justify;
+  }
+
+  &_characteristics__title-section {
+    font-weight: bold;
+    font-size: 26px;
+    color: #313131;
+  }
+
+  &_selected-photo {
+    max-height: 400px;
+    max-width: 400px;
+    margin: 0 100px 30px 25px;
+  }
+
+  &_selected-photo img {
+    height: inherit;
+    width: inherit;
+    transition: 1s;
+  }
+
+  &_selected-photo img:hover {
+    transform: scale(1.05);
+  }
+
+  &_cart-section {
+    display: block;
+  }
+
+  &_main-info {
+    margin: 20px 0;
+  }
+
+  &_add-on-basket {
+    position: relative;
+    display: inline-block;
+    width: 12em;
+    height: 2.7em;
+    line-height: 2.5em;
+    vertical-align: middle;
+    text-align: center;
+    text-decoration: none;
+    text-shadow: 0 -1px 1px #777;
+    color: #fff;
+    font-weight: 700;
+    outline: none;
+    border: 2px solid #F64C2B;
+    border-radius: 5px;
+    margin-top: 15px;
+    box-shadow: 0 0 0 60px rgba(0, 0, 0, 0) inset, .1em .1em .2em rgb(197, 192, 192);
+    background: linear-gradient(#FB9575, #F45A38 48%, #EA1502 52%, #F02F17);
+  }
+
+  &_add-on-basket:hover {
+    color: #fff;
+    background: rgb(170, 24, 11);
+    text-decoration: none;
+  }
+
+  &_info {
+    display: flex;
+    justify-content: space-around;
+    margin: 0 25px;
+  }
+
+  &_photos {
+    display: flex;
+    margin-top: 30px;
+    padding: 0;
+    list-style: none;
+    cursor: pointer;
+  }
+
+  &_photo {
+    width: 100px;
+    height: 100px;
+    border: 1px solid #313131;
+    padding: 14px;
+    margin-right: 15px;
+  }
+}
