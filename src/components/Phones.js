@@ -42,8 +42,7 @@ class Phones extends React.Component {
   sortPhones = (event) => {
     const { value } = event.target;
     const { filterPhones } = this.state;
-    console.log(filterPhones);
-
+    
     switch (value) {
       case 'alphabetical':
         this.setState(prevState => ({

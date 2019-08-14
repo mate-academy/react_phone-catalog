@@ -18,10 +18,12 @@ class App extends React.Component {
     const { basketItems } = this.state;
     const isUniqueItem = basketItems.some(basketItem => basketItem.id === newItemPhone.id);
     if (isUniqueItem) {
-      basketItems.map(basketItem => {
-        if (basketItem.id === newItemPhone.id) {
-          basketItem.quantity += 1;
-        }
+      this.setState({
+        basketItems: basketItems.map(basketItem => {
+          if (basketItem.id === newItemPhone.id) {
+            basketItem.quantity += 1;
+          }
+        })
       })
     } else (
       this.setState({

@@ -12,7 +12,6 @@ export const getPhoneDetails = async(phoneId) => {
 
   const response = await fetch(url);
   const phoneDetail = await response.json();
-  console.log(url);
 
   return phoneDetail;
 };

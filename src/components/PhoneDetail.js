@@ -25,6 +25,17 @@ class PhoneDetail extends React.Component {
   render() {
     const { phoneDetails, addToBasketPhone } = this.props;
     const { selectedPhoto } = this.state;
+    const {
+      camera,
+      battery,
+      connectivity,
+      display,
+      hardware,
+      sizeAndWeight,
+      images,
+      name,
+      description
+    } = this.props.phoneDetails;
 
     return (
       <>
@@ -33,19 +44,19 @@ class PhoneDetail extends React.Component {
             <div className="phone-details_selected-photo">
               <img
                 src={selectedPhoto}
-                alt={phoneDetails.name}
+                alt={name}
               />
             </div>
           </div>
           <div className="phone-details_main-info">
             <h1 className="phone-details_title">
-              {phoneDetails.name}
+              {name}
             </h1>
             <p className="phone-details_description">
-              {phoneDetails.description}
+              {description}
             </p>
             <ul className="phone-details_photos">
-              {phoneDetails.images.map(image => (
+              {images.map(image => (
                 <li key={image}>
                   <img
                     onClick={this.handleSelectPhoto}
@@ -76,10 +87,10 @@ class PhoneDetail extends React.Component {
             <span className="phone-details_characteristics__title-section">Camera</span>
             <dl>
               <dt>Features:</dt>
-              {phoneDetails.camera.features.map(items => (
+              {camera.features.map(items => (
                 <dd key={items}>{items}</dd>))}
               <dt>Primary:</dt>
-              <dd>{phoneDetails.camera.primary}</dd>
+              <dd>{camera.primary}</dd>
             </dl>
           </section>
 
@@ -87,15 +98,15 @@ class PhoneDetail extends React.Component {
             <span className="phone-details_characteristics__title-section">Connectivity</span>
             <dl>
               <dt>Bluetooth:</dt>
-              <dd>{phoneDetails.connectivity.bluetooth}</dd>
+              <dd>{connectivity.bluetooth}</dd>
               <dt>Cell:</dt>
-              <dd>{phoneDetails.connectivity.cell}</dd>
+              <dd>{connectivity.cell}</dd>
               <dt>GPS:</dt>
-              <dd>{phoneDetails.connectivity.gps ? '+' : '-'}</dd>
+              <dd>{connectivity.gps ? '+' : '-'}</dd>
               <dt>Infrared:</dt>
-              <dd>{phoneDetails.connectivity.infrared ? '+' : '-'}</dd>
+              <dd>{connectivity.infrared ? '+' : '-'}</dd>
               <dt>Wi-fi:</dt>
-              <dd>{phoneDetails.connectivity.wifi}</dd>
+              <dd>{connectivity.wifi}</dd>
             </dl>
           </section>
 
@@ -103,11 +114,11 @@ class PhoneDetail extends React.Component {
             <span className="phone-details_characteristics__title-section">Battery</span>
             <dl>
               <dt>StandbyTime:</dt>
-              <dd>{phoneDetails.battery.standbyTime}</dd>
+              <dd>{battery.standbyTime}</dd>
               <dt>TalkTime:</dt>
-              <dd>{phoneDetails.battery.talkTime}</dd>
+              <dd>{battery.talkTime}</dd>
               <dt>Type:</dt>
-              <dd>{phoneDetails.battery.type}</dd>
+              <dd>{battery.type}</dd>
             </dl>
           </section>
 
@@ -115,11 +126,11 @@ class PhoneDetail extends React.Component {
             <span className="phone-details_characteristics__title-section">Display</span>
             <dl>
               <dt>Screen Resolution:</dt>
-              <dd>{phoneDetails.display.screenResolution}</dd>
+              <dd>{display.screenResolution}</dd>
               <dt>Screen size:</dt>
-              <dd>{phoneDetails.display.screenSize}</dd>
+              <dd>{display.screenSize}</dd>
               <dt>TouchScreen:</dt>
-              <dd>{phoneDetails.display.touchScreen ? "+" : "-"}</dd>
+              <dd>{display.touchScreen ? "+" : "-"}</dd>
             </dl>
           </section>
 
@@ -127,11 +138,11 @@ class PhoneDetail extends React.Component {
             <span className="phone-details_characteristics__title-section">Hardware</span>
             <dl>
               <dt>AudioJack:</dt>
-              <dd>{phoneDetails.hardware.audioJack}</dd>
+              <dd>{hardware.audioJack}</dd>
               <dt>Cpu:</dt>
-              <dd>{phoneDetails.hardware.cpu}</dd>
+              <dd>{hardware.cpu}</dd>
               <dt>USB:</dt>
-              <dd>{phoneDetails.hardware.usb}</dd>
+              <dd>{hardware.usb}</dd>
             </dl>
           </section>
 
@@ -139,10 +150,10 @@ class PhoneDetail extends React.Component {
             <span className="phone-details_characteristics__title-section">Size and Weight</span>
             <dl>
               <dt>Dimensions:</dt>
-              {phoneDetails.sizeAndWeight.dimensions.map(dimension => (
+              {sizeAndWeight.dimensions.map(dimension => (
                 <dd key={dimension}>{dimension}</dd>))}
               <dt>Weight:</dt>
-              <dd>{phoneDetails.sizeAndWeight.weight}</dd>
+              <dd>{sizeAndWeight.weight}</dd>
             </dl>
           </section>
         </div>

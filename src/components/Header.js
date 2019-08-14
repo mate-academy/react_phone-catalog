@@ -41,26 +41,6 @@ const Header = ({ basketItems }) => (
 
         </div>
 
-        <div className="input-group input-group-sm mb-3">
-          <div className="input-group-prepend">
-            <button className="btn btn-outline-secondary no-border" type="button">
-              <img
-                className="search-img"
-                src="images/search.svg"
-                alt="search"
-                title="search"
-              />
-            </button>
-          </div>
-          <input
-            type="text"
-            className="form-control border-bottom"
-            placeholder="What are you looking for?"
-            aria-label=""
-            aria-describedby="basic-addon1"
-          />
-        </div>
-
         <div className="basket-content">
 
           <li>
