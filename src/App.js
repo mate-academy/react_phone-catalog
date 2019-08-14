@@ -103,9 +103,11 @@ export default class App extends Component {
   }
 
   render() {
+    const quantity = this.state.orderedPhones.length;
+
     return (
       <div className="phones-catalog">
-        <Header orderedPhonesLength={this.state.orderedPhones.length} />
+        <Header quantity={quantity} />
         <main className="content-container">
           <Switch>
             <Route path="/" exact component={HomePage} />

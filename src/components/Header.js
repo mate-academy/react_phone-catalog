@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink, Link } from 'react-router-dom';
 
-const Header = ({ orderedPhonesLength }) => (
+const Header = ({ quantity }) => (
   <header className="header-container">
     <div className="header-logo">
       <Link to="/">
@@ -26,7 +26,7 @@ const Header = ({ orderedPhonesLength }) => (
           <li className="nav-item cart-item">
             <img
               className="cart-icon"
-              src={orderedPhonesLength < 1
+              src={quantity < 1
                 ? './img/empty-cart.png'
                 : './img/full-cart.png'}
               alt="shopping-cart"
@@ -39,7 +39,7 @@ const Header = ({ orderedPhonesLength }) => (
 );
 
 Header.propTypes = {
-  orderedPhonesLength: PropTypes.number.isRequired,
+  quantity: PropTypes.number.isRequired,
 };
 
 export default Header;

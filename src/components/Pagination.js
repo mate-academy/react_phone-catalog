@@ -2,12 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 export default class Pagination extends Component {
-  state = {
-    pages: [],
-    perPage: 20,
-    page: 1,
-  }
-
   contentPerPage = [
     { label: 3 },
     { label: 6 },
@@ -15,63 +9,48 @@ export default class Pagination extends Component {
     { label: 20 },
   ];
 
-  componentDidMount() {
-    const { perPage } = this.state;
-    const pagesNum = Math.ceil(this.props.total / perPage);
-
-    this.setState({
-      pages: Array.from({ length: pagesNum }, (a, b) => b + 1),
-    });
-  }
-
   handlePrev = () => {
-    this.setState(state => ({ page: state.page - 1 }));
-    this.props.togglePagination(this.state.page - 1, this.state.perPage);
+    const { page, perPage, togglePagination } = this.props;
+
+    togglePagination(page - 1, perPage);
   }
 
   handleNext = () => {
-    this.setState(state => ({ page: state.page + 1 }));
-    this.props.togglePagination(this.state.page + 1, this.state.perPage);
+    const { page, perPage, togglePagination } = this.props;
+
+    togglePagination(page + 1, perPage);
   }
 
   handleNum = (event) => {
+    const { perPage, togglePagination } = this.props;
     const val = event.target.id;
 
-    this.props.togglePagination(val, this.state.perPage);
-    this.setState({ page: +val });
+    togglePagination(+val, perPage);
   }
 
   toggleContentPerPage = (event) => {
+    const { togglePagination } = this.props;
     const { value } = event.target;
-    const pagesNum = Math.ceil(this.props.total / +value);
 
-    this.setState({
-      perPage: +value,
-      pages: Array.from({ length: pagesNum }, (a, b) => b + 1),
-      page: 1,
-    });
-
-    this.props.togglePagination(1, +value);
+    togglePagination(1, +value);
   }
 
   render() {
-    const {
-      pages, page, perPage,
-    } = this.state;
+    const { total, page, perPage } = this.props;
+
+    const pages = Array.from(
+      { length: Math.ceil(total / perPage) },
+      (a, b) => b + 1
+    );
 
     return (
       <>
         <div className="pagination-box">
-          <ul className={
-            this.state.perPage === 20
-              ? 'pagination-panel hidden'
-              : 'pagination-panel'
-          }
-          >
+          <ul className="pagination-panel">
             <li>
               <button
                 className={
-                  this.state.perPage === 20
+                  perPage === 20
                     ? 'btn btn-pgn prev-next hidden'
                     : 'btn btn-pgn prev-next'
                 }
@@ -84,7 +63,10 @@ export default class Pagination extends Component {
             </li>
 
             {pages.map((pageItem, index) => (
-              <li key={pageItem}>
+              <li
+                className={perPage === 20 ? 'hidden' : ''}
+                key={pageItem}
+              >
                 {
                   <button
                     type="button"
@@ -105,7 +87,7 @@ export default class Pagination extends Component {
             <li>
               <button
                 className={
-                  this.state.perPage === 20
+                  perPage === 20
                     ? 'btn btn-pgn prev-next hidden'
                     : 'btn btn-pgn prev-next'
                 }
@@ -138,4 +120,6 @@ export default class Pagination extends Component {
 Pagination.propTypes = {
   togglePagination: PropTypes.func.isRequired,
   total: PropTypes.number.isRequired,
+  page: PropTypes.number.isRequired,
+  perPage: PropTypes.number.isRequired,
 };

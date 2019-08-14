@@ -13,8 +13,8 @@ export default class PhonesPage extends PureComponent {
     phones: [],
     searchValue: '',
     sortType: '',
-    lastPhone: '',
-    firstPhone: '',
+    perPage: 20,
+    page: 1,
   };
 
   async componentDidMount() {
@@ -22,37 +22,60 @@ export default class PhonesPage extends PureComponent {
 
     const searchParams = new URLSearchParams(this.props.location.search);
 
-    const newSearch = searchParams.get('query') || '';
-    const newSort = searchParams.get('sort') || '';
+    const urlSearch = searchParams.get('query') || '';
+    const urlSort = searchParams.get('sort') || '';
 
     this.setState({
       phones: data,
-      searchValue: newSearch,
-      sortType: newSort,
+      searchValue: urlSearch,
+      sortType: urlSort,
     });
   }
+
+  // static getDerivedStateFromProps(props, state) {
+  //   if (props.initialPhones.length !== state.phones.length) {
+  //     return { phones: props.initialPhones };
+  //   }
+
+  //   return null;
+  // }
 
   componentDidUpdate() {
     const searchParams = new URLSearchParams();
+    const { searchValue, sortType } = this.state;
 
-    searchParams.append('query', this.state.searchValue.toString());
-    searchParams.append('sort', this.state.sortType.toString());
-    this.props.history.push({
-      pathname: '/phones/',
-      search: `?${searchParams.toString()}`,
-    });
+    if (searchValue !== '' || sortType !== '') {
+      searchParams.append('query', searchValue.toString());
+      searchParams.append('sort', sortType.toString());
+
+      this.props.history.push({
+        pathname: '/phones/',
+        search: `?${searchParams.toString()}`,
+      });
+    }
   }
 
-  getSearchValue = (event) => {
+  setSearchValue = (event) => {
     const searchValue = event.target.value.toLowerCase().trim();
 
-    this.setState({ searchValue });
+    this.setState(state => ({
+      searchValue,
+      phones: this.sortBy(
+        this.handleSearch(this.props.initialPhones, searchValue),
+        state.sortType
+      ),
+      page: 1,
+    }));
   };
 
-  getSortType = (event) => {
+  setSortType = (event) => {
     const { value } = event.target;
 
-    this.setState({ sortType: value });
+    this.setState(state => ({
+      sortType: value,
+      phones: this.sortBy(state.phones, value),
+      page: 1,
+    }));
   };
 
   handleSearch = (phones, searchValue) => phones.filter(phone => (
@@ -64,72 +87,60 @@ export default class PhonesPage extends PureComponent {
   sortBy = (phones, type) => {
     switch (type) {
       case 'alphabet':
-        return phones.sort((a, b) => a.name.localeCompare(b.name));
+        return [...phones].sort((a, b) => a.name.localeCompare(b.name));
 
       case 'age':
-        return phones.sort((a, b) => a.age - b.age);
+        return [...phones].sort((a, b) => a.age - b.age);
 
       default:
         return phones;
     }
   };
 
-  togglePagination = (btnId, perPage) => {
-    const firstIndex = btnId * perPage - perPage;
-    const lastIndex = btnId * perPage;
-
-    this.setState(state => ({
-      lastPhone: lastIndex,
-      firstPhone: firstIndex + 1,
-      phones: [...this.sortBy(
-        this.props.initialPhones, state.sortType
-      )].slice(firstIndex, lastIndex),
-    }));
-  };
-
-  perPagePhoneCounter = () => {
-    const { firstPhone, lastPhone } = this.state;
-    const total = this.props.initialPhones.length;
-
-    return (
-      <span>
-        {firstPhone}
-        {firstPhone ? '-' : `${total} `}
-        {lastPhone > `${total}` ? `${total} ` : `${lastPhone} `}
-        of
-        {` ${total}`}
-      </span>
-    );
-  }
+  togglePagination = (btnId, perPage) => this.setState({ page: btnId, perPage })
 
   render() {
-    const { phones, searchValue, sortType } = this.state;
+    const {
+      phones, searchValue, sortType, page, perPage,
+    } = this.state;
     const { handleSearch, sortBy } = this;
+
+    const firstIndex = page * perPage - perPage;
+    const lastIndex = page * perPage;
 
     const preparedPhones = sortBy(
       handleSearch(phones, searchValue),
       sortType
-    );
+    ).slice(firstIndex, lastIndex);
 
     return (
       <>
-        {phones.length < 1 ? (
+        {this.props.initialPhones.length === 0 ? (
           <Loader />
         ) : (
           <>
             <SearchPanel
-              getSearchValue={this.getSearchValue}
-              getSortType={this.getSortType}
+              getSearchValue={this.setSearchValue}
+              getSortType={this.setSortType}
             />
-            <h2>Phones Page({this.perPagePhoneCounter()})</h2>
+            <h2>Phones Page</h2>
             <Pagination
-              total={this.props.initialPhones.length}
+              page={page}
+              perPage={perPage}
+              total={phones.length}
               togglePagination={this.togglePagination}
             />
-            <PhoneItem
-              phones={preparedPhones}
-              handleAddToCart={this.props.handleAddToCart}
-            />
+
+            <ul className="phones-list">
+              {preparedPhones.map(phone => (
+                <li key={phone.id} className="phones-item">
+                  <PhoneItem
+                    phone={phone}
+                    handleAddToCart={this.props.handleAddToCart}
+                  />
+                </li>
+              ))}
+            </ul>
           </>
         )}
       </>
