@@ -42,7 +42,7 @@ class App extends React.Component {
 
   handleBasket = (id, operation) => {
     const indexPhone = this.state.phonesToBasket
-      .findIndex((phone, i) => i === id);
+      .findIndex(phone => phone.id === id);
 
     this.setState((prevState) => {
       let currentArray = [...prevState.phonesToBasket];
@@ -63,12 +63,12 @@ class App extends React.Component {
       }
 
       return {
-        itemsAtBasket: currentArray,
+        phonesToBasket: currentArray,
       };
     });
   }
 
-  setItemToBasket = (phoneName, imgUrl) => {
+  setItemToBasket = (phoneName, imgUrl, id) => {
     this.setState(prevState => ({
       phonesToBasket: [
         ...prevState.phonesToBasket,
@@ -76,6 +76,7 @@ class App extends React.Component {
           quantity: 1,
           phone: phoneName,
           imageUrl: imgUrl,
+          id,
         },
       ],
     }));

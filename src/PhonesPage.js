@@ -26,7 +26,7 @@ const PhonesPage = ({ phone, urlImg, setItemToBasket }) => (
       <button
         type="submit"
         onClick={() => {
-          setItemToBasket(phone.name, urlImg);
+          setItemToBasket(phone.name, urlImg, phone.id);
         }}
       >
               Add

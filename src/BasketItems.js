@@ -29,7 +29,7 @@ const BasketItems = ({ phonesToBasket, handleBasket }) => (
                   <td>
                     <button
                       type="button"
-                      onClick={() => handleBasket(index, 'remove')}
+                      onClick={() => handleBasket(phone.id, 'remove')}
                       className="basketPage__table-quantity-remove"
                     >
                  x
@@ -38,7 +38,7 @@ const BasketItems = ({ phonesToBasket, handleBasket }) => (
                   <td className="basketPage__table-tbody-td">
                     <button
                       type="button"
-                      onClick={() => handleBasket(index, 'decrease')}
+                      onClick={() => handleBasket(phone.id, 'decrease')}
                       className="basketPage__table-quantity-minus"
                     >
                  -
@@ -46,7 +46,7 @@ const BasketItems = ({ phonesToBasket, handleBasket }) => (
                     {phone.quantity}
                     <button
                       type="button"
-                      onClick={() => handleBasket(index, 'increase')}
+                      onClick={() => handleBasket(phone.id, 'increase')}
                       className="basketPage__table-quantity-plus"
                     >
                  +
