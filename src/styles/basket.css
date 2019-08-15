@@ -1,3 +1,21 @@
+.basket-items--hidden {
+  visibility: hidden;
+}
+
+.basket-items {
+  position: absolute;
+  top: 0;
+  right: -6px;
+  margin: auto;
+  background: #fff;
+  color: #4caf50;
+  width: 24px;
+  font-size: 18px;
+  border-radius: 50%;
+  border: 1px solid #4caf50;
+  text-align: center;
+}
+
 .basket-item {
   margin: 30px 0;
   padding: 15px 30px;
@@ -26,5 +44,38 @@
 
 .basket-buttons {
   display: flex;
+  width: 135px;
   justify-content: space-between;
+  align-items: center;
+}
+
+.basket-buttons__item {
+  width: 30px;
+  height: 25px;
+  background: #fff;
+  font-weight: 700;
+  color: #4caf50;
+  cursor: pointer;
+  border: 1px solid #4caf50;
+  font-size: 18px;
+}
+
+.basket-buttons__item:focus {
+  background: #4caf50;
+  color: #fff;
+}
+
+.basket-buttons__item--disabled {
+  opacity: 0.6;
+  background: #d2efd2;
+}
+
+.basket-buttons--delete {
+  color: #f00;
+  border: 1px solid #f00;
+}
+
+.basket-buttons--delete:focus {
+  background: #f00;
+  color: #fff;
 }

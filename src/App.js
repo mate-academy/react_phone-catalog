@@ -111,9 +111,9 @@ class App extends React.Component {
                 to="/basket"
               >
                 <img src="./img/basket-icon.png" alt="basket" />
-                <div className={basketItems
+                <div className={basketItems.length
                   ? 'basket-items'
-                  : 'basket-items--hidden'}
+                  : 'basket-items basket-items--hidden'}
                 >
                   {basketItems.length}
                 </div>

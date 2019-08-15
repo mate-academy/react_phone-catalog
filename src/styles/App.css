@@ -78,15 +78,6 @@ li {
   position: relative;
 }
 
-.basket-items {
-  position: absolute;
-  top: 0;
-  right: 0;
-  margin: auto;
-  background: transparent;
-  color: red;
-}
-
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -96,4 +87,8 @@ li {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.nav-link--basket {
+  display: block;
 }

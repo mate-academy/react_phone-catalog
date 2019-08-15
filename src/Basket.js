@@ -1,9 +1,9 @@
 import React from 'react';
 import propTypes from 'prop-types';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './styles/basket.css';
 
-const Basket = ({ basketItems, handlerRemovePhone, handlerChangeAmount}) => (
+const Basket = ({ basketItems, handlerRemovePhone, handlerChangeAmount }) => (
   <div className="basket">
     <h2>Your order</h2>
     {(basketItems.length > 0) ? (
@@ -27,22 +27,28 @@ const Basket = ({ basketItems, handlerRemovePhone, handlerChangeAmount}) => (
           <div className="basket-buttons">
             <button
               onClick={() => handlerChangeAmount(item.id, 'plus')}
+              disabled={item.amount === 100}
               type="button"
-              className="basket-buttons basket-buttons--plus"
+              className={(item.amount === 100)
+                ? 'basket-buttons__item basket-buttons__item--disabled'
+                : 'basket-buttons__item'}
             >
               +
             </button>
             <span>{item.amount}</span>
             <button
               onClick={() => handlerChangeAmount(item.id, 'minus')}
+              disabled={item.amount === 1}
               type="button"
-              className="basket-buttons--minus"
+              className={(item.amount === 1)
+                ? 'basket-buttons__item basket-buttons__item--disabled'
+                : 'basket-buttons__item'}
             >
               -
             </button>
             <button
               type="button"
-              className="basket-buttons--delete"
+              className="basket-buttons__item basket-buttons--delete"
               onClick={() => handlerRemovePhone(item.id)}
             >
               X
