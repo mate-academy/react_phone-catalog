@@ -46,7 +46,7 @@ export default class Pagination extends Component {
     return (
       <>
         <div className="pagination-box">
-          {pages.length === 1 ? (
+          {pages.length <= 1 ? (
             <div>{' '}</div>
           ) : (
             <ul className="pagination-panel">

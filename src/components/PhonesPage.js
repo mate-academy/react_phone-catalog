@@ -111,7 +111,9 @@ export default class PhonesPage extends PureComponent {
               getSortType={this.setSortType}
             />
             <h2>
-              Phones Page ({firstIndex + 1}-
+              Phones Page
+              ({preparedPhones.length < 1 ? firstIndex : firstIndex + 1}
+              {'-'}
               {lastIndex > preparedPhones.length
                 ? `${preparedPhones.length}`
                 : `${lastIndex}`}
