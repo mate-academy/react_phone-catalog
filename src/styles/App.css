@@ -1,0 +1,94 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+
+ul,
+dl,
+dd,
+h1,
+h2,
+h3 {
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  width: auto;
+  max-width: 100%;
+}
+
+button:focus,
+input:focus,
+select:focus {
+  outline-offset: 0;
+  outline: none;
+  border: 1px solid transparent;
+}
+
+li {
+  display: inline-block;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #42485b;
+}
+
+.nav-link:hover,
+.nav-link:focus,
+.nav-link__active {
+  opacity: 0.9;
+  color: #084914;
+}
+
+.App {
+  font-family: Arial, sans-serif;
+  font-size: 20px;
+  color: #42485b;
+}
+
+.App-header {
+  background: #e1fbca;
+  margin-bottom: 24px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.7);
+}
+
+.App__nav {
+  display: flex;
+  align-items: center;
+}
+
+.App__nav-link {
+  margin: 24px 48px 24px 0;
+  font-size: 24px;
+}
+
+.App__nav-link:hover {
+  text-decoration: underline;
+}
+
+.App-container {
+  padding: 24px;
+}
+
+.App-header__basket {
+  width: 50px;
+  margin-right: 40px;
+  position: relative;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.container--header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-link--basket {
+  display: block;
+}

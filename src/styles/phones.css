@@ -1,0 +1,45 @@
+.phones {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+}
+
+.phones-catalog__item {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  align-items: center;
+  grid-column-gap: 40px;
+  background: #fff;
+  border: 2px solid;
+  border-radius: 24px;
+  margin-bottom: 24px;
+  padding: 12px;
+}
+
+.item-description--name {
+  font-size: 24px;
+  color: #42485b;
+}
+
+.item-description--content {
+  font-size: 16px;
+  height: 35px;
+}
+
+.phones-catalog__item--add {
+  width: 130px;
+  height: 50px;
+  font-size: 15px;
+  color: #084914;
+  background: #fff;
+  border: 1px solid #084914;
+  cursor: pointer;
+  font-weight: 600;
+  border-radius: 12px;
+}
+
+.phones-catalog__item--add:hover,
+.phones-catalog__item--add:focus {
+  background: #e1fbca;
+  opacity: 0.9;
+  border: 1px solid #084914;
+}
