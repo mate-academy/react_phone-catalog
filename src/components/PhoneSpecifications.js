@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-const PhoneSpecification = ({ isVisible, toggleParams, details }) => {
+const PhoneSpecification = ({ details }) => {
   const {
     availability,
     battery,
@@ -13,6 +13,8 @@ const PhoneSpecification = ({ isVisible, toggleParams, details }) => {
     sizeAndWeight,
   } = details;
 
+  const [isVisible, setIsVisible] = useState(false);
+
   return (
     <>
       {isVisible
@@ -20,7 +22,7 @@ const PhoneSpecification = ({ isVisible, toggleParams, details }) => {
           <div className="phone__params">
             <button
               type="button"
-              onClick={toggleParams}
+              onClick={() => setIsVisible(false)}
               className="cart-btn params-toggle-btn"
             >
               Hide specifications
@@ -34,7 +36,7 @@ const PhoneSpecification = ({ isVisible, toggleParams, details }) => {
                     .filter(item => item !== '').length > 0
                     ? (
                       availability.map(prop => (
-                        <li>
+                        <li key={prop}>
                           {prop.replace(',', '')}
                         </li>
                       ))
@@ -80,7 +82,7 @@ const PhoneSpecification = ({ isVisible, toggleParams, details }) => {
 
                           <ul className="phone__specifications-list">
                             {camera.features.map(prop => (
-                              <li>{prop}</li>
+                              <li key={prop}>{prop}</li>
                             ))}
                           </ul>
                         </li>
@@ -236,7 +238,7 @@ const PhoneSpecification = ({ isVisible, toggleParams, details }) => {
           <div className="phone__params">
             <button
               type="button"
-              onClick={toggleParams}
+              onClick={() => setIsVisible(true)}
               className="cart-btn params-toggle-btn"
             >
               Show specifications
@@ -249,9 +251,16 @@ const PhoneSpecification = ({ isVisible, toggleParams, details }) => {
 };
 
 PhoneSpecification.propTypes = {
-  details: PropTypes.objectOf(PropTypes.object).isRequired,
-  toggleParams: PropTypes.func.isRequired,
-  isVisible: PropTypes.bool.isRequired,
+  details: PropTypes.shape({
+    availability: PropTypes.array.isRequired,
+    battery: PropTypes.object.isRequired,
+    camera: PropTypes.object.isRequired,
+    connectivity: PropTypes.object.isRequired,
+    display: PropTypes.object.isRequired,
+    hardware: PropTypes.object.isRequired,
+    storage: PropTypes.object.isRequired,
+    sizeAndWeight: PropTypes.object.isRequired,
+  }).isRequired,
 };
 
 export default PhoneSpecification;

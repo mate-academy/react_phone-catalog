@@ -4,6 +4,21 @@
   display: flex;
   justify-content: center;
 
+  &__empty-basket {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  &__empty-basket-img {
+    margin-top: 100px;
+    padding-right: 40px;
+
+    width: 340px;
+    height: 300px;
+
+    opacity: 0.1;
+  }
+
   &__wrapper {
     max-width: 1060px;
 

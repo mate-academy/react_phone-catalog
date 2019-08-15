@@ -9,12 +9,21 @@ const Basket = ({
   increaseQuantity,
 }) => (
   <div className="basket-page">
-    <div className="basket-page__wrapper">
-      <h1 className="basket-page__title">Added items</h1>
-
-      {selectedPhones.length < 1
-        ? <p className="basket-page__text">Shopping Cart is empty</p>
-        : (
+    {selectedPhones.length < 1
+      ? (
+        <div className="basket-page__empty-basket">
+          <h1 className="basket-page__title">
+            Shopping Cart is empty
+          </h1>
+          <img
+            className="basket-page__empty-basket-img"
+            src="img/empty-basket.png"
+            alt="empty basket"
+          />
+        </div>
+      ) : (
+        <div className="basket-page__wrapper">
+          <h1 className="basket-page__title">Added items</h1>
           <ul className="basket-page__shopping-list">
             {selectedPhones.map(phone => (
               <li
@@ -82,9 +91,9 @@ const Basket = ({
               </li>
             ))}
           </ul>
-        )
-      }
-    </div>
+        </div>
+      )
+    }
   </div>
 );
 
