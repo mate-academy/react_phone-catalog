@@ -28,45 +28,22 @@ class PhonesPage extends React.Component {
     });
   };
 
-  onHandlerChange = (event) => {
-    const { value, valueSelect, name } = event.target;
-
-    if (name === 'filter') {
-      this.setState({ filterStr: value });
-    }
-
-    this.setState(prevState => ({
-      phonesToShow: prevState.phonesToShow
-        .filter(phone => (
-          phone.name.toLowerCase().includes(value.toLowerCase())
-        ))
-        .sort((a, b) => {
-          switch (valueSelect) {
-            case 'newest':
-              return a.id - b.id;
-            case 'alpha':
-              return a.name.localeCompare(b.name);
-            default:
-              return null;
-          }
-        }),
-    }));
-  };
-
   onHandlerFilter = (event) => {
     const { value } = event.target;
 
-    if (value === '^$') {
-      return;
+    this.setState({ filterStr: value });
+  };
+
+  filterPhones = (filter) => {
+    const { phonesToShow, phones } = this.state;
+
+    if (filter === '^$') {
+      return phonesToShow;
     }
 
-    this.setState(prevState => ({
-      filterStr: value,
-      phonesToShow: prevState.phones
-        .filter(phone => (
-          phone.name.toLowerCase().includes(value.toLowerCase())
-        )),
-    }));
+    return phones.filter(phone => (
+      phone.name.toLowerCase().includes(filter.toLowerCase())
+    ));
   };
 
   getClearFilter = () => {
@@ -88,15 +65,18 @@ class PhonesPage extends React.Component {
             case 'alpha':
               return a.name.localeCompare(b.name);
             default:
-              return null;
+              return {
+                phonesToShow: prevState.phones,
+              };
           }
         }),
     }));
   };
 
   render() {
-    const { filterStr, phonesToShow, loading } = this.state;
+    const { filterStr, loading } = this.state;
     const { handlerAddToBasket } = this.props;
+    const filterPhones = this.filterPhones(filterStr);
 
     return (
       loading ? (
@@ -108,7 +88,7 @@ class PhonesPage extends React.Component {
             onHandlerSort={this.onHandlerSort}
           />
           <PhoneCatalog
-            phones={phonesToShow}
+            phones={filterPhones}
             handlerAddToBasket={handlerAddToBasket}
           />
         </div>
