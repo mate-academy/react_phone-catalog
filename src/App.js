@@ -65,17 +65,32 @@ class App extends React.Component {
   }
 
   setItemToBasket = (phoneName, imgUrl, id) => {
-    this.setState(prevState => ({
-      phonesToBasket: [
-        ...prevState.phonesToBasket,
-        {
-          quantity: 1,
-          phone: phoneName,
-          imageUrl: imgUrl,
-          id,
-        },
-      ],
-    }));
+    if (this.state.phonesToBasket.find(item => item.phone === phoneName)) {
+      this.setState(prevState => ({
+        phonesToBasket: [
+          ...prevState.phonesToBasket
+            .filter(phone => (phone.phone !== phoneName)),
+          {
+            quantity: prevState.phonesToBasket
+              .find(phone => phone.phone === phoneName).quantity + 1,
+            phone: phoneName,
+            imageUrl: imgUrl,
+          },
+        ],
+      }));
+    } else {
+      this.setState(prevState => ({
+        phonesToBasket: [
+          ...prevState.phonesToBasket,
+          {
+            quantity: 1,
+            phone: phoneName,
+            imageUrl: imgUrl,
+            id,
+          },
+        ],
+      }));
+    }
   }
 
   handleFilter = (event) => {

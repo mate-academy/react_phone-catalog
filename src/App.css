@@ -198,8 +198,9 @@ _______________________________________________________________ */
   background: #f9f9f9;
   width: 200px;
   text-align: center;
-  margin: 38px 0 80px;
+  margin: 0 0 25px;
   position: relative;
+  padding-top: 10px;
   height: 275px;
 }
 
