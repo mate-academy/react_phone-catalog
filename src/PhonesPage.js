@@ -28,8 +28,18 @@ class PhonesPage extends React.Component {
     });
   };
 
+  onCLickEnter = (event) => {
+    if (event.keyCode === 13) {
+      event.preventDefault();
+    }
+  };
+
   onHandlerFilter = (event) => {
     const { value } = event.target;
+
+    if (event.keyCode === 13) {
+      event.preventDefault();
+    }
 
     this.setState({ filterStr: value });
   };
@@ -86,6 +96,7 @@ class PhonesPage extends React.Component {
             onHandlerFilter={this.onHandlerFilter}
             clearFilter={this.getClearFilter}
             onHandlerSort={this.onHandlerSort}
+            onCLickEnter={this.onCLickEnter}
           />
           <PhoneCatalog
             phones={filterPhones}

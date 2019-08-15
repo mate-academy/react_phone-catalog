@@ -7,6 +7,7 @@ const Filter = ({
   onHandlerFilter,
   clearFilter,
   onHandlerSort,
+  onCLickEnter,
 }) => (
   <form className="phones-filter">
     <div className="phones-filter__row">
@@ -20,6 +21,7 @@ const Filter = ({
           className="phones-filter__area"
           value={filterStr}
           onChange={onHandlerFilter}
+          onKeyDown={onCLickEnter}
         />
         <button
           className={filterStr
@@ -54,6 +56,7 @@ Filter.propTypes = {
   onHandlerFilter: propTypes.func.isRequired,
   clearFilter: propTypes.func.isRequired,
   onHandlerSort: propTypes.func.isRequired,
+  onCLickEnter: propTypes.func.isRequired,
 };
 
 export default Filter;
