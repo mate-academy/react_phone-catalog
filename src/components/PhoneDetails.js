@@ -123,8 +123,6 @@ const PhoneDetails = ({
         </div>
 
         <PhoneSpecifications
-          // isVisible={isVisible}
-          // toggleParams={this.toggleParams}
           details={details}
         />
       </div>
