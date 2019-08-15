@@ -92,77 +92,7 @@
     box-shadow: 0 2.5em 0 0;
   }
 }
-/* ----------------------------------------------------------------
-card
-----------------------------------------------------
-?? */
 
-.card {
-  height: 350px;
-  width: 360px;
-  background: #fff;
-  border: 1px solid #f3f3f3;
-  border-radius: 5px;
-  padding: 30px 15px 15px;
-  box-sizing: border-box;
-  font-size: 11px;
-  line-height: 13px;
-}
-
-.card__img {
-  width: 160px;
-  height: 134px;
-  display: block;
-}
-
-.card__text {
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 15px;
-  margin-bottom: 5px;
-  padding: 0;
-}
-
-.card__block-price {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  margin-bottom: 20px;
-}
-
-.card__price-number {
-  font-size: 10px;
-  line-height: 10px;
-}
-
-.card__button {
-  font-weight: bold;
-  font-size: 14px;
-  line-height: 40px;
-  color: #fff;
-  text-align: center;
-  text-transform: uppercase;
-  border: 1px solid #00acdc;
-  border-radius: 5px;
-  display: block;
-  cursor: pointer;
-  text-decoration: none;
-  width: 170px;
-  height: 40px;
-  box-sizing: border-box;
-  background: #00acdc;
-}
-
-.card__button:hover {
-  background: #fff;
-  color: #00acdc;
-}
-
-.catalog__phones {
-  display: grid;
-  justify-content: center;
-  margin: 50px 0;
-}
 /* ////////
 option
 ______________________________________________________________ */
@@ -179,6 +109,7 @@ ______________________________________________________________ */
   height: 40px;
   padding: 0 12px;
   border: 1px solid #e0e0e0;
+  cursor: pointer;
 }
 
 .details {
@@ -242,5 +173,79 @@ body {
 }
 
 /* ______________________________________________________________
-пробую все красивенько зробити
+phoneCatalog
 _______________________________________________________________ */
+.table {
+  background: #744e4e;
+}
+
+.price-tags {
+  display: flex;
+  width: 30%;
+}
+
+.price-tag {
+  border: 1px solid black;
+}
+
+.price-tag__wrapp-card {
+  width: 80px;
+  border: 1px solid red;
+  position: absolute;
+  display: flex;
+}
+
+.price-tag__wrapp-card-img {
+  overflow: hidden;
+  box-sizing: border-box;
+  object-fit: cover;
+  width: 100%;
+  position: relative;
+  display: block;
+}
+
+/* ______________________________________________________________
+search constainer
+_______________________________________________________________ */
+
+.input {
+  width: 67%;
+  border-radius: 41px;
+  border: 0;
+  line-height: 56px;
+  padding-left: 8px;
+  height: 20px;
+}
+
+.destination-details {
+  position: relative;
+  left: 74px;
+}
+
+.adress-delivery__header {
+  font-family: Roboto, sans-serif;
+  font-size: 13px;
+  line-height: 24px;
+  vertical-align: center;
+  border-bottom: 1px solid #757575;
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+  height: 48px;
+}
+
+.search__button {
+  background: transparent;
+  border: none;
+  width: 50px;
+  height: 50px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("https://www.iovox.com/images/features/features-search.png");
+}
+
+.search__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

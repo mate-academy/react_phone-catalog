@@ -17,36 +17,35 @@ class PhoneCatalog extends React.Component {
     const { phoneArrays } = this.state;
 
     return (
-      <div>
-        <form action="/" className="adress-delivery__header">
-          <span>choose sort</span>
-          <div
-            className="destination-details"
-          >
-            <select
-              name=""
-              onClick={handleSort}
-              className="adress-delivery__destination-details"
+      <div className="table">
+        <div className="table__header">
+          <form action="/" className="adress-delivery__header">
+            <div className="search__container">
+              <button type="button" className="search__button">
+                {sortField}
+              </button>
+              <input
+                type="text"
+                className="input"
+                placeholder="search"
+                onChange={handleFilter}
+              />
+            </div>
+            <div
+              className="destination-details"
             >
-              <option value="alphabet">sort By Alphabet</option>
-              <option value="">sort order</option>
-            </select>
-          </div>
-          <div>
-            по полю
-            {sortField}
-            <input
-              type="text"
-              className="input"
-              placeholder="search"
-              onChange={handleFilter}
-            />
-
-          </div>
-        </form>
-
-        {phoneArrays}
-
+              <select
+                name=""
+                onClick={handleSort}
+                className="adress-delivery__destination-details"
+              >
+                <option value="alphabet">sort By Alphabet</option>
+                <option value="">sort order</option>
+              </select>
+            </div>
+          </form>
+          {phoneArrays}
+        </div>
         {phones.length === 0 && phoneId === 0
           ? <Loading />
           : (

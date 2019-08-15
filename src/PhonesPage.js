@@ -5,26 +5,26 @@ import PropTypes from 'prop-types';
 const PhonesPage = ({ phone, urlImg, setItemToBasket }) => (
   <div
     key={phone.id}
-    className="catalog__phones"
+    className="price-tags"
   >
-    <div className="card" data-qa="card">
-      <img
-        src={
-          `${urlImg}/${phone.imageUrl}`
-        }
-        alt="Motorrola"
-        className="card__img"
-      />
-      <div className="card__text">{phone.name}</div>
-      <div>
+    <div className="price-tag" data-qa="card">
+      <div className="price-tag__wrapp-card">
+        <img
+          className="price-tag__wrapp-card-img"
+          src={
+            `${urlImg}/${phone.imageUrl}`
+          }
+          alt="Phone"
+        />
+      </div>
+      <span className="card__span">
         <NavLink to={`/phones/${phone.id}`}>{ phone.id}</NavLink>
-      </div>
-      <div className="card__block-price">
-        <div className="card__price">details:</div>
-        <div className="card__price-number">{phone.snippet}</div>
-      </div>
+      </span>
+      <h4 className="card__h4">details:</h4>
+      <p className="card__information__detail">{phone.snippet}</p>
       <button
         type="submit"
+        className="price-btn"
         onClick={() => {
           setItemToBasket(phone.name, urlImg, phone.id);
         }}
