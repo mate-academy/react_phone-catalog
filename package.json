@@ -1,5 +1,5 @@
 {
-  "homepage": "https://mate-academy.github.io/react_phone-catalog",
+  "homepage": "https://hlybchenko.github.io/react_phone-catalog/",
   "name": "react_phone-catalog",
   "version": "0.1.0",
   "private": true,
@@ -8,10 +8,12 @@
   "license": "GPL-3.0",
   "dependencies": {
     "prop-types": "^15.7.2",
+    "query-string": "^6.8.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.1",
-    "react-scripts": "3.0.1"
+    "react-scripts": "3.0.1",
+    "react-spinners": "^0.5.13"
   },
   "devDependencies": {
     "@mate-academy/eslint-config-react": "*",
