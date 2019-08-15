@@ -114,7 +114,7 @@ class App extends React.Component {
             className="page__home phone__position Phones__page"
             activeClassName="phoneClassActive"
           >
-          Home
+            <div className="App__logo" />
           </NavLink>
           <NavLink
             to="/phones"
@@ -125,10 +125,10 @@ class App extends React.Component {
           </NavLink>
           <NavLink
             to="/basket"
-            className="Phones__page"
+            className="Phones__page page__basket"
             activeClassName="phoneClassActive"
           >
-        BasketItems
+            <div className="App__basket" />
           </NavLink>
         </nav>
         <Switch>
