@@ -8,7 +8,10 @@ const PhonesPage = ({ phone, urlImg, setItemToBasket }) => (
     className="price-tags"
   >
     <div className="price-tag" data-qa="card">
-      <div className="price-tag__wrapp-card">
+      <NavLink
+        to={`/phones/${phone.id}`}
+        className="price-tag__wrapp-card"
+      >
         <img
           className="price-tag__wrapp-card-img"
           src={
@@ -16,7 +19,7 @@ const PhonesPage = ({ phone, urlImg, setItemToBasket }) => (
           }
           alt="Phone"
         />
-      </div>
+      </NavLink>
       <span className="card__span">
         <NavLink to={`/phones/${phone.id}`}>{ phone.id}</NavLink>
       </span>

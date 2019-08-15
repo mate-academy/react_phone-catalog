@@ -21,9 +21,8 @@ class PhoneCatalog extends React.Component {
         <div className="table__header">
           <form action="/" className="adress-delivery__header">
             <div className="search__container">
-              <button type="button" className="search__button">
-                {sortField}
-              </button>
+              <div className="search__button" />
+              <div className="hidden">{sortField}</div>
               <input
                 type="text"
                 className="input"
@@ -49,15 +48,18 @@ class PhoneCatalog extends React.Component {
         {phones.length === 0 && phoneId === 0
           ? <Loading />
           : (
-            phones.map(phone => (
-              <PhonesPage
-                key={phone.id}
-                phone={phone}
-                phoneId={phoneId}
-                urlImg={urlImg}
-                setItemToBasket={setItemToBasket}
-              />
-            )))
+            <div className="catalog">
+              {phones.map(phone => (
+                <PhonesPage
+                  key={phone.id}
+                  phone={phone}
+                  phoneId={phoneId}
+                  urlImg={urlImg}
+                  setItemToBasket={setItemToBasket}
+                />
+              ))}
+            </div>
+          )
         }
       </div>
     );
