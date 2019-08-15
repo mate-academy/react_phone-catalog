@@ -75,7 +75,7 @@
   border: 1px solid #f00;
 }
 
-.basket-buttons--delete:focus {
+.basket-buttons--delete:hover {
   background: #f00;
   color: #fff;
 }
