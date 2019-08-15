@@ -98,8 +98,6 @@ ______________________________________________________________ */
 .adress-delivery__header {
   border-width: thin;
   margin: 0 20px;
-  grid-template-columns: auto auto 1fr;
-  column-gap: 10px;
   align-items: center;
   justify-content: space-between;
 }
@@ -174,38 +172,46 @@ body {
   color: #e0e0e0;
 }
 
+.table {
+  background: #e1eaee9c;
+}
+
 /* ______________________________________________________________
 phoneCatalog
 _______________________________________________________________ */
 .catalog {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 300px));
-  grid-gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(22px, 230px));
   padding: 0;
   margin: 0;
   justify-content: center;
 }
 
-.table {
-  background: #e1eaee9c;
-}
-
 .price-tags {
   display: flex;
-  width: 100%;
-  background: #493838;
+  justify-content: space-between;
+  color: #0e0d0d;
+  font-family: "Roboto", sans-serif;
 }
 
 .price-tag {
-  border: 1px solid black;
-  width: 100%;
+  background: #f9f9f9;
+  width: 200px;
+  text-align: center;
+  margin: 38px 0 80px;
+  position: relative;
+  height: 275px;
+}
+
+.price-tag:hover {
+  box-shadow: 0 7px 24.3px 2.7px rgba(91, 89, 89, 0.14);
 }
 
 .price-tag__wrapp-card {
   width: 80px;
-  border: 1px solid red;
-  position: absolute;
   display: flex;
+  padding-top: 5px;
+  padding-left: 53px;
 }
 
 .price-tag__wrapp-card-img {
@@ -218,14 +224,41 @@ _______________________________________________________________ */
 }
 
 .card__information__detail {
-  font-family: "Roboto", sans-serif;
+  position: absolute;
+  bottom: 0;
+  padding: 20px 25px;
   font-size: 10px;
+  color: #212020;
+  width: 150px;
+}
+
+.default__btn {
+  background: #373636;
+  border-radius: 10px;
+}
+
+.default__btn:hover {
+  background: #fff;
+}
+
+.card__item-title {
+  color: #212020;
+  font-size: 18px;
+  text-decoration: none;
+  padding: 14px 0;
+}
+
+.about__item-text {
+  font-size: 12px;
+  letter-spacing: 0.1px;
+  padding: 10px;
 }
 
 .price-btn {
   width: 100%;
   display: flex;
-
+  color: white;
+  justify-content: center;
 }
 
 /* ______________________________________________________________

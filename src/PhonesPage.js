@@ -7,7 +7,7 @@ const PhonesPage = ({ phone, urlImg, setItemToBasket }) => (
     key={phone.id}
     className="price-tags"
   >
-    <div className="price-tag" data-qa="card">
+    <div className="price-tag">
       <NavLink
         to={`/phones/${phone.id}`}
         className="price-tag__wrapp-card"
@@ -20,20 +20,28 @@ const PhonesPage = ({ phone, urlImg, setItemToBasket }) => (
           alt="Phone"
         />
       </NavLink>
-      <span className="card__span">
-        <NavLink to={`/phones/${phone.id}`}>{ phone.id}</NavLink>
+      <span className="card__item-title">
+        <NavLink
+          to={`/phones/${phone.id}`}
+          className="card__item-title"
+        >
+          { phone.id}
+        </NavLink>
       </span>
-      <h4 className="card__h4">details:</h4>
-      <p className="card__information__detail">{phone.snippet}</p>
-      <button
-        type="submit"
-        className="price-btn"
-        onClick={() => {
-          setItemToBasket(phone.name, urlImg, phone.id);
-        }}
-      >
-              Add
-      </button>
+      <div className="about__item-text">
+        {phone.snippet}
+      </div>
+      <div className="card__information__detail">
+        <button
+          type="submit"
+          className="price-btn default__btn"
+          onClick={() => {
+            setItemToBasket(phone.name, urlImg, phone.id);
+          }}
+        >
+        Add
+        </button>
+      </div>
     </div>
   </div>
 );
