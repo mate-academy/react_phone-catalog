@@ -12,7 +12,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: $main-color;
+  background: $header-color;
   box-shadow: 0 2px 4px #00000033;
 
   ul {
@@ -28,13 +28,17 @@ header {
     margin: 0 20px;
     padding: 20px;
 
-    width: 120px;
+    width: 130px;
     height: 100%;
 
     color: #000;
-    font-weight: bold;
+    font-weight: 500;
     font-size: 20px;
     text-align: center;
+
+
+    border-left: 1px solid $header-color;
+    border-right: 1px solid $header-color;
 
     text-decoration: none;
     text-transform: uppercase;
@@ -44,8 +48,8 @@ header {
 
   &__link:hover,
   .is-active {
-    background: #8dccf3;
-    box-shadow: 0px 0px 10px $shadow-color inset;
-    border-radius: $border-radius;
+    border-left: 1px solid $shadow-color;
+    border-right: 1px solid $shadow-color;
+    background: $main-color;
   }
 }

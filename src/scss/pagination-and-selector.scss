@@ -41,6 +41,8 @@
 
 .selector {
   margin: 0 20px;
+  display: flex;
+  align-items: center;
 
   &__phones-amount {
     margin-left: 5px;

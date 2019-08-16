@@ -31,7 +31,7 @@ const Header = ({ selectedPhones }) => (
           </NavLink>
         </li>
       </ul>
-      <div className="navigation__list-paragraph">
+      <div className="navigation__list-paragraph basket-wrapper">
         <NavLink
           to="/basket"
           exact
@@ -39,10 +39,11 @@ const Header = ({ selectedPhones }) => (
           activeClassName="is-active"
         >
           <img
-            src="img/basket.png"
+            src="img/shopping-cart (2).png"
             className="basket__img"
             alt="basket"
           />
+          <span>Basket</span>
         </NavLink>
 
         {selectedPhones.length > 0
@@ -50,7 +51,7 @@ const Header = ({ selectedPhones }) => (
             <span className="basket__added-items-quantity">
               {selectedPhones.length}
             </span>
-          ) : <></>
+          ) : <span className="basket__added-items-quantity">+</span>
         }
       </div>
     </nav>

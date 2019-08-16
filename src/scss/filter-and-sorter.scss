@@ -4,7 +4,7 @@
   padding: 20px 60px;
   width: 100%;
 
-  background: #013c60de;
+  background: $shadow-color;
 
   &__input-wrapper {
     width: 100%;
@@ -35,7 +35,7 @@
   justify-content: space-between;
   align-items: center;
 
-  margin-left: 20px;
+  margin: 0 0 30px 20px;
 
   font-size: 13px;
 
@@ -50,7 +50,7 @@
   &__item {
     padding: 5px;
 
-    transition: all 0.5s;
+    transition: all 0.3s;
   }
 
   &__item-active,
@@ -58,5 +58,6 @@
     color: #013c60de;
     cursor: pointer;
     box-shadow: 0 1px 2px #013b606d;
+    text-decoration: underline;
   }
 }

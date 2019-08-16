@@ -1,5 +1,9 @@
 @import "./variables";
 
+.phone-page {
+  flex-grow: 1;
+}
+
 .phone {
   display: flex;
   justify-content: center;

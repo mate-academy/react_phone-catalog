@@ -42,7 +42,7 @@ class PhoneDetailsPage extends React.Component {
     } = this.props;
 
     return (
-      <div>
+      <div className="phone-page">
         {error
           ? (<h2>Phone was not found</h2>)
           : (

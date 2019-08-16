@@ -8,6 +8,7 @@ import HomePage from './components/HomePage';
 import PhoneDetailsPage from './components/PhoneDetailsPage';
 import Basket from './components/Basket';
 import NotFoundPage from './components/NotFoundPage';
+import Footer from './components/Footer';
 
 class App extends React.Component {
   state = {
@@ -127,6 +128,8 @@ class App extends React.Component {
 
           <Route component={NotFoundPage} />
         </Switch>
+
+        <Footer />
       </div>
     );
   }
