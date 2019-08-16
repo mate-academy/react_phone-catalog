@@ -29,6 +29,10 @@ body::-webkit-scrollbar-thumb {
 	min-height: 100vh;
 }
 
+h1, h2 {
+  font-weight: 500;
+}
+
 @import "./scss/basket.scss";
 @import "./scss/basket-page.scss";
 @import "./scss/buttons.scss";
