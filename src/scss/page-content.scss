@@ -1,0 +1,21 @@
+@import "./variables";
+
+.page-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__catalog {
+    width: 1060px;
+    margin: 20px;
+    padding: 20px;
+
+    background: #fff;
+    box-shadow: 0 1px 2px $shadow-color;
+  }
+
+  &__with-info {
+    margin: 20px 0;
+    text-align: center;
+  }
+}

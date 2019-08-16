@@ -1,0 +1,125 @@
+@import "./variables";
+
+button {
+  cursor: pointer;
+  background: $main-color;
+}
+
+.cart-btn {
+  box-sizing: border-box;
+
+  width: 200px;
+  height: 30px;
+
+  position: absolute;
+  top: 350px;
+  left: 20px;
+  z-index: 2;
+
+  background: $main-color;
+  border: 1px solid $btns-second-color;
+  border-radius: $border-radius;
+
+  text-transform: uppercase;
+  font-weight: bold;
+  line-height: 30px;
+  color: #fff;
+
+  transition: all 0.3s;
+}
+
+.cart-btn:hover,
+.cart-btn:active {
+  background: $btns-second-color;
+  border: 1px solid $main-color;
+  color: #000;
+}
+
+.return-and-add-btn {
+  width: 220px;
+  height: 40px;
+
+  position: initial;
+  margin-left: 20px;
+
+  font-size: 14px;
+  line-height: 28px;
+}
+
+.params-toggle-btn {
+  position: initial;
+
+  width: 100%;
+  height: 40px;
+
+  margin-bottom: 30px;
+}
+
+.quantity-btn {
+  box-sizing: border-box;
+
+  width: 30px;
+  height: 30px;
+
+  position: absolute;
+}
+
+.phone-card {
+  &__quantity-btns {
+    box-sizing: border-box;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 200px;
+    height: 30px;
+
+    position: absolute;
+    top: 350px;
+    left: 20px;
+
+    background: #fff;
+    box-shadow: 0 0 6px #fff;
+    border-radius: 10px;
+  }
+
+  &__quantity-btns-btn {
+    padding: 0;
+    position: initial;
+
+    width: 30px;
+    height: 30px;
+  }
+}
+
+.quantity-btns {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__btn {
+    box-sizing: border-box;
+    display: inline-block;
+
+    width: 40px;
+    height: 40px;
+
+    position: inherit;
+  }
+}
+
+.basket-page {
+  &__change-quantity-btns-btn {
+    position: initial;
+
+    width: 30px;
+  }
+
+  &__shopping-list-remove-btn {
+    width: 210px;
+
+    left: 15px;
+    bottom: 20px;
+  }
+}

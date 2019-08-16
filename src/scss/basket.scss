@@ -1,0 +1,45 @@
+@import "./variables";
+
+.basket-wrapper {
+  position: relative;
+  margin: 0 20px;
+
+  height: 64px;
+}
+
+.basket {
+  width: 150px  !important;
+
+  display: flex !important;
+  justify-content: space-between;
+  align-items: center;
+
+  margin: 0 !important;
+  padding: 14px !important;
+
+  &__img {
+    margin-bottom: 5px;
+    max-height: 30px;
+  }
+
+  &__added-items-quantity {
+    display: block;
+    position: absolute;
+
+    width: 17px;
+    height: 17px;
+
+    right: 100px;
+    top: 28px;
+
+    color: #000 !important;
+    text-align: center;
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 14px;
+
+    background: #fff;
+    border: 1.5px solid #000;
+    border-radius: 50%;
+  }
+}

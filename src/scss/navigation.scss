@@ -1,0 +1,56 @@
+@import "./variables";
+
+header {
+  height: 64px;
+}
+.navigation {
+  position: fixed;
+  z-index: 10;
+
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: $header-color;
+  box-shadow: 0 2px 4px #00000033;
+
+  ul {
+    display: flex;
+    list-style: none;
+
+    height: 64px;
+  }
+
+  &__link {
+    box-sizing: border-box;
+    display: block;
+    margin: 0 20px;
+    padding: 20px;
+
+    width: 130px;
+    height: 100%;
+
+    color: #000;
+    font-weight: 500;
+    font-size: 20px;
+    text-align: center;
+
+
+    border-left: 1px solid $header-color;
+    border-right: 1px solid $header-color;
+
+    text-decoration: none;
+    text-transform: uppercase;
+
+    transition: all 0.3s;
+  }
+
+  &__link:hover,
+  .is-active {
+    border-left: 1px solid $shadow-color;
+    border-right: 1px solid $shadow-color;
+    background: $main-color;
+    color: #fff;
+  }
+}

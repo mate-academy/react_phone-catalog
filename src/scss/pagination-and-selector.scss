@@ -1,0 +1,53 @@
+@import './variables';
+
+.pagination-and-selector {
+  display: flex;
+  justify-content: space-between;
+
+  margin: 15px 0;
+}
+
+.pagination {
+  display: flex;
+  list-style: none;
+
+  margin-left: 15px;
+
+  &__page {
+    box-sizing: border-box;
+
+    width: 30px;
+    height: 30px;
+    margin: 0 5px;
+
+    text-align: center;
+    line-height: 30px;
+    color: #fff;
+
+    background: $main-color;
+    border: 1px solid $btns-second-color;
+    border-radius: $border-radius;
+
+    transition: all 0.3s;
+  }
+
+  &__page:hover,
+  &__page:active {
+    background: $btns-second-color;
+    border: 1px solid $main-color;
+    color: #000;
+  }
+
+
+}
+
+.selector {
+  margin: 0 20px;
+  display: flex;
+  align-items: center;
+
+  &__phones-amount {
+    margin-left: 5px;
+    border-radius: $border-radius;
+  }
+}
