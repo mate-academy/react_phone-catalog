@@ -44,15 +44,15 @@ const Header = ({ selectedPhones }) => (
             alt="basket"
           />
           <span>Basket</span>
-        </NavLink>
 
-        {selectedPhones.length > 0
-          ? (
-            <span className="basket__added-items-quantity">
-              {selectedPhones.length}
-            </span>
-          ) : <span className="basket__added-items-quantity">+</span>
-        }
+          {selectedPhones.length > 0
+            ? (
+              <span className="basket__added-items-quantity">
+                {selectedPhones.length}
+              </span>
+            ) : <span className="basket__added-items-quantity">+</span>
+          }
+        </NavLink>
       </div>
     </nav>
   </header>

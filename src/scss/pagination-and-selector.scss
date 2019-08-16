@@ -22,6 +22,7 @@
 
     text-align: center;
     line-height: 30px;
+    color: #fff;
 
     background: $main-color;
     border: 1px solid $btns-second-color;
@@ -34,6 +35,7 @@
   &__page:active {
     background: $btns-second-color;
     border: 1px solid $main-color;
+    color: #000;
   }
 
 

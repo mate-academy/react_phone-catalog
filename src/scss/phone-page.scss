@@ -26,9 +26,6 @@
     display: inline-block;
 
     margin: 15px 0;
-    padding: 0 50px;
-
-    text-shadow: 5px 5px 8px #000000d2;
   }
 
   &__images {
@@ -47,7 +44,7 @@
     top: 0;
 
     opacity: 0;
-    transition: all 2s;
+    transition: opacity .5s;
   }
 
   &__images-img-selected {
@@ -55,7 +52,8 @@
   }
 
   &__description {
-    margin: 10px;
+    margin: 10px 0 25px;
+    line-height: 1.4em;
   }
 
   &__btns {
@@ -129,7 +127,7 @@
     width: 100px;
     padding: 1em;
     cursor: pointer;
-    transition: all 1s;
+    transition: all .5s;
   }
 
   &__img:hover,

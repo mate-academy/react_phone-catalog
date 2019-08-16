@@ -31,16 +31,22 @@
 
   &__contacts h3 {
     margin-bottom: 10px;
+
+    font-weight: 500;
   }
 
   &__contacts-list {
     list-style: none;
   }
 
-  &__contacts-list li,
-  &__contacts-email,
+  &__contacts-link,
   &__contacts-adress {
     margin-left: 10px;
+  }
+
+  &__contacts-link {
+    text-decoration: none;
+    color: $shadow-color;
   }
 
   &__social-networks {
@@ -51,7 +57,7 @@
     width: 30px;
     height: 30px;
 
-    margin-right: 10px;
+    margin: 0 10px;
   }
 
   &__map-wrapper {

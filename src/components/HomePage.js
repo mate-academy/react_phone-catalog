@@ -6,23 +6,51 @@ const HomePage = () => (
 
     <div className="home-page__content">
       <div className="home-page__contacts">
-        <h2>Our contacts:</h2>
+        <h2 className="home-page__content-title">Our contacts:</h2>
 
         <div>
           <h3>Phones:</h3>
           <ul className="home-page__contacts-list">
-            <li>(057) 000 00 00</li>
-            <li>(099) 000 00 00</li>
-            <li>(068) 000 00 00</li>
-            <li>(073) 000 00 00</li>
+            <li>
+              <a
+                href="tel:0570000000"
+                className="home-page__contacts-link"
+              >
+                (057) 000 00 00
+              </a>
+            </li>
+            <li>
+              <a
+                href="tel:0990000000"
+                className="home-page__contacts-link"
+              >
+                (099) 000 00 00
+              </a>
+            </li>
+            <li>
+              <a
+                href="tel:0680000000"
+                className="home-page__contacts-link"
+              >
+                (068) 000 00 00
+              </a>
+            </li>
+            <li>
+              <a
+                href="tel:0730000000"
+                className="home-page__contacts-link"
+              >
+                (073) 000 00 00
+              </a>
+            </li>
           </ul>
         </div>
 
         <div>
           <h3>E-mails:</h3>
           <a
-            href="/"
-            className="home-page__contacts-email"
+            href="mailto:123@example.com"
+            className="home-page__contacts-link"
           >
             12345@example.com
           </a>

@@ -12,7 +12,7 @@ const Basket = ({
     {selectedPhones.length < 1
       ? (
         <div className="basket-page__empty-basket">
-          <h1 className="basket-page__title">
+          <h1 className="basket-page__empty-basket-title">
             Shopping Cart is empty
           </h1>
           <img
@@ -29,7 +29,7 @@ const Basket = ({
               <li
                 key={phone.id}
               >
-                <Link to={`/${phone.id}`}>
+                <Link to={`/details/${phone.id}`}>
                   <img
                     src={phone.image}
                     alt="phone"
