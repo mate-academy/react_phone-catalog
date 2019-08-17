@@ -25,6 +25,8 @@ class App extends React.Component {
     phonesVisible: [],
     phonesToBasket: [],
     sortField: '',
+    isLoaded: false,
+    isLoading: false,
   }
 
   async componentDidMount() {
@@ -62,6 +64,31 @@ class App extends React.Component {
         phonesToBasket: currentArray,
       };
     });
+  }
+
+  handleClickshow= () => {
+    this.setState({
+      isLoaded: true,
+    });
+
+    setTimeout(() => {
+      this.setState({
+        isLoaded: true,
+        isLoading: false,
+      });
+    }, 10);
+  }
+
+  handleClick = () => {
+    this.setState({
+      isLoading: false,
+    });
+    setTimeout(() => {
+      this.setState({
+        isLoaded: false,
+        isLoading: true,
+      });
+    }, 10);
   }
 
   setItemToBasket = (phoneName, imgUrl, id) => {
@@ -117,7 +144,9 @@ class App extends React.Component {
   }
 
   render() {
-    const { phonesVisible, phonesToBasket, sortField } = this.state;
+    const {
+      phonesVisible, phonesToBasket, sortField, isLoaded, isLoading,
+    } = this.state;
     const urlImg = 'https://mate-academy.github.io/phone-catalogue-static/';
 
     return (
@@ -176,6 +205,10 @@ class App extends React.Component {
                 phoneId={match.params.phoneId}
                 urlImg={urlImg}
                 phones={phonesVisible}
+                isLoaded={isLoaded}
+                handleClickshow={this.handleClickshow}
+                isLoading={isLoading}
+                handleClick={this.handleClick}
               />
             )}
           />

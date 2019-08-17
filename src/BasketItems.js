@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const BasketItems = ({ phonesToBasket, handleBasket }) => (
-  <div>
+  <div className="basket__wrapper__main">
     {phonesToBasket.length === 0
       ? <h1>Basket is empty</h1>
       : (

@@ -21,7 +21,10 @@ class PhoneDetailsPage extends React.Component {
 
   render() {
     const { phoneDetails, imgChoseUrl } = this.state;
-    const { urlImg, phoneId, phones } = this.props;
+    const {
+      urlImg, phoneId, phones, isLoaded,
+      handleClickshow, isLoading, handleClick,
+    } = this.props;
 
     const isPhoneId = phones.find(phone => phone.id === phoneId);
 
@@ -36,54 +39,83 @@ class PhoneDetailsPage extends React.Component {
     return (
       phoneDetails === null ? <Loading />
         : (
-
           <div
             className="catalog__phones"
           >
-            {imgChoseUrl
-              ? (
-                <img
-                  src={`${urlImg}/${imgChoseUrl}`}
-                  alt={`${imgChoseUrl}`}
-                  className="card__img"
-                />
-              )
-              : ''
-            }
+            <div className="catalog__phones__main">
+              {imgChoseUrl
+                ? (
+                  <div className="details__wrap">
+                    <div className="details__img_wraper">
+                      <img
+                        src={`${urlImg}/${imgChoseUrl}`}
+                        alt={`${imgChoseUrl}`}
+                        className="card__img"
+                      />
+                    </div>
+                    <div className="details__information">
+                      <button
+                        type="button"
+                        className="button__relative"
+                        onClick={handleClick}
+                      >
+                        { isLoading ? 'hide Details' : 'hide Details' }
+                      </button>
+                      {isLoaded
+                        ? (
+                          <div className="details">
+                            <h1>description</h1>
+                            <p>{`${phoneDetails.description}`}</p>
+                            <h3>Display</h3>
+                            <p>{`${phoneDetails.display.screenResolution}`}</p>
+                            <p>{`${phoneDetails.display.screenSize}`}</p>
+                            <h3>android</h3>
+                            <p>{`${phoneDetails.android.os}`}</p>
+                            <p>{`${phoneDetails.android.ui}`}</p>
+                            <h3>hardware</h3>
+                            <p>{`${phoneDetails.hardware.audioJack}`}</p>
+                            <p>{`${phoneDetails.hardware.cpu}`}</p>
+                            <p>{`${phoneDetails.hardware.usb}`}</p>
+                          </div>
+                        )
+                        : (
+                          <button
+                            type="button"
+                            className="btn__details"
+                            onClick={handleClickshow}
+                          >
+                            { isLoading ? 'Details' : 'Details' }
+                          </button>
+                        )
+                      }
+                    </div>
+                  </div>
+                )
+                : ''
+              }
+            </div>
             {phoneDetails.images
               ? (
                 <div className="phone__details-main">
                   <div className="container__for__images">
                     {phoneDetails.images.map(imgUrl => (
-                      <img
-                        onMouseOver={() => this.handleChose(`${imgUrl}`)}
-                        key={imgUrl}
-                        src={`${urlImg}/${imgUrl}`}
-                        alt="phone"
-                        className="card__img"
-                        onFocus
-                      />
+                      <div className="details__img_wrap">
+                        <img
+                          onMouseOver={() => this.handleChose(`${imgUrl}`)}
+                          key={imgUrl}
+                          src={`${urlImg}/${imgUrl}`}
+                          alt="phone"
+                          className="card__img"
+                          onFocus
+                        />
+                      </div>
                     ))}
                   </div>
                 </div>
               )
               : ''
             }
-            <div className="details">
 
-              <h1>description</h1>
-              <p>{`${phoneDetails.description}`}</p>
-              <h3>Display</h3>
-              <p>{`${phoneDetails.display.screenResolution}`}</p>
-              <p>{`${phoneDetails.display.screenSize}`}</p>
-              <h3>android</h3>
-              <p>{`${phoneDetails.android.os}`}</p>
-              <p>{`${phoneDetails.android.ui}`}</p>
-              <h3>hardware</h3>
-              <p>{`${phoneDetails.hardware.audioJack}`}</p>
-              <p>{`${phoneDetails.hardware.cpu}`}</p>
-              <p>{`${phoneDetails.hardware.usb}`}</p>
-            </div>
           </div>
         ));
   }
@@ -96,6 +128,10 @@ PhoneDetailsPage.propTypes = {
   phones: PropTypes.array.isRequired,
   // eslint-disable-next-line react/require-default-props
   phoneId: PropTypes.string,
+  isLoaded: PropTypes.string.isRequired,
+  handleClickshow: PropTypes.func.isRequired,
+  isLoading: PropTypes.string.isRequired,
+  handleClick: PropTypes.func.isRequired,
 };
 
 export default PhoneDetailsPage;

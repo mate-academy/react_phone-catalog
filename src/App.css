@@ -377,3 +377,87 @@ _______________________________________________________________ */
   display: flex;
   justify-content: flex-end;
 }
+
+.container__for__images {
+  display: grid;
+  grid-template-columns: repeat(4, 198px);
+  grid-template-rows: 100px;
+  padding-left: 69px;
+}
+
+.card__img {
+  overflow: hidden;
+  box-sizing: border-box;
+  object-fit: cover;
+  width: 100%;
+  position: relative;
+  display: block;
+}
+
+.details__img_wrap {
+  width: 100px;
+  display: flex;
+  padding-top: 0;
+  padding-left: 53px;
+  margin-bottom: 10px;
+}
+
+.details__img_wraper {
+  width: 276px;
+  padding-top: 0;
+  padding-left: 53px;
+  margin-bottom: 10px;
+}
+
+.details {
+  background-repeat: no-repeat;
+  background-image: url("https://hyser.com.ua/crops/463a18/620x0/1/0/2019/05/06/yIhIyoSUJBgeaVWakuyX0l954ONfgyi2.jpg");
+}
+
+.catalog__phones__main {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.details__information {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.catalog__phones__main {
+  display: flex;
+  justify-content: space-between;
+}
+
+.details__wrap {
+  display: flex;
+  justify-content: space-between;
+}
+
+.button__relative {
+  position: absolute;
+  height: 40px;
+  background: center;
+  background-image: url("https://image.freepik.com/free-psd/_1189-41.jpg");
+  object-fit: cover;
+  width: 92px;
+}
+
+.btn__details {
+  position: relative;
+  height: 40px;
+  background: center;
+  background-image: url("https://image.freepik.com/free-psd/_1189-41.jpg");
+  object-fit: cover;
+  width: 92px;
+}
+/* ______________________________________________________________
+top details
+_______________________________________________________________ */
+.basket__wrapper__main {
+  background-image: url("https://lp2.hm.com/hmgoepprod?set=source[/c3/3e/c33e66b8f3d532813d0841b45583df1211a7311b.jpg],origin[dam],category[home_storage_bagsstorage],type[DESCRIPTIVESTILLLIFE],res[s],hmver[1]&call=url[file:/product/main]");
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
