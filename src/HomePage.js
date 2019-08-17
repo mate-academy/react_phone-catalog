@@ -3,13 +3,13 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 const HomePage = () => (
-  <div className="home_page">
+  <div className="hom">
     <NavLink
       className="navlink"
       to="/phones"
       exact
     >
-        Go to Catalog
+      <div className="home_page" />
     </NavLink>
   </div>
 );

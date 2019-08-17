@@ -122,32 +122,37 @@ class App extends React.Component {
 
     return (
       <div className="App">
-        <nav className="nav__main_container">
-          <NavLink
-            to="/"
-            exact
-            className="page__home phone__position Phones__page"
-            activeClassName="phoneClassActive"
-          >
-            <div className="App__logo" />
-          </NavLink>
-          <NavLink
-            to="/phones"
-            className="Phones__page"
-            activeClassName="phoneClassActive"
-          >
-        PhonesPage
-          </NavLink>
-          <NavLink
-            to="/basket"
-            className="Phones__page page__basket"
-            activeClassName="phoneClassActive"
-          >
-            <div className="App__basket" />
-          </NavLink>
-        </nav>
+        <div className="header">
+          <nav className="nav__main_container">
+            <NavLink
+              to="/"
+              exact
+              className="page__home phone__position Phones__page"
+              activeClassName="phoneClassActive"
+            >
+              <div className="App__logo">
+                <div className="App__logo__title">Home</div>
+              </div>
+            </NavLink>
+            <NavLink
+              to="/phones"
+              className="Phones__page"
+              activeClassName="phoneClassActive"
+            >
+        Catalog
+            </NavLink>
+            <NavLink
+              to="/basket"
+              className="Phones__page page__basket"
+              activeClassName="phoneClassActive"
+            >
+              <div className="App__basket">
+                <div className="App__basket__title">basket</div>
+              </div>
+            </NavLink>
+          </nav>
+        </div>
         <Switch>
-
           <Route path="/" exact component={HomePage} />
           <Route
             path="/phones"

@@ -52,7 +52,7 @@ class PhoneDetailsPage extends React.Component {
             }
             {phoneDetails.images
               ? (
-                <div>
+                <div className="phone__details-main">
                   <div className="container__for__images">
                     {phoneDetails.images.map(imgUrl => (
                       <img
