@@ -67,15 +67,23 @@ class PhoneDetailsPage extends React.Component {
                             <h1>description</h1>
                             <p>{`${phoneDetails.description}`}</p>
                             <h3>Display</h3>
-                            <p>{`${phoneDetails.display.screenResolution}`}</p>
-                            <p>{`${phoneDetails.display.screenSize}`}</p>
+                            <div>
+                              <p>
+                                {`${phoneDetails.display.screenResolution}`}
+                              </p>
+                              <p>{`${phoneDetails.display.screenSize}`}</p>
+                            </div>
                             <h3>android</h3>
-                            <p>{`${phoneDetails.android.os}`}</p>
-                            <p>{`${phoneDetails.android.ui}`}</p>
+                            <div className="android__wrapper">
+                              <p>{`${phoneDetails.android.os}`}</p>
+                              <p>{`${phoneDetails.android.ui}`}</p>
+                            </div>
                             <h3>hardware</h3>
-                            <p>{`${phoneDetails.hardware.audioJack}`}</p>
-                            <p>{`${phoneDetails.hardware.cpu}`}</p>
-                            <p>{`${phoneDetails.hardware.usb}`}</p>
+                            <div className="hardware__wrapper">
+                              <p>{`${phoneDetails.hardware.audioJack}`}</p>
+                              <p>{`${phoneDetails.hardware.cpu}`}</p>
+                              <p>{`${phoneDetails.hardware.usb}`}</p>
+                            </div>
                           </div>
                         )
                         : (

@@ -243,12 +243,13 @@ _______________________________________________________________ */
 }
 
 .default__btn {
-  background: #373636;
+  background: linear-gradient(55deg, red, transparent);
   border-radius: 10px;
 }
 
 .default__btn:hover {
-  border: 1px solid #757575;
+  border: 3px solid #757575;
+  background: linear-gradient(0.5deg, red, transparent);
 }
 
 .card__item-title {
@@ -410,6 +411,10 @@ _______________________________________________________________ */
 }
 
 .details {
+  padding: 10px;
+  box-shadow: 3px 3px #8d7f88, -1em 0 0.4em dimgrey;
+  display: grid;
+  grid-template-columns: 18% 90%;
   background-repeat: no-repeat;
   background-size: cover;
   background-image: url("https://hyser.com.ua/crops/463a18/620x0/1/0/2019/05/06/yIhIyoSUJBgeaVWakuyX0l954ONfgyi2.jpg");
@@ -436,15 +441,16 @@ _______________________________________________________________ */
 }
 
 .button__relative {
+  color: #fff;
   position: absolute;
   height: 40px;
-  background: center;
-  background-image: url("https://image.freepik.com/free-psd/_1189-41.jpg");
+  background: linear-gradient(45deg, grey, transparent);
   object-fit: cover;
   width: 92px;
 }
 
 .btn__details {
+  color: #fff;
   position: relative;
   height: 40px;
   background: center;
@@ -456,9 +462,19 @@ _______________________________________________________________ */
 top details
 _______________________________________________________________ */
 .basket__wrapper__main {
-  background-image: url("https://lp2.hm.com/hmgoepprod?set=source[/c3/3e/c33e66b8f3d532813d0841b45583df1211a7311b.jpg],origin[dam],category[home_storage_bagsstorage],type[DESCRIPTIVESTILLLIFE],res[s],hmver[1]&call=url[file:/product/main]");
-  background-repeat: no-repeat;
+  background: black;
   width: 100%;
   height: 100%;
+  padding: 20px;
+}
+
+.basket__animation {
+  left: 36px;
+  width: 50%;
   object-fit: cover;
+  height: 50%;
+  background-size: cover;
+  position: absolute;
+  background-image: url(https://png.pngtree.com/png-clipart/20190614/original/pngtree-aircraft-paper-plane-cartoon-airplane-origami-png-image_3784470.jpg);
+  bottom: 50px;
 }

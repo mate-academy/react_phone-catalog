@@ -175,6 +175,8 @@ class App extends React.Component {
               className="Phones__page page__basket"
               activeClassName="phoneClassActive"
             >
+              { phonesToBasket.length === 0 ? ''
+                : <div className="basket__animation" />}
               <div className="App__basket">
                 <div className="App__basket__title">basket</div>
               </div>

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const BasketItems = ({ phonesToBasket, handleBasket }) => (
   <div className="basket__wrapper__main">
     {phonesToBasket.length === 0
-      ? <h1>Basket is empty</h1>
+      ? <h1 className="basket__empty">Basket is empty</h1>
       : (
         <table className="basket__table">
           <thead className="basket__table-thead">
