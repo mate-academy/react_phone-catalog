@@ -478,3 +478,54 @@ _______________________________________________________________ */
   background-image: url(https://png.pngtree.com/png-clipart/20190614/original/pngtree-aircraft-paper-plane-cartoon-airplane-origami-png-image_3784470.jpg);
   bottom: 50px;
 }
+
+.basketPage__table-quantity-remove:hover {
+  color: #af5b5e;
+}
+
+.basketPage__table-quantity-remove {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 10px;
+  bottom: 0;
+  width: 40px;
+  height: 40px;
+  margin-top: 11px;
+  font-size: 30px;
+  color: #cc9a9a;
+  margin-bottom: 11px;
+  transition: color 0.2s ease-out;
+}
+
+button {
+  border: 0;
+  background: none;
+  font-size: 100%;
+  vertical-align: baseline;
+  font-family: inherit;
+  font-weight: inherit;
+  color: inherit;
+  appearance: none;
+}
+
+.basketPage__table-tbody-tr:hover .basketPage__table-quantity-remove {
+  position: relative;
+  height: 42px;
+  display: block;
+}
+
+.basketPage__table-tbody-tr {
+  height: 100px;
+  width: 400px;
+}
+
+.basketPage__table-tbody-td {
+  font-size: 30px;
+}
+
+.basket__button__title {
+  font-size: 30px;
+  border: 1px solid;
+  padding-left: 8px;
+}

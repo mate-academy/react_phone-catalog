@@ -123,7 +123,6 @@ class PhoneDetailsPage extends React.Component {
               )
               : ''
             }
-
           </div>
         ));
   }

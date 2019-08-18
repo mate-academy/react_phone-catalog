@@ -26,15 +26,6 @@ const BasketItems = ({ phonesToBasket, handleBasket }) => (
                   <td className="basketPage__table-tbody-td">
                     {phone.phone}
                   </td>
-                  <td>
-                    <button
-                      type="button"
-                      onClick={() => handleBasket(phone.id, 'remove')}
-                      className="basketPage__table-quantity-remove"
-                    >
-                 x
-                    </button>
-                  </td>
                   <td className="basketPage__table-tbody-td">
                     <button
                       type="button"
@@ -43,13 +34,22 @@ const BasketItems = ({ phonesToBasket, handleBasket }) => (
                     >
                  -
                     </button>
-                    {phone.quantity}
+                    <p className="basket__button__title">{phone.quantity}</p>
                     <button
                       type="button"
                       onClick={() => handleBasket(phone.id, 'increase')}
                       className="basketPage__table-quantity-plus"
                     >
                  +
+                    </button>
+                  </td>
+                  <td>
+                    <button
+                      type="button"
+                      onClick={() => handleBasket(phone.id, 'remove')}
+                      className="basketPage__table-quantity-remove"
+                    >
+                 x
                     </button>
                   </td>
                 </tr>
