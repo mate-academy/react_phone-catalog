@@ -507,6 +507,7 @@ button {
   font-weight: inherit;
   color: inherit;
   appearance: none;
+  cursor: pointer;
 }
 
 .basketPage__table-tbody-tr:hover .basketPage__table-quantity-remove {

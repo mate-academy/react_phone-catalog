@@ -1,10 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
 
 const BasketItems = ({ phonesToBasket, handleBasket }) => (
   <div className="basket__wrapper__main">
     {phonesToBasket.length === 0
-      ? <h1 className="basket__empty">Basket is empty</h1>
+      ? (
+        <NavLink
+          to="/phones"
+          className="Phones__page"
+          activeClassName="phoneClassActive"
+        >
+          <h1 className="basket__empty">Basket is empty</h1>
+          Go to Catalog
+        </NavLink>
+      )
       : (
         <table className="basket__table">
           <thead className="basket__table-thead">
@@ -56,6 +66,13 @@ const BasketItems = ({ phonesToBasket, handleBasket }) => (
               ))
 
             }
+            <NavLink
+              to="/phones"
+              className="Phones__page"
+              activeClassName="phoneClassActive"
+            >
+         go to Catalog
+            </NavLink>
           </tbody>
 
         </table>
