@@ -1,0 +1,40 @@
+* {
+  box-sizing: border-box;
+}
+
+.load {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.load__line {
+  width: 100px;
+  height: 15px;
+  background: #00818e;
+  margin: 5px;
+  animation: stretchdelay 1s infinite ease-in-out 0.1s;
+}
+
+.load__line-second {
+  animation-delay: -0.8s;
+}
+
+.load__line-third {
+  animation-delay: -0.6s;
+}
+
+@keyframes stretchdelay {
+  0%,
+  40%,
+  100% {
+    transform: scaleX(0.8);
+    background: #00818e;
+    box-shadow: 0 0 0 rgba(10,10,10,0.1);
+  }
+  20% {
+    transform: scaleX(1);
+    background: #00a1b1;
+    box-shadow: 0 5px 6px rgba(10,10,10,0.4);
+  }
+}

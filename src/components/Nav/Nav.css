@@ -1,0 +1,29 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+
+.nav {
+  border-bottom: 1px solid #00818e;
+}
+
+.nav__list {
+  display: flex;
+  list-style-type: none;
+  justify-content: center;
+  padding: 20px;
+  background: #f6f6f6;
+}
+
+.nav__item {
+  margin: 25px;
+  font: normal 400 20px "Open Sans", sans-serif;
+  color: #777;
+}
+
+.nav__item--active {
+  text-decoration: underline;
+  color: #000;
+}
