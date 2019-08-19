@@ -1,3 +1,5 @@
+- [Demo](https://irakalmykova.github.io/react_phone-catalog/#/phones)
+
 # React Phone catalog
 
 Implement Phone catalog as already implemented [here](http://angular.github.io/angular-phonecat/step-14/app/#!/phones) 
