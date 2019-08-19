@@ -4,7 +4,7 @@ import PhoneDetails from './PhoneDetails'
 
 class PhoneDetailsPage extends React.Component {
   state = {
-    details: '',
+    details: {},
     isLoading: false,
     isLoaded: false,
   }
@@ -18,13 +18,11 @@ class PhoneDetailsPage extends React.Component {
       fetch(`https://mate-academy.github.io/phone-catalogue-static/api/phones/${currentId}.json`)
     const details = await responseDetails.json();
 
-    setTimeout(() => {
-      this.setState({
-        details: details,
-        isLoading: false,
-        isLoaded: true,
-      })
-    }, 1000)
+    this.setState({
+      details: details,
+      isLoading: false,
+      isLoaded: true,
+    })
   }
 
   componentDidMount = () => {
@@ -51,7 +49,6 @@ class PhoneDetailsPage extends React.Component {
                         .filter(phone => phone.id === id)
                         .map(phone =>
                           <PhoneDetails
-                            phone={phone}
                             details={details}
                           />
                         )

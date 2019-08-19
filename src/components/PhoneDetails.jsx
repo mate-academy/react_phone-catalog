@@ -1,4 +1,5 @@
 import React from 'react'
+import BASE_IMAGE_URL from './constants'
 
 class PhoneDetails extends React.Component {
   state = {
@@ -6,9 +7,10 @@ class PhoneDetails extends React.Component {
   }
 
   componentDidMount = () => {
-    const BASE_IMAGE_URL = 
-      'https://mate-academy.github.io/phone-catalogue-static';
-    const currentImage = `${BASE_IMAGE_URL}/${this.props.phone.imageUrl}`;
+    const { details } = this.props;
+
+
+    const currentImage = `${BASE_IMAGE_URL}/${details.images[0]}`;
 
     this.setState({
       currentImg: currentImage,
@@ -24,11 +26,10 @@ class PhoneDetails extends React.Component {
   }
 
   render() {
-    const { id, phone, details } = this.props;
+    const { details } = this.props;
     const { currentImg } = this.state;
-    const BASE_IMAGE_URL = 
-      'https://mate-academy.github.io/phone-catalogue-static';
 
+    console.log(details);
 
     return (
       <div>
@@ -41,12 +42,12 @@ class PhoneDetails extends React.Component {
             alt="phone_photo"
           />
           <h1 className='currentPhone__top-block-title'>
-            {phone.name}
+            {details.name}
           </h1>
           <div
             className='currentPhone__top-block-snippet'
           >
-            {phone.snippet}
+            {details.description}
           </div>
           <ul className='currentPhone__top-block-all-imgs'>
             {

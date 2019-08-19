@@ -93,10 +93,6 @@ class App extends React.Component {
     } else {
       const requiredItem = {...itemToAdd};
       requiredItem.quantity = 1;
-      delete requiredItem.imageUrl;
-      delete requiredItem.snippet;
-      delete requiredItem.age;
-      delete requiredItem.carrier;
   
       this.setState(prevState => ({
         itemsAtBasket: [...prevState.itemsAtBasket, requiredItem],
@@ -114,13 +110,11 @@ class App extends React.Component {
       fetch('https://mate-academy.github.io/phone-catalogue-static/api/phones.json')
     const phones = await responsePhones.json();
 
-    setTimeout(() => {
-      this.setState({
-        phones: phones,
-        isLoading: false,
-        isLoaded: true,
-      })
-    }, 1000)
+    this.setState({
+      phones: phones,
+      isLoading: false,
+      isLoaded: true,
+    })
   }
 
   render() {
