@@ -1,0 +1,14 @@
+.post__container {
+  border: 1px solid #eee;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.post__container + .post__container {
+  margin-top: 20px;
+}
+
+.post__title {
+  font-family: Arial, serif;
+  margin-bottom: 15px;
+}

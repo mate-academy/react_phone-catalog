@@ -1,0 +1,9 @@
+.user {
+  display: flex;
+  color: #ccc;
+  margin-top: 10px;
+}
+
+.user__name {
+  margin-right: 10px;
+}
