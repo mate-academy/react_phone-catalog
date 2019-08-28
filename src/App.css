@@ -1,1 +1,39 @@
+body {
+  margin: 0;
+  padding: 0;
+}
 
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+.main {
+  max-width: 956px;
+  margin: auto;
+}
+
+.load-btn {
+  display: block;
+  height: 40px;
+  margin: calc(50vh - 20px) auto auto;
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.load-btn:hover {
+  border: 1px solid #1e90ff;
+  color: #1e90ff;
+}
+
+.basketPage__table-quantity-remove {
+  height: 80px;
+  width: 80px;
+}

@@ -1,0 +1,23 @@
+.show-comments-btn {
+  display: block;
+  height: 40px;
+  padding: 0 20px;
+  margin: 10px auto;
+  font-size: 18px;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  background: #fff;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.show-comments-btn:hover {
+  border: 1px solid #1e90ff;
+  color: #1e90ff;
+}
+
+.comments {
+  padding: 10px;
+  border-left: 4px solid #1e90ff;
+  box-sizing: border-box;
+}
