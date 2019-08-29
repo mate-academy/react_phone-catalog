@@ -61,9 +61,6 @@ class Phone extends React.Component {
             </Link>
           </section>
 
-          <div className="phone-details_additionalFeatures">
-            {currentPhone.additionalFeatures}
-          </div>
 
           <article className="phone-details_header">
             <div className="phone-details_images">

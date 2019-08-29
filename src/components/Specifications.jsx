@@ -1,7 +1,7 @@
 import React from 'react'
 
 const Specifications = ({ currentPhone }) => (
-  <section className="section-specefication">
+  <section className="section-specifications">
     <div className="specifications_sign">
       Specifications
     </div>

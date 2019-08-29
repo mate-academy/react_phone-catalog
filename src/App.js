@@ -4,7 +4,10 @@ import './App.css';
 import HomePage from './components/HomePage';
 import PhoneCatalog from './components/PhoneCatalog';
 import PageError from './components/PageError';
+import Footer from './components/Footer'
 import Cart from './components/Cart';
+import Contacts from './components/Contacts';
+
 
 class App extends React.Component {
   state = {
@@ -59,29 +62,36 @@ class App extends React.Component {
     const { selectedPhones } = this.state;
 
     return (
-      <div className="App">
-        <nav>
+      <div className="app">
+        <nav className="header">
           <ul className="nav-list">
             <li>
-              <NavLink to="/" exact >
-                <div className="logo-size">
-                  <div className="logo" />
-                </div>
+              <NavLink to="/" exact>
+                <iframe src="//ntmaker.gfto.ru/newneontext/?image_height=100&image_width=200&image_font_shadow_width=30&image_font_size=30&image_background_color=000000&image_text_color=FF0000&image_font_shadow_color=F7406B&image_url=&image_text=Phone Catalog&image_font_family=CocaCola&" frameborder='no' scrolling='no' width="200" height="100"></iframe>
               </NavLink>
             </li>
             <li>
-              <NavLink to="/cart">
-                <p className="cart-amount">{selectedPhones.length}</p>
-                <div className="cart" />
+              <NavLink to="/" exact className="nav-list-link">
+                <p className="home-page-link">Home Page</p>
               </NavLink>
             </li>
             <li>
               <NavLink
                 className="nav-list-link"
-                activeClassName="active-nav_link"
                 to="/phones"
               >
-                Phone Catalog
+                <p className="phone-catalog">Phone Catalog</p>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/cart" className="nav-list-link">
+                <p className="cart-amount">{selectedPhones.length}</p>
+                <p className="cart">Cart</p>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/contacts" className="nav-list-link">
+                <p className="contacts">Contacts</p>
               </NavLink>
             </li>
           </ul>
@@ -110,8 +120,16 @@ class App extends React.Component {
               />
             )}
           />
+          <Route
+            exact
+            path="/contacts"
+            render={() => (
+              <Contacts />
+            )}
+          />
           <Route component={PageError} />
         </Switch>
+        <Footer />
       </div>
     );
   }

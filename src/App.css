@@ -1,63 +1,71 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap');
 
 body {
-  font-family: 'lato',sans-serif;
+  font-family: 'Montserrat';
   margin: 0;
+}
+
+.app {
+  display: grid;
+  grid-template-rows: 120px 1fr 200px;
+  height: 100vh;
+}
+
+.header {
+  background-color: black;
 }
 
 .nav-list {
   list-style: none;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  text-decoration: none;
+  height: 110px;
+  margin: 0 50px;
+  display: flex;
   align-items: center;
-  justify-items: center;
-  margin-right: 50px;
 }
 
 .nav-list-link {
-  box-shadow: 5px 5px 5px gray;
   text-decoration: none;
-  font-weight: bold;
   font-size: 20px;
   outline: none;
-  color: black;
-  border: 1px solid black;
-  padding: 10px;
-  border-radius: 10px;
-}
-
-.active-nav_link {
-  background-color: black;
   color: white;
+  transition: 0.3s;
+  padding: 10px;
 }
 
-.logo {
-  background-image: url(./components/image/logo.svg);
-  width: 120px;
-  height: 60px;
-  background-size: cover;
-  background-repeat: no-repeat;
+.nav-list-link:hover {
+  color: red;
+}
+
+.phone-catalog {
+  margin-right: 30px;
+}
+
+.home-page-link {
+  margin-right: 30px;
+  background-color: black;
 }
 
 .cart {
-  background-image: url(./components/image/cart.png);
-  width: 70px;
-  height: 70px;
-  background-size: cover;
-  background-repeat: no-repeat;
-  margin-top: -50px;
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+  margin-top: -38px;
+  margin-right: 30px;
+  transition: 0.3s;
+}
+
+.cart:hover {
+  color: red;
 }
 
 .cart-amount {
   position: relative;
   text-align: center;
   width: 13px;
-  left: 50px;
-  border: 1px solid black;
+  left: 43px;
   font-size: 18px;
   border-radius: 10px;
-  font-weight: bold;
-  color: white;
-  background-color: black
 }
 
 .phone {
@@ -65,44 +73,52 @@ body {
   height: 300px;
 }
 
-.search_list {
+.home-page {
+  background-color: black;
+}
+
+.home-page-img {
+  position: relative;
+  object-fit: contain;
+}
+
+.home-page-sign {
+  user-select: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 45px;
+  font-weight: 500;
+  line-height: 30px;
+  text-transform: uppercase;
+  color: rgb(255, 255, 255);
+}
+
+.search_field-grid {
+  margin: 20px 0;
   display: grid;
   justify-content: center;
 }
 
 .search_field {
   width: 600px;
-  margin: 0 0 20px 0;
   padding: 0 20px;
   font-size: 24px;
   height: 50px;
   border-radius: 30px;
   border: 0;
   box-shadow: 0 0 4px gray;
+  font-family: 'Montserrat';
   outline: none;
-}
-
-.sorting {
-  text-align: center;
-}
-
-.sort-field-sign {
-  font-size: 25px;
-}
-
-.sort-field {
-  border: 0;
-  font-size: 20px;
-  outline: none;
-  margin: 0 0 30px 0;
 }
 
 .catalog {
   display: grid;
-  grid-template-columns: repeat(3, 300px);
+  grid-template-columns: repeat(4, 100px);
   justify-content: center;
   justify-items: center;
-  grid-gap: 70px;
+  grid-column-gap: 170px;
   margin-bottom: 100px;
 }
 
@@ -114,7 +130,6 @@ body {
 
 .catalog_phone:hover {
   box-shadow: 0 0 5px gray;
-  transform: scale(1.1);
 }
 
 .catalog_phone-text-decoration {
@@ -130,33 +145,37 @@ body {
 }
 
 .catalog_phone-add {
+  font-family: 'Montserrat';
+  display: block;
   background-color: white;
   text-decoration: none;
   color: black;
   border: 0;
-  font-size: 25px;
-  padding: 10px;
+  font-size: 18px;
+  padding: 20px;
   transition: 0.3s;
   cursor: pointer;
 }
 
 .catalog_phone-add:hover {
   box-shadow: 0 0 3px gray;
+  background-color: black;
   border-radius: 10px;
+  color: white;
 }
 
 .catalog_phone-img {
-  width: 300px;
-  height: 350px;
+  width: 200px;
+  height: 250px;
 }
 
 .catalog_phone-name {
   text-align: center;
   text-decoration: none;
-  font-size: 20px;
+  font-size: 14px;
   outline: none;
   color: black;
-  padding: 20px;
+  padding: 10px;
   text-transform: uppercase;
 }
 
@@ -192,9 +211,9 @@ body {
 
 .phone-details_name {
   text-align: center;
-  font-size: 35px;
-  font-weight: 400;
-  margin-bottom: 10px;
+  font-size: 30px;
+  margin: 30px 0;
+  font-family: 'Montserrat';
 }
 
 .phone-details_additionalFeatures {
@@ -209,7 +228,7 @@ body {
   text-align: center;
   padding: 20px 20px;
   font-size: 30px;
-  font-weight: 100;
+  font-weight: 300;
   margin-top: 20px;
 }
 
@@ -245,12 +264,17 @@ body {
   color: white;
 }
 
+.section-specifications {
+  background-color: black;
+}
+
 .specifications {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   color: white;
   background-color: black;
   font-weight: 100;
+  margin: 20px 70px 1px 70px;
 }
 
 .specifications_sign {
@@ -280,18 +304,20 @@ body {
 }
 
 .phone-details_add {
+  display: block;
   background-color: white;
+  font-family: 'Montserrat';
   text-decoration: none;
   color: black;
   border: 1px solid black;
-  padding: 10px;
+  padding: 20px;
+  border-radius: 10px;
   transition: 0.3s;
 }
 
 .phone-details_add:hover {
   background-color: black;
   color: white;
-  border-radius: 10px;
 }
 
 .cart-phones_link-back {
@@ -300,13 +326,13 @@ body {
   border: 1px solid black;
   padding: 10px;
   transition: 0.3s;
+  border-radius: 10px;
   margin-left: 20px;
 }
 
 .cart-phones_link-back:hover {
   background-color: black;
   color: white;
-  border-radius: 10px;
 }
 
 .cart-phones {
@@ -353,12 +379,15 @@ body {
   width: 30px;
   height: 30px;
   transition: 0.3s;
+  border-radius: 10px;
+  font-size: 25px;
+  font-family: 'Montserrat';
+  display: block;
 }
 
 .cart-phone_table-amount-btn:hover {
   background-color: black;
   color: white;
-  border-radius: 10px;
 }
 
 .cart-phone_table-amount-sign {
@@ -374,13 +403,66 @@ body {
   width: 30px;
   height: 30px;
   transition: 0.3s;
+  display: block;
+  font-size: 15px;
+  font-family: 'Montserrat';
+  border-radius: 10px;
   width: 200px;
 }
 
 .cart-phone_table-remove-btn:hover {
   background-color: black;
   color: white;
-  border-radius: 10px;
+}
+
+.footer-size {
+  background-color: black;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+
+.footer {
+  background-color: black;
+  margin: 10px 90px 0;
+}
+
+.footer-text {
+  color: white;
+  margin: 30px 100px;
+}
+
+.footer-list-links {
+  margin: 20px 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 10px;
+}
+
+.footer-link {
+  text-decoration: none;
+  color: white;
+  transition: 0.3s;
+}
+
+.footer-link:hover {
+  color:  red;
+}
+
+.footer-bottom {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.contacts-details {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin: 0 20px 20px 110px;
+  font-weight: 600;
+}
+
+.contacts-link {
+  color: black;
 }
 
 @media (  max-width: 1140px) {
@@ -389,8 +471,12 @@ body {
     font-size: 18px;
   }
 
+  .home-page-sign {
+    font-size: 35px;
+  }
+
   .catalog {
-    grid-template-columns: repeat(2, 300px);
+    grid-template-columns: repeat(3, 100px);
   }
 
   .phone-details {
@@ -405,8 +491,12 @@ body {
     grid-gap: 20px;
   }
 
+  .home-page-sign {
+    font-size: 25px;
+  }
+
   .catalog {
-    grid-template-columns: repeat(1, 300px);
+    grid-template-columns: repeat(1, 100px);
   }
 
   .phone-details {
@@ -575,182 +665,84 @@ body {
 	}
 }
 
-.cssload-wrap {
-	width: 195px;
-	height: 195px;
-	margin: 97px auto;
-	position: relative;
-	perspective: 3900px;
-		-o-perspective: 3900px;
-		-ms-perspective: 3900px;
-		-webkit-perspective: 3900px;
-		-moz-perspective: 3900px;
-	transform-style: preserve-3d;
-		-o-transform-style: preserve-3d;
-		-ms-transform-style: preserve-3d;
-		-webkit-transform-style: preserve-3d;
-		-moz-transform-style: preserve-3d;
+.form {
+  display: block;
 }
 
-.cssload-circle {
-	transform-style: preserve-3d;
-		-o-transform-style: preserve-3d;
-		-ms-transform-style: preserve-3d;
-		-webkit-transform-style: preserve-3d;
-		-moz-transform-style: preserve-3d;
-	box-sizing: border-box;
-		-o-box-sizing: border-box;
-		-ms-box-sizing: border-box;
-		-webkit-box-sizing: border-box;
-		-moz-box-sizing: border-box;
-	opacity: 0;
-	width: 195px;
-	height: 195px;
-	border: 2px solid rgba(0,0,0,0.8);
-	border-radius: 146px;
-	position: absolute;
-	top: 0;
-	left: 0;
-	animation: cssload-spin 34.5s ease-in-out alternate infinite;
-		-o-animation: cssload-spin 34.5s ease-in-out alternate infinite;
-		-ms-animation: cssload-spin 34.5s ease-in-out alternate infinite;
-		-webkit-animation: cssload-spin 34.5s ease-in-out alternate infinite;
-		-moz-animation: cssload-spin 34.5s ease-in-out alternate infinite;
-}
-.cssload-circle:nth-of-type(1) {
-	animation-delay: 575ms;
-		-o-animation-delay: 575ms;
-		-ms-animation-delay: 575ms;
-		-webkit-animation-delay: 575ms;
-		-moz-animation-delay: 575ms;
-}
-.cssload-circle:nth-of-type(2) {
-	animation-delay: 1150ms;
-		-o-animation-delay: 1150ms;
-		-ms-animation-delay: 1150ms;
-		-webkit-animation-delay: 1150ms;
-		-moz-animation-delay: 1150ms;
-}
-.cssload-circle:nth-of-type(3) {
-	animation-delay: 1725ms;
-		-o-animation-delay: 1725ms;
-		-ms-animation-delay: 1725ms;
-		-webkit-animation-delay: 1725ms;
-		-moz-animation-delay: 1725ms;
-}
-.cssload-circle:nth-of-type(4) {
-	animation-delay: 2300ms;
-		-o-animation-delay: 2300ms;
-		-ms-animation-delay: 2300ms;
-		-webkit-animation-delay: 2300ms;
-		-moz-animation-delay: 2300ms;
-}
-.cssload-circle:nth-of-type(5) {
-	animation-delay: 2875ms;
-		-o-animation-delay: 2875ms;
-		-ms-animation-delay: 2875ms;
-		-webkit-animation-delay: 2875ms;
-		-moz-animation-delay: 2875ms;
+.wrapper {
+  display: flex;
+  justify-content: space-between;
 }
 
-
-
-@keyframes cssload-spin {
-	0% {
-		transform: rotateY(0deg) rotateX(0deg);
-		opacity: 1;
-	}
-	25% {
-		transform: rotateY(180deg) rotateX(360deg);
-	}
-	50% {
-		transform: rotateY(540deg) rotateX(540deg);
-	}
-	75% {
-		transform: rotateY(720deg) rotateX(900deg);
-	}
-	100% {
-		transform: rotateY(900deg) rotateX(1080deg);
-		opacity: 1;
-	}
+.inner {
+ display: flex;
+ align-items: center;
+ height: 40px;
+ box-sizing: border-box;
+ padding: 10px;
 }
 
-@-o-keyframes cssload-spin {
-	0% {
-		-o-transform: rotateY(0deg) rotateX(0deg);
-		opacity: 1;
-	}
-	25% {
-		-o-transform: rotateY(180deg) rotateX(360deg);
-	}
-	50% {
-		-o-transform: rotateY(540deg) rotateX(540deg);
-	}
-	75% {
-		-o-transform: rotateY(720deg) rotateX(900deg);
-	}
-	100% {
-		-o-transform: rotateY(900deg) rotateX(1080deg);
-		opacity: 1;
-	}
+.input {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background: transparent;
+  font-size: 16px;
+  width: 50px;
+  transition: width 0.3s ease;
 }
 
-@-ms-keyframes cssload-spin {
-	0% {
-		-ms-transform: rotateY(0deg) rotateX(0deg);
-		opacity: 1;
-	}
-	25% {
-		-ms-transform: rotateY(180deg) rotateX(360deg);
-	}
-	50% {
-		-ms-transform: rotateY(540deg) rotateX(540deg);
-	}
-	75% {
-		-ms-transform: rotateY(720deg) rotateX(900deg);
-	}
-	100% {
-		-ms-transform: rotateY(900deg) rotateX(1080deg);
-		opacity: 1;
-	}
+.search_img {
+  margin-right: 5px;
+  padding: 0;
+  display: flex;
+  align-items: center;
 }
 
-@-webkit-keyframes cssload-spin {
-	0% {
-		-webkit-transform: rotateY(0deg) rotateX(0deg);
-		opacity: 1;
-	}
-	25% {
-		-webkit-transform: rotateY(180deg) rotateX(360deg);
-	}
-	50% {
-		-webkit-transform: rotateY(540deg) rotateX(540deg);
-	}
-	75% {
-		-webkit-transform: rotateY(720deg) rotateX(900deg);
-	}
-	100% {
-		-webkit-transform: rotateY(900deg) rotateX(1080deg);
-		opacity: 1;
-	}
+.form:focus-within {
+  background: rgba(0,0,0,0.05);
+  border-bottom: 2px solid gray;
 }
 
-@-moz-keyframes cssload-spin {
-	0% {
-		-moz-transform: rotateY(0deg) rotateX(0deg);
-		opacity: 1;
-	}
-	25% {
-		-moz-transform: rotateY(180deg) rotateX(360deg);
-	}
-	50% {
-		-moz-transform: rotateY(540deg) rotateX(540deg);
-	}
-	75% {
-		-moz-transform: rotateY(720deg) rotateX(900deg);
-	}
-	100% {
-		-moz-transform: rotateY(900deg) rotateX(1080deg);
-		opacity: 1;
-	}
+button {
+  padding: 3px;
+  line-height: 0;
+  background: transparent;
+  font-size: 16px;
+  color: #757575;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  display: none;
+}
+
+button svg path {
+  fill: #757575;
+}
+
+.clear:focus,
+.clear:hover,
+.close:focus svg path,
+.close:hover svg path {
+  fill: #424242;
+  color: #424242;
+  transition: all 0.3s ease;
+}
+
+.input:focus {
+  width: 200px;
+  cursor: initial;
+}
+
+.bulkhead {
+  width: 1px;
+  height: 100%;
+  background: #757575;
+  margin: 0 5px;
+  display: none;
+}
+
+.form:focus-within .clear, .form:focus-within .close,
+.form:focus-within .bulkhead{
+  display: block;
 }

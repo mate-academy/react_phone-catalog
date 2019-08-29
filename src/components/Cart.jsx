@@ -68,6 +68,7 @@ Remove from cart
         </section>
       </>
     ))}
+
   </div>
 );
 

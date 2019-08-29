@@ -8,9 +8,10 @@ const SearchField = ({ handleChangeFilter, visipblePhones }) => (
       name="search-field"
       value={visipblePhones.name}
       onChange={handleChangeFilter}
-      placeholder="Search"
+      placeholder="Search phone"
     />
   </div>
+
 );
 
 export default SearchField;
