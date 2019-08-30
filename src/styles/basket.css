@@ -21,11 +21,9 @@
 .phone_names:hover {
   color: brown;
   transition: 100ms
-
 }
 
 .phone_quantity {
-  /* width: 100%; */
   font-weight: 700;
   list-style-type: none;
   margin: 50px 15px;
@@ -101,17 +99,12 @@
 
 .img_preview_basket {
   width: 230px;
-  width: 230px;
+  height: 230px;
   position: relative;
-  left: 10%;
-  top: -10%;
+  transition: transform 0.5s;
 }
 
 .img_preview_basket:hover {
-  width: 235px;
-  width: 235px;
-  left: 9%;
-  top: -15%;
-  transition: 100ms
+  transform: scale(1.06);
 }
 

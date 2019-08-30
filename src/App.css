@@ -41,6 +41,7 @@ a {
   height: 50px;
   width: 70px;
   justify-content: center;
+  transition: transform 0.5s;
 }
 
 .navigation__link {
@@ -75,24 +76,30 @@ a {
   position: relative;
   margin: 10px 0;
   left: 40%;
-  padding: 20px 40px 0 10px;
   cursor: pointer;
-  width: 100px;
+  width: 25px;
+  height: 25px;
   font-weight: 700;
-  font-size: 30px;
+  font-size: 15px;
   color: brown;
+  border-radius: 50%;
+  border: solid;
+  text-align: center;
+}
+
+.navigation__link-counter_hidden {
+  visibility: hidden;
 }
 
 a:hover {
   cursor: pointer;
+  color: brown;
 }
 
 body {
   font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
   line-height: 1.4em;
   color: #4d4d4d;
-  /* min-width: 230px;
-  max-width: 100%; */
   margin: 0 auto;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

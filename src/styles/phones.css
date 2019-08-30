@@ -44,7 +44,9 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: 600px;
+  grid-gap: 10px;
   padding: 10px;
+
 }
 
 .phone_names {
@@ -61,6 +63,12 @@
   width: 200px;
   height: 200px;
   position: relative;
+  transition: transform 0.5s;
+
+}
+
+.img_preview:hover {
+  transform: scale(1.04);
 }
 
 .add-to-basket_button {

@@ -98,9 +98,9 @@ class App extends React.Component {
             <li className="navigation__link"><NavLink to="/phones" >Phones</NavLink></li>
             <li className="navigation__link"><NavLink to="/basket" >Basket</NavLink>
             </li>
-            <span className="navigation__link-counter">
+            <div className={selectedPhones.length > 0 ? "navigation__link-counter" : "navigation__link-counter_hidden"}>
               {selectedPhones.length > 0 ? selectedPhones.length  : ''}
-            </span>
+            </div>
           </ul>
         </nav>
         <Switch>
