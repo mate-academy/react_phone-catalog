@@ -1,0 +1,109 @@
+.filter__input {
+  display: inline-block;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 18%;
+  height: 34px;
+  padding: 0 23px 0 11px;
+  margin: 10px 0 0 20px;
+  border-radius: 0;
+  border: 1px solid #cbd1d4;
+  font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #333;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -webkit-tap-highlight-color: transparent;
+  box-shadow: inset 0 -1px 5px 0 rgba(0, 0, 0, 0.2);
+  font-weight: bold;
+}
+
+.filter__selector {
+  display: inline-block;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 9%;
+  height: 34px;
+  padding: 0 23px 0 11px;
+  margin: 10px 0 0 20px;
+  border-radius: 0;
+  border: 1px solid #cbd1d4;
+  font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #333;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -webkit-tap-highlight-color: transparent;
+  box-shadow: inset 0 -1px 5px 0 rgba(0, 0, 0, 0.2);
+  font-weight: bold;
+  opacity: 0.8;
+}
+
+.phones_list {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 600px;
+  grid-gap: 10px;
+  padding: 10px;
+
+}
+
+.phone_names {
+  width: 100%;
+  font-weight: 700;
+  list-style-type: none;
+}
+
+.details_list {
+  list-style-type: none;
+}
+
+.img_preview {
+  width: 200px;
+  height: 200px;
+  position: relative;
+  transition: transform 0.5s;
+
+}
+
+.img_preview:hover {
+  transform: scale(1.04);
+}
+
+.add-to-basket_button {
+  position: absolute;
+  bottom: 20%;
+  font-family: arial,sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  color: rgb(68,68,68);
+  text-decoration: none;
+  user-select: none;
+  padding: .2em 1.2em;
+  outline: none;
+  border: 1px solid rgba(0,0,0,.1);
+  border-radius: 4px;
+  background: rgb(245,245,245) linear-gradient(#f4f4f4, #f1f1f1);
+  transition: all .218s ease 0s;
+  margin: 10px;
+  box-shadow: -2px 2px 5px 2px rgba(0,0,0,.1);
+
+}
+
+.add-to-basket_button:hover {
+  cursor: pointer;
+  color: rgb(24,24,24);
+  border: 1px solid rgb(198,198,198);
+  background: #f7f7f7 linear-gradient(#f7f7f7, #f1f1f1);
+  box-shadow: -5px 5px 5px 2px rgba(0,0,0,.1);
+  font-size: 15px;
+}
+
+.add-to-basket_button:active {
+  color: rgb(51,51,51);
+  border: 1px solid rgb(204,204,204);
+  background: rgb(238,238,238) linear-gradient(#f7f7f7, #f1f1f1);
+  box-shadow: -2px 2px 3px 2px rgba(0,0,0,.1);
+  font-size: 14px;
+}
