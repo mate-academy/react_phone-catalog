@@ -1,5 +1,7 @@
 import React from 'react';
-import getData from './Api/getData';
+import { NavLink } from 'react-router-dom';
+import { getData } from './Api/getData';
+import Phone from './Phone';
 
 class Catalog extends React.Component {
   state = {
@@ -16,34 +18,44 @@ class Catalog extends React.Component {
         phones: allPhones,
         isLoading: false,
       });
-    }, 800);
+    }, 1000);
+  }
+
+  addToCard(phoneId) {
+    console.log(phoneId)
   }
 
   render() {
     const { phones, isLoading } = this.state;
+    const { match } = this.props;
 
     return (
-      <div className="phone-catalog">
-        <div className={isLoading ? 'load' : 'load-none'}>
-          <hr />
-          <hr />
-          <hr />
-          <hr />
+      <div>
+        <div className={isLoading ? 'progress' : 'load-none'}>
+          <div className="indeterminate" />
         </div>
         <div className="container">
           <div className="row">
             {phones.map(phone => (
-              <div className="col s12 l6 center-align">
-                <div className="card hoverable medium">
-                  <span className="card-title">{phone.name}</span>
-                  <div className="card-image">
-                    <img src={phone.imageUrl} alt={`${phone.imageUrl}`} />
-                  </div>
+              <div className="col s12 m6 l4 center-align">
+                <div className="card hoverable large">
+                  <NavLink key={phone.id} to={`${match.path}/${phone.id}`}>
+                    <div className="card-image">
+                      <img src={phone.imageUrl} alt={`${phone.imageUrl}`} />
+                    </div>
+                    <span className="card-title">{phone.name}</span>
+                  </NavLink>
                   <div className="card-content">
                     <p>{phone.snippet}</p>
                   </div>
                   <div className="card-action">
-                    <a className="btn waves-effect waves-purple">Add to card</a>
+                    <button
+                      onClick={() => this.addToCard(phone.id)}
+                      type="button"
+                      className="btn waves-effect waves-purple"
+                    >
+                      Add to cart
+                    </button>
                   </div>
                 </div>
               </div>

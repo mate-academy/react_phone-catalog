@@ -1,9 +1,9 @@
 import React from 'react';
 import Catalog from './Catalog';
 
-const PhonesPage = () => (
+const PhonesPage = ({ match }) => (
   <div>
-    <Catalog />
+    <Catalog match={match} />
   </div>
 );
 

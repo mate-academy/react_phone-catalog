@@ -1,15 +1,24 @@
 import React from 'react';
 
-const Cart = () => (
-  <div>
-    <div className="container">
-      <div className="row">
-        <div>
-          <h1>Your cart is empty</h1>
+class Cart extends React.Component {
+  state = {
+    orderedPhone: [],
+    quantity: 1,
+  }
+
+  render() {
+    const {orderedPhone, quantity} = this.state;
+
+    return (
+      <div>
+        <div className="container">
+          <div className="row">
+            <h1>Your cart is empty</h1>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-);
+    );
+  }
+}
 
 export default Cart;

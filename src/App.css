@@ -3,9 +3,33 @@
   display: none;
 }
 
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
 img.single-phone__image {
   width: 150px;
 }
+
+.card .card-title {
+  font-size: 21px;
+  font-weight: 300;
+  color: rgba(0, 0, 0, 0.88);
+  text-shadow: 2px 8px 6px rgba(0,0,0,0.2), 0px -5px 35px rgba(255,255,255,0.3);
+}
+
+footer.page-footer i {
+  padding: 10px 12px;
+  color: white;
+}
+
+
 
 body{
   background:#ECF0F1;
@@ -13,10 +37,14 @@ body{
   font-family: 'Roboto', sans-serif;
 }
 
-.load{position:absolute;top:50%;left:50%;transform:translate(-50%, -50%);
-
+.load{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%);
   width:150px;
   height:150px;
+
 }
 .load hr{border:0;margin:0;width:40%;height:40%;position:absolute;border-radius:50%;animation:spin 2s ease infinite}
 
@@ -47,7 +75,7 @@ a.btn.waves-effect {
   background: #ee6e73;
 }
 
-.header {
+header {
   margin-bottom: 50px;
 }
 
@@ -166,6 +194,14 @@ a.btn.waves-effect {
   background-color: #fff;
 }
 
+.single-phone {
+  width: 200px;
+}
+
+.card .card-content p {
+  text-align: initial;
+}
+
 @media only screen and (max-width: 767px) {
   .notfound .notfound-404 h1 {
     font-size: 182px;
@@ -186,3 +222,4 @@ a.btn.waves-effect {
     font-size: 14px;
   }
 }
+
