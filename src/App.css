@@ -47,6 +47,14 @@ body {
   cursor: pointer;
 }
 
+.nav-list-link-logo {
+  text-decoration: none;
+  outline: none;
+  padding: 10px;
+  z-index: 1;
+  margin: 0 38px;
+}
+
 .iframe-link {
   position: relative;
   z-index: 2;
@@ -371,6 +379,11 @@ body {
   margin: 50px 73px 0 20px;
 }
 
+.cart-phones_link-back-phone-details {
+  background-color: black;
+  color: white;
+}
+
 .cart-phones_link-back:hover {
   background-color: black;
   color: white;
@@ -474,7 +487,7 @@ body {
 }
 
 .footer-list-links {
-  margin: 20px 60px;
+  margin: 20px 112px;
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 10px;
@@ -484,6 +497,7 @@ body {
   text-decoration: none;
   color: white;
   transition: 0.3s;
+  width: 110px;
 }
 
 .footer-link:hover {
