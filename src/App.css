@@ -379,7 +379,7 @@ body {
   margin: 50px 73px 0 20px;
 }
 
-.cart-phones_link-back-phone-details {
+.cart-phones_link-back-phone-details:hover {
   background-color: black;
   color: white;
 }
