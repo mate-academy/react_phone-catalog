@@ -54,7 +54,7 @@ class Phone extends React.Component {
             </div>
 
             <Link
-              className="cart-phones_link-back"
+              className="cart-phones_link-back-phone-details"
               to="/phones"
             >
               Go back to catalog

@@ -1,7 +1,8 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Exo:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Exo:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap');
 
 body {
-  font-family: 'Montserrat';
+  font-family: 'Exo';
   margin: 0;
 }
 
@@ -19,9 +20,20 @@ body {
   list-style: none;
   text-decoration: none;
   height: 110px;
-  margin: 0 50px;
+  margin: 0 40px;
   display: flex;
   align-items: center;
+}
+
+.nav-list-header-links {
+  display: flex;
+  align-items: center;
+  margin: 0 75px 0 auto;
+}
+
+.nav-list-header-links:first-child {
+  position: absolute;
+  z-index: 1;
 }
 
 .nav-list-link {
@@ -31,6 +43,13 @@ body {
   color: white;
   transition: 0.3s;
   padding: 10px;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.iframe-link {
+  position: relative;
+  z-index: 2;
 }
 
 .nav-list-link:hover {
@@ -44,13 +63,13 @@ body {
 .home-page-link {
   margin-right: 30px;
   background-color: black;
+  margin-left: auto;
 }
 
 .cart {
   color: white;
   text-decoration: none;
   font-size: 20px;
-  margin-top: -38px;
   margin-right: 30px;
   transition: 0.3s;
 }
@@ -63,9 +82,12 @@ body {
   position: relative;
   text-align: center;
   width: 13px;
-  left: 43px;
   font-size: 18px;
   border-radius: 10px;
+}
+
+.cart-amount-none {
+  display: none;
 }
 
 .phone {
@@ -96,7 +118,7 @@ body {
 }
 
 .search_field-grid {
-  margin: 20px 0;
+  margin: 45px 0;
   display: grid;
   justify-content: center;
 }
@@ -109,13 +131,13 @@ body {
   border-radius: 30px;
   border: 0;
   box-shadow: 0 0 4px gray;
-  font-family: 'Montserrat';
+  font-family: 'Exo';
   outline: none;
 }
 
 .catalog {
   display: grid;
-  grid-template-columns: repeat(4, 100px);
+  grid-template-columns: repeat(4, 122px);
   justify-content: center;
   justify-items: center;
   grid-column-gap: 170px;
@@ -145,7 +167,7 @@ body {
 }
 
 .catalog_phone-add {
-  font-family: 'Montserrat';
+  font-family: 'Exo';
   display: block;
   background-color: white;
   text-decoration: none;
@@ -186,16 +208,16 @@ body {
 }
 
 .phone-details_images {
-  padding: 10px 5px 10px 5px;
+  padding: 20px 5px 10px 5px;
   display: flex;
   flex-wrap: nowrap;
+  margin-top: 20px;
 }
 
 .phone-details_images-img {
   width: 150px;
   height: 150px;
   cursor: pointer;
-  margin-left: 10px;
 
 }
 
@@ -211,9 +233,9 @@ body {
 
 .phone-details_name {
   text-align: center;
-  font-size: 30px;
-  margin: 30px 0;
-  font-family: 'Montserrat';
+  font-size: 28px;
+  margin: 60px 30px 0 30px;
+  font-family: 'Exo';
 }
 
 .phone-details_additionalFeatures {
@@ -227,9 +249,9 @@ body {
 .phone-details_description {
   text-align: center;
   padding: 20px 20px;
-  font-size: 30px;
+  font-size: 21px;
   font-weight: 300;
-  margin-top: 20px;
+  margin: 40px 80px;
 }
 
 .error-message {
@@ -274,7 +296,7 @@ body {
   color: white;
   background-color: black;
   font-weight: 100;
-  margin: 20px 70px 1px 70px;
+  margin: 20px 93px 1px 93px;
 }
 
 .specifications_sign {
@@ -287,7 +309,7 @@ body {
 }
 
 .specifications_details {
-  font-size: 22px;
+  font-size: 16px;
   border: 1px solid black;
   padding: 20px;
 }
@@ -306,13 +328,14 @@ body {
 .phone-details_add {
   display: block;
   background-color: white;
-  font-family: 'Montserrat';
+  font-family: 'Exo';
   text-decoration: none;
   color: black;
   border: 1px solid black;
   padding: 20px;
   border-radius: 10px;
   transition: 0.3s;
+  margin: 50px 0 0 50px;
 }
 
 .phone-details_add:hover {
@@ -323,11 +346,25 @@ body {
 .cart-phones_link-back {
   text-decoration: none;
   color: black;
+  text-align: center;
+  width: 140px;
   border: 1px solid black;
   padding: 10px;
   transition: 0.3s;
   border-radius: 10px;
-  margin-left: 20px;
+  margin: 50px 73px 0 110px;
+}
+
+.cart-phones_link-back-phone-details {
+  text-decoration: none;
+  color: black;
+  text-align: center;
+  width: 140px;
+  border: 1px solid black;
+  padding: 10px;
+  transition: 0.3s;
+  border-radius: 10px;
+  margin: 50px 73px 0 20px;
 }
 
 .cart-phones_link-back:hover {
@@ -337,16 +374,17 @@ body {
 
 .cart-phones {
   display: grid;
-  grid-template-columns: 1fr 2fr;
-  justify-items: flex-start;
+  grid-template-columns: 1fr 3fr;
   align-items: center;
+  margin: 0 0 50px 0;
 }
 
 .cart-phone_sign {
   font-weight: 300;
-  margin-left: 85px;
+  margin: 55px 0 0 205px;
   text-align: center;
-  font-size: 22px;
+  font-size: 18px;
+  margin-right: auto;
 }
 
 .cart-phone_table-grid {
@@ -359,6 +397,7 @@ body {
   display: grid;
   justify-items: center;
   align-items: center;
+  margin-bottom: 50px;
 }
 
 .cart-phone_table-img {
@@ -381,7 +420,7 @@ body {
   transition: 0.3s;
   border-radius: 10px;
   font-size: 25px;
-  font-family: 'Montserrat';
+  font-family: 'Exo';
   display: block;
 }
 
@@ -391,7 +430,7 @@ body {
 }
 
 .cart-phone_table-amount-sign {
-  font-size: 24px;
+  font-size: 20px;
 }
 
 .cart-phone_table-remove-btn {
@@ -405,7 +444,7 @@ body {
   transition: 0.3s;
   display: block;
   font-size: 15px;
-  font-family: 'Montserrat';
+  font-family: 'Exo';
   border-radius: 10px;
   width: 200px;
 }
@@ -418,7 +457,7 @@ body {
 .footer-size {
   background-color: black;
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 1fr 1fr;
 }
 
 .footer {
@@ -428,11 +467,10 @@ body {
 
 .footer-text {
   color: white;
-  margin: 30px 100px;
 }
 
 .footer-list-links {
-  margin: 20px 0;
+  margin: 20px 60px;
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 10px;
@@ -458,7 +496,7 @@ body {
   display: grid;
   grid-template-columns: 1fr;
   margin: 0 20px 20px 110px;
-  font-weight: 600;
+  font-weight: 400;
 }
 
 .contacts-link {
@@ -509,7 +547,8 @@ body {
   }
 
   .phone-details_name {
-    font-size: 25px;
+    font-size: 20px;
+    margin-left: 50px;
   }
 
   .specifications {

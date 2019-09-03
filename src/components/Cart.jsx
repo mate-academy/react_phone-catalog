@@ -47,7 +47,7 @@ const Cart = ({
 +
             </button>
             <p className="cart-phone_table-amount-sign">
-Amount:
+Amount:{' '}
               {phone.amount}
             </p>
             <button

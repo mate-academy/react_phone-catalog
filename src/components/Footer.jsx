@@ -12,8 +12,8 @@ const Footer = () => (
         <Link className="footer-link" to="/phones">Phone Catalog</Link>
         <Link className="footer-link" to="/cart">Cart</Link>
         <Link className="footer-link" to="/contacts">Contacts</Link>
+        <p className="footer-text">Created by Alexandr Alexandrov 2019</p>
       </div>
-      <p className="footer-text">Created by Alexandr Alexandrov 2019</p>
     </div>
   </section>
 )

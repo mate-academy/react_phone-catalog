@@ -66,36 +66,38 @@ class App extends React.Component {
         <nav className="header">
           <ul className="nav-list">
             <li>
-              <NavLink to="/" exact>
-                <iframe src="//ntmaker.gfto.ru/newneontext/?image_height=100&image_width=200&image_font_shadow_width=30&image_font_size=30&image_background_color=000000&image_text_color=FF0000&image_font_shadow_color=F7406B&image_url=&image_text=Phone Catalog&image_font_family=CocaCola&" frameborder='no' scrolling='no' width="200" height="100"></iframe>
-              </NavLink>
-            </li>
-            <li>
               <NavLink to="/" exact className="nav-list-link">
-                <p className="home-page-link">Home Page</p>
+                <iframe className="iframe-link" src="//ntmaker.gfto.ru/newneontext/?image_height=100&image_width=200&image_font_shadow_width=30&image_font_size=30&image_background_color=000000&image_text_color=FF0000&image_font_shadow_color=F7406B&image_url=&image_text=Phone Catalog&image_font_family=CocaCola&" frameborder='no' scrolling='no' width="200" height="100"></iframe>
               </NavLink>
             </li>
-            <li>
-              <NavLink
-                className="nav-list-link"
-                to="/phones"
-              >
-                <p className="phone-catalog">Phone Catalog</p>
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/cart" className="nav-list-link">
-                <p className="cart-amount">{selectedPhones.length}</p>
-                <p className="cart">Cart</p>
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/contacts" className="nav-list-link">
-                <p className="contacts">Contacts</p>
-              </NavLink>
-            </li>
+            <div className="nav-list-header-links">
+              <li>
+                <NavLink to="/" exact className="nav-list-link">
+                  <p className="home-page-link">Home Page</p>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  className="nav-list-link"
+                  to="/phones"
+                >
+                  <p className="phone-catalog">Phone Catalog</p>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/cart" className="nav-list-link">
+                  <p className="cart">Cart<sup className={ selectedPhones.length === 0 ? 'cart-amount-none' : 'cart-amount'}>{selectedPhones.length} </sup></p>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/contacts" className="nav-list-link">
+                  <p className="contacts">Contacts</p>
+                </NavLink>
+              </li>
+            </div>
           </ul>
         </nav>
+
         <Switch>
           <Route exact path="/" render={() => (<HomePage />)}/>
           <Route
