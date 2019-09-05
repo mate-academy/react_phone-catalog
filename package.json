@@ -10,6 +10,8 @@
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-gesture-gallery": "^1.0.1",
+    "react-gesture-responder": "^2.1.0",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1"
   },
@@ -27,7 +29,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint --ext .jsx,.js ./src/",
+    "lint": "eslint --ext .jsx,.js ./src/ --fix",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
