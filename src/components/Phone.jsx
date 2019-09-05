@@ -48,11 +48,6 @@ class Phone extends React.Component {
             >
               Add to Cart
             </button>
-
-            <div className="phone-details_name">
-              {currentPhone.name}
-            </div>
-
             <Link
               className="cart-phones_link-back-phone-details"
               to="/phones"
@@ -61,15 +56,20 @@ class Phone extends React.Component {
             </Link>
           </section>
 
+          <p className="phone-details_name">
+              {currentPhone.name}
+          </p>
 
-          <article className="phone-details_header">
+          <div className="phone-details_header">
             <div className="phone-details_images">
               <ImagesCarousel image={currentPhone.images} />
             </div>
-          </article>
+          </div>
 
-          <div className="phone-details_description">
-            {currentPhone.description}
+          <div className="phone-details-wrapper_description">
+            <div className="phone-details_description" title={currentPhone.description}>
+              {currentPhone.description}
+            </div>
           </div>
 
           <Specefications currentPhone={currentPhone}/>
