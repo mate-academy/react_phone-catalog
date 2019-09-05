@@ -3,7 +3,7 @@ import Loader from './Loader';
 import PhoneDetais from './PhoneDetails';
 
 /* eslint-disable-next-line */
-const PhoneDetailsPage = ({ match, history, onAddToBasket }) => {
+const PhoneDetailsPage = ({match, history, onAddToBasket}) => {
   const [phone, setPhone] = useState([]);
   const [loader, setLoader] = useState(0);
   const [error, setError] = useState(0);
@@ -25,7 +25,15 @@ const PhoneDetailsPage = ({ match, history, onAddToBasket }) => {
   }, []);
 
   return (
-    <div>
+    <div className="section section_details">
+      <div className="section__button indent-mb-m">
+        <button
+          type="button"
+          onClick={history.goBack}
+        >
+          GO BACK
+        </button>
+      </div>
       { error ? (
         <div className="error">
           Sorry, phone not found
@@ -36,7 +44,6 @@ const PhoneDetailsPage = ({ match, history, onAddToBasket }) => {
             <div>
               <PhoneDetais
                 phone={phone}
-                history={history}
                 onAddToBasket={onAddToBasket}
               />
             </div>

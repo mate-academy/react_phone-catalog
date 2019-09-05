@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 /* eslint-disable-next-line */
-const PhoneDetais = ({ phone, onAddToBasket, history }) => {
+const PhoneDetais = ({phone, onAddToBasket}) => {
   const {
     id, name, images, description,
   } = phone;
@@ -13,15 +13,7 @@ const PhoneDetais = ({ phone, onAddToBasket, history }) => {
   };
 
   return (
-    <div className="section section_details">
-      <div className="section__button indent-mb-m">
-        <button
-          type="button"
-          onClick={history.goBack}
-        >
-          GO BACK
-        </button>
-      </div>
+    <>
       <div className="section__main-content">
         <div className="section__image">
           <img
@@ -43,19 +35,24 @@ const PhoneDetais = ({ phone, onAddToBasket, history }) => {
           </div>
         </div>
       </div>
-      <div className="section__gallery">
+      <div className="section__gallery gallery">
         {images.map(image => (
           /* eslint-disable-next-line */
-          <img
+          <div
             key={image}
-            onClick={() => changeMainImage(image)}
-            alt={name}
-            /* eslint-disable-next-line max-len */
-            src={`https://mate-academy.github.io/phone-catalogue-static/${image}`}
-          />
+            className="gallery__image"
+          >
+            {/* eslint-disable-next-line */}
+            <img
+              onClick={() => changeMainImage(image)}
+              alt={name}
+              /* eslint-disable-next-line max-len */
+              src={`https://mate-academy.github.io/phone-catalogue-static/${image}`}
+            />
+          </div>
         ))}
       </div>
-    </div>
+    </>
   );
 };
 

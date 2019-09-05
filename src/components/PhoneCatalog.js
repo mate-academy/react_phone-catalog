@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 /* eslint-disable-next-line */
 const PhoneCatalog = ({ match, phones, onAddToBasket }) => (
-  <div>
+  <div className="catalog">
     {phones.map((phone) => {
       const {
         id, name, imageUrl, snippet,
@@ -11,7 +11,7 @@ const PhoneCatalog = ({ match, phones, onAddToBasket }) => (
 
       return (
         <div key={id} className="catalog__card card">
-          <div className="card__image image-container">
+          <div className="card__image image-container indent-mb-sm">
             <Link to={`${match.url}${id}`}>
               <img
                 /* eslint-disable-next-line max-len */
@@ -21,7 +21,7 @@ const PhoneCatalog = ({ match, phones, onAddToBasket }) => (
             </Link>
           </div>
 
-          <div className="card__description">
+          <div className="card__description indent-mb-sm">
             <Link to={`${match.url}${id}`}>
               <h3 className="indent-mb-sm">{name}</h3>
             </Link>
