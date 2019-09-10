@@ -1,9 +1,20 @@
 import React from 'react';
+import SplittedText from './SplittedText';
 
 const HomePage = () => (
-  <div className="App">
-    <h1 className="title indent-mb-m">Home page</h1>
-  </div>
+  <section className="d-flex align-items-center
+  justify-content-center section section_cover"
+  >
+    <div>
+      <h1 className="title indent-mb-m">
+        <SplittedText
+          text="Homepage"
+          addClassName="charm-wrapper_scale"
+        />
+      </h1>
+    </div>
+  </section>
+
 );
 
 export default HomePage;

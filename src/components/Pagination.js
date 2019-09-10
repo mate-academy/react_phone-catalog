@@ -8,7 +8,7 @@ const Pagination = ({
   const renderDotsButton = () => (
     <li className="page-item disabled">
       <button
-        className="page-link"
+        className="page-link custom-page-link"
         type="button"
       >
         ...
@@ -28,7 +28,7 @@ const Pagination = ({
         }`}
       >
         <button
-          className="page-link"
+          className="page-link custom-page-link"
           type="button"
           id={buttonNum}
           name={buttonName}
@@ -49,7 +49,7 @@ const Pagination = ({
       }`}
     >
       <button
-        className="page-link"
+        className="page-link custom-page-link"
         type="button"
         id={buttonNum}
         name={buttonName}
@@ -63,7 +63,7 @@ const Pagination = ({
   return (
     // eslint-disable-next-line max-len
     <div className="d-flex flex-wrap justify-content-between align-items-center">
-      <div className="mb-2">
+      <div className="mb-2 pagination-info">
         <span>
           {withInfo}
         </span>

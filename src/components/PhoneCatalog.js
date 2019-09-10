@@ -3,14 +3,18 @@ import { Link } from 'react-router-dom';
 
 /* eslint-disable-next-line */
 const PhoneCatalog = ({ match, phones, onAddToBasket }) => (
-  <div className="catalog">
-    {phones.map((phone) => {
+  <div className="catalog fix-container2 indent-mb-l">
+    {phones.map((phone, idx) => {
       const {
         id, name, imageUrl, snippet,
       } = phone;
 
       return (
-        <div key={id} className="catalog__card card">
+        <div
+          key={id}
+          className="catalog__card card"
+          style={{ animationDelay: `${idx * 100}ms` }}
+        >
           <div className="card__image image-container indent-mb-sm">
             <Link to={`${match.url}${id}`}>
               <img
@@ -20,7 +24,6 @@ const PhoneCatalog = ({ match, phones, onAddToBasket }) => (
               />
             </Link>
           </div>
-
           <div className="card__description indent-mb-sm">
             <Link to={`${match.url}${id}`}>
               <h3 className="indent-mb-sm">{name}</h3>
@@ -32,7 +35,7 @@ const PhoneCatalog = ({ match, phones, onAddToBasket }) => (
               type="button"
               onClick={() => onAddToBasket(id, name)}
             >
-            Add
+              BUY
             </button>
           </div>
         </div>

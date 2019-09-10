@@ -7,11 +7,15 @@
   "author": "Mate Academy",
   "license": "GPL-3.0",
   "dependencies": {
+    "@types/react-transition-group": "^4.2.2",
+    "lodash": "^4.17.15",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.1",
-    "react-scripts": "3.0.1",
+    "react-scripts": "^3.0.1",
+    "react-spring": "^8.0.27",
+    "react-transition-group": "^4.3.0",
     "shortid": "^2.2.14"
   },
   "devDependencies": {

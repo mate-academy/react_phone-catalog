@@ -7,7 +7,6 @@ const PhoneDetais = ({phone, onAddToBasket}) => {
   } = phone;
 
   const [mainImage, setMainImage] = useState(images[0]);
-
   const changeMainImage = (image) => {
     setMainImage(image);
   };
@@ -17,6 +16,7 @@ const PhoneDetais = ({phone, onAddToBasket}) => {
       <div className="section__main-content">
         <div className="section__image">
           <img
+            key={mainImage}
             alt={name}
             /* eslint-disable-next-line max-len */
             src={`https://mate-academy.github.io/phone-catalogue-static/${mainImage}`}
@@ -35,12 +35,15 @@ const PhoneDetais = ({phone, onAddToBasket}) => {
           </div>
         </div>
       </div>
-      <div className="section__gallery gallery">
-        {images.map(image => (
+      <div
+        className="section__gallery gallery"
+      >
+        {images.map((image, idx) => (
           /* eslint-disable-next-line */
           <div
             key={image}
             className="gallery__image"
+            style={{ animationDelay: `${idx * 100}ms` }}
           >
             {/* eslint-disable-next-line */}
             <img

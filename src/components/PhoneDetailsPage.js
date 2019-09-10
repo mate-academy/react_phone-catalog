@@ -41,12 +41,10 @@ const PhoneDetailsPage = ({match, history, onAddToBasket}) => {
       ) : (
         <>
           { loader ? (
-            <div>
-              <PhoneDetais
-                phone={phone}
-                onAddToBasket={onAddToBasket}
-              />
-            </div>
+            <PhoneDetais
+              phone={phone}
+              onAddToBasket={onAddToBasket}
+            />
           ) : (
             <Loader />
           )}

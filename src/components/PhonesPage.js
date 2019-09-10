@@ -1,29 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import shortid from 'shortid';
 import Loader from './Loader';
 import PhoneCatalog from './PhoneCatalog';
-import PhoneDetailsPage from './PhoneDetailsPage';
 import Filter from './Filter';
-import Basket from './Basket';
 import Pagination from './Pagination';
-
-const getPageNumbers = (itemsPerPage, itemsNumber) => {
-  const pageNumbers = [];
-
-  for (let i = 1; i <= Math.ceil(itemsNumber / itemsPerPage); i += 1) {
-    pageNumbers.push(i);
-  }
-
-  return pageNumbers;
-};
+import getPageNumbers from '../helpers/getPagesNumbers';
+import SplittedText from './SplittedText';
 
 /* eslint-disable-next-line */
-const PhonesPage = ({ history, location }) => {
+const PhonesPage = ({ history, location, onAddToBasket }) => {
   const [phones, setPhones] = useState([]);
   const [filteredPhones, setFilteredPhones] = useState([]);
   const [phonesLoaded, setPhonesLoader] = useState(false);
-  const [basketItems, setBasketItems] = useState([]);
   const [searchValue, setSearchValue] = useState('');
   const [sortType, setSortType] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
@@ -33,12 +22,13 @@ const PhonesPage = ({ history, location }) => {
   const selectOptions = [3, 5, 10, 20];
 
   const { search } = location;
+  const URL = 'https://mate-academy.github.io/'
+    + 'phone-catalogue-static/api/phones.json';
 
   useEffect(() => {
     (async() => {
       try {
-        // eslint-disable-next-line max-len
-        const data = await fetch('https://mate-academy.github.io/phone-catalogue-static/api/phones.json');
+        const data = await fetch(URL);
         const phonesData = await data.json();
 
         setPhones(phonesData);
@@ -67,16 +57,8 @@ const PhonesPage = ({ history, location }) => {
       }
     })();
 
-    if (localStorage.getItem('basketItems')) {
-      setBasketItems(JSON.parse(localStorage.getItem('basketItems')));
-    }
-
     setPhonesLoader(true);
   }, []);
-
-  useEffect(() => {
-    localStorage.setItem('basketItems', JSON.stringify(basketItems));
-  }, [basketItems]);
 
   useEffect(() => {
     const searchParams = new URLSearchParams(search);
@@ -117,55 +99,6 @@ const PhonesPage = ({ history, location }) => {
     setPageNumbers(getPageNumbers(itemsPerPage,
       sortedPhones.length));
   }, [searchValue, sortType, itemsPerPage, currentPage]);
-
-  const onAddToBasket = (phoneId, phoneName) => {
-    const items = [...basketItems];
-    const itemIndex = items.findIndex(phone => phone.id === phoneId);
-
-    if (itemIndex > -1) {
-      items[itemIndex] = {
-        ...items[itemIndex],
-        quantity: items[itemIndex].quantity + 1,
-      };
-      setBasketItems(items);
-    } else {
-      setBasketItems([...items, { id: phoneId, name: phoneName, quantity: 1 }]);
-    }
-  };
-
-  const onRemoveFormBasket = (phoneId) => {
-    setBasketItems(
-      basketItems.filter(item => item.id !== phoneId)
-    );
-  };
-
-  const onChangeQuantity = (actionName, basketItemId) => {
-    const items = [...basketItems];
-    const itemIndex = [...basketItems]
-      .findIndex(phone => phone.id === basketItemId);
-
-    switch (actionName) {
-      case 'increase':
-        items[itemIndex] = {
-          ...items[itemIndex],
-          quantity: items[itemIndex].quantity + 1,
-        };
-        setBasketItems(items);
-        break;
-      case 'decrease':
-        if (items[itemIndex].quantity >= 2) {
-          items[itemIndex] = {
-            ...items[itemIndex],
-            quantity: items[itemIndex].quantity - 1,
-          };
-          setBasketItems(items);
-        }
-
-        break;
-      default:
-        setBasketItems(items);
-    }
-  };
 
   const getSearchValue = (event) => {
     setCurrentPage(1);
@@ -228,99 +161,91 @@ const PhonesPage = ({ history, location }) => {
 
   return (
     <section className="section">
-      <div className="sidebar">
-        <Route
-          path="/phones/"
-          exact
-          render={() => (
-            <Filter
-              onFilterPhones={getSearchValue}
-              onSortPhonesBy={getSortType}
-              sortValue={sortType}
-              searchValue={searchValue}
-            />
-          )}
-        />
-        <Basket
-          basketItems={basketItems}
-          onChangeQuantity={onChangeQuantity}
-          onRemoveFormBasket={onRemoveFormBasket}
-        />
-        <Route
-          path="/phones/"
-          exact
-          render={() => (
-            <>
-              <form>
-                {/* eslint-disable-next-line jsx-a11y/label-has-for */}
-                <label
-                  className="custom-form-control"
-                  htmlFor="formControlSelect"
-                >
-                  Show
-                  <select
-                    onChange={onSelectChange}
-                    id="formControlSelect"
-                    className="form-control"
-                    value={itemsPerPage}
-                  >
-                    {selectOptions.map(item => (
-                      <option
-                        key={shortid.generate()}
-                        value={item}
-                      >
-                        {item}
-                      </option>
-                    ))}
-                  </select>
-                  countries
-                </label>
-              </form>
-              <Pagination
-                buttons={pageNumbers}
-                currentPage={currentPage}
-                withInfo={paginationInfo}
-                onPageChange={onPageChange}
-              />
-            </>
-          )}
-        />
-      </div>
       <div>
-        <h1 className="title indent-mb-m">Phone catalog</h1>
+        <div className="indent-mb-m">
+          <h1 className="title title_subpages">
+            <SplittedText text="Phones catalog" />
+          </h1>
+        </div>
+        <div className="sidebar">
+          <Route
+            path="/phones/"
+            exact
+            render={() => (
+              <Filter
+                onFilterPhones={getSearchValue}
+                onSortPhonesBy={getSortType}
+                sortValue={sortType}
+                searchValue={searchValue}
+              />
+            )}
+          />
+          <Route
+            path="/phones/"
+            exact
+            render={() => (
+              <>
+                <form>
+                  {/* eslint-disable-next-line jsx-a11y/label-has-for */}
+                  <div className="input-block">
+                    {/* eslint-disable-next-line */}
+                    <label
+                      htmlFor="formControlSelect"
+                    >
+                      Show per page
+                    </label>
+                    <select
+                      onChange={onSelectChange}
+                      id="formControlSelect"
+                      value={itemsPerPage}
+                    >
+                      {selectOptions.map(item => (
+                        <option
+                          key={shortid.generate()}
+                          value={item}
+                        >
+                          {item}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                </form>
+              </>
+            )}
+          />
+        </div>
         {
           phonesLoaded
             ? (
               <div>
-                <Switch>
-                  <Route
-                    path="/phones/:id"
-                    exact
-                    render={({ match }) => (
-                      <PhoneDetailsPage
-                        match={match}
-                        history={history}
-                        onAddToBasket={onAddToBasket}
-                      />
-                    )}
-                  />
-                  <Route
-                    path="/phones/:queryParams?"
-                    exact
-                    render={({ match }) => (
-                      <PhoneCatalog
-                        match={match}
-                        phones={currentPhonesForShowing}
-                        onAddToBasket={onAddToBasket}
-                      />
-                    )}
-                  />
-                </Switch>
+                <Route
+                  path="/phones/:queryParams?"
+                  exact
+                  render={({ match }) => (
+                    <PhoneCatalog
+                      match={match}
+                      phones={currentPhonesForShowing}
+                      onAddToBasket={onAddToBasket}
+                    />
+                  )}
+                />
               </div>
             ) : (
               <Loader />
             )
         }
+        <Route
+          path="/phones/"
+          exact
+          render={() => (
+            <Pagination
+              buttons={pageNumbers}
+              currentPage={currentPage}
+              withInfo={paginationInfo}
+              onPageChange={onPageChange}
+            />
+          )}
+        />
       </div>
     </section>
   );
