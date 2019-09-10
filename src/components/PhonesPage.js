@@ -95,14 +95,13 @@ const PhonesPage = ({ history, location, onAddToBasket }) => {
     );
 
     setFilteredPhones(sortedPhones);
-
     setPageNumbers(getPageNumbers(itemsPerPage,
       sortedPhones.length));
   }, [searchValue, sortType, itemsPerPage, currentPage]);
 
-  const getSearchValue = (event) => {
+  const getSearchValue = (text) => {
     setCurrentPage(1);
-    setSearchValue(event.target.value.toLowerCase());
+    setSearchValue(text.toLowerCase());
   };
 
   const getSortType = (event) => {
