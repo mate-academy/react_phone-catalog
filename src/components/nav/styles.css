@@ -1,0 +1,28 @@
+.nav {
+  position: relative;
+  display: block;
+}
+
+.nav ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 0;
+}
+
+.nav li {
+  margin: 1rem;
+  position: relative;
+}
+
+.nav a {
+  opacity: 0.5;
+  text-decoration: none;
+  transition: opacity 0.5s ease, color 0.5s ease;
+}
+
+.nav a.active {
+  opacity: 1;
+  pointer-events: none;
+}

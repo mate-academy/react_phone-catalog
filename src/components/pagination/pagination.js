@@ -1,8 +1,10 @@
 import React from 'react';
 import shortid from 'shortid';
 
+import './styles.css';
+import PropTypes from 'prop-types';
+
 const Pagination = ({
-// eslint-disable-next-line react/prop-types
   withInfo, currentPage, buttons, onPageChange,
 }) => {
   const renderDotsButton = () => (
@@ -97,6 +99,16 @@ const Pagination = ({
       </nav>
     </div>
   );
+};
+
+Pagination.propTypes = {
+  withInfo: PropTypes.string.isRequired,
+  currentPage: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]).isRequired,
+  buttons: PropTypes.instanceOf(Array).isRequired,
+  onPageChange: PropTypes.func.isRequired,
 };
 
 export default React.memo(Pagination);

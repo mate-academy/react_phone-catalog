@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
-/* eslint-disable-next-line */
-const PhoneDetais = ({phone, onAddToBasket}) => {
+import './styles.css';
+
+const PhoneDetais = ({ phone, onAddToBasket }) => {
   const {
     id, name, images, description,
   } = phone;
@@ -57,6 +59,11 @@ const PhoneDetais = ({phone, onAddToBasket}) => {
       </div>
     </>
   );
+};
+
+PhoneDetais.propTypes = {
+  phone: PropTypes.instanceOf(Object).isRequired,
+  onAddToBasket: PropTypes.func.isRequired,
 };
 
 export default PhoneDetais;

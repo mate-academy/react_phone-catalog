@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTrail, animated } from 'react-spring';
-import './background.css';
+import './styles.css';
 
 const fast = { tension: 1200, friction: 40 };
 const slow = { mass: 10, tension: 200, friction: 50 };

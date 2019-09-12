@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import useDebounce from '../helpers/useDebounce';
+import PropTypes from 'prop-types';
 
-/* eslint-disable */
-const Filter = ({ onFilterPhones, onSortPhonesBy, sortValue, searchValue}) => {
+import { useDebounce } from '../../helpers';
+
+import './styles.css';
+
+const Filter = ({
+  onFilterPhones, onSortPhonesBy, sortValue, searchValue,
+}) => {
   const [value, setValue] = useState(searchValue);
 
   const debouncedValue = useDebounce(value, 1000);
@@ -13,13 +18,18 @@ const Filter = ({ onFilterPhones, onSortPhonesBy, sortValue, searchValue}) => {
     },
     [debouncedValue]
   );
-
+  /* eslint-disable*/
   return (
     <form>
       <div className="inputs-field indent-mb-m">
         <div className="input-block">
+
           <label htmlFor="input-filter">Search:</label>
-          <input id="input-filter" onChange={e => setValue(e.target.value)} value={value}/>
+          <input
+            id="input-filter"
+            onChange={e => setValue(e.target.value)}
+            value={value}
+          />
         </div>
         <div className="input-block">
           <label htmlFor="select-sort">Sort by: </label>
@@ -30,7 +40,17 @@ const Filter = ({ onFilterPhones, onSortPhonesBy, sortValue, searchValue}) => {
         </div>
       </div>
     </form>
-  )
+  );
+};
+
+Filter.propTypes = {
+  onFilterPhones: PropTypes.func.isRequired,
+  onSortPhonesBy: PropTypes.func.isRequired,
+  sortValue: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]),
+  searchValue: PropTypes.string.isRequired,
 };
 
 export default React.memo(Filter);

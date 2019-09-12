@@ -8,6 +8,7 @@
   "license": "GPL-3.0",
   "dependencies": {
     "@types/react-transition-group": "^4.2.2",
+    "eslint-plugin-react-hooks": "^2.0.1",
     "lodash": "^4.17.15",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",

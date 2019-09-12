@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import './App.css';
 import { Switch, Route } from 'react-router-dom';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import HomePage from './components/HomePage';
-import PhonesPage from './components/PhonesPage';
-import NotFoundPage from './components/NotFoundPage';
-import Basket from './components/Basket';
-import getTotalBasketItems from './helpers/getTotalBasketItems';
-import Layout from './components/Layout';
-import PhoneDetailsPage from './components/PhoneDetailsPage';
+import PropTypes from 'prop-types';
+
+import {
+  HomePage, PhonesPage, BasketPage, PhoneDetailsPage, NotFoundPage,
+} from '../pages';
+import { getTotalBasketItems } from '../../helpers';
+import Layout from '../layout';
+
+import './styles.css';
 
 const PageFade = props => (
   <CSSTransition
@@ -21,12 +22,10 @@ const PageFade = props => (
 );
 
 const App = (props) => {
-  // eslint-disable-next-line react/prop-types
   const locationKey = props.location.pathname;
 
   const [basketItems, setBasketItems] = useState([]);
 
-  // const locationKey = window.history.location.pathname;
   useEffect(() => {
     if (localStorage.getItem('basketItems')) {
       setBasketItems(JSON.parse(localStorage.getItem('basketItems')));
@@ -93,7 +92,6 @@ const App = (props) => {
       <TransitionGroup>
         <PageFade key={locationKey}>
           <main className="fix-container">
-            {/* eslint-disable-next-line react/prop-types */}
             <Switch location={props.location}>
               <Route path="/" exact component={HomePage} />
               <Route
@@ -122,8 +120,8 @@ const App = (props) => {
               <Route
                 path="/basket"
                 exact
-                render={({ match }) => (
-                  <Basket
+                render={() => (
+                  <BasketPage
                     basketItems={basketItems}
                     onChangeQuantity={onChangeQuantity}
                     onRemoveFormBasket={onRemoveFormBasket}
@@ -137,6 +135,10 @@ const App = (props) => {
       </TransitionGroup>
     </Layout>
   );
+};
+
+App.propTypes = {
+  location: PropTypes.instanceOf(Object).isRequired,
 };
 
 export default App;

@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Route } from 'react-router-dom';
 import shortid from 'shortid';
-import Loader from './Loader';
-import PhoneCatalog from './PhoneCatalog';
-import Filter from './Filter';
-import Pagination from './Pagination';
-import getPageNumbers from '../helpers/getPagesNumbers';
-import SplittedText from './SplittedText';
+import Loader from '../loader';
+import PhoneCatalog from '../phone-catalog';
+import Filter from '../filter';
+import Pagination from '../pagination';
+import { getPagesNumbers } from '../../helpers';
+import SplittedText from '../splitted-text';
 
 /* eslint-disable-next-line */
 const PhonesPage = ({ history, location, onAddToBasket }) => {
@@ -48,7 +48,7 @@ const PhonesPage = ({ history, location, onAddToBasket }) => {
           sortValue
         );
 
-        setPageNumbers(getPageNumbers(perPage,
+        setPageNumbers(getPagesNumbers(perPage,
           sortedPhones.length));
 
         setFilteredPhones(sortedPhones);
@@ -95,7 +95,7 @@ const PhonesPage = ({ history, location, onAddToBasket }) => {
     );
 
     setFilteredPhones(sortedPhones);
-    setPageNumbers(getPageNumbers(itemsPerPage,
+    setPageNumbers(getPagesNumbers(itemsPerPage,
       sortedPhones.length));
   }, [searchValue, sortType, itemsPerPage, currentPage]);
 
@@ -129,7 +129,7 @@ const PhonesPage = ({ history, location, onAddToBasket }) => {
   const onPageChange = (event) => {
     const { name, id } = event.target;
 
-    setPageNumbers(getPageNumbers(itemsPerPage, filteredPhones.length));
+    setPageNumbers(getPagesNumbers(itemsPerPage, filteredPhones.length));
     if (name.toLowerCase().trim().includes('next')
       && currentPage < pageNumbers.length) {
       setCurrentPage(currentPage + 1);

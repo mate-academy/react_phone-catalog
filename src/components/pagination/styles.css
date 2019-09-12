@@ -1,0 +1,25 @@
+.pagination {
+  position: relative;
+}
+
+.pagination button {
+  border-radius: 0;
+}
+
+.pagination-info {
+  z-index: 1;
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 0.25rem;
+  padding: 0.5rem 1rem;
+}
+
+.custom-page-link {
+  color: #101010;
+  border-color: rgba(0,0,0,0.12);
+}
+
+.page-item.active .custom-page-link {
+  color: #fff;
+  background-color: #ff1f48;
+  border-color: #ff1f48;
+}

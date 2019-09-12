@@ -1,5 +1,5 @@
 import React from 'react';
-import SplittedText from './SplittedText';
+import SplittedText from '../splitted-text';
 
 const HomePage = () => (
   <section className="d-flex align-items-center
@@ -9,7 +9,7 @@ const HomePage = () => (
       <h1 className="title indent-mb-m">
         <SplittedText
           text="Homepage"
-          addClassName="charm-wrapper_scale"
+          additionalClassName="charm-wrapper_scale"
         />
       </h1>
     </div>

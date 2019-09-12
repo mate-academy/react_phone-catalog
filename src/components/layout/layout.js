@@ -1,9 +1,11 @@
 import React from 'react';
-import { SpectrumGradient } from './SpectrumGradient';
-import Background from './Background';
-import Nav from './Nav';
+import PropTypes from 'prop-types';
+import SpectrumGradient from '../spectrum-gradient';
+import Background from '../background';
+import Nav from '../nav';
 
-// eslint-disable-next-line react/prop-types
+import './styles.css';
+
 const Layout = ({ children, totalBasketItems }) => (
   <div className="App">
     <div className="background">
@@ -16,5 +18,10 @@ const Layout = ({ children, totalBasketItems }) => (
     {children}
   </div>
 );
+
+Layout.propTypes = {
+  totalBasketItems: PropTypes.number.isRequired,
+  children: PropTypes.node.isRequired,
+};
 
 export default Layout;

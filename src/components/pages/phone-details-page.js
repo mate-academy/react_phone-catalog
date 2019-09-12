@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import Loader from './Loader';
-import PhoneDetais from './PhoneDetails';
+import Loader from '../loader';
+import PhoneDetais from '../phone-details';
 
 /* eslint-disable-next-line */
 const PhoneDetailsPage = ({match, history, onAddToBasket}) => {

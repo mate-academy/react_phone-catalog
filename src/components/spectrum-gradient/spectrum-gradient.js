@@ -1,6 +1,8 @@
 ﻿/* eslint-disable */
 import React from 'react';
 
+import './styles.css';
+
 export const SpectrumGradient = () => (
   <svg xmlns="http://www.w3.org/2000/svg">
     <rect fill="#ff1f48" width="100%" height="100%" />

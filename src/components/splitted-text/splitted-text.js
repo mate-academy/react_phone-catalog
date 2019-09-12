@@ -1,8 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import shortid from 'shortid';
 
-// eslint-disable-next-line react/prop-types
-const SplittedText = ({ text, addClassName }) => {
+import './styles.css';
+
+const SplittedText = ({ text, additionalClassName }) => {
   const sentence = text.replace(/ /g, '\u00a0').split('');
   const newA = sentence.map((word, idx) => (
     <div
@@ -15,10 +17,19 @@ const SplittedText = ({ text, addClassName }) => {
   ));
 
   return (
-    <div className={`charm-wrapper ${addClassName}`}>
+    <div className={`charm-wrapper ${additionalClassName}`}>
       {newA}
     </div>
   );
+};
+
+SplittedText.defaultProps = {
+  additionalClassName: '',
+};
+
+SplittedText.propTypes = {
+  text: PropTypes.string.isRequired,
+  additionalClassName: PropTypes.string,
 };
 
 export default React.memo(SplittedText);

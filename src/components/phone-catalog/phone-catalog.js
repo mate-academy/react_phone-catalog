@@ -1,7 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-/* eslint-disable-next-line */
+import './styles.css';
+
 const PhoneCatalog = ({ match, phones, onAddToBasket }) => (
   <div className="catalog fix-container2 indent-mb-l">
     {phones.map((phone, idx) => {
@@ -43,5 +45,11 @@ const PhoneCatalog = ({ match, phones, onAddToBasket }) => (
     })}
   </div>
 );
+
+PhoneCatalog.propTypes = {
+  phones: PropTypes.instanceOf(Array).isRequired,
+  onAddToBasket: PropTypes.func.isRequired,
+  match: PropTypes.instanceOf(Object).isRequired,
+};
 
 export default React.memo(PhoneCatalog);
