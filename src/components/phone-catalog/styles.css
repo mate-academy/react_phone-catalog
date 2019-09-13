@@ -31,6 +31,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 0.3s ease-in-out;
 }
 
 .catalog__card .image-container {
@@ -48,6 +49,10 @@
   width: 5rem;
   height: 2.5rem;
   transition: background-color 0.3s ease, opacity 0.3s ease;
+}
+
+.catalog__card:hover img {
+  transform: scale(1.1);
 }
 
 @media (max-width: 780px) {

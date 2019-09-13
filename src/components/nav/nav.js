@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 
 import './styles.css';
 
-// eslint-disable-next-line react/prop-types
 const Nav = ({ totalBasketItems }) => (
   <nav className="nav">
     <ul>

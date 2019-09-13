@@ -52,7 +52,6 @@
 
 .gallery__image img {
   transition: transform 0.3s ease-in-out;
-
 }
 
 .gallery__image img:hover {

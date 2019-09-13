@@ -21,8 +21,8 @@ const PageFade = props => (
   />
 );
 
-const App = (props) => {
-  const locationKey = props.location.pathname;
+const App = ({ location }) => {
+  const locationKey = location.pathname;
 
   const [basketItems, setBasketItems] = useState([]);
 
@@ -92,12 +92,12 @@ const App = (props) => {
       <TransitionGroup>
         <PageFade key={locationKey}>
           <main className="fix-container">
-            <Switch location={props.location}>
+            <Switch location={location}>
               <Route path="/" exact component={HomePage} />
               <Route
                 exact
                 path="/phones"
-                render={({ match, location, history }) => (
+                render={({ match, history }) => (
                   <PhonesPage
                     match={match}
                     location={location}

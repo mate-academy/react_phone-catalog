@@ -10,7 +10,7 @@ const Filter = ({
 }) => {
   const [value, setValue] = useState(searchValue);
 
-  const debouncedValue = useDebounce(value, 1000);
+  const debouncedValue = useDebounce(value, 500);
 
   useEffect(
     () => {
