@@ -1,0 +1,18 @@
+.charm-wrapper {
+  display: inline-block;
+}
+
+.charm-wrapper_scale .charm {
+  opacity: 0;
+  transform: scale(0);
+  animation: reset 0.75s ease both;
+}
+
+.charm {
+  opacity: 0;
+  transform: translateX(30px);
+  transition: transform 300ms ease-in-out;
+  display: inline-block;
+  line-height: 1em;
+  animation: reset 0.3s ease both;
+}

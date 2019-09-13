@@ -1,0 +1,70 @@
+.hooks-main > svg {
+  display: none;
+}
+
+.hooks-main > div {
+  position: fixed;
+  will-change: transform;
+  border-radius: 50%;
+  /*background: #FF1F48;*/
+  z-index: -1;
+  /*box-shadow: 10px 10px 5px 0 rgba(254, 217, 34, 0.75);*/
+  background: linear-gradient(155deg,
+  rgba(255,31,72,1) 60%, rgba(255,251,24,1) 90%);
+  opacity: 1;
+}
+
+.hooks-main > div:nth-child(1) {
+  width: 120px;
+  height: 120px;
+}
+
+.hooks-main > div:nth-child(2) {
+  width: 250px;
+  height: 250px;
+}
+
+.hooks-main > div:nth-child(3) {
+  width: 150px;
+  height: 150px;
+}
+
+.hooks-main > div::after {
+  content: "";
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.hooks-main > div:nth-child(2)::after {
+  top: 70px;
+  left: 70px;
+  width: 70px;
+  height: 70px;
+}
+
+.hooks-main > div:nth-child(3)::after {
+  top: 50px;
+  left: 50px;
+  width: 50px;
+  height: 50px;
+}
+
+.hooks-main {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  /*top: 0;*/
+  /*bottom: 0;*/
+  /*z-index: 1;*/
+  filter: url("#goo");
+  overflow: hidden;
+}
+
+.goo-svg {
+  display: none;
+}

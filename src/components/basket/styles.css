@@ -1,0 +1,57 @@
+.basket__button {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin: 0 0.5rem;
+}
+
+.quantity {
+  width: 2rem;
+  text-align: center;
+}
+
+.basket {
+  position: relative;
+  z-index: 2;
+  min-width: 500px;
+}
+
+.basket ul {
+  width: 100%;
+  border: 1px solid rgba(0,0,0, 0.12);
+  border-radius: 0.25rem;
+  overflow: hidden;
+}
+
+.basket ul li {
+  background-color: #fff;
+  background-clip: border-box;
+}
+
+.basket ul li:not(:first-child) {
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.basket__quantity {
+  display: flex;
+  align-items: center;
+  margin: 0 1.5rem;
+}
+
+.basket__title {
+  flex: auto;
+}
+
+.basket__item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff;
+  padding: 1.5rem;
+}
+
+@media (max-width: 780px) {
+  .basket {
+    min-width: 100%;
+  }
+}
