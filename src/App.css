@@ -115,8 +115,10 @@ ______________________________________________________________ */
   height: 30px;
   padding: 0 12px;
   margin-right: 80px;
+  color: white;
+  background: rgb(27, 34, 27);
   border-radius: 15px;
-  border: 2px solid red;
+  border: 2px solid rgb(37, 31, 31);
   cursor: pointer;
 }
 
@@ -243,13 +245,13 @@ _______________________________________________________________ */
 }
 
 .default__btn {
-  background: linear-gradient(55deg, red, transparent);
+  background: linear-gradient(55deg, #1c1b1d, transparent);
   border-radius: 10px;
 }
 
 .default__btn:hover {
   border: 3px solid #757575;
-  background: linear-gradient(0.5deg, red, transparent);
+  background: linear-gradient(0.5deg, #1c1b1d, transparent);
 }
 
 .card__item-title {

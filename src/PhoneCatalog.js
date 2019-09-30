@@ -11,7 +11,7 @@ class PhoneCatalog extends React.Component {
 
   render() {
     const {
-      phoneId, urlImg, phones, handleFilter,
+      urlImg, phones, handleFilter,
       handleSort, setItemToBasket, sortField,
     } = this.props;
     const { phoneArrays } = this.state;
@@ -45,7 +45,7 @@ class PhoneCatalog extends React.Component {
           </form>
           {phoneArrays}
         </div>
-        {phones.length === 0 && phoneId === 0
+        {phones.length === 0
           ? <Loading />
           : (
             <div className="catalog">
@@ -53,7 +53,6 @@ class PhoneCatalog extends React.Component {
                 <PhonesPage
                   key={phone.id}
                   phone={phone}
-                  phoneId={phoneId}
                   urlImg={urlImg}
                   setItemToBasket={setItemToBasket}
                 />
@@ -70,7 +69,6 @@ PhoneCatalog.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   phones: PropTypes.array.isRequired,
   // eslint-disable-next-line react/require-default-props
-  phoneId: PropTypes.string,
   urlImg: PropTypes.string.isRequired,
   handleFilter: PropTypes.func.isRequired,
   handleSort: PropTypes.func.isRequired,

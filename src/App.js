@@ -200,7 +200,7 @@ class App extends React.Component {
             )}
           />
           <Route
-            path="/phones/:phoneId"
+            path="/phones/:phoneId?"
             exact
             render={({ match }) => (
               <PhoneDetailsPage
