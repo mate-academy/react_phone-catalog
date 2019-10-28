@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Jomolhari&display=swap');
+
+.catalog__phones {
+  &__container__for__images {
+    display: grid;
+    grid-template-columns: repeat(4, 100px);
+    grid-template-rows: repeat(4, 100px);
+    padding-left: 69px;
+  }
+
+  &__container__for__images img {
+    overflow: hidden;
+    box-sizing: border-box;
+    object-fit: cover;
+    width: 100%;
+    position: relative;
+    display: block;
+    cursor: pointer;
+  }
+  &__details__information {
+    font-family: 'Jomolhari', serif;
+    color: black;
+    padding-left: 30px;
+  }
+  &__details__wrap {
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+  }
+  &__details__add__button {
+    position: absolute;
+    bottom: 0;
+    padding: 13px 25px;
+    font-size: 10px;
+    color: #212020;
+    width: 150px;
+  }
+  &__details__add__button:hover button {
+    border: 3px solid #757575;
+    background: linear-gradient(0.5deg, #312e35, transparent);
+  }
+
+  &__details__add__button button {
+    width: 200px;
+    height: 70px;
+    color: white;
+    border-radius: 20px;
+    font-size: 18px;
+    background: linear-gradient(55deg, #1c1b1d, transparent);
+  }
+  &__details h1 {
+    font-size: 16px;
+  }
+  &__details p {
+    padding-right: 10px;
+  }
+
+  &__details {
+    color: #000;
+  }
+  &__phone_details__text_details {
+    color: #000;
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    padding: 0 69px;
+  }
+
+  &__android__wrapper p {
+    font-family: 'Jomolhari', serif;
+    padding-right: 10px;
+    font-size: 12px;
+    color: black;
+    margin: 0;
+  }
+  &__android__wrapper h3 {
+    font-size: 26px;
+  }
+
+  &__details__img_wrap:nth-child(1) {
+    grid-column: 2/5;
+    grid-row: 1/3;
+  }
+
+  &__details__img_wrap:nth-child(2) {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  &__details__img_wrap:nth-child(3) {
+    grid-column: 1;
+    grid-row: 2;
+  }
+  &__details__img_wrap:nth-child(4) {
+    grid-column: 1;
+    grid-row: 3;
+  }
+  &__details__img_wrap:nth-child(5) {
+    grid-column: 1;
+    grid-row: 4;
+  }
+  &__details__img_wrap:nth-child(6) {
+    grid-column: 2;
+    grid-row: 4;
+  }
+  &__details__img_wrap:nth-child(7) {
+    grid-column: 3;
+    grid-row: 4;
+  }
+  &__details__img_wrap:nth-child(8) {
+    grid-column: 4;
+    grid-row: 4;
+  }
+
+}
+

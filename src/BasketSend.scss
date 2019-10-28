@@ -1,0 +1,42 @@
+.send-email_text {
+  display: flex;
+  margin: 15px 0 0;
+  font-weight: 100;
+  justify-content: center;
+}
+.send-email_close {
+  display: flex;
+  justify-content: flex-end;
+}
+.send-email_check {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  color: #a1a1a1;
+}
+
+.email__hide-login-btn {
+  // background-image: url(./close_icon.svg);
+  background-repeat: no-repeat;
+  height: 30px;
+  margin-left: 375px;
+  cursor: pointer;
+}
+
+.send__email_button button{
+  width: 150px;
+  height: 46px;
+  background: #78d474;
+  border: none;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.send__email_button {
+  display: flex;
+  justify-content: center;
+}

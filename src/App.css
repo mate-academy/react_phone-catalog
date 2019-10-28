@@ -27,13 +27,6 @@
   box-shadow: 2px 0 16px rgba(230, 22, 22, 0.16);
 }
 
-.Phones__page {
-  text-decoration: none;
-  color: #e0e0e0;
-  line-height: 41px;
-  font-size: 30px;
-}
-
 .wrapper__loading {
   display: flex;
   justify-content: center;
@@ -121,11 +114,6 @@ ______________________________________________________________ */
   border: 2px solid rgb(37, 31, 31);
   cursor: pointer;
 }
-
-.details {
-  margin-top: 10px;
-}
-
 /* ______________________________________________________________
 пробую все красивенько зробити
 _______________________________________________________________ */
@@ -348,99 +336,9 @@ _______________________________________________________________ */
   height: 56px;
   width: 40px;
 }
-
-.page__basket {
-  height: 56px;
-  width: 46px;
-  position: relative;
-}
-
-.App__basket__title {
-  margin: 0;
-  padding: 0;
-  position: absolute;
-  top: 40px;
-}
-
-.App__basket {
-  background-image: url("https://image.flaticon.com/icons/png/512/37/37464.png");
-  background-repeat: no-repeat;
-  width: 46px;
-  height: 46px;
-  display: block;
-  background-size: cover;
-  object-fit: cover;
-}
-
 /* ______________________________________________________________
 top details
 _______________________________________________________________ */
-
-.phone__details-main {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.container__for__images {
-  display: grid;
-  grid-template-columns: repeat(4, 198px);
-  grid-template-rows: 100px;
-  padding-left: 69px;
-}
-
-.card__img {
-  overflow: hidden;
-  box-sizing: border-box;
-  object-fit: cover;
-  width: 100%;
-  position: relative;
-  display: block;
-}
-
-.details__img_wrap {
-  width: 100px;
-  display: flex;
-  padding-top: 0;
-  padding-left: 53px;
-  margin-bottom: 10px;
-}
-
-.details__img_wraper {
-  width: 276px;
-  padding-top: 0;
-  padding-left: 53px;
-  margin-bottom: 10px;
-}
-
-.details {
-  padding: 10px;
-  box-shadow: 3px 3px #8d7f88, -1em 0 0.4em dimgrey;
-  display: grid;
-  grid-template-columns: 18% 90%;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-image: url("https://hyser.com.ua/crops/463a18/620x0/1/0/2019/05/06/yIhIyoSUJBgeaVWakuyX0l954ONfgyi2.jpg");
-}
-
-.catalog__phones__main {
-  display: flex;
-  justify-content: flex-start;
-}
-
-.details__information {
-  display: flex;
-  justify-content: space-evenly;
-}
-
-.catalog__phones__main {
-  display: flex;
-  justify-content: space-between;
-}
-
-.details__wrap {
-  display: flex;
-  justify-content: space-between;
-}
 
 .button__relative {
   color: #fff;
@@ -460,45 +358,13 @@ _______________________________________________________________ */
   object-fit: cover;
   width: 92px;
 }
+
+.basket__minus {
+  color: black;
+}
 /* ______________________________________________________________
 top details
 _______________________________________________________________ */
-.basket__wrapper__main {
-  background: black;
-  width: 100%;
-  height: 100%;
-  padding: 20px;
-}
-
-.basket__animation {
-  left: 36px;
-  width: 50%;
-  object-fit: cover;
-  height: 50%;
-  background-size: cover;
-  position: absolute;
-  background-image: url(https://png.pngtree.com/png-clipart/20190614/original/pngtree-aircraft-paper-plane-cartoon-airplane-origami-png-image_3784470.jpg);
-  bottom: 50px;
-}
-
-.basketPage__table-quantity-remove:hover {
-  color: #af5b5e;
-}
-
-.basketPage__table-quantity-remove {
-  display: none;
-  position: absolute;
-  top: 0;
-  right: 10px;
-  bottom: 0;
-  width: 40px;
-  height: 40px;
-  margin-top: 11px;
-  font-size: 30px;
-  color: #cc9a9a;
-  margin-bottom: 11px;
-  transition: color 0.2s ease-out;
-}
 
 button {
   border: 0;
@@ -510,25 +376,4 @@ button {
   color: inherit;
   appearance: none;
   cursor: pointer;
-}
-
-.basketPage__table-tbody-tr:hover .basketPage__table-quantity-remove {
-  position: relative;
-  height: 42px;
-  display: block;
-}
-
-.basketPage__table-tbody-tr {
-  height: 100px;
-  width: 400px;
-}
-
-.basketPage__table-tbody-td {
-  font-size: 30px;
-}
-
-.basket__button__title {
-  font-size: 30px;
-  border: 1px solid;
-  padding-left: 8px;
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Loading from './Loading';
 import { getDetails } from './getAPIDoc';
+import './PhoneDetailsPage.scss';
 
 class PhoneDetailsPage extends React.Component {
   state = {
@@ -22,10 +23,8 @@ class PhoneDetailsPage extends React.Component {
   render() {
     const { phoneDetails, imgChoseUrl } = this.state;
     const {
-      urlImg, phoneId, phones, isLoaded,
-      handleClickshow, isLoading, handleClick,
+      urlImg, phoneId, phones, setItemToBasket,
     } = this.props;
-
     const isPhoneId = phones.find(phone => phone.id === phoneId);
 
     if (!isPhoneId) {
@@ -43,86 +42,236 @@ class PhoneDetailsPage extends React.Component {
             className="catalog__phones"
           >
             <div className="catalog__phones__main">
-              {imgChoseUrl
-                ? (
-                  <div className="details__wrap">
-                    <div className="details__img_wraper">
-                      <img
-                        src={`${urlImg}/${imgChoseUrl}`}
-                        alt={`${imgChoseUrl}`}
-                        className="card__img"
-                      />
-                    </div>
-                    <div className="details__information">
-                      <button
-                        type="button"
-                        className="button__relative"
-                        onClick={handleClick}
-                      >
-                        { isLoading ? 'hide Details' : 'hide Details' }
-                      </button>
-                      {isLoaded
-                        ? (
-                          <div className="details">
-                            <h1>description</h1>
-                            <p>{`${phoneDetails.description}`}</p>
-                            <h3>Display</h3>
-                            <div>
-                              <p>
-                                {`${phoneDetails.display.screenResolution}`}
-                              </p>
-                              <p>{`${phoneDetails.display.screenSize}`}</p>
-                            </div>
-                            <h3>android</h3>
-                            <div className="android__wrapper">
-                              <p>{`${phoneDetails.android.os}`}</p>
-                              <p>{`${phoneDetails.android.ui}`}</p>
-                            </div>
-                            <h3>hardware</h3>
-                            <div className="hardware__wrapper">
-                              <p>{`${phoneDetails.hardware.audioJack}`}</p>
-                              <p>{`${phoneDetails.hardware.cpu}`}</p>
-                              <p>{`${phoneDetails.hardware.usb}`}</p>
-                            </div>
-                          </div>
-                        )
-                        : (
-                          <button
-                            type="button"
-                            className="btn__details"
-                            onClick={handleClickshow}
-                          >
-                            { isLoading ? 'Details' : 'Details' }
-                          </button>
-                        )
-                      }
-                    </div>
-                  </div>
-                )
-                : ''
-              }
-            </div>
-            {phoneDetails.images
-              ? (
-                <div className="phone__details-main">
-                  <div className="container__for__images">
-                    {phoneDetails.images.map(imgUrl => (
-                      <div className="details__img_wrap">
+              <div className="catalog__phones__details__wrap">
+                <div className="catalog__phones__details__img_wraper">
+                  <div className="catalog__phones__phone__details-main">
+                    <div className="catalog__phones__container__for__images">
+                      <div className="catalog__phones__details__img_wrap">
                         <img
-                          onMouseOver={() => this.handleChose(`${imgUrl}`)}
-                          key={imgUrl}
-                          src={`${urlImg}/${imgUrl}`}
-                          alt="phone"
-                          className="card__img"
-                          onFocus
+                          src={`${urlImg}/${imgChoseUrl}`}
+                          alt={`${imgChoseUrl}`}
                         />
                       </div>
-                    ))}
+
+                      {phoneDetails.images.map(imgUrl => (
+                        <div className="catalog__phones__details__img_wrap">
+                          <img
+                            onMouseOver={() => this.handleChose(`${imgUrl}`)}
+                            key={imgUrl}
+                            src={`${urlImg}/${imgUrl}`}
+                            alt="phone"
+                            className="card__img"
+                            onFocus
+                          />
+                        </div>
+                      ))}
+
+                    </div>
                   </div>
                 </div>
-              )
-              : ''
-            }
+                <div className="catalog__phones__details__information">
+                  <h1>{`${phoneDetails.id}`}</h1>
+                  <div className="catalog__phones__details">
+                    <h1>description</h1>
+                    <p>{`${phoneDetails.description}`}</p>
+                  </div>
+                  <div className="catalog__phones__details__add__button">
+                    <button
+                      type="submit"
+                      onClick={() => {
+                        setItemToBasket(
+                          phoneDetails.name,
+                          urlImg,
+                          phoneDetails.id
+                        );
+                      }}
+                    >
+                    Add to basket
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div className="catalog__phones__phone_details__text_details">
+
+                <div className="catalog__phones__android__wrapper">
+                  <h3>Display</h3>
+                  <p>
+                  screenResolution:
+                    <br />
+                    {`${phoneDetails.display.screenResolution}`}
+                  </p>
+                  <p>
+                  screenSize:
+                    <br />
+                    {`${phoneDetails.display.screenSize}`}
+                  </p>
+                </div>
+                <div className="catalog__phones__android__wrapper">
+                  <h3>android</h3>
+                  <p>
+                  os:
+                    <br />
+                    {`${phoneDetails.android.os}`}
+                  </p>
+                  <p>
+                  ui:
+                    <br />
+                    {`${phoneDetails.android.ui}`}
+                  </p>
+                </div>
+                <div className="catalog__phones__android__wrapper">
+                  <h3>hardware</h3>
+                  <p>
+                  audioJack:
+                    <br />
+                    {`${phoneDetails.hardware.audioJack}`}
+                  </p>
+                  <p>
+                  cpu:
+                    <br />
+                    {`${phoneDetails.hardware.cpu}`}
+                  </p>
+                  <p>
+                  usb:
+                    <br />
+                    {`${phoneDetails.hardware.usb}`}
+                  </p>
+                </div>
+
+                <div className="catalog__phones__android__wrapper">
+                  <h3>battery</h3>
+                  <p>
+                    talkTime:
+                    <br />
+                    {`${phoneDetails.battery.talkTime}`}
+                  </p>
+                  <p>
+                    standbyTime:
+                    <br />
+                    {`${phoneDetails.battery.standbyTime}`}
+                  </p>
+                  <p>
+                    Type:
+                    <br />
+                    {`${phoneDetails.battery.type}`}
+                  </p>
+                </div>
+                <div className="catalog__phones__android__wrapper">
+                  <h3>Storage and Memory</h3>
+                  <p>
+                  Internal Storage:
+                    <br />
+                    {`${phoneDetails.storage.flash}`}
+                  </p>
+                  <p>
+                  RAM:
+                    <br />
+                    {`${phoneDetails.storage.ram}`}
+                  </p>
+                </div>
+                <div className="catalog__phones__android__wrapper">
+                  <h3>
+                    Connectivity
+                    <br />
+                    Network Support
+                  </h3>
+                  <p>
+                  WiFi:
+                    <br />
+                    {`${phoneDetails.connectivity.wifi}`}
+                  </p>
+                  <p>
+                  Bluetooth:
+                    <br />
+                    {`${phoneDetails.connectivity.bluetooth}`}
+                  </p>
+                  <p>
+                  Infrared:
+                    <br />
+                    <input
+                      type="checkbox"
+                      checked={phoneDetails.connectivity.infrared}
+                    />
+                  </p>
+                  <p>
+                  GPS:
+                    <br />
+                    <input
+                      type="checkbox"
+                      checked={phoneDetails.connectivity.gps}
+                    />
+                  </p>
+                </div>
+                <div className="catalog__phones__android__wrapper">
+                  <h3>Size and Weight</h3>
+                  <p>
+                  Dimensions:
+                    <br />
+                    {`${phoneDetails.sizeAndWeight.dimensions.map(a => a)}`}
+                  </p>
+                  <p>
+                  Weight:
+                    <br />
+                    {`${phoneDetails.sizeAndWeight.weight}`}
+                  </p>
+                </div>
+                <div className="catalog__phones__android__wrapper">
+                  <h3>Additional Features</h3>
+                  <p>
+                    {`${phoneDetails.additionalFeatures}`}
+                  </p>
+                </div>
+                <div className="catalog__phones__android__wrapper">
+                  <h3>Camera</h3>
+                  <p>
+                  Primary:
+                    <br />
+                    {`${phoneDetails.camera.primary}`}
+                  </p>
+                  <p>
+                  Features:
+                    <br />
+                    {`${phoneDetails.camera.features}`}
+                  </p>
+                </div>
+                <div className="catalog__phones__android__wrapper">
+                  <h3>Hardware</h3>
+                  <p>
+                  CPU:
+                    <br />
+                    {`${phoneDetails.hardware.cpu}`}
+                  </p>
+                  <p>
+                  USB:
+                    <br />
+                    {`${phoneDetails.hardware.usb}`}
+                  </p>
+                  <p>
+                  Audio / headphone jack:
+                    <br />
+                    {`${phoneDetails.hardware.audioJack}`}
+                  </p>
+                  <p>
+                  FM Radio:
+                    <br />
+                    <input
+                      type="checkbox"
+                      checked={phoneDetails.hardware.fmRadio}
+                    />
+                  </p>
+                  <p>
+                  Accelerometer:
+                    <br />
+                    <input
+                      type="checkbox"
+                      checked={phoneDetails.hardware.accelerometer}
+                    />
+                  </p>
+                </div>
+
+              </div>
+
+            </div>
           </div>
         ));
   }
@@ -135,10 +284,7 @@ PhoneDetailsPage.propTypes = {
   phones: PropTypes.array.isRequired,
   // eslint-disable-next-line react/require-default-props
   phoneId: PropTypes.string,
-  isLoaded: PropTypes.string.isRequired,
-  handleClickshow: PropTypes.func.isRequired,
-  isLoading: PropTypes.string.isRequired,
-  handleClick: PropTypes.func.isRequired,
+  setItemToBasket: PropTypes.func.isRequired,
 };
 
 export default PhoneDetailsPage;

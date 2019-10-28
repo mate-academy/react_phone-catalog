@@ -25,8 +25,16 @@ class App extends React.Component {
     phonesVisible: [],
     phonesToBasket: [],
     sortField: '',
+    openRegister: false,
     isLoaded: false,
-    isLoading: false,
+  }
+
+  componentWillMount() {
+    if (localStorage.getItem('phonesToBasket')) {
+      this.setState({
+        phonesToBasket: JSON.parse(localStorage.getItem('phonesToBasket')),
+      });
+    }
   }
 
   async componentDidMount() {
@@ -36,6 +44,11 @@ class App extends React.Component {
       phones,
       phonesVisible: phones,
     });
+  }
+
+  componentDidUpdate() {
+    localStorage.setItem('phonesToBasket',
+      JSON.stringify(this.state.phonesToBasket));
   }
 
   handleBasket = (id, operation) => {
@@ -66,31 +79,6 @@ class App extends React.Component {
     });
   }
 
-  handleClickshow= () => {
-    this.setState({
-      isLoaded: true,
-    });
-
-    setTimeout(() => {
-      this.setState({
-        isLoaded: true,
-        isLoading: false,
-      });
-    }, 10);
-  }
-
-  handleClick = () => {
-    this.setState({
-      isLoading: false,
-    });
-    setTimeout(() => {
-      this.setState({
-        isLoaded: false,
-        isLoading: true,
-      });
-    }, 10);
-  }
-
   setItemToBasket = (phoneName, imgUrl, id) => {
     if (this.state.phonesToBasket.find(item => item.phone === phoneName)) {
       this.setState(prevState => ({
@@ -98,6 +86,7 @@ class App extends React.Component {
           ...prevState.phonesToBasket
             .filter(phone => (phone.phone !== phoneName)),
           {
+            cost: (Math.random() * 100).toFixed(2),
             quantity: prevState.phonesToBasket
               .find(phone => phone.phone === phoneName).quantity + 1,
             phone: phoneName,
@@ -111,6 +100,7 @@ class App extends React.Component {
           ...prevState.phonesToBasket,
           {
             quantity: 1,
+            cost: (Math.random() * 100).toFixed(2),
             phone: phoneName,
             imageUrl: imgUrl,
             id,
@@ -143,9 +133,42 @@ class App extends React.Component {
     }));
   }
 
+  handleOpenFinishWindow = (info) => {
+    if (info.name.length > 0
+      && info.email.length > 0
+      && info.phone.length > 0
+    ) {
+      this.setState({
+        isLoaded: true,
+        openRegister: false,
+      });
+    }
+  }
+
+  handleCloseRegister = () => {
+    this.setState({
+      openRegister: false,
+    });
+  }
+
+  handleClose = () => {
+    this.setState({
+      isLoaded: false,
+      phonesToBasket: [],
+    });
+  }
+
+  handleOpenRegistr = () => {
+    if (this.state.phonesToBasket.length !== 0) {
+      this.setState({
+        openRegister: true,
+      });
+    }
+  }
+
   render() {
     const {
-      phonesVisible, phonesToBasket, sortField, isLoaded, isLoading,
+      phonesVisible, phonesToBasket, sortField, openRegister, isLoaded,
     } = this.state;
     const urlImg = 'https://mate-academy.github.io/phone-catalogue-static/';
 
@@ -176,7 +199,11 @@ class App extends React.Component {
               activeClassName="phoneClassActive"
             >
               { phonesToBasket.length === 0 ? ''
-                : <div className="basket__animation" />}
+                : (
+                  <div className="basket__animation">
+                    {phonesToBasket.length}
+                  </div>
+                )}
               <div className="App__basket">
                 <div className="App__basket__title">basket</div>
               </div>
@@ -207,10 +234,8 @@ class App extends React.Component {
                 phoneId={match.params.phoneId}
                 urlImg={urlImg}
                 phones={phonesVisible}
-                isLoaded={isLoaded}
-                handleClickshow={this.handleClickshow}
-                isLoading={isLoading}
                 handleClick={this.handleClick}
+                setItemToBasket={this.setItemToBasket}
               />
             )}
           />
@@ -220,6 +245,12 @@ class App extends React.Component {
               <BasketItems
                 phonesToBasket={phonesToBasket}
                 handleBasket={this.handleBasket}
+                openRegister={openRegister}
+                handleOpenFinishWindow={this.handleOpenFinishWindow}
+                isLoaded={isLoaded}
+                handleOpenRegistr={this.handleOpenRegistr}
+                handleClose={this.handleClose}
+                handleCloseRegister={this.handleCloseRegister}
               />
             )}
           />

@@ -1,0 +1,152 @@
+
+.login-form h1 {
+  font-size: 29px;
+  font-weight: 614;
+  margin-top: 0;
+  color: black;
+  font-family: 'Roboto', sans-serif;
+}
+.button_pop_up {
+  text-transform: uppercase;
+  border-radius: 10px;
+  font-family: 'Roboto', sans-serif;
+  display: block;
+  border: none;
+  width: 136px;
+  padding: 12px;
+  color: white;
+  height: 43px;
+  background: #93dd90;
+  cursor: pointer;
+}
+
+.cost::before {
+  content: "$ ";
+  position: relative;
+}
+.cost {
+  padding: 10px;
+  width: 85px;
+  font-size: 15px;
+  border: 0;
+  background: #666c66;
+  color: white;
+  cursor: pointer;
+}
+.cost:hover, .minus:hover, .plus-goods:hover {
+  background: gray;
+}
+.cost:active, .minus:active, .plus-goods:active {
+  background: red;
+}
+
+.minus,
+.plus-goods {
+  padding: 6px 16px;
+  font-size: 24px;
+  color: #fff;
+  border: none;
+  background: #666c66;
+  cursor: pointer;
+}
+.main_plus_mine {
+  display: inline-block;
+  border: 1px solid #a1a1a1;
+  width: 130px;
+  margin-right: 50px;
+}
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.main-cart {
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+}
+.lable__select::after {
+  content: "грн";
+  margin-left: 5px;
+}
+
+.lable__select {
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: #a1a1a1;
+  font-family: 'Roboto', sans-serif;
+  display: block;
+}
+.login-box_dropdown {
+  box-sizing: border-box;
+  position: relative;
+  display: inline-block;
+  width: 65px;
+}
+.login-box_lang_drop {
+  border-radius: 2px;
+  box-sizing: border-box;
+  position: relative;
+  display: inline-block;
+  width: 173px;
+}
+.login-form__lang_drop-title {
+  font-size: 13px;
+  width: 345px;
+  font-size: 16px;
+  line-height: 40px;
+  display: flex;
+  border: 1px solid #a1a1a1;
+  justify-content: flex-start;
+  padding: 0 8px;
+  box-sizing: border-box;
+  // background-image: url(./angle_right.svg);
+  background-repeat: no-repeat;
+  background-position: right 15px top 15px;
+  font-family: 'Roboto', sans-serif;
+  cursor: pointer;
+}
+.login-box_dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    width: 345px;
+    z-index: 1;
+}
+.login-box_dropdown-content_list {
+  margin: 0;
+  padding: 0;
+}
+.login-box_dropdown-content_list-item {
+  text-align: center;
+  font-size: 13px;
+  line-height: 24px;
+  font-size: 18px;
+  list-style: none;
+  padding: 8px 24px;
+}
+.login-box_dropdown:hover .login-box_dropdown-content {
+  display: block;
+}
+.dropdown_link {
+  text-decoration: none;
+}
+
+.send-email button{
+  height: 46px;
+  width: 150px;
+  background: #78d474;
+  border: none;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.send-email {
+  display: flex;
+  justify-content: center;
+}
+
