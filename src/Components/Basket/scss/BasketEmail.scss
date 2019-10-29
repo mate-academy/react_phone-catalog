@@ -1,0 +1,96 @@
+.email-field {
+  width: 455px;
+  position: sticky;
+  right: 276px;
+  bottom: 343px;
+  margin: 0 auto;
+  background: #fff;
+  box-sizing: border-box;
+  box-shadow: 0 0 10px #559453;
+  padding: 30px;
+  transition: 0.4s;
+}
+
+.error__name {
+  width: 100%;
+  height: 40px;
+  background-color: black;
+  color: blanchedalmond;
+}
+
+.error__name h1 {
+  width: 100%;
+  font-size: 18px !important;
+}
+
+.img {
+  background: black;
+  color: #fff;
+}
+
+.email__hide-login-btn {
+  background-repeat: no-repeat;
+  height: 30px;
+  margin-left: 375px;
+  cursor: pointer;
+}
+
+.email-field h1 {
+  display: flex;
+  color: #999;
+  font-size: 26px;
+  justify-content: center;
+}
+.email-field-text {
+  display: flex;
+  font-size: 22px;
+  color: #999;
+  justify-content: center;
+}
+.email-field-name-text,
+.email-field-email,
+.email-field-phone {
+  color: #999;
+  margin: 0;
+}
+.email-field-name input,
+.email-field-email input,
+.email-field-phone input {
+  margin-top: 12px;
+  width: 340px;
+  height: 35px;
+  box-sizing: border-box;
+}
+.email-field-name input {
+  background: transparent;
+  font-size: 16px;
+  width: 100%;
+  position: relative;
+  bottom: 7px;
+  height: 100%;
+  margin-top: 10px;
+  border: none;
+}
+
+.email-field-name input:focus {
+  outline: none;
+}
+.email-field-name {
+  display: flex;
+  margin: 15px 0;
+  align-items: center;
+  height: 40px;
+  box-sizing: border-box;
+  border: 1px solid #999;
+  padding-left: 12px;
+}
+.email-field-name img {
+  margin-right: 13px;
+}
+.divider {
+  width: 2px;
+  height: 100%;
+  background: #757575;
+  margin: 0 5px;
+}
+
