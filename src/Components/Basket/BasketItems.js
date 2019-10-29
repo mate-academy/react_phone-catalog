@@ -2,12 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import BasketRegister from './BasketRegister';
-import './BasketItems.scss';
+
+import './scss/BasketItems.scss';
 
 const BasketItems = ({
   phonesToBasket,
   handleBasket,
-  openRegister,
+  isopenRegister,
   handleOpenRegistr,
   isLoaded,
   handleOpenFinishWindow,
@@ -19,7 +20,7 @@ const BasketItems = ({
       ? (
         <NavLink
           to="/phones"
-          className="Phones__page"
+          className="phones__page"
           activeClassName="phoneClassActive"
         >
           <h1 className="basket__empty">Basket is empty</h1>
@@ -59,7 +60,7 @@ const BasketItems = ({
                         onClick={() => handleBasket(phone.id, 'decrease')}
                         className="basketPage__table-quantity-minus"
                       >
-                 -
+                   -
                       </button>
                     </div>
                     <div className="basketPage__table-tbody-td">
@@ -71,7 +72,7 @@ const BasketItems = ({
                         onClick={() => handleBasket(phone.id, 'increase')}
                         className="basketPage__table-quantity-plus"
                       >
-                 +
+                   +
                       </button>
                     </div>
                     <div>
@@ -80,7 +81,7 @@ const BasketItems = ({
                         onClick={() => handleBasket(phone.id, 'remove')}
                         className="basketPage__table-quantity-remove"
                       >
-                 x
+                   x
                       </button>
                     </div>
                   </div>
@@ -90,7 +91,7 @@ const BasketItems = ({
           </div>
           <NavLink
             to="/phones"
-            className="Phones__page"
+            className="phones__page"
             activeClassName="phoneClassActive"
           >
          go to Catalog
@@ -101,7 +102,7 @@ const BasketItems = ({
     }
     <BasketRegister
       phonesToBasket={phonesToBasket}
-      openRegister={openRegister}
+      isopenRegister={isopenRegister}
       handleBasket={handleBasket}
       handleOpenRegistr={handleOpenRegistr}
       isLoaded={isLoaded}
@@ -116,7 +117,7 @@ BasketItems.propTypes = {
   phonesToBasket: PropTypes.shape().isRequired,
   handleBasket: PropTypes.func.isRequired,
   handleOpenRegistr: PropTypes.func.isRequired,
-  openRegister: PropTypes.bool.isRequired,
+  isopenRegister: PropTypes.bool.isRequired,
   handleOpenFinishWindow: PropTypes.func.isRequired,
   isLoaded: PropTypes.bool.isRequired,
   handleClose: PropTypes.func.isRequired,

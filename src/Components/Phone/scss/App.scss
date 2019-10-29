@@ -1,9 +1,10 @@
 @import url("https://fonts.googleapis.com/css?family=Amatic+SC&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
 
-.phoneClassActive {
+.phone__class-active {
   font-weight: bold;
-  border-top: 2px solid rgb(221, 210, 210);
+  border-bottom: 2px solid #ddd2d2;
+  padding-bottom: 14px;
 }
 
 .header {
@@ -13,12 +14,12 @@
   z-index: 1;
 }
 
-.App {
+.app {
   margin: 0;
   padding: 0;
 }
 
-.nav__main_container {
+.nav__main-container {
   border: 1px solid black;
   background: rgb(53, 83, 83);
   display: flex;
@@ -96,35 +97,30 @@
 option
 ______________________________________________________________ */
 
-.adress-delivery__header {
-  border-width: thin;
-  margin: 0 20px;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.adress-delivery__destination-details {
-  appearance: none;
-  height: 30px;
-  padding: 0 12px;
-  margin-right: 80px;
-  color: white;
-  background: rgb(27, 34, 27);
-  border-radius: 15px;
-  border: 2px solid rgb(37, 31, 31);
-  cursor: pointer;
+.adress-delivery {
+  &__header {
+    border-width: thin;
+    margin: 0 20px;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &__destination-details {
+    appearance: none;
+    height: 30px;
+    padding: 0 12px;
+    margin-right: 80px;
+    color: white;
+    background: rgb(27, 34, 27);
+    border-radius: 15px;
+    border: 2px solid rgb(37, 31, 31);
+    cursor: pointer;
+  }
 }
 /* ______________________________________________________________
 пробую все красивенько зробити
 _______________________________________________________________ */
 
-html {
-  height: 100%;
-}
-
 body {
-  margin: 0;
-  padding: 0;
   perspective: 1px;
   transform-style: preserve-3d;
   overflow-y: scroll;
@@ -200,6 +196,7 @@ _______________________________________________________________ */
   position: relative;
   height: 275px;
   padding: 10px;
+  border-radius: 15px;
 }
 
 .price-tag:hover {
@@ -284,12 +281,13 @@ _______________________________________________________________ */
   font-family: Roboto, sans-serif;
   font-size: 13px;
   line-height: 24px;
-  vertical-align: center;
   border-bottom: 1px solid #757575;
   display: flex;
+  padding: 20px;
   align-items: center;
-  margin-bottom: 24px;
+  margin: 0 auto 24px auto;
   height: 48px;
+  max-width: 880px;
 }
 
 .search__button {
@@ -316,18 +314,19 @@ _______________________________________________________________ */
 top main
 _______________________________________________________________ */
 
-.App__logo {
+.app__logo {
   background-image: url("http://s1.iconbird.com/ico/2013/9/450/w256h2561380453883CellPhone256x25632.png");
   background-repeat: no-repeat;
   width: 40px;
   height: 40px;
   display: block;
+  bottom: 12px;
   background-size: cover;
   object-fit: cover;
   position: relative;
 }
 
-.App__logo__title {
+.app__logo__title {
   position: absolute;
   top: 40px;
 }

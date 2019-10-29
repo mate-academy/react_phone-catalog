@@ -1,8 +1,9 @@
-
 import React from 'react';
-import './BasketEmail.scss';
 import PropTypes from 'prop-types';
-import './BasketSend.scss';
+
+// style
+import './scss/BasketEmail.scss';
+import './scss/BasketSend.scss';
 
 class BasketEmail extends React.Component {
   state = {
@@ -20,14 +21,14 @@ class BasketEmail extends React.Component {
     },
   }
 
-  handleInputFocus = (event) => {
-    const errorClear = event.target.name;
+  handleInputFocus = ({ target }) => {
+    const { name } = target;
 
     this.setState(prevState => ({
       ...prevState,
       errorsMap: {
         ...prevState.errorsMap,
-        [errorClear]: false,
+        [name]: false,
       },
     }));
   }

@@ -1,10 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Loading from './Loading';
+
+// get Api from server
+
 import { getDetails } from './getAPIDoc';
-import './PhoneDetailsPage.scss';
+// Components
+import Loading from './Loading';
+
+import './scss/PhoneDetailsPage.scss';
 
 class PhoneDetailsPage extends React.Component {
+  static defaultProps = {
+    urlImg: PropTypes.string,
+    phoneId: PropTypes.string,
+  }
+
   state = {
     phoneDetails: null,
     imgChoseUrl: '',
@@ -277,13 +287,14 @@ class PhoneDetailsPage extends React.Component {
   }
 }
 
+PhoneDetailsPage.defaultProps = {
+
+};
+
 PhoneDetailsPage.propTypes = {
-  // eslint-disable-next-line react/require-default-props
   urlImg: PropTypes.string,
-  // eslint-disable-next-line react/forbid-prop-types
-  phones: PropTypes.array.isRequired,
-  // eslint-disable-next-line react/require-default-props
   phoneId: PropTypes.string,
+  phones: PropTypes.shape().isRequired,
   setItemToBasket: PropTypes.func.isRequired,
 };
 

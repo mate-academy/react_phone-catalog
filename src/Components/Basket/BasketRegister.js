@@ -1,14 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BasketEmail from './BasketEmail';
-import './BasketRegister.scss';
-
-import './BasketCard.scss';
 import SendEmail from './SendEmail';
+
+// style
+import './scss/BasketRegister.scss';
+import './scss/BasketCard.scss';
 
 const BasketRegister = ({
   phonesToBasket,
-  openRegister,
+  isopenRegister,
   handleOpenRegistr,
   handleOpenFinishWindow,
   isLoaded,
@@ -41,10 +42,9 @@ const BasketRegister = ({
         </div>
       </div>
       {
-        phonesToBasket.length !== 0 && openRegister
+        phonesToBasket.length !== 0 && isopenRegister
           ? (
             <BasketEmail
-              openRegister={openRegister}
               handleOpenFinishWindow={handleOpenFinishWindow}
               isLoaded={isLoaded}
               handleCloseRegister={handleCloseRegister}
@@ -65,7 +65,7 @@ const BasketRegister = ({
 
 BasketRegister.propTypes = {
   phonesToBasket: PropTypes.shape().isRequired,
-  openRegister: PropTypes.bool.isRequired,
+  isopenRegister: PropTypes.bool.isRequired,
   handleOpenRegistr: PropTypes.func.isRequired,
   handleOpenFinishWindow: PropTypes.func.isRequired,
   isLoaded: PropTypes.bool.isRequired,

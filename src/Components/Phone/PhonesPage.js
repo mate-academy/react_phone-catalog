@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-const PhonesPage = ({ phone, urlImg, setItemToBasket }) => (
+const PhonesPage = ({ phone, IMAGE_URL, setItemToBasket }) => (
   <div
     key={phone.id}
     className="price-tags"
@@ -15,7 +15,7 @@ const PhonesPage = ({ phone, urlImg, setItemToBasket }) => (
         <img
           className="price-tag__wrapp-card-img"
           src={
-            `${urlImg}/${phone.imageUrl}`
+            `${IMAGE_URL}/${phone.imageUrl}`
           }
           alt="Phone"
         />
@@ -36,7 +36,7 @@ const PhonesPage = ({ phone, urlImg, setItemToBasket }) => (
           type="submit"
           className="price-btn default__btn"
           onClick={() => {
-            setItemToBasket(phone.name, urlImg, phone.id);
+            setItemToBasket(phone.name, phone.id);
           }}
         >
         Add
@@ -49,7 +49,7 @@ const PhonesPage = ({ phone, urlImg, setItemToBasket }) => (
 PhonesPage.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   phone: PropTypes.object.isRequired,
-  urlImg: PropTypes.string.isRequired,
+  IMAGE_URL: PropTypes.string.isRequired,
   setItemToBasket: PropTypes.isRequired,
 };
 

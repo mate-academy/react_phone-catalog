@@ -1,6 +1,5 @@
 .email-field {
   width: 455px;
-
   position: sticky;
   right: 276px;
   bottom: 343px;
@@ -27,14 +26,9 @@
 .img {
   background: black;
   color: #fff;
-  // height: 300px;
-  // width: 200px;
-  // background-image: url(/img/shopping-basket-icon-24.png);
-  // background-image: url(/img/FLAG.png);
 }
 
 .email__hide-login-btn {
-  // background-image: url(./close_icon.svg);
   background-repeat: no-repeat;
   height: 30px;
   margin-left: 375px;
@@ -53,11 +47,15 @@
   color: #999;
   justify-content: center;
 }
-.email-field-name-text, .email-field-email, .email-field-phone {
+.email-field-name-text,
+.email-field-email,
+.email-field-phone {
   color: #999;
   margin: 0;
 }
-.email-field-name input, .email-field-email input, .email-field-phone input {
+.email-field-name input,
+.email-field-email input,
+.email-field-phone input {
   margin-top: 12px;
   width: 340px;
   height: 35px;

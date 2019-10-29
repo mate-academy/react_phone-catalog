@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// Components
 import Loading from './Loading';
 import PhonesPage from './PhonesPage';
 
@@ -11,7 +12,7 @@ class PhoneCatalog extends React.Component {
 
   render() {
     const {
-      urlImg, phones, handleFilter,
+      IMAGE_URL, phones, handleFilter,
       handleSort, setItemToBasket, sortField,
     } = this.props;
     const { phoneArrays } = this.state;
@@ -33,14 +34,13 @@ class PhoneCatalog extends React.Component {
             <div
               className="destination-details"
             >
-              <select
-                name=""
+              <button
+                type="button"
                 onClick={handleSort}
                 className="adress-delivery__destination-details"
               >
-                <option value="alphabet">sort By Alphabet</option>
-                <option value="">sort order</option>
-              </select>
+                sort By Alphabet
+              </button>
             </div>
           </form>
           {phoneArrays}
@@ -53,7 +53,7 @@ class PhoneCatalog extends React.Component {
                 <PhonesPage
                   key={phone.id}
                   phone={phone}
-                  urlImg={urlImg}
+                  IMAGE_URL={IMAGE_URL}
                   setItemToBasket={setItemToBasket}
                 />
               ))}
@@ -66,10 +66,8 @@ class PhoneCatalog extends React.Component {
 }
 
 PhoneCatalog.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
-  phones: PropTypes.array.isRequired,
-  // eslint-disable-next-line react/require-default-props
-  urlImg: PropTypes.string.isRequired,
+  phones: PropTypes.shape().isRequired,
+  IMAGE_URL: PropTypes.string.isRequired,
   handleFilter: PropTypes.func.isRequired,
   handleSort: PropTypes.func.isRequired,
   setItemToBasket: PropTypes.func.isRequired,

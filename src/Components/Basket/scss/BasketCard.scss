@@ -4,12 +4,12 @@
   font-weight: 614;
   margin-top: 0;
   color: black;
-  font-family: 'Roboto', sans-serif;
+  font-family: Roboto, sans-serif;
 }
 .button_pop_up {
   text-transform: uppercase;
   border-radius: 10px;
-  font-family: 'Roboto', sans-serif;
+  font-family: Roboto, sans-serif;
   display: block;
   border: none;
   width: 136px;
@@ -61,7 +61,7 @@
   align-items: center;
 }
 .main-cart {
-  font-family: 'Roboto', sans-serif;
+  font-family: Roboto, sans-serif;
   display: flex;
 }
 .lable__select::after {
@@ -73,7 +73,7 @@
   font-size: 16px;
   margin-bottom: 10px;
   color: #a1a1a1;
-  font-family: 'Roboto', sans-serif;
+  font-family: Roboto, sans-serif;
   display: block;
 }
 .login-box_dropdown {
@@ -99,10 +99,9 @@
   justify-content: flex-start;
   padding: 0 8px;
   box-sizing: border-box;
-  // background-image: url(./angle_right.svg);
   background-repeat: no-repeat;
   background-position: right 15px top 15px;
-  font-family: 'Roboto', sans-serif;
+  font-family: Roboto, sans-serif;
   cursor: pointer;
 }
 .login-box_dropdown-content {

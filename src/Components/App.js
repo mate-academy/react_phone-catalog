@@ -1,13 +1,20 @@
+/* eslint-disable default-case */
 import React from 'react';
-import './App.css';
 import { Route, NavLink, Switch } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-import PhoneCatalog from './PhoneCatalog';
-import PhoneDetailsPage from './PhoneDetailsPage';
+// no module
+import PhoneCatalog from './Phone/PhoneCatalog';
+import PhoneDetailsPage from './Phone/PhoneDetailsPage';
 import NotFoundPage from './NotFoundPage';
-import BasketItems from './BasketItems';
-import { getPhones } from './getAPIDoc';
+import BasketItems from './Basket/BasketItems';
 import HomePage from './HomePage';
+
+// get from Api
+import { getPhones } from './Phone/getAPIDoc';
+
+// styles scss
+import './Phone/scss/App.scss';
 
 const getSorted = (array, sortField) => {
   const sortBy = {
@@ -20,12 +27,17 @@ const getSorted = (array, sortField) => {
 };
 
 class App extends React.Component {
+  static defaultProps = {
+    currentArray: PropTypes.shape(),
+    phonesToBasket: PropTypes.shape(),
+  }
+
   state = {
     phones: [],
     phonesVisible: [],
     phonesToBasket: [],
     sortField: '',
-    openRegister: false,
+    isopenRegister: false,
     isLoaded: false,
   }
 
@@ -58,7 +70,6 @@ class App extends React.Component {
     this.setState((prevState) => {
       let currentArray = [...prevState.phonesToBasket];
 
-      // eslint-disable-next-line default-case
       switch (operation) {
         case 'increase':
           // eslint-disable-next-line no-return-assign
@@ -79,7 +90,7 @@ class App extends React.Component {
     });
   }
 
-  setItemToBasket = (phoneName, imgUrl, id) => {
+  setItemToBasket = (phoneName, id) => {
     if (this.state.phonesToBasket.find(item => item.phone === phoneName)) {
       this.setState(prevState => ({
         phonesToBasket: [
@@ -90,7 +101,7 @@ class App extends React.Component {
             quantity: prevState.phonesToBasket
               .find(phone => phone.phone === phoneName).quantity + 1,
             phone: phoneName,
-            imageUrl: imgUrl,
+            id,
           },
         ],
       }));
@@ -102,7 +113,6 @@ class App extends React.Component {
             quantity: 1,
             cost: (Math.random() * 100).toFixed(2),
             phone: phoneName,
-            imageUrl: imgUrl,
             id,
           },
         ],
@@ -124,12 +134,10 @@ class App extends React.Component {
     });
   }
 
-  handleSort = (sortField) => {
-    const { value } = sortField.target;
-
+  handleSort = () => {
     this.setState(prevState => ({
-      phonesVisible: getSorted(prevState.phones, value),
-      sortField: value,
+      phonesVisible: getSorted(prevState.phones, 'alphabet'),
+      sortField: 'alphabet',
     }));
   }
 
@@ -140,14 +148,14 @@ class App extends React.Component {
     ) {
       this.setState({
         isLoaded: true,
-        openRegister: false,
+        isopenRegister: false,
       });
     }
   }
 
   handleCloseRegister = () => {
     this.setState({
-      openRegister: false,
+      isopenRegister: false,
     });
   }
 
@@ -161,42 +169,42 @@ class App extends React.Component {
   handleOpenRegistr = () => {
     if (this.state.phonesToBasket.length !== 0) {
       this.setState({
-        openRegister: true,
+        isopenRegister: true,
       });
     }
   }
 
   render() {
     const {
-      phonesVisible, phonesToBasket, sortField, openRegister, isLoaded,
+      phonesVisible, phonesToBasket, sortField, isopenRegister, isLoaded,
     } = this.state;
-    const urlImg = 'https://mate-academy.github.io/phone-catalogue-static/';
+    const IMAGE_URL = 'https://mate-academy.github.io/phone-catalogue-static/';
 
     return (
-      <div className="App">
+      <div className="app">
         <div className="header">
-          <nav className="nav__main_container">
+          <nav className="nav__main-container">
             <NavLink
               to="/"
               exact
-              className="page__home phone__position Phones__page"
-              activeClassName="phoneClassActive"
+              className="page__home phone__position phones__page"
+              activeClassName="phone__class-active"
             >
-              <div className="App__logo">
-                <div className="App__logo__title">Home</div>
+              <div className="app__logo">
+                <div className="app__logo__title">Home</div>
               </div>
             </NavLink>
             <NavLink
               to="/phones"
-              className="Phones__page"
-              activeClassName="phoneClassActive"
+              className="phones__page"
+              activeClassName="phone__class-active"
             >
         Catalog
             </NavLink>
             <NavLink
               to="/basket"
-              className="Phones__page page__basket"
-              activeClassName="phoneClassActive"
+              className="phones__page page__basket"
+              activeClassName="phone__class-active"
             >
               { phonesToBasket.length === 0 ? ''
                 : (
@@ -204,8 +212,8 @@ class App extends React.Component {
                     {phonesToBasket.length}
                   </div>
                 )}
-              <div className="App__basket">
-                <div className="App__basket__title">basket</div>
+              <div className="app__basket">
+                <div className="app__basket__title">basket</div>
               </div>
             </NavLink>
           </nav>
@@ -218,7 +226,7 @@ class App extends React.Component {
             render={() => (
               <PhoneCatalog
                 phones={phonesVisible}
-                urlImg={urlImg}
+                IMAGE_URL={IMAGE_URL}
                 handleFilter={this.handleFilter}
                 handleSort={this.handleSort}
                 setItemToBasket={this.setItemToBasket}
@@ -232,7 +240,7 @@ class App extends React.Component {
             render={({ match }) => (
               <PhoneDetailsPage
                 phoneId={match.params.phoneId}
-                urlImg={urlImg}
+                IMAGE_URL={IMAGE_URL}
                 phones={phonesVisible}
                 handleClick={this.handleClick}
                 setItemToBasket={this.setItemToBasket}
@@ -245,7 +253,7 @@ class App extends React.Component {
               <BasketItems
                 phonesToBasket={phonesToBasket}
                 handleBasket={this.handleBasket}
-                openRegister={openRegister}
+                isopenRegister={isopenRegister}
                 handleOpenFinishWindow={this.handleOpenFinishWindow}
                 isLoaded={isLoaded}
                 handleOpenRegistr={this.handleOpenRegistr}
