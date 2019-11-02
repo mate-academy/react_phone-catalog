@@ -1,6 +1,6 @@
-import React from 'react'
-import Loader from './Loader'
-import PhoneDetails from './PhoneDetails'
+import React from 'react';
+import Loader from './Loader';
+import PhoneDetails from './PhoneDetails';
 
 class PhoneDetailsPage extends React.Component {
   state = {
@@ -9,26 +9,26 @@ class PhoneDetailsPage extends React.Component {
     isLoaded: false,
   }
 
-  loadDataDetails = async (currentId) => {
+  loadDataDetails = async(currentId) => {
     this.setState({
       isLoading: true,
-    })
+    });
 
     const responseDetails = await
-      fetch(`https://mate-academy.github.io/phone-catalogue-static/api/phones/${currentId}.json`)
+    fetch(`https://mate-academy.github.io/phone-catalogue-static/api/phones/${currentId}.json`);
     const details = await responseDetails.json();
 
     this.setState({
-      details: details,
+      details,
       isLoading: false,
       isLoaded: true,
-    })
+    });
   }
 
   componentDidMount = () => {
-    this.props.loadDataPhones()
-    this.loadDataDetails(this.props.id)
-  }
+    this.props.loadDataPhones();
+    this.loadDataDetails(this.props.id);
+  };
 
   render() {
     const { id, phones } = this.props;
@@ -40,30 +40,36 @@ class PhoneDetailsPage extends React.Component {
       <section>
         {
           isLoaded
-            ? <>
-              {
-                id === details.id
-                  ? <>
-                    {
-                      phones
-                        .filter(phone => phone.id === id)
-                        .map(phone =>
-                          <PhoneDetails
-                            details={details}
-                          />
-                        )
-                    }
-                  </>
-                  : 'No any data for this phone'
-              }
-            </>
-            : <Loader
-              isLoading={isLoading}
-            />
+            ? (
+              <>
+                {
+                  id === details.id
+                    ? (
+                      <>
+                        {
+                          phones
+                            .filter(phone => phone.id === id)
+                            .map(phone => (
+                              <PhoneDetails
+                                details={details}
+                              />
+                            ))
+                        }
+                      </>
+                    )
+                    : 'No any data for this phone'
+                }
+              </>
+            )
+            : (
+              <Loader
+                isLoading={isLoading}
+              />
+            )
         }
       </section>
-    )
+    );
   }
 }
 
-export default PhoneDetailsPage
+export default PhoneDetailsPage;

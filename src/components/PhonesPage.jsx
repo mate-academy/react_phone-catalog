@@ -1,37 +1,41 @@
-import React from 'react'
-import Loader from './Loader'
-import PhoneCatalog from './PhoneCatalog'
+import React from 'react';
+import Loader from './Loader';
+import PhoneCatalog from './PhoneCatalog';
 
 class PhonesPage extends React.Component {
   componentDidMount = () => {
-    this.props.loadDataPhones()
-  }
+    this.props.loadDataPhones();
+  };
 
   render() {
-    const { 
+    const {
       phones,
-      isLoading, 
+      isLoading,
       isLoaded,
-      addItemToBasket
+      addItemToBasket,
     } = this.props;
 
     return (
       <div>
         {
           isLoaded
-            ? <PhoneCatalog
-              addItemToBasket={addItemToBasket} 
-              phones={phones}
-              isLoading={isLoading}
-              isLoaded={isLoaded}
-            />
-            : <Loader
-              isLoading={isLoading}
-            />
+            ? (
+              <PhoneCatalog
+                addItemToBasket={addItemToBasket}
+                phones={phones}
+                isLoading={isLoading}
+                isLoaded={isLoaded}
+              />
+            )
+            : (
+              <Loader
+                isLoading={isLoading}
+              />
+            )
         }
       </div>
-    )
+    );
   }
 }
 
-export default PhonesPage
+export default PhonesPage;

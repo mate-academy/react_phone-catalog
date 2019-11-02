@@ -1,0 +1,238 @@
+@import "utils/reset";
+
+
+//
+// * {
+//   margin: 0;
+//   padding: 0;
+//   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+// }
+//
+// .nav-menu-header {
+//   display: grid;
+//   grid-template-columns: 70px 70px 70px 1fr;
+//   width: 100%;
+//   height: 50px;
+//   background:#343a40;
+//   font-size: 14px;
+// }
+//
+// .nav-menu-header__item {
+//   justify-content: center;
+//   text-align: center;
+//   color: #6c757d;
+//   text-decoration: none;
+//   width: 100%;
+//   line-height: 50px;
+// }
+//
+// .basket {
+//   margin-top: 10px;
+//   margin-left: 15px;
+//   background-color: #6c757d;
+//   -webkit-mask: url('/react_phone-catalog/shopping-online.svg') no-repeat;
+//   background-size: 50px 50px;
+// }
+//
+// .basket:hover {
+//   background-color: #d7d7db;
+// }
+//
+// .nav-menu-header__item:hover {
+//   color: #d7d7db;
+// }
+//
+// .active {
+//   color: white;
+// }
+//
+// .phoneCatalog {
+//   font-family: Roboto, sans-serif;
+// }
+//
+// .searchField {
+//   font-size: 14px;
+//   display: inline-block;
+//   margin-top: 40px;
+//   margin-left: 35px;
+// }
+//
+// .searchField__input {
+//   width: 175px;
+//   height: 25px;
+// }
+//
+// .sortField {
+//   display: block;
+//   margin-top: 10px;
+//   margin-left: 35px;
+//   font-size: 14px;
+// }
+//
+// .listOfPhones {
+//   font-size: 14px;
+//   margin: 0 35px 0 75px;
+// }
+//
+// .listOfPhones__item {
+//   display: grid;
+//   grid-template-columns: 100px 1fr;
+//   grid-template-rows: 30px 80px;
+//   grid-row-gap: 10px;
+//   border: 1px solid grey;
+//   border-radius: 5px;
+//   margin: 20px 0;
+// }
+//
+// .listOfPhones__item-img {
+//   grid-column-start: 1;
+//   grid-column-end: 2;
+//   grid-row-start: 1;
+//   grid-row-end: 3;
+//   width: 100px;
+//   height: 100px;
+//   padding: 15px 4px 4px 4px;
+// }
+//
+// .listOfPhones__item-link {
+//   color: #337AB7;
+//   text-decoration: none;
+//   grid-column-start: 2;
+//   grid-column-end: 3;
+//   grid-row-start: 1;
+//   grid-row-end: 2;
+//   padding: 15px 4px 0 20px;
+// }
+//
+// .listOfPhones__item-link:hover {
+//   text-decoration: underline;
+// }
+//
+// .listOfPhones__item-snippet {
+//   padding-left: 20px;
+//   grid-column-start: 2;
+//   grid-column-end: 3;
+//   grid-row-start: 2;
+//   grid-row-end: 3;
+//   align-self: start;
+//   line-height: 1.5;
+// }
+//
+// .currentPhone__top-block {
+//   display: grid;
+//   grid-template-columns: 344px 1fr;
+//   grid-column-gap: 100px;
+//   grid-template-rows: 40px 1fr 100px;
+//   grid-row-gap: 15px;
+//   padding: 20px;
+// }
+//
+// .currentPhone__top-block-current-img {
+//   padding: 24px;
+//   width: 344px;
+//   height: 344px;
+//   margin: 0 42px 28px 0;
+// }
+//
+// .currentPhone__top-block-title {
+//   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+//   font-weight: 500;
+//   line-height: 1.1;
+//   font-size: 36px;
+//   border-bottom: 1px solid grey;
+// }
+//
+// .currentPhone__top-block-snippet {
+//   grid-column-start: 2;
+//   grid-column-end: 3;
+//   grid-row-start: 2;
+//   grid-row-end: 3;
+//   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+//   font-size: 14px;
+// }
+//
+// .currentPhone__top-block-all-imgs {
+//   grid-column-start: 2;
+//   grid-column-end: 3;
+//   grid-row-start: 3;
+//   grid-row-end: 4;
+// }
+//
+// .currentPhone__top-block-all-imgs-item {
+//   width: 72px;
+//   height: 72px;
+//   padding: 14px;
+//   margin: 0 15px;
+//   border: 1px solid black;
+// }
+//
+// .basketPage {
+//   display: grid;
+//   justify-content: center;
+//   margin-top: 20px;
+// }
+//
+// .basketPage__table {
+//   border-radius: 50px;
+//   border-collapse: collapse;
+//   color: #d7d7db;
+// }
+//
+// .basketPage__table-thead {
+//   background: #343A40;
+// }
+//
+// .basketPage__table-thead-td {
+//   padding: 20px;
+//   text-align: center;
+// }
+//
+// .basketPage__table-tbody-td {
+//   padding: 20px;
+//   text-align: center;
+//   color: #343A40;
+// }
+//
+// .basketPage__table-tbody-td-link {
+//   width: 100%;
+//   display: block;
+//   text-align: left;
+//   text-decoration: none;
+//   color: #343A40;
+// }
+//
+// .basketPage__table-quantity-remove {
+//   padding: 0 5px;
+// }
+//
+// .basketPage__table-quantity-minus {
+//   padding: 0 5px;
+//   margin-right: 15px;
+// }
+//
+// .basketPage__table-quantity-plus {
+//   padding: 0 5px;
+//   margin-left: 15px;
+// }
+//
+//
+// .basketPage__table-tbody-tr:hover {
+//   background: #F5F5F5;
+// }
+//
+// .loading {
+//   position: absolute;
+//   top: 50%;
+//   right: 50%;
+//   width:50px; height:50px;
+//   border:5px solid #6c757d;
+//   border-bottom-color:#343a40;
+//   border-left: 5px solid transparent;
+//   border-right: 5px solid transparent;
+//   border-radius:100%;
+//   animation: load_cyrcle 800ms infinite linear;
+// }
+//
+// @keyframes load_cyrcle{
+// 100%{transform:rotate(360deg);}
+// }

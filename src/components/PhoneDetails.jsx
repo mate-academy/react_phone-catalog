@@ -9,7 +9,6 @@ class PhoneDetails extends React.Component {
   componentDidMount = () => {
     const { details } = this.props;
 
-
     const currentImage = `${BASE_IMAGE_URL}/${details.images[0]}`;
 
     this.setState({

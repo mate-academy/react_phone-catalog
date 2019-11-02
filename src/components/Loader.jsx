@@ -1,11 +1,11 @@
-import React from 'react'
+import React from 'react';
 
-const Loader = ({isLoading}) => (
+const Loader = ({ isLoading }) => (
   <div>
     {
-      isLoading && <div className="loading"></div>
+      isLoading && <div className="loading" />
     }
   </div>
-)
+);
 
-export default Loader
+export default Loader;
