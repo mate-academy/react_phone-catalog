@@ -10,6 +10,7 @@ import PhonesPage from './components/PhonesPage';
 import NotFoundPage from './components/NotFoundPage';
 import PhoneDetailsPage from './components/PhoneDetailsPage';
 import Basket from './components/Basket';
+import { GIT_HUB_H2ASH } from './components/constants';
 
 /**
  * [] - в конце доделать основную информацию
@@ -105,20 +106,20 @@ class App extends React.Component {
       <div>
         <nav className="header">
           <NavLink
+            className="header_wrapper-logo"
             href="#"
             to="/"
           >
             <img
               className="header__logo"
-              src="img/logo.svg"
-              width="100px"
-              height="32px"
+              src={`${GIT_HUB_H2ASH}/react_phone-catalog/img/logo.svg`}
+
               alt="logo"/>
           </NavLink>
           
-          <ul className="">
-            <li><NavLink
-            className=""
+          <ul className="header__ul">
+            <li className="header__li"><NavLink
+            className="header__link link"
             href="#"
             exact
             to="/"
@@ -126,20 +127,25 @@ class App extends React.Component {
             Home
             </NavLink></li>
   
-            <li><NavLink
-            className=""
+            <li className="header__li"><NavLink
+            className="header__link link"
             href="#"
             to="/phones/"
             >
             Phones
             </NavLink></li>
   
-            <li><NavLink
-            className=""
+            <li className="header__li"><NavLink
+            className="header__link link"
             href="#"
             to="/basket/"
             >
             Basket
+            <span className="header__basket-quantity">
+              { 
+                itemsAtBasket.length
+              }
+            </span>
             </NavLink></li>
           </ul>
         </nav>

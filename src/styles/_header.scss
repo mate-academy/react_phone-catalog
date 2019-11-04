@@ -1,4 +1,46 @@
 .header {
-  // &__logo {
-  // }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  box-shadow: 0 0 4px #d3d3d3;
+
+
+  &_wrapper-logo {
+    padding-left: 20px;
+  }
+
+  &__logo {
+    min-height: 2em;
+  }
+
+  &__ul {
+    display: flex;
+    align-items: center;
+    height: 60px;
+  }
+
+  &__li {
+    
+  }
+
+  &__link {
+    padding: 10px 20px;
+  }
+
+  &__basket-quantity {
+    position: relative;
+    top: -6px;
+    display: inline-block;
+    text-align: center;
+    line-height: 1.5em;
+    background-color: #12A34A;
+    color: white;
+    font-size: .8em;
+    font-weight: bold;
+    width: 18px;
+    height: 18px;
+
+    border-radius: 50%;
+  }
 }

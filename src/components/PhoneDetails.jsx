@@ -1,5 +1,5 @@
 import React from 'react'
-import BASE_IMAGE_URL from './constants'
+import { BASE_IMAGE_URL } from './constants'
 
 class PhoneDetails extends React.Component {
   state = {
