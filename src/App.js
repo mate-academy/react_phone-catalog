@@ -103,29 +103,45 @@ class App extends React.Component {
 
     return (
       <div>
-        <nav className="nav-menu-header">
+        <nav className="header">
           <NavLink
-            className="nav-menu-header__item"
+            href="#"
+            to="/"
+          >
+            <img
+              className="header__logo"
+              src="img/logo.svg"
+              width="100px"
+              height="32px"
+              alt="logo"/>
+          </NavLink>
+          
+          <ul className="">
+            <li><NavLink
+            className=""
             href="#"
             exact
             to="/"
-          >
-              Home
-          </NavLink>
-
-          <NavLink
-            className="nav-menu-header__item"
+            >
+            Home
+            </NavLink></li>
+  
+            <li><NavLink
+            className=""
             href="#"
             to="/phones/"
-          >
+            >
             Phones
-          </NavLink>
-
-          <NavLink
-            className="nav-menu-header__item basket"
+            </NavLink></li>
+  
+            <li><NavLink
+            className=""
             href="#"
             to="/basket/"
-          />
+            >
+            Basket
+            </NavLink></li>
+          </ul>
         </nav>
 
         <Switch>
