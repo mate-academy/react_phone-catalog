@@ -18,6 +18,7 @@
     display: flex;
     align-items: center;
     height: 60px;
+    font-size: 18px;
   }
 
   &__li {
@@ -25,6 +26,7 @@
   }
 
   &__link {
+    color: black;
     padding: 10px 20px;
   }
 
@@ -37,10 +39,8 @@
     background-color: #12A34A;
     color: white;
     font-size: .8em;
-    font-weight: bold;
     width: 18px;
     height: 18px;
-
     border-radius: 50%;
   }
 }

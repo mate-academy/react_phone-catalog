@@ -14,7 +14,7 @@ class PhoneCatalog extends React.Component {
       phones: this.props.phones,
       phonesForShowing: this.props.phones,
     });
-  }
+  };
 
   handleInput = (event) => {
     const { value } = event.target;
@@ -23,7 +23,7 @@ class PhoneCatalog extends React.Component {
       phonesForShowing: [...prevState.phones]
         .filter(phone => phone.id.toLowerCase().includes(value.toLowerCase())),
     }));
-  }
+  };
 
   sortFunc = (event) => {
     const { value } = event.target;

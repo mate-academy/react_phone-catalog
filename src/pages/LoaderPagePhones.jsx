@@ -1,6 +1,6 @@
 import React from 'react';
-import Loader from './Loader';
-import PhoneCatalog from './PhoneCatalog';
+import Loader from '../components/Loader';
+import PhoneCatalog from './PageOfPhones';
 
 class PhonesPage extends React.Component {
   componentDidMount = () => {

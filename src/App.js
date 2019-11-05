@@ -3,21 +3,17 @@ import './styles/app.scss';
 import {
   Route,
   Switch,
-  NavLink,
 } from 'react-router-dom';
-import HomePage from './components/HomePage';
-import PhonesPage from './components/PhonesPage';
-import NotFoundPage from './components/NotFoundPage';
-import PhoneDetailsPage from './components/PhoneDetailsPage';
-import Basket from './components/Basket';
-import { GIT_HUB_H2ASH } from './components/constants';
+import Navbar from './components/Navbar';
+import HomePage from './pages/HomePage';
+import PhonesPage from './pages/LoaderPagePhones';
+import NotFoundPage from './pages/404Page';
+import PhoneDetailsPage from './pages/LoaderDetailsForPhonePage';
+import Basket from './pages/BasketPage';
+
 
 /**
  * [] - в конце доделать основную информацию
- * [] - корзина
- *    [x] - логика
- *    [x] - реализовать саму страницу basket
- *    [] - починить css активной корзины
  * [] - поработать над стилями всей страницы
  */
 
@@ -104,51 +100,9 @@ class App extends React.Component {
 
     return (
       <div>
-        <nav className="header">
-          <NavLink
-            className="header_wrapper-logo"
-            href="#"
-            to="/"
-          >
-            <img
-              className="header__logo"
-              src={`${GIT_HUB_H2ASH}/react_phone-catalog/img/logo.svg`}
-
-              alt="logo"/>
-          </NavLink>
-          
-          <ul className="header__ul">
-            <li className="header__li"><NavLink
-            className="header__link link"
-            href="#"
-            exact
-            to="/"
-            >
-            Home
-            </NavLink></li>
-  
-            <li className="header__li"><NavLink
-            className="header__link link"
-            href="#"
-            to="/phones/"
-            >
-            Phones
-            </NavLink></li>
-  
-            <li className="header__li"><NavLink
-            className="header__link link"
-            href="#"
-            to="/basket/"
-            >
-            Basket
-            <span className="header__basket-quantity">
-              { 
-                itemsAtBasket.length
-              }
-            </span>
-            </NavLink></li>
-          </ul>
-        </nav>
+        <Navbar 
+          itemsAtBasket={itemsAtBasket}
+        />
 
         <Switch>
           <Route path="/" exact component={HomePage} />

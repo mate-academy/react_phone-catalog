@@ -1,6 +1,6 @@
 import React from 'react';
-import Loader from './Loader';
-import PhoneDetails from './PhoneDetails';
+import Loader from '../components/Loader';
+import PhoneDetails from './DetailsForPhone';
 
 class PhoneDetailsPage extends React.Component {
   state = {
