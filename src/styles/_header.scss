@@ -11,7 +11,7 @@
   }
 
   &__logo {
-    min-height: 2em;
+    height: 2em;
   }
 
   &__ul {
@@ -21,21 +21,28 @@
     font-size: 18px;
   }
 
-  &__li {
-    
-  }
-
   &__link {
+    display: flex;
+    align-items: center;
     color: black;
     padding: 10px 20px;
+    height: 40px;
+    &:hover {
+      background: lightgray;
+    }
+    &_active {
+      background-color: blue;
+      color: white;
+      &:hover {
+        background-color: blue;
+      }
+    }
   }
 
   &__basket-quantity {
     position: relative;
     top: -6px;
-    display: inline-block;
     text-align: center;
-    line-height: 1.5em;
     background-color: #12A34A;
     color: white;
     font-size: .8em;

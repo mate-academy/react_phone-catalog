@@ -17,8 +17,9 @@ const Navbar = ({ itemsAtBasket }) => (
     </NavLink>
 
     <ul className="header__ul">
-      <li className="header__li">
+      <li>
         <NavLink
+          activeClassName="header__link header__link_active link"
           className="header__link link"
           href="#"
           exact
@@ -28,8 +29,9 @@ const Navbar = ({ itemsAtBasket }) => (
         </NavLink>
       </li>
 
-      <li className="header__li">
+      <li>
         <NavLink
+          activeClassName="header__link header__link_active link"
           className="header__link link"
           href="#"
           to="/phones/"
@@ -38,8 +40,9 @@ const Navbar = ({ itemsAtBasket }) => (
         </NavLink>
       </li>
 
-      <li className="header__li">
+      <li>
         <NavLink
+          activeClassName="header__link header__link_active link"
           className="header__link link"
           href="#"
           to="/basket/"

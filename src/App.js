@@ -138,7 +138,9 @@ class App extends React.Component {
               />
             )}
           />
-          <Route component={NotFoundPage} />
+          <Route 
+            component={NotFoundPage} 
+          />
         </Switch>
       </div>
     );
