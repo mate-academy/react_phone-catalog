@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { GIT_HUB_H2ASH } from './constants';
 
 const Navbar = ({ itemsAtBasket }) => (
-  <nav className="header">
+  <header className="header">
     <NavLink
       className="header_wrapper-logo"
       href="#"
@@ -15,48 +15,50 @@ const Navbar = ({ itemsAtBasket }) => (
         alt="logo"
       />
     </NavLink>
-
-    <ul className="header__ul">
-      <li>
-        <NavLink
-          activeClassName="header__link header__link_active link"
-          className="header__link link"
-          href="#"
-          exact
-          to="/"
-        >
-          Home
-        </NavLink>
-      </li>
-
-      <li>
-        <NavLink
-          activeClassName="header__link header__link_active link"
-          className="header__link link"
-          href="#"
-          to="/phones/"
-        >
-          Phones
-        </NavLink>
-      </li>
-
-      <li>
-        <NavLink
-          activeClassName="header__link header__link_active link"
-          className="header__link link"
-          href="#"
-          to="/basket/"
-        >
-        Basket
-          <span className="header__basket-quantity">
-            {
-              itemsAtBasket.length
-            }
-          </span>
-        </NavLink>
-      </li>
-    </ul>
-  </nav>
+      
+    <nav> 
+      <ul className="header__nav">
+        <li>
+          <NavLink
+            activeClassName="header__link header__link_active link"
+            className="header__link link"
+            href="#"
+            exact
+            to="/"
+          >
+            Home
+          </NavLink>
+        </li>
+  
+        <li>
+          <NavLink
+            activeClassName="header__link header__link_active link"
+            className="header__link link"
+            href="#"
+            to="/phones/"
+          >
+            Phones
+          </NavLink>
+        </li>
+  
+        <li>
+          <NavLink
+            activeClassName="header__link header__link_active link"
+            className="header__link link"
+            href="#"
+            to="/basket/"
+          >
+          Basket
+            <span className="header__basket-quantity">
+              {
+                itemsAtBasket.length
+              }
+            </span>
+          </NavLink>
+        </li>
+      </ul>
+    </nav>
+  </header>
 )
 
 export default Navbar;

@@ -99,50 +99,56 @@ class App extends React.Component {
     } = this.state;
 
     return (
-      <div>
-        <Navbar 
+      <>
+        <Navbar
           itemsAtBasket={itemsAtBasket}
         />
 
-        <Switch>
-          <Route path="/" exact component={HomePage} />
-          <Route
-            path="/phones/"
-            exact
-            render={() => (
-              <PhonesPage
-                addItemToBasket={this.addItemToBasket}
-                loadDataPhones={this.loadDataPhones}
-                phones={phones}
-                isLoading={isLoading}
-                isLoaded={isLoaded}
-              />
-            )}
-          />
-          <Route
-            path="/phones/:id?"
-            render={({ match }) => (
-              <PhoneDetailsPage
-                loadDataPhones={this.loadDataPhones}
-                phones={phones}
-                id={match.params.id}
-              />
-            )}
-          />
-          <Route
-            path="/basket/"
-            render={() => (
-              <Basket
-                itemsAtBasket={itemsAtBasket}
-                basketManager={this.basketManager}
-              />
-            )}
-          />
-          <Route 
-            component={NotFoundPage} 
-          />
-        </Switch>
-      </div>
+        <main>
+          <Switch>
+            <Route 
+              path="/" 
+              exact 
+              component={HomePage}
+            />
+            <Route
+              path="/phones/"
+              exact
+              render={() => (
+                <PhonesPage
+                  addItemToBasket={this.addItemToBasket}
+                  loadDataPhones={this.loadDataPhones}
+                  phones={phones}
+                  isLoading={isLoading}
+                  isLoaded={isLoaded}
+                />
+              )}
+            />
+            <Route
+              path="/phones/:id?"
+              render={({ match }) => (
+                <PhoneDetailsPage
+                  loadDataPhones={this.loadDataPhones}
+                  phones={phones}
+                  id={match.params.id}
+                />
+              )}
+            />
+            <Route
+              path="/basket/"
+              render={() => (
+                <Basket
+                  itemsAtBasket={itemsAtBasket}
+                  basketManager={this.basketManager}
+                />
+              )}
+            />
+            <Route 
+              component={NotFoundPage} 
+            />
+          </Switch>
+        </main>
+      </>
     );
   }
 }
