@@ -1,8 +1,8 @@
 import React from 'react';
 import Loader from '../components/Loader';
-import PhoneCatalog from './PageOfPhones';
+import PageOfPhones from './PageOfPhones';
 
-class PhonesPage extends React.Component {
+class LoaderPagePhones extends React.Component {
   componentDidMount = () => {
     this.props.loadDataPhones();
   };
@@ -20,7 +20,7 @@ class PhonesPage extends React.Component {
         {
           isLoaded
             ? (
-              <PhoneCatalog
+              <PageOfPhones
                 addItemToBasket={addItemToBasket}
                 phones={phones}
                 isLoading={isLoading}
@@ -38,4 +38,4 @@ class PhonesPage extends React.Component {
   }
 }
 
-export default PhonesPage;
+export default LoaderPagePhones;

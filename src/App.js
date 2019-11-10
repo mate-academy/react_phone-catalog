@@ -6,10 +6,11 @@ import {
 } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import HomePage from './pages/HomePage';
-import PhonesPage from './pages/LoaderPagePhones';
-import NotFoundPage from './pages/404Page';
-import PhoneDetailsPage from './pages/LoaderDetailsForPhonePage';
-import Basket from './pages/BasketPage';
+import LoaderPagePhones from './pages/LoaderPagePhones';
+import Page404 from './pages/Page404';
+import LoaderDetailsForPhonePage from './pages/LoaderDetailsForPhonePage';
+import BasketPage from './pages/BasketPage';
+import { BASE_URL } from './components/constants';
 
 
 /**
@@ -82,15 +83,16 @@ class App extends React.Component {
       isLoading: true,
     });
 
-    const responsePhones = await
-    fetch('https://mate-academy.github.io/phone-catalogue-static/api/phones.json');
+    const responsePhones = await fetch(`${BASE_URL}/api/phones.json`);
     const phones = await responsePhones.json();
 
-    this.setState({
-      phones,
-      isLoading: false,
-      isLoaded: true,
-    });
+    setInterval(() => {
+      this.setState({
+        phones,
+        isLoading: false,
+        isLoaded: true,
+      });
+    }, 1000);
   };
 
   render() {
@@ -107,15 +109,15 @@ class App extends React.Component {
         <main>
           <Switch>
             <Route 
-              path="/" 
-              exact 
+              path="/"
+              exact
               component={HomePage}
             />
             <Route
               path="/phones/"
               exact
               render={() => (
-                <PhonesPage
+                <LoaderPagePhones
                   addItemToBasket={this.addItemToBasket}
                   loadDataPhones={this.loadDataPhones}
                   phones={phones}
@@ -127,7 +129,7 @@ class App extends React.Component {
             <Route
               path="/phones/:id?"
               render={({ match }) => (
-                <PhoneDetailsPage
+                <LoaderDetailsForPhonePage
                   loadDataPhones={this.loadDataPhones}
                   phones={phones}
                   id={match.params.id}
@@ -137,14 +139,14 @@ class App extends React.Component {
             <Route
               path="/basket/"
               render={() => (
-                <Basket
+                <BasketPage
                   itemsAtBasket={itemsAtBasket}
                   basketManager={this.basketManager}
                 />
               )}
             />
             <Route 
-              component={NotFoundPage} 
+              component={Page404} 
             />
           </Switch>
         </main>

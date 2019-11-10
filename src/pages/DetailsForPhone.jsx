@@ -1,7 +1,7 @@
 import React from 'react'
-import { BASE_IMAGE_URL } from '../components/constants'
+import { BASE_URL } from '../components/constants'
 
-class PhoneDetails extends React.Component {
+class DetailsForPhone extends React.Component {
   state = {
     currentImg: '',
   }
@@ -9,7 +9,7 @@ class PhoneDetails extends React.Component {
   componentDidMount = () => {
     const { details } = this.props;
 
-    const currentImage = `${BASE_IMAGE_URL}/${details.images[0]}`;
+    const currentImage = `${BASE_URL}/${details.images[0]}`;
 
     this.setState({
       currentImg: currentImage,
@@ -54,7 +54,7 @@ class PhoneDetails extends React.Component {
                 <img
                   onClick={this.chooseCurrentImg}
                   className='currentPhone__top-block-all-imgs-item'
-                  src={`${BASE_IMAGE_URL}/${image}`}
+                  src={`${BASE_URL}/${image}`}
                   alt=""
                 />
               )
@@ -68,4 +68,4 @@ class PhoneDetails extends React.Component {
   }
 }
 
-export default PhoneDetails
+export default DetailsForPhone

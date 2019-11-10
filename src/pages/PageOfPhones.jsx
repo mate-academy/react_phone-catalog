@@ -3,7 +3,7 @@ import {
   Link,
 } from 'react-router-dom';
 
-class PhoneCatalog extends React.Component {
+class PageOfPhones extends React.Component {
   state = {
     phones: [],
     phonesForShowing: [],
@@ -115,4 +115,4 @@ class PhoneCatalog extends React.Component {
   }
 }
 
-export default PhoneCatalog;
+export default PageOfPhones;

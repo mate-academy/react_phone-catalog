@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Basket = ({ itemsAtBasket, basketManager }) => (
+const BasketPage = ({ itemsAtBasket, basketManager }) => (
   <div className="basketPage">
     {
       itemsAtBasket.length
@@ -62,4 +62,4 @@ const Basket = ({ itemsAtBasket, basketManager }) => (
   </div>
 );
 
-export default Basket;
+export default BasketPage;

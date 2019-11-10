@@ -1,4 +1,4 @@
-export const BASE_IMAGE_URL
+export const BASE_URL
 = 'https://mate-academy.github.io/phone-catalogue-static';
 
 export const GIT_HUB_H2ASH

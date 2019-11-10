@@ -1,8 +1,9 @@
 import React from 'react';
 import Loader from '../components/Loader';
-import PhoneDetails from './DetailsForPhone';
+import DetailsForPhone from './DetailsForPhone';
+import { BASE_URL } from "../components/constants";
 
-class PhoneDetailsPage extends React.Component {
+class LoaderDetailsForPhonePage extends React.Component {
   state = {
     details: {},
     isLoading: false,
@@ -14,8 +15,8 @@ class PhoneDetailsPage extends React.Component {
       isLoading: true,
     });
 
-    const responseDetails = await
-    fetch(`https://mate-academy.github.io/phone-catalogue-static/api/phones/${currentId}.json`);
+    const responseDetails = await 
+      fetch(`${BASE_URL}/api/phones/${currentId}.json`);
     const details = await responseDetails.json();
 
     this.setState({
@@ -50,7 +51,7 @@ class PhoneDetailsPage extends React.Component {
                           phones
                             .filter(phone => phone.id === id)
                             .map(phone => (
-                              <PhoneDetails
+                              <DetailsForPhone
                                 details={details}
                               />
                             ))
@@ -72,4 +73,4 @@ class PhoneDetailsPage extends React.Component {
   }
 }
 
-export default PhoneDetailsPage;
+export default LoaderDetailsForPhonePage;
