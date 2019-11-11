@@ -1,0 +1,28 @@
+.basketItem {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  width: 1400px;
+  padding: 10px;
+  margin: 20px 50px;
+  margin-left: auto;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.basketItem__info {
+  display: flex;
+}
+
+.basketItem__img {
+  width: 100px;
+  height: 100px;
+}
+
+.basketItem__content {
+  margin-left: 10px;
+}
+
+.quantityBlock {
+  margin: auto 75px auto 0;
+}

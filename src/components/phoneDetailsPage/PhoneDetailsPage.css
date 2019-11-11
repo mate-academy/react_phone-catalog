@@ -1,0 +1,50 @@
+.phoneDetails {
+  display: flex;
+  width: 100%;
+}
+
+.phoneDetails__largeImg {
+  width: 10%px;
+  height: 400px;
+  margin: 25px;
+  object-fit: cover;
+}
+
+.phoneDetails__content {
+  margin: 30px 30px 0 100px;
+  width: 90%;
+}
+
+.phoneDetails__content > h1 {
+  font-weight: 500;
+  font-size: 36px;
+}
+
+.phoneDetails__describe {
+  font-size: 16px;
+}
+
+.phoneDetails_images > img {
+  width: 120px;
+  height: 120px;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #000;
+  cursor: pointer;
+  position: relative;
+  transition: top 2s;
+}
+
+.phoneCharacteristics {
+  margin: 25px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.characteristic__item {
+  width: 200px;
+}
+
+.characteristic__item > p, h3, h4 {
+  margin: 0;
+}
