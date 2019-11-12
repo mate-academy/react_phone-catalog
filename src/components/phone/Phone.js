@@ -2,12 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from 'semantic-ui-react';
 import './phone.css';
+import { BASE_NAME } from '../../params';
 
 const Phone = ({ phone, AddPhoneToBasketList }) => {
   return (
     <div className="phone">
       <div className="flexBox">
-        <img src={`/${phone.imageUrl}`} alt={phone.name} className="phone__img" />
+        <img src={`${BASE_NAME}/${phone.imageUrl}`} alt={phone.name} className="phone__img" />
         <div className="phone__content">
           <h4 className="phone__header">
             <Link to={`/phones/${phone.id}`}>

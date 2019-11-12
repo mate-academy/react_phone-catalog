@@ -1,7 +1,7 @@
 import React from 'react';
 import './BasketItem.css';
 import { Button } from 'semantic-ui-react';
-
+import { BASE_NAME } from '../../params';
 
 const BasketItem = ({ basketItem, increaseQuantity, reduceQuantity, removeItem }) => {
   const { phone, quantity } = basketItem;
@@ -9,7 +9,7 @@ const BasketItem = ({ basketItem, increaseQuantity, reduceQuantity, removeItem }
   return (
     <div className="basketItem">
       <div className="basketItem__info">
-        <img src={`/${phone.imageUrl}`} alt={phone.name} className="basketItem__img" />
+        <img src={`${BASE_NAME}/${phone.imageUrl}`} alt={phone.name} className="basketItem__img" />
         <div className="basketItem__content">
           <h4>
             {phone.name}

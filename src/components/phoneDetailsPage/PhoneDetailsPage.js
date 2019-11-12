@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './PhoneDetailsPage.css';
 import { getPhoneDetailsById } from '../../Api';
+import { BASE_NAME } from '../../params';
 
 const loadPhoneDetails = async (phoneId, setPhoneDetails, setLargeImgSrc) => {
   const phoneDetails = await getPhoneDetailsById(phoneId);
@@ -10,14 +11,13 @@ const loadPhoneDetails = async (phoneId, setPhoneDetails, setLargeImgSrc) => {
 
 const PhoneDetailsPage = ({ phone }) => {
   const [phoneDetails, setPhoneDetails] = useState(null);
-  const [largeImgSrc, setLargeImgSrc] = useState(`/${phone.imageUrl}`);
+  const [largeImgSrc, setLargeImgSrc] = useState(`${phone.imageUrl}`);
   const LargeImg = React.createRef();
 
   const imgOnClick = (event) => {
     const { target } = event;
 
-    console.log(LargeImg.current);
-    setLargeImgSrc(`/img/${target.src.split('img')[1]}`);
+    setLargeImgSrc(`img/${target.src.split('img')[1]}`);
   };
 
   useEffect(() => {
@@ -27,13 +27,13 @@ const PhoneDetailsPage = ({ phone }) => {
   return phoneDetails && (
     <>
       <div className="phoneDetails">
-        <img className="phoneDetails__largeImg" src={largeImgSrc} ref={LargeImg} />
+        <img className="phoneDetails__largeImg" src={`${BASE_NAME}/${largeImgSrc}`} ref={LargeImg} />
         <div className="phoneDetails__content">
           <h1>{phone.name}</h1>
           <hr />
           <p className="phoneDetails__describe">{phoneDetails.description}</p>
           <div className="phoneDetails_images">
-            {phoneDetails && phoneDetails.images.map(imgUrl => <img src={`/${imgUrl}`} onClick={imgOnClick} />)}
+            {phoneDetails && phoneDetails.images.map(imgUrl => <img src={`${BASE_NAME}/${imgUrl}`} onClick={imgOnClick} />)}
           </div>
         </div>
       </div>
