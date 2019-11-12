@@ -1,1 +1,32 @@
+body {
+  margin: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
 
+.nav {
+  background-color: black;
+  height: 40px;
+  line-height: 40px;
+  font-size: 24px;
+}
+
+.nav__links {
+  width: 400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav__link {
+  text-decoration: none;
+  color: white;
+}
+
+.active {
+  color: lightgray;
+}
+
+.pageNotFoundHeader {
+  width: max-content;
+  margin: 100px auto;
+}

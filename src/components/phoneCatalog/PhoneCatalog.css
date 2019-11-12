@@ -1,0 +1,9 @@
+.phonesPage {
+  display: flex;
+  justify-content: space-between;
+}
+
+.filterContained {
+  width: max-content;
+  margin: 50px;
+}
