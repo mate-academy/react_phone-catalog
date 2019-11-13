@@ -2,6 +2,7 @@ import React from 'react';
 import {
   Link,
 } from 'react-router-dom';
+import { BASE_URL } from '../components/constants';
 
 class PageOfPhones extends React.Component {
   state = {
@@ -9,12 +10,22 @@ class PageOfPhones extends React.Component {
     phonesForShowing: [],
   }
 
+  inputRef = React.createRef();
+
   componentDidMount = () => {
     this.setState({
       phones: this.props.phones,
       phonesForShowing: this.props.phones,
     });
   };
+
+  handleChange = () => {
+    this.setState({
+      inputText = this.inputRef.current.value,
+      textareaText = this.textareaRef.current.value,
+      selectText = this.selectRef.current.value,
+    })
+  }
 
   handleInput = (event) => {
     const { value } = event.target;
@@ -47,8 +58,6 @@ class PageOfPhones extends React.Component {
 
   render() {
     const { phonesForShowing } = this.state;
-    const BASE_IMAGE_URL
-      = 'https://mate-academy.github.io/phone-catalogue-static';
 
     return (
       <div className="phoneCatalog">
@@ -62,6 +71,7 @@ class PageOfPhones extends React.Component {
             className="searchField__input"
             id="search_field"
             type="text"
+            ref={this.inputRef}
           />
         </label>
 
@@ -86,7 +96,7 @@ class PageOfPhones extends React.Component {
               <li className="listOfPhones__item">
                 <img
                   className="listOfPhones__item-img"
-                  src={`${BASE_IMAGE_URL}/${phone.imageUrl}`}
+                  src={`${BASE_URL}/${phone.imageUrl}`}
                   alt="altImg"
                 />
 

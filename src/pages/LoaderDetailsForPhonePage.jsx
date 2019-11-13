@@ -35,8 +35,6 @@ class LoaderDetailsForPhonePage extends React.Component {
     const { id, phones } = this.props;
     const { details, isLoading, isLoaded } = this.state;
 
-    console.log(details);
-
     return (
       <section>
         {

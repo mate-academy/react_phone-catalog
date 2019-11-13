@@ -86,7 +86,7 @@ class App extends React.Component {
     const responsePhones = await fetch(`${BASE_URL}/api/phones.json`);
     const phones = await responsePhones.json();
 
-    setInterval(() => {
+    setTimeout(() => {
       this.setState({
         phones,
         isLoading: false,

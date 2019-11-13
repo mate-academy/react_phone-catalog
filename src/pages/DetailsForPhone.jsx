@@ -28,8 +28,6 @@ class DetailsForPhone extends React.Component {
     const { details } = this.props;
     const { currentImg } = this.state;
 
-    console.log(details);
-
     return (
       <div>
         <section
