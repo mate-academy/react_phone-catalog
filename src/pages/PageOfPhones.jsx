@@ -19,14 +19,6 @@ class PageOfPhones extends React.Component {
     });
   };
 
-  handleChange = () => {
-    this.setState({
-      inputText = this.inputRef.current.value,
-      textareaText = this.textareaRef.current.value,
-      selectText = this.selectRef.current.value,
-    })
-  }
-
   handleInput = (event) => {
     const { value } = event.target;
 
