@@ -19,7 +19,10 @@ const BasketPage = ({ itemsAtBasket, basketManager }) => (
             <tbody>
               {
                 itemsAtBasket.map(item => (
-                  <tr className="basketPage__table-tbody-tr">
+                  <tr 
+                    key={`tr + ${item.id}`} 
+                    className="basketPage__table-tbody-tr"
+                    >
                     <td className="basketPage__table-tbody-td">
                       <Link
                         className="basketPage__table-tbody-td-link"

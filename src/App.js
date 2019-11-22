@@ -6,17 +6,11 @@ import {
 } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import HomePage from './pages/HomePage';
-import LoaderPagePhones from './pages/LoaderPagePhones';
+import LoaderPageOfPhones from './pages/LoaderPageOfPhones';
 import Page404 from './pages/Page404';
-import LoaderDetailsForPhonePage from './pages/LoaderDetailsForPhonePage';
+import LoaderDetailsForOnePhone from './pages/LoaderDetailsForOnePhone';
 import BasketPage from './pages/BasketPage';
 import { BASE_URL } from './components/constants';
-
-
-/**
- * [] - в конце доделать основную информацию
- * [] - поработать над стилями всей страницы
- */
 
 class App extends React.Component {
   state = {
@@ -44,6 +38,8 @@ class App extends React.Component {
         case 'remove':
           changedArray = changedArray.filter(obj => obj.id !== id);
           break;
+        default:
+          console.log("Данный случай отстуствует среди данных условий");
       }
 
       return {
@@ -86,13 +82,11 @@ class App extends React.Component {
     const responsePhones = await fetch(`${BASE_URL}/api/phones.json`);
     const phones = await responsePhones.json();
 
-    setTimeout(() => {
-      this.setState({
-        phones,
-        isLoading: false,
-        isLoaded: true,
-      });
-    }, 1000);
+    this.setState({
+      phones,
+      isLoading: false,
+      isLoaded: true,
+    });
   };
 
   render() {
@@ -117,7 +111,7 @@ class App extends React.Component {
               path="/phones/"
               exact
               render={() => (
-                <LoaderPagePhones
+                <LoaderPageOfPhones
                   addItemToBasket={this.addItemToBasket}
                   loadDataPhones={this.loadDataPhones}
                   phones={phones}
@@ -129,7 +123,7 @@ class App extends React.Component {
             <Route
               path="/phones/:id?"
               render={({ match }) => (
-                <LoaderDetailsForPhonePage
+                <LoaderDetailsForOnePhone
                   loadDataPhones={this.loadDataPhones}
                   phones={phones}
                   id={match.params.id}

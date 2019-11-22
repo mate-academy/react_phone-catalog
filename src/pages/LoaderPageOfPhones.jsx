@@ -2,7 +2,7 @@ import React from 'react';
 import Loader from '../components/Loader';
 import PageOfPhones from './PageOfPhones';
 
-class LoaderPagePhones extends React.Component {
+class LoaderPageOfPhones extends React.Component {
   componentDidMount = () => {
     this.props.loadDataPhones();
   };
@@ -28,7 +28,7 @@ class LoaderPagePhones extends React.Component {
               />
             )
             : (
-              <Loader
+              <Loader 
                 isLoading={isLoading}
               />
             )
@@ -38,4 +38,4 @@ class LoaderPagePhones extends React.Component {
   }
 }
 
-export default LoaderPagePhones;
+export default LoaderPageOfPhones;

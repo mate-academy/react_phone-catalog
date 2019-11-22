@@ -1,9 +1,9 @@
 import React from 'react';
 import Loader from '../components/Loader';
-import DetailsForPhone from './DetailsForPhone';
+import DetailsForOnePhone from './DetailsForOnePhone';
 import { BASE_URL } from "../components/constants";
 
-class LoaderDetailsForPhonePage extends React.Component {
+class LoaderDetailsForOnePhone extends React.Component {
   state = {
     details: {},
     isLoading: false,
@@ -36,7 +36,7 @@ class LoaderDetailsForPhonePage extends React.Component {
     const { details, isLoading, isLoaded } = this.state;
 
     return (
-      <section>
+      <>
         {
           isLoaded
             ? (
@@ -49,7 +49,8 @@ class LoaderDetailsForPhonePage extends React.Component {
                           phones
                             .filter(phone => phone.id === id)
                             .map(phone => (
-                              <DetailsForPhone
+                              <DetailsForOnePhone
+                                key={phone.id}
                                 details={details}
                               />
                             ))
@@ -66,9 +67,9 @@ class LoaderDetailsForPhonePage extends React.Component {
               />
             )
         }
-      </section>
+      </>
     );
   }
 }
 
-export default LoaderDetailsForPhonePage;
+export default LoaderDetailsForOnePhone;
