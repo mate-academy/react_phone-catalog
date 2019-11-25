@@ -108,15 +108,17 @@ class App extends React.Component {
               component={HomePage}
             />
             <Route
-              path="/phones/"
+              path="/phones"
               exact
-              render={() => (
+              render={({ location, history }) => (
                 <LoaderPageOfPhones
                   addItemToBasket={this.addItemToBasket}
                   loadDataPhones={this.loadDataPhones}
                   phones={phones}
                   isLoading={isLoading}
                   isLoaded={isLoaded}
+                  location={location}
+                  history={history}
                 />
               )}
             />

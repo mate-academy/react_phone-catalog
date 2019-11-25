@@ -13,6 +13,8 @@ class LoaderPageOfPhones extends React.Component {
       isLoading,
       isLoaded,
       addItemToBasket,
+      location,
+      history
     } = this.props;
 
     return (
@@ -25,6 +27,8 @@ class LoaderPageOfPhones extends React.Component {
                 phones={phones}
                 isLoading={isLoading}
                 isLoaded={isLoaded}
+                location={location}
+                history={history}
               />
             )
             : (

@@ -7,17 +7,38 @@ import { BASE_URL } from '../components/constants';
 class PageOfPhones extends React.Component {
   state = {
     phonesForShowing: [],
+    // page: 1,
+    // perPage: 20,
+    // pages: 1,
   }
 
   componentDidMount = () => {
-    this.setState({
-      phonesForShowing: this.props.phones,
-    });
+    // query params in URL + phones for showing
+    let params = new URLSearchParams(this.props.location.search);
+    if (params.get("filter")) {
+      this.setState({
+        phonesForShowing: this.props.phones
+          .filter(phone => phone.id.toLowerCase().includes(params.get("filter").toLowerCase())),
+      })
+    } else {
+      this.setState({
+        phonesForShowing: this.props.phones,
+      });
+    };
   };
 
   handleInput = (event) => {
     const { value } = event.target;
 
+    // query params is URL
+    let params = new URLSearchParams(this.props.location.search);
+    params.set("filter", `${value}`);
+    
+    this.props.history.push({
+      pathname: "/phones",
+      search: `?${params.toString()}`,
+    })
+    
     this.setState({
       phonesForShowing: this.props.phones
         .filter(phone => phone.id.toLowerCase().includes(value.toLowerCase())),
@@ -46,7 +67,8 @@ class PageOfPhones extends React.Component {
 
   render() {
     const { phonesForShowing } = this.state;
-
+    console.log(phonesForShowing);
+    
     return (
       <div>
         <label

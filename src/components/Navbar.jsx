@@ -35,7 +35,10 @@ const Navbar = ({ itemsAtBasket }) => (
             activeClassName="header__link header__link_active link"
             className="header__link link"
             href="#"
-            to="/phones/"
+            to={{
+              pathname: "/phones",
+              search: "",
+            }}
           >
             Phones
           </NavLink>
