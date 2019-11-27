@@ -3,13 +3,16 @@ import {
   Link,
 } from 'react-router-dom';
 import { BASE_URL } from '../components/constants';
+import Pagination from '../components/Pagination'
 
 class PageOfPhones extends React.Component {
   state = {
     phonesForShowing: [],
-    // page: 1,
-    // perPage: 20,
-    // pages: 1,
+    quantityOfPhones: this.props.phones.length,
+    page: 1,
+    phonesPerPage: 20,
+    pages: 1,
+    arrOfPages: [1],
   }
 
   componentDidMount = () => {
@@ -18,16 +21,19 @@ class PageOfPhones extends React.Component {
     if (params.get("filter")) {
       this.setState({
         phonesForShowing: this.props.phones
-          .filter(phone => phone.id.toLowerCase().includes(params.get("filter").toLowerCase())),
+          .filter(phone => phone.id
+            .toLowerCase().includes(params.get("filter").toLowerCase())),
       })
     } else {
       this.setState({
         phonesForShowing: this.props.phones,
       });
     };
+
+    this.calcQuantityAndArrOfPages();
   };
 
-  handleInput = (event) => {
+  filterHandleInput = (event) => {
     const { value } = event.target;
 
     // query params is URL
@@ -41,7 +47,8 @@ class PageOfPhones extends React.Component {
     
     this.setState({
       phonesForShowing: this.props.phones
-        .filter(phone => phone.id.toLowerCase().includes(value.toLowerCase())),
+        .filter(phone => 
+          phone.id.toLowerCase().includes(value.toLowerCase())),
     });
   };
 
@@ -65,18 +72,84 @@ class PageOfPhones extends React.Component {
     }));
   };
 
+  // for Pagination
+  calcQuantityAndArrOfPages = () => {
+    this.setState(prevState => ({
+      pages: Math.ceil(prevState.quantityOfPhones / prevState.phonesPerPage),
+    }));
+
+    this.setState(prevState => {
+      const arr = [];
+      for (let i = 1; i <= prevState.pages; i++) {
+        arr.push(i);
+      };
+      return {
+        arrOfPages: arr,
+      }
+    })
+  };
+
+  // for Pagination
+  choosePage = (value) => {
+    this.setState({
+      page: value,
+    })
+  };
+
+  chooseQuantityOfPhonesPerPage = (event) => {
+    const { value } = event.target;
+
+    this.setState({
+      phonesPerPage: value,
+    });
+  };
+
+  
+
   render() {
-    const { phonesForShowing } = this.state;
+    const { 
+      phonesForShowing,
+      quantityOfPhones,
+      page,
+      phonesPerPage,
+      arrOfPages,
+      pages,
+    } = this.state;
+
     console.log(phonesForShowing);
+
+    const firstPhoneOnCurrentPage = this.state.page === 1 
+      ? 1
+      : ((this.state.page - 1) * this.state.phonesPerPage) + 1;
+    const lastPhoneOnCurrentPage = (this.state.phonesPerPage * this.state.page);
     
     return (
       <div>
+        
+        <Pagination
+          page={page}
+          arrOfPages={arrOfPages}
+          pages={pages}
+        />
+
+        <label htmlFor="chooseQuantityOfPhonesPerPage">
+          <select
+            onChange={this.chooseQuantityOfPhonesPerPage}
+            id="chooseQuantityOfPhonesPerPage"
+          >
+            <option value='3'>Per Page: 3</option>
+            <option value='5'>Per Page: 5</option>
+            <option value='10'>Per Page: 10</option>
+            <option value='20'>Per Page: 20</option>
+          </select>
+        </label>
+
         <label
           htmlFor="search_field"
         >
           Search:
           <input
-            onChange={this.handleInput}
+            onChange={this.filterHandleInput}
             id="search_field"
             type="text"
           />
@@ -89,16 +162,23 @@ class PageOfPhones extends React.Component {
           <select
             onChange={this.sortFunc}
           >
-            <option value="age">Newest</option>
+            <option selected value="age">Newest</option>
             <option value="name">Alphabetical</option>
           </select>
         </label>
 
-        <ul>
+        <ul
+          className="ulForCards" // временный
+        >
           {
-            phonesForShowing.map(phone => (
-              <li key={phone.id}>
+            phonesForShowing.filter((phone, index) => index >= (firstPhoneOnCurrentPage - 1) &&  index <= (lastPhoneOnCurrentPage - 1))
+              .map(phone => ( 
+              <li 
+                key={phone.id}
+                className="card" // временный
+              >
                 <img
+                  className="card__img" // временный
                   src={`${BASE_URL}/${phone.imageUrl}`}
                   alt="altImg"
                 />
