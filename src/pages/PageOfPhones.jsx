@@ -39,15 +39,15 @@ class PageOfPhones extends React.Component {
     // query params is URL
     let params = new URLSearchParams(this.props.location.search);
     params.set("filter", `${value}`);
-    
+
     this.props.history.push({
       pathname: "/phones",
       search: `?${params.toString()}`,
     })
-    
+
     this.setState({
       phonesForShowing: this.props.phones
-        .filter(phone => 
+        .filter(phone =>
           phone.id.toLowerCase().includes(value.toLowerCase())),
     });
   };
@@ -104,10 +104,10 @@ class PageOfPhones extends React.Component {
     });
   };
 
-  
+
 
   render() {
-    const { 
+    const {
       phonesForShowing,
       quantityOfPhones,
       page,
@@ -118,14 +118,15 @@ class PageOfPhones extends React.Component {
 
     console.log(phonesForShowing);
 
-    const firstPhoneOnCurrentPage = this.state.page === 1 
-      ? 1
-      : ((this.state.page - 1) * this.state.phonesPerPage) + 1;
-    const lastPhoneOnCurrentPage = (this.state.phonesPerPage * this.state.page);
-    
+    const firstPhoneOnCurrentPage = this.state.page === 1
+      ? 0 // index of FIRST phone from filtered phonesForShowing
+      : (this.state.page - 1) * this.state.phonesPerPage;
+    // index of LAST phone from filtered phonesForShowing
+    const lastPhoneOnCurrentPage = (this.state.page * this.state.phonesPerPage) - 1;
+
     return (
       <div>
-        
+
         <Pagination
           page={page}
           arrOfPages={arrOfPages}
@@ -171,35 +172,37 @@ class PageOfPhones extends React.Component {
           className="ulForCards" // временный
         >
           {
-            phonesForShowing.filter((phone, index) => index >= (firstPhoneOnCurrentPage - 1) &&  index <= (lastPhoneOnCurrentPage - 1))
-              .map(phone => ( 
-              <li 
-                key={phone.id}
-                className="card" // временный
-              >
-                <img
-                  className="card__img" // временный
-                  src={`${BASE_URL}/${phone.imageUrl}`}
-                  alt="altImg"
-                />
-
-                <Link
-                  to={`/phones/${phone.id}`}
+            phonesForShowing
+              .filter((phone, index) => index >= firstPhoneOnCurrentPage
+                && index <= lastPhoneOnCurrentPage)
+              .map(phone => (
+                <li
+                  key={phone.id}
+                  className="card" // временный
                 >
-                  {phone.name}
-                </Link>
+                  <img
+                    className="card__img" // временный
+                    src={`${BASE_URL}/${phone.imageUrl}`}
+                    alt="altImg"
+                  />
 
-                <section>
-                  {phone.snippet}
-                </section>
+                  <Link
+                    to={`/phones/${phone.id}`}
+                  >
+                    {phone.name}
+                  </Link>
 
-                <button
-                  onClick={() => this.props.addItemToBasket(phone)}
-                >
-                  Add to cart
-                </button>
-              </li>
-            ))
+                  <section>
+                    {phone.snippet}
+                  </section>
+
+                  <button
+                    onClick={() => this.props.addItemToBasket(phone)}
+                  >
+                    Add to cart
+                  </button>
+                </li>
+              ))
           }
         </ul>
       </div>
