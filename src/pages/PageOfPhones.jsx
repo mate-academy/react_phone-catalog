@@ -8,9 +8,7 @@ import PaginationInfo from '../components/PaginationInfo';
 
 class PageOfPhones extends React.Component {
   state = {
-    phones: this.props.phones, // для теста с сотрировкой
     phonesForShowing: [],
-    quantityOfPhones: this.props.phones.length,
     sortBy: "age",
     inputValue: "",
     page: 1,
@@ -20,7 +18,6 @@ class PageOfPhones extends React.Component {
   }
 
   componentDidMount = () => {
-    // query params in URL + phones for showing
     let params = new URLSearchParams(this.props.location.search);
 
     if (params.get("curpage")) {
@@ -37,7 +34,7 @@ class PageOfPhones extends React.Component {
 
     if (params.get("filter")) {
       this.setState(prevState => ({
-        phonesForShowing: [...this.state.phones]
+        phonesForShowing: [...this.props.phones]
           .filter(phone => phone.id
             .toLowerCase().includes(params.get("filter").toLowerCase())),
         inputValue: params.get("filter"), // text in input
@@ -162,8 +159,6 @@ class PageOfPhones extends React.Component {
       sortBy,
     } = this.state;
 
-    console.log(phonesForShowing);
-
     const firstIndexPhoneOnCurrentPage = page === 1
       ? 0 // index of FIRST phone from filtered phonesForShowing
       : (page - 1) * phonesPerPage;
@@ -171,6 +166,8 @@ class PageOfPhones extends React.Component {
 
     return (
       <div>
+        <div>Phones quantity: {phonesForShowing.length}</div>
+
         <PaginationButtons
           choosePage={this.choosePage}
           page={page}
@@ -216,8 +213,7 @@ class PageOfPhones extends React.Component {
         >
           Sort by:
           <select
-            // defaultValue="age"
-            value={this.state.sortBy}
+            value={sortBy}
             id="sort"
             onChange={this.sortHandleSelect}
           >

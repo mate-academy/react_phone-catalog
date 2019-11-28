@@ -52,17 +52,7 @@ class App extends React.Component {
     const currentIndex = this.state.itemsAtBasket
       .findIndex(element => element.id === itemToAdd.id);
 
-    if (currentIndex >= 0) {
-      this.setState((prevState) => {
-        const changedArray = [...prevState.itemsAtBasket];
-
-        changedArray[currentIndex].quantity += 1;
-
-        return {
-          itemsAtBasket: changedArray,
-        };
-      });
-    } else {
+    if (currentIndex < 0) {
       const requiredItem = { ...itemToAdd };
 
       requiredItem.quantity = 1;
@@ -70,7 +60,7 @@ class App extends React.Component {
       this.setState(prevState => ({
         itemsAtBasket: [...prevState.itemsAtBasket, requiredItem],
       }));
-    }
+    };
   };
 
   loadDataPhones = async() => {
