@@ -7,8 +7,11 @@ import Pagination from '../components/Pagination'
 
 class PageOfPhones extends React.Component {
   state = {
+    phones: this.props.phones, // для теста с сотрировкой
     phonesForShowing: [],
     quantityOfPhones: this.props.phones.length,
+    sortBy: "age",
+    inputValue: "",
     page: 1,
     phonesPerPage: 20,
     pages: 1,
@@ -18,17 +21,39 @@ class PageOfPhones extends React.Component {
   componentDidMount = () => {
     // query params in URL + phones for showing
     let params = new URLSearchParams(this.props.location.search);
-    if (params.get("filter")) {
+
+    if (params.get("curpage")) {
       this.setState({
-        phonesForShowing: this.props.phones
+        page: params.get("curpage"),
+      });
+    }
+
+    if (params.get("perpage")) {
+      this.setState({
+        phonesPerPage: params.get("perpage"),
+      });
+    }
+
+    if (params.get("filter")) {
+      this.setState(prevState => ({
+        phonesForShowing: [...this.state.phones]
           .filter(phone => phone.id
             .toLowerCase().includes(params.get("filter").toLowerCase())),
-      })
+        inputValue: params.get("filter"), // text in input
+      }));
+
+      if (params.get("sort")) {
+        this.sortFunctionByValue(params.get("sort"));
+      }
     } else {
       this.setState({
         phonesForShowing: this.props.phones,
       });
-    };
+
+      if (params.get("sort")) {
+        this.sortFunctionByValue(params.get("sort"));
+      }
+    }
 
     this.calcQuantityAndArrOfPages();
   };
@@ -36,35 +61,37 @@ class PageOfPhones extends React.Component {
   filterHandleInput = (event) => {
     const { value } = event.target;
 
-    // query params is URL
-    let params = new URLSearchParams(this.props.location.search);
-    params.set("filter", `${value}`);
-
-    this.props.history.push({
-      pathname: "/phones",
-      search: `?${params.toString()}`,
-    })
-
     this.setState({
+      inputValue: value, // showing in input,
       phonesForShowing: this.props.phones
         .filter(phone =>
           phone.id.toLowerCase().includes(value.toLowerCase())),
     });
+
+    // this.sortFunc(this.state.sortBy);
+    this.calcQuantityAndArrOfPages();
+    this.setQueryParamsInURL("filter", value);
   };
 
-  sortFunc = (event) => {
+  sortHandleSelect = (event) => {
     const { value } = event.target;
 
+    this.sortFunctionByValue(value);
+    this.setQueryParamsInURL("sort", value);
+  };
+
+  sortFunctionByValue = (value) => {
     this.setState(prevState => ({
+      sortBy: value,
       phonesForShowing: [...prevState.phonesForShowing].sort((a, b) => {
         const valueA = a[value];
         const valueB = b[value];
 
-        switch (typeof valueA) {
-          case 'string':
-            return valueA.localeCompare(valueB);
-          case 'number':
+        switch (value) {
+          case "age":
             return valueA - valueB;
+          case "name":
+            return valueA.localeCompare(valueB);
           default:
             return 0;
         }
@@ -72,10 +99,40 @@ class PageOfPhones extends React.Component {
     }));
   };
 
-  // for Pagination
+  setQueryParamsInURL = (paramsName, valueToSet) => {
+    let params = new URLSearchParams(this.props.location.search);
+    params.set(paramsName, valueToSet);
+
+    this.props.history.push({
+      pathname: "/phones",
+      search: `?${params.toString()}`,
+    })
+
+  }
+
+  // 3 functions below are for the Pagination
+  chooseQuantityOfPhonesPerPage = (event) => {
+    const { value } = event.target;
+
+    this.setState({
+      phonesPerPage: value,
+    });
+
+    this.calcQuantityAndArrOfPages();
+    this.setQueryParamsInURL("perpage", value);
+  };
+  
+  choosePage = (value) => {
+    this.setState({
+      page: value,
+    });
+
+    this.setQueryParamsInURL("curpage", value);
+  };
+
   calcQuantityAndArrOfPages = () => {
     this.setState(prevState => ({
-      pages: Math.ceil(prevState.quantityOfPhones / prevState.phonesPerPage),
+      pages: Math.ceil(prevState.phonesForShowing.length / prevState.phonesPerPage),
     }));
 
     this.setState(prevState => {
@@ -89,59 +146,46 @@ class PageOfPhones extends React.Component {
     })
   };
 
-  // for Pagination
-  choosePage = (value) => {
-    this.setState({
-      page: value,
-    })
-  };
-
-  chooseQuantityOfPhonesPerPage = (event) => {
-    const { value } = event.target;
-
-    this.setState({
-      phonesPerPage: value,
-    });
-  };
-
-
-
   render() {
     const {
       phonesForShowing,
-      quantityOfPhones,
-      page,
       phonesPerPage,
+      page,
       arrOfPages,
       pages,
+      inputValue,
+      sortBy,
     } = this.state;
 
     console.log(phonesForShowing);
 
-    const firstPhoneOnCurrentPage = this.state.page === 1
+    const firstPhoneOnCurrentPage = page === 1
       ? 0 // index of FIRST phone from filtered phonesForShowing
-      : (this.state.page - 1) * this.state.phonesPerPage;
+      : (page - 1) * phonesPerPage;
     // index of LAST phone from filtered phonesForShowing
-    const lastPhoneOnCurrentPage = (this.state.page * this.state.phonesPerPage) - 1;
+    const lastPhoneOnCurrentPage = (page * phonesPerPage) - 1;
 
     return (
       <div>
-
         <Pagination
+          choosePage={this.choosePage}
           page={page}
           arrOfPages={arrOfPages}
           pages={pages}
         />
 
+        <div>Current Page: {page}</div>
+
         <label htmlFor="chooseQuantityOfPhonesPerPage">
           <select
+            value={this.state.phonesPerPage}
             onChange={this.chooseQuantityOfPhonesPerPage}
             id="chooseQuantityOfPhonesPerPage"
           >
-            <option value='3'>Per Page: 3</option>
-            <option value='5'>Per Page: 5</option>
-            <option value='10'>Per Page: 10</option>
             <option value='20'>Per Page: 20</option>
+            <option value='10'>Per Page: 10</option>
+            <option value='5'>Per Page: 5</option>
+            <option value='3'>Per Page: 3</option>
           </select>
         </label>
 
@@ -150,6 +194,7 @@ class PageOfPhones extends React.Component {
         >
           Search:
           <input
+            value={inputValue}
             onChange={this.filterHandleInput}
             id="search_field"
             type="text"
@@ -161,9 +206,12 @@ class PageOfPhones extends React.Component {
         >
           Sort by:
           <select
-            onChange={this.sortFunc}
+            // defaultValue="age"
+            value={this.state.sortBy}
+            id="sort"
+            onChange={this.sortHandleSelect}
           >
-            <option selected value="age">Newest</option>
+            <option value="age">Newest</option>
             <option value="name">Alphabetical</option>
           </select>
         </label>
