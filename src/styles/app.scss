@@ -11,7 +11,7 @@
   height: 16px;
 }
 
-.ulForCards {
+.ulForCards { // временный стиль
   display: flex;
   // flex-direction: row;
 }
@@ -24,6 +24,10 @@
     width: 50px;
     height: 50px;
   }
+}
+
+.ulForArrOfPages { // временный стиль
+  display: flex;
 }
 
 //

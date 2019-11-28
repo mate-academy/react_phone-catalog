@@ -1,8 +1,8 @@
 import React from 'react'
 
-const Pagination = ({ choosePage, page, pages, arrOfPages  }) => (
+const PaginationButtons = ({ choosePage, page, arrOfPages  }) => (
   <nav>
-    <ul>
+    <ul className="ulForArrOfPages">
       <li>
         <a 
           // href=""
@@ -35,4 +35,4 @@ const Pagination = ({ choosePage, page, pages, arrOfPages  }) => (
   </nav>
 )
 
-export default Pagination
+export default PaginationButtons

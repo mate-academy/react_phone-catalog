@@ -3,7 +3,8 @@ import {
   Link,
 } from 'react-router-dom';
 import { BASE_URL } from '../components/constants';
-import Pagination from '../components/Pagination'
+import PaginationButtons from '../components/PaginationButtons';
+import PaginationInfo from '../components/PaginationInfo';
 
 class PageOfPhones extends React.Component {
   state = {
@@ -69,7 +70,9 @@ class PageOfPhones extends React.Component {
     });
 
     // this.sortFunc(this.state.sortBy);
+    this.sortFunctionByValue(this.state.sortBy);
     this.calcQuantityAndArrOfPages();
+    this.choosePage(1);
     this.setQueryParamsInURL("filter", value);
   };
 
@@ -77,6 +80,7 @@ class PageOfPhones extends React.Component {
     const { value } = event.target;
 
     this.sortFunctionByValue(value);
+    this.choosePage(1);
     this.setQueryParamsInURL("sort", value);
   };
 
@@ -108,7 +112,7 @@ class PageOfPhones extends React.Component {
       search: `?${params.toString()}`,
     })
 
-  }
+  };
 
   // 3 functions below are for the Pagination
   chooseQuantityOfPhonesPerPage = (event) => {
@@ -119,9 +123,10 @@ class PageOfPhones extends React.Component {
     });
 
     this.calcQuantityAndArrOfPages();
+    this.choosePage(1);
     this.setQueryParamsInURL("perpage", value);
   };
-  
+
   choosePage = (value) => {
     this.setState({
       page: value,
@@ -151,30 +156,35 @@ class PageOfPhones extends React.Component {
       phonesForShowing,
       phonesPerPage,
       page,
-      arrOfPages,
       pages,
+      arrOfPages,
       inputValue,
       sortBy,
     } = this.state;
 
     console.log(phonesForShowing);
 
-    const firstPhoneOnCurrentPage = page === 1
+    const firstIndexPhoneOnCurrentPage = page === 1
       ? 0 // index of FIRST phone from filtered phonesForShowing
       : (page - 1) * phonesPerPage;
-    // index of LAST phone from filtered phonesForShowing
-    const lastPhoneOnCurrentPage = (page * phonesPerPage) - 1;
+    const lastPossibleIndexPhoneOnCurPage = (page * phonesPerPage) - 1;
 
     return (
       <div>
-        <Pagination
+        <PaginationButtons
           choosePage={this.choosePage}
           page={page}
           arrOfPages={arrOfPages}
-          pages={pages}
         />
 
         <div>Current Page: {page}</div>
+
+        <PaginationInfo 
+          page={page}
+          pages={pages}
+          phonesPerPage={phonesPerPage}
+          phonesForShowing={phonesForShowing}
+        />
 
         <label htmlFor="chooseQuantityOfPhonesPerPage">
           <select
@@ -221,8 +231,8 @@ class PageOfPhones extends React.Component {
         >
           {
             phonesForShowing
-              .filter((phone, index) => index >= firstPhoneOnCurrentPage
-                && index <= lastPhoneOnCurrentPage)
+              .filter((phone, index) => index >= firstIndexPhoneOnCurrentPage
+                && index <= lastPossibleIndexPhoneOnCurPage)
               .map(phone => (
                 <li
                   key={phone.id}
