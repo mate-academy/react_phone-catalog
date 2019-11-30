@@ -5,6 +5,7 @@ import {
 import { BASE_URL } from '../components/constants';
 import PaginationButtons from '../components/PaginationButtons';
 import PaginationInfo from '../components/PaginationInfo';
+import PropTypes from 'prop-types';
 
 class PageOfPhones extends React.Component {
   state = {
@@ -28,7 +29,7 @@ class PageOfPhones extends React.Component {
 
     if (params.get("perpage")) {
       this.setState({
-        phonesPerPage: params.get("perpage"),
+        phonesPerPage: Number(params.get("perpage")),
       });
     }
 
@@ -114,9 +115,9 @@ class PageOfPhones extends React.Component {
   // 3 functions below are for the Pagination
   chooseQuantityOfPhonesPerPage = (event) => {
     const { value } = event.target;
-
+    
     this.setState({
-      phonesPerPage: value,
+      phonesPerPage: Number(value),
     });
 
     this.calcQuantityAndArrOfPages();
@@ -159,6 +160,9 @@ class PageOfPhones extends React.Component {
       sortBy,
     } = this.state;
 
+    console.log(phonesForShowing);
+    
+    
     const firstIndexPhoneOnCurrentPage = page === 1
       ? 0 // index of FIRST phone from filtered phonesForShowing
       : (page - 1) * phonesPerPage;
@@ -263,5 +267,10 @@ class PageOfPhones extends React.Component {
     );
   }
 }
+
+PageOfPhones.propTypes = {
+  phones: PropTypes.arrayOf(PropTypes.object).isRequired,
+  addItemToBasket: PropTypes.func.isRequired,
+};
 
 export default PageOfPhones;

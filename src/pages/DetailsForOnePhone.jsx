@@ -1,5 +1,6 @@
 import React from 'react'
 import { BASE_URL } from '../components/constants'
+import PropTypes from 'prop-types';
 
 class DetailsForOnePhone extends React.Component {
   state = {
@@ -7,9 +8,9 @@ class DetailsForOnePhone extends React.Component {
   }
 
   componentDidMount = () => {
-    const { details } = this.props;
+    const { detailsOfCurrentPhone } = this.props;
 
-    const currentImage = `${BASE_URL}/${details.images[0]}`;
+    const currentImage = `${BASE_URL}/${detailsOfCurrentPhone.images[0]}`;
 
     this.setState({
       currentImg: currentImage,
@@ -22,13 +23,11 @@ class DetailsForOnePhone extends React.Component {
     this.setState({
       currentImg: src,
     })
-  }
+  };
 
   render() {
-    const { details } = this.props;
+    const { detailsOfCurrentPhone } = this.props;
     const { currentImg } = this.state;
-
-    console.log(details);
 
     return (
       <div>
@@ -39,7 +38,7 @@ class DetailsForOnePhone extends React.Component {
           />
           <div>
             {
-              details.images.map(image =>
+              detailsOfCurrentPhone.images.map(image =>
                 <input
                   key={`${BASE_URL}/${image}`}
                   type="image"
@@ -53,10 +52,10 @@ class DetailsForOnePhone extends React.Component {
         </div>
         <div>
           <h1>
-            {details.name}
+            {detailsOfCurrentPhone.name}
           </h1>
           <div>
-            {details.description}
+            {detailsOfCurrentPhone.description}
           </div>
         </div>
 
@@ -67,20 +66,20 @@ class DetailsForOnePhone extends React.Component {
               <h4>Android:</h4>
               <dl>
                 <dt>OS:</dt>
-                <dd>{details.android.os}</dd>
+                <dd>{detailsOfCurrentPhone.android.os}</dd>
                 <dt>UI:</dt>
-                <dd>{details.android.ui}</dd>
+                <dd>{detailsOfCurrentPhone.android.ui}</dd>
               </dl>
             </li>
             <li key={"battery"}>
               <h4>Battery</h4>
               <dl>
                 <dt>Stand by time:</dt>
-                <dd>{details.battery.standbyTime}</dd>
+                <dd>{detailsOfCurrentPhone.battery.standbyTime}</dd>
                 <dt>Talk time:</dt>
-                <dd>{details.battery.talkTime}</dd>
+                <dd>{detailsOfCurrentPhone.battery.talkTime}</dd>
                 <dt>Type:</dt>
-                <dd>{details.battery.type}</dd>
+                <dd>{detailsOfCurrentPhone.battery.type}</dd>
               </dl>
             </li>
             <li key={"camera"}>
@@ -88,7 +87,7 @@ class DetailsForOnePhone extends React.Component {
               <dl>
                 <dt>Screen Resolution:</dt>
                 <dd>
-                  {details.camera.features
+                  {detailsOfCurrentPhone.camera.features
                     ? (
                       <img
                         className='icon'
@@ -107,7 +106,7 @@ class DetailsForOnePhone extends React.Component {
                 </dd>
                 <dt>Primary:</dt>
                 <dd>
-                  {details.camera.primary
+                  {detailsOfCurrentPhone.camera.primary
                     ? (
                       <img
                         className='icon'
@@ -132,14 +131,14 @@ class DetailsForOnePhone extends React.Component {
 
               <dl>
                 <dt>Bluetooth:</dt>
-                <dd>{details.connectivity.bluetooth}</dd>
+                <dd>{detailsOfCurrentPhone.connectivity.bluetooth}</dd>
 
                 <dt>Cell:</dt>
-                <dd>{details.connectivity.cell}</dd>
+                <dd>{detailsOfCurrentPhone.connectivity.cell}</dd>
 
                 <dt>Gps:</dt>
                 <dd>
-                  {details.connectivity.gps
+                  {detailsOfCurrentPhone.connectivity.gps
                     ? (
                       <img
                         className='icon'
@@ -158,7 +157,7 @@ class DetailsForOnePhone extends React.Component {
 
                 <dt>Infrared:</dt>
                 <dd>
-                  {details.connectivity.infrared
+                  {detailsOfCurrentPhone.connectivity.infrared
                     ? (
                       <img
                         className='icon'
@@ -176,7 +175,7 @@ class DetailsForOnePhone extends React.Component {
                 </dd>
 
                 <dt>Wifi:</dt>
-                <dd>{details.connectivity.wifi}</dd>
+                <dd>{detailsOfCurrentPhone.connectivity.wifi}</dd>
               </dl>
             </li>
 
@@ -185,14 +184,14 @@ class DetailsForOnePhone extends React.Component {
 
               <dl>
                 <dt>Screen Resolution:</dt>
-                <dd>{details.display.screenResolution}</dd>
+                <dd>{detailsOfCurrentPhone.display.screenResolution}</dd>
 
                 <dt>Sreen Size:</dt>
-                <dd>{details.display.screenSize}</dd>
+                <dd>{detailsOfCurrentPhone.display.screenSize}</dd>
 
                 <dt>TouchScreen:</dt>
                 <dd>
-                  {details.display.touchScreen
+                  {detailsOfCurrentPhone.display.touchScreen
                     ? (
                       <img
                         className='icon'
@@ -217,7 +216,7 @@ class DetailsForOnePhone extends React.Component {
               <dl>
                 <dt>Accelerometer:</dt>
                 <dd>
-                  {details.hardware.accelerometer
+                  {detailsOfCurrentPhone.hardware.accelerometer
 
                     ? (
                       <img
@@ -236,14 +235,14 @@ class DetailsForOnePhone extends React.Component {
                 </dd>
 
                 <dt>AudioJack:</dt>
-                <dd>{details.hardware.audioJack}</dd>
+                <dd>{detailsOfCurrentPhone.hardware.audioJack}</dd>
 
                 <dt>CPU:</dt>
-                <dd>{details.hardware.cpu}</dd>
+                <dd>{detailsOfCurrentPhone.hardware.cpu}</dd>
 
                 <dt>Fm Radio:</dt>
                 <dd>
-                  {details.hardware.fmRadio
+                  {detailsOfCurrentPhone.hardware.fmRadio
 
                     ? (
                       <img
@@ -263,7 +262,7 @@ class DetailsForOnePhone extends React.Component {
 
                 <dt>Physical Keyboard:</dt>
                 <dd>
-                  {details.hardware.fmRadio
+                  {detailsOfCurrentPhone.hardware.fmRadio
                     ? (
                       <img
                         className='icon'
@@ -281,7 +280,7 @@ class DetailsForOnePhone extends React.Component {
                 </dd>
 
                 <dt>USB:</dt>
-                <dd>{details.hardware.usb}</dd>
+                <dd>{detailsOfCurrentPhone.hardware.usb}</dd>
               </dl>
             </li>
 
@@ -290,10 +289,10 @@ class DetailsForOnePhone extends React.Component {
 
               <dl>
                 <dt>Dimensions:</dt>
-                <dd>{details.sizeAndWeight.dimensions}</dd>
+                <dd>{detailsOfCurrentPhone.sizeAndWeight.dimensions}</dd>
 
                 <dt>Weight:</dt>
-                <dd>{details.sizeAndWeight.dimensions}</dd>
+                <dd>{detailsOfCurrentPhone.sizeAndWeight.dimensions}</dd>
               </dl>
             </li>
           </ul>
@@ -302,5 +301,19 @@ class DetailsForOnePhone extends React.Component {
     )
   }
 }
+
+DetailsForOnePhone.propTypes = {
+  detailsOfCurrentPhone: PropTypes.shape({
+    additionalFeatures: PropTypes.string,
+    android: PropTypes.object,
+    battery: PropTypes.object,
+    camera: PropTypes.object,
+    connectivity: PropTypes.object,
+    display: PropTypes.object,
+    hardware: PropTypes.object,
+    images: PropTypes.array,
+    sizeAndWeight: PropTypes.object,
+  }),
+};
 
 export default DetailsForOnePhone

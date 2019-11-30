@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { GIT_HUB_H2ASH } from './constants';
+import PropTypes from 'prop-types';
 
 const Navbar = ({ itemsAtBasket }) => (
   <header className="header">
@@ -63,5 +64,9 @@ const Navbar = ({ itemsAtBasket }) => (
     </nav>
   </header>
 )
+
+Navbar.propTypes = {
+  itemsAtBasket: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
 
 export default Navbar;

@@ -11,13 +11,12 @@ import { BASE_URL } from "./components/constants";
 
 class App extends React.Component {
   state = {
-    phones: "",
+    phones: [],
     isLoading: false,
     isLoaded: false,
     itemsAtBasket: []
   };
 
-  // БУДЕМ ИСПОЛЬЗОВАТЬ НА ПРАКТИКЕ?
   componentDidMount() {
     const itemsFromBasketInLocal = JSON.parse(
       localStorage.getItem("itemsFromBasketInLocal")

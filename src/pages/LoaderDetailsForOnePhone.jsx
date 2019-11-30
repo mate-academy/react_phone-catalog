@@ -2,13 +2,19 @@ import React from 'react';
 import Loader from '../components/Loader';
 import DetailsForOnePhone from './DetailsForOnePhone';
 import { BASE_URL } from "../components/constants";
+import PropTypes from 'prop-types';
 
 class LoaderDetailsForOnePhone extends React.Component {
   state = {
-    details: {},
+    detailsOfCurrentPhone: {},
     isLoading: false,
     isLoaded: false,
   }
+
+  componentDidMount = () => {
+    this.props.loadDataPhones();
+    this.loadDataDetails(this.props.id);
+  };
 
   loadDataDetails = async(currentId) => {
     this.setState({
@@ -17,23 +23,18 @@ class LoaderDetailsForOnePhone extends React.Component {
 
     const responseDetails = await 
       fetch(`${BASE_URL}/api/phones/${currentId}.json`);
-    const details = await responseDetails.json();
+    const detailsOfCurrentPhone = await responseDetails.json();
 
     this.setState({
-      details,
+      detailsOfCurrentPhone,
       isLoading: false,
       isLoaded: true,
     });
   }
 
-  componentDidMount = () => {
-    this.props.loadDataPhones();
-    this.loadDataDetails(this.props.id);
-  };
-
   render() {
     const { id, phones } = this.props;
-    const { details, isLoading, isLoaded } = this.state;
+    const { detailsOfCurrentPhone, isLoading, isLoaded } = this.state;
 
     return (
       <>
@@ -42,7 +43,7 @@ class LoaderDetailsForOnePhone extends React.Component {
             ? (
               <>
                 {
-                  id === details.id
+                  id === detailsOfCurrentPhone.id
                     ? (
                       <>
                         {
@@ -51,7 +52,7 @@ class LoaderDetailsForOnePhone extends React.Component {
                             .map(phone => (
                               <DetailsForOnePhone
                                 key={phone.id}
-                                details={details}
+                                detailsOfCurrentPhone={detailsOfCurrentPhone}
                               />
                             ))
                         }
@@ -71,5 +72,11 @@ class LoaderDetailsForOnePhone extends React.Component {
     );
   }
 }
+
+LoaderDetailsForOnePhone.propTypes = {
+  id: PropTypes.string.isRequired,
+  phones: PropTypes.arrayOf(PropTypes.object).isRequired,
+  loadDataPhones: PropTypes.func.isRequired,
+};
 
 export default LoaderDetailsForOnePhone;

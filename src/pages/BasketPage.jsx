@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 const BasketPage = ({ itemsAtBasket, basketManager }) => (
   <div className="basketPage">
@@ -64,5 +65,10 @@ const BasketPage = ({ itemsAtBasket, basketManager }) => (
     }
   </div>
 );
+
+BasketPage.propTypes = {
+  itemsAtBasket: PropTypes.arrayOf(PropTypes.object).isRequired,
+  basketManager: PropTypes.func.isRequired,
+};
 
 export default BasketPage;

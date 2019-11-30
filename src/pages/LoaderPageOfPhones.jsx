@@ -1,6 +1,7 @@
 import React from 'react';
 import Loader from '../components/Loader';
 import PageOfPhones from './PageOfPhones';
+import PropTypes from 'prop-types';
 
 class LoaderPageOfPhones extends React.Component {
   componentDidMount = () => {
@@ -41,5 +42,18 @@ class LoaderPageOfPhones extends React.Component {
     );
   }
 }
+
+LoaderPageOfPhones.propTypes = {
+  isLoading: PropTypes.bool.isRequired,
+  isLoaded: PropTypes.bool.isRequired,
+  phones: PropTypes.arrayOf(PropTypes.object).isRequired,
+  addItemToBasket: PropTypes.func.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }).isRequired,
+  location: PropTypes.shape({
+    search: PropTypes.string,
+  }).isRequired,
+};
 
 export default LoaderPageOfPhones;
