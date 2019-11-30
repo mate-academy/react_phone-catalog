@@ -1,5 +1,31 @@
-.wrapper {
-  &_home {
-    
+.home {
+  &__heading {
+    position: relative;
+    font-size: 48px;
+    font-weight: 600;
+    margin-bottom: 50px;
+    &::after {
+      content: "";
+      position: absolute;
+      width: 70px;
+      height: 4px;
+      background-color: blue;
+      bottom: -20px;
+      left: 0;
+    }
+  }
+
+  &__description {
+    color: #9595c7;
+    margin-bottom: 50px;
+  }
+
+  &__caller-div {
+    // display: block;
+  }
+
+  &__caller-gif {
+    // display: block;
+    width: 100%;
   }
 }

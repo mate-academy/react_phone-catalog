@@ -113,46 +113,44 @@ class App extends React.Component {
       <>
         <Navbar itemsAtBasket={itemsAtBasket} />
 
-        <main>
-          <Switch>
-            <Route path="/" exact component={HomePage} />
-            <Route
-              path="/phones"
-              exact
-              render={({ location, history }) => (
-                <LoaderPageOfPhones
-                  addItemToBasket={this.addItemToBasket}
-                  loadDataPhones={this.loadDataPhones}
-                  phones={phones}
-                  isLoading={isLoading}
-                  isLoaded={isLoaded}
-                  location={location}
-                  history={history}
-                />
-              )}
-            />
-            <Route
-              path="/phones/:id?"
-              render={({ match }) => (
-                <LoaderDetailsForOnePhone
-                  loadDataPhones={this.loadDataPhones}
-                  phones={phones}
-                  id={match.params.id}
-                />
-              )}
-            />
-            <Route
-              path="/basket/"
-              render={() => (
-                <BasketPage
-                  itemsAtBasket={itemsAtBasket}
-                  basketManager={this.basketManager}
-                />
-              )}
-            />
-            <Route component={Page404} />
-          </Switch>
-        </main>
+        <Switch>
+          <Route path="/" exact component={HomePage} />
+          <Route
+            path="/phones"
+            exact
+            render={({ location, history }) => (
+              <LoaderPageOfPhones
+                addItemToBasket={this.addItemToBasket}
+                loadDataPhones={this.loadDataPhones}
+                phones={phones}
+                isLoading={isLoading}
+                isLoaded={isLoaded}
+                location={location}
+                history={history}
+              />
+            )}
+          />
+          <Route
+            path="/phones/:id?"
+            render={({ match }) => (
+              <LoaderDetailsForOnePhone
+                loadDataPhones={this.loadDataPhones}
+                phones={phones}
+                id={match.params.id}
+              />
+            )}
+          />
+          <Route
+            path="/basket/"
+            render={() => (
+              <BasketPage
+                itemsAtBasket={itemsAtBasket}
+                basketManager={this.basketManager}
+              />
+            )}
+          />
+          <Route component={Page404} />
+        </Switch>
       </>
     );
   }

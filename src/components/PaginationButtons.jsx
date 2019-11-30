@@ -1,35 +1,28 @@
 import React from 'react'
 
-const PaginationButtons = ({ choosePage, page, arrOfPages  }) => (
+const PaginationButtons = ({ choosePage, page, arrOfPages }) => (
   <nav>
     <ul className="ulForArrOfPages">
       <li>
-        <a 
-          // href=""
+        <button
           onClick={() => choosePage(page - 1)}
-        >
-          Prev
-        </a>
+        >Prev</button>
       </li>
 
       {
         arrOfPages.map((button, index) => (
           <li key={index}>
-            <a
+            <button
               onClick={() => choosePage(button)}
-              // href="#"
-            >{button}</a>
+            >{button}</button>
           </li>
         ))
       }
 
       <li>
-        <a 
-          // href=""
+        <button
           onClick={() => choosePage(page + 1)}
-        >
-          Next
-        </a>
+        >Next</button>
       </li>
     </ul>
   </nav>

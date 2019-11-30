@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 const BasketPage = ({ itemsAtBasket, basketManager }) => (
-  <div className="basketPage">
+  <main className="wrapper__main">
     {
       itemsAtBasket.length
         ? (
@@ -63,7 +63,7 @@ const BasketPage = ({ itemsAtBasket, basketManager }) => (
         )
         : <div>Empty</div>
     }
-  </div>
+  </main>
 );
 
 BasketPage.propTypes = {

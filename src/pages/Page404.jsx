@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Page404 = () => (
-  <div>Not found page!</div>
+  <main className="wrapper__main">Not found page!</main>
 );
 
 export default Page404;

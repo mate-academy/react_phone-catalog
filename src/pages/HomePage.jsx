@@ -3,32 +3,32 @@ import { NavLink } from "react-router-dom";
 import { GIT_HUB_H2ASH } from '../components/constants';
 
 const HomePage = () => (
-  <div className="wrapper_home home">
-    <section>
-      <h1>Welcome to phone shop!</h1>
-      <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium beatae porro laudantium rem sint! Atque eos fugit sapiente. Iusto magni laudantium, dolorum adipisci ducimus modi vitae dolorem repellendus excepturi amet.</div>
-      <button>
+  <main className="wrapper__main wrapper__main--home home">
+    <section className="home__section">
+      <h1 className="home__heading">Welcome to phone shop!</h1>
+      <p className="home__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+      <button className="button button--home">
         <NavLink
-          to="/phones/"
-          href="#"
+          className="link link--home-button"
+          to="/phones"
         >
           Watch phones
         </NavLink>
       </button>
     </section>
-    <div>
+    <div className="home__caller-div">
       <NavLink
-        to="/"
+        to="/phones"
         exact
-        href="#"
       >
         <img
+          className="home__caller-gif"
           src={`${GIT_HUB_H2ASH}/react_phone-catalog/img/phone_2x.gif`} 
-          alt=""
+          alt="gif with phone on green circle"
         />
-      </NavLink> 
+      </NavLink>
     </div>
-  </div>
+  </main>
 );
 
 export default HomePage;

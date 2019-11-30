@@ -158,10 +158,7 @@ class PageOfPhones extends React.Component {
       arrOfPages,
       inputValue,
       sortBy,
-    } = this.state;
-
-    console.log(phonesForShowing);
-    
+    } = this.state;    
     
     const firstIndexPhoneOnCurrentPage = page === 1
       ? 0 // index of FIRST phone from filtered phonesForShowing

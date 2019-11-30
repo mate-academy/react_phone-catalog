@@ -19,7 +19,7 @@ class LoaderPageOfPhones extends React.Component {
     } = this.props;
 
     return (
-      <div>
+      <main className="wrapper__main">
         {
           isLoaded
             ? (
@@ -38,7 +38,7 @@ class LoaderPageOfPhones extends React.Component {
               />
             )
         }
-      </div>
+      </main>
     );
   }
 }

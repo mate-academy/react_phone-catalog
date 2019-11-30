@@ -37,7 +37,7 @@ class LoaderDetailsForOnePhone extends React.Component {
     const { detailsOfCurrentPhone, isLoading, isLoaded } = this.state;
 
     return (
-      <>
+      <main className="wrapper__main">
         {
           isLoaded
             ? (
@@ -68,7 +68,7 @@ class LoaderDetailsForOnePhone extends React.Component {
               />
             )
         }
-      </>
+      </main>
     );
   }
 }
