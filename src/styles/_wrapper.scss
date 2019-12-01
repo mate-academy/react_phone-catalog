@@ -12,6 +12,11 @@
       grid-template-columns: minmax(auto,500px) auto;
     }
   }
+  &__footer {
+    // position: sticky;
+    // bottom: 0;
+    // right: 0;
+  }
 }
 
 @media screen and (max-width: 799px) {

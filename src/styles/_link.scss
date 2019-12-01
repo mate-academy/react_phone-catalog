@@ -3,4 +3,20 @@
   &--home-button {
     color: white;
   }
+  &--footer {
+    color: #c4c0d1;
+    padding: 20px;
+    transition: all $hover-duration;
+    &:hover {
+      color: #8281DA;
+    }
+  }
+  // &--footer-left {
+  //   position: relative;
+  //   left: 0;
+  // }
+  // &--footer-right {
+  //   position: relative;
+  //   right: 0;
+  // }
 }

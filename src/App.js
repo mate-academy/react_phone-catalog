@@ -8,6 +8,7 @@ import Page404 from "./pages/Page404";
 import LoaderDetailsForOnePhone from "./pages/LoaderDetailsForOnePhone";
 import BasketPage from "./pages/BasketPage";
 import { BASE_URL } from "./components/constants";
+import Footer from './components/Footer';
 
 class App extends React.Component {
   state = {
@@ -110,7 +111,7 @@ class App extends React.Component {
     const { phones, isLoading, isLoaded, itemsAtBasket } = this.state;
 
     return (
-      <>
+      <div className="app">
         <Navbar itemsAtBasket={itemsAtBasket} />
 
         <Switch>
@@ -151,7 +152,9 @@ class App extends React.Component {
           />
           <Route component={Page404} />
         </Switch>
-      </>
+
+        <Footer />
+      </div>
     );
   }
 }
