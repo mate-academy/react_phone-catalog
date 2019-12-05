@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { GIT_HUB_H2ASH } from './constants';
 import PropTypes from 'prop-types';
 
-const Navbar = ({ itemsAtBasket }) => (
+const Navbar = ({ itemsInBasket }) => (
   <header className="header">
     <NavLink
       className="header_wrapper-logo"
@@ -55,7 +55,7 @@ const Navbar = ({ itemsAtBasket }) => (
           Basket
             <span className="header__basket-quantity">
               {
-                itemsAtBasket.length
+                itemsInBasket.length
               }
             </span>
           </NavLink>
@@ -66,7 +66,7 @@ const Navbar = ({ itemsAtBasket }) => (
 )
 
 Navbar.propTypes = {
-  itemsAtBasket: PropTypes.arrayOf(PropTypes.object).isRequired,
+  itemsInBasket: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default Navbar;

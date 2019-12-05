@@ -1,4 +1,6 @@
 .home {
+  display: grid;
+  grid-template-columns: minmax(auto,500px) auto;
   &__heading {
     position: relative;
     font-size: 48px;
@@ -19,13 +21,15 @@
     color: #9595c7;
     margin-bottom: 50px;
   }
-
-  &__caller-div {
-    // display: block;
-  }
-
+  
   &__caller-gif {
-    // display: block;
     width: 100%;
+  }
+}
+
+@media screen and (max-width: 799px) {
+  .home {
+    display: grid;
+    grid-template-columns: 1fr;
   }
 }

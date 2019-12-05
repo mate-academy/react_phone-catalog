@@ -11,4 +11,52 @@
       background-color: #2222db;
     }
   }
+  &--decrease-increase {
+    font-size: .9em;
+    text-transform: none;
+    padding: 15px;
+    min-width: 50px;
+    max-height: 50px;
+    &-disabled {
+      pointer-events: none;
+    }
+    &-active {
+      background-color: #3232e2;
+      color: white;
+      cursor: pointer;
+      &:hover {
+        background-color: #3333CC;
+      }
+    }
+  }
+
+  &--remove {
+    font-size: .6em;
+    width: 24px;
+    line-height: 13px;
+    padding: 5px;
+    background: #eeeefc;
+    &:hover {
+      cursor: pointer;
+      background-color:#fff;
+      color:#db2241;
+      box-shadow: 0 0 10px#ffb3b3;
+    }
+  }
+
+  &--delete-items {
+    color: blue;
+    background-color: white;
+    font-size: .9em;
+    padding: 15px;
+    box-shadow: 0 0 5px #dfdfdf;
+    &:hover {
+      cursor: pointer;
+      background-color:#fff;
+      color:#db2241;
+      box-shadow: 0 0 10px#ffb3b3;
+    }
+  }
+
+  
 }

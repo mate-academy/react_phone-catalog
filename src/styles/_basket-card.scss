@@ -1,0 +1,38 @@
+.basket-card {
+  box-shadow: 0 0 10px #d3d3d3;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 40px 0;
+  padding: 20px;
+
+  &__img-and-name-container {
+    display: flex;
+    align-items: center;
+  }
+
+  &__img-container {
+    width: 60px;
+    margin-right: 20px;
+  }
+
+  &__img {
+    width: 100%;
+  }
+
+  &__buttons-container {
+    display: flex;
+    align-items: center;
+  }
+
+  &__quantity-of-phone {
+    margin-left: 20px;
+  }
+
+  &__increase-button {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}

@@ -1,5 +1,6 @@
 .link {
   text-decoration: none;
+  
   &--home-button {
     color: white;
   }
@@ -11,12 +12,15 @@
       color: #8281DA;
     }
   }
-  // &--footer-left {
-  //   position: relative;
-  //   left: 0;
-  // }
-  // &--footer-right {
-  //   position: relative;
-  //   right: 0;
-  // }
+  &--back-to-catalog {
+    font-size: .9em;
+    text-transform: uppercase;
+    padding: 15px;
+    background-color: #3232e2;
+    color: white;
+    cursor: pointer;
+    &:hover {
+      background-color: #3333CC;
+    }
+  }
 }

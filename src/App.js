@@ -15,7 +15,7 @@ class App extends React.Component {
     phones: [],
     isLoading: false,
     isLoaded: false,
-    itemsAtBasket: []
+    itemsInBasket: []
   };
 
   componentDidMount() {
@@ -25,19 +25,19 @@ class App extends React.Component {
 
     if (itemsFromBasketInLocal !== null) {
       this.setState({
-        itemsAtBasket: itemsFromBasketInLocal
+        itemsInBasket: itemsFromBasketInLocal
       });
     }
   }
 
   basketManager = (id, operation) => {
-    const currentIndex = this.state.itemsAtBasket.findIndex(
+    const currentIndex = this.state.itemsInBasket.findIndex(
       element => element.id === id
     );
 
     this.setState(
       prevState => {
-        let changedArray = [...prevState.itemsAtBasket];
+        let changedArray = [...prevState.itemsInBasket];
 
         switch (operation) {
           case "increase":
@@ -50,25 +50,27 @@ class App extends React.Component {
           case "remove":
             changedArray = changedArray.filter(obj => obj.id !== id);
             break;
+          case "removeAll":
+            changedArray = [];
           default:
-            console.log("Данный случай отстуствует среди данных условий");
+            console.log("Данный случай отстуствует среди условий");
         }
 
         return {
-          itemsAtBasket: changedArray
+          itemsInBasket: changedArray
         };
       },
       () => {
         localStorage.setItem(
           "itemsFromBasketInLocal",
-          JSON.stringify(this.state.itemsAtBasket)
+          JSON.stringify(this.state.itemsInBasket)
         );
       }
     );
   };
 
   addItemToBasket = itemToAdd => {
-    const currentIndex = this.state.itemsAtBasket.findIndex(
+    const currentIndex = this.state.itemsInBasket.findIndex(
       element => element.id === itemToAdd.id
     );
 
@@ -79,12 +81,12 @@ class App extends React.Component {
 
       this.setState(
         prevState => ({
-          itemsAtBasket: [...prevState.itemsAtBasket, requiredItem]
+          itemsInBasket: [...prevState.itemsInBasket, requiredItem]
         }),
         () => {
           localStorage.setItem(
             "itemsFromBasketInLocal",
-            JSON.stringify(this.state.itemsAtBasket)
+            JSON.stringify(this.state.itemsInBasket)
           );
         }
       );
@@ -108,11 +110,11 @@ class App extends React.Component {
   };
 
   render() {
-    const { phones, isLoading, isLoaded, itemsAtBasket } = this.state;
+    const { phones, isLoading, isLoaded, itemsInBasket } = this.state;
 
     return (
       <div className="app">
-        <Navbar itemsAtBasket={itemsAtBasket} />
+        <Navbar itemsInBasket={itemsInBasket} />
 
         <Switch>
           <Route path="/" exact component={HomePage} />
@@ -145,7 +147,7 @@ class App extends React.Component {
             path="/basket/"
             render={() => (
               <BasketPage
-                itemsAtBasket={itemsAtBasket}
+                itemsInBasket={itemsInBasket}
                 basketManager={this.basketManager}
               />
             )}
