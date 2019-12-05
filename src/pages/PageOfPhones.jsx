@@ -115,7 +115,7 @@ class PageOfPhones extends React.Component {
   // 3 functions below are for the Pagination
   chooseQuantityOfPhonesPerPage = (event) => {
     const { value } = event.target;
-    
+
     this.setState({
       phonesPerPage: Number(value),
     });
@@ -158,34 +158,40 @@ class PageOfPhones extends React.Component {
       arrOfPages,
       inputValue,
       sortBy,
-    } = this.state;    
-    
+    } = this.state;
+
     const firstIndexPhoneOnCurrentPage = page === 1
       ? 0 // index of FIRST phone from filtered phonesForShowing
       : (page - 1) * phonesPerPage;
     const lastPossibleIndexPhoneOnCurPage = (page * phonesPerPage) - 1;
 
     return (
-      <div>
-        <div>Phones quantity: {phonesForShowing.length}</div>
+      <div className="phones-page">
+        <h2 className="phones-page__quantity-phones">Phones Quantity: {phonesForShowing.length}</h2>
 
-        <PaginationButtons
-          choosePage={this.choosePage}
-          page={page}
-          arrOfPages={arrOfPages}
-        />
+        <div className="phones-page__input-and-select-container">
 
-        <div>Current Page: {page}</div>
+          <input
+            className="phones-page__filter"
+            placeholder="Filter phones by name"
+            value={inputValue}
+            onChange={this.filterHandleInput}
+            id="search_field"
+            type="text"
+          />
 
-        <PaginationInfo 
-          page={page}
-          pages={pages}
-          phonesPerPage={phonesPerPage}
-          phonesForShowing={phonesForShowing}
-        />
-
-        <label htmlFor="chooseQuantityOfPhonesPerPage">
           <select
+            className="phones-page__sort"
+            value={sortBy}
+            id="sort"
+            onChange={this.sortHandleSelect}
+          >
+            <option value="age">Newest</option>
+            <option value="name">Alphabetical</option>
+          </select>
+
+          <select
+            className="phones-page__perpage"
             value={this.state.phonesPerPage}
             onChange={this.chooseQuantityOfPhonesPerPage}
             id="chooseQuantityOfPhonesPerPage"
@@ -195,36 +201,10 @@ class PageOfPhones extends React.Component {
             <option value='5'>Per Page: 5</option>
             <option value='3'>Per Page: 3</option>
           </select>
-        </label>
-
-        <label
-          htmlFor="search_field"
-        >
-          Search:
-          <input
-            value={inputValue}
-            onChange={this.filterHandleInput}
-            id="search_field"
-            type="text"
-          />
-        </label>
-
-        <label
-          htmlFor="sort_select"
-        >
-          Sort by:
-          <select
-            value={sortBy}
-            id="sort"
-            onChange={this.sortHandleSelect}
-          >
-            <option value="age">Newest</option>
-            <option value="name">Alphabetical</option>
-          </select>
-        </label>
+        </div>
 
         <ul
-          className="ulForCards" // временный
+          className="phones-page__list-of-phones" // временный
         >
           {
             phonesForShowing
@@ -233,33 +213,64 @@ class PageOfPhones extends React.Component {
               .map(phone => (
                 <li
                   key={phone.id}
-                  className="card" // временный
+                  className="phone-card" // временный
                 >
-                  <img
-                    className="card__img" // временный
-                    src={`${BASE_URL}/${phone.imageUrl}`}
-                    alt="altImg"
-                  />
+                  <div>
+                    <Link to={`/phones/${phone.id}`}>
+                      <img
+                        className="phone-card__img" // временный
+                        src={`${BASE_URL}/${phone.imageUrl}`}
+                        alt="altImg"
+                      />
+                    </Link>
 
-                  <Link
-                    to={`/phones/${phone.id}`}
-                  >
-                    {phone.name}
-                  </Link>
+                    <Link
+                      className="phone-card__heading link link--phone-heading"
+                      to={`/phones/${phone.id}`}
+                    >
+                      {phone.name}
+                    </Link>
 
-                  <section>
-                    {phone.snippet}
-                  </section>
+                    <section className="phone-card__snippet">
+                      {phone.snippet}
+                    </section>
+                  </div>
 
                   <button
+                    className={
+                      this.props.itemsInBasket.find(item => item.id === phone.id)
+                        ? "phone-card__button button button--add-in-basket button--add-in-basket_added"
+                        : "phone-card__button button button--add-in-basket"
+                    }
+                    // className="phone-card__button button button--add-in-basket"
                     onClick={() => this.props.addItemToBasket(phone)}
                   >
-                    Add to cart
+                    {this.props.itemsInBasket.find(item => item.id === phone.id) ? "Added to basket" : "Add to basket"}
                   </button>
                 </li>
               ))
           }
         </ul>
+
+        {
+          phonesPerPage !== 20
+            ? <div className="phones-page__pagination-container pagination">
+              <PaginationInfo
+                page={page}
+                pages={pages}
+                phonesPerPage={phonesPerPage}
+                phonesForShowing={phonesForShowing}
+              />
+
+              <PaginationButtons
+                choosePage={this.choosePage}
+                page={page}
+                pages={pages}
+                arrOfPages={arrOfPages}
+              />
+            </div>
+            : ""
+        }
       </div>
     );
   }
@@ -268,6 +279,7 @@ class PageOfPhones extends React.Component {
 PageOfPhones.propTypes = {
   phones: PropTypes.arrayOf(PropTypes.object).isRequired,
   addItemToBasket: PropTypes.func.isRequired,
+  itemsInBasket: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default PageOfPhones;

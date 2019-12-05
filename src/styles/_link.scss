@@ -1,6 +1,6 @@
 .link {
   text-decoration: none;
-  
+
   &--home-button {
     color: white;
   }
@@ -22,5 +22,10 @@
     &:hover {
       background-color: #3333CC;
     }
+  }
+  &--phone-heading {
+    margin: 20px 0;
+    color: black;
+    font-weight: bold;
   }
 }

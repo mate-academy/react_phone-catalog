@@ -10,7 +10,7 @@ const PaginationInfo = ({ page, pages, phonesPerPage, phonesForShowing }) => {
     : page * phonesPerPage;
   
   return (
-    <div>
+    <div className="phones-page__pagination-info">
       Shown {firstPhoneOnCurrentPage} - {lastPhoneOnCurrentPage} of {phonesForShowing.length}
     </div>
   )

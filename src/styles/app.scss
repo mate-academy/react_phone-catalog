@@ -9,35 +9,14 @@
 @import "footer";
 @import "basket";
 @import "basket-card";
+@import "phones-page";
+@import "phone-card";
+@import "pagination";
 
 
 .app {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  align-items: stretch;
-}
-
-.icon { // временный стиль
-  width: 16px;
-  height: 16px;
-}
-
-.ulForCards { // временный стиль
-  display: flex;
-  // flex-direction: row;
-}
-
-.card { // временный стиль
-  width: 100px;
-  height: 300px;
-  border: 1px solid black;
-  &__img {
-    width: 50px;
-    height: 50px;
-  }
-}
-
-.ulForArrOfPages { // временный стиль
-  display: flex;
+  // align-items: stretch;
 }

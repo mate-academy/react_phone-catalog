@@ -52,6 +52,7 @@ class App extends React.Component {
             break;
           case "removeAll":
             changedArray = [];
+            break;
           default:
             console.log("Данный случай отстуствует среди условий");
         }
@@ -130,6 +131,7 @@ class App extends React.Component {
                 isLoaded={isLoaded}
                 location={location}
                 history={history}
+                itemsInBasket={itemsInBasket}
               />
             )}
           />

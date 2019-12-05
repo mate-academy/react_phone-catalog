@@ -15,7 +15,8 @@ class LoaderPageOfPhones extends React.Component {
       isLoaded,
       addItemToBasket,
       location,
-      history
+      history,
+      itemsInBasket
     } = this.props;
 
     return (
@@ -30,6 +31,7 @@ class LoaderPageOfPhones extends React.Component {
                 isLoaded={isLoaded}
                 location={location}
                 history={history}
+                itemsInBasket={itemsInBasket}
               />
             )
             : (
@@ -54,6 +56,7 @@ LoaderPageOfPhones.propTypes = {
   location: PropTypes.shape({
     search: PropTypes.string,
   }).isRequired,
+  itemsInBasket: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default LoaderPageOfPhones;
