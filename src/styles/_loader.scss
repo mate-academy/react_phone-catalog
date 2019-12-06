@@ -1,6 +1,7 @@
 .loader {
   position: absolute;
   top: 50%;
+  right: calc(50% - 25px);
   width:50px; 
   height:50px;
   border:5px solid #12A34A;
@@ -13,6 +14,6 @@
 
 @keyframes load_cyrcle{
   100%{
-    transform: translate(0, -50%) rotate(360deg);
+    transform: rotate(360deg);
   }
 }

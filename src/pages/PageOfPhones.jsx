@@ -23,7 +23,7 @@ class PageOfPhones extends React.Component {
 
     if (params.get("curpage")) {
       this.setState({
-        page: params.get("curpage"),
+        page: Number(params.get("curpage")),
       });
     }
 

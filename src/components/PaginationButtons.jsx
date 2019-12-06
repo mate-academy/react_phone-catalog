@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types';
 
 const PaginationButtons = ({ choosePage, page, pages, arrOfPages }) => (
   <nav>
@@ -42,5 +43,12 @@ const PaginationButtons = ({ choosePage, page, pages, arrOfPages }) => (
     </ul>
   </nav>
 )
+
+PaginationButtons.propTypes = {
+  page: PropTypes.number.isRequired,
+  pages: PropTypes.number.isRequired,
+  choosePage: PropTypes.func.isRequired,
+  arrOfPages: PropTypes.arrayOf(PropTypes.number).isRequired,
+};
 
 export default PaginationButtons
