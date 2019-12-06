@@ -47,13 +47,11 @@
       height: 1.7em;
     }
   }
-
   .link {
     &--header {
       padding: 10px 10px;
     }
   }
-
   .basket-card {
     display: flex;
     flex-direction: column;
@@ -61,7 +59,6 @@
       margin-bottom: 20px;
     }
   }
-
   .phones-page__list-of-phones {
     grid-template-columns: 1fr;
   }
