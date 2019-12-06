@@ -1,9 +1,24 @@
 .link {
   text-decoration: none;
 
-  &--home-button {
-    color: white;
+  &--header {
+    display: flex;
+    align-items: center;
+    color: black;
+    padding: 10px 20px;
+    height: 40px;
+    &:hover {
+      background: #ebebeb;
+    }
+    &_active {
+      background-color: blue;
+      color: white;
+      &:hover {
+        background-color: blue;
+      }
+    }
   }
+
   &--footer {
     color: #c4c0d1;
     padding: 20px;

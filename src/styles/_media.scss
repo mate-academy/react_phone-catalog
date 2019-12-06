@@ -42,6 +42,26 @@
 }
 
 @media (max-width: 640px) {
+  .header {
+    &__logo {
+      height: 1.7em;
+    }
+  }
+
+  .link {
+    &--header {
+      padding: 10px 10px;
+    }
+  }
+
+  .basket-card {
+    display: flex;
+    flex-direction: column;
+    &__img-and-name-container {
+      margin-bottom: 20px;
+    }
+  }
+
   .phones-page__list-of-phones {
     grid-template-columns: 1fr;
   }

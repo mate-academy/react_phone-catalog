@@ -21,24 +21,6 @@
     font-size: 18px;
   }
 
-  &__link {
-    display: flex;
-    align-items: center;
-    color: black;
-    padding: 10px 20px;
-    height: 40px;
-    &:hover {
-      background: lightgray;
-    }
-    &_active {
-      background-color: blue;
-      color: white;
-      &:hover {
-        background-color: blue;
-      }
-    }
-  }
-
   &__basket-quantity {
     position: relative;
     top: -6px;

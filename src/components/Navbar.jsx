@@ -21,8 +21,8 @@ const Navbar = ({ itemsInBasket }) => (
       <ul className="header__nav">
         <li>
           <NavLink
-            activeClassName="header__link header__link_active link"
-            className="header__link link"
+            activeClassName="link link--header link--header_active"
+            className="link link--header"
             href="#"
             exact
             to="/"
@@ -33,8 +33,8 @@ const Navbar = ({ itemsInBasket }) => (
   
         <li>
           <NavLink
-            activeClassName="header__link header__link_active link"
-            className="header__link link"
+            activeClassName="link link--header link--header_active"
+            className="link link--header"
             href="#"
             to={{
               pathname: "/phones",
@@ -47,8 +47,8 @@ const Navbar = ({ itemsInBasket }) => (
   
         <li>
           <NavLink
-            activeClassName="header__link header__link_active link"
-            className="header__link link"
+            activeClassName="link link--header link--header_active"
+            className="link link--header"
             href="#"
             to="/basket/"
           >
