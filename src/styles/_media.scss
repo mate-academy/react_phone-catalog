@@ -1,0 +1,48 @@
+@media (max-width: 1200px) {
+  .phones-page__list-of-phones {
+    grid-template-columns: repeat(4, minmax(200px, 300px));
+  }
+  .phones-page__input-and-select-container {
+    grid-template-columns: 4fr 2fr 2fr;
+  }
+}
+
+@media (max-width: 1040px) {
+  .phones-page__list-of-phones {
+    grid-template-columns: repeat(3, minmax(200px, 300px));
+  }
+}
+
+@media (max-width: 780px) {
+  .home {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .phones-page__list-of-phones {
+    grid-template-columns: repeat(2, minmax(200px, 370px));
+  }
+  .phones-page__input-and-select-container {
+    display: grid;
+    grid-template-areas: "filter filter" "sort perpage";
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-gap: 20px;
+  }
+  .pagination {
+    display: flex;
+    flex-direction: column;
+    &__buttons {
+      flex-wrap: wrap;
+    }
+  }
+  .button--pagination {
+    min-width: 30px;
+    margin: 20px 10px;
+  }
+}
+
+@media (max-width: 640px) {
+  .phones-page__list-of-phones {
+    grid-template-columns: 1fr;
+  }
+}

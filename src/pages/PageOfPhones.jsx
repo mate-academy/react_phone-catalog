@@ -245,7 +245,9 @@ class PageOfPhones extends React.Component {
                     // className="phone-card__button button button--add-in-basket"
                     onClick={() => this.props.addItemToBasket(phone)}
                   >
-                    {this.props.itemsInBasket.find(item => item.id === phone.id) ? "Added to basket" : "Add to basket"}
+                    {this.props.itemsInBasket.find(item => item.id === phone.id)
+                      ? "Added to basket"
+                      : "Add to basket"}
                   </button>
                 </li>
               ))
@@ -253,7 +255,7 @@ class PageOfPhones extends React.Component {
         </ul>
 
         {
-          phonesPerPage !== 20
+          pages > 1
             ? <div className="phones-page__pagination-container pagination">
               <PaginationInfo
                 page={page}

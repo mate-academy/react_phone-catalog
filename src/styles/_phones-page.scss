@@ -6,12 +6,13 @@
   &__quantity-phones {
     font-size: 32px;
     font-weight: 600;
-      margin: 21px 0;
+    margin: 21px 0;
   }
-  
+
   &__input-and-select-container {
     display: grid;
     grid-template-columns: 6fr 2fr 1fr;
+    grid-template-areas: "filter sort perpage";
     grid-column-gap: 10px;
     width: 100%;
     box-sizing: border-box;
@@ -23,10 +24,11 @@
     padding: 10px;
     border: none;
     box-shadow: 0 0 4px #e9e9e9;
+    grid-area: filter;
     &:hover {
       box-shadow: 0 0 8px #dfdfdf;
     }
-    &::placeholder{
+    &::placeholder {
       font-size: 13px;
     }
   }
@@ -35,6 +37,7 @@
     border: none;
     box-shadow: 0 0 4px #e9e9e9;
     padding: 10px;
+    grid-area: sort;
     &:hover {
       box-shadow: 0 0 8px #dfdfdf;
     }
@@ -44,6 +47,7 @@
     border: none;
     box-shadow: 0 0 4px #e9e9e9;
     padding: 10px;
+    grid-area: perpage;
     &:hover {
       box-shadow: 0 0 8px #dfdfdf;
     }
