@@ -8,7 +8,7 @@ import Page404 from "./pages/Page404";
 import LoaderDetailsForOnePhone from "./pages/LoaderDetailsForOnePhone";
 import BasketPage from "./pages/BasketPage";
 import { BASE_URL } from "./components/constants";
-import Footer from './components/Footer';
+import Footer from "./components/Footer";
 
 class App extends React.Component {
   state = {
@@ -139,9 +139,11 @@ class App extends React.Component {
             path="/phones/:id?"
             render={({ match }) => (
               <LoaderDetailsForOnePhone
-                loadDataPhones={this.loadDataPhones}
-                phones={phones}
                 id={match.params.id}
+                phones={phones}
+                itemsInBasket={itemsInBasket}
+                addItemToBasket={this.addItemToBasket}
+                loadDataPhones={this.loadDataPhones}
               />
             )}
           />

@@ -1,0 +1,37 @@
+.phone-page {
+  &__top-container { // 1
+    display: flex;
+  }
+
+  &__photos-container { //2
+    margin-right: 40px;
+  }
+
+  &__main-photo {
+    max-width: 400px;
+    border: 1px solid #e7e7e7;
+    padding: 20px;
+    margin-bottom: 10px;
+  }
+
+  &__additional-photo {
+    width: 30px;
+    padding: 10px;
+    border: 1px solid black;
+    margin-right: 10px;
+  }
+
+  &__name-and-description-container { // 2
+
+  }
+  &__heading {
+    font-size: 32px;
+    font-weight: 600;
+    margin: 30px 0;
+  }
+  &__general-description {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 30px;
+  }
+}

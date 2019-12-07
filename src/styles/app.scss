@@ -10,6 +10,7 @@
 @import "basket";
 @import "basket-card";
 @import "phones-page";
+@import "phone-page";
 @import "phone-card";
 @import "pagination";
 @import "media";
@@ -19,4 +20,8 @@
   flex-direction: column;
   min-height: 100vh;
   // align-items: stretch;
+}
+
+.icon { // временный
+  width: 16px;
 }

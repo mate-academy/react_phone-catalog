@@ -1,6 +1,7 @@
 import React from 'react'
 import { BASE_URL } from '../components/constants'
 import PropTypes from 'prop-types';
+import CheckMark from '../components/CheckMark';
 
 class DetailsForOnePhone extends React.Component {
   state = {
@@ -17,7 +18,7 @@ class DetailsForOnePhone extends React.Component {
     })
   }
 
-  chooseCurrentImg = (event) => {
+  chooseCurrentImg = event => {
     const { src } = event.target;
 
     this.setState({
@@ -26,36 +27,59 @@ class DetailsForOnePhone extends React.Component {
   };
 
   render() {
-    const { detailsOfCurrentPhone } = this.props;
+    const {
+      id,
+      phone,
+      detailsOfCurrentPhone,
+      itemsInBasket,
+      addItemToBasket,
+    } = this.props;
     const { currentImg } = this.state;
 
     return (
-      <div>
-        <div>
-          <img
-            src={currentImg}
-            alt="phone_photo"
-          />
-          <div>
-            {
-              detailsOfCurrentPhone.images.map(image =>
-                <input
-                  key={`${BASE_URL}/${image}`}
-                  type="image"
-                  onClick={this.chooseCurrentImg}
-                  src={`${BASE_URL}/${image}`}
-                  alt=""
-                />
-              )
-            }
+      <>
+        <div className="phone-page__top-container">
+          <div className="phone-page__photos-container">
+            <img
+              className="phone-page__main-photo"
+              src={currentImg}
+              alt="phone_photo"
+            />
+            <div>
+              {
+                detailsOfCurrentPhone.images.map(image =>
+                  <input
+                    className="phone-page__additional-photo"
+                    key={`${BASE_URL}/${image}`}
+                    type="image"
+                    onClick={this.chooseCurrentImg}
+                    src={`${BASE_URL}/${image}`}
+                    alt=""
+                  />
+                )
+              }
+            </div>
           </div>
-        </div>
-        <div>
-          <h1>
-            {detailsOfCurrentPhone.name}
-          </h1>
-          <div>
-            {detailsOfCurrentPhone.description}
+
+          <div className="phone-page__name-and-description-container">
+            <h1 className="phone-page__heading">
+              {detailsOfCurrentPhone.name}
+            </h1>
+            <div className="phone-page__general-description">
+              {detailsOfCurrentPhone.description}
+            </div>
+            <button
+              className={
+                itemsInBasket.find(item => item.id === id)
+                  ? "button button--add-in-basket button--add-in-basket_added button--add-in-basket_page-details"
+                  : "button button--add-in-basket button--add-in-basket_page-details"
+              }
+              onClick={() => addItemToBasket(phone)}
+            >
+              {itemsInBasket.find(item => item.id === id)
+                ? "Added to basket"
+                : "Add to basket"}
+            </button>
           </div>
         </div>
 
@@ -87,41 +111,15 @@ class DetailsForOnePhone extends React.Component {
               <dl>
                 <dt>Screen Resolution:</dt>
                 <dd>
-                  {detailsOfCurrentPhone.camera.features
-                    ? (
-                      <img
-                        className='icon'
-                        src="./img/check_circle.svg"
-                        alt="Yes"
-                      />
-                    )
-                    : (
-                      <img
-                      className='icon'
-                      src="./img/no_circle.svg"
-                      alt="No"
-                    />
-                    )
-                  }
+                  <CheckMark
+                    {...[detailsOfCurrentPhone.camera.features]}
+                  />
                 </dd>
                 <dt>Primary:</dt>
                 <dd>
-                  {detailsOfCurrentPhone.camera.primary
-                    ? (
-                      <img
-                        className='icon'
-                        src="./img/check_circle.svg"
-                        alt="Yes"
-                      />
-                    )
-                    : (
-                      <img 
-                        className='icon'
-                        src="./img/no_circle.svg"
-                        alt="No"
-                    />
-                    )
-                  }
+                  <CheckMark
+                    {...[detailsOfCurrentPhone.camera.primary]}
+                  />
                 </dd>
               </dl>
             </li>
@@ -138,40 +136,16 @@ class DetailsForOnePhone extends React.Component {
 
                 <dt>Gps:</dt>
                 <dd>
-                  {detailsOfCurrentPhone.connectivity.gps
-                    ? (
-                      <img
-                        className='icon'
-                        src="./img/check_circle.svg"
-                        alt="Yes"
-                      />
-                    )
-                    : (
-                      <img
-                        className='icon'
-                        src="./img/no_circle.svg"
-                        alt="Yes"
-                      />
-                    )}
+                  <CheckMark
+                    {...[detailsOfCurrentPhone.connectivity.gps]}
+                  />
                 </dd>
 
                 <dt>Infrared:</dt>
                 <dd>
-                  {detailsOfCurrentPhone.connectivity.infrared
-                    ? (
-                      <img
-                        className='icon'
-                        src="./img/check_circle.svg"
-                        alt="Yes"
-                      />
-                    )
-                    : (
-                      <img
-                        className='icon'
-                        src="./img/no_circle.svg"
-                        alt="Yes"
-                      />
-                    )}
+                  <CheckMark
+                    {...[detailsOfCurrentPhone.connectivity.infrared]}
+                  />
                 </dd>
 
                 <dt>Wifi:</dt>
@@ -191,21 +165,9 @@ class DetailsForOnePhone extends React.Component {
 
                 <dt>TouchScreen:</dt>
                 <dd>
-                  {detailsOfCurrentPhone.display.touchScreen
-                    ? (
-                      <img
-                        className='icon'
-                        src="./img/check_circle.svg"
-                        alt="Yes"
-                      />
-                    )
-                    : (
-                      <img
-                        className='icon'
-                        src="./img/no_circle.svg"
-                        alt="Yes"
-                      />
-                    )}
+                  <CheckMark
+                    {...[detailsOfCurrentPhone.display.touchScreen]}
+                  />
                 </dd>
               </dl>
             </li>
@@ -216,22 +178,9 @@ class DetailsForOnePhone extends React.Component {
               <dl>
                 <dt>Accelerometer:</dt>
                 <dd>
-                  {detailsOfCurrentPhone.hardware.accelerometer
-
-                    ? (
-                      <img
-                        className='icon'
-                        src="./img/check_circle.svg"
-                        alt="Yes"
-                      />
-                    )
-                    : (
-                      <img
-                        className='icon'
-                        src="./img/no_circle.svg"
-                        alt="Yes"
-                      />
-                    )}
+                  <CheckMark
+                    {...[detailsOfCurrentPhone.display.touchScreen]}
+                  />
                 </dd>
 
                 <dt>AudioJack:</dt>
@@ -242,41 +191,16 @@ class DetailsForOnePhone extends React.Component {
 
                 <dt>Fm Radio:</dt>
                 <dd>
-                  {detailsOfCurrentPhone.hardware.fmRadio
-
-                    ? (
-                      <img
-                        className='icon'
-                        src="./img/check_circle.svg"
-                        alt="Yes"
-                      />
-                    )
-                    : (
-                      <img
-                        className='icon'
-                        src="./img/no_circle.svg"
-                        alt="Yes"
-                      />
-                    )}
+                  <CheckMark
+                    {...[detailsOfCurrentPhone.hardware.fmRadio]}
+                  />
                 </dd>
 
                 <dt>Physical Keyboard:</dt>
                 <dd>
-                  {detailsOfCurrentPhone.hardware.fmRadio
-                    ? (
-                      <img
-                        className='icon'
-                        src="./img/check_circle.svg"
-                        alt="Yes"
-                      />
-                    )
-                    : (
-                      <img
-                        className='icon'
-                        src="./img/no_circle.svg"
-                        alt="Yes"
-                      />
-                    )}
+                  <CheckMark
+                    {...[detailsOfCurrentPhone.hardware.physicalKeyboard]}
+                  />
                 </dd>
 
                 <dt>USB:</dt>
@@ -297,7 +221,7 @@ class DetailsForOnePhone extends React.Component {
             </li>
           </ul>
         </div>
-      </div>
+      </>
     )
   }
 }

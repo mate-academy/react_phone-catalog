@@ -16,12 +16,12 @@ class LoaderDetailsForOnePhone extends React.Component {
     this.loadDataDetails(this.props.id);
   };
 
-  loadDataDetails = async(currentId) => {
+  loadDataDetails = async (currentId) => {
     this.setState({
       isLoading: true,
     });
 
-    const responseDetails = await 
+    const responseDetails = await
       fetch(`${BASE_URL}/api/phones/${currentId}.json`);
     const detailsOfCurrentPhone = await responseDetails.json();
 
@@ -30,11 +30,20 @@ class LoaderDetailsForOnePhone extends React.Component {
       isLoading: false,
       isLoaded: true,
     });
-  }
+  };
 
   render() {
-    const { id, phones } = this.props;
-    const { detailsOfCurrentPhone, isLoading, isLoaded } = this.state;
+    const {
+      id,
+      phones,
+      itemsInBasket,
+      addItemToBasket
+    } = this.props;
+    const {
+      detailsOfCurrentPhone,
+      isLoading,
+      isLoaded,
+    } = this.state;
 
     return (
       <main className="wrapper__main">
@@ -51,6 +60,10 @@ class LoaderDetailsForOnePhone extends React.Component {
                             .filter(phone => phone.id === id)
                             .map(phone => (
                               <DetailsForOnePhone
+                                id={id}
+                                phone={phone}
+                                itemsInBasket={itemsInBasket}
+                                addItemToBasket={addItemToBasket}
                                 key={phone.id}
                                 detailsOfCurrentPhone={detailsOfCurrentPhone}
                               />
