@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 const Navbar = ({ itemsInBasket }) => (
   <header className="header">
     <NavLink
-      className="header_wrapper-logo"
       href="#"
       to="/"
     >
