@@ -34,12 +34,12 @@ class PageOfPhones extends React.Component {
     }
 
     if (params.get("filter")) {
-      this.setState(prevState => ({
+      this.setState({
         phonesForShowing: [...this.props.phones]
           .filter(phone => phone.id
             .toLowerCase().includes(params.get("filter").toLowerCase())),
         inputValue: params.get("filter"), // text in input
-      }));
+      });
 
       if (params.get("sort")) {
         this.sortFunctionByValue(params.get("sort"));
@@ -55,6 +55,43 @@ class PageOfPhones extends React.Component {
     }
 
     this.calcQuantityAndArrOfPages();
+  };
+
+  componentDidUpdate = (prevProps) => {
+    // query params section
+    const curURLParams = new URLSearchParams(this.props.location.search);
+    const prevURLParams = new URLSearchParams(prevProps.location.search);
+
+    if (curURLParams.get("curpage") !== prevURLParams.get("curpage")) {
+      this.setState({
+        page: Number(curURLParams.get("curpage")),
+      });
+    }
+
+    if (curURLParams.get("perpage") !== prevURLParams.get("perpage")) {
+      this.setState({
+        phonesPerPage: Number(curURLParams.get("perpage")),
+      });
+    }
+
+    if (curURLParams.get("filter") !== prevURLParams.get("filter")) {
+      this.setState({
+        phonesForShowing: [...this.props.phones]
+          .filter(phone => phone.id
+            .toLowerCase().includes(curURLParams.get("filter").toLowerCase())),
+        inputValue: curURLParams.get("filter"), // text in input
+      });
+
+      if (curURLParams.get("sort") !== prevURLParams.get("sort")) {
+        this.sortFunctionByValue(curURLParams.get("sort"));
+      } else {
+        this.sortFunctionByValue(prevURLParams.get("sort"));
+      }
+    }
+
+    if (curURLParams.get("sort") !== prevURLParams.get("sort")) {
+      this.sortFunctionByValue(curURLParams.get("sort"));
+    }
   };
 
   filterHandleInput = (event) => {
@@ -123,6 +160,7 @@ class PageOfPhones extends React.Component {
     this.calcQuantityAndArrOfPages();
     this.choosePage(1);
     this.setQueryParamsInURL("perpage", value);
+    this.setQueryParamsInURL("curpage", 1);
   };
 
   choosePage = (value) => {
