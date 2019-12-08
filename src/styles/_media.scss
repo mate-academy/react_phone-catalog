@@ -62,4 +62,14 @@
   .phones-page__list-of-phones {
     grid-template-columns: 1fr;
   }
+
+  .phone-page {
+    &__top-container {
+      grid-template-columns: auto;
+    }
+    &__photos-container {
+      max-width: 640px;
+      margin-right: 0;
+    }
+  }
 }

@@ -1,10 +1,10 @@
 .phone-page {
-  &__top-container { // 1
+  &__top-container {
     display: grid;
     grid-template-columns: auto minmax(400px, 1fr);
   }
 
-  &__photos-container { //2
+  &__photos-container {
     max-width: 400px;
     margin-right: 40px;
   }
@@ -26,9 +26,6 @@
     margin-right: 10px;
   }
 
-  &__name-and-description-container { // 2
-
-  }
   &__heading {
     font-size: 32px;
     font-weight: 600;

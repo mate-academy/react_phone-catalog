@@ -242,7 +242,6 @@ class PageOfPhones extends React.Component {
                         ? "phone-card__button button button--add-in-basket button--add-in-basket_added"
                         : "phone-card__button button button--add-in-basket"
                     }
-                    // className="phone-card__button button button--add-in-basket"
                     onClick={() => this.props.addItemToBasket(phone)}
                   >
                     {this.props.itemsInBasket.find(item => item.id === phone.id)
