@@ -36,15 +36,19 @@ class DetailsForOnePhone extends React.Component {
     } = this.props;
     const { currentImg } = this.state;
 
+    console.log(id);
+
     return (
       <>
         <div className="phone-page__top-container">
           <div className="phone-page__photos-container">
-            <img
-              className="phone-page__main-photo"
-              src={currentImg}
-              alt="phone_photo"
-            />
+            <div className="phone-page__photos-container-for-non-fall">
+              <img
+                className="phone-page__main-photo"
+                src={currentImg}
+                alt="phone_photo"
+              />
+            </div>
             <div>
               {
                 detailsOfCurrentPhone.images.map(image =>
@@ -83,10 +87,10 @@ class DetailsForOnePhone extends React.Component {
           </div>
         </div>
 
-        <div>
-          <h3>Phone details</h3>
-          <ul>
-            <li key={"android"}>
+        <div className="phone-page__details-container">
+          <h3 className="phone-page__details-heading">Phone details</h3>
+          <ul className="phone-page__details-list">
+            <li className="phone-page__details-column" key={"android"}>
               <h4>Android:</h4>
               <dl>
                 <dt>OS:</dt>
@@ -95,7 +99,7 @@ class DetailsForOnePhone extends React.Component {
                 <dd>{detailsOfCurrentPhone.android.ui}</dd>
               </dl>
             </li>
-            <li key={"battery"}>
+            <li className="phone-page__details-column" key={"battery"}>
               <h4>Battery</h4>
               <dl>
                 <dt>Stand by time:</dt>
@@ -106,7 +110,7 @@ class DetailsForOnePhone extends React.Component {
                 <dd>{detailsOfCurrentPhone.battery.type}</dd>
               </dl>
             </li>
-            <li key={"camera"}>
+            <li className="phone-page__details-column" key={"camera"}>
               <h4>Camera: </h4>
               <dl>
                 <dt>Screen Resolution:</dt>
@@ -124,7 +128,7 @@ class DetailsForOnePhone extends React.Component {
               </dl>
             </li>
 
-            <li key="connectivity">
+            <li className="phone-page__details-column" key="connectivity">
               <h4>Connectivity:</h4>
 
               <dl>
@@ -153,7 +157,7 @@ class DetailsForOnePhone extends React.Component {
               </dl>
             </li>
 
-            <li key="display">
+            <li className="phone-page__details-column" key="display">
               <h4>Display:</h4>
 
               <dl>
@@ -172,7 +176,7 @@ class DetailsForOnePhone extends React.Component {
               </dl>
             </li>
 
-            <li key="hardware">
+            <li className="phone-page__details-column" key="hardware">
               <h4>Hardware:</h4>
 
               <dl>
@@ -208,7 +212,7 @@ class DetailsForOnePhone extends React.Component {
               </dl>
             </li>
 
-            <li key="sizeAndWeight">
+            <li className="phone-page__details-column" key="sizeAndWeight">
               <h4>Size And Weight:</h4>
 
               <dl>
@@ -238,6 +242,9 @@ DetailsForOnePhone.propTypes = {
     images: PropTypes.array,
     sizeAndWeight: PropTypes.object,
   }),
+  addItemToBasket: PropTypes.func.isRequired,
+  itemsInBasket: PropTypes.arrayOf(PropTypes.object).isRequired,
+  id: PropTypes.string.isRequired,
 };
 
 export default DetailsForOnePhone

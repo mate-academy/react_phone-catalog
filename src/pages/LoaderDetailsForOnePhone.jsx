@@ -90,6 +90,8 @@ LoaderDetailsForOnePhone.propTypes = {
   id: PropTypes.string.isRequired,
   phones: PropTypes.arrayOf(PropTypes.object).isRequired,
   loadDataPhones: PropTypes.func.isRequired,
+  addItemToBasket: PropTypes.func.isRequired,
+  itemsInBasket: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default LoaderDetailsForOnePhone;

@@ -1,23 +1,28 @@
 .phone-page {
   &__top-container { // 1
-    display: flex;
+    display: grid;
+    grid-template-columns: auto minmax(400px, 1fr);
   }
 
   &__photos-container { //2
+    max-width: 400px;
     margin-right: 40px;
   }
 
-  &__main-photo {
-    max-width: 400px;
+  &__photos-container-for-non-fall {
     border: 1px solid #e7e7e7;
     padding: 20px;
-    margin-bottom: 10px;
+  }
+
+  &__main-photo {
+    width: 100%;
   }
 
   &__additional-photo {
     width: 30px;
     padding: 10px;
     border: 1px solid black;
+    margin-top: 10px;
     margin-right: 10px;
   }
 
@@ -27,11 +32,40 @@
   &__heading {
     font-size: 32px;
     font-weight: 600;
-    margin: 30px 0;
+    margin: 20px 0;
   }
   &__general-description {
     font-size: 16px;
     font-weight: 600;
     margin-bottom: 30px;
+  }
+
+  &__details-container {
+    width: 100%;
+  }
+
+  &__details-list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__details-heading {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 20px 0;
+  }
+
+  &__details-column {
+    width: 150px;
+  }
+
+  &__details-column dt {
+    font-weight: 700;
+    font-size: .9em;
+    margin: 10px 0 5px 0;
+  }
+
+  &__details-column dd {
+    font-size: .9em;
   }
 }
