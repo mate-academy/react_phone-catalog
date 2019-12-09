@@ -1,0 +1,14 @@
+.no-such-phone {
+  &__heading {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 30px;
+  }
+
+  &__img {
+    max-width: 500px;
+    width: 90%;
+    margin: auto 0;
+    margin-bottom: 20px;
+  }
+}

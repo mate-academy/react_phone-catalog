@@ -10,17 +10,17 @@
 @import "basket";
 @import "basket-card";
 @import "phones-page";
-@import "loader-details-page";
+@import "no-such-phone";
 @import "phone-page";
 @import "phone-card";
 @import "pagination";
+@import "page404";
 @import "media";
 
 .app {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  // align-items: stretch;
 }
 
 .icon { // временный
