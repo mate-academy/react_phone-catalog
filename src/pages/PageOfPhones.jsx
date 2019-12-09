@@ -157,7 +157,6 @@ class PageOfPhones extends React.Component {
     }));
   };
 
-
   setQueryParamsInURL = (paramsName, valueToSet) => {
     let params = new URLSearchParams(this.props.location.search);
     params.set(paramsName, valueToSet);

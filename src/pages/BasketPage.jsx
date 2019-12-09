@@ -4,16 +4,14 @@ import PropTypes from 'prop-types';
 import { BASE_URL } from '../components/constants';
 
 const BasketPage = ({ itemsInBasket, basketManager }) => {
-  console.log(itemsInBasket);
-
 
   return (
     <main className="wrapper__main basket">
+      <h2 className="basket__quantity-of-phones">Chosen phones: {itemsInBasket.length}</h2>
       {
         itemsInBasket.length
           ? (
             <>
-              <h2 className="basket__quantity-of-phones">Chosen phones: {itemsInBasket.length}</h2>
               <ul className="basket__phones-list">
                 {
                   itemsInBasket.map(item => (
@@ -71,7 +69,6 @@ const BasketPage = ({ itemsInBasket, basketManager }) => {
             </>
           )
           : <>
-            <h2 className="basket__quantity-of-phones">Chosen phones: {itemsInBasket.length}</h2>
             <Link
               className="link link--back-to-catalog"
               to="/phones"

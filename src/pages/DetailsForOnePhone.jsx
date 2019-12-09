@@ -36,8 +36,6 @@ class DetailsForOnePhone extends React.Component {
     } = this.props;
     const { currentImg } = this.state;
 
-    console.log(id);
-
     return (
       <>
         <div className="phone-page__top-container">
