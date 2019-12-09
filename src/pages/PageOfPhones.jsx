@@ -104,7 +104,6 @@ class PageOfPhones extends React.Component {
           phone.id.toLowerCase().includes(value.toLowerCase())),
     });
 
-    // this.sortFunc(this.state.sortBy);
     this.sortFunctionByValue(this.state.sortBy);
     this.calcQuantityAndArrOfPages();
     this.choosePage(1);
@@ -117,6 +116,26 @@ class PageOfPhones extends React.Component {
     this.sortFunctionByValue(value);
     this.choosePage(1);
     this.setQueryParamsInURL("sort", value);
+  };
+
+  chooseQuantityOfPhonesPerPage = (event) => {
+    const { value } = event.target;
+
+    this.setState({
+      phonesPerPage: Number(value),
+    });
+
+    this.calcQuantityAndArrOfPages();
+    this.choosePage(1);
+    this.setQueryParamsInURL("perpage", value);
+  };
+
+  choosePage = (value) => {
+    this.setState({
+      page: value,
+    }, () => {
+      this.setQueryParamsInURL("curpage", value);
+    });
   };
 
   sortFunctionByValue = (value) => {
@@ -138,6 +157,7 @@ class PageOfPhones extends React.Component {
     }));
   };
 
+
   setQueryParamsInURL = (paramsName, valueToSet) => {
     let params = new URLSearchParams(this.props.location.search);
     params.set(paramsName, valueToSet);
@@ -146,29 +166,6 @@ class PageOfPhones extends React.Component {
       pathname: "/phones",
       search: `?${params.toString()}`,
     })
-
-  };
-
-  // 3 functions below are for the Pagination
-  chooseQuantityOfPhonesPerPage = (event) => {
-    const { value } = event.target;
-
-    this.setState({
-      phonesPerPage: Number(value),
-    });
-
-    this.calcQuantityAndArrOfPages();
-    this.choosePage(1);
-    this.setQueryParamsInURL("perpage", value);
-    this.setQueryParamsInURL("curpage", 1);
-  };
-
-  choosePage = (value) => {
-    this.setState({
-      page: value,
-    });
-
-    this.setQueryParamsInURL("curpage", value);
   };
 
   calcQuantityAndArrOfPages = () => {
