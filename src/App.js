@@ -9,6 +9,7 @@ import LoaderDetailsForOnePhone from "./pages/LoaderDetailsForOnePhone";
 import BasketPage from "./pages/BasketPage";
 import { BASE_URL } from "./components/constants";
 import Footer from "./components/Footer";
+import RightsPage from "./pages/RightsPage";
 
 class App extends React.Component {
   state = {
@@ -154,6 +155,13 @@ class App extends React.Component {
                 itemsInBasket={itemsInBasket}
                 basketManager={this.basketManager}
               />
+            )}
+          />
+          <Route
+            path="/rights"
+            exact
+            render={() => (
+              <RightsPage />
             )}
           />
           <Route component={Page404} />
