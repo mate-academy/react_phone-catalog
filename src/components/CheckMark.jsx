@@ -4,7 +4,7 @@ const CheckMark = (objectPropForCheck) => {
   if (objectPropForCheck[0] !== false) {
     return (
       <img
-        className='icon'
+        className='checkMark'
         src="./img/check_circle.svg"
         alt="Yes"
       />
@@ -12,7 +12,7 @@ const CheckMark = (objectPropForCheck) => {
   } else {
     return (
       <img
-        className='icon'
+        className='checkMark'
         src="./img/no_circle.svg"
         alt="No"
       />
