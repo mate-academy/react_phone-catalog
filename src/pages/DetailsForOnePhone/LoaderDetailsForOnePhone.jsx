@@ -1,9 +1,9 @@
 import React from 'react';
-import Loader from '../components/Loader';
+import Loader from '../../components/Loader/Loader';
 import DetailsForOnePhone from './DetailsForOnePhone';
-import { BASE_URL } from "../components/constants";
+import { BASE_URL } from "../../lib/constants";
 import PropTypes from 'prop-types';
-import NoSuchPhone from '../components/NoSuchPhone';
+import NoSuchPhone from '../NoSuchPhone/NoSuchPhone';
 
 class LoaderDetailsForOnePhone extends React.Component {
   state = {

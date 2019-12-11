@@ -6,7 +6,7 @@ const Page404 = () => (
     <p>No such page</p>
     <img
       className="page404__img"
-      src="https://image.jimcdn.com/app/cms/image/transf/none/path/s56566d5c71d6dab4/backgroundarea/i35686abb714db1b7/version/1533048399/image.jpg" alt="" />
+      src="https://image.jimcdn.com/app/cms/image/transf/none/path/s56566d5c71d6dab4/backgroundarea/i35686abb714db1b7/version/1533048399/image.jpg" alt="beautiful stones" />
   </main>
 );
 

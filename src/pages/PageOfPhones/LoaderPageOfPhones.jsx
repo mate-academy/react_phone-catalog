@@ -1,5 +1,5 @@
 import React from 'react';
-import Loader from '../components/Loader';
+import Loader from '../../components/Loader/Loader';
 import PageOfPhones from './PageOfPhones';
 import PropTypes from 'prop-types';
 
@@ -19,6 +19,8 @@ class LoaderPageOfPhones extends React.Component {
       itemsInBasket
     } = this.props;
 
+    console.log(itemsInBasket);
+
     return (
       <main className="wrapper__main">
         {
@@ -35,7 +37,7 @@ class LoaderPageOfPhones extends React.Component {
               />
             )
             : (
-              <Loader 
+              <Loader
                 isLoading={isLoading}
               />
             )
@@ -48,7 +50,13 @@ class LoaderPageOfPhones extends React.Component {
 LoaderPageOfPhones.propTypes = {
   isLoading: PropTypes.bool.isRequired,
   isLoaded: PropTypes.bool.isRequired,
-  phones: PropTypes.arrayOf(PropTypes.object).isRequired,
+  phones: PropTypes.arrayOf(PropTypes.shape({
+    age: PropTypes.number,
+    id: PropTypes.string,
+    imageURL: PropTypes.string,
+    name: PropTypes.string,
+    snippet: PropTypes.string,
+  })).isRequired,
   addItemToBasket: PropTypes.func.isRequired,
   history: PropTypes.shape({
     push: PropTypes.func,
@@ -56,7 +64,13 @@ LoaderPageOfPhones.propTypes = {
   location: PropTypes.shape({
     search: PropTypes.string,
   }).isRequired,
-  itemsInBasket: PropTypes.arrayOf(PropTypes.object).isRequired,
+  itemsInBasket: PropTypes.arrayOf(PropTypes.shape({
+    age: PropTypes.number,
+    id: PropTypes.string,
+    imageURL: PropTypes.string,
+    name: PropTypes.string,
+    snippet: PropTypes.string,
+  })).isRequired,
 };
 
 export default LoaderPageOfPhones;

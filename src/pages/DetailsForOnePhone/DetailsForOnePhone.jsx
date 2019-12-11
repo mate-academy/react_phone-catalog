@@ -1,7 +1,7 @@
 import React from 'react'
-import { BASE_URL } from '../components/constants'
+import { BASE_URL } from '../../lib/constants'
 import PropTypes from 'prop-types';
-import CheckMark from '../components/CheckMark';
+import CheckMark from '../../components/CheckMark';
 
 class DetailsForOnePhone extends React.Component {
   state = {
@@ -56,7 +56,7 @@ class DetailsForOnePhone extends React.Component {
                     type="image"
                     onClick={this.chooseCurrentImg}
                     src={`${BASE_URL}/${image}`}
-                    alt=""
+                    alt="additional photo for phone"
                   />
                 )
               }

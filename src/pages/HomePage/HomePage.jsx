@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from "react-router-dom";
-import { GIT_HUB_H2ASH } from '../components/constants';
+import { GIT_HUB_H2ASH } from '../../lib/constants';
 
 const HomePage = () => (
   <main className="wrapper__main wrapper__main--home home">

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { BASE_URL } from '../components/constants';
+import { BASE_URL } from '../../lib/constants';
 
 const BasketPage = ({ itemsInBasket, basketManager }) => {
 
@@ -24,7 +24,7 @@ const BasketPage = ({ itemsInBasket, basketManager }) => {
                             <img
                               className="basket-card__img"
                               src={`${BASE_URL}/${item.imageUrl}`}
-                              alt={`img ${item.name} phone in basket`} />
+                              alt={`image of ${item.name} phone`} />
                           </Link>
                         </div>
                         <h3>

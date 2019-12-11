@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { GIT_HUB_H2ASH } from './constants';
+import { GIT_HUB_H2ASH } from '../../lib/constants';
 import PropTypes from 'prop-types';
 
 const Navbar = ({ itemsInBasket }) => (
@@ -15,8 +15,8 @@ const Navbar = ({ itemsInBasket }) => (
         alt="logo"
       />
     </NavLink>
-      
-    <nav> 
+
+    <nav>
       <ul className="header__nav">
         <li>
           <NavLink
@@ -29,7 +29,7 @@ const Navbar = ({ itemsInBasket }) => (
             Home
           </NavLink>
         </li>
-  
+
         <li>
           <NavLink
             activeClassName="link link--header link--header_active"
@@ -43,7 +43,7 @@ const Navbar = ({ itemsInBasket }) => (
             Phones
           </NavLink>
         </li>
-  
+
         <li>
           <NavLink
             activeClassName="link link--header link--header_active"

@@ -1,15 +1,15 @@
 import React from "react";
 import "./styles/app.scss";
 import { Route, Switch } from "react-router-dom";
-import Navbar from "./components/Navbar";
-import HomePage from "./pages/HomePage";
-import LoaderPageOfPhones from "./pages/LoaderPageOfPhones";
-import Page404 from "./pages/Page404";
-import LoaderDetailsForOnePhone from "./pages/LoaderDetailsForOnePhone";
-import BasketPage from "./pages/BasketPage";
-import { BASE_URL } from "./components/constants";
-import Footer from "./components/Footer";
-import RightsPage from "./pages/RightsPage";
+import Navbar from "./components/Navbar/Navbar";
+import HomePage from "./pages/HomePage/HomePage";
+import LoaderPageOfPhones from "./pages/PageOfPhones/LoaderPageOfPhones";
+import Page404 from "./pages/Page404/Page404";
+import LoaderDetailsForOnePhone from "./pages/DetailsForOnePhone/LoaderDetailsForOnePhone";
+import BasketPage from "./pages/BasketPage/BasketPage";
+import { BASE_URL } from "./lib/constants";
+import Footer from "./components/Footer/Footer";
+import RightsPage from "./pages/RightsPage/RightsPage";
 
 class App extends React.Component {
   state = {
@@ -157,13 +157,7 @@ class App extends React.Component {
               />
             )}
           />
-          <Route
-            path="/rights"
-            exact
-            render={() => (
-              <RightsPage />
-            )}
-          />
+          <Route path="/rights" exact render={() => <RightsPage />} />
           <Route component={Page404} />
         </Switch>
 

@@ -2,9 +2,9 @@ import React from 'react';
 import {
   Link,
 } from 'react-router-dom';
-import { BASE_URL } from '../components/constants';
-import PaginationButtons from '../components/PaginationButtons';
-import PaginationInfo from '../components/PaginationInfo';
+import { BASE_URL } from '../../lib/constants';
+import PaginationButtons from '../../components/Pagination/PaginationButtons';
+import PaginationInfo from '../../components/Pagination/PaginationInfo';
 import PropTypes from 'prop-types';
 
 class PageOfPhones extends React.Component {
@@ -254,7 +254,7 @@ class PageOfPhones extends React.Component {
                       <img
                         className="phone-card__img" // временный
                         src={`${BASE_URL}/${phone.imageUrl}`}
-                        alt="altImg"
+                        alt={`image of ${phone.id}`}
                       />
                     </Link>
 
@@ -312,9 +312,21 @@ class PageOfPhones extends React.Component {
 }
 
 PageOfPhones.propTypes = {
-  phones: PropTypes.arrayOf(PropTypes.object).isRequired,
+  phones: PropTypes.arrayOf(PropTypes.shape({
+    age: PropTypes.number,
+    id: PropTypes.string,
+    imageURL: PropTypes.string,
+    name: PropTypes.string,
+    snippet: PropTypes.string,
+  })).isRequired,
   addItemToBasket: PropTypes.func.isRequired,
-  itemsInBasket: PropTypes.arrayOf(PropTypes.object).isRequired,
+  itemsInBasket: PropTypes.arrayOf(PropTypes.shape({
+    age: PropTypes.number,
+    id: PropTypes.string,
+    imageURL: PropTypes.string,
+    name: PropTypes.string,
+    snippet: PropTypes.string,
+  })).isRequired,
 };
 
 export default PageOfPhones;
