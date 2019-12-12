@@ -8,14 +8,14 @@
 @import "../components/Loader/loader";
 @import "../components/Footer/footer";
 @import "../pages/basket/basket";
-@import "../pages/basket/basket-card";
-@import "../pages/phones/phones-page";
+@import "../components/PhoneInBasket/phoneInBasket";
+@import "../pages/phones/phones";
 @import "../pages/NoSuchPhone/no-such-phone";
-@import "../pages/phone/phone-page";
+@import "../pages/phone/phone";
 @import "../pages/phones/phone-card";
 @import "../components/Pagination/pagination";
 @import "../pages/Page404/page404";
-@import "../pages/rights/rights-page";
+@import "../pages/rights/rights";
 @import "media";
 
 .app {
