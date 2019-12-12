@@ -7,13 +7,14 @@ const NoSuchPhone = () => (
     <img
       className="no-such-phone__img"
       src="https://i.kym-cdn.com/entries/icons/original/000/022/146/azazazazazazaz.jpg"
-      alt="zhdun mem photo" />
+      alt="zhdun mem"
+    />
     <NavLink
       className="link button button--home "
       to="/phones"
     >
       Watch phones
-        </NavLink>
+    </NavLink>
   </>
 )
 

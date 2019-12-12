@@ -3,13 +3,13 @@ import "./styles/app.scss";
 import { Route, Switch } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import HomePage from "./pages/HomePage/HomePage";
-import LoaderPageOfPhones from "./pages/PageOfPhones/LoaderPageOfPhones";
+import LoaderOfPhones from "./pages/phones/loaderOfPhones";
 import Page404 from "./pages/Page404/Page404";
-import LoaderDetailsForOnePhone from "./pages/DetailsForOnePhone/LoaderDetailsForOnePhone";
-import BasketPage from "./pages/BasketPage/BasketPage";
+import LoaderForPhone from "./pages/phone/loaderForPhone";
+import Basket from "./pages/basket/basket";
 import { BASE_URL } from "./lib/constants";
 import Footer from "./components/Footer/Footer";
-import RightsPage from "./pages/RightsPage/RightsPage";
+import Rights from "./pages/rights/rights";
 
 class App extends React.Component {
   state = {
@@ -124,7 +124,7 @@ class App extends React.Component {
             path="/phones"
             exact
             render={({ location, history }) => (
-              <LoaderPageOfPhones
+              <LoaderOfPhones
                 addItemToBasket={this.addItemToBasket}
                 loadDataPhones={this.loadDataPhones}
                 phones={phones}
@@ -139,7 +139,7 @@ class App extends React.Component {
           <Route
             path="/phones/:id?"
             render={({ match }) => (
-              <LoaderDetailsForOnePhone
+              <LoaderForPhone
                 id={match.params.id}
                 phones={phones}
                 itemsInBasket={itemsInBasket}
@@ -151,13 +151,13 @@ class App extends React.Component {
           <Route
             path="/basket/"
             render={() => (
-              <BasketPage
+              <Basket
                 itemsInBasket={itemsInBasket}
                 basketManager={this.basketManager}
               />
             )}
           />
-          <Route path="/rights" exact render={() => <RightsPage />} />
+          <Route path="/rights" exact render={() => <Rights />} />
           <Route component={Page404} />
         </Switch>
 

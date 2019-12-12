@@ -1,9 +1,9 @@
 import React from 'react';
 import Loader from '../../components/Loader/Loader';
-import PageOfPhones from './PageOfPhones';
+import Phones from './phones';
 import PropTypes from 'prop-types';
 
-class LoaderPageOfPhones extends React.Component {
+class LoaderOfPhones extends React.Component {
   componentDidMount = () => {
     this.props.loadDataPhones();
   };
@@ -26,7 +26,7 @@ class LoaderPageOfPhones extends React.Component {
         {
           isLoaded
             ? (
-              <PageOfPhones
+              <Phones
                 addItemToBasket={addItemToBasket}
                 phones={phones}
                 isLoading={isLoading}
@@ -47,7 +47,7 @@ class LoaderPageOfPhones extends React.Component {
   }
 }
 
-LoaderPageOfPhones.propTypes = {
+LoaderOfPhones.propTypes = {
   isLoading: PropTypes.bool.isRequired,
   isLoaded: PropTypes.bool.isRequired,
   phones: PropTypes.arrayOf(PropTypes.shape({
@@ -73,4 +73,4 @@ LoaderPageOfPhones.propTypes = {
   })).isRequired,
 };
 
-export default LoaderPageOfPhones;
+export default LoaderOfPhones;

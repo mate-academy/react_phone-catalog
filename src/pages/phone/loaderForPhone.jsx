@@ -1,11 +1,11 @@
 import React from 'react';
 import Loader from '../../components/Loader/Loader';
-import DetailsForOnePhone from './DetailsForOnePhone';
+import Phone from './phone';
 import { BASE_URL } from "../../lib/constants";
 import PropTypes from 'prop-types';
 import NoSuchPhone from '../NoSuchPhone/NoSuchPhone';
 
-class LoaderDetailsForOnePhone extends React.Component {
+class LoaderForPhone extends React.Component {
   state = {
     detailsOfCurrentPhone: {},
     isLoading: false,
@@ -71,7 +71,7 @@ class LoaderDetailsForOnePhone extends React.Component {
                     phones
                       .filter(phone => phone.id === id)
                       .map(phone => (
-                        <DetailsForOnePhone
+                        <Phone
                           id={id}
                           phone={phone}
                           itemsInBasket={itemsInBasket}
@@ -97,7 +97,7 @@ class LoaderDetailsForOnePhone extends React.Component {
   }
 }
 
-LoaderDetailsForOnePhone.propTypes = {
+LoaderForPhone.propTypes = {
   id: PropTypes.string.isRequired,
   phones: PropTypes.arrayOf(PropTypes.object).isRequired,
   loadDataPhones: PropTypes.func.isRequired,
@@ -105,4 +105,4 @@ LoaderDetailsForOnePhone.propTypes = {
   itemsInBasket: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
-export default LoaderDetailsForOnePhone;
+export default LoaderForPhone;

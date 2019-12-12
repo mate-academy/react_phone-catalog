@@ -7,7 +7,7 @@ import PaginationButtons from '../../components/Pagination/PaginationButtons';
 import PaginationInfo from '../../components/Pagination/PaginationInfo';
 import PropTypes from 'prop-types';
 
-class PageOfPhones extends React.Component {
+class Phones extends React.Component {
   state = {
     phonesForShowing: [],
     sortBy: "age",
@@ -254,7 +254,7 @@ class PageOfPhones extends React.Component {
                       <img
                         className="phone-card__img" // временный
                         src={`${BASE_URL}/${phone.imageUrl}`}
-                        alt={`image of ${phone.id}`}
+                        alt={`${phone.id}`}
                       />
                     </Link>
 
@@ -311,7 +311,7 @@ class PageOfPhones extends React.Component {
   }
 }
 
-PageOfPhones.propTypes = {
+Phones.propTypes = {
   phones: PropTypes.arrayOf(PropTypes.shape({
     age: PropTypes.number,
     id: PropTypes.string,
@@ -329,4 +329,4 @@ PageOfPhones.propTypes = {
   })).isRequired,
 };
 
-export default PageOfPhones;
+export default Phones;

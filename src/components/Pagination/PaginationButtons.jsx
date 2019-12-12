@@ -4,7 +4,7 @@ import classNames from "classnames";
 
 const PaginationButtons = ({ choosePage, page, pages, arrOfPages }) => {
   const buttonDisabled = classNames({
-    "button--pagination_disabled": page === 1 || page === pages,
+    'button--pagination_disabled': page === 1 || page === pages,
   });
 
   return (

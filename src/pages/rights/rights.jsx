@@ -1,6 +1,6 @@
 import React from 'react';
 
-const RightsPage = () => (
+const Rights = () => (
   <main className="wrapper__main">
     <h1 className="rights-page__heading">Rights and used materials</h1>
     <a
@@ -12,4 +12,4 @@ const RightsPage = () => (
   </main>
 )
 
-export default RightsPage;
+export default Rights;

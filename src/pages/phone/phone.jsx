@@ -3,7 +3,7 @@ import { BASE_URL } from '../../lib/constants'
 import PropTypes from 'prop-types';
 import CheckMark from '../../components/CheckMark';
 
-class DetailsForOnePhone extends React.Component {
+class Phone extends React.Component {
   state = {
     currentImg: '',
   }
@@ -228,7 +228,7 @@ class DetailsForOnePhone extends React.Component {
   }
 }
 
-DetailsForOnePhone.propTypes = {
+Phone.propTypes = {
   detailsOfCurrentPhone: PropTypes.shape({
     additionalFeatures: PropTypes.string,
     android: PropTypes.object,
@@ -245,4 +245,4 @@ DetailsForOnePhone.propTypes = {
   id: PropTypes.string.isRequired,
 };
 
-export default DetailsForOnePhone
+export default Phone

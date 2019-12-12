@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { BASE_URL } from '../../lib/constants';
 
-const BasketPage = ({ itemsInBasket, basketManager }) => {
+const Basket = ({ itemsInBasket, basketManager }) => {
 
   return (
     <main className="wrapper__main basket">
@@ -79,9 +79,9 @@ const BasketPage = ({ itemsInBasket, basketManager }) => {
   )
 };
 
-BasketPage.propTypes = {
+Basket.propTypes = {
   itemsInBasket: PropTypes.arrayOf(PropTypes.object).isRequired,
   basketManager: PropTypes.func.isRequired,
 };
 
-export default BasketPage;
+export default Basket;
