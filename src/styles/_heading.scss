@@ -1,0 +1,15 @@
+.heading {
+  font-weight: 600;
+  &--s {
+    font-size: 20px;
+  }
+  &--m {
+    font-size: 24px;
+  }
+  &--l {
+    font-size: 32px;
+  }
+  &--xl {
+    font-size: 48px;
+  }
+}

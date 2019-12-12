@@ -1,32 +1,32 @@
-import React from "react";
-import "./styles/app.scss";
-import { Route, Switch } from "react-router-dom";
-import Navbar from "./components/Navbar/Navbar";
-import HomePage from "./pages/HomePage/HomePage";
-import LoaderOfPhones from "./pages/phones/loaderOfPhones";
-import Page404 from "./pages/Page404/Page404";
-import LoaderForPhone from "./pages/phone/loaderForPhone";
-import Basket from "./pages/basket/basket";
-import { BASE_URL } from "./lib/constants";
-import Footer from "./components/Footer/Footer";
-import Rights from "./pages/rights/rights";
+import React from 'react';
+import './styles/app.scss';
+import { Route, Switch } from 'react-router-dom';
+import Navbar from './components/Navbar/Navbar';
+import Index from './pages/index';
+import LoaderOfPhones from './pages/phones/loaderOfPhones';
+import Page404 from './pages/Page404/Page404';
+import LoaderForPhone from './pages/phone/loaderForPhone';
+import Basket from './pages/basket/basket';
+import { BASE_URL } from './lib/constants';
+import Footer from './components/Footer/Footer';
+import Rights from './pages/rights/rights';
 
 class App extends React.Component {
   state = {
     phones: [],
     isLoading: false,
     isLoaded: false,
-    itemsInBasket: []
+    itemsInBasket: [],
   };
 
   componentDidMount() {
     const itemsFromBasketInLocal = JSON.parse(
-      localStorage.getItem("itemsFromBasketInLocal")
+      localStorage.getItem('itemsFromBasketInLocal')
     );
 
     if (itemsFromBasketInLocal !== null) {
       this.setState({
-        itemsInBasket: itemsFromBasketInLocal
+        itemsInBasket: itemsFromBasketInLocal,
       });
     }
   }
@@ -37,41 +37,41 @@ class App extends React.Component {
     );
 
     this.setState(
-      prevState => {
+      (prevState) => {
         let changedArray = [...prevState.itemsInBasket];
 
         switch (operation) {
-          case "increase":
+          case 'increase':
             return (changedArray[currentIndex].quantity += 1);
-          case "decrease":
+          case 'decrease':
             changedArray[currentIndex].quantity === 1
               ? (changedArray = changedArray.filter(obj => obj.id !== id))
               : (changedArray[currentIndex].quantity -= 1);
             break;
-          case "remove":
+          case 'remove':
             changedArray = changedArray.filter(obj => obj.id !== id);
             break;
-          case "removeAll":
+          case 'removeAll':
             changedArray = [];
             break;
           default:
-            console.log("Данный случай отстуствует среди условий");
+            break;
         }
 
         return {
-          itemsInBasket: changedArray
+          itemsInBasket: changedArray,
         };
       },
       () => {
         localStorage.setItem(
-          "itemsFromBasketInLocal",
+          'itemsFromBasketInLocal',
           JSON.stringify(this.state.itemsInBasket)
         );
       }
     );
   };
 
-  addItemToBasket = itemToAdd => {
+  addItemToBasket = (itemToAdd) => {
     const currentIndex = this.state.itemsInBasket.findIndex(
       element => element.id === itemToAdd.id
     );
@@ -83,11 +83,11 @@ class App extends React.Component {
 
       this.setState(
         prevState => ({
-          itemsInBasket: [...prevState.itemsInBasket, requiredItem]
+          itemsInBasket: [...prevState.itemsInBasket, requiredItem],
         }),
         () => {
           localStorage.setItem(
-            "itemsFromBasketInLocal",
+            'itemsFromBasketInLocal',
             JSON.stringify(this.state.itemsInBasket)
           );
         }
@@ -95,10 +95,10 @@ class App extends React.Component {
     }
   };
 
-  loadDataPhones = async () => {
+  loadDataPhones = async() => {
     this.setState({
       isLoaded: false,
-      isLoading: true
+      isLoading: true,
     });
 
     const responsePhones = await fetch(`${BASE_URL}/api/phones.json`);
@@ -107,19 +107,21 @@ class App extends React.Component {
     this.setState({
       phones,
       isLoading: false,
-      isLoaded: true
+      isLoaded: true,
     });
   };
 
   render() {
-    const { phones, isLoading, isLoaded, itemsInBasket } = this.state;
+    const {
+      phones, isLoading, isLoaded, itemsInBasket,
+    } = this.state;
 
     return (
       <div className="app">
         <Navbar itemsInBasket={itemsInBasket} />
 
         <Switch>
-          <Route path="/" exact component={HomePage} />
+          <Route path="/" exact component={Index} />
           <Route
             path="/phones"
             exact
@@ -149,7 +151,7 @@ class App extends React.Component {
             )}
           />
           <Route
-            path="/basket/"
+            path="/basket"
             render={() => (
               <Basket
                 itemsInBasket={itemsInBasket}

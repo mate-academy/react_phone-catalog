@@ -64,7 +64,7 @@ class Phone extends React.Component {
           </div>
 
           <div className="phone-page__name-and-description-container">
-            <h1 className="phone-page__heading">
+            <h1 className="heading heading--l phone-page__heading">
               {detailsOfCurrentPhone.name}
             </h1>
             <div className="phone-page__general-description">
@@ -86,7 +86,7 @@ class Phone extends React.Component {
         </div>
 
         <div className="phone-page__details-container">
-          <h3 className="phone-page__details-heading">Phone details</h3>
+          <h3 className="heading heading--S phone-page__details-heading">Phone details</h3>
           <ul className="phone-page__details-list">
             <li className="phone-page__details-column" key={"android"}>
               <h4>Android:</h4>

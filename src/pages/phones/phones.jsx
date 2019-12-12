@@ -2,55 +2,55 @@ import React from 'react';
 import {
   Link,
 } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { BASE_URL } from '../../lib/constants';
 import PaginationButtons from '../../components/Pagination/PaginationButtons';
 import PaginationInfo from '../../components/Pagination/PaginationInfo';
-import PropTypes from 'prop-types';
 
 class Phones extends React.Component {
   state = {
     phonesForShowing: [],
-    sortBy: "age",
-    inputValue: "",
+    sortBy: 'age',
+    inputValue: '',
     page: 1,
     phonesPerPage: 20,
     pages: 1,
     arrOfPages: [1],
-  }
+  };
 
   componentDidMount = () => {
-    let params = new URLSearchParams(this.props.location.search);
+    const params = new URLSearchParams(this.props.location.search);
 
-    if (params.get("curpage")) {
+    if (params.get('curpage')) {
       this.setState({
-        page: Number(params.get("curpage")),
+        page: Number(params.get('curpage')),
       });
     }
 
-    if (params.get("perpage")) {
+    if (params.get('perpage')) {
       this.setState({
-        phonesPerPage: Number(params.get("perpage")),
+        phonesPerPage: Number(params.get('perpage')),
       });
     }
 
-    if (params.get("filter")) {
+    if (params.get('filter')) {
       this.setState({
         phonesForShowing: [...this.props.phones]
           .filter(phone => phone.id
-            .toLowerCase().includes(params.get("filter").toLowerCase())),
-        inputValue: params.get("filter"), // text in input
+            .toLowerCase().includes(params.get('filter').toLowerCase())),
+        inputValue: params.get('filter'), // text in input
       });
 
-      if (params.get("sort")) {
-        this.sortFunctionByValue(params.get("sort"));
+      if (params.get('sort')) {
+        this.sortFunctionByValue(params.get('sort'));
       }
     } else {
       this.setState({
         phonesForShowing: this.props.phones,
       });
 
-      if (params.get("sort")) {
-        this.sortFunctionByValue(params.get("sort"));
+      if (params.get('sort')) {
+        this.sortFunctionByValue(params.get('sort'));
       }
     }
 
@@ -62,35 +62,35 @@ class Phones extends React.Component {
     const curURLParams = new URLSearchParams(this.props.location.search);
     const prevURLParams = new URLSearchParams(prevProps.location.search);
 
-    if (curURLParams.get("curpage") !== prevURLParams.get("curpage")) {
+    if (curURLParams.get('curpage') !== prevURLParams.get('curpage')) {
       this.setState({
-        page: Number(curURLParams.get("curpage")),
+        page: Number(curURLParams.get('curpage')),
       });
     }
 
-    if (curURLParams.get("perpage") !== prevURLParams.get("perpage")) {
+    if (curURLParams.get('perpage') !== prevURLParams.get('perpage')) {
       this.setState({
-        phonesPerPage: Number(curURLParams.get("perpage")),
+        phonesPerPage: Number(curURLParams.get('perpage')),
       });
     }
 
-    if (curURLParams.get("filter") !== prevURLParams.get("filter")) {
+    if (curURLParams.get('filter') !== prevURLParams.get('filter')) {
       this.setState({
         phonesForShowing: [...this.props.phones]
           .filter(phone => phone.id
-            .toLowerCase().includes(curURLParams.get("filter").toLowerCase())),
-        inputValue: curURLParams.get("filter"), // text in input
+            .toLowerCase().includes(curURLParams.get('filter').toLowerCase())),
+        inputValue: curURLParams.get('filter'), // text in input
       });
 
-      if (curURLParams.get("sort") !== prevURLParams.get("sort")) {
-        this.sortFunctionByValue(curURLParams.get("sort"));
+      if (curURLParams.get('sort') !== prevURLParams.get('sort')) {
+        this.sortFunctionByValue(curURLParams.get('sort'));
       } else {
-        this.sortFunctionByValue(prevURLParams.get("sort"));
+        this.sortFunctionByValue(prevURLParams.get('sort'));
       }
     }
 
-    if (curURLParams.get("sort") !== prevURLParams.get("sort")) {
-      this.sortFunctionByValue(curURLParams.get("sort"));
+    if (curURLParams.get('sort') !== prevURLParams.get('sort')) {
+      this.sortFunctionByValue(curURLParams.get('sort'));
     }
   };
 
@@ -100,14 +100,13 @@ class Phones extends React.Component {
     this.setState({
       inputValue: value, // showing in input,
       phonesForShowing: this.props.phones
-        .filter(phone =>
-          phone.id.toLowerCase().includes(value.toLowerCase())),
+        .filter(phone => phone.id.toLowerCase().includes(value.toLowerCase())),
     });
 
     this.sortFunctionByValue(this.state.sortBy);
     this.calcQuantityAndArrOfPages();
     this.choosePage(1);
-    this.setQueryParamsInURL("filter", value);
+    this.setQueryParamsInURL('filter', value);
   };
 
   sortHandleSelect = (event) => {
@@ -115,7 +114,7 @@ class Phones extends React.Component {
 
     this.sortFunctionByValue(value);
     this.choosePage(1);
-    this.setQueryParamsInURL("sort", value);
+    this.setQueryParamsInURL('sort', value);
   };
 
   chooseQuantityOfPhonesPerPage = (event) => {
@@ -127,14 +126,14 @@ class Phones extends React.Component {
 
     this.calcQuantityAndArrOfPages();
     this.choosePage(1);
-    this.setQueryParamsInURL("perpage", value);
+    this.setQueryParamsInURL('perpage', value);
   };
 
   choosePage = (value) => {
     this.setState({
       page: value,
     }, () => {
-      this.setQueryParamsInURL("curpage", value);
+      this.setQueryParamsInURL('curpage', value);
     });
   };
 
@@ -146,9 +145,9 @@ class Phones extends React.Component {
         const valueB = b[value];
 
         switch (value) {
-          case "age":
+          case 'age':
             return valueA - valueB;
-          case "name":
+          case 'name':
             return valueA.localeCompare(valueB);
           default:
             return 0;
@@ -158,13 +157,14 @@ class Phones extends React.Component {
   };
 
   setQueryParamsInURL = (paramsName, valueToSet) => {
-    let params = new URLSearchParams(this.props.location.search);
+    const params = new URLSearchParams(this.props.location.search);
+
     params.set(paramsName, valueToSet);
 
     this.props.history.push({
-      pathname: "/phones",
+      pathname: '/phones',
       search: `?${params.toString()}`,
-    })
+    });
   };
 
   calcQuantityAndArrOfPages = () => {
@@ -172,15 +172,17 @@ class Phones extends React.Component {
       pages: Math.ceil(prevState.phonesForShowing.length / prevState.phonesPerPage),
     }));
 
-    this.setState(prevState => {
+    this.setState((prevState) => {
       const arr = [];
+
       for (let i = 1; i <= prevState.pages; i++) {
         arr.push(i);
-      };
+      }
+
       return {
         arrOfPages: arr,
-      }
-    })
+      };
+    });
   };
 
   render() {
@@ -201,7 +203,10 @@ class Phones extends React.Component {
 
     return (
       <div className="phones-page">
-        <h2 className="phones-page__quantity-phones">Phones Quantity: {phonesForShowing.length}</h2>
+        <h1 className="heading heading--l phones-page__quantity-phones">
+          Phones Quantity:
+          {phonesForShowing.length}
+        </h1>
 
         <div className="phones-page__input-and-select-container">
 
@@ -230,10 +235,10 @@ class Phones extends React.Component {
             onChange={this.chooseQuantityOfPhonesPerPage}
             id="chooseQuantityOfPhonesPerPage"
           >
-            <option value='20'>Per Page: 20</option>
-            <option value='10'>Per Page: 10</option>
-            <option value='5'>Per Page: 5</option>
-            <option value='3'>Per Page: 3</option>
+            <option value="20">Per Page: 20</option>
+            <option value="10">Per Page: 10</option>
+            <option value="5">Per Page: 5</option>
+            <option value="3">Per Page: 3</option>
           </select>
         </div>
 
@@ -273,14 +278,14 @@ class Phones extends React.Component {
                   <button
                     className={
                       this.props.itemsInBasket.find(item => item.id === phone.id)
-                        ? "phone-card__button button button--add-in-basket button--add-in-basket_added"
-                        : "phone-card__button button button--add-in-basket"
+                        ? 'phone-card__button button button--add-in-basket button--add-in-basket_added'
+                        : 'phone-card__button button button--add-in-basket'
                     }
                     onClick={() => this.props.addItemToBasket(phone)}
                   >
                     {this.props.itemsInBasket.find(item => item.id === phone.id)
-                      ? "Added to basket"
-                      : "Add to basket"}
+                      ? 'Added to basket'
+                      : 'Add to basket'}
                   </button>
                 </li>
               ))
@@ -289,22 +294,24 @@ class Phones extends React.Component {
 
         {
           pages > 1
-            ? <div className="phones-page__pagination-container pagination">
-              <PaginationInfo
-                page={page}
-                pages={pages}
-                phonesPerPage={phonesPerPage}
-                phonesForShowing={phonesForShowing}
-              />
+            ? (
+              <div className="phones-page__pagination-container pagination">
+                <PaginationInfo
+                  page={page}
+                  pages={pages}
+                  phonesPerPage={phonesPerPage}
+                  phonesForShowing={phonesForShowing}
+                />
 
-              <PaginationButtons
-                choosePage={this.choosePage}
-                page={page}
-                pages={pages}
-                arrOfPages={arrOfPages}
-              />
-            </div>
-            : ""
+                <PaginationButtons
+                  choosePage={this.choosePage}
+                  page={page}
+                  pages={pages}
+                  arrOfPages={arrOfPages}
+                />
+              </div>
+            )
+            : ''
         }
       </div>
     );

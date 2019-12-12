@@ -3,14 +3,14 @@
   &--home {
     font-size: 0.9rem;
     width: 160px;
-    background-color: #3232e2;
+    background-color: $special-blue;
     color: white;
     display: inline-block;
     text-align: center;
     line-height: 50px;
     &:hover {
       cursor: pointer;
-      background-color: #2222db;
+      background-color: $special-blue-hover;
     }
   }
   &--decrease-increase {
@@ -23,11 +23,11 @@
       pointer-events: none;
     }
     &-active {
-      background-color: #3232e2;
+      background-color: $special-blue;
       color: white;
       cursor: pointer;
       &:hover {
-        background-color: #3333cc;
+        background-color: $special-blue-hover;
       }
     }
   }
@@ -41,8 +41,8 @@
     &:hover {
       cursor: pointer;
       background-color: #fff;
-      color: #db2241;
-      box-shadow: 0 0 10px#ffb3b3;
+      color: $special-red;
+      box-shadow: 0 0 10px $light-pink;
     }
   }
 
@@ -55,8 +55,8 @@
     &:hover {
       cursor: pointer;
       background-color: #fff;
-      color: #db2241;
-      box-shadow: 0 0 10px#ffb3b3;
+      color: $special-red;
+      box-shadow: 0 0 10px $light-pink;
     }
   }
 
@@ -64,19 +64,19 @@
     font-size: 0.9em;
     width: 100%;
     padding: 15px;
-    background-color: #3232e2;
+    background-color: $special-blue;
     color: white;
     &:hover {
       cursor: pointer;
-      background-color: #2222db;
+      background-color: $special-blue-hover;
     }
     &_page-details {
       width: 160px;
     }
     &_added {
-      background-color: #13b150;
+      background-color: $special-green;
       &:hover {
-        background-color: #13b150;
+        background-color: $special-green;
       }
     }
   }
@@ -91,10 +91,10 @@
     &:hover {
       cursor: pointer;
       color: white;
-      background-color: #2222db;
+      background-color: $special-blue-hover;
     }
     &_active {
-      background-color: #3232e2;
+      background-color: $special-blue;
       color: white;
     }
     &_disabled {

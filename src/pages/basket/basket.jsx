@@ -5,7 +5,7 @@ import PhoneInBasket from '../../components/PhoneInBasket/PhoneInBasket';
 
 const Basket = ({ itemsInBasket, basketManager }) => (
   <main className="wrapper__main basket">
-    <h2 className="basket__quantity-of-phones">
+    <h2 className="heading heading--m basket__quantity-of-phones">
       Chosen phones:
       {itemsInBasket.length}
     </h2>
@@ -17,6 +17,7 @@ const Basket = ({ itemsInBasket, basketManager }) => (
               {
                 itemsInBasket.map(item => (
                   <PhoneInBasket
+                    key={item.id}
                     item={item}
                     basketManager={basketManager}
                   />

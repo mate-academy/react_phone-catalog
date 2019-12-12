@@ -24,18 +24,18 @@
     padding: 20px;
     transition: all $hover-duration;
     &:hover {
-      color: #8281DA;
+      color: $special-purple;
     }
   }
   &--back-to-catalog {
     font-size: .9em;
     text-transform: uppercase;
     padding: 15px;
-    background-color: #3232e2;
+    background-color: $special-blue;
     color: white;
     cursor: pointer;
     &:hover {
-      background-color: #3333CC;
+      background-color: $special-blue-hover;
     }
   }
   &--phone-heading {

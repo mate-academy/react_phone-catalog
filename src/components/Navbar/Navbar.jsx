@@ -49,7 +49,7 @@ const Navbar = ({ itemsInBasket }) => (
             activeClassName="link link--header link--header_active"
             className="link link--header"
             href="#"
-            to="/basket/"
+            to="/basket"
           >
           Basket
             <span className="header__basket-quantity">

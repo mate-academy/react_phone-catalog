@@ -3,8 +3,6 @@
   grid-template-columns: minmax(auto,500px) auto;
   &__heading {
     position: relative;
-    font-size: 48px;
-    font-weight: 600;
     margin-bottom: 50px;
     &::after {
       content: "";

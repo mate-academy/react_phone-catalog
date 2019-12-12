@@ -2,7 +2,7 @@ import React from 'react';
 
 const Page404 = () => (
   <main className="wrapper__main page404">
-    <h1 className="page404__heading">404</h1>
+    <h1 className="heading heading--l">404</h1>
     <p>No such page</p>
     <img
       className="page404__img"

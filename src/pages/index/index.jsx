@@ -2,10 +2,10 @@ import React from 'react';
 import { NavLink } from "react-router-dom";
 import { GIT_HUB_H2ASH } from '../../lib/constants';
 
-const HomePage = () => (
+const Index = () => (
   <main className="wrapper__main wrapper__main--home home">
     <section className="home__section">
-      <h1 className="home__heading">Welcome to phone shop!</h1>
+      <h1 className="heading heading--xl home__heading">Welcome to phone shop!</h1>
       <p className="home__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
       <NavLink
         className="link button button--home "
@@ -29,4 +29,4 @@ const HomePage = () => (
   </main>
 );
 
-export default HomePage;
+export default Index;
