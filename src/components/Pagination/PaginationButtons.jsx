@@ -2,9 +2,17 @@ import React from 'react'
 import PropTypes from 'prop-types';
 import classNames from "classnames";
 
-const PaginationButtons = ({ choosePage, page, pages, arrOfPages }) => {
-  const buttonDisabled = classNames({
-    'button--pagination_disabled': page === 1 || page === pages,
+const PaginationButtons = ({
+  choosePage,
+  page,
+  pages,
+  arrOfPages,
+}) => {
+  const buttonDisabledStart = classNames({
+    'button--pagination_disabled': page === 1,
+  });
+  const buttonDisabledEnd = classNames({
+    'button--pagination_disabled': page === pages,
   });
 
   return (
@@ -12,16 +20,19 @@ const PaginationButtons = ({ choosePage, page, pages, arrOfPages }) => {
       <ul className="pagination__buttons">
         <li>
           <button
-            className={`button button--pagination ${buttonDisabled}`}
+            type="button"
+            className={`button button--pagination ${buttonDisabledStart}`}
             onClick={() => choosePage(page - 1)}
-          > &#60; </button>
+          > &#60;
+          </button>
         </li>
 
         {
           arrOfPages.map((button, index) => (
             <li key={index}>
               <button
-                className={`button button--pagination ${button === page ? "button--pagination_active" : ""}`}
+                type="button"
+                className={`button button--pagination ${button === page ? 'button--pagination_active' : ''}`}
                 onClick={() => choosePage(button)}
               >{button}</button>
             </li>
@@ -30,13 +41,15 @@ const PaginationButtons = ({ choosePage, page, pages, arrOfPages }) => {
 
         <li>
           <button
-            className={`button button--pagination ${buttonDisabled}`}
+            type="button"
+            className={`button button--pagination ${buttonDisabledEnd}`}
             onClick={() => choosePage(page + 1)}
-          > &#62; </button>
+          > &#62;
+          </button>
         </li>
       </ul>
     </nav>
-  )
+  );
 }
 
 PaginationButtons.propTypes = {
@@ -46,4 +59,4 @@ PaginationButtons.propTypes = {
   arrOfPages: PropTypes.arrayOf(PropTypes.number).isRequired,
 };
 
-export default PaginationButtons
+export default PaginationButtons;
