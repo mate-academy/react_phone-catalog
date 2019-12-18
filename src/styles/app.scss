@@ -1,0 +1,30 @@
+@import "utils/reset";
+@import "utils/vars";
+@import "button";
+@import "wrapper";
+@import "heading";
+@import "../components/Navbar/header";
+@import "link";
+@import "../pages/index/home";
+@import "../components/Loader/loader";
+@import "../components/Footer/footer";
+@import "../pages/basket/basket";
+@import "../components/PhoneInBasket/phoneInBasket";
+@import "../pages/phones/phones";
+@import "../pages/NoSuchPhone/no-such-phone";
+@import "../pages/phone/phone";
+@import "../pages/phones/phone-card";
+@import "../components/Pagination/pagination";
+@import "../pages/Page404/page404";
+@import "../pages/rights/rights";
+@import "media";
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.checkMark {
+  width: 16px;
+}

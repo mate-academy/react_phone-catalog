@@ -1,0 +1,46 @@
+.link {
+  text-decoration: none;
+
+  &--header {
+    display: flex;
+    align-items: center;
+    color: black;
+    padding: 10px 20px;
+    height: 40px;
+    &:hover {
+      background: #ebebeb;
+    }
+    &_active {
+      background-color: blue;
+      color: white;
+      &:hover {
+        background-color: blue;
+      }
+    }
+  }
+
+  &--footer {
+    color: #c4c0d1;
+    padding: 20px;
+    transition: all $hover-duration;
+    &:hover {
+      color: $special-purple;
+    }
+  }
+  &--back-to-catalog {
+    font-size: .9em;
+    text-transform: uppercase;
+    padding: 15px;
+    background-color: $special-blue;
+    color: white;
+    cursor: pointer;
+    &:hover {
+      background-color: $special-blue-hover;
+    }
+  }
+  &--phone-heading {
+    margin: 20px 0;
+    color: black;
+    font-weight: bold;
+  }
+}

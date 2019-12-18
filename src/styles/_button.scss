@@ -1,0 +1,107 @@
+.button {
+  text-transform: uppercase;
+  &--home {
+    font-size: 0.9rem;
+    width: 160px;
+    background-color: $special-blue;
+    color: white;
+    display: inline-block;
+    text-align: center;
+    line-height: 50px;
+    &:hover {
+      cursor: pointer;
+      background-color: $special-blue-hover;
+    }
+  }
+  &--decrease-increase {
+    font-size: 0.9em;
+    text-transform: none;
+    padding: 15px;
+    min-width: 50px;
+    max-height: 50px;
+    &-disabled {
+      pointer-events: none;
+    }
+    &-active {
+      background-color: $special-blue;
+      color: white;
+      cursor: pointer;
+      &:hover {
+        background-color: $special-blue-hover;
+      }
+    }
+  }
+
+  &--remove {
+    font-size: 0.6em;
+    width: 24px;
+    line-height: 13px;
+    padding: 5px;
+    background: #eeeefc;
+    &:hover {
+      cursor: pointer;
+      background-color: #fff;
+      color: $special-red;
+      box-shadow: 0 0 10px $light-pink;
+    }
+  }
+
+  &--delete-items {
+    color: blue;
+    background-color: white;
+    font-size: 0.9em;
+    padding: 15px;
+    box-shadow: 0 0 5px #dfdfdf;
+    &:hover {
+      cursor: pointer;
+      background-color: #fff;
+      color: $special-red;
+      box-shadow: 0 0 10px $light-pink;
+    }
+  }
+
+  &--add-in-basket {
+    font-size: 0.9em;
+    width: 100%;
+    padding: 15px;
+    background-color: $special-blue;
+    color: white;
+    &:hover {
+      cursor: pointer;
+      background-color: $special-blue-hover;
+    }
+    &_page-details {
+      width: 160px;
+    }
+    &_added {
+      background-color: $special-green;
+      &:hover {
+        background-color: $special-green;
+      }
+    }
+  }
+
+  &--pagination {
+    font-size: 0.9em;
+    min-width: 50px;
+    padding: 15px;
+    box-shadow: 0 0 5px #dfdfdf;
+    background-color: white;
+    margin: 0 10px;
+    &:hover {
+      cursor: pointer;
+      color: white;
+      background-color: $special-blue-hover;
+    }
+    &_active {
+      background-color: $special-blue;
+      color: white;
+      outline: none;
+    }
+    &_disabled {
+      pointer-events: none;
+      box-shadow: none;
+      background-color: #f5f5f5;
+    }
+  }
+}

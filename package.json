@@ -1,5 +1,5 @@
 {
-  "homepage": "https://mate-academy.github.io/react_phone-catalog",
+  "homepage": "https://h2ash.github.io/react_phone-catalog",
   "name": "react_phone-catalog",
   "version": "0.1.0",
   "private": true,
@@ -7,6 +7,8 @@
   "author": "Mate Academy",
   "license": "GPL-3.0",
   "dependencies": {
+    "classnames": "^2.2.6",
+    "node-sass": "^4.13.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",

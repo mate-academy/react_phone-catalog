@@ -1,0 +1,31 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  box-shadow: 0 0 4px #d3d3d3;
+
+  &__logo {
+    padding-left: 20px;
+    height: 2em;
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    height: 60px;
+    font-size: 18px;
+  }
+
+  &__basket-quantity {
+    position: relative;
+    top: -6px;
+    text-align: center;
+    background-color: #12A34A;
+    color: white;
+    font-size: .8em;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+  }
+}

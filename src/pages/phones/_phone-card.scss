@@ -1,0 +1,31 @@
+.phone-card {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  box-shadow: 0 0 10px #d3d3d3;
+  padding: 20px;
+  margin: 10px;
+  animation: phone-card 1s ease-in-out;
+  &__img {
+    width: 100px;
+  }
+  &__heading {
+    display: block;
+  }
+  &__snippet {
+    margin: 16px 0;
+  }
+}
+
+@keyframes phone-card {
+  0% {
+    opacity: 0;
+    transform: scale(.9);
+  } 
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

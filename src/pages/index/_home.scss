@@ -1,0 +1,26 @@
+.home {
+  display: grid;
+  grid-template-columns: minmax(auto,500px) auto;
+  &__heading {
+    position: relative;
+    margin-bottom: 50px;
+    &::after {
+      content: "";
+      position: absolute;
+      width: 70px;
+      height: 4px;
+      background-color: blue;
+      bottom: -20px;
+      left: 0;
+    }
+  }
+
+  &__description {
+    color: #9595c7;
+    margin-bottom: 50px;
+  }
+  
+  &__caller-gif {
+    width: 100%;
+  }
+}
