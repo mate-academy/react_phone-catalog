@@ -96,6 +96,7 @@
     &_active {
       background-color: $special-blue;
       color: white;
+      outline: none;
     }
     &_disabled {
       pointer-events: none;
