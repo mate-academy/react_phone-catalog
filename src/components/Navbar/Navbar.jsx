@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { GIT_HUB_H2ASH } from '../../lib/constants';
 import PropTypes from 'prop-types';
+import { GIT_HUB_H2ASH } from '../../lib/constants';
 
 const Navbar = ({ itemsInBasket }) => (
   <header className="header">
@@ -36,8 +36,8 @@ const Navbar = ({ itemsInBasket }) => (
             className="link link--header"
             href="#"
             to={{
-              pathname: "/phones",
-              search: "",
+              pathname: '/phones',
+              search: '',
             }}
           >
             Phones
@@ -62,7 +62,7 @@ const Navbar = ({ itemsInBasket }) => (
       </ul>
     </nav>
   </header>
-)
+);
 
 Navbar.propTypes = {
   itemsInBasket: PropTypes.arrayOf(PropTypes.object).isRequired,

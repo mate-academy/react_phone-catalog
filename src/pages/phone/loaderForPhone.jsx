@@ -1,8 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Loader from '../../components/Loader/Loader';
 import Phone from './phone';
-import { BASE_URL } from "../../lib/constants";
-import PropTypes from 'prop-types';
+import { BASE_URL } from '../../lib/constants';
 import NoSuchPhone from '../NoSuchPhone/NoSuchPhone';
 
 class LoaderForPhone extends React.Component {
@@ -17,14 +17,14 @@ class LoaderForPhone extends React.Component {
     this.loadDataDetails(this.props.id);
   };
 
-  loadDataDetails = async (currentId) => {
+  loadDataDetails = async(currentId) => {
     this.setState({
       isLoading: true,
     });
 
     try {
       const responseDetails = await
-        fetch(`${BASE_URL}/api/phones/${currentId}.json`);
+      fetch(`${BASE_URL}/api/phones/${currentId}.json`);
       const detailsOfCurrentPhone = await responseDetails.json();
 
       this.setState({
@@ -44,7 +44,7 @@ class LoaderForPhone extends React.Component {
       id,
       phones,
       itemsInBasket,
-      addItemToBasket
+      addItemToBasket,
     } = this.props;
     const {
       detailsOfCurrentPhone,
@@ -59,8 +59,10 @@ class LoaderForPhone extends React.Component {
             isLoading={isLoading}
           />
         </main>
-      )
-    } else if (isLoaded) {
+      );
+    }
+
+    if (isLoaded) {
       return (
         <main className="wrapper__main">
           {
@@ -86,14 +88,14 @@ class LoaderForPhone extends React.Component {
               : <NoSuchPhone />
           }
         </main>
-      )
-    } else {
-      return (
-        <main className="wrapper__main">
-          <NoSuchPhone />
-        </main>
-      )
+      );
     }
+
+    return (
+      <main className="wrapper__main">
+        <NoSuchPhone />
+      </main>
+    );
   }
 }
 

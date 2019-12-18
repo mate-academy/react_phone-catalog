@@ -1,6 +1,6 @@
-import React from 'react'
-import { BASE_URL } from '../../lib/constants'
+import React from 'react';
 import PropTypes from 'prop-types';
+import { BASE_URL } from '../../lib/constants';
 import CheckMark from '../../components/CheckMark';
 
 class Phone extends React.Component {
@@ -15,15 +15,15 @@ class Phone extends React.Component {
 
     this.setState({
       currentImg: currentImage,
-    })
+    });
   }
 
-  chooseCurrentImg = event => {
+  chooseCurrentImg = (event) => {
     const { src } = event.target;
 
     this.setState({
       currentImg: src,
-    })
+    });
   };
 
   render() {
@@ -49,7 +49,7 @@ class Phone extends React.Component {
             </div>
             <div>
               {
-                detailsOfCurrentPhone.images.map(image =>
+                detailsOfCurrentPhone.images.map(image => (
                   <input
                     className="phone-page__additional-photo"
                     key={`${BASE_URL}/${image}`}
@@ -58,7 +58,7 @@ class Phone extends React.Component {
                     src={`${BASE_URL}/${image}`}
                     alt="additional photo for phone"
                   />
-                )
+                ))
               }
             </div>
           </div>
@@ -71,24 +71,27 @@ class Phone extends React.Component {
               {detailsOfCurrentPhone.description}
             </div>
             <button
+              type="button"
               className={
-                itemsInBasket.find(item => item.id === id)
-                  ? "button button--add-in-basket button--add-in-basket_added button--add-in-basket_page-details"
-                  : "button button--add-in-basket button--add-in-basket_page-details"
+                `button button--add-in-basket button--add-in-basket_page-details
+                  ${itemsInBasket.find(item => item.id === id)
+                && 'button--add-in-basket_added'}`
               }
               onClick={() => addItemToBasket(phone)}
             >
               {itemsInBasket.find(item => item.id === id)
-                ? "Added to basket"
-                : "Add to basket"}
+                ? 'Added to basket'
+                : 'Add to basket'}
             </button>
           </div>
         </div>
 
         <div className="phone-page__details-container">
-          <h3 className="heading heading--S phone-page__details-heading">Phone details</h3>
+          <h3 className="heading heading--S phone-page__details-heading">
+            Phone details
+          </h3>
           <ul className="phone-page__details-list">
-            <li className="phone-page__details-column" key={"android"}>
+            <li className="phone-page__details-column" key="android">
               <h4>Android:</h4>
               <dl>
                 <dt>OS:</dt>
@@ -97,7 +100,7 @@ class Phone extends React.Component {
                 <dd>{detailsOfCurrentPhone.android.ui}</dd>
               </dl>
             </li>
-            <li className="phone-page__details-column" key={"battery"}>
+            <li className="phone-page__details-column" key="battery">
               <h4>Battery</h4>
               <dl>
                 <dt>Stand by time:</dt>
@@ -108,7 +111,7 @@ class Phone extends React.Component {
                 <dd>{detailsOfCurrentPhone.battery.type}</dd>
               </dl>
             </li>
-            <li className="phone-page__details-column" key={"camera"}>
+            <li className="phone-page__details-column" key="camera">
               <h4>Camera: </h4>
               <dl>
                 <dt>Screen Resolution:</dt>
@@ -224,11 +227,18 @@ class Phone extends React.Component {
           </ul>
         </div>
       </>
-    )
+    );
   }
 }
 
 Phone.propTypes = {
+  phone: PropTypes.shape({
+    age: PropTypes.number,
+    id: PropTypes.string,
+    imageURL: PropTypes.string,
+    name: PropTypes.string,
+    snippet: PropTypes.string,
+  }).isRequired,
   detailsOfCurrentPhone: PropTypes.shape({
     additionalFeatures: PropTypes.string,
     android: PropTypes.object,
@@ -239,10 +249,10 @@ Phone.propTypes = {
     hardware: PropTypes.object,
     images: PropTypes.array,
     sizeAndWeight: PropTypes.object,
-  }),
+  }).isRequired,
   addItemToBasket: PropTypes.func.isRequired,
   itemsInBasket: PropTypes.arrayOf(PropTypes.object).isRequired,
   id: PropTypes.string.isRequired,
 };
 
-export default Phone
+export default Phone;

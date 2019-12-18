@@ -1,6 +1,6 @@
-import React from 'react'
+import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from "classnames";
+import classNames from 'classnames';
 
 const PaginationButtons = ({
   choosePage,
@@ -23,18 +23,24 @@ const PaginationButtons = ({
             type="button"
             className={`button button--pagination ${buttonDisabledStart}`}
             onClick={() => choosePage(page - 1)}
-          > &#60;
+          >
+            &#60;
           </button>
         </li>
 
         {
           arrOfPages.map((button, index) => (
+            // index for key is correct for this case
+            // eslint-disable-next-line react/no-array-index-key
             <li key={index}>
               <button
                 type="button"
-                className={`button button--pagination ${button === page ? 'button--pagination_active' : ''}`}
+                className={`button button--pagination 
+                  ${button === page ? 'button--pagination_active' : ''}`}
                 onClick={() => choosePage(button)}
-              >{button}</button>
+              >
+                {button}
+              </button>
             </li>
           ))
         }
@@ -44,13 +50,14 @@ const PaginationButtons = ({
             type="button"
             className={`button button--pagination ${buttonDisabledEnd}`}
             onClick={() => choosePage(page + 1)}
-          > &#62;
+          >
+            &#62;
           </button>
         </li>
       </ul>
     </nav>
   );
-}
+};
 
 PaginationButtons.propTypes = {
   page: PropTypes.number.isRequired,

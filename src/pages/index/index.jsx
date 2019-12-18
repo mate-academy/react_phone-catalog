@@ -1,5 +1,6 @@
+/* eslint-disable max-len */
 import React from 'react';
-import { NavLink } from "react-router-dom";
+import { NavLink } from 'react-router-dom';
 import { GIT_HUB_H2ASH } from '../../lib/constants';
 
 const Index = () => (
@@ -12,7 +13,7 @@ const Index = () => (
         to="/phones"
       >
         Watch phones
-        </NavLink>
+      </NavLink>
     </section>
     <div className="home__caller-div">
       <NavLink

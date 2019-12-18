@@ -1,20 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const PaginationInfo = ({ page, pages, phonesPerPage, phonesForShowing }) => {
+const PaginationInfo = ({
+  page, pages, phonesPerPage, phonesForShowing,
+}) => {
   const firstPhoneOnCurrentPage = page === 1
     ? 1
     : (page - 1) * phonesPerPage + 1;
   const lastPhoneOnCurrentPage = page === pages
     ? phonesForShowing.length
     : page * phonesPerPage;
-  
+
   return (
     <div className="phones-page__pagination-info">
-      Shown {firstPhoneOnCurrentPage} - {lastPhoneOnCurrentPage} of {phonesForShowing.length}
+      Shown
+      {' '}
+      {firstPhoneOnCurrentPage}
+      {' '}
+      -
+      {' '}
+      {lastPhoneOnCurrentPage}
+      {' '}
+      of
+      {' '}
+      {phonesForShowing.length}
     </div>
-  )
-}
+  );
+};
 
 PaginationInfo.propTypes = {
   page: PropTypes.number.isRequired,
@@ -22,14 +34,14 @@ PaginationInfo.propTypes = {
   phonesPerPage: PropTypes.number.isRequired,
   phonesForShowing: PropTypes.arrayOf(
     PropTypes.shape({
-     age: PropTypes.number,
-     carrier: PropTypes.string,
-     id: PropTypes.id,
-     imageUrl: PropTypes.string,
-     name: PropTypes.string,
-     snippet: PropTypes.string,
+      age: PropTypes.number,
+      carrier: PropTypes.string,
+      id: PropTypes.id,
+      imageUrl: PropTypes.string,
+      name: PropTypes.string,
+      snippet: PropTypes.string,
     })
-  ),
+  ).isRequired,
 };
 
-export default PaginationInfo 
+export default PaginationInfo;

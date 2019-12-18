@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React from 'react';
 import {
   Link,
@@ -161,6 +162,7 @@ class Phones extends React.Component {
 
     params.set(paramsName, valueToSet);
 
+    // eslint-disable-next-line react/prop-types
     this.props.history.push({
       pathname: '/phones',
       search: `?${params.toString()}`,
@@ -175,6 +177,7 @@ class Phones extends React.Component {
     this.setState((prevState) => {
       const arr = [];
 
+      // eslint-disable-next-line no-plusplus
       for (let i = 1; i <= prevState.pages; i++) {
         arr.push(i);
       }
@@ -195,7 +198,6 @@ class Phones extends React.Component {
       inputValue,
       sortBy,
     } = this.state;
-
     const firstIndexPhoneOnCurrentPage = page === 1
       ? 0 // index of FIRST phone from filtered phonesForShowing
       : (page - 1) * phonesPerPage;
@@ -276,10 +278,11 @@ class Phones extends React.Component {
                   </div>
 
                   <button
+                    type="button"
                     className={
-                      this.props.itemsInBasket.find(item => item.id === phone.id)
-                        ? 'phone-card__button button button--add-in-basket button--add-in-basket_added'
-                        : 'phone-card__button button button--add-in-basket'
+                      `phone-card__button button button--add-in-basket
+                      ${this.props.itemsInBasket.find(item => item.id === phone.id)
+                      && 'button--add-in-basket_added'}`
                     }
                     onClick={() => this.props.addItemToBasket(phone)}
                   >
@@ -319,6 +322,11 @@ class Phones extends React.Component {
 }
 
 Phones.propTypes = {
+  location: PropTypes.shape({
+    hash: PropTypes.string,
+    pathname: PropTypes.string,
+    search: PropTypes.string,
+  }).isRequired,
   phones: PropTypes.arrayOf(PropTypes.shape({
     age: PropTypes.number,
     id: PropTypes.string,

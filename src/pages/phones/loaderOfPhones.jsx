@@ -1,53 +1,49 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
 import Loader from '../../components/Loader/Loader';
 import Phones from './phones';
-import PropTypes from 'prop-types';
 
-class LoaderOfPhones extends React.Component {
-  componentDidMount = () => {
-    this.props.loadDataPhones();
-  };
+const LoaderOfPhones = ({
+  phones,
+  isLoading,
+  isLoaded,
+  addItemToBasket,
+  location,
+  history,
+  itemsInBasket,
+  loadDataPhones,
+}) => {
+  useEffect(() => {
+    loadDataPhones();
+  }, [loadDataPhones]);
 
-  render() {
-    const {
-      phones,
-      isLoading,
-      isLoaded,
-      addItemToBasket,
-      location,
-      history,
-      itemsInBasket
-    } = this.props;
-
-    console.log(itemsInBasket);
-
-    return (
-      <main className="wrapper__main">
-        {
-          isLoaded
-            ? (
-              <Phones
-                addItemToBasket={addItemToBasket}
-                phones={phones}
-                isLoading={isLoading}
-                isLoaded={isLoaded}
-                location={location}
-                history={history}
-                itemsInBasket={itemsInBasket}
-              />
-            )
-            : (
-              <Loader
-                isLoading={isLoading}
-              />
-            )
-        }
-      </main>
-    );
-  }
-}
+  return (
+    <main className="wrapper__main">
+      {
+        isLoaded
+          ? (
+            <Phones
+              addItemToBasket={addItemToBasket}
+              phones={phones}
+              isLoading={isLoading}
+              isLoaded={isLoaded}
+              location={location}
+              history={history}
+              itemsInBasket={itemsInBasket}
+            />
+          )
+          : (
+            <Loader
+              isLoading={isLoading}
+            />
+          )
+      }
+    </main>
+  );
+};
 
 LoaderOfPhones.propTypes = {
+  loadDataPhones: PropTypes.func.isRequired,
   isLoading: PropTypes.bool.isRequired,
   isLoaded: PropTypes.bool.isRequired,
   phones: PropTypes.arrayOf(PropTypes.shape({
