@@ -1,10 +1,6 @@
 import React from 'react';
 import './App.css';
 
-const App = () => (
-  <div className="App">
-    <h1>Phone catalog</h1>
-  </div>
-)
+const App = () => <h1>Phone catalog</h1>;
 
 export default App;
