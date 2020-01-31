@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Catalog = () => (
+const PhoneCatalog = () => (
   <>
     <h1>Phone catalog</h1>
 
@@ -269,4 +269,4 @@ const Catalog = () => (
   </>
 );
 
-export default Catalog;
+export default PhoneCatalog;

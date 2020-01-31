@@ -1,7 +1,9 @@
 import React from 'react';
+
 import './App.css';
-import Catalog from './Catalog';
-import Details from './Details';
+
+import PhoneCatalog from './PhoneCatalog';
+import PhoneDetailsPage from './PhoneDetailsPage';
 
 const App = () => (
   <div className="container-fluid">
@@ -35,8 +37,8 @@ const App = () => (
       </div>
 
       <div className="col-md-10">
-        <Details />
-        <Catalog />
+        <PhoneDetailsPage />
+        <PhoneCatalog />
       </div>
     </div>
   </div>

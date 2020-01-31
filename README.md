@@ -33,7 +33,6 @@ and [Phone Details API](https://mate-academy.github.io/phone-catalogue-static/ap
 1. Add ability to remove items from the `Basket` with a `x` button
 1. Add ability to change the quantity in the `Basket` with `-` and `+` buttons around the quantity
 
-
 ## Advanced tasks
 1. Save `Filter` params in the URL using `queryParams` (`?query=moto&sort=age`)
     - when the page is loaded with `query` and `sort` in the URL
