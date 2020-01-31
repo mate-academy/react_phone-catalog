@@ -1,71 +1,90 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import { getData } from './Api/getData';
-import Phone from './Phone';
+import React, {useState, useEffect} from 'react';
+import {NavLink} from 'react-router-dom';
+import {connect} from 'react-redux'
+import {setPhones, setPhoneToCart} from "./store/actions/actions";
+import {getData} from "./Api/getData";
+import {makeStyles} from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+import Grid from "@material-ui/core/Grid";
+import LinearProgress from "@material-ui/core/LinearProgress";
 
-class Catalog extends React.Component {
-  state = {
-    phones: [],
-    isLoading: true,
+
+const Catalog = ({dispatch, phones, match}) => {
+
+  const useStyles = makeStyles(theme => ({
+    card: {
+      maxWidth: 350,
+      margin: "20px"
+    },
+    media: {
+      height: 280,
+    },
+    root: {
+      width: '100%',
+      '& > * + *': {
+        marginTop: theme.spacing(2),
+      },
+    },
+  }));
+
+  const addToCard = (phone) => {
+    dispatch(setPhoneToCart(phone))
   }
+  const classes = useStyles();
 
-  async componentDidMount() {
-    const response = await getData();
-    const allPhones = response.map(telephone => telephone);
+  useEffect(() => {
+    getData().then(data => dispatch(setPhones(data)))
+  }, [])
 
-    setTimeout(() => {
-      this.setState({
-        phones: allPhones,
-        isLoading: false,
-      });
-    }, 1000);
-  }
-
-  addToCard(phoneId) {
-    console.log(phoneId)
-  }
-
-  render() {
-    const { phones, isLoading } = this.state;
-    const { match } = this.props;
-
-    return (
-      <div>
-        <div className={isLoading ? 'progress' : 'load-none'}>
-          <div className="indeterminate" />
-        </div>
-        <div className="container">
-          <div className="row">
-            {phones.map(phone => (
-              <div className="col s12 m6 l4 center-align">
-                <div className="card hoverable large">
-                  <NavLink key={phone.id} to={`${match.path}/${phone.id}`}>
-                    <div className="card-image">
-                      <img src={phone.imageUrl} alt={`${phone.imageUrl}`} />
-                    </div>
-                    <span className="card-title">{phone.name}</span>
+  return (
+    <Grid item xs={12}>
+      <Grid container justify="center">
+        {!phones.length
+          ? <div className={classes.root}><LinearProgress/></div>
+          : phones.map(phone => (
+              <Card className={classes.card} key={phone.age}>
+                <CardActionArea>
+                  <NavLink to={`${match.path}/${phone.id}`}>
+                    <CardMedia
+                      className={classes.media}
+                      image={phone.imageUrl}
+                      alt={`${phone.imageUrl}`}
+                      style={{backgroundSize: "contain"}}
+                    />
                   </NavLink>
-                  <div className="card-content">
-                    <p>{phone.snippet}</p>
-                  </div>
-                  <div className="card-action">
-                    <button
-                      onClick={() => this.addToCard(phone.id)}
-                      type="button"
-                      className="btn waves-effect waves-purple"
-                    >
-                      Add to cart
-                    </button>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+                  <CardContent>
+                    <Typography gutterBottom variant="h5" component="h2">
+                      {phone.name}
+                    </Typography>
+                    <Typography variant="body2" color="textSecondary" component="p">
+                      {phone.snippet}
+                    </Typography>
+                  </CardContent>
+                </CardActionArea>
+                <CardActions>
+                  <Button onClick={() => addToCard(phone)} size="small" color="primary">
+                    Add to Cart
+                  </Button>
+                </CardActions>
+              </Card>
+            )
+          )}
+      </Grid>
+    </Grid>
+  )
+}
 
-        </div>
-      </div>
-    );
+const mapStateToProps = state => {
+  return {
+    phones: state.phones,
+    phonesInCart: state.phonesInCart
   }
 }
 
-export default Catalog;
+export default connect(mapStateToProps)(Catalog);
