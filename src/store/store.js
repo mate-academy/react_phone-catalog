@@ -1,10 +1,11 @@
 import {createStore} from "redux";
-import {SET_PHONES, SET_PHONES_TO_CART} from "./actions/actions";
+import {SET_PHONES, SET_PHONES_TO_CART, SET_PHONES_DETAILS} from "./actions/actions";
 
 const initialState = {
   phones: [],
   isLoading: true,
-  phonesInCart: []
+  phonesInCart: [],
+  phoneDetails: []
 }
 
 export function reducer(state = initialState, action) {
@@ -18,6 +19,11 @@ export function reducer(state = initialState, action) {
       return {
         ...state,
         phonesInCart: [...state.phonesInCart, action.payload]
+      }
+    case SET_PHONES_DETAILS:
+      return {
+        ...state,
+        phonesInCart: action.payload
       }
   }
   return state

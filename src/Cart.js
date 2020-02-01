@@ -1,30 +1,55 @@
-import React from 'react'
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import ExpansionPanel from '@material-ui/core/ExpansionPanel';
+import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
+import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
+import Typography from '@material-ui/core/Typography';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import {connect} from "react-redux";
 
-const Cart = ({phonesInCart, phones}) => {
+const useStyles = makeStyles(theme => ({
+  root: {
+    width: '100%',
+  },
+  heading: {
+    fontSize: theme.typography.pxToRem(15),
+    fontWeight: theme.typography.fontWeightRegular,
+  },
+}));
+
+function Cart({phonesInCart, dispatch}) {
+
+  const classes = useStyles();
+console.log(phonesInCart)
   return (
-    <div className="row">
-      <div className="col s12 m4">
-        <div className="card">
-          <div className="card-image">
-            <img src=""/>
-            <span className="card-title">Card Title</span>
-            <a className="btn-floating halfway-fab waves-effect waves-light red"><i className="material-icons">add</i></a>
-          </div>
-          <div className="card-content">
-            <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use
-              effectively.</p>
-          </div>
-        </div>
-      </div>
+    <div className={classes.root}>
+      {!phonesInCart.length ?
+        <h1>Cart is empty</h1>
+        : phonesInCart.map(phone => (
+        <ExpansionPanel key={phone.age}>
+          <ExpansionPanelSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel1a-content"
+            id="panel1a-header"
+          >
+            <Typography className={classes.heading}>{phone.name}</Typography>
+          </ExpansionPanelSummary>
+          <ExpansionPanelDetails>
+            <Typography>
+              {phone.snippet}
+            </Typography>
+          </ExpansionPanelDetails>
+        </ExpansionPanel>
+      ))}
+
     </div>
-  )
+  );
 }
 
 const mapStateToProps = (state) => {
   return {
-    phonesInCart: state.phonesInCart,
-    phones: state.phones
+    phonesInCart: state.phonesInCart
   }
 }
+
 export default connect(mapStateToProps)(Cart);

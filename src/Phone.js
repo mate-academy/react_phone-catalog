@@ -1,23 +1,20 @@
 import React from 'react';
 import { getPhonesData } from './Api/getData';
+import {connect} from "react-redux";
 
 class Phone extends React.Component {
-  state = {
-    phoneDetails: [],
-  }
+
 
   async componentDidMount() {
     const response = await getPhonesData(this.props.match.params.phoneId);
-
-    this.setState({
-      phoneDetails: response,
-    });
+    const response2 = await getPhonesData(this.props.match.params.phoneId);
+    this.props.dispatch()
   }
-
   render() {
 
     const { match } = this.props;
-    const { phoneDetails } = this.state;
+    const { phoneDetails } = this.props;
+    console.log(phoneDetails)
 
     if (phoneDetails.images) {
       return (
@@ -77,4 +74,9 @@ class Phone extends React.Component {
   }
 }
 
-export default Phone;
+const mapStateToProps = (state) => {
+  return {
+
+  }
+}
+export default connect(mapStateToProps)(Phone);
