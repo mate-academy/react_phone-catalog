@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function Cart({phonesInCart, dispatch}) {
+function Cart({phonesInCart}) {
 
   const classes = useStyles();
 console.log(phonesInCart)
