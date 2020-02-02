@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {Route, Switch, NavLink} from 'react-router-dom';
 import HomePage from "./HomePage";
 import Phone from "./Phone";
@@ -20,9 +20,10 @@ import SearchIcon from '@material-ui/icons/Search';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import ShopTwoIcon from '@material-ui/icons/ShopTwo';
 import HomeIcon from '@material-ui/icons/Home';
+import {setPhones, setPhoneSearch} from "./store/actions/actions";
 
 
-const Header = ({phonesInCart}) => {
+const Header = ({phonesInCart, dispatch, phones, foundPhones}) => {
   const useStyles = makeStyles(theme => ({
     grow: {
       flexGrow: 1,
@@ -43,11 +44,10 @@ const Header = ({phonesInCart}) => {
       '&:hover': {
         backgroundColor: fade(theme.palette.common.white, 0.25),
       },
-      marginRight: theme.spacing(2),
       marginLeft: 0,
       width: '100%',
       [theme.breakpoints.up('sm')]: {
-        marginLeft: theme.spacing(3),
+        marginLeft: theme.spacing(1),
         width: 'auto',
       },
     },
@@ -86,8 +86,8 @@ const Header = ({phonesInCart}) => {
   }));
 
   const classes = useStyles();
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -105,6 +105,11 @@ const Header = ({phonesInCart}) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
+  const startSearchPhones = event => {
+    const query = event.target.value.trim()
+    dispatch(setPhoneSearch(phones, query))
+  }
+
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
     <Menu
@@ -116,8 +121,6 @@ const Header = ({phonesInCart}) => {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
     </Menu>
   );
 
@@ -160,6 +163,7 @@ const Header = ({phonesInCart}) => {
               <SearchIcon/>
             </div>
             <InputBase
+              onChange={startSearchPhones}
               placeholder="Search…"
               classes={{
                 root: classes.inputRoot,
@@ -217,7 +221,9 @@ const Header = ({phonesInCart}) => {
 
 const mapStateToProps = (state) => {
   return {
-    phonesInCart: state.phonesInCart
+    phonesInCart: state.phonesInCart,
+    phones: state.phones,
+    foundPhones: state.foundPhones
   }
 }
 

@@ -15,7 +15,7 @@ import Grid from "@material-ui/core/Grid";
 import LinearProgress from "@material-ui/core/LinearProgress";
 
 
-const Catalog = ({dispatch, phones, match}) => {
+const Catalog = ({dispatch, phones, match, foundPhones}) => {
 
   const useStyles = makeStyles(theme => ({
     card: {
@@ -41,6 +41,8 @@ const Catalog = ({dispatch, phones, match}) => {
   useEffect(() => {
     getData().then(data => dispatch(setPhones(data)))
   }, [])
+
+
 
   return (
     <Grid item xs={12}>
@@ -83,7 +85,8 @@ const Catalog = ({dispatch, phones, match}) => {
 const mapStateToProps = state => {
   return {
     phones: state.phones,
-    phonesInCart: state.phonesInCart
+    phonesInCart: state.phonesInCart,
+    foundPhones: state.foundPhones
   }
 }
 
