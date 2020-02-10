@@ -3,13 +3,12 @@ import { NavLink } from 'react-router-dom';
 import { loadPhonesAPI } from '../api/API_DATA';
 import Phone from './Phone';
 import LoadAnimation from './LoadAnimation';
-import Footer from './Footer'
 import SearchField from './SearchField';
 
 class PhoneCatalog extends React.Component {
   state = {
     phones: [],
-    visipblePhones: [],
+    visiblePhones: [],
     isLoaded: false,
     isLoading: false,
     direction: 1,
@@ -25,10 +24,21 @@ class PhoneCatalog extends React.Component {
 
     this.setState({
       phones: loadPhones,
-      visipblePhones: loadPhones,
+      visiblePhones: loadPhones,
       isLoaded: true,
       isLoading: false,
     });
+  }
+
+  debounce = (f, delay) => {
+    let timerId = 0;
+
+    const wrapper = (...args) => {
+      clearTimeout(timerId)
+      timerId = setTimeout(() => f(...args), delay)
+    }
+
+    return wrapper;
   }
 
   handleChangeFilter = ({target: {value}}) => {
@@ -37,10 +47,12 @@ class PhoneCatalog extends React.Component {
     });
   };
 
-  getFilteredPhones = (value) => {
-    const { visipblePhones } = this.state;
+  wrapper = this.debounce(this.handleChangeFilter, 1000);
 
-    return visipblePhones.filter(phone =>
+  getFilteredPhones = (value) => {
+    const { visiblePhones } = this.state;
+
+    return visiblePhones.filter(phone =>
       (phone.name.toLowerCase().includes(value))
     );
   };
@@ -51,17 +63,17 @@ class PhoneCatalog extends React.Component {
     switch (value) {
       case 'age':
         return this.setState(prevState => ({
-          visipblePhones: [...prevState.phones]
+          visiblePhones: [...prevState.phones]
             .sort((a, b) => a.age - b.age),
         }));
       case 'alphabet':
         return this.setState(prevState => ({
-          visipblePhones: [...prevState.phones]
+          visiblePhones: [...prevState.phones]
             .sort((a, b) => a.name.localeCompare(b.name)),
         }));
       default:
         return this.setState(prevState => ({
-          visipblePhones: prevState.phones,
+          visiblePhones: prevState.phones,
         }));
     }
   }
@@ -69,7 +81,7 @@ class PhoneCatalog extends React.Component {
   render() {
     const { valueForSearch, isLoading, isLoaded } = this.state;
     const { id } = this.props;
-    const visipblePhones = this.getFilteredPhones(valueForSearch)
+    const visiblePhones = this.getFilteredPhones(valueForSearch)
 
     if (isLoaded) {
       return (
@@ -77,7 +89,7 @@ class PhoneCatalog extends React.Component {
         id
           ? (
             <Phone
-              phone={visipblePhones.find(phone => phone.id === id)}
+              phone={visiblePhones.find(phone => phone.id === id)}
               handleClickAddPhoneToCart={this.props.handleClickAddPhoneToCart}
             />
           )
@@ -87,13 +99,13 @@ class PhoneCatalog extends React.Component {
                 <div className='search_field-grid'>
                   <SearchField
                     className="search_field"
-                    visipblePhones={visipblePhones}
+                    visiblePhones={visiblePhones}
                     handleChangeFilter={this.handleChangeFilter}
                   />
                 </div>
 
                 <div className="catalog">
-                  {visipblePhones.map(phone => (
+                  {visiblePhones.map(phone => (
                     <div
                       className="catalog_phone"
                       key={phone.id}

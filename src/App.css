@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css?family=Exo:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Exo:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap");
 
 body {
-  font-family: 'Exo';
+  font-family: "Exo";
   margin: 0;
 }
 
@@ -30,11 +30,6 @@ body {
   margin: 0 155px 0 auto;
 }
 
-.nav-list-header-links:first-child {
-  position: absolute;
-  z-index: 1;
-}
-
 .nav-list-link {
   text-decoration: none;
   font-size: 20px;
@@ -51,7 +46,7 @@ body {
   outline: none;
   padding: 10px;
   z-index: 1;
-  margin: 0 38px;
+  margin: 0 3vw;
 }
 
 .iframe-link {
@@ -139,7 +134,7 @@ body {
   border-radius: 30px;
   border: 0;
   box-shadow: 0 0 4px gray;
-  font-family: 'Exo';
+  font-family: "Exo";
   outline: none;
 }
 
@@ -149,7 +144,7 @@ body {
   justify-content: center;
   justify-items: center;
   grid-column-gap: 170px;
-  margin: 0 0 100px 0;
+  margin: 0 0 100px;
 }
 
 .catalog_phone {
@@ -175,7 +170,7 @@ body {
 }
 
 .catalog_phone-add {
-  font-family: 'Exo';
+  font-family: "Exo";
   display: block;
   background-color: white;
   text-decoration: none;
@@ -219,7 +214,7 @@ body {
   position: relative;
   margin: 0, auto;
   width: 60%;
-  padding: 20px 5px 10px 5px;
+  padding: 20px 5px 10px;
   display: flex;
   flex-wrap: nowrap;
   margin-top: 20px;
@@ -228,18 +223,17 @@ body {
 .phone-details_name {
   text-align: center;
   font-size: 22px;
-  margin: 10px 30px 0 30px;
-  font-family: 'Exo';
+  margin: 10px 30px 0;
+  font-family: "Exo";
 }
 
 .phone-details-wrapper_description {
   display: flex;
   justify-content: center;
-
 }
 
 .phone-details_description {
-  padding: 20px 20px;
+  padding: 20px;
   font-size: 18px;
   font-weight: 300;
   width: 740px;
@@ -263,7 +257,7 @@ body {
   transform: translate(-50%, -50%);
   width: 400px;
   height: 400px;
-  background-image: url('./components/image/404.jpg')
+  background-image: url("./components/image/404.jpg");
 }
 
 .back-to-home-error-button {
@@ -291,7 +285,7 @@ body {
   color: white;
   background-color: black;
   font-weight: 100;
-  margin: 20px 93px 1px 93px;
+  margin: 20px 93px 1px;
 }
 
 .specifications_sign {
@@ -318,13 +312,13 @@ body {
   grid-template-columns: 1fr 1fr;
   justify-items: center;
   align-items: center;
-  margin: 50px 110px 0 110px;
+  margin: 50px 110px 0;
 }
 
 .phone-details_add {
   display: block;
   background-color: white;
-  font-family: 'Exo';
+  font-family: "Exo";
   text-decoration: none;
   color: black;
   padding: 20px;
@@ -341,6 +335,7 @@ body {
 
 .cart-phones_link-back {
   text-decoration: none;
+  display: inline-block;
   color: black;
   text-align: center;
   width: 140px;
@@ -348,7 +343,7 @@ body {
   padding: 10px;
   transition: 0.3s;
   border-radius: 10px;
-  margin: 0px 73px 0 110px;
+  margin: 0 73px 0 110px;
 }
 
 .cart-phones_link-back-phone-details {
@@ -377,7 +372,7 @@ body {
   display: grid;
   grid-template-columns: 1fr 3fr;
   align-items: center;
-  margin: 30px 0 50px 0;
+  margin: 30px 0 50px;
 }
 
 .cart-phone_sign {
@@ -421,7 +416,7 @@ body {
   transition: 0.3s;
   border-radius: 10px;
   font-size: 25px;
-  font-family: 'Exo';
+  font-family: "Exo";
   display: block;
 }
 
@@ -440,12 +435,11 @@ body {
   border: 1px solid black;
   user-select: none;
   outline: none;
-  width: 30px;
   height: 30px;
   transition: 0.3s;
   display: block;
   font-size: 15px;
-  font-family: 'Exo';
+  font-family: "Exo";
   border-radius: 10px;
   width: 200px;
 }
@@ -464,17 +458,14 @@ body {
 
 .footer {
   background-color: black;
-  margin: 10px 90px 0;
+  margin-left: 6%;
 }
 
 .footer-list-links {
-  display: grid;
-  grid-template-columns: 135px 60px;
-  margin: 25px 110px;
-  width: 450px;
-  grid-gap: -50px;
+  display: flex;
+  align-items: center;
+  margin: 0 24% 0 auto;
 }
-
 
 .footer-link {
   text-decoration: none;
@@ -486,7 +477,7 @@ body {
 }
 
 .footer-link:hover {
-  color:  red;
+  color: red;
 }
 
 .contacts-details {
@@ -500,7 +491,7 @@ body {
   color: black;
 }
 
-@media (  max-width: 1140px) {
+@media (max-width: 1140px) {
 
   body {
     font-size: 18px;
@@ -517,9 +508,19 @@ body {
   .phone-details {
     grid-template-columns: 1fr 1fr 1fr;
   }
+
+  .cart-phones_link-back-phone-details {
+    width: 170px;
+    margin: -40px 0 0 340px;
+  }
+
+  .phone-details_add {
+    width: 150px;
+    margin-top: -30px;
+  }
 }
 
-@media (  max-width: 784px) {
+@media (max-width: 784px) {
 
   .nav-list {
     grid-template-columns: 1fr;
@@ -527,11 +528,11 @@ body {
   }
 
   .home-page-sign {
-    font-size: 25px;
+    opacity: 0;
   }
 
   .catalog {
-    grid-template-columns: repeat(1, 100px);
+    grid-template-columns: repeat(3, 100px);
   }
 
   .phone-details {
@@ -540,7 +541,7 @@ body {
 
   .search_field {
     margin-top: 20px;
-    width: 290px;
+    width: 490px;
   }
 
   .phone-details_name {
@@ -549,7 +550,7 @@ body {
   }
 
   .specifications {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
   }
 
   .cart-phones_link-back {
@@ -559,13 +560,6 @@ body {
 
   .cart-phone_table-remove-btn {
     margin: 30px 0;
-    background-color: white;
-    border: 1px solid black;
-    user-select: none;
-    outline: none;
-    width: 30px;
-    height: 30px;
-    transition: 0.3s;
     width: 150px;
   }
 
@@ -582,8 +576,63 @@ body {
     grid-template-columns: repeat(3, 1fr);
     align-items: center;
   }
-
 }
+
+@media (max-width: 783px) {
+  .catalog {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .phone-details {
+    grid-template-columns: 1fr;
+  }
+
+  .specifications {
+    grid-template-columns: 1fr;
+  }
+
+  .phone-details-wrapper_description {
+    display: flex;
+    justify-content: center;
+    width: 70%;
+  }
+
+  .cart-phone_sign {
+    font-weight: 300;
+    margin: 15px 0 0;
+    text-align: center;
+    font-size: 18px;
+    width: 200px;
+  }
+
+  .cart-phones_link-back {
+    margin: 10px 73px 0 70px;
+  }
+
+  .cart-phone_table-remove-btn {
+    margin-left: 100%;
+  }
+
+  .cart-phones_link-back-phone-details {
+    width: 170px;
+    margin: -40px 0 0 340px;
+  }
+
+  .nav-list-header-links {
+    font-size: 15px;
+    margin: 0 50px;
+  }
+
+  .nav-list-link-logo {
+    margin: 0;
+  }
+
+  .animation {
+    margin-top: 20px;
+  }
+}
+
+/* load animation */
 
 .animation {
   position: absolute;
@@ -593,112 +642,115 @@ body {
 }
 
 .cssload-square {
-	width: 8px;
-	height: 29px;
-	background: rgb(0,0,0);
-	border-radius: 10px;
-	display: block;
-	animation: cssload-turn 1.995s ease infinite;
-		-o-animation: cssload-turn 1.995s ease infinite;
-		-ms-animation: cssload-turn 1.995s ease infinite;
-		-webkit-animation: cssload-turn 1.995s ease infinite;
-		-moz-animation: cssload-turn 1.995s ease infinite;
-}
-.cssload-top {
-	position: absolute;
-	left: 40%;
-	top: 50%;
-	transform: rotate(90deg);
-		-o-transform: rotate(90deg);
-		-ms-transform: rotate(90deg);
-		-webkit-transform: rotate(90deg);
-		-moz-transform: rotate(90deg);
-}
-.cssload-bottom {
-	position: absolute;
-	left: 40%;
-	top: 50%;
-	transform: rotate(-90deg);
-		-o-transform: rotate(-90deg);
-		-ms-transform: rotate(-90deg);
-		-webkit-transform: rotate(-90deg);
-		-moz-transform: rotate(-90deg);
-}
-.cssload-left {
-	position: absolute;
-	left: 40%;
-	top: 50%;
-}
-.cssload-right {
-	position: absolute;
-	left: 40%;
-	top: 50%;
-	transform: rotate(-180deg);
-		-o-transform: rotate(-180deg);
-		-ms-transform: rotate(-180deg);
-		-webkit-transform: rotate(-180deg);
-		-moz-transform: rotate(-180deg);
+  width: 8px;
+  height: 29px;
+  background: rgb(0,0,0);
+  border-radius: 10px;
+  display: block;
+  animation: cssload-turn 2s ease infinite;
+  -o-animation: cssload-turn 2s ease infinite;
+  -ms-animation: cssload-turn 2s ease infinite;
+  -webkit-animation: cssload-turn 2s ease infinite;
+  -moz-animation: cssload-turn 2s ease infinite;
 }
 
+.cssload-top {
+  position: absolute;
+  left: 40%;
+  top: 50%;
+  transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+}
+
+.cssload-bottom {
+  position: absolute;
+  left: 40%;
+  top: 50%;
+  transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+}
+
+.cssload-left {
+  position: absolute;
+  left: 40%;
+  top: 50%;
+}
+
+.cssload-right {
+  position: absolute;
+  left: 40%;
+  top: 50%;
+  transform: rotate(-180deg);
+  -o-transform: rotate(-180deg);
+  -ms-transform: rotate(-180deg);
+  -webkit-transform: rotate(-180deg);
+  -moz-transform: rotate(-180deg);
+}
 
 @keyframes cssload-turn {
-	0% {
-		transform: translateX(0) translateY(0) rotate(0);
-	}
-	50% {
-		transform: translateX(400%) translateY(100%) rotate(90deg);
-	}
-	100% {
-		transform: translateX(0) translateY(0) rotate(0);
-	}
+  0% {
+    transform: translateX(0) translateY(0) rotate(0);
+  }
+  50% {
+    transform: translateX(400%) translateY(100%) rotate(90deg);
+  }
+  100% {
+    transform: translateX(0) translateY(0) rotate(0);
+  }
 }
 
 @-o-keyframes cssload-turn {
-	0% {
-		-o-transform: translateX(0) translateY(0) rotate(0);
-	}
-	50% {
-		-o-transform: translateX(400%) translateY(100%) rotate(90deg);
-	}
-	100% {
-		-o-transform: translateX(0) translateY(0) rotate(0);
-	}
+  0% {
+    -o-transform: translateX(0) translateY(0) rotate(0);
+  }
+  50% {
+    -o-transform: translateX(400%) translateY(100%) rotate(90deg);
+  }
+  100% {
+    -o-transform: translateX(0) translateY(0) rotate(0);
+  }
 }
 
 @-ms-keyframes cssload-turn {
-	0% {
-		-ms-transform: translateX(0) translateY(0) rotate(0);
-	}
-	50% {
-		-ms-transform: translateX(400%) translateY(100%) rotate(90deg);
-	}
-	100% {
-		-ms-transform: translateX(0) translateY(0) rotate(0);
-	}
+  0% {
+    -ms-transform: translateX(0) translateY(0) rotate(0);
+  }
+  50% {
+    -ms-transform: translateX(400%) translateY(100%) rotate(90deg);
+  }
+  100% {
+    -ms-transform: translateX(0) translateY(0) rotate(0);
+  }
 }
 
 @-webkit-keyframes cssload-turn {
-	0% {
-		-webkit-transform: translateX(0) translateY(0) rotate(0);
-	}
-	50% {
-		-webkit-transform: translateX(400%) translateY(100%) rotate(90deg);
-	}
-	100% {
-		-webkit-transform: translateX(0) translateY(0) rotate(0);
-	}
+  0% {
+    -webkit-transform: translateX(0) translateY(0) rotate(0);
+  }
+  50% {
+    -webkit-transform: translateX(400%) translateY(100%) rotate(90deg);
+  }
+  100% {
+    -webkit-transform: translateX(0) translateY(0) rotate(0);
+  }
 }
 
 @-moz-keyframes cssload-turn {
-	0% {
-		-moz-transform: translateX(0) translateY(0) rotate(0);
-	}
-	50% {
-		-moz-transform: translateX(400%) translateY(100%) rotate(90deg);
-	}
-	100% {
-		-moz-transform: translateX(0) translateY(0) rotate(0);
-	}
+  0% {
+    -moz-transform: translateX(0) translateY(0) rotate(0);
+  }
+  50% {
+    -moz-transform: translateX(400%) translateY(100%) rotate(90deg);
+  }
+  100% {
+    -moz-transform: translateX(0) translateY(0) rotate(0);
+  }
 }
 
 .form {
@@ -711,11 +763,11 @@ body {
 }
 
 .inner {
- display: flex;
- align-items: center;
- height: 40px;
- box-sizing: border-box;
- padding: 10px;
+  display: flex;
+  align-items: center;
+  height: 40px;
+  box-sizing: border-box;
+  padding: 10px;
 }
 
 .input {
@@ -778,7 +830,8 @@ button svg path {
   display: none;
 }
 
-.form:focus-within .clear, .form:focus-within .close,
-.form:focus-within .bulkhead{
+.form:focus-within .clear,
+.form:focus-within .close,
+.form:focus-within .bulkhead {
   display: block;
 }
