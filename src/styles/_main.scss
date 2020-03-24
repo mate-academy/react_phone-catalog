@@ -1,0 +1,25 @@
+html {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+a,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+li,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Mont;
+}
+
+.main {
+  height: calc(100vh - 154px);
+}

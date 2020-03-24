@@ -1,0 +1,57 @@
+.phones {
+  margin-top: 24px;
+
+  &__wrapper {
+    width: 70vw;
+    margin: 0 auto;
+  }
+
+  &__top-location {
+    width: 93px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+  }
+
+  &__home-logo {
+    width: 14px;
+    height: 14px;
+    background: url("/images/home.svg") center no-repeat;
+
+    position: relative;
+
+    &::after {
+      position: absolute;
+      content: "";
+      right: -18px;
+      top: 2px;
+      width: 6px;
+      height: 10px;
+      background: url("/images/arrow-gr.svg") center no-repeat;
+    }
+  }
+
+  &__location {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: #89939a;
+  }
+
+  &__title {
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: #313237;
+    margin-bottom: 8px;
+  }
+
+  &__number {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #89939a;
+  }
+
+}
