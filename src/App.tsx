@@ -1,44 +1,60 @@
-import React from 'react';
+import React, { FC, Suspense, lazy } from 'react';
+import { Switch, Route } from 'react-router-dom';
+import Loader from 'react-loader-spinner';
+import { Nav } from './components/Nav';
+import './styles/main.scss';
 
-import './App.css';
+const HomePageAsync = lazy(() => import('./components/HomePage')
+  .then(({ HomePage }) => ({ default: HomePage })));
+const PhoneDetailsAsync = lazy(() => import('./components/PhoneDetailsPage')
+  .then(({ PhoneDetailsPage }) => ({ default: PhoneDetailsPage })));
 
-import PhoneCatalog from './PhoneCatalog';
-import PhoneDetailsPage from './PhoneDetailsPage';
+const PhonesPageAsync = lazy(() => import('./components/PhonesPage')
+  .then(({ PhonesPage }) => ({ default: PhonesPage })));
 
-const App = () => (
+const NotFoundAsync = lazy(() => import('./components/NotFound')
+  .then(({ NotFound }) => ({ default: NotFound })));
+
+const App: FC = () => (
   <div className="container-fluid">
     <div className="row">
-      <div className="col-md-2">
-        <section>
-          <h2>Filter</h2>
-
-          <label>
-            <div>Search:</div>
-            <input />
-          </label>
-
-          <label>
-            <div>Sort by:</div>
-            <select>
-              <option value="name">Alphabetical</option>
-              <option value="age">Newest</option>
-            </select>
-          </label>
-        </section>
-
-        <section>
-          <h2>Shopping Cart</h2>
-          <ul>
-            <li>Phone 1</li>
-            <li>Phone 2</li>
-            <li>Phone 3</li>
-          </ul>
-        </section>
-      </div>
-
-      <div className="col-md-10">
-        <PhoneDetailsPage />
-        <PhoneCatalog />
+      <div>
+        <Nav />
+        <Suspense
+          fallback={(
+            <div className="loader__wrapper">
+              <Loader
+                type="ThreeDots"
+                color="#4dd599"
+                height={100}
+                width={100}
+              />
+            </div>
+          )}
+        >
+          <Switch>
+            <Route
+              path="/"
+              exact
+              component={HomePageAsync}
+            />
+            <Route
+              path="/phones"
+              exact
+              component={PhonesPageAsync}
+            />
+            <Route
+              path="/phones/:phoneId"
+              exact
+              component={PhoneDetailsAsync}
+            />
+            <Route
+              path="*"
+              exact
+              component={NotFoundAsync}
+            />
+          </Switch>
+        </Suspense>
       </div>
     </div>
   </div>

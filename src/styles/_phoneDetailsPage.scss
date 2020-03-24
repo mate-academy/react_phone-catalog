@@ -1,0 +1,40 @@
+.info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 80px 30px;
+
+  &__base {
+    width: 60%;
+  }
+
+  &__description {
+    width: 500px;
+  }
+
+  &__list {
+    width: 70%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 150px);
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+    list-style: none;
+  }
+
+  &__item-img {
+    width: 150px;
+  }
+}
+
+.details {
+  &__list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 250px);
+    grid-column-gap: 30px;
+    grid-row-gap: 50px;
+    justify-content: center;
+    padding: 20px 40px;
+  }
+}

@@ -1,0 +1,36 @@
+@import './variables';
+
+.header {
+  border-bottom: 2px solid $dark_green;
+}
+
+.navigation {
+  width: 100%;
+  padding-left: 50px;
+  background-color: $light_green;
+
+  &__list {
+    list-style: none;
+    padding-top: 50px;
+    width: 200px;
+    justify-content: space-between;
+    align-items: flex-end;
+    display: flex;
+  }
+
+  &__item {
+    display: block;
+    font-size: 24px;
+    height: 70px;
+    width: 150px;
+    text-align: center;
+    line-height: 70px;
+    color: $dark_blue;
+    text-decoration: none;
+
+    &--active {
+      background-color: $dark_green;
+      color: $white;
+    }
+  }
+}

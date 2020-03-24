@@ -1,0 +1,27 @@
+.phone {
+  
+  width: 500px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+  &__img {
+    width: 200px;
+  }
+
+  &__info {
+    width: 250px;
+  }
+
+  &__name {
+    font-size: 20px;
+    color: #000;
+  }
+
+  &__description {
+    font-size: 16px;
+    line-height: 150%;
+    color: #000;
+  }
+
+}

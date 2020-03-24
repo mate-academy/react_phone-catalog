@@ -1,0 +1,12 @@
+.not-found {
+  width: 100%;
+  text-align: center;
+
+
+  &__header {
+    color: $dark_green;
+    margin: 0 auto;
+    font-size: 50px;
+    padding-top: 50px;
+  }
+}
