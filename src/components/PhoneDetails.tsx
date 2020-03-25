@@ -10,6 +10,7 @@ interface Props {
 export const PhoneDetails: FC<Props> = ({ id }) => {
   const [phone, setPhone] = useState<Details|null>(null);
   const [error, setError] = useState<string|null>(null);
+  const [currentImg, setCurrentImg] = useState<string|undefined>(undefined);
 
   useEffect(() => {
     setError(null);
@@ -24,6 +25,14 @@ export const PhoneDetails: FC<Props> = ({ id }) => {
       .catch(err => setError(err));
   }, []);
 
+  useEffect(() => {
+    setCurrentImg(phone?.images[0]);
+  }, [phone]);
+
+  const handlePhotoClick = (photo: string): void => {
+    setCurrentImg(photo);
+  };
+
   if (!error) {
     return (
       <section className="details">
@@ -32,7 +41,7 @@ export const PhoneDetails: FC<Props> = ({ id }) => {
             <>
               <div className="info__slider">
                 <img
-                  src={phone.images[0]}
+                  src={currentImg}
                   alt="phone_img"
                   className="info__slider-img"
                 />
@@ -43,11 +52,18 @@ export const PhoneDetails: FC<Props> = ({ id }) => {
                 <ul className="info__list">
                   {phone.images.map(photo => (
                     <li key={photo} className="info__item">
-                      <img
-                        src={photo}
-                        alt="device"
-                        className="info__item-img"
-                      />
+                      <button
+                        type="button"
+                        className="info__button"
+                        onClick={() => handlePhotoClick(photo)}
+                      >
+                        <img
+                          src={photo}
+                          alt="device"
+                          className="info__item-img"
+                        />
+                      </button>
+
                     </li>
                   ))}
                 </ul>

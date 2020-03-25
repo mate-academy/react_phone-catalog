@@ -1,20 +1,49 @@
 .info {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
   width: 100%;
   padding: 80px 30px;
 
+  &__slider-img {
+    max-width: 400px;
+  }
+
+  &__slider {
+    margin-right: 100px;
+  }
+
   &__base {
-    width: 60%;
+    max-width: 800px;
+  }
+
+  &__button {
+    cursor: pointer;
+    background: transparent;
+    border: 1px solid black;
+    outline: none;
+
+    &:focus,
+    &:hover {
+      border: 1px solid $light_green;
+    }
+  }
+
+  &__header {
+    max-width: 600px;
+    font-size: 30px;
+    text-transform: uppercase;
+    padding-bottom: 30px;
+    border-bottom: 2px solid #000;
   }
 
   &__description {
-    width: 500px;
+    max-width: 600px;
   }
 
   &__list {
-    width: 70%;
+    max-width: 700px;
     display: grid;
     grid-template-columns: repeat(auto-fill, 150px);
     grid-column-gap: 20px;
@@ -28,6 +57,7 @@
 }
 
 .details {
+
   &__list {
     list-style: none;
     display: grid;
@@ -36,5 +66,16 @@
     grid-row-gap: 50px;
     justify-content: center;
     padding: 20px 40px;
+    background-color: $light_green;
+  }
+
+  & h4 {
+    font-size: 18px;
+    text-transform: uppercase;
+  }
+
+  & h5 {
+    font-size: 16px;
+    margin: 0;
   }
 }
