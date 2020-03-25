@@ -73,3 +73,9 @@ interface Details {
   sizeAndWeight: Size;
   storage: Storage;
 }
+
+interface Item {
+  id: string;
+  quantity: number;
+  phone: string;
+}
