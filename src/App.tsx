@@ -1,47 +1,32 @@
-import React from 'react';
+import React, { FC } from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from 'react-router-dom';
+import './App1.scss';
+import { Header } from './components/Header';
+import { HomePage } from './components/HomePage';
+import { PhonesPage } from './components/PhonesPage';
+import { NotFound404Page } from './components/NotFound404Page';
 
-import './App.css';
-
-import PhoneCatalog from './PhoneCatalog';
-import PhoneDetailsPage from './PhoneDetailsPage';
-
-const App = () => (
-  <div className="container-fluid">
-    <div className="row">
-      <div className="col-md-2">
-        <section>
-          <h2>Filter</h2>
-
-          <label>
-            <div>Search:</div>
-            <input />
-          </label>
-
-          <label>
-            <div>Sort by:</div>
-            <select>
-              <option value="name">Alphabetical</option>
-              <option value="age">Newest</option>
-            </select>
-          </label>
-        </section>
-
-        <section>
-          <h2>Shopping Cart</h2>
-          <ul>
-            <li>Phone 1</li>
-            <li>Phone 2</li>
-            <li>Phone 3</li>
-          </ul>
-        </section>
-      </div>
-
-      <div className="col-md-10">
-        <PhoneDetailsPage />
-        <PhoneCatalog />
-      </div>
-    </div>
-  </div>
+const App: FC = () => (
+  <Router>
+    <Header />
+    <Switch>
+      <Route path="/" exact>
+        <HomePage />
+      </Route>
+      <Route path="/phones" exact>
+        <PhonesPage />
+      </Route>
+      <Route path="/notfound404" exact>
+        <NotFound404Page />
+      </Route>
+      <Redirect to="/notfound404" />
+    </Switch>
+  </Router>
 );
 
 export default App;
