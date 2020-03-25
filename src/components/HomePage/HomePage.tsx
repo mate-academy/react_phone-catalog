@@ -9,7 +9,7 @@ export const HomePage = () => (
         <div className="slider">
           <button type="button" className="slider__button slider__button--left">
             <img
-              src="/images/arrow.svg"
+              src="/img/arrow.svg"
               alt="slider_arrow_left"
               className="slider__arrow slider__arrow--left"
             />
@@ -26,7 +26,7 @@ export const HomePage = () => (
             className="slider__button slider__button--right"
           >
             <img
-              src="/images/arrow.svg"
+              src="/img/arrow.svg"
               alt="slider_arrow_right"
               className="slider__arrow slider__arrow--right"
             />
@@ -41,7 +41,7 @@ export const HomePage = () => (
                 className="homePage__price-btn homePage__price-btn--left"
               >
                 <img
-                  src="/images/arrow.svg"
+                  src="/img/arrow.svg"
                   alt="arrow_control_left"
                   className="homePage__price-arrow homePage__price-arrow--left"
                 />
@@ -51,7 +51,7 @@ export const HomePage = () => (
                 className="homePage__price-btn homePage__price-btn--right"
               >
                 <img
-                  src="/images/arrow.svg"
+                  src="/img/arrow.svg"
                   alt="arrow_control_left"
                   className="homePage__price-arrow homePage__price-arrow--right"
                 />
@@ -72,7 +72,7 @@ export const HomePage = () => (
 
               <div className="homePage__category">
                 <img
-                  src="/images/phones.png"
+                  src="/img/phones.png"
                   alt="category_phones"
                   className="homePage__img-phones"
                 />
@@ -87,7 +87,7 @@ export const HomePage = () => (
             </div>
             <div className="homePage__category">
               <img
-                src="/images/tablets.png"
+                src="/img/tablets.png"
                 alt="category_tablets"
                 className="homePage__img-phones"
               />
@@ -101,7 +101,7 @@ export const HomePage = () => (
             </div>
             <div className="homePage__category">
               <img
-                src="/images/accessories.png"
+                src="/img/accessories.png"
                 alt="category_accessories"
                 className="homePage__img-phones"
               />
@@ -125,7 +125,7 @@ export const HomePage = () => (
                 className="homePage__price-btn homePage__price-btn--left"
               >
                 <img
-                  src="/images/arrow.svg"
+                  src="/img/arrow.svg"
                   alt="arrow_control_left"
                   className="homePage__price-arrow homePage__price-arrow--left"
                 />
@@ -135,7 +135,7 @@ export const HomePage = () => (
                 className="homePage__price-btn homePage__price-btn--right"
               >
                 <img
-                  src="/images/arrow.svg"
+                  src="/img/arrow.svg"
                   alt="arrow_control_left"
                   className="homePage__price-arrow homePage__price-arrow--right"
                 />

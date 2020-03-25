@@ -7,7 +7,7 @@ import { Tablets } from '../Tablets/Tablets';
 import { Accessories } from '../Accessories/Accessories';
 import { Favourites } from '../Favourites/Favouriets';
 import { InCart } from '../InCart/InCart';
-import { NoMatch } from '../NoMatch/NoMatch.';
+// import { NoMatch } from '../NoMatch/NoMatch.';
 import { Footer } from '../Footer/Footer';
 
 export const Header = () => (
@@ -18,16 +18,38 @@ export const Header = () => (
         <nav className="nav">
           <ul className="nav__list-left">
             <li className="nav__item">
-              <NavLink className="nav__link" to="/">home</NavLink>
+              <NavLink
+                className="nav__link"
+                to="/"
+                activeClassName="nav__link--active"
+              >
+                  home
+              </NavLink>
             </li>
             <li className="nav__item">
-              <NavLink className="nav__link" to="/phones">phones</NavLink>
+              <NavLink
+                className="nav__link"
+                to="/phones"
+                activeClassName="nav__link--active"
+              >
+                phones
+              </NavLink>
             </li>
             <li className="nav__item">
-              <NavLink className="nav__link" to="/tablets">tablets</NavLink>
+              <NavLink
+                className="nav__link"
+                to="/tablets"
+                activeClassName="nav__link--active"
+              >
+                tablets
+              </NavLink>
             </li>
             <li className="nav__item">
-              <NavLink className="nav__link" to="/accessories">
+              <NavLink
+                className="nav__link"
+                to="/accessories"
+                activeClassName="nav__link--active"
+              >
                 accessories
               </NavLink>
             </li>
@@ -43,7 +65,7 @@ export const Header = () => (
             <li className="nav__item-right">
               <NavLink className="nav__link" to="/favourites">
                 <img
-                  src="/images/header/heart.svg"
+                  src="/img/header/heart.svg"
                   alt="link_to_favourites"
                   className="nav__favourites"
                 />
@@ -52,7 +74,7 @@ export const Header = () => (
             <li className="nav__item-right">
               <NavLink className="nav__link" to="/cart">
                 <img
-                  src="/images/header/shopcart.svg"
+                  src="/img/header/shopcart.svg"
                   alt="link_to_cart"
                   className="nav__store"
                 />
@@ -69,7 +91,7 @@ export const Header = () => (
       <Route path="/accessories" component={Accessories} exact />
       <Route path="/favourites" component={Favourites} exact />
       <Route path="/cart" component={InCart} exact />
-      <Route path="/*" component={NoMatch} />
+      {/* <Route path="/*" component={NoMatch} /> */}
     </Switch>
     <Footer />
   </>

@@ -27,7 +27,7 @@ export const Footer = () => (
         <span className="footer__text">Back to top</span>
         <a href="#home" className="linkTop">
           <img
-            src="/images/arrow.svg"
+            src="/img/arrow.svg"
             alt="link_to_top"
             className="footer__arrow"
           />

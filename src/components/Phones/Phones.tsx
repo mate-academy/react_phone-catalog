@@ -1,5 +1,6 @@
 import React from 'react';
 import './_Phones.scss';
+import { PhoneCatalog } from '../PhoneCatalog/PhoneCatalog';
 
 export const Phones = () => (
   <main className="main">
@@ -13,6 +14,7 @@ export const Phones = () => (
           <h3 className="phones__title">Mobile phones</h3>
           <span className="phones__number">number models</span>
         </div>
+        <PhoneCatalog />
       </div>
     </section>
   </main>

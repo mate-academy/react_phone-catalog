@@ -1,0 +1,17 @@
+.phoneCatalog {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+
+  &__item {
+    width: 272px;
+    height: 507px;
+    margin: 10px;
+
+    border-radius: 25px;
+    border: 2px solid grey;
+    list-style-type: none;
+  }
+}
