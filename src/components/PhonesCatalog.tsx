@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { PHONES_URL } from '../api/constants';
 import { Phone } from './Phone';
 import { filterPhones } from '../api/helpers';
+import { Basket } from './Basket';
 
 interface Props {
   filter: string;
@@ -14,6 +15,7 @@ export const PhonesCatalog: FC<Props> = ({ filter, sort }) => {
   const initialBasket = getLocalStorage ? [...getLocalStorage] : [];
   const [phones, setPhones] = useState<Phone[]>([]);
   const [basket, setBasket] = useState<Item[]>([...initialBasket]);
+  const [isOpenedBasket, setisOpenedBasket] = useState(false);
 
   const addItemToBascket = (e: MouseEvent<HTMLButtonElement>, id: string) => {
     e.preventDefault();
@@ -71,18 +73,56 @@ export const PhonesCatalog: FC<Props> = ({ filter, sort }) => {
     return filterPhones(filter, phones);
   }, [filter, phones]);
 
+  const handleBasket = () => {
+    setisOpenedBasket(prev => !prev);
+  };
+
+  const removeItem = (id: string): void => {
+    setBasket([...basket.filter(item => item.id !== id)]);
+  };
+
+  const onIncrement = (id: string): void => {
+    setBasket([...basket.map(item => {
+      if (item.id === id) {
+        return {
+          ...item,
+          quantity: item.quantity + 1,
+        };
+      }
+
+      return item;
+    })]);
+  };
+
+  const onDecrement = (id: string): void => {
+    setBasket([...basket.map(item => {
+      if (item.id === id) {
+        return {
+          ...item,
+          quantity: item.quantity - 1,
+        };
+      }
+
+      return item;
+    })]);
+  };
+
   return (
     <>
       <div>
-        {basket.length && (basket.map(item => (
-          <div key={item.id}>
-            <p>{`Name: ${item.id}`}</p>
-            <p>{`Quantity: ${item.quantity}`}</p>
-            <Link className="link" to={item.phone}>
-              <p>See details</p>
-            </Link>
-          </div>
-        )))}
+        <button
+          type="button"
+          className="settings__basket"
+          onClick={handleBasket}
+        />
+        {isOpenedBasket && (
+          <Basket
+            basket={basket}
+            removeItem={removeItem}
+            onIncrement={onIncrement}
+            onDecrement={onDecrement}
+          />
+        )}
       </div>
       <ul className="phones__list">
         {phonesToShow.map(phone => (

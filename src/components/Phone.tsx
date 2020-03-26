@@ -14,7 +14,13 @@ export const Phone: FC<Props> = ({ phone, handleAdd }) => {
       <div className="phone__info">
         <h3 className="phone__name">{name}</h3>
         <p className="phone__description">{snippet}</p>
-        <button type="button" onClick={(e) => handleAdd(e, id)}>+</button>
+        <button
+          className="phone__add"
+          type="button"
+          onClick={(e) => handleAdd(e, id)}
+        >
+          Add to cart
+        </button>
       </div>
     </div>
   );
