@@ -1,0 +1,38 @@
+.card {
+  width: 272px;
+  padding: 32px;
+  border: 1px solid #e2e6e9;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+
+  &__img {
+    display: block;
+    width: 208px;
+    height: 208px;
+    margin: auto;
+  }
+
+  &__title {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #313237;
+    margin-top: 24px;
+  }
+
+  &__snippet {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #89939a;
+    margin-top: 10px;
+  }
+}
+
+.card-box {
+  margin-top: 50px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 40px 0;
+  justify-content: center;
+}
