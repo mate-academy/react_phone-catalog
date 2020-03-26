@@ -21,25 +21,25 @@
   &__button {
     cursor: pointer;
     background: transparent;
-    border: 1px solid black;
+    border: 1px solid $elements;
     outline: none;
 
     &:focus,
     &:hover {
-      border: 1px solid $light_green;
+      border: 1px solid $primary;
     }
   }
 
   &__header {
     max-width: 600px;
-    font-size: 30px;
-    text-transform: uppercase;
+    font-size: 32px;
     padding-bottom: 30px;
     border-bottom: 2px solid #000;
   }
 
   &__description {
     max-width: 600px;
+    margin-bottom: 40px;
   }
 
   &__list {
@@ -57,6 +57,40 @@
 }
 
 .details {
+
+  margin-bottom: 80px;
+
+  &__wrapper {
+    max-width: 1200px; 
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 0 auto;
+  }
+
+  &__tech,
+  &__about {
+    width: 45%;
+
+    &  li {
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  &__naming {
+    max-width: 150px;
+    color: $secondary;
+    font-size: 14px;
+
+    &-description {
+      max-width: 200px;
+      font-size: 14px;
+      color: $primary;
+      text-align: right;
+    }
+  }
 
   &__list {
     list-style: none;

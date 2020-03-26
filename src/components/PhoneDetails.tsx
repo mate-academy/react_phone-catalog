@@ -68,101 +68,97 @@ export const PhoneDetails: FC<Props> = ({ id }) => {
           </div>
         </div>
 
-        <ul className="details__list">
-          <li className="details__item">
-            <h4>Availability and Networks</h4>
-            <p>{phone.availability}</p>
-          </li>
+        <div className="details__wrapper">
+          <div className="details__about">
+            <h3>About</h3>
+            <ul>
+              <li>
+                <p className="details__naming">Availability and Networks</p>
+                <p className="details__naming-description">
+                  {phone.availability}
+                </p>
+              </li>
+              <li>
+                <p className="details__naming">Additional features</p>
+                <p className="details__naming-description">
+                  {phone.additionalFeatures}
+                </p>
+              </li>
+              <li>
+                <p className="details__naming">Camera</p>
+                <p className="details__naming-description">
+                  {phone.camera.primary}
+                </p>
+              </li>
+            </ul>
+          </div>
 
-          <li className="details__item">
-            <h4>Battery</h4>
-            <h5>Type</h5>
-            <p>{phone.battery.type}</p>
-            <h5>Talk time</h5>
-            <p>{phone.battery.talkTime}</p>
-            <h5>Standby time (max)</h5>
-            <p>{phone.battery.standbyTime}</p>
-          </li>
-
-          <li className="details__item">
-            <h4>Storage and Memory</h4>
-            <p>{phone.storage.flash}</p>
-            <h4>RAM</h4>
-            <p>{phone.storage.ram}</p>
-          </li>
-
-          <li className="details__item">
-            <h4>Connectivity</h4>
-            <h5>Network support</h5>
-            <p>{phone.connectivity.cell}</p>
-            <h5>WI-FI</h5>
-            <p>{phone.connectivity.wifi}</p>
-            <h5>Bluetooth</h5>
-            <p>{phone.connectivity.bluetooth}</p>
-            <h5>Infrared</h5>
-            <p>{phone.connectivity.infrared ? 'yes' : 'no'}</p>
-            <h5>GPS</h5>
-            <p>{phone.connectivity.gps ? 'yes' : 'no'}</p>
-          </li>
-
-          <li className="details__item">
-            <h4>Android</h4>
-            <h5>OS Version</h5>
-            <p>{phone.android.os}</p>
-            <h5>UI</h5>
-            <p>{phone.android.ui}</p>
-          </li>
-
-          <li className="details__item">
-            <h4>Size and Weight</h4>
-            <h5>Dimensions</h5>
-            {phone.sizeAndWeight.dimensions.map(item => (
-              <p key={item}>{item}</p>
-            ))}
-            <h5>Weight</h5>
-            <p>{phone.sizeAndWeight.weight}</p>
-          </li>
-
-          <li className="details__item">
-            <h4>Display</h4>
-            <h5>Screen size</h5>
-            <p>{phone.display.screenSize}</p>
-            <h5>Screen resolution</h5>
-            <p>{phone.display.screenResolution}</p>
-            <h5>TouchScreen</h5>
-            <p>{phone.display.touchScreen ? 'yes' : 'no'}</p>
-          </li>
-
-          <li className="details__item">
-            <h4>Hardware</h4>
-            <h5>CPU</h5>
-            <p>{phone.hardware.cpu}</p>
-            <h5>USB</h5>
-            <p>{phone.hardware.usb}</p>
-            <h5>Audio / headphone jack</h5>
-            <p>{phone.hardware.audioJack}</p>
-            <h5>FM Radio</h5>
-            <p>{phone.hardware.fmRadio ? 'yes' : 'no'}</p>
-            <h5>Accelerometer</h5>
-            <p>{phone.hardware.accelerometer ? 'yes' : 'no'}</p>
-          </li>
-
-          <li className="details__item">
-            <h4>Camera</h4>
-            <h5>Primary</h5>
-            <p>{phone.camera.primary}</p>
-            <h5>Features</h5>
-            {phone.camera.features.map(item => (
-              <p key={item}>{item}</p>
-            ))}
-          </li>
-
-          <li className="details__item">
-            <h4>Additional features</h4>
-            <p>{phone.additionalFeatures}</p>
-          </li>
-
-        </ul>
+          <div className="details__tech">
+            <h3>Tech specs</h3>
+            <ul>
+              <li>
+                <p className="details__naming">Screen size</p>
+                <p className="details__naming-description">
+                  {phone.display.screenSize}
+                </p>
+              </li>
+              <li>
+                <p className="details__naming">Screen resolution</p>
+                <p className="details__naming-description">
+                  {phone.display.screenResolution}
+                </p>
+              </li>
+              <li>
+                <p className="details__naming">TouchScreen</p>
+                <p className="details__naming-description">
+                  {phone.display.touchScreen ? 'yes' : 'no'}
+                </p>
+              </li>
+              <li>
+                <p className="details__naming">Storage and Memory</p>
+                <p className="details__naming-description">
+                  {phone.storage.flash}
+                </p>
+              </li>
+              <li>
+                <p className="details__naming">RAM</p>
+                <p className="details__naming-description">
+                  {phone.storage.ram}
+                </p>
+              </li>
+              <li>
+                <p className="details__naming">Network support</p>
+                <p className="details__naming-description">
+                  {phone.connectivity.cell}
+                </p>
+              </li>
+              <li>
+                <p className="details__naming">WI-FI</p>
+                <p className="details__naming-description">
+                  {phone.connectivity.wifi}
+                </p>
+              </li>
+              <li>
+                <p className="details__naming">Bluetooth</p>
+                <p className="details__naming-description">
+                  {phone.connectivity.bluetooth}
+                </p>
+              </li>
+              <li>
+                <p className="details__naming">Infrared</p>
+                <p className="details__naming-description">
+                  {phone.connectivity.infrared ? 'yes' : 'no'}
+                </p>
+              </li>
+              <li>
+                <p className="details__naming">GPS</p>
+                <p className="details__naming-description">
+                  {phone.connectivity.gps ? 'yes' : 'no'}
+                </p>
+              </li>
+            </ul>
+          </div>
+        </div>
       </section>
     );
   }

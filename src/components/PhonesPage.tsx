@@ -15,6 +15,7 @@ export const PhonesPage: FC = () => {
 
   return (
     <div className="phones">
+      <h2 className="phones__header">Mobile phones</h2>
       <div className="settings">
         <input
           type="text"

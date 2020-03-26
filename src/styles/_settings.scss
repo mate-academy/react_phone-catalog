@@ -1,31 +1,24 @@
 .settings {
 
   width: 100%;
-  padding: 30px 200px;
 
   &__search {
     width: 300px;
     height: 40px;
-    border-radius: 7px;
-    border: 1px solid $dark_green;
+    border: 1px solid $secondary;
     padding: 0 20px;
     outline: 0;
-    font-size: 16px;
+    font-size: 14px;
   }
 
   &__select {
     margin-left: 50px;
-    background-color: transparent;
+    padding-left: 20px;
+    width: 150px;
+    height: 40px;
     font-size: 16px;
-    color: $dark_green;
-    text-transform: uppercase;;
-    border: none;
+    border: 1px solid $secondary;
     outline: none;
     cursor: pointer;
-
-    &:hover,
-    &:focus {
-      color: $light_green;
-    }
   }
 } 

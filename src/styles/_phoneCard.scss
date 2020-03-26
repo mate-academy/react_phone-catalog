@@ -1,27 +1,31 @@
 .phone {
   
-  width: 500px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  width: 272px;
+  height: 508px;
+  border: 1px solid $elements;
+  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.05);
+  padding: 20px;
   
   &__img {
     width: 200px;
+    height: 200px;
+    object-fit: contain;
+    display: block;
+    margin: auto;
   }
 
   &__info {
     width: 250px;
+    color: $primary;
   }
 
   &__name {
-    font-size: 20px;
-    color: #000;
+    font-size: 14px;
+    font-weight: 500;
   }
 
   &__description {
-    font-size: 16px;
+    font-size: 12px;
     line-height: 150%;
-    color: #000;
   }
-
 }

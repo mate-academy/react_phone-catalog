@@ -1,36 +1,52 @@
 @import './variables';
 
 .header {
-  border-bottom: 2px solid $dark_green;
+
+  height: 64px;
+  padding: 0 40px;
+  border-bottom: 2px solid $elements;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  &__logo {
+    width: 50px;
+    height: 35px;
+    text-align: center;
+    margin: 0 100px 0 30px;
+  }
 }
 
 .navigation {
-  width: 100%;
-  padding-left: 50px;
-  background-color: $light_green;
 
   &__list {
     list-style: none;
-    padding-top: 50px;
     width: 200px;
     justify-content: space-between;
-    align-items: flex-end;
     display: flex;
   }
 
   &__item {
     display: block;
-    font-size: 24px;
-    height: 70px;
-    width: 150px;
-    text-align: center;
-    line-height: 70px;
-    color: $dark_blue;
+    font-size: 12px;
+    text-transform: uppercase;
     text-decoration: none;
+    font-weight: bold;
+    color: $secondary;
+    position: relative;
 
     &--active {
-      background-color: $dark_green;
-      color: $white;
+      color: $primary;
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 40px;
+        display: block;
+        width: 100%;
+        height: 2px;
+        background-color: $primary;
+      }
     }
   }
 }

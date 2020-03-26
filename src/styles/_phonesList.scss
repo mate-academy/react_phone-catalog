@@ -1,17 +1,22 @@
 .phones {
+
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 40px;
+
+  &__header {
+    font-size: 32px;
+    color: $primary;
+  }
   
   &__list {
     padding: 0 40px;
     margin-bottom: 80px;
     list-style: none;
     display: grid;
-    grid-template-columns: repeat(auto-fill, 500px);
-    grid-column-gap: 40px;
+    grid-template-columns: repeat(auto-fill, 272px);
+    grid-column-gap: 16px;
     grid-row-gap: 40px;
     justify-content: center;
-  }
-
-  &__item {
-    width: 500px;
   }
 }
