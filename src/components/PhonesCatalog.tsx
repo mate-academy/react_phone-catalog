@@ -2,19 +2,12 @@ import React, { useState, useEffect, FC, useMemo, MouseEvent } from 'react';
 import { Link } from 'react-router-dom';
 import { PHONES_URL } from '../api/constants';
 import { Phone } from './Phone';
+import { filterPhones } from '../api/helpers';
 
 interface Props {
   filter: string;
   sort: string;
 }
-
-const filterPhones = (filter: string, phones: Phone[]): Phone[] => {
-  const filterToLowerCase = filter.toLowerCase();
-
-  return phones
-    .filter(phone => phone.name.toLocaleLowerCase().includes(filterToLowerCase)
-    || phone.snippet.toLocaleLowerCase().includes(filterToLowerCase));
-};
 
 export const PhonesCatalog: FC<Props> = ({ filter, sort }) => {
   const getLocalStorage = JSON.parse(localStorage.getItem('basket')!);
