@@ -6,6 +6,7 @@ import './styles/main.scss';
 
 const HomePageAsync = lazy(() => import('./components/HomePage')
   .then(({ HomePage }) => ({ default: HomePage })));
+
 const PhoneDetailsAsync = lazy(() => import('./components/PhoneDetailsPage')
   .then(({ PhoneDetailsPage }) => ({ default: PhoneDetailsPage })));
 
