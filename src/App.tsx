@@ -24,7 +24,7 @@ const App: FC = () => (
       <Route path="/notfound404" exact>
         <NotFound404Page />
       </Route>
-      <Redirect path="*" to="/notfound404" />
+      <Redirect path="/" to="/notfound404" />
     </Switch>
   </Router>
 );
