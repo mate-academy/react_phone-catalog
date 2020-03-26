@@ -23,7 +23,7 @@
   &__remove {
     width: 16px;
     height: 16px;
-    background: url(/img/Close.png) center no-repeat;
+    background: url(../img//Close.png) center no-repeat;
     background-color: $white;
     border: none;
     outline: none;
@@ -43,11 +43,11 @@
     }
 
     &--plus {
-      background: url(/img/Plus.png) no-repeat center;
+      background: url(../img//Plus.png) no-repeat center;
     }
 
     &--minus {
-      background: url(/img/Minus.png) no-repeat center;
+      background: url(../img/Minus.png) no-repeat center;
     }
   }
 }
