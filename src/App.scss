@@ -1,0 +1,38 @@
+//@import "./components/Style/header";
+
+body {
+  font-family: "Montserrat", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  outline: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.btn {
+  width: 64px;
+  height: 64px;
+  border: 1px solid #b4bdc4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s;
+}
+
+.icon-btn {
+  transition: 0.3s;
+}
+
+.btn:hover .icon-btn {
+  transform: translate(0, -5px);
+}
+
+.wrapper {
+  width: 1136px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
