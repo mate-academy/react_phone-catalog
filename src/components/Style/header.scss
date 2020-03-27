@@ -30,25 +30,6 @@
     margin-right: 64px;
     transition: color 0.3s;
 
-    &::after {
-      content: "";
-      width: 0;
-      height: 3px;
-      position: absolute;
-      bottom: -26px;
-      left: 0;
-      background-color: #313237;
-      transition: 0.3s;
-    }
-
-    &:hover {
-      color: #313237;
-
-      &::after {
-        width: 100%;
-      }
-    }
-
     &:last-child {
       margin-right: 0;
     }
@@ -86,4 +67,19 @@
   font-weight: 600;
   font-size: 14px;
   color: #b4bdc4;
+}
+
+.link-active {
+  color: #313237;
+
+  &::after {
+    content: "";
+    width: 100%;
+    height: 3px;
+    position: absolute;
+    bottom: -26px;
+    left: 0;
+    background-color: #313237;
+    transition: 0.3s;
+  }
 }
