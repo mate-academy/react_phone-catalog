@@ -1,0 +1,104 @@
+@import "../../styles/utils/vars";
+
+.header-nav {
+  height: 64px;
+  display: flex;
+  border: 1px solid $elements-color;
+  &__likes,
+  &__cart {
+    min-width: 64px;
+    height: 100%;
+    border-right: 1px solid $elements-color;
+  }
+  &__likes {
+    background: url("./img/Icons/heart.png") no-repeat center;
+  }
+  &__cart {
+    background: url("./img/Icons/cart.png") no-repeat center;
+  }
+  &__search {
+    height: 100%;
+    width: 327px;
+    padding: 0 24px;
+    border: none;
+    border-right: 1px solid $elements-color;
+  }
+  &__label {
+    position: relative;
+    height: 100%;
+    &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: 24px;
+      transform: translateY(-50%);
+      width: 16px;
+      height: 16px;
+      background: url("./img/Icons/magnifying-glass.png") no-repeat center;
+      background-size: 16px;
+    }
+  }
+}
+
+.navigation {
+  border-right: 1px solid $elements-color;
+  width: 100%;
+  &__list {
+    display: flex;
+  }
+  &__item {
+    margin-right: 64px;
+  }
+  &__link {
+    display: inline-block;
+    line-height: 64px;
+  }
+}
+
+.main-logo {
+  display: inline-block;
+  margin: 0 82px 0 24px;
+  line-height: 64px;
+}
+
+.slider {
+  max-width: 1136px;
+  margin-top: 40px;
+  &__wrapper {
+    display: flex;
+    height: 400px;
+  }
+  &__button {
+    min-width: 32px;
+  }
+  &__list {
+    margin: 0 16px;
+  }
+  &__button {
+    background-color: $white-color;
+    border: 1px solid #b4bdc4;
+    &-left {
+      background: url("./img/Icons/arrow-left.png") no-repeat center;
+    }
+    &-right {
+      background: url("./img/Icons/arrow-right.png") no-repeat center;
+    }
+  }
+}
+
+.slider-indicators {
+  display: flex;
+  width: 72px;
+  margin: 18px auto 0;
+  &__item {
+    width: 14px;
+    height: 4px;
+    background: $elements-color;
+    &-active {
+      background: $primary-color;
+    }
+  }
+  &__item:not(:last-child) {
+    margin-right: 14px;
+  }
+}

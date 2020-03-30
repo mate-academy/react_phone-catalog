@@ -1,0 +1,14 @@
+@import "./utils/mixins";
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Mont-Regular", serif;
+  overflow-x: hidden;
+}
+
+.section-wrapper {
+  @include section-wrapper;
+}
