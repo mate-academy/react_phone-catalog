@@ -1,45 +1,24 @@
 import React from 'react';
-
-import './App.css';
-
-import PhoneCatalog from './PhoneCatalog';
-import PhoneDetailsPage from './PhoneDetailsPage';
+import './App.scss';
+import { Switch, Route } from 'react-router-dom';
+import { Header } from './components/Header/Header';
+import { HomePage } from './views/Home/HomePage';
+import { NotFound } from './components/NotFound/NotFound';
+import { PhonesPage } from './views/Phones/PhonesPage';
+import { TabletsPage } from './views/Tablets/TabletsPage';
+import { AccessoriesPage } from './views/Accessories/AccessoriesPage';
 
 const App = () => (
   <div className="container-fluid">
     <div className="row">
-      <div className="col-md-2">
-        <section>
-          <h2>Filter</h2>
-
-          <label>
-            <div>Search:</div>
-            <input />
-          </label>
-
-          <label>
-            <div>Sort by:</div>
-            <select>
-              <option value="name">Alphabetical</option>
-              <option value="age">Newest</option>
-            </select>
-          </label>
-        </section>
-
-        <section>
-          <h2>Shopping Cart</h2>
-          <ul>
-            <li>Phone 1</li>
-            <li>Phone 2</li>
-            <li>Phone 3</li>
-          </ul>
-        </section>
-      </div>
-
-      <div className="col-md-10">
-        <PhoneDetailsPage />
-        <PhoneCatalog />
-      </div>
+      <Header />
+      <Switch>
+        <Route path="/" exact component={HomePage} />
+        <Route path="/phones" component={PhonesPage} />
+        <Route path="/tablets" component={TabletsPage} />
+        <Route path="/accessories" component={AccessoriesPage} />
+        <Route component={NotFound} />
+      </Switch>
     </div>
   </div>
 );

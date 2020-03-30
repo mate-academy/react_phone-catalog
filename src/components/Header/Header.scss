@@ -1,0 +1,24 @@
+.header {
+  height: 64px;
+  display: flex;
+  align-items: center;
+}
+
+.nav {
+  display: flex;
+  &__logo {
+    margin-right: 82px;
+  }
+  &__list {
+    display: flex;
+    list-style: none;
+  }
+  &__item {
+    margin-right: 64px;
+
+    text-transform: uppercase;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
