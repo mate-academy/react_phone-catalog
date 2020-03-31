@@ -23,8 +23,8 @@ const NavTemplate: FC<Props> = ({
     <header className="header">
       <div className="header__navigation-block">
         <div className="header__logo">
-          <img src="img/Apple.png" alt="Apple" />
-          <img src="img/Drocher.png" alt="Drocher" />
+          <img src="img/Apple.svg" alt="Apple" />
+          <img src="img/Drocher.svg" alt="Drocher" />
         </div>
         <nav className="navigation">
           <ul className="navigation__list">
@@ -67,7 +67,7 @@ const NavTemplate: FC<Props> = ({
           )}
         </button>
         {isOpenedBasket && (
-          <Basket />
+          <Basket setIsOpenedBasket={setisOpenedBasket} />
         )}
       </div>
     </header>

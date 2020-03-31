@@ -97,3 +97,16 @@ interface BasketState {
 interface BasketButtonState {
   isOpened: boolean;
 }
+
+interface PhoneDetailsState {
+  phone: Details|null;
+}
+
+interface ErrorState {
+  error: string|null;
+}
+
+interface LoadState {
+  isLoading: boolean;
+  isLoaded: boolean;
+}

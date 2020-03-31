@@ -5,12 +5,15 @@ import { Phone } from './Phone';
 import { filterPhones } from '../api/helpers';
 import { Basket } from './Basket';
 import * as actions from '../redux/actions';
+import { LoaderComponent } from './LoaderComponent';
 
 interface Props {
   filter: string;
   sort: string;
   phones: Phone[];
   basket: Basket[];
+  isLoading: boolean;
+  isLoaded: boolean;
   loadPhones: () => void;
   setPhones: (phones: Phone[]) => void;
   setBasket: (basket: Basket[]) => void;
@@ -21,6 +24,8 @@ export const PhonesCatalogTemplate: FC<Props> = ({
   sort,
   phones,
   basket,
+  isLoaded,
+  isLoading,
   loadPhones,
   setPhones,
   setBasket,
@@ -65,7 +70,8 @@ export const PhonesCatalogTemplate: FC<Props> = ({
   return (
     <>
       <ul className="phones__list">
-        {phonesToShow.map(phone => (
+        {(isLoading) && <LoaderComponent /> }
+        {(isLoaded) && phonesToShow.map(phone => (
           <li className="phones__item" key={phone.id}>
             <Link className="link" to={`/phones/${phone.id}`}>
               <Phone
@@ -85,10 +91,13 @@ const mapStateToProps = (
   state: {
     catalogReducer: CatalogState;
     basketReducer: BasketState;
+    loadReducer: LoadState;
   },
 ) => ({
   phones: state.catalogReducer.phones,
   basket: state.basketReducer.basket,
+  isLoaded: state.loadReducer.isLoaded,
+  isLoading: state.loadReducer.isLoading,
 });
 
 const mapDispatchToProps = {

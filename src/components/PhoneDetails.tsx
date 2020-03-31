@@ -1,29 +1,39 @@
-import React, { useEffect, FC, useState } from 'react';
-
-import { GetDetailsURL } from '../api/constants';
+import React, { useEffect, FC, useState, MouseEvent } from 'react';
+import { connect } from 'react-redux';
 import { NotFoundProne } from './NotFoundPhone';
+import * as actions from '../redux/actions';
+import { LoaderComponent } from './LoaderComponent';
 
 interface Props {
   id: string;
+  phone: Details|null;
+  error: string|null;
+  basket: Basket[];
+  isLoading: boolean;
+  isLoaded: boolean;
+  loadPhoneDetails: (id: string) => void;
+  setBasket: (basket: Basket[]) => void;
 }
 
-export const PhoneDetails: FC<Props> = ({ id }) => {
-  const [phone, setPhone] = useState<Details|null>(null);
-  const [error, setError] = useState<string|null>(null);
+const PhoneDetailsTemplate: FC<Props> = ({
+  id,
+  phone,
+  error,
+  basket,
+  isLoaded,
+  isLoading,
+  loadPhoneDetails,
+  setBasket,
+}) => {
   const [currentImg, setCurrentImg] = useState<string|undefined>(undefined);
 
   useEffect(() => {
-    setError(null);
-    fetch(GetDetailsURL(id))
-      .then(async response => {
-        if (response.ok) {
-          setPhone(await response.json());
-        } else {
-          throw new Error(response.statusText);
-        }
-      })
-      .catch(err => setError(err));
+    loadPhoneDetails(id);
   }, []);
+
+  useEffect(() => {
+    loadPhoneDetails(id);
+  }, [id]);
 
   useEffect(() => {
     setCurrentImg(phone?.images[0]);
@@ -33,7 +43,19 @@ export const PhoneDetails: FC<Props> = ({ id }) => {
     setCurrentImg(photo);
   };
 
-  if (!error && phone) {
+  const handleAdd = (e: MouseEvent<HTMLButtonElement>, phoneId: string) => {
+    e.preventDefault();
+
+    setBasket([...basket, {
+      id: phoneId, quantity: 1, phone: `/phones/${id}`,
+    }]);
+  };
+
+  if (isLoading && !isLoaded) {
+    return <LoaderComponent />;
+  }
+
+  if (!error && phone && isLoaded) {
     return (
       <section className="details">
         <div className="info">
@@ -47,6 +69,25 @@ export const PhoneDetails: FC<Props> = ({ id }) => {
           <div className="info__base">
             <h3 className="info__header">{phone.id}</h3>
             <p className="info__description">{phone.description}</p>
+            {basket.find(item => item.id === id)
+              ? (
+                <button
+                  className="phone__added"
+                  type="button"
+                  disabled
+                >
+              Added to cart
+                </button>
+              )
+              : (
+                <button
+                  className="phone__add"
+                  type="button"
+                  onClick={(e) => handleAdd(e, id)}
+                >
+              Add to cart
+                </button>
+              )}
             <ul className="info__list">
               {phone.images.map(photo => (
                 <li key={photo} className="info__item">
@@ -165,3 +206,28 @@ export const PhoneDetails: FC<Props> = ({ id }) => {
 
   return <NotFoundProne />;
 };
+
+const mapStateToProps = (
+  state: {
+    phoneDetailsReducer: PhoneDetailsState;
+    errorReducer: ErrorState;
+    basketReducer: BasketState;
+    loadReducer: LoadState;
+  },
+) => ({
+  phone: state.phoneDetailsReducer.phone,
+  error: state.errorReducer.error,
+  basket: state.basketReducer.basket,
+  isLoaded: state.loadReducer.isLoaded,
+  isLoading: state.loadReducer.isLoading,
+});
+
+const mapDispatchToProps = {
+  loadPhoneDetails: actions.loadPhoneDetails,
+  setBasket: actions.setBasket,
+};
+
+export const PhoneDetails = connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(PhoneDetailsTemplate);
