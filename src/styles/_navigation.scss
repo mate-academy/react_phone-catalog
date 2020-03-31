@@ -11,8 +11,15 @@
   border-bottom: 2px solid $elements;
   background-color: $white;
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
+
+  &__navigation-block {
+    width: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 
   &__logo {
     width: 50px;

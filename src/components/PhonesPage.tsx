@@ -1,7 +1,12 @@
 import React, { FC, useState, ChangeEvent } from 'react';
+import { connect } from 'react-redux';
 import { PhonesCatalog } from './PhonesCatalog';
 
-export const PhonesPage: FC = () => {
+interface Props {
+  phones: Phone[];
+}
+
+export const PhonesPageTemplate: FC<Props> = ({ phones }) => {
   const [filter, setFilter] = useState('');
   const [sort, setSort] = useState('age');
 
@@ -16,6 +21,11 @@ export const PhonesPage: FC = () => {
   return (
     <div className="phones">
       <h2 className="phones__header">Mobile phones</h2>
+      <p className="phones__quantity">
+        {phones.length}
+        {' '}
+         models
+      </p>
       <div className="settings">
         <input
           type="text"
@@ -38,3 +48,16 @@ export const PhonesPage: FC = () => {
     </div>
   );
 };
+
+const mapStateToProps = (
+  state: {
+    catalogReducer: CatalogState;
+  },
+) => ({
+  phones: state.catalogReducer.phones,
+});
+
+export const PhonesPage = connect(
+  mapStateToProps,
+  null,
+)(PhonesPageTemplate);

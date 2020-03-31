@@ -1,20 +1,30 @@
 import React, { useState, useEffect, FC, useMemo, MouseEvent } from 'react';
 import { Link } from 'react-router-dom';
-import { PHONES_URL } from '../api/constants';
+import { connect } from 'react-redux';
 import { Phone } from './Phone';
 import { filterPhones } from '../api/helpers';
 import { Basket } from './Basket';
+import * as actions from '../redux/actions';
 
 interface Props {
   filter: string;
   sort: string;
+  phones: Phone[];
+  basket: Basket[];
+  loadPhones: () => void;
+  setPhones: (phones: Phone[]) => void;
+  setBasket: (basket: Basket[]) => void;
 }
 
-export const PhonesCatalog: FC<Props> = ({ filter, sort }) => {
-  const getLocalStorage = JSON.parse(localStorage.getItem('basket')!);
-  const initialBasket = getLocalStorage ? [...getLocalStorage] : [];
-  const [phones, setPhones] = useState<Phone[]>([]);
-  const [basket, setBasket] = useState<Item[]>([...initialBasket]);
+export const PhonesCatalogTemplate: FC<Props> = ({
+  filter,
+  sort,
+  phones,
+  basket,
+  loadPhones,
+  setPhones,
+  setBasket,
+}) => {
   const [isOpenedBasket, setisOpenedBasket] = useState(false);
 
   const addItemToBascket = (e: MouseEvent<HTMLButtonElement>, id: string) => {
@@ -22,7 +32,7 @@ export const PhonesCatalog: FC<Props> = ({ filter, sort }) => {
     const itemIndex = basket.findIndex(phone => phone.id === id);
 
     if (itemIndex !== -1) {
-      setBasket(prev => [...prev].map((item, index) => {
+      setBasket([...basket].map((item, index) => {
         if (index === itemIndex) {
           return {
             ...item,
@@ -40,13 +50,8 @@ export const PhonesCatalog: FC<Props> = ({ filter, sort }) => {
   };
 
   useEffect(() => {
-    fetch(PHONES_URL)
-      .then(async data => setPhones(await data.json()));
+    loadPhones();
   }, []);
-
-  useEffect(() => {
-    window.localStorage.setItem('basket', JSON.stringify(basket));
-  }, [basket]);
 
   useEffect(() => {
     switch (sort) {
@@ -73,57 +78,8 @@ export const PhonesCatalog: FC<Props> = ({ filter, sort }) => {
     return filterPhones(filter, phones);
   }, [filter, phones]);
 
-  const handleBasket = () => {
-    setisOpenedBasket(prev => !prev);
-  };
-
-  const removeItem = (id: string): void => {
-    setBasket([...basket.filter(item => item.id !== id)]);
-  };
-
-  const onIncrement = (id: string): void => {
-    setBasket([...basket.map(item => {
-      if (item.id === id) {
-        return {
-          ...item,
-          quantity: item.quantity + 1,
-        };
-      }
-
-      return item;
-    })]);
-  };
-
-  const onDecrement = (id: string): void => {
-    setBasket([...basket.map(item => {
-      if (item.id === id) {
-        return {
-          ...item,
-          quantity: item.quantity - 1,
-        };
-      }
-
-      return item;
-    })]);
-  };
-
   return (
     <>
-      <div>
-        <button
-          type="button"
-          className="settings__basket"
-          onClick={handleBasket}
-        />
-        {isOpenedBasket && (
-          <Basket
-            basket={basket}
-            removeItem={removeItem}
-            onIncrement={onIncrement}
-            onDecrement={onDecrement}
-          />
-        )}
-      </div>
       <ul className="phones__list">
         {phonesToShow.map(phone => (
           <li className="phones__item" key={phone.id}>
@@ -136,3 +92,26 @@ export const PhonesCatalog: FC<Props> = ({ filter, sort }) => {
     </>
   );
 };
+
+/// //////////////////////////////////////////
+
+const mapStateToProps = (
+  state: {
+    catalogReducer: CatalogState;
+    basketReducer: BasketState;
+  },
+) => ({
+  phones: state.catalogReducer.phones,
+  basket: state.basketReducer.basket,
+});
+
+const mapDispatchToProps = {
+  loadPhones: actions.loadPhones,
+  setPhones: actions.setPhones,
+  setBasket: actions.setBasket,
+};
+
+export const PhonesCatalog = connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(PhonesCatalogTemplate);

@@ -79,3 +79,21 @@ interface Item {
   quantity: number;
   phone: string;
 }
+
+interface Basket {
+  id: string;
+  phone: string;
+  quantity: number;
+}
+
+interface CatalogState {
+  phones: Phone[];
+}
+
+interface BasketState {
+  basket: Basket[];
+}
+
+interface BasketButtonState {
+  isOpened: boolean;
+}

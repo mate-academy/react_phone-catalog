@@ -1,25 +1,47 @@
 import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
-
-interface Basket {
-  id: string;
-  phone: string;
-  quantity: number;
-}
+import { connect } from 'react-redux';
+import * as actions from '../redux/actions';
 
 interface Props {
   basket: Basket[];
-  removeItem: (id: string) => void;
-  onIncrement: (id: string) => void;
-  onDecrement: (id: string) => void;
+  setBasket: (basket: Basket[]) => void;
 }
 
-export const Basket: FC<Props> = ({
+const BasketTemplate: FC<Props> = ({
   basket,
-  removeItem,
-  onIncrement,
-  onDecrement,
+  setBasket,
 }) => {
+  const removeItem = (id: string): void => {
+    setBasket([...basket.filter(item => item.id !== id)]);
+  };
+
+  const onIncrement = (id: string): void => {
+    setBasket([...basket.map(item => {
+      if (item.id === id) {
+        return {
+          ...item,
+          quantity: item.quantity + 1,
+        };
+      }
+
+      return item;
+    })]);
+  };
+
+  const onDecrement = (id: string): void => {
+    setBasket([...basket.map(item => {
+      if (item.id === id) {
+        return {
+          ...item,
+          quantity: item.quantity - 1,
+        };
+      }
+
+      return item;
+    })]);
+  };
+
   if (basket.length > 0) {
     return (
       <div className="basket">
@@ -64,3 +86,20 @@ export const Basket: FC<Props> = ({
     </div>
   );
 };
+
+const mapStateToProps = (
+  state: {
+    basketReducer: BasketState;
+  },
+) => ({
+  basket: state.basketReducer.basket,
+});
+
+const mapDispatchToProps = {
+  setBasket: actions.setBasket,
+};
+
+export const Basket = connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(BasketTemplate);
