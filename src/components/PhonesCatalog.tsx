@@ -1,4 +1,4 @@
-import React, { useState, useEffect, FC, useMemo, MouseEvent } from 'react';
+import React, { useEffect, FC, useMemo, MouseEvent } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Phone } from './Phone';
@@ -25,28 +25,12 @@ export const PhonesCatalogTemplate: FC<Props> = ({
   setPhones,
   setBasket,
 }) => {
-  const [isOpenedBasket, setisOpenedBasket] = useState(false);
-
   const addItemToBascket = (e: MouseEvent<HTMLButtonElement>, id: string) => {
     e.preventDefault();
-    const itemIndex = basket.findIndex(phone => phone.id === id);
 
-    if (itemIndex !== -1) {
-      setBasket([...basket].map((item, index) => {
-        if (index === itemIndex) {
-          return {
-            ...item,
-            quantity: item.quantity + 1,
-          };
-        }
-
-        return item;
-      }));
-    } else {
-      setBasket([...basket, {
-        id, quantity: 1, phone: `/phones/${id}`,
-      }]);
-    }
+    setBasket([...basket, {
+      id, quantity: 1, phone: `/phones/${id}`,
+    }]);
   };
 
   useEffect(() => {
@@ -84,7 +68,11 @@ export const PhonesCatalogTemplate: FC<Props> = ({
         {phonesToShow.map(phone => (
           <li className="phones__item" key={phone.id}>
             <Link className="link" to={`/phones/${phone.id}`}>
-              <Phone phone={phone} handleAdd={addItemToBascket} />
+              <Phone
+                phone={phone}
+                handleAdd={addItemToBascket}
+                basket={basket}
+              />
             </Link>
           </li>
         ))}
@@ -92,8 +80,6 @@ export const PhonesCatalogTemplate: FC<Props> = ({
     </>
   );
 };
-
-/// //////////////////////////////////////////
 
 const mapStateToProps = (
   state: {

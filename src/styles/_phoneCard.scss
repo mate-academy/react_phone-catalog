@@ -49,4 +49,11 @@
       color: $green;
     }
   }
+
+  &__added {
+    @extend .phone__add;
+    background-color: $white;
+    border: 1px solid $secondary;
+    color: $green;
+  }
 }
