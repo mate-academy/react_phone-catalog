@@ -6,10 +6,15 @@ import * as actions from '../redux/actions';
 
 interface Props {
   isOpenedBasket: boolean;
+  basket: Basket[];
   setisOpenedBasket: () => void;
 }
 
-const NavTemplate: FC<Props> = ({ isOpenedBasket, setisOpenedBasket }) => {
+const NavTemplate: FC<Props> = ({
+  isOpenedBasket,
+  setisOpenedBasket,
+  basket,
+}) => {
   const handleBasket = () => {
     setisOpenedBasket();
   };
@@ -52,7 +57,15 @@ const NavTemplate: FC<Props> = ({ isOpenedBasket, setisOpenedBasket }) => {
           type="button"
           className="settings__basket"
           onClick={handleBasket}
-        />
+        >
+          {basket.length > 0 && (
+            <span className="navigation__basket-items">
+              {basket.reduce((total, item) => {
+                return total + item.quantity;
+              }, 0)}
+            </span>
+          )}
+        </button>
         {isOpenedBasket && (
           <Basket />
         )}
@@ -64,9 +77,11 @@ const NavTemplate: FC<Props> = ({ isOpenedBasket, setisOpenedBasket }) => {
 const mapStateToProps = (
   state: {
     basketButtonReducer: BasketButtonState;
+    basketReducer: BasketState;
   },
 ) => ({
   isOpenedBasket: state.basketButtonReducer.isOpened,
+  basket: state.basketReducer.basket,
 });
 
 const mapDispatchToProps = {

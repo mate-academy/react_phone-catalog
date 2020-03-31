@@ -31,6 +31,20 @@
 
 .navigation {
 
+  &__basket-items {
+    display: block;
+    width: 20px;
+    height: 20px;
+    background-color: $red;
+    position: relative;
+    top: -10px;
+    right: -10px;
+    color: $white;
+    border-radius: 50%;
+    line-height: 20px;
+    font-size: 12px;
+  }
+
   &__list {
     list-style: none;
     width: 200px;
