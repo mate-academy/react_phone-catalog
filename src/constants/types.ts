@@ -1,5 +1,5 @@
-export interface Phone {
-  age: string;
+export interface PhoneInterface {
+  age: number;
   id: string;
   imageUrl: string;
   name: string;
@@ -56,7 +56,7 @@ interface Storage {
   ram: string;
 }
 
-export interface PhoneDetails {
+export interface PhoneDetailsInterface {
   additionalFeatures: string;
   android: Android;
   availability: string[];
@@ -71,4 +71,12 @@ export interface PhoneDetails {
   name: string;
   sizeAndWeight: SizeAndWeight;
   storage: Storage;
+}
+
+export interface State {
+  phones: PhoneInterface[];
+  isLoading: boolean;
+  favourites: PhoneInterface[];
+  query: string;
+  cart: PhoneInterface[];
 }

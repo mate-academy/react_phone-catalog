@@ -6,7 +6,7 @@
     margin: 0 auto;
   }
 
-  &__top-location {
+  &__breadcrumbs {
     width: 93px;
     display: flex;
     justify-content: space-between;
@@ -51,6 +51,18 @@
     font-weight: 500;
     font-size: 14px;
     line-height: 21px;
+    color: #89939a;
+  }
+
+  &__filters {
+    margin: 40px 0 24px;
+    width: 20%;
+  }
+
+  &__type-filter {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
     color: #89939a;
   }
 

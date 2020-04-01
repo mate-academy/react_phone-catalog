@@ -1,37 +1,60 @@
-import React, { FC, useEffect, useState } from 'react';
-import { Link, Route } from 'react-router-dom';
+import React, { FC, useEffect } from 'react';
 import './_PhoneCatalog.scss';
-import axios from 'axios';
-import { URL } from '../../constants/api';
-import { Phone } from '../../constants/types';
-import { PhoneThumb } from '../PhoneThumb/PhoneThunb';
-import { PhoneDetaisPage } from '../PhoneDetailsPage/PhoneDetailsPage';
+import { connect } from 'react-redux';
+import Loader from 'react-loader-spinner';
+import { PhoneInterface, State } from '../../constants/types';
+import { PhoneThumb } from '../PhoneThumb/PhoneThumb';
+import { loadPhones } from '../../store/store';
+import { getPhones, getIsLoading } from '../../store/rootReducer';
 
-export const PhoneCatalog: FC
-= () => {
-  const [phones, setPhones] = useState<Phone[]>([]);
+interface Props {
+  phones: PhoneInterface[];
+  loadPhones: () => void;
+  isLoading: boolean;
+}
+
+export const PhoneCatalogTemplate: FC<Props> = (props) => {
+  const {
+    phones,
+    loadPhones: loadData,
+    isLoading,
+  } = props;
 
   useEffect(() => {
-    axios.get(URL).then(res => setPhones(res.data));
+    loadData();
   }, []);
 
   return (
     <>
-      <Route
-        path="/phone/:phoneId?"
-        render={() => (
-          <PhoneDetaisPage />
-        )}
-      />
-      <ul className="phoneCatalog">
-        {phones.map(phone => (
-          <li className="phoneCatalog__item" key={phone.id}>
-            <Link to={`/phones/${phone.id}`}>
-              <PhoneThumb data={phone} />
-            </Link>
-          </li>
-        ))}
-      </ul>
+      {isLoading ? (
+        <Loader
+          type="Puff"
+          color="#00bfff"
+          height={100}
+          width={100}
+        />
+      ) : (
+        <ul className="phoneCatalog">
+          {phones.map((phone: PhoneInterface) => (
+            <li className="phoneCatalog__item" key={phone.id}>
+              <PhoneThumb
+                data={phone}
+              />
+            </li>
+          ))}
+        </ul>
+      )
+      }
     </>
   );
 };
+
+const mapDispatchToProps = { loadPhones };
+
+const mapStateToProps = (state: State) => ({
+  phones: getPhones(state),
+  isLoading: getIsLoading(state),
+});
+
+export const PhoneCatalog
+  = connect(mapStateToProps, mapDispatchToProps)(PhoneCatalogTemplate);

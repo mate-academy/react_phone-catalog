@@ -15,13 +15,13 @@
     margin-left: 64px;
     margin-bottom: 20px;
     margin-top: 20px;
-    background: url("/img/header/logo.png") center no-repeat;
+    background: url("/public/img/header/logo.png") center no-repeat;
     background-size: contain;
   }
 
   .nav {
     display: flex;
-    margin-left: 140px;
+    margin-left: 8%;
     align-items: center;
 
     width: 100%;
@@ -30,28 +30,28 @@
       display: flex;
       justify-content: space-between;
       list-style-type: none;
+    }
 
-      & * a {
-        text-decoration: none;
-        text-transform: uppercase;
-        font-weight: bold;
-        font-size: 12px;
-        line-height: 11px;
-        color: #89939a;
-        margin-right: 64px;
+    &__link-left {
+      text-decoration: none;
+      text-transform: uppercase;
+      font-weight: bold;
+      font-size: 12px;
+      line-height: 11px;
+      color: #89939a;
+      margin-right: 64px;
 
-        position: relative;
+      position: relative;
 
-        &:hover {
-          &::before {
-            position: absolute;
-            content: "";
-            height: 4px;
-            width: 100%;
-            background: #313237;
-            bottom: -24px;
-            left: 0;
-          }
+      &--active {
+        &::before {
+          position: absolute;
+          content: "";
+          height: 4px;
+          width: 100%;
+          background: #313237;
+          bottom: -25px;
+          left: 0;
           color: #313237;
         }
       }
@@ -63,6 +63,22 @@
       list-style-type: none;
       position: absolute;
       right: 0;
+    }
+
+    &__link-right {
+
+      &--active {
+        &::before {
+          position: absolute;
+          content: "";
+          height: 4px;
+          width: 100%;
+          background: #313237;
+          bottom: -1px;
+          left: 0;
+          color: #313237;
+        }
+      }
     }
 
     &__item-input {

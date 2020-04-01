@@ -1,5 +1,5 @@
 import { URL } from '../constants/api';
-import { Phone } from '../constants/types';
+import { PhoneInterface } from '../constants/types';
 
 const getDataFromServer = async <T>(url: string): Promise<T> => {
   const data = await fetch(url);
@@ -7,8 +7,11 @@ const getDataFromServer = async <T>(url: string): Promise<T> => {
   return data.json();
 };
 
-export const getPhones: () => Promise<Phone[]> = async() => {
-  const users = await getDataFromServer<Phone[]>(URL);
+export const getPhones: () => Promise<PhoneInterface[]> = async() => {
+  const phones = await getDataFromServer<PhoneInterface[]>(URL);
 
-  return users;
+  return phones;
 };
+
+// eslint-disable-next-line max-len
+export const getDataById = (url: string) => `https://mate-academy.github.io/phone-catalogue-static/api/phones/${url}.json`;

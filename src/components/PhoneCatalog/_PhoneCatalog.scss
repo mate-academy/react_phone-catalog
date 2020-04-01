@@ -8,10 +8,9 @@
   &__item {
     width: 272px;
     height: 507px;
-    margin: 10px;
+    margin: 10px auto;
 
-    border-radius: 25px;
-    border: 2px solid grey;
     list-style-type: none;
+    border: 1px solid #e2e6e9;
   }
 }
