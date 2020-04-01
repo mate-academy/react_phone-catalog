@@ -2,6 +2,7 @@
   height: 64px;
   display: flex;
   align-items: center;
+  border-bottom: 2px solid #ccc;
 }
 
 .nav {
@@ -14,11 +15,22 @@
     list-style: none;
   }
   &__item {
+    position: relative;
     margin-right: 64px;
 
     text-transform: uppercase;
     &:last-child {
       margin-right: 0;
     }
+  }
+}
+
+.active {
+  &::after {
+    content: "";
+    display: block;
+    height: 1px;
+    background-color: #ccc;
+    padding-bottom: 5px;
   }
 }

@@ -1,0 +1,25 @@
+.phones {
+  display: grid;
+  justify-content: space-around;
+  grid-template-columns: repeat(3, 272px);
+  grid-gap: 40px 16px;
+
+  margin-top: 15px;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+
+  &__img {
+    object-fit: contain;
+    height: 208px;
+    width: 208px;
+  }
+
+  &-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+}
