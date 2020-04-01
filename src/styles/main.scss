@@ -6,9 +6,11 @@
 @import './phoneDetailsPage';
 @import './settings';
 @import "./basket";
+@import "./footer";
 
 * {
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 body,
@@ -25,4 +27,8 @@ ul  {
 .loader__wrapper {
   width: 100%;
   text-align: center;
+}
+
+.container {
+  min-height: 80vh;
 }

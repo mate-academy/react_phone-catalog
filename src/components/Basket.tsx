@@ -6,13 +6,11 @@ import * as actions from '../redux/actions';
 interface Props {
   basket: Basket[];
   setBasket: (basket: Basket[]) => void;
-  setIsOpenedBasket: () => void;
 }
 
 const BasketTemplate: FC<Props> = ({
   basket,
   setBasket,
-  setIsOpenedBasket,
 }) => {
   const removeItem = (id: string): void => {
     setBasket([...basket.filter(item => item.id !== id)]);
@@ -42,10 +40,6 @@ const BasketTemplate: FC<Props> = ({
 
       return item;
     })]);
-  };
-
-  const handleLink = () => {
-    setIsOpenedBasket();
   };
 
   if (basket.length > 0) {
@@ -78,7 +72,6 @@ const BasketTemplate: FC<Props> = ({
               <Link
                 className="link"
                 to={`/phones/${item.id}`}
-                onClick={handleLink}
               >
                 <p>See details</p>
               </Link>

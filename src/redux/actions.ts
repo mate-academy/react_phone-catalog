@@ -5,7 +5,7 @@ import { PHONES_URL, GetDetailsURL } from '../api/constants';
 export const type = {
   SET_PHONES: 'SET_PHONES',
   SET_BASKET: 'SET_BASKET',
-  SET_IS_OPENED_BASKET: 'SET_IS_OPENED_BASKET',
+  SET_LIKES: 'SET_LIKES',
   SET_PHONE_DETAILS: 'SET_PHONE_DETAILS',
   SET_ERROR: 'SET_ERROR',
   SET_IS_LOADING: 'SET_IS_LOADING',
@@ -37,8 +37,9 @@ export const setBasket = (basket: Basket[]) => ({
   basket,
 });
 
-export const setisOpenedBasket = () => ({
-  type: type.SET_IS_OPENED_BASKET,
+export const setLikes = (likes: string[]) => ({
+  type: type.SET_LIKES,
+  likes,
 });
 
 export const setError = (error: string|null) => ({

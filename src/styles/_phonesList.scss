@@ -1,8 +1,8 @@
 .phones {
 
   max-width: 1500px;
-  margin: 0 auto;
-  padding: 80px 40px;
+  margin: 60px auto 0;
+  padding: 40px;
 
   &__header {
     font-size: 32px;
@@ -17,7 +17,6 @@
   
   &__list {
     padding: 0;
-    margin-bottom: 80px;
     list-style: none;
     display: grid;
     grid-template-columns: repeat(auto-fill, 272px);

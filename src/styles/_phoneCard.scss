@@ -30,6 +30,12 @@
     height: 120px;
   }
 
+  &__buttons {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+
   &__add {
     width: 176px;
     height: 40px;
@@ -39,7 +45,6 @@
     border: 1px solid $primary;
     outline: none;
     display: block;
-    margin: 0 auto;
     cursor: pointer;
 
     &:hover,
@@ -55,5 +60,24 @@
     background-color: $white;
     border: 1px solid $secondary;
     color: $green;
+  }
+
+  &__like {
+    width: 40px;
+    height: 40px;
+    background-color: $white;
+    border: 1px solid $elements;
+    background: url(../img/like_red.svg) no-repeat center;
+    cursor: pointer;
+    outline: none;
+    
+    &:hover {
+      border: 1px solid $primary;
+    }
+  }
+
+  &__dislike {
+    @extend .phone__like;
+    background: url(../img/like.svg) no-repeat center;    
   }
 }

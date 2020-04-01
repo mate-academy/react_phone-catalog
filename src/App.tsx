@@ -6,34 +6,44 @@ import { HomePage } from './components/HomePage';
 import { PhoneDetailsPage } from './components/PhoneDetailsPage';
 import { PhonesPage } from './components/PhonesPage';
 import { NotFound } from './components/NotFound';
+import { Footer } from './components/Footer';
+import { Basket } from './components/Basket';
 
 const App: FC = () => (
-  <div className="container-fluid">
+  <div>
     <div className="row">
       <div>
-        <Nav />
-        <Switch>
-          <Route
-            path="/"
-            exact
-            component={HomePage}
-          />
-          <Route
-            path="/phones"
-            exact
-            component={PhonesPage}
-          />
-          <Route
-            path="/phones/:phoneId"
-            exact
-            component={PhoneDetailsPage}
-          />
-          <Route
-            path="*"
-            exact
-            component={NotFound}
-          />
-        </Switch>
+        <div className="container">
+          <Nav />
+          <Switch>
+            <Route
+              path="/"
+              exact
+              component={HomePage}
+            />
+            <Route
+              path="/phones"
+              exact
+              component={PhonesPage}
+            />
+            <Route
+              path="/cart"
+              exact
+              component={Basket}
+            />
+            <Route
+              path="/phones/:phoneId"
+              exact
+              component={PhoneDetailsPage}
+            />
+            <Route
+              path="*"
+              exact
+              component={NotFound}
+            />
+          </Switch>
+        </div>
+        <Footer />
       </div>
     </div>
   </div>

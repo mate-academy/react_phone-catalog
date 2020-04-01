@@ -3,10 +3,8 @@
   border: 1px solid $elements;
   width: 1000px;
   padding: 40px;
-  position: absolute;
-  top: 70px;
-  left: 50%;
-  transform: translateX(-50%);
+  margin: 100px auto;
+  
 
   &__item {
     list-style: none;

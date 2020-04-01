@@ -110,3 +110,7 @@ interface LoadState {
   isLoading: boolean;
   isLoaded: boolean;
 }
+
+interface LikesState {
+  likes: string[];
+}

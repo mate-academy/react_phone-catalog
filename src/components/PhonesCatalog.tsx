@@ -14,9 +14,11 @@ interface Props {
   basket: Basket[];
   isLoading: boolean;
   isLoaded: boolean;
+  likes: string[];
   loadPhones: () => void;
   setPhones: (phones: Phone[]) => void;
   setBasket: (basket: Basket[]) => void;
+  setLikes: (likes: string[]) => void;
 }
 
 export const PhonesCatalogTemplate: FC<Props> = ({
@@ -24,11 +26,13 @@ export const PhonesCatalogTemplate: FC<Props> = ({
   sort,
   phones,
   basket,
+  likes,
   isLoaded,
   isLoading,
   loadPhones,
   setPhones,
   setBasket,
+  setLikes,
 }) => {
   const addItemToBascket = (e: MouseEvent<HTMLButtonElement>, id: string) => {
     e.preventDefault();
@@ -36,6 +40,17 @@ export const PhonesCatalogTemplate: FC<Props> = ({
     setBasket([...basket, {
       id, quantity: 1, phone: `/phones/${id}`,
     }]);
+  };
+
+  const addLike = (e: MouseEvent<HTMLButtonElement>, phoneId: string) => {
+    e.preventDefault();
+    const hasLike = likes.findIndex(item => item === phoneId);
+
+    if (hasLike === -1) {
+      setLikes([...likes, phoneId]);
+    } else {
+      setLikes([...likes.filter(item => item !== phoneId)]);
+    }
   };
 
   useEffect(() => {
@@ -77,7 +92,9 @@ export const PhonesCatalogTemplate: FC<Props> = ({
               <Phone
                 phone={phone}
                 handleAdd={addItemToBascket}
+                handleLikes={addLike}
                 basket={basket}
+                likes={likes}
               />
             </Link>
           </li>
@@ -92,8 +109,10 @@ const mapStateToProps = (
     catalogReducer: CatalogState;
     basketReducer: BasketState;
     loadReducer: LoadState;
+    likesReducer: LikesState;
   },
 ) => ({
+  likes: state.likesReducer.likes,
   phones: state.catalogReducer.phones,
   basket: state.basketReducer.basket,
   isLoaded: state.loadReducer.isLoaded,
@@ -104,6 +123,7 @@ const mapDispatchToProps = {
   loadPhones: actions.loadPhones,
   setPhones: actions.setPhones,
   setBasket: actions.setBasket,
+  setLikes: actions.setLikes,
 };
 
 export const PhonesCatalog = connect(

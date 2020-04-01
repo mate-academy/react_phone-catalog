@@ -37,18 +37,24 @@
     height: 20px;
     background-color: $red;
     position: relative;
-    top: -10px;
-    right: -10px;
+    top: 15px;
+    right: -35px;
     color: $white;
     border-radius: 50%;
     line-height: 20px;
     font-size: 12px;
+    font-weight: normal;
+    text-align: center;
   }
 
   &__list {
     list-style: none;
     width: 200px;
     justify-content: space-between;
+    display: flex;
+  }
+
+  &__additional {
     display: flex;
   }
 
@@ -60,6 +66,20 @@
     font-weight: bold;
     color: $secondary;
     position: relative;
+
+    &--like {
+      background: url(../img/like.svg) no-repeat center;
+      width: 70px;
+      height: 70px;
+      border-left: 1px solid $elements;
+    }
+
+    &--cart {
+      background: url(../img/cart.svg) no-repeat center;
+      width: 70px;
+      height: 70px;
+      border-left: 1px solid $elements;
+    }
 
     &--active {
       color: $primary;
@@ -74,5 +94,29 @@
         background-color: $primary;
       }
     }
+
+    &--active-additional {
+      color: $primary;
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 67px;
+        display: block;
+        width: 100%;
+        height: 2px;
+        background-color: $primary;
+      }
+    }
   }
+}
+
+.settings__basket {
+  width: 70px;
+  height: 70px;
+  background: url(../img/cart.svg) no-repeat center;
+  border: 1px solid $elements;
+  border-bottom: 2px solid transparent;
+  outline: none;
+  cursor: pointer;
 }

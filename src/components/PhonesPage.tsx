@@ -19,7 +19,7 @@ export const PhonesPageTemplate: FC<Props> = ({ phones }) => {
   };
 
   return (
-    <div className="phones">
+    <div className="phones" id="header">
       <h2 className="phones__header">Mobile phones</h2>
       <p className="phones__quantity">
         {phones.length}

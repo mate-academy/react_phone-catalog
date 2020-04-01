@@ -3,10 +3,18 @@ import React, { FC, MouseEvent } from 'react';
 interface Props {
   phone: Phone;
   handleAdd: (e: MouseEvent<HTMLButtonElement>, id: string) => void;
+  handleLikes: (e: MouseEvent<HTMLButtonElement>, id: string) => void;
   basket: Basket[];
+  likes: string[];
 }
 
-export const Phone: FC<Props> = ({ phone, handleAdd, basket }) => {
+export const Phone: FC<Props> = ({
+  phone,
+  handleAdd,
+  handleLikes,
+  basket,
+  likes,
+}) => {
   const { id, name, imageUrl, snippet } = phone;
 
   return (
@@ -16,25 +24,45 @@ export const Phone: FC<Props> = ({ phone, handleAdd, basket }) => {
         <h3 className="phone__name">{name}</h3>
         <p className="phone__description">{snippet}</p>
 
-        {basket.find(item => item.id === id)
-          ? (
-            <button
-              className="phone__added"
-              type="button"
-              disabled
-            >
+        <div className="phone__buttons">
+          {basket.find(item => item.id === id)
+            ? (
+              <button
+                className="phone__added"
+                type="button"
+                disabled
+              >
               Added to cart
-            </button>
-          )
-          : (
-            <button
-              className="phone__add"
-              type="button"
-              onClick={(e) => handleAdd(e, id)}
-            >
+              </button>
+            )
+            : (
+              <button
+                className="phone__add"
+                type="button"
+                onClick={(e) => handleAdd(e, id)}
+              >
               Add to cart
-            </button>
-          )}
+              </button>
+            )}
+
+          {likes.includes(id)
+            ? (
+              <button
+                type="button"
+                className="phone__like"
+                onClick={(e) => handleLikes(e, id)}
+              />
+            )
+            : (
+              <button
+                type="button"
+                className="phone__dislike"
+                onClick={(e) => handleLikes(e, id)}
+              />
+            )
+          }
+
+        </div>
 
       </div>
     </div>

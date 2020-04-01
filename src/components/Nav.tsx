@@ -1,24 +1,16 @@
 import React, { FC } from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Basket } from './Basket';
-import * as actions from '../redux/actions';
 
 interface Props {
-  isOpenedBasket: boolean;
   basket: Basket[];
-  setisOpenedBasket: () => void;
+  likes: string[];
 }
 
 const NavTemplate: FC<Props> = ({
-  isOpenedBasket,
-  setisOpenedBasket,
   basket,
+  likes,
 }) => {
-  const handleBasket = () => {
-    setisOpenedBasket();
-  };
-
   return (
     <header className="header">
       <div className="header__navigation-block">
@@ -52,11 +44,26 @@ const NavTemplate: FC<Props> = ({
         </nav>
       </div>
 
-      <div>
-        <button
-          type="button"
-          className="settings__basket"
-          onClick={handleBasket}
+      <div className="navigation__additional">
+
+        <NavLink
+          to="/favorites"
+          exact
+          className="navigation__item navigation__item--like"
+          activeClassName="navigation__item--active-additional"
+        >
+          {likes.length > 0 && (
+            <span className="navigation__basket-items">
+              {likes.length}
+            </span>
+          )}
+        </NavLink>
+
+        <NavLink
+          to="/cart"
+          exact
+          className="navigation__item navigation__item--cart"
+          activeClassName="navigation__item--active-additional"
         >
           {basket.length > 0 && (
             <span className="navigation__basket-items">
@@ -65,10 +72,7 @@ const NavTemplate: FC<Props> = ({
               }, 0)}
             </span>
           )}
-        </button>
-        {isOpenedBasket && (
-          <Basket setIsOpenedBasket={setisOpenedBasket} />
-        )}
+        </NavLink>
       </div>
     </header>
   );
@@ -76,19 +80,14 @@ const NavTemplate: FC<Props> = ({
 
 const mapStateToProps = (
   state: {
-    basketButtonReducer: BasketButtonState;
     basketReducer: BasketState;
+    likesReducer: LikesState;
   },
 ) => ({
-  isOpenedBasket: state.basketButtonReducer.isOpened,
   basket: state.basketReducer.basket,
+  likes: state.likesReducer.likes,
 });
-
-const mapDispatchToProps = {
-  setisOpenedBasket: actions.setisOpenedBasket,
-};
 
 export const Nav = connect(
   mapStateToProps,
-  mapDispatchToProps,
 )(NavTemplate);
