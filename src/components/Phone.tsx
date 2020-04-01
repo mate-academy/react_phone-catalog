@@ -1,21 +1,46 @@
 import React, { FC, MouseEvent } from 'react';
+import { connect } from 'react-redux';
+import * as actions from '../redux/actions';
 
 interface Props {
   phone: Phone;
-  handleAdd: (e: MouseEvent<HTMLButtonElement>, id: string) => void;
-  handleLikes: (e: MouseEvent<HTMLButtonElement>, id: string) => void;
+  // handleAdd: (e: MouseEvent<HTMLButtonElement>, id: string) => void;
+  // handleLikes: (e: MouseEvent<HTMLButtonElement>, id: string) => void;
   basket: Basket[];
   likes: string[];
+  setBasket: (basket: Basket[]) => void;
+  setLikes: (likes: string[]) => void;
 }
 
-export const Phone: FC<Props> = ({
+export const PhoneTemplate: FC<Props> = ({
   phone,
-  handleAdd,
-  handleLikes,
+  // handleAdd,
+  // handleLikes,
   basket,
   likes,
+  setBasket,
+  setLikes,
 }) => {
   const { id, name, imageUrl, snippet } = phone;
+
+  const handleAdd = (e: MouseEvent<HTMLButtonElement>, phoneId: string) => {
+    e.preventDefault();
+
+    setBasket([...basket, {
+      id: phoneId, quantity: 1, phone: `/phones/${phoneId}`,
+    }]);
+  };
+
+  const handleLikes = (e: MouseEvent<HTMLButtonElement>, phoneId: string) => {
+    e.preventDefault();
+    const hasLike = likes.findIndex(item => item === phoneId);
+
+    if (hasLike === -1) {
+      setLikes([...likes, phoneId]);
+    } else {
+      setLikes([...likes.filter(item => item !== phoneId)]);
+    }
+  };
 
   return (
     <div className="phone">
@@ -68,3 +93,14 @@ export const Phone: FC<Props> = ({
     </div>
   );
 };
+
+const mapDispatchToProps = {
+  setPhones: actions.setPhones,
+  setBasket: actions.setBasket,
+  setLikes: actions.setLikes,
+};
+
+export const Phone = connect(
+  null,
+  mapDispatchToProps,
+)(PhoneTemplate);

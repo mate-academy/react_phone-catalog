@@ -8,6 +8,7 @@ import { PhonesPage } from './components/PhonesPage';
 import { NotFound } from './components/NotFound';
 import { Footer } from './components/Footer';
 import { Basket } from './components/Basket';
+import { Favorites } from './components/Favorites';
 
 const App: FC = () => (
   <div>
@@ -30,6 +31,11 @@ const App: FC = () => (
               path="/cart"
               exact
               component={Basket}
+            />
+            <Route
+              path="/favorites"
+              exact
+              component={Favorites}
             />
             <Route
               path="/phones/:phoneId"

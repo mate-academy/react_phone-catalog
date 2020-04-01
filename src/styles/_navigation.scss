@@ -56,7 +56,16 @@
 
   &__additional {
     display: flex;
+
+    .navigation__item {
+      width: 67px;
+      height: 67px;
+      border-right: 1px solid $elements;
+      margin-bottom: 5px;
+    }
   }
+
+
 
   &__item {
     display: block;
@@ -66,19 +75,15 @@
     font-weight: bold;
     color: $secondary;
     position: relative;
+    
 
     &--like {
       background: url(../img/like.svg) no-repeat center;
-      width: 70px;
-      height: 70px;
-      border-left: 1px solid $elements;
+      border-left: 1px solid $elements;      
     }
 
     &--cart {
       background: url(../img/cart.svg) no-repeat center;
-      width: 70px;
-      height: 70px;
-      border-left: 1px solid $elements;
     }
 
     &--active {

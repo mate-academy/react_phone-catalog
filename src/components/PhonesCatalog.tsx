@@ -1,9 +1,8 @@
-import React, { useEffect, FC, useMemo, MouseEvent } from 'react';
+import React, { useEffect, FC, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Phone } from './Phone';
 import { filterPhones } from '../api/helpers';
-import { Basket } from './Basket';
 import * as actions from '../redux/actions';
 import { LoaderComponent } from './LoaderComponent';
 
@@ -31,28 +30,7 @@ export const PhonesCatalogTemplate: FC<Props> = ({
   isLoading,
   loadPhones,
   setPhones,
-  setBasket,
-  setLikes,
 }) => {
-  const addItemToBascket = (e: MouseEvent<HTMLButtonElement>, id: string) => {
-    e.preventDefault();
-
-    setBasket([...basket, {
-      id, quantity: 1, phone: `/phones/${id}`,
-    }]);
-  };
-
-  const addLike = (e: MouseEvent<HTMLButtonElement>, phoneId: string) => {
-    e.preventDefault();
-    const hasLike = likes.findIndex(item => item === phoneId);
-
-    if (hasLike === -1) {
-      setLikes([...likes, phoneId]);
-    } else {
-      setLikes([...likes.filter(item => item !== phoneId)]);
-    }
-  };
-
   useEffect(() => {
     loadPhones();
   }, []);
@@ -91,8 +69,6 @@ export const PhonesCatalogTemplate: FC<Props> = ({
             <Link className="link" to={`/phones/${phone.id}`}>
               <Phone
                 phone={phone}
-                handleAdd={addItemToBascket}
-                handleLikes={addLike}
                 basket={basket}
                 likes={likes}
               />

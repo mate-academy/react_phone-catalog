@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 
 export const Footer: FC = () => {
@@ -35,7 +35,10 @@ export const Footer: FC = () => {
         </ul>
       </nav>
       <div className="footer__up-conteiner">
-        <HashLink to="phones#header" className="footer__up">
+        <HashLink
+          to={`${useLocation().pathname}#header`}
+          className="footer__up"
+        >
           <p>Back to top</p>
           <span className="footer__up-button" />
         </HashLink>
