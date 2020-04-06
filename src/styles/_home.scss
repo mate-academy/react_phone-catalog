@@ -1,0 +1,50 @@
+.home {
+  padding: 150px 80px;
+  max-width: 1500px;
+  margin: 0 auto;
+
+  &__title {
+    font-size: 32px;
+    color: $primary;
+    margin-bottom: 50px;
+  }
+}
+
+.categories {
+  display: flex;
+  justify-content: space-between;
+
+  &__img-container {
+    width: 368px;
+    padding: 0;
+    display: flex;
+    justify-content: flex-end;      
+
+
+    &--phone {
+      background-color: #fcdbc1;
+    }
+
+    &--tablets {
+      background-color: #8d8d92;
+    }
+
+    &--accessories {
+      background-color: #973d5f;
+    }
+  }
+
+  &__name {
+    font-size: 20px;
+    color: $primary;
+  }
+
+  &__number {
+    font-size: 14px;
+    color: $secondary;
+  }
+}
+
+.category {
+  width: 368px;
+}

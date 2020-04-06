@@ -1,0 +1,83 @@
+.phone {
+  
+  width: 272px;
+  height: 508px;
+  border: 1px solid $elements;
+  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.05);
+  padding: 20px;
+  
+  &__img {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    display: block;
+    margin: auto;
+  }
+
+  &__info {
+    color: $primary;
+  }
+
+  &__name {
+    font-size: 14px;
+    font-weight: 500;
+    height: 30px;
+  }
+
+  &__description {
+    font-size: 12px;
+    line-height: 150%;
+    height: 120px;
+  }
+
+  &__buttons {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  &__add {
+    width: 176px;
+    height: 40px;
+    background-color: $primary;
+    color: $white;
+    font-weight: 600;
+    border: 1px solid $primary;
+    outline: none;
+    display: block;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      background-color: $white;
+      border: 1px solid $secondary;
+      color: $green;
+    }
+  }
+
+  &__added {
+    @extend .phone__add;
+    background-color: $white;
+    border: 1px solid $secondary;
+    color: $green;
+  }
+
+  &__like {
+    width: 40px;
+    height: 40px;
+    background-color: $white;
+    border: 1px solid $elements;
+    background: url(../img/like_red.svg) no-repeat center;
+    cursor: pointer;
+    outline: none;
+    
+    &:hover {
+      border: 1px solid $primary;
+    }
+  }
+
+  &__dislike {
+    @extend .phone__like;
+    background: url(../img/like.svg) no-repeat center;    
+  }
+}

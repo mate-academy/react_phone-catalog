@@ -1,0 +1,56 @@
+.footer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 80px;
+  border-top:  1px solid $elements;
+  margin-top: 50px;
+
+  &__logo {
+    width: 50px;
+  }
+
+  &__nav-list {
+    display: flex;
+    list-style: none;
+  }
+
+  &__nav-item {
+    color: $secondary;
+    text-decoration: none;
+    font-size: 12px;
+    text-transform: uppercase;
+    padding: 5px 20px;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+
+  &__up {
+    color: $secondary;
+    font-size: 12px;
+    text-decoration: none;
+    display: flex;
+    width: 120px;
+    justify-content: space-between;
+    align-items: center;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+
+  &__up-button {
+    background: url(../img/arrowup.svg) no-repeat center;
+    display: block;
+    width: 32px;
+    height: 32px;
+    border: 1px solid $elements;
+
+    &:hover {
+      border: 1px solid $primary;
+    }
+  }
+}

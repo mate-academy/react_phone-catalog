@@ -1,0 +1,53 @@
+.slider {
+  border: 1px solid $elements;
+  max-width: 1040px;
+  max-height: 400px;
+  margin: 0 auto 100px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.slide {
+  width: 1000px;
+  height: 400px;
+  transition: 0.5s;
+}
+
+%btn {
+  position: absolute;
+  top: 50%;  
+  transform: translateY(-50%);
+  width: 40px;
+  height: 100%;
+  border: 1px solid $elements;
+  cursor: pointer;
+  outline: none;
+  transition: border 0.3s ease-in-out;
+
+  &:hover {
+    border: 1px solid $primary;
+  }
+}
+
+.prev {
+  left: 0;
+  background: url(../img/prev.svg) no-repeat center;
+  background-color: #fff;
+  @extend %btn;
+}
+
+.next {
+  right: 0;
+  background: url(../img/next.svg) no-repeat center;
+  background-color: #fff;
+  @extend %btn;
+}
+
+.img {
+  width: 1000px;
+  height: 400px;
+  object-fit: cover;
+}

@@ -1,44 +1,55 @@
-import React from 'react';
+import React, { FC } from 'react';
+import { Switch, Route } from 'react-router-dom';
+import { Nav } from './components/Nav';
+import './styles/main.scss';
+import { HomePage } from './components/HomePage';
+import { PhoneDetailsPage } from './components/PhoneDetailsPage';
+import { PhonesPage } from './components/PhonesPage';
+import { NotFound } from './components/NotFound';
+import { Footer } from './components/Footer';
+import { Basket } from './components/Basket';
+import { Favorites } from './components/Favorites';
 
-import './App.css';
-
-import PhoneCatalog from './PhoneCatalog';
-import PhoneDetailsPage from './PhoneDetailsPage';
-
-const App = () => (
-  <div className="container-fluid">
+const App: FC = () => (
+  <div>
     <div className="row">
-      <div className="col-md-2">
-        <section>
-          <h2>Filter</h2>
-
-          <label>
-            <div>Search:</div>
-            <input />
-          </label>
-
-          <label>
-            <div>Sort by:</div>
-            <select>
-              <option value="name">Alphabetical</option>
-              <option value="age">Newest</option>
-            </select>
-          </label>
-        </section>
-
-        <section>
-          <h2>Shopping Cart</h2>
-          <ul>
-            <li>Phone 1</li>
-            <li>Phone 2</li>
-            <li>Phone 3</li>
-          </ul>
-        </section>
-      </div>
-
-      <div className="col-md-10">
-        <PhoneDetailsPage />
-        <PhoneCatalog />
+      <div>
+        <div className="container">
+          <Nav />
+          <Switch>
+            <Route
+              path="/"
+              exact
+              component={HomePage}
+            />
+            <Route
+              path="/phones"
+              exact
+              component={PhonesPage}
+            />
+            <Route
+              path="/cart"
+              exact
+              component={Basket}
+            />
+            <Route
+              path="/favorites"
+              exact
+              component={Favorites}
+            />
+            <Route
+              path="/phones/:phoneId"
+              exact
+              component={PhoneDetailsPage}
+            />
+            <Route
+              path="*"
+              exact
+              component={NotFound}
+            />
+          </Switch>
+        </div>
+        <Footer />
       </div>
     </div>
   </div>

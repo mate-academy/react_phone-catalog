@@ -1,0 +1,38 @@
+@import './fonts';
+@import './navigation';
+@import './notFound';
+@import './phoneCard';
+@import './phonesList';
+@import './phoneDetailsPage';
+@import './settings';
+@import "./basket";
+@import "./footer";
+@import "./favorites";
+@import "./path";
+@import "./slider";
+@import "./home";
+
+* {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body,
+ul  {
+  padding: 0;
+  margin: 0;
+  font-family: 'Mont';
+}
+
+.link {
+  text-decoration: none;
+}
+
+.loader__wrapper {
+  width: 100%;
+  text-align: center;
+}
+
+.container {
+  min-height: 80vh;
+}

@@ -1,0 +1,127 @@
+@import './variables';
+
+.header {
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  padding: 0 40px;
+  border-bottom: 2px solid $elements;
+  background-color: $white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__navigation-block {
+    width: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__logo {
+    width: 50px;
+    height: 35px;
+    text-align: center;
+    margin: 0 100px 0 30px;
+  }
+}
+
+.navigation {
+
+  &__basket-items {
+    display: block;
+    width: 20px;
+    height: 20px;
+    background-color: $red;
+    position: relative;
+    top: 15px;
+    right: -35px;
+    color: $white;
+    border-radius: 50%;
+    line-height: 20px;
+    font-size: 12px;
+    font-weight: normal;
+    text-align: center;
+  }
+
+  &__list {
+    list-style: none;
+    width: 200px;
+    justify-content: space-between;
+    display: flex;
+  }
+
+  &__additional {
+    display: flex;
+
+    .navigation__item {
+      width: 67px;
+      height: 67px;
+      border-right: 1px solid $elements;
+      margin-bottom: 5px;
+    }
+  }
+
+
+
+  &__item {
+    display: block;
+    font-size: 12px;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: bold;
+    color: $secondary;
+    position: relative;
+    
+
+    &--like {
+      background: url(../img/like.svg) no-repeat center;
+      border-left: 1px solid $elements;      
+    }
+
+    &--cart {
+      background: url(../img/cart.svg) no-repeat center;
+    }
+
+    &--active {
+      color: $primary;
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 40px;
+        display: block;
+        width: 100%;
+        height: 2px;
+        background-color: $primary;
+      }
+    }
+
+    &--active-additional {
+      color: $primary;
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 67px;
+        display: block;
+        width: 100%;
+        height: 2px;
+        background-color: $primary;
+      }
+    }
+  }
+}
+
+.settings__basket {
+  width: 70px;
+  height: 70px;
+  background: url(../img/cart.svg) no-repeat center;
+  border: 1px solid $elements;
+  border-bottom: 2px solid transparent;
+  outline: none;
+  cursor: pointer;
+}

@@ -1,0 +1,36 @@
+.favorites {
+  padding: 100px 0 0;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  &__header {
+    color: $primary;
+    font-size: 32px;
+  }
+
+  &__number {
+    color: $secondary;
+    font-size: 14px;
+    margin-bottom: 50px;
+  }
+
+  &__not-found {
+    color: $primary;
+    font-size: 20px;
+  }
+
+  &__collection {
+    display: grid;
+    margin: 0 auto;
+    max-width: 1200px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 272px);
+    grid-column-gap: 30px;
+    grid-row-gap: 40px;
+    justify-content: space-between;
+
+    & li {
+      list-style: none;
+    }
+  }
+}

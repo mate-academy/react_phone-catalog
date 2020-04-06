@@ -1,0 +1,59 @@
+.basket {
+  background-color: $white;
+  border: 1px solid $elements;
+  width: 1000px;
+  padding: 40px;
+  margin: 100px auto;
+  
+
+  &__item {
+    list-style: none;
+    border: 1px solid $elements;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 700px;
+    padding: 20px 50px;
+    margin-bottom: 30px;
+  }
+
+  &__name {
+    width: 300px;
+  }
+
+  &  .link {
+    margin-left: 30px;
+    color: $secondary;
+  }
+
+  &__remove {
+    width: 16px;
+    height: 16px;
+    background: url(../img//Close.svg) center no-repeat;
+    background-color: $white;
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
+
+  &__counter {
+    width: 32px;
+    height: 32px;
+    background-color: $white;
+    border: 1px solid $elements;
+    cursor: pointer;
+    outline: none;
+
+    &:hover {
+      border: 1px solid $secondary;
+    }
+
+    &--plus {
+      background: url(../img//Plus.svg) no-repeat center;
+    }
+
+    &--minus {
+      background: url(../img/Minus.svg) no-repeat center;
+    }
+  }
+}
