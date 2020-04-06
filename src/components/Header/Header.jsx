@@ -17,6 +17,7 @@ export const Header = () => {
               <NavLink
                 className="nav__link"
                 to="/"
+                exact
               >
                 Home
               </NavLink>

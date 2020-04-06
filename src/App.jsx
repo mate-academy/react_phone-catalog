@@ -23,6 +23,7 @@ const MainContent = () => {
       <Route
         path="/"
         render={() => (<Home />)}
+        exact
       />
       <Route
         path="/phones"

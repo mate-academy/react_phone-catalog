@@ -1,24 +1,27 @@
 .header {
+  box-shadow: 0px 1px 0px #E2E6E9;
+
   &__header-wrapper {
     display: flex;
     justify-content: space-between;
     max-width: 1500px;
+    height: 65px;
     margin: auto;
   }
 
 
   &__logo {
-    margin-right: 80px;
+    margin: 20px 80px 20px 25px;
   }
 
   &__logo-heading {
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 600;
 
   }
 
   &__logo-underheading {
-    font-size: 8.5px;
+    font-size: 9px;
     font-weight: 600;
     text-transform: uppercase;
     color: #89939A;
