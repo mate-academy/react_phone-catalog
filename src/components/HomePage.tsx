@@ -14,7 +14,7 @@ export const HomePage = () => (
               className="categories__img-container
              categories__img-container--phone "
             >
-              <img src="../img/phones.png" alt="phones" />
+              <img src="img/phones.png" alt="phones" />
             </div>
             <h4 className="categories__name">Tablets</h4>
             <p className="categories__number">10 models</p>
@@ -26,7 +26,7 @@ export const HomePage = () => (
               className="categories__img-container
              categories__img-container--accessories"
             >
-              <img src="../img/acseessoar.png" alt="phones" />
+              <img src="img/acseessoar.png" alt="phones" />
             </div>
             <h4 className="categories__name">Accessories</h4>
             <p className="categories__number">10 models</p>
@@ -38,7 +38,7 @@ export const HomePage = () => (
               className="categories__img-container
               categories__img-container--tablets"
             >
-              <img src="../img/tablets.png" alt="phones" />
+              <img src="img/tablets.png" alt="phones" />
             </div>
             <h4 className="categories__name">Mobile phones</h4>
             <p className="categories__number">10 models</p>

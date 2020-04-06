@@ -3,8 +3,8 @@ import shortid from 'shortid';
 import { ImgComponent } from './ImgComponent';
 
 export const Slider: FC = () => {
-  const sliderArr = [<ImgComponent src="../img/banner_1.png" />,
-    <ImgComponent src="../img/banner_2.jpg" />];
+  const sliderArr = [<ImgComponent src="img/banner_1.png" />,
+    <ImgComponent src="img/banner_2.jpg" />];
   const [x, setX] = useState(0);
 
   const goNext = () => {
