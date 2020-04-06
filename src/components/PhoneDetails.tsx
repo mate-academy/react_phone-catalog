@@ -1,8 +1,10 @@
 import React, { useEffect, FC, useState, MouseEvent } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { NotFoundProne } from './NotFoundPhone';
 import * as actions from '../redux/actions';
 import { LoaderComponent } from './LoaderComponent';
+import { BackPath } from './BackPath';
 
 interface Props {
   id: string;
@@ -57,7 +59,19 @@ const PhoneDetailsTemplate: FC<Props> = ({
 
   if (!error && phone && isLoaded) {
     return (
-      <section className="details">
+      <section className="details" id="header">
+        <div className="path">
+          <Link to="/">
+            <span className="path__home" />
+          </Link>
+          <span className="path__next" />
+          <Link to="/phones" className="path__link">
+            <span className="path__text">Phones</span>
+          </Link>
+          <span className="path__next" />
+          <span className="path__text--current">{phone.id}</span>
+        </div>
+        <BackPath />
         <div className="info">
           <div className="info__slider">
             <img

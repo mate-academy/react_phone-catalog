@@ -4,8 +4,6 @@ import * as actions from '../redux/actions';
 
 interface Props {
   phone: Phone;
-  // handleAdd: (e: MouseEvent<HTMLButtonElement>, id: string) => void;
-  // handleLikes: (e: MouseEvent<HTMLButtonElement>, id: string) => void;
   basket: Basket[];
   likes: string[];
   setBasket: (basket: Basket[]) => void;
@@ -14,8 +12,6 @@ interface Props {
 
 export const PhoneTemplate: FC<Props> = ({
   phone,
-  // handleAdd,
-  // handleLikes,
   basket,
   likes,
   setBasket,

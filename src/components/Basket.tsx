@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from '../redux/actions';
+import { BackPath } from './BackPath';
 
 interface Props {
   basket: Basket[];
@@ -45,7 +46,9 @@ const BasketTemplate: FC<Props> = ({
   if (basket.length > 0) {
     return (
       <div className="basket">
+        <BackPath />
         <h2>Cart</h2>
+
         <ul>
           {basket.length && (basket.map(item => (
             <li className="basket__item" key={item.id}>
@@ -84,6 +87,7 @@ const BasketTemplate: FC<Props> = ({
 
   return (
     <div className="basket">
+      <BackPath />
       <h2>Cart</h2>
       <p>Your cart is empty...</p>
     </div>

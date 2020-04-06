@@ -4,7 +4,7 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  padding: 80px 30px;
+  padding: 40px 30px;
 
   &__slider-img {
     max-width: 400px;
@@ -58,8 +58,8 @@
 }
 
 .details {
-
-  margin-bottom: 80px;
+  
+  padding: 100px 60px;
 
   &__wrapper {
     max-width: 1200px; 
@@ -101,7 +101,6 @@
     grid-row-gap: 50px;
     justify-content: center;
     padding: 20px 40px;
-    background-color: $light_green;
   }
 
   & h4 {

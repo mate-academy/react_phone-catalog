@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Phone } from './Phone';
 import * as actions from '../redux/actions';
+import { BackPath } from './BackPath';
 
 interface Props {
     phones: Phone[];
@@ -20,6 +21,14 @@ export const FavoritesTemplate: FC<Props> = ({
 }) => {
   return (
     <div className="favorites" id="header">
+      <div className="path">
+        <Link to="/">
+          <span className="path__home" />
+        </Link>
+        <span className="path__next" />
+        <span className="path__text--current">Favorites</span>
+      </div>
+      <BackPath />
       <h2 className="favorites__header">Favorites</h2>
       {(likes.length > 0) && (
         <p className="favorites__number">
