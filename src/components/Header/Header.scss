@@ -1,0 +1,28 @@
+.header {
+  &__header-wrapper {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1500px;
+    margin: auto;
+  }
+
+
+  &__logo {
+    margin-right: 80px;
+  }
+
+  &__logo-heading {
+    font-size: 15px;
+    font-weight: 600;
+
+  }
+
+  &__logo-underheading {
+    font-size: 8.5px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #89939A;
+
+  }
+}
+
