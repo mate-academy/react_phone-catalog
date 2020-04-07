@@ -1,0 +1,13 @@
+.notFound {
+  padding: 20px 30px;
+
+  &__heading {
+    color: red;
+  }
+
+  &__text,
+  &__link {
+    display: inline;
+  }
+}
+
