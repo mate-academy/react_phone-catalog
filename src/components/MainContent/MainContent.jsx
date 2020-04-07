@@ -4,7 +4,7 @@ import { Home } from '../Home/Home';
 import { Tablets } from '../Tablets/Tablets';
 import { Accessories } from '../Accessories/Accessories';
 import { PageNotFound } from '../PageNotFound/PageNotFound';
-import { PhonesContainer } from '../Phones/PhonesContainer';
+import PhonesContainer from '../Phones/PhonesContainer';
 
 export const MainContent = () => {
   return (

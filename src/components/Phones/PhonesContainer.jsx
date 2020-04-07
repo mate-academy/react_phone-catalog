@@ -2,15 +2,17 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Phones } from './Phones';
 import { setPhonesActionCreators } from '../../redux/reducers/phonesReducer';
+import { getPhones } from '../../redux/api/api';
 
-export class PhonesContainer extends React.Component {
+class PhonesContainer extends React.Component {
   componentDidMount() {
-    alert('everithing is fine');
+    getPhones()
+      .then(data => this.props.setPhones(data));
   }
 
   render() {
     return (
-      <Phones />
+      <Phones phones={this.props.phones} />
     );
   }
 }
@@ -23,4 +25,4 @@ const mapDispatchToProps = (dispatch) => ({
   setPhones: (phones) => dispatch(setPhonesActionCreators(phones)),
 });
 
-connect(mapStateToProps, mapDispatchToProps)(Phones);
+export default connect(mapStateToProps, mapDispatchToProps)(PhonesContainer);
