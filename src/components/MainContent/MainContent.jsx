@@ -1,10 +1,10 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { Home } from '../Home/Home';
-import { Phones } from '../Phones/Phones';
 import { Tablets } from '../Tablets/Tablets';
 import { Accessories } from '../Accessories/Accessories';
 import { PageNotFound } from '../PageNotFound/PageNotFound';
+import { PhonesContainer } from '../Phones/PhonesContainer';
 
 export const MainContent = () => {
   return (
@@ -17,7 +17,7 @@ export const MainContent = () => {
         />
         <Route
           path="/phones"
-          render={() => (<Phones />)}
+          render={() => (<PhonesContainer />)}
         />
         <Route
           path="/tablets"

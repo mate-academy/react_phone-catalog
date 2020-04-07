@@ -27,5 +27,30 @@
     color: #89939A;
 
   }
+
+  &__search-label {
+    width: 330px;
+    height: 100%;
+    outline: none;
+    border: none;
+    box-shadow: -1px 0px 0px #E2E6E9;
+  }
+
+  &__search-input {
+    width: 260px;
+    height: 100%;
+    border: none;
+    caret-color: #000;
+    padding-left: 25px;
+  }
+
+  &__search-input::placeholder {
+    font-weight: 600;
+    color: #B4BDC4;
+  }
+
+  &__search-icon {
+    padding-left: 25px;
+  }
 }
 
