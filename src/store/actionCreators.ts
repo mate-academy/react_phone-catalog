@@ -6,8 +6,8 @@ export const setPhones = (value: PhoneInterface[]) => ({
   payload: value,
 });
 
-export const setIsLoading = (value: boolean) => ({
-  type: ActionTypes.SET_LOADING,
+export const setIsLoadingPhones = (value: boolean) => ({
+  type: ActionTypes.SET_LOADING_PHONES,
   payload: value,
 });
 

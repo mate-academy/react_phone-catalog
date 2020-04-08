@@ -1,0 +1,26 @@
+.filters {
+  margin: 40px 0 24px;
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+
+  &__type-filter {
+    margin-bottom: 4px;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: #89939a;
+  }
+
+  &__filter {
+    width: 176px;
+    height: 40px;
+    background: #fff;
+    border: 1px solid #b4bdc4;
+
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    color: #313237;
+  }
+}

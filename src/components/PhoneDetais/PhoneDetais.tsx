@@ -1,33 +1,25 @@
-import React, { useEffect, useState, FC } from 'react';
+import React, { FC } from 'react';
 import { connect } from 'react-redux';
-import axios from 'axios';
 // import cx from 'classnames';
 import './_PhoneDetails.scss';
 import { Link } from 'react-router-dom';
-import { PhoneDetailsInterface } from '../../constants/types';
-import { getDataById } from '../../utils/api';
 import { setFavourites, setCart } from '../../store/actionCreators';
+import { PhoneDetailsInterface } from '../../constants/types';
 
 interface Props {
-  data: string;
+  phoneId: string;
+  phoneData: PhoneDetailsInterface;
   setFavourites: (id: string) => void;
   setCart: (id: string) => void;
 }
 
 export const PhoneDetaisTemplate: FC<Props> = (props) => {
   const {
-    data,
+    phoneId,
+    phoneData,
     setFavourites: setFavouritesTemplate,
     setCart: setCartTemplate,
   } = props;
-
-  const [phoneData, setPhoneData] = useState<PhoneDetailsInterface
-  | null>(null);
-  const url = getDataById(data);
-
-  useEffect(() => {
-    axios.get(url).then(res => setPhoneData(res.data));
-  }, []);
 
   const handleFavourites = (id: string) => {
     setFavouritesTemplate(id);
@@ -37,119 +29,116 @@ export const PhoneDetaisTemplate: FC<Props> = (props) => {
     setCartTemplate(id);
   };
 
-  const visibleDetail = phoneData === null ? ((
-    <p className="noData">No Data</p>
-  )
-  ) : (
-    (
-      <React.Fragment>
-        <div className="phone__breadcrumbs">
-          <span className="phone__home-logo" />
-          <span className="phone__location">Phones</span>
-          <span className="phone__model-name">{data}</span>
-        </div>
-        <Link to="/phones" className="phone__link-back">Back</Link>
-        <div className="phone__main">
-          <h3 className="phone__title">{data}</h3>
-          <div className="phone__top-block">
-            <div className="phone__images">
-              <div className="phone__sidebar-images">
-                {
-                  phoneData.images.map((imgThumb, ind) => (
-                    <img
-                      className="phone__thumb-img"
-                      src={`/img/phones/${data}.${ind}.jpg`}
-                      alt={`img_${ind}`}
-                      key={phoneData.images[ind]}
-                    />
-                  ))
-                }
-              </div>
-              <img
-                src={`/img/phones/${data}.0.jpg`}
-                alt="main_img"
-                className="phone__main-image"
-              />
-            </div>
-            <div className="phone__options">
-              <div className="phone__options-wrapper">
-                <form action="/" className="phone__form">
-                  <div className="phone__colors-option">
-                    <h4 className="phone__title-color">Available colors</h4>
-                    <div className="phone__colors">
-                      <div className="phone__color" />
-                      <div className="phone__color" />
-                      <div className="phone__color" />
-                    </div>
-                  </div>
-                  <div className="phone__capacity">
-                    <h4 className="phone__capacity-title">Select capacity</h4>
-                  </div>
-                  <div className="phone__price-option">
-                    <div className="phone__price">
-                      <span className="phone__price-new">$999</span>
-                      <span className="phone__price-old">$1200</span>
-                    </div>
-                    <div className="phone__btns">
-                      <button
-                        type="button"
-                        className="phone__cart"
-                        onClick={() => handleCart(phoneData.id)}
-                      >
-                    Add to cart
-                      </button>
-                      <button
-                        type="button"
-                        className="phone__favourites"
-                        onClick={() => handleFavourites(phoneData.id)}
-                      >
-                        <img
-                          src="/img/header/heart.svg"
-                          alt="phone_cart"
-                          className="phone__heart"
-                        />
-                      </button>
-                    </div>
-                  </div>
-                </form>
+  return (
 
-                <div className="phone__param">
-                  <div className="phone__screen block">
-                    <span className="left-top">Screen</span>
-                    <span className="right-top">data</span>
+    <div className="phone">
+      <div className="phone__breadcrumbs">
+        <span className="phone__home-logo" />
+        <span className="phone__location">Phones</span>
+        <span className="phone__model-name">{phoneData.name}</span>
+      </div>
+      <Link to="/phones" className="phone__link-back">Back</Link>
+      <div className="phone__main">
+        <h3 className="phone__title">{phoneData.name}</h3>
+        <div className="phone__top-block">
+          <div className="phone__images">
+            <div className="phone__sidebar-images">
+              {
+                phoneData.images.map((imgThumb, ind) => (
+                  <img
+                    className="phone__thumb-img"
+                    src={`/img/phones/${phoneId}.${ind}.jpg`}
+                    alt={`img_${ind}`}
+                    key={phoneData.images[ind]}
+                  />
+                ))
+              }
+            </div>
+            <img
+              src={`/img/phones/${phoneId}.0.jpg`}
+              alt="main_img"
+              className="phone__main-image"
+            />
+          </div>
+          <div className="phone__options">
+            <div className="phone__options-wrapper">
+              <form action="/" className="phone__form">
+                <div className="phone__colors-option">
+                  <h4 className="phone__title-color">Available colors</h4>
+                  <div className="phone__colors">
+                    <div className="phone__color" />
+                    <div className="phone__color" />
+                    <div className="phone__color" />
                   </div>
-                  <div className="phone__resolution block">
-                    <span className="left-top">Resolution</span>
-                    <span className="right-top">data</span>
+                </div>
+                <div className="phone__capacity">
+                  <h4 className="phone__capacity-title">Select capacity</h4>
+                </div>
+                <div className="phone__price-option">
+                  <div className="phone__price">
+                    <span className="phone__price-new">$999</span>
+                    <span className="phone__price-old">$1200</span>
                   </div>
-                  <div className="phone__processor block">
-                    <span className="left-top">Processor</span>
-                    <span className="right-top">data</span>
+                  <div className="phone__btns">
+                    <button
+                      type="button"
+                      className="phone__cart"
+                      onClick={() => handleCart(phoneData.id)}
+                    >
+                    Add to cart
+                    </button>
+                    <button
+                      type="button"
+                      className="phone__favourites"
+                      onClick={() => handleFavourites(phoneData.id)}
+                    >
+                      <img
+                        src="/img/header/heart.svg"
+                        alt="phone_cart"
+                        className="phone__heart"
+                      />
+                    </button>
                   </div>
-                  <div className="phone__ram block">
-                    <span className="left-top">RAM</span>
-                    <span className="right-top">data</span>
-                  </div>
+                </div>
+              </form>
+
+              <div className="phone__param">
+                <div className="phone__screen block">
+                  <span className="left-top">Screen</span>
+                  <span className="right-top">data</span>
+                </div>
+                <div className="phone__resolution block">
+                  <span className="left-top">Resolution</span>
+                  <span className="right-top">data</span>
+                </div>
+                <div className="phone__processor block">
+                  <span className="left-top">Processor</span>
+                  <span className="right-top">data</span>
+                </div>
+                <div className="phone__ram block">
+                  <span className="left-top">RAM</span>
+                  <span className="right-top">data</span>
                 </div>
               </div>
             </div>
-
           </div>
-          <div className="phone__bottom-block">
-            <div className="phone__about">
-              <h3 className="phone__subtitle">About</h3>
-              <h4 className="phone__title-info">And then there was Pro</h4>
-              <p className="phone__text">
-                {phoneData.description}
-                <br />
-                <br />
+
+        </div>
+        <div className="phone__bottom-block">
+          <div className="phone__about">
+            <h3 className="phone__subtitle">About</h3>
+            <h4 className="phone__title-info">And then there was Pro</h4>
+            <p className="phone__text">
+              {phoneData.description}
+              <br />
+              <br />
                   An unprecedented leap in battery life.
                   And a mind‑blowing chip that doubles down on machine learning
                   and pushes the boundaries of what a smartphone can do.
                   Welcome to the first iPhone powerful enough to be called Pro.
-              </p>
-              <h4 className="phone__title-info">Camera</h4>
-              <p className="phone__text">
+            </p>
+            <h4 className="phone__title-info">Camera</h4>
+            <p className="phone__text">
                   Meet the first triple‑camera system to combine
                   cutting‑edge technology with the legendary simplicity
                   of iPhone. Capture up to four times more scene.
@@ -157,12 +146,12 @@ export const PhoneDetaisTemplate: FC<Props> = (props) => {
                   Shoot the highest‑quality video in a smartphone — then
                   edit with the same tools you love for photos.
                   You’ve never shot with anything like it.
-              </p>
-              <h4 className="phone__title-info">
+            </p>
+            <h4 className="phone__title-info">
                   Shoot it. Flip it. Zoom it. Crop it. Cut it. Light it.
                   Tweak it. Love it.
-              </h4>
-              <p className="phone__text">
+            </h4>
+            <p className="phone__text">
                   iPhone 11 Pro lets you capture videos that are beautifully
                   true to life, with greater detail and smoother motion.
                   Epic processing power means it can shoot 4K video with
@@ -170,85 +159,77 @@ export const PhoneDetaisTemplate: FC<Props> = (props) => {
                   at 60 fps. You get more creative control, too,
                   with four times more scene and powerful new editing tools
                   to play with.
-              </p>
+            </p>
+          </div>
+          <div className="phone__specs">
+            <h3 className="phone__subtitle">Tech specs</h3>
+            <div className="phone__screen-specs block">
+              <span className="left-bottom">Screen</span>
+              <span className="right-bottom">data</span>
             </div>
-            <div className="phone__specs">
-              <h3 className="phone__subtitle">Tech specs</h3>
-              <div className="phone__screen-specs block">
-                <span className="left-bottom">Screen</span>
-                <span className="right-bottom">data</span>
-              </div>
-              <div className="phone__resolution-specs block">
-                <span className="left-bottom">Resolution</span>
-                <span className="right-bottom">data</span>
-              </div>
-              <div className="phone__processor block">
-                <span className="left-bottom">Processor</span>
-                <span className="right-bottom">data</span>
-              </div>
-              <div className="phone__ram block">
-                <span className="left-bottom">RAM</span>
-                <span className="right-bottom">data</span>
-              </div>
-              <div className="phone__memory-specs block">
-                <span className="left-bottom">Built in memory</span>
-                <span className="right-bottom">data</span>
-              </div>
-              <div className="phone__camera-specs block">
-                <span className="left-bottom">Camera</span>
-                <span className="right-bottom">data</span>
-              </div>
-              <div className="phone__zoom block">
-                <span className="left-bottom">zoom</span>
-                <span className="right-bottom">data</span>
-              </div>
-              <div className="phone__cell block">
-                <span className="left-bottom">Cell</span>
-                <span className="right-bottom">data</span>
-              </div>
+            <div className="phone__resolution-specs block">
+              <span className="left-bottom">Resolution</span>
+              <span className="right-bottom">data</span>
+            </div>
+            <div className="phone__processor block">
+              <span className="left-bottom">Processor</span>
+              <span className="right-bottom">data</span>
+            </div>
+            <div className="phone__ram block">
+              <span className="left-bottom">RAM</span>
+              <span className="right-bottom">data</span>
+            </div>
+            <div className="phone__memory-specs block">
+              <span className="left-bottom">Built in memory</span>
+              <span className="right-bottom">data</span>
+            </div>
+            <div className="phone__camera-specs block">
+              <span className="left-bottom">Camera</span>
+              <span className="right-bottom">data</span>
+            </div>
+            <div className="phone__zoom block">
+              <span className="left-bottom">zoom</span>
+              <span className="right-bottom">data</span>
+            </div>
+            <div className="phone__cell block">
+              <span className="left-bottom">Cell</span>
+              <span className="right-bottom">data</span>
             </div>
           </div>
         </div>
-      </React.Fragment>
-    )
-  );
+      </div>
 
-  return (
-
-    <section className="phone">
-
-      {visibleDetail}
-      <div className="phoneDetailsPage__likePhones">
-        <div className="phoneDetailsPage__prices-top">
-          <h3 className="phoneDetailsPage__title">You may also like</h3>
-          <div className="phoneDetailsPage__control-btns">
+      <div className="phoneDetailsMain__likePhones">
+        <div className="phoneDetailsMain__prices-top">
+          <h3 className="phoneDetailsMain__title">You may also like</h3>
+          <div className="phoneDetailsMain__control-btns">
             <button
               type="button"
-              className="phoneDetailsPage__price-btn
-              phoneDetailsPage__price-btn--left"
+              className="phoneDetailsMain__price-btn
+              phoneDetailsMain__price-btn--left"
             >
               <img
                 src="/img/arrow.svg"
                 alt="arrow_control_left"
-                className="phoneDetailsPage__price-arrow
-                phoneDetailsPage__price-arrow--left"
+                className="phoneDetailsMain__price-arrow
+                phoneDetailsMain__price-arrow--left"
               />
             </button>
             <button
               type="button"
-              className="phoneDetailsPage__price-btn
-              phoneDetailsPage__price-btn--right"
+              className="phoneDetailsMain__price-btn
+              phoneDetailsMain__price-btn--right"
             >
               <img
                 src="/img/arrow.svg"
                 alt="arrow_control_left"
-                className="phoneDetailsPage__price-arrow
-                phoneDetailsPage__price-arrow--right"
+                className="phoneDetailsMain__price-arrow
+                phoneDetailsMain__price-arrow--right"
               />
             </button>
           </div>
         </div>
-        <div className="phoneDetailsPage__prices-main">
+        <div className="phoneDetailsMain__prices-main">
           <div className="temp-block" />
           <div className="temp-block" />
           <div className="temp-block" />
@@ -256,7 +237,7 @@ export const PhoneDetaisTemplate: FC<Props> = (props) => {
         </div>
       </div>
 
-    </section>
+    </div>
 
   );
 };

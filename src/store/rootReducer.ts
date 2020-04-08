@@ -4,7 +4,7 @@ import { ActionTypes } from './actionTypes';
 
 export const initialState: State = {
   phones: [],
-  isLoading: false,
+  isLoadingPhones: false,
   favourites: [],
   cart: [],
   query: '',
@@ -12,8 +12,10 @@ export const initialState: State = {
 
 // selectors
 export const getPhones = (state: State) => state.phones;
-export const getIsLoading = (state: State) => state.isLoading;
+export const getCart = (state: State) => state.cart;
+export const getIsLoadingPhones = (state: State) => state.isLoadingPhones;
 export const getQuery = (state: State) => state.query;
+export const getFavourites = (state: State) => state.favourites;
 
 export const reducer = (state = initialState, action: AnyAction) => {
   switch (action.type) {
@@ -57,10 +59,10 @@ export const reducer = (state = initialState, action: AnyAction) => {
       };
     }
 
-    case ActionTypes.SET_LOADING:
+    case ActionTypes.SET_LOADING_PHONES:
       return {
         ...state,
-        isLoading: action.payload,
+        isLoadingPhones: action.payload,
       };
 
     case ActionTypes.SET_SORT_BY: {

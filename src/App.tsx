@@ -1,11 +1,9 @@
 import React from 'react';
 import './App.scss';
-import { Header } from './components/Header/Header';
+import { Router } from './router';
 
-const App = () => (
+export const App = () => (
   <div className="app">
-    <Header />
+    <Router />
   </div>
 );
-
-export default App;

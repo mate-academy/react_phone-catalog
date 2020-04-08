@@ -3,13 +3,16 @@ import thunk from 'redux-thunk';
 import { initialState, reducer } from './rootReducer';
 import { composeEnhancers } from './composeEnhancers';
 import { getPhones } from '../utils/api';
-import { setPhones, setIsLoading } from './actionCreators';
+import {
+  setPhones,
+  setIsLoadingPhones,
+} from './actionCreators';
 
 // thunk
 export const loadPhones = () => {
   return async(dispatch: Dispatch) => {
     try {
-      setIsLoading(true);
+      setIsLoadingPhones(true);
       const phonesQuery = await getPhones();
 
       dispatch(setPhones(phonesQuery));
@@ -17,7 +20,7 @@ export const loadPhones = () => {
       // eslint-disable-next-line no-console
       console.error(err);
     } finally {
-      setIsLoading(false);
+      setIsLoadingPhones(false);
     }
   };
 };
