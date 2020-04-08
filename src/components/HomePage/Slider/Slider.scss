@@ -1,0 +1,55 @@
+@import "../../../styles/utils/vars";
+@import "../../../styles/utils/mixins";
+
+.slider {
+  max-width: 1136px;
+  margin-top: 40px;
+  &__wrapper {
+    display: flex;
+    height: 400px;
+  }
+  &__item {
+    overflow: hidden;
+    width: 1040px;
+    height: 400px;
+  }
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  &__button {
+    min-width: 32px;
+  }
+  &__list {
+    margin: 0 16px;
+  }
+  &__button {
+    background-color: $white-color;
+    border: 1px solid $btn-color-grey;
+    &-left {
+      background: url("/img/Icons/arrow-left.png") no-repeat center;
+    }
+    &-right {
+      background: url("/img/Icons/arrow-right.png") no-repeat center;
+    }
+  }
+}
+
+.slider-indicators {
+  display: flex;
+  width: 72px;
+  margin: 18px auto 0;
+  &__item {
+    width: 14px;
+    height: 4px;
+    background: $elements-color;
+    &-active {
+      background: $primary-color;
+    }
+  }
+  &__item:not(:last-child) {
+    margin-right: 14px;
+  }
+}

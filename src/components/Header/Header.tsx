@@ -1,39 +1,59 @@
 import React from 'react';
 import './Header.scss';
+import {
+  NavLink,
+} from 'react-router-dom';
 
 export const Header = () => {
   return (
     <header className="header">
       <div className="header-wrapper">
         <div className="header-nav">
-          <a href="#id" className="main-logo">
+          <NavLink to="/" className="main-logo">
             <img
-              src="../../img/Logo.png"
+              src="img/Apple-logo.png"
               alt="logo"
               className="main-logo__image"
             />
-          </a>
+          </NavLink>
           <nav className="navigation">
             <ul className="navigation__list">
               <li className="navigation__item">
-                <a href="#." className="navigation__link">
+                <NavLink
+                  to="/"
+                  exact
+                  className="navigation__link"
+                  activeClassName="navigation__link-active"
+                >
                   Home
-                </a>
+                </NavLink>
               </li>
               <li className="navigation__item">
-                <a href="#." className="navigation__link">
+                <NavLink
+                  to="/phones"
+                  className="navigation__link"
+                  activeClassName="navigation__link-active"
+                >
                   Phones
-                </a>
+                </NavLink>
               </li>
               <li className="navigation__item">
-                <a href="#." className="navigation__link">
+                <NavLink
+                  to="/tables"
+                  className="navigation__link"
+                  activeClassName="navigation__link-active"
+                >
                   Tables
-                </a>
+                </NavLink>
               </li>
               <li className="navigation__item">
-                <a href="#." className="navigation__link">
+                <NavLink
+                  to="/accessories"
+                  className="navigation__link"
+                  activeClassName="navigation__link-active"
+                >
                   Accessories
-                </a>
+                </NavLink>
               </li>
             </ul>
           </nav>
@@ -46,35 +66,6 @@ export const Header = () => {
           </label>
           <div className="header-nav__likes" />
           <div className="header-nav__cart" />
-        </div>
-        <div className="header__slider slider section-wrapper">
-          <div className="slider__wrapper">
-            <button
-              type="button"
-              className="slider__button slider__button-left"
-            />
-            <ul className="slider__list">
-              <li className="slider__item">
-                <img
-                  src="../../img/slider.png"
-                  alt="iphones"
-                  className="slider__image"
-                />
-              </li>
-            </ul>
-            <button
-              type="button"
-              className="slider__button slider__button-right"
-            />
-          </div>
-        </div>
-
-        <div className="slider-indicators">
-          <div
-            className="slider-indicators__item slider-indicators__item-active"
-          />
-          <div className="slider-indicators__item" />
-          <div className="slider-indicators__item" />
         </div>
       </div>
     </header>
