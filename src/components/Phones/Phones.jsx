@@ -1,19 +1,15 @@
 import React from 'react';
+import { Preloader } from '../Common/Preloader/Preloader';
+import { PhonesCatalog } from './PhonesCatalog';
 
 export const Phones = (props) => {
-  const { phones } = props;
+  const { phones, isFetching } = props;
 
   return (
     <>
       <h2>Phones</h2>
-      <ul>
-        {phones.map(phone => (
-          <li key={phone.id}>
-            {phone.id}
-            <img src={phone.imageUrl} alt="/" />
-          </li>
-        ))}
-      </ul>
+      {isFetching ? <Preloader /> : null}
+      <PhonesCatalog phones={phones} />
     </>
   );
 };

@@ -10,13 +10,19 @@ class PhonesContainer extends React.Component {
 
   render() {
     return (
-      <Phones phones={this.props.phones} />
+      <>
+        <Phones
+          phones={this.props.phones}
+          isFetching={this.props.isFetching}
+        />
+      </>
     );
   }
 }
 
 const mapStateToProps = (state) => ({
   phones: state.phonesPage.phones,
+  isFetching: state.phonesPage.isFetching,
 });
 
 const mapDispatchToProps = (dispatch) => ({
