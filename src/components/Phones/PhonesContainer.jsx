@@ -1,13 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Phones } from './Phones';
-import { setPhonesActionCreators } from '../../redux/reducers/phonesReducer';
-import { getPhones } from '../../redux/api/api';
+import { getPhonesThunkCreator } from '../../redux/reducers/phonesReducer';
 
 class PhonesContainer extends React.Component {
   componentDidMount() {
-    getPhones()
-      .then(data => this.props.setPhones(data));
+    this.props.getPhonesThunk();
   }
 
   render() {
@@ -22,7 +20,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  setPhones: (phones) => dispatch(setPhonesActionCreators(phones)),
+  getPhonesThunk: () => dispatch(getPhonesThunkCreator()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PhonesContainer);
