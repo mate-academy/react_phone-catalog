@@ -68,11 +68,19 @@ export const Header = () => {
             </span>
           </label>
           <button className="header__favorite" type="button">
-            <img src={favoriteIcon} alt="favorite icon" />
+            <img
+              src={favoriteIcon}
+              alt="favorite icon"
+              className="header__favorite-icon"
+            />
             {' '}
           </button>
           <button className="header__basket" type="button">
-            <img src={basketIcon} alt="basket icon" />
+            <img
+              src={basketIcon}
+              alt="basket icon"
+              className="header__basket-icon"
+            />
             {' '}
           </button>
         </div>

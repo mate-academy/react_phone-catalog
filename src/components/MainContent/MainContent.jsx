@@ -1,4 +1,5 @@
 import React from 'react';
+import './MainContent.scss';
 import { Route, Switch } from 'react-router-dom';
 import { Home } from '../Home/Home';
 import { Tablets } from '../Tablets/Tablets';
@@ -8,7 +9,7 @@ import PhonesContainer from '../Phones/PhonesContainer';
 
 export const MainContent = () => {
   return (
-    <div className="app-wrapper__content">
+    <div className="content-wrapper">
       <Switch>
         <Route
           path="/"
