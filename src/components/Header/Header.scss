@@ -28,6 +28,10 @@
 
   }
 
+  &__menu {
+    display: flex;
+  }
+
   &__search-label {
     width: 330px;
     height: 100%;
@@ -49,8 +53,29 @@
     color: #B4BDC4;
   }
 
-  &__search-icon {
-    padding-left: 25px;
+  &__search-icon-container,
+  &__favorite,
+  &__basket {
+    display: inline-block;
+    width: 65px;
+    height: 100%;
   }
+
+  &__search-icon,
+  &__favorite,
+  &__basket {
+    padding: 25px;
+  }
+
+  &__favorite,
+  &__basket {
+    box-shadow: -1px 0px 0px #E2E6E9;
+  }
+
+  &__favorite:hover,
+  &__basket:hover {
+    border: 1px solid #313237;
+  }
+
 }
 
