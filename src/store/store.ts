@@ -7,17 +7,19 @@ import {
 } from 'redux';
 import thunk from 'redux-thunk';
 
-import { getPhones, getDetails } from '../api/api';
+import { getPhones, getDetails, getPhone } from '../api/api';
 
-import { PHONES_URL, LOAD_PHONES } from '../utils/constants';
+import { PHONES_URL, LOAD_PHONES, LOAD_PHONE } from '../utils/constants';
 
 const initialState: State = {
   phones: [],
+  phoneDetails: null,
+  phoneError: '',
 };
 
 interface CustomAction extends Action {
   type: string;
-  payload: PhonesWithDetails[];
+  payload: any;
 }
 
 export const setPhones = (payload: PhonesWithDetails[]) => ({
@@ -25,16 +27,41 @@ export const setPhones = (payload: PhonesWithDetails[]) => ({
   payload,
 });
 
+export const setPhone = (payload: Details) => ({
+  type: LOAD_PHONE,
+  payload,
+});
+
+export const setError = (payload: string) => ({
+  type: 'SET_ERROR',
+  payload,
+});
+
 export const loadPhones = () => {
   return async(dispatch: Dispatch) => {
-    const phones = await getPhones<Phone[]>(PHONES_URL);
-    const details = await getDetails<Details[]>(phones);
-    const phonesWithDetails = phones.map(phone => ({
-      ...phone,
-      details: details.find(detail => phone.id === detail.id) as Details,
-    }));
+    try {
+      const phones = await getPhones<Phone[]>(PHONES_URL);
+      const details = await getDetails<Details[]>(phones);
+      const phonesWithDetails = phones.map(phone => ({
+        ...phone,
+        details: details.find(detail => phone.id === detail.id) as Details,
+      }));
 
-    dispatch(setPhones(phonesWithDetails));
+      dispatch(setPhones(phonesWithDetails));
+    } catch (error) {
+      // eslint-disable-next-line no-console
+      console.error(error.message);
+    }
+  };
+};
+
+export const loadPhone = (id: string) => {
+  return async(dispatch: Dispatch) => {
+    getPhone<Details>(id)
+      .then(data => {
+        dispatch(setPhone(data));
+      })
+      .catch(error => dispatch(setError(error.message)));
   };
 };
 
@@ -47,6 +74,18 @@ const phonesReducer: Reducer<State, CustomAction> = (
       return {
         ...state,
         phones: action.payload,
+      };
+
+    case LOAD_PHONE:
+      return {
+        ...state,
+        phoneDetails: action.payload,
+      };
+
+    case 'SET_ERROR':
+      return {
+        ...state,
+        phoneError: action.payload,
       };
 
     default:

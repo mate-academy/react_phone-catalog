@@ -1,0 +1,78 @@
+.phones__container {
+  padding: 25px 152px 0;
+}
+
+.loader__container {
+  width: 100px;
+  margin: 0 auto;
+}
+
+.phones__path {
+  display: flex;
+  align-items: center;
+  height: 15px;
+  margin-bottom: 40px;
+}
+
+.home-icon {
+  width: 13px;
+  height: 15px;
+  margin-right: 14px;
+}
+
+.arrow-icon {
+  width: 6px;
+  height: 10px;
+  margin-right: 14px;
+}
+
+.phones__path-title {
+  width: 45px;
+  height: 15px;
+  padding-top: 2px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  color: #89939a;
+}
+
+.phones__heding {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 41px;
+  color: #313237;
+  margin-bottom: 8px;
+}
+
+.phones__quantity {
+  margin-top: 0;
+  margin-bottom: 40px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  color: #89939a;
+}
+
+.phones__sort-title {
+  margin: 4px 0;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  color: #89939a;
+}
+
+.phones__sort-select {
+  margin-bottom: 24px;
+}
+
+.phones__catalog {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 272px);
+  grid-gap: 16px;
+  max-width: 1424px;
+  margin: 0 auto;
+}

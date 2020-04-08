@@ -1,10 +1,9 @@
 body {
   margin: 0;
   font-family: Mont, sans-serif;
-  background-color: lightgoldenrodyellow;
 }
 
-.phone-images {
+/* .phone-images {
   background-color: white;
   width: 450px;
   height: 450px;
@@ -39,7 +38,6 @@ body {
   padding-top: 15px;
 }
 
-/** Detail View **/
 img.phone {
   float: left;
   margin-right: 3em;
@@ -101,4 +99,4 @@ ul.specs dt {
 
 h1 {
   border-bottom: 1px solid gray;
-}
+} */

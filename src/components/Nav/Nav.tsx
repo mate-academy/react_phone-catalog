@@ -26,10 +26,9 @@ export const Nav: FC = () => (
       </li>
       <li className="nav__item">
         <NavLink
-          to="/phones"
+          to="/phones/"
           className="nav__link"
           activeClassName="nav__item--active"
-          exact
         >
           Phones
         </NavLink>

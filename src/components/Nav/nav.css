@@ -45,6 +45,7 @@
   text-decoration: none;
   border: 1px solid black;
   padding: 7px;
+  transition: 0.3s;
 }
 
 .nav__link:hover {
@@ -73,6 +74,10 @@
 
 .icon {
   margin: auto;
+}
+
+.icon path {
+  transition: 0.3s;
 }
 
 .icon:hover path {

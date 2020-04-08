@@ -29,6 +29,8 @@ interface PhonesWithDetails extends Phone {
 
 interface State {
   phones: PhonesWithDetails[] | [];
+  phoneDetails: Details | null;
+  phoneError: string;
 }
 
 interface System {
@@ -55,10 +57,10 @@ interface Connectivity {
   wifi: string;
 }
 
-  interface Display {
-    screenResolution: string;
-    screenSize: string;
-    touchScreen: boolean;
+interface Display {
+  screenResolution: string;
+  screenSize: string;
+  touchScreen: boolean;
 }
 
 interface Hardware {
