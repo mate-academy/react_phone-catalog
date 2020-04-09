@@ -6,7 +6,8 @@ import { Tablets } from '../Tablets/Tablets';
 import { Accessories } from '../Accessories/Accessories';
 import { PageNotFound } from '../PageNotFound/PageNotFound';
 import PhonesContainer from '../Phones/PhonesContainer';
-import { PhonesDetails } from '../Phones/PhoneDetailsPage/PhoneDetailsPage';
+// eslint-disable-next-line max-len
+import PhoneDetailsContainer from '../Phones/PhoneDetailsPage/PhoneDetailsContainer';
 
 export const MainContent = () => {
   return (
@@ -32,7 +33,7 @@ export const MainContent = () => {
         />
         <Route
           path="/phones/:phoneId"
-          render={() => (<PhonesDetails />)}
+          render={() => (<PhoneDetailsContainer />)}
         />
         <Route
           render={() => (<PageNotFound />)}
