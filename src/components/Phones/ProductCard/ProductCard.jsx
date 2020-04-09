@@ -1,6 +1,7 @@
 import React from 'react';
 import './ProductCard.scss';
 import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
 
 export const ProductCard = (props) => {
   const { imageUrl, name } = props;
@@ -13,7 +14,7 @@ export const ProductCard = (props) => {
         alt="/"
         className="catalog__product-img"
       />
-      <p>{name}</p>
+      <NavLink to="/phones/:phoneId">{name}</NavLink>
     </div>
   );
 };

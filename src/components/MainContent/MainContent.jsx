@@ -6,6 +6,7 @@ import { Tablets } from '../Tablets/Tablets';
 import { Accessories } from '../Accessories/Accessories';
 import { PageNotFound } from '../PageNotFound/PageNotFound';
 import PhonesContainer from '../Phones/PhonesContainer';
+import { PhonesDetails } from '../Phones/PhoneDetailsPage/PhoneDetailsPage';
 
 export const MainContent = () => {
   return (
@@ -19,6 +20,7 @@ export const MainContent = () => {
         <Route
           path="/phones"
           render={() => (<PhonesContainer />)}
+          exact
         />
         <Route
           path="/tablets"
@@ -27,6 +29,10 @@ export const MainContent = () => {
         <Route
           path="/accessories"
           render={() => (<Accessories />)}
+        />
+        <Route
+          path="/phones/:phoneId"
+          render={() => (<PhonesDetails />)}
         />
         <Route
           render={() => (<PageNotFound />)}
