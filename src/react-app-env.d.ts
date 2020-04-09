@@ -1,9 +1,14 @@
 interface Phone {
   age: number;
   id: string;
+  phoneId: string;
+  priceRegular: number;
   imageUrl: string;
   name: string;
   snippet: string;
+  screen: string;
+  capacity: string;
+  ram: string;
 }
 
 interface Details {
@@ -31,6 +36,7 @@ interface State {
   phones: PhonesWithDetails[] | [];
   phoneDetails: Details | null;
   phoneError: string;
+  sortBy: string;
 }
 
 interface System {

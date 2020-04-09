@@ -15,6 +15,7 @@ const initialState: State = {
   phones: [],
   phoneDetails: null,
   phoneError: '',
+  sortBy: 'Name',
 };
 
 interface CustomAction extends Action {
@@ -37,6 +38,11 @@ export const setError = (payload: string) => ({
   payload,
 });
 
+export const setSortBy = (payload: React.ChangeEvent<HTMLSelectElement>) => ({
+  type: 'SET_SORT',
+  payload,
+});
+
 export const loadPhones = () => {
   return async(dispatch: Dispatch) => {
     try {
@@ -44,7 +50,7 @@ export const loadPhones = () => {
       const details = await getDetails<Details[]>(phones);
       const phonesWithDetails = phones.map(phone => ({
         ...phone,
-        details: details.find(detail => phone.id === detail.id) as Details,
+        details: details.find(detail => phone.phoneId === detail.id) as Details,
       }));
 
       dispatch(setPhones(phonesWithDetails));
@@ -86,6 +92,12 @@ const phonesReducer: Reducer<State, CustomAction> = (
       return {
         ...state,
         phoneError: action.payload,
+      };
+
+    case 'SET_SORT':
+      return {
+        ...state,
+        sortBy: action.payload.target.value,
       };
 
     default:

@@ -12,7 +12,7 @@ export const getPhones = async <T>(url: string): Promise<T> => {
 
 export const getDetails = async <T>(phones: Phone[]): Promise<Details[]> => {
   return Promise.all(
-    phones.map(({ id }) => fetch(detailsURL(id)).then(res => {
+    phones.map(({ phoneId }) => fetch(detailsURL(phoneId)).then(res => {
       if (!res.ok) {
         throw new Error(res.statusText);
       }

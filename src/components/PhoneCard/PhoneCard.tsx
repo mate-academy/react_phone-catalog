@@ -17,23 +17,28 @@ export const PhoneCard: FC<Props> = ({ phone }) => (
     <NavLink to={`/phones/${phone.id}`} className="card__heading" exact>
       {phone.name}
     </NavLink>
-    <div className="card__price">$9999</div>
+    <div className="card__price">{`${phone.priceRegular} UAH`}</div>
     <div className="card__details">
       <div className="card__detail">
         <span className="card__detail-name">Screen</span>
         <span className="card__detail-value">
-          {phone.details.display.screenResolution}
+          {phone.screen}
         </span>
       </div>
       <div className="card__detail">
         <span className="card__detail-name">Capacity</span>
         <span className="card__detail-value">
-          {phone.details.storage.flash}
+          {`${phone.capacity
+            ? parseInt(phone.capacity, 10)
+            : ''
+          } ${phone.capacity.slice(-2)}`}
         </span>
       </div>
       <div className="card__detail">
         <span className="card__detail-name">Ram</span>
-        <span className="card__detail-value">{phone.details.storage.ram}</span>
+        <span className="card__detail-value">
+          {`${phone.ram ? parseInt(phone.ram, 10) : ''} ${phone.ram.slice(-2)}`}
+        </span>
       </div>
     </div>
     <div className="card__actions">
