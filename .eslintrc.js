@@ -30,7 +30,7 @@ module.exports = {
     "react/jsx-filename-extension": ["warn", {
       "extensions": [".jsx", ".tsx"]
     }],
-    "react/prop-types": "off", // Incompatible with TS props type?
+    "react/prop-types": 2, // Incompatible with TS props type?
     "react-hooks/rules-of-hooks": "error",
     "react/no-danger": "off",
 

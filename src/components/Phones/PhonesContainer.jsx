@@ -1,7 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Phones } from './Phones';
 import { getPhonesThunkCreator } from '../../redux/reducers/phonesReducer';
+import { PhonesCatalog } from './PhonesCatalog';
+import { Preloader } from '../Common/Preloader/Preloader';
 
 class PhonesContainer extends React.Component {
   componentDidMount() {
@@ -11,10 +14,9 @@ class PhonesContainer extends React.Component {
   render() {
     return (
       <>
-        <Phones
-          phones={this.props.phones}
-          isFetching={this.props.isFetching}
-        />
+        <Phones />
+        {this.props.isFetching ? <Preloader /> : null}
+        <PhonesCatalog phones={this.props.phones} />
       </>
     );
   }
@@ -30,3 +32,17 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PhonesContainer);
+
+PhonesContainer.propTypes = {
+  getPhonesThunk: PropTypes.func.isRequired,
+  isFetching: PropTypes.bool.isRequired,
+  phones: PropTypes.arrayOf(
+    PropTypes.shape({
+      age: PropTypes.number,
+      id: PropTypes.string,
+      imageUrl: PropTypes.string,
+      name: PropTypes.string,
+      snippet: PropTypes.string,
+    }).isRequired,
+  ).isRequired,
+};
