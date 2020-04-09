@@ -3,28 +3,57 @@ import './_PhonesMain.scss';
 import { connect } from 'react-redux';
 import Loader from 'react-loader-spinner';
 import { Catalog } from '../Catalog/Catalog';
-import { getPhones, getIsLoadingPhones } from '../../store/rootReducer';
+import {
+  getPhones,
+  getIsLoadingPhones,
+  getQuery,
+} from '../../store/rootReducer';
 import { State, PhoneInterface } from '../../constants/types';
 import { Breadcrumbs } from '../Breadcrumbs';
 import { loadPhones } from '../../store/store';
 import { Filters } from '../Filters';
+import { searchCallback } from '../../utils/api';
 
 interface Props {
   phones: PhoneInterface[];
   loadPhones: () => void;
-  isLoading: boolean;
+  isLoadingPhones: boolean;
+  query: string;
 }
 
 export const PhonesTemplate: FC<Props> = (props) => {
   const {
     phones,
     loadPhones: loadData,
-    isLoading,
+    isLoadingPhones,
+    query,
   } = props;
 
   useEffect(() => {
     loadData();
   }, []);
+
+  const searchedPhones = phones.filter(searchCallback(query));
+
+  if (isLoadingPhones) {
+    return (
+
+      <section className="phones">
+        <div className="phones__container wrapper">
+
+          <Breadcrumbs phonesArray={phones} directory="Phones" />
+
+          <Loader
+            type="Puff"
+            color="#00bfff"
+            height={400}
+            width={400}
+          />
+
+        </div>
+      </section>
+    );
+  }
 
   return (
 
@@ -33,21 +62,9 @@ export const PhonesTemplate: FC<Props> = (props) => {
 
         <Breadcrumbs phonesArray={phones} directory="Phones" />
 
-        {
-          isLoading ? (
-            <Loader
-              type="Puff"
-              color="#00bfff"
-              height={400}
-              width={400}
-              timeout={5000}
-            />
-          ) : (
-            <>
-              <Filters />
-              <Catalog phonesArray={phones} />
-            </>
-          )}
+        <Filters />
+        <Catalog phonesArray={searchedPhones} />
+
       </div>
     </section>
 
@@ -58,7 +75,8 @@ const mapDispatchToProps = { loadPhones };
 
 const mapStateToProps = (state: State) => ({
   phones: getPhones(state),
-  isLoading: getIsLoadingPhones(state),
+  isLoadingPhones: getIsLoadingPhones(state),
+  query: getQuery(state),
 });
 
 // eslint-disable-next-line max-len

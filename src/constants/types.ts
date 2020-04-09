@@ -75,8 +75,10 @@ export interface PhoneDetailsInterface {
 
 export interface State {
   phones: PhoneInterface[];
+  details: PhoneDetailsInterface | null;
   isLoadingPhones: boolean;
-  favourites: PhoneInterface[];
+  isLoadingDetails: boolean;
   query: string;
   cart: PhoneInterface[];
+  favourites: PhoneInterface[];
 }

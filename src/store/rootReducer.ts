@@ -4,7 +4,9 @@ import { ActionTypes } from './actionTypes';
 
 export const initialState: State = {
   phones: [],
+  details: null,
   isLoadingPhones: false,
+  isLoadingDetails: false,
   favourites: [],
   cart: [],
   query: '',
@@ -13,7 +15,9 @@ export const initialState: State = {
 // selectors
 export const getPhones = (state: State) => state.phones;
 export const getCart = (state: State) => state.cart;
+export const getDetails = (state: State) => state.details;
 export const getIsLoadingPhones = (state: State) => state.isLoadingPhones;
+export const getIsLoadingDetails = (state: State) => state.isLoadingDetails;
 export const getQuery = (state: State) => state.query;
 export const getFavourites = (state: State) => state.favourites;
 
@@ -23,6 +27,12 @@ export const reducer = (state = initialState, action: AnyAction) => {
       return {
         ...state,
         phones: action.payload,
+      };
+
+    case ActionTypes.SET_DETAILS:
+      return {
+        ...state,
+        details: action.payload,
       };
 
     case ActionTypes.SET_QUERY:
@@ -63,6 +73,12 @@ export const reducer = (state = initialState, action: AnyAction) => {
       return {
         ...state,
         isLoadingPhones: action.payload,
+      };
+
+    case ActionTypes.SET_LOADING_DETAILS:
+      return {
+        ...state,
+        isLoadingDetails: action.payload,
       };
 
     case ActionTypes.SET_SORT_BY: {

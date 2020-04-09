@@ -23,7 +23,13 @@ export const CartMainTemplate: FC<Props> = (props) => {
           <div className="cart__box-big">
             <div className="cart__catalog">
               {
-                cart.map((phone: PhoneInterface) => <CartThumb key={phone.id} phone={phone} />)
+                cart
+                  .map((phone: PhoneInterface) => (
+                    <CartThumb
+                      key={phone.id}
+                      phone={phone}
+                    />
+                  ))
               }
             </div>
 

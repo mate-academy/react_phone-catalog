@@ -1,6 +1,10 @@
 .phoneDetailsMain {
   margin-top: 24px;
 
+  &__noMatch {
+    margin-top: 24px;
+  }
+
   &__prices-main {
     width: 100%;
     display: grid;

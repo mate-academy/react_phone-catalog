@@ -9,7 +9,7 @@ export const NoMatchMain: FC = () => {
     <section className="noMatch">
       <div className="noMatch__container wrapper">
         <h2 className="noMatch__title">
-        No match for this URL --->
+        No match for this URL
           {' '}
           <code>{location.pathname}</code>
         </h2>

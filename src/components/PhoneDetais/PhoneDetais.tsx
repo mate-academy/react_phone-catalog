@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import { connect } from 'react-redux';
 // import cx from 'classnames';
 import './_PhoneDetails.scss';
@@ -14,6 +14,7 @@ interface Props {
 }
 
 export const PhoneDetaisTemplate: FC<Props> = (props) => {
+  const [activeImage, setActiveImage] = useState(0);
   const {
     phoneId,
     phoneData,
@@ -27,6 +28,10 @@ export const PhoneDetaisTemplate: FC<Props> = (props) => {
 
   const handleCart = (id: string) => {
     setCartTemplate(id);
+  };
+
+  const handleActiveImage = (ind: number) => {
+    setActiveImage(ind);
   };
 
   return (
@@ -45,17 +50,23 @@ export const PhoneDetaisTemplate: FC<Props> = (props) => {
             <div className="phone__sidebar-images">
               {
                 phoneData.images.map((imgThumb, ind) => (
-                  <img
-                    className="phone__thumb-img"
-                    src={`/img/phones/${phoneId}.${ind}.jpg`}
-                    alt={`img_${ind}`}
-                    key={phoneData.images[ind]}
-                  />
+                  <button
+                    type="button"
+                    className="phone__btn-img"
+                    onClick={() => handleActiveImage(ind)}
+                  >
+                    <img
+                      className="phone__thumb-img"
+                      src={`/img/phones/${phoneId}.${ind}.jpg`}
+                      alt={`img_${ind}`}
+                      key={phoneData.images[ind]}
+                    />
+                  </button>
                 ))
               }
             </div>
             <img
-              src={`/img/phones/${phoneId}.0.jpg`}
+              src={`/img/phones/${phoneId}.${activeImage}.jpg`}
               alt="main_img"
               className="phone__main-image"
             />
@@ -196,44 +207,6 @@ export const PhoneDetaisTemplate: FC<Props> = (props) => {
               <span className="right-bottom">data</span>
             </div>
           </div>
-        </div>
-      </div>
-
-      <div className="phoneDetailsMain__likePhones">
-        <div className="phoneDetailsMain__prices-top">
-          <h3 className="phoneDetailsMain__title">You may also like</h3>
-          <div className="phoneDetailsMain__control-btns">
-            <button
-              type="button"
-              className="phoneDetailsMain__price-btn
-              phoneDetailsMain__price-btn--left"
-            >
-              <img
-                src="/img/arrow.svg"
-                alt="arrow_control_left"
-                className="phoneDetailsMain__price-arrow
-                phoneDetailsMain__price-arrow--left"
-              />
-            </button>
-            <button
-              type="button"
-              className="phoneDetailsMain__price-btn
-              phoneDetailsMain__price-btn--right"
-            >
-              <img
-                src="/img/arrow.svg"
-                alt="arrow_control_left"
-                className="phoneDetailsMain__price-arrow
-                phoneDetailsMain__price-arrow--right"
-              />
-            </button>
-          </div>
-        </div>
-        <div className="phoneDetailsMain__prices-main">
-          <div className="temp-block" />
-          <div className="temp-block" />
-          <div className="temp-block" />
-          <div className="temp-block" />
         </div>
       </div>
 
