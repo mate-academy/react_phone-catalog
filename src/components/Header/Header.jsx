@@ -11,10 +11,15 @@ export const Header = () => {
     <header className="header">
       <div className="header__header-wrapper">
         <nav className="header__nav nav">
-          <div className="header__logo">
+          <a
+            className="header__logo"
+            href="https://www.youtube.com/watch?v=fHiGbolFFGw"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <p className="header__logo-heading">Android</p>
             <p className="header__logo-underheading">paranoid</p>
-          </div>
+          </a>
           <ul className="nav__list">
             <li className="nav__item">
               <NavLink
