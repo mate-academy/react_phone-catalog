@@ -18,10 +18,10 @@ class PhoneDetailsContainer extends React.Component {
   render() {
     return (
       <>
+        {this.props.isFetching ? <Preloader /> : null}
         <PhoneDetails
           details={this.props.details}
         />
-        {this.props.isFetching ? <Preloader /> : null}
       </>
     );
   }

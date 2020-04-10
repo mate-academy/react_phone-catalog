@@ -1,12 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Preloader } from '../../Common/Preloader/Preloader';
 
 export const PhoneDetails = (props) => {
   const { details } = props;
 
   if (!details) {
-    return <Preloader />;
+    return null;
   }
 
   return (
