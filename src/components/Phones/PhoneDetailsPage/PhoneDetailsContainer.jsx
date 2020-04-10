@@ -2,34 +2,35 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { PhoneDetails } from './PhoneDetails';
-import { getPhoneDetails } from '../../../api/api';
+import { Preloader } from '../../Common/Preloader/Preloader';
 import {
-  setPhoneDetailsAC,
-} from '../../../redux/reducers/actionCreators';
+  getPhoneDetailsThunkCreator,
+} from '../../../redux/reducers/phoneDetailsReducer';
 
 class PhoneDetailsContainer extends React.Component {
   componentDidMount() {
-    getPhoneDetails()
-      .then(data => {
-        this.props.setPhoneDetails(data);
-      });
+    this.props.getPhoneDetailsThunk();
   }
 
   render() {
     return (
-      <PhoneDetails
-        details={this.props.details}
-      />
+      <>
+        <PhoneDetails
+          details={this.props.details}
+        />
+        {this.props.isFetching ? <Preloader /> : null}
+      </>
     );
   }
 }
 
 const mapStateToProps = (state) => ({
   details: state.phoneDetailsPage.details,
+  isFetching: state.phoneDetailsPage.isFetching,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  setPhoneDetails: (details) => dispatch(setPhoneDetailsAC(details)),
+  getPhoneDetailsThunk: () => dispatch(getPhoneDetailsThunkCreator()),
 });
 
 export default connect(
@@ -37,10 +38,8 @@ export default connect(
 )(PhoneDetailsContainer);
 
 PhoneDetailsContainer.propTypes = {
-  setPhoneDetails: PropTypes.func.isRequired,
-};
-
-PhoneDetailsContainer.propTypes = {
+  isFetching: PropTypes.bool.isRequired,
+  getPhoneDetailsThunk: PropTypes.func.isRequired,
   details: PropTypes.shape({
     additionalFeatures: PropTypes.string,
     android: PropTypes.shape({
