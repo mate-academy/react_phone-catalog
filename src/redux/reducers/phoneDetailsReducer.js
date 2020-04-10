@@ -26,10 +26,10 @@ export const phoneDetailsReducer = (state = initialState, action) => {
   }
 };
 
-export const getPhoneDetailsThunkCreator = () => (dispatch) => {
+export const getPhoneDetailsThunkCreator = (phoneId) => (dispatch) => {
   dispatch(toggleIsFetchingAC(true));
 
-  getPhoneDetails()
+  getPhoneDetails(phoneId)
     .then(data => {
       dispatch(toggleIsFetchingAC(false));
       dispatch(setPhoneDetailsAC(data));

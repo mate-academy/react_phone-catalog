@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { PhoneDetails } from './PhoneDetails';
 import { Preloader } from '../../Common/Preloader/Preloader';
 import {
@@ -9,7 +10,9 @@ import {
 
 class PhoneDetailsContainer extends React.Component {
   componentDidMount() {
-    this.props.getPhoneDetailsThunk();
+    const { phoneId } = this.props.match.params;
+
+    this.props.getPhoneDetailsThunk(phoneId);
   }
 
   render() {
@@ -30,14 +33,23 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  getPhoneDetailsThunk: () => dispatch(getPhoneDetailsThunkCreator()),
+  getPhoneDetailsThunk: (phoneId) => {
+    dispatch(getPhoneDetailsThunkCreator(phoneId));
+  },
 });
+
+const WithUrlDataContainer = withRouter(PhoneDetailsContainer);
 
 export default connect(
   mapStateToProps, mapDispatchToProps,
-)(PhoneDetailsContainer);
+)(WithUrlDataContainer);
 
 PhoneDetailsContainer.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      phoneId: PropTypes.string,
+    }).isRequired,
+  }).isRequired,
   isFetching: PropTypes.bool.isRequired,
   getPhoneDetailsThunk: PropTypes.func.isRequired,
   details: PropTypes.shape({

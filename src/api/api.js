@@ -8,7 +8,7 @@ export const getPhones = () => {
     .then((response) => response.data);
 };
 
-export const getPhoneDetails = () => {
-  return axios.get(`${baseURL}/dell-streak-7.json`)
+export const getPhoneDetails = (phoneId) => {
+  return axios.get(`${baseURL}/${phoneId}.json`)
     .then((response) => response.data);
 };

@@ -12,7 +12,7 @@ export const PhoneDetails = (props) => {
   return (
     <>
       <h2>PhonesDetails</h2>
-      <img src={details.images[1]} alt="motorola-xoom" />
+      <img src={details.images[0]} alt="motorola-xoom" />
       <p>{details.id}</p>
 
     </>
