@@ -1,1 +1,1 @@
-[DEMO LINK](https://YMagrelo.github.io/react_phone-catalog/)
+[DEMO](https://YMagrelo.github.io/react_phone-catalog/)
