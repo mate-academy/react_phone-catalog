@@ -12,8 +12,8 @@ export const Header = () => {
       <div className="header__header-wrapper">
         <nav className="header__nav nav">
           <div className="header__logo">
-            <p className="header__logo-heading">Apple</p>
-            <p className="header__logo-underheading">drocher</p>
+            <p className="header__logo-heading">Android</p>
+            <p className="header__logo-underheading">paranoid</p>
           </div>
           <ul className="nav__list">
             <li className="nav__item">
