@@ -1,7 +1,6 @@
 import { getPhones } from '../../api/api';
-
-const SET_PHONES = 'SET_PHONES';
-const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
+import { SET_PHONES, TOGGLE_IS_FETCHING } from './constants';
+import { setPhonesAC, toggleIsFetchingAC } from './actionCreators';
 
 const initialState = {
   phones: [],
@@ -27,20 +26,12 @@ export const phonesReducer = (state = initialState, action) => {
   }
 };
 
-const setPhonesActionCreators = (phones) => ({
-  type: SET_PHONES, phones,
-});
-
-const toggleIsFetchingActionCreator = (isFetching) => ({
-  type: TOGGLE_IS_FETCHING, isFetching,
-});
-
 export const getPhonesThunkCreator = () => (dispatch) => {
-  dispatch(toggleIsFetchingActionCreator(true));
+  dispatch(toggleIsFetchingAC(true));
 
   getPhones()
     .then(data => {
-      dispatch(toggleIsFetchingActionCreator(false));
-      dispatch(setPhonesActionCreators(data));
+      dispatch(toggleIsFetchingAC(false));
+      dispatch(setPhonesAC(data));
     });
 };

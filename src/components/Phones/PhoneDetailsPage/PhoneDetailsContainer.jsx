@@ -5,7 +5,7 @@ import { PhoneDetails } from './PhoneDetails';
 import { getPhoneDetails } from '../../../api/api';
 import {
   setPhoneDetailsAC,
-} from '../../../redux/reducers/phoneDetailsReducer';
+} from '../../../redux/reducers/actionCreators';
 
 class PhoneDetailsContainer extends React.Component {
   componentDidMount() {

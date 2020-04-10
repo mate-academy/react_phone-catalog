@@ -1,4 +1,4 @@
-const SET_PHONE_DETAILS = 'SET_PHONE_DETAILS';
+import { SET_PHONE_DETAILS } from './constants';
 
 const initialState = {
   details: null,
@@ -16,7 +16,3 @@ export const phoneDetailsReducer = (state = initialState, action) => {
       return state;
   }
 };
-
-export const setPhoneDetailsAC = (details) => ({
-  type: SET_PHONE_DETAILS, details,
-});
