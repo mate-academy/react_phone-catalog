@@ -1,11 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { PageNotFound } from '../../PageNotFound/PageNotFound';
 
 export const PhoneDetails = (props) => {
   const { details } = props;
 
-  if (!details) {
+  if (details === null) {
     return null;
+  }
+
+  if (details === undefined) {
+    return <PageNotFound />;
   }
 
   return (
