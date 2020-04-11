@@ -12,6 +12,5 @@ export const getPhoneDetails = (phoneId) => {
   return axios.get(`${baseURL}/${phoneId}.json`)
     .then((response) => response.data)
     .catch(() => {
-
     });
 };

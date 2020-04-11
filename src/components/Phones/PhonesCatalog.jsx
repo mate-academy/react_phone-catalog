@@ -8,7 +8,6 @@ export const PhonesCatalog = (props) => {
 
   return (
     <>
-
       <div className="catalog">
         <ul className="catalog__product-list">
 

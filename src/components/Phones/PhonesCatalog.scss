@@ -1,17 +1,14 @@
 .catalog {
   &__product-list {
     display: flex;
-    justify-content: space-between;
     flex-wrap: wrap;
-    margin: auto;
   }
 
   &__product-item {
     width: 270px;
-    height: 500px;
     border: 1px solid #e2e6e9;
     box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.05);
-    //margin-right: 15px;
+    margin: auto;
     margin-bottom: 40px;
   }
 
