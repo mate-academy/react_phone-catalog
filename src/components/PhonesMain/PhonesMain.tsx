@@ -3,16 +3,13 @@ import './_PhonesMain.scss';
 import { connect } from 'react-redux';
 import Loader from 'react-loader-spinner';
 import { Catalog } from '../Catalog/Catalog';
-import {
-  getPhones,
-  getIsLoadingPhones,
-  getQuery,
-} from '../../store/rootReducer';
-import { State, PhoneInterface } from '../../constants/types';
+import { PhoneInterface, PhoneState, LoadState } from '../../constants/types';
 import { Breadcrumbs } from '../Breadcrumbs';
-import { loadPhones } from '../../store/store';
 import { Filters } from '../Filters';
 import { searchCallback } from '../../utils/api';
+import { getPhones, getQuery } from '../../store/reducers/phoneReducer';
+import { getIsLoadingPhones } from '../../store/reducers/loadingReducer';
+import { loadPhones } from '../../store/actionCreators';
 
 interface Props {
   phones: PhoneInterface[];
@@ -73,10 +70,13 @@ export const PhonesTemplate: FC<Props> = (props) => {
 
 const mapDispatchToProps = { loadPhones };
 
-const mapStateToProps = (state: State) => ({
-  phones: getPhones(state),
-  isLoadingPhones: getIsLoadingPhones(state),
-  query: getQuery(state),
+const mapStateToProps = (state: {
+  phoneReducer: PhoneState;
+  loadingReducer: LoadState;
+}) => ({
+  phones: getPhones(state.phoneReducer),
+  isLoadingPhones: getIsLoadingPhones(state.loadingReducer),
+  query: getQuery(state.phoneReducer),
 });
 
 // eslint-disable-next-line max-len

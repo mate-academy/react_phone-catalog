@@ -11,13 +11,27 @@
 
   &__btn-delete {
     margin-left: 28px;
-    width: 32px;
-    height: 32px;
+    width: 16px;
+    height: 16px;
+    background: #fff;
+    border-style: none;
+    outline: none;
+
+    background-image: url("../../assets/Close.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    cursor: pointer;
+
+    &:hover {
+      background-image: url("../../assets/Close-hover.svg");
+    }
   }
 
   &__img {
     width: 66px;
     height: 66px;
+    object-fit: contain;
   }
 
   &__title {
@@ -25,6 +39,7 @@
     font-weight: 500;
     font-size: 14px;
     line-height: 21px;
+    text-transform: capitalize;
 
     color: #313237;
   }
@@ -41,6 +56,30 @@
   &__btn {
     width: 32px;
     height: 32px;
+
+    background: #fff;
+    border-style: none;
+    outline: none;
+    cursor: pointer;
+
+    border: 1px solid #e2e6e9;
+
+    &--decrease {
+      background-image: url("../../assets/Minus-disabled.svg");
+      background-repeat: no-repeat;
+      background-position: center;
+
+      &--active {
+        background-image: url("../../assets/Minus.svg");
+      }
+    }
+
+    &--increase {
+      background-image: url("../../assets/Plus.svg");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 15px;
+    }
   }
 
   &__price {

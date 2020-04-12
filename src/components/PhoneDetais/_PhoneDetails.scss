@@ -121,9 +121,10 @@
     object-fit: contain;
   }
 
-  &__main-img {
+  &__main-image {
     width: 442px;
     height: 442px;
+    object-fit: contain;
   }
 
   &__options {
@@ -140,10 +141,93 @@
     border-bottom: 1px solid #e2e6e9;
   }
 
+  &__spec-title {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: #89939a;
+  }
+
+  &__colors {
+    list-style-type: none;
+    display: flex;
+  }
+
+  &__color-item {
+    margin-top: 24px;
+
+    &:not(:last-child) {
+      margin-right: 9px;
+    }
+  }
+
+  &__color-btn {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+
+    outline: none;
+
+    border-style: none;
+
+    position: relative;
+
+    &::before {
+      position: absolute;
+      content: "";
+      top: -3px;
+      left: -3px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid grey;
+    }
+
+    &--active {
+      &::after {
+        position: absolute;
+        content: "";
+        top: -3px;
+        left: -3px;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        border: 1px solid black;
+
+      }
+    }
+  }
+
   &__capacity {
     margin-top: 24px;
     height: 80px;
     border-bottom: 1px solid #e2e6e9;
+  }
+
+  &__capacity-opt {
+    margin-top: 8px;
+    width: 56px;
+    height: 32px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+    border: 1px solid #b4bdc4;
+    background: #fff;
+    color: #313237;
+
+    // border-style: none;
+    outline: none;
+
+    &:not(:last-child) {
+      margin-right: 8px;
+    }
+
+    &--active {
+      color: #fff;
+      background: #313237;
+    }
   }
 
   &__price-option {
@@ -192,15 +276,25 @@
     text-align: center;
 
     border-style: none;
+
+    &--active {
+      background: #fff;
+      border: 1px solid #e2e6e9;
+      color: #27ae60;
+    }
   }
 
   &__favourites {
     width: 48px;
     height: 48px;
-    background: #fff;
     border-style: none;
+    background: url("../../assets/heart.svg") center no-repeat;
 
     border: 1px solid #b4bdc4;
+
+    &--active {
+      background: url("../../assets/heart-active.svg") center no-repeat;
+    }
   }
 
   &__param {
@@ -269,6 +363,12 @@
   &__specs {
     flex-basis: 45%;
     margin-left: 75px;
+  }
+
+  &__specs-box {
+    &:first-of-type {
+      margin-top: 24px;
+    }
   }
 
   .right-bottom {

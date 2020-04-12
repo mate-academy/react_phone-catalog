@@ -4,18 +4,30 @@ import debounce from 'lodash/debounce';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { setQuery } from '../../store/actionCreators';
-
 import imageHeart from '../../assets/header/heart.svg';
+import {
+  CartInterface,
+  FavouritesState,
+  CartState,
+} from '../../constants/types';
+import { getCart } from '../../store/reducers/cartReducer';
+import { getFavourites } from '../../store/reducers/favouritesReducer';
 
 interface Props {
   setQuery: (value: string) => void;
+  cart: CartInterface[];
+  favourites: string[];
 }
 
 export const NavigationTemplate: FC<Props> = (props) => {
-  const { setQuery: setQueryTemplate } = props;
+  const {
+    setQuery: setQueryTemplate,
+    favourites,
+    cart,
+  } = props;
 
   const searchWithDelay = useCallback(
-    debounce(setQueryTemplate, 300),
+    debounce(setQueryTemplate, 200),
     [],
   );
 
@@ -77,21 +89,23 @@ export const NavigationTemplate: FC<Props> = (props) => {
             onChange={handleSearch}
           />
         </li>
-        <li className="nav__item-right">
+        <li className="nav__item-right box-fav-rel">
           <NavLink
             className="nav__link-right"
             to="/favourites"
             activeClassName="nav__link-right--active"
           >
             <img
-              // src="/img/header/heart.svg"
               src={imageHeart}
               alt="link_to_favourites"
               className="nav__favourites"
             />
+            {favourites.length > 0 && (
+              <span className="nav__red-circle">{favourites.length}</span>
+            )}
           </NavLink>
         </li>
-        <li className="nav__item-right">
+        <li className="nav__item-right box-cart-rel">
           <NavLink
             className="nav__link-right"
             to="/cart"
@@ -102,6 +116,9 @@ export const NavigationTemplate: FC<Props> = (props) => {
               alt="link_to_cart"
               className="nav__store"
             />
+            {cart.length > 0 && (
+              <span className="nav__red-circle">{cart.length}</span>
+            )}
           </NavLink>
         </li>
       </ul>
@@ -109,6 +126,15 @@ export const NavigationTemplate: FC<Props> = (props) => {
   );
 };
 
+const mapStateToProps = (state: {
+  favouritesReducer: FavouritesState;
+  cartReducer: CartState;
+}) => ({
+  favourites: getFavourites(state.favouritesReducer),
+  cart: getCart(state.cartReducer),
+});
+
 const mapDispatchToProps = { setQuery };
 
-export const Navigation = connect(null, mapDispatchToProps)(NavigationTemplate);
+// eslint-disable-next-line max-len
+export const Navigation = connect(mapStateToProps, mapDispatchToProps)(NavigationTemplate);

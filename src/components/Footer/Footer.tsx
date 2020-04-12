@@ -1,4 +1,6 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
+import { HashLink } from 'react-router-hash-link';
 import './_Footer.scss';
 
 export const Footer = () => (
@@ -25,13 +27,17 @@ export const Footer = () => (
       </nav>
       <div className="footer__block">
         <span className="footer__text">Back to top</span>
-        <a href="#home" className="linkTop">
+        <HashLink
+          smooth
+          to={`${useLocation().pathname}#home`}
+          className="linkTop"
+        >
           <img
             src="/img/arrow.svg"
             alt="link_to_top"
             className="footer__arrow"
           />
-        </a>
+        </HashLink>
       </div>
     </div>
   </footer>

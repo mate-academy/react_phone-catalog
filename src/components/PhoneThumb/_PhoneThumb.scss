@@ -1,25 +1,20 @@
 .phoneThumb {
-  width: 100%;
-  height: 100%;
-  padding: 1em;
+  width: 272px;
+  height: 507px;
+  padding: 32px 24px 0;
   box-sizing: border-box;
+  border: 1px solid #e2e6e9;
 
   position: relative;
 
   &__img {
-    margin: 0 auto;
-    padding: 10px;
+    margin: 16px auto;
+    // padding: 10px;
     display: block;
     width: 208px;
     height: 208px;
-  }
-
-  &__info {
-    width: 100%;
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    box-sizing: border-box;
+    object-fit: contain;
   }
 
   &__info-top {
@@ -35,16 +30,64 @@
     font-size: 14px;
     line-height: 21px;
     color: #313237;
+
+    text-align: center;
   }
 
-  &__decription {
-    margin-top: 20px;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 21px;
+  &__block {
+    margin-bottom: 6px;
 
+    position: relative;
+  }
+
+  &__price-dis {
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 140%;
     color: #313237;
-    text-decoration: none;
+  }
+
+  &__price-reg {
+    margin-left: 8px;
+
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 28px;
+    text-decoration-line: line-through;
+    color: #89939a;
+
+    position: absolute;
+    top: -1px;
+  }
+
+  &__info-main {
+    height: 100%;
+    margin: 24px 0;
+  }
+
+  &__block-spec {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    &:not(:last-child) {
+      margin-bottom: 8px;
+    }
+  }
+
+  .left {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: #89939a;
+  }
+
+  .right {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    text-align: right;
+    color: #313237;
   }
 
   &__action-btns {
@@ -53,7 +96,7 @@
     align-items: center;
 
     position: absolute;
-    bottom: 10px;
+    bottom: 24px;
   }
 
   &__btn-cart {
@@ -63,7 +106,13 @@
     background: #313237;
     border-style: none;
 
-    margin-right: 24px;
+    margin-right: 8px;
+
+    &--active {
+      background: #fff;
+      border: 1px solid #e2e6e9;
+      color: #27ae60;
+    }
   }
 
   &__btn-favourites {
@@ -72,5 +121,9 @@
     background: url("/img/header/heart.svg") center no-repeat;
     border-style: none;
     border: 1px solid #b4bdc4;
+
+    &--active {
+      background: url("../../assets/heart-active.svg") center no-repeat;
+    }
   }
 }

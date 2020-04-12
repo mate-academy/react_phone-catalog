@@ -3,14 +3,20 @@ import './_PhoneDetailsMain.scss';
 import { connect } from 'react-redux';
 import Loader from 'react-loader-spinner';
 import { PhoneDetais } from '../PhoneDetais/PhoneDetais';
-import { State, PhoneDetailsInterface } from '../../constants/types';
-import { getIsLoadingDetails, loadDetails, getDetails } from '../../store';
+import {
+  PhoneDetailsInterface,
+  LoadState,
+  PhoneState,
+} from '../../constants/types';
+import { getIsLoadingDetails } from '../../store/reducers/loadingReducer';
+import { getDetails } from '../../store/reducers/phoneReducer';
+import { loadDetails } from '../../store/actionCreators';
 
 type Props = {
   phoneId: string;
   isLoadingDetails: boolean;
   details: PhoneDetailsInterface | null;
-  loadDetails: (id: string) => void;
+  loadDetails: (uniqueKey: string) => void;
 }
 
 export const PhoneDetailsMainTemplate: FC<Props> = (props) => {
@@ -18,17 +24,12 @@ export const PhoneDetailsMainTemplate: FC<Props> = (props) => {
     isLoadingDetails,
     details,
     loadDetails: loadDetailsTemplate,
+    phoneId,
   } = props;
-
-  const { phoneId } = props;
 
   useEffect(() => {
     loadDetailsTemplate(phoneId);
   }, []);
-
-  useEffect(() => {
-    loadDetailsTemplate(phoneId);
-  }, [phoneId]);
 
   if (isLoadingDetails) {
     return (
@@ -110,9 +111,12 @@ export const PhoneDetailsMainTemplate: FC<Props> = (props) => {
 
 const mapDispatchToProps = { loadDetails };
 
-const mapStateToProps = (state: State) => ({
-  isLoadingDetails: getIsLoadingDetails(state),
-  details: getDetails(state),
+const mapStateToProps = (state: {
+  loadingReducer: LoadState;
+  phoneReducer: PhoneState;
+}) => ({
+  isLoadingDetails: getIsLoadingDetails(state.loadingReducer),
+  details: getDetails(state.phoneReducer),
 });
 
 // eslint-disable-next-line max-len

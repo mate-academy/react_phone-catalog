@@ -86,7 +86,7 @@ export const HomePageMain: FC = () => (
               >
                     Mobile phones
               </Link>
-              <p className="homePage__category-text">number models</p>
+              <p className="homePage__category-text">71 models</p>
             </div>
           </div>
           <div className="homePage__category">

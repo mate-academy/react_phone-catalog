@@ -1,5 +1,9 @@
 import { URL } from '../constants/api';
-import { PhoneInterface, PhoneDetailsInterface } from '../constants/types';
+import {
+  PhoneInterface,
+  PhoneDetailsInterface,
+  CartInterface,
+} from '../constants/types';
 
 const getDataFromServer = async <T>(url: string): Promise<T> => {
   const data = await fetch(url);
@@ -21,8 +25,24 @@ export const getDetails: (url: string)
 };
 
 // eslint-disable-next-line max-len
-export const getDataById = (url: string) => `https://mate-academy.github.io/phone-catalogue-static/api/phones/${url}.json`;
+export const getDataById = (url: string) => `https://alexandershpilka.github.io/phones_api/api/phones/${url}.json`;
 
 export function searchCallback(query: string) {
   return (phone: PhoneInterface) => phone.name.toLowerCase().includes(query);
+}
+
+export const inFavouritesChecker = (uniqueKey: string, arr: string[]) => {
+  return arr.includes(uniqueKey);
+};
+
+export function inCartChecker(uniqueKey: string, arr: CartInterface[]) {
+  if (!arr.length) {
+    return false;
+  }
+
+  if (arr.length) {
+    return arr.map(item => item.id).includes(uniqueKey);
+  }
+
+  return false;
 }

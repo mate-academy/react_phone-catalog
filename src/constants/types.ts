@@ -1,84 +1,69 @@
+
 export interface PhoneInterface {
-  age: number;
   id: string;
-  imageUrl: string;
+  phoneId: string;
   name: string;
-  snippet: string;
-}
-
-interface Android {
-  os: string;
-  ui: string;
-}
-
-interface Battery {
-  standbyTime: string;
-  talkTime: string;
-  type: string;
-}
-
-interface Camera {
-  features: string[];
-  primary: string;
-
-}
-
-interface Connectivity {
-  bluetooth: string;
-  cell: string;
-  gps: boolean;
-  infrared: boolean;
-  wifi: string;
-}
-
-interface Display {
-  screenResolution: string;
-  screenSize: string;
-  touchScreen: boolean;
-}
-
-interface Hardware {
-  accelerometer: boolean;
-  audioJack: string;
-  cpu: string;
-  fmRadio: boolean;
-  physicalKeyboard: boolean;
-  usb: string;
-}
-
-interface SizeAndWeight {
-  dimensions: string[];
-  weight: string;
-}
-
-interface Storage {
-  flash: string;
+  priceRegular: number;
+  priceDiscount: number;
+  screen: string;
+  capacity: string;
+  color: string;
   ram: string;
+  year: number;
+  image: string;
 }
 
 export interface PhoneDetailsInterface {
-  additionalFeatures: string;
-  android: Android;
-  availability: string[];
-  battery: Battery;
-  camera: Camera;
-  connectivity: Connectivity;
-  description: string;
-  display: Display;
-  hardware: Hardware;
   id: string;
-  images: string[];
+  namespaceId: string;
   name: string;
-  sizeAndWeight: SizeAndWeight;
-  storage: Storage;
+  capacityAvailable: string[];
+  capacity: string;
+  priceRegular: number;
+  priceDiscount: number;
+  colorsAvailable: string[];
+  color: string;
+  images: string[];
+  description: Description[];
+  screen: string;
+  resolution: string;
+  processor: string;
+  ram: string;
+  camera: string;
+  zoom: string;
+  cell: string[];
 }
 
-export interface State {
-  phones: PhoneInterface[];
-  details: PhoneDetailsInterface | null;
+interface Description {
+  title: string;
+  text: string[];
+}
+
+export interface CartState {
+  cart: CartInterface[];
+}
+export interface Colors {
+  [key: string]: string;
+}
+
+export interface LoadState {
   isLoadingPhones: boolean;
   isLoadingDetails: boolean;
+}
+
+export interface FavouritesState {
+  favourites: string[];
+}
+
+export interface PhoneState {
+  phones: PhoneInterface[];
+  details: PhoneDetailsInterface | null;
   query: string;
-  cart: PhoneInterface[];
-  favourites: PhoneInterface[];
+}
+
+export interface CartInterface {
+  id: string;
+  amount: number;
+  imgLink: string;
+  price: number;
 }

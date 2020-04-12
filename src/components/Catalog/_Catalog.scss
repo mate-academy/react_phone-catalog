@@ -1,16 +1,12 @@
 .catalog {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
+  display: grid;
+  margin: 24px auto 0;
+  grid-template-columns: repeat(auto-fill, 272px);
+  grid-column-gap: 30px;
+  grid-row-gap: 40px;
   justify-content: space-between;
 
   &__item {
-    width: 272px;
-    height: 507px;
-    margin-bottom: 20px;
-
     list-style-type: none;
-    border: 1px solid #e2e6e9;
   }
 }

@@ -25,7 +25,7 @@ export const FiltersTemplate: FC<Props> = (props) => {
         defaultValue="disabled"
       >
         <option value="disabled" disabled>Sort by</option>
-        <option value="age">Age</option>
+        <option value="year">Year</option>
         <option value="name">Name</option>
       </select>
     </div>

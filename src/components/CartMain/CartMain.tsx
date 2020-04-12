@@ -1,12 +1,12 @@
 import React, { FC } from 'react';
 import './_CartMain.scss';
 import { connect } from 'react-redux';
-import { PhoneInterface, State } from '../../constants/types';
+import { CartInterface, CartState } from '../../constants/types';
 import { CartThumb } from '../CartThumb';
-import { getCart } from '../../store/rootReducer';
+import { getCart } from '../../store/reducers/cartReducer';
 
 interface Props {
-  cart: PhoneInterface[];
+  cart: CartInterface[];
 }
 
 export const CartMainTemplate: FC<Props> = (props) => {
@@ -24,7 +24,7 @@ export const CartMainTemplate: FC<Props> = (props) => {
             <div className="cart__catalog">
               {
                 cart
-                  .map((phone: PhoneInterface) => (
+                  .map((phone: CartInterface) => (
                     <CartThumb
                       key={phone.id}
                       phone={phone}
@@ -34,15 +34,24 @@ export const CartMainTemplate: FC<Props> = (props) => {
             </div>
 
             <div className="cart__box">
-              <span className="cart__price">$999</span>
-              <span className="cart__info">
-                {`Total for ${cart.length} items`}
-              </span>
+              <div className="cart__text-box">
+                <span className="cart__price">
+                $
+                  {
+                    cart
+                      .reduce((acc, item) => acc + item.amount * item.price, 0)
+                  }
+                </span>
+                <span className="cart__info">
+                  {`Total for ${cart.length}`}
+                  {cart.length === 1 ? ` item` : ` items`}
+                </span>
+              </div>
               <button
                 type="button"
                 className="cart__btn-chechout"
               >
-          Checkout
+                Checkout
               </button>
             </div>
           </div>
@@ -53,8 +62,10 @@ export const CartMainTemplate: FC<Props> = (props) => {
   );
 };
 
-const mapStateToProps = (state: State) => ({
-  cart: getCart(state),
+const mapStateToProps = (state: {
+  cartReducer: CartState;
+}) => ({
+  cart: getCart(state.cartReducer),
 });
 
 // eslint-disable-next-line max-len

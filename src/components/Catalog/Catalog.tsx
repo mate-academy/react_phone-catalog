@@ -13,7 +13,10 @@ export const Catalog: FC<Props> = (props) => {
   return (
     <ul className="catalog">
       {phonesArray.map((phone: PhoneInterface) => (
-        <li className="catalog__item" key={phone.id}>
+        <li
+          className="catalog__item phoneThumb"
+          key={phone.id}
+        >
           <PhoneThumb
             data={phone}
           />

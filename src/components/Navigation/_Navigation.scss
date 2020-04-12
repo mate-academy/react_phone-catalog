@@ -97,6 +97,34 @@
     transform: translate(-50%, -50%);
   }
 
+  .box-fav-rel {
+    position: relative;
+  }
+
+  .box-cart-rel {
+    position: relative;
+  }
+
+  &__red-circle {
+    position: absolute;
+    content: "";
+    right: 10px;
+    top: 10px;
+
+    width: 16px;
+    height: 16px;
+
+    border-radius: 50%;
+    background: red;
+    color: #fff;
+    border: 2px solid #fff;
+
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 16px;
+    text-align: center;
+  }
+
   &__store {
     position: absolute;
     content: "";
