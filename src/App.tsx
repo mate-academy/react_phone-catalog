@@ -19,6 +19,7 @@ const App: FC = () => (
     <Switch>
       <Route
         path="/"
+        render={() => <div>Home</div>}
         exact
       />
       <Route
@@ -35,16 +36,18 @@ const App: FC = () => (
         />
       )}
       >
-        <Route
-          path="/phones/:phoneId"
-          component={PhoneDetailsPageLazy}
-          exact
-        />
+        <Switch>
+          <Route
+            path="/phones/:phoneId"
+            component={PhoneDetailsPageLazy}
+            exact
+          />
+          <Route
+            path="*"
+            component={PageNotFound}
+          />
+        </Switch>
       </Suspense>
-      <Route
-        path="*"
-        component={PageNotFound}
-      />
     </Switch>
   </>
 );

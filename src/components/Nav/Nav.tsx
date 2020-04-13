@@ -5,13 +5,17 @@ import './nav.css';
 export const Nav: FC = () => (
   <nav className="header__nav nav">
     <div className="nav__logo">
-      <a href="/" className="logo header__logo">
+      <NavLink
+        to="/"
+        className="logo header__logo"
+        exact
+      >
         Phone
         <br />
         <span>
           catalog
         </span>
-      </a>
+      </NavLink>
     </div>
     <ul className="header__nav-list nav__list header__menu-catalog">
       <li className="nav__item">

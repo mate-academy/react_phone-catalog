@@ -15,6 +15,7 @@
   width: 208px;
   height: 208px;
   margin-bottom: 24px;
+  object-fit: contain;
 }
 
 .card__heading {
@@ -34,12 +35,23 @@
 }
 
 .card__price {
+  display: inline-block;
   font-style: normal;
-  font-weight: bold;
   font-size: 22px;
   line-height: 140%;
   margin-bottom: 7px;
+  margin-right: 8px;
+}
+
+.price-discount {
+  font-weight: bold;
   color: #313237;
+}
+
+.price-regular {
+  font-weight: 500;
+  color: #89939a;
+  text-decoration-line: line-through;
 }
 
 .card__details {

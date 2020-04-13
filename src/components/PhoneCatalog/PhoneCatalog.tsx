@@ -29,7 +29,7 @@ const PhoneCatalogTemplate: FC<StateProps & DispatchProps> = ({
 }) => {
   const [query, setQuery] = useState('');
 
-  useMemo(loadPhones, []);
+  useMemo(() => loadPhones(), []);
 
   let phoneList;
 
@@ -39,7 +39,7 @@ const PhoneCatalogTemplate: FC<StateProps & DispatchProps> = ({
         return [...phones].sort((a, b) => a.name.localeCompare(b.name));
 
       case 'Price':
-        return [...phones].sort((a, b) => a.priceRegular - b.priceRegular);
+        return [...phones].sort((a, b) => a.priceDiscount - b.priceDiscount);
 
       case 'RAM':
         return [...phones].sort((a, b) => {
@@ -84,6 +84,41 @@ const PhoneCatalogTemplate: FC<StateProps & DispatchProps> = ({
 
   return (
     <div className="phones__container">
+      <div className="phones__path">
+        <img src="./img/Home.png" alt="home_icon" className="home-icon" />
+        <img
+          src="./img/Chevron.png"
+          alt="arrow_icon"
+          className="arrow-icon"
+        />
+        <span className="phones__path-title">Phones</span>
+      </div>
+      <h2 className="phones__heding">Mobile phones</h2>
+      <p className="phones__quantity">{`${phones.length} models`}</p>
+      <div className="action-container">
+        <p className="phones__action-title">Sort by</p>
+        <select
+          className="phones__sort-select"
+          value={sortBy}
+          onChange={setSortBy}
+        >
+          <option className="select-option" value="Name">Name</option>
+          <option className="select-option" value="Price">Price</option>
+          <option className="select-option" value="RAM">RAM</option>
+          <option className="select-option" value="Capacity">Capacity</option>
+        </select>
+      </div>
+      <div className="action-container">
+        <p className="phones__action-title">Search</p>
+        <label className="phones__search-label">
+          <input
+            type="text"
+            value={query}
+            className="phones__search-input"
+            onChange={handleChange}
+          />
+        </label>
+      </div>
       <Suspense fallback={(
         <div className="loader__container">
           <Loader
@@ -95,41 +130,6 @@ const PhoneCatalogTemplate: FC<StateProps & DispatchProps> = ({
         </div>
       )}
       >
-        <div className="phones__path">
-          <img src="./img/Home.png" alt="home_icon" className="home-icon" />
-          <img
-            src="./img/Chevron.png"
-            alt="arrow_icon"
-            className="arrow-icon"
-          />
-          <span className="phones__path-title">Phones</span>
-        </div>
-        <h2 className="phones__heding">Mobile phones</h2>
-        <p className="phones__quantity">{`${phones.length} models`}</p>
-        <div className="action-container">
-          <p className="phones__action-title">Sort by</p>
-          <select
-            className="phones__sort-select"
-            value={sortBy}
-            onChange={setSortBy}
-          >
-            <option className="select-option" value="Name">Name</option>
-            <option className="select-option" value="Price">Price</option>
-            <option className="select-option" value="RAM">RAM</option>
-            <option className="select-option" value="Capacity">Capacity</option>
-          </select>
-        </div>
-        <div className="action-container">
-          <p className="phones__action-title">Search</p>
-          <label className="phones__search-label">
-            <input
-              type="text"
-              value={query}
-              className="phones__search-input"
-              onChange={handleChange}
-            />
-          </label>
-        </div>
         <div className="phones__catalog">
           {phoneList.map(phone => (
             <PhoneCardLazy key={phone.id} phone={phone} />

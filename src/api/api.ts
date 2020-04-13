@@ -24,7 +24,7 @@ export const getDetails = async <T>(phones: Phone[]): Promise<Details[]> => {
 
 export const getPhone = async <T>(id: string): Promise<T> => {
   // eslint-disable-next-line max-len
-  const response = await fetch(`https://mate-academy.github.io/phone-catalogue-static/api/phones/${id}.json`);
+  const response = await fetch(detailsURL(id));
 
   return response.json();
 };

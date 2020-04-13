@@ -17,17 +17,15 @@
 .home-icon {
   width: 13px;
   height: 15px;
-  margin-right: 14px;
 }
 
 .arrow-icon {
   width: 6px;
   height: 10px;
-  margin-right: 14px;
+  margin: 0 14px;
 }
 
 .phones__path-title {
-  width: 45px;
   height: 15px;
   padding-top: 2px;
   font-style: normal;
