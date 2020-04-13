@@ -11,6 +11,7 @@ import {
 import { getIsLoadingDetails } from '../../store/reducers/loadingReducer';
 import { getDetails } from '../../store/reducers/phoneReducer';
 import { loadDetails } from '../../store/actionCreators';
+import { SmallCatalog } from '../SmallCatalog';
 
 type Props = {
   phoneId: string;
@@ -66,43 +67,7 @@ export const PhoneDetailsMainTemplate: FC<Props> = (props) => {
 
         <PhoneDetais phoneData={details} phoneId={phoneId} />
 
-        <div className="phoneDetailsMain__likePhones">
-          <div className="phoneDetailsMain__prices-top">
-            <h3 className="phoneDetailsMain__title">You may also like</h3>
-            <div className="phoneDetailsMain__control-btns">
-              <button
-                type="button"
-                className="phoneDetailsMain__price-btn
-                      phoneDetailsMain__price-btn--left"
-              >
-                <img
-                  src="/img/arrow.svg"
-                  alt="arrow_control_left"
-                  className="phoneDetailsMain__price-arrow
-                        phoneDetailsMain__price-arrow--left"
-                />
-              </button>
-              <button
-                type="button"
-                className="phoneDetailsMain__price-btn
-                      phoneDetailsMain__price-btn--right"
-              >
-                <img
-                  src="/img/arrow.svg"
-                  alt="arrow_control_left"
-                  className="phoneDetailsMain__price-arrow
-                        phoneDetailsMain__price-arrow--right"
-                />
-              </button>
-            </div>
-          </div>
-          <div className="phoneDetailsMain__prices-main">
-            <div className="temp-block" />
-            <div className="temp-block" />
-            <div className="temp-block" />
-            <div className="temp-block" />
-          </div>
-        </div>
+        <SmallCatalog titleName="You may also like" />
       </div>
     </section>
 

@@ -1,74 +1,21 @@
 import React, { FC } from 'react';
 import './_HomePageMain.scss';
 import { Link } from 'react-router-dom';
+import { Slider } from '../Slider';
+import accessories from '../../assets/accessories.png';
+import tablets from '../../assets/tablets.png';
+import phonesImage from '../../assets/phones.png';
+import { SmallCatalog } from '../SmallCatalog';
 
 export const HomePageMain: FC = () => (
 
   <section className="homePage">
     <div className="homePage__container wrapper">
-      <div className="slider">
-        <button
-          type="button"
-          className="slider__button
-          slider__button--left"
-        >
-          <img
-            src="/img/arrow.svg"
-            alt="slider_arrow_left"
-            className="slider__arrow slider__arrow--left"
-          />
-        </button>
-        <div className="slider__main">
-          <div className="slider__dots">
-            <span className="slider__dot" />
-            <span className="slider__dot" />
-            <span className="slider__dot" />
-          </div>
-        </div>
-        <button
-          type="button"
-          className="slider__button slider__button--right"
-        >
-          <img
-            src="/img/arrow.svg"
-            alt="slider_arrow_right"
-            className="slider__arrow slider__arrow--right"
-          />
-        </button>
-      </div>
-      <div className="homePage__hotPrices">
-        <div className="homePage__prices-top">
-          <h3 className="homePage__title">Hot prices</h3>
-          <div className="homePage__control-btns">
-            <button
-              type="button"
-              className="homePage__price-btn homePage__price-btn--left"
-            >
-              <img
-                src="/img/arrow.svg"
-                alt="arrow_control_left"
-                className="homePage__price-arrow homePage__price-arrow--left"
-              />
-            </button>
-            <button
-              type="button"
-              className="homePage__price-btn homePage__price-btn--right"
-            >
-              <img
-                src="/img/arrow.svg"
-                alt="arrow_control_left"
-                className="homePage__price-arrow homePage__price-arrow--right"
-              />
-            </button>
-          </div>
-        </div>
-        <div className="homePage__prices-main">
-          <div className="temp-block" />
-          <div className="temp-block" />
-          <div className="temp-block" />
-          <div className="temp-block" />
-        </div>
-      </div>
+
+      <Slider />
+
+      <SmallCatalog titleName="Hot prices" />
+
       <div className="homePage__byCategory">
         <h3 className="homePage__title">Shop by category</h3>
         <div className="homePage__category-main">
@@ -76,7 +23,7 @@ export const HomePageMain: FC = () => (
 
             <div className="homePage__category">
               <img
-                src="/img/phones.png"
+                src={phonesImage}
                 alt="category_phones"
                 className="homePage__img-phones"
               />
@@ -91,7 +38,7 @@ export const HomePageMain: FC = () => (
           </div>
           <div className="homePage__category">
             <img
-              src="/img/tablets.png"
+              src={tablets}
               alt="category_tablets"
               className="homePage__img-phones"
             />
@@ -105,7 +52,7 @@ export const HomePageMain: FC = () => (
           </div>
           <div className="homePage__category">
             <img
-              src="/img/accessories.png"
+              src={accessories}
               alt="category_accessories"
               className="homePage__img-phones"
             />
@@ -119,40 +66,9 @@ export const HomePageMain: FC = () => (
           </div>
         </div>
       </div>
-      {/* template from hotPrices */}
-      <div className="homePage__hotPrices">
-        <div className="homePage__prices-top">
-          <h3 className="homePage__title">Brand new models</h3>
-          <div className="homePage__control-btns">
-            <button
-              type="button"
-              className="homePage__price-btn homePage__price-btn--left"
-            >
-              <img
-                src="/img/arrow.svg"
-                alt="arrow_control_left"
-                className="homePage__price-arrow homePage__price-arrow--left"
-              />
-            </button>
-            <button
-              type="button"
-              className="homePage__price-btn homePage__price-btn--right"
-            >
-              <img
-                src="/img/arrow.svg"
-                alt="arrow_control_left"
-                className="homePage__price-arrow homePage__price-arrow--right"
-              />
-            </button>
-          </div>
-        </div>
-        <div className="homePage__prices-main">
-          <div className="temp-block" />
-          <div className="temp-block" />
-          <div className="temp-block" />
-          <div className="temp-block" />
-        </div>
-      </div>
+
+      <SmallCatalog titleName="Brand new models" />
+
     </div>
   </section>
 

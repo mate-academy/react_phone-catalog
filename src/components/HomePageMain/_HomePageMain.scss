@@ -1,70 +1,8 @@
 .homePage {
   margin-top: 40px;
 
-  .slider {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 400px;
-
-    &__button {
-      height: 100%;
-      width: 32px;
-      border: 1px solid #b4bdc4;
-      background: #fff;
-    }
-
-    &__arrow {
-      &--left {
-        transform: rotate(-90deg);
-      }
-
-      &--right {
-        transform: rotate(90deg);
-      }
-    }
-
-    &__main {
-      width: calc(100% - 96px);
-      height: 100%;
-      background: url("/img/slider.png") center no-repeat;
-      background-size: cover;
-
-      position: relative;
-    }
-
-    &__dots {
-      position: absolute;
-      content: "";
-      bottom: -18px;
-      right: 50%;
-      transform: translateX(50%);
-      height: 4px;
-      width: 80px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    &__dot {
-      height: 100%;
-      width: 14px;
-      background: #313237;
-    }
-  }
-
-  &__hotPrices {
+  &__byCategory {
     width: 100%;
-    // height: 572px;
-
-    margin-top: 102px;
-    margin-bottom: 80px;
-  }
-
-  &__prices-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
   }
 
   &__title {
@@ -74,56 +12,6 @@
     font-weight: bold;
     letter-spacing: -0.01em;
     color: #313237;
-  }
-
-  &__control-btns {
-    width: 80px;
-    height: 32px;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  &__price-btn {
-    width: 32px;
-    height: 32px;
-    background: #fff;
-    border-style: none;
-    border: 1px solid #e2e6e9;
-
-    &:hover {
-      border: 1px solid #b4bdc4;
-    }
-  }
-
-  &__price-arrow {
-    &--left {
-      transform: rotate(-90deg);
-    }
-
-    &--right {
-      transform: rotate(90deg);
-    }
-  }
-
-  &__prices-main {
-    width: 100%;
-    display: grid;
-    justify-content: space-between;
-    grid-template-columns: repeat(auto-fill, minmax(272px, auto));
-    grid-column-gap: 10px;
-  }
-
-  .temp-block {
-    width: 272px;
-    height: 507px;
-    border-radius: 25px;
-    border: 2px solid grey;
-  }
-
-  &__byCategory {
-    width: 100%;
   }
 
   &__category-main {

@@ -3,7 +3,11 @@ import './_PhonesMain.scss';
 import { connect } from 'react-redux';
 import Loader from 'react-loader-spinner';
 import { Catalog } from '../Catalog/Catalog';
-import { PhoneInterface, PhoneState, LoadState } from '../../constants/types';
+import {
+  PhoneInterface,
+  PhoneState,
+  LoadState,
+} from '../../constants/types';
 import { Breadcrumbs } from '../Breadcrumbs';
 import { Filters } from '../Filters';
 import { searchCallback } from '../../utils/api';
@@ -38,7 +42,7 @@ export const PhonesTemplate: FC<Props> = (props) => {
       <section className="phones">
         <div className="phones__container wrapper">
 
-          <Breadcrumbs phonesArray={phones} directory="Phones" />
+          <Breadcrumbs phonesArray={searchedPhones} directory="Phones" />
 
           <Loader
             type="Puff"
@@ -57,7 +61,7 @@ export const PhonesTemplate: FC<Props> = (props) => {
     <section className="phones">
       <div className="phones__container wrapper">
 
-        <Breadcrumbs phonesArray={phones} directory="Phones" />
+        <Breadcrumbs phonesArray={searchedPhones} directory="Phones" />
 
         <Filters />
         <Catalog phonesArray={searchedPhones} />

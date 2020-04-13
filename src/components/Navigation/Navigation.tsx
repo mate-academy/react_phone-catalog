@@ -4,7 +4,6 @@ import debounce from 'lodash/debounce';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { setQuery } from '../../store/actionCreators';
-import imageHeart from '../../assets/header/heart.svg';
 import {
   CartInterface,
   FavouritesState,
@@ -12,6 +11,8 @@ import {
 } from '../../constants/types';
 import { getCart } from '../../store/reducers/cartReducer';
 import { getFavourites } from '../../store/reducers/favouritesReducer';
+import imageHeart from '../../assets/heart.svg';
+import imageCart from '../../assets/shopcart.svg';
 
 interface Props {
   setQuery: (value: string) => void;
@@ -112,7 +113,7 @@ export const NavigationTemplate: FC<Props> = (props) => {
             activeClassName="nav__link-right--active"
           >
             <img
-              src="/img/header/shopcart.svg"
+              src={imageCart}
               alt="link_to_cart"
               className="nav__store"
             />

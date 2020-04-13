@@ -2,6 +2,7 @@ import React from 'react';
 import { useLocation } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 import './_Footer.scss';
+import arrow from '../../assets/arrow.svg';
 
 export const Footer = () => (
   <footer className="footer">
@@ -33,7 +34,7 @@ export const Footer = () => (
           className="linkTop"
         >
           <img
-            src="/img/arrow.svg"
+            src={arrow}
             alt="link_to_top"
             className="footer__arrow"
           />
