@@ -85,6 +85,11 @@
   color: #313237;
 }
 
+.card__actions {
+  display: flex;
+  height: 40px;
+}
+
 .card__button-cart {
   box-sizing: border-box;
   padding: 0;
@@ -113,7 +118,16 @@
   padding: 0;
   width: 40px;
   height: 40px;
+  line-height: 43px;
   border: 1px solid #b4bdc4;
   background-color: #fff;
   cursor: pointer;
+}
+
+.card__button-favourite .icon-card path {
+  transition: 0.3s;
+}
+
+.card__button-favourite:hover .icon-card path {
+  fill: #2060f6;
 }

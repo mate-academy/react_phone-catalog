@@ -3,6 +3,10 @@ body {
   font-family: Mont, sans-serif;
 }
 
+.container {
+  margin-top: 64px;
+}
+
 /* .phone-images {
   background-color: white;
   width: 450px;

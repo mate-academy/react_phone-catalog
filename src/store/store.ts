@@ -9,12 +9,19 @@ import thunk from 'redux-thunk';
 
 import { getPhones, getDetails, getPhone } from '../api/api';
 
-import { PHONES_URL, LOAD_PHONES, LOAD_PHONE } from '../utils/constants';
+import {
+  PHONES_URL,
+  LOAD_PHONES,
+  LOAD_PHONE,
+  SET_FAVOURITE_ID,
+  DELETE_FAVOURITE_ID,
+} from '../utils/constants';
 
 const initialState: State = {
   phones: [],
   phoneDetails: null,
-  phoneError: '',
+  phoneError: false,
+  phonesFavourite: [],
   sortBy: 'Name',
 };
 
@@ -33,7 +40,17 @@ export const setPhone = (payload: Details) => ({
   payload,
 });
 
-export const setError = (payload: string) => ({
+export const setFavouriteId = (payload: string) => ({
+  type: SET_FAVOURITE_ID,
+  payload,
+});
+
+export const deleteFavouriteId = (payload: string) => ({
+  type: DELETE_FAVOURITE_ID,
+  payload,
+});
+
+export const setError = (payload: boolean) => ({
   type: 'SET_ERROR',
   payload,
 });
@@ -53,6 +70,7 @@ export const loadPhones = () => {
         details: details.find(detail => phone.phoneId === detail.id) as Details,
       }));
 
+      dispatch(setError(false));
       dispatch(setPhones(phonesWithDetails));
     } catch (error) {
       // eslint-disable-next-line no-console
@@ -67,7 +85,13 @@ export const loadPhone = (id: string) => {
       .then(data => {
         dispatch(setPhone(data));
       })
-      .catch(error => dispatch(setError(error.message)));
+      .catch(error => {
+        // eslint-disable-next-line no-console
+        console.log(error.message);
+        dispatch(setError(true));
+      });
+
+    dispatch(setError(false));
   };
 };
 
@@ -86,6 +110,19 @@ const phonesReducer: Reducer<State, CustomAction> = (
       return {
         ...state,
         phoneDetails: action.payload,
+      };
+
+    case SET_FAVOURITE_ID:
+      return {
+        ...state,
+        phonesFavourite: [...state.phonesFavourite, action.payload],
+      };
+
+    case DELETE_FAVOURITE_ID:
+      return {
+        ...state,
+        phonesFavourite: [...state.phonesFavourite]
+          .filter(id => id !== action.payload),
       };
 
     case 'SET_ERROR':
@@ -107,6 +144,5 @@ const phonesReducer: Reducer<State, CustomAction> = (
 
 export const store = createStore(
   phonesReducer,
-  initialState,
   applyMiddleware(thunk),
 );

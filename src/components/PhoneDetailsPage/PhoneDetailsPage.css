@@ -5,6 +5,7 @@
 .phone__container-main {
   display: flex;
   margin-top: 40px;
+  margin-bottom: 80px;
 }
 
 .phone__images {
@@ -97,7 +98,7 @@
 .phone__capacity {
   width: 320px;
   padding-bottom: 24px;
-  margin-bottom: 24px;
+  margin-bottom: 32px;
   border-bottom-width: 1px;
   border-bottom-style: solid;
   border-color: #e2e6e9;
@@ -121,4 +122,159 @@
 .capacity__capacity-active {
   color: #fff;
   background-color: #313237;
+}
+
+.card__price {
+  display: inline-block;
+  font-style: normal;
+  font-size: 22px;
+  line-height: 140%;
+  margin-bottom: 7px;
+  margin-right: 8px;
+}
+
+.price-discount {
+  font-weight: bold;
+  color: #313237;
+}
+
+.price-regular {
+  font-weight: 500;
+  color: #89939a;
+  text-decoration-line: line-through;
+}
+
+.card__details-main {
+  padding-top: 16px;
+}
+
+.card__detail {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.card__detail:last-of-type {
+  margin-bottom: 16px;
+}
+
+.card__detail-name {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  color: #89939a;
+}
+
+.card__detail-value {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  color: #313237;
+}
+
+.card__actions-details {
+  display: flex;
+  height: 48px;
+  margin-top: 16px;
+  margin-bottom: 32px;
+}
+
+.card__button-cart {
+  box-sizing: border-box;
+  padding: 0;
+  margin-right: 6px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: #fff;
+  border: 1px solid #313237;
+  background: #313237;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.button__cart-detail {
+  width: 263px;
+  height: 48px;
+}
+
+.button__favourite-detail {
+  width: 48px;
+  height: 48px;
+  line-height: 53px;
+}
+
+.card__button-cart:hover {
+  color: #27ae60;
+  background-color: #fff;
+  border: 1px solid #e2e6e9;
+}
+
+.card__button-favourite {
+  box-sizing: border-box;
+  padding: 0;
+  border: 1px solid #b4bdc4;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.phone__container-specification {
+  display: flex;
+}
+
+.phone__about {
+  width: 559px;
+  margin-right: 64px;
+}
+
+.phone__description {
+  width: 559px;
+}
+
+.specification__info-item {
+  margin-bottom: 32px;
+}
+
+.specification__heading {
+  margin: 0 0 32px;
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 140%;
+  color: #313237;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e2e6e9;
+}
+
+.specification__info-heading {
+  margin-top: 0;
+  margin-bottom: 16px;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 26px;
+  color: #313237;
+}
+
+.specification__info-text {
+  margin-bottom: 10px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  color: #89939a;
+}
+
+.specification__name {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+.specification__value {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  color: #313237;
 }

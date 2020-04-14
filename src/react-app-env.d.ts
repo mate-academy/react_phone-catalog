@@ -40,7 +40,8 @@ interface PhonesWithDetails extends Phone {
 interface State {
   phones: PhonesWithDetails[] | [];
   phoneDetails: Details | null;
-  phoneError: string;
+  phoneError: boolean;
+  phonesFavourite: string[];
   sortBy: string;
 }
 

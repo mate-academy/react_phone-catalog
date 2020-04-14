@@ -1,5 +1,10 @@
 import React, { FC, useMemo } from 'react';
 import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
+import {
+  setFavouriteId as setFavouriteIdStore,
+  deleteFavouriteId as deleteFavouriteIdStore,
+} from '../../store/store';
 
 import './PhoneCard.css';
 import { getPhoneId } from '../../utils/constants';
@@ -8,7 +13,21 @@ interface Props {
   phone: PhonesWithDetails;
 }
 
-export const PhoneCard: FC<Props> = ({ phone }) => {
+interface StateProps {
+  phonesFavourite: string[];
+}
+
+interface DispatchProps {
+  setFavouriteId: (value: string) => void;
+  deleteFavouriteId: (value: string) => void;
+}
+
+export const PhoneCardTemplate: FC<Props & StateProps & DispatchProps> = ({
+  phone,
+  setFavouriteId,
+  phonesFavourite,
+  deleteFavouriteId,
+}) => {
   const phoneID = useMemo(() => getPhoneId(phone.phoneId), []);
 
   return (
@@ -22,6 +41,7 @@ export const PhoneCard: FC<Props> = ({ phone }) => {
       <NavLink
         to={`/phones/${phone.phoneId}`}
         className="card__heading"
+        activeClassName="card__heading"
         exact
       >
         {phone.name}
@@ -61,14 +81,47 @@ export const PhoneCard: FC<Props> = ({ phone }) => {
       </div>
       <div className="card__actions">
         <button type="button" className="card__button-cart">Add to cart</button>
-        <button type="button" className="card__button-favourite">
-          {/* eslint-disable-next-line max-len */}
-          <svg className="icon" width="16" height="12" viewBox="0 0 16 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-            {/* eslint-disable-next-line max-len */}
-            <path fillRule="evenodd" clipRule="evenodd" d="M9.62852 0.631356C10.1584 0.411782 10.7264 0.298767 11.3 0.298767C11.8737 0.298767 12.4416 0.411782 12.9716 0.631356C13.5015 0.85093 13.983 1.17276 14.3885 1.57846C14.7941 1.98392 15.1158 2.46531 15.3353 2.99513C15.5549 3.52505 15.6679 4.09304 15.6679 4.66665C15.6679 5.24026 15.5549 5.80825 15.3353 6.33817C15.1158 6.86805 14.794 7.34947 14.3884 7.75496C14.3883 7.755 14.3884 7.75492 14.3884 7.75496L8.49502 13.6483C8.22165 13.9217 7.77844 13.9217 7.50507 13.6483L1.61174 7.75496C0.792668 6.93589 0.33252 5.82499 0.33252 4.66665C0.33252 3.50831 0.792668 2.39741 1.61174 1.57834C2.43081 0.759273 3.54171 0.299124 4.70005 0.299124C5.85839 0.299124 6.96928 0.759273 7.78835 1.57834L8.00005 1.79003L8.21162 1.57846C8.21166 1.57842 8.21158 1.5785 8.21162 1.57846C8.61711 1.17281 9.09865 0.850909 9.62852 0.631356ZM13.3983 2.56818C13.1228 2.29255 12.7957 2.0739 12.4357 1.92472C12.0756 1.77555 11.6898 1.69877 11.3 1.69877C10.9103 1.69877 10.5245 1.77555 10.1644 1.92472C9.80441 2.0739 9.4773 2.29255 9.2018 2.56818L8.49502 3.27496C8.22165 3.54833 7.77844 3.54833 7.50507 3.27496L6.7984 2.56829C6.24189 2.01177 5.48708 1.69912 4.70005 1.69912C3.91301 1.69912 3.15821 2.01177 2.60169 2.56829C2.04517 3.12481 1.73252 3.87961 1.73252 4.66665C1.73252 5.45369 2.04517 6.20849 2.60169 6.76501L8.00005 12.1634L13.3984 6.76501C13.674 6.48951 13.8928 6.16229 14.042 5.80227C14.1911 5.44224 14.2679 5.05635 14.2679 4.66665C14.2679 4.27695 14.1911 3.89106 14.042 3.53103C13.8928 3.17101 13.6739 2.84367 13.3983 2.56818Z" fill="#333333" />
-          </svg>
-        </button>
+        {!phonesFavourite.includes(phone.phoneId)
+          ? (
+            <button
+              type="button"
+              className="card__button-favourite"
+              onClick={() => setFavouriteId(phone.phoneId)}
+            >
+              {/* eslint-disable-next-line max-len */}
+              <svg className="icon-card" width="16" height="14" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                {/* eslint-disable-next-line max-len */}
+                <path fillRule="evenodd" clipRule="evenodd" d="M100 34.976c0 8.434-3.635 16.019-9.423 21.274h0.048l-31.25 31.25c-3.125 3.125-6.25 6.25-9.375 6.25s-6.25-3.125-9.375-6.25l-31.202-31.25c-5.788-5.255-9.423-12.84-9.423-21.274 0-15.865 12.861-28.726 28.726-28.726 8.434 0 16.019 3.635 21.274 9.423 5.255-5.788 12.84-9.423 21.274-9.423 15.865 0 28.726 12.861 28.726 28.726z" fill="#fff" stroke="#2060f6" strokeWidth="6" />
+              </svg>
+            </button>
+          )
+          : (
+            <button
+              type="button"
+              className="card__button-favourite"
+              onClick={() => deleteFavouriteId(phone.phoneId)}
+            >
+              {/* eslint-disable-next-line max-len */}
+              <svg className="icon-card" width="16" height="14" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                {/* eslint-disable-next-line max-len */}
+                <path fillRule="evenodd" clipRule="evenodd" d="M100 34.976c0 8.434-3.635 16.019-9.423 21.274h0.048l-31.25 31.25c-3.125 3.125-6.25 6.25-9.375 6.25s-6.25-3.125-9.375-6.25l-31.202-31.25c-5.788-5.255-9.423-12.84-9.423-21.274 0-15.865 12.861-28.726 28.726-28.726 8.434 0 16.019 3.635 21.274 9.423 5.255-5.788 12.84-9.423 21.274-9.423 15.865 0 28.726 12.861 28.726 28.726z" fill="#2060f6" stroke="#2060f6" strokeWidth="6" />
+              </svg>
+            </button>
+          )}
       </div>
     </div>
   );
 };
+
+const mapStateToProps = (state: State) => ({
+  phonesFavourite: state.phonesFavourite,
+});
+
+const mapDispatchToProps = {
+  setFavouriteId: setFavouriteIdStore,
+  deleteFavouriteId: deleteFavouriteIdStore,
+};
+
+export const PhoneCard = connect(
+  mapStateToProps, mapDispatchToProps,
+)(PhoneCardTemplate);

@@ -7,6 +7,7 @@ import { PageNotFound } from './components/PageNotFound/PageNotFound';
 import './App.css';
 
 import { PhoneCatalog } from './components/PhoneCatalog/PhoneCatalog';
+import { Favourites } from './components/Favourites/Favourites';
 
 const PhoneDetailsPageLazy = React.lazy(
   () => import('./components/PhoneDetailsPage/PhoneDetailsPage')
@@ -14,7 +15,7 @@ const PhoneDetailsPageLazy = React.lazy(
 );
 
 const App: FC = () => (
-  <>
+  <div className="container">
     <Nav />
     <Switch>
       <Route
@@ -25,6 +26,11 @@ const App: FC = () => (
       <Route
         path="/phones"
         component={PhoneCatalog}
+        exact
+      />
+      <Route
+        path="/favourites"
+        component={Favourites}
         exact
       />
       <Suspense fallback={(
@@ -49,7 +55,7 @@ const App: FC = () => (
         </Switch>
       </Suspense>
     </Switch>
-  </>
+  </div>
 );
 
 export default App;
