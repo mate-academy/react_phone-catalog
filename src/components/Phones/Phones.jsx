@@ -1,9 +1,7 @@
 import React from 'react';
 
-export const Phones = () => {
-  return (
-    <>
-      <h2>Phones</h2>
-    </>
-  );
-};
+export const Phones = () => (
+  <>
+    <h2>Phones</h2>
+  </>
+);

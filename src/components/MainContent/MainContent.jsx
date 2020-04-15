@@ -15,28 +15,28 @@ export const MainContent = () => {
       <Switch>
         <Route
           path="/"
-          render={() => (<Home />)}
+          component={Home}
           exact
         />
         <Route
           path="/phones"
-          render={() => (<PhonesContainer />)}
+          component={PhonesContainer}
           exact
         />
         <Route
           path="/tablets"
-          render={() => (<Tablets />)}
+          component={Tablets}
         />
         <Route
           path="/accessories"
-          render={() => (<Accessories />)}
+          component={Accessories}
         />
         <Route
           path="/phones/:phoneId"
-          render={() => (<PhoneDetailsContainer />)}
+          component={PhoneDetailsContainer}
         />
         <Route
-          render={() => (<PageNotFound />)}
+          component={PageNotFound}
         />
       </Switch>
     </div>
