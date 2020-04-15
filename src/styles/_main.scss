@@ -1,0 +1,39 @@
+html {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+/* 
+html,
+body {
+  height: 100%;
+} */
+
+a,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+li,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Nurito";
+  text-decoration: none;
+}
+
+.app,
+#root {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.main {
+  min-height: calc(100vh - 185px);
+  padding-top: 24px;
+}

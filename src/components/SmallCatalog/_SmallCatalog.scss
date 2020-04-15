@@ -1,0 +1,78 @@
+.smCatalog {
+  margin: 102px auto 80px;
+
+  &__prices-top {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__title {
+    margin-bottom: 24px;
+    font-size: 32px;
+    line-height: 41px;
+    font-weight: bold;
+    letter-spacing: -0.01em;
+    color: #313237;
+  }
+
+  &__control-btns {
+    width: 80px;
+    height: 32px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__btn {
+    width: 32px;
+    height: 32px;
+    background: #fff;
+    border-style: none;
+    border: 1px solid #e2e6e9;
+
+    cursor: pointer;
+
+    &--left {
+      background-image: url("../../assets/arrow-gr.svg");
+      background-position: center;
+      background-size: contain;
+      background-repeat: no-repeat;
+      transform: rotate(-180deg);
+    }
+
+    &--right {
+      background-image: url("../../assets/arrow.svg");
+      background-position: center;
+      background-size: contain;
+      background-repeat: no-repeat;
+      transform: rotate(90deg);
+    }
+
+    &:hover {
+      border: 1px solid #b4bdc4;
+    }
+  }
+
+  &__prices-main {
+    /* display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(272px, auto));
+    grid-auto-flow: column;
+    overflow-x: hidden;
+    grid-gap: 16px;
+    justify-content: space-between; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    overflow-x: hidden;
+  }
+}
+
+.temp-block {
+  width: 272px;
+  height: 507px;
+  border-radius: 25px;
+  border: 2px solid grey;
+}

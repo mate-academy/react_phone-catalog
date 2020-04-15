@@ -1,0 +1,62 @@
+.pagination {
+  margin-top: 24px;
+
+  &__list {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+  }
+
+  &__item {
+    &:not(:last-of-type) {
+      margin-right: 8px;
+    }
+
+    &:first-child {
+      margin-right: 16px;
+    }
+
+    &:last-child {
+      margin-left: 8px;
+    }
+  }
+
+  &__btn {
+    width: 32px;
+    height: 32px;
+    background: #fff;
+    border: 1px solid #e2e6e9;
+
+    cursor: pointer;
+
+    &--left {
+      background-image: url("../../assets/arrow-active.svg");
+      background-repeat: no-repeat;
+      background-position: center;
+      transform: rotate(-180deg);
+
+      &--disabled {
+        background-image: url("../../assets/arrow-gr.svg");
+      }
+    }
+
+    &--right {
+      background-image: url("../../assets/arrow-active.svg");
+      background-repeat: no-repeat;
+      background-position: center;
+
+      &--disabled {
+        background-image: url("../../assets/arrow-gr.svg");
+      }
+    }
+
+    &:hover {
+      border: 1px solid #313237;
+    }
+
+    &--active {
+      color: #fff;
+      background: #313237;
+    }
+  }
+}
