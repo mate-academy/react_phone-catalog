@@ -1,47 +1,36 @@
 import React from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from 'react-router-dom';
+
+import { Header } from './components/Header';
+import { HomePage } from './components/HomePage';
+import { PhonesPage } from './components/PhonesPage';
+import { NotFound404Page } from './components/NotFoundPage';
 
 import './App.css';
 
-import PhoneCatalog from './PhoneCatalog';
-import PhoneDetailsPage from './PhoneDetailsPage';
 
 const App = () => (
-  <div className="container-fluid">
-    <div className="row">
-      <div className="col-md-2">
-        <section>
-          <h2>Filter</h2>
-
-          <label>
-            <div>Search:</div>
-            <input />
-          </label>
-
-          <label>
-            <div>Sort by:</div>
-            <select>
-              <option value="name">Alphabetical</option>
-              <option value="age">Newest</option>
-            </select>
-          </label>
-        </section>
-
-        <section>
-          <h2>Shopping Cart</h2>
-          <ul>
-            <li>Phone 1</li>
-            <li>Phone 2</li>
-            <li>Phone 3</li>
-          </ul>
-        </section>
-      </div>
-
-      <div className="col-md-10">
-        <PhoneDetailsPage />
-        <PhoneCatalog />
-      </div>
-    </div>
-  </div>
+  <Router>
+    <Header />
+    <Switch>
+      <Route path="/" exact>
+        <HomePage />
+      </Route>
+      <Route path="/phones" exact>
+        <PhonesPage />
+      </Route>
+      <Route path="/notfound" exact>
+        <NotFound404Page />
+      </Route>
+      <Redirect path="/react_phone-catalog" to="/" />
+      <Redirect path="*" to="/notfound" />
+    </Switch>
+  </Router>
 );
 
 export default App;
