@@ -6,11 +6,13 @@ export const phoneState: PhoneState = {
   phones: [],
   details: null,
   query: '',
+  paginationPage: 16,
 };
 
 export const getPhones = (state: PhoneState) => state.phones;
 export const getDetails = (state: PhoneState) => state.details;
 export const getQuery = (state: PhoneState) => state.query;
+export const getPagination = (state: PhoneState) => state.paginationPage;
 
 export const phoneReducer = (state = phoneState, action: AnyAction) => {
   switch (action.type) {
@@ -30,6 +32,12 @@ export const phoneReducer = (state = phoneState, action: AnyAction) => {
       return {
         ...state,
         query: action.payload,
+      };
+
+    case ActionTypes.SET_PAGINATION:
+      return {
+        ...state,
+        paginationPage: action.payload,
       };
 
     case ActionTypes.SET_SORT_BY: {

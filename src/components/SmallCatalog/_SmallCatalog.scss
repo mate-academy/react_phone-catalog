@@ -1,6 +1,4 @@
 .smCatalog {
-  width: 100%;
-
   margin: 102px auto 80px;
 
   &__prices-top {
@@ -28,12 +26,14 @@
     align-items: center;
   }
 
-  &__price-btn {
+  &__btn {
     width: 32px;
     height: 32px;
     background: #fff;
     border-style: none;
     border: 1px solid #e2e6e9;
+
+    cursor: pointer;
 
     &--left {
       background-image: url("../../assets/arrow-gr.svg");
@@ -56,24 +56,17 @@
     }
   }
 
-  // &__price-arrow {
-  //   &--left {
-  //     transform: rotate(-90deg);
-  //   }
-
-  //   &--right {
-  //     transform: rotate(90deg);
-  //   }
-  // }
-
   &__prices-main {
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(auto-fill,minmax(272px,1fr));
+    /* display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(272px, auto));
     grid-auto-flow: column;
-    grid-auto-columns: minmax(272px,1fr);
     overflow-x: hidden;
     grid-gap: 16px;
+    justify-content: space-between; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    overflow-x: hidden;
   }
 }
 

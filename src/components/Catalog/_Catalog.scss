@@ -1,8 +1,7 @@
 .catalog {
+  margin-top: 20px;
   display: grid;
-  margin: 24px auto 0;
   grid-template-columns: repeat(auto-fill, 272px);
-  grid-column-gap: 30px;
   grid-row-gap: 40px;
   justify-content: space-between;
 

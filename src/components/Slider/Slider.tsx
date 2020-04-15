@@ -38,7 +38,13 @@ export const Slider: FC = () => {
           className="slider__arrow slider__arrow--left"
         />
       </button>
-      <div className="slider__main">
+      <div
+        className={cx({
+          'slider__main-0': active === 0,
+          'slider__main-1': active === 1,
+          'slider__main-2': active === 2,
+        })}
+      >
         <div className="slider__dots">
           {
             dotsArray.map((position, ind) => (

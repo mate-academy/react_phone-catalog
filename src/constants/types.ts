@@ -41,6 +41,7 @@ interface Description {
 
 export interface CartState {
   cart: CartInterface[];
+  cartTrigger: boolean;
 }
 export interface Colors {
   [key: string]: string;
@@ -59,6 +60,7 @@ export interface PhoneState {
   phones: PhoneInterface[];
   details: PhoneDetailsInterface | null;
   query: string;
+  paginationPage: number;
 }
 
 export interface CartInterface {

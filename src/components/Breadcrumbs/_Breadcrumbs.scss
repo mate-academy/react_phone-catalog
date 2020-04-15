@@ -1,26 +1,19 @@
 .breadcrumbs {
-  width: 93px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 40px;
 
-  &__home-logo {
+  &__top-box {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+
+  }
+
+  &__home-link {
     width: 14px;
     height: 14px;
+
+    margin-right: 33px;
+
     background: url("../../assets/home.svg") center no-repeat;
-
-    position: relative;
-
-    &::after {
-      position: absolute;
-      content: "";
-      right: -18px;
-      top: 2px;
-      width: 6px;
-      height: 10px;
-      background: url("../../assets/arrow-gr.svg") center no-repeat;
-    }
   }
 
   &__location {
@@ -28,6 +21,18 @@
     font-size: 12px;
     line-height: 15px;
     color: #89939a;
+
+    position: relative;
+
+    &::after {
+      position: absolute;
+      content: "";
+      left: -20px;
+      top: 2px;
+      width: 6px;
+      height: 10px;
+      background: url("../../assets/arrow-gr.svg") center no-repeat;
+    }
   }
 
   &__title {

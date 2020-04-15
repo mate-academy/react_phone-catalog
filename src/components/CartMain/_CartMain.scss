@@ -1,31 +1,5 @@
 .cart {
-  margin-top: 41px;
-
-  &__back {
-    margin-bottom: 16px;
-    margin-left: 20px;
-
-    font-weight: 600;
-    font-size: 12px;
-    line-height: 15px;
-    color: #89939a;
-
-    position: relative;
-
-    &::before {
-      position: absolute;
-      content: "";
-      width: 10px;
-      height: 10px;
-
-      transform: rotate(180deg);
-
-      top: 2px;
-      left: -15px;
-      background: url("../../assets/arrow-gr.svg") center no-repeat;
-
-    }
-  }
+  margin-top: 17px;
 
   &__title {
     font-weight: bold;

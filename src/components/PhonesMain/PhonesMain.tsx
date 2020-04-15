@@ -61,10 +61,25 @@ export const PhonesTemplate: FC<Props> = (props) => {
     <section className="phones">
       <div className="phones__container wrapper">
 
-        <Breadcrumbs phonesArray={searchedPhones} directory="Phones" />
-
-        <Filters />
-        <Catalog phonesArray={searchedPhones} />
+        {
+          query === '' ? (
+            <>
+              <Breadcrumbs phonesArray={searchedPhones} directory="Phones" />
+              <Filters />
+              <Catalog phonesArray={searchedPhones} />
+            </>
+          ) : (
+            <>
+              <span
+                className="phones__query-search"
+              >
+                {searchedPhones.length}
+                {' '}
+                results
+              </span>
+              <Catalog phonesArray={searchedPhones} />
+            </>
+          )}
 
       </div>
     </section>

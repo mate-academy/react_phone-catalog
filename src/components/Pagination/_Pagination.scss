@@ -30,20 +30,33 @@
     cursor: pointer;
 
     &--left {
-      background-image: url("../../assets/arrow-gr.svg");
+      background-image: url("../../assets/arrow-active.svg");
       background-repeat: no-repeat;
       background-position: center;
       transform: rotate(-180deg);
+
+      &--disabled {
+        background-image: url("../../assets/arrow-gr.svg");
+      }
     }
 
     &--right {
-      background-image: url("../../assets/arrow-gr.svg");
+      background-image: url("../../assets/arrow-active.svg");
       background-repeat: no-repeat;
       background-position: center;
+
+      &--disabled {
+        background-image: url("../../assets/arrow-gr.svg");
+      }
     }
 
     &:hover {
       border: 1px solid #313237;
+    }
+
+    &--active {
+      color: #fff;
+      background: #313237;
     }
   }
 }

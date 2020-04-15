@@ -1,22 +1,24 @@
 import React, { FC, useState, useEffect } from 'react';
 import './_Catalog.scss';
-import { PhoneInterface } from '../../constants/types';
+import { connect } from 'react-redux';
+import { PhoneInterface, PhoneState } from '../../constants/types';
 import { PhoneThumb } from '../PhoneThumb';
 import { Pagination } from '../Pagination';
+import { getPagination } from '../../store/reducers/phoneReducer';
 
 interface Props {
   phonesArray: PhoneInterface[];
+  paginationPage: number;
 }
 
-export const Catalog: FC<Props> = ({ phonesArray }) => {
+export const CatalogTemplate: FC<Props> = ({ phonesArray, paginationPage }) => {
   const [
     visiblePhones, setVisiblePhones,
   ] = useState<PhoneInterface[]>(phonesArray);
 
   const [currentPage, setCurrentPage] = useState(1);
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [phonesPerPage, setPhonesPerPage] = useState(16);
+  const [phonesPerPage, setPhonesPerPage] = useState(paginationPage);
 
   const indexOfLastPhone = currentPage * phonesPerPage;
   const indexOfFirstPhone = indexOfLastPhone - phonesPerPage;
@@ -30,6 +32,14 @@ export const Catalog: FC<Props> = ({ phonesArray }) => {
   useEffect(() => {
     setVisiblePhones(phonesArray);
   }, [phonesArray]);
+
+  useEffect(() => {
+    setPhonesPerPage(paginationPage);
+  }, [paginationPage]);
+
+  const handlePage = (num: number) => {
+    setCurrentPage(currentPage + num);
+  };
 
   return (
     <>
@@ -50,8 +60,18 @@ export const Catalog: FC<Props> = ({ phonesArray }) => {
           phonesPerPage={phonesPerPage}
           totalPhones={visiblePhones.length}
           paginate={paginate}
+          currentPage={currentPage}
+          handlePage={handlePage}
         />
       )}
     </>
   );
 };
+
+const mapStateToProps = (state: {
+  phoneReducer: PhoneState;
+}) => ({
+  paginationPage: getPagination(state.phoneReducer),
+});
+
+export const Catalog = connect(mapStateToProps)(CatalogTemplate);

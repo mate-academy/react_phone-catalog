@@ -1,0 +1,25 @@
+.back {
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+
+  &__arrow-img {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+
+    object-fit: contain;
+  }
+
+  &__btn {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: #89939a;
+
+    background: #fff;
+    border-style: none;
+    
+    cursor: pointer;
+  }
+}

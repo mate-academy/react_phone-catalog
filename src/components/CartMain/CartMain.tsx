@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { CartInterface, CartState } from '../../constants/types';
 import { CartThumb } from '../CartThumb';
 import { getCart } from '../../store/reducers/cartReducer';
+import { BackPath } from '../BackPath/BackPath';
 
 interface Props {
   cart: CartInterface[];
@@ -15,7 +16,7 @@ export const CartMainTemplate: FC<Props> = (props) => {
   return (
     <section className="cart">
       <div className="cart__container wrapper">
-        <span className="cart__back">back</span>
+        <BackPath />
         <h3 className="cart__title">Cart</h3>
         {!cart.length ? (
           <h3>No phones in cart</h3>

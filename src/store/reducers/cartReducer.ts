@@ -4,9 +4,11 @@ import { CartState } from '../../constants/types';
 
 export const cartState: CartState = {
   cart: [],
+  cartTrigger: false,
 };
 
 export const getCart = (state: CartState) => state.cart;
+export const getCartTrigger = (state: CartState) => state.cartTrigger;
 
 export const cartReducer = (state = cartState, action: AnyAction) => {
   switch (action.type) {
@@ -14,6 +16,12 @@ export const cartReducer = (state = cartState, action: AnyAction) => {
       return {
         ...state,
         cart: [...state.cart, action.payload],
+      };
+
+    case ActionTypes.SET_CART_TRIGGER:
+      return {
+        ...state,
+        cartTrigger: action.payload,
       };
 
     case ActionTypes.DELETE_CART:

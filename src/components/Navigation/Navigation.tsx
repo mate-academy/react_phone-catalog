@@ -3,13 +3,14 @@ import './_Navigation.scss';
 import debounce from 'lodash/debounce';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import cx from 'classnames';
 import { setQuery } from '../../store/actionCreators';
 import {
   CartInterface,
   FavouritesState,
   CartState,
 } from '../../constants/types';
-import { getCart } from '../../store/reducers/cartReducer';
+import { getCart, getCartTrigger } from '../../store/reducers/cartReducer';
 import { getFavourites } from '../../store/reducers/favouritesReducer';
 import imageHeart from '../../assets/heart.svg';
 import imageCart from '../../assets/shopcart.svg';
@@ -18,6 +19,7 @@ interface Props {
   setQuery: (value: string) => void;
   cart: CartInterface[];
   favourites: string[];
+  cartTrigger: boolean;
 }
 
 export const NavigationTemplate: FC<Props> = (props) => {
@@ -25,6 +27,7 @@ export const NavigationTemplate: FC<Props> = (props) => {
     setQuery: setQueryTemplate,
     favourites,
     cart,
+    cartTrigger,
   } = props;
 
   const searchWithDelay = useCallback(
@@ -90,7 +93,10 @@ export const NavigationTemplate: FC<Props> = (props) => {
             onChange={handleSearch}
           />
         </li>
-        <li className="nav__item-right box-fav-rel">
+        <li className={cx('nav__item-right box-fav-rel', {
+          notVisible: cartTrigger === true,
+        })}
+        >
           <NavLink
             className="nav__link-right"
             to="/favourites"
@@ -133,6 +139,7 @@ const mapStateToProps = (state: {
 }) => ({
   favourites: getFavourites(state.favouritesReducer),
   cart: getCart(state.cartReducer),
+  cartTrigger: getCartTrigger(state.cartReducer),
 });
 
 const mapDispatchToProps = { setQuery };

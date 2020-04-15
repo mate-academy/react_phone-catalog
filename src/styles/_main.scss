@@ -2,11 +2,11 @@ html {
   overflow-x: hidden;
   scroll-behavior: smooth;
 }
-
+/* 
 html,
 body {
   height: 100%;
-}
+} */
 
 a,
 p,
@@ -34,5 +34,6 @@ body {
 }
 
 .main {
-  min-height: calc(100% - 160px);
+  min-height: calc(100vh - 185px);
+  padding-top: 24px;
 }

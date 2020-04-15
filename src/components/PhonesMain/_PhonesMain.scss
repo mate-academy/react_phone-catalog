@@ -1,3 +1,11 @@
 .phones {
-  margin-top: 24px;
+
+  &__query-search {
+    margin-top: 24px;
+
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #89939a;
+  }
 }

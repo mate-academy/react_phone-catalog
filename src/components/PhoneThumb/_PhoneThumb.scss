@@ -8,8 +8,7 @@
   position: relative;
 
   &__img {
-    margin: 16px auto;
-    // padding: 10px;
+    margin: 8px auto;
     display: block;
     width: 208px;
     height: 208px;
@@ -18,7 +17,7 @@
   }
 
   &__info-top {
-    height: 66px;
+    height: 72px;
     border-bottom: 1px solid #e2e6e9;
     display: flex;
     flex-direction: column;
@@ -26,6 +25,7 @@
   }
 
   &__title {
+    height: 42px;
     font-weight: 500;
     font-size: 14px;
     line-height: 21px;
@@ -61,7 +61,6 @@
   }
 
   &__info-main {
-    height: 100%;
     margin: 24px 0;
   }
 

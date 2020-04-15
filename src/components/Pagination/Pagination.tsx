@@ -1,10 +1,13 @@
 import React, { FC } from 'react';
 import './_Pagination.scss';
+import cx from 'classnames';
 
 interface Props {
   phonesPerPage: number;
   totalPhones: number;
   paginate: (numberOfPage: number) => void;
+  currentPage: number;
+  handlePage: (num: number) => void;
 }
 
 export const Pagination: FC<Props> = (props) => {
@@ -12,6 +15,8 @@ export const Pagination: FC<Props> = (props) => {
     phonesPerPage,
     totalPhones,
     paginate,
+    currentPage,
+    handlePage,
   } = props;
 
   const pageNumber = [];
@@ -20,13 +25,21 @@ export const Pagination: FC<Props> = (props) => {
     pageNumber.push(i);
   }
 
+  const handlePagination = (num: number) => {
+    handlePage(num);
+  };
+
   return (
     <div className="pagination">
       <ul className="pagination__list">
         <li className="pagination__item">
           <button
+            onClick={() => handlePagination(-1)}
+            disabled={currentPage === 1}
             type="button"
-            className="pagination__btn pagination__btn--left"
+            className={cx('pagination__btn pagination__btn--left', {
+              'pagination__btn--left--disabled': currentPage === 1,
+            })}
           />
         </li>
         {
@@ -34,7 +47,9 @@ export const Pagination: FC<Props> = (props) => {
             <li className="pagination__item" key={num}>
               <button
                 type="button"
-                className="pagination__btn"
+                className={cx('pagination__btn', {
+                  'pagination__btn--active': num === currentPage,
+                })}
                 onClick={() => paginate(num)}
               >
                 {num}
@@ -44,8 +59,13 @@ export const Pagination: FC<Props> = (props) => {
         }
         <li className="pagination__item">
           <button
+            onClick={() => handlePagination(1)}
+            disabled={currentPage === pageNumber.length}
             type="button"
-            className="pagination__btn pagination__btn--right"
+            className={cx('pagination__btn pagination__btn--right', {
+              'pagination__btn--right--disabled':
+                  currentPage === pageNumber.length,
+            })}
           />
         </li>
       </ul>

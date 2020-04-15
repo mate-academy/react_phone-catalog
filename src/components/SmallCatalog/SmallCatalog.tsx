@@ -15,11 +15,11 @@ export const SmallCatalog: FC<Props> = (props) => {
         <div className="smCatalog__control-btns">
           <button
             type="button"
-            className="smCatalog__price-btn smCatalog__price-btn--left"
+            className="smCatalog__btn smCatalog__btn--left"
           />
           <button
             type="button"
-            className="smCatalog__price-btn smCatalog__price-btn--right"
+            className="smCatalog__btn smCatalog__btn--right"
           />
         </div>
       </div>

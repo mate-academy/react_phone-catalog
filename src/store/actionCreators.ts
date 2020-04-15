@@ -62,6 +62,16 @@ export const setQuery = (value: string) => ({
   payload: value,
 });
 
+export const setPagination = (value: number) => ({
+  type: ActionTypes.SET_PAGINATION,
+  payload: value,
+});
+
+export const setCartTrigger = (value: boolean) => ({
+  type: ActionTypes.SET_CART_TRIGGER,
+  payload: value,
+});
+
 // thunk
 export const loadPhones = () => {
   return async(dispatch: Dispatch) => {

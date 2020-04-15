@@ -1,7 +1,6 @@
 import React, { FC, useState, useCallback } from 'react';
 import { connect } from 'react-redux';
 import './_PhoneDetails.scss';
-import { Link } from 'react-router-dom';
 import cx from 'classnames';
 import { setFavourites, setCart } from '../../store/actionCreators';
 import {
@@ -14,6 +13,7 @@ import { colours } from '../../constants/api';
 import { inFavouritesChecker, inCartChecker } from '../../utils/api';
 import { getFavourites } from '../../store/reducers/favouritesReducer';
 import { getCart } from '../../store/reducers/cartReducer';
+import { BackPath } from '../BackPath';
 
 interface Props {
   cart: CartInterface[];
@@ -43,6 +43,7 @@ export const PhoneDetaisTemplate: FC<Props> = (props) => {
     name,
     images,
     namespaceId,
+    description,
     priceDiscount,
     priceRegular,
     id,
@@ -94,7 +95,7 @@ export const PhoneDetaisTemplate: FC<Props> = (props) => {
         <span className="phone__location">Phones</span>
         <span className="phone__model-name">{name}</span>
       </div>
-      <Link to="/phones" className="phone__link-back">Back</Link>
+      <BackPath />
       <div className="phone__main">
         <h3 className="phone__title">{name}</h3>
         <div className="phone__top-block">
@@ -240,7 +241,23 @@ export const PhoneDetaisTemplate: FC<Props> = (props) => {
         <div className="phone__bottom-block">
           <div className="phone__about">
             <h3 className="phone__subtitle">About</h3>
-            <h4 className="phone__title-info">And then there was Pro</h4>
+
+            <h4 className="phone__title-info">{description[0].title}</h4>
+
+            <p className="phone__text">{description[0].text[0]}</p>
+            <br />
+            <p className="phone__text">{description[0].text[1]}</p>
+
+            <h4 className="phone__title-info">{description[1].title}</h4>
+
+            <p className="phone__text">{description[1].text[0]}</p>
+            <p className="phone__text">{description[1].text[1]}</p>
+
+            <h4 className="phone__title-info">{description[2].title}</h4>
+
+            <p className="phone__text">{description[2].text[0]}</p>
+            <p className="phone__text">{description[2].text[1]}</p>
+            {/* <h4 className="phone__title-info">And then there was Pro</h4>
             <p className="phone__text">
               <br />
               <br />
@@ -271,7 +288,7 @@ export const PhoneDetaisTemplate: FC<Props> = (props) => {
                   at 60 fps. You get more creative control, too,
                   with four times more scene and powerful new editing tools
                   to play with.
-            </p>
+            </p> */}
           </div>
           <div className="phone__specs">
             <h3 className="phone__subtitle">Tech specs</h3>
