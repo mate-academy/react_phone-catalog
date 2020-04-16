@@ -1,0 +1,20 @@
+.phoneDetails {
+  max-width: 1200px;
+  margin: auto;
+  border: 1px solid skyblue;
+
+  &__title {
+    margin-bottom: 40px;
+  }
+
+  &__heading {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__slider,
+  &__order {
+    width: 560px;
+    border: 1px solid violet;
+  }
+}

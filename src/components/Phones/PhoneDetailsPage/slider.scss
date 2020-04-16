@@ -1,0 +1,29 @@
+.slider {
+  display: flex;
+  justify-content: space-between;
+
+  &__list {
+    width: 80px;
+    margin: auto;
+
+  }
+
+  &__item {
+    border: 0.5px solid #C4C4C4;
+    margin-bottom: 15px;
+    padding: 7px;
+  }
+
+  &__item:last-child {
+    margin-bottom: 0;
+  }
+
+  &__images {
+    width: 65px;
+  }
+
+  &__image {
+    width: 440px;
+    margin: auto;
+  }
+}

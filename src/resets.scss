@@ -1,7 +1,16 @@
 p,
-ul {
+ul,
+h1 {
   margin: 0;
   padding: 0;
+}
+
+h1 {
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  color: #313237;
 }
 
 li {

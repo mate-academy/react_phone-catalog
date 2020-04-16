@@ -1,0 +1,101 @@
+@import "../../../mixin.scss";
+
+.order {
+  &__colors-heading,
+  &__capacity-heading {
+    @include small-text;
+    margin-bottom: 8px;
+  }
+
+  &__colors-list {
+    display: flex;
+    width: 320px;
+    padding-bottom: 25px;
+    margin-bottom: 25px;
+    border-bottom: 1px solid #E2E6E9;
+  }
+
+  &__colors-item {
+    width: 34px;
+    height: 34px;
+    padding: 1px;
+    margin-right: 9px;
+    border-radius: 50%;
+    border: 1px solid #E2E6E9;
+  }
+
+  &__colors-item:hover,
+  &__colors-item:focus,
+  &__colors-item:active {
+    border: 1px solid #313237;
+  }
+
+  &__colors-button {
+    width: 30px;
+    height: 30px;
+    background-color: #FCDBC1;
+    border-radius: 50%;
+    border: 2px solid #fff;
+  }
+
+  &__colors-button:hover {
+    border: 2px solid #fff;
+  }
+
+  &__capacity {
+    width: 320px;
+    padding-bottom: 25px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #E2E6E9;
+  }
+
+  &__capacity-button {
+    width: 60px;
+    height: 30px;
+    margin-right: 8px;
+    font-weight: 500;
+    font-size: 14px;
+    text-align: center;
+    color: #313237;
+    border: 1px solid #B4BDC4;
+  }
+
+  &__capacity-button:focus {
+    color: #fff;
+    background: #313237;
+  }
+
+  &__price {
+    position: relative;
+    font-size: 32px;
+    font-weight: 500;
+    margin-bottom: 16px;
+  }
+
+  &__price-new {
+    font-weight: bold;
+    letter-spacing: -0.01em;
+    color: #313237;
+    margin-right: 7px;
+  }
+
+  &__price-old {
+    position: absolute;
+    font-size: 22px;
+    text-decoration-line: line-through;
+    color: #89939A;
+    top: 6px;
+  }
+}
+
+.colors__button--1 {
+  background-color: #5F7170;
+}
+
+.colors__button--2 {
+  background-color: #4C4C4C;
+}
+
+.colors__button--3 {
+  background-color: #F0F0F0;
+}
