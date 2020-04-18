@@ -42,7 +42,10 @@ interface State {
   phoneDetails: Details | null;
   phoneError: boolean;
   phonesFavourite: string[];
+  phonesCart: string[];
   sortBy: string;
+  totalPrice: number;
+  totalQuantity: number;
 }
 
 interface Description {

@@ -15,6 +15,10 @@ import {
   LOAD_PHONE,
   SET_FAVOURITE_ID,
   DELETE_FAVOURITE_ID,
+  DELETE_CART_ID,
+  SET_CART_ID,
+  SET_PRICE,
+  SET_QUANTITY,
 } from '../utils/constants';
 
 const initialState: State = {
@@ -22,7 +26,10 @@ const initialState: State = {
   phoneDetails: null,
   phoneError: false,
   phonesFavourite: [],
+  phonesCart: [],
   sortBy: 'Name',
+  totalPrice: 0,
+  totalQuantity: 0,
 };
 
 interface CustomAction extends Action {
@@ -50,6 +57,16 @@ export const deleteFavouriteId = (payload: string) => ({
   payload,
 });
 
+export const setCartId = (payload: string) => ({
+  type: SET_CART_ID,
+  payload,
+});
+
+export const deleteCartId = (payload: string) => ({
+  type: DELETE_CART_ID,
+  payload,
+});
+
 export const setError = (payload: boolean) => ({
   type: 'SET_ERROR',
   payload,
@@ -60,12 +77,28 @@ export const setSortBy = (payload: React.ChangeEvent<HTMLSelectElement>) => ({
   payload,
 });
 
+export const setPriceToAmount = (payload: number) => ({
+  type: SET_PRICE,
+  payload,
+});
+
+export const setQuantityToTotal = (payload: number) => ({
+  type: SET_QUANTITY,
+  payload,
+});
+
 export const loadPhones = () => {
-  return async(dispatch: Dispatch) => {
+  return async(dispatch: Dispatch, getState: () => State) => {
+    const { phones } = getState();
+
+    if (phones.length) {
+      return;
+    }
+
     try {
-      const phones = await getPhones<Phone[]>(PHONES_URL);
-      const details = await getDetails<Details[]>(phones);
-      const phonesWithDetails = phones.map(phone => ({
+      const phonesFromApi = await getPhones<Phone[]>(PHONES_URL);
+      const details = await getDetails<Details[]>(phonesFromApi);
+      const phonesWithDetails = phonesFromApi.map(phone => ({
         ...phone,
         details: details.find(detail => phone.phoneId === detail.id) as Details,
       }));
@@ -80,16 +113,26 @@ export const loadPhones = () => {
 };
 
 export const loadPhone = (id: string) => {
-  return async(dispatch: Dispatch) => {
-    getPhone<Details>(id)
-      .then(data => {
-        dispatch(setPhone(data));
-      })
-      .catch(error => {
-        // eslint-disable-next-line no-console
-        console.log(error.message);
-        dispatch(setError(true));
-      });
+  return async(dispatch: Dispatch, getState: () => State) => {
+    const { phones } = getState();
+
+    if (phones.length) {
+      const phoneDetails = phones.find(phone => id === phone.phoneId);
+
+      if (phoneDetails) {
+        dispatch(setPhone(phoneDetails.details));
+      }
+    } else {
+      getPhone<Details>(id)
+        .then(data => {
+          dispatch(setPhone(data));
+        })
+        .catch(error => {
+          // eslint-disable-next-line no-console
+          console.log(error.message);
+          dispatch(setError(true));
+        });
+    }
 
     dispatch(setError(false));
   };
@@ -123,6 +166,31 @@ const phonesReducer: Reducer<State, CustomAction> = (
         ...state,
         phonesFavourite: [...state.phonesFavourite]
           .filter(id => id !== action.payload),
+      };
+
+    case SET_CART_ID:
+      return {
+        ...state,
+        phonesCart: [...state.phonesCart, action.payload],
+      };
+
+    case DELETE_CART_ID:
+      return {
+        ...state,
+        phonesCart: [...state.phonesCart]
+          .filter(id => id !== action.payload),
+      };
+
+    case SET_PRICE:
+      return {
+        ...state,
+        totalPrice: state.totalPrice + action.payload,
+      };
+
+    case SET_QUANTITY:
+      return {
+        ...state,
+        totalQuantity: state.totalQuantity + action.payload,
       };
 
     case 'SET_ERROR':

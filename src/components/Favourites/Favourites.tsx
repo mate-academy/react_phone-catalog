@@ -2,6 +2,7 @@ import React, { FC, useMemo } from 'react';
 import { connect } from 'react-redux';
 
 import './Favourites.css';
+
 import { PhoneCard } from '../PhoneCard/PhoneCard';
 
 interface StateProps {
@@ -14,7 +15,7 @@ export const FavouritesTemplate: FC<StateProps> = ({
 }) => {
   const favouriteList = useMemo(() => {
     return phones.filter(phone => phonesFavourite.includes(phone.phoneId));
-  }, [phonesFavourite]);
+  }, [phonesFavourite, phones]);
 
   return (
     <div className="favourites__container">
@@ -43,6 +44,6 @@ const mapStateToProps = (state: State) => ({
   phones: state.phones,
 });
 
-export const Favourites = connect(
+export const Favourites = connect<StateProps, null, {}, State>(
   mapStateToProps, null,
 )(FavouritesTemplate);

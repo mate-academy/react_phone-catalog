@@ -1,4 +1,4 @@
-import React, { FC, useMemo, useState, Suspense } from 'react';
+import React, { FC, useMemo, useEffect, useState, Suspense } from 'react';
 import { connect } from 'react-redux';
 import Loader from 'react-loader-spinner';
 import {
@@ -22,16 +22,13 @@ interface DispatchProps {
 }
 
 const PhoneCatalogTemplate: FC<StateProps & DispatchProps> = ({
-  phones,
-  sortBy,
-  loadPhones,
-  setSortBy,
+  phones, sortBy, loadPhones, setSortBy,
 }) => {
   const [query, setQuery] = useState('');
 
-  useMemo(() => loadPhones(), []);
-
-  let phoneList;
+  useEffect(() => {
+    loadPhones();
+  }, [loadPhones]);
 
   const sortedPhoneList = useMemo(() => {
     switch (sortBy) {
@@ -76,11 +73,13 @@ const PhoneCatalogTemplate: FC<StateProps & DispatchProps> = ({
     ));
   }, [query, sortedPhoneList]);
 
-  if (filteredPhoneList.length || query) {
-    phoneList = filteredPhoneList;
-  } else {
-    phoneList = sortedPhoneList;
-  }
+  const phoneList = useMemo(() => {
+    if (filteredPhoneList.length || query) {
+      return filteredPhoneList;
+    }
+
+    return sortedPhoneList;
+  }, [query, filteredPhoneList, sortedPhoneList]);
 
   return (
     <div className="phones__container">

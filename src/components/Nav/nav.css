@@ -1,13 +1,16 @@
 .nav {
-  position: fixed;
-  top: 0;
   width: 100%;
   display: flex;
   align-items: center;
   height: 64px;
   padding-left: 24px;
   background-color: black;
-  z-index: 2;
+  z-index: 3;
+}
+
+.header__nav {
+  position: fixed;
+  top: 0;
 }
 
 .nav__logo {
@@ -91,16 +94,23 @@
   fill: #2060f6;
 }
 
-.nav__favourites {
+.nav__actions--icon {
   position: absolute;
   width: 15px;
   height: 15px;
   top: 15px;
-  right: 80px;
   font-weight: 600;
   font-size: 10px;
   line-height: 15px;
   color: #fff;
   background-color: red;
   border-radius: 50%;
+}
+
+.nav__favourites {
+  right: 80px;
+}
+
+.nav__cart {
+  right: 17px;
 }

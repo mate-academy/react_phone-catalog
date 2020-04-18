@@ -90,7 +90,7 @@
   height: 40px;
 }
 
-.card__button-cart {
+.card__actions .card__button-cart {
   box-sizing: border-box;
   padding: 0;
   margin-right: 6px;
@@ -107,7 +107,13 @@
   transition: 0.3s;
 }
 
-.card__button-cart:hover {
+.card__actions .card__button-cart:hover {
+  color: #27ae60;
+  background-color: #fff;
+  border: 1px solid #e2e6e9;
+}
+
+.card__actions .button-cart--added {
   color: #27ae60;
   background-color: #fff;
   border: 1px solid #e2e6e9;
@@ -116,12 +122,16 @@
 .card__button-favourite {
   box-sizing: border-box;
   padding: 0;
-  width: 40px;
-  height: 40px;
-  line-height: 43px;
   border: 1px solid #b4bdc4;
   background-color: #fff;
   cursor: pointer;
+  outline: none;
+}
+
+.card__actions .card__button-favourite {
+  width: 40px;
+  height: 40px;
+  line-height: 43px;
 }
 
 .card__button-favourite .icon-card path {
@@ -129,5 +139,5 @@
 }
 
 .card__button-favourite:hover .icon-card path {
-  fill: #2060f6;
+  stroke-width: 12;
 }

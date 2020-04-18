@@ -1,0 +1,38 @@
+.slider__container {
+  width: 1136px;
+  padding: 40px 0 0;
+  margin: 0 auto 112px;
+}
+
+.slider__image {
+  width: 1040px;
+  height: 400px;
+  object-fit: cover;
+}
+
+.slick-arrow {
+  width: 32px;
+  height: 400px;
+  margin-top: -2px;
+  background-color: hsla(222, 92%, 55%) !important;
+  border: 1px solid hsla(222, 92%, 55%) !important;
+  transition: 0.3s;
+}
+
+.slick-arrow:hover {
+  border: 1px solid hsla(222, 92%, 55%, 0.7) !important;
+  background-color: hsla(222, 92%, 55%, 0.7) !important;
+}
+
+.slick-prev {
+  left: 0;
+  z-index: 2;
+}
+
+.slick-next {
+  right: 0;
+}
+
+.slick-track {
+  margin: 0 48px;
+}

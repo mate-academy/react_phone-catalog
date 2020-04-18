@@ -1,5 +1,10 @@
 .phone__container {
-  padding: 25px 152px 0;
+  padding-top: 25px;
+}
+
+.phones__not-phound {
+  text-align: center;
+  margin-top: 120px;
 }
 
 .phone__container-main {
@@ -181,10 +186,12 @@
   margin-bottom: 32px;
 }
 
-.card__button-cart {
+.card__actions-details .card__button-cart {
   box-sizing: border-box;
   padding: 0;
   margin-right: 6px;
+  width: 263px;
+  height: 48px;
   font-style: normal;
   font-weight: 600;
   font-size: 14px;
@@ -196,21 +203,28 @@
   transition: 0.3s;
 }
 
-.button__cart-detail {
-  width: 263px;
-  height: 48px;
+.card__actions-details .card__button-cart:hover {
+  color: #27ae60;
+  background-color: #fff;
+  border: 1px solid #e2e6e9;
 }
 
-.button__favourite-detail {
-  width: 48px;
-  height: 48px;
-  line-height: 53px;
+.card__actions-details .button-cart--added {
+  color: #27ae60;
+  background-color: #fff;
+  border: 1px solid #e2e6e9;
 }
 
 .card__button-cart:hover {
   color: #27ae60;
   background-color: #fff;
   border: 1px solid #e2e6e9;
+}
+
+.card__actions-details .card__button-favourite {
+  width: 48px;
+  height: 48px;
+  line-height: 53px;
 }
 
 .card__button-favourite {

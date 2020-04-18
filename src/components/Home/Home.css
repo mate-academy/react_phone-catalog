@@ -1,0 +1,55 @@
+.main__heding {
+  margin-bottom: 24px;
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  color: #313237;
+}
+
+.phones__low-price,
+.phones__new-models {
+  position: relative;
+  max-width: 1136px;
+  margin: 80px auto;
+  overflow: hidden;
+}
+
+.pagination-buttons {
+  position: absolute;
+  right: 0;
+  top: 35px;
+}
+
+.button__pagination {
+  width: 32px;
+  height: 32px;
+  background-color: #fff;
+  border: 1px solid #b4bdc4;
+  margin-right: 16px;
+  outline: none;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.button__pagination:disabled {
+  opacity: 0.5;
+  border: 1px solid #e2e6e9;
+}
+
+.button__pagination-left {
+  background-image: url(/img/pagination_left.png);
+}
+
+.button__pagination-right {
+  background-image: url(/img/pagination_right.png);
+}
+
+.main__models-container {
+  display: flex;
+}
+
+.main__models-container .card {
+  margin-right: 16px;
+}
