@@ -39,11 +39,11 @@
 }
 
 .button__pagination-left {
-  background-image: url(/img/pagination_left.png);
+  background-image: url(../img/pagination_left.png);
 }
 
 .button__pagination-right {
-  background-image: url(/img/pagination_right.png);
+  background-image: url(../img/pagination_right.png);
 }
 
 .main__models-container {
