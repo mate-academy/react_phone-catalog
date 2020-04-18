@@ -19,42 +19,42 @@ export const SimpleSlider = () => {
         <div>
           <img
             className="slider__image"
-            src="/img/Banner.jpg"
+            src="./img/Banner.jpg"
             alt="slider_img"
           />
         </div>
         <div>
           <img
             className="slider__image"
-            src="/img/slider_image2.jpg"
+            src="./img/slider_image2.jpg"
             alt="slider_img"
           />
         </div>
         <div>
           <img
             className="slider__image"
-            src="/img/slider_image3.jpg"
+            src="./img/slider_image3.jpg"
             alt="slider_img"
           />
         </div>
         <div>
           <img
             className="slider__image"
-            src="/img/slider_image4.jpg"
+            src="./img/slider_image4.jpg"
             alt="slider_img"
           />
         </div>
         <div>
           <img
             className="slider__image"
-            src="/img/slider_image5.jpg"
+            src="./img/slider_image5.jpg"
             alt="slider_img"
           />
         </div>
         <div>
           <img
             className="slider__image"
-            src="/img/slider_image6.png"
+            src="./img/slider_image6.png"
             alt="slider_img"
           />
         </div>
