@@ -5,6 +5,7 @@ import favoriteIcon from '../../../assets/images/icons/favorite-icon.svg';
 import './PhoneDetails.scss';
 import './slider.scss';
 import './order.scss';
+import { Slider } from '../PhoneDetailsPage/Slider';
 
 export const PhoneDetails = (props) => {
   const { details } = props;
@@ -22,25 +23,7 @@ export const PhoneDetails = (props) => {
       <p>PhonesDetails</p>
       <h1 className="phoneDetails__title">{details.name}</h1>
       <div className="phoneDetails__heading">
-        <div className="phoneDetails__slider slider">
-          <ul className="slider__list">
-            {details.images.map(img => (
-              <li
-                key={img}
-                className="slider__item"
-              >
-                <img
-                  src={img}
-                  alt="motorola-xoom"
-                  className="slider__images"
-                />
-              </li>
-            ))}
-          </ul>
-          <div className="slider__image">
-            <img src={details.images[0]} alt="motorola-xoom" />
-          </div>
-        </div>
+        <Slider details={details} />
         <div className="phoneDetails__order order">
           <div className="order__colors">
             <p className="order__colors-heading">Available colors</p>
@@ -187,14 +170,13 @@ export const PhoneDetails = (props) => {
             </span>
           </p>
           <p className="product-details">
-          <span className="product-details__title">Cell</span>
-          <span className="product-details__value">
-            {details.connectivity.cell}
-          </span>
-        </p>
+            <span className="product-details__title">Cell</span>
+            <span className="product-details__value">
+              {details.connectivity.cell}
+            </span>
+          </p>
         </div>
       </div>
-
     </div>
   );
 };
