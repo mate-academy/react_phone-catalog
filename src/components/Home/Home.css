@@ -53,3 +53,36 @@
 .main__models-container .card {
   margin-right: 16px;
 }
+
+@media (max-width: 1440px) {
+  .phones__low-price,
+  .phones__new-models {
+    max-width: 848px;
+  }
+}
+
+@media (max-width: 929px) {
+  .phones__low-price,
+  .phones__new-models {
+    max-width: 560px;
+    margin: 20px auto;
+  }
+}
+
+@media (max-width: 641px) {
+  .phones__low-price,
+  .phones__new-models {
+    max-width: 272px;
+    margin: 30px auto;
+  }
+
+  .main__heding {
+    font-size: 25px;
+    margin-bottom: 44px;
+  }
+
+  .pagination-buttons {
+    left: 0;
+    top: 63px;
+  }
+}

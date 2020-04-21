@@ -14,14 +14,16 @@
   width: 32px;
   height: 400px;
   margin-top: -2px;
-  background-color: hsla(222, 92%, 55%) !important;
-  border: 1px solid hsla(222, 92%, 55%) !important;
+  border: 1px solid #b4bdc4 !important;
   transition: 0.3s;
 }
 
+.slick-arrow::before {
+  color: #b4bdc4 !important;
+}
+
 .slick-arrow:hover {
-  border: 1px solid hsla(222, 92%, 55%, 0.7) !important;
-  background-color: hsla(222, 92%, 55%, 0.7) !important;
+  border: 1px solid #313237 !important;
 }
 
 .slick-prev {
@@ -35,4 +37,41 @@
 
 .slick-track {
   margin: 0 48px;
+}
+
+@media (max-width: 1216px) {
+  .slider__container {
+    width: 848px;
+  }
+
+  .slider__image {
+    width: 752px;
+  }
+}
+
+@media (max-width: 929px) {
+  .slider__container {
+    width: 560px;
+    margin-bottom: 56px;
+  }
+
+  .slider__image {
+    width: 464px;
+  }
+}
+
+@media (max-width: 641px) {
+  .slider__container {
+    width: 100%;
+    padding: 0;
+    margin-bottom: 56px;
+  }
+
+  .slider__image {
+    width: 100%;
+  }
+
+  .slick-track {
+    margin: 0;
+  }
 }

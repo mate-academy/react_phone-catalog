@@ -82,41 +82,45 @@ export const CartPhoneCardTemplate: FC<Props & DispatchProps> = ({
 
   return (
     <div className="cart__phones-item">
-      <button
-        type="button"
-        className="destroy cart__phones-button-delete"
-        aria-label="Delete"
-        onClick={deletePhoneFromCart}
-      />
-      <img
-        src={`${MAIN_URL}${phone.image}`}
-        alt="phone_img"
-        className="cart__phones-image"
-      />
-      <p className="cart__phones-name">
-        {phone.name}
-      </p>
-      <button
-        type="button"
-        className="cart__button-quantity button-decrease"
-        onClick={decreaseQuantity}
-        disabled={quantity === 1}
-      >
-        -
-      </button>
-      <span className="cart__phones-quantity">
-        {quantity}
-      </span>
-      <button
-        type="button"
-        className="cart__button-quantity button-increase"
-        onClick={increaseQuantity}
-      >
-        +
-      </button>
-      <p className="cart__phones-price">
-        {`$${phone.priceDiscount * quantity}`}
-      </p>
+      <div className="cart__phones-info">
+        <button
+          type="button"
+          className="destroy cart__phones-button-delete"
+          aria-label="Delete"
+          onClick={deletePhoneFromCart}
+        />
+        <img
+          src={`${MAIN_URL}${phone.image}`}
+          alt="phone_img"
+          className="cart__phones-image"
+        />
+        <p className="cart__phones-name">
+          {phone.name}
+        </p>
+      </div>
+      <div className="cart__button-actions">
+        <button
+          type="button"
+          className="cart__button-quantity button-decrease"
+          onClick={decreaseQuantity}
+          disabled={quantity === 1}
+        >
+          -
+        </button>
+        <span className="cart__phones-quantity">
+          {quantity}
+        </span>
+        <button
+          type="button"
+          className="cart__button-quantity button-increase"
+          onClick={increaseQuantity}
+        >
+          +
+        </button>
+        <p className="cart__phones-price">
+          {`$${phone.priceDiscount * quantity}`}
+        </p>
+      </div>
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import React, { FC, useState, useCallback, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { useHistory, RouteComponentProps } from 'react-router-dom';
+import { NavLink, useHistory, RouteComponentProps } from 'react-router-dom';
 
 import './PhoneDetailsPage.css';
 
@@ -103,13 +103,25 @@ const PhoneDetailsPageTemplate: FC<Props> = ({
   return (
     <div className="phone__container">
       <div className="phones__path">
-        <img src="./img/Home.png" alt="home_icon" className="home-icon" />
+        <NavLink
+          to="/"
+          className="home-icon__link"
+          exact
+        >
+          <img src="./img/Home.png" alt="home_icon" className="home-icon" />
+        </NavLink>
         <img
           src="./img/Chevron.png"
           alt="arrow_icon"
           className="arrow-icon"
         />
-        <span className="phones__path-title">Phones</span>
+        <NavLink
+          to="/phones"
+          className="path-icon__link"
+          exact
+        >
+          <span className="phones__path-title">Phones</span>
+        </NavLink>
         <img
           src="./img/Chevron.png"
           alt="arrow_icon"
@@ -146,43 +158,45 @@ const PhoneDetailsPageTemplate: FC<Props> = ({
           </div>
         </div>
         <div className="phone__main-info">
-          <div className="phone__colors">
-            <p className="main-info__title">Available colors</p>
-            <div className="colors__color-list">
-              {phoneDetails.colorsAvailable.map((color) => (
-                <div
-                  key={color}
-                  className={
-                    color.toLowerCase() === phoneDetails.color.toLowerCase()
-                      ? 'colors__color-active colors__color'
-                      : 'colors__color'
-                  }
-                >
+          <div className="phone__main-info-actions">
+            <div className="phone__colors">
+              <p className="main-info__title">Available colors</p>
+              <div className="colors__color-list">
+                {phoneDetails.colorsAvailable.map((color) => (
+                  <div
+                    key={color}
+                    className={
+                      color.toLowerCase() === phoneDetails.color.toLowerCase()
+                        ? 'colors__color-active colors__color'
+                        : 'colors__color'
+                    }
+                  >
+                    <button
+                      type="button"
+                      style={{ backgroundColor: color }}
+                      className="colors__color-item"
+                      onClick={() => loadPhoneByColor(color)}
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="phone__capacity">
+              <p className="main-info__title">Select capacity</p>
+              <div className="capacity__capacity-list">
+                {phoneDetails.capacityAvailable.map((capacity) => (
                   <button
                     type="button"
-                    style={{ backgroundColor: color }}
-                    className="colors__color-item"
-                    onClick={() => loadPhoneByColor(color)}
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className="phone__capacity">
-            <p className="main-info__title">Select capacity</p>
-            <div className="capacity__capacity-list">
-              {phoneDetails.capacityAvailable.map((capacity) => (
-                <button
-                  type="button"
-                  key={capacity}
-                  className={capacity === phoneDetails.capacity
-                    ? 'capacity__capacity-active capacity__item'
-                    : 'capacity__item'}
-                  onClick={() => loadPhoneByCapacity(capacity)}
-                >
-                  {capacity}
-                </button>
-              ))}
+                    key={capacity}
+                    className={capacity === phoneDetails.capacity
+                      ? 'capacity__capacity-active capacity__item'
+                      : 'capacity__item'}
+                    onClick={() => loadPhoneByCapacity(capacity)}
+                  >
+                    {capacity}
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
           <div>

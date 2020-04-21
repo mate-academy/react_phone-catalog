@@ -15,15 +15,19 @@ interface Props {
 
 export const PhoneCard: FC<Props> = ({ phone }) => (
   <div className="card catalog__card">
-    <img
-      src={`${MAIN_URL}${phone.image}`}
-      alt="phone_image"
-      className="card__image"
-    />
+    <NavLink
+      to={`/phones/${phone.phoneId}`}
+      exact
+    >
+      <img
+        src={`${MAIN_URL}${phone.image}`}
+        alt="phone_image"
+        className="card__image"
+      />
+    </NavLink>
     <NavLink
       to={`/phones/${phone.phoneId}`}
       className="card__heading"
-      activeClassName="card__heading"
       exact
     >
       {phone.name}

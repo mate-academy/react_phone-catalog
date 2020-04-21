@@ -1,5 +1,6 @@
 import React, { FC, useMemo, useEffect, useState, Suspense } from 'react';
 import { connect } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import Loader from 'react-loader-spinner';
 import {
   loadPhones as loadPhonesStore,
@@ -84,7 +85,13 @@ const PhoneCatalogTemplate: FC<StateProps & DispatchProps> = ({
   return (
     <div className="phones__container">
       <div className="phones__path">
-        <img src="./img/Home.png" alt="home_icon" className="home-icon" />
+        <NavLink
+          to="/"
+          className="home-icon__link"
+          exact
+        >
+          <img src="./img/Home.png" alt="home_icon" className="home-icon" />
+        </NavLink>
         <img
           src="./img/Chevron.png"
           alt="arrow_icon"

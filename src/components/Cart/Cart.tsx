@@ -1,9 +1,16 @@
-import React, { FC, useMemo } from 'react';
+import React, { FC, useMemo, useCallback, useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import './Cart.css';
 
 import { CartPhoneCard } from '../CartPhoneCard/CartPhoneCard';
+
+import {
+  deleteCartId as deleteCartIdStore,
+  setPriceToAmount as setPriceToAmountStore,
+  setQuantityToTotal as setQuantityToTotalStore,
+} from '../../store/ActionCreators';
 
 interface StateProps {
   phonesCart: Cart;
@@ -12,18 +19,44 @@ interface StateProps {
   totalQuantity: number;
 }
 
-export const CartTemplate: FC<StateProps> = ({
-  phonesCart, phones, totalPrice, totalQuantity,
+interface DispatchProps {
+  deleteCartId: (value: Cart) => void;
+  setPriceToAmount: (value: number) => void;
+  setQuantityToTotal: (value: number) => void;
+}
+
+export const CartTemplate: FC<StateProps & DispatchProps> = ({
+  phonesCart,
+  phones,
+  totalPrice,
+  totalQuantity,
+  deleteCartId,
+  setPriceToAmount,
+  setQuantityToTotal,
 }) => {
+  const [checkout, setCheckout] = useState(false);
   const cartList = useMemo(() => {
     return phones
       .filter(phone => Object.keys(phonesCart).includes(phone.phoneId));
   }, [phonesCart, phones]);
 
+  const buyPhones = useCallback(() => {
+    setCheckout(true);
+    deleteCartId({});
+    setPriceToAmount(0);
+    setQuantityToTotal(0);
+  }, [checkout]);
+
   return (
     <div className="cart__container">
       <div className="phones__path">
-        <img src="./img/Home.png" alt="home_icon" className="home-icon" />
+        <NavLink
+          to="/"
+          className="home-icon__link"
+          exact
+        >
+          <img src="./img/Home.png" alt="home_icon" className="home-icon" />
+        </NavLink>
         <img
           src="./img/Chevron.png"
           alt="arrow_icon"
@@ -43,17 +76,22 @@ export const CartTemplate: FC<StateProps> = ({
             />
           ))}
         </div>
-        {cartList.length ? (
+        {checkout && <h2 className="cart__checkout">Thank you for buiyng!</h2>}
+        {!checkout && cartList.length ? (
           <div className="cart__total-price">
             <p className="price__amount">{`$${totalPrice}`}</p>
             <p className="price__title">{`Total for ${totalQuantity} items`}</p>
             <hr color="#E2E6E9" className="price__line" />
-            <button type="button" className="price__button-checkout">
+            <button
+              type="button"
+              className="price__button-checkout"
+              onClick={buyPhones}
+            >
               Checkout
             </button>
           </div>
         ) : (
-          <p className="cart__empty">Cart is empty</p>
+          !checkout && <p className="cart__empty">Cart is empty</p>
         )}
       </div>
     </div>
@@ -67,6 +105,12 @@ const mapStateToProps = (state: State) => ({
   totalQuantity: state.totalQuantity,
 });
 
-export const Cart = connect<StateProps, null, {}, State>(
-  mapStateToProps, null,
+const mapDispatchToProps = {
+  deleteCartId: deleteCartIdStore,
+  setPriceToAmount: setPriceToAmountStore,
+  setQuantityToTotal: setQuantityToTotalStore,
+};
+
+export const Cart = connect<StateProps, DispatchProps, {}, State>(
+  mapStateToProps, mapDispatchToProps,
 )(CartTemplate);

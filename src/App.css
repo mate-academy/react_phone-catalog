@@ -14,3 +14,15 @@ body {
   padding: 0 152px;
   flex-grow: 1;
 }
+
+@media (max-width: 1440px) {
+  .main {
+    padding: 0 32px;
+  }
+}
+
+@media (max-width: 641px) {
+  .main {
+    padding: 0;
+  }
+}

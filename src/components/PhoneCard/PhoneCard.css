@@ -31,7 +31,7 @@
 }
 
 .card__heading:hover {
-  color: #2060f6;
+  color: #27ae60;
 }
 
 .card__price {
@@ -138,6 +138,6 @@
   transition: 0.3s;
 }
 
-.card__button-favourite:hover .icon-card path {
-  stroke-width: 12;
+.card__button-favourite:hover {
+  border: 1px solid #313237;
 }

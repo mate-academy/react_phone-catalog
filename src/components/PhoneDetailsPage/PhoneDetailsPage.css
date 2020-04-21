@@ -7,6 +7,11 @@
   margin-top: 120px;
 }
 
+.path-icon__link {
+  line-height: 15px;
+  text-decoration: none;
+}
+
 .phone__container-main {
   display: flex;
   margin-top: 40px;
@@ -63,6 +68,7 @@
 }
 
 .main-info__title {
+  margin-top: 0;
   font-style: normal;
   font-weight: 600;
   font-size: 12px;
@@ -237,10 +243,11 @@
 
 .phone__container-specification {
   display: flex;
+  margin-bottom: 48px;
 }
 
 .phone__about {
-  width: 559px;
+  max-width: 559px;
   margin-right: 64px;
 }
 
@@ -291,4 +298,100 @@
   font-size: 14px;
   line-height: 21px;
   color: #313237;
+}
+
+@media (max-width: 975px) {
+  .phone__container-main,
+  .phone__container-specification {
+    flex-direction: column;
+  }
+
+  .phone__container-main {
+    margin-bottom: 30px;
+  }
+
+  .phone__main-info-actions {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .phone__images {
+    margin-bottom: 20px;
+  }
+
+  .phone__colors {
+    margin-right: 20px;
+    margin-bottom: 31px;
+  }
+
+  .card__details-main {
+    padding: 0;
+    width: 660px;
+  }
+}
+
+@media (max-width: 720px) {
+  .phone__main-info-actions {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card__details-main {
+    max-width: 559px;
+  }
+}
+
+@media (max-width: 641px) {
+  .phone__container {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .phones__heding {
+    font-size: 26px;
+  }
+
+  .phone__images {
+    flex-direction: column;
+  }
+
+  .phone__images--list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .phone__images-item {
+    margin-right: 5px;
+    width: 70px;
+  }
+
+  .phone__images-img {
+    width: 56px;
+  }
+
+  .phone__images--big {
+    padding: 0;
+    width: 325px;
+    height: 325px;
+  }
+
+  .phone__images--big-img {
+    width: 302px;
+    height: 302px;
+  }
+
+  .card__details-main {
+    width: 100%;
+    max-width: 559px;
+  }
+
+  .phone__description {
+    width: 100%;
+    max-width: 559px;
+  }
+
+  .specification__value {
+    font-size: 12px;
+  }
 }

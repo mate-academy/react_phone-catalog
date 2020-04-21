@@ -3,8 +3,12 @@
   display: flex;
   justify-content: space-between;
   text-align: center;
-  margin-top: 80px;
   padding: 36px 152px;
+  box-shadow: 0 -1px 0 #e2e6e9;
+}
+
+.footer__nav .nav__logo {
+  margin: 0;
 }
 
 .footer__link {
@@ -14,15 +18,15 @@
   line-height: 11px;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: white;
+  color: #89939a;
   text-decoration: none;
-  border: 1px solid black;
+  border: 1px solid #fff;
   padding: 7px;
   transition: 0.3s;
 }
 
 .footer__link:hover {
-  color: #2060f6;
+  color: #313237;
 }
 
 .footer__link:first-of-type {
@@ -52,4 +56,25 @@
   background-position: center;
   outline: none;
   cursor: pointer;
+}
+
+@media (max-width: 1032px) {
+  .footer__nav {
+    padding: 36px 24px;
+  }
+
+  .footer__link:first-of-type {
+    margin-right: 14px;
+  }
+}
+
+@media (max-width: 641px) {
+  .footer__links {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .footer__link:first-of-type {
+    margin-right: 0;
+  }
 }

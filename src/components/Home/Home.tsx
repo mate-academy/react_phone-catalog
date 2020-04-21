@@ -22,11 +22,21 @@ export const HomeTemplate: FC<StateProps & DispatchProps> = ({
 }) => {
   const [marginLeftLowPrice, setMarginLeftLowPrice] = useState(0);
   const [marginLeftnewModels, setMarginLeftNewModels] = useState(0);
-  const [visiblePhonesQuantity] = useState(4);
+  const [visiblePhonesQuantity, setVisiblePhonesQuantity] = useState(4);
 
   useEffect(() => {
     loadPhones();
   }, [loadPhones]);
+
+  useEffect(() => {
+    if (document.documentElement.clientWidth < 641) {
+      setVisiblePhonesQuantity(1);
+    } else if (document.documentElement.clientWidth < 929) {
+      setVisiblePhonesQuantity(2);
+    } else if (document.documentElement.clientWidth < 1440) {
+      setVisiblePhonesQuantity(3);
+    }
+  }, []);
 
   const lowPricePhoneList = useMemo(() => {
     const sorted = [...phones].sort((a, b) => (

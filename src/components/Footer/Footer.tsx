@@ -19,7 +19,7 @@ export const Footer: FC = () => (
         </span>
       </NavLink>
     </div>
-    <div>
+    <div className="footer__links">
       <a
         href="https://github.com/LutsenkoAnV/react_phone-catalog"
         className="footer__link"
