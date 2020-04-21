@@ -8,8 +8,10 @@ export const Slider = () => {
         <div className="slider__wrapper">
           <button
             type="button"
-            className="slider__button slider__button-left"
-          />
+            className="slider__button"
+          >
+            <img src="/img/Icons/arrow-left.svg" alt="arrow-left" />
+          </button>
           <ul className="slider__list">
             <li className="slider__item">
               <img
@@ -21,8 +23,10 @@ export const Slider = () => {
           </ul>
           <button
             type="button"
-            className="slider__button slider__button-right"
-          />
+            className="slider__button"
+          >
+            <img src="/img/Icons/arrow-right.svg" alt="arrow-right" />
+          </button>
         </div>
       </div>
 

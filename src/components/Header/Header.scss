@@ -9,13 +9,10 @@
   &__cart {
     min-width: 64px;
     height: 100%;
-    border-right: 1px solid $elements-color;
+    line-height: 100%;
   }
   &__likes {
-    background: url("/img/Icons/heart.png") no-repeat center;
-  }
-  &__cart {
-    background: url("/img/Icons/cart.png") no-repeat center;
+    border-right: 1px solid $elements-color;
   }
   &__search {
     height: 100%;
@@ -35,8 +32,9 @@
       transform: translateY(-50%);
       width: 16px;
       height: 16px;
-      background: url("/img/Icons/magnifying-glass.png") no-repeat center;
+      background: url("/img/Icons/magnifying-glass.svg") no-repeat center;
       background-size: 16px;
+      color: grey;
     }
   }
 }
@@ -79,46 +77,4 @@
   display: inline-block;
   margin: 0 82px 0 24px;
   line-height: 70px;
-}
-
-.slider {
-  max-width: 1136px;
-  margin-top: 40px;
-  &__wrapper {
-    display: flex;
-    height: 400px;
-  }
-  &__button {
-    min-width: 32px;
-  }
-  &__list {
-    margin: 0 16px;
-  }
-  &__button {
-    background-color: $white-color;
-    border: 1px solid #b4bdc4;
-    &-left {
-      background: url("/img/Icons/arrow-left.png") no-repeat center;
-    }
-    &-right {
-      background: url("/img/Icons/arrow-right.png") no-repeat center;
-    }
-  }
-}
-
-.slider-indicators {
-  display: flex;
-  width: 72px;
-  margin: 18px auto 0;
-  &__item {
-    width: 14px;
-    height: 4px;
-    background: $elements-color;
-    &-active {
-      background: $primary-color;
-    }
-  }
-  &__item:not(:last-child) {
-    margin-right: 14px;
-  }
 }

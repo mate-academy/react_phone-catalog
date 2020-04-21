@@ -1,0 +1,71 @@
+@import "../../../../styles/utils/mixins";
+@import "../../../../styles/utils/vars";
+
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 272px;
+  padding: 24px;
+  border: 1px solid $elements-color;
+  background-color: #fff;
+  transition: box-shadow 0.3s;
+  &:hover {
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+  }
+  &__image {
+    width: 208px;
+    height: 208px;
+    margin: 8px auto 24px;
+  }
+  &__phone-name {
+    @include body-text;
+    height: 42px;
+    margin-bottom: 8px;
+  }
+  &__price {
+    margin-bottom: 16px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid $elements-color;
+  }
+  &__new-price {
+    @include h2;
+    margin-right: 8px;
+  }
+  &__old-price {
+    font-family: "Mont-Regular", serif;
+    font-size: 22px;
+    line-height: 28px;
+    text-decoration-line: line-through;
+    color: $secondary-color;
+  }
+  &__buttons {
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+  }
+  &__add {
+    @include buttons;
+    height: 100%;
+    width: 176px;
+    background-color: $primary-color;
+    color: #fff;
+  }
+  &__likes {
+    height: 100%;
+    width: 40px;
+    line-height: 100%;
+    border: 1px solid $icons-color;
+  }
+}
+
+.phone-specs {
+  @include small-text;
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+  &__name {
+    color: $secondary-color;
+  }
+}

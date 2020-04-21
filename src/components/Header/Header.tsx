@@ -64,8 +64,12 @@ export const Header = () => {
               placeholder="Search"
             />
           </label>
-          <div className="header-nav__likes" />
-          <div className="header-nav__cart" />
+          <button type="button" className="header-nav__likes">
+            <img src="img/Icons/heart.svg" alt="heart" />
+          </button>
+          <button type="button" className="header-nav__cart">
+            <img src="img/Icons/shopping-cart.svg" alt="shopping-cart" />
+          </button>
         </div>
       </div>
     </header>

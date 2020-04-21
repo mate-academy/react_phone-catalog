@@ -26,14 +26,9 @@
     margin: 0 16px;
   }
   &__button {
+    line-height: 100%;
     background-color: $white-color;
     border: 1px solid $btn-color-grey;
-    &-left {
-      background: url("/img/Icons/arrow-left.png") no-repeat center;
-    }
-    &-right {
-      background: url("/img/Icons/arrow-right.png") no-repeat center;
-    }
   }
 }
 
