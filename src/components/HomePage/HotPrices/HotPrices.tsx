@@ -13,11 +13,21 @@ export const HotPrices = () => {
             <button
               type="button"
               className="buttons-box__button buttons-box__button-left"
-            />
+            >
+              <img
+                src="img/Icons/arrowLeft.svg"
+                alt="arrow-left"
+              />
+            </button>
             <button
               type="button"
               className="buttons-box__button buttons-box__button-right"
-            />
+            >
+              <img
+                src="img/Icons/arrowRight.svg"
+                alt="arrow-left"
+              />
+            </button>
           </div>
         </div>
         <div className="hot-prices__cards">

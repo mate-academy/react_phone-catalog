@@ -19,16 +19,14 @@
 }
 
 .buttons-box {
+  height: 32px;
   &__button {
     width: 32px;
-    height: 32px;
+    height: 100%;
+    line-height: 100%;
     border: 1px solid $elements-color;
     &-left {
       margin-right: 16px;
-      background: url("/img/Icons/arrow-left.png") no-repeat center;
-    }
-    &-right {
-      background: url("/img/Icons/arrow-right.png") no-repeat center;
     }
   }
 }

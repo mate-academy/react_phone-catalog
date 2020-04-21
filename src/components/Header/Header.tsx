@@ -68,7 +68,7 @@ export const Header = () => {
             <img src="img/Icons/heart.svg" alt="heart" />
           </button>
           <button type="button" className="header-nav__cart">
-            <img src="img/Icons/shopping-cart.svg" alt="shopping-cart" />
+            <img src="img/Icons/shoppingCart.svg" alt="shopping-cart" />
           </button>
         </div>
       </div>
