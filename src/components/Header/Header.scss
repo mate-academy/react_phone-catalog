@@ -1,0 +1,80 @@
+@import "../../styles/utils/vars";
+@import "../../styles/utils/mixins";
+
+.header-nav {
+  height: 64px;
+  display: flex;
+  border: 1px solid $elements-color;
+  &__likes,
+  &__cart {
+    min-width: 64px;
+    height: 100%;
+    line-height: 100%;
+  }
+  &__likes {
+    border-right: 1px solid $elements-color;
+  }
+  &__search {
+    height: 100%;
+    width: 327px;
+    padding: 0 24px;
+    border: none;
+    border-right: 1px solid $elements-color;
+  }
+  &__label {
+    position: relative;
+    height: 100%;
+    &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: 24px;
+      transform: translateY(-50%);
+      width: 16px;
+      height: 16px;
+      background: url("/img/Icons/magnifyingGlass.svg") no-repeat center;
+      background-size: 16px;
+      color: grey;
+    }
+  }
+}
+
+.navigation {
+  border-right: 1px solid $elements-color;
+  width: 100%;
+  &__list {
+    display: flex;
+  }
+  &__item {
+    margin-right: 64px;
+  }
+  &__link {
+    @include uppercase;
+    display: inline-block;
+    line-height: 64px;
+    color: $secondary-color;
+    position: relative;
+    &:hover {
+      color: $primary-color;
+    }
+    &-active {
+      color: $primary-color;
+      &:after {
+        position: absolute;
+        bottom: 2px;
+        left: 0;
+        content: "";
+        width: 100%;
+        height: 3px;
+        border-bottom: 3px solid $primary-color;
+      }
+
+    }
+  }
+}
+
+.main-logo {
+  display: inline-block;
+  margin: 0 82px 0 24px;
+  line-height: 70px;
+}

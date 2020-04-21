@@ -1,0 +1,12 @@
+.phones {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 25%);
+  grid-gap: 40px 0;
+}
+
+@media (max-width: 1200px) {
+  .phones {
+    grid-template-columns: repeat(auto-fill, calc(100% / 3));
+    justify-items: center;
+  }
+}

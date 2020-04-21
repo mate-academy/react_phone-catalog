@@ -1,47 +1,26 @@
 import React from 'react';
+import {
+  Route,
+  Switch,
+} from 'react-router-dom';
 
-import './App.css';
+import './App.scss';
 
-import PhoneCatalog from './PhoneCatalog';
-import PhoneDetailsPage from './PhoneDetailsPage';
+import { Header } from './components/Header/Header';
+import { PhonesPage } from './components/PhonesPage/PhonesPage';
+import { HomePage } from './components/HomePage/HomePage';
+import { ErrorPage } from './components/ErrorPage/ErrorPage';
 
 const App = () => (
-  <div className="container-fluid">
-    <div className="row">
-      <div className="col-md-2">
-        <section>
-          <h2>Filter</h2>
+  <>
+    <Header />
 
-          <label>
-            <div>Search:</div>
-            <input />
-          </label>
-
-          <label>
-            <div>Sort by:</div>
-            <select>
-              <option value="name">Alphabetical</option>
-              <option value="age">Newest</option>
-            </select>
-          </label>
-        </section>
-
-        <section>
-          <h2>Shopping Cart</h2>
-          <ul>
-            <li>Phone 1</li>
-            <li>Phone 2</li>
-            <li>Phone 3</li>
-          </ul>
-        </section>
-      </div>
-
-      <div className="col-md-10">
-        <PhoneDetailsPage />
-        <PhoneCatalog />
-      </div>
-    </div>
-  </div>
+    <Switch>
+      <Route path="/" exact component={HomePage} />
+      <Route path="/phones" component={PhonesPage} />
+      <Route component={ErrorPage} />
+    </Switch>
+  </>
 );
 
 export default App;

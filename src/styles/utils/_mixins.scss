@@ -1,0 +1,54 @@
+@mixin section-wrapper {
+  margin: 0 auto;
+  max-width: 1136px;
+}
+
+@mixin h1 {
+  font-family: "Mont-Bold", serif;
+  font-size: 32px;
+  line-height: 31px;
+  letter-spacing: -0.01em;
+}
+
+@mixin h2 {
+  font-family: "Mont-Bold", serif;
+  font-size: 22px;
+  line-height: 31px;
+  letter-spacing: 0;
+}
+
+@mixin h3 {
+  font-family: "Mont-SemiBold", serif;
+  font-size: 20px;
+  line-height: 26px;
+  letter-spacing: -0.01em;
+}
+
+@mixin uppercase {
+  font-family: "Mont-Bold", serif;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+@mixin buttons {
+  font-family: "Mont-SemiBold", serif;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+}
+
+@mixin body-text {
+  font-family: "Mont-Regular", serif;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+}
+
+@mixin small-text {
+  font-family: "Mont-SemiBold", serif;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: 0;
+}

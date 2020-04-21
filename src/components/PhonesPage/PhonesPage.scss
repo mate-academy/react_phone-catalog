@@ -1,0 +1,18 @@
+@import "../../styles/utils/mixins";
+@import "../../styles/utils/vars";
+
+.phones-page {
+  padding: 30px;
+  &__title {
+    @include h1;
+    margin-bottom: 50px;
+  }
+}
+
+.loader-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}

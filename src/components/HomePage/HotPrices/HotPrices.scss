@@ -1,0 +1,32 @@
+@import "../../../styles/utils/mixins";
+@import "../../../styles/utils/vars";
+
+.hot-prices {
+  margin-top: 104px;
+  &__box {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+  &__title {
+    @include h2;
+    margin: 0;
+  }
+  &__cards {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.buttons-box {
+  height: 32px;
+  &__button {
+    width: 32px;
+    height: 100%;
+    line-height: 100%;
+    border: 1px solid $elements-color;
+    &-left {
+      margin-right: 16px;
+    }
+  }
+}
