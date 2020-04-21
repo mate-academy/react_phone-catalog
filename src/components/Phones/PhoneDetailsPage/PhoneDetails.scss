@@ -1,7 +1,8 @@
+@import "../../../mixin.scss";
+
 .phoneDetails {
   max-width: 1200px;
   margin: auto;
-  border: 1px solid skyblue;
 
   &__title {
     margin-bottom: 40px;
@@ -10,11 +11,47 @@
   &__heading {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 80px;
   }
 
   &__slider,
   &__order {
     width: 560px;
-    border: 1px solid violet;
   }
+
+  &__about {
+    width: 560px;
+    margin-right: 75px;
+
+  }
+
+  &__tech-specs {
+    width: 510px;
+  }
+}
+
+.about,
+.tech-specs {
+  &__heading {
+    padding-bottom: 15px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #E2E6E9;
+  }
+
+  &__title {
+    margin-bottom: 15px;
+  }
+
+  &__value {
+    @include Body-text-14;
+    margin-bottom: 30px;
+  }
+}
+
+.tech-specs {
+  margin-bottom: 25px;
+}
+
+.additionalDetails {
+  display: flex;
 }

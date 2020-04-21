@@ -1,6 +1,9 @@
 p,
 ul,
-h1 {
+h1,
+h2,
+h3,
+h4 {
   margin: 0;
   padding: 0;
 }
@@ -10,6 +13,20 @@ h1 {
   font-size: 32px;
   line-height: 41px;
   letter-spacing: -0.01em;
+  color: #313237;
+}
+
+h2 {
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 140%;
+  color: #313237;
+}
+
+h3 {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 26px;
   color: #313237;
 }
 

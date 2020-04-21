@@ -86,6 +86,28 @@
     color: #89939A;
     top: 6px;
   }
+
+  &__add-to-cart,
+  &__favorite {
+    height: 50px;
+    margin-bottom: 30px;
+  }
+
+  &__add-to-cart {
+    width: 260px;
+    background: #313237;
+    color: #fff;
+    margin-right: 8px;
+  }
+
+  &__favorite {
+    width: 50px;
+    border: 1px solid #b4bdc4;
+  }
+
+  &__product-details {
+    max-width: 320px;
+  }
 }
 
 .colors__button--1 {
