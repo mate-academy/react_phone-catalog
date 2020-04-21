@@ -10,7 +10,7 @@ export const Slider = () => {
             type="button"
             className="slider__button"
           >
-            <img src="/img/Icons/arrowLeft.svg" alt="arrow-left" />
+            <img src="img/Icons/arrowLeft.svg" alt="arrow-left" />
           </button>
           <ul className="slider__list">
             <li className="slider__item">
@@ -25,7 +25,7 @@ export const Slider = () => {
             type="button"
             className="slider__button"
           >
-            <img src="/img/Icons/arrowRight.svg" alt="arrow-right" />
+            <img src="img/Icons/arrowRight.svg" alt="arrow-right" />
           </button>
         </div>
       </div>
