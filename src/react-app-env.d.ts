@@ -33,6 +33,11 @@ interface Details {
   cell: string[];
 }
 
+interface Description {
+  title: string;
+  text: string[];
+}
+
 interface PhonesWithDetails extends Phone {
   details: Details;
 }
@@ -42,13 +47,17 @@ interface State {
   phoneDetails: Details | null;
   phoneError: boolean;
   phonesFavourite: string[];
-  phonesCart: string[];
+  phonesCart: Cart | {};
   sortBy: string;
   totalPrice: number;
   totalQuantity: number;
 }
 
-interface Description {
-  title: string;
-  text: string[];
+interface Cart {
+  [key?: string]: number;
+}
+
+interface PhoneCartInfo {
+  id: string;
+  quantity: number;
 }

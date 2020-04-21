@@ -4,7 +4,7 @@ import Loader from 'react-loader-spinner';
 import {
   loadPhones as loadPhonesStore,
   setSortBy as setSortByStore,
-} from '../../store/store';
+} from '../../store/ActionCreators';
 
 import './PhoneCatalog.css';
 

@@ -12,7 +12,7 @@ import {
 
 import {
   loadPhone as loadPhoneStore,
-} from '../../store/store';
+} from '../../store/ActionCreators';
 
 interface MatchParams {
   phoneId: string;
@@ -152,9 +152,11 @@ const PhoneDetailsPageTemplate: FC<Props> = ({
               {phoneDetails.colorsAvailable.map((color) => (
                 <div
                   key={color}
-                  className={color === phoneDetails.color
-                    ? 'colors__color-active colors__color'
-                    : 'colors__color'}
+                  className={
+                    color.toLowerCase() === phoneDetails.color.toLowerCase()
+                      ? 'colors__color-active colors__color'
+                      : 'colors__color'
+                  }
                 >
                   <button
                     type="button"

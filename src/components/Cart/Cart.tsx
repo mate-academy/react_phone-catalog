@@ -6,7 +6,7 @@ import './Cart.css';
 import { CartPhoneCard } from '../CartPhoneCard/CartPhoneCard';
 
 interface StateProps {
-  phonesCart: string[];
+  phonesCart: Cart;
   phones: PhonesWithDetails[];
   totalPrice: number;
   totalQuantity: number;
@@ -16,7 +16,8 @@ export const CartTemplate: FC<StateProps> = ({
   phonesCart, phones, totalPrice, totalQuantity,
 }) => {
   const cartList = useMemo(() => {
-    return phones.filter(phone => phonesCart.includes(phone.phoneId));
+    return phones
+      .filter(phone => Object.keys(phonesCart).includes(phone.phoneId));
   }, [phonesCart, phones]);
 
   return (
@@ -34,7 +35,12 @@ export const CartTemplate: FC<StateProps> = ({
       <div className="cart__content">
         <div className="cart__phones-list">
           {cartList.map(phone => (
-            <CartPhoneCard key={phone.id} phone={phone} />
+            <CartPhoneCard
+              key={phone.id}
+              phone={phone}
+              phoneQuantity={phonesCart[phone.phoneId]}
+              phonesCart={phonesCart}
+            />
           ))}
         </div>
         {cartList.length ? (

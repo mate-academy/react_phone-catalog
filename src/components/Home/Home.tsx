@@ -1,13 +1,13 @@
 import React, { FC, useEffect, useMemo, useCallback, useState } from 'react';
 import { connect } from 'react-redux';
 import { SimpleSlider } from '../SimpleSlider/SimpleSlider';
+import { PhoneCard } from '../PhoneCard/PhoneCard';
 
 import './Home.css';
 
 import {
   loadPhones as loadPhonesStore,
-} from '../../store/store';
-import { PhoneCard } from '../PhoneCard/PhoneCard';
+} from '../../store/ActionCreators';
 
 interface StateProps {
   phones: PhonesWithDetails[];

@@ -5,32 +5,46 @@ import {
   deleteCartId as deleteCartIdStore,
   setPriceToAmount as setPriceToAmountStore,
   setQuantityToTotal as setQuantityToTotalStore,
-} from '../../store/store';
+  setCartId as setCartIdStore,
+} from '../../store/ActionCreators';
 
 import { MAIN_URL } from '../../utils/constants';
 
 interface Props {
   phone: PhonesWithDetails;
+  phonesCart: Cart;
+  phoneQuantity: number;
 }
 
 interface DispatchProps {
-  deleteCartId: (value: string) => void;
+  deleteCartId: (value: Cart) => void;
   setPriceToAmount: (value: number) => void;
   setQuantityToTotal: (value: number) => void;
+  setCartId: (value: PhoneCartInfo) => void;
 }
 
 export const CartPhoneCardTemplate: FC<Props & DispatchProps> = ({
-  phone, deleteCartId, setPriceToAmount, setQuantityToTotal,
+  phone,
+  phonesCart,
+  phoneQuantity,
+  deleteCartId,
+  setPriceToAmount,
+  setQuantityToTotal,
+  setCartId,
 }) => {
-  const [quantity, setQuantity] = useState(1);
+  const [quantity, setQuantity] = useState(phoneQuantity);
 
   const decreaseQuantity = useCallback(
     () => {
       setQuantity(quantity - 1);
       setPriceToAmount(-phone.priceDiscount);
       setQuantityToTotal(-1);
+      setCartId({
+        id: phone.phoneId,
+        quantity: quantity - 1,
+      });
     },
-    [phone, quantity, setPriceToAmount, setQuantityToTotal],
+    [phone, quantity, setPriceToAmount, setQuantityToTotal, setCartId],
   );
 
   const increaseQuantity = useCallback(
@@ -38,21 +52,41 @@ export const CartPhoneCardTemplate: FC<Props & DispatchProps> = ({
       setQuantity(quantity + 1);
       setPriceToAmount(phone.priceDiscount);
       setQuantityToTotal(1);
+      setCartId({
+        id: phone.phoneId,
+        quantity: quantity + 1,
+      });
     },
-    [quantity, phone, setPriceToAmount, setQuantityToTotal],
+    [quantity, phone, setPriceToAmount, setQuantityToTotal, setCartId],
+  );
+
+  const deletePhoneFromCart = useCallback(
+    () => {
+      const newCart = { ...phonesCart };
+
+      delete newCart[phone.phoneId];
+
+      deleteCartId(newCart);
+      setPriceToAmount(-(quantity * phone.priceDiscount));
+      setQuantityToTotal(-quantity);
+    },
+    [
+      quantity,
+      phone,
+      phonesCart,
+      deleteCartId,
+      setPriceToAmount,
+      setQuantityToTotal,
+    ],
   );
 
   return (
-    <div key={phone.id} className="cart__phones-item">
+    <div className="cart__phones-item">
       <button
         type="button"
         className="destroy cart__phones-button-delete"
         aria-label="Delete"
-        onClick={() => {
-          deleteCartId(phone.phoneId);
-          setPriceToAmount(-(quantity * phone.priceDiscount));
-          setQuantityToTotal(-quantity);
-        }}
+        onClick={deletePhoneFromCart}
       />
       <img
         src={`${MAIN_URL}${phone.image}`}
@@ -91,6 +125,7 @@ const mapDispatchToProps = {
   deleteCartId: deleteCartIdStore,
   setPriceToAmount: setPriceToAmountStore,
   setQuantityToTotal: setQuantityToTotalStore,
+  setCartId: setCartIdStore,
 };
 
 export const CartPhoneCard = connect(

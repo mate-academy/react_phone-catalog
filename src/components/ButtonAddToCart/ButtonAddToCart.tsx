@@ -4,7 +4,7 @@ import {
   setCartId as setCartIdStore,
   setPriceToAmount as setPriceToAmountStore,
   setQuantityToTotal as setQuantityToTotalStore,
-} from '../../store/store';
+} from '../../store/ActionCreators';
 
 interface Props {
   id: string;
@@ -12,11 +12,11 @@ interface Props {
 }
 
 interface StateProps {
-  phonesCart: string[];
+  phonesCart: {};
 }
 
 interface DispatchProps {
-  setCartId: (value: string) => void;
+  setCartId: (value: PhoneCartInfo) => void;
   setPriceToAmount: (value: number) => void;
   setQuantityToTotal: (value: number) => void;
 }
@@ -32,13 +32,18 @@ export const ButtonAddToCartTemplate: FC<ComponentProps> = ({
   setQuantityToTotal,
 }) => (
   <>
-    {!phonesCart.includes(id)
+    {!Object.keys(phonesCart).includes(id)
       ? (
         <button
           type="button"
           className="card__button-cart"
           onClick={() => {
-            setCartId(id);
+            const phone = {
+              id,
+              quantity: 1,
+            };
+
+            setCartId(phone);
             setPriceToAmount(price);
             setQuantityToTotal(1);
           }}

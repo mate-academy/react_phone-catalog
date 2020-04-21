@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import {
   setFavouriteId as setFavouriteIdStore,
   deleteFavouriteId as deleteFavouriteIdStore,
-} from '../../store/store';
+} from '../../store/ActionCreators';
 
 interface Props {
   id: string;

@@ -6,7 +6,7 @@ import './nav.css';
 
 interface StateProps {
   phonesFavourite: string[];
-  phonesCart: string[];
+  phonesCart: Cart;
 }
 
 export const NavTemplate: FC<StateProps> = ({
@@ -80,10 +80,10 @@ export const NavTemplate: FC<StateProps> = ({
           {/* eslint-disable-next-line max-len */}
           <path fillRule="evenodd" clipRule="evenodd" d="M5.33329 6C5.70148 6 5.99996 6.29848 5.99996 6.66667C5.99996 7.1971 6.21067 7.70581 6.58575 8.08088C6.96082 8.45595 7.46953 8.66667 7.99996 8.66667C8.53039 8.66667 9.0391 8.45595 9.41417 8.08088C9.78925 7.70581 9.99996 7.1971 9.99996 6.66667C9.99996 6.29848 10.2984 6 10.6666 6C11.0348 6 11.3333 6.29848 11.3333 6.66667C11.3333 7.55072 10.9821 8.39857 10.357 9.02369C9.73186 9.64881 8.88401 10 7.99996 10C7.1159 10 6.26806 9.64881 5.64294 9.02369C5.01782 8.39857 4.66663 7.55072 4.66663 6.66667C4.66663 6.29848 4.9651 6 5.33329 6Z" fill="#fff" />
         </svg>
-        {phonesCart.length
+        {Object.keys(phonesCart).length
           ? (
             <div className="nav__actions--icon nav__cart">
-              {phonesCart.length}
+              {Object.keys(phonesCart).length}
             </div>
           )
           : null}
