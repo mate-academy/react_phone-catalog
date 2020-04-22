@@ -1,11 +1,33 @@
 @import '../../../mixin.scss';
 
 .filter {
-  margin-left: 15px;
-  margin-bottom: 25px;
+  display: flex;
+  margin: 0 0 25px 15px;
+
+  .search-form,
+  .sort {
+    @include Small-text-12;
+  }
 }
 
-.search-form__input {
+.search-form__input,
+.sort__select {
   display: block;
+  height: 30px;
+  border: 1px solid #B4BDC4;
+}
+
+.search-form {
+  margin-right: 30px;
+
+  &__input {
+    width: 270px;
+  }
+}
+
+.sort {
+  &__select {
+    width: 170px;
+  }
 }
 
