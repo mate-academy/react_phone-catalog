@@ -49,3 +49,13 @@ export const phoneDetailsPropType = PropTypes.shape({
     ram: PropTypes.string,
   }).isRequired,
 });
+
+export const phonesPropType = PropTypes.arrayOf(
+  PropTypes.shape({
+    age: PropTypes.number,
+    id: PropTypes.string,
+    imageUrl: PropTypes.string,
+    name: PropTypes.string,
+    snippet: PropTypes.string,
+  }).isRequired,
+).isRequired;

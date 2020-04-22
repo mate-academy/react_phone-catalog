@@ -1,0 +1,14 @@
+@import '../../mixin.scss';
+
+.content-heading {
+  margin-left: 15px;
+  
+  &__title {
+    margin-bottom: 8px;
+  }
+
+  &__count {
+    @include Body-text-14;
+    margin-bottom: 40px;
+  }
+}

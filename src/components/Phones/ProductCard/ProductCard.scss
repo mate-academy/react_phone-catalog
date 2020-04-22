@@ -1,5 +1,7 @@
 .card {
   padding: 32px 24px 24px;
+  height: 570px;
+  position: relative;
 
   &__product-img {
     display: block;
@@ -39,6 +41,11 @@
 
   &__product-details {
     margin-bottom: 16px;
+  }
+
+  &__buttons {
+    position: absolute;
+    bottom: 25px;
   }
 
   &__add-to-cart,

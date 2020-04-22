@@ -5,18 +5,47 @@ import { Phones } from './Phones';
 import { getPhonesThunkCreator } from '../../redux/reducers/phonesReducer';
 import { PhonesCatalog } from './PhonesCatalog';
 import { Preloader } from '../Common/Preloader/Preloader';
+import { Filter } from './Filter/Filter';
+import { phonesPropType } from '../../propTypesConstants';
 
 class PhonesContainer extends React.Component {
+  state = {
+    query: '',
+  }
+
   componentDidMount() {
     this.props.getPhonesThunk();
   }
 
+  handleInput = (event) => {
+    const { value } = event.target;
+
+    this.setState({
+      query: value.toLowerCase(),
+    });
+  }
+
+  getFilteredPhones = (phones, input) => {
+    return phones
+      .filter(phone => phone.name.toLowerCase().includes(input)
+      || phone.snippet.toLowerCase().includes(input));
+  }
+
   render() {
+    const { query } = this.state;
+    const { phones } = this.props;
+
+    const filteredPhones = this.getFilteredPhones(phones, query);
+
     return (
       <>
-        <Phones />
+        <Phones phones={filteredPhones} />
+        <Filter
+          handleInput={this.handleInput}
+          query={this.state.query}
+        />
         {this.props.isFetching ? <Preloader /> : null}
-        <PhonesCatalog phones={this.props.phones} />
+        <PhonesCatalog phones={filteredPhones} />
       </>
     );
   }
@@ -36,13 +65,5 @@ export default connect(mapStateToProps, mapDispatchToProps)(PhonesContainer);
 PhonesContainer.propTypes = {
   getPhonesThunk: PropTypes.func.isRequired,
   isFetching: PropTypes.bool.isRequired,
-  phones: PropTypes.arrayOf(
-    PropTypes.shape({
-      age: PropTypes.number,
-      id: PropTypes.string,
-      imageUrl: PropTypes.string,
-      name: PropTypes.string,
-      snippet: PropTypes.string,
-    }).isRequired,
-  ).isRequired,
+  phones: phonesPropType.isRequired,
 };

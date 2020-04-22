@@ -7,6 +7,7 @@ import './order.scss';
 export const Slider = (props) => {
   const { details } = props;
   const [activeImg, setActiveImg] = useState(0);
+
   const handleClick = (event) => {
     event.preventDefault();
     const index = event.target.currentSrc.slice(-5, -4);

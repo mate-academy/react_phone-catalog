@@ -1,7 +1,18 @@
 import React from 'react';
+import './Phones.scss';
+import { phonesPropType } from '../../propTypesConstants';
 
-export const Phones = () => (
-  <>
-    <h2>Phones</h2>
-  </>
-);
+export const Phones = (props) => {
+  const { phones } = props;
+
+  return (
+    <div className="content-heading">
+      <h1 className="content-heading__title">Mobile Phones</h1>
+      <p className="content-heading__count">{`${phones.length} models`}</p>
+    </div>
+  );
+};
+
+Phones.propTypes = {
+  phones: phonesPropType.isRequired,
+};

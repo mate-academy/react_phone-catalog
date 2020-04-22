@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 import favoriteIcon from '../../../assets/images/icons/favorite-icon.svg';
 
 export const ProductCard = (props) => {
-  const { imageUrl, name, id } = props;
+  const { imageUrl, name, id, snippet } = props;
 
   return (
     <>
@@ -26,18 +26,7 @@ export const ProductCard = (props) => {
           <span className="card__price-old">$899</span>
         </p>
         <div className="card__product-details">
-          <p className="product-details">
-            <span className="product-details__title">Screen</span>
-            <span className="product-details__value">HardCode</span>
-          </p>
-          <p className="product-details">
-            <span className="product-details__title">Capacity</span>
-            <span className="product-details__value">HardCode</span>
-          </p>
-          <p className="product-details">
-            <span className="product-details__title">RAM</span>
-            <span className="product-details__value">HardCode</span>
-          </p>
+          <p className="card__snippet">{snippet}</p>
         </div>
         <div className="card__buttons">
           <button
@@ -64,4 +53,5 @@ ProductCard.propTypes = {
   imageUrl: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
+  snippet: PropTypes.string.isRequired,
 };
