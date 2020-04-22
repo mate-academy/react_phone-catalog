@@ -54,7 +54,7 @@ export const SimpleSlider = () => {
         <div>
           <img
             className="slider__image"
-            src="./img/slider_image6.png"
+            src="./img/slider_image6.jpg"
             alt="slider_img"
           />
         </div>

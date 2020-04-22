@@ -45,7 +45,7 @@ export const CartTemplate: FC<StateProps & DispatchProps> = ({
     deleteCartId({});
     setPriceToAmount(0);
     setQuantityToTotal(0);
-  }, [checkout]);
+  }, [deleteCartId, setPriceToAmount, setQuantityToTotal]);
 
   return (
     <div className="cart__container">
