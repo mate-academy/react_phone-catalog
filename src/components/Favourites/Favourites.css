@@ -1,0 +1,10 @@
+.favourites__container {
+  padding-top: 25px;
+}
+
+@media (max-width: 641px) {
+  .favourites__container {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}

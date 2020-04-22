@@ -1,0 +1,154 @@
+.nav {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  height: 64px;
+  padding-left: 24px;
+  background-color: #fff;
+  box-shadow: 0 1px 0 #e2e6e9;
+  z-index: 3;
+}
+
+.header__nav {
+  position: fixed;
+  top: 0;
+}
+
+.nav__logo {
+  margin-right: 82px;
+}
+
+.logo {
+  display: block;
+  color: #313237;
+  font-size: 13px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.nav__logo span {
+  font-size: 8px;
+  font-weight: normal;
+  color: #89939a;
+  text-transform: uppercase;
+}
+
+.nav__list {
+  display: flex;
+  list-style: none;
+  padding: 0;
+}
+
+.nav__item {
+  margin-right: 64px;
+}
+
+.nav__link {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #89939a;
+  text-decoration: none;
+  border: 1px solid #fff;
+  padding: 7px;
+  transition: 0.3s;
+}
+
+.nav__link:hover {
+  color: #313237;
+}
+
+.nav__item--active {
+  color: #313237;
+  border-color: #313237;
+  border-radius: 5px;
+}
+
+.nav__actions {
+  position: absolute;
+  display: flex;
+  right: 24px;
+  top: 0;
+}
+
+.nav__action {
+  display: flex;
+  width: 64px;
+  height: 64px;
+  text-align: center;
+}
+
+.nav__action--active::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 64px;
+  height: 3px;
+  background-color: #313237;
+}
+
+.nav__action--active path {
+  fill: #313237;
+}
+
+.icon {
+  margin: auto;
+}
+
+.icon path {
+  transition: 0.3s;
+}
+
+.icon:hover path {
+  fill: #313237;
+}
+
+.nav__actions--icon {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  top: 15px;
+  font-weight: 600;
+  font-size: 10px;
+  line-height: 15px;
+  color: #fff;
+  background-color: #eb5757;
+  border-radius: 50%;
+}
+
+.nav__favourites {
+  right: 80px;
+}
+
+.nav__cart {
+  right: 17px;
+}
+
+@media (max-width: 641px) {
+  .nav__logo {
+    margin-right: 22px;
+  }
+
+  .nav__item {
+    margin-right: 14px;
+  }
+
+  .nav__actions {
+    right: 34px;
+  }
+
+  .nav__action {
+    width: 44px;
+  }
+
+  .nav__favourites {
+    right: 51px;
+  }
+
+  .nav__cart {
+    right: 8px;
+  }
+}

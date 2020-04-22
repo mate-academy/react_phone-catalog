@@ -1,46 +1,71 @@
-import React from 'react';
+import React, { FC, Suspense } from 'react';
+import { Route, Switch } from 'react-router-dom';
+import Loader from 'react-loader-spinner';
 
 import './App.css';
 
-import PhoneCatalog from './PhoneCatalog';
-import PhoneDetailsPage from './PhoneDetailsPage';
+import { Nav } from './components/Nav/Nav';
+import { Home } from './components/Home/Home';
+import { Footer } from './components/Footer/Footer';
+import { PageNotFound } from './components/PageNotFound/PageNotFound';
+import { PhoneCatalog } from './components/PhoneCatalog/PhoneCatalog';
+import { Favourites } from './components/Favourites/Favourites';
+import { Cart } from './components/Cart/Cart';
 
-const App = () => (
-  <div className="container-fluid">
-    <div className="row">
-      <div className="col-md-2">
-        <section>
-          <h2>Filter</h2>
+const PhoneDetailsPageLazy = React.lazy(
+  () => import('./components/PhoneDetailsPage/PhoneDetailsPage')
+    .then(({ PhoneDetailsPage }) => ({ default: PhoneDetailsPage })),
+);
 
-          <label>
-            <div>Search:</div>
-            <input />
-          </label>
-
-          <label>
-            <div>Sort by:</div>
-            <select>
-              <option value="name">Alphabetical</option>
-              <option value="age">Newest</option>
-            </select>
-          </label>
-        </section>
-
-        <section>
-          <h2>Shopping Cart</h2>
-          <ul>
-            <li>Phone 1</li>
-            <li>Phone 2</li>
-            <li>Phone 3</li>
-          </ul>
-        </section>
-      </div>
-
-      <div className="col-md-10">
-        <PhoneDetailsPage />
-        <PhoneCatalog />
-      </div>
-    </div>
+const App: FC = () => (
+  <div id="top" className="container">
+    <Nav />
+    <main className="main">
+      <Switch>
+        <Route
+          path="/"
+          component={Home}
+          exact
+        />
+        <Route
+          path="/phones"
+          component={PhoneCatalog}
+          exact
+        />
+        <Route
+          path="/favourites"
+          component={Favourites}
+          exact
+        />
+        <Route
+          path="/cart"
+          component={Cart}
+          exact
+        />
+        <Suspense fallback={(
+          <Loader
+            type="TailSpin"
+            color="#000000"
+            height={100}
+            width={100}
+          />
+        )}
+        >
+          <Switch>
+            <Route
+              path="/phones/:phoneId"
+              component={PhoneDetailsPageLazy}
+              exact
+            />
+            <Route
+              path="*"
+              component={PageNotFound}
+            />
+          </Switch>
+        </Suspense>
+      </Switch>
+    </main>
+    <Footer />
   </div>
 );
 

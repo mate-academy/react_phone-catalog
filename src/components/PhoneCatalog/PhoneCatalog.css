@@ -1,0 +1,169 @@
+.phones__container {
+  padding-top: 25px;
+}
+
+.loader__container {
+  width: 100px;
+  margin: 0 auto;
+}
+
+.phones__path {
+  display: flex;
+  align-items: center;
+  height: 15px;
+  margin-bottom: 40px;
+}
+
+.home-icon__link {
+  height: 15px;
+}
+
+.home-icon {
+  width: 13px;
+  height: 15px;
+}
+
+.arrow-icon {
+  width: 6px;
+  height: 10px;
+  margin: 0 14px;
+}
+
+.phones__path-title {
+  height: 15px;
+  padding-top: 2px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  color: #89939a;
+}
+
+.phones__heding {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 41px;
+  color: #313237;
+  margin-bottom: 8px;
+}
+
+.phones__quantity {
+  margin-top: 0;
+  margin-bottom: 40px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  color: #89939a;
+}
+
+.action-container {
+  position: relative;
+  display: inline-block;
+  margin-right: 16px;
+}
+
+.phones__action-title {
+  margin: 4px 0;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  color: #89939a;
+}
+
+.phones__sort-select {
+  width: 176px;
+  height: 40px;
+  margin-bottom: 24px;
+  padding-left: 12px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: #313237;
+  border: 1px solid #b4bdc4;
+}
+
+.phones__search-input {
+  box-sizing: border-box;
+  margin-top: 2px;
+  margin-bottom: 24px;
+  padding: 0 30px 0 12px;
+  width: 400px;
+  height: 40px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: #313237;
+  border: 1px solid #b4bdc4;
+}
+
+.phones__search-label::after {
+  position: absolute;
+  content: "";
+  right: 10px;
+  top: 50%;
+  width: 16px;
+  height: 16px;
+  background-image: url(/img/search.png);
+  transform: translateY(-50%);
+}
+
+.phones__catalog {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 272px);
+  grid-gap: 16px;
+  max-width: 1424px;
+  margin: 0 auto 80px;
+}
+
+@media (max-width: 1440px) {
+  .phones__container {
+    padding-left: 128px;
+    padding-right: 128px;
+  }
+
+  .phones__search-input {
+    width: 368px;
+  }
+}
+
+@media (max-width: 896px) {
+  .phones__container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+@media (max-width: 680px) {
+  .phones__heding {
+    margin-top: 20px;
+  }
+
+  .phones__quantity {
+    margin-bottom: 20px;
+  }
+
+  .phones__search-input {
+    width: 272px;
+  }
+
+  .phones__search-label::after {
+    left: 248px;
+  }
+
+  .action-container {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 641px) {
+  .phones__container {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
