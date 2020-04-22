@@ -43,9 +43,15 @@ export const CartTemplate: FC<StateProps & DispatchProps> = ({
   const buyPhones = useCallback(() => {
     setCheckout(true);
     deleteCartId({});
-    setPriceToAmount(0);
-    setQuantityToTotal(0);
-  }, [deleteCartId, setPriceToAmount, setQuantityToTotal]);
+    setPriceToAmount(-totalPrice);
+    setQuantityToTotal(-totalQuantity);
+  }, [
+    totalPrice,
+    totalQuantity,
+    setPriceToAmount,
+    setQuantityToTotal,
+    deleteCartId,
+  ]);
 
   return (
     <div className="cart__container">
