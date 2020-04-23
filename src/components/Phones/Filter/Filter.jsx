@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import './Filter.scss';
 
 export const Filter = (props) => {
-  const { handleInput, query } = props;
+  const { handleInput, query, select, handleSelect } = props;
 
   return (
     <div className="filter">
@@ -23,12 +23,15 @@ export const Filter = (props) => {
         <label htmlFor="sort" className="sort__label">
           Sort by
           <select
-            type="select"
             className="sort__select"
-            value={query}
             id="sort"
-            name="sortBy"
-          />
+            value={select}
+            onChange={handleSelect}
+          >
+            <option value="default" className="sort__select-list">default</option>
+            <option value="name" className="sort__select-list">Name</option>
+            <option value="age" className="sort__select-list">Newest</option>
+          </select>
         </label>
       </form>
     </div>
@@ -38,4 +41,6 @@ export const Filter = (props) => {
 Filter.propTypes = {
   handleInput: PropTypes.func.isRequired,
   query: PropTypes.string.isRequired,
+  select: PropTypes.string.isRequired,
+  handleSelect: PropTypes.func.isRequired,
 };

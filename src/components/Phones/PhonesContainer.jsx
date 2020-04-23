@@ -11,6 +11,7 @@ import { phonesPropType } from '../../propTypesConstants';
 class PhonesContainer extends React.Component {
   state = {
     query: '',
+    select: 'default',
   }
 
   componentDidMount() {
@@ -25,27 +26,49 @@ class PhonesContainer extends React.Component {
     });
   }
 
+  handleSelect = (event) => {
+    const { value } = event.target;
+
+    this.setState({
+      select: value,
+    });
+  }
+
   getFilteredPhones = (phones, input) => {
     return phones
       .filter(phone => phone.name.toLowerCase().includes(input)
       || phone.snippet.toLowerCase().includes(input));
   }
 
+  getSortedPhones = (phones, select) => {
+    switch (select) {
+      case 'name':
+        return phones.sort((a, b) => a.name.localeCompare(b.name));
+      case 'age':
+        return phones.sort((a, b) => b.age - a.age);
+      default:
+        return phones;
+    }
+  }
+
   render() {
-    const { query } = this.state;
+    const { query, select } = this.state;
     const { phones } = this.props;
 
     const filteredPhones = this.getFilteredPhones(phones, query);
+    const sortedPhones = this.getSortedPhones(filteredPhones, select);
 
     return (
       <>
         <Phones phones={filteredPhones} />
         <Filter
           handleInput={this.handleInput}
-          query={this.state.query}
+          handleSelect={this.handleSelect}
+          query={query}
+          select={select}
         />
         {this.props.isFetching ? <Preloader /> : null}
-        <PhonesCatalog phones={filteredPhones} />
+        <PhonesCatalog phones={sortedPhones} />
       </>
     );
   }
