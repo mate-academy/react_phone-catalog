@@ -8,6 +8,7 @@ import { PageNotFound } from '../PageNotFound/PageNotFound';
 import PhonesContainer from '../Phones/PhonesContainer';
 // eslint-disable-next-line max-len
 import PhoneDetailsContainer from '../Phones/PhoneDetailsPage/PhoneDetailsContainer';
+import { BasketContainer } from '../Basket/BasketContainer';
 
 export const MainContent = () => {
   return (
@@ -30,6 +31,10 @@ export const MainContent = () => {
         <Route
           path="/accessories"
           component={Accessories}
+        />
+        <Route
+          path="/basket"
+          component={BasketContainer}
         />
         <Route
           path="/phones/:phoneId"

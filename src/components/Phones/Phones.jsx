@@ -7,7 +7,7 @@ export const Phones = (props) => {
 
   return (
     <div className="content-heading">
-      <h1 className="content-heading__title">Mobile Phones</h1>
+      <h1 className="content-heading__title">Phone Catalog</h1>
       <p className="content-heading__count">{`${phones.length} models`}</p>
     </div>
   );

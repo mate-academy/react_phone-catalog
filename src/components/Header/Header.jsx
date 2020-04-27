@@ -79,14 +79,15 @@ export const Header = () => (
           />
           {' '}
         </button>
-        <button className="header__basket" type="button">
-          <img
-            src={basketIcon}
-            alt="basket icon"
-            className="header__basket-icon"
-          />
-          {' '}
-        </button>
+        <NavLink to="/basket">
+          <button className="header__basket" type="button">
+            <img
+              src={basketIcon}
+              alt="basket icon"
+              className="header__basket-icon"
+            />
+          </button>
+        </NavLink>
       </div>
     </div>
   </header>

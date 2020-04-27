@@ -28,7 +28,12 @@ export const Filter = (props) => {
             value={select}
             onChange={handleSelect}
           >
-            <option value="default" className="sort__select-list">default</option>
+            <option
+              value="default"
+              className="sort__select-list"
+            >
+              default
+            </option>
             <option value="name" className="sort__select-list">Name</option>
             <option value="age" className="sort__select-list">Newest</option>
           </select>
