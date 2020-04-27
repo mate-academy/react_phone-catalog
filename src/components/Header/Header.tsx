@@ -1,15 +1,14 @@
 import React, { FC } from 'react';
 import './_Header.scss';
-import { Navigation } from '../Navigation';
+import Navigation from '../Navigation/Navigation';
+import { LogoLink } from '../LogoLink';
 
 export const Header: FC = () => (
 
-  <header className="header">
+  <header className="header" id="home">
     <div className="header__container">
-      <div className="header__logo" id="home" />
-
+      <LogoLink />
       <Navigation />
-
     </div>
   </header>
 );

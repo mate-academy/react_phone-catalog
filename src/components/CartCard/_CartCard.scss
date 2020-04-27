@@ -1,0 +1,90 @@
+@import "../../styles/utils";
+
+.cartCard {
+  margin-bottom: 16px;
+
+  width: 752px;
+  height: 128px;
+
+  @extend %fx_space-between-center;
+
+  border: 1px solid $elements;
+
+  &__btn-delete {
+    margin-left: 28px;
+
+    width: 16px;
+    height: 16px;
+
+    background: $white;
+    border-style: none;
+    outline: none;
+
+    @include bg-image_center_norepeat("../../assets/Close.svg");
+    background-size: contain;
+
+    cursor: pointer;
+
+    &:hover {
+      background-image: url("../../assets/Close-hover.svg");
+    }
+  }
+
+  &__img {
+    width: 66px;
+    height: 66px;
+    object-fit: contain;
+  }
+
+  &__title {
+    width: 295px;
+
+    @extend %body-text;
+
+    text-transform: capitalize;
+
+    color: $primary;
+  }
+
+  &__controls {
+    width: 96px;
+    height: 32px;
+
+    @extend %fx_space-between-center;
+  }
+
+  &__btn {
+    width: 32px;
+    height: 32px;
+
+    border: 1px solid $elements;
+    outline: none;
+    background: $white;
+
+    cursor: pointer;
+
+    &--decrease {
+      @include bg-image_center_norepeat("../../assets/Minus-disabled.svg");
+
+      &--active {
+        background-image: url("../../assets/Minus.svg");
+      }
+    }
+
+    &--increase {
+      @include bg-image_center_norepeat("../../assets/Plus.svg");
+
+      background-size: 15px;
+    }
+  }
+
+  &__price {
+    margin-right: 40px;
+
+    width: 61px;
+
+    @extend %h2;
+
+    color: $primary;
+  }
+}

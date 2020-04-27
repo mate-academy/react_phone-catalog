@@ -1,0 +1,401 @@
+@import "../../styles/utils";
+
+.phone {
+  margin-top: 24px;
+
+  &__breadcrumbs {
+    height: 16px;
+    margin-bottom: 40px;
+
+    display: flex;
+    align-items: center;
+  }
+
+  &__home-link {
+    display: inline-block;
+
+    width: 14px;
+    height: 14px;
+
+    background: url("../../assets/home.svg") center no-repeat;
+  }
+
+  &__phones-link {
+    margin-left: 30px;
+
+    @extend %small-text;
+    color: $primary;
+
+    position: relative;
+
+    &::before {
+      @extend %pseudo;
+
+      left: -18px;
+      top: 2px;
+
+      width: 6px;
+      height: 10px;
+
+      background: url("../../assets/arrow-gr.svg") center no-repeat;
+    }
+  }
+
+  &__model-name {
+    margin-left: 33px;
+
+    @extend %small-text;
+
+    text-transform: capitalize;
+    color: $secondary;
+
+    position: relative;
+
+    &::before {
+      @extend %pseudo;
+
+      left: -20px;
+      top: 2px;
+      width: 6px;
+      height: 10px;
+
+      background: url("../../assets/arrow-gr.svg") center no-repeat;
+    }
+  }
+
+  &__link-back {
+    margin: 16px 0 0 16px;
+
+    @extend %small-text;
+
+    color: $secondary;
+
+    position: relative;
+
+    &::before {
+      @extend %pseudo;
+
+      left: -15px;
+      top: 2px;
+
+      width: 6px;
+      height: 10px;
+
+      transform: rotate(270deg);
+      background: url("../../assets/arrow.svg") center no-repeat;
+    }
+  }
+
+  &__title {
+    margin-top: 40px;
+
+    @extend %h1;
+
+    text-transform: capitalize;
+    color: $primary;
+  }
+
+  &__top-block {
+    margin-top: 50px;
+
+    height: 460px;
+
+    display: flex;
+  }
+
+  &__images {
+    flex-basis: 50%;
+
+    @extend %fx_space-between;
+  }
+
+  &__sidebar-images {
+    max-width: 80px;
+
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+
+    overflow: hidden;
+  }
+
+  &__btn-img {
+    width: 80px;
+    height: 80px;
+
+    background: $white;
+    border-style: none;
+    outline: none;
+
+    &--active {
+      border: 1px solid #c4c4c4;
+    }
+  }
+
+  &__thumb-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  &__main-image {
+    width: 442px;
+    height: 442px;
+
+    object-fit: contain;
+  }
+
+  &__options {
+    flex-basis: 45%;
+
+    margin-left: 75px;
+  }
+
+  &__options-wrapper {
+    width: 320px;
+  }
+
+  &__colors-option {
+    height: 100px;
+    border-bottom: 1px solid $elements;
+  }
+
+  &__spec-title {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: $secondary;
+  }
+
+  &__colors {
+    list-style-type: none;
+    display: flex;
+  }
+
+  &__color-item {
+    margin-top: 24px;
+
+    &:not(:last-child) {
+      margin-right: 9px;
+    }
+  }
+
+  &__color-btn {
+    display: inline-block;
+
+    width: 32px;
+    height: 32px;
+
+    outline: none;
+    border-radius: 50%;
+    border-style: none;
+
+    position: relative;
+
+    &::before {
+      @extend %pseudo;
+
+      top: -3px;
+      left: -3px;
+
+      width: 36px;
+      height: 36px;
+
+      border-radius: 50%;
+      border: 1px solid grey;
+    }
+
+    &--active {
+      &::after {
+        @extend %pseudo;
+
+        top: -3px;
+        left: -3px;
+
+        width: 36px;
+        height: 36px;
+
+        border-radius: 50%;
+        border: 1px solid black;
+
+      }
+    }
+  }
+
+  &__capacity {
+    margin-top: 24px;
+
+    height: 80px;
+    border-bottom: 1px solid $elements;
+  }
+
+  &__capacity-opt {
+    margin-top: 8px;
+
+    width: 56px;
+    height: 32px;
+
+    @extend %body-text;
+
+    text-align: center;
+    border: 1px solid #b4bdc4;
+    background: $white;
+    color: $primary;
+
+    outline: none;
+
+    &:not(:last-child) {
+      margin-right: 8px;
+    }
+
+    &--active {
+      color: $white;
+      background: $primary;
+    }
+  }
+
+  &__price-option {
+    margin-top: 32px;
+    height: 75px;
+
+    @extend %fx_space-between;
+
+    flex-direction: column;
+  }
+
+  &__price-new {
+    margin-right: 8px;
+
+    @extend %h1;
+
+    color: $primary;
+
+    align-self: center;
+  }
+
+  &__price-old {
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 28px;
+    text-decoration-line: line-through;
+    color: $secondary;
+    align-self: center;
+  }
+
+  &__btns {
+    @extend %fx_space-between;
+  }
+
+  &__cart {
+    width: 263px;
+    height: 48px;
+
+    background: $primary;
+    color: $white;
+
+    @extend %buttons;
+    text-align: center;
+
+    border-style: none;
+
+    &--active {
+      background: $white;
+      border: 1px solid $elements;
+      color: $green;
+    }
+  }
+
+  &__favourites {
+    width: 48px;
+    height: 48px;
+
+    border-style: none;
+    background: url("../../assets/heart.svg") center no-repeat;
+
+    border: 1px solid #b4bdc4;
+
+    &--active {
+      background: url("../../assets/heart-active.svg") center no-repeat;
+    }
+  }
+
+  &__param {
+    margin-top: 32px;
+  }
+
+  .block {
+    @extend %fx_space-between-center;
+
+    &:not(:last-child) {
+      margin-bottom: 8px;
+    }
+  }
+
+  .left-top {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: $secondary;
+  }
+
+  .right-top {
+    @extend %small-text;
+    text-align: right;
+    color: $primary;
+  }
+
+  &__bottom-block {
+    margin-top: 80px;
+
+    @extend %fx_space-between;
+  }
+
+  &__about {
+    flex-basis: 50%;
+  }
+
+  &__subtitle {
+    padding-bottom: 16px;
+
+    @extend %h2;
+    color: $primary;
+    border-bottom: 1px solid $elements;
+  }
+
+  &__title-info {
+    margin: 32px 0 16px;
+
+    @extend %h3;
+
+    color: $primary;
+  }
+
+  &__text {
+    @extend %buttons;
+
+    color: $secondary;
+  }
+
+  &__specs {
+    flex-basis: 45%;
+    margin-left: 75px;
+  }
+
+  &__specs-box {
+    &:first-of-type {
+      margin-top: 24px;
+    }
+  }
+
+  .right-bottom {
+    @extend %body-text;
+
+    text-align: right;
+    color: $primary;
+  }
+
+  .left-bottom {
+    @extend %body-text;
+    color: $secondary;
+  }
+}

@@ -1,3 +1,5 @@
+@import "../../styles/utils";
+
 .breadcrumbs {
 
   &__top-box {
@@ -17,16 +19,13 @@
   }
 
   &__location {
-    font-weight: 600;
-    font-size: 12px;
-    line-height: 15px;
-    color: #89939a;
+    @extend %location;
 
     position: relative;
 
     &::after {
-      position: absolute;
-      content: "";
+      @extend %pseudo;
+
       left: -20px;
       top: 2px;
       width: 6px;
@@ -36,17 +35,14 @@
   }
 
   &__title {
-    font-size: 32px;
-    line-height: 41px;
-    letter-spacing: -0.01em;
-    color: #313237;
+    @extend %h1;
+    color: $primary;
     margin-bottom: 8px;
   }
 
   &__number {
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 21px;
-    color: #89939a;
+    @extend %buttons;
+
+    color: $secondary;
   }
 }

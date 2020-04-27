@@ -1,3 +1,5 @@
+@import '../../styles/utils';
+
 .back {
   margin-bottom: 16px;
   display: flex;
@@ -12,14 +14,11 @@
   }
 
   &__btn {
-    font-weight: 600;
-    font-size: 12px;
-    line-height: 15px;
-    color: #89939a;
+    @extend %location;
 
-    background: #fff;
+    background: $white;
     border-style: none;
-    
+
     cursor: pointer;
   }
 }

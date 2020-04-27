@@ -2,7 +2,7 @@ html {
   overflow-x: hidden;
   scroll-behavior: smooth;
 }
-/* 
+/*
 html,
 body {
   height: 100%;
@@ -33,7 +33,7 @@ body {
   margin: 0;
 }
 
-.main {
-  min-height: calc(100vh - 185px);
-  padding-top: 24px;
+.wrapper {
+  width: 70%;
+  margin: 0 auto;
 }

@@ -8,7 +8,7 @@ interface Props {
   setPagination: (value: number) => void;
 }
 
-export const FiltersTemplate: FC<Props> = (props) => {
+const Filters: FC<Props> = (props) => {
   const {
     setSortBy: setSortByTemplate,
     setPagination: setPaginationTemplate,
@@ -38,6 +38,7 @@ export const FiltersTemplate: FC<Props> = (props) => {
           <option value="disabled" disabled>Sort by</option>
           <option value="year">Year</option>
           <option value="name">Name</option>
+          <option value="price">Price</option>
         </select>
       </div>
       <div className="filters__box">
@@ -62,4 +63,4 @@ const mapDispatchToProps = {
   setSortBy, setPagination,
 };
 
-export const Filters = connect(null, mapDispatchToProps)(FiltersTemplate);
+export default connect(null, mapDispatchToProps)(Filters);

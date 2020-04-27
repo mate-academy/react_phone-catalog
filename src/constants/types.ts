@@ -34,7 +34,7 @@ export interface PhoneDetailsInterface {
   cell: string[];
 }
 
-interface Description {
+type Description = {
   title: string;
   text: string[];
 }

@@ -1,14 +1,16 @@
+@import "../../styles/utils";
+
 .slider {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   height: 400px;
+
+  @extend %fx_space-between-center;
 
   &__button {
     height: 100%;
     width: 32px;
-    border: 1px solid #b4bdc4;
-    background: #fff;
+
+    border: 1px solid $icons;
+    background: $white;
     outline: none;
 
     cursor: pointer;
@@ -56,26 +58,27 @@
   }
 
   &__dots {
-    position: absolute;
-    content: "";
+    @extend %pseudo;
+
     bottom: -18px;
     right: 50%;
-    transform: translateX(50%);
+
     height: 4px;
     width: 80px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+
+    @extend %fx_space-between-center;
+
+    transform: translateX(50%);
   }
 
   &__dot {
     height: 100%;
     width: 14px;
 
-    background: #e2e6e9;
+    background: $secondary;
 
     &--active {
-      background: #313237;
+      background: $primary;
     }
   }
 }

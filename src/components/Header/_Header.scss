@@ -1,21 +1,14 @@
+@import "../../styles/utils";
+
 .header {
   height: 64px;
 
   &__container {
     display: flex;
     align-items: center;
-    border-bottom: 1px solid #e2e6e9;
+
+    border-bottom: 1px solid $elements;
 
     position: relative;
-  }
-
-  &__logo {
-    width: 46px;
-    height: 25px;
-    margin-left: 64px;
-    margin-bottom: 20px;
-    margin-top: 20px;
-    background: url("../../assets//logo.png") center no-repeat;
-    background-size: contain;
   }
 }

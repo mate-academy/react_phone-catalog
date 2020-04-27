@@ -1,20 +1,19 @@
+@import "../../styles/utils";
+
 .categories {
-  width: 100%;
 
   &__title {
     margin-bottom: 24px;
-    font-size: 32px;
-    line-height: 41px;
-    font-weight: bold;
-    letter-spacing: -0.01em;
-    color: #313237;
+
+    @extend %h1;
+
+    color: $primary;
   }
 
   &__main {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    // flex-wrap: wrap;
+    @extend %fx_space-between-center;
+
+    flex-wrap: wrap;
   }
 
   &__category {
@@ -23,18 +22,16 @@
   }
 
   &__link {
-    margin-top: 24px;
-    margin-bottom: 4px;
-    font-weight: 600;
-    font-size: 20px;
-    line-height: 26px;
-    color: #313237;
+    margin: 24px 0 4px;
+
+    @extend %h3;
+
+    color: $primary;
   }
 
   &__text {
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 21px;
-    color: #89939a;
+    @extend %body-text;
+    
+    color: $secondary;
   }
 }

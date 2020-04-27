@@ -22,7 +22,7 @@ interface Props {
   cartTrigger: boolean;
 }
 
-export const NavigationTemplate: FC<Props> = (props) => {
+const Navigation: FC<Props> = (props) => {
   const {
     setQuery: setQueryTemplate,
     favourites,
@@ -43,7 +43,10 @@ export const NavigationTemplate: FC<Props> = (props) => {
 
   return (
     <nav className="nav">
-      <ul className="nav__list-left">
+      <ul className={cx('nav__list-left', {
+        activeCart: cartTrigger === true,
+      })}
+      >
         <li className="nav__item">
           <NavLink
             className="nav__link-left"
@@ -85,7 +88,10 @@ export const NavigationTemplate: FC<Props> = (props) => {
         </li>
       </ul>
       <ul className="nav__list-right">
-        <li className="nav__item-input">
+        <li className={cx('nav__item-input', {
+          activeCart: cartTrigger === true,
+        })}
+        >
           <input
             type="text"
             className="nav__search"
@@ -94,7 +100,7 @@ export const NavigationTemplate: FC<Props> = (props) => {
           />
         </li>
         <li className={cx('nav__item-right box-fav-rel', {
-          notVisible: cartTrigger === true,
+          activeCart: cartTrigger === true,
         })}
         >
           <NavLink
@@ -145,4 +151,4 @@ const mapStateToProps = (state: {
 const mapDispatchToProps = { setQuery };
 
 // eslint-disable-next-line max-len
-export const Navigation = connect(mapStateToProps, mapDispatchToProps)(NavigationTemplate);
+export default connect(mapStateToProps, mapDispatchToProps)(Navigation);

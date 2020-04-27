@@ -1,54 +1,61 @@
+@import "../../styles/utils";
+
 .smCatalog {
   margin: 102px auto 80px;
 
   &__prices-top {
     width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+
+    @extend %fx_space-between-center;
   }
 
   &__title {
     margin-bottom: 24px;
-    font-size: 32px;
-    line-height: 41px;
-    font-weight: bold;
-    letter-spacing: -0.01em;
-    color: #313237;
+    @extend %h1;
+
+    color: $primary;
   }
 
   &__control-btns {
     width: 80px;
     height: 32px;
 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    @extend %fx_space-between-center;
+
   }
 
   &__btn {
     width: 32px;
     height: 32px;
-    background: #fff;
+
+    background: $white;
     border-style: none;
-    border: 1px solid #e2e6e9;
+    border: 1px solid $elements;
 
     cursor: pointer;
 
     &--left {
-      background-image: url("../../assets/arrow-gr.svg");
-      background-position: center;
+      @include bg-image_center_norepeat("../../assets/arrow.svg");
+
       background-size: contain;
-      background-repeat: no-repeat;
-      transform: rotate(-180deg);
+      transform: rotate(-90deg);
+
+      &--notActive {
+        background-image: url("../../assets/arrow-gr.svg");
+        transform: rotate(180deg);
+      }
     }
 
     &--right {
-      background-image: url("../../assets/arrow.svg");
-      background-position: center;
+      @include bg-image_center_norepeat("../../assets/arrow.svg");
+
       background-size: contain;
-      background-repeat: no-repeat;
       transform: rotate(90deg);
+
+      &--notActive {
+        background-image: url("../../assets/arrow-gr.svg");
+        transform: rotate(0deg);
+      }
     }
 
     &:hover {
@@ -57,15 +64,8 @@
   }
 
   &__prices-main {
-    /* display: grid;
-    grid-template-columns: repeat(auto-fill,minmax(272px, auto));
-    grid-auto-flow: column;
-    overflow-x: hidden;
-    grid-gap: 16px;
-    justify-content: space-between; */
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    @extend %fx_space-between-center;
+
     overflow-x: hidden;
   }
 }
@@ -73,6 +73,14 @@
 .temp-block {
   width: 272px;
   height: 507px;
+  
   border-radius: 25px;
   border: 2px solid grey;
+
+  &__title {
+    font-size: 100px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 5;
+  }
 }

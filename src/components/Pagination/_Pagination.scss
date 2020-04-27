@@ -1,9 +1,12 @@
+@import "../../styles/utils";
+
 .pagination {
   margin-top: 24px;
 
   &__list {
     display: flex;
     justify-content: center;
+
     list-style: none;
   }
 
@@ -24,15 +27,16 @@
   &__btn {
     width: 32px;
     height: 32px;
-    background: #fff;
+
+    background: $white;
+
     border: 1px solid #e2e6e9;
 
     cursor: pointer;
 
     &--left {
-      background-image: url("../../assets/arrow-active.svg");
-      background-repeat: no-repeat;
-      background-position: center;
+      @include bg-image_center_norepeat("../../assets/arrow-active.svg");
+
       transform: rotate(-180deg);
 
       &--disabled {
@@ -41,9 +45,7 @@
     }
 
     &--right {
-      background-image: url("../../assets/arrow-active.svg");
-      background-repeat: no-repeat;
-      background-position: center;
+      @include bg-image_center_norepeat("../../assets/arrow-active.svg");
 
       &--disabled {
         background-image: url("../../assets/arrow-gr.svg");
@@ -51,12 +53,12 @@
     }
 
     &:hover {
-      border: 1px solid #313237;
+      border: 1px solid $primary;
     }
 
     &--active {
-      color: #fff;
-      background: #313237;
+      color: $white;
+      background: $primary;
     }
   }
 }

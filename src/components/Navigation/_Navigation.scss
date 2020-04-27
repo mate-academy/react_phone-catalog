@@ -1,45 +1,54 @@
+@import "../../styles/utils";
+
 .nav {
   display: flex;
-  margin-left: 8%;
   align-items: center;
 
-  width: 100%;
+  margin-left: 8%;
+
+  .activeCart {
+    display: none;
+  }
 
   &__list-left {
-    display: flex;
-    justify-content: space-between;
+    @extend %fx_space-between;
+
     list-style-type: none;
   }
 
   &__link-left {
+    margin-right: 64px;
+
+    @extend %uppercase;
+
     text-decoration: none;
     text-transform: uppercase;
-    font-weight: bold;
-    font-size: 12px;
-    line-height: 11px;
-    color: #89939a;
-    margin-right: 64px;
+
+    color: $secondary;
 
     position: relative;
 
     &--active {
       &::before {
-        position: absolute;
-        content: "";
+        @extend %pseudo;
+
         height: 4px;
         width: 100%;
-        background: #313237;
+
         bottom: -25px;
         left: 0;
-        color: #313237;
+
+        background: $primary;
+        color: $primary;
       }
     }
   }
 
   &__list-right {
-    display: flex;
-    justify-content: space-between;
+    @extend %fx_space-between;
+
     list-style-type: none;
+
     position: absolute;
     right: 0;
   }
@@ -48,14 +57,16 @@
 
     &--active {
       &::before {
-        position: absolute;
-        content: "";
+        @extend %pseudo;
+
         height: 4px;
         width: 100%;
-        background: #313237;
+
         bottom: -1px;
         left: 0;
-        color: #313237;
+
+        background: $primary;
+        color: $primary;
       }
     }
   }
@@ -68,15 +79,18 @@
   &__search {
     width: 92%;
     height: 96%;
+
     padding-left: 24px;
+
     font-size: 14px;
     line-height: 18px;
+
     border: 1px solid #e2e6e9;
 
-    color: #b4bdc4;
+    color: $icons;
 
     &:focus {
-      background: #fafbfc;
+      background: $hoverBG;
       outline: none;
     }
   }
@@ -90,10 +104,11 @@
   }
 
   &__favourites {
-    position: absolute;
-    content: "";
+    @extend %pseudo;
+
     top: 50%;
     left: 50%;
+
     transform: translate(-50%, -50%);
   }
 
@@ -106,34 +121,33 @@
   }
 
   &__red-circle {
-    position: absolute;
-    content: "";
+    @extend %pseudo;
+
     right: 10px;
     top: 10px;
 
     width: 16px;
     height: 16px;
 
-    border-radius: 50%;
     background: red;
-    color: #fff;
-    border: 2px solid #fff;
+    color: $white;
+
+    border-radius: 50%;
+    border: 2px solid $white;
 
     font-weight: 600;
     font-size: 13px;
     line-height: 16px;
+
     text-align: center;
   }
 
   &__store {
-    position: absolute;
-    content: "";
+    @extend %pseudo;
+
     top: 50%;
     left: 50%;
+    
     transform: translate(-50%, -50%);
   }
-}
-
-.notVisible {
-  display: none;
 }

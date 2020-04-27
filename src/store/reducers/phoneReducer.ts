@@ -53,6 +53,15 @@ export const phoneReducer = (state = phoneState, action: AnyAction) => {
           };
         }
 
+        case 'price': {
+          tempPhones.sort((a, b) => a.priceDiscount - b.priceDiscount);
+
+          return {
+            ...state,
+            phones: tempPhones,
+          };
+        }
+
         case 'name': {
           tempPhones.sort((a, b) => a.name.localeCompare(b.name));
 

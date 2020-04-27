@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { FC } from 'react';
 import './_Categories.scss';
 import { Link } from 'react-router-dom';
 import accessories from '../../assets/accessories.png';
 import tablets from '../../assets/tablets.png';
 import phonesImage from '../../assets/phones.png';
 
-export const Categories = () => {
+export const Categories: FC = () => {
   return (
     <div className="categories">
       <h3 className="categories__title">Shop by category</h3>

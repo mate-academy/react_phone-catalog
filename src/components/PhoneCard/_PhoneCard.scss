@@ -1,0 +1,146 @@
+@import "../../styles/utils";
+
+.phoneCard {
+  width: 272px;
+  height: 507px;
+
+  padding: 32px 24px 0;
+
+  box-sizing: border-box;
+  border: 1px solid $elements;
+
+  position: relative;
+
+  &__img {
+    margin: 8px auto;
+    display: block;
+
+    width: 208px;
+    height: 208px;
+
+    box-sizing: border-box;
+    object-fit: contain;
+  }
+
+  &__info-top {
+    height: 72px;
+
+    border-bottom: 1px solid $elements;
+
+    @extend %fx_space-between;
+    flex-direction: column;
+  }
+
+  &__title {
+    height: 42px;
+
+    @extend %body-text;
+    color: $primary;
+
+    text-align: center;
+  }
+
+  &__block {
+    margin-bottom: 6px;
+
+    position: relative;
+  }
+
+  &__price-dis {
+    @extend %h2;
+    color: $primary;
+  }
+
+  &__price-reg {
+    margin-left: 8px;
+
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 28px;
+    text-decoration-line: line-through;
+    color: $secondary;
+
+    position: absolute;
+    top: -1px;
+  }
+
+  &__info-main {
+    margin: 24px 0;
+  }
+
+  &__block-spec {
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+
+    &:not(:last-child) {
+      margin-bottom: 8px;
+    }
+  }
+
+  .left {
+    @extend %small-text;
+    color: $secondary;
+  }
+
+  .right {
+    @extend %small-text;
+
+    text-align: right;
+    color: $primary;
+  }
+
+  &__action-btns {
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+    position: absolute;
+    bottom: 24px;
+  }
+
+  &__btn-cart {
+    width: 176px;
+    height: 40px;
+
+    color: $white;
+    background: $primary;
+    border-style: none;
+
+    margin-right: 8px;
+    cursor: pointer;
+
+    &--active {
+      background: $white;
+      border: 1px solid $elements;
+      color: $green;
+    }
+
+    &:hover {
+      color: $primary;
+      background: $white;
+      box-shadow: inset 0 0 4px $primary;
+    }
+  }
+
+  &__btn-favourites {
+    width: 40px;
+    height: 40px;
+
+    background: url("../../assets/heart.svg") center no-repeat;
+    border-style: none;
+    border: 1px solid #b4bdc4;
+    cursor: pointer;
+
+    &--active {
+      background: url("../../assets/heart-active.svg") center no-repeat;
+    }
+
+    &:hover {
+      color: $primary;
+      box-shadow: inset 0 0 4px $primary;
+
+    }
+  }
+}

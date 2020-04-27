@@ -1,0 +1,11 @@
+@import "../../styles/utils";
+
+.phones {
+
+  &__query-search {
+    margin-top: 24px;
+
+    @extend %body-text;
+    color: $secondary;
+  }
+}

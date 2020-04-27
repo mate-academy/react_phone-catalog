@@ -1,14 +1,15 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer';
-import { AccessoriesMain } from '../../components/AccessoriesMain';
+import Accessories from '../../components/Accessories/Accessories';
+import { Main } from '../../components/Main/Main';
 
-export const AccessoriesPage = () => (
+export const AccessoriesPage: FC = () => (
   <>
     <Header />
-    <main className="main">
-      <AccessoriesMain />
-    </main>
+    <Main>
+      <Accessories />
+    </Main>
     <Footer />
   </>
 );

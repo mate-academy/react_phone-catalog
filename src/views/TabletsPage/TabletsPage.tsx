@@ -1,14 +1,15 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer';
-import { TabletsMain } from '../../components/TabletsMain';
+import { Tablets } from '../../components/Tablets';
+import { Main } from '../../components/Main/Main';
 
-export const TabletsPage = () => (
+export const TabletsPage: FC = () => (
   <>
     <Header />
-    <main className="main">
-      <TabletsMain />
-    </main>
+    <Main>
+      <Tablets />
+    </Main>
     <Footer />
   </>
 );

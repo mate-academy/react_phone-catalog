@@ -1,0 +1,5 @@
+@mixin bg-image_center_norepeat($_img-src) {
+  background-image: url($_img-src);
+  background-repeat: no-repeat;
+  background-position: center;
+}

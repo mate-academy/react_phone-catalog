@@ -1,14 +1,15 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer';
-import { FavouritesMain } from '../../components/FavouritesMain';
+import Favourites from '../../components/Favourites/Favouriets';
+import { Main } from '../../components/Main/Main';
 
-export const FavouritesPage = () => (
+export const FavouritesPage: FC = () => (
   <>
     <Header />
-    <main className="main">
-      <FavouritesMain />
-    </main>
+    <Main>
+      <Favourites />
+    </Main>
     <Footer />
   </>
 );

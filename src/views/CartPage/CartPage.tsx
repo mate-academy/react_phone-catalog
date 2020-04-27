@@ -1,14 +1,15 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer';
-import { CartMain } from '../../components/CartMain';
+import Cart from '../../components/Cart/Cart';
+import { Main } from '../../components/Main/Main';
 
-export const CartPage = () => (
+export const CartPage: FC = () => (
   <>
     <Header />
-    <main className="main">
-      <CartMain />
-    </main>
+    <Main>
+      <Cart />
+    </Main>
     <Footer />
   </>
 );

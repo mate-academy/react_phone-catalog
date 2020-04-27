@@ -2,7 +2,7 @@ import React, { FC, useState, useEffect } from 'react';
 import './_Catalog.scss';
 import { connect } from 'react-redux';
 import { PhoneInterface, PhoneState } from '../../constants/types';
-import { PhoneThumb } from '../PhoneThumb';
+import PhoneCard from '../PhoneCard/PhoneCard';
 import { Pagination } from '../Pagination';
 import { getPagination } from '../../store/reducers/phoneReducer';
 
@@ -11,7 +11,7 @@ interface Props {
   paginationPage: number;
 }
 
-export const CatalogTemplate: FC<Props> = ({ phonesArray, paginationPage }) => {
+const Catalog: FC<Props> = ({ phonesArray, paginationPage }) => {
   const [
     visiblePhones, setVisiblePhones,
   ] = useState<PhoneInterface[]>(phonesArray);
@@ -34,6 +34,7 @@ export const CatalogTemplate: FC<Props> = ({ phonesArray, paginationPage }) => {
   }, [phonesArray]);
 
   useEffect(() => {
+    setCurrentPage(1);
     setPhonesPerPage(paginationPage);
   }, [paginationPage]);
 
@@ -46,10 +47,10 @@ export const CatalogTemplate: FC<Props> = ({ phonesArray, paginationPage }) => {
       <ul className="catalog">
         {currentPhones.map((phone: PhoneInterface) => (
           <li
-            className="catalog__item phoneThumb"
+            className="catalog__item phoneCard"
             key={phone.id}
           >
-            <PhoneThumb
+            <PhoneCard
               data={phone}
             />
           </li>
@@ -74,4 +75,4 @@ const mapStateToProps = (state: {
   paginationPage: getPagination(state.phoneReducer),
 });
 
-export const Catalog = connect(mapStateToProps)(CatalogTemplate);
+export default connect(mapStateToProps)(Catalog);

@@ -1,10 +1,10 @@
+@import "../../styles/utils";
+
 .footer {
   height: 96px;
 
   &__container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    @extend %fx_space-between-center;
 
     padding-top: 36px;
 
@@ -13,6 +13,7 @@
   &__logo {
     width: 46px;
     height: 25px;
+
     background: url("../../assets/logo.png") center no-repeat;
     background-size: contain;
   }
@@ -23,8 +24,8 @@
 
   &__list {
     width: 293px;
-    display: flex;
-    justify-content: space-between;
+
+    @extend %fx_space-between;
 
     & > li {
       list-style-type: none;
@@ -35,38 +36,36 @@
   &__item {
 
     & > a {
+      @extend %uppercase;
+
       text-decoration: none;
       text-transform: uppercase;
-      font-weight: bold;
-      font-size: 12px;
-      line-height: 11px;
-      letter-spacing: 0.04em;
-      color: #89939a;
+
+      color: $secondary;
     }
   }
 
   &__block {
     width: 118px;
     height: 32px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+
+    @extend %fx_space-between-center;
 
     & > span {
-      font-weight: 600;
-      font-size: 12px;
-      line-height: 15px;
-      color: #89939a;
+      @extend %small-text;
+
+      color: $secondary;
     }
 
     & > a {
       width: 32px;
       height: 32px;
-      border: 1px solid #b4bdc4;
+      
+      border: 1px solid $icons;
 
       & > img {
         display: inline-block;
-        margin: 10px 10px;
+        margin: 10px;
       }
     }
   }
