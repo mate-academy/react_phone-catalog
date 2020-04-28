@@ -1,0 +1,36 @@
+.cart {
+
+  &__heading {
+    margin-bottom: 25px;
+  }
+
+  &__content {
+    display: flex;
+    
+  }
+
+  &__list {
+    margin-right: 15px;
+  }
+
+  &__item {
+    width: 750px;
+    height: 130px;
+    margin-bottom: 15px;
+  }
+
+  &__item,
+  &__totalCount {
+    border: 1px solid #E2E6E9;
+  }
+
+  &__totalCount {
+    width: 370px;
+    height: 200px;
+  }
+}
+
+.cartItem__image {
+  width: 65px;
+  height: 65px;
+}
