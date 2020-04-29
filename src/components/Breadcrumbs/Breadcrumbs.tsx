@@ -31,7 +31,6 @@ export const Breadcrumbs: FC<Props> = (props) => {
           </span>
         </div>
       </div>
-
     </>
   );
 };

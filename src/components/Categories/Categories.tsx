@@ -10,21 +10,19 @@ export const Categories: FC = () => {
     <div className="categories">
       <h3 className="categories__title">Shop by category</h3>
       <div className="categories__main">
-        <div className="categories__box">
-          <div className="categories__category">
-            <img
-              src={phonesImage}
-              alt="category_phones"
-              className="categories__img"
-            />
-            <Link
-              to="/phones"
-              className="categories__link"
-            >
+        <div className="categories__category">
+          <img
+            src={phonesImage}
+            alt="category_phones"
+            className="categories__img"
+          />
+          <Link
+            to="/phones"
+            className="categories__link"
+          >
                     Mobile phones
-            </Link>
-            <p className="categories__text">71 models</p>
-          </div>
+          </Link>
+          <p className="categories__text">71 models</p>
         </div>
         <div className="categories__category">
           <img

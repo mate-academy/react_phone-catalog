@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 import './_Footer.scss';
 import arrow from '../../assets/arrow.svg';
@@ -7,7 +7,7 @@ import arrow from '../../assets/arrow.svg';
 export const Footer = () => (
   <footer className="footer">
     <div className="footer__container wrapper">
-      <div className="footer__logo" />
+      <Link to="/" className="footer__logo-link" />
       <nav className="footer__nav">
         <ul className="footer__list">
           <li className="footer__item">

@@ -37,3 +37,27 @@ body {
   width: 70%;
   margin: 0 auto;
 }
+
+@media screen and (min-width: 1024px) and (max-width: 1199px) {
+  .wrapper {
+    width: 95%;
+  }
+}
+
+@media screen and (min-width: 1200px) and (max-width: 1599px) {
+  .wrapper {
+    width: 90%;
+  }
+}
+
+@media screen and (min-width: 1600px) and (max-width: 1919px) {
+  .wrapper {
+    width: 75%;
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  .wrapper {
+    width: 70%;
+  }
+}

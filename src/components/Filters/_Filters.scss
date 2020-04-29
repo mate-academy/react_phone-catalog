@@ -36,3 +36,9 @@
     background: $white;
   }
 }
+
+@media screen and (min-width: 1024px) and (max-width: 1199px) {
+  .filters {
+    margin-top: 16px;
+  }
+}

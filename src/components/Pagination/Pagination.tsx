@@ -5,8 +5,8 @@ import cx from 'classnames';
 interface Props {
   phonesPerPage: number;
   totalPhones: number;
-  paginate: (numberOfPage: number) => void;
   currentPage: number;
+  paginate: (numberOfPage: number) => void;
   handlePage: (num: number) => void;
 }
 

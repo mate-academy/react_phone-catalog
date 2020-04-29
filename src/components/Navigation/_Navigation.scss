@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
 
-  margin-left: 8%;
+  margin-left: 8.5%;
 
   .activeCart {
     display: none;
@@ -147,7 +147,17 @@
 
     top: 50%;
     left: 50%;
-    
+
     transform: translate(-50%, -50%);
+  }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1199px) {
+  .nav {
+    margin-left: 4%;
+
+    &__link-left {
+      margin-right: 48px;
+    }
   }
 }

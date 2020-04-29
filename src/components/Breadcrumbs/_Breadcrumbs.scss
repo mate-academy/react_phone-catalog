@@ -46,3 +46,11 @@
     color: $secondary;
   }
 }
+
+@media screen and (min-width: 1024px) and (max-width: 1199px) {
+  .breadcrumbs {
+    &__top-box {
+      margin-bottom: 16px;
+    }
+  }
+}

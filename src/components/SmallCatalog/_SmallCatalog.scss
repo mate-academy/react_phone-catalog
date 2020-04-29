@@ -73,7 +73,7 @@
 .temp-block {
   width: 272px;
   height: 507px;
-  
+
   border-radius: 25px;
   border: 2px solid grey;
 
@@ -82,5 +82,11 @@
     font-weight: bold;
     text-align: center;
     line-height: 5;
+  }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1199px) {
+  .smCatalog {
+    margin: 48px 0 0;
   }
 }

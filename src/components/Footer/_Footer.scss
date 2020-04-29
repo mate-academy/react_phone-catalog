@@ -7,10 +7,9 @@
     @extend %fx_space-between-center;
 
     padding-top: 36px;
-
   }
 
-  &__logo {
+  &__logo-link {
     width: 46px;
     height: 25px;
 
@@ -60,7 +59,7 @@
     & > a {
       width: 32px;
       height: 32px;
-      
+
       border: 1px solid $icons;
 
       & > img {

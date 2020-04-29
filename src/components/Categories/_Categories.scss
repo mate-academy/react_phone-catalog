@@ -1,6 +1,7 @@
 @import "../../styles/utils";
 
 .categories {
+  margin-top: 48px;
 
   &__title {
     margin-bottom: 24px;
@@ -11,14 +12,18 @@
   }
 
   &__main {
+    width: 100%;
     @extend %fx_space-between-center;
 
-    flex-wrap: wrap;
   }
 
   &__category {
     display: flex;
     flex-direction: column;
+  }
+
+  &__img {
+    object-fit: contain;
   }
 
   &__link {
@@ -31,7 +36,22 @@
 
   &__text {
     @extend %body-text;
-    
+
     color: $secondary;
+  }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1199px) {
+  .categories {
+    &__title {
+      margin-bottom: 0;
+    }
+
+    &__category {
+      width: 33%; 
+    }
+    &__link {
+      margin-top: 0;
+    }
   }
 }

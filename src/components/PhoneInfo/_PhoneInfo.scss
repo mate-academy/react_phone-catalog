@@ -190,6 +190,8 @@
     border-radius: 50%;
     border-style: none;
 
+    cursor: pointer;
+
     position: relative;
 
     &::before {
@@ -234,6 +236,7 @@
 
     width: 56px;
     height: 32px;
+    cursor: pointer;
 
     @extend %body-text;
 
@@ -297,6 +300,7 @@
     text-align: center;
 
     border-style: none;
+    cursor: pointer;
 
     &--active {
       background: $white;
@@ -313,6 +317,8 @@
     background: url("../../assets/heart.svg") center no-repeat;
 
     border: 1px solid #b4bdc4;
+
+    cursor: pointer;
 
     &--active {
       background: url("../../assets/heart-active.svg") center no-repeat;
@@ -397,5 +403,23 @@
   .left-bottom {
     @extend %body-text;
     color: $secondary;
+  }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1199px) {
+  .phone {
+    &__main-image {
+      width: 400px;
+      height: 400px;
+      align-self: center;
+    }
+
+    &__options {
+      margin-left: 75px;
+    }
+
+    &__bottom-block {
+      margin-top: 24px;
+    }
   }
 }
