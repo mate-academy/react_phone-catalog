@@ -1,10 +1,14 @@
+/* eslint-disable no-case-declarations */
 import { getPhones } from '../../api/api';
-import { SET_PHONES, TOGGLE_IS_FETCHING } from './constants';
+import { SET_PHONES, TOGGLE_IS_FETCHING, ADD_TO_CART } from './constants';
 import { setPhonesAC, toggleIsFetchingAC } from './actionCreators';
 
 const initialState = {
   phones: [],
   isFetching: false,
+  addedPhones: [],
+  total: 0,
+  price: 799,
 };
 
 export const phonesReducer = (state = initialState, action) => {
@@ -20,7 +24,14 @@ export const phonesReducer = (state = initialState, action) => {
         ...state,
         isFetching: action.isFetching,
       };
+    case ADD_TO_CART:
+      const addedPhone = state.phones.find(phone => phone.id === action.id);
 
+      return {
+        ...state,
+        addedPhones: [...state.addedPhones, addedPhone],
+        total: state.total + state.price,
+      };
     default:
       return state;
   }

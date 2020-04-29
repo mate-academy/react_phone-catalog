@@ -10,6 +10,7 @@ export const CartItem = (props) => {
       <span className="cartItem__id">{`ID: ${age}`}</span>
       <img src={imageUrl} alt="phone" className="cartItem__image" />
       <span className="cartItem__name">{name}</span>
+      <span className="cartItem__name">{id}</span>
     </div>
   );
 };
@@ -19,5 +20,4 @@ CartItem.propTypes = {
   id: PropTypes.string.isRequired,
   imageUrl: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-
 };

@@ -7,6 +7,7 @@ import { PhonesCatalog } from './PhonesCatalog';
 import { Preloader } from '../Common/Preloader/Preloader';
 import { Filter } from './Filter/Filter';
 import { phonesPropType } from '../../propTypesConstants';
+import { addToCartAC } from '../../redux/reducers/actionCreators';
 
 class PhonesContainer extends React.Component {
   state = {
@@ -53,7 +54,7 @@ class PhonesContainer extends React.Component {
 
   render() {
     const { query, select } = this.state;
-    const { phones } = this.props;
+    const { phones, addToCart } = this.props;
 
     const filteredPhones = this.getFilteredPhones(phones, query);
     const sortedPhones = this.getSortedPhones(filteredPhones, select);
@@ -68,7 +69,10 @@ class PhonesContainer extends React.Component {
           select={select}
         />
         {this.props.isFetching ? <Preloader /> : null}
-        <PhonesCatalog phones={sortedPhones} />
+        <PhonesCatalog
+          phones={sortedPhones}
+          addToCart={addToCart}
+        />
       </>
     );
   }
@@ -81,6 +85,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   getPhonesThunk: () => dispatch(getPhonesThunkCreator()),
+  addToCart: (id) => dispatch(addToCartAC(id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PhonesContainer);
@@ -89,4 +94,5 @@ PhonesContainer.propTypes = {
   getPhonesThunk: PropTypes.func.isRequired,
   isFetching: PropTypes.bool.isRequired,
   phones: phonesPropType.isRequired,
+  addToCart: PropTypes.func.isRequired,
 };

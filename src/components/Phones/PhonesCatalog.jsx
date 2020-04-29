@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { ProductCard } from './ProductCard/ProductCard';
 
 export const PhonesCatalog = (props) => {
-  const { phones } = props;
+  const { phones, addToCart } = props;
 
   return (
     <>
@@ -13,7 +13,10 @@ export const PhonesCatalog = (props) => {
 
           {phones.map(phone => (
             <li key={phone.age} className="catalog__product-item">
-              <ProductCard {...phone} />
+              <ProductCard
+                {...phone}
+                addToCart={addToCart}
+              />
             </li>
           ))}
         </ul>
@@ -32,4 +35,5 @@ PhonesCatalog.propTypes = {
       snippet: PropTypes.string,
     }).isRequired,
   ).isRequired,
+  addToCart: PropTypes.func.isRequired,
 };

@@ -5,7 +5,10 @@ import { NavLink } from 'react-router-dom';
 import favoriteIcon from '../../../assets/images/icons/favorite-icon.svg';
 
 export const ProductCard = (props) => {
-  const { imageUrl, name, id, snippet } = props;
+  const { imageUrl, name, id, snippet, addToCart } = props;
+  const handleClick = (phoneId) => {
+    addToCart(phoneId);
+  };
 
   return (
     <>
@@ -32,6 +35,7 @@ export const ProductCard = (props) => {
           <button
             className="card__add-to-cart"
             type="button"
+            onClick={() => handleClick(id)}
           >
             Add to cart
           </button>
@@ -54,4 +58,5 @@ ProductCard.propTypes = {
   name: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
   snippet: PropTypes.string.isRequired,
+  addToCart: PropTypes.func.isRequired,
 };

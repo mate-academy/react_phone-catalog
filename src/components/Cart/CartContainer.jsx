@@ -4,17 +4,19 @@ import { connect } from 'react-redux';
 import { Cart } from './Cart';
 
 const CartContainer = (props) => {
-  const { addedPhones } = props;
+  const { addedPhones, total } = props;
 
   return (
     <Cart
       addedPhones={addedPhones}
+      total={total}
     />
   );
 };
 
 const mapStateToProps = (state) => ({
-  addedPhones: state.cartPage.addedPhones,
+  addedPhones: state.phonesPage.addedPhones,
+  total: state.phonesPage.total,
 });
 
 export default connect(mapStateToProps)(CartContainer);
@@ -29,4 +31,5 @@ CartContainer.propTypes = {
       snippet: PropTypes.string,
     }).isRequired,
   ).isRequired,
+  total: PropTypes.number.isRequired,
 };
