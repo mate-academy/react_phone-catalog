@@ -6,8 +6,16 @@ import { setPhonesAC, toggleIsFetchingAC } from './actionCreators';
 const initialState = {
   phones: [],
   isFetching: false,
-  addedPhones: [],
-  total: 0,
+  addedPhones: [
+    {
+      age: 0,
+      id: 'motorola-xoom-with-wi-fi',
+      imageUrl: 'img/phones/motorola-xoom-with-wi-fi.0.jpg',
+      name: 'Motorola XOOM™ with Wi-Fi',
+    },
+  ],
+  totalPrice: 0,
+  itemPrice: 799,
   price: 799,
 };
 
@@ -30,7 +38,7 @@ export const phonesReducer = (state = initialState, action) => {
       return {
         ...state,
         addedPhones: [...state.addedPhones, addedPhone],
-        total: state.total + state.price,
+        totalPrice: state.totalPrice + state.price,
       };
     default:
       return state;

@@ -1,0 +1,47 @@
+@import '../../mixin.scss';
+
+.cartItem {
+  position: relative;
+  padding: 30px 40px 25px;
+
+  &__delete {
+
+  }
+
+  &__image {
+    width: 65px;
+    height: 65px;
+    margin: 0 25px;
+  }
+
+  &__name {
+    @include Body-text-14;
+    color: #313237;
+  }
+
+  &__change-price-box {
+    display: inline-block;
+    position: absolute;
+    right: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  &__button {
+    width: 30px;
+    height: 30px;
+    font-size: 15px;
+    border: 1px solid #E2E6E9;
+  }
+
+  &__button--plus {
+    margin-right: 40px;
+  }
+
+  &__item-count {
+    @include Body-text-14;
+    color: #000;
+    margin: 0 12px;
+  }
+}
+
