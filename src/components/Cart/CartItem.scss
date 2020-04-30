@@ -4,8 +4,8 @@
   position: relative;
   padding: 30px 40px 25px;
 
-  &__delete {
-
+  &__delete:hover {
+    border: none;
   }
 
   &__image {

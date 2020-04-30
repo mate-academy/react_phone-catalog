@@ -6,7 +6,14 @@ import { CartItem } from './CartItem';
 import backArrow from '../../assets/images/icons/back-arrow.svg';
 
 export const Cart = (props) => {
-  const { addedPhones, totalPrice, itemPrice } = props;
+  const {
+    addedPhones,
+    totalPrice,
+    removePhone,
+    totalCount,
+    addQuantity,
+    substractQuantity,
+  } = props;
 
   return (
     <div className="cart">
@@ -33,7 +40,10 @@ export const Cart = (props) => {
                 >
                   <CartItem
                     {...phone}
-                    itemPrice={itemPrice}
+                    totalCount={totalCount}
+                    removePhone={removePhone}
+                    addQuantity={addQuantity}
+                    substractQuantity={substractQuantity}
                   />
                 </li>
               ))}
@@ -44,7 +54,7 @@ export const Cart = (props) => {
         <div className="cart__totalCount total">
           <h1 className="total__price">{`$${totalPrice}`}</h1>
           <p className="total__item-count">
-            {`Total for ${addedPhones.length} items`}
+            {`Total for ${totalCount} items`}
           </p>
           <div className="total__button-container">
             <button className="total__button" type="button">Checkout</button>
@@ -67,5 +77,8 @@ Cart.propTypes = {
     }).isRequired,
   ).isRequired,
   totalPrice: PropTypes.number.isRequired,
-  itemPrice: PropTypes.number.isRequired,
+  removePhone: PropTypes.func.isRequired,
+  totalCount: PropTypes.number.isRequired,
+  addQuantity: PropTypes.func.isRequired,
+  substractQuantity: PropTypes.func.isRequired,
 };

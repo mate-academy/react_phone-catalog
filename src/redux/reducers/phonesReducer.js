@@ -1,22 +1,22 @@
 /* eslint-disable no-case-declarations */
 import { getPhones } from '../../api/api';
-import { SET_PHONES, TOGGLE_IS_FETCHING, ADD_TO_CART } from './constants';
+import {
+  SET_PHONES,
+  TOGGLE_IS_FETCHING,
+  ADD_TO_CART,
+  REMOVE_FROM_CART,
+  ADD_QUANTITY,
+  SUBSTRACT_QUANTITY,
+} from './constants';
 import { setPhonesAC, toggleIsFetchingAC } from './actionCreators';
 
 const initialState = {
   phones: [],
   isFetching: false,
-  addedPhones: [
-    {
-      age: 0,
-      id: 'motorola-xoom-with-wi-fi',
-      imageUrl: 'img/phones/motorola-xoom-with-wi-fi.0.jpg',
-      name: 'Motorola XOOM™ with Wi-Fi',
-    },
-  ],
+  addedPhones: [],
   totalPrice: 0,
   itemPrice: 799,
-  price: 799,
+  totalCount: 0,
 };
 
 export const phonesReducer = (state = initialState, action) => {
@@ -33,13 +33,56 @@ export const phonesReducer = (state = initialState, action) => {
         isFetching: action.isFetching,
       };
     case ADD_TO_CART:
-      const addedPhone = state.phones.find(phone => phone.id === action.id);
+      const addedPhone = state.phones
+        .find(phone => phone.id === action.id);
+
+      addedPhone.quantity = 1;
+      addedPhone.price = 799;
 
       return {
         ...state,
         addedPhones: [...state.addedPhones, addedPhone],
-        totalPrice: state.totalPrice + state.price,
+        totalPrice: state.totalPrice + state.itemPrice,
+        totalCount: state.totalCount + 1,
       };
+
+    case REMOVE_FROM_CART:
+      const withoutRemovedPhone = state.addedPhones
+        .filter(phone => action.id !== phone.id);
+
+      return {
+        ...state,
+        addedPhones: withoutRemovedPhone,
+        totalPrice: state.totalPrice - state.itemPrice,
+        totalCount: state.totalCount - 1,
+      };
+
+    case ADD_QUANTITY:
+      const addedItem = state.addedPhones
+        .find(phone => phone.id === action.id);
+
+      addedItem.quantity += 1;
+      addedItem.price += 799;
+
+      return {
+        ...state,
+        totalPrice: state.totalPrice + state.itemPrice,
+        totalCount: state.totalCount + 1,
+      };
+
+    case SUBSTRACT_QUANTITY:
+      const substractItem = state.addedPhones
+        .find(phone => phone.id === action.id);
+
+      substractItem.quantity -= 1;
+      substractItem.price -= 799;
+
+      return {
+        ...state,
+        totalPrice: state.totalPrice - state.itemPrice,
+        totalCount: state.totalCount - 1,
+      };
+
     default:
       return state;
   }
