@@ -73,4 +73,5 @@ CartItem.propTypes = {
   quantity: PropTypes.number.isRequired,
   addQuantity: PropTypes.func.isRequired,
   substractQuantity: PropTypes.func.isRequired,
+  price: PropTypes.number.isRequired,
 };

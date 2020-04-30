@@ -1,12 +1,13 @@
 import React from 'react';
 import './Header.scss';
 import './Navigation.scss';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import favoriteIcon from '../../assets/images/icons/favorite-icon.svg';
-import searchIcon from '../../assets/images/icons/search-icon.svg';
 import basketIcon from '../../assets/images/icons/basket-icon.svg';
 
-export const Header = () => (
+const Header = (props) => (
   <header className="header">
     <div className="header__header-wrapper">
       <nav className="header__nav nav">
@@ -37,40 +38,9 @@ export const Header = () => (
               Phones
             </NavLink>
           </li>
-          <li className="nav__item">
-            <NavLink
-              className="nav__link"
-              to="/tablets"
-            >
-              Tablets
-            </NavLink>
-          </li>
-          <li className="nav__item">
-            <NavLink
-              className="nav__link"
-              to="/accessories"
-            >
-              Accessories
-            </NavLink>
-          </li>
         </ul>
       </nav>
       <div className="header__menu">
-        <label htmlFor="header-search" className="header__search-label">
-          <input
-            type="search"
-            id="header-search"
-            className="header__search-input"
-            placeholder="Search..."
-          />
-          <span className="header__search-icon-container">
-            <img
-              src={searchIcon}
-              alt="search icon"
-              className="header__search-icon"
-            />
-          </span>
-        </label>
         <button className="header__favorite" type="button">
           <img
             src={favoriteIcon}
@@ -86,9 +56,26 @@ export const Header = () => (
               alt="basket icon"
               className="header__basket-icon"
             />
+            {props.addedPhones.length
+              ? (
+                <div className="header__basket-count">
+                  {props.addedPhones.length}
+                </div>
+              )
+              : null}
           </button>
         </NavLink>
       </div>
     </div>
   </header>
 );
+
+const mapStateToProps = (state) => ({
+  addedPhones: state.phonesPage.addedPhones,
+});
+
+export default connect(mapStateToProps)(Header);
+
+Header.propTypes = {
+  addedPhones: PropTypes.arrayOf.isRequired,
+};

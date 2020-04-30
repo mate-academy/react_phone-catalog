@@ -1,4 +1,9 @@
 .content-wrapper {
-  max-width: 1200px;
+  position: absolute;
+  width: 100%;
+  //max-width: 1200px;
   margin: auto;
+  top: 65px;
+  left: 50%;
+  transform: translateX(-50%);
 }
