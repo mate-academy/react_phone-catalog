@@ -1,8 +1,9 @@
 @import '../../mixin.scss';
 
 .content-heading {
-  margin-left: 15px;
-  
+max-width: 1200px;
+margin: auto;
+
   &__title {
     margin-bottom: 8px;
   }
@@ -10,5 +11,24 @@
   &__count {
     @include Body-text-14;
     margin-bottom: 40px;
+  }
+}
+
+.phone {
+  &__navigation{
+    max-width: 1200px;
+    margin: 25px auto 40px;
+  }
+
+  &__back-arrow {
+    margin-right: 10px;
+  }
+
+  &__back-link {
+    @include Small-text-12;
+  }
+
+  &__back-link:hover {
+    color: #000;
   }
 }

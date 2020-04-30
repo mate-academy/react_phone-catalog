@@ -17,17 +17,25 @@
 
 
   &__logo {
+    position: relative;
     margin: 20px 80px 20px 25px;
   }
 
-  &__logo-heading {
-    font-size: 16px;
-    font-weight: 700;
+  &__logo-heading,
+  &__logo-underheading {
+    position: absolute;
+  }
 
+  &__logo-heading {
+    bottom: -4px;
+    font-size: 20px;
+    font-weight: 700;
   }
 
   &__logo-underheading {
-    font-size: 11px;
+    top: -5px;
+    font-size: 9px;
+    text-align: center;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.7px;

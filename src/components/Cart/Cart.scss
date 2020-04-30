@@ -2,8 +2,8 @@
 
 .cart {
   &__navigation{
-    margin-top: 40px;
-    margin-bottom: 15px;
+    max-width: 1200px;
+    margin: 40px auto 15px;
   }
 
   &__back-arrow {
@@ -19,12 +19,14 @@
   }
 
   &__heading {
-    margin-bottom: 25px;
+    max-width: 1200px;
+    margin: 0 auto 25px;
   }
 
   &__content {
     display: flex;
-
+    max-width: 1200px;
+    margin: auto;
   }
 
   &__list {

@@ -2,7 +2,10 @@
 
 .filter {
   display: flex;
-  margin: 0 0 25px 15px;
+  max-width: 1200px;
+  margin: 0 auto 25px;
+  padding: 0 15px;
+
 
   .search-form,
   .sort,
