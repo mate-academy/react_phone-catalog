@@ -44,13 +44,24 @@ export const CartItem = (props) => {
       <img src={imageUrl} alt="phone" className="cartItem__image" />
       <NavLink to={`/phones/${id}`} className="cartItem__name">{name}</NavLink>
       <div className="cartItem__change-price-box">
-        <button
-          className="cartItem__button cartItem__button--min"
-          type="button"
-          onClick={() => handleSubstractQuantity(id)}
-        >
-          -
-        </button>
+        {quantity === 1 ? (
+          <button
+            className="cartItem__button cartItem__button--disabled"
+            type="button"
+            disabled
+          >
+            -
+          </button>
+        ) : (
+          <button
+            className="cartItem__button cartItem__button--min"
+            type="button"
+            onClick={() => handleSubstractQuantity(id)}
+          >
+            -
+          </button>
+        )}
+
         <span className="cartItem__item-count">{quantity}</span>
         <button
           className="cartItem__button cartItem__button--plus"
@@ -59,8 +70,9 @@ export const CartItem = (props) => {
         >
           +
         </button>
-        <span className="cartItem__itemsPrice">{`$${price}`}</span>
       </div>
+      <h2 className="cartItem__itemsPrice">{`$${price}`}</h2>
+
     </div>
   );
 };

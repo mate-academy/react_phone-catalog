@@ -19,12 +19,20 @@
     color: #313237;
   }
 
-  &__change-price-box {
-    display: inline-block;
+  &__change-price-box,
+  &__itemsPrice {
     position: absolute;
-    right: 40px;
     top: 50%;
     transform: translateY(-50%);
+  }
+
+  &__change-price-box {
+    display: inline-block;
+    right: 140px;
+  }
+
+  &__itemsPrice {
+    right: 40px;
   }
 
   &__button {
@@ -36,6 +44,14 @@
 
   &__button--plus {
     margin-right: 40px;
+  }
+
+  &__button--disabled {
+    color: #E2E6E9;
+  }
+
+  &__button--disabled:hover {
+    border: 1px solid #E2E6E9;
   }
 
   &__item-count {
