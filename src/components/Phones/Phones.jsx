@@ -11,7 +11,7 @@ export const Phones = (props) => {
   return (
     <div className="content-heading">
       <div className="phone__navigation">
-        <NavLink to="/phones/" className="phone__back-link">
+        <NavLink to="/" className="phone__back-link">
           <img
             src={homeIcon}
             alt="back arrow navigation"

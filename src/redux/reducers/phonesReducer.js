@@ -47,14 +47,16 @@ export const phonesReducer = (state = initialState, action) => {
       };
 
     case REMOVE_FROM_CART:
+      const phoneToRemove = state.addedPhones
+        .find(phone => action.id === phone.id);
       const withoutRemovedPhone = state.addedPhones
         .filter(phone => action.id !== phone.id);
 
       return {
         ...state,
         addedPhones: withoutRemovedPhone,
-        totalPrice: state.totalPrice - state.itemPrice,
-        totalCount: state.totalCount - 1,
+        totalPrice: state.totalPrice - phoneToRemove.price,
+        totalCount: state.totalCount - phoneToRemove.quantity,
       };
 
     case ADD_QUANTITY:
