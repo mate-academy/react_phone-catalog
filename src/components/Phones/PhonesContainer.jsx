@@ -7,7 +7,9 @@ import { PhonesCatalog } from './PhonesCatalog';
 import { Preloader } from '../Common/Preloader/Preloader';
 import { Filter } from './Filter/Filter';
 import { phonesPropType } from '../../propTypesConstants';
-import { addToCartAC } from '../../redux/reducers/actionCreators';
+import {
+  addToCartAC, addToFavoritesAC,
+} from '../../redux/reducers/actionCreators';
 
 class PhonesContainer extends React.Component {
   state = {
@@ -54,7 +56,7 @@ class PhonesContainer extends React.Component {
 
   render() {
     const { query, select } = this.state;
-    const { phones, addToCart } = this.props;
+    const { phones, addToCart, addToFavorites } = this.props;
 
     const filteredPhones = this.getFilteredPhones(phones, query);
     const sortedPhones = this.getSortedPhones(filteredPhones, select);
@@ -72,6 +74,7 @@ class PhonesContainer extends React.Component {
         <PhonesCatalog
           phones={sortedPhones}
           addToCart={addToCart}
+          addToFavorites={addToFavorites}
         />
       </>
     );
@@ -86,6 +89,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   getPhonesThunk: () => dispatch(getPhonesThunkCreator()),
   addToCart: (id) => dispatch(addToCartAC(id)),
+  addToFavorites: (id) => dispatch(addToFavoritesAC(id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PhonesContainer);

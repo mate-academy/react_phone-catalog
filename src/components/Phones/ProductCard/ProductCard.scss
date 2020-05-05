@@ -60,6 +60,13 @@
     margin-right: 8px;
   }
 
+  &__add-to-cart--added {
+    font-weight: 600;
+    border: 1px solid #E2E6E9;
+    color: #27AE60;
+    background-color: #fff;
+  }
+
   &__favorite {
     width: 40px;
     border: 1px solid #b4bdc4;

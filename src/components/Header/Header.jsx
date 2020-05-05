@@ -41,14 +41,16 @@ const Header = (props) => (
         </ul>
       </nav>
       <div className="header__menu">
-        <button className="header__favorite" type="button">
-          <img
-            src={favoriteIcon}
-            alt="favorite icon"
-            className="header__favorite-icon"
-          />
-          {' '}
-        </button>
+        <NavLink to="/favorites">
+          <button className="header__favorite" type="button">
+            <img
+              src={favoriteIcon}
+              alt="favorite icon"
+              className="header__favorite-icon"
+            />
+            {' '}
+          </button>
+        </NavLink>
         <NavLink to="/basket">
           <button className="header__basket" type="button">
             <img

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { ProductCard } from './ProductCard/ProductCard';
 
 export const PhonesCatalog = (props) => {
-  const { phones, addToCart } = props;
+  const { phones, addToCart, addToFavorites } = props;
 
   return (
     <>
@@ -16,6 +16,7 @@ export const PhonesCatalog = (props) => {
               <ProductCard
                 {...phone}
                 addToCart={addToCart}
+                addToFavorites={addToFavorites}
               />
             </li>
           ))}

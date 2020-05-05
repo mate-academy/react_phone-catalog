@@ -5,9 +5,21 @@ import { NavLink } from 'react-router-dom';
 import favoriteIcon from '../../../assets/images/icons/favorite-icon.svg';
 
 export const ProductCard = (props) => {
-  const { imageUrl, name, id, snippet, addToCart } = props;
+  const {
+    imageUrl,
+    name,
+    id,
+    snippet,
+    addToCart,
+    addToFavorites,
+  } = props;
+
   const handleClick = (phoneId) => {
     addToCart(phoneId);
+  };
+
+  const handleFavoriteClick = (phoneId) => {
+    addToFavorites(phoneId);
   };
 
   return (
@@ -32,14 +44,28 @@ export const ProductCard = (props) => {
           <p className="card__snippet">{snippet}</p>
         </div>
         <div className="card__buttons">
+          {0 ? (
+            <button
+              className="card__add-to-cart card__add-to-cart--added"
+              type="button"
+              disabled
+            >
+              Added to cart
+            </button>
+          ) : (
+            <button
+              className="card__add-to-cart"
+              type="button"
+              onClick={() => handleClick(id)}
+            >
+              Add to cart
+            </button>
+          )}
           <button
-            className="card__add-to-cart"
+            className="card__favorite"
             type="button"
-            onClick={() => handleClick(id)}
+            onClick={() => handleFavoriteClick(id)}
           >
-            Add to cart
-          </button>
-          <button className="card__favorite" type="button">
             <img
               src={favoriteIcon}
               alt="favorite icon"
