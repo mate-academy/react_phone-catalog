@@ -1,9 +1,11 @@
 import React from 'react';
 import './Favorites.scss';
+import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import backArrow from '../../assets/images/icons/back-arrow.svg';
 import homeIcon from '../../assets/images/icons/home-icon.svg';
 import { ProductCard } from '../Phones/ProductCard/ProductCard';
+import { favoritePhonesPropType } from '../../propTypesConstants';
 
 export const Favorites = (props) => {
   const {
@@ -31,7 +33,9 @@ export const Favorites = (props) => {
           </NavLink>
         </div>
         <h1 className="content-heading__title">Favorites</h1>
-        <p className="content-heading__count">{`${favoritePhones.length} phones`}</p>
+        <p className="content-heading__count">
+          {`${favoritePhones.length} phones`}
+        </p>
       </div>
 
       <ul className="catalog__product-list">
@@ -48,4 +52,10 @@ export const Favorites = (props) => {
       </ul>
     </div>
   );
+};
+
+Favorites.propTypes = {
+  favoritePhones: favoritePhonesPropType.isRequired,
+  addToCart: PropTypes.func.isRequired,
+  addToFavorites: PropTypes.func.isRequired,
 };

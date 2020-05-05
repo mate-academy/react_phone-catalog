@@ -7,6 +7,7 @@ import {
   addQantityAC,
   substractQuantityAC,
 } from '../../redux/reducers/actionCreators';
+import { addedPhonesPropType } from '../../propTypesConstants';
 
 const CartContainer = (props) => {
   const {
@@ -45,18 +46,10 @@ const mapDispatchToProps = (dispatch) => ({
 export default connect(mapStateToProps, mapDispatchToProps)(CartContainer);
 
 CartContainer.propTypes = {
-  addedPhones: PropTypes.arrayOf(
-    PropTypes.shape({
-      age: PropTypes.number,
-      id: PropTypes.string,
-      imageUrl: PropTypes.string,
-      name: PropTypes.string,
-      snippet: PropTypes.string,
-    }).isRequired,
-  ).isRequired,
   totalPrice: PropTypes.number.isRequired,
   removePhone: PropTypes.func.isRequired,
   totalCount: PropTypes.number.isRequired,
   addQuantity: PropTypes.func.isRequired,
   substractQuantity: PropTypes.func.isRequired,
+  addedPhones: addedPhonesPropType.isRequired,
 };

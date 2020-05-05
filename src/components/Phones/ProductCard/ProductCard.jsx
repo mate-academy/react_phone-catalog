@@ -85,4 +85,5 @@ ProductCard.propTypes = {
   id: PropTypes.string.isRequired,
   snippet: PropTypes.string.isRequired,
   addToCart: PropTypes.func.isRequired,
+  addToFavorites: PropTypes.func.isRequired,
 };

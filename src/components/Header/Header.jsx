@@ -2,10 +2,13 @@ import React from 'react';
 import './Header.scss';
 import './Navigation.scss';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import favoriteIcon from '../../assets/images/icons/favorite-icon.svg';
 import basketIcon from '../../assets/images/icons/basket-icon.svg';
+import {
+  addedPhonesPropType,
+  favoritePhonesPropType,
+} from '../../propTypesConstants';
 
 const Header = (props) => (
   <header className="header">
@@ -48,7 +51,13 @@ const Header = (props) => (
               alt="favorite icon"
               className="header__favorite-icon"
             />
-            {' '}
+            {props.favoritePhones.length
+              ? (
+                <div className="header__basket-count">
+                  {props.favoritePhones.length}
+                </div>
+              )
+              : null}
           </button>
         </NavLink>
         <NavLink to="/basket">
@@ -74,10 +83,12 @@ const Header = (props) => (
 
 const mapStateToProps = (state) => ({
   addedPhones: state.phonesPage.addedPhones,
+  favoritePhones: state.phonesPage.favoritePhones,
 });
 
 export default connect(mapStateToProps)(Header);
 
 Header.propTypes = {
-  addedPhones: PropTypes.arrayOf.isRequired,
+  addedPhones: addedPhonesPropType.isRequired,
+  favoritePhones: favoritePhonesPropType.isRequired,
 };

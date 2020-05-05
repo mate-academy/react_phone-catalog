@@ -59,3 +59,23 @@ export const phonesPropType = PropTypes.arrayOf(
     snippet: PropTypes.string,
   }).isRequired,
 ).isRequired;
+
+export const addedPhonesPropType = PropTypes.arrayOf(
+  PropTypes.shape({
+    age: PropTypes.number,
+    id: PropTypes.string,
+    imageUrl: PropTypes.string,
+    name: PropTypes.string,
+    snippet: PropTypes.string,
+  }).isRequired,
+).isRequired;
+
+export const favoritePhonesPropType = PropTypes.arrayOf(
+  PropTypes.shape({
+    age: PropTypes.number,
+    id: PropTypes.string,
+    imageUrl: PropTypes.string,
+    name: PropTypes.string,
+    snippet: PropTypes.string,
+  }).isRequired,
+).isRequired;

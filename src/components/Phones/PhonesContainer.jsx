@@ -99,4 +99,5 @@ PhonesContainer.propTypes = {
   isFetching: PropTypes.bool.isRequired,
   phones: phonesPropType.isRequired,
   addToCart: PropTypes.func.isRequired,
+  addToFavorites: PropTypes.func.isRequired,
 };

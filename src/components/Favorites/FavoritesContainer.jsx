@@ -1,12 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Favorites } from './Favorites';
 import {
   addToFavoritesAC,
   addToCartAC,
 } from '../../redux/reducers/actionCreators';
+import { favoritePhonesPropType } from '../../propTypesConstants';
 
-const CartContainer = (props) => {
+const FavoritesContainer = (props) => {
   const {
     favoritePhones,
     addToFavorites,
@@ -33,4 +35,10 @@ const mapDispatchToProps = (dispatch) => ({
 
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(CartContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(FavoritesContainer);
+
+FavoritesContainer.propTypes = {
+  favoritePhones: favoritePhonesPropType.isRequired,
+  addToCart: PropTypes.func.isRequired,
+  addToFavorites: PropTypes.func.isRequired,
+};
