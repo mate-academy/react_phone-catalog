@@ -89,6 +89,53 @@
   }
 }
 
+@media screen
+  and (max-height: 420px) and (max-width: 820px) {
+  .cartCard {
+    width: 100%;
+
+  }
+}
+
+@media screen
+  and (max-width: 420px) and (max-height: 820px) {
+  .cartCard {
+    width: 100%;
+    margin: 0 auto 16px;
+
+    &__btn-delete {
+      margin: 4px 0 0 4px;
+      align-self: flex-start;
+    }
+
+    &__title {
+      width: 100%;
+      margin: 0 4px;
+      text-align: center;
+    }
+
+    &__controls {
+      flex-direction: column;
+      height: 80%;
+    }
+
+    &__price {
+      width: 64px;
+      margin-right: 8px;
+    }
+  }
+}
+
+@media screen and (min-width: 421px)
+  and (max-width: 1023px)
+  and (min-height: 420px)
+  and (max-height: 1024px) {
+  .cartCard {
+    width: 730px;
+    margin: 0 auto 16px;
+  }
+}
+
 @media screen and (min-width: 1024px) and (max-width: 1199px) {
   .cartCard {
     width: 555px;

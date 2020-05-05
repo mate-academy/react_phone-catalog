@@ -69,3 +69,19 @@
     }
   }
 }
+
+@media screen and (max-height: 824px) and (max-width: 420px) {
+  .footer {
+    &__logo-link {
+      display: none;
+    }
+
+    &__list {
+      max-width: 230px;
+    }
+
+    &__block {
+      max-width: 90px;
+    }
+  }
+}

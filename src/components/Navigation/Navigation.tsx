@@ -1,4 +1,4 @@
-import React, { FC, useCallback } from 'react';
+import React, { FC, useCallback, useState, useEffect } from 'react';
 import './_Navigation.scss';
 import debounce from 'lodash/debounce';
 import { connect } from 'react-redux';
@@ -30,6 +30,20 @@ const Navigation: FC<Props> = (props) => {
     cartTrigger,
   } = props;
 
+  const [toggle, setToggle] = useState(false);
+  const [width, setWidth] = useState(window.innerWidth);
+  const [mobView, setMobView] = useState(false);
+
+  const handleToggle = () => {
+    if (toggle === false) {
+      document.body.classList.add('blockScroll');
+      setToggle(true);
+    } else {
+      document.body.classList.remove('blockScroll');
+      setToggle(false);
+    }
+  };
+
   const searchWithDelay = useCallback(
     debounce(setQueryTemplate, 200),
     [],
@@ -41,11 +55,35 @@ const Navigation: FC<Props> = (props) => {
     searchWithDelay(value.toLowerCase());
   };
 
+  useEffect(() => {
+    function handleResize() {
+      setWidth(window.innerWidth);
+    }
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      document.body.classList.remove('blockScroll');
+    };
+  }, []);
+
+  useEffect(() => {
+    if (width < 1023) {
+      setMobView(true);
+    } else {
+      setMobView(false);
+    }
+  }, [width]);
+
   return (
     <nav className="nav">
-      <ul className={cx('nav__list-left', {
-        activeCart: cartTrigger === true,
-      })}
+      <ul
+        id="nav-left"
+        className={cx('nav__list-left', {
+          activeCart: cartTrigger === true && mobView !== true,
+          'nav__list-left--active': toggle === true,
+        })}
       >
         <li className="nav__item">
           <NavLink
@@ -133,6 +171,18 @@ const Navigation: FC<Props> = (props) => {
               <span className="nav__red-circle">{cart.length}</span>
             )}
           </NavLink>
+        </li>
+        <li className="nav__item-right nav__item-right--mobile">
+          <button
+            onClick={handleToggle}
+            type="button"
+            className={cx('nav__btn-mobile', {
+              'nav__btn-mobile--active': toggle === true,
+            })}
+          >
+            <div className="line" />
+            <div className="line" />
+          </button>
         </li>
       </ul>
     </nav>

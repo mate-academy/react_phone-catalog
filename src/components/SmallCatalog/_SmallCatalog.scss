@@ -85,6 +85,18 @@
   }
 }
 
+@media screen and (max-width: 420px) and (max-height: 824px) {
+  .smCatalog {
+    margin-top: 40px;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-height: 1024px) {
+  .smCatalog {
+    margin: 48px 0 32px;
+  }
+}
+
 @media screen and (min-width: 1024px) and (max-width: 1199px) {
   .smCatalog {
     margin: 48px 0 0;

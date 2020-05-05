@@ -37,6 +37,14 @@
   }
 }
 
+@media screen and (max-width: 420px) {
+  .filters {
+    &__filter {
+      width: 150px;
+    }
+  }
+}
+
 @media screen and (min-width: 1024px) and (max-width: 1199px) {
   .filters {
     margin-top: 16px;

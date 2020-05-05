@@ -1,12 +1,7 @@
 html {
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
   scroll-behavior: smooth;
 }
-/*
-html,
-body {
-  height: 100%;
-} */
 
 a,
 p,
@@ -33,9 +28,19 @@ body {
   margin: 0;
 }
 
+.blockScroll {
+  overflow: hidden;
+}
+
 .wrapper {
   width: 70%;
   margin: 0 auto;
+}
+
+@media screen and (max-width: 1023px) and (max-height: 1024px) {
+  .wrapper {
+    width: 95%;
+  }
 }
 
 @media screen and (min-width: 1024px) and (max-width: 1199px) {

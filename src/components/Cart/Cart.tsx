@@ -67,7 +67,7 @@ const Cart: FC<Props> = (props) => {
               </div>
               <button
                 type="button"
-                className="cart__btn-chechout"
+                className="cart__btn-checkout"
               >
                 Checkout
               </button>

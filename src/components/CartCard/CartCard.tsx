@@ -53,7 +53,7 @@ export const CartCard: FC<Props> = (props) => {
         }}
       />
       <img src={imgLink} alt="" className="cartCard__img" />
-      <Link to={`/phones/${id}`}>
+      <Link to={`/phones/${id}`} className="cartCard__link">
         <h3 className="cartCard__title">{id}</h3>
       </Link>
       <div className="cartCard__controls">
