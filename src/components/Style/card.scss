@@ -36,3 +36,45 @@
   grid-gap: 40px 0;
   justify-content: center;
 }
+
+.card-title {
+  font-weight: bold;
+  font-size: 32px;
+  color: #313237;
+  margin-top: 40px;
+}
+
+.route-page {
+  margin-top: 25px;
+
+  &__home {
+    margin-right: 14px;
+  }
+  &__arrow {
+    margin-right: 13px;
+  }
+
+  &__current {
+    font-weight: 600;
+    font-size: 12px;
+    color: #89939a;
+  }
+}
+
+.phones-quantity {
+  font-weight: 500;
+  font-size: 14px;
+  color: #89939a;
+  margin-top: 10px;
+}
+
+.sorted-box {
+  margin-top: 40px;
+
+  &__search {
+    width: 272px;
+    padding: 10px 20px;
+    border: 1px solid #b4bdc4;
+    box-sizing: border-box;
+  }
+}
