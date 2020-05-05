@@ -62,7 +62,7 @@ export const Phonescatalog: FC = () => {
             value={query}
             onChange={handleChange}
             className="sorted-box__search"
-            placeholder="Search..."
+            placeholder="Search phone..."
           />
         </div>
 
