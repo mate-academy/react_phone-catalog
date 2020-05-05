@@ -56,14 +56,14 @@ class PhonesContainer extends React.Component {
 
   render() {
     const { query, select } = this.state;
-    const { phones, addToCart, addToFavorites } = this.props;
+    const { phones, addToCart, addToFavorites, itemPrice } = this.props;
 
     const filteredPhones = this.getFilteredPhones(phones, query);
     const sortedPhones = this.getSortedPhones(filteredPhones, select);
 
     return (
       <>
-        <Phones phones={filteredPhones} />
+        <Phones phones={sortedPhones} />
         <Filter
           handleInput={this.handleInput}
           handleSelect={this.handleSelect}
@@ -75,6 +75,7 @@ class PhonesContainer extends React.Component {
           phones={sortedPhones}
           addToCart={addToCart}
           addToFavorites={addToFavorites}
+          itemPrice={itemPrice}
         />
       </>
     );
@@ -84,6 +85,7 @@ class PhonesContainer extends React.Component {
 const mapStateToProps = (state) => ({
   phones: state.phonesPage.phones,
   isFetching: state.phonesPage.isFetching,
+  itemPrice: state.phonesPage.itemPrice,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -100,4 +102,5 @@ PhonesContainer.propTypes = {
   phones: phonesPropType.isRequired,
   addToCart: PropTypes.func.isRequired,
   addToFavorites: PropTypes.func.isRequired,
+  itemPrice: PropTypes.number.isRequired,
 };

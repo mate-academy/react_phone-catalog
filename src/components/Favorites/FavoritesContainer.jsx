@@ -13,6 +13,7 @@ const FavoritesContainer = (props) => {
     favoritePhones,
     addToFavorites,
     addToCart,
+    itemPrice,
   } = props;
 
   return (
@@ -20,6 +21,7 @@ const FavoritesContainer = (props) => {
       favoritePhones={favoritePhones}
       addToFavorites={addToFavorites}
       addToCart={addToCart}
+      itemPrice={itemPrice}
     />
 
   );
@@ -27,6 +29,7 @@ const FavoritesContainer = (props) => {
 
 const mapStateToProps = (state) => ({
   favoritePhones: state.phonesPage.favoritePhones,
+  itemPrice: state.phonesPage.itemPrice,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -41,4 +44,5 @@ FavoritesContainer.propTypes = {
   favoritePhones: favoritePhonesPropType.isRequired,
   addToCart: PropTypes.func.isRequired,
   addToFavorites: PropTypes.func.isRequired,
+  itemPrice: PropTypes.number.isRequired,
 };

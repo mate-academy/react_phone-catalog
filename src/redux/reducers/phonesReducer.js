@@ -17,7 +17,7 @@ const initialState = {
   addedPhones: [],
   favoritePhones: [],
   totalPrice: 0,
-  itemPrice: 799,
+  itemPrice: 199,
   totalCount: 0,
 };
 
@@ -39,7 +39,7 @@ export const phonesReducer = (state = initialState, action) => {
         .find(phone => phone.id === action.id);
 
       addedPhone.quantity = 1;
-      addedPhone.price = 799;
+      addedPhone.price = 199;
 
       return {
         ...state,
@@ -66,7 +66,7 @@ export const phonesReducer = (state = initialState, action) => {
         .find(phone => phone.id === action.id);
 
       addedItem.quantity += 1;
-      addedItem.price += 799;
+      addedItem.price += 199;
 
       return {
         ...state,
@@ -79,7 +79,7 @@ export const phonesReducer = (state = initialState, action) => {
         .find(phone => phone.id === action.id);
 
       substractItem.quantity -= 1;
-      substractItem.price -= 799;
+      substractItem.price -= 199;
 
       return {
         ...state,

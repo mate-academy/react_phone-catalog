@@ -12,6 +12,7 @@ export const Favorites = (props) => {
     favoritePhones,
     addToFavorites,
     addToCart,
+    itemPrice,
   } = props;
 
   return (
@@ -46,6 +47,7 @@ export const Favorites = (props) => {
               {...favoritePhone}
               addToCart={addToCart}
               addToFavorites={addToFavorites}
+              itemPrice={itemPrice}
             />
           </li>
         ))}
@@ -58,4 +60,5 @@ Favorites.propTypes = {
   favoritePhones: favoritePhonesPropType.isRequired,
   addToCart: PropTypes.func.isRequired,
   addToFavorites: PropTypes.func.isRequired,
+  itemPrice: PropTypes.number.isRequired,
 };

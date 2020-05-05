@@ -22,6 +22,7 @@ class PhoneDetailsContainer extends React.Component {
         {this.props.isFetching ? <Preloader /> : null}
         <PhoneDetails
           details={this.props.details}
+          itemPrice={this.props.itemPrice}
         />
       </>
     );
@@ -31,6 +32,7 @@ class PhoneDetailsContainer extends React.Component {
 const mapStateToProps = (state) => ({
   details: state.phoneDetailsPage.details,
   isFetching: state.phoneDetailsPage.isFetching,
+  itemPrice: state.phonesPage.itemPrice,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -54,4 +56,5 @@ PhoneDetailsContainer.propTypes = {
   isFetching: PropTypes.bool.isRequired,
   getPhoneDetailsThunk: PropTypes.func.isRequired,
   details: phoneDetailsPropType.isRequired,
+  itemPrice: PropTypes.number.isRequired,
 };

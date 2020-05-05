@@ -2,9 +2,10 @@ import React from 'react';
 import './PhonesCatalog.scss';
 import PropTypes from 'prop-types';
 import { ProductCard } from './ProductCard/ProductCard';
+import { phonesPropType } from '../../propTypesConstants';
 
 export const PhonesCatalog = (props) => {
-  const { phones, addToCart, addToFavorites } = props;
+  const { phones, addToCart, addToFavorites, itemPrice } = props;
 
   return (
     <>
@@ -17,6 +18,7 @@ export const PhonesCatalog = (props) => {
                 {...phone}
                 addToCart={addToCart}
                 addToFavorites={addToFavorites}
+                itemPrice={itemPrice}
               />
             </li>
           ))}
@@ -27,14 +29,8 @@ export const PhonesCatalog = (props) => {
 };
 
 PhonesCatalog.propTypes = {
-  phones: PropTypes.arrayOf(
-    PropTypes.shape({
-      age: PropTypes.number,
-      id: PropTypes.string,
-      imageUrl: PropTypes.string,
-      name: PropTypes.string,
-      snippet: PropTypes.string,
-    }).isRequired,
-  ).isRequired,
+  phones: phonesPropType.isRequired,
   addToCart: PropTypes.func.isRequired,
+  addToFavorites: PropTypes.func.isRequired,
+  itemPrice: PropTypes.number.isRequired,
 };

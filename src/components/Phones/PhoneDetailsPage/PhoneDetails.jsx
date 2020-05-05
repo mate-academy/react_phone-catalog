@@ -5,10 +5,10 @@ import favoriteIcon from '../../../assets/images/icons/favorite-icon.svg';
 import './PhoneDetails.scss';
 import './slider.scss';
 import './order.scss';
-import { Slider } from '../PhoneDetailsPage/Slider';
+import { Slider } from './Slider';
 
 export const PhoneDetails = (props) => {
-  const { details } = props;
+  const { details, itemPrice } = props;
 
   if (details === null) {
     return null;
@@ -76,8 +76,8 @@ export const PhoneDetails = (props) => {
             </button>
           </div>
           <p className="order__price">
-            <span className="order__price-new">$799</span>
-            <span className="order__price-old">$899</span>
+            <span className="order__price-new">{`$${itemPrice}`}</span>
+            <span className="order__price-old">$299</span>
           </p>
           <div className="order__buttons">
             <button

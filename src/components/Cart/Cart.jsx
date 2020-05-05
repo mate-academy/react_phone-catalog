@@ -36,7 +36,7 @@ export const Cart = (props) => {
               {addedPhones.map(phone => (
                 <li
                   className="cart__item"
-                  key={phone.id}
+                  key={phone.age}
                 >
                   <CartItem
                     {...phone}

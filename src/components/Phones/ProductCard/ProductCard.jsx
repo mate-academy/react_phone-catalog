@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './ProductCard.scss';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import favoriteIcon from '../../../assets/images/icons/favorite-icon.svg';
+// eslint-disable-next-line max-len
+import favoriteIconActive from '../../../assets/images/icons/favorite-icon--active.svg';
 
 export const ProductCard = (props) => {
   const {
@@ -12,14 +14,20 @@ export const ProductCard = (props) => {
     snippet,
     addToCart,
     addToFavorites,
+    itemPrice,
   } = props;
+
+  const [inCart, setInCart] = useState(false);
+  const [favorite, setFavorite] = useState(false);
 
   const handleClick = (phoneId) => {
     addToCart(phoneId);
+    setInCart({ inCart: !inCart });
   };
 
   const handleFavoriteClick = (phoneId) => {
     addToFavorites(phoneId);
+    setFavorite({ favorite: !favorite });
   };
 
   return (
@@ -37,18 +45,17 @@ export const ProductCard = (props) => {
           {name}
         </NavLink>
         <p className="card__price">
-          <span className="card__price-new">$799</span>
-          <span className="card__price-old">$899</span>
+          <span className="card__price-new">{`$${itemPrice}`}</span>
+          <span className="card__price-old">$299</span>
         </p>
         <div className="card__product-details">
           <p className="card__snippet">{snippet}</p>
         </div>
         <div className="card__buttons">
-          {0 ? (
+          {inCart ? (
             <button
               className="card__add-to-cart card__add-to-cart--added"
               type="button"
-              disabled
             >
               Added to cart
             </button>
@@ -61,18 +68,32 @@ export const ProductCard = (props) => {
               Add to cart
             </button>
           )}
-          <button
-            className="card__favorite"
-            type="button"
-            onClick={() => handleFavoriteClick(id)}
-          >
-            <img
-              src={favoriteIcon}
-              alt="favorite icon"
-              className="card__favorite-icon"
-            />
-            {' '}
-          </button>
+          {favorite ? (
+            <button
+              className="card__favorite"
+              type="button"
+            >
+              <img
+                src={favoriteIconActive}
+                alt="favorite icon"
+                className="card__favorite-icon"
+              />
+              {' '}
+            </button>
+          ) : (
+            <button
+              className="card__favorite"
+              type="button"
+              onClick={() => handleFavoriteClick(id)}
+            >
+              <img
+                src={favoriteIcon}
+                alt="favorite icon"
+                className="card__favorite-icon"
+              />
+              {' '}
+            </button>
+          )}
         </div>
       </div>
     </>
@@ -86,4 +107,5 @@ ProductCard.propTypes = {
   snippet: PropTypes.string.isRequired,
   addToCart: PropTypes.func.isRequired,
   addToFavorites: PropTypes.func.isRequired,
+  itemPrice: PropTypes.number.isRequired,
 };
