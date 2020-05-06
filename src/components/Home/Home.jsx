@@ -1,5 +1,9 @@
 import React from 'react';
+import './Home.scss';
+import { Slider } from './Slider';
 
 export const Home = () => (
-  <h2>Home</h2>
+  <div className="home-container">
+    <Slider />
+  </div>
 );

@@ -17,17 +17,17 @@ export const ProductCard = (props) => {
     itemPrice,
   } = props;
 
-  const [inCart, setInCart] = useState(false);
-  const [favorite, setFavorite] = useState(false);
+  const [isInCart, setInCart] = useState(false);
+  const [isFavorite, setFavorite] = useState(false);
 
   const handleClick = (phoneId) => {
     addToCart(phoneId);
-    setInCart({ inCart: !inCart });
+    setInCart(!isInCart);
   };
 
   const handleFavoriteClick = (phoneId) => {
     addToFavorites(phoneId);
-    setFavorite({ favorite: !favorite });
+    setFavorite(!isFavorite);
   };
 
   return (
@@ -52,7 +52,7 @@ export const ProductCard = (props) => {
           <p className="card__snippet">{snippet}</p>
         </div>
         <div className="card__buttons">
-          {inCart ? (
+          {isInCart ? (
             <button
               className="card__add-to-cart card__add-to-cart--added"
               type="button"
@@ -68,7 +68,7 @@ export const ProductCard = (props) => {
               Add to cart
             </button>
           )}
-          {favorite ? (
+          {isFavorite ? (
             <button
               className="card__favorite"
               type="button"
