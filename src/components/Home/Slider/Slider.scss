@@ -1,30 +1,37 @@
-.slider-content {
-  width: 1130px;
-  height: 400px;
-  margin: 40px auto 0;
+.slider-container {
+  display: flex;
+  margin: 40px 30px 0;
+  overflow: hidden;
 
   &__btn {
     width: 30px;
+    height: 440px;
     border: 1px solid #B4BDC4;
-    transform: matrix(-1, 0, 0, 1, 0, 0);
   }
 
-  &__btn--back {
-    margin-right: 15px;
-  }
+  // &__btn--back {
+  //   margin-right: 15px;
+  // }
 
-  &__btn--next {
-    margin-left: 15px;
-  }
+  // &__btn--next {
+  //   margin-left: 15px;
+  // }
+}
 
-  &__btn,
-  &__img {
-    height: 100%;
-  }
+.slider {
+  display: flex;
+  width: 1040px;
+  height: 400px;
+  margin: 0 auto;
+  transition: 0.9s;
+}
 
+.slide {
   &__img {
     width: 1040px;
+    height: 100%;
     object-fit: cover;
+    transition: 0.5s;
   }
 }
 
@@ -45,7 +52,3 @@
     background: #313237;
   }
 }
-
-
-
-
