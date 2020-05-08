@@ -1,21 +1,26 @@
 .slider-container {
+  position: relative;
   display: flex;
-  margin: 40px 30px 0;
+  width: 1040px;
+  margin: 40px auto 0;
   overflow: hidden;
 
   &__btn {
+    position: absolute;
     width: 30px;
-    height: 440px;
+    height: 400px;
     border: 1px solid #B4BDC4;
   }
 
-  // &__btn--back {
-  //   margin-right: 15px;
-  // }
+  &__btn--back {
+    left: -45px;
 
-  // &__btn--next {
-  //   margin-left: 15px;
-  // }
+  }
+
+  &__btn--next {
+    right: -45px;
+    top: 0;
+  }
 }
 
 .slider {

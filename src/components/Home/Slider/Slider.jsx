@@ -11,6 +11,7 @@ import { Slide } from './Slide';
 export const Slider = () => {
   const sliderArr = [firstSlide, secondSlide, thirdSlide];
   const [x, setX] = useState(0);
+
   const goLeft = () => {
     x === 0 ? setX(-100 * (sliderArr.length - 1)) : setX(x + 100);
   };
@@ -21,15 +22,15 @@ export const Slider = () => {
 
   return (
     <>
-      <div className="slider-container">
-        <button
-          className="slider-container__btn slider-container__btn--back"
-          type="button"
-          onClick={goLeft}
-        >
-          <img src={backArrow} alt="back" />
-        </button>
+      <button
+        className="slider-container__btn slider-container__btn--back"
+        type="button"
+        onClick={goLeft}
+      >
+        <img src={backArrow} alt="back" />
+      </button>
 
+      <div className="slider-container">
         <div
           className="slider"
           style={{ transform: `translateX(${x}%)` }}
@@ -40,15 +41,14 @@ export const Slider = () => {
             </div>
           ))}
         </div>
-
-        <button
-          className="slider-container__btn slider-container__btn--next"
-          type="button"
-          onClick={goRight}
-        >
-          <img src={forvardArrow} alt="back" />
-        </button>
       </div>
+      <button
+        className="slider-container__btn slider-container__btn--next"
+        type="button"
+        onClick={goRight}
+      >
+        <img src={forvardArrow} alt="forvard" />
+      </button>
       <div className="dots">
         <button className="dots__btn" type="button" />
         <button className="dots__btn" type="button" />
