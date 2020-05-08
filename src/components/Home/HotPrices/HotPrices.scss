@@ -1,0 +1,25 @@
+.hotPrices {
+  margin: 100px 0 80px;
+  border: 1px solid seagreen;
+
+  &__heading {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+  }
+
+  &__btn {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #B4BDC4;
+  }
+
+  &__btn--left{
+    margin-right: 15px;
+  }
+
+  &__content {
+    height: 500px;
+    border: 1px solid khaki;
+  }
+}

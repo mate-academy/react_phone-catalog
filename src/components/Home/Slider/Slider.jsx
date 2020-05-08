@@ -49,11 +49,6 @@ export const Slider = () => {
       >
         <img src={forvardArrow} alt="forvard" />
       </button>
-      <div className="dots">
-        <button className="dots__btn" type="button" />
-        <button className="dots__btn" type="button" />
-        <button className="dots__btn" type="button" />
-      </div>
     </>
   );
 };
