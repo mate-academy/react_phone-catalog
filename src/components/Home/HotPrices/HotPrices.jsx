@@ -20,7 +20,7 @@ export const HotPrices = () => {
   return (
     <div className="hotPrices">
       <div className="hotPrices__heading">
-        <h1 className="hotPrices__title">Hot prices</h1>
+        <h1 className="hotPrices__title">Old-school</h1>
         <div>
           <button
             className="hotPrices__btn hotPrices__btn--left"
