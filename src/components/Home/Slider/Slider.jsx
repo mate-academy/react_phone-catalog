@@ -4,12 +4,18 @@ import './Slider.scss';
 import firstSlide from '../../../assets/images/photos/slider/slider-1.jpg';
 import secondSlide from '../../../assets/images/photos/slider/slider-2.jpg';
 import thirdSlide from '../../../assets/images/photos/slider/slider-3.jpg';
+import fourthSlide from '../../../assets/images/photos/slider/slider-4.jpg';
 import backArrow from '../../../assets/images/icons/back-arrow.svg';
 import forvardArrow from '../../../assets/images/icons/forvard-arrow.svg';
 import { Slide } from './Slide';
 
 export const Slider = () => {
-  const sliderArr = [firstSlide, secondSlide, thirdSlide];
+  const sliderArr = [
+    firstSlide,
+    secondSlide,
+    thirdSlide,
+    fourthSlide,
+  ];
   const [x, setX] = useState(0);
 
   const goLeft = () => {

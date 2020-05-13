@@ -11,4 +11,8 @@ body {
   font-family: "Montserrat", sans-serif;
 }
 
-
+.app-wrapper {
+  width: auto;
+  display: flex;
+  flex-direction: column;
+}

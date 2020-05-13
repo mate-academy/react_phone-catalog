@@ -11,7 +11,9 @@ import FavoritesContainer from '../Favorites/FavoritesContainer';
 
 export const MainContent = () => {
   return (
-    <div className="content-wrapper">
+    <main
+      className="main-content__content-wrapper content-wrapper"
+    >
       <Switch>
         <Route
           path="/"
@@ -39,6 +41,6 @@ export const MainContent = () => {
           component={PageNotFound}
         />
       </Switch>
-    </div>
+    </main>
   );
 };

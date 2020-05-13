@@ -18,3 +18,13 @@ color: #89939A;
   line-height: 15px;
   color: #89939A;
 }
+
+@mixin logo-underheading {
+  font-size: 9px;
+    text-align: center;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+    color: #89939A;
+    text-align: center;
+}

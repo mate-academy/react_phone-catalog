@@ -1,0 +1,68 @@
+@import '../../mixin.scss';
+
+.footer {
+  width: 100%;
+  height: 100px;
+  box-shadow: 0px -1px 0px #E2E6E9;
+}
+
+.footer-wrapper {
+  display: flex;
+  justify-content: space-around;
+  max-width: 1440px;
+  height: 100px;
+  margin: auto;
+  box-shadow: 0px -1px 0px #E2E6E9;
+
+  &__logo {
+    position: relative;
+    width: 100px;
+    margin-left: -20px;
+  }
+
+  &__logo-heading,
+  &__logo-underheading {
+    position: absolute;
+  }
+
+  &__logo-heading {
+    bottom: 30px;
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  &__logo-underheading {
+    top: 35px;
+    @include logo-underheading;
+  }
+
+  &__home {
+    @include Small-text-12;
+    margin-top: 35px;
+  }
+
+  &__home-btn {
+    width: 30px;
+    height: 30px;
+    margin-left: 15px;
+    border: 1px solid #B4BDC4;
+  }
+}
+
+.contacts {
+  &__github,
+  &__linkedIn {
+    display: inline-block;
+    font-weight: bold;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #89939A;
+    margin-top: 45px;
+  }
+
+  &__linkedIn {
+    margin-left: 65px;
+  }
+}
+

@@ -1,9 +1,11 @@
-.content-wrapper {
-  position: absolute;
+.main-content {
   width: 100%;
-  //max-width: 1200px;
-  margin: auto;
-  top: 65px;
-  left: 50%;
-  transform: translateX(-50%);
+  margin: 40px auto 0;
+
+  &__content-wrapper {
+    max-width: 1200px;
+    margin: 65px auto 0;
+  }
 }
+
+

@@ -13,12 +13,14 @@ import {
 const Header = (props) => (
   <header className="header">
     <div className="header__header-wrapper">
+
       <nav className="header__nav nav">
         <a
           className="header__logo"
           href="https://www.youtube.com/watch?v=fHiGbolFFGw"
           target="_blank"
           rel="noopener noreferrer"
+          name="top"
         >
           <p className="header__logo-heading">Android</p>
           <p className="header__logo-underheading">paranoid</p>
