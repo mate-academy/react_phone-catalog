@@ -1,9 +1,22 @@
-import React from 'react';
+/* eslint-disable react/no-array-index-key */
+import React, { useState, useEffect } from 'react';
 import './HotPrices.scss';
 import leftArrow from '../../../assets/images/icons/back-arrow.svg';
 import rightArrow from '../../../assets/images/icons/forvard-arrow.svg';
+import { getPhones } from '../../../api/api';
+import { ProductCard } from '../../Phones/ProductCard/ProductCard';
 
 export const HotPrices = () => {
+  const [phones, setPhones] = useState([]);
+
+  useEffect(() => {
+    getPhones()
+      .then(data => setPhones(data));
+  }, []);
+
+  const hotPrices = phones.slice(5, 15);
+  const price = 199;
+
   return (
     <div className="hotPrices">
       <div className="hotPrices__heading">
@@ -31,9 +44,16 @@ export const HotPrices = () => {
           </button>
         </div>
       </div>
-      <div className="hotPrices__content">
-        hot price content
-      </div>
+      <ul className="hotPrices__list">
+        {hotPrices.map((phone, index) => (
+          <li className="hotPrices__item" key={index}>
+            <ProductCard
+              {...phone}
+              itemPrice={price}
+            />
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };

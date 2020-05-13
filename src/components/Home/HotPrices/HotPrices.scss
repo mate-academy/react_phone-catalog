@@ -1,6 +1,5 @@
 .hotPrices {
   margin: 100px 0 80px;
-  border: 1px solid seagreen;
 
   &__heading {
     display: flex;
@@ -18,8 +17,16 @@
     margin-right: 15px;
   }
 
-  &__content {
-    height: 500px;
-    border: 1px solid khaki;
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    height: 570px;
+    overflow: hidden;
+  }
+
+  &__item {
+    display: inline-block;
+    margin-right: 13px;
+    border: 1px solid #E2E6E9;
   }
 }

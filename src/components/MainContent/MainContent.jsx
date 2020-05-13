@@ -1,7 +1,7 @@
 import React from 'react';
 import './MainContent.scss';
 import { Route, Switch } from 'react-router-dom';
-import { HomeContainer } from '../Home/HomeContainer';
+import { Home } from '../Home/Home';
 import { PageNotFound } from '../PageNotFound/PageNotFound';
 import PhonesContainer from '../Phones/PhonesContainer';
 // eslint-disable-next-line max-len
@@ -17,7 +17,7 @@ export const MainContent = () => {
       <Switch>
         <Route
           path="/"
-          component={HomeContainer}
+          component={Home}
           exact
         />
         <Route
