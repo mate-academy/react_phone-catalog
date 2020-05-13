@@ -1,10 +1,11 @@
 /* eslint-disable react/no-array-index-key */
 import React, { useState } from 'react';
 import './Slider.scss';
-import firstSlide from '../../../assets/images/photos/slider/slider-1.jpg';
+import firstSlide from '../../../assets/images/photos/slider/rsz_slider-1.jpg';
 import secondSlide from '../../../assets/images/photos/slider/slider-2.jpg';
 import thirdSlide from '../../../assets/images/photos/slider/slider-3.jpg';
 import fourthSlide from '../../../assets/images/photos/slider/slider-4.jpg';
+import fifthSlide from '../../../assets/images/photos/slider/slider-5.jpg';
 import backArrow from '../../../assets/images/icons/back-arrow.svg';
 import forvardArrow from '../../../assets/images/icons/forvard-arrow.svg';
 import { Slide } from './Slide';
@@ -14,6 +15,7 @@ export const Slider = () => {
     firstSlide,
     secondSlide,
     thirdSlide,
+    fifthSlide,
     fourthSlide,
   ];
   const [x, setX] = useState(0);
