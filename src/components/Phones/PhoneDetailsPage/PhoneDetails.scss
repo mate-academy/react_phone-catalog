@@ -4,6 +4,50 @@
   max-width: 1200px;
   margin: auto;
 
+  &__navigation{
+    max-width: 1200px;
+    margin: 25px auto 40px;
+  }
+
+  &__forward-arrow {
+    margin: 0 10px;
+  }
+
+  &__forward-link {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: #313237;
+  }
+
+  &__nav-title {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: #89939A;
+  }
+
+  &__forward-link:hover {
+    color: #000;
+  }
+
+  &__back-nav{
+    max-width: 1200px;
+    margin: 0 0 15px;
+  }
+
+  &__back-arrow {
+    margin-right: 10px;
+  }
+
+  &__back-link {
+    @include Small-text-12;
+  }
+
+  &__back-link:hover {
+    color: #000;
+  }
+
   &__title {
     margin-bottom: 40px;
   }
@@ -11,12 +55,16 @@
   &__heading {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 80px;
+    margin-bottom: 70px;
   }
 
   &__slider,
   &__order {
     width: 560px;
+  }
+
+  &__slider {
+    margin-right: 75px;
   }
 
   &__about {
@@ -49,6 +97,7 @@
 }
 
 .tech-specs {
+  padding-left: 75px;
   margin-bottom: 25px;
 }
 

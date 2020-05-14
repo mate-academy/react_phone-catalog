@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
 import { phoneDetailsPropType } from '../../../propTypesConstants';
 import { PageNotFound } from '../../PageNotFound/PageNotFound';
 import favoriteIcon from '../../../assets/images/icons/favorite-icon.svg';
@@ -7,6 +8,9 @@ import './PhoneDetails.scss';
 import './slider.scss';
 import './order.scss';
 import { Slider } from './Slider';
+import backArrow from '../../../assets/images/icons/back-arrow.svg';
+import homeIcon from '../../../assets/images/icons/home-icon.svg';
+import forwardArrow from '../../../assets/images/icons/forvard-arrow.svg';
 
 export const PhoneDetails = (props) => {
   const { details, itemPrice } = props;
@@ -21,7 +25,43 @@ export const PhoneDetails = (props) => {
 
   return (
     <div className="phoneDetails">
-      <p>PhonesDetails</p>
+
+      <div className="content-heading">
+        <div className="phoneDetails__navigation">
+          <NavLink to="/" className="phoneDetails__forward-link">
+            <img
+              src={homeIcon}
+              alt="home link navigation"
+              className="phoneDetails__home-link"
+            />
+          </NavLink>
+          <img
+            src={forwardArrow}
+            alt="forward arrow navigation"
+            className="phoneDetails__forward-arrow"
+          />
+          <NavLink to="/phones" className="phoneDetails__forward-link">
+            <span className="phoneDetails__forward-link">Phones</span>
+          </NavLink>
+          <img
+            src={forwardArrow}
+            alt="forward arrow navigation"
+            className="phoneDetails__forward-arrow"
+          />
+          <span className="phoneDetails__nav-title">{details.name}</span>
+        </div>
+        <div className="phoneDetails__back-nav">
+          <NavLink to="/phones/" className="phoneDetails__back-link">
+            <img
+              src={backArrow}
+              alt="back arrow navigation"
+              className="phoneDetails__back-arrow"
+            />
+            <span className="phoneDetails__back-link">Back</span>
+          </NavLink>
+        </div>
+      </div>
+
       <h1 className="phoneDetails__title">{details.name}</h1>
       <div className="phoneDetails__heading">
         <Slider details={details} />

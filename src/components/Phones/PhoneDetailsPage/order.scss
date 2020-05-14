@@ -1,6 +1,7 @@
 @import "../../../mixin.scss";
 
 .order {
+  padding-left: 75px;
   &__colors-heading,
   &__capacity-heading {
     @include small-text;
@@ -108,12 +109,6 @@
   &__product-details {
     max-width: 320px;
   }
-}
-
-.product-details {
-&__value {
-  color: green;
-}
 }
 
 .colors__button--1 {

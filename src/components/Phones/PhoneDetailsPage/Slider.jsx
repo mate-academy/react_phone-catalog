@@ -18,7 +18,7 @@ export const Slider = (props) => {
   return (
     <div className="phoneDetails__slider slider">
       <ul className="slider__list">
-        {details.images.map(img => (
+        {details.images.slice(0, 5).map(img => (
           <li
             key={img}
             className="slider__item"
