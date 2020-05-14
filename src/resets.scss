@@ -37,6 +37,7 @@ li {
 button {
   border: none;
   background-color: #fff;
+
 }
 
 button:hover {
@@ -49,4 +50,10 @@ a:active,
 a:focus {
   text-decoration: unset;
   color: black;
+
+}
+
+a:focus,
+button:focus {
+  outline: 1px solid black;
 }
