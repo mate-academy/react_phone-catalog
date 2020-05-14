@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { phoneDetailsPropType } from '../../../propTypesConstants';
 import { PageNotFound } from '../../PageNotFound/PageNotFound';
 import favoriteIcon from '../../../assets/images/icons/favorite-icon.svg';
@@ -111,7 +112,7 @@ export const PhoneDetails = (props) => {
             <p className="product-details">
               <span className="product-details__title">Processor</span>
               <span className="product-details__value">
-                {details.hardware.cpu}
+                {details.hardware.cpu.slice(-30)}
               </span>
             </p>
             <p className="product-details">
@@ -172,7 +173,7 @@ export const PhoneDetails = (props) => {
           <p className="product-details">
             <span className="product-details__title">Cell</span>
             <span className="product-details__value">
-              {details.connectivity.cell}
+              {details.connectivity.cell.slice(0, 50)}
             </span>
           </p>
         </div>
@@ -183,4 +184,5 @@ export const PhoneDetails = (props) => {
 
 PhoneDetails.propTypes = {
   details: phoneDetailsPropType.isRequired,
+  itemPrice: PropTypes.number.isRequired,
 };

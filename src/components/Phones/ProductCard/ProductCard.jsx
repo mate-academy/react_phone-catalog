@@ -33,15 +33,16 @@ export const ProductCard = (props) => {
   return (
     <>
       <div className="card">
-        <img
-          src={imageUrl}
-          alt="/"
-          className="card__product-img"
-        />
         <NavLink
           to={`/phones/${id}`}
           className="card__link"
         >
+          <img
+            src={imageUrl}
+            alt="/"
+            className="card__product-img"
+          />
+
           {name}
         </NavLink>
         <p className="card__price">

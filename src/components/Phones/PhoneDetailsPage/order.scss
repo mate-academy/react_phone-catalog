@@ -110,6 +110,12 @@
   }
 }
 
+.product-details {
+&__value {
+  color: green;
+}
+}
+
 .colors__button--1 {
   background-color: #5F7170;
 }
