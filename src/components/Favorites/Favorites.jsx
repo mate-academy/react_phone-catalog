@@ -42,7 +42,7 @@ export const Favorites = (props) => {
       <ul className="catalog__product-list">
 
         {favoritePhones.map(favoritePhone => (
-          <li key={favoritePhone.age} className="catalog__product-item">
+          <li  className="catalog__product-item">
             <ProductCard
               {...favoritePhone}
               addToCart={addToCart}
