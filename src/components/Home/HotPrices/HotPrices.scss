@@ -4,7 +4,7 @@
   &__heading {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
   }
 
   &__btn {
@@ -20,8 +20,9 @@
   &__list {
     display: flex;
     justify-content: space-between;
-    height: 570px;
+    height: 560px;
     overflow: hidden;
+    transition: 0.9s;
   }
 
   &__item {
