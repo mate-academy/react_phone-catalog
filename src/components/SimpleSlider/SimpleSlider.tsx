@@ -1,5 +1,6 @@
 import React from 'react';
 import Slider from 'react-slick';
+import { NavLink } from 'react-router-dom';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './SimpleSlider.css';
@@ -51,13 +52,15 @@ export const SimpleSlider = () => {
             alt="slider_img"
           />
         </div>
-        <div>
+        <NavLink
+          to="/phones/"
+        >
           <img
             className="slider__image"
             src="./img/slider_image6.jpg"
             alt="slider_img"
           />
-        </div>
+        </NavLink>
       </Slider>
     </div>
   );
