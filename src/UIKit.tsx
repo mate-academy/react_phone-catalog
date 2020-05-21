@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import cn from 'classnames'
+import cn from 'classnames';
 
 export const UIKit = () => {
   const selectValue = ['one', 'two', 'three', 'four', 'five'];
@@ -173,7 +173,7 @@ export const UIKit = () => {
               "Icon__image--inactive": true,
               "Icon__image--arrow-down": true,
               "Select__arrow": true,
-              "Select__arrow--opened": isOpen
+              "Select__arrow--opened": isOpen,
             })}
             />
           </span>
