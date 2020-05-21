@@ -178,26 +178,23 @@ export const UIKit = () => {
             />
           </span>
         </div>
-        <div className={cn({
+        <ul className={cn({
           "Select__list": true,
           "Select__list--opened": isOpen,
-        })}
-        >
-          <ul>
-            {selectValue.map(value => (
-              value !== currentValue && (
-                <li
-                  key={value}
-                  className="Select__item"
-                  onClick={() => chooseSelectValue(value)}
-                >
-                  {value}
-                </li>
-              )
+        })}>
+          {selectValue.map(value => (
+            value !== currentValue && (
+              <li
+                key={value}
+                className="Select__item"
+                onClick={() => chooseSelectValue(value)}
+              >
+                {value}
+              </li>
             )
-            )}
-          </ul>
-        </div>
+          )
+          )}
+        </ul>
       </div>
 
     </div>
