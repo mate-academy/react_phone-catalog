@@ -1,0 +1,12 @@
+
+.Nav {
+
+  &__list {
+    display: flex;
+    list-style: none;
+  }
+
+  &__link {
+    margin: 10px 20px;
+  }
+}

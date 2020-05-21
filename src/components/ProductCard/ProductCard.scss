@@ -1,0 +1,90 @@
+@import "../../mixins.scss";
+
+.ProductCard {
+
+  width: 272px;
+  height: 507px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+
+  background-color: white;
+  border: 1px solid #e2e6e9;
+  box-sizing: border-box;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+
+  &__img {
+    width: 208px;
+    height: 208px;
+    margin: 8px 8px 24px;
+  }
+
+  &__title {
+    @include body-text;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__price-wrapper {
+    border-bottom: 1px solid #e2e6e9;
+    margin-bottom: 16px;
+    padding: 6px 0;
+  }
+
+  &__price {
+    @include h2;
+    margin-right: 8px;
+
+    &--old {
+      text-decoration: line-through;
+      color: #89939a;
+    }
+
+  }
+
+  &__feature {
+    margin: 8px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    @include small-text;
+
+    &--title {
+      margin: 0;
+      color: #89939a;
+    }
+
+    &--value {
+      margin: 0;
+      color: #313237;
+    }
+  }
+
+  &__buttons-wrapper {
+    margin-top: 8px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__add-to-cart {
+    padding: 0;
+    @include buttons;
+    background-color: #313237;
+    height: 40px;
+    width: 176px;
+    border: none;
+  }
+
+  &__add-to-fav {
+    padding: 0;
+    height: 40px;
+    width: 40px;
+    background-image: url("../../imgs/Icons/heart.png");
+    background-position: center;
+
+    background-repeat: no-repeat;
+    background-color: white;
+    border: 1px solid #b4bdc4;
+
+  }
+}

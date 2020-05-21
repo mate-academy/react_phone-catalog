@@ -1,0 +1,35 @@
+@import "./fonst.scss";
+
+@mixin body-text {
+  font-family: Mont, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  color: #313237;
+}
+@mixin buttons {
+  font-family: Mont, sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: white;
+}
+
+@mixin small-text {
+  font-family: Mont, sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  color: #313237;
+}
+
+
+@mixin h2 {
+  font-family: Mont, sans-serif;
+  font-weight: bolder;
+  font-size: 22px;
+  line-height: 140%;
+}
