@@ -91,7 +91,13 @@ $color-red: #eb5757;
   margin: -1px;
 }
 
-html, body, ul, h1, h2, h3, li {
+html,
+body,
+ul,
+h1,
+h2,
+h3,
+li {
   margin: 0;
   padding: 0;
 }
@@ -252,7 +258,7 @@ h3 {
 
     &:hover,
     &:focus {
-      box-shadow: 0px 3px 13px rgba(23, 32, 49, 0.26);
+      box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
     }
   }
 
@@ -418,7 +424,7 @@ h3 {
     outline: none;
 
     &:focus {
-      box-shadow: -1px 0px 0px #E2E6E9;
+      box-shadow: -1px 0 0 #e2e6e9;
     }
 
     &::placeholder {
@@ -456,7 +462,7 @@ h3 {
     transform: translate(0, -50%);
     transition: 0.3s;
     transform-origin: center;
-
+    background-color: rgb(133, 133, 133);
     &--opened {
       top: 30%;
       transform: rotate(-180deg);
@@ -468,7 +474,7 @@ h3 {
     background: #fff;
     border: 1px solid #e2e6e9;
     box-sizing: border-box;
-    box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
     padding: 8px 0;
     transform: translateY(-50px), scale(-0.5, 1);
     transition: all 0.5s;
