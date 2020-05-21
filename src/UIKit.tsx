@@ -190,8 +190,8 @@ export const UIKit = () => {
                   key={value}
                   className="Select__item"
                   onClick={() => chooseSelectValue(value)}
-                >{
-                    value}
+                >
+                  {value}
                 </li>
               )
             )
