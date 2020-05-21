@@ -1,0 +1,17 @@
+@import '../../App.scss';
+
+.Header {
+  display: grid;
+  grid-template-columns: max-content 1fr max-content max-content max-content;
+  align-items: center;
+  box-shadow: 0 1px 0 $color-elements;
+
+  &__Button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 3.5rem;
+    height: 3.5rem;
+    box-shadow: -1px 0px 0px $color-elements;
+  }
+}

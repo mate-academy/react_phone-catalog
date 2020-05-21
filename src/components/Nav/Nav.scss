@@ -1,0 +1,11 @@
+@import '../../App.scss';
+
+.Nav {
+  &__List {
+    display: flex;
+  }
+
+  &__Item {
+    list-style: none;
+  }
+}
