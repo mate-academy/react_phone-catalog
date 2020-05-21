@@ -3,30 +3,14 @@ import { NavLink } from 'react-router-dom';
 
 import './Nav.scss';
 
-const sectionLinks: SectionLink[] = [
-  {
-    name: 'Home',
-    url: '/',
-    exact: true,
-  },
-  {
-    name: 'Phones',
-    url: '/phones',
-  },
-  {
-    name: 'Tablets',
-    url: '/tablets',
-  },
-  {
-    name: 'Accessories',
-    url: '/accessories',
-  },
-];
+type Props = {
+  links: Link[];
+};
 
-export const Nav = () => (
+export const Nav: React.FC<Props> = ({ links }) => (
   <nav className="Nav">
     <ul className="Nav__List">
-      {sectionLinks.map(({ name, url, exact }) => (
+      {links.map(({ name, url, exact }) => (
         <li className="Nav__Item">
           <NavLink
             to={url}
