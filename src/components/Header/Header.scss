@@ -1,17 +1,22 @@
-@import '../../App.scss';
-
 .Header {
   display: grid;
   grid-template-columns: max-content 1fr max-content max-content max-content;
   align-items: center;
-  box-shadow: 0 1px 0 $color-elements;
+  height: 3.5rem;
+  box-sizing: border-box;
+  border-bottom: 1px solid #e2e6e9;
+
+  &__Logo {
+    margin: 0 1.5rem;
+  }
 
   &__Button {
     display: flex;
     justify-content: center;
     align-items: center;
+    box-sizing: border-box;
     width: 3.5rem;
     height: 3.5rem;
-    box-shadow: -1px 0px 0px $color-elements;
+    border-left: 1px solid #e2e6e9;
   }
 }

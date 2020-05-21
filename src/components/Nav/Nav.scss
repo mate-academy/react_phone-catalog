@@ -1,11 +1,79 @@
-@import '../../App.scss';
+@mixin hoverAndFocus($_heightLine, $_beforeColor, $_afterColor) {
+  position: relative;
+  transition: all 0.6s;
+  outline: none;
+
+  &:before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 0;
+    height: $_heightLine;
+    background: $_beforeColor;
+    transition: all 0.3s;
+  }
+
+  &:hover,
+  &:focus {
+    &:before {
+      left: 0;
+      width: 100%;
+      background: $_afterColor;
+    }
+  }
+}
+
+%uppercase {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
 
 .Nav {
+  height: 100%;
+
   &__List {
     display: flex;
+    align-items: stretch;
+    height: 100%;
   }
 
   &__Item {
     list-style: none;
+    margin-left: 4rem;
+  }
+
+  &__Link {
+    @extend %uppercase;
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    align-content: center;
+    color: #89939a;
+    text-decoration: none;
+    @include hoverAndFocus(3px, #313237, #313237);
+
+    &:hover,
+    &:focus {
+      color: #313237;
+    }
+
+    &--active {
+      color: #313237;
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        display: block;
+        width: 100%;
+        height: 3px;
+        background-color: #313237;
+      }
+    }
   }
 }

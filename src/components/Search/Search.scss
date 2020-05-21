@@ -1,0 +1,43 @@
+.Search {
+  height: 100%;
+  border-left: 1px solid #e2e6e9;
+
+  &__Label {
+    position: relative;
+    display: block;
+    height: 100%;
+  }
+
+  &__Input {
+    position: relative;
+    box-sizing: border-box;
+    height: 99%;
+    padding: 0 2.5rem 0 1.5rem;
+    border: 1px transparent;
+    color: #313237;
+    transition: box-shadow 0.3s;
+    outline: none;
+
+    &::placeholder {
+      color: #b4bdc4;
+    }
+  }
+
+  &__Button {
+    position: absolute;
+    top: 0;
+    right: 1rem;
+    display: block;
+    width: 1.5rem;
+    height: 100%;
+    mask-image: url(../../images/icons/search.svg);
+    mask-position: center;
+    mask-repeat: no-repeat;
+    background-color: #313237;
+    cursor: pointer;
+
+    &--clear {
+      mask-image: url(../../images/icons/close.svg);
+    }
+  }
+}

@@ -34,6 +34,32 @@ $color-red: #eb5757;
   font-style: normal;
 }
 
+@mixin hoverAndFocus($_heightLine, $_beforeColor, $_afterColor) {
+  position: relative;
+  transition: all 0.6s;
+  outline: none;
+
+  &:before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 0;
+    height: $_heightLine;
+    background: $_beforeColor;
+    transition: all 0.3s;
+  }
+
+  &:hover,
+  &:focus {
+    &:before {
+      left: 0;
+      width: 100%;
+      background: $_afterColor;
+    }
+  }
+}
+
 %h1 {
   font-size: 32px;
   font-weight: 600;
@@ -60,6 +86,7 @@ $color-red: #eb5757;
   font-weight: 600;
   line-height: 11px;
   letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 %buttons {
@@ -99,7 +126,7 @@ html, body, ul, h1, h2, h3, li {
 html {
   font-size: 16px;
   font-family: "Mont", sans-serif;
-  color: $color-primary;
+  color: #313237;
 }
 
 body {
@@ -147,10 +174,10 @@ h3 {
     width: 1rem;
     mask-position: center;
     mask-repeat: no-repeat;
-    background-color: $color-primary;
+    background-color: #313237;
 
     &--inactive {
-      background-color: $color-elements;
+      background-color: #e2e6e9;
     }
 
     &--home {
@@ -171,7 +198,7 @@ h3 {
 
     &--favorites-filled {
       mask-image: url(./images/icons/favorites-filled.svg);
-      background-color: $color-red;
+      background-color: #eb5757;
     }
 
     &--minus {
@@ -212,14 +239,14 @@ h3 {
     align-items: center;
     width: 1rem;
     height: 1rem;
-    color: $color-white;
+    color: #fff;
     font-weight: 600;
     font-size: 9px;
     text-align: center;
     text-decoration: none;
     line-height: 1rem;
-    background-color: $color-red;
-    border: 1px solid $color-white;
+    background-color: #eb5757;
+    border: 1px solid #fff;
     border-radius: 50%;
     transform: translate(20%, -20%);
   }
@@ -240,14 +267,14 @@ h3 {
     width: 11rem;
     height: 2.5rem;
     box-sizing: border-box;
-    color: $color-white;
-    background-color: $color-primary;
-    border: 1px solid $color-primary;
+    color: #fff;
+    background-color: #313237;
+    border: 1px solid #313237;
 
     &--selected {
-      color: $color-green;
-      background-color: $color-white;
-      border-color: $color-elements;
+      color: #27ae60;
+      background-color: #fff;
+      border-color: #e2e6e9;
     }
 
     &:hover,
@@ -259,28 +286,28 @@ h3 {
   &__pagination {
     height: 2rem;
     min-width: 2rem;
-    background-color: $color-white;
-    border: 1px solid $color-icons;
+    background-color: #fff;
+    border: 1px solid #b4bdc4;
 
     &--selected {
-      color: $color-white;
-      background-color: $color-primary;
-      border-color: $color-primary;
+      color: #fff;
+      background-color: #313237;
+      border-color: #313237;
     }
 
     &:hover,
     &:focus {
-      border-color: $color-primary;
+      border-color: #313237;
     }
 
     &:disabled,
     &[disabled] {
-      background-color: $color-white;
-      border-color: $color-elements;
+      background-color: #fff;
+      border-color: #e2e6e9;
       cursor: default;
 
       & .icon__image {
-        background-color: $color-elements;
+        background-color: #e2e6e9;
       }
     }
   }
@@ -288,16 +315,16 @@ h3 {
   &__squared {
     height: 4rem;
     min-width: 4rem;
-    background-color: $color-white;
-    border: 1px solid $color-icons;
+    background-color: #fff;
+    border: 1px solid #b4bdc4;
 
     &--selected {
-      border-color: $color-elements;
+      border-color: #e2e6e9;
     }
 
     &:hover,
     &:focus {
-      border-color: $color-primary;
+      border-color: #313237;
     }
   }
 
@@ -305,7 +332,7 @@ h3 {
     width: max-content;
     height: 2.5rem;
     text-decoration: none;
-    color: $color-secondary;
+    color: #89939a;
 
     &::before {
       content: "";
@@ -316,13 +343,13 @@ h3 {
       mask-image: url(./images/icons/chevron-arrow-left.svg);
       mask-position: center;
       mask-repeat: no-repeat;
-      background-color: $color-primary;
+      background-color: #313237;
       transition: transform 1s cubic-bezier(0.86, 0, 0.07, 1);
     }
 
     &:hover,
     &:focus {
-      color: $color-primary;
+      color: #313237;
 
       &::before {
         content: "";
@@ -339,7 +366,7 @@ h3 {
     height: 2rem;
     box-sizing: border-box;
     padding: 1px;
-    border: 1px solid $color-elements;
+    border: 1px solid #e2e6e9;
     border-radius: 50%;
     transition: border-color 0.3s;
     cursor: pointer;
@@ -354,29 +381,29 @@ h3 {
 
     &:hover,
     &:focus {
-      border-color: $color-icons;
+      border-color: #b4bdc4;
     }
 
     &--selected {
-      border-color: $color-primary;
+      border-color: #313237;
 
       &:hover,
       &:focus {
-        border-color: $color-primary;
+        border-color: #313237;
       }
     }
 
     &--green {
       &::after {
         content: "";
-        background-color: $color-green;
+        background-color: #27ae60;
       }
     }
 
     &--red {
       &::after {
         content: "";
-        background-color: $color-red;
+        background-color: #eb5757;
       }
     }
   }
@@ -386,46 +413,7 @@ h3 {
   }
 }
 
-.Form {
-  &__Field {
-    position: relative;
 
-    &--search {
-      &::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        right: 1rem;
-        display: block;
-        width: 1rem;
-        height: 1rem;
-        mask-image: url(./images/icons/search.svg);
-        mask-position: center;
-        mask-repeat: no-repeat;
-        background-color: $color-primary;
-        cursor: pointer;
-      }
-    }
-  }
-
-  &__TextInput {
-    position: relative;
-    box-sizing: border-box;
-    padding: 1.5rem 2.5rem 1.5rem 1.5rem;
-    border: 1px transparent;
-    color: $color-primary;
-    transition: box-shadow 0.3s;
-    outline: none;
-
-    &:focus {
-      box-shadow: -1px 0px 0px #E2E6E9;
-    }
-
-    &::placeholder {
-      color: $color-icons;
-    }
-  }
-}
 
 .Select {}
 
