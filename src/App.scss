@@ -279,7 +279,7 @@ h3 {
 
     &:hover,
     &:focus {
-      box-shadow: 0px 3px 13px rgba(23, 32, 49, 0.26);
+      box-shadow:0 3px 13px rgba(23, 32, 49, 0.26);
     }
   }
 
@@ -413,8 +413,6 @@ h3 {
   }
 }
 
-
-
 .Select {
   margin-bottom: 250px;
   cursor: pointer;
@@ -456,7 +454,7 @@ h3 {
     background: #fff;
     border: 1px solid #e2e6e9;
     box-sizing: border-box;
-    box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.05);
+    box-shadow:0 2px 15px rgba(0, 0, 0, 0.05);
     padding: 8px 0;
     transform: translateY(-50px), scale(-0.5, 1);
     transition: all 0.5s;
