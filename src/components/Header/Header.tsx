@@ -8,7 +8,11 @@ import { Search } from '../Search';
 export const Header = () => (
   <header className="Header">
     <Link to="/" className="Header__Logo">
+<<<<<<< HEAD
       <img src="./img/logo.svg" alt="Logo" />
+=======
+      <img src="./images/logo.svg" alt="Logo" />
+>>>>>>> 0f85870208bc0b539be1c7f7541a15daf9083a8f
     </Link>
     <Nav />
     <Search />

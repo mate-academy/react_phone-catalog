@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 import React from 'react';
+=======
+import React, { useState } from 'react';
+import cn from 'classnames';
+>>>>>>> 0f85870208bc0b539be1c7f7541a15daf9083a8f
 
 export const UIKit = () => {
   return (
@@ -147,6 +152,51 @@ export const UIKit = () => {
         </form>
       </div>
 
+<<<<<<< HEAD
+=======
+
+      <div className="Select">
+        <div
+          className={cn({
+            "Select__active": true,
+            "Select__active--opened": isOpen,
+          })}
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          {currentValue}
+          <span>
+            <div className={cn({
+              "Icon__image": true,
+              "Icon__image--inactive": true,
+              "Icon__image--arrow-down": true,
+              "Select__arrow": true,
+              "Select__arrow--opened": isOpen,
+            })}
+            />
+          </span>
+        </div>
+        <div className={cn({
+          "Select__list": true,
+          "Select__list--opened": isOpen,
+        })}
+        >
+          <ul>
+            {selectValue.map(value => (
+              value !== currentValue && (
+                <li
+                  key={value}
+                  className="Select__item"
+                  onClick={() => chooseSelectValue(value)}
+                >
+                  {value}
+                </li>
+              )
+            ))}
+          </ul>
+        </div>
+      </div>
+
+>>>>>>> 0f85870208bc0b539be1c7f7541a15daf9083a8f
     </div>
   );
 };
