@@ -21,16 +21,15 @@ interface PhoneCatalog {
 }
 
 interface PhoneDetail {
-  [key: string]: string,
+  [key: string]: string;
   [key: string]: {
-    [key: string]: string,
+    [key: string]: string;
   },
-  [key: string]: string[],
+  [key: string]: string[];
   [key: string]: {
-    [key: string]: string | boolean
-  },
+    [key: string]: string | boolean;
+  };
   [key: string]: {
     [key: string]: string[] | string;
-  }
+  };
 }
-
