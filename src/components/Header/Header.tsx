@@ -10,7 +10,7 @@ import { sectionLinks } from '../../helpers';
 export const Header = () => (
   <header className="Header" id="top">
     <Link to="/" className="Header__Logo">
-      <img src="./images/logo.svg" alt="Logo" />
+      <img src="./img/logo.svg" alt="Logo" />
     </Link>
     <Nav links={sectionLinks} />
     <Search />
