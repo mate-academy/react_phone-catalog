@@ -3,3 +3,8 @@
 @import "typography";
 @import "../components/Phone/Phone";
 @import "../components/Header/Header";
+@import "../components/Footer/Footer";
+
+html {
+  scroll-behavior: smooth;
+}
