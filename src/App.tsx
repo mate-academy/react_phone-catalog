@@ -21,7 +21,7 @@ export const App = () => {
         return getPhoneById(phones);
       })
       .then(details => setPhonesDetails(details))
-      .catch(() => setLoadError(true))
+      .catch(() => setLoadError(true));
   }, []);
 
   return (
