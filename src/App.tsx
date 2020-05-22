@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import './App.scss';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
-import { GoodsList } from './components/Goods';
 import { getGoods } from './helpers';
 
 export const App = () => {
@@ -41,7 +40,8 @@ export const App = () => {
         </section>
         {errorMessage && <div>{errorMessage}</div>}
         {isLoading && <div>Loading...</div>}
-        {isLoaded && <GoodsList goods={goods} />}
+        {/* {isLoaded && <GoodsList goods={goods} />} */}
+        {console.log(goods, isLoaded)}
       </div>
       <Footer />
     </>
