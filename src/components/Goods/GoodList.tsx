@@ -1,13 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import goodsFromServer from '../../api/products.json';
 
 import { Icon } from '../Icon';
 
-export const GoodsList = () => (
+type Props = {
+  goods: Good[];
+};
+
+export const GoodsList: React.FC<Props> = ({ goods }) => (
   <div className="container">
     <section className="section GoodList">
-      {goodsFromServer.map(good => (
+      {goods.map(good => (
         <article key={good.id} className="GoodList__Item GoodItem">
           <Link to={good.id} className="GoodItem__Link">
             <img
