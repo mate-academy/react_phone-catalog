@@ -1,12 +1,12 @@
 const URL_PHONES = 'https://mate-academy.github.io/react_phone-catalog/api/products.json';
-const URL_DETAILS = 'https://mate-academy.github.io/react_phone-catalog/api/products/'
+const URL_DETAILS = 'https://mate-academy.github.io/react_phone-catalog/api/products/';
 
 export const getPhones = async () => {
   const preparedInfo = await fetch(URL_PHONES);
   const phonesInfo: PhoneCatalog[] = await preparedInfo.json();
 
-  return phonesInfo
-}
+  return phonesInfo;
+};
 
 export const getPhoneById = async (catalog: PhoneCatalog[]) => {
   const phonesId = catalog.map(phone => phone.id);
@@ -20,4 +20,4 @@ export const getPhoneById = async (catalog: PhoneCatalog[]) => {
   }
 
   return phonesDetailsById;
-}
+};

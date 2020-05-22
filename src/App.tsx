@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import './App.scss';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
-import { getPhones, getPhoneById } from './helpers/getPhones';
+import { getPhones, getPhoneById } from './helpers/api';
 
 export const App = () => {
   const [phonesProduct, setPhonesProduct] = useState<PhoneCatalog[]>([]);
@@ -18,6 +18,7 @@ export const App = () => {
     getPhones()
       .then(phones => {
         setPhonesProduct(phones);
+
         return getPhoneById(phones);
       })
       .then(details => setPhonesDetails(details))
