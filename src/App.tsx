@@ -1,10 +1,12 @@
 import React from 'react';
+import { Footer } from './components/Footer/Footer';
 
 const App = () => {
-
   return (
-    <div className="App">
+    <div id="top" className="App">
       <h1>React Phone Catalog</h1>
+      <div className="test"></div>
+      <Footer/>
     </div>
   );
 };

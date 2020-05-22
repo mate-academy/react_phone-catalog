@@ -1,0 +1,46 @@
+.test {
+  width: 200px;
+  height: 1400px;
+  background: #00b16a;
+}
+
+.footer {
+  height: 96px;
+  padding: 43px 152px;
+  display: flex;
+  justify-content: space-between;
+
+  &__links {
+    width: 246px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__link {
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: $body-secondary-color;
+  }
+
+  &__top-button-container {
+    width: 118px;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__paragraph {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: $body-secondary-color;
+  }
+
+  &__top-button {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $border-btn-color;
+    box-sizing: border-box;
+  }
+}

@@ -1,4 +1,9 @@
-@import 'reset';
-@import 'vars';
-@import 'typography';
-@import '../components/Phone/Phone';
+@import "reset";
+@import "vars";
+@import "typography";
+@import "../components/Phone/Phone";
+@import "../components/Footer/Footer";
+
+html {
+  scroll-behavior: smooth;
+}

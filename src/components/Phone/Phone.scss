@@ -75,7 +75,7 @@
     background-image: url("../../images/icons/favorite_default.svg");
     background-repeat: no-repeat;
     background-position: center;
-    border: 1px solid #B4BDC4;
+    border: 1px solid $border-btn-color;
     box-sizing: border-box;
 
     &-input {
