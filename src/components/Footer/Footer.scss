@@ -1,0 +1,22 @@
+.Footer {
+  border-top: 1px solid #e2e6e9;
+
+  &__Content {
+    display: flex;
+    height: 4rem;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  &__Link {
+    position: relative;
+    display: inline-grid;
+    grid-auto-flow: column;
+    gap: 1rem;
+    align-items: center;
+    color: #89939a;
+    text-decoration: none;
+  }
+}

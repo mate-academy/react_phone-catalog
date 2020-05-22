@@ -1,6 +1,6 @@
 // / <reference types="react-scripts" />
 
-type SectionLink = {
+type Link = {
   name: string;
   url: string;
   exact?: boolean;
