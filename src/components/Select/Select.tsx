@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import cn from 'classnames';
 
+import './Select.scss';
+
 export const Select: React.FC = () => {
   const selectValue = ['one', 'two', 'three', 'four', 'five'];
   const [currentValue, setCurrentValue] = useState('one');

@@ -1,0 +1,72 @@
+.Select {
+  margin-bottom: 250px;
+  cursor: pointer;
+
+  &__active {
+    position: relative;
+    padding: 10px 0 9px 12px;
+    width: 176px;
+    height: 40px;
+    border: 1px solid #b4bdc4;
+    box-sizing: border-box;
+    color: #313237;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    transition: all 0.3s;
+    &--opened {
+      border: 1px solid #313237;
+    }
+  }
+
+  &__arrow {
+    position: absolute;
+    right: 15.33px;
+    top: 50%;
+    transform: translate(0, -50%);
+    transition: 0.3s;
+    transform-origin: center;
+    background-color: rgb(133, 133, 133);
+    &--opened {
+      top: 30%;
+      transform: rotate(-180deg);
+    }
+  }
+
+  &__list {
+    width: 176px;
+    background: #fff;
+    border: 1px solid #e2e6e9;
+    box-sizing: border-box;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+    padding: 8px 0;
+    transform: translateY(-50px), scale(-0.5, 1);
+    transition: all 0.5s;
+    visibility: hidden;
+    opacity: 0;
+
+    &--opened {
+      visibility: visible;
+      transform: translateY(4px);
+      opacity: 1;
+    }
+  }
+
+  &__item {
+    list-style-type: none;
+    height: 32px;
+    line-height: 32px;
+    padding: 6px 0 5px 12px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    color: #89939a;
+    transition: all 0.3s;
+
+    &:hover {
+      background: #fafbfc;
+      color: #313237;
+    }
+  }
+}
