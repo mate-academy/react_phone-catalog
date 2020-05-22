@@ -19,7 +19,7 @@ export const Header = () => (
         name="favorites"
         tag={7}
         size={2}
-        border={0}
+        border={false}
         inActive={false}
       />
     </Link>
@@ -27,7 +27,7 @@ export const Header = () => (
       <Icon
         name="shopping-bag"
         size={2}
-        border={0}
+        border={false}
         inActive={false}
       />
     </Link>

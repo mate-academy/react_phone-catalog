@@ -7,7 +7,7 @@ type Props = {
   name: string;
   tag?: number;
   size: number;
-  border: number;
+  border: boolean;
   inActive: boolean;
 };
 
@@ -19,7 +19,9 @@ export const Icon: React.FC<Props> = ({
   inActive,
 }) => (
   <div
-    className={`Icon Icon__Size${size} Icon__Border${border}`}
+    className={cn(`Icon Icon__Size${size}`, {
+      Icon__Border: border,
+    })}
   >
     <div className={
       cn(

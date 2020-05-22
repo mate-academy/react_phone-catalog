@@ -22,11 +22,7 @@ $border-width: 1px;
     width: 2rem;
   }
 
-  &__Border0 {
-    border: 0;
-  }
-
-  &__Border1 {
+  &__Border {
     display: inline-flex;
     background-color: $color-white;
     border: none;
