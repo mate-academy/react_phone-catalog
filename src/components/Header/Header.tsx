@@ -8,7 +8,7 @@ import { Icon } from '../Icon';
 import { sectionLinks } from '../../helpers';
 
 export const Header = () => (
-  <header className="Header">
+  <header className="Header" id="top">
     <Link to="/" className="Header__Logo">
       <img src="./images/logo.svg" alt="Logo" />
     </Link>
@@ -17,6 +17,7 @@ export const Header = () => (
     <Link to="/favorites" className="Header__Button">
       <Icon
         name="favorites"
+        tag={7}
         size={2}
         border={0}
         inActive={false}

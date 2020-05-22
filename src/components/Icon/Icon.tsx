@@ -5,6 +5,7 @@ import './Icon.scss';
 
 type Props = {
   name: string;
+  tag?: number;
   size: number;
   border: number;
   inActive: boolean;
@@ -12,6 +13,7 @@ type Props = {
 
 export const Icon: React.FC<Props> = ({
   name,
+  tag,
   size,
   border,
   inActive,
@@ -27,5 +29,6 @@ export const Icon: React.FC<Props> = ({
       )
     }
     />
+    {tag && <div className="Icon__tag">{tag}</div>}
   </div>
 );
