@@ -6,7 +6,7 @@ type Link = {
   exact?: boolean;
 };
 
-interface PhoneCatalog {
+interface Good {
   age: number;
   type: string;
   id: string;
@@ -20,7 +20,7 @@ interface PhoneCatalog {
   ram: string;
 }
 
-interface PhoneDetail {
+interface GoodDetail {
   [key: string]: string;
   [key: string]: {
     [key: string]: string;

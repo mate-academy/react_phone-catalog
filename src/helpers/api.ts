@@ -1,23 +1,20 @@
-const URL_PHONES = 'https://mate-academy.github.io/react_phone-catalog/api/products.json';
-const URL_DETAILS = 'https://mate-academy.github.io/react_phone-catalog/api/products/';
+const API_URL = 'https://mate-academy.github.io/react_phone-catalog/api';
 
-export const getPhones = async () => {
-  const preparedInfo = await fetch(URL_PHONES);
-  const phonesInfo: PhoneCatalog[] = await preparedInfo.json();
+export async function getData<T>(url: string): Promise<T[]> {
+  const response = await fetch(url);
+  const json = await response.json();
 
-  return phonesInfo;
-};
+  return json;
+}
 
-export const getPhoneById = async (catalog: PhoneCatalog[]) => {
-  const phonesId = catalog.map(phone => phone.id);
-  const phonesDetailsById: PhoneDetail[] = [];
+export async function getGoods() {
+  const phones = await getData<Good>(`${API_URL}/products.json`);
 
-  for (const key of phonesId) {
-    const preparedInfo = await fetch(`${URL_DETAILS}${key}.json`);
-    const phoneDetails = await preparedInfo.json();
+  return phones;
+}
 
-    phonesDetailsById.push(phoneDetails);
-  }
+export async function getGoodDetail(id: string) {
+  const phones = await getData<GoodDetail>(`${API_URL}/${id}.json`);
 
-  return phonesDetailsById;
-};
+  return phones;
+}

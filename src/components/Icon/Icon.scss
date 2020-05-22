@@ -9,8 +9,54 @@ $border-width: 1px;
   display: inline-flex;
   justify-content: center;
   align-items: center;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
   padding: 0.25rem;
-  transition: border-color 0.3s;
+  border: none;
+  transition: color .2s;
+  text-shadow: 0 0 1px rgba($color-primary, .5);
+  position: relative;
+  overflow: hidden;
+  transform: translateZ(0);
+  outline: none;
+
+  &:before,
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: $border-width solid transparent;
+    will-change: transform;
+    transition: transform .3s ease;
+    pointer-events: none;
+    transform: translateZ(0);
+    overflow: hidden;
+  }
+
+  &:before {
+    border-color: $color-primary transparent;
+    transform: skew(-90deg, 0);
+  }
+
+  &:after {
+    border-color: transparent $color-primary;
+    transform: skew(0,65deg);
+    transition: transform .4s;
+  }
+
+  &:hover,
+  &:focus {
+    color: $color-primary;
+
+    &:before,
+    &:after {
+      transform: skew(0, 0);
+    }
+  }
 
   &__Size1 {
     height: 1rem;
@@ -22,54 +68,9 @@ $border-width: 1px;
     width: 2rem;
   }
 
-  &__Border0 {
-    border: 0;
-  }
-
-  &__Border1 {
+  &__Border {
     display: inline-flex;
-    background-color: $color-white;
-    border: none;
-    transition: color .2s;
     box-shadow: inset 0 0 0 $border-width $color-elements, 0 0 1px 1px rgba($color-primary, 0.25);
-    text-shadow: 0 0 1px rgba($color-primary, .5);
-    position: relative;
-    overflow: hidden;
-    transform: translateZ(0);
-
-    &:before,
-    &:after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      border: $border-width solid transparent;
-      will-change: transform;
-      transition: transform .3s ease;
-      pointer-events: none;
-      transform: translateZ(0);
-    }
-
-    &:before {
-      border-color: $color-primary transparent;
-      transform: skew(-90deg, 0);
-    }
-
-    &:after {
-      border-color: transparent $color-primary;
-      transform: skew(0,65deg);
-      transition: transform .4s;
-    }
-
-    &:hover{
-      color: $color-primary;
-
-      &:before, &:after{
-        transform: skew(0, 0);
-      }
-    }
   }
 
   &__Image {

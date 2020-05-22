@@ -18,16 +18,14 @@ export const Header = () => (
       <Icon
         name="favorites"
         tag={7}
-        size={2}
-        border={0}
+        border={false}
         inActive={false}
       />
     </Link>
     <Link to="/cart" className="Header__Button">
       <Icon
         name="shopping-bag"
-        size={2}
-        border={0}
+        border={false}
         inActive={false}
       />
     </Link>
