@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 export const Footer = () => {
-  const onScroll = () => {
+  const backToTop = () => {
     window.scrollTo({
       top: 0,
       behavior: 'smooth',
@@ -10,7 +10,7 @@ export const Footer = () => {
   };
 
   return (
-    <section className="footer">
+    <footer className="footer">
       <img src="./img/logo.svg" alt="logo" />
       <div className="footer__links">
         <Link to="/" className="footer__link">Github</Link>
@@ -22,9 +22,9 @@ export const Footer = () => {
         <button
           type="button"
           className="footer__top-button"
-          onClick={onScroll}
+          onClick={backToTop}
         />
       </div>
-    </section>
+    </footer>
   );
 };
