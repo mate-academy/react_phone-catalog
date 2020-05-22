@@ -6,7 +6,7 @@ import './Icon.scss';
 type Props = {
   name: string;
   tag?: number;
-  size: number;
+  size?: number;
   border: boolean;
   inActive: boolean;
 };

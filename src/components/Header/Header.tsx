@@ -18,7 +18,6 @@ export const Header = () => (
       <Icon
         name="favorites"
         tag={7}
-        size={2}
         border={false}
         inActive={false}
       />
@@ -26,7 +25,6 @@ export const Header = () => (
     <Link to="/cart" className="Header__Button">
       <Icon
         name="shopping-bag"
-        size={2}
         border={false}
         inActive={false}
       />

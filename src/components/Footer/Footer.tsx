@@ -18,7 +18,7 @@ export const Footer = () => (
         <Icon
           name="arrow-up"
           size={2}
-          border={true}
+          border
           inActive={false}
         />
       </Link>

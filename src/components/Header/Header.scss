@@ -1,13 +1,15 @@
+$color-elements: #e2e6e9;
+
 .Header {
   display: grid;
   grid-template-columns: max-content 1fr max-content max-content max-content;
   align-items: center;
   height: 3.5rem;
   box-sizing: border-box;
-  border-bottom: 1px solid #e2e6e9;
+  border-bottom: 1px solid $color-elements;
 
   &__Logo {
-    margin: 0 1.5rem;
+    margin: 0 1rem;
   }
 
   &__Button {
@@ -17,6 +19,6 @@
     box-sizing: border-box;
     width: 3.5rem;
     height: 3.5rem;
-    border-left: 1px solid #e2e6e9;
+    border-left: 1px solid $color-elements;
   }
 }

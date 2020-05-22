@@ -1,6 +1,9 @@
+$color-primary: #313237;
+$color-elements: #e2e6e9;
+
 .Search {
   height: 100%;
-  border-left: 1px solid #e2e6e9;
+  border-left: 1px solid $color-elements;
 
   &__Label {
     position: relative;
@@ -14,7 +17,7 @@
     height: 99%;
     padding: 0 2.5rem 0 1.5rem;
     border: 1px transparent;
-    color: #313237;
+    color: $color-primary;
     transition: box-shadow 0.3s;
     outline: none;
 
@@ -33,7 +36,7 @@
     mask-image: url(../../images/icons/search.svg);
     mask-position: center;
     mask-repeat: no-repeat;
-    background-color: #313237;
+    background-color: $color-primary;
     cursor: pointer;
 
     &--clear {
