@@ -3,7 +3,7 @@ import React from 'react';
 import './App.scss';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
-
+import { Select } from './components/Select';
 export const App = () => {
   return (
     <>
@@ -14,6 +14,7 @@ export const App = () => {
         </section>
       </div>
       <Footer />
+      <Select />
     </>
   );
 };

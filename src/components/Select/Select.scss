@@ -1,43 +1,55 @@
+$color-hover-bg: #fafbfc;
+$color-primary: #313237;
+$color-icons: #b4bdc4;
+$color-elements: #e2e6e9;
+
 .Select {
-  margin-bottom: 250px;
   cursor: pointer;
 
-  &__active {
+  &__Active {
     position: relative;
     padding: 10px 0 9px 12px;
     width: 176px;
     height: 40px;
-    border: 1px solid #b4bdc4;
+    border: 1px solid $color-icons;
     box-sizing: border-box;
-    color: #313237;
+    color: $color-primary;
     font-style: normal;
     font-weight: 600;
     font-size: 14px;
     line-height: 21px;
     transition: all 0.3s;
+
     &--opened {
-      border: 1px solid #313237;
+      border: 1px solid $color-primary;
     }
   }
 
-  &__arrow {
+  &__Arrow {
+    display: inline-block;
+    height: 1rem;
+    width: 1rem;
+    mask-position: center;
+    mask-repeat: no-repeat;
+    background-color: $color-primary;
+    mask-image: url(../../images/icons/chevron-arrow-down.svg);
     position: absolute;
     right: 15.33px;
     top: 50%;
     transform: translate(0, -50%);
     transition: 0.3s;
     transform-origin: center;
-    background-color: rgb(133, 133, 133);
+    background-color: $color-primary;
     &--opened {
       top: 30%;
       transform: rotate(-180deg);
     }
   }
 
-  &__list {
+  &__List {
     width: 176px;
     background: #fff;
-    border: 1px solid #e2e6e9;
+    border: 1px solid $color-elements;
     box-sizing: border-box;
     box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
     padding: 8px 0;
@@ -53,7 +65,7 @@
     }
   }
 
-  &__item {
+  &__Item {
     list-style-type: none;
     height: 32px;
     line-height: 32px;
@@ -65,8 +77,8 @@
     transition: all 0.3s;
 
     &:hover {
-      background: #fafbfc;
-      color: #313237;
+      background: $color-hover-bg;
+      color: $color-primary;
     }
   }
 }
