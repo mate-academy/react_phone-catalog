@@ -3,10 +3,9 @@ import { Footer } from './components/Footer/Footer';
 
 const App = () => {
   return (
-    <div id="top" className="App">
+    <div className="App">
       <h1>React Phone Catalog</h1>
-      <div className="test"></div>
-      <Footer/>
+      <Footer />
     </div>
   );
 };
