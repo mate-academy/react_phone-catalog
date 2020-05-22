@@ -1,0 +1,92 @@
+.phone {
+  width: 272px;
+  height: 507px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  border: 1px solid #E2E6E9;
+
+  &__image {
+    width: 208px;
+    height: 208px;
+  }
+
+  &__title {
+    margin-top: 24px;
+    display: flex;
+    align-self: flex-start;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $main-color;
+  }
+
+  &__price-container {
+    margin-top: 6.5px;
+    display: flex;
+    align-self: flex-start;
+  }
+
+  &__price {
+    margin-right: 8px;
+    display: flex;
+    flex-direction: row;
+  }
+
+  &__discount {
+    font-family: Mont-SemiBold, sans-serif;
+    font-size: 20px;
+    line-height: 28px;
+    text-decoration-line: line-through;
+    color: $body-secondary-color;
+  }
+
+  &__details-container {
+    margin-top: 6.5px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__details {
+    width: 224px;
+    height: 77px;
+  }
+
+  &__buttons__container {
+    position: relative;
+    margin-top: 16px;
+    display: flex;
+  }
+
+  &__button {
+    margin-right: 8px;
+    width: 176px;
+    height: 40px;
+    background: $main-color;
+    color: white;
+    cursor: pointer;
+  }
+
+  &__button-favorite {
+    width: 40px;
+    height: 40px;
+    background-image: url("../../images/icons/favorite_default.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 1px solid #B4BDC4;
+    box-sizing: border-box;
+
+    &-input {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      opacity: 0;
+
+      &:checked + label {
+        background-image: url("../../images/icons/favorite_checked.svg");
+      }
+    }
+  }
+}
