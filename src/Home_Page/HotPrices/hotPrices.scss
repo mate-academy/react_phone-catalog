@@ -1,0 +1,179 @@
+.HotPrices {
+  margin-top: 82px;
+
+  &__navigation {
+    display: flex;
+    justify-content: space-between;
+    &_header {
+      margin: 0 0 24px;
+      font-family: Mont, serif;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 32px;
+      line-height: 41px;
+      letter-spacing: -0.01em;
+      color: #313237;
+    }
+    &_buttons {
+      display: flex;
+      &:hover {
+        cursor: pointer;
+      }
+      &-left {
+        width: 32px;
+        height: 32px;
+        border: 1px solid #E2E6E9;
+        transform: rotate(-90deg);
+        cursor: pointer;
+        &:active {
+          box-shadow: 0 0 4px 2px rgba(0,0,0,0.75);
+        }
+        &:focus {
+          outline: none;
+        }
+        &-image {
+          width: 11px;
+          height: 11px;
+        }
+      }
+      &-right {
+        width: 32px;
+        height: 32px;
+        border: 1px solid #E2E6E9;
+        margin-left: 16px;
+        transform: rotate(90deg);
+        cursor: pointer;
+        &:active {
+          box-shadow: 0 0 4px 2px rgba(0,0,0,0.75);
+        }
+        &:focus {
+          outline: none;
+        }
+        &-image {
+          width: 11px;
+          height: 11px;
+        }
+      }
+
+    }
+  }
+
+}
+
+.discount {
+  width: 1136px;
+  overflow: hidden;
+  &__list {
+    list-style: none;
+    display: flex;
+    padding: 0;
+    box-sizing: border-box;
+    position: relative;
+    transition: right 1s;
+    &_item {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+  }
+}
+
+.card {
+  padding: 23px;
+  height: 507px;
+  box-sizing: border-box;
+  border: 1px solid #E2E6E9;
+  margin-right: 16px;
+
+  &__image {
+    width: 208px;
+    height: 208px;
+  }
+
+  &__title {
+    font-family: Mont, serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #313237;
+    width: 224px;
+  }
+
+  &__price {
+    padding-bottom: 10px;
+
+    &_new {
+      font-family: Mont, serif;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 22px;
+      line-height: 28px;
+      color: #313237;
+      margin: 8px 8px 8px 0;
+    }
+
+    &_old {
+      font-weight: 500;
+      text-decoration-line: line-through;
+      color: #89939A;
+      margin: 8px 0;
+    }
+
+  }
+
+  &__specification {
+    &_wrapper {
+      padding-top: 16px;
+      border-top: 1px solid #E2E6E9;
+    }
+
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 8px;
+
+    &_title {
+      font-family: Mont, serif;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 15px;
+      color: #89939A;
+    }
+
+    &_description {
+      font-family: Mont, serif;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 15px;
+      text-align: right;
+      color: #313237;
+    }
+  }
+}
+
+.action {
+
+  display: flex;
+  justify-content: space-between;
+
+  &__buy {
+    width: 176px;
+    height: 40px;
+    background-color: #313237;
+    color: white;
+    border: 0;
+    padding: 0;
+    font-family: Mont, serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+  }
+  &__add-to-fav {
+    width: 13px;
+    padding: 12.5px;
+    border: 1px solid #B4BDC4;
+  }
+}

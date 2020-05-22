@@ -1,0 +1,57 @@
+.Footer {
+  height: 64px;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0 -1px 0 #e2e6e9;
+  padding: 0 152px;
+  align-items: center;
+  &__link {
+    display: inline-block;
+    padding: 0 32px;
+    text-decoration: none;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    font-family: Mont, serif;
+    color: #89939a;
+    &::before {
+      content: "";
+      display: block;
+      position: relative;
+      top: 30px;
+      left: 0;
+      height: 3px;
+      width: 100%;
+      background-color: #313237;
+      transform: scale(0, 1);
+      transition: color 0.1s, transform 0.2s ease-in-out;
+    }
+    &:hover::before {
+      transform: scale(1, 1);
+    }
+  }
+  &__mover {
+    display: flex;
+    align-items: center;
+    &:hover {
+      cursor: pointer;
+    }
+    &_title {
+      font-family: Mont, serif;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 15px;
+      text-align: right;
+      color: #89939a;
+      padding-right: 16px;
+    }
+    &_img {
+      width: 11px;
+      height: 7px;
+      padding: 11.5px 9.5px;
+      border: 1px solid #b4bdc4;
+    }
+  }
+}

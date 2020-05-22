@@ -1,0 +1,80 @@
+.carousel {
+  margin: 40px auto 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__pointer {
+    display: flex;
+    justify-content: center;
+    &_bar {
+      width: 14px;
+      height: 4px;
+      margin: 0 7px;
+      padding: 0;
+      background-color: #E2E6E9;
+      transition: background-color 1s;
+      border: none;
+      &-active {
+        background-color: #313237;
+      }
+      &:hover {
+        cursor: pointer;
+      }
+      &:focus {
+        outline: none;
+      }
+    }
+
+  }
+  &__images {
+    width: 1040px;
+    height: 400px;
+    overflow: hidden;
+    margin: 0 16px;
+
+
+  }
+
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    position: relative;
+    transition: right 1s;
+    &_img {
+      width: 1040px;
+    }
+  }
+
+  &__control {
+    height: 400px;
+    width: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #B4BDC4;
+    box-sizing: border-box;
+    transform: matrix(-1, 0, 0, 1, 0, 0);
+    cursor: pointer;
+    &:focus {
+      outline: none;
+    }
+    &:active {
+      box-shadow: 0 0 4px 2px rgba(0,0,0,0.75);
+    }
+    &-arrow {
+      width: 11px;
+      height: 7px;
+    }
+
+    &-arrowleft {
+      transform: rotate(90deg);
+    }
+
+    &-arrowright {
+      transform: rotate(-90deg);
+    }
+  }
+}
