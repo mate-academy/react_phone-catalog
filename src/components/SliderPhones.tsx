@@ -7,23 +7,22 @@ export const SliderPhones = ({
   position,
   animationDuration,
   itemWidth,
+                               marginsWidth,
 }: SliderProps) => (
-  <div className="slider">
+  <div
+    className="slider"
+    style={{width: `${frameSize * itemWidth + marginsWidth}px`}}
+  >
     <div
-      className="slider__container"
-      style={{ width: `${frameSize * itemWidth}px` }}
+      className="slider__list"
+      style={{
+        transform: `translateX(${position}px)`,
+        transition: `transform ${animationDuration}ms`,
+      }}
     >
-      <div
-        className="slider__list"
-        style={{
-          transform: `translateX(${position}px)`,
-          transition: `transform ${animationDuration}ms`,
-        }}
-      >
-        {phones.map((phone: Phone) => (
-          <Phone key={phone.id} {...phone} />
-        ))}
-      </div>
+      {phones.map((phone: Phone) => (
+        <Phone key={phone.id} {...phone} />
+      ))}
     </div>
   </div>
 );

@@ -20,9 +20,9 @@ export const useHotPrices = () => {
     return phones.filter(phone => phone.discount !== 0);
   }, [phones]);
 
-  const stepWidth = itemWidth * step + marginsWidth;
-  const frameWidth = itemWidth * frameSize + marginsWidth;
-  const carouselWidth = itemWidth * hotPricesPhones.length + marginsWidth;
+  const stepWidth = itemWidth * step + marginsWidth / 2;
+  const frameWidth = itemWidth * frameSize + marginsWidth / 2;
+  const carouselWidth = itemWidth * hotPricesPhones.length + marginsWidth / 2;
   const maxPosition = frameWidth - carouselWidth - (2 * marginsWidth);
 
   const handleSlide = useCallback((direction: string) => {
@@ -48,5 +48,6 @@ export const useHotPrices = () => {
     animationDuration,
     handleSlide,
     maxPosition,
+    marginsWidth,
   };
 };

@@ -70,6 +70,7 @@ type SliderProps = {
   step: number;
   frameSize: number;
   itemWidth: number;
+  marginsWidth: number;
   animationDuration: number;
 };
 

@@ -13,6 +13,7 @@ export const HotPrices = () => {
     animationDuration,
     handleSlide,
     maxPosition,
+    marginsWidth,
   } = useHotPrices();
 
   return (
@@ -42,6 +43,7 @@ export const HotPrices = () => {
         frameSize={frameSize}
         itemWidth={itemWidth}
         animationDuration={animationDuration}
+        marginsWidth={marginsWidth}
       />
     </>
   );
