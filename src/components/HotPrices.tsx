@@ -19,7 +19,7 @@ export const HotPrices = () => {
   return (
     <>
       <div className="section__heading-container">
-        <h1>Hot prices</h1>
+        <h2>Hot prices</h2>
         <div className="slider__controls">
           <SliderControl
             handleSlide={handleSlide}
