@@ -48,7 +48,7 @@ export const BannerSlider: React.FC = () => {
 
     setLeft(newLoeftPosition);
     setcurrentPosition(position);
-  }
+  };
 
   return (
     <div className="Banner">
@@ -96,13 +96,13 @@ export const BannerSlider: React.FC = () => {
           <span
             key={image.position}
             className={cn({
-              'Banner__Position': true,
+              Banner__Position: true,
               'Banner__Position--active': image.position === currentPosition,
             })}
             onClick={() => handleChooseImage(image.position)}
-          ></span>
+          />
         ))}
       </div>
     </div>
-  )
-}
+  );
+};

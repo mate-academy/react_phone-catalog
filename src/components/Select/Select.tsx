@@ -34,8 +34,9 @@ export const Select: React.FC = () => {
     >
       <label
         className={cn({
-          "Select__Active--after": isOpen,
-        })}></label>
+          'Select__Active--after': isOpen,
+        })}
+      />
 
       <button
         type="button"

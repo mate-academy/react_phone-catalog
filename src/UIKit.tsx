@@ -146,7 +146,7 @@ export const UIKit = () => {
           </label>
         </form>
       </div>
-    
+
     </div>
   );
 };
