@@ -1,0 +1,54 @@
+.section {
+  &__heading-container {
+    width: 1136px;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.slider {
+  width: 1137px;
+  overflow: hidden;
+
+  &__controls {
+    width: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__list {
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+  }
+
+  &__list article {
+    margin-right: 16px;
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $border-btn-color;
+    box-sizing: border-box;
+    background-repeat: no-repeat;
+    background-position: center;
+    outline: none;
+    cursor: pointer;
+  }
+
+  &__button-left {
+    background-image: url("../images/icons/left.svg");
+  }
+
+  &__button-right {
+    background-image: url("../images/icons/right.svg");
+  }
+
+  &__button--disabled {
+    opacity: 0.5;
+    cursor: auto;
+  }
+}

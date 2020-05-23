@@ -1,9 +1,8 @@
-import React, { FC } from 'react';
-import './Phone.scss';
+import React from 'react';
 
-export const Phone: FC<Phone> = ({
+export const Phone = ({
   name, imageUrl, price, screen, capacity, ram, discount, id,
-}) => {
+}: Phone) => {
   return (
     <article className="phone">
       <img className="phone__image" src={imageUrl} alt={name} />
@@ -15,7 +14,7 @@ export const Phone: FC<Phone> = ({
         </h2>
         <span className="phone__discount">
           $
-          {discount}
+          {price * (discount / 100) + price}
         </span>
       </div>
       <div className="phone__details">

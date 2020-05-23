@@ -6,12 +6,9 @@
 @import "../components/Nav";
 @import "../components/Favorites";
 @import "../components/Cart";
+@import "../components/SliderPhones";
 @import "../components/Phone";
 @import "../components/Footer";
-
-html {
-  scroll-behavior: smooth;
-}
 
 .container {
   width: 1136px;
