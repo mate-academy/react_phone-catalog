@@ -7,6 +7,7 @@ import {
 } from '../../Additionals/additional_api';
 import { Phones } from '../../Additionals/interfaces';
 
+
 export const HotPrices = () => {
   const [phones, setPhones] = useState([]);
   const [position, setPosition] = useState(0);
@@ -65,37 +66,38 @@ export const HotPrices = () => {
 
       <div className="discount">
         <ul className="discount__list" style={{ right: position }}>
-          {phones.map((el: Phones) => (
-            <li key={el.id} className="discount__list_item card">
-              <img className="card__image" src={el.imageUrl} alt={el.id} />
-              <p className="card__title">{el.name}</p>
+          {phones.map((phone: Phones) => (
+            <li key={phone.id} className="discount__list_item card">
+              <img className="card__image" src={`/public/${phone.imageUrl}`} alt={phone.id} />
+              <span>{`/public/${phone.imageUrl}`}</span>
+              <p className="card__title">{phone.name}</p>
               <div className="card__price">
                 <span className="card__price_new">
                   $
-                  {el.price * (1 - (el.discount / 100))}
+                  {phone.price * (1 - (phone.discount / 100))}
                 </span>
                 <span className="card__price_new card__price_old">
                   $
-                  {el.price}
+                  {phone.price}
                 </span>
               </div>
               <div className="card__specification_wrapper">
                 <div className="card__specification">
                   <span className="card__specification_title">Screen</span>
                   <span className="card__specification_description">
-                    {el.screen}
+                    {phone.screen}
                   </span>
                 </div>
                 <div className="card__specification">
                   <span className="card__specification_title">Capacity</span>
                   <span className="card__specification_description">
-                    {el.capacity}
+                    {phone.capacity}
                   </span>
                 </div>
                 <div className="card__specification">
                   <span className="card__specification_title">RAM</span>
                   <span className="card__specification_description">
-                    {el.ram}
+                    {phone.ram}
                   </span>
                 </div>
               </div>

@@ -15,8 +15,8 @@ const App = () => (
     <Navigation />
     <Switch>
       <Route path="/" exact component={HomePage} />
-      <Route path="/phones/:id?" component={Catalog} />
-      <Route path="/tablets/:id?" component={Maintenance} />
+      <Route path="/phones" component={Catalog} />
+      <Route path="/tablets" component={Maintenance} />
       <Route path="/accessories" component={Maintenance} />
       <Route path="/favourites" component={Favourites} />
       <Route path="/cart" component={Cart} />
