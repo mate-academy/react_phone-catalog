@@ -27,3 +27,8 @@ interface GoodDetail {
     [key: string]: string | string[] | boolean;
   };
 }
+
+interface Banners {
+  path: string;
+  position?: number;
+}

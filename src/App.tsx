@@ -4,6 +4,7 @@ import './App.scss';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { getGoods } from './helpers';
+import { BannerSlider } from './components/Banner';
 
 export const App = () => {
   const [goods, setGoods] = useState<Good[]>([]);
@@ -34,6 +35,7 @@ export const App = () => {
   return (
     <>
       <Header />
+      <BannerSlider />
       <div className="container">
         <section className="section">
           <h1>Main Page</h1>
