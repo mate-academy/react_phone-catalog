@@ -26,7 +26,6 @@ export const HotPrices = () => {
             direction="left"
             position={position}
             maxPosition={maxPosition}
-
           />
           <SliderControl
             handleSlide={handleSlide}

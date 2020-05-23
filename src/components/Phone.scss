@@ -67,7 +67,16 @@
     width: 224px;
 
     &-title {
+      margin-top: 5px;
+      font-size: 12px;
+      line-height: 15px;
       color: $secondary-color;
+    }
+
+    &-info {
+      margin-top: 5px;
+      font-size: 12px;
+      line-height: 15px;
     }
   }
 
