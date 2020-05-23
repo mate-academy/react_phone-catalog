@@ -33,3 +33,8 @@ interface GoodDetail {
     [key: string]: string[] | string;
   };
 }
+
+interface Banners {
+  path: string;
+  position?: number;
+}

@@ -32,3 +32,9 @@ export const footerLinks: Link[] = [
     url: '/rights',
   },
 ];
+
+export const Banners: Banners[] = [
+  { path: "/images/banner.jpg" },
+  { path: "/images/banner2.jpg" },
+  { path: "/images/banner3.jpg" },
+];
