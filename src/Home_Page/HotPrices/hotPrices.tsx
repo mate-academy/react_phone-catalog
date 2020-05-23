@@ -68,8 +68,7 @@ export const HotPrices = () => {
         <ul className="discount__list" style={{ right: position }}>
           {phones.map((phone: Phones) => (
             <li key={phone.id} className="discount__list_item card">
-              <img className="card__image" src={`/public/${phone.imageUrl}`} alt={phone.id} />
-              <span>{`/public/${phone.imageUrl}`}</span>
+              <img className="card__image" src={phone.imageUrl}  alt={phone.id} />
               <p className="card__title">{phone.name}</p>
               <div className="card__price">
                 <span className="card__price_new">
