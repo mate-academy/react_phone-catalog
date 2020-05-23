@@ -57,31 +57,27 @@
   }
 
   &__details-container {
-    margin-top: 2px;
+    margin-top: 5px;
     display: flex;
     justify-content: space-between;
   }
 
   &__details {
-    height: 61px;
     width: 224px;
 
     &-title {
-      margin-top: 5px;
       font-size: 12px;
       line-height: 15px;
       color: $secondary-color;
     }
 
     &-info {
-      margin-top: 5px;
       font-size: 12px;
       line-height: 15px;
     }
   }
 
   &__buttons__container {
-    position: relative;
     margin-top: 16px;
     display: flex;
   }
@@ -108,7 +104,7 @@
     border: 1px solid $border-btn-color;
     box-sizing: border-box;
     cursor: pointer;
-    @include hover(border-color, black, 0.2);
+    @include hover(border-color, $primary-color, 0.2);
 
     &-checkmark {
       position: absolute;
