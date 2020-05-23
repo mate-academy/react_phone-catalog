@@ -6,17 +6,25 @@ export const SliderControl = ({
   direction,
   position,
   maxPosition,
-}: SliderArrowProps) => (
-  <button
-    type="button"
-    className={classNames({
-      slider__button: true,
-      [`slider__button-${direction}`]: true,
-      'slider__button--disabled': (direction === 'left' && position === 0)
-        || (direction === 'right' && position === maxPosition),
-    })}
-    onClick={() => handleSlide(direction)}
-    disabled={(direction === 'left' && position === 0)
-    || (direction === 'right' && position === maxPosition)}
-  />
-);
+}: SliderArrowProps) => {
+  const dirLeft = direction === 'left';
+  const dirRight = direction === 'right';
+  const posStart = position === 0;
+  const posMax = position === maxPosition;
+
+  return (
+    <button
+      type="button"
+      aria-label={dirLeft ? 'Slide left' : 'Slide right'}
+      className={classNames({
+        slider__button: true,
+        [`slider__button-${direction}`]: true,
+        'slider__button--disabled': (dirLeft && posStart)
+          || (dirRight && posMax),
+      })}
+      onClick={() => handleSlide(direction)}
+      disabled={(dirLeft && posStart)
+      || (dirRight && posMax)}
+    />
+  );
+};

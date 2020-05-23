@@ -1,4 +1,6 @@
-import { useCallback, useEffect, useMemo, useState, } from 'react';
+import {
+  useCallback, useEffect, useMemo, useState,
+} from 'react';
 import { getPhones } from '../../helpers/api';
 
 export const useHotPrices = () => {

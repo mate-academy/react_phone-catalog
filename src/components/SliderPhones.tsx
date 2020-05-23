@@ -11,7 +11,7 @@ export const SliderPhones = ({
 }: SliderProps) => (
   <div
     className="slider"
-    style={{width: `${frameSize * itemWidth + marginsWidth}px`}}
+    style={{ width: `${frameSize * itemWidth + marginsWidth}px` }}
   >
     <div
       className="slider__list"
