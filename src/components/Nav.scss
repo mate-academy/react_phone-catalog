@@ -1,0 +1,45 @@
+.nav {
+
+  &__list {
+    display: flex;
+  }
+
+  &__item {
+    margin-right: 64px;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 0.92;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &__link {
+    display: block;
+    line-height: $header-height;
+    color: $secondary-color;
+    transition: color 0.2s;
+
+    &:hover {
+      color: $primary-color;
+    }
+
+    &--active {
+      position: relative;
+      color: $primary-color;
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background-color: $primary-color;
+      }
+    }
+  }
+}

@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import './Phone.scss';
 
 export const Phone: FC<Phone> = ({
   name, imageUrl, price, screen, capacity, ram, discount, id,

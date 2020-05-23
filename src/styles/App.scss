@@ -1,10 +1,29 @@
 @import "reset";
 @import "vars";
 @import "typography";
-@import "../components/Phone/Phone";
-@import "../components/Header/Header";
-@import "../components/Footer/Footer";
+@import "../components/Header";
+@import "../components/Logo";
+@import "../components/Nav";
+@import "../components/Favorites";
+@import "../components/Cart";
+@import "../components/Phone";
+@import "../components/Footer";
 
 html {
   scroll-behavior: smooth;
+}
+
+.container {
+  width: 1136px;
+  margin: 0 auto;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0 !important;
+  border: 0 !important;
+  height: 1px !important;
+  width: 1px !important;
+  overflow: hidden;
 }
