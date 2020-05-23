@@ -1,13 +1,12 @@
 @import "../../mixins.scss";
 
 .ProductCard {
-
+  margin: 8px;
   width: 272px;
   height: 507px;
   padding: 24px;
   display: flex;
   flex-direction: column;
-
   background-color: white;
   border: 1px solid #e2e6e9;
   box-sizing: border-box;
@@ -23,6 +22,7 @@
     @include body-text;
     margin: 0;
     padding: 0;
+    height: 42px;
   }
 
   &__price-wrapper {
@@ -61,7 +61,7 @@
   }
 
   &__buttons-wrapper {
-    margin-top: 8px;
+    margin: 8px 0 0;
     display: flex;
     justify-content: space-between;
   }
@@ -72,19 +72,40 @@
     background-color: #313237;
     height: 40px;
     width: 176px;
-    border: none;
+    outline: none;
+    border: 1px solid #313237;
+    &--added {
+      border: 1px solid #e2e6e9;
+      color: #27ae60;
+      background-color: white;
+    }
+    &:hover,
+    &:focus {
+      box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+      border: 1px solid #313237;
+    }
   }
 
   &__add-to-fav {
+    outline: none;
     padding: 0;
     height: 40px;
     width: 40px;
+    box-sizing: border-box;
     background-image: url("../../imgs/Icons/heart.png");
     background-position: center;
-
     background-repeat: no-repeat;
     background-color: white;
     border: 1px solid #b4bdc4;
+    &--added {
+      background-image: url("../../imgs/Icons/FilledHeart.png");
+      border: 1px solid #e2e6e9;
+    }
+
+    &:hover,
+    &:focus {
+      border: 1px solid #313237;
+    }
 
   }
 }

@@ -1,8 +1,15 @@
 
-.logo {
-  display: block;
-  width: 40px;
-  height: 11px;
-  background-color: none;
-  background-image: url(../../imgs/Icons/LOGO.png);
+.Logo {
+  height: 100%;
+  &__link {
+    display: block;
+    width: 40px;
+    height: 100%;
+    background-color: none;
+    background-image: url(../../imgs/Icons/LOGO.png);
+    background-position: center;
+    background-repeat: no-repeat;
+
+  }
+
 }

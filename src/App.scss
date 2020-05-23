@@ -1,3 +1,50 @@
 
 @import "./components/Logo/Logo.scss";
 @import "./fonst.scss";
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+
+  &__header {
+    position: sticky;
+    top: 0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 64px;
+    width: 100%;
+    background: white;
+    box-shadow: 0 1px 0 #e2e6e9;
+    &-wrapper {
+      margin: 0;
+      padding: 0;
+      max-width: 1440px;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    &-right-wrapper {
+      margin: 0;
+      padding: 0;
+      max-width: 1440px;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    }
+  }
+
+  &__main {
+    display: flex;
+    justify-content: center;
+  }
+}

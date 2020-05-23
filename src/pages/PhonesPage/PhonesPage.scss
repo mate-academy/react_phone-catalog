@@ -1,0 +1,10 @@
+
+@import "../../mixins.scss";
+
+.PhonesPage {
+  max-width: 1136px;
+
+  &__h1 {
+    @include h1;
+  }
+}

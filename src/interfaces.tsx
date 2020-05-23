@@ -19,3 +19,18 @@ export interface Product   {
   ram: string;
 }
 
+export interface CatalogPropsType {
+  products: Product[];
+  cart: Product[];
+  favorites: Product[];
+  setFavorites: (favorites:Product[]) => void,
+  setCart: (cart:Product[]) => void,
+}
+export interface ProductCardPropsType {
+  product: Product;
+  cart: Product[];
+  favorites: Product[];
+  setFavorites: (favorites:Product[]) => void,
+  setCart: (cart:Product[]) => void,
+}
+

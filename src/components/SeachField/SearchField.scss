@@ -1,0 +1,45 @@
+
+@import "../../mixins.scss";
+
+.SearchField {
+  position: relative;
+
+  &__button {
+    position: absolute;
+    top: 24px;
+    right: 27px;
+    height: 16px;
+    width: 16px;
+    background-image: url("../../imgs/Icons/Close.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: white;
+    border: none;
+    &--magnifier {
+      background-image: url("../../imgs/Icons/Search.png");
+    }
+
+  }
+
+  &__input {
+    width: 327px;
+    height: 64px;
+    box-sizing: border-box;
+    box-shadow: -1px 0 0 #e2e6e9;
+    border: none;
+    padding: 24px;
+    @include placeholder;
+    color: #313237;
+    outline: none;
+
+    &:focus,
+    &:hover {
+      background: #fafbfc;
+    }
+
+    &:placeholder-shown {
+      @include placeholder;
+    }
+  }
+}

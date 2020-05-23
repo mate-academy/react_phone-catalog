@@ -1,0 +1,19 @@
+
+@import '../../mixins.scss';
+
+.Catalog {
+  &__h1 {
+    @include h1;
+  }
+
+  &__models-count {
+
+    @include body-text;
+    color: #89939a;
+  }
+
+  &__select-wrapper {
+    display: flex;
+    margin: 24px 0;
+  }
+}
