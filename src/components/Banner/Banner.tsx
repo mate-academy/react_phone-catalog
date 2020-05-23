@@ -20,16 +20,16 @@ export const BannerSlider: React.FC = () => {
 
     if (currentPosition === BannerImage.length && path === 1) {
       setcurrentPosition(1);
-      setLeft(0)
+      setLeft(0);
 
-      return
+      return;
     }
 
     if (currentPosition === 1 && path === -1) {
       setcurrentPosition(BannerImage.length);
       setLeft(((imageWidth + imageGap) * path) * (BannerImage.length - 1));
 
-      return
+      return;
     }
 
     setcurrentPosition(currentPosition + path);
@@ -54,6 +54,7 @@ export const BannerSlider: React.FC = () => {
     <div className="Banner">
       <div className="Banner__Slider">
         <button
+          type="button"
           className="Banner__Button"
           onClick={() => handleClick(-1)}
         >
@@ -74,7 +75,7 @@ export const BannerSlider: React.FC = () => {
               >
                 <img
                   src={image.path}
-                  alt="Banner image"
+                  alt={image.alt}
                   className="Banner__Image-current"
                 />
               </li>
@@ -83,6 +84,7 @@ export const BannerSlider: React.FC = () => {
         </div>
 
         <button
+          type="button"
           className="Banner__Button"
           onClick={() => handleClick(1)}
         >

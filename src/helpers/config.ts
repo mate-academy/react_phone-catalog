@@ -34,7 +34,7 @@ export const footerLinks: Link[] = [
 ];
 
 export const Banners: Banners[] = [
-  { path: '/images/banner.jpg' },
-  { path: '/images/banner2.jpg' },
-  { path: '/images/banner3.jpg' },
+  { alt: 'First banner' ,path: '/images/banner.jpg' },
+  { alt: 'Second banner' ,path: '/images/banner2.jpg' },
+  { alt: 'Third banner' ,path: '/images/banner3.jpg' },
 ];

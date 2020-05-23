@@ -31,4 +31,5 @@ interface GoodDetail {
 interface Banners {
   path: string;
   position?: number;
+  alt?: string;
 }
