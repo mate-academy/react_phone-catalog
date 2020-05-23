@@ -16,6 +16,7 @@ import { TabletsPage } from './pages/TabletsPage/TabletsPage';
 import { AccessoriesPage } from './pages/AccessoriesPage/AccessoriesPage';
 import { ProductPage } from './pages/ProductPage/ProductPage';
 import { FavoritesPage } from './pages/FavoritesPage/FavoritesPage';
+import { CartPage } from './pages/Cart/CartPage';
 
 
 const App = () => {
@@ -136,6 +137,10 @@ const App = () => {
               favorites={favorites}
               setFavorites={setFavorites}
             />
+          </Route>
+
+          <Route path="/cart">
+            <CartPage cart={cart} setCart={setCart}/>
           </Route>
 
           <Route path="/">
