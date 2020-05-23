@@ -14,7 +14,7 @@ type Props = {
 export const Icon: React.FC<Props> = ({
   name,
   tag,
-  size,
+  size = 0,
   border,
   inActive,
 }) => (

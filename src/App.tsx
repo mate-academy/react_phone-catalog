@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { Switch, Route } from 'react-router-dom';
 
 import './App.scss';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { getGoods } from './helpers';
+import { GoodsList, GoodPage } from './components/Goods';
 
 export const App = () => {
   const [goods, setGoods] = useState<Good[]>([]);
@@ -35,13 +37,14 @@ export const App = () => {
     <>
       <Header />
       <div className="container">
-        <section className="section">
-          <h1>Main Page</h1>
-        </section>
         {errorMessage && <div>{errorMessage}</div>}
-        {isLoading && <div>Loading...</div>}
-        {/* {isLoaded && <GoodsList goods={goods} />} */}
-        {console.log(goods, isLoaded)}
+        {isLoading && isLoaded && ''}
+
+        <Switch>
+          <Route path="/" exact render={() => 'Store'} />
+          <Route path="/:section" exact render={() => <GoodsList goods={goods} />} />
+          <Route path="/:section/:good" render={() => <GoodPage />} />
+        </Switch>
       </div>
       <Footer />
     </>

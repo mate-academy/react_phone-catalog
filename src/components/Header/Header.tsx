@@ -5,14 +5,14 @@ import './Header.scss';
 import { Nav } from '../Nav';
 import { Search } from '../Search';
 import { Icon } from '../Icon';
-import { sectionLinks } from '../../helpers';
+import { sectionsLinks } from '../../helpers';
 
 export const Header = () => (
   <header className="Header" id="top">
     <Link to="/" className="Header__Logo">
       <img src="./img/logo.svg" alt="Logo" />
     </Link>
-    <Nav links={sectionLinks} />
+    <Nav links={sectionsLinks} />
     <Search />
     <Link to="/favorites" className="Header__Button">
       <Icon

@@ -1,4 +1,5 @@
 $color-primary: #313237;
+$color-icons: #b4bdc4;
 $color-elements: #e2e6e9;
 $color-white: #fff;
 $color-red: #eb5757;
@@ -70,7 +71,8 @@ $border-width: 1px;
 
   &__Border {
     display: inline-flex;
-    box-shadow: inset 0 0 0 $border-width $color-elements, 0 0 1px 1px rgba($color-primary, 0.25);
+    border: 1px solid $color-icons;
+    //box-shadow: inset 0 0 0 $border-width $color-elements, 0 0 1px 1px rgba($color-primary, 0.25);
   }
 
   &__Image {
