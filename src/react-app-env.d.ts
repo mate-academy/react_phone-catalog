@@ -21,15 +21,9 @@ interface Good {
 }
 
 interface GoodDetail {
-  [key: string]: string;
+  id: string;
+  [key: string]: string | string[];
   [key: string]: {
-    [key: string]: string;
-  };
-  [key: string]: string[];
-  [key: string]: {
-    [key: string]: string | boolean;
-  };
-  [key: string]: {
-    [key: string]: string[] | string;
+    [key: string]: string | string[] | boolean;
   };
 }
