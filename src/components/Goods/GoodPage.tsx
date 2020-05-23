@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 import './GoodsList.scss';
+import { ButtonPrimary } from '../Buttons';
+import { Icon } from '../Icon';
 import { getGoodDetail } from '../../helpers';
 
 export const GoodPage = () => {
@@ -70,11 +72,50 @@ export const GoodPage = () => {
                   className="GoodPage__ImageBig"
                 />
               </section>
+            </div>
+
+            <div className="GoodPage__Column">
+              <section className="GoodPage__NarrowBlock">
+                <div className="GoodPage__Price">
+                  <span className="GoodPage__Price--actual">
+                    {(good.discount > 0) ? good.price - (good.price / good.discount) : good.price}
+                  </span>
+                  {(good.discount > 0) && (
+                    <span className="GoodPage__Price--full">
+                      {good.price}
+                    </span>
+                  )}
+                </div>
+                <div className="GoodPage__Buttons">
+                  <div className="GoodPage__Buttons--main">
+                    <ButtonPrimary text="Add To Cart" />
+                  </div>
+                  <div className="GoodPage__Buttons--favorites">
+                    <Icon
+                      name="favorites"
+                      border
+                      inActive={false}
+                    />
+                  </div>
+                </div>
+              </section>
+            </div>
+
+            <div className="GoodPage__Column">
               <section className="GoodPage__Description">
+                <h2 className="GoodPage__SubHeading">About</h2>
                 {goodDetail.description}
               </section>
             </div>
-            <div className="GoodPage__Column"></div>
+
+            <div className="GoodPage__Column">
+              <section className="GoodPage__TechSpecs">
+                <h2 className="GoodPage__SubHeading">Tech specs</h2>
+                <ul>
+                  <li>1</li>
+                </ul>
+              </section>
+            </div>
           </div>
         </article>
       )}

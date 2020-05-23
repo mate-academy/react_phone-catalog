@@ -53,3 +53,18 @@ export const defaultGood: Good = {
   capacity: '',
   ram: '',
 };
+
+export const sortType = [
+  {
+    name: 'Low to High',
+    field: 'price',
+    type: 'number',
+    isReverse: false,
+  },
+  {
+    name: 'High to Low',
+    field: 'price',
+    type: 'number',
+    isReverse: true,
+  },
+];
