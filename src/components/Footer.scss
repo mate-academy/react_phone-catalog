@@ -1,23 +1,21 @@
 .footer {
-  height: 96px;
-  padding: 43px 152px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   border-top: 1px solid $border-section-color;
 
-  &__links {
-    width: 246px;
+  &__container {
+    height: 96px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
   }
 
   &__link {
-    font-size: 12px;
-    line-height: 11px;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: $body-secondary-color;
+    @extend .nav__item;
+    color: $secondary-color;
+    transition: color 0.2s;
+
+    &:hover {
+      color: $primary-color;
+    }
   }
 
   &__top-button-container {
@@ -32,18 +30,24 @@
     font-weight: 600;
     font-size: 12px;
     line-height: 15px;
-    color: $body-secondary-color;
+    color: $secondary-color;
   }
 
   &__top-button {
     width: 32px;
     height: 32px;
     border: 1px solid $border-btn-color;
-    background-image: url("../../images/icons/footer-top-arrow.svg");
+    background-color: #fff;
+    background-image: url("../images/icons/footer-top-arrow.svg");
     background-repeat: no-repeat;
     background-position: center;
     box-sizing: border-box;
     cursor: pointer;
     outline: none;
+    transition: border-color 0.2s;
+
+    &:hover {
+      border-color: $primary-color;
+    }
   }
 }

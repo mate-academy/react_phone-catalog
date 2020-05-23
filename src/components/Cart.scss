@@ -1,0 +1,8 @@
+.cart {
+  @extend .favorites;
+
+  &__button {
+    @extend .favorites__button;
+    background-image: url("../images/icons/cart-default.svg");
+  }
+}

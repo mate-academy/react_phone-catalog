@@ -1,0 +1,18 @@
+.header {
+  height: $header-height;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid $border-section-color;
+  box-sizing: border-box;
+
+  &__flex-wrap {
+    display: flex;
+    align-items: center;
+  }
+
+  &__logo {
+    margin-left: 24px;
+    margin-right: 64px;
+  }
+}
