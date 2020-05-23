@@ -7,7 +7,7 @@ export const SliderPhones = ({
   position,
   animationDuration,
   itemWidth,
-                               marginsWidth,
+  marginsWidth,
 }: SliderProps) => (
   <div
     className="slider"
