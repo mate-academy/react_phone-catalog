@@ -32,7 +32,9 @@ export const SortBy = () => {
         value={searchParams.get("sort_type") ||"" }
       >
         {sortTypeOptions.map(item => (
-          <option value={item.value}>{item.text}</option>
+          <option
+          key={item.value}
+          value={item.value}>{item.text}</option>
         ))}
       </select>
       </div>

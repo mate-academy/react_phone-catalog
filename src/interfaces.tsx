@@ -1,5 +1,5 @@
 
-export interface Link {
+export interface LinkType {
   address: string;
   title: string;
   isOuter: boolean;
@@ -22,15 +22,33 @@ export interface Product   {
 export interface CatalogPropsType {
   products: Product[];
   cart: Product[];
+  setCart: ([]) => void;
   favorites: Product[];
-  setFavorites: (favorites:Product[]) => void,
-  setCart: (cart:Product[]) => void,
+  setFavorites: ([]) => void;
 }
+
 export interface ProductCardPropsType {
   product: Product;
   cart: Product[];
+  setCart: ([]) => void;
   favorites: Product[];
-  setFavorites: (favorites:Product[]) => void,
-  setCart: (cart:Product[]) => void,
+  setFavorites: ([]) => void;
+}
+
+export interface ProductDetails {
+  additionalFeatures: string;
+  android: Object;
+  availability: string[];
+  battery: Object;
+  camera: Object;
+  connectivity: Object;
+  description: string;
+  display: Object;
+  hardware: Object;
+  id: string;
+  images: string[];
+  name: string;
+  sizeAndWeight: Object;
+  storage: Object;
 }
 

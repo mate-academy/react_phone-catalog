@@ -2,10 +2,10 @@
 import React from 'react';
 import './Nav.scss';
 import { NavLink } from 'react-router-dom';
-import { Link } from '../../interfaces';
-import {Logo} from '../Logo/Logo';
+import { LinkType } from '../../interfaces';
+import { Logo } from '../Logo/Logo';
 
-export const Nav = ({ links }: { links: Link[] }) => {
+export const Nav = ({ links }: { links: LinkType[] }) => {
   return (
     <nav className="Nav" >
       <ul className="Nav__list">
@@ -15,11 +15,16 @@ export const Nav = ({ links }: { links: Link[] }) => {
         {links.map(link => {
           const { address, title, isOuter } = link;
           return (
-            <li className="Nav__item">
+            <li
+            key={address + title + isOuter}
+            className="Nav__item">
               <label className="Nav__label">
-                {isOuter
+               {isOuter
                   ? <a className="Nav__link" target="_blank" href={address}>{title}</a>
-                  : <NavLink className="Nav__link" to={address}>{title}</NavLink>}
+                  : <NavLink
+                  className="Nav__link"
+                  exact
+                   to={address}>{title}</NavLink>}
 
               </label>
             </li>

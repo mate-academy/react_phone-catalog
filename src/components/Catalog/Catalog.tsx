@@ -7,14 +7,17 @@ import { Pagination } from '../Pagination/Pagination';
 import { SortBy } from '../SortBy/SortBy';
 import { ItemsOnPageSelect } from '../ItemsOnPageSelect/ItemsOnPageSelect';
 
-
 export const Catalog = ({
   products,
   cart,
+  setCart,
   favorites,
-  setFavorites,
-  setCart
+  setFavorites
 }: CatalogPropsType) => {
+
+
+
+
   const [filteredProducts, setFilteredProducts] = useState(products);
   const [sortedProducts, setSortedProducts] = useState(filteredProducts);
   const [productsOnPage, setProductsOnPage] = useState(sortedProducts);
@@ -22,7 +25,6 @@ export const Catalog = ({
   const location = useLocation();
 
   const searchParams = new URLSearchParams(location.search);
-  console.log("catalog",searchParams.toString())
   const filter = (searchParams.get("filter") || "").toLowerCase();
   const sortType = (searchParams.get("sort_type") || "age").toLowerCase();
   const page = parseInt(searchParams.get("page") || "1");
@@ -72,9 +74,19 @@ export const Catalog = ({
       .filter(product => product.name.toLowerCase().includes(filter)))
   }, [products, filter])
 
+  useEffect(() => {
+    searchParams.set("page", "1");
+    history.push({
+      search: searchParams.toString()
+    });
+  }, [perPage, sortType])
 
 
   useEffect(() => {
+    if (!perPage) {
+      setProductsOnPage(sortedProducts);
+      return;
+    }
     const start = (page - 1) * perPage;
     const end = start + perPage;
     setProductsOnPage(sortedProducts.slice(start, end))
@@ -86,8 +98,8 @@ export const Catalog = ({
         {`${filteredProducts.length} models`}
       </p>
       <div className="Catalog__select-wrapper">
-      <SortBy />
-      <ItemsOnPageSelect />
+        <SortBy />
+        <ItemsOnPageSelect />
       </div>
 
 
@@ -95,13 +107,13 @@ export const Catalog = ({
         <MainFrame
           products={productsOnPage}
           cart={cart}
+          setCart={setCart}
           favorites={favorites}
           setFavorites={setFavorites}
-          setCart={setCart}
         />
 
       </div>
-      <Pagination pagesCount={sortedProducts.length / perPage} />
+      <Pagination pagesCount={sortedProducts.length / perPage || 1} />
     </>
   )
 }

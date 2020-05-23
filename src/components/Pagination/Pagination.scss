@@ -1,0 +1,30 @@
+
+@import "../../mixins.scss";
+
+.Pagination {
+  display: flex;
+  justify-content: center;
+
+  &__button {
+    height: 32px;
+    width: 32px;
+    background-color: white;
+    border: 1px solid #e2e6e9;
+    box-sizing: border-box;
+    @include body-text;
+    color: black;
+    margin: 0 4px;
+    outline: none;
+
+    &--active {
+      background-color: #313237;
+      color: white;
+    }
+
+    &--arrow {
+      margin: 0 12px;
+    }
+
+  }
+}
+

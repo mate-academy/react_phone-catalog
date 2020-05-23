@@ -1,7 +1,8 @@
 
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import './ProductCard.scss';
-import { ProductCardPropsType } from '../../interfaces';
+import { ProductCardPropsType, Product } from '../../interfaces';
 
 
 
@@ -10,7 +11,9 @@ export const ProductCard = ({
   cart,
   setCart,
   favorites,
-  setFavorites }: ProductCardPropsType) => {
+  setFavorites,
+}: ProductCardPropsType) => {
+
   const {
     // age,
     // id,
@@ -27,40 +30,52 @@ export const ProductCard = ({
 
   const discountPrice = (price - price * discount / 100)
 
+  const [isFavorite, setIsFavorite] = useState(favorites.filter((item: Product) => item.id === product.id).length > 0);
 
-  const [isFavorite, setIsFavorite] = useState(favorites.filter(favorite => favorite.id === product.id).length > 0)
-  const [isInCart, setIsInCart] = useState(cart.filter(item => item.id === product.id).length > 0)
-  const [inCartCount, setInCartCount] = useState(cart.filter(item => item.id === product.id).length)
+  const [isInCart, setIsInCart] = useState(cart.filter((item: Product) => item.id === product.id).length > 0);
+
+  const [inCartCount, setInCartCount] = useState(cart.filter((item: Product) => item.id === product.id).length);
+
 
   useEffect(() => {
-    setIsInCart(cart.filter(item => item.id === product.id).length > 0);
-    setInCartCount(cart.filter(item => item.id === product.id).length);
+    setIsFavorite(favorites.filter((item: Product) => item.id === product.id).length > 0)
+  }, [favorites])
 
+  useEffect(() => {
+    setIsInCart(cart.filter((item: Product) => item.id === product.id).length > 0);
+    setInCartCount(cart.filter((item: Product) => item.id === product.id).length)
   }, [cart])
 
+
   const handleAddToCartClick = () => {
-      setCart([
+    setCart(
+      [
         ...cart,
         product
-      ]);
+      ]
+    );
+  }
 
-
-
+  const handleAddToFavClick = () => {
+    if (!isFavorite) {
+      setFavorites([...favorites, product]);
+    } else {
+      setFavorites([...favorites].filter(item => item.id !== product.id));
+    }
   }
 
 
-  const handleAddToFavClick = () => {
-    if(isFavorite) {
-      setFavorites([...favorites].filter(item => item.id !== product.id));
-      setIsFavorite(false);
-    } else {
-      setFavorites([
-        ...favorites,
-        product
-      ]);
-      setIsFavorite(true);
-    }
+  let base;
 
+  switch (product.type) {
+    case 'phone':
+      base = '/phones/';
+      break;
+    case 'tablet':
+      base = '/tablets/';
+      break;
+    default:
+      base = 'accessorise'
   }
 
   return (
@@ -69,7 +84,11 @@ export const ProductCard = ({
         className="ProductCard__img"
         src={imageUrl}
         alt={name} />
-      <p className="ProductCard__title">{name}</p>
+      <Link
+        to={base + product.id}
+        className="ProductCard__title">
+        {name}
+      </Link>
 
       {discount > 0
         ?
@@ -99,18 +118,18 @@ export const ProductCard = ({
       </div>
       <div className="ProductCard__buttons-wrapper">
         <button
-          className = {isInCart
+          className={isInCart
             ? "ProductCard__add-to-cart ProductCard__add-to-cart--added"
             : "ProductCard__add-to-cart"}
           onClick={handleAddToCartClick}
 
         >
           {!isInCart
-          ? `Add to cart`
-          : `${inCartCount}  added to cart`}
-          </button>
+            ? `Add to cart`
+            : `${inCartCount}  added to cart`}
+        </button>
         <button
-          className={ isFavorite
+          className={isFavorite
             ? "ProductCard__add-to-fav ProductCard__add-to-fav--added"
             : "ProductCard__add-to-fav"}
           onClick={handleAddToFavClick}

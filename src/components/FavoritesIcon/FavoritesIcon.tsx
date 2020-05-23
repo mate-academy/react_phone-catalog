@@ -1,9 +1,14 @@
 import './FavoritesIcon.scss'
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Product } from '../../interfaces';
+import {Product} from '../../interfaces';
 
-export const FavoritesIcon = ({ favorites }: { favorites: Product[] }) => {
+export const FavoritesIcon = ({favorites}:{favorites: Product[]}) => {
+
+
+
+
+
   return (
     <label
       className="FavoritesIcon"

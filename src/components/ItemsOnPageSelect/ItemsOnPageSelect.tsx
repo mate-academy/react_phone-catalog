@@ -16,14 +16,16 @@ export const ItemsOnPageSelect = () => {
   }
   return (
     <div className="ItemsOnPageSelect">
-    <span>Items on page</span><br></br>
+    <span className="ItemsOnPageSelect__legend">Items on page</span><br></br>
     <select
       className="ItemsOnPageSelect__per-page"
       onChange={handlePerPageChange}
       value={searchParams.get("per_page") || ""}
     >
       {perPageOptions.map(item => (
-        <option value={item}>{item}</option>
+        <option
+        key={item}
+        value={item}>{item}</option>
       ))}
     </select>
     </div>

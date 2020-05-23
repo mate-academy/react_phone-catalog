@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
+import './Pagination.scss';
 
 export const Pagination = ({ pagesCount }: { pagesCount: number }) => {
 
@@ -7,8 +8,6 @@ export const Pagination = ({ pagesCount }: { pagesCount: number }) => {
   const location = useLocation();
   const history = useHistory();
   const searchParams = new URLSearchParams(location.search);
-  console.log('pagination',searchParams.toString())
-
   const page = parseInt(searchParams.get("page") || "1");
   const buttons = new Array(Math.ceil(pagesCount)).fill(0);
   const isRightButtonDisabled = (page === buttons.length);
@@ -37,22 +36,28 @@ export const Pagination = ({ pagesCount }: { pagesCount: number }) => {
 
   useEffect(() => {
     searchParams.set("page", page.toString());
-      history.push({
-        search: searchParams.toString()
-      });
-  },[page])
+    history.push({
+      search: searchParams.toString()
+    });
+  }, [page])
 
   return (
-    <div>
+    <div className="Pagination">
       <button
+        className="Pagination__button Pagination__button--arrow"
         type='button'
         name="<"
         disabled={isLeftButtonDisabled}
         onClick={handleButtonClick}
-        >{"<"}
+      >{"<"}
       </button>
       {buttons.map((_, index) => (
         <button
+        key={index}
+        className={index + 1 === page
+        ? "Pagination__button Pagination__button--active"
+        : "Pagination__button"}
+
           name={index.toString()}
           onClick={handleButtonClick}
           type='button'
@@ -61,11 +66,12 @@ export const Pagination = ({ pagesCount }: { pagesCount: number }) => {
         </button>
       ))}
       <button
+        className="Pagination__button Pagination__button--arrow"
         type='button'
         name=">"
         disabled={isRightButtonDisabled}
         onClick={handleButtonClick}
-        >{">"}
+      >{">"}
       </button>
     </div>
 

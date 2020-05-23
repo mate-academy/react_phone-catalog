@@ -6,7 +6,10 @@ import './CartIcon.scss';
 import {Product} from '../../interfaces';
 import {NavLink} from 'react-router-dom';
 
-export const CartIcon = ({ cart }: { cart: Product[] }) => {
+export const CartIcon = ({cart}:{cart:Product[]}) => {
+
+
+
   return (
     <label
       className="CartIcon"
