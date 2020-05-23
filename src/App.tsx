@@ -5,6 +5,7 @@ import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { getGoods } from './helpers';
 import { BannerSlider } from './components/Banner';
+import { CardSlider } from './components/CardSlider';
 
 export const App = () => {
   const [goods, setGoods] = useState<Good[]>([]);
@@ -36,6 +37,7 @@ export const App = () => {
     <>
       <Header />
       <BannerSlider />
+      <CardSlider cards={goods.slice(0, 8)} title="Hot prices" />
       <div className="container">
         <section className="section">
           <h1>Main Page</h1>
