@@ -2,14 +2,14 @@ $color-elements: #e2e6e9;
 
 .Header {
   display: grid;
-  grid-template-columns: max-content 1fr max-content max-content max-content;
+  grid-template-columns: max-content max-content 1fr max-content max-content max-content;
   align-items: center;
   height: 3.5rem;
   box-sizing: border-box;
   border-bottom: 1px solid $color-elements;
 
   &__Logo {
-    margin: 0 1rem;
+    margin: 0 4rem 0 1rem;
   }
 
   &__Button {

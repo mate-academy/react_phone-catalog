@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 import './Header.scss';
 import { Nav } from '../Nav';
@@ -12,6 +12,14 @@ export const Header = () => (
     <Link to="/" className="Header__Logo">
       <img src="./img/logo.svg" alt="Logo" />
     </Link>
+    <NavLink
+      to="/"
+      exact
+      className="Nav__Link"
+      activeClassName="Nav__Link--active"
+    >
+      Home
+    </NavLink>
     <Nav links={sectionsLinks} />
     <Search />
     <Link to="/favorites" className="Header__Button">
