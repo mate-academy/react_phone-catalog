@@ -49,35 +49,6 @@ $color-green: #27ae60;
     }
   }
 
-  &__Pagination {
-    height: 2rem;
-    min-width: 2rem;
-    background-color: $color-white;
-    border: 1px solid $color-icons;
-
-    &--selected {
-      color: $color-white;
-      background-color: $color-primary;
-      border-color: $color-primary;
-    }
-
-    &:hover,
-    &:focus {
-      border-color: $color-primary;
-    }
-
-    &:disabled,
-    &[disabled] {
-      background-color: $color-white;
-      border-color: $color-elements;
-      cursor: default;
-
-      & .icon__image {
-        background-color: $color-elements;
-      }
-    }
-  }
-
   &__Icon {
     height: 4rem;
     min-width: 4rem;

@@ -87,6 +87,4 @@ export const sortType = [
   },
 ];
 
-export const Pagination = {
-  perPage: 12,
-};
+export const perPageDefault = 8;

@@ -1,94 +1,107 @@
 import React from 'react';
-import { PaginationButton } from './PaginationButton';
-import { PaginationSettings } from './PaginationSettings';
+import { useLocation, Link, Redirect } from 'react-router-dom';
+import cn from 'classnames';
 
 import './Pagination.scss';
 
 type Props = {
-  total: number,
-  perPage: number,
-  page: number,
-  changeActualPage: (value: number) => void,
-  setPerPage: (value: number) => void,
-}
+  qty: number;
+  perPage: number;
+};
 
-export const Pagination: React.FC<Props> = ({
-  total,
-  perPage,
-  page,
-  changeActualPage,
-  setPerPage,
-}) => {
-  const lastPage = Math.ceil(total / perPage);
+export const Pagination: React.FC<Props> = ({ qty, perPage }) => {
+  const pages = Array(Math.ceil(qty / perPage)).fill(0, 0, qty).map((p, i) => p + i + 1);
+  const location = useLocation();
+  const params = new URLSearchParams(location.search);
+  const currentPage = Number(params.get('page'));
+
+  if (currentPage <= 0) {
+    return (
+      <Redirect
+        to={{
+          pathname: `${location.pathname}`,
+          search: `?page=1&perPage=${perPage}`,
+        }}
+      />
+    );
+  }
+
+  if (currentPage > pages.length) {
+    return (
+      <Redirect
+        to={{
+          pathname: `${location.pathname}`,
+          search: `?page=${pages.length}&perPage=${perPage}`,
+        }}
+      />
+    );
+  }
+
+  const makeArrow = (type: string) => {
+    if (type === 'prev' && currentPage > 1) {
+      return (
+        <Link
+          to={`?page=${currentPage - 1}&perPage=${perPage}`}
+          className="Pagination__Button Pagination__Button--arrow-left"
+        />
+      );
+    }
+
+    if (type === 'prev') {
+      return (
+        <div className="
+          Pagination__Button
+          Pagination__Button--arrow-left
+          Pagination__Button--disabled"
+        />
+      );
+    }
+
+    if (type === 'next' && currentPage < pages.length) {
+      return (
+        <Link
+          to={`?page=${currentPage + 1}&perPage=${perPage}`}
+          className="Pagination__Button Pagination__Button--arrow-right"
+        />
+      );
+    }
+
+    if (type === 'next') {
+      return (
+        <div className="
+          Pagination__Button
+          Pagination__Button--arrow-right
+          Pagination__Button--disabled"
+        />
+      );
+    }
+
+    return '';
+  };
 
   return (
-    <nav className="pagination is-small is-full" role="navigation" aria-label="pagination">
-      <PaginationSettings
-        perPage={perPage}
-        setPerPage={setPerPage}
-      />
-      <button
-        type="button"
-        className="pagination-previous"
-        disabled={page === 1}
-        onClick={() => changeActualPage(page - 1)}
-      >
-        Previous
-      </button>
-      <button
-        type="button"
-        className="pagination-next"
-        disabled={page === lastPage}
-        onClick={() => changeActualPage(page + 1)}
-      >
-        Next page
-      </button>
-
-      <ul className="pagination-list">
-        {page > 2 && (
-          <>
-            <PaginationButton
-              page={1}
-              activePage={page}
-              onPageChange={() => changeActualPage(1)}
-            />
-            <span className="pagination__dots">...</span>
-          </>
-        )}
-
-        {page > 1 && (
-          <PaginationButton
-            page={page - 1}
-            activePage={page}
-            onPageChange={() => changeActualPage(page - 1)}
-          />
-        )}
-
-        <PaginationButton
-          page={page}
-          activePage={page}
-          onPageChange={() => changeActualPage(page)}
-        />
-
-        {page < lastPage && (
-          <PaginationButton
-            page={page + 1}
-            activePage={page}
-            onPageChange={() => changeActualPage(page + 1)}
-          />
-        )}
-
-        {page < lastPage - 1 && (
-          <>
-            <span className="pagination__dots">...</span>
-            <PaginationButton
-              page={lastPage}
-              activePage={page}
-              onPageChange={() => changeActualPage(lastPage)}
-            />
-          </>
-        )}
+    <nav className="Pagination">
+      <ul className="Pagination__List">
+        <li className="Pagination__Item">
+          {makeArrow('prev')}
+        </li>
+        {pages.map(page => (
+          <li className="Pagination__Item" key={page}>
+            <Link
+              to={`?page=${page}&perPage=${perPage}`}
+              className={cn({
+                Pagination__Button: true,
+                'Pagination__Button--active': page === currentPage,
+              })}
+            >
+              {page}
+            </Link>
+          </li>
+        ))}
+        <li className="Pagination__Item">
+          {makeArrow('next')}
+        </li>
       </ul>
     </nav>
   );
-}
+};
