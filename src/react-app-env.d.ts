@@ -9,6 +9,7 @@ type Link = {
 };
 
 interface Good {
+  [key: string]: number | string;
   age: number;
   type: string;
   id: string;
@@ -38,3 +39,16 @@ interface Banners {
   position?: number;
   alt?: string;
 }
+
+type SortType = {
+  name: string;
+  type: string;
+  field: 'price' | 'name';
+  typeField: 'string' | 'number';
+  isReverse: boolean;
+};
+
+type PerPage = {
+  name: string;
+  isDefault?: boolean;
+};

@@ -1,20 +1,47 @@
-import React, { useMemo } from 'react';
-import { useParams, useLocation } from 'react-router-dom';
+import React, { useMemo, useEffect } from 'react';
+import { useParams, useLocation, useHistory } from 'react-router-dom';
 
 import './GoodsSection.scss';
 import { GoodsList } from '../GoodsList';
-import { Pagination } from '../Pagination';
-import { sectionsLinks, perPageDefault } from '../../helpers';
+import { Pagination, SelectPerPage } from '../Pagination';
+import {
+  sectionsLinks,
+  perPageDefault,
+  sortTypes,
+  sortBy,
+  perPageSettings,
+} from '../../helpers';
+import { Select } from '../Select';
 
 type Props = {
   goods: Good[];
 };
 
 export const GoodsSection: React.FC<Props> = ({ goods }) => {
+  const history = useHistory();
   const location = useLocation();
-  const params = new URLSearchParams(location.search);
-  const currentPage = Number(params.get('page'));
-  const perPage = Number(params.get('perPage')) || perPageDefault;
+  const searchParams = new URLSearchParams(location.search);
+
+  const currentPage = Number(searchParams.get('page'));
+  const perPage = Number(searchParams.get('perPage')) || perPageDefault;
+
+  const sortParam = searchParams.get('sortBy');
+  const sortType = sortTypes.find(sort => sort.type === sortParam) || sortTypes[0];
+
+  useEffect(() => {
+    if (!sortType) {
+      searchParams.set('sortBy', sortTypes[0].type);
+    }
+
+    history.push({
+      search: searchParams.toString(),
+    });
+
+    return () => {
+      searchParams.delete('sortBy');
+      searchParams.delete('page');
+    };
+  }, []);
 
   const { section } = useParams();
   const sectionProp = sectionsLinks.find(link => link.url === `/${section}`);
@@ -23,7 +50,13 @@ export const GoodsSection: React.FC<Props> = ({ goods }) => {
     () => goods.filter(good => good.type === sectionProp?.type),
     [goods, sectionProp],
   );
-  const paginatedGoods = filteredGoods.slice(
+
+  const sortedGoods = useMemo(
+    () => sortBy(filteredGoods, sortType),
+    [filteredGoods, sortType],
+  );
+
+  const paginatedGoods = sortedGoods.slice(
     (currentPage || 1) * perPage - perPage,
     (currentPage || 1) * perPage,
   );
@@ -33,12 +66,25 @@ export const GoodsSection: React.FC<Props> = ({ goods }) => {
       <h1 className="GoodsSection__Heading">
         {sectionProp?.title || sectionProp?.name}
       </h1>
-      <div className="GoodsSection__Qty">
-        {`${filteredGoods.length} models`}
+      <div className="GoodsSection__Qty">{`${filteredGoods.length} models`}</div>
+
+      <div className="GoodsSection__Control">
+        {filteredGoods.length > 1 && (
+          <div className="GoodsSection__Select">
+            <div className="GoodsSection__SelectName">
+              Sort by
+            </div>
+            <Select options={sortTypes} />
+          </div>
+        )}
+        <div className="GoodSection__Select">
+          <div className="GoodsSection__SelectName">
+            Items on page
+          </div>
+          <SelectPerPage options={perPageSettings} />
+        </div>
       </div>
-      <div className="GoodsSection__Sort">
-        /
-      </div>
+
       <div className="GoodsSection__Container">
         <GoodsList goods={paginatedGoods} />
       </div>

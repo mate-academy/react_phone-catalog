@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLocation, Link, Redirect } from 'react-router-dom';
+import { useLocation, Link, Redirect, useHistory } from 'react-router-dom';
 import cn from 'classnames';
 
 import './Pagination.scss';
@@ -12,8 +12,16 @@ type Props = {
 export const Pagination: React.FC<Props> = ({ qty, perPage }) => {
   const pages = Array(Math.ceil(qty / perPage)).fill(0, 0, qty).map((p, i) => p + i + 1);
   const location = useLocation();
-  const params = new URLSearchParams(location.search);
-  const currentPage = Number(params.get('page'));
+  const history = useHistory();
+  const searchParams = new URLSearchParams(location.search);
+  const currentPage = Number(searchParams.get('page'));
+
+  const handleClick = (page: number) => {
+    searchParams.set('page', `${page}`);
+    history.push({
+      search: searchParams.toString(),
+    });
+  };
 
   if (currentPage <= 0) {
     return (
@@ -43,6 +51,7 @@ export const Pagination: React.FC<Props> = ({ qty, perPage }) => {
         <Link
           to={`?page=${currentPage - 1}&perPage=${perPage}`}
           className="Pagination__Button Pagination__Button--arrow-left"
+          onClick={() => handleClick(currentPage - 1)}
         />
       );
     }
@@ -62,6 +71,7 @@ export const Pagination: React.FC<Props> = ({ qty, perPage }) => {
         <Link
           to={`?page=${currentPage + 1}&perPage=${perPage}`}
           className="Pagination__Button Pagination__Button--arrow-right"
+          onClick={() => handleClick(currentPage + 1)}
         />
       );
     }

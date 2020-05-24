@@ -2,22 +2,21 @@ import React, { useState, useEffect } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
 import cn from 'classnames';
 
-import './Select.scss';
-
 type Props = {
-  options: SortType[];
+  options: PerPage[];
 };
 
-export const Select: React.FC<Props> = ({ options }) => {
+export const SelectPerPage: React.FC<Props> = ({ options }) => {
   const history = useHistory();
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
-  const currentSortType = searchParams.get('sortBy');
-  const currentOption = options.find(option => option.type === currentSortType) || options[0];
+  const currentPerPage = searchParams.get('perPage');
+  const currentOption = options.find(option => option.name === currentPerPage) || options[0];
   const [isOpen, setIsOpen] = useState(false);
 
-  const chooseSelectValue = (option: SortType) => {
-    searchParams.set('sortBy', option.type);
+  const chooseSelectValue = (option: PerPage) => {
+    searchParams.set('perPage', option.name);
+    searchParams.set('page', '1');
     history.push({
       search: searchParams.toString(),
     });
@@ -73,11 +72,11 @@ export const Select: React.FC<Props> = ({ options }) => {
       })}
       >
         {options.map(option => (
-          option.type !== currentOption.type && (
+          option.name !== currentOption.name && (
             <li
               key={option.name}
               className="Select__Item"
-              data-value={option.type}
+              data-value={option.name}
               onClick={() => chooseSelectValue(option)}
             >
               {option.name}
