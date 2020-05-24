@@ -40,45 +40,16 @@ export const Banners: Banners[] = [
   { alt: 'Third banner', path: '/images/banner3.jpg' },
 ];
 
-export const defaultGood: Good = {
-  age: 0,
-  type: '',
-  id: '',
-  imageUrl: '',
-  name: '',
-  snippet: '',
-  price: 0,
-  discount: 0,
-  screen: '',
-  capacity: '',
-  ram: '',
-};
+export const perPageDefault = 8;
 
-export const sortType = [
+export const perPageSettings = [
   {
-    name: 'Low to High',
-    field: 'price',
-    type: 'number',
-    isReverse: false,
+    name: '8',
   },
   {
-    name: 'High to Low',
-    field: 'price',
-    type: 'number',
-    isReverse: true,
+    name: '12',
   },
   {
-    name: 'A to Z',
-    field: 'name',
-    type: 'string',
-    isReverse: false,
-  },
-  {
-    name: 'Z to A',
-    field: 'name',
-    type: 'string',
-    isReverse: true,
+    name: '16',
   },
 ];
-
-export const perPageDefault = 8;

@@ -8,4 +8,24 @@ $color-secondary: #89939a;
     line-height: 21px;
     color: $color-secondary;
   }
+
+  &__Control {
+    display: grid;
+    grid-auto-flow: column;
+    gap: 1rem;
+    justify-content: left;
+    margin: 5rem 0 1.5rem;
+  }
+
+  &__Select {
+    width: max-content;
+  }
+
+  &__SelectName {
+    margin-bottom: 0.25rem;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: $color-secondary;
+  }
 }

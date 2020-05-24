@@ -1,34 +1,22 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
 import cn from 'classnames';
 
-import './Select.scss';
-
 type Props = {
-  options: SortType[];
+  options: PerPage[];
 };
 
-export const Select: React.FC<Props> = ({ options }) => {
-  const defaultSortType = options.find(item => item.isDefault) || options[0];
+export const SelectPerPage: React.FC<Props> = ({ options }) => {
   const history = useHistory();
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
-  const currentSortType = useMemo(
-    () => searchParams.get('sortBy') || defaultSortType,
-    [searchParams, options, defaultSortType],
-  );
-  const currentPage = useMemo(() => searchParams.get('page'), [searchParams]);
-  const currentPerPage = useMemo(() => searchParams.get('perPage'), [searchParams]);
-
-  const currentOption = options.find(option => option.type === currentSortType) || defaultSortType;
+  const currentPerPage = searchParams.get('perPage');
+  const currentOption = options.find(option => option.name === currentPerPage) || options[0];
   const [isOpen, setIsOpen] = useState(false);
 
-  const chooseSelectValue = (option: SortType) => {
-    searchParams.set('sortBy', option.type);
-
-    currentPage && searchParams.set('page', currentPage);
-    currentPerPage && searchParams.set('perPage', currentPerPage);
-
+  const chooseSelectValue = (option: PerPage) => {
+    searchParams.set('perPage', option.name);
+    searchParams.set('page', '1');
     history.push({
       search: searchParams.toString(),
     });
@@ -84,11 +72,11 @@ export const Select: React.FC<Props> = ({ options }) => {
       })}
       >
         {options.map(option => (
-          option.type !== currentOption.type && (
+          option.name !== currentOption.name && (
             <li
               key={option.name}
               className="Select__Item"
-              data-value={option.type}
+              data-value={option.name}
               onClick={() => chooseSelectValue(option)}
             >
               {option.name}
