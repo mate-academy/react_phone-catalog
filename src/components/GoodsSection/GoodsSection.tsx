@@ -32,9 +32,6 @@ export const GoodsSection: React.FC<Props> = ({ goods }) => {
       <div className="GoodsSection__Container">
         <GoodsList goods={filteredGoods} />
       </div>
-      <div className="Pagination">
-        123
-      </div>
     </section>
   );
 };
