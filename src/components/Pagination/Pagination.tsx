@@ -1,5 +1,10 @@
 import React from 'react';
-import { useLocation, Link, Redirect, useHistory } from 'react-router-dom';
+import {
+  useLocation,
+  Link,
+  Redirect,
+  useHistory,
+} from 'react-router-dom';
 import cn from 'classnames';
 
 import './Pagination.scss';
