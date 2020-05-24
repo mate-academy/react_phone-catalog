@@ -9,7 +9,7 @@ const carouselImages: CarouselSlide[] = [
   { id: 3, name: 'accessories', src: '../img/showcase-carousel/third.jpg' },
 ];
 
-export const ShowcaseCarousel = () => {
+export const Carousel = () => {
   const [toMove, setToMove] = useState<number>(0);
   const [activeSlide, setActiveSlide] = useState<number>(0);
   const slideWidth = 1040;

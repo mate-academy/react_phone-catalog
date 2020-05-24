@@ -2,9 +2,8 @@ import React from 'react';
 
 export const CarouselControl = ({
   changeSlide,
-  direction
-}: CarouselControlProps
-) => {
+  direction,
+}: CarouselControlProps) => {
   return (
     <button
       type="button"
@@ -12,5 +11,5 @@ export const CarouselControl = ({
       aria-label={`Slide ${direction}`}
       onClick={() => changeSlide(direction)}
     />
-  )
-}
+  );
+};

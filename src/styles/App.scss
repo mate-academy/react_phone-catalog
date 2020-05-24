@@ -1,11 +1,13 @@
 @import "reset";
 @import "vars";
+@import "mixins";
 @import "typography";
 @import "../components/Header";
 @import "../components/Logo";
 @import "../components/Nav";
 @import "../components/Favorites";
 @import "../components/Cart";
+@import "../components/SliderPhones";
 @import "../components/Phone";
 @import "../components/Carousel";
 @import "../components/Footer";

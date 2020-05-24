@@ -2,14 +2,14 @@
   font-family: "Mont";
   src: url("../fonts/Mont-Regular.otf");
   font-style: normal;
-  font-weight: 400;
+  font-weight: 500;
 }
 
 @font-face {
   font-family: "Mont";
   src: url("../fonts/Mont-SemiBold.otf");
   font-style: normal;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 @font-face {
@@ -21,6 +21,8 @@
 
 html {
   font-family: Mont, sans-serif;
+  color: $primary-color;
+  font-size: 16px;
 }
 
 h1 {

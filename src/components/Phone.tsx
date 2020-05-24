@@ -1,34 +1,39 @@
-import React, { FC } from 'react';
+import React from 'react';
 
-export const Phone: FC<Phone> = ({
+export const Phone = ({
   name, imageUrl, price, screen, capacity, ram, discount, id,
-}) => {
+}: Phone) => {
   return (
     <article className="phone">
       <img className="phone__image" src={imageUrl} alt={name} />
       <p className="phone__title">{name}</p>
       <div className="phone__price-container">
-        <h2 className="phone__price">
+        <span className="phone__price">
           $
           {price}
-        </h2>
+        </span>
         <span className="phone__discount">
           $
-          {discount}
+          {price * (discount / 100) + price}
         </span>
       </div>
+      <div className="phone__split-line" />
       <div className="phone__details">
         <div className="phone__details-container">
-          <p>Screen</p>
-          <p>{screen}</p>
+          <span className="phone__details-title">Screen</span>
+          <span className="phone__details-info">{screen}</span>
         </div>
         <div className="phone__details-container">
-          <p>Capacity</p>
-          <p>{`${parseInt(capacity, 10)} MB`}</p>
+          <span className="phone__details-title">Capacity</span>
+          <span className="phone__details-info">
+            {`${parseInt(capacity, 10)} MB`}
+          </span>
         </div>
         <div className="phone__details-container">
-          <p>RAM</p>
-          <p>{`${parseInt(ram, 10)} MB`}</p>
+          <span className="phone__details-title">RAM</span>
+          <span className="phone__details-info">
+            {`${parseInt(ram, 10)} MB`}
+          </span>
         </div>
       </div>
       <div className="phone__buttons__container">

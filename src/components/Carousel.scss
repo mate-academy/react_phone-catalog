@@ -33,13 +33,9 @@
     background-position: center;
     box-sizing: border-box;
     border: 1px solid $secondary-color;
-    transition: border-color 0.2s;
     outline: 0;
     cursor: pointer;
-
-    &:hover {
-      border-color: $primary-color;
-    }
+    @include hover(border-color, $primary-color, 0.2);
 
     &--left {
       background-image: url("../images/icons/left.svg");

@@ -14,49 +14,72 @@
   }
 
   &__title {
+    width: 224px;
+    height: 42px;
     margin-top: 24px;
     display: flex;
     align-self: flex-start;
-    font-weight: 500;
     font-size: 14px;
     line-height: 21px;
     color: $primary-color;
   }
 
   &__price-container {
-    margin-top: 6.5px;
     display: flex;
     align-self: flex-start;
+    margin-top: 6px;
   }
 
   &__price {
     margin-right: 8px;
     display: flex;
     flex-direction: row;
+    font-size: 22px;
+    line-height: 31px;
+    font-weight: bold;
   }
 
   &__discount {
-    font-size: 20px;
-    font-weight: 500;
-    line-height: 28px;
+    font-size: 22px;
+    line-height: 30px;
     text-decoration-line: line-through;
     color: $secondary-color;
   }
 
+  &__split-line {
+    width: 100%;
+    border: 1px solid $border-section-color;
+    margin-top: 8px;
+    margin-bottom: 16px;
+  }
+
   &__details-container {
-    margin-top: 6.5px;
     display: flex;
     justify-content: space-between;
+    margin-bottom: 8px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 
   &__details {
-    width: 224px;
-    height: 77px;
+    width: 100%;
+
+    &-title {
+      color: $secondary-color;
+    }
+
+    &-info,
+    &-title {
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 15px;
+    }
   }
 
   &__buttons__container {
-    position: relative;
-    margin-top: 16px;
+    margin-top: 18px;
     display: flex;
   }
 
@@ -64,10 +87,12 @@
     margin-right: 8px;
     width: 176px;
     height: 40px;
-    border: 0;
+    font-family: "Mont", sans-serif;
     background: $primary-color;
     color: white;
+    border: 0;
     cursor: pointer;
+    @include hover(box-shadow, 0 3px 13px rgba(23, 32, 49, 0.26), 0.3);
   }
 
   &__button-favorite {
@@ -80,6 +105,7 @@
     border: 1px solid $border-btn-color;
     box-sizing: border-box;
     cursor: pointer;
+    @include hover(border-color, $primary-color, 0.2);
 
     &-checkmark {
       position: absolute;
