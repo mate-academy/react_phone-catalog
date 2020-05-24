@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useCallback } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import cn from 'classnames';
 
@@ -9,8 +9,6 @@ export const Search = () => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const query = searchParams.get('query') || '';
-
-  const [visibleQuery, setVisibleQuery] = useState(query);
 
   const updateQuery = useCallback(
     (actualQuery: string): void => {
@@ -23,7 +21,6 @@ export const Search = () => {
   const handleQueryUpdate = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
 
-    setVisibleQuery(value);
     updateQuery(value);
   };
 
@@ -33,7 +30,7 @@ export const Search = () => {
         <input
           type="text"
           className="Search__Input"
-          value={visibleQuery}
+          value={query}
           placeholder="Search in phones..."
           onChange={handleQueryUpdate}
         />
