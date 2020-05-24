@@ -4,9 +4,9 @@ import { CarouselRectangles } from './CarouselRectangles';
 import { CarouselControl } from './CarouselControl';
 
 const carouselImages: CarouselSlide[] = [
-  { id: 1, name: 'phones', src: '../img/showcase-carousel/first.jpg' },
-  { id: 2, name: 'tablets', src: '../img/showcase-carousel/second.jpg' },
-  { id: 3, name: 'accessories', src: '../img/showcase-carousel/third.jpg' },
+  { id: 1, name: 'phones', src: './img/showcase-carousel/first.jpg' },
+  { id: 2, name: 'tablets', src: './img/showcase-carousel/second.jpg' },
+  { id: 3, name: 'accessories', src: './img/showcase-carousel/third.jpg' },
 ];
 
 export const Carousel = () => {
