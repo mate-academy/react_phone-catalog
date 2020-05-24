@@ -1,20 +1,31 @@
 import React, { useMemo } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 
 import './GoodsSection.scss';
 import { GoodsList } from '../GoodsList';
-import { sectionsLinks, sortType } from '../../helpers';
+import { Pagination } from '../Pagination';
+import { sectionsLinks, perPageDefault } from '../../helpers';
 
 type Props = {
   goods: Good[];
 };
 
 export const GoodsSection: React.FC<Props> = ({ goods }) => {
+  const location = useLocation();
+  const params = new URLSearchParams(location.search);
+  const currentPage = Number(params.get('page'));
+  const perPage = Number(params.get('perPage')) || perPageDefault;
+
   const { section } = useParams();
   const sectionProp = sectionsLinks.find(link => link.url === `/${section}`);
+
   const filteredGoods = useMemo(
     () => goods.filter(good => good.type === sectionProp?.type),
     [goods, sectionProp],
+  );
+  const paginatedGoods = filteredGoods.slice(
+    (currentPage || 1) * perPage - perPage,
+    (currentPage || 1) * perPage,
   );
 
   return (
@@ -26,12 +37,16 @@ export const GoodsSection: React.FC<Props> = ({ goods }) => {
         {`${filteredGoods.length} models`}
       </div>
       <div className="GoodsSection__Sort">
-        {/* {sortType.map(type = )} */}
-        {console.log(sortType)}
+        /
       </div>
       <div className="GoodsSection__Container">
-        <GoodsList goods={filteredGoods} />
+        <GoodsList goods={paginatedGoods} />
       </div>
+      {filteredGoods.length > perPage && (
+        <div className="Pagination">
+          <Pagination qty={filteredGoods.length} perPage={perPage} />
+        </div>
+      )}
     </section>
   );
 };
