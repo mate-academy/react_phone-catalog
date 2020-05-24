@@ -1,15 +1,15 @@
 import React, { useMemo } from 'react';
 import { useParams } from 'react-router-dom';
 
-import './GoodsList.scss';
-import { GoodItem } from './GoodItem';
+import './GoodsSection.scss';
+import { GoodsList } from '../GoodsList';
 import { sectionsLinks, sortType } from '../../helpers';
 
 type Props = {
   goods: Good[];
 };
 
-export const GoodsList: React.FC<Props> = ({ goods }) => {
+export const GoodsSection: React.FC<Props> = ({ goods }) => {
   const { section } = useParams();
   const sectionProp = sectionsLinks.find(link => link.url === `/${section}`);
   const filteredGoods = useMemo(
@@ -18,21 +18,22 @@ export const GoodsList: React.FC<Props> = ({ goods }) => {
   );
 
   return (
-    <section className="section GoodsList">
-      <h1 className="GoodsList__Heading">
+    <section className="section GoodsSection">
+      <h1 className="GoodsSection__Heading">
         {sectionProp?.title || sectionProp?.name}
       </h1>
-      <div className="GoodsList__Qty">
+      <div className="GoodsSection__Qty">
         {`${filteredGoods.length} models`}
       </div>
-      <div className="GoodList__Sort">
+      <div className="GoodsSection__Sort">
         {/* {sortType.map(type = )} */}
         {console.log(sortType)}
       </div>
-      <div className="GoodsList__Container">
-        {filteredGoods.map(good => (
-          <GoodItem good={good} key={good.id} />
-        ))}
+      <div className="GoodsSection__Container">
+        <GoodsList goods={filteredGoods} />
+      </div>
+      <div className="Pagination">
+        123
       </div>
     </section>
   );

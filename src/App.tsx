@@ -5,7 +5,8 @@ import './App.scss';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { getGoods } from './helpers';
-import { GoodsList, GoodPage } from './components/Goods';
+import { GoodsSection } from './components/GoodsSection';
+import { GoodPage } from './components/GoodPage';
 
 export const App = () => {
   const [goods, setGoods] = useState<Good[]>([]);
@@ -42,8 +43,8 @@ export const App = () => {
 
         <Switch>
           <Route path="/" exact render={() => 'Store'} />
-          <Route path="/:section" exact render={() => <GoodsList goods={goods} />} />
-          <Route path="/:section/:good" render={() => <GoodPage />} />
+          <Route path="/:section" exact render={() => <GoodsSection goods={goods} />} />
+          <Route path="/:section/:good" exact render={() => <GoodPage goods={goods} />} />
         </Switch>
       </div>
       <Footer />

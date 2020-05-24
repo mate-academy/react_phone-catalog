@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
-import './GoodsList.scss';
+import './GoodPage.scss';
 import { ButtonPrimary } from '../Buttons';
 import { Icon } from '../Icon';
 import { getGoodDetail } from '../../helpers';
 
-export const GoodPage = () => {
+type Props = {
+  goods: Good[];
+};
+
+export const GoodPage: React.FC<Props> = ({ goods }) => {
   const { good } = useParams();
 
   const [goodDetail, setGoodDetail] = useState<GoodDetail>();
@@ -21,8 +25,10 @@ export const GoodPage = () => {
 
     try {
       const data = await getGoodDetail(goodId);
+      const goodInfo = goods.find(item => item.id === goodId);
+      const preparedGoodDetail = { ...data, ...goodInfo };
 
-      setGoodDetail(data);
+      setGoodDetail(preparedGoodDetail);
       setIsLoaded(true);
     } catch (error) {
       setErrorMessage(String(error));

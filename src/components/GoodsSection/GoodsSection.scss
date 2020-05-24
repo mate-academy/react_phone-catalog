@@ -1,0 +1,11 @@
+$color-secondary: #89939a;
+
+.GoodsSection {
+  &__Qty {
+    margin-top: 0.5rem;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $color-secondary;
+  }
+}

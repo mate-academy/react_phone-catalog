@@ -67,4 +67,20 @@ export const sortType = [
     type: 'number',
     isReverse: true,
   },
+  {
+    name: 'A to Z',
+    field: 'name',
+    type: 'string',
+    isReverse: false,
+  },
+  {
+    name: 'Z to A',
+    field: 'name',
+    type: 'string',
+    isReverse: true,
+  },
 ];
+
+export const Pagination = {
+  perPage: 12,
+};
