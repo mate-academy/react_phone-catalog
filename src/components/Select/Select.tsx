@@ -13,8 +13,15 @@ export const Select: React.FC<Props> = ({ options }) => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const currentSortType = searchParams.get('sortBy');
-  const currentOption = options.find(option => option.type === currentSortType) || options[0];
+  const currentOption = options.find(option => option.type === currentSortType) || options[1];
   const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    searchParams.set('sortBy', currentOption.type || options[1].type);
+    history.push({
+      search: searchParams.toString(),
+    });
+  }, []);
 
   const chooseSelectValue = (option: SortType) => {
     searchParams.set('sortBy', option.type);

@@ -1,4 +1,4 @@
-import React, { useMemo, useEffect } from 'react';
+import React, { useMemo } from 'react';
 import { useParams, useLocation, useHistory } from 'react-router-dom';
 
 import './GoodsSection.scss';
@@ -26,22 +26,16 @@ export const GoodsSection: React.FC<Props> = ({ goods }) => {
   const perPage = Number(searchParams.get('perPage')) || perPageDefault;
 
   const sortParam = searchParams.get('sortBy');
-  const sortType = sortTypes.find(sort => sort.type === sortParam) || sortTypes[0];
+  const sortType = sortTypes.find((sort: SortType) => sort.type === sortParam) || sortTypes[1];
 
-  useEffect(() => {
-    if (!sortType) {
-      searchParams.set('sortBy', sortTypes[0].type);
-    }
-
+  if (!sortType) {
+    searchParams.set('sortBy', sortTypes[1].type);
     history.push({
       search: searchParams.toString(),
     });
+  }
 
-    return () => {
-      searchParams.delete('sortBy');
-      searchParams.delete('page');
-    };
-  }, []);
+  console.log(location)
 
   const { section } = useParams();
   const sectionProp = sectionsLinks.find(link => link.url === `/${section}`);
