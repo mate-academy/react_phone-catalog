@@ -1,0 +1,71 @@
+.carousel {
+  position: relative;
+  width: 1136px;
+
+  &__container {
+    width: 1040px;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+
+  &__list {
+    display: flex;
+  }
+
+  &__item {
+    width: 1040px;
+    height: 400px;
+  }
+
+  &__image {
+    width: 1040px;
+    height: 400px;
+    object-fit: cover;
+  }
+
+  &__btn {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 32px;
+    background-color: #fff;
+    background-repeat: no-repeat;
+    background-position: center;
+    box-sizing: border-box;
+    border: 1px solid $secondary-color;
+    outline: 0;
+    cursor: pointer;
+    @include hover(border-color, $primary-color, 0.2);
+
+    &--left {
+      background-image: url("../images/icons/left.svg");
+      left: 0;
+    }
+
+    &--right {
+      background-image: url("../images/icons/right.svg");
+      right: 0;
+    }
+  }
+
+  &__rectangles {
+    position: absolute;
+    bottom: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+  }
+
+  &__rectangle {
+    display: block;
+    width: 14px;
+    height: 4px;
+    margin-right: 14px;
+    background-color: $secondary-color;
+    transition: background-color 0.5s;
+
+    &--active {
+      background-color: $primary-color;
+    }
+  }
+}

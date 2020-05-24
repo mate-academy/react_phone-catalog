@@ -15,7 +15,7 @@ export const SliderControl = ({
   return (
     <button
       type="button"
-      aria-label={dirLeft ? 'Slide left' : 'Slide right'}
+      aria-label={`Slide ${direction}`}
       className={classNames({
         slider__button: true,
         [`slider__button-${direction}`]: true,

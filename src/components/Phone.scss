@@ -19,16 +19,15 @@
     margin-top: 24px;
     display: flex;
     align-self: flex-start;
-    font-weight: 500;
     font-size: 14px;
     line-height: 21px;
     color: $primary-color;
   }
 
   &__price-container {
-    margin-top: 6.5px;
     display: flex;
     align-self: flex-start;
+    margin-top: 6px;
   }
 
   &__price {
@@ -42,43 +41,45 @@
 
   &__discount {
     font-size: 22px;
-    font-weight: 500;
     line-height: 30px;
     text-decoration-line: line-through;
     color: $secondary-color;
   }
 
   &__split-line {
-    width: 224px;
-    height: 1px;
-    margin-top: 6px;
+    width: 100%;
+    border: 0.5px solid $border-section-color;
+    margin-top: 8px;
     margin-bottom: 16px;
-    background-image: url("../images/line.png");
   }
 
   &__details-container {
-    margin-top: 5px;
     display: flex;
     justify-content: space-between;
+    margin-bottom: 8px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 
   &__details {
-    width: 224px;
+    width: 100%;
 
     &-title {
-      font-size: 12px;
-      line-height: 15px;
       color: $secondary-color;
     }
 
-    &-info {
+    &-info,
+    &-title {
+      font-weight: 600;
       font-size: 12px;
       line-height: 15px;
     }
   }
 
   &__buttons__container {
-    margin-top: 16px;
+    margin-top: 18px;
     display: flex;
   }
 

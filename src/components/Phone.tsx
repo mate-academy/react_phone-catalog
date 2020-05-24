@@ -25,11 +25,15 @@ export const Phone = ({
         </div>
         <div className="phone__details-container">
           <span className="phone__details-title">Capacity</span>
-          <span className="phone__details-info">{`${parseInt(capacity, 10)} MB`}</span>
+          <span className="phone__details-info">
+            {`${parseInt(capacity, 10)} MB`}
+          </span>
         </div>
         <div className="phone__details-container">
           <span className="phone__details-title">RAM</span>
-          <span className="phone__details-info">{`${parseInt(ram, 10)} MB`}</span>
+          <span className="phone__details-info">
+            {`${parseInt(ram, 10)} MB`}
+          </span>
         </div>
       </div>
       <div className="phone__buttons__container">

@@ -21,11 +21,7 @@
     display: block;
     line-height: $header-height;
     color: $secondary-color;
-    transition: color 0.2s;
-
-    &:hover {
-      color: $primary-color;
-    }
+    @include hover(color, $primary-color, 0.2);
 
     &--active {
       position: relative;
