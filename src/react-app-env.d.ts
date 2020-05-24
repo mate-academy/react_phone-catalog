@@ -63,3 +63,25 @@ interface PhoneDetails {
     ram: string;
   };
 }
+
+interface CarouselSlide {
+  id: number;
+  name: string;
+  src: string;
+}
+
+type CarouselSlidesProps = {
+  slides: CarouselSlide[];
+  toMove: number;
+  duration: number;
+};
+
+type CarouselRectanglesProps = {
+  slides: CarouselSlide[];
+  active: number;
+};
+
+type CarouselControlProps = {
+  changeSlide: (value: string) => void;
+  direction: string;
+}

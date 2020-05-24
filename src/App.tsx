@@ -4,7 +4,7 @@ import { Header } from './components/Header';
 
 const App = () => {
   return (
-    <div className="App">
+    <div className="app">
       <h1 className="visually-hidden">React Phone Catalog</h1>
       <Header />
       <Footer />
