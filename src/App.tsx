@@ -9,6 +9,7 @@ import { BannerSlider } from './components/Banner';
 import { GoodsSection } from './components/GoodsSection';
 import { GoodPage } from './components/GoodPage';
 import { CardSlider } from './components/CardSlider';
+import { HomePage } from './components/HomePage';
 
 export const App = () => {
   const [goods, setGoods] = useState<Good[]>([]);
@@ -39,14 +40,11 @@ export const App = () => {
   return (
     <>
       <Header />
-      <BannerSlider />
-      <CardSlider cards={goods.slice(0, 8)} title="Hot prices" />
       <div className="container">
         {errorMessage && <div>{errorMessage}</div>}
         {isLoading && isLoaded && ''}
-
         <Switch>
-          <Route path="/" exact render={() => 'Store'} />
+          <Route path="/" exact render={() => <HomePage goods={goods} />} />
           <Route path="/:section" exact render={() => <GoodsSection goods={goods} />} />
           <Route path="/:section/:good" exact render={() => <GoodPage goods={goods} />} />
         </Switch>
