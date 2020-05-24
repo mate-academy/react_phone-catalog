@@ -5,10 +5,8 @@ import './App.scss';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { getGoods } from './helpers';
-import { BannerSlider } from './components/Banner';
 import { GoodsSection } from './components/GoodsSection';
 import { GoodPage } from './components/GoodPage';
-import { CardSlider } from './components/CardSlider';
 import { HomePage } from './components/HomePage';
 
 export const App = () => {
