@@ -1,6 +1,7 @@
 import React from 'react';
 import { BannerSlider } from '../Banner';
 import { CardSlider } from '../CardSlider';
+import { sldierFilter } from '../../helpers';
 
 interface Props {
   goods: Good[];
@@ -8,12 +9,14 @@ interface Props {
 
 
 export const HomePage: React.FC<Props> = ({ goods }) => {
+  const hotPrices = sldierFilter(goods, 'hotPrice');
+  const highPrices = sldierFilter(goods, 'highPrices');
 
   return (
     <>
       <BannerSlider />
-      <CardSlider cards={goods.slice(0, 8)} title="Hot prices" />
-      <CardSlider cards={goods.slice(0, 8)} title="Brand new models" />
+      <CardSlider cards={hotPrices} title="Hot prices" />
+      <CardSlider cards={highPrices} title="Brand new models" />
     </>
   );
 };
