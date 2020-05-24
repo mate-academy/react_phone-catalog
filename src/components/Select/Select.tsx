@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
 import cn from 'classnames';
 
@@ -9,22 +9,26 @@ type Props = {
 };
 
 export const Select: React.FC<Props> = ({ options }) => {
+  const defaultSortType = options.find(item => item.isDefault) || options[0];
   const history = useHistory();
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
-  const currentSortType = searchParams.get('sortBy');
-  const currentOption = options.find(option => option.type === currentSortType) || options[1];
-  const [isOpen, setIsOpen] = useState(false);
+  const currentSortType = useMemo(
+    () => searchParams.get('sortBy') || defaultSortType,
+    [searchParams, options, defaultSortType],
+  );
+  const currentPage = useMemo(() => searchParams.get('page'), [searchParams]);
+  const currentPerPage = useMemo(() => searchParams.get('perPage'), [searchParams]);
 
-  useEffect(() => {
-    searchParams.set('sortBy', currentOption.type || options[1].type);
-    history.push({
-      search: searchParams.toString(),
-    });
-  }, []);
+  const currentOption = options.find(option => option.type === currentSortType) || defaultSortType;
+  const [isOpen, setIsOpen] = useState(false);
 
   const chooseSelectValue = (option: SortType) => {
     searchParams.set('sortBy', option.type);
+
+    currentPage && searchParams.set('page', currentPage);
+    currentPerPage && searchParams.set('perPage', currentPerPage);
+
     history.push({
       search: searchParams.toString(),
     });

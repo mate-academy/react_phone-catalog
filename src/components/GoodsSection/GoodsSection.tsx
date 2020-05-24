@@ -6,7 +6,6 @@ import { GoodsList } from '../GoodsList';
 import { Pagination, SelectPerPage } from '../Pagination';
 import {
   sectionsLinks,
-  perPageDefault,
   sortTypes,
   sortBy,
   perPageSettings,
@@ -23,7 +22,18 @@ export const GoodsSection: React.FC<Props> = ({ goods }) => {
   const searchParams = new URLSearchParams(location.search);
 
   const currentPage = Number(searchParams.get('page'));
-  const perPage = Number(searchParams.get('perPage')) || perPageDefault;
+  const perPageDefault = perPageSettings[0].name;
+  const perPageParam = useMemo(() => searchParams.get('perPage'), [searchParams]);
+  let perPage = Number(perPageDefault);
+
+  if (perPageSettings.find(item => item.name === perPageParam)) {
+    perPage = Number(perPageSettings.find(item => item.name === perPageParam)?.name);
+  } else {
+    searchParams.set('perPage', perPageDefault);
+    history.push({
+      search: searchParams.toString(),
+    });
+  }
 
   const sortParam = searchParams.get('sortBy');
   const sortType = sortTypes.find((sort: SortType) => sort.type === sortParam) || sortTypes[1];
@@ -34,8 +44,6 @@ export const GoodsSection: React.FC<Props> = ({ goods }) => {
       search: searchParams.toString(),
     });
   }
-
-  console.log(location)
 
   const { section } = useParams();
   const sectionProp = sectionsLinks.find(link => link.url === `/${section}`);
@@ -64,19 +72,22 @@ export const GoodsSection: React.FC<Props> = ({ goods }) => {
 
       <div className="GoodsSection__Control">
         {filteredGoods.length > 1 && (
-          <div className="GoodsSection__Select">
-            <div className="GoodsSection__SelectName">
-              Sort by
+          <>
+            <div className="GoodsSection__Select">
+              <div className="GoodsSection__SelectName">
+                Sort by
+              </div>
+              <Select options={sortTypes} />
             </div>
-            <Select options={sortTypes} />
-          </div>
+
+            <div className="GoodSection__Select">
+              <div className="GoodsSection__SelectName">
+                Items on page
+              </div>
+              <SelectPerPage options={perPageSettings} />
+            </div>
+          </>
         )}
-        <div className="GoodSection__Select">
-          <div className="GoodsSection__SelectName">
-            Items on page
-          </div>
-          <SelectPerPage options={perPageSettings} />
-        </div>
       </div>
 
       <div className="GoodsSection__Container">

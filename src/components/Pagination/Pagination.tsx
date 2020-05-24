@@ -1,7 +1,6 @@
 import React from 'react';
 import {
   useLocation,
-  Link,
   Redirect,
   useHistory,
 } from 'react-router-dom';
@@ -15,13 +14,15 @@ type Props = {
 };
 
 export const Pagination: React.FC<Props> = ({ qty, perPage }) => {
-  const pages = Array(Math.ceil(qty / perPage)).fill(0, 0, qty).map((p, i) => p + i + 1);
   const location = useLocation();
   const history = useHistory();
   const searchParams = new URLSearchParams(location.search);
   const currentPage = Number(searchParams.get('page'));
+  const currentSort = searchParams.get('sortBy');
+  const pages = Array(Math.ceil(qty / Number(perPage))).fill(0, 0, qty).map((p, i) => p + i + 1);
 
   const handleClick = (page: number) => {
+    currentSort && searchParams.set('sortBy', currentSort);
     searchParams.set('page', `${page}`);
     history.push({
       search: searchParams.toString(),
@@ -50,11 +51,11 @@ export const Pagination: React.FC<Props> = ({ qty, perPage }) => {
     );
   }
 
-  const makeArrow = (type: string) => {
+  const getArrow = (type: string) => {
     if (type === 'prev' && currentPage > 1) {
       return (
-        <Link
-          to={`?page=${currentPage - 1}&perPage=${perPage}`}
+        <button
+          type="button"
           className="Pagination__Button Pagination__Button--arrow-left"
           onClick={() => handleClick(currentPage - 1)}
         />
@@ -73,8 +74,8 @@ export const Pagination: React.FC<Props> = ({ qty, perPage }) => {
 
     if (type === 'next' && currentPage < pages.length) {
       return (
-        <Link
-          to={`?page=${currentPage + 1}&perPage=${perPage}`}
+        <button
+          type="button"
           className="Pagination__Button Pagination__Button--arrow-right"
           onClick={() => handleClick(currentPage + 1)}
         />
@@ -98,23 +99,24 @@ export const Pagination: React.FC<Props> = ({ qty, perPage }) => {
     <nav className="Pagination">
       <ul className="Pagination__List">
         <li className="Pagination__Item">
-          {makeArrow('prev')}
+          {getArrow('prev')}
         </li>
         {pages.map(page => (
           <li className="Pagination__Item" key={page}>
-            <Link
-              to={`?page=${page}&perPage=${perPage}`}
+            <button
+              type="button"
               className={cn({
                 Pagination__Button: true,
                 'Pagination__Button--active': page === currentPage,
               })}
+              onClick={() => handleClick(page)}
             >
               {page}
-            </Link>
+            </button>
           </li>
         ))}
         <li className="Pagination__Item">
-          {makeArrow('next')}
+          {getArrow('next')}
         </li>
       </ul>
     </nav>

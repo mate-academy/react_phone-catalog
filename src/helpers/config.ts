@@ -1,11 +1,5 @@
 export const sectionsLinks: Link[] = [
   {
-    name: 'Home',
-    title: 'Store',
-    url: '/',
-    exact: true,
-  },
-  {
     name: 'Phones',
     title: 'Mobile Phones',
     url: '/phones',

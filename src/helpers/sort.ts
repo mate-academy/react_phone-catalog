@@ -12,6 +12,7 @@ export const sortTypes: SortType[] = [
     typeField: 'number',
     type: 'expensive',
     isReverse: true,
+    isDefault: true,
   },
   {
     name: 'Goods :A to Z',

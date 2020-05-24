@@ -46,9 +46,9 @@ type SortType = {
   field: 'price' | 'name';
   typeField: 'string' | 'number';
   isReverse: boolean;
+  isDefault?: true;
 };
 
 type PerPage = {
   name: string;
-  isDefault?: boolean;
 };
