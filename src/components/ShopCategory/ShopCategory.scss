@@ -1,0 +1,66 @@
+$color-primary: #313237;
+$color-secondary: #89939a;
+
+.Category {
+  margin: 0 auto 5rem;
+
+  &__List {
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+  }
+
+  &__Link {
+    text-decoration: none;
+  }
+
+  &__Image {
+    width: 23rem;
+    height: 23rem;
+    transition: all 0.8s;
+
+    &:hover {
+      transform: scale(1.25);
+    }
+
+    &-container {
+      overflow: hidden;
+      width: 23rem;
+      height: 23rem;
+    }
+  }
+
+  &__Title {
+    &-text {
+      font-weight: bold;
+      font-size: 2rem;
+      letter-spacing: -0.01em;
+      color: $color-primary;
+    }
+
+    &-type {
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 26px;
+      color: $color-primary;
+    }
+
+    &-count {
+      font-style: normal;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 21px;
+      color: $color-secondary;
+    }
+
+  }
+
+  &__Info {
+    margin-top: 1.5rem;
+  }
+
+  &__Paragraph {
+    margin: 0;
+    padding: 0;
+  }
+}

@@ -4,18 +4,24 @@ export const sectionsLinks: Link[] = [
     title: 'Mobile Phones',
     url: '/phones',
     type: 'phone',
+    imgUrl: 'images/category/phones.png',
+    alt: 'Mobile Phones',
   },
   {
     name: 'Tablets',
     title: 'Tablets',
     url: '/tablets',
     type: 'tablet',
+    imgUrl: 'images/category/Tablets.png',
+    alt: 'Tablets',
   },
   {
     name: 'Accessories',
     title: 'Accessories',
     url: '/accessories',
     type: 'accessories',
+    imgUrl: 'images/category/Accessoires.png',
+    alt: 'Accessories',
   },
 ];
 
