@@ -1,0 +1,111 @@
+$color-primary: #313237;
+$color-secondary: #89939a;
+$color-elements: #e2e6e9;
+
+.GoodsList {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2.5rem 1rem;
+  margin-top: 1.5rem;
+}
+
+.GoodItem {
+  position: relative;
+  padding: 2rem 1.5rem;
+  border: 1px solid $color-elements;
+  transition: box-shadow 0.3s;
+
+  &:hover,
+  &:focus {
+    box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+  }
+
+  &__Link {
+    text-decoration: none;
+  }
+
+  &__Image {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    object-position: center;
+    transform-origin: center;
+    transition: transform 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+
+    &:hover,
+    &:focus {
+      transform: scale(1.1);
+    }
+  }
+
+  &__Heading {
+    height: 3rem;
+    margin-top: 1.5rem;
+    color: $color-primary;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    overflow: hidden;
+  }
+
+  &__Price {
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 28px;
+
+    &--actual {
+      color: $color-primary;
+      font-weight: 600;
+
+      &::before {
+        content: "$";
+      }
+    }
+
+    &--full {
+      padding-left: 0.5rem;
+      color: $color-secondary;
+      text-decoration-line: line-through;
+
+      &::before {
+        content: "$";
+      }
+    }
+  }
+
+  &__PropsList {
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-top: 1px solid $color-elements;
+  }
+
+  &__PropsItem {
+    display: flex;
+    justify-content: space-between;
+    margin: 0.5rem 0;
+
+    &--title {
+      color: $color-secondary;
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 15px;
+    }
+
+    &--value {
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 15px;
+    }
+  }
+
+  &__Buttons {
+    display: grid;
+    gap: 0.5rem;
+    grid-template-columns: 1fr 2.5rem;
+
+    &--favorites {
+      cursor: pointer;
+    }
+  }
+}
