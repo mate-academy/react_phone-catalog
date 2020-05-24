@@ -1,3 +1,60 @@
 
+@import "../../mixins.scss";
+
+.CartPage {
+  display: flex;
+
+  &__summary {
+    position: sticky;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 24px;
+    top: 80px;
+    margin: 16px;
+    width: 368px;
+    height: 206px;
+    border: 1px solid #e2e6e9;
+    box-sizing: border-box;
+  }
+
+  &__total {
+    @include h1;
+  }
+
+  &__legend {
+    @include body-text;
+    color: #89939a;
+  }
+
+  &__horis-line {
+    margin: 24px 0;
+    display: block;
+    height: 1px;
+    width: 100%;
+    border-top: 1px solid #e2e6e9;
+  }
+
+  &__checkout {
+    height: 48px;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #313237;
+    background-color: #313237;
+    @include buttons;
+    outline: none;
+    &:hover,
+    &:focus {
+      box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+      border: 1px solid #313237;
+    }
+
+    &:active {
+      color: #27ae60;
+      border: 1px solid #e2e6e9;
+      background-color: white;
+    }
+  }
+}
 
 

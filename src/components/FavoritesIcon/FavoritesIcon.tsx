@@ -16,9 +16,10 @@ export const FavoritesIcon = ({favorites}:{favorites: Product[]}) => {
       {favorites.length > 0
         ? <span className="FavoritesIcon__count">{favorites.length}</span>
         : ""}
-      <NavLink className="FavoritesIcon__link" to="/favorites">
+      {favorites.length > 0
+        ? <NavLink className="FavoritesIcon__link" to="/favorites"></NavLink>
+        : <span className="FavoritesIcon__link"></span>}
 
-      </NavLink>
     </label>
   )
 }

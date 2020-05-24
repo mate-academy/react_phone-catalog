@@ -46,7 +46,11 @@ export const CartCard = ({
     className="CartCard__img"
     src={imageUrl}
     alt={name} />
-      <p></p>
+      <p
+      className="CartCard__name"
+      >
+        {name}
+        </p>
       <button
       disabled={count <= 1}
       onClick={handleCountDecrease}
@@ -55,12 +59,16 @@ export const CartCard = ({
         : "CartCard__count-button"
       }
       >̶  </button>
-  <span>{count}</span>
+  <span
+  className="CartCard__count"
+  >{count}</span>
       <button
       className="CartCard__count-button"
       onClick={handleCountIncrease}
       >+</button>
-      <span>{total}</span>
+      <span
+      className="CartCard__total"
+      >{`$${total}`}</span>
     </div>
   )
 }

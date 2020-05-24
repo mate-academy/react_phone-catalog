@@ -17,6 +17,7 @@ import { AccessoriesPage } from './pages/AccessoriesPage/AccessoriesPage';
 import { ProductPage } from './pages/ProductPage/ProductPage';
 import { FavoritesPage } from './pages/FavoritesPage/FavoritesPage';
 import { CartPage } from './pages/Cart/CartPage';
+import { ThanksPage } from './pages/ThanksPage/ThanksPage';
 
 
 const App = () => {
@@ -141,6 +142,10 @@ const App = () => {
 
           <Route path="/cart">
             <CartPage cart={cart} setCart={setCart}/>
+          </Route>
+
+          <Route path="/thanks">
+            <ThanksPage />
           </Route>
 
           <Route path="/">

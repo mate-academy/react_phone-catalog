@@ -1,0 +1,12 @@
+
+@import '../../mixins.scss';
+
+.ThanksPage {
+  &__title {
+    @include h1;
+  }
+
+  &__paragraph {
+    @include body-text;
+  }
+}
