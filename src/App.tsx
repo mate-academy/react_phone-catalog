@@ -149,7 +149,13 @@ const App = () => {
           </Route>
 
           <Route path="/">
-            <HomePage />
+            <HomePage
+            products={products}
+            cart={cart}
+            setCart={setCart}
+            favorites={favorites}
+            setFavorites={setFavorites}
+            />
           </Route>
 
 

@@ -69,3 +69,25 @@
   letter-spacing: -0.01em;
   color: #313237;
 }
+
+@mixin pagination-button {
+  height: 32px;
+  width: 32px;
+  background-color: white;
+  border: 1px solid #e2e6e9;
+  box-sizing: border-box;
+  @include body-text;
+  color: black;
+  margin: 0 4px;
+  outline: none;
+
+}
+
+@mixin h3 {
+  font-family: "Mont", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 26px;
+  color: #313237;
+}

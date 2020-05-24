@@ -20,6 +20,7 @@ export interface Product   {
 }
 
 export interface CatalogPropsType {
+  title?: string;
   products: Product[];
   cart: Product[];
   setCart: ([]) => void;

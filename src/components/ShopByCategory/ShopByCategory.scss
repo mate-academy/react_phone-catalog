@@ -1,0 +1,59 @@
+@import '../../mixins.scss';
+
+.ShopByCategory {
+  margin-bottom: 80px;
+  &__list {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__item {
+    margin-right: 16px;
+  }
+
+  &__title {
+    @include h1;
+  }
+
+  &__h3 {
+    @include h3;
+    margin: 24px 0 4px;
+  }
+
+  &__models-count {
+    @include body-text;
+    color: #89939a;
+  }
+
+  &__link {
+    display: block;
+    width: 368px;
+    height: 368px;
+
+    &--phones {
+      background-color: #fcdbc1;
+      background-image: url("../../imgs/image6.png");
+      background-position-x: right;
+      background-position-y: bottom;
+      background-repeat: no-repeat;
+    }
+    &--tablets {
+      background-color: #8d8d92;
+      background-image: url("../../imgs/image5.png");
+      background-position-x: right;
+      background-position-y: bottom;
+      background-repeat: no-repeat;
+    }
+    &--accessories {
+      background-color: #d53c51;
+      background-image: url("../../imgs/image7.png");
+      background-position-x: right;
+      background-position-y: bottom;
+      background-repeat: no-repeat;
+    }
+  }
+
+}
+
