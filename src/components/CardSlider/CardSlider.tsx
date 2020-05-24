@@ -1,18 +1,88 @@
-import React from 'react';
+import React, { useState } from 'react';
+import cn from 'classnames';
+import { GoodItem } from '../GoodsList';
+import './CardSlider.scss';
 
 interface Props {
   cards: Good[];
   title: string;
 }
 
-export const CardSlider:React.FC<Props> = ({ cards, title }) => {
-  console.log(cards);
-  console.log(title);
+export const CardSlider: React.FC<Props> = ({ cards, title }) => {
+  const [left, setLeft] = useState(0);
+  const cardWidth = 272;
+  const cardGap = 16;
+  const cardsOnOneMoment = 4;
+  const cardsLength = cards.length;
+  const [position, setPosition] = useState(cardsOnOneMoment);
+
+  const handleClick = (path: number) => {
+    const newLeftPosition = (cardWidth + cardGap) * -path;
+
+    setLeft(left + newLeftPosition);
+    setPosition(position + path);
+  };
+
   return (
-    <ul className="Card">
-      {cards.map(card => (
-        
-      ))}
-    </ul>
-  )
-}
+    <div
+      className="Card__Container"
+      style={{
+        width: `${(cardWidth * cardsOnOneMoment) + (cardGap * (cardsOnOneMoment - 1))}px`,
+      }}
+    >
+      <div className="Card__Title-site">
+        <div>
+          <h2 className="Card__Title">{title}</h2>
+        </div>
+        <div className="Card__Buttons">
+          <button
+            className="Card__Button"
+            type="button"
+            onClick={() => handleClick(-1)}
+            disabled={position === cardsOnOneMoment}
+          >
+            <div
+              className={cn({
+                'Card__Button--arrow-left': true,
+                'Card__Button--arrow': true,
+                'Card__Button--arrow--disabled': position === cardsOnOneMoment,
+              })}
+            />
+          </button>
+          <button
+            className="Card__Button"
+            type="button"
+            onClick={() => handleClick(1)}
+            disabled={position === cardsLength}
+          >
+            <div
+              className={cn({
+                'Card__Button--arrow-right': true,
+                'Card__Button--arrow': true,
+                'Card__Button--arrow--disabled': position === cardsLength,
+              })}
+            />
+          </button>
+        </div>
+      </div>
+      <ul
+        className="Card"
+        style={{
+          transform: `translateX(${left}px)`,
+        }}
+      >
+        {cards.map(card => (
+          <li
+            key={card.id}
+            className="Card__Item"
+            style={{
+              width: `${cardWidth}px`,
+            }}
+          >
+            <GoodItem good={card} />
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
