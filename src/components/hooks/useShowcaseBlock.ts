@@ -3,7 +3,7 @@ import {
 } from 'react';
 import { getProducts } from '../../helpers/api';
 
-export const useShowcaseBlock = (heading: string) => {
+export const useShowcaseBlock = (title: string) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [position, setPosition] = useState(0);
 
@@ -24,11 +24,11 @@ export const useShowcaseBlock = (heading: string) => {
 
   const newProducts: Product[] = useMemo(() => {
     return products
-      .filter(product => product.age < 10 && product.discount === 0);
+      .filter(product => product.age < 10 && !product.discount);
   }, [products]);
 
   const currentProducts: Product[] = useMemo(() => {
-    switch (heading) {
+    switch (title) {
       case 'Hot prices':
         return hotPricesProducts;
       case 'Brand new models':
@@ -36,7 +36,7 @@ export const useShowcaseBlock = (heading: string) => {
       default:
         return [];
     }
-  }, [heading, hotPricesProducts, newProducts]);
+  }, [title, hotPricesProducts, newProducts]);
 
   const stepWidth = itemWidth * step;
   const frameWidth = itemWidth * frameSize;

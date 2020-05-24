@@ -1,0 +1,7 @@
+.main-grid {
+  max-width: calc(272px * 4 + 3 * 16px);
+  display: grid;
+  grid-template-columns: repeat(4, 272px);
+  justify-items: center;
+  grid-gap: 40px 16px;
+}

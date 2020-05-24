@@ -1,0 +1,35 @@
+.search {
+  width: 250px;
+  padding: 23px;
+  height: 63px;
+  font-family: "Mont", sans-serif;
+  box-sizing: border-box;
+  border: none;
+  outline: none;
+  @extend .search::placeholder;
+  color: $primary-color !important;
+
+  &__container {
+    width: 326px;
+    padding-right: 23px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-left: 1px solid $border-section-color;
+  }
+
+  &::placeholder {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 18px;
+    color: $border-btn-color;
+  }
+
+  &__icon {
+    width: 15px;
+    height: 15px;
+    background-image: url("../images/icons/search.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}

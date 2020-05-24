@@ -10,8 +10,8 @@ const App = () => {
       <h1 className="visually-hidden">React Phone Catalog</h1>
       <Header />
       <Carousel />
-      <ShowcaseBlock heading="Hot prices" />
-      <ShowcaseBlock heading="Brand new models" />
+      <ShowcaseBlock title="Hot prices" />
+      <ShowcaseBlock title="Brand new models" />
       <Footer />
     </div>
   );

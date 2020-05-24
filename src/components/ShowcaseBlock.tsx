@@ -4,7 +4,7 @@ import { SliderControl } from './SliderControl';
 import { useShowcaseBlock } from './hooks/useShowcaseBlock';
 import { Heading } from './Heading';
 
-export const ShowcaseBlock = ({ heading }: HeadingProps) => {
+export const ShowcaseBlock = ({ title }: HeadingProps) => {
   const {
     currentProducts,
     position,
@@ -14,12 +14,12 @@ export const ShowcaseBlock = ({ heading }: HeadingProps) => {
     animationDuration,
     handleSlide,
     maxPosition,
-  } = useShowcaseBlock(heading);
+  } = useShowcaseBlock(title);
 
   return (
     <>
       <div className="section__heading-container">
-        <Heading heading={heading} />
+        <Heading title={title} />
         <div className="slider__controls">
           <SliderControl
             handleSlide={handleSlide}
