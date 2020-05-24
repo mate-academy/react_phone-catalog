@@ -103,5 +103,10 @@ type SliderArrowProps = {
 };
 
 type HeadingProps = {
-  heading: string;
+  title: string;
+};
+
+type SearchProps = {
+  inputValue: string;
+  searchPeople: React.ChangeEventHandler;
 };
