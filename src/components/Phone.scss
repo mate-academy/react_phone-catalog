@@ -14,6 +14,8 @@
   }
 
   &__title {
+    width: 224px;
+    height: 42px;
     margin-top: 24px;
     display: flex;
     align-self: flex-start;
@@ -33,29 +35,49 @@
     margin-right: 8px;
     display: flex;
     flex-direction: row;
+    font-size: 22px;
+    line-height: 31px;
+    font-weight: bold;
   }
 
   &__discount {
-    font-size: 20px;
+    font-size: 22px;
     font-weight: 500;
-    line-height: 28px;
+    line-height: 30px;
     text-decoration-line: line-through;
     color: $secondary-color;
   }
 
+  &__split-line {
+    width: 224px;
+    height: 1px;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    background-image: url("../images/line.png");
+  }
+
   &__details-container {
-    margin-top: 6.5px;
+    margin-top: 5px;
     display: flex;
     justify-content: space-between;
   }
 
   &__details {
     width: 224px;
-    height: 77px;
+
+    &-title {
+      font-size: 12px;
+      line-height: 15px;
+      color: $secondary-color;
+    }
+
+    &-info {
+      font-size: 12px;
+      line-height: 15px;
+    }
   }
 
   &__buttons__container {
-    position: relative;
     margin-top: 16px;
     display: flex;
   }
@@ -64,10 +86,12 @@
     margin-right: 8px;
     width: 176px;
     height: 40px;
-    border: 0;
+    font-family: "Mont", sans-serif;
     background: $primary-color;
     color: white;
+    border: 0;
     cursor: pointer;
+    @include hover(box-shadow, 0 3px 13px rgba(23, 32, 49, 0.26), 0.3);
   }
 
   &__button-favorite {
@@ -80,6 +104,7 @@
     border: 1px solid $border-btn-color;
     box-sizing: border-box;
     cursor: pointer;
+    @include hover(border-color, $primary-color, 0.2);
 
     &-checkmark {
       position: absolute;

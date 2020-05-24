@@ -63,3 +63,20 @@ interface PhoneDetails {
     ram: string;
   };
 }
+
+type SliderProps = {
+  phones: Phone[];
+  position: number;
+  step: number;
+  frameSize: number;
+  itemWidth: number;
+  marginsWidth: number;
+  animationDuration: number;
+};
+
+type SliderArrowProps = {
+  handleSlide: (direction: string) => void;
+  direction: string;
+  position: number;
+  maxPosition: number;
+};
