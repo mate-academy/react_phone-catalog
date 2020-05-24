@@ -13,7 +13,11 @@ export const Footer = () => (
         <img src="./images/logo.svg" alt="Logo" />
       </Link>
       <Nav links={footerLinks} />
-      <Link to="#top" className="Footer__Link">
+      <Link
+        to="#top"
+        className="Footer__Link"
+        onClick={() => window.scrollTo(0, 0)}
+      >
         Back to top
         <Icon
           name="arrow-up"
