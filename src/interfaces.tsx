@@ -53,3 +53,5 @@ export interface ProductDetails {
   storage: Object;
 }
 
+
+

@@ -3,6 +3,7 @@ import { CardsSlider } from '../../components/CardsSlider/CardsSlider';
 import { ShopByCategory } from '../../components/ShopByCategory/ShopByCategory';
 import { CatalogPropsType } from '../../interfaces';
 import './HomePage.scss';
+import { PromoSlider } from '../../components/PromoSlider/PromoSlider';
 
 
 export const HomePage = ({
@@ -12,8 +13,21 @@ export const HomePage = ({
   favorites,
   setFavorites
 }: CatalogPropsType) => {
+
+  const slides = [
+    'img/Banner1.png',
+    'img/Banner2.jpg',
+    'img/Banner3.jpg',
+    'img/Banner4.jpg',
+    'img/Banner5.jpg',
+    'img/Banner6.jpg',
+  ]
+
+
+
   return (
     <div className="HomePage">
+      <PromoSlider slides={slides} />
       <CardsSlider
         title={"Hot prices"}
         products={[...products].sort((a, b) => (
@@ -34,7 +48,7 @@ export const HomePage = ({
         favorites={favorites}
         setFavorites={setFavorites}
       />
-     
+
     </div>
 
   )
