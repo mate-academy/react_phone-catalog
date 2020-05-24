@@ -1,4 +1,4 @@
-# React Phone catalog
+# React Product catalog
 - Replace `<your_account>` with your Github username in the [DEMO LINK](https://<your_account>.github.io/react_phone-catalog/)
 - Follow the [React task guideline](https://github.com/mate-academy/react_task-guideline#react-tasks-guideline)
 
@@ -113,4 +113,4 @@ Store the Cart in the `localStorage`
 
 ### Other tasks
 1. Add `NotFoundPage` for all the other URLs with the link to `HomePage`
-1. Implement `Phone was not found` state for the `PhoneDetailsPage` if there is no phone with a given `phoneId` on the server
+1. Implement `Product was not found` state for the `PhoneDetailsPage` if there is no phone with a given `phoneId` on the server

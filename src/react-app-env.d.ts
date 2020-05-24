@@ -1,6 +1,6 @@
 // / <reference types=string />
 
-interface Phone {
+interface Product {
   age: number;
   type: string;
   id: string;
@@ -14,7 +14,7 @@ interface Phone {
   ram: string;
 }
 
-interface PhoneDetails {
+interface ProductDetails {
   additionalFeatures: string;
   android: {
     os: string;
@@ -85,13 +85,13 @@ type CarouselControlProps = {
   changeSlide: (value: string) => void;
   direction: string;
 };
+
 type SliderProps = {
-  phones: Phone[];
+  products: Product[];
   position: number;
   step: number;
   frameSize: number;
   itemWidth: number;
-  marginsWidth: number;
   animationDuration: number;
 };
 
@@ -100,4 +100,8 @@ type SliderArrowProps = {
   direction: string;
   position: number;
   maxPosition: number;
+};
+
+type HeadingProps = {
+  heading: string;
 };

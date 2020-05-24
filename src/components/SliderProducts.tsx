@@ -1,17 +1,16 @@
 import React from 'react';
-import { Phone } from './Phone';
+import { Product } from './Product';
 
-export const SliderPhones = ({
-  phones,
+export const SliderProducts = ({
+  products,
   frameSize,
   position,
   animationDuration,
   itemWidth,
-  marginsWidth,
 }: SliderProps) => (
   <div
     className="slider"
-    style={{ width: `${frameSize * itemWidth + marginsWidth}px` }}
+    style={{ width: `${frameSize * itemWidth}px` }}
   >
     <div
       className="slider__list"
@@ -20,8 +19,8 @@ export const SliderPhones = ({
         transition: `transform ${animationDuration}ms`,
       }}
     >
-      {phones.map((phone: Phone) => (
-        <Phone key={phone.id} {...phone} />
+      {products.map((product: Product) => (
+        <Product key={product.id} {...product} />
       ))}
     </div>
   </div>
