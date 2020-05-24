@@ -1,11 +1,12 @@
 import React from 'react';
-import { SliderPhones } from './SliderPhones';
+import { SliderProducts } from './SliderProducts';
 import { SliderControl } from './SliderControl';
-import { useHotPrices } from './hooks/useHotPrices';
+import { useShowcaseBlock } from './hooks/useShowcaseBlock';
+import { Heading } from './Heading';
 
-export const HotPrices = () => {
+export const ShowcaseBlock = ({ heading }: HeadingProps) => {
   const {
-    hotPricesPhones,
+    currentProducts,
     position,
     step,
     frameSize,
@@ -13,13 +14,12 @@ export const HotPrices = () => {
     animationDuration,
     handleSlide,
     maxPosition,
-    marginsWidth,
-  } = useHotPrices();
+  } = useShowcaseBlock(heading);
 
   return (
     <>
       <div className="section__heading-container">
-        <h2>Hot prices</h2>
+        <Heading heading={heading} />
         <div className="slider__controls">
           <SliderControl
             handleSlide={handleSlide}
@@ -35,14 +35,13 @@ export const HotPrices = () => {
           />
         </div>
       </div>
-      <SliderPhones
-        phones={hotPricesPhones}
+      <SliderProducts
+        products={currentProducts}
         position={position}
         step={step}
         frameSize={frameSize}
         itemWidth={itemWidth}
         animationDuration={animationDuration}
-        marginsWidth={marginsWidth}
       />
     </>
   );

@@ -1,4 +1,4 @@
-.phone {
+.product {
   width: 272px;
   height: 507px;
   padding: 24px;
@@ -121,7 +121,7 @@
       position: absolute;
       opacity: 0;
 
-      &:checked ~ .phone__button-favorite-checkmark {
+      &:checked ~ .product__button-favorite-checkmark {
         background-image: url("../images/icons/favorite_checked.svg");
       }
     }
