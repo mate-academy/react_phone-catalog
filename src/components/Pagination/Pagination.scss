@@ -1,0 +1,106 @@
+$color-primary: #313237;
+$color-icons: #b4bdc4;
+$color-white: #fff;
+$border-width: 1px;
+
+.Pagination {
+  &__List {
+    display: flex;
+    justify-items: center;
+    justify-content: center;
+    margin: 2.5rem 0 5rem;
+  }
+
+  &__Item {
+    list-style: none;
+    width: 2rem;
+    height: 2rem;
+    margin: 0.5rem;
+  }
+
+  &__Button {
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.25rem;
+
+    color: $color-primary;
+    text-decoration: none;
+    border: $border-width solid $color-icons;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: color .2s;
+    transform: translateZ(0);
+    outline: none;
+    overflow: hidden;
+
+    &:before,
+    &:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border: $border-width solid transparent;
+      will-change: transform;
+      transition: transform .3s ease;
+      pointer-events: none;
+      transform: translateZ(0);
+      overflow: hidden;
+    }
+
+    &:before {
+      border-color: $color-primary transparent;
+      transform: skew(-90deg, 0);
+    }
+
+    &:after {
+      border-color: transparent $color-primary;
+      transform: skew(0,65deg);
+      transition: transform .4s;
+    }
+
+    &:hover,
+    &:focus {
+      color: $color-primary;
+
+      &:before,
+      &:after {
+        transform: skew(0, 0);
+      }
+    }
+
+    &--arrow-left {
+      background-image: url(../../images/icons/chevron-arrow-left.svg);
+    }
+
+    &--arrow-right {
+      background-image: url(../../images/icons/chevron-arrow-right.svg);
+    }
+
+    &--active {
+      color: $color-white;
+      background-color: $color-primary;
+      border-color: $color-primary;
+
+      &:hover,
+      &:focus {
+        color: $color-white;
+      }
+    }
+
+    &--disabled {
+      opacity: 0.5;
+
+      &::before,
+      &::after {
+        display: none;
+      }
+    }
+  }
+}

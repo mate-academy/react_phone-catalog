@@ -14,7 +14,8 @@ export async function getGoods() {
 }
 
 export async function getGoodDetail(id: string) {
-  const phones = await getData<GoodDetail>(`${API_URL}/${id}.json`);
+  const response = await fetch(`${API_URL}/products/${id}.json`);
+  const goodDetail = await response.json();
 
-  return phones;
+  return goodDetail;
 }

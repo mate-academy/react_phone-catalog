@@ -1,0 +1,97 @@
+$color-primary: #313237;
+$color-secondary: #89939a;
+$color-icons: #b4bdc4;
+$color-elements: #e2e6e9;
+$color-hover-bg: #fafbfc;
+$color-white: #fff;
+$color-green: #27ae60;
+
+%buttons {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  letter-spacing: 0;
+}
+
+.Button {
+  @extend %buttons;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  text-decoration: none;
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.3s, color 0.3s;
+
+  &__Primary {
+    width: 100%;
+    height: 2.5rem;
+    box-sizing: border-box;
+    font-weight: 600;
+    font-size: 14px;
+    color: $color-white;
+    background-color: $color-primary;
+    border: 1px solid $color-primary;
+
+    &--selected {
+      color: $color-green;
+      background-color: $color-white;
+      border-color: $color-elements;
+    }
+
+    &:hover,
+    &:focus {
+      color: $color-primary;
+      border: 1px solid $color-primary;
+      background-color: $color-hover-bg;
+      box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+    }
+  }
+
+  &__Icon {
+    height: 4rem;
+    min-width: 4rem;
+    background-color: $color-white;
+    border: 1px solid $color-icons;
+
+    &--selected {
+      border-color: $color-elements;
+    }
+
+    &:hover,
+    &:focus {
+      border-color: $color-primary;
+    }
+  }
+
+  &__Link {
+    width: max-content;
+    height: 2.5rem;
+    text-decoration: none;
+    color: $color-secondary;
+
+    &::before {
+      content: "";
+      display: inline-block;
+      height: 1rem;
+      width: 0.5rem;
+      margin-right: 0.5rem;
+      mask-image: url(/images/icons/chevron-arrow-left.svg);
+      mask-position: center;
+      mask-repeat: no-repeat;
+      background-color: $color-primary;
+      transition: transform 1s cubic-bezier(0.86, 0, 0.07, 1);
+    }
+
+    &:hover,
+    &:focus {
+      color: $color-primary;
+
+      &::before {
+        content: "";
+        transform: translateX(-0.25rem);
+      }
+    }
+  }
+}

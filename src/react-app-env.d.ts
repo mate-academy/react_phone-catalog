@@ -2,7 +2,9 @@
 
 type Link = {
   name: string;
+  title?: string;
   url: string;
+  type?: string;
   exact?: boolean;
 };
 
@@ -22,8 +24,11 @@ interface Good {
 
 interface GoodDetail {
   id: string;
-  [key: string]: string | string[];
-  [key: string]: {
+  name: string;
+  images: Array<string>;
+  description: string;
+  [key?: string]: string | string[];
+  [key?: string]: {
     [key: string]: string | string[] | boolean;
   };
 }
