@@ -1,14 +1,14 @@
 import React from 'react';
 import { Footer } from './components/Footer';
 import { Header } from './components/Header';
-import { HotPrices } from './components/HotPrices';
+import { Carousel } from './components/Carousel';
 
 const App = () => {
   return (
     <div className="app">
       <h1 className="visually-hidden">React Phone Catalog</h1>
       <Header />
-      <HotPrices />
+      <Carousel />
       <Footer />
     </div>
   );
