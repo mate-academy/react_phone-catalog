@@ -5,7 +5,6 @@ export const sectionsLinks: Link[] = [
     url: '/phones',
     type: 'phone',
     imgUrl: 'images/category/phones.png',
-    alt: 'Mobile Phones',
   },
   {
     name: 'Tablets',
@@ -13,7 +12,6 @@ export const sectionsLinks: Link[] = [
     url: '/tablets',
     type: 'tablet',
     imgUrl: 'images/category/Tablets.png',
-    alt: 'Tablets',
   },
   {
     name: 'Accessories',
@@ -21,7 +19,6 @@ export const sectionsLinks: Link[] = [
     url: '/accessories',
     type: 'accessories',
     imgUrl: 'images/category/Accessoires.png',
-    alt: 'Accessories',
   },
 ];
 

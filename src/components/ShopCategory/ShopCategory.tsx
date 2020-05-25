@@ -20,31 +20,30 @@ export const ShopCategory: React.FC<Props> = ({ cards }) => {
       }}
     >
       <div className="Category__Title">
-        <p className="Category__Title-text">
+        <h2 className="Category__Title-text">
           Shop by category
-        </p>
+        </h2>
       </div>
       <div className="Category__Container">
         <ul className="Category__List">
           {sectionsLinks.map(link => (
-            <li className="Category__Item" key={link.imgUrl}>
+            <li className="Category__Item" key={link.name}>
               <Link to={link.url} className="Category__Link">
                 <div className="Category__Image-container">
                   <img
                     src={link.imgUrl}
-                    alt={link.alt}
+                    alt={link.title}
                     className="Category__Image"
                   />
                 </div>
 
                 <div className="Category__Info">
-                  <p className="Category__Title-type Category__Paragraph">
+                  <p className="Category__Info-type Category__Paragraph">
                     {link.title}
                   </p>
-                  <p className="Category__Title-count Category__Paragraph">
+                  <p className="Category__Info-count Category__Paragraph">
                     {cards.filter(card => card.type === link.type).length}
-                    {' '}
-                    models
+                    {' models'}
                   </p>
                 </div>
               </Link>
