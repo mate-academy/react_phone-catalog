@@ -3,6 +3,7 @@ $color-secondary: #89939a;
 
 .Category {
   margin: 0 auto 5rem;
+  width: 1136px;
 
   &__List {
     display: flex;
@@ -22,12 +23,12 @@ $color-secondary: #89939a;
     &:hover {
       transform: scale(1.25);
     }
+  }
 
-    &Container {
-      overflow: hidden;
-      width: 23rem;
-      height: 23rem;
-    }
+  &__ImageContainer {
+    overflow: hidden;
+    width: 23rem;
+    height: 23rem;
   }
 
   &__Title {
@@ -41,22 +42,23 @@ $color-secondary: #89939a;
 
   &__Info {
     margin-top: 1.5rem;
-
-    &Type {
-      font-weight: 600;
-      font-size: 20px;
-      line-height: 26px;
-      color: $color-primary;
-    }
-
-    &Count {
-      font-style: normal;
-      font-weight: 500;
-      font-size: 14px;
-      line-height: 21px;
-      color: $color-secondary;
-    }
   }
+
+  &__InfoType {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 26px;
+    color: $color-primary;
+  }
+
+  &__InfoCount {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $color-secondary;
+  }
+
 
   &__Paragraph {
     margin: 0;
