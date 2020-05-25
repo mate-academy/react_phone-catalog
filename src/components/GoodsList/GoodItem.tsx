@@ -2,11 +2,11 @@ import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 
 import { Icon } from '../Icon';
-import { ButtonPrimary } from '../Buttons';
+import { PrimaryButton } from '../Buttons';
 
-type Props = {
+interface Props {
   good: Good;
-};
+}
 
 export const GoodItem: React.FC<Props> = ({ good }) => {
   const { section } = useParams();
@@ -60,7 +60,7 @@ export const GoodItem: React.FC<Props> = ({ good }) => {
 
       <section className="GoodItem__Buttons">
         <div className="GoodItem__Buttons--main">
-          <ButtonPrimary text="Add To Cart" />
+          <PrimaryButton text="Add To Cart" />
         </div>
         <div className="GoodItem__Buttons--favorites">
           <Icon

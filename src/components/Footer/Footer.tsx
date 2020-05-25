@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import './Footer.scss';
 import { Nav } from '../Nav';
 import { Icon } from '../Icon';
-import { footerLinks } from '../../helpers';
+import { FOOTER_LINKS } from '../../helpers';
 
 export const Footer = () => {
   const handleScroll = (e: React.MouseEvent<HTMLElement>) => {
@@ -18,7 +18,7 @@ export const Footer = () => {
         <Link to="/" className="Footer__Logo">
           <img src="./images/logo.svg" alt="Logo" />
         </Link>
-        <Nav links={footerLinks} />
+        <Nav links={FOOTER_LINKS} />
         <Link
           to="#top"
           className="Footer__Link"

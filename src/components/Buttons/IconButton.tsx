@@ -2,13 +2,13 @@ import React from 'react';
 import './Buttons.scss';
 import { Icon } from '../Icon';
 
-type Props = {
+interface Props {
   name: string;
   border: boolean;
   inActive: boolean;
-};
+}
 
-export const ButtonIcon: React.FC<Props> = ({ name, border, inActive }) => (
+export const IconButton: React.FC<Props> = ({ name, border, inActive }) => (
   <button type="button" className="Button Button__Icon">
     <Icon
       name={name}
