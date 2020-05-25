@@ -3,17 +3,17 @@ import cn from 'classnames';
 import { GoodItem } from '../GoodsList';
 import './CardSlider.scss';
 
-interface Props {
-  cards: Good[];
+type Props = {
+  goods: Good[];
   title: string;
 }
 
-export const CardSlider: React.FC<Props> = ({ cards, title }) => {
+export const CardSlider: React.FC<Props> = ({ goods, title }) => {
   const [left, setLeft] = useState(0);
   const cardWidth = 272;
   const cardGap = 16;
   const cardsOnOneMoment = 4;
-  const cardsLength = cards.length;
+  const cardsLength = goods.length;
   const [position, setPosition] = useState(cardsOnOneMoment);
 
   const handleClick = (path: number) => {
@@ -71,7 +71,7 @@ export const CardSlider: React.FC<Props> = ({ cards, title }) => {
           transform: `translateX(${left}px)`,
         }}
       >
-        {cards.map(card => (
+        {goods.map(card => (
           <li
             key={card.id}
             className="Card__Item"

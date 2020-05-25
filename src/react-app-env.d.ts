@@ -6,6 +6,7 @@ type Link = {
   url: string;
   type?: string;
   exact?: boolean;
+  imgUrl?: string;
 };
 
 interface Good {
@@ -34,7 +35,7 @@ interface GoodDetail {
   };
 }
 
-interface Banners {
+type Banners = {
   path: string;
   position?: number;
   alt?: string;

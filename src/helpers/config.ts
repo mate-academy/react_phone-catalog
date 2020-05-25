@@ -4,25 +4,28 @@ export const sectionsLinks: Link[] = [
     title: 'Mobile Phones',
     url: '/phones',
     type: 'phone',
+    imgUrl: 'images/category/phones.png',
   },
   {
     name: 'Tablets',
     title: 'Tablets',
     url: '/tablets',
     type: 'tablet',
+    imgUrl: 'images/category/tablets.png',
   },
   {
     name: 'Accessories',
     title: 'Accessories',
     url: '/accessories',
     type: 'accessories',
+    imgUrl: 'images/category/accessoires.png',
   },
 ];
 
 export const footerLinks: Link[] = [
   {
     name: 'Github',
-    url: '/github',
+    url: 'https://github.com/fe-feb20-team3',
   },
   {
     name: 'Contacts',

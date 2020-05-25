@@ -31,7 +31,6 @@ export const sortTypes: SortType[] = [
 ];
 
 export const sortBy = (goods: Good[], sortType: SortType) => {
-
   if (sortType.typeField === 'number') {
     const sortedGoods = [...goods].sort((a, b) => {
       const direction = sortType.isReverse ? -1 : 1;
