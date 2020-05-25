@@ -1,9 +1,9 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import { Footer } from './components/Footer';
-import { Header } from './components/Header';
-import { HomePage } from './components/HomePage';
-import { PhonesPage } from './components/PhonesPage';
+import { Footer } from './components/Footer/Footer';
+import { Header } from './components/Header/Header';
+import { HomePage } from './pages/HomePage';
+import { PhonesPage } from './pages/PhonesPage';
 
 const App = () => {
   return (

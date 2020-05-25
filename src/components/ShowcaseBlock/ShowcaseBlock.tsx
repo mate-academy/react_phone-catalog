@@ -1,8 +1,8 @@
 import React from 'react';
 import { SliderProducts } from './SliderProducts';
 import { SliderControl } from './SliderControl';
-import { useShowcaseBlock } from './hooks/useShowcaseBlock';
-import { Heading } from './Heading';
+import { useShowcaseBlock } from '../_hooks/useShowcaseBlock';
+import { Heading } from '../Heading/Heading';
 
 export const ShowcaseBlock = ({ title }: HeadingProps) => {
   const {

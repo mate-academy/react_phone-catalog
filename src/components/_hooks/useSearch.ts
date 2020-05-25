@@ -18,6 +18,10 @@ export const useSearch = () => {
       .then(data => setProducts(data));
   }, []);
 
+  useEffect(() => {
+    setInputValue('');
+  }, [location.pathname]);
+
   const historyPushWithDebounce = useCallback(debounce((value: string) => {
     search.set('query', value.toLowerCase());
 
@@ -30,7 +34,7 @@ export const useSearch = () => {
 
   const searchProducts = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
-      const value = e.target.value;
+      const { value } = e.target;
 
       setInputValue(value);
       historyPushWithDebounce(value);
@@ -49,6 +53,6 @@ export const useSearch = () => {
     searchedProducts,
     location,
     history,
-    search
+    search,
   };
 };

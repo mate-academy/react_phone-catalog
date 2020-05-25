@@ -1,0 +1,19 @@
+.section {
+  &__dropdowns {
+    margin: 40px 0 24px;
+    display: flex;
+  }
+
+  &__no-products-info {
+    margin-top: 70px;
+    text-align: center;
+    color: $secondary-color;
+  }
+
+  &__products {
+    display: grid;
+    grid-template-columns: repeat(4, $product-card-width);
+    justify-items: center;
+    grid-gap: 40px 16px;
+  }
+}

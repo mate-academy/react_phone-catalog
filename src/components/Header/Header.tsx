@@ -1,11 +1,11 @@
 import React from 'react';
 
-import { Logo } from './Logo';
+import { Logo } from '../Logo/Logo';
 import { Nav } from './Nav';
 import { Favorites } from './Favorites';
 import { Cart } from './Cart';
 import { Search } from './Search';
-import { useSearch } from './hooks/useSearch';
+import { useSearch } from '../_hooks/useSearch';
 
 
 export const Header = () => {

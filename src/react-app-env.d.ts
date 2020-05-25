@@ -116,19 +116,28 @@ interface Category {
   link: string;
 }
 
-type CategoryProps = Category;
-
 interface NavItem {
   title: string;
   link: string;
   exact: boolean;
 }
 
-type NavItemProps = NavItem;
+interface OptionType {
+  option: string;
+}
+
+type DropdownProps = {
+  list: OptionType[];
+  heading: string;
+};
+
+type DropdownArrowProps = {
+  isListOpen: boolean;
+};
 
 type PaginationProps = {
   total: number;
   perPage: number;
   page: number;
   changePage: (page: number) => void;
-}
+};

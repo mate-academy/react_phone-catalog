@@ -5,9 +5,8 @@ export const Pagination = ({
   total,
   perPage,
   page,
-  changePage
-}: PaginationProps
-) => {
+  changePage,
+}: PaginationProps) => {
   const pageNumbers: number[] = [];
 
   for (let i = 1; i <= Math.ceil(total / perPage); i++) {
@@ -28,7 +27,7 @@ export const Pagination = ({
           <li
             key={number}
             className={cn({
-              'pagination__button': true,
+              pagination__button: true,
               'pagination__button--active': page === number,
             })}
             onClick={() => changePage(number)}
@@ -46,4 +45,4 @@ export const Pagination = ({
       />
     </div>
   );
-}
+};
