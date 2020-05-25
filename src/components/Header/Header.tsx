@@ -33,6 +33,7 @@ const Header = () => {
           {navList.map(item => (
             <li key={item.title} className="nav__item">
               <NavLink to={item.link} className="nav__link" activeClassName="nav__link--active">{item.title}</NavLink>
+
             </li>
           ))}
         </ul>
