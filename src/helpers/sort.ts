@@ -28,6 +28,20 @@ export const sortTypes: SortType[] = [
     type: 'betalpha',
     isReverse: true,
   },
+  {
+    name: 'Newest',
+    field: 'age',
+    typeField: 'number',
+    type: 'newest',
+    isReverse: false,
+  },
+  {
+    name: 'Oldest',
+    field: 'age',
+    typeField: 'number',
+    type: 'oldest',
+    isReverse: true,
+  },
 ];
 
 export const sortBy = (goods: Good[], sortType: SortType) => {
