@@ -3,7 +3,7 @@ import React from 'react';
 import { Product, ProductDetails } from '../../../interfaces';
 import './TechSpecs.scss';
 
-export const TechSpecs = ({product, productDetailes}:{product: Product; productDetailes: ProductDetails}) => {
+export const TechSpecs = ({product, productDetails}:{product: Product; productDetails: ProductDetails}) => {
 
   return (
     <div className="TechSpecs">
@@ -16,11 +16,11 @@ export const TechSpecs = ({product, productDetailes}:{product: Product; productD
         </li>
         <li className="TechSpecs__item">
           <span className="TechSpecs__spec">Resolution</span>
-  <span className="TechSpecs__value">{productDetailes.display.screenResolution}</span>
+  <span className="TechSpecs__value">{productDetails.display.screenResolution}</span>
         </li>
         <li className="TechSpecs__item">
           <span className="TechSpecs__spec">Processor</span>
-  <span className="TechSpecs__value">{productDetailes.hardware.cpu}</span>
+  <span className="TechSpecs__value">{productDetails.hardware.cpu}</span>
         </li>
         <li className="TechSpecs__item">
           <span className="TechSpecs__spec">RAM</span>
@@ -32,7 +32,7 @@ export const TechSpecs = ({product, productDetailes}:{product: Product; productD
         </li>
         <li className="TechSpecs__item">
           <span className="TechSpecs__spec">Camera</span>
-  <span className="TechSpecs__value">{productDetailes.camera.primary}</span>
+  <span className="TechSpecs__value">{productDetails.camera.primary}</span>
         </li>
         <li className="TechSpecs__item">
           <span className="TechSpecs__spec">Zoom</span>
@@ -40,7 +40,7 @@ export const TechSpecs = ({product, productDetailes}:{product: Product; productD
         </li>
         <li className="TechSpecs__item">
           <span className="TechSpecs__spec">Cell</span>
-  <span className="TechSpecs__value">{productDetailes.connectivity.cell}</span>
+  <span className="TechSpecs__value">{productDetails.connectivity.cell}</span>
         </li>
 
       </ul>

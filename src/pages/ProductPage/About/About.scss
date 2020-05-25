@@ -1,11 +1,23 @@
 
+@import "../../../mixins.scss";
+
 .About {
-  width: 560px;
-  
+  width: 550px;
+  margin-right: 65px;
+
   &__horisont {
+    margin: 16px 0 32px;
     display: block;
     width: 100%;
     height: 1px;
     border-bottom: 1px solid #e2e6e9;
+  }
+
+  &__title {
+    @include h2;
+  }
+
+  &__article {
+    @include body-text;
   }
 }

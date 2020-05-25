@@ -1,6 +1,5 @@
 
 .TechSpecs {
-  margin-left: 64px;
   width: 512px;
 
   &__list {
@@ -20,6 +19,7 @@
 
   &__value {
     display: block;
+    max-width: 50%;
   }
   &__horisont {
     display: block;

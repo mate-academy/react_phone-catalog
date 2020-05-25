@@ -6,6 +6,7 @@ import { About } from './About/About';
 import { TechSpecs } from './TechSpecs/TechSpecs';
 import { CardsSlider } from '../../components/CardsSlider/CardsSlider';
 import { Gallery } from './Gallery/Gallery';
+import { Card } from './Card/Card';
 import { MyContext } from '../../App';
 import './ProductPage.scss';
 
@@ -39,20 +40,22 @@ export const ProductPage = ({ product }: { product: Product }) => {
     // storage
   } = productDetails;
 
-  const {products} = useContext(MyContext);
+  const { products } = useContext(MyContext);
+
   return (
- (JSON.stringify(productDetails) === JSON.stringify({}))
+    (JSON.stringify(productDetails) === JSON.stringify({}))
       ? <h1>Wait!!!</h1>
       : <div className="ProductPage">
-        <h1>{productDetails.name}</h1>
+        <h1 className="ProductPage__title">{productDetails.name}</h1>
         <div className="ProductPage__group-wrapper">
-        <Gallery
-        images={productDetails.images}/>
-
+          <Gallery
+            images={productDetails.images} />
+          <Card product={product} productDetails={productDetails}/>
+          <About description={description} />
+          <TechSpecs product={product} productDetails={productDetails} />
         </div>
         <div className="ProductPage__group-wrapper">
-        <About description={description} />
-        <TechSpecs product={product} productDetailes={productDetails} />
+
         </div>
 
 

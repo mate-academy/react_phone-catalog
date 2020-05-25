@@ -1,9 +1,17 @@
 
+@import "../../mixins.scss";
+
 .ProductPage {
-  max-width: 1040px;
+  max-width: 1140px;
+  width: 100%;
 
   &__group-wrapper {
     display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  &__title {
+    @include h1;
   }
 }
-

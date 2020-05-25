@@ -1,0 +1,84 @@
+
+@import "../../../mixins.scss";
+
+.Card {
+
+  width: 320px;
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__spec {
+    margin: 8px 0;
+    display: block;
+    max-width: 50%;
+    @include small-text;
+    color: #89939a;
+  }
+
+  &__value {
+    margin: 8px 0;
+    display: block;
+    max-width: 50%;
+    @include small-text;
+    color: #313237;
+  }
+
+  &__buttons-wrapper {
+    margin: 16px 0 24px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__add-to-cart {
+    margin-right: 8px;
+    padding: 0;
+    @include buttons;
+    background-color: #313237;
+    height: 48px;
+    width: 263px;
+    outline: none;
+    border: 1px solid #313237;
+    &--added {
+      border: 1px solid #e2e6e9;
+      color: #27ae60;
+      background-color: white;
+    }
+    &:hover,
+    &:focus {
+      box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+      border: 1px solid #313237;
+    }
+  }
+
+  &__add-to-fav {
+    outline: none;
+    padding: 0;
+    height: 48px;
+    width: 48px;
+    box-sizing: border-box;
+    background-image: url("../../../imgs/Icons/heart.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: white;
+    border: 1px solid #b4bdc4;
+    &--added {
+      background-image: url("../../../imgs/Icons/FilledHeart.png");
+      border: 1px solid #e2e6e9;
+    }
+
+    &:hover,
+    &:focus {
+      border: 1px solid #313237;
+    }
+
+  }
+}
+
