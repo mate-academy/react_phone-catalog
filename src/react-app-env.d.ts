@@ -35,7 +35,7 @@ interface GoodDetail {
   };
 }
 
-interface Banners {
+type Banners = {
   path: string;
   position?: number;
   alt?: string;

@@ -25,7 +25,7 @@ export const sectionsLinks: Link[] = [
 export const footerLinks: Link[] = [
   {
     name: 'Github',
-    url: '/github',
+    url: 'https://github.com/fe-feb20-team3',
   },
   {
     name: 'Contacts',

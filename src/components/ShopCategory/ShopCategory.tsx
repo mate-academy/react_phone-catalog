@@ -3,7 +3,7 @@ import './ShopCategory.scss';
 import { Link } from 'react-router-dom';
 import { sectionsLinks } from '../../helpers';
 
-interface Props {
+type Props = {
   goods: Good[];
 }
 

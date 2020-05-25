@@ -3,7 +3,7 @@ import cn from 'classnames';
 import { GoodItem } from '../GoodsList';
 import './CardSlider.scss';
 
-interface Props {
+type Props = {
   goods: Good[];
   title: string;
 }
