@@ -1,0 +1,44 @@
+.footer {
+  border-top: 1px solid $border-section-color;
+
+  &__container {
+    height: 96px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__link {
+    @extend .nav__item;
+    color: $secondary-color;
+    @include hover(color, $primary-color, 0.2);
+  }
+
+  &__top-button-container {
+    width: 118px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__paragraph {
+    margin-right: 16px;
+    font-size: 12px;
+    line-height: 15px;
+    color: $secondary-color;
+  }
+
+  &__top-button {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $border-btn-color;
+    background-color: #fff;
+    background-image: url("../images/icons/footer-top-arrow.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    box-sizing: border-box;
+    cursor: pointer;
+    outline: none;
+    @include hover(border-color, $primary-color, 0.2);
+  }
+}

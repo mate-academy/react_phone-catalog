@@ -1,0 +1,45 @@
+.slider {
+  overflow: hidden;
+
+  &__controls {
+    width: 80px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__list {
+    display: grid;
+    grid-auto-flow: column;
+    grid-gap: 16px;
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $border-btn-color;
+    box-sizing: border-box;
+    background-color: white;
+    background-repeat: no-repeat;
+    background-position: center;
+    outline: none;
+    cursor: pointer;
+    @include hover(border-color, $primary-color, 0.2);
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: auto;
+
+      &:hover {
+        border-color: $border-btn-color;
+      }
+    }
+  }
+
+  &__button-left {
+    background-image: url("../images/icons/left.svg");
+  }
+
+  &__button-right {
+    background-image: url("../images/icons/right.svg");
+  }
+}
