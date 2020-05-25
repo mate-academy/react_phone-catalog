@@ -1,0 +1,37 @@
+@mixin smallText {
+  font-family: "Mont-SemiBold", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+@mixin Uppercase {
+  font-family: "Mont-Regular", sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+@mixin ButtonText {
+  font-family: "Mont-SemiBold", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+@mixin iconInButton ($imageUrl) {
+  background-image: $imageUrl;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+@mixin hover($_property, $_toValue) {
+  transition: #{$_property} 0.3s;
+  &:hover {
+    #{$_property}: $_toValue;
+  }
+}

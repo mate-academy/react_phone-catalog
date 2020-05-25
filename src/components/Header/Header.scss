@@ -1,31 +1,6 @@
-$colorElement: #e2e6e9;
-$colorPrimary: #313237;
-$heightLogo: 11px;
-$widthLogo: 40px;
-$colorText: #89939a;
 
-@mixin Uppercase {
-  font-family: "Mont-Regular", sans-serif;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 12px;
-  line-height: 11px;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-
-@mixin iconInButton ($imageUrl) {
-  background-image: $imageUrl;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-@mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
-  &:hover {
-    #{$_property}: $_toValue;
-  }
-}
+@import "../../styles/utils/mixins";
+@import "../../styles/utils/vars";
 
 .header {
   position: relative;
@@ -50,13 +25,34 @@ $colorText: #89939a;
     margin-left: 24px + $widthLogo + 65px;
   }
 
+  &__search {
+    height: $heightHeader;
+    width: 327px;
+    padding-left: 24px;
+    border-left: $borderElement;
+    @include ButtonText;
+    color: $colorText;
+    line-height: 18px;
+  }
+
+  &__search::placeholder {
+    display: flex;
+    justify-content: space-between;
+    color: $colorIcons;
+    line-height: 18px;
+    @include ButtonText;
+    @include iconInButton(url(../../img/Icons/Search.svg));
+  }
+
   &__buttons {
     width: 64px;
     height: 64px;
     box-sizing: border-box;
     background-color: #fff;
-    border: 1px solid $colorElement;
-    @include hover(border, 1px solid $colorPrimary);
+    border-left: 1px solid $colorElement;
+    border-bottom: 3px solid transparent;
+
+    @include hover(border-bottom, 3px solid $colorPrimary);
   }
 }
 
@@ -74,16 +70,17 @@ $colorText: #89939a;
     position: relative;
     color: $colorText;
     @include hover(color, $colorPrimary);
-
   }
 
-  &__link--active {
-    color: #313237;
+  &__link:hover:before {
+    opacity: 1;
   }
 
   &__link::before {
     content: "";
-    border-bottom: solid 3px  #313237;
+
+    border-bottom: solid 3px #313237;
+
     position: absolute;
     top: 60px;
     left: 32px;
@@ -93,17 +90,14 @@ $colorText: #89939a;
     opacity: 0;
   }
 
-  &__link:hover:before {
-    opacity: 1;
+  &__link--active::after {
+    content: "";
+    border-bottom: solid 3px #313237;
+    position: absolute;
+    top: 60px;
+    left: 32px;
+    right: 32px;
   }
-}
-
-.cart {
-  @include iconInButton (url(../../img/Icons/shoppingBag.svg));
-}
-
-.favourites {
-  @include iconInButton(url(../../img/Icons/heart.svg));
 }
 
 .logo {

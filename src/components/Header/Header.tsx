@@ -32,17 +32,26 @@ const Header = () => {
         <ul className="nav__list">
           {navList.map(item => (
             <li key={item.title} className="nav__item">
-              <NavLink to={item.link} className="nav__link">{item.title}</NavLink>
+              <NavLink to={item.link} className="nav__link" activeClassName="nav__link--active">{item.title}</NavLink>
+
             </li>
           ))}
         </ul>
       </nav>
       <div>
         <Route path="/phones">
-          <input type="text" />
+          <input
+            type="text"
+            className="header__search"
+            placeholder="Search in phones..."
+          />
         </Route>
-        <button type="button" className="header__buttons favourites" aria-label="button" />
-        <button type="button" className="header__buttons cart" aria-label="button" />
+        <button type="button" className="header__buttons favourites">
+          <img src="./img/Icons/heart.svg" alt="heart" />
+        </button>
+        <button type="button" className="header__buttons cart">
+          <img src="./img/Icons/shoppingBag.svg" alt="shoppingBag" />
+        </button>
       </div>
     </header>
   );
