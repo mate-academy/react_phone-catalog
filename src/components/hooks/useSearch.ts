@@ -34,7 +34,7 @@ export const useSearch = () => {
 
       setInputValue(value);
       historyPushWithDebounce(value);
-    }, [search, historyPushWithDebounce],
+    }, [historyPushWithDebounce],
   );
 
   const searchedProducts: Product[] = useMemo(() => {
@@ -48,5 +48,7 @@ export const useSearch = () => {
     searchProducts,
     searchedProducts,
     location,
+    history,
+    search
   };
 };

@@ -1,0 +1,43 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+
+  &__list {
+    display: flex;
+  }
+
+  &__button {
+    @extend .slider__button;
+    margin-right: 8px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-color: $border-section-color;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &--active {
+      color: #fff;
+      background-color: $primary-color;
+      border: 0;
+    }
+
+    &--left,
+    &--right {
+      border-color: $border-btn-color;
+    }
+
+    &--left {
+      margin-right: 16px;
+      background-image: url("../images/icons/left.svg");
+    }
+
+    &--right {
+      margin-left: 16px;
+      background-image: url("../images/icons/right.svg");
+    }
+  }
+}

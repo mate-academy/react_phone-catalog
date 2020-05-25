@@ -125,3 +125,10 @@ interface NavItem {
 }
 
 type NavItemProps = NavItem;
+
+type PaginationProps = {
+  total: number;
+  perPage: number;
+  page: number;
+  changePage: (page: number) => void;
+}

@@ -9,6 +9,10 @@
   @extend .search::placeholder;
   color: $primary-color !important;
 
+  &:focus {
+    background-color: $hover-bg-color;
+  }
+
   &__container {
     width: 326px;
     padding-right: 23px;
