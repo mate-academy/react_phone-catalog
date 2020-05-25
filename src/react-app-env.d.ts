@@ -1,14 +1,5 @@
 // / <reference types="react-scripts" />
 
-type Link = {
-  name: string;
-  title?: string;
-  url: string;
-  type?: string;
-  exact?: boolean;
-  imgUrl?: string;
-};
-
 interface Good {
   [key: string]: number | string;
   age: number;
@@ -35,11 +26,20 @@ interface GoodDetail {
   };
 }
 
+type Link = {
+  name: string;
+  title?: string;
+  url: string;
+  type?: string;
+  exact?: boolean;
+  imgUrl?: string;
+};
+
 type Banners = {
   path: string;
   position?: number;
   alt?: string;
-}
+};
 
 type SortType = {
   name: string;

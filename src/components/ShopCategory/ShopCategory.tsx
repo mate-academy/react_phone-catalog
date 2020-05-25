@@ -5,15 +5,13 @@ import { sectionsLinks } from '../../helpers';
 
 type Props = {
   goods: Good[];
-}
+};
 
 export const ShopCategory: React.FC<Props> = ({ goods }) => (
-  <div
-    className="Category"
-  >
+  <div className="Category">
     <h2 className="Category__Title">
       Shop by category
-        </h2>
+    </h2>
     <div className="Category__Container">
       <ul className="Category__List">
         {sectionsLinks.map(link => (
@@ -48,4 +46,3 @@ export const ShopCategory: React.FC<Props> = ({ goods }) => (
     </div>
   </div>
 );
-

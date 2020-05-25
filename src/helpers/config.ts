@@ -47,6 +47,9 @@ export const perPageDefault = 8;
 
 export const perPageSettings = [
   {
+    name: '4',
+  },
+  {
     name: '8',
   },
   {

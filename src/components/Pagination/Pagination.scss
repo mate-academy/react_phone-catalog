@@ -27,6 +27,7 @@ $border-width: 1px;
     width: 100%;
     box-sizing: border-box;
     padding: 0.25rem;
+    cursor: pointer;
 
     color: $color-primary;
     text-decoration: none;
@@ -87,6 +88,7 @@ $border-width: 1px;
       color: $color-white;
       background-color: $color-primary;
       border-color: $color-primary;
+      cursor: default;
 
       &:hover,
       &:focus {
@@ -96,6 +98,7 @@ $border-width: 1px;
 
     &--disabled {
       opacity: 0.5;
+      cursor: default;
 
       &::before,
       &::after {
