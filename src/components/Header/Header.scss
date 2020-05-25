@@ -1,0 +1,111 @@
+
+
+$colorElement: #e2e6e9;
+$colorPrimary: #313237;
+$heightLogo: 11px;
+$widthLogo: 40px;
+$colorText: #89939a;
+
+
+@mixin Uppercase {
+  font-family: "Mont-Regular";
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+@mixin iconInButton ($imageUrl) {
+  background-image: $imageUrl;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+@mixin hover($_property, $_toValue) {
+  transition: #{$_property} 0.3s;
+  &:hover {
+    #{$_property}: $_toValue;
+  }
+}
+
+.header {
+  height: 64px;
+  position: sticky;
+  top: 0;
+  border-bottom: 1px solid $colorElement;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__logo {
+    position: absolute;
+    left: 24px;
+    top: calc(50% - #{ $heightLogo } / 2 + 0.5px);
+  }
+
+  &__nav {
+    margin-left: 24px + $widthLogo + 65px;
+  }
+
+  &__buttons {
+    width: 64px;
+    height: 64px;
+    box-sizing: border-box;
+    background-color: #fff;
+    border: 1px solid $colorElement;
+    @include hover(border, 1px solid $colorPrimary);
+  }
+}
+.nav {
+  &__list {
+    display: flex;
+    @include Uppercase;
+    color: #89939a;
+  }
+
+  &__link {
+    display: inline-block;
+    text-decoration: none;
+    padding: 26px 32px;
+    position: relative;
+    color: $colorText;
+    @include hover(color, $colorPrimary);
+
+  }
+
+  &__link--active {
+    color: #313237;
+  }
+
+  &__link::before {
+    content: '';
+    border-bottom: solid 3px  #313237;
+    position: absolute;
+    top: 60px;
+    left: 32px;
+    right: 32px;
+    transition: opacity 0.3s ease;
+
+    opacity: 0;
+  }
+
+  &__link:hover:before {
+    opacity: 1.0;
+  }
+}
+
+.cart {
+  @include iconInButton (url(../../img/Icons/shoppingBag.svg));
+ }
+
+.favourites {
+  @include iconInButton(url(../../img/Icons/heart.svg));
+}
+
+.logo {
+  width: 40px;
+  height: 11px;
+}
