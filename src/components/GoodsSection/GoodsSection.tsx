@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
 import { useParams, useLocation, useHistory } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 import './GoodsSection.scss';
 import { GoodsList } from '../GoodsList';
@@ -73,6 +74,9 @@ export const GoodsSection: React.FC<Props> = ({ goods }) => {
 
   return (
     <section className="section GoodsSection">
+      <Helmet>
+        <title>{sectionProp?.title || sectionProp?.name}</title>
+      </Helmet>
       <h1 className="GoodsSection__Heading">
         {sectionProp?.title || sectionProp?.name}
       </h1>
