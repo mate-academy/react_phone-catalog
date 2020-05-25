@@ -1,17 +1,13 @@
 
 import React from 'react';
-import { Product, CatalogPropsType } from '../../interfaces';
+import { Product } from '../../interfaces';
 import { ProductCard } from '../../components/ProductCard/ProductCard';
 import './MainFrame.scss';
 
 
 export const MainFrame = ({
   products,
-  cart,
-  setCart,
-  favorites,
-  setFavorites,
-}: CatalogPropsType) => {
+}:{products: Product[]}) => {
   return (
     <div className="MainFrame">
       {products.map((product: Product, index) => {
@@ -19,10 +15,6 @@ export const MainFrame = ({
           <ProductCard
             key={product.id + index}
             product={product}
-            cart={cart}
-            setCart={setCart}
-            favorites={favorites}
-            setFavorites={setFavorites}
           />
         );
       })}

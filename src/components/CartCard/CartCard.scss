@@ -2,6 +2,7 @@
 @import "../../mixins.scss";
 
 .CartCard {
+  transition: 1s;
   margin-top: 16px;
   height: 128px;
   width: 756px;

@@ -1,17 +1,10 @@
 
 import React, { useState } from 'react';
-import { CatalogPropsType } from '../../interfaces';
+import { Product } from '../../interfaces';
 import { ProductCard } from '../ProductCard/ProductCard';
 import './CardsSlider.scss';
 
-export const CardsSlider = ({
-  title,
-  products,
-  cart,
-  setCart,
-  favorites,
-  setFavorites
-}: CatalogPropsType) => {
+export const CardsSlider = ({ title, products}:{title:string; products: Product[]}) => {
 
   const [left, setLeft] = useState(-8);
 
@@ -55,10 +48,6 @@ export const CardsSlider = ({
               <li>
                 <ProductCard
                   product={product}
-                  cart={cart}
-                  setCart={setCart}
-                  favorites={favorites}
-                  setFavorites={setFavorites}
                 />
               </li>
             )

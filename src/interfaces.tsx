@@ -41,11 +41,11 @@ export interface ProductDetails {
   android: Object;
   availability: string[];
   battery: Object;
-  camera: Object;
-  connectivity: Object;
+  camera: Camera;
+  connectivity: Connectivity;
   description: string;
-  display: Object;
-  hardware: Object;
+  display: Display;
+  hardware: Hardware;
   id: string;
   images: string[];
   name: string;
@@ -53,5 +53,24 @@ export interface ProductDetails {
   storage: Object;
 }
 
+export interface Display {
+  screenResolution: string;
+}
+export interface Hardware {
+  cpu: string;
+}
+export interface Camera {
+  primary: string;
+}
+export interface Connectivity {
+  cell: string;
+}
 
+export interface MyContextType {
+  products: Product[];
+  cart: Product[];
+  setCart: ([]) => void;
+  favorites: Product[];
+  setFavorites: ([]) => void;
+}
 

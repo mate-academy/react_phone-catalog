@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { Product } from '../../interfaces';
+import React, { useState, useEffect, useContext } from 'react';
 import { CartCard } from '../../components/CartCard/CartCard';
 import './CartPage.scss';
 import { useHistory } from 'react-router-dom';
+import {MyContext} from '../../App';
 
-export const CartPage = ({ cart, setCart }: { cart: Product[]; setCart: (cart: Product[]) => void }) => {
+export const CartPage = () => {
+
+  const {cart, setCart} = useContext(MyContext);
+
   const stringedCart = cart.map(item => JSON.stringify(item));
   const setFromCart = new Set(stringedCart);
   const cards = [...setFromCart]
@@ -37,7 +40,12 @@ export const CartPage = ({ cart, setCart }: { cart: Product[]; setCart: (cart: P
         {cards.map(product => {
           const count = cart.filter(item => product.id === item.id).length;
           return (
-            <CartCard cart={cart} product={product} count={count} setCart={setCart} />
+            <CartCard
+            key={product}
+            cart={cart}
+            product={product}
+            count={count}
+            setCart={setCart} />
           )
         })
         }

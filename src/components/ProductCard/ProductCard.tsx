@@ -1,32 +1,28 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext} from 'react';
 import { Link } from 'react-router-dom';
 import './ProductCard.scss';
-import { ProductCardPropsType, Product } from '../../interfaces';
+import {  Product } from '../../interfaces';
+
+import {MyContext} from '../../App'
 
 
 
 export const ProductCard = ({
   product,
-  cart,
-  setCart,
-  favorites,
-  setFavorites,
-}: ProductCardPropsType) => {
+}: {product:Product}) => {
 
   const {
-    // age,
-    // id,
-    // type,
     imageUrl,
     name,
-    // snippet,
     price,
     discount,
     screen,
     capacity,
     ram
   } = product;
+
+  const {cart, setCart, favorites, setFavorites} = useContext(MyContext);
 
   const discountPrice = (price - price * discount / 100)
 

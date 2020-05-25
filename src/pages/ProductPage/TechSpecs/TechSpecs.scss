@@ -1,0 +1,30 @@
+
+.TechSpecs {
+  margin-left: 64px;
+  width: 512px;
+
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__spec {
+    display: block;
+  }
+
+  &__value {
+    display: block;
+  }
+  &__horisont {
+    display: block;
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px solid #e2e6e9;
+  }
+}

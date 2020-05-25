@@ -1,0 +1,47 @@
+
+.Gallery {
+  display: flex;
+  width: 50%;
+
+  &__stripe {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__wrapper {
+    height: 442px;
+    width: 85px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    /* width */
+    &::-webkit-scrollbar {
+      width: 1px;
+    }
+
+  }
+
+  &__main {
+    margin-left: 17px;
+    height: 442px;
+    width: 442px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  &__icon {
+    margin-bottom: 16px;
+    height: 80px;
+    width: 80px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: 1px solid #e2e6e9;
+    box-sizing: border-box;
+    outline: none;
+    &--active {
+      border: 1px solid black;
+    }
+  }
+}

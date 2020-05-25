@@ -1,6 +1,6 @@
 import './Catalog.scss';
 import React, { useState, useEffect } from 'react';
-import { CatalogPropsType } from '../../interfaces';
+import { Product } from '../../interfaces';
 import { useLocation, useHistory } from 'react-router-dom';
 import { MainFrame } from '../MainFrame/MainFrame';
 import { Pagination } from '../Pagination/Pagination';
@@ -9,11 +9,7 @@ import { ItemsOnPageSelect } from '../ItemsOnPageSelect/ItemsOnPageSelect';
 
 export const Catalog = ({
   products,
-  cart,
-  setCart,
-  favorites,
-  setFavorites
-}: CatalogPropsType) => {
+}: {products: Product[]}) => {
 
 
 
@@ -106,10 +102,6 @@ export const Catalog = ({
       <div>
         <MainFrame
           products={productsOnPage}
-          cart={cart}
-          setCart={setCart}
-          favorites={favorites}
-          setFavorites={setFavorites}
         />
 
       </div>

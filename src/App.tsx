@@ -8,7 +8,7 @@ import { FavoritesIcon } from './components/FavoritesIcon/FavoritesIcon';
 import { CartIcon } from './components/CartIcon/CartIcon';
 import { HomePage } from './pages/HomePage/HomePage';
 import { SearchField } from './components/SeachField/SearchField'
-import { LinkType, Product } from './interfaces';
+import { LinkType, Product, MyContextType } from './interfaces';
 import './App.scss';
 import { Route } from 'react-router-dom';
 import { PhonesPage } from './pages/PhonesPage/PhonesPage';
@@ -19,8 +19,13 @@ import { FavoritesPage } from './pages/FavoritesPage/FavoritesPage';
 import { CartPage } from './pages/Cart/CartPage';
 import { ThanksPage } from './pages/ThanksPage/ThanksPage';
 
+export const MyContext = React.createContext<MyContextType>({} as MyContextType)
+
+
 
 const App = () => {
+
+
   const [productsFromServer, setProductsFromServer] = useState([] as Product[])
   useEffect(
     () => {
@@ -37,13 +42,13 @@ const App = () => {
   const [favorites, setFavorites] = useState<Product[]>(
     JSON.parse(localStorage.getItem('PhonesCatalog_Favorites') || '[]'))
 
-    useEffect(() => {
-      localStorage.setItem('PhonesCatalog_Cart', JSON.stringify(cart))
-    }, [cart])
+  useEffect(() => {
+    localStorage.setItem('PhonesCatalog_Cart', JSON.stringify(cart))
+  }, [cart])
 
-    useEffect(() => {
-      localStorage.setItem('PhonesCatalog_Favorites', JSON.stringify(favorites))
-    }, [favorites])
+  useEffect(() => {
+    localStorage.setItem('PhonesCatalog_Favorites', JSON.stringify(favorites))
+  }, [favorites])
 
 
 
@@ -62,14 +67,23 @@ const App = () => {
 
 
 
+
+
   return (
+    <MyContext.Provider value={{
+      products: products,
+      cart: cart,
+      setCart: setCart,
+      favorites: favorites,
+      setFavorites: setFavorites,
+    }}>
     <div className="App">
       <header className="App__header">
         <div className="App__header-wrapper">
           <Nav links={headerLinks} />
           <div className="App__header-right-wrapper">
             <SearchField />
-            <FavoritesIcon favorites={favorites}/>
+            <FavoritesIcon favorites={favorites} />
             <CartIcon cart={cart} />
           </div>
         </div>
@@ -93,7 +107,7 @@ const App = () => {
               <Route
                 key={product.id}
                 path={`${base + product.id}`} >
-                <ProductPage productId={product.id} />
+                <ProductPage product={product} />
               </Route>
             )
           })}
@@ -103,45 +117,27 @@ const App = () => {
           <Route path="/phones">
             <PhonesPage
               products={products}
-              cart={cart}
-              setCart={setCart}
-              favorites={favorites}
-              setFavorites={setFavorites}
             />
           </Route>
 
           <Route path="/tablets">
             <TabletsPage
               products={products}
-              cart={cart}
-              setCart={setCart}
-              favorites={favorites}
-              setFavorites={setFavorites}
             />
           </Route>
 
           <Route path="/accessories">
             <AccessoriesPage
               products={products}
-              cart={cart}
-              setCart={setCart}
-              favorites={favorites}
-              setFavorites={setFavorites}
             />
           </Route>
 
           <Route path="/favorites">
-            <FavoritesPage
-              products={products}
-              cart={cart}
-              setCart={setCart}
-              favorites={favorites}
-              setFavorites={setFavorites}
-            />
+            <FavoritesPage/>
           </Route>
 
           <Route path="/cart">
-            <CartPage cart={cart} setCart={setCart}/>
+            <CartPage />
           </Route>
 
           <Route path="/thanks">
@@ -150,11 +146,7 @@ const App = () => {
 
           <Route path="/">
             <HomePage
-            products={products}
-            cart={cart}
-            setCart={setCart}
-            favorites={favorites}
-            setFavorites={setFavorites}
+              products={products}
             />
           </Route>
 
@@ -169,6 +161,8 @@ const App = () => {
         {/* <BackToTop /> */}
       </footer>
     </div>
+    </MyContext.Provider>
+
   );
 }
 
