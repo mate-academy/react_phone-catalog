@@ -6,6 +6,7 @@ type Link = {
   url: string;
   type?: string;
   exact?: boolean;
+  imgUrl?: string;
 };
 
 interface Good {

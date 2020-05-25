@@ -10,7 +10,7 @@ type Props = {
 
 export const GoodItem: React.FC<Props> = ({ good }) => {
   const { section } = useParams();
-  console.log(good.imageUrl); 
+
   return (
     <article key={good.id} className="GoodsList__Item GoodItem">
       <Link to={`/${section}/${good.id}`} className="GoodItem__Link">
