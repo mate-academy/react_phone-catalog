@@ -1,13 +1,13 @@
 # React Phone catalog
-- Replace `<your_account>` with your Github username in the [DEMO LINK](https://<your_account>.github.io/react_phone-catalog/)
-- Follow the [React task guideline](https://github.com/mate-academy/react_task-guideline#react-tasks-guideline)
+- If you work alone follow the [React task guideline](https://github.com/mate-academy/react_task-guideline#react-tasks-guideline)
+- If you work in a team follow the [Work in a team guideline](https://github.com/mate-academy/react_task-guideline/blob/master/team-flow.md#how-to-work-in-a-team)
 
 ## Description
 Implement Products catalog following [this design](https://www.figma.com/file/uEetgWenSRxk9jgiym6Yzp/Phone-catalog-redesign?node-id=1%3A2).
 
 Use [products](https://mate-academy.github.io/react_phone-catalog/api/products.json)
 and [product details](https://mate-academy.github.io/react_phone-catalog/api/products/motorola-xoom.json)
-tо fetch data (use actual `phoneId` as a last part of the URL before `.json`).
+tо fetch data (use actual `productId` as a last part of the URL before `.json`).
 
 Store the Cart in the `localStorage`
 
