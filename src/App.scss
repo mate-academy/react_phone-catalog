@@ -1,0 +1,14 @@
+@import "./styles/fonts";
+@import "./styles/vars";
+
+ul,
+li {
+  list-style: none;
+}
+
+body {
+  font-family: MontRegular, sans-serif;
+  font-size: 14px;
+  color: $secondary-color;
+  line-height: 21px;
+}

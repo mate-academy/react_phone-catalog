@@ -1,0 +1,10 @@
+@font-face {
+  font-family: "Mont";
+  src: local("Mont Semi Bold"),
+    local("Mont-Semi-Bold"),
+    url("Mont-SemiBold.woff2") format("woff2"),
+    url("Mont-SemiBold.woff") format("woff"),
+    url("Mont-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
