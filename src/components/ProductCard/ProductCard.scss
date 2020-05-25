@@ -16,7 +16,9 @@
   }
 
   &__title {
+    display: block;
     @include body-text;
+    min-height: 42px;
   }
 
   &__price-container {
