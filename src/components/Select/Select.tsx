@@ -26,8 +26,14 @@ export const Select: React.FC<Props> = ({ options }) => {
   const chooseSelectValue = (option: SortType) => {
     searchParams.set('sortBy', option.type);
 
-    currentPage && searchParams.set('page', currentPage);
-    currentPerPage && searchParams.set('perPage', currentPerPage);
+    if (currentPage) {
+      searchParams.set('page', currentPage);
+    }
+
+    if (currentPerPage) {
+      searchParams.set('perPage', currentPerPage);
+    }
+
 
     history.push({
       search: searchParams.toString(),
