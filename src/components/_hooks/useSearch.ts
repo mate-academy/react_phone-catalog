@@ -18,6 +18,10 @@ export const useSearch = () => {
       .then(data => setProducts(data));
   }, []);
 
+  useEffect(() => {
+    setInputValue('');
+  }, [location.pathname]);
+
   const historyPushWithDebounce = useCallback(debounce((value: string) => {
     search.set('query', value.toLowerCase());
 

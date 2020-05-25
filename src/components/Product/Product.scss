@@ -85,11 +85,11 @@
   }
 
   &__button {
-    margin-right: 8px;
     width: 176px;
     height: 40px;
-    font-family: "Mont", sans-serif;
-    background: $primary-color;
+    font-size: 14px;
+    background-color: $primary-color;
+    margin-right: 8px;
     color: white;
     border: 0;
     cursor: pointer;
@@ -100,7 +100,7 @@
     position: relative;
     width: 40px;
     height: 40px;
-    background-image: url("../images/icons/favorite_default.svg");
+    background-image: url("../../images/icons/favorite_default.svg");
     background-repeat: no-repeat;
     background-position: center;
     border: 1px solid $border-btn-color;
@@ -123,7 +123,7 @@
       opacity: 0;
 
       &:checked ~ .product__button-favorite-checkmark {
-        background-image: url("../images/icons/favorite_checked.svg");
+        background-image: url("../../images/icons/favorite_checked.svg");
       }
     }
   }

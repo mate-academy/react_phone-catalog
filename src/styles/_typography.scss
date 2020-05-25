@@ -19,7 +19,9 @@
   font-weight: 700;
 }
 
-html {
+html,
+button,
+input {
   font-family: Mont, sans-serif;
   color: $primary-color;
   font-size: 16px;

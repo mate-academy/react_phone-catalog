@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export const Category = ({ title, link }: CategoryProps) => (
+export const Category = ({ title, link }: Category) => (
   <div className="categories__category">
     <Link
       to={`/${link}`}

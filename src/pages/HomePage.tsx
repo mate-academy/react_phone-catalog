@@ -1,7 +1,7 @@
 import React from 'react';
-import { ShowcaseBlock } from './ShowcaseBlock';
-import { Carousel } from './Carousel';
-import { Categories } from './Categories';
+import { ShowcaseBlock } from '../components/ShowcaseBlock/ShowcaseBlock';
+import { Carousel } from '../components/Carousel/Carousel';
+import { Categories } from '../components/Categories/Categories';
 
 export const HomePage = () => {
   return (

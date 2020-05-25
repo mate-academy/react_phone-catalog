@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import { Logo } from './Logo';
+import { Logo } from '../Logo/Logo';
 
 export const Footer = () => {
   const backToTop = useCallback(() => {

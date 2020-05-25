@@ -1,10 +1,10 @@
 import React from 'react';
-import { ProductsGrid } from './ProductsGrid';
+import { ProductsList } from '../components/ProductsList/ProductsList';
 
 export const PhonesPage = () => {
   return (
     <div className="container">
-      <ProductsGrid />
+      <ProductsList />
     </div>
   );
 };

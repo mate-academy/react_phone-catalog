@@ -2,20 +2,21 @@
 @import "vars";
 @import "mixins";
 @import "typography";
-@import "../components/Header";
-@import "../components/Logo";
-@import "../components/Nav";
-@import "../components/Favorites";
-@import "../components/Cart";
-@import "../components/Heading";
-@import "../components/SliderProducts";
-@import "../components/Product";
-@import "../components/Carousel";
-@import "../components/Categories";
-@import "../components/Footer";
-@import "../components/ProductsGrid";
-@import "../components/Pagination";
-@import "../components/Search";
+@import "../components/Header/Header";
+@import "../components/Logo/Logo";
+@import "../components/Header/Nav";
+@import "../components/Header/Favorites";
+@import "../components/Header/Cart";
+@import "../components/Heading/Heading";
+@import "../components/ShowcaseBlock/SliderProducts";
+@import "../components/Product/Product";
+@import "../components/Carousel/Carousel";
+@import "../components/Categories/Categories";
+@import "../components/Footer/Footer";
+@import "../components/ProductsList/ProductsList";
+@import "../components/Pagination/Pagination";
+@import "../components/Header/Search";
+@import "../components/Dropdown/Dropdown";
 
 .container {
   width: $container-width;
@@ -46,6 +47,17 @@
 
   &__products-quantity {
     margin-top: -15px;
+  }
+
+  &__dropdowns {
+    margin: 40px 0 24px;
+    display: flex;
+  }
+
+  &__no-products-info {
+    margin-top: 70px;
+    text-align: center;
+    color: $secondary-color;
   }
 }
 

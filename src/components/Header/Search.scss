@@ -8,7 +8,6 @@
     width: 327px;
     padding: 23px;
     height: 63px;
-    font-family: "Mont", sans-serif;
     font-size: 14px;
     line-height: 18px;
     font-weight: 600;
@@ -33,12 +32,12 @@
     right: 27px;
     top: 50%;
     transform: translateY(-50%);
-    background-image: url("../images/icons/search.svg");
+    background-image: url("../../images/icons/search.svg");
     background-repeat: no-repeat;
     background-position: center;
 
     &--clear {
-      background-image: url("../images/icons/clear.svg");
+      background-image: url("../../images/icons/clear.svg");
       cursor: pointer;
     }
   }

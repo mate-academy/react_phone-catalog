@@ -73,7 +73,7 @@ Store the Cart in the `localStorage`
 1. Fetch phone details from API taking the `phoneId` from the URL
     - Use `Loader` when fetching the details
 1. Show the details on the page
-    - Hide `Available colors` and `Select capacity` for now
+    - Hide `Available colors` and `Dropdown capacity` for now
     - `About` section should contain just a description (without any subheaders)
     - Choose `Tech specs` you want to show
 1. Add ability to choose a picture
