@@ -1,0 +1,133 @@
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: block;
+
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button {
+  outline: none;
+}
+
+$colorElement: #e2e6e9;
+$colorText: #89939a;
+$colorPrimary: #313237;
+$borderElement: solid 1px $colorElement;
+
+@mixin iconInButton ($imageUrl) {
+  background-image: $imageUrl;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.containerMainSlider {
+  width: 1124px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.сarousel {
+  width: 1040px;
+  height: 402px;
+  border: 1px solid transparent;
+  overflow: hidden;
+  transition: translate 0.5s;
+
+  &__list {
+    display: flex;
+    flex-direction: row;
+    transition: transform 0.5s;
+  }
+
+  &__item {
+    margin-right: 10px;
+  }
+
+  &__button {
+    width: 32px;
+    height: 400px;
+    border: solid 1px #b4bdc4;
+    background-color: #fff;
+    cursor: pointer;
+  }
+
+  &__button:hover {
+    border: solid 1px $colorPrimary;
+  }
+
+  &__dots-wrap {
+    width: 70px;
+    margin-top: 18px;
+    margin-left: auto;
+    margin-right: auto;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__dot {
+    width: 14px;
+    height: 4px;
+    display: block;
+    background-color: $colorElement;
+    border: none;
+
+    &--active {
+      width: 14px;
+      height: 4px;
+      display: block;
+      background-color: $colorPrimary;
+    }
+  }
+}
+
+.btn-right {
+  @include iconInButton(url(../../img/Icons/right.svg));
+}
+
+.btn-left {
+  @include iconInButton(url(../../img/Icons/left.svg));
+}
+
+// .carousel__dots-wrap {
+//   width: 70px;
+//   margin-top: 18px;
+//   margin-left: auto;
+//   margin-right: auto;
+
+//   display: flex;
+//   flex-direction: row;
+//   justify-content: space-between;
+//   align-items: center;
+// }
+
+// .carousel__dot {
+//   width: 14px;
+//     height: 4px;
+//     display: block;
+//     background-color: $colorElement;
+//     border: none;
+
+//     &--active {
+//       width: 14px;
+//       height: 4px;
+//       display: block;
+//       background-color: $colorPrimary;
+//     }
+// }

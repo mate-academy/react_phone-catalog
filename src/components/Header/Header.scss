@@ -1,0 +1,106 @@
+
+@import "../../styles/utils/mixins";
+@import "../../styles/utils/vars";
+
+.header {
+  position: relative;
+  width: 100%;
+  height: 64px;
+  top: 0;
+  border-bottom: 1px solid $colorElement;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1;
+  background-color: #fff;
+
+  &__logo {
+    position: absolute;
+    left: 24px;
+    top: calc(50% - #{ $heightLogo } / 2 + 0.5px);
+  }
+
+  &__nav {
+    margin-left: 24px + $widthLogo + 65px;
+  }
+
+  &__search {
+    height: $heightHeader;
+    width: 327px;
+    padding-left: 24px;
+    border-left: $borderElement;
+    @include ButtonText;
+    color: $colorText;
+    line-height: 18px;
+  }
+
+  &__search::placeholder {
+    display: flex;
+    justify-content: space-between;
+    color: $colorIcons;
+    line-height: 18px;
+    @include ButtonText;
+    @include iconInButton(url(../../img/Icons/Search.svg));
+  }
+
+  &__buttons {
+    width: 64px;
+    height: 64px;
+    box-sizing: border-box;
+    background-color: #fff;
+    border-left: 1px solid $colorElement;
+    border-bottom: 3px solid transparent;
+
+    @include hover(border-bottom, 3px solid $colorPrimary);
+  }
+}
+
+.nav {
+  &__list {
+    display: flex;
+    @include Uppercase;
+    color: #89939a;
+  }
+
+  &__link {
+    display: inline-block;
+    text-decoration: none;
+    padding: 26px 32px;
+    position: relative;
+    color: $colorText;
+    @include hover(color, $colorPrimary);
+  }
+
+  &__link:hover:before {
+    opacity: 1;
+  }
+
+  &__link::before {
+    content: "";
+
+    border-bottom: solid 3px #313237;
+
+    position: absolute;
+    top: 60px;
+    left: 32px;
+    right: 32px;
+    transition: opacity 0.3s ease;
+
+    opacity: 0;
+  }
+
+  &__link--active::after {
+    content: "";
+    border-bottom: solid 3px #313237;
+    position: absolute;
+    top: 60px;
+    left: 32px;
+    right: 32px;
+  }
+}
+
+.logo {
+  width: 40px;
+  height: 11px;
+}
