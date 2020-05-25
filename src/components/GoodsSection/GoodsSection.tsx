@@ -21,6 +21,7 @@ export const GoodsSection: React.FC<Props> = ({ goods }) => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
 
+  const query = searchParams.get('query')?.toLowerCase() || '';
   const currentPage = Number(searchParams.get('page'));
   const perPageDefault = perPageSettings[0].name;
   const perPageParam = useMemo(() => searchParams.get('perPage'), [searchParams]);
@@ -53,9 +54,16 @@ export const GoodsSection: React.FC<Props> = ({ goods }) => {
     [goods, sectionProp],
   );
 
+  const searchedGoods = useMemo(
+    () => filteredGoods.filter(good => {
+      return `${good.name} ${good.snippet}`.toLowerCase().includes(query);
+    }),
+    [query, filteredGoods],
+  );
+
   const sortedGoods = useMemo(
-    () => sortBy(filteredGoods, sortType),
-    [filteredGoods, sortType],
+    () => sortBy(searchedGoods, sortType),
+    [searchedGoods, sortType],
   );
 
   const paginatedGoods = sortedGoods.slice(
@@ -95,7 +103,7 @@ export const GoodsSection: React.FC<Props> = ({ goods }) => {
       </div>
       {filteredGoods.length > perPage && (
         <div className="Pagination">
-          <Pagination qty={filteredGoods.length} perPage={perPage} />
+          <Pagination qty={searchedGoods.length} perPage={perPage} />
         </div>
       )}
     </section>

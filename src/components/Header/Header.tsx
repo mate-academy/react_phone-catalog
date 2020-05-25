@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, Route } from 'react-router-dom';
 
 import './Header.scss';
 import { Nav } from '../Nav';
@@ -21,7 +21,7 @@ export const Header = () => (
       Home
     </NavLink>
     <Nav links={sectionsLinks} />
-    <Search />
+    <Route path="/:section" exact component={Search} />
     <Link to="/favorites" className="Header__Button">
       <Icon
         name="favorites"

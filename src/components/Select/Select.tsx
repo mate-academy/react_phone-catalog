@@ -15,7 +15,7 @@ export const Select: React.FC<Props> = ({ options }) => {
   const searchParams = new URLSearchParams(location.search);
   const currentSortType = useMemo(
     () => searchParams.get('sortBy') || defaultSortType,
-    [searchParams, options, defaultSortType],
+    [searchParams, defaultSortType],
   );
   const currentPage = useMemo(() => searchParams.get('page'), [searchParams]);
   const currentPerPage = useMemo(() => searchParams.get('perPage'), [searchParams]);
