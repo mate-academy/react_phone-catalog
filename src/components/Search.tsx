@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Search = ({ inputValue, searchPeople }: SearchProps) => {
+export const Search = ({ inputValue, searchProducts }: SearchProps) => {
   return (
     <div className="search__container">
       <input
@@ -8,7 +8,7 @@ export const Search = ({ inputValue, searchPeople }: SearchProps) => {
         value={inputValue}
         className="search"
         placeholder="Search in products..."
-        onChange={searchPeople}
+        onChange={searchProducts}
       />
       <div className="search__icon" />
     </div>

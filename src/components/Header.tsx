@@ -30,7 +30,7 @@ export const Header = () => {
         && (
           <Search
             inputValue={inputValue}
-            searchPeople={searchProducts}
+            searchProducts={searchProducts}
           />
         )}
         <Favorites />
