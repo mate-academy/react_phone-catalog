@@ -11,14 +11,14 @@ export const sectionsLinks: Link[] = [
     title: 'Tablets',
     url: '/tablets',
     type: 'tablet',
-    imgUrl: 'images/category/Tablets.png',
+    imgUrl: 'images/category/tablets.png',
   },
   {
     name: 'Accessories',
     title: 'Accessories',
     url: '/accessories',
     type: 'accessories',
-    imgUrl: 'images/category/Accessoires.png',
+    imgUrl: 'images/category/accessoires.png',
   },
 ];
 
