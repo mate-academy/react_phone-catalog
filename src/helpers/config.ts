@@ -1,4 +1,4 @@
-export const sectionsLinks: Link[] = [
+export const SECTION_LINK: Link[] = [
   {
     name: 'Phones',
     title: 'Mobile Phones',
@@ -22,7 +22,7 @@ export const sectionsLinks: Link[] = [
   },
 ];
 
-export const footerLinks: Link[] = [
+export const FOOTER_LINKS: Link[] = [
   {
     name: 'Github',
     url: 'https://github.com/fe-feb20-team3',
@@ -43,9 +43,10 @@ export const Banners: Banners[] = [
   { alt: 'Third banner', path: 'images/banner3.jpg' },
 ];
 
-export const perPageDefault = 8;
-
-export const perPageSettings = [
+export const PER_PAGE_SETTINGS = [
+  {
+    name: '4',
+  },
   {
     name: '8',
   },

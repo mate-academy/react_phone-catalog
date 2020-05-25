@@ -8,10 +8,10 @@ import cn from 'classnames';
 
 import './Pagination.scss';
 
-type Props = {
+interface Props {
   qty: number;
   perPage: number;
-};
+}
 
 export const Pagination: React.FC<Props> = ({ qty, perPage }) => {
   const location = useLocation();

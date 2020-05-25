@@ -1,4 +1,4 @@
-export const sortTypes: SortType[] = [
+export const SORT_TYPES: SortType[] = [
   {
     name: 'Price: Low to High',
     field: 'price',
@@ -26,6 +26,20 @@ export const sortTypes: SortType[] = [
     field: 'name',
     typeField: 'string',
     type: 'betalpha',
+    isReverse: true,
+  },
+  {
+    name: 'Newest',
+    field: 'age',
+    typeField: 'number',
+    type: 'newest',
+    isReverse: false,
+  },
+  {
+    name: 'Oldest',
+    field: 'age',
+    typeField: 'number',
+    type: 'oldest',
     isReverse: true,
   },
 ];

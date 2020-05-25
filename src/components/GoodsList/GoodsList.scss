@@ -18,6 +18,10 @@ $color-elements: #e2e6e9;
   &:hover,
   &:focus {
     box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+
+    & .GoodItem__Image {
+      transform: scale(1.2);
+    }
   }
 
   &__Link {
@@ -31,11 +35,6 @@ $color-elements: #e2e6e9;
     object-position: center;
     transform-origin: center;
     transition: transform 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
-
-    &:hover,
-    &:focus {
-      transform: scale(1.1);
-    }
   }
 
   &__Heading {

@@ -3,13 +3,13 @@ import cn from 'classnames';
 
 import './Icon.scss';
 
-type Props = {
+interface Props {
   name: string;
   tag?: number;
   size?: number;
   border: boolean;
   inActive: boolean;
-};
+}
 
 export const Icon: React.FC<Props> = ({
   name,

@@ -1,2 +1,2 @@
-export * from './ButtonPrimary';
-export * from './ButtonIcon';
+export * from './PrimaryButton';
+export * from './IconButton';

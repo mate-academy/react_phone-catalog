@@ -3,9 +3,9 @@ import { NavLink } from 'react-router-dom';
 
 import './Nav.scss';
 
-type Props = {
+interface Props {
   links: Link[];
-};
+}
 
 export const Nav: React.FC<Props> = ({ links }) => (
   <nav className="Nav">
