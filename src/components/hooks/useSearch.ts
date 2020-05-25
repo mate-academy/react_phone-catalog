@@ -3,7 +3,6 @@ import React, {
 } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import { getProducts } from '../../helpers/api';
-import debounce from '../../helpers/debounce';
 
 export const useSearch = () => {
   const history = useHistory();
@@ -18,9 +17,9 @@ export const useSearch = () => {
       .then(data => setProducts(data));
   }, []);
 
-  const historyPush = debounce(() => {
+  const historyPush = () => {
     history.push({ search: search.toString() });
-  }, 2000);
+  };
 
   const searchProducts = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
