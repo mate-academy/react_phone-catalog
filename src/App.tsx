@@ -8,23 +8,24 @@ import './styles/main.scss';
 const App = () => {
   const [goods, setDataGoods] = useState<Good[]>([])
 
-  useEffect (
-    () => {
-      getGoods().then(goods => {
-        setDataGoods(goods)});
-    }, []
-  )
+  const loadGoods = async () => {
+    const data = await getGoods();
+    setDataGoods(data);
+  }
+
+  useEffect(() => {
+    loadGoods();
+  }, [])
 
   console.log(goods)
-
-  return (
-  <div className="App">
-    <Header />
-    <Body goods={goods}/>
-    <Footer />
-  <div></div>
-  </div>
-);
+    return (
+    <div className="App">
+      <Header />
+      <Body goods={goods}/>
+      <Footer />
+    <div></div>
+    </div>
+  );
 }
 
 export default App;
