@@ -19,17 +19,15 @@ export const ShopCategory: React.FC<Props> = ({ cards }) => {
         width: `${imageWidth * imageCount + (imageGap * (imageCount - 1))}px`,
       }}
     >
-      <div className="Category__Title">
-        <h2 className="Category__Title-text">
-          Shop by category
+      <h2 className="Category__Title">
+        Shop by category
         </h2>
-      </div>
       <div className="Category__Container">
         <ul className="Category__List">
           {sectionsLinks.map(link => (
             <li className="Category__Item" key={link.name}>
               <Link to={link.url} className="Category__Link">
-                <div className="Category__Image-container">
+                <div className="Category__ImageContainer">
                   <img
                     src={link.imgUrl}
                     alt={link.title}
@@ -38,10 +36,10 @@ export const ShopCategory: React.FC<Props> = ({ cards }) => {
                 </div>
 
                 <div className="Category__Info">
-                  <p className="Category__Info-type Category__Paragraph">
+                  <h3 className="Category__InfoType Category__Paragraph">
                     {link.title}
-                  </p>
-                  <p className="Category__Info-count Category__Paragraph">
+                  </h3>
+                  <p className="Category__InfoCount Category__Paragraph">
                     {cards.filter(card => card.type === link.type).length}
                     {' models'}
                   </p>
