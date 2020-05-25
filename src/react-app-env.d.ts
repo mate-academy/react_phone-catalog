@@ -44,7 +44,7 @@ type Banners = {
 type SortType = {
   name: string;
   type: string;
-  field: 'price' | 'name';
+  field: 'price' | 'name' | 'age';
   typeField: 'string' | 'number';
   isReverse: boolean;
   isDefault?: true;
