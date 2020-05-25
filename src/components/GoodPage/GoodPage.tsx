@@ -3,13 +3,13 @@ import { useParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 
 import './GoodPage.scss';
-import { ButtonPrimary } from '../Buttons';
+import { PrimaryButton } from '../Buttons';
 import { Icon } from '../Icon';
 import { getGoodDetail } from '../../helpers';
 
-type Props = {
+interface Props {
   goods: Good[];
-};
+}
 
 export const GoodPage: React.FC<Props> = ({ goods }) => {
   const { good } = useParams();
@@ -99,7 +99,7 @@ export const GoodPage: React.FC<Props> = ({ goods }) => {
                 </div>
                 <div className="GoodPage__Buttons">
                   <div className="GoodPage__Buttons--main">
-                    <ButtonPrimary text="Add To Cart" />
+                    <PrimaryButton text="Add To Cart" />
                   </div>
                   <div className="GoodPage__Buttons--favorites">
                     <Icon

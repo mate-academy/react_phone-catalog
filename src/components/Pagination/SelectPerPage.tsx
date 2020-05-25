@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
 import cn from 'classnames';
 
-type Props = {
+interface Props {
   options: PerPage[];
-};
+}
 
 export const SelectPerPage: React.FC<Props> = ({ options }) => {
   const history = useHistory();

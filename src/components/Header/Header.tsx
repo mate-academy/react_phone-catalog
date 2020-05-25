@@ -5,7 +5,7 @@ import './Header.scss';
 import { Nav } from '../Nav';
 import { Search } from '../Search';
 import { Icon } from '../Icon';
-import { sectionsLinks } from '../../helpers';
+import { SECTION_LINK } from '../../helpers';
 
 export const Header = () => (
   <header className="Header" id="top">
@@ -20,7 +20,7 @@ export const Header = () => (
     >
       Home
     </NavLink>
-    <Nav links={sectionsLinks} />
+    <Nav links={SECTION_LINK} />
     <Route path="/:section" exact component={Search} />
     <Link to="/favorites" className="Header__Button">
       <Icon

@@ -3,9 +3,9 @@ import React from 'react';
 import './GoodsList.scss';
 import { GoodItem } from './GoodItem';
 
-type Props = {
+interface Props {
   goods: Good[];
-};
+}
 
 export const GoodsList: React.FC<Props> = ({ goods }) => (
   <div className="GoodsList">

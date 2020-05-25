@@ -4,9 +4,9 @@ import cn from 'classnames';
 
 import './Select.scss';
 
-type Props = {
+interface Props {
   options: SortType[];
-};
+}
 
 export const Select: React.FC<Props> = ({ options }) => {
   const defaultSortType = options.find(item => item.isDefault) || options[0];

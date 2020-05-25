@@ -1,4 +1,4 @@
-export const sortTypes: SortType[] = [
+export const SORT_TYPES: SortType[] = [
   {
     name: 'Price: Low to High',
     field: 'price',

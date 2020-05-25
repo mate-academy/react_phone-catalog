@@ -6,9 +6,9 @@ import { CardSlider } from '../CardSlider';
 import { sldierFilter } from '../../helpers';
 import { ShopCategory } from '../ShopCategory';
 
-type Props = {
+interface Props {
   goods: Good[];
-};
+}
 
 export const HomePage: React.FC<Props> = ({ goods }) => {
   const hotPrices = sldierFilter(goods, 'hotPrice');

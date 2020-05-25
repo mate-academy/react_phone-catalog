@@ -26,30 +26,30 @@ interface GoodDetail {
   };
 }
 
-type Link = {
+interface Link {
   name: string;
   title?: string;
   url: string;
   type?: string;
   exact?: boolean;
   imgUrl?: string;
-};
+}
 
-type Banners = {
+interface Banners {
   path: string;
   position?: number;
   alt?: string;
-};
+}
 
-type SortType = {
+interface SortType {
   name: string;
   type: string;
   field: 'price' | 'name' | 'age';
   typeField: 'string' | 'number';
   isReverse: boolean;
   isDefault?: true;
-};
+}
 
-type PerPage = {
+interface PerPage {
   name: string;
-};
+}
