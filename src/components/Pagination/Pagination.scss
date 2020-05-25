@@ -1,0 +1,22 @@
+
+@import "../../mixins.scss";
+
+.Pagination {
+  display: flex;
+  justify-content: center;
+
+  &__button {
+    @include pagination-button;
+
+    &--active {
+      background-color: #313237;
+      color: white;
+    }
+
+    &--arrow {
+      margin: 0 12px;
+    }
+
+  }
+}
+

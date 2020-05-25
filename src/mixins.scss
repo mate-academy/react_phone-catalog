@@ -1,0 +1,93 @@
+@import "./fonst.scss";
+
+@mixin body-text {
+  font-family: "Mont", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  color: #313237;
+}
+@mixin buttons {
+  font-family: "Mont", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: white;
+}
+
+@mixin small-text {
+  font-family: Mont, sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  color: #313237;
+}
+
+@mixin h2 {
+  font-family: Mont, sans-serif;
+  font-weight: bolder;
+  font-size: 22px;
+  line-height: 140%;
+}
+@mixin upper-case {
+  font-family: Mont, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #313237;
+}
+
+@mixin icons-font {
+  font-family: Mont, sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 9px;
+  line-height: 12px;
+  text-align: center;
+  color: white;
+}
+@mixin placeholder {
+  font-family: Mont, sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18px;
+  color: #b4bdc4;
+}
+@mixin h1 {
+  font-family: "Mont", sans-serif;
+  font-style: normal;
+  font-weight: bolder;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  color: #313237;
+}
+
+@mixin pagination-button {
+  height: 32px;
+  width: 32px;
+  background-color: white;
+  border: 1px solid #e2e6e9;
+  box-sizing: border-box;
+  @include body-text;
+  color: black;
+  margin: 0 4px;
+  outline: none;
+
+}
+
+@mixin h3 {
+  font-family: "Mont", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 26px;
+  color: #313237;
+}

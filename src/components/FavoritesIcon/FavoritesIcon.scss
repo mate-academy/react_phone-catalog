@@ -1,0 +1,44 @@
+
+@import "../../mixins.scss";
+
+.FavoritesIcon {
+  position: relative;
+  height: 64px;
+  width: 64px;
+  box-shadow: -1px 0 0 #e2e6e9;
+
+  &__count {
+    position: absolute;
+    top: 23px;
+    left: 32px;
+    height: 12px;
+    width: 12px;
+    border-radius: 50%;
+    background-color: #eb5757;
+    @include icons-font;
+  }
+
+  &__link {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-image: url("../../imgs/Icons/heart.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    &.active {
+      background-image: url("../../imgs/Icons/heart.png");
+      &::after {
+        position: absolute;
+        content: "";
+        display: block;
+        left: 0;
+        top: 61px;
+        height: 3px;
+        width: 100%;
+        background-color: #313237;
+      }
+    }
+
+  }
+
+}

@@ -1,0 +1,10 @@
+
+@import "../../mixins.scss";
+
+.TabletsPage {
+  max-width: 1136px;
+  margin: 0 16px;
+  &__h1 {
+    @include h1;
+  }
+}

@@ -1,0 +1,43 @@
+@import "../../mixins.scss";
+
+.CardsSlider {
+  margin-bottom: 80px;
+
+  &__head-container {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin: 20px 0;
+
+  }
+
+  &__title {
+    @include h1;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__button {
+    @include pagination-button;
+    &--active {
+      background-color: #313237;
+      color: white;
+    }
+  }
+
+  &__stripe-container {
+    overflow: hidden;
+    margin: 0;
+  }
+
+  &__stripe {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    left: 0;
+    transition: 1s;
+  }
+
+}

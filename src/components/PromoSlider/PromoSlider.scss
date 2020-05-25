@@ -1,0 +1,48 @@
+
+.PromoSlider {
+  margin: 40px 0 104px;
+  &__frame {
+    overflow: hidden;
+    margin: 0 16px;
+    width: 1040px;
+    position: relative;
+  }
+
+  &__wrapper {
+    display: flex;
+  }
+
+  &__stripe {
+    position: relative;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    list-style: none;
+    transition: 1s;
+  }
+
+  &__button {
+    height: 400px;
+    width: 32px;
+    border: 1px solid #b4bdc4;
+    box-sizing: border-box;
+    background-color: white;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(../../imgs/Icons/ChevronArrow.png);
+    cursor: pointer;
+    outline: none;
+
+    &--right {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__item {
+    display: block;
+    width: 1040px;
+    height: 400px;
+  }
+}
+

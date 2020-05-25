@@ -1,0 +1,50 @@
+
+@import "../../mixins.scss";
+
+.Nav {
+  height: 100%;
+  display: flex;
+  justify-content: left;
+  align-items: center;;
+
+  &__list {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    list-style: none;
+    height: 100%;
+
+  }
+
+  &__item {
+    height: 100%;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    text-decoration: none;
+    @include upper-case;
+    color: #89939a;
+    &.active {
+      position: relative;
+      color: #313237;
+      &::before {
+        content: "";
+        position: absolute;
+        top: 61px;
+        left: 0;
+        height: 3px;
+        width: 100%;
+        background-color: #313237;
+      }
+    }
+  }
+
+  &__label {
+    display: block;
+    margin: 0 0 0 64px;
+    height: 64px;
+  }
+}
