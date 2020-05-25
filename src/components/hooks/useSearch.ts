@@ -3,6 +3,7 @@ import React, {
 } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import { getProducts } from '../../helpers/api';
+import debounce from '../../helpers/debounce';
 
 export const useSearch = () => {
   const history = useHistory();
@@ -17,23 +18,23 @@ export const useSearch = () => {
       .then(data => setProducts(data));
   }, []);
 
-  const historyPush = () => {
+  const historyPushWithDebounce = useCallback(debounce((value: string) => {
+    search.set('query', value.toLowerCase());
+
+    if (!(search.get('query') || '')) {
+      search.delete('query');
+    }
+
     history.push({ search: search.toString() });
-  };
+  }, 500), []);
 
   const searchProducts = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
-      const value = e.target.value.trim();
-
-      search.set('query', value.toLowerCase());
-
-      if (!(search.get('query') || '').trim()) {
-        search.delete('query');
-      }
+      const value = e.target.value;
 
       setInputValue(value);
-      historyPush();
-    }, [search, historyPush],
+      historyPushWithDebounce(value);
+    }, [search, historyPushWithDebounce],
   );
 
   const searchedProducts: Product[] = useMemo(() => {
