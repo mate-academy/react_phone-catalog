@@ -105,7 +105,7 @@ export const GoodsSection: React.FC<Props> = ({ goods }) => {
       <div className="GoodsSection__Container">
         <GoodsList goods={paginatedGoods} />
       </div>
-      {filteredGoods.length > perPage && (
+      {searchedGoods.length > perPage && (
         <div className="Pagination">
           <Pagination qty={searchedGoods.length} perPage={perPage} />
         </div>
