@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import cn from 'classnames';
 import { GoodItem } from '../GoodsList';
 import './CardSlider.scss';
@@ -10,18 +10,25 @@ type Props = {
 
 export const CardSlider: React.FC<Props> = ({ goods, title }) => {
   const [left, setLeft] = useState(0);
+  const myRef = useRef<HTMLDivElement>(null);
   const cardWidth = 272;
   const cardGap = 16;
   const cardsOnOneMoment = 4;
   const cardsLength = goods.length;
   const [position, setPosition] = useState(cardsOnOneMoment);
 
-  const handleClick = (path: number) => {
+  const handleSlider = (path: number) => {
     const newLeftPosition = (cardWidth + cardGap) * -path;
 
     setLeft(left + newLeftPosition);
     setPosition(position + path);
   };
+
+  useEffect(() => {
+    if (myRef.current) {
+      console.log(myRef.current.offsetWidth);
+    }
+  }, [myRef])
 
   return (
     <div
@@ -29,6 +36,7 @@ export const CardSlider: React.FC<Props> = ({ goods, title }) => {
       style={{
         width: `${(cardWidth * cardsOnOneMoment) + (cardGap * (cardsOnOneMoment - 1))}px`,
       }}
+      ref={myRef}
     >
       <div className="Card__Title-site">
         <div>
@@ -38,7 +46,7 @@ export const CardSlider: React.FC<Props> = ({ goods, title }) => {
           <button
             className="Card__Button"
             type="button"
-            onClick={() => handleClick(-1)}
+            onClick={() => handleSlider(-1)}
             disabled={position === cardsOnOneMoment}
           >
             <div
@@ -52,7 +60,7 @@ export const CardSlider: React.FC<Props> = ({ goods, title }) => {
           <button
             className="Card__Button"
             type="button"
-            onClick={() => handleClick(1)}
+            onClick={() => handleSlider(1)}
             disabled={position === cardsLength}
           >
             <div
