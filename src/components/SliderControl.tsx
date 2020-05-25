@@ -19,8 +19,6 @@ export const SliderControl = ({
       className={classNames({
         slider__button: true,
         [`slider__button-${direction}`]: true,
-        'slider__button--disabled': (dirLeft && posStart)
-          || (dirRight && posMax),
       })}
       onClick={() => handleSlide(direction)}
       disabled={(dirLeft && posStart)

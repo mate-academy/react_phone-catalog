@@ -6,7 +6,7 @@ export const ProductsGrid = () => {
   const { searchedProducts } = useSearch();
 
   return (
-    <div className="main-grid">
+    <div className="products">
       {searchedProducts.map(product => (
         <Product key={product.id} {...product} />
       ))}

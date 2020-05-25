@@ -1,7 +1,6 @@
-.main-grid {
-  max-width: calc(272px * 4 + 3 * 16px);
+.products {
   display: grid;
-  grid-template-columns: repeat(4, 272px);
+  grid-template-columns: repeat(4, $product-card-width);
   justify-items: center;
   grid-gap: 40px 16px;
 }

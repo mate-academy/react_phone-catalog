@@ -1,6 +1,6 @@
 .product {
-  width: 272px;
-  height: 507px;
+  width: $product-card-width;
+  height: $product-card-height;
   padding: 24px;
   display: flex;
   flex-direction: column;

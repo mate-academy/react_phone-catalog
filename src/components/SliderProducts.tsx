@@ -3,15 +3,10 @@ import { Product } from './Product';
 
 export const SliderProducts = ({
   products,
-  frameSize,
   position,
   animationDuration,
-  itemWidth,
 }: SliderProps) => (
-  <div
-    className="slider"
-    style={{ width: `${frameSize * itemWidth}px` }}
-  >
+  <div className="slider">
     <div
       className="slider__list"
       style={{

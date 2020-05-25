@@ -1,47 +1,25 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavItem } from './NavItem';
+
+const navList: NavItem[] = [
+  { title: 'Home', link: '/', exact: true },
+  { title: 'Phones', link: '/phones', exact: false },
+  { title: 'Tablets', link: '/tablets', exact: false },
+  { title: 'Accessories', link: '/accessories', exact: false },
+];
 
 export const Nav = () => {
   return (
     <nav className="nav">
       <ul className="nav__list">
-        <li className="nav__item">
-          <NavLink
-            to="/"
-            exact
-            className="nav__link"
-            activeClassName="nav__link--active"
-          >
-            Home
-          </NavLink>
-        </li>
-        <li className="nav__item">
-          <NavLink
-            to="/phones"
-            className="nav__link"
-            activeClassName="nav__link--active"
-          >
-            Phones
-          </NavLink>
-        </li>
-        <li className="nav__item">
-          <NavLink
-            to="/tablets"
-            className="nav__link"
-            activeClassName="nav__link--active"
-          >
-            Tablets
-          </NavLink>
-        </li>
-        <li className="nav__item">
-          <NavLink
-            to="/accessories"
-            className="nav__link"
-            activeClassName="nav__link--active"
-          >
-            Accessories
-          </NavLink>
-        </li>
+        {navList.map(({ title, link, exact }) => (
+          <NavItem
+            key={title}
+            title={title}
+            link={link}
+            exact={exact}
+          />
+        ))}
       </ul>
     </nav>
   );

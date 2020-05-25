@@ -110,3 +110,18 @@ type SearchProps = {
   inputValue: string;
   searchPeople: React.ChangeEventHandler;
 };
+
+interface Category {
+  title: string;
+  link: string;
+}
+
+type CategoryProps = Category;
+
+interface NavItem {
+  title: string;
+  link: string;
+  exact: boolean;
+}
+
+type NavItemProps = NavItem;

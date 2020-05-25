@@ -20,7 +20,7 @@ export const useSearch = () => {
 
   const historyPush = debounce(() => {
     history.push({ search: search.toString() });
-  }, 500);
+  }, 2000);
 
   const searchProducts = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {

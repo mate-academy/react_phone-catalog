@@ -7,16 +7,37 @@
 @import "../components/Nav";
 @import "../components/Favorites";
 @import "../components/Cart";
+@import "../components/Heading";
 @import "../components/SliderProducts";
 @import "../components/Product";
 @import "../components/Carousel";
+@import "../components/Categories";
 @import "../components/Footer";
 @import "../components/ProductsGrid";
 @import "../components/Search";
 
 .container {
-  width: 1136px;
+  width: $container-width;
   margin: 0 auto;
+}
+
+.section {
+  padding-bottom: 80px;
+
+  &__heading {
+    margin-bottom: 24px;
+  }
+
+  &__heading-container {
+    width: $container-width;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__carousel {
+    margin-top: 40px;
+    margin-bottom: 24px;
+  }
 }
 
 .visually-hidden {

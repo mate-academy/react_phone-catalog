@@ -48,7 +48,7 @@ export const Carousel = () => {
   });
 
   return (
-    <div className="carousel">
+    <div className="carousel section__carousel">
       <div className="carousel__container">
         <CarouselControl
           changeSlide={changeSlide}
