@@ -1,0 +1,26 @@
+.btn {
+  font-family: Mont, sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  padding: 0;
+
+  &__add-to-cart {
+    height: 40px;
+    width: 176px;
+    color: #fff;
+    background-color: $bg-c-btn-primary;
+    border: none;
+  }
+
+  &__add-to-fav {
+    height: 40px;
+    width: 40px;
+    background-image: url("../../../icons/heart.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #fff;
+    border: 1px solid #b4bdc4;
+  }
+}

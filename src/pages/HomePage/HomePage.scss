@@ -1,0 +1,20 @@
+.homepage {
+  display: flex;
+  flex-direction: column;
+
+  &__products-category {
+    margin-bottom: 80px;
+  }
+
+  &__view-products {
+    display: grid;
+    grid-template-columns: repeat(4, 272px);
+    column-gap: 16px;
+    margin-bottom: 80px;
+  }
+
+  &__section-title {
+    @include h1;
+    margin-bottom: 24px;
+  }
+}

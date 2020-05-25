@@ -1,0 +1,34 @@
+.slider {
+  position: relative;
+  z-index: -10;
+  margin: 0 auto 104px;
+  &__container {
+    display: flex;
+  }
+
+  &__button {
+    position: relative;
+    display: flex;
+    width: 32px;
+    height: 400px;
+    background-color: #fff;
+    border: 1px solid #b4bdc4;
+    box-sizing: border-box;
+    transform: matrix(-1, 0, 0, 1, 0, 0);
+    align-items: center;
+  }
+
+  &__img {
+
+    &-container {
+      max-width: 1040px;
+      height: 400px;
+      overflow: hidden;
+      margin: 0 16px;
+    }
+
+    &-list {
+      display: flex;
+    }
+  }
+}

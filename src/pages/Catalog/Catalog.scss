@@ -1,0 +1,11 @@
+.catalog {
+  &__title {
+    @include h1;
+    margin-bottom: 8px;
+  }
+
+  &__items-count {
+    @include body-text;
+    margin-bottom: 40px;
+  }
+}

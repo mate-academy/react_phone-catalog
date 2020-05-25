@@ -1,0 +1,38 @@
+.header {
+  position: fixed;
+
+  background-color: #fff;
+  width: 100%;
+  height: 89px;
+  &_container {
+    display: flex;
+    justify-content: center;
+    box-shadow: 0 1px 0 #e2e6e9;
+  }
+
+  &_nav-wrapper {
+    display: flex;
+    max-width: 1440px;
+    justify-content: space-between;
+    background-color: #fff;
+    height: 64px;
+  }
+
+  &_nav {
+    display: grid;
+    grid-template-columns: repeat(5, auto);
+    column-gap: 64px;
+  }
+
+  &_logo {
+    width: 48px;
+    align-self: center;
+    padding: 0 0 0 24px;
+  }
+
+  &_nav-list {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    column-gap: 64px;
+  }
+}

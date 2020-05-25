@@ -14,13 +14,14 @@
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-router-dom": "^5.1.2",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
     "typescript": "^3.7.5"
   },
   "devDependencies": {
     "@mate-academy/eslint-config-react-typescript": "*",
     "@mate-academy/stylelint-config": "*",
+    "babel-plugin-module-resolver": "^4.0.0",
     "eslint": "^6.8.0",
     "gh-pages": "^2.2.0",
     "husky": "^4.0.10",

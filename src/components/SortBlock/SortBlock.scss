@@ -1,0 +1,23 @@
+.catalog__sort {
+  margin-bottom: 24px;
+
+  &-form {
+    display: grid;
+    grid-template-columns: 176px 128px;
+    column-gap: 16px;
+  }
+
+  &-title {
+    display: block;
+    @include small-text;
+    color: $c-extra-text;
+    margin-bottom: 4px;
+  }
+
+  &-select {
+    width: 100%;
+    height: 40px;
+    border: 1px solid #b4bdc4;
+    box-sizing: border-box;
+  }
+}

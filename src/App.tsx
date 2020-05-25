@@ -1,11 +1,30 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { Header } from './components/Header';
+import { getGoods } from './helpers/api';
+import { Body } from './components/Body';
+import { Footer } from './components/Footer';
+import './styles/main.scss';
 
-import './App.scss';
+const App = () => {
+  const [goods, setDataGoods] = useState<Good[]>([])
 
-const App = () => (
+  useEffect (
+    () => {
+      getGoods().then(goods => {
+        setDataGoods(goods)});
+    }, []
+  )
+
+  console.log(goods)
+
+  return (
   <div className="App">
-    <h1>React Phone Catalog</h1>
+    <Header />
+    <Body goods={goods}/>
+    <Footer />
+  <div></div>
   </div>
 );
+}
 
 export default App;

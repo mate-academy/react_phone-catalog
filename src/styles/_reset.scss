@@ -1,0 +1,47 @@
+html,
+body,
+div,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+ol,
+ul,
+li,
+form,
+table,
+article {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+input {
+  background: transparent;
+  border: 0;
+}
+
+button {
+  border: 0;
+  cursor: pointer;
+}
+
+:focus {
+  outline: none;
+}

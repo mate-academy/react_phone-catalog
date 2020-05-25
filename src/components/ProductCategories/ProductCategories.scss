@@ -1,0 +1,38 @@
+.products-category {
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 16px;
+  }
+
+  &__link-phones {
+    background-image: url(./../../img/phones.jpg);
+  }
+
+  &__link {
+    display: block;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 368px;
+    height: 368px;
+  }
+
+  &__link-tablets {
+    background-image: url(./../../img/tablets.jpg);
+  }
+
+  &__link-accessories {
+    background-image: url(./../../img/accessories.jpg);
+  }
+
+  &__category-title {
+    @include h3;
+    margin-top: 24px;
+  }
+
+  &__count {
+    @include body-text;
+    color: $c-extra-text;
+    margin-top: 4px;
+  }
+}
