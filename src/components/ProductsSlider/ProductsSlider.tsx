@@ -54,8 +54,8 @@ const ProductsSlider = () => {
   };
 
   return (
-    <>
-      <h1>HOME</h1>
+    <div className="wrapper">
+      <h2>Hot prices</h2>
       <div className="container">
         <button
           type="button"
@@ -82,7 +82,7 @@ const ProductsSlider = () => {
           Next
         </button>
       </div>
-    </>
+    </div>
   );
 };
 
