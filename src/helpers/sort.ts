@@ -15,7 +15,7 @@ export const SORT_TYPES: SortType[] = [
     isDefault: true,
   },
   {
-    name: 'Goods :A to Z',
+    name: 'Goods: A to Z',
     field: 'name',
     typeField: 'string',
     type: 'alphabet',

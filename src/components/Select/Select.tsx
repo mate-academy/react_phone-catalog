@@ -17,7 +17,6 @@ export const Select: React.FC<Props> = ({ options }) => {
     () => searchParams.get('sortBy') || defaultSortType,
     [searchParams, defaultSortType],
   );
-  const currentPage = useMemo(() => searchParams.get('page'), [searchParams]);
   const currentPerPage = useMemo(() => searchParams.get('perPage'), [searchParams]);
 
   const currentOption = options.find(option => option.type === currentSortType) || defaultSortType;
@@ -25,15 +24,11 @@ export const Select: React.FC<Props> = ({ options }) => {
 
   const chooseSelectValue = (option: SortType) => {
     searchParams.set('sortBy', option.type);
-
-    if (currentPage) {
-      searchParams.set('page', currentPage);
-    }
+    searchParams.set('page', '1');
 
     if (currentPerPage) {
       searchParams.set('perPage', currentPerPage);
     }
-
 
     history.push({
       search: searchParams.toString(),
