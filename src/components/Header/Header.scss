@@ -1,14 +1,11 @@
-
-
 $colorElement: #e2e6e9;
 $colorPrimary: #313237;
 $heightLogo: 11px;
 $widthLogo: 40px;
 $colorText: #89939a;
 
-
 @mixin Uppercase {
-  font-family: "Mont-Regular";
+  font-family: "Mont-Regular", sans-serif;
   font-style: normal;
   font-weight: bold;
   font-size: 12px;
@@ -31,14 +28,17 @@ $colorText: #89939a;
 }
 
 .header {
+  position: relative;
+  width: 100%;
   height: 64px;
-  position: sticky;
   top: 0;
   border-bottom: 1px solid $colorElement;
   box-sizing: border-box;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  z-index: 1;
+  background-color: #fff;
 
   &__logo {
     position: absolute;
@@ -59,6 +59,7 @@ $colorText: #89939a;
     @include hover(border, 1px solid $colorPrimary);
   }
 }
+
 .nav {
   &__list {
     display: flex;
@@ -81,7 +82,7 @@ $colorText: #89939a;
   }
 
   &__link::before {
-    content: '';
+    content: "";
     border-bottom: solid 3px  #313237;
     position: absolute;
     top: 60px;
@@ -93,13 +94,13 @@ $colorText: #89939a;
   }
 
   &__link:hover:before {
-    opacity: 1.0;
+    opacity: 1;
   }
 }
 
 .cart {
   @include iconInButton (url(../../img/Icons/shoppingBag.svg));
- }
+}
 
 .favourites {
   @include iconInButton(url(../../img/Icons/heart.svg));
