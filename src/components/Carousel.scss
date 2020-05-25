@@ -57,12 +57,14 @@
   }
 
   &__rectangle {
-    display: block;
     width: 14px;
     height: 4px;
     margin-right: 14px;
+    border: 0;
+    outline: 0;
     background-color: $secondary-color;
     transition: background-color 0.5s;
+    cursor: pointer;
 
     &--active {
       background-color: $primary-color;

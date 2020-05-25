@@ -6,18 +6,21 @@
     display: flex;
   }
 
+  &__item {
+    margin-right: 8px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
   &__button {
     @extend .slider__button;
-    margin-right: 8px;
     font-size: 14px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-color: $border-section-color;
-
-    &:last-child {
-      margin-right: 0;
-    }
 
     &--active {
       color: #fff;

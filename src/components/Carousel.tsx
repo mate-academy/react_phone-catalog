@@ -38,6 +38,16 @@ export const Carousel = () => {
     }
   }, [toMove, slideWidth, activeSlide, slidesLeft]);
 
+  const handleRectangleClick = (index: number) => {
+    if (index < activeSlide) {
+      setToMove(toMove - slideWidth * (activeSlide - index));
+    } else {
+      setToMove(toMove + slideWidth * (index - activeSlide));
+    }
+
+    setActiveSlide(index);
+  };
+
   useEffect(() => {
     const interval = setInterval(
       () => changeSlide('right'),
@@ -66,6 +76,7 @@ export const Carousel = () => {
         <CarouselRectangles
           slides={carouselImages}
           active={activeSlide}
+          goToSlide={handleRectangleClick}
         />
       </div>
     </div>

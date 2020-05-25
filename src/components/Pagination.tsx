@@ -5,12 +5,11 @@ export const Pagination = ({
   total,
   perPage,
   page,
-  changePage
-}: PaginationProps
-) => {
+  changePage,
+}: PaginationProps) => {
   const pageNumbers: number[] = [];
 
-  for (let i = 1; i <= Math.ceil(total / perPage); i++) {
+  for (let i = 1; i <= Math.ceil(total / perPage); i += 1) {
     pageNumbers.push(i);
   }
 
@@ -26,14 +25,19 @@ export const Pagination = ({
       <ul className="pagination__list">
         {pageNumbers.map(number => (
           <li
+            className="pagination__item"
             key={number}
-            className={cn({
-              'pagination__button': true,
-              'pagination__button--active': page === number,
-            })}
-            onClick={() => changePage(number)}
           >
-            {number}
+            <button
+              type="button"
+              onClick={() => changePage(number)}
+              className={cn({
+                pagination__button: true,
+                'pagination__button--active': page === number,
+              })}
+            >
+              {number}
+            </button>
           </li>
         ))}
       </ul>
@@ -46,4 +50,4 @@ export const Pagination = ({
       />
     </div>
   );
-}
+};

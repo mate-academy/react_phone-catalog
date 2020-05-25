@@ -21,7 +21,7 @@ export const ProductsGrid = () => {
     history.push({
       search: search.toString(),
     });
-  }
+  };
 
   return (
     <section className="section">

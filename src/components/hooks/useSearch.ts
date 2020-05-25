@@ -30,7 +30,7 @@ export const useSearch = () => {
 
   const searchProducts = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
-      const value = e.target.value;
+      const { value } = e.target;
 
       setInputValue(value);
       historyPushWithDebounce(value);
@@ -49,6 +49,6 @@ export const useSearch = () => {
     searchedProducts,
     location,
     history,
-    search
+    search,
   };
 };

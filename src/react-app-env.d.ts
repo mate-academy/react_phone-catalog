@@ -79,6 +79,7 @@ type CarouselSlidesProps = {
 type CarouselRectanglesProps = {
   slides: CarouselSlide[];
   active: number;
+  goToSlide: (i: number) => void;
 };
 
 type CarouselControlProps = {
@@ -131,4 +132,4 @@ type PaginationProps = {
   perPage: number;
   page: number;
   changePage: (page: number) => void;
-}
+};

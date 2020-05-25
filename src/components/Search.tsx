@@ -1,16 +1,21 @@
 import React from 'react';
+import cn from 'classnames';
 
 export const Search = ({ inputValue, searchProducts }: SearchProps) => {
   return (
-    <div className="search__container">
+    <div className="search">
       <input
         type="text"
         value={inputValue}
-        className="search"
+        className="search__input"
         placeholder="Search in products..."
         onChange={searchProducts}
       />
-      <div className="search__icon" />
+      <span className={cn({
+        search__icon: true,
+        'search__icon--clear': inputValue,
+      })}
+      />
     </div>
   );
 };
