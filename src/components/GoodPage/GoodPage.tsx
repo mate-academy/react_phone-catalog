@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 import './GoodPage.scss';
 import { ButtonPrimary } from '../Buttons';
@@ -48,10 +49,14 @@ export const GoodPage: React.FC<Props> = ({ goods }) => {
 
   return (
     <section className="section">
+
       {errorMessage && <div>{errorMessage}</div>}
       {isLoading && isLoaded && ''}
       {goodDetail && (
         <article className="GoodPage">
+          <Helmet>
+            <title>{goodDetail.name}</title>
+          </Helmet>
           <h1 className="GoodPage__Heading">{goodDetail.name}</h1>
           <div className="GoodPage__Content">
             <div className="GoodPage__Column">
