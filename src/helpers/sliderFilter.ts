@@ -7,7 +7,7 @@ export const sldierFilter = (cards: Good[], filterType: string) => {
           const aDiscountPrice = a.discount / 100 * a.price;
           const bDiscountPrice = b.discount / 100 * b.price;
 
-          return aDiscountPrice - bDiscountPrice;
+          return bDiscountPrice - aDiscountPrice;
         })
         .slice(0, 8);
 
