@@ -1,3 +1,5 @@
+@import "src/Additionals/Vars";
+
 .Nav {
   height: 64px;
   display: flex;
@@ -51,7 +53,7 @@
     font-weight: bold;
     font-size: 12px;
     letter-spacing: 0.04em;
-    font-family: Mont, serif;
+    font-family: Mont, sans-serif;
     color: #89939a;
     &::before {
       content: "";

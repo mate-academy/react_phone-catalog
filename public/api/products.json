@@ -170,6 +170,7 @@
   },
   {
     "age": 13,
+    "type": "phone",
     "carrier": "T-Mobile",
     "id": "motorola-defy-with-motoblur",
     "imageUrl": "img/phones/motorola-defy-with-motoblur.0.jpg",

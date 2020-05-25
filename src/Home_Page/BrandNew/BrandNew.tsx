@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import './hotPrices.scss';
+// import './hotPrices.scss';
 import {
   downloadProducts,
 } from '../../Additionals/additional_api';
 import { ProductSlider } from '../ProductSlider/ProductSlider';
 
-
-export const HotPrices = () => {
-  const [phones, setPhones] = useState([]);
+export const BrandNew = () => {
+  const [brandNew, setBrandNew] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
@@ -16,11 +15,12 @@ export const HotPrices = () => {
 
     fetchData().then(data => data
       .filter((el: { discount: number }) => el
-        .discount > 0)).then(data => setPhones(data));
+        .discount === 0)
+      .sort((a: {price: number}, b: {price: number}) => (b.price - a.price)))
+      .then(data => setBrandNew(data));
   }, []);
 
-
   return (
-    <ProductSlider phones={phones} title="Hot prices" />
+    <ProductSlider phones={brandNew} title="Brand new models" />
   );
 };

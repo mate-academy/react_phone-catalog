@@ -1,0 +1,53 @@
+.Category {
+  &__title {
+    margin-top: 0;
+    font-family: Mont, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+  &__list {
+    padding: 0;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.cli {
+  &__img {
+    &_wrapper {
+      width: 368px;
+      height: 368px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-end;
+      &-mobile {
+        background-color: rgba(252,219,193,0.85);
+      }
+      &-tablet {
+        background-color: rgba(141,141,146,0.85);
+      }
+      &-accessories {
+        background-color: rgba(151,61,95,0.85);
+      }
+    }
+  }
+  &__description {
+    font-family: Mont, sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 26px;
+    color: #313237;
+  }
+  &__count {
+    font-family: Mont, sans-serif;
+    font-style: normal;
+    font-size: 14px;
+    line-height: 21px;
+    color: #89939A;
+  }
+}

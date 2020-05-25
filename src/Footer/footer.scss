@@ -13,7 +13,7 @@
     font-weight: bold;
     font-size: 12px;
     letter-spacing: 0.04em;
-    font-family: Mont, serif;
+    font-family: Mont, sans-serif;
     color: #89939a;
     &::before {
       content: "";
@@ -38,7 +38,7 @@
       cursor: pointer;
     }
     &_title {
-      font-family: Mont, serif;
+      font-family: Mont, sans-serif;
       font-style: normal;
       font-weight: 600;
       font-size: 12px;
