@@ -27,16 +27,8 @@ export const Header = () => (
             </li>
           </ul>
           <ul className="list">
-            <li className="list__item">
-              <Link to="/favorite">
-                <img src="../../images/header/heart.svg" alt="" />
-              </Link>
-            </li>
-            <li className="list__item">
-              <Link to="/bag">
-                <img src="../../images/header/Union.png" alt="" />
-              </Link>
-            </li>
+            <li className="list__item list nav__favorite" />
+            <li className="list__item nav__bag" />
           </ul>
         </nav>
       </div>
