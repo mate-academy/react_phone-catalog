@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import cn from 'classnames';
 import {
-  ARROW_UP, downloadProducts, FAVOURITES_ICON, HOME_PAGE_ICON,
-} from '../Additionals/additional_api';
+  downloadProducts,
+} from '../Additional/additional_api';
 import './phonesCatalog.scss';
-import { Phones } from '../Additionals/interfaces';
+import { Phones } from '../Additional/interfaces';
 import { NavBar } from './navBar';
 
 export const PhonesCatalog = () => {
@@ -69,12 +69,12 @@ export const PhonesCatalog = () => {
       <div className="breadcrumb">
         <NavLink to="/" className="breadcrumb__link">
           <img
-            src={HOME_PAGE_ICON}
+            src="/src/Additional/icons/home.svg"
             alt="home page"
             className="breadcrumb__link_home"
           />
         </NavLink>
-        <img src={ARROW_UP} alt=" " className="breadcrumb__arrow" />
+        <img src="/src/Additional/icons/arrow.svg" alt=" " className="breadcrumb__arrow" />
         <span className="breadcrumb__currentPage">Phones</span>
       </div>
       <h1 className="PhonesCatalog__header">Mobile phones</h1>
@@ -181,7 +181,7 @@ export const PhonesCatalog = () => {
                 <img
                   className="action__add-to-fav"
                   alt="favourites"
-                  src={FAVOURITES_ICON}
+                  src="/src/Additional/icons/favourite_icon.svg"
                 />
               </div>
             </div>

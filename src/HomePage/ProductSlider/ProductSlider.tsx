@@ -1,7 +1,6 @@
 import React, { useState, FC } from 'react';
 import cn from 'classnames';
-import { ARROW_UP, FAVOURITES_ICON } from '../../Additionals/additional_api';
-import { Phones } from '../../Additionals/interfaces';
+import { Phones } from '../../Additional/interfaces';
 import './ProductSlider.scss';
 
 
@@ -39,7 +38,7 @@ export const ProductSlider: FC<Params> = ({ phones, title }) => {
             <img
               className="ProductSlider__navigation_buttons-left-image"
               alt="favourites"
-              src={ARROW_UP}
+              src="/src/Additional/icons/arrow.svg"
             />
           </button>
           <button
@@ -50,7 +49,7 @@ export const ProductSlider: FC<Params> = ({ phones, title }) => {
             <img
               className="ProductSlider__navigation_buttons-right-image"
               alt="favourites"
-              src={ARROW_UP}
+              src="/src/Additional/icons/arrow.svg"
             />
           </button>
         </div>

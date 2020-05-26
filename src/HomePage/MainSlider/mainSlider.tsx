@@ -1,6 +1,6 @@
 import cn from 'classnames';
 import React, { useEffect, useState } from 'react';
-import { ARROW_UP, IMAGES_FOR_SLIDER } from '../../Additionals/additional_api';
+import { IMAGES_FOR_SLIDER } from '../../Additional/additional_api';
 import './mainSlider.scss';
 
 export const Slider = () => {
@@ -49,7 +49,7 @@ export const Slider = () => {
         >
           <img
             className="carousel__control-arrow carousel__control-arrowleft"
-            src={ARROW_UP}
+            src="/src/Additional/icons/arrow.svg"
             alt="slide left"
           />
         </button>
@@ -73,7 +73,7 @@ export const Slider = () => {
         >
           <img
             className="carousel__control-arrow carousel__control-arrowright"
-            src={ARROW_UP}
+            src="/src/Additional/icons/arrow.svg"
             alt="slide right"
           />
         </button>

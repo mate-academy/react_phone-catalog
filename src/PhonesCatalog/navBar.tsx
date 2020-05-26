@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
 import cn from 'classnames';
-import { Phones } from '../Additionals/interfaces';
-import { ARROW_UP } from '../Additionals/additional_api';
+import { Phones } from '../Additional/interfaces';
 
 type Params = {
   sortedPhones: Phones[];
@@ -63,7 +62,7 @@ export const NavBar: FC<Params> = ({
         className="PhonesCatalog__navigation_button"
       >
         <img
-          src={ARROW_UP}
+          src="/src/Additional/icons/arrow.svg"
           alt="move left"
           className="PhonesCatalog__navigation_button-left"
         />
@@ -92,7 +91,7 @@ export const NavBar: FC<Params> = ({
         className="PhonesCatalog__navigation_button"
       >
         <img
-          src={ARROW_UP}
+          src="/src/Additional/icons/arrow.svg"
           alt="move right"
           className="PhonesCatalog__navigation_button-right"
         />

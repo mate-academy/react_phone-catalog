@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { downloadProducts } from '../../Additionals/additional_api';
+import { downloadProducts } from '../../Additional/additional_api';
 import './Category.scss';
 
 export const Category = () => {

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './hotPrices.scss';
 import {
   downloadProducts,
-} from '../../Additionals/additional_api';
+} from '../../Additional/additional_api';
 import { ProductSlider } from '../ProductSlider/ProductSlider';
 
 

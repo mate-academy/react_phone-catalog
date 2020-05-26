@@ -7,7 +7,7 @@ import { HomePage } from './HomePage/homePage';
 import { PhonesCatalog } from './PhonesCatalog/phonesCatalog';
 import { Favourites } from './Favourites/favourites';
 import { Cart } from './Cart/cart';
-import { Maintenance } from './Additionals/underMaintenance';
+import { Maintenance } from './Additional/underMaintenance';
 import { Footer } from './Footer/footer';
 
 const App = () => (

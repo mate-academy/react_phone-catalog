@@ -1,10 +1,5 @@
-export const LOGO_URL = 'https://image.flaticon.com/icons/svg/495/495946.svg';
-export const FAVOURITES_ICON = 'https://image.flaticon.com/icons/svg/710/710147.svg';
-export const CART_ICON = 'https://image.flaticon.com/icons/svg/2093/2093844.svg';
 // export const MAGNIFIER_ICON = 'https://image.flaticon.com/icons/svg/483/483356.svg';
-export const ARROW_UP = 'https://image.flaticon.com/icons/svg/318/318425.svg';
 export const OWNER_GIT_HUB = 'https://github.com/vitaliikorol';
-export const HOME_PAGE_ICON = 'https://image.flaticon.com/icons/svg/83/83966.svg';
 
 export const IMAGES_FOR_SLIDER = [
   'https://www.itelmobile.ro/blog/wp-content/uploads/2020/01/Iphone-11-Pro.png',
