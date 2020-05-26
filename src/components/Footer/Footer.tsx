@@ -20,7 +20,7 @@ const Footer = () => (
   <footer className="footer">
     <div className="footer__container">
       <div className="footer__logo logo">
-        <img src="../img/logo/LOGO.svg" alt="logo" />
+        <img src="./img/logo/LOGO.svg" alt="logo" />
       </div>
       <nav className="footer__nav nav">
         <ul className="nav__list">

@@ -1,34 +1,6 @@
-ul {
-  margin: 0;
-  padding: 0;
-}
-
-li {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: block;
-
-}
-
-* {
-  box-sizing: border-box;
-}
-
-button {
-  outline: none;
-}
-
-$colorElement: #e2e6e9;
-$colorText: #89939a;
-$colorPrimary: #313237;
-$borderElement: solid 1px $colorElement;
-
-@mixin iconInButton ($imageUrl) {
-  background-image: $imageUrl;
-  background-repeat: no-repeat;
-  background-position: center;
-}
+@import "../../styles/utils/mixins";
+@import "../../styles/utils/vars";
+@import "../../styles/reset";
 
 .containerMainSlider {
   width: 1124px;

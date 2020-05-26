@@ -47,10 +47,9 @@ const ProductsSlider: React.FC<ProductsSliderProps> = ({ visibleProducts, title 
         <button
           type="button"
           className="Carousel__button btn-left"
+          aria-label="Mute volume"
           onClick={handlePrevOnClick}
-        >
-          Prev
-        </button>
+        />
         <div className="Carousel container__carousel">
           <div
             style={{ transform: `translate(${position}px)` }}
@@ -64,10 +63,9 @@ const ProductsSlider: React.FC<ProductsSliderProps> = ({ visibleProducts, title 
         <button
           type="button"
           className="Carousel__button btn-right"
+          aria-label="Mute volume"
           onClick={handleNextOnClick}
-        >
-          Next
-        </button>
+        />
       </div>
     </div>
   );
