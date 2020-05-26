@@ -17,24 +17,22 @@ export const Footer: React.FC = () => {
 
         <ul className="footer__list">
           <li className="footer__list_item">
-            <a
-              href="https://github.com/FE-FEB20-team8/react_phone-catalog/tree/develop"
+            <Link
+              to="FE-FEB20-team8/react_phone-catalog/tree/develop"
               className="footer__list_link"
-              target="_blank"
-              rel="noopener noreferrer"
             >
               GitHub
-            </a>
+            </Link>
           </li>
           <li className="footer__list_item">
-            <a href="/" className="footer__list_link">
+            <Link to="/" className="footer__list_link">
               Contacts
-            </a>
+            </Link>
           </li>
           <li className="footer__list_item">
-            <a href="/" className="footer__list_link">
+            <Link to="/" className="footer__list_link">
               Rights
-            </a>
+            </Link>
           </li>
         </ul>
 
