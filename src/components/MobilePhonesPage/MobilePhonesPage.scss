@@ -1,0 +1,33 @@
+.phones-container {
+  max-width: 1136px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.phones-wrap {
+  display: grid;
+  grid-gap: 16px;
+  grid-template-columns: repeat(4, 272px);
+  justify-content: center;
+  margin-top: 50px;
+  margin-bottom: 150px;
+}
+
+.phones__title {
+  // font-family: Mont;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 41px;
+  color: #313237;
+  letter-spacing: -0.01em;
+}
+
+.phones__sum {
+  // font-family: Mont;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  color: #89939a;
+}

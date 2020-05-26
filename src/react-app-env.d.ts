@@ -1,4 +1,3 @@
-// / <reference types="react-scripts" />
 interface Slide {
   imageUrl: string;
   name: string;
@@ -9,4 +8,5 @@ interface Slide {
   capacity: string;
   ram: string;
   id: string;
+  type: string;
 }
