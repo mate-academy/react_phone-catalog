@@ -16,7 +16,9 @@ export const HotPrices = () => {
 
     fetchData().then(data => data
       .filter((el: { discount: number }) => el
-        .discount > 0)).then(data => setPhones(data));
+        .discount > 0)
+      .sort((a: {price: number}, b: {price: number}) => b.price - a.price))
+      .then(data => setPhones(data));
   }, []);
 
 

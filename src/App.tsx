@@ -3,8 +3,8 @@ import { Switch, Route } from 'react-router-dom';
 
 import './App.scss';
 import { Navigation } from './Navigation/navigation';
-import { HomePage } from './Home_Page/homePage';
-import { Catalog } from './Catalog/catalog';
+import { HomePage } from './HomePage/homePage';
+import { PhonesCatalog } from './PhonesCatalog/phonesCatalog';
 import { Favourites } from './Favourites/favourites';
 import { Cart } from './Cart/cart';
 import { Maintenance } from './Additionals/underMaintenance';
@@ -15,7 +15,7 @@ const App = () => (
     <Navigation />
     <Switch>
       <Route path="/" exact component={HomePage} />
-      <Route path="/phones" component={Catalog} />
+      <Route path="/phones" component={PhonesCatalog} />
       <Route path="/tablets" component={Maintenance} />
       <Route path="/accessories" component={Maintenance} />
       <Route path="/favourites" component={Favourites} />
