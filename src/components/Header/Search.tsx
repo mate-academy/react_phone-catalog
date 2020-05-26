@@ -1,7 +1,6 @@
 import React from 'react';
-import cn from 'classnames';
 
-export const Search = ({ inputValue, searchProducts }: SearchProps) => {
+export const Search = ({ inputValue, searchProducts, searchReset }: SearchProps) => {
   return (
     <div className="search">
       <input
@@ -11,11 +10,14 @@ export const Search = ({ inputValue, searchProducts }: SearchProps) => {
         placeholder="Search in products..."
         onChange={searchProducts}
       />
-      <span className={cn({
-        search__icon: true,
-        'search__icon--clear': inputValue,
-      })}
-      />
+      {inputValue
+        ? (
+          <span
+            className="search__icon search__icon--clear"
+            onClick={searchReset}
+          />
+        )
+        : <span className="search__icon" />}
     </div>
   );
 };

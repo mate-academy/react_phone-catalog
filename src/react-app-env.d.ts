@@ -110,6 +110,7 @@ type HeadingProps = {
 type SearchProps = {
   inputValue: string;
   searchProducts: React.ChangeEventHandler;
+  searchReset: () => void;
 };
 
 interface Category {

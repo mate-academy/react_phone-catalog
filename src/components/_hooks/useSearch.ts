@@ -14,23 +14,22 @@ export const useSearch = () => {
   const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
-    getProducts()
-      .then(data => setProducts(data));
-  }, []);
+    getProducts().then(setProducts);
 
-  useEffect(() => {
-    setInputValue('');
+    return () => setInputValue('');
   }, [location.pathname]);
 
-  const historyPushWithDebounce = useCallback(debounce((value: string) => {
-    search.set('query', value.toLowerCase());
+  const historyPushWithDebounce = useCallback(
+    debounce((value: string) => {
+      search.set('query', value.toLowerCase());
 
-    if (!(search.get('query') || '')) {
-      search.delete('query');
-    }
+      if (!(search.get('query') || '')) {
+        search.delete('query');
+      }
 
-    history.push({ search: search.toString() });
-  }, 500), []);
+      history.push({ search: search.toString() });
+    }, 500), [],
+  );
 
   const searchProducts = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -47,6 +46,16 @@ export const useSearch = () => {
     ));
   }, [products, query]);
 
+  const searchReset = () => {
+    setInputValue('');
+
+    if (!(search.get('query') || '')) {
+      search.delete('query');
+    }
+
+    history.push({ search: '' });
+  };
+
   return {
     inputValue,
     searchProducts,
@@ -54,5 +63,6 @@ export const useSearch = () => {
     location,
     history,
     search,
+    searchReset,
   };
 };

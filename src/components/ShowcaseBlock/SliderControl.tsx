@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
+import { DIRECTIONS } from '../../helpers/directions';
 
 export const SliderControl = ({
   handleSlide,
@@ -7,10 +8,10 @@ export const SliderControl = ({
   position,
   maxPosition,
 }: SliderArrowProps) => {
-  const dirLeft = direction === 'left';
-  const dirRight = direction === 'right';
-  const posStart = position === 0;
-  const posMax = position === maxPosition;
+  const isLeft = direction === DIRECTIONS.left;
+  const isRight = direction === DIRECTIONS.right;
+  const isStart = position === 0;
+  const isMax = position === maxPosition;
 
   return (
     <button
@@ -21,8 +22,8 @@ export const SliderControl = ({
         [`slider__button-${direction}`]: true,
       })}
       onClick={() => handleSlide(direction)}
-      disabled={(dirLeft && posStart)
-      || (dirRight && posMax)}
+      disabled={(isLeft && isStart)
+      || (isRight && isMax)}
     />
   );
 };

@@ -7,6 +7,7 @@
 @import "../components/Header/Nav";
 @import "../components/Header/Favorites";
 @import "../components/Header/Cart";
+@import "../components/ProductsAmount/ProductsAmount";
 @import "../components/Heading/Heading";
 @import "../components/ShowcaseBlock/SliderProducts";
 @import "../components/Product/Product";
@@ -59,12 +60,6 @@
     text-align: center;
     color: $secondary-color;
   }
-}
-
-.products-quantity {
-  font-size: 14px;
-  color: $secondary-color;
-  line-height: 1.5;
 }
 
 .visually-hidden {

@@ -7,11 +7,11 @@ import { Cart } from './Cart';
 import { Search } from './Search';
 import { useSearch } from '../_hooks/useSearch';
 
-
 export const Header = () => {
   const {
     inputValue,
     searchProducts,
+    searchReset,
     location,
   } = useSearch();
 
@@ -31,6 +31,7 @@ export const Header = () => {
           <Search
             inputValue={inputValue}
             searchProducts={searchProducts}
+            searchReset={searchReset}
           />
         )}
         <Favorites />

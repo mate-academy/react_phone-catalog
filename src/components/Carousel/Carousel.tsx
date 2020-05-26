@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { CarouselSlides } from './CarouselSlides';
 import { CarouselRectangles } from './CarouselRectangles';
 import { CarouselControl } from './CarouselControl';
+import { DIRECTIONS } from '../../helpers/directions';
 
 const carouselImages: CarouselSlide[] = [
   { id: 1, name: 'phones', src: './img/showcase-carousel/first.jpg' },
@@ -17,7 +18,7 @@ export const Carousel = () => {
   const transitionDuration = 0.7;
 
   const changeSlide = useCallback((direction: string) => {
-    if (direction === 'left') {
+    if (direction === DIRECTIONS.left) {
       if (toMove <= 0) {
         setToMove(toMove + slideWidth * slidesLeft);
         setActiveSlide(slidesLeft);
@@ -27,7 +28,7 @@ export const Carousel = () => {
       }
     }
 
-    if (direction === 'right') {
+    if (direction === DIRECTIONS.right) {
       if (toMove >= slideWidth * slidesLeft) {
         setToMove(0);
         setActiveSlide(0);
@@ -38,7 +39,7 @@ export const Carousel = () => {
     }
   }, [toMove, slideWidth, activeSlide, slidesLeft]);
 
-  const handleRectangleClick = (index: number) => {
+  const handleRectangleClick = useCallback((index: number) => {
     if (index < activeSlide) {
       setToMove(toMove - slideWidth * (activeSlide - index));
     } else {
@@ -46,11 +47,11 @@ export const Carousel = () => {
     }
 
     setActiveSlide(index);
-  };
+  }, [activeSlide, toMove]);
 
   useEffect(() => {
     const interval = setInterval(
-      () => changeSlide('right'),
+      () => changeSlide(DIRECTIONS.right),
       4000,
     );
 
