@@ -42,38 +42,40 @@ export const Pagination = ({ pagesCount }: { pagesCount: number }) => {
   }, [page])
 
   return (
-    <div className="Pagination">
-      <button
-        className="Pagination__button Pagination__button--arrow"
-        type='button'
-        name="<"
-        disabled={isLeftButtonDisabled}
-        onClick={handleButtonClick}
-      >{"<"}
-      </button>
-      {buttons.map((_, index) => (
+    buttons.length !== 1
+      ? <div className="Pagination">
         <button
-        key={index}
-        className={index + 1 === page
-        ? "Pagination__button Pagination__button--active"
-        : "Pagination__button"}
-
-          name={index.toString()}
-          onClick={handleButtonClick}
+          className="Pagination__button Pagination__button--arrow"
           type='button'
-        >
-          {index + 1}
+          name="<"
+          disabled={isLeftButtonDisabled}
+          onClick={handleButtonClick}
+        >{"<"}
         </button>
-      ))}
-      <button
-        className="Pagination__button Pagination__button--arrow"
-        type='button'
-        name=">"
-        disabled={isRightButtonDisabled}
-        onClick={handleButtonClick}
-      >{">"}
-      </button>
-    </div>
+        {buttons.map((_, index) => (
+          <button
+            key={index}
+            className={index + 1 === page
+              ? "Pagination__button Pagination__button--active"
+              : "Pagination__button"}
+
+            name={index.toString()}
+            onClick={handleButtonClick}
+            type='button'
+          >
+            {index + 1}
+          </button>
+        ))}
+        <button
+          className="Pagination__button Pagination__button--arrow"
+          type='button'
+          name=">"
+          disabled={isRightButtonDisabled}
+          onClick={handleButtonClick}
+        >{">"}
+        </button>
+      </div>
+      : <span></span>
 
   )
 

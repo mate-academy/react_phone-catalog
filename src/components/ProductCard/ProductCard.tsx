@@ -71,7 +71,7 @@ export const ProductCard = ({
       base = '/tablets/';
       break;
     default:
-      base = 'accessorise'
+      base = '/accessories/'
   }
 
   return (

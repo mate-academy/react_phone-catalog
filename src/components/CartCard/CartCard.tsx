@@ -2,13 +2,16 @@
 import React from 'react';
 import { Product } from '../../interfaces';
 import './CartCard.scss';
+import {Link} from 'react-router-dom';
 
 export const CartCard = ({
+  index,
   cart,
   setCart,
   product,
   count
 }: {
+  index: number;
   cart:Product[];
   product: Product;
   count: number;
@@ -32,10 +35,25 @@ export const CartCard = ({
     temp.splice(cart.findIndex(item => product.id === item.id), 1)
     setCart(temp);
   }
+  let base;
+
+  switch (product.type) {
+    case 'phone':
+      base = '/phones/';
+      break;
+    case 'tablet':
+      base = '/tablets/';
+      break;
+    default:
+      base = '/accessories/'
+  }
 
 
   return (
-    <div className="CartCard">
+    <div
+    className="CartCard"
+    style={{top: `${index * 144}px`}}
+    >
       <button
       className="CartCard__delete-button"
       onClick={handleDeleteButtonClick}
@@ -46,11 +64,12 @@ export const CartCard = ({
     className="CartCard__img"
     src={imageUrl}
     alt={name} />
-      <p
-      className="CartCard__name"
-      >
-        {name}
-        </p>
+     <Link
+        to={base + product.id}
+        className="CartCard__name">
+          {name}
+      </Link>
+
       <button
       disabled={count <= 1}
       onClick={handleCountDecrease}

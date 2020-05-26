@@ -2,7 +2,28 @@
 @import "../../mixins.scss";
 
 .CartPage {
-  display: flex;
+
+  &__main {
+    display: flex;
+  }
+
+  &__wrapper {
+    position: relative;
+    width: 756px;
+    transition: 1s;
+  }
+
+  &__title {
+    margin-bottom: 24px;
+  }
+
+  &__empty {
+    height: 206px;
+
+    @include h1;
+    line-height: 206px;
+    text-align: center;
+  }
 
   &__summary {
     position: sticky;
@@ -36,6 +57,7 @@
   }
 
   &__checkout {
+    cursor: pointer;
     height: 48px;
     width: 100%;
     box-sizing: border-box;

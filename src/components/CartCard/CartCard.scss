@@ -2,15 +2,17 @@
 @import "../../mixins.scss";
 
 .CartCard {
+  position: absolute;
+  top: 0;
   transition: 1s;
   margin-top: 16px;
   height: 128px;
-  width: 756px;
+  width: 752px;
   border: 1px solid #e2e6e9;
   display: flex;
   align-items: center;
+  box-sizing: border-box;
   padding: 0 27px;
-
 
   &__img {
     height: 66px;
@@ -22,6 +24,7 @@
     width: 295px;
     margin-right: 49px;
     @include body-text;
+    text-decoration: none;
   }
 
   &__delete-button {

@@ -80,9 +80,15 @@ const App = () => {
     <div className="App">
       <header className="App__header">
         <div className="App__header-wrapper">
+          <div className="App__header-left-wrapper">
+          <Logo />
           <Nav links={headerLinks} />
+          </div>
+
           <div className="App__header-right-wrapper">
-            <SearchField />
+          <SearchField />
+
+
             <FavoritesIcon favorites={favorites} />
             <CartIcon cart={cart} />
           </div>

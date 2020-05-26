@@ -1,0 +1,33 @@
+
+@import '../../mixins.scss';
+
+.Breadcrumbs {
+  display: flex;
+  padding: 25px 0;
+  align-items: center;
+  &__link {
+    margin: 0 13px;
+    text-decoration: none;
+    @include small-text;
+    color: #313237;
+    &--first {
+      display: block;
+      background-image: url("../../imgs/Icons/Home.png");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 16px;
+      width: 16px;
+    }
+    &--last {
+      color: #89939a;
+    }
+  }
+
+  &__arrow {
+    display: block;
+    width: 6px;
+    height: 10px;
+    background-image: url("../../imgs/Icons/Vector.png");
+  }
+}

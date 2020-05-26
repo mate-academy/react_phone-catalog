@@ -3,6 +3,7 @@ import { CartCard } from '../../components/CartCard/CartCard';
 import './CartPage.scss';
 import { useHistory } from 'react-router-dom';
 import {MyContext} from '../../App';
+import { GoBack } from '../../components/GoBack/GoBack';
 
 export const CartPage = () => {
 
@@ -35,21 +36,32 @@ export const CartPage = () => {
 
 
   return (
-    <div className="CartPage">
-      <div>
-        {cards.map(product => {
+    <div>
+    <GoBack />
+    <h1 className="CartPage__title">Cart</h1>
+    <div className="CartPage__main">
+      <div
+      className="CartPage__wrapper"
+      style={{minHeight: `${ cards.length * 144}px`}}
+      >
+
+        {cards.length === 0
+        ? <p className="CartPage__empty">Cart is empty.</p>
+        : (cards.map((product, index) => {
           const count = cart.filter(item => product.id === item.id).length;
           return (
             <CartCard
-            key={product}
+            key={product.id}
+            index={index}
             cart={cart}
             product={product}
             count={count}
             setCart={setCart} />
           )
-        })
+        }))
         }
       </div>
+
       <div className="CartPage__summary">
         <span
           className="CartPage__total"
@@ -75,6 +87,7 @@ export const CartPage = () => {
       </div>
 
 
+    </div>
     </div>
   )
 

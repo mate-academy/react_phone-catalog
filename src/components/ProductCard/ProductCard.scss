@@ -24,6 +24,7 @@
     padding: 0;
     height: 42px;
     display: block;
+    text-decoration: none;
   }
 
   &__price-wrapper {
@@ -68,6 +69,7 @@
   }
 
   &__add-to-cart {
+    cursor: pointer;
     padding: 0;
     @include buttons;
     background-color: #313237;
@@ -88,6 +90,7 @@
   }
 
   &__add-to-fav {
+    cursor: pointer;
     outline: none;
     padding: 0;
     height: 40px;

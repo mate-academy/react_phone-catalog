@@ -1,0 +1,30 @@
+
+@import '../../mixins.scss';
+
+.GoBack {
+  display: flex;
+  align-items: center;
+  margin: 41px 0 16px;
+  &__arrow {
+    display: block;
+    height: 10px;
+    width: 6px;
+    background-image: url("../../imgs/Icons/Vector2.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  &__button {
+    margin-left: 10px;
+    height: 15px;
+    width: 31px;
+    background-color: white;
+    border: none;
+    @include small-text;
+    color: #89939a;
+    cursor: pointer;
+  }
+}
+
+

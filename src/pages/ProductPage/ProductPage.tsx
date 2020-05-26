@@ -9,6 +9,8 @@ import { Gallery } from './Gallery/Gallery';
 import { Card } from './Card/Card';
 import { MyContext } from '../../App';
 import './ProductPage.scss';
+import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
+import { GoBack } from '../../components/GoBack/GoBack';
 
 
 export const ProductPage = ({ product }: { product: Product }) => {
@@ -46,6 +48,8 @@ export const ProductPage = ({ product }: { product: Product }) => {
     (JSON.stringify(productDetails) === JSON.stringify({}))
       ? <h1>Wait!!!</h1>
       : <div className="ProductPage">
+        <Breadcrumbs />
+        <GoBack />
         <h1 className="ProductPage__title">{productDetails.name}</h1>
         <div className="ProductPage__group-wrapper">
           <Gallery
