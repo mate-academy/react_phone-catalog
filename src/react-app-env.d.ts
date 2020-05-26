@@ -24,6 +24,19 @@ interface GoodDetail {
   [key?: string]: {
     [key: string]: string | string[] | boolean;
   };
+  hardware: {
+    cpu: string;
+  };
+  display: {
+    screenResolution: string;
+  };
+  camera: {
+    primary: string;
+    zoom: string;
+  };
+  connectivity: {
+    cell: string;
+  };
 }
 
 interface Link {
@@ -52,4 +65,20 @@ interface SortType {
 
 interface PerPage {
   name: string;
+}
+
+interface Match {
+  isExact: boolean;
+  params: {
+    good: string;
+    section: string;
+  };
+  path: string;
+  url: string;
+}
+
+interface BriefInfo {
+  case: string;
+  attachment: string;
+  path: string;
 }

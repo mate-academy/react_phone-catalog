@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet';
 
 import { BannerSlider } from '../Banner';
 import { CardSlider } from '../CardSlider';
-import { sldierFilter } from '../../helpers';
+import { sliderFilter, SLIDER_FILTER_TYPE } from '../../helpers';
 import { ShopCategory } from '../ShopCategory';
 
 interface Props {
@@ -11,8 +11,8 @@ interface Props {
 }
 
 export const HomePage: React.FC<Props> = ({ goods }) => {
-  const hotPrices = sldierFilter(goods, 'hotPrice');
-  const highPrices = sldierFilter(goods, 'newModels');
+  const hotPrices = sliderFilter(goods, SLIDER_FILTER_TYPE.hotPrice, '');
+  const highPrices = sliderFilter(goods, SLIDER_FILTER_TYPE.newModels, '');
 
   return (
     <>

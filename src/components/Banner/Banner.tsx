@@ -5,7 +5,7 @@ import cn from 'classnames';
 import { Banners } from '../../helpers';
 
 export const BannerSlider: React.FC = () => {
-  const BannerImage = Banners.map((image, i) => ({
+  const bannerImages = Banners.map((image, i) => ({
     ...image,
     position: i + 1,
   }));
@@ -15,10 +15,10 @@ export const BannerSlider: React.FC = () => {
   const imageWidth = 1040;
   const imageGap = 16;
 
-  const handleClick = (path: number) => {
+  const handleSlide = (path: number) => {
     const newLeftPosition = (imageWidth + imageGap) * -path;
 
-    if (currentPosition === BannerImage.length && path === 1) {
+    if (currentPosition === bannerImages.length && path === 1) {
       setcurrentPosition(1);
       setLeft(0);
 
@@ -26,8 +26,8 @@ export const BannerSlider: React.FC = () => {
     }
 
     if (currentPosition === 1 && path === -1) {
-      setcurrentPosition(BannerImage.length);
-      setLeft(((imageWidth + imageGap) * path) * (BannerImage.length - 1));
+      setcurrentPosition(bannerImages.length);
+      setLeft(((imageWidth + imageGap) * path) * (bannerImages.length - 1));
 
       return;
     }
@@ -36,7 +36,7 @@ export const BannerSlider: React.FC = () => {
     setLeft(left + newLeftPosition);
   };
 
-  const handleChooseImage = (position: number) => {
+  const chooseImages = (position: number) => {
     if (position === 1) {
       setLeft(0);
       setcurrentPosition(1);
@@ -56,7 +56,7 @@ export const BannerSlider: React.FC = () => {
         <button
           type="button"
           className="Banner__Button"
-          onClick={() => handleClick(-1)}
+          onClick={() => handleSlide(-1)}
         >
           <div className="Banner__Image Banner__Image--arrow-left" />
         </button>
@@ -68,7 +68,7 @@ export const BannerSlider: React.FC = () => {
               transform: `translateX(${left}px)`,
             }}
           >
-            {BannerImage.map(image => (
+            {bannerImages.map(image => (
               <li
                 className="Banner__Content-image"
                 key={image.position}
@@ -76,7 +76,7 @@ export const BannerSlider: React.FC = () => {
                 <img
                   src={image.path}
                   alt={image.alt}
-                  className="Banner__Image-current"
+                  className="Banner__Image--current"
                 />
               </li>
             ))}
@@ -86,20 +86,20 @@ export const BannerSlider: React.FC = () => {
         <button
           type="button"
           className="Banner__Button"
-          onClick={() => handleClick(1)}
+          onClick={() => handleSlide(1)}
         >
           <div className="Banner__Image Banner__Image--arrow-right" />
         </button>
       </div>
       <div className="Banner__Position-container">
-        {BannerImage.map(image => (
+        {bannerImages.map(image => (
           <span
             key={image.position}
             className={cn({
-              Banner__Position: true,
               'Banner__Position--active': image.position === currentPosition,
-            })}
-            onClick={() => handleChooseImage(image.position)}
+            },
+            'Banner__Position')}
+            onClick={() => chooseImages(image.position)}
           />
         ))}
       </div>

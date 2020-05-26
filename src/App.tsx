@@ -21,8 +21,9 @@ export const App = () => {
 
     try {
       const data = await getGoods();
+      const preparedData = data.filter(product => product.type);
 
-      setGoods(data);
+      setGoods(preparedData);
       setIsLoaded(true);
     } catch (error) {
       setErrorMessage(String(error));

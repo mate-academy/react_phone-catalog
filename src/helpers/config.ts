@@ -57,3 +57,9 @@ export const PER_PAGE_SETTINGS = [
     name: '16',
   },
 ];
+
+export const SLIDER_FILTER_TYPE = {
+  hotPrice: 'hotPrice',
+  alsoLike: 'alsoLike',
+  newModels: 'newModels',
+};

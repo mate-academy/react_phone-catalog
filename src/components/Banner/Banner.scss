@@ -44,7 +44,7 @@ $color-elements: #e2e6e9;
       mask-image: url(../../images/icons/chevron-arrow-left.svg);
     }
 
-    &-current {
+    &--current {
       margin-right: 1rem;
       transform: translateX();
       width: 1040px;
