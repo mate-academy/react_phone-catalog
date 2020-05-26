@@ -24,6 +24,7 @@
   }
 
   &__header {
+    width: 176px;
     display: flex;
     align-items: center;
     padding: 0 12px;
@@ -32,10 +33,11 @@
     border: 1px solid $border-btn-color;
     background-color: white;
     line-height: 38px;
+    outline: none;
     cursor: pointer;
     @include hover(border-color, $secondary-color, 0.2);
 
-    &--focused {
+    &:focus {
       border-color: $primary-color;
     }
   }
@@ -64,7 +66,7 @@
     cursor: pointer;
 
     &--active {
-      color: $primary-color
+      color: $primary-color;
     }
 
     &:hover {

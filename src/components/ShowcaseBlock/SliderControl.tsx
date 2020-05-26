@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import { DIRECTIONS } from '../../helpers/directions';
+import { DIRECTIONS } from '../../helpers/storage';
 
 export const SliderControl = ({
   handleSlide,

@@ -1,12 +1,15 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import cn from 'classnames';
 import { DropdownArrow } from './DropdownArrow';
+import { useSearch } from '../_hooks/useSearch';
+import { DROPDOWN_HEADINGS } from '../../helpers/storage';
 
-export const Dropdown = ({ list, heading }: DropdownProps) => {
+export const Dropdown = ({list, heading }: DropdownProps) => {
   const [isListOpen, setListOpen] = useState<boolean>(false);
   const [selectedOption, setSelectedOption] = useState(list[0].option);
 
   const close = useCallback(() => setListOpen(false), [setListOpen]);
+  const { search, history } = useSearch();
 
   useEffect(() => {
     if (isListOpen) {
@@ -18,39 +21,49 @@ export const Dropdown = ({ list, heading }: DropdownProps) => {
 
   const toggleList = () => setListOpen(!isListOpen);
 
-  const handleOptionSelect = (option: string) => {
+  const handleSort = useCallback((option: string) => {
     setSelectedOption(option);
-    setListOpen(false);
-  };
+
+    if (heading === DROPDOWN_HEADINGS.sortBy) {
+      search.set('sortBy', option.toLowerCase()
+        .split(' ')
+        .join('-'));
+    }
+
+    if (heading === DROPDOWN_HEADINGS.perPage) {
+      search.set('perPage', option)
+    }
+
+    search.delete('page');
+
+    history.push({ search: search.toString() });
+  }, [history, search]);
 
   return (
     <div className="dropdown">
       <p className="dropdown__heading">{heading}</p>
       <div className="dropdown__wrapper">
-        <div
-          className={cn({
-            dropdown__header: true,
-            'dropdown__header--focused': isListOpen,
-          })}
+        <button
+          type="button"
+          className="dropdown__header"
           onClick={toggleList}
         >
-          <div className="dropdown__header-title">
-            {selectedOption}
-          </div>
+          {selectedOption}
           <DropdownArrow isListOpen={isListOpen} />
-        </div>
+        </button>
         {isListOpen && (
           <ul className="dropdown__list">
             {list.map(({ option }) => (
-              <li
-                key={option}
-                className={cn({
-                  'dropdown__list-item': true,
-                  'dropdown__list-item--active': selectedOption === option,
-                })}
-                onClick={() => handleOptionSelect(option)}
-              >
-                {option}
+              <li key={option}>
+                <a
+                  className={cn({
+                    'dropdown__list-item': true,
+                    'dropdown__list-item--active': selectedOption === option,
+                  })}
+                  onClick={() => handleSort(option)}
+                >
+                  {option}
+                </a>
               </li>
             ))}
           </ul>

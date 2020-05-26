@@ -21,4 +21,4 @@ export const Category = ({ title, link }: Category) => {
       </Link>
     </div>
   );
-}
+};

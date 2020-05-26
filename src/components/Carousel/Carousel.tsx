@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { CarouselSlides } from './CarouselSlides';
 import { CarouselRectangles } from './CarouselRectangles';
 import { CarouselControl } from './CarouselControl';
-import { DIRECTIONS } from '../../helpers/directions';
+import { DIRECTIONS } from '../../helpers/storage';
 
 const carouselImages: CarouselSlide[] = [
   { id: 1, name: 'phones', src: './img/showcase-carousel/first.jpg' },

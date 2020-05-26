@@ -10,6 +10,7 @@ export const useSearch = () => {
   const location = useLocation();
   const search = new URLSearchParams(location.search);
   const query = search.get('query') || '';
+  const sortBy = search.get('sortBy');
   const [inputValue, setInputValue] = useState(query);
   const [products, setProducts] = useState<Product[]>([]);
 
@@ -40,11 +41,26 @@ export const useSearch = () => {
     }, [historyPushWithDebounce],
   );
 
-  const searchedProducts: Product[] = useMemo(() => {
+  let searchedProducts: Product[] = useMemo(() => {
     return products.filter(({ name }) => (
       name.toLowerCase().includes(query)
     ));
   }, [products, query]);
+
+  searchedProducts = useMemo(() => {
+    return [...searchedProducts].sort((a, b) => {
+      switch (sortBy) {
+        case 'newest':
+          return a.age - b.age;
+        case 'hot':
+          return b.discount - a.discount;
+        case 'lowest-price':
+          return a.price - b.price;
+        default:
+          return 0;
+      }
+    });
+  }, [searchedProducts, sortBy]);
 
   const searchReset = () => {
     setInputValue('');

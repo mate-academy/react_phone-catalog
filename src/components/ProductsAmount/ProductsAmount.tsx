@@ -6,4 +6,4 @@ export const ProductsAmount = () => {
       95 models
     </p>
   );
-}
+};

@@ -5,6 +5,7 @@ import { Heading } from '../Heading/Heading';
 import { Dropdown } from '../Dropdown/Dropdown';
 import { Product } from '../Product/Product';
 import { Pagination } from '../Pagination/Pagination';
+import { DROPDOWN_HEADINGS } from '../../helpers/storage';
 
 
 const sortTypes = [
@@ -21,7 +22,9 @@ const productsPerPage = [
 ];
 
 export const ProductsList = () => {
-  const { searchedProducts, history, search } = useSearch();
+  const {
+    searchedProducts, history, search,
+  } = useSearch();
 
   const page = Number(search.get('page')) || 1;
   const perPage = Number(search.get('perPage')) || 4;
@@ -62,11 +65,11 @@ export const ProductsList = () => {
       {!search.get('query') && (
         <div className="section__dropdowns">
           <Dropdown
-            heading="Sort by"
+            heading={DROPDOWN_HEADINGS.sortBy}
             list={sortTypes}
           />
           <Dropdown
-            heading="Items on page"
+            heading={DROPDOWN_HEADINGS.perPage}
             list={productsPerPage}
           />
         </div>
