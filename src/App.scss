@@ -1,9 +1,25 @@
 @import "./styles/fonts";
 @import "./styles/vars";
 
+html,
+body,
+ul,
+h1,
+h2,
+h3,
+li {
+  margin: 0;
+  padding: 0;
+}
+
 ul,
 li {
   list-style: none;
+}
+
+a,
+a:hover {
+  text-decoration: none;
 }
 
 body {
@@ -11,4 +27,20 @@ body {
   font-size: 14px;
   color: $secondary-color;
   line-height: 21px;
+}
+
+.container {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1136px;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin: 0 auto;
+  height: 100%;
+}
+
+.img-responsive {
+  width: 100%;
+  height: auto;
 }

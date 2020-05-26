@@ -1,0 +1,20 @@
+$primary-color: #313237;
+$secondary-color: #89939a;
+
+.nav {
+  &__list {
+    display: flex;
+  }
+  &__item {
+    margin-left: 64px;
+  }
+  &__link {
+    height: 100%;
+    font-family: MontBold, sans-serif;
+    color: $secondary-color;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-size: 12px;
+    line-height: 11px;
+  }
+}
