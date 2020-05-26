@@ -8,10 +8,26 @@ export const NavList = () => {
         <NavLink to="/" exact className="header-list__link">Home</NavLink>
       </li>
       <li className="header-list__item">
-        <NavLink to="/phones" className="header-list__link">Phones</NavLink>
+        <NavLink
+          to={{
+            pathname: '/phones',
+            search: '?page=1&filter=8&&age=newest',
+          }}
+          className="header-list__link"
+        >
+          Phones
+        </NavLink>
       </li>
       <li className="header-list__item">
-        <NavLink to="/tablets" className="header-list__link">Tablets</NavLink>
+        <NavLink
+          to={{
+            pathname: '/tablets',
+            search: '?page=1&filter=8&&age=newest',
+          }}
+          className="header-list__link"
+        >
+          Tablets
+        </NavLink>
       </li>
       <li className="header-list__item">
         <NavLink to="/accessories" className="header-list__link">Accessories</NavLink>

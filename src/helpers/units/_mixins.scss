@@ -1,1 +1,12 @@
-//test
+@mixin select-styles {
+  position: relative;
+  border: 1px solid $icons;
+  box-sizing: border-box;
+
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 21px;
+  color: $primary;
+
+  height: 40px;
+}
