@@ -28,7 +28,7 @@ export const CardSlider: React.FC<Props> = ({ goods, title }) => {
     if (myRef.current) {
       console.log(myRef.current.offsetWidth);
     }
-  }, [myRef])
+  }, [myRef]);
 
   return (
     <div

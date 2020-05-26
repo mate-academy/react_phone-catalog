@@ -98,8 +98,7 @@ export const BannerSlider: React.FC = () => {
             className={cn({
               'Banner__Position--active': image.position === currentPosition,
             },
-              'Banner__Position',
-            )}
+            'Banner__Position')}
             onClick={() => chooseImages(image.position)}
           />
         ))}

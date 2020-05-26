@@ -18,6 +18,26 @@ $color-elements: #e2e6e9;
     }
   }
 
+  &__Loading {
+    margin: 0 auto;
+    width: 300px;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__Column {
+    position: relative;
+  }
+
+  &__Id {
+    position: absolute;
+    transform: translateY(-100%);
+    right: 0;
+    color: $color-secondary;
+    font-weight: 600;
+    font-size: 12px;
+  }
+
   &__Content {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -35,13 +55,22 @@ $color-elements: #e2e6e9;
   }
 
   &__ImageItem {
-    width: 4rem;
     margin-bottom: 1rem;
     list-style: none;
+    width: 5rem;
+    height: 5rem;
+    border: 1px solid #c4c4c4;
+    box-sizing: border-box;
+    transition: all 0.3s;
   }
 
   &__Image {
     width: 100%;
+
+    &--current {
+      border: 1px solid black;
+      box-sizing: border-box;
+    }
   }
 
   &__ImageBig {
@@ -63,12 +92,13 @@ $color-elements: #e2e6e9;
 
   &__Price {
     font-weight: 500;
-    font-size: 22px;
     line-height: 28px;
+    display: flex;
 
     &--actual {
       color: $color-primary;
       font-weight: 600;
+      font-size: 2rem;
 
       &::before {
         content: "$";
@@ -79,6 +109,8 @@ $color-elements: #e2e6e9;
       padding-left: 0.5rem;
       color: $color-secondary;
       text-decoration-line: line-through;
+      font-size: 22px;
+      font-weight: 500;
 
       &::before {
         content: "$";
@@ -96,5 +128,71 @@ $color-elements: #e2e6e9;
     &--favorites {
       cursor: pointer;
     }
+  }
+
+  &__Info {
+    margin-top: 2rem;
+  }
+
+  &__InfoList {
+    max-width: 20rem;
+  }
+
+  &__InfoItem {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    height: 1rem;
+  }
+
+  &__InfoTitle {
+    font-weight: 500;
+    font-size: 12px;
+    color: $color-secondary;
+  }
+
+  &__InfoFeature {
+    font-weight: 600;
+    font-size: 12px;
+    color: $color-primary;
+  }
+
+  &__SpecsList {
+    max-width: 100%;
+  }
+
+  &__SpecsItem {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    height: 21px;
+  }
+
+  &__SpecsTitle,
+  &__SpecsFeature {
+    color: $color-secondary;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    text-align: right;
+  }
+
+  &__SpecsFeature {
+    color: $color-primary;
+  }
+
+  &__MoreInfo {
+    margin-top: 2rem;
+
+    &--SubHeading {
+      margin-bottom: 1rem;
+      color: $color-primary;
+      font-weight: 600;
+      font-size: 20px;
+    }
+  }
+
+  &__Slider {
+    margin-top: 5rem;
   }
 }
