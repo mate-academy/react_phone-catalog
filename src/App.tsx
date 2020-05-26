@@ -1,10 +1,13 @@
 import React from 'react';
-
+import { HashRouter } from 'react-router-dom';
 import './App.scss';
+import { Header } from './components/Header';
 
 const App = () => (
   <div className="App">
-    <h1>React Phone Catalog</h1>
+    <HashRouter>
+      <Header />
+    </HashRouter>
   </div>
 );
 
