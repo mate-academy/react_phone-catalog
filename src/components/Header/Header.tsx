@@ -25,7 +25,7 @@ const Header = () => {
   return (
     <header className="header">
       <a href="/home" className="header__logo logo">
-        <img src="../img/logo/LOGO.svg" alt="logo" />
+        <img src="./img/logo/LOGO.svg" alt="logo" />
       </a>
 
       <nav className="header__nav nav">
@@ -33,7 +33,6 @@ const Header = () => {
           {navList.map(item => (
             <li key={item.title} className="nav__item">
               <NavLink to={item.link} className="nav__link" activeClassName="nav__link--active">{item.title}</NavLink>
-
             </li>
           ))}
         </ul>

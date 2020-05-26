@@ -104,30 +104,3 @@ $borderElement: solid 1px $colorElement;
 .btn-left {
   @include iconInButton(url(../../img/Icons/left.svg));
 }
-
-// .carousel__dots-wrap {
-//   width: 70px;
-//   margin-top: 18px;
-//   margin-left: auto;
-//   margin-right: auto;
-
-//   display: flex;
-//   flex-direction: row;
-//   justify-content: space-between;
-//   align-items: center;
-// }
-
-// .carousel__dot {
-//   width: 14px;
-//     height: 4px;
-//     display: block;
-//     background-color: $colorElement;
-//     border: none;
-
-//     &--active {
-//       width: 14px;
-//       height: 4px;
-//       display: block;
-//       background-color: $colorPrimary;
-//     }
-// }
