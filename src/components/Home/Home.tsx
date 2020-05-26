@@ -23,7 +23,6 @@ export const Home: React.FC = () => {
       <MainSlider />
       <ProductsSlider title="Hot prices" visibleProducts={hotProducts} />
       <ProductsSlider title="Brand new models" visibleProducts={brandProducts} />
-
     </>
 
   );
