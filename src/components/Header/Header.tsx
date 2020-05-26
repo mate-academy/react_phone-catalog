@@ -37,7 +37,7 @@ const Header = () => {
           ))}
         </ul>
       </nav>
-      <div>
+      <div className="header__wrapButtons">
         <Route path="/phones">
           <input
             type="text"

@@ -25,11 +25,17 @@
     margin-left: 24px + $widthLogo + 65px;
   }
 
+  &__wrapButtons {
+    height: 100%;
+    display: flex;
+  }
+
   &__search {
     height: $heightHeader;
     width: 327px;
     padding-left: 24px;
     border-left: $borderElement;
+    border-bottom: $borderElement;
     @include ButtonText;
     color: $colorText;
     line-height: 18px;
@@ -46,13 +52,26 @@
 
   &__buttons {
     width: 64px;
-    height: 64px;
     box-sizing: border-box;
     background-color: #fff;
     border-left: 1px solid $colorElement;
-    border-bottom: 3px solid transparent;
+  }
 
-    @include hover(border-bottom, 3px solid $colorPrimary);
+  &__buttons::after {
+    content: "";
+    height: 3px;
+    background-color: black;
+    width: 64px;
+    display: block;
+    position: absolute;
+    top: 60px;
+    transition: opacity 0.3s ease;
+
+    opacity: 0;
+  }
+
+  &__buttons:hover:after {
+    opacity: 1;
   }
 }
 
@@ -78,9 +97,7 @@
 
   &__link::before {
     content: "";
-
     border-bottom: solid 3px #313237;
-
     position: absolute;
     top: 60px;
     left: 32px;
