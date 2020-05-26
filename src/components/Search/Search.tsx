@@ -16,11 +16,6 @@ export const Search = () => {
 
   const myRef = useRef<HTMLInputElement>(null);
 
-  const clearInput = () => {
-    searchParams.set('query', '');
-    history.push({ search: searchParams.toString() });
-  };
-
   useEffect(() => {
     if (query === '') {
       myRef.current!.focus();
@@ -48,6 +43,13 @@ export const Search = () => {
     setVisibleQuery(value);
   };
 
+  const clearInput = () => {
+    searchParams.delete('query');
+    history.push({ search: searchParams.toString() });
+    updateQuery('');
+    setVisibleQuery('');
+  };
+
   return (
     <form action="./" className="Search" onSubmit={e => e.preventDefault()}>
       <label htmlFor="search" className="Search__Label">
@@ -62,7 +64,7 @@ export const Search = () => {
         <button
           className={cn({
             Search__Button: true,
-            'Search__Button--clear': query.length > 0,
+            'Search__Button--clear': visibleQuery.length > 0,
           })}
           onClick={clearInput}
         />
