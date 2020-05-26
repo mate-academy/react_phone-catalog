@@ -2,16 +2,32 @@ $color-primary: #313237;
 $color-secondary: #89939a;
 $color-elements: #e2e6e9;
 
+$screen-min: 320px;
+$screen-extra-small: 420px;
+$screen-small: 768px;
+$screen-medium: 1024px;
+$screen-large: 1200px;
+$screen-max: 1136px;
+
 .GoodsList {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 2.5rem 1rem;
   margin-top: 1.5rem;
+
+  @media screen and (max-width: $screen-medium) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media screen and (max-width: $screen-extra-small) {
+    grid-template-columns: 1fr;
+  }
 }
 
 .GoodItem {
   position: relative;
   padding: 2rem 1.5rem;
+  box-sizing: border-box;
   border: 1px solid $color-elements;
   transition: box-shadow 0.3s;
 

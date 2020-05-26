@@ -32,7 +32,6 @@ export const Footer = () => {
             inActive={false}
           />
         </Link>
-
       </div>
     </footer>
   );

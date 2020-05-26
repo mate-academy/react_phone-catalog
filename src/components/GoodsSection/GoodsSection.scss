@@ -1,5 +1,8 @@
 $color-secondary: #89939a;
 
+$screen-min: 320px;
+$screen-extra-small: 420px;
+
 .GoodsSection {
   &__Qty {
     margin-top: 0.5rem;
@@ -15,6 +18,15 @@ $color-secondary: #89939a;
     gap: 1rem;
     justify-content: left;
     margin: 5rem 0 1.5rem;
+
+    @media screen and (max-width: $screen-extra-small) {
+      justify-content: space-between;
+      margin-top: 3rem;
+    }
+
+    @media screen and (max-width: $screen-min) {
+      grid-auto-flow: row;
+    }
   }
 
   &__Select {

@@ -1,6 +1,13 @@
 $color-primary: #313237;
 $color-secondary: #89939a;
 
+$screen-min: 320px;
+$screen-extra-small: 420px;
+$screen-small: 768px;
+$screen-medium: 1024px;
+$screen-large: 1200px;
+$screen-max: 1136px;
+
 @mixin hoverAndFocus($_heightLine, $_beforeColor, $_afterColor) {
   position: relative;
   transition: all 0.6s;
@@ -47,6 +54,10 @@ $color-secondary: #89939a;
   &__Item {
     list-style: none;
     margin-left: 4rem;
+
+    @media screen and (max-width: $screen-medium) {
+      margin-left: 2rem;
+    }
   }
 
   &__Link {

@@ -1,11 +1,18 @@
 $color-elements: #e2e6e9;
 $color-white: #fff;
 
+$screen-min: 320px;
+$screen-extra-small: 420px;
+$screen-small: 768px;
+$screen-medium: 1024px;
+$screen-large: 1200px;
+$screen-max: 1136px;
+
 .Header {
   position: sticky;
   top: 0;
   display: grid;
-  grid-template-columns: max-content max-content 1fr max-content max-content max-content;
+  grid-template-columns: repeat(2, max-content) 1fr repeat(4, max-content);
   align-items: center;
   height: 3.5rem;
   background-color: $color-white;
@@ -13,11 +20,36 @@ $color-white: #fff;
   border-bottom: 1px solid $color-elements;
   z-index: 1;
 
+  @media screen and (max-width: $screen-medium) {
+    grid-template-columns: max-content 1fr repeat(3, max-content);
+  }
+
   &__Logo {
     margin: 0 4rem 0 1rem;
+
+    @media screen and (max-width: $screen-medium) {
+      margin-right: 2rem;
+    }
+
+    @media screen and (max-width: $screen-extra-small) {
+      margin-right: 0;
+    }
+  }
+
+  &__HomeLink {
+    @media screen and (max-width: $screen-medium) {
+      display: none;
+    }
+  }
+
+  &__Nav {
+    @media screen and (max-width: $screen-medium) {
+      display: none;
+    }
   }
 
   &__Button {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;

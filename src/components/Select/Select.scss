@@ -5,11 +5,18 @@ $color-elements: #e2e6e9;
 $color-secondary: #89939a;
 $color-white: #fff;
 
+$screen-min: 320px;
+$screen-extra-small: 420px;
+
 .Select {
   cursor: pointer;
   width: max-content;
   min-width: 8rem;
   position: relative;
+
+  @media screen and (max-width: $screen-min) {
+    width: 100%;
+  }
 
   &__Active {
     position: relative;
@@ -28,6 +35,10 @@ $color-white: #fff;
     background-color: $color-white;
     display: flex;
     justify-content: flex-start;
+
+    @media screen and (max-width: $screen-extra-small) {
+      padding-right: 2rem;
+    }
 
     &--opened {
       border: 1px solid $color-primary;

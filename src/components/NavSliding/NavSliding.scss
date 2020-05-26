@@ -1,0 +1,312 @@
+$color-primary: #313237;
+$color-secondary: #89939a;
+$color-icons: #b4bdc4;
+$color-elements: #e2e6e9;
+$color-hover-bg: #fafbfc;
+$color-white: #fff;
+
+$screen-min: 320px;
+$screen-extra-small: 420px;
+$screen-small: 768px;
+$screen-medium: 1024px;
+$screen-large: 1200px;
+$screen-max: 1136px;
+
+$border-width: 1px;
+
+@mixin hoverAndFocus($_heightLine, $_beforeColor, $_afterColor) {
+  position: relative;
+  transition: all 0.6s;
+  outline: none;
+
+  &:before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 0;
+    height: $_heightLine;
+    background: $_beforeColor;
+    transition: all 0.3s;
+  }
+
+  &:hover,
+  &:focus {
+    &:before {
+      left: 0;
+      width: 100%;
+      background: $_afterColor;
+    }
+  }
+}
+
+.NavSliding {
+  z-index: 3;
+
+  &__ButtonLine {
+    height: 2px;
+    width: 1.5rem;
+    margin: 2px 4px 4px;
+    background-color: $color-primary;
+    transition: transform 0.3s;
+    transform-origin: center;
+  }
+
+  &__Button {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    width: 3.5rem;
+    height: 3.5rem;
+    background-color: transparent;
+    border: 0;
+    border-left: 1px solid $color-elements;
+    border-bottom: 1px solid $color-elements;
+    cursor: pointer;
+    outline: none;
+    overflow: hidden;
+    z-index: 2;
+
+    &--cross {
+      border: 0;
+
+      & > .NavSliding__ButtonLine:first-child {
+        transform: rotate(45deg) translate(5px, 2px);
+      }
+
+      & > .NavSliding__ButtonLine:last-child {
+        transform: rotate(-45deg) translate(3px, -1px);
+      }
+    }
+
+    &:before,
+    &:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border: $border-width solid transparent;
+      will-change: transform;
+      transition: transform .3s ease;
+      pointer-events: none;
+      transform: translateZ(0);
+      overflow: hidden;
+    }
+
+    &:before {
+      border-color: $color-primary transparent;
+      transform: skew(-90deg, 0);
+    }
+
+    &:after {
+      border-color: transparent $color-primary;
+      transform: skew(0,65deg);
+      transition: transform .4s;
+    }
+
+    &:hover,
+    &:focus {
+      color: $color-primary;
+
+      &:before,
+      &:after {
+        transform: skew(0, 0);
+      }
+    }
+  }
+
+  &__Block {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    bottom: 0;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 3fr 4fr;
+    justify-items: stretch;
+    background-color: $color-white;
+    z-index: 1;
+    transition: transform 0.6s cubic-bezier(0, 0, 0.3, 1);
+
+    &.show {
+      transform: translateX(-100%);
+    }
+  }
+
+  &__Illustration {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    padding-top: 60px;
+    overflow: hidden;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      display: block;
+      width: 160%;
+      height: 100%;
+      background-image: url(../../images/neil-sony-1200.jpg);
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transform: translateX(100px);
+      transition: opacity 0.6s, transform 1s;
+      transition-timing-function: ease-in-out;
+      transition-delay: 0.3s;
+      z-index: 801;
+
+      .show & {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+  }
+
+  &__Content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0 2rem 4rem;
+    box-sizing: border-box;
+    background-color: $color-white;
+
+    &::before {
+      content: "Mobile Store";
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      font-weight: bold;
+      font-size: 288px;
+      line-height: 272px;
+      letter-spacing: -0.05em;
+      background: linear-gradient(to right, rgb(238, 237, 237), $color-white);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      opacity: 0;
+      transform: rotate(-90deg);
+      transform-origin: top;
+      transition: opacity 0.6s,;
+      transition-delay: 1s;
+      z-index: 0;
+
+      @media screen and (max-width: $screen-extra-small) {
+        font-size: 220px;
+        line-height: 220px;
+      }
+
+      .show & {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__Icon {
+    display: block;
+    width: 4rem;
+    height: 4rem;
+  }
+
+  &__List {
+    counter-reset: sliding-nav;
+
+    &--secondary {
+      display: grid;
+      grid-auto-flow: column;
+      gap: 1rem;
+      justify-content: center;
+      margin: 4rem 0;
+    }
+  }
+
+  &__Item {
+    counter-increment: sliding-nav;
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    padding-bottom: 1rem;
+    overflow: hidden;
+
+    &--secondary {
+      list-style: none;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      background-color: $color-white;
+      transform: translateY(-100%);
+      transition: transform 0.6s;
+      transition-delay: 1s;
+
+      .show & {
+        transform: translateY(0);
+      }
+    }
+  }
+
+  &__Link {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    color: $color-primary;
+    text-decoration: none;
+    text-transform: capitalize;
+    white-space: nowrap;
+    transform: translateY(150%);
+    transition: transform 0.6s;
+    transition-delay: 0.6s;
+
+    .show & {
+      transform: translateY(0);
+    }
+
+    &:hover,
+    &:focus {
+      font-weight: 600;
+    }
+
+    &--primary {
+      font-weight: 500;
+      font-size: 72px;
+      line-height: 80px;
+      letter-spacing: -0.04em;
+      text-transform: capitalize;
+
+      @media screen and (max-width: $screen-extra-small) {
+        font-size: 30px;
+        line-height: 50px;
+      }
+
+      &::before {
+        content: "0" counter(sliding-nav);
+        padding-right: 10px;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 16px;
+        letter-spacing: normal;
+        color: $color-secondary;
+      }
+    }
+
+    &--secondary {
+      display: block;
+      height: 2.5rem;
+
+      &:hover,
+      &:focus {
+        font-weight: normal;
+      }
+
+      @include hoverAndFocus(3px, $color-primary, $color-primary);
+    }
+  }
+}

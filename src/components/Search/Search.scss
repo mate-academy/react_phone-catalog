@@ -1,9 +1,15 @@
 $color-primary: #313237;
 $color-elements: #e2e6e9;
 
+$screen-extra-small: 420px;
+
 .Search {
   height: 100%;
   border-left: 1px solid $color-elements;
+
+  @media screen and (max-width: $screen-extra-small) {
+    border-left: 0;
+  }
 
   &__Label {
     position: relative;
@@ -15,6 +21,7 @@ $color-elements: #e2e6e9;
     position: relative;
     box-sizing: border-box;
     height: 99%;
+    width: 100%;
     padding: 0 2.5rem 0 1.5rem;
     border: 1px transparent;
     color: $color-primary;

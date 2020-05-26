@@ -5,10 +5,11 @@ import './Nav.scss';
 
 interface Props {
   links: Link[];
+  className?: string;
 }
 
-export const Nav: React.FC<Props> = ({ links }) => (
-  <nav className="Nav">
+export const Nav: React.FC<Props> = ({ links, className }) => (
+  <nav className={`Nav ${className || ''}`}>
     <ul className="Nav__List">
       {links.map(({ name, url, exact }) => (
         <li className="Nav__Item" key={name}>

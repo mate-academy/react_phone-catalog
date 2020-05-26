@@ -1,16 +1,23 @@
 $color-secondary: #89939a;
 $color-elements: #e2e6e9;
 
+$screen-extra-small: 420px;
+
 .Footer {
   border-top: 1px solid $color-elements;
 
   &__Content {
     display: flex;
+    flex-wrap: wrap;
     height: 4rem;
     justify-content: space-between;
     align-items: center;
     margin-top: 1rem;
     margin-bottom: 1rem;
+
+    @media screen and (max-width: $screen-extra-small) {
+      justify-content: flex-end;
+    }
   }
 
   &__Link {
@@ -21,5 +28,9 @@ $color-elements: #e2e6e9;
     align-items: center;
     color: $color-secondary;
     text-decoration: none;
+
+    @media screen and (max-width: $screen-extra-small) {
+      margin-bottom: 1rem;
+    }
   }
 }
