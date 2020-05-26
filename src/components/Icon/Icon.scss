@@ -15,12 +15,14 @@ $border-width: 1px;
   box-sizing: border-box;
   padding: 0.25rem;
   border: none;
+  background-color: $color-white;
   transition: color .2s;
   text-shadow: 0 0 1px rgba($color-primary, .5);
   position: relative;
   overflow: hidden;
   transform: translateZ(0);
   outline: none;
+  cursor: pointer;
 
   &:before,
   &:after {

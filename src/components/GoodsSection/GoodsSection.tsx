@@ -6,9 +6,9 @@ import './GoodsSection.scss';
 import { GoodsList } from '../GoodsList';
 import { Pagination, SelectPerPage } from '../Pagination';
 import {
+  sortBy,
   SECTION_LINK,
   SORT_TYPES,
-  sortBy,
   PER_PAGE_SETTINGS,
 } from '../../helpers';
 import { Select } from '../Select';

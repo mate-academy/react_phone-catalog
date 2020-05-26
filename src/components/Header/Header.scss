@@ -1,12 +1,17 @@
 $color-elements: #e2e6e9;
+$color-white: #fff;
 
 .Header {
+  position: sticky;
+  top: 0;
   display: grid;
   grid-template-columns: max-content max-content 1fr max-content max-content max-content;
   align-items: center;
   height: 3.5rem;
+  background-color: $color-white;
   box-sizing: border-box;
   border-bottom: 1px solid $color-elements;
+  z-index: 1;
 
   &__Logo {
     margin: 0 4rem 0 1rem;
@@ -20,5 +25,6 @@ $color-elements: #e2e6e9;
     width: 3.5rem;
     height: 3.5rem;
     border-left: 1px solid $color-elements;
+    border-bottom: 1px solid $color-elements;
   }
 }

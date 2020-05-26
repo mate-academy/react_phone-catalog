@@ -18,7 +18,8 @@ export const Icon: React.FC<Props> = ({
   border,
   inActive,
 }) => (
-  <div
+  <button
+    type="button"
     className={cn(`Icon Icon__Size${size}`, {
       Icon__Border: border,
     })}
@@ -31,6 +32,6 @@ export const Icon: React.FC<Props> = ({
       )
     }
     />
-    {tag && <div className="Icon__tag">{tag}</div>}
-  </div>
+    {Number(tag) > 0 && <div className="Icon__tag">{tag}</div>}
+  </button>
 );

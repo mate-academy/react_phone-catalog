@@ -77,8 +77,13 @@ interface Match {
   url: string;
 }
 
-interface BriefInfo {
-  case: string;
-  attachment: string;
-  path: string;
+interface Favorite {
+  id: string;
+}
+
+interface FavoritesContextType {
+  favorites: Array<string>;
+  addFavorite: (product: Good) => void;
+  removeFavorite: (product: Good) => void;
+  isFavorite: (product: Good) => boolean;
 }
