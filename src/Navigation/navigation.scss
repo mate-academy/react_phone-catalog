@@ -9,22 +9,19 @@
   &__right {
     display: flex;
     align-items: center;
-
-    &-input {
-      border: 1px solid black;
-      line-height: 18px;
+    &_link {
+      box-shadow: -1px 0 0 #e2e6e9;
     }
-
     &_icon {
       width: 13px;
-      padding: 25px;
-      box-shadow: -1px 0 0 #e2e6e9;
+      padding: 24px;
     }
   }
 
   &__left {
     display: flex;
     align-items: center;
+
   }
 
   &__logo {

@@ -2,14 +2,13 @@ import React from 'react';
 import './footer.scss';
 import {
   ARROW_UP,
-  LOGO_URL,
   OWNER_GIT_HUB,
 } from '../Additionals/additional_api';
 
 export const Footer = () => {
   return (
     <footer className="Footer">
-      <img className="Nav__logo" alt="logo" src={LOGO_URL} />
+      <img className="Nav__logo" alt="logo" src="/src/Additionals/icons/logo.svg" />
       <ul className="Nav__list">
         <li className="Nav__list_item">
           <a className="Footer__link" href={OWNER_GIT_HUB}>GITHUB</a>

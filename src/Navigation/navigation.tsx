@@ -54,14 +54,14 @@ export const Navigation = () => {
         </ul>
       </div>
       <div className="Nav__right">
-        <NavLink to="/favourites">
+        <NavLink to="/favourites" className="Nav__right_link">
           <img
             className="Nav__right_icon"
             alt="favourites"
             src={FAVOURITES_ICON}
           />
         </NavLink>
-        <NavLink to="/cart">
+        <NavLink to="/cart"  className="Nav__right_link">
           <img className="Nav__right_icon" alt="cart" src={CART_ICON} />
         </NavLink>
       </div>
