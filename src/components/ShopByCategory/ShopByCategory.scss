@@ -1,0 +1,62 @@
+// @import "../../styles/typography.scss";
+
+.wrap-category {
+  width: 1136px;
+  margin: 0 auto 150px;
+}
+
+.category {
+  display: flex;
+  justify-content: space-between;
+
+  &__title {
+    // font-family: "Mont-Bold", sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: #313237;
+  }
+
+  &__phones,
+  &__tablets,
+  &__accessories {
+    position: relative;
+    width: 368px;
+    height: 368px;
+    background-color: #fcdbc1;
+  }
+
+  &__tablets {
+    background-color: #8d8d92;
+  }
+
+  &__accessories {
+    background-color: #973d5f;
+  }
+
+  &__img {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+
+  &__subtitle {
+    // font-family: Mont;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 26px;
+    color: #313237;
+  }
+
+  &__sum-models {
+    // font-family: Mont;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #89939a;
+  }
+}
