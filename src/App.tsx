@@ -1,8 +1,9 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import './App.scss';
-import { Header } from './components/Header';
+import { Header } from './components/Header/Header';
 import { NotFoundPage } from './components/NotFoundPage';
+import { BigCarousel } from './components/BigCarousel';
 
 
 const Home = () => <h2>Home2</h2>;
@@ -18,6 +19,7 @@ const App: React.FC = () => {
           path="/"
           component={Home}
         />
+        <BigCarousel />
         <Redirect from="/home" to="/" />
         <Route component={NotFoundPage} />
       </Switch>
@@ -25,5 +27,6 @@ const App: React.FC = () => {
     </div>
   );
 };
+
 
 export default App;
