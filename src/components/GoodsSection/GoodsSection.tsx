@@ -5,6 +5,7 @@ import { Helmet } from 'react-helmet';
 import './GoodsSection.scss';
 import { GoodsList } from '../GoodsList';
 import { Pagination, SelectPerPage } from '../Pagination';
+import { NotAvailable } from '../NotAvailable'
 import {
   sortBy,
   SECTION_LINK,
@@ -72,44 +73,53 @@ export const GoodsSection: React.FC<Props> = ({ goods }) => {
     (currentPage || 1) * perPage,
   );
 
+  console.log(sortedGoods.length);
+
   return (
-    <section className="section GoodsSection">
-      <Helmet>
-        <title>{sectionProp?.title || sectionProp?.name}</title>
-      </Helmet>
-      <h1 className="GoodsSection__Heading">
-        {sectionProp?.title || sectionProp?.name}
-      </h1>
-      <div className="GoodsSection__Qty">{`${filteredGoods.length} models`}</div>
-
-      <div className="GoodsSection__Control">
-        {filteredGoods.length > 1 && (
-          <>
-            <div className="GoodsSection__Select">
-              <div className="GoodsSection__SelectName">
-                Sort by
-              </div>
-              <Select options={SORT_TYPES} />
-            </div>
-
-            <div className="GoodSection__Select">
-              <div className="GoodsSection__SelectName">
-                Items on page
-              </div>
-              <SelectPerPage options={PER_PAGE_SETTINGS} />
-            </div>
-          </>
-        )}
-      </div>
-
-      <div className="GoodsSection__Container">
-        <GoodsList goods={paginatedGoods} />
-      </div>
-      {searchedGoods.length > perPage && (
-        <div className="Pagination">
-          <Pagination qty={searchedGoods.length} perPage={perPage} />
-        </div>
+    <>
+      {sortedGoods.length === 0 && (
+        <NotAvailable />
       )}
-    </section>
+      {sortedGoods.length >= 1 && (
+        <section className="section GoodsSection">
+          <Helmet>
+            <title>{sectionProp?.title || sectionProp?.name}</title>
+          </Helmet>
+          <h1 className="GoodsSection__Heading">
+            {sectionProp?.title || sectionProp?.name}
+          </h1>
+          <div className="GoodsSection__Qty">{`${filteredGoods.length} models`}</div>
+
+          <div className="GoodsSection__Control">
+            {filteredGoods.length > 1 && (
+              <>
+                <div className="GoodsSection__Select">
+                  <div className="GoodsSection__SelectName">
+                    Sort by
+              </div>
+                  <Select options={SORT_TYPES} />
+                </div>
+
+                <div className="GoodSection__Select">
+                  <div className="GoodsSection__SelectName">
+                    Items on page
+              </div>
+                  <SelectPerPage options={PER_PAGE_SETTINGS} />
+                </div>
+              </>
+            )}
+          </div>
+
+          <div className="GoodsSection__Container">
+            <GoodsList goods={paginatedGoods} />
+          </div>
+          {searchedGoods.length > perPage && (
+            <div className="Pagination">
+              <Pagination qty={searchedGoods.length} perPage={perPage} />
+            </div>
+          )}
+        </section>
+      )}
+    </>
   );
 };
