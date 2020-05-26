@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ProductsSlider from '../ProductsSlider/ProductsSlider';
 import MainSlider from '../MainSlider/MainSlider';
+import { ShopByCategory } from '../ShopByCategory/ShopByCategory';
 import { getProducts } from '../../helpers/api';
 
 export const Home: React.FC = () => {
@@ -22,6 +23,7 @@ export const Home: React.FC = () => {
     <>
       <MainSlider />
       <ProductsSlider title="Hot prices" visibleProducts={hotProducts} />
+      <ShopByCategory />
       <ProductsSlider title="Brand new models" visibleProducts={brandProducts} />
     </>
 
