@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './ProductsSlider.scss';
-import { getProducts } from '../../helpers/api';
+// import { getProducts } from '../../helpers/api';
+// import { getHotProducts } from '../../helpers/api';
 
 interface Slide {
   imageUrl: string;
@@ -13,30 +14,16 @@ interface Slide {
   ram: string;
   id: string;
 }
+type ProductsSliderProps = {
+  title: string;
+  visibleProducts: Slide[];
+};
 
-const ProductsSlider = () => {
-  // const [selectedIdx, setSelectedIdx] = useState(0);
+const ProductsSlider: React.FC<ProductsSliderProps> = ({ visibleProducts, title }) => {
   const [position, setPosition] = useState(0);
-  // const [products, setProducts] = useState([]);
-  const [hotProducts, setHotProducts] = useState<Slide[]>([]);
-
   const margin = 16;
   const widthBanner = 272 + margin;
-  const widthCarousel = widthBanner * (hotProducts.length - 4);
-
-  // useEffect(() => {
-  //   getProducts().then(data => setProducts(data));
-  // }, []);
-
-  useEffect(() => {
-    getProducts().then(data => setHotProducts(data.filter((product: Slide) => product.discount > 0)
-      .sort((a: Slide, b: Slide) => a.discount - b.discount)));
-  }, []);
-
-  // const getHotPriceProducts = () => (
-  //   setHotProducts(products.filter(product => product.discount > 0)
-  //     .sort((a, b) => a.discount - b.discount))
-  // );
+  const widthCarousel = widthBanner * (visibleProducts.length - 4);
 
   const handlePrevOnClick = () => {
     if (position === 0) {
@@ -55,7 +42,7 @@ const ProductsSlider = () => {
 
   return (
     <div className="wrapper">
-      <h2>Hot prices</h2>
+      <h2>{title}</h2>
       <div className="container">
         <button
           type="button"
@@ -69,8 +56,8 @@ const ProductsSlider = () => {
             style={{ transform: `translate(${position}px)` }}
             className="Carousel__list"
           >
-            {hotProducts.map(slide => (
-              <Item key={slide.id} {...slide} />
+            {visibleProducts.map(product => (
+              <Item key={product.id} {...product} />
             ))}
           </div>
         </div>
@@ -115,10 +102,14 @@ const Item: React.FC<Props> = ({
           {(price - price * (discount / 100))}
         </span>
         {' '}
-        <span className="card__oldPrise">
-          $
-          {price}
-        </span>
+        {discount !== 0
+         && (
+           <span className="card__oldPrise">
+             $
+             {price}
+           </span>
+         )}
+
         <div className="card__info">
           <div className="card__info-screen card__item">
             <p className="card__info-screen_name">Screen</p>
