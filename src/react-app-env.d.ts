@@ -53,3 +53,14 @@ interface SortType {
 interface PerPage {
   name: string;
 }
+
+interface Favorite {
+  id: string;
+}
+
+interface FavoritesContextType {
+  favorites: Array<string>;
+  addFavorite: (product: Good) => void;
+  removeFavorite: (product: Good) => void;
+  isFavorite: (product: Good) => boolean;
+}

@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
-import { Icon } from '../Icon';
+import { FavoritesContext } from '../Favorites';
 import { PrimaryButton } from '../Buttons';
+import { Icon } from '../Icon';
 
 interface Props {
   good: Good;
@@ -10,6 +11,15 @@ interface Props {
 
 export const GoodItem: React.FC<Props> = ({ good }) => {
   const { section } = useParams();
+  const { isFavorite, addFavorite, removeFavorite } = useContext(FavoritesContext);
+
+  const handleFavorites = (selectedGood: Good) => {
+    if (isFavorite(selectedGood)) {
+      removeFavorite(selectedGood);
+    } else {
+      addFavorite(selectedGood);
+    }
+  };
 
   return (
     <article key={good.id} className="GoodsList__Item GoodItem">
@@ -62,13 +72,9 @@ export const GoodItem: React.FC<Props> = ({ good }) => {
         <div className="GoodItem__Buttons--main">
           <PrimaryButton text="Add To Cart" />
         </div>
-        <div className="GoodItem__Buttons--favorites">
-          <Icon
-            name="favorites"
-            border
-            inActive={false}
-          />
-        </div>
+        <label onClick={() => handleFavorites(good)}>
+          <Icon name={isFavorite(good) ? 'favorites-filled' : 'favorites'} border inActive={false} />
+        </label>
       </section>
     </article>
   );

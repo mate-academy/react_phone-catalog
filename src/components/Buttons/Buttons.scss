@@ -50,10 +50,11 @@ $color-green: #27ae60;
   }
 
   &__Icon {
-    height: 4rem;
-    min-width: 4rem;
+    height: 100%;
+    width: 100%;
+    padding: 0;
     background-color: $color-white;
-    border: 1px solid $color-icons;
+    border: 0;
 
     &--selected {
       border-color: $color-elements;
