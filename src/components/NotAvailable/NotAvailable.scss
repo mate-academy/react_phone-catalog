@@ -1,0 +1,10 @@
+.NotAvailable {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  opacity: 0.35;
+
+  &__Image {
+    height: 80vh;
+  }
+}
