@@ -38,7 +38,7 @@ export const ProductSlider: FC<Params> = ({ phones, title }) => {
             <img
               className="ProductSlider__navigation_buttons-left-image"
               alt="favourites"
-              src="/src/Additional/icons/arrow.svg"
+              src="img/icons/arrow.svg"
             />
           </button>
           <button
@@ -49,7 +49,7 @@ export const ProductSlider: FC<Params> = ({ phones, title }) => {
             <img
               className="ProductSlider__navigation_buttons-right-image"
               alt="favourites"
-              src="/src/Additional/icons/arrow.svg"
+              src="img/icons/arrow.svg"
             />
           </button>
         </div>
@@ -103,7 +103,7 @@ export const ProductSlider: FC<Params> = ({ phones, title }) => {
                 <img
                   className="action__add-to-fav"
                   alt="favourites"
-                  src={FAVOURITES_ICON}
+                  src="img/icons/fav.svg"
                 />
               </div>
             </li>

@@ -69,12 +69,12 @@ export const PhonesCatalog = () => {
       <div className="breadcrumb">
         <NavLink to="/" className="breadcrumb__link">
           <img
-            src="/src/Additional/icons/home.svg"
+            src="img/icons/home.svg"
             alt="home page"
             className="breadcrumb__link_home"
           />
         </NavLink>
-        <img src="/src/Additional/icons/arrow.svg" alt=" " className="breadcrumb__arrow" />
+        <img src="img/icons/arrow.svg" alt=" " className="breadcrumb__arrow" />
         <span className="breadcrumb__currentPage">Phones</span>
       </div>
       <h1 className="PhonesCatalog__header">Mobile phones</h1>
@@ -181,7 +181,7 @@ export const PhonesCatalog = () => {
                 <img
                   className="action__add-to-fav"
                   alt="favourites"
-                  src="/src/Additional/icons/favourite_icon.svg"
+                  src="img/icons/fav.svg"
                 />
               </div>
             </div>

@@ -7,7 +7,7 @@ export const Navigation = () => {
   return (
     <nav className="Nav">
       <div className="Nav__left">
-        <img className="Nav__logo" alt="logo" src="/src/Additional/icons/logo.svg" />
+        <img className="Nav__logo" alt="logo" src="img/icons/logo.svg" />
         <ul className="Nav__list">
           <li className="Nav__list_item">
             <NavLink
@@ -53,11 +53,11 @@ export const Navigation = () => {
           <img
             className="Nav__right_icon"
             alt="favourites"
-            src="/src/Additional/icons/favourite_icon.svg"
+            src="img/icons/fav.svg"
           />
         </NavLink>
         <NavLink to="/cart" className="Nav__right_link">
-          <img className="Nav__right_icon" alt="cart" src="/src/Additional/icons/cart.svg" />
+          <img className="Nav__right_icon" alt="cart" src="img/icons/cart.svg" />
         </NavLink>
       </div>
     </nav>

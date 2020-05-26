@@ -49,7 +49,7 @@ export const Slider = () => {
         >
           <img
             className="carousel__control-arrow carousel__control-arrowleft"
-            src="/src/Additional/icons/arrow.svg"
+            src="img/icons/arrow.svg"
             alt="slide left"
           />
         </button>
@@ -73,7 +73,7 @@ export const Slider = () => {
         >
           <img
             className="carousel__control-arrow carousel__control-arrowright"
-            src="/src/Additional/icons/arrow.svg"
+            src="img/icons/arrow.svg"
             alt="slide right"
           />
         </button>

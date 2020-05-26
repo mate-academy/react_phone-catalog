@@ -62,7 +62,7 @@ export const NavBar: FC<Params> = ({
         className="PhonesCatalog__navigation_button"
       >
         <img
-          src="/src/Additional/icons/arrow.svg"
+          src="img/icons/arrow.svg"
           alt="move left"
           className="PhonesCatalog__navigation_button-left"
         />
@@ -91,7 +91,7 @@ export const NavBar: FC<Params> = ({
         className="PhonesCatalog__navigation_button"
       >
         <img
-          src="/src/Additional/icons/arrow.svg"
+          src="img/icons/arrow.svg"
           alt="move right"
           className="PhonesCatalog__navigation_button-right"
         />
