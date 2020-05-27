@@ -1,20 +1,42 @@
-$primary-color: #313237;
-$secondary-color: #89939a;
+@import "../../styles/vars";
 
 .nav {
+  height: 100%;
   &__list {
+    height: 100%;
     display: flex;
+    align-items: center;
   }
   &__item {
+    height: 100%;
+    line-height: 64px;
     margin-left: 64px;
   }
   &__link {
+    display: block;
+    line-height: 64px;
     height: 100%;
     font-family: MontBold, sans-serif;
     color: $secondary-color;
     text-transform: uppercase;
     letter-spacing: 0.04em;
     font-size: 12px;
-    line-height: 11px;
+    transition: all 0.5s ease;
+    &:hover {
+      color: $primary-color;
+    }
+    &--active {
+      position: relative;
+      color: $primary-color;
+      &:after {
+        position: absolute;
+        content: "";
+        bottom: 0;
+        left: 0;
+        height: 3px;
+        width: 100%;
+        background: $primary-color;
+      }
+    }
   }
 }

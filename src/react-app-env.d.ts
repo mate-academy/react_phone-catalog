@@ -6,3 +6,9 @@ type Link = {
   type?: string;
   exact?: boolean;
 };
+
+type Slide = {
+  id: number;
+  imgUrl: string;
+  alt: string;
+};

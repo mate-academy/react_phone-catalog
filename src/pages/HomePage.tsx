@@ -1,3 +1,9 @@
 import React from 'react';
+import { SimpleSlider } from '../components/Slider';
 
-export const HomePage = () => <h2>HomePage</h2>;
+
+export const HomePage: React.FC = () => {
+  return (
+    <SimpleSlider />
+  );
+};

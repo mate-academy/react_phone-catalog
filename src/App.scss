@@ -31,8 +31,8 @@ body {
 
 .container {
   position: relative;
-  box-sizing: border-box;
-  width: 100%;
+  //box-sizing: border-box;
+  //width: 100%;
   max-width: 1136px;
   padding-right: 15px;
   padding-left: 15px;
@@ -44,3 +44,5 @@ body {
   width: 100%;
   height: auto;
 }
+
+@import "./styles/media";

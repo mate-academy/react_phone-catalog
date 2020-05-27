@@ -1,3 +1,5 @@
+@import "../../styles/vars";
+
 .header {
   padding: 0 10%;
   height: 64px;
@@ -6,7 +8,9 @@
   justify-content: space-between;
   box-shadow: 0 1px 0 #e2e6e9;
   &__menu {
+    height: 100%;
     display: flex;
+    align-items: center;
   }
 
   &__links {
@@ -16,22 +20,28 @@
     .header__link {
       display: flex;
       align-items: center;
+      margin: 0 3px;
       justify-content: center;
       height: 64px;
       width: 64px;
-      // box-shadow: -1px 0 0 #e2e6e9;1px solid #B4BDC4
-
       border: 1px solid #b4bdc4;
-      // border-left: 1px solid #b4bdc4;
-      // border-right: 1px solid #b4bdc4;
-      &:last-child {
-        border-left: 0;
-      }
       transition: all 0.5s ease;
       &:hover {
         border-color: #313237;
       }
-    
+      &--active {
+        position: relative;
+        color: $primary-color;
+        &:after {
+          position: absolute;
+          content: "";
+          bottom: 0;
+          left: 0;
+          height: 3px;
+          width: 100%;
+          background: $primary-color;
+        }
+      }
     }
   }
 }
