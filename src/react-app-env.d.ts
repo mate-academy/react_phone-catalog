@@ -10,3 +10,9 @@ interface Slide {
   id: string;
   type: string;
 }
+
+interface Option {
+  id: number;
+  value: string;
+  title: string;
+}
