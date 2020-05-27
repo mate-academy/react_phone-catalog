@@ -1,0 +1,95 @@
+@import "../../utils/vairables";
+
+.ProductCard {
+  margin: 0 auto;
+  display: grid;
+  width: 272px;
+  height: 507px;
+  border: 1px solid $light-gray;
+  box-sizing: border-box;
+  padding: 24px;
+
+  &__image {
+    width: 208px;
+    height: 208px;
+    object-fit: contain;
+  }
+
+  &__product {
+    font-size: 14px;
+    line-height: 21px;
+  }
+
+  &__price-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  &__price {
+    color: $dark-gray-color;
+    margin: 8px;
+    font-size: 22px;
+    line-height: 140%;
+  }
+
+  &__price-discount {
+    font-size: 22px;
+    line-height: 28px;
+    text-decoration-line: line-through;
+    color: $gray-color;
+  }
+
+  &__style-line:after {
+    content: "";
+    display: block;
+    height: 1px;
+    width: 224px;
+    background: $light-gray;
+  }
+
+  &__text-container {
+    margin: 16px 0;
+  }
+
+  &__text-module {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 8px;
+  }
+
+  &__title {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: $gray-color;
+  }
+
+  &__item {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  &__button {
+    background: $dark-gray-color;
+    color: white;
+    border: 1px solid $dark-gray-color;
+    width: 176px;
+    height: 40px;
+    box-sizing: border-box;
+  }
+
+  &__favorits-button {
+    box-sizing: border-box;
+    width: 40px;
+    height: 40px;
+    color: white;
+  }
+
+  &__buttons-container {
+    display: flex;
+    justify-content: space-between;
+  }
+}

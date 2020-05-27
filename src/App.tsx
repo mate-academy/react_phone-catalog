@@ -1,10 +1,12 @@
 import React from 'react';
+import ProductCard from './components/ProductCard/ProductCard';
 
 import './App.scss';
 
 const App = () => (
   <div className="App">
-    <h1>React Phone Catalog</h1>
+
+    <ProductCard />
   </div>
 );
 
