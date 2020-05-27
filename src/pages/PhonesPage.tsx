@@ -6,12 +6,12 @@ import { Heading } from '../components/Heading/Heading';
 import { Dropdown } from '../components/Dropdown/Dropdown';
 import { Pagination } from '../components/Pagination/Pagination';
 import { ProductsAmount } from '../components/ProductsAmount/ProductsAmount';
-import { Breadcrumbs } from '../components/Breadcrumbs/Breadcrumbs';
 import {
   DROPDOWN_HEADINGS,
   SORT_TYPES,
   PER_PAGE,
 } from '../helpers/storage';
+import { Breadcrumbs } from '../components/Breadcrumbs/Breadcrumbs';
 
 export const PhonesPage = () => {
   const {
@@ -30,8 +30,9 @@ export const PhonesPage = () => {
         pt24: location.pathname !== '/',
       })}
       >
+        {!search.get('query') && <>
         <Breadcrumbs />
-        {!search.get('query') && <Heading title="Mobile phones" />}
+        <Heading title="Mobile phones" /> </>}
         {numberOfProducts !== 0 && (
           <ProductsAmount title="phones" />
         )}
