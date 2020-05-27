@@ -1,7 +1,8 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import './SearchField.scss';
 import { useHistory, useLocation } from 'react-router-dom';
+import { debounce } from '../../helpers/debounce'
 
 
 export const SearchField = () => {
@@ -18,6 +19,8 @@ export const SearchField = () => {
   const location = useLocation();
   const isOnPage = addresses.includes(location.pathname)
   const searchParams = new URLSearchParams(location.search);
+  const [fieldValue, setFieldValue] = useState<string>('');
+
 
   const handleButtonClick = () => {
     if (!searchParams.get("filter")) {
@@ -29,6 +32,15 @@ export const SearchField = () => {
     })
   }
 
+
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setFieldValue(event.target.value);
+    debounce((value: string) => {
+      searchParams.set("filter", value)
+      history.push({ search: searchParams.toString() });
+    }, event.target.value, 1000);
+  }
+
   return (
     isOnPage
       ? <div className="SearchField">
@@ -36,13 +48,8 @@ export const SearchField = () => {
           type="text"
           className="SearchField__input"
           placeholder={`Search in ${location.pathname.slice(1)}...`}
-          value={searchParams.get("filter") || ""}
-          onChange={(event) => {
-            searchParams.set("filter", event.target.value);
-            history.push({
-              search: searchParams.toString()
-            })
-          }}
+          value={fieldValue || ""}
+          onChange={handleInputChange}
         />
         <button
           type="submit"
