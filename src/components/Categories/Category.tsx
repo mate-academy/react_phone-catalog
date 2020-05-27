@@ -17,7 +17,7 @@ export const Category = ({ title, link }: Category) => {
           />
         </div>
         <h3 className="categories__title">{title}</h3>
-        <ProductsAmount />
+        <ProductsAmount title={title} />
       </Link>
     </div>
   );

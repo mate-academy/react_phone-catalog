@@ -50,11 +50,11 @@ export const useSearch = () => {
   searchedProducts = useMemo(() => {
     return [...searchedProducts].sort((a, b) => {
       switch (sortBy) {
-        case 'newest':
+        case 'Newest':
           return a.age - b.age;
-        case 'hot':
+        case 'Hot':
           return b.discount - a.discount;
-        case 'lowest-price':
+        case 'Cheapest':
           return a.price - b.price;
         default:
           return 0;

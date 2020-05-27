@@ -4,7 +4,7 @@ import { DropdownArrow } from './DropdownArrow';
 import { useSearch } from '../_hooks/useSearch';
 import { DROPDOWN_HEADINGS } from '../../helpers/storage';
 
-export const Dropdown = ({list, heading }: DropdownProps) => {
+export const Dropdown = ({ list, heading }: DropdownProps) => {
   const [isListOpen, setListOpen] = useState<boolean>(false);
   const [selectedOption, setSelectedOption] = useState(list[0].option);
 
@@ -25,19 +25,17 @@ export const Dropdown = ({list, heading }: DropdownProps) => {
     setSelectedOption(option);
 
     if (heading === DROPDOWN_HEADINGS.sortBy) {
-      search.set('sortBy', option.toLowerCase()
-        .split(' ')
-        .join('-'));
+      search.set('sortBy', option);
     }
 
     if (heading === DROPDOWN_HEADINGS.perPage) {
-      search.set('perPage', option)
+      search.set('perPage', option);
     }
 
     search.delete('page');
 
     history.push({ search: search.toString() });
-  }, [history, search]);
+  }, [history, search, heading]);
 
   return (
     <div className="dropdown">

@@ -143,3 +143,7 @@ type PaginationProps = {
   page: number;
   changePage: (page: number) => void;
 };
+
+type ProductsAmountProps = {
+  title: string;
+};

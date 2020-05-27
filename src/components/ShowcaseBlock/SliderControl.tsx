@@ -11,7 +11,7 @@ export const SliderControl = ({
   const isLeft = direction === DIRECTIONS.left;
   const isRight = direction === DIRECTIONS.right;
   const isStart = position === 0;
-  const isMax = position === maxPosition;
+  const isEnd = position === maxPosition;
 
   return (
     <button
@@ -23,7 +23,7 @@ export const SliderControl = ({
       })}
       onClick={() => handleSlide(direction)}
       disabled={(isLeft && isStart)
-      || (isRight && isMax)}
+      || (isRight && isEnd)}
     />
   );
 };
