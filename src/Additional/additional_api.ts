@@ -13,5 +13,5 @@ export const IMAGES_FOR_SLIDER = [
 
 const PRODUCTS_API_URL = 'https://mate-academy.github.io/react_phone-catalog/api/products.json';
 const downloadProducts = () => fetch(PRODUCTS_API_URL).then(response => response.json());
-
+//--- DFS - means Data From Server --
 export const DFS = React.createContext(downloadProducts());
