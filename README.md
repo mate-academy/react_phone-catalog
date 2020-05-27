@@ -60,7 +60,7 @@ Store the Cart in the `localStorage`
     - Hide all the pagination elements if there are a few items (less than 1 smallest page size)
     - (*) Save `?page=2&perPage=8` in the URL and apply them after the page reload
 
-## Tablets and accessories
+## TabletsCatalog and accessories
 1. Create `TabletsPage` page available at `/tablets` working the same way as `PhonesPage`
     - Create `getTablets` method fetching the products with `type`: `tablet`
 1. Create `AccessoriesPage` page available at `/accessories` working the same way as `PhonesPage`

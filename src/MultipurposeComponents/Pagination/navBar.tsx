@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import cn from 'classnames';
-import { Phones } from '../Additional/interfaces';
+import { Phones } from '../../Additional/interfaces';
 
 type Params = {
   sortedPhones: Phones[];

@@ -1,45 +1,38 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { DFS } from '../Additional/additional_api';
-import './phonesCatalog.scss';
-import { NavBar } from '../MultipurposeComponents/Pagination/navBar';
 import { BreadCrumb } from '../MultipurposeComponents/BreadCrumb/breadCrumb';
+import { DFS } from '../Additional/additional_api';
 import { CatalogMaker } from '../MultipurposeComponents/CatalogMaker/catalogMaker';
 import { ItemsSorting } from '../MultipurposeComponents/ItemsSorting/itemsSorting';
+import { NavBar } from '../MultipurposeComponents/Pagination/navBar';
 
-export const PhonesCatalog = () => {
-  const [phones, setPhones] = useState([]);
+export const TabletsCatalog = () => {
+  const [tablets, setTablets] = useState([]);
   const [sort, setSort] = useState('age');
+  const [activeTab, setActiveTab] = useState(1);
   const [viewQty, setViewQty] = useState(4);
   const [position, setPosition] = useState(0);
-  const [activeTab, setActiveTab] = useState(1);
+
   const dataFromServer = useContext(DFS);
-
-
-  useEffect(() => {
-    dataFromServer.then(data => data
-      .filter((el: { type: string }) => el.type === 'phone'))
-      .then(data => setPhones(data));
-  }, [dataFromServer]);
 
   const getSortedItems = (query: string) => {
     if (query === 'age') {
-      return phones.sort((a: { age: number },
+      return tablets.sort((a: { age: number },
         b: { age: number }) => a.age - b.age);
     }
 
     if (query === 'name') {
-      return phones
+      return tablets
         .sort((a: { name: string },
           b: { name: string }) => a.name.localeCompare(b.name));
     }
 
     if (query === 'price_asc') {
-      return phones.sort((a: { price: number },
+      return tablets.sort((a: { price: number },
         b: { price: number }) => a.price - b.price);
     }
 
     if (query === 'price_desc') {
-      return phones.sort((a: { price: number },
+      return tablets.sort((a: { price: number },
         b: { price: number }) => b.price - a.price);
     }
 
@@ -47,15 +40,22 @@ export const PhonesCatalog = () => {
   };
 
 
-  const sortedPhones = getSortedItems(sort);
+  const sortedTablets = getSortedItems(sort);
+
+
+  useEffect(() => {
+    dataFromServer.then(data => data
+      .filter((el: { type: string }) => el.type === 'tablet'))
+      .then(data => setTablets(data));
+  }, [dataFromServer]);
 
 
   return (
-    <div className="PhonesCatalog">
-      <BreadCrumb page="Phones" />
+    <>
+      <BreadCrumb page="TabletsCatalog" />
       <h1 className="PhonesCatalog__header">Mobile phones</h1>
       <p className="PhonesCatalog__qty">
-        {phones.length}
+        {tablets.length}
         {' '}
         models
       </p>
@@ -73,13 +73,13 @@ export const PhonesCatalog = () => {
           className="PhonesCatalog__items"
           style={{ bottom: position }}
         >
-          {sortedPhones && <CatalogMaker gadgets={sortedPhones} />}
+          {sortedTablets && <CatalogMaker gadgets={sortedTablets} />}
         </div>
       </div>
-      {sortedPhones && sortedPhones.length > viewQty ? (
+      {sortedTablets && sortedTablets.length > viewQty ? (
         <div className="PhonesCatalog__navigation">
           <NavBar
-            sortedPhones={sortedPhones}
+            sortedPhones={sortedTablets}
             activeTab={activeTab}
             viewQty={viewQty}
             position={position}
@@ -88,6 +88,6 @@ export const PhonesCatalog = () => {
           />
         </div>
       ) : ''}
-    </div>
+    </>
   );
 };

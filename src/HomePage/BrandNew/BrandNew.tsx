@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 // import './hotPrices.scss';
 import { DFS } from '../../Additional/additional_api';
-import { ProductSlider } from '../ProductSlider/ProductSlider';
+import { ProductSlider } from '../../MultipurposeComponents/ProductSlider/ProductSlider';
 
 export const BrandNew = () => {
   const [brandNew, setBrandNew] = useState([]);

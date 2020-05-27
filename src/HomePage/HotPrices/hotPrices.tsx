@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import './hotPrices.scss';
 
-import { ProductSlider } from '../ProductSlider/ProductSlider';
+import { ProductSlider } from '../../MultipurposeComponents/ProductSlider/ProductSlider';
 import { DFS } from '../../Additional/additional_api';
 
 export const HotPrices = () => {

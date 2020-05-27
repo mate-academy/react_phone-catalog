@@ -9,7 +9,7 @@ import { Favourites } from './Favourites/favourites';
 import { Cart } from './Cart/cart';
 import { Footer } from './Footer/footer';
 import { Accessories } from './Accessories/accessories';
-import { Tablets } from './Tablets/tablets';
+import { TabletsCatalog } from './TabletsCatalog/tabletsCatalog';
 
 
 const App = () => {
@@ -19,7 +19,7 @@ const App = () => {
       <Switch>
         <Route path="/" exact component={HomePage} />
         <Route path="/phones" component={PhonesCatalog} />
-        <Route path="/tablets" component={Tablets} />
+        <Route path="/tablets" component={TabletsCatalog} />
         <Route path="/accessories" component={Accessories} />
         <Route path="/favourites" component={Favourites} />
         <Route path="/cart" component={Cart} />
