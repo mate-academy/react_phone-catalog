@@ -6,11 +6,18 @@ import { getProducts } from '../../helpers/api';
 export const useShowcaseBlock = (title: string) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [position, setPosition] = useState(0);
+  const [width, setWidth] = useState(0);
+
+  const productCard = useCallback(node => {
+    if (node !== null) {
+      setWidth(node.getBoundingClientRect().width);
+    }
+  }, []);
 
   const step = 2;
   const frameSize = 4;
   const marginWidth = 16;
-  const itemWidth = 272 + marginWidth;
+  const itemWidth = width + marginWidth;
   const animationDuration = 700;
 
   useEffect(() => {
@@ -61,10 +68,11 @@ export const useShowcaseBlock = (title: string) => {
     currentProducts,
     position,
     step,
-    frameSize,
     itemWidth,
     animationDuration,
     handleSlide,
     maxPosition,
+    productCard,
+    frameSize,
   };
 };

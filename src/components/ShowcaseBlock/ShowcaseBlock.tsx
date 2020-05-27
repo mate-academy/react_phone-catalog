@@ -9,11 +9,12 @@ export const ShowcaseBlock = ({ title }: HeadingProps) => {
     currentProducts,
     position,
     step,
-    frameSize,
     itemWidth,
     animationDuration,
     handleSlide,
     maxPosition,
+    productCard,
+    frameSize,
   } = useShowcaseBlock(title);
 
   return (
@@ -39,9 +40,10 @@ export const ShowcaseBlock = ({ title }: HeadingProps) => {
         products={currentProducts}
         position={position}
         step={step}
-        frameSize={frameSize}
         itemWidth={itemWidth}
+        frameSize={frameSize}
         animationDuration={animationDuration}
+        productCard={productCard}
       />
     </>
   );

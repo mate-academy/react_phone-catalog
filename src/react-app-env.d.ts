@@ -14,6 +14,21 @@ interface Product {
   ram: string;
 }
 
+interface ProductProps {
+  age: number;
+  type: string;
+  id: string;
+  imageUrl: string;
+  name: string;
+  snippet: string;
+  price: number;
+  discount: number;
+  screen: string;
+  capacity: string;
+  ram: string;
+  productCard?: (node: any) => void;
+}
+
 interface ProductDetails {
   additionalFeatures: string;
   android: {
@@ -91,9 +106,10 @@ type SliderProps = {
   products: Product[];
   position: number;
   step: number;
-  frameSize: number;
   itemWidth: number;
+  frameSize: number;
   animationDuration: number;
+  productCard: (node: any) => void;
 };
 
 type SliderArrowProps = {
@@ -151,4 +167,4 @@ type ProductsAmountProps = {
 type BreadcrumbProps = {
   to: string;
   label: string;
-}
+};

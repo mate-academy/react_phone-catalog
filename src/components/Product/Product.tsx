@@ -1,15 +1,18 @@
 import React from 'react';
 
 export const Product = ({
-  name, imageUrl, price, screen, capacity, ram, discount, id,
-}: Product) => {
+  name, imageUrl, price, screen, capacity, ram, discount, id, productCard,
+}: ProductProps) => {
   const preparedScreen = screen.replace(' inches', '"');
   const preparedFullPrice = price * (discount / 100) + price;
   const preparedCapacity = `${parseInt((capacity || '32000'), 10)} MB`;
   const preparedRam = `${parseInt((ram || '1000'), 10)} MB`;
 
   return (
-    <article className="product">
+    <article
+      className="product"
+      ref={productCard}
+    >
       <img className="product__image" src={imageUrl} alt={name} />
       <p className="product__title">{name}</p>
       <div className="product__price-container">

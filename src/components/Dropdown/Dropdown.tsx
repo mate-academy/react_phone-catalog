@@ -1,4 +1,4 @@
-import React  from 'react';
+import React from 'react';
 import cn from 'classnames';
 import { DropdownArrow } from './DropdownArrow';
 import { useDropdown } from '../_hooks/useDropdown';
@@ -9,7 +9,7 @@ export const Dropdown = ({ list, heading }: DropdownProps) => {
     selectedOption,
     isListOpen,
     handleSort,
-  } = useDropdown(list,heading);
+  } = useDropdown(list, heading);
 
   return (
     <div className="dropdown">
