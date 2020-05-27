@@ -1,11 +1,11 @@
 import React from 'react';
+import cn from 'classnames';
 
 export const DropdownArrow = ({ isListOpen }: DropdownArrowProps) => {
   return (
-    <>
-      {isListOpen
-        ? <span className="dropdown__arrow-up" />
-        : <span className="dropdown__arrow-down" />}
-    </>
+    <span className={cn({
+      'dropdown__arrow': true,
+     ' dropdown__arrow--up': isListOpen
+    })} />
   );
 };

@@ -49,23 +49,24 @@ export const Dropdown = ({ list, heading }: DropdownProps) => {
           {selectedOption}
           <DropdownArrow isListOpen={isListOpen} />
         </button>
-        {isListOpen && (
-          <ul className="dropdown__list">
-            {list.map(({ option }) => (
-              <li key={option}>
-                <a
-                  className={cn({
-                    'dropdown__list-item': true,
-                    'dropdown__list-item--active': selectedOption === option,
-                  })}
-                  onClick={() => handleSort(option)}
-                >
-                  {option}
-                </a>
-              </li>
-            ))}
-          </ul>
-        )}
+        <ul className={cn({
+          "dropdown__list": true,
+          "dropdown__list--is-open": isListOpen
+        })}>
+          {list.map(({ option }) => (
+            <li key={option}>
+              <a
+                className={cn({
+                  'dropdown__list-item': true,
+                  'dropdown__list-item--active': selectedOption === option,
+                })}
+                onClick={() => handleSort(option)}
+              >
+                {option}
+              </a>
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   );

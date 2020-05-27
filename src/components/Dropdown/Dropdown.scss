@@ -43,6 +43,7 @@
   }
 
   &__list {
+    opacity: 0;
     width: 100%;
     margin-top: 4px;
     position: absolute;
@@ -51,6 +52,15 @@
     background-color: white;
     box-sizing: border-box;
     z-index: 10;
+    transform: translateY(-10px);
+    transition: opacity 0.2s, visibility 0.2s, transform 0.2s;
+    overflow: hidden;
+
+    &--is-open {
+      visibility: visible;
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   &__list-item {
@@ -75,22 +85,16 @@
     }
   }
 
-  &__arrow-up {
+  &__arrow {
     width: 16px;
     height: 16px;
-    background-image: url("../../images/icons/dropdown-arrow-up.svg");
+    background-image: url("../../images/icons/dropdown-arrow-down.svg");
     background-repeat: no-repeat;
     background-position: center;
-  }
+    transition: transform 0.2s;
 
-  &__arrow-down {
-    @extend .dropdown__arrow-up;
-    background-image: url("../../images/icons/dropdown-arrow-down.svg");
+    &--up {
+      transform: rotate(180deg);
+    }
   }
 }
-
-
-
-
-
-
