@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import cn from 'classnames';
-import {
-  downloadProducts,
-} from '../Additional/additional_api';
+import { DFS } from '../Additional/additional_api';
 import './phonesCatalog.scss';
 import { Phones } from '../Additional/interfaces';
 import { NavBar } from './navBar';
@@ -14,13 +12,10 @@ export const PhonesCatalog = () => {
   const [viewQty, setViewQty] = useState(4);
   const [position, setPosition] = useState(0);
   const [activeTab, setActiveTab] = useState(1);
+  const dataFromServer = useContext(DFS);
 
   useEffect(() => {
-    async function fetchData() {
-      return downloadProducts();
-    }
-
-    fetchData().then(data => data
+    dataFromServer.then(data => data
       .filter((el: { type: string }) => el.type === 'phone'))
       .then(data => setPhones(data));
   }, []);

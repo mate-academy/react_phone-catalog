@@ -10,19 +10,22 @@ import { Cart } from './Cart/cart';
 import { Maintenance } from './Additional/underMaintenance';
 import { Footer } from './Footer/footer';
 
-const App = () => (
-  <div className="App">
-    <Navigation />
-    <Switch>
-      <Route path="/" exact component={HomePage} />
-      <Route path="/phones" component={PhonesCatalog} />
-      <Route path="/tablets" component={Maintenance} />
-      <Route path="/accessories" component={Maintenance} />
-      <Route path="/favourites" component={Favourites} />
-      <Route path="/cart" component={Cart} />
-    </Switch>
-    <Footer />
-  </div>
-);
+
+const App = () => {
+  return (
+    <div className="App">
+      <Navigation />
+      <Switch>
+        <Route path="/" exact component={HomePage} />
+        <Route path="/phones" component={PhonesCatalog} />
+        <Route path="/tablets" component={Maintenance} />
+        <Route path="/accessories" component={Maintenance} />
+        <Route path="/favourites" component={Favourites} />
+        <Route path="/cart" component={Cart} />
+      </Switch>
+      <Footer />
+    </div>
+  );
+};
 
 export default App;
