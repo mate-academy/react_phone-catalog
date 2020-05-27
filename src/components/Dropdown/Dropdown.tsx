@@ -50,17 +50,22 @@ export const Dropdown = ({ list, heading }: DropdownProps) => {
           <DropdownArrow isListOpen={isListOpen} />
         </button>
         <ul className={cn({
-          "dropdown__list": true,
-          "dropdown__list--is-open": isListOpen
-        })}>
+          dropdown__list: true,
+          'dropdown__list--is-open': isListOpen,
+        })}
+        >
           {list.map(({ option }) => (
             <li key={option}>
               <a
+                href="#!"
                 className={cn({
                   'dropdown__list-item': true,
                   'dropdown__list-item--active': selectedOption === option,
                 })}
-                onClick={() => handleSort(option)}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleSort(option);
+                }}
               >
                 {option}
               </a>

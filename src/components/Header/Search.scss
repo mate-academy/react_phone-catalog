@@ -25,12 +25,15 @@
     }
   }
 
-  &__icon {
+  &__button {
     position: absolute;
     width: 15px;
     height: 15px;
     right: 27px;
     top: 50%;
+    border: 0;
+    outline: 0;
+    background-color: #fff;
     transform: translateY(-50%);
     background-image: url("../../images/icons/search.svg");
     background-repeat: no-repeat;
