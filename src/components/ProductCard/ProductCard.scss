@@ -1,0 +1,155 @@
+@import "../../styles/vars";
+
+.card {
+  box-sizing: border-box;
+  padding: 32px 24px 0;
+  margin: auto;
+  width: 272px;
+  height: 507px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid $gray-color;
+  transition: box-shadow 0.5s;
+  &:hover {
+    box-shadow: 0 3px 13px rgba(23,32,49,0.26);
+  }
+
+  &__image {
+    margin: 0 auto 24px;
+    display: block;
+    width: 208px;
+    height: 208px;
+    object-fit: contain;
+    transition: all 0.5s ease;
+
+    &:hover,
+    &:focus {
+      transform: scale(1.2);
+    }
+  }
+  &__heading {
+    height: 42px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    margin-bottom: 7px;
+    color: $primary-color;
+    text-decoration: none;
+    transition: 0.3s;
+  }
+
+  &__price {
+    display: inline-block;
+    font-style: normal;
+    font-size: 22px;
+    line-height: 140%;
+    margin-bottom: 7px;
+    margin-right: 8px;
+  }
+
+  &__details {
+    padding-top: 16px;
+    border-top: 1px solid $gray-color;
+  }
+
+  &__detail {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+
+  &__actions {
+    display: flex;
+    height: 40px;
+  }
+
+}
+
+.card__heading:hover {
+  color: $accent-color;
+}
+
+.price-discount {
+  font-weight: bold;
+  color: $primary-color;
+}
+
+.price-regular {
+  font-weight: 500;
+  color: $secondary-color;
+  text-decoration-line: line-through;
+}
+
+.card__detail:last-of-type {
+  margin-bottom: 16px;
+}
+
+.card__detail-name {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  color: $secondary-color;
+}
+
+.card__detail-value {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  color: $primary-color;
+}
+
+.card__actions .card__button-cart {
+  box-sizing: border-box;
+  padding: 0;
+  margin-right: 6px;
+  width: 176px;
+  height: 40px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: #fff;
+  border: 1px solid $primary-color;
+  background: $primary-color;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+
+.card__actions .card__button-cart:hover {
+  color: $primary-color;
+  background-color: #fff;
+  border: 1px solid $primary-color;
+}
+
+.card__actions .button-cart--added {
+  font-weight: bold;
+  color: $accent-color;
+  background-color: #fff;
+  border: 1px solid $gray-color;
+}
+
+.card__button-favourite {
+  box-sizing: border-box;
+  padding: 0;
+  border: 1px solid #b4bdc4;
+  background-color: #fff;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.5s ease;
+  img {
+    margin: auto;
+  }
+}
+
+.card__actions .card__button-favourite {
+  width: 40px;
+  height: 40px;
+  line-height: 43px;
+}
+
+.card__button-favourite:hover {
+  border: 1px solid $primary-color;
+}

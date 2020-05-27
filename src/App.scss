@@ -40,6 +40,15 @@ body {
   height: 100%;
 }
 
+.title {
+  color: $primary-color;
+  font-family: MontSemiBold, sans-serif;
+  font-size: 32px;
+  line-height: 41px;
+  margin-bottom: 25px;
+
+}
+
 .img-responsive {
   width: 100%;
   height: auto;

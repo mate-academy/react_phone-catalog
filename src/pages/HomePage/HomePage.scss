@@ -1,0 +1,33 @@
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
+@import "../../styles/vars";
+
+.hot-prices {
+  position: relative;
+  margin-bottom: 50px;
+
+  .slick-arrow {
+    top: -32px;
+    width: 32px;
+    height: 32px;
+    border: 1px solid $secondary-color;
+    transition: 0.3s;
+  }
+  .slick-arrow::before {
+    color: $secondary-color;
+  }
+
+  .slick-arrow:hover {
+    border: 1px solid $primary-color;
+  }
+
+  .slick-prev {
+    right: 40px;
+    left: auto;
+  }
+
+  .slick-next {
+    right: 0;
+  }
+
+}

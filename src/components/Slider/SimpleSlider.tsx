@@ -3,10 +3,11 @@ import Slider from 'react-slick';
 
 import './SimpleSlider.scss';
 
-import {slides} from '../../helpers/config';
+import { slides } from '../../helpers/config';
 
 export const SimpleSlider: React.FC = () => {
   const settings = {
+    className: 'main-slider',
     dots: true,
     infinite: true,
     fade: true,
@@ -31,7 +32,7 @@ export const SimpleSlider: React.FC = () => {
   return (
     <div className="slider__wrapper">
       <Slider {...settings}>
-        {slides.map(({id, imgUrl, alt}) => {
+        {slides.map(({ id, imgUrl, alt }) => {
           return (
             <div key={id} className="slider__image">
               <img

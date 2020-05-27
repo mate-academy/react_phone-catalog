@@ -5,37 +5,39 @@
 .slider__wrapper {
   width: 100%;
   margin-top: 40px;
+  margin-bottom: 80px;
 }
 
-.slider__image {
-  max-width: 1040px;
-  max-height: 400px;
-  margin-left: 48px;
-}
+.main-slider {
+  .slider__image {
+    max-width: 1040px;
+    max-height: 400px;
+    margin-left: 48px;
+  }
 
-.slick-arrow {
-  width: 32px;
-  height: 100%;
-  margin-top: -2px;
-  border: 1px solid $secondary-color !important;
-  transition: 0.3s;
-}
+  .slick-arrow {
+    width: 32px;
+    height: 100%;
+    margin-top: -2px;
+    border: 1px solid $secondary-color !important;
+    transition: 0.3s;
+  }
+  .slick-arrow::before {
+    color: $secondary-color;
+  }
 
-.slick-arrow::before {
-  color: $secondary-color;
-}
+  .slick-arrow:hover {
+    border: 1px solid $primary-color;
+  }
 
-.slick-arrow:hover {
-  border: 1px solid $primary-color;
-}
+  .slick-prev {
+    left: 0;
+    z-index: 2;
+  }
 
-.slick-prev {
-  left: 0;
-  z-index: 2;
-}
-
-.slick-next {
-  right: 0;
+  .slick-next {
+    right: 0;
+  }
 }
 
 @media (max-width: 1170px) {
