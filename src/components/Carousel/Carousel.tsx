@@ -13,9 +13,15 @@ const carouselImages: CarouselSlide[] = [
 export const Carousel = () => {
   const [toMove, setToMove] = useState<number>(0);
   const [activeSlide, setActiveSlide] = useState<number>(0);
-  const slideWidth = 1040;
+  const [slideWidth, setSlideWidth] = useState<number>(0);
   const slidesLeft = carouselImages.length - 1;
   const transitionDuration = 0.7;
+
+  const measuredRef = useCallback(node => {
+    if (node !== null) {
+      setSlideWidth(node.getBoundingClientRect().width);
+    }
+  }, []);
 
   const changeSlide = useCallback((direction: string) => {
     if (direction === DIRECTIONS.left) {
@@ -39,6 +45,15 @@ export const Carousel = () => {
     }
   }, [toMove, slideWidth, activeSlide, slidesLeft]);
 
+  useEffect(() => {
+    const interval = setInterval(
+      () => changeSlide(DIRECTIONS.right),
+      4000,
+    );
+
+    return () => clearInterval(interval);
+  }, [changeSlide]);
+
   const handleRectangleClick = useCallback((index: number) => {
     if (index < activeSlide) {
       setToMove(toMove - slideWidth * (activeSlide - index));
@@ -49,18 +64,9 @@ export const Carousel = () => {
     setActiveSlide(index);
   }, [activeSlide, toMove, slideWidth]);
 
-  useEffect(() => {
-    const interval = setInterval(
-      () => changeSlide(DIRECTIONS.right),
-      4000,
-    );
-
-    return () => clearInterval(interval);
-  });
-
   return (
     <div className="carousel section__carousel">
-      <div className="carousel__container">
+      <div className="carousel__container" ref={measuredRef}>
         <CarouselControl
           changeSlide={changeSlide}
           direction="left"

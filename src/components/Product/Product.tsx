@@ -14,13 +14,11 @@ export const Product = ({
       <p className="product__title">{name}</p>
       <div className="product__price-container">
         <span className="product__price">
-          $
-          {price}
+          {`$${price}`}
         </span>
         {discount > 0 && (
           <span className="product__discount">
-            $
-            {preparedFullPrice}
+            {`$${preparedFullPrice}`}
           </span>
         )}
       </div>
