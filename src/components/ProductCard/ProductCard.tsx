@@ -8,6 +8,7 @@ import {MyContext} from '../../App'
 
 
 
+
 export const ProductCard = ({
   product,
 }: {product:Product}) => {
@@ -76,15 +77,19 @@ export const ProductCard = ({
 
   return (
     <div className="ProductCard">
-      <img
-        className="ProductCard__img"
-        src={imageUrl}
-        alt={name} />
+
+      <span
+      className="ProductCard__img"
+      style={{backgroundImage: `url(${imageUrl})`}}
+      ></span>
+      <span className="ProductCard__title">
       <Link
+        className="ProductCard__title"
         to={base + product.id}
-        className="ProductCard__title">
+        >
         {name}
       </Link>
+      </span>
 
       {discount > 0
         ?

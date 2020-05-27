@@ -1,6 +1,7 @@
 @import "../../mixins.scss";
 
 .ProductCard {
+
   margin: 8px;
   width: 272px;
   height: 507px;
@@ -13,9 +14,18 @@
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
 
   &__img {
+    display: block;
+    transition: 0.5s;
     width: 208px;
     height: 208px;
     margin: 8px 8px 24px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    &:hover {
+      transform: scale(1.2);
+
+    }
   }
 
   &__title {
@@ -69,6 +79,7 @@
   }
 
   &__add-to-cart {
+    transition: 0.5s;
     cursor: pointer;
     padding: 0;
     @include buttons;
@@ -90,6 +101,7 @@
   }
 
   &__add-to-fav {
+    transition: 0.5s;
     cursor: pointer;
     outline: none;
     padding: 0;
