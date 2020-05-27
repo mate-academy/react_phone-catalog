@@ -8,7 +8,10 @@ let links = [
 ]
 
 export const ProductCategories = () => (
+  <>
+
   <section className="homepage__products-category products-category">
+  <h1 className="homepage__section-title">Shop by category</h1>
     <nav className="products-category__nav">
       <ul className="products-category__list">
         {links.map(({title, path, count, cn}) => (
@@ -26,4 +29,5 @@ export const ProductCategories = () => (
       </ul>
     </nav>
   </section>
+  </>
 )

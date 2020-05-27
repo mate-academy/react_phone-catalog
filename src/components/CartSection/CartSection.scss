@@ -24,6 +24,23 @@
     box-shadow: none;
   }
 
+  &__item-count {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: #eb5757;
+    bottom: 55%;
+    left: 55%;
+    color: #fff;
+    line-height: 14px;
+    font-weight: 600;
+    font-size: 9px;
+  }
+
   &__link {
     display: block;
     width: 100%;

@@ -77,8 +77,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({ good }) => {
         </span>
       </div>
       <div className="productCard__btn-container btn">
-        <Button classCSS={"btn__add-to-cart"} title={"Add to cart"}  good={good} />
-        <Button classCSS={"btn__add-to-fav"} title={''}  good={good}/>
+        <Button classCSS={"btn__add-to-cart"} title={'Add to cart'}  good={good} />
+        <Button classCSS={"btn__add-to-fav"} title={''}   good={good}/>
       </div>
     </section>
   )

@@ -3,9 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import { Catalog } from './../../pages/Catalog';
 import { Home } from './../../pages/HomePage';
 import { Cart } from './../../pages/Cart';
-import { CartContextWrapper } from './../CartContext';
 import { Favourites } from './../../pages/Favourites';
-import { FavouritesContextWrapper } from './../FavouritesContext';
 
 type BodyProps = {
   goods: Good[];
@@ -15,26 +13,22 @@ export const Body: React.FC<BodyProps> = ({ goods }) => {
 
   return (
     <main className="main">
-        <div className="main-container">
-        <CartContextWrapper>
-          <FavouritesContextWrapper>
-            <Switch>
-              <Route path="/" exact render={() => <Home goods={goods} />} />
+      <div className="main-container">
+        <Switch>
+          <Route path="/" exact render={() => <Home goods={goods} />} />
 
-              <Route path="/favourites" exact>
-                <Favourites />
-              </Route>
+          <Route path="/favourites" exact>
+            <Favourites />
+          </Route>
 
-              <Route path="/cart" exact>
-                <Cart />
-              </Route>
+          <Route path="/cart" exact>
+            <Cart />
+          </Route>
 
-              <Route path="/:section" exact>
-                <Catalog goods={goods} />
-              </Route>
-            </Switch>
-          </FavouritesContextWrapper>
-        </CartContextWrapper>
+          <Route path="/:section" exact>
+            <Catalog goods={goods} />
+          </Route>
+        </Switch>
       </div>
     </main>
   )

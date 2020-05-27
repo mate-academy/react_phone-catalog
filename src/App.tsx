@@ -3,6 +3,8 @@ import { Header } from './components/Header';
 import { getGoods } from './helpers/api';
 import { Body } from './components/Body';
 import { Footer } from './components/Footer';
+import { CartContextWrapper } from './components/CartContext';
+import { FavouritesContextWrapper } from './components/FavouritesContext';
 import './styles/main.scss';
 
 const App = () => {
@@ -20,10 +22,13 @@ const App = () => {
   console.log(goods)
     return (
     <div className="App">
-      <Header />
-      <Body goods={goods}/>
-      <Footer />
-    <div></div>
+       <CartContextWrapper>
+          <FavouritesContextWrapper>
+            <Header />
+            <Body goods={goods}/>
+            <Footer />
+          </FavouritesContextWrapper>
+        </CartContextWrapper>
     </div>
   );
 }

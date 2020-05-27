@@ -1,7 +1,7 @@
 import React from 'react';
 import { ProductCategories } from '../../components/ProductCategories';
-import { ProductCard } from '../../components/ProductCard/ProductCard';
 import { Slider } from './../../components/Slider';
+import { CardSlider } from '../../components/CardSlider/CardSlider';
 /*import { RouteContainer } from './../../components/Body/RouteContainer';
 import { Catalog } from '../Catalog';*/
 
@@ -10,33 +10,20 @@ type HomePageProps={
 }
 
 export const Home: React.FC<HomePageProps> = ({ goods }) => {
-  const hotPriceModels = goods.sort((a, b) => b.discount - a.discount).slice(0, 4);
-  const newestModels = goods.sort((a, b) => b.age - a.age).slice(0, 4);
+  const hotPriceModels = goods.sort((a, b) => b.discount - a.discount);
+  const newestModels = goods.sort((a, b) => b.age - a.age);
 
-
- console.log(goods);
   return (
   <div className="homepage">
 
     <Slider />
 
-    <h1 className="homepage__section-title">Hot prices</h1>
-    <section className="homepage__view-products view-products">
-      {hotPriceModels.map(model => (
-        <ProductCard good={model} />
-      ))}
-    </section>
+    <CardSlider goods={hotPriceModels}/>
 
-    <h1 className="homepage__section-title">Shop by category</h1>
-      <ProductCategories />
+    <ProductCategories />
 
-    <h1 className="homepage__section-title">Brand new models</h1>
-    <section className="homepage__view-products">
-      {newestModels.map(model => (
-        <ProductCard good={model} />
-      ))}
-    </section>
-  </div>
+    <CardSlider goods={newestModels}/>
+   </div>
   )
 }
 

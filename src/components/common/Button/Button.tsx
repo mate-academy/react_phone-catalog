@@ -1,6 +1,7 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { CartContext } from './../../CartContext';
 import { FavouritesContext } from './../../FavouritesContext';
+import cn from 'classnames';
 
 type ButtonProps = {
   classCSS: string;
@@ -9,12 +10,20 @@ type ButtonProps = {
 }
 
 export const Button: React.FC<ButtonProps> = ({ classCSS, title, good }) => {
-  const { addSelectedGood } = useContext(CartContext);
-  const { addFavouriteGood } = useContext(FavouritesContext);
+  const { addSelectedGood, isSelected } = useContext(CartContext);
+  const { addFavouriteGood, isFavourite } = useContext(FavouritesContext);
+  const [visibleTitle, setVisibleTitle] = useState<string>(title)
+
+  var btnClass = cn('btn', classCSS, {
+    'cart-active': isSelected(good),
+    'fav-active': isFavourite(good),
+  });
+
 
   const handleClick = (good: Good) => {
     if(classCSS === 'btn__add-to-cart') {
       addSelectedGood(good);
+      setVisibleTitle('Added to cart')
     }
     if(classCSS === 'btn__add-to-fav') {
       addFavouriteGood(good);
@@ -25,10 +34,10 @@ export const Button: React.FC<ButtonProps> = ({ classCSS, title, good }) => {
     <button
       type="button"
       id={good.id}
-      className={classCSS}
+      className={btnClass}
       onClick={() => handleClick(good)}
     >
-      {title}
+     {visibleTitle}
     </button>
   )
 }

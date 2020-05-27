@@ -3,15 +3,11 @@ import { ProductCard } from '../../components/ProductCard/ProductCard';
 import { SortBlock }  from '../../components/SortBlock/SortBlock';
 import { useLocation, useParams } from 'react-router-dom';
 
-/*import { RouteComponentProps } from 'react-router-dom';
-extends RouteComponentProps<{path: string}>*/
-
 type CatalogProps={
   goods: Good[];
 }
 
 const setVisibleGoods = (goods: Good[], section: string) => {
-  console.log('render');
   return goods.filter(good => section.includes(good.type));
 }
 

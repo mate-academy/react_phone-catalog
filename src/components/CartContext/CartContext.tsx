@@ -4,7 +4,7 @@ type CartContextType = {
   selectedGoods: Good[];
   addSelectedGood: (good: Good) => void;
   removeSelectedGood: (good: Good) => void;
-  isSelected: (id: string) => boolean;
+  isSelected: (good: Good) => boolean;
 }
 
 export const CartContext = React.createContext<CartContextType> ({
@@ -25,17 +25,18 @@ export const CartContextWrapper: React.FC = ({ children }) => {
     setCart(selectedGoods.filter(selectedGood => selectedGood.id !== good.id));
   };
 
-  const isSelected = (id: string) => {
-    return selectedGoods.some(selectedGood => selectedGood.id === id);
+  const isSelected = (good: Good) => {
+    return selectedGoods.some(selectedGood => selectedGood.id === good.id);
   };
 
   return (
-    <CartContext.Provider value={{
-      selectedGoods,
-      addSelectedGood,
-      removeSelectedGood,
-      isSelected
-    }}>
+    <CartContext.Provider
+      value={{
+        selectedGoods,
+        addSelectedGood,
+        removeSelectedGood,
+        isSelected
+      }}>
       {children}
     </CartContext.Provider>
   )
