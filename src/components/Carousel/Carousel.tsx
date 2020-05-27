@@ -47,7 +47,7 @@ export const Carousel = () => {
     }
 
     setActiveSlide(index);
-  }, [activeSlide, toMove]);
+  }, [activeSlide, toMove, slideWidth]);
 
   useEffect(() => {
     const interval = setInterval(
