@@ -4,7 +4,7 @@ import './App.scss';
 
 const App = () => (
   <div className="App">
-    <h1>React Phone Catalog</h1>
+    <h1>React Phone Catalog1111</h1>
   </div>
 );
 
