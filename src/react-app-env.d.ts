@@ -26,7 +26,7 @@ interface ProductProps {
   screen: string;
   capacity: string;
   ram: string;
-  productCard?: (node: any) => void;
+  productCardRef?: (node: any) => void;
 }
 
 interface ProductDetails {
@@ -109,7 +109,7 @@ type SliderProps = {
   itemWidth: number;
   frameSize: number;
   animationDuration: number;
-  productCard: (node: any) => void;
+  productCardRef: (node: any) => void;
 };
 
 type SliderArrowProps = {

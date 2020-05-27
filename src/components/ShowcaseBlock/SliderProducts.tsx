@@ -5,7 +5,7 @@ export const SliderProducts = ({
   products,
   position,
   animationDuration,
-  productCard,
+  productCardRef,
   frameSize,
   itemWidth,
 }: SliderProps) => (
@@ -24,7 +24,7 @@ export const SliderProducts = ({
         <Product
           key={product.id}
           {...product}
-          productCard={productCard}
+          productCardRef={productCardRef}
         />
       ))}
     </div>

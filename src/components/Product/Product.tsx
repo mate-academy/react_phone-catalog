@@ -1,7 +1,7 @@
 import React from 'react';
 
 export const Product = ({
-  name, imageUrl, price, screen, capacity, ram, discount, id, productCard,
+  name, imageUrl, price, screen, capacity, ram, discount, id, productCardRef,
 }: ProductProps) => {
   const preparedScreen = screen.replace(' inches', '"');
   const preparedFullPrice = price * (discount / 100) + price;
@@ -11,19 +11,17 @@ export const Product = ({
   return (
     <article
       className="product"
-      ref={productCard}
+      ref={productCardRef}
     >
       <img className="product__image" src={imageUrl} alt={name} />
       <p className="product__title">{name}</p>
       <div className="product__price-container">
         <span className="product__price">
-          $
-          {price}
+          {`$${price}`}
         </span>
         {discount > 0 && (
           <span className="product__discount">
-            $
-            {preparedFullPrice}
+            {`$${preparedFullPrice}`}
           </span>
         )}
       </div>

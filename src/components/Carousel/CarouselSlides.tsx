@@ -14,7 +14,7 @@ export const CarouselSlides = ({
       }}
     >
       {slides.map(({ id, name, src }) => (
-        <li key={id} className="carousel__item">
+        <li key={id} className="carousel__item" >
           <img
             className="carousel__image"
             src={src}

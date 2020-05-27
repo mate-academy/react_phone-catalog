@@ -13,7 +13,7 @@ export const ShowcaseBlock = ({ title }: HeadingProps) => {
     animationDuration,
     handleSlide,
     maxPosition,
-    productCard,
+    productCardRef,
     frameSize,
   } = useShowcaseBlock(title);
 
@@ -43,7 +43,7 @@ export const ShowcaseBlock = ({ title }: HeadingProps) => {
         itemWidth={itemWidth}
         frameSize={frameSize}
         animationDuration={animationDuration}
-        productCard={productCard}
+        productCardRef={productCardRef}
       />
     </>
   );

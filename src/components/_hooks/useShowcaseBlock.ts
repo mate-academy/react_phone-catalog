@@ -8,7 +8,7 @@ export const useShowcaseBlock = (title: string) => {
   const [position, setPosition] = useState(0);
   const [width, setWidth] = useState(0);
 
-  const productCard = useCallback(node => {
+  const productCardRef = useCallback(node => {
     if (node !== null) {
       setWidth(node.getBoundingClientRect().width);
     }
@@ -72,7 +72,7 @@ export const useShowcaseBlock = (title: string) => {
     animationDuration,
     handleSlide,
     maxPosition,
-    productCard,
+    productCardRef,
     frameSize,
   };
 };
