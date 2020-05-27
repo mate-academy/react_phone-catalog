@@ -2,17 +2,12 @@
 @import "../../styles/utils/vars";
 @import "../../styles/reset";
 
-.dropdown--sortBy {
-  width: 176px;
-}
-
 .dropdown {
-  height: 40px;
+  height: $heightDropdown;
   border: solid 1px $colorIcons;
 
   &__list {
-    // почему 4зч не срабатывают?
-    margin-top: 24px;
+    margin-top: 4px;
     padding: 8px 0;
     border: $borderElement;
   }
@@ -35,14 +30,15 @@
 
 .option {
   padding: 0 12px;
+  height: $heightDropdown;
   display: flex;
   justify-content: space-between;
   align-items: center;
 
   &__title {
-    @include ButtonText;
     line-height: 21px;
     color: $colorPrimary;
+    @include ButtonText;
   }
 
   &__btn {

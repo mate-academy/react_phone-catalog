@@ -1,3 +1,6 @@
+@import "../../styles/utils/mixins";
+@import "../../styles/utils/vars";
+
 .phones-container {
   max-width: 1136px;
   margin: 0 auto;
@@ -30,4 +33,25 @@
   font-size: 14px;
   line-height: 21px;
   color: #89939a;
+}
+
+.phones__dropdown {
+  width: 320px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 60px;
+  margin-bottom: 150px;
+}
+
+.phones__dropdown--sortBy {
+  width: 176px;
+}
+
+.phones__dropdown--sortItemInPage {
+  width: 128px;
+}
+
+.title {
+  color: $colorText;
+  @include smallText;
 }

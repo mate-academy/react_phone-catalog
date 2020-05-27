@@ -5,7 +5,6 @@ import Header from './components/Header/Header';
 import { Home } from './components/Home/Home';
 import { MobilePhonesPage } from './components/MobilePhonesPage/MobilePhonesPage';
 import Footer from './components/Footer/Footer';
-import Phones from './components/Phones';
 
 const App: React.FC = () => (
   <div className="App">

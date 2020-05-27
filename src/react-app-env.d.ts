@@ -9,10 +9,11 @@ interface Slide {
   ram: string;
   id: string;
   type: string;
+  age: number;
 }
 
 interface Option {
-  id: number;
+  id?: number;
   value: string;
   title: string;
 }
