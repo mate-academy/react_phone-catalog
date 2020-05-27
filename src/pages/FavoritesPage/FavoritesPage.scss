@@ -3,6 +3,7 @@
 .FavoritesPage {
   max-width: 1140px;
   margin: 0 16px;
+  width: 95%;
 
   &__h1 {
     @include h1;

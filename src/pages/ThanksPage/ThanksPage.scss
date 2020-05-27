@@ -2,6 +2,8 @@
 @import '../../mixins.scss';
 
 .ThanksPage {
+  width: 95%;
+  max-width: 1140px;
   &__title {
     @include h1;
     margin: 40px 0 8px;

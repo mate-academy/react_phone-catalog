@@ -36,7 +36,7 @@ export const CartPage = () => {
 
 
   return (
-    <div>
+    <div className="CartPage">
     <GoBack />
     <h1 className="CartPage__title">Cart</h1>
     <div className="CartPage__main">
@@ -63,6 +63,7 @@ export const CartPage = () => {
       </div>
 
       <div className="CartPage__summary">
+        <div>
         <span
           className="CartPage__total"
         >
@@ -77,6 +78,7 @@ export const CartPage = () => {
           className="CartPage__horis-line"
         >
         </span>
+        </div>
         <button
           type="button"
           className="CartPage__checkout"

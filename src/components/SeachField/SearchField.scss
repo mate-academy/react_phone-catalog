@@ -32,6 +32,9 @@
     @include placeholder;
     color: #313237;
     outline: none;
+    @media screen and (max-width: 1070px) {
+      width: 250px;
+    }
 
     &:focus,
     &:hover {

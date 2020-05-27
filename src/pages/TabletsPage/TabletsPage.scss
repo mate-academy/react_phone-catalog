@@ -4,6 +4,7 @@
 .TabletsPage {
   max-width: 1140px;
   margin: 0 16px;
+  width: 95%;
   &__h1 {
     @include h1;
     margin: 40px 0 8px;

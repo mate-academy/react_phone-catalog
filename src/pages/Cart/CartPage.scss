@@ -2,9 +2,11 @@
 @import "../../mixins.scss";
 
 .CartPage {
-
+  width: 95%;
+  max-width: 1140px;
   &__main {
     display: flex;
+    width: 100%;
   }
 
   &__wrapper {
@@ -15,6 +17,7 @@
 
   &__title {
     margin: 0 0 25px;
+    display: block;
 
   }
 
@@ -38,15 +41,36 @@
     height: 206px;
     border: 1px solid #e2e6e9;
     box-sizing: border-box;
+    background-color: white;
+    @media screen and (max-width: 1200px) {
+      position: fixed;
+      top: -16px;
+      z-index: 2;
+      right: 50px ;
+      flex-direction: row;
+      height: 64px;
+      width: 450px;
+      padding: 10px;
+      justify-content: space-between;
+
+    }
   }
 
   &__total {
     @include h1;
+    display: block;
+    @media screen and (max-width: 1200px) {
+      font-size: 24px;
+    }
   }
 
   &__legend {
     @include body-text;
     color: #89939a;
+    display: block;
+    @media screen and (max-width: 1200px) {
+      font-size: 14px;
+    }
   }
 
   &__horis-line {
@@ -55,6 +79,10 @@
     height: 1px;
     width: 100%;
     border-top: 1px solid #e2e6e9;
+    @media screen and (max-width: 1200px) {
+      display: none;
+
+    }
   }
 
   &__checkout {
@@ -76,6 +104,11 @@
       color: #27ae60;
       border: 1px solid #e2e6e9;
       background-color: white;
+    }
+    @media screen and (max-width: 1200px) {
+      width: 250px;
+      padding: 15px;
+
     }
   }
 }

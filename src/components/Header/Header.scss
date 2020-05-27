@@ -4,12 +4,12 @@
   z-index: 1;
   top: 0;
   margin: 0;
-  padding: 0;
+  padding: 0 0 0 24px;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 64px;
-  width: 100%;
+  // width: 100%;
   background: white;
   box-shadow: 0 1px 0 #e2e6e9;
   &-wrapper {

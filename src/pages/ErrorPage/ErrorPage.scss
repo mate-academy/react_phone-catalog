@@ -2,6 +2,8 @@
 @import "../../mixins.scss";
 
 .ErrorPage {
+  width: 95%;
+  max-width: 1140px;
   padding: 20px;
   &__title {
     @include h1;

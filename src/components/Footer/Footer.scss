@@ -4,9 +4,11 @@
   height: 96px;
   box-shadow: 0 -1px 0 #e2e6e9;
   background-color: white;
+
   &__container {
     height: 96px;
     margin: 0 auto;
+    width: 95%;
     max-width: 1140px;
     display: flex;
     justify-content: space-between;

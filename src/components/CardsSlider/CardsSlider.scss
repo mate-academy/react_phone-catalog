@@ -2,8 +2,12 @@
 
 .CardsSlider {
   margin-bottom: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   &__head-container {
+    width: 100%;
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
@@ -28,6 +32,13 @@
   &__stripe-container {
     overflow: hidden;
     margin: 0;
+    width: 1136px;
+    @media screen and (max-width: 1135px) {
+      width: 848px;
+    }
+    @media screen and (max-width: 847px) {
+      width: 560px;
+    }
   }
 
   &__stripe {
