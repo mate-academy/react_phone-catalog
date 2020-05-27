@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   Route,
-  Link,
+  NavLink,
 } from 'react-router-dom';
 
 export const Header = () => (
@@ -11,28 +11,30 @@ export const Header = () => (
         <nav className="header__nav">
           <ul className="list">
             <li className="list__item">
-              <Link className="list__link logo" to="/">logo</Link>
+              <NavLink className="list__link logo" to="/">
+                <img className="logo__img" src="./img/LOGO.svg" alt="company logo" />
+              </NavLink>
             </li>
             <li className="list__item">
-              <Link className="list__link" to="/">Home</Link>
+              <NavLink className="list__link" to="/">Home</NavLink>
             </li>
             <li className="list__item">
-              <Link className="list__link" to="/phones">phones</Link>
+              <NavLink className="list__link" to="/phones">phones</NavLink>
             </li>
             <li className="list__item">
-              <Link className="list__link" to="/tablets">tablets</Link>
+              <NavLink className="list__link" to="/tablets">tablets</NavLink>
             </li>
             <li className="list__item">
-              <Link className="list__link" to="/accessories">accessories</Link>
+              <NavLink className="list__link" to="/accessories">accessories</NavLink>
             </li>
           </ul>
           <ul className="list">
-            <Link to="/favorite">
+            <NavLink to="/favorite">
               <li className="nav nav__favorite" />
-            </Link>
-            <Link to="/bag">
+            </NavLink>
+            <NavLink to="/bag">
               <li className="nav nav__bag" />
-            </Link>
+            </NavLink>
           </ul>
         </nav>
       </div>
