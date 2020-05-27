@@ -12,6 +12,13 @@
     color: #fff;
     background-color: $bg-c-btn-primary;
     border: none;
+    transition: all 0.1s ease-in;
+  }
+
+  &__add-to-cart:hover {
+    color: #27ae60;
+    background-color: #fff;
+    border: 1px solid #b4bdc4;
   }
 
   &__add-to-fav {
@@ -22,5 +29,10 @@
     background-repeat: no-repeat;
     background-color: #fff;
     border: 1px solid #b4bdc4;
+    transition: all 0.1s ease-in;
+  }
+
+  &__add-to-fav:hover {
+    background-image: url("../../../icons/heart-like.png");
   }
 }

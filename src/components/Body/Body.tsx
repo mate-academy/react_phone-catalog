@@ -2,6 +2,10 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { Catalog } from './../../pages/Catalog';
 import { Home } from './../../pages/HomePage';
+import { Cart } from './../../pages/Cart';
+import { CartContextWrapper } from './../CartContext';
+import { Favourites } from './../../pages/Favourites';
+import { FavouritesContextWrapper } from './../FavouritesContext';
 
 type BodyProps = {
   goods: Good[];
@@ -9,32 +13,31 @@ type BodyProps = {
 
 export const Body: React.FC<BodyProps> = ({ goods }) => {
 
-    return (
-      <main className="main">
-         <div className="main-container">
-          <Switch>
-            <Route path="/" exact render={() => <Home goods={goods} />} />
-            <Route path="/phones">
-              <Catalog
-                goods={goods}
-              />
-            </Route>
+  return (
+    <main className="main">
+        <div className="main-container">
+        <CartContextWrapper>
+          <FavouritesContextWrapper>
+            <Switch>
+              <Route path="/" exact render={() => <Home goods={goods} />} />
 
-            <Route path="/tablets">
-              <Catalog
-                goods={goods}
-              />
-            </Route>
+              <Route path="/favourites" exact>
+                <Favourites />
+              </Route>
 
-            <Route path="/accessories">
-              <Catalog
-                goods={goods}
-              />
-            </Route>
-          </Switch>
-        </div>
-      </main>
-    )
+              <Route path="/cart" exact>
+                <Cart />
+              </Route>
+
+              <Route path="/:section" exact>
+                <Catalog goods={goods} />
+              </Route>
+            </Switch>
+          </FavouritesContextWrapper>
+        </CartContextWrapper>
+      </div>
+    </main>
+  )
 }
 
  /*
@@ -88,4 +91,36 @@ export const Body: React.FC<BodyProps> = ({ goods }) => {
     </main>
   )
  }
+*/
+
+
+
+
+
+
+/*
+</Route>
+              <Route path="/phones">
+                <Catalog
+                  goods={goods}
+                />
+              </Route>
+
+              <Route path="/tablets">
+                <Catalog
+                  goods={goods}
+                />
+              </Route>
+
+              <Route path="/accessories">
+                <Catalog
+                  goods={goods}
+                />
+              </Route>
+
+              <Route path="/favourites">
+                <Favourites
+                  goods={goods}
+                />
+              </Route>
 */

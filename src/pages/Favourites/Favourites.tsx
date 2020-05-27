@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { FavouritesContext } from './../../components/FavouritesContext';
+import { ProductCard } from './../../components/ProductCard/ProductCard';
 
 export const Favourites = () => {
-  return(
-    <section className="favourites" >
+  const {favouriteGoods} = useContext(FavouritesContext);
 
-    </section>
+  return(
+    <>
+      {favouriteGoods.map((good:Good) => {
+        return (
+        <ProductCard good={good} key={good.id} />
+        )
+      })}
+    </>
   )
 }

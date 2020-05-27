@@ -1,0 +1,82 @@
+.cart-card {
+  display: flex;
+  height: 128px;
+  margin-bottom: 16px;
+  border: 1px solid #e2e6e9;
+  box-sizing: border-box;
+
+  &__delete {
+    display: flex;
+    width: 66px;
+    align-items: center;
+    justify-content: center;
+    
+    &-btn {
+      width: 32px;
+      height: 32px;
+      background-color: #fff;
+    }
+  }
+
+  &__img-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 5px;
+    width: 66px;
+  }
+
+  &__img {
+    width: 100%;
+  }
+
+  &__title {
+    display: flex;
+    align-items: center;
+    width: 310px;
+    margin-left: 25px;
+    @include body-text;
+  }
+
+  &__count {
+    display: flex;
+    align-items: center;
+    margin-left: 30px;
+
+    &-number,
+    &-plus,
+    &-minus {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      background-color: #fff;
+      box-sizing: border-box;
+      transition: all 0.1s ease-in;
+    }
+
+    &-plus,
+    &-minus {
+      border: 1px solid #e2e6e9;
+    }
+
+    &-plus:hover,
+    &-minus:hover {
+      border: 1px solid #b4bdc4;
+
+      .icon {
+        fill: #313237;
+      }
+    }
+  }
+
+  &__price {
+    width: 74px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-left: 30px;
+    @include h2;
+  }
+}
