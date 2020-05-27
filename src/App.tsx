@@ -1,16 +1,34 @@
 import React from 'react';
-import { HashRouter } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import './App.scss';
-import { Header } from './components/Header';
+import { Header } from './components/Header/Header';
+import { NotFoundPage } from './components/NotFoundPage';
 import { BigCarousel } from './components/BigCarousel';
 
-const App = () => (
-  <div className="App">
-    <HashRouter>
+
+import { Footer } from './components/Footer/Footer';
+
+const Home = () => <h2>Home2</h2>;
+
+
+const App: React.FC = () => {
+  return (
+    <div className="App">
       <Header />
-    </HashRouter>
-    <BigCarousel />
-  </div>
-);
+      <Switch>
+        <Route
+          exact
+          path="/"
+          component={Home}
+        />
+        <BigCarousel />
+        <Redirect from="/home" to="/" />
+        <Route component={NotFoundPage} />
+      </Switch>
+      <Footer />
+    </div>
+  );
+};
+
 
 export default App;
