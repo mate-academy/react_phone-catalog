@@ -4,6 +4,7 @@ import { Footer } from './components/Footer/Footer';
 import { Header } from './components/Header/Header';
 import { HomePage } from './pages/HomePage';
 import { PhonesPage } from './pages/PhonesPage';
+import { TabletsPage } from './pages/TabletsPage';
 
 const App = () => {
   return (
@@ -15,6 +16,9 @@ const App = () => {
         </Route>
         <Route path="/phones">
           <PhonesPage />
+        </Route>
+        <Route path="/tablets">
+          <TabletsPage />
         </Route>
       </Switch>
       <Footer />

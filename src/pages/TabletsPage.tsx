@@ -5,15 +5,15 @@ import { useProductsList } from '../components/_hooks/useProductsList';
 import { Heading } from '../components/Heading/Heading';
 import { Dropdown } from '../components/Dropdown/Dropdown';
 import { Pagination } from '../components/Pagination/Pagination';
-import { ProductsAmount } from '../components/ProductsAmount/ProductsAmount';
-import { Breadcrumbs } from '../components/Breadcrumbs/Breadcrumbs';
 import {
   DROPDOWN_HEADINGS,
   SORT_TYPES,
   PER_PAGE,
 } from '../helpers/storage';
+import { ProductsAmount } from '../components/ProductsAmount/ProductsAmount';
+import { Breadcrumbs } from '../components/Breadcrumbs/Breadcrumbs';
 
-export const PhonesPage = () => {
+export const TabletsPage = () => {
   const {
     numberOfProducts,
     changePage,
@@ -30,10 +30,10 @@ export const PhonesPage = () => {
         pt24: location.pathname !== '/',
       })}
       >
-        <Breadcrumbs />
-        {!search.get('query') && <Heading title="Mobile phones" />}
+        <Breadcrumbs/>
+        {!search.get('query') && <Heading title="Tablets" />}
         {numberOfProducts !== 0 && (
-          <ProductsAmount title="phones" />
+          <ProductsAmount title="tablets" />
         )}
         {!search.get('query') && (
           <div className="section__dropdowns">

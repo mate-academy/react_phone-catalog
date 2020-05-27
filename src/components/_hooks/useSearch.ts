@@ -52,8 +52,10 @@ export const useSearch = () => {
       switch (sortBy) {
         case 'Newest':
           return a.age - b.age;
-        case 'Hot':
-          return b.discount - a.discount;
+        case 'From-A-to-Z':
+          return a.name.localeCompare(b.name);
+        case 'From-Z-to-A':
+          return b.name.localeCompare(a.name);
         case 'Cheapest':
           return a.price - b.price;
         default:

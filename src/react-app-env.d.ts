@@ -147,3 +147,8 @@ type PaginationProps = {
 type ProductsAmountProps = {
   title: string;
 };
+
+type BreadcrumbProps = {
+  to: string;
+  label: string;
+}

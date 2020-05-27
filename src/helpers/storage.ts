@@ -10,7 +10,8 @@ export const DROPDOWN_HEADINGS = {
 
 export const SORT_TYPES = [
   { option: 'Newest' },
-  { option: 'Hot' },
+  { option: 'From A to Z' },
+  { option: 'From Z to A' },
   { option: 'Cheapest' },
 ];
 

@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useCallback, useRef } from 'react';
 import cn from 'classnames';
 
 export const Search = ({
@@ -8,13 +8,13 @@ export const Search = ({
 }: SearchProps) => {
   const inputEl = useRef<HTMLInputElement>(null);
 
-  const handleClick = () => {
+  const handleClick = useCallback(() => {
     searchReset();
 
     if (inputEl && inputEl.current) {
       inputEl.current.focus();
     }
-  };
+  }, [searchReset]);
 
   return (
     <div className="search">

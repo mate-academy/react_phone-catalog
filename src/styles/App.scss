@@ -15,6 +15,7 @@
 @import "../components/Categories/Categories";
 @import "../components/Footer/Footer";
 @import "../components/ProductsList/ProductsList";
+@import "../components/Breadcrumbs/Breadcrumbs";
 @import "../components/Pagination/Pagination";
 @import "../components/Header/Search";
 @import "../components/Dropdown/Dropdown";
@@ -39,6 +40,10 @@
     width: $container-width;
     display: flex;
     justify-content: space-between;
+  }
+
+  &__breadcrumbs {
+    margin-bottom: 40px;
   }
 
   &__carousel {

@@ -1,41 +1,15 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React  from 'react';
 import cn from 'classnames';
 import { DropdownArrow } from './DropdownArrow';
-import { useSearch } from '../_hooks/useSearch';
-import { DROPDOWN_HEADINGS } from '../../helpers/storage';
+import { useDropdown } from '../_hooks/useDropdown';
 
 export const Dropdown = ({ list, heading }: DropdownProps) => {
-  const [isListOpen, setListOpen] = useState<boolean>(false);
-  const [selectedOption, setSelectedOption] = useState(list[0].option);
-
-  const close = useCallback(() => setListOpen(false), [setListOpen]);
-  const { search, history } = useSearch();
-
-  useEffect(() => {
-    if (isListOpen) {
-      window.addEventListener('click', close);
-    } else {
-      window.removeEventListener('click', close);
-    }
-  }, [isListOpen, close]);
-
-  const toggleList = () => setListOpen(!isListOpen);
-
-  const handleSort = useCallback((option: string) => {
-    setSelectedOption(option);
-
-    if (heading === DROPDOWN_HEADINGS.sortBy) {
-      search.set('sortBy', option);
-    }
-
-    if (heading === DROPDOWN_HEADINGS.perPage) {
-      search.set('perPage', option);
-    }
-
-    search.delete('page');
-
-    history.push({ search: search.toString() });
-  }, [history, search, heading]);
+  const {
+    toggleList,
+    selectedOption,
+    isListOpen,
+    handleSort,
+  } = useDropdown(list,heading);
 
   return (
     <div className="dropdown">

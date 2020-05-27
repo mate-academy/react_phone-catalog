@@ -1,0 +1,46 @@
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+
+  &__item {
+    margin-right: 13px;
+    display: flex;
+    align-items: center;
+  }
+
+  &__link {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: $primary-color;
+    cursor: pointer;
+    user-select: none;
+    @include hover(color, $primary-color, 0.2);
+
+    &--active {
+      color: $secondary-color;
+    }
+  }
+
+  &__home {
+    display: inline-block;
+    width: 14px;
+    height: 15px;
+    background-image: url("../../images/icons/breadcrumb-home.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: all 0.2s ease-out;
+    cursor: pointer;
+  }
+
+  &__arrow {
+    display: inline-block;
+    margin-right: 13px;
+    width: 5px;
+    height: 9px;
+    background-image: url("../../images/icons/breadcrumb-arrow.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: all 0.2s ease-out;
+  }
+}
