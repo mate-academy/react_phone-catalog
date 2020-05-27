@@ -57,17 +57,14 @@ const Phones = () => {
   //       (a, b) => a.id - b.id,
   //     );
   // }
-console.log('dropdownOptionId', dropdownOptionId);
-
   return (
     <>
       <h1>Phones</h1>
       <Dropdown
         options={options}
         value={dropdownOptionId}
-        onChange={(dropdownOptionId) => (
+        onChange={() => (
           setDropdownOptionId(dropdownOptionId)
-        // setSortField(dropdownOptionValue)
         )}
       />
     </>

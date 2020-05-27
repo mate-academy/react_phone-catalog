@@ -49,10 +49,12 @@
     width: 16px;
     height: 16px;
     background-color: #fff;
-    @include iconInButton(url(../../img/Icons/down.svg)); }
+    @include iconInButton(url(../../img/Icons/down.svg));
+  }
 
   &__btn--focus {
-    @include iconInButton(url(../../img/Icons/up.svg)); }
+    @include iconInButton(url(../../img/Icons/up.svg));
+  }
 }
 
 .dropdown--focus {
