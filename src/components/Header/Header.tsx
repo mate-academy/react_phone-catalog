@@ -10,8 +10,8 @@ export const Header = () => (
       <div className="header__container">
         <nav className="header__nav">
           <ul className="list">
-            <li className="list__item logo">
-              <Link className="list__link" to="/">logo</Link>
+            <li className="list__item">
+              <Link className="list__link logo" to="/">logo</Link>
             </li>
             <li className="list__item">
               <Link className="list__link" to="/">Home</Link>
@@ -27,16 +27,12 @@ export const Header = () => (
             </li>
           </ul>
           <ul className="list">
-            <li className="list__item">
-              <Link to="/favorite">
-                <img src="../../images/header/heart.svg" alt="" />
-              </Link>
-            </li>
-            <li className="list__item">
-              <Link to="/bag">
-                <img src="../../images/header/Union.png" alt="" />
-              </Link>
-            </li>
+            <Link to="/favorite">
+              <li className="nav nav__favorite" />
+            </Link>
+            <Link to="/bag">
+              <li className="nav nav__bag" />
+            </Link>
           </ul>
         </nav>
       </div>

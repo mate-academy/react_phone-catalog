@@ -34,7 +34,7 @@ Store the Cart in the `localStorage`
     - `discount` is give in percents `%`
     - `age` is used to sort by `Newest`
     - `id` is required to fetch product details
-1. Create `ProductsSlider` component and use it in `Hot prices` block
+1. Create `ProductsCarousel` component and use it in `Hot prices` block
     - Create `getHotPriceProducts` method fetching products with discount from API
       sorted by absolute discount value (not percentage given in API)
     - For now do all the filtering and sorting on client side
