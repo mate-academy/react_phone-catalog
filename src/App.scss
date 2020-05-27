@@ -42,6 +42,24 @@ body {
   }
 }
 
+.nav {
+
+  &__favorite {
+    background-image: url(./images/header/heartBlack.png);
+    background-repeat: no-repeat;
+  }
+
+  &--add {
+    background-image: url(./images/header/Union.png);
+    background-repeat: no-repeat;
+  }
+
+  &__bag {
+    background-image: url(./images/header/bag.svg);
+    background-repeat: no-repeat;
+  }
+}
+
 .list {
   display: flex;
   list-style: none;
