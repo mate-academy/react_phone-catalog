@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState} from 'react';
 import './Dropdown.scss';
 import cn from 'classnames/bind';
 
@@ -22,43 +22,49 @@ import cn from 'classnames/bind';
 
 type DropdownProps = {
   options: Option[];
-  value: number;
-  onChange: (dropdownOptionId: number, dropdownOptionValue: string) => void;
-};
+  value:  number;
+  onChange: (dropdownOptionId: number) => void;
+}
 
-const Dropdown: React.FC<DropdownProps> = ({ options, value, onChange }) => {
+const Dropdown: React.FC<DropdownProps> = ({ options, value, onChange}) => {
   const [isOpen, setIsOpen] = useState(false);
   const selectedOption = options.find(option => option.id === value);
+console.log('selectedOption',selectedOption);
 
   return (
-    <div className={cn('dropdown dropdown--sortBy', { 'dropdown--focus': isOpen })}>
+    <div className={cn("dropdown dropdown--sortBy", { "dropdown--focus": isOpen })}>
       <div className="dropdown__option option">
-        <p className="option__title">{selectedOption?.title}</p>
-        <button
-          type="button"
-          className={cn('option__btn', { 'option__btn--focus': isOpen })}
-          aria-label="Mute volume"
-          onClick={() => setIsOpen(!isOpen)}
-        />
-      </div>
+      <p className="option__title">{selectedOption?.title}</p>
+      <button
+        type="button"
+        className={cn("option__btn", { "option__btn--focus": isOpen })}
+        aria-label="Mute volume"
+        onClick={() =>
+
+          setIsOpen(!isOpen)}
+      >
+        </button>
+    </div>
 
       {isOpen && (
-        <ul className="dropdown__list">
-          {options.map((option: Option) => (
-            <li key={option.id}>
-              <button
-                type="button"
-                className={cn('dropdown__item', { 'dropdown__item--selected': option.id === value })}
-                onClick={() => onChange(option.id, option.value)}
-              >
-                {option.title}
-              </button>
-            </li>
-          ))}
-        </ul>
+         <ul className="dropdown__list">
+         {options.map((option: Option) => (
+           <li key={option.id}>
+             <button
+               type='button'
+               className={cn("dropdown__item", { "dropdown__item--selected": option.id === value })}
+               onClick={() => (
+               console.log('option.id', option.id),
+               onChange(option.id))}
+             >
+               {option.title}
+             </button>
+           </li>
+         ))}
+       </ul>
       )}
     </div>
-  );
-};
+  )
+}
 
 export default Dropdown;

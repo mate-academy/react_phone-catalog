@@ -28,7 +28,8 @@ const options = [
 ];
 
 const Phones = () => {
-  const [dropdownOptionId, setDropdownOptionId] = useState<number>(3);
+  const [dropdownOptionId, setDropdownOptionId] = useState<number>(1);
+
   // const [sortField, setSortField] = useState<string>('price');
   // const visiblePhones = [...options];
 
@@ -56,6 +57,7 @@ const Phones = () => {
   //       (a, b) => a.id - b.id,
   //     );
   // }
+console.log('dropdownOptionId', dropdownOptionId);
 
   return (
     <>
@@ -63,7 +65,7 @@ const Phones = () => {
       <Dropdown
         options={options}
         value={dropdownOptionId}
-        onChange={() => (
+        onChange={(dropdownOptionId) => (
           setDropdownOptionId(dropdownOptionId)
         // setSortField(dropdownOptionValue)
         )}
