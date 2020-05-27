@@ -1,8 +1,7 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { ProductCard } from '../../components/ProductCard/ProductCard';
 import { SortBlock }  from '../../components/SortBlock/SortBlock';
-import { useLocation } from 'react-router-dom';
-import { FavouritesContext } from '../../components/FavouritesContext';
+import { useLocation, useParams } from 'react-router-dom';
 
 /*import { RouteComponentProps } from 'react-router-dom';
 extends RouteComponentProps<{path: string}>*/
@@ -11,22 +10,24 @@ type CatalogProps={
   goods: Good[];
 }
 
+const setVisibleGoods = (goods: Good[], section: string) => {
+  console.log('render');
+  return goods.filter(good => section.includes(good.type));
+}
+
 export const Catalog: React.FC<CatalogProps> = ({ goods }) => {
   /*const [itemsCount, setItemsCount] = useState<number>(16);*/
   let selectedItemsCount = 4;
   const [rowItemsCount, setRowItemsCount] = useState<number>(4);
-  const [visibleGoods, setVisibleGoods] = useState<Good[]>(goods);
-  const { favouriteGoods } = useContext(FavouritesContext);
-  const location = useLocation();
+  const { section } = useParams()
+  console.log( section )
 
-  useEffect(()=> {
-    if (location.pathname.includes('favourites')) {
-      setVisibleGoods(favouriteGoods)
-    } else {
-     const matchedGoods = goods.filter(good =>location.pathname.includes(good.type));
-     setVisibleGoods(matchedGoods);
-    }
-  },[location.pathname])
+
+  const location = useLocation();
+  console.log(location)
+
+
+  const visibleGoods = useMemo(() => setVisibleGoods(goods, section), [section])
 
   useEffect(()=> {
     setRowItemsCount(selectedItemsCount)

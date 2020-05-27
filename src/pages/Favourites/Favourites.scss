@@ -1,3 +1,10 @@
 .favourites {
   display: flex;
+  &__products {
+    display: grid;
+    grid-template-columns: repeat(4, 272px);
+    column-gap: 16px;
+    row-gap: 40px;
+    margin-bottom: 80px;
+  }
 }
