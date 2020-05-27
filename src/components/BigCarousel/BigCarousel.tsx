@@ -1,9 +1,9 @@
 import React from 'react';
 
 // const slides: string[] = [
-//   '../../images/bigCarousel/1.png',
-//   '../../images/bigCarousel/2.png',
-//   '../../images/bigCarousel/3.png',
+//   './img/slideFirst.png',
+//   './img/slideSecond.png',
+//   './img/slideThird.png',
 // ];
 
 export const BigCarousel = () => (
@@ -19,7 +19,7 @@ export const BigCarousel = () => (
           );
         })} */}
         <div className="bigCarousel__container">
-          <img src={require('../../images/bigCarousel/1.png')} alt="эта хрень не работает!!!" />
+          <img className="logo__img" src="./img/slideFirst.png" alt="company logo" />
         </div>
         <button type="button" className="bigArrow rightArrow" />
       </div>

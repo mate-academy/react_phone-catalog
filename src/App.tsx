@@ -6,8 +6,10 @@ import { NotFoundPage } from './components/NotFoundPage';
 import { BigCarousel } from './components/BigCarousel';
 
 
+import { Footer } from './components/Footer/Footer';
+
 const Home = () => <h2>Home2</h2>;
-const Footer = () => <h2>Footer</h2>;
+
 
 const App: React.FC = () => {
   return (
