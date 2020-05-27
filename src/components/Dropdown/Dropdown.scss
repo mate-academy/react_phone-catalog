@@ -43,7 +43,6 @@
   }
 
   &__list {
-    opacity: 0;
     width: 100%;
     margin-top: 4px;
     position: absolute;
@@ -53,8 +52,9 @@
     box-sizing: border-box;
     z-index: 10;
     transform: translateY(-10px);
+    opacity: 0;
+    visibility: hidden;
     transition: opacity 0.2s, visibility 0.2s, transform 0.2s;
-    overflow: hidden;
 
     &--is-open {
       visibility: visible;
