@@ -20,7 +20,7 @@ export const Category = () => {
     dataFromServer.then(data => data
       .filter((el: { type: string }) => el
         .type === 'accessories')).then(data => setAccessories(data));
-  }, []);
+  }, [dataFromServer]);
 
   return (
     <div className="Category">

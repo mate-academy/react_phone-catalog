@@ -7,8 +7,9 @@ import { HomePage } from './HomePage/homePage';
 import { PhonesCatalog } from './PhonesCatalog/phonesCatalog';
 import { Favourites } from './Favourites/favourites';
 import { Cart } from './Cart/cart';
-import { Maintenance } from './Additional/underMaintenance';
 import { Footer } from './Footer/footer';
+import { Accessories } from './Accessories/accessories';
+import { Tablets } from './Tablets/tablets';
 
 
 const App = () => {
@@ -18,8 +19,8 @@ const App = () => {
       <Switch>
         <Route path="/" exact component={HomePage} />
         <Route path="/phones" component={PhonesCatalog} />
-        <Route path="/tablets" component={Maintenance} />
-        <Route path="/accessories" component={Maintenance} />
+        <Route path="/tablets" component={Tablets} />
+        <Route path="/accessories" component={Accessories} />
         <Route path="/favourites" component={Favourites} />
         <Route path="/cart" component={Cart} />
       </Switch>

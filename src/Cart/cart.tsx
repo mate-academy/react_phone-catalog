@@ -1,7 +1,10 @@
 import React from 'react';
+import { BreadCrumb } from '../BreadCrumb/breadCrumb';
 
 export const Cart = () => {
   return (
-    <p>Here goes shopping cart!!!</p>
+    <>
+      <BreadCrumb page="Shopping cart" />
+    </>
   );
 };

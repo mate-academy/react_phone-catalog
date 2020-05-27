@@ -53,7 +53,6 @@ export const NavBar: FC<Params> = ({
   const buttonQty = Math.ceil(sortedPhones.length / viewQty);
   const tabs = [...sortedPhones].splice(0, buttonQty);
 
-
   return (
     <>
       <button

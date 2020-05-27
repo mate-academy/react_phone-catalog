@@ -13,7 +13,7 @@ export const BrandNew = () => {
         .discount === 0)
       .sort((a: {price: number}, b: {price: number}) => (b.price - a.price)))
       .then(data => setBrandNew(data));
-  }, []);
+  }, [dataFromServer]);
 
   return (
     <ProductSlider phones={brandNew} title="Brand new models" />

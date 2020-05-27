@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
 import cn from 'classnames';
 import { DFS } from '../Additional/additional_api';
 import './phonesCatalog.scss';
 import { Phones } from '../Additional/interfaces';
-import { NavBar } from './navBar';
+import { NavBar } from '../Pagination/navBar';
+import { BreadCrumb } from '../BreadCrumb/breadCrumb';
 
 export const PhonesCatalog = () => {
   const [phones, setPhones] = useState([]);
@@ -14,11 +14,12 @@ export const PhonesCatalog = () => {
   const [activeTab, setActiveTab] = useState(1);
   const dataFromServer = useContext(DFS);
 
+
   useEffect(() => {
     dataFromServer.then(data => data
       .filter((el: { type: string }) => el.type === 'phone'))
       .then(data => setPhones(data));
-  }, []);
+  }, [dataFromServer]);
 
   const getSortedItems = (query: string) => {
     if (query === 'age') {
@@ -45,6 +46,7 @@ export const PhonesCatalog = () => {
     return undefined;
   };
 
+
   const sortedPhones = getSortedItems(sort);
 
   const handleSortView = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -61,17 +63,7 @@ export const PhonesCatalog = () => {
 
   return (
     <div className="PhonesCatalog">
-      <div className="breadcrumb">
-        <NavLink to="/" className="breadcrumb__link">
-          <img
-            src="img/icons/home.svg"
-            alt="home page"
-            className="breadcrumb__link_home"
-          />
-        </NavLink>
-        <img src="img/icons/arrow.svg" alt=" " className="breadcrumb__arrow" />
-        <span className="breadcrumb__currentPage">Phones</span>
-      </div>
+      <BreadCrumb page="Phones" />
       <h1 className="PhonesCatalog__header">Mobile phones</h1>
       <p className="PhonesCatalog__qty">
         {phones.length}

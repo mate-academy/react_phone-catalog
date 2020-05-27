@@ -1,0 +1,32 @@
+.breadcrumb {
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  &__link {
+    display: flex;
+    align-items: center;
+    &_home {
+      width: 14px;
+      height: 14px;
+    }
+    &:hover {
+      -webkit-animation: spin 1s infinite;
+      animation: spin 1s infinite;
+    }
+  }
+
+  &__arrow {
+    width: 12px;
+    height: 8px;
+    transform: rotate(90deg);
+    margin: 0 14px;
+  }
+  &__currentPage {
+    font-family: Mont, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+    color: #89939a;
+  }
+}

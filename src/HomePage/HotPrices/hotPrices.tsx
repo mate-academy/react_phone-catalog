@@ -14,7 +14,7 @@ export const HotPrices = () => {
         .discount > 0)
       .sort((a: {price: number}, b: {price: number}) => b.price - a.price))
       .then(data => setPhones(data));
-  }, []);
+  }, [dataFromServer]);
 
   return (
     <ProductSlider phones={phones} title="Hot prices" />

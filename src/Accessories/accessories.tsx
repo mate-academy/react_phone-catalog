@@ -1,10 +1,10 @@
 import React from 'react';
 import { BreadCrumb } from '../BreadCrumb/breadCrumb';
 
-export const Favourites = () => {
+export const Accessories = () => {
   return (
     <>
-      <BreadCrumb page="Favourites" />
+      <BreadCrumb page="Accessories" />
     </>
   );
 };
