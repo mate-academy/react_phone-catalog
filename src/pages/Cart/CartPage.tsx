@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { CartCard } from '../../components/CartCard/CartCard';
+import { CartCard } from './CartCard/CartCard';
 import './CartPage.scss';
 import { useHistory } from 'react-router-dom';
 import {MyContext} from '../../App';

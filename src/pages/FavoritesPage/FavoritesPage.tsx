@@ -8,9 +8,9 @@ export const FavoritesPage = () => {
 
   const {favorites} = useContext(MyContext);
   return (
-    <div className="PhonesPage">
+    <div className="FavoritesPage">
       <Breadcrumbs />
-      <h1 className="PhonesPage__h1">Favorites</h1>
+      <h1 className="FavoritesPage__h1">Favorites</h1>
       <Catalog
         products={favorites}
       />

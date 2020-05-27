@@ -1,19 +1,15 @@
 import './FavoritesIcon.scss'
-import React from 'react';
+import React, {useContext} from 'react';
+import {MyContext} from '../../App';
 import { NavLink, useLocation } from 'react-router-dom';
-import { Product } from '../../interfaces';
 
-export const FavoritesIcon = ({ favorites }: { favorites: Product[] }) => {
-  const addresses = [
-    '/',
-    '/phones',
-    '/tablets',
-    '/accessories',
-    '/favorites'
-  ];
+
+export const FavoritesIcon = () => {
+  const {favorites} = useContext(MyContext);
+  const addresses = ['/cart'];
 
   const location = useLocation();
-  const isOnPage = addresses.includes(location.pathname)
+  const isOnPage = !addresses.includes(location.pathname)
 
 
 

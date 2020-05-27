@@ -30,7 +30,7 @@ export const TechSpecs = ({product, productDetails}:{product: Product; productDe
           <span className="TechSpecs__spec">Built in memory</span>
   <span className="TechSpecs__value">{product.capacity}</span>
         </li>
-        <li className="TechSpecs__item">
+        <li className="TechSpecs__item"> 
           <span className="TechSpecs__spec">Camera</span>
   <span className="TechSpecs__value">{productDetails.camera.primary}</span>
         </li>

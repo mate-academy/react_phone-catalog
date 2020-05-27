@@ -27,6 +27,7 @@
     height: 100%;
     text-decoration: none;
     @include upper-case;
+    font-weight: bolder;
     color: #89939a;
     &.active {
       position: relative;
@@ -46,6 +47,6 @@
   &__label {
     display: block;
     margin: 0 0 0 64px;
-    height: 64px;
+    height: 100%;
   }
 }

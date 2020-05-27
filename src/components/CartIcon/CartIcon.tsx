@@ -1,13 +1,14 @@
 
-import React from 'react';
+import React, {useContext} from 'react';
+import {MyContext} from '../../App';
 
 import './CartIcon.scss';
 
-import {Product} from '../../interfaces';
+
 import {NavLink} from 'react-router-dom';
 
-export const CartIcon = ({cart}:{cart:Product[]}) => {
-
+export const CartIcon = () => {
+  const {cart} = useContext(MyContext);
 
 
   return (

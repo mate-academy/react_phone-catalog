@@ -1,6 +1,11 @@
+@import "../../../mixins.scss";
 
 .TechSpecs {
   width: 512px;
+
+  &__title {
+    @include h2;
+  }
 
   &__list {
     list-style: none;
@@ -11,17 +16,24 @@
   &__item {
     display: flex;
     justify-content: space-between;
+    margin-top: 8px;
   }
 
   &__spec {
     display: block;
+    @include body-text;
+    color: #89939a;
   }
 
   &__value {
     display: block;
     max-width: 50%;
+    @include body-text;
+    text-align: end;
+
   }
   &__horisont {
+    margin: 16px 0;
     display: block;
     width: 100%;
     height: 1px;

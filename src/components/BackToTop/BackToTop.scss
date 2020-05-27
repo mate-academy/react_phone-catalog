@@ -1,0 +1,26 @@
+
+@import "../../mixins.scss";
+
+.BackToTop {
+  display: flex;
+  align-items: center;
+  &__button {
+    width: 32px;
+    height: 32px;
+    background-image: url("../../imgs/Icons/ChevronArrow.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    // background-size: cover;
+    transform: rotate(90deg);
+    background-color: white;
+    border: 1px solid #b4bdc4;
+    box-sizing: border-box;
+    outline: none;
+  }
+
+  &__legend {
+    margin: 0 16px;
+    @include small-text;
+    color: #89939a;
+  }
+}

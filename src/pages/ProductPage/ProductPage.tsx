@@ -11,6 +11,7 @@ import { MyContext } from '../../App';
 import './ProductPage.scss';
 import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 import { GoBack } from '../../components/GoBack/GoBack';
+import {WaitLoading} from '../../components/WaitLoading/WaitLoading';
 
 
 export const ProductPage = ({ product }: { product: Product }) => {
@@ -46,7 +47,7 @@ export const ProductPage = ({ product }: { product: Product }) => {
 
   return (
     (JSON.stringify(productDetails) === JSON.stringify({}))
-      ? <h1>Wait!!!</h1>
+      ? <WaitLoading />
       : <div className="ProductPage">
         <Breadcrumbs />
         <GoBack />
@@ -65,7 +66,5 @@ export const ProductPage = ({ product }: { product: Product }) => {
 
         <CardsSlider products={products} title={'You may also like'} />
       </div>
-
-
   )
 }

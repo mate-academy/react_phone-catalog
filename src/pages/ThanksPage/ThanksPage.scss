@@ -4,9 +4,11 @@
 .ThanksPage {
   &__title {
     @include h1;
+    margin: 40px 0 8px;
   }
 
   &__paragraph {
     @include body-text;
+
   }
 }

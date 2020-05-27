@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Product } from '../../interfaces';
+import { Product } from '../../../interfaces';
 import './CartCard.scss';
 import {Link} from 'react-router-dom';
 

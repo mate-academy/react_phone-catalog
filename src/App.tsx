@@ -2,13 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Switch } from 'react-router-dom';
 
 import { getProducts } from './helpers/api';
-import { Logo } from './components/Logo/Logo';
-import { Nav } from './components/Nav/Nav';
-import { FavoritesIcon } from './components/FavoritesIcon/FavoritesIcon';
-import { CartIcon } from './components/CartIcon/CartIcon';
+
 import { HomePage } from './pages/HomePage/HomePage';
-import { SearchField } from './components/SeachField/SearchField'
-import { LinkType, Product, MyContextType } from './interfaces';
+import { Header } from './components/Header/Header';
+import { Product, MyContextType } from './interfaces';
 import './App.scss';
 import { Route } from 'react-router-dom';
 import { PhonesPage } from './pages/PhonesPage/PhonesPage';
@@ -18,6 +15,8 @@ import { ProductPage } from './pages/ProductPage/ProductPage';
 import { FavoritesPage } from './pages/FavoritesPage/FavoritesPage';
 import { CartPage } from './pages/Cart/CartPage';
 import { ThanksPage } from './pages/ThanksPage/ThanksPage';
+import { Footer } from './components/Footer/Footer';
+import { ErrorPage } from './pages/ErrorPage/ErrorPage';
 
 export const MyContext = React.createContext<MyContextType>({} as MyContextType)
 
@@ -27,10 +26,16 @@ const App = () => {
 
 
   const [productsFromServer, setProductsFromServer] = useState([] as Product[])
+  const [isError, setIsError] = useState(false);
   useEffect(
     () => {
       getProducts().then(products => {
-        setProductsFromServer(products)
+        if (products) {
+          setProductsFromServer(products)
+        } else {
+          setIsError(true)
+        }
+
       });
     }, []
   )
@@ -51,24 +56,6 @@ const App = () => {
   }, [favorites])
 
 
-
-
-  let headerLinks: LinkType[] = [
-    { title: 'HOME', address: '/#', isOuter: false },
-    { title: 'PHONES', address: '/phones', isOuter: false },
-    { title: 'TABLETS', address: '/tablets', isOuter: false },
-    { title: 'ACCESSORIES', address: '/accessories', isOuter: false },
-  ]
-  let footerLinks: LinkType[] = [
-    { title: 'GITHUB', address: 'http://www.github.com', isOuter: true },
-    { title: 'CONTACTS', address: '/contacts', isOuter: false },
-    { title: 'RIGHTS', address: '/rights', isOuter: false },
-  ]
-
-
-
-
-
   return (
     <MyContext.Provider value={{
       products: products,
@@ -77,96 +64,79 @@ const App = () => {
       favorites: favorites,
       setFavorites: setFavorites,
     }}>
-    <div className="App">
-      <header className="App__header">
-        <div className="App__header-wrapper">
-          <div className="App__header-left-wrapper">
-          <Logo />
-          <Nav links={headerLinks} />
-          </div>
+      <div className="App">
+        <Header />
+        {isError
+          ? <ErrorPage />
+          : (<main className="App__main">
+            <Switch>
+              {productsFromServer.map(product => {
+                let base = '/';
+                switch (product.type) {
+                  case 'phone':
+                    base = '/phones/';
+                    break;
+                  case 'tablet':
+                    base = '/tablets/';
+                    break;
+                  default:
+                    base = '/accessories/';
+                }
+                return (
+                  <Route
+                    key={product.id}
+                    path={`${base + product.id}`} >
+                    <ProductPage product={product} />
+                  </Route>
+                )
+              })}
 
-          <div className="App__header-right-wrapper">
-          <SearchField />
 
 
-            <FavoritesIcon favorites={favorites} />
-            <CartIcon cart={cart} />
-          </div>
-        </div>
-
-      </header>
-      <main className="App__main">
-        <Switch>
-          {productsFromServer.map(product => {
-            let base = '/';
-            switch (product.type) {
-              case 'phone':
-                base = '/phones/';
-                break;
-              case 'tablet':
-                base = '/tablets/';
-                break;
-              default:
-                base = '/accessories/';
-            }
-            return (
-              <Route
-                key={product.id}
-                path={`${base + product.id}`} >
-                <ProductPage product={product} />
+              <Route path="/phones">
+                <PhonesPage
+                  products={products}
+                />
               </Route>
-            )
-          })}
+
+              <Route path="/tablets">
+                <TabletsPage
+                  products={products}
+                />
+              </Route>
+
+              <Route path="/accessories">
+                <AccessoriesPage
+                  products={products}
+                />
+              </Route>
+
+              <Route path="/favorites">
+                <FavoritesPage />
+              </Route>
+
+              <Route path="/cart">
+                <CartPage />
+              </Route>
+
+              <Route path="/thanks">
+                <ThanksPage />
+              </Route>
+
+              <Route path="/">
+                <HomePage
+                  products={products}
+                />
+              </Route>
 
 
-
-          <Route path="/phones">
-            <PhonesPage
-              products={products}
-            />
-          </Route>
-
-          <Route path="/tablets">
-            <TabletsPage
-              products={products}
-            />
-          </Route>
-
-          <Route path="/accessories">
-            <AccessoriesPage
-              products={products}
-            />
-          </Route>
-
-          <Route path="/favorites">
-            <FavoritesPage/>
-          </Route>
-
-          <Route path="/cart">
-            <CartPage />
-          </Route>
-
-          <Route path="/thanks">
-            <ThanksPage />
-          </Route>
-
-          <Route path="/">
-            <HomePage
-              products={products}
-            />
-          </Route>
+            </Switch>
 
 
-        </Switch>
+          </main >)}
 
-
-      </main >
-      <footer className="App__footer">
-        <Logo />
-        <Nav links={footerLinks} />
-        {/* <BackToTop /> */}
-      </footer>
-    </div>
+        <Footer />
+      </div>
     </MyContext.Provider>
 
   );

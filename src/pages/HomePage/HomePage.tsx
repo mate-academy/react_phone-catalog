@@ -4,6 +4,7 @@ import { ShopByCategory } from '../../components/ShopByCategory/ShopByCategory';
 import { Product } from '../../interfaces';
 import './HomePage.scss';
 import { PromoSlider } from '../../components/PromoSlider/PromoSlider';
+import { WaitLoading } from '../../components/WaitLoading/WaitLoading';
 
 
 export const HomePage = ({
@@ -22,12 +23,15 @@ export const HomePage = ({
 
 
   return (
+    (JSON.stringify(products) === JSON.stringify({}))
+    ? <WaitLoading />
+    :
     <div className="HomePage">
       <PromoSlider slides={slides} />
       <CardsSlider
         title={"Hot prices"}
         products={[...products].sort((a, b) => (
-          a.price * (100 - a.discount) / 100 - b.price * (100 - b.discount) / 100))}
+          b.discount - a.discount))}
       />
 
       <ShopByCategory products={products} />

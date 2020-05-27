@@ -1,7 +1,8 @@
 
-@import "../../mixins.scss";
+@import "../../../mixins.scss";
 
 .Pagination {
+  margin-top: 40px;
   display: flex;
   justify-content: center;
 

@@ -2,10 +2,10 @@ import './Catalog.scss';
 import React, { useState, useEffect } from 'react';
 import { Product } from '../../interfaces';
 import { useLocation, useHistory } from 'react-router-dom';
-import { MainFrame } from '../MainFrame/MainFrame';
-import { Pagination } from '../Pagination/Pagination';
+import { MainFrame } from './MainFrame/MainFrame';
+import { Pagination } from './Pagination/Pagination';
 import { SortBy } from '../SortBy/SortBy';
-import { ItemsOnPageSelect } from '../ItemsOnPageSelect/ItemsOnPageSelect';
+import { ItemsOnPageSelect } from './ItemsOnPageSelect/ItemsOnPageSelect';
 
 export const Catalog = ({
   products,

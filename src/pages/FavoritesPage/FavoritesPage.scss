@@ -1,0 +1,11 @@
+@import "../../mixins.scss";
+
+.FavoritesPage {
+  max-width: 1140px;
+  margin: 0 16px;
+
+  &__h1 {
+    @include h1;
+    margin: 40px 0 8px;
+  }
+}

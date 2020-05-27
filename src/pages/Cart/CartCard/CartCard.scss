@@ -1,5 +1,5 @@
 
-@import "../../mixins.scss";
+@import "../../../mixins.scss";
 
 .CartCard {
   position: absolute;
@@ -33,7 +33,7 @@
     background-color: white;
     border: none;
     outline: none;
-    background-image: url("../../imgs/Icons/Close.png");
+    background-image: url("../../../imgs/Icons/Close.png");
     cursor: pointer;
   }
 

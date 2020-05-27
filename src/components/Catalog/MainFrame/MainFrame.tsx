@@ -1,7 +1,7 @@
 
 import React from 'react';
-import { Product } from '../../interfaces';
-import { ProductCard } from '../../components/ProductCard/ProductCard';
+import { Product } from '../../../interfaces';
+import { ProductCard } from '../../ProductCard/ProductCard';
 import './MainFrame.scss';
 
 

@@ -5,11 +5,8 @@ import { NavLink, useLocation } from 'react-router-dom';
 import { LinkType } from '../../interfaces';
 
 
-export const Nav = ({ links }: { links: LinkType[] }) => {
-  const addresses = [
-    '/cart',
-  ];
-
+export const Nav = ({ links, addresses }: { links: LinkType[]; addresses: string[] }) => {
+  
   const location = useLocation();
   const isOnPage = !addresses.includes(location.pathname)
 
