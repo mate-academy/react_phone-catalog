@@ -1,5 +1,7 @@
 import React from 'react';
 import './Card.scss';
+import { Link } from 'react-router-dom';
+// import { match } from 'assert';
 
 type Props = {
   imageUrl: string;
@@ -9,6 +11,7 @@ type Props = {
   screen: string;
   capacity: string;
   ram: string;
+  id: string;
 };
 
 export const Card: React.FC<Props> = ({
@@ -19,10 +22,13 @@ export const Card: React.FC<Props> = ({
   screen,
   capacity,
   ram,
+  id,
 }) => (
   <div className="wrap">
     <article className="card">
-      <img alt="card" src={imageUrl} className="card__img" />
+      <Link to={`/${id}`}>
+        <img alt="card" src={imageUrl} className="card__img" />
+      </Link>
       <div className="card__container-inner">
         <h3 className="card__title">{name}</h3>
         <span className="card__prise">
