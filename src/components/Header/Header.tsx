@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  Route,
   NavLink,
 } from 'react-router-dom';
 
@@ -40,8 +39,8 @@ export const Header = () => (
       </div>
     </header>
 
-    <Route path="/phones">
-      <Phones />
+    {/* <Route path="/phones">
+      <PhonesPage />
     </Route>
     <Route path="/tablets">
       <Tablets />
@@ -52,7 +51,7 @@ export const Header = () => (
   </>
 );
 
-const Phones = () => (
+const PhonesPage = () => (
   <>
     <h1>
       Phones
@@ -72,6 +71,6 @@ const Home = () => (
   <>
     <h1>
       Home
-    </h1>
+    </h1> */}
   </>
 );

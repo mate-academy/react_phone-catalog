@@ -1,0 +1,15 @@
+@mixin smallText {
+  font-family: "Mont-SemiBold", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+@mixin font-MontRegular {
+  font-family: "Mont-Regular", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+}

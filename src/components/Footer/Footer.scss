@@ -1,5 +1,8 @@
+
 .footer {
-  padding: 42px 152px;
+  padding: 40px 0;
+  width: 80%;
+  margin: auto;
 
   &__wrap {
     display: flex;
@@ -25,6 +28,7 @@
 }
 
 .lift__title {
+  font-family: "Mont-Regular", sans-serif;
   font-style: normal;
   font-weight: 600;
   font-size: 12px;
