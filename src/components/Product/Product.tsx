@@ -25,7 +25,7 @@ export const Product = ({
           </span>
         )}
       </div>
-      <div className="product__split-line" />
+      <span className="product__split-line" />
       <div className="product__details">
         <div className="product__details-container">
           <span className="product__details-title">
