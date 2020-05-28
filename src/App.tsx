@@ -8,7 +8,7 @@ import { TabletsPage } from './components/TabletsPage/TabletsPage';
 import { AccessoriesPage } from './components/AccessoriesPage/AccessoriesPage';
 import { ProductDetailsPage } from './components/ProductDetailsPage/ProductDetailsPage';
 import Footer from './components/Footer/Footer';
-// import Phones from './components/Phones';
+
 
 const App: React.FC = () => (
   <div className="App">

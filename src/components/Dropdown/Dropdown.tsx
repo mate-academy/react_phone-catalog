@@ -51,7 +51,8 @@ const Dropdown: React.FC<DropdownProps> = ({ options, value, onChange }) => {
                 // className={cn('dropdown__item',
                 //   { 'dropdown__item--selected': option.id === value })}
                 onClick={() => (
-                  onChange(option.id))}
+                  onChange(option.id)
+                )}
               >
                 {option.title}
               </button>
