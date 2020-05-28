@@ -5,5 +5,44 @@
   height: 64px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   box-shadow: 0px 1px 0px #E2E6E9;
+
+  &__left, &__right {
+    display: flex;
+  }
+
+  &__search {
+    position: relative;
+  }
+
+  &__input, &__button {
+    box-sizing: border-box;
+    height: 64px;
+    outline: none;
+    border: none;
+    box-shadow: -1px 0px 0px #E2E6E9;
+  }
+
+  &__input{
+    margin-right: 1px;
+    font-size: 14px;
+    width: 327px;
+    padding: 23px 24px;
+
+  }
+
+  &__button {
+    padding: 0;
+    background-color: #fff;
+    width: 64px;
+  }
 }
+
+  .search {
+    &__icon{
+      position: absolute;
+      top:23px;
+      right: 40px;
+    }
+  }
