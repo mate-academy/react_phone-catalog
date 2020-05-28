@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { useSearch } from './useSearch';
 import { DROPDOWN_HEADINGS } from '../../helpers/storage';
 
-export const useDropdown = (list:OptionType[], heading: string) => {
+export const useDropdown = (list: OptionType[], heading: string) => {
   const [isListOpen, setListOpen] = useState<boolean>(false);
   const [selectedOption, setSelectedOption] = useState(list[0].option);
 
@@ -34,10 +34,11 @@ export const useDropdown = (list:OptionType[], heading: string) => {
 
     history.push({ search: search.toString() });
   }, [history, search, heading]);
+
   return {
     toggleList,
     selectedOption,
     isListOpen,
     handleSort,
-  }
-}
+  };
+};

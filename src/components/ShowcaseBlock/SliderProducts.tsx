@@ -5,8 +5,14 @@ export const SliderProducts = ({
   products,
   position,
   animationDuration,
+  productCardRef,
+  frameSize,
+  itemWidth,
 }: SliderProps) => (
-  <div className="slider">
+  <div
+    className="slider"
+    style={{ width: `${frameSize * itemWidth}px` }}
+  >
     <div
       className="slider__list"
       style={{
@@ -15,7 +21,11 @@ export const SliderProducts = ({
       }}
     >
       {products.map((product: Product) => (
-        <Product key={product.id} {...product} />
+        <Product
+          key={product.id}
+          {...product}
+          productCardRef={productCardRef}
+        />
       ))}
     </div>
   </div>

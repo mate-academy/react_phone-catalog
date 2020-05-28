@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
-import { Breadcrumb } from './Breadcrumb';
 import { NavLink, useLocation } from 'react-router-dom';
+import { Breadcrumb } from './Breadcrumb';
 
 const BREADCRUMBS = [
   { to: '/phones', label: 'Phones' },
@@ -23,9 +23,7 @@ export const Breadcrumbs = () => {
         className="breadcrumbs__item breadcrumbs__home"
         activeClassName="breadcrumb__link--active"
       />
-      {preparedBreadcrumbs.map((crumb) =>
-        <Breadcrumb {...crumb} key={crumb.to} />
-        )}
+      {preparedBreadcrumbs.map((crumb) => <Breadcrumb {...crumb} key={crumb.to} />)}
     </ul>
   );
-}
+};

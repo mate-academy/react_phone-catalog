@@ -30,9 +30,12 @@ export const TabletsPage = () => {
         pt24: location.pathname !== '/',
       })}
       >
-        {!search.get('query') && <>
-          <Breadcrumbs/>
-          <Heading title="Tablets" /> </>}
+        {!search.get('query') && (
+          <>
+            <Breadcrumbs />
+            <Heading title="Tablets" />
+          </>
+        )}
         {numberOfProducts !== 0 && (
           <ProductsAmount title="tablets" />
         )}
