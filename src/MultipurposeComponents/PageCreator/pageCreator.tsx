@@ -22,30 +22,29 @@ export const PageCreator: FC<Params> = ({
   const [activeTab, setActiveTab] = useState(1);
 
   const getSortedItems = (query: string) => {
-    if (query === 'age') {
-      return gadgets.sort((a: { age: number },
-        b: { age: number }) => a.age - b.age);
+    switch (query) {
+      case 'age':
+        return (gadgets.sort((a: { age: number },
+          b: { age: number }) => a.age - b.age));
+
+      case 'name':
+        return gadgets
+          .sort((a: { name: string },
+            b: { name: string }) => a.name.localeCompare(b.name));
+
+      case 'price_asc':
+        return gadgets
+          .sort((a: { price: number },
+            b: { price: number }) => a.price - b.price);
+      case 'price_desc':
+        return gadgets
+          .sort((a: { price: number },
+            b: { price: number }) => b.price - a.price);
+      default:
     }
 
-    if (query === 'name') {
-      return gadgets
-        .sort((a: { name: string },
-          b: { name: string }) => a.name.localeCompare(b.name));
-    }
-
-    if (query === 'price_asc') {
-      return gadgets.sort((a: { price: number },
-        b: { price: number }) => a.price - b.price);
-    }
-
-    if (query === 'price_desc') {
-      return gadgets.sort((a: { price: number },
-        b: { price: number }) => b.price - a.price);
-    }
-
-    return undefined;
+    return '';
   };
-
 
   const sortedGadgets = getSortedItems(sort);
 
@@ -60,6 +59,7 @@ export const PageCreator: FC<Params> = ({
         models
       </p>
       <ItemsSorting
+        options={gadgets.length}
         setSort={setSort}
         setActiveTab={setActiveTab}
         setPosition={setPosition}

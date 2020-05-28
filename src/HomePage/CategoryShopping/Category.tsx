@@ -3,24 +3,19 @@ import './Category.scss';
 import { DFS } from '../../Additional/additional_api';
 
 export const Category = () => {
+  const [serverData, setServerData] = useState([]);
   const [mobiles, setMobiles] = useState([]);
   const [tablets, setTablets] = useState([]);
   const [accessories, setAccessories] = useState([]);
   const dataFromServer = useContext(DFS);
 
   useEffect(() => {
-    dataFromServer.then(data => data
-      .filter((el: { type: string }) => el
-        .type === 'phone')).then(data => setMobiles(data));
+    dataFromServer.then(data => setServerData(data));
+    setMobiles(serverData.filter((el: { type: string }) => el.type === 'phone'));
+    setTablets(serverData.filter((el: { type: string }) => el.type === 'tablet'));
+    setAccessories(serverData.filter((el: { type: string }) => el.type === 'accessories'));
+  }, [serverData, dataFromServer]);
 
-    dataFromServer.then(data => data
-      .filter((el: { type: string }) => el
-        .type === 'tablet')).then(data => setTablets(data));
-
-    dataFromServer.then(data => data
-      .filter((el: { type: string }) => el
-        .type === 'accessories')).then(data => setAccessories(data));
-  }, [dataFromServer]);
 
   return (
     <div className="Category">
@@ -37,9 +32,7 @@ export const Category = () => {
             </div>
             <p className="cli__description">Mobile phones</p>
             <span className="cli__count">
-              {mobiles.length}
-              {' '}
-              models
+              {`${mobiles.length} models`}
             </span>
           </li>
           <li className="Category__list_item cli">

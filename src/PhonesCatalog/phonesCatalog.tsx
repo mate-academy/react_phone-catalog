@@ -19,7 +19,7 @@ export const PhonesCatalog = () => {
 
   return (
     <>
-      {phones
+      {phones.length !== 0
         ? (
           <PageCreator
             pageName="Phones"

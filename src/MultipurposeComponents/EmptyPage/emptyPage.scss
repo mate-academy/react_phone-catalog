@@ -1,14 +1,13 @@
 .EmptyPage {
   margin: 0 152px;
+  overflow: hidden;
 }
 
 .bike {
   margin: 0 auto 40px;
   width: 800px;
   height: 700px;
-
   position: relative;
-  overflow: hidden;
 
   &__header {
     width: 100%;
@@ -1376,8 +1375,8 @@
     width: 60px;
     height: 60px;
     border-radius: 100% 100% 0 100%;
-    background: white;
-    animation: .8s bike-cloud linear infinite;
+    background: grey;
+    animation: 1.3s bike-cloud linear infinite;
     animation-delay: -.2s;
     opacity: .6;
 
@@ -1389,7 +1388,7 @@
       width: 40px;
       height: 40px;
       border-radius: 100% 100% 0 0;
-      background: white;
+      background: grey;
     }
     &:after {
       content: '';
@@ -1399,7 +1398,7 @@
       width: 30px;
       height: 30px;
       border-radius: 100% 100% 100% 0;
-      background: white;
+      background: grey;
     }
   }
   &__cloud-2 {
@@ -1409,8 +1408,8 @@
     width: 34px;
     height: 34px;
     border-radius: 100% 100% 100% 0;
-    background: white;
-    animation: .8s bike-cloud linear infinite;
+    background: lightgray;
+    animation: 1.3s bike-cloud linear infinite;
     animation-delay: -.5s;
     opacity: .6;
 
@@ -1422,7 +1421,7 @@
       width: 24px;
       height: 24px;
       border-radius: 100% 100% 0 0;
-      background: white;
+      background: lightgray;
     }
     &:after {
       content: '';
@@ -1432,7 +1431,7 @@
       width: 20px;
       height: 20px;
       border-radius: 100% 100% 0 100%;
-      background: white;
+      background: lightgray;
     }
   }
   &__cloud-3 {
@@ -1442,8 +1441,8 @@
     width: 34px;
     height: 34px;
     border-radius: 100% 100% 100% 0;
-    background: white;
-    animation: .8s bike-cloud linear infinite;
+    background: darkgrey;
+    animation: 1.3s bike-cloud linear infinite;
     animation-delay: -.8s;
     opacity: .6;
 
@@ -1455,7 +1454,7 @@
       width: 24px;
       height: 24px;
       border-radius: 100% 100% 0 0;
-      background: white;
+      background: darkgrey;
     }
     &:after {
       content: '';
@@ -1465,12 +1464,11 @@
       width: 20px;
       height: 20px;
       border-radius: 100% 100% 0 100%;
-      background: white;
+      background: darkgrey;
     }
   }
 }
 
-/* Анимации */
 @keyframes bike-wheel-1 {
   0%      { left: 9px; transform: rotate(0deg); }
   5%      { left: 9px; }
@@ -2156,6 +2154,6 @@
 
 
 @keyframes bike-cloud {
-  0%      { left: 800px; }
+  0%      { left: 2500px; }
   100%    { left: -100px; }
 }

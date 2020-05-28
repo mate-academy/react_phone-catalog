@@ -17,7 +17,7 @@ export const TabletsCatalog = () => {
 
   return (
     <>
-      {tablets
+      {tablets.length !== 0
         ? (
           <PageCreator
             pageName="Tablets"

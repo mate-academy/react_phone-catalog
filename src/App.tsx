@@ -5,12 +5,12 @@ import './App.scss';
 import { Navigation } from './Navigation/navigation';
 import { HomePage } from './HomePage/homePage';
 import { PhonesCatalog } from './PhonesCatalog/phonesCatalog';
-import { Favourites } from './Favourites/favourites';
+// import { Favourites } from './Favourites/favourites';
 import { Cart } from './Cart/cart';
 import { Footer } from './Footer/footer';
 import { Accessories } from './AccessoriesCatalog/accessories';
 import { TabletsCatalog } from './TabletsCatalog/tabletsCatalog';
-
+import { ItemSpecificationCard } from './MultipurposeComponents/ItemSpecificationCard/itemSpecificationCard';
 
 const App = () => {
   return (
@@ -21,7 +21,7 @@ const App = () => {
         <Route path="/phones" component={PhonesCatalog} />
         <Route path="/tablets" component={TabletsCatalog} />
         <Route path="/accessories" component={Accessories} />
-        <Route path="/favourites" component={Favourites} />
+        <Route path="/favourites" component={ItemSpecificationCard} />
         <Route path="/cart" component={Cart} />
       </Switch>
       <Footer />
