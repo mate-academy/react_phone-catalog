@@ -22,8 +22,16 @@
     line-height: 41px;
     letter-spacing: -0.01em;
     color: #89939A;
+    &_main {
+      margin-bottom: 5px;
+    }
     &_slim {
       font-weight: normal;
+      &_2{
+        font-size: 24px;
+        font-weight: normal;
+        font-style: italic;
+      }
     }
   }
 

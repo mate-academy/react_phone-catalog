@@ -21,7 +21,8 @@ export const EmptyPage: FC<Params> = ({
             {' '}
             yet
           </p>
-          <p>But our courier is already on its way!</p>
+          <p className="bike__header_main">But our courier is already on its way!</p>
+          <span className="bike__header_slim_2">Please come back later</span>
         </div>
         <div className="bike__cloud-1" />
         <div className="bike__cloud-2" />
