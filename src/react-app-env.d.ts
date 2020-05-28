@@ -13,7 +13,7 @@ interface Slide {
 }
 
 interface Option {
-  id?: number;
+  id: number;
   value: string;
   title: string;
 }
