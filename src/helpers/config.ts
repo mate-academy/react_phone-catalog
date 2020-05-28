@@ -28,17 +28,17 @@ export const headerLinks: Link[] = [
 export const slides: Slide[] = [
   {
     id: 1,
-    imgUrl: './img/slider/slider_image1.jpg',
+    imgUrl: './img/slider/slide-1.jpg',
     alt: 'Front and back of iPhone 11.',
   },
   {
     id: 2,
-    imgUrl: './img/slider/slider_image2.jpg',
+    imgUrl: './img/slider/slide-2.jpg',
     alt: 'Front and back of iPhone 11.',
   },
   {
     id: 3,
-    imgUrl: './img/slider/slider_image3.jpg',
+    imgUrl: './img/slider/slide-3.jpg',
     alt: 'Front and back of iPhone 11.',
   },
 ];
