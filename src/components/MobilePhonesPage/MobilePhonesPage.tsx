@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { getProducts } from '../../helpers/api';
 import { Card } from '../Card/Card';
 import './MobilePhonesPage.scss';
-import Select from '../Select/Select';
-import { OPTIONS_SORT_BY } from '../../helpers/config';
+import SelectSortPhones from '../SelectSortPhones/SelectSortPhones';
+import SelectPerPage from '../SelectPerPage/SelectPerPage';
+import Pagination from '../Pagination/Pagination';
 
 export const MobilePhonesPage: React.FC = () => {
   const [phonesOnly, setPhonesOnly] = useState<Slide[]>([]);
@@ -13,23 +14,21 @@ export const MobilePhonesPage: React.FC = () => {
     getProducts().then(data => setPhonesOnly(data.filter((product: Slide) => product.type === 'phone')));
   }, []);
 
-  const history = useHistory();
   const location = useLocation();
-
   const searchParams = new URLSearchParams(location.search);
   const sortBy = searchParams.get('sortBy') || '';
-  const [dropdownOptionValue, setDropdownOptionValue] = useState<string>(sortBy);
 
-  const setSearchParams = (selectOptionValue: string) => {
-    setDropdownOptionValue(selectOptionValue);
-    searchParams.set('sortBy', selectOptionValue);
-    history.push({ search: searchParams.toString() });
-  };
+  const perPage = searchParams.get('perPage') || 'all';
+  const page: number = Number(searchParams.get('page')) || 1;
+  let start = 0;
+
+  if (perPage !== 'all') {
+    start = (page - 1) * +perPage;
+  }
 
   const visiblePhones = useMemo(
     () => {
       const result = [...phonesOnly];
-
       switch (sortBy) {
         case 'name':
           result.sort((a, b) => a.name.localeCompare(b.name));
@@ -46,9 +45,10 @@ export const MobilePhonesPage: React.FC = () => {
           result.sort((a, b) => b.price - a.price);
       }
 
-      return result;
+      return result.slice(start, start + +perPage);
+
     },
-    [sortBy, phonesOnly],
+    [sortBy, phonesOnly, perPage, page],
   );
 
   return (
@@ -61,28 +61,18 @@ export const MobilePhonesPage: React.FC = () => {
           models
         </span>
         <div className="phones__dropdown">
-          <div className="phones__dropdown--sortBy">
-            <p className="title">Sort By</p>
-            <Select
-              options={OPTIONS_SORT_BY}
-              value={dropdownOptionValue}
-              onChange={(selectOptionValue) => (
-                setSearchParams(selectOptionValue)
-              )}
-            />
-
-          </div>
-          <div className="phones__dropdown--sortItemInPage">
-            <p className="title">Items on page</p>
-          </div>
+          <SelectSortPhones />
+          <SelectPerPage />
         </div>
+      </div>
 
-
-        <div className="phones-wrap">
-          {visiblePhones.map(product => (
-            <Card key={product.id} {...product} />
-          ))}
-        </div>
+      <div className="phones-wrap">
+        {visiblePhones.map(product => (
+          <Card key={product.id} {...product} />
+        ))}
+      </div>
+      <div className="pagination">
+        <Pagination lengthArrPhones={phonesOnly.length} />
       </div>
     </>
   );

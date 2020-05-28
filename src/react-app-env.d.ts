@@ -47,9 +47,8 @@ interface Link {
 }
 
 interface Option {
-  id: number;
   value: string;
-  title: string;
+  title?: string;
 }
 
 interface Match {
