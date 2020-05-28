@@ -1,6 +1,6 @@
 import React from 'react';
 import './Card.scss';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 // import { match } from 'assert';
 
 type Props = {
@@ -23,56 +23,59 @@ export const Card: React.FC<Props> = ({
   capacity,
   ram,
   id,
-}) => (
-  <div className="wrap">
-    <article className="card">
-      <Link to={`/${id}`}>
-        <img alt="card" src={imageUrl} className="card__img" />
-      </Link>
-      <div className="card__container-inner">
-        <h3 className="card__title">{name}</h3>
-        <span className="card__prise">
-          $
-          {(price - price * (discount / 100))}
-        </span>
-        {' '}
-        {discount !== 0
-         && (
-           <span className="card__oldPrise">
-             $
-             {price}
-           </span>
-         )}
+}) => {
+  const { section } = useParams();
 
-        <div className="card__info">
-          <div className="card__info-screen card__item">
-            <p className="card__info-screen_name">Screen</p>
-            <p className="card__info-screen_value">{screen}</p>
+  return (
+    <div className="wrap">
+      <article className="card">
+        <Link to={`/${section}/${id}`}>
+          <img alt="card" src={imageUrl} className="card__img" />
+        </Link>
+        <div className="card__container-inner">
+          <h3 className="card__title">{name}</h3>
+          <span className="card__prise">
+            $
+            {(price - price * (discount / 100))}
+          </span>
+          {' '}
+          {discount !== 0
+            && (
+              <span className="card__oldPrise">
+                $
+                {price}
+              </span>
+            )}
+          <div className="card__info">
+            <div className="card__info-screen card__item">
+              <p className="card__info-screen_name">Screen</p>
+              <p className="card__info-screen_value">{screen}</p>
+            </div>
+            <div className="card__info-capacity card__item">
+              <p className="card__info-screen_name">Capacity</p>
+              <p className="card__info-screen_value">{capacity}</p>
+            </div>
+            <div className="card__info-ram card__item">
+              <p className="card__info-screen_name">RAM</p>
+              <p className="card__info-screen_value">{ram}</p>
+            </div>
           </div>
-          <div className="card__info-capacity card__item">
-            <p className="card__info-screen_name">Capacity</p>
-            <p className="card__info-screen_value">{capacity}</p>
-          </div>
-          <div className="card__info-ram card__item">
-            <p className="card__info-screen_name">RAM</p>
-            <p className="card__info-screen_value">{ram}</p>
+          <div className="card__button-wrap">
+            <button
+              type="button"
+              className="card__button-cart"
+            >
+              Add to cart
+            </button>
+            <button
+              type="button"
+              className="card__button-favor"
+            >
+              favor
+            </button>
           </div>
         </div>
-        <div className="card__button-wrap">
-          <button
-            type="button"
-            className="card__button-cart"
-          >
-            Add to cart
-          </button>
-          <button
-            type="button"
-            className="card__button-favor"
-          >
-            favor
-          </button>
-        </div>
-      </div>
-    </article>
-  </div>
-);
+      </article>
+    </div>
+  );
+};
