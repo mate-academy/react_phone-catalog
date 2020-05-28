@@ -43,10 +43,10 @@ const PhoneCard: React.FC<PropsPhoneCard> = ({ phone }) => {
         </div>
       </div>
       <div className="PhoneCard__buttons-container">
-        <button className="PhoneCard__button button">
+        <button type="button" className="PhoneCard__button button">
           Add to card
         </button>
-        <button className="PhoneCard__favorits-button button">
+        <button type="button" className="PhoneCard__favorits-button button">
           <img src="./img/heart.svg" alt="heart_icon" className="PhoneCard__favorits-image" />
         </button>
       </div>

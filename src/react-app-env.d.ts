@@ -13,3 +13,8 @@ interface Products {
   capacity: string;
   ram: string;
 }
+
+type Slider = {
+  id: number;
+  imgUrl: string;
+};
