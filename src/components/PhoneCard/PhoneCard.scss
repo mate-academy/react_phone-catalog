@@ -1,8 +1,9 @@
 @import "../../utils/vairables";
 
-.ProductCard {
+.PhoneCard {
   margin: 0 auto;
   display: grid;
+  //grid-template-rows: 208px 15px 20px 5px 80px 50px;
   width: 272px;
   height: 507px;
   border: 1px solid $light-gray;
@@ -16,6 +17,7 @@
   }
 
   &__product {
+    font-weight: 500;
     font-size: 14px;
     line-height: 21px;
   }
@@ -92,4 +94,8 @@
     display: flex;
     justify-content: space-between;
   }
+}
+
+.price-discount {
+  opacity: 0;
 }
