@@ -33,10 +33,10 @@ export const Slider = () => {
 
   return (
     <>
-      <div className="slider__container">
+      <div className="Slider__container">
         <button
           type="button"
-          className="carousel__btn carousel__btn_prev"
+          className="carousel__btn Slider__btn carousel__btn_prev"
           onClick={handlePrevClick}
         >
           { }
@@ -55,7 +55,7 @@ export const Slider = () => {
         </div>
         <button
           type="button"
-          className="carousel__btn carousel__btn_next"
+          className="Slider__btn carousel__btn carousel__btn_next"
           onClick={handleNextClick}
         >
           { }

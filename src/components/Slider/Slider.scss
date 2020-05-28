@@ -1,6 +1,6 @@
 @import "../../utils/vairables.scss";
 
-.slider__container {
+.Slider__container {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -21,10 +21,21 @@
   &__item {
     list-style: none;
   }
+    &__btn {
+      outline: none;
+      border: 1px solid #B4BDC4;
 
-  &__btn {
-    cursor: pointer;
-    margin: 0 16px;
+      &_next {
+        background: url('./btn-next.svg');
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+
+      &_prev {
+        background: url('./btn-prev.svg');
+        background-repeat: no-repeat;
+        background-position: center;
+      }
   }
 
   &__dots-wrap {
@@ -49,21 +60,8 @@
   }
 }
 
-.carousel__btn {
-  outline: none;
-  width: 32px;
-  height: 400px;
-  border: 1px solid #B4BDC4;
-
-  &_next {
-    background: url('./btn-next.svg');
-    background-repeat: no-repeat;
-    background-position: center;
-  }
-
-  &_prev {
-    background: url('./btn-prev.svg');
-    background-repeat: no-repeat;
-    background-position: center;
-  }
+.Slider__btn {
+    margin: 0 16px;
+    width: 32px;
+    height: 400px;
 }

@@ -17,6 +17,8 @@
   }
 
   &__link {
+    position: relative;
+    padding: 22px 0;
     font-family: 'Mont';
     color: $gray-color;
     text-decoration: none;
@@ -25,7 +27,17 @@
     letter-spacing: 0.04em;
 
     &--active {
-      color:$dark-gray-color;
+      color: $dark-gray-color;
+    }
+
+    &--active::after {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: $dark-gray-color;
+      content: "";
     }
   }
 
