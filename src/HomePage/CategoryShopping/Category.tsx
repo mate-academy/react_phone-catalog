@@ -50,7 +50,7 @@ export const Category = () => {
                 src="img/categories/tablets.png"
               />
             </div>
-            <p className="cli__description">Mobile phones</p>
+            <p className="cli__description">Tablets</p>
             <span className="cli__count">
               {tablets.length}
               {' '}
@@ -65,7 +65,7 @@ export const Category = () => {
                 src="img/categories/accessories.png"
               />
             </div>
-            <p className="cli__description">Mobile phones</p>
+            <p className="cli__description">Accessories</p>
             <span className="cli__count">
               {accessories.length}
               {' '}

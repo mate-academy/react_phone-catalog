@@ -8,7 +8,7 @@ import { PhonesCatalog } from './PhonesCatalog/phonesCatalog';
 import { Favourites } from './Favourites/favourites';
 import { Cart } from './Cart/cart';
 import { Footer } from './Footer/footer';
-import { Accessories } from './Accessories/accessories';
+import { Accessories } from './AccessoriesCatalog/accessories';
 import { TabletsCatalog } from './TabletsCatalog/tabletsCatalog';
 
 

@@ -20,12 +20,12 @@ export const NavBar: FC<Params> = ({
   position,
 }) => {
   const handleClickTab = (el: number) => {
-    setPosition((el - 1) * ((viewQty / 4) * 507));
+    setPosition((el - 1) * ((viewQty / 4) * 547));
     setActiveTab(el);
   };
 
   const handlePrevTab = () => {
-    const step = (viewQty / 4) * 507;
+    const step = (viewQty / 4) * 547;
 
     setPosition(position - step <= 0
       ? 0
@@ -39,7 +39,7 @@ export const NavBar: FC<Params> = ({
 
   const handleNextTab = () => {
     const stepQty = Math.ceil(sortedPhones?.length / viewQty) - 1;
-    const step = (viewQty / 4) * 507;
+    const step = (viewQty / 4) * 547;
 
     setPosition(position + step <= stepQty * step
       ? position + step
