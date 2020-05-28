@@ -33,7 +33,7 @@ export const Slider = () => {
 
   return (
     <>
-      <div className="container">
+      <div className="slider__container">
         <button
           type="button"
           className="carousel__btn carousel__btn_prev"
