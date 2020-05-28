@@ -4,10 +4,9 @@ import './App.scss';
 import { Header } from './components/Header/Header';
 import { NotFoundPage } from './components/NotFoundPage';
 import { BigCarousel } from './components/BigCarousel';
+import { Footer } from './components/Footer';
+import { PhonesPage } from './components/PhonesPage';
 import { NavByImg } from './components/NavByImg';
-
-
-import { Footer } from './components/Footer/Footer';
 
 const Home = () => <h2>Home2</h2>;
 
@@ -16,17 +15,24 @@ const App: React.FC = () => {
   return (
     <div className="App">
       <Header />
-      <Switch>
-        <Route
-          exact
-          path="/"
-          component={Home}
-        />
+      <main className="main">
+        <Switch>
+          <Route
+            exact
+            path="/"
+            component={Home}
+          />
+          <Route
+            exact
+            path="/phones"
+            component={PhonesPage}
+          />
+          <Redirect from="/home" to="/" />
+          <Route component={NotFoundPage} />
+        </Switch>
         <BigCarousel itemWidth={1040} />
-        <Redirect from="/home" to="/" />
-        <Route component={NotFoundPage} />
-      </Switch>
-      <NavByImg />
+        <NavByImg />
+      </main>
       <Footer />
     </div>
   );
