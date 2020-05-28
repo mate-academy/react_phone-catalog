@@ -6,6 +6,7 @@ import { NotFoundPage } from './components/NotFoundPage';
 import { BigCarousel } from './components/BigCarousel';
 import { Footer } from './components/Footer';
 import { PhonesPage } from './components/PhonesPage';
+import { NavByImg } from './components/NavByImg';
 
 const Home = () => <h2>Home2</h2>;
 
@@ -26,10 +27,11 @@ const App: React.FC = () => {
             path="/phones"
             component={PhonesPage}
           />
-          <BigCarousel />
           <Redirect from="/home" to="/" />
           <Route component={NotFoundPage} />
         </Switch>
+        <BigCarousel itemWidth={1040} />
+        <NavByImg />
       </main>
       <Footer />
     </div>
@@ -38,3 +40,6 @@ const App: React.FC = () => {
 
 
 export default App;
+//синхронизация стрелок с индикаторами
+//картинки странных размеров
+//хидден странно работает
