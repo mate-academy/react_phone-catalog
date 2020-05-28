@@ -1,0 +1,28 @@
+@import 'variables';
+@import 'font-face';
+
+ul,
+li,
+img,
+a {
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: #89939A;
+  text-decoration: none;
+
+  &:visited {
+    color: #89939A;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Mont", sans-serif;
+  margin: 0;
+}

@@ -1,0 +1,54 @@
+.footer{
+  border-top: 1px solid #E2E6E9;
+
+  &__content {
+    box-sizing: border-box;
+    display: flex;
+    margin: 0 auto;
+    padding: 0 152px;
+    justify-content: space-between;
+    align-items: center;
+    width: 1440px;
+    height: 64px;
+  }
+}
+
+.contacts {
+
+  &__link {
+    margin-right: 64px;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+
+    &:hover {
+      color: #313237;
+    }
+  }
+}
+
+.to-top-button {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  margin-left: 16px;
+  font-weight: bold;
+  background: #313237;
+  transform: rotate(-90deg);
+  background-color: white;
+  border: 1px solid #E2E6E9;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.button-text {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  color: #89939A;
+  letter-spacing: 1px;
+}

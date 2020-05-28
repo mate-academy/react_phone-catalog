@@ -1,0 +1,46 @@
+.content {
+  display: flex;
+  margin: 0 auto;
+  width: 1440px;
+}
+
+.slider {
+  margin: 0 auto;
+  display: flex;
+
+  &__container {
+    display: flex;
+    overflow: hidden;
+    width: 1040px;
+    height: 400px;
+    margin: 0 16px;
+  }
+
+  & img {
+    object-fit: cover;
+    object-position: center;
+  }
+
+  & button {
+    border: 1px solid #B4BDC4;
+    box-sizing: border-box;
+    width: 32px;
+    background-color: white;
+    background-image: url("../../images/Arrow.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: 0.2s;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:hover {
+      border: 1px solid #313237;
+    }
+  }
+
+  &__left-button {
+    transform: rotate(180deg);
+  }
+}
