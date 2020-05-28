@@ -9,6 +9,7 @@ interface Slide {
   ram: string;
   id: string;
   type: string;
+  age: number;
 }
 
 interface Option {
