@@ -3,6 +3,7 @@ type Link = {
   name: string;
   title?: string;
   url: string;
+  imgUrl?: string;
   type?: string;
   exact?: boolean;
 };

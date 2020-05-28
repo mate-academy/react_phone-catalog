@@ -9,3 +9,15 @@
     padding: 0 15px;
   }
 }
+
+@media (max-width: 970px) {
+  .header {
+    padding: 0 15px;
+  }
+}
+
+@media (max-width: 1150px) {
+  .categories-wrapper {
+    justify-content: space-around;
+  }
+}

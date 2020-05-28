@@ -10,18 +10,21 @@ export const headerLinks: Link[] = [
     title: 'Mobile Phones',
     url: '/phones',
     type: 'phone',
+    imgUrl: './img/mobile-phones.jpg',
   },
   {
     name: 'Tablets',
     title: 'Tablets',
     url: '/tablets',
     type: 'tablet',
+    imgUrl: './img/tablets.jpg',
   },
   {
     name: 'Accessories',
     title: 'Accessories',
     url: '/accessories',
     type: 'accessories',
+    imgUrl: './img/accessories.jpg',
   },
 ];
 

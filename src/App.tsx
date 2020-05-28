@@ -3,10 +3,10 @@ import { Switch, Route } from 'react-router-dom';
 
 
 import { Header } from './components/Header';
-
+import { HomePage } from './pages/HomePage';
 import './App.scss';
 
-import { HomePage } from './pages/HomePage';
+
 import { PhonesPage } from './pages/PhonesPage';
 import { TabletsPage } from './pages/TabletsPage';
 import { AccessoriesPage } from './pages/AccessoriesPage';

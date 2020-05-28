@@ -3,11 +3,12 @@ import Slider from 'react-slick';
 // import 'slick-carousel/slick/slick.css';
 // import 'slick-carousel/slick/slick-theme.css';
 
-import './HomePage.scss';
 
 import { SimpleSlider } from '../../components/Slider';
 import { ProductCard } from '../../components/ProductCard';
+import { Categories } from '../../components/Categories';
 
+import './HomePage.scss';
 
 export const HomePage: React.FC = () => {
   const settings = {
@@ -60,7 +61,24 @@ export const HomePage: React.FC = () => {
           </Slider>
         </div>
       </section>
+      <section className="categories">
+        <h2 className="title">Shop by category</h2>
+        <Categories />
+      </section>
 
+      <section className="new-models">
+        <h2 className="title">Brand new models</h2>
+        <div className="new-models-products">
+          <Slider {...settings}>
+            <ProductCard />
+            <ProductCard />
+            <ProductCard />
+            <ProductCard />
+            <ProductCard />
+            <ProductCard />
+          </Slider>
+        </div>
+      </section>
     </>
   );
 };

@@ -2,10 +2,15 @@
 @import "~slick-carousel/slick/slick-theme.css";
 @import "../../styles/vars";
 
-.hot-prices {
-  position: relative;
+.hot-prices,
+.new-models,
+.categories {
   margin-bottom: 50px;
+}
 
+.hot-prices,
+.new-models {
+  position: relative;
   .slick-arrow {
     top: -32px;
     width: 32px;
