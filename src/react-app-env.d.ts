@@ -5,7 +5,7 @@ interface Products {
   type: string;
   id: string;
   imageUrl: string;
-  name: string
+  name: string;
   snippet: string;
   price: number;
   discount: number;
