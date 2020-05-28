@@ -16,7 +16,8 @@ export const EmptyPage: FC<Params> = ({
         <div className="bike__header">
           <p className="bike__header_slim">
             Unfortunately, we have no
-            {pageName}
+            {' '}
+            {pageName.toLocaleLowerCase()}
             {' '}
             yet
           </p>
