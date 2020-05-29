@@ -1,0 +1,40 @@
+@import "./helpers/css/fonts.scss";
+
+body {
+  margin: 0;
+  font-size: 14px;
+  font-family: "Mont";
+  font-weight: 400;
+  color: #313237;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+:focus {
+  outline: none;
+}
+
+button {
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 1152px;
+  padding-left: 8px;
+  padding-right: 8px;
+  margin-left: auto;
+  margin-right: auto;
+}
