@@ -43,15 +43,22 @@
   margin-bottom: 150px;
 }
 
-.phones__dropdown--sortBy {
-  width: 176px;
-}
-
-.phones__dropdown--sortItemInPage {
-  width: 128px;
-}
-
 .title {
   color: $colorText;
   @include smallText;
+}
+
+.pagination {
+  width: 100px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-left: 500px;
+
+  &__btn {
+    width: 10px;
+    height: 10px;
+    margin-right: 5px;
+  }
+
 }
