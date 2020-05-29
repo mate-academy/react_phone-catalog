@@ -26,13 +26,14 @@ export const Slider = () => {
   const lastSlide = slidesData[slidesData.length - 1];
   const [activeIndex, setActiveIndex] = useState(0);
   const [widthSlide, setWidthSlide] = useState(0);
-  const [transition, setTransition] = useState(1);
-  const [translate, setTranslate] = useState(1040);
+  const [transition, setTransition] = useState(.5);
+  const slideWidthRef = useRef<HTMLDivElement>(null);
+  const [translate, setTranslate] = useState(0);
   const [slides, getSlides] = useState<string[]>([lastSlide, firstSlide, ...middleSlide]);
   const autoPlayRef = useRef<() => void>();
   const transitionRef = useRef<() => void>();
   const resizeRef = useRef<() => void>();
-  const slideWidthRef = useRef<HTMLDivElement>(null);
+
 
   const moveTo = (index: number) => {
     const prev = index === activeIndex - 1;
@@ -122,7 +123,7 @@ export const Slider = () => {
 
     const interval = setInterval(play, 5000);
 
-    // console.log(activeIndex);
+    //console.log(activeIndex);
     // const interval = setInterval(() => {
     //   moveTo(activeIndex + 1);
     // }, 5000)
@@ -138,7 +139,7 @@ export const Slider = () => {
 
   useEffect(() => {
     if (transition === 0) {
-      setTransition(1);
+      setTransition(.5);
     }
   }, [transition]);
 
