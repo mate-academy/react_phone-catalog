@@ -1,4 +1,5 @@
 import React, { FC, useEffect, useState } from 'react';
+import cn from 'classnames';
 import { BreadCrumb } from '../BreadCrumb/breadCrumb';
 import './itemSpecificationCard.scss';
 import { ProductSlider } from '../ProductSlider/ProductSlider';
@@ -33,17 +34,118 @@ export const ItemSpecificationCard: FC<Params> = ({ page, gadget, allGadgets }) 
           <div className="ISU__slider">
             <ul className="ISU__slider_list">
               {item.images && item.images.map(img => (
-                <button type="button" className="ISU__slider_button" onClick={() => handleActiveImage(img)}><img key={img} src={img} alt={img} className="ISU__slider_image" /></button>
+                <button type="button" className="ISU__slider_button" onClick={() => handleActiveImage(img)}>
+                  <img
+                    key={img}
+                    src={img}
+                    alt={img}
+                    className="ISU__slider_image"
+                  />
+                </button>
               ))}
             </ul>
           </div>
-          <img src={item.images && activeImage === '' ? item.images[0] : activeImage} alt={activeImage} className="ISU__photos_main" />
+          <img
+            src={item.images && activeImage === '' ? item.images[0] : activeImage}
+            alt={activeImage}
+            className="ISU__photos_main"
+          />
         </div>
-        <div className="ISU__specification" />
+        <div className="ISU__specification">
+          <div className="card__price ISU__specification_price-wrapper">
+            {gadget.discount ? (
+              <span className="ISU__specification_price">
+                $
+                {gadget.price * (1 - (gadget.discount / 100))}
+              </span>
+            ) : ''}
+            <span className={cn(gadget.discount ? 'ISU__specification_price ISU__specification_priceOld' : 'ISU__specification_price')}>
+              $
+              {gadget.price}
+            </span>
+          </div>
+          <div className="discount__list_item-action action">
+            <button
+              type="button"
+              className="action__buy ISU__specification_buy"
+            >
+              Add to cart
+            </button>
+            <img
+              className="action__add-to-fav"
+              alt="favourites"
+              src="img/icons/fav.svg"
+            />
+          </div>
+
+          <div className="ISU__specification_description-wrapper">
+            <div className="card__specification ISU__specification_description">
+              <span className="card__specification_title">Screen</span>
+              <span className="card__specification_description">
+                {gadget.screen !== '' ? gadget.screen : 'N/A'}
+              </span>
+            </div>
+            <div className="card__specification ISU__specification_description">
+              <span className="card__specification_title">Capacity</span>
+              <span className="card__specification_description">
+                {gadget.capacity !== '' ? gadget.capacity : 'N/A'}
+              </span>
+            </div>
+            <div className="card__specification ISU__specification_description">
+              <span className="card__specification_title">RAM</span>
+              <span className="card__specification_description">
+                {gadget.ram !== '' ? gadget.ram : 'N/A'}
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
       <div className="Item__specs_lower ISL">
-        <div className="ISL__about" />
-        <div className="ISL__technical" />
+        <div className="ISL__about">
+          <h2 className="ISL__about_title">About</h2>
+          <p className="ISL__about_description">{item.description}</p>
+        </div>
+        <div className="ISL__technical">
+          <h2 className="ISL__about_title">Tech specs</h2>
+          <div className="ISU__specification_description-wrapper">
+            <div className="card__specification ISU__specification_description">
+              <span className="card__specification_title">Screen</span>
+              <span className="card__specification_description">
+                {gadget.screen}
+              </span>
+            </div>
+            <div className="card__specification ISU__specification_description">
+              <span className="card__specification_title">Resolution</span>
+              <span className="card__specification_description">
+                {item.display && item.display.screenResolution}
+              </span>
+            </div>
+            <div className="card__specification ISU__specification_description">
+              <span className="card__specification_title">OS</span>
+              <span className="card__specification_description">
+                {item.android && item.android.os}
+              </span>
+            </div>
+            <div className="card__specification ISU__specification_description">
+              <span className="card__specification_title">RAM</span>
+              <span className="card__specification_description">
+                {gadget.ram}
+              </span>
+            </div>
+            <div className="card__specification ISU__specification_description">
+              <span className="card__specification_title">Built in memory</span>
+              <span className="card__specification_description">
+                {item.storage && item.storage.flash}
+              </span>
+            </div>
+            <div className="card__specification ISU__specification_description">
+              <span className="card__specification_title">Cell</span>
+              <span className="card__specification_description">
+                {item.connectivity && item.connectivity.cell}
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
       <ProductSlider title="You may also like" phones={allGadgets} />
     </div>

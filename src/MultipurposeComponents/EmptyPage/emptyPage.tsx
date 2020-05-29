@@ -14,7 +14,7 @@ export const EmptyPage: FC<Params> = ({
   useEffect(() => {
     const timer = setTimeout(() => {
       setVisible(true);
-    }, 1000);
+    }, 500);
 
     return () => clearTimeout(timer);
   }, []);
