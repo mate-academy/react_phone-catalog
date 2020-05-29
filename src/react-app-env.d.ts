@@ -12,6 +12,7 @@ interface Products {
   screen: string;
   capacity: string;
   ram: string;
+  length: number;
 }
 
 type Slider = {
