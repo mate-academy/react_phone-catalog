@@ -6,12 +6,9 @@ export const SliderProducts = ({
   position,
   animationDuration,
   productCardRef,
-  frameSize,
-  itemWidth,
 }: SliderProps) => (
   <div
     className="slider"
-    style={{ width: `${frameSize * itemWidth}px` }}
   >
     <div
       className="slider__list"

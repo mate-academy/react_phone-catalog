@@ -1,5 +1,7 @@
 // / <reference types=string />
 
+type RootState = ReturnType<typeof rootReducer>
+
 interface Product {
   age: number;
   type: string;
@@ -168,3 +170,7 @@ type BreadcrumbProps = {
   to: string;
   label: string;
 };
+
+type ShowcaseBlockProps = {
+  title: string;
+}

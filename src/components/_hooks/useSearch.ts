@@ -2,20 +2,22 @@ import React, {
   useCallback, useEffect, useMemo, useState,
 } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
-import { getProducts } from '../../helpers/api';
 import debounce from '../../helpers/debounce';
+import { useDispatch, useSelector } from 'react-redux';
+import { getProducts, loadProducts } from '../../store';
 
 export const useSearch = () => {
   const history = useHistory();
   const location = useLocation();
+  const dispatch = useDispatch();
   const search = new URLSearchParams(location.search);
   const query = search.get('query') || '';
   const sortBy = search.get('sortBy');
   const [inputValue, setInputValue] = useState(query);
-  const [products, setProducts] = useState<Product[]>([]);
+  const products: Product[] = useSelector(getProducts);
 
   useEffect(() => {
-    getProducts().then(setProducts);
+    dispatch(loadProducts());
 
     return () => setInputValue('');
   }, [location.pathname]);

@@ -1,10 +1,11 @@
 import React from 'react';
 import { SliderProducts } from './SliderProducts';
 import { SliderControl } from './SliderControl';
-import { useShowcaseBlock } from '../_hooks/useShowcaseBlock';
 import { Heading } from '../Heading/Heading';
+import { DIRECTIONS } from '../../helpers/storage';
+import { useShowcaseBlock } from '../_hooks/useShowcaseBlock';
 
-export const ShowcaseBlock = ({ title }: HeadingProps) => {
+export const ShowcaseBlock = ({ title }: ShowcaseBlockProps) => {
   const {
     currentProducts,
     position,
@@ -24,13 +25,13 @@ export const ShowcaseBlock = ({ title }: HeadingProps) => {
         <div className="slider__controls">
           <SliderControl
             handleSlide={handleSlide}
-            direction="left"
+            direction={DIRECTIONS.left}
             position={position}
             maxPosition={maxPosition}
           />
           <SliderControl
             handleSlide={handleSlide}
-            direction="right"
+            direction={DIRECTIONS.right}
             position={position}
             maxPosition={maxPosition}
           />
