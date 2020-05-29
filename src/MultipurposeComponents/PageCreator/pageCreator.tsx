@@ -9,12 +9,14 @@ import './pageCreator.scss';
 type Params = {
   pageName: string;
   gadgets: Phones[];
+  route: string;
 };
 
 
 export const PageCreator: FC<Params> = ({
   pageName,
   gadgets,
+  route,
 }) => {
   const [sort, setSort] = useState('age');
   const [viewQty, setViewQty] = useState(4);
@@ -73,7 +75,7 @@ export const PageCreator: FC<Params> = ({
           className="PhonesCatalog__items"
           style={{ bottom: position }}
         >
-          {sortedGadgets && <CatalogMaker gadgets={sortedGadgets} />}
+          {sortedGadgets && <CatalogMaker gadgets={sortedGadgets} route={route} />}
         </div>
       </div>
       {sortedGadgets && sortedGadgets.length > viewQty ? (

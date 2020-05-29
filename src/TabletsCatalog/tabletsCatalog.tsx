@@ -22,7 +22,7 @@ export const TabletsCatalog = () => {
           <PageCreator
             pageName="Tablets"
             gadgets={tablets}
-
+            route="/tablets/"
           />
         )
         : (

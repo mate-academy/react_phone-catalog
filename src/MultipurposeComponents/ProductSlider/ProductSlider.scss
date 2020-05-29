@@ -86,6 +86,10 @@
   border: 1px solid #E2E6E9;
   margin: 0 16px 40px 0;
 
+  &__link {
+    text-decoration: none;
+  }
+
   &__image {
     width: 208px;
     height: 208px;

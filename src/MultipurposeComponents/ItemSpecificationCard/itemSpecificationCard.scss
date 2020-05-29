@@ -1,3 +1,48 @@
 .Item {
   margin: 0 152px;
+  &__title {
+    font-family: Mont, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: #313237;
+  }
+}
+
+.ISU {
+  display: flex;
+  &__photos {
+    display: flex;
+    &_main {
+      width: 464px;
+      height: 464px;
+      padding: 11px;
+    }
+  }
+  &__slider {
+    &_list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      padding: 0;
+      margin: 0;
+    }
+    &_image {
+      width: 66px;
+      height: 66px;
+      padding: 7px;
+    }
+    &_button {
+      padding: 0;
+      border: 1px solid #C4C4C4;
+      box-sizing: border-box;
+      margin: 0 17px 17px 0;
+      background-color: white;
+    }
+  }
+  &__specification {
+    margin-left: 64px;
+  }
 }

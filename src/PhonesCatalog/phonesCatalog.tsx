@@ -24,6 +24,7 @@ export const PhonesCatalog = () => {
           <PageCreator
             pageName="Phones"
             gadgets={phones}
+            route="/phones/"
           />
         )
         : (

@@ -16,3 +16,5 @@ const downloadProducts = () => fetch(PRODUCTS_API_URL).then(response => response
 
 // --- DFS - means Data From Server --
 export const DFS = React.createContext(downloadProducts());
+export const RoutePhones = '/phones/';
+export const RouteTablets = '/tablets/';
