@@ -5,7 +5,7 @@ import React, {
 } from 'react';
 import { useHistory, useLocation, Link } from 'react-router-dom';
 import PhoneCard from '../components/PhoneCard/PhoneCard';
-import { getPhones } from '../helpers/api';
+import { getAllProducts } from '../helpers/api';
 import Loader from '../helpers/Loader/Loader';
 
 
@@ -20,11 +20,12 @@ export const PhonesPage = () => {
   const searchParams = new URLSearchParams(location.search);
 
   useEffect(() => {
-    getPhones().then(data => {
+    window.scrollTo({ top: 0 });
+    getAllProducts().then(data => {
       setLoading(true);
-      setPhones(data);
-      setSortedPhones(data);
-      setPhonesQuantity(data);
+      setPhones(data.filter((product: Products) => product.type === 'phone'));
+      setSortedPhones(data.filter((product: Products) => product.type === 'phone'));
+      setPhonesQuantity(data.filter((product: Products) => product.type === 'phone'));
     });
   }, []);
 

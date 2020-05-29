@@ -1,0 +1,48 @@
+@import '../../utils/vairables.scss';
+
+.Footer {
+  max-width: 1400px;
+  height: 96px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0px -1px 0px #E2E6E9;
+  margin-top: 80px;
+  padding: 0 152px;
+
+  &__list {
+    display: flex;
+    list-style: none;
+  }
+
+  &__item {
+    margin-right: 64px;
+
+    &:last-child{
+      margin-right: 0;
+    }
+  }
+
+  &__left {
+    display: flex;
+    align-items: center;
+  }
+
+  &__backTo {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: $gray-color;
+    margin-right: 16px;
+  }
+
+  &__backhome {
+    width: 32px;
+    height: 32px;
+    background-image: url('./BackTo.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 1px solid #B4BDC4;
+    box-sizing: border-box;
+  }
+}
