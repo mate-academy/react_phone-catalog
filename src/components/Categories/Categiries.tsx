@@ -3,29 +3,12 @@ import './Categories.scss';
 import { useHistory } from 'react-router-dom';
 
 
-const categories = [
-  {
-    name: 'Mobile phones',
-    color: '#FCDBC1',
-    imgUrl: './img/Categories/image1.svg',
-    items: 0,
-    url: 'phones',
+  type Prop = {
+    phones: number;
+    tablets: number;
+  };
 
-  }, {
-    name: 'Tablets',
-    color: '#8D8D92',
-    imgUrl: './img/Categories/image2.svg',
-    items: 0,
-    url: 'tablets',
-  }, {
-    name: 'Accessories',
-    color: '#973D5F',
-    imgUrl: './img/Categories/img3.png',
-    items: 0,
-    url: 'accessories',
-  }];
-
-export const Categories = () => {
+export const Categories: React.FC<Prop> = ({ phones, tablets }) => {
   const history = useHistory();
 
   const handleRedirect = (url: string) => {
@@ -33,6 +16,28 @@ export const Categories = () => {
       pathname: url,
     });
   };
+
+  const categories = [
+    {
+      name: 'Mobile phones',
+      color: '#FCDBC1',
+      imgUrl: './img/Categories/image1.svg',
+      items: phones,
+      url: 'phones',
+
+    }, {
+      name: 'Tablets',
+      color: '#8D8D92',
+      imgUrl: './img/Categories/image2.svg',
+      items: tablets,
+      url: 'tablets',
+    }, {
+      name: 'Accessories',
+      color: '#973D5F',
+      imgUrl: './img/Categories/img3.png',
+      items: 0,
+      url: 'accessories',
+    }];
 
   return (
     <section className="section">
