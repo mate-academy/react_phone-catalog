@@ -4,10 +4,7 @@ import cn from 'classnames';
 import './ProductDetailsPage.scss';
 
 import { getProducts, getProductDetails } from '../../helpers/api';
-
-// type Props = RouteComponentProps<{
-//   productId: string;
-// }>;
+import { PRODUCTS_INFO, PRODUCTS_SPECS } from '../../helpers/config';
 
 export const ProductDetailsPage: React.FC = () => {
   const [products, setProducts] = useState<Slide[]>([]);
@@ -65,8 +62,53 @@ export const ProductDetailsPage: React.FC = () => {
     [productInfo],
   );
 
-  // console.log('productInfo', productInfo);
-  // console.log('productDetails', productDetails);
+  const techInfo = (param: string, order: string) => {
+    let value = '';
+
+    if (order === 'info') {
+      switch (param) {
+        case 'Screen':
+          value = productInfo?.screen || '';
+          break;
+
+        case 'RAM':
+          value = productInfo?.ram || '';
+          break;
+
+        case 'Built in memory':
+          value = productInfo?.capacity || '';
+          break;
+        default:
+      }
+    }
+
+    if (order === 'detail') {
+      switch (param) {
+        case 'Resolution':
+          value = productDetails?.display.screenResolution || '';
+          break;
+
+        case 'Processor':
+          value = productDetails?.hardware.cpu || '';
+          break;
+
+        case 'Camera':
+          value = productDetails?.camera.primary || '';
+          break;
+
+        case 'Zoom':
+          value = productDetails?.camera.zoom || '';
+          break;
+
+        case 'Cell':
+          value = productDetails?.connectivity.cell || '';
+          break;
+        default:
+      }
+    }
+
+    return value || 'No info';
+  };
 
   return (
     <>
@@ -128,33 +170,37 @@ export const ProductDetailsPage: React.FC = () => {
                       </span>
                     )}
                   </div>
-                  <div className="ProdactPage__Buttons">
-                    <div className="ProdactPage__Buttons--main">
-                      <button
-                        type="button"
-                        className="card__button-cart"
-                      >
-                        Add to cart
-                      </button>
-                    </div>
-                    <div>
-                      <button
-                        type="button"
-                        className="card__button-favor"
-                      >
-                        favor
-                      </button>
-                    </div>
+                  <div className="card__button-wrap">
+                    <button
+                      type="button"
+                      className="card__button-cart"
+                    >
+                      Add to cart
+                    </button>
+                    <button
+                      type="button"
+                      className="card__button-favor"
+                    >
+                      favor
+                    </button>
                   </div>
                 </section>
-                {/* <section className="GoodPage__Info">
-                  <GoodTechInfo
-                    goodDetail={goodDetail}
-                    goodInfo={goodInfo}
-                  />
-                </section> */}
+                <section className="ProdactPage__Info">
+                  <ul className="ProdactPage__InfoList">
+                    {PRODUCTS_INFO.map(item => (
+                      <li className="ProdactPage__InfoItem">
+                        <p className="ProdactPage__InfoTitle">
+                          {item.name}
+                        </p>
+                        <p className="ProdactPage__InfoFeature">
+                          {productInfo
+                            && techInfo(item.name, item.order)}
+                        </p>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
               </div>
-
               <div className="ProdactPage__Column">
                 <section className="ProdactPage__Description">
                   <h2 className="ProdactPage__SubHeading">About</h2>
@@ -165,15 +211,21 @@ export const ProductDetailsPage: React.FC = () => {
                   </div>
                 </section>
               </div>
-
               <div className="ProdactPage__Column">
                 <section className="ProdactPage__TechSpecs">
                   <h2 className="ProdactPage__SubHeading">Tech specs</h2>
-                  <ul>
-                    {/* <GoodSpecsInfo
-                      goodDetail={goodDetail}
-                      goodInfo={goodInfo}
-                    /> */}
+                  <ul className="ProdactPage__SpecsList">
+                    {PRODUCTS_SPECS.map(item => (
+                      <li className="ProdactPage__SpecsItem">
+                        <p className="ProdactPage__SpecsTitle">
+                          {item.name}
+                        </p>
+                        <p className="ProdactPage__SpecsFeature">
+                          {productInfo
+                            && techInfo(item.name, item.order)}
+                        </p>
+                      </li>
+                    ))}
                   </ul>
                 </section>
               </div>
@@ -181,7 +233,7 @@ export const ProductDetailsPage: React.FC = () => {
           </article>
         )}
       </section>
-      {/* <CardSlider goods={sliderItems} title="You may also like" /> */}
+      {/* Slider----------------------------------- */}
     </>
   );
 };

@@ -1,6 +1,6 @@
 import React from 'react';
 import './Card.scss';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useRouteMatch } from 'react-router-dom';
 // import { match } from 'assert';
 
 type Props = {
@@ -24,12 +24,12 @@ export const Card: React.FC<Props> = ({
   ram,
   id,
 }) => {
-  const { section } = useParams();
+  const { path } = useRouteMatch();
 
   return (
     <div className="wrap">
       <article className="card">
-        <Link to={`/${section}/${id}`}>
+        <Link to={`${path}/${id}`}>
           <img alt="card" src={imageUrl} className="card__img" />
         </Link>
         <div className="card__container-inner">
