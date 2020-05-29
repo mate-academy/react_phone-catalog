@@ -28,7 +28,7 @@ export const Slider = () => {
   const [widthSlide, setWidthSlide] = useState(0);
   const [transition, setTransition] = useState(.5);
   const slideWidthRef = useRef<HTMLDivElement>(null);
-  const [translate, setTranslate] = useState(0);
+  const [translate, setTranslate] = useState(1040);
   const [slides, getSlides] = useState<string[]>([lastSlide, firstSlide, ...middleSlide]);
   const autoPlayRef = useRef<() => void>();
   const transitionRef = useRef<() => void>();
