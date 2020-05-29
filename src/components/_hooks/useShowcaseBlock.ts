@@ -9,7 +9,7 @@ export const useShowcaseBlock = (title: string) => {
 
   useEffect(() => {
     dispatch(loadProducts());
-  }, [])
+  }, [dispatch]);
 
   const products: Product[] = useSelector(getProducts);
   const [position, setPosition] = useState(0);

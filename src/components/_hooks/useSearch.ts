@@ -20,7 +20,7 @@ export const useSearch = () => {
     dispatch(loadProducts());
 
     return () => setInputValue('');
-  }, [location.pathname]);
+  }, [dispatch, location.pathname]);
 
   const historyPushWithDebounce = useCallback(
     debounce((value: string) => {
