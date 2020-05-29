@@ -14,7 +14,7 @@ export const PhonesSlider: React.FC<Props> = ({ title }) => {
 
   useEffect(() => {
     getPhones().then(data => {
-      setPhones(data.filter(phone => phone.discount > 0));
+      setPhones(data);
     });
   }, []);
 

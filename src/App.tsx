@@ -11,6 +11,7 @@ import { Footer } from './components/Footer/Footer';
 import { FavoritesPage } from './pages/FavoritesPage';
 import { CardPage } from './pages/CardPage';
 import './App.scss';
+import './helpers/fonts/fonts.scss';
 
 const App = () => (
   <>

@@ -19,11 +19,11 @@
   &__link {
     position: relative;
     padding: 22px 0;
-    font-family: 'Mont';
+    font-weight: bold;
+    line-height: 11px;
     color: $gray-color;
     text-decoration: none;
     font-size: 12px;
-    line-height: 11px;
     letter-spacing: 0.04em;
 
     &--active {
