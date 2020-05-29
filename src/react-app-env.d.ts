@@ -169,6 +169,7 @@ type ProductsAmountProps = {
 type BreadcrumbProps = {
   to: string;
   label: string;
+  isLast: boolean;
 };
 
 type ShowcaseBlockProps = {

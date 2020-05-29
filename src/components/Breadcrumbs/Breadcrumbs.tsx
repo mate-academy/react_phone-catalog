@@ -14,7 +14,7 @@ export const Breadcrumbs = () => {
   const preparedBreadcrumbs = useMemo(() => {
     return BREADCRUMBS
       .filter(item => item.to === location.pathname);
-  }, [location.pathname]);
+  }, [location]);
 
   return (
     <ul className="breadcrumbs section__breadcrumbs">
@@ -23,7 +23,12 @@ export const Breadcrumbs = () => {
         className="breadcrumbs__item breadcrumbs__home"
         activeClassName="breadcrumb__link--active"
       />
-      {preparedBreadcrumbs.map((crumb) => <Breadcrumb {...crumb} key={crumb.to} />)}
+      {preparedBreadcrumbs.map((crumb, index) =>
+        <Breadcrumb
+          {...crumb}
+          key={crumb.to}
+          isLast={index === preparedBreadcrumbs.length - 1}
+        />)}
     </ul>
   );
 };

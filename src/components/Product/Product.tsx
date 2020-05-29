@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 
 export const Product = ({
   name, imageUrl, price, screen, capacity, ram, discount, id, productCardRef,
 }: ProductProps) => {
-  const preparedScreen = screen.replace(' inches', '"');
-  const preparedFullPrice = price * (discount / 100) + price;
-  const preparedCapacity = `${parseInt((capacity || '32000'), 10)} MB`;
-  const preparedRam = `${parseInt((ram || '1000'), 10)} MB`;
+  const preparedScreen = useMemo(() => screen.replace(' inches', '"'), [screen]);
+  const preparedFullPrice = useMemo(() => price * (discount / 100) + price, [price, discount]);
+  const preparedCapacity = useMemo(() => `${parseInt((capacity || '32000'), 10)} MB`, [capacity]);
+  const preparedRam = useMemo(() => `${parseInt((ram || '1000'), 10)} MB`, [ram]);
 
   return (
     <article

@@ -38,12 +38,12 @@
     @include hover(border-color, $primary-color, 0.2);
 
     &--left {
-      background-image: url("../../images/icons/left.svg");
+      background-image: url("../../assets/img/left.svg");
       left: 0;
     }
 
     &--right {
-      background-image: url("../../images/icons/right.svg");
+      background-image: url("../../assets/img/right.svg");
       right: 0;
     }
   }

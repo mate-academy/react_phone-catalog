@@ -1,17 +1,17 @@
 import React from 'react';
 import cn from 'classnames';
-import { ProductsList } from '../components/ProductsList/ProductsList';
 import { useProductsList } from '../components/_hooks/useProductsList';
 import { Heading } from '../components/Heading/Heading';
-import { Dropdown } from '../components/Dropdown/Dropdown';
 import { Pagination } from '../components/Pagination/Pagination';
 import { ProductsAmount } from '../components/ProductsAmount/ProductsAmount';
 import {
   DROPDOWN_HEADINGS,
   SORT_TYPES,
   PER_PAGE,
-} from '../helpers/storage';
+} from '../common/constants';
 import { Breadcrumbs } from '../components/Breadcrumbs/Breadcrumbs';
+import { Dropdown } from '../components/Dropdown/Dropdown';
+import { ProductsList } from '../components/ProductsList/ProductList';
 
 export const PhonesPage = () => {
   const {

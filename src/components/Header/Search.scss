@@ -35,13 +35,13 @@
     outline: 0;
     background-color: #fff;
     transform: translateY(-50%);
-    background-image: url("../../images/icons/search.svg");
+    background-image: url("../../assets/img/search.svg");
     background-repeat: no-repeat;
     background-position: center;
 
     &--clear {
       cursor: pointer;
-      background-image: url("../../images/icons/clear.svg");
+      background-image: url("../../assets/img/clear.svg");
     }
   }
 }

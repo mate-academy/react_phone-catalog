@@ -1,6 +1,6 @@
 import React from 'react';
 import cn from 'classnames';
-import { ProductsList } from '../components/ProductsList/ProductsList';
+import { ProductsList } from '../components/ProductsList/ProductList';
 import { useProductsList } from '../components/_hooks/useProductsList';
 import { Heading } from '../components/Heading/Heading';
 import { Dropdown } from '../components/Dropdown/Dropdown';
@@ -9,7 +9,7 @@ import {
   DROPDOWN_HEADINGS,
   SORT_TYPES,
   PER_PAGE,
-} from '../helpers/storage';
+} from '../common/constants';
 import { ProductsAmount } from '../components/ProductsAmount/ProductsAmount';
 import { Breadcrumbs } from '../components/Breadcrumbs/Breadcrumbs';
 

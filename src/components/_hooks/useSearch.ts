@@ -2,16 +2,17 @@ import React, {
   useCallback, useEffect, useMemo, useState,
 } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
-import debounce from '../../helpers/debounce';
+import debounce from '../../common/helpers/debounce';
 import { useDispatch, useSelector } from 'react-redux';
-import { getProducts, loadProducts } from '../../store';
+import { getProducts, loadProducts } from '../../redux';
+import { SORT } from '../../common/enums.d';
 
 export const useSearch = () => {
   const history = useHistory();
   const location = useLocation();
   const dispatch = useDispatch();
   const search = new URLSearchParams(location.search);
-  const query = search.get('query') || '';
+  const query = useMemo(() => search.get('query') || '', [search]);
   const sortBy = search.get('sortBy');
   const [inputValue, setInputValue] = useState(query);
   const products: Product[] = useSelector(getProducts);
@@ -43,30 +44,28 @@ export const useSearch = () => {
     }, [historyPushWithDebounce],
   );
 
-  let searchedProducts: Product[] = useMemo(() => {
+  const searchedProducts: Product[] = useMemo(() => {
     return products.filter(({ name }) => (
       name.toLowerCase().includes(query)
-    ));
-  }, [products, query]);
-
-  searchedProducts = useMemo(() => {
-    return [...searchedProducts].sort((a, b) => {
+    ))
+      .slice()
+      .sort((a, b) => {
       switch (sortBy) {
-        case 'Newest':
+        case SORT.NEWEST:
           return a.age - b.age;
-        case 'From-A-to-Z':
+        case SORT.FROM_A_TO_Z:
           return a.name.localeCompare(b.name);
-        case 'From-Z-to-A':
+        case SORT.FROM_Z_TO_A:
           return b.name.localeCompare(a.name);
-        case 'Cheapest':
+        case SORT.CHEAPEST:
           return a.price - b.price;
         default:
           return 0;
       }
     });
-  }, [searchedProducts, sortBy]);
+  }, [products, query, sortBy]);
 
-  const searchReset = () => {
+  const searchReset = useCallback(() => {
     setInputValue('');
 
     if (!(search.get('query') || '')) {
@@ -74,7 +73,7 @@ export const useSearch = () => {
     }
 
     history.push({ search: '' });
-  };
+  }, [search, history]);
 
   return {
     inputValue,
