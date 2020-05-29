@@ -18,16 +18,18 @@ export const PhonesSlider: React.FC<Props> = ({ title }) => {
     });
   }, []);
 
+  const cardWidthWithPad = 288;
+  const maxWidth = cardWidthWithPad * (phones.length - 4);
 
   const handleNextClick = () => {
-    if (cardPosition !== -1728) {
-      setCardPosition(cardPosition - 288);
+    if (cardPosition !== -maxWidth) {
+      setCardPosition(cardPosition - cardWidthWithPad);
     }
   };
 
   const handlePrevClick = () => {
     if (cardPosition !== 0) {
-      setCardPosition(cardPosition + 288);
+      setCardPosition(cardPosition + cardWidthWithPad);
     }
   };
 
@@ -61,7 +63,7 @@ export const PhonesSlider: React.FC<Props> = ({ title }) => {
                 'carousel__btn',
                 'carousel__btn_next',
                 {
-                  btn__noactive_next: cardPosition === -1728,
+                  btn__noactive_next: cardPosition === -maxWidth,
                 })}
             >
               { }
