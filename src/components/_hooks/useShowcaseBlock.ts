@@ -1,10 +1,17 @@
 import {
   useCallback, useEffect, useMemo, useState,
 } from 'react';
-import { getProducts } from '../../helpers/api';
+import { useDispatch, useSelector } from 'react-redux';
+import { getProducts, loadProducts } from '../../store';
 
 export const useShowcaseBlock = (title: string) => {
-  const [products, setProducts] = useState<Product[]>([]);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(loadProducts());
+  }, [])
+
+  const products: Product[] = useSelector(getProducts);
   const [position, setPosition] = useState(0);
   const [width, setWidth] = useState(0);
 
@@ -19,11 +26,6 @@ export const useShowcaseBlock = (title: string) => {
   const marginWidth = 16;
   const itemWidth = width + marginWidth;
   const animationDuration = 700;
-
-  useEffect(() => {
-    getProducts()
-      .then(data => setProducts(data));
-  }, []);
 
   const hotPricesProducts: Product[] = useMemo(() => {
     return products.filter(product => product.discount !== 0);
