@@ -8,8 +8,9 @@
     @include small-text;
     color: #89939a;
   }
-
-  &__select {
+  &__pseudo-select {
+    cursor: pointer;
+    position: relative;
     width: 176px;
     height: 40px;
     @include buttons;
@@ -19,6 +20,83 @@
     padding: 0 12px;
     border: 1px solid #b4bdc4;
     box-sizing: border-box;
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      margin-right: 17px;
+      display: block;
+      height: 100%;
+      width: 15px;
+      background-image: url("../../imgs/Icons/ChevronArrow.png");
+      background-position: center;
+      background-repeat: no-repeat;
 
+      transform: rotate(270deg);
+    }
   }
+
+  &__options-wrapper {
+    overflow: hidden;
+    height: max-content;
+    width: 100%;
+    margin: 0;
+    position: absolute;
+    top: 42px;
+    left: -1px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #e2e6e9;
+    box-sizing: border-box;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+    transition: 0.5s;
+    transform-origin: top;
+    &--invisible {
+      transform: rotateX(90deg);
+    }
+  }
+
+  &__option {
+    cursor: pointer;
+    width: 176px;
+    height: 40px;
+    @include body-text;
+    line-height: 40px;
+    color: #89939a;
+    outline: none;
+    padding: 0 12px;
+    box-sizing: border-box;
+    background-color: white;
+    &:hover {
+      background-color: #fafbfc;
+      color: #313237;
+    }
+  }
+
+
+
+
+  // &__select {
+  //   width: 176px;
+  //   height: 40px;
+  //   @include buttons;
+  //   line-height: 40px;
+  //   color: #313237;
+  //   outline: none;
+  //   padding: 0 12px;
+  //   border: 1px solid #b4bdc4;
+  //   box-sizing: border-box;
+
+  //   &__option {
+  //     display: block;
+  //     color: #89939a;
+  //     &:hover {
+  //       background-color: #fafbfc;
+  //       color: #313237;
+
+  //     }
+  //   }
+
+  // }
 }

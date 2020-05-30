@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Product } from '../../interfaces';
 import { ProductCard } from '../ProductCard/ProductCard';
 import './CardsSlider.scss';
@@ -7,19 +7,30 @@ import './CardsSlider.scss';
 export const CardsSlider = ({ title, products}:{title:string; products: Product[]}) => {
 
   const [left, setLeft] = useState(-8);
+  const [isLeftButtonDisabled, setIsLeftButtonDisabled] = useState<boolean>(true);
+  const [isRightButtonDisabled, setIsRightButtonDisabled] = useState<boolean>(false);
+
 
   const handleLeftClick = () => {
-    if(left >= -8) {
-      return;
-    }
-    setLeft(left + 288);
+     setLeft(left + 288);
   }
   const handleRightClick = () => {
-    if(left <= -((products.length - 4) * 288)) {
-      return;
-    }
     setLeft(left - 288);
   }
+
+  useEffect(() => {
+    if(left >= -8) {
+      setIsLeftButtonDisabled(true)
+    } else {
+      setIsLeftButtonDisabled(false)
+    };
+
+    if(left <= -((products.length - 4) * 288)) {
+      setIsRightButtonDisabled(true)
+    } else {
+      setIsRightButtonDisabled(false)
+    }
+  }, [left, products])
 
 
   return (
@@ -30,12 +41,14 @@ export const CardsSlider = ({ title, products}:{title:string; products: Product[
           <button
             className="CardsSlider__button"
             onClick={handleLeftClick}
+            disabled={isLeftButtonDisabled}
           >
             {'<'}
           </button>
           <button
             className="CardsSlider__button"
             onClick={handleRightClick}
+            disabled={isRightButtonDisabled}
           >
             {'>'}
           </button>
@@ -45,7 +58,7 @@ export const CardsSlider = ({ title, products}:{title:string; products: Product[
         <ul className="CardsSlider__stripe" style={{ left: `${left}px` }}>
           {products.map(product => {
             return (
-              <li>
+              <li key={product.id}>
                 <ProductCard
                   product={product}
                 />

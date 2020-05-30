@@ -53,7 +53,7 @@ export const PromoSlider = ({ slides }: { slides: string[] }) => {
           >
             {slides.map((slideURL) => {
               return (
-                <li >
+                <li key={slideURL}>
                   <img className="PromoSlider__item" src={slideURL} alt="Banner Photo" />
                 </li>
               )

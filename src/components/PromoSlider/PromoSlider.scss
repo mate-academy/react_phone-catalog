@@ -1,6 +1,10 @@
 
 .PromoSlider {
   margin: 40px 0 104px;
+
+  @media screen and (max-width: 749px) {
+    display: none;
+  }
   &__frame {
     overflow: hidden;
     margin: 0 16px;

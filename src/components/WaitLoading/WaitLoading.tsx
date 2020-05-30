@@ -15,7 +15,7 @@ export const WaitLoading = () => {
     }, 100)
   }, [count])
 
-  let arr = new Array();
+  let arr: number[] = [];
   arr.length = 7;
   arr.fill(0);
 

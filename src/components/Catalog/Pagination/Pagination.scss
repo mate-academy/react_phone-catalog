@@ -8,16 +8,5 @@
 
   &__button {
     @include pagination-button;
-
-    &--active {
-      background-color: #313237;
-      color: white;
-    }
-
-    &--arrow {
-      margin: 0 12px;
-    }
-
   }
 }
-

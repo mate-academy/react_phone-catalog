@@ -81,6 +81,23 @@
   margin: 0 4px;
   outline: none;
 
+  &:hover {
+    border: 1px solid #313237;
+    color: #313237;
+  }
+
+  &:disabled {
+    border: 1px solid #e2e6e9;
+    color: #e2e6e9;
+  }
+  &--active {
+    background-color: #313237;
+    color: white;
+  }
+  &--arrow {
+    margin: 0 12px;
+  }
+
 }
 
 @mixin h3 {

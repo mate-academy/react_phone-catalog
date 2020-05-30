@@ -22,7 +22,9 @@ export const Header = () => {
     <div className="Header-wrapper">
       <div className="Header-left-wrapper">
       <Logo />
-      <Nav links={headerLinks} addresses={['/cart']} />
+      <Nav
+      links={headerLinks}
+      addresses={['/cart']} />
       </div>
 
       <div className="Header-right-wrapper">

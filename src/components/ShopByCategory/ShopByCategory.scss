@@ -35,30 +35,24 @@
     display: block;
     width: 100%;
     padding-top: 100%;
+    background-position-x: right;
+    background-position-y: bottom;
+    background-repeat: no-repeat;
+    background-size: contain;
 
     &--phones {
       background-color: #fcdbc1;
       background-image: url("../../imgs/image6.png");
-      background-position-x: right;
-      background-position-y: bottom;
-      background-repeat: no-repeat;
-      
+
     }
     &--tablets {
       background-color: #8d8d92;
       background-image: url("../../imgs/image5.png");
-      background-position-x: right;
-      background-position-y: bottom;
-      background-repeat: no-repeat;
     }
     &--accessories {
       background-color: #d53c51;
       background-image: url("../../imgs/image7.png");
-      background-position-x: right;
-      background-position-y: bottom;
-      background-repeat: no-repeat;
     }
   }
 
 }
-

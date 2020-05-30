@@ -6,7 +6,7 @@ import { LinkType } from '../../interfaces';
 
 
 export const Nav = ({ links, addresses }: { links: LinkType[]; addresses: string[] }) => {
-  
+
   const location = useLocation();
   const isOnPage = !addresses.includes(location.pathname)
 
@@ -23,7 +23,7 @@ export const Nav = ({ links, addresses }: { links: LinkType[]; addresses: string
                 className="Nav__item">
                 <label className="Nav__label">
                   {isOuter
-                    ? <a className="Nav__link" target="_blank" href={address}>{title}</a>
+                    ? <a className="Nav__link" href={address}>{title}</a>
                     : <NavLink
                       className="Nav__link"
                       exact
