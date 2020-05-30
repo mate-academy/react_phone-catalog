@@ -8,8 +8,9 @@ export const ProductDetailsPage = () => {
 
   const getDetails = async (productId: string) => {
     const details = await fetchProductDetails(productId);
-    setProductDetails(details)
-  }
+
+    setProductDetails(details);
+  };
 
   useEffect(() => {
     getDetails(match.params.productId);
@@ -18,7 +19,7 @@ export const ProductDetailsPage = () => {
   return (
     console.log(productDetails),
     <div>
-      <h5>HI</h5>
-    </div>
-  )
-}
+        <h5>HI</h5>
+      </div>
+  );
+};

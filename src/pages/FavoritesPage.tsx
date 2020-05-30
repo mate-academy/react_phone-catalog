@@ -1,11 +1,11 @@
 import React from 'react';
 import cn from 'classnames';
+import { useSelector } from 'react-redux';
 import { useProductsList } from '../components/_hooks/useProductsList';
 import { Heading } from '../components/Heading/Heading';
 import { ProductsAmount } from '../components/ProductsAmount/ProductsAmount';
 import { Breadcrumbs } from '../components/Breadcrumbs/Breadcrumbs';
 import { ProductCard } from '../components/ProductCard/ProductCard';
-import { useSelector } from 'react-redux';
 import { getFavorites } from '../redux';
 
 export const FavoritesPage = () => {
