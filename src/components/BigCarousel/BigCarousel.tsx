@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import CN from 'classnames';
 import './styleBigCarousel.scss';
 
 const slides: string[] = [
@@ -42,14 +43,9 @@ export const BigCarousel: React.FC<Props> = ({ itemWidth }) => {
     }
   };
 
-  const handleSlide = (index: number, target: any) => {
-    setImgIndex(index);
+  const handleSlide = (index: number) => {
+    setImgIndex(index + 1);
     setImgPosition(-(index * itemWidth));
-    target.className = 'indicator indicator--active';
-  };
-
-  const takeOffClick = (target: any) => {
-    target.className = 'indicator';
   };
 
   return (
@@ -69,7 +65,15 @@ export const BigCarousel: React.FC<Props> = ({ itemWidth }) => {
           </div>
           <div className="indicators">
             {slides.map((item, index) => (
-              <input key={item} type="button" onBlur={(event) => takeOffClick(event.target)} className="indicator" onClick={(event) => handleSlide(index, event.target)} />
+              <input
+                key={item}
+                className={CN({
+                  'indicator--active': index === imgIndex - 1,
+                  indicator: true,
+                })}
+                type="button"
+                onClick={() => handleSlide(index)}
+              />
             ))}
           </div>
         </div>
@@ -77,5 +81,3 @@ export const BigCarousel: React.FC<Props> = ({ itemWidth }) => {
     </>
   );
 };
-
-//синхронизация стрелок с индикаторами
