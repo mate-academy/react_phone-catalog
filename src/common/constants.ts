@@ -23,3 +23,8 @@ export const PER_PAGE = [
   { option: '16' },
   { option: 'All' },
 ];
+
+export const PRODUCT_TYPES: ProductTypes = {
+  phone: 'phones',
+  tablet: 'tablets',
+};

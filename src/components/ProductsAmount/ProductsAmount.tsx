@@ -5,12 +5,15 @@ export const ProductsAmount = ({ title }: ProductsAmountProps) => {
   const { phones, tablets, queryCondition } = useProductsList();
   const preparedTitle = title.toLowerCase();
 
-  const [amount = 0] = useMemo(() => {
-    if (preparedTitle.includes('phones')) {
-      return [phones.length];
+  const amount = useMemo(() => {
+    switch (true) {
+      case preparedTitle.includes('phones'):
+        return phones.length;
+      case preparedTitle.includes('tablets'):
+        return tablets.length;
+      default:
+        return 0;
     }
-
-    return [tablets.length];
   }, [phones, tablets, preparedTitle]);
 
   return (
