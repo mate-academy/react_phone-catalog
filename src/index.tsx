@@ -10,7 +10,7 @@ import './styles/App.scss';
 ReactDOM.render(
   <Provider store={store}>
     <HashRouter>
-      <App/>
+      <App />
     </HashRouter>
   </Provider>,
   document.getElementById('root'),

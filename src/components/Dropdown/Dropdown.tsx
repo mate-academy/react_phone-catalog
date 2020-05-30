@@ -11,10 +11,11 @@ export const Dropdown = ({ list, heading }: DropdownProps) => {
     handleSort,
   } = useDropdown(list, heading);
 
-  const sort = useCallback((e: React.MouseEvent, option: string) => {
+  const onSort = useCallback((e: React.MouseEvent, option: string) => {
     e.preventDefault();
     handleSort(option);
   }, [handleSort]);
+
 
   return (
     <div className="dropdown">
@@ -41,7 +42,7 @@ export const Dropdown = ({ list, heading }: DropdownProps) => {
                   'dropdown__list-item': true,
                   'dropdown__list-item--active': selectedOption === option,
                 })}
-                onClick={e => sort(e, option)}
+                onClick={e => onSort(e, option)}
               >
                 {option}
               </a>

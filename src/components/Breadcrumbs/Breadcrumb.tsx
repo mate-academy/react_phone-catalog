@@ -7,13 +7,15 @@ export const Breadcrumb = ({ to, label, isLast }: BreadcrumbProps) => {
       <span className="breadcrumbs__arrow" />
       {isLast
         ? <span className="breadcrumbs__last">{label}</span>
-        : <NavLink
-        to={to}
-        className="breadcrumbs__link"
-        activeClassName="breadcrumbs__link--active"
-      >
-        {label}
-      </NavLink>}
+        : (
+          <NavLink
+            to={to}
+            className="breadcrumbs__link"
+            activeClassName="breadcrumbs__link--active"
+          >
+            {label}
+          </NavLink>
+        )}
     </li>
   );
 };

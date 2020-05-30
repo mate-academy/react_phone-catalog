@@ -18,8 +18,8 @@ export const SORT_TYPES = [
 ];
 
 export const PER_PAGE = [
-  { option: 'All' },
   { option: '4' },
   { option: '8' },
   { option: '16' },
+  { option: 'All' },
 ];

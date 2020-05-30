@@ -1,5 +1,6 @@
 import { useCallback, useMemo } from 'react';
 import { useSearch } from './useSearch';
+import { PER_PAGE } from '../../common/constants';
 
 export const useProductsList = () => {
   const {
@@ -14,26 +15,30 @@ export const useProductsList = () => {
     return searchedProducts.filter(product => product.type === 'tablet');
   }, [searchedProducts]);
 
+  const searchPerPageCheck = search.get('perPage') === 'All'
+    ? searchedProducts.length
+    : search.get('perPage');
+
   const page = Number(search.get('page')) || 1;
-  const perPage = Number(search.get('perPage')) || searchedProducts.length;
+  const perPage = Number(searchPerPageCheck) || Number(PER_PAGE[0].option);
   const indexOfLast = useMemo(() => page * perPage, [page, perPage]);
   const indexOfFirst = useMemo(() => indexOfLast - perPage, [indexOfLast, perPage]);
 
   const {
     numberOfProducts = 0,
-    currentProducts = searchedProducts
+    currentProducts = searchedProducts,
   } = useMemo(() => {
     if (location.pathname === '/phones') {
       return {
-        numberOfProducts : phones.length,
-        currentProducts : phones.slice(indexOfFirst, indexOfLast),
-      }
-    } else {
-      return {
-        numberOfProducts : tablets.length,
-        currentProducts : tablets.slice(indexOfFirst, indexOfLast),
-      }
+        numberOfProducts: phones.length,
+        currentProducts: phones.slice(indexOfFirst, indexOfLast),
+      };
     }
+
+    return {
+      numberOfProducts: tablets.length,
+      currentProducts: tablets.slice(indexOfFirst, indexOfLast),
+    };
   }, [phones, tablets, indexOfFirst, indexOfLast, location.pathname]);
 
   const changePage = (pageNumber: number) => {

@@ -69,11 +69,11 @@ export const Carousel = () => {
       <div className="carousel__container" ref={measuredRef}>
         <CarouselControl
           changeSlide={changeSlide}
-          direction="left"
+          direction={DIRECTIONS.left}
         />
         <CarouselControl
           changeSlide={changeSlide}
-          direction="right"
+          direction={DIRECTIONS.right}
         />
         <CarouselSlides
           slides={carouselImages}

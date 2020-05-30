@@ -2,8 +2,8 @@ import React, {
   useCallback, useEffect, useMemo, useState,
 } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
-import debounce from '../../common/helpers/debounce';
 import { useDispatch, useSelector } from 'react-redux';
+import debounce from '../../common/helpers/debounce';
 import { getProducts, loadProducts } from '../../redux';
 import { SORT } from '../../common/enums.d';
 
@@ -50,19 +50,19 @@ export const useSearch = () => {
     ))
       .slice()
       .sort((a, b) => {
-      switch (sortBy) {
-        case SORT.NEWEST:
-          return a.age - b.age;
-        case SORT.FROM_A_TO_Z:
-          return a.name.localeCompare(b.name);
-        case SORT.FROM_Z_TO_A:
-          return b.name.localeCompare(a.name);
-        case SORT.CHEAPEST:
-          return a.price - b.price;
-        default:
-          return 0;
-      }
-    });
+        switch (sortBy) {
+          case SORT.NEWEST:
+            return a.age - b.age;
+          case SORT.FROM_A_TO_Z:
+            return a.name.localeCompare(b.name);
+          case SORT.FROM_Z_TO_A:
+            return b.name.localeCompare(a.name);
+          case SORT.CHEAPEST:
+            return a.price - b.price;
+          default:
+            return 0;
+        }
+      });
   }, [products, query, sortBy]);
 
   const searchReset = useCallback(() => {

@@ -23,12 +23,13 @@ export const Breadcrumbs = () => {
         className="breadcrumbs__item breadcrumbs__home"
         activeClassName="breadcrumb__link--active"
       />
-      {preparedBreadcrumbs.map((crumb, index) =>
+      {preparedBreadcrumbs.map((crumb, index) => (
         <Breadcrumb
           {...crumb}
           key={crumb.to}
           isLast={index === preparedBreadcrumbs.length - 1}
-        />)}
+        />
+      ))}
     </ul>
   );
 };

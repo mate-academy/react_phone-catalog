@@ -27,6 +27,10 @@ export const useDropdown = (list: OptionType[], heading: string) => {
     }
 
     if (heading === DROPDOWN_HEADINGS.perPage) {
+      if (option === 'All') {
+        search.set('perPage', option);
+      }
+
       search.set('perPage', option);
     }
 
