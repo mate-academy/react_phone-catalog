@@ -11,7 +11,7 @@
   &__link {
     font-weight: 600;
     font-size: 12px;
-    line-height: 15px;
+    line-height: 14px;
     color: $primary-color;
     cursor: pointer;
     user-select: none;
@@ -22,11 +22,21 @@
     }
   }
 
+  &__last {
+    display: flex;
+    align-self: center;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 14px;
+    color: $secondary-color;
+    user-select: none;
+  }
+
   &__home {
     display: inline-block;
     width: 14px;
     height: 15px;
-    background-image: url("../../images/icons/breadcrumb-home.svg");
+    background-image: url("../../assets/img/breadcrumb-home.svg");
     background-repeat: no-repeat;
     background-position: center;
     transition: all 0.2s ease-out;
@@ -38,7 +48,7 @@
     margin-right: 13px;
     width: 5px;
     height: 9px;
-    background-image: url("../../images/icons/breadcrumb-arrow.svg");
+    background-image: url("../../assets/img/breadcrumb-arrow.svg");
     background-repeat: no-repeat;
     background-position: center;
     transition: all 0.2s ease-out;

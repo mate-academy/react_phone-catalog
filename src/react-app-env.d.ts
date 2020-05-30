@@ -1,6 +1,6 @@
 // / <reference types=string />
 
-type RootState = ReturnType<typeof rootReducer>
+type RootState = ReturnType<typeof rootReducer>;
 
 interface Product {
   age: number;
@@ -169,8 +169,9 @@ type ProductsAmountProps = {
 type BreadcrumbProps = {
   to: string;
   label: string;
+  isLast: boolean;
 };
 
 type ShowcaseBlockProps = {
   title: string;
-}
+};

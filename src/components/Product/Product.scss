@@ -100,9 +100,6 @@
     position: relative;
     width: 40px;
     height: 40px;
-    background-image: url("../../images/icons/favorite_default.svg");
-    background-repeat: no-repeat;
-    background-position: center;
     border: 1px solid $border-btn-color;
     box-sizing: border-box;
     cursor: pointer;
@@ -110,20 +107,17 @@
 
     &-checkmark {
       position: absolute;
-      top: -1px;
-      left: -1px;
-      height: 40px;
-      width: 40px;
+      height: 100%;
+      width: 100%;
       background-repeat: no-repeat;
       background-position: center;
+      background-image: url("../../assets/img/favorite_default.svg");
     }
-
     &-input {
       position: absolute;
       opacity: 0;
-
       &:checked ~ .product__button-favorite-checkmark {
-        background-image: url("../../images/icons/favorite_checked.svg");
+        background-image: url("../../assets/img/favorite_checked.svg");
       }
     }
   }

@@ -2,7 +2,7 @@ import React from 'react';
 import { SliderProducts } from './SliderProducts';
 import { SliderControl } from './SliderControl';
 import { Heading } from '../Heading/Heading';
-import { DIRECTIONS } from '../../helpers/storage';
+import { DIRECTIONS } from '../../common/constants';
 import { useShowcaseBlock } from '../_hooks/useShowcaseBlock';
 
 export const ShowcaseBlock = ({ title }: ShowcaseBlockProps) => {

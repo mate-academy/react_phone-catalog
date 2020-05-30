@@ -1,3 +1,5 @@
+import { SORT } from './enums.d';
+
 export const DIRECTIONS = {
   left: 'left',
   right: 'right',
@@ -9,15 +11,15 @@ export const DROPDOWN_HEADINGS = {
 };
 
 export const SORT_TYPES = [
-  { option: 'Newest' },
-  { option: 'From A to Z' },
-  { option: 'From Z to A' },
-  { option: 'Cheapest' },
+  { option: SORT.NEWEST },
+  { option: SORT.FROM_A_TO_Z },
+  { option: SORT.FROM_Z_TO_A },
+  { option: SORT.CHEAPEST },
 ];
 
 export const PER_PAGE = [
-  { option: 'All' },
   { option: '4' },
   { option: '8' },
   { option: '16' },
+  { option: 'All' },
 ];

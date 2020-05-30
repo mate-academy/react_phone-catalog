@@ -3,7 +3,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import { Dispatch } from 'react';
 import productsReducer, { setProducts } from './products';
-import { fetchProducts } from '../helpers/api';
+import { fetchProducts } from '../common/helpers/api';
 
 
 const rootReducer = combineReducers({

@@ -2,40 +2,32 @@ import {
   useCallback, useEffect, useMemo, useState,
 } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getProducts, loadProducts } from '../../store';
+import { getProducts, loadProducts } from '../../redux';
+import { DIRECTIONS } from '../../common/constants';
 
-export const useShowcaseBlock = (title: string) => {
+const STEP = 2;
+const FRAME_SIZE = 4;
+const MARGIN_WIDTH = 16;
+const ANIMATION_DURATION = 700;
+
+export const useShowcaseBlock = (title?: string) => {
   const dispatch = useDispatch();
+  const products: Product[] = useSelector(getProducts);
+  const [position, setPosition] = useState(0);
+  const [width, setWidth] = useState(0);
 
   useEffect(() => {
     dispatch(loadProducts());
   }, [dispatch]);
 
-  const products: Product[] = useSelector(getProducts);
-  const [position, setPosition] = useState(0);
-  const [width, setWidth] = useState(0);
-
-  const productCardRef = useCallback(node => {
-    if (node !== null) {
-      setWidth(node.getBoundingClientRect().width);
-    }
-  }, []);
-
-  const step = 2;
-  const frameSize = 4;
-  const marginWidth = 16;
-  const itemWidth = width + marginWidth;
-  const animationDuration = 700;
-
+  const itemWidth = useMemo(() => width + MARGIN_WIDTH, [width]);
   const hotPricesProducts: Product[] = useMemo(() => {
     return products.filter(product => product.discount !== 0);
   }, [products]);
-
   const newProducts: Product[] = useMemo(() => {
     return products
       .filter(product => product.age < 10 && !product.discount);
   }, [products]);
-
   const currentProducts: Product[] = useMemo(() => {
     switch (title) {
       case 'Hot prices':
@@ -46,14 +38,21 @@ export const useShowcaseBlock = (title: string) => {
         return [];
     }
   }, [title, hotPricesProducts, newProducts]);
+  const stepWidth = useMemo(() => itemWidth * STEP, [itemWidth]);
+  const frameWidth = useMemo(() => itemWidth * FRAME_SIZE, [itemWidth]);
+  const carouselWidth = useMemo(() => itemWidth * currentProducts.length,
+    [itemWidth, currentProducts]);
+  const maxPosition = useMemo(() => frameWidth - carouselWidth,
+    [frameWidth, carouselWidth]);
 
-  const stepWidth = itemWidth * step;
-  const frameWidth = itemWidth * frameSize;
-  const carouselWidth = itemWidth * currentProducts.length;
-  const maxPosition = frameWidth - carouselWidth;
+  const productCardRef = useCallback(node => {
+    if (node !== null) {
+      setWidth(node.getBoundingClientRect().width);
+    }
+  }, []);
 
   const handleSlide = useCallback((direction: string) => {
-    if (direction === 'left') {
+    if (direction === DIRECTIONS.left) {
       if (position + stepWidth > 0) {
         setPosition(0);
       } else {
@@ -69,12 +68,12 @@ export const useShowcaseBlock = (title: string) => {
   return {
     currentProducts,
     position,
-    step,
+    step: STEP,
     itemWidth,
-    animationDuration,
+    animationDuration: ANIMATION_DURATION,
     handleSlide,
     maxPosition,
     productCardRef,
-    frameSize,
+    frameSize: FRAME_SIZE,
   };
 };

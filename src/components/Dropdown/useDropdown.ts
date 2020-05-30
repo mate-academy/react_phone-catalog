@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
-import { useSearch } from './useSearch';
-import { DROPDOWN_HEADINGS } from '../../helpers/storage';
+import { useSearch } from '../_hooks/useSearch';
+import { DROPDOWN_HEADINGS } from '../../common/constants';
 
 export const useDropdown = (list: OptionType[], heading: string) => {
   const [isListOpen, setListOpen] = useState<boolean>(false);
@@ -17,7 +17,7 @@ export const useDropdown = (list: OptionType[], heading: string) => {
     }
   }, [isListOpen, close]);
 
-  const toggleList = () => setListOpen(!isListOpen);
+  const toggleList = useCallback(() => setListOpen(!isListOpen), [isListOpen]);
 
   const handleSort = useCallback((option: string) => {
     setSelectedOption(option);
@@ -27,6 +27,10 @@ export const useDropdown = (list: OptionType[], heading: string) => {
     }
 
     if (heading === DROPDOWN_HEADINGS.perPage) {
+      if (option === 'All') {
+        search.set('perPage', option);
+      }
+
       search.set('perPage', option);
     }
 

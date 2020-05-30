@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { CarouselSlides } from './CarouselSlides';
 import { CarouselRectangles } from './CarouselRectangles';
 import { CarouselControl } from './CarouselControl';
-import { DIRECTIONS } from '../../helpers/storage';
+import { DIRECTIONS } from '../../common/constants';
 
 const carouselImages: CarouselSlide[] = [
   { id: 1, name: 'phones', src: './img/showcase-carousel/first.jpg' },
@@ -69,11 +69,11 @@ export const Carousel = () => {
       <div className="carousel__container" ref={measuredRef}>
         <CarouselControl
           changeSlide={changeSlide}
-          direction="left"
+          direction={DIRECTIONS.left}
         />
         <CarouselControl
           changeSlide={changeSlide}
-          direction="right"
+          direction={DIRECTIONS.right}
         />
         <CarouselSlides
           slides={carouselImages}

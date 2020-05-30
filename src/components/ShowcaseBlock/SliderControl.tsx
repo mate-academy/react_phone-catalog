@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import classNames from 'classnames';
-import { DIRECTIONS } from '../../helpers/storage';
+import { DIRECTIONS } from '../../common/constants';
 
 export const SliderControl = ({
   handleSlide,
@@ -13,6 +13,8 @@ export const SliderControl = ({
   const isStart = position === 0;
   const isEnd = position === maxPosition;
 
+  const onSlide = useCallback(() => handleSlide(direction), [handleSlide, direction]);
+
   return (
     <button
       type="button"
@@ -21,7 +23,7 @@ export const SliderControl = ({
         slider__button: true,
         [`slider__button-${direction}`]: true,
       })}
-      onClick={() => handleSlide(direction)}
+      onClick={onSlide}
       disabled={(isLeft && isStart)
       || (isRight && isEnd)}
     />

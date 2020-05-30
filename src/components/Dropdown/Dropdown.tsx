@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import cn from 'classnames';
 import { DropdownArrow } from './DropdownArrow';
-import { useDropdown } from '../_hooks/useDropdown';
+import { useDropdown } from './useDropdown';
 
 export const Dropdown = ({ list, heading }: DropdownProps) => {
   const {
@@ -10,6 +10,12 @@ export const Dropdown = ({ list, heading }: DropdownProps) => {
     isListOpen,
     handleSort,
   } = useDropdown(list, heading);
+
+  const onSort = useCallback((e: React.MouseEvent, option: string) => {
+    e.preventDefault();
+    handleSort(option);
+  }, [handleSort]);
+
 
   return (
     <div className="dropdown">
@@ -36,10 +42,7 @@ export const Dropdown = ({ list, heading }: DropdownProps) => {
                   'dropdown__list-item': true,
                   'dropdown__list-item--active': selectedOption === option,
                 })}
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleSort(option);
-                }}
+                onClick={e => onSort(e, option)}
               >
                 {option}
               </a>
