@@ -38,39 +38,5 @@ export const Header = () => (
         </nav>
       </div>
     </header>
-
-    {/* <Route path="/phones">
-      <PhonesPage />
-    </Route>
-    <Route path="/tablets">
-      <Tablets />
-    </Route>
-    <Route exact path="/">
-      <Home />
-    </Route>
-  </>
-);
-
-const PhonesPage = () => (
-  <>
-    <h1>
-      Phones
-    </h1>
-  </>
-);
-
-const Tablets = () => (
-  <>
-    <h1>
-      Tablets
-    </h1>
-  </>
-);
-
-const Home = () => (
-  <>
-    <h1>
-      Home
-    </h1> */}
   </>
 );
