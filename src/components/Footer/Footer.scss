@@ -1,10 +1,9 @@
-
 .footer {
-  padding: 40px 0;
-  width: 80%;
-  margin: auto;
-
+  box-shadow: 0 -1px 0 #E2E6E9;
   &__wrap {
+    padding: 20px 0;
+    width: 80%;
+    margin: auto;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -51,5 +50,6 @@
 
   &__buttonImg {
     margin: 0 auto;
+    transform: translateY(-50%);
   }
 }

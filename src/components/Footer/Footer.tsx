@@ -36,7 +36,7 @@ export const Footer = () => {
         <div className="footer__lift lift">
           <p className="lift__title">Back to top</p>
           <button type="button" className="lift__button">
-            <img className="lift__buttonImg" src="./img/Icons/IconUp.svg" alt="up arrow" />
+            <img className="lift__buttonImg" src="./img/Icons/arrows/top.svg" alt="up arrow" />
           </button>
         </div>
       </div>

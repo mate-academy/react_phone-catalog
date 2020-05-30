@@ -1,17 +1,34 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import './App.scss';
-import { Header } from './components/Header/Header';
+import { Header } from './components/Header';
 import { NotFoundPage } from './components/NotFoundPage';
-import { BigCarousel } from './components/BigCarousel';
 import { Footer } from './components/Footer';
 import { PhonesPage } from './components/PhonesPage';
-import { NavByImg } from './components/NavByImg';
-
-const Home = () => <h2>Home2</h2>;
-
+import { getProducts } from './api/api';
+import { HomePage } from './components/HomePage';
 
 const App: React.FC = () => {
+  const [products, setProducts] = useState<ProductItem[]>([]);
+  const [phones, setPhones] = useState<ProductItem[]>([]);
+  const [tablets, setTablets] = useState<ProductItem[]>([]);
+  const [accessories] = useState<ProductItem[]>([]);
+
+  useEffect(() => {
+    getProducts()
+      .then(data => {
+        setProducts(data);
+        setPhones(data.filter((product: ProductItem) => product.type === 'phones'));
+        setTablets(data.filter((product: ProductItem) => product.type === 'tablet'));
+      });
+  }, []);
+  console.log(`products`);
+  console.log(products);
+  console.log(`phones`);
+  console.log(phones);
+  console.log(`tablets`);
+  console.log(tablets);
+  console.log(accessories);
   return (
     <div className="App">
       <Header />
@@ -20,18 +37,20 @@ const App: React.FC = () => {
           <Route
             exact
             path="/"
-            component={Home}
+            render={() => (
+              <HomePage products={products} />
+            )}
           />
           <Route
             exact
             path="/phones"
-            component={PhonesPage}
+            render={() => (
+              <PhonesPage products={products} />
+            )}
           />
           <Redirect from="/home" to="/" />
           <Route component={NotFoundPage} />
         </Switch>
-        <BigCarousel itemWidth={1040} />
-        <NavByImg />
       </main>
       <Footer />
     </div>
@@ -40,6 +59,3 @@ const App: React.FC = () => {
 
 
 export default App;
-//синхронизация стрелок с индикаторами
-//картинки странных размеров
-//хидден странно работает
