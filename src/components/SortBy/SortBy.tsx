@@ -18,8 +18,13 @@ export const SortBy = () => {
   const [pseudoSelectValue, setPseudoSelectValue] = useState<string>();
 
   useEffect(() => {
-    setPseudoSelectValue(sortTypeOptions
-      .filter(item => item.value === searchParams.get('sort_type'))[0].text)
+    if(!searchParams.get('sort_type')) {
+      setPseudoSelectValue('Choose')
+    } else {
+      setPseudoSelectValue(sortTypeOptions
+        .filter(item => item.value === searchParams.get('sort_type'))[0].text)
+    }
+
   }, [searchParams])
 
 
@@ -27,7 +32,6 @@ export const SortBy = () => {
     setPseudoSelectValue(text)
     setIsOpen(false);
     searchParams.set("sort_type", value);
-    console.log(searchParams.get("sort_type"))
     history.push({
       search: searchParams.toString()
     });

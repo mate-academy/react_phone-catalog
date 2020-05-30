@@ -6,11 +6,8 @@ import { useLocation, Link } from 'react-router-dom';
 export const Breadcrumbs = () => {
 
   const location = useLocation();
-
-  console.log(location)
-
   const levels = location.pathname.split("/");
-  console.log(levels)
+
 
 
   return(
@@ -28,6 +25,7 @@ export const Breadcrumbs = () => {
             default:
               className = "Breadcrumbs__link";
         }
+        
         return(
           <>
         <Link

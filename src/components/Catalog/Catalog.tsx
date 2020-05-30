@@ -38,27 +38,27 @@ export const Catalog = ({
 
 
   useEffect(() => {
-    if (sortType === "") {
-      setSortedProducts(filteredProducts);
-      return;
-    };
-    if (sortType === 'name') {
-      setSortedProducts([...filteredProducts]
-        .sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase())))
-    };
-    if (sortType === 'age') {
-      setSortedProducts([...filteredProducts]
-        .sort((a, b) => a.age - b.age))
-    };
-    if (sortType === 'low_price') {
-      setSortedProducts([...filteredProducts]
-        .sort((a, b) => ((a.price * (100 - a.discount) / 100) - (b.price * (100 - b.discount) / 100))))
-      console.log(sortedProducts)
-    };
-    if (sortType === 'high_price') {
-      setSortedProducts([...filteredProducts]
-        .sort((a, b) => ((b.price * (100 - b.discount) / 100) - (a.price * (100 - a.discount) / 100))))
-    };
+    switch (sortType) {
+      case 'name':
+        setSortedProducts([...filteredProducts]
+          .sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase())));
+        break;
+      case 'age':
+        setSortedProducts([...filteredProducts]
+          .sort((a, b) => a.age - b.age));
+          break;
+      case 'low_price':
+        setSortedProducts([...filteredProducts]
+          .sort((a, b) => ((a.price * (100 - a.discount) / 100) - (b.price * (100 - b.discount) / 100))));
+          break;
+      case 'high_price':
+        setSortedProducts([...filteredProducts]
+          .sort((a, b) => ((b.price * (100 - b.discount) / 100) - (a.price * (100 - a.discount) / 100))));
+          break;
+      default: setSortedProducts(filteredProducts);
+
+    }
+
   }, [filteredProducts, sortType])
 
   useEffect(() => {
