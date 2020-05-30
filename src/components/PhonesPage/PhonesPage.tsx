@@ -1,34 +1,29 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
-import { getProducts } from '../../api/api';
 import { ProductCard } from '../ProductCard';
 import './PhonesPage.scss';
 
-export const PhonesPage: React.FC = () => {
+type Props = {
+  phones: ProductItem[];
+};
+
+export const PhonesPage: React.FC<Props> = ({ phones }) => {
   const [phonesList, setPhonesList] = useState<ProductItem[]>([]);
-  // const [sortedPhones, setSortedPhones] = useState(phonesList);
-  // const [quantityPerPage, setquantityPerPage] = useState(sortedPhones);
-  const [quantityPerPage, setquantityPerPage] = useState<ProductItem[]>([]);
-  const [sortedPhones, setSortedPhones] = useState<ProductItem[]>([]);
-  const perPageOption = ['All', '2', '4', '8', '16'];
+  const [sortedPhones, setSortedPhones] = useState([...phones]);
+
+  const perPageOption = ['2', '4', '8', '16'];
   const location = useLocation();
   const history = useHistory();
 
 
   const searchParams = new URLSearchParams(location.search);
 
-  useEffect(() => {
-    getProducts()
-      .then(data => {
-        setPhonesList(data.filter((product: ProductItem) => product.type === 'phone'));
-        setquantityPerPage(data.filter((product: ProductItem) => product.type === 'phone'));
-        setSortedPhones(data.filter((product: ProductItem) => product.type === 'phone'));
-      });
-  }, []);
+  const quantity = searchParams.get('quantity') || `${phones.length}`;
+  const sortType = searchParams.get('sort') || '';
 
   useEffect(() => {
-    setSortedPhones(quantityPerPage);
-  }, [quantityPerPage]);
+    setPhonesList(phones);
+  }, []);
 
   const handleSortProduct = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const { value } = event.target;
@@ -37,17 +32,6 @@ export const PhonesPage: React.FC = () => {
     history.push({
       search: searchParams.toString(),
     });
-
-    switch (value) {
-      case 'name':
-        setSortedPhones([...phonesList].sort((a, b) => a[value].localeCompare(b[value])));
-        break;
-      case 'age':
-      case 'price':
-        setSortedPhones([...phonesList].sort((a, b) => a[value] - b[value]));
-        break;
-      default:
-    }
   };
 
   const handleQuantityChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -57,19 +41,26 @@ export const PhonesPage: React.FC = () => {
     history.push({
       search: searchParams.toString(),
     });
-
-    if (value !== 'All') {
-      setquantityPerPage([...phonesList].slice(0, +value));
-    } else {
-      setquantityPerPage([...phonesList]);
-    }
   };
 
+  useEffect(() => {
+    switch (sortType) {
+      case 'name':
+        setSortedPhones([...phonesList].sort((a, b) => a[sortType].localeCompare(b[sortType])).slice(0, +quantity));
+        break;
+      case 'age':
+      case 'price':
+        setSortedPhones([...phonesList].sort((a, b) => a[sortType] - b[sortType]).slice(0, +quantity));
+        break;
+      default: setSortedPhones([...phonesList]);
+    }
+  }, [phonesList, sortType, quantity]);
+
   return (
-    <div className="phones__container phones">
+    <div className="phones__container phones container">
       <h1 className="phones__title">Mobile phones</h1>
       <p className="phones__quantity">
-        {phonesList.length}
+        {phones.length}
         {/* {sortedPhones.length} */}
         {' '}
         <span className="phones__quantityText">models</span>
@@ -94,9 +85,10 @@ export const PhonesPage: React.FC = () => {
             Items on page
           </p>
           <select
-            className="filter__select"
+            className="filter__select filter__select--quantity"
             onChange={handleQuantityChange}
           >
+            <option value={phones.length}>All</option>
             {perPageOption.map(item => (
               <option key={item}>
                 {item}
