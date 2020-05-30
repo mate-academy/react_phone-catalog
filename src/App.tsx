@@ -5,24 +5,24 @@ import { Header } from './components/Header/Header';
 import { HomePage } from './pages/HomePage';
 import { PhonesPage } from './pages/PhonesPage';
 import { TabletsPage } from './pages/TabletsPage';
+import { ProductDetailsPage } from './pages/ProductDetailsPage';
 
 const App = () => {
   return (
-    <div className="app">
+    <>
       <Header />
       <Switch>
-        <Route exact path="/">
-          <HomePage />
-        </Route>
-        <Route path="/phones">
-          <PhonesPage />
-        </Route>
-        <Route path="/tablets">
-          <TabletsPage />
-        </Route>
+        <Route exact path="/" component={HomePage} />
+        <Route exact path="/phones" component={PhonesPage} />
+        <Route exact path="/tablets" component={TabletsPage} />
+        <Route
+          exact
+          path="/:productType/:productId"
+          component={ProductDetailsPage}
+        />
       </Switch>
       <Footer />
-    </div>
+    </>
   );
 };
 

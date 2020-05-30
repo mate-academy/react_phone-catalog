@@ -1,5 +1,5 @@
 import React from 'react';
-import { Product } from '../Product/Product';
+import { Product } from '../ProductCard/ProductCard';
 
 export const SliderProducts = ({
   products,

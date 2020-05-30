@@ -31,6 +31,10 @@ interface ProductProps {
   productCardRef?: (node: any) => void;
 }
 
+interface ProductTypes {
+  [key: string]: string;
+}
+
 interface ProductDetails {
   additionalFeatures: string;
   android: {
@@ -140,6 +144,16 @@ interface NavItem {
   title: string;
   link: string;
   exact: boolean;
+}
+
+interface Match {
+  isExact: boolean;
+  params: {
+    productType: string;
+    productId: string;
+  };
+  path: string;
+  url: string;
 }
 
 interface OptionType {

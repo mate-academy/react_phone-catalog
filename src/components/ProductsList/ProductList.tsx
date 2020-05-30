@@ -1,5 +1,5 @@
 import React from 'react';
-import { Product } from '../Product/Product';
+import { Product } from '../ProductCard/ProductCard';
 import { useProductsList } from '../_hooks/useProductsList';
 
 export const ProductsList = () => {
