@@ -19,7 +19,7 @@ export const PhonesPage: React.FC<Props> = ({ phones }) => {
   const searchParams = new URLSearchParams(location.search);
 
   const quantity = searchParams.get('quantity') || `${phones.length}`;
-  const sortType = searchParams.get('sort') || '';
+  const sortType = searchParams.get('sort') || 'age';
 
   useEffect(() => {
     setPhonesList(phones);
@@ -74,7 +74,7 @@ export const PhonesPage: React.FC<Props> = ({ phones }) => {
             className="filter__select"
             onChange={handleSortProduct}
           >
-            <option value="">choose</option>
+            {/* <option value="">choose</option> */}
             <option value="age">Newest</option>
             <option value="name">Alphabetically</option>
             <option value="price">Cheapest</option>
