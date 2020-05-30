@@ -1,4 +1,14 @@
+const BASE_URL = 'https://mate-academy.github.io/react_phone-catalog/api/products';
+
 export const getProducts = () => {
-  return fetch('https://mate-academy.github.io/react_phone-catalog/api/products.json')
+  return fetch(`${BASE_URL}.json`)
     .then(response => response.json());
 };
+
+
+export async function getDetails(id: string) {
+  const resp = await fetch(`${BASE_URL}${id}.json`);
+  const productDetails = await resp.json();
+
+  return productDetails;
+}
