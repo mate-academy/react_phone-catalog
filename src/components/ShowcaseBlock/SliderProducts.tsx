@@ -1,5 +1,5 @@
 import React from 'react';
-import { Product } from '../Product/Product';
+import { ProductCard } from '../ProductCard/ProductCard';
 
 export const SliderProducts = ({
   products,
@@ -18,7 +18,7 @@ export const SliderProducts = ({
       }}
     >
       {products.map((product: Product) => (
-        <Product
+        <ProductCard
           key={product.id}
           {...product}
           productCardRef={productCardRef}

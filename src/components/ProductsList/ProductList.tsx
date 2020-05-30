@@ -1,5 +1,5 @@
 import React from 'react';
-import { Product } from '../Product/Product';
+import { ProductCard } from '../ProductCard/ProductCard';
 import { useProductsList } from '../_hooks/useProductsList';
 
 export const ProductsList = () => {
@@ -10,7 +10,7 @@ export const ProductsList = () => {
       {numberOfProducts ? (
         <div className="products section__products">
           {currentProducts.map(product => (
-            <Product key={product.id} {...product} />
+            <ProductCard key={product.id} {...product} />
           ))}
         </div>
       )

@@ -1,4 +1,4 @@
-# React Product catalog
+# React ProductCard catalog
 - Replace `<your_account>` with your Github username in the [DEMO LINK](https://<your_account>.github.io/react_phone-catalog/)
 - Follow the [React task guideline](https://github.com/mate-academy/react_task-guideline#react-tasks-guideline)
 
@@ -67,7 +67,7 @@ Store the Cart in the `localStorage`
     - Create `getAccessories` method fetching the products with `type`: `accessory`
     - Implement `NoResults` component displayed if there are no products available
 
-### Product details page
+### ProductCard details page
 1. Create `ProductDetailsPage` available at `/product/:productId`
     - `ProductCard` should be a link to the details page
 1. Fetch phone details from API taking the `phoneId` from the URL
@@ -113,4 +113,4 @@ Store the Cart in the `localStorage`
 
 ### Other tasks
 1. Add `NotFoundPage` for all the other URLs with the link to `HomePage`
-1. Implement `Product was not found` state for the `PhoneDetailsPage` if there is no phone with a given `phoneId` on the server
+1. Implement `ProductCard was not found` state for the `PhoneDetailsPage` if there is no phone with a given `phoneId` on the server

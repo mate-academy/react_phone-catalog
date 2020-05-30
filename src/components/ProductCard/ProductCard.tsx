@@ -1,15 +1,32 @@
-import React, { useMemo } from 'react';
+import React, { useCallback, useMemo } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getFavorites, getProducts } from '../../redux';
+import { deleteFavorite, setFavorite } from '../../redux/favorites';
 
-export const Product = ({
+export const ProductCard = ({
   name, imageUrl, price, screen, capacity, ram, discount, id, productCardRef,
 }: ProductProps) => {
   const preparedScreen = useMemo(() => screen.replace(' inches', '"'), [screen]);
   const preparedFullPrice = useMemo(() => price * (discount / 100) + price, [price, discount]);
   const preparedCapacity = useMemo(() => `${parseInt((capacity || '32000'), 10)} MB`, [capacity]);
   const preparedRam = useMemo(() => `${parseInt((ram || '1000'), 10)} MB`, [ram]);
+  const favorites: Product[] = useSelector(getFavorites);
+
+  const products: Product[] = useSelector(getProducts);
+  const dispatch = useDispatch();
+
+  const addToFavorites = useCallback((e: React.ChangeEvent<HTMLInputElement>, id: string) => {
+    const product = products.find(p => p.id === id);
+    if (e.target.checked) {
+      dispatch(setFavorite(product))
+    } else {
+      dispatch(deleteFavorite(id))
+    }
+  }, [dispatch, products])
 
   return (
     <article
+      id={id}
       className="product"
       ref={productCardRef}
     >
@@ -64,6 +81,8 @@ export const Product = ({
             className="product__button-favorite-input"
             type="checkbox"
             id={`button-favorite-${id}`}
+            checked={favorites.some(person => person.id === id)}
+            onChange={(e) => addToFavorites(e, id)}
           />
           <span className="product__button-favorite-checkmark" />
         </label>

@@ -5,6 +5,7 @@ import { Header } from './components/Header/Header';
 import { HomePage } from './pages/HomePage';
 import { PhonesPage } from './pages/PhonesPage';
 import { TabletsPage } from './pages/TabletsPage';
+import { FavoritesPage } from './pages/FavoritesPage';
 
 const App = () => {
   return (
@@ -19,6 +20,9 @@ const App = () => {
         </Route>
         <Route path="/tablets">
           <TabletsPage />
+        </Route>
+        <Route path="/favorites">
+          <FavoritesPage />
         </Route>
       </Switch>
       <Footer />
