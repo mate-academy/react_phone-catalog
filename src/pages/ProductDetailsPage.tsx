@@ -16,10 +16,11 @@ export const ProductDetailsPage = () => {
     getDetails(match.params.productId);
   }, [match]);
 
+  console.log(productDetails);
+
   return (
-    console.log(productDetails),
     <div>
-        <h5>HI</h5>
-      </div>
+      <h5>HI</h5>
+    </div>
   );
 };

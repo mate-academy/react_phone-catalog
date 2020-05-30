@@ -65,6 +65,12 @@
     text-align: center;
     color: $secondary-color;
   }
+
+  &__no-favorites-info {
+    margin: 40px 0;
+    text-align: center;
+    color: $secondary-color;
+  }
 }
 
 .visually-hidden {

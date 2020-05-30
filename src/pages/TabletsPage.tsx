@@ -8,7 +8,7 @@ import { Pagination } from '../components/Pagination/Pagination';
 import {
   DROPDOWN_HEADINGS,
   SORT_TYPES,
-  PER_PAGE,
+  PER_PAGE, PRODUCT_PATHS, SECTION_HEADINGS,
 } from '../common/constants';
 import { ProductsAmount } from '../components/ProductsAmount/ProductsAmount';
 import { Breadcrumbs } from '../components/Breadcrumbs/Breadcrumbs';
@@ -33,11 +33,11 @@ export const TabletsPage = () => {
         {!search.get('query') && (
           <>
             <Breadcrumbs />
-            <Heading title="Tablets" />
+            <Heading title={SECTION_HEADINGS.tablets} />
           </>
         )}
         {numberOfProducts !== 0 && (
-          <ProductsAmount title="tablets" />
+          <ProductsAmount title={PRODUCT_PATHS.tablet} />
         )}
         {!search.get('query') && (
           <div className="section__dropdowns">

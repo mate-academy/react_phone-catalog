@@ -1,4 +1,5 @@
 .favorites {
+  position: relative;
   width: 64px;
   height: 64px;
   border-left: 1px solid $border-section-color;
@@ -11,5 +12,23 @@
     background-position: center;
     width: 100%;
     height: 100%;
+  }
+
+  &__indicator {
+    position: absolute;
+    top: 29%;
+    left: 51%;
+    width: 14px;
+    height: 14px;
+    background: #eb5757;
+    border: 1px solid #FFFFFF;
+    border-radius: 50%;
+    box-sizing: border-box;
+    font-weight: 600;
+    font-size: 9px;
+    line-height: 14px;
+    color: white;
+    text-align: center;
+    z-index: 3;
   }
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { ProductCard } from '../ProductCard/ProductCard';
 
 export const SliderProducts = ({
@@ -6,24 +6,31 @@ export const SliderProducts = ({
   position,
   animationDuration,
   productCardRef,
-}: SliderProps) => (
-  <div
-    className="slider"
-  >
+  itemWidth,
+  frameSize,
+}: SliderProps) => {
+  const sliderVisibleWidth = useMemo(() => frameSize * itemWidth, [frameSize, itemWidth]);
+
+  return (
     <div
-      className="slider__list"
-      style={{
-        transform: `translateX(${position}px)`,
-        transition: `transform ${animationDuration}ms`,
-      }}
+      className="slider"
+      style={{ width: `${sliderVisibleWidth}px` }}
     >
-      {products.map((product: Product) => (
-        <ProductCard
-          key={product.id}
-          {...product}
-          productCardRef={productCardRef}
-        />
-      ))}
+      <div
+        className="slider__list"
+        style={{
+          transform: `translateX(${position}px)`,
+          transition: `transform ${animationDuration}ms`,
+        }}
+      >
+        {products.map((product: Product) => (
+          <ProductCard
+            key={product.id}
+            {...product}
+            productCardRef={productCardRef}
+          />
+        ))}
+      </div>
     </div>
-  </div>
-);
+  );
+};

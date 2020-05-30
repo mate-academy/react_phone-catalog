@@ -7,7 +7,7 @@ import { ProductsAmount } from '../components/ProductsAmount/ProductsAmount';
 import {
   DROPDOWN_HEADINGS,
   SORT_TYPES,
-  PER_PAGE,
+  PER_PAGE, PRODUCT_PATHS, SECTION_HEADINGS,
 } from '../common/constants';
 import { Breadcrumbs } from '../components/Breadcrumbs/Breadcrumbs';
 import { Dropdown } from '../components/Dropdown/Dropdown';
@@ -33,11 +33,11 @@ export const PhonesPage = () => {
         {!search.get('query') && (
           <>
             <Breadcrumbs />
-            <Heading title="Mobile phones" />
+            <Heading title={SECTION_HEADINGS.phones} />
           </>
         )}
         {numberOfProducts !== 0 && (
-          <ProductsAmount title="phones" />
+          <ProductsAmount title={PRODUCT_PATHS.phone} />
         )}
         {!search.get('query') && (
           <div className="section__dropdowns">

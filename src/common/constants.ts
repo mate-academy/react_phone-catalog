@@ -24,7 +24,30 @@ export const PER_PAGE = [
   { option: 'All' },
 ];
 
-export const PRODUCT_TYPES: ProductTypes = {
+export const PRODUCT_PATHS: ProductPaths = {
   phone: 'phones',
   tablet: 'tablets',
+  favorites: 'favorites',
+};
+
+export const PRODUCT_TYPES = {
+  phone: 'phone',
+  tablet: 'tablet',
+};
+
+export const LOCATIONS = {
+  phones: '/phones',
+  tablets: '/tablets',
+  favorites: '/favorites',
+};
+
+export const SHOWCASE_HEADINGS = {
+  hotPrices: 'Hot prices',
+  newModels: 'Brand new models',
+};
+
+export const SECTION_HEADINGS = {
+  phones: 'Mobile phones',
+  tablets: 'Tablets',
+  favorites: 'Favorites',
 };

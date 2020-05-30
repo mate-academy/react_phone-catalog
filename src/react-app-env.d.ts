@@ -31,7 +31,7 @@ interface ProductProps {
   productCardRef?: (node: any) => void;
 }
 
-interface ProductTypes {
+interface ProductPaths {
   [key: string]: string;
 }
 

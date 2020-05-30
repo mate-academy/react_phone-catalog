@@ -4,8 +4,9 @@ import React, {
 import { useHistory, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import debounce from '../../common/helpers/debounce';
-import { getProducts, loadProducts } from '../../redux';
+import { getFavorites, getProducts, loadProducts } from '../../redux';
 import { SORT } from '../../common/enums.d';
+import { LOCATIONS } from '../../common/constants';
 
 export const useSearch = () => {
   const history = useHistory();
@@ -16,6 +17,7 @@ export const useSearch = () => {
   const sortBy = search.get('sortBy');
   const [inputValue, setInputValue] = useState(query);
   const products: Product[] = useSelector(getProducts);
+  const favorites: Product[] = useSelector(getFavorites);
 
   useEffect(() => {
     dispatch(loadProducts());
@@ -45,6 +47,12 @@ export const useSearch = () => {
   );
 
   const searchedProducts: Product[] = useMemo(() => {
+    if (location.pathname === LOCATIONS.favorites) {
+      return favorites.filter(({ name }) => (
+        name.toLowerCase().includes(query)
+      ));
+    }
+
     return products.filter(({ name }) => (
       name.toLowerCase().includes(query)
     ))
@@ -63,7 +71,7 @@ export const useSearch = () => {
             return 0;
         }
       });
-  }, [products, query, sortBy]);
+  }, [products, query, sortBy, favorites, location.pathname]);
 
   const searchReset = useCallback(() => {
     setInputValue('');
