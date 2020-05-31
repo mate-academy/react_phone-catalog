@@ -33,8 +33,8 @@ const store = createStore(
   composeWithDevTools(applyMiddleware(thunk)),
 );
 
-store.subscribe(()=>{
-  localStorage.setItem('reduxState', JSON.stringify(store.getState()))
-})
+store.subscribe(()=> {
+  localStorage.setItem('reduxState', JSON.stringify(store.getState()));
+});
 
 export default store;
