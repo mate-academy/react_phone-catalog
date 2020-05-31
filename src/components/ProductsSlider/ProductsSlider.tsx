@@ -10,20 +10,27 @@ type ProductsSliderProps = {
 const ProductsSlider: React.FC<ProductsSliderProps> = ({ visibleProducts, title }) => {
   const [position, setPosition] = useState(0);
   const margin = 16;
-  const widthBanner = 272 + margin;
-  const widthCarousel = widthBanner * (visibleProducts.length - 4);
+  // const [widthCard, setWidthCard] = useState(0);
+  const widthCard = 272 + margin;
+  const widthCarousel = widthCard * (visibleProducts.length - 4);
+
+  // const measuredRef = useCallback(
+  //   node => {
+  //     if (node !== null) {
+  //       setWidthCard(node.getBoundingClientRect().width);
+  // }}, []);
 
   const handlePrevOnClick = () => {
     if (position === 0) {
       setPosition(-widthCarousel);
     } else {
-      setPosition(position + widthBanner);
+      setPosition(position + widthCard);
     }
   };
 
   const handleNextOnClick = () => {
-    setPosition(position - widthBanner);
-    if (-position > widthCarousel - widthBanner) {
+    setPosition(position - widthCard);
+    if (-position > widthCarousel - widthCard) {
       setPosition(0);
     }
   };
