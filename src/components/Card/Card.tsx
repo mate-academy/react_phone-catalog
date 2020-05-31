@@ -27,49 +27,49 @@ export const Card: React.FC<Props> = ({
   const { path } = useRouteMatch();
 
   return (
-    <div className="wrap">
-      <article className="card">
+    <div className="Wrap">
+      <article className="Card">
         <Link to={`${path}/${id}`}>
-          <img alt="card" src={imageUrl} className="card__img" />
+          <img alt="card" src={imageUrl} className="Card__Img" />
         </Link>
-        <div className="card__container-inner">
-          <h3 className="card__title">{name}</h3>
-          <span className="card__prise">
+        <div className="Card__ContainerInner">
+          <h3 className="Card__Title">{name}</h3>
+          <span className="Card__Prise">
             $
             {(price - price * (discount / 100))}
           </span>
           {' '}
           {discount !== 0
             && (
-              <span className="card__oldPrise">
+              <span className="Card__OldPrise">
                 $
                 {price}
               </span>
             )}
-          <div className="card__info">
-            <div className="card__info-screen card__item">
-              <p className="card__info-screen_name">Screen</p>
-              <p className="card__info-screen_value">{screen}</p>
+          <div className="Card__Info">
+            <div className="Card__InfoScreen Card__Item">
+              <p className="Card__InfoScreen_Name">Screen</p>
+              <p className="Card__InfoScreen_Value">{screen}</p>
             </div>
-            <div className="card__info-capacity card__item">
-              <p className="card__info-screen_name">Capacity</p>
-              <p className="card__info-screen_value">{capacity}</p>
+            <div className="Card__InfoScreen Card__Item">
+              <p className="Card__InfoScreen_Name">Capacity</p>
+              <p className="Card__InfoScreen_Value">{capacity}</p>
             </div>
-            <div className="card__info-ram card__item">
-              <p className="card__info-screen_name">RAM</p>
-              <p className="card__info-screen_value">{ram}</p>
+            <div className="Card__InfoRam Card__Item">
+              <p className="Card__InfoScreen_Name">RAM</p>
+              <p className="Card__IInfoScreen_Value">{ram}</p>
             </div>
           </div>
-          <div className="card__button-wrap">
+          <div className="Card__ButtonWrap">
             <button
               type="button"
-              className="card__button-cart"
+              className="Card__ButtonCart"
             >
               Add to cart
             </button>
             <button
               type="button"
-              className="card__button-favor"
+              className="Card__ButtonFavor"
             >
               favor
             </button>

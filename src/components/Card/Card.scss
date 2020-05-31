@@ -1,4 +1,4 @@
-.wrap {
+.Wrap {
   margin-right: 16px;
   background: #fff;
   border: 1px solid #e2e6e9;
@@ -6,22 +6,22 @@
   border-radius: 5px;
 }
 
-.card__container-inner {
-  margin: 24px;
-}
-
-.card {
+.Card {
   box-sizing: border-box;
   width: 270px;
 
-  &__img {
+  &__ContainerInner {
+    margin: 24px;
+  }
+
+  &__Img {
     width: 208px;
     height: 208px;
     margin: 32px 32px 0;
 
   }
 
-  &__title {
+  &__Title {
     font-family: "Mont-SemiBold", sans-serif;
     height: 28px;
     font-style: normal;
@@ -31,7 +31,7 @@
     color: #313237;
   }
 
-  &__prise {
+  &__Prise {
     // font-family: Mont;
     font-style: normal;
     font-weight: bold;
@@ -40,7 +40,7 @@
     color: #313237;
   }
 
-  &__oldPrise {
+  &__OldPrise {
     // font-family: Mont;
     font-style: normal;
     font-weight: 500;
@@ -50,21 +50,21 @@
     color: #89939a;
   }
 
-  &__info {
+  &__Info {
     border-top: 1px solid #e2e6e9;
   }
 
-  &__item {
+  &__Item {
     display: flex;
     justify-content: space-between;
     margin-bottom: 8px;
   }
 
-  &__info-screen {
+  &__InfoScreen {
     margin-top: 16px;
   }
 
-  &__info-screen_name {
+  &__InfoScreen_Name {
     // font-family: Mont;
     font-style: normal;
     font-weight: 600;
@@ -73,7 +73,7 @@
     color: #89939a;
   }
 
-  &__info-screen_value {
+  &__InfoScreen_Value {
     // font-family: Mont;
     font-style: normal;
     font-weight: 600;
@@ -83,12 +83,12 @@
     color: #313237;
   }
 
-  &__button-wrap {
+  &__ButtonWrap {
     display: flex;
     justify-content: space-between;
   }
 
-  &__button-cart {
+  &__ButtonCart {
     height: 40px;
     width: 176px;
     border: none;
@@ -104,7 +104,7 @@
     }
   }
 
-  &__button-favor {
+  &__ButtonFavor {
     height: 40px;
     width: 40px;
     border: none;
