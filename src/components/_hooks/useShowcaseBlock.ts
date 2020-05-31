@@ -3,7 +3,7 @@ import {
 } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProducts, loadProducts } from '../../redux';
-import { DIRECTIONS } from '../../common/constants';
+import { DIRECTIONS, SHOWCASE_HEADINGS } from '../../common/constants';
 
 const STEP = 2;
 const FRAME_SIZE = 4;
@@ -30,9 +30,9 @@ export const useShowcaseBlock = (title?: string) => {
   }, [products]);
   const currentProducts: Product[] = useMemo(() => {
     switch (title) {
-      case 'Hot prices':
+      case SHOWCASE_HEADINGS.hotPrices:
         return hotPricesProducts;
-      case 'Brand new models':
+      case SHOWCASE_HEADINGS.newModels:
         return newProducts;
       default:
         return [];

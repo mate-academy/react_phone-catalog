@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getFavorites, getProducts } from '../../redux';
 import { deleteFavorite, setFavorite } from '../../redux/favorites';
-import { PRODUCT_TYPES } from '../../common/constants';
+import { PRODUCT_PATHS } from '../../common/constants';
 
 export const ProductCard = ({
   name,
@@ -53,67 +53,67 @@ export const ProductCard = ({
       ref={productCardRef}
     >
       <Link
-        to={`${PRODUCT_TYPES[type]}/${id}`}
+        to={`${PRODUCT_PATHS[type]}/${id}`}
         className="product__link"
       >
         <img className="product__image" src={imageUrl} alt={name} />
         <p className="product__title">{name}</p>
       </Link>
-        <div className="product__price-container">
-          <span className="product__price">
-            {`$${price}`}
+      <div className="product__price-container">
+        <span className="product__price">
+          {`$${price}`}
+        </span>
+        {discount > 0 && (
+          <span className="product__discount">
+            {`$${preparedFullPrice}`}
           </span>
-          {discount > 0 && (
-            <span className="product__discount">
-              {`$${preparedFullPrice}`}
-            </span>
-          )}
+        )}
+      </div>
+      <span className="product__split-line" />
+      <div className="product__details">
+        <div className="product__details-container">
+          <span className="product__details-title">
+            Screen
+          </span>
+          <span className="product__details-info">
+            {preparedScreen}
+          </span>
         </div>
-        <span className="product__split-line" />
-        <div className="product__details">
-          <div className="product__details-container">
-            <span className="product__details-title">
-              Screen
-            </span>
-            <span className="product__details-info">
-              {preparedScreen}
-            </span>
-          </div>
-          <div className="product__details-container">
-            <span className="product__details-title">
-              Capacity
-            </span>
-            <span className="product__details-info">
-              {preparedCapacity}
-            </span>
-          </div>
-          <div className="product__details-container">
-            <span className="product__details-title">
-              RAM
-            </span>
-            <span className="product__details-info">
-              {preparedRam}
-            </span>
-          </div>
+        <div className="product__details-container">
+          <span className="product__details-title">
+            Capacity
+          </span>
+          <span className="product__details-info">
+            {preparedCapacity}
+          </span>
         </div>
-        <div className="product__buttons__container">
-          <button className="product__button" type="button">
-            Add to cart
-          </button>
-          <label
-            className="product__button-favorite"
-            htmlFor={`button-favorite-${id}`}
-          >
-            <input
-              className="product__button-favorite-input"
-              type="checkbox"
-              id={`button-favorite-${id}`}
-              checked={favorites.some(person => person.id === id)}
-              onChange={(e) => addToFavorites(e, id)}
-            />
-            <span className="product__button-favorite-checkmark" />
-          </label>
+        <div className="product__details-container">
+          <span className="product__details-title">
+            RAM
+          </span>
+          <span className="product__details-info">
+            {preparedRam}
+          </span>
         </div>
+      </div>
+      <div className="product__buttons__container">
+        <button className="product__button" type="button">
+          Add to cart
+        </button>
+        <label
+          className="product__button-favorite"
+          htmlFor={`button-favorite-${id}`}
+        >
+          <input
+            className="product__button-favorite-input"
+            type="checkbox"
+            id={`button-favorite-${id}`}
+            checked={favorites.some(person => person.id === id)}
+            onChange={(e) => addToFavorites(e, id)}
+          />
+          <span className="product__button-favorite-checkmark" />
+        </label>
+      </div>
     </article>
   );
 };

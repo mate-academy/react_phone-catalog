@@ -2,6 +2,7 @@ import React from 'react';
 import { ShowcaseBlock } from '../components/ShowcaseBlock/ShowcaseBlock';
 import { Carousel } from '../components/Carousel/Carousel';
 import { Categories } from '../components/Categories/Categories';
+import { SHOWCASE_HEADINGS } from '../common/constants';
 
 export const HomePage = () => {
   return (
@@ -11,13 +12,13 @@ export const HomePage = () => {
         <Carousel />
       </section>
       <section className="section">
-        <ShowcaseBlock title="Hot prices" />
+        <ShowcaseBlock title={SHOWCASE_HEADINGS.hotPrices} />
       </section>
       <section className="section">
         <Categories />
       </section>
       <section className="section">
-        <ShowcaseBlock title="Brand new models" />
+        <ShowcaseBlock title={SHOWCASE_HEADINGS.newModels} />
       </section>
     </div>
   );

@@ -5,7 +5,7 @@ import { Breadcrumb } from './Breadcrumb';
 const BREADCRUMBS = [
   { to: '/phones', label: 'Phones' },
   { to: '/tablets', label: 'Tablets' },
-  { to: '/favourites', label: 'Favourites' },
+  { to: '/favorites', label: 'Favorites' },
 ];
 
 export const Breadcrumbs = () => {

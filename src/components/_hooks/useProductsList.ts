@@ -1,6 +1,6 @@
 import { useCallback, useMemo } from 'react';
 import { useSearch } from './useSearch';
-import { PER_PAGE } from '../../common/constants';
+import { LOCATIONS, PER_PAGE, PRODUCT_TYPES } from '../../common/constants';
 
 export const useProductsList = () => {
   const {
@@ -8,11 +8,11 @@ export const useProductsList = () => {
   } = useSearch();
 
   const phones = useMemo(() => {
-    return searchedProducts.filter(product => product.type === 'phone');
+    return searchedProducts.filter(product => product.type === PRODUCT_TYPES.phone);
   }, [searchedProducts]);
 
   const tablets = useMemo(() => {
-    return searchedProducts.filter(product => product.type === 'tablet');
+    return searchedProducts.filter(product => product.type === PRODUCT_TYPES.tablet);
   }, [searchedProducts]);
 
   const searchPerPageCheck = search.get('perPage') === 'All'
@@ -28,7 +28,7 @@ export const useProductsList = () => {
     numberOfProducts = 0,
     currentProducts = searchedProducts,
   } = useMemo(() => {
-    if (location.pathname === '/phones') {
+    if (location.pathname === LOCATIONS.phones) {
       return {
         numberOfProducts: phones.length,
         currentProducts: phones.slice(indexOfFirst, indexOfLast),
