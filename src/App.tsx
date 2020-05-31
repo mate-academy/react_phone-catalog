@@ -19,7 +19,6 @@ const App = () => {
     loadGoods();
   }, [])
 
-  console.log(goods)
     return (
     <div className="App">
        <CartContextWrapper>

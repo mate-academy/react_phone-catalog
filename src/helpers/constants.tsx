@@ -18,4 +18,11 @@ export const footerLinks: Link[] = [
   { title: 'Rights', path: '/'},
 ]
 
+export const sortTypes: SortType[] = [
+  { type: 'price', sortBy: 'high_price', reverse: 1 },
+  { type: 'price', sortBy: 'low_price', reverse: -1 },
+  { type: 'age', sortBy: 'newest', reverse: 1 },
+  { type: 'list', sortBy: '', reverse: -1 },
+]
+
 

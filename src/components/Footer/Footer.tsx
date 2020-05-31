@@ -15,7 +15,7 @@ export const Footer = () => {
       <div className="footer__container">
         <nav className="footer_nav nav">
           <Link to="/" className="footer__logo">
-            <svg width="40" height="11" viewBox="0 0 40 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg className="icon-logo" width="40" height="11" viewBox="0 0 40 11" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M2.93333 8.0966V0.254421H0V10.7306H6.65986V8.0966H2.93333Z" fill="#313237"/>
               <path d="M11.6842 11C15.0516 11 17.4461 8.7102 17.4461 5.50748C17.4461 2.2898 15.0516
               0 11.6842 0C8.31688 0 5.92232 2.30476 5.92232 5.50748C5.92232 8.69524 8.31688 11 11.6842

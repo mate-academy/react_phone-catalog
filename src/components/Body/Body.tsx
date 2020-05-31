@@ -4,6 +4,8 @@ import { Catalog } from './../../pages/Catalog';
 import { Home } from './../../pages/HomePage';
 import { Cart } from './../../pages/Cart';
 import { Favourites } from './../../pages/Favourites';
+import { ProductPage } from './../../pages/ProductPage';
+import { NotFoundPage } from './../../pages/NotFoundPage';
 
 type BodyProps = {
   goods: Good[];
@@ -25,8 +27,16 @@ export const Body: React.FC<BodyProps> = ({ goods }) => {
             <Cart />
           </Route>
 
+          <Route path="/failed" exact>
+            <NotFoundPage />
+          </Route>
+
           <Route path="/:section" exact>
             <Catalog goods={goods} />
+          </Route>
+
+          <Route path="/:section/:goodId" exact>
+            <ProductPage goods={goods} />
           </Route>
         </Switch>
       </div>

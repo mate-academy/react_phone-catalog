@@ -1,27 +1,30 @@
 import React, { useState } from 'react';
 import { ProductCard } from '../../components/ProductCard/ProductCard';
 
+
 type CardSliderProps={
   goods: Good[];
+  title: string;
 }
 
-export const CardSlider: React.FC<CardSliderProps> = ({ goods }) => {
-
+export const CardSlider: React.FC<CardSliderProps> = ({ goods, title }) => {
+  const cardWidth = 272;
+  const gap = 16;
+  const frameSize = 4;
 
   const sliderGoods = goods.map((good, index) => ({
     ...good,
     position: index + 1,
   }));
 
-  const [position, setPosition] = useState(1);
-  const [left, setLeft] = useState(0);
-  let imgWidth = 272+16;
+  const [position, setPosition] = useState<number>(1);
+  const [left, setLeft] = useState<number>(0);
+  let imgWidth = cardWidth * frameSize + gap * frameSize;
 
   const handleClick = (path: number) => {
-    console.log('click')
     const newLeftPosition = (imgWidth) * -path;
 
-    if (position === sliderGoods.length && path === 1) {
+    if (position === Math.ceil(sliderGoods.length/4) && path === 1) {
       setPosition(1);
       setLeft(0);
 
@@ -29,8 +32,8 @@ export const CardSlider: React.FC<CardSliderProps> = ({ goods }) => {
     }
 
     if (position === 1 && path === -1) {
-      setPosition(sliderGoods.length);
-      setLeft(imgWidth * path * (sliderGoods.length - 1));
+      setPosition(Math.ceil(sliderGoods.length/4));
+      setLeft(imgWidth * path * (Math.ceil(sliderGoods.length/4) - 1));
 
       return;
     }
@@ -42,7 +45,7 @@ export const CardSlider: React.FC<CardSliderProps> = ({ goods }) => {
   return (
     <section className="homepage__view-products">
       <div className="view-products__wrapper">
-        <h1 className="homepage__section-title">Hot prices</h1>
+        <h1 className="homepage__section-title">{title}</h1>
         <div className="view-products__btn-panel">
 
           <button className="view-products__btn"
@@ -79,6 +82,7 @@ export const CardSlider: React.FC<CardSliderProps> = ({ goods }) => {
         <div className="view-products__list"
           style={{
           transform: `translateX(${left}px)`,
+          transition: `translate ease 0.3s`,
           display: 'grid',
           gridTemplateColumns: `repeat(${sliderGoods.length}, 272px)`,
           columnGap: '16px',
@@ -91,3 +95,4 @@ export const CardSlider: React.FC<CardSliderProps> = ({ goods }) => {
     </section>
   )
 }
+

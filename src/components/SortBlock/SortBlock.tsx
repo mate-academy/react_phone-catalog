@@ -7,7 +7,7 @@ let sortParams = [
   {title: 'Price low to high',  value:'low_price'}
 ]
 
-const itemsCount = [16, 32, 64];
+const itemsCount = [8, 16, 32, 64];
 
 export const SortBlock = () => {
   const location = useLocation();
@@ -15,7 +15,7 @@ export const SortBlock = () => {
   const history = useHistory();
 
   const handleSort = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    searchParams.set('sortBy', e.target.value);
+    searchParams.set('perPage', e.target.value);
     history.push({
       search: searchParams.toString()
     });

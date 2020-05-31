@@ -15,14 +15,13 @@ export const Home: React.FC<HomePageProps> = ({ goods }) => {
 
   return (
   <div className="homepage">
-
     <Slider />
 
-    <CardSlider goods={hotPriceModels}/>
+    <CardSlider goods={hotPriceModels} title={`Hot prices`} />
 
     <ProductCategories />
 
-    <CardSlider goods={newestModels}/>
+    <CardSlider goods={newestModels} title={`Brand new models`} />
    </div>
   )
 }

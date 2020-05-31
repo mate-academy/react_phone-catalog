@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { sliderImages } from '../../helpers/constants';
 import cn from "classnames";
 
@@ -12,8 +12,24 @@ export const Slider: React.FC = () => {
   const [left, setLeft] = useState(0);
   let imgWidth = 1040;
 
+
+  const autoPlayRef = useRef<() => void>(()=>{});
+
+  useEffect(() => {
+    autoPlayRef.current = () => handleClick(1)
+  })
+
+  useEffect(() => {
+    const play = () => {
+      autoPlayRef.current()
+    }
+
+    const interval = setInterval(play, 2000)
+    return () => clearInterval(interval)
+  }, [])
+
   const handleClick = (path: number) => {
-    console.log('click')
+
     const newLeftPosition = (imgWidth) * -path;
 
     if (position === images.length && path === 1) {
@@ -60,6 +76,7 @@ export const Slider: React.FC = () => {
             className="slider__img-list"
             style={{
               transform: `translateX(${left}px)`,
+              transition: `translate 0.45s ease-out`,
             }}
           >
           {images.map(image => (

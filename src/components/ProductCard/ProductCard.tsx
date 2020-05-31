@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button } from './../common/Button/Button';
+import { NavLink } from 'react-router-dom';
 
 
 type ProductCardProps = {
@@ -25,58 +26,60 @@ export const ProductCard: React.FC<ProductCardProps> = ({ good }) => {
   const discountPrice = (price - price * discount / 100)
 
   return (
-    <section className="productCard">
+    <section className="productcard">
+      <NavLink to={`/${good.type}/${good.id}`} className="productcard__link">
       <img
-        className="productCard__img"
+        className="productcard__img"
         src={imageUrl}
         alt={name} />
-      <p className="productCard__title">{name}</p>
+      </NavLink>
+      <p className="productcard__title">{name}</p>
 
       {discount > 0
         ?
-        <div className="productCard__price-container">
-          <span className="productCard__price">
+        <div className="productcard__price-container">
+          <span className="productcard__price">
             {"$" + discountPrice}
           </span>
-          <span className="productCard__price productCard__price--prev">
+          <span className="productcard__price productcard__price--prev">
             {"$" + price}
           </span>
         </div>
         :
-        <div className="productCard__price-container">
-          <span className="productCard__price">
+        <div className="productcard__price-container">
+          <span className="productcard__price">
             {"$" + discountPrice}
           </span>
         </div>
       }
 
-      <div className="productCard__description">
-        <span className="productCard__feature">
-          <span className="productCard__feature-title">
+      <div className="productcard__description">
+        <span className="productcard__feature">
+          <span className="productcard__feature-title">
             Screen
           </span>
-          <span className="ProductCard__feature-value">
+          <span className="Productcard__feature-value">
             {screen}
           </span>
         </span>
-        <span className="productCard__feature">
-          <span className="productCard__feature-title">
+        <span className="productcard__feature">
+          <span className="productcard__feature-title">
             Capacity
           </span>
-          <span className="productCard__feature-value">
+          <span className="productcard__feature-value">
             {capacity}
           </span>
         </span >
-        <span className="productCard__feature">
-          <span className="productCard__feature-title">
+        <span className="productcard__feature">
+          <span className="productcard__feature-title">
             RAM
           </span>
-          <span className="productCard__feature-value">
+          <span className="productcard__feature-value">
             {ram}
           </span>
         </span>
       </div>
-      <div className="productCard__btn-container btn">
+      <div className="productcard__btn-container btn">
         <Button classCSS={"btn__add-to-cart"} title={'Add to cart'}  good={good} />
         <Button classCSS={"btn__add-to-fav"} title={''}   good={good}/>
       </div>

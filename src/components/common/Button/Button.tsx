@@ -10,23 +10,31 @@ type ButtonProps = {
 }
 
 export const Button: React.FC<ButtonProps> = ({ classCSS, title, good }) => {
+  const [isActiveButton, setActiveButton] = useState<boolean>(false);
   const { addSelectedGood, isSelected } = useContext(CartContext);
-  const { addFavouriteGood, isFavourite } = useContext(FavouritesContext);
-  const [visibleTitle, setVisibleTitle] = useState<string>(title)
+  const { addFavouriteGood, removeFavouriteGood, isFavourite } = useContext(FavouritesContext);
 
   var btnClass = cn('btn', classCSS, {
-    'cart-active': isSelected(good),
-    'fav-active': isFavourite(good),
+    'cart-active': isActiveButton,
+    'fav-active': isActiveButton,
   });
-
 
   const handleClick = (good: Good) => {
     if(classCSS === 'btn__add-to-cart') {
-      addSelectedGood(good);
-      setVisibleTitle('Added to cart')
+      if (!isSelected(good)) {
+        addSelectedGood(good);
+        setActiveButton(true);
+      }
     }
     if(classCSS === 'btn__add-to-fav') {
-      addFavouriteGood(good);
+      if (!isFavourite(good)) {
+        addFavouriteGood(good);
+        setActiveButton(true);
+      } else {
+        console.log('hi')
+        removeFavouriteGood(good);
+        setActiveButton(false);
+      }
     }
   }
 
@@ -37,7 +45,7 @@ export const Button: React.FC<ButtonProps> = ({ classCSS, title, good }) => {
       className={btnClass}
       onClick={() => handleClick(good)}
     >
-     {visibleTitle}
+     {isActiveButton&&(classCSS === 'btn__add-to-cart') ? `Added to cart` : title}
     </button>
   )
 }

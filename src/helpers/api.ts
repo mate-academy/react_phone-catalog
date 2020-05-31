@@ -10,3 +10,10 @@ export async function getGoods() {
 
   return phones;
 }
+
+export async function getGoodDetails(id: string) {
+  const response = await fetch(`${API_URL}/products/${id}.json`);
+  const goodDetail = await response.json();
+
+  return goodDetail;
+}

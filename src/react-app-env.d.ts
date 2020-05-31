@@ -23,3 +23,32 @@ interface Link {
   path: string;
 }
 
+interface GoodDetails {
+  id: string;
+  name: string;
+  images: Array<string>;
+  description: string;
+  [key?: string]: string | string[];
+  [key?: string]: {
+    [key: string]: string | string[] | boolean;
+  };
+  hardware: {
+    cpu: any;
+  };
+  display: {
+    screenResolution: string;
+  };
+  camera: {
+    primary: string;
+    zoom: string;
+  };
+  connectivity: {
+    cell: string;
+  };
+}
+
+interface SortType {
+  type: string,
+  sortBy: string,
+  reverse: number
+}

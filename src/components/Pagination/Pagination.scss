@@ -1,0 +1,43 @@
+.pagination {
+  display: flex;
+  margin-top: 40px;
+  justify-content: center;
+
+  &__btn-list {
+    display: flex;
+  }
+
+  &__page-btn-list {
+    display: flex;
+    margin: 0 16px;
+  }
+
+  &__page-btn--prev,
+  &__page-btn--next,
+  &__page-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 32px;
+    width: 32px;
+    color: #000;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #fff;
+    border: 1px solid #b4bdc4;
+    transition: all 0.1s ease-in;
+  }
+
+  &__page-btn {
+    margin-right: 8px;
+  }
+  &__page-btn:last-child {
+    margin-right: 0;
+  }
+
+  &__page-btn--active {
+    color: #fff;
+    background-color: $bg-c-btn-primary;
+    border: none;
+  }
+}

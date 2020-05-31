@@ -6,7 +6,7 @@ type NavListProps = {
 }
 
 export const NavList = ( { list } :NavListProps) => {
-  console.log(typeof list)
+
   return (
    <>
     {list.map(link => (

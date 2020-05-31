@@ -3,11 +3,9 @@ import { NavLink } from 'react-router-dom';
 import { CartContext } from './../CartContext';
 import { FavouritesContext } from './../FavouritesContext';
 
-
 export const CartSection = () => {
 const { selectedGoods } = useContext(CartContext);
 const { favouriteGoods } = useContext(FavouritesContext);
-console.log(favouriteGoods.length)
 
   return (
     <>
