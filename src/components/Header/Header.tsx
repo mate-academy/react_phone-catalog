@@ -1,6 +1,6 @@
 import React from 'react';
 import './Header.scss';
-import { NavLink, Route } from 'react-router-dom';
+import { NavLink, Route, Link } from 'react-router-dom';
 import Search from '../Search/Search';
 
 const navList = [
@@ -39,9 +39,9 @@ const Header = () => {
 
   return (
     <header className="header">
-      <a href="/home" className="header__logo logo">
+      <Link to={'/'} className="header__logo logo">
         <img src="./img/logo/LOGO.svg" alt="logo" />
-      </a>
+      </Link>
 
       <nav className="header__nav nav">
         <ul className="nav__list">
