@@ -1,7 +1,7 @@
 import React from 'react';
-import HomePage from './Components/HomePage'
+import HomePage from './Components/HomePage/HomePage'
 
-import './App.scss';
+import './styles/App.scss';
 
 const App = () => (
   <div className="App">
