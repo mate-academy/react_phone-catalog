@@ -1,5 +1,4 @@
-// / <reference types="react-scripts" />
-interface Product {
+export interface Product {
   age: number;
   id: string;
   type: string;

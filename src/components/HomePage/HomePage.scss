@@ -1,12 +1,11 @@
 .content {
-  display: flex;
   margin: 0 auto;
-  width: 1440px;
 }
 
 .slider {
   margin: 0 auto;
   display: flex;
+  width: fit-content;
 
   &__container {
     display: flex;
@@ -17,8 +16,9 @@
   }
 
   & img {
-    object-fit: cover;
+    width: 1040px;
     object-position: center;
+    transition: 0.4s;
   }
 
   & button {
