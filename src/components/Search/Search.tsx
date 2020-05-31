@@ -25,7 +25,7 @@ const Search = () => {
   };
 
   return (
-    <div className="wrap__searsh">
+    <div className="wrap__search">
       <input
         type="text"
         className="search"

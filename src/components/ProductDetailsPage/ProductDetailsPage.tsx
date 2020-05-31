@@ -107,7 +107,7 @@ export const ProductDetailsPage: React.FC = () => {
       }
     }
 
-    return value || 'No info';
+    return value || 'unknown';
   };
 
   return (
@@ -170,16 +170,16 @@ export const ProductDetailsPage: React.FC = () => {
                       </span>
                     )}
                   </div>
-                  <div className="card__button-wrap">
+                  <div className="Card__ButtonWrap">
                     <button
                       type="button"
-                      className="card__button-cart"
+                      className="Card__ButtonCart"
                     >
                       Add to cart
                     </button>
                     <button
                       type="button"
-                      className="card__button-favor"
+                      className="Card__ButtonFavor"
                     >
                       favor
                     </button>
