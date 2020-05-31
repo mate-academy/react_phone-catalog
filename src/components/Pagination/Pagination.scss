@@ -1,5 +1,7 @@
+@import "../../styles/utils/mixins";
+@import "../../styles/utils/vars";
+
 .pagination {
-  width: 200px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -9,7 +11,19 @@
   margin-right: auto;
 
   &__btn {
-    width: 40px;
-    height: 40px;
+    margin: 0 4px;
+    width: 32px;
+    height: 32px;
+    background-color: #fff;
+    border: solid 1px $colorIcons;
+    cursor: pointer;
+    @include hover(border, solid 1px $colorPrimary);
+
+  }
+
+  &__btn--active {
+    @extend .pagination__btn;
+    color: #fff;
+    background-color: $colorPrimary;
   }
 }

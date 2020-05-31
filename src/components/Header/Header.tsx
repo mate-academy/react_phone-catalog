@@ -1,6 +1,7 @@
 import React from 'react';
 import './Header.scss';
 import { NavLink, Route } from 'react-router-dom';
+import Search from '../Search/Search';
 
 const navList = [
   {
@@ -22,6 +23,20 @@ const navList = [
 ];
 
 const Header = () => {
+  // const location = useLocation();
+  // const history = useHistory();
+  // const searchParams = new URLSearchParams(location.search);
+  // const query = searchParams.get('query') || '';
+  // const [aplaiedQuery, setAplaiedQuery] = useState(query);
+
+  // const setQuery = (newQuery: string) => {
+  //     searchParams.set('query', newQuery);
+  //     history.push({ search: searchParams.toString() });
+  // }
+
+
+  // const aplayQueryWithDebounce = useCallback(debounce(setQuery, 1000), [])
+
   return (
     <header className="header">
       <a href="/home" className="header__logo logo">
@@ -38,12 +53,8 @@ const Header = () => {
         </ul>
       </nav>
       <div className="header__wrapButtons">
-        <Route path="/phones">
-          <input
-            type="text"
-            className="header__search"
-            placeholder="Search in phones..."
-          />
+        <Route path={['/phones', '/tablets', '/accessories', '/favorites']}>
+          <Search />
         </Route>
         <button type="button" className="header__buttons favourites">
           <img src="./img/Icons/heart.svg" alt="heart" />

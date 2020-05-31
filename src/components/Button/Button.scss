@@ -1,0 +1,34 @@
+@import "../../styles/utils/mixins";
+@import "../../styles/utils/vars";
+
+.small-btn {
+  width: 32px;
+  height: 32px;
+  margin: 0 12px;
+  background-color: #fff;
+  border: solid 1px $colorIcons;
+  cursor: pointer;
+}
+
+.prev {
+  @include iconInButton(url(../../img/Icons/left.svg));
+}
+
+.next {
+  @include iconInButton(url(../../img/Icons/right.svg));
+}
+
+.disabled {
+  @extend .small-btn;
+  background-color: #fff;
+  cursor: auto;
+  border: solid 1px $colorElement;
+
+  &__next {
+    @include iconInButton(url(../../img/Icons/disabled-right.svg));
+  }
+
+  &__prev {
+    @include iconInButton(url(../../img/Icons/disabled-left.svg));
+  }
+}

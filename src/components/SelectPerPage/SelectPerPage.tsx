@@ -20,6 +20,7 @@ const SelectPerPage: React.FC = () => {
 
   const setSearchParams = (selectOptionValue: string) => {
     setDropdownOptionValue(selectOptionValue);
+    searchParams.set('page', '1');
     searchParams.set('perPage', selectOptionValue);
     history.push({ search: searchParams.toString() });
   };
