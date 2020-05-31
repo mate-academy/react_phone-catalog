@@ -33,9 +33,14 @@ const Footer = () => (
       </nav>
       <div className="footer__button">
         <span className="label-btn">Back to top</span>
-        <button type="button" className="btn-back-top">
-          <img src="./img/Icons/up.svg" alt="up" />
-        </button>
+        <button
+          type="button"
+          className="btn-back-top"
+          aria-label="Mute volume"
+          onClick={() => (
+            window.scrollTo({ top: 0, behavior: 'smooth' })
+          )}
+        />
       </div>
     </div>
   </footer>

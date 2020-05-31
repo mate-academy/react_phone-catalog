@@ -30,25 +30,28 @@
     display: flex;
   }
 
-  &__search {
-    height: $heightHeader;
-    width: 327px;
-    padding-left: 24px;
-    border-left: $borderElement;
-    border-bottom: $borderElement;
-    @include ButtonText;
-    color: $colorText;
-    line-height: 18px;
-  }
+  // &__search {
+  //   height: $heightHeader;
+  //   background-color: red;
+  //   width: 327px;
+  //   padding: 0 24px;
+  //   border-left: $borderElement;
+  //   border-bottom: $borderElement;
 
-  &__search::placeholder {
-    display: flex;
-    justify-content: space-between;
-    color: $colorIcons;
-    line-height: 18px;
-    @include ButtonText;
-    @include iconInButton(url(../../img/Icons/Search.svg));
-  }
+  //   display: flex;
+  //   flex-direction: row;
+  //   justify-content: space-between;
+  //   align-items: center;
+
+  //   // height: $heightHeader;
+  //   // width: 327px;
+  //   // padding-left: 24px;
+  //   // border-left: $borderElement;
+  //   // border-bottom: $borderElement;
+  //   // @include ButtonText;
+  //   // color: $colorText;
+  //   // line-height: 18px;
+  // }
 
   &__buttons {
     width: 64px;

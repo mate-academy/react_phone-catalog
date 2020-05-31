@@ -37,6 +37,7 @@
   height: 32px;
   background-color: #fff;
   border: $borderElement;
+  @include iconInButton(url(../../img/Icons/up.svg));
   @include hover(border, 1px solid $colorPrimary);
 }
 

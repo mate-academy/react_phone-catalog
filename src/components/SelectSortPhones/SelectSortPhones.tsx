@@ -10,7 +10,7 @@ const SelectSortPhones: React.FC = () => {
   const location = useLocation();
 
   const searchParams = new URLSearchParams(location.search);
-  const sortBy = searchParams.get('sortBy') || 'price';
+  const sortBy = searchParams.get('sortBy') || 'age';
   const [dropdownOptionValue, setDropdownOptionValue] = useState<string>(sortBy);
 
 

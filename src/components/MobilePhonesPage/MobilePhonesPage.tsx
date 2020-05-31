@@ -17,18 +17,34 @@ export const MobilePhonesPage: React.FC = () => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const sortBy = searchParams.get('sortBy') || '';
-
+  const query = searchParams.get('query') || '';
   const perPage = searchParams.get('perPage') || 'all';
   const page: number = Number(searchParams.get('page')) || 1;
-  let start = 0;
+  const lowerQuery = query.toLocaleLowerCase();
 
-  if (perPage !== 'all') {
-    start = (page - 1) * +perPage;
-  }
+  // useEffect(() => {
+  //   if (query !== '') {
+  //     searchParams.set('page', '1');
+  //     history.push({ search: searchParams.toString() });
+  //   }
+  // },[query])
+
+  // useEffect(() => {
+  //   const regex = '/page=\d/g';
+  //   const path = location.search.replace(regex, 'page=1');
+  //   <Redirect from={location.search} to={path} />
+
+  // }, [totalPages <= 1])
+  let totalModels = phonesOnly.length;
+  let totalPages = 0;
 
   const visiblePhones = useMemo(
     () => {
-      const result = [...phonesOnly];
+      const result = phonesOnly.filter(({ name, capacity, screen }) => (
+        (name + capacity + screen).toLowerCase().includes(lowerQuery)
+      ));
+
+      totalModels = result.length;
       switch (sortBy) {
         case 'name':
           result.sort((a, b) => a.name.localeCompare(b.name));
@@ -42,21 +58,30 @@ export const MobilePhonesPage: React.FC = () => {
           result.sort((a, b) => a.age - b.age);
           break;
         default:
-          result.sort((a, b) => b.price - a.price);
+          result.sort((a, b) => a.age - b.age);
       }
 
-      return result.slice(start, start + +perPage);
+      if (perPage !== 'all') {
+        const start = (page - 1) * +perPage;
 
+        return result.slice(start, start + +perPage);
+      }
+
+      return result;
     },
-    [sortBy, phonesOnly, perPage, page],
+    [sortBy, phonesOnly, perPage, page, query],
   );
+
+  if (perPage !== 'all') {
+    totalPages = Math.ceil(totalModels / +perPage);
+  }
 
   return (
     <>
       <div className="phones-container">
         <h1 className="phones__title">Mobile phones</h1>
         <span className="phones__sum">
-          {phonesOnly.length}
+          {totalModels}
           {' '}
           models
         </span>
@@ -71,9 +96,12 @@ export const MobilePhonesPage: React.FC = () => {
           <Card key={product.id} {...product} />
         ))}
       </div>
-      <div className="pagination">
-        <Pagination lengthArrPhones={phonesOnly.length} />
-      </div>
+      {totalPages > 1
+        && (
+          <div className="pagination">
+            <Pagination totalPages={totalPages} />
+          </div>
+        )}
     </>
   );
 };
