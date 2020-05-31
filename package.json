@@ -1,0 +1,71 @@
+{
+  "name": "react_phone-catalog",
+  "homepage": ".",
+  "version": "0.1.0",
+  "private": true,
+  "keywords": [],
+  "author": "Mate Academy",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "@types/node": "^13.1.8",
+    "@types/react": "^16.9.18",
+    "@types/react-dom": "^16.9.5",
+    "@types/react-router-dom": "^5.1.3",
+    "node-sass": "^4.14.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "3.4.1",
+    "typescript": "^3.7.5"
+  },
+  "devDependencies": {
+    "@mate-academy/eslint-config-react-typescript": "*",
+    "@mate-academy/stylelint-config": "*",
+    "eslint": "^6.8.0",
+    "gh-pages": "^2.2.0",
+    "husky": "^4.0.10",
+    "lint-staged": "^9.5.0",
+    "stylelint": "^13.0.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "lint-js": "eslint --ext .ts,.tsx ./src/ --fix",
+    "lint-css": "stylelint src/**/*.css src/**/*.scss --fix",
+    "lint": "npm run lint-js && npm run lint-css",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "lint-staged": {
+    "*.css": [
+      "stylelint",
+      "git add"
+    ],
+    "*.js": [
+      "eslint",
+      "git add"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  }
+}
