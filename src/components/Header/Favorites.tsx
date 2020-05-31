@@ -8,9 +8,10 @@ export const Favorites = () => {
 
   return (
     <div className="favorites">
-      <Link to="/favorites" className="favorites__button" />
-      {favorites.length > 0
-      && <span className="favorites__indicator">{favorites.length}</span>}
+      <Link to="/favorites" className="favorites__button">
+        {favorites.length > 0
+        && <span className="favorites__indicator">{favorites.length}</span>}
+      </Link>
     </div>
   );
 };
