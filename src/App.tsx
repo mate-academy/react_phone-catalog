@@ -6,7 +6,7 @@ import { Navigation } from './Navigation/navigation';
 import { HomePage } from './HomePage/homePage';
 import { PhonesCatalog } from './PhonesCatalog/phonesCatalog';
 // import { Favourites } from './Favourites/favourites';
-import { Cart } from './Cart/cart';
+import { ShoppingCart } from './ShoppingCart/shoppingCart';
 import { Footer } from './Footer/footer';
 import { Accessories } from './AccessoriesCatalog/accessories';
 import { TabletsCatalog } from './TabletsCatalog/tabletsCatalog';
@@ -39,15 +39,15 @@ const App = () => {
         <Route path="/tablets" exact component={TabletsCatalog} />
         <Route path="/accessories" exact component={Accessories} />
         <Route path="/favourites" component={ItemSpecificationCard} />
-        <Route path="/cart" component={Cart} />
+        <Route path="/cart" component={ShoppingCart} />
         {phones.map((el: Phones) => (
-          <Route key={el.id} path={`/phones/${el.id}`} exact render={() => <ItemSpecificationCard page="Phones" gadget={el} allGadgets={phones} />} />
+          <Route key={el.id} path={`/phones/${el.id}`} exact render={() => <ItemSpecificationCard route={`${el.name}`} page="Phones" gadget={el} allGadgets={phones} />} />
         ))}
         {tablets.map((el: Phones) => (
-          <Route key={el.id} path={`/tablets/${el.id}`} exact render={() => <ItemSpecificationCard page="Tablets" gadget={el} allGadgets={tablets} />} />
+          <Route key={el.id} path={`/tablets/${el.id}`} exact render={() => <ItemSpecificationCard route={`${el.name}`} page="Tablets" gadget={el} allGadgets={tablets} />} />
         ))}
         {accessories.map((el: Phones) => (
-          <Route key={el.id} path={`/accessories/${el.id}`} exact render={() => <ItemSpecificationCard page="Accessories" gadget={el} allGadgets={accessories} />} />
+          <Route key={el.id} path={`/accessories/${el.id}`} exact render={() => <ItemSpecificationCard route={`${el.name}`} page="Accessories" gadget={el} allGadgets={accessories} />} />
         ))}
       </Switch>
       <Footer />

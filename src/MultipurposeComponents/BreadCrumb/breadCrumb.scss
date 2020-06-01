@@ -2,13 +2,16 @@
   margin-top: 24px;
   display: flex;
   align-items: center;
+
   &__link {
     display: flex;
     align-items: center;
+
     &_home {
       width: 14px;
       height: 14px;
     }
+
     &:hover {
       -webkit-animation: spin 1s infinite;
       animation: spin 1s infinite;
@@ -20,7 +23,13 @@
     height: 8px;
     transform: rotate(90deg);
     margin: 0 14px;
+
+    &_back {
+      transform: rotate(-90deg);
+      margin: 0 10px 0 0;
+    }
   }
+
   &__currentPage {
     font-family: Mont, sans-serif;
     font-style: normal;
@@ -28,5 +37,22 @@
     font-size: 12px;
     line-height: 15px;
     color: #89939a;
+    text-decoration: none;
+  }
+
+  &__back {
+    margin-top: 41px;
+    &_button {
+      border: 0;
+      background: none;
+      cursor: pointer;
+      &:active {
+        outline: none;
+        box-shadow: 0 0 4px 2px rgba(0,0,0,0.75);
+      }
+      &:focus {
+        outline: none;
+      }
+    }
   }
 }

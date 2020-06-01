@@ -9,9 +9,12 @@ type Params = {
   page: string;
   gadget: Phones;
   allGadgets: Phones[];
+  route: string;
 };
 
-export const ItemSpecificationCard: FC<Params> = ({ page, gadget, allGadgets }) => {
+export const ItemSpecificationCard: FC<Params> = ({
+  page, gadget, allGadgets, route,
+}) => {
   const [item, setItem] = useState<GadgetDetails>({} as GadgetDetails);
   const [activeImage, setActiveImage] = useState('');
   const PRODUCT_API_URL = `https://mate-academy.github.io/react_phone-catalog/api/products/${gadget.id}.json`;
@@ -27,7 +30,7 @@ export const ItemSpecificationCard: FC<Params> = ({ page, gadget, allGadgets }) 
 
   return (
     <div className="Item">
-      <BreadCrumb page={page} />
+      <BreadCrumb page={page} route={route} />
       <h1 className="Item__title">{item.name}</h1>
       <div className="Item__specs_upper ISU">
         <div className="ISU__photos">
