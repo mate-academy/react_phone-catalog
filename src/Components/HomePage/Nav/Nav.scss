@@ -1,0 +1,45 @@
+.nav {
+  position: absolute;
+  height: 100%;
+  left: 128px;
+  line-height: 64px;
+
+  &__list {
+    display: grid;
+    grid-gap: 64px;
+    width: 420px;
+    list-style: none;
+    text-transform: uppercase;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  &__item {
+    position: relative;
+  }
+
+  &__link {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 11px;
+    color: #89939a;
+    transition: 0.3s;
+    padding: 26px 0;
+  }
+
+  &__link--active,
+  &__link:hover {
+    color: #313237;
+  }
+
+  &__link--active::after {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 3px;
+    background: #313237;
+  }
+}
