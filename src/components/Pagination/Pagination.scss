@@ -1,0 +1,29 @@
+@import "./src/utils/vairables";
+
+.pagination {
+  display: flex;
+  margin: 40px 0;
+  justify-content: center;
+
+  &__button {
+    box-sizing: border-box;
+    width: 40px;
+    height: 40px;
+    background: white;
+    border: 1px solid $border-gray;
+  }
+
+  &__item {
+    list-style: none;
+    margin: 0 0 0 8px;
+    &:first-child {
+      margin: 0;
+    }
+  }
+
+  &__list {
+    display: flex;
+    margin: 0 16px;
+    //gap: 5px;
+  }
+}
