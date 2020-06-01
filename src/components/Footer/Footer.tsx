@@ -4,7 +4,7 @@ import './Footer.scss';
 const navListFooter = [
   {
     title: 'Github',
-    link: '/Github',
+    link: 'https://github.com/fe-feb20-team-2',
   },
   {
     title: 'Contacts',

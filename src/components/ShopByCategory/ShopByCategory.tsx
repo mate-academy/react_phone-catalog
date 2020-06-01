@@ -4,18 +4,19 @@ import './ShopByCategory.scss';
 
 import { getProducts } from '../../helpers/api';
 
-interface Slide {
-  imageUrl: string;
-  name: string;
-  snippet: string;
-  price: number;
-  discount: number;
-  screen: string;
-  capacity: string;
-  ram: string;
-  id: string;
-  type: string;
-}
+// interface Slide {
+//   imageUrl: string;
+//   age: number;
+//   name: string;
+//   snippet: string;
+//   price: number;
+//   discount: number;
+//   screen: string;
+//   capacity: string;
+//   ram: string;
+//   id: string;
+//   type: string;
+// }
 
 
 export const ShopByCategory = () => {
@@ -35,6 +36,7 @@ export const ShopByCategory = () => {
     getProducts().then(data => setAccessories(data
       .filter((product: Slide) => (product.type !== 'tablet' && product.type !== 'phone'))));
   }, []);
+
 
   return (
     <div className="wrap-category">

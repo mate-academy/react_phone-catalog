@@ -31,25 +31,16 @@
 
   &__button {
     position: absolute;
-    width: 40px;
-    height: 40px;
-    border: solid 1px #b4bdc4;
-    background-color: #fff;
+    top: -50px;
   }
 }
 
 .Carousel__button.btn-right {
-  top: -50px;
   right: 0;
-  @include iconInButton(url(../../img/Icons/right.svg));
-  @include hover(border, solid 1px $colorPrimary);
 }
 
 .Carousel__button.btn-left {
-  top: -50px;
   right: 50px;
-  @include iconInButton(url(../../img/Icons/left.svg));
-  @include hover(border, solid 1px $colorPrimary);
 }
 
 // Item css style-----------------------------

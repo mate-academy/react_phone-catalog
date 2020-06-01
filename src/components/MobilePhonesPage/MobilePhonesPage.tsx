@@ -15,6 +15,7 @@ export const MobilePhonesPage: React.FC = () => {
   }, []);
 
   const location = useLocation();
+  // const history = useHistory();
   const searchParams = new URLSearchParams(location.search);
   const sortBy = searchParams.get('sortBy') || '';
   const query = searchParams.get('query') || '';

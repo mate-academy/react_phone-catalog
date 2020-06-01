@@ -70,10 +70,10 @@ export const Card: React.FC<Props> = ({
             <button
               type="button"
               className="Card__ButtonFavor"
-            >
-              favor
-            </button>
-          </div>
+              aria-label="Mute text"
+            />
+             
+           </div>
         </div>
       </article>
     </div>

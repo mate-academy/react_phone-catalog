@@ -1,3 +1,8 @@
+@import "../../styles/reset";
+@import "../../styles/utils/mixins";
+@import "../../styles/utils/vars";
+
+
 .Wrap {
   margin-right: 16px;
   background: #fff;
@@ -98,15 +103,17 @@
     cursor: pointer;
 
     &:hover {
-      background: #fff;
-      color: #27ae60;
-      border: 1px solid #e2e6e9;
+      box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
     }
   }
 
   &__ButtonFavor {
     height: 40px;
     width: 40px;
-    border: none;
+    background-color: #fff;
+    border: solid 1px $colorIcons;
+    @include iconInButton(url(../../img/Icons/heart.svg));
+    @include hover(border, 1px solid $colorPrimary);
   }
+
 }

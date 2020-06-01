@@ -5,6 +5,7 @@ import './ProductDetailsPage.scss';
 
 import { getProducts, getProductDetails } from '../../helpers/api';
 import { PRODUCTS_INFO, PRODUCTS_SPECS } from '../../helpers/config';
+import ProductsSlider from '../ProductsSlider/ProductsSlider';
 
 export const ProductDetailsPage: React.FC = () => {
   const [products, setProducts] = useState<Slide[]>([]);
@@ -14,9 +15,16 @@ export const ProductDetailsPage: React.FC = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [activeImageIndex, setActiveImageIndex] = useState(0);
+  const [brandProducts, setBrandProducts] = useState<Slide[]>([]);
 
   const match: Match = useRouteMatch();
   const { productId } = useParams();
+
+  useEffect(() => {
+    getProducts().then(data => setBrandProducts(data
+      .filter((product: Slide) => product.discount === 0)
+      .sort((a: Slide, b: Slide) => a.discount - b.discount)));
+  }, []);
 
   const loadProductDetails = async (goodId: string) => {
     setIsLoading(true);
@@ -233,7 +241,7 @@ export const ProductDetailsPage: React.FC = () => {
           </article>
         )}
       </section>
-      {/* Slider----------------------------------- */}
+      <ProductsSlider title="You may also like" visibleProducts={brandProducts} />
     </>
   );
 };
