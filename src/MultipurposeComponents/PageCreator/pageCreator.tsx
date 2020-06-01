@@ -5,6 +5,7 @@ import { ItemsSorting } from '../ItemsSorting/itemsSorting';
 import { CatalogMaker } from '../CatalogMaker/catalogMaker';
 import { NavBar } from '../Pagination/navBar';
 import './pageCreator.scss';
+import { SearchBar } from '../SearchBar/searchBar';
 
 type Params = {
   pageName: string;
@@ -19,27 +20,32 @@ export const PageCreator: FC<Params> = ({
   route,
 }) => {
   const [sort, setSort] = useState('age');
+  const [search, setSearch] = useState('');
   const [viewQty, setViewQty] = useState(4);
   const [position, setPosition] = useState(0);
   const [activeTab, setActiveTab] = useState(1);
 
-  const getSortedItems = (query: string) => {
+  const sortBySearch = gadgets
+    .filter(el => el.name.toLocaleLowerCase().trim().includes(search.toLocaleLowerCase().trim()));
+
+
+  const getSortedItems = (query: string, serachedGadgets: Phones[]) => {
     switch (query) {
       case 'age':
-        return (gadgets.sort((a: { age: number },
+        return (serachedGadgets.sort((a: { age: number },
           b: { age: number }) => a.age - b.age));
 
       case 'name':
-        return gadgets
+        return serachedGadgets
           .sort((a: { name: string },
             b: { name: string }) => a.name.localeCompare(b.name));
 
       case 'price_asc':
-        return gadgets
+        return serachedGadgets
           .sort((a: { price: number },
             b: { price: number }) => a.price - b.price);
       case 'price_desc':
-        return gadgets
+        return serachedGadgets
           .sort((a: { price: number },
             b: { price: number }) => b.price - a.price);
       default:
@@ -48,11 +54,11 @@ export const PageCreator: FC<Params> = ({
     return '';
   };
 
-  const sortedGadgets = getSortedItems(sort);
-
+  const sortedGadgets = getSortedItems(sort, sortBySearch);
 
   return (
     <div className="PageCreator">
+      <SearchBar pageName={pageName} setSearch={setSearch} />
       <BreadCrumb page={pageName} />
       <h1 className="PhonesCatalog__header">{pageName}</h1>
       <p className="PhonesCatalog__qty">

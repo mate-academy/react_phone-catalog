@@ -37,7 +37,7 @@ export const ItemSpecificationCard: FC<Params> = ({
           <div className="ISU__slider">
             <ul className="ISU__slider_list">
               {item.images && item.images.map(img => (
-                <button type="button" className="ISU__slider_button" onClick={() => handleActiveImage(img)}>
+                <button key={img.trim().toLocaleLowerCase()} type="button" className="ISU__slider_button" onClick={() => handleActiveImage(img)}>
                   <img
                     key={img}
                     src={img}

@@ -1,0 +1,36 @@
+.SearchBar {
+  position: absolute;
+  right: -103px;
+  top: 0;
+  width: 327px;
+  height: 64px;
+  padding: 24px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  &__input {
+    line-height: 60px;
+    width: 200px;
+    border: none;
+    font-family: Mont, sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    color: #313237;
+    &:focus {
+      outline: none;
+    }
+    &::placeholder {
+      font-family: Mont, sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      color: #B4BDC4;
+    }
+  }
+  &__icon {
+    width: 13px;
+    height: 13px;
+  }
+}

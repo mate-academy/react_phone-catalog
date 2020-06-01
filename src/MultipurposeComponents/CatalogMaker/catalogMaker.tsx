@@ -11,7 +11,9 @@ export const CatalogMaker: FC<Params> = ({ gadgets, route }) => {
   return (
     <>
       {gadgets.map((phone: Phones) => (
-        <Card phone={phone} route={route} />
+        <React.Fragment key={phone.id}>
+          <Card phone={phone} route={route} />
+        </React.Fragment>
       ))}
     </>
   );
