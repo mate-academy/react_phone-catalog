@@ -4,15 +4,14 @@ import { Card } from '../Card/Card';
 
 type Params = {
   gadgets: Phones[];
-  route: string;
 };
 
-export const CatalogMaker: FC<Params> = ({ gadgets, route }) => {
+export const CatalogMaker: FC<Params> = ({ gadgets }) => {
   return (
     <>
       {gadgets.map((phone: Phones) => (
         <React.Fragment key={phone.id}>
-          <Card phone={phone} route={route} />
+          <Card phone={phone} />
         </React.Fragment>
       ))}
     </>

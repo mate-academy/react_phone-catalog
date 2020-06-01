@@ -20,7 +20,6 @@ export const Accessories = () => {
           <PageCreator
             pageName="Accessories"
             gadgets={accessories}
-            route="/accessories/"
           />
         )
         : (

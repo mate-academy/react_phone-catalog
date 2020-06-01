@@ -1,4 +1,3 @@
-// export const MAGNIFIER_ICON = 'https://image.flaticon.com/icons/svg/483/483356.svg';
 import React from 'react';
 
 export const OWNER_GIT_HUB = 'https://github.com/vitaliikorol';
@@ -14,7 +13,8 @@ export const IMAGES_FOR_SLIDER = [
 const PRODUCTS_API_URL = 'https://mate-academy.github.io/react_phone-catalog/api/products.json';
 const downloadProducts = () => fetch(PRODUCTS_API_URL).then(response => response.json());
 
+
+export const FavArray: string[] = [];
+
 // --- DFS - means Data From Server --
 export const DFS = React.createContext(downloadProducts());
-export const RoutePhones = '/phones/';
-export const RouteTablets = '/tablets/';

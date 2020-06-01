@@ -1,17 +1,29 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import { Link } from 'react-router-dom';
 import cn from 'classnames';
 import { Phones } from '../../Additional/interfaces';
+import { FavArray } from '../../Additional/additional_api';
 
 type Params = {
   phone: Phones;
-  route: string;
 };
 
-export const Card: FC<Params> = ({ phone, route }) => {
+export const Card: FC<Params> = ({ phone }) => {
+  const [favIcon, setFavIcon] = useState('img/icons/fav.svg');
+
+  const defineFavStatus = (id: string) => {
+    if (FavArray.find(el => el === id) === undefined) {
+      FavArray.push(id);
+      setFavIcon('img/icons/fav_active.svg');
+    } else {
+      FavArray.splice(FavArray.findIndex(el => el === id), 1);
+      setFavIcon('img/icons/fav.svg');
+    }
+  };
+
   return (
     <div key={phone.id} className="discount__list_item card">
-      <Link to={route + phone.id} className="card__link">
+      <Link to={`${phone.type}s/${phone.id}`} className="card__link">
         <img
           className="card__image"
           src={phone.imageUrl}
@@ -62,11 +74,17 @@ export const Card: FC<Params> = ({ phone, route }) => {
         >
           Add to cart
         </button>
-        <img
-          className="action__add-to-fav"
-          alt="favourites"
-          src="img/icons/fav.svg"
-        />
+        <button
+          type="button"
+          className="action__add-to-fav-button"
+          onClick={() => defineFavStatus(phone.id)}
+        >
+          <img
+            className="action__add-to-fav"
+            alt="favourites"
+            src={favIcon}
+          />
+        </button>
       </div>
     </div>
   );

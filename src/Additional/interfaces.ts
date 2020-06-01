@@ -10,6 +10,7 @@ export interface Phones {
   screen: string;
   capacity: string;
   ram: string;
+  favourite?: boolean;
 }
 
 export interface GadgetDetails {

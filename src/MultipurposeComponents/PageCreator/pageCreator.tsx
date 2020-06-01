@@ -10,14 +10,12 @@ import { SearchBar } from '../SearchBar/searchBar';
 type Params = {
   pageName: string;
   gadgets: Phones[];
-  route: string;
 };
 
 
 export const PageCreator: FC<Params> = ({
   pageName,
   gadgets,
-  route,
 }) => {
   const [sort, setSort] = useState('age');
   const [search, setSearch] = useState('');
@@ -26,26 +24,27 @@ export const PageCreator: FC<Params> = ({
   const [activeTab, setActiveTab] = useState(1);
 
   const sortBySearch = gadgets
-    .filter(el => el.name.toLocaleLowerCase().trim().includes(search.toLocaleLowerCase().trim()));
+    .filter(el => el.name.toLocaleLowerCase().trim()
+      .includes(search.toLocaleLowerCase().trim()));
 
 
-  const getSortedItems = (query: string, serachedGadgets: Phones[]) => {
+  const getSortedItems = (query: string, searchedGadgets: Phones[]) => {
     switch (query) {
       case 'age':
-        return (serachedGadgets.sort((a: { age: number },
+        return (searchedGadgets.sort((a: { age: number },
           b: { age: number }) => a.age - b.age));
 
       case 'name':
-        return serachedGadgets
+        return searchedGadgets
           .sort((a: { name: string },
             b: { name: string }) => a.name.localeCompare(b.name));
 
       case 'price_asc':
-        return serachedGadgets
+        return searchedGadgets
           .sort((a: { price: number },
             b: { price: number }) => a.price - b.price);
       case 'price_desc':
-        return serachedGadgets
+        return searchedGadgets
           .sort((a: { price: number },
             b: { price: number }) => b.price - a.price);
       default:
@@ -81,7 +80,7 @@ export const PageCreator: FC<Params> = ({
           className="PhonesCatalog__items"
           style={{ bottom: position }}
         >
-          {sortedGadgets && <CatalogMaker gadgets={sortedGadgets} route={route} />}
+          {sortedGadgets && <CatalogMaker gadgets={sortedGadgets} />}
         </div>
       </div>
       {sortedGadgets && sortedGadgets.length > viewQty ? (

@@ -5,7 +5,7 @@ import './App.scss';
 import { Navigation } from './Navigation/navigation';
 import { HomePage } from './HomePage/homePage';
 import { PhonesCatalog } from './PhonesCatalog/phonesCatalog';
-// import { Favourites } from './Favourites/favourites';
+import { Favourites } from './Favourites/favourites';
 import { ShoppingCart } from './ShoppingCart/shoppingCart';
 import { Footer } from './Footer/footer';
 import { Accessories } from './AccessoriesCatalog/accessories';
@@ -38,7 +38,7 @@ const App = () => {
         <Route path="/phones" exact component={PhonesCatalog} />
         <Route path="/tablets" exact component={TabletsCatalog} />
         <Route path="/accessories" exact component={Accessories} />
-        <Route path="/favourites" component={ItemSpecificationCard} />
+        <Route path="/favourites" component={Favourites} />
         <Route path="/cart" component={ShoppingCart} />
         {phones.map((el: Phones) => (
           <Route key={el.id} path={`/phones/${el.id}`} exact render={() => <ItemSpecificationCard route={`${el.name}`} page="Phones" gadget={el} allGadgets={phones} />} />

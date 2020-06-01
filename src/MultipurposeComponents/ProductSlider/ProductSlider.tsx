@@ -59,7 +59,7 @@ export const ProductSlider: FC<Params> = ({ phones, title }) => {
         <ul className="discount__list" style={{ right: position }}>
           {phones.map((phone: Phones) => (
             <li key={phone.id}>
-              <Card phone={phone} route={`/${phone.type}s/`} />
+              <Card phone={phone} />
             </li>
           ))}
         </ul>
