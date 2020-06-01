@@ -1,5 +1,7 @@
-import React, { useCallback, useRef } from 'react';
+import React, { useCallback, useMemo, useRef } from 'react';
 import cn from 'classnames';
+import { LOCATIONS } from '../../common/constants';
+import { useSearch } from '../_hooks/useSearch';
 
 export const Search = ({
   inputValue,
@@ -7,6 +9,8 @@ export const Search = ({
   searchReset,
 }: SearchProps) => {
   const inputEl = useRef<HTMLInputElement>(null);
+
+  const { location } = useSearch();
 
   const handleClick = useCallback(() => {
     searchReset();
@@ -16,6 +20,19 @@ export const Search = ({
     }
   }, [searchReset]);
 
+  const placeholderItems = useMemo(() => {
+    switch (location.pathname) {
+      case LOCATIONS.phones:
+        return 'phones';
+      case LOCATIONS.tablets:
+        return 'tablets';
+      case LOCATIONS.favorites:
+        return 'favorites';
+      default:
+        return 'products';
+    }
+  }, [location.pathname]);
+
   return (
     <div className="search">
       <input
@@ -23,7 +40,7 @@ export const Search = ({
         type="text"
         value={inputValue}
         className="search__input"
-        placeholder="Search in products..."
+        placeholder={`Search in ${placeholderItems}...`}
         onChange={searchProducts}
       />
       <button
