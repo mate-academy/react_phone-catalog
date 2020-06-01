@@ -70,9 +70,8 @@ export const Card: React.FC<Props> = ({
             <button
               type="button"
               className="card__button-favor"
-            >
-              favor
-            </button>
+              aria-label="Mute text"
+            />
           </div>
         </div>
       </article>

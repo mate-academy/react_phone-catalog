@@ -33,6 +33,11 @@ const Search = () => {
         value={query}
         // value={aplaiedQuery}
         onChange={({ target }) => {
+          if (searchParams.get('page') !== '1') {
+            searchParams.set('page', '1');
+            history.push({ search: searchParams.toString() });
+          }
+
           setQuery(target.value);
           // setAplaiedQuery(target.value);
           // aplayQueryWithDebounce(target.value);
