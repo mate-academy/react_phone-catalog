@@ -54,8 +54,12 @@ export const useProductsList = () => {
       return 'result';
     }
 
+    if (location.pathname === LOCATIONS.favorites) {
+      return 'item';
+    }
+
     return 'model';
-  }, [search]);
+  }, [search, location.pathname]);
 
   return {
     currentProducts,
