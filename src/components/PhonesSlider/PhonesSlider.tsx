@@ -1,33 +1,28 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import cn from 'classnames';
 import PhoneCard from '../PhoneCard/PhoneCard';
-import { getPhones } from '../../helpers/api';
 import './PhoneSlider.scss';
 
 type Props = {
   title: string;
+  products: Products[];
 };
 
-export const PhonesSlider: React.FC<Props> = ({ title }) => {
-  const [phones, setPhones] = useState<Products[]>([]);
+export const PhonesSlider: React.FC<Props> = ({ title, products }) => {
   const [cardPosition, setCardPosition] = useState(0);
 
-  useEffect(() => {
-    getPhones().then(data => {
-      setPhones(data.filter(phone => phone.discount > 0));
-    });
-  }, []);
-
+  const cardWidthWithPad = 288;
+  const maxWidth = cardWidthWithPad * (products.length - 4);
 
   const handleNextClick = () => {
-    if (cardPosition !== -1728) {
-      setCardPosition(cardPosition - 288);
+    if (cardPosition !== -maxWidth) {
+      setCardPosition(cardPosition - cardWidthWithPad);
     }
   };
 
   const handlePrevClick = () => {
     if (cardPosition !== 0) {
-      setCardPosition(cardPosition + 288);
+      setCardPosition(cardPosition + cardWidthWithPad);
     }
   };
 
@@ -61,7 +56,7 @@ export const PhonesSlider: React.FC<Props> = ({ title }) => {
                 'carousel__btn',
                 'carousel__btn_next',
                 {
-                  btn__noactive_next: cardPosition === -1728,
+                  btn__noactive_next: cardPosition === -maxWidth,
                 })}
             >
               { }
@@ -71,7 +66,7 @@ export const PhonesSlider: React.FC<Props> = ({ title }) => {
 
         <div className="PhoneSlider__container">
           <ul className="carousel" style={carouselStyle}>
-            {phones.map((phone) => (
+            {products.map((phone) => (
               <li
                 className="PhoneSlider__item carousel__item"
                 key={phone.id}

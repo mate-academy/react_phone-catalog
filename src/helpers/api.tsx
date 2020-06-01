@@ -5,8 +5,8 @@ export const getProducts = () => {
     .then(responce => responce.json());
 };
 
-export const getPhones = async (): Promise< Products[]> => {
+export const getAllProducts = async (): Promise< Products[]> => {
   const products = await getProducts();
 
-  return products.filter((product: Products) => product.type === 'phone');
+  return products;
 };
