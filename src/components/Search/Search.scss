@@ -1,14 +1,13 @@
 @import "../../styles/utils/mixins";
 @import "../../styles/utils/vars";
 
-.wrap__saerch {
-  height: $heightHeader;
-  background-color: red;
+.wrap__search {
+  height: 62px;
+  // background-color: #fff;
   width: 327px;
   padding: 0 24px;
   border-left: $borderElement;
-  border-bottom: $borderElement;
-
+  // border-bottom: $borderElement;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -16,10 +15,10 @@
 
 }
 
-.searsh {
+.search {
   height: $heightHeader;
   width: 327px;
-  background-color: red;
+  // background-color: #fff;
   @include ButtonText;
   color: $colorText;
   line-height: 18px;

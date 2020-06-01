@@ -197,15 +197,16 @@
   }
 }
 
-.card__button-wrap {
+// Component PrimeryButton
+
+.Card__ButtonWrap {
   display: flex;
   justify-content: space-between;
-  width: 320px;
 }
 
-.card__button-cart {
-  height: 48px;
-  width: 263px;
+.Card__ButtonCart {
+  height: 40px;
+  width: 176px;
   border: none;
   background: #313237;
   color: #fff;
@@ -217,8 +218,8 @@
   }
 }
 
-.card__button-favor {
-  height: 48px;
-  width: 48px;
+.Card__ButtonFavor {
+  height: 40px;
+  width: 40px;
   border: none;
 }

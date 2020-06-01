@@ -22,6 +22,7 @@ const ProductsSlider: React.FC<ProductsSliderProps> = ({ visibleProducts, title 
   //       setWidthCard(node.getBoundingClientRect().width);
   // }}, []);
 
+
   const handleOnClick = (name: string) => {
     if (name === 'prev') {
       if (position === 0) {
@@ -30,12 +31,12 @@ const ProductsSlider: React.FC<ProductsSliderProps> = ({ visibleProducts, title 
         setPosition(position + widthCard);
       }
     }
-
     if (name === 'next') {
       setPosition(position - widthCard);
       if (-position > widthCarousel - widthCard) {
         setPosition(0);
       }
+
     }
   };
 
