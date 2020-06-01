@@ -14,7 +14,7 @@ const Header = () => {
         <Nav />
         <div className="header__icons">
           <NavLink to="/favourites" className="header__favourites header__icon" activeClassName="header__link--active" />
-          <NavLink to="/cart" className="header__shopping-bag header__icon" activeClassName="header__link--active" />
+          <NavLink to="/cart" className="header__cart header__icon" activeClassName="header__link--active" />
         </div>
       </header>
     </>
