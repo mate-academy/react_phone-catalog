@@ -1,16 +1,11 @@
 import React from 'react';
-import {  } from 'react-router-dom';
 
-import Header from './Header/Header';
-import Main from './Main';
-
-const HomePage = () => {
+const HomePage: React.FC = () => {
   return (
     <>
-      <Header />
-      <Main />
+      111
     </>
   );
-}
+};
 
 export default HomePage;

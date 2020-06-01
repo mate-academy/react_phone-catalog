@@ -1,14 +1,14 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import './Header.scss';
+import './HeaderNavigation.scss';
 
-import Nav from '../Nav/Nav';
+import Nav from './Nav/Nav';
 
-const Header = () => {
+const HeaderNavigation: React.FC = () => {
   return (
     <>
       <header className="header">
-        <NavLink to="/home" className="header__logo" >
+        <NavLink to="/home" className="header__logo">
           <img src="./img/logo.svg" alt="logo" className="logo" />
         </NavLink>
         <Nav />
@@ -18,7 +18,7 @@ const Header = () => {
         </div>
       </header>
     </>
-  )
-}
+  );
+};
 
-export default Header;
+export default HeaderNavigation;

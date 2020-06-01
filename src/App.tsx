@@ -1,11 +1,13 @@
 import React from 'react';
-import HomePage from './Components/HomePage/HomePage'
+import HeaderNavigation from './Components/HeaderNavigation/HeaderNavigation';
+import Main from './Components/HeaderNavigation/Main';
 
 import './styles/App.scss';
 
-const App = () => (
+const App: React.FC = () => (
   <div className="App">
-    <HomePage />
+    <HeaderNavigation />
+    <Main />
   </div>
 );
 
