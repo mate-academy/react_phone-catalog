@@ -1,7 +1,7 @@
 import React, { useCallback, useMemo, useRef } from 'react';
 import cn from 'classnames';
 import { LOCATIONS } from '../../common/constants';
-import { useSearch } from '../_hooks/useSearch';
+import { useRouter } from '../_hooks/useRouter';
 
 export const Search = ({
   inputValue,
@@ -10,7 +10,7 @@ export const Search = ({
 }: SearchProps) => {
   const inputEl = useRef<HTMLInputElement>(null);
 
-  const { location } = useSearch();
+  const { location } = useRouter();
 
   const handleClick = useCallback(() => {
     searchReset();

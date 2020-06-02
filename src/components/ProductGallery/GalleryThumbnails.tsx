@@ -5,7 +5,8 @@ export const GalleryThumbnails = ({
   images,
   currentImageLink,
   title,
-  handleClick }: GalleryThumbnailsProps) => {
+  handleClick,
+}: GalleryThumbnailsProps) => {
   return (
     <div className="gallery__thumbnails">
       {images.map((link, index) => (
@@ -30,5 +31,5 @@ export const GalleryThumbnails = ({
         </div>
       ))}
     </div>
-  )
-}
+  );
+};

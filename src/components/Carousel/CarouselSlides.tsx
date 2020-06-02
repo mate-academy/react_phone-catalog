@@ -2,14 +2,14 @@ import React from 'react';
 
 export const CarouselSlides = ({
   slides,
-  toMove,
+  moveSize,
   duration,
 }: CarouselSlidesProps) => {
   return (
     <ul
       className="carousel__list"
       style={{
-        transform: `translateX(${-toMove}px)`,
+        transform: `translateX(${-moveSize}px)`,
         transitionDuration: `${duration}s`,
       }}
     >

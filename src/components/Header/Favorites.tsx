@@ -12,7 +12,7 @@ export const Favorites = () => {
   );
 
   return (
-    <div className="favorites" >
+    <div className="favorites">
       <Link to="/favorites" className="favorites__button">
         {doFavoritesExist
         && <span className="favorites__indicator">{favorites.length}</span>}

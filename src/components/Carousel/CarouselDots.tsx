@@ -1,12 +1,12 @@
 import React from 'react';
 import cn from 'classnames';
 
-export const CarouselRectangles = ({
+export const CarouselDots = ({
   slides,
   active,
   goToSlide,
-}: CarouselRectanglesProps) => (
-  <div className="carousel__rectangles">
+}: CarouselDotsProps) => (
+  <div className="carousel__dots">
     {slides.map((slide, index) => (
       <button
         key={slide.id}
@@ -14,8 +14,8 @@ export const CarouselRectangles = ({
         aria-label={`Got to ${index + 1} slide`}
         onClick={() => goToSlide(index)}
         className={cn({
-          carousel__rectangle: true,
-          'carousel__rectangle--active': active === index,
+          carousel__dot: true,
+          'carousel__dot--active': active === index,
         })}
       />
     ))}

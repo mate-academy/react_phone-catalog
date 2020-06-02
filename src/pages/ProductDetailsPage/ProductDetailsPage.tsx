@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { useRouteMatch } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { fetchProductDetails } from '../../common/helpers/api';
 import { Heading } from '../../components/Heading/Heading';
@@ -14,11 +13,12 @@ import { ShowcaseBlock } from '../../components/ShowcaseBlock/ShowcaseBlock';
 import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 import { BackBtn } from '../../components/Buttons/BackBtn';
 import { ProductGallery } from '../../components/ProductGallery/ProductGallery';
+import { useRouter } from '../../components/_hooks/useRouter';
 
 export const ProductDetailsPage = () => {
   const [product, setProduct] = useState<Product>();
   const [productDetails, setProductDetails] = useState<ProductDetails>();
-  const match: Match = useRouteMatch();
+  const { match } = useRouter();
   const products: Product[] = useSelector(getProducts);
 
   const getDetails = async (productId: string) => {
@@ -27,9 +27,10 @@ export const ProductDetailsPage = () => {
     setProductDetails(details);
   };
 
-  const currentProduct = useMemo(() => (products.find(p => (
-    p.id === match.params.productId
-  ))), [products, match]);
+  const currentProduct = useMemo(() => (products.find(
+    p => (p.id === match.params.productId),
+  )),
+  [products, match]);
 
   useEffect(() => {
     getDetails(match.params.productId);

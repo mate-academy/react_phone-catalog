@@ -1,11 +1,11 @@
 import { useCallback, useMemo } from 'react';
 import { useSearch } from './useSearch';
 import { LOCATIONS, PER_PAGE, PRODUCT_TYPES } from '../../common/constants';
+import { useRouter } from './useRouter';
 
 export const useProductsList = () => {
-  const {
-    searchedProducts, history, search, location,
-  } = useSearch();
+  const { searchedProducts } = useSearch();
+  const { history, search, location } = useRouter();
 
   const phones = useMemo(() => {
     return searchedProducts.filter(product => product.type === PRODUCT_TYPES.phone);

@@ -5,7 +5,7 @@ export const ProductGallery = ({ images, title }: ProductGalleryProps) => {
   const [currentImageLink, setCurrentImageLink] = useState<string>(images[0]);
 
   useEffect(() => {
-    setCurrentImageLink(images[0])
+    setCurrentImageLink(images[0]);
   }, [images]);
 
   const setActiveImage = (e: React.MouseEvent<HTMLAnchorElement>) => {

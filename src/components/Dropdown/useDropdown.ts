@@ -1,21 +1,21 @@
 import { useCallback, useEffect, useState } from 'react';
-import { useSearch } from '../_hooks/useSearch';
 import { DROPDOWN_HEADINGS } from '../../common/constants';
+import { useRouter } from '../_hooks/useRouter';
 
 export const useDropdown = (list: OptionType[], heading: string) => {
   const [isListOpen, setListOpen] = useState<boolean>(false);
   const [selectedOption, setSelectedOption] = useState(list[0].option);
 
-  const close = useCallback(() => setListOpen(false), [setListOpen]);
-  const { search, history } = useSearch();
+  const closeDropdown = useCallback(() => setListOpen(false), []);
+  const { search, history } = useRouter();
 
   useEffect(() => {
     if (isListOpen) {
-      window.addEventListener('click', close);
+      window.addEventListener('click', closeDropdown);
     } else {
-      window.removeEventListener('click', close);
+      window.removeEventListener('click', closeDropdown);
     }
-  }, [isListOpen, close]);
+  }, [isListOpen, closeDropdown]);
 
   const toggleList = useCallback(() => setListOpen(!isListOpen), [isListOpen]);
 
