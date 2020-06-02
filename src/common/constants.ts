@@ -39,6 +39,7 @@ export const LOCATIONS = {
   phones: '/phones',
   tablets: '/tablets',
   favorites: '/favorites',
+  cart: '/cart',
 };
 
 export const SHOWCASE_HEADINGS = {

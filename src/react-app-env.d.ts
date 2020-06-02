@@ -1,7 +1,5 @@
 // / <reference types=string />
 
-type RootState = ReturnType<typeof rootReducer>;
-
 interface Product {
   age: number;
   type: string;
@@ -161,6 +159,19 @@ interface NavItem {
   exact: boolean;
 }
 
+type NavList = NavItem[];
+
+type NavProps = {
+  headerItemRef: (node: any) => void;
+};
+
+interface NavItemProps {
+  title: string;
+  link: string;
+  exact: boolean;
+  headerItemRef: (node: any) => void;
+}
+
 interface Match {
   isExact: boolean;
   params: {
@@ -210,3 +221,10 @@ type ProductGalleryProps = {
   images: string[];
   title: string;
 };
+
+type GalleryThumbnailsProps = {
+  images: string[];
+  title: string;
+  currentImageLink: string;
+  handleClick: (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
+}

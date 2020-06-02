@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import { Footer } from './components/Footer/Footer';
 import { Header } from './components/Header/Header';
 import { HomePage } from './pages/HomePage';
@@ -13,6 +13,7 @@ const App = () => {
     <>
       <Header />
       <Switch>
+        <Redirect exact from="/home" to="/" />
         <Route exact path="/" component={HomePage} />
         <Route exact path="/phones" component={PhonesPage} />
         <Route exact path="/tablets" component={TabletsPage} />

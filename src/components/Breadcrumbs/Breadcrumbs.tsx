@@ -12,8 +12,8 @@ export const Breadcrumbs = () => {
   ), [location]);
 
   const preparedBreadcrumbs = useMemo(() => (
-      preparedLabels
-      .reduce((acc: string[], item) => [...acc, acc + '/' + item], [])
+    preparedLabels
+      .reduce((acc: string[], item) => [...acc, `${acc}/${item}`], [])
   ), [preparedLabels]);
 
   return (

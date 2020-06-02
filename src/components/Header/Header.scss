@@ -6,6 +6,18 @@
   border-bottom: 1px solid $border-section-color;
   box-sizing: border-box;
 
+  &__active-element {
+    display: block;
+    position: absolute;
+    top: 61px;
+    left: 200px;
+    bottom: 1px;
+    color: $primary-color;
+    height: 3px;
+    background-color: $primary-color;
+    transition: left 0.3s;
+  }
+
   &__flex-wrap {
     display: flex;
     align-items: center;

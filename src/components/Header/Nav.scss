@@ -1,6 +1,7 @@
 .nav {
 
   &__list {
+    position: relative;
     display: flex;
   }
 
@@ -22,20 +23,5 @@
     line-height: $header-height;
     color: $secondary-color;
     @include hover(color, $primary-color, 0.2);
-
-    &--active {
-      position: relative;
-      color: $primary-color;
-
-      &::after {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        height: 3px;
-        background-color: $primary-color;
-      }
-    }
   }
 }

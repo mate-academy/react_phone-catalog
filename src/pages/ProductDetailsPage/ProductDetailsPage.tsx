@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useRouteMatch } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import { fetchProductDetails } from '../../common/helpers/api';
 import { Heading } from '../../components/Heading/Heading';
 import { FavoriteBtn } from '../../components/Buttons/FavoriteBtn';
@@ -8,7 +9,6 @@ import {
 } from '../../common/constants';
 import { ProductPrice } from '../../components/ProductCard/ProductPrice';
 import { PrimaryBtn } from '../../components/Buttons/PrimaryBtn';
-import { useSelector } from 'react-redux';
 import { getProducts } from '../../redux';
 import { ShowcaseBlock } from '../../components/ShowcaseBlock/ShowcaseBlock';
 import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';

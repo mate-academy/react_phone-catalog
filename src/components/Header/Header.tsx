@@ -1,4 +1,5 @@
-import React, { useMemo } from 'react';
+import React, { useCallback, useState, useMemo } from 'react';
+
 import { Logo } from '../Logo/Logo';
 import { Nav } from './Nav';
 import { Favorites } from './Favorites';
@@ -14,6 +15,8 @@ export const Header = () => {
     searchReset,
     location,
   } = useSearch();
+  const [width, setWidth] = useState(0);
+  const [left, setLeft] = useState(0);
 
   const path = location.pathname;
 
@@ -23,6 +26,13 @@ export const Header = () => {
     || (path === LOCATIONS.favorites)
   ), [path]);
 
+  const ref = useCallback(node => {
+    if (node !== null) {
+      setWidth(node.getBoundingClientRect().width);
+      setLeft(node.getBoundingClientRect().x);
+    }
+  }, []);
+
   return (
     <header className="header">
       <div className="header__flex-wrap">
@@ -30,7 +40,7 @@ export const Header = () => {
           <Logo />
         </div>
         <div className="header__nav">
-          <Nav />
+          <Nav headerItemRef={ref} />
         </div>
       </div>
       <div className="header__flex-wrap">
@@ -44,6 +54,15 @@ export const Header = () => {
         <Favorites />
         <Cart />
       </div>
+      {ref && (
+        <span
+          className="header__active-element"
+          style={{
+            width: `${width}px`,
+            left: `${left}px`,
+          }}
+        />
+      )}
     </header>
   );
 };

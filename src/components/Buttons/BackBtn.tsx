@@ -7,6 +7,7 @@ export const BackBtn = () => {
 
   return (
     <button
+      type="button"
       className="button-back"
       onClick={goBack}
     >

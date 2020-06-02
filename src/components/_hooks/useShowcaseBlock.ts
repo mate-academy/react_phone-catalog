@@ -32,9 +32,9 @@ export const useShowcaseBlock = (title?: string, selectedProduct?: Product) => {
   const alsoLikeProducts: Product[] = useMemo(() => {
     const selectedProductPrice = selectedProduct?.price as number;
     const selectedProductName = selectedProduct?.name as string;
+
     return products
-      .filter(product =>
-        (product.price - 150 <= selectedProductPrice)
+      .filter(product => (product.price - 150 <= selectedProductPrice)
         && (product.price + 150 >= selectedProductPrice)
         && (selectedProductName !== product.name)
         && product.type);
@@ -51,7 +51,7 @@ export const useShowcaseBlock = (title?: string, selectedProduct?: Product) => {
       default:
         return [];
     }
-  }, [title, hotPricesProducts, newProducts, alsoLikeProducts, ]);
+  }, [title, hotPricesProducts, newProducts, alsoLikeProducts]);
   const stepWidth = useMemo(() => itemWidth * STEP, [itemWidth]);
   const frameWidth = useMemo(() => itemWidth * FRAME_SIZE, [itemWidth]);
   const carouselWidth = useMemo(() => itemWidth * currentProducts.length,

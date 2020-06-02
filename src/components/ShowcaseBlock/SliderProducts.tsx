@@ -6,7 +6,7 @@ export const SliderProducts = ({
   position,
   animationDuration,
   productCardRef,
-  sliderVisibleWidth
+  sliderVisibleWidth,
 }: SliderProps) => {
   return (
     <div
