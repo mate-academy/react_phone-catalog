@@ -8,10 +8,10 @@ export const deleteFavorite = (id: string) => ({ type: DELETE_FAVORITE, id });
 
 type setFavoriteAction = Action<typeof SET_FAVORITE> & {
   product: Product;
-}
+};
 type deleteFavoriteAction = Action<typeof DELETE_FAVORITE> & {
   id: keyof Product;
-}
+};
 type PossibleAction = setFavoriteAction | deleteFavoriteAction;
 
 const favoritesReducer = (favorites: Product[] = [], action: PossibleAction) => {

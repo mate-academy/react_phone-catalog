@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useState, useMemo } from 'react';
 
 import { Logo } from '../Logo/Logo';
 import { Nav } from './Nav';
@@ -6,6 +6,7 @@ import { Favorites } from './Favorites';
 import { Cart } from './Cart';
 import { Search } from './Search';
 import { useSearch } from '../_hooks/useSearch';
+import { LOCATIONS } from '../../common/constants';
 
 export const Header = () => {
   const {
@@ -14,9 +15,16 @@ export const Header = () => {
     searchReset,
     location,
   } = useSearch();
-
   const [width, setWidth] = useState(0);
   const [left, setLeft] = useState(0);
+
+  const path = location.pathname;
+
+  const searchInputIsHidden = useMemo(() => (
+    (path === LOCATIONS.phones)
+    || (path === LOCATIONS.tablets)
+    || (path === LOCATIONS.favorites)
+  ), [path]);
 
   const ref = useCallback(node => {
     if (node !== null) {
@@ -36,20 +44,25 @@ export const Header = () => {
         </div>
       </div>
       <div className="header__flex-wrap">
-        {location.pathname !== '/'
-        && (
+        {searchInputIsHidden && (
           <Search
             inputValue={inputValue}
             searchProducts={searchProducts}
             searchReset={searchReset}
           />
         )}
-        <Favorites headerItemRef={ref} />
-        <Cart headerItemRef={ref} />
+        <Favorites />
+        <Cart />
       </div>
-      <span className="header__active-element"
-            style={{ width: `${width}px`, left: `${left}px` }}
-      />
+      {ref && (
+        <span
+          className="header__active-element"
+          style={{
+            width: `${width}px`,
+            left: `${left}px`,
+          }}
+        />
+      )}
     </header>
   );
 };

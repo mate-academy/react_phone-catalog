@@ -1,0 +1,20 @@
+.product-price {
+  margin-right: 8px;
+  display: flex;
+  flex-direction: row;
+  font-size: 22px;
+  line-height: 31px;
+  font-weight: bold;
+
+  &--lg {
+    font-size: 32px;
+    line-height: 41px;
+  }
+}
+
+.product-discount {
+  font-size: 22px;
+  line-height: 30px;
+  text-decoration-line: line-through;
+  color: $secondary-color;
+}

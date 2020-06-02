@@ -6,7 +6,7 @@ export const fetchProducts = async (): Promise<Product[]> => {
   return response.json();
 };
 
-export const fetchProductDetails = async (productId: string): Promise<ProductDetails[]> => {
+export const fetchProductDetails = async (productId: string): Promise<ProductDetails> => {
   const response = await fetch(`${API_URL}/${productId}.json`);
 
   return response.json();

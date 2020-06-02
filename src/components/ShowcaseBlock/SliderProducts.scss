@@ -9,6 +9,7 @@
 
   &__list {
     display: grid;
+    grid-auto-columns: $product-card-width;
     grid-auto-flow: column;
     grid-gap: 16px;
   }

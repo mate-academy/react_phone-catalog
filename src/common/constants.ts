@@ -45,10 +45,28 @@ export const LOCATIONS = {
 export const SHOWCASE_HEADINGS = {
   hotPrices: 'Hot prices',
   newModels: 'Brand new models',
+  alsoLike: 'You may also like',
 };
 
 export const SECTION_HEADINGS = {
   phones: 'Mobile phones',
   tablets: 'Tablets',
   favorites: 'Favorites',
+};
+
+export const BTN_TITLES = {
+  addToCart: 'Add to cart',
+  checkout: 'Checkout',
+};
+
+export const BTN_SIZES = {
+  large: 'button--lg',
+};
+
+export const FAVORITE_BTN_SIZES = {
+  large: 'button-favorite--lg',
+};
+
+export const PRICE_TEXT_SIZES = {
+  large: 'product-price--lg',
 };

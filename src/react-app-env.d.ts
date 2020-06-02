@@ -89,6 +89,22 @@ interface CarouselSlide {
   src: string;
 }
 
+type FavoriteBtnProps = {
+  productId: string;
+  styleSize?: string;
+};
+
+type ProductPriceProps = {
+  price: number;
+  discount: number;
+  styleSize?: string;
+};
+
+type PrimaryBtnProps = {
+  title: string;
+  styleSize?: string;
+};
+
 type CarouselSlidesProps = {
   slides: CarouselSlide[];
   toMove: number;
@@ -110,8 +126,7 @@ type SliderProps = {
   products: Product[];
   position: number;
   step: number;
-  itemWidth: number;
-  frameSize: number;
+  sliderVisibleWidth: number;
   animationDuration: number;
   productCardRef: (node: any) => void;
 };
@@ -148,15 +163,7 @@ type NavList = NavItem[];
 
 type NavProps = {
   headerItemRef: (node: any) => void;
-}
-
-type FavoritesProps = {
-  headerItemRef: (node: any) => void;
-}
-
-type CartProps = {
-  headerItemRef: (node: any) => void;
-}
+};
 
 interface NavItemProps {
   title: string;
@@ -200,11 +207,24 @@ type ProductsAmountProps = {
 };
 
 type BreadcrumbProps = {
-  to: string;
   label: string;
+  link: string;
   isLast: boolean;
 };
 
 type ShowcaseBlockProps = {
   title: string;
+  selectedProduct?: Product;
 };
+
+type ProductGalleryProps = {
+  images: string[];
+  title: string;
+};
+
+type GalleryThumbnailsProps = {
+  images: string[];
+  title: string;
+  currentImageLink: string;
+  handleClick: (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
+}

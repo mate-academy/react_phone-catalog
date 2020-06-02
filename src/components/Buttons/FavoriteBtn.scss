@@ -1,0 +1,32 @@
+.button-favorite {
+  display: block;
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border: 1px solid $border-btn-color;
+  box-sizing: border-box;
+  cursor: pointer;
+  @include hover(border-color, $primary-color, 0.2);
+
+  &--lg {
+    width: 48px;
+    height: 48px;
+  }
+
+  &__checkmark {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("../../assets/img/favorite_default.svg");
+  }
+
+  &__input {
+    position: absolute;
+    opacity: 0;
+    &:checked ~ .button-favorite__checkmark {
+      background-image: url("../../assets/img/favorite_checked.svg");
+    }
+  }
+}
