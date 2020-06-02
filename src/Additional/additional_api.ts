@@ -1,4 +1,5 @@
 import React from 'react';
+import { Phones } from './interfaces';
 
 export const OWNER_GIT_HUB = 'https://github.com/vitaliikorol';
 
@@ -14,7 +15,8 @@ const PRODUCTS_API_URL = 'https://mate-academy.github.io/react_phone-catalog/api
 const downloadProducts = () => fetch(PRODUCTS_API_URL).then(response => response.json());
 
 
-export const FavArray: string[] = [];
+export const FavGoods: Phones[] = [];
+export const CartGoods: Phones[] = [];
 
 // --- DFS - means Data From Server --
 export const DFS = React.createContext(downloadProducts());

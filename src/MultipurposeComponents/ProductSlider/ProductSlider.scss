@@ -168,13 +168,27 @@
     height: 40px;
     background-color: #313237;
     color: white;
-    border: 0;
     padding: 0;
     font-family: Mont, sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 14px;
     line-height: 21px;
+    border: 1px solid #313237;
+    box-sizing: border-box;
+    transition: background-color 0.5s, color 0.5s, border-color 0.5s;
+    &_active {
+      color: #27AE60;
+      background-color: white;
+      border: 1px solid #E2E6E9;
+      box-sizing: border-box;
+    }
+    &:hover {
+      cursor: pointer;
+    }
+    &:focus {
+      outline: none;
+    }
   }
   &__add-to-fav {
     width: 13px;

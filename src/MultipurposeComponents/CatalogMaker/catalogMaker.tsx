@@ -9,7 +9,7 @@ type Params = {
 export const CatalogMaker: FC<Params> = ({ gadgets }) => {
   return (
     <>
-      {gadgets.map((phone: Phones) => (
+      {gadgets?.map((phone: Phones) => (
         <React.Fragment key={phone.id}>
           <Card phone={phone} />
         </React.Fragment>
