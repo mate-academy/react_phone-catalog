@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { useSelector } from 'react-redux';
-import { fetchProductDetails } from '../../common/helpers/api';
+import { useDispatch, useSelector } from 'react-redux';
 import { Heading } from '../../components/Heading/Heading';
 import { FavoriteBtn } from '../../components/Buttons/FavoriteBtn';
 import {
@@ -8,7 +7,7 @@ import {
 } from '../../common/constants';
 import { ProductPrice } from '../../components/ProductCard/ProductPrice';
 import { PrimaryBtn } from '../../components/Buttons/PrimaryBtn';
-import { getProducts } from '../../redux';
+import { getDetails, getProducts, loadDetails } from '../../redux';
 import { ShowcaseBlock } from '../../components/ShowcaseBlock/ShowcaseBlock';
 import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 import { BackBtn } from '../../components/Buttons/BackBtn';
@@ -16,16 +15,11 @@ import { ProductGallery } from '../../components/ProductGallery/ProductGallery';
 import { useRouter } from '../../components/_hooks/useRouter';
 
 export const ProductDetailsPage = () => {
-  const [product, setProduct] = useState<Product>();
-  const [productDetails, setProductDetails] = useState<ProductDetails>();
+  const dispatch = useDispatch();
   const { match } = useRouter();
+  const [product, setProduct] = useState<Product>();
+  const productDetails = useSelector(getDetails);
   const products: Product[] = useSelector(getProducts);
-
-  const getDetails = async (productId: string) => {
-    const details = await fetchProductDetails(productId);
-
-    setProductDetails(details);
-  };
 
   const currentProduct = useMemo(() => (products.find(
     p => (p.id === match.params.productId),
@@ -33,9 +27,10 @@ export const ProductDetailsPage = () => {
   [products, match]);
 
   useEffect(() => {
-    getDetails(match.params.productId);
+    dispatch(loadDetails(match.params.productId));
     setProduct(currentProduct);
-  }, [match, currentProduct]);
+
+  }, [dispatch, match, currentProduct]);
 
   return (
     <div className="container">

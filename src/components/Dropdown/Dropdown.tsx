@@ -16,7 +16,6 @@ export const Dropdown = ({ list, heading }: DropdownProps) => {
     handleSort(option);
   }, [handleSort]);
 
-
   return (
     <div className="dropdown">
       <p className="dropdown__heading">{heading}</p>

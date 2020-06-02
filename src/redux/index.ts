@@ -3,18 +3,21 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import { Dispatch } from 'react';
 import productsReducer, { setProducts } from './products';
-import { fetchProducts } from '../common/helpers/api';
+import { fetchProductDetails, fetchProducts } from '../common/helpers/api';
 import favoritesReducer from './favorites';
+import detailsReducer, { setDetails } from './details';
 
 
 const rootReducer = combineReducers({
   products: productsReducer,
+  details: detailsReducer,
   favorites: favoritesReducer,
 });
 
 type RootState = ReturnType<typeof rootReducer>;
 
 export const getProducts = (state: RootState) => state.products;
+export const getDetails = (state: RootState) => state.details;
 export const getFavorites = (state: RootState) => state.favorites;
 
 export const loadProducts = () => {
@@ -22,6 +25,14 @@ export const loadProducts = () => {
     const products = await fetchProducts();
 
     dispatch(setProducts(products));
+  };
+};
+
+export const loadDetails = (productId: string) => {
+  return async (dispatch: Dispatch<any>) => {
+    const details = await fetchProductDetails(productId);
+
+    dispatch(setDetails(details));
   };
 };
 
