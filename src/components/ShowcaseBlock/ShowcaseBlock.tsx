@@ -18,13 +18,15 @@ export const ShowcaseBlock = ({ title, selectedProduct }: ShowcaseBlockProps) =>
     frameSize,
   } = useShowcaseBlock(title, selectedProduct);
 
-  const sliderVisibleWidth = useMemo(() => (
-    frameSize * itemWidth
-  ), [frameSize, itemWidth]);
+  const sliderVisibleWidth = useMemo(
+    () => (frameSize * itemWidth),
+    [frameSize, itemWidth],
+  );
 
-  const controlsAreHidden = useMemo(() => (
-    sliderVisibleWidth < currentProducts.length * itemWidth
-  ), [currentProducts, itemWidth, sliderVisibleWidth]);
+  const controlsAreHidden = useMemo(
+    () => (sliderVisibleWidth < currentProducts.length * itemWidth),
+    [currentProducts, itemWidth, sliderVisibleWidth],
+  );
 
   return (
     <>

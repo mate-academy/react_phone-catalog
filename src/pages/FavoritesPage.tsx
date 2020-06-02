@@ -14,12 +14,12 @@ export const FavoritesPage = () => {
   } = useProductsList();
 
   const { searchedProducts } = useSearch();
-  const areFavoritesExist = useMemo(() => searchedProducts.length > 0, [searchedProducts]);
+  const doFavoritesExist = useMemo(() => searchedProducts.length > 0, [searchedProducts]);
 
   return (
     <div className="container">
       <section className="section">
-        {areFavoritesExist
+        {doFavoritesExist
           ? (
             <>
               {!search.get('query') && (
@@ -28,7 +28,7 @@ export const FavoritesPage = () => {
                   <Heading title={SECTION_HEADINGS.favorites} />
                 </>
               )}
-              {areFavoritesExist && (
+              {doFavoritesExist && (
                 <ProductsAmount title={PRODUCT_PATHS.favorites} />
               )}
               <div className="products section__products">

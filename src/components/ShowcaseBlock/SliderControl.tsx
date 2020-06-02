@@ -13,7 +13,10 @@ export const SliderControl = ({
   const isStart = position === 0;
   const isEnd = position === maxPosition;
 
-  const onSlide = useCallback(() => handleSlide(direction), [handleSlide, direction]);
+  const onSlide = useCallback(
+    () => handleSlide(direction),
+    [handleSlide, direction],
+  );
 
   return (
     <button

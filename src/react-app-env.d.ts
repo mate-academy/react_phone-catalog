@@ -107,11 +107,11 @@ type PrimaryBtnProps = {
 
 type CarouselSlidesProps = {
   slides: CarouselSlide[];
-  toMove: number;
+  moveSize: number;
   duration: number;
 };
 
-type CarouselRectanglesProps = {
+type CarouselDotsProps = {
   slides: CarouselSlide[];
   active: number;
   goToSlide: (i: number) => void;
@@ -161,15 +161,11 @@ interface NavItem {
 
 type NavList = NavItem[];
 
-type NavProps = {
-  headerItemRef: (node: any) => void;
-};
-
 interface NavItemProps {
   title: string;
   link: string;
   exact: boolean;
-  headerItemRef: (node: any) => void;
+  linkRef: (node: any) => void;
 }
 
 interface Match {
@@ -227,4 +223,4 @@ type GalleryThumbnailsProps = {
   title: string;
   currentImageLink: string;
   handleClick: (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
-}
+};

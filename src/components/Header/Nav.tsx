@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import { NavItem } from './NavItem';
 
 const navList: NavList = [
@@ -8,7 +8,20 @@ const navList: NavList = [
   { title: 'Accessories', link: '/accessories', exact: false },
 ];
 
-export const Nav = ({ headerItemRef }: NavProps) => {
+export const Nav = () => {
+  const [width, setWidth] = useState(0);
+  const [left, setLeft] = useState(0);
+  const [doesNodeExist, setNode] = useState(null);
+
+  const ref = useCallback(node => {
+    if (node !== null) {
+      setWidth(node.getBoundingClientRect().width);
+      setLeft(node.getBoundingClientRect().x);
+    }
+
+    setNode(node);
+  }, []);
+
   return (
     <nav className="nav">
       <ul className="nav__list">
@@ -18,9 +31,18 @@ export const Nav = ({ headerItemRef }: NavProps) => {
             title={title}
             link={link}
             exact={exact}
-            headerItemRef={headerItemRef}
+            linkRef={ref}
           />
         ))}
+        {doesNodeExist && (
+          <span
+            className="nav__active-element"
+            style={{
+              width: `${width}px`,
+              left: `${left}px`,
+            }}
+          />
+        )}
       </ul>
     </nav>
   );
