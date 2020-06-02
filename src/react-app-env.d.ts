@@ -137,6 +137,14 @@ interface Category {
   link: string;
 }
 
+interface NavItem {
+  title: string;
+  link: string;
+  exact: boolean;
+}
+
+type NavList = NavItem[];
+
 type NavProps = {
   headerItemRef: (node: any) => void;
 }

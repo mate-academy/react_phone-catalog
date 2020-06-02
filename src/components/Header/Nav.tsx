@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavItem } from './NavItem';
 
-const navList: NavItem[] = [
+const navList: NavList = [
   { title: 'Home', link: '/', exact: true },
   { title: 'Phones', link: '/phones', exact: false },
   { title: 'Tablets', link: '/tablets', exact: false },
