@@ -9,7 +9,9 @@ export const SliderProducts = ({
   itemWidth,
   frameSize,
 }: SliderProps) => {
-  const sliderVisibleWidth = useMemo(() => frameSize * itemWidth, [frameSize, itemWidth]);
+  const sliderVisibleWidth = useMemo(
+    () => frameSize * itemWidth,
+    [frameSize, itemWidth]);
 
   return (
     <div

@@ -12,6 +12,8 @@ const rootReducer = combineReducers({
   favorites: favoritesReducer,
 });
 
+type RootState = ReturnType<typeof rootReducer>;
+
 export const getProducts = (state: RootState) => state.products;
 export const getFavorites = (state: RootState) => state.favorites;
 

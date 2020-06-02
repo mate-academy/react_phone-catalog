@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 
 import { Logo } from '../Logo/Logo';
 import { Nav } from './Nav';
@@ -15,6 +15,16 @@ export const Header = () => {
     location,
   } = useSearch();
 
+  const [width, setWidth] = useState(0);
+  const [left, setLeft] = useState(0);
+
+  const ref = useCallback(node => {
+    if (node !== null) {
+      setWidth(node.getBoundingClientRect().width);
+      setLeft(node.getBoundingClientRect().x);
+    }
+  }, []);
+
   return (
     <header className="header">
       <div className="header__flex-wrap">
@@ -22,7 +32,7 @@ export const Header = () => {
           <Logo />
         </div>
         <div className="header__nav">
-          <Nav />
+          <Nav headerItemRef={ref} />
         </div>
       </div>
       <div className="header__flex-wrap">
@@ -34,9 +44,12 @@ export const Header = () => {
             searchReset={searchReset}
           />
         )}
-        <Favorites />
-        <Cart />
+        <Favorites headerItemRef={ref} />
+        <Cart headerItemRef={ref} />
       </div>
+      <span className="header__active-element"
+            style={{ width: `${width}px`, left: `${left}px` }}
+      />
     </header>
   );
 };
