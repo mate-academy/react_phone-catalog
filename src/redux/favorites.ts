@@ -1,4 +1,4 @@
-import { AnyAction } from 'redux';
+import { Action } from 'redux';
 
 const SET_FAVORITE = 'SET_FAVORITES';
 const DELETE_FAVORITE = 'DELETE_FAVORITE';
@@ -6,7 +6,15 @@ const DELETE_FAVORITE = 'DELETE_FAVORITE';
 export const setFavorite = (product: Product | undefined) => ({ type: SET_FAVORITE, product });
 export const deleteFavorite = (id: string) => ({ type: DELETE_FAVORITE, id });
 
-const favoritesReducer = (favorites: Product[] = [], action: AnyAction) => {
+type setFavoriteAction = Action<typeof SET_FAVORITE> & {
+  product: Product;
+}
+type deleteFavoriteAction = Action<typeof DELETE_FAVORITE> & {
+  id: keyof Product;
+}
+type PossibleAction = setFavoriteAction | deleteFavoriteAction;
+
+const favoritesReducer = (favorites: Product[] = [], action: PossibleAction) => {
   switch (action.type) {
     case SET_FAVORITE:
       return [...favorites, action.product];

@@ -1,7 +1,5 @@
 // / <reference types=string />
 
-type RootState = ReturnType<typeof rootReducer>;
-
 interface Product {
   age: number;
   type: string;
@@ -28,7 +26,6 @@ interface ProductProps {
   screen: string;
   capacity: string;
   ram: string;
-  productCardRef?: (node: any) => void;
 }
 
 interface ProductPaths {
@@ -140,10 +137,23 @@ interface Category {
   link: string;
 }
 
-interface NavItem {
+type NavProps = {
+  headerItemRef: (node: any) => void;
+}
+
+type FavoritesProps = {
+  headerItemRef: (node: any) => void;
+}
+
+type CartProps = {
+  headerItemRef: (node: any) => void;
+}
+
+interface NavItemProps {
   title: string;
   link: string;
   exact: boolean;
+  headerItemRef: (node: any) => void;
 }
 
 interface Match {

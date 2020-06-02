@@ -8,7 +8,7 @@ const navList: NavItem[] = [
   { title: 'Accessories', link: '/accessories', exact: false },
 ];
 
-export const Nav = () => {
+export const Nav = ({ headerItemRef }: NavProps) => {
   return (
     <nav className="nav">
       <ul className="nav__list">
@@ -18,6 +18,7 @@ export const Nav = () => {
             title={title}
             link={link}
             exact={exact}
+            headerItemRef={headerItemRef}
           />
         ))}
       </ul>
