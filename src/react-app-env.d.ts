@@ -91,6 +91,22 @@ interface CarouselSlide {
   src: string;
 }
 
+type FavoriteBtnProps = {
+  productId: string;
+  styleSize?: string;
+};
+
+type ProductPriceProps = {
+  price: number;
+  discount: number;
+  styleSize?: string;
+};
+
+type PrimaryBtnProps = {
+  title: string;
+  styleSize?: string;
+};
+
 type CarouselSlidesProps = {
   slides: CarouselSlide[];
   toMove: number;
@@ -112,8 +128,7 @@ type SliderProps = {
   products: Product[];
   position: number;
   step: number;
-  itemWidth: number;
-  frameSize: number;
+  sliderVisibleWidth: number;
   animationDuration: number;
   productCardRef: (node: any) => void;
 };
@@ -181,11 +196,17 @@ type ProductsAmountProps = {
 };
 
 type BreadcrumbProps = {
-  to: string;
   label: string;
+  link: string;
   isLast: boolean;
 };
 
 type ShowcaseBlockProps = {
+  title: string;
+  selectedProduct?: Product;
+};
+
+type ProductGalleryProps = {
+  images: string[];
   title: string;
 };

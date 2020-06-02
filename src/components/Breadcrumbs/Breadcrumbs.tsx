@@ -2,19 +2,19 @@ import React, { useMemo } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { Breadcrumb } from './Breadcrumb';
 
-const BREADCRUMBS = [
-  { to: '/phones', label: 'Phones' },
-  { to: '/tablets', label: 'Tablets' },
-  { to: '/favorites', label: 'Favorites' },
-];
-
 export const Breadcrumbs = () => {
   const location = useLocation();
 
-  const preparedBreadcrumbs = useMemo(() => {
-    return BREADCRUMBS
-      .filter(item => item.to === location.pathname);
-  }, [location]);
+  const preparedLabels = useMemo(() => (
+    location.pathname
+      .split('/')
+      .slice(1)
+  ), [location]);
+
+  const preparedBreadcrumbs = useMemo(() => (
+      preparedLabels
+      .reduce((acc: string[], item) => [...acc, acc + '/' + item], [])
+  ), [preparedLabels]);
 
   return (
     <ul className="breadcrumbs section__breadcrumbs">
@@ -25,8 +25,9 @@ export const Breadcrumbs = () => {
       />
       {preparedBreadcrumbs.map((crumb, index) => (
         <Breadcrumb
-          {...crumb}
-          key={crumb.to}
+          label={preparedLabels[index]}
+          link={crumb}
+          key={crumb}
           isLast={index === preparedBreadcrumbs.length - 1}
         />
       ))}

@@ -1,5 +1,4 @@
 import React from 'react';
-import cn from 'classnames';
 import { ProductsList } from '../components/ProductsList/ProductList';
 import { useProductsList } from '../components/_hooks/useProductsList';
 import { Heading } from '../components/Heading/Heading';
@@ -20,16 +19,11 @@ export const TabletsPage = () => {
     perPage,
     page,
     search,
-    location,
   } = useProductsList();
 
   return (
     <div className="container">
-      <section className={cn({
-        section: true,
-        pt24: location.pathname !== '/',
-      })}
-      >
+      <section className="section">
         {!search.get('query') && (
           <>
             <Breadcrumbs />

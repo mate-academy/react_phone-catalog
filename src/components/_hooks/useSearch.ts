@@ -91,5 +91,6 @@ export const useSearch = () => {
     history,
     search,
     searchReset,
+    products,
   };
 };

@@ -1,0 +1,51 @@
+.section {
+  padding-bottom: 80px;
+
+  &:first-child {
+    padding-top: 24px;
+  }
+
+  &__heading {
+    margin-bottom: 24px;
+  }
+
+  &__pagination {
+    margin-top: 40px;
+  }
+
+  &__heading-container {
+    width: $container-width;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__breadcrumbs {
+    margin-bottom: 40px;
+  }
+
+  &__carousel {
+    margin-top: 40px;
+    margin-bottom: 24px;
+  }
+
+  &__dropdowns {
+    margin-top: 40px;
+    display: flex;
+  }
+
+  &__products {
+    margin-top: 24px;
+  }
+
+  &__no-products-info {
+    margin-top: 70px;
+    text-align: center;
+    color: $secondary-color;
+  }
+
+  &__no-favorites-info {
+    margin: 40px 0;
+    text-align: center;
+    color: $secondary-color;
+  }
+}

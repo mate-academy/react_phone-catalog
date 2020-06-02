@@ -1,5 +1,4 @@
 import React, { useMemo } from 'react';
-import cn from 'classnames';
 import { useProductsList } from '../components/_hooks/useProductsList';
 import { Heading } from '../components/Heading/Heading';
 import { ProductsAmount } from '../components/ProductsAmount/ProductsAmount';
@@ -12,7 +11,6 @@ import { ShowcaseBlock } from '../components/ShowcaseBlock/ShowcaseBlock';
 export const FavoritesPage = () => {
   const {
     search,
-    location,
   } = useProductsList();
 
   const { searchedProducts } = useSearch();
@@ -20,11 +18,7 @@ export const FavoritesPage = () => {
 
   return (
     <div className="container">
-      <section className={cn({
-        section: true,
-        pt24: location.pathname !== '/',
-      })}
-      >
+      <section className="section">
         {areFavoritesExist
           ? (
             <>

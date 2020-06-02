@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import { ProductCard } from '../ProductCard/ProductCard';
 
 export const SliderProducts = ({
@@ -6,11 +6,8 @@ export const SliderProducts = ({
   position,
   animationDuration,
   productCardRef,
-  itemWidth,
-  frameSize,
+  sliderVisibleWidth
 }: SliderProps) => {
-  const sliderVisibleWidth = useMemo(() => frameSize * itemWidth, [frameSize, itemWidth]);
-
   return (
     <div
       className="slider"

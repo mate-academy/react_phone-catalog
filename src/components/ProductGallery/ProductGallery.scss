@@ -1,0 +1,39 @@
+.gallery {
+  display: flex;
+  justify-content: space-between;
+
+  &__thumbnails {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__thumbnail {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+    border: 1px solid $border-section-color;
+    @include hover (border-color, $primary-color, 0.2);
+
+    &--active {
+      border-color: $primary-color;
+    }
+  }
+
+  &__link {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__photo {
+    width: 400px;
+    height: 400px;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
