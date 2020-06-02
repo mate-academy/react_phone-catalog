@@ -26,6 +26,7 @@ interface ProductProps {
   screen: string;
   capacity: string;
   ram: string;
+  productCardRef?: (node: any) => void;
 }
 
 interface ProductPaths {
