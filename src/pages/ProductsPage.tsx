@@ -24,7 +24,6 @@ export const ProductsPage = () => {
 
   const { location } = useRouter();
 
-  // @ts-ignore
   const { pageHeading, productAmountTitle } = useMemo(() => {
     switch (location.pathname) {
       case LOCATIONS.phones:
@@ -38,7 +37,10 @@ export const ProductsPage = () => {
           productAmountTitle: PRODUCT_PATHS.tablet,
         };
       default:
-        return 'Products';
+        return {
+          pageHeading: 'Products',
+          productAmountTitle: 'Models'
+        }
     }
   }, [location]);
 
