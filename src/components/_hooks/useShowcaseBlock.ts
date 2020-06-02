@@ -32,8 +32,8 @@ export const useShowcaseBlock = (title?: string, selectedProduct?: Product) => {
   }, [products]);
 
   const alsoLikeProducts: Product[] = useMemo(() => {
-    const selectedProductPrice = selectedProduct?.price as number;
-    const selectedProductName = selectedProduct?.name as string;
+    const selectedProductPrice = selectedProduct!.price;
+    const selectedProductName = selectedProduct!.name;
 
     return products
       .filter(product => (product.price - 150 <= selectedProductPrice)
