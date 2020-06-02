@@ -4,7 +4,15 @@
 .SearchField {
   position: relative;
 
+  // @media screen and (max-width: 770px) {
+  //   position: absolute;
+  //   top: 70px;
+  //   right: 5px;
+  //   border: 1px solid #e2e6e9;
+  // }
+
   &__button {
+    outline: none;
     position: absolute;
     top: 24px;
     right: 27px;

@@ -35,14 +35,36 @@ export const SortBy = () => {
     history.push({
       search: searchParams.toString()
     });
+  };
+
+
+
+  const handleClick = (event: Event) => {
+
+    if (event.target === document.querySelector('.SortBy__pseudo-select')) {
+      setIsOpen(!isOpen);
+    }
+
+    if(event.target !== document.querySelector('.SortBy__pseudo-select')
+      && event.target !== document.querySelector('.SortBy__option')) {
+      setIsOpen(false);
+    }
   }
+
+  useEffect(() => {
+    document.addEventListener('click', handleClick)
+    return () => {
+      document.removeEventListener('click', handleClick)
+    }
+  }, [handleClick])
+
 
   return (
     <div className="SortBy">
       <span className="SortBy__legend">Sort by</span><br></br>
 
       <div
-        onClick={() => setIsOpen(!isOpen)}
+
         className={isOpen
           ? "SortBy__pseudo-select SortBy__pseudo-select--open"
           : "SortBy__pseudo-select"}>
@@ -60,13 +82,7 @@ export const SortBy = () => {
               >{item.text}</span>
             ))}
         </div>
-
-
       </div>
-
-
-
-
     </div>
   )
 }

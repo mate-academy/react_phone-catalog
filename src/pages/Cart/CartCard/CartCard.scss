@@ -2,17 +2,20 @@
 @import "../../../mixins.scss";
 
 .CartCard {
+  width: 100%;
   position: absolute;
   top: 0;
   transition: 1s;
   margin-top: 16px;
   height: 128px;
-  width: 752px;
+  // width: 752px;
   border: 1px solid #e2e6e9;
   display: flex;
   align-items: center;
   box-sizing: border-box;
   padding: 0 27px;
+
+ 
 
   &__img {
     height: 66px;

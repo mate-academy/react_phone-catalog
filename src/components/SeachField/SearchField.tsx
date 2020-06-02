@@ -30,6 +30,7 @@ export const SearchField = () => {
     history.push({
       search: searchParams.toString()
     })
+    setFieldValue('');
   }
 
 
@@ -52,7 +53,7 @@ export const SearchField = () => {
           onChange={handleInputChange}
         />
         <button
-          type="submit"
+          type="button"
           className={searchParams.get("filter")
             ? "SearchField__button"
             : "SearchField__button SearchField__button--magnifier"}

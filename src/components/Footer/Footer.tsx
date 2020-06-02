@@ -6,14 +6,16 @@ import {LinkType} from '../../interfaces';
 import {BackToTop} from '../BackToTop/BackToTop';
 import './Footer.scss';
 
+export const footerLinks: LinkType[] = [
+  { title: 'GITHUB', address: 'http://www.github.com', isOuter: true },
+  { title: 'CONTACTS', address: '/contacts', isOuter: false },
+  { title: 'RIGHTS', address: '/rights', isOuter: false },
+]
+
 
 export const Footer = () => {
 
-  const footerLinks: LinkType[] = [
-    { title: 'GITHUB', address: 'http://www.github.com', isOuter: true },
-    { title: 'CONTACTS', address: '/contacts', isOuter: false },
-    { title: 'RIGHTS', address: '/rights', isOuter: false },
-  ]
+
 
   return(
     <footer className="App__footer Footer">
