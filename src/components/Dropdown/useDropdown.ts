@@ -23,7 +23,7 @@ export const useDropdown = (list: OptionType[], heading: string) => {
     setSelectedOption(option);
 
     if (heading === DROPDOWN_HEADINGS.sortBy) {
-      search.set('sortBy', option.split(' ').join('-'));
+      search.set('sortBy', option);
     }
 
     if (heading === DROPDOWN_HEADINGS.perPage) {
