@@ -71,6 +71,8 @@
     position: relative;
     transition: right 1s;
     margin: 0 0 80px 0;
+    height: 507px;
+    overflow: hidden;
     &_item {
       display: flex;
       flex-direction: column;

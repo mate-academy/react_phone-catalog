@@ -23,7 +23,7 @@ export const Card: FC<Params> = ({ phone }) => {
 
   return (
     <div key={phone.id} className="discount__list_item card">
-      <Link to={`${phone.type}s/${phone.id}`} className="card__link">
+      <Link to={`/${phone.type}s/${phone.id}`} className="card__link">
         <img
           className="card__image"
           src={phone.imageUrl}
