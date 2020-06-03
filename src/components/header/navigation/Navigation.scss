@@ -4,10 +4,8 @@ $secondary-color: #89939A;
 $icons-color: #313237;
 $elem-color: #E2E6E9;
 $hover-bg: #FAFBFC;
-body{
-  font-family: Mont-Regular;
-}
-.link {
+
+@mixin allLinks {
   cursor: pointer;
   list-style: none;
   text-decoration: none;
@@ -15,16 +13,23 @@ body{
   color: $secondary-color;
   transition: color 0.2s;
   font-family: Mont-Bold;
+}
 
+body{
+  font-family: Mont-Regular;
+}
+
+.link {@include allLinks();
   &:hover {
-color: $primary-color;
-  }
+    color: $primary-color;
+      }
 }
 
 .Nav_item {
   padding-top: 20px;
   padding-bottom: 20px;
   margin-right: 40px;
+
   &--active {
   border-bottom: 2px solid $secondary-color;
   }
@@ -36,4 +41,13 @@ color: $primary-color;
 
 .Nav_list {
   display: flex;
+  list-style: none;
+}
+
+.Logo {
+  display: block;
+  width: 40px;
+  height: 40px;
+  background: url(../../../img/LOGO.svg) no-repeat;
+
 }

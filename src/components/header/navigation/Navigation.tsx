@@ -6,6 +6,7 @@ import Tablets from './tablets/Tablets';
 import Accessories from './accessories/Accessories';
 import './Navigation.scss';
 
+
 const Navigation = () => {
   //const navList = ['home', 'phones', 'tablets', 'accessories'];
   //const [navList, setNavList] = useState([]);
@@ -17,7 +18,16 @@ const Navigation = () => {
   return (
     <>
       <nav className="Nav_wrapper">
+
         <ul className="Nav_list">
+          <li>
+            <NavLink to="/"
+              exact
+              className="Logo"
+              activeClassName="Logo--active"
+            >
+            </NavLink>
+          </li>
           <li className="link">
             <NavLink
               to="/home"
@@ -26,7 +36,7 @@ const Navigation = () => {
               activeClassName="Nav_item--active"
             >
               Home
-              </NavLink>
+            </NavLink>
           </li>
           <li className="link">
             <NavLink
@@ -35,7 +45,7 @@ const Navigation = () => {
               activeClassName="Nav_item--active"
             >
               Phones
-              </NavLink>
+            </NavLink>
           </li>
           <li className="link">
             <NavLink
@@ -44,7 +54,7 @@ const Navigation = () => {
               activeClassName="Nav_item--active"
             >
               Tablets
-              </NavLink>
+            </NavLink>
           </li>
           <li className="link">
             <NavLink
@@ -53,28 +63,23 @@ const Navigation = () => {
               activeClassName="Nav_item--active"
             >
               Accessories
-              </NavLink>
+            </NavLink>
           </li>
-
         </ul>
       </nav>
 
       <Switch>
-        <Route path="/home">  <Home />  </Route>
+        <Route path="/" exact component={Home} />
+        <Route path="/home" component={Home} />
         <Route path="/phones" component={Phones} />
         <Route path="/tablets" component={Tablets} />
         <Route path="/accessories" component={Accessories} />
         <Route component={() => <h1>NOT FOUND</h1>} />
       </Switch>
     </>
-
   )
-
 }
 export default Navigation;
-
-
-
 
 {/* <ul>{navList.map((listItem, index) => (
         <li>
