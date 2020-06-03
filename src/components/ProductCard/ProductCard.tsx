@@ -1,17 +1,13 @@
 
-import React, { useState, useEffect, useContext} from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import './ProductCard.scss';
-import {  Product } from '../../interfaces';
-
-import {MyContext} from '../../App'
-
-
-
+import { Product } from '../../interfaces';
+import { MyContext } from '../../App'
 
 export const ProductCard = ({
   product,
-}: {product:Product}) => {
+}: { product: Product }) => {
 
   const {
     imageUrl,
@@ -23,16 +19,11 @@ export const ProductCard = ({
     ram
   } = product;
 
-  const {cart, setCart, favorites, setFavorites} = useContext(MyContext);
-
+  const { cart, setCart, favorites, setFavorites } = useContext(MyContext);
   const discountPrice = (price - price * discount / 100)
-
   const [isFavorite, setIsFavorite] = useState(favorites.filter((item: Product) => item.id === product.id).length > 0);
-
   const [isInCart, setIsInCart] = useState(cart.filter((item: Product) => item.id === product.id).length > 0);
-
   const [inCartCount, setInCartCount] = useState(cart.filter((item: Product) => item.id === product.id).length);
-
 
   useEffect(() => {
     setIsFavorite(favorites.filter((item: Product) => item.id === product.id).length > 0)
@@ -42,7 +33,6 @@ export const ProductCard = ({
     setIsInCart(cart.filter((item: Product) => item.id === product.id).length > 0);
     setInCartCount(cart.filter((item: Product) => item.id === product.id).length)
   }, [cart])
-
 
   const handleAddToCartClick = () => {
     setCart(
@@ -61,7 +51,6 @@ export const ProductCard = ({
     }
   }
 
-
   let base;
 
   switch (product.type) {
@@ -77,20 +66,18 @@ export const ProductCard = ({
 
   return (
     <div className="ProductCard">
-
       <span
-      className="ProductCard__img"
-      style={{backgroundImage: `url(${imageUrl})`}}
+        className="ProductCard__img"
+        style={{ backgroundImage: `url(${imageUrl})` }}
       ></span>
       <span className="ProductCard__title">
-      <Link
-        className="ProductCard__title"
-        to={base + product.id}
+        <Link
+          className="ProductCard__title"
+          to={base + product.id}
         >
-        {name}
-      </Link>
+          {name}
+        </Link>
       </span>
-
       {discount > 0
         ?
         <div className="ProductCard__price-wrapper">
@@ -123,7 +110,6 @@ export const ProductCard = ({
             ? "ProductCard__add-to-cart ProductCard__add-to-cart--added"
             : "ProductCard__add-to-cart"}
           onClick={handleAddToCartClick}
-
         >
           {!isInCart
             ? `Add to cart`
@@ -136,7 +122,6 @@ export const ProductCard = ({
           onClick={handleAddToFavClick}
         />
       </div>
-
     </div>
   )
 }

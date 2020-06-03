@@ -12,11 +12,7 @@ export const footerLinks: LinkType[] = [
   { title: 'RIGHTS', address: '/rights', isOuter: false },
 ]
 
-
 export const Footer = () => {
-
-
-
   return(
     <footer className="App__footer Footer">
       <div className="Footer__container">
@@ -24,12 +20,6 @@ export const Footer = () => {
       <Nav links={footerLinks} addresses = {[]} />
       <BackToTop />
       </div>
-
-
-
    </footer>
   )
 }
-
-
-

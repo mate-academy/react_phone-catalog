@@ -5,9 +5,7 @@ import { ProductCard } from '../../ProductCard/ProductCard';
 import './MainFrame.scss';
 
 
-export const MainFrame = ({
-  products,
-}:{products: Product[]}) => {
+export const MainFrame = ({ products }: { products: Product[] }) => {
   return (
     <div className="MainFrame">
       {products.map((product: Product, index) => {

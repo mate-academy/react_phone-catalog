@@ -12,7 +12,7 @@
     color: #313237;
     &--first {
       display: block;
-      background-image: url("../../imgs/Icons/Home.png");
+      background-image: url("../../imgs/Icons/Home.svg");
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
@@ -21,7 +21,6 @@
     }
     &--last {
       color: #89939a;
-      
     }
   }
 
@@ -29,6 +28,9 @@
     display: block;
     width: 6px;
     height: 10px;
-    background-image: url("../../imgs/Icons/Vector.png");
+    background-image: url("../../imgs/Icons/ArrowRight.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: auto;
   }
 }

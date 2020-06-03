@@ -4,7 +4,6 @@
   width: 550px;
   margin-right: 65px;
   overflow: hidden;
-
   @media screen and (max-width: 560px) {
     flex-direction: column;
     width: 100%;
@@ -18,9 +17,7 @@
     @media screen and (max-width: 560px) {
       display: flex;
       height: 60px;
-
     }
-
   }
 
   &__wrapper {
@@ -28,7 +25,6 @@
     width: 85px;
     overflow-y: scroll;
     overflow-x: hidden;
-    /* width */
     &::-webkit-scrollbar {
       width: 1px;
     }
@@ -38,11 +34,7 @@
       width: 100%;
       overflow-x: scroll;
       overflow-y: visible;
-
     }
-
-
-
   }
 
   &__main {
@@ -52,16 +44,12 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-
     @media screen and (max-width: 560px) {
       width: 95vw;
       margin: 0;
       height: 95vw;
-
     }
-
   }
-
 
   &__icon {
     margin-bottom: 16px;
@@ -84,6 +72,5 @@
       margin-right: 8px;
       margin-bottom: 0;
     }
-
   }
 }

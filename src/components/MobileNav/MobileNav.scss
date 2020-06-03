@@ -15,7 +15,6 @@
 
   @media screen and (max-width: 970px) {
     display: flex;
-
   }
 
   &--invisible {
@@ -25,7 +24,6 @@
   &__list {
     height: 100%;
     margin-top: 40px;
-
     list-style: none;
   }
 
@@ -49,8 +47,6 @@
     &:hover {
       position: relative;
       color: #313237;
-
     }
   }
-
 }

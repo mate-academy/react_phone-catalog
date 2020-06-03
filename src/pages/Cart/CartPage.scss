@@ -22,12 +22,10 @@
   &__title {
     margin: 0 0 25px;
     display: block;
-
   }
 
   &__empty {
     height: 206px;
-
     @include h1;
     line-height: 206px;
     text-align: center;
@@ -37,7 +35,6 @@
     @media screen and (max-width: 970px) {
       display: flex;
       align-items: center;
-
     }
   }
 
@@ -110,7 +107,6 @@
     border-top: 1px solid #e2e6e9;
     @media screen and (max-width: 1200px) {
       display: none;
-
     }
   }
 
@@ -143,9 +139,6 @@
       width: max-content;
       height: 40px;
       padding: 0 10px;
-
     }
   }
 }
-
-

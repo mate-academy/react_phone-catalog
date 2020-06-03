@@ -6,10 +6,8 @@ import { LinkType } from '../../interfaces';
 
 
 export const Nav = ({ links, addresses }: { links: LinkType[]; addresses: string[] }) => {
-
   const location = useLocation();
   const isOnPage = !addresses.includes(location.pathname)
-
 
   return (
     isOnPage
@@ -36,7 +34,6 @@ export const Nav = ({ links, addresses }: { links: LinkType[]; addresses: string
         </ul>
       </nav>
       : <span></span>
-
   )
 }
 

@@ -10,10 +10,10 @@ export const MobileNav = ({ links, isVisible }: { links: LinkType[]; isVisible: 
   return (
     <nav className={
       isVisible
-      ? "MobileNav"
-      : "MobileNav MobileNav--invisible"
+        ? "MobileNav"
+        : "MobileNav MobileNav--invisible"
     }
-     >
+    >
       <ul className="MobileNav__list">
         {links.map(link => {
           const { address, title, isOuter } = link;
@@ -28,7 +28,6 @@ export const MobileNav = ({ links, isVisible }: { links: LinkType[]; isVisible: 
                     className="MobileNav__link"
                     exact
                     to={address}>{title}</NavLink>}
-
               </label>
             </li>
           )
@@ -36,8 +35,5 @@ export const MobileNav = ({ links, isVisible }: { links: LinkType[]; isVisible: 
       </ul>
     </nav>
   )
-
-
-
 }
 

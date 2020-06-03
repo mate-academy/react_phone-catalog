@@ -1,12 +1,12 @@
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 import { Catalog } from '../../components/Catalog/Catalog';
 import './FavoritesPage.scss';
-import {MyContext} from '../../App'
-import { Breadcrumbs} from '../../components/Breadcrumbs/Breadcrumbs';
+import { MyContext } from '../../App'
+import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 
 export const FavoritesPage = () => {
 
-  const {favorites} = useContext(MyContext);
+  const { favorites } = useContext(MyContext);
   return (
     <div className="FavoritesPage">
       <Breadcrumbs />

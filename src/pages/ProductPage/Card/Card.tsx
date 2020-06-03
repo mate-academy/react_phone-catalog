@@ -1,26 +1,28 @@
 
 import React, { useContext, useState, useEffect } from 'react';
 import { Product, ProductDetails } from '../../../interfaces';
-import {MyContext} from '../../../App';
+import { MyContext } from '../../../App';
 import './Card.scss';
 
-
 export const Card = (
-  {product,
-   productDetails,
-  } : {
+  { product,
+    productDetails,
+  }: {
     product: Product;
     productDetails: ProductDetails
   }) => {
-
-
-  const { cart, setCart, favorites, setFavorites } = useContext(MyContext);
-  const [isFavorite, setIsFavorite] = useState(favorites.filter((item: Product) => item.id === product.id).length > 0);
-
-  const [isInCart, setIsInCart] = useState(cart.filter((item: Product) => item.id === product.id).length > 0);
-
-  const [inCartCount, setInCartCount] = useState(cart.filter((item: Product) => item.id === product.id).length);
-
+  const {
+    cart,
+    setCart,
+    favorites,
+    setFavorites
+  } = useContext(MyContext);
+  const [isFavorite, setIsFavorite] = useState(favorites
+    .filter((item: Product) => item.id === product.id).length > 0);
+  const [isInCart, setIsInCart] = useState(cart
+    .filter((item: Product) => item.id === product.id).length > 0);
+  const [inCartCount, setInCartCount] = useState(cart
+    .filter((item: Product) => item.id === product.id).length);
 
   useEffect(() => {
     setIsFavorite(favorites.filter((item: Product) => item.id === product.id).length > 0)
@@ -48,8 +50,6 @@ export const Card = (
     }
   }
 
-
-
   return (
     <div className="Card">
       <div className="Card__buttons-wrapper">
@@ -58,7 +58,6 @@ export const Card = (
             ? "Card__add-to-cart Card__add-to-cart--added"
             : "Card__add-to-cart"}
           onClick={handleAddToCartClick}
-
         >
           {!isInCart
             ? `Add to cart`
@@ -78,11 +77,15 @@ export const Card = (
         </li>
         <li className="Card__item">
           <span className="Card__spec">Resolution</span>
-          <span className="Card__value">{productDetails.display.screenResolution}</span>
+          <span className="Card__value">
+            {productDetails.display.screenResolution}
+          </span>
         </li>
         <li className="Card__item">
           <span className="Card__spec">Processor</span>
-          <span className="Card__value">{productDetails.hardware.cpu}</span>
+          <span className="Card__value">
+            {productDetails.hardware.cpu}
+          </span>
         </li>
         <li className="Card__item">
           <span className="Card__spec">RAM</span>
@@ -92,5 +95,3 @@ export const Card = (
     </div>
   )
 }
-
-

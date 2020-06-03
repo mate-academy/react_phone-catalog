@@ -13,14 +13,11 @@ export const SearchField = () => {
     '/favorites'
   ];
 
-
-
   const history = useHistory();
   const location = useLocation();
   const isOnPage = addresses.includes(location.pathname)
   const searchParams = new URLSearchParams(location.search);
   const [fieldValue, setFieldValue] = useState<string>('');
-
 
   const handleButtonClick = () => {
     if (!searchParams.get("filter")) {
@@ -32,7 +29,6 @@ export const SearchField = () => {
     })
     setFieldValue('');
   }
-
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setFieldValue(event.target.value);
@@ -61,7 +57,6 @@ export const SearchField = () => {
         ></button>
       </div>
       : <span></span>
-
   )
 }
 

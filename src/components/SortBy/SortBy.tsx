@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import './SortBy.scss';
 
-
 export const SortBy = () => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
@@ -18,17 +17,15 @@ export const SortBy = () => {
   const [pseudoSelectValue, setPseudoSelectValue] = useState<string>();
 
   useEffect(() => {
-    if(!searchParams.get('sort_type')) {
+    if (!searchParams.get('sort_type')) {
       setPseudoSelectValue('Choose')
     } else {
       setPseudoSelectValue(sortTypeOptions
         .filter(item => item.value === searchParams.get('sort_type'))[0].text)
     }
-
   }, [searchParams])
 
-
-  const handleOptionClick = (value: string, text:string) => {
+  const handleOptionClick = (value: string, text: string) => {
     setPseudoSelectValue(text)
     setIsOpen(false);
     searchParams.set("sort_type", value);
@@ -37,15 +34,11 @@ export const SortBy = () => {
     });
   };
 
-
-
   const handleClick = (event: Event) => {
-
     if (event.target === document.querySelector('.SortBy__pseudo-select')) {
       setIsOpen(!isOpen);
     }
-
-    if(event.target !== document.querySelector('.SortBy__pseudo-select')
+    if (event.target !== document.querySelector('.SortBy__pseudo-select')
       && event.target !== document.querySelector('.SortBy__option')) {
       setIsOpen(false);
     }
@@ -58,29 +51,27 @@ export const SortBy = () => {
     }
   }, [handleClick])
 
-
   return (
     <div className="SortBy">
       <span className="SortBy__legend">Sort by</span><br></br>
-
       <div
-
         className={isOpen
           ? "SortBy__pseudo-select SortBy__pseudo-select--open"
-          : "SortBy__pseudo-select"}>
-            {pseudoSelectValue}
+          : "SortBy__pseudo-select"}
+      >
+        {pseudoSelectValue}
         <div
           className={isOpen
             ? "SortBy__options-wrapper"
             : "SortBy__options-wrapper SortBy__options-wrapper--invisible"}
-          >
+        >
           {sortTypeOptions.map(item => (
-              <span
-                onClick={() => { handleOptionClick(item.value, item.text) }}
-                className="SortBy__option"
-                key={item.value}
-              >{item.text}</span>
-            ))}
+            <span
+              onClick={() => { handleOptionClick(item.value, item.text) }}
+              className="SortBy__option"
+              key={item.value}
+            >{item.text}</span>
+          ))}
         </div>
       </div>
     </div>

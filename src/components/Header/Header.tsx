@@ -9,8 +9,6 @@ import { SearchField } from '../SeachField/SearchField'
 import { MobileNav } from '../MobileNav/MobileNav';
 import { footerLinks } from '../Footer/Footer';
 
-
-
 export const Header = () => {
   const [isMobileNavVisible, setIsMobileNavVisible] = useState(false);
   let headerLinks: LinkType[] = [
@@ -53,13 +51,10 @@ export const Header = () => {
             }
             onClick={() => setIsMobileNavVisible(!isMobileNavVisible)}
           >
-
           </button>
           <MobileNav links={mobileLinks} isVisible={isMobileNavVisible} />
         </div>
       </div>
-
     </header>
   )
 }
-

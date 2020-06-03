@@ -12,7 +12,6 @@
     align-items: flex-end;
     justify-content: space-between;
     margin: 20px 0;
-
   }
 
   &__title {
@@ -27,6 +26,26 @@
   &__button {
     @include pagination-button;
 
+    &--left {
+      background-image: url(../../imgs/Icons/ChevronArrowRightDark.svg);
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: auto;
+      transform: rotate(180deg);
+      &:disabled {
+        background-image: url(../../imgs/Icons/ArrowRight.svg);
+      }
+    }
+
+    &--right {
+      background-image: url(../../imgs/Icons/ChevronArrowRightDark.svg);
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: auto;
+      &:disabled {
+        background-image: url(../../imgs/Icons/ArrowRight.svg);
+      }
+    }
   }
 
   &__stripe-container {
@@ -53,5 +72,4 @@
     left: 0;
     transition: 1s;
   }
-
 }

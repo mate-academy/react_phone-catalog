@@ -4,11 +4,8 @@ import React, { useState, useEffect } from 'react';
 import './PromoSlider.scss';
 
 export const PromoSlider = ({ slides }: { slides: string[] }) => {
-
   const [activeNum, setActiveNum] = useState(0);
   const [left, setLeft] = useState(- (activeNum * 1040));
-
-
 
   const handleNextSlide = () => {
     if (activeNum === slides.length - 1) {
@@ -28,15 +25,13 @@ export const PromoSlider = ({ slides }: { slides: string[] }) => {
 
   useEffect(() => {
     const nextMove = setInterval(handleNextSlide, 5000);
-
     return () => clearInterval(nextMove);
   });
 
 
-  useEffect (()=> {
+  useEffect(() => {
     setLeft(- activeNum * 1040)
   }, [activeNum])
-
 
   return (
     <div className="PromoSlider">
@@ -49,7 +44,7 @@ export const PromoSlider = ({ slides }: { slides: string[] }) => {
         <div className="PromoSlider__frame">
           <ul
             className="PromoSlider__stripe"
-            style={{left: `${left}px`}}
+            style={{ left: `${left}px` }}
           >
             {slides.map((slideURL) => {
               return (
@@ -59,7 +54,6 @@ export const PromoSlider = ({ slides }: { slides: string[] }) => {
               )
             })}
           </ul>
-
         </div>
         <button
           className="PromoSlider__button PromoSlider__button--right"
@@ -75,14 +69,11 @@ export const PromoSlider = ({ slides }: { slides: string[] }) => {
               className={activeNum === index
                 ? "PromoSlider__dot PromoSlider__dot--active"
                 : "PromoSlider__dot"}
-
             ></span>
           )
         })}
-
       </div>
     </div>
-
   )
 }
 

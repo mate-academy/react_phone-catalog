@@ -1,7 +1,6 @@
 
 .PromoSlider {
   margin: 40px 0 104px;
-
   @media screen and (max-width: 749px) {
     display: none;
   }
@@ -34,11 +33,14 @@
     background-color: white;
     background-position: center;
     background-repeat: no-repeat;
-    background-image: url(../../imgs/Icons/ChevronArrow.png);
+    background-image: url(../../imgs/Icons/ChevronArrowRightDark.svg);
     cursor: pointer;
     outline: none;
+    &:hover {
+      border: 1px solid #313237;
+    }
 
-    &--right {
+    &--left {
       transform: rotate(180deg);
     }
   }
@@ -49,4 +51,3 @@
     height: 400px;
   }
 }
-

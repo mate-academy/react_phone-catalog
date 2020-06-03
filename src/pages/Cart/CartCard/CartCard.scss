@@ -8,7 +8,6 @@
   transition: 1s;
   margin-top: 16px;
   height: 128px;
-  // width: 752px;
   border: 1px solid #e2e6e9;
   display: flex;
   align-items: center;
@@ -46,7 +45,6 @@
       width: max-content;
       display: flex;
       align-items: center;
-
     }
   }
 
@@ -56,7 +54,7 @@
     background-color: white;
     border: none;
     outline: none;
-    background-image: url("../../../imgs/Icons/Close.png");
+    background-image: url("../../../imgs/Icons/Close.svg");
     cursor: pointer;
     @media screen and (max-width: 650px) {
       position: absolute;
@@ -75,6 +73,7 @@
   }
 
   &__count-button {
+    transition: 0.5s;
     flex-shrink: 0;
     height: 32px;
     width: 32px;
@@ -82,22 +81,34 @@
     box-sizing: border-box;
     background-color: white;
     outline: none;
-    color: black;
     font-size: 24px;
     line-height: 30px;
     cursor: pointer;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: auto;
+    &:hover {
+      border: 1px solid #313237;
+    }
+    &--minus {
+      background-image: url(../../../imgs/Icons/Minus.svg);
 
-    &--disabled {
+    }
+    &--plus {
+      background-image: url(../../../imgs/Icons/Plus.svg);
+    }
+    &:disabled {
       border: 1px solid #e2e6e9;
       color: #e2e6e9;
     }
-
   }
 
   &__total {
+    text-align: center;
+    width: 144px;
     @include h2;
     color: #313237;
-    margin-left: 43px;
+    
     @media screen and (max-width: 650px) {
       margin: 0;
       height: 42px;

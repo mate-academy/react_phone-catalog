@@ -9,17 +9,12 @@ import { ItemsOnPageSelect } from './ItemsOnPageSelect/ItemsOnPageSelect';
 
 export const Catalog = ({
   products,
-}: {products: Product[]}) => {
-
-
-
-
+}: { products: Product[] }) => {
   const [filteredProducts, setFilteredProducts] = useState(products);
   const [sortedProducts, setSortedProducts] = useState(filteredProducts);
   const [productsOnPage, setProductsOnPage] = useState(sortedProducts);
   const history = useHistory();
   const location = useLocation();
-
   const searchParams = new URLSearchParams(location.search);
   const filter = (searchParams.get("filter") || "").toLowerCase();
   const sortType = (searchParams.get("sort_type") || "age").toLowerCase();
@@ -35,8 +30,6 @@ export const Catalog = ({
     });
   }, [])
 
-
-
   useEffect(() => {
     switch (sortType) {
       case 'name':
@@ -46,19 +39,17 @@ export const Catalog = ({
       case 'age':
         setSortedProducts([...filteredProducts]
           .sort((a, b) => a.age - b.age));
-          break;
+        break;
       case 'low_price':
         setSortedProducts([...filteredProducts]
           .sort((a, b) => ((a.price * (100 - a.discount) / 100) - (b.price * (100 - b.discount) / 100))));
-          break;
+        break;
       case 'high_price':
         setSortedProducts([...filteredProducts]
           .sort((a, b) => ((b.price * (100 - b.discount) / 100) - (a.price * (100 - a.discount) / 100))));
-          break;
+        break;
       default: setSortedProducts(filteredProducts);
-
     }
-
   }, [filteredProducts, sortType])
 
   useEffect(() => {
@@ -97,16 +88,12 @@ export const Catalog = ({
         <SortBy />
         <ItemsOnPageSelect />
       </div>
-
-
       <div>
         <MainFrame
           products={productsOnPage}
         />
-
       </div>
       <Pagination pagesCount={sortedProducts.length / perPage || 1} />
     </>
   )
 }
-

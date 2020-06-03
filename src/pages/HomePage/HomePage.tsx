@@ -6,11 +6,9 @@ import './HomePage.scss';
 import { PromoSlider } from '../../components/PromoSlider/PromoSlider';
 import { WaitLoading } from '../../components/WaitLoading/WaitLoading';
 
-
 export const HomePage = ({
   products,
-}:{products: Product[]}) => {
-
+}: { products: Product[] }) => {
   const slides = [
     'img/Banner1.png',
     'img/Banner2.jpg',
@@ -20,28 +18,22 @@ export const HomePage = ({
     'img/Banner6.jpg',
   ]
 
-
-
   return (
-    (JSON.stringify(products) === JSON.stringify({}))
-    ? <WaitLoading />
-    :
-    <div className="HomePage">
-      <PromoSlider slides={slides} />
-      <CardsSlider
-        title={"Hot prices"}
-        products={[...products].sort((a, b) => (
-          b.discount - a.discount))}
-      />
-
-      <ShopByCategory products={products} />
-
-      <CardsSlider
-        title={"Brand new models"}
-        products={[...products].sort((a, b) => (a.age - b.age))}
-      />
-
-    </div>
-
+    (products.length === 0)
+      ? <WaitLoading />
+      :
+      <div className="HomePage">
+        <PromoSlider slides={slides} />
+        <CardsSlider
+          title={"Hot prices"}
+          products={[...products].sort((a, b) => (
+            b.discount - a.discount))}
+        />
+        <ShopByCategory products={products} />
+        <CardsSlider
+          title={"Brand new models"}
+          products={[...products].sort((a, b) => (a.age - b.age))}
+        />
+      </div>
   )
 }

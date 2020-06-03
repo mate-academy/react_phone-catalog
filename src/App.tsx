@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Switch } from 'react-router-dom';
-
 import { getProducts } from './helpers/api';
-
 import { HomePage } from './pages/HomePage/HomePage';
 import { Header } from './components/Header/Header';
 import { Product, MyContextType } from './interfaces';
@@ -20,11 +18,7 @@ import { ErrorPage } from './pages/ErrorPage/ErrorPage';
 
 export const MyContext = React.createContext<MyContextType>({} as MyContextType)
 
-
-
 const App = () => {
-
-
   const [productsFromServer, setProductsFromServer] = useState([] as Product[])
   const [isError, setIsError] = useState(false);
   useEffect(
@@ -54,7 +48,6 @@ const App = () => {
   useEffect(() => {
     localStorage.setItem('PhonesCatalog_Favorites', JSON.stringify(favorites))
   }, [favorites])
-
 
   return (
     <MyContext.Provider value={{
@@ -91,8 +84,6 @@ const App = () => {
                 )
               })}
 
-
-
               <Route path="/phones">
                 <PhonesPage
                   products={products}
@@ -128,17 +119,11 @@ const App = () => {
                   products={products}
                 />
               </Route>
-
-
             </Switch>
-
-
           </main >)}
-
         <Footer />
       </div>
     </MyContext.Provider>
-
   );
 }
 

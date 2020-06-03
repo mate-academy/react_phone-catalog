@@ -8,15 +8,13 @@ export const ErrorPage = () => {
         Ooops!!!
       </h1>
       <p className="ErrorPage__paragraph">
-      Sorry, but it looks like an error occurred while
-       loading the data.
+        Sorry, but it looks like an error occurred while
+        loading the data.
       </p>
       <p className="ErrorPage__paragraph">
-       Please check your internet connection or
+        Please check your internet connection or
         try again later.
       </p>
-
     </div>
-
   )
 }

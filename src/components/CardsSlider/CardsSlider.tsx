@@ -4,28 +4,24 @@ import { Product } from '../../interfaces';
 import { ProductCard } from '../ProductCard/ProductCard';
 import './CardsSlider.scss';
 
-export const CardsSlider = ({ title, products}:{title:string; products: Product[]}) => {
-
+export const CardsSlider = ({ title, products }: { title: string; products: Product[] }) => {
   const [left, setLeft] = useState(-8);
   const [isLeftButtonDisabled, setIsLeftButtonDisabled] = useState<boolean>(true);
   const [isRightButtonDisabled, setIsRightButtonDisabled] = useState<boolean>(false);
-
-
   const handleLeftClick = () => {
-     setLeft(left + 288);
+    setLeft(left + 288);
   }
   const handleRightClick = () => {
     setLeft(left - 288);
   }
 
   useEffect(() => {
-    if(left >= -8) {
+    if (left >= -8) {
       setIsLeftButtonDisabled(true)
     } else {
       setIsLeftButtonDisabled(false)
     };
-
-    if(left <= -((products.length - 4) * 288)) {
+    if (left <= -((products.length - 4) * 288)) {
       setIsRightButtonDisabled(true)
     } else {
       setIsRightButtonDisabled(false)
@@ -39,18 +35,16 @@ export const CardsSlider = ({ title, products}:{title:string; products: Product[
         <h1 className="CardsSlider__title">{title}</h1>
         <div className="CardsSlider__buttons-container">
           <button
-            className="CardsSlider__button"
+            className="CardsSlider__button CardsSlider__button--left"
             onClick={handleLeftClick}
             disabled={isLeftButtonDisabled}
           >
-            {'<'}
           </button>
           <button
-            className="CardsSlider__button"
+            className="CardsSlider__button CardsSlider__button--right"
             onClick={handleRightClick}
             disabled={isRightButtonDisabled}
           >
-            {'>'}
           </button>
         </div>
       </div>
@@ -67,9 +61,6 @@ export const CardsSlider = ({ title, products}:{title:string; products: Product[
           })}
         </ul>
       </div>
-
-
     </div>
-
   )
 }

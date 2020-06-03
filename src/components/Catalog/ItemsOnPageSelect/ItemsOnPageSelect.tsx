@@ -21,11 +21,14 @@ export const ItemsOnPageSelect = () => {
   }
 
   const handleClick = (event: Event) => {
-    if (event.target === document.querySelector('.ItemsOnPageSelect__pseudo-select')) {
+    if (event.target === document
+      .querySelector('.ItemsOnPageSelect__pseudo-select')) {
       setIsOpen(!isOpen);
     }
-    if(event.target !== document.querySelector('.ItemsOnPageSelect__pseudo-select')
-      && event.target !== document.querySelector('.ItemsOnPageSelect__option')) {
+    if (event.target !== document
+      .querySelector('.ItemsOnPageSelect__pseudo-select')
+      && event.target !== document
+        .querySelector('.ItemsOnPageSelect__option')) {
       setIsOpen(false);
     }
   }
@@ -60,10 +63,6 @@ export const ItemsOnPageSelect = () => {
         </div>
       </div>
     </div>
-
-
-
-
   )
 }
 

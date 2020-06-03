@@ -8,5 +8,27 @@
 
   &__button {
     @include pagination-button;
+
+    &--left {
+      background-image: url(../../../imgs/Icons/ChevronArrowRightDark.svg);
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: auto;
+      transform: rotate(180deg);
+      &:disabled {
+        background-image: url(../../../imgs/Icons/ArrowRight.svg);
+      }
+    }
+
+    &--right {
+      background-image: url(../../../imgs/Icons/ChevronArrowRightDark.svg);
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: auto;
+      &:disabled {
+        background-image: url(../../../imgs/Icons/ArrowRight.svg);
+      }
+    }
+
   }
 }

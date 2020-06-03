@@ -2,7 +2,6 @@
 import './WaitLoading.scss';
 import React, { useEffect, useState } from 'react';
 
-
 export const WaitLoading = () => {
   const [count, setCount] = useState(0)
   useEffect(() => {
@@ -15,8 +14,7 @@ export const WaitLoading = () => {
     }, 100)
   }, [count])
 
-  let arr: number[] = [];
-  arr.length = 7;
+  let arr: number[] = new Array(7);
   arr.fill(0);
 
   return (
@@ -26,18 +24,14 @@ export const WaitLoading = () => {
         {arr.map((_, index) => {
           return (
             <span
-            key={index}
+              key={index}
               className={count === index
                 ? "WaitLoading__box WaitLoading__box--active"
                 : "WaitLoading__box"}>
             </span>
           )
         })}
-
-
       </div>
     </div>
   )
 }
-
-

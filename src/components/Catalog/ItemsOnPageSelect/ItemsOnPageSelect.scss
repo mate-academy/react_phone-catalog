@@ -5,11 +5,11 @@
   margin-right: 16px;
   width: 128px;
 
-
   &__legend {
     @include small-text;
     color: #89939a;
   }
+
   &__pseudo-select {
     cursor: pointer;
     position: relative;
@@ -22,9 +22,11 @@
     padding: 0 12px;
     border: 1px solid #b4bdc4;
     box-sizing: border-box;
+
     @media screen and (max-width: 600px) {
       width: 80px;
     }
+
     &::after {
       transition: 0.5s;
       content: "";
@@ -35,11 +37,12 @@
       display: block;
       height: 100%;
       width: 15px;
-      background-image: url("../../../imgs/Icons/ChevronArrow.png");
+      background-image: url("../../../imgs/Icons/ArrowRight.svg");
       background-position: center;
       background-repeat: no-repeat;
       transform: rotate(270deg);
     }
+
     &--open::after {
       transition: 0.5s;
       content: "";
@@ -50,7 +53,7 @@
       display: block;
       height: 100%;
       width: 15px;
-      background-image: url("../../../imgs/Icons/ChevronArrow.png");
+      background-image: url("../../../imgs/Icons/ArrowRight.svg");
       background-position: center;
       background-repeat: no-repeat;
       transform: rotate(90deg);
@@ -93,21 +96,4 @@
       color: #313237;
     }
   }
-  // &__legend {
-  //   @include small-text;
-  //   color: #89939a;
-  // }
-
-  // &__per-page {
-  //   width: 128px;
-  //   height: 40px;
-  //   @include buttons;
-  //   line-height: 40px;
-  //   color: #313237;
-  //   outline: none;
-  //   padding: 0 12px;
-  //   border: 1px solid #b4bdc4;
-  //   box-sizing: border-box;
-
-  // }
 }

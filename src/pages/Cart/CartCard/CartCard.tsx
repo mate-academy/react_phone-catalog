@@ -20,11 +20,10 @@ export const CartCard = ({
   const { imageUrl, name } = product;
 
   const handleDeleteButtonClick = () => {
-    setCart([...cart].filter(item => item.id !== product.id))
+    setCart(cart.filter(item => item.id !== product.id))
   }
 
   const price = product.price - product.price * product.discount / 100;
-
   const total = price * count;
 
   const handleCountIncrease = () => {
@@ -35,6 +34,7 @@ export const CartCard = ({
     temp.splice(cart.findIndex(item => product.id === item.id), 1)
     setCart(temp);
   }
+
   let base;
 
   switch (product.type) {
@@ -47,7 +47,6 @@ export const CartCard = ({
     default:
       base = '/accessories/'
   }
-
 
   return (
     <div
@@ -69,23 +68,20 @@ export const CartCard = ({
         {name}
       </Link>
       <div className="CartCard__container">
-      <button
-        disabled={count <= 1}
-        onClick={handleCountDecrease}
-        className={count <= 1
-          ? "CartCard__count-button CartCard__count-button--disabled"
-          : "CartCard__count-button"
-        }
-      >̶ </button>
-      <span
-        className="CartCard__count"
-      >{count}</span>
-      <button
-        className="CartCard__count-button"
-        onClick={handleCountIncrease}
-      >+</button>
+        <button
+          disabled={count <= 1}
+          onClick={handleCountDecrease}
+          className="CartCard__count-button CartCard__count-button--minus"
+        >
+        </button>
+        <span
+          className="CartCard__count"
+        >{count}</span>
+        <button
+          className="CartCard__count-button CartCard__count-button--plus"
+          onClick={handleCountIncrease}
+        ></button>
       </div>
-
       <span
         className="CartCard__total"
       >{`$${total}`}</span>

@@ -11,23 +11,21 @@
     right: 27px;
     height: 16px;
     width: 16px;
-    background-image: url("../../imgs/Icons/Close.png");
+    background-image: url("../../imgs/Icons/Close.svg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     background-color: white;
     border: none;
     @media screen and (max-width: 970px) {
-
       top: 14px;
       right: 12px;
       height: 12px;
       width: 12px;
     }
     &--magnifier {
-      background-image: url("../../imgs/Icons/Search.png");
+      background-image: url("../../imgs/Icons/Search.svg");
     }
-
   }
 
   &__input {

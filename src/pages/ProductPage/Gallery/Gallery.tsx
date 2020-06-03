@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import './Gallery.scss';
 
 
-export const Gallery = ({images}:{images: string[]}) => {
+export const Gallery = ({ images }: { images: string[] }) => {
   const [activeImgNum, setActiveImgNum] = useState(0);
 
   useEffect(() => {
@@ -12,7 +12,7 @@ export const Gallery = ({images}:{images: string[]}) => {
   }, [activeImgNum])
 
   const NextImage = () => {
-    if(activeImgNum === images.length - 1) {
+    if (activeImgNum === images.length - 1) {
       setActiveImgNum(0);
     } else {
       setActiveImgNum(activeImgNum + 1);
@@ -23,28 +23,24 @@ export const Gallery = ({images}:{images: string[]}) => {
     <div className="Gallery">
       <div className="Gallery__wrapper">
         <ul className="Gallery__stripe">
-        {images.map((image, index) => (
-          <li className="Gallery__item">
-            <button
-            className={index === activeImgNum
-              ? "Gallery__icon Gallery__icon--active"
-              : "Gallery__icon"}
-            onClick={() => setActiveImgNum(index)}
-            style={{backgroundImage: `url(${image})`}}
-            >
-
-            </button>
-          </li>
-        ))}
-
+          {images.map((image, index) => (
+            <li className="Gallery__item">
+              <button
+                className={index === activeImgNum
+                  ? "Gallery__icon Gallery__icon--active"
+                  : "Gallery__icon"}
+                onClick={() => setActiveImgNum(index)}
+                style={{ backgroundImage: `url(${image})` }}
+              >
+              </button>
+            </li>
+          ))}
         </ul>
       </div>
       <img
-      className="Gallery__main"
-      src={images[activeImgNum]}
-      alt="Phone Photo"/>
+        className="Gallery__main"
+        src={images[activeImgNum]}
+        alt="Phone Photo" />
     </div>
   )
 }
-
-

@@ -24,8 +24,8 @@
     justify-content: space-between;
     align-items: center;
   }
-  &-right-wrapper {
 
+  &-right-wrapper {
     margin: 0;
     padding: 0;
     max-width: 1440px;
@@ -34,7 +34,6 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
-
   }
 
   &-left-wrapper {
@@ -69,6 +68,7 @@
       transform: rotate(45deg);
       transition: 1s;
     }
+
     &::after {
       content: "";
       display: block;
@@ -90,6 +90,5 @@
         transform: rotate(-135deg);
       }
     }
-
   }
 }

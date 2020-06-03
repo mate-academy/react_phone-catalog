@@ -23,17 +23,17 @@ export interface CatalogPropsType {
   title?: string;
   products: Product[];
   cart: Product[];
-  setCart: ([]) => void;
+  setCart: (cart:Product[]) => void;
   favorites: Product[];
-  setFavorites: ([]) => void;
+  setFavorites: (favorites: Product[]) => void;
 }
 
 export interface ProductCardPropsType {
   product: Product;
   cart: Product[];
-  setCart: ([]) => void;
+  setCart: (cart:Product[]) => void;
   favorites: Product[];
-  setFavorites: ([]) => void;
+  setFavorites: (favorites: Product[]) => void;
 }
 
 export interface ProductDetails {
@@ -69,8 +69,7 @@ export interface Connectivity {
 export interface MyContextType {
   products: Product[];
   cart: Product[];
-  setCart: ([]) => void;
+  setCart: (cart: Product[]) => void;
   favorites: Product[];
-  setFavorites: ([]) => void;
+  setFavorites: (favorites: Product[]) => void;
 }
-

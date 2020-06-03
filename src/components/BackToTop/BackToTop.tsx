@@ -3,8 +3,6 @@ import React from 'react';
 import './BackToTop.scss';
 
 export const BackToTop = () => {
-
-
   const handleScrollUp = () => {
     const scroll = () => {
       setTimeout(() => {
@@ -15,7 +13,6 @@ export const BackToTop = () => {
       }, 1);
     }
     scroll();
-
   }
 
   return (

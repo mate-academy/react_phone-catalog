@@ -1,7 +1,6 @@
 @import "../../mixins.scss";
 
 .ProductCard {
-
   margin: 8px;
   width: 272px;
   height: 507px;
@@ -24,7 +23,6 @@
     background-size: cover;
     &:hover {
       transform: scale(1.2);
-
     }
   }
 
@@ -51,7 +49,6 @@
       text-decoration: line-through;
       color: #89939a;
     }
-
   }
 
   &__feature {
@@ -108,13 +105,13 @@
     height: 40px;
     width: 40px;
     box-sizing: border-box;
-    background-image: url("../../imgs/Icons/heart.png");
+    background-image: url("../../imgs/Icons/HeartLike.svg");
     background-position: center;
     background-repeat: no-repeat;
     background-color: white;
     border: 1px solid #b4bdc4;
     &--added {
-      background-image: url("../../imgs/Icons/FilledHeart.png");
+      background-image: url("../../imgs/Icons/FilledHeartLike.svg");
       border: 1px solid #e2e6e9;
     }
 
@@ -122,6 +119,5 @@
     &:focus {
       border: 1px solid #313237;
     }
-
   }
 }

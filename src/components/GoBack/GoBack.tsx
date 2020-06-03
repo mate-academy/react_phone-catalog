@@ -9,14 +9,15 @@ export const GoBack = () => {
   const handleClick = () => {
     history.goBack()
   }
-  return(
+
+  return (
     <div className="GoBack">
-    <span className="GoBack__arrow"></span>
-    <button
-    className="GoBack__button"
-    type="button"
-    onClick={handleClick}
-    >Back</button>
+      <span className="GoBack__arrow"></span>
+      <button
+        className="GoBack__button"
+        type="button"
+        onClick={handleClick}
+      >Back</button>
     </div>
   )
 }

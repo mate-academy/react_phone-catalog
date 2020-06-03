@@ -7,7 +7,6 @@
     width: 95vw;
     margin: 0;
     height: 95vw;
-
   }
 
   &__list {
@@ -41,7 +40,6 @@
     margin: 16px 0 24px;
     display: flex;
     justify-content: space-between;
-
   }
 
   &__add-to-cart {
@@ -75,13 +73,13 @@
     height: 48px;
     width: 48px;
     box-sizing: border-box;
-    background-image: url("../../../imgs/Icons/heart.png");
+    background-image: url("../../../imgs/Icons/HeartLike.svg");
     background-position: center;
     background-repeat: no-repeat;
     background-color: white;
     border: 1px solid #b4bdc4;
     &--added {
-      background-image: url("../../../imgs/Icons/FilledHeart.png");
+      background-image: url("../../../imgs/Icons/FilledHeartLike.svg");
       border: 1px solid #e2e6e9;
     }
 
@@ -89,7 +87,5 @@
     &:focus {
       border: 1px solid #313237;
     }
-
   }
 }
-
