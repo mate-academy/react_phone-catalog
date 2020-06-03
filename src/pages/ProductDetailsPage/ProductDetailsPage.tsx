@@ -18,7 +18,7 @@ export const ProductDetailsPage = () => {
   const dispatch = useDispatch();
   const { match } = useRouter();
   const [product, setProduct] = useState<Product>();
-  const productDetails = useSelector(getDetails);
+  const productDetails: ProductDetails = useSelector(getDetails);
   const products: Product[] = useSelector(getProducts);
 
   const currentProduct = useMemo(() => (products.find(
@@ -32,20 +32,32 @@ export const ProductDetailsPage = () => {
 
   }, [dispatch, match, currentProduct]);
 
+  const {
+    name,
+    images,
+    display,
+    battery,
+    storage,
+    description,
+    additionalFeatures,
+    hardware, android,
+    sizeAndWeight
+  } = productDetails;
+
   return (
     <div className="container">
-      {(productDetails && product) && (
+      {(product && productDetails) && (
         <article className="product">
           <section className="section product__section">
             <Breadcrumbs />
             <BackBtn />
-            <Heading title={productDetails.name} />
+            <Heading title={name} />
             <div className="product__grid">
               <div className="product__column">
                 <div className="product__gallery">
                   <ProductGallery
-                    images={productDetails.images}
-                    title={productDetails.name}
+                    images={images}
+                    title={name}
                   />
                 </div>
               </div>
@@ -74,25 +86,25 @@ export const ProductDetailsPage = () => {
                   <div className="product__spec">
                     <span className="product__spec-title">Screen</span>
                     <span className="product__spec-info">
-                      {productDetails.display.screenSize}
+                      {display.screenSize}
                     </span>
                   </div>
                   <div className="product__spec">
                     <span className="product__spec-title">Resolution</span>
                     <span className="product__spec-info">
-                      {productDetails.display.screenResolution}
+                      {display.screenResolution}
                     </span>
                   </div>
                   <div className="product__spec">
                     <span className="product__spec-title">Battery</span>
                     <span className="product__spec-info">
-                      {productDetails.battery.type}
+                      {battery.type}
                     </span>
                   </div>
                   <div className="product__spec">
                     <span className="product__spec-title">RAM</span>
                     <span className="product__spec-info">
-                      {productDetails.storage.ram || '1000 MB'}
+                      {storage.ram || '1000 MB'}
                     </span>
                   </div>
                 </div>
@@ -100,13 +112,13 @@ export const ProductDetailsPage = () => {
               <div className="product__column">
                 <h3 className="product__heading">About</h3>
                 <p className="product__paragraph">
-                  {productDetails.description}
+                  {description}
                 </p>
-                {productDetails.additionalFeatures && (
+                {additionalFeatures && (
                   <>
                     <h4 className="product__subheading">Features</h4>
                     <p className="product__paragraph">
-                      {productDetails.additionalFeatures}
+                      {additionalFeatures}
                     </p>
                   </>
                 )}
@@ -117,49 +129,49 @@ export const ProductDetailsPage = () => {
                   <div className="product__spec">
                     <span className="product__spec-title">Screen</span>
                     <span className="product__spec-info">
-                      {productDetails.display.screenSize}
+                      {display.screenSize}
                     </span>
                   </div>
                   <div className="product__spec">
                     <span className="product__spec-title">Resolution</span>
                     <span className="product__spec-info">
-                      {productDetails.display.screenResolution}
+                      {display.screenResolution}
                     </span>
                   </div>
                   <div className="product__spec">
                     <span className="product__spec-title">Processor</span>
                     <span className="product__spec-info">
-                      {productDetails.hardware.cpu}
+                      {hardware.cpu}
                     </span>
                   </div>
                   <div className="product__spec">
                     <span className="product__spec-title">Storage</span>
                     <span className="product__spec-info">
-                      {productDetails.storage.flash || '32000MB'}
+                      {storage.flash || '32000MB'}
                     </span>
                   </div>
                   <div className="product__spec">
                     <span className="product__spec-title">RAM</span>
                     <span className="product__spec-info">
-                      {productDetails.storage.ram || '1000 MB'}
+                      {storage.ram || '1000 MB'}
                     </span>
                   </div>
                   <div className="product__spec">
                     <span className="product__spec-title">OS</span>
                     <span className="product__spec-info">
-                      {productDetails.android.os}
+                      {android.os}
                     </span>
                   </div>
                   <div className="product__spec">
                     <span className="product__spec-title">Battery</span>
                     <span className="product__spec-info">
-                      {productDetails.battery.type}
+                      {battery.type}
                     </span>
                   </div>
                   <div className="product__spec">
                     <span className="product__spec-title">Weight</span>
                     <span className="product__spec-info">
-                      {productDetails.sizeAndWeight.weight}
+                      {sizeAndWeight.weight}
                     </span>
                   </div>
                 </div>
