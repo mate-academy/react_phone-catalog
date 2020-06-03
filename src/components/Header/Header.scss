@@ -11,6 +11,9 @@
   height: 64px;
   background: white;
   box-shadow: 0 1px 0 #e2e6e9;
+  @media screen and (max-width: 970px) {
+    height: 40px;
+  }
   &-wrapper {
     margin: 0;
     padding: 0;
@@ -22,6 +25,7 @@
     align-items: center;
   }
   &-right-wrapper {
+
     margin: 0;
     padding: 0;
     max-width: 1440px;
@@ -30,10 +34,62 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
+
   }
 
   &-left-wrapper {
     display: flex;
     height: 100%;
+    @media screen and (max-width: 450px) {
+      display: none;
+    }
+  }
+
+  &__button {
+    position: relative;
+    height: 40px;
+    width: 40px;
+    background-color: white;
+    box-shadow: -1px 0 0 #e2e6e9;
+    border: none;
+    outline: none;
+    @media screen and (min-width: 970px) {
+      display: none;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 20px;
+      right: 17px;
+      display: block;
+      height: 3px;
+      width: 15px;
+      background-color: #313237;
+      transform: rotate(45deg);
+      transition: 1s;
+    }
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 20px;
+      left: 17px;
+      height: 3px;
+      width: 15px;
+      background-color: #313237;
+      transform: rotate(-45deg);
+      transition: 1s;
+    }
+
+    &--close {
+      &::before {
+        transform: rotate(135deg);
+      }
+      &::after {
+        transform: rotate(-135deg);
+      }
+    }
+
   }
 }

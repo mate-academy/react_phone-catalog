@@ -10,11 +10,17 @@
     margin: 0;
     padding: 0;
     width: 100%;
+    @media screen and (max-width: 550px) {
+      flex-direction: column;
+    }
   }
 
   &__item {
     margin-right: 1%;
     width: 32.66%;
+    @media screen and (max-width: 550px) {
+      width: 100%;
+    }
   }
 
   &__title {

@@ -4,6 +4,12 @@
 .About {
   width: 550px;
   margin-right: 65px;
+  @media screen and (max-width: 560px) {
+    width: 95vw;
+    margin: 0;
+    height: 95vw;
+
+  }
 
   &__horisont {
     margin: 16px 0;

@@ -2,7 +2,7 @@
 import React from 'react';
 import { Product } from '../../../interfaces';
 import './CartCard.scss';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export const CartCard = ({
   index,
@@ -12,14 +12,14 @@ export const CartCard = ({
   count
 }: {
   index: number;
-  cart:Product[];
+  cart: Product[];
   product: Product;
   count: number;
-  setCart:(cart:Product[]) => void
+  setCart: (cart: Product[]) => void
 }) => {
   const { imageUrl, name } = product;
 
-  const handleDeleteButtonClick =() => {
+  const handleDeleteButtonClick = () => {
     setCart([...cart].filter(item => item.id !== product.id))
   }
 
@@ -51,42 +51,43 @@ export const CartCard = ({
 
   return (
     <div
-    className="CartCard"
-    style={{top: `${index * 144}px`}}
+      className="CartCard"
+      style={{ top: `${index * 144}px` }}
     >
       <button
-      className="CartCard__delete-button"
-      onClick={handleDeleteButtonClick}
+        className="CartCard__delete-button"
+        onClick={handleDeleteButtonClick}
       >
-
       </button>
-    <img
-    className="CartCard__img"
-    src={imageUrl}
-    alt={name} />
-     <Link
+      <img
+        className="CartCard__img"
+        src={imageUrl}
+        alt={name} />
+      <Link
         to={base + product.id}
         className="CartCard__name">
-          {name}
+        {name}
       </Link>
-
+      <div className="CartCard__container">
       <button
-      disabled={count <= 1}
-      onClick={handleCountDecrease}
-      className={count <= 1
-        ? "CartCard__count-button CartCard__count-button--disabled"
-        : "CartCard__count-button"
-      }
-      >̶  </button>
-  <span
-  className="CartCard__count"
-  >{count}</span>
-      <button
-      className="CartCard__count-button"
-      onClick={handleCountIncrease}
-      >+</button>
+        disabled={count <= 1}
+        onClick={handleCountDecrease}
+        className={count <= 1
+          ? "CartCard__count-button CartCard__count-button--disabled"
+          : "CartCard__count-button"
+        }
+      >̶ </button>
       <span
-      className="CartCard__total"
+        className="CartCard__count"
+      >{count}</span>
+      <button
+        className="CartCard__count-button"
+        onClick={handleCountIncrease}
+      >+</button>
+      </div>
+
+      <span
+        className="CartCard__total"
       >{`$${total}`}</span>
     </div>
   )

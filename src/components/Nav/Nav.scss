@@ -7,7 +7,7 @@
   justify-content: left;
   align-items: center;
 
-  @media screen and (max-width: 1023px) {
+  @media screen and (max-width: 970px) {
     display: none;
     position: absolute;
     left: 0;
@@ -26,7 +26,7 @@
     list-style: none;
     height: 100%;
     padding: 0;
-    @media screen and (max-width: 1023px) {
+    @media screen and (max-width: 970px) {
       flex-direction: column;
     }
 

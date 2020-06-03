@@ -63,7 +63,7 @@ export const CartPage = () => {
       </div>
 
       <div className="CartPage__summary">
-        <div>
+        <div className="CartPage__container">
         <span
           className="CartPage__total"
         >

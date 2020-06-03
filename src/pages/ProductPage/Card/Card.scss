@@ -2,8 +2,14 @@
 @import "../../../mixins.scss";
 
 .Card {
-
   width: 320px;
+  @media screen and (max-width: 560px) {
+    width: 95vw;
+    margin: 0;
+    height: 95vw;
+
+  }
+
   &__list {
     list-style: none;
     margin: 0;
@@ -35,6 +41,7 @@
     margin: 16px 0 24px;
     display: flex;
     justify-content: space-between;
+
   }
 
   &__add-to-cart {
@@ -46,6 +53,10 @@
     width: 263px;
     outline: none;
     border: 1px solid #313237;
+    @media screen and (max-width: 560px) {
+      flex-grow: 1;
+
+    }
     &--added {
       border: 1px solid #e2e6e9;
       color: #27ae60;

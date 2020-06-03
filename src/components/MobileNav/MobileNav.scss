@@ -1,0 +1,56 @@
+
+@import "../../mixins.scss";
+
+.MobileNav {
+  position: absolute;
+  z-index: 1;
+  top: 41px;
+  left: 0;
+  height: calc(100vh - 40px);
+  width: 100vw;
+  background-color: whitesmoke;
+  overflow: hidden;
+  transition: 1s;
+  max-width: 320px;
+
+  @media screen and (max-width: 970px) {
+    display: flex;
+
+  }
+
+  &--invisible {
+    height: 0;
+  }
+
+  &__list {
+    height: 100%;
+    margin-top: 40px;
+
+    list-style: none;
+  }
+
+  &__item {
+    height: 10vh;
+  }
+
+  &__label {
+    height: 100%;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    text-decoration: none;
+    @include upper-case;
+    font-size: 24px;
+    font-weight: bolder;
+    color: #89939a;
+    &:hover {
+      position: relative;
+      color: #313237;
+
+    }
+  }
+
+}

@@ -6,10 +6,8 @@ export const BackToTop = () => {
 
 
   const handleScrollUp = () => {
-    console.log(document.body.clientHeight, window.screen.availHeight)
     const scroll = () => {
       setTimeout(() => {
-        console.log(document.body.clientHeight, window.screen.availHeight)
         window.scrollBy(0, -20);
         if (window.scrollY > 0) {
           scroll();

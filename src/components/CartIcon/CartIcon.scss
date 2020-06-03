@@ -6,6 +6,10 @@
   height: 64px;
   width: 64px;
   box-shadow: -1px 0 0 #e2e6e9;
+  @media screen and (max-width: 970px) {
+    height: 40px;
+    width: 40px;
+  }
 
   &__count {
     position: absolute;
@@ -16,6 +20,10 @@
     border-radius: 50%;
     background-color: #eb5757;
     @include icons-font;
+    @media screen and (max-width: 970px) {
+      top: 10px;
+      left: 20px;
+    }
   }
 
   &__link {
@@ -36,6 +44,9 @@
         height: 3px;
         width: 100%;
         background-color: #313237;
+        @media screen and (max-width: 970px) {
+          top: 38px;
+        }
       }
     }
 

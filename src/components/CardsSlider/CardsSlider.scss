@@ -19,11 +19,14 @@
     @include h1;
     margin: 0;
     padding: 0;
+    @media screen and (max-width: 559px) {
+      font-size: 20px;
+    }
   }
 
   &__button {
     @include pagination-button;
- 
+
   }
 
   &__stripe-container {
@@ -35,6 +38,9 @@
     }
     @media screen and (max-width: 847px) {
       width: 560px;
+    }
+    @media screen and (max-width: 559px) {
+      width: 274px;
     }
   }
 

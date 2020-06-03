@@ -24,7 +24,7 @@ export const Gallery = ({images}:{images: string[]}) => {
       <div className="Gallery__wrapper">
         <ul className="Gallery__stripe">
         {images.map((image, index) => (
-          <li >
+          <li className="Gallery__item">
             <button
             className={index === activeImgNum
               ? "Gallery__icon Gallery__icon--active"

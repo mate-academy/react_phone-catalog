@@ -14,13 +14,25 @@
   align-items: center;
   box-sizing: border-box;
   padding: 0 27px;
+  @media screen and (max-width: 650px) {
+    flex-direction: column;
+  }
 
- 
+  &__container {
+    display: flex;
+    align-items: center;
+    @media screen and (max-width: 650px) {
+      height: 42px;
+    }
+  }
 
   &__img {
     height: 66px;
     width: 66px;
     margin: 0 31px 0 34px;
+    @media screen and (max-width: 650px) {
+      display: none;
+    }
   }
 
   &__name {
@@ -28,6 +40,14 @@
     margin-right: 49px;
     @include body-text;
     text-decoration: none;
+    @media screen and (max-width: 650px) {
+      height: 42px;
+      margin: 0;
+      width: max-content;
+      display: flex;
+      align-items: center;
+
+    }
   }
 
   &__delete-button {
@@ -38,9 +58,16 @@
     outline: none;
     background-image: url("../../../imgs/Icons/Close.png");
     cursor: pointer;
+    @media screen and (max-width: 650px) {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+    }
   }
 
   &__count {
+    display: inline-block;
+    flex-shrink: 0;
     width: 32px;
     text-align: center;
     line-height: 32px;
@@ -48,6 +75,7 @@
   }
 
   &__count-button {
+    flex-shrink: 0;
     height: 32px;
     width: 32px;
     border: 1px solid #b4bdc4;
@@ -58,7 +86,6 @@
     font-size: 24px;
     line-height: 30px;
     cursor: pointer;
-
 
     &--disabled {
       border: 1px solid #e2e6e9;
@@ -71,5 +98,10 @@
     @include h2;
     color: #313237;
     margin-left: 43px;
+    @media screen and (max-width: 650px) {
+      margin: 0;
+      height: 42px;
+      line-height: 42px;
+    }
   }
 }

@@ -4,13 +4,6 @@
 .SearchField {
   position: relative;
 
-  // @media screen and (max-width: 770px) {
-  //   position: absolute;
-  //   top: 70px;
-  //   right: 5px;
-  //   border: 1px solid #e2e6e9;
-  // }
-
   &__button {
     outline: none;
     position: absolute;
@@ -24,6 +17,13 @@
     background-size: cover;
     background-color: white;
     border: none;
+    @media screen and (max-width: 970px) {
+
+      top: 14px;
+      right: 12px;
+      height: 12px;
+      width: 12px;
+    }
     &--magnifier {
       background-image: url("../../imgs/Icons/Search.png");
     }
@@ -43,6 +43,14 @@
     @media screen and (max-width: 1070px) {
       width: 250px;
     }
+    @media screen and (max-width: 970px) {
+      height: 40px;
+      padding: 0 24px;
+    }
+    @media screen and (max-width: 450px) {
+      max-width: calc(100vw - 160px);
+      font-size: 12px;
+    }
 
     &:focus,
     &:hover {
@@ -51,6 +59,9 @@
 
     &:placeholder-shown {
       @include placeholder;
+      @media screen and (max-width: 450px) {
+        font-size: 12px;
+      }
     }
   }
 }
