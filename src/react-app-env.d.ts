@@ -218,6 +218,10 @@ type ProductGalleryProps = {
   title: string;
 };
 
+type ProductTechSpecs = ProductDetails & {
+  shortened?: boolean;
+}
+
 type GalleryThumbnailsProps = {
   images: string[];
   title: string;
