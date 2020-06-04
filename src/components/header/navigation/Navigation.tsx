@@ -23,7 +23,7 @@ const Navigation = () => {
                 to={`${listItem}`}
                 exact
                 className="Nav__item link"
-activeClassName = "Nav__item--active"
+                activeClassName="Nav__item--active"
                 key={listItem}
               >
                 {listItem}
