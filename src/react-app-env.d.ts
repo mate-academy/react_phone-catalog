@@ -165,7 +165,7 @@ interface NavItemProps {
   title: string;
   link: string;
   exact: boolean;
-  linkRef: (node: any) => void;
+  onMount: (link: string, ref: any) => void;
 }
 
 interface Match {

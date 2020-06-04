@@ -32,7 +32,6 @@ export const ProductDetailsPage = () => {
   useEffect(() => {
     dispatch(loadDetails(match.params.productId));
     setProduct(currentProduct);
-
   }, [dispatch, match, currentProduct]);
 
   if (!product || !productDetails) {
