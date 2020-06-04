@@ -1,0 +1,106 @@
+@import "../../css_config/css_configuration.scss";
+
+.cart-page {
+  &__card {
+    display: flex;
+    width: 752px;
+    height: 128px;
+    border: 1px solid $ElementsColor;
+    box-sizing: border-box;
+    position: relative;
+    margin-bottom: 15px;
+  }
+  &__action {
+    display: flex;
+  }
+  &__description {
+    display: flex;
+  }
+  &__button-delete {
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    position: relative;
+    top: calc(50% - 10px);
+    border: none;
+    margin-left: 27px;
+    cursor: pointer;
+  }
+  &__image {
+    position: relative;
+    top: calc(50% - 36px);
+    width: 64px;
+    height: 64px;
+    margin-left: 30px;
+  }
+  &__text {
+    position: relative;
+    top: calc(50% - 27px);
+    margin-left: 30px;
+    width: 300px;
+  }
+  &__counter,
+  &__minus,
+  &__plus {
+    text-align: center;
+    line-height: 32px;
+    width: 32px;
+    height: 32px;
+    border: 1px solid $ElementsColor;
+    box-sizing: border-box;
+    background-color: white;
+    margin-top: 48px;
+    transition: $TransitionDuration;
+  }
+  &__minus,
+  &__plus {
+    cursor: pointer;
+    &:hover {
+      border-color: $IconsColor;
+    }
+  }
+  &__counter {
+    border: none;
+  }
+  &__price {
+    margin-left: 43px;
+    position: relative;
+    top: 28px;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 140%;
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .cart-page {
+    &__card {
+      width: 300px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    &__description {
+      width: 100%;
+      position: relative;
+    }
+    &__button-delete {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+    &__image {
+      margin-left: 0;
+      margin-top: 10px;
+    }
+    &__text {
+      margin-left: 0;
+    }
+    &__action {
+      margin-top: -40px;
+    }
+  }
+}

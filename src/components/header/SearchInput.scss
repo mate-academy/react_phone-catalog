@@ -1,0 +1,51 @@
+@import "../../css_config/css_configuration.scss";
+
+.search {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid $ElementsColor;
+  position: relative;
+  right: -2px;
+  padding-left: 24px;
+  height: 64px;
+  top: -2px;
+  line-height: 64px;
+  &-section {
+    position: relative;
+    display: inline-block;
+  }
+  &__input {
+    font-family: $BodyTextStyle;
+    height: 100%;
+    width: 100%;
+    outline: none;
+    border: none;
+  }
+  &__img {
+    position: relative;
+    bottom: 3px;
+    text-align: center;
+    box-sizing: border-box;
+    font-size: 26px;
+    margin-right: 20px;
+    border-radius: 50%;
+    &-button {
+      background-color: white;
+      border: none;
+      font-size: 21px;
+      color: $PrimaryColor;
+    }
+    &-delete {
+      cursor: pointer;
+    }
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .search {
+    position: absolute;
+    top: 26px;
+    width: 200px;
+    left: -90px;
+  }
+}

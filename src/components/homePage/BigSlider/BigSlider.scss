@@ -1,0 +1,148 @@
+@import "../../../css_config/css_configuration.scss";
+
+.carousel {
+  margin: auto;
+  position: relative;
+  max-width: 1140px;
+  height: 400px;
+  margin-bottom: 100px;
+  &__block {
+    overflow: hidden;
+    margin: auto;
+    margin-top: 40px;
+    width: 1040px;
+  }
+  &__list {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    transition: 0.3s;
+  }
+}
+
+.prev-button {
+  position: absolute;
+  display: inline-block;
+  height: 400px;
+  width: 32px;
+  background-color: inherit;
+  border: 1px solid $IconsColor;
+  cursor: pointer;
+  transition: $TransitionDuration;
+  &:hover {
+    border: 1px solid black;
+  }
+}
+
+.next-button {
+  position: absolute;
+  display: inline-block;
+  height: 400px;
+  width: 32px;
+  left: 1108px;
+  background-color: inherit;
+  top: 0;
+  border: 1px solid $IconsColor;
+  cursor: pointer;
+  transition: $TransitionDuration;
+  &:hover {
+    border: 1px solid black;
+  }
+}
+
+.slider {
+  &-points {
+    position: relative;
+    margin: auto;
+    top: 10px;
+    width: 10%;
+  }
+  &-point {
+    display: inline-block;
+    margin-right: 10px;
+    width: $BodyTextSize;
+    height: 4px;
+    background-color: $ElementsColor;
+  }
+}
+
+.avtive-point {
+  background-color: black;
+}
+
+@media screen and (max-width: 1100px) {
+  .carousel {
+    width: 600px;
+    height: 210px;
+    &__block {
+      width: 600px;
+    }
+    &__img {
+      width: 600px;
+    }
+  }
+
+  .prev-button {
+    position: absolute;
+    height: 232px;
+    left: -40px;
+  }
+
+  .next-button {
+    position: absolute;
+    height: 232px;
+    left: 608px;
+  }
+
+  .slider {
+    &-points {
+      position: relative;
+      margin: auto;
+      top: 10px;
+      width: 16%;
+    }
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .carousel {
+    position: relative;
+    width: 260px;
+    height: 90px;
+    &__block {
+      width: 260px;
+    }
+    &__img {
+      width: 260px;
+    }
+  }
+
+  .prev-button {
+    position: relative;
+    height: 20px;
+    top: 20px;
+    left: 0;
+    width: 40px;
+  }
+
+  .next-button {
+    position: relative;
+    height: 20px;
+    top: 20px;
+    left: 180px;
+    width: 40px;
+    z-index: 10;
+  }
+
+  .slider {
+    &-points {
+      display: flex;
+      justify-content: center;
+      position: relative;
+      margin: auto;
+      top: -138px;
+      width: 50%;
+    }
+  }
+}

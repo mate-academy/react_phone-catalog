@@ -1,0 +1,18 @@
+@import "./fonts";
+@import "./css_config/css_reset.scss";
+
+.App {
+  max-width: 1440px;
+  margin: auto;
+  position: relative;
+}
+
+.sidebar {
+  display: none;
+}
+
+@media screen and (max-width: 1100px) {
+  .sidebar {
+    display: block;
+  }
+}

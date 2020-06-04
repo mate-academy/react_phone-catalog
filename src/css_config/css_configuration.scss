@@ -1,0 +1,20 @@
+$tabletScreenResolution: 1100px;  //tablet screen resolution//
+$mobileScreenResolution: 480px;  //mobile screen resolution//
+
+$PrimaryColor: #313237;  //Primary  color//
+$SecondaryColor: #89939a;  //Secondary color//
+$IconsColor: #b4bdc4;  //Icons color//
+$ElementsColor: #e2e6e9;  //Elements color//
+$HoverBgColor: #fafbfc;  //Hover + BG color//
+
+$BodyTextSize: 14px;  //Body text size//
+$BodyTextStyle: "Mont", sans-serif;  //Body text style//
+
+$TransitionDuration: 0.3s; //Transition duration//
+
+//Main section size//
+
+@mixin mainSectionSize {
+  max-width: 1152px;
+  margin: auto;
+}

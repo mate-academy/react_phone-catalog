@@ -1,0 +1,197 @@
+@import "../css_config/css_configuration.scss";
+
+.error-page {
+  font-family: $BodyTextStyle;
+  overflow: hidden;
+}
+
+$color-bg: white;
+$color-particle: black;
+$spacing: 1440px;
+$time-1: 60s;
+$time-2: 120s;
+$time-3: 180s;
+$time-4: 200s;
+
+@function particles($max) {
+  $val: 0 0 $color-particle;
+  @for $i from 1 through $max {
+    $val: #{$val}, random($spacing)+px random($spacing)+px $color-particle;
+  }
+  @return $val;
+}
+
+@mixin particles($max) {
+  box-shadow: particles($max);
+  border-radius: 50%;
+}
+
+.page-bg {
+  position: relative;
+  background: $color-bg;
+  background-blend-mode: screen;
+  background-size: cover;
+  filter: grayscale(100%);
+  z-index: -1;
+}
+
+.particle,
+.particle:after {
+  background: transparent;
+}
+
+.particle:after {
+  position: absolute;
+  content: "";
+  top: $spacing;
+}
+
+.particle-1 {
+  animation: animParticle $time-1 linear infinite;
+  @include particles(1000);
+  height: 2px;
+  width: 2px;
+}
+
+.particle-1:after {
+  @include particles(900);
+  height: 2px;
+  width: 2px;
+}
+
+.particle-2 {
+  animation: animParticle $time-2 linear infinite;
+  @include particles(800);
+  height: 2px;
+  width: 2px;
+}
+
+.particle-2:after {
+  @include particles(500);
+  height: 3px;
+  width: 3px;
+}
+
+.particle-3:after {
+  @include particles(1100);
+  height: 3px;
+  width: 3px;
+  border-radius: 50%;
+}
+
+.particle-4 {
+  animation: animParticle $time-4 linear infinite;
+  @include particles(1200);
+  height: 1px;
+  width: 1px;
+}
+
+.particle-4:after {
+  @include particles(700);
+  height: 1px;
+  width: 1px;
+}
+
+@keyframes animParticle {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY($spacing * -1);
+  }
+}
+
+.page-wrapper {
+  text-align: center;
+  color: #fff;
+  margin-top: 30vh;
+  margin-bottom: 41vh;
+  font-size: 60px;
+}
+
+.error-page-text {
+  color: #ff1178e5;
+  font-family: $BodyTextStyle;
+}
+
+.error-page-text:hover {
+  color: #ff1178e5;
+  -webkit-animation: none;
+  -moz-animation: none;
+  animation: none;
+}
+
+/*glow for webkit*/
+
+@-webkit-keyframes neon1 {
+  from {
+    text-shadow: 0 0 10px #fff,
+      0 0 20px #fff,
+      0 0 30px #fff,
+      0 0 40px #ff1178e5,
+      0 0 70px #ff1178e5,
+      0 0 80px #ff1178e5,
+      0 0 100px #ff1178e5,
+      0 0 150px #ff1178e5;
+  }
+  to {
+    text-shadow: 0 0 5px #fff,
+      0 0 10px #fff,
+      0 0 15px #fff,
+      0 0 20px #ff1178e5,
+      0 0 35px #ff1178e5,
+      0 0 40px #ff1178e5,
+      0 0 50px #ff1178e5,
+      0 0 75px #ff1178e5;
+  }
+}
+
+/*glow for mozilla*/
+
+@-moz-keyframes neon1 {
+  from {
+    text-shadow: 0 0 10px #fff,
+      0 0 20px #fff,
+      0 0 30px #fff,
+      0 0 40px #ff1178e5,
+      0 0 70px #ff1178e5,
+      0 0 80px #ff1178e5,
+      0 0 100px #ff1178e5,
+      0 0 150px #ff1178e5;
+  }
+  to {
+    text-shadow: 0 0 5px #fff,
+      0 0 10px #fff,
+      0 0 15px #fff,
+      0 0 20px #ff1178e5,
+      0 0 35px #ff1178e5,
+      0 0 40px #ff1178e5,
+      0 0 50px #ff1178e5,
+      0 0 75px #ff1178e5;
+  }
+}
+
+/*glow*/
+
+@keyframes neon1 {
+  from {
+    text-shadow: 0 0 10px #fff,
+      0 0 20px #fff,
+      0 0 30px #fff,
+      0 0 40px #ff1178e5,
+      0 0 70px #ff1178e5,
+      0 0 80px #ff1178e5,
+      0 0 100px #ff1178e5,
+      0 0 150px #ff1178e5;
+  }
+  to {
+    text-shadow: 0 0 5px #fff,
+      0 0 10px #fff,
+      0 0 15px #fff,
+      0 0 20px #ff1178e5,
+      0 0 35px #ff1178e5,
+      0 0 40px #ff1178e5,
+      0 0 50px #ff1178e5,
+      0 0 75px #ff1178e5;
+  }
+}
