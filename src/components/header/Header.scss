@@ -1,0 +1,87 @@
+$font-family: Mont Helvetica, sans-serif;
+$primary-color: #313237;
+$secondary-color: #89939a;
+$icons-color: #313237;
+$elem-color: #e2e6e9;
+$hover-bg: #fafbfc;
+$font-family-Regular: "Mont-Regular";
+$font-family-Bold: "Mont-Bold";
+$font-family-SemiBold: "Mont-SemiBold";
+
+@mixin allLinks {
+  cursor: pointer;
+  list-style: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: $secondary-color;
+  transition: color 0.2s;
+  font-family: $font-family-Bold;
+}
+
+body {
+  font-family: $font-family-Regular;
+  margin: 0;
+  padding: 0;
+}
+
+.link {
+  @include allLinks();
+}
+
+.Header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  border-bottom: 1px solid $elem-color;
+
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+.Nav__list {
+  display: flex;
+  width: 460px;
+  justify-content: space-between;
+  list-style: none;
+  align-items: center;
+  padding: 0;
+}
+
+.Nav__item {
+  padding-top: 24px;
+  padding-bottom: 24px;
+  font-size: 12px;
+
+  &--active {
+    color: $primary-color;
+  }
+
+  &:hover {
+    border-bottom: 2px solid $secondary-color;
+  }
+}
+
+.Logo {
+  display: flex;
+  margin-left: 24px;
+  width: 40px;
+  height: 12px;
+  background: url(../../img/LOGO.svg) no-repeat;
+}
+
+.actions__item {
+  padding: 24px;
+  height: 18px;
+  border: 1px solid $elem-color;
+  transition: border 0.3s;
+
+  &:hover {
+    border: 1px solid  $secondary-color;
+  }
+}
+
+
+
