@@ -1,0 +1,22 @@
+@import "../../css_config/css_configuration.scss";
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1440px;
+  margin: auto;
+  height: 64px;
+  border: 1px solid $ElementsColor;
+  &__nav {
+    position: relative;
+  }
+  &__nav-logo {
+    display: inline-block;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .header__nav-logo {
+    display: none;
+  }
+}

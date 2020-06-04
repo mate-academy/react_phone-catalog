@@ -1,0 +1,47 @@
+@import "../css_config/css_configuration.scss";
+
+.select-for-page {
+  display: flex;
+  flex-direction: column;
+  &__option {
+    border: 1px solid #b4bdc3;
+    box-sizing: border-box;
+    font-family: $BodyTextStyle;
+    font-size: $BodyTextSize;
+    width: 128px;
+    height: 40px;
+    display: block;
+    padding: 0.6em 1.4em 0.5em 0.8em;
+    margin: 0;
+    box-shadow: 0 1px 0 1px rgba(0,0,0,0.04);
+    appearance: none;
+    background-color: white;
+    & option {
+      font-size: $BodyTextSize;
+      line-height: 21px;
+      color: $SecondaryColor;
+      &:checked {
+        color: $PrimaryColor;
+      }
+      &:hover {
+        background: olive linear-gradient(olive, olive);
+        border: none;
+      }
+    }
+  }
+  &__svg {
+    transform: rotate(90deg);
+    position: absolute;
+    margin-top: 30px;
+    margin-left: 100px;
+    fill: #b4bdc3;
+  }
+  &__text {
+    font-size: 12px;
+    line-height: 15px;
+    letter-spacing: 0;
+    color: $SecondaryColor;
+    font-family: "Mont-SemiBold", sans-serif;
+    padding-bottom: 4px;
+  }
+}

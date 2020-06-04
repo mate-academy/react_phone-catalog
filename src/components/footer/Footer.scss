@@ -1,0 +1,62 @@
+@import "../../css_config/css_configuration.scss";
+
+.footer {
+  height: 96px;
+  border: 1px solid $ElementsColor;
+  padding: 0 123px;
+  margin: auto;
+  max-width: 1440px;
+  &__nav {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+  }
+  &__nav-links {
+    li {
+      display: inline-block;
+    }
+  }
+  &__link {
+    margin-right: 30px;
+  }
+}
+
+.back-to-top {
+  width: 32px;
+  height: 32px;
+  border: 1px solid $IconsColor;
+  background-color: inherit;
+  margin-top: 10px;
+  margin-right: 30px;
+  transition: $TransitionDuration;
+  cursor: pointer;
+  &:hover {
+    border: 1px solid $PrimaryColor;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .footer__nav-links ~ :last-child {
+    margin-right: 0;
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .footer {
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    &__nav {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+    &__nav-links {
+      display: none;
+    }
+  }
+
+  .footer__nav-links ~ :last-child {
+    margin-right: 27px;
+  }
+}

@@ -1,0 +1,90 @@
+@import "../../css_config/css_configuration.scss";
+
+.cart-page {
+  @include mainSectionSize;
+  font-family: $BodyTextStyle;
+  &__list {
+    display: flex;
+    margin-top: 24px;
+    justify-content: space-between;
+  }
+  &__cards {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 50px;
+  }
+  &__buy-block {
+    width: 368px;
+    height: 206px;
+    border: 1px solid $ElementsColor;
+    margin-bottom: 40px;
+  }
+}
+
+.mt {
+  margin-top: 0;
+}
+
+.buy-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &__price {
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    font-weight: 900;
+    margin-bottom: 0;
+  }
+  &__count {
+    font-weight: 500;
+    font-size: $BodyTextSize;
+    line-height: 21px;
+    color: $SecondaryColor;
+  }
+  &__line {
+    display: block;
+    width: 90%;
+    height: 1px;
+    background-color: $ElementsColor;
+    margin-bottom: 24px;
+  }
+  &__button {
+    background-color: $PrimaryColor;
+    width: 90%;
+    height: 48px;
+    color: white;
+    border: 1px solid $PrimaryColor;
+    font-weight: 600;
+    font-size: $BodyTextSize;
+    line-height: 48px;
+    font-family: $BodyTextStyle;
+    cursor: pointer;
+    transition: $TransitionDuration;
+    text-align: center;
+    &:hover {
+      background-color: white;
+      color: $PrimaryColor;
+    }
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .cart-page {
+    max-width: 700px;
+    &__list {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .cart-page {
+    max-width: 300px;
+    &__buy-block {
+      width: 300px;
+    }
+  }
+}

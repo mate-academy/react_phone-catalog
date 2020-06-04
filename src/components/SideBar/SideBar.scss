@@ -1,0 +1,80 @@
+@import "../../css_config/css_configuration.scss";
+
+.bm-item {
+  display: inline-block;
+  text-decoration: none;
+  color: #d1d1d1;
+  transition: color 0.2s;
+}
+
+.bm-item:hover {
+  color: white;
+}
+
+.bm-item:focus {
+  outline: none;
+}
+
+.bm-burger-button {
+  position: absolute;
+  width: 26px;
+  height: 20px;
+  left: 27px;
+  top: 20px;
+}
+
+.bm-burger-bars {
+  background: #373a47;
+}
+
+.bm-cross-button {
+  height: 24px;
+  width: 24px;
+}
+
+.bm-cross {
+  background: #bdc3c7;
+}
+
+.bm-menu {
+  background: #313237;
+  padding: 2.5em 1.5em 0;
+  font-size: 1.15em;
+}
+
+.bm-morph-shape {
+  fill: #373a47;
+}
+
+.bm-item-list {
+  color: #b8b7ad;
+}
+
+.bm-overlay {
+  background: rgba(157, 247, 250, 0.2);
+}
+
+.nav__link-side-bar {
+  display: inline-block;
+  text-transform: uppercase;
+  margin-right: 64px;
+  font-size: 16px;
+  line-height: 60px;
+  text-decoration: none;
+  color: white;
+  font-family: $BodyTextStyle;
+  font-style: normal;
+  font-weight: bold;
+  letter-spacing: 0.04em;
+  &.hover-shadow {
+    &:hover {
+      $color: grey;
+      text-shadow: 1px 1px 0 $color, 2px 2px 0 $color, 3px 3px 0 $color;
+    }
+  }
+  &.hover-color {
+    &:hover {
+      $color: grey;
+    }
+  }
+}

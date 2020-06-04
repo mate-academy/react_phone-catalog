@@ -1,0 +1,27 @@
+html,
+body,
+header,
+main,
+footer,
+ul,
+li,
+button,
+input,
+textarea,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+address {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+  list-style-type: none;
+}
+
+button:active,
+button:focus {
+  outline: none;
+}

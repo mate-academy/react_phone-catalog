@@ -1,0 +1,42 @@
+@import "../css_config/css_configuration.scss";
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  margin-bottom: 80px;
+  &__arrow {
+    transform: rotate(180deg);
+  }
+  &__button {
+    text-align: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid #b4bdc3;
+    box-sizing: border-box;
+    background-color: white;
+    margin: 0 12px;
+    transition: $TransitionDuration;
+    cursor: pointer;
+    &:hover {
+      border-color: $PrimaryColor;
+    }
+    &-page {
+      margin: 0 4px;
+      border-color: $ElementsColor;
+    }
+    &-page-active {
+      background-color: $PrimaryColor;
+      color: white;
+      border: none;
+    }
+  }
+
+}
+
+.disabled {
+  border-color: $ElementsColor;
+  &:hover {
+    border-color: $ElementsColor;
+  }
+}
