@@ -7,7 +7,7 @@ import "./Banner.scss";
 
 class SimpleSlider extends React.Component {
   render() {
-    var settings = {
+    let settings = {
       dots: true,
       infinite: true,
       speed: 500,
@@ -17,22 +17,22 @@ class SimpleSlider extends React.Component {
     return (
       <Slider {...settings}>
         <div>
-        <div className='Slider__image image1'></div>
+          <div className='Slider__image image1'></div>
         </div>
         <div>
-        <div className='Slider__image image2'></div>
+          <div className='Slider__image image2'></div>
         </div>
         <div>
-        <div className='Slider__image image3'></div>
+          <div className='Slider__image image3'></div>
         </div>
         <div>
-        <div className='Slider__image image4'></div>
+          <div className='Slider__image image4'></div>
         </div>
         <div>
-        <div className='Slider__image image5'></div>
+          <div className='Slider__image image5'></div>
         </div>
         <div>
-        <div className='Slider__image image6'></div>
+          <div className='Slider__image image6'></div>
         </div>
       </Slider>
     );

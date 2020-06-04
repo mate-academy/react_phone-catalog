@@ -2,7 +2,7 @@ import React from 'react';
 import Navigation from './navigation/Navigation';
 import Favourites from '../favourites/Favourites';
 import Cart from '../cart/Cart';
-import Banner from '../banner/Banner';
+
 
 import { Switch, Route, Redirect } from 'react-router-dom';
 import Home from '../home/Home';
@@ -34,7 +34,7 @@ const Header = () => {
       </Switch>
 
 
-<Banner />
+
     </>
   )
 
