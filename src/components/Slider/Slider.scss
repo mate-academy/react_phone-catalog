@@ -22,6 +22,7 @@
     list-style: none;
   }
     &__btn {
+      cursor: pointer;
       outline: none;
       border: 1px solid #B4BDC4;
 
@@ -54,6 +55,7 @@
     &:last-child{
       margin: 0;
     }
+
     &_active {
       background-color: $dark-gray-color;
     }
