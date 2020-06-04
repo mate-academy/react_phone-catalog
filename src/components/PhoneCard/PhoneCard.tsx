@@ -1,4 +1,7 @@
+/* eslint-disable jsx-a11y/interactive-supports-focus */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import CN from 'classnames';
 
 type PropsPhoneCard = {
@@ -6,11 +9,28 @@ type PropsPhoneCard = {
 };
 
 const PhoneCard: React.FC<PropsPhoneCard> = ({ phone }) => {
+  const history = useHistory();
+
+  const handleProductDetails = (id: string, type: string) => {
+    switch (type) {
+      case 'phone':
+      case 'tablet':
+        history.push({
+          pathname: `/${type}s/${id}`,
+        });
+        break;
+      default:
+    }
+  };
+
   const discountPrice = phone.price - phone.discount;
+  // div button dont forget onClick
 
   return (
     <section className="PhoneCard">
-      <img src={`${phone.imageUrl}`} alt="phone_image" className="PhoneCard__image" />
+      <div role="button" onClick={() => handleProductDetails(phone.id, phone.type)}>
+        <img src={`${phone.imageUrl}`} alt="phone_image" className="PhoneCard__image" />
+      </div>
       <p className="PhoneCard__product">{`${phone.id.toUpperCase()}`}</p>
 
       <div className="PhoneCard__price-container">

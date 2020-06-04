@@ -1,0 +1,32 @@
+.Product {
+  &__top {
+    display: flex;
+    margin: 40px 0;
+  }
+
+  &__images_list {
+    margin-right: 16px;
+    list-style: none;
+  }
+
+  &__images_item, &__img_container {
+    box-sizing: border-box;
+    border: 1px solid #E2E6E9;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  &__images_item {
+    cursor: pointer;
+    margin-bottom: 16px;
+    width: 80px;
+    height: 80px;
+    background-size: 70px;
+  }
+
+  &__img_container {
+    width: 464px;
+    height: 464px;
+    background-size: contain;
+  }
+}

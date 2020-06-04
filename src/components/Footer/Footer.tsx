@@ -42,7 +42,13 @@ export const Footer = () => {
       </div>
       <div className="Footer__left">
         <p className="Footer__backTo">Back to top</p>
-        <Link to="/home" className="Footer__backhome" />
+        <button
+          type="button"
+          className="Footer__backhome"
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        >
+          { }
+        </button>
 
       </div>
     </footer>

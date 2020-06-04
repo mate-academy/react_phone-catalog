@@ -95,6 +95,16 @@
     display: flex;
     justify-content: space-between;
   }
+
+  &__routeBtn{
+    outline: none;
+    border: 0;
+    :focus {
+      outline-style: none;
+      outline-width: 0px !important;
+      outline-color: none !important;
+    }
+  }
 }
 
 .price-discount {
