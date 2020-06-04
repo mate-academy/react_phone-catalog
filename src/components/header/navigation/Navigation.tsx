@@ -11,7 +11,7 @@ const Navigation = () => {
       <nav className="Nav__wrapper">
         <ul className="Nav__list">
           <li>
-            <NavLink to="/"
+            <NavLink to="/home"
               exact
               className="Logo"
             >
