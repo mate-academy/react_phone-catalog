@@ -1,9 +1,11 @@
 import React from 'react';
+import Slider from './Slider/Slider';
+
 
 const HomePage: React.FC = () => {
   return (
     <>
-      <h1>Home111</h1>
+      <Slider />
     </>
   );
 };
