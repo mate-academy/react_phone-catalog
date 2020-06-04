@@ -7,7 +7,7 @@ import { useHistory, useLocation, Link } from 'react-router-dom';
 import PhoneCard from '../components/PhoneCard/PhoneCard';
 import { getAllProducts } from '../helpers/api';
 import Loader from '../helpers/Loader/Loader';
-
+import Pagination from '../components/Pagination/Pagination';
 
 export const PhonesPage = () => {
   const [phones, setPhones] = useState<Products[]>([]);
@@ -18,6 +18,9 @@ export const PhonesPage = () => {
   const location = useLocation();
 
   const searchParams = new URLSearchParams(location.search);
+  const perPage: number = Number(searchParams.get('perPage')) || phones.length;
+  const pageNumbers = Math.ceil(phones.length / perPage) || 1;
+
 
   useEffect(() => {
     window.scrollTo({ top: 0 });
@@ -42,6 +45,7 @@ export const PhonesPage = () => {
       search: searchParams.toString(),
     });
 
+
     switch (value) {
       case 'name':
         setSortedPhones([...phonesQuantity].sort((a, b) => a[value].localeCompare(b[value])));
@@ -57,6 +61,12 @@ export const PhonesPage = () => {
 
   const selectQuantity = (event: ChangeEvent<HTMLSelectElement>) => {
     const { value } = event.target;
+
+    searchParams.set('perPage', value);
+
+    history.push({
+      search: searchParams.toString(),
+    });
 
     switch (value) {
       case '4':
@@ -112,6 +122,9 @@ export const PhonesPage = () => {
           <PhoneCard key={phone.age} phone={phone} />
         ))}
       </section>
+      <div>
+        <Pagination pageNumbers={pageNumbers} />
+      </div>
     </>
   );
 };
