@@ -6,6 +6,7 @@ import { HomePage } from './pages/HomePage';
 import { FavoritesPage } from './pages/FavoritesPage';
 import { ProductDetailsPage } from './pages/ProductDetailsPage/ProductDetailsPage';
 import { ProductsPage } from './pages/ProductsPage';
+import { ErrorPage } from './pages/ErrorPage';
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
           path="/:productType/:productId"
           component={ProductDetailsPage}
         />
+        <Route component={ErrorPage} />
       </Switch>
       <Footer />
     </>
