@@ -16,8 +16,8 @@ type Props = {
 const ItemPage: React.FC<Props> = ({ currentItem }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [itemDetail, setItemDetail] = useState<ItemDetail>();
-  const [currentItemInformation, setCurrentItemInformation] = useState<Phone>();
-  const [preparedPhones, setPreparedPhones] = useState<Phone[]>([]);
+  const [currentItemInformation, setCurrentItemInformation] = useState<Item>();
+  const [preparedPhones, setPreparedPhones] = useState<Item[]>([]);
   const [currentImg, setcurrentImg] = useState<string>();
 
   const { isAddedToCart, addToCart, removeFromCart } = useContext(CartContext);
@@ -26,7 +26,7 @@ const ItemPage: React.FC<Props> = ({ currentItem }) => {
   useEffect(() => {
     setIsLoading(true);
     getProducts()
-      .then(data => setCurrentItemInformation(data.find((item: Phone) => item.id === currentItem)));
+      .then(data => setCurrentItemInformation(data.find((item: Item) => item.id === currentItem)));
     getDetails(currentItem)
       .then(setItemDetail);
     getProducts()

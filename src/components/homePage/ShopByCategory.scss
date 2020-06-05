@@ -1,6 +1,6 @@
 @import "../../css_config/css_configuration.scss";
 
-.shopByCategory {
+.shop-by-category {
   max-width: 1144px;
   margin: auto;
   margin-bottom: 80px;
@@ -25,7 +25,7 @@
     &:visited {
       color: $PrimaryColor;
     }
-    &:hover .shopByCategory__card-image {
+    &:hover .shop-by-category__card-image {
       transform: scale(1.1);
     }
   }
@@ -55,7 +55,7 @@
 }
 
 @media screen and (max-width: 1100px) {
-  .shopByCategory {
+  .shop-by-category {
     max-width: 640px;
     &__card {
       width: 200px;
@@ -70,7 +70,7 @@
 }
 
 @media screen and (max-width: 620px) {
-  .shopByCategory {
+  .shop-by-category {
     margin-bottom: 15px;
     max-width: 300px;
     display: flex;

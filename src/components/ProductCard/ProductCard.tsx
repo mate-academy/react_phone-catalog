@@ -8,7 +8,7 @@ import ItemOptions from '../../helpers/ItemOptions';
 import FILTER from '../../helpers/FILTERS';
 
 type Props = {
-  phone: Phone;
+  phone: Item;
 };
 
 const ProductCard: React.FC<Props> = ({ phone }) => {

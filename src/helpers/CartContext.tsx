@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 
 type CartContextType = {
-  itemInCart: Phone[] ;
-  addToCart: (item: Phone) => void;
-  removeFromCart: (item: Phone) => void;
-  isAddedToCart: (item: Phone) => boolean;
+  itemInCart: Item[] ;
+  addToCart: (item: Item) => void;
+  removeFromCart: (item: Item) => void;
+  isAddedToCart: (item: Item) => boolean;
   totalCount: number;
   setTotalCount: (number: number) => void;
   totalCost: number;
@@ -23,19 +23,19 @@ export const CartContext = React.createContext<CartContextType>({
 });
 
 export const CartContextWrapper: React.FC = ({ children }) => {
-  const [itemInCart, setItemInCart] = useState<Phone[]>([]);
+  const [itemInCart, setItemInCart] = useState<Item[]>([]);
   const [totalCount, setTotalCount] = useState(0);
   const [totalCost, setTotalCost] = useState(0);
 
-  const addToCart = (item: Phone) => {
+  const addToCart = (item: Item) => {
     setItemInCart([...itemInCart, item]);
   };
 
-  const removeFromCart = (item: Phone) => {
+  const removeFromCart = (item: Item) => {
     setItemInCart(itemInCart.filter(p => p.id !== item.id));
   };
 
-  const isAddedToCart = (item: Phone) => {
+  const isAddedToCart = (item: Item) => {
     return itemInCart.some(cartItem => cartItem.id === item.id);
   };
 

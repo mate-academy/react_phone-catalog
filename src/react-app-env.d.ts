@@ -1,6 +1,6 @@
 // / <reference types="react-scripts" />
 
-interface Phone {
+interface Item {
   age: number;
   id: string;
   type: string;

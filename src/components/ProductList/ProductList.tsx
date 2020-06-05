@@ -3,7 +3,7 @@ import Card from '../ProductCard/ProductCard';
 import './ProductList.scss';
 
 type Props = {
-  preparedPhones: Phone[];
+  preparedPhones: Item[];
 };
 
 const ProductList: React.FC<Props> = ({ preparedPhones }) => {

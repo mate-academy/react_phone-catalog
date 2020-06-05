@@ -2,11 +2,11 @@ import React from 'react';
 import ProductsSlider from '../ProductSlider/ProductsSlider';
 
 type Props = {
-  preparedPhones: Phone[];
+  preparedPhones: Item[];
 };
 
 const YouMayAlsoLike: React.FC<Props> = ({ preparedPhones }) => {
-  const randomArray = (array: Phone[]) => {
+  const randomArray = (array: Item[]) => {
     let j;
     let temp;
 

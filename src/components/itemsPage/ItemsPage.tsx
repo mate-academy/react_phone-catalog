@@ -52,29 +52,29 @@ const ItemsPage: React.FC<Props> = ({ location, match }) => {
   useEffect(() => {
     getProducts()
       .then(data => setItemsFromServer(data
-        .filter((item: Phone) => item.type === typeItem)))
+        .filter((item: Item) => item.type === typeItem)))
       .catch(() => errorDownload());
     setTimeout(() => setIsLoading(false), 500);
   }, [typeItem]);
 
   useEffect(() => {
     const result = itemsFromServer
-      .filter((item: Phone) => item.name
+      .filter((item: Item) => item.name
         .toLowerCase()
         .includes(lowerQuery));
 
     switch (sort) {
       case 'price':
         setPreparedItem(result
-          .sort((a: Phone, b: Phone): number => a.price - b.price));
+          .sort((a: Item, b: Item): number => a.price - b.price));
         break;
       case 'name':
         setPreparedItem(result
-          .sort((a: Phone, b: Phone): number => a.name.localeCompare(b.name)));
+          .sort((a: Item, b: Item): number => a.name.localeCompare(b.name)));
         break;
       default:
         setPreparedItem(result
-          .sort((a: Phone, b: Phone): number => a.age - b.age));
+          .sort((a: Item, b: Item): number => a.age - b.age));
     }
   }, [itemsFromServer, query, sort, perPage, lowerQuery]);
 

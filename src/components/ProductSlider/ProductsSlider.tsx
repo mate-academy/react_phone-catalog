@@ -5,7 +5,7 @@ import ReactResizeDetector from 'react-resize-detector';
 import ProductCard from '../ProductCard/ProductCard';
 
 type Props = {
-  preparedPhones: Phone[];
+  preparedPhones: Item[];
   article: string;
 };
 
@@ -75,7 +75,7 @@ const ProductsSlider: React.FC<Props> = ({ preparedPhones, article }) => {
               transition: `transform ${500}ms`,
             }}
           >
-            {preparedPhones.map((phone: Phone) => (
+            {preparedPhones.map((phone: Item) => (
               <li key={phone.id}>
                 <ProductCard phone={phone} />
               </li>

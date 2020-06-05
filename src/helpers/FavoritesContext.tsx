@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 
 type FavoritesContextType = {
-  favorites: Phone[];
-  addFavorite: (item: Phone) => void;
-  removeFavorite: (item: Phone) => void;
-  isFavorite: (item: Phone) => boolean;
+  favorites: Item[];
+  addFavorite: (item: Item) => void;
+  removeFavorite: (item: Item) => void;
+  isFavorite: (item: Item) => boolean;
 };
 
 export const FavoritesContext = React.createContext<FavoritesContextType>({
@@ -15,17 +15,17 @@ export const FavoritesContext = React.createContext<FavoritesContextType>({
 });
 
 export const FavoritesContextWrapper: React.FC = ({ children }) => {
-  const [favorites, setFavorites] = useState<Phone[]>([]);
+  const [favorites, setFavorites] = useState<Item[]>([]);
 
-  const addFavorite = (item: Phone) => {
+  const addFavorite = (item: Item) => {
     setFavorites([...favorites, item]);
   };
 
-  const removeFavorite = (item: Phone) => {
+  const removeFavorite = (item: Item) => {
     setFavorites(favorites.filter(p => p.id !== item.id));
   };
 
-  const isFavorite = (item: Phone) => {
+  const isFavorite = (item: Item) => {
     return favorites.some(favorite => favorite.id === item.id);
   };
 

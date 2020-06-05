@@ -3,7 +3,7 @@ import './CartProduct.scss';
 import { CartContext } from '../../helpers/CartContext';
 
 type Props = {
-  item: Phone;
+  item: Item;
 };
 
 const CartProduct: React.FC<Props> = ({ item }) => {
