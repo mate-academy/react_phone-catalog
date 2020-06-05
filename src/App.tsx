@@ -4,9 +4,10 @@ import './App.scss';
 import { Header } from './components/Header';
 import { NotFoundPage } from './components/NotFoundPage';
 import { Footer } from './components/Footer';
-import { PhonesPage } from './components/PhonesPage';
+import { TabletsPage } from './components/ProductPage/TabletsPage';
 import { getProducts } from './api/api';
 import { HomePage } from './components/HomePage';
+import { PhonesPage } from './components/ProductPage/PhonesPage';
 
 const App: React.FC = () => {
   const [products, setProducts] = useState<ProductItem[]>([]);
@@ -45,6 +46,13 @@ const App: React.FC = () => {
             path="/phones"
             render={() => (
               <PhonesPage phones={phones} />
+            )}
+          />
+          <Route
+            exact
+            path="/tablets"
+            render={() => (
+              <TabletsPage tablets={tablets} />
             )}
           />
           <Redirect from="/home" to="/" />

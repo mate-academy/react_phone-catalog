@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
 import { ProductCard } from '../ProductCard';
-import './PhonesPage.scss';
+import '../ProductsPage.scss';
 
 type Props = {
   phones: ProductItem[];
@@ -20,6 +20,9 @@ export const PhonesPage: React.FC<Props> = ({ phones }) => {
 
   const quantity = searchParams.get('quantity') || `${phones.length}`;
   const sortType = searchParams.get('sort') || 'age';
+
+  // const page = Number(searchParams.get('page')) || 1;
+  // const perPage = Number(searchParams.get('perPage') || `${phones.length}`);
 
   useEffect(() => {
     setPhonesList(phones);
@@ -46,26 +49,28 @@ export const PhonesPage: React.FC<Props> = ({ phones }) => {
   useEffect(() => {
     switch (sortType) {
       case 'name':
-        setSortedPhones([...phonesList].sort((a, b) => a[sortType].localeCompare(b[sortType])).slice(0, +quantity));
+        setSortedPhones([...phonesList]
+          .sort((a, b) => a[sortType].localeCompare(b[sortType])).slice(0, +quantity));
         break;
       case 'age':
       case 'price':
-        setSortedPhones([...phonesList].sort((a, b) => a[sortType] - b[sortType]).slice(0, +quantity));
+        setSortedPhones([...phonesList]
+          .sort((a, b) => a[sortType] - b[sortType]).slice(0, +quantity));
         break;
       default: setSortedPhones([...phonesList]);
     }
   }, [phonesList, sortType, quantity]);
 
   return (
-    <div className="phones__container phones container">
-      <h1 className="phones__title">Mobile phones</h1>
-      <p className="phones__quantity">
+    <div className="products__container products container">
+      <h1 className="products__title">Mobile phones</h1>
+      <p className="products__quantity">
         {phones.length}
         {/* {sortedPhones.length} */}
         {' '}
-        <span className="phones__quantityText">models</span>
+        <span className="products__quantityText">models</span>
       </p>
-      <div className="phones__filter filter">
+      <div className="products__filter filter">
         <div className="flter__sotrBy">
           <p className="filter__legend">
             Sort by
@@ -97,7 +102,7 @@ export const PhonesPage: React.FC<Props> = ({ phones }) => {
           </select>
         </div>
       </div>
-      <div className="phones__list">
+      <div className="products__list">
         {sortedPhones.map(product => (
           <ProductCard {...product} />
         ))}

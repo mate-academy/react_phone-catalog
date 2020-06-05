@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import CN from 'classnames';
-import { ProductCard } from '../ProductCard';
+import { ProductCard } from '../ProductPage/ProductCard';
 import './styleProductCarousel.scss';
-import '../PhonesPage/PhonesPage.scss';
+import '../ProductPage/ProductsPage.scss';
 
 type Props = {
   title: string;

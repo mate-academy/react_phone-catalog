@@ -1,0 +1,32 @@
+@import "../../styles/mixins.scss";
+
+.products {
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(4,24%);
+    grid-gap: 16px;
+    justify-content: center;
+    margin-top: 50px;
+    margin-bottom: 150px;
+  }
+
+  &__filter {
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+.filter__select {
+  @include font-MontRegular;
+  color: #313237;
+  width: 176px;
+  height: 40px;
+  margin-right: 16px;
+  padding: 10px 12px;
+  border: 1px solid rgb(180, 189, 196);
+  box-sizing: border-box;
+
+  &--quantity {
+    width: 128px;
+  }
+}
