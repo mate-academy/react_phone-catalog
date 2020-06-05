@@ -1,9 +1,14 @@
 
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import './ProductCard.scss';
 import { Product } from '../../interfaces';
-import { MyContext } from '../../App'
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { RootState} from '../../store';
+import { addToCart } from '../../store/cart';
+import { addToFavorites, removeOneFromFavorites } from '../../store/favorites';
+
 
 export const ProductCard = ({
   product,
@@ -19,7 +24,10 @@ export const ProductCard = ({
     ram
   } = product;
 
-  const { cart, setCart, favorites, setFavorites } = useContext(MyContext);
+  const dispatch = useDispatch();
+  const cart = useSelector((state:RootState) => state.cart)
+  const favorites = useSelector((state:RootState) => state.favorites)
+  // const { cart, setCart, favorites, setFavorites } = useContext(MyContext);
   const discountPrice = (price - price * discount / 100)
   const [isFavorite, setIsFavorite] = useState(favorites.filter((item: Product) => item.id === product.id).length > 0);
   const [isInCart, setIsInCart] = useState(cart.filter((item: Product) => item.id === product.id).length > 0);
@@ -35,19 +43,14 @@ export const ProductCard = ({
   }, [cart])
 
   const handleAddToCartClick = () => {
-    setCart(
-      [
-        ...cart,
-        product
-      ]
-    );
+    dispatch(addToCart(product));
   }
 
   const handleAddToFavClick = () => {
     if (!isFavorite) {
-      setFavorites([...favorites, product]);
+      dispatch(addToFavorites(product));
     } else {
-      setFavorites([...favorites].filter(item => item.id !== product.id));
+      dispatch(removeOneFromFavorites(product));
     }
   }
 

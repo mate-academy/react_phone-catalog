@@ -2,16 +2,20 @@
 import './WaitLoading.scss';
 import React, { useEffect, useState } from 'react';
 
+
 export const WaitLoading = () => {
   const [count, setCount] = useState(0)
+  let timeout: ReturnType<typeof setTimeout>;
+
   useEffect(() => {
-    setTimeout(() => {
+    timeout = setTimeout(() => {
       if (count > 7) {
         setCount(0);
         return;
       };
       setCount(count + 1);
-    }, 100)
+    }, 100);
+    return () => { clearTimeout(timeout) }
   }, [count])
 
   let arr: number[] = new Array(7);

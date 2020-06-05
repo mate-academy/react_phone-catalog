@@ -10,7 +10,7 @@ export const PhonesPage = ({ products }: { products: Product[] }) => {
   const visibleProducts = products.filter(product => product.type === 'phone');
 
   return (
-    (JSON.stringify(products) === JSON.stringify({}))
+    (products.length === 0)
       ? <WaitLoading />
       :
       <div className="PhonesPage">

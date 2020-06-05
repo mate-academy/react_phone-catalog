@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { getDetails } from '../../helpers/api';
 import { ProductDetails, Product } from '../../interfaces';
 import { About } from './About/About';
@@ -7,14 +7,13 @@ import { TechSpecs } from './TechSpecs/TechSpecs';
 import { CardsSlider } from '../../components/CardsSlider/CardsSlider';
 import { Gallery } from './Gallery/Gallery';
 import { Card } from './Card/Card';
-import { MyContext } from '../../App';
 import './ProductPage.scss';
 import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 import { GoBack } from '../../components/GoBack/GoBack';
 import {WaitLoading} from '../../components/WaitLoading/WaitLoading';
 
 
-export const ProductPage = ({ product }: { product: Product }) => {
+export const ProductPage = ({ product, products }: { product: Product; products: Product[] }) => {
   const [productDetails, setProductDetails] = useState<ProductDetails>({} as ProductDetails);
 
   useEffect(
@@ -27,23 +26,8 @@ export const ProductPage = ({ product }: { product: Product }) => {
   )
 
   const {
-    // additionalFeatures,
-    // android,
-    // availability,
-    // battery,
-    // camera,
-    // connectivity,
     description,
-    // display,
-    // hardware,
-    // id,
-    // images,
-    // name,
-    // sizeAndWeight,
-    // storage
   } = productDetails;
-
-  const { products } = useContext(MyContext);
 
   return (
     (JSON.stringify(productDetails) === JSON.stringify({}))

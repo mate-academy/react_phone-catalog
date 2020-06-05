@@ -1,12 +1,13 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Catalog } from '../../components/Catalog/Catalog';
 import './FavoritesPage.scss';
-import { MyContext } from '../../App'
 import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
+import { useSelector } from 'react-redux'
+import { RootState } from '../../store';
 
 export const FavoritesPage = () => {
+  const favorites = useSelector((state: RootState) => state.favorites);
 
-  const { favorites } = useContext(MyContext);
   return (
     <div className="FavoritesPage">
       <Breadcrumbs />

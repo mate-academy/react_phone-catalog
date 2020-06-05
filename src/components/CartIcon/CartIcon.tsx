@@ -1,11 +1,12 @@
 
-import React, { useContext } from 'react';
-import { MyContext } from '../../App';
+import React from 'react';
+import { RootState } from '../../store'
 import './CartIcon.scss';
 import { NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 export const CartIcon = () => {
-  const { cart } = useContext(MyContext);
+  const cart = useSelector((state:RootState) => state.cart)
 
   return (
     <label className="CartIcon">

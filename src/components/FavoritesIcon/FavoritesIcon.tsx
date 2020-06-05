@@ -1,10 +1,11 @@
 import './FavoritesIcon.scss'
-import React, { useContext } from 'react';
-import { MyContext } from '../../App';
+import React from 'react';
+import {RootState} from '../../store';
+import { useSelector } from 'react-redux';
 import { NavLink, useLocation } from 'react-router-dom';
 
 export const FavoritesIcon = () => {
-  const { favorites } = useContext(MyContext);
+  const favorites = useSelector((state:RootState) => state.favorites)
   const addresses = ['/cart'];
   const location = useLocation();
   const isOnPage = !addresses.includes(location.pathname)

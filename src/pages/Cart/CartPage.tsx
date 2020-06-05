@@ -1,12 +1,15 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { CartCard } from './CartCard/CartCard';
 import './CartPage.scss';
 import { useHistory } from 'react-router-dom';
-import { MyContext } from '../../App';
 import { GoBack } from '../../components/GoBack/GoBack';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from '../../store';
+import { clearCart } from '../../store/cart';
 
 export const CartPage = () => {
-  const { cart, setCart } = useContext(MyContext);
+  const cart = useSelector(((state: RootState) => state.cart))
+  const dispatch = useDispatch();
   const stringedCart = cart.map(item => JSON.stringify(item));
   const setFromCart = new Set(stringedCart);
   const cards = [...setFromCart]
@@ -26,7 +29,7 @@ export const CartPage = () => {
   }, [cart])
 
   const handleCheckout = () => {
-    setCart([]);
+    dispatch(clearCart());
     history.push('/thanks')
   }
 
@@ -47,10 +50,9 @@ export const CartPage = () => {
                 <CartCard
                   key={product.id}
                   index={index}
-                  cart={cart}
                   product={product}
                   count={count}
-                  setCart={setCart} />
+                />
               )
             }))
           }
