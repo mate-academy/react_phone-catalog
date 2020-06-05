@@ -1,11 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
-// import './hotPrices.scss';
-import { DFS } from '../../Additional/additional_api';
+import { ServerData } from '../../Additional/additional_api';
 import { ProductSlider } from '../../MultipurposeComponents/ProductSlider/ProductSlider';
 
 export const BrandNew = () => {
   const [brandNew, setBrandNew] = useState([]);
-  const dataFromServer = useContext(DFS);
+  const dataFromServer = useContext(ServerData);
 
   useEffect(() => {
     dataFromServer.then(data => data

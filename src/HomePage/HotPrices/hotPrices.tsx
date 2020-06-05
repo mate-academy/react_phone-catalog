@@ -2,11 +2,11 @@ import React, { useContext, useEffect, useState } from 'react';
 import './hotPrices.scss';
 
 import { ProductSlider } from '../../MultipurposeComponents/ProductSlider/ProductSlider';
-import { DFS } from '../../Additional/additional_api';
+import { ServerData } from '../../Additional/additional_api';
 
 export const HotPrices = () => {
   const [phones, setPhones] = useState([]);
-  const dataFromServer = useContext(DFS);
+  const dataFromServer = useContext(ServerData);
 
   useEffect(() => {
     dataFromServer.then(data => data

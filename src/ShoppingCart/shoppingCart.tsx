@@ -1,6 +1,6 @@
 import React from 'react';
 import { BreadCrumb } from '../MultipurposeComponents/BreadCrumb/breadCrumb';
-import { CartGoods } from '../Additional/additional_api';
+import { cartGoods } from '../Additional/additional_api';
 import { CatalogMaker } from '../MultipurposeComponents/CatalogMaker/catalogMaker';
 
 export const ShoppingCart = () => {
@@ -9,14 +9,14 @@ export const ShoppingCart = () => {
       <BreadCrumb page="Shopping cart" />
       <h1 className="Favourites__title">Shopping cart</h1>
       {
-        CartGoods.length !== 1 ? (
-          <p className="Favourites__qty">{`${CartGoods.length} items`}</p>
+        cartGoods.length !== 1 ? (
+          <p className="Favourites__qty">{`${cartGoods.length} items`}</p>
         ) : (
-          <p className="Favourites__qty">{`${CartGoods.length} item`}</p>
+          <p className="Favourites__qty">{`${cartGoods.length} item`}</p>
         )
       }
       <div className="Favourites__list">
-        <CatalogMaker gadgets={CartGoods} />
+        <CatalogMaker gadgets={cartGoods} />
       </div>
     </div>
   );

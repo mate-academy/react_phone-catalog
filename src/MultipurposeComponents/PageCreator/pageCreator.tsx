@@ -1,6 +1,6 @@
 import React, { FC, useState } from 'react';
 import { BreadCrumb } from '../BreadCrumb/breadCrumb';
-import { Phones } from '../../Additional/interfaces';
+import { Phone } from '../../Additional/interfaces';
 import { ItemsSorting } from '../ItemsSorting/itemsSorting';
 import { CatalogMaker } from '../CatalogMaker/catalogMaker';
 import { NavBar } from '../Pagination/navBar';
@@ -9,7 +9,7 @@ import { SearchBar } from '../SearchBar/searchBar';
 
 type Params = {
   pageName: string;
-  gadgets: Phones[];
+  gadgets: Phone[];
 };
 
 
@@ -28,7 +28,7 @@ export const PageCreator: FC<Params> = ({
       .includes(search.toLocaleLowerCase().trim()));
 
 
-  const getSortedItems = (query: string, searchedGadgets: Phones[]) => {
+  const getSortedItems = (query: string, searchedGadgets: Phone[]) => {
     switch (query) {
       case 'age':
         return (searchedGadgets.sort((a: { age: number },

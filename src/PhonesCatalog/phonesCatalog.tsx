@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { DFS } from '../Additional/additional_api';
+import { ServerData } from '../Additional/additional_api';
 import './phonesCatalog.scss';
 import { PageCreator } from '../MultipurposeComponents/PageCreator/pageCreator';
 import { EmptyPage } from '../MultipurposeComponents/EmptyPage/emptyPage';
@@ -7,7 +7,7 @@ import { EmptyPage } from '../MultipurposeComponents/EmptyPage/emptyPage';
 export const PhonesCatalog = () => {
   const [phones, setPhones] = useState([]);
 
-  const dataFromServer = useContext(DFS);
+  const dataFromServer = useContext(ServerData);
 
 
   useEffect(() => {

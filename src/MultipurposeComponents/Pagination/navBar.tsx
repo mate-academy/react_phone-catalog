@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
 import cn from 'classnames';
-import { Phones } from '../../Additional/interfaces';
+import { Phone } from '../../Additional/interfaces';
 
 type Params = {
-  sortedPhones: Phones[];
+  sortedPhones: Phone[];
   activeTab: number;
   viewQty: number;
   setActiveTab: (value: number) => void;

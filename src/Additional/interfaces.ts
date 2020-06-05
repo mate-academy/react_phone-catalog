@@ -1,4 +1,4 @@
-export interface Phones {
+export interface Phone {
   age: number;
   id: string;
   type: string;

@@ -1,13 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react';
 import './Category.scss';
-import { DFS } from '../../Additional/additional_api';
+import { ServerData } from '../../Additional/additional_api';
 
 export const Category = () => {
   const [serverData, setServerData] = useState([]);
   const [mobiles, setMobiles] = useState([]);
   const [tablets, setTablets] = useState([]);
   const [accessories, setAccessories] = useState([]);
-  const dataFromServer = useContext(DFS);
+  const dataFromServer = useContext(ServerData);
 
   useEffect(() => {
     dataFromServer.then(data => setServerData(data));

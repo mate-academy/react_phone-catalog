@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import './navigation.scss';
 
 export const Navigation = () => {
+
   return (
     <nav className="Nav">
       <div className="Nav__left">

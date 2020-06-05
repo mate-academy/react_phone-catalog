@@ -3,12 +3,12 @@ import cn from 'classnames';
 import { BreadCrumb } from '../BreadCrumb/breadCrumb';
 import './itemSpecificationCard.scss';
 import { ProductSlider } from '../ProductSlider/ProductSlider';
-import { GadgetDetails, Phones } from '../../Additional/interfaces';
+import { GadgetDetails, Phone } from '../../Additional/interfaces';
 
 type Params = {
   page: string;
-  gadget: Phones;
-  allGadgets: Phones[];
+  gadget: Phone;
+  allGadgets: Phone[];
   route: string;
 };
 

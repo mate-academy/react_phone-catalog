@@ -1,18 +1,16 @@
 import React, { FC } from 'react';
-import { Phones } from '../../Additional/interfaces';
+import { Phone } from '../../Additional/interfaces';
 import { Card } from '../Card/Card';
 
 type Params = {
-  gadgets: Phones[];
+  gadgets: Phone[];
 };
 
 export const CatalogMaker: FC<Params> = ({ gadgets }) => {
   return (
     <>
-      {gadgets?.map((phone: Phones) => (
-        <React.Fragment key={phone.id}>
-          <Card phone={phone} />
-        </React.Fragment>
+      {gadgets?.map((phone: Phone) => (
+          <Card phone={phone} key={phone.id}/>
       ))}
     </>
   );

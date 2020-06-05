@@ -1,11 +1,11 @@
 import React, { FC, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import cn from 'classnames';
-import { Phones } from '../../Additional/interfaces';
-import { CartGoods, FavGoods } from '../../Additional/additional_api';
+import { Phone } from '../../Additional/interfaces';
+import { cartGoods, favGoods } from '../../Additional/additional_api';
 
 type Params = {
-  phone: Phones;
+  phone: Phone;
 };
 
 export const Card: FC<Params> = ({ phone }) => {
@@ -13,35 +13,35 @@ export const Card: FC<Params> = ({ phone }) => {
   const [addedToCart, addToCart] = useState(false);
 
   useEffect(() => {
-    if (FavGoods.includes(phone)) {
+    if (favGoods.includes(phone)) {
       setFavIcon('img/icons/fav_active.svg');
     } else {
       setFavIcon('img/icons/fav.svg');
     }
 
-    if (CartGoods.includes(phone)) {
+    if (cartGoods.includes(phone)) {
       addToCart(true);
     } else {
       addToCart(false);
     }
   }, [phone]);
 
-  const defineFavStatus = (currentPhone: Phones) => {
-    if (FavGoods.find(el => el === currentPhone) === undefined) {
-      FavGoods.push(currentPhone);
+  const defineFavStatus = (currentPhone: Phone) => {
+    if (favGoods.find(el => el === currentPhone) === undefined) {
+      favGoods.push(currentPhone);
       setFavIcon('img/icons/fav_active.svg');
     } else {
-      FavGoods.splice(FavGoods.findIndex(el => el === currentPhone), 1);
+      favGoods.splice(favGoods.findIndex(el => el === currentPhone), 1);
       setFavIcon('img/icons/fav.svg');
     }
   };
 
-  const defineCartStatus = (currentPhone: Phones) => {
-    if (CartGoods.find(el => el === currentPhone) === undefined) {
-      CartGoods.push(currentPhone);
+  const defineCartStatus = (currentPhone: Phone) => {
+    if (cartGoods.find(el => el === currentPhone) === undefined) {
+      cartGoods.push(currentPhone);
       addToCart(true);
     } else {
-      CartGoods.splice(FavGoods.findIndex(el => el === currentPhone), 1);
+      cartGoods.splice(favGoods.findIndex(el => el === currentPhone), 1);
       addToCart(false);
     }
   };

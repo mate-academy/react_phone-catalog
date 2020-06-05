@@ -1,12 +1,12 @@
 import React, { useState, FC } from 'react';
-import { Phones } from '../../Additional/interfaces';
+import { Phone } from '../../Additional/interfaces';
 import './ProductSlider.scss';
 import { Card } from '../Card/Card';
 
 
 type Params = {
   title: string;
-  phones: Phones[];
+  phones: Phone[];
 };
 
 
@@ -57,7 +57,7 @@ export const ProductSlider: FC<Params> = ({ phones, title }) => {
 
       <div className="discount">
         <ul className="discount__list" style={{ right: position }}>
-          {phones.map((phone: Phones) => (
+          {phones.map((phone: Phone) => (
             <li key={phone.id}>
               <Card phone={phone} />
             </li>
