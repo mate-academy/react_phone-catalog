@@ -5,6 +5,8 @@ import thunk from 'redux-thunk';
 import productsReducer, { setProducts } from './products';
 import { getAllProducts } from '../helpers/api';
 
+export const getProducts = (state: RootState) => state.products;
+
 const rootReducer = combineReducers({
   products: productsReducer,
 });

@@ -1,17 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { Slider } from '../components/Slider/Slider';
 import { PhonesSlider } from '../components/PhonesSlider/PhonesSlider';
 import { Categories } from '../components/Categories/Categiries';
-import { getAllProducts } from '../helpers/api';
+import { getProducts } from '../store/index';
 
 export const HomePage = () => {
-  const [products, setProducts] = useState<Products[]>([]);
+  const products = useSelector(getProducts);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    getAllProducts().then(data => {
-      setProducts(data);
-    });
   }, []);
 
   const productsHotPrices = products.filter(product => product.discount > 0);
