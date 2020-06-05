@@ -21,6 +21,7 @@ export const ItemsOnPageSelect = () => {
 
   const handleOptionClick = (item: string) => {
     searchParams.set("per_page", item);
+    searchParams.set("page", "1");
     history.push({
       search: searchParams.toString()
     });

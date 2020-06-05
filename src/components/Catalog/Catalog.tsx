@@ -1,7 +1,7 @@
 import './Catalog.scss';
 import React, { useState, useEffect } from 'react';
 import { Product } from '../../interfaces';
-import { useLocation, useHistory } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { CardsContainer } from './CardsContainer/CardsContainer';
 import { Pagination } from './Pagination/Pagination';
 import { SortBy } from '../SortBy/SortBy';
@@ -13,7 +13,6 @@ export const Catalog = ({
   const [filteredProducts, setFilteredProducts] = useState(products);
   const [sortedProducts, setSortedProducts] = useState(filteredProducts);
   const [productsOnPage, setProductsOnPage] = useState(sortedProducts);
-  const history = useHistory();
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const filter = (searchParams.get("filter") || "").toLowerCase();
@@ -51,14 +50,6 @@ export const Catalog = ({
     setFilteredProducts(products
       .filter(product => product.name.toLowerCase().includes(filter)))
   }, [products, filter])
-
-  useEffect(() => {
-    searchParams.set("page", "1");
-    history.push({
-      search: searchParams.toString()
-    });
-  }, [])
-
 
   useEffect(() => {
     if (!perPage) {
