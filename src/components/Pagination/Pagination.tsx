@@ -6,8 +6,6 @@ type PaginationProps = {
 
 const Pagination: React.FC<PaginationProps> = ({ pageNumbers }) => {
 
-  console.log([...Array(pageNumbers)].map((_, i) => i + 1));
-
   return (
     <section className="pagination">
       <button
@@ -19,19 +17,19 @@ const Pagination: React.FC<PaginationProps> = ({ pageNumbers }) => {
       </button>
       <ul className="pagination__list">
 
-            {[...Array(pageNumbers)].map((_, i: number) => (
-              <li
-                key={i}
-                className="pagination__item"
-              >
-                <button
-                  type="button"
-                  className="pagination__button"
-                >
-                  {i + 1}
-                </button>
-              </li>
-            ))}
+        {[...Array(pageNumbers)].map((_, i: number) => (
+          <li
+            key={i}
+            className="pagination__item"
+          >
+            <button
+              type="button"
+              className="pagination__button"
+            >
+              {i + 1}
+            </button>
+          </li>
+        ))}
 
 
       </ul>
