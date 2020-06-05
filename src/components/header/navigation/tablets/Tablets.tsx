@@ -5,7 +5,7 @@ const Tablets = () => {
     <>
       <h1>Tablets</h1>
     </>
-  )
+  );
+};
 
-}
 export default Tablets;

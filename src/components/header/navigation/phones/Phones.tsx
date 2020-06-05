@@ -5,7 +5,7 @@ const Phones = () => {
     <>
       <h1>Phones</h1>
     </>
-  )
+  );
+};
 
-}
 export default Phones;
