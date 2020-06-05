@@ -29,12 +29,12 @@ export const Card = (
 
   useEffect(() => {
     setIsFavorite(favorites.filter((item: Product) => item.id === product.id).length > 0)
-  }, [favorites])
+  }, [favorites, product.id])
 
   useEffect(() => {
     setIsInCart(cart.filter((item: Product) => item.id === product.id).length > 0);
     setInCartCount(cart.filter((item: Product) => item.id === product.id).length)
-  }, [cart])
+  }, [cart, product.id])
 
   const handleAddToCartClick = () => {
     dispatch(addToCart(product))

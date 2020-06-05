@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import './Pagination.scss';
 
@@ -31,13 +31,6 @@ export const Pagination = ({ pagesCount }: { pagesCount: number }) => {
       search: searchParams.toString()
     });
   }
-
-  useEffect(() => {
-    searchParams.set("page", page.toString());
-    history.push({
-      search: searchParams.toString()
-    });
-  }, [page])
 
   return (
     buttons.length !== 1

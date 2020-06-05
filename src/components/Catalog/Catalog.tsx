@@ -2,7 +2,7 @@ import './Catalog.scss';
 import React, { useState, useEffect } from 'react';
 import { Product } from '../../interfaces';
 import { useLocation, useHistory } from 'react-router-dom';
-import { MainFrame } from './MainFrame/MainFrame';
+import { CardsContainer } from './CardsContainer/CardsContainer';
 import { Pagination } from './Pagination/Pagination';
 import { SortBy } from '../SortBy/SortBy';
 import { ItemsOnPageSelect } from './ItemsOnPageSelect/ItemsOnPageSelect';
@@ -20,15 +20,6 @@ export const Catalog = ({
   const sortType = (searchParams.get("sort_type") || "age").toLowerCase();
   const page = parseInt(searchParams.get("page") || "1");
   const perPage = parseInt(searchParams.get("per_page") || "8");
-
-  useEffect(() => {
-    searchParams.set("page", page.toString());
-    searchParams.set("per_page", perPage.toString());
-    searchParams.set("sort_type", sortType);
-    history.push({
-      search: searchParams.toString()
-    });
-  }, [])
 
   useEffect(() => {
     switch (sortType) {
@@ -66,7 +57,7 @@ export const Catalog = ({
     history.push({
       search: searchParams.toString()
     });
-  }, [perPage, sortType])
+  }, [])
 
 
   useEffect(() => {
@@ -89,7 +80,7 @@ export const Catalog = ({
         <ItemsOnPageSelect />
       </div>
       <div>
-        <MainFrame
+        <CardsContainer
           products={productsOnPage}
         />
       </div>

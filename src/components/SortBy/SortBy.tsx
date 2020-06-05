@@ -34,22 +34,23 @@ export const SortBy = () => {
     });
   };
 
-  const handleClick = (event: Event) => {
-    if (event.target === document.querySelector('.SortBy__pseudo-select')) {
-      setIsOpen(!isOpen);
-    }
-    if (event.target !== document.querySelector('.SortBy__pseudo-select')
-      && event.target !== document.querySelector('.SortBy__option')) {
-      setIsOpen(false);
-    }
-  }
+  
 
   useEffect(() => {
+    const handleClick = (event: Event) => {
+      if (event.target === document.querySelector('.SortBy__pseudo-select')) {
+        setIsOpen(!isOpen);
+      }
+      if (event.target !== document.querySelector('.SortBy__pseudo-select')
+        && event.target !== document.querySelector('.SortBy__option')) {
+        setIsOpen(false);
+      }
+    }
     document.addEventListener('click', handleClick)
     return () => {
       document.removeEventListener('click', handleClick)
     }
-  }, [handleClick])
+  })
 
   return (
     <div className="SortBy">

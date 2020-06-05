@@ -7,24 +7,25 @@ export const Gallery = ({ images }: { images: string[] }) => {
   const [activeImgNum, setActiveImgNum] = useState(0);
 
   useEffect(() => {
+    const NextImage = () => {
+      if (activeImgNum === images.length - 1) {
+        setActiveImgNum(0);
+      } else {
+        setActiveImgNum(activeImgNum + 1);
+      }
+    }
     let slideShow = setTimeout(NextImage, 5000);
     return () => clearTimeout(slideShow);
-  }, [activeImgNum])
-
-  const NextImage = () => {
-    if (activeImgNum === images.length - 1) {
-      setActiveImgNum(0);
-    } else {
-      setActiveImgNum(activeImgNum + 1);
-    }
-  }
+  }, [activeImgNum, images.length])
 
   return (
     <div className="Gallery">
       <div className="Gallery__wrapper">
         <ul className="Gallery__stripe">
           {images.map((image, index) => (
-            <li className="Gallery__item">
+            <li
+            key={image}
+            className="Gallery__item">
               <button
                 className={index === activeImgNum
                   ? "Gallery__icon Gallery__icon--active"
@@ -40,7 +41,7 @@ export const Gallery = ({ images }: { images: string[] }) => {
       <img
         className="Gallery__main"
         src={images[activeImgNum]}
-        alt="Phone Photo" />
+        alt={images[activeImgNum]} />
     </div>
   )
 }

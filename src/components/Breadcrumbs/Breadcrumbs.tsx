@@ -1,6 +1,6 @@
 
 import './Breadcrumbs.scss';
-import React from 'react';
+import React, { Fragment } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 
 export const Breadcrumbs = () => {
@@ -24,7 +24,7 @@ export const Breadcrumbs = () => {
         }
 
         return (
-          <>
+          <Fragment key={level}>
             <Link
               to={address}
               className={className}
@@ -33,7 +33,7 @@ export const Breadcrumbs = () => {
               <span className="Breadcrumbs__arrow"></span>
               : ""
             }
-          </>
+          </Fragment>
         )
       })}
     </div>

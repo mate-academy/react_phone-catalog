@@ -22,7 +22,7 @@ export const ProductPage = ({ product, products }: { product: Product; products:
         .then((productDetails) => {
           setProductDetails(productDetails)
         });
-    }, []
+    }, [product.id]
   )
 
   const {

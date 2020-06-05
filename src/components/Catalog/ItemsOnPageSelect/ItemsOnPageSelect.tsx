@@ -9,7 +9,15 @@ export const ItemsOnPageSelect = () => {
   const searchParams = new URLSearchParams(location.search);
   const history = useHistory();
   const [isOpen, setIsOpen] = useState(false);
-  const [pseudoSelectValue, setPseudoSelectValue] = useState<string>('8');
+  const [pseudoSelectValue, setPseudoSelectValue] = useState<string>();
+
+  useEffect(() => {
+    if (!searchParams.get('per_page')) {
+      setPseudoSelectValue('8')
+    } else {
+      setPseudoSelectValue(searchParams.get('per_page') || undefined);
+    }
+  }, [searchParams])
 
   const handleOptionClick = (item: string) => {
     searchParams.set("per_page", item);
@@ -20,25 +28,24 @@ export const ItemsOnPageSelect = () => {
     setPseudoSelectValue(item)
   }
 
-  const handleClick = (event: Event) => {
-    if (event.target === document
-      .querySelector('.ItemsOnPageSelect__pseudo-select')) {
-      setIsOpen(!isOpen);
-    }
-    if (event.target !== document
-      .querySelector('.ItemsOnPageSelect__pseudo-select')
-      && event.target !== document
-        .querySelector('.ItemsOnPageSelect__option')) {
-      setIsOpen(false);
-    }
-  }
-
   useEffect(() => {
+    const handleClick = (event: Event) => {
+      if (event.target === document
+        .querySelector('.ItemsOnPageSelect__pseudo-select')) {
+        setIsOpen(!isOpen);
+      }
+      if (event.target !== document
+        .querySelector('.ItemsOnPageSelect__pseudo-select')
+        && event.target !== document
+          .querySelector('.ItemsOnPageSelect__option')) {
+        setIsOpen(false);
+      }
+    }
     document.addEventListener('click', handleClick)
     return () => {
       document.removeEventListener('click', handleClick)
     }
-  }, [handleClick])
+  })
 
   return (
     <div className="ItemsOnPageSelect">

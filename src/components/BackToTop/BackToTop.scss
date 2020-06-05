@@ -5,12 +5,12 @@
   display: flex;
   align-items: center;
   &__button {
+    cursor: pointer;
     width: 32px;
     height: 32px;
     background-image: url("../../imgs/Icons/ArrowUp.svg");
     background-position: center;
     background-repeat: no-repeat;
-    // background-size: cover;
     background-color: white;
     border: 1px solid #b4bdc4;
     box-sizing: border-box;

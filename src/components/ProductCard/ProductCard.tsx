@@ -29,18 +29,21 @@ export const ProductCard = ({
   const favorites = useSelector((state:RootState) => state.favorites)
   // const { cart, setCart, favorites, setFavorites } = useContext(MyContext);
   const discountPrice = (price - price * discount / 100)
-  const [isFavorite, setIsFavorite] = useState(favorites.filter((item: Product) => item.id === product.id).length > 0);
-  const [isInCart, setIsInCart] = useState(cart.filter((item: Product) => item.id === product.id).length > 0);
-  const [inCartCount, setInCartCount] = useState(cart.filter((item: Product) => item.id === product.id).length);
+  const [isFavorite, setIsFavorite] = useState(favorites
+    .filter((item: Product) => item.id === product.id).length > 0);
+  const [isInCart, setIsInCart] = useState(cart
+    .filter((item: Product) => item.id === product.id).length > 0);
+  const [inCartCount, setInCartCount] = useState(cart
+    .filter((item: Product) => item.id === product.id).length);
 
   useEffect(() => {
     setIsFavorite(favorites.filter((item: Product) => item.id === product.id).length > 0)
-  }, [favorites])
+  }, [favorites, product.id])
 
   useEffect(() => {
     setIsInCart(cart.filter((item: Product) => item.id === product.id).length > 0);
     setInCartCount(cart.filter((item: Product) => item.id === product.id).length)
-  }, [cart])
+  }, [cart, product.id])
 
   const handleAddToCartClick = () => {
     dispatch(addToCart(product));

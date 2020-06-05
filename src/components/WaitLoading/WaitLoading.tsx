@@ -5,10 +5,9 @@ import React, { useEffect, useState } from 'react';
 
 export const WaitLoading = () => {
   const [count, setCount] = useState(0)
-  let timeout: ReturnType<typeof setTimeout>;
-
+ 
   useEffect(() => {
-    timeout = setTimeout(() => {
+    let timeout = setTimeout(() => {
       if (count > 7) {
         setCount(0);
         return;
