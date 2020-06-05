@@ -36,7 +36,7 @@ const BigSlider = () => {
     } else if (width >= 600) {
       setImageWidth(600);
     } else if (width < 600) {
-      setImageWidth(260);
+      setImageWidth(300);
     }
   };
 
