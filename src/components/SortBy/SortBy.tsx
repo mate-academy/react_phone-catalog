@@ -23,7 +23,7 @@ export const SortBy = () => {
       setPseudoSelectValue(sortTypeOptions
         .filter(item => item.value === searchParams.get('sort_type'))[0].text)
     }
-  }, [searchParams])
+  }, [searchParams, sortTypeOptions])
 
   const handleOptionClick = (value: string, text: string) => {
     setPseudoSelectValue(text)

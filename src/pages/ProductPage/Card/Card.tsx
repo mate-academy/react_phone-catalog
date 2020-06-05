@@ -1,8 +1,12 @@
 
-import React, { useContext, useState, useEffect } from 'react';
+import React, {  useState, useEffect } from 'react';
 import { Product, ProductDetails } from '../../../interfaces';
-import { MyContext } from '../../../App';
+
 import './Card.scss';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from '../../../store';
+import { addToCart } from '../../../store/cart';
+import { addToFavorites, removeOneFromFavorites } from '../../../store/favorites';
 
 export const Card = (
   { product,
@@ -11,12 +15,11 @@ export const Card = (
     product: Product;
     productDetails: ProductDetails
   }) => {
-  const {
-    cart,
-    setCart,
-    favorites,
-    setFavorites
-  } = useContext(MyContext);
+
+  const cart = useSelector((state: RootState) => state.cart);
+  const favorites = useSelector((state: RootState) => state.favorites);
+  const dispatch = useDispatch();
+
   const [isFavorite, setIsFavorite] = useState(favorites
     .filter((item: Product) => item.id === product.id).length > 0);
   const [isInCart, setIsInCart] = useState(cart
@@ -34,19 +37,14 @@ export const Card = (
   }, [cart])
 
   const handleAddToCartClick = () => {
-    setCart(
-      [
-        ...cart,
-        product
-      ]
-    );
+    dispatch(addToCart(product))
   }
 
   const handleAddToFavClick = () => {
     if (!isFavorite) {
-      setFavorites([...favorites, product]);
+      dispatch(addToFavorites(product));
     } else {
-      setFavorites([...favorites].filter(item => item.id !== product.id));
+      dispatch(removeOneFromFavorites(product));
     }
   }
 

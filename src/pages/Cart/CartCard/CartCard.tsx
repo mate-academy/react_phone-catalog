@@ -3,36 +3,34 @@ import React from 'react';
 import { Product } from '../../../interfaces';
 import './CartCard.scss';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+
+import { removeAllFromCart, addToCart, removeOneFromCart } from '../../../store/cart';
 
 export const CartCard = ({
   index,
-  cart,
-  setCart,
   product,
   count
 }: {
   index: number;
-  cart: Product[];
   product: Product;
   count: number;
-  setCart: (cart: Product[]) => void
 }) => {
   const { imageUrl, name } = product;
+  const dispatch = useDispatch();
 
   const handleDeleteButtonClick = () => {
-    setCart(cart.filter(item => item.id !== product.id))
+    dispatch(removeAllFromCart(product))
   }
 
   const price = product.price - product.price * product.discount / 100;
   const total = price * count;
 
   const handleCountIncrease = () => {
-    setCart([...cart, product]);
+    dispatch(addToCart(product));
   }
   const handleCountDecrease = () => {
-    let temp = [...cart]
-    temp.splice(cart.findIndex(item => product.id === item.id), 1)
-    setCart(temp);
+    dispatch(removeOneFromCart(product));
   }
 
   let base;

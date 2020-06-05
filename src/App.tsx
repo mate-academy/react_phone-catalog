@@ -15,12 +15,16 @@ import { CartPage } from './pages/Cart/CartPage';
 import { ThanksPage } from './pages/ThanksPage/ThanksPage';
 import { Footer } from './components/Footer/Footer';
 import { ErrorPage } from './pages/ErrorPage/ErrorPage';
+import { useSelector } from 'react-redux';
+import { RootState } from './store';
 
 export const MyContext = React.createContext<MyContextType>({} as MyContextType)
 
 const App = () => {
   const [productsFromServer, setProductsFromServer] = useState([] as Product[])
   const [isError, setIsError] = useState(false);
+  const cart = useSelector((state:RootState) => state.cart)
+  const favorites = useSelector((state:RootState) => state.favorites)
   useEffect(
     () => {
       getProducts().then(products => {
@@ -35,11 +39,7 @@ const App = () => {
   )
 
   const products = productsFromServer;
-  const [cart, setCart] = useState<Product[]>(
-    JSON.parse(localStorage.getItem('PhonesCatalog_Cart') || '[]'))
 
-  const [favorites, setFavorites] = useState<Product[]>(
-    JSON.parse(localStorage.getItem('PhonesCatalog_Favorites') || '[]'))
 
   useEffect(() => {
     localStorage.setItem('PhonesCatalog_Cart', JSON.stringify(cart))
@@ -50,13 +50,13 @@ const App = () => {
   }, [favorites])
 
   return (
-    <MyContext.Provider value={{
-      products: products,
-      cart: cart,
-      setCart: setCart,
-      favorites: favorites,
-      setFavorites: setFavorites,
-    }}>
+    // <MyContext.Provider value={{
+    //   products: products,
+    //   cart: cart,
+    //   setCart: setCart,
+    //   favorites: favorites,
+    //   setFavorites: setFavorites,
+    // }}>
       <div className="App">
         <Header />
         {isError
@@ -79,7 +79,7 @@ const App = () => {
                   <Route
                     key={product.id}
                     path={`${base + product.id}`} >
-                    <ProductPage product={product} />
+                    <ProductPage product={product} products={productsFromServer} />
                   </Route>
                 )
               })}
@@ -123,7 +123,7 @@ const App = () => {
           </main >)}
         <Footer />
       </div>
-    </MyContext.Provider>
+    // </MyContext.Provider>
   );
 }
 
