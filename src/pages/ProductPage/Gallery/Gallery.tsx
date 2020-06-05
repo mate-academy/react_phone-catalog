@@ -7,14 +7,14 @@ export const Gallery = ({ images }: { images: string[] }) => {
   const [activeImgNum, setActiveImgNum] = useState(0);
 
   useEffect(() => {
-    const NextImage = () => {
+    const nextImage = () => {
       if (activeImgNum === images.length - 1) {
         setActiveImgNum(0);
       } else {
         setActiveImgNum(activeImgNum + 1);
       }
     }
-    let slideShow = setTimeout(NextImage, 5000);
+    let slideShow = setTimeout(nextImage, 5000);
     return () => clearTimeout(slideShow);
   }, [activeImgNum, images.length])
 
