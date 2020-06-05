@@ -11,7 +11,7 @@ const Navigation = () => {
       <nav className="Nav__wrapper">
         <ul className="Nav__list">
           <li>
-            <NavLink to="/"
+            <NavLink to="/home"
               exact
               className="Logo"
             >
@@ -23,7 +23,7 @@ const Navigation = () => {
                 to={`${listItem}`}
                 exact
                 className="Nav__item link"
-activeClassName = "Nav__item--active"
+                activeClassName="Nav__item--active"
                 key={listItem}
               >
                 {listItem}
