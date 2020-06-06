@@ -1,5 +1,5 @@
 .footer {
-  box-shadow: 0 -1px 0 #E2E6E9;
+  box-shadow: 0 -1px 0 rgb(226, 230, 233);
   &__wrap {
     padding: 20px 0;
     width: 80%;
@@ -46,6 +46,14 @@
     box-sizing: border-box;
     background: #ffff;
     box-shadow: 0 -1px 0 rgb(226, 230, 233);
+
+    &--left {
+      margin-right: 12px;
+    }
+
+    &--right {
+      margin-left: 12px;
+    }
   }
 
   &__buttonImg {

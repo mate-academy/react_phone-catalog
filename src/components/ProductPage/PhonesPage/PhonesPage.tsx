@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
 import { ProductCard } from '../ProductCard';
 import '../ProductsPage.scss';
+import { Pagination } from '../Pagitation';
 
 type Props = {
   phones: ProductItem[];
@@ -15,14 +16,14 @@ export const PhonesPage: React.FC<Props> = ({ phones }) => {
   const location = useLocation();
   const history = useHistory();
 
-
   const searchParams = new URLSearchParams(location.search);
 
-  const quantity = searchParams.get('quantity') || `${phones.length}`;
+  const quantity = Number(searchParams.get('quantity') || `${phones.length}`);
   const sortType = searchParams.get('sort') || 'age';
 
-  // const page = Number(searchParams.get('page')) || 1;
-  // const perPage = Number(searchParams.get('perPage') || `${phones.length}`);
+  const page = Number(searchParams.get('page')) || 1;
+  const start = (page - 1) * quantity;
+  const pageCount = Math.ceil(phones.length / quantity) || 1;
 
   useEffect(() => {
     setPhonesList(phones);
@@ -50,23 +51,24 @@ export const PhonesPage: React.FC<Props> = ({ phones }) => {
     switch (sortType) {
       case 'name':
         setSortedPhones([...phonesList]
-          .sort((a, b) => a[sortType].localeCompare(b[sortType])).slice(0, +quantity));
+          .sort((a, b) => a[sortType].localeCompare(b[sortType])));
         break;
       case 'age':
       case 'price':
         setSortedPhones([...phonesList]
-          .sort((a, b) => a[sortType] - b[sortType]).slice(0, +quantity));
+          .sort((a, b) => a[sortType] - b[sortType]));
         break;
       default: setSortedPhones([...phonesList]);
     }
   }, [phonesList, sortType, quantity]);
+
+  const visibleItemsOnPage = sortedPhones.slice(start, start + quantity);
 
   return (
     <div className="products__container products container">
       <h1 className="products__title">Mobile phones</h1>
       <p className="products__quantity">
         {phones.length}
-        {/* {sortedPhones.length} */}
         {' '}
         <span className="products__quantityText">models</span>
       </p>
@@ -79,7 +81,6 @@ export const PhonesPage: React.FC<Props> = ({ phones }) => {
             className="filter__select"
             onChange={handleSortProduct}
           >
-            {/* <option value="">choose</option> */}
             <option value="age">Newest</option>
             <option value="name">Alphabetically</option>
             <option value="price">Cheapest</option>
@@ -103,10 +104,11 @@ export const PhonesPage: React.FC<Props> = ({ phones }) => {
         </div>
       </div>
       <div className="products__list">
-        {sortedPhones.map(product => (
+        {visibleItemsOnPage.map(product => (
           <ProductCard {...product} />
         ))}
       </div>
+      <Pagination pageCount={pageCount} />
     </div>
   );
 };

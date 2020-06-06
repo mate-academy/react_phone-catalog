@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
 import { ProductCard } from '../ProductCard';
 import '../ProductsPage.scss';
+import { Pagination } from '../Pagitation';
 
 type Props = {
   tablets: ProductItem[];
@@ -18,8 +19,12 @@ export const TabletsPage: React.FC<Props> = ({ tablets }) => {
 
   const searchParams = new URLSearchParams(location.search);
 
-  const quantity = searchParams.get('quantity') || `${tablets.length}`;
+  const quantity = Number(searchParams.get('quantity') || `${tablets.length}`);
   const sortType = searchParams.get('sort') || 'age';
+
+  const page = Number(searchParams.get('page')) || 1;
+  const start = (page - 1) * quantity;
+  const pageCount = Math.ceil(tablets.length / quantity) || 1;
 
   useEffect(() => {
     setTabletsList(tablets);
@@ -47,23 +52,24 @@ export const TabletsPage: React.FC<Props> = ({ tablets }) => {
     switch (sortType) {
       case 'name':
         setSortedTablets([...tabletsList]
-          .sort((a, b) => a[sortType].localeCompare(b[sortType])).slice(0, +quantity));
+          .sort((a, b) => a[sortType].localeCompare(b[sortType])));
         break;
       case 'age':
       case 'price':
         setSortedTablets([...tabletsList]
-          .sort((a, b) => a[sortType] - b[sortType]).slice(0, +quantity));
+          .sort((a, b) => a[sortType] - b[sortType]));
         break;
       default: setSortedTablets([...tabletsList]);
     }
   }, [tabletsList, sortType, quantity]);
+
+  const visibleItemsOnPage = sortedTablets.slice(start, start + quantity);
 
   return (
     <div className="products__container products container">
       <h1 className="products__title">Tablets</h1>
       <p className="products__quantity">
         {tablets.length}
-        {/* {sortedTablets.length} */}
         {' '}
         <span className="products__quantityText">models</span>
       </p>
@@ -76,7 +82,6 @@ export const TabletsPage: React.FC<Props> = ({ tablets }) => {
             className="filter__select"
             onChange={handleSortProduct}
           >
-            {/* <option value="">choose</option> */}
             <option value="age">Newest</option>
             <option value="name">Alphabetically</option>
             <option value="price">Cheapest</option>
@@ -100,10 +105,11 @@ export const TabletsPage: React.FC<Props> = ({ tablets }) => {
         </div>
       </div>
       <div className="products__list">
-        {sortedTablets.map(product => (
+        {visibleItemsOnPage.map(product => (
           <ProductCard {...product} />
         ))}
       </div>
+      <Pagination pageCount={pageCount} />
     </div>
   );
 };
