@@ -9,3 +9,9 @@ $container-width: 1136px;
 $header-height: 64px;
 $product-card-width: 272px;
 $product-card-height: 507px;
+
+$laptops-breakpoint: $container-width;
+$tablets-landscape-breakpoint: 999px;
+$tablets-portrait-breakpoint: 768px;
+$mobile-landscape-breakpoint: 528px;
+$mobile-portrait-breakpoint: 320px;

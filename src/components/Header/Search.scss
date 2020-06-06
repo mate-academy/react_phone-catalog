@@ -6,7 +6,7 @@
 
   &__input {
     width: 327px;
-    padding: 23px;
+    padding: 23px 46px 23px 23px;
     height: 63px;
     font-size: 14px;
     line-height: 18px;
@@ -15,6 +15,23 @@
     border: none;
     outline: none;
     color: $primary-color;
+
+    @media screen and (max-width: $laptops-breakpoint) {
+      width: 250px;
+    }
+
+    @media screen and (max-width: $tablets-landscape-breakpoint) {
+      width: 200px;
+      font-size: 11px;
+      line-height: 14px;
+    }
+
+    @media screen and (max-width: 414px) {
+      width: 150px;
+      padding: 15px 25px 15px 10px;
+      font-size: 11px;
+      line-height: 14px;
+    }
 
     &::placeholder {
       color: $placeholder-color;
@@ -29,8 +46,8 @@
     position: absolute;
     width: 15px;
     height: 15px;
-    right: 27px;
-    top: 50%;
+    right: 20px;
+    top: 47%;
     border: 0;
     outline: 0;
     background-color: #fff;
@@ -39,9 +56,17 @@
     background-repeat: no-repeat;
     background-position: center;
 
+    @media screen and (max-width: 414px) {
+      right: 10px;
+    }
+
     &--clear {
       cursor: pointer;
       background-image: url("../../assets/img/clear.svg");
+    }
+
+    &--focused {
+      background-color: $hover-bg-color;
     }
   }
 }

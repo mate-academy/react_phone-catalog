@@ -14,5 +14,27 @@
   &__logo {
     margin-left: 24px;
     margin-right: 64px;
+
+    @media screen and (max-width: $tablets-landscape-breakpoint) {
+      margin-right: 32px;
+      margin-left: 0;
+    }
+
+    @media screen and (max-width: $tablets-portrait-breakpoint) {
+      margin-right: 0;
+      margin-left: 0;
+    }
+  }
+
+  &__sandwich {
+    margin-left: 32px;
+
+    @media screen and (max-width: 414px) {
+      margin-left: 20px;
+    }
+
+    @media screen and (max-width: 360px) {
+      margin-left: 10px;
+    }
   }
 }

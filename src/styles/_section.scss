@@ -49,3 +49,9 @@
     color: $secondary-color;
   }
 }
+
+body {
+  &.nav-open {
+    overflow: hidden;
+  }
+}

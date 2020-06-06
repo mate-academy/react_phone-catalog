@@ -142,16 +142,27 @@ type HeadingProps = {
   title: string;
 };
 
-type SearchProps = {
-  inputValue: string;
-  searchProducts: React.ChangeEventHandler;
-  searchReset: () => void;
-};
-
 interface Category {
   title: string;
   link: string;
 }
+
+type NavProps = {
+  isNavOpen: boolean;
+};
+
+type CartProps = {
+  isNavOpen: boolean;
+};
+
+type FavoritesProps = {
+  isNavOpen: boolean;
+};
+
+type SandwichProps = {
+  isNavOpen: boolean;
+  handleNavOpen: () => void;
+};
 
 interface NavItem {
   title: string;

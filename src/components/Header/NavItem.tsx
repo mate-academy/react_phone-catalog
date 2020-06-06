@@ -1,7 +1,9 @@
 import React, { useEffect, useRef } from 'react';
 import { NavLink } from 'react-router-dom';
 
-export const NavItem = ({ title, link, exact, onMount }: NavItemProps) => {
+export const NavItem = (props: NavItemProps) => {
+  const { title, link, exact, onMount } = props;
+
   const ref = useRef(null);
 
   useEffect(() => {
