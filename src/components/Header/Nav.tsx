@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
+import cn from 'classnames';
 import { NavItem } from './NavItem';
 import { useRouter } from '../_hooks/useRouter';
 
@@ -9,9 +10,9 @@ const navList: NavList = [
   { title: 'Accessories', link: '/accessories', exact: false },
 ];
 
-export const Nav = () => {
+export const Nav = ({ isNavOpen }: NavProps) => {
   const { pathname } = useRouter();
-  const [coords, setCoords] = useState(null);
+  const [coords, setCoords] = useState<any>(null);
   const hash: Record<string, any> = useRef({});
 
   const onMount = useCallback((link: string, ref) => {
@@ -31,7 +32,10 @@ export const Nav = () => {
   }, [pathname, hash]);
 
   return (
-    <nav className="nav">
+    <nav className={cn({
+      nav: true,
+      'nav--opened': isNavOpen,
+    })}>
       <ul className="nav__list">
         {navList.map(({ title, link, exact }) => (
           <NavItem
@@ -46,8 +50,8 @@ export const Nav = () => {
           <span
             className="nav__active-element"
             style={{
-              width: `${(coords as any).width}px`,
-              left: `${(coords as any).x}px`,
+              width: `${coords.width}px`,
+              left: `${coords.x}px`,
             }}
           />
         )}

@@ -1,24 +1,21 @@
-import React, { useCallback, useMemo, useRef } from 'react';
+import React, { useMemo } from 'react';
 import cn from 'classnames';
 import { LOCATIONS } from '../../common/constants';
 import { useRouter } from '../_hooks/useRouter';
+import { useSearch } from '../_hooks/useSearch';
 
-export const Search = ({
-  inputValue,
-  searchProducts,
-  searchReset,
-}: SearchProps) => {
-  const inputEl = useRef<HTMLInputElement>(null);
-
+export const Search = () => {
   const { location } = useRouter();
-
-  const handleClick = useCallback(() => {
-    searchReset();
-
-    if (inputEl && inputEl.current) {
-      inputEl.current.focus();
-    }
-  }, [searchReset]);
+  const {
+    inputValue,
+    searchProducts,
+    onKeyDown,
+    handleResetAndFocus,
+    inputEl,
+    onFocus,
+    onBlur,
+    isInputFocused,
+  } = useSearch();
 
   const placeholderItems = useMemo(() => {
     switch (location.pathname) {
@@ -42,6 +39,9 @@ export const Search = ({
         className="search__input"
         placeholder={`Search in ${placeholderItems}...`}
         onChange={searchProducts}
+        onFocus={onFocus}
+        onBlur={onBlur}
+        onKeyDown={onKeyDown}
       />
       <button
         type="button"
@@ -49,8 +49,9 @@ export const Search = ({
         className={cn({
           search__button: true,
           'search__button--clear': inputValue,
+          'search__button--focused': isInputFocused,
         })}
-        onClick={handleClick}
+        onClick={handleResetAndFocus}
         disabled={inputValue.length === 0}
       />
     </div>

@@ -1,4 +1,8 @@
 .container {
   width: $container-width;
   margin: 0 auto;
+
+  @media screen and (max-width: $laptops-breakpoint) {
+    width: 768px;
+  }
 }

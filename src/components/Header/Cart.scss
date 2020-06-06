@@ -1,6 +1,10 @@
 .cart {
   @extend .favorites;
 
+  &__mobile {
+    border: none;
+  }
+
   &__button {
     @extend .favorites__button;
     background-image: url("../../assets/img/cart-default.svg");

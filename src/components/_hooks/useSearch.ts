@@ -1,5 +1,5 @@
 import React, {
-  useCallback, useEffect, useMemo, useState,
+  useCallback, useEffect, useMemo, useRef, useState,
 } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import debounce from '../../common/helpers/debounce';
@@ -10,10 +10,12 @@ import { useRouter } from './useRouter';
 
 export const useSearch = () => {
   const { location, history, search } = useRouter();
+  const inputEl = useRef<HTMLInputElement>(null);
   const dispatch = useDispatch();
   const query = useMemo(() => search.get('query') || '', [search]);
   const sortBy = search.get('sortBy');
   const [inputValue, setInputValue] = useState(query);
+  const [isInputFocused, setFocus] = useState(false);
   const products: Product[] = useSelector(getProducts);
   const favorites: Product[] = useSelector(getFavorites);
 
@@ -81,11 +83,36 @@ export const useSearch = () => {
     history.push({ search: '' });
   }, [search, history]);
 
+  const handleResetAndFocus = useCallback(() => {
+    searchReset();
+
+    if (inputEl && inputEl.current) {
+      inputEl.current.focus();
+    }
+  }, [searchReset]);
+
+  const onKeyDown = useCallback(
+    ({ key }: React.KeyboardEvent) => {
+      if (key === 'Escape') {
+        searchReset();
+      }
+    }, [searchReset]
+  );
+
+  const onFocus = () => setFocus(true);
+  const onBlur = () => setFocus(false);
+
   return {
     inputValue,
     searchProducts,
     searchedProducts,
     searchReset,
     products,
+    onKeyDown,
+    inputEl,
+    handleResetAndFocus,
+    isInputFocused,
+    onFocus,
+    onBlur,
   };
 };

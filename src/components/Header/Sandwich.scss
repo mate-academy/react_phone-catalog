@@ -1,0 +1,39 @@
+.sandwich {
+  width: 24px;
+  height: 16px;
+  position: relative;
+  display: none;
+  cursor: pointer;
+  z-index: 3;
+
+  @media screen and (max-width: $tablets-portrait-breakpoint) {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  span {
+    display: block;
+    height: 2px;
+    background-color: $primary-color;
+    transition: 0.4s cubic-bezier(0.8, 0.5, 0.2, 1.4);
+  }
+
+  &--clicked {
+
+    span {
+      &:first-child {
+        transform: translateY(6px) rotate(45deg);
+      }
+
+      &:nth-child(2) {
+        transform: translateX(-200%);
+        opacity: 0;
+      }
+
+      &:last-child {
+        transform: translateY(-8px) rotate(-45deg);
+      }
+    }
+  }
+}
