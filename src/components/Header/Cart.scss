@@ -1,6 +1,14 @@
 .cart {
   @extend .favorites;
 
+  @media screen and (max-width:$laptops-breakpoint) {
+    border-right: 1px solid $border-section-color;
+  }
+
+  @media screen and (max-width: $mobile-landscape-breakpoint) {
+    border-right: 0;
+  }
+
   &__mobile {
     border: none;
   }

@@ -17,6 +17,7 @@ export const NavItem = (props: NavItemProps) => {
         ref={ref}
         exact={exact}
         className="nav__link"
+        activeClassName="nav__link--active"
       >
         {title}
       </NavLink>

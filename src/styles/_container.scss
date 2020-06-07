@@ -1,6 +1,16 @@
 .container {
   max-width: $container-width;
-  padding-left: 60px;
-  padding-right: 60px;
+  padding-right: $container-padding-laptop;
+  padding-left: $container-padding-laptop;
   margin: 0 auto;
+
+  @media screen and(max-width: $tablets-landscape-breakpoint) {
+    padding-right: $container-padding-tablet;
+    padding-left: $container-padding-tablet;
+  }
+
+  @media screen and(max-width: $mobile-landscape-breakpoint) {
+    padding-right: $container-padding-mobile;
+    padding-left: $container-padding-mobile;
+  }
 }

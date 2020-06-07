@@ -6,12 +6,29 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    @media screen and (max-width: $mobile-landscape-breakpoint) {
+      justify-content: space-around;
+    }
   }
 
   &__link {
-    @extend .nav__item;
+    margin-right: 64px;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 0.92;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
     color: $secondary-color;
     @include hover(color, $primary-color, 0.2);
+
+    @media screen and (max-width: $mobile-landscape-breakpoint) {
+      margin-right: 20px;
+    }
+
+    &:last-of-type {
+      margin-right: 0;
+    }
   }
 
   &__top-button-container {
@@ -19,6 +36,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    @media screen and (max-width: $mobile-landscape-breakpoint) {
+      width: auto;
+    }
   }
 
   &__paragraph {
@@ -26,6 +47,10 @@
     font-size: 12px;
     line-height: 15px;
     color: $secondary-color;
+
+    @media screen and (max-width: $mobile-landscape-breakpoint) {
+      display: none;
+    }
   }
 
   &__top-button {

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { CarouselSlides } from './CarouselSlides';
 import { CarouselDots } from './CarouselDots';
 import { CarouselControl } from './CarouselControl';
@@ -16,14 +16,32 @@ export const Carousel = () => {
   const [slideWidth, setSlideWidth] = useState<number>(0);
   const slidesLeft = carouselImages.length - 1;
   const transitionDuration = 0.7;
+  const slideEl = useRef<any>(null);
 
-  const measuredRef = useCallback(node => {
-    if (node !== null) {
-      setSlideWidth(node.getBoundingClientRect().width);
+  useEffect(() => {
+    if (slideEl.current) {
+      setSlideWidth(slideEl.current.getBoundingClientRect().width);
     }
   }, []);
 
+  const carouselWidthHasChanged = useCallback(() => {
+    const currentSlideWidth = slideEl.current.getBoundingClientRect().width;
+
+    if (slideWidth !== currentSlideWidth) {
+      setSlideWidth(currentSlideWidth);
+      setMoveSize(0);
+      setActiveSlide(0);
+      return true;
+    }
+
+    return false;
+  }, [slideWidth]);
+
   const changeSlide = useCallback((direction: string) => {
+    if (carouselWidthHasChanged()) {
+      return;
+    }
+
     if (direction === DIRECTIONS.left) {
       if (moveSize <= 0) {
         setMoveSize(moveSize + slideWidth * slidesLeft);
@@ -43,7 +61,7 @@ export const Carousel = () => {
         setActiveSlide(activeSlide + 1);
       }
     }
-  }, [moveSize, slideWidth, activeSlide, slidesLeft]);
+  }, [moveSize, slideWidth, activeSlide, slidesLeft, carouselWidthHasChanged]);
 
   useEffect(() => {
     const interval = setInterval(
@@ -54,7 +72,11 @@ export const Carousel = () => {
     return () => clearInterval(interval);
   }, [changeSlide]);
 
-  const handleRectangleClick = useCallback((index: number) => {
+  const handleDotClick = useCallback((index: number) => {
+    if (carouselWidthHasChanged()) {
+      return;
+    }
+
     if (index < activeSlide) {
       setMoveSize(moveSize - slideWidth * (activeSlide - index));
     } else {
@@ -62,11 +84,11 @@ export const Carousel = () => {
     }
 
     setActiveSlide(index);
-  }, [activeSlide, moveSize, slideWidth]);
+  }, [activeSlide, moveSize, slideWidth, carouselWidthHasChanged]);
 
   return (
     <div className="carousel section__carousel">
-      <div className="carousel__container" ref={measuredRef}>
+      <div className="carousel__container" ref={slideEl}>
         <CarouselControl
           changeSlide={changeSlide}
           direction={DIRECTIONS.left}
@@ -83,7 +105,7 @@ export const Carousel = () => {
         <CarouselDots
           slides={carouselImages}
           active={activeSlide}
-          goToSlide={handleRectangleClick}
+          goToSlide={handleDotClick}
         />
       </div>
     </div>
