@@ -7,12 +7,17 @@ $placeholder-color: #b4bdc4;
 $success-color: #27ae60;
 
 $container-width: 1136px;
+$container-padding-laptop: 60px;
+$container-padding-tablet: 40px;
+$container-padding-mobile: 20px;
 $header-height: 64px;
+$header-height-mobile: 48px;
 $product-card-width: 272px;
 $product-card-height: 507px;
+$scrollbar-width: 16px;
 
-$laptops-breakpoint: $container-width;
+$laptops-breakpoint:
+  $container-width + $scrollbar-width + $container-padding-laptop * 2;
 $tablets-landscape-breakpoint: 999px;
-$tablets-portrait-breakpoint: 768px;
+$tablets-portrait-breakpoint: 899px;
 $mobile-landscape-breakpoint: 528px;
-$mobile-portrait-breakpoint: 320px;

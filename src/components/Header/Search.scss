@@ -4,10 +4,14 @@
   align-items: center;
   border-left: 1px solid $border-section-color;
 
+  @media screen and (max-width: $tablets-portrait-breakpoint) {
+    width: 100%;
+  }
+
   &__input {
     width: 327px;
     padding: 23px 46px 23px 23px;
-    height: 63px;
+    height: $header-height;
     font-size: 14px;
     line-height: 18px;
     font-weight: 600;
@@ -21,9 +25,13 @@
     }
 
     @media screen and (max-width: $tablets-landscape-breakpoint) {
-      width: 200px;
-      font-size: 11px;
+      width: 100%;
+      font-size: 12px;
       line-height: 14px;
+    }
+
+    @media screen and (max-width: $mobile-landscape-breakpoint) {
+      height: $header-height-mobile;
     }
 
     @media screen and (max-width: 414px) {
@@ -55,6 +63,10 @@
     background-image: url("../../assets/img/search.svg");
     background-repeat: no-repeat;
     background-position: center;
+
+    @media screen and(max-width: $mobile-landscape-breakpoint) {
+      right: 15px;
+    }
 
     @media screen and (max-width: 414px) {
       right: 10px;

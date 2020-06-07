@@ -123,12 +123,8 @@ type CarouselControlProps = {
 };
 
 type SliderProps = {
-  products: Product[];
-  position: number;
-  step: number;
-  sliderVisibleWidth: number;
-  animationDuration: number;
-  productCardRef: (node: any) => void;
+  title: string;
+  selectedProduct?: Product;
 };
 
 type SliderArrowProps = {

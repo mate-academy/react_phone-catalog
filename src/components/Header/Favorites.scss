@@ -1,10 +1,19 @@
 .favorites {
   position: relative;
-  width: 64px;
-  height: 64px;
+  width: $header-height;
+  height: $header-height;
   border-left: 1px solid $border-section-color;
   box-sizing: border-box;
   z-index: 2;
+
+  @media screen and (max-width:$mobile-landscape-breakpoint) {
+    height: $header-height-mobile;
+    width: $header-height-mobile;
+  }
+
+  @media screen and (max-width:$tablets-portrait-breakpoint) {
+    flex-shrink: 0;
+  }
 
   &__mobile {
     border: none;
