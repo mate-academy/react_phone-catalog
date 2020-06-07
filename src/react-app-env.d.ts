@@ -101,7 +101,7 @@ type ProductPriceProps = {
 };
 
 type PrimaryBtnProps = {
-  title: string;
+  productId: string;
   styleSize?: string;
 };
 

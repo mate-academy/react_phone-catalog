@@ -2,11 +2,9 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Heading } from '../../components/Heading/Heading';
 import { FavoriteBtn } from '../../components/Buttons/FavoriteBtn';
-import {
-  FAVORITE_BTN_SIZES, PRICE_TEXT_SIZES, BTN_TITLES, BTN_SIZES, SHOWCASE_HEADINGS,
-} from '../../common/constants';
+import {PRICE_TEXT_SIZES, SHOWCASE_HEADINGS} from '../../common/constants';
 import { ProductPrice } from '../../components/ProductCard/ProductPrice';
-import { PrimaryBtn } from '../../components/Buttons/PrimaryBtn';
+import { AddProductBtn } from '../../components/Buttons/AddProductBtn';
 import { getDetails, getProducts, loadDetails } from '../../redux';
 import { ShowcaseBlock } from '../../components/ShowcaseBlock/ShowcaseBlock';
 import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
@@ -66,13 +64,13 @@ export const ProductDetailsPage = () => {
                 </span>
               </div>
               <div className="product__flex-wrap product__buttons">
-                <PrimaryBtn
-                  title={BTN_TITLES.addToCart}
-                  styleSize={BTN_SIZES.large}
+                <AddProductBtn
+                  productId={product.id}
+                  styleSize="button-to-cart--lg"
                 />
                 <FavoriteBtn
                   productId={product.id}
-                  styleSize={FAVORITE_BTN_SIZES.large}
+                  styleSize="button-favorite--lg"
                 />
               </div>
               <ProductTechSpecs {...productDetails } shortened />

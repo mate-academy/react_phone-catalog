@@ -1,9 +1,9 @@
 import React, { useMemo, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import { PRODUCT_PATHS, BTN_TITLES } from '../../common/constants';
+import { PRODUCT_PATHS } from '../../common/constants';
 import { FavoriteBtn } from '../Buttons/FavoriteBtn';
 import { ProductPrice } from './ProductPrice';
-import { PrimaryBtn } from '../Buttons/PrimaryBtn';
+import { AddProductBtn } from '../Buttons/AddProductBtn';
 
 export const ProductCard = ({
   name,
@@ -75,7 +75,7 @@ export const ProductCard = ({
         </div>
       </div>
       <div className="product-card__buttons-container">
-        <PrimaryBtn title={BTN_TITLES.addToCart} />
+        <AddProductBtn productId={id} />
         <FavoriteBtn productId={id} />
       </div>
     </article>

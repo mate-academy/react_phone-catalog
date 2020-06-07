@@ -15,7 +15,6 @@ export const useSearch = () => {
   const query = useMemo(() => search.get('query') || '', [search]);
   const sortBy = search.get('sortBy');
   const [inputValue, setInputValue] = useState(query);
-  const [isInputFocused, setFocus] = useState(false);
   const products: Product[] = useSelector(getProducts);
   const favorites: Product[] = useSelector(getFavorites);
 
@@ -94,13 +93,10 @@ export const useSearch = () => {
   const onKeyDown = useCallback(
     ({ key }: React.KeyboardEvent) => {
       if (key === 'Escape') {
-        searchReset();
+        handleResetAndFocus();
       }
-    }, [searchReset]
+    }, [handleResetAndFocus]
   );
-
-  const onFocus = () => setFocus(true);
-  const onBlur = () => setFocus(false);
 
   return {
     inputValue,
@@ -111,8 +107,5 @@ export const useSearch = () => {
     onKeyDown,
     inputEl,
     handleResetAndFocus,
-    isInputFocused,
-    onFocus,
-    onBlur,
   };
 };

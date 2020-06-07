@@ -54,19 +54,6 @@ export const SECTION_HEADINGS = {
   favorites: 'Favorites',
 };
 
-export const BTN_TITLES = {
-  addToCart: 'Add to cart',
-  checkout: 'Checkout',
-};
-
-export const BTN_SIZES = {
-  large: 'button--lg',
-};
-
-export const FAVORITE_BTN_SIZES = {
-  large: 'button-favorite--lg',
-};
-
 export const PRICE_TEXT_SIZES = {
   large: 'product-price--lg',
 };

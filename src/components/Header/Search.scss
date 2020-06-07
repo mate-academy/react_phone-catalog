@@ -50,7 +50,7 @@
     top: 47%;
     border: 0;
     outline: 0;
-    background-color: #fff;
+    background-color: transparent;
     transform: translateY(-50%);
     background-image: url("../../assets/img/search.svg");
     background-repeat: no-repeat;
@@ -63,10 +63,6 @@
     &--clear {
       cursor: pointer;
       background-image: url("../../assets/img/clear.svg");
-    }
-
-    &--focused {
-      background-color: $hover-bg-color;
     }
   }
 }

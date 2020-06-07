@@ -12,9 +12,6 @@ export const Search = () => {
     onKeyDown,
     handleResetAndFocus,
     inputEl,
-    onFocus,
-    onBlur,
-    isInputFocused,
   } = useSearch();
 
   const placeholderItems = useMemo(() => {
@@ -39,8 +36,6 @@ export const Search = () => {
         className="search__input"
         placeholder={`Search in ${placeholderItems}...`}
         onChange={searchProducts}
-        onFocus={onFocus}
-        onBlur={onBlur}
         onKeyDown={onKeyDown}
       />
       <button
@@ -49,7 +44,6 @@ export const Search = () => {
         className={cn({
           search__button: true,
           'search__button--clear': inputValue,
-          'search__button--focused': isInputFocused,
         })}
         onClick={handleResetAndFocus}
         disabled={inputValue.length === 0}
