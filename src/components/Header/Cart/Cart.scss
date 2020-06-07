@@ -1,0 +1,42 @@
+.cart {
+  @extend .favorites;
+
+  &__content-container {
+    max-width: 1124px;
+    display: flex;
+  }
+
+  &__list {
+    margin-right: 16px;
+    display: grid;
+    grid-template-columns: minmax(max-content, $cart-item-width);
+    grid-gap: 16px 0;
+  }
+
+  &__mobile {
+    border: none;
+  }
+
+  &--active {
+    position: relative;
+    color: $primary-color;
+
+    &::after {
+      content: "";
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+      height: 3px;
+      background-color: $primary-color;
+    }
+  }
+
+  &__indicator {
+    @extend .favorites__indicator;
+  }
+
+  &__button {
+    @extend .favorites__button;
+    background-image: url("../../../assets/img/cart-default.svg");
+  }
+}

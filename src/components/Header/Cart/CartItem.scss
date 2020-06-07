@@ -1,0 +1,58 @@
+.cart-item {
+  padding: 31px 40px 31px 27px;
+  max-width: $cart-item-width;
+  height: 128px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid $border-section-color;
+  box-sizing: border-box;
+
+  &__delete-btn {
+    width: 10px;
+    height: 10px;
+    outline: 0;
+    background-image: url("../../../assets/img/cart-item-delete-mark.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &__image {
+    width: 66px;
+    height: 66px;
+  }
+
+  &__title {
+    width: 295px;
+    height: 42px;
+  }
+
+  &__quantity-container {
+    display: flex;
+    align-items: center;
+  }
+
+  &__add-btn {
+    width: 32px;
+    height: 32px;
+    background-image: url("../../../assets/img/cart-quantity-add.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+    border: 1px solid $border-btn-color;
+    box-sizing: border-box;
+  }
+
+  &__quantity {
+    margin-left: 14px;
+    margin-right: 14px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+  }
+
+  &__subtract-btn {
+    @extend .cart-item__add-btn;
+    background-image: url("../../../assets/img/cart-quantity-subtract.svg");
+  }
+}

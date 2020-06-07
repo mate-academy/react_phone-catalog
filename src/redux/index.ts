@@ -6,12 +6,14 @@ import productsReducer, { setProducts } from './products';
 import { fetchProductDetails, fetchProducts } from '../common/helpers/api';
 import favoritesReducer from './favorites';
 import detailsReducer, { setDetails } from './details';
+import cartReducer from './cart';
 
 
 const rootReducer = combineReducers({
   products: productsReducer,
   details: detailsReducer,
   favorites: favoritesReducer,
+  cartState: cartReducer,
 });
 
 type RootState = ReturnType<typeof rootReducer>;
@@ -19,6 +21,7 @@ type RootState = ReturnType<typeof rootReducer>;
 export const getProducts = (state: RootState) => state.products;
 export const getDetails = (state: RootState) => state.details;
 export const getFavorites = (state: RootState) => state.favorites;
+export const getCart = (state: RootState) => state.cartState.cart;
 
 export const loadProducts = () => {
   return async (dispatch: Dispatch<any>) => {

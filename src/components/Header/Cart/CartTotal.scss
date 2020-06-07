@@ -1,0 +1,47 @@
+.cart__total {
+  width: 368px;
+  height: 206px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid $border-section-color;
+  box-sizing: border-box;
+
+  &__info-container {
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 1px solid $border-section-color;
+  }
+
+  &__price {
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: $primary-color;
+  }
+
+  &__info {
+    margin-bottom: 24px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+    color: $secondary-color;
+  }
+
+  &__button {
+    margin-top: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 320px;
+    height: 48px;
+    color: white;
+    background: $primary-color;
+    @include hover(box-shadow, 0 3px 13px rgba(23, 32, 49, 0.26), 0.3);
+  }
+}
