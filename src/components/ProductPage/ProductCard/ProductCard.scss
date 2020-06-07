@@ -1,0 +1,102 @@
+@import "../../../styles/mixins.scss";
+
+.card {
+  padding: 32px;
+  background: rgb(255, 255, 255);
+  border: 1px solid rgb(226, 230, 233);
+  box-sizing: border-box;
+
+  &__img {
+    width: 100%;
+    transition: all 0.5s;
+    &:hover {
+      transform: scale(1.2);
+      z-index: 1;
+    }
+  }
+
+  &__title {
+    height: 42px;
+    font-family: "Mont-Regular", sans-serif;
+    color: #313237;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    margin-top: 24px;
+  }
+
+  &__price {
+    font-family: "Mont-Regular", sans-serif;
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 140%;
+    color: #313237;
+    margin: 8px 0;
+
+    &--full {
+      text-decoration: line-through;
+      font-weight: 500;
+      color: rgb(137, 147, 154);
+    }
+  }
+
+  &__details {
+    padding: 8px 0;
+    border-top: 1px solid rgb(226, 230, 233);
+  }
+
+  &__buttons {
+    display: grid;
+    grid-template-columns: 1fr 40px;
+    grid-gap: 8px;
+    height: 40px;
+
+  }
+}
+
+.details__info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 8px 0;
+
+  &--name {
+    @include smallText;
+    color: rgb(137, 147, 154);
+  }
+
+  &--value {
+    @include smallText;
+    color: #313237;
+  }
+}
+
+.button {
+  &__cart {
+    @include font-MontRegular;
+    color: #ffff;
+    background-color: #313237;
+    outline: none;
+    box-sizing: border-box;
+    border: 1px solid transparent;
+    transition: all 0.3s;
+
+    &:hover {
+      color: rgb(39, 174, 96);
+      background-color: #ffff;
+      border: 1px solid rgb(226, 230, 233);
+    }
+  }
+
+  &__favorite {
+    border: 1px solid rgb(150, 152, 153);
+    box-sizing: border-box;
+    padding: 0;
+    background: rgb(255, 255, 255);
+    outline: none;
+
+    &--img {
+      width: 15px;
+    }
+  }
+}
