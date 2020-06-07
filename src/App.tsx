@@ -4,31 +4,27 @@ import './App.scss';
 import { Header } from './components/Header';
 import { NotFoundPage } from './components/NotFoundPage';
 import { Footer } from './components/Footer';
-import { PhonesPage } from './components/PhonesPage';
+import { TabletsPage } from './components/ProductPage/TabletsPage';
 import { getProducts } from './api/api';
 import { HomePage } from './components/HomePage';
+import { PhonesPage } from './components/ProductPage/PhonesPage';
 
 const App: React.FC = () => {
   const [products, setProducts] = useState<ProductItem[]>([]);
   const [phones, setPhones] = useState<ProductItem[]>([]);
   const [tablets, setTablets] = useState<ProductItem[]>([]);
-  const [accessories] = useState<ProductItem[]>([]);
+  // const [accessories] = useState<ProductItem[]>([]);
 
   useEffect(() => {
     getProducts()
       .then(data => {
         setProducts(data);
-        setPhones(data.filter((product: ProductItem) => product.type === 'phones'));
+        setPhones(data.filter((product: ProductItem) => product.type === 'phone'));
         setTablets(data.filter((product: ProductItem) => product.type === 'tablet'));
+        // setTablets(data.filter((product: ProductItem) => product.type === 'accessories'));
       });
   }, []);
-  console.log(`products`);
-  console.log(products);
-  console.log(`phones`);
-  console.log(phones);
-  console.log(`tablets`);
-  console.log(tablets);
-  console.log(accessories);
+
   return (
     <div className="App">
       <Header />
@@ -45,7 +41,14 @@ const App: React.FC = () => {
             exact
             path="/phones"
             render={() => (
-              <PhonesPage products={products} />
+              <PhonesPage phones={phones} />
+            )}
+          />
+          <Route
+            exact
+            path="/tablets"
+            render={() => (
+              <TabletsPage tablets={tablets} />
             )}
           />
           <Redirect from="/home" to="/" />

@@ -21,8 +21,8 @@ export const ProductCard: React.FC<Props> = ({
   ram,
 }) => {
   return (
-    <div className="phones__card card">
-      <img className="card__img" src={imageUrl} alt="pnone img" />
+    <div className="products__card card">
+      <img className="card__img" src={imageUrl} alt="products img" />
       <div className="card__infoWrap">
         <div className="card__title">{name}</div>
         <h2 className="card__price card__price--discount">

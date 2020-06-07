@@ -1,4 +1,4 @@
-@import "../../styles/mixins.scss";
+@import "../../../styles/mixins.scss";
 
 .card {
   padding: 32px;
@@ -8,6 +8,11 @@
 
   &__img {
     width: 100%;
+    transition: all 0.5s;
+    &:hover {
+      transform: scale(1.2);
+      z-index: 1;
+    }
   }
 
   &__title {
@@ -74,7 +79,7 @@
     outline: none;
     box-sizing: border-box;
     border: 1px solid transparent;
-    transition:all 0.3s;
+    transition: all 0.3s;
 
     &:hover {
       color: rgb(39, 174, 96);
