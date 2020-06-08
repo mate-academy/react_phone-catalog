@@ -41,7 +41,7 @@ export const AddProductBtn = ({ productId, styleSize, productPrice }: PrimaryBtn
         onChange={(e) => handleAddingToCart(e, productId)}
       />
       <span className="button-to-cart__title">
-        {isInCart ? 'Remove from card' : 'Add to cart'}
+        {isInCart ? 'Remove from cart' : 'Add to cart'}
       </span>
     </label>
   );

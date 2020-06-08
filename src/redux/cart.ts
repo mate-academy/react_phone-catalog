@@ -1,7 +1,7 @@
 import { Action } from 'redux';
 
 const ADD_TO_CART = 'ADD_TO_CART';
-const DELETE_FROM_CART = 'DELETE_FAVORITE';
+const DELETE_FROM_CART = 'DELETE_FROM_CART';
 const ADD_QUANTITY = 'ADD_QUANTITY';
 const SUBTRACT_QUANTITY = 'SUBTRACT_QUANTITY';
 

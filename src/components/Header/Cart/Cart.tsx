@@ -23,9 +23,10 @@ export const Cart = ({ isNavOpen }: CartProps) => {
           cart__button: true,
           'cart--active': pathname === LOCATIONS.cart,
         })}
-      />
-      {filledCart
-      && <span className="cart__indicator">{cartItems.length}</span>}
+      >
+        {filledCart
+        && <span className="cart__indicator">{cartItems.length}</span>}
+      </Link>
     </div>
   );
 };
