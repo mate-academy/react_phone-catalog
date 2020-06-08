@@ -147,19 +147,22 @@ interface Category {
 
 type NavProps = {
   isNavOpen: boolean;
+  closeNavMenu: () => void;
 };
 
 type CartProps = {
   isNavOpen: boolean;
+  closeNavMenu: () => void;
 };
 
 type FavoritesProps = {
   isNavOpen: boolean;
+  closeNavMenu: () => void;
 };
 
 type SandwichProps = {
   isNavOpen: boolean;
-  handleNavOpen: () => void;
+  toggleSandwich: () => void;
 };
 
 interface NavItem {
@@ -175,6 +178,7 @@ interface NavItemProps {
   link: string;
   exact: boolean;
   onMount: (link: string, ref: any) => void;
+  closeNavMenu: () => void;
 }
 
 interface Match {

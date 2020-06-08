@@ -6,7 +6,7 @@ import { getFavorites } from '../../redux';
 import { useRouter } from '../_hooks/useRouter';
 import { LOCATIONS } from '../../common/constants';
 
-export const Favorites = ({ isNavOpen }: FavoritesProps) => {
+export const Favorites = ({ isNavOpen, closeNavMenu }: FavoritesProps) => {
   const favorites: Product[] = useSelector(getFavorites);
   const { pathname } = useRouter();
 
@@ -27,6 +27,7 @@ export const Favorites = ({ isNavOpen }: FavoritesProps) => {
           favorites__button: true,
           'favorites__button--active': pathname === LOCATIONS.favorites,
         })}
+        onClick={closeNavMenu}
       >
         {doFavoritesExist
         && <span className="favorites__indicator">{favorites.length}</span>}

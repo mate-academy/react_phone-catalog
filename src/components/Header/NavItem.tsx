@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 export const NavItem = (props: NavItemProps) => {
   const {
-    title, link, exact, onMount,
+    title, link, exact, onMount, closeNavMenu
   } = props;
 
   const ref = useRef(null);
@@ -19,6 +19,7 @@ export const NavItem = (props: NavItemProps) => {
         ref={ref}
         exact={exact}
         className="nav__link"
+        onClick={closeNavMenu}
         activeClassName="nav__link--active"
       >
         {title}
