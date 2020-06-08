@@ -79,8 +79,8 @@ const ItemsPage: React.FC<Props> = ({ location, match }) => {
   }, [itemsFromServer, query, sort, perPage, lowerQuery]);
 
   if (itemsFromServer.length === 0 && !isLoading) {
-    return <ErrorPage />;
-  }
+  return <ErrorPage />
+  };
 
   if (query !== '') {
     pageCount = Math.ceil(preparedItem.length / perPage);
