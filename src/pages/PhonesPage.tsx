@@ -8,7 +8,6 @@ import {
   useSelector,
 } from 'react-redux';
 import PhoneCard from '../components/PhoneCard/PhoneCard';
-// import { getAllProducts } from '../helpers/api';
 import Loader from '../helpers/Loader/Loader';
 import Pagination from '../components/Pagination/Pagination';
 import { setPerPage } from '../store/pagination';
@@ -17,34 +16,15 @@ import { sortBy } from '../store/sort';
 
 export const PhonesPage = () => {
   // const [loading, setLoading] = useState(false);
-  // const [sortedPhones, setSortedPhones] = useState<Products[]>([...phones]);
-  // const [phonesQuantity, setPhonesQuantity] = useState<Products[]>([...phones]);
   const history = useHistory();
   const location = useLocation();
   const dispatch = useDispatch();
   const isLoaded = useSelector(getLoading);
   const visiblePhones = useSelector(getVisibleProducts);
-  const [phones] = useState<Products[]>(visiblePhones.filter((phone: any) => phone.type === 'phone'));
-  // const phones = useSelector(getPhones);
+  const [phones] = useState(visiblePhones.filter((phone: Products) => phone.type === 'phone'));
   const searchParams = new URLSearchParams(location.search);
   const perPage: number = Number(searchParams.get('perPage')) || phones.length;
   const pageNumbers = Math.ceil(phones.length / perPage) || 1;
-  console.log(phones);
-  // useEffect(() => {
-  //   window.scrollTo({ top: 0 });
-  //   getAllProducts().then(data => {
-  //     setLoading(true);
-  //     setPhones(data);
-
-  // setSortedPhones(data.filter((product: Products) => product.type === 'phone'));
-  // setPhonesQuantity(data.filter((product: Products) => product.type === 'phone'));
-  //
-  //   });
-  // }, []);
-
-  // useEffect(() => {
-  //   setSortedPhones(phonesQuantity);
-  // }, [phonesQuantity]);
 
   const sorting = (event: ChangeEvent<HTMLSelectElement>) => {
     const { value } = event.target;

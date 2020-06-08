@@ -3,6 +3,7 @@ import {
   useDispatch,
   useSelector,
 } from 'react-redux';
+import { useHistory, useLocation } from 'react-router-dom';
 import { getPage, getPerPage } from '../../store';
 import { setPage } from '../../store/pagination';
 
@@ -14,11 +15,18 @@ const Pagination: React.FC<PaginationProps> = ({ pageNumbers }) => {
   const dispatch = useDispatch();
   const page = useSelector(getPage);
   const perPage = useSelector(getPerPage);
-
+  const history = useHistory();
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
   console.log(perPage, page);
 
   const handlePage = (event: number) => {
-    dispatch(setPage(event));
+    searchParams.set('page', event.toString());
+
+    history.push({
+      search: searchParams.toString(),
+    });
+    dispatch(setPage(+event));
   };
 
   return (
@@ -27,6 +35,8 @@ const Pagination: React.FC<PaginationProps> = ({ pageNumbers }) => {
         type="button"
         className="pagination__button"
         aria-label="Previous"
+        onClick={() => handlePage(page - 1)}
+        disabled={page === 1}
       >
         <img src="img/arrow_left.svg" alt="arrow" />
       </button>
@@ -53,6 +63,8 @@ const Pagination: React.FC<PaginationProps> = ({ pageNumbers }) => {
         type="button"
         className="pagination__button"
         aria-label="Next"
+        onClick={() => handlePage(page + 1)}
+        disabled={page === pageNumbers}
       >
         <img src="img/arrow_right.svg" alt="arrow" />
       </button>
