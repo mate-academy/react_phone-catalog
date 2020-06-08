@@ -4,13 +4,52 @@ import { Dispatch } from 'react';
 import thunk from 'redux-thunk';
 import productsReducer, { setProducts } from './products';
 import { getAllProducts } from '../helpers/api';
+import paginationReducer from './pagination';
+import sortReducer from './sort';
+import loadingReducer, { startLoading, finishLoading } from './loading';
+
+export const getPage = (state: RootState) => state.pagination.page;
+export const getPerPage = (state: RootState) => state.pagination.perPage;
+// export const getPhones = (state: RootState) => state.products.phones;
+export const getSortField = (state: RootState) => state.sort;
+export const getLoading = (state: RootState) => state.loading;
 
 const rootReducer = combineReducers({
   products: productsReducer,
+  pagination: paginationReducer,
+  sort: sortReducer,
+  loading: loadingReducer,
 });
 
-export type RootState = {
-  products: Products[];
+
+export type RootState = ReturnType<typeof rootReducer>;
+
+
+export const getVisibleProducts = (state: RootState) => {
+
+  let compare: (a: Products, b: Products) => number = () => 0;
+
+  switch (state.sort.field) {
+    case 'name':
+      compare = (a: Products, b: Products) => a.name.localeCompare(b.name);
+      break;
+    case 'age':
+    case 'price':
+      compare = (a: any, b: any) => a[state.sort.field] - b[state.sort.field];
+      break;
+    default:
+      break;
+  }
+
+  const visibleProducts = state.products
+    .sort(compare);
+
+  const { page, perPage } = state.pagination;
+
+  const start = (page - 1) * perPage;
+  const end = page * perPage;
+
+  return visibleProducts.slice(start, end);
 };
 
 export const loadData = () => {
@@ -18,6 +57,13 @@ export const loadData = () => {
     try {
       const productsFromServer = await getAllProducts();
 
+      // const phonesFromServer = productsFromServer.filter(phones => phones.type === 'phone');
+      // const tabletsFromServer = productsFromServer.filter(tablets => tablets.type === 'tablet');
+      //
+      // console.log(phonesFromServer, tabletsFromServer)
+      dispatch(startLoading());
+      dispatch(finishLoading());
+      // dispatch(setPhones(phonesFromServer));
       dispatch(setProducts(productsFromServer));
     } catch (error) {
       // do something to catch error

@@ -1,10 +1,25 @@
 import React from 'react';
+import {
+  useDispatch,
+  useSelector,
+} from 'react-redux';
+import { getPage, getPerPage } from '../../store';
+import { setPage } from '../../store/pagination';
 
 type PaginationProps = {
   pageNumbers: any;
 };
 
 const Pagination: React.FC<PaginationProps> = ({ pageNumbers }) => {
+  const dispatch = useDispatch();
+  const page = useSelector(getPage);
+  const perPage = useSelector(getPerPage);
+
+  console.log(perPage, page);
+
+  const handlePage = (event: number) => {
+    dispatch(setPage(event));
+  };
 
   return (
     <section className="pagination">
@@ -25,6 +40,7 @@ const Pagination: React.FC<PaginationProps> = ({ pageNumbers }) => {
             <button
               type="button"
               className="pagination__button"
+              onClick={() => handlePage(i + 1)}
             >
               {i + 1}
             </button>

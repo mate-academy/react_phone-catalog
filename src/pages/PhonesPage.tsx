@@ -1,42 +1,52 @@
 import React, {
   ChangeEvent,
-  useEffect,
   useState,
 } from 'react';
 import { useHistory, useLocation, Link } from 'react-router-dom';
+import {
+  useDispatch,
+  useSelector,
+} from 'react-redux';
 import PhoneCard from '../components/PhoneCard/PhoneCard';
-import { getAllProducts } from '../helpers/api';
+// import { getAllProducts } from '../helpers/api';
 import Loader from '../helpers/Loader/Loader';
 import Pagination from '../components/Pagination/Pagination';
+import { setPerPage } from '../store/pagination';
+import { getVisibleProducts, getLoading } from '../store';
+import { sortBy } from '../store/sort';
 
 export const PhonesPage = () => {
-  const [phones, setPhones] = useState<Products[]>([]);
-  const [loading, setLoading] = useState(false);
-  const [sortedPhones, setSortedPhones] = useState<Products[]>([...phones]);
-  const [phonesQuantity, setPhonesQuantity] = useState<Products[]>([...phones]);
+  // const [loading, setLoading] = useState(false);
+  // const [sortedPhones, setSortedPhones] = useState<Products[]>([...phones]);
+  // const [phonesQuantity, setPhonesQuantity] = useState<Products[]>([...phones]);
   const history = useHistory();
   const location = useLocation();
-
+  const dispatch = useDispatch();
+  const isLoaded = useSelector(getLoading);
+  const visiblePhones = useSelector(getVisibleProducts);
+  const [phones] = useState<Products[]>(visiblePhones.filter((phone: any) => phone.type === 'phone'));
+  // const phones = useSelector(getPhones);
   const searchParams = new URLSearchParams(location.search);
   const perPage: number = Number(searchParams.get('perPage')) || phones.length;
   const pageNumbers = Math.ceil(phones.length / perPage) || 1;
+  console.log(phones);
+  // useEffect(() => {
+  //   window.scrollTo({ top: 0 });
+  //   getAllProducts().then(data => {
+  //     setLoading(true);
+  //     setPhones(data);
 
+  // setSortedPhones(data.filter((product: Products) => product.type === 'phone'));
+  // setPhonesQuantity(data.filter((product: Products) => product.type === 'phone'));
+  //
+  //   });
+  // }, []);
 
-  useEffect(() => {
-    window.scrollTo({ top: 0 });
-    getAllProducts().then(data => {
-      setLoading(true);
-      setPhones(data.filter((product: Products) => product.type === 'phone'));
-      setSortedPhones(data.filter((product: Products) => product.type === 'phone'));
-      setPhonesQuantity(data.filter((product: Products) => product.type === 'phone'));
-    });
-  }, []);
+  // useEffect(() => {
+  //   setSortedPhones(phonesQuantity);
+  // }, [phonesQuantity]);
 
-  useEffect(() => {
-    setSortedPhones(phonesQuantity);
-  }, [phonesQuantity]);
-
-  const sortBy = (event: ChangeEvent<HTMLSelectElement>) => {
+  const sorting = (event: ChangeEvent<HTMLSelectElement>) => {
     const { value } = event.target;
 
     searchParams.set('sort', value);
@@ -45,18 +55,7 @@ export const PhonesPage = () => {
       search: searchParams.toString(),
     });
 
-
-    switch (value) {
-      case 'name':
-        setSortedPhones([...phonesQuantity].sort((a, b) => a[value].localeCompare(b[value])));
-        break;
-      case 'age':
-      case 'price':
-        setSortedPhones([...phonesQuantity].sort((a, b) => a[value] - b[value]));
-        break;
-      default:
-        break;
-    }
+    dispatch(sortBy(value));
   };
 
   const selectQuantity = (event: ChangeEvent<HTMLSelectElement>) => {
@@ -68,19 +67,7 @@ export const PhonesPage = () => {
       search: searchParams.toString(),
     });
 
-    switch (value) {
-      case '4':
-        setPhonesQuantity([...phones].slice(0, 4));
-        break;
-      case '8':
-        setPhonesQuantity([...phones].slice(0, 8));
-        break;
-      case '16':
-        setPhonesQuantity([...phones].slice(0, 16));
-        break;
-      default:
-        break;
-    }
+    dispatch(setPerPage(+value));
   };
 
   return (
@@ -93,14 +80,14 @@ export const PhonesPage = () => {
         </div>
         <h1 className="PhonesPage__head">Mobile phones</h1>
         <p className="PhonesPage__length">
-          {sortedPhones.length}
+          {phones.length}
           {' '}
           models
         </p>
         <div className="container__filter filter">
           <form className="filter__sort-by">
             <p className="filter__text">Sort by</p>
-            <select className="filter__sorted sorted" onChange={(event) => sortBy(event)}>
+            <select className="filter__sorted sorted" onChange={(event) => sorting(event)}>
               <option value="age" className="filter__option">Newest</option>
               <option value="name" className="filter__option">Alphabetically</option>
               <option value="price" className="filter__option">Cheapest</option>
@@ -116,12 +103,14 @@ export const PhonesPage = () => {
           </form>
         </div>
       </div>
-      {!loading && <Loader />}
-      <section className="PhonesPage__list">
-        {sortedPhones.map(phone => (
-          <PhoneCard key={phone.age} phone={phone} />
-        ))}
-      </section>
+      {isLoaded ? <Loader />
+        : (
+          <section className="PhonesPage__list">
+            {visiblePhones.map((phone: any) => (
+              <PhoneCard key={phone.age} phone={phone} />
+            ))}
+          </section>
+        )}
       <div>
         <Pagination pageNumbers={pageNumbers} />
       </div>
