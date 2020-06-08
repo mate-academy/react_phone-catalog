@@ -11,7 +11,6 @@ import queryReducer from './query';
 
 export const getPage = (state: RootState) => state.pagination.page;
 export const getPerPage = (state: RootState) => state.pagination.perPage;
-// export const getPhones = (state: RootState) => state.products.phones;
 export const getSortField = (state: RootState) => state.sort;
 export const getLoading = (state: RootState) => state.loading;
 export const getQuery = (state: RootState) => state.query;
