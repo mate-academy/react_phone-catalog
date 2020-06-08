@@ -7,6 +7,7 @@ import { FavoritesPage } from './pages/FavoritesPage';
 import { ProductDetailsPage } from './pages/ProductDetailsPage/ProductDetailsPage';
 import { ProductsPage } from './pages/ProductsPage';
 import { ErrorPage } from './pages/ErrorPage';
+import { CartPage } from './pages/CartPage';
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
         <Route exact path={['/', '/home']} component={HomePage} />
         <Route exact path={['/phones', '/tablets']} component={ProductsPage} />
         <Route exact path="/favorites" component={FavoritesPage} />
+        <Route exact path="/cart" component={CartPage} />
         <Route
           exact
           path="/:productType/:productId"

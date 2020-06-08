@@ -1,0 +1,106 @@
+.cart-item {
+  margin-bottom: 16px;
+  padding: 31px 40px 31px 27px;
+  max-width: $cart-item-width;
+  height: 128px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid $border-section-color;
+  box-sizing: border-box;
+
+  @media screen and (max-width: 1036px) {
+    width: 500px;
+  }
+
+  @media screen and (max-width: $cart-page-medium-breakpoint) {
+    position: relative;
+    width: 272px;
+    height: 266px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__delete-btn {
+    width: 40px;
+    height: 40px;
+    outline: 0;
+    background-image: url("../../../assets/img/cart-item-delete-mark.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: 0.3s;
+
+    &:hover {
+      background-image: url("../../../assets/img/clear.svg");
+    }
+
+    @media screen and (max-width: $cart-page-medium-breakpoint) {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+  }
+
+  &__image {
+    width: 66px;
+    height: 66px;
+  }
+
+  &__title {
+    width: 260px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $primary-color;
+
+    @media screen and (max-width: $cart-page-medium-breakpoint) {
+      margin: 15px 0;
+      width: auto;
+    }
+  }
+
+  &__quantity-container {
+    margin-right: 35px;
+    display: flex;
+    align-items: center;
+
+    @media screen and (max-width: $cart-page-medium-breakpoint) {
+      margin-right: 0;
+      margin-bottom: 10px;
+    }
+  }
+
+  &__add-btn {
+    width: 32px;
+    height: 32px;
+    background-image: url("../../../assets/img/cart-quantity-add.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+    border: 1px solid $border-btn-color;
+    box-sizing: border-box;
+    @include hover(border-color, $primary-color, 0.3);
+  }
+
+  &__quantity {
+    margin-left: 14px;
+    margin-right: 14px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+  }
+
+  &__subtract-btn {
+    @extend .cart-item__add-btn;
+    background-image: url("../../../assets/img/cart-quantity-subtract.svg");
+
+    &:disabled {
+      opacity: 0.5;
+
+      &:hover {
+        border-color: $border-btn-color;
+        cursor: auto;
+      }
+    }
+  }
+}

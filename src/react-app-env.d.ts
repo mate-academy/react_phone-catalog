@@ -12,6 +12,7 @@ interface Product {
   screen: string;
   capacity: string;
   ram: string;
+  quantity?: number;
 }
 
 interface ProductProps {
@@ -103,6 +104,7 @@ type ProductPriceProps = {
 type PrimaryBtnProps = {
   productId: string;
   styleSize?: string;
+  productPrice: number;
 };
 
 type CarouselSlidesProps = {
@@ -227,11 +229,15 @@ type ProductGalleryProps = {
 
 type ProductTechSpecs = ProductDetails & {
   shortened?: boolean;
-}
+};
 
 type GalleryThumbnailsProps = {
   images: string[];
   title: string;
   currentImageLink: string;
   handleClick: (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
+};
+
+type CartTotalProps = {
+  cartItems: Product[];
 };

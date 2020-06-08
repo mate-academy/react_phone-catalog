@@ -1,4 +1,6 @@
-import React, { useState, useEffect, useCallback, useRef } from 'react';
+import React, {
+  useState, useEffect, useCallback, useRef,
+} from 'react';
 import { CarouselSlides } from './CarouselSlides';
 import { CarouselDots } from './CarouselDots';
 import { CarouselControl } from './CarouselControl';
@@ -31,6 +33,7 @@ export const Carousel = () => {
       setSlideWidth(currentSlideWidth);
       setMoveSize(0);
       setActiveSlide(0);
+
       return true;
     }
 

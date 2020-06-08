@@ -9,7 +9,9 @@
 @import "../components/Header/Sandwich";
 @import "../components/Header/Nav";
 @import "../components/Header/Favorites";
-@import "../components/Header/Cart";
+@import "../components/Header/Cart/Cart";
+@import "../components/Header/Cart/CartItem";
+@import "../components/Header/Cart/CartTotal";
 @import "../components/ProductsAmount/ProductsAmount";
 @import "../components/Heading/Heading";
 @import "../components/Buttons/FavoriteBtn";

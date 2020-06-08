@@ -1,0 +1,89 @@
+.cart__total {
+  max-width: 368px;
+  height: 206px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid $border-section-color;
+  box-sizing: border-box;
+
+  @media screen and (max-width: $cart-page-large-breakpoint) {
+    height: auto;
+    padding: 16px 0 0;
+    align-self: flex-end;
+    align-items: flex-end;
+    border: 0;
+  }
+
+  @media screen and (max-width: $cart-page-medium-breakpoint) {
+    align-self: center;
+    align-items: center;
+  }
+
+  &__info-container {
+    max-width: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 1px solid $border-section-color;
+
+    @media screen and (max-width: $cart-page-large-breakpoint) {
+      align-items: flex-end;
+    }
+
+    @media screen and (max-width: $cart-page-medium-breakpoint) {
+      align-items: center;
+    }
+  }
+
+  &__price {
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: $primary-color;
+
+    @media screen and (max-width: $cart-page-large-breakpoint) {
+      margin-right: 10px;
+      font-size: 24px;
+      line-height: 33px;
+    }
+  }
+
+  &__info {
+    margin-bottom: 24px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+    color: $secondary-color;
+
+    @media screen and (max-width: $cart-page-large-breakpoint) {
+      margin-bottom: 15px;
+    }
+  }
+
+  &__button {
+    margin-top: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 320px;
+    height: 48px;
+    color: white;
+    background: $primary-color;
+    @include hover(box-shadow, 0 3px 13px rgba(23, 32, 49, 0.26), 0.3);
+
+    @media screen and (max-width: 1146px) {
+      width: 190px;
+    }
+
+    @media screen and (max-width: $cart-page-large-breakpoint) {
+      margin-top: 10px;
+      width: 140px;
+      height: 34px;
+      font-size: 14px;
+    }
+  }
+}

@@ -18,8 +18,9 @@ export const Favorites = ({ isNavOpen }: FavoritesProps) => {
   return (
     <div className={cn({
       favorites: true,
-      "favorites__mobile": isNavOpen,
-    })}>
+      favorites__mobile: isNavOpen,
+    })}
+    >
       <Link
         to="/favorites"
         className={cn({

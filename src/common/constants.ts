@@ -52,6 +52,7 @@ export const SECTION_HEADINGS = {
   phones: 'Mobile phones',
   tablets: 'Tablets',
   favorites: 'Favorites',
+  cart: 'Cart',
 };
 
 export const PRICE_TEXT_SIZES = {

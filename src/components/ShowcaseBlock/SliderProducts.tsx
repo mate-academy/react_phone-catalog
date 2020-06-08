@@ -6,7 +6,7 @@ import { useShowcaseBlock } from '../_hooks/useShowcaseBlock';
 
 export const SliderProducts = ({
   title,
-  selectedProduct
+  selectedProduct,
 }: SliderProps) => {
   const {
     currentProducts,
@@ -16,7 +16,7 @@ export const SliderProducts = ({
     maxPosition,
     controlsAreHidden,
     productCardRef,
-    sliderContainerRef
+    sliderContainerRef,
   } = useShowcaseBlock(title, selectedProduct);
 
   return (

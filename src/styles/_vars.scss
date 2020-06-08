@@ -15,9 +15,12 @@ $header-height-mobile: 48px;
 $product-card-width: 272px;
 $product-card-height: 507px;
 $scrollbar-width: 16px;
+$cart-item-width: 752px;
 
 $laptops-breakpoint:
   $container-width + $scrollbar-width + $container-padding-laptop * 2;
 $tablets-landscape-breakpoint: 999px;
 $tablets-portrait-breakpoint: 899px;
+$cart-page-large-breakpoint: 832px;
+$cart-page-medium-breakpoint: 580px;
 $mobile-landscape-breakpoint: 528px;

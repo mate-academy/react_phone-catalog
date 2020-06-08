@@ -1,4 +1,6 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, {
+  useCallback, useEffect, useRef, useState,
+} from 'react';
 import cn from 'classnames';
 import { NavItem } from './NavItem';
 import { useRouter } from '../_hooks/useRouter';
@@ -35,7 +37,8 @@ export const Nav = ({ isNavOpen }: NavProps) => {
     <nav className={cn({
       nav: true,
       'nav--opened': isNavOpen,
-    })}>
+    })}
+    >
       <ul className="nav__list">
         {navList.map(({ title, link, exact }) => (
           <NavItem

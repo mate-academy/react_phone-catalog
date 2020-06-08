@@ -15,4 +15,4 @@ export const Sandwich = ({ isNavOpen, handleNavOpen }: SandwichProps) => {
       <span />
     </div>
   );
-}
+};

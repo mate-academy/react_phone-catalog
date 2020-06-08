@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { GalleryThumbnails } from './GalleryThumbnails';
 
 export const ProductGallery = ({ images, title }: ProductGalleryProps) => {
-  const [currentImageLink, setCurrentImageLink] = useState("");
+  const [currentImageLink, setCurrentImageLink] = useState('');
 
   useEffect(() => {
     setCurrentImageLink(images[0]);

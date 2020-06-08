@@ -77,7 +77,7 @@ export const ProductCard = ({
         </div>
       </div>
       <div className="product-card__buttons-container">
-        <AddProductBtn productId={id} />
+        <AddProductBtn productId={id} productPrice={price} />
         <FavoriteBtn productId={id} />
       </div>
     </article>

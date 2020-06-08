@@ -39,8 +39,8 @@ export const ProductsPage = () => {
       default:
         return {
           pageHeading: 'Products',
-          productAmountTitle: 'Models'
-        }
+          productAmountTitle: 'Models',
+        };
     }
   }, [location]);
 
