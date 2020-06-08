@@ -1,7 +1,7 @@
 @import "../../styles/utils/mixins";
 @import "../../styles/utils/vars";
 
-.footer {
+.Footer {
   height: 96px;
   width: 100%;
   background-color: #fff;
@@ -10,7 +10,7 @@
   border-top: $borderElement;
   box-sizing: border-box;
 
-  &__container {
+  &__Container {
     width: 1124px;
     height: 100px;
     margin-left: auto;
@@ -20,7 +20,7 @@
     align-items: center;
   }
 
-  &__button {
+  &__Button {
     @include smallText;
     color: $colorText;
     display: flex;
@@ -28,11 +28,11 @@
   }
 }
 
-.label-btn {
+.Label-Btn {
   margin-right: 16px;
 }
 
-.btn-back-top {
+.Btn__Back--top {
   width: 32px;
   height: 32px;
   background-color: #fff;
@@ -41,12 +41,12 @@
   @include hover(border, 1px solid $colorPrimary);
 }
 
-.logo {
+.Logo {
   width: 40px;
   height: 11px;
 }
 
-.nav__link--footer::before {
+.Nav__Link--footer::before {
   content: "";
   border-bottom: solid 3px  #313237;
   position: absolute;

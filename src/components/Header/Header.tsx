@@ -23,43 +23,29 @@ const navList = [
 ];
 
 const Header = () => {
-  // const location = useLocation();
-  // const history = useHistory();
-  // const searchParams = new URLSearchParams(location.search);
-  // const query = searchParams.get('query') || '';
-  // const [aplaiedQuery, setAplaiedQuery] = useState(query);
-
-  // const setQuery = (newQuery: string) => {
-  //     searchParams.set('query', newQuery);
-  //     history.push({ search: searchParams.toString() });
-  // }
-
-
-  // const aplayQueryWithDebounce = useCallback(debounce(setQuery, 1000), [])
-
   return (
-    <header className="header">
-      <Link to={'/'} className="header__logo logo">
+    <header className="Header">
+      <Link to={'/'} className="Header__Logo Logo">
         <img src="./img/logo/LOGO.svg" alt="logo" />
       </Link>
 
-      <nav className="header__nav nav">
-        <ul className="nav__list">
+      <nav className="Header__Nav Nav">
+        <ul className="Nav__List">
           {navList.map(item => (
-            <li key={item.title} className="nav__item">
-              <NavLink to={item.link} className="nav__link" activeClassName="nav__link--active">{item.title}</NavLink>
+            <li key={item.title} className="Nav__Item">
+              <NavLink to={item.link} className="Nav__Link" activeClassName="nav__link--active">{item.title}</NavLink>
             </li>
           ))}
         </ul>
       </nav>
-      <div className="header__wrapButtons">
+      <div className="Header__WrapButtons">
         <Route path={['/phones', '/tablets', '/accessories', '/favorites']}>
           <Search />
         </Route>
-        <button type="button" className="header__buttons favourites">
+        <button type="button" className="Header__Buttons Favourites">
           <img src="./img/Icons/heart.svg" alt="heart" />
         </button>
-        <button type="button" className="header__buttons cart">
+        <button type="button" className="Header__Buttons Cart">
           <img src="./img/Icons/shoppingBag.svg" alt="shoppingBag" />
         </button>
       </div>
