@@ -3,16 +3,20 @@ import cn from 'classnames';
 
 export const Sandwich = ({ isNavOpen, toggleSandwich }: SandwichProps) => {
   return (
-    <div
+    <a
+      href="!#"
       className={cn({
         sandwich: true,
         'sandwich--clicked': isNavOpen,
       })}
-      onClick={toggleSandwich}
+      onClick={(e) => {
+        e.preventDefault();
+        toggleSandwich();
+      }}
     >
       <span />
       <span />
       <span />
-    </div>
+    </a>
   );
 };

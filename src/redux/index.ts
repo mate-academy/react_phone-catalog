@@ -7,6 +7,7 @@ import { fetchProductDetails, fetchProducts } from '../common/helpers/api';
 import favoritesReducer from './favorites';
 import detailsReducer, { setDetails } from './details';
 import cartReducer from './cart';
+import errorReducer, { setError } from './error';
 
 
 const rootReducer = combineReducers({
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   details: detailsReducer,
   favorites: favoritesReducer,
   cart: cartReducer,
+  error: errorReducer,
 });
 
 type RootState = ReturnType<typeof rootReducer>;
@@ -26,17 +28,27 @@ export const getPrice = (state: RootState) => state.cart.price;
 
 export const loadProducts = () => {
   return async (dispatch: Dispatch<any>) => {
-    const products = await fetchProducts();
+    try {
+      const products = await fetchProducts();
 
-    dispatch(setProducts(products));
+      dispatch(setProducts(products));
+      dispatch(setError(''));
+    } catch (error) {
+      dispatch(setError('Error occurred when loading data'));
+    }
   };
 };
 
 export const loadDetails = (productId: string) => {
   return async (dispatch: Dispatch<any>) => {
-    const details = await fetchProductDetails(productId);
+    try {
+      const details = await fetchProductDetails(productId);
 
-    dispatch(setDetails(details));
+      dispatch(setDetails(details));
+      dispatch(setError(''));
+    } catch (error) {
+      dispatch(setError('Error occurred when loading data'));
+    }
   };
 };
 

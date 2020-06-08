@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 export const ProductShortSpecs = ({
   display,
@@ -32,5 +32,5 @@ export const ProductShortSpecs = ({
         </span>
       </div>
     </div>
-  )
-}
+  );
+};

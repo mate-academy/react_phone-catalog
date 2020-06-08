@@ -25,7 +25,7 @@ export const Header = () => {
       document.body.classList.remove('nav-open');
       setOpen(false);
     },
-    []
+    [],
   );
 
   const searchInputIsHidden = useMemo(() => (

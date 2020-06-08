@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 export const NavItem = (props: NavItemProps) => {
   const {
-    title, link, exact, onMount, closeNavMenu
+    title, link, exact, onMount, closeNavMenu,
   } = props;
 
   const ref = useRef(null);

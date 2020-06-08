@@ -38,6 +38,7 @@
     width: 14px;
     height: 15px;
     background-image: url("../../assets/img/breadcrumb-home.svg");
+    flex-shrink: 0;
     background-repeat: no-repeat;
     background-position: center;
     transition: all 0.2s ease-out;
@@ -49,6 +50,7 @@
     margin-right: 13px;
     width: 5px;
     height: 9px;
+    flex-shrink: 0;
     background-image: url("../../assets/img/breadcrumb-arrow.svg");
     background-repeat: no-repeat;
     background-position: center;

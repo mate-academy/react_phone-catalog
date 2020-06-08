@@ -63,7 +63,6 @@ export const useShowcaseBlock = (title?: string, selectedProduct?: Product) => {
     }
   }, [title, hotPricesProducts, newProducts, alsoLikeProducts]);
 
-  const stepWidth = useMemo(() => itemWidth * STEP, [itemWidth]);
   const carouselWidth = useMemo(() => itemWidth * currentProducts.length,
     [itemWidth, currentProducts]);
   const maxPosition = useMemo(() => containerWidth - carouselWidth + MARGIN_WIDTH,
@@ -72,6 +71,13 @@ export const useShowcaseBlock = (title?: string, selectedProduct?: Product) => {
     () => (containerWidth + MARGIN_WIDTH < carouselWidth),
     [carouselWidth, containerWidth],
   );
+  const stepWidth = useMemo(() => {
+    if (containerWidth < itemWidth * STEP) {
+      return itemWidth;
+    }
+
+    return itemWidth * STEP;
+  }, [itemWidth, containerWidth]);
 
   const productCardRef = useCallback(node => {
     if (node !== null) {

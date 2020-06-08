@@ -8,6 +8,7 @@ import { ProductDetailsPage } from './pages/ProductDetailsPage/ProductDetailsPag
 import { ProductsPage } from './pages/ProductsPage';
 import { ErrorPage } from './pages/ErrorPage';
 import { CartPage } from './pages/CartPage';
+import { AccessoriesPage } from './pages/AccessoriesPage';
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
       <Switch>
         <Route exact path={['/', '/home']} component={HomePage} />
         <Route exact path={['/phones', '/tablets']} component={ProductsPage} />
+        <Route exact path="/accessories" component={AccessoriesPage} />
         <Route exact path="/favorites" component={FavoritesPage} />
         <Route exact path="/cart" component={CartPage} />
         <Route
