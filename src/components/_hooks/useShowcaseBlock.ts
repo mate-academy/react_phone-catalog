@@ -68,6 +68,10 @@ export const useShowcaseBlock = (title?: string, selectedProduct?: Product) => {
     [itemWidth, currentProducts]);
   const maxPosition = useMemo(() => containerWidth - carouselWidth + MARGIN_WIDTH,
     [containerWidth, carouselWidth]);
+  const controlsAreHidden = useMemo(
+    () => (containerWidth + MARGIN_WIDTH < carouselWidth),
+    [carouselWidth, containerWidth],
+  );
 
   const productCardRef = useCallback(node => {
     if (node !== null) {
@@ -105,6 +109,7 @@ export const useShowcaseBlock = (title?: string, selectedProduct?: Product) => {
     maxPosition,
     containerWidth,
     productCardRef,
+    controlsAreHidden,
     sliderContainerRef,
     frameSize: FRAME_SIZE,
   };

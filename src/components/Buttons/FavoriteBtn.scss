@@ -2,6 +2,7 @@
   display: block;
   position: relative;
   width: 40px;
+  flex-shrink: 0;
   height: 40px;
   border: 1px solid $border-btn-color;
   box-sizing: border-box;
