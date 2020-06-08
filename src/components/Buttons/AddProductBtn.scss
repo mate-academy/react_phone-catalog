@@ -3,13 +3,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 176px;
   height: 40px;
   margin-right: 8px;
   color: white;
   border: 0;
   cursor: pointer;
   @include hover(box-shadow, 0 3px 13px rgba(23, 32, 49, 0.26), 0.3);
+
+  @media screen and (max-width: $laptops-breakpoint) {
+    width: 100%;
+  }
 
   &--lg {
     width: 263px;
