@@ -1,10 +1,13 @@
 import React from 'react';
+import HeaderNavigation from './Components/HeaderNavigation/HeaderNavigation';
+import Main from './Components/HeaderNavigation/Main';
 
-import './App.scss';
+import './styles/App.scss';
 
-const App = () => (
+const App: React.FC = () => (
   <div className="App">
-    <h1>React Phone Catalog</h1>
+    <HeaderNavigation />
+    <Main />
   </div>
 );
 
