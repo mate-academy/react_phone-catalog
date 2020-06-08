@@ -48,6 +48,10 @@
 
   &__title {
     width: 260px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $primary-color;
 
     @media screen and (max-width: $cart-page-medium-breakpoint) {
       margin: 15px 0;
