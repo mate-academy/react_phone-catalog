@@ -21,6 +21,10 @@
     font-size: 14px;
     line-height: 21px;
     box-sizing: border-box;
+
+    @media screen and (max-width: $mobile-landscape-breakpoint) {
+      width: 100%;
+    }
   }
 
   &__header {
@@ -36,6 +40,10 @@
     outline: none;
     cursor: pointer;
     @include hover(border-color, $secondary-color, 0.2);
+
+    @media screen and (max-width: $mobile-landscape-breakpoint) {
+      width: 131px;
+    }
 
     &:focus {
       border-color: $primary-color;

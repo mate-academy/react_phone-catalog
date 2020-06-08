@@ -3,4 +3,16 @@
   grid-template-columns: repeat(4, $product-card-width);
   justify-items: center;
   grid-gap: 40px 16px;
+
+  @media screen and (max-width: $laptops-breakpoint) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media screen and (max-width: $tablets-landscape-breakpoint) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media screen and (max-width: 661px) {
+    grid-template-columns: 1fr;
+  }
 }
