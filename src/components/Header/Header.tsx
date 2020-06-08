@@ -1,6 +1,4 @@
-import React, {
-  useCallback, useEffect, useMemo, useState,
-} from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 
 import { Logo } from '../Logo/Logo';
 import { Nav } from './Nav';
@@ -16,18 +14,19 @@ export const Header = () => {
   const { location } = useRouter();
   const path = location.pathname;
 
-  const handleNavOpen = useCallback(() => {
+  const toggleSandwich = useCallback(() => {
     document.body.classList.toggle('nav-open');
 
     setOpen(!isNavOpen);
   }, [isNavOpen]);
 
-  useEffect(() => {
-    document.body.classList.remove('nav-open');
-
-    setOpen(false);
-  }, [location.pathname]);
-
+  const closeNavMenu = useCallback(
+    () => {
+      document.body.classList.remove('nav-open');
+      setOpen(false);
+    },
+    []
+  );
 
   const searchInputIsHidden = useMemo(() => (
     (path === LOCATIONS.phones)
@@ -42,7 +41,7 @@ export const Header = () => {
           <div className="header__sandwich">
             <Sandwich
               isNavOpen={isNavOpen}
-              handleNavOpen={handleNavOpen}
+              toggleSandwich={toggleSandwich}
             />
           </div>
           <div className="header__logo">
@@ -51,6 +50,7 @@ export const Header = () => {
           <div className="header__nav">
             <Nav
               isNavOpen={isNavOpen}
+              closeNavMenu={closeNavMenu}
             />
           </div>
         </div>
@@ -60,9 +60,11 @@ export const Header = () => {
           )}
           <Favorites
             isNavOpen={isNavOpen}
+            closeNavMenu={closeNavMenu}
           />
           <Cart
             isNavOpen={isNavOpen}
+            closeNavMenu={closeNavMenu}
           />
         </div>
       </div>

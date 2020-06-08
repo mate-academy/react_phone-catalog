@@ -6,7 +6,7 @@ import { getCartItems } from '../../../redux';
 import { LOCATIONS } from '../../../common/constants';
 import { useRouter } from '../../_hooks/useRouter';
 
-export const Cart = ({ isNavOpen }: CartProps) => {
+export const Cart = ({ isNavOpen, closeNavMenu }: CartProps) => {
   const cartItems = useSelector(getCartItems);
   const { pathname } = useRouter();
   const filledCart = useMemo(() => cartItems.length > 0, [cartItems]);
@@ -23,6 +23,7 @@ export const Cart = ({ isNavOpen }: CartProps) => {
           cart__button: true,
           'cart--active': pathname === LOCATIONS.cart,
         })}
+        onClick={closeNavMenu}
       >
         {filledCart
         && <span className="cart__indicator">{cartItems.length}</span>}
