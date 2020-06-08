@@ -10,7 +10,7 @@ export const ProductPrice = ({ price, discount, styleSize }: ProductPriceProps) 
   ), [price, discount]);
   const discountVisible = useMemo(
     () => discount > 0 && pathname !== LOCATIONS.cart,
-    [discount, pathname]
+    [discount, pathname],
   );
 
   return (

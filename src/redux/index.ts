@@ -23,7 +23,6 @@ export const getDetails = (state: RootState) => state.details;
 export const getFavorites = (state: RootState) => state.favorites;
 export const getCartItems = (state: RootState) => state.cart.cartItems;
 export const getPrice = (state: RootState) => state.cart.price;
-export const getQuantity = (state: RootState) => state.cart.quantity;
 
 export const loadProducts = () => {
   return async (dispatch: Dispatch<any>) => {

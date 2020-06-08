@@ -2,7 +2,9 @@ import React, { useEffect, useRef } from 'react';
 import { NavLink } from 'react-router-dom';
 
 export const NavItem = (props: NavItemProps) => {
-  const { title, link, exact, onMount } = props;
+  const {
+    title, link, exact, onMount,
+  } = props;
 
   const ref = useRef(null);
 

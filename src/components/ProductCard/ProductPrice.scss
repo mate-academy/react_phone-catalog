@@ -6,6 +6,10 @@
   line-height: 31px;
   font-weight: bold;
 
+  @media screen and (max-width: 580px) {
+    margin-right: 0;
+  }
+
   &--lg {
     font-size: 32px;
     line-height: 41px;

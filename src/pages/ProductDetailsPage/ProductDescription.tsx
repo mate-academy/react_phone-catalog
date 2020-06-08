@@ -1,8 +1,8 @@
-import React from 'react'
+import React from 'react';
 
 export const ProductDescription = ({
   description,
-  additionalFeatures
+  additionalFeatures,
 }: ProductDetails) => {
   return (
     <>
@@ -19,5 +19,5 @@ export const ProductDescription = ({
         </>
       )}
     </>
-  )
-}
+  );
+};

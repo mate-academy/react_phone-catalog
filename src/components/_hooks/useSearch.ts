@@ -95,7 +95,7 @@ export const useSearch = () => {
       if (key === 'Escape') {
         handleResetAndFocus();
       }
-    }, [handleResetAndFocus]
+    }, [handleResetAndFocus],
   );
 
   return {

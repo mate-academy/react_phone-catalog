@@ -8,11 +8,18 @@ const SUBTRACT_QUANTITY = 'SUBTRACT_QUANTITY';
 export const addToCart = (product: Product | undefined, price: number) => (
   { type: ADD_TO_CART, product, price }
 );
+
 export const deleteFromCart = (id: string, price: number) => (
   { type: DELETE_FROM_CART, id, price }
 );
-export const addQuantity = (price: number) => ({ type: ADD_QUANTITY, price });
-export const subtractQuantity = (price: number) => ({ type: SUBTRACT_QUANTITY, price });
+
+export const addQuantity = (id: string, price: number) => (
+  { type: ADD_QUANTITY, id, price }
+);
+
+export const subtractQuantity = (id: string, price: number) => (
+  { type: SUBTRACT_QUANTITY, id, price }
+);
 
 type addToCartAction = Action<typeof ADD_TO_CART> & {
   product: Product;
@@ -26,25 +33,25 @@ type deleteFromCartAction = Action<typeof DELETE_FROM_CART> & {
 
 type addQuantityAction = Action<typeof ADD_QUANTITY> & {
   price: number;
+  id: string;
 };
 
 type subtractQuantityAction = Action<typeof SUBTRACT_QUANTITY> & {
   price: number;
+  id: string;
 };
 
 type PossibleAction = addToCartAction | deleteFromCartAction
-  | addQuantityAction | subtractQuantityAction;
+| addQuantityAction | subtractQuantityAction;
 
 type stateType = {
   cartItems: Product[];
   price: number;
-  quantity: number;
 };
 
 const initialState: stateType = {
   cartItems: [],
   price: 0,
-  quantity: 1,
 };
 
 const cartItemsReducer = (state = initialState, action: PossibleAction) => {
@@ -52,7 +59,8 @@ const cartItemsReducer = (state = initialState, action: PossibleAction) => {
     case ADD_TO_CART:
       return {
         ...state,
-        cartItems: [...state.cartItems, action.product],
+        cartItems: [...state.cartItems, action.product]
+          .map(item => ({ ...item, quantity: 1 })),
         price: state.price + action.price,
       };
 
@@ -66,14 +74,24 @@ const cartItemsReducer = (state = initialState, action: PossibleAction) => {
     case ADD_QUANTITY:
       return {
         ...state,
-        quantity: state.quantity + 1,
+        cartItems: state.cartItems.map(item => ({
+          ...item,
+          quantity: item.id === action.id
+            ? item.quantity! + 1
+            : item.quantity,
+        })),
         price: state.price + action.price,
       };
 
     case SUBTRACT_QUANTITY:
       return {
         ...state,
-        quantity: state.quantity - 1,
+        cartItems: state.cartItems.map(item => ({
+          ...item,
+          quantity: item.id === action.id
+            ? item.quantity! - 1
+            : item.quantity,
+        })),
         price: state.price - action.price,
       };
 

@@ -1,4 +1,5 @@
 .cart-item {
+  margin-bottom: 16px;
   padding: 31px 40px 31px 27px;
   max-width: $cart-item-width;
   height: 128px;
@@ -8,13 +9,36 @@
   border: 1px solid $border-section-color;
   box-sizing: border-box;
 
+  @media screen and (max-width: 1036px) {
+    width: 500px;
+  }
+
+  @media screen and (max-width: $cart-page-medium-breakpoint) {
+    position: relative;
+    width: 272px;
+    height: 266px;
+    flex-direction: column;
+    align-items: center;
+  }
+
   &__delete-btn {
-    width: 10px;
-    height: 10px;
+    width: 40px;
+    height: 40px;
     outline: 0;
     background-image: url("../../../assets/img/cart-item-delete-mark.svg");
     background-repeat: no-repeat;
     background-position: center;
+    transition: 0.3s;
+
+    &:hover {
+      background-image: url("../../../assets/img/clear.svg");
+    }
+
+    @media screen and (max-width: $cart-page-medium-breakpoint) {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
   }
 
   &__image {
@@ -23,13 +47,23 @@
   }
 
   &__title {
-    width: 295px;
-    height: 42px;
+    width: 260px;
+
+    @media screen and (max-width: $cart-page-medium-breakpoint) {
+      margin: 15px 0;
+      width: auto;
+    }
   }
 
   &__quantity-container {
+    margin-right: 35px;
     display: flex;
     align-items: center;
+
+    @media screen and (max-width: $cart-page-medium-breakpoint) {
+      margin-right: 0;
+      margin-bottom: 10px;
+    }
   }
 
   &__add-btn {
@@ -61,6 +95,7 @@
 
       &:hover {
         border-color: $border-btn-color;
+        cursor: auto;
       }
     }
   }

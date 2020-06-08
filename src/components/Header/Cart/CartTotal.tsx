@@ -8,9 +8,16 @@ export const CartTotal = ({ cartItems }: CartTotalProps) => {
   return (
     <div className="cart__total">
       <div className="cart__total__info-container">
-        <span className="cart__total__price">${price}</span>
+        <span className="cart__total__price">
+          $
+          {price}
+        </span>
         <span className="cart__total__info">
-          Total for {cartItems.length} items
+          Total for
+          {' '}
+          {cartItems.length}
+          {' '}
+          items
         </span>
       </div>
       <button
@@ -22,4 +29,4 @@ export const CartTotal = ({ cartItems }: CartTotalProps) => {
       </button>
     </div>
   );
-}
+};

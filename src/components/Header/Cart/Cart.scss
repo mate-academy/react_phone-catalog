@@ -1,7 +1,7 @@
 .cart {
   @extend .favorites;
 
-  @media screen and (max-width:$laptops-breakpoint) {
+  @media screen and (max-width: $laptops-breakpoint) {
     border-right: 1px solid $border-section-color;
   }
 
@@ -12,14 +12,25 @@
   &__content-container {
     max-width: 1124px;
     display: flex;
+
+    @media screen and (max-width: $cart-page-large-breakpoint) {
+      max-width: 500px;
+      flex-direction: column;
+    }
   }
 
   &__items {
-    position: relative;
     margin-right: 16px;
-    display: grid;
-    grid-template-columns: minmax(max-content, $cart-item-width);
-    grid-gap: 16px 0;
+    display: flex;
+    flex-direction: column;
+
+    @media screen and (max-width: $cart-page-large-breakpoint) {
+      margin-right: 0;
+    }
+
+    @media screen and (max-width: $cart-page-medium-breakpoint) {
+      align-items: center;
+    }
   }
 
   &__mobile {

@@ -1,59 +1,74 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { addQuantity, deleteFromCart, subtractQuantity } from '../../../redux/cart';
 import { ProductPrice } from '../../ProductCard/ProductPrice';
-import { getQuantity } from '../../../redux';
+import { getCartItems } from '../../../redux';
+import { PRODUCT_PATHS } from '../../../common/constants';
 
-type CartItemProps = {
-  id: string;
-  name: string;
-  imageUrl: string;
-  price: number;
-  discount: number;
-  index: number;
-};
-
-export const CartItem = (props: CartItemProps) => {
-  const { id, name, imageUrl, price, discount, index } = props;
+export const CartItem = (props: Product) => {
+  const {
+    id, name, type, imageUrl, price, discount,
+  } = props;
   const dispatch = useDispatch();
-  const quantity = useSelector(getQuantity);
+  const cartItems = useSelector(getCartItems);
+  const cartItem = useMemo(
+    () => cartItems.find(item => item.id === id)!,
+    [cartItems, id],
+  );
 
   const handleDeletingItem = useCallback(
     () => dispatch(deleteFromCart(id, price)),
-    [dispatch, id, price]
+    [dispatch, id, price],
   );
 
-  console.log(index)
+  const handleAdding = useCallback(
+    () => dispatch(addQuantity(id, price)),
+    [dispatch, id, price],
+  );
+
+  const handleSubtracting = useCallback(
+    () => dispatch(subtractQuantity(id, price)),
+    [dispatch, id, price],
+  );
+
+  const buttonDisabled = useMemo(
+    () => cartItem.quantity === 1,
+    [cartItem.quantity],
+  );
 
   return (
-    <div
-      className="cart-item"
-    >
+    <div className="cart-item">
       <button
         type="button"
         className="cart-item__delete-btn"
         aria-label="Delete product"
         onClick={handleDeletingItem}
       />
-      <img className="cart-item__image" src={imageUrl} alt={name} />
+      <Link
+        to={`/${PRODUCT_PATHS[type]}/${id}`}
+        className="cart-item__link"
+      >
+        <img className="cart-item__image" src={imageUrl} alt={name} />
+      </Link>
       <p className="cart-item__title">{name}</p>
       <div className="cart-item__quantity-container">
         <button
           type="button"
           className="cart-item__subtract-btn"
           aria-label="Add product quantity"
-          onClick={() => dispatch(subtractQuantity(price))}
-          disabled={quantity === 1}
+          onClick={handleSubtracting}
+          disabled={buttonDisabled}
         />
-        <span className="cart-item__quantity">{quantity}</span>
+        <span className="cart-item__quantity">{cartItem.quantity}</span>
         <button
           type="button"
           className="cart-item__add-btn"
           aria-label="Delete product quantity"
-          onClick={() => dispatch(addQuantity(price))}
+          onClick={handleAdding}
         />
       </div>
       <ProductPrice price={price} discount={discount} />
     </div>
   );
-}
+};

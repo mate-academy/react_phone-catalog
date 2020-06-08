@@ -12,6 +12,7 @@ interface Product {
   screen: string;
   capacity: string;
   ram: string;
+  quantity?: number;
 }
 
 interface ProductProps {
@@ -228,7 +229,7 @@ type ProductGalleryProps = {
 
 type ProductTechSpecs = ProductDetails & {
   shortened?: boolean;
-}
+};
 
 type GalleryThumbnailsProps = {
   images: string[];
@@ -239,4 +240,4 @@ type GalleryThumbnailsProps = {
 
 type CartTotalProps = {
   cartItems: Product[];
-}
+};
