@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import { ProductCard } from '../ProductCard/ProductCard';
 import { SliderControl } from './SliderControl';
 import { DIRECTIONS } from '../../common/constants';
@@ -11,24 +11,13 @@ export const SliderProducts = ({
   const {
     currentProducts,
     position,
-    itemWidth,
     animationDuration,
     handleSlide,
     maxPosition,
+    controlsAreHidden,
     productCardRef,
-    frameSize,
-    sliderContainerRef,
+    sliderContainerRef
   } = useShowcaseBlock(title, selectedProduct);
-
-  const sliderVisibleWidth = useMemo(
-    () => (frameSize * itemWidth),
-    [frameSize, itemWidth],
-  );
-
-  const controlsAreHidden = useMemo(
-    () => (sliderVisibleWidth < currentProducts.length * itemWidth),
-    [currentProducts, itemWidth, sliderVisibleWidth],
-  );
 
   return (
     <div className="slider" ref={sliderContainerRef}>

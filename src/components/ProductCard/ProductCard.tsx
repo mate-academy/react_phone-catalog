@@ -41,7 +41,9 @@ export const ProductCard = ({
         className="product-card__link"
         onClick={backToTop}
       >
-        <img className="product-card__image" src={imageUrl} alt={name} />
+        <div className="product-card__photo">
+          <img className="product-card__image" src={imageUrl} alt={name} />
+        </div>
         <p className="product-card__title">{name}</p>
       </Link>
       <div className="product-card__price-container">
