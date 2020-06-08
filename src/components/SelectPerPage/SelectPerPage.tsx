@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import Dropdown from '../Dropdown/Dropdown';
 import './SelectPerPage.scss';
@@ -15,8 +15,16 @@ const SelectPerPage: React.FC = () => {
   const location = useLocation();
 
   const searchParams = new URLSearchParams(location.search);
-  const perPage = searchParams.get('perPage') || 'all';
-  const [dropdownOptionValue, setDropdownOptionValue] = useState<string>(`${perPage}`);
+  const perPage = searchParams.get('perPage');
+  const [dropdownOptionValue, setDropdownOptionValue] = useState<string>('');
+
+  useEffect(() => {
+    if (!perPage) {
+      setDropdownOptionValue('all');
+    } else {
+      setDropdownOptionValue(perPage);
+    }
+  }, [perPage]);
 
   const setSearchParams = (selectOptionValue: string) => {
     setDropdownOptionValue(selectOptionValue);

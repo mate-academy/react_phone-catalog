@@ -23,23 +23,9 @@ const navList = [
 ];
 
 const Header = () => {
-  // const location = useLocation();
-  // const history = useHistory();
-  // const searchParams = new URLSearchParams(location.search);
-  // const query = searchParams.get('query') || '';
-  // const [aplaiedQuery, setAplaiedQuery] = useState(query);
-
-  // const setQuery = (newQuery: string) => {
-  //     searchParams.set('query', newQuery);
-  //     history.push({ search: searchParams.toString() });
-  // }
-
-
-  // const aplayQueryWithDebounce = useCallback(debounce(setQuery, 1000), [])
-
   return (
     <header className="header">
-      <Link to={'/'} className="header__logo logo">
+      <Link to="/" className="header__logo logo">
         <img src="./img/logo/LOGO.svg" alt="logo" />
       </Link>
 
