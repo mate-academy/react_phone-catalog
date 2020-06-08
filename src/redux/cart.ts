@@ -68,7 +68,11 @@ const cartItemsReducer = (state = initialState, action: PossibleAction) => {
       return {
         ...state,
         cartItems: state.cartItems.filter(product => product.id !== action.id),
-        price: state.price - action.price,
+        price: state.cartItems.find(
+          product => product.id === action.id)!.quantity! > 1
+          ? state.price - state.cartItems.find(
+            product => product.id === action.id)!.quantity! * action.price
+          : state.price - action.price,
       };
 
     case ADD_QUANTITY:
