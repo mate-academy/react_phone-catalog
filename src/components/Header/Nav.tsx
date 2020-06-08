@@ -12,7 +12,7 @@ const navList: NavList = [
   { title: 'Accessories', link: '/accessories', exact: false },
 ];
 
-export const Nav = ({ isNavOpen }: NavProps) => {
+export const Nav = ({ isNavOpen, closeNavMenu }: NavProps) => {
   const { pathname } = useRouter();
   const [coords, setCoords] = useState<any>(null);
   const hash: Record<string, any> = useRef({});
@@ -47,6 +47,7 @@ export const Nav = ({ isNavOpen }: NavProps) => {
             link={link}
             exact={exact}
             onMount={onMount}
+            closeNavMenu={closeNavMenu}
           />
         ))}
         {coords && (
