@@ -14,13 +14,14 @@ export const useShowcaseBlock = (title?: string, selectedProduct?: Product) => {
   const dispatch = useDispatch();
   const products: Product[] = useSelector(getProducts);
   const [position, setPosition] = useState(0);
-  const [width, setWidth] = useState(0);
+  const [cardWidth, setCardWidth] = useState(0);
+  const [containerWidth, setContainerWidth] = useState(0);
 
   useEffect(() => {
     dispatch(loadProducts());
   }, [dispatch]);
 
-  const itemWidth = useMemo(() => width + MARGIN_WIDTH, [width]);
+  const itemWidth = useMemo(() => cardWidth + MARGIN_WIDTH, [cardWidth]);
 
   const hotPricesProducts: Product[] = useMemo(() => {
     return products.filter(product => product.discount !== 0);
@@ -63,15 +64,20 @@ export const useShowcaseBlock = (title?: string, selectedProduct?: Product) => {
   }, [title, hotPricesProducts, newProducts, alsoLikeProducts]);
 
   const stepWidth = useMemo(() => itemWidth * STEP, [itemWidth]);
-  const frameWidth = useMemo(() => itemWidth * FRAME_SIZE, [itemWidth]);
   const carouselWidth = useMemo(() => itemWidth * currentProducts.length,
     [itemWidth, currentProducts]);
-  const maxPosition = useMemo(() => frameWidth - carouselWidth,
-    [frameWidth, carouselWidth]);
+  const maxPosition = useMemo(() => containerWidth - carouselWidth + MARGIN_WIDTH,
+    [containerWidth, carouselWidth]);
 
   const productCardRef = useCallback(node => {
     if (node !== null) {
-      setWidth(node.getBoundingClientRect().width);
+      setCardWidth(node.getBoundingClientRect().width);
+    }
+  }, []);
+
+  const sliderContainerRef = useCallback(node => {
+    if (node !== null) {
+      setContainerWidth(node.getBoundingClientRect().width);
     }
   }, []);
 
@@ -97,7 +103,9 @@ export const useShowcaseBlock = (title?: string, selectedProduct?: Product) => {
     animationDuration: ANIMATION_DURATION,
     handleSlide,
     maxPosition,
+    containerWidth,
     productCardRef,
+    sliderContainerRef,
     frameSize: FRAME_SIZE,
   };
 };

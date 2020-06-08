@@ -13,7 +13,7 @@ const rootReducer = combineReducers({
   products: productsReducer,
   details: detailsReducer,
   favorites: favoritesReducer,
-  cartState: cartReducer,
+  cart: cartReducer,
 });
 
 type RootState = ReturnType<typeof rootReducer>;
@@ -21,7 +21,9 @@ type RootState = ReturnType<typeof rootReducer>;
 export const getProducts = (state: RootState) => state.products;
 export const getDetails = (state: RootState) => state.details;
 export const getFavorites = (state: RootState) => state.favorites;
-export const getCart = (state: RootState) => state.cartState.cart;
+export const getCartItems = (state: RootState) => state.cart.cartItems;
+export const getPrice = (state: RootState) => state.cart.price;
+export const getQuantity = (state: RootState) => state.cart.quantity;
 
 export const loadProducts = () => {
   return async (dispatch: Dispatch<any>) => {

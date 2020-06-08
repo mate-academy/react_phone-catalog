@@ -4,13 +4,15 @@ import { Heading } from '../components/Heading/Heading';
 import { SECTION_HEADINGS, SHOWCASE_HEADINGS } from '../common/constants';
 import { ShowcaseBlock } from '../components/ShowcaseBlock/ShowcaseBlock';
 import { BackBtn } from '../components/Buttons/BackBtn';
-import { getCart } from '../redux';
+import { getCartItems, getPrice } from '../redux';
 import { CartItem } from '../components/Header/Cart/CartItem';
 import { CartTotal } from '../components/Header/Cart/CartTotal';
 
 export const CartPage = () => {
-  const cart = useSelector(getCart);
-  const filledCart = useMemo(() => cart.length > 0, [cart]);
+  const cartItems = useSelector(getCartItems);
+  const filledCart = useMemo(() => cartItems.length > 0, [cartItems]);
+  const price = useSelector(getPrice);
+  console.log(price)
 
   return (
     <div className="container">
@@ -21,12 +23,14 @@ export const CartPage = () => {
               <BackBtn />
               <Heading title={SECTION_HEADINGS.cart} />
               <div className="cart__content-container">
-                <div className="cart__list">
-                  {cart.map((product) => (
-                    <CartItem key={product.id} {...product} />
+                <ul className="cart__items">
+                  {cartItems.map((product, index) => (
+                    <CartItem key={product.id} {...product} index={index} />
                   ))}
-                </div>
-                <CartTotal />
+                </ul>
+                <CartTotal
+                  cartItems={cartItems}
+                />
               </div>
             </>
           )

@@ -1,12 +1,21 @@
 .cart {
   @extend .favorites;
 
+  @media screen and (max-width:$laptops-breakpoint) {
+    border-right: 1px solid $border-section-color;
+  }
+
+  @media screen and (max-width: $mobile-landscape-breakpoint) {
+    border-right: 0;
+  }
+
   &__content-container {
     max-width: 1124px;
     display: flex;
   }
 
-  &__list {
+  &__items {
+    position: relative;
     margin-right: 16px;
     display: grid;
     grid-template-columns: minmax(max-content, $cart-item-width);

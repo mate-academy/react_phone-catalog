@@ -1,10 +1,23 @@
 .slider {
-  overflow: hidden;
+  position: relative;
+  max-width: $container-width;
+
+  &__container {
+    overflow: hidden;
+
+  }
 
   &__controls {
+    position: absolute;
+    top: -60px;
+    right: 0;
     width: 80px;
     display: flex;
     justify-content: space-between;
+
+    @media screen and (max-width: $mobile-landscape-breakpoint) {
+      width: 72px;
+    }
   }
 
   &__list {

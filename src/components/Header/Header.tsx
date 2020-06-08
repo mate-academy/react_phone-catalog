@@ -35,32 +35,34 @@ export const Header = () => {
 
   return (
     <header className="header">
-      <div className="header__flex-wrap">
-        <div className="header__sandwich">
-          <Sandwich
+      <div className="header__container">
+        <div className="header__flex-wrap">
+          <div className="header__sandwich">
+            <Sandwich
+              isNavOpen={isNavOpen}
+              handleNavOpen={handleNavOpen}
+            />
+          </div>
+          <div className="header__logo">
+            <Logo />
+          </div>
+          <div className="header__nav">
+            <Nav
+              isNavOpen={isNavOpen}
+            />
+          </div>
+        </div>
+        <div className="header__flex-wrap">
+          {searchInputIsHidden && (
+            <Search />
+          )}
+          <Favorites
             isNavOpen={isNavOpen}
-            handleNavOpen={handleNavOpen}
+          />
+          <Cart
+            isNavOpen={isNavOpen}
           />
         </div>
-        <div className="header__logo">
-          <Logo />
-        </div>
-        <div className="header__nav">
-          <Nav
-            isNavOpen={isNavOpen}
-          />
-        </div>
-      </div>
-      <div className="header__flex-wrap">
-        {searchInputIsHidden && (
-          <Search />
-        )}
-        <Favorites
-          isNavOpen={isNavOpen}
-        />
-        <Cart
-          isNavOpen={isNavOpen}
-        />
       </div>
     </header>
   );

@@ -103,6 +103,7 @@ type ProductPriceProps = {
 type PrimaryBtnProps = {
   productId: string;
   styleSize?: string;
+  productPrice: number;
 };
 
 type CarouselSlidesProps = {
@@ -123,12 +124,8 @@ type CarouselControlProps = {
 };
 
 type SliderProps = {
-  products: Product[];
-  position: number;
-  step: number;
-  sliderVisibleWidth: number;
-  animationDuration: number;
-  productCardRef: (node: any) => void;
+  title: string;
+  selectedProduct?: Product;
 };
 
 type SliderArrowProps = {
@@ -239,3 +236,7 @@ type GalleryThumbnailsProps = {
   currentImageLink: string;
   handleClick: (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
 };
+
+type CartTotalProps = {
+  cartItems: Product[];
+}

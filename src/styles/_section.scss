@@ -1,6 +1,10 @@
 .section {
   padding-bottom: 80px;
 
+  @media screen and (max-width: $tablets-landscape-breakpoint) {
+    padding-bottom: 50px;
+  }
+
   &:first-child {
     padding-top: 24px;
   }
@@ -13,12 +17,6 @@
     margin-top: 40px;
   }
 
-  &__heading-container {
-    width: $container-width;
-    display: flex;
-    justify-content: space-between;
-  }
-
   &__breadcrumbs {
     margin-bottom: 40px;
   }
@@ -26,6 +24,15 @@
   &__carousel {
     margin-top: 40px;
     margin-bottom: 24px;
+
+    @media screen and (max-width: 649px) {
+      margin-top: 40px;
+      margin-bottom: 0;
+    }
+
+    @media screen and (max-width: $mobile-landscape-breakpoint) {
+      margin-top: 20px;
+    }
   }
 
   &__dropdowns {

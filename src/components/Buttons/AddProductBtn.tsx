@@ -1,11 +1,11 @@
 import React, { useCallback, useMemo } from 'react';
 import cn from 'classnames';
 import { useDispatch, useSelector } from 'react-redux';
-import { getCart, getProducts } from '../../redux';
+import { getCartItems, getProducts } from '../../redux';
 import { addToCart, deleteFromCart } from '../../redux/cart';
 
-export const AddProductBtn = ({ productId, styleSize }: PrimaryBtnProps) => {
-  const cart: Product[] = useSelector(getCart);
+export const AddProductBtn = ({ productId, styleSize, productPrice }: PrimaryBtnProps) => {
+  const cartItems: Product[] = useSelector(getCartItems);
   const products: Product[] = useSelector(getProducts);
   const dispatch = useDispatch();
 
@@ -15,16 +15,16 @@ export const AddProductBtn = ({ productId, styleSize }: PrimaryBtnProps) => {
       const product = products.find(p => p.id === prodId);
 
       if (e.target.checked) {
-        dispatch(addToCart(product));
+        dispatch(addToCart(product, productPrice));
       } else {
-        dispatch(deleteFromCart(prodId));
+        dispatch(deleteFromCart(prodId, productPrice));
       }
-    }, [dispatch, products],
+    }, [dispatch, products, productPrice],
   );
 
   const isInCart = useMemo(() => (
-    cart.some(product => product.id === productId)
-  ), [cart, productId]);
+    cartItems.some(product => product.id === productId)
+  ), [cartItems, productId]);
 
   return (
     <label

@@ -41,6 +41,7 @@
     background-color: transparent;
     border: 1px solid $border-btn-color;
     box-sizing: border-box;
+    @include hover(border-color, $primary-color, 0.3);
   }
 
   &__quantity {
@@ -54,5 +55,13 @@
   &__subtract-btn {
     @extend .cart-item__add-btn;
     background-image: url("../../../assets/img/cart-quantity-subtract.svg");
+
+    &:disabled {
+      opacity: 0.5;
+
+      &:hover {
+        border-color: $border-btn-color;
+      }
+    }
   }
 }

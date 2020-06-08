@@ -33,7 +33,7 @@ export const ProductDetailsPage = () => {
   }, [dispatch, match, currentProduct]);
 
   if (!product || !productDetails) {
-    return <ErrorPage />
+    return <ErrorPage />;
   }
 
   return (
@@ -67,6 +67,7 @@ export const ProductDetailsPage = () => {
                 <AddProductBtn
                   productId={product.id}
                   styleSize="button-to-cart--lg"
+                  productPrice={product.price}
                 />
                 <FavoriteBtn
                   productId={product.id}
@@ -76,7 +77,7 @@ export const ProductDetailsPage = () => {
               <ProductTechSpecs {...productDetails } shortened />
             </div>
             <div className="product__column">
-              <ProductDescription { ...productDetails }/>
+              <ProductDescription { ...productDetails } />
             </div>
             <div className="product__column">
               <h3 className="product__heading">Tech specs</h3>
