@@ -100,7 +100,7 @@ export const MobilePhonesPage: React.FC = () => {
       {totalPages > 1
         && (
           <div className="pagination">
-            <Pagination totalPages={totalPages} />
+            <Pagination totalPages={totalPages} perPage={perPage} />
           </div>
         )}
     </>

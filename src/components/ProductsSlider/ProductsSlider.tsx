@@ -31,12 +31,12 @@ const ProductsSlider: React.FC<ProductsSliderProps> = ({ visibleProducts, title 
         setPosition(position + widthCard);
       }
     }
+
     if (name === 'next') {
       setPosition(position - widthCard);
       if (-position > widthCarousel - widthCard) {
         setPosition(0);
       }
-
     }
   };
 

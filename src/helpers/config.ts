@@ -7,7 +7,7 @@ export const OPTIONS_SORT_BY = [
   {
     id: 2,
     value: 'name',
-    title: 'Goods: A to Z',
+    title: 'Alphabeticaly',
   },
   {
     id: 4,
