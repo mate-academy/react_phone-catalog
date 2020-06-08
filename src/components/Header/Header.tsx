@@ -1,7 +1,9 @@
 import React from 'react';
 import { Route, Link } from 'react-router-dom';
+import { Search } from '../Search/Search';
 import { Nav } from '../Nav/Nav';
 import './Header.scss';
+
 
 export const Header = () => {
   return (
@@ -16,12 +18,7 @@ export const Header = () => {
         <Route path="/:all">
           <div className="search header__search">
             <img src="./img/search.svg" alt="heart_icon" className="search__icon" />
-            <input
-              className="header__input"
-              type="text"
-              placeholder="Search in phones..."
-            />
-
+            <Search />
           </div>
         </Route>
         <Link to="/favorites">

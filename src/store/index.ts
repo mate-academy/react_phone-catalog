@@ -7,18 +7,21 @@ import { getAllProducts } from '../helpers/api';
 import paginationReducer from './pagination';
 import sortReducer from './sort';
 import loadingReducer, { startLoading, finishLoading } from './loading';
+import queryReducer from './query';
 
 export const getPage = (state: RootState) => state.pagination.page;
 export const getPerPage = (state: RootState) => state.pagination.perPage;
 // export const getPhones = (state: RootState) => state.products.phones;
 export const getSortField = (state: RootState) => state.sort;
 export const getLoading = (state: RootState) => state.loading;
+export const getQuery = (state: RootState) => state.query;
 
 const rootReducer = combineReducers({
   products: productsReducer,
   pagination: paginationReducer,
   sort: sortReducer,
   loading: loadingReducer,
+  query: queryReducer,
 });
 
 
@@ -26,7 +29,6 @@ export type RootState = ReturnType<typeof rootReducer>;
 
 
 export const getVisibleProducts = (state: RootState) => {
-
   let compare: (a: Products, b: Products) => number = () => 0;
 
   switch (state.sort.field) {
@@ -42,6 +44,7 @@ export const getVisibleProducts = (state: RootState) => {
   }
 
   const visibleProducts = state.products
+    .filter((product: Products) => product.name.toLowerCase().includes(state.query.toLowerCase()))
     .sort(compare);
 
   const { page, perPage } = state.pagination;

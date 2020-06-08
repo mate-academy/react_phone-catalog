@@ -1,4 +1,5 @@
 import React from 'react';
+import cn from 'classnames';
 import {
   useDispatch,
   useSelector,
@@ -18,6 +19,7 @@ const Pagination: React.FC<PaginationProps> = ({ pageNumbers }) => {
   const history = useHistory();
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
+
   console.log(perPage, page);
 
   const handlePage = (event: number) => {
@@ -38,10 +40,13 @@ const Pagination: React.FC<PaginationProps> = ({ pageNumbers }) => {
         onClick={() => handlePage(page - 1)}
         disabled={page === 1}
       >
-        <img src="img/arrow_left.svg" alt="arrow" />
+        {
+          (page === 1)
+            ? <img src="img/arrow_left.svg" alt="arrow" />
+            : <img src="img/arrow_left_dark.svg" alt="arrow" />
+        }
       </button>
       <ul className="pagination__list">
-
         {[...Array(pageNumbers)].map((_, i: number) => (
           <li
             key={i}
@@ -49,15 +54,15 @@ const Pagination: React.FC<PaginationProps> = ({ pageNumbers }) => {
           >
             <button
               type="button"
-              className="pagination__button"
+              className={cn('pagination__button', {
+                'pagination__button-active': page === (i + 1),
+              })}
               onClick={() => handlePage(i + 1)}
             >
               {i + 1}
             </button>
           </li>
         ))}
-
-
       </ul>
       <button
         type="button"
@@ -66,7 +71,11 @@ const Pagination: React.FC<PaginationProps> = ({ pageNumbers }) => {
         onClick={() => handlePage(page + 1)}
         disabled={page === pageNumbers}
       >
-        <img src="img/arrow_right.svg" alt="arrow" />
+        {
+          (page === pageNumbers)
+            ? <img src="img/arrow_right.svg" alt="arrow" />
+            : <img src="img/arrow_right_dark.svg" alt="arrow" />
+        }
       </button>
     </section>
   );

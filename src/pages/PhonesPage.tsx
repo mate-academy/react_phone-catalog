@@ -92,7 +92,7 @@ export const PhonesPage = () => {
           </section>
         )}
       <div>
-        <Pagination pageNumbers={pageNumbers} />
+        {phones.length > perPage && <Pagination pageNumbers={pageNumbers} />}
       </div>
     </>
   );
