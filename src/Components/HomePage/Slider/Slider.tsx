@@ -1,12 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import SlideImg from './SlideImg';
+import { URLs, imgWidth } from './constants';
 
 import './Slider.scss';
-
-const URLs: Array<string> = [
-  'https://photo2.tinhte.vn/data/attachment-files/2020/02/4907291_cover_galaxy_S20-top5.jpg',
-  'https://cdn.tmobile.com/content/dam/t-mobile/ntm/generic/pattern-abstract/full/bg-heroFull-multiple_phones_aerial.desktop.jpg',
-  'https://i-cdn.phonearena.com/images/article/122958-two/Samsung-collaborates-with-premium-brand-Kvadrat-for-sustainable-Galaxy-S20-Plus-phone-cases.jpg'];
 
 const dotsArr: Array<number> = [0, 1, 2];
 
@@ -14,7 +10,6 @@ const Slider: React.FC = () => {
   const [x, setX] = useState(0);
   const [dotOnFocus, setDotOnFocus] = useState(0);
 
-  const imgWidth = 1040;
   const stopSlider = (-imgWidth * (URLs.length - 1));
   let count = 0;
 
@@ -67,7 +62,6 @@ const Slider: React.FC = () => {
         </button>
 
         <div className="slider__container">
-
           {URLs.map((url, index) => (
             <SlideImg
               key={url}
@@ -76,7 +70,6 @@ const Slider: React.FC = () => {
               index={index}
             />
           ))}
-
         </div>
 
         <button
