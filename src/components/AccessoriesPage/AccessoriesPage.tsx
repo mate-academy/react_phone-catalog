@@ -11,14 +11,9 @@ export const AccessoriesPage: React.FC = () => {
   }, []);
 
   return (
-    <div className="tablet-container">
-      <h1 className="tablet__title">Sorry, no products</h1>
-      <span className="tablet__sum">
-        {/* {accessories.length}
-        {' '}
-        models */}
-      </span>
-      <div className="tablet-wrap">
+    <div className="AccessoriesContainer">
+      <h1 className="Accessories__Title">Sorry, no products</h1>
+      <div className="AccessoriesContainer__Inner">
         {accessories.map(product => (
           <Card key={product.id} {...product} />
         ))}

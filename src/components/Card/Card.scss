@@ -2,7 +2,6 @@
 @import "../../styles/utils/mixins";
 @import "../../styles/utils/vars";
 
-
 .Wrap {
   margin-right: 16px;
   background: #fff;
@@ -27,30 +26,16 @@
   }
 
   &__Title {
-    font-family: "Mont-SemiBold", sans-serif;
     height: 28px;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 21px;
-    color: #313237;
   }
 
   &__Prise {
-    // font-family: Mont;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 22px;
+    @include H2;
     line-height: 140%;
-    color: #313237;
   }
 
   &__OldPrise {
-    // font-family: Mont;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 22px;
-    line-height: 28px;
+    @include H2;
     text-decoration-line: line-through;
     color: #89939a;
   }
@@ -70,22 +55,12 @@
   }
 
   &__InfoScreen_Name {
-    // font-family: Mont;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 12px;
-    line-height: 15px;
+    @include smallText;
     color: #89939a;
   }
 
   &__InfoScreen_Value {
-    // font-family: Mont;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 12px;
-    line-height: 15px;
-    text-align: right;
-    color: #313237;
+    @include smallText;
   }
 
   &__ButtonWrap {

@@ -2,17 +2,21 @@
 @import "../../styles/utils/vars";
 @import "../../styles/reset";
 
-.dropdown {
+.Dropdown {
   height: $heightDropdown;
   border: solid 1px $colorIcons;
 
-  &__list {
+  &--focus {
+    border: solid 1px $colorPrimary;
+  }
+
+  &__List {
     margin-top: 4px;
     padding: 8px 0;
     border: $borderElement;
   }
 
-  &__item {
+  &__Item {
     width: 100%;
     height: 32px;
     padding: 5px 12px;
@@ -23,36 +27,32 @@
     justify-content: start;
   }
 
-  &__item--selected {
+  &__Item--selected {
     color: $colorPrimary;
   }
 }
 
-.option {
+.Option {
   padding: 0 12px;
   height: $heightDropdown;
   display: flex;
   justify-content: space-between;
   align-items: center;
 
-  &__title {
+  &__Title {
     line-height: 21px;
     color: $colorPrimary;
     @include ButtonText;
   }
 
-  &__btn {
+  &__Btn {
     width: 16px;
     height: 16px;
     background-color: #fff;
     @include iconInButton(url(../../img/Icons/down.svg));
   }
 
-  &__btn--focus {
+  &__Btn--focus {
     @include iconInButton(url(../../img/Icons/up.svg));
   }
-}
-
-.dropdown--focus {
-  border: solid 1px $colorPrimary;
 }

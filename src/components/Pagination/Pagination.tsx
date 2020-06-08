@@ -32,9 +32,9 @@ const Pagination: React.FC<PaginationProps> = ({ totalPages }) => {
   };
 
   return (
-    <div className="pagination">
+    <div className="Pagination">
       <Button
-        className="prev"
+        className="Prev"
         name="prev"
         disabled={currentPage === 1}
         handleOnClick={handleOnClick}
@@ -42,7 +42,7 @@ const Pagination: React.FC<PaginationProps> = ({ totalPages }) => {
       {arrPages.map(page => (
         <button
           type="button"
-          className={cn('pagination__btn', { 'pagination__btn--active': currentPage === page })}
+          className={cn('Pagination__Btn', { 'Pagination__Btn--active': currentPage === page })}
           key={page}
           value={page}
           onClick={(e: React.MouseEvent<HTMLElement>) => {
@@ -56,7 +56,7 @@ const Pagination: React.FC<PaginationProps> = ({ totalPages }) => {
         </button>
       ))}
       <Button
-        className="next"
+        className="Next"
         name="next"
         disabled={currentPage === totalPages}
         handleOnClick={handleOnClick}

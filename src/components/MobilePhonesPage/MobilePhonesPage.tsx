@@ -9,13 +9,29 @@ import Pagination from '../Pagination/Pagination';
 
 export const MobilePhonesPage: React.FC = () => {
   const [phonesOnly, setPhonesOnly] = useState<Slide[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
-    getProducts().then(data => setPhonesOnly(data.filter((product: Slide) => product.type === 'phone')));
+    const loadData = async () => {
+      setIsLoading(true);
+      try {
+        const loadedProduct = await getProducts();
+
+        setPhonesOnly(loadedProduct.filter((product: Slide) => product.type === 'phone'));
+        setIsLoaded(true);
+      } catch (error) {
+        setErrorMessage(String(error));
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    loadData();
   }, []);
 
   const location = useLocation();
-  // const history = useHistory();
   const searchParams = new URLSearchParams(location.search);
   const sortBy = searchParams.get('sortBy') || '';
   const query = searchParams.get('query') || '';
@@ -23,19 +39,6 @@ export const MobilePhonesPage: React.FC = () => {
   const page: number = Number(searchParams.get('page')) || 1;
   const lowerQuery = query.toLocaleLowerCase();
 
-  // useEffect(() => {
-  //   if (query !== '') {
-  //     searchParams.set('page', '1');
-  //     history.push({ search: searchParams.toString() });
-  //   }
-  // },[query])
-
-  // useEffect(() => {
-  //   const regex = '/page=\d/g';
-  //   const path = location.search.replace(regex, 'page=1');
-  //   <Redirect from={location.search} to={path} />
-
-  // }, [totalPages <= 1])
   let totalModels = phonesOnly.length;
   let totalPages = 0;
 
@@ -79,27 +82,35 @@ export const MobilePhonesPage: React.FC = () => {
 
   return (
     <>
-      <div className="phones-container">
-        <h1 className="phones__title">Mobile phones</h1>
-        <span className="phones__sum">
+      {errorMessage && <div>{errorMessage}</div>}
+      {isLoading
+        && (
+          <div className="Loading">
+            Loading...
+          </div>
+        )}
+      {isLoading && isLoaded && ''}
+      <div className="PhonesContainer">
+        <h1 className="Phones__Title">Mobile phones</h1>
+        <span className="Phones__Sum">
           {totalModels}
           {' '}
           models
         </span>
-        <div className="phones__dropdown">
+        <div className="Phones__Dropdown">
           <SelectSortPhones />
           <SelectPerPage />
         </div>
       </div>
 
-      <div className="phones-wrap">
+      <div className="PhonesContainer__Inner">
         {visiblePhones.map(product => (
           <Card key={product.id} {...product} />
         ))}
       </div>
       {totalPages > 1
         && (
-          <div className="pagination">
+          <div className="Pagination">
             <Pagination totalPages={totalPages} />
           </div>
         )}

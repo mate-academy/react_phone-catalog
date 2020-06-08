@@ -1,3 +1,5 @@
+@import "../styles/utils/mixins";
+
 body,
 p,
 div,
@@ -26,4 +28,8 @@ input {
 
 a {
   text-decoration: none;
+}
+
+h3 {
+  @include bodyText;
 }

@@ -12,16 +12,8 @@ type ProductsSliderProps = {
 const ProductsSlider: React.FC<ProductsSliderProps> = ({ visibleProducts, title }) => {
   const [position, setPosition] = useState(0);
   const margin = 16;
-  // const [widthCard, setWidthCard] = useState(0);
   const widthCard = 272 + margin;
   const widthCarousel = widthCard * (visibleProducts.length - 4);
-
-  // const measuredRef = useCallback(
-  //   node => {
-  //     if (node !== null) {
-  //       setWidthCard(node.getBoundingClientRect().width);
-  // }}, []);
-
 
   const handleOnClick = (name: string) => {
     if (name === 'prev') {
@@ -31,18 +23,18 @@ const ProductsSlider: React.FC<ProductsSliderProps> = ({ visibleProducts, title 
         setPosition(position + widthCard);
       }
     }
+
     if (name === 'next') {
       setPosition(position - widthCard);
       if (-position > widthCarousel - widthCard) {
         setPosition(0);
       }
-
     }
   };
 
 
   return (
-    <div className="wrapper">
+    <div className="ProductsSlider-Container">
       <h2>{title}</h2>
       <div className="container">
         <div className="Carousel__button btn-left">
