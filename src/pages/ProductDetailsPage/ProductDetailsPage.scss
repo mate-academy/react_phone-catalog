@@ -5,6 +5,14 @@
     grid-template-columns: 1.05fr 0.95fr;
     grid-gap: 64px;
     margin-top: 40px;
+
+    @media screen and (max-width: $laptops-breakpoint) {
+      grid-gap: 32px;
+    }
+
+    @media screen and (max-width: $tablets-portrait-breakpoint) {
+      grid-template-columns: 1fr;
+    }
   }
 
   &__flex-wrap {
@@ -30,6 +38,10 @@
     font-size: 12px;
     font-weight: 600;
 
+    @media screen and (max-width: 569px) {
+      width: 100%;
+    }
+
     &--text-md {
       width: auto;
       font-size: 14px;
@@ -47,6 +59,7 @@
     }
 
     &-info {
+      text-align: right;
       color: $primary-color;
     }
   }

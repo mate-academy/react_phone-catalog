@@ -42,12 +42,7 @@
     color: $primary-color;
 
     &::after {
-      content: "";
-      width: 100%;
-      position: absolute;
-      bottom: 0;
-      height: 3px;
-      background-color: $primary-color;
+      transform: scaleX(1);
     }
   }
 

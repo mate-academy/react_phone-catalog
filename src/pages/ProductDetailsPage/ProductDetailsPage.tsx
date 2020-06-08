@@ -14,6 +14,7 @@ import { useRouter } from '../../components/_hooks/useRouter';
 import { ProductTechSpecs } from './ProductTechSpecs';
 import { ProductDescription } from './ProductDescription';
 import { ErrorPage } from '../ErrorPage';
+import { ProductShortSpecs } from './ProductShortSpecs';
 
 export const ProductDetailsPage = () => {
   const dispatch = useDispatch();
@@ -74,7 +75,7 @@ export const ProductDetailsPage = () => {
                   styleSize="button-favorite--lg"
                 />
               </div>
-              <ProductTechSpecs {...productDetails} shortened />
+              <ProductShortSpecs {...productDetails} />
             </div>
             <div className="product__column">
               <ProductDescription {...productDetails} />

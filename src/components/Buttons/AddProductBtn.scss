@@ -18,6 +18,10 @@
   &--lg {
     width: 263px;
     height: 48px;
+
+    @media screen and (max-width: 569px) {
+      width: 100%;
+    }
   }
 
   &__title {
