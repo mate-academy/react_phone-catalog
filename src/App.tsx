@@ -28,6 +28,7 @@ const App = () => {
     setAccessories(gadgets.filter((el: { type: string }) => el.type === 'accessories'));
   }, [gadgets, dataFromServer]);
 
+
   return (
     <div className="App">
       <Navigation/>

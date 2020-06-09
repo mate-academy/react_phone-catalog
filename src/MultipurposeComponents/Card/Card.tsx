@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
 import cn from 'classnames';
 import { Phone } from '../../Additional/interfaces';

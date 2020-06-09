@@ -1,13 +1,22 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React, {useEffect, useState} from 'react';
+import {NavLink} from 'react-router-dom';
 import './navigation.scss';
+import {cartGoods, favGoods} from "../Additional/additional_api";
 
 export const Navigation = () => {
+  const [favQty, setFavQty] = useState(0)
+  const [cartQty, setCartQty] = useState(0)
+
+  useEffect(() => {
+    setFavQty(favGoods.length);
+    setCartQty(cartGoods.length);
+  }, [favGoods, cartGoods]);
+
 
   return (
     <nav className="Nav">
       <div className="Nav__left">
-        <img className="Nav__logo" alt="logo" src="img/icons/logo.svg" />
+        <img className="Nav__logo" alt="logo" src="img/icons/logo.svg"/>
         <ul className="Nav__list">
           <li className="Nav__list_item">
             <NavLink
@@ -55,9 +64,11 @@ export const Navigation = () => {
             alt="favourites"
             src="img/icons/fav.svg"
           />
+          <span className="Nav__right_counter">{favQty}</span>
         </NavLink>
         <NavLink to="/cart" className="Nav__right_link">
-          <img className="Nav__right_icon" alt="cart" src="img/icons/cart.svg" />
+          <img className="Nav__right_icon" alt="cart" src="img/icons/cart.svg"/>
+          <span className="Nav__right_counter">{cartQty}</span>
         </NavLink>
       </div>
     </nav>
