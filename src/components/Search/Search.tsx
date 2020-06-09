@@ -6,13 +6,13 @@ import React from 'react';
 export const Search = () => {
   const query = useSelector(getQuery);
   const dispatch = useDispatch();
-  console.log(query);
 
   return (
     <input
       className="header__input"
       type="text"
       placeholder="Search in phones..."
+      value={query}
       onChange={(event) => dispatch(setQuery(event.target.value))}
     />
   )
