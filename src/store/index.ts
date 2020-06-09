@@ -15,6 +15,8 @@ export const getSortField = (state: RootState) => state.sort;
 export const getLoading = (state: RootState) => state.loading;
 export const getQuery = (state: RootState) => state.query;
 
+export const getProducts = (state: RootState) => state.products;
+
 const rootReducer = combineReducers({
   products: productsReducer,
   pagination: paginationReducer,

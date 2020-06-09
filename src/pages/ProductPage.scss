@@ -1,15 +1,23 @@
 .Product {
   &__top {
+    margin-top: 40px;
     display: flex;
-    margin: 40px 0;
+    justify-content: space-between;
+    margin-bottom: 80px;
   }
 
   &__images_list {
     margin-right: 16px;
     list-style: none;
   }
+  &__img-container {
+    display: flex;
+  }
+  &__title {
+    margin-top: 16px;
+  }
 
-  &__images_item, &__img_container {
+  &__images_item, &__img_main {
     box-sizing: border-box;
     border: 1px solid #E2E6E9;
     background-position: center;
@@ -24,9 +32,99 @@
     background-size: 70px;
   }
 
-  &__img_container {
+  &__img_main {
     width: 464px;
     height: 464px;
-    background-size: contain;
+    background-size: 90%;
   }
+
+  &__mainInfo {
+    box-sizing: border-box;
+    width: 520px;
+  }
+
+  &__button {
+    width: 263px;
+    height: 48px;
+
+    &_favorites{
+      width: 48px;
+      height: 48px;
+    }
+  }
+
+  &__price {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+
+    &_discont {
+      margin-right: 8px;
+      font-weight: bold;
+      font-size: 32px;
+    }
+
+    &_full {
+      font-size: 22px;
+      text-decoration-line: line-through;
+      color: #89939A
+    }
+  }
+
+  &__group {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+
+    &:first-child {
+      margin-top: 32px;
+    }
+  }
+  &__info-wrap {
+    width: 320px;
+  }
+
+  &__spec-info , &__spec-name {
+    font-weight: 600;
+    font-size: 12px;
+  }
+
+  &__spec-name {
+    color: #89939A;
+  }
+  &__spec-info {
+    color:#313237;
+  }
+
+  &__info_container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__info {
+    max-width: 560px;
+
+    &_tech{
+      width: 520px;
+    }
+
+    &-block {
+      margin-bottom: 32px;
+    }
+  }
+  &__info_title {
+    margin-bottom: 16px;
+  }
+}
+.line {
+  margin: 16px 0 32px;
+}
+.backlink {
+  text-decoration: none;
+  color: #89939A;
+  padding-left: 20px;
+  margin-bottom: 16px;
+  background: url('../components/Slider/btn-prev.svg');
+  background-repeat: no-repeat;
+  background-position: left;
 }

@@ -1,30 +1,35 @@
 import { AnyAction } from 'redux';
 
 const SET_PRODUCTS = 'SET_PRODUCTS';
-// const SET_PHONES = 'SET_PHONES';
-// const SET_TABLETS = 'SET_TABLETS';
+const SET_FAVORITES = 'SET_FAVORITES';
 
 export const setProducts = (products: Products[]) => ({ type: SET_PRODUCTS, products });
-// export const setPhones = (productType: Products[]) => ({ type: SET_PHONES, productType });
+export const setFavorites = (id: string) => ({ type: SET_FAVORITES, id });
 
-type ProductsState = {
-  products: Products[];
-  // phones: Products[];
-};
 
-const defaultProducts: ProductsState = {
-  products: [],
-  // phones: [],
-};
-
-const reducer = (products = defaultProducts, action: AnyAction) => {
+const reducer = (products = [], action: AnyAction) => {
   switch (action.type) {
     case SET_PRODUCTS:
       return action.products;
-    // case SET_PHONES:
-    //   return action.phones;
-    // case SET_TABLETS:
-    //   return action.products.filter((product: Products) => product.type === 'tablet');
+    case SET_FAVORITES:
+      return products.map((product: Products) => {
+        if (!product.favorites && product.id === action.id) {
+          return {
+            ...product,
+            favorites: true,
+          };
+        }
+
+        if (product.favorites && product.id === action.id) {
+          return {
+            ...product,
+            favorites: false,
+          };
+        }
+
+        return product;
+      });
+
     default:
       return products;
   }

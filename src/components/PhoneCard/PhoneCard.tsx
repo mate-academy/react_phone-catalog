@@ -3,6 +3,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import CN from 'classnames';
+import { FavoriteButton } from '../Buttons/FavoriveButton';
 
 type PropsPhoneCard = {
   phone: Products;
@@ -24,7 +25,6 @@ const PhoneCard: React.FC<PropsPhoneCard> = ({ phone }) => {
   };
 
   const discountPrice = phone.price - phone.discount;
-  // div button dont forget onClick
 
   return (
     <section className="PhoneCard">
@@ -66,9 +66,7 @@ const PhoneCard: React.FC<PropsPhoneCard> = ({ phone }) => {
         <button type="button" className="PhoneCard__button button">
           Add to card
         </button>
-        <button type="button" className="PhoneCard__favorits-button button">
-          <img src="./img/heart.svg" alt="heart_icon" className="PhoneCard__favorits-image" />
-        </button>
+        <FavoriteButton id={phone.id} favorites={phone.favorites} />
       </div>
     </section>
 
