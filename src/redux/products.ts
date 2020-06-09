@@ -8,9 +8,9 @@ type setProductsAction = Action<typeof SET_PRODUCTS> & {
   products: Product[];
 };
 
-type PossibleAction = setProductsAction;
+type AllowedActions = setProductsAction;
 
-const productsReducer = (products = [], action: PossibleAction) => {
+const productsReducer = (products = [], action: AllowedActions) => {
   switch (action.type) {
     case SET_PRODUCTS:
       return action.products;

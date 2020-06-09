@@ -5,8 +5,8 @@ const DELETE_FROM_CART = 'DELETE_FROM_CART';
 const ADD_QUANTITY = 'ADD_QUANTITY';
 const SUBTRACT_QUANTITY = 'SUBTRACT_QUANTITY';
 
-export const addToCart = (product: Product | undefined, price: number) => (
-  { type: ADD_TO_CART, product, price }
+export const addToCart = (product: Product | undefined, id: string, price: number) => (
+  { type: ADD_TO_CART, product, id, price }
 );
 
 export const deleteFromCart = (id: string, price: number) => (
@@ -24,6 +24,7 @@ export const subtractQuantity = (id: string, price: number) => (
 type addToCartAction = Action<typeof ADD_TO_CART> & {
   product: Product;
   price: number;
+  id: string;
 };
 
 type deleteFromCartAction = Action<typeof DELETE_FROM_CART> & {
@@ -41,7 +42,7 @@ type subtractQuantityAction = Action<typeof SUBTRACT_QUANTITY> & {
   id: string;
 };
 
-type PossibleAction = addToCartAction | deleteFromCartAction
+type AllowedActions = addToCartAction | deleteFromCartAction
 | addQuantityAction | subtractQuantityAction;
 
 type stateType = {
@@ -54,24 +55,30 @@ const initialState: stateType = {
   price: 0,
 };
 
-const cartItemsReducer = (state = initialState, action: PossibleAction) => {
+const cartItemsReducer = (state = initialState, action: AllowedActions) => {
   switch (action.type) {
     case ADD_TO_CART:
       return {
         ...state,
         cartItems: [...state.cartItems, action.product]
-          .map(item => ({ ...item, quantity: 1 })),
+          .map(item => {
+            if (item.id === action.id) {
+              return { ...item, quantity: 1 };
+            }
+
+            return { ...item, quantity: item.quantity };
+          }),
         price: state.price + action.price,
       };
 
     case DELETE_FROM_CART:
       return {
         ...state,
-        cartItems: state.cartItems.filter(product => product.id !== action.id),
+        cartItems: state.cartItems.filter(item => item.id !== action.id),
         price: state.cartItems.find(
-          product => product.id === action.id)!.quantity! > 1
+          item => item.id === action.id)!.quantity! > 1
           ? state.price - state.cartItems.find(
-            product => product.id === action.id)!.quantity! * action.price
+            item => item.id === action.id)!.quantity! * action.price
           : state.price - action.price,
       };
 
