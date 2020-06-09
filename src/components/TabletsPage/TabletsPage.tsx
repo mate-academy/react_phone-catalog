@@ -5,24 +5,53 @@ import './TabletsPage.scss';
 
 export const TabletsPage: React.FC = () => {
   const [tablets, setTablets] = useState<Slide[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
-    getProducts().then(data => setTablets(data.filter((product: Slide) => product.type === 'tablet')));
+    setIsLoading(true);
+    const loadData = async () => {
+      try {
+        const loadedProduct = await getProducts();
+
+        setTablets(loadedProduct
+          .filter((product: Slide) => product.type === 'tablet'));
+        setIsLoaded(true);
+      } catch (error) {
+        setErrorMessage('Oops! Reload page, please');
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    loadData();
   }, []);
 
   return (
-    <div className="tablet-container">
-      <h1 className="tablet__title">Tablets</h1>
-      <span className="tablet__sum">
-        {tablets.length}
-        {' '}
-        models
-      </span>
-      <div className="tablet-wrap">
-        {tablets.map(product => (
-          <Card key={product.id} {...product} />
-        ))}
-      </div>
-    </div>
+    <>
+      {errorMessage && <div>{errorMessage}</div>}
+      {isLoading
+        && (
+          <div className="Loading">
+            Loading...
+          </div>
+        )}
+      {isLoaded && (
+        <div className="TabletContainer">
+          <h1 className="Tablet__Title">Tablets</h1>
+          <span className="Tablet__Sum">
+            {tablets.length}
+            {' '}
+            models
+          </span>
+          <div className="TabletWrap">
+            {tablets.map(product => (
+              <Card key={product.id} {...product} />
+            ))}
+          </div>
+        </div>
+      )}
+    </>
   );
 };

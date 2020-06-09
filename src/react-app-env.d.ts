@@ -19,9 +19,6 @@ interface ProdactDetails {
   images: Array<string>;
   description: string;
   [key?: string]: string | string[];
-  [key?: string]: {
-    [key: string]: string | string[] | boolean;
-  };
   hardware: {
     cpu: string;
   };

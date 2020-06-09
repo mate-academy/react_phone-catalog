@@ -17,7 +17,7 @@
   &__Logo {
     position: absolute;
     left: 24px;
-    top: calc(50% - #{ $heightLogo } / 2 + 0.5px);
+    top: calc(50% - #{ $heightLogo } / 2 - 5px);
   }
 
   &__Nav {
@@ -58,7 +58,7 @@
   &__List {
     display: flex;
     @include Uppercase;
-    color: #89939a;
+    color: $colorSecondery;
   }
 
   &__Link {
@@ -66,7 +66,7 @@
     text-decoration: none;
     padding: 26px 32px;
     position: relative;
-    color: $colorText;
+    color: $colorSecondery;
     @include hover(color, $colorPrimary);
   }
 
@@ -76,7 +76,7 @@
 
   &__Link::before {
     content: "";
-    border-bottom: solid 3px #313237;
+    border-bottom: solid 3px $colorPrimary;
     position: absolute;
     top: 60px;
     left: 32px;
@@ -88,7 +88,7 @@
 
   &__Link--active::after {
     content: "";
-    border-bottom: solid 3px #313237;
+    border-bottom: solid 3px $colorPrimary;
     position: absolute;
     top: 60px;
     left: 32px;

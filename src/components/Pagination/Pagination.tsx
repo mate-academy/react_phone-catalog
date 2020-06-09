@@ -34,7 +34,7 @@ const Pagination: React.FC<PaginationProps> = ({ totalPages }) => {
   return (
     <div className="Pagination">
       <Button
-        className="Prev"
+        className="prev"
         name="prev"
         disabled={currentPage === 1}
         handleOnClick={handleOnClick}
@@ -56,7 +56,7 @@ const Pagination: React.FC<PaginationProps> = ({ totalPages }) => {
         </button>
       ))}
       <Button
-        className="Next"
+        className="next"
         name="next"
         disabled={currentPage === totalPages}
         handleOnClick={handleOnClick}

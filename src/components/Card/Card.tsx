@@ -33,7 +33,9 @@ export const Card: React.FC<Props> = ({
           <img alt="card" src={imageUrl} className="Card__Img" />
         </Link>
         <div className="Card__ContainerInner">
-          <h3 className="Card__Title">{name}</h3>
+          <Link to={`${path}/${id}`}>
+            <h3 className="Card__Title">{name}</h3>
+          </Link>
           <span className="Card__Prise">
             $
             {(price - price * (discount / 100))}

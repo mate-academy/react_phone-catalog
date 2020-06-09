@@ -22,7 +22,7 @@
 
   &__Button {
     @include smallText;
-    color: $colorText;
+    color: $colorSecondery;
     display: flex;
     align-items: center;
   }
@@ -54,6 +54,5 @@
   left: 32px;
   right: 32px;
   transition: opacity 0.3s ease;
-
   opacity: 0;
 }

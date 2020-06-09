@@ -5,19 +5,59 @@ import './AccessoriesPage.scss';
 
 export const AccessoriesPage: React.FC = () => {
   const [accessories, setAccessories] = useState<Slide[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
-    getProducts().then(data => setAccessories(data.filter((product: Slide) => product.type === 'accessory')));
+    setIsLoading(true);
+    const loadData = async () => {
+      try {
+        const loadedProduct = await getProducts();
+
+        setAccessories(loadedProduct
+          .filter((product: Slide) => product.type === 'accessories'));
+        setIsLoaded(true);
+      } catch (error) {
+        setErrorMessage('Oops! Reload page, please');
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    loadData();
   }, []);
 
   return (
-    <div className="AccessoriesContainer">
-      <h1 className="Accessories__Title">Sorry, no products</h1>
-      <div className="AccessoriesContainer__Inner">
-        {accessories.map(product => (
-          <Card key={product.id} {...product} />
-        ))}
-      </div>
-    </div>
+    <>
+      {errorMessage && <div>{errorMessage}</div>}
+      {isLoading
+        && (
+          <div className="Loading">
+            Loading...
+          </div>
+        )}
+      {isLoaded && (
+        <div className="Accessories AccessoriesContainer">
+          <h1
+            className="Accessories__Title"
+          >
+            Currently there are no products.
+          </h1>
+          <div className="Accessories__noGoods">
+            <img
+              src="./img/cat_noGoods.png"
+              alt="no Goods"
+              className="Accessories__Img"
+            />
+          </div>
+          <div className="Accessories__Img">
+            {accessories.map(product => (
+              <Card key={product.id} {...product} />
+            ))}
+          </div>
+        </div>
+      )}
+    </>
   );
 };

@@ -26,8 +26,8 @@ const SelectPerPage: React.FC = () => {
   };
 
   return (
-    <div className="phones__dropdown--sortItemInPage">
-      <p className="title">Item on page</p>
+    <div className="Phones__Dropdown--sortItemInPage">
+      <p className="Title">Item on page</p>
       <Dropdown
         options={options}
         value={dropdownOptionValue}

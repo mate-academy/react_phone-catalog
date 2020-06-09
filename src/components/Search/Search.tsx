@@ -25,10 +25,10 @@ const Search = () => {
   };
 
   return (
-    <div className="wrap__search">
+    <div className="Wrap__Search">
       <input
         type="text"
-        className="search"
+        className="Search"
         placeholder="Search in phones..."
         value={query}
         // value={aplaiedQuery}
@@ -39,14 +39,12 @@ const Search = () => {
           }
 
           setQuery(target.value);
-          // setAplaiedQuery(target.value);
-          // aplayQueryWithDebounce(target.value);
         }}
       />
       <button
         type="button"
-        className={cn('search__btn', { 'search__btn--clear': query })}
-        aria-label="Mute volume"
+        className={cn('Search__Btn', { 'Search__Btn--clear': query })}
+        aria-label="Mute text"
         onClick={clearSearch}
       />
     </div>

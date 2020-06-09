@@ -3,7 +3,7 @@
 
 .PhonesContainer {
   max-width: 1136px;
-  margin: 0 auto;
+  margin: 80px auto 24px;
   padding: 0 15px;
 
   &__Inner {
@@ -19,22 +19,12 @@
 .Phones {
 
   &__Title {
-    // font-family: Mont;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 32px;
-    line-height: 41px;
-    color: #313237;
-    letter-spacing: -0.01em;
+    @include H1;
   }
 
   &__Sum {
-    // font-family: Mont;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 21px;
-    color: #89939a;
+    @include bodyText;
+    color: $colorSecondery;
   }
 
   &__Dropdown {

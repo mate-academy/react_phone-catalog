@@ -25,15 +25,25 @@ const navList = [
 const Header = () => {
   return (
     <header className="Header">
-      <Link to={'/'} className="Header__Logo Logo">
-        <img src="./img/logo/LOGO.svg" alt="logo" />
+      <Link to="/" className="Header__Logo Logo">
+        <img
+          src="./img/logo/LOGO.svg"
+          alt="logo"
+          className="Header__LogoImg"
+        />
       </Link>
 
       <nav className="Header__Nav Nav">
         <ul className="Nav__List">
           {navList.map(item => (
             <li key={item.title} className="Nav__Item">
-              <NavLink to={item.link} className="Nav__Link" activeClassName="nav__link--active">{item.title}</NavLink>
+              <NavLink
+                to={item.link}
+                className="Nav__Link"
+                activeClassName="nav__link--active"
+              >
+                {item.title}
+              </NavLink>
             </li>
           ))}
         </ul>

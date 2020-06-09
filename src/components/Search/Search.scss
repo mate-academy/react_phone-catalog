@@ -1,13 +1,11 @@
 @import "../../styles/utils/mixins";
 @import "../../styles/utils/vars";
 
-.wrap__search {
+.Wrap__Search {
   height: 62px;
-  // background-color: #fff;
   width: 327px;
   padding: 0 24px;
   border-left: $borderElement;
-  // border-bottom: $borderElement;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -15,28 +13,27 @@
 
 }
 
-.search {
+.Search {
   height: $heightHeader;
   width: 327px;
-  // background-color: #fff;
   @include ButtonText;
-  color: $colorText;
+  color: $colorSecondery;
   line-height: 18px;
 }
 
-.search::placeholder {
+.Search::placeholder {
   color: $colorIcons;
   line-height: 64px;
   @include ButtonText;
 }
 
-.search__btn {
+.Search__Btn {
   width: 60px;
   height: 60px;
   background-color: #fff;
   @include iconInButton(url(../../img/Icons/Search.svg));
 }
 
-.search__btn--clear {
+.Search__Btn--clear {
   @include iconInButton(url(../../img/Icons/cross.svg));
 }

@@ -9,20 +9,21 @@ import Pagination from '../Pagination/Pagination';
 
 export const MobilePhonesPage: React.FC = () => {
   const [phonesOnly, setPhonesOnly] = useState<Slide[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [isLoaded, setIsLoaded] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
+    setIsLoading(true);
     const loadData = async () => {
-      setIsLoading(true);
       try {
         const loadedProduct = await getProducts();
 
-        setPhonesOnly(loadedProduct.filter((product: Slide) => product.type === 'phone'));
+        setPhonesOnly(loadedProduct
+          .filter((product: Slide) => product.type === 'phone'));
         setIsLoaded(true);
       } catch (error) {
-        setErrorMessage(String(error));
+        setErrorMessage('Oops! Reload page, please');
       } finally {
         setIsLoading(false);
       }
@@ -89,31 +90,33 @@ export const MobilePhonesPage: React.FC = () => {
             Loading...
           </div>
         )}
-      {isLoading && isLoaded && ''}
-      <div className="PhonesContainer">
-        <h1 className="Phones__Title">Mobile phones</h1>
-        <span className="Phones__Sum">
-          {totalModels}
-          {' '}
-          models
-        </span>
-        <div className="Phones__Dropdown">
-          <SelectSortPhones />
-          <SelectPerPage />
-        </div>
-      </div>
-
-      <div className="PhonesContainer__Inner">
-        {visiblePhones.map(product => (
-          <Card key={product.id} {...product} />
-        ))}
-      </div>
-      {totalPages > 1
-        && (
-          <div className="Pagination">
-            <Pagination totalPages={totalPages} />
+      {isLoaded && (
+        <>
+          <div className="Phones PhonesContainer">
+            <h1 className="Phones__Title">Mobile phones</h1>
+            <span className="Phones__Sum">
+              {totalModels}
+              {' '}
+              models
+            </span>
+            <div className="Phones__Dropdown">
+              <SelectSortPhones />
+              <SelectPerPage />
+            </div>
           </div>
-        )}
+          <div className="PhonesContainer__Inner">
+            {visiblePhones.map(product => (
+              <Card key={product.id} {...product} />
+            ))}
+          </div>
+          {totalPages > 1
+            && (
+              <div className="Pagination">
+                <Pagination totalPages={totalPages} />
+              </div>
+            )}
+        </>
+      )}
     </>
   );
 };

@@ -7,7 +7,6 @@ export const getProducts = () => {
 
 export async function getProductDetails(id: string) {
   const response = await fetch(`${API_URL}/products/${id}.json`);
-  const goodDetail = await response.json();
 
-  return goodDetail;
+  return response.json();
 }

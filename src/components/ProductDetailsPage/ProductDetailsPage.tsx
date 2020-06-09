@@ -36,7 +36,7 @@ export const ProductDetailsPage: React.FC = () => {
       setProductDetails(preparedProductDetails);
       setIsLoaded(true);
     } catch (error) {
-      setErrorMessage(String(error));
+      setErrorMessage('Oops! Reload page, please');
     }
 
     setIsLoading(false);
@@ -181,16 +181,15 @@ export const ProductDetailsPage: React.FC = () => {
                   <div className="Card__ButtonWrap">
                     <button
                       type="button"
-                      className="Card__ButtonCart"
+                      className="Card__ButtonCart--width"
                     >
                       Add to cart
                     </button>
                     <button
                       type="button"
                       className="Card__ButtonFavor"
-                    >
-                      favor
-                    </button>
+                      aria-label="Mute text"
+                    />
                   </div>
                 </section>
                 <section className="ProdactPage__Info">
