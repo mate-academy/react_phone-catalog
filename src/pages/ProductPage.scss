@@ -46,10 +46,11 @@
   &__button {
     width: 263px;
     height: 48px;
-    &:hover {
-      box-shadow: 0px 3px 13px rgba(23, 32, 49, 0.26);
-    }
+
     &_favorites {
+      outline: none;
+      background-color: white;
+      border: 1px solid #B4BDC4;
       width: 48px;
       height: 48px;
     }
