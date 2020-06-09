@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { Footer } from './components/Footer/Footer';
 import { Header } from './components/Header/Header';
@@ -9,8 +9,16 @@ import { ProductsPage } from './pages/ProductsPage';
 import { ErrorPage } from './pages/ErrorPage';
 import { CartPage } from './pages/CartPage';
 import { AccessoriesPage } from './pages/AccessoriesPage';
+import { loadProducts } from './redux';
+import { useDispatch } from 'react-redux';
 
 const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(loadProducts());
+  }, [dispatch]);
+
   return (
     <>
       <Header />

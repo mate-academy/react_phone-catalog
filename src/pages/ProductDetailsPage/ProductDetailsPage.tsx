@@ -10,31 +10,37 @@ import { ShowcaseBlock } from '../../components/ShowcaseBlock/ShowcaseBlock';
 import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 import { BackBtn } from '../../components/Buttons/BackBtn';
 import { ProductGallery } from '../../components/ProductGallery/ProductGallery';
-import { useRouter } from '../../components/_hooks/useRouter';
 import { ProductTechSpecs } from './ProductTechSpecs';
 import { ProductDescription } from './ProductDescription';
-import { ErrorPage } from '../ErrorPage';
 import { ProductShortSpecs } from './ProductShortSpecs';
+import { useParams } from 'react-router-dom';
+import { Loader } from '../../components/Loader/Loader';
 
 export const ProductDetailsPage = () => {
   const dispatch = useDispatch();
-  const { match } = useRouter();
+  const { productId } = useParams();
   const [product, setProduct] = useState<Product>();
   const productDetails: ProductDetails = useSelector(getDetails);
   const products: Product[] = useSelector(getProducts);
 
-  const currentProduct = useMemo(() => (products.find(
-    p => (p.id === match.params.productId),
-  )),
-  [products, match]);
+  const currentProduct = useMemo(() => (
+    products.find(
+      p => (p.id === productId),
+    )
+  ), [products, productId]);
 
   useEffect(() => {
-    dispatch(loadDetails(match.params.productId));
-    setProduct(currentProduct);
-  }, [dispatch, match, currentProduct]);
+    if (products.length) {
+      setProduct(currentProduct);
+    }
+  }, [dispatch, products, productId, currentProduct]);
 
-  if (!product || !productDetails) {
-    return <ErrorPage />;
+  useEffect(() => {
+    dispatch(loadDetails(productId));
+  }, [productId, dispatch]);
+
+  if (!product) {
+    return <Loader />
   }
 
   return (
