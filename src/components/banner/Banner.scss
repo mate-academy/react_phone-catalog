@@ -10,7 +10,7 @@
   border: 1px solid rgb(224, 223, 223);
   height: 100%;
   right: -40px;
-  transition: hover 0.3s;
+  transition: border 0.3s;
 
   &:hover{
     border: 1px solid rgb(151, 150, 150);
@@ -26,6 +26,11 @@
   border: 1px solid rgb(224, 223, 223);
   height: 100%;
   left: -40px;
+  transition: border 0.3s;
+
+  &:hover{
+    border: 1px solid rgb(151, 150, 150);
+  }
 }
 .slick-prev:before {
   color: rgb(226, 225, 225);

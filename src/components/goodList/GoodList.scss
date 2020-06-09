@@ -1,0 +1,35 @@
+.Card {
+  background-color: rgb(230, 245, 202);
+  display: flex;
+  flex-wrap: wrap;
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1140px;
+    margin: 0 auto;
+    list-style: none;
+
+
+
+  }
+
+  &__img {
+width: 208px;
+height: 208px;
+background-position: center;
+  }
+
+  &__item {
+    border: 1px solid #E2E6E9;
+    width: 270px;
+    padding: 32px;
+    margin-bottom: 40px;
+    box-sizing: border-box;
+  }
+
+  &__parameters {
+    list-style: none;
+  }
+}
