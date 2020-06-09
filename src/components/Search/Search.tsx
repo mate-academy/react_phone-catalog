@@ -41,7 +41,7 @@ export const Search = () => {
       search: searchParams.toString()
     })
   }*/
-  
+
   const isActiveClass = navLinks.slice(1).some(link => link.path === location.pathname);
 
   return (
@@ -63,32 +63,5 @@ export const Search = () => {
   )
 }
 
-
 //autocomplete="off"
-/*
-const [inptValue, setInputValue] = useState<string>('')
 
-  const handleChange = (value: string): void => {
-    setInputValue(value)
-    console.log(value);
-  }
-
-  const handleSubmit = (e: React.FormEvent): void => {
-    console.log('123');
-    e.preventDefault();
-  }
-
-
-<form onSubmit={handleSubmit}>
-
-<input type="text"
-  className="search__input"
-  name="search"
-  placeholder=""
-
-
-/>
-
-<button type="submit" className="customer-section__item--search">
-  </button>
-</form>*/

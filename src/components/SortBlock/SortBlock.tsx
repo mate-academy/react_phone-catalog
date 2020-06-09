@@ -3,8 +3,8 @@ import {useHistory, useLocation} from 'react-router-dom';
 
 let sortParams = [
   {title: 'Newest', value: 'age', typeParams: 'number'},
-  {title: 'Price high to low', value:'high_price', typeParams: 'string', direction: 1},
-  {title: 'Price low to high',  value:'low_price', typeParams: 'srting', direction: -1}
+  {title: 'Price high to low', value:'high_price'},
+  {title: 'Price low to high',  value:'low_price'}
 ]
 
 const itemsCount = [8, 16, 32, 64];

@@ -57,7 +57,7 @@ export const Catalog = () => {
     () => sortBy(requestedGoods, sortTypeFromURL),
     [requestedGoods, sortTypeFromURL],
   );
-  console.log(sortedGoods)
+
 
   useEffect(() => {
     setCurrentSectionGoods(goods.filter((good) => section.includes(good.type)))
@@ -111,4 +111,3 @@ export const Catalog = () => {
     </>
   )
 }
-

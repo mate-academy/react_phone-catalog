@@ -21,9 +21,3 @@ export const NavList = ( { list } :NavListProps) => {
   )
 }
 
-
-/*<NavLink to={link.path}
-              className="nav_link">
-                {link.title}
-            </NavLink>
-*/

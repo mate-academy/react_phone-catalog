@@ -3,23 +3,10 @@ import { useLocation } from 'react-router';
 import { NavLink } from 'react-router-dom';
 
 
-/*const routes = [
-  {
-    path: '/',
-    component: () => <Home />,
-  },
-  {
-    path: "/phones",
-    component: () => <Catalog />,
-  }
-]*/
-
-
-
 export const BreadCrumbs = () => {
   const location = useLocation();
   const paths = location.pathname.split("/");
-  console.log(paths)
+
   return(
   <section className="bread-crumbs">
     {paths.map((path, index) => {

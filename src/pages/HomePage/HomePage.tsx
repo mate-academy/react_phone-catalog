@@ -15,19 +15,9 @@ export const Home = () => {
   <div className="homepage">
     <Slider />
     <CardSlider goods={hotPriceModels} title={`Hot prices`} />
-    <ProductCategories />
+    <ProductCategories goods={goods} />
     <CardSlider goods={newestModels} title={`Brand new models`} />
    </div>
   )
 }
 
-/*
-<Switch>
-  <RouteContainer
-            exact
-            path={`${match.path}`}
-            component={Catalog}
-    />
-    <ShowByCategory />
-  </Switch>
-*/
