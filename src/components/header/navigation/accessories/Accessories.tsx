@@ -5,7 +5,7 @@ const Accessories = () => {
     <>
       <h1>Accessories</h1>
     </>
-  )
+  );
+};
 
-}
 export default Accessories;
