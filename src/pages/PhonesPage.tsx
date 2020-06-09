@@ -19,7 +19,6 @@ import {
 import { sortBy } from '../store/sort';
 
 export const PhonesPage = () => {
-  // const [loading, setLoading] = useState(false);
   const history = useHistory();
   const location = useLocation();
   const dispatch = useDispatch();
