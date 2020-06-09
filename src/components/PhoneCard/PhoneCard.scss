@@ -75,17 +75,32 @@
     line-height: 15px;
   }
 
+  &__button, &__button_added {
+    outline: none;
+    width: 176px;
+    height: 40px;
+    box-sizing: border-box;
+    font-family: 'Mont';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+  }
+
   &__button {
     background: $dark-gray-color;
     color: white;
     border: 1px solid $dark-gray-color;
-    width: 176px;
-    height: 40px;
-    box-sizing: border-box;
+
+    &_added {
+      background: white;
+      border: 1px solid $light-gray;
+      color: #27AE60;
+    }
   }
 
   &__favorits-button {
-    border: 1px solid $dark-gray-color;
+    outline: none;
+    border: 1px solid $border-gray;
     box-sizing: border-box;
     width: 40px;
     height: 40px;

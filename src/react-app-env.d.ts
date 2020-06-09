@@ -14,6 +14,7 @@ interface Products {
   ram: string;
   length: number;
   favorites?: boolean;
+  toCard?: boolean;
 }
 
 type Slider = {

@@ -4,6 +4,8 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import CN from 'classnames';
 import { FavoriteButton } from '../Buttons/FavoriveButton';
+import { CardButton } from '../Buttons/CardButton';
+
 
 type PropsPhoneCard = {
   phone: Products;
@@ -63,9 +65,7 @@ const PhoneCard: React.FC<PropsPhoneCard> = ({ phone }) => {
         </div>
       </div>
       <div className="PhoneCard__buttons-container">
-        <button type="button" className="PhoneCard__button button">
-          Add to card
-        </button>
+        <CardButton id={phone.id} inCard={phone.toCard} className="PhoneCard__button" />
         <FavoriteButton id={phone.id} favorites={phone.favorites} className="PhoneCard__favorits-button button" />
       </div>
     </section>
