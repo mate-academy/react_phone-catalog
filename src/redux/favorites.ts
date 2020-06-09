@@ -12,9 +12,9 @@ type setFavoriteAction = Action<typeof SET_FAVORITE> & {
 type deleteFavoriteAction = Action<typeof DELETE_FAVORITE> & {
   id: keyof Product;
 };
-type PossibleAction = setFavoriteAction | deleteFavoriteAction;
+type AllowedActions = setFavoriteAction | deleteFavoriteAction;
 
-const favoritesReducer = (favorites: Product[] = [], action: PossibleAction) => {
+const favoritesReducer = (favorites: Product[] = [], action: AllowedActions) => {
   switch (action.type) {
     case SET_FAVORITE:
       return [...favorites, action.product];

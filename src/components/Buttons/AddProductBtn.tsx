@@ -15,7 +15,7 @@ export const AddProductBtn = ({ productId, styleSize, productPrice }: PrimaryBtn
       const product = products.find(p => p.id === prodId);
 
       if (e.target.checked) {
-        dispatch(addToCart(product, productPrice));
+        dispatch(addToCart(product, prodId, productPrice));
       } else {
         dispatch(deleteFromCart(prodId, productPrice));
       }

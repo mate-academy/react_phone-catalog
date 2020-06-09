@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { getPrice } from '../../../redux';
 
 export const CartTotal = ({ cartItems }: CartTotalProps) => {
   const price = useSelector(getPrice);
+
+  const totalItems = useMemo(
+    () => cartItems.reduce((acc, item) => item.quantity! + acc, 0),
+    [cartItems]
+  );
 
   return (
     <div className="cart__total">
@@ -15,7 +20,7 @@ export const CartTotal = ({ cartItems }: CartTotalProps) => {
         <span className="cart__total__info">
           Total for
           {' '}
-          {cartItems.length}
+          {totalItems}
           {' '}
           items
         </span>
