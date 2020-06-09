@@ -29,6 +29,7 @@ const reducer = (products = [], action: AnyAction) => {
 
         return product;
       });
+
     default:
       return products;
   }
