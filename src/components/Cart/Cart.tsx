@@ -11,6 +11,11 @@ export const Cart = ({ isNavOpen, closeNavMenu }: CartProps) => {
   const { pathname } = useRouter();
   const filledCart = useMemo(() => cartItems.length > 0, [cartItems]);
 
+  const totalItems = useMemo(
+    () => cartItems.reduce((acc, item) => item.quantity! + acc, 0),
+    [cartItems],
+  );
+
   return (
     <div className={cn({
       cart: true,
@@ -26,7 +31,7 @@ export const Cart = ({ isNavOpen, closeNavMenu }: CartProps) => {
         onClick={closeNavMenu}
       >
         {filledCart
-        && <span className="cart__indicator">{cartItems.length}</span>}
+        && <span className="cart__indicator">{totalItems}</span>}
       </Link>
     </div>
   );
