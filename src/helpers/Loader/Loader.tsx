@@ -5,9 +5,9 @@ const Loader = () => (
     <div className="gooey">
       <span className="dot" />
       <div className="dots">
-        <span />
-        <span />
-        <span />
+        <span className="span" />
+        <span className="span" />
+        <span className="span" />
       </div>
     </div>
   </div>
