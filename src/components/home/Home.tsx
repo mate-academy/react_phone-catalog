@@ -37,3 +37,10 @@ export const Home: React.FC<Props> = () => {
     </div>
   )
 };
+      {/* <DataFromApi /> */}
+    </div>
+  );
+};
+
+export default Home;
+

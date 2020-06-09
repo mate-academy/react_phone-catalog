@@ -4,18 +4,18 @@ import { NavLink } from 'react-router-dom';
 
 const Navigation = () => {
   const navList = ['home', 'phones', 'tablets', 'accessories'];
-  //const [navList, setNavList] = useState([]);
+  // const [navList, setNavList] = useState([]);
 
   return (
     <>
       <nav className="Nav__wrapper">
         <ul className="Nav__list">
           <li>
-            <NavLink to="/home"
+            <NavLink
+              to="/"
               exact
               className="Logo"
-            >
-            </NavLink>
+            />
           </li>
           {navList.map((listItem) => (
             <li>
@@ -29,13 +29,12 @@ const Navigation = () => {
                 {listItem}
               </NavLink>
             </li>
-          ))
-          }
+          ))}
 
         </ul>
       </nav>
     </>
-  )
-}
-export default Navigation;
+  );
+};
 
+export default Navigation;
