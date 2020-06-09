@@ -2,7 +2,6 @@
   &__title {
     @include h1;
     margin-bottom: 40px;
-
   }
 
   &__container {
@@ -22,10 +21,6 @@
     column-gap: 28px;
   }
 
-  &__img-list {
-
-  }
-
   &__img-item {
     width: 80px;
     height: 80px;
@@ -33,6 +28,10 @@
     box-sizing: border-box;
     border: 1px solid #c4c4c4;
     margin-bottom: 16px;
+
+    &--active {
+      border: 1px solid $c-main-text;
+    }
   }
 
   &__img {
@@ -42,7 +41,6 @@
 
   &__main-img {
     padding: 10px;
-
   }
 }
 
@@ -55,8 +53,15 @@
   }
 
   &__article {
-    padding-top: 30px;
+    padding-top: 16px;
     @include body-text;
+    color: $c-extra-text;
+
+    &-title {
+      padding-top: 32px;
+      @include h3;
+      color: $c-main-text;
+    }
   }
 }
 

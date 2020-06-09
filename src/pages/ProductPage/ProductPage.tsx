@@ -1,331 +1,77 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { fetchGoodDetails } from './../../helpers/api';
-import { useParams, useHistory } from 'react-router-dom';
+import React, { useState, useEffect, useMemo } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useParams } from 'react-router-dom';
+
+import { getGoods, loadGoodDetails, getGoodDetails } from '../../store';
+import { Gallery } from './Gallery';
 import { CardSlider } from  './../../components/CardSlider';
-import { Button } from './../../components/common/Button/Button';
 import { BreadCrumbs } from '../../components/BreadCrumbs';
-import { getGoods } from '../../store';
+import { Preloader } from '../../components/Preloader';
+import { GoodDetails } from './GoodDetails';
+import { TechSpecs } from './TechSpecs';
+import { Back } from '../../components/Back';
 
 
 export const ProductPage = () => {
-  const goods: Good[] = useSelector(getGoods);
-  const temporaryColors = ['black', 'beige', 'pink'];
-  const [goodDetails, setGoodDetails] = useState<GoodDetails>()
-  const [isLoading, setIsLoading] = useState(false);
-  const [errorMessage, setErrorMessage] = useState('');
-  const [goodData, setGoodData] = useState<Good>();
-  const [recommendedGoods, setRecommendedGoods] = useState<Good[]>([]);
-  const history = useHistory();
+  const dispatch = useDispatch()
   const { goodId } = useParams();
+  const goods: Good[] = useSelector(getGoods);
+  const goodDetails: GoodDetails = useSelector(getGoodDetails);
+ /* const [goodData, setGoodData] = useState<Good>()*/
+  const [recommendedGoods, setRecommendedGoods] = useState<Good[]>([]);
+  const temporaryColors = ['black', 'beige', 'pink'];
 
-  const loadGoodDetails = async (good: string) => {
-    setIsLoading(true);
-    setErrorMessage('');
+  const goodData = useMemo(() => (
+    goods.find(good => (good.id === goodId))
+  ), [goods, goodId]);
 
-    try {
-      const data = await fetchGoodDetails(good);
-      const loadedGoodDetails = { ...data };
-      setGoodDetails(loadedGoodDetails);
-    } catch (error) {
-      setErrorMessage(String(error));
-    }
-
-    setIsLoading(false);
-  };
 
   useEffect(() => {
-    loadGoodDetails(goodId);
-  },[goodId])
+    dispatch(loadGoodDetails(goodId));
+  },[goodId, dispatch])
+  console.log(goodData)
+  console.log(goodDetails)
 
   useEffect(() => {
-    const matchedGoodData = goods.find(good => good.id === goodId);
-    if (matchedGoodData) {
-     loadGoodDetails(goodId);
-     setGoodData(matchedGoodData);
-     const filterName = matchedGoodData?.name.split(' ').splice(0, 1).toString();
-     const similarGoods = goods.filter(good => good.name.includes(filterName||''));
-     setRecommendedGoods(similarGoods);
-    } else {
-     history.push("/failed");
-    }
- }, [goodId, history, goods]);
 
+      const filterName = goodData?.name.split(' ').splice(0, 1).toString();
+      const similarGoods = goods.filter(good => good.name.includes(filterName || ''));
+      setRecommendedGoods(similarGoods);
 
-  console.log(isLoading);
-  console.log(errorMessage);
-  console.log(goodData);
-  console.log(goodId);
+  }, [goodData, goods]);
+
+  if (goodData === undefined) {
+    console.log(goodData)
+    return <Preloader />
+  }
 
 
   return (
     <section className="productpage">
       <BreadCrumbs />
-      <h1 className="productpage__title">{goodDetails?.name}</h1>
+      <Back />
+      <h1 className="productpage__title">{goodDetails.name}</h1>
       <div className="productpage__container">
 
+        <Gallery images={goodDetails.images} name={goodDetails.name} />
 
-        <section className="gallery">
-          <div className="gallery__img-container">
-            <ul className="gallery__img-list">
-              {goodDetails?.images.map((image) => (
-                <li className="gallery__img-item"
-                  key={image}
-                >
-                  <a href="./#" >
-                    <img
-                      src={image}
-                      alt={goodDetails.name}
-                      className="gallery__img"
-                    />
-                  </a>
-                </li>
-              ))}
-            </ul>
-
-              <div className="gallery__main-img">
-                <img
-                  src={goodDetails?.images[0]}
-                  alt={goodDetails?.name}
-                  className="GoodPage__ImageBig"
-                />
-              </div>
-
-          </div>
-          </section>
-
-        <section className="details">
-          <div className="details-container">
-              <div className="details__card">
-                <span className="details__colors-title">
-                  Available colors
-                </span>
-                <div className="details__colors">
-                  <ul className="details__colors-list">
-                    {temporaryColors.map(color => (
-                      <li className="details__color-item">
-                        <span
-                            className="details__color"
-                            style={{backgroundColor: color}}>
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-
-                </div>
-                <span className="details__capacity-title">
-                  Select capacity
-                </span>
-                <div className="details__capacity">
-                  <ul className="details__capacity-list">
-                      <li className="details__capacity-item">
-                        <span className="details__capacity-span">
-                          {goodData?.capacity}
-                        </span>
-                      </li>
-                    </ul>
-                </div>
-
-
-                <div className="details__price-container">
-                  <span className="details__price">
-                    {"$" + goodData?.price}
-                  </span>
-                </div>
-
-                <div className="details__btn-container btn">
-                  <Button classCSS={"btn__add-to-cart--primary"} title={'Add to cart'}  good={goodId} />
-                  <Button classCSS={"btn__add-to-fav--primary"} title={''}   good={goodId}/>
-                </div>
-
-                <div className="details__feature">
-                  <span className="details__feature-title">
-                    Screen
-                  </span>
-                  <span className="details__feature-value">
-                    {goodData?.screen}
-                  </span>
-                </div>
-                <div className="details__feature">
-                  <span className="details__feature-title">
-                    Capacity
-                  </span>
-                  <span className="details__feature-value">
-                    {goodData?.capacity}
-                  </span>
-                </div >
-                <div className="details__feature">
-                  <span className="details__feature-title">
-                    RAM
-                  </span>
-                  <span className="details__feature-value">
-                    {goodData?.ram}
-                  </span>
-                </div>
-              </div>
-
-                <div className="details__product-id">
-                  <span className="details__product-id--current">
-                    ID:
-                    {' '}
-                    {goodDetails && goodDetails.id.toUpperCase()}
-                  </span>
-                </div>
-              </div>
-      </section>
-
-
+        <GoodDetails goodData={goodData} colors={temporaryColors} />
 
         <section className="about">
           <h2 className="about__title">About</h2>
+          <h3 className="about__article-title">And then there was Pro</h3>
           <article className="about__article">
-            {goodDetails?.description}
+            {goodDetails.description}
           </article>
+          <h3 className="about__article-title">Camera</h3>
+            <article className="about__article">{goodDetails.additionalFeatures}</article>
         </section>
 
-      <section className="tech-specs">
-        <h2 className="tech-specs__title">Tech specs</h2>
+        <TechSpecs goodDetails={goodDetails} />
 
-        <ul className="tech-specs__list">
-          <li className="tech-specs__item">
-            <span className="tech-specs__item-title">Screen</span>
-            <span className="tech-specs__value">{goodData?.screen}</span>
-          </li>
-          <li className="tech-specs__item">
-            <span className="tech-specs__item-title">Resolution</span>
-            <span className="tech-specs__value">{goodDetails?.display.screenResolution}</span>
-          </li>
-          <li className="tech-specs__item">
-            <span className="tech-specs__item-title">Processor</span>
-            <span className="tech-specs__value">{goodDetails?.hardware.cpu}</span>
-          </li>
-          <li className="tech-specs__item">
-            <span className="tech-specs__item-title">RAM</span>
-            <span className="tech-specs__value">{goodData?.ram}</span>
-          </li>
-          <li className="tech-specs__item">
-            <span className="tech-specs__item-title">Built in memory</span>
-            <span className="tech-specs__value">{goodData?.capacity}</span>
-          </li>
-          <li className="tech-specs__item">
-            <span className="tech-specs__item-title">Camera</span>
-            <span className="tech-specs__value">{goodDetails?.camera.primary}</span>
-          </li>
-          <li className="tech-specs__item">
-            <span className="tech-specs__item-title">Zoom</span>
-            <span className="tech-specs__value"></span>
-          </li>
-          <li className="tech-specs__item">
-            <span className="tech-specs__item-title">Cell</span>
-            <span className="tech-specs__value">{goodDetails?.connectivity.cell}</span>
-          </li>
-        </ul>
-      </section>
       </div>
+
       <CardSlider goods={recommendedGoods} title={`You may also like`} />
-    </section>
+      </section>
   )
 }
-               /*
-
-
-
-
-
-               {goodDetail.images.map((image, i) => (
-                  <li
-                    className={cn({
-                      'gallery__img--current': i === activeImageIndex,
-                    },
-                    'gallery__img')}
-                    key={image}
-                  >
-                    <a href="./#" onClick={e => handleImages(e, i)}>
-                      <img
-                        src={image}
-                        alt={goodDetail.name}
-                        className="productpage__img"
-                      />
-                    </a>
-                  </li>
-                ))}
-              </ul>
-              <img
-                src={goodDetail.images[activeImageIndex]}
-                alt={goodDetail.name}
-                className="GoodPage__ImageBig"
-              />
-            </section>
-          </div>
-          <div className="GoodPage__Column">
-            <span className="GoodPage__Id">
-              ID:
-              {' '}
-              {goodInfo && goodInfo.id}
-            </span>
-            <section className="GoodPage__NarrowBlock">
-              <div className="GoodPage__Price">
-                <span className="GoodPage__Price--actual">
-                  {price}
-                </span>
-                {(goodInfo && goodInfo.discount > 0) && (
-                  <span className="GoodPage__Price--full">
-                    {goodInfo.price}
-                  </span>
-                )}
-              </div>
-              <div className="productpage__btn">
-                <div className="productpage__primary-btn">
-                  <PrimaryButton
-                    text={cart.some(prod => prod.id === match.params.good)
-                      ? 'Remove from cart'
-                      : 'Add to cart'}
-                    selected={cart.some(prod => prod.id === match.params.good)}
-                    id={match.params.good}
-                  />
-                </div>
-                <div className="GoodPage__Buttons--favorites">
-                  <label onClick={() => handleFavorites(good)}>
-                    <Icon name={isFavorite(good) ? 'favorites-filled' : 'favorites'} border inActive={false} />
-                  </label>
-                </div>
-              </div>
-            </section>
-            <section className="GoodPage__Info">
-              <GoodTechInfo
-                goodDetail={goodDetail}
-                goodInfo={goodInfo}
-              />
-            </section>
-          </div>
-
-          <div className="GoodPage__Column">
-            <section className="GoodPage__Description">
-              <h2 className="GoodPage__SubHeading">About</h2>
-              {goodInfo && goodInfo.snippet}
-              <div className="GoodPage__MoreInfo">
-                <h3 className="GoodPage__MoreInfo--SubHeading">More info</h3>
-                {goodDetail && goodDetail.description}
-              </div>
-            </section>
-          </div>
-
-          <div className="GoodPage__Column">
-            <section className="GoodPage__TechSpecs">
-              <h2 className="GoodPage__SubHeading">Tech specs</h2>
-              <ul>
-                <GoodSpecsInfo
-                  goodDetail={goodDetail}
-                  goodInfo={goodInfo}
-                />
-              </ul>
-            </section>
-          </div>
-        </div>
-      </article>
-    </section>
-  )
-}*/
-
-
-

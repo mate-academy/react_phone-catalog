@@ -57,10 +57,24 @@
     background-color: $bg-c-btn-primary;
     border: none;
     transition: all 0.1s ease-in;
+
+    & a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      text-decoration: none;
+      color: #fff;
+      transition: all 0.1s ease-in;
+    }
+
+    & a:hover {
+      color: #27ae60;
+    }
   }
 
   &__buy-btn:hover {
-    color: #27ae60;
     background-color: #fff;
     border: 1px solid #b4bdc4;
   }

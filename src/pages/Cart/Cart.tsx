@@ -37,7 +37,11 @@ export const Cart = () => {
               <p className="cart__total-count">{`Total for ${cartGoods.length} Items`}</p>
             </div>
             <div className="cart__total-btn">
-              <button type="button" className="cart__buy-btn">Checkout</button>
+              <button className="cart__buy-btn" type="button">
+                <a className="cart__buy-link" href="https://www.portmone.com.ua/r3/perevod" >
+                  Checkout
+                </a>
+              </button>
             </div>
           </div>
         </div>

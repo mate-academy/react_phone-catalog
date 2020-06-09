@@ -29,6 +29,7 @@
   }
 
   &__add-to-cart.cart-active,
+  &__add-to-cart--primary.cart-active,
   &__add-to-cart--primary:hover,
   &__add-to-cart:hover {
     color: #27ae60;
@@ -53,6 +54,7 @@
     width: 48px;
   }
 
+  &__add-to-fav--primary.fav-active,
   &__add-to-fav.fav-active {
     background-image: url("../../../icons/heart-like.png");
   }

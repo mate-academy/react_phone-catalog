@@ -41,6 +41,7 @@ interface GoodDetails {
   };
   display: {
     screenResolution: string;
+    screenSize: string;
   };
   camera: {
     primary: string;
@@ -49,6 +50,9 @@ interface GoodDetails {
   connectivity: {
     cell: string;
   };
+  storage: {
+    ram: string;
+  }
 }
 
 interface SortType {

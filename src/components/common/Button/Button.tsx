@@ -11,18 +11,23 @@ type ButtonProps = {
   good: Good;
 }
 
+
+
 export const Button: React.FC<ButtonProps> = ({ classCSS, title, good }) => {
   const dispatch = useDispatch();
   const cartGoods: cartGood[] = useSelector(getCartGoods);
   const favouritesGoods: Good[] = useSelector(getFavouritesGoods)
+  const isCartButton = (classCSS ==='btn__add-to-cart' || classCSS ==='btn__add-to-cart--primary');
+  const isFavButton = (classCSS === 'btn__add-to-fav' || classCSS ==='btn__add-to-fav--primary');
 
   const btnClass = cn('btn', classCSS, {
-    'cart-active': cartGoods.some(cartGood => cartGood.id === good.id) && (classCSS ==='btn__add-to-cart'),
-    'fav-active': favouritesGoods.some(favGood => favGood.id === good.id) && (classCSS === 'btn__add-to-fav'),
+    'cart-active': cartGoods.some(cartGood => cartGood.id === good.id) && isCartButton,
+    'fav-active': favouritesGoods.some(favGood => favGood.id === good.id) && isFavButton,
   });
+  const isAddedToCart = btnClass === 'btn btn__add-to-cart cart-active' || btnClass === 'btn btn__add-to-cart--primary cart-active';
 
   const handleClick = (good: Good) => {
-    if(classCSS === 'btn__add-to-cart') {
+    if (isCartButton) {
       if (cartGoods.some(cartGood => cartGood.id === good.id)) {
         return;
       }
@@ -30,7 +35,7 @@ export const Button: React.FC<ButtonProps> = ({ classCSS, title, good }) => {
       dispatch(addCartGood(good));
     }
 
-    if(classCSS === 'btn__add-to-fav') {
+    if(isFavButton) {
       if (favouritesGoods.some(favGood => favGood.id === good.id)) {
         dispatch(removeFavouriteGood(good.id));
       } else {
@@ -46,7 +51,7 @@ export const Button: React.FC<ButtonProps> = ({ classCSS, title, good }) => {
       className={btnClass}
       onClick={() => handleClick(good)}
     >
-    {btnClass === 'btn btn__add-to-cart cart-active'? 'Added to cart': title}
+    {isAddedToCart ? 'Added to cart': title}
     </button>
   )
 }
