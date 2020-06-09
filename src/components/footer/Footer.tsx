@@ -24,7 +24,7 @@ const Footer = () => {
           {footerList.map((listItem) => (
             <li>
               <NavLink
-                to={`${listItem}`}
+                to="/"
                 exact
                 className="Nav__item link"
                 activeClassName="Nav__item--active"
