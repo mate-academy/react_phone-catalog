@@ -6,6 +6,7 @@ import { getProduct } from '../helpers/api';
 import './ProductPage.scss';
 import Loader from '../helpers/Loader/Loader';
 import { PhonesSlider } from '../components/PhonesSlider/PhonesSlider';
+import { FavoriteButton } from '../components/Buttons/FavoriveButton';
 
 export const ProductPage = () => {
   const { productId } = useParams();
@@ -79,9 +80,7 @@ export const ProductPage = () => {
                       <button type="button" className="Product__button PhoneCard__button button">
                         Add to card
                       </button>
-                      <button type="button" className="Product__button_favorites PhoneCard__favorits-button button">
-                        <img src="./img/heart.svg" alt="heart_icon" className="PhoneCard__favorits-image" />
-                      </button>
+                      <FavoriteButton id={productId} favorites={prod.favorites} className="Product__button_favorites" />
                     </div>
                     <div className="Product__specs">
                       <div className="Product__group">
