@@ -14,6 +14,11 @@ export const getPerPage = (state: RootState) => state.pagination.perPage;
 export const getSortField = (state: RootState) => state.sort;
 export const getLoading = (state: RootState) => state.loading;
 export const getQuery = (state: RootState) => state.query;
+export const getQuantity = (
+  state: RootState,
+  type: string,
+) => state.products.filter((product: Products) => product.type === type).length;
+
 
 export const getProducts = (state: RootState) => state.products;
 
@@ -29,7 +34,7 @@ const rootReducer = combineReducers({
 export type RootState = ReturnType<typeof rootReducer>;
 
 
-export const getVisibleProducts = (state: RootState) => {
+export const getVisibleProducts = (state: RootState, type: string) => {
   let compare: (a: Products, b: Products) => number = () => 0;
 
   switch (state.sort.field) {
@@ -45,6 +50,7 @@ export const getVisibleProducts = (state: RootState) => {
   }
 
   const visibleProducts = state.products
+    .filter((product: Products) => product.type === type)
     .filter((product: Products) => product.name.toLowerCase().includes(state.query.toLowerCase()))
     .sort(compare);
 
@@ -61,13 +67,9 @@ export const loadData = () => {
     try {
       const productsFromServer = await getAllProducts();
 
-      // const phonesFromServer = productsFromServer.filter(phones => phones.type === 'phone');
-      // const tabletsFromServer = productsFromServer.filter(tablets => tablets.type === 'tablet');
-      //
-      // console.log(phonesFromServer, tabletsFromServer)
       dispatch(startLoading());
       dispatch(finishLoading());
-      // dispatch(setPhones(phonesFromServer));
+
       dispatch(setProducts(productsFromServer));
     } catch (error) {
       // do something to catch error
