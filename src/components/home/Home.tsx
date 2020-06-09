@@ -1,13 +1,14 @@
 import React from 'react';
 import Banner from '../banner/Banner';
-import DataFromApi from '../../helpers/DataFromApi';
+// import DataFromApi from '../../helpers/DataFromApi';
 
 const Home = () => {
   return (
     <div>
       <Banner />
-      <DataFromApi />
+      {/* <DataFromApi /> */}
     </div>
-  )
-}
+  );
+};
+
 export default Home;
