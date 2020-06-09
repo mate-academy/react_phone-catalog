@@ -27,7 +27,7 @@ export const PhonesPage: React.FC<Props> = ({ phones }) => {
 
   useEffect(() => {
     setPhonesList(phones);
-  }, []);
+  }, [phones]);
 
   const handleSortProduct = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const { value } = event.target;
