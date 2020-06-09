@@ -5,9 +5,17 @@ import {
 } from '../Additional/additional_api';
 
 export const Footer = () => {
+
+  const smoothScroll = () => (
+    window.scroll({
+      top: 0,
+      behavior: 'smooth'
+    })
+  )
+
   return (
     <footer className="Footer">
-      <img className="Nav__logo" alt="logo" src="img/icons/logo.svg" />
+      <img className="Nav__logo" alt="logo" src="img/icons/logo.svg"/>
       <ul className="Nav__list">
         <li className="Nav__list_item">
           <a className="Footer__link" href={OWNER_GIT_HUB}>GITHUB</a>
@@ -19,9 +27,9 @@ export const Footer = () => {
           <a className="Footer__link" href="/">RIGHTS</a>
         </li>
       </ul>
-      <div className="Footer__mover">
+      <div className="Footer__mover" onClick={smoothScroll}>
         <span className="Footer__mover_title">Back to top</span>
-        <img className="Footer__mover_img" alt="back to top" src="img/icons/arrow.svg" />
+        <img className="Footer__mover_img" alt="back to top" src="img/icons/arrow.svg"/>
       </div>
     </footer>
   );
