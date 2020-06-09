@@ -1,6 +1,7 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, {useContext, useEffect, useState} from 'react';
+import {NavLink} from "react-router-dom";
 import './Category.scss';
-import { ServerData } from '../../Additional/additional_api';
+import {ServerData} from '../../Additional/additional_api';
 
 export const Category = () => {
   const [serverData, setServerData] = useState([]);
@@ -22,48 +23,54 @@ export const Category = () => {
       <h1 className="Category__title">Shop by category</h1>
       <div className="Category__list_wrapper">
         <ul className="Category__list">
-          <li className="Category__list_item cli">
-            <div className="cli__img_wrapper-mobile cli__img_wrapper">
-              <img
-                className="cli__img"
-                alt="mobile phones"
-                src="img/categories/mobiles.png"
-              />
-            </div>
-            <p className="cli__description">Mobile phones</p>
-            <span className="cli__count">
+          <li>
+            <NavLink to="/phones" className="Category__list_item cli">
+              <div className="cli__img_wrapper-mobile cli__img_wrapper">
+                <img
+                  className="cli__img"
+                  alt="mobile phones"
+                  src="img/categories/mobiles.png"
+                />
+              </div>
+              <p className="cli__description">Mobile phones</p>
+              <span className="cli__count">
               {`${mobiles} models`}
             </span>
+            </NavLink>
           </li>
-          <li className="Category__list_item cli">
-            <div className="cli__img_wrapper-tablet cli__img_wrapper">
-              <img
-                className="cli__img"
-                alt="tablets"
-                src="img/categories/tablets.png"
-              />
-            </div>
-            <p className="cli__description">Tablets</p>
-            <span className="cli__count">
+          <li>
+            <NavLink to="/tablets" className="Category__list_item cli">
+              <div className="cli__img_wrapper-tablet cli__img_wrapper">
+                <img
+                  className="cli__img"
+                  alt="tablets"
+                  src="img/categories/tablets.png"
+                />
+              </div>
+              <p className="cli__description">Tablets</p>
+              <span className="cli__count">
               {tablets}
-              {' '}
-              models
+                {' '}
+                models
             </span>
+            </NavLink>
           </li>
-          <li className="Category__list_item cli">
-            <div className="cli__img_wrapper-accessories cli__img_wrapper">
-              <img
-                className="cli__img"
-                alt="accessories"
-                src="img/categories/accessories.png"
-              />
-            </div>
-            <p className="cli__description">Accessories</p>
-            <span className="cli__count">
+          <li>
+            <NavLink to="/accessories" className="Category__list_item cli">
+              <div className="cli__img_wrapper-accessories cli__img_wrapper">
+                <img
+                  className="cli__img"
+                  alt="accessories"
+                  src="img/categories/accessories.png"
+                />
+              </div>
+              <p className="cli__description">Accessories</p>
+              <span className="cli__count">
               {accessories}
-              {' '}
-              models
+                {' '}
+                models
             </span>
+            </NavLink>
           </li>
         </ul>
       </div>

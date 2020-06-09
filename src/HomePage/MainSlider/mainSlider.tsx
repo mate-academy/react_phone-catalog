@@ -56,7 +56,7 @@ export const Slider = () => {
         <div className="carousel__images">
           <ul className="carousel__list" style={{ right: `${position}px` }}>
             {IMAGES_FOR_SLIDER.map((image, index) => (
-              <li key={image.slice(10, 15)}>
+              <li key={image}>
                 <img
                   className="carousel__list_img"
                   src={image}
@@ -83,7 +83,7 @@ export const Slider = () => {
           <button
             aria-label="touch me"
             type="button"
-            key={image.slice(10, 15)}
+            key={image}
             onClick={() => (clickOnPointerBar(index))}
             className={cn(position / 1040 === index
               ? 'carousel__pointer_bar carousel__pointer_bar-active'

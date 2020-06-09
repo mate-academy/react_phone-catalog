@@ -17,7 +17,14 @@
 }
 
 .cli {
+  text-decoration: none;
+  &:hover {
+    cursor: pointer;
+  }
   &__img {
+    height: 368px;
+    width: 330px;
+    transition: width 0.6s, height 0.6s;
     &_wrapper {
       width: 368px;
       height: 368px;
@@ -31,9 +38,14 @@
         background-color: rgba(141,141,146,0.85);
       }
       &-accessories {
-        background-color: rgba(151,61,95,0.85);
+        background-color: rgba(151, 61, 95, 0.85);
       }
     }
+    &:hover {
+      width: 360px;
+      height: 398px;
+    }
+
   }
   &__description {
     font-family: Mont, sans-serif;
