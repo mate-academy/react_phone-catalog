@@ -11,13 +11,13 @@ export const CartTotal = ({ cartItems }: CartTotalProps) => {
   );
 
   return (
-    <div className="cart__total">
-      <div className="cart__total__info-container">
-        <span className="cart__total__price">
+    <div className="cart-total">
+      <div className="cart-total__info-container">
+        <span className="cart-total__price">
           $
           {price}
         </span>
-        <span className="cart__total__info">
+        <span className="cart-total__info">
           Total for
           {' '}
           {totalItems}
@@ -27,7 +27,7 @@ export const CartTotal = ({ cartItems }: CartTotalProps) => {
       </div>
       <button
         type="button"
-        className="cart__total__button"
+        className="cart-total__button"
         aria-label="Checkout"
       >
         Checkout
