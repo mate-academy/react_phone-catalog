@@ -28,7 +28,7 @@ export const TabletsPage: React.FC<Props> = ({ tablets }) => {
 
   useEffect(() => {
     setTabletsList(tablets);
-  }, []);
+  }, [tablets]);
 
   const handleSortProduct = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const { value } = event.target;
