@@ -17,7 +17,8 @@ export const getQuery = (state: RootState) => state.query;
 export const getQuantity = (
   state: RootState,
   type: string,
-) => state.products.filter((product: Products) => product.type === type).length;
+) => state.products.filter((product: Products) => product.name.toLowerCase().includes(state.query.toLowerCase()))
+  .filter((product: Products) => product.type === type).length;
 
 
 export const getProducts = (state: RootState) => state.products;
