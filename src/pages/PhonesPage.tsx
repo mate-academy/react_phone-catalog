@@ -1,6 +1,5 @@
 import React, {
   ChangeEvent,
-  useState,
 } from 'react';
 import { useHistory, useLocation, Link } from 'react-router-dom';
 import {
@@ -11,7 +10,12 @@ import PhoneCard from '../components/PhoneCard/PhoneCard';
 import Loader from '../helpers/Loader/Loader';
 import Pagination from '../components/Pagination/Pagination';
 import { setPerPage } from '../store/pagination';
-import { getVisibleProducts, getLoading } from '../store';
+import {
+  getVisibleProducts,
+  getLoading,
+  RootState,
+  getQuantity,
+} from '../store';
 import { sortBy } from '../store/sort';
 
 export const PhonesPage = () => {
@@ -20,11 +24,11 @@ export const PhonesPage = () => {
   const location = useLocation();
   const dispatch = useDispatch();
   const isLoaded = useSelector(getLoading);
-  const visiblePhones = useSelector(getVisibleProducts);
-  const [phones] = useState(visiblePhones.filter((phone: Products) => phone.type === 'phone'));
+  const phonesQuatnity = useSelector((state: RootState) => getQuantity(state, 'phone'));
+  const phones = useSelector((state: RootState) => getVisibleProducts(state, 'phone'));
   const searchParams = new URLSearchParams(location.search);
   const perPage: number = Number(searchParams.get('perPage')) || phones.length;
-  const pageNumbers = Math.ceil(phones.length / perPage) || 1;
+  const pageNumbers = Math.ceil(phonesQuatnity / perPage);
 
   const sorting = (event: ChangeEvent<HTMLSelectElement>) => {
     const { value } = event.target;
@@ -60,7 +64,7 @@ export const PhonesPage = () => {
         </div>
         <h1 className="PhonesPage__head">Mobile phones</h1>
         <p className="PhonesPage__length">
-          {phones.length}
+          {phonesQuatnity}
           {' '}
           models
         </p>
@@ -86,13 +90,16 @@ export const PhonesPage = () => {
       {isLoaded ? <Loader />
         : (
           <section className="PhonesPage__list">
-            {visiblePhones.map((phone: any) => (
+            {phones.map((phone: any) => (
               <PhoneCard key={phone.age} phone={phone} />
             ))}
           </section>
         )}
       <div>
-        {phones.length > perPage && <Pagination pageNumbers={pageNumbers} />}
+        {
+          phonesQuatnity > perPage
+        && <Pagination pageNumbers={pageNumbers} />
+        }
       </div>
     </>
   );

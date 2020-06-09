@@ -5,7 +5,7 @@ import {
   useSelector,
 } from 'react-redux';
 import { useHistory, useLocation } from 'react-router-dom';
-import { getPage, getPerPage } from '../../store';
+import { getPage } from '../../store';
 import { setPage } from '../../store/pagination';
 
 type PaginationProps = {
@@ -15,12 +15,9 @@ type PaginationProps = {
 const Pagination: React.FC<PaginationProps> = ({ pageNumbers }) => {
   const dispatch = useDispatch();
   const page = useSelector(getPage);
-  const perPage = useSelector(getPerPage);
   const history = useHistory();
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
-
-  console.log(perPage, page);
 
   const handlePage = (event: number) => {
     searchParams.set('page', event.toString());
