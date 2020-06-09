@@ -6,12 +6,9 @@ type SetError = Action<typeof SET_ERROR> & {
   error: string;
 };
 
-export const setError = (error: string): SetError => {
-  return {
-    type: SET_ERROR,
-    error,
-  };
-};
+export const setError = (error: string) => (
+  { type: SET_ERROR, error }
+);
 
 type AllowedActions = SetError;
 
