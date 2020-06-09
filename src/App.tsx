@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, useLocation } from 'react-router-dom';
 import { Footer } from './components/Footer/Footer';
 import { Header } from './components/Header/Header';
 import { HomePage } from './pages/HomePage';
@@ -14,27 +14,34 @@ import { useDispatch } from 'react-redux';
 
 const App = () => {
   const dispatch = useDispatch();
+  const location = useLocation();
 
   useEffect(() => {
     dispatch(loadProducts());
   }, [dispatch]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
+
   return (
     <>
       <Header />
-      <Switch>
-        <Route exact path={['/', '/home']} component={HomePage} />
-        <Route exact path={['/phones', '/tablets']} component={ProductsPage} />
-        <Route exact path="/accessories" component={AccessoriesPage} />
-        <Route exact path="/favorites" component={FavoritesPage} />
-        <Route exact path="/cart" component={CartPage} />
-        <Route
-          exact
-          path="/:productType/:productId"
-          component={ProductDetailsPage}
-        />
-        <Route component={ErrorPage} />
-      </Switch>
+      <main className="main">
+        <Switch>
+          <Route exact path={['/', '/home']} component={HomePage} />
+          <Route exact path={['/phones', '/tablets']} component={ProductsPage} />
+          <Route exact path="/accessories" component={AccessoriesPage} />
+          <Route exact path="/favorites" component={FavoritesPage} />
+          <Route exact path="/cart" component={CartPage} />
+          <Route
+            exact
+            path="/:productType/:productId"
+            component={ProductDetailsPage}
+          />
+          <Route component={ErrorPage} />
+        </Switch>
+      </main>
       <Footer />
     </>
   );

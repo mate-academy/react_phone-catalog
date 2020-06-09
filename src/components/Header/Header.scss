@@ -1,5 +1,9 @@
 .header {
   height: $header-height;
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  z-index: 1;
 
   @media screen and(max-width: $mobile-landscape-breakpoint) {
     height: $header-height-mobile;
