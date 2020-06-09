@@ -75,6 +75,17 @@
     line-height: 15px;
   }
 
+  &__button, &__button_added {
+    outline: none;
+    width: 176px;
+    height: 40px;
+    box-sizing: border-box;
+    font-family: 'Mont';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+  }
+
   &__button {
     background: $dark-gray-color;
     color: white;
@@ -84,9 +95,16 @@
     box-sizing: border-box;
     transition: 0.3s;
     outline: none;
+
     &:hover {
       cursor: pointer;
       box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+    }
+  }
+  &__button_added {
+      background: white;
+      border: 1px solid $light-gray;
+      color: #27AE60;
     }
   }
 
@@ -114,7 +132,7 @@
     border: 0;
     :focus {
       outline-style: none;
-      outline-width: 0px !important;
+      outline-width: 0 !important;
       outline-color: none !important;
     }
   }

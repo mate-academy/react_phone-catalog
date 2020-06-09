@@ -9,6 +9,7 @@ import { getProducts } from '../../store/index';
 export const Header = () => {
   const products = useSelector(getProducts);
   const favorietsLength = products.filter((product: Products) => product.favorites).length;
+  const cardLength = products.filter((product: Products) => product.toCard).length;
 
   return (
     <header className="header">
@@ -19,7 +20,7 @@ export const Header = () => {
         <Nav />
       </div>
       <div className="header__right">
-        <Route path="/:all">
+        <Route path={['/phones', '/tablets', '/accessories']} exact>
           <div className="search header__search">
             <img src="./img/search.svg" alt="heart_icon" className="search__icon" />
             <Search />
@@ -32,7 +33,7 @@ export const Header = () => {
           >
             <img src="./img/heart.svg" alt="heart_icon" className="" />
             {favorietsLength > 0
-            && <span className="header__favourites">{favorietsLength}</span>}
+            && <span className="header__counter">{favorietsLength}</span>}
           </button>
         </Link>
         <Link to="/card">
@@ -41,6 +42,8 @@ export const Header = () => {
             className="header__button"
           >
             <img src="./img/shopingBag.svg" alt="shopping_icon" className="" />
+            {cardLength > 0
+            && <span className="header__counter">{cardLength}</span>}
           </button>
         </Link>
       </div>

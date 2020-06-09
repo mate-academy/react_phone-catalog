@@ -1,4 +1,5 @@
 @import "../pages/PhonesPage";
+@import "../utils/vairables";
 
 .Product {
   &__top {
@@ -50,14 +51,15 @@
   &__button {
     width: 263px;
     height: 48px;
-    cursor: pointer;
-  }
+   }
 
   &__button_favorites {
+    outline: none;
+    background-color: white;
+    border: 1px solid $border-gray;
     width: 48px;
     height: 48px;
   }
-
 
   &__price {
     display: flex;

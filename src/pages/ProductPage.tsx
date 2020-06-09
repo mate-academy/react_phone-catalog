@@ -7,6 +7,7 @@ import './ProductPage.scss';
 import Loader from '../helpers/Loader/Loader';
 import { PhonesSlider } from '../components/PhonesSlider/PhonesSlider';
 import { FavoriteButton } from '../components/Buttons/FavoriveButton';
+import { CardButton } from '../components/Buttons/CardButton';
 
 export const ProductPage = () => {
   const { productId } = useParams();
@@ -18,6 +19,8 @@ export const ProductPage = () => {
   const prod = products.find((product: Products) => product.id === productId);
   const productPrice = prod?.price || 0;
   const productDiscount = prod?.discount || 0;
+  const favorites = prod?.favorites;
+  const toCard = prod?.toCard;
   const priceWithDiscount = productPrice - productDiscount;
 
   useEffect(() => {
@@ -25,10 +28,9 @@ export const ProductPage = () => {
     try {
       getProduct(productId)
         .then(data => setCurrentProduct(data));
+      setIsLoading(true);
     } catch (error) {
       // catch error
-    } finally {
-      setIsLoading(true);
     }
   }, [productId]);
 
@@ -77,10 +79,8 @@ export const ProductPage = () => {
                   </div>
                   <div className="Product__info-wrap">
                     <div className="PhoneCard__buttons-container">
-                      <button type="button" className="Product__button PhoneCard__button button">
-                        Add to card
-                      </button>
-                      <FavoriteButton id={productId} favorites={prod.favorites} className="Product__button_favorites" />
+                      <CardButton id={productId} inCard={toCard} className="Product__button PhoneCard__button" />
+                      <FavoriteButton id={productId} favorites={favorites} className="Product__button_favorites" />
                     </div>
                     <div className="Product__specs">
                       <div className="Product__group">
