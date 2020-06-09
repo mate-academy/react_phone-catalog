@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import { Heading } from '../../components/Heading/Heading';
 import { FavoriteBtn } from '../../components/Buttons/FavoriteBtn';
 import { PRICE_TEXT_SIZES, SHOWCASE_HEADINGS, LOCATIONS } from '../../common/constants';
@@ -13,7 +14,6 @@ import { ProductGallery } from '../../components/ProductGallery/ProductGallery';
 import { ProductTechSpecs } from './ProductTechSpecs';
 import { ProductDescription } from './ProductDescription';
 import { ProductShortSpecs } from './ProductShortSpecs';
-import { useParams } from 'react-router-dom';
 import { Loader } from '../../components/Loader/Loader';
 import { ErrorPage } from '../ErrorPage';
 
@@ -40,12 +40,12 @@ export const ProductDetailsPage = () => {
     dispatch(loadDetails(productId));
   }, [productId, dispatch]);
 
-  if (!LOCATIONS.hasOwnProperty(productType)) {
-    return <ErrorPage />
+  if (!Object.prototype.hasOwnProperty.call(LOCATIONS, productType)) {
+    return <ErrorPage />;
   }
 
   if (!product) {
-    return <Loader />
+    return <Loader />;
   }
 
   return (

@@ -1,10 +1,10 @@
 import React, { useCallback, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { addQuantity, deleteFromCart, subtractQuantity } from '../../../redux/cart';
-import { ProductPrice } from '../../ProductCard/ProductPrice';
-import { getCartItems } from '../../../redux';
-import { PRODUCT_PATHS } from '../../../common/constants';
+import { addQuantity, deleteFromCart, subtractQuantity } from '../../redux/cart';
+import { ProductPrice } from '../ProductCard/ProductPrice';
+import { getCartItems } from '../../redux';
+import { PRODUCT_PATHS } from '../../common/constants';
 
 export const CartItem = (props: Product) => {
   const {

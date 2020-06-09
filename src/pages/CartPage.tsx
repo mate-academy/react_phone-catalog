@@ -5,8 +5,8 @@ import { SECTION_HEADINGS, SHOWCASE_HEADINGS } from '../common/constants';
 import { ShowcaseBlock } from '../components/ShowcaseBlock/ShowcaseBlock';
 import { BackBtn } from '../components/Buttons/BackBtn';
 import { getCartItems } from '../redux';
-import { CartItem } from '../components/Header/Cart/CartItem';
-import { CartTotal } from '../components/Header/Cart/CartTotal';
+import { CartItem } from '../components/Cart/CartItem';
+import { CartTotal } from '../components/Cart/CartTotal';
 
 export const CartPage = () => {
   const cartItems = useSelector(getCartItems);

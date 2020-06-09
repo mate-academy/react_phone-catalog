@@ -3,7 +3,7 @@ import React, { useCallback, useMemo, useState } from 'react';
 import { Logo } from '../Logo/Logo';
 import { Nav } from './Nav';
 import { Favorites } from './Favorites';
-import { Cart } from './Cart/Cart';
+import { Cart } from '../Cart/Cart';
 import { Search } from './Search';
 import { LOCATIONS } from '../../common/constants';
 import { useRouter } from '../_hooks/useRouter';

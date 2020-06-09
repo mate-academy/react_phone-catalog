@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Switch, Route, useLocation } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { Footer } from './components/Footer/Footer';
 import { Header } from './components/Header/Header';
 import { HomePage } from './pages/HomePage';
@@ -10,7 +11,7 @@ import { ErrorPage } from './pages/ErrorPage';
 import { CartPage } from './pages/CartPage';
 import { AccessoriesPage } from './pages/AccessoriesPage';
 import { loadProducts } from './redux';
-import { useDispatch } from 'react-redux';
+import { Checkout } from './components/Cart/Checkout';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -34,6 +35,7 @@ const App = () => {
           <Route exact path="/accessories" component={AccessoriesPage} />
           <Route exact path="/favorites" component={FavoritesPage} />
           <Route exact path="/cart" component={CartPage} />
+          <Route exact path="/checkout" component={Checkout} />
           <Route
             exact
             path="/:productType/:productId"

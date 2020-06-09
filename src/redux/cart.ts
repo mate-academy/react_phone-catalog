@@ -6,7 +6,9 @@ const ADD_QUANTITY = 'ADD_QUANTITY';
 const SUBTRACT_QUANTITY = 'SUBTRACT_QUANTITY';
 
 export const addToCart = (product: Product | undefined, id: string, price: number) => (
-  { type: ADD_TO_CART, product, id, price }
+  {
+    type: ADD_TO_CART, product, id, price,
+  }
 );
 
 export const deleteFromCart = (id: string, price: number) => (
@@ -76,9 +78,11 @@ const cartItemsReducer = (state = initialState, action: AllowedActions) => {
         ...state,
         cartItems: state.cartItems.filter(item => item.id !== action.id),
         price: state.cartItems.find(
-          item => item.id === action.id)!.quantity! > 1
+          item => item.id === action.id,
+        )!.quantity! > 1
           ? state.price - state.cartItems.find(
-            item => item.id === action.id)!.quantity! * action.price
+            item => item.id === action.id,
+          )!.quantity! * action.price
           : state.price - action.price,
       };
 

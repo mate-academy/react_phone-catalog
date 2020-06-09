@@ -25,13 +25,13 @@
     width: 40px;
     height: 40px;
     outline: 0;
-    background-image: url("../../../assets/img/cart-item-delete-mark.svg");
+    background-image: url("../../assets/img/cart-item-delete-mark.svg");
     background-repeat: no-repeat;
     background-position: center;
     transition: 0.3s;
 
     &:hover {
-      background-image: url("../../../assets/img/clear.svg");
+      background-image: url("../../assets/img/clear.svg");
     }
 
     @media screen and (max-width: $cart-page-medium-breakpoint) {
@@ -77,7 +77,7 @@
   &__add-btn {
     width: 32px;
     height: 32px;
-    background-image: url("../../../assets/img/cart-quantity-add.svg");
+    background-image: url("../../assets/img/cart-quantity-add.svg");
     background-repeat: no-repeat;
     background-position: center;
     background-color: transparent;
@@ -96,7 +96,7 @@
 
   &__subtract-btn {
     @extend .cart-item__add-btn;
-    background-image: url("../../../assets/img/cart-quantity-subtract.svg");
+    background-image: url("../../assets/img/cart-quantity-subtract.svg");
 
     &:disabled {
       opacity: 0.5;

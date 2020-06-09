@@ -2,9 +2,9 @@ import React, { useMemo } from 'react';
 import cn from 'classnames';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { getCartItems } from '../../../redux';
-import { LOCATIONS } from '../../../common/constants';
-import { useRouter } from '../../_hooks/useRouter';
+import { getCartItems } from '../../redux';
+import { LOCATIONS } from '../../common/constants';
+import { useRouter } from '../_hooks/useRouter';
 
 export const Cart = ({ isNavOpen, closeNavMenu }: CartProps) => {
   const cartItems = useSelector(getCartItems);
