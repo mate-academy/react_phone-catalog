@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { Heading } from '../../components/Heading/Heading';
 import { FavoriteBtn } from '../../components/Buttons/FavoriteBtn';
 import { PRICE_TEXT_SIZES, SHOWCASE_HEADINGS, LOCATIONS } from '../../common/constants';
 import { ProductPrice } from '../../components/ProductCard/ProductPrice';
 import { AddProductBtn } from '../../components/Buttons/AddProductBtn';
-import { getDetails, getProducts, loadDetails } from '../../redux';
+import { getProducts } from '../../redux';
 import { ShowcaseBlock } from '../../components/ShowcaseBlock/ShowcaseBlock';
 import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 import { BackBtn } from '../../components/Buttons/BackBtn';
@@ -16,35 +16,41 @@ import { ProductDescription } from './ProductDescription';
 import { ProductShortSpecs } from './ProductShortSpecs';
 import { Loader } from '../../components/Loader/Loader';
 import { ErrorPage } from '../ErrorPage';
+import { fetchProductDetails } from '../../common/helpers/api';
+import { setError } from '../../redux/error';
 
 export const ProductDetailsPage = () => {
-  const dispatch = useDispatch();
   const { productType, productId } = useParams();
+  const [productDetails, setProductDetails] = useState<ProductDetails>();
   const [product, setProduct] = useState<Product>();
-  const productDetails: ProductDetails = useSelector(getDetails);
   const products: Product[] = useSelector(getProducts);
 
+  const loadProductDetails = async (prodId: string) => {
+    try {
+      const details = await fetchProductDetails(prodId);
+
+      setProductDetails(details);
+    } catch (error) {
+      setError(String(error));
+    }
+  };
+
   const currentProduct = useMemo(() => (
-    products.find(
-      p => (p.id === productId),
-    )
+    products.find(p => p.id === productId)
   ), [products, productId]);
 
   useEffect(() => {
-    if (products.length) {
-      setProduct(currentProduct);
-    }
-  }, [dispatch, products, productId, currentProduct]);
+    loadProductDetails(productId);
 
-  useEffect(() => {
-    dispatch(loadDetails(productId));
-  }, [productId, dispatch]);
+    setProduct(currentProduct);
+  }, [productId, currentProduct]);
+
 
   if (!Object.prototype.hasOwnProperty.call(LOCATIONS, productType)) {
     return <ErrorPage />;
   }
 
-  if (!product) {
+  if (!product || !productDetails) {
     return <Loader />;
   }
 

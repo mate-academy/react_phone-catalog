@@ -15,7 +15,7 @@ export const CartTotal = ({ cartItems }: CartTotalProps) => {
 
   const handleResetCart = useCallback(
     () => dispatch(resetCart()),
-    [dispatch]
+    [dispatch],
   );
 
   return (

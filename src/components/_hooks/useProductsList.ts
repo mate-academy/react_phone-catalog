@@ -7,13 +7,24 @@ export const useProductsList = () => {
   const { searchedProducts } = useSearch();
   const { history, search, location } = useRouter();
 
-  const phones = useMemo(() => {
-    return searchedProducts.filter(product => product.type === PRODUCT_TYPES.phone);
-  }, [searchedProducts]);
+  const [phones, tablets]: Product[][] = useMemo(() => {
+    return searchedProducts.reduce(
+      ([accPhones, accTablets]: Product[][], product) => {
+        switch (product.type) {
+          case PRODUCT_TYPES.phone:
+            accPhones.push(product);
+            break;
+          case PRODUCT_TYPES.tablet:
+            accTablets.push(product);
+            break;
+          default:
+        }
 
-  const tablets = useMemo(() => {
-    return searchedProducts.filter(product => product.type === PRODUCT_TYPES.tablet);
-  }, [searchedProducts]);
+        return [accPhones, accTablets];
+      }, [[], []],
+    );
+  },
+  [searchedProducts]);
 
   const searchPerPageCheck = search.get('perPage') === 'All'
     ? searchedProducts.length

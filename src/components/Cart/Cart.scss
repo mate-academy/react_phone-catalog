@@ -37,15 +37,6 @@
     border: none;
   }
 
-  &--active {
-    position: relative;
-    color: $primary-color;
-
-    &::after {
-      transform: scaleX(1);
-    }
-  }
-
   &__indicator {
     @extend .favorites__indicator;
   }
@@ -53,5 +44,14 @@
   &__button {
     @extend .favorites__button;
     background-image: url("../../assets/img/cart-default.svg");
+
+    &--active {
+      position: relative;
+      color: $primary-color;
+
+      &::after {
+        transform: scaleX(1);
+      }
+    }
   }
 }

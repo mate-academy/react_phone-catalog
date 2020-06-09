@@ -1,9 +1,9 @@
 import React, {
   useCallback, useEffect, useMemo, useRef, useState,
 } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import debounce from '../../common/helpers/debounce';
-import { getFavorites, getProducts, loadProducts } from '../../redux';
+import { getFavorites, getProducts } from '../../redux';
 import { SORT } from '../../common/enums.d';
 import { LOCATIONS } from '../../common/constants';
 import { useRouter } from './useRouter';
@@ -11,7 +11,6 @@ import { useRouter } from './useRouter';
 export const useSearch = () => {
   const { location, history, search } = useRouter();
   const inputEl = useRef<HTMLInputElement>(null);
-  const dispatch = useDispatch();
   const query = useMemo(() => search.get('query') || '', [search]);
   const sortBy = search.get('sortBy');
   const [inputValue, setInputValue] = useState(query);
@@ -19,10 +18,8 @@ export const useSearch = () => {
   const favorites: Product[] = useSelector(getFavorites);
 
   useEffect(() => {
-    dispatch(loadProducts());
-
     return () => setInputValue('');
-  }, [dispatch, location.pathname]);
+  }, [location.pathname]);
 
   const historyPushWithDebounce = useCallback(
     debounce((value: string) => {

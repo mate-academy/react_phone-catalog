@@ -1,14 +1,12 @@
 import React, { useMemo } from 'react';
 import cn from 'classnames';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { getCartItems } from '../../redux';
 import { LOCATIONS } from '../../common/constants';
-import { useRouter } from '../_hooks/useRouter';
 
 export const Cart = ({ isNavOpen, closeNavMenu }: CartProps) => {
   const cartItems = useSelector(getCartItems);
-  const { pathname } = useRouter();
   const filledCart = useMemo(() => cartItems.length > 0, [cartItems]);
 
   const totalItems = useMemo(
@@ -22,17 +20,15 @@ export const Cart = ({ isNavOpen, closeNavMenu }: CartProps) => {
       cart__mobile: isNavOpen,
     })}
     >
-      <Link
-        to="/cart"
-        className={cn({
-          cart__button: true,
-          'cart--active': pathname === LOCATIONS.cart,
-        })}
+      <NavLink
+        to={LOCATIONS.cart}
+        className="cart__button"
+        activeClassName="cart__button--active"
         onClick={closeNavMenu}
       >
         {filledCart
         && <span className="cart__indicator">{totalItems}</span>}
-      </Link>
+      </NavLink>
     </div>
   );
 };
