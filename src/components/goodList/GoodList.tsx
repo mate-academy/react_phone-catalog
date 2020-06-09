@@ -17,30 +17,44 @@ export const GoodList: React.FC<Props> = (prop) => {
             <li
               className="Card__item"
               key={id} >
-                            <div>
+              <div>
                 <img
                   src={`./${imageUrl}`}
                   alt={name}
                   className="Card__img"
                 />
-                <h3>{name}</h3>
+                <h3 className="Card__title">{name}</h3>
                 <div className="price__wrapper">
-                  <span> $ {`${price - (price * discount / 100)}`}</span>
-                  <span> $ {price}</span>
+                  <span className="Card__discount"> $ {`${price - (price * discount / 100)}`}</span>
+                  <span className="Card__price"> $ {price}</span>
                 </div>
                 <ul className="Card__parameters">
-                  <li>screen: {screen}</li>
-                  <li>capacity: {capacity}</li>
-                  <li>ram: {ram}</li>
+                  <li className="parameters__item">
+                    <p>screen:</p>
+                    <p className="parameters__value">{screen}</p>
+                  </li>
+                  <li className="parameters__item">
+                    <p>capacity:</p>
+                    <p className="parameters__value">{capacity}</p>
+                  </li>
+                  <li className="parameters__item">
+                    <p>ram:</p>
+                    <p className="parameters__value">{ram}</p>
+                  </li>
                 </ul>
               </div>
               <div className="cartFavourites__wrapper">
-                <button className="btn__addToCart" >
-                  <Link to="#" >Add to cart</Link>
-                </button>
-                <button className="btn__favourites">
-                  <Link to="#" >heart</Link>
-                </button>
+                <Link
+                  to="#"
+                  className="btn__addToCart-link"
+                >
+                  <button className="btn__addToCart" >Add to cart</button>
+                </Link>
+                <Link
+                  to="#"
+                  className="btn__favourites-link"
+                >
+                                </Link>
               </div>
             </li>
           )
