@@ -1,12 +1,12 @@
 import React from 'react';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useHistory, useLocation, Redirect } from 'react-router-dom';
 import './Pagination.scss';
-// import ButtonNext from '../ButtonNext/ButtonNext';
 import cn from 'classnames/bind';
 import Button from '../Button/Button';
 
 type PaginationProps = {
   totalPages: number;
+  // perPage: string;
 };
 
 const Pagination: React.FC<PaginationProps> = ({ totalPages }) => {
@@ -30,6 +30,20 @@ const Pagination: React.FC<PaginationProps> = ({ totalPages }) => {
       setSearchParams(currentPage + 1);
     }
   };
+
+  if (currentPage > totalPages) {
+    const regex = /page=\d/g;
+    const path = location.search.replace(regex, 'page=1');
+
+    return (
+      <Redirect to={{
+        pathname: `${location.pathname}`,
+        search: `${path}`,
+      }}
+      />
+    );
+  }
+
 
   return (
     <div className="Pagination">

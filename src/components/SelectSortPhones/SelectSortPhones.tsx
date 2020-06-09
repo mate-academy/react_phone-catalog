@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import Dropdown from '../Dropdown/Dropdown';
 import './SelectSortPhones.scss';
@@ -10,9 +10,16 @@ const SelectSortPhones: React.FC = () => {
   const location = useLocation();
 
   const searchParams = new URLSearchParams(location.search);
-  const sortBy = searchParams.get('sortBy') || 'age';
-  const [dropdownOptionValue, setDropdownOptionValue] = useState<string>(sortBy);
+  const sortBy = searchParams.get('sortBy');
+  const [dropdownOptionValue, setDropdownOptionValue] = useState<string>('');
 
+  useEffect(() => {
+    if (!sortBy) {
+      setDropdownOptionValue('age');
+    } else {
+      setDropdownOptionValue(sortBy);
+    }
+  }, [sortBy]);
 
   const setSearchParams = (selectOptionValue: string) => {
     setDropdownOptionValue(selectOptionValue);
