@@ -13,7 +13,7 @@
   }
 
   &__link-arrow {
-    background-image: url("../../img/icons/arrow-right.svg");
+    background-image: url(arrow-right.svg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -28,7 +28,7 @@
 
   &__link:first-of-type {
     display: block;
-    background-image: url("../../img/icons/home.png");
+    background-image: url(home.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
