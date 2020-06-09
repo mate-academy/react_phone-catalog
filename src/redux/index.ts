@@ -32,7 +32,6 @@ export const loadProducts = () => {
       const products = await fetchProducts();
 
       dispatch(setProducts(products));
-      dispatch(setError(''));
     } catch (error) {
       dispatch(setError('Error occurred when loading data'));
     }
@@ -45,7 +44,6 @@ export const loadDetails = (productId: string) => {
       const details = await fetchProductDetails(productId);
 
       dispatch(setDetails(details));
-      dispatch(setError(''));
     } catch (error) {
       dispatch(setError('Error occurred when loading data'));
     }
