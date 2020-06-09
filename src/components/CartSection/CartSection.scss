@@ -66,5 +66,10 @@
     align-items: center;
     width: 327px;
     box-shadow: -1px 0 0 #e2e6e9;
+    visibility: hidden;
+  }
+
+  &__search.active {
+    visibility: visible;
   }
 }

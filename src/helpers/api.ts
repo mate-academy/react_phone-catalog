@@ -5,13 +5,13 @@ export async function getData<T>(url: string): Promise<T[]> {
   return response.json();
 };
 
-export async function getGoods() {
+export async function fetchGoods() {
   const phones = await getData<Good>(`${API_URL}/products.json`);
 
   return phones;
 }
 
-export async function getGoodDetails(id: string) {
+export async function fetchGoodDetails(id: string) {
   const response = await fetch(`${API_URL}/products/${id}.json`);
   const goodDetail = await response.json();
 

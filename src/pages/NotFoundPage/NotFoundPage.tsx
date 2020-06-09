@@ -1,5 +1,7 @@
 import React from 'react';
 
 export const NotFoundPage = () => (
-  <h1>Not Found</h1>
+  <div className="not-found__page">
+    <span className="not-found__page-title">Sorry, Items not found</span>
+  </div>
 )

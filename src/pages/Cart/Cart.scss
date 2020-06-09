@@ -12,6 +12,11 @@
     column-gap: 16px;
   }
 
+  &__empty {
+    @include h1;
+    color: $c-extra-text;
+  }
+
   .cart__total {
     padding: 0 24px;
     border: 1px solid #e2e6e9;

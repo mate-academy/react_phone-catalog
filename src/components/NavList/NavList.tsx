@@ -1,5 +1,4 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 
 type NavListProps = {
   list: Link[];
@@ -13,12 +12,18 @@ export const NavList = ( { list } :NavListProps) => {
           <li className="nav_item"
             key={link.title}
           >
-            <NavLink to={link.path}
-              className="nav_link">
+            <a href={link.path} className="nav_link">
               {link.title}
-            </NavLink>
+            </a>
           </li>
         ))}
     </>
   )
 }
+
+
+/*<NavLink to={link.path}
+              className="nav_link">
+                {link.title}
+            </NavLink>
+*/

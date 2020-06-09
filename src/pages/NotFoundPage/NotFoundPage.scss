@@ -1,0 +1,17 @@
+.not-found__page {
+  display: flex;
+  position: relative;
+  bottom: -80px;
+  height: 70vh;
+  width: 100vw;
+  background-image: url(/../desert2.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  justify-content: center;
+
+  &-title {
+    @include h1;
+    justify-self: center;
+  }
+}

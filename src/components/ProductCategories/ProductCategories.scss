@@ -13,6 +13,7 @@
 }
 
 .products-category {
+  margin: 80px 0;
   &__list {
     display: grid;
     grid-template-columns: repeat(3, 1fr);

@@ -2,10 +2,12 @@
   &__title {
     @include h1;
     margin-bottom: 8px;
+    text-transform: capitalize;
   }
 
   &__items-count {
     @include body-text;
+    color: $c-extra-text;
     margin-bottom: 40px;
   }
 }

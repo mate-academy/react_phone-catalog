@@ -1,5 +1,6 @@
-import React, { useContext } from 'react';
-import { CartContext } from './../CartContext';
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import { removeCartGood, increaseGoodCount, decreaseGoodCount } from '../../store/cart';
 
 type CartCardProps = {
   good: Good;
@@ -7,22 +8,20 @@ type CartCardProps = {
 
 export const CartCard: React.FC<CartCardProps> = ({ good }) => {
   const {
-    //id,
+    id,
     imageUrl,
     name,
-    // snippet,
     price,
   } = good;
 
-  const { removeSelectedGood: removeSelectedGoodId } = useContext(CartContext);
-
+  const dispatch = useDispatch();
 
   return (
     <section className="cart-card">
       <div className="cart-card__delete">
         <button className="cart-card__delete-btn"
           type="button"
-          onClick={() =>removeSelectedGoodId(good)}
+          onClick={() => dispatch(removeCartGood(id))}
         >
           <svg className="icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" clip-rule="evenodd" d="M12.4716 4.4714C12.7319 4.21105 12.7319 3.78894
@@ -45,7 +44,7 @@ export const CartCard: React.FC<CartCardProps> = ({ good }) => {
       <div className="cart-card__count">
         <button className="cart-card__count-minus"
           type="button"
-          onClick={() =>removeSelectedGoodId(good)}
+          onClick={() => dispatch(decreaseGoodCount(good.id))}
         >
           <svg className="icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" clip-rule="evenodd" d="M2.6665 7.99999C2.6665 7.63181 2.96498 7.33333
@@ -60,7 +59,7 @@ export const CartCard: React.FC<CartCardProps> = ({ good }) => {
         </span>
         <button className="cart-card__count-plus"
           type="button"
-          onClick={() =>removeSelectedGoodId(good)}
+          onClick={() => dispatch(increaseGoodCount(good.id))}
         >
           <svg className="icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" clip-rule="evenodd" d="M8.6665 3.33334C8.6665 2.96515 8.36803 2.66667

@@ -1,0 +1,19 @@
+.go-back {
+  display: flex;
+  margin: 16px 0;
+
+  &__arrow {
+    background-image: url(/../img/icons/arrow-left.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    margin-right: 14px;
+  }
+
+  &__btn {
+    background-color: transparent;
+    @include small-text;
+    color: $c-extra-text;
+  }
+}

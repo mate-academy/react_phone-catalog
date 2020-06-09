@@ -8,7 +8,7 @@ interface Props {
 }
 
 export const PaginationWithRouter: React.FC<Props> = ({ goodCount }) => {
-  console.log(goodCount)
+
   const history = useHistory();
   const location = useLocation();
 

@@ -1,29 +1,30 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { getCartGoods } from '../../store';
 import { CartCard } from '../../components/CartCard';
-import { CartContext } from './../../components/CartContext';
+import { Back } from './../../components/Back';
 
 export const Cart = () => {
-  const { selectedGoods } = useContext(CartContext);
+  const cartGoods: cartGood[] = useSelector(getCartGoods);
   const [totalPrice, setTotalPrice] = useState<number>(0);
-  console.log(selectedGoods.length)
 
   useEffect(() => {
-    if(!selectedGoods.length) {
+    if(!cartGoods.length) {
       setTotalPrice(0);
     } else {
-    const newTotalPrice = selectedGoods.map(good => good.price).reduce((accum, current) => accum + current);
+    const newTotalPrice = cartGoods.map(good => good.price*good.count).reduce((accum, current) => accum + current);
     setTotalPrice(newTotalPrice);
     }
-  }, [selectedGoods.length, selectedGoods])
+  }, [cartGoods.length, cartGoods])
   return (
     <>
+      {cartGoods.length ? (
       <div className="cart">
-
+        <Back />
         <h1 className="cart__title">Cart</h1>
-
         <div className="cart__container">
           <div className="cart__products">
-              {selectedGoods.map((good:Good) => {
+              {cartGoods.map((good:cartGood) => {
                 return (
                 <CartCard good={good} key={good.id} />
                 )
@@ -33,14 +34,15 @@ export const Cart = () => {
           <div className="cart__total">
             <div className="cart__total-data">
             <p className="cart__total-price">{`$ ${totalPrice}`}</p>
-              <p className="cart__total-count">{`Total for ${selectedGoods.length} Items`}</p>
+              <p className="cart__total-count">{`Total for ${cartGoods.length} Items`}</p>
             </div>
             <div className="cart__total-btn">
               <button type="button" className="cart__buy-btn">Checkout</button>
             </div>
           </div>
         </div>
-      </div>
+      </div>)
+      : <span className="cart__empty">Cart is empty</span>}
     </>
   )
 }

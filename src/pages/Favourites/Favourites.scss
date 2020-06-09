@@ -1,10 +1,25 @@
 .favourites {
   display: flex;
   &__products {
-    display: grid;
-    grid-template-columns: repeat(4, 272px);
-    column-gap: 16px;
-    row-gap: 40px;
-    margin-bottom: 80px;
+
+
+    &-container {
+      display: grid;
+      grid-template-columns: repeat(4, 272px);
+      column-gap: 16px;
+      row-gap: 40px;
+      margin-bottom: 80px;
+    }
+  }
+
+  &__title {
+    @include h1;
+    margin-bottom: 8px;
+  }
+
+  &__items-count {
+    @include body-text;
+    color: $c-extra-text;
+    margin-bottom: 40px;
   }
 }

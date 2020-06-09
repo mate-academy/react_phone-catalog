@@ -1,6 +1,8 @@
-import React, { useContext, useState } from 'react';
-import { CartContext } from './../../CartContext';
-import { FavouritesContext } from './../../FavouritesContext';
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { getCartGoods, getFavouritesGoods } from '../../../store';
+import { addCartGood } from '../../../store/cart';
+import {addFavouriteGood, removeFavouriteGood } from '../../../store/favourites';
 import cn from 'classnames';
 
 type ButtonProps = {
@@ -10,30 +12,29 @@ type ButtonProps = {
 }
 
 export const Button: React.FC<ButtonProps> = ({ classCSS, title, good }) => {
-  const [isActiveButton, setActiveButton] = useState<boolean>(false);
-  const { addSelectedGood, isSelected } = useContext(CartContext);
-  const { addFavouriteGood, removeFavouriteGood, isFavourite } = useContext(FavouritesContext);
+  const dispatch = useDispatch();
+  const cartGoods: cartGood[] = useSelector(getCartGoods);
+  const favouritesGoods: Good[] = useSelector(getFavouritesGoods)
 
-  var btnClass = cn('btn', classCSS, {
-    'cart-active': isActiveButton,
-    'fav-active': isActiveButton,
+  const btnClass = cn('btn', classCSS, {
+    'cart-active': cartGoods.some(cartGood => cartGood.id === good.id) && (classCSS ==='btn__add-to-cart'),
+    'fav-active': favouritesGoods.some(favGood => favGood.id === good.id) && (classCSS === 'btn__add-to-fav'),
   });
 
   const handleClick = (good: Good) => {
     if(classCSS === 'btn__add-to-cart') {
-      if (!isSelected(good)) {
-        addSelectedGood(good);
-        setActiveButton(true);
+      if (cartGoods.some(cartGood => cartGood.id === good.id)) {
+        return;
       }
+
+      dispatch(addCartGood(good));
     }
+
     if(classCSS === 'btn__add-to-fav') {
-      if (!isFavourite(good)) {
-        addFavouriteGood(good);
-        setActiveButton(true);
+      if (favouritesGoods.some(favGood => favGood.id === good.id)) {
+        dispatch(removeFavouriteGood(good.id));
       } else {
-        console.log('hi')
-        removeFavouriteGood(good);
-        setActiveButton(false);
+        dispatch(addFavouriteGood(good));
       }
     }
   }
@@ -41,11 +42,11 @@ export const Button: React.FC<ButtonProps> = ({ classCSS, title, good }) => {
   return (
     <button
       type="button"
-      id={good.id}
+      id={good.id+classCSS}
       className={btnClass}
       onClick={() => handleClick(good)}
     >
-     {isActiveButton&&(classCSS === 'btn__add-to-cart') ? `Added to cart` : title}
+    {btnClass === 'btn btn__add-to-cart cart-active'? 'Added to cart': title}
     </button>
   )
 }

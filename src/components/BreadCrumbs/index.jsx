@@ -1,1 +1,1 @@
-export { default as BreadCrumbs } from './BreadCrumbs';
+export { BreadCrumbs } from './BreadCrumbs';

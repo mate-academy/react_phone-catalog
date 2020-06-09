@@ -1,4 +1,43 @@
 .bread-crumbs {
-  @include small-text;
+  display: flex;
+  align-items: center;
+
   margin-bottom: 40px;
+
+  &__link {
+    @include small-text;
+    color: $c-main-text;
+    text-decoration: none;
+    text-transform: capitalize;
+    margin-right: 14px;
+  }
+
+  &__link-arrow {
+    background-image: url(/img/icons/arrow-right.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 16px;
+    height: 16px;
+    margin-right: 14px;
+  }
+
+  &__link-arrow:last-of-type {
+    display: none;
+  }
+
+  &__link:first-of-type {
+    display: block;
+    background-image: url(/img/icons/home.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 16px;
+    width: 16px;
+  }
+
+  &__link:last-of-type {
+    color: $c-extra-text;
+  }
+
 }

@@ -4,10 +4,6 @@
     justify-content: space-between;
   }
 
-  &__list {
-
-  }
-
   &__btn-panel {
     display: flex;
   }
@@ -28,16 +24,6 @@
   &__slider-container {
     position: relative;
     max-width: 1136px;
-
     overflow: hidden;
-
   }
 }
-
-
-/*
-}
-
-&-list {
-  display: flex;
-}*/

@@ -13,6 +13,10 @@ interface Good {
   ram: string;
 }
 
+interface cartGood extends Good {
+  count: number;
+}
+
 interface SliderImage {
   path: string;
   alt: string;

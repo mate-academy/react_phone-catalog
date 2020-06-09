@@ -2,9 +2,9 @@ import React from 'react';
 import {useHistory, useLocation} from 'react-router-dom';
 
 let sortParams = [
-  {title: 'Newest', value: 'age'},
-  {title: 'Price high to low', value:'high_price'},
-  {title: 'Price low to high',  value:'low_price'}
+  {title: 'Newest', value: 'age', typeParams: 'number'},
+  {title: 'Price high to low', value:'high_price', typeParams: 'string', direction: 1},
+  {title: 'Price low to high',  value:'low_price', typeParams: 'srting', direction: -1}
 ]
 
 const itemsCount = [8, 16, 32, 64];
@@ -14,8 +14,15 @@ export const SortBlock = () => {
   const searchParams = new URLSearchParams(location.search);
   const history = useHistory();
 
-  const handleSort = (e: React.ChangeEvent<HTMLSelectElement>) => {
+  const handleSortItemsCount = (e: React.ChangeEvent<HTMLSelectElement>) => {
     searchParams.set('perPage', e.target.value);
+    history.push({
+      search: searchParams.toString()
+    });
+  }
+
+  const handleSortItemsCategory = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    searchParams.set('sortBy', e.target.value);
     history.push({
       search: searchParams.toString()
     });
@@ -30,7 +37,7 @@ export const SortBlock = () => {
         </label>
         <select
           className="catalog__sort-select"
-          onChange={(e) => handleSort(e)}
+          onChange={(e) => handleSortItemsCategory(e)}
           value={searchParams.get('sortBy') || ''}
         >
           {sortParams.map(param => (
@@ -50,7 +57,7 @@ export const SortBlock = () => {
         </label>
         <select
           className="catalog__sort-select"
-          onChange={(e) => handleSort(e)}
+          onChange={(e) => handleSortItemsCount(e)}
         >
           {itemsCount.map(count => (
             <option

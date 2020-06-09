@@ -1,11 +1,11 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { CartContext } from './../CartContext';
-import { FavouritesContext } from './../FavouritesContext';
+import { useSelector } from 'react-redux';
+import { getCartGoods, getFavouritesGoods } from '../../store';
 
 export const CartSection = () => {
-const { selectedGoods } = useContext(CartContext);
-const { favouriteGoods } = useContext(FavouritesContext);
+  const cartGoods = useSelector(getCartGoods)
+  const favouriteGoods = useSelector(getFavouritesGoods)
 
   return (
     <>
@@ -20,10 +20,10 @@ const { favouriteGoods } = useContext(FavouritesContext);
         <NavLink to="/favourites" className="customer-section__link customer-section__link--fav" />
       </div>
       <div className="customer-section__item customer-section__item--cart">
-      {(selectedGoods.length > 0)
+      {(cartGoods.length > 0)
         && (
           <span className="customer-section__item-count">
-            {selectedGoods.length}
+            {cartGoods.length}
           </span>
         )
       }

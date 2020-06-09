@@ -5,9 +5,16 @@ import { NavList } from './../NavList'
 
 export const Footer = () => {
 
-  const handleClick = (e: React.MouseEvent<HTMLElement>) => {
-    e.preventDefault();
-    window.scrollTo(0, 0);
+  const handleClick = () => {
+    const scroll = () => {
+      setTimeout(() => {
+        window.scrollBy(0, -20);
+        if (window.scrollY > 0) {
+          scroll();
+        }
+      }, 1);
+    }
+    scroll();
   };
 
   return (
@@ -40,6 +47,7 @@ export const Footer = () => {
           <div className="footer__link">
             <Link
               to="#top"
+              type="button"
               className="footer__link--up"
               onClick={handleClick}
             >

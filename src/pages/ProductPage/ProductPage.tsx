@@ -1,30 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { getGoodDetails } from './../../helpers/api';
+import { useSelector } from 'react-redux';
+import { fetchGoodDetails } from './../../helpers/api';
 import { useParams, useHistory } from 'react-router-dom';
 import { CardSlider } from  './../../components/CardSlider';
 import { Button } from './../../components/common/Button/Button';
+import { BreadCrumbs } from '../../components/BreadCrumbs';
+import { getGoods } from '../../store';
 
-/*const initDetails = {
-  id: '',
-  name: '',
-  images: [],
-  description: '',
-  hardware: {
-    cpu:[],
-  },
-  display: {
-    screenResolution: '',
-  },
-  camera: {
-    primary: '',
-    zoom: '',
-  },
-  connectivity: {
-    cell: '',
-  },
-}*/
 
-export const ProductPage = ({ goods }: { goods: Good[] }) => {
+export const ProductPage = () => {
+  const goods: Good[] = useSelector(getGoods);
   const temporaryColors = ['black', 'beige', 'pink'];
   const [goodDetails, setGoodDetails] = useState<GoodDetails>()
   const [isLoading, setIsLoading] = useState(false);
@@ -34,13 +19,12 @@ export const ProductPage = ({ goods }: { goods: Good[] }) => {
   const history = useHistory();
   const { goodId } = useParams();
 
-
   const loadGoodDetails = async (good: string) => {
     setIsLoading(true);
     setErrorMessage('');
 
     try {
-      const data = await getGoodDetails(good);
+      const data = await fetchGoodDetails(good);
       const loadedGoodDetails = { ...data };
       setGoodDetails(loadedGoodDetails);
     } catch (error) {
@@ -76,6 +60,7 @@ export const ProductPage = ({ goods }: { goods: Good[] }) => {
 
   return (
     <section className="productpage">
+      <BreadCrumbs />
       <h1 className="productpage__title">{goodDetails?.name}</h1>
       <div className="productpage__container">
 

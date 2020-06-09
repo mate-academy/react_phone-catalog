@@ -1,13 +1,15 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import {useHistory, useLocation} from 'react-router-dom';
+import {useHistory, useLocation } from 'react-router-dom';
 import debounce from 'lodash.debounce';
+import cn from 'classnames';
+import { navLinks } from '../../helpers/constants';
 
 export const Search = () => {
   const [query, setQuery] = useState<string>('')
   const history = useHistory();
   const location = useLocation();
-  const searchParams = new URLSearchParams(location.search);
 
+  const searchParams = new URLSearchParams(location.search);
 
   const handleChange = (value: string): void => {
     setQuery(value);
@@ -27,7 +29,7 @@ export const Search = () => {
   const queryFromURL = (searchParams.get('query') || '').toLowerCase();
 
   useEffect(() => {setQuery(queryFromURL)}, [queryFromURL]);
-  
+
   /*const handleSubmit = (e: React.FormEvent): void => {
     e.preventDefault();
     if(query.length) {
@@ -39,9 +41,11 @@ export const Search = () => {
       search: searchParams.toString()
     })
   }*/
+  
+  const isActiveClass = navLinks.slice(1).some(link => link.path === location.pathname);
 
   return (
-    <div className="customer-section__search">
+    <div className={cn('customer-section__search',{'active': isActiveClass } )}>
       <form className="customer-section__form" /*onSubmit={handleSubmit}*/>
         <input type="text"
           className="search__input"
