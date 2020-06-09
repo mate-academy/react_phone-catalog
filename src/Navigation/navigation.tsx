@@ -10,7 +10,7 @@ export const Navigation = () => {
   useEffect(() => {
     setFavQty(favGoods.length);
     setCartQty(cartGoods.length);
-  }, [favGoods, cartGoods]);
+  }, []);
 
 
   return (

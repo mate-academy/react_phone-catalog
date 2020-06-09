@@ -14,7 +14,6 @@ export const IMAGES_FOR_SLIDER = [
 const PRODUCTS_API_URL = 'https://mate-academy.github.io/react_phone-catalog/api/products.json';
 const downloadProducts = () => fetch(PRODUCTS_API_URL).then(response => response.json());
 
-
 export const favGoods: Phone[] = [];
 export const cartGoods: Phone[] = [];
 
