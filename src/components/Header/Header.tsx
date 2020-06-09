@@ -1,11 +1,15 @@
 import React from 'react';
 import { Route, Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import { Search } from '../Search/Search';
 import { Nav } from '../Nav/Nav';
 import './Header.scss';
-
+import { getProducts } from '../../store/index';
 
 export const Header = () => {
+  const products = useSelector(getProducts);
+  const favorietsLength = products.filter((product: Products) => product.favorites).length;
+
   return (
     <header className="header">
       <div className="header__left">
@@ -27,6 +31,8 @@ export const Header = () => {
             className="header__button"
           >
             <img src="./img/heart.svg" alt="heart_icon" className="" />
+            {favorietsLength > 0
+            && <span className="header__favourites">{favorietsLength}</span>}
           </button>
         </Link>
         <Link to="/card">
