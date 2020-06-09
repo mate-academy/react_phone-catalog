@@ -1,8 +1,7 @@
-
 @import "../../styles/utils/mixins";
 @import "../../styles/utils/vars";
 
-.header {
+.Header {
   position: relative;
   width: 100%;
   height: 64px;
@@ -15,52 +14,29 @@
   z-index: 1;
   background-color: #fff;
 
-  &__logo {
+  &__Logo {
     position: absolute;
     left: 24px;
-    top: calc(50% - #{ $heightLogo } / 2 + 0.5px);
+    top: calc(50% - #{ $heightLogo } / 2 - 5px);
   }
 
-  &__nav {
+  &__Nav {
     margin-left: 24px + $widthLogo + 65px;
   }
 
-  &__wrapButtons {
+  &__WrapButtons {
     height: 100%;
     display: flex;
   }
 
-  // &__search {
-  //   height: $heightHeader;
-  //   background-color: red;
-  //   width: 327px;
-  //   padding: 0 24px;
-  //   border-left: $borderElement;
-  //   border-bottom: $borderElement;
-
-  //   display: flex;
-  //   flex-direction: row;
-  //   justify-content: space-between;
-  //   align-items: center;
-
-  //   // height: $heightHeader;
-  //   // width: 327px;
-  //   // padding-left: 24px;
-  //   // border-left: $borderElement;
-  //   // border-bottom: $borderElement;
-  //   // @include ButtonText;
-  //   // color: $colorText;
-  //   // line-height: 18px;
-  // }
-
-  &__buttons {
+  &__Buttons {
     width: 64px;
     box-sizing: border-box;
     background-color: #fff;
     border-left: 1px solid $colorElement;
   }
 
-  &__buttons::after {
+  &__Buttons::after {
     content: "";
     height: 3px;
     background-color: black;
@@ -73,34 +49,34 @@
     opacity: 0;
   }
 
-  &__buttons:hover:after {
+  &__Buttons:hover:after {
     opacity: 1;
   }
 }
 
-.nav {
-  &__list {
+.Nav {
+  &__List {
     display: flex;
     @include Uppercase;
-    color: #89939a;
+    color: $colorSecondery;
   }
 
-  &__link {
+  &__Link {
     display: inline-block;
     text-decoration: none;
     padding: 26px 32px;
     position: relative;
-    color: $colorText;
+    color: $colorSecondery;
     @include hover(color, $colorPrimary);
   }
 
-  &__link:hover:before {
+  &__Link:hover:before {
     opacity: 1;
   }
 
-  &__link::before {
+  &__Link::before {
     content: "";
-    border-bottom: solid 3px #313237;
+    border-bottom: solid 3px $colorPrimary;
     position: absolute;
     top: 60px;
     left: 32px;
@@ -110,9 +86,9 @@
     opacity: 0;
   }
 
-  &__link--active::after {
+  &__Link--active::after {
     content: "";
-    border-bottom: solid 3px #313237;
+    border-bottom: solid 3px $colorPrimary;
     position: absolute;
     top: 60px;
     left: 32px;
@@ -120,7 +96,7 @@
   }
 }
 
-.logo {
+.Logo {
   width: 40px;
   height: 11px;
 }

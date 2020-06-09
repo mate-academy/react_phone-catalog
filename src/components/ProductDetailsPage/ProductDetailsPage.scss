@@ -1,3 +1,7 @@
+@import "../../styles/reset";
+@import "../../styles/utils/mixins";
+@import "../../styles/utils/vars";
+
 .ProdactPage {
   max-width: 1136px;
   margin: 0 auto;
@@ -8,18 +12,11 @@
   }
 
   &__Heading {
-    // font-family: Mont;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 32px;
-    line-height: 41px;
-    letter-spacing: -0.01em;
-    color: #313237;
+    @include H1;
   }
 
   &__SubHeading {
-    font-weight: bold;
-    font-size: 22px;
+    @include H2;
     line-height: 140%;
     color: #313237;
 
@@ -28,7 +25,7 @@
       display: block;
       height: 1px;
       margin: 16px 0 32px;
-      background-color: #e2e6e9;
+      background-color: $colorElement;
     }
   }
 
@@ -47,7 +44,7 @@
     position: absolute;
     transform: translateY(-100%);
     right: 0;
-    color: #89939a;
+    color: $colorSecondery;
     font-weight: 600;
     font-size: 12px;
     line-height: 15px;
@@ -95,10 +92,7 @@
   }
 
   &__Description {
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 21px;
-    color: #89939a;
+    color: $colorSecondery;
   }
 
   &__NarrowBlock {
@@ -106,15 +100,14 @@
   }
 
   &__Price {
+    display: flex;
+    align-items: center;
     font-weight: 500;
     line-height: 28px;
-    display: flex;
     margin-bottom: 16px;
 
     &--actual {
-      color: #313237;
-      font-weight: 600;
-      font-size: 32px;
+      @include H1;
 
       &::before {
         content: "$";
@@ -123,7 +116,7 @@
 
     &--full {
       padding-left: 8px;
-      color: #89939a;
+      color: $colorSecondery;
       text-decoration-line: line-through;
       font-size: 22px;
       font-weight: 500;
@@ -152,13 +145,13 @@
   &__InfoTitle {
     font-weight: 500;
     font-size: 12px;
-    color: #89939a;
+    color: $colorSecondery;
   }
 
   &__InfoFeature {
     font-weight: 600;
     font-size: 12px;
-    color: #313237;
+    color: $colorPrimary;
   }
 
   &__SpecsList {
@@ -174,7 +167,7 @@
 
   &__SpecsTitle,
   &__SpecsFeature {
-    color: #89939a;
+    color: $colorSecondery;
     font-style: normal;
     font-weight: 500;
     font-size: 14px;
@@ -182,7 +175,7 @@
   }
 
   &__SpecsFeature {
-    color: #313237;
+    color: $colorPrimary;
   }
 
   &__MoreInfo {
@@ -190,25 +183,23 @@
 
     &--SubHeading {
       margin-bottom: 16px;
-      color: #313237;
+      color: $colorPrimary;
       font-weight: 600;
       font-size: 20px;
     }
   }
 }
 
-// Component PrimeryButton
-
 .Card__ButtonWrap {
   display: flex;
   justify-content: space-between;
 }
 
-.Card__ButtonCart {
+.Card__ButtonCart--width {
   height: 40px;
-  width: 176px;
+  width: 263px;
   border: none;
-  background: #313237;
+  background: $colorPrimary;
   color: #fff;
   transition: 0.3s;
   cursor: pointer;
@@ -221,5 +212,6 @@
 .Card__ButtonFavor {
   height: 40px;
   width: 40px;
-  border: none;
+  border: solid 1px $colorIcons;
+  cursor: pointer;
 }

@@ -35,10 +35,10 @@ const Search = () => {
   }, [query]);
 
   return (
-    <div className="wrap__search">
+    <div className="Wrap__Search">
       <input
         type="text"
-        className="search"
+        className="Search"
         placeholder="Search in phones..."
         value={visibleQuery}
         onChange={({ target }) => {
@@ -48,8 +48,8 @@ const Search = () => {
       />
       <button
         type="button"
-        className={cn('search__btn', { 'search__btn--clear': query })}
-        aria-label="Mute volume"
+        className={cn('Search__Btn', { 'Search__Btn--clear': query })}
+        aria-label="Mute text"
         onClick={clearSearch}
       />
     </div>

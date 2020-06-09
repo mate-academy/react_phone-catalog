@@ -33,32 +33,36 @@ const Dropdown: React.FC<SelectProps> = ({ options, value, onChange }) => {
 
   return (
     <>
-      <div className={cn({ dropdown: !isOpen, 'dropdown--focus': isOpen })}>
-        <div className="dropdown__option option" ref={ref}>
-          <div
-            className={cn('option__title option__title::after', { 'option__title--focus': isOpen })}
-          >
-            {selectedOption?.title}
-          </div>
+      <div className={cn('Dropdown', { 'Dropdown--focus': isOpen })}>
+        <div className="Dropdown__Option Option">
+          <p className="Option__Title">{selectedOption?.title}</p>
+          <button
+            type="button"
+            className={cn('Option__Btn', { 'Option__Btn--focus': isOpen })}
+            aria-label="Mute text"
+            onClick={() => setIsOpen(!isOpen)}
+          />
         </div>
 
-        <ul className={cn('dropdown__list', { 'dropdown__list--opened': isOpen })}>
-          {options.map((option: Option) => (
-            <li key={option.value}>
-              <button
-                type="button"
-                className={cn('dropdown__item',
-                  { 'dropdown__item--selected': option.value === value })}
-                onClick={() => {
-                  onChange(option.value);
-                }}
-              >
-                {option.title}
-              </button>
-            </li>
-          ))}
-        </ul>
-
+        {isOpen && (
+          <ul className="Dropdown__List">
+            {options.map((option: Option) => (
+              <li key={option.value}>
+                <button
+                  type="button"
+                  className={cn('Dropdown__Item',
+                    { 'Dropdown__Item--selected': option.value === value })}
+                  onClick={() => {
+                    setIsOpen(false);
+                    onChange(option.value);
+                  }}
+                >
+                  {option.title}
+                </button>
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
     </>
   );

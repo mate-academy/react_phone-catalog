@@ -17,25 +17,25 @@ const navListFooter = [
 ];
 
 const Footer = () => (
-  <footer className="footer">
-    <div className="footer__container">
-      <div className="footer__logo logo">
+  <footer className="Footer">
+    <div className="Footer__Container">
+      <div className="Footer__Logo Logo">
         <img src="./img/logo/LOGO.svg" alt="logo" />
       </div>
-      <nav className="footer__nav nav">
-        <ul className="nav__list">
+      <nav className="Footer__Nav Nav">
+        <ul className="Nav__List">
           {navListFooter.map(item => (
-            <li key={item.title} className="nav__item">
-              <a href={item.link} className="nav__link nav__link--footer">{item.title}</a>
+            <li key={item.title} className="Nav__Item">
+              <a href={item.link} className="Nav__Link Nav__Link--footer">{item.title}</a>
             </li>
           ))}
         </ul>
       </nav>
-      <div className="footer__button">
-        <span className="label-btn">Back to top</span>
+      <div className="Footer__Button">
+        <span className="Label-Btn">Back to top</span>
         <button
           type="button"
-          className="btn-back-top"
+          className="Btn__Back--top"
           aria-label="Mute volume"
           onClick={() => (
             window.scrollTo({ top: 0, behavior: 'smooth' })

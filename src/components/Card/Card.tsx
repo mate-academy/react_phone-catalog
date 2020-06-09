@@ -33,7 +33,9 @@ export const Card: React.FC<Props> = ({
           <img alt="card" src={imageUrl} className="Card__Img" />
         </Link>
         <div className="Card__ContainerInner">
-          <h3 className="Card__Title">{name}</h3>
+          <Link to={`${path}/${id}`}>
+            <h3 className="Card__Title">{name}</h3>
+          </Link>
           <span className="Card__Prise">
             $
             {(price - price * (discount / 100))}
@@ -55,9 +57,9 @@ export const Card: React.FC<Props> = ({
               <p className="Card__InfoScreen_Name">Capacity</p>
               <p className="Card__InfoScreen_Value">{capacity}</p>
             </div>
-            <div className="Card__InfoRam Card__Item">
+            <div className="Card__InfoScreen Card__Item">
               <p className="Card__InfoScreen_Name">RAM</p>
-              <p className="Card__IInfoScreen_Value">{ram}</p>
+              <p className="Card__InfoScreen_Value">{ram}</p>
             </div>
           </div>
           <div className="Card__ButtonWrap">
@@ -72,7 +74,6 @@ export const Card: React.FC<Props> = ({
               className="Card__ButtonFavor"
               aria-label="Mute text"
             />
-
           </div>
         </div>
       </article>

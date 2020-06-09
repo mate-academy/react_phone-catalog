@@ -1,7 +1,7 @@
 @import "../../styles/utils/mixins";
 @import "../../styles/utils/vars";
 
-.pagination {
+.Pagination {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -10,7 +10,7 @@
   margin-left: auto;
   margin-right: auto;
 
-  &__btn {
+  &__Btn {
     margin: 0 4px;
     width: 32px;
     height: 32px;
@@ -21,8 +21,8 @@
 
   }
 
-  &__btn--active {
-    @extend .pagination__btn;
+  &__Btn--active {
+    @extend .Pagination__Btn;
     color: #fff;
     background-color: $colorPrimary;
   }

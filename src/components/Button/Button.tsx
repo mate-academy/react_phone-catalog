@@ -14,9 +14,9 @@ const Button: React.FC<PropsButton> = ({
   return (
     <button
       type="button"
-      className={cn('small-btn', `${className}`, { [`disabled__${className}`]: disabled })}
+      className={cn('Small__Btn', `${className}`, { [`disabled__${className}`]: disabled })}
       name={name}
-      aria-label="Mute volume"
+      aria-label="Mute text"
       onClick={(e: React.MouseEvent<HTMLElement>) => {
         const target = e.target as HTMLButtonElement;
 

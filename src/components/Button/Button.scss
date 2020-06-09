@@ -1,7 +1,7 @@
 @import "../../styles/utils/mixins";
 @import "../../styles/utils/vars";
 
-.small-btn {
+.Small__Btn {
   width: 32px;
   height: 32px;
   margin: 0 12px;
@@ -19,7 +19,7 @@
 }
 
 .disabled {
-  @extend .small-btn;
+  @extend .Small__Btn;
   background-color: #fff;
   cursor: auto;
   border: solid 1px $colorElement;

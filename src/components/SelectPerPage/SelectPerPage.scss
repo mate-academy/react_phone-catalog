@@ -1,3 +1,13 @@
-.phones__dropdown--sortItemInPage {
+@import "../../styles/reset";
+@import "../../styles/utils/mixins";
+@import "../../styles/utils/vars";
+
+.Phones__Dropdown--sortItemInPage {
   width: 128px;
+}
+
+.Title {
+  @include smallText;
+  margin-bottom: 4px;
+  color: $colorSecondery;
 }

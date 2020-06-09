@@ -6,7 +6,7 @@ import Button from '../Button/Button';
 
 type PaginationProps = {
   totalPages: number;
-  perPage: string;
+  // perPage: string;
 };
 
 const Pagination: React.FC<PaginationProps> = ({ totalPages }) => {
@@ -46,7 +46,7 @@ const Pagination: React.FC<PaginationProps> = ({ totalPages }) => {
 
 
   return (
-    <div className="pagination">
+    <div className="Pagination">
       <Button
         className="prev"
         name="prev"
@@ -56,7 +56,7 @@ const Pagination: React.FC<PaginationProps> = ({ totalPages }) => {
       {arrPages.map(page => (
         <button
           type="button"
-          className={cn('pagination__btn', { 'pagination__btn--active': currentPage === page })}
+          className={cn('Pagination__Btn', { 'Pagination__Btn--active': currentPage === page })}
           key={page}
           value={page}
           onClick={(e: React.MouseEvent<HTMLElement>) => {

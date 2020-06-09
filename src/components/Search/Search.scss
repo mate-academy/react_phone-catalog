@@ -1,7 +1,7 @@
 @import "../../styles/utils/mixins";
 @import "../../styles/utils/vars";
 
-.wrap__search {
+.Wrap__Search {
   height: 62px;
   width: 327px;
   padding: 0 24px;
@@ -12,27 +12,27 @@
   align-items: center;
 }
 
-.search {
+.Search {
   height: $heightHeader;
   width: 327px;
   @include ButtonText;
-  color: $colorText;
+  color: $colorSecondery;
   line-height: 18px;
 }
 
-.search::placeholder {
+.Search::placeholder {
   color: $colorIcons;
   line-height: 64px;
   @include ButtonText;
 }
 
-.search__btn {
+.Search__Btn {
   width: 60px;
   height: 60px;
   background-color: #fff;
   @include iconInButton(url(../../img/Icons/Search.svg));
 }
 
-.search__btn--clear {
+.Search__Btn--clear {
   @include iconInButton(url(../../img/Icons/cross.svg));
 }

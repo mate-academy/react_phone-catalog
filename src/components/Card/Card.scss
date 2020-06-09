@@ -5,7 +5,7 @@
 .Wrap {
   margin-right: 16px;
   background: #fff;
-  border: 1px solid #e2e6e9;
+  border: 1px solid $colorElement;
   box-sizing: border-box;
   border-radius: 5px;
 }
@@ -26,36 +26,23 @@
   }
 
   &__Title {
-    font-family: "Mont-SemiBold", sans-serif;
     height: 28px;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 21px;
-    color: #313237;
   }
 
   &__Prise {
-    // font-family: Mont;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 22px;
+    @include H2;
     line-height: 140%;
-    color: #313237;
   }
 
   &__OldPrise {
-    // font-family: Mont;
-    font-style: normal;
+    @include H2;
     font-weight: 500;
-    font-size: 22px;
-    line-height: 28px;
     text-decoration-line: line-through;
-    color: #89939a;
+    color: $colorSecondery;
   }
 
   &__Info {
-    border-top: 1px solid #e2e6e9;
+    border-top: 1px solid $colorElement;
   }
 
   &__Item {
@@ -69,22 +56,12 @@
   }
 
   &__InfoScreen_Name {
-    // font-family: Mont;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 12px;
-    line-height: 15px;
-    color: #89939a;
+    @include smallText;
+    color: $colorSecondery;
   }
 
   &__InfoScreen_Value {
-    // font-family: Mont;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 12px;
-    line-height: 15px;
-    text-align: right;
-    color: #313237;
+    @include smallText;
   }
 
   &__ButtonWrap {
@@ -96,7 +73,7 @@
     height: 40px;
     width: 176px;
     border: none;
-    background: #313237;
+    background: $colorPrimary;
     color: #fff;
     transition: 0.3s;
     cursor: pointer;

@@ -28,8 +28,8 @@ const SelectSortPhones: React.FC = () => {
   };
 
   return (
-    <div className="phones__dropdown--sortBy">
-      <p className="title">Sort By</p>
+    <div className="Phones__Dropdown--sortBy">
+      <p className="Title">Sort By</p>
       <Dropdown
         options={OPTIONS_SORT_BY}
         value={dropdownOptionValue}

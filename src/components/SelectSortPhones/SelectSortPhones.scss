@@ -1,3 +1,13 @@
-.phones__dropdown--sortBy {
+@import "../../styles/reset";
+@import "../../styles/utils/mixins";
+@import "../../styles/utils/vars";
+
+.Phones__Dropdown--sortBy {
   width: 176px;
+}
+
+.Title {
+  @include smallText;
+  margin-bottom: 4px;
+  color: $colorSecondery;
 }
