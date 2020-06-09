@@ -1,0 +1,26 @@
+.Favourites {
+  margin: 0 152px;
+  &__title {
+    font-family: Mont, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: #313237;
+    padding: 40px 0 8px;
+    margin: 0;
+  }
+  &__qty {
+    font-family: Mont, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #89939a;
+    margin-top: 0;
+  }
+  &__list {
+    display: flex;
+  }
+}

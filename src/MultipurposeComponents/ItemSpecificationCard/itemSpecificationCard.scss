@@ -1,0 +1,122 @@
+.Item {
+  margin: 0 152px;
+  &__title {
+    font-family: Mont, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: #313237;
+  }
+}
+
+.ISU {
+  display: flex;
+  &__photos {
+    display: flex;
+    &_main {
+      width: 464px;
+      height: 464px;
+      padding: 11px;
+      border: 1px solid #C4C4C4;
+      box-sizing: border-box;
+    }
+  }
+  &__slider {
+    &_list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      padding: 0;
+      margin: 0;
+    }
+    &_image {
+      width: 66px;
+      height: 66px;
+      padding: 7px;
+    }
+    &_button {
+      padding: 0;
+      border: 1px solid #C4C4C4;
+      box-sizing: border-box;
+      margin: 0 17px 17px 0;
+      background-color: white;
+    }
+  }
+  &__specification {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: 64px;
+    &_buy {
+      width: 263px;
+      margin-right: 8px;
+    }
+    &_description {
+      margin-bottom: 8px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+
+      &-wrapper {
+        width: 100%;
+        margin-top: 32px;
+      }
+    }
+    &_price {
+      font-family: Mont, sans-serif;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 32px;
+      line-height: 41px;
+      letter-spacing: -0.01em;
+      color: #313237;
+      &-wrapper {
+        display: flex;
+        align-items: center;
+      }
+    }
+
+    &_priceOld {
+      padding-left: 20px;
+      font-weight: 300;
+      font-size: 22px;
+      line-height: 28px;
+      text-decoration-line: line-through;
+      color: #89939A;
+    }
+
+  }
+}
+
+.ISL {
+  margin-top: 80px;
+  display: flex;
+  &__about {
+    width: 563px;
+    &_title {
+      font-family: Mont, sans-serif;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 22px;
+      line-height: 140%;
+      padding-bottom: 16px;
+      border-bottom: 1px solid #E2E6E9;
+    }
+    &_description {
+      margin-top: 32px;
+      font-family: Mont, sans-serif;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 21px;
+      color: #89939A;
+    }
+  }
+  &__technical {
+    margin-left: 65px;
+    width: 512px;
+  }
+}

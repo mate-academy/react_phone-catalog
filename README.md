@@ -9,7 +9,7 @@ Use [products](https://mate-academy.github.io/react_phone-catalog/api/products.j
 and [product details](https://mate-academy.github.io/react_phone-catalog/api/products/motorola-xoom.json)
 tо fetch data (use actual `productId` as a last part of the URL before `.json`).
 
-Store the Cart in the `localStorage`
+Store the ShoppingCart in the `localStorage`
 
 ## Tasks
 - Create `pages`, `components` and `helpers` folders to structure your app
@@ -19,7 +19,7 @@ Store the Cart in the `localStorage`
 ### App
 1. Add a `Header` with links to all the pages
     - The `Logo` and the `Nav` are aligned left
-    - The `Favorites` and the `Cart` are aligned right
+    - The `Favorites` and the `ShoppingCart` are aligned right
 1. Use `NavLink`s to highlight current page in `Header`
 1. Add `Footer`
     - Footer content is limited the same width as the page content
@@ -60,7 +60,7 @@ Store the Cart in the `localStorage`
     - Hide all the pagination elements if there are a few items (less than 1 smallest page size)
     - (*) Save `?page=2&perPage=8` in the URL and apply them after the page reload
 
-## Tablets and accessories
+## TabletsCatalog and accessories
 1. Create `TabletsPage` page available at `/tablets` working the same way as `PhonesPage`
     - Create `getTablets` method fetching the products with `type`: `tablet`
 1. Create `AccessoriesPage` page available at `/accessories` working the same way as `PhonesPage`
@@ -83,19 +83,19 @@ Store the Cart in the `localStorage`
 1. Add `Breadcrumbs` at the top
     - The last part is a plain text all the other ones are links
 
-### Cart
+### ShoppingCart
 1. Implement `CartPage` storing an array of `CartItems`
     - Each item should have `id`, `quantity` and a `product`
-1. `Add to cart` button in `ProductCart` should add a product to the `Cart`
-1. If the product is already in the `Cart` the button should say `Added to cart`
+1. `Add to cart` button in `ProductCart` should add a product to the `ShoppingCart`
+1. If the product is already in the `ShoppingCart` the button should say `Added to cart`
 1. Implement `cart` helper storing the items in memory and having all the required methods.
   Later on it will interact with the API
-1. Add ability to remove items from the `Cart` with a `x` button
-1. Add ability to change the quantity in the `Cart` with `-` and `+` buttons around the quantity
+1. Add ability to remove items from the `ShoppingCart` with a `x` button
+1. Add ability to change the quantity in the `ShoppingCart` with `-` and `+` buttons around the quantity
 1. Total amount and quantity should be calculated automatically
 1. `Checkout` button should show the message that this functionality is not implemented yet
-1. (*) Show the total quantity near the `Cart` icon in the header
-1. (*) Save the `Cart` to the `localSotrage` on each change and read it on page load
+1. (*) Show the total quantity near the `ShoppingCart` icon in the header
+1. (*) Save the `ShoppingCart` to the `localSotrage` on each change and read it on page load
 
 ### Favorites
 1. Create `FavoritesPage` it should show the `ProductsList` with all the favorite products

@@ -1,0 +1,100 @@
+.PhonesCatalog {
+  margin: 0 152px;
+
+  &__navigation {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 80px;
+
+    &_button {
+      margin: 0 12px;
+      width: 32px;
+      height: 32px;
+      border: 1px solid #e2e6e9;
+      &:hover {
+        cursor: pointer;
+      }
+      &:active {
+        box-shadow: 0 0 4px 2px rgba(0,0,0,0.75);
+      }
+      &:focus {
+        outline: none;
+      }
+      &-image {
+        width: 11px;
+        height: 11px;
+      }
+      &-right {
+        transform: rotate(90deg);
+      }
+      &-left {
+        transform: rotate(-90deg);
+      }
+    }
+    &_tabs {
+      margin: 0 4px;
+      &-active {
+        background: #313237;
+        color: white;
+      }
+    }
+  }
+
+  &__items {
+    display: flex;
+    flex-wrap: wrap;
+    width: 1152px;
+    position: relative;
+    &_wrapper {
+      width: 1136px;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+  }
+  &__header {
+    font-family: Mont, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: #313237;
+    margin: 40px 0 8px;
+  }
+  &__qty {
+    margin: 0;
+    font-family: Mont, sans-serif;
+    font-style: normal;
+    font-size: 14px;
+    line-height: 21px;
+    color: #89939a;
+  }
+  &__sorting {
+    display: flex;
+    margin-top: 40px;
+
+    &_wrapper {
+      display: flex;
+      flex-direction: column;
+      padding: 0 16px 24px 0;
+    }
+    &_option {
+      font-family: Mont, sans-serif;
+      font-style: normal;
+      font-size: 14px;
+      line-height: 21px;
+      color: #313237;
+      height: 40px;
+      border: 1px solid #b4bdc4;
+      box-sizing: border-box;
+    }
+    &_title {
+      font-family: Mont, sans-serif;
+      font-style: normal;
+      font-size: 12px;
+      line-height: 15px;
+      color: #89939a;
+      padding-bottom: 4px;
+    }
+  }
+}

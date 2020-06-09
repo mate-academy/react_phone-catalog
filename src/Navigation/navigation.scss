@@ -1,0 +1,98 @@
+@import "../Additional/Vars";
+
+.Nav {
+  height: 64px;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0 1px 0 #e2e6e9;
+
+  &__right {
+    display: flex;
+    align-items: center;
+    &_counter {
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      font-size: 9px;
+      line-height: 14px;
+      font-family: Mont, sans-serif;
+      font-style: normal;
+      font-weight: 600;
+      color: white;
+      box-sizing: border-box;
+      border: 1px solid white;
+      text-align: center;
+      border-radius: 10px;
+      background-color: red;
+      position: relative;
+      bottom: 52px;
+      left: 33px;
+    }
+    &_link {
+      box-shadow: -1px 0 0 #e2e6e9;
+      width: 61px;
+      height: 61px;
+    }
+    &_icon {
+      width: 13px;
+      padding: 24px;
+    }
+  }
+
+  &__left {
+    display: flex;
+    align-items: center;
+
+  }
+
+  &__logo {
+    position: relative;
+    width: 30px;
+    margin-left: 24px;
+    &:hover {
+      -webkit-animation: spin 1s infinite;
+      animation: spin 1s infinite;
+    }
+  }
+
+  &__list {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__link {
+    position: relative;
+    display: inline-block;
+    padding: 0 32px;
+    text-decoration: none;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    font-family: Mont, sans-serif;
+    color: #89939a;
+    &::before {
+      content: "";
+      display: block;
+      position: relative;
+      top: 38px;
+      left: 0;
+      height: 3px;
+      width: 100%;
+      background-color: #313237;
+      transform: scale(0, 1);
+      transition: color 0.1s, transform 0.2s ease-in-out;
+    }
+    &:hover::before {
+      transform: scale(1, 1);
+    }
+    &_active {
+      color: #313237;
+    }
+    &_active::before {
+      transform: scale(1, 1);
+    }
+  }
+}
