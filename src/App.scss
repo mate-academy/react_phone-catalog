@@ -1,6 +1,17 @@
 @import "components/PhoneCard/PhoneCard";
 @import "pages/PhonesPage";
+@import "pages/TabletsPage";
 @import "./utils/reset";
 @import "./utils/vairables";
 @import "./helpers/Loader/Loader";
 @import "components/Pagination/Pagination";
+@import "components/Breadcrumbs/Breadcrumbs";
+
+.Products {
+  &__article {
+    display: grid;
+    grid-template-columns: 320px;
+    grid-template-rows: 50px 50px 50px 50px;
+    padding: 23px 50px;
+  }
+}
