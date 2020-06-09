@@ -30,22 +30,19 @@ const Dropdown: React.FC<SelectProps> = ({ options, value, onChange }) => {
     };
   }, []);
 
-
   return (
     <>
-      <div className={cn('Dropdown', { 'Dropdown--focus': isOpen })}>
-        <div className="Dropdown__Option Option">
-          <p className="Option__Title">{selectedOption?.title}</p>
-          <button
-            type="button"
-            className={cn('Option__Btn', { 'Option__Btn--focus': isOpen })}
-            aria-label="Mute text"
-            onClick={() => setIsOpen(!isOpen)}
-          />
+      <div className={cn({ Dropdown: !isOpen, 'Dropdown--focus': isOpen })}>
+        <div className="Dropdown__Option Option" ref={ref}>
+          <div
+            className={cn('Option__Title Option__Title::after', { 'Option__Title--focus': isOpen })}
+          >
+            {selectedOption?.title}
+          </div>
         </div>
 
         {isOpen && (
-          <ul className="Dropdown__List">
+          <ul className={cn('Dropdown__List', { 'Dropdown__List--opened': isOpen })}>
             {options.map((option: Option) => (
               <li key={option.value}>
                 <button
@@ -53,7 +50,6 @@ const Dropdown: React.FC<SelectProps> = ({ options, value, onChange }) => {
                   className={cn('Dropdown__Item',
                     { 'Dropdown__Item--selected': option.value === value })}
                   onClick={() => {
-                    setIsOpen(false);
                     onChange(option.value);
                   }}
                 >

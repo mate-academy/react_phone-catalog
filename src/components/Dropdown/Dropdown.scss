@@ -9,20 +9,15 @@
   cursor: pointer;
   @include hover(border-color, $colorSecondery);
 
-  &--focus {
-    border: solid 1px $colorPrimary;
-  }
-
-  &__list {
+  &__List {
     padding: 8px 0;
     border: $borderElement;
-
     transition: all 0.5s;
     visibility: hidden;
     opacity: 0;
   }
 
-  &__list--opened {
+  &__List--opened {
     visibility: visible;
     transform: translateY(4px);
     opacity: 1;
@@ -41,7 +36,7 @@
     cursor: pointer;
   }
 
-  &__item:hover {
+  &__Item:hover {
     @include hover(background-color, $colorHover);
   }
 
@@ -69,7 +64,7 @@
     cursor: pointer;
   }
 
-  &__title::after {
+  &__Title::after {
     content: "";
     position: absolute;
     top: 0;
@@ -83,15 +78,22 @@
     cursor: pointer;
   }
 
-  &__title--focus::after {
-    @extend .option__title::after;
+  &__Title--focus::after {
     content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: block;
+    height: 100%;
+    width: 15px;
+    background-color: #fff;
+    @include iconInButton(url(../../img/Icons/down.svg));
     transition: 0.3s;
     transform: rotate(180deg);
   }
 }
 
-.dropdown--focus {
+.Dropdown--focus {
   height: $heightDropdown;
   margin-top: 4px;
   border: solid 1px $colorPrimary;
