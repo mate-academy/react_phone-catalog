@@ -22,7 +22,7 @@ export const Header = () => {
       <div className="header__right">
         <Route path={['/phones', '/tablets', '/accessories']} exact>
           <div className="search header__search">
-            <img src="./img/search.svg" alt="heart_icon" className="search__icon" />
+            <img src="./img/Search.svg" alt="search_icon" className="search__icon" />
             <Search />
           </div>
         </Route>
