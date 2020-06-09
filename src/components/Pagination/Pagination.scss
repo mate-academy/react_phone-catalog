@@ -7,8 +7,8 @@
 
   &__button {
     box-sizing: border-box;
-    width: 40px;
-    height: 40px;
+    width: 32px;
+    height: 32px;
     background: white;
     border: 1px solid $border-gray;
     transition: 0.3s;
@@ -21,8 +21,8 @@
 
   &__button-active {
     box-sizing: border-box;
-    width: 40px;
-    height: 40px;
+    width: 32px;
+    height: 32px;
     color: white;
     background: $dark-gray-color;
     border: $dark-gray-color;

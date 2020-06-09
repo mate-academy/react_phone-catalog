@@ -1,0 +1,16 @@
+.Breadcrumbs {
+  display: flex;
+  align-items: center;
+  align-self: start;
+
+  &__phoneslink {
+    color: $gray-color;
+  }
+
+  &__phoneslink-image {
+    width: 10px;
+    height: 10px;
+    object-fit: cover;
+    margin: 0 10px;
+  }
+}

@@ -1,3 +1,5 @@
+@import "../pages/PhonesPage";
+
 .Product {
   &__top {
     margin-top: 40px;
@@ -10,16 +12,18 @@
     margin-right: 16px;
     list-style: none;
   }
+
   &__img-container {
     display: flex;
   }
+
   &__title {
     margin-top: 16px;
   }
 
   &__images_item, &__img_main {
     box-sizing: border-box;
-    border: 1px solid #E2E6E9;
+    border: 1px solid $light-gray;
     background-position: center;
     background-repeat: no-repeat;
   }
@@ -46,15 +50,13 @@
   &__button {
     width: 263px;
     height: 48px;
-    &:hover {
-      box-shadow: 0px 3px 13px rgba(23, 32, 49, 0.26);
-    }
-    &_favorites {
-      width: 48px;
-      height: 48px;
-    }
+    cursor: pointer;
   }
 
+  &__button_favorites {
+    width: 48px;
+    height: 48px;
+  }
 
 
   &__price {
@@ -71,7 +73,7 @@
     &_full {
       font-size: 22px;
       text-decoration-line: line-through;
-      color: #89939A
+      color: $gray-color;
     }
   }
 
@@ -84,20 +86,22 @@
       margin-top: 32px;
     }
   }
+
   &__info-wrap {
     width: 320px;
   }
 
-  &__spec-info , &__spec-name {
+  &__spec-info, &__spec-name {
     font-weight: 600;
     font-size: 12px;
   }
 
   &__spec-name {
-    color: #89939A;
+    color: $gray-color;
   }
+
   &__spec-info {
-    color:#313237;
+    color: $dark-gray-color;
   }
 
   &__info_container {
@@ -108,7 +112,7 @@
   &__info {
     max-width: 560px;
 
-    &_tech{
+    &_tech {
       width: 520px;
     }
 
@@ -116,19 +120,22 @@
       margin-bottom: 32px;
     }
   }
+
   &__info_title {
     margin-bottom: 16px;
   }
 }
+
 .line {
   margin: 16px 0 32px;
 }
+
 .backlink {
   text-decoration: none;
-  color: #89939A;
+  color: $gray-color;
   padding-left: 20px;
   margin-bottom: 16px;
-  background: url('../components/Slider/btn-prev.svg');
+  background-image: url("../components/Slider/btn-prev.svg");
   background-repeat: no-repeat;
   background-position: left;
 }

@@ -82,14 +82,26 @@
     width: 176px;
     height: 40px;
     box-sizing: border-box;
+    transition: 0.3s;
+    outline: none;
+    &:hover {
+      cursor: pointer;
+      box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+    }
   }
 
   &__favorits-button {
-    border: 1px solid $dark-gray-color;
+    border: 1px solid $border-gray;
     box-sizing: border-box;
     width: 40px;
     height: 40px;
     background: white;
+    transition: 0.3s;
+    outline: none;
+    &:hover {
+      border: 1px solid $dark-gray-color;
+      cursor: pointer;
+    }
   }
 
   &__buttons-container {
