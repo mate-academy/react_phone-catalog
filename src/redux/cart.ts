@@ -4,6 +4,7 @@ const ADD_TO_CART = 'ADD_TO_CART';
 const DELETE_FROM_CART = 'DELETE_FROM_CART';
 const ADD_QUANTITY = 'ADD_QUANTITY';
 const SUBTRACT_QUANTITY = 'SUBTRACT_QUANTITY';
+const RESET_CART = 'RESET_CART';
 
 export const addToCart = (product: Product | undefined, id: string, price: number) => (
   {
@@ -14,6 +15,8 @@ export const addToCart = (product: Product | undefined, id: string, price: numbe
 export const deleteFromCart = (id: string, price: number) => (
   { type: DELETE_FROM_CART, id, price }
 );
+
+export const resetCart = () => ({ type: RESET_CART });
 
 export const addQuantity = (id: string, price: number) => (
   { type: ADD_QUANTITY, id, price }
@@ -44,8 +47,10 @@ type subtractQuantityAction = Action<typeof SUBTRACT_QUANTITY> & {
   id: string;
 };
 
+type resetCartAction = Action<typeof RESET_CART>;
+
 type AllowedActions = addToCartAction | deleteFromCartAction
-| addQuantityAction | subtractQuantityAction;
+| addQuantityAction | subtractQuantityAction | resetCartAction;
 
 type stateType = {
   cartItems: Product[];
@@ -108,6 +113,12 @@ const cartItemsReducer = (state = initialState, action: AllowedActions) => {
             : item.quantity,
         })),
         price: state.price - action.price,
+      };
+
+    case RESET_CART:
+      return {
+        cartItems: [],
+        price: 0,
       };
 
     default:
