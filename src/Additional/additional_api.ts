@@ -5,7 +5,7 @@ export const OWNER_GIT_HUB = 'https://github.com/vitaliikorol';
 
 export const IMAGES_FOR_SLIDER = [
   "img/main_slider/1.jpg",
-  "img/main_slider/2.jpg",
+  "img/main_slider/2.png",
   "img/main_slider/3.jpg",
   "img/main_slider/4.jpg",
   "img/main_slider/5.jpg"

@@ -4,16 +4,16 @@ import { ServerData } from '../../Additional/additional_api';
 
 export const Category = () => {
   const [serverData, setServerData] = useState([]);
-  const [mobiles, setMobiles] = useState([]);
-  const [tablets, setTablets] = useState([]);
-  const [accessories, setAccessories] = useState([]);
+  const [mobiles, setMobiles] = useState(0);
+  const [tablets, setTablets] = useState(0);
+  const [accessories, setAccessories] = useState(0);
   const dataFromServer = useContext(ServerData);
 
   useEffect(() => {
     dataFromServer.then(data => setServerData(data));
-    setMobiles(serverData.filter((el: { type: string }) => el.type === 'phone'));
-    setTablets(serverData.filter((el: { type: string }) => el.type === 'tablet'));
-    setAccessories(serverData.filter((el: { type: string }) => el.type === 'accessories'));
+    setMobiles(serverData.filter((el: { type: string }) => el.type === 'phone').length);
+    setTablets(serverData.filter((el: { type: string }) => el.type === 'tablet').length);
+    setAccessories(serverData.filter((el: { type: string }) => el.type === 'accessories').length);
   }, [serverData, dataFromServer]);
 
 
@@ -32,7 +32,7 @@ export const Category = () => {
             </div>
             <p className="cli__description">Mobile phones</p>
             <span className="cli__count">
-              {`${mobiles.length} models`}
+              {`${mobiles} models`}
             </span>
           </li>
           <li className="Category__list_item cli">
@@ -45,7 +45,7 @@ export const Category = () => {
             </div>
             <p className="cli__description">Tablets</p>
             <span className="cli__count">
-              {tablets.length}
+              {tablets}
               {' '}
               models
             </span>
@@ -60,7 +60,7 @@ export const Category = () => {
             </div>
             <p className="cli__description">Accessories</p>
             <span className="cli__count">
-              {accessories.length}
+              {accessories}
               {' '}
               models
             </span>
