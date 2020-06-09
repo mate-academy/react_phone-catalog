@@ -2,7 +2,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Heading } from '../../components/Heading/Heading';
 import { FavoriteBtn } from '../../components/Buttons/FavoriteBtn';
-import { PRICE_TEXT_SIZES, SHOWCASE_HEADINGS } from '../../common/constants';
+import { PRICE_TEXT_SIZES, SHOWCASE_HEADINGS, LOCATIONS } from '../../common/constants';
 import { ProductPrice } from '../../components/ProductCard/ProductPrice';
 import { AddProductBtn } from '../../components/Buttons/AddProductBtn';
 import { getDetails, getProducts, loadDetails } from '../../redux';
@@ -15,10 +15,11 @@ import { ProductDescription } from './ProductDescription';
 import { ProductShortSpecs } from './ProductShortSpecs';
 import { useParams } from 'react-router-dom';
 import { Loader } from '../../components/Loader/Loader';
+import { ErrorPage } from '../ErrorPage';
 
 export const ProductDetailsPage = () => {
   const dispatch = useDispatch();
-  const { productId } = useParams();
+  const { productType, productId } = useParams();
   const [product, setProduct] = useState<Product>();
   const productDetails: ProductDetails = useSelector(getDetails);
   const products: Product[] = useSelector(getProducts);
@@ -38,6 +39,10 @@ export const ProductDetailsPage = () => {
   useEffect(() => {
     dispatch(loadDetails(productId));
   }, [productId, dispatch]);
+
+  if (!LOCATIONS.hasOwnProperty(productType)) {
+    return <ErrorPage />
+  }
 
   if (!product) {
     return <Loader />
