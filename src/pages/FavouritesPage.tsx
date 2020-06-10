@@ -1,12 +1,11 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { getProducts } from '../store/index';
+import { getFavourites } from '../store/index';
 import PhoneCard from '../components/PhoneCard/PhoneCard';
 import './Favourites.scss';
 
 export const FavoritesPage = () => {
-  const products = useSelector(getProducts);
-  const favourites = products.filter((product: Products) => product.favorites);
+  const favourites = useSelector(getFavourites);
 
   return (
     <>
