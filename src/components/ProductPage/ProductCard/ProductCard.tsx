@@ -1,25 +1,26 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { FavProductsContext } from '../../Favourite/FavProductsContext';
 import './ProductCard.scss';
 
 type Props = {
-  imageUrl: string;
-  name: string;
-  price: number;
-  discount: number;
-  screen: string;
-  capacity: string;
-  ram: string;
+  product: ProductItem;
 };
 
 export const ProductCard: React.FC<Props> = ({
-  imageUrl,
-  name,
-  price,
-  discount,
-  screen,
-  capacity,
-  ram,
+  product,
 }) => {
+  const {
+    id,
+    imageUrl,
+    name,
+    price,
+    discount,
+    screen,
+    capacity,
+    ram,
+  } = product;
+  const { addToFav, removeFav, isFavourite } = useContext(FavProductsContext);
+
   return (
     <div className="products__card card">
       <img className="card__img" src={imageUrl} alt="products img" />
@@ -59,9 +60,27 @@ export const ProductCard: React.FC<Props> = ({
           >
             Add to cart
           </button>
-          <button className="button__favorite" type="button">
-            <img className="button__favorite--img" src="./img/Icons/heart.svg" alt="heart" />
-          </button>
+          <label
+            className={isFavourite(product)
+              ? 'button__favorite button__favorite--checked'
+              : 'button__favorite'}
+            htmlFor={`button__favorite--${id}`}
+          >
+            <input
+              className="button__favorite--input"
+              type="checkbox"
+              checked={isFavourite(product)}
+              id={`button__favorite--${id}`}
+              onChange={(event) => {
+                if (event.target.checked) {
+                  addToFav(product);
+                } else {
+                  removeFav(product);
+                }
+              }}
+            />
+          </label>
+
         </div>
       </div>
     </div>

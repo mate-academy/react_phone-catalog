@@ -50,7 +50,6 @@
     grid-template-columns: 1fr 40px;
     grid-gap: 8px;
     height: 40px;
-
   }
 }
 
@@ -92,11 +91,21 @@
     border: 1px solid rgb(150, 152, 153);
     box-sizing: border-box;
     padding: 0;
-    background: rgb(255, 255, 255);
-    outline: none;
+    background-image: url(../../../images/header/heartBlack.svg);
+    background-position: 50%;
+    background-repeat: no-repeat;
+    cursor: pointer;
+
+    &--checked {
+      background-image: url(../../../images/header/HeartRed.svg);
+    }
 
     &--img {
       width: 15px;
+    }
+
+    &--input {
+      opacity: 0;
     }
   }
 }
