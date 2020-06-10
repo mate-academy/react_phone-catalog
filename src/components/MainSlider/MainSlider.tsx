@@ -1,90 +1,151 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './MainSlider.scss';
-
-const marginLeftBanner = 10;
-const widthBanner = 1040 + marginLeftBanner;
-const widthCarousel = widthBanner * 2;
+import cn from 'classnames/bind';
 
 const sliders = [
   {
     id: 1,
-    image: './img/Banner.jpg',
+    image: './img/slider_img-1.jpg',
   },
   {
     id: 2,
-    image: './img/Banner.jpg',
+    image: './img/slider_img-2.jpg',
   },
   {
     id: 3,
-    image: './img/Banner.jpg',
+    image: './img/slider_img-3.jpg',
   },
 ];
 
+interface SlideCarousel {
+  id?: number;
+  image?: string;
+}
+
 const MainSlider: React.FC = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [translatePrev, setTranslatePrev] = useState(false);
+  const [translateNext, setTranslateNext] = useState(false);
   const [selectedDot, setSelectedDot] = useState(0);
-  const [position, setPosition] = useState(0);
+  const [nextSlide, setNextSlide] = useState<SlideCarousel>({});
+  const [prevSlide, setPrevSlide] = useState<SlideCarousel>({});
 
   const handlePrevOnClick = () => {
-    if (position === 0) {
-      setPosition(-widthCarousel);
-      setSelectedDot(sliders.length - 1);
-    } else {
-      setPosition(position + widthBanner);
-      setSelectedDot(selectedDot - 1);
-    }
+    setTranslatePrev(true);
+    setTimeout(() => {
+      if (currentIndex === 0) {
+        setCurrentIndex(sliders.length - 1);
+        setSelectedDot(sliders.length - 1);
+      } else {
+        setCurrentIndex(currentIndex - 1);
+        setSelectedDot(selectedDot - 1);
+      }
+
+      setTranslatePrev(false);
+    }, 500);
   };
 
   const handleNextOnClick = () => {
-    setPosition(position - widthBanner);
-    setSelectedDot(selectedDot + 1);
+    setTranslateNext(true);
+    setTimeout(() => {
+      if (currentIndex === sliders.length - 1) {
+        setCurrentIndex(0);
+        setSelectedDot(0);
+      } else {
+        setCurrentIndex(currentIndex + 1);
+        setSelectedDot(selectedDot + 1);
+      }
 
-    if (-position > widthCarousel - widthBanner) {
-      setPosition(0);
-      setSelectedDot(0);
+      setTranslateNext(false);
+    }, 500);
+  };
+
+  useEffect(() => {
+    const interval = setInterval(
+      () => handlePrevOnClick(),
+      4000,
+    );
+
+    return () => clearInterval(interval);
+  }, [handlePrevOnClick]);
+
+  useEffect(() => {
+    if (currentIndex === 0) {
+      setPrevSlide(sliders[sliders.length - 1]);
+    } else {
+      setPrevSlide(sliders[currentIndex - 1]);
     }
+
+    if (currentIndex === sliders.length - 1) {
+      setNextSlide(sliders[0]);
+    } else {
+      setNextSlide(sliders[currentIndex + 1]);
+    }
+  }, [currentIndex]);
+
+  const handleDotClick = (indexDot: number) => {
+    if (indexDot > currentIndex) {
+      setNextSlide(sliders[indexDot]);
+      setTranslateNext(true);
+    }
+
+    if (indexDot < currentIndex) {
+      setPrevSlide(sliders[indexDot]);
+      setTranslatePrev(true);
+    }
+
+    setTimeout(() => {
+      setCurrentIndex(indexDot);
+      setTranslateNext(false);
+      setTranslatePrev(false);
+    }, 500);
   };
 
   return (
     <div>
-      <div className="containerMainSlider">
+      <div className="СontainerMainSlider">
         <button
           type="button"
-          className="сarousel__button btn-left"
-          aria-label="Mute volume"
+          className="Сarousel__Button Btn-left"
+          aria-label="Disabled text"
           onClick={handlePrevOnClick}
         />
 
-        <div className="container__сarousel сarousel">
-          <div
-            style={{ transform: `translate(${position}px)` }}
-            className="сarousel__list"
-          >
-            {sliders.map(slide => (
+        <div className="Сontainer__Carousel Сarousel">
+          <div>
+            <>
               <div
-                className="сarousel__item"
-                key={slide.id}
+                className={cn('Сarousel__List',
+                  {
+                    'Сarousel__List--animationPrev': translatePrev,
+                    'Сarousel__List--animationNext': translateNext,
+                  })}
               >
-                <img src={slide.image} alt="photos" />
+                <img src={prevSlide.image} alt="photos" />
+                <img src={sliders[currentIndex].image} alt="photos" />
+                <img src={nextSlide.image} alt="photos" />
               </div>
-            ))}
+            </>
           </div>
         </div>
         <button
           type="button"
-          aria-label="Mute volume"
-          className="сarousel__button btn-right"
+          aria-label="Disabled text"
+          className="Сarousel__Button Btn-right"
           onClick={handleNextOnClick}
         />
       </div>
 
-      <ul className="сarousel__dots-wrap">
+      <ul className="Сarousel__Dots-wrap">
         {sliders.map((item, index) => {
-          const className = selectedDot === index ? 'сarousel__dot--active' : 'сarousel__dot';
-
           return (
-            <li
+            <button
+              type="button"
               key={item.id}
-              className={className}
+              className={cn('Сarousel__Dot',
+                { 'Сarousel__Dot--active': index === currentIndex })}
+              onClick={() => handleDotClick(index)}
+              aria-label="Disabled text"
             />
           );
         })}

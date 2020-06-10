@@ -2,7 +2,7 @@
 @import "../../styles/utils/vars";
 @import "../../styles/reset";
 
-.containerMainSlider {
+.СontainerMainSlider {
   width: 1124px;
   margin-left: auto;
   margin-right: auto;
@@ -12,24 +12,33 @@
   align-items: center;
 }
 
-.сarousel {
+.Сarousel {
   width: 1040px;
   height: 402px;
   border: 1px solid transparent;
   overflow: hidden;
-  transition: translate 0.5s;
 
-  &__list {
+  &__List {
     display: flex;
     flex-direction: row;
-    transition: transform 0.5s;
+    transform: translateX(-1040px);
+
+    &--animationPrev {
+      transform: translateX(0);
+      transition: transform 0.5s;
+    }
+
+    &--animationNext {
+      transform: translateX(-2080px);
+      transition: transform 0.5s;
+    }
   }
 
-  &__item {
+  &__Item {
     margin-right: 10px;
   }
 
-  &__button {
+  &__Button {
     width: 32px;
     height: 400px;
     border: solid 1px #b4bdc4;
@@ -37,11 +46,11 @@
     cursor: pointer;
   }
 
-  &__button:hover {
+  &__Button:hover {
     border: solid 1px $colorPrimary;
   }
 
-  &__dots-wrap {
+  &__Dots-wrap {
     width: 70px;
     margin-top: 18px;
     margin-left: auto;
@@ -53,7 +62,7 @@
     align-items: center;
   }
 
-  &__dot {
+  &__Dot {
     width: 14px;
     height: 4px;
     display: block;
@@ -69,10 +78,10 @@
   }
 }
 
-.btn-right {
+.Btn-right {
   @include iconInButton(url(../../img/Icons/right.svg));
 }
 
-.btn-left {
+.Btn-left {
   @include iconInButton(url(../../img/Icons/left.svg));
 }
