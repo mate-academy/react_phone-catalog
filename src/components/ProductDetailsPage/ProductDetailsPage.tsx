@@ -6,6 +6,7 @@ import './ProductDetailsPage.scss';
 import { getProducts, getProductDetails } from '../../helpers/api';
 import { PRODUCTS_INFO, PRODUCTS_SPECS } from '../../helpers/config';
 import ProductsSlider from '../ProductsSlider/ProductsSlider';
+import { GoBack } from '../GoBack/GoBack';
 
 export const ProductDetailsPage: React.FC = () => {
   const [products, setProducts] = useState<Slide[]>([]);
@@ -131,6 +132,7 @@ export const ProductDetailsPage: React.FC = () => {
         {isLoading && isLoaded && ''}
         {productDetails && (
           <article className="ProdactPage">
+            <GoBack />
             <h1 className="ProdactPage__Heading">{productDetails.name}</h1>
             <div className="ProdactPage__Content">
               <div className="ProdactPage__Column">
