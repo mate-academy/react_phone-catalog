@@ -1,28 +1,32 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import cn from 'classnames';
-import { setToCard } from '../../store/products';
+import { setToCart } from '../../store/cart';
+import { getCart } from '../../store/index';
 
 type Props = {
-  id: string;
-  inCard?: boolean;
+  product: Products;
   className?: string;
 };
 
 
-export const CardButton: React.FC<Props> = ({ id, inCard, className }) => {
+export const CardButton: React.FC<Props> = ({ product, className }) => {
   const dispatch = useDispatch();
-  const handleClick = (productId: string) => {
-    dispatch(setToCard(productId));
+  const productsInCart = useSelector(getCart);
+
+  const handleClick = (currentProduct: Products) => {
+    dispatch(setToCart(currentProduct));
   };
+
+  const inCart = productsInCart.some((item: CartProduct) => item.product.id === product.id);
 
   return (
     <button
-      onClick={() => handleClick(id)}
+      onClick={() => handleClick(product)}
       type="button"
-      className={cn(`${className}`, { PhoneCard__button_added: inCard })}
+      className={cn(`${className}`, { PhoneCard__button_added: inCart })}
     >
-      {inCard ? 'Added to cart' : 'Add to cart'}
+      {inCart ? 'Added to cart' : 'Add to cart'}
     </button>
   );
 };

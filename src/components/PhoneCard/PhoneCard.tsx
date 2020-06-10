@@ -65,8 +65,8 @@ const PhoneCard: React.FC<PropsPhoneCard> = ({ phone }) => {
         </div>
       </div>
       <div className="PhoneCard__buttons-container">
-        <CardButton id={phone.id} inCard={phone.toCard} className="PhoneCard__button" />
-        <FavoriteButton id={phone.id} favorites={phone.favorites} className="PhoneCard__favorits-button button" />
+        <CardButton product={phone} className="PhoneCard__button" />
+        <FavoriteButton item={phone} className="PhoneCard__favorits-button button" />
       </div>
     </section>
 

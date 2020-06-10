@@ -8,6 +8,8 @@ import paginationReducer from './pagination';
 import sortReducer from './sort';
 import loadingReducer, { startLoading, finishLoading } from './loading';
 import queryReducer from './query';
+import favouritesReducer from './favourites';
+import cartReducer from './cart';
 
 export const getPage = (state: RootState) => state.pagination.page;
 export const getPerPage = (state: RootState) => state.pagination.perPage;
@@ -22,6 +24,8 @@ export const getQuantity = (
 
 
 export const getProducts = (state: RootState) => state.products;
+export const getFavourites = (state: RootState) => state.favourites;
+export const getCart = (state: RootState) => state.cart.items;
 
 const rootReducer = combineReducers({
   products: productsReducer,
@@ -29,6 +33,8 @@ const rootReducer = combineReducers({
   sort: sortReducer,
   loading: loadingReducer,
   query: queryReducer,
+  favourites: favouritesReducer,
+  cart: cartReducer,
 });
 
 

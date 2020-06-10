@@ -1,27 +1,39 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
-import { setFavorites } from '../../store/products';
+import React, { useState, useMemo } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setFavourites } from '../../store/favourites';
+import { getFavourites } from '../../store/index';
 
 type Props = {
-  id: string;
-  favorites?: boolean;
+  item: Products;
   className: string;
 };
 
 
-export const FavoriteButton: React.FC<Props> = ({ id, favorites, className }) => {
+export const FavoriteButton: React.FC<Props> = ({ item, className }) => {
   const dispatch = useDispatch();
-  const handleClick = (productId: string) => {
-    dispatch(setFavorites(productId));
+  const favourites = useSelector(getFavourites);
+  const [isFavourite, setIsFavourite] = useState<boolean>(false);
+  const handleClick = (product: Products) => {
+    dispatch(setFavourites(product));
   };
+
+  useMemo(() => {
+    setIsFavourite(favourites
+      .some((favouriteProduct: Products) => favouriteProduct.id === item.id));
+  }, [favourites, item.id]);
+
 
   return (
     <button
-      onClick={() => handleClick(id)}
+      onClick={() => handleClick(item)}
       type="button"
       className={className}
     >
-      <img src={favorites ? './img/active_heart.svg' : './img/heart.svg'} alt="heart_icon" className="PhoneCard__favorits-image" />
+      <img
+        src={isFavourite ? './img/active_heart.svg' : './img/heart.svg'}
+        alt="heart_icon"
+        className="PhoneCard__favorits-image"
+      />
     </button>
   );
 };

@@ -13,8 +13,6 @@ interface Products {
   capacity: string;
   ram: string;
   length: number;
-  favorites?: boolean;
-  toCard?: boolean;
 }
 
 type Slider = {
@@ -70,4 +68,22 @@ interface Product {
     flash: string;
     ram: string;
   };
+}
+
+interface CartProduct {
+  product: {
+    age: number;
+    type: string;
+    id: string;
+    imageUrl: string;
+    name: string;
+    snippet: string;
+    price: number;
+    discount: number;
+    screen: string;
+    capacity: string;
+    ram: string;
+    length: number;
+  };
+  quantity: number;
 }

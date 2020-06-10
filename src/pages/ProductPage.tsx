@@ -19,8 +19,6 @@ export const ProductPage = () => {
   const prod = products.find((product: Products) => product.id === productId);
   const productPrice = prod?.price || 0;
   const productDiscount = prod?.discount || 0;
-  const favorites = prod?.favorites;
-  const toCard = prod?.toCard;
   const priceWithDiscount = productPrice - productDiscount;
 
   useEffect(() => {
@@ -75,12 +73,12 @@ export const ProductPage = () => {
                 <div className="Product__mainInfo">
                   <div className="Product__price">
                     <h1 className="Product__price_discont">{`$${priceWithDiscount}`}</h1>
-                    <p className="Product__price_full">{productDiscount === 0 ? '' : productPrice }</p>
+                    <p className="Product__price_full">{productDiscount === 0 ? '' : `$${productPrice}` }</p>
                   </div>
                   <div className="Product__info-wrap">
                     <div className="PhoneCard__buttons-container">
-                      <CardButton id={productId} inCard={toCard} className="Product__button PhoneCard__button" />
-                      <FavoriteButton id={productId} favorites={favorites} className="Product__button_favorites" />
+                      <CardButton product={prod} className="Product__button PhoneCard__button" />
+                      <FavoriteButton item={prod} className="Product__button_favorites" />
                     </div>
                     <div className="Product__specs">
                       <div className="Product__group">
