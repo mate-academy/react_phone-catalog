@@ -1,0 +1,31 @@
+@import "../../styles/reset";
+@import "../../styles/utils/mixins";
+@import "../../styles/utils/vars";
+
+.GoBack {
+  display: flex;
+  align-items: center;
+  margin: 40px 0 16px;
+  &__Arrow {
+    display: block;
+    margin-bottom: 2px;
+    height: 10px;
+    width: 6px;
+    @include iconInButton(url(../../img/Icons/left.svg));
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    fill: $colorPrimary;
+  }
+
+  &__Button {
+    margin-left: 10px;
+    height: 15px;
+    width: 31px;
+    background-color: white;
+    border: none;
+    @include smallText;
+    color: #89939a;
+    cursor: pointer;
+  }
+}

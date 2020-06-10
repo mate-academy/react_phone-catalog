@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { getProducts } from '../../helpers/api';
 import { Card } from '../Card/Card';
 import './TabletsPage.scss';
+import { Breadcrumbs } from '../Breadcrumbs/Breadcrumbs';
 
 export const TabletsPage: React.FC = () => {
   const [tablets, setTablets] = useState<Slide[]>([]);
@@ -39,6 +40,7 @@ export const TabletsPage: React.FC = () => {
         )}
       {isLoaded && (
         <div className="TabletContainer">
+          <Breadcrumbs />
           <h1 className="Tablet__Title">Tablets</h1>
           <span className="Tablet__Sum">
             {tablets.length}

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { getProducts } from '../../helpers/api';
 import { Card } from '../Card/Card';
 import './AccessoriesPage.scss';
+import { Breadcrumbs } from '../Breadcrumbs/Breadcrumbs';
 
 export const AccessoriesPage: React.FC = () => {
   const [accessories, setAccessories] = useState<Slide[]>([]);
@@ -39,6 +40,7 @@ export const AccessoriesPage: React.FC = () => {
         )}
       {isLoaded && (
         <div className="Accessories AccessoriesContainer">
+          <Breadcrumbs />
           <h1
             className="Accessories__Title"
           >
