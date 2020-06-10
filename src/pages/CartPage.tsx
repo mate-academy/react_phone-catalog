@@ -20,7 +20,7 @@ export const CartPage = () => {
             <>
               <BackBtn />
               <Heading title={SECTION_HEADINGS.cart} />
-              <div className="cart__content-container">
+              <div className="cart__container">
                 <ul className="cart__items">
                   {cartItems.map((product) => (
                     <CartItem key={product.id} {...product} />

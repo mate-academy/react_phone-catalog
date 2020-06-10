@@ -9,10 +9,6 @@
   border: 1px solid $border-section-color;
   box-sizing: border-box;
 
-  @media screen and (max-width: 1036px) {
-    width: 500px;
-  }
-
   @media screen and (max-width: $cart-page-medium-breakpoint) {
     position: relative;
     width: 272px;
@@ -56,9 +52,13 @@
     font-size: 14px;
     line-height: 21px;
     color: $primary-color;
+    padding-left: 10px;
+    padding-right: 10px;
 
     @media screen and (max-width: $cart-page-medium-breakpoint) {
       margin: 15px 0;
+      text-align: center;
+      padding: 0;
       width: auto;
     }
   }
@@ -87,8 +87,8 @@
   }
 
   &__quantity {
-    margin-left: 14px;
-    margin-right: 14px;
+    width: 32px;
+    text-align: center;
     font-weight: 500;
     font-size: 14px;
     line-height: 21px;

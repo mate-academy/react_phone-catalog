@@ -47,7 +47,7 @@ export const ProductCard = ({
         <p className="product-card__title">{name}</p>
       </Link>
       <div className="product-card__price-container">
-        <ProductPrice price={price} discount={discount} />
+        <ProductPrice price={price} discount={discount} styleSize="product-card__price" />
       </div>
       <span className="product-card__split-line" />
       <div className="product-card__details">

@@ -9,13 +9,15 @@
     border-right: 0;
   }
 
-  &__content-container {
-    max-width: 1124px;
+  &__container {
     display: flex;
 
-    @media screen and (max-width: $cart-page-large-breakpoint) {
-      max-width: 500px;
+    @media screen and (max-width: $tablets-landscape-breakpoint) {
       flex-direction: column;
+    }
+
+    @media screen and (max-width: $cart-page-medium-breakpoint) {
+      align-items: center;
     }
   }
 
@@ -23,9 +25,12 @@
     margin-right: 16px;
     display: flex;
     flex-direction: column;
+    flex-basis: 0;
+    flex-grow: 2;
 
-    @media screen and (max-width: $cart-page-large-breakpoint) {
+    @media screen and (max-width: $tablets-landscape-breakpoint) {
       margin-right: 0;
+      margin-bottom: 30px;
     }
 
     @media screen and (max-width: $cart-page-medium-breakpoint) {
