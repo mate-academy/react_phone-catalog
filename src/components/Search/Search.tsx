@@ -7,6 +7,8 @@ export const Search = () => {
   const query = useSelector(getQuery);
   const dispatch = useDispatch();
 
+
+
   return (
     <input
       className="header__input"
