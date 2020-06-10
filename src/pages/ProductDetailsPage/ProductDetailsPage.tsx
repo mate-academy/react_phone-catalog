@@ -75,7 +75,7 @@ export const ProductDetailsPage = () => {
                 <ProductPrice
                   price={product.price}
                   discount={product.discount}
-                  styleSize={PRICE_TEXT_SIZES.large}
+                  styleSize={`${PRICE_TEXT_SIZES.large} product__price`}
                 />
                 <span className="product__id">
                   {`ID: ${product.id}`}
