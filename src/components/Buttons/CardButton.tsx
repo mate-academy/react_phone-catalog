@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import cn from 'classnames';
 import { setToCart } from '../../store/cart';
-import { getCart } from '../../store/index';
+import { getCartItems } from '../../store/index';
 
 type Props = {
   product: Products;
@@ -12,7 +12,7 @@ type Props = {
 
 export const CardButton: React.FC<Props> = ({ product, className }) => {
   const dispatch = useDispatch();
-  const productsInCart = useSelector(getCart);
+  const productsInCart = useSelector(getCartItems);
 
   const handleClick = (currentProduct: Products) => {
     dispatch(setToCart(currentProduct));

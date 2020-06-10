@@ -43,7 +43,14 @@
   }
 
   &__price {
+    position: relative;
     margin-left: 43px;
+  }
+
+  &__price_discount {
+    position: absolute;
+    right: 10px;
+    text-decoration: line-through;
   }
 
   &__counter_value {
@@ -65,19 +72,27 @@
 .counter {
   &__btn_minus {
     background: url('../images/minus.svg');
+    border: 1px solid #B4BDC4;
     margin: 0;
   }
 
   &__btn_plus {
     background: url('../images/plus.svg');
+    border: 1px solid #B4BDC4;
   }
 
-  &__btn_plus, &__btn_minus {
+  &__btn_disabled {
+    border-color: #E2E6E9;
+    background: url('../images/btn_minus_disabled.svg');
+  }
+
+  &__btn_plus, &__btn_minus, &__btn_disabled {
     outline: none;
     background-position: center;
     background-repeat: no-repeat;
-    border: 1px solid #B4BDC4;
   }
+
+
 }
 
 .total {
@@ -89,5 +104,13 @@
     border: none;
     color:white;
     font-size: 14px;
+  }
+
+  &__items {
+    font-size: 14px;
+    color: #89939A;
+  }
+  &__discount{
+    margin-top: 20px;
   }
 }

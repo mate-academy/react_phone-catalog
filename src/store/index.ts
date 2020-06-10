@@ -25,7 +25,7 @@ export const getQuantity = (
 
 export const getProducts = (state: RootState) => state.products;
 export const getFavourites = (state: RootState) => state.favourites;
-export const getCart = (state: RootState) => state.cart.items;
+export const getCartItems = (state: RootState) => state.cart.items;
 
 const rootReducer = combineReducers({
   products: productsReducer,
