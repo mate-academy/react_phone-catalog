@@ -6,6 +6,7 @@ import './ProductDetailsPage.scss';
 import { getProducts, getProductDetails } from '../../helpers/api';
 import { PRODUCTS_INFO, PRODUCTS_SPECS } from '../../helpers/config';
 import ProductsSlider from '../ProductsSlider/ProductsSlider';
+import { Breadcrumbs } from '../Breadcrumbs/Breadcrumbs';
 import { GoBack } from '../GoBack/GoBack';
 
 export const ProductDetailsPage: React.FC = () => {
@@ -132,6 +133,7 @@ export const ProductDetailsPage: React.FC = () => {
         {isLoading && isLoaded && ''}
         {productDetails && (
           <article className="ProdactPage">
+            <Breadcrumbs />
             <GoBack />
             <h1 className="ProdactPage__Heading">{productDetails.name}</h1>
             <div className="ProdactPage__Content">

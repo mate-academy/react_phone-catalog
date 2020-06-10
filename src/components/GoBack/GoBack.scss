@@ -6,7 +6,7 @@
   display: flex;
   align-items: center;
   margin: 40px 0 16px;
-  &__arrow {
+  &__Arrow {
     display: block;
     margin-bottom: 2px;
     height: 10px;
@@ -18,7 +18,7 @@
     fill: $colorPrimary;
   }
 
-  &__button {
+  &__Button {
     margin-left: 10px;
     height: 15px;
     width: 31px;

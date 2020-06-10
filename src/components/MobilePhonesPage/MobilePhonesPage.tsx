@@ -6,6 +6,7 @@ import './MobilePhonesPage.scss';
 import SelectSortPhones from '../SelectSortPhones/SelectSortPhones';
 import SelectPerPage from '../SelectPerPage/SelectPerPage';
 import Pagination from '../Pagination/Pagination';
+import { Breadcrumbs } from '../Breadcrumbs/Breadcrumbs';
 
 export const MobilePhonesPage: React.FC = () => {
   const [phonesOnly, setPhonesOnly] = useState<Slide[]>([]);
@@ -93,6 +94,7 @@ export const MobilePhonesPage: React.FC = () => {
       {isLoaded && (
         <>
           <div className="Phones PhonesContainer">
+            <Breadcrumbs />
             <h1 className="Phones__Title">Mobile phones</h1>
             <span className="Phones__Sum">
               {totalModels}

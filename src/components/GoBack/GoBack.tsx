@@ -11,9 +11,9 @@ export const GoBack = () => {
 
   return (
     <div className="GoBack">
-      <span className="GoBack__arrow" />
+      <span className="GoBack__Arrow" />
       <button
-        className="GoBack__button"
+        className="GoBack__Button"
         type="button"
         onClick={handleClick}
       >

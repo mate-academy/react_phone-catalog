@@ -1,0 +1,37 @@
+@import "../../styles/reset";
+@import "../../styles/utils/mixins";
+@import "../../styles/utils/vars";
+
+.Breadcrumbs {
+  display: flex;
+  padding: 25px 0;
+  align-items: center;
+  &__Link {
+    margin: 0 13px;
+    text-decoration: none;
+    @include smallText;
+    color: #313237;
+    &--first {
+      display: block;
+      background-image: url("../../img/Icons/home.svg");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 16px;
+      width: 16px;
+    }
+    &--last {
+      color: #89939a;
+    }
+  }
+
+  &__Arrow {
+    display: block;
+    width: 6px;
+    height: 10px;
+    @include iconInButton(url(../../img/Icons/right.svg));
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: auto;
+  }
+}
