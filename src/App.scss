@@ -55,6 +55,16 @@ body {
     background-image: url(./images/header/bag.svg);
     background-repeat: no-repeat;
   }
+
+  padding: 32px;
+  box-shadow: -1px 0 0 $lightGrayFontColor;
+    &__favorite {
+    background: url("./images/header/like.svg") no-repeat center center;
+  }
+
+    &__bag {
+    background: url("./images/header/bag.svg") no-repeat  center center;
+  }
 }
 
 .list {
@@ -105,17 +115,17 @@ body {
   }
 }
 
-.nav {
-  padding: 32px;
-  box-shadow: -1px 0 0 $lightGrayFontColor;
-  &__favorite {
-    background: url("./images/header/like.svg") no-repeat center center;
-  }
+// .nav {
+//   padding: 32px;
+//   box-shadow: -1px 0 0 $lightGrayFontColor;
+//   &__favorite {
+//     background: url("./images/header/like.svg") no-repeat center center;
+//   }
 
-  &__bag {
-    background: url("./images/header/bag.svg") no-repeat  center center;
-  }
-}
+//   &__bag {
+//     background: url("./images/header/bag.svg") no-repeat  center center;
+//   }
+// }
 
 .container {
   max-width: 1140px;

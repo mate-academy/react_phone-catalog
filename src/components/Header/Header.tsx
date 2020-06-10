@@ -1,7 +1,6 @@
 import React from 'react';
-import {
-  NavLink,
-} from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import { Favourite } from '../Favourite/Favourite';
 
 export const Header = () => (
   <>
@@ -28,9 +27,7 @@ export const Header = () => (
             </li>
           </ul>
           <ul className="list">
-            <NavLink to="/favorite">
-              <li className="nav nav__favorite" />
-            </NavLink>
+            <Favourite />
             <NavLink to="/bag">
               <li className="nav nav__bag" />
             </NavLink>
