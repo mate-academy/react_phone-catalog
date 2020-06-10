@@ -17,9 +17,26 @@ export const ProductPage = () => {
   const location = useLocation();
   const products = useSelector(getProducts);
   const prod = products.find((product: Products) => product.id === productId);
+  const [type, setType] = useState('');
   const productPrice = prod?.price || 0;
   const productDiscount = prod?.discount || 0;
   const priceWithDiscount = productPrice - productDiscount;
+
+  useEffect(() => {
+    switch (prod.type) {
+      case 'phone':
+        setType('phones');
+        break;
+      case 'tablet':
+        setType('tablets');
+        break;
+      case 'accessories':
+        setType('accessories');
+        break;
+      default:
+    }
+  }, [prod.type]);
+
 
   useEffect(() => {
     window.scrollTo({ top: 0 });
@@ -42,7 +59,23 @@ export const ProductPage = () => {
     <>
       {!isLoading ? <Loader /> : (
         <section className="section">
+
           <div className="container">
+            <section className="wrap__container">
+              <section className="Breadcrumbs">
+                <Link to="/home">
+                  <img src="img/Home.png" alt="home_icon" className="Breadcrumbs__icon" />
+                </Link>
+                <img src="img/stroke_right.png" alt="stroke" className="Breadcrumbs__link-image" />
+                <Link to={`/${type}`} className="Breadcrumbs__link">
+                  <p className="Breadcrumbs__link-name">{type[0].toUpperCase() + type.slice(1)}</p>
+                </Link>
+                <img src="img/stroke_right.png" alt="stroke" className="Breadcrumbs__link-image" />
+                <p className="Breadcrumbs__active">
+                  {prod.name}
+                </p>
+              </section>
+            </section>
             <Link
               className="backlink"
               to={backLink}
