@@ -2,9 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { IGood } from '../../provider/dataFromApi';
 
-
 type Props = { goods: IGood[] }
-
 
 export const Card: React.FC<Props> = (prop) => {
   return (
