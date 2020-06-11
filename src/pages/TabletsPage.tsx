@@ -25,7 +25,7 @@ export const TabletsPage = () => {
   return (
     <>
       <div className="Products__article">
-        <Breadcrumbs name={'Tablets'} />
+        <Breadcrumbs />
         <h1>Tablets page</h1>
         <ProductsQuantity quantity={tabletsQuatnity} />
         <Sort />

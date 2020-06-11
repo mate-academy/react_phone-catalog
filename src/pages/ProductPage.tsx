@@ -8,29 +8,14 @@ import { CardButton } from '../components/Buttons/CardButton';
 import { getProducts } from '../store/index';
 import Loader from '../helpers/Loader/Loader';
 import './ProductPage.scss';
+import { Breadcrumbs } from '../components/Breadcrumbs/Breadcrumbs';
 
 export const ProductPage = () => {
   const products = useSelector(getProducts);
   const [product, setProduct] = useState<any>({});
   const { productId } = useParams();
   const location = useLocation();
-  const [type, setType] = useState('');
   const [mainImgUrl, setMainImgUrl] = useState<string>();
-
-  useEffect(() => {
-    switch (product.type) {
-      case 'phone':
-        setType('phones');
-        break;
-      case 'tablet':
-        setType('tablets');
-        break;
-      case 'accessories':
-        setType('accessories');
-        break;
-      default:
-    }
-  }, [product.type]);
 
   useEffect(() => {
     window.scrollTo({ top: 0 });
@@ -55,22 +40,11 @@ export const ProductPage = () => {
     <>
       {product === 'null' ? <Loader /> : (
         <section className="section">
+
+          <section className="wrap__container">
+            <Breadcrumbs />
+          </section>
           <div className="container">
-            <section className="wrap__container">
-              <section className="Breadcrumbs">
-                <Link to="/home">
-                  <img src="img/Home.png" alt="home_icon" className="Breadcrumbs__icon" />
-                </Link>
-                <img src="img/stroke_right.png" alt="stroke" className="Breadcrumbs__link-image" />
-                <Link to={`/${type}`} className="Breadcrumbs__link">
-                  <p className="Breadcrumbs__link-name">{type[0]?.toUpperCase() + type.slice(1)}</p>
-                </Link>
-                <img src="img/stroke_right.png" alt="stroke" className="Breadcrumbs__link-image" />
-                <p className="Breadcrumbs__active">
-                  {product.name}
-                </p>
-              </section>
-            </section>
             <Link
               className="backlink"
               to={backLink}
