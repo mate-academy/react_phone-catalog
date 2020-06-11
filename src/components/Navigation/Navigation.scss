@@ -1,0 +1,38 @@
+@import "../../styles/vars.scss";
+
+.nav {
+
+  &__list {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    text-transform: uppercase;
+
+  }
+
+  &__item {
+    color: $secondary-color;
+    padding: 0 32px;
+
+    font-size: 12px;
+    text-decoration: none;
+  }
+
+  &__item--active {
+    position: relative;
+    padding-bottom: 25px;
+    color: $primary-color;
+    // border-bottom: 3px solid $primary-color;
+
+    &:after {
+      position: absolute;
+      content: "";
+      bottom: 0;
+      left: 0;
+      height: 3px;
+      width: 100%;
+      background: $primary-color;
+    }
+
+  }
+}

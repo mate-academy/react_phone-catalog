@@ -1,0 +1,45 @@
+@import "../../styles/vars.scss";
+
+.footer {
+
+  &__nav {
+    display: flex;
+    flex-direction: row;
+
+    justify-content: space-around;
+  }
+
+  &__list {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    text-transform: uppercase;
+
+  }
+
+  &__item {
+
+    text-decoration: none;
+    padding: 0 32px;
+    font-size: 12px;
+
+  }
+
+  &__container {
+    display: flex;
+    align-items: center;
+  }
+
+  &__backToTop {
+    font-size: 12px;
+    align-items: center;
+    padding-right: 16px;
+
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $border-color;
+  }
+}

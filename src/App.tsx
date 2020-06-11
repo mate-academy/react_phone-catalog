@@ -1,10 +1,26 @@
 import React from 'react';
 
 import './App.scss';
+import { Route, Switch } from 'react-router-dom';
+import Footer from './components/Footer/Footer';
+import Header from './components/Header/Header';
+import HomePage from './components/HomePage/HomePage';
+import PhonesPage from './components/PhonesPage/PhonesPage';
+import TabletsPage from './components/TabletsPage/TabletsPage';
+import AccessoriesPage from './components/AccessoriesPage/AccessoriesPage';
+import errorPage from './components/errorPage/errorPage';
 
 const App = () => (
   <div className="App">
-    <h1>React Phone Catalog</h1>
+    <Header />
+    <Switch>
+      <Route path="/" exact component={HomePage} />
+      <Route path="/phones" exact component={PhonesPage} />
+      <Route path="/tablets" component={TabletsPage} />
+      <Route path="/accessories" component={AccessoriesPage} />
+      <Route path="/" component={errorPage} />
+    </Switch>
+    <Footer />
   </div>
 );
 
