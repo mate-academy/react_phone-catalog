@@ -1,17 +1,25 @@
-.Breadcrumbs {
+.breadcrumbs {
   display: flex;
   align-items: center;
 
-  &__icon {
-    padding: 2px 0 0;
-  }
-
   &__link {
     text-decoration: none;
+    margin-left: 10px;
   }
 
-  &__active {
+  &__link-active {
+    color: $dark-gray-color;
+  }
+
+  &__last {
     color: $gray-color;
+    margin: 10px;
+  }
+
+  &__item {
+    list-style: none;
+    margin-left: 10px;
+    align-self: center;
   }
 
   &__link-image {
