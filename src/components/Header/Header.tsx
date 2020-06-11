@@ -4,11 +4,12 @@ import { useSelector } from 'react-redux';
 import { Search } from '../Search/Search';
 import { Nav } from '../Nav/Nav';
 import './Header.scss';
-import { getFavourites } from '../../store/index';
+import { getFavourites, getCartItems } from '../../store/index';
 
 export const Header = () => {
   const favourites = useSelector(getFavourites);
-  // const cardLength = products.filter((product: Products) => product.toCard).length;
+  const cartItems = useSelector(getCartItems);
+
 
   return (
     <header className="header">
@@ -41,8 +42,8 @@ export const Header = () => {
             className="header__button"
           >
             <img src="./img/shopingBag.svg" alt="shopping_icon" className="" />
-            {/* {cardLength > 0
-            && <span className="header__counter">{cardLength}</span>} */}
+            {cartItems.length > 0
+            && <span className="header__counter">{cartItems.length}</span>}
           </button>
         </Link>
       </div>

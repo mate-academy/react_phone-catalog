@@ -10,7 +10,7 @@ import { TabletsPage } from './pages/TabletsPage';
 import { AccessoriesPage } from './pages/AccessoriesPage';
 import { Footer } from './components/Footer/Footer';
 import { FavoritesPage } from './pages/FavouritesPage';
-import { CardPage } from './pages/CardPage';
+import { CardPage } from './pages/CartPage';
 import './App.scss';
 import './helpers/fonts/fonts.scss';
 import { loadData } from './store/index';
