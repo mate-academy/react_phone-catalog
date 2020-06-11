@@ -1,5 +1,4 @@
 .Card {
-  background-color: rgb(251, 251, 250);
   display: flex;
   flex-wrap: wrap;
 
@@ -31,6 +30,11 @@ transform: scale(1.03);
     padding: 24px;
     margin-bottom: 40px;
     box-sizing: border-box;
+    transition: box-shadow 0.3s;
+
+    &:hover {
+      box-shadow: 0 0 10px rgba(199, 198, 198, 0.5);
+    }
   }
 
   &__discount {
