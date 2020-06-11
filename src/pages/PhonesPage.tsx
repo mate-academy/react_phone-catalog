@@ -26,11 +26,10 @@ export const PhonesPage = () => {
   return (
     <>
       <div className="Products__article">
-        <Breadcrumbs name={'Phones'} />
+        <Breadcrumbs />
         <h1 className="PhonesPage__head">Mobile phones</h1>
-      <ProductsQuantity quantity={phonesQuatnity} />
+        <ProductsQuantity quantity={phonesQuatnity} />
         <Sort />
-
       </div>
       {isLoaded ? <Loader />
         : (
