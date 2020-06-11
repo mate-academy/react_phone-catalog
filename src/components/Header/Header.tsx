@@ -1,7 +1,10 @@
 import React from 'react';
 import './Header.scss';
 import { NavLink, Route, Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import Search from '../Search/Search';
+import { getFavorites } from '../../store/index';
+
 
 const navList = [
   {
@@ -23,6 +26,9 @@ const navList = [
 ];
 
 const Header = () => {
+  const favoriteProducts = useSelector(getFavorites);
+  const counter = favoriteProducts.length;
+
   return (
     <header className="Header">
       <Link to="/" className="Header__Logo Logo">
@@ -52,9 +58,11 @@ const Header = () => {
         <Route path={['/phones', '/tablets', '/accessories', '/favorites']}>
           <Search />
         </Route>
-        <button type="button" className="Header__Buttons Favourites">
-          <img src="./img/Icons/heart.svg" alt="heart" />
-        </button>
+        <Link to="/favorites" className="Header__Buttons Favourites">
+          {counter !== 0 && (
+            <span className="Counter">{counter}</span>
+          )}
+        </Link>
         <button type="button" className="Header__Buttons Cart">
           <img src="./img/Icons/shoppingBag.svg" alt="shoppingBag" />
         </button>

@@ -49,7 +49,7 @@ export const TabletsPage: React.FC = () => {
           </span>
           <div className="TabletWrap">
             {tablets.map(product => (
-              <Card key={product.id} {...product} />
+              <Card key={product.id} product={product} />
             ))}
           </div>
         </div>

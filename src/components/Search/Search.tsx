@@ -32,7 +32,7 @@ const Search = () => {
     searchParams.delete('query');
     history.push({ search: searchParams.toString() });
     setVisibleQuery('');
-  }, [query]);
+  }, [history, searchParams]);
 
   return (
     <div className="Wrap__Search">

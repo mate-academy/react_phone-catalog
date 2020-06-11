@@ -8,6 +8,7 @@ import { TabletsPage } from './components/TabletsPage/TabletsPage';
 import { AccessoriesPage } from './components/AccessoriesPage/AccessoriesPage';
 import { ProductDetailsPage } from './components/ProductDetailsPage/ProductDetailsPage';
 import Footer from './components/Footer/Footer';
+import FavoritesPage from './components/FavoritesPage/FavoritesPage';
 
 
 const App: React.FC = () => (
@@ -21,6 +22,7 @@ const App: React.FC = () => (
         <Route path="/tablets" exact component={TabletsPage} />
         <Route path="/accessories" exact component={AccessoriesPage} />
 
+        <Route path="/favorites" exact component={FavoritesPage} />
         <Route path="/:section/:productId?" exact component={ProductDetailsPage} />
       </Switch>
     </main>

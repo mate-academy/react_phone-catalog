@@ -32,7 +32,6 @@ const ProductsSlider: React.FC<ProductsSliderProps> = ({ visibleProducts, title 
     }
   };
 
-
   return (
     <div className="ProductsSlider-Container">
       <h2>{title}</h2>
@@ -51,7 +50,7 @@ const ProductsSlider: React.FC<ProductsSliderProps> = ({ visibleProducts, title 
             className="Carousel__list"
           >
             {visibleProducts.map(product => (
-              <Card key={product.id} {...product} />
+              <Card key={product.id} product={product} />
             ))}
           </div>
         </div>

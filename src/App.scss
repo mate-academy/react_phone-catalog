@@ -1,12 +1,20 @@
+@import "./styles/typography";
+
 @import "./styles/reset";
 @import "./styles/utils/mixins";
 @import "./styles/utils/vars";
-@import "./styles/typography";
 
 * {
   box-sizing: border-box;
 }
 
+button,
+input,
+a {
+  cursor: pointer;
+}
+
 body {
+  font-family: "Mont", sans-serif;
   @include bodyText;
 }

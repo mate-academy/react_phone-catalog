@@ -45,6 +45,7 @@ export const MobilePhonesPage: React.FC = () => {
   let totalPages = 0;
 
   const visiblePhones = useMemo(
+
     () => {
       const result = phonesOnly.filter(({ name, capacity, screen }) => (
         (name + capacity + screen).toLowerCase().includes(lowerQuery)
@@ -108,7 +109,7 @@ export const MobilePhonesPage: React.FC = () => {
           </div>
           <div className="PhonesContainer__Inner">
             {visiblePhones.map(product => (
-              <Card key={product.id} {...product} />
+              <Card key={product.id} product={product} />
             ))}
           </div>
           {totalPages > 1
