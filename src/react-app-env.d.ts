@@ -13,6 +13,7 @@ interface Products {
   capacity: string;
   ram: string;
   length: number;
+  info?: Product;
 }
 
 type Slider = {
