@@ -32,7 +32,7 @@
     background-color: #fff;
     color: $colorSecondery;
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     cursor: pointer;
   }
 
@@ -49,7 +49,7 @@
   padding: 0 12px;
   height: $heightDropdown;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
 
   &__Title {

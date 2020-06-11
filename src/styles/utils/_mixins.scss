@@ -1,5 +1,5 @@
 @mixin H1 {
-  font-family: "Mont-Bold", sans-serif;
+  font-family: "Mont", sans-serif;
   font-style: normal;
   font-weight: bold;
   font-size: 32px;
@@ -7,7 +7,7 @@
 }
 
 @mixin H2 {
-  font-family: "Mont-Bold", sans-serif;
+  font-family: "Mont", sans-serif;
   font-style: normal;
   font-weight: bold;
   font-size: 22px;
@@ -15,7 +15,7 @@
 }
 
 @mixin H3 {
-  font-family: "Mont-SemiBold", sans-serif;
+  font-family: "Mont", sans-serif;
   font-style: normal;
   font-weight: bold;
   font-size: 20px;
@@ -23,7 +23,7 @@
 }
 
 @mixin bodyText {
-  font-family: "Mont-Reguler", sans-serif;
+  font-family: "Mont", sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
@@ -32,7 +32,7 @@
 }
 
 @mixin smallText {
-  font-family: "Mont-SemiBold", sans-serif;
+  font-family: "Mont", sans-serif;
   font-style: normal;
   font-weight: 600;
   font-size: 12px;
@@ -40,7 +40,7 @@
 }
 
 @mixin Uppercase {
-  font-family: "Mont-Regular", sans-serif;
+  font-family: "Mont", sans-serif;
   font-style: normal;
   font-weight: bold;
   font-size: 12px;
@@ -50,7 +50,7 @@
 }
 
 @mixin ButtonText {
-  font-family: "Mont-SemiBold", sans-serif;
+  font-family: "Mont", sans-serif;
   font-style: normal;
   font-weight: 600;
   font-size: 14px;

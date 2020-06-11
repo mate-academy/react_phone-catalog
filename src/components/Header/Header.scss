@@ -100,3 +100,28 @@
   width: 40px;
   height: 11px;
 }
+
+.Favourites {
+  position: relative;
+  @include iconInButton(url("../../img/Icons/heart.svg"));
+}
+
+.Counter {
+  width: 14px;
+  height: 14px;
+  position: absolute;
+  left: 50%;
+  right: 0%;
+  top: 30%;
+  border-radius: 50%;
+  border: 1px solid #fff;
+  background-color: $colorRed;
+
+  font-family: "Mont-SemiBold", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 9px;
+  line-height: 12px;
+  text-align: center;
+  color: #fff;
+}

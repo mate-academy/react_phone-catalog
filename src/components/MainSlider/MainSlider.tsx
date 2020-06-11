@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import './MainSlider.scss';
 import cn from 'classnames/bind';
 
@@ -30,20 +30,23 @@ const MainSlider: React.FC = () => {
   const [nextSlide, setNextSlide] = useState<SlideCarousel>({});
   const [prevSlide, setPrevSlide] = useState<SlideCarousel>({});
 
-  const handlePrevOnClick = () => {
-    setTranslatePrev(true);
-    setTimeout(() => {
-      if (currentIndex === 0) {
-        setCurrentIndex(sliders.length - 1);
-        setSelectedDot(sliders.length - 1);
-      } else {
-        setCurrentIndex(currentIndex - 1);
-        setSelectedDot(selectedDot - 1);
-      }
+  const handlePrevOnClick = useCallback(
+    () => {
+      setTranslatePrev(true);
+      setTimeout(() => {
+        if (currentIndex === 0) {
+          setCurrentIndex(sliders.length - 1);
+          setSelectedDot(sliders.length - 1);
+        } else {
+          setCurrentIndex(currentIndex - 1);
+          setSelectedDot(selectedDot - 1);
+        }
 
-      setTranslatePrev(false);
-    }, 500);
-  };
+        setTranslatePrev(false);
+      }, 500);
+    }, [currentIndex, selectedDot],
+  );
+
 
   const handleNextOnClick = () => {
     setTranslateNext(true);

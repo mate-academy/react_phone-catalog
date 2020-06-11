@@ -55,7 +55,7 @@ export const AccessoriesPage: React.FC = () => {
           </div>
           <div className="Accessories__Img">
             {accessories.map(product => (
-              <Card key={product.id} {...product} />
+              <Card key={product.id} product={product} />
             ))}
           </div>
         </div>
