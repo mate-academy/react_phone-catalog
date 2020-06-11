@@ -18,21 +18,10 @@ export const Home: React.FC<Props> = () => {
       });
   }, []);
 
-  // const loadAllGoods = () => {
-  //   getGoods().then(goods => {
-  //     //setGoods(goods);
-  //     _goods = goods;
-  //   }).catch(error => console.error(error)
-  //   ).finally(/*//TODO:  set isLoaded = false */);
-
-  // }
-
-  // getGoods()
-  // .then(setGoods);
-
   return (
     <div>
       <Banner />
+      <h1 className="block__title"> Hot prices</h1>
       <GoodList goods={goods}/>
     </div>
   )

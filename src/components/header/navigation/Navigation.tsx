@@ -4,7 +4,6 @@ import { NavLink } from 'react-router-dom';
 
 const Navigation = () => {
   const navList = ['home', 'phones', 'tablets', 'accessories'];
-  // const [navList, setNavList] = useState([]);
 
   return (
     <>
