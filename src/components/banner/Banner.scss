@@ -1,13 +1,14 @@
 .slick-slider {
-  max-width: 1040px;
+  max-width: 1066px;
   height: 400px;
-    margin: 40px auto;
+  margin: 40px auto;
 }
 
 .slick-next {
   display: flex;
-  width: 32px;
+  width: 29px;
   border: 1px solid rgb(224, 223, 223);
+  box-sizing: border-box;
   height: 100%;
   right: -40px;
   transition: border 0.3s;
@@ -22,8 +23,9 @@
 
 .slick-prev {
   display: block;
-  width: 32px;
+  width: 29px;
   border: 1px solid rgb(224, 223, 223);
+  box-sizing: border-box;
   height: 100%;
   left: -40px;
   transition: border 0.3s;
@@ -37,7 +39,7 @@
 }
 
 .Slider__image {
-  width: 1040px;
+  width: 1066px;
   height: 400px;
 }
 
