@@ -1,6 +1,6 @@
 import { AnyAction } from 'redux';
-import { createSelector } from 'reselect';
 import { RootState } from './index';
+import { createSelector } from 'reselect';
 
 const SET_TO_CART = 'SET_TO_CART';
 const SET_CART_QUANTITY = 'SET_CART_QUANTITY';
