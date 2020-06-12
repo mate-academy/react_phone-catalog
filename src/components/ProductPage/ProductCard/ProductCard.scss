@@ -80,7 +80,8 @@
     border: 1px solid transparent;
     transition: all 0.3s;
 
-    &:hover {
+    &:hover,
+    &--added {
       color: rgb(39, 174, 96);
       background-color: #ffff;
       border: 1px solid rgb(226, 230, 233);

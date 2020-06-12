@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
 import { FavProductsContext } from '../../Favourite/FavProductsContext';
+import { CartContext } from '../../Cart/CartContext';
 import './ProductCard.scss';
+
 
 type Props = {
   product: ProductItem;
@@ -20,6 +22,7 @@ export const ProductCard: React.FC<Props> = ({
     ram,
   } = product;
   const { addToFav, removeFav, isFavourite } = useContext(FavProductsContext);
+  const { addToCart, removeFromCart, isAdded } = useContext(CartContext);
 
   return (
     <div className="products__card card">
@@ -55,10 +58,19 @@ export const ProductCard: React.FC<Props> = ({
         </div>
         <div className="card__buttons button">
           <button
-            className="button__cart"
+            className={isAdded(product)
+              ? 'button__cart button__cart--added'
+              : 'button__cart'}
             type="button"
+            onClick={() => {
+              if (isAdded(product)) {
+                removeFromCart(product);
+              } else {
+                addToCart(product);
+              }
+            }}
           >
-            Add to cart
+            {isAdded(product) ? 'Remove from cart' : 'Add to cart'}
           </button>
           <label
             className={isFavourite(product)
