@@ -1,11 +1,11 @@
 import React, { useEffect, useState } /*{ useState }*/ from 'react';
 import Banner from '../banner/Banner';
-import { GoodList } from '../goodList/GoodList';
+
 import { IGood, getGoods } from '../../provider/dataFromApi';
 
- type Props = {
-    goods: IGood[];
- };
+import HotPrice from "../hotPrice/HotPrice";
+
+ type Props = { goods: IGood[] };
 
 
 export const Home: React.FC<Props> = () => {
@@ -22,7 +22,8 @@ export const Home: React.FC<Props> = () => {
     <div>
       <Banner />
       <h1 className="block__title"> Hot prices</h1>
-      <GoodList goods={goods}/>
+      <HotPrice goods={goods} />
+
     </div>
   )
 };

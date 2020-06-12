@@ -1,24 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Card } from '../card/Card';
 import './GoodList.scss';
-import { IGood, getGoods } from '../../provider/dataFromApi';
+import { IGood } from '../../provider/dataFromApi';
 
 type Props = { goods: IGood[] }
 
-export const GoodList: React.FC<Props> = () => {
+export const GoodList: React.FC<Props> = ({goods}) => {
 
-  const [goods, setGoods] = useState<IGood[]>([]);
-  useEffect(() => {
-    getGoods()
-      .then(data => {
-        setGoods(data);
-      });
-  }, []);
   return (
-    <div >
-
-
-      < Card goods={goods}/>
+    <div className="Card">
+      <ul className="Card__list">
+        {goods.map(good =>
+          < Card good={good} />)}
+      </ul>
     </div>
   )
 }

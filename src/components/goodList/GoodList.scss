@@ -14,9 +14,10 @@
 
   &__img {
     cursor: pointer;
-    width: 208px;
-    height: 208px;
+    width: 200px;
+    height: 200px;
     background-position: center;
+    background-size: contain;
     transition: transform 0.3s;
 
     &:hover {
