@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { IGood, getGoods } from '../../provider/dataFromApi';
+import { IGood, getGoodsByCategory } from '../../provider/dataFromApi';
 import { GoodList } from '../goodList/GoodList';
 
 type Props = { tablets: IGood[] }
@@ -8,7 +8,7 @@ const Tablets:React.FC<Props> = () => {
 
   const [tablets, setGoods] = useState<IGood[]>([]);
   useEffect(() => {
-    getGoods()
+    getGoodsByCategory("tablet")
       .then(data => {
         setGoods(data);
       });
