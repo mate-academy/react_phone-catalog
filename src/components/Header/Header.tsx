@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Favourite } from '../Favourite/Favourite';
+import { Cart } from '../Cart/Cart';
 
 export const Header = () => (
   <>
@@ -28,9 +29,10 @@ export const Header = () => (
           </ul>
           <ul className="list">
             <Favourite />
-            <NavLink to="/bag">
+            <Cart />
+            {/* <NavLink to="/bag">
               <li className="nav nav__bag" />
-            </NavLink>
+            </NavLink> */}
           </ul>
         </nav>
       </div>
