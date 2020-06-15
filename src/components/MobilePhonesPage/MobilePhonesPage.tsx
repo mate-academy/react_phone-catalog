@@ -9,7 +9,7 @@ import Pagination from '../Pagination/Pagination';
 import { Breadcrumbs } from '../Breadcrumbs/Breadcrumbs';
 
 export const MobilePhonesPage: React.FC = () => {
-  const [phonesOnly, setPhonesOnly] = useState<Slide[]>([]);
+  const [phonesOnly, setPhonesOnly] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isLoaded, setIsLoaded] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
@@ -21,7 +21,7 @@ export const MobilePhonesPage: React.FC = () => {
         const loadedProduct = await getProducts();
 
         setPhonesOnly(loadedProduct
-          .filter((product: Slide) => product.type === 'phone'));
+          .filter((product: Product) => product.type === 'phone'));
         setIsLoaded(true);
       } catch (error) {
         setErrorMessage('Oops! Reload page, please');

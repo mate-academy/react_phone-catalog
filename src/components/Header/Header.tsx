@@ -3,7 +3,7 @@ import './Header.scss';
 import { NavLink, Route, Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Search from '../Search/Search';
-import { getFavorites } from '../../store/index';
+import { getFavorites, getItems } from '../../store/index';
 
 
 const navList = [
@@ -27,7 +27,8 @@ const navList = [
 
 const Header = () => {
   const favoriteProducts = useSelector(getFavorites);
-  const counter = favoriteProducts.length;
+  const counterCart = useSelector(getItems).length;
+  const counterFav = favoriteProducts.length;
 
   return (
     <header className="Header">
@@ -59,13 +60,15 @@ const Header = () => {
           <Search />
         </Route>
         <Link to="/favorites" className="Header__Buttons Favourites">
-          {counter !== 0 && (
-            <span className="Counter">{counter}</span>
+          {counterFav !== 0 && (
+            <span className="Counter">{counterFav}</span>
           )}
         </Link>
-        <button type="button" className="Header__Buttons Cart">
-          <img src="./img/Icons/shoppingBag.svg" alt="shoppingBag" />
-        </button>
+        <Link to="/cart" className="Header__Buttons Cart">
+          {counterCart !== 0 && (
+            <span className="Counter">{counterCart}</span>
+          )}
+        </Link>
       </div>
     </header>
   );

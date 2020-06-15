@@ -1,0 +1,147 @@
+@import "../../styles/utils/mixins";
+@import "../../styles/utils/vars";
+@import "../../styles/reset";
+
+.CartPage {
+  max-width: 1136px;
+  margin: 100px auto;
+  padding: 0 15px;
+
+  &__ContainerInner {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
+
+.CartItem {
+  width: 752px;
+  height: 128px;
+  margin-bottom: 16px;
+  margin-right: 16px;
+  border: $borderElement;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  @include hover(box-shadow, 0 3px 13px rgba(23, 32, 49, 0.26));
+
+  &__Btn {
+    width: 32px;
+    height: 32px;
+    background-color: #fff;
+    border: $borderElement;
+  }
+
+  &__Photo-Container {
+    margin-left: 2 rem;
+    height: 66px;
+    width: 66px;
+    padding: 7px;
+  }
+
+  &__Photo {
+    width: 100%;
+    height: 100%;
+    transition: 0.2s;
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  &__TitleProduct {
+    margin: 0 0 0 2 rem;
+  }
+
+  &__Quantity-Containar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  &__Counter {
+    width: 32px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+  }
+}
+
+.RemoveBtn {
+  border: none;
+  @include iconInButton(url(../../img/Icons/cross.svg));
+  &:hover {
+    background-image: url(../../img/Icons/crossBlack.svg);
+  }
+}
+
+.Subtract-btn {
+  @include iconInButton(url(../../img/Icons/minusActive.svg));
+
+  &--disabled {
+    @include iconInButton(url(../../img/Icons/minus.svg));
+    background-color: #fff;
+    cursor: auto;
+    border: solid 1px $colorElement;
+  }
+}
+
+.Add-btn {
+  @include iconInButton(url(../../img/Icons/Plus.svg));
+}
+
+.Prise {
+  @include H2;
+  line-height: 140%;
+}
+
+.OldPrise {
+  text-decoration-line: line-through;
+  color: $colorSecondery;
+  font-size: 16px;
+  text-align: right;
+}
+
+.TotalCost {
+  width: 368px;
+  height: 206px;
+  border: $borderElement;
+  padding: 24px;
+  text-align: center;
+
+  &__Prise {
+    font-family: "Mont", sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+
+  &__Checkout {
+    @include bodyText;
+    color: $colorSecondery;
+    padding-bottom: 24px;
+    border-bottom: $borderElement;
+  }
+  &__Btn {
+    width: 320px;
+    height: 48px;
+
+    margin: 24px auto;
+
+    padding: 14px au;
+    display: block;
+    background-color: $colorPrimary;
+  }
+  &__Link {
+    display: block;
+    width: 100%;
+    height: 100%;
+    @include bodyText;
+    color: #fff;
+    text-align: center;
+    line-height: 48px;
+  }
+}

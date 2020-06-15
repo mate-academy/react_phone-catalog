@@ -5,7 +5,7 @@ import './TabletsPage.scss';
 import { Breadcrumbs } from '../Breadcrumbs/Breadcrumbs';
 
 export const TabletsPage: React.FC = () => {
-  const [tablets, setTablets] = useState<Slide[]>([]);
+  const [tablets, setTablets] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isLoaded, setIsLoaded] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
@@ -17,7 +17,7 @@ export const TabletsPage: React.FC = () => {
         const loadedProduct = await getProducts();
 
         setTablets(loadedProduct
-          .filter((product: Slide) => product.type === 'tablet'));
+          .filter((product: Product) => product.type === 'tablet'));
         setIsLoaded(true);
       } catch (error) {
         setErrorMessage('Oops! Reload page, please');

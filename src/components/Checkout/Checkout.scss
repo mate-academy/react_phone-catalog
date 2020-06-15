@@ -1,0 +1,28 @@
+@import "../../styles/utils/mixins";
+@import "../../styles/utils/vars";
+@import "../../styles/reset";
+
+.IntermediatePage {
+  margin: 100px auto;
+  &__Title {
+    @include H1;
+    text-align: center;
+  }
+  &__Btn {
+    width: 320px;
+    height: 48px;
+    margin: 24px auto;
+    background-color: $colorPrimary;
+  }
+  &__Link {
+    display: block;
+    width: 100%;
+    height: 100%;
+    @include bodyText;
+    color: #fff;
+    text-align: center;
+    line-height: 48px;
+
+  }
+
+}

@@ -1,4 +1,4 @@
-interface Slide {
+interface Product {
   [key: string]: number | string;
   age: number;
   type: string;
@@ -55,4 +55,10 @@ interface Match {
   };
   path: string;
   url: string;
+}
+
+interface CartItem {
+  // id: string,
+  product: Product;
+  quantity: number;
 }

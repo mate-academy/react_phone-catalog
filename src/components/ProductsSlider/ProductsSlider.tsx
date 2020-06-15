@@ -6,7 +6,7 @@ import Button from '../Button/Button';
 
 type ProductsSliderProps = {
   title: string;
-  visibleProducts: Slide[];
+  visibleProducts: Product[];
 };
 
 const ProductsSlider: React.FC<ProductsSliderProps> = ({ visibleProducts, title }) => {
