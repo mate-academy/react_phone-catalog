@@ -8,24 +8,25 @@ import { PRODUCTS_INFO, PRODUCTS_SPECS } from '../../helpers/config';
 import ProductsSlider from '../ProductsSlider/ProductsSlider';
 import { Breadcrumbs } from '../Breadcrumbs/Breadcrumbs';
 import { GoBack } from '../GoBack/GoBack';
+// import ButtonFavor from '../ButtonFavor/ButtonFavor';
 
 export const ProductDetailsPage: React.FC = () => {
-  const [products, setProducts] = useState<Slide[]>([]);
-  const [productInfo, setProductInfo] = useState<Slide>();
+  const [products, setProducts] = useState<Product[]>([]);
+  const [productInfo, setProductInfo] = useState<Product>();
   const [productDetails, setProductDetails] = useState<ProdactDetails>();
   const [isLoading, setIsLoading] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [activeImageIndex, setActiveImageIndex] = useState(0);
-  const [brandProducts, setBrandProducts] = useState<Slide[]>([]);
+  const [brandProducts, setBrandProducts] = useState<Product[]>([]);
 
   const match: Match = useRouteMatch();
   const { productId } = useParams();
 
   useEffect(() => {
     getProducts().then(data => setBrandProducts(data
-      .filter((product: Slide) => product.discount === 0)
-      .sort((a: Slide, b: Slide) => a.discount - b.discount)));
+      .filter((product: Product) => product.discount === 0)
+      .sort((a: Product, b: Product) => a.discount - b.discount)));
   }, []);
 
   const loadProductDetails = async (goodId: string) => {
@@ -194,6 +195,7 @@ export const ProductDetailsPage: React.FC = () => {
                       className="Card__ButtonFavor"
                       aria-label="Mute text"
                     />
+                    {/* <ButtonFavor product={productInfo}/> */}
                   </div>
                 </section>
                 <section className="ProdactPage__Info">

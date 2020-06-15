@@ -48,7 +48,7 @@ const MainSlider: React.FC = () => {
   );
 
 
-  const handleNextOnClick = () => {
+  const handleNextOnClick = useCallback(() => {
     setTranslateNext(true);
     setTimeout(() => {
       if (currentIndex === sliders.length - 1) {
@@ -61,16 +61,16 @@ const MainSlider: React.FC = () => {
 
       setTranslateNext(false);
     }, 500);
-  };
+  }, [currentIndex, selectedDot]);
 
   useEffect(() => {
     const interval = setInterval(
-      () => handlePrevOnClick(),
+      () => handleNextOnClick(),
       4000,
     );
 
     return () => clearInterval(interval);
-  }, [handlePrevOnClick]);
+  }, [handleNextOnClick]);
 
   useEffect(() => {
     if (currentIndex === 0) {

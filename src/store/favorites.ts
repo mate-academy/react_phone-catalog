@@ -1,9 +1,9 @@
-import { AnyAction } from 'redux';
+import { Action } from 'redux';
 
 const ADD_PRODUCT = 'ADD_PRODUCT';
 const REMOVE_PRODUCT = 'REMOVE_PRODUCT';
 
-export const setProduct = (product: Slide) => (
+export const setProduct = (product: Product) => (
   {
     type: ADD_PRODUCT,
     product,
@@ -17,7 +17,23 @@ export const removeProduct = (productId: string) => (
   }
 );
 
-export const reducerFavoriteProducts = (favoriteProducts: Slide[] = [], action: AnyAction) => {
+type setProduct = Action<typeof ADD_PRODUCT> & {
+  product: Product;
+};
+
+type removeProduct = Action<typeof REMOVE_PRODUCT> & {
+  productId: string;
+};
+
+type AllowedActions = setProduct | removeProduct;
+
+let initState: Product[] = [];
+
+if (localStorage.getItem('favorites')) {
+  initState = [...JSON.parse(localStorage.getItem('favorites') || '')];
+}
+
+export const reducerFavoriteProducts = (favoriteProducts = initState, action: AllowedActions) => {
   switch (action.type) {
     case ADD_PRODUCT:
       return [...favoriteProducts, action.product];
