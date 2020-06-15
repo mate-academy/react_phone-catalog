@@ -17,8 +17,10 @@
   }
 
   &__empty {
+    display: block;
     @include h1;
     color: $c-extra-text;
+    min-height: 70vh;
   }
 
   .cart__total {

@@ -11,6 +11,7 @@
       column-gap: 16px;
       row-gap: 40px;
       margin-bottom: 80px;
+      min-height: 42vh;
 
       @media only screen and (max-width: 1240px) {
         display: grid;
