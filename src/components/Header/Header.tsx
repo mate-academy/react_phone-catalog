@@ -36,7 +36,7 @@ export const Header = () => {
             && <span className="header__counter">{favourites.length}</span>}
           </button>
         </Link>
-        <Link to="/card">
+        <Link to="/cart">
           <button
             type="button"
             className="header__button"

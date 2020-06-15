@@ -13,6 +13,14 @@
     display: grid;
     grid-template-columns: 320px;
     grid-template-rows: 50px 50px 50px 50px;
-    padding: 23px 50px;
+    padding: 23px 0;
   }
 }
+
+.btn {
+  transition: 0.3s;
+}
+.btn:hover:enabled {
+  border: 1px solid $dark-gray-color;
+}
+

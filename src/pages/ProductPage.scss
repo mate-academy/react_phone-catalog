@@ -12,6 +12,8 @@
   &__images_list {
     margin-right: 16px;
     list-style: none;
+    display: flex;
+    flex-direction: column;
   }
 
   &__img-container {
@@ -31,16 +33,31 @@
 
   &__images_item {
     cursor: pointer;
-    margin-bottom: 16px;
     width: 80px;
     height: 80px;
     background-size: 70px;
+    transition: 0.3s;
+  }
+
+  &__images_btn {
+    padding: 0;
+    margin-bottom: 16px;
+    outline: none;
+    border: none;
+    background: none;
+
+    :hover {
+      transform: scale(1.1);
+    }
   }
 
   &__img_main {
     width: 464px;
     height: 464px;
-    background-size: 90%;
+  }
+
+  &__image_active {
+    border: 1px solid #313237;
   }
 
   &__mainInfo {
@@ -48,7 +65,7 @@
     width: 520px;
   }
 
-  &__button {
+  &__button_cart {
     width: 263px;
     height: 48px;
    }
@@ -132,12 +149,3 @@
   margin: 16px 0 32px;
 }
 
-.backlink {
-  text-decoration: none;
-  color: $gray-color;
-  padding-left: 20px;
-  margin-bottom: 16px;
-  background-image: url("../components/Slider/btn-prev.svg");
-  background-repeat: no-repeat;
-  background-position: left;
-}

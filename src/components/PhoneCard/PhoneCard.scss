@@ -11,16 +11,31 @@
   padding: 24px;
 
   &__image {
-    cursor: pointer;
     width: 208px;
     height: 208px;
     object-fit: contain;
+    transition: 0.3s;
+  }
+
+  &__img_container {
+    :hover {
+      transform: scale(1.1);
+    }
   }
 
   &__product {
     font-weight: 500;
     font-size: 14px;
     line-height: 21px;
+    border: none;
+    background: none;
+    text-align: left;
+    color: $dark-gray-color;
+    transition: 0.3s;
+  }
+
+  &__product:hover {
+    text-decoration: underline;
   }
 
   &__price-container {

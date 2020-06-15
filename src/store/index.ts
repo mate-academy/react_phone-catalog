@@ -1,31 +1,37 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import { createSelector } from 'reselect';
 import { Dispatch } from 'react';
 import thunk from 'redux-thunk';
-import productsReducer, { setProducts } from './products';
 import { getAllProducts } from '../helpers/api';
+import productsReducer, { setProducts } from './products';
 import paginationReducer from './pagination';
 import sortReducer from './sort';
-import loadingReducer, { startLoading, finishLoading } from './loading';
+import loadingReducer from './loading';
 import queryReducer from './query';
 import favouritesReducer from './favourites';
 import cartReducer from './cart';
+import productReducer from './product';
 
 export const getPage = (state: RootState) => state.pagination.page;
 export const getPerPage = (state: RootState) => state.pagination.perPage;
 export const getSortField = (state: RootState) => state.sort;
-export const getLoading = (state: RootState) => state.loading;
+// export const getLoading = (state: RootState) => state.loading;
 export const getQuery = (state: RootState) => state.query;
 export const getQuantity = (
   state: RootState,
   type: string,
-) => state.products.filter((product: Products) => product.name.toLowerCase().includes(state.query.toLowerCase()))
+) => state.products
+  .filter((product: Products) => product.name.toLowerCase().includes(state.query.toLowerCase()))
   .filter((product: Products) => product.type === type).length;
 
-
+export const getVisible = (state: RootState) => state.loading.isVisible;
+export const getLoading = (state: RootState) => state.loading.isLoading;
 export const getProducts = (state: RootState) => state.products;
 export const getFavourites = (state: RootState) => state.favourites;
 export const getCartItems = (state: RootState) => state.cart.items;
+export const getProduct = (state: RootState) => state.product;
+
 
 const rootReducer = combineReducers({
   products: productsReducer,
@@ -35,11 +41,29 @@ const rootReducer = combineReducers({
   query: queryReducer,
   favourites: favouritesReducer,
   cart: cartReducer,
+  product: productReducer,
 });
 
 
 export type RootState = ReturnType<typeof rootReducer>;
 
+export const getTotalPrice = createSelector(
+  getCartItems,
+
+  (items: CartProduct[]) => {
+    return items
+      .reduce((sum, { quantity, product }) => sum + quantity * product.price - product.discount, 0);
+  },
+);
+
+export const getDiscount = createSelector(
+  getCartItems,
+
+  (items: CartProduct[]) => {
+    return items
+      .reduce((sum, { quantity, product }) => sum + quantity * product.discount, 0);
+  },
+);
 
 export const getVisibleProducts = (state: RootState, type: string) => {
   let compare: (a: Products, b: Products) => number = () => 0;
@@ -74,9 +98,6 @@ export const loadData = () => {
     try {
       const productsFromServer = await getAllProducts();
 
-      dispatch(startLoading());
-      dispatch(finishLoading());
-
       dispatch(setProducts(productsFromServer));
     } catch (error) {
       // do something to catch error
@@ -84,8 +105,14 @@ export const loadData = () => {
   };
 };
 
+const localState = {
+  cart: JSON.parse(localStorage.getItem('CartItems') || '[]'),
+  favourites: JSON.parse(localStorage.getItem('FavoritesItems') || '[]'),
+};
+
 const store = createStore(
   rootReducer,
+  localState,
   composeWithDevTools(applyMiddleware(thunk)),
 );
 

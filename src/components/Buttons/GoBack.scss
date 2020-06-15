@@ -1,0 +1,20 @@
+@import '../../utils/vairables.scss';
+
+.backlink {
+  outline: none;
+  border: none;
+  background-color: white;
+  font-size: 16px;
+  line-height: 12px;
+  font-family: "Mont";
+  color: $gray-color;
+  padding-left: 20px;
+  background-image: url("../../components/Slider/btn-prev.svg");
+  background-repeat: no-repeat;
+  background-position: left;
+  transition: color 0.3s;
+}
+
+.backlink:hover {
+  color: $dark-gray-color;
+}

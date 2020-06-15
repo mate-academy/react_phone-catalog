@@ -33,44 +33,48 @@ export const Slider = () => {
 
   return (
     <>
-      <div className="Slider__container">
-        <button
-          type="button"
-          className="carousel__btn Slider__btn carousel__btn_prev"
-          onClick={handlePrevClick}
-        >
-          { }
-        </button>
-        <div className="carousel__container">
-          <ul className="carousel" style={carouselStyle}>
-            {sliderImg.map(({ imgUrl, id }) => (
-              <li
-                className="carousel__item"
+      <section className="section">
+        <div className="container">
+          <div className="Slider__container">
+            <button
+              type="button"
+              className="carousel__btn carousel__btn_prev btn"
+              onClick={handlePrevClick}
+            >
+              { }
+            </button>
+            <div className="carousel__container">
+              <ul className="carousel" style={carouselStyle}>
+                {sliderImg.map(({ imgUrl, id }) => (
+                  <li
+                    className="carousel__item"
+                    key={id}
+                  >
+                    <img className="carousel__img" alt="img1" src={imgUrl} />
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <button
+              type="button"
+              className="carousel__btn carousel__btn_next btn"
+              onClick={handleNextClick}
+            >
+              { }
+            </button>
+          </div>
+          <div className="carousel__dots-wrap">
+            {sliderImg.map(({ id }, index) => (
+              <div
                 key={id}
-              >
-                <img className="carousel__img" alt="img1" src={imgUrl} />
-              </li>
+                className={cn('carousel__dot', {
+                  carousel__dot_active: activeDot === sliderImg[index].id,
+                })}
+              />
             ))}
-          </ul>
+          </div>
         </div>
-        <button
-          type="button"
-          className="Slider__btn carousel__btn carousel__btn_next"
-          onClick={handleNextClick}
-        >
-          { }
-        </button>
-      </div>
-      <div className="carousel__dots-wrap">
-        {sliderImg.map(({ id }, index) => (
-          <div
-            key={id}
-            className={cn('carousel__dot', {
-              carousel__dot_active: activeDot === sliderImg[index].id,
-            })}
-          />
-        ))}
-      </div>
+      </section>
     </>
   );
 };

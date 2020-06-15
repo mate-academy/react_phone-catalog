@@ -40,9 +40,11 @@ export const PhonesSlider: React.FC<Props> = ({ title, products }) => {
             <button
               type="button"
               onClick={handlePrevClick}
+              disabled={cardPosition === 0}
               className={cn('PhoneSlider__btn',
                 'carousel__btn',
                 'carousel__btn_prev',
+                'btn',
                 {
                   btn__noactive_prev: cardPosition === 0,
                 })}
@@ -52,9 +54,11 @@ export const PhonesSlider: React.FC<Props> = ({ title, products }) => {
             <button
               type="button"
               onClick={handleNextClick}
+              disabled={cardPosition === -maxWidth}
               className={cn('PhoneSlider__btn',
                 'carousel__btn',
                 'carousel__btn_next',
+                'btn',
                 {
                   btn__noactive_next: cardPosition === -maxWidth,
                 })}
