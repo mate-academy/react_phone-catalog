@@ -2,14 +2,18 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { IGood } from '../../provider/dataFromApi';
 
-type Props = { good: IGood }
+type Props = { good: IGood };
 
-export const Card: React.FC<Props> = ({good}) => {
-  const { id, name, imageUrl, price, discount, screen, capacity, ram } = good;
+export const Card: React.FC<Props> = ({ good }) => {
+  const {
+    id, name, imageUrl, price, discount, screen, capacity, ram,
+  } = good;
+
   return (
     <li
       className="Card__item"
-      key={id} >
+      key={id}
+    >
       <div>
         <img
           src={`./${imageUrl}`}
@@ -19,8 +23,16 @@ export const Card: React.FC<Props> = ({good}) => {
 
         <h3 className="Card__title">{name}</h3>
         <div className="price__wrapper">
-          <span className="Card__discount"> $ {`${price - (price * discount / 100)}`}</span>
-          <span className="Card__price"> $ {price}</span>
+          <span className="Card__discount">
+            {' '}
+            $
+            {`${price - (price * discount / 100)}`}
+          </span>
+          <span className="Card__price">
+            {' '}
+            $
+            {price}
+          </span>
         </div>
         <ul className="Card__parameters">
           <li className="parameters__item">
@@ -37,21 +49,24 @@ export const Card: React.FC<Props> = ({good}) => {
           </li>
         </ul>
       </div>
-      <div className="cartFavourites__wrapper">
+      <div className="cartFavorites__wrapper">
+
         <Link
           to="#"
           className="btn__addToCart-link"
         >
-          <button className="btn__addToCart" >Add to cart</button>
+          <button
+            type="button"
+            className="btn__addToCart"
+          >
+            Add to cart
+          </button>
         </Link>
         <Link
           to="#"
-          className="btn__favourites-link"
-        >
-        </Link>
+          className="btn__Favorites-link"
+        />
       </div>
     </li>
-  )
-
-}
-
+  );
+};

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Cart = () => {
+const CartLink = () => {
   return (
     <>
       <Link className="actions__item actions-cart" to="/Cart">
@@ -15,4 +15,10 @@ const Cart = () => {
   );
 };
 
-export default Cart;
+export const Cart = () => {
+  return (
+    <div>Cart</div>
+  );
+};
+
+export default CartLink;
