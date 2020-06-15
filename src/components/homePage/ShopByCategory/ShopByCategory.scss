@@ -43,6 +43,18 @@
     overflow: hidden;
     height: 368px;
     margin-bottom: 24px;
+
+    &-1 {
+      background-color: #fcdbc1;
+    }
+
+    &-2 {
+      background-color: #8d8d92;
+    }
+
+    &-3 {
+      background-color: #973d5f;
+    }
   }
 
   &__card-head {

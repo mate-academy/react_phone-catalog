@@ -22,7 +22,10 @@ const ShopByCategory: React.FC<Props> = ({ gadgets }) => {
         <Link to="/Phone"
               className="shop-by-category__card shop-by-category__card-gadget"
         >
-          <div className="shop-by-category__card-image-wrapper">
+          <div
+            className="shop-by-category__card-image-wrapper-1
+            shop-by-category__card-image-wrapper"
+          >
             <img className="shop-by-category__card-image"
               src="./img/phones/ShopByPhone.png"
               alt="mobile photo"
@@ -41,7 +44,10 @@ const ShopByCategory: React.FC<Props> = ({ gadgets }) => {
         <Link to="/Tablet"
               className="shop-by-category__card shop-by-category__card-gadget"
         >
-          <div className="shop-by-category__card-image-wrapper">
+          <div
+            className="shop-by-category__card-image-wrapper-2
+            shop-by-category__card-image-wrapper"
+          >
             <img className="shop-by-category__card-image"
               src="./img/phones/ShopByTablet.png"
               alt="tablet photo"
@@ -60,7 +66,10 @@ const ShopByCategory: React.FC<Props> = ({ gadgets }) => {
         <Link to="/Accessories"
               className="shop-by-category__card shop-by-category__card-gadget"
         >
-          <div className="shop-by-category__card-image-wrapper">
+          <div
+            className="shop-by-category__card-image-wrapper-3
+            shop-by-category__card-image-wrapper"
+          >
             <img className="shop-by-category__card-image"
                  src="./img/phones/ShopByAccessory.png"
                  alt="accessory photo"
