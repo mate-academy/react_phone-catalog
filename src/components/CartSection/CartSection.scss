@@ -25,7 +25,7 @@
     width: 64px;
     height: 64px;
     background-color: #fff;
-    background-image: url("/public/img/icons/search.png");
+    background-image: url("./img/icons/search.png");
     background-position: center;
     background-repeat: no-repeat;
     box-shadow: none;
@@ -55,13 +55,13 @@
     @include linkActive($c-active-nav-item);
 
     &--fav {
-      background-image: url("/public/img/icons/heart.png");
+      background-image: url("./img/icons/heart.png");
       background-position: center;
       background-repeat: no-repeat;
     }
 
     &--cart {
-      background-image: url("/public/img/icons/shopping-bag.png");
+      background-image: url("./img/icons/shopping-bag.png");
       background-position: center;
       background-repeat: no-repeat;
     }
