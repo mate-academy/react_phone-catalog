@@ -29,7 +29,7 @@ export const Header = () => (
             </li>
           </ul>
           <ul className="list">
-            <Route path={['/phones', '/tablets', '/accessories', '/favorite']} exact>
+            <Route path={['/phones', '/tablets', '/accessories']} exact>
               <Search />
             </Route>
             <Favourite />

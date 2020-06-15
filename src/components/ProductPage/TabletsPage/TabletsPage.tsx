@@ -25,7 +25,10 @@ export const TabletsPage: React.FC<Props> = ({ tablets }) => {
 
   const page = Number(searchParams.get('page')) || 1;
   const start = (page - 1) * quantity;
-  const pageCount = Math.ceil(tablets.length / quantity) || 1;
+  let pageCount = Math.ceil(tablets.length / quantity) || 1;
+
+  const query = searchParams.get('query') || '';
+  const lowerQuery = query.toLowerCase();
 
   useEffect(() => {
     setTabletsList(tablets);
@@ -50,19 +53,27 @@ export const TabletsPage: React.FC<Props> = ({ tablets }) => {
   };
 
   useEffect(() => {
+    const pattern = new RegExp(query, 'i');
+    const result = tabletsList
+      .filter(item => pattern.test(item.name));
+
     switch (sortType) {
       case 'name':
-        setSortedTablets([...tabletsList]
+        setSortedTablets(result
           .sort((a, b) => a[sortType].localeCompare(b[sortType])));
         break;
       case 'age':
       case 'price':
-        setSortedTablets([...tabletsList]
+        setSortedTablets(result
           .sort((a, b) => a[sortType] - b[sortType]));
         break;
       default: setSortedTablets([...tabletsList]);
     }
-  }, [tabletsList, sortType, quantity]);
+  }, [tabletsList, sortType, quantity, query, lowerQuery, pageCount]);
+
+  if (query !== '') {
+    pageCount = Math.ceil(sortedTablets.length / quantity);
+  }
 
   const visibleItemsOnPage = sortedTablets.slice(start, start + quantity);
 

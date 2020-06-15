@@ -28,7 +28,6 @@ export const FavouritePage = () => {
           </ul>
         </div>
       </div>
-
     </>
   );
 };
