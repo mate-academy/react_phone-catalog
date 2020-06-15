@@ -42,7 +42,7 @@
   &__add-to-fav--primary {
     height: 40px;
     width: 40px;
-    background-image: url("./img/icons/heart.png");
+    background-image: url("./heart.png");
     background-position: center;
     background-repeat: no-repeat;
     background-color: #fff;
@@ -56,6 +56,6 @@
 
   &__add-to-fav--primary.fav-active,
   &__add-to-fav.fav-active {
-    background-image: url("./img/icons/heart-like.png");
+    background-image: url("./heart-like.png");
   }
 }
