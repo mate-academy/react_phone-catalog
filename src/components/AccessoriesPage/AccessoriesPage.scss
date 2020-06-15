@@ -1,0 +1,36 @@
+@import "../../styles/vars.scss";
+
+.AccessoriesPage {
+
+  &__title {
+    margin: 40px 150px;
+
+    &--name {
+      font-size: 32px;
+      line-height: 41px;
+      color: $primary-color;
+
+    }
+
+    &--quantity {
+      font-size: 14px;
+      line-height: 21px;
+      color: $secondary-color;
+    }
+  }
+
+  &__notFound {
+    display: block;
+    text-align: center;
+
+    &--title {
+      color: $primary-color;
+    }
+
+    &--img {
+      width: 400px;
+      height: 350px;
+    }
+  }
+
+}

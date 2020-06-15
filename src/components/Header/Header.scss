@@ -3,8 +3,11 @@
 .header {
   display: flex;
   justify-content: space-between;
+  position: relative;
+
   align-items: center;
   border-bottom: 1px solid $secondary-color;
+  padding-left: 24px;
 
   &__nav {
     display: flex;

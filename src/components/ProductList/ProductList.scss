@@ -95,6 +95,10 @@
       font-weight: 600;
       background-color: $buttons-background-color;
       color: $buttons-text-color;
+    }
+
+    &--cart:hover {
+      background-color: $color-red;
 
     }
 
@@ -104,23 +108,5 @@
 
     }
   }
-
-}
-
-.PhonesPage__title {
-  margin: 40px 150px;
-}
-
-.PhonesPage__name {
-  font-size: 32px;
-  line-height: 41px;
-  color: $primary-color;
-
-}
-
-.PhonesPage__quantity {
-  font-size: 14px;
-  line-height: 21px;
-  color: $secondary-color;
 
 }

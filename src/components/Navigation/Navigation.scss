@@ -12,9 +12,12 @@
   &__item {
     color: $secondary-color;
     padding: 0 32px;
-
     font-size: 12px;
     text-decoration: none;
+  }
+
+  &__list :nth-child(2) {
+    margin-left: 32px;
   }
 
   &__item--active {

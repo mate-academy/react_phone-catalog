@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ProductList from '../ProductList/ProductList';
 import { getProducts } from '../../helpers/api';
 import Sort from '../Sort/Sort';
+import './PhonesPage.scss';
 
 
 type Props = { phones: Product[]};
@@ -16,18 +17,18 @@ const PhonesPage: React.FC<Props> = () => {
   return (
 
     <>
-
-      <div className="PhonesPage__title">
-        <p className="PhonesPage__name">Mobile Phones</p>
-        <span className="PhonesPage__quantity">
-          {phones.length}
-          {' '}
-          models
-        </span>
+      <div className="PhonesPage">
+        <div className="PhonesPage__title">
+          <p className="PhonesPage__name">Mobile Phones</p>
+          <span className="PhonesPage__quantity">
+            {phones.length}
+            {' '}
+            models
+          </span>
+        </div>
+        <Sort />
+        <ProductList products={phones} />
       </div>
-      <Sort />
-      <ProductList products={phones} />
-
     </>
   );
 };
