@@ -8,7 +8,7 @@ type NavLinks = {
 };
 
 const NAV_LINKS = [
-  { path: '/home', text: 'HOME' },
+  { path: '/', text: 'HOME' },
   { path: '/phones', text: 'PHONES' },
   { path: '/tablets', text: 'TABLETS' },
   { path: '/accessories', text: 'ACCESSORIES' },
