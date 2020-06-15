@@ -120,16 +120,16 @@ export const ProductInfo = () => {
             <h2>Tech specs</h2>
             <div className="line" style={{ border: '1px solid #E2E6E9' }} />
             <div className="Product__specs">
-              {PRODUCT_SPEC.map(spec => (
-                <div className="Product__group">
-                  <p className="Product__spec-name">{spec.spec}</p>
-                  <p className="Product__spec-info">{spec.field || 'No information'}</p>
+              {PRODUCT_SPEC.map(({ spec, field }) => (
+                <div className="Product__group" key={spec}>
+                  <p className="Product__spec-name">{spec}</p>
+                  <p className="Product__spec-info">{field || 'No information'}</p>
                 </div>
               ))}
-              {PRODUCT_SPEC_ADDITIONAL.map(spec => (
-                <div className="Product__group">
-                  <p className="Product__spec-name">{spec.spec}</p>
-                  <p className="Product__spec-info">{spec.field || 'No information'}</p>
+              {PRODUCT_SPEC_ADDITIONAL.map(({ spec, field }) => (
+                <div className="Product__group" key={spec}>
+                  <p className="Product__spec-name">{spec}</p>
+                  <p className="Product__spec-info">{field || 'No information'}</p>
                 </div>
               ))}
             </div>

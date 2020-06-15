@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import {
   Route, Switch, Redirect,
 } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Header } from './components/Header/Header';
 import { PhonesPage } from './pages/PhonesPage';
 import { HomePage } from './pages/HomePage';
@@ -13,7 +13,7 @@ import { FavoritesPage } from './pages/FavouritesPage';
 import { CardPage } from './pages/CartPage';
 import './App.scss';
 import './helpers/fonts/fonts.scss';
-import { loadData, RootState } from './store/index';
+import { loadData } from './store/index';
 import { ProductPage } from './pages/ProductPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 
@@ -23,17 +23,6 @@ const App = () => {
   useEffect(() => {
     dispatch(loadData());
   }, [dispatch]);
-
-  // const cart = useSelector((state: RootState) => state.cart);
-  const favourites = useSelector((state: RootState) => state.favourites);
-
-  // useEffect(() => {
-  //   localStorage.setItem('CartItems', JSON.stringify(cart));
-  // }, [cart]);
-
-  useEffect(() => {
-    localStorage.setItem('FavoritesItems', JSON.stringify(favourites));
-  }, [favourites]);
 
   return (
     <>

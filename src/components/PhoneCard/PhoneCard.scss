@@ -17,10 +17,8 @@
     transition: 0.3s;
   }
 
-  &__img_container {
-    :hover {
+  &__image:hover {
       transform: scale(1.1);
-    }
   }
 
   &__product {

@@ -4,7 +4,8 @@ import { useSelector } from 'react-redux';
 import { Search } from '../Search/Search';
 import { Nav } from '../Nav/Nav';
 import './Header.scss';
-import { getFavourites, getCartItems } from '../../store/index';
+import { getCartItems } from '../../store/cart';
+import { getFavourites } from '../../store/index';
 
 export const Header = () => {
   const favourites = useSelector(getFavourites);

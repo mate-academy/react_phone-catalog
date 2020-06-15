@@ -21,7 +21,7 @@ type Slider = {
   imgUrl: string;
 };
 
-interface Product {
+interface Product extends Products {
   additionalFeatures: string;
   android: {
     os: string;
@@ -72,19 +72,6 @@ interface Product {
 }
 
 interface CartProduct {
-  product: {
-    age: number;
-    type: string;
-    id: string;
-    imageUrl: string;
-    name: string;
-    snippet: string;
-    price: number;
-    discount: number;
-    screen: string;
-    capacity: string;
-    ram: string;
-    length: number;
-  };
+  product: Products;
   quantity: number;
 }

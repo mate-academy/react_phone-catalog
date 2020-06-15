@@ -30,9 +30,13 @@ const PhoneCard: React.FC<PropsPhoneCard> = ({ phone }) => {
 
   return (
     <section className="PhoneCard">
-      <div className="PhoneCard__img_container">
+      <button
+        type="button"
+        className="PhoneCard__product"
+        onClick={() => handleProductDetails(phone.id, phone.type)}
+      >
         <img src={`${phone.imageUrl}`} alt="phone_image" className="PhoneCard__image" />
-      </div>
+      </button>
       <button
         type="button"
         className="PhoneCard__product"
