@@ -5,10 +5,10 @@ import { GoodList } from '../goodList/GoodList';
 type Props = { phones: IGood[]};
 
 const Phones: React.FC<Props> = () => {
-
   const [phones, setPhones] = useState<IGood[]>([]);
+
   useEffect(() => {
-    getGoodsByCategory("phone")
+    getGoodsByCategory('phone')
       .then(data => {
         setPhones(data);
       });
@@ -17,7 +17,7 @@ const Phones: React.FC<Props> = () => {
   return (
     <>
       <h1>Phones</h1>
-      <GoodList goods={phones}/>
+      <GoodList goods={phones} />
     </>
   );
 };

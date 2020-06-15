@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { IGood, getGoodsByCategory } from '../../provider/dataFromApi';
 import { GoodList } from '../goodList/GoodList';
 
-type Props = { tablets: IGood[] }
+type Props = { tablets: IGood[] };
 
-const Tablets:React.FC<Props> = () => {
-
+const Tablets: React.FC<Props> = () => {
   const [tablets, setGoods] = useState<IGood[]>([]);
+
   useEffect(() => {
-    getGoodsByCategory("tablet")
+    getGoodsByCategory('tablet')
       .then(data => {
         setGoods(data);
       });
@@ -16,8 +16,8 @@ const Tablets:React.FC<Props> = () => {
 
   return (
     <>
-    <h1> Tablets</h1>
-      <GoodList goods = {tablets} />
+      <h1> Tablets</h1>
+      <GoodList goods={tablets} />
     </>
   );
 };
