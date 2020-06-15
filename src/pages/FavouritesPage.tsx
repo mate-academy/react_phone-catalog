@@ -26,7 +26,7 @@ export const FavoritesPage = () => {
           {favourites.length === 0 ? <h1 className="Favourites__noproducts">No favorites products yet</h1> : (
             <div className="Favourites__container">
               {favourites.map((favourite: Products) => (
-                <PhoneCard phone={favourite} />
+                <PhoneCard phone={favourite} key={favourite.id} />
               ))}
             </div>
           )}

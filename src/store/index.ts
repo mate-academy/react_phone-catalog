@@ -105,7 +105,7 @@ export const loadData = () => {
 };
 
 const localState = {
-  cart: JSON.parse(localStorage.getItem('CartItems') || '[]'),
+  // cart: JSON.parse(localStorage.getItem('CartItems') || '{}'),
   favourites: JSON.parse(localStorage.getItem('FavoritesItems') || '[]'),
 };
 

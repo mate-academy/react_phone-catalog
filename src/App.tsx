@@ -24,12 +24,12 @@ const App = () => {
     dispatch(loadData());
   }, [dispatch]);
 
-  const cart = useSelector((state: RootState) => state.cart);
+  // const cart = useSelector((state: RootState) => state.cart);
   const favourites = useSelector((state: RootState) => state.favourites);
 
-  useEffect(() => {
-    localStorage.setItem('CartItems', JSON.stringify(cart));
-  }, [cart]);
+  // useEffect(() => {
+  //   localStorage.setItem('CartItems', JSON.stringify(cart));
+  // }, [cart]);
 
   useEffect(() => {
     localStorage.setItem('FavoritesItems', JSON.stringify(favourites));
