@@ -77,3 +77,16 @@
     grid-area: search;
   }
 }
+
+.search__input {
+  padding: 24px 23px;
+}
+
+.search__input::placeholder {
+  letter-spacing: 1.5px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18px;
+  color: #b5bec5;
+}

@@ -79,7 +79,7 @@ export const Slider: React.FC = () => {
             className="slider__img-list"
             style={{
               transform: `translateX(${left}px)`,
-              transition: `translate 0.45s ease-out`,
+              transition: `color 0.45s ease-out`,
             }}
           >
           {images.map(image => (

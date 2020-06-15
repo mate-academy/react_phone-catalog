@@ -67,7 +67,7 @@ export const CardSlider: React.FC<CardSliderProps> = ({ goods, title }) => {
         <div className="view-products__list"
           style={{
           transform: `translateX(${left}px)`,
-          transition: `translate ease 0.3s`,
+          transition: `transform 0.5s ease`,
           display: 'grid',
           gridTemplateColumns: `repeat(${sliderGoods.length}, 272px)`,
           columnGap: '16px',

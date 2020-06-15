@@ -38,7 +38,7 @@ export const Search = () => {
         <input type="text"
           className="search__input"
           name="search"
-          placeholder=""
+          placeholder="Search..."
           value={query}
           onChange={({ target }) => handleChange(target.value)}
       />

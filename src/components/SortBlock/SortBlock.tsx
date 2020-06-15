@@ -31,6 +31,7 @@ export const SortBlock = () => {
   return (
   <section className="catalog__sort">
     <form className="catalog__sort-form">
+
       <div>
         <label className="catalog__sort-title">
           Sort by
@@ -42,6 +43,7 @@ export const SortBlock = () => {
         >
           {sortParams.map(param => (
             <option
+              className="catalog__sort-select-option"
               key={param.title}
               value={param.value}
             >
@@ -62,6 +64,7 @@ export const SortBlock = () => {
           {itemsCount.map(count => (
             <option
               key={count}
+              className="catalog__sort-select-option"
               value={count}
             >
               {count}
