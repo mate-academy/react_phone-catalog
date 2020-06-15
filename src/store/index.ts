@@ -1,6 +1,5 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import { createSelector } from 'reselect';
 import { Dispatch } from 'react';
 import thunk from 'redux-thunk';
 import { getAllProducts } from '../helpers/api';
@@ -28,7 +27,6 @@ export const getVisible = (state: RootState) => state.loading.isVisible;
 export const getLoading = (state: RootState) => state.loading.isLoading;
 export const getProducts = (state: RootState) => state.products;
 export const getFavourites = (state: RootState) => state.favourites;
-export const getCartItems = (state: RootState) => state.cart.items;
 export const getProduct = (state: RootState) => state.product;
 
 
@@ -46,23 +44,6 @@ const rootReducer = combineReducers({
 
 export type RootState = ReturnType<typeof rootReducer>;
 
-export const getTotalPrice = createSelector(
-  getCartItems,
-
-  (items: CartProduct[]) => {
-    return items
-      .reduce((sum, { quantity, product }) => sum + quantity * product.price - product.discount, 0);
-  },
-);
-
-export const getDiscount = createSelector(
-  getCartItems,
-
-  (items: CartProduct[]) => {
-    return items
-      .reduce((sum, { quantity, product }) => sum + quantity * product.discount, 0);
-  },
-);
 
 export const getVisibleProducts = (state: RootState, type: string) => {
   let compare: (a: Products, b: Products) => number = () => 0;
@@ -104,15 +85,19 @@ export const loadData = () => {
   };
 };
 
-const localState = {
-  // cart: JSON.parse(localStorage.getItem('CartItems') || '{}'),
-  favourites: JSON.parse(localStorage.getItem('FavoritesItems') || '[]'),
-};
+const persistedState = localStorage.getItem('reduxState')
+  ? JSON.parse(localStorage.getItem('reduxState') || '')
+  : {};
 
 const store = createStore(
   rootReducer,
-  localState,
+  persistedState,
   composeWithDevTools(applyMiddleware(thunk)),
 );
+
+store.subscribe(() => {
+  localStorage.setItem('reduxState', JSON.stringify(store.getState()));
+});
+
 
 export default store;

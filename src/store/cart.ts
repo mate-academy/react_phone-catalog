@@ -1,4 +1,5 @@
 import { AnyAction } from 'redux';
+import { createSelector } from 'reselect';
 
 const SET_TO_CART = 'SET_TO_CART';
 const SET_CART_QUANTITY = 'SET_CART_QUANTITY';
@@ -10,39 +11,58 @@ export const setQuantity = (product: Products, quantity: number) => (
   { type: SET_CART_QUANTITY, product, quantity });
 export const removeFromCart = (product: Products) => ({ type: REMOVE_FROM_CART, product });
 
-type State = {
+
+type CartState = {
   items: CartProduct[];
-  discount: number;
 };
 
-const initState: State = {
+const initState: CartState = {
   items: [],
-  discount: 0,
 };
 
-const reducer = (cart = initState, action: AnyAction) => {
+
+export const getCartItems = (state: {cart: CartState}) => state.cart.items;
+
+export const getTotalPrice = createSelector(
+  getCartItems,
+
+  (items: CartProduct[]) => {
+    return items
+      .reduce((sum, { quantity, product }) => sum + quantity * product.price - product.discount, 0);
+  },
+);
+
+export const getDiscount = createSelector(
+  getCartItems,
+
+  (items: CartProduct[]) => {
+    return items
+      .reduce((sum, { quantity, product }) => sum + quantity * product.discount, 0);
+  },
+);
+
+const reducer = (cart = initState, action: AnyAction): CartState => {
   switch (action.type) {
     case SET_TO_CART:
 
       if (cart.items.every((item: CartProduct) => item.product.id !== action.product.id)) {
+        const newItem: CartProduct = {
+          product: action.product,
+          quantity: action.quantity,
+        };
+
         return {
-          ...cart,
-          items: [...cart.items, {
-            product: action.product,
-            quantity: action.quantity,
-          }],
+          items: [...cart.items, newItem],
         };
       }
 
       return {
-        ...cart,
         items: cart.items.filter((item: CartProduct) => item.product.id !== action.product.id),
       };
     case SET_CART_QUANTITY: {
       const { product } = action;
 
       return {
-        ...cart,
         items: cart.items.map(item => {
           if (item.product.id !== product.id) {
             return item;
@@ -60,7 +80,6 @@ const reducer = (cart = initState, action: AnyAction) => {
       const product = action.product as Products;
 
       return {
-        ...cart,
         items: cart.items.filter(item => item.product.id !== product.id),
       };
     }

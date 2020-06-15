@@ -5,7 +5,7 @@ import {
   Link,
 } from 'react-router-dom';
 import { CartItem } from './CartItem';
-import { getCartItems, getTotalPrice, getDiscount } from '../store/index';
+import { getCartItems, getTotalPrice, getDiscount } from '../store/cart';
 import { GoBackButton } from '../components/Buttons/GoBack';
 
 export const CardPage = () => {

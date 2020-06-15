@@ -1,8 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import cn from 'classnames';
-import { setToCart } from '../../store/cart';
-import { getCartItems } from '../../store/index';
+import { setToCart, getCartItems } from '../../store/cart';
 
 type Props = {
   product: Products;
