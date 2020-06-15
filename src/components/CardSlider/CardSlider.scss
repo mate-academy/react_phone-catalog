@@ -2,10 +2,16 @@
   &__wrapper {
     display: flex;
     justify-content: space-between;
+
+    @media only screen and (max-width: 620px) {
+      flex-direction: column;
+      align-items: center;
+    }
   }
 
   &__btn-panel {
     display: flex;
+    margin-bottom: 24px;
   }
 
   &__btn {
@@ -21,9 +27,24 @@
     transition: all 0.1s ease-in;
   }
 
+  &__btn:first-of-type {
+    margin-left: 0;
+  }
+
   &__slider-container {
     position: relative;
     max-width: 1136px;
     overflow: hidden;
+    @media only screen and (max-width: 1240px) {
+      max-width: 848px;
+    }
+
+    @media only screen and (max-width: 960px) {
+      max-width: 560px;
+    }
+
+    @media only screen and (max-width: 620px) {
+      max-width: 272px;
+    }
   }
 }

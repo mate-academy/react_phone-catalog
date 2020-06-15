@@ -33,10 +33,10 @@ export const Body = () => {
           <Catalog />
         </Route>
 
-        <Route path="/:section/:goodId" exact>
-          <ProductPage />
-        </Route>
-
+        <Route path="/:section/:goodId?" exact render={({ match }) => (
+          <ProductPage goodId={match.params.goodId} />
+          )}
+        />
         </Switch>
       </div>
     </main>

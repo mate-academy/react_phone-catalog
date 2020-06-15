@@ -14,8 +14,8 @@ export const navLinks: Link[] = [
 
 export const footerLinks: Link[] = [
   { title: 'Github',  path: 'https://github.com/Tata2222'},
-  { title: 'Contacts', path: 'https://www.linkedin.com/in/tatyana-olshanskaya',},
-  { title: 'Rights',  path: 'rights',},
+  { title: 'Contacts', path: 'https://www.linkedin.com/in/tatyana-olshanskaya'},
+  { title: 'Rights',  path: 'https://ru.wikipedia.org/wiki/All_rights_reserved'},
 ]
 
 export const sortTypes: SortType[] = [

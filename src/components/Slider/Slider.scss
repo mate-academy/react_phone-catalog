@@ -5,6 +5,10 @@
   position: relative;
   margin: 1px auto 80px;
 
+  @media only screen and (max-width:550px) {
+    display: none;
+  }
+
   &__container {
     display: flex;
   }
@@ -31,13 +35,23 @@
   &__img {
     &-container {
       max-width: 1040px;
-      height: 400px;
       overflow: hidden;
       margin: 0 16px;
     }
 
     &-list {
       display: flex;
+    }
+
+    &-item {
+      display: flex;
+      width: 100%;
+      max-height: 400px;
+
+    }
+
+    &-visible {
+      object-fit: cover;
     }
   }
 

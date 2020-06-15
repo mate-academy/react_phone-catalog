@@ -3,7 +3,9 @@
   justify-content: center;
 
   &-container {
-    margin-top: 89px;
-    padding: 0 152px;
+    margin: 89px auto 0;
+    @media only screen and (max-width: 550px) {
+      margin: 153px auto 0;
+    }
   }
 }

@@ -1,7 +1,6 @@
 .bread-crumbs {
   display: flex;
   align-items: center;
-
   margin-bottom: 40px;
 
   &__link {
@@ -28,7 +27,7 @@
 
   &__link:first-of-type {
     display: block;
-    background-image: url(home.png);
+    background-image: url(/img/icons/home.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -39,5 +38,4 @@
   &__link:last-of-type {
     color: $c-extra-text;
   }
-
 }

@@ -1,5 +1,5 @@
 .cart {
-  margin-bottom: 90px;
+  margin: 0 20px 80px;
 
   &__title {
     @include h1;
@@ -10,6 +10,10 @@
     display: grid;
     grid-template-columns: 752px 368px;
     column-gap: 16px;
+
+    @media only screen and (max-width:1240px) {
+      grid-template-columns: 1fr;
+    }
   }
 
   &__empty {
@@ -30,7 +34,6 @@
       justify-content: center;
       height: 110px;
       border-bottom: 1px solid #e2e6e9;
-
     }
 
     &-price {

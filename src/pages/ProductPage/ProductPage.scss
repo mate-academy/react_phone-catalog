@@ -1,4 +1,8 @@
 .productpage {
+  margin: 0 20px;
+  flex-direction: column;
+  align-items: center;
+
   &__title {
     @include h1;
     margin-bottom: 40px;
@@ -6,24 +10,65 @@
 
   &__container {
     display: grid;
-    grid-template-columns: 560px 512px;
+    grid-template-columns: repeat(2, 1fr);
     column-gap: 64px;
-    grid-template-rows: repeat(2, fit-content);
-    row-gap: 80px;
+    grid-template-areas: "gallery details" "about tech-specs";
+    grid-template-rows: repeat(2, max-content);
+    row-gap: 32px;
     margin-bottom: 80px;
+
+    @media only screen and (max-width: 960px) {
+      column-gap: 16px;
+    }
+
+    @media only screen and (max-width: 760px) {
+      column-gap: 16px;
+      grid-template-areas: "gallery" "details" "about" "tech-specs";
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__view-products {
+    display: flex;
+    justify-content: center;
+    @media only screen and (max-width: 760px) {
+      max-width: 560px;
+    }
   }
 }
 
 .gallery {
   &__img-container {
+    grid-area: gallery;
     display: grid;
-    grid-template-columns: 78px 442px;
+    max-width: 560px;
+    grid-template-areas: "side-gallery main-img";
     column-gap: 28px;
+    grid-template-columns: 78px, 442px;
+
+    @media only screen and (max-width: 1240px) {
+      grid-template-areas: "side-gallery" "main-img";
+      justify-content: center;
+    }
+  }
+
+  &__img-list {
+    grid-area: side-gallery;
+    @media only screen and (max-width: 1240px) {
+      display: flex;
+      padding: 0 10px;
+      justify-content: space-evenly;
+      overflow: hidden;
+    }
+
+    @media only screen and (max-width: 760px) {
+      max-width: 560px;
+    }
   }
 
   &__img-item {
     width: 80px;
-    height: 80px;
+    height: auto;
     padding: 7px;
     box-sizing: border-box;
     border: 1px solid #c4c4c4;
@@ -36,15 +81,21 @@
 
   &__img {
     width: 100%;
-    height: 100%;
+    height: auto;
+    object-fit: cover;
   }
 
   &__main-img {
+    width: 100%;
+    height: auto;
+    grid-area: main-img;
     padding: 10px;
   }
 }
 
 .about {
+  grid-area: about;
+  max-width: 560px;
   &__title {
     display: block;
     @include h2;
@@ -66,6 +117,9 @@
 }
 
 .tech-specs {
+  grid-area: tech-specs;
+  max-width: 560px;
+
   &__title {
     @include h2;
     padding-bottom: 16px;
@@ -99,9 +153,44 @@
 }
 
 .details {
+  grid-area: details;
+  justify-self: flex-end;
+  @media only screen and (max-width: 760px) {
+    justify-self: stretch;
+  }
+
   &-container {
     display: grid;
-    grid-template-columns: 320px 192px;
+    max-width: 560px;
+    grid-template-columns: minmax(min-content, 320px) 192px;
+
+    @media only screen and (max-width: 1240px) {
+      grid-template-columns: minmax(min-content, 320px);
+      row-gap: 24px;
+    }
+
+    @media only screen and (max-width: 760px) {
+      display: flex;
+      justify-self: stretch;
+      flex-direction: column;
+    }
+  }
+
+  &__card {
+    max-width: 320px;
+    min-width: min-content;
+    @media only screen and (max-width: 760px) {
+      max-width: 100%;
+      min-width: 100%;
+    }
+
+    &-wrapper {
+      @media only screen and (max-width: 760px) {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+      }
+    }
   }
 
   &__capacity-title,
@@ -115,6 +204,9 @@
   &__colors {
     border-bottom: 1px solid #e2e6e9;
     margin-bottom: 24px;
+    @media only screen and (max-width: 760px) {
+      border-bottom: none;
+    }
   }
 
   &__colors-list {
@@ -144,6 +236,11 @@
 
   &__capacity {
     border-bottom: 1px solid #e2e6e9;
+
+    @media only screen and (max-width: 760px) {
+      border-bottom: none;
+    }
+
     &-list {
       display: flex;
       margin-bottom: 20px;
@@ -205,6 +302,12 @@
   &__product-id {
     display: flex;
     justify-content: flex-end;
+    max-width: 192px;
+    @media only screen and (max-width: 760px) {
+      margin-top: 24px;
+      max-width: 100%;
+    }
+
     &--current {
       @include small-text;
       color: #b4bdc4;

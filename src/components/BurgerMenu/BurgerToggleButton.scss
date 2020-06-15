@@ -1,0 +1,28 @@
+.toggle-button {
+  display: flex;
+  align-self: center;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 24px;
+  width: 30px;
+  background: transparent;
+  border: none;
+  padding: 0;
+  box-sizing: border-box;
+  margin-left: 30px;
+  grid-area: nav;
+
+  &:focus {
+    outline: none;
+  }
+
+  &__line {
+    width: 30px;
+    height: 2px;
+    background: #313237;
+  }
+
+  @media only screen and (min-width: 1061px) {
+    display: none;
+  }
+}

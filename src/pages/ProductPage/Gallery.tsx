@@ -13,6 +13,7 @@ export const Gallery: React.FC<GalleryProps> = ({ images, name }) => {
     setActiveLink(images[0])
   }, [images])
 
+
   const handleClick = (e: React.MouseEvent<HTMLImageElement>) => {
     e.preventDefault();
    const { src } = e.target as HTMLImageElement;

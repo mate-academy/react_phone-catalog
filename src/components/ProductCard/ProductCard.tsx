@@ -8,14 +8,9 @@ type ProductCardProps = {
 }
 
 export const ProductCard: React.FC<ProductCardProps> = ({ good }) => {
-
   const {
-    // age,
-   //id,
-    // type,
     imageUrl,
     name,
-    // snippet,
     price,
     discount,
     screen,
@@ -28,10 +23,16 @@ export const ProductCard: React.FC<ProductCardProps> = ({ good }) => {
   return (
     <section className="productcard">
       <NavLink to={`/${good.type}/${good.id}`} className="productcard__link">
-      <img
-        className="productcard__img"
-        src={imageUrl}
-        alt={name} />
+      <div className="productcard__img-mask"></div>
+      <div className="productcard__img-text">
+        <p>Read more...</p>
+      </div>
+        <img
+          className="productcard__img"
+          src={imageUrl}
+          alt={name}
+        />
+
       </NavLink>
       <p className="productcard__title">{name}</p>
 

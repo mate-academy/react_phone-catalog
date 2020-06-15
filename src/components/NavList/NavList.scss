@@ -1,14 +1,15 @@
 .nav {
-  &_item {
+  &__item {
     position: relative;
     text-transform: uppercase;
     @include uppercase;
-  }
-
-  &_link {
-    line-height: 64px;
-    color: $c-nav-item;
     @include linkActive($c-active-nav-item);
     transition: all 0.35s ease;
   }
+
+  &__link {
+    line-height: 64px;
+    color: $c-nav-item;
+  }
+
 }

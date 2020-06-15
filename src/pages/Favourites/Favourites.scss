@@ -1,7 +1,9 @@
 .favourites {
-  display: flex;
   &__products {
-
+    @media only screen and (max-width: 550px) {
+      margin-top: -64px;
+      z-index: 100;
+    }
 
     &-container {
       display: grid;
@@ -9,17 +11,38 @@
       column-gap: 16px;
       row-gap: 40px;
       margin-bottom: 80px;
+
+      @media only screen and (max-width: 1240px) {
+        display: grid;
+        grid-template-columns: repeat(3, 272px);
+      }
+
+      @media only screen and (max-width: 960px) {
+        display: grid;
+        grid-template-columns: repeat(2, 272px);
+      }
+
+      @media only screen and (max-width: 620px) {
+        display: grid;
+        grid-template-columns: 272px;
+      }
     }
   }
 
   &__title {
     @include h1;
     margin-bottom: 8px;
+    @media only screen and (max-width: 960px) {
+      text-align: center;
+    }
   }
 
   &__items-count {
     @include body-text;
     color: $c-extra-text;
     margin-bottom: 40px;
+    @media only screen and (max-width: 960px) {
+      text-align: center;
+    }
   }
 }

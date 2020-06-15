@@ -29,22 +29,16 @@ const sortBy = (goods: Good[], sortType: string) => {
 
 export const Catalog = () => {
   const goods: Good[] = useSelector(getGoods);
-  let selectedItemsCount = 4;
-  const [rowItemsCount, setRowItemsCount] = useState<number>(4);
   const [currentSectionGoods, setCurrentSectionGoods] = useState<Good[]>([])
   const [visibleGoods, setVisibleGoods] =  useState<Good[]>(currentSectionGoods);
-
   const { section } = useParams();
   const location = useLocation()
   const searchParams = new URLSearchParams(location.search);
   const sortTypeFromURL = (searchParams.get('sortBy') || 'newest').toLowerCase();
   const queryFromURL = (searchParams.get('query') || '').toLowerCase();
-
   const currentPage = Number(searchParams.get('page')) || 1;
   const perPage = Number(searchParams.get('perPage')) || 8;
-
   const pageTitle = location.pathname.substr(1) === 'phones' ? 'mobile phones' : location.pathname.substr(1);
-
 
   const requestedGoods = useMemo(
     () => currentSectionGoods.filter(good => {
@@ -58,11 +52,9 @@ export const Catalog = () => {
     [requestedGoods, sortTypeFromURL],
   );
 
-
   useEffect(() => {
     setCurrentSectionGoods(goods.filter((good) => section.includes(good.type)))
   }, [section, goods])
-
 
   useEffect(() => {
     if (currentPage === 1) {
@@ -72,13 +64,7 @@ export const Catalog = () => {
     }
   }, [currentSectionGoods, perPage, currentPage, sortedGoods])
 
-
-  useEffect(()=> {
-    setRowItemsCount(selectedItemsCount)
-  },[selectedItemsCount]);
-
   return (
-
     <>
       {visibleGoods.length ? (
       <div className="catalog">
@@ -90,16 +76,11 @@ export const Catalog = () => {
           {goods.length} models
         </p>
         <SortBlock />
-        <div className="catalog__products"
-          style={{
-            display: "grid",
-            gridTemplateColumns: `repeat(${rowItemsCount}, 272px)`,
-            columnGap: "16px",
-            rowGap: "40px",
-          }}>
+        <div className="catalog__products">
+
             {visibleGoods.map((good:Good) => {
               return (
-              <ProductCard good={good} />
+              <ProductCard good={good} key={good.id}/>
               )
             }
           )}

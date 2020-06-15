@@ -1,14 +1,21 @@
 .customer-section {
   display: grid;
-  grid-template-columns: 327px 64px 64px;
+  grid-template-columns: 64px 64px;
+  grid-area: cartsection;
 
   &__form {
     display: flex;
     justify-content: space-between;
     width: 100%;
+    @media only screen and (max-width: 550px) {
+      margin-top: 1px;
+      border-bottom: 1px solid #e2e6e9;
+      box-sizing: border-box;
+    }
   }
 
-  &__item,
+  &__item--fav,
+  &__item--cart,
   &__item--search {
     position: relative;
     box-shadow: -1px 0 0 #e2e6e9;
@@ -18,7 +25,7 @@
     width: 64px;
     height: 64px;
     background-color: #fff;
-    background-image: url(./../../icons/search.png);
+    background-image: url(/img/icons/search.png);
     background-position: center;
     background-repeat: no-repeat;
     box-shadow: none;
@@ -48,28 +55,25 @@
     @include linkActive($c-active-nav-item);
 
     &--fav {
-      background-image: url(./../../icons/heart.png);
+      background-image: url(/img/icons/heart.png);
       background-position: center;
       background-repeat: no-repeat;
     }
 
     &--cart {
-      background-image: url(./../../icons/shopping-bag.png);
+      background-image: url(/img/icons/shopping-bag.png);
       background-position: center;
       background-repeat: no-repeat;
     }
   }
 
   &__search {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 327px;
     box-shadow: -1px 0 0 #e2e6e9;
     visibility: hidden;
   }
 
   &__search.active {
     visibility: visible;
+    grid-area: search;
   }
 }

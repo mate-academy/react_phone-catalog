@@ -9,7 +9,7 @@ export const CartSection = () => {
 
   return (
     <>
-      <div className="customer-section__item">
+      <div className="customer-section__item customer-section__item--fav">
       {(favouriteGoods.length > 0)
         && (
           <span className="customer-section__item-count">

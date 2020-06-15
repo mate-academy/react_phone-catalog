@@ -1,10 +1,21 @@
 .catalog__sort {
   margin-bottom: 24px;
+  display: flex;
+
+  @media only screen and (max-width: 960px) {
+    justify-content: center;
+  }
 
   &-form {
     display: grid;
     grid-template-columns: 176px 128px;
     column-gap: 16px;
+
+    @media only screen and (max-width: 620px) {
+      display: grid;
+      width: 272px;
+      grid-template-columns: 1fr 1fr;
+    }
   }
 
   &-title {
@@ -12,6 +23,10 @@
     @include small-text;
     color: $c-extra-text;
     margin-bottom: 4px;
+
+    @media only screen and (max-width: 960px) {
+      text-align: center;
+    }
   }
 
   &-select {

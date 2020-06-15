@@ -11,8 +11,6 @@ type ButtonProps = {
   good: Good;
 }
 
-
-
 export const Button: React.FC<ButtonProps> = ({ classCSS, title, good }) => {
   const dispatch = useDispatch();
   const cartGoods: cartGood[] = useSelector(getCartGoods);

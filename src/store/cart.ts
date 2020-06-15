@@ -14,7 +14,13 @@ export const decreaseGoodCount = (id: string) => ( {type: DECREASE_COUNT, id} );
 export const setCartGoods = (goods: cartGood[]) => ( {type: SET_CART_GOODS, goods} );
 export const clearCart = () => ({ type: CLEAR_CART });
 
-const cartReducer = (state: cartGood[] = [], action: AnyAction) => {
+let initialState: cartGood[] = [];
+
+if (localStorage.getItem('cartProducts')) {
+  initialState = [...JSON.parse(localStorage.getItem('cartProducts') || '')];
+}
+
+const cartReducer = (state = initialState, action: AnyAction) => {
   switch (action.type) {
     case ADD_CART_GOOD:
       return [
@@ -35,7 +41,7 @@ const cartReducer = (state: cartGood[] = [], action: AnyAction) => {
     case DECREASE_COUNT:
       return state.map(good => ({
         ...good,
-        count: action.id === good.id
+        count: action.id === good.id && good.count > 1
           ? good.count - 1
           : good.count,
       }));

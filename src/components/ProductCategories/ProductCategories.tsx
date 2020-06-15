@@ -28,12 +28,14 @@ export const ProductCategories: React.FC<ProductCategoriesProps> = ({ goods }) =
             {links.map(({title, path, count, cn}) => (
               <li className="products-category__item">
                 <NavLink to={path}
-                  className ={`products-category__link products-category__link-${cn}`}
+                  className={`products-category__link`}
                 >
-                  <div className="overlay" />
-                  <span className="products-category__link-label">
-                    {title}
-                  </span>
+                  <div className ={`products-category__link-img products-category__link-img-${cn}`}>
+                    <div className="overlay" />
+                    <span className="products-category__link-label">
+                      {title}
+                    </span>
+                  </div>
                 </NavLink>
                   <h3 className="products-category__category-title">
                     {title}

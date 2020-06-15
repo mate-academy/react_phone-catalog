@@ -13,6 +13,9 @@
   position: relative;
   bottom: -60px;
   text-align: center;
+  @media only screen and (max-width: 620px) {
+    bottom: 0;
+  }
 
   &-title {
     display: block;
@@ -20,6 +23,11 @@
     color: $c-extra-text;
     margin-bottom: 60px;
     text-shadow: 1px 1px 0 #1d1d1b;
+
+    @media only screen and (max-width: 620px) {
+      @include h3;
+      margin: 0 15px;
+    }
   }
 }
 
@@ -29,6 +37,9 @@
   width: 800px;
   height: 500px;
   margin: auto;
+  @media only screen and (max-width: 620px) {
+    width: auto;
+  }
 
   &__hatdove {
     position: absolute;

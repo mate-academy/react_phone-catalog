@@ -30,23 +30,11 @@ export const Search = () => {
 
   useEffect(() => {setQuery(queryFromURL)}, [queryFromURL]);
 
-  /*const handleSubmit = (e: React.FormEvent): void => {
-    e.preventDefault();
-    if(query.length) {
-      searchParams.set('query', query);
-    } else {
-      searchParams.delete('query');
-    }
-    history.push({
-      search: searchParams.toString()
-    })
-  }*/
-
   const isActiveClass = navLinks.slice(1).some(link => link.path === location.pathname);
 
   return (
     <div className={cn('customer-section__search',{'active': isActiveClass } )}>
-      <form className="customer-section__form" /*onSubmit={handleSubmit}*/>
+      <form className="customer-section__form">
         <input type="text"
           className="search__input"
           name="search"
@@ -62,6 +50,4 @@ export const Search = () => {
     </div>
   )
 }
-
-//autocomplete="off"
 
