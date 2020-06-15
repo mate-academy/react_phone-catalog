@@ -13,7 +13,6 @@ import { PhonesPage } from './components/ProductPage/PhonesPage';
 import { FavouritePage } from './components/Favourite/FavouritePage';
 import { CartPage } from './components/Cart/CartPage';
 
-
 const App: React.FC = () => {
   const [products, setProducts] = useState<ProductItem[]>([]);
   const [phones, setPhones] = useState<ProductItem[]>([]);
@@ -32,7 +31,7 @@ const App: React.FC = () => {
 
   return (
     <div className="App">
-      <FavContextWrap >
+      <FavContextWrap>
         <CartContextWrap>
           <Header />
           <main className="main">

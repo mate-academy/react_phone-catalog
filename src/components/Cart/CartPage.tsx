@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import { CartContext } from './CartContext';
 import { CartItem } from './CartItem';
 import './Cart.scss';
+import { BreadCrumbs } from '../BreadCrumbs';
 
 export const CartPage = () => {
   const {
@@ -22,20 +23,27 @@ export const CartPage = () => {
   return (
     <>
       <div className="productInCart container">
+        <BreadCrumbs />
         <div>
           <h1 className="products__title">Cart</h1>
         </div>
         <div className="cart">
-          <ul className="cart__list">
-            {productInCart.map((item) => (
-              <li
-                className="list__cartItem"
-                key={item.id}
-              >
-                <CartItem item={item} />
-              </li>
-            ))}
-          </ul>
+
+          {productInCart.length === 0
+            ? <h3 className="cart__empty">Your Cart is Ampty</h3>
+            : (
+              <ul className="cart__list">
+                {productInCart.map((item) => (
+                  <li
+                    className="list__cartItem"
+                    key={item.id}
+                  >
+                    <CartItem item={item} />
+                  </li>
+                ))}
+              </ul>
+            )}
+
           <div className="cart__checkout checkout">
             <h1 className="checkout__header">
               $
@@ -62,16 +70,3 @@ export const CartPage = () => {
     </>
   );
 };
-
-// <div className="cart-page__buy-block buy-block">
-// <p className="buy-block__price">
-//   $
-//   {totalCost}
-// </p>
-// <p className="buy-block__count">
-//   Total for
-//   {' '}
-//   {totalCount}
-//   {' '}
-//   items
-// </p>

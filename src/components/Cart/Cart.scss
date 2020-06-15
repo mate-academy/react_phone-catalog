@@ -34,6 +34,12 @@
     width: 368px;
     padding: 24px;
   }
+
+  &__empty {
+    text-align: center;
+    color: #89939a;
+    width: 100%;
+  }
 }
 
 .list {
@@ -75,7 +81,7 @@
 .checkout {
   display: flex;
   flex-direction: column;
-  margin-left: 16px;
+  margin: 0 0 137px 16px;
   height: 206px;
   box-sizing: border-box;
   border: 1px solid rgb(226, 230, 233);

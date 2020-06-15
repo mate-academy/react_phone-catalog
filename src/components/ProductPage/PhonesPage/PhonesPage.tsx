@@ -3,6 +3,7 @@ import { useLocation, useHistory } from 'react-router-dom';
 import { ProductCard } from '../ProductCard';
 import '../ProductsPage.scss';
 import { Pagination } from '../Pagitation';
+import { BreadCrumbs } from '../../BreadCrumbs';
 
 type Props = {
   phones: ProductItem[];
@@ -23,7 +24,10 @@ export const PhonesPage: React.FC<Props> = ({ phones }) => {
 
   const page = Number(searchParams.get('page')) || 1;
   const start = (page - 1) * quantity;
-  const pageCount = Math.ceil(phones.length / quantity) || 1;
+  let pageCount = Math.ceil(phones.length / quantity) || 1;
+
+  const query = searchParams.get('query') || '';
+  const lowerQuery = query.toLowerCase();
 
   useEffect(() => {
     setPhonesList(phones);
@@ -48,24 +52,33 @@ export const PhonesPage: React.FC<Props> = ({ phones }) => {
   };
 
   useEffect(() => {
+    const pattern = new RegExp(query, 'i');
+    const result = phonesList
+      .filter(item => pattern.test(item.name));
+
     switch (sortType) {
       case 'name':
-        setSortedPhones([...phonesList]
+        setSortedPhones(result
           .sort((a, b) => a[sortType].localeCompare(b[sortType])));
         break;
       case 'age':
       case 'price':
-        setSortedPhones([...phonesList]
+        setSortedPhones(result
           .sort((a, b) => a[sortType] - b[sortType]));
         break;
       default: setSortedPhones([...phonesList]);
     }
-  }, [phonesList, sortType, quantity]);
+  }, [phonesList, sortType, quantity, query, lowerQuery, pageCount]);
+
+  if (query !== '') {
+    pageCount = Math.ceil(sortedPhones.length / quantity);
+  }
 
   const visibleItemsOnPage = sortedPhones.slice(start, start + quantity);
 
   return (
     <div className="products__container products container">
+      <BreadCrumbs />
       <h1 className="products__title">Mobile phones</h1>
       <p className="products__quantity">
         {phones.length}

@@ -3,6 +3,7 @@ import { useLocation, useHistory } from 'react-router-dom';
 import { ProductCard } from '../ProductCard';
 import '../ProductsPage.scss';
 import { Pagination } from '../Pagitation';
+import { BreadCrumbs } from '../../BreadCrumbs/BreadCrumbs';
 
 type Props = {
   tablets: ProductItem[];
@@ -67,6 +68,7 @@ export const TabletsPage: React.FC<Props> = ({ tablets }) => {
 
   return (
     <div className="products__container products container">
+      <BreadCrumbs />
       <h1 className="products__title">Tablets</h1>
       <p className="products__quantity">
         {tablets.length}

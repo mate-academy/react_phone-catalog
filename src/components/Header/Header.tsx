@@ -1,7 +1,8 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Route } from 'react-router-dom';
 import { Favourite } from '../Favourite/Favourite';
 import { Cart } from '../Cart/Cart';
+import { Search } from '../Search/Search';
 
 export const Header = () => (
   <>
@@ -28,11 +29,11 @@ export const Header = () => (
             </li>
           </ul>
           <ul className="list">
+            <Route path={['/phones', '/tablets', '/accessories', '/favorite']} exact>
+              <Search />
+            </Route>
             <Favourite />
             <Cart />
-            {/* <NavLink to="/bag">
-              <li className="nav nav__bag" />
-            </NavLink> */}
           </ul>
         </nav>
       </div>
