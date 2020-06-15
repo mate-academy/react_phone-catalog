@@ -10,9 +10,7 @@ const ProductCard: React.FC<Props> = ({ product }) => {
   const priceWithDiscount = (price - (price * (discount / 100)));
 
   return (
-
     <>
-
       <img
         src={`./${imageUrl}`}
         alt={name}
