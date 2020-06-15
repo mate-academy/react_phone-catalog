@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { getFavourites } from '../store/index';
 import PhoneCard from '../components/PhoneCard/PhoneCard';
 import './Favourites.scss';
+import { Breadcrumbs } from '../components/Breadcrumbs/Breadcrumbs';
 
 export const FavoritesPage = () => {
   const favourites = useSelector(getFavourites);
@@ -11,6 +12,9 @@ export const FavoritesPage = () => {
     <>
       <section className="section">
         <div className="container">
+          <section className="wrap__container">
+            <Breadcrumbs />
+          </section>
           <h1 className="PhonesPage__head">
             Favourites
           </h1>

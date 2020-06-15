@@ -7,7 +7,6 @@
   justify-content: space-between;
   align-items: center;
   box-shadow: 0px -1px 0px #E2E6E9;
-  margin-top: 80px;
   padding: 0 152px;
 
   &__list {
@@ -44,6 +43,7 @@
     background-image: url('./BackTo.svg');
     background-position: center;
     background-repeat: no-repeat;
+    background-color: #fff;
     border: 1px solid #B4BDC4;
     box-sizing: border-box;
   }

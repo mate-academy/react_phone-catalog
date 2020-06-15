@@ -5,10 +5,15 @@
   &__link {
     text-decoration: none;
     margin-left: 10px;
+    transition: 0.3s;
   }
 
   &__link-active {
     color: $dark-gray-color;
+  }
+
+  &__link-active:hover {
+    text-decoration: underline;
   }
 
   &__last {

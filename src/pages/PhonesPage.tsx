@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   useSelector,
 } from 'react-redux';
@@ -23,21 +23,29 @@ export const PhonesPage = () => {
   const perPage = useSelector(getPerPage);
   const pageNumbers = Math.ceil(phonesQuatnity / perPage);
 
+  useEffect(() => {
+    window.scrollTo({ top: 0 });
+  }, []);
+
   return (
     <>
-      <div className="Products__article">
-        <Breadcrumbs />
-        <h1 className="PhonesPage__head">Mobile phones</h1>
-        <ProductsQuantity quantity={phonesQuatnity} />
-        <Sort />
+      <div className="container">
+        <div className="Products__article">
+          <Breadcrumbs />
+          <h1 className="PhonesPage__head">Mobile phones</h1>
+          <ProductsQuantity quantity={phonesQuatnity} />
+          <Sort />
+        </div>
       </div>
       {isLoaded ? <Loader />
         : (
-          <section className="PhonesPage__list">
-            {phones.map((phone: Products) => (
-              <PhoneCard key={phone.age} phone={phone} />
-            ))}
-          </section>
+          <div className="container">
+            <section className="PhonesPage__list">
+              {phones.map((phone: Products) => (
+                <PhoneCard key={phone.age} phone={phone} />
+              ))}
+            </section>
+          </div>
         )}
       <div>
         {

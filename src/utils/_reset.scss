@@ -4,7 +4,9 @@ h2,
 h3,
 p,
 ul,
-li {
+li,
+input,
+button {
   margin: 0;
   padding: 0;
   font-family: 'Mont';
@@ -12,9 +14,10 @@ li {
 }
 
 .section {
-  padding: 0 50px;
+  padding-bottom: 80px;
 }
 
 button {
   cursor: pointer;
+  outline: none;
 }

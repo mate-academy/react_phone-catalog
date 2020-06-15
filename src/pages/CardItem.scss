@@ -1,10 +1,26 @@
 @import '../utils/vairables.scss';
 
-.Card {
+.Cart {
   display: flex;
+
 
   &__items {
     margin-right: 16px;
+    transition: 1s;
+  }
+
+  &__noitems {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  &__btn_back {
+    width: 200px;
+  }
+
+  &__title {
+    margin-bottom: 24px;
   }
 
   &__item {
@@ -15,6 +31,12 @@
     padding: 24px;
     border: 1px solid $light-gray;
     box-sizing: border-box;
+    transition: 0.3s;
+    transition: 1s;
+  }
+
+  &__item:hover {
+    box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
   }
 
   &__name {
@@ -40,6 +62,11 @@
     background: url('../images/Close.svg');
     margin-right: 30px;
     border: none;
+    transition: 0.3s;
+  }
+
+  &__button_close:hover {
+    background: url('../images/CloseHover.svg');
   }
 
   &__price {
@@ -98,7 +125,7 @@
 .total {
   &__button {
     outline: none;
-    width: 100%;
+    width: 320px;
     height: 48px;
     background: #313237;
     border: none;

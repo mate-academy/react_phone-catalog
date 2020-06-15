@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Sort } from '../components/Sort/Sort';
 import {
@@ -6,7 +6,7 @@ import {
   getPerPage,
   getVisibleProducts,
   getQuantity,
-  RootState
+  RootState,
 } from '../store';
 import Loader from '../helpers/Loader/Loader';
 import PhoneCard from '../components/PhoneCard/PhoneCard';
@@ -22,21 +22,29 @@ export const TabletsPage = () => {
   const perPage = useSelector(getPerPage);
   const pageNumbers = Math.ceil(tabletsQuatnity / perPage);
 
+  useEffect(() => {
+    window.scrollTo({ top: 0 });
+  }, []);
+
   return (
     <>
-      <div className="Products__article">
-        <Breadcrumbs />
-        <h1>Tablets page</h1>
-        <ProductsQuantity quantity={tabletsQuatnity} />
-        <Sort />
+      <div className="container">
+        <div className="Products__article">
+          <Breadcrumbs />
+          <h1>Tablets page</h1>
+          <ProductsQuantity quantity={tabletsQuatnity} />
+          <Sort />
+        </div>
       </div>
       {isLoaded ? <Loader />
         : (
-          <section className="TabletsPage__list">
-            {tablets.map((phone: Products) => (
-              <PhoneCard key={phone.age} phone={phone} />
-            ))}
-          </section>
+          <div className="container">
+            <section className="TabletsPage__list">
+              {tablets.map((phone: Products) => (
+                <PhoneCard key={phone.age} phone={phone} />
+              ))}
+            </section>
+          </div>
         )}
       <div>
         {
@@ -44,6 +52,7 @@ export const TabletsPage = () => {
           && <Pagination pageNumbers={pageNumbers} />
         }
       </div>
+
     </>
   );
 };

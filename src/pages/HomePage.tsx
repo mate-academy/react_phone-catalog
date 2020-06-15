@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import { Slider } from '../components/Slider/Slider';
 import { PhonesSlider } from '../components/PhonesSlider/PhonesSlider';
@@ -7,10 +7,6 @@ import { getProducts } from '../store/index';
 
 export const HomePage = () => {
   const products = useSelector(getProducts);
-
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, []);
 
   const productsHotPrices = products.filter((product: Products) => product.discount > 0);
   const productsBrandNew = products.filter((product: Products) => product.age < 6);

@@ -30,10 +30,16 @@ const PhoneCard: React.FC<PropsPhoneCard> = ({ phone }) => {
 
   return (
     <section className="PhoneCard">
-      <div role="button" onClick={() => handleProductDetails(phone.id, phone.type)}>
+      <div className="PhoneCard__img_container">
         <img src={`${phone.imageUrl}`} alt="phone_image" className="PhoneCard__image" />
       </div>
-      <p className="PhoneCard__product">{`${phone.id.toUpperCase()}`}</p>
+      <button
+        type="button"
+        className="PhoneCard__product"
+        onClick={() => handleProductDetails(phone.id, phone.type)}
+      >
+        {`${phone.id.toUpperCase()}`}
+      </button>
 
       <div className="PhoneCard__price-container">
         <h2 className="PhoneCard__price">

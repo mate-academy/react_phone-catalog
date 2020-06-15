@@ -11,7 +11,6 @@ export const Breadcrumbs = () => {
   const preparedBreadcrumbs = preparedNames
     .reduce((accum: string[], item) => [...accum, `${accum}/${item}`], []);
 
-  console.log(preparedNames, preparedBreadcrumbs);
 
   return (
     <ul className="breadcrumbs">

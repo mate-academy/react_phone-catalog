@@ -44,7 +44,7 @@ export const Footer = () => {
         <p className="Footer__backTo">Back to top</p>
         <button
           type="button"
-          className="Footer__backhome"
+          className="Footer__backhome btn"
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         >
           { }

@@ -25,6 +25,7 @@
     text-decoration: none;
     font-size: 12px;
     letter-spacing: 0.04em;
+    transition: 0.3s;
 
     &--active {
       color: $dark-gray-color;
@@ -41,4 +42,8 @@
     }
   }
 
+  &__link:hover {
+    color: $dark-gray-color;
+    border-bottom: 3px solid $dark-gray-color;
+  }
 }

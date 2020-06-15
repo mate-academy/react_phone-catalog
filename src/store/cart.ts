@@ -1,6 +1,4 @@
 import { AnyAction } from 'redux';
-import { RootState } from './index';
-import { createSelector } from 'reselect';
 
 const SET_TO_CART = 'SET_TO_CART';
 const SET_CART_QUANTITY = 'SET_CART_QUANTITY';
@@ -21,27 +19,6 @@ const initState: State = {
   items: [],
   discount: 0,
 };
-
-
-export const getItems = (state: RootState) => state.cart.items;
-
-export const getTotalPrice = createSelector(
-  getItems,
-
-  (items: CartProduct[]) => {
-    return items
-      .reduce((sum, { quantity, product }) => sum + quantity * product.price - product.discount, 0);
-  },
-);
-
-export const getDiscount = createSelector(
-  getItems,
-
-  (items: CartProduct[]) => {
-    return items
-      .reduce((sum, { quantity, product }) => sum + quantity * product.discount, 0);
-  },
-);
 
 const reducer = (cart = initState, action: AnyAction) => {
   switch (action.type) {
