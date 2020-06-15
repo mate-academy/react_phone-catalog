@@ -1,14 +1,15 @@
 import React, {useState} from 'react';
 import classNames from 'classnames';
 import ReactResizeDetector from "react-resize-detector";
-import './HotPricesSlider.scss'
-import GadgetCard from "../GadgetCard/gadgetCard";
+import './MiniSlider.scss'
+import GadgetCard from "../GadgetCard/GadgetCard";
 
 type Props = {
-  hotPriceGadgets: Gadget[];
+  gadgets: Gadget[];
+  name: string;
 }
 
-const HotPricesSlider: React.FC<Props> = ({hotPriceGadgets}) => {
+const MiniSlider: React.FC<Props> = ({gadgets, name}) => {
   const [gadgetIndex, setGadgetIndex] = useState(0);
   const [gadgetOnPage, setGadgetOnPage] = useState(4);
 
@@ -19,7 +20,7 @@ const HotPricesSlider: React.FC<Props> = ({hotPriceGadgets}) => {
   };
 
   const handleSwitchToNext = () => {
-    if (gadgetIndex !== hotPriceGadgets.length - 4) {
+    if (gadgetIndex !== gadgets.length - 4) {
       setGadgetIndex(gadgetIndex + 1)
     }
   };
@@ -40,7 +41,7 @@ const HotPricesSlider: React.FC<Props> = ({hotPriceGadgets}) => {
 
       <div className="gadgetsSlider__header">
         <h2 className="gadgetsSlider__article">
-          Hot prices
+          {name}
         </h2>
 
         <div className="gadgetsSlider__buttons">
@@ -58,10 +59,10 @@ const HotPricesSlider: React.FC<Props> = ({hotPriceGadgets}) => {
           <button
             id="nextGadget"
             type="button"
-            className={classNames('gadgetsSlider__button', { disabled: gadgetIndex === hotPriceGadgets.length - gadgetOnPage })}
+            className={classNames('gadgetsSlider__button', { disabled: gadgetIndex === gadgets.length - gadgetOnPage })}
             onClick={handleSwitchToNext}
           >
-            {gadgetIndex === hotPriceGadgets.length - gadgetOnPage
+            {gadgetIndex === gadgets.length - gadgetOnPage
               ? <img src="./img/phones/arrowRight.svg" alt="next" />
               : <img src="./img/phones/arrowRightActive.svg" alt="next" />}
           </button>
@@ -80,7 +81,7 @@ const HotPricesSlider: React.FC<Props> = ({hotPriceGadgets}) => {
               transition: `transform ${800}ms`,
             }}
           >
-            {hotPriceGadgets.map((gadget: Gadget) => (
+            {gadgets.map((gadget: Gadget) => (
               <li key={gadget.id}>
                 <GadgetCard gadget={gadget} />
               </li>
@@ -92,4 +93,4 @@ const HotPricesSlider: React.FC<Props> = ({hotPriceGadgets}) => {
   )
 };
 
-export default HotPricesSlider;
+export default MiniSlider;

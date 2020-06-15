@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import classNames from 'classnames';
-import './homeSlider.scss';
+import './HomeSlider.scss';
 import ReactResizeDetector from 'react-resize-detector';
 
 const HomeSlider = () => {
