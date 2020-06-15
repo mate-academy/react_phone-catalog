@@ -16,7 +16,6 @@ import productReducer from './product';
 export const getPage = (state: RootState) => state.pagination.page;
 export const getPerPage = (state: RootState) => state.pagination.perPage;
 export const getSortField = (state: RootState) => state.sort;
-// export const getLoading = (state: RootState) => state.loading;
 export const getQuery = (state: RootState) => state.query;
 export const getQuantity = (
   state: RootState,

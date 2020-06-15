@@ -39,20 +39,23 @@ export const PhonesPage = () => {
       </div>
       {isLoaded ? <Loader />
         : (
-          <div className="container">
-            <section className="PhonesPage__list">
-              {phones.map((phone: Products) => (
-                <PhoneCard key={phone.age} phone={phone} />
-              ))}
-            </section>
-          </div>
+          <section className="section">
+            <div className="container">
+              <section className="PhonesPage__list">
+                {phones.map((phone: Products) => (
+                  <PhoneCard key={phone.age} phone={phone} />
+                ))}
+              </section>
+            </div>
+            <div>
+              {
+                phonesQuatnity > perPage
+          && <Pagination pageNumbers={pageNumbers} />
+              }
+            </div>
+          </section>
         )}
-      <div>
-        {
-          phonesQuatnity > perPage
-        && <Pagination pageNumbers={pageNumbers} />
-        }
-      </div>
+
     </>
   );
 };

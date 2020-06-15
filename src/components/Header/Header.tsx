@@ -10,7 +10,6 @@ export const Header = () => {
   const favourites = useSelector(getFavourites);
   const cartItems = useSelector(getCartItems);
 
-
   return (
     <header className="header">
       <div className="header__left">
@@ -31,7 +30,7 @@ export const Header = () => {
             type="button"
             className="header__button"
           >
-            <img src="./img/heart.svg" alt="heart_icon" className="" />
+            <img src="./img/heart.svg" alt="heart_icon" />
             {favourites.length > 0
             && <span className="header__counter">{favourites.length}</span>}
           </button>
@@ -41,7 +40,7 @@ export const Header = () => {
             type="button"
             className="header__button"
           >
-            <img src="./img/shopingBag.svg" alt="shopping_icon" className="" />
+            <img src="./img/shopingBag.svg" alt="shopping_icon" />
             {cartItems.length > 0
             && <span className="header__counter">{cartItems.length}</span>}
           </button>

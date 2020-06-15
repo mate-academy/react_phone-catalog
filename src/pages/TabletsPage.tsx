@@ -38,13 +38,15 @@ export const TabletsPage = () => {
       </div>
       {isLoaded ? <Loader />
         : (
-          <div className="container">
-            <section className="TabletsPage__list">
-              {tablets.map((phone: Products) => (
-                <PhoneCard key={phone.age} phone={phone} />
-              ))}
-            </section>
-          </div>
+          <section className="section">
+            <div className="container">
+              <section className="TabletsPage__list">
+                {tablets.map((phone: Products) => (
+                  <PhoneCard key={phone.age} phone={phone} />
+                ))}
+              </section>
+            </div>
+          </section>
         )}
       <div>
         {
