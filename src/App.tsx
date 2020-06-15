@@ -1,5 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import * as api from './provider/api';
+// import { getGoods } from './store';
+import { initGood } from './store/good';
+
 import Header from './components/header/Header';
 
 import Home from './components/home/Home';
@@ -13,7 +18,27 @@ import Footer from './components/footer/Footer';
 
 import './App.scss';
 
+const getAppData = async (): Promise<Good[]> => {
+  const goodsFromServer = await api.getGoods();
+
+  return goodsFromServer;
+};
+
 const App = () => {
+  const dispatch = useDispatch();
+  // const goods = useSelector(getGoods);
+
+  const initData = () => {
+    getAppData()
+      .then(goodsFromServer => {
+        dispatch(initGood(goodsFromServer));
+      });
+  };
+
+  useEffect(() => {
+    initData();
+  }, []);
+
   return (
     <div className="App">
       <Header />

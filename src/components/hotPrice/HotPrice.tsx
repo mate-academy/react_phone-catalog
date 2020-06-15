@@ -1,13 +1,12 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import './HotPrice.scss';
 
 import { Card } from '../card/Card';
-import { IGood } from '../../provider/dataFromApi';
+import { getGoods } from '../../store';
 
-import "./HotPrice.scss";
-
-type Props = { goods: IGood[] }
-
-const HotPrice: React.FC<Props> = ({ goods }) => {
+const HotPrice = () => {
+  const goods = useSelector(getGoods);
 
   return (
     <div>
@@ -17,11 +16,10 @@ const HotPrice: React.FC<Props> = ({ goods }) => {
         <button type="button" className="btn-next">next</button>
       </div>
       <div className="Card">
-      <ul className="Card__list">
-        {goods.map(good =>
-          < Card good={good} />)}
-      </ul>
-    </div>
+        <ul className="Card__list">
+          {goods.filter(good => good.discount !== 0).map(good => <Card good={good} />)}
+        </ul>
+      </div>
     </div>
   );
 };

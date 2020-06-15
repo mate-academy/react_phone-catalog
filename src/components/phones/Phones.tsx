@@ -1,23 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import { IGood, getGoodsByCategory } from '../../provider/dataFromApi';
+import React from 'react';
+
+import { useSelector } from 'react-redux';
 import { GoodList } from '../goodList/GoodList';
 
-type Props = { phones: IGood[]};
+import { getPhones } from '../../store';
+
+type Props = { phones: Good[]};
 
 const Phones: React.FC<Props> = () => {
-  const [phones, setPhones] = useState<IGood[]>([]);
-
-  useEffect(() => {
-    getGoodsByCategory('phone')
-      .then(data => {
-        setPhones(data);
-      });
-  }, []);
+  const goods = useSelector(getPhones);
 
   return (
     <>
       <h1>Phones</h1>
-      <GoodList goods={phones} />
+      <GoodList goods={goods} />
     </>
   );
 };
