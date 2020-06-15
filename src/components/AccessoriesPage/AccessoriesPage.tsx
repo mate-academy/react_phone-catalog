@@ -47,7 +47,7 @@ const AccessoriesPage: React.FC<Props> = () => {
         ) : (
           <div className="AccessoriesPage__notFound">
             <p className="AccessoriesPage__notFound--title">Sorry, accessories not found</p>
-            <img className="AccessoriesPage__notFound--img" src="../img/notFound.png" alt="" />
+            <img className="AccessoriesPage__notFound--img" src="./img/notFound.png" alt="" />
           </div>
         )}
 
