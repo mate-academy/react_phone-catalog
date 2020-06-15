@@ -3,9 +3,8 @@
 .nav {
 
   &__list {
-    list-style: none;
     display: flex;
-    justify-content: space-between;
+    list-style: none;
     text-transform: uppercase;
 
   }
@@ -20,9 +19,8 @@
 
   &__item--active {
     position: relative;
-    padding-bottom: 25px;
+    padding-bottom: 20px;
     color: $primary-color;
-    // border-bottom: 3px solid $primary-color;
 
     &:after {
       position: absolute;
