@@ -1,5 +1,5 @@
 import React from 'react';
-import HotPricesSlider from "../hotPricesSlider/hotPricesSlider";
+import MiniSlider from "../MiniSlider/MiniSlider";
 
 type Props = {
   gadgets: Gadget[];
@@ -11,7 +11,7 @@ const HotPrices: React.FC<Props> = ({ gadgets }) => {
     .sort((a: Gadget, b: Gadget) => (b.discount * b.price / 100) - (a.discount * a.price / 100));
 
   return (
-    <HotPricesSlider hotPriceGadgets={hotPriceGadgets}/>
+    <MiniSlider gadgets={hotPriceGadgets} name="Hot prices"/>
   )
 };
 
