@@ -42,6 +42,7 @@ const App: React.FC = () => {
           <Route path="/favorites" exact component={FavoritesPage} />
           <Route path="/cart" exact component={CartPage} />
           <Route path="/checkout" exact component={Checkout} />
+
           <Route component={NotFoundPage} />
 
           <Route path="/:section/:productId?" exact component={ProductDetailsPage} />
@@ -51,5 +52,6 @@ const App: React.FC = () => {
     </div>
   );
 };
+
 
 export default App;

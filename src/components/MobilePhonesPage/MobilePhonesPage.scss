@@ -3,7 +3,7 @@
 
 .PhonesContainer {
   max-width: 1136px;
-  margin: 80px auto 24px;
+  margin: 0 auto 24px;
   padding: 0 15px;
 
   &__Inner {
@@ -11,8 +11,6 @@
     grid-gap: 16px;
     grid-template-columns: repeat(4, 272px);
     justify-content: center;
-    margin-top: 50px;
-    margin-bottom: 150px;
   }
 }
 
@@ -31,7 +29,7 @@
     width: 320px;
     display: flex;
     justify-content: space-between;
-    margin-top: 60px;
-    margin-bottom: 150px;
+    margin-top: 40px;
+    margin-bottom: 24px;
   }
 }
