@@ -7,6 +7,10 @@
 
 .Accessories {
 
+  &__Title {
+    opacity: 0.5;
+  }
+
   &__noGoods {
     margin: 0 auto;
     display: flex;
@@ -16,5 +20,6 @@
   &__Img {
     width: 300px;
     margin: 0 auto;
+    opacity: 0.5;
   }
 }

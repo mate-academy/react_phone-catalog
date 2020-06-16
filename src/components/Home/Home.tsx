@@ -3,6 +3,7 @@ import ProductsSlider from '../ProductsSlider/ProductsSlider';
 import MainSlider from '../MainSlider/MainSlider';
 import { ShopByCategory } from '../ShopByCategory/ShopByCategory';
 import { getProducts } from '../../helpers/api';
+import Loading from '../Loading/Loading';
 
 export const Home: React.FC = () => {
   const [data, setData] = useState<Product[]>([]);
@@ -47,7 +48,10 @@ export const Home: React.FC = () => {
       {isLoading
         && (
           <div className="Loading">
-            Loading...
+            <Loading
+              isLoaded={isLoaded}
+              errorMessage={errorMessage}
+            />
           </div>
         )}
       {isLoaded && (

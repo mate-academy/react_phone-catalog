@@ -3,6 +3,7 @@ import { getProducts } from '../../helpers/api';
 import { Card } from '../Card/Card';
 import './TabletsPage.scss';
 import { Breadcrumbs } from '../Breadcrumbs/Breadcrumbs';
+import Loading from '../Loading/Loading';
 
 export const TabletsPage: React.FC = () => {
   const [tablets, setTablets] = useState<Product[]>([]);
@@ -35,7 +36,10 @@ export const TabletsPage: React.FC = () => {
       {isLoading
         && (
           <div className="Loading">
-            Loading...
+            <Loading
+              isLoaded={isLoaded}
+              errorMessage={errorMessage}
+            />
           </div>
         )}
       {isLoaded && (
