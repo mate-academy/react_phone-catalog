@@ -32,7 +32,7 @@ export const CardPage = () => {
                     Back to shoping
                   </button>
                 </Link>
-                <img src="/img/no-cart-items.jpg" alt="empty Cart" />
+                <img src="./img/no-cart-items.jpg" alt="empty Cart" />
               </div>
             )
             : (
