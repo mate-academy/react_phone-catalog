@@ -3,7 +3,7 @@ import CN from "classnames";
 import { Card } from '../card/Card';
 import { IGood } from '../../provider/dataFromApi';
 
-import "./HotPrice.scss";
+import "./Brands.scss";
 
 type Props = { goods: IGood[]; wigthSlides: number }
 

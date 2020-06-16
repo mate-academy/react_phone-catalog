@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { IGood } from '../../provider/dataFromApi';
 
+import './Card.scss';
+
 type Props = { good: IGood }
 
 export const Card: React.FC<Props> = ({good}) => {
