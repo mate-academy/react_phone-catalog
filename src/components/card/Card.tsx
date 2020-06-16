@@ -1,17 +1,24 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { IGood } from '../../provider/dataFromApi';
+
 
 import './Card.scss';
 
-type Props = { good: IGood }
 
-export const Card: React.FC<Props> = ({good}) => {
-  const { id, name, imageUrl, price, discount, screen, capacity, ram } = good;
+
+type Props = { good: Good };
+
+export const Card: React.FC<Props> = ({ good }) => {
+  const {
+    id, name, imageUrl, price, discount, screen, capacity, ram,
+  } = good;
+
+
   return (
     <li
       className="Card__item"
-      key={id} >
+      key={id}
+    >
       <div>
         <img
           src={`./${imageUrl}`}
@@ -21,8 +28,16 @@ export const Card: React.FC<Props> = ({good}) => {
 
         <h3 className="Card__title">{name}</h3>
         <div className="price__wrapper">
-          <span className="Card__discount"> $ {`${price - (price * discount / 100)}`}</span>
-          <span className="Card__price"> $ {price}</span>
+          <span className="Card__discount">
+            {' '}
+            $
+            {`${price - ((price * discount) / 100)}`}
+          </span>
+          <span className="Card__price">
+            {' '}
+            $
+            {price}
+          </span>
         </div>
         <ul className="Card__parameters">
           <li className="parameters__item">
@@ -39,21 +54,15 @@ export const Card: React.FC<Props> = ({good}) => {
           </li>
         </ul>
       </div>
-      <div className="cartFavourites__wrapper">
-        <Link
-          to="#"
-          className="btn__addToCart-link"
+      <div className="cartFavorites__wrapper">
+        <button
+          type="button"
+          className="btn__addToCart btn__addToCart-link"
         >
-          <button className="btn__addToCart" >Add to cart</button>
-        </Link>
-        <Link
-          to="#"
-          className="btn__favourites-link"
-        >
-        </Link>
+          Add to cart
+        </button>
+        <button type="button" className="btn__Favorites-link" />
       </div>
     </li>
-  )
-
-}
-
+  );
+};
