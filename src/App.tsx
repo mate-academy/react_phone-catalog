@@ -14,6 +14,7 @@ import FavoritesPage from './components/FavoritesPage/FavoritesPage';
 import CartPage from './components/CartPage/CartPage ';
 import Checkout from './components/Checkout/Checkout';
 import { getFavorites, getItems } from './store/index';
+import { NotFoundPage } from './components/NotFoundPage/NotFoundPage';
 
 const App: React.FC = () => {
   const favoriteProducts = useSelector(getFavorites);
@@ -41,6 +42,7 @@ const App: React.FC = () => {
           <Route path="/favorites" exact component={FavoritesPage} />
           <Route path="/cart" exact component={CartPage} />
           <Route path="/checkout" exact component={Checkout} />
+          <Route component={NotFoundPage} />
 
 
           <Route path="/:section/:productId?" exact component={ProductDetailsPage} />
