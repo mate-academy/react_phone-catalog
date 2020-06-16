@@ -1,9 +1,8 @@
 import React from 'react';
 
 import Navigation from './navigation/Navigation';
-import Favorites from '../favorites/Favorites';
-import Cart from '../cart/Cart';
-
+import FavoritesLink from '../favorites/Favorites';
+import CartLink from '../cart/Cart';
 
 import './Header.scss';
 
@@ -13,8 +12,8 @@ const Header = () => {
       <div className="Header">
         <Navigation />
         <div className="Header__actions">
-          <Favorites />
-          <Cart />
+          <FavoritesLink />
+          <CartLink />
         </div>
       </div>
     </>

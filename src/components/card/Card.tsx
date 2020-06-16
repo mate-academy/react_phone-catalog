@@ -1,8 +1,7 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { IGood } from '../../provider/dataFromApi';
 
-type Props = { good: IGood };
+type Props = { good: Good };
 
 export const Card: React.FC<Props> = ({ good }) => {
   const {
@@ -26,7 +25,7 @@ export const Card: React.FC<Props> = ({ good }) => {
           <span className="Card__discount">
             {' '}
             $
-            {`${price - (price * discount / 100)}`}
+            {`${price - ((price * discount) / 100)}`}
           </span>
           <span className="Card__price">
             {' '}
@@ -50,22 +49,13 @@ export const Card: React.FC<Props> = ({ good }) => {
         </ul>
       </div>
       <div className="cartFavorites__wrapper">
-
-        <Link
-          to="#"
-          className="btn__addToCart-link"
+        <button
+          type="button"
+          className="btn__addToCart btn__addToCart-link"
         >
-          <button
-            type="button"
-            className="btn__addToCart"
-          >
-            Add to cart
-          </button>
-        </Link>
-        <Link
-          to="#"
-          className="btn__Favorites-link"
-        />
+          Add to cart
+        </button>
+        <button type="button" className="btn__Favorites-link" />
       </div>
     </li>
   );
