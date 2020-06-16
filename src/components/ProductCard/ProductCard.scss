@@ -1,0 +1,162 @@
+.product__card--container {
+  margin-right: 16px;
+  background: #fff;
+  border: 1px solid #e2e6e9;
+}
+
+.product__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 270px;
+
+  &--box {
+    width: 224px;
+    margin-top: 32px;
+  }
+
+  &__img {
+    width: 208px;
+    height: 208px;
+    transition: 0.5s;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+ 
+
+  &__img--box {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 24px;
+    // overflow: hidden;
+  }
+
+  &--phone--model {
+    position: relative;
+    margin-bottom: 6.5px;
+    height: 42px;
+
+    font-family: "Mont-SemiBold",sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+
+    color: #313237;
+  }
+
+  &__price{
+    display: flex;
+    height: 31px;
+    position: relative;
+    margin-bottom: 16px;
+
+    &--new{
+      font-family: Mont;
+      font-weight: bold;
+      font-size: 22px;
+      line-height: 28px;
+      color: #313237;
+      margin-right: 8px;
+    }
+
+    &--old {
+      font-family: "Mont-SemiBold",sans-serif;
+      font-weight: 500;
+      font-size: 22px;
+      line-height: 28px;
+      text-decoration-line: line-through;
+      color: #89939A;
+    }
+  }
+
+  &__price::after {
+    content: "";
+    display: block;
+    position: absolute;
+    height: 1px;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    background: #E2E6E9;
+  }
+
+  .technical__specifications {
+    margin-bottom: 16px;
+
+    &--box {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px ;
+    }
+
+    &--name {
+      font-family: "Mont-SemiBold",sans-serif;
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 15px;
+      color: #89939A;
+    }
+
+    &--spec {
+      font-family: "Mont-SemiBold",sans-serif;
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 15px;
+      text-align: right;
+
+      color: #313237;
+    }
+  }
+
+  &__button{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+
+    &--add {
+      width: 176px;
+      height: 40px;
+
+      background: #313237;
+      border: none;
+      color: white;
+      font-family: "Mont-SemiBold",sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 21px;
+      text-align: center;
+    }
+
+    &--add:hover {
+      background: #313237;
+      box-shadow: 0px 3px 13px rgba(23, 32, 49, 0.26);
+    }
+
+    &--favorite {
+      width: 40px;
+      height: 40px;
+      border: 1px solid #B4BDC4;
+      background-color: white;
+    }
+
+    &--favorite:hover {
+      border: 1px solid black;
+    }
+
+
+    &--add,
+    &--favorite {
+      outline: none;
+      cursor: pointer;
+    }
+
+
+  }
+
+
+  
+}

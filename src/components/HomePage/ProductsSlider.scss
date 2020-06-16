@@ -1,0 +1,64 @@
+.prices {
+  position: relative;
+  margin-bottom: 80px;
+
+  &__h1 {
+    font-family: "Mont-SemiBold",sans-serif;
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 41px;
+
+    letter-spacing: -0.01em;
+
+    color: #313237;
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+  
+  &__hot--list {
+    display: flex;
+    flex-direction: row;
+    transition: transform .5s;
+   
+    &--box {
+      width: 1136px;
+      overflow: hidden;
+      transition: translate .5s;
+    }
+  }
+
+  &__hot--card {
+    height: 100%;
+    width: 272;
+    border: 1px solid red;
+  }
+
+  &__goRight,
+  &__goLeft {
+    height: 32px;
+    width: 32px;
+
+    background-color: white;
+    border: 1px solid #B4BDC4;
+    box-sizing: border-box;
+    outline: none;
+
+    &:hover {
+      border: 1px solid #313237;
+      cursor: pointer;
+    }
+
+    &--disabled {
+      opacity: .3;
+    }
+  }
+
+  &__goRight {
+    margin-left: 16px;
+  }
+  
+}
