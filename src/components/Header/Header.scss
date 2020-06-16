@@ -85,7 +85,7 @@
     opacity: 0;
   }
 
-  &__Link.nav__link--active:active {
+  &__Link.nav__link--active::after {
     content: "";
     border-bottom: solid 3px $colorPrimary;
     position: absolute;
