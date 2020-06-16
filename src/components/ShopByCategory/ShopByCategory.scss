@@ -22,6 +22,7 @@
     width: 368px;
     height: 368px;
     background-color: #fcdbc1;
+    overflow: hidden;
   }
 
   &__Tablets {
@@ -36,6 +37,12 @@
     position: absolute;
     right: 0;
     bottom: 0;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.3s;
+    &:hover {
+      transform: scale(1.1);
+    }
   }
 
   &__Subtitle {

@@ -8,6 +8,8 @@
   border: 1px solid $colorElement;
   box-sizing: border-box;
   border-radius: 5px;
+  @include hover(box-shadow, 0 3px 13px rgba(23,32,49,0.26));
+
 }
 
 .Card {
@@ -69,54 +71,12 @@
     justify-content: space-between;
   }
 
-  &__ButtonCart {
+  &__ButtonFavor {
     height: 40px;
-    width: 176px;
-    border: none;
-    background: $colorPrimary;
-    color: #fff;
-    transition: 0.3s;
-    cursor: pointer;
-
-    &--isInCart {
-      color: $colorGreen;
-      border: $borderElement;
-      background-color: #fff;
-    }
-
-    &:hover {
-      box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
-    }
-
+    width: 40px;
+    background-color: #fff;
+    border: solid 1px $colorIcons;
+    @include iconInButton(url(../../img/Icons/heart.svg));
+    @include hover(border, 1px solid $colorPrimary);
   }
-
-  // &__ButtonFavor {
-  //   height: 40px;
-  //   width: 40px;
-  //   background-color: #fff;
-  //   border: solid 1px $colorIcons;
-  //   @include iconInButton(url(../../img/Icons/heart.svg));
-  //   @include hover(border, 1px solid $colorPrimary);
-  // }
-
-}
-
-.ButtonFavor {
-  height: 40px;
-  width: 40px;
-  background-color: #fff;
-  border: solid 1px $colorIcons;
-  @include iconInButton(url(../../img/Icons/heart.svg));
-  @include hover(border, 1px solid $colorPrimary);
-
-  &__Input {
-    opacity: 0;
-    width: 100%;
-    height: 100%;
-  }
-}
-
-.ButtonFavor--isInFavorites {
-  @extend .ButtonFavor;
-  @include iconInButton(url(../../img/Icons/redHeart.svg));
 }

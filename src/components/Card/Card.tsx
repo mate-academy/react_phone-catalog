@@ -1,13 +1,8 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import './Card.scss';
 import { Link, useRouteMatch } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import cn from 'classnames/bind';
-
-import { setCart, removeFromCart } from '../../store/cart';
-import { getItems } from '../../store/index';
 import ButtonFavor from '../ButtonFavor/ButtonFavor';
-
+import ButtonAddToCart from '../ButtonAddToCart/ButtonAddToCart';
 
 type Props = {
   product: Product;
@@ -26,21 +21,6 @@ export const Card: React.FC<Props> = ({ product }) => {
   } = product;
 
   const { path } = useRouteMatch();
-  const dispatch = useDispatch();
-  const itemsCart = useSelector(getItems);
-
-  const isInCart = useMemo(() => (
-    itemsCart.some(itemCart => itemCart.product.id === product.id)
-  ), [itemsCart, product]);
-
-
-  const addToCart = (productCart: Product) => {
-    if (!isInCart) {
-      dispatch(setCart(productCart));
-    } else {
-      dispatch(removeFromCart(productCart));
-    }
-  };
 
   return (
     <div className="Wrap">
@@ -79,16 +59,7 @@ export const Card: React.FC<Props> = ({ product }) => {
             </div>
           </div>
           <div className="Card__ButtonWrap">
-            <button
-              type="button"
-              className={cn('Card__ButtonCart', {
-                'Card__ButtonCart--isInCart': isInCart,
-              })}
-              onClick={() => addToCart(product)}
-
-            >
-              {!isInCart ? 'Add to cart' : 'Remove from cart'}
-            </button>
+            <ButtonAddToCart product={product} />
             <ButtonFavor product={product} />
           </div>
         </div>

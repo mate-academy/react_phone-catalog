@@ -1,0 +1,24 @@
+@import "../../styles/reset";
+@import "../../styles/utils/mixins";
+@import "../../styles/utils/vars";
+
+.ButtonCart {
+  height: 40px;
+  width: 176px;
+  border: none;
+  background: $colorPrimary;
+  color: #fff;
+  transition: 0.3s;
+  cursor: pointer;
+  @include hover(box-shadow, 0 3px 13px rgba(23, 32, 49, 0.26));
+
+  &--isInCart {
+    color: $colorGreen;
+    border: $borderElement;
+    background-color: #fff;
+  }
+}
+
+.ButtonCart--width {
+  width: 263px;
+}

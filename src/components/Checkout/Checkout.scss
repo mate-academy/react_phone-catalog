@@ -13,7 +13,9 @@
     height: 48px;
     margin: 24px auto;
     background-color: $colorPrimary;
+    @include hover(box-shadow, 0 3px 13px rgba(23, 32, 49, 0.26));
   }
+  
   &__Link {
     display: block;
     width: 100%;

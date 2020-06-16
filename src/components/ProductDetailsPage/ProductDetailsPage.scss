@@ -194,24 +194,3 @@
   display: flex;
   justify-content: space-between;
 }
-
-.Card__ButtonCart--width {
-  height: 40px;
-  width: 263px;
-  border: none;
-  background: $colorPrimary;
-  color: #fff;
-  transition: 0.3s;
-  cursor: pointer;
-
-  &:hover {
-    box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
-  }
-}
-
-.Card__ButtonFavor {
-  height: 40px;
-  width: 40px;
-  border: solid 1px $colorIcons;
-  cursor: pointer;
-}

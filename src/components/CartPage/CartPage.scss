@@ -50,9 +50,11 @@
   }
 
   &__TitleProduct {
-    margin: 0 0 0 2 rem;
+    width: 300px;
   }
-
+  &__Prise {
+    width: 100px;
+  }
   &__Quantity-Containar {
     display: flex;
     flex-direction: row;
@@ -94,6 +96,8 @@
 .Prise {
   @include H2;
   line-height: 140%;
+  display: block;
+  text-align: right;
 }
 
 .OldPrise {
@@ -101,6 +105,7 @@
   color: $colorSecondery;
   font-size: 16px;
   text-align: right;
+  display: block;
 }
 
 .TotalCost {
@@ -125,6 +130,7 @@
     padding-bottom: 24px;
     border-bottom: $borderElement;
   }
+
   &__Btn {
     width: 320px;
     height: 48px;
@@ -134,7 +140,9 @@
     padding: 14px au;
     display: block;
     background-color: $colorPrimary;
+    @include hover(box-shadow, 0 3px 13px rgba(23, 32, 49, 0.26));
   }
+
   &__Link {
     display: block;
     width: 100%;
