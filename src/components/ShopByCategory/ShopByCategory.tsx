@@ -5,26 +5,26 @@ import './ShopByCategory.scss';
 import { getProducts } from '../../helpers/api';
 
 export const ShopByCategory = () => {
-  const [data, setData] = useState<Slide[]>([]);
-  const [phones, setPhones] = useState<Slide[]>([]);
-  const [tablets, setTablets] = useState<Slide[]>([]);
-  const [accessories, setAccessories] = useState<Slide[]>([]);
+  const [data, setData] = useState<Product[]>([]);
+  const [phones, setPhones] = useState<Product[]>([]);
+  const [tablets, setTablets] = useState<Product[]>([]);
+  const [accessories, setAccessories] = useState<Product[]>([]);
 
   useEffect(() => {
     getProducts().then(dataServer => setData(dataServer));
   }, []);
 
   useEffect(() => {
-    setPhones(data.filter((product: Slide) => product.type === 'phone'));
+    setPhones(data.filter((product: Product) => product.type === 'phone'));
   }, [data]);
 
   useEffect(() => {
-    setTablets(data.filter((product: Slide) => product.type === 'tablet'));
+    setTablets(data.filter((product: Product) => product.type === 'tablet'));
   }, [data]);
 
   useEffect(() => {
     setAccessories(data
-      .filter((product: Slide) => (product.type === 'accessory')));
+      .filter((product: Product) => (product.type === 'accessory')));
   }, [data]);
 
   return (

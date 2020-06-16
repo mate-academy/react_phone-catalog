@@ -10,6 +10,7 @@ const Search = () => {
   const searchParams = new URLSearchParams(location.search);
   const query = searchParams.get('query') || '';
   const [visibleQuery, setVisibleQuery] = useState(query);
+  const placeholderItem = location.pathname.slice(1);
 
   useEffect(() => {
     setVisibleQuery(query);
@@ -39,7 +40,7 @@ const Search = () => {
       <input
         type="text"
         className="Search"
-        placeholder="Search in phones..."
+        placeholder={`Search in ${placeholderItem}...`}
         value={visibleQuery}
         onChange={({ target }) => {
           setVisibleQuery(target.value);
@@ -48,7 +49,7 @@ const Search = () => {
       />
       <button
         type="button"
-        className={cn('Search__Btn', { 'Search__Btn--clear': query })}
+        className={cn('Search__Btn', { 'Search__Btn--clear': visibleQuery })}
         aria-label="Mute text"
         onClick={clearSearch}
       />

@@ -105,6 +105,11 @@
   @include iconInButton(url("../../img/Icons/heart.svg"));
 }
 
+.Cart {
+  position: relative;
+  @include iconInButton(url("../../img/Icons/shoppingBag.svg"));
+}
+
 .Counter {
   width: 14px;
   height: 14px;

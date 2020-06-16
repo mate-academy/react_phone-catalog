@@ -4,11 +4,13 @@ import { Link, useRouteMatch } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import cn from 'classnames/bind';
 
-import { setProduct, removeProduct } from '../../store/favorites';
-import { getFavorites } from '../../store/index';
+import { setCart, removeFromCart } from '../../store/cart';
+import { getItems } from '../../store/index';
+import ButtonFavor from '../ButtonFavor/ButtonFavor';
+
 
 type Props = {
-  product: Slide;
+  product: Product;
 };
 
 export const Card: React.FC<Props> = ({ product }) => {
@@ -25,24 +27,20 @@ export const Card: React.FC<Props> = ({ product }) => {
 
   const { path } = useRouteMatch();
   const dispatch = useDispatch();
-  const favorites = useSelector(getFavorites);
+  const itemsCart = useSelector(getItems);
+
+  const isInCart = useMemo(() => (
+    itemsCart.some(itemCart => itemCart.product.id === product.id)
+  ), [itemsCart, product]);
 
 
-  const addToFavorites = (
-    e: React.ChangeEvent<HTMLInputElement>,
-  ) => {
-    if (e.target.checked) {
-      dispatch(setProduct(product));
+  const addToCart = (productCart: Product) => {
+    if (!isInCart) {
+      dispatch(setCart(productCart));
     } else {
-      dispatch(removeProduct(product.id));
+      dispatch(removeFromCart(productCart));
     }
   };
-
-  // useCallback(addToFavorites, []);
-
-  const isInFavorites = useMemo(() => (
-    favorites.some(productFav => productFav.id === product.id)
-  ), [favorites, product]);
 
   return (
     <div className="Wrap">
@@ -83,25 +81,15 @@ export const Card: React.FC<Props> = ({ product }) => {
           <div className="Card__ButtonWrap">
             <button
               type="button"
-              className="Card__ButtonCart"
+              className={cn('Card__ButtonCart', {
+                'Card__ButtonCart--isInCart': isInCart,
+              })}
+              onClick={() => addToCart(product)}
+
             >
-              Add to cart
+              {!isInCart ? 'Add to cart' : 'Remove from cart'}
             </button>
-            <label
-              className={cn('ButtonFavor',
-                {
-                  'ButtonFavor--isInFavorites': isInFavorites,
-                })}
-              htmlFor={`ButtonFavor__${product.id}`}
-            >
-              <input
-                type="checkbox"
-                id={`ButtonFavor__${product.id}`}
-                checked={isInFavorites}
-                className="ButtonFavor__Input"
-                onChange={(e) => addToFavorites(e)}
-              />
-            </label>
+            <ButtonFavor product={product} />
           </div>
         </div>
       </article>

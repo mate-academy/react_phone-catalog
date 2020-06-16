@@ -6,7 +6,7 @@ import { Breadcrumbs } from '../Breadcrumbs/Breadcrumbs';
 import Loading from '../Loading/Loading';
 
 export const AccessoriesPage: React.FC = () => {
-  const [accessories, setAccessories] = useState<Slide[]>([]);
+  const [accessories, setAccessories] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isLoaded, setIsLoaded] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
@@ -18,7 +18,7 @@ export const AccessoriesPage: React.FC = () => {
         const loadedProduct = await getProducts();
 
         setAccessories(loadedProduct
-          .filter((product: Slide) => product.type === 'accessories'));
+          .filter((product: Product) => product.type === 'accessories'));
         setIsLoaded(true);
       } catch (error) {
         setErrorMessage('Oops! Reload page, please');

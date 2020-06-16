@@ -6,9 +6,9 @@ import { getProducts } from '../../helpers/api';
 import Loading from '../Loading/Loading';
 
 export const Home: React.FC = () => {
-  const [data, setData] = useState<Slide[]>([]);
-  const [hotProducts, setHotProducts] = useState<Slide[]>([]);
-  const [brandProducts, setBrandProducts] = useState<Slide[]>([]);
+  const [data, setData] = useState<Product[]>([]);
+  const [hotProducts, setHotProducts] = useState<Product[]>([]);
+  const [brandProducts, setBrandProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isLoaded, setIsLoaded] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
@@ -32,14 +32,14 @@ export const Home: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    setHotProducts(data.filter((product: Slide) => product.discount > 0)
-      .sort((a: Slide, b: Slide) => a.discount - b.discount));
+    setHotProducts(data.filter((product: Product) => product.discount > 0)
+      .sort((a: Product, b: Product) => a.discount - b.discount));
   }, [data]);
 
   useEffect(() => {
     setBrandProducts(data
-      .filter((product: Slide) => product.discount === 0)
-      .sort((a: Slide, b: Slide) => a.discount - b.discount));
+      .filter((product: Product) => product.discount === 0)
+      .sort((a: Product, b: Product) => a.discount - b.discount));
   }, [data]);
 
   return (
