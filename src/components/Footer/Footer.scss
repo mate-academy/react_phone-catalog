@@ -2,10 +2,10 @@
 @import "../../styles/utils/vars";
 
 .Footer {
+  margin-top: 84px;
   height: 96px;
   width: 100%;
   background-color: #fff;
-  position: fixed;
   bottom: 0;
   border-top: $borderElement;
   box-sizing: border-box;
@@ -28,8 +28,12 @@
   }
 }
 
-.Label-Btn {
+.Label__Btn-Text {
+  display: block;
+  float: left;
   margin-right: 16px;
+  margin-top: 10px;
+  cursor: pointer;
 }
 
 .Btn__Back--top {
@@ -44,15 +48,4 @@
 .Logo {
   width: 40px;
   height: 11px;
-}
-
-.Nav__Link--footer::before {
-  content: "";
-  border-bottom: solid 3px  #313237;
-  position: absolute;
-  top: 74px;
-  left: 32px;
-  right: 32px;
-  transition: opacity 0.3s ease;
-  opacity: 0;
 }

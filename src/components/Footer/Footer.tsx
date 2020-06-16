@@ -1,5 +1,6 @@
 import React from 'react';
 import './Footer.scss';
+import { Link } from 'react-router-dom';
 
 const navListFooter = [
   {
@@ -19,9 +20,9 @@ const navListFooter = [
 const Footer = () => (
   <footer className="Footer">
     <div className="Footer__Container">
-      <div className="Footer__Logo Logo">
+      <Link to="/" className="Footer__Logo Logo">
         <img src="./img/logo/LOGO.svg" alt="logo" />
-      </div>
+      </Link>
       <nav className="Footer__Nav Nav">
         <ul className="Nav__List">
           {navListFooter.map(item => (
@@ -32,15 +33,18 @@ const Footer = () => (
         </ul>
       </nav>
       <div className="Footer__Button">
-        <span className="Label-Btn">Back to top</span>
-        <button
-          type="button"
-          className="Btn__Back--top"
-          aria-label="Mute volume"
-          onClick={() => (
-            window.scrollTo({ top: 0, behavior: 'smooth' })
-          )}
-        />
+        <label className="Label__Btn" htmlFor="username">
+          <span className="Label__Btn-Text">Back to top</span>
+          <input
+            type="button"
+            id="username"
+            className="Btn__Back--top"
+            aria-label="Mute volume"
+            onClick={() => (
+              window.scrollTo({ top: 0, behavior: 'smooth' })
+            )}
+          />
+        </label>
       </div>
     </div>
   </footer>

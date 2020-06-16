@@ -8,6 +8,7 @@ import { PRODUCTS_INFO, PRODUCTS_SPECS } from '../../helpers/config';
 import ProductsSlider from '../ProductsSlider/ProductsSlider';
 import { Breadcrumbs } from '../Breadcrumbs/Breadcrumbs';
 import { GoBack } from '../GoBack/GoBack';
+import Loading from '../Loading/Loading';
 
 export const ProductDetailsPage: React.FC = () => {
   const [products, setProducts] = useState<Slide[]>([]);
@@ -125,11 +126,14 @@ export const ProductDetailsPage: React.FC = () => {
       <section className="ProdactPage__Section">
         {errorMessage && <div>{errorMessage}</div>}
         {isLoading
-        && (
-          <div className="Loading">
-            Loading...
-          </div>
-        )}
+          && (
+            <div className="Loading">
+              <Loading
+                isLoaded={isLoaded}
+                errorMessage={errorMessage}
+              />
+            </div>
+          )}
         {isLoading && isLoaded && ''}
         {productDetails && (
           <article className="ProdactPage">

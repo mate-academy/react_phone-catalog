@@ -3,6 +3,7 @@ import { getProducts } from '../../helpers/api';
 import { Card } from '../Card/Card';
 import './AccessoriesPage.scss';
 import { Breadcrumbs } from '../Breadcrumbs/Breadcrumbs';
+import Loading from '../Loading/Loading';
 
 export const AccessoriesPage: React.FC = () => {
   const [accessories, setAccessories] = useState<Slide[]>([]);
@@ -35,7 +36,10 @@ export const AccessoriesPage: React.FC = () => {
       {isLoading
         && (
           <div className="Loading">
-            Loading...
+            <Loading
+              isLoaded={isLoaded}
+              errorMessage={errorMessage}
+            />
           </div>
         )}
       {isLoaded && (
@@ -53,7 +57,7 @@ export const AccessoriesPage: React.FC = () => {
               className="Accessories__Img"
             />
           </div>
-          <div className="Accessories__Img">
+          <div className="AccessoriesWrap">
             {accessories.map(product => (
               <Card key={product.id} product={product} />
             ))}

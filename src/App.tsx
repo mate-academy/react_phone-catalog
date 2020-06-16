@@ -14,7 +14,7 @@ import FavoritesPage from './components/FavoritesPage/FavoritesPage';
 const App: React.FC = () => (
   <div className="App">
     <Header />
-    <main>
+    <main className="main">
       <Switch>
         <Redirect exact from="/" to="/home" />
         <Route path="/home" exact component={Home} />

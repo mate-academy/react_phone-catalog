@@ -18,3 +18,8 @@ body {
   font-family: "Mont", sans-serif;
   @include bodyText;
 }
+
+.main {
+  min-height: calc(100vh - 164px);
+  margin: 0 auto;
+}

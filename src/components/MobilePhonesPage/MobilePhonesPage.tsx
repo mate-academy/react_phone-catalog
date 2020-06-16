@@ -7,6 +7,7 @@ import SelectSortPhones from '../SelectSortPhones/SelectSortPhones';
 import SelectPerPage from '../SelectPerPage/SelectPerPage';
 import Pagination from '../Pagination/Pagination';
 import { Breadcrumbs } from '../Breadcrumbs/Breadcrumbs';
+import Loading from '../Loading/Loading';
 
 export const MobilePhonesPage: React.FC = () => {
   const [phonesOnly, setPhonesOnly] = useState<Slide[]>([]);
@@ -89,7 +90,10 @@ export const MobilePhonesPage: React.FC = () => {
       {isLoading
         && (
           <div className="Loading">
-            Loading...
+            <Loading
+              isLoaded={isLoaded}
+              errorMessage={errorMessage}
+            />
           </div>
         )}
       {isLoaded && (
