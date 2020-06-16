@@ -1,21 +1,30 @@
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState, FormEvent, useCallback } from 'react';
+import debounce from 'lodash/debounce';
+import { useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { setQuery } from '../../store/query';
-import { getQuery } from '../../store';
 
 export const Search = () => {
-  const query = useSelector(getQuery);
   const dispatch = useDispatch();
   const location = useLocation();
+  const [visibleQuery, setVisibleQuery] = useState<string>('');
+
+  const dispatchWithDebounce = useCallback(debounce(dispatch, 800), []);
+
+  const handleSetQuery = (event: FormEvent<HTMLInputElement>) => {
+    const newQuery = event.currentTarget.value;
+
+    setVisibleQuery(newQuery);
+    dispatchWithDebounce(setQuery(newQuery));
+  };
 
   return (
     <input
       className="header__input"
       type="text"
       placeholder={`Search in ${location.pathname.slice(1)}...`}
-      value={query}
-      onChange={(event) => dispatch(setQuery(event.target.value))}
+      value={visibleQuery}
+      onChange={(event) => handleSetQuery(event)}
     />
   );
 };
