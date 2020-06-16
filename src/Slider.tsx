@@ -27,7 +27,7 @@ const Slider = () => {
         className="home__goLeft"
         onClick={goLeft}
       >
-        <img src="../img/icons/Vleft.svg" alt="right arrow" />
+        <img src="/img/icons/Vleft.svg" alt="right arrow" />
       </button>
       <div className="home__slider">
         {arr.map((item) => (
@@ -35,7 +35,7 @@ const Slider = () => {
             className="home__slide"
             style={{ transform: `translateX(${x}%)` }}
           >
-            <img src={`../img/${item}.jpg`} className="home__slider_img" alt="phone img" />
+            <img src={`./img/${item}.jpg`} className="home__slider_img" alt="phone img" />
           </div>
         ))}
       </div>
@@ -45,7 +45,7 @@ const Slider = () => {
         onClick={goRight}
       >
         <img
-          src="../img/icons/Vright.svg"
+          src="./img/icons/Vright.svg"
           className="test"
           alt="right arrow"
         />
