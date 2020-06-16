@@ -10,13 +10,13 @@ const Footer = () => {
         <nav className="footer__nav">
           <ul className="footer__nav__list">
             <li className="footer__nav__item">
-              <a href="https://github.com/" className="nav__link"> github</a>
-            </li>
-            <li className="footer__nav__item">
-              <a href="https://github.com/" className="nav__link"> github</a>
-            </li>
-            <li className="footer__nav__item">
               <a href="https://github.com/" className="nav__link">github</a>
+            </li>
+            <li className="footer__nav__item">
+              <a href="https://github.com/" className="nav__link">contacts</a>
+            </li>
+            <li className="footer__nav__item">
+              <a href="https://github.com/" className="nav__link">rights</a>
             </li>
           </ul>
         </nav>
