@@ -42,13 +42,23 @@ const App: React.FC = () => {
           <Route path="/cart" exact component={CartPage} />
           <Route path="/checkout" exact component={Checkout} />
 
+const App: React.FC = () => (
+  <div className="App">
+    <Header />
+    <main className="main">
+      <Switch>
+        <Redirect exact from="/" to="/home" />
+        <Route path="/home" exact component={Home} />
+        <Route path="/phones" exact component={MobilePhonesPage} />
+        <Route path="/tablets" exact component={TabletsPage} />
+        <Route path="/accessories" exact component={AccessoriesPage} />
 
-          <Route path="/:section/:productId?" exact component={ProductDetailsPage} />
-        </Switch>
-      </main>
-      <Footer />
-    </div>
-  );
-};
+        <Route path="/favorites" exact component={FavoritesPage} />
+        <Route path="/:section/:productId?" exact component={ProductDetailsPage} />
+      </Switch>
+    </main>
+    <Footer />
+  </div>
+);
 
 export default App;
