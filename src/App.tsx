@@ -44,7 +44,6 @@ const App: React.FC = () => {
           <Route path="/checkout" exact component={Checkout} />
           <Route component={NotFoundPage} />
 
-
           <Route path="/:section/:productId?" exact component={ProductDetailsPage} />
         </Switch>
       </main>
