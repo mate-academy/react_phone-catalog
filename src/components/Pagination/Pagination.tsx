@@ -6,7 +6,6 @@ import Button from '../Button/Button';
 
 type PaginationProps = {
   totalPages: number;
-  // perPage: string;
 };
 
 const Pagination: React.FC<PaginationProps> = ({ totalPages }) => {

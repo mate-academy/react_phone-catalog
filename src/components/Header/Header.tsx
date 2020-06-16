@@ -56,7 +56,7 @@ const Header = () => {
         </ul>
       </nav>
       <div className="Header__WrapButtons">
-        <Route path={['/phones', '/tablets', '/accessories', '/favorites']}>
+        <Route exact path={['/phones', '/tablets', '/accessories', '/favorites']}>
           <Search />
         </Route>
         <Link to="/favorites" className="Header__Buttons Favourites">

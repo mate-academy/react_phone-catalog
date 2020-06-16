@@ -8,7 +8,9 @@ import { PRODUCTS_INFO, PRODUCTS_SPECS } from '../../helpers/config';
 import ProductsSlider from '../ProductsSlider/ProductsSlider';
 import { Breadcrumbs } from '../Breadcrumbs/Breadcrumbs';
 import { GoBack } from '../GoBack/GoBack';
-import Loading from '../Loading/Loading';
+
+import ButtonFavor from '../ButtonFavor/ButtonFavor';
+import ButtonAddToCart from '../ButtonAddToCart/ButtonAddToCart';
 
 export const ProductDetailsPage: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -47,7 +49,8 @@ export const ProductDetailsPage: React.FC = () => {
 
   useEffect(() => {
     getProducts().then(data => setProducts(data));
-  }, []);
+    loadProductDetails(productId);
+  }, [productId]);
 
   useEffect(() => {
     if (products.length) {
@@ -56,10 +59,6 @@ export const ProductDetailsPage: React.FC = () => {
       setProductInfo(goodInfo);
     }
   }, [products, match.params.productId]);
-
-  useEffect(() => {
-    loadProductDetails(productId);
-  }, [productId]);
 
   const handleImages = (e: React.MouseEvent<HTMLElement>, i: number) => {
     e.preventDefault();
@@ -121,11 +120,20 @@ export const ProductDetailsPage: React.FC = () => {
     return value || 'unknown';
   };
 
+
   return (
     <>
       <section className="ProdactPage__Section">
         {errorMessage && <div>{errorMessage}</div>}
         {isLoading
+
+        && (
+          <div className="Loading">
+            Loading...
+          </div>
+        )}
+        {isLoaded && productDetails && productInfo && (
+
           && (
             <div className="Loading">
               <Loading
@@ -136,6 +144,7 @@ export const ProductDetailsPage: React.FC = () => {
           )}
         {isLoading && isLoaded && ''}
         {productDetails && (
+
           <article className="ProdactPage">
             <Breadcrumbs />
             <GoBack />
@@ -187,18 +196,11 @@ export const ProductDetailsPage: React.FC = () => {
                     )}
                   </div>
                   <div className="Card__ButtonWrap">
-                    <button
-                      type="button"
-                      className="Card__ButtonCart--width"
-                    >
-                      Add to cart
-                    </button>
-                    <button
-                      type="button"
-                      className="Card__ButtonFavor"
-                      aria-label="Mute text"
+                    <ButtonAddToCart
+                      product={productInfo}
+                      ClassNameForBtn="ButtonCart--width"
                     />
-                    {/* <ButtonFavor product={productInfo}/> */}
+                    <ButtonFavor product={productInfo} />
                   </div>
                 </section>
                 <section className="ProdactPage__Info">

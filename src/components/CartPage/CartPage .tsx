@@ -61,16 +61,16 @@ const CartPage = () => {
                   />
 
                 </div>
-                <div>
+                <div className="CartItem__Prise">
                   <span className="Prise">
                     $
                     {setPriceWithDiscount(item.product) * item.quantity}
                   </span>
                   {item.product.discount !== 0 && (
-                    <div className="Prise OldPrise">
+                    <span className="Prise OldPrise">
                       $
                       {item.product.price * item.quantity}
-                    </div>
+                    </span>
                   )}
                 </div>
               </li>
@@ -105,7 +105,6 @@ const CartPage = () => {
         )
           : (
             <div className="IntermediatePage">
-              {/* <img src='../../img/emptycart' alt="emptycart"></img> */}
               <h1 className="IntermediatePage__Title">
                 Cart is empty :(
               </h1>

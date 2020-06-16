@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react';
+import './ButtonFavor.scss';
 import cn from 'classnames/bind';
 import { useDispatch, useSelector } from 'react-redux';
 import { getFavorites } from '../../store/index';
