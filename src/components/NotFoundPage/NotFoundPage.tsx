@@ -11,7 +11,7 @@ export const NotFoundPage: React.FC = () => {
       >
         Page not found
       </h1>
-      <div className="NotFoundPage__noGoods">
+      <div className="NotFoundPage__Wrap">
         <img
           src="./img/cat_404.png"
           alt="404"

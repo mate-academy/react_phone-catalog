@@ -31,7 +31,7 @@ const App: React.FC = () => {
   return (
     <div className="App">
       <Header />
-      <main>
+      <main className="Main">
         <Switch>
           <Redirect exact from="/" to="/home" />
           <Route path="/home" exact component={Home} />
