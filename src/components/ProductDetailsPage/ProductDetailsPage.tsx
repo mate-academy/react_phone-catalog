@@ -8,7 +8,7 @@ import { PRODUCTS_INFO, PRODUCTS_SPECS } from '../../helpers/config';
 import ProductsSlider from '../ProductsSlider/ProductsSlider';
 import { Breadcrumbs } from '../Breadcrumbs/Breadcrumbs';
 import { GoBack } from '../GoBack/GoBack';
-// import ButtonFavor from '../ButtonFavor/ButtonFavor';
+import ButtonFavor from '../ButtonFavor/ButtonFavor';
 
 export const ProductDetailsPage: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -190,12 +190,12 @@ export const ProductDetailsPage: React.FC = () => {
                     >
                       Add to cart
                     </button>
-                    <button
+                    {/* <button
                       type="button"
                       className="Card__ButtonFavor"
                       aria-label="Mute text"
-                    />
-                    {/* <ButtonFavor product={productInfo}/> */}
+                    /> */}
+                    <ButtonFavor product={productInfo}/>
                   </div>
                 </section>
                 <section className="ProdactPage__Info">

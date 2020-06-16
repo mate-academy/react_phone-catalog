@@ -3,14 +3,14 @@ import { Action } from 'redux';
 const ADD_PRODUCT = 'ADD_PRODUCT';
 const REMOVE_PRODUCT = 'REMOVE_PRODUCT';
 
-export const setProduct = (product: Product) => (
+export const setProduct = (product: Product | undefined) => (
   {
     type: ADD_PRODUCT,
     product,
   }
 );
 
-export const removeProduct = (productId: string) => (
+export const removeProduct = (productId: string | undefined) => (
   {
     type: REMOVE_PRODUCT,
     productId,

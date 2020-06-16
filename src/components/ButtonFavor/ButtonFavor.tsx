@@ -5,7 +5,7 @@ import { getFavorites } from '../../store/index';
 import { setProduct, removeProduct } from '../../store/favorites';
 
 type Props = {
-  product: Product;
+  product?: Product;
 };
 
 const ButtonFavor: React.FC<Props> = ({ product }) => {
@@ -18,12 +18,12 @@ const ButtonFavor: React.FC<Props> = ({ product }) => {
     if (e.target.checked) {
       dispatch(setProduct(product));
     } else {
-      dispatch(removeProduct(product.id));
+      dispatch(removeProduct(product!.id));
     }
   };
 
   const isInFavorites = useMemo(() => (
-    favorites.some(productFav => productFav.id === product.id)
+    favorites.some(productFav => productFav.id === product!.id)
   ), [favorites, product]);
 
 
@@ -33,11 +33,11 @@ const ButtonFavor: React.FC<Props> = ({ product }) => {
         {
           'ButtonFavor--isInFavorites': isInFavorites,
         })}
-      htmlFor={`ButtonFavor__${product.id}`}
+      htmlFor={`ButtonFavor__${product!.id}`}
     >
       <input
         type="checkbox"
-        id={`ButtonFavor__${product.id}`}
+        id={`ButtonFavor__${product!.id}`}
         checked={isInFavorites}
         className="ButtonFavor__Input"
         onChange={(e) => addToFavorites(e)}
