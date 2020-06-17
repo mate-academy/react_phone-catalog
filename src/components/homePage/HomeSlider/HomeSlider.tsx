@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import classNames from 'classnames';
 import './HomeSlider.scss';
 import ReactResizeDetector from 'react-resize-detector';
@@ -29,7 +29,12 @@ const HomeSlider = () => {
     }
   };
 
-  const handleSwitchSlide = () => {
+  useEffect(() => {
+    const moveNext = setInterval(handleSwitchToNext, 5000);
+    return () => clearInterval(moveNext);
+  });
+
+  const chooseImages = () => {
 
   };
 
@@ -75,7 +80,7 @@ const HomeSlider = () => {
             <div
               className={classNames('slider-point', {'acvtive-point': slidesImages[slideIndex] === slide})}
               key={slide}
-              onClick={handleSwitchSlide}
+              onClick={() => chooseImages()}
             />
           ))}
         </div>

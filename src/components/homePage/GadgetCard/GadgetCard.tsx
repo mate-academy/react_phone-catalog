@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import './GadgetCard.scss';
 import classNames from 'classnames';
 
@@ -8,10 +9,34 @@ type Props = {
 
 const GadgetCard: React.FC<Props> = ({ gadget }) => {
   const {
-    price, discount, id, imageUrl, name, screen, capacity, ram,
+    price, discount, id, imageUrl, name, screen, capacity, ram, type,
   } = gadget;
 
   const priceWithDiscount = price - (price * (discount / 100));
+  const [gadgetType, setGadgetType] = useState('phones');
+
+  const SECTION = {
+    phone: 'phone',
+    tablet: 'tablet',
+    accessories: 'accessories',
+  };
+
+
+  useEffect(() => {
+    switch (type) {
+      case SECTION.phone:
+        setGadgetType('phones');
+        break;
+      case SECTION.tablet:
+        setGadgetType('tablets');
+        break;
+      case SECTION.accessories:
+        setGadgetType('accessories');
+        break;
+      default:
+        setGadgetType('phones');
+    }
+  }, [gadget]);
 
   return (
     <div className="gadget">
@@ -19,9 +44,9 @@ const GadgetCard: React.FC<Props> = ({ gadget }) => {
         <img className="gadget__img" src={imageUrl} alt="gadget" />
       </div>
 
-      <div className="gadget__title">
+      <Link to={`/${gadgetType}/${id}`} className="gadget__title">
         {name}
-      </div>
+      </Link>
 
       <span className="gadget__price">
         <p className="gadget__price-discount">{`$${priceWithDiscount}`}</p>

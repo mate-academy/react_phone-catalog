@@ -6,6 +6,7 @@ import {
 
 import './App.scss';
 import HomePage from './components/homePage/HomePage';
+
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Favorites from './components/Favorites/Favorites';
