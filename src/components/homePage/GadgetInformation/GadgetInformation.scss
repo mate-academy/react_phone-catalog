@@ -1,0 +1,17 @@
+.description {
+  &__span {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    & p {
+      margin: 0;
+      padding: 4px 0;
+      color: #89939a;
+
+      &:last-child {
+        color: #313237;
+      }
+    }
+  }
+}
