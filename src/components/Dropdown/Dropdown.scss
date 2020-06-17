@@ -10,7 +10,6 @@
   @include hover(border-color, $colorSecondery);
 
   &__List {
-    padding: 8px 0;
     border: $borderElement;
     transition: all 0.5s;
     visibility: hidden;
