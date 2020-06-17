@@ -17,6 +17,7 @@ import { Cart } from './components/cart/Cart';
 import Footer from './components/footer/Footer';
 
 import './App.scss';
+//import { Search } from './components/search/Search';
 
 const getAppData = async (): Promise<Good[]> => {
   const goodsFromServer = await api.getGoods();
@@ -29,7 +30,7 @@ const App = () => {
   // const goods = useSelector(getGoods);
 
   const initData = () => {
-    getAppData()
+       getAppData()
       .then(goodsFromServer => {
         dispatch(initGood(goodsFromServer));
       });
@@ -46,6 +47,7 @@ const App = () => {
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/phones" exact component={Phones} />
+
         <Route path="/tablets" component={Tablets} />
         <Route path="/accessories" component={Accessories} />
 

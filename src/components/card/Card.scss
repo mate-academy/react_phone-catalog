@@ -36,6 +36,53 @@
     &:hover {
       box-shadow: 0 0 10px rgba(199, 198, 198, 0.5);
     }
+    .cartFavorites__wrapper {
+      display: flex;
+      justify-content: space-between;
+
+      .btn__addToCart {
+        cursor: pointer;
+        color: #ffffff;
+        outline: none;
+        width: 176px;
+        height: 40px;
+        background: #313237;
+        border: 1px solid #313237;
+        transition: color 0.3s, background-color 0.3s;
+
+        &:hover {
+          color: #313237;
+          background-color: #ffffff;
+        }
+      }
+      .btn__addToCart-link {
+        cursor: pointer;
+        color: #ffffff;
+        font-size: 14px;
+        text-decoration: none;
+        transition: color 0.3s, background-color 0.3s;
+
+        &:hover {
+          color: #313237;
+          background-color: #ffffff;
+        }
+      }
+
+      .btn__Favorites-link {
+        width: 40px;
+        height: 40px;
+        background: url(../../img/Icons/heart.png) no-repeat;
+        background-position: center;
+        border: 1px solid #b4bdc4;
+        box-sizing: border-box;
+        background-color: #ffffff;
+        transition: border 0.3s;
+
+        &:hover {
+          border: 1px solid #313237;
+        }
+      }
+    }
   }
 
   &__discount {
@@ -79,51 +126,5 @@
     height: 40px;
   }
 
-  .cartFavourites__wrapper {
-    display: flex;
-    justify-content: space-between;
 
-    .btn__addToCart {
-      cursor: pointer;
-      color: #ffffff;
-      outline: none;
-      width: 176px;
-      height: 40px;
-      background: #313237;
-      border: 1px solid #313237;
-      transition: color 0.3s, background-color 0.3s;
-
-      &:hover {
-        color: #313237;
-        background-color: #ffffff;
-      }
-    }
-    .btn__addToCart-link {
-      cursor: pointer;
-      color: #ffffff;
-      font-size: 14px;
-      text-decoration: none;
-      transition: color 0.3s, background-color 0.3s;
-
-      &:hover {
-        color: #313237;
-        background-color: #ffffff;
-      }
-    }
-  }
-
-  .btn__favourites-link {
-    width: 40px;
-    height: 40px;
-    background: url(../../img/Icons/heart.png) no-repeat;
-    background-position: center;
-    border: 1px solid #b4bdc4;
-    box-sizing: border-box;
-    background-color: #ffffff;
-    transition: border 0.3s;
-
-    &:hover {
-      border: 1px solid #313237;
-    }
-  }
 }

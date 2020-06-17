@@ -1,8 +1,6 @@
 import React from 'react';
 import { Card } from '../card/Card';
 
-import './GoodList.scss';
-
 type Props = { goods: Good[] };
 
 export const GoodList: React.FC<Props> = ({ goods }) => {
