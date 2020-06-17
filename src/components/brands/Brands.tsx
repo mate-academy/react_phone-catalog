@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import CN from "classnames";
 import { Card } from '../card/Card';
-import { IGood } from '../../provider/dataFromApi';
-
+import { getGoods } from '../../store';
 import "./Brands.scss";
 
-type Props = { goods: IGood[]; wigthSlides: number }
+type Props = { wigthSlides: number }
 
-const HotPrice: React.FC<Props> = ({ goods, wigthSlides }) => {
-
+const HotPrice: React.FC<Props> = ({ wigthSlides }) => {
+  const goods = useSelector(getGoods);
   const [imgPosition, setImgPosition] = useState<number>(0);
   const sliderLength = goods.length;
 

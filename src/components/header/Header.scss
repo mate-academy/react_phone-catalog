@@ -41,6 +41,11 @@ body {
   }
 }
 
+.Nav__wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
 .Nav__list {
   display: flex;
   width: 460px;

@@ -1,6 +1,6 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-
+import { NavLink, Route } from 'react-router-dom';
+import { Search } from '../../search/Search';
 
 const Navigation = () => {
   const navList = ['home', 'phones', 'tablets', 'accessories'];
@@ -31,7 +31,9 @@ const Navigation = () => {
           ))}
 
         </ul>
+        <Route path="/phones"  component={Search} />
       </nav>
+
     </>
   );
 };
