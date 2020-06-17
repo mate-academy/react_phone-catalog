@@ -2,7 +2,6 @@ import { createStore, combineReducers } from 'redux';
 import queryReducer from './query';
 import goodReducer from './good';
 
-
 export const getQuery = (state: RootState) => state.query;
 
 export const getGoods = (state: RootState) => state.goods;

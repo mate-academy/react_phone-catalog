@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink, Route } from 'react-router-dom';
+import { NavLink, Route, Switch } from 'react-router-dom';
 import { Search } from '../../search/Search';
 
 const Navigation = () => {
@@ -31,7 +31,11 @@ const Navigation = () => {
           ))}
 
         </ul>
+        <Switch>
         <Route path="/phones"  component={Search} />
+        <Route path="/tablets"  component={Search} />
+        </Switch>
+
       </nav>
 
     </>

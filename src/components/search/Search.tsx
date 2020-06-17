@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setQuery } from '../../store/query';
 //import { Card } from '../card/Card';
 
-
+import './Search.scss';
 
 export const Search = () => {
 
@@ -19,8 +19,10 @@ export const Search = () => {
   return (
     <>
     <input
+    className="Search__input"
       type="text"
       value={query}
+      placeholder="Search "
       onChange={({ target }) => {
         dispatch(setQuery(target.value));
       }}
