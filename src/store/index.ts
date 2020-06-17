@@ -2,15 +2,16 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { Dispatch } from 'react';
 import thunk from 'redux-thunk';
-import { getAllProducts } from '../helpers/api';
+import { getAllProducts, loadProductInfo } from '../helpers/api';
 import productsReducer, { setProducts } from './products';
 import paginationReducer from './pagination';
 import sortReducer from './sort';
-import loadingReducer from './loading';
+import loadingReducer, { setLoading } from './loading';
 import queryReducer from './query';
 import favouritesReducer from './favourites';
 import cartReducer from './cart';
-import productReducer from './product';
+import productReducer, { setProduct } from './product';
+import errorReducer, { setError } from './error';
 
 export const getPage = (state: RootState) => state.pagination.page;
 export const getPerPage = (state: RootState) => state.pagination.perPage;
@@ -24,10 +25,11 @@ export const getQuantity = (
   .filter((product: Products) => product.type === type).length;
 
 export const getVisible = (state: RootState) => state.loading.isVisible;
-export const getLoading = (state: RootState) => state.loading.isLoading;
+export const getLoading = (state: RootState) => state.loading;
 export const getProducts = (state: RootState) => state.products;
 export const getFavourites = (state: RootState) => state.favourites;
 export const getProduct = (state: RootState) => state.product;
+export const getErrorMessage = (state: RootState) => state.error;
 
 
 const rootReducer = combineReducers({
@@ -39,6 +41,7 @@ const rootReducer = combineReducers({
   favourites: favouritesReducer,
   cart: cartReducer,
   product: productReducer,
+  error: errorReducer,
 });
 
 
@@ -80,8 +83,24 @@ export const loadData = () => {
 
       dispatch(setProducts(productsFromServer));
     } catch (error) {
-      // do something to catch error
+      dispatch(setError('An error occurred while loading data from the server.'));
     }
+  };
+};
+
+export const loadDetails = (productId: string) => {
+  return async (dispatch: Dispatch<any>) => {
+    dispatch(setLoading(true));
+
+    try {
+      const details = await loadProductInfo(productId);
+
+      dispatch(setProduct(details));
+    } catch (error) {
+      dispatch(setError('An error occurred while loading data from the server.'));
+    }
+
+    dispatch(setLoading(false));
   };
 };
 

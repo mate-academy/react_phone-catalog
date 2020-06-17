@@ -9,6 +9,11 @@
   border: 1px solid $light-gray;
   box-sizing: border-box;
   padding: 24px;
+  transition: 0.3s;
+
+  &:hover {
+    box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+  }
 
   &__image {
     width: 208px;
@@ -18,22 +23,16 @@
   }
 
   &__image:hover {
-      transform: scale(1.1);
+      transform: scale(1.05);
   }
 
   &__product {
     font-weight: 500;
+    text-decoration: none;
     font-size: 14px;
     line-height: 21px;
-    border: none;
-    background: none;
-    text-align: left;
     color: $dark-gray-color;
-    transition: 0.3s;
-  }
-
-  &__product:hover {
-    text-decoration: underline;
+    text-decoration: none;
   }
 
   &__price-container {

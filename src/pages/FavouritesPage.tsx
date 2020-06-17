@@ -4,6 +4,7 @@ import { getFavourites } from '../store/index';
 import PhoneCard from '../components/PhoneCard/PhoneCard';
 import './Favourites.scss';
 import { Breadcrumbs } from '../components/Breadcrumbs/Breadcrumbs';
+import { GoBackButton } from '../components/Buttons/GoBack';
 
 export const FavoritesPage = () => {
   const favourites = useSelector(getFavourites);
@@ -15,21 +16,29 @@ export const FavoritesPage = () => {
           <section className="wrap__container">
             <Breadcrumbs />
           </section>
-          <h1 className="PhonesPage__head">
-            Favourites
-          </h1>
-          <p className="PhonesPage__length">
-            {favourites.length}
-            {' '}
-            models
-          </p>
-          {favourites.length === 0 ? <h1 className="Favourites__noproducts">No favorites products yet</h1> : (
-            <div className="Favourites__container">
-              {favourites.map((favourite: Products) => (
-                <PhoneCard phone={favourite} key={favourite.id} />
-              ))}
-            </div>
-          )}
+          {favourites.length === 0
+            ? (
+              <div className="wrapper">
+                <GoBackButton />
+                <h1>No favourites products yet</h1>
+              </div>
+            ) : (
+              <>
+                <h1 className="PhonesPage__head">
+                  Favourites
+                </h1>
+                <p className="PhonesPage__length">
+                  {favourites.length}
+                  {' '}
+                  models
+                </p>
+                <div className="Favourites__container">
+                  {favourites.map((favourite: Products) => (
+                    <PhoneCard phone={favourite} key={favourite.id} />
+                  ))}
+                </div>
+              </>
+            )}
 
         </div>
       </section>

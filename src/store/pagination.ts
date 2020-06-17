@@ -30,7 +30,8 @@ const defaultPaginationState = {
 
 const queryReducer = (
   paginationState = defaultPaginationState,
-  action: AllowedActions): PaginationState => {
+  action: AllowedActions,
+): PaginationState => {
   switch (action.type) {
     case SET_PAGE:
       return {

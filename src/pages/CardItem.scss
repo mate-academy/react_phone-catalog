@@ -111,6 +111,7 @@
   &__btn_disabled {
     border-color: #E2E6E9;
     background: url('../images/btn_minus_disabled.svg');
+    cursor: default;
   }
 
   &__btn_plus, &__btn_minus, &__btn_disabled {

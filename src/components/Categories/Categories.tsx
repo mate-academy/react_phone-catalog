@@ -2,7 +2,6 @@ import React from 'react';
 import './Categories.scss';
 import { useHistory } from 'react-router-dom';
 
-
   type Prop = {
     phones: number;
     tablets: number;
