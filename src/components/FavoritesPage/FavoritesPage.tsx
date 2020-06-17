@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { Card } from '../Card/Card';
 import { getFavorites } from '../../store/index';
+import { Breadcrumbs } from '../Breadcrumbs/Breadcrumbs';
 
 const FavoritesPage = () => {
   const favoriteProducts = useSelector(getFavorites);
@@ -24,11 +25,12 @@ const FavoritesPage = () => {
   return (
     <>
       <div className="Phones PhonesContainer">
+        <Breadcrumbs />
         <h1 className="Phones__Title">Favourites</h1>
         <span className="Phones__Sum">
           {favorites}
           {' '}
-          models
+          items
         </span>
       </div>
       <div className="PhonesContainer__Inner">

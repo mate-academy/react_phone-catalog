@@ -6,7 +6,7 @@ import cn from 'classnames/bind';
 import { getItems } from '../../store/index';
 import { removeFromCart, setQuantity, clearCart } from '../../store/cart';
 import { setPriceWithDiscount } from '../../helpers/setPriceWithDiscount';
-import { Breadcrumbs } from '../Breadcrumbs/Breadcrumbs';
+import { GoBack } from '../GoBack/GoBack';
 
 const CartPage = () => {
   const itemsCart = useSelector(getItems);
@@ -23,7 +23,8 @@ const CartPage = () => {
 
   return (
     <div className="CartPage">
-      <Breadcrumbs />
+      <GoBack />
+      <h1 className="CartPage__Title">Cart</h1>
       <div className="CartPage__ContainerInner">
         {itemsCart && (
           <ul className="Cart__List">

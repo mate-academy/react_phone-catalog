@@ -4,8 +4,12 @@
 
 .CartPage {
   max-width: 1136px;
-  margin: 100px auto;
+  margin: 0 auto;
   padding: 0 15px;
+
+  &__Title {
+    margin: 30px 0;
+  }
 
   &__ContainerInner {
     display: flex;
