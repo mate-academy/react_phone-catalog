@@ -8,9 +8,9 @@ import { PRODUCTS_INFO, PRODUCTS_SPECS } from '../../helpers/config';
 import ProductsSlider from '../ProductsSlider/ProductsSlider';
 import { Breadcrumbs } from '../Breadcrumbs/Breadcrumbs';
 import { GoBack } from '../GoBack/GoBack';
-
 import ButtonFavor from '../ButtonFavor/ButtonFavor';
 import ButtonAddToCart from '../ButtonAddToCart/ButtonAddToCart';
+import Loading from '../Loading/Loading';
 
 export const ProductDetailsPage: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -126,25 +126,15 @@ export const ProductDetailsPage: React.FC = () => {
       <section className="ProdactPage__Section">
         {errorMessage && <div>{errorMessage}</div>}
         {isLoading
-
-        && (
-          <div className="Loading">
-            Loading...
-          </div>
-        )}
-        {isLoaded && productDetails && productInfo && (
-
           && (
-            <div className="Loading">
-              <Loading
-                isLoaded={isLoaded}
-                errorMessage={errorMessage}
-              />
-            </div>
-          )}
-        {isLoading && isLoaded && ''}
-        {productDetails && (
 
+            <Loading
+              isLoaded={isLoaded}
+              errorMessage={errorMessage}
+            />
+
+          )}
+        {isLoaded && productDetails && productInfo && (
           <article className="ProdactPage">
             <Breadcrumbs />
             <GoBack />

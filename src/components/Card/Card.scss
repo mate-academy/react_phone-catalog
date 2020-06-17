@@ -70,13 +70,4 @@
     display: flex;
     justify-content: space-between;
   }
-
-  &__ButtonFavor {
-    height: 40px;
-    width: 40px;
-    background-color: #fff;
-    border: solid 1px $colorIcons;
-    @include iconInButton(url(../../img/Icons/heart.svg));
-    @include hover(border, 1px solid $colorPrimary);
-  }
-
+}
