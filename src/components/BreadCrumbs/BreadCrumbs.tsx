@@ -9,7 +9,7 @@ type Location = {
 
 const BreadCrumbs = () => {
   const location: Location = useLocation();
-  const pattern = new RegExp('[^/]\\w*', 'g');
+  const pattern = new RegExp('[^/][\\w-]*', 'g');
   const { pathname } = location;
   const crumbs = pathname.match(pattern) || ['This is homePage'];
 

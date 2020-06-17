@@ -12,6 +12,7 @@ import Header from './components/Header/Header';
 import Favorites from './components/Favorites/Favorites';
 import Cart from './components/Cart/Cart';
 import ProductsPage from './components/ProductsPage/ProductsPage';
+import Footer from './components/Footer/Footer';
 
 const App = () => {
   return (
@@ -49,6 +50,7 @@ const App = () => {
           component={Cart}
         />
       </Switch>
+      <Footer />
     </div>
   );
 };

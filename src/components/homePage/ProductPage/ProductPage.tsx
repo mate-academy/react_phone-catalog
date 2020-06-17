@@ -4,6 +4,7 @@ import {getDetails, getProducts} from '../../../helpers/api';
 import './ProductPage.scss';
 import GadgetInformation from "../GadgetInformation/GadgetInformation";
 import MiniSlider from "../MiniSlider/MiniSlider";
+import BreadCrumbs from "../../BreadCrumbs/BreadCrumbs";
 
 type Props = {
   currentProduct: string;
@@ -52,7 +53,7 @@ const ProductPage: React.FC<Props> = ({currentProduct}) => {
 
   return (
     <div className="product-page">
-      BREADCRUMBS
+      <BreadCrumbs />
       <div className="product-description">
         <h3 className="product-description__title">
           {currentProductInformation && currentProductInformation.name}
