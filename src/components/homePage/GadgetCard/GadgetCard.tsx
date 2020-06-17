@@ -6,7 +6,7 @@ type Props = {
   gadget: Gadget;
 };
 
-const GadgetCard: React.FC<Props> = ({gadget}) => {
+const GadgetCard: React.FC<Props> = ({ gadget }) => {
   const {
     price, discount, id, imageUrl, name, screen, capacity, ram,
   } = gadget;
@@ -16,7 +16,7 @@ const GadgetCard: React.FC<Props> = ({gadget}) => {
   return (
     <div className="gadget">
       <div className="gadget__photo">
-        <img className="gadget__img" src={imageUrl} alt="gadget"/>
+        <img className="gadget__img" src={imageUrl} alt="gadget" />
       </div>
 
       <div className="gadget__title">
@@ -32,35 +32,35 @@ const GadgetCard: React.FC<Props> = ({gadget}) => {
       </span>
 
       <div className="description gadget__description">
-          <span className="characteristic__span">
-            <span>
-              Screen
-            </span>
-
-            <span>
-              {screen}
-            </span>
+        <span className="characteristic__span">
+          <span>
+            Screen
           </span>
 
-          <span className="characteristic__span">
-            <span>
-              Capacity
-            </span>
+          <span>
+            {screen}
+          </span>
+        </span>
 
-            <span>
-              {capacity}
-            </span>
+        <span className="characteristic__span">
+          <span>
+            Capacity
           </span>
 
-          <span className="characteristic__span">
-            <span>
-              RAM
-            </span>
-
-            <span>
-              {ram}
-            </span>
+          <span>
+            {capacity}
           </span>
+        </span>
+
+        <span className="characteristic__span">
+          <span>
+            RAM
+          </span>
+
+          <span>
+            {ram}
+          </span>
+        </span>
       </div>
 
       <div className="gadget__button">
@@ -80,7 +80,7 @@ const GadgetCard: React.FC<Props> = ({gadget}) => {
             className="gadget__button-favorite-input"
           />
 
-          <span className="gadget__button-favorite-check"/>
+          <span className="gadget__button-favorite-check" />
         </label>
       </div>
     </div>

@@ -1,9 +1,9 @@
-import React, {useEffect, useState} from 'react';
-import HomeSlider from "./HomeSlider/HomeSlider";
-import {getProducts} from "../../helpers/api";
-import HotPrices from "./HotPrices/HotPrices";
-import ShopByCategory from "./ShopByCategory/ShopByCategory";
-import BrandNewModels from "./BrandNewModels/BrandNewModels";
+import React, { useEffect, useState } from 'react';
+import HomeSlider from './HomeSlider/HomeSlider';
+import { getProducts } from '../../helpers/api';
+import HotPrices from './HotPrices/HotPrices';
+import ShopByCategory from './ShopByCategory/ShopByCategory';
+import BrandNewModels from './BrandNewModels/BrandNewModels';
 
 const HomePage = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -17,25 +17,25 @@ const HomePage = () => {
     setTimeout(() => setIsLoading(false), 1000);
   }, []);
 
-  if(isLoading) {
+  if (isLoading) {
     return (
       <div>
         Loading...
       </div>
-    )
+    );
   }
 
   return (
     <div>
       <HomeSlider />
 
-      <HotPrices gadgets={phonesFromServer}/>
+      <HotPrices gadgets={phonesFromServer} />
 
-      <ShopByCategory gadgets={phonesFromServer}/>
+      <ShopByCategory gadgets={phonesFromServer} />
 
-      <BrandNewModels gadgets={phonesFromServer}/>
+      <BrandNewModels gadgets={phonesFromServer} />
     </div>
-  )
+  );
 };
 
 export default HomePage;

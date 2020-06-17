@@ -43,7 +43,6 @@ const HomeSlider = () => {
     }
   };
 
-
   return (
     <div className="carousel">
       <ReactResizeDetector handleWidth onResize={handleResize} />
@@ -53,7 +52,7 @@ const HomeSlider = () => {
         className="button"
         onClick={handleSwitchToPrev}
       >
-        <img src="./img/phones/arrowLeftActive.svg" alt="arrow" className="pagination__arrow"/>
+        <img src="./img/phones/arrowLeftActive.svg" alt="arrow" className="pagination__arrow" />
       </button>
       <span>
         <div className="carousel__block">
@@ -64,8 +63,8 @@ const HomeSlider = () => {
             }}
           >
             {slidesImages.map((slide, i) => (
-             <li key={i}>
-                <img src={slide} className="carousel__img" alt={`phone slide ${i}`}/>
+              <li key={i}>
+                <img src={slide} className="carousel__img" alt={`phone slide ${i}`} />
               </li>
             ))}
           </ul>
