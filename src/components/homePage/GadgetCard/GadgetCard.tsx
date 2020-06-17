@@ -25,10 +25,10 @@ const GadgetCard: React.FC<Props> = ({ gadget }) => {
   useEffect(() => {
     switch (type) {
       case SECTION.phone:
-        setGadgetType('phones');
+        setGadgetType('phone');
         break;
       case SECTION.tablet:
-        setGadgetType('tablets');
+        setGadgetType('tablet');
         break;
       case SECTION.accessories:
         setGadgetType('accessories');

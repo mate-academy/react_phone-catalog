@@ -1,12 +1,12 @@
 import React from 'react';
 import { useParams, useLocation } from 'react-router-dom';
-import Device from '../Device/Device';
 import './ProductsPage.scss';
 import BreadCrumbs from '../BreadCrumbs/BreadCrumbs';
 import Selectors from "../Selectors/Selectors";
+import ProductPage from "../homePage/ProductPage/ProductPage";
 
 type Param = {
-  device: string | undefined;
+  item: string | undefined;
 };
 
 const ProductsPage = () => {
@@ -18,18 +18,18 @@ const ProductsPage = () => {
 
   return (
     <>
-      { params.device
-        ? <Device />
+      { params.item
+        ? <ProductPage currentProduct={params.item}/>
         : (
           <>
             <BreadCrumbs />
-            {pathname.replace('/', '') === 'Phone'
+            {pathname.replace('/', '') === 'phone'
               ? (
                 <div>
                   Mobile phone
                 </div>
               )
-              : pathname.replace('/', '') === 'Tablet'
+              : pathname.replace('/', '') === 'tablet'
                 ? (
                   <div>
                     Tablets

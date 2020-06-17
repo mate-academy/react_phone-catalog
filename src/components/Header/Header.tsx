@@ -32,7 +32,7 @@ const Header = () => {
           </li>
           <li className="link__item">
             <NavLink
-              to="/Phone"
+              to="/phone"
               className="link__routing-link"
             >
               Phones
@@ -40,7 +40,7 @@ const Header = () => {
           </li>
           <li className="link__item">
             <NavLink
-              to="/Tablet"
+              to="/tablet"
               className="link__routing-link"
             >
               Tablets
@@ -48,7 +48,7 @@ const Header = () => {
           </li>
           <li className="link__item">
             <NavLink
-              to="/Accessories"
+              to="/accessories"
               className="link__routing-link"
             >
               Accessories
