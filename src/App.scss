@@ -24,3 +24,10 @@
   border: 1px solid $dark-gray-color;
 }
 
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}

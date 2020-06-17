@@ -1,10 +1,8 @@
-/* eslint-disable jsx-a11y/interactive-supports-focus */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import CN from 'classnames';
-import { FavoriteButton } from '../Buttons/FavoriveButton';
-import { CardButton } from '../Buttons/CardButton';
+import { FavouriteButton } from '../Buttons/FavouriteButton';
+import { CartButton } from '../Buttons/CartButton';
 
 
 type PropsPhoneCard = {
@@ -12,39 +10,16 @@ type PropsPhoneCard = {
 };
 
 const PhoneCard: React.FC<PropsPhoneCard> = ({ phone }) => {
-  const history = useHistory();
-
-  const handleProductDetails = (id: string, type: string) => {
-    switch (type) {
-      case 'phone':
-      case 'tablet':
-        history.push({
-          pathname: `/${type}s/${id}`,
-        });
-        break;
-      default:
-    }
-  };
-
   const discountPrice = phone.price - phone.discount;
 
   return (
     <section className="PhoneCard">
-      <button
-        type="button"
-        className="PhoneCard__product"
-        onClick={() => handleProductDetails(phone.id, phone.type)}
-      >
+      <Link to={`/${phone.type}s/${phone.id}`}>
         <img src={`${phone.imageUrl}`} alt="phone_image" className="PhoneCard__image" />
-      </button>
-      <button
-        type="button"
-        className="PhoneCard__product"
-        onClick={() => handleProductDetails(phone.id, phone.type)}
-      >
+      </Link>
+      <Link className="PhoneCard__product" to={`/${phone.type}s/${phone.id}`}>
         {`${phone.id.toUpperCase()}`}
-      </button>
-
+      </Link>
       <div className="PhoneCard__price-container">
         <h2 className="PhoneCard__price">
           $
@@ -75,8 +50,8 @@ const PhoneCard: React.FC<PropsPhoneCard> = ({ phone }) => {
         </div>
       </div>
       <div className="PhoneCard__buttons-container">
-        <CardButton product={phone} className="PhoneCard__button" />
-        <FavoriteButton item={phone} className="PhoneCard__favorits-button button" />
+        <CartButton product={phone} className="PhoneCard__button" />
+        <FavouriteButton item={phone} className="PhoneCard__favorits-button button" />
       </div>
     </section>
 

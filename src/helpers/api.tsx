@@ -22,7 +22,8 @@ export const getAllProducts = async (): Promise< Products[]> => {
 export const loadProductInfo = async (productUrl: string) => {
   const productFromServer = await getProduct(productUrl);
   const productsFromServer = await getAllProducts();
-  const currentProd = productsFromServer.find(product => product.id === productFromServer.id);
+  const currentProd = productsFromServer
+    .find(product => product.id === productFromServer.id);
 
   return {
     ...currentProd,

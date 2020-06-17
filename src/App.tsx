@@ -26,9 +26,7 @@ const App = () => {
 
   return (
     <>
-
       <Header />
-
       <main>
         <Switch>
           <Route path="/" exact component={HomePage} />
@@ -37,15 +35,16 @@ const App = () => {
           <Route path="/accessories" component={AccessoriesPage} />
           <Route path="/favorites" exact component={FavoritesPage} />
           <Route path="/cart" exact component={CardPage} />
-          <Route path="/phones/:productId" component={ProductPage} />
-          <Route path="/tablets/:productId" component={ProductPage} />
+          <Route
+            exact
+            path="/:productType/:productId"
+            component={ProductPage}
+          />
           <Redirect from="/home" to="/" />
           <NotFoundPage />
         </Switch>
       </main>
-
       <Footer />
-
     </>
   );
 };

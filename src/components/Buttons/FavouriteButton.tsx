@@ -9,7 +9,7 @@ type Props = {
 };
 
 
-export const FavoriteButton: React.FC<Props> = ({ item, className }) => {
+export const FavouriteButton: React.FC<Props> = ({ item, className }) => {
   const dispatch = useDispatch();
   const favourites = useSelector(getFavourites);
   const [isFavourite, setIsFavourite] = useState<boolean>(false);

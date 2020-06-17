@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Slider } from '../components/Slider/Slider';
 import { PhonesSlider } from '../components/PhonesSlider/PhonesSlider';
-import { Categories } from '../components/Categories/Categiries';
+import { Categories } from '../components/Categories/Categories';
 import { getProducts } from '../store/index';
 
 export const HomePage = () => {

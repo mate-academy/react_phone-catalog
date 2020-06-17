@@ -6,24 +6,35 @@ import './Slider.scss';
 export const Slider = () => {
   const [imgPostion, setimgPostion] = useState<number>(0);
   const [activeDot, setActiveDot] = useState<number>(sliderImg[0].id);
+  const imgLength = 1040;
+  const maxImgLength = (sliderImg.length - 1) * imgLength;
 
   const handleNextClick = () => {
-    if (imgPostion < -2079) {
+    if (imgPostion < -(maxImgLength - 1)) {
       setimgPostion(0);
       setActiveDot(1);
     } else {
-      setimgPostion(imgPostion - 1040);
+      setimgPostion(imgPostion - imgLength);
       setActiveDot(activeDot + 1);
     }
   };
 
   const handlePrevClick = () => {
     if (imgPostion === 0) {
-      setimgPostion(-2080);
-      setActiveDot(3);
+      setimgPostion(-maxImgLength);
+      setActiveDot(sliderImg.length);
     } else {
-      setimgPostion(imgPostion + 1040);
+      setimgPostion(imgPostion + imgLength);
       setActiveDot(activeDot - 1);
+    }
+  };
+
+  const dotOnClick = (id: number) => {
+    setActiveDot(id);
+    if (id > 1) {
+      setimgPostion(-imgLength * (id - 1));
+    } else {
+      setimgPostion(0);
     }
   };
 
@@ -65,12 +76,16 @@ export const Slider = () => {
           </div>
           <div className="carousel__dots-wrap">
             {sliderImg.map(({ id }, index) => (
-              <div
+              <button
+                type="button"
+                onClick={() => dotOnClick(id)}
                 key={id}
                 className={cn('carousel__dot', {
                   carousel__dot_active: activeDot === sliderImg[index].id,
                 })}
-              />
+              >
+                {}
+              </button>
             ))}
           </div>
         </div>

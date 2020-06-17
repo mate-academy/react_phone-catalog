@@ -9,7 +9,7 @@ type Props = {
 };
 
 
-export const CardButton: React.FC<Props> = ({ product, className }) => {
+export const CartButton: React.FC<Props> = ({ product, className }) => {
   const dispatch = useDispatch();
   const productsInCart = useSelector(getCartItems);
 
