@@ -1,0 +1,40 @@
+.breadCrumbs {
+
+  &__list {
+    display: flex;
+    align-items: center;
+  }
+
+  &__item {
+    list-style: none;
+    display: flex;
+  }
+
+  &__item--last {
+    font-family: Mont, sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: #89939a;
+  }
+
+  &__link {
+    text-decoration: none;
+    margin-right: 14px;
+    font-family: Mont, sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: #313237;
+  }
+
+  &__home {
+    display: block;
+  }
+
+  &__arrow {
+    margin-right: 14px;
+  }
+}

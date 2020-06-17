@@ -1,0 +1,11 @@
+.selectors {
+  display: flex;
+
+  & :last-child {
+    margin-right: 0;
+  }
+
+  &__item {
+    margin-right: 16px;
+  }
+}
