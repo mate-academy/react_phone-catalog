@@ -12,3 +12,8 @@ interface Good {
   capacity: string;
   ram: string;
 }
+
+interface CartGood {
+  good: Good;
+  quantity: number;
+}
