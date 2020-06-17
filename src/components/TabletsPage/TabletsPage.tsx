@@ -1,17 +1,5 @@
-// import React from 'react';
-
-// const TabletsPage = () => {
-//   return (
-//     <>
-//       <p>TabletsPage</p>
-
-//     </>
-//   );
-// };
-
-// export default TabletsPage;
-
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
+import { useLocation } from 'react-router-dom';
 import ProductList from '../ProductList/ProductList';
 import { getProducts } from '../../helpers/api';
 import Sort from '../Sort/Sort';
@@ -21,11 +9,20 @@ import './TabletsPage.scss';
 type Props = { product: Product[]};
 const TabletsPage: React.FC<Props> = () => {
   const [tablets, setTablets] = useState<Product[]>([]);
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const query = searchParams.get('query') || '';
 
   useEffect(() => {
     getProducts()
       .then(data => setTablets(data.filter((product: Product) => product.type === 'tablet')));
   }, []);
+
+  const visibleTablets = useMemo(() => {
+    return tablets.filter((tablet) => (
+      (tablet.name + tablet.screen + tablet.capacity).toLowerCase().includes(query.toLowerCase())
+    ));
+  }, [query, tablets]);
 
   return (
 
@@ -34,13 +31,13 @@ const TabletsPage: React.FC<Props> = () => {
         <div className="TabletsPage__title">
           <p className="TabletsPage__name">Tablets</p>
           <span className="TabletsPage__quantity">
-            {tablets.length}
+            {visibleTablets.length}
             {' '}
             models
           </span>
         </div>
         <Sort />
-        <ProductList products={tablets} />
+        <ProductList products={visibleTablets} />
       </div>
     </>
   );

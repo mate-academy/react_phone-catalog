@@ -3,6 +3,7 @@ import Navigation from '../Navigation/Navigation';
 import Favorites from '../Favorites/Favorites';
 import Cart from '../Cart/Cart';
 import './Header.scss';
+import Search from '../Search/Search';
 
 const Header = () => {
   return (
@@ -10,7 +11,9 @@ const Header = () => {
       <div className="header__nav">
         <Navigation />
       </div>
+
       <div className="header__icons">
+        <Search />
         <Favorites />
         <Cart />
       </div>
