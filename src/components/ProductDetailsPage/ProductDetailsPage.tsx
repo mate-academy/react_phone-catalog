@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { useParams, useRouteMatch } from 'react-router-dom';
+import { useParams, useRouteMatch, Redirect } from 'react-router-dom';
 import cn from 'classnames';
 import './ProductDetailsPage.scss';
 
@@ -41,7 +41,7 @@ export const ProductDetailsPage: React.FC = () => {
       setProductDetails(preparedProductDetails);
       setIsLoaded(true);
     } catch (error) {
-      setErrorMessage('Oops! Reload page, please');
+      setErrorMessage('Oops! Reload page, please222');
     }
 
     setIsLoading(false);
@@ -120,6 +120,9 @@ export const ProductDetailsPage: React.FC = () => {
     return value || 'unknown';
   };
 
+  if (isLoaded && productInfo === undefined) {
+    return <Redirect to="/PhoneWasNotFound" />;
+  }
 
   return (
     <>
@@ -132,7 +135,6 @@ export const ProductDetailsPage: React.FC = () => {
               isLoaded={isLoaded}
               errorMessage={errorMessage}
             />
-
           )}
         {isLoaded && productDetails && productInfo && (
           <article className="ProdactPage">

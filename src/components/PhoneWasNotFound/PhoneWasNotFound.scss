@@ -1,0 +1,52 @@
+@import "../../styles/reset";
+@import "../../styles/utils/mixins";
+@import "../../styles/utils/vars";
+
+.PhoneWasNotFoundContainer {
+  max-width: 1136px;
+  margin: 0 auto;
+  padding: 0 15px;
+  text-align: center;
+}
+
+.PhoneWasNotFound {
+
+  &__Title {
+    opacity: 0.5;
+  }
+
+  &__Wrap {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__Img {
+    width: 200px;
+    margin: 0 auto;
+    opacity: 0.5;
+  }
+
+  &__Text {
+    margin-top: 20px;
+    font-weight: bold;
+    opacity: 0.5;
+  }
+
+  &__Btn {
+    margin-top: 30px;
+    height: 40px;
+    width: 176px;
+    border: none;
+    background: $colorPrimary;
+    color: #fff;
+    transition: 0.3s;
+    cursor: pointer;
+
+    &:hover {
+      color: $colorPrimary;
+      background: #fff;
+      border: 1px solid $colorPrimary;
+    }
+  }
+}

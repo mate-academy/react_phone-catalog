@@ -21,7 +21,7 @@ export const AccessoriesPage: React.FC = () => {
           .filter((product: Product) => product.type === 'accessories'));
         setIsLoaded(true);
       } catch (error) {
-        setErrorMessage('Oops! Reload page, please');
+        setErrorMessage('Oops! Reload page, please111');
       } finally {
         setIsLoading(false);
       }
