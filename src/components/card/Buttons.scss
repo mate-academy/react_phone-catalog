@@ -44,7 +44,12 @@ input {
   color: #fff;
   transition: 0.3s;
   cursor: pointer;
-  @include hover(box-shadow, 0 3px 13px rgba(23, 32, 49, 0.26));
+
+  &__:hover {
+    color: #313237;
+    background-color: #ffffff;
+    box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26)
+  };
 
   &--isInCart {
     color: #27ae60;

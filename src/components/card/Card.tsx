@@ -12,7 +12,6 @@ export const Card: React.FC<Props> = ({ good }) => {
     id, name, imageUrl, price, discount, screen, capacity, ram,
   } = good;
 
-
   return (
     <li
       className="Card__item"
