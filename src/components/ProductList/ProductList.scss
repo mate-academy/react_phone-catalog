@@ -112,6 +112,9 @@
     }
 
     &--favorites {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       background-color: $icons-background-color;
       border: 1px solid $border-color;
       width: 40px;
