@@ -4,6 +4,7 @@ import cn from 'classnames';
 import { getProductsFromServer } from '../../helpers/api';
 import { ProducCard } from '../../components/ProductCard/ProducCard';
 import './PhonesPage.scss';
+import { Arrow } from '../../components/Arrow/Arrow';
 
 type Props = {
   type: string;
@@ -67,7 +68,7 @@ export const PhonesPage: React.FC<Props> = ({ type, text }) => {
 
   useEffect(() => {
     getPhonesFromServer();
-  }, [type]);
+  }, []);
 
   const filteredProducts = useMemo(() => {
     const sorted = [...products];
@@ -110,72 +111,87 @@ export const PhonesPage: React.FC<Props> = ({ type, text }) => {
     }
   }, [products, status, page, filter]);
 
-  const buttons = Array(Math.ceil(products.length / +filter)).fill(1);
+  const buttons = products.length
+    ? Array(Math.ceil(products.length / +filter)).fill(1) : [];
 
   return (
     <>
-      <h2 className="product__title">{text}</h2>
-      <div className="product__filters">
-        <select
-          value={status}
-          onChange={changeStatus}
-          className="product__status"
-        >
-          <option value="newest">Newest</option>
-          <option value="oldest">Oldest</option>
-          <option value="alphabetically">Alphabetically</option>
-          <option value="high">High price</option>
-          <option value="low">Low price</option>
-        </select>
-
-        <select
-          value={filter}
-          onChange={changeFilter}
-          className="product__filter"
-        >
-          <option value="4">4</option>
-          <option value="8">8</option>
-          <option value="16">16</option>
-          <option value={products.length}>All</option>
-        </select>
-      </div>
-      <ul className="product-list">
-        {
-          filteredProducts.map(item => <ProducCard listItem={item} key={item.id} />)
-        }
-      </ul>
-      <div className="product__buttons">
-        <button
-          className={cn('product__button')}
-          onClick={() => buttonChangePage(-1)}
-          type="button"
-          disabled={+page - 1 === 0}
-        >
-          {'<'}
-        </button>
-        {
-          buttons.map((_, index) => {
-            return (
-              <button
-                key={Math.random() * 100}
-                className={cn('product__button', { active: index + 1 === +page })}
-                type="button"
-                onClick={() => changePage(index + 1)}
+      {
+        !!products.length
+        && (
+          <>
+            <h2 className="product__title">{text}</h2>
+            <div className="product__filters">
+              <select
+                value={status}
+                onChange={changeStatus}
+                className="product__status"
               >
-                {index + 1}
-              </button>
-            );
-          })
-        }
-        <button
-          className={cn('product__button')}
-          onClick={() => buttonChangePage(1)}
-          type="button"
-          disabled={buttons.length === +page}
-        >
-          {'>'}
-        </button>
-      </div>
+                <option value="newest">Newest</option>
+                <option value="oldest">Oldest</option>
+                <option value="alphabetically">Alphabetically</option>
+                <option value="high">High price</option>
+                <option value="low">Low price</option>
+              </select>
+
+              <select
+                value={filter}
+                onChange={changeFilter}
+                className="product__filter"
+              >
+                <option value="4">4</option>
+                <option value="8">8</option>
+                <option value="16">16</option>
+                <option value={products.length}>All</option>
+              </select>
+            </div>
+            <ul className="product-list">
+              {
+                filteredProducts.map(item => <ProducCard listItem={item} key={item.id} />)
+              }
+            </ul>
+            {
+              buttons.length - 1
+              && (
+                <div className="product__buttons">
+                  <button
+                    className={cn(
+                      'product__button',
+                      'product__button--left',
+                      { none: +page - 1 === 0 },
+                    )}
+                    onClick={() => buttonChangePage(-1)}
+                    type="button"
+                  >
+                    <Arrow />
+                  </button>
+                  {
+                    buttons.map((_, index) => {
+                      return (
+                        <button
+                          key={Math.random() * 100}
+                          className={cn('product__button', { active: index + 1 === +page })}
+                          type="button"
+                          onClick={() => changePage(index + 1)}
+                        >
+                          {index + 1}
+                        </button>
+                      );
+                    })
+                  }
+                  <button
+                    className={cn('product__button', { none: buttons.length === +page })}
+                    onClick={() => buttonChangePage(1)}
+                    type="button"
+                  >
+                    <Arrow />
+                  </button>
+                </div>
+              )
+            }
+          </>
+        )
+      }
       {
         !products.length
         && <h1>Product out of stock</h1>

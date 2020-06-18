@@ -3,6 +3,7 @@ import { Slider } from './Slider/Slider';
 import { PhoneSlider } from './PhoneSlider/PhoneSlider';
 import { Category } from './Category/Category';
 
+
 type Props = {
   brandList: Product[];
   hotList: Product[];

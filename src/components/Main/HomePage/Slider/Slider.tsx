@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import cn from 'classnames';
 
 import './Slider.scss';
+import { Arrow } from '../../../Arrow/Arrow';
 
 const imageArray = [
   {
@@ -54,7 +55,7 @@ export const Slider = () => {
           onClick={() => changeImg(step, currentId)}
           disabled={currentId === 0}
         >
-          {'<'}
+          <Arrow />
         </button>
         <div className="slider">
           <ul className="slider-list" style={transformImage}>
@@ -76,7 +77,7 @@ export const Slider = () => {
           onClick={() => changeImg(-step, currentId)}
           disabled={currentId === imageArray.length - 1}
         >
-          {'>'}
+          <Arrow />
         </button>
       </div>
       <div className="slider-dots">

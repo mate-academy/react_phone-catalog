@@ -17,35 +17,7 @@
     color: #fff;
 
     &--left {
-      &::after {
-        content: "";
-        position: absolute;
-
-        width: 5px;
-        height: 5px;
-
-        border-left: 1px solid #313237;
-        border-bottom: 1px solid #313237;
-
-        transform: rotate(45deg);
-
-      }
-    }
-
-    &--right {
-      &::after {
-        content: "";
-        position: absolute;
-
-        width: 5px;
-        height: 5px;
-
-        border-left: 1px solid #313237;
-        border-bottom: 1px solid #313237;
-
-        transform: rotate(225deg) translateX(100%);
-
-      }
+      transform: rotate(-180deg);
     }
   }
 }

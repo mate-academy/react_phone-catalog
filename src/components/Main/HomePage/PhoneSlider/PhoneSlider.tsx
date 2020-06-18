@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ProducCard } from '../../../ProductCard/ProducCard';
 import './PhoneSlider.scss';
+import { Arrow } from '../../../Arrow/Arrow';
 
 type Props = {
   list: Product[];
@@ -40,7 +41,7 @@ export const PhoneSlider: React.FC<Props> = ({ list, secName }) => {
               onClick={() => changeSliderItem(step)}
               disabled={currentId === 0}
             >
-              {'<'}
+              <Arrow />
             </button>
             <button
               className="phone-slider__button phone-slider__button--right"
@@ -48,7 +49,7 @@ export const PhoneSlider: React.FC<Props> = ({ list, secName }) => {
               onClick={() => changeSliderItem(-step)}
               disabled={currentId + 4 >= list.length - 1}
             >
-              {'>'}
+              <Arrow />
             </button>
           </div>
         </div>

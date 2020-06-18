@@ -1,5 +1,7 @@
 import React from 'react';
 import './ProducCard.scss';
+import { Link } from 'react-router-dom';
+import { Buttons } from '../Buttons/Buttons';
 
 type Props = {
   listItem: Product;
@@ -10,7 +12,7 @@ export const ProducCard: React.FC<Props> = ({ listItem }) => {
     // age,
     capacity,
     discount,
-    // id,
+    id,
     imageUrl,
     name,
     price,
@@ -50,9 +52,11 @@ export const ProducCard: React.FC<Props> = ({ listItem }) => {
             alt={name}
             className="product-card__image"
           />
-          <h2 className="product-card__descr">
-            {getCurrentName(name)}
-          </h2>
+          <Link to={`/product/${id}`}>
+            <h2 className="product-card__descr">
+              {getCurrentName(name)}
+            </h2>
+          </Link>
           <h3 className="product-card__title">
             {
               `$${currentPrice}`
@@ -90,14 +94,7 @@ export const ProducCard: React.FC<Props> = ({ listItem }) => {
               </span>
             </div>
           </div>
-          <div className="product-card__buttons">
-            <button type="button" className="button-cart">
-              Add to cart
-            </button>
-            <button type="button" className="button-favorite">
-              <img src="img/favorite.svg" alt="favorite" />
-            </button>
-          </div>
+          <Buttons />
         </div>
       </article>
     </li>

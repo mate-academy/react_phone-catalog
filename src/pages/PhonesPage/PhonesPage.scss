@@ -33,6 +33,10 @@
     line-height: 21px;
     color: $primary;
 
+    &--left {
+      transform: rotate(-180deg);
+    }
+
     &.active {
       background-color: $primary;
       border: 1px solid $primary;
@@ -69,4 +73,8 @@
 
     width: 128px;
   }
+}
+
+.none {
+  visibility: hidden;
 }

@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import './Main.scss';
 import { HomePage } from './HomePage/HomePage';
 import { PhonesPage } from '../../pages/PhonesPage/PhonesPage';
+import { ProductPage } from '../../pages/ProductPage/ProductPage';
 
 type Props = {
   productsBrand: Product[];
@@ -34,6 +35,7 @@ export const Main: React.FC<Props> = (
         />
         <Route
           path="/phones"
+          key="phone"
           render={() => (
             <PhonesPage
               type="phone"
@@ -43,6 +45,7 @@ export const Main: React.FC<Props> = (
         />
         <Route
           path="/tablets"
+          key="tablet"
           render={() => (
             <PhonesPage
               type="tablet"
@@ -52,12 +55,17 @@ export const Main: React.FC<Props> = (
         />
         <Route
           path="/accessories"
+          key="accessories"
           render={() => (
             <PhonesPage
               text="Accessories"
               type="accessories"
             />
           )}
+        />
+        <Route
+          path="/product/:productId"
+          render={() => <ProductPage />}
         />
         <Route path="/favorite" render={() => <h1>Favorite page</h1>} />
         <Route path="/cart" render={() => <h1>Cart page</h1>} />
