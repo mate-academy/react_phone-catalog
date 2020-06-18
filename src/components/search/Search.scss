@@ -1,0 +1,20 @@
+.Search__input {
+  width: 320px;
+  height: 64px;
+  padding-left: 20px;
+  border: 1px solid #e2e6e9;
+  outline: none;
+
+  &::placeholder {
+    font-family: "Mont-Regular";
+
+font-weight: 600;
+font-size: 14px;
+color: #B4BDC4;
+  }
+
+  &:hover {
+    border: 1px solid rgb(171, 172, 173);
+  }
+
+}

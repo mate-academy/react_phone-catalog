@@ -1,6 +1,5 @@
 import React from 'react';
 import { Card } from '../card/Card';
-import './GoodList.scss';
 
 type Props = { goods: Good[] };
 

@@ -1,18 +1,17 @@
 import React, { useState } from 'react';
-import CN from "classnames";
 import { useSelector } from 'react-redux';
-import './HotPrice.scss';
+import CN from "classnames";
 import { Card } from '../card/Card';
 import { getGoods } from '../../store';
-
-import "./HotPrice.scss";
+import "./Brands.scss";
 
 type Props = { wigthSlides: number }
 
 const HotPrice: React.FC<Props> = ({ wigthSlides }) => {
-const goods = useSelector(getGoods);
+  const goods = useSelector(getGoods);
   const [imgPosition, setImgPosition] = useState<number>(0);
   const sliderLength = goods.length;
+
   const count = sliderLength / 4;
   const [currentSlide, setCurrentSlide] = useState<number>(0);
   const [stateNexttBtn, setStateNextBtn] = useState<boolean>(true);
@@ -41,7 +40,7 @@ const goods = useSelector(getGoods);
     }
   };
 
-   return (
+  return (
     <div>
       <div className="CardSliderBtn__wrapper">
         <button
@@ -64,13 +63,12 @@ const goods = useSelector(getGoods);
           onClick={() => handleNextSlide()}
         ></button>
       </div>
-
       <div className="CardSlider__container">
         <ul
           className="CardSlider__list "
           style={{ transform: `translateX(${imgPosition}%)` }}
         >
-          {goods.filter(good => good.discount !== 0).map(good =>
+          {goods.map(good =>
             <div className="CardSlider__item">
               < Card good={good} />
             </div>
@@ -78,6 +76,12 @@ const goods = useSelector(getGoods);
         </ul>
       </div>
 
+      {/* <div className="Card">
+        <ul className="Card__list">
+          {goods.map(good =>
+            < Card good={good} />)}
+        </ul>
+      </div> */}
     </div>
   );
 };

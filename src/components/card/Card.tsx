@@ -3,12 +3,15 @@ import React from 'react';
 import ButtonFavor from './ButtonToFavorites';
 import ButtonToCart from './ButtonToCart';
 
+import './Card.scss';
+
 type Props = { good: Good };
 
 export const Card: React.FC<Props> = ({ good }) => {
   const {
     id, name, imageUrl, price, discount, screen, capacity, ram,
   } = good;
+
 
   return (
     <li
