@@ -1,5 +1,9 @@
 import React from 'react';
+
 import { Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { getCart } from '../../store';
+import { deleteFromCart } from '../../store/cart';
 
 const CartLink = () => {
   return (
@@ -16,8 +20,34 @@ const CartLink = () => {
 };
 
 export const Cart = () => {
+  const cart = useSelector(getCart);
+  const dispatch = useDispatch();
+
   return (
-    <div>Cart</div>
+    <>
+      <h1>Cart</h1>
+      <div className="Card">
+        <ul className="Cart__List">
+          {cart.map(item => (
+            <li key={item.good.id} className="CartItem">
+
+              <div className="CartItem__Photo-Container">
+                <img alt="card" src={item.good.imageUrl} className="CartItem__Photo" />
+              </div>
+              <p className="CartItem__TitleProduct">{item.good.name}</p>
+              <button
+                type="button"
+                className="CartItem__Btn RemoveBtn"
+                aria-label="Remove Button"
+                onClick={() => dispatch(deleteFromCart(item.good))}
+              >
+                Delete from Cart
+              </button>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </>
   );
 };
 

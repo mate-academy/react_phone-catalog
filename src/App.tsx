@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import * as api from './provider/api';
-// import { getGoods } from './store';
 import { initGood } from './store/good';
 
 import Header from './components/header/Header';
@@ -27,7 +26,6 @@ const getAppData = async (): Promise<Good[]> => {
 
 const App = () => {
   const dispatch = useDispatch();
-  // const goods = useSelector(getGoods);
 
   const initData = () => {
        getAppData()

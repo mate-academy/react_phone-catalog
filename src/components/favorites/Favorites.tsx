@@ -1,6 +1,9 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import './Favorites.scss';
+import { getFavorites } from '../../store';
+import { Card } from '../card/Card';
 
 const FavoritesLink = () => {
   return (
@@ -15,8 +18,20 @@ const FavoritesLink = () => {
 };
 
 export const Favorites = () => {
+  const favorites = useSelector(getFavorites);
+
   return (
-    <div>Favorites</div>
+    <>
+      <h1>Favorites</h1>
+      <div className="Card">
+        <ul className="Card__list">
+          {favorites.map(good => (
+            <Card good={good} />
+          ))}
+        </ul>
+      </div>
+    </>
+
   );
 };
 
