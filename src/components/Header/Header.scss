@@ -1,0 +1,43 @@
+.header {
+  height: 64px;
+  display: flex;
+  align-items: center;
+
+  box-shadow: 0 1px 0 #e2e6e9;
+
+  &-right {
+    display: flex;
+
+    &__favorite,
+    &__cart {
+      width: 64px;
+      height: 64px;
+      position: relative;
+
+      box-shadow: -1px 0 0 #e2e6e9;
+    }
+
+    &__item {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+
+      transform: translate(-50%, -50%);
+    }
+
+    &__link {
+      &.active {
+        &::after {
+          content: "";
+          position: absolute;
+          width: 100%;
+          height: 3px;
+          background-color: #000;
+
+          bottom: 0;
+          left: 0;
+        }
+      }
+    }
+  }
+}

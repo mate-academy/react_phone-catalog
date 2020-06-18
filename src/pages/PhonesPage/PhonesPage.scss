@@ -1,0 +1,80 @@
+@import "../../units";
+
+.product {
+
+  &-list {
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+
+    max-width: 1152px;
+
+    list-style: none;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  &__buttons {
+    width: fit-content;
+    margin: 0 auto 80px;
+  }
+
+  &__button {
+    background-color: #fff;
+    border: 1px solid $elements;
+    box-sizing: border-box;
+
+    width: 32px;
+    height: 32px;
+    margin-right: 8px;
+
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 21px;
+    color: $primary;
+
+    &--left {
+      transform: rotate(-180deg);
+    }
+
+    &.active {
+      background-color: $primary;
+      border: 1px solid $primary;
+      color: #fff;
+    }
+
+    &:first-child {
+      margin-left: 16px;
+    }
+
+    &:last-child {
+      margin-right: 16px;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__filters {
+    max-width: 1152px;
+    margin: 0 auto 24px;
+  }
+
+  &__status {
+    @include select-styles;
+
+    width: 176px;
+    margin-right: 16px;
+  }
+
+  &__filter {
+    @include select-styles;
+
+    width: 128px;
+  }
+}
+
+.none {
+  visibility: hidden;
+}

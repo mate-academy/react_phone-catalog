@@ -1,0 +1,105 @@
+.product-card {
+  width: 272px;
+  height: 507px;
+
+  border: 1px solid #e2e6e9;
+  box-sizing: border-box;
+  margin-bottom: 40px;
+
+  &__container {
+    padding: 24px;
+  }
+
+  &__image {
+    display: block;
+    margin: 0 auto 24px;
+    height: 208px;
+    width: 208px;
+  }
+
+  &__descr {
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 21px;
+    margin-top: 0;
+    height: 42px;
+    color: black;
+  }
+
+  &__title {
+    font-weight: bolder;
+    font-size: 22px;
+    line-height: 140%;
+    color: #313237;
+    margin-bottom: 7px;
+    margin-top: 0;
+  }
+
+  &__discount {
+    font-weight: normal;
+    text-decoration-line: line-through;
+    color: #89939a;
+    margin-left: 8px;
+  }
+
+  &__specifications {
+    border-top: 1px solid #e2e6e9;
+    padding: 16px 0;
+  }
+
+  &__stats {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__item {
+    &--left {
+      font-weight: normal;
+      font-size: 12px;
+      line-height: 15px;
+      color: #89939a;
+    }
+
+    &--right {
+      font-weight: bold;
+      font-size: 12px;
+      line-height: 15px;
+      color: #313237;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.button-cart {
+  background-color: #313237;
+  width: 176px;
+  height: 40px;
+  border: none;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 21px;
+  color: #fff;
+  letter-spacing: 0.04em;
+}
+
+.button-favorite {
+  border: 1px solid #b4bdc4;
+  box-sizing: border-box;
+  width: 40px;
+  height: 40px;
+  background-color: #fff;
+}
