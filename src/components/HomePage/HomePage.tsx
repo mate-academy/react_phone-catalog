@@ -1,10 +1,12 @@
 import React from 'react';
+import Slider from '../Slider/Slider';
+import ShopByCategories from '../ShopByCategories/ShopByCategories';
 
 const HomePage = () => {
   return (
     <>
-      <p>HomePage</p>
-
+      <Slider />
+      <ShopByCategories />
     </>
   );
 };

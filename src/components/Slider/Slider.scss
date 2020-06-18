@@ -1,0 +1,19 @@
+@import "../../styles/vars.scss";
+
+.Slider {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 40px;
+
+  &__container {
+    margin: 0 16px;
+  }
+
+  &__button {
+    height: 400px;
+    background-color: $buttons-background-color;
+    border-color: $border-color;
+  }
+
+}
