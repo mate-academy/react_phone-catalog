@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './App.scss';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { getProducts } from './helpers/api';
 import Header from './components/Header/Header';
@@ -58,6 +58,7 @@ const App: React.FC = () => {
               </Route>
             );
           })}
+          <Redirect exact from="/" to="/home" />
           <Route path="/home" exact component={Home} />
           <Route path="/phones" exact component={MobilePhonesPage} />
           <Route path="/tablets" exact component={TabletsPage} />
