@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.scss';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-
 import { getProducts } from './helpers/api';
 import Header from './components/Header/Header';
 import { Home } from './components/Home/Home';
@@ -24,11 +23,9 @@ const App: React.FC = () => {
   const itemsCart = useSelector(getItems);
 
   getProducts().then(data => setProducts(data));
-
   useEffect(() => {
     localStorage.setItem('favorites', JSON.stringify([...favoriteProducts]));
   }, [favoriteProducts]);
-
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify([...itemsCart]));
   }, [itemsCart]);
@@ -37,9 +34,7 @@ const App: React.FC = () => {
     <div className="App">
       <Header />
       <main className="Main">
-
         <Switch>
-
           {products.map((product: Product) => {
             let base = '/';
 
@@ -63,23 +58,17 @@ const App: React.FC = () => {
               </Route>
             );
           })}
-
-          <Redirect exact from="/" to="/home" />
-
           <Route path="/home" exact component={Home} />
           <Route path="/phones" exact component={MobilePhonesPage} />
           <Route path="/tablets" exact component={TabletsPage} />
           <Route path="/accessories" component={AccessoriesPage} />
-
           <Route path="/favorites" exact component={FavoritesPage} />
           <Route path="/cart" exact component={CartPage} />
           <Route path="/checkout" exact component={Checkout} />
-          <Route path="/PhoneWasNotFound" exact component={PhoneWasNotFound} />
-
-          <Route exact path="*" component={NotFoundPage} />
-
+          <Route path="/home/:productId" exact component={ProductDetailsPage} />
+          <Route path="/phoneWasNotFound" exact component={PhoneWasNotFound} />
+          <Route path="*" component={NotFoundPage} />
         </Switch>
-
       </main>
       <Footer />
     </div>
