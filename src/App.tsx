@@ -1,7 +1,7 @@
 import React from 'react';
 
 import './App.scss';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
 import HomePage from './components/HomePage/HomePage';
@@ -14,6 +14,7 @@ const App = () => (
   <div className="App">
     <Header />
     <Switch>
+      <Redirect exact from="/" to="/home" />
       <Route path="/home" exact component={HomePage} />
       <Route path="/phones" exact component={PhonesPage} />
       <Route path="/tablets" component={TabletsPage} />

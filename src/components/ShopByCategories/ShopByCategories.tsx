@@ -6,14 +6,12 @@ const ShopByCategories = () => {
   return (
 
     <>
-
-
       <div className="ShopByCategories">
         <p className="ShopByCategories__title">Shop By Categories</p>
         <div className="ShopByCategories__wrapper">
           <div className="ShopByCategories__item">
             <Link to="phones" className="ShopByCategories__link">
-              {/* <div className="ShopByCategories__wrapper"> */}
+
               <div className="ShopByCategories__phones">
                 <img
                   src="./img/categories/phones.svg"
@@ -28,13 +26,13 @@ const ShopByCategories = () => {
                 {' '}
                 models
               </p>
-              {/* </div> */}
+
             </Link>
           </div>
 
           <div className="ShopByCategories__item">
             <Link to="tablets" className="ShopByCategories__link">
-              {/* <div className="ShopByCategories__wrapper"> */}
+
               <div className="ShopByCategories__tablets">
                 <img
                   src="./img/categories/tablets.svg"
@@ -49,13 +47,13 @@ const ShopByCategories = () => {
                 {' '}
                 models
               </p>
-              {/* </div> */}
+
             </Link>
           </div>
 
           <div className="ShopByCategories__item">
             <Link to="accessories" className="ShopByCategories__link">
-              {/* <div className="ShopByCategories__wrapper"> */}
+
               <div className="ShopByCategories__accessories">
                 <img
                   src="./img/categories/accessories.svg"
@@ -70,7 +68,7 @@ const ShopByCategories = () => {
                 {' '}
                 models
               </p>
-              {/* </div> */}
+
             </Link>
           </div>
         </div>

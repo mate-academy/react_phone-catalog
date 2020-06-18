@@ -33,6 +33,12 @@
     height: 200px;
     background-size: contain;
     background-position: center;
+    transition: transform $hover-transition;
+
+  }
+
+  &__img:hover {
+    transform: scale(1.1);
 
   }
 
@@ -93,8 +99,11 @@
       font-size: 14px;
       line-height: 21px;
       font-weight: 600;
+      cursor: pointer;
       background-color: $buttons-background-color;
       color: $buttons-text-color;
+      border: none;
+      transition: background-color $hover-transition;
     }
 
     &--cart:hover {
@@ -103,8 +112,11 @@
     }
 
     &--favorites {
+      background-color: $icons-background-color;
+      border: 1px solid $border-color;
       width: 40px;
       height: 40px;
+      cursor: pointer;
 
     }
   }
