@@ -19,13 +19,13 @@ export const Header = () => (
               <NavLink className="list__link" to="/">Home</NavLink>
             </li>
             <li className="list__item">
-              <NavLink className="list__link" to="/phones">phones</NavLink>
+              <NavLink className="list__link" to="/phones">Рhones</NavLink>
             </li>
             <li className="list__item">
-              <NavLink className="list__link" to="/tablets">tablets</NavLink>
+              <NavLink className="list__link" to="/tablets">Tablets</NavLink>
             </li>
             <li className="list__item">
-              <NavLink className="list__link" to="/accessories">accessories</NavLink>
+              <NavLink className="list__link" to="/accessories">Accessories</NavLink>
             </li>
           </ul>
           <ul className="list">

@@ -53,7 +53,11 @@ export const BigCarousel: React.FC<Props> = ({ itemWidth }) => {
       <div className="container">
         <div className="mainCarousel">
           <div className="bigCarousel">
-            <button type="button" className="bigArrow leftArrow" onClick={() => handlePrevSlide()} />
+            <button
+              type="button"
+              className="bigArrow leftArrow"
+              onClick={() => handlePrevSlide()}
+            />
             <div className="bigCarousel__container">
               <div className="hidden__list" style={{ transform: `translateX(${imgPosition}px)` }}>
                 {slides.map(item => (
@@ -61,7 +65,11 @@ export const BigCarousel: React.FC<Props> = ({ itemWidth }) => {
                 ))}
               </div>
             </div>
-            <button type="button" className="bigArrow rightArrow" onClick={() => handleNextSlide()} />
+            <button
+              type="button"
+              className="bigArrow rightArrow"
+              onClick={() => handleNextSlide()}
+            />
           </div>
           <div className="indicators">
             {slides.map((item, index) => (

@@ -9,7 +9,8 @@ export const Cart = () => {
     <>
       <NavLink to="/cart">
         <li className="nav nav__bag" />
-        {productInCart.length > 0 && <span className="nav__favorite--span">{productInCart.length}</span>}
+        {productInCart.length > 0
+        && <span className="nav__favorite--span">{productInCart.length}</span>}
       </NavLink>
     </>
   );

@@ -25,6 +25,8 @@
   }
 
   &__itemQuantity {
+    width: 96px;
+    margin-right: 16px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -44,6 +46,7 @@
 
 .list {
   &__cartItem {
+    width: 640px;
     display: flex;
     flex-direction: row;
     padding: 32px 24px;

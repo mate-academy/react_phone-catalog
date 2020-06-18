@@ -15,16 +15,11 @@ import { CartPage } from './components/Cart/CartPage';
 
 const App: React.FC = () => {
   const [products, setProducts] = useState<ProductItem[]>([]);
-  const [phones, setPhones] = useState<ProductItem[]>([]);
-  const [tablets, setTablets] = useState<ProductItem[]>([]);
-  // const [accessories] = useState<ProductItem[]>([]);
 
   useEffect(() => {
     getProducts()
       .then(data => {
         setProducts(data);
-        setPhones(data.filter((product: ProductItem) => product.type === 'phone'));
-        setTablets(data.filter((product: ProductItem) => product.type === 'tablet'));
         // setTablets(data.filter((product: ProductItem) => product.type === 'accessories'));
       });
   }, []);
@@ -47,14 +42,14 @@ const App: React.FC = () => {
                 exact
                 path="/phones"
                 render={() => (
-                  <PhonesPage phones={phones} />
+                  <PhonesPage />
                 )}
               />
               <Route
                 exact
                 path="/tablets"
                 render={() => (
-                  <TabletsPage tablets={tablets} />
+                  <TabletsPage />
                 )}
               />
               <Route path="/favorite" exact component={FavouritePage} />
