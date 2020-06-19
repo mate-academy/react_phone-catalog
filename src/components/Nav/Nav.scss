@@ -44,6 +44,17 @@
 
   &__link:hover {
     color: $dark-gray-color;
-    border-bottom: 3px solid $dark-gray-color;
+
+    &::after {
+      position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: $dark-gray-color;
+        content: "";
+    }
   }
+
+
 }

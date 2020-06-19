@@ -74,12 +74,6 @@ export const Sort = () => {
             placeholder="Choose"
             onChange={selectQuantity}
           />
-
-           {/*<select className="filter__selected sorted" onChange={(event) => selectQuantity(event)}>*/}
-           {/* <option value="16" className="filter__option">16</option>*/}
-           {/* <option value="8" className="filter__option">8</option>*/}
-           {/* <option value="4" className="filter__option">4</option>*/}
-           {/*</select>*/}
         </form>
       </div>
     </>
