@@ -1,9 +1,22 @@
-import React, { ChangeEvent } from 'react';
+import React from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { Dropdown } from 'semantic-ui-react';
 import { setPerPage } from '../../store/pagination';
 import { sortBy } from '../../store/sort';
+import 'semantic-ui-css/semantic.min.css';
 
+const options = [
+  { key: 'Newest', text: 'Newest', value: 'age' },
+  { key: 'Alphabetically', text: 'Alphabetically', value: 'name' },
+  { key: 'Cheapest', text: 'Cheapest', value: 'price' },
+];
+
+const numbers = [
+  { key: 4, text: 4, value: 4 },
+  { key: 8, text: 8, value: 8 },
+  { key: 16, text: 16, value: 16 },
+];
 
 export const Sort = () => {
   const history = useHistory();
@@ -11,8 +24,10 @@ export const Sort = () => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
 
-  const sorting = (event: ChangeEvent<HTMLSelectElement>) => {
-    const { value } = event.target;
+  const sorting = (event: any, data: any) => {
+    let { value } = event.target;
+
+    value = data.value;
 
     searchParams.set('sort', value);
 
@@ -23,9 +38,10 @@ export const Sort = () => {
     dispatch(sortBy(value));
   };
 
-  const selectQuantity = (event: ChangeEvent<HTMLSelectElement>) => {
-    const { value } = event.target;
+  const selectQuantity = (event: any, data: any) => {
+    let { value } = event.target;
 
+    value = data.value;
     searchParams.set('perPage', value);
 
     history.push({
@@ -38,21 +54,32 @@ export const Sort = () => {
   return (
     <>
       <div className="container__filter filter">
+
         <form className="filter__sort-by">
           <p className="filter__text">Sort by</p>
-          <select className="filter__sorted sorted" onChange={(event) => sorting(event)}>
-            <option value="age" className="filter__option">Newest</option>
-            <option value="name" className="filter__option">Alphabetically</option>
-            <option value="price" className="filter__option">Cheapest</option>
-          </select>
+          <Dropdown
+            options={options}
+            selection
+            placeholder="Choose"
+            onChange={sorting}
+          />
         </form>
+
         <form className="filter__sort-by">
           <p className="filter__text">Items on page</p>
-          <select className="filter__selected sorted" onChange={(event) => selectQuantity(event)}>
-            <option value="16" className="filter__option">16</option>
-            <option value="8" className="filter__option">8</option>
-            <option value="4" className="filter__option">4</option>
-          </select>
+          <Dropdown
+            className="filter__selected"
+            options={numbers}
+            selection
+            placeholder="Choose"
+            onChange={selectQuantity}
+          />
+
+           {/*<select className="filter__selected sorted" onChange={(event) => selectQuantity(event)}>*/}
+           {/* <option value="16" className="filter__option">16</option>*/}
+           {/* <option value="8" className="filter__option">8</option>*/}
+           {/* <option value="4" className="filter__option">4</option>*/}
+           {/*</select>*/}
         </form>
       </div>
     </>

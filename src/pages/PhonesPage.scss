@@ -31,8 +31,8 @@
 
 .container__filter {
   display: grid;
-  grid-template-columns: 176px 128px;
-  gap: 16px;
+  grid-template-columns: 12vw 12vw;
+  gap: 5px;
 }
 
 .filter {
@@ -44,7 +44,7 @@
   }
 
   &__sorted {
-    width: 176px;
+    width: 10px;
   }
 
   &__selected {
@@ -62,3 +62,8 @@
   border: 1px solid $light-gray;
   box-sizing: border-box;
 }
+
+.ui.selection.dropdown {
+  min-width: 8vw;
+}
+

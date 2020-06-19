@@ -23,6 +23,7 @@ export const PhonesPage = () => {
   const perPage = useSelector(getPerPage);
   const pageNumbers = Math.ceil(phonesQuatnity / perPage);
 
+  console.log(pageNumbers)
   useEffect(() => {
     window.scrollTo({ top: 0 });
   }, []);
@@ -50,12 +51,11 @@ export const PhonesPage = () => {
             <div>
               {
                 phonesQuatnity > perPage
-          && <Pagination pageNumbers={pageNumbers} />
+                && <Pagination pageNumbers={pageNumbers} />
               }
             </div>
           </section>
         )}
-
     </>
   );
 };
