@@ -5,19 +5,18 @@
 
   &__list {
     display: grid;
-    grid-template-columns: repeat(4, 270px);
+    grid-template-columns: repeat(4, 272px);
     grid-gap: 16px;
     max-width: 1440px;
     justify-content: center;
-    list-style: none;
-
   }
 
   &__item {
     box-sizing: border-box;
     padding: 30px 24px 24px;
-    width: 270px;
+    width: 272px;
     border: 1px solid $elements-color;
+    margin-right: 25px;
   }
 
   &__name {
@@ -31,6 +30,7 @@
   &__img {
     width: 200px;
     height: 200px;
+
     background-size: contain;
     background-position: center;
     transition: transform $hover-transition;
@@ -39,6 +39,7 @@
 
   &__img:hover {
     transform: scale(1.1);
+    cursor: pointer;
 
   }
 

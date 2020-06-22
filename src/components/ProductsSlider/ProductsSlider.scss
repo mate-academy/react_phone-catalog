@@ -1,0 +1,37 @@
+@import "../../styles/vars.scss";
+
+.ProductsSlider {
+  max-width: 1140px;
+  margin: 40px auto;
+
+  &__container {
+    overflow: hidden;
+    width: 1140px;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: row;
+    transition: $hover-transition;
+  }
+
+  &__buttons {
+    text-align: end;
+
+  }
+
+  &__button {
+    height: 32px;
+    margin: auto;
+    border: 1px solid $border-color;
+    background-color: $buttons-slider-color;
+    border-color: $border-color;
+    cursor: pointer;
+
+    transition: background-color $hover-transition ;
+
+    &:hover {
+      background-color: rgb(246, 241, 241);
+    }
+  }
+}

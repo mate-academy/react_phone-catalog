@@ -10,7 +10,7 @@ const ProductCard: React.FC<Props> = ({ product }) => {
   const priceWithDiscount = (price - (price * (discount / 100)));
 
   return (
-    <>
+    <div className="ProductCard__item">
       <img
         src={`./${imageUrl}`}
         alt={name}
@@ -23,11 +23,13 @@ const ProductCard: React.FC<Props> = ({ product }) => {
           $
           {priceWithDiscount}
         </span>
-        <span className="ProductCard__price--withoutDiscount">
-          {' '}
-          $
-          {price}
-        </span>
+        {discount !== 0 && (
+          <span className="ProductCard__price--withoutDiscount">
+            {' '}
+            $
+            {price}
+          </span>
+        )}
       </div>
       <ul className="ProductCard__description">
         <li className="ProductCard__element">
@@ -55,7 +57,7 @@ const ProductCard: React.FC<Props> = ({ product }) => {
         </button>
 
       </div>
-    </>
+    </div>
 
   );
 };

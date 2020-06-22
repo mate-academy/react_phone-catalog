@@ -10,9 +10,9 @@ const ProductList: React.FC<Props> = ({ products }) => {
     <div className="ProductCard">
       <ul className="ProductCard__list">
         {products.map(product => (
-          <li className="ProductCard__item" key={product.id}>
+          <div key={product.id}>
             <ProductCard product={product} />
-          </li>
+          </div>
         ))}
       </ul>
     </div>
