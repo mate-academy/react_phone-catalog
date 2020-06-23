@@ -216,9 +216,11 @@ export const PhonesPage: React.FC = () => {
 
       </div>
       <div className="products__list">
-        {visibleItemsOnPage.map(product => (
-          <ProductCard product={product} />
-        ))}
+        {visibleItemsOnPage.map(product => {
+return (<ProductCard product={product} type={product.type} />
+)
+          }
+        )}
       </div>
       <Pagination pageCount={pageCount} />
     </div>

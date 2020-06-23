@@ -3,7 +3,6 @@ import { NavLink } from 'react-router-dom';
 import { FavProductsContext } from './FavProductsContext';
 import './Favourite.scss';
 
-
 export const Favourite = () => {
   const { favourites } = useContext(FavProductsContext);
 

@@ -75,7 +75,7 @@ export const ProductCarousel: React.FC<Props> = ({ products, title, wigthSlides 
           <div className="ProductCarousel__container">
             <div className="ProductCarousel__list" style={{ transform: `translateX(${imgPosition}%)` }}>
               {products.map(product => (
-                <ProductCard product={product} key={product.id} />
+                <ProductCard product={product} key={product.id} type={product.type} />
               ))}
             </div>
           </div>

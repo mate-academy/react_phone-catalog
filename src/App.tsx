@@ -12,10 +12,11 @@ import { HomePage } from './components/HomePage';
 import { PhonesPage } from './components/ProductPage/PhonesPage';
 import { FavouritePage } from './components/Favourite/FavouritePage';
 import { CartPage } from './components/Cart/CartPage';
+import { ProductInfo } from './components/ProductPage/ProductInfo';
 
 const App: React.FC = () => {
   const [products, setProducts] = useState<ProductItem[]>([]);
-
+  // const { match } = useRouteMatch<any>();
   useEffect(() => {
     getProducts()
       .then(data => {
@@ -23,7 +24,7 @@ const App: React.FC = () => {
         // setTablets(data.filter((product: ProductItem) => product.type === 'accessories'));
       });
   }, []);
-
+  // var searchParams = new URLSearchParams();
   return (
     <div className="App">
       <FavContextWrap>
@@ -51,6 +52,20 @@ const App: React.FC = () => {
                 render={() => (
                   <TabletsPage />
                 )}
+              />
+              <Route
+                path={['/phone/:productId?', '/tablet/:productId?', '/accessorie/:productId?']}
+                render={({ match }) => {
+                  const prod = products.find(item => item.id === match.params.productId);
+
+                  if (prod) {
+                    return (
+                      <ProductInfo product={prod} />
+                    );
+                  }
+
+                  return <HomePage products={products} />;
+                }}
               />
               <Route path="/favorite" exact component={FavouritePage} />
               <Route path="/cart" exact component={CartPage} />
