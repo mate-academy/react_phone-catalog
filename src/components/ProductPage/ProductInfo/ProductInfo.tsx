@@ -5,6 +5,7 @@ import '../ProductCard/ProductCard.scss';
 import { FavProductsContext } from '../../Favourite/FavProductsContext';
 import { CartContext } from '../../Cart/CartContext';
 import { ProductCarousel } from '../../ProductCarousel';
+import { BreadCrumbs } from '../../BreadCrumbs';
 
 type Props = {
   product: ProductItem;
@@ -21,6 +22,7 @@ export const ProductInfo: React.FC<Props> = ({
   return (
     <section className="productsInfo">
       <div className="container">
+        <BreadCrumbs />
         <h2 className="productsInfo__title">
           {product.name}
         </h2>
@@ -33,16 +35,16 @@ export const ProductInfo: React.FC<Props> = ({
                 {/*    <img src={`./img/phones/${product.id}.${index}.jpg`} alt="product" />*/}
                 {/*  </a>*/}
                 {/*)}*/}
-                <a className="handleImgs__item" href="">
+                <a className="handleImgs__item" href="123">
                   <img src="./img/productInfo/image 8-1.png" alt="product" />
                 </a>
-                <a className="handleImgs__item" href="">
+                <a className="handleImgs__item" href="234">
                   <img src="./img/productInfo/image 8-2.png" alt="product" />
                 </a>
-                <a className="handleImgs__item" href="">
+                <a className="handleImgs__item" href="345">
                   <img src="./img/productInfo/image 8-3.png" alt="product" />
                 </a>
-                <a className="handleImgs__item" href="">
+                <a className="handleImgs__item" href="456">
                   <img src="./img/productInfo/image 8-4.png" alt="product" />
                 </a>
               </div>

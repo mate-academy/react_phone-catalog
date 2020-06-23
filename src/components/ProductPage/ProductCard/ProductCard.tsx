@@ -27,7 +27,7 @@ export const ProductCard: React.FC<Props> = ({
   const { addToCart, removeFromCart, isAdded } = useContext(CartContext);
 
   return (
-    <Link to={`/${type}/${id}`}>
+    <Link to={`/${type}s/${id}`}>
       <div className="products__card card">
         <img className="card__img" src={imageUrl} alt="products img" />
         <div className="card__infoWrap">
