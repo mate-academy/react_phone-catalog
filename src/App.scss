@@ -26,10 +26,15 @@ body {
   align-items: center;
   height: 64px;
   box-shadow: 0 1px 0 $lightGrayFontColor;
+  position: sticky;
+  z-index: 1;
+  top: 0;
+  background-color: white;
+  border-bottom: 1px solid rgb(226, 230, 233);
 
   &__container {
     width: 100%;
-    max-width: 1440px;
+    // max-width: 1440px;
     color: $darkColor;
   }
 
@@ -54,6 +59,17 @@ body {
   &__bag {
     background-image: url(./images/header/bag.svg);
     background-repeat: no-repeat;
+  }
+
+  padding: 32px;
+  box-shadow: -1px 0 0 rgb(226, 230, 233);
+
+  &__favorite {
+    background: url("./images/header/like.svg") no-repeat center center;
+  }
+
+  &__bag {
+    background: url("./images/header/bag.svg") no-repeat  center center;
   }
 }
 
@@ -95,6 +111,7 @@ body {
     background: $darkColor;
     transition: all ease-in 0.3s;
   }
+
   &:hover {
     color: $darkColor;
     &:before {
@@ -105,17 +122,17 @@ body {
   }
 }
 
-.nav {
-  padding: 32px;
-  box-shadow: -1px 0 0 $lightGrayFontColor;
-  &__favorite {
-    background: url("./images/header/like.svg") no-repeat center center;
-  }
+// .nav {
+//   padding: 32px;
+//   box-shadow: -1px 0 0 $lightGrayFontColor;
+//   &__favorite {
+//     background: url("./images/header/like.svg") no-repeat center center;
+//   }
 
-  &__bag {
-    background: url("./images/header/bag.svg") no-repeat  center center;
-  }
-}
+//   &__bag {
+//     background: url("./images/header/bag.svg") no-repeat  center center;
+//   }
+// }
 
 .container {
   max-width: 1140px;

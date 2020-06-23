@@ -1,0 +1,261 @@
+@import "../../../App";
+$lightGrayForBorder: #c4c4c4;
+$phoneColorOne: #fcdbc1;
+$phoneColorTwo: #5f7170;
+$phoneColorThree: #f0f0f0;
+$phoneColorFour: #4c4c4c;
+$fontColorValue: #313237;
+$fontColorProperty: #89939a;
+
+.productsInfo {
+  &__parts {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__left {
+    width: 49%;
+  }
+
+  &__right {
+    width: 45%;
+  }
+
+  &__title {
+    font-weight: bold;
+    font-size: 2rem;
+    margin: 1rem 0 2.5rem;
+  }
+
+  &__handleImgs {
+    display: flex;
+    margin-bottom: 9.5vw;
+  }
+
+  &__section {
+    font-weight: bold;
+    font-size: 1.38rem;
+    border-bottom: 1px solid $lightGrayForBorder;
+    padding-bottom: 1rem;
+  }
+
+  &__mainInfo {
+    margin-bottom: 110px;
+    width: 62.5%;
+  }
+
+  &__id {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__memory {
+    border-top: 1px solid $lightGrayForBorder;
+    border-bottom: 1px solid $lightGrayForBorder;
+    padding: 24px 0;
+  }
+
+  &__colors {
+    margin-bottom: 24px;
+  }
+
+  &__MainPrice {
+    font-weight: bold;
+    font-size: 2rem;
+    line-height: 41px;
+    color: $fontColorValue;
+  }
+
+  &__price {
+    margin: 32px 0 22px;
+  }
+
+  &__CeilPrice {
+    font-weight: 500;
+    font-size: 1.37rem;
+    text-decoration-line: line-through;
+    color: $fontColorProperty;
+    vertical-align: text-bottom;
+  }
+
+  &__info {
+    margin: 32px 0 9.5vw;
+  }
+
+  &__infoList {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__infoItem {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.handleImgs {
+  &__list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__bigImg {
+    width: 87%;
+    padding: 11px;
+    margin: 0 27px;
+  }
+
+  &__item {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    height: 80px;
+    width: 80px;
+    margin-bottom: 16px;
+    border: 1px solid $lightGrayForBorder;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &:active {
+      border: 1px solid $lightGrayFontColor;
+    }
+  }
+}
+
+.description {
+  margin-bottom: 2rem;
+
+  &__title {
+    margin: 2rem 0 1rem;
+    font-weight: 600;
+    font-size: 1.25rem;
+  }
+
+  &__text {
+    color: $lightGrayFontColor;
+    font-size: 0.88rem;
+  }
+}
+
+.property {
+  font-weight: 600;
+  font-size: 12px;
+  color: $fontColorProperty;
+}
+
+.value {
+  font-weight: 600;
+  font-size: 12px;
+  color: $fontColorValue;
+}
+
+.lightText {
+  font-weight: 600;
+  font-size: 0.75rem;
+  line-height: 15px;
+  color: $lightGrayFontColor;
+  margin-bottom: 8px;
+  display: inline-block;
+}
+
+.colors {
+  &__list {
+    display: flex;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  &__item {
+    margin-right: 10px;
+    content: "";
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    box-sizing: border-box;
+    border: 2px solid white;
+    box-shadow: 0 0 0 2px rgba(226,230,233,1);
+    outline: none;
+    cursor: pointer;
+
+    &:focus {
+      box-shadow: 0 0 0 1px rgba(41,41,41,1);
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &--pink {
+      background-color: $phoneColorOne;
+    }
+    &--grey {
+      background-color: $phoneColorTwo;
+    }
+    &--white {
+      background-color: $phoneColorThree;
+    }
+    &--dark {
+      background-color: $phoneColorFour;
+    }
+  }
+}
+
+.memory {
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__item {
+    border: 1px solid #b4bdc4;
+    background-color: transparent;
+    padding: 8px;
+    margin-right: 8px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &:focus {
+      outline-color: $fontColorValue;
+      color: white;
+      background: $fontColorValue;
+    }
+  }
+}
+
+.techSpecs {
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__property {
+    font-weight: 500;
+    font-size: 14px;
+    color: $fontColorProperty;
+  }
+
+  &__value {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $fontColorValue;
+  }
+}

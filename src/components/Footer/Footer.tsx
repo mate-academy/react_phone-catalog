@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { NavLink } from 'react-router-dom';
 import './Footer.scss';
 
@@ -18,6 +18,13 @@ const footerNav = [
 ];
 
 export const Footer = () => {
+  const backToTop = useCallback(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  }, []);
+
   return (
     <footer className="footer">
       <div className="footer__wrap">
@@ -35,7 +42,11 @@ export const Footer = () => {
         </nav>
         <div className="footer__lift lift">
           <p className="lift__title">Back to top</p>
-          <button type="button" className="lift__button">
+          <button
+            type="button"
+            className="lift__button"
+            onClick={backToTop}
+          >
             <img className="lift__buttonImg" src="./img/Icons/arrows/top.svg" alt="up arrow" />
           </button>
         </div>

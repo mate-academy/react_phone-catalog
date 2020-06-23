@@ -1,0 +1,15 @@
+.pagination {
+  display: flex;
+  flex-direction: row;
+  margin: 40px 0 80px;
+  justify-content: center;
+}
+
+.button__count {
+  margin: 0 4px;
+
+  &--active {
+    background: #313237;
+    color: #fff;
+  }
+}

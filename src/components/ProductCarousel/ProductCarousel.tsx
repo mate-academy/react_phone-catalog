@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import CN from 'classnames';
-import { ProductCard } from '../ProductCard';
+import { ProductCard } from '../ProductPage/ProductCard';
 import './styleProductCarousel.scss';
-import '../PhonesPage/PhonesPage.scss';
+import '../ProductPage/ProductsPage.scss';
 
 type Props = {
   title: string;
@@ -75,7 +75,7 @@ export const ProductCarousel: React.FC<Props> = ({ products, title, wigthSlides 
           <div className="ProductCarousel__container">
             <div className="ProductCarousel__list" style={{ transform: `translateX(${imgPosition}%)` }}>
               {products.map(product => (
-                <ProductCard {...product} key={product.id} />
+                <ProductCard product={product} key={product.id} type={product.type} />
               ))}
             </div>
           </div>

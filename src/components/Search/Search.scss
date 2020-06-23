@@ -1,0 +1,38 @@
+@import "../../styles/typography";
+@import "../../styles/mixins.scss";
+
+.search {
+  &__section {
+    position: relative;
+  }
+
+  &__control {
+    @include font-MontRegular;
+    width: 327px;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 24px;
+    box-shadow: -1px 0 0 #e2e6e9;
+    border: none;
+    border-right: 1px solid #e2e6e9;
+    color: #313237;
+    outline: none;
+
+    &:focus,
+    &:hover {
+      background: #fafbfc;
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    top: calc(50% - 8px);
+    right: 24px;
+  }
+
+  &__button {
+    background-color: transparent;
+    outline: none;
+    border: transparent;
+  }
+}
