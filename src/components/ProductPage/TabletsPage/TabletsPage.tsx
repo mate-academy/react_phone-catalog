@@ -217,7 +217,7 @@ export const TabletsPage: React.FC = () => {
       </div>
       <div className="products__list">
         {visibleItemsOnPage.map(product => (
-          <ProductCard product={product} />
+          <ProductCard product={product} type={product.type}/>
         ))}
       </div>
       <Pagination pageCount={pageCount} />

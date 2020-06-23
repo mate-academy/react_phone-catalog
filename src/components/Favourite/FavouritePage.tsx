@@ -22,7 +22,7 @@ export const FavouritePage = () => {
           <ul className="favorite__list products__list">
             {favourites.map((item) => (
               <li key={item.id}>
-                <ProductCard product={item} />
+                <ProductCard product={item} type={item.type} />
               </li>
             ))}
           </ul>
