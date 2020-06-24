@@ -5,8 +5,8 @@ import ProductsSlider from '../ProductsSlider/ProductsSlider';
 import { getProducts } from '../../helpers/api';
 
 const HomePage = () => {
-  const [hotPrice, sethotPrice] = useState<Product[]>([]);
-  const [newModels, setnewModels] = useState<Product[]>([]);
+  const [hotPrice, setHotPrice] = useState<Product[]>([]);
+  const [newModels, setNewModels] = useState<Product[]>([]);
   const [data, setData] = useState<Product[]>([]);
 
 
@@ -31,13 +31,13 @@ const HomePage = () => {
 
 
   useEffect(() => {
-    sethotPrice(data
+    setHotPrice(data
       .filter((product: Product) => product.discount !== 0)
       .sort((a: Product, b: Product) => a.discount - b.discount));
   }, [data]);
 
   useEffect(() => {
-    setnewModels(data
+    setNewModels(data
       .filter((product: Product) => product.discount === 0)
       .sort((a: Product, b: Product) => a.age - b.age));
   }, [data]);

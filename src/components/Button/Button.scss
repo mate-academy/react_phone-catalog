@@ -1,0 +1,41 @@
+@import "../../styles/vars.scss";
+
+.Button {
+  display: flex;
+  margin-bottom: 16px;
+  // justify-content: center;
+
+  padding-top: 8px;
+
+  &--cart {
+    width: 176px;
+    height: 40px;
+    font-size: 14px;
+    line-height: 21px;
+    font-weight: 600;
+
+    cursor: pointer;
+    background-color: $buttons-background-color;
+    color: $buttons-text-color;
+    border: none;
+    transition: background-color $hover-transition;
+  }
+
+  &--cart:hover {
+    background-color: $secondary-color;
+
+  }
+
+  &--favorites {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: $icons-background-color;
+    border: 1px solid $border-color;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+
+  }
+}

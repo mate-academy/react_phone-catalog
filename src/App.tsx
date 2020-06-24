@@ -9,6 +9,7 @@ import PhonesPage from './components/PhonesPage/PhonesPage';
 import TabletsPage from './components/TabletsPage/TabletsPage';
 import AccessoriesPage from './components/AccessoriesPage/AccessoriesPage';
 import errorPage from './components/errorPage/errorPage';
+import ProductDetailsPage from './components/ProductDetailsPage/ProductDetailsPage';
 
 const App = () => (
   <div className="App">
@@ -19,6 +20,8 @@ const App = () => (
       <Route path="/phones" exact component={PhonesPage} />
       <Route path="/tablets" component={TabletsPage} />
       <Route path="/accessories" component={AccessoriesPage} />
+      <Route path="/phones/:productId?" component={ProductDetailsPage} />
+      <Route path="/tablets/:productId?" component={ProductDetailsPage} />
       <Route path="/" component={errorPage} />
     </Switch>
     <Footer />

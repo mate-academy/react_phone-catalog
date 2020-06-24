@@ -14,7 +14,7 @@ const Navigation = () => {
         {navItems.map(item => (
           <li>
             <NavLink
-              to={`${item}`}
+              to={`/${item}`}
               key={item}
               exact
               className="nav__item"

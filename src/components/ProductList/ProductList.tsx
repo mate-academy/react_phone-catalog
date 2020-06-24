@@ -1,7 +1,6 @@
 import React from 'react';
 import ProductCard from '../ProductCard/ProductCard';
 
-import './ProductList.scss';
 
 type Props = { products: Product[] };
 

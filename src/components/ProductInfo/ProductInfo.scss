@@ -1,0 +1,21 @@
+@import "../../styles/vars.scss";
+
+.ProductInfo {
+
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 8px;
+  font-size: 14px;
+  line-height: 21px;
+
+  // border-top: 1px solid $elements-color;
+
+  &__title {
+    color: $secondary-color;
+  }
+
+  &__value {
+    color: $primary-color;
+  }
+
+}

@@ -1,0 +1,62 @@
+@import "../../styles/vars.scss";
+
+.ProductDetailsPage {
+  width: 1136px;
+  margin: 80px auto ;
+
+  &__title {
+    font-size: 32px;
+    line-height: 41px;
+    color: $primary-color;
+    margin-bottom: 24px;
+  }
+  &__wrapper {
+    display: grid;
+    grid-template-columns: repeat(2,525px);
+    justify-content: center;
+    grid-gap: 90px;
+
+  }
+
+  &__cell {
+    box-sizing: border-box;
+    //  padding: 24px;
+  }
+
+  &__cell--title:first-child {
+    color: $primary-color;
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 140%;
+    margin-bottom: 8px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid $elements-color;
+  }
+
+  &__cell--text {
+    color: $secondary-color;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    margin-bottom: 16px;
+  }
+
+  &__images {
+    display: flex;
+    justify-content: space-between;
+
+    &--item {
+      border: 1px solid $secondary-color;
+      margin-bottom: 16px;
+      background-color: $icons-background-color;
+
+    }
+
+  }
+
+  &__image {
+
+    width: 85px;
+  }
+
+}
