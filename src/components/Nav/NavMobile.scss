@@ -1,0 +1,28 @@
+.Hamburger__menu {
+  display: none;
+  z-index: 2;
+}
+.nav {
+
+  &__mobile_list {
+    left: 0;
+    top: 0;
+    position: absolute;
+    flex-direction: column;
+    z-index: 1;
+    background-color: red;
+    width: 100vw;
+    height: 100vh;
+  }
+}
+
+
+
+
+
+
+@media screen and (max-width: 1023px) {
+  .Hamburger__menu {
+    display: block;
+  }
+}

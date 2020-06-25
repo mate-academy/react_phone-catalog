@@ -17,24 +17,26 @@ const NAV_LINKS = [
 
 export const Nav = () => {
   return (
-    <nav className="nav">
-      <ul className="nav__list">
-        {NAV_LINKS.map((link: NavLinks) => (
-          <li
-            key={link.path}
-            className="nav__item"
-          >
-            <NavLink
-              to={link.path}
-              exact
-              className="nav__link"
-              activeClassName="nav__link--active"
+    <>
+      <nav className="nav">
+        <ul className="nav__list">
+          {NAV_LINKS.map((link: NavLinks) => (
+            <li
+              key={link.path}
+              className="nav__item"
             >
-              {link.text}
-            </NavLink>
-          </li>
-        ))}
-      </ul>
-    </nav>
+              <NavLink
+                to={link.path}
+                exact
+                className="nav__link"
+                activeClassName="nav__link--active"
+              >
+                {link.text}
+              </NavLink>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </>
   );
 };

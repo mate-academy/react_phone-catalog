@@ -23,7 +23,7 @@
   }
 
   &__image:hover {
-      transform: scale(1.05);
+    transform: scale(1.05);
   }
 
   &__product {
@@ -33,6 +33,11 @@
     line-height: 21px;
     color: $dark-gray-color;
     text-decoration: none;
+    transition: 0.3s;
+  }
+
+  &__product:hover {
+    color: black;
   }
 
   &__price-container {
