@@ -15,23 +15,40 @@
     transition: $hover-transition;
   }
 
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    color: $primary-color;
+    font-size: 32px;
+    line-height: 41px;
+  }
+
   &__buttons {
-    text-align: end;
+    display: flex;
+    align-items: center;
 
   }
 
   &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 32px;
-    margin: auto;
+    width: 32px;
+    margin-left: 10px;
     border: 1px solid $border-color;
     background-color: $buttons-slider-color;
     border-color: $border-color;
     cursor: pointer;
-
     transition: background-color $hover-transition ;
 
     &:hover {
       background-color: rgb(246, 241, 241);
     }
   }
+
 }

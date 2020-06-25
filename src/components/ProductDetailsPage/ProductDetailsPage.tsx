@@ -95,9 +95,11 @@ const ProductDetailsPage: React.FC = () => {
             </div>
           </div>
 
-          <div className="ProductDetailsPage__cell">
+          <div className="ProductDetailsPage__cell ProductDetailsPage__cell--info">
+
 
             <div className="price">
+
               <span className="price__withDiscount">
                 {' '}
                 $
@@ -116,7 +118,7 @@ const ProductDetailsPage: React.FC = () => {
             <ProductInfo title="Screen" value={currentProduct && currentProduct?.screen} />
             <ProductInfo title="Ram" value={currentProduct && (currentProduct?.ram || 'No Info')} />
             <ProductInfo title="Capacity" value={currentProduct && (currentProduct?.capacity || 'No Info')} />
-            <ProductInfo title="Type" value={currentProduct && currentProduct.type} />
+            <ProductInfo title="Battery" value={details && (details.battery?.type || 'No Info')} />
 
           </div>
 

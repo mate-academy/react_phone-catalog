@@ -1,8 +1,29 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './ShopByCategories.scss';
 import { Link } from 'react-router-dom';
+import { getProducts } from '../../helpers/api';
 
 const ShopByCategories = () => {
+  const [phones, setPhones] = useState<Product[]>([]);
+  const [tablets, setTablets] = useState<Product[]>([]);
+  const [accessories, setAccessories] = useState<Product[]>([]);
+
+  useEffect(() => {
+    getProducts()
+      .then(data => setPhones(data.filter((product: Product) => product.type === 'phone')));
+  }, []);
+
+
+  useEffect(() => {
+    getProducts()
+      .then(data => setTablets(data.filter((product: Product) => product.type === 'tablet')));
+  }, []);
+
+  useEffect(() => {
+    getProducts()
+      .then(data => setAccessories(data.filter((product: Product) => product.type === 'accessories')));
+  }, []);
+
   return (
 
     <>
@@ -22,7 +43,7 @@ const ShopByCategories = () => {
 
               <h3 className="ShopByCategories__name">Mobile phones</h3>
               <p className="ShopByCategories__count">
-                16
+                {phones.length}
                 {' '}
                 models
               </p>
@@ -43,7 +64,7 @@ const ShopByCategories = () => {
 
               <h3 className="ShopByCategories__name">Tablets</h3>
               <p className="ShopByCategories__count">
-                4
+                {tablets.length}
                 {' '}
                 models
               </p>
@@ -64,7 +85,7 @@ const ShopByCategories = () => {
 
               <h3 className="ShopByCategories__name">Accessories</h3>
               <p className="ShopByCategories__count">
-                0
+                {accessories.length}
                 {' '}
                 models
               </p>

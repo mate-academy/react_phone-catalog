@@ -12,11 +12,10 @@ const Navigation = () => {
       <ul className="nav__list">
         <Logo />
         {navItems.map(item => (
-          <li>
+          <li key={item}>
             <NavLink
               to={`/${item}`}
-              key={item}
-              exact
+              // key={item}
               className="nav__item"
               activeClassName="nav__item--active"
             >

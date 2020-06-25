@@ -10,6 +10,7 @@
     color: $primary-color;
     margin-bottom: 24px;
   }
+
   &__wrapper {
     display: grid;
     grid-template-columns: repeat(2,525px);
@@ -20,10 +21,13 @@
 
   &__cell {
     box-sizing: border-box;
-    //  padding: 24px;
   }
 
-  &__cell--title{
+  &__cell--info {
+    width: 320px;
+  }
+
+  &__cell--title {
     color: $primary-color;
     font-weight: bold;
     font-size: 22px;
@@ -44,6 +48,7 @@
   &__images {
     display: flex;
     justify-content: space-between;
+    align-items: center;
 
     &--item {
       border: 1px solid $secondary-color;

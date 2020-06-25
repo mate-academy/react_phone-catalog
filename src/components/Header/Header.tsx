@@ -1,9 +1,11 @@
 import React from 'react';
+import { Route } from 'react-router-dom';
 import Navigation from '../Navigation/Navigation';
 import Favorites from '../Favorites/Favorites';
 import Cart from '../Cart/Cart';
 import './Header.scss';
 import Search from '../Search/Search';
+
 
 const Header = () => {
   return (
@@ -13,7 +15,9 @@ const Header = () => {
       </div>
 
       <div className="header__icons">
-        <Search />
+        <Route exact path={['/phones', '/tablets', '/accessories']}>
+          <Search />
+        </Route>
         <Favorites />
         <Cart />
       </div>

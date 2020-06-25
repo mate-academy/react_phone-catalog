@@ -13,28 +13,28 @@
 
   &__item {
     box-sizing: border-box;
-    padding: 30px 24px 8px;
+    padding: 30px 20px 8px;
     width: 272px;
     border: 1px solid $elements-color;
     margin-right: 25px;
   }
 
+  &__link {
+    text-decoration: none;
+
+  }
+
   &__name {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
     font-size: 14px;
     line-height: 21px;
     font-weight: 500;
     color: $primary-color;
     height: 40px;
-    text-align: center;
-    text-decoration: none;
-
   }
-
-  // &__button--img {
-  //   border: none;
-  //   background-color: $icons-background-color;
-
-  // }
 
   &__img {
     width: 200px;
@@ -80,7 +80,6 @@
 
 .price {
   padding-top: 7px;
-  // margin-bottom: 16px;
   padding-bottom: 8px;
   font-size: 22px;
   line-height: 28px;

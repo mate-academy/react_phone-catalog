@@ -20,10 +20,10 @@ const Footer = () => {
         <Logo />
         <ul className="footer__list">
           {footerItems.map(item => (
-            <li>
+            <li key={item}>
               <NavLink
                 to={`${item}`}
-                key={item}
+
                 exact
                 className="footer__item"
                 activeClassName="footer__item__active"

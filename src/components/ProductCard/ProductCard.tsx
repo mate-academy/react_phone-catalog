@@ -34,6 +34,7 @@ const ProductCard: React.FC<Props> = ({ product }) => {
 
   return (
     <div className="ProductCard__item">
+
       <Link to={`/${type}/${id}`}>
         <img
           src={`./${imageUrl}`}
@@ -43,8 +44,9 @@ const ProductCard: React.FC<Props> = ({ product }) => {
 
       </Link>
 
-      <Link to={`/${type}/${id}`} className="ProductCard__name">
-        <p>{name}</p>
+
+      <Link to={`/${type}/${id}`} className="ProductCard__link">
+        <p className="ProductCard__name">{name}</p>
       </Link>
 
       <div className="price">
