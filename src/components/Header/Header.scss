@@ -76,3 +76,12 @@
       right: 40px;
     }
   }
+
+  @media screen and (max-width: 1023px) {
+    .header {
+      padding-right: 24px;
+        &__right {
+          display: none;
+        }
+    }
+  }

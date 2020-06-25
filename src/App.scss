@@ -24,6 +24,10 @@
   border: 1px solid $dark-gray-color;
 }
 
+a:hover {
+  color:$dark-gray-color;
+}
+
 .wrapper {
   display: flex;
   flex-direction: column;

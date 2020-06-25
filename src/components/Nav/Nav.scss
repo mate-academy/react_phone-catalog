@@ -16,6 +16,10 @@
     }
   }
 
+  &__mobile_list {
+    display: none;
+  }
+
   &__link {
     position: relative;
     padding: 22px 0;
@@ -55,6 +59,15 @@
         content: "";
     }
   }
+}
 
-
+@media screen and (max-width: 1023px) {
+  .nav {
+   &__list {
+     display: none;
+   }
+   &__mobile_list {
+     display: flex;
+   }
+  }
 }
