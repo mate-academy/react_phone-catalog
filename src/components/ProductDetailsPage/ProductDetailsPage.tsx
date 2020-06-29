@@ -1,16 +1,18 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useParams, useRouteMatch } from 'react-router-dom';
-import cn from 'classnames';
 import './ProductDetailsPage.scss';
 import { PhoneWasNotFound } from '../PhoneWasNotFound/PhoneWasNotFound';
+import { techInfo } from '../../helpers/techInfo';
 import { getProducts, getProductDetails } from '../../helpers/api';
-import { PRODUCTS_INFO, PRODUCTS_SPECS } from '../../helpers/config';
+import { PRODUCTS_SPECS } from '../../helpers/config';
 import ProductsSlider from '../ProductsSlider/ProductsSlider';
 import { Breadcrumbs } from '../Breadcrumbs/Breadcrumbs';
 import { GoBack } from '../GoBack/GoBack';
 import ButtonFavor from '../ButtonFavor/ButtonFavor';
 import ButtonAddToCart from '../ButtonAddToCart/ButtonAddToCart';
 import Loading from '../Loading/Loading';
+import ProductInfo from '../ProductInfo/ProductInfo';
+import ProductImages from '../ProductImages/ProductImages';
 
 export const ProductDetailsPage: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -19,7 +21,6 @@ export const ProductDetailsPage: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
-  const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [brandProducts, setBrandProducts] = useState<Product[]>([]);
 
   const match: Match = useRouteMatch();
@@ -60,65 +61,12 @@ export const ProductDetailsPage: React.FC = () => {
     }
   }, [products, match.params.productId]);
 
-  const handleImages = (e: React.MouseEvent<HTMLElement>, i: number) => {
-    e.preventDefault();
-    setActiveImageIndex(i);
-  };
-
   const price = useMemo(
     () => (productInfo && productInfo.discount > 0
       ? productInfo.price - ((productInfo.price / 100) * productInfo.discount)
       : productInfo && productInfo.price),
     [productInfo],
   );
-
-  const techInfo = (param: string, order: string) => {
-    let value = '';
-
-    if (order === 'info') {
-      switch (param) {
-        case 'Screen':
-          value = productInfo?.screen || '';
-          break;
-
-        case 'RAM':
-          value = productInfo?.ram || '';
-          break;
-
-        case 'Built in memory':
-          value = productInfo?.capacity || '';
-          break;
-        default:
-      }
-    }
-
-    if (order === 'detail') {
-      switch (param) {
-        case 'Resolution':
-          value = productDetails?.display.screenResolution || '';
-          break;
-
-        case 'Processor':
-          value = productDetails?.hardware.cpu || '';
-          break;
-
-        case 'Camera':
-          value = productDetails?.camera.primary || '';
-          break;
-
-        case 'Zoom':
-          value = productDetails?.camera.zoom || '';
-          break;
-
-        case 'Cell':
-          value = productDetails?.connectivity.cell || '';
-          break;
-        default:
-      }
-    }
-
-    return value || 'unknown';
-  };
 
   return (
     <>
@@ -140,32 +88,7 @@ export const ProductDetailsPage: React.FC = () => {
               <h1 className="ProdactPage__Heading">{productDetails.name}</h1>
               <div className="ProdactPage__Content">
                 <div className="ProdactPage__Column">
-                  <section className="ProdactPage__Images">
-                    <ul className="ProdactPage__ImageList">
-                      {productDetails.images.map((image, i) => (
-                        <li
-                          className={cn({
-                            'ProdactPage__Image--current': i === activeImageIndex,
-                          },
-                          'ProdactPage__ImageItem')}
-                          key={image}
-                        >
-                          <a href="./#" onClick={e => handleImages(e, i)}>
-                            <img
-                              src={image}
-                              alt={productDetails.name}
-                              className="ProdactPage__Image"
-                            />
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-                    <img
-                      src={productDetails.images[activeImageIndex]}
-                      alt={productDetails.name}
-                      className="ProdactPage__ImageBig"
-                    />
-                  </section>
+                  <ProductImages productDetails={productDetails} />
                 </div>
                 <div className="ProdactPage__Column">
                   <span className="ProdactPage__Id">
@@ -192,24 +115,10 @@ export const ProductDetailsPage: React.FC = () => {
                       <ButtonFavor product={productInfo} />
                     </div>
                   </section>
-                  <section className="ProdactPage__Info">
-                    <ul className="ProdactPage__InfoList">
-                      {PRODUCTS_INFO.map(item => (
-                        <li
-                          className="ProdactPage__InfoItem"
-                          key={item.name}
-                        >
-                          <p className="ProdactPage__InfoTitle">
-                            {item.name}
-                          </p>
-                          <p className="ProdactPage__InfoFeature">
-                            {productInfo
-                            && techInfo(item.name, item.order)}
-                          </p>
-                        </li>
-                      ))}
-                    </ul>
-                  </section>
+                  <ProductInfo
+                    productInfo={productInfo}
+                    productDetails={productDetails}
+                  />
                 </div>
                 <div className="ProdactPage__Column">
                   <section className="ProdactPage__Description">
@@ -235,7 +144,7 @@ export const ProductDetailsPage: React.FC = () => {
                           </p>
                           <p className="ProdactPage__SpecsFeature">
                             {productInfo
-                            && techInfo(item.name, item.order)}
+                              && techInfo(productInfo, productDetails, item.name, item.order)}
                           </p>
                         </li>
                       ))}
@@ -245,7 +154,6 @@ export const ProductDetailsPage: React.FC = () => {
               </div>
             </article>
             <ProductsSlider title="You may also like" visibleProducts={brandProducts} />
-
           </>
         )}
       </section>

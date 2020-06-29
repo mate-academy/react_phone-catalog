@@ -57,40 +57,6 @@
     margin-top: 48px;
   }
 
-  &__Images {
-    display: flex;
-  }
-
-  &__ImageList {
-    display: flex;
-    flex-direction: column;
-  }
-
-  &__ImageItem {
-    margin-bottom: 16px;
-    list-style: none;
-    width: 80px;
-    height: 80px;
-    border: 1px solid #c4c4c4;
-    box-sizing: border-box;
-    transition: all 0.3s;
-  }
-
-  &__Image {
-    width: 100%;
-
-    &--current {
-      border: 1px solid black;
-      box-sizing: border-box;
-    }
-  }
-
-  &__ImageBig {
-    object-fit: contain;
-    object-position: center;
-    margin: auto;
-  }
-
   &__Description {
     color: $colorSecondery;
   }
@@ -125,33 +91,6 @@
         content: "$";
       }
     }
-  }
-
-  &__Info {
-    margin-top: 32px;
-  }
-
-  &__InfoList {
-    max-width: 320px;
-  }
-
-  &__InfoItem {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 8px;
-    height: 16px;
-  }
-
-  &__InfoTitle {
-    font-weight: 500;
-    font-size: 12px;
-    color: $colorSecondery;
-  }
-
-  &__InfoFeature {
-    font-weight: 600;
-    font-size: 12px;
-    color: $colorPrimary;
   }
 
   &__SpecsList {

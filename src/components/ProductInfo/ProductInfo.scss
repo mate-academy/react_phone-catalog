@@ -1,0 +1,29 @@
+@import "../../styles/reset";
+@import "../../styles/utils/vars";
+
+.Info {
+  margin-top: 32px;
+
+  &__List {
+    max-width: 320px;
+  }
+
+  &__Item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    height: 16px;
+  }
+
+  &__Title {
+    font-weight: 500;
+    font-size: 12px;
+    color: $colorSecondery;
+  }
+
+  &__Feature {
+    font-weight: 600;
+    font-size: 12px;
+    color: $colorPrimary;
+  }
+}

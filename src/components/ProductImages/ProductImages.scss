@@ -1,0 +1,32 @@
+.ImagesProduct {
+  display: flex;
+  &__ImageList {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__ImageItem {
+    margin-bottom: 16px;
+    list-style: none;
+    width: 80px;
+    height: 80px;
+    border: 1px solid #c4c4c4;
+    box-sizing: border-box;
+    transition: all 0.3s;
+  }
+
+  &__Image {
+    width: 100%;
+
+    &--current {
+      border: 1px solid black;
+      box-sizing: border-box;
+    }
+  }
+
+  &__ImageBig {
+    object-fit: contain;
+    object-position: center;
+    margin: auto;
+  }
+}
