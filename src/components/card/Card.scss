@@ -1,0 +1,130 @@
+.Card {
+  display: flex;
+  flex-wrap: wrap;
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 1140px;
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__img {
+    cursor: pointer;
+    width: 200px;
+    height: 200px;
+    background-position: center;
+    background-size: contain;
+    transition: transform 0.3s;
+
+    &:hover {
+      transform: scale(1.03);
+    }
+  }
+
+  &__item {
+    border: 1px solid #e2e6e9;
+    width: 270px;
+    padding: 24px;
+    margin-bottom: 40px;
+    box-sizing: border-box;
+    transition: box-shadow 0.3s;
+
+    &:hover {
+      box-shadow: 0 0 10px rgba(199, 198, 198, 0.5);
+    }
+    .cartFavorites__wrapper {
+      display: flex;
+      justify-content: space-between;
+
+      .btn__addToCart {
+        cursor: pointer;
+        color: #ffffff;
+        outline: none;
+        width: 176px;
+        height: 40px;
+        background: #313237;
+        border: 1px solid #313237;
+        transition: color 0.3s, background-color 0.3s;
+
+        &:hover {
+          color: #313237;
+          background-color: #ffffff;
+        }
+      }
+      .btn__addToCart-link {
+        cursor: pointer;
+        color: #ffffff;
+        font-size: 14px;
+        text-decoration: none;
+        transition: color 0.3s, background-color 0.3s;
+
+        &:hover {
+          color: #313237;
+          background-color: #ffffff;
+        }
+      }
+
+      .btn__Favorites-link {
+        width: 40px;
+        height: 40px;
+
+        background-position: center;
+        border: 1px solid #b4bdc4;
+        box-sizing: border-box;
+        background-color: #ffffff;
+        transition: border 0.3s;
+
+        &:hover {
+          border: 1px solid #313237;
+        }
+      }
+    }
+  }
+
+  &__discount {
+    font-family: "Mont-Bold";
+    font-size: 22px;
+    color: #313237;
+    margin-right: 10px;
+  }
+
+  &__price {
+    font-family: "Mont-Bold";
+    font-size: 22px;
+    color: #89939a;
+    text-decoration-line: line-through;
+  }
+
+  &__parameters {
+    list-style: none;
+    padding: 0;
+    border-top: 1px solid #e2e6e9;
+
+    .parameters__item {
+      display: flex;
+      justify-content: space-between;
+      font-family: "Mont-Regular";
+      font-size: 12px;
+      color: #89939a;
+      line-height: 15px;
+
+      .parameters__value {
+        color: #313237;
+        font-weight: 600;
+      }
+    }
+  }
+
+  &__title {
+    font-family: "Mont-Regular";
+    color: #313237;
+    font-size: 14px;
+    height: 40px;
+  }
+
+
+}

@@ -1,0 +1,51 @@
+$elem-color: #e2e6e9;
+$border-btn-color: #b4bdc4;
+$secondary-color: #89939a;
+
+.footer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: sticky;
+  border-top: 1px solid $elem-color;
+
+  &__logo {
+    padding-right: 100px;
+  }
+
+  &__list {
+    display: flex;
+    width: 300px;
+    justify-content: space-between;
+    list-style: none;
+    align-items: center;
+    padding: 0;
+  }
+
+  &__top-button-container {
+    width: 118px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__paragraph {
+    margin-right: 16px;
+    font-size: 12px;
+    line-height: 15px;
+    color: $secondary-color;
+  }
+
+  &__top-button {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $border-btn-color;
+    background-color: #fff;
+    background-image: url("../../img/Icons/Chevron\ \(Arrow\ Right\).svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    box-sizing: border-box;
+    cursor: pointer;
+    outline: none;
+  }
+}

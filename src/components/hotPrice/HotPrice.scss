@@ -1,0 +1,73 @@
+.CardSliderBtn__wrapper {
+  display: flex;
+  width: 1140px;
+  margin: 0 auto;
+  justify-content: flex-end;
+
+  .disabledBtn {
+    width: 32px;
+    height: 32px;
+    background: url(../../img/Icons/arrowRight.png) no-repeat;
+    // transform: rotate(180deg);
+    background-position: center;
+    border: 1px solid #e2e6e9;
+    opacity: 0.5;
+  }
+
+  .button__right {
+    width: 32px;
+    height: 32px;
+    background: url(../../img/Icons/arrowRight.png) no-repeat;
+    background-position: center;
+    border: 1px solid #b4bdc4;
+    margin-left: 20px;
+
+    &:disabled {
+      border: 1px solid #e2e6e9;
+
+      &:enabled {
+        border: 1px solid rgb(143, 144, 145);
+      }
+    }
+  }
+
+  .button__left {
+    width: 32px;
+    height: 32px;
+    background: url(../../img/Icons/arrowRight.png) no-repeat;
+    background-position: center;
+    border: 1px solid #b4bdc4;
+    transform: rotate(180deg);
+
+    &:disabled {
+      border: 1px solid #e2e6e9;
+      transform: rotate(180deg);
+
+      &:enabled {
+        border: 1px solid rgb(143, 144, 145);
+      }
+    }
+  }
+}
+
+.CardSlider {
+  &__container {
+    overflow: hidden;
+    width: 1140px;
+    margin: 15px auto;
+  }
+
+  &__list {
+    list-style: none;
+    transition: all 0.6s;
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+  }
+
+  &__item {
+    margin-right: 16px;
+  }
+}
+
+
