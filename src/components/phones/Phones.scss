@@ -1,0 +1,34 @@
+.sortBtn__wrapper {
+  display: flex;
+  width: 1140px;
+  margin: 10px auto;
+}
+
+.sortBtn {
+  width: 100px;
+  height: 40px;
+  color: #89939a;
+  background-color: #ffffff;
+  border: 1px solid #e2e6e9;
+  margin-left: 15px;
+  transition: box-shadow 0.3s;
+
+  .asc:after {
+    color: red;
+    width: 20px;height: 20px;display: block;
+  }
+  .desc:after {
+    color: green;
+    width: 20px;height: 20px;display: block;
+  }
+
+  &:hover {
+    box-shadow: 0 0 10px rgba(199, 198, 198, 0.5);
+  }
+}
+
+.sortBtn__title {
+  font-family: "Mont-Regular";
+  font-size: 16px;
+  color: #89939a;
+}
