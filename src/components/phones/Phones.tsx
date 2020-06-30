@@ -45,7 +45,7 @@ const Phones = () => {
   const sortedFields = [
     { field: "price", label: "Price" },
     { field: "discount", label: "Discount" },
-    { field: "name", label: "Name 11" },
+    { field: "name", label: "Title" },
   ];
 
   return (

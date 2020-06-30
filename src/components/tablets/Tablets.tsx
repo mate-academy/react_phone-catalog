@@ -6,36 +6,56 @@ import { Card } from '../card/Card';
 const Tablets = () => {
   const goods = useSelector(getVisibleGoods);
   const [sortField, setSortField] = useState('');
+  const [isReversed, setIsReversed] = useState(false);
+  const [oldFieldName, setOldFieldName ] = useState('');
 
+
+  const setSort = (newFieldName: string) => {
+    if (oldFieldName && newFieldName === oldFieldName) {
+      setIsReversed(!isReversed);
+    }
+    else {
+      setSortField(newFieldName);
+      setOldFieldName(newFieldName);
+    }
+  };
 
 
   switch (sortField) {
     case "price":
-      goods.sort((a, b) => a.price - b.price);
+      goods.sort((a, b) => sortNumeric(a, b, sortField, isReversed));
       break;
+
     case "discount":
-      goods.sort((a, b) => b.discount - a.discount);
+      goods.sort((a, b) => sortNumeric(a, b, sortField, isReversed));
       break;
+
     case "name":
-      goods.sort((a, b) => a[sortField].localeCompare(b[sortField]));
+      goods.sort((a, b) => sortText(a, b, sortField, isReversed));
       break;
-  }
+  };
+
+  const sortedFields = [
+    { field: "price", label: "Price" },
+    { field: "discount", label: "Discount" },
+    { field: "name", label: "Title" },
+  ];
 
   return (
     <>
       <h1>Tablets</h1>
       <div className='sortBtn__wrapper'>
         <h3 className='sortBtn__title'>Sort by: </h3>
-        <button
-          className='sortBtn'
-          onClick={() => setSortField('price')}>
-          cheap to expensive</button>
-        <button
-          className='sortBtn'
-          onClick={() => setSortField('discount')}> discount</button>
-        <button
-          className='sortBtn'
-          onClick={() => setSortField('name')}> title</button>
+        {sortedFields.map(field => {
+          let className = 'sortBtn ';
+          className += isReversed ? 'asc' : 'desc';
+
+          return <button
+            className={className}
+            onClick={() => setSort(field.field)}>
+            {field.label}
+          </button>
+        })}
       </div>
       <div className="Card">
         <ul className="Card__list">
@@ -47,3 +67,16 @@ const Tablets = () => {
 };
 
 export default Tablets;
+
+const sortNumeric = (a: IIndexable, b: IIndexable, sortField: string, isReversed: boolean) => {
+  return isReversed
+    ? b[sortField] - a[sortField]
+    : a[sortField] - b[sortField]
+}
+const sortText = (a: IIndexable, b: IIndexable, sortField: string, isReversed: boolean) => {
+  return isReversed
+    ? a[sortField].localeCompare(b[sortField])
+    : b[sortField].localeCompare(a[sortField]);
+}
+
+
