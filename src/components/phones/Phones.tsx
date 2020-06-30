@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { getVisibleGoods } from '../../store';
 import { Card } from '../card/Card';
@@ -11,11 +11,8 @@ const Phones = () => {
 
   const [sortField, setSortField] = useState('');
   const [isReversed, setIsReversed] = useState(false);
-  const [oldFieldName, setOldFieldName] = useState('');
+  const [oldFieldName, setOldFieldName ] = useState('');
 
-  useEffect(() => {
-    setOldFieldName(oldFieldName);
-  }, [oldFieldName]);
 
   const setSort = (newFieldName: string) => {
     if (oldFieldName && newFieldName === oldFieldName) {
@@ -23,6 +20,7 @@ const Phones = () => {
     }
     else {
       setSortField(newFieldName);
+      setOldFieldName(newFieldName);
     }
   };
 
@@ -47,7 +45,7 @@ const Phones = () => {
   const sortedFields = [
     { field: "price", label: "Price" },
     { field: "discount", label: "Discount" },
-    { field: "name", label: "Name 11" },
+    { field: "name", label: "Title" },
   ];
 
   return (
@@ -79,12 +77,12 @@ const Phones = () => {
 export default Phones;
 
 
-const sortNumeric = (a: IForSort, b: IForSort, sortField: string, isReversed: boolean) => {
+const sortNumeric = (a: IIndexable, b: IIndexable, sortField: string, isReversed: boolean) => {
   return isReversed
     ? b[sortField] - a[sortField]
     : a[sortField] - b[sortField]
 }
-const sortText = (a: IForSort, b: IForSort, sortField: string, isReversed: boolean) => {
+const sortText = (a: IIndexable, b: IIndexable, sortField: string, isReversed: boolean) => {
   return isReversed
     ? a[sortField].localeCompare(b[sortField])
     : b[sortField].localeCompare(a[sortField]);
