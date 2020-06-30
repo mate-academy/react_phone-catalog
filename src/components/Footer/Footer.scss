@@ -1,9 +1,9 @@
 @import "../../styles/vars.scss";
 
 .footer {
-  // position: sticky;
 
   &__nav {
+
     display: flex;
     flex-direction: row;
 
@@ -54,6 +54,7 @@
     background-color: $icons-background-color;
     border: 1px solid $border-color;
     transition: background-color $hover-transition;
+    outline-color: $icons-secondary-color;
 
     &:hover {
       background-color: $icons-secondary-color;

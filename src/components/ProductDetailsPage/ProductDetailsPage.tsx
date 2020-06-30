@@ -3,8 +3,10 @@ import { useParams } from 'react-router-dom';
 import ProductsSlider from '../ProductsSlider/ProductsSlider';
 import { getProducts, getDetails } from '../../helpers/api';
 import './ProductDetailsPage.scss';
-import Button from '../Button/Button';
+
 import ProductInfo from '../ProductInfo/ProductInfo';
+import FavoriteButton from '../Buttons/FavoriteButton';
+import CartButton from '../Buttons/CartButtons';
 
 
 const ProductDetailsPage: React.FC = () => {
@@ -114,7 +116,11 @@ const ProductDetailsPage: React.FC = () => {
               )}
             </div>
 
-            <Button />
+            <div className="Button">
+              <CartButton />
+              <FavoriteButton product={productId} />
+            </div>
+
             <ProductInfo title="Screen" value={currentProduct && currentProduct?.screen} />
             <ProductInfo title="Ram" value={currentProduct && (currentProduct?.ram || 'No Info')} />
             <ProductInfo title="Capacity" value={currentProduct && (currentProduct?.capacity || 'No Info')} />

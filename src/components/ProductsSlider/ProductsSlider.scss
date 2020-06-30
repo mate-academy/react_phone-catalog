@@ -45,9 +45,10 @@
     border-color: $border-color;
     cursor: pointer;
     transition: background-color $hover-transition ;
+    outline-color: $icons-secondary-color;
 
     &:hover {
-      background-color: rgb(246, 241, 241);
+      background-color: $icons-secondary-color;
     }
   }
 

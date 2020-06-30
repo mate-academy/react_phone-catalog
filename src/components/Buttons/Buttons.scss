@@ -1,0 +1,56 @@
+@import "../../styles/vars.scss";
+
+.Button {
+  display: flex;
+
+  margin-bottom: 16px;
+  justify-content: space-between;
+  padding-top: 8px;
+
+  &--cart {
+    width: 176px;
+    height: 40px;
+    font-size: 14px;
+    line-height: 21px;
+    font-weight: 600;
+    margin-right: 8px;
+
+    // margin-right: 5px;
+
+    cursor: pointer;
+    background-color: $buttons-background-color;
+    color: $buttons-primary-color;
+    border: none;
+    transition: background-color $hover-transition;
+  }
+
+  &--cart:hover {
+    background-color: $secondary-color;
+  }
+
+  &__favorites {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid $border-color;
+    background-image: url("../../img/icons/favorites.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: $icons-background-color;
+
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+  }
+
+  &__checkBox {
+    opacity: 0;
+  }
+
+  &__InFavorites {
+    background-image: url("../../img/icons/inFavorites.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+
+  }
+}

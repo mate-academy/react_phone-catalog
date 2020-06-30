@@ -16,7 +16,12 @@
     padding: 30px 20px 8px;
     width: 272px;
     border: 1px solid $elements-color;
-    margin-right: 25px;
+    margin-right: 22px;
+
+    &:hover {
+      box-shadow: 0 2px 15px rgba(0.05, 0, 0, 0.2);
+    }
+
   }
 
   &__link {

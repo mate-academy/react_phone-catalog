@@ -1,0 +1,24 @@
+@import "../../styles/vars.scss";
+
+.FavoritesPage {
+  width: 1140px;
+  margin: 0 auto;
+
+  &__title {
+
+    margin: 40px 0;
+  }
+
+  &__name {
+    font-size: 32px;
+    line-height: 41px;
+    color: $primary-color;
+
+  }
+
+  &__quantity {
+    font-size: 14px;
+    line-height: 21px;
+    color: $secondary-color;
+  }
+}

@@ -35,7 +35,7 @@
     transition: background-color $hover-transition ;
 
     &:hover {
-      background-color: rgb(246, 241, 241);
+      background-color: $icons-secondary-color;
     }
   }
 

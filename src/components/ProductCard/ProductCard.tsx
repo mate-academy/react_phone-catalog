@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import Button from '../Button/Button';
+// import Button from '../Button/Button';
 import ProductInfo from '../ProductInfo/ProductInfo';
 import './ProductCard.scss';
+import FavoriteButton from '../Buttons/FavoriteButton';
+import CartButton from '../Buttons/CartButtons';
 
 
 // import { Link} from 'react-router-dom';
@@ -41,9 +43,7 @@ const ProductCard: React.FC<Props> = ({ product }) => {
           alt={name}
           className="ProductCard__img"
         />
-
       </Link>
-
 
       <Link to={`/${type}/${id}`} className="ProductCard__link">
         <p className="ProductCard__name">{name}</p>
@@ -66,7 +66,11 @@ const ProductCard: React.FC<Props> = ({ product }) => {
       <ProductInfo title="Screen" value={screen} />
       <ProductInfo title="Ram" value={ram} />
       <ProductInfo title="Capacity" value={capacity} />
-      <Button />
+      <div className="Button">
+        <CartButton />
+        <FavoriteButton product={product} />
+      </div>
+
     </div>
 
   );

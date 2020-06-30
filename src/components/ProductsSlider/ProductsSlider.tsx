@@ -11,7 +11,7 @@ type Props = {
 
 const ProductsSlider: React.FC<Props> = ({ visibleProducts, title }) => {
   const [index, setIndex] = useState(0);
-  const slideWidth = 291;
+  const slideWidth = 290;
 
   const prevproduct = () => {
     if (index === 0) {

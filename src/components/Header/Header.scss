@@ -1,10 +1,10 @@
 @import "../../styles/vars.scss";
 
 .header {
+
   display: flex;
   justify-content: space-between;
   position: relative;
-
   align-items: center;
   border-bottom: 1px solid $secondary-color;
   padding-left: 24px;
@@ -12,11 +12,28 @@
   &__nav {
     display: flex;
     flex-direction: row;
+
   }
 
   &__icons {
     display: flex;
     align-items: center;
+  }
+
+  &__icons--active {
+    position: relative;
+    color: $primary-color;
+
+    &:after {
+      position: absolute;
+      content: "";
+      bottom: 0;
+      left: 0;
+      height: 3px;
+      width: 100%;
+      background: $primary-color;
+    }
+
   }
 
   &__logo {
@@ -25,6 +42,7 @@
   }
 
   &__icons--item {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -36,7 +54,24 @@
 
   &__icons--img {
 
-    width: 24px;
-    height: 24px;
+    width: 16px;
+    height: 14px;
+  }
+
+  &__counter {
+    position: absolute;
+    top: 30%;
+    right: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 9px;
+    line-height: 12px;
+    border-radius: 50%;
+    color: $buttons-primary-color;
+    width: 14px;
+    height: 14px;
+    background-color: $icons-red-color;
   }
 }

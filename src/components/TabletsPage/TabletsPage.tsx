@@ -4,14 +4,16 @@ import ProductList from '../ProductList/ProductList';
 import { getProducts } from '../../helpers/api';
 import Sort from '../Sort/Sort';
 import './TabletsPage.scss';
-
+import { sortProducts } from '../../helpers/sortProducts';
 
 type Props = { product: Product[]};
+
 const TabletsPage: React.FC<Props> = () => {
   const [tablets, setTablets] = useState<Product[]>([]);
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const query = searchParams.get('query') || '';
+  const sortBy = useMemo(() => searchParams.get('sortBy') || '', [searchParams]);
 
   useEffect(() => {
     getProducts()
@@ -23,6 +25,10 @@ const TabletsPage: React.FC<Props> = () => {
       (tablet.name + tablet.screen + tablet.capacity).toLowerCase().includes(query.toLowerCase())
     ));
   }, [query, tablets]);
+
+  const visibleProducts = useMemo(() => {
+    return sortProducts(visibleTablets, sortBy);
+  }, [visibleTablets, sortBy]);
 
   return (
 
@@ -37,7 +43,7 @@ const TabletsPage: React.FC<Props> = () => {
           </span>
         </div>
         <Sort />
-        <ProductList products={visibleTablets} />
+        <ProductList products={visibleProducts} />
       </div>
     </>
   );

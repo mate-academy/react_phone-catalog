@@ -11,21 +11,41 @@
 
 // export default AccessoriesPage;
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
+import { useLocation } from 'react-router-dom';
 import ProductList from '../ProductList/ProductList';
 import { getProducts } from '../../helpers/api';
 import Sort from '../Sort/Sort';
 import './AccessoriesPage.scss';
+import { sortProducts } from '../../helpers/sortProducts';
 
 
 type Props = { product: Product[]};
+
 const AccessoriesPage: React.FC<Props> = () => {
   const [accessories, setAccessories] = useState<Product[]>([]);
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const query = searchParams.get('query') || '';
+  const sortBy = useMemo(() => searchParams.get('sortBy') || '', [searchParams]);
 
   useEffect(() => {
     getProducts()
       .then(data => setAccessories(data.filter((product: Product) => product.type === 'accessories')));
   }, []);
+
+  const visibleAccessories = useMemo(() => {
+    return accessories
+      .filter((accessorie) => (
+        (accessorie.name + accessorie.screen + accessorie.capacity)
+          .toLowerCase()
+          .includes(query.toLowerCase())
+      ));
+  }, [query, accessories]);
+
+  const visibleProducts = useMemo(() => {
+    return sortProducts(visibleAccessories, sortBy);
+  }, [visibleAccessories, sortBy]);
 
   return (
 
@@ -42,7 +62,7 @@ const AccessoriesPage: React.FC<Props> = () => {
         {accessories.length > 0 ? (
           <>
             <Sort />
-            <ProductList products={accessories} />
+            <ProductList products={visibleProducts} />
           </>
         ) : (
           <div className="AccessoriesPage__notFound">
@@ -50,11 +70,7 @@ const AccessoriesPage: React.FC<Props> = () => {
             <img className="AccessoriesPage__notFound--img" src="./img/notFound.png" alt="notFound" />
           </div>
         )}
-
-
       </div>
-
-
     </>
   );
 };
