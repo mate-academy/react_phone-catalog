@@ -18,6 +18,6 @@ interface CartGood {
   quantity: number;
 }
 
-interface IForSort {
+interface IIndexable {
   [key: string]: any;
 }
