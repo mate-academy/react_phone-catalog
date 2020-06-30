@@ -1,0 +1,93 @@
+.slick-slider {
+  max-width: 1066px;
+  height: 400px;
+  margin: 40px auto;
+}
+
+.slick-next {
+  display: flex;
+  width: 29px;
+  border: 1px solid rgb(224, 223, 223);
+  box-sizing: border-box;
+  height: 100%;
+  right: -40px;
+  transition: border 0.3s;
+
+  &:hover{
+    border: 1px solid rgb(151, 150, 150);
+  }
+}
+.slick-next:before {
+  color: rgb(226, 225, 225);
+}
+
+.slick-prev {
+  display: block;
+  width: 29px;
+  border: 1px solid rgb(224, 223, 223);
+  box-sizing: border-box;
+  height: 100%;
+  left: -40px;
+  transition: border 0.3s;
+
+  &:hover{
+    border: 1px solid rgb(151, 150, 150);
+  }
+}
+.slick-prev:before {
+  color: rgb(226, 225, 225);
+}
+
+.Slider__image {
+  width: 1066px;
+  height: 400px;
+}
+
+.image1 {
+  background: url(../../img//banner/1.jpg) no-repeat;
+  background-size: cover;
+}
+.image2 {
+  background: url(../../img//banner/5.jpg) no-repeat;
+  background-size: cover;
+}
+.image3 {
+  background: url(../../img//banner/9.jpg) no-repeat;
+  background-size: cover;
+}
+.image4 {
+  background: url(../../img//banner/13t.jpg) no-repeat;
+  background-size: cover;
+}
+.image5 {
+  background: url(../../img//banner/11.jpg) no-repeat;
+  background-size: cover;
+}
+.image6 {
+  background: url(../../img//banner/42.jpg) no-repeat;
+  background-size: cover;
+}
+
+.slick-dots li {
+  position: relative;
+  display: inline-block;
+  width: 16px;
+  height: 4px;
+  margin: 0 10px;
+  background-color: #E2E6E9;
+}
+
+.slick-dots li button {
+  margin-top: -10px;
+}
+
+.slick-dots li button:before {
+  color: white;
+}
+
+.slick-dots li.slick-active button:before {
+  color: white;
+  width: 16px;
+  height: 4px;
+  background-color: #313237;
+}
