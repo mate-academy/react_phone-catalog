@@ -1,5 +1,5 @@
 // / <reference types="react-scripts" />
-interface Good {
+interface Good extends IIndexable {
   age: number;
   id: string;
   type: string;
@@ -16,4 +16,8 @@ interface Good {
 interface CartGood {
   good: Good;
   quantity: number;
+}
+
+interface IForSort {
+  [key: string]: any;
 }
