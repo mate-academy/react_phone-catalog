@@ -1,0 +1,41 @@
+@import "components/PhoneCard/PhoneCard";
+@import "pages/PhonesPage";
+@import "pages/TabletsPage";
+@import "./utils/reset";
+@import "./utils/vairables";
+@import "./helpers/Loader/Loader";
+@import "components/Pagination/Pagination";
+@import "components/Breadcrumbs/Breadcrumbs";
+@import "pages/AccessoriesPage";
+
+.Products {
+  &__article {
+    display: grid;
+    grid-template-columns: 320px;
+    grid-template-rows: 50px 50px 50px 50px;
+    padding: 23px 0;
+  }
+}
+
+.btn {
+  transition: 0.3s;
+}
+.btn:hover:enabled {
+  border: 1px solid $dark-gray-color;
+}
+
+a:hover {
+  color:$dark-gray-color;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+
+.main {
+  padding: 0 20px;
+}

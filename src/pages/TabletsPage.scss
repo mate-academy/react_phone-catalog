@@ -1,0 +1,19 @@
+.TabletsPage {
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 40px;
+    column-gap: 16px;
+    @media screen and (max-width: $desktop-breakpoint) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media screen and (max-width: $tablet-breakpoint) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media screen and (max-width: $phone-breakpoint) {
+      grid-template-columns: 1fr;
+    }
+  }
+}

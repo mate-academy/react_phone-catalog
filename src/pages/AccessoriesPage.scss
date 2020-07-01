@@ -1,0 +1,10 @@
+.Accessories {
+  max-width: 1136px;
+  margin: 0 auto;
+
+  &__image-wrap {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+  }
+}

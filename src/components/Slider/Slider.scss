@@ -1,0 +1,67 @@
+@import "../../utils/vairables.scss";
+
+.Slider__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 40px;
+}
+
+.carousel {
+  display: flex;
+  padding: 0;
+  transition: transform 0.3s;
+
+  &__container {
+    display: inline-flex;
+    height: 400px;
+    width: 1040px;
+    overflow: hidden;
+  }
+
+  &__item {
+    list-style: none;
+  }
+    &__btn {
+      cursor: pointer;
+      outline: none;
+      border: 1px solid #B4BDC4;
+      width: 32px;
+      height: 400px;
+
+      &_next {
+        background: url('./btn-next.svg');
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+
+      &_prev {
+        background: url('./btn-prev.svg');
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+  }
+
+  &__dots-wrap {
+    display: flex;
+    justify-content: center;
+    padding-top: 18px;
+  }
+
+  &__dot {
+    background-color: $light-gray;
+    margin-right: 14px;
+    width: 14px;
+    height: 4px;
+    transition: background-color 0.2s;
+    border: none;
+
+    &:last-child{
+      margin: 0;
+    }
+
+    &_active {
+      background-color: $dark-gray-color;
+    }
+  }
+}

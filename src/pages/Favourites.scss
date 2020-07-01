@@ -1,0 +1,14 @@
+.Favourites {
+  &__container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin-top: 40px;
+    grid-column-gap: 20px;
+    grid-row-gap: 40px;
+  }
+
+  &__noproducts{
+    margin-top: 100px;
+    text-align: center;
+  }
+}

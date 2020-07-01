@@ -1,0 +1,106 @@
+@import "../../utils/vairables.scss";
+
+.header {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding-left: 24px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 1px 0 $light-gray;
+
+  &__left, &__right {
+    display: flex;
+  }
+
+  &__search {
+    position: relative;
+  }
+
+  &__input, &__button {
+    box-sizing: border-box;
+    height: 64px;
+    outline: none;
+    border: none;
+    box-shadow: -1px 0 0 $light-gray;
+  }
+
+  &__input {
+    margin-right: 1px;
+    font-size: 14px;
+    width: 327px;
+    padding: 23px 24px;
+    transition: 0.3s;
+  }
+
+  &__input::placeholder {
+    color: $border-gray;
+    font-size: 14px;
+  }
+
+  &__button {
+    position: relative;
+    padding: 0;
+    background-color: #fff;
+    width: 64px;
+    transition: 0.3s;
+  }
+
+  &__button:hover, &__input:hover {
+    background-color: rgb(246, 246, 246);
+  }
+
+  &__counter {
+    top: 17px;
+    right: 20px;
+    text-align: center;
+    font-weight: 600;
+    line-height: 12px;
+    font-size: 9px;
+    color: #fff;
+    border-radius: 50%;
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background: #eb5757;
+    border: 1px solid #fff;
+    box-sizing: border-box;
+  }
+}
+
+.search {
+  &__icon {
+    position: absolute;
+    top: 23px;
+    right: 40px;
+  }
+}
+
+@media screen and (max-width: $phone-breakpoint) {
+  .search__icon {
+    top: 50%;
+    transform: translate(-50%, -50%);
+    right: -5px;
+  }
+
+  .header__input {
+    width: 100%;
+    padding: 5px;
+  }
+
+  .header__input::placeholder {
+    font-size: 11px;
+    line-height: 10px;
+  }
+
+}
+
+@media screen and (max-width: 1023px) {
+  .header {
+
+    &__left {
+      display: none;
+    }
+  }
+}

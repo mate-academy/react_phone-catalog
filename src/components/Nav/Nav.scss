@@ -1,0 +1,73 @@
+@import "../../utils/vairables.scss";
+
+.nav {
+
+  &__list {
+    display: flex;
+    list-style: none;
+    padding-left: 64px;
+  }
+
+  &__item {
+    margin-right: 64px;
+
+    &:last-child{
+      margin: 0;
+    }
+  }
+
+  &__mobile_list {
+    display: none;
+  }
+
+  &__link {
+    position: relative;
+    padding: 22px 0;
+    font-weight: bold;
+    line-height: 11px;
+    color: $gray-color;
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    transition: 0.3s;
+
+    &--active {
+      color: $dark-gray-color;
+    }
+
+    &--active::after {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: $dark-gray-color;
+      content: "";
+    }
+  }
+
+  &__link:hover {
+    color: $dark-gray-color;
+
+    &::after {
+      position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: $dark-gray-color;
+        content: "";
+    }
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .nav {
+   &__list {
+     display: none;
+   }
+   &__mobile_list {
+     display: flex;
+   }
+  }
+}

@@ -1,0 +1,159 @@
+@import "../../utils/vairables";
+
+.PhoneCard {
+  margin: 0 auto;
+  display: grid;
+  grid-template-rows: 215px 50px 50px 2px 100px 40px;
+  width: 272px;
+  height: 507px;
+  border: 1px solid $light-gray;
+  box-sizing: border-box;
+  padding: 24px;
+  transition: 0.3s;
+
+  &:hover {
+    box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+  }
+
+  &__image {
+    width: 208px;
+    height: 208px;
+    object-fit: contain;
+    transition: 0.3s;
+  }
+
+  &__image:hover {
+    transform: scale(1.05);
+  }
+
+  &__product {
+    font-weight: 500;
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 21px;
+    color: $dark-gray-color;
+    text-decoration: none;
+    transition: 0.3s;
+  }
+
+  &__product:hover {
+    color: black;
+  }
+
+  &__price-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  &__price {
+    color: $dark-gray-color;
+    margin-right: 8px;
+    font-size: 22px;
+    line-height: 140%;
+  }
+
+  &__price-discount {
+    font-size: 22px;
+    line-height: 28px;
+    text-decoration-line: line-through;
+    color: $gray-color;
+  }
+
+  &__style-line:after {
+    content: "";
+    display: block;
+    height: 1px;
+    width: 224px;
+    background: $light-gray;
+  }
+
+  &__text-container {
+    margin: 16px 0;
+  }
+
+  &__text-module {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 8px;
+  }
+
+  &__title {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: $gray-color;
+  }
+
+  &__item {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  &__button, &__button_added {
+    outline: none;
+    width: 176px;
+    height: 40px;
+    box-sizing: border-box;
+    font-family: 'Mont';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  &__button {
+    background: $dark-gray-color;
+    color: white;
+    border: 1px solid $dark-gray-color;
+    width: 176px;
+    height: 40px;
+    box-sizing: border-box;
+    transition: 0.3s;
+    outline: none;
+    &:hover {
+      cursor: pointer;
+      box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+    }
+  }
+
+  &__button_added {
+      background: white;
+      border: 1px solid $light-gray;
+      color: #27AE60;
+    }
+
+  &__favorits-button {
+    border: 1px solid $border-gray;
+    box-sizing: border-box;
+    width: 40px;
+    height: 40px;
+    background: white;
+    transition: 0.3s;
+    outline: none;
+    &:hover {
+      border: 1px solid $dark-gray-color;
+      cursor: pointer;
+    }
+  }
+
+  &__buttons-container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__routeBtn{
+    outline: none;
+    border: 0;
+    :focus {
+      outline-style: none;
+      outline-width: 0 !important;
+      outline-color: none !important;
+    }
+  }
+}
+
+.price-discount {
+  opacity: 0;
+}

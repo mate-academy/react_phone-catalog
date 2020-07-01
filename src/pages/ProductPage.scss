@@ -1,0 +1,191 @@
+@import "../pages/PhonesPage";
+@import "../utils/vairables";
+
+.Product {
+  &__top {
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 80px;
+    @media screen and (max-width: $tablet-breakpoint) {
+      flex-direction: column;
+    }
+  }
+
+  &__images_list {
+    margin-right: 16px;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__img-container {
+    display: flex;
+    @media screen and (max-width: $tablet-breakpoint) {
+      margin: 0 auto;
+    }
+  }
+
+  &__title {
+    margin-top: 16px;
+  }
+
+  &__images_item, &__img_main {
+    box-sizing: border-box;
+    border: 1px solid $light-gray;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  &__images_item {
+    cursor: pointer;
+    width: 80px;
+    height: 80px;
+    background-size: 70px;
+    transition: 0.3s;
+  }
+
+  &__images_btn {
+    padding: 0;
+    margin-bottom: 16px;
+    outline: none;
+    border: none;
+    background: none;
+
+    :hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__img_main {
+    width: 464px;
+    height: 464px;
+    @media screen and (max-width: $desktop-breakpoint) {
+      width: 350px;
+      height: 350px;
+    }
+    @media screen and (max-width: $tablet-breakpoint) {
+      width: 300px;
+      height: 300px;
+    }
+    @media screen and (max-width: $phone-breakpoint) {
+      width: 55vw;
+      height: 55vw;
+    }
+  }
+
+  &__image_active {
+    border: 1px solid #313237;
+  }
+
+  &__mainInfo {
+    box-sizing: border-box;
+    width: 520px;
+    @media screen and (max-width: $tablet-breakpoint) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 10px auto;
+    }
+    @media screen and (max-width: $phone-breakpoint) {
+      width: 100%;
+    }
+  }
+
+  &__button_cart {
+    width: 263px;
+    height: 48px;
+    @media screen and (max-width: $tablet-breakpoint) {
+      width: 89%;
+    }
+  }
+
+  &__button_favorites {
+    outline: none;
+    background-color: white;
+    border: 1px solid $border-gray;
+    width: 48px;
+    height: 48px;
+  }
+
+  &__price {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+
+    &_discont {
+      margin-right: 8px;
+      font-weight: bold;
+      font-size: 32px;
+    }
+
+    &_full {
+      font-size: 22px;
+      text-decoration-line: line-through;
+      color: $gray-color;
+    }
+  }
+
+  &__group {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+
+    &:first-child {
+      margin-top: 32px;
+    }
+  }
+
+  &__info-wrap {
+    width: 320px;
+    @media screen and (max-width: $tablet-breakpoint) {
+      width: 100%;
+    }
+  }
+
+  &__spec-info, &__spec-name {
+    font-weight: 600;
+    font-size: 12px;
+  }
+
+  &__spec-name {
+    color: $gray-color;
+  }
+
+  &__spec-info {
+    color: $dark-gray-color;
+  }
+
+  &__info_container {
+    display: flex;
+    justify-content: space-between;
+    @media screen and (max-width: $tablet-breakpoint) {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  &__info {
+    max-width: 560px;
+
+    &_tech {
+      width: 520px;
+      @media screen and (max-width: $phone-breakpoint) {
+        width: 100%;
+      }
+    }
+
+    &-block {
+      margin-bottom: 32px;
+    }
+  }
+
+  &__info_title {
+    margin-bottom: 16px;
+  }
+}
+
+.line {
+  margin: 16px 0 32px;
+}
+

@@ -1,0 +1,84 @@
+@import "../utils/vairables";
+
+.PhonesPage {
+
+  &__article {
+    display: grid;
+    grid-template-columns: 270px;
+    grid-template-rows: 50px 50px 50px 50px;
+    padding: 23px 0;
+  }
+
+  &__head {
+    color: $dark-gray-color;
+    font-size: 32px;
+    line-height: 41px;
+  }
+
+  &__length {
+    font-size: 14px;
+    line-height: 21px;
+    color: $gray-color;
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 40px;
+    column-gap: 16px;
+    @media screen and (max-width: $desktop-breakpoint) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media screen and (max-width: $tablet-breakpoint) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media screen and (max-width: $phone-breakpoint) {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+.container__filter {
+  display: grid;
+  grid-template-columns: 12vw 12vw;
+  gap: 5px;
+
+  @media screen and (max-width: $tablet-breakpoint) {
+    grid-template-columns: 105px 104px;
+  }
+}
+
+.filter {
+
+  &__text {
+    font-size: 12px;
+    line-height: 15px;
+    color: $gray-color;
+  }
+
+  &__sorted {
+    width: 10px;
+  }
+
+  &__selected {
+    width: 128px;
+  }
+
+  &__option {
+    outline: transparent;
+    color: $dark-gray-color;
+  }
+}
+
+.sorted {
+  height: 40px;
+  border: 1px solid $light-gray;
+  box-sizing: border-box;
+}
+
+.ui.selection.dropdown {
+  min-width: 10vw;
+}
+

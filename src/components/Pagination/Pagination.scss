@@ -1,0 +1,44 @@
+@import "./src/utils/vairables";
+
+.pagination {
+  display: flex;
+  margin: 40px 0;
+  justify-content: center;
+
+  &__button {
+    box-sizing: border-box;
+    width: 32px;
+    height: 32px;
+    background: white;
+    border: 1px solid $border-gray;
+    transition: 0.3s;
+    outline: none;
+    &:hover:enabled {
+      border: 1px solid $dark-gray-color;
+    }
+
+  }
+
+  &__button-active {
+    box-sizing: border-box;
+    width: 32px;
+    height: 32px;
+    color: white;
+    background: $dark-gray-color;
+    border: $dark-gray-color;
+  }
+
+  &__item {
+    list-style: none;
+    margin: 0 0 0 8px;
+    &:first-child {
+      margin: 0;
+    }
+  }
+
+  &__list {
+    display: flex;
+    margin: 0 16px;
+    //gap: 5px;
+  }
+}

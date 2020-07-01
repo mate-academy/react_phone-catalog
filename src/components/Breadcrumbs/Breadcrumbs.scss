@@ -1,0 +1,43 @@
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+
+  &__link {
+    text-decoration: none;
+    margin-left: 10px;
+    transition: 0.3s;
+  }
+
+  &__link-active {
+    color: $dark-gray-color;
+  }
+
+  &__link-active:hover {
+    text-decoration: underline;
+  }
+
+  &__last {
+    color: $gray-color;
+    margin: 10px;
+  }
+
+  &__item {
+    list-style: none;
+    margin-left: 10px;
+    align-self: center;
+  }
+
+  &__link-image {
+    width: 10px;
+    height: 10px;
+    object-fit: cover;
+    margin: auto 10px;
+  }
+}
+
+.wrap__container {
+  display: flex;
+  align-items: center;
+  margin: 23px 0;
+  height: 50px;
+}

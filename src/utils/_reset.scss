@@ -1,0 +1,23 @@
+body,
+h1,
+h2,
+h3,
+p,
+ul,
+li,
+input,
+button {
+  margin: 0;
+  padding: 0;
+  font-family: 'Mont';
+  color: $dark-gray-color;
+}
+
+.section {
+  padding-bottom: 80px;
+}
+
+button {
+  cursor: pointer;
+  outline: none;
+}
