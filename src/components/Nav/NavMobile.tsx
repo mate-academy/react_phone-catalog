@@ -19,7 +19,6 @@ export const NavMobile = () => {
   const [open, setOpen] = useState(false);
   const [whidth, setWhidth] = useState<number>(-1000);
 
-
   const handleClick = () => {
     if (!open) {
       setOpen(true);
@@ -52,23 +51,28 @@ export const NavMobile = () => {
         color="black"
         borderRadius={0}
         animationDuration={0.5}
-        className="Hamburger__menu"
+        className="Hamburger__menu cursor"
       />
       <ul className="nav__mobile_list" style={navStyle}>
+        <div className="nav__menu-stick">
+          <span className="nav__menu-underline--1"></span>
+          <span className="nav__menu-underline--2"></span>
+        </div>
         {NAV_LINKS.map((link: NavLinks) => (
-          <button type="button" onClick={() => handeleLinkClick()}>
-            <li
-              key={link.path}
+          <li
+            key={link.path}
+            onClick={() => handeleLinkClick()}
+            className="nav__item-menu"
+          >
+            <NavLink
+              to={link.path}
+              exact
+              activeClassName="nav__link-menu--active"
+              className="nav__link-menu"
             >
-              <NavLink
-                to={link.path}
-                exact
-                activeClassName="nav__link--active"
-              >
-                {link.text}
-              </NavLink>
-            </li>
-          </button>
+              {link.text}
+            </NavLink>
+          </li>
         ))}
       </ul>
     </>

@@ -1,3 +1,5 @@
+@import "../../utils/vairables";
+
 .container {
   max-width: 1136px;
   margin: 0 auto;
@@ -6,6 +8,12 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 28px;
+  }
+
+  &__title {
+    @media screen and (max-width: $phone-breakpoint) {
+      font-size: 18px;
+    }
   }
 }
 
@@ -38,13 +46,13 @@
 }
 
 .btn__noactive_prev {
-  background: url('../Slider/btn-noactive-prev.svg');
+  background: url("../Slider/btn-noactive-prev.svg");
   background-position: center;
   background-repeat: no-repeat;
 }
 
 .btn__noactive_next {
-  background: url('../Slider/btn-noactive-next.svg');
+  background: url("../Slider/btn-noactive-next.svg");
   background-position: center;
   background-repeat: no-repeat;
 }

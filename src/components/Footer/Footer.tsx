@@ -32,7 +32,7 @@ export const Footer = () => {
               key={link}
               className="Footer__item"
             >
-              <a className="nav__link" href={url}>
+              <a className="Footer__nav-link" href={url}>
                 {link}
               </a>
             </li>
@@ -40,7 +40,7 @@ export const Footer = () => {
         </ul>
 
       </div>
-      <div className="Footer__left">
+      <div className="Footer__right">
         <p className="Footer__backTo">Back to top</p>
         <button
           type="button"

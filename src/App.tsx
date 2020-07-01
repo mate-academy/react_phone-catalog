@@ -27,7 +27,7 @@ const App = () => {
   return (
     <>
       <Header />
-      <main>
+      <main className="main">
         <Switch>
           <Route path="/" exact component={HomePage} />
           <Route path="/phones" exact component={PhonesPage} />

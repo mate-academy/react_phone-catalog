@@ -7,7 +7,7 @@ export const AccessoriesPage = () => (
       <Breadcrumbs />
     </section>
     <div className="Accessories__image-wrap">
-      <img src="img/not_found.jpg" alt="not found" className="Accessories__not-found"/>
+      <img src="img/not_found.jpg" alt="not found" className="Accessories__not-found" />
     </div>
   </div>
 );

@@ -1,4 +1,4 @@
-@import '../../utils/vairables.scss';
+@import "../../utils/vairables.scss";
 
 .Footer {
   max-width: 1400px;
@@ -6,23 +6,50 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0px -1px 0px #E2E6E9;
-  padding: 0 152px;
+  box-shadow: 0 -1px 0 #e2e6e9;
+  padding: 0 25px;
+  margin: 0 auto;
+
+  &__nav-link {
+    position: relative;
+    padding: 22px 0;
+    font-weight: bold;
+    line-height: 11px;
+    color: #89939a;
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    transition: 0.3s;
+  }
 
   &__list {
     display: flex;
     list-style: none;
+    @media screen and (max-width: $phone-breakpoint) {
+      flex-direction: column;
+      justify-content: space-around;
+      height: 100px;
+    }
   }
 
   &__item {
     margin-right: 64px;
 
-    &:last-child{
+    &:last-child {
       margin-right: 0;
     }
   }
 
   &__left {
+    display: flex;
+    align-items: center;
+
+    @media screen and (max-width: $phone-breakpoint) {
+      display: none;
+    }
+  }
+
+  &__right {
     display: flex;
     align-items: center;
   }
@@ -40,11 +67,11 @@
     cursor: pointer;
     width: 32px;
     height: 32px;
-    background-image: url('./BackTo.svg');
+    background-image: url("./BackTo.svg");
     background-position: center;
     background-repeat: no-repeat;
     background-color: #fff;
-    border: 1px solid #B4BDC4;
+    border: 1px solid #b4bdc4;
     box-sizing: border-box;
   }
 }

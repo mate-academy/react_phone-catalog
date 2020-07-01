@@ -1,4 +1,4 @@
-@import '../../utils/vairables.scss';
+@import "../../utils/vairables.scss";
 
 .header {
   max-width: 1400px;
@@ -8,7 +8,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 0px 1px 0px $light-gray;
+  box-shadow: 0 1px 0 $light-gray;
 
   &__left, &__right {
     display: flex;
@@ -23,7 +23,7 @@
     height: 64px;
     outline: none;
     border: none;
-    box-shadow: -1px 0px 0px $light-gray;
+    box-shadow: -1px 0 0 $light-gray;
   }
 
   &__input {
@@ -63,25 +63,44 @@
     position: absolute;
     width: 14px;
     height: 14px;
-    background: #EB5757;
+    background: #eb5757;
     border: 1px solid #fff;
     box-sizing: border-box;
   }
 }
 
-  .search {
-    &__icon{
-      position: absolute;
-      top:23px;
-      right: 40px;
-    }
+.search {
+  &__icon {
+    position: absolute;
+    top: 23px;
+    right: 40px;
+  }
+}
+
+@media screen and (max-width: $phone-breakpoint) {
+  .search__icon {
+    top: 50%;
+    transform: translate(-50%, -50%);
+    right: -5px;
   }
 
-  @media screen and (max-width: 1023px) {
-    .header {
-      padding-right: 24px;
-        &__right {
-          display: none;
-        }
+  .header__input {
+    width: 100%;
+    padding: 5px;
+  }
+
+  .header__input::placeholder {
+    font-size: 11px;
+    line-height: 10px;
+  }
+
+}
+
+@media screen and (max-width: 1023px) {
+  .header {
+
+    &__left {
+      display: none;
     }
   }
+}

@@ -11,7 +11,7 @@ const NAV_LINKS = [
   { path: '/', text: 'HOME' },
   { path: '/phones', text: 'PHONES' },
   { path: '/tablets', text: 'TABLETS' },
-  { path: '/accessories', text: 'ACCESSORIES' },
+  { path: '/accessories', text: 'AССESSORIES' },
 ];
 
 

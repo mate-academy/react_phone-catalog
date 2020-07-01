@@ -14,7 +14,6 @@ export const Header = () => {
 
   return (
     <>
-
       <header className="header">
         <div className="header__left">
           <Link to="/">
@@ -51,7 +50,6 @@ export const Header = () => {
             </button>
           </Link>
         </div>
-
       </header>
     </>
   );

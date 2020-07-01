@@ -4,9 +4,9 @@
 
   &__article {
     display: grid;
-    grid-template-columns: 320px;
+    grid-template-columns: 270px;
     grid-template-rows: 50px 50px 50px 50px;
-    padding: 23px 50px;
+    padding: 23px 0;
   }
 
   &__head {
@@ -26,6 +26,17 @@
     grid-template-columns: repeat(4, 1fr);
     row-gap: 40px;
     column-gap: 16px;
+    @media screen and (max-width: $desktop-breakpoint) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media screen and (max-width: $tablet-breakpoint) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media screen and (max-width: $phone-breakpoint) {
+      grid-template-columns: 1fr;
+    }
   }
 }
 
@@ -33,6 +44,10 @@
   display: grid;
   grid-template-columns: 12vw 12vw;
   gap: 5px;
+
+  @media screen and (max-width: $tablet-breakpoint) {
+    grid-template-columns: 105px 104px;
+  }
 }
 
 .filter {

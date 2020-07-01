@@ -1,4 +1,4 @@
-@import '../../utils/vairables.scss';
+@import "../../utils/vairables.scss";
 
 .Categories {
   &__container {
@@ -13,6 +13,9 @@
     height: 443px;
     margin-right: 16px;
     cursor: pointer;
+    @media screen and (max-width: 400px) {
+      width: 100%;
+    }
 
     &:last-child {
       margin: 0;
