@@ -7,6 +7,9 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 80px;
+    @media screen and (max-width: $tablet-breakpoint) {
+      flex-direction: column;
+    }
   }
 
   &__images_list {
@@ -18,6 +21,9 @@
 
   &__img-container {
     display: flex;
+    @media screen and (max-width: $tablet-breakpoint) {
+      margin: 0 auto;
+    }
   }
 
   &__title {
@@ -54,6 +60,18 @@
   &__img_main {
     width: 464px;
     height: 464px;
+    @media screen and (max-width: $desktop-breakpoint) {
+      width: 350px;
+      height: 350px;
+    }
+    @media screen and (max-width: $tablet-breakpoint) {
+      width: 300px;
+      height: 300px;
+    }
+    @media screen and (max-width: $phone-breakpoint) {
+      width: 55vw;
+      height: 55vw;
+    }
   }
 
   &__image_active {
@@ -63,12 +81,24 @@
   &__mainInfo {
     box-sizing: border-box;
     width: 520px;
+    @media screen and (max-width: $tablet-breakpoint) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 10px auto;
+    }
+    @media screen and (max-width: $phone-breakpoint) {
+      width: 100%;
+    }
   }
 
   &__button_cart {
     width: 263px;
     height: 48px;
-   }
+    @media screen and (max-width: $tablet-breakpoint) {
+      width: 89%;
+    }
+  }
 
   &__button_favorites {
     outline: none;
@@ -108,6 +138,9 @@
 
   &__info-wrap {
     width: 320px;
+    @media screen and (max-width: $tablet-breakpoint) {
+      width: 100%;
+    }
   }
 
   &__spec-info, &__spec-name {
@@ -126,6 +159,10 @@
   &__info_container {
     display: flex;
     justify-content: space-between;
+    @media screen and (max-width: $tablet-breakpoint) {
+      flex-direction: column;
+      align-items: center;
+    }
   }
 
   &__info {
@@ -133,6 +170,9 @@
 
     &_tech {
       width: 520px;
+      @media screen and (max-width: $phone-breakpoint) {
+        width: 100%;
+      }
     }
 
     &-block {

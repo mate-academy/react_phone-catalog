@@ -32,6 +32,16 @@
     display: flex;
     max-width: 1136px;
     overflow: hidden;
+    @media screen and (max-width: $desktop-breakpoint) {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    @media screen and (max-width: $tablet-breakpoint) {
+      max-width: 570px;
+    }
+    @media screen and (max-width: $phone-breakpoint) {
+      max-width: 282px;
+    }
   }
 
   &__item {
