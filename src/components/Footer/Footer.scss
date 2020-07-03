@@ -1,0 +1,63 @@
+.footer {
+  box-shadow: 0 -1px 0 rgb(226, 230, 233);
+  &__wrap {
+    padding: 20px 0;
+    width: 80%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__lift {
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+.logo__img {
+  margin: auto;
+}
+
+.navFooter {
+  &__list {
+    padding: 0;
+  }
+}
+
+.lift__title {
+  font-family: "Mont-Regular", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  text-align: right;
+  color: rgb(137, 147, 154);
+  margin: auto 16px;
+}
+
+.lift {
+  &__button {
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    border: 1px solid rgb(180, 189, 196);
+    box-sizing: border-box;
+    background: #ffff;
+    cursor: pointer;
+
+    &--left {
+      margin-right: 12px;
+    }
+
+    &--right {
+      margin-left: 12px;
+    }
+  }
+
+  &__buttonImg {
+    margin: 0 auto;
+    transform: translateY(-50%);
+  }
+}

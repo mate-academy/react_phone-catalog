@@ -1,0 +1,61 @@
+@import '../../styles/typography';
+
+.mainCarousel {
+  margin-top: 40px;
+}
+
+.bigCarousel {
+  display: flex;
+
+  &__container {
+    width: 1040px;
+    height: 400px;
+    margin: 0 16px;
+    overflow: hidden;
+  }
+}
+
+.hidden__list {
+  display: flex;
+  transition: all 0.3s;
+}
+
+.leftArrow {
+  background: url("./../../images/arrows/left.svg") no-repeat center center;
+}
+
+.rightArrow {
+  background: url("./../../images/arrows/right.svg") no-repeat center center;
+}
+
+.bigArrow {
+  padding: 0;
+  width: 32px;
+  border: 1px solid #b4bdc4;
+  box-sizing: border-box;
+}
+
+.indicators {
+  margin-top: 18px;
+  display: flex;
+  justify-content: center;
+}
+
+.indicator {
+  width: 14px;
+  height: 4px;
+  border: none;
+  background-color: #e2e6e9;
+  z-index: 1;
+  margin-right: 14px;
+  transition: all 0.3s;
+  cursor: pointer;
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  &--active {
+    background-color: #313237;
+  }
+}

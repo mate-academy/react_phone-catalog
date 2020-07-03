@@ -1,0 +1,42 @@
+@import '../../styles/typography';
+
+.ProductCarousel {
+  margin: 80px auto;
+  &__nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__buttons {
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  &__container {
+    overflow: hidden;
+  }
+
+  &__title {
+    font-weight: bold;
+    font-size: 2em;
+    margin: 0 0 24px;
+  }
+
+  &__list {
+    transition: all 0.3s;
+    display: grid;
+    grid-template-columns: repeat(10000, 23.8%);
+    grid-gap: 1.6%;
+  }
+}
+
+.disabledBtn {
+  opacity: 0.3;
+}
+
+.slide__buttonImg {
+  margin: 0 auto;
+}
