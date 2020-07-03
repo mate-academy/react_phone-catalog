@@ -62,7 +62,7 @@ const App: React.FC = () => {
 
                   if (prod) {
                     return (
-                      <ProductInfo product={prod} />
+                      <ProductInfo product={prod} id={match.params.productId} />
                     );
                   }
 

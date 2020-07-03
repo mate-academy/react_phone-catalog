@@ -1,5 +1,9 @@
 @import "../../../styles/mixins.scss";
 
+.linkToProduct {
+  text-decoration: none;
+}
+
 .card {
   padding: 32px;
   background: rgb(255, 255, 255);
