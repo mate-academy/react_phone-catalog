@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useLocation } from 'react-router-dom';
 import ProductList from '../ProductList/ProductList';
+import BreadCrums from '../Breadcrumbs/Breadcrumbs';
 import { getProducts } from '../../helpers/api';
 import Sort from '../Sort/Sort';
 import './TabletsPage.scss';
@@ -34,6 +35,8 @@ const TabletsPage: React.FC<Props> = () => {
 
     <>
       <div className="TabletsPage">
+        <BreadCrums />
+
         <div className="TabletsPage__title">
           <p className="TabletsPage__name">Tablets</p>
           <span className="TabletsPage__quantity">

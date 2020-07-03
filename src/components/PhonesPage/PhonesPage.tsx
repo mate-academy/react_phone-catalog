@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useLocation } from 'react-router-dom';
+import BreadCrums from '../Breadcrumbs/Breadcrumbs';
 import ProductList from '../ProductList/ProductList';
 import { getProducts } from '../../helpers/api';
 import { sortProducts } from '../../helpers/sortProducts';
@@ -35,7 +36,9 @@ const PhonesPage: React.FC<Props> = () => {
   return (
 
     <>
+
       <div className="PhonesPage">
+        <BreadCrums />
         <div className="PhonesPage__title">
           <p className="PhonesPage__name">Mobile Phones</p>
           <span className="PhonesPage__quantity">

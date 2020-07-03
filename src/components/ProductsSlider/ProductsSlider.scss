@@ -6,7 +6,7 @@
 
   &__container {
     overflow: hidden;
-    width: 1140px;
+
   }
 
   &__list {
@@ -39,13 +39,12 @@
     align-items: center;
     height: 32px;
     width: 32px;
-    margin-left: 10px;
-    border: 1px solid $border-color;
+    margin-left: 8px;
+    border: 1px solid $icons-secondary-color;
     background-color: $buttons-slider-color;
     border-color: $border-color;
     cursor: pointer;
     transition: background-color $hover-transition ;
-    outline-color: $icons-secondary-color;
 
     &:hover {
       background-color: $icons-secondary-color;

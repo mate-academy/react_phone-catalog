@@ -1,0 +1,128 @@
+@import "../../styles/vars.scss";
+
+.CartPage {
+  width: 1140px;
+  margin: 70px auto;
+
+  &__container {
+    display: flex;
+
+    justify-content: space-between;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: row;
+
+    margin-bottom: 16px;
+    border: 1px solid $elements-color;
+    height: 128px;
+    width: 752px;
+  }
+
+  &__img {
+    width: 66px;
+  }
+
+  &__product--title {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    width: 320px;
+  }
+
+  &__changeQuantity {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+  }
+  &__button {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $elements-color;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: $icons-background-color;
+
+    &:hover {
+      border: 1px solid $primary-color;
+      cursor: pointer;
+    }
+
+  }
+
+  &__button--remove {
+    // height: 10px;
+    border: none;
+    background-image: url("../../img/icons/close.svg");
+  }
+
+  &__button--decrease {
+    background-image: url("../../img/icons/minus.svg");
+  }
+
+  &__button--increase {
+    background-image: url("../../img/icons/plus.svg");
+
+  }
+
+  &__button--counter {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    margin: 0 10px;
+
+  }
+
+  &__price {
+    display: flex;
+    flex-direction: column;
+
+    color: $primary-color;
+  }
+
+  &__totalPrice {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    border: 1px solid $elements-color;
+    text-align: center;
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 41px;
+    width: 368px;
+    height: 206px;
+
+  }
+
+  &__totalPrice--container {
+    padding: 24px;
+  }
+
+  &__text {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $secondary-color;
+
+  }
+
+  hr {
+    border: 1px solid $elements-color;
+    background-color: $elements-color;
+  }
+
+  &__button--checkout {
+    background-color: $buttons-background-color;
+    border: none;
+    color: $buttons-primary-color;
+    width: 322px;
+    height: 48px;
+  }
+
+}

@@ -1,10 +1,8 @@
 @import "../../styles/vars.scss";
 
 .TabletsPage {
-
-  &__title {
-    margin: 40px 150px;
-  }
+  width: 1140px;
+  margin: 0 auto;
 
   &__name {
     font-size: 32px;

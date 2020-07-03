@@ -52,3 +52,8 @@ interface ProductDetails {
     weight: string;
   };
 }
+
+interface CartProduct {
+  product: Product;
+  quantity: number;
+}

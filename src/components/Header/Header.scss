@@ -1,13 +1,18 @@
 @import "../../styles/vars.scss";
 
 .header {
+  position: sticky;
+  z-index: 1;
+  top: 0;
 
   display: flex;
   justify-content: space-between;
-  position: relative;
+  // position: relative;
   align-items: center;
-  border-bottom: 1px solid $secondary-color;
+  border: 1px solid $elements-color;
   padding-left: 24px;
+  opacity: 1;
+  background-color: $background-color;
 
   &__nav {
     display: flex;
@@ -48,7 +53,7 @@
     align-items: center;
     width: 64px;
     height: 64px;
-    border-left: 1px solid $secondary-color;
+    border-left: 1px solid $elements-color;
     text-align: center;
   }
 
@@ -74,4 +79,5 @@
     height: 14px;
     background-color: $icons-red-color;
   }
+
 }

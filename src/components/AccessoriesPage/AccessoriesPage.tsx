@@ -14,6 +14,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useLocation } from 'react-router-dom';
 import ProductList from '../ProductList/ProductList';
+import BreadCrums from '../Breadcrumbs/Breadcrumbs';
 import { getProducts } from '../../helpers/api';
 import Sort from '../Sort/Sort';
 import './AccessoriesPage.scss';
@@ -51,9 +52,10 @@ const AccessoriesPage: React.FC<Props> = () => {
 
     <>
       <div className="AccessoriesPage">
+        <BreadCrums />
         <div className="AccessoriesPage__title">
-          <p className="AccessoriesPage__title--name">Accessories</p>
-          <span className="AccessoriesPage__title--quantity">
+          <p className="AccessoriesPage__name">Accessories</p>
+          <span className="AccessoriesPage__quantity">
             {accessories.length}
             {' '}
             models

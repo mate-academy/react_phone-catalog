@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import ProductsSlider from '../ProductsSlider/ProductsSlider';
+import BreadCrums from '../Breadcrumbs/Breadcrumbs';
 import { getProducts, getDetails } from '../../helpers/api';
 import './ProductDetailsPage.scss';
 
 import ProductInfo from '../ProductInfo/ProductInfo';
 import FavoriteButton from '../Buttons/FavoriteButton';
 import CartButton from '../Buttons/CartButtons';
+import GoBack from '../GoBack/GoBack';
 
 
 const ProductDetailsPage: React.FC = () => {
@@ -66,6 +68,9 @@ const ProductDetailsPage: React.FC = () => {
     <>
 
       <div className="ProductDetailsPage">
+        <BreadCrums />
+        <GoBack />
+
         <p className="ProductDetailsPage__title">{details?.name}</p>
         <div className="ProductDetailsPage__wrapper">
 
@@ -117,7 +122,7 @@ const ProductDetailsPage: React.FC = () => {
             </div>
 
             <div className="Button">
-              <CartButton />
+              <CartButton product={productId} />
               <FavoriteButton product={productId} />
             </div>
 

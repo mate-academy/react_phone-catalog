@@ -11,6 +11,14 @@ li {
   font-family: "Mont", sans-serif;
 }
 
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
 @font-face {
   font-family: "Mont";
   font-style: normal;

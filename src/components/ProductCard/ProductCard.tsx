@@ -67,7 +67,7 @@ const ProductCard: React.FC<Props> = ({ product }) => {
       <ProductInfo title="Ram" value={ram} />
       <ProductInfo title="Capacity" value={capacity} />
       <div className="Button">
-        <CartButton />
+        <CartButton product={product} />
         <FavoriteButton product={product} />
       </div>
 
