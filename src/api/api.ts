@@ -5,9 +5,8 @@ export const getProducts = () => {
     .then(response => response.json());
 };
 
-
 export async function getDetails(id: string) {
-  const resp = await fetch(`${BASE_URL}${id}.json`);
+  const resp = await fetch(`${BASE_URL}/${id}.json`);
   const productDetails = await resp.json();
 
   return productDetails;
