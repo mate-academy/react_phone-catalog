@@ -17,6 +17,7 @@ import { ProductInfo } from './components/ProductPage/ProductInfo';
 const App: React.FC = () => {
   const [products, setProducts] = useState<ProductItem[]>([]);
   // const { match } = useRouteMatch<any>();
+
   useEffect(() => {
     getProducts()
       .then(data => {
@@ -25,6 +26,7 @@ const App: React.FC = () => {
       });
   }, []);
   // var searchParams = new URLSearchParams();
+
   return (
     <div className="App">
       <FavContextWrap>
@@ -54,13 +56,13 @@ const App: React.FC = () => {
                 )}
               />
               <Route
-                path={['/phone/:productId?', '/tablet/:productId?', '/accessorie/:productId?']}
+                path={['/phones/:productId?', '/tablets/:productId?', '/accessories/:productId?']}
                 render={({ match }) => {
                   const prod = products.find(item => item.id === match.params.productId);
 
                   if (prod) {
                     return (
-                      <ProductInfo product={prod} />
+                      <ProductInfo product={prod} id={match.params.productId} />
                     );
                   }
 

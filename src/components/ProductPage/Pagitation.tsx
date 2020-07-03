@@ -18,7 +18,6 @@ export const Pagination: React.FC<Props> = ({ pageCount }) => {
   const handleChangePage = (event: React.MouseEvent<HTMLButtonElement>) => {
     const target = event.target as HTMLButtonElement;
 
-    // searchParams.set('page', (page > pageCount ? '1' : (target.value)));
     searchParams.set('page', target.value);
     history.push({
       search: searchParams.toString(),
@@ -57,7 +56,6 @@ export const Pagination: React.FC<Props> = ({ pageCount }) => {
           onClick={handleChangePage}
           type="button"
           value={i + 1}
-          // value={(page > pageCount ? 1 : (i + 1))}
         >
           {i + 1}
         </button>
