@@ -14,7 +14,7 @@ export const BreadCrumbs = () => {
         className="breadcrumbs__item"
         activeClassName="breadcrumbs__item--active"
       >
-        <img src="img/Icons/Home.png" alt="home icon" className="breadcrumbs__icon" />
+        <img src="img/Icons/Home.png" alt="home icon" className="breadcrumbs__icon--home" />
       </NavLink>
 
       {stage.map((step, index) => {
