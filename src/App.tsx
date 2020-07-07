@@ -4,10 +4,10 @@ import './App.scss';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
-import HomePage from './components/HomePage/HomePage';
-import PhonesPage from './components/PhonesPage/PhonesPage';
-import TabletsPage from './components/TabletsPage/TabletsPage';
-import AccessoriesPage from './components/AccessoriesPage/AccessoriesPage';
+import HomePage from './pages/HomePage/HomePage';
+import PhonesPage from './pages/PhonesPage/PhonesPage';
+import TabletsPage from './pages/TabletsPage/TabletsPage';
+import AccessoriesPage from './pages/AccessoriesPage/AccessoriesPage';
 
 const App = () => (
   <div className="App">

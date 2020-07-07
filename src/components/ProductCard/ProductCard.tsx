@@ -64,13 +64,7 @@ const ProductCard = ({
 
           <div className="product__card__button">
             <button className="product__card__button--add" type="button">Add to cart</button>
-            <button className="product__card__button--favorite" type="button">
-              <img
-                src="../img/icons/Favourites.svg"
-                alt="cart"
-                className="header__cart--icon"
-              />
-            </button>
+            <button className="product__card__button--favorite" type="button"/>
           </div>
 
         </div>

@@ -1,0 +1,106 @@
+.ShopByCategory {
+
+  &__sections--box {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 80px;
+  }
+
+  &__h1 {
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    font-family: "Mont-SemiBold", sans-serif;
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: #313237;
+  }
+
+  &__mobile,
+  &__tablet,
+  &__accessory {
+    position: relative;
+    width: 368px;
+
+  }
+
+  &__mobile--link {
+    background-color: #fcdbc1;
+  }
+
+  &__tablet--link {
+    background-color: #8d8d92;
+  }
+
+  &__accessory--link {
+    background-color: #973d5f;
+  }
+
+  &__mobile--link,
+  &__tablet--link,
+  &__accessory--link {
+    position: relative;
+    height: 443px;
+    margin-bottom: 24px;
+    overflow: hidden;
+  }
+  
+  &__mobile--img {
+    bottom: -20px;
+    background-image: url(../../assets/image62.svg);
+  }
+
+  &__tablet--img {
+    bottom: -20px;
+    background-image: url(../../assets/image51.svg);
+
+  }
+
+  &__accessory--img {
+    bottom: 0;
+    background-image: url(../../assets/last3.png);
+  }
+
+  &__mobile--img,
+  &__accessory--img,
+  &__tablet--img {
+    position: absolute;
+    width: 368px;
+    height: 368px;
+    right: -50px;
+
+    background-repeat: no-repeat;
+    transition: 0.5s;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  &__mobile--h2,
+  &__tablet--h2,
+  &__accessory--h2 {
+    margin-bottom: 4px;
+
+    font-family: "Mont-SemiBold", sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 26px;
+
+    color: #313237;
+  }
+
+  &__mobile--number,
+  &__tablet--number,
+  &__accessory--number {
+    font-family: "Mont-SemiBold", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+
+    color: #89939a;
+  }
+}

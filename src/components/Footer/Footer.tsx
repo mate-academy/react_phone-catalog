@@ -5,7 +5,7 @@ const Footer = () => {
     <footer className="footer">
       <div className="footer__box home__box">
         <div className="footer__logo">
-          <img src="../img/LOGO.svg" alt="logo" />
+          {/* <img src="../img/LOGO.svg" alt="logo" /> */}
         </div>
         <nav className="footer__nav">
           <ul className="footer__nav__list">
@@ -23,7 +23,6 @@ const Footer = () => {
         <div className="footer__back">
           <p className="footer__back--p">back to top</p>
           <button className="footer__back--button" type="button">
-            <img src="../img/icons/VectorTop.svg" alt="arrowToTop" />
           </button>
         </div>
       </div>
