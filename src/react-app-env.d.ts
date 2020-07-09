@@ -1,4 +1,5 @@
 interface ProductItem {
+  [KEY: string]: number | string;
   age: number;
   id: string;
   type: string;
@@ -10,4 +11,9 @@ interface ProductItem {
   screen: string;
   capacity: string;
   ram: string;
+}
+
+interface CartItem {
+  product: Product;
+  quantity: number;
 }

@@ -1,10 +1,13 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { FavProductsContext } from './FavProductsContext';
+import { useSelector } from 'react-redux';
+import { getFavorites } from '../../store/index';
+// import { FavProductsContext } from './FavProductsContext';
 import './Favourite.scss';
 
 export const Favourite = () => {
-  const { favourites } = useContext(FavProductsContext);
+  // const { favourites } = useContext(FavProductsContext);
+  const favourites = useSelector(getFavorites);
 
   return (
     <NavLink to="/favorite">
