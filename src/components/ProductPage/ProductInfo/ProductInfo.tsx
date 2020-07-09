@@ -1,12 +1,12 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../../../App.scss';
 import './styleProductInfo.scss';
 import '../ProductCard/ProductCard.scss';
-import { FavProductsContext } from '../../Favourite/FavProductsContext';
-import { CartContext } from '../../Cart/CartContext';
 import { ProductCarousel } from '../../ProductCarousel';
 import { BreadCrumbs } from '../../BreadCrumbs';
 import { getDetails } from '../../../api/api';
+import AddToCartButton from '../../AddToCartButton/AddToCartButton';
+import AddToFavorButton from '../../AddToFavorButton/AddToFavorButton';
 
 type Props = {
   id: string;
@@ -67,8 +67,6 @@ export const ProductInfo: React.FC<Props> = ({
   product,
   id,
 }) => {
-  const { addToFav, removeFav, isFavourite } = useContext(FavProductsContext);
-  const { addToCart, removeFromCart, isAdded } = useContext(CartContext);
   const priceWithDiscount = product.price - ((product.price * product.discount) / 100);
   const [arrayPhotos, setArrayPhotos] = useState([]);
   const [dataOfProduct, setDataOfProduct] = useState<ProductDetails>();
@@ -96,8 +94,13 @@ export const ProductInfo: React.FC<Props> = ({
           <div className="productsInfo__left">
             <div className="productsInfo__handleImgs">
               <div className="handleImgs__list">
-                {arrayPhotos.map((item, index) => (
-                  <button key={index} className="handleImgs__item" onClick={() => setCurrentImg(item)}>
+                {arrayPhotos.map((item) => (
+                  <button
+                    type="button"
+                    key={product.id}
+                    className="handleImgs__item"
+                    onClick={() => setCurrentImg(item)}
+                  >
                     <img className="handleImgs__img" src={item} alt="product" />
                   </button>
                 ))}
@@ -152,47 +155,17 @@ export const ProductInfo: React.FC<Props> = ({
               </div>
               <div className="productsInfo__shortСharacteristics">
                 <div className="productsInfo__price">
-                  <span className="productsInfo__MainPrice">${product.price} </span>
+                  <span className="productsInfo__MainPrice">
+                    $
+                    {product.price}
+                  </span>
                   <span className="productsInfo__CeilPrice">
                     {product.price === priceWithDiscount ? '' : `$${priceWithDiscount}`}
                   </span>
                 </div>
                 <div className="card__buttons button">
-                  <button
-                    className={isAdded(product)
-                      ? 'button__cart button__cart--added'
-                      : 'button__cart'}
-                    type="button"
-                    onClick={() => {
-                      if (isAdded(product)) {
-                        removeFromCart(product);
-                      } else {
-                        addToCart(product);
-                      }
-                    }}
-                  >
-                    {isAdded(product) ? 'Remove from cart' : 'Add to cart'}
-                  </button>
-                  <label
-                    className={isFavourite(product)
-                      ? 'button__favorite button__favorite--checked'
-                      : 'button__favorite'}
-                    htmlFor={`button__favorite--${product.id}`}
-                  >
-                    <input
-                      className="button__favorite--input"
-                      type="checkbox"
-                      checked={isFavourite(product)}
-                      id={`button__favorite--${product.id}`}
-                      onChange={(event) => {
-                        if (event.target.checked) {
-                          addToFav(product);
-                        } else {
-                          removeFav(product);
-                        }
-                      }}
-                    />
-                  </label>
+                  <AddToCartButton product={product} />
+                  <AddToFavorButton product={product} />
                 </div>
                 <div className="productsInfo__info">
                   <ul className="productsInfo__infoList">
