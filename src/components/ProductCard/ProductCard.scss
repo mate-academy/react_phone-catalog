@@ -1,0 +1,134 @@
+@import "../../styles/vars";
+@import "../../styles/fonts";
+
+.product-card {
+  height: 507px;
+  margin: 0;
+  margin-right: 16px;
+  padding: 32px 24px 24px;
+
+  border: 1px solid $elements-color;
+  box-sizing: border-box;
+  font-family: "Mont", sans-serif;
+
+  transition: all 0.35s ease-in-out;
+
+  &:hover {
+    border: 1px solid $primary-color;
+    box-shadow: 0 3px 5px -2px rgba(0, 0, 0, 0.55);
+  }
+
+  &__img {
+    display: block;
+    width: 208px;
+    height: 208px;
+    margin: 0 auto;
+  }
+
+  &__title {
+    display: inline-block;
+    height: 42px;
+    margin: 24px 0 6px;
+
+    color: $primary-color;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+  }
+
+  &__prices {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding-bottom: 6px;
+
+    border-bottom: 1px solid $elements-color;
+    font-size: 22px;
+
+    &--current {
+      margin-right: 8px;
+
+      color: $primary-color;
+      font-weight: 700;
+      line-height: 140%;
+    }
+
+    &--previos {
+      color: $secondary-color;
+      font-weight: 400;
+      line-height: 28px;
+      text-decoration-line: line-through;
+    }
+  }
+
+  &__info {
+    margin: 15px 0;
+
+    &-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      height: 15px;
+
+      font-size: 12px;
+    }
+
+    &-title {
+      color: $secondary-color;
+      font-weight: 400;
+    }
+
+    &-value {
+      color: $primary-color;
+      font-weight: 600;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+
+    &--add-cart {
+      width: 176px;
+      height: 40px;
+
+      background-color: $primary-color;
+      color: #fff;
+      font-family: "Mont", sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 21px;
+      text-align: center;
+
+      transition: all 0.35s ease-in-out;
+
+      &:hover {
+        background-color: rgba($primary-color, 0.8);
+      }
+    }
+
+    &--add-favorite {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 40px;
+      height: 40px;
+
+      border: 1px solid $icons-color;
+
+      transition: all 0.35s ease-in-out;
+
+      &:hover {
+        border: 1px solid $primary-color;
+      }
+    }
+
+    &--icon {
+      width: 16px;
+      height: 14px;
+
+      fill: $primary-color;
+    }
+  }
+
+}

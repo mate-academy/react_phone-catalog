@@ -1,0 +1,111 @@
+@import "../../styles/vars";
+
+$nav-link-padding: 24px;
+
+.nav {
+  height: 64px;
+
+  border-bottom: 1px solid $elements-color;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  &__list {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    height: 100%;
+  }
+
+  &__list-item {
+    height: 100%;
+
+    font-family: Mont, serif;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  &__list-icon {
+    position: relative;
+    width: 64px;
+    height: 100%;
+
+    border-left: 1px solid $elements-color;
+
+    &:last-child {
+      border-right: 1px solid transparent;
+    }
+  }
+
+  &__logo {
+    width: 40px;
+
+    background: url(../../icons/LOGO.svg) no-repeat center;
+  }
+
+  &__link,
+  &__logo {
+    display: block;
+    height: 100%;
+    padding: 0 $nav-link-padding;
+    margin-right: 16px;
+  }
+
+  &__link {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    color: $secondary-color;
+
+    &.active {
+      color: $primary-color;
+    }
+
+    &.active::after {
+      display: block;
+      content: "";
+      position: absolute;
+      height: 3px;
+      left: $nav-link-padding;
+      right: $nav-link-padding;
+      bottom: -1px;
+
+      background-color: $primary-color;
+    }
+  }
+
+  &__favorites,
+  &__cart {
+    display: block;
+    height: 100%;
+    width: 100%;
+
+    &.active::after {
+      display: block;
+      content: "";
+      position: absolute;
+      height: 3px;
+      width: 66px;
+      bottom: -1px;
+      left: -1px;
+      z-index: 1;
+
+      background-color: $primary-color;
+    }
+  }
+
+  &__favorites {
+    background: url(../../icons/Favorites.svg) no-repeat center;
+  }
+
+  &__cart {
+    background: url(../../icons/Cart.svg) no-repeat center;
+  }
+}

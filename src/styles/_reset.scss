@@ -1,0 +1,29 @@
+@import "./vars";
+
+body {
+  margin: 0;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: $secondary-color;
+
+  &:visited {
+    color: $secondary-color;
+  }
+}
+
+button {
+  padding: 0;
+
+  background-color: transparent;
+  box-sizing: border-box;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
