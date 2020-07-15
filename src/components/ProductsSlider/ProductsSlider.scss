@@ -1,0 +1,54 @@
+@import "../../styles/typograhy";
+@import "../../styles/vars";
+
+.slider {
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__wrapper {
+    position: relative;
+    height: 600px;
+    overflow-x: hidden;
+  }
+
+  &__items {
+    position: absolute;
+    display: grid;
+    grid-auto-columns: 288px;
+    grid-auto-flow: column dense;
+
+    &--shifting {
+      transition: transform ease-out 0.35s;
+    }
+  }
+}
+
+.slider__button {
+  width: 32px;
+  height: 32px;
+  margin-left: 16px;
+
+  border: 1px solid $elements-color;
+
+  transition: border 0.35s ease-in-out;
+
+  &-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 6px;
+    height: 10px;
+    padding: 10px 12px;
+
+    fill: $primary-color;
+    transition: all 0.35s ease-in-out;
+  }
+
+  &:hover {
+    border: 1px solid $icons-color;
+  }
+}
