@@ -1,0 +1,23 @@
+.card__button {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+
+  &--add {
+    box-sizing: border-box;
+    width: 160px;
+    background: #313237;
+    border: none;
+    padding: 10px 43px;
+    outline: none;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+    color: hsl(0, 0%, 100%);
+  }
+
+  &--choose {
+    border: 1px solid #B4BDC4;
+    padding: 13px;
+  }
+}

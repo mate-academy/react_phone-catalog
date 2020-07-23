@@ -1,4 +1,8 @@
 @import "./Navigation.scss";
+@import "./Home.scss";
+@import "./Slider.scss";
+@import "./Carousel.scss";
+@import "./Buttons.scss";
 
 .fontMonte {
   font-family: "Montserrat", sans-serif;
@@ -7,4 +11,14 @@
 body {
   padding: 0;
   margin: 0;
+  font-family: "Montserrat", sans-serif;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+button:hover {
+  cursor: pointer;
 }

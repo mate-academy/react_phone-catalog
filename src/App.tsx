@@ -1,16 +1,17 @@
 import React, { useState, useEffect} from 'react';
 import { PRODUCTS_URL, getData, getDetails } from './helpers/Api';
-import { PhoneInfo, ProductDetails, Phone } from './interfaces';
+import { PhoneInfo, ProductDetails } from './interfaces';
 import { Navigation } from './components/Navigation';
+import { useDispatch } from 'react-redux';
+import { setPhones } from './store/phones';
 
 import './styles/App.scss';
 
 
 const App: React.FC = () => {
+  const dispatch = useDispatch();
   const [phonesInfo, setPhonesInfo] = useState<PhoneInfo[]>([]);
-  const [phones, setPhones] = useState<Phone[]>([]);
   const [details, setDetails] = useState<ProductDetails[]>([]);
-  console.log(phones)
   const findDetail = (id: string) => {
     return details.find(detail => detail.id ===id);
   }
@@ -21,7 +22,7 @@ const App: React.FC = () => {
       details: findDetail(phone.id)
     }))
 
-    setPhones(preparedPhones)
+    dispatch(setPhones(preparedPhones))
   }, [phonesInfo, details]);
 
   useEffect(() => {

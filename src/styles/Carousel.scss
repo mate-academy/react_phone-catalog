@@ -1,0 +1,106 @@
+.carousel {
+
+  &__top {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  &__button-wrapper {
+    width: 90px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__button {
+    border: 1px solid hsl(206, 14%, 90%);
+    padding: 11px 14px;
+    background-color: white;
+    height: 39px;
+  }
+
+  &__title {
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: #313237;
+  }
+
+  &__list {
+    display: flex;
+    overflow: hidden;
+    justify-content: space-between;
+    max-width: 1140px;
+  }
+
+  &__item {
+    width: 270px;
+    min-width: 270px;
+    padding: 25px;
+    border: 1px solid hsl(206, 14%, 90%);
+    box-sizing: border-box;
+    margin-right: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.card {
+  &__img {
+    width: 200px;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    width: 100%;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    margin-bottom: 8px;
+  }
+
+  &__price {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 28px;
+    display: flex;
+    width: 100%;
+    margin-bottom: 8px;
+    border-bottom: 1px solid hsl(206, 14%, 90%);
+
+    &--new {
+      margin-left: 10px;
+      text-decoration-line: line-through;
+      color: hsl(205, 8%, 57%);
+      font-weight: 500;
+    }
+
+  }
+}
+
+.details {
+  padding: 16px 0 8px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  width: 100%;
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+
+  &__option {
+    color: hsl(205, 8%, 57%);
+  }
+
+  &__value {
+    color: hsl(230, 6%, 20%);
+  }
+}
