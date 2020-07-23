@@ -1,0 +1,33 @@
+.categories {
+  width: 100%;
+
+  &__list {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  &__item {
+    width: 30%;
+  }
+
+  &__name {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 26px;
+    color: #313237;
+  }
+
+  &__number {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: hsl(205, 8%, 57%);
+  }
+
+  &__img {
+    background-color: #ffe4cc;
+    width: 100%;
+    max-height: 340px;
+  }
+}

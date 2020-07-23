@@ -4,16 +4,43 @@ import { Carousel } from './Carousel';
 import { useSelector } from 'react-redux';
 import { getPhones } from '../store/index';
 import { Phone }  from '../interfaces';
+import { useWindowSize } from "../helpers/useWindowSize";
+import { Categories } from './Categories'
 
 export const Home: React.FC = () => {
+
+  const width = useWindowSize();
+  const perRow = Math.floor((+width - 300) / 285)
+  const carouselListWidth = perRow * 285;
   const phones: Phone[] = useSelector(getPhones);
   const hotPricePhones = phones.filter(phone => Number(phone.discount) > 0);
   const newPhones = phones.filter(phone => Number(phone.age) <= 6);
-  console.log(newPhones)
+  const numberPhones = phones.filter(phone => phone.type === 'phone').length;
+  const numberTablets = phones.filter(phone => phone.type === 'tablet').length;
+  const numberAccessories = phones.filter(phone => phone.type === 'accessories').length;
+
   return (
     <section className="home">
       <MainSlider />
-      <Carousel phones={hotPricePhones}/>
+      <Carousel
+        perRow={perRow}
+        width={`${carouselListWidth}`}
+        phones={hotPricePhones}
+        screenWidth={width}
+        title={'Hot prices'}
+      />
+      <Categories
+        numberPhones={numberPhones}
+        numberTablets={numberTablets}
+        numberAccessories={numberAccessories}
+      />
+      <Carousel
+        perRow={perRow}
+        width={`${carouselListWidth}`}
+        phones={newPhones}
+        screenWidth={width}
+        title={'Brand new models'}
+      />
     </section>
   )
 }

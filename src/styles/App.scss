@@ -3,6 +3,7 @@
 @import "./Slider.scss";
 @import "./Carousel.scss";
 @import "./Buttons.scss";
+@import "./Categories.scss";
 
 .fontMonte {
   font-family: "Montserrat", sans-serif;
@@ -12,6 +13,9 @@ body {
   padding: 0;
   margin: 0;
   font-family: "Montserrat", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 ul {
@@ -21,4 +25,20 @@ ul {
 
 button:hover {
   cursor: pointer;
+}
+
+h2 {
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  color: #313237;
+}
+
+#root {
+  width: 100%;
+}
+
+a {
+  text-decoration: none;
 }

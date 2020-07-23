@@ -30,8 +30,8 @@
   &__list {
     display: flex;
     overflow: hidden;
-    justify-content: space-between;
     max-width: 1140px;
+    justify-content: space-between;
   }
 
   &__item {
@@ -43,8 +43,9 @@
     margin-right: 16px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    transition: 1s margin;
   }
 }
 
