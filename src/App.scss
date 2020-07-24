@@ -21,6 +21,10 @@ body {
   color: $darkColor;
 }
 
+.App {
+  position: relative;
+}
+
 .header {
   display: flex;
   align-items: center;
@@ -122,18 +126,6 @@ body {
   }
 }
 
-// .nav {
-//   padding: 32px;
-//   box-shadow: -1px 0 0 $lightGrayFontColor;
-//   &__favorite {
-//     background: url("./images/header/like.svg") no-repeat center center;
-//   }
-
-//   &__bag {
-//     background: url("./images/header/bag.svg") no-repeat  center center;
-//   }
-// }
-
 .container {
   max-width: 1140px;
   margin: 0 auto;
@@ -143,4 +135,56 @@ body {
 .title {
   font-weight: bold;
   font-size: 2em;
+}
+
+.marker {
+  position: absolute;
+  content: "";
+  background-color: red;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  z-index: 100;
+}
+
+.formComment {
+  display: flex;
+  flex-direction: column;
+  width: 170px;
+  position: relative;
+  z-index: 101;
+  border-radius: 5px;
+  box-sizing: border-box;
+  border: 1px solid rgba(224,213,213,1);
+  &__input {
+    text-align: start;
+    vertical-align: top;
+    height: 70px;
+    padding: 10px;
+    border: none;
+  }
+
+  &__button {
+    color: white;
+    background-color: #31e150;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 5px;
+    border: none;
+    font-size: 1rem;
+  }
+
+  &--send {
+    height: 118px;
+    background-color: rgba(224,213,213,1);
+    color: #31e150;
+    font-weight: bold;
+    text-align: center;
+    display: grid;
+    align-items: center;
+  }
+}
+
+.debugger {
+  position: absolute;
 }

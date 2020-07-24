@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react';
 import { NavLink } from 'react-router-dom';
+import { Debugger } from '../Debugger';
 import './Footer.scss';
 
 const footerNav = [
@@ -17,7 +18,12 @@ const footerNav = [
   },
 ];
 
-export const Footer = () => {
+interface Props {
+  handleMarker: any;
+  statusOfMarker: boolean;
+}
+
+export const Footer = ({ handleMarker, statusOfMarker }: Props) => {
   const backToTop = useCallback(() => {
     window.scrollTo({
       top: 0,
@@ -28,6 +34,7 @@ export const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer__wrap">
+        <Debugger handleMarker={handleMarker} statusOfMarker={statusOfMarker} />
         <div className="footer__logo logo">
           <img className="logo__img" src="./img/LOGO.svg" alt="company logo" />
         </div>

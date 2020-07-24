@@ -52,7 +52,6 @@ export const Pagination: React.FC<Props> = ({ pageCount }) => {
       {paginationButtonsArr.map((_, i) => (
         <button
           className={CN('button__count lift__button', { 'button__count--active': (i + 1) === page })}
-          key={Math.random() * 10000 - Math.random() * 100}
           onClick={handleChangePage}
           type="button"
           value={i + 1}

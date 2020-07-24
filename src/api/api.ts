@@ -7,7 +7,6 @@ export const getProducts = () => {
 
 export async function getDetails(id: string) {
   const resp = await fetch(`${BASE_URL}/${id}.json`);
-  const productDetails = await resp.json();
 
-  return productDetails;
+  return await resp.json();
 }
