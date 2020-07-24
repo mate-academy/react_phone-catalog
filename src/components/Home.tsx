@@ -1,17 +1,15 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { MainSlider } from './MainSlider';
 import { Carousel } from './Carousel';
-import { useSelector } from 'react-redux';
 import { getPhones } from '../store/index';
-import { Phone }  from '../interfaces';
-import { useWindowSize } from "../helpers/useWindowSize";
-import { Categories } from './Categories'
-
+import { Phone } from '../interfaces';
+import { useWindowSize } from '../helpers/useWindowSize';
+import { Categories } from './Categories';
 
 export const Home: React.FC = () => {
-
   const width = useWindowSize();
-  const perRow = Math.floor((+width - 300) / 285)
+  const perRow = Math.floor((+width - 300) / 285);
   const carouselListWidth = perRow * 285;
   const phones: Phone[] = useSelector(getPhones);
   const hotPricePhones = phones.filter(phone => Number(phone.discount) > 0);
@@ -26,7 +24,7 @@ export const Home: React.FC = () => {
       <Carousel
         width={`${carouselListWidth}`}
         phones={hotPricePhones}
-        title={'Hot prices'}
+        title="Hot prices"
       />
       <Categories
         numberPhones={numberPhones}
@@ -36,8 +34,8 @@ export const Home: React.FC = () => {
       <Carousel
         width={`${carouselListWidth}`}
         phones={newPhones}
-        title={'Brand new models'}
+        title="Brand new models"
       />
     </section>
-  )
-}
+  );
+};

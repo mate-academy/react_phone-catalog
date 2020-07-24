@@ -22,4 +22,4 @@ export const Options: React.FC<Props> = ({ optionsList }) => {
       }
     </ul>
   );
-}
+};

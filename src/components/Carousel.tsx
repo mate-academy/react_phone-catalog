@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { Phone }  from '../interfaces';
+import { Phone } from '../interfaces';
 import { CarouselItem } from './CarouselItem';
 import { handleMove } from '../helpers/handleMove';
-
 
 interface Props {
   phones: Phone[];
@@ -15,8 +14,10 @@ export const Carousel: React.FC<Props> = ({ phones, width, title }) => {
   const maxMargin = -(phones.length - 4) * 285;
   const handleClick = (option: string) => {
     const marginNew = handleMove(option, margin, 285);
-   setMargin(marginNew);
-  }
+
+    setMargin(marginNew);
+  };
+
   return (
     <>
       <div className="carousel">
@@ -24,6 +25,7 @@ export const Carousel: React.FC<Props> = ({ phones, width, title }) => {
           <h2 className="carousel__title">{title}</h2>
           <div className="carousel__button-wrapper">
             <button
+              type="button"
               disabled={margin >= 0}
               className="carousel__button carousel__button--forward"
               onClick={() => handleClick('back')}
@@ -31,6 +33,7 @@ export const Carousel: React.FC<Props> = ({ phones, width, title }) => {
               &#60;
             </button>
             <button
+              type="button"
               disabled={margin <= maxMargin}
               className="carousel__button carousel__button--back"
               onClick={() => handleClick('forward')}
@@ -48,5 +51,5 @@ export const Carousel: React.FC<Props> = ({ phones, width, title }) => {
         </ul>
       </div>
     </>
-  )
-}
+  );
+};

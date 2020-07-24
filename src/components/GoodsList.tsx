@@ -7,12 +7,11 @@ interface Props {
 }
 
 export const GoodsList: React.FC<Props> = ({ goodsList }) => {
-
   return (
     <ul className="goods">
       {
-        goodsList.map(goodItem => <GoodItem key={goodItem.id} goodItem={goodItem}/>)
+        goodsList.map(goodItem => <GoodItem key={goodItem.id} goodItem={goodItem} />)
       }
     </ul>
   );
-}
+};
