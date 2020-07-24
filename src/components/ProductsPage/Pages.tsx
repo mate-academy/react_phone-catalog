@@ -8,10 +8,12 @@ interface Props {
   page: string;
 }
 
-export const Pages: React.FC<Props> = ({ length, perPage, setPage, page }) => {
+export const Pages: React.FC<Props> = ({
+  length, perPage, setPage, page,
+}) => {
   const pages = [];
   const numberOfPages = Math.ceil(length / +perPage);
-
+  console.log(length, "length")
   for (let i = 1; i < numberOfPages + 1; i++) {
     pages.push(i);
   }

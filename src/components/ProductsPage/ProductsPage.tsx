@@ -14,11 +14,7 @@ interface Props {
   description: string;
 }
 
-// type SortedList = {
-//   [key in string]: keyof Phone;
-// };
-
-export const PhonesPage: React.FC<Props> = () => {
+export const ProductsPage: React.FC<Props> = () => {
   const products: Phone[] = useSelector(getPhones);
   const phones = products.filter(product => product.type === 'phone');
   const [sortedList, setSortedList] = useState<Phone[]>(phones);
@@ -28,6 +24,8 @@ export const PhonesPage: React.FC<Props> = () => {
   const sortByOption: string = searchParams.get('sortBy') || '';
   const perPage: string = searchParams.get('perPage') || '';
   const page: string = searchParams.get('page') || '';
+  const [startIndex, setStartIndex] = useState(1);
+  const [lastIndex, setLastIndex] = useState(products.length);
 
   const setParams = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const { value } = event.currentTarget;
@@ -56,6 +54,14 @@ export const PhonesPage: React.FC<Props> = () => {
 
   useMemo(() => {
     let sorted: Phone[];
+    const tempPage = page ? +page : 1;
+    const index = +perPage * (tempPage - 1);
+    const tempLastIndex = (index + +perPage) > products.length
+      ? products.length
+      : (index + +perPage);
+
+    setStartIndex(index);
+    setLastIndex(tempLastIndex);
 
     switch (sortByOption) {
       case 'price':
@@ -101,15 +107,15 @@ export const PhonesPage: React.FC<Props> = () => {
             id="items-per-page"
             onChange={setPerPage}
           >
-            <option value="5">5</option>
-            <option value="10">10</option>
-            <option value="15">15</option>
+            <option value="4">4</option>
+            <option value="8">8</option>
+            <option value="12">12</option>
           </select>
         </div>
       </div>
       <ul className="phones__list">
         {
-          sortedList.map(phone => {
+          sortedList.slice(startIndex, lastIndex).map(phone => {
             const generalDetails = [
               { title: 'Screen', option: phone.screen },
               { title: 'Ram', option: phone.ram },
@@ -137,7 +143,7 @@ export const PhonesPage: React.FC<Props> = () => {
           })
         }
       </ul>
-      <Pages page={page} setPage={setPage} length={products.length} perPage={perPage} />
+      <Pages page={page} setPage={setPage} length={phones.length} perPage={perPage} />
     </section>
   );
 };
