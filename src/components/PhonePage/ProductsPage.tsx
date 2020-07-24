@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
-import React from 'react';
+import React, { useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory, useLocation } from 'react-router-dom';
 import { getPhones } from '../../store/index';
 import { Phone } from '../../interfaces';
 import { AddButton } from '../AddButton';
@@ -13,11 +13,48 @@ interface Props {
   description: string;
 }
 
+// type SortedList = {
+//   [key in string]: keyof Phone;
+// };
+
 export const PhonesPage: React.FC<Props> = () => {
   const products: Phone[] = useSelector(getPhones);
   const phones = products.filter(product => product.type === 'phone');
+  const [sortedList, setSortedList] = useState<Phone[]>(phones);
+  const history = useHistory();
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const sortByOption: string = searchParams.get('sortBy') || '';
+  const perPage: string = searchParams.get('perPage') || '';
+  const page: string = searchParams.get('page') || '';
+  console.log(perPage, page)
+  const setParams = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const { value } = event.currentTarget;
 
-  console.log(phones);
+    searchParams.set('sortBy', `${value}`);
+
+    history.push({
+      search: searchParams.toString(),
+    });
+  };
+
+  useMemo(() => {
+    let sorted: Phone[];
+
+    switch (sortByOption) {
+      case 'price':
+        sorted = [...phones].sort((a, b) => a[sortByOption] - b[sortByOption]);
+        setSortedList(sorted);
+        break;
+
+      case 'name':
+        sorted = [...phones].sort((a, b) => a[sortByOption].localeCompare(b[sortByOption]));
+        setSortedList(sorted);
+        break;
+
+      default:
+    }
+  }, [sortByOption, products]);
 
   return (
     <section className="phones">
@@ -28,7 +65,13 @@ export const PhonesPage: React.FC<Props> = () => {
       <div className="phones__sorting">
         <div className="phones__wrapper">
           <p className="phones__sort-name">Sort by</p>
-          <select className="phones__sort" name="sort-by" id="sort-by">
+          <select
+            value={sortByOption}
+            onChange={setParams}
+            className="phones__sort"
+            name="sort-by"
+            id="sort-by"
+          >
             <option value="name">Name</option>
             <option value="price">Price</option>
           </select>
@@ -43,7 +86,7 @@ export const PhonesPage: React.FC<Props> = () => {
       </div>
       <ul className="phones__list">
         {
-          phones.map(phone => {
+          sortedList.map(phone => {
             const generalDetails = [
               { title: 'Screen', option: phone.screen },
               { title: 'Ram', option: phone.ram },

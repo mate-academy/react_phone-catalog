@@ -11,7 +11,7 @@ import { Home } from './components/Home';
 import { ItemCard } from './components/ItemCard';
 import { FooterNav } from './components/FooterNav';
 import { Basket } from './components/Basket';
-import { PhonesPage } from './components/PhonePage/PhonesPage';
+import { PhonesPage } from './components/PhonePage/ProductsPage';
 import './styles/App.scss';
 
 const App: React.FC = () => {
