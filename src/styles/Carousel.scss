@@ -122,3 +122,11 @@
     color: hsl(230, 6%, 20%);
   }
 }
+
+@media screen and (max-width: 870px) {
+  .carousel {
+    &__list {
+      justify-content: center;
+    }
+  }
+}

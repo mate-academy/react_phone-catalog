@@ -9,6 +9,7 @@
 @import "./Options.scss";
 @import "./Path.scss";
 @import "./Basket.scss";
+@import "./PhonesPage.scss";
 
 .fontMonte {
   font-family: "Montserrat", sans-serif;
@@ -71,4 +72,13 @@ a {
 
 .red {
   color: red;
+}
+
+.title {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  color: #313237;
 }
