@@ -21,11 +21,27 @@ export const PhonesPage: React.FC<Props> = () => {
   const history = useHistory();
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
-  const sortByOption: string = searchParams.get('sortBy') || '';
+  const sortByOption: string = searchParams.get('sortBy') || 'name';
   const perPage: string = searchParams.get('perPage') || '8';
   const page: string = searchParams.get('page') || '1';
-  const [startIndex, setStartIndex] = useState(1);
-  const [lastIndex, setLastIndex] = useState(products.length);
+  const [startIndex, setStartIndex] = useState(0);
+  const [lastIndex, setLastIndex] = useState(8);
+  console.log(location, "props")
+
+  const changePage = (option: string) => {
+    let value: number;
+
+    if (option === 'back') {
+      value = +page - 1;
+    } else {
+      value = +page + 1;
+    }
+
+    searchParams.set('page', `${value}`);
+    history.push({
+      search: searchParams.toString(),
+    });
+  };
 
   const setParams = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const { value } = event.currentTarget;
@@ -77,6 +93,8 @@ export const PhonesPage: React.FC<Props> = () => {
       default:
     }
   }, [sortByOption, products, page, perPage]);
+
+  console.log(sortedList);
 
   return (
     <section className="phones">
@@ -143,7 +161,7 @@ export const PhonesPage: React.FC<Props> = () => {
           })
         }
       </ul>
-      <Pages page={page} setPage={setPage} length={phones.length} perPage={perPage} />
+      <Pages changePage={changePage} page={page} setPage={setPage} length={phones.length} perPage={perPage} />
     </section>
   );
 };
