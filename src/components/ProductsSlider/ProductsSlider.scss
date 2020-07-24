@@ -1,0 +1,54 @@
+@import "../../styles/vars.scss";
+
+.ProductsSlider {
+  max-width: 1140px;
+  margin: 40px auto;
+
+  &__container {
+    overflow: hidden;
+
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: row;
+    transition: $hover-transition;
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    color: $primary-color;
+    font-size: 32px;
+    line-height: 41px;
+  }
+
+  &__buttons {
+    display: flex;
+    align-items: center;
+
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 32px;
+    width: 32px;
+    margin-left: 8px;
+    border: 1px solid $icons-secondary-color;
+    background-color: $buttons-slider-color;
+    border-color: $border-color;
+    cursor: pointer;
+    transition: background-color $hover-transition ;
+
+    &:hover {
+      background-color: $icons-secondary-color;
+    }
+  }
+
+}

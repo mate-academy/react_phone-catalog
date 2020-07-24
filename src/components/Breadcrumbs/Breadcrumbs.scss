@@ -1,0 +1,36 @@
+@import "../../styles/vars.scss";
+
+.Breadcrumbs {
+  display: flex;
+  padding: 25px 0;
+  align-items: center;
+
+  &__link {
+    margin: 0 13px 0 0;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: $secondary-color;
+
+    &--first {
+      background-image: url("../../img/icons/home.svg");
+      background-position: center;
+      height: 16px;
+      width: 16px;
+    }
+
+    &--last {
+      color: $secondary-color;
+    }
+  }
+
+  &__arrow {
+    display: block;
+    width: 10px;
+    height: 10px;
+    margin-right: 10px;
+    background-image: url("../../img/icons/arrowRight.svg");
+    background-position: center;
+
+  }
+}

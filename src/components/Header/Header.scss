@@ -1,0 +1,83 @@
+@import "../../styles/vars.scss";
+
+.header {
+  position: sticky;
+  z-index: 1;
+  top: 0;
+
+  display: flex;
+  justify-content: space-between;
+  // position: relative;
+  align-items: center;
+  border: 1px solid $elements-color;
+  padding-left: 24px;
+  opacity: 1;
+  background-color: $background-color;
+
+  &__nav {
+    display: flex;
+    flex-direction: row;
+
+  }
+
+  &__icons {
+    display: flex;
+    align-items: center;
+  }
+
+  &__icons--active {
+    position: relative;
+    color: $primary-color;
+
+    &:after {
+      position: absolute;
+      content: "";
+      bottom: 0;
+      left: 0;
+      height: 3px;
+      width: 100%;
+      background: $primary-color;
+    }
+
+  }
+
+  &__logo {
+    margin-left: 30px;
+    padding-right: 20px;
+  }
+
+  &__icons--item {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 64px;
+    height: 64px;
+    border-left: 1px solid $elements-color;
+    text-align: center;
+  }
+
+  &__icons--img {
+
+    width: 16px;
+    height: 14px;
+  }
+
+  &__counter {
+    position: absolute;
+    top: 30%;
+    right: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 9px;
+    line-height: 12px;
+    border-radius: 50%;
+    color: $buttons-primary-color;
+    width: 14px;
+    height: 14px;
+    background-color: $icons-red-color;
+  }
+
+}

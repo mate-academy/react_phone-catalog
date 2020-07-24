@@ -1,0 +1,21 @@
+@import "../../styles/vars.scss";
+
+.TabletsPage {
+  width: 1140px;
+  margin: 0 auto;
+
+  &__name {
+    font-size: 32px;
+    line-height: 41px;
+    color: $primary-color;
+
+  }
+
+  &__quantity {
+    font-size: 14px;
+    line-height: 21px;
+    color: $secondary-color;
+
+  }
+
+}

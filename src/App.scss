@@ -1,0 +1,39 @@
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  font-family: "Mont", sans-serif;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+@font-face {
+  font-family: "Mont";
+  font-style: normal;
+  font-weight: 400;
+  src: url("./styles/fonts/Mont-Bold.otf");
+}
+@font-face {
+  font-family: "Mont";
+  font-style: normal;
+  font-weight: 500;
+  src: url("./styles/fonts/Mont-Regular.otf");
+}
+@font-face {
+  font-family: "Mont";
+  font-style: normal;
+  font-weight: 600;
+  src: url("./styles/fonts/Mont-SemiBold.otf");
+}

@@ -1,0 +1,64 @@
+@import "../../styles/vars.scss";
+
+.footer {
+
+  &__nav {
+
+    display: flex;
+    flex-direction: row;
+
+    height: 96px;
+    border-top: 1px solid $elements-color;
+    align-items: center;
+
+    justify-content: space-around;
+  }
+
+  &__list {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    text-transform: uppercase;
+
+  }
+
+  &__item {
+    color: $secondary-color;
+    list-style: none;
+    text-decoration: none;
+    padding: 0 32px;
+    font-size: 12px;
+
+  }
+
+  &__container {
+    display: flex;
+    align-items: center;
+    padding-right: 10px;
+  }
+
+  &__backToTop {
+    font-size: 12px;
+    align-items: center;
+    padding-right: 20px;
+    color: $secondary-color;
+
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    background-color: $icons-background-color;
+    border: 1px solid $border-color;
+    transition: background-color $hover-transition;
+    outline-color: $icons-secondary-color;
+
+    &:hover {
+      background-color: $icons-secondary-color;
+      cursor: pointer;
+    }
+  }
+}

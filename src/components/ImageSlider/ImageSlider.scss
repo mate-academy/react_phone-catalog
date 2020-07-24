@@ -1,0 +1,72 @@
+@import "../../styles/vars.scss";
+
+.Slider {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  max-width: 1140px;
+  margin: 40px auto;
+
+  &__container {
+    margin: 0 16px;
+    overflow: hidden;
+    width: 1040px;
+  }
+
+  &__list {
+    display: flex;
+    list-style: none;
+    transition: $hover-transition;
+  }
+
+  &__img {
+    height: 400px;
+    width: 1040px;
+
+  }
+
+  &__button {
+    height: 400px;
+    width: 32px;
+    border: 1px solid $border-color;
+    background-color: $buttons-slider-color;
+    border-color: $border-color;
+    cursor: pointer;
+    outline: none;
+    transition: background-color $hover-transition ;
+
+    &:hover {
+      background-color: $icons-secondary-color;
+    }
+  }
+
+  // &__button--prev {
+  //   background-image: url("../../img/slider/arrowLeft.svg");
+
+  // }
+
+  // &__button--next {
+  //   background-image: url("../../img/slider/arrowRight.svg");
+  // }
+
+  &__dots {
+    display: flex;
+    justify-content: center;
+
+  }
+
+  &__dot {
+    background-color: $elements-color;
+    border: none;
+    margin-right: 10px;
+    width: 14px;
+    height: 4px;
+
+  }
+
+  &__dot--active {
+    background-color: $buttons-background-color;
+
+  }
+
+}

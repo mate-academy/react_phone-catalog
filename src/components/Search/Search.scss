@@ -1,0 +1,26 @@
+@import "../../styles/vars.scss";
+
+.Search {
+  height: 62px;
+  width: 327px;
+  padding: 0 24px;
+  border-left: 1px solid $elements-color;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  &__input {
+    color: $icons-secondary-color;
+    border: none;
+    outline: none;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 28px;
+  }
+
+  &::placeholder {
+    color: $border-color;
+  }
+
+}

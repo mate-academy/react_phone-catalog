@@ -1,0 +1,67 @@
+@import "../../styles/vars.scss";
+
+.ShopByCategories {
+  width: 1136px;
+  margin: 80px auto ;
+
+  &__title {
+    text-decoration: none;
+    margin-bottom: 24px;
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 41px;
+    color: $primary-color;
+  }
+
+  &__wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 370px);
+    justify-content: center;
+    grid-gap: 16px;
+  }
+
+  &__link {
+    text-decoration: none;
+  }
+
+  &__phones,
+  &__tablets,
+  &__accessories {
+    display: grid;
+    justify-content: end ;
+    overflow: hidden;
+    background-color: #fdcbc1;
+  }
+
+  &__tablets {
+    background-color: #8d8d92;
+  }
+
+  &__accessories {
+    background-color: #973d5f;
+  }
+
+  &__img {
+    transition: all $hover-transition;
+  }
+
+  &__img:hover {
+    transform: scale(1.2);
+  }
+
+  &__name {
+    font-size: 20px;
+    line-height: 26px;
+    font-weight: 600;
+    margin: 8px 0 4px;
+    color: $primary-color;
+
+  }
+
+  &__count {
+    font-size: 14px;
+    line-height: 21px;
+    color: $secondary-color;
+
+  }
+}
