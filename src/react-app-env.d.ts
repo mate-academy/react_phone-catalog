@@ -57,3 +57,9 @@ interface CartProduct {
   product: Product;
   quantity: number;
 }
+
+
+interface Option {
+  value: string;
+  title?: string;
+}

@@ -1,6 +1,15 @@
+@import "../../styles/vars.scss";
+
 .Sort {
   width: 1160px;
   margin: 0 auto;
-  padding-bottom: 50px;
+  padding-bottom: 24px;
+
+  &__title {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: $secondary-color;
+  }
 
 }
