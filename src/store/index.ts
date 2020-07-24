@@ -3,7 +3,6 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import phonesReducer from './phones';
 import screenSizeReducer from './screenSize';
-
 export type RootState = ReturnType<typeof rootReducer>;
 
 export const getPhones = (state: RootState) => state.phones;

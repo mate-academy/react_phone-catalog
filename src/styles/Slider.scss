@@ -1,6 +1,25 @@
 .main-slider {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   width: 100%;
   margin-bottom: 100px;
+
+  &__button {
+    margin: 20px 0;
+    background-color: white;
+    border: 1px solid hsl(206, 12%, 74%);
+  }
+}
+
+.slider {
+  display: flex;
+
+  &__list {
+    display: flex;
+    overflow: hidden;
+  }
+
+  &__item {
+    transition: 1s margin;
+  }
 }

@@ -1,5 +1,6 @@
 .categories {
   width: 100%;
+  margin-bottom: 80px;
 
   &__list {
     display: flex;
@@ -26,8 +27,23 @@
   }
 
   &__img {
-    background-color: #ffe4cc;
     width: 100%;
     max-height: 340px;
+    transition: transform 1s;
+
+    &--phones {
+      background-color: #ffe4cc;
+    }
+
+    &--tablets {
+      background-color: #898a8e;
+    }
+
+    &--accessories {
+      background-color: #963c5e;
+    }
+    &:hover {
+      transform: scale(1.05);
+    }
   }
 }

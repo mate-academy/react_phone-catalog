@@ -1,5 +1,8 @@
 import React from 'react';
 import { Phone }  from '../interfaces';
+import { NavLink } from 'react-router-dom';
+import { AddButton } from './AddButton';
+
 
 interface Props {
   phone: Phone;
@@ -12,7 +15,12 @@ export const CarouselItem: React.FC<Props> = ({ phone, margin, index }) => {
   return (
     <li style={{ marginLeft: left }}className="carousel__item card">
       <img className="card__img" src={phone.imageUrl} alt={phone.name} />
-      <h3 className="card__title">{phone.name} {phone.capacity}</h3>
+      <NavLink
+        to={`phones/${phone.id}`}
+      >
+        <h3 className="card__title">{phone.name} {phone.capacity}</h3>
+      </NavLink>
+
       <div className="card__price">
         <p className="card__price--old">&#x24;{phone.price}</p>
         <p className="card__price--new">&#x24;{+phone.price * (1 - +phone.discount / 100)}</p>
@@ -32,10 +40,7 @@ export const CarouselItem: React.FC<Props> = ({ phone, margin, index }) => {
         </div>
       </div>
       <div className="card__button">
-        <button className="button card__button--add">Add to cart</button>
-        <button className="button card__button--choose">
-          <img src="../../img/images/favorite.svg" alt="favorite"/>
-        </button>
+        <AddButton />
       </div>
 
     </li>

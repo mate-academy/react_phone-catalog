@@ -4,9 +4,15 @@
 @import "./Carousel.scss";
 @import "./Buttons.scss";
 @import "./Categories.scss";
+@import "./ItemCard.scss";
+@import "./Gallery.scss";
 
 .fontMonte {
   font-family: "Montserrat", sans-serif;
+}
+
+section {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -16,6 +22,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+
 }
 
 ul {
@@ -41,4 +48,11 @@ h2 {
 
 a {
   text-decoration: none;
+}
+
+.line {
+  width: 100%;
+  height: 1px;
+  background-color: hsl(206, 14%, 90%);
+  margin-bottom: 25px;
 }

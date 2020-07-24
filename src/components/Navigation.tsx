@@ -1,12 +1,7 @@
 import React from 'react';
-import { NavLink, Switch, Route, Redirect} from 'react-router-dom';
-import { getPhones } from '../store/index';
-import { useSelector } from 'react-redux';
-import { Home } from './Home';
+import { NavLink} from 'react-router-dom';
 
 export const Navigation: React.FC = () => {
-  const phones = useSelector(getPhones);
-  console.log(phones)
   return (
     <>
       <nav className="nav">
@@ -30,15 +25,6 @@ export const Navigation: React.FC = () => {
           </NavLink>
         </span>
       </nav>
-      <Switch>
-        <Route path="/" exact component={Home}/>
-        <Route path="/home"><Redirect to="/" /></Route>
-        <Route path="/phones/"/>
-        <Route path="/tablets/"/>
-        <Route path="/accessories/"/>
-        <Route path="/favorite/"/>
-        <Route path="/basket/"/>
-      </Switch>
     </>
   )
 }

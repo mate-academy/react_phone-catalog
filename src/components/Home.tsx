@@ -7,6 +7,7 @@ import { Phone }  from '../interfaces';
 import { useWindowSize } from "../helpers/useWindowSize";
 import { Categories } from './Categories'
 
+
 export const Home: React.FC = () => {
 
   const width = useWindowSize();
@@ -20,13 +21,11 @@ export const Home: React.FC = () => {
   const numberAccessories = phones.filter(phone => phone.type === 'accessories').length;
 
   return (
-    <section className="home">
+    <section id="home" className="home">
       <MainSlider />
       <Carousel
-        perRow={perRow}
         width={`${carouselListWidth}`}
         phones={hotPricePhones}
-        screenWidth={width}
         title={'Hot prices'}
       />
       <Categories
@@ -35,10 +34,8 @@ export const Home: React.FC = () => {
         numberAccessories={numberAccessories}
       />
       <Carousel
-        perRow={perRow}
         width={`${carouselListWidth}`}
         phones={newPhones}
-        screenWidth={width}
         title={'Brand new models'}
       />
     </section>

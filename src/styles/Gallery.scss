@@ -1,0 +1,15 @@
+.gallery {
+  &__img-list {
+    margin-right: 60px;
+  }
+
+  &__img-wrapper {
+    display: flex;
+    width: 40%;
+  }
+
+  &__image {
+    width: 66px;
+
+  }
+}

@@ -4,6 +4,14 @@ import { PhoneInfo, ProductDetails } from './interfaces';
 import { Navigation } from './components/Navigation';
 import { useDispatch } from 'react-redux';
 import { setPhones } from './store/phones';
+import {  Switch, Route, Redirect} from 'react-router-dom';
+import { Home } from './components/Home';
+import { ItemCard } from './components/ItemCard';
+import { FooterNav } from './components/FooterNav';
+// import { getPhones } from './store';
+// import { Phone } from './interfaces';
+
+
 
 import './styles/App.scss';
 
@@ -12,6 +20,7 @@ const App: React.FC = () => {
   const dispatch = useDispatch();
   const [phonesInfo, setPhonesInfo] = useState<PhoneInfo[]>([]);
   const [details, setDetails] = useState<ProductDetails[]>([]);
+  // const allPhones: Phone[] = useSelector(getPhones);
   const findDetail = (id: string) => {
     return details.find(detail => detail.id ===id);
   }
@@ -51,6 +60,17 @@ const App: React.FC = () => {
   return (
     <div className="App">
       <Navigation />
+      <Switch>
+        <Route path="/" exact component={Home}/>
+        <Route path="/home"><Redirect to="/" /></Route>
+        <Route path="/tablets/"/>
+        <Route path="/accessories/"/>
+        <Route path="/favorite/"/>
+        <Route path="/basket/"/>
+        <Route path="/phones/:productId" render={({ match }) => <ItemCard id={match.params.productId} />}/>
+        <Route path="/phones/"/>
+      </Switch>
+      <FooterNav />
     </div>
   );
 }

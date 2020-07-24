@@ -7,20 +7,16 @@ import { handleMove } from '../helpers/handleMove';
 interface Props {
   phones: Phone[];
   width: string;
-  perRow: number;
-  screenWidth: number;
   title: string;
 }
 
-export const Carousel: React.FC<Props> = ({ phones, width, perRow, screenWidth, title }) => {
+export const Carousel: React.FC<Props> = ({ phones, width, title }) => {
   const [margin, setMargin] = useState(0);
   const maxMargin = -(phones.length - 4) * 285;
   const handleClick = (option: string) => {
-    const marginNew = handleMove(option, margin);
-   console.log(marginNew, margin);
+    const marginNew = handleMove(option, margin, 285);
    setMargin(marginNew);
   }
-  console.log(width, perRow, 11, screenWidth)
   return (
     <>
       <div className="carousel">

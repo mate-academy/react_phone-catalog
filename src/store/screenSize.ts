@@ -7,7 +7,6 @@ import { AnyAction } from 'redux';
  const reducer = (phones = [], action: AnyAction) => {
    switch (action.type) {
      case SET_SCREEN_SIZE:
-        console.log(1111)
        return action.payload;
 
      default:
