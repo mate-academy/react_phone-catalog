@@ -1,0 +1,49 @@
+.basket {
+  padding: 40px 150px 80px;
+}
+
+.goods {
+  width: 66%;
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 50px;
+    border: 1px solid hsl(206, 14%, 90%);
+    box-sizing: border-box;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  &__img {
+    width: 66px;
+    height: 66px;
+  }
+
+  &__wrapper {
+    display: flex;
+    width: 20%;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__price {
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 140%;
+    color: #313237;
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    box-sizing: border-box;
+    border: 1px solid hsl(206, 12%, 74%);
+    background-color: white;
+  }
+
+  &__delete {
+    background-color: white;
+    border: none;
+  }
+}

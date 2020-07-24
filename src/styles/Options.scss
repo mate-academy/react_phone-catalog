@@ -1,0 +1,33 @@
+.options {
+  padding: 16px 0 8px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  width: 100%;
+
+  &__container {
+    width: 40%;
+  }
+
+  &__wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+
+  &__option {
+    color: hsl(205, 8%, 57%);
+  }
+
+  &__value {
+    color: hsl(230, 6%, 20%);
+  }
+
+}

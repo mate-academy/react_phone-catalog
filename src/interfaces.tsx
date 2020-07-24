@@ -29,6 +29,13 @@ export interface Phone {
   details?: ProductDetails;
 }
 
+export interface Basket {
+  id: string;
+  goodItem: Phone;
+  quantity: number;
+}
+
+
 export interface ProductDetails {
   additionalFeatures: string;
   android: {

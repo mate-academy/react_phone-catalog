@@ -7,7 +7,9 @@ import { About } from './About';
 import { Gallery } from './Gallery';
 import { Carousel } from './Carousel';
 import { useWindowSize } from "../helpers/useWindowSize";
-// import { NavLink } from 'react-router-dom';
+import { Options } from "./Options";
+import { Price } from './Price';
+import { Path } from './Path';
 
 interface Props {
   id: string;
@@ -19,12 +21,29 @@ export const ItemCard: React.FC<Props> = ({ id }) => {
   const width = useWindowSize();
   const perRow = Math.floor((+width - 300) / 285)
   const carouselListWidth = perRow * 285;
+  const techDetails = [
+    { title: 'Screen', option: activePhone?.screen },
+    { title: 'Resolution', option: activePhone?.details?.display.screenResolution},
+    { title: 'ScreenSize', option: activePhone?.details?.display.screenSize },
+    { title: 'Camera', option: activePhone?.details?.camera.primary },
+    { title: 'Ram', option: activePhone?.ram },
+    { title: 'Capacity', option: activePhone?.capacity},
+    { title: 'Screen', option: activePhone?.screen },
+  ];
+
+  const generalDetails = [
+    { title: 'Screen', option: activePhone?.screen },
+    { title: 'Ram', option: activePhone?.ram },
+    { title: 'Capacity', option: activePhone?.capacity},
+    { title: 'Screen', option: activePhone?.screen },
+  ];
 
   return (
     <div className="product-card">
       {
         activePhone &&   (
           <>
+            <Path activePhone={activePhone} />
             <h2 className="product-card__title">{activePhone.name}</h2>
             <div className="product-card__container">
             <Gallery activePhone={activePhone}/>
@@ -39,66 +58,24 @@ export const ItemCard: React.FC<Props> = ({ id }) => {
                 <p className="description__text">Select capacity</p>
                 <button className="description__capacity">{activePhone.ram}</button>
                 <span className="line"></span>
-                <div className="description__price card__price">
-                  <p className="description__price--old card__price--old">&#x24;{activePhone.price}</p>
-                  <p className="description__price--new card__price--new">&#x24;{+activePhone.price * (1 - +activePhone.discount / 100)}</p>
-                </div>
-                <AddButton />
-                <div className="product-card__details details">
-                  <span className="details__wrapper">
-                    <p className="details__option">Screen</p>
-                    <p className="details__value">{activePhone.screen}</p>
-                  </span>
-                  <span className="details__wrapper">
-                    <p className="details__option">Resolution</p>
-                    <p className="details__value">{activePhone.details?.display.screenResolution}</p>
-                  </span>
-                  <span className="details__wrapper">
-                    <p className="details__option">ScreenSize</p>
-                    <p className="details__value">{activePhone.details?.display.screenSize}</p>
-                  </span>
-                  <span className="details__wrapper">
-                    <p className="details__option">RAM</p>
-                    <p className="details__value">{activePhone.ram}</p>
-                  </span>
+                <Price price={activePhone.price} discount={activePhone.discount} />
+                <AddButton goodItem={activePhone} />
+                <div className="product-card__details">
+                  <Options optionsList={generalDetails}/>
                 </div>
               </div>
             </div>
             <div className="product-card__container">
-              <About info={activePhone.details?.additionalFeatures || ''} description={activePhone.details?.description || ''}/>
+              <About
+                info={activePhone.details?.additionalFeatures || ''}
+                description={activePhone.details?.description || ''}
+              />
               <div className="details__container">
-                <div className="product-card__details details">
-                <h3 className="about__title">Tech specs</h3>
-                <div className="line"></div>
-                    <span className="details__wrapper">
-                      <p className="details__option">Screen</p>
-                      <p className="details__value">{activePhone.screen}</p>
-                    </span>
-                    <span className="details__wrapper">
-                      <p className="details__option">Resolution</p>
-                      <p className="details__value">{activePhone.details?.display.screenResolution}</p>
-                    </span>
-                    <span className="details__wrapper">
-                      <p className="details__option">ScreenSize</p>
-                      <p className="details__value">{activePhone.details?.display.screenSize}</p>
-                    </span>
-                    <span className="details__wrapper">
-                      <p className="details__option">RAM</p>
-                      <p className="details__value">{activePhone.ram}</p>
-                    </span>
-                    <span className="details__wrapper">
-                      <p className="details__option">Camera</p>
-                      <p className="details__value">{activePhone.details?.camera.primary}</p>
-                    </span>
-                    <span className="details__wrapper">
-                      <p className="details__option">Dimensions</p>
-                      <p className="details__value">{activePhone.details?.sizeAndWeight.dimensions}</p>
-                    </span>
-                    <span className="details__wrapper">
-                      <p className="details__option">RAM</p>
-                      <p className="details__value">{activePhone.ram}</p>
-                    </span>
-                  </div>
+                <div className="product-card__details">
+                  <h3 className="about__title">Tech specs</h3>
+                  <div className="line"></div>
+                  <Options optionsList={techDetails}/>
+                </div>
               </div>
             </div>
             <Carousel
@@ -113,23 +90,3 @@ export const ItemCard: React.FC<Props> = ({ id }) => {
     </div>
   )
 }
-
-
-
-
-      {/* <div className="path-wrapper">
-        <NavLink to="/">
-          <img src="../../img/image/home/home" alt="home-logo"/>
-        </NavLink>
-        <NavLink to="/phones">
-          Phones
-        </NavLink>
-        {
-          activePhone && (
-            <NavLink to={`phones/${activePhone.id}`}>
-            Phones
-          </NavLink>
-          )
-        }
-
-      </div> */}

@@ -66,6 +66,11 @@
     font-size: 14px;
     line-height: 21px;
     margin-bottom: 8px;
+    transition: 0.5s opacity;
+
+    &:hover {
+      opacity: 0.7;
+    }
   }
 
   a {
