@@ -14,7 +14,7 @@ interface Props {
   description: string;
 }
 
-export const ProductsPage: React.FC<Props> = () => {
+export const PhonesPage: React.FC<Props> = () => {
   const products: Phone[] = useSelector(getPhones);
   const phones = products.filter(product => product.type === 'phone');
   const [sortedList, setSortedList] = useState<Phone[]>(phones);
@@ -22,8 +22,8 @@ export const ProductsPage: React.FC<Props> = () => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const sortByOption: string = searchParams.get('sortBy') || '';
-  const perPage: string = searchParams.get('perPage') || '';
-  const page: string = searchParams.get('page') || '';
+  const perPage: string = searchParams.get('perPage') || '8';
+  const page: string = searchParams.get('page') || '1';
   const [startIndex, setStartIndex] = useState(1);
   const [lastIndex, setLastIndex] = useState(products.length);
 
@@ -108,7 +108,7 @@ export const ProductsPage: React.FC<Props> = () => {
             onChange={setPerPage}
           >
             <option value="4">4</option>
-            <option value="8">8</option>
+            <option value="8" selected>8</option>
             <option value="12">12</option>
           </select>
         </div>

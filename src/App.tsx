@@ -11,7 +11,7 @@ import { Home } from './components/Home';
 import { ItemCard } from './components/ItemCard';
 import { FooterNav } from './components/FooterNav';
 import { Basket } from './components/Basket';
-import { ProductsPage } from './components/ProductsPage/ProductsPage';
+import { PhonesPage } from './components/ProductsPage/ProductsPage';
 import './styles/App.scss';
 
 const App: React.FC = () => {
@@ -71,8 +71,8 @@ const App: React.FC = () => {
         <Route path="/accessories/" />
         <Route path="/favorite/" />
         <Route path="/basket/" component={Basket} />
+        <Route path="/phones/" component={PhonesPage} />
         <Route path="/phones/:productId" render={({ match }) => <ItemCard id={match.params.productId} />} />
-        <Route path="/phones/" component={ProductsPage} />
       </Switch>
       <FooterNav />
     </div>
