@@ -6,6 +6,9 @@
   justify-content: space-between;
   padding-left: 32px;
   width: 100%;
+  position: sticky;
+  top: 0;
+  background-color: white;
 
   &__list {
     display: flex;

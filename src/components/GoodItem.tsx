@@ -1,7 +1,7 @@
 import React from 'react';
 import { Basket } from '../interfaces';
 import { Phone } from '../interfaces';
-import { setBasket, removeItem } from '../store/basket';
+import { setBasket, removeItem, deleteItem } from '../store/basket';
 import { useDispatch } from 'react-redux';
 
 interface Props {
@@ -14,8 +14,12 @@ export const GoodItem: React.FC<Props> = ({ goodItem }) => {
     dispatch(setBasket(goodItem))
   }
 
-  const handleClickRemove = (id: string) => {
-    dispatch(removeItem(id))
+  const handleClickRemove = (goodItem: Phone) => {
+    dispatch(removeItem(goodItem))
+  }
+
+  const handleClickDelete = (id: string) => {
+    dispatch(deleteItem(id))
   }
 
   return (
@@ -23,13 +27,18 @@ export const GoodItem: React.FC<Props> = ({ goodItem }) => {
       {
         goodItem.goodItem && (
           <>
-            <button className="goods__delete button button-delete">x</button>
+            <button
+              className="goods__delete button button-delete"
+              onClick={() => handleClickDelete(goodItem.goodItem.id)}
+            >
+              x
+            </button>
             <img src={goodItem.goodItem.imageUrl} alt={goodItem.goodItem.name} className="goods__img"/>
             <p className="goods__title">{goodItem.goodItem.name}</p>
             <div className="goods__wrapper">
               <button
                 className="button button-minus goods__button"
-                onClick={() => handleClickRemove(goodItem.id)}
+                onClick={() => handleClickRemove(goodItem.goodItem)}
               >
                 -
               </button>

@@ -1,7 +1,10 @@
 import React from 'react';
 import { NavLink} from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { getBasket } from '../store/index';
 
 export const Navigation: React.FC = () => {
+  const numberInTheBasket = useSelector(getBasket).length;
   return (
     <>
       <nav className="nav">
@@ -22,6 +25,9 @@ export const Navigation: React.FC = () => {
           </NavLink>
           <NavLink className="fontMonte nav__special-link" to="/basket/" exact>
             <img src="../../img/images/basket.png" alt="basket"/>
+            <span className="red">
+              {numberInTheBasket !==0 && `  ${numberInTheBasket}`}
+            </span>
           </NavLink>
         </span>
       </nav>

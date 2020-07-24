@@ -6,7 +6,8 @@ import { GoodsList } from './GoodsList';
 
 export const Basket: React.FC = () => {
   const goodsList = useSelector(getBasket);
-  console.log(goodsList)
+  const totalQuantity = goodsList.reduce((acc, value) => acc + value.quantity, 0);
+  const totalPrice = goodsList.reduce((acc, value) => acc + value.quantity * value.goodItem.price * (1 - value.goodItem.discount / 100), 0);
   return (
     <div className="basket">
       <h2 className="basket__title">Cart</h2>
@@ -16,7 +17,11 @@ export const Basket: React.FC = () => {
           <>
             <div className="basket__container">
               <GoodsList goodsList={goodsList} />
-              {/* <TotalPrice /> */}
+              <div className="basket__total">
+                <h1 className="basket__price">{`$${totalPrice}`}</h1>
+                <p className="basket__text">{`Total for ${totalQuantity} items`}</p>
+                <button className="button card__button--add">Approve</button>
+              </div>
             </div>
           </>
         )
