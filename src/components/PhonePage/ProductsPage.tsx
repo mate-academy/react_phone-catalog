@@ -7,6 +7,7 @@ import { Phone } from '../../interfaces';
 import { AddButton } from '../AddButton';
 import { Price } from '../Price';
 import { Options } from '../Options';
+import { Pages } from './Pages';
 
 interface Props {
   info: string;
@@ -27,12 +28,27 @@ export const PhonesPage: React.FC<Props> = () => {
   const sortByOption: string = searchParams.get('sortBy') || '';
   const perPage: string = searchParams.get('perPage') || '';
   const page: string = searchParams.get('page') || '';
-  console.log(perPage, page)
+
   const setParams = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const { value } = event.currentTarget;
 
     searchParams.set('sortBy', `${value}`);
+    history.push({
+      search: searchParams.toString(),
+    });
+  };
 
+  const setPerPage = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const { value } = event.currentTarget;
+
+    searchParams.set('perPage', `${value}`);
+    history.push({
+      search: searchParams.toString(),
+    });
+  };
+
+  const setPage = (value: string) => {
+    searchParams.set('page', `${value}`);
     history.push({
       search: searchParams.toString(),
     });
@@ -54,7 +70,7 @@ export const PhonesPage: React.FC<Props> = () => {
 
       default:
     }
-  }, [sortByOption, products]);
+  }, [sortByOption, products, page, perPage]);
 
   return (
     <section className="phones">
@@ -78,7 +94,14 @@ export const PhonesPage: React.FC<Props> = () => {
         </div>
         <div className="phones__wrapper">
           <p className="phones__sort-name">Items on page</p>
-          <select className="phones__sort" name="items-per-page" id="items-per-page">
+          <select
+            value={perPage}
+            className="phones__sort"
+            name="items-per-page"
+            id="items-per-page"
+            onChange={setPerPage}
+          >
+            <option value="5">5</option>
             <option value="10">10</option>
             <option value="15">15</option>
           </select>
@@ -114,6 +137,7 @@ export const PhonesPage: React.FC<Props> = () => {
           })
         }
       </ul>
+      <Pages page={page} setPage={setPage} length={products.length} perPage={perPage} />
     </section>
   );
 };
