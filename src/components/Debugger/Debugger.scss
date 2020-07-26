@@ -1,0 +1,40 @@
+.debugger {
+  display: flex;
+  justify-items: center;
+
+  &__button {
+    background: none;
+    border: none;
+    border-radius: 50%;
+    padding: 5px;
+    outline: none;
+    width: 40px;
+    height: 40px;
+    box-shadow: 0 0 15px 1px rgba(76, 79, 82, 1);
+    position: relative;
+    z-index: 105;
+    right: 70px;
+    &--on {
+      background-color: red;
+    }
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__info {
+    padding: 5px 10px;
+    margin: 0;
+    font-size: 0.8rem;
+    width: 250px;
+    border-radius: 5px;
+    background-color: #EBEBEB;
+    text-align: center;
+    position: absolute;
+    z-index: 3;
+    top: -5px;
+    left: -10px;
+  }
+}

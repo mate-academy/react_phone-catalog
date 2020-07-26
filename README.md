@@ -1,6 +1,7 @@
 # React Phone catalog
 - If you work alone follow the [React task guideline](https://github.com/mate-academy/react_task-guideline#react-tasks-guideline)
 - If you work in a team follow the [Work in a team guideline](https://github.com/mate-academy/react_task-guideline/blob/master/team-flow.md#how-to-work-in-a-team)
+- [DEMO LINK](https://fe-feb20-team7.github.io/react_phone-catalog/)
 
 ## Description
 Implement Products catalog following [this design](https://www.figma.com/file/uEetgWenSRxk9jgiym6Yzp/Phone-catalog-redesign?node-id=1%3A2).
@@ -34,7 +35,7 @@ Store the Cart in the `localStorage`
     - `discount` is give in percents `%`
     - `age` is used to sort by `Newest`
     - `id` is required to fetch product details
-1. Create `ProductsSlider` component and use it in `Hot prices` block
+1. Create `ProductsCarousel` component and use it in `Hot prices` block
     - Create `getHotPriceProducts` method fetching products with discount from API
       sorted by absolute discount value (not percentage given in API)
     - For now do all the filtering and sorting on client side

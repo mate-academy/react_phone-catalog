@@ -1,0 +1,21 @@
+@import "../../styles/typography";
+
+.breadcrumbs {
+  margin: 24px 0;
+
+  &__step {
+    color: rgb(137, 147, 154);
+    text-decoration: none;
+  }
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+    margin: 0 16px;
+    vertical-align: middle;
+
+    &--home {
+      vertical-align: middle;
+    }
+  }
+}
