@@ -46,6 +46,8 @@ const App: React.FC = () => {
   }, [favorites]);
 
   const handleMarker = () => {
+    setMarkerX(0);
+    setMarkerY(0);
     setStatusOfComment(false);
     setActiveButton(false);
     setStatusSend(false);
@@ -54,7 +56,7 @@ const App: React.FC = () => {
   };
 
   const handleFollowMarker = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    if (!statusOfMarker) {
+    if (!statusOfMarker || statusOfComment) {
       return;
     }
 
@@ -78,7 +80,6 @@ const App: React.FC = () => {
     const body = document.querySelector('body');
 
     setStatusSend(true);
-    setStatusOfMarker(false);
     if (body) {
       html2canvas(body).then(canvas => {
         const croppedCanvas = document.createElement('canvas');
@@ -107,13 +108,19 @@ const App: React.FC = () => {
         sendToServer(commentText, croppedCanvas.toDataURL());
       });
     }
+
+    setStatusOfMarker(false);
+  };
+
+  const handleCloseComment = () => {
+    setStatusOfComment(false);
   };
 
   const renderComment = () => {
     if (!statusSend) {
       return (
         <form onSubmit={sendDataToServer} style={{ top: commentY, left: commentX }} className="formComment">
-          {/* eslint-disable-next-line jsx-a11y/no-autofocus */}
+          <button onClick={handleCloseComment} type="button" className="formComment__cross" />
           <input autoFocus value={commentText} onChange={(event) => enterComment(event.target.value)} className="formComment__input" type="textarea" placeholder="Ваш комментарий..." />
           {activeButton && <button className="formComment__button" type="button" onClick={sendDataToServer}>Отправить</button>}
         </form>

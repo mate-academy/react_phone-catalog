@@ -183,6 +183,31 @@ body {
     display: grid;
     align-items: center;
   }
+
+  &__cross {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: transparent;
+    border-radius: 50%;
+    border: 1px solid #b4bdc4;
+    padding: 8px;
+    transform: rotate(45deg);
+    &:after,
+    &:before {
+      content: "";
+      position: absolute;
+      height: 16px;
+      width: 2px;
+      background-color: #b4bdc4;
+      transform: translate(-50%, -50%);
+    }
+
+    &:before {
+      height: 2px;
+      width: 16px;
+    }
+  }
 }
 
 .debugger {
