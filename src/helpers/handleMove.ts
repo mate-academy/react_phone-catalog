@@ -1,5 +1,6 @@
-export function handleMove (direction: string, margin: number, itemWidth: number) {
+export function handleMove(direction: string, margin: number, itemWidth: number) {
   let marginNew = 0;
+
   if (direction === 'back') {
     marginNew = margin + itemWidth;
   } else if (direction === 'forward') {
@@ -9,5 +10,6 @@ export function handleMove (direction: string, margin: number, itemWidth: number
   } else if (direction === 'back-slider') {
     marginNew = margin + itemWidth;
   }
+
   return marginNew;
 }

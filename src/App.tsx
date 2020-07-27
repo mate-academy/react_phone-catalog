@@ -67,7 +67,8 @@ const App: React.FC = () => {
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/home"><Redirect to="/" /></Route>
-        <Route path="/tablets/" />
+        <Route path="/tablets/:productId" render={({ match }) => <ItemCard id={match.params.productId} />} />
+        <Route path="/tablets/" component={PhonesPage} />
         <Route path="/accessories/" />
         <Route path="/favorite/" />
         <Route path="/basket/" component={Basket} />

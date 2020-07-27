@@ -16,17 +16,20 @@ interface Props {
 
 export const PhonesPage: React.FC<Props> = () => {
   const products: Phone[] = useSelector(getPhones);
-  const phones = products.filter(product => product.type === 'phone');
-  const [sortedList, setSortedList] = useState<Phone[]>(phones);
   const history = useHistory();
   const location = useLocation();
+  const typeOfDevices = location.pathname.split('/').join('').trim();
+  const typeOfDevice = typeOfDevices.substring(0, typeOfDevices.length - 1);
+  const phones = products.filter(product => product.type === `${typeOfDevice}`);
+  const [sortedList, setSortedList] = useState<Phone[]>(phones);
   const searchParams = new URLSearchParams(location.search);
   const sortByOption: string = searchParams.get('sortBy') || 'name';
-  const perPage: string = searchParams.get('perPage') || '8';
+  const perPage: string = searchParams.get('perPage') || '4';
   const page: string = searchParams.get('page') || '1';
   const [startIndex, setStartIndex] = useState(0);
-  const [lastIndex, setLastIndex] = useState(8);
-  console.log(location, "props")
+  const [lastIndex, setLastIndex] = useState(4);
+
+  console.log(typeOfDevice, 'typeOfDevice');
 
   const changePage = (option: string) => {
     let value: number;
@@ -92,14 +95,14 @@ export const PhonesPage: React.FC<Props> = () => {
 
       default:
     }
-  }, [sortByOption, products, page, perPage]);
+  }, [sortByOption, products, page, perPage, typeOfDevices]);
 
   console.log(sortedList);
 
   return (
     <section className="phones">
       <h2 className="title">
-        Mobile phones
+        {typeOfDevices.toUpperCase()}
       </h2>
       <p className="phones__number">{`${phones.length} models`}</p>
       <div className="phones__sorting">
@@ -141,9 +144,9 @@ export const PhonesPage: React.FC<Props> = () => {
             ];
 
             return (
-              <li className="carousel__item card">
+              <li className="carousel__item card" key={phone.id}>
                 <img className="card__img" src={phone.imageUrl} alt={phone.name} />
-                <NavLink to={`phones/${phone.id}`}>
+                <NavLink to={`${location.pathname}${phone.id}`}>
                   <h3 className="card__title">
                     {phone.name}
                     {phone.capacity}
@@ -161,7 +164,13 @@ export const PhonesPage: React.FC<Props> = () => {
           })
         }
       </ul>
-      <Pages changePage={changePage} page={page} setPage={setPage} length={phones.length} perPage={perPage} />
+      <Pages
+        changePage={changePage}
+        page={page}
+        setPage={setPage}
+        length={phones.length}
+        perPage={perPage}
+      />
     </section>
   );
 };
