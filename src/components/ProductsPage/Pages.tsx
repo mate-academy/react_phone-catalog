@@ -27,7 +27,7 @@ export const Pages: React.FC<Props> = ({
             onClick={() => changePage('back')}
             disabled={+page === 1}
             type="button"
-            className="pagination__button"
+            className="pagination__button button"
           >
             &#60;
           </button>
@@ -36,7 +36,7 @@ export const Pages: React.FC<Props> = ({
           pages.map(number => (
             <li className="pagination__item" key={number}>
               <button
-                className={number === +page ? 'activePage pagination__button' : 'non-activePage pagination__button'}
+                className={number === +page ? 'activePage pagination__button button' : 'non-activePage pagination__button button'}
                 type="button"
                 onClick={() => setPage(`${number}`)}
               >
@@ -50,7 +50,7 @@ export const Pages: React.FC<Props> = ({
             onClick={() => changePage('forward')}
             disabled={+page === pages.length}
             type="button"
-            className="pagination__button"
+            className="button pagination__button"
           >
             &#62;
           </button>

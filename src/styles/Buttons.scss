@@ -19,11 +19,6 @@
 
   &--add {
     background: #313237;
-
-    &:hover {
-      background-color: hsl(0, 0%, 100%);
-      color: #313237;
-    }
   }
 
   &--remove {
@@ -40,4 +35,10 @@
 .favorite {
   width: 20px;
   height: 17px;
+}
+
+.button {
+  &:hover {
+    box-shadow: -3px 2px 10px 0 rgba(168,159,168,1);
+  }
 }

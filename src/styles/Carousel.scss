@@ -47,6 +47,10 @@
     justify-content: space-between;
     align-items: flex-start;
     transition: 1s margin;
+
+    &:hover {
+      box-shadow: -3px 2px 10px 0 rgba(168,159,168,1);
+    }
   }
 }
 
