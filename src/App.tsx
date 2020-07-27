@@ -5,7 +5,7 @@ import { PRODUCTS_URL, getData } from './helpers/Api';
 import { Product } from './interfaces';
 import { Navigation } from './components/Navigation/Navigation';
 import { setProducts } from './store/phones';
-import { getBasket } from './store/index';
+import { getBasket, getFavorite } from './store/index';
 import { Home } from './components/Home';
 import { ItemCard } from './components/ItemCard/ItemCard';
 import { FooterNav } from './components/Navigation/FooterNav';
@@ -17,12 +17,13 @@ import './styles/App.scss';
 
 const App: React.FC = () => {
   const dispatch = useDispatch();
+  const favorite = useSelector(getFavorite);
   const basket = useSelector(getBasket);
 
   useEffect(() => {
-    localStorage.setItem('favorite', JSON.stringify([...basket]));
-    localStorage.setItem('favorite', JSON.stringify([...basket]));
-  }, [basket]);
+    localStorage.setItem('favorite', JSON.stringify([...favorite]));
+    localStorage.setItem('card', JSON.stringify([...basket]));
+  }, [basket, favorite]);
 
   useEffect(() => {
     const getPhonesFromServer = async () => {
