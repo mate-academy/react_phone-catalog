@@ -1,4 +1,4 @@
-export interface PhoneInfo {
+export interface Product {
   age: number;
   id: string;
   type: string;
@@ -11,30 +11,13 @@ export interface PhoneInfo {
   capacity: string;
   ram: string;
   newPrice?: number;
-}
-
-export interface Phone {
-  age: number;
-  id: string;
-  type: string;
-  imageUrl: string;
-  name: string;
-  snippet: string;
-  price: number;
-  discount: number;
-  screen: string;
-  capacity: string;
-  ram: string;
-  newPrice?: number;
-  details?: ProductDetails;
 }
 
 export interface Basket {
   id: string;
-  goodItem: Phone;
+  goodItem: Product;
   quantity: number;
 }
-
 
 export interface ProductDetails {
   additionalFeatures: string;

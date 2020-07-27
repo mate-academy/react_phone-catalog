@@ -1,12 +1,12 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Phone } from '../interfaces';
 
 interface Props {
-  activePhone: Phone;
+  name: string;
+  id: string;
 }
 
-export const Path: React.FC<Props> = ({ activePhone }) => {
+export const Path: React.FC<Props> = ({ name, id }) => {
   return (
     <>
       <div className="path">
@@ -17,9 +17,9 @@ export const Path: React.FC<Props> = ({ activePhone }) => {
         <NavLink to="/phones">
           Phones &nbsp;&nbsp;&#62;&nbsp;&nbsp;
         </NavLink>
-        <NavLink className="grey" to={`${activePhone.id}`}>
+        <NavLink className="grey" to={`${id}`}>
           &nbsp;
-          {activePhone.name}
+          {name}
         </NavLink>
 
       </div>

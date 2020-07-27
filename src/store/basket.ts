@@ -1,5 +1,5 @@
 import { AnyAction } from 'redux';
-import { Phone, Basket } from '../interfaces';
+import { Product, Basket } from '../interfaces';
 
 import { removeDuplicates, deleteItemFromBasket } from '../helpers/removeDuplicates';
 
@@ -7,8 +7,8 @@ const SET_BASKET = 'SET_BASKET';
 const REMOVE__ITEM = 'REMOVE__ITEM';
 const DELETE__ITEM = 'DELETE__ITEM';
 
-export const setBasket = (basketItem: Phone) => ({ type: SET_BASKET, payload: basketItem });
-export const removeItem = (basketItem: Phone) => ({ type: REMOVE__ITEM, payload: basketItem });
+export const setBasket = (basketItem: Product) => ({ type: SET_BASKET, payload: basketItem });
+export const removeItem = (basketItem: Product) => ({ type: REMOVE__ITEM, payload: basketItem });
 export const deleteItem = (id: string) => ({ type: DELETE__ITEM, payload: id });
 
 let initState: Basket[] = [];

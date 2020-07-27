@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { getBasket } from '../store/index';
+import { getBasket } from '../../store/index';
 import { GoodsList } from './GoodsList';
 
 export const Basket: React.FC = () => {

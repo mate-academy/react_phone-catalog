@@ -19,6 +19,7 @@
     display: flex;
     overflow: hidden;
     max-width: 1000px;
+    min-width: 500px;
   }
 
   &__item {
@@ -26,6 +27,13 @@
   }
 
   &__img {
+    min-width: 500px;
     max-width: 1000px;
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  .main-slider {
+    justify-content: space-evenly;
   }
 }

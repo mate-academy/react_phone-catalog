@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 export const FooterNav: React.FC = () => {
   return (
     <>
-      <nav className="nav footer-nav">
+      <nav className="footer-nav">
         <ul className="nav__list">
           <li className="nav__item">
             <NavLink className="fontMonte nav__link" to="/" exact>

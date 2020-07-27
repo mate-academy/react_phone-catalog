@@ -1,5 +1,5 @@
 .phones {
-  padding: 40px 10% 80px;
+  padding: 40px 10% 120px;
 
   &__list {
     display: flex;
@@ -43,5 +43,13 @@
     padding: 5px;
     outline: none;
     cursor: pointer;
+  }
+}
+
+@media screen and (max-width: 1080px) {
+  .phones {
+    &__list {
+      justify-content: space-evenly;
+    }
   }
 }

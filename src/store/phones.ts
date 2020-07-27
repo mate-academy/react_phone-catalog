@@ -1,19 +1,19 @@
 import { AnyAction } from 'redux';
-import { Phone } from '../interfaces';
+import { Product } from '../interfaces';
 
- const SET_PHONES = 'SET_PHONES';
+const SET_PHONES = 'SET_PHONES';
 
- export const setPhones = (phones: Phone[]) => ({ type: SET_PHONES, payload: phones });
+export const setProducts = (products: Product[]) => ({ type: SET_PHONES, payload: products });
 
- const reducer = (phones = [], action: AnyAction) => {
-   switch (action.type) {
-     case SET_PHONES:
+const reducer = (products = [], action: AnyAction) => {
+  switch (action.type) {
+    case SET_PHONES:
 
-       return action.payload;
+      return action.payload;
 
-     default:
-       return phones;
-   }
- };
+    default:
+      return products;
+  }
+};
 
- export default reducer;
+export default reducer;

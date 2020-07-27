@@ -1,6 +1,6 @@
 import React from 'react';
 import { GoodItem } from './GoodItem';
-import { Basket } from '../interfaces';
+import { Basket } from '../../interfaces';
 
 interface Props {
   goodsList: Basket[];

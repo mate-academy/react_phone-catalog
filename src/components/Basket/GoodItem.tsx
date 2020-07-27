@@ -1,8 +1,9 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { Basket, Phone } from '../interfaces';
+import { Link } from 'react-router-dom';
+import { Basket, Product } from '../../interfaces';
 
-import { setBasket, removeItem, deleteItem } from '../store/basket';
+import { setBasket, removeItem, deleteItem } from '../../store/basket';
 
 interface Props {
   goodItem: Basket;
@@ -10,11 +11,11 @@ interface Props {
 
 export const GoodItem: React.FC<Props> = ({ goodItem }) => {
   const dispatch = useDispatch();
-  const handleClickAdd = (good: Phone) => {
+  const handleClickAdd = (good: Product) => {
     dispatch(setBasket(good));
   };
 
-  const handleClickRemove = (good: Phone) => {
+  const handleClickRemove = (good: Product) => {
     dispatch(removeItem(good));
   };
 
@@ -35,7 +36,9 @@ export const GoodItem: React.FC<Props> = ({ goodItem }) => {
               x
             </button>
             <img src={goodItem.goodItem.imageUrl} alt={goodItem.goodItem.name} className="goods__img" />
-            <p className="goods__title">{goodItem.goodItem.name}</p>
+            <Link to={`/phones/${goodItem.id}`}>
+              <p className="goods__title">{goodItem.goodItem.name}</p>
+            </Link>
             <div className="goods__wrapper">
               <button
                 type="button"
@@ -55,7 +58,8 @@ export const GoodItem: React.FC<Props> = ({ goodItem }) => {
             </div>
             <p className="goods__price">
               &#x24;
-              {goodItem.quantity * goodItem.goodItem.price * (1 - goodItem.goodItem.discount / 100)}
+              {goodItem.quantity * goodItem.goodItem.price
+                * (1 - goodItem.goodItem.discount / 100)}
             </p>
           </>
         )

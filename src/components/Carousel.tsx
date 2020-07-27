@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
-import { Phone } from '../interfaces';
-import { CarouselItem } from './CarouselItem';
+import { Product } from '../interfaces';
+import { ProductPreview } from './ProductPreview';
 import { handleMove } from '../helpers/handleMove';
 
 interface Props {
-  phones: Phone[];
+  products: Product[];
   width: string;
   title: string;
 }
 
-export const Carousel: React.FC<Props> = ({ phones, width, title }) => {
+export const Carousel: React.FC<Props> = ({ products, width, title }) => {
   const [margin, setMargin] = useState(0);
-  const maxMargin = -(phones.length - 4) * 285;
+  const maxMargin = -(products.length - 4) * 285;
   const handleClick = (option: string) => {
     const marginNew = handleMove(option, margin, 285);
 
@@ -44,8 +44,14 @@ export const Carousel: React.FC<Props> = ({ phones, width, title }) => {
         </div>
         <ul style={{ width: `${width}px` }} className="carousel__list">
           {
-            phones.map((phone, index) => (
-              <CarouselItem key={phone.name} index={index} margin={margin} phone={phone} />
+            products.map((product, index) => (
+              <ProductPreview
+                key={product.name}
+                index={index}
+                margin={margin}
+                product={product}
+                path={`/${product.type}s/`}
+              />
             ))
           }
         </ul>

@@ -3,10 +3,10 @@
   width: 100%;
   justify-content: space-between;
 
-  &--add {
+  &--add,
+  &--remove {
     box-sizing: border-box;
     width: 160px;
-    background: #313237;
     border: 1px solid #313237;
     padding: 12px 43px;
     outline: none;
@@ -15,6 +15,10 @@
     text-align: center;
     color: hsl(0, 0%, 100%);
     transition: 0.5s color, 1s background-color;
+  }
+
+  &--add {
+    background: #313237;
 
     &:hover {
       background-color: hsl(0, 0%, 100%);
@@ -22,9 +26,18 @@
     }
   }
 
+  &--remove {
+    background-color: green;
+  }
+
   &--choose {
     margin-left: 5px;
     border: 1px solid hsl(206, 12%, 74%);
     padding: 13px;
   }
+}
+
+.favorite {
+  width: 20px;
+  height: 17px;
 }

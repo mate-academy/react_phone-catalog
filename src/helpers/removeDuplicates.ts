@@ -1,4 +1,4 @@
-import { Basket, Phone } from '../interfaces';
+import { Basket, Product } from '../interfaces';
 
 export const findQuantity = (id: string, basketItems: Basket[], option: string) => {
   const product = basketItems.find(good => good.id === id);
@@ -8,7 +8,7 @@ export const findQuantity = (id: string, basketItems: Basket[], option: string) 
   return newQuantity;
 };
 
-export const removeDuplicates = (list: Basket[], goodItem: Phone, option: string) => {
+export const removeDuplicates = (list: Basket[], goodItem: Product, option: string) => {
   const index = list.findIndex(item => item.id === goodItem.id);
   const listWithoutDuplicates = [...list];
   const quantity = findQuantity(goodItem.id, list, option);

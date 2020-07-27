@@ -9,7 +9,7 @@
 @import "./Options.scss";
 @import "./Path.scss";
 @import "./Basket.scss";
-@import "./PhonesPage.scss";
+@import "./ProductsPage.scss";
 @import "./Pagination.scss";
 
 .fontMonte {
@@ -35,6 +35,10 @@ ul {
   list-style: none;
   padding: 0;
   margin: 0;
+}
+
+button {
+  outline: none;
 }
 
 button:hover {
@@ -76,6 +80,10 @@ a {
   color: red;
 }
 
+.red-back {
+  background-color: red;
+}
+
 .title {
   font-style: normal;
   font-weight: bold;
@@ -83,4 +91,15 @@ a {
   line-height: 41px;
   letter-spacing: -0.01em;
   color: #313237;
+}
+
+.App {
+  position: relative;
+  height: 100%;
+}
+
+#root,
+html,
+body {
+  height: 100%;
 }
