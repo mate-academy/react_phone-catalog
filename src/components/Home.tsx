@@ -9,7 +9,7 @@ import { Categories } from './Categories';
 
 export const Home: React.FC = () => {
   const width = useWindowSize();
-  const homeSectionPadding = +width <= 1200 ? 100 : 300;
+  const homeSectionPadding = +width <= 1200 ? 60 : 300;
   const perRow = Math.floor((+width - homeSectionPadding) / 285);
   const carouselListWidth = perRow * 285;
   const products: Product[] = useSelector(getProducts);

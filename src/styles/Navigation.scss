@@ -3,6 +3,7 @@
   height: 65px;
   align-items: center;
   box-shadow: 0 1px 0 hsl(206, 14%, 90%);
+  max-width: 1400px;
   justify-content: space-between;
   padding-left: 32px;
   width: 100%;
@@ -42,6 +43,7 @@
 }
 
 .footer-nav {
+  max-width: 1400px;
   display: flex;
   height: 65px;
   align-items: center;
@@ -54,7 +56,6 @@
   border-top: 1px solid hsl(206, 14%, 90%);
   position: fixed;
   bottom: 0;
-  left: 0;
 
   &__link {
     margin-right: 5%;
@@ -80,8 +81,8 @@
   }
 
   &__list {
-    position: absolute;
-    top: 65px;
+    position: fixed;
+    left: 0;
     padding-top: 40px;
     width: 320px;
     background-color: white;
@@ -97,5 +98,11 @@
     margin-bottom: 40px;
     padding: 20px;
     border-bottom: 1px solid hsl(206, 14%, 90%);
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .footer-nav {
+    display: none;
   }
 }

@@ -22,11 +22,12 @@ interface ProductWithDetails {
 }
 
 export const ItemCard: React.FC<Props> = ({ id }) => {
-  const phones: Product[] = useSelector(getProducts);
-  const activeDevice = phones.find(phone => phone.id === id);
+  const products: Product[] = useSelector(getProducts);
+  const activeDevice = products.find(product => product.id === id);
   const [activeDeviceWithDetails, setActiveDeviceWithDetails] = useState<ProductWithDetails>();
   const width = useWindowSize();
-  const perRow = Math.floor((+width - 300) / 285);
+  const homeSectionPadding = +width <= 1200 ? 60 : 300;
+  const perRow = Math.floor((+width - homeSectionPadding) / 285);
   const carouselListWidth = perRow * 285;
   const techDetails = [
     { title: 'Screen', option: activeDeviceWithDetails?.device.screen },
@@ -58,7 +59,7 @@ export const ItemCard: React.FC<Props> = ({ id }) => {
     };
 
     getPhonesDetails();
-  }, [id, phones]);
+  }, [id, products]);
 
   return (
     <div className="product-card">
@@ -67,7 +68,7 @@ export const ItemCard: React.FC<Props> = ({ id }) => {
           <>
             <Path
               name={activeDeviceWithDetails.device.name}
-              id={activeDeviceWithDetails.device.id}
+              typeOfDevices={activeDeviceWithDetails.device.type}
             />
             <h2 className="product-card__title">{activeDeviceWithDetails.device.name}</h2>
             <div className="product-card__container">
@@ -117,7 +118,7 @@ export const ItemCard: React.FC<Props> = ({ id }) => {
             </div>
             <Carousel
               width={`${carouselListWidth}`}
-              products={phones}
+              products={products}
               title="You may also like"
             />
           </>

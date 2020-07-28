@@ -13,3 +13,16 @@
 
   }
 }
+
+@media screen and (max-width: 1100px) {
+  .gallery__img-wrapper {
+    display: flex;
+    justify-content: space-evenly;
+    width: 90%;
+  }
+
+  .gallery__main-image {
+    width: 50vw;
+    height: 50vw;
+  }
+}

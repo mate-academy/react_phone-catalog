@@ -1,9 +1,10 @@
 .phones {
   padding: 40px 10% 120px;
-
+  max-width: 1400px;
   &__list {
     display: flex;
     flex-wrap: wrap;
+
   }
 
   &__sorting {

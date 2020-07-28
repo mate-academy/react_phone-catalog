@@ -39,6 +39,10 @@ export const ProductPage: React.FC<Props> = () => {
   };
 
   const setParams = (value: string, option: string) => {
+    if (option === 'query') {
+      searchParams.set('page', '1');
+    }
+
     searchParams.set(`${option}`, `${value}`);
     history.push({
       search: searchParams.toString(),

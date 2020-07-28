@@ -3,10 +3,10 @@ import { NavLink } from 'react-router-dom';
 
 interface Props {
   name: string;
-  id: string;
+  typeOfDevices: string;
 }
 
-export const Path: React.FC<Props> = ({ name, id }) => {
+export const Path: React.FC<Props> = ({ name, typeOfDevices }) => {
   return (
     <>
       <div className="path">
@@ -14,14 +14,12 @@ export const Path: React.FC<Props> = ({ name, id }) => {
           <img src="img/images/home/Home.png" alt="home-logo" />
           &nbsp;&nbsp;&#62;&nbsp;&nbsp;
         </NavLink>
-        <NavLink to="/phones">
-          Phones &nbsp;&nbsp;&#62;&nbsp;&nbsp;
+        <NavLink to={`/${typeOfDevices}s/`}>
+          {`${typeOfDevices}s`}
+          {' '}
+          &nbsp;&nbsp;&#62;&nbsp;&nbsp;
         </NavLink>
-        <NavLink className="grey" to={`${id}`}>
-          &nbsp;
-          {name}
-        </NavLink>
-
+        <p>{name}</p>
       </div>
     </>
   );

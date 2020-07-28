@@ -21,9 +21,12 @@ const App: React.FC = () => {
   const basket = useSelector(getBasket);
 
   useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify([...basket]));
+  }, [basket]);
+
+  useEffect(() => {
     localStorage.setItem('favorite', JSON.stringify([...favorite]));
-    localStorage.setItem('card', JSON.stringify([...basket]));
-  }, [basket, favorite]);
+  }, [favorite]);
 
   useEffect(() => {
     const getPhonesFromServer = async () => {

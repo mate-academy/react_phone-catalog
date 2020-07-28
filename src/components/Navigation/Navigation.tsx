@@ -12,27 +12,27 @@ export const Navigation: React.FC = () => {
   const width = useWindowSize();
   const [burgerMenu, setBurgerMenu] = useState(false);
   const [visibleBurger, setVisibleBurger] = useState(false);
-  const [translate, setTranslate] = useState('-400');
+  const [translate, setTranslate] = useState('-1000');
 
   const handleClick = () => {
-    const tempTranslate = visibleBurger ? '-400' : '0';
+    const tempTranslate = visibleBurger ? '-1000' : '65';
 
     setTranslate(tempTranslate);
     setVisibleBurger(!visibleBurger);
   };
 
   const handleClickOnLink = () => {
-    setTranslate('-400');
+    setTranslate('-1000');
     setVisibleBurger(false);
   };
 
   useEffect(() => {
+    setVisibleBurger(false);
     if (+width < 800) {
       setBurgerMenu(true);
     } else {
       setBurgerMenu(false);
-      setVisibleBurger(false);
-      setTranslate('-400');
+      setTranslate('-1000');
     }
   }, [width]);
 

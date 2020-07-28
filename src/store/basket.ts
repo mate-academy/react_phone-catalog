@@ -1,6 +1,5 @@
 import { AnyAction } from 'redux';
 import { Product, Basket } from '../interfaces';
-
 import { removeDuplicates, deleteItemFromBasket } from '../helpers/removeDuplicates';
 
 const SET_BASKET = 'SET_BASKET';
