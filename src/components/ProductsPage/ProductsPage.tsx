@@ -6,6 +6,7 @@ import { getProducts } from '../../store/index';
 import { Product } from '../../interfaces';
 import { Pages } from './Pages';
 import { ProductsSort } from './ProductsSort';
+import { Search } from './Search';
 
 interface Props {
   info: string;
@@ -24,6 +25,7 @@ export const ProductPage: React.FC<Props> = () => {
   const sortByOption: string = searchParams.get('sortBy') || 'name';
   const perPage: string = searchParams.get('perPage') || '4';
   const page: string = searchParams.get('page') || '1';
+  const query: string = searchParams.get('query') || '';
   const [startIndex, setStartIndex] = useState(0);
   const [lastIndex, setLastIndex] = useState(4);
 
@@ -36,26 +38,8 @@ export const ProductPage: React.FC<Props> = () => {
     });
   };
 
-  const setParams = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const { value } = event.currentTarget;
-
-    searchParams.set('sortBy', `${value}`);
-    history.push({
-      search: searchParams.toString(),
-    });
-  };
-
-  const setPerPage = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const { value } = event.currentTarget;
-
-    searchParams.set('perPage', `${value}`);
-    history.push({
-      search: searchParams.toString(),
-    });
-  };
-
-  const setPage = (value: string) => {
-    searchParams.set('page', `${value}`);
+  const setParams = (value: string, option: string) => {
+    searchParams.set(`${option}`, `${value}`);
     history.push({
       search: searchParams.toString(),
     });
@@ -74,57 +58,75 @@ export const ProductPage: React.FC<Props> = () => {
 
     switch (sortByOption) {
       case 'price':
-        sorted = [...filteredProducts].sort((a, b) => a[sortByOption] - b[sortByOption]);
+        sorted = [...filteredProducts]
+          .sort((a, b) => a[sortByOption] - b[sortByOption])
+          .filter(product => product.name.toLowerCase().includes(query));
         setSortedList(sorted);
         break;
 
       case 'name':
         sorted = [...filteredProducts]
-          .sort((a, b) => a[sortByOption].localeCompare(b[sortByOption]));
+          .sort((a, b) => a[sortByOption].localeCompare(b[sortByOption]))
+          .filter(product => product.name.toLowerCase().includes(query));
         setSortedList(sorted);
         break;
 
       default:
     }
-  }, [sortByOption, products, page, perPage, typeOfDevices]);
+  }, [sortByOption, products, query, page, perPage, typeOfDevices]);
 
   return (
     <section className="phones">
+      <Search
+        placeholderText={typeOfDevices}
+        inputValue={query}
+        setQuery={setParams}
+      />
       <h2 className="title">
         {typeOfDevices.toUpperCase()}
       </h2>
       <p className="phones__number">{`${filteredProducts.length} models`}</p>
       {
-        sortedList.length
+        products.length
           ? (
             <>
               <ProductsSort
                 sortByOption={sortByOption}
                 perPage={perPage}
                 setParams={setParams}
-                setPerPage={setPerPage}
               />
               <ul className="phones__list">
                 {
-                  sortedList.slice(startIndex, lastIndex).map(product => (
-                    <ProductPreview product={product} path={location.pathname} key={product.id} />
-                  ))
+                  sortedList
+                    .slice(startIndex, lastIndex)
+                    .map(product => (
+                      <ProductPreview product={product} path={location.pathname} key={product.id} />
+                    ))
                 }
               </ul>
-              <Pages
-                changePage={changePage}
-                page={page}
-                setPage={setPage}
-                length={filteredProducts.length}
-                perPage={perPage}
-              />
+              {
+                !sortedList.length
+                  ? (
+                    <h3>
+                      No products includes
+                      &nbsp;
+                      {query}
+                    </h3>
+                  )
+                  : (
+                    <Pages
+                      changePage={changePage}
+                      page={page}
+                      setPage={setParams}
+                      length={sortedList.length}
+                      perPage={perPage}
+                    />
+                  )
+              }
+
             </>
           )
-          : (
-            <h3>
-              There are no products in this section yet
-            </h3>
-          )
+          : <h3>There are no products in this section yet</h3>
       }
     </section>
   );

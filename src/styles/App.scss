@@ -11,6 +11,7 @@
 @import "./Basket.scss";
 @import "./ProductsPage.scss";
 @import "./Pagination.scss";
+@import "./Search.scss";
 
 .fontMonte {
   font-family: "Montserrat", sans-serif;
@@ -102,4 +103,8 @@ a {
 html,
 body {
   height: 100%;
+}
+
+.input {
+  outline: none;
 }

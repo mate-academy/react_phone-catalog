@@ -3,12 +3,11 @@ import React from 'react';
 interface Props {
   sortByOption: string;
   perPage: string;
-  setParams: (event: React.ChangeEvent<HTMLSelectElement>) => (void);
-  setPerPage: (event: React.ChangeEvent<HTMLSelectElement>) => (void);
+  setParams: (event: string, option: string) => (void);
 }
 
 export const ProductsSort: React.FC<Props> = ({
-  sortByOption, perPage, setParams, setPerPage,
+  sortByOption, perPage, setParams,
 }) => {
   return (
     <div className="phones__sorting">
@@ -16,7 +15,7 @@ export const ProductsSort: React.FC<Props> = ({
         <p className="phones__sort-name">Sort by</p>
         <select
           value={sortByOption}
-          onChange={setParams}
+          onChange={(event) => setParams(event.target.value, 'sortBy')}
           className="phones__sort"
           name="sort-by"
           id="sort-by"
@@ -32,7 +31,7 @@ export const ProductsSort: React.FC<Props> = ({
           className="phones__sort"
           name="items-per-page"
           id="items-per-page"
-          onChange={setPerPage}
+          onChange={(event) => setParams(event.target.value, 'perPage')}
         >
           <option value="4">4</option>
           <option value="8" selected>8</option>

@@ -4,7 +4,7 @@ import React from 'react';
 interface Props {
   length: number;
   perPage: string;
-  setPage: (value: string) => (void);
+  setPage: (value: string, option: string) => (void);
   changePage: (option: string) => (void);
   page: string;
 }
@@ -38,7 +38,7 @@ export const Pages: React.FC<Props> = ({
               <button
                 className={number === +page ? 'activePage pagination__button button' : 'non-activePage pagination__button button'}
                 type="button"
-                onClick={() => setPage(`${number}`)}
+                onClick={() => setPage(`${number}`, 'page')}
               >
                 {number}
               </button>
