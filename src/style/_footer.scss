@@ -1,6 +1,4 @@
 .footer {
-  width: 1200px;
-  margin: 0 auto;
   font-weight: 600;
   font-size: 12px;
   height: 100px;
@@ -9,6 +7,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  &__logo {
+    margin-left: 40px;
+  }
   &__list {
     list-style: none;
     display: flex;
