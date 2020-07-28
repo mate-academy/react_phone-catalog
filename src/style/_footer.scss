@@ -1,0 +1,38 @@
+.footer {
+  width: 1200px;
+  margin: 0 auto;
+  font-weight: 600;
+  font-size: 12px;
+  height: 100px;
+  line-height: 15px;
+  color: #89939a;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  &__list {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    width: 200px;
+    text-transform: uppercase;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: #89939a;
+  }
+
+  &__top {
+    display: flex;
+    width: 120px;
+    justify-content: space-between;
+  }
+
+  &__button {
+    border: 1px solid #b4bdc4;
+    transform: rotate(90deg);
+    background-color: #fff;
+    width: 32px;
+    height: 32px;
+  }
+}
