@@ -1,0 +1,42 @@
+.new {
+  margin-bottom: 80px;
+
+  &-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    & .card:last-child {
+      margin-right: 0;
+    }
+  }
+
+  @media (max-width: 1299px) {
+    &-content .card:nth-last-child(-n+2) {
+      margin-right: 0;
+    }
+  }
+
+  @media (max-width: 963px) {
+    & {
+      margin-bottom: 20px;
+    }
+
+    &-content {
+      justify-content: space-evenly;
+
+      & .card:nth-child(2n+1) {
+        margin-right: 16px;
+      }
+      & .card:nth-child(2n) {
+        margin-right: 0;
+      }
+    }
+  }
+
+  @media (max-width: 636px) {
+    &-content .card:nth-child(n) {
+      margin-right: 0;
+    }
+  }
+}

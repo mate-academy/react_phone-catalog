@@ -7,5 +7,305 @@
   </head>
   <body>
     <div id="root"></div>
+    <header class="header container__header" id="header">
+      <div class="logo header__logo"></div>
+      <div class="menu">
+
+        <input
+            type="checkbox"
+            name="menu__input"
+            id="menu__input"
+            class="menu__input"
+          >
+          <label for="menu__input" class="menu__label">
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+            <div class="bar3"></div>
+          </label>
+
+        <nav class="nav header__nav">
+          <ul class="nav__list">
+            <li class="nav__item">
+              <a href="#" class="nav__link nav__link--active">
+                Home
+              </a>
+            </li>
+            <li class="nav__item">
+              <a href="#" class="nav__link">
+                Phones
+              </a>
+            </li>
+            <li class="nav__item">
+              <a href="#" class="nav__link">
+                Tablets
+              </a>
+            </li>
+            <li class="nav__item">
+              <a href="#" class="nav__link">
+                Accessories
+              </a>
+            </li>
+          </ul>
+        </nav>
+    </div>
+
+      <div class="header__icons">
+        <div class="favourite header__favourite">
+        </div>
+        <div class="header__shopping-cart">
+        </div>
+      </div>
+
+    </header>
+    <main class="main ">
+      <section class="banner container">
+
+        <div class="banner__image-container">
+          <div class="banner__arrow arrow arrow-left">
+          </div>
+          <img src="./images/banner.jpg" alt="benner" class="banner__image">
+
+          <div class="banner__arrow arrow arrow-right">
+          </div>
+        </div>
+        <div class="banner__slider-container">
+          <div class="banner__slider banner__slider--active"></div>
+          <div class="banner__slider"></div>
+          <div class="banner__slider"></div>
+        </div>
+      </section>
+      <section class="hot container">
+        <div class="hot__top">
+          <h2 class="hot__heading">Hot prices</h2>
+          <div class="hot__arrows">
+            <div class="hot__arrow arrow arrow-left"></div>
+            <div class="hot__arrow arrow arrow-right"></div>
+          </div>
+        </div>
+        <div class="hot__products">
+          <div class="card">
+            <img src="./images/hot/phone-1.png" alt="Apple iPhone Xs 64GB Silver" class="card__image">
+            <h4 class="card__heading">Apple iPhone Xs 64GB Silver (iMT9G2FS/A)</h4>
+            <div class="card__price">
+              <div class="card__price--actual">$799</div>
+              <div class="card__price--old">$899</div>
+            </div>
+            <hr>
+            <div class="card__characteristics">
+              <p>Screen</p>
+              <p class="card__characteristics--active">5.8” OLED</p>
+              <p>Capacity</p>
+              <p class="card__characteristics--active">64 GB</p>
+              <p>RAM</p>
+              <p class="card__characteristics--active">4 GB</p>
+            </div>
+            <div class="card__bottom">
+              <a href="#" class="button card__button">Add to cart</a>
+              <div class="favourite card__favourite"></div>
+            </div>
+          </div>
+          <div class="card">
+            <img src="./images/hot/phone-2.png" alt="Apple iPhone 11 Pro Max 64GB Gold" class="card__image">
+            <h4 class="card__heading">Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)</h4>
+            <div class="card__price">
+              <div class="card__price--actual">$1099</div>
+              <div class="card__price--old">$1199</div>
+            </div>
+            <hr>
+            <div class="card__characteristics">
+              <p>Screen</p>
+              <p class="card__characteristics--active">6.5” OLED</p>
+              <p>Capacity</p>
+              <p class="card__characteristics--active">64 GB</p>
+              <p>RAM</p>
+              <p class="card__characteristics--active">4 GB</p>
+            </div>
+            <div class="card__bottom">
+              <a href="#" class="button card__button">Add to cart</a>
+              <div class="favourite card__favourite"></div>
+            </div>
+          </div>
+          <div class="card">
+            <img src="./images/hot/phone-3.png" alt="Apple iPhone 11 128GB Purple" class="card__image">
+            <h4 class="card__heading">Apple iPhone 11 128GB Purple (iMT9G2FS/A)</h4>
+            <div class="card__price">
+              <div class="card__price--actual">$799</div>
+              <div class="card__price--old">$899</div>
+            </div>
+            <hr>
+            <div class="card__characteristics">
+              <p>Screen</p>
+              <p class="card__characteristics--active">6.2” IPS</p>
+              <p>Capacity</p>
+              <p class="card__characteristics--active">128 GB</p>
+              <p>RAM</p>
+              <p class="card__characteristics--active">4 GB</p>
+            </div>
+            <div class="card__bottom">
+              <a href="#" class="button card__button">Add to cart</a>
+              <div class="favourite card__favourite"></div>
+            </div>
+          </div>
+          <div class="card">
+            <img src="./images/hot/phone-4.png" alt="Apple iPhone X 256GB Silver" class="card__image">
+            <h4 class="card__heading">Apple iPhone X 256GB Silver (iMT9G2FS/A)</h4>
+            <div class="card__price">
+              <div class="card__price--actual">$859</div>
+              <div class="card__price--old">$899</div>
+            </div>
+            <hr>
+            <div class="card__characteristics">
+              <p>Screen</p>
+              <p class="card__characteristics--active">5.8” OLED</p>
+              <p>Capacity</p>
+              <p class="card__characteristics--active">256 GB</p>
+              <p>RAM</p>
+              <p class="card__characteristics--active">3 GB</p>
+            </div>
+            <div class="card__bottom">
+              <a href="#" class="button card__button">Add to cart</a>
+              <div class="favourite card__favourite"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="category container">
+        <h2 class="category__heading">Shop by category</h2>
+        <section class="category-content">
+          <section class="category__item">
+            <img src="./images/category/phone-in.png" alt="phones" class="category__image category__image--phone">
+            <div class="category__info category__info--phone">
+              <h3 class="category__name">Mobile phones</h3>
+              <p class="category__amount">95 models</p>
+            </div>
+          </section>
+          <section class="category__item">
+            <img src="./images/category/tablet-in.png" alt="tablets" class="category__image category__image--tablet">
+            <div class="category__info category__info--tablet">
+              <h3 class="category__name">Tablets</h3>
+              <p class="category__amount">24 models</p>
+            </div>
+          </section>
+          <section class="category__item">
+            <img src="./images/category/accessories-in.png" alt="accessories" class="category__image category__image--accessories">
+            <div class="category__info category__info--accessories">
+              <h3 class="category__name">Accessories</h3>
+              <p class="category__amount">100 models</p>
+            </div>
+          </section>
+        </section>
+      </section>
+      <section class="new container">
+        <h2 class="new__heading">Brand new models</h2>
+        <section class="new-content">
+          <div class="card">
+            <img src="./images/new/phone-1.png" alt="Apple iPhone 11 Pro Max 512GB Midnight Green" class="card__image">
+            <h4 class="card__heading">Apple iPhone 11 Pro Max 512GB Midnight Green (iMT9G2FS/A)</h4>
+            <div class="card__price">
+              <div class="card__price--actual">$1299</div>
+            </div>
+            <hr>
+            <div class="card__characteristics">
+              <p>Screen</p>
+              <p class="card__characteristics--active">6.5” OLED</p>
+              <p>Capacity</p>
+              <p class="card__characteristics--active">512 GB</p>
+              <p>RAM</p>
+              <p class="card__characteristics--active">4 GB</p>
+            </div>
+            <div class="card__bottom">
+              <a href="#" class="button card__button">Add to cart</a>
+              <div class="favourite card__favourite"></div>
+            </div>
+          </div>
+          <div class="card">
+            <img src="./images/new/phone-2.png" alt="Apple iPhone 11 Pro Max 64GB Gold" class="card__image">
+            <h4 class="card__heading">Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)</h4>
+            <div class="card__price">
+              <div class="card__price--actual">$1099</div>
+            </div>
+            <hr>
+            <div class="card__characteristics">
+              <p>Screen</p>
+              <p class="card__characteristics--active">6.5” OLED</p>
+              <p>Capacity</p>
+              <p class="card__characteristics--active">64 GB</p>
+              <p>RAM</p>
+              <p class="card__characteristics--active">4 GB</p>
+            </div>
+            <div class="card__bottom">
+              <a href="#" class="button card__button">Add to cart</a>
+              <div class="favourite card__favourite"></div>
+            </div>
+          </div>
+          <div class="card">
+            <img src="./images/new/phone-3.png" alt="Apple iPhone 11 256GB Purple" class="card__image">
+            <h4 class="card__heading">Apple iPhone 11 256GB Purple (iMT9G2FS/A)</h4>
+            <div class="card__price">
+              <div class="card__price--actual">$999</div>
+            </div>
+            <hr>
+            <div class="card__characteristics">
+              <p>Screen</p>
+              <p class="card__characteristics--active">6.2” IPS</p>
+              <p>Capacity</p>
+              <p class="card__characteristics--active">256 GB</p>
+              <p>RAM</p>
+              <p class="card__characteristics--active">4 GB</p>
+            </div>
+            <div class="card__bottom">
+              <a href="#" class="button card__button">Add to cart</a>
+              <div class="favourite card__favourite"></div>
+            </div>
+          </div>
+          <div class="card">
+            <img src="./images/new/phone-4.png" alt="Apple iPhone 11 128GB (Product) Red" class="card__image">
+            <h4 class="card__heading">Apple iPhone 11 128GB (Product) Red (iMT9G2FS/A)</h4>
+            <div class="card__price">
+              <div class="card__price--actual">$999</div>
+            </div>
+            <hr>
+            <div class="card__characteristics">
+              <p>Screen</p>
+              <p class="card__characteristics--active">6.2” IPS</p>
+              <p>Capacity</p>
+              <p class="card__characteristics--active">128 GB</p>
+              <p>RAM</p>
+              <p class="card__characteristics--active">4 GB</p>
+            </div>
+            <div class="card__bottom">
+              <a href="#" class="button card__button">Add to cart</a>
+              <div class="favourite card__favourite"></div>
+            </div>
+          </div>
+        </section>
+      </section>
+    </main>
+    <footer class="footer container">
+      <div class="logo footer__logo"></div>
+      <nav class="footer__nav">
+        <ul class="footer-nav__list">
+          <li class="footer-nav__item">
+            <a href="#" class="nav__link">
+              Github
+            </a>
+          </li>
+          <li class="footer-nav__item">
+            <a href="#" class="nav__link">
+              Contacts
+            </a>
+            </li>
+          <li class="footer-nav__item">
+            <a href="#" class="nav__link">
+              Rights
+            </a>
+          </li>
+        </ul>
+      </nav>
+        <a href="#header" class="footer__back-top">
+          <p>Back to top</p>
+          <div class="footer__arrow arrow arrow-up"></div>
+        </a>
+    </footer>
   </body>
 </html>

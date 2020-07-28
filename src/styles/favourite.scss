@@ -1,0 +1,11 @@
+.favourite {
+  background-image: url(../img/header/favourite.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: #f3f3f3;
+    cursor: pointer;
+  }
+}

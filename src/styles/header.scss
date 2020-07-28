@@ -1,0 +1,47 @@
+.header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 64px;
+  box-shadow: 0px 1px 0px #E2E6E9;
+
+  &__icons {
+    margin-left: auto;
+    height: 64px;
+    display: flex;
+    z-index: 2;
+  }
+
+  &__favourite {
+    right: 64px + 1px;
+    box-shadow: -1px 0px 0px #E2E6E9;
+    height: 100;
+    width: 64px;
+  }
+
+  &__shopping-cart {
+    right: 0;
+    background-image: url(../img/header/shopping-cart.svg);
+  }
+
+  &__shopping-cart {
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 64px;
+    cursor: pointer;
+    border-left: 1px solid #E2E6E9;
+    transition: background-color 0.2s;
+  }
+
+  .favourite:hover,
+  &__shopping-cart:hover {
+    background-color: #f3f3f3;
+  }
+
+  @media (max-width: 1299px) {
+    &__logo {
+      margin-left: 24px;
+    }
+  }
+}
