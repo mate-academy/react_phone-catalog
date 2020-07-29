@@ -1,0 +1,23 @@
+@import "reset";
+@import "vars";
+
+@import "header/header";
+@import "header/navigation";
+@import "header/logo";
+@import "header/option";
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "Mont", sans-serif;
+  font-weight: normal;
+  scroll-behavior: smooth;
+}
+
+.container {
+  position: relative;
+  margin: 0 auto;
+  width: 1440px;
+}

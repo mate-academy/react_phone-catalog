@@ -1,0 +1,20 @@
+.header {
+  &__container {
+    background-color: $backgroundColor;
+    box-shadow: 0 1px 0 #e2e6e9;
+    display: flex;
+    justify-content: space-between;
+    height: $headerHeight;
+  }
+
+  &__nav-wrapper {
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+
+  &__logo {
+    margin-right: 64px - $navigationHorPadding;
+    margin-left: 24px;
+  }
+}

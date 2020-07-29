@@ -1,0 +1,35 @@
+@font-face {
+  font-family: "Mont";
+  src: url("Mont-Bold.eot");
+  src: local("Mont Bold"),
+    local("Mont-Bold"),
+    url("Mont-Bold.eot?#iefix") format("embedded-opentype"),
+    url("Mont-Bold.woff") format("woff"),
+    url("Mont-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Mont";
+  src: url("Mont-SemiBold.eot");
+  src: local("Mont SemiBold"),
+    local("Mont-SemiBold"),
+    url("Mont-SemiBold.eot?#iefix") format("embedded-opentype"),
+    url("Mont-SemiBold.woff") format("woff"),
+    url("Mont-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Mont";
+  src: url("Mont-Regular.eot");
+  src: local("Mont Regular"),
+    local("Mont-Regular"),
+    url("Mont-Regular.eot?#iefix") format("embedded-opentype"),
+    url("Mont-Regular.woff") format("woff"),
+    url("Mont-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}

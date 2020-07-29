@@ -1,0 +1,57 @@
+.option {
+  display: flex;
+  align-items: center;
+
+  &__search-wrapper {
+    position: relative;
+    box-shadow: -1px 0 0 #e2e6e9;
+    height: 100%;
+  }
+
+  &__search {
+    width: 327px;
+    padding-left: 24px;
+    border: none;
+    outline: none;
+
+    font-family: "Mont", sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: $headerHeight;
+
+    &::placeholder {
+      color: rgba(180, 189 ,196, 0.8);
+    }
+  }
+
+  &__icon {
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 64px;
+    height: 100%;
+    box-shadow: -1px 0 0 #e2e6e9;
+
+    &--loupe {
+      z-index: 0;
+      position: absolute;
+      right: 25px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 15px;
+      height: 15px;
+      box-shadow: none;
+    }
+
+    &--heart {
+      width: 15px;
+      height: 15px;
+    }
+
+    &--shop {
+      width: 15px;
+      height: 15px;
+    }
+  }
+}

@@ -3,9 +3,79 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href = "fonts/stylesheet.css"
+      rel = "stylesheet"
+      type = "text/css"
+    >
     <title>Phone catalog</title>
   </head>
   <body>
+    <header class="header">
+      <div class="container header__container">
+        <section class="header__nav-wrapper">
+          <div class="logo header__logo"></div>
+          <nav class="navigation header__navigation">
+            <ul class="navigation__list">
+              <li class="navigation__item navigation__item">
+                <a
+                href="#"
+                class="navigation__link
+                navigation__link--active"
+                >
+                  home
+                </a>
+              </li>
+              <li class="navigation__item">
+                <a href="#" class="navigation__link">
+                  Phones
+                </a>
+              </li>
+              <li class="navigation__item">
+                <a href="#" class="navigation__link">
+                  tablets
+                </a>
+              </li>
+              <li class="navigation__item">
+                <a href="#" class="navigation__link">
+                  accessories
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </section>
+
+        <section class="option header__option">
+          <div class="option__search-wrapper">
+            <input
+            type="text"
+            placeholder="Search in phones..."
+            class="option__search"
+            >
+            <img
+              src="img/icons/search.svg"
+              alt="loupe"
+              class="option__icon option__icon--loupe"
+            >
+          </div>
+          <div class="option__icon">
+            <img
+              src="img/icons/heart.svg"
+              alt="loupe"
+              class="option__icon--heart"
+            >
+          </div>
+          <div class="option__icon">
+            <img
+              src="img/icons/shop.svg"
+              alt="loupe"
+              class="option__icon--shop"
+            >
+          </div>
+        </section>
+      </div>
+    </header>
+
     <div id="root"></div>
   </body>
 </html>
