@@ -56,6 +56,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 40px;
     padding: 10px 0;
     @include fontProps(Mont-SemiBold, 14px, 600, 21px, #fff);
     background-color: $mainBlackColor;
@@ -72,6 +73,20 @@
     &:hover {
       color: $mainBlackColor;
       background-color: #fff;
+    }
+  }
+
+  @media (min-width: 1024px) {
+
+    &:last-child {
+      display: none;
+    }
+  }
+
+  @media (min-width: 1280px) {
+
+    &:last-child {
+      display: block;
     }
   }
 }

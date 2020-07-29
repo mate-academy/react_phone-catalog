@@ -1,5 +1,6 @@
 .nav {
 
+  display: none;
   margin-left: 65px;
 
   &__list {
@@ -70,5 +71,9 @@
         content: "";
       }
     }
+  }
+
+  @media (min-width: 768px) {
+    display: block;
   }
 }

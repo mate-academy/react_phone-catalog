@@ -1,8 +1,8 @@
 .promo {
 
-  $imgWidth: 1040px;
-  $buttonWidth: 32px;
-  $gapX: 16px;
+  $imgWidth: 280px;
+  $buttonWidth: 16px;
+  $gapX: 8px;
 
   display: grid;
   grid-row-gap: 18px;
@@ -10,13 +10,59 @@
   margin-bottom: 82px;
 
   &__container {
-    width: calc(#{$imgWidth} + #{$buttonWidth} * 2 + #{$gapX} * 2);
-    display: grid;
-    grid-template-columns: $buttonWidth $imgWidth $buttonWidth;
-    grid-column-gap: $gapX;
+    width: 100%;
+  }
+
+  &__img-holder {
+    width: 100%;
+    height: 200px;
   }
 
   &__img {
+    width: 100%;
+    height: 100%;
     cursor: pointer;
+  }
+
+  &__slider-button {
+    display: none;
+  }
+
+  @media(min-width: 650px) {
+
+    &__img-holder {
+      height: 360px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+
+    $imgWidth: 752px;
+    $buttonWidth: 32px;
+    $gapX: 16px;
+
+    &__container {
+      display: grid;
+      grid-template-columns: $buttonWidth auto $buttonWidth;
+      width: calc(#{$imgWidth} + #{$buttonWidth} * 2 + #{$gapX} * 2);
+      justify-content: center;
+      grid-column-gap: $gapX;
+    }
+
+    &__slider-button {
+      display: block;
+    }
+  }
+
+  @media (min-width: 1280px) {
+
+    $imgWidth: 1040px;
+    $buttonWidth: 32px;
+    $gapX: 16px;
+
+    &__container {
+      grid-template-columns: $buttonWidth auto $buttonWidth;
+      width: calc(#{$imgWidth} + #{$buttonWidth} * 2 + #{$gapX} * 2);
+    }
   }
 }

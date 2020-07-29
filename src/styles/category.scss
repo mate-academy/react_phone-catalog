@@ -2,7 +2,7 @@
 
   &__img-holder {
     position: relative;
-    height: 368px;
+    height: 320px;
     overflow: hidden;
 
     &--first {
@@ -22,6 +22,7 @@
     position: absolute;
     right: 0;
     bottom: 0;
+    height: 90%;
     cursor: pointer;
     transition: transform 0.5s;
 
@@ -37,5 +38,27 @@
 
   &__info {
     @include fontProps(Mont-Regular, 14px, 500, 21px, #89939a);
+  }
+
+  @media (min-width: 600px) {
+
+    &--third {
+      display: none;
+    }
+
+    &__photo {
+      height: 85%;
+    }
+  }
+
+  @media (min-width: 1024px) {
+
+    &--third {
+      display: block;
+    }
+
+    &__photo {
+      height: 100%;
+    }
   }
 }

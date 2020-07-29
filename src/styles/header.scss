@@ -1,19 +1,22 @@
 .header {
 
+  $blokName: &;
+
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 1;
   background-color: #fff;
+  box-shadow: 0 1px 0 #e2e6e9;
 
   &__container {
 
     position: relative;
     display: flex;
     align-items: center;
-    padding-left: 24px;
-    box-shadow: 0 1px 0 #e2e6e9;
+    height: 64px;
+
   }
 
   &__additional-links {
@@ -23,6 +26,7 @@
     right: 0;
     display: grid;
     grid-template-columns: repeat(2, auto);
+    z-index: -1;
   }
 
   &__additional-link {
@@ -40,6 +44,88 @@
 
     &:hover {
       transform: scale(1.1);
+    }
+  }
+
+  &__hidden-block {
+    position: absolute;
+    top: 0;
+    left: -200%;
+    width: 100%;
+    height: 500px;
+    background-color: #eb5757;
+    transition: all 0.5s;
+  }
+
+  &__logo {
+    display: none;
+  }
+
+  &__checkbox {
+    display: none;
+
+    &-label {
+
+      &::before {
+        $elemWidth: 18px;
+        $elemHeight: 20px;
+
+        position: absolute;
+        top: calc(50% - #{$elemHeight} / 2);
+        left: 20px;
+        width: $elemWidth;
+        height: $elemHeight;
+        content: url("../menu.png");
+        cursor: pointer;
+        z-index: 2;
+      }
+    }
+
+    &:checked + &-label {
+
+      &::before {
+        $elemWidth: 18px;
+        $elemHeight: 20px;
+
+        width: $elemWidth;
+        height: $elemHeight;
+        content: url("../close.png");
+      }
+    }
+
+    &:checked ~ #{$blokName}__hidden-block {
+      left: 0;
+    }
+  }
+
+  @media (min-width: 768px) {
+
+    &__container {
+      padding-left: 24px;
+    }
+
+    &__checkbox-label {
+      display: none;
+    }
+
+    &__logo {
+      display: block;
+    }
+
+    &__nav {
+      visibility: visible;
+    }
+  }
+
+  @media(min-width: 1024px) {
+    display: block;
+  }
+
+  @media(min-width: 1680px) {
+    &__container {
+      width: calc(1040px + 32px * 2 + 16px * 2);
+      margin: 0 auto;
+      padding: 0;
     }
   }
 }

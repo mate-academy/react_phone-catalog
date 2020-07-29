@@ -1,6 +1,5 @@
 .footer {
-  display: flex;
-  justify-content: center;
+
   box-shadow: 0 -1px 0 #e2e6e9;
 
   &__container {
@@ -8,18 +7,40 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: calc(1040px + 32px * 2 + 16px * 2);
+    margin: 0 auto;
+    padding: 10px 0;
+  }
+
+  &__logo {
+    padding-left: 24px;
   }
 
   &__button-container {
     display: grid;
     grid-template-columns: 70px 32px;
     grid-column-gap: 16px;
+    padding-right: 24px;
   }
 
   &__button-name {
     @include fontProps(Mont-SemiBold, 12px, 600, 15px, #89939a);
     align-self: center;
     margin: 0;
+  }
+
+  @media (min-width: 768px) {
+    &__container {
+      padding: 0;
+    }
+  }
+
+  @media (min-width: 1440px) {
+    &__container {
+      width: calc(1040px + 32px * 2 + 16px * 2);
+    }
+
+    &__logo {
+      padding: 0;
+    }
   }
 }

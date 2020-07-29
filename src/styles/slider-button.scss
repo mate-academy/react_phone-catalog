@@ -46,6 +46,10 @@
   &--small {
     height: 32px;
     opacity: 0.5;
+
+    &:hover {
+      animation: rotate 0.5s ease;
+    }
   }
 
   &--active {

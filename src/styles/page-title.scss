@@ -1,4 +1,8 @@
 .page-title {
-  @include fontProps(Mont-Bold, 32px, 700, 41px, $mainBlackColor);
+  @include fontProps(Mont-Bold, 24px, 700, 41px, $mainBlackColor);
   letter-spacing: -0.01em;
+
+  @media (min-width: 768px) {
+    @include fontProps(Mont-Bold, 32px, 700, 41px, $mainBlackColor);
+  }
 }

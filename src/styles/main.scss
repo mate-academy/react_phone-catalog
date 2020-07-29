@@ -1,24 +1,16 @@
 .main {
 
+  $cardWidth: 272px;
+  $gapX: 16px;
+
   &__container {
-    display: grid;
-    justify-content: center;
-    margin: 0 auto;
-    padding-top: 104px;
+    padding-top: 50px;
   }
 
   &__sales,
   &__categories,
   &__models {
-    margin-bottom: 80px;
-  }
-
-  &__sales-top-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    grid-template-columns: 2;
-    margin-bottom: 24px;
+    margin: 0 20px 80px;
   }
 
   &__sales-buttons,
@@ -31,25 +23,103 @@
   &__sales-products,
   &__models-products {
     display: grid;
-    grid-template-columns: repeat(4, auto);
-    grid-column-gap: 16px;
+    justify-content: center;
+    grid-row-gap: 16px;
   }
 
   &__categories-container {
     display: grid;
-    grid-template-columns: repeat(3, 368px);
-    grid-column-gap: 16px;
+    grid-row-gap: 40px;
   }
 
   &__categories-title {
     margin-bottom: 24px;
   }
 
+  &__sales-top-content,
   &__models-top-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
     grid-template-columns: 2;
-    margin-bottom: 24px;
+    width: 272px;
+    margin: 0 auto 24px;
+  }
+
+  &__promo {
+    margin: 0 auto;
+  }
+
+  @media (min-width: 600px) {
+
+    &__sales-products,
+    &__models-products {
+      grid-template-columns: repeat(2, auto);
+      grid-column-gap: 16px;
+    }
+
+    &__sales-top-content,
+    &__models-top-content,
+    &__categories-container {
+      width: calc(#{$cardWidth} * 2 + #{$gapX});
+    }
+
+    &__categories {
+      display: grid;
+      justify-content: center;
+    }
+
+    &__categories-container {
+      grid-template-columns: repeat(2, 272px);
+      grid-column-gap: 16px;
+    }
+
+    &__sales,
+    &__categories,
+    &__models {
+      margin: 0 0 80px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+
+    &__container {
+      padding-top: 104px;
+    }
+
+    &__sales-products,
+    &__models-products {
+      grid-template-columns: repeat(3, auto);
+    }
+
+    &__sales-top-content,
+    &__models-top-content,
+    &__categories-container,
+    &__promo {
+      width: calc(#{$cardWidth} * 3 + #{$gapX} * 2);
+    }
+
+    &__categories-container {
+      grid-template-columns: repeat(3, 272px);
+    }
+  }
+
+  @media(min-width: 1280px) {
+
+    &__sales-products,
+    &__models-products {
+      grid-template-columns: repeat(4, auto);
+    }
+
+    &__categories-container {
+      grid-template-columns: repeat(3, 368px);
+    }
+
+    &__sales-top-content,
+    &__models-top-content,
+    &__categories-container,
+    &__promo {
+      width: calc(#{$cardWidth} * 4 + #{$gapX} * 3);
+    }
   }
 }

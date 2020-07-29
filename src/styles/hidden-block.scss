@@ -1,0 +1,36 @@
+.nav-hidden {
+
+  &__list {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    grid-row-gap: 25px;
+    margin: 80px 0;
+  }
+
+  &__item {
+    list-style: none;
+  }
+
+  &__link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include fontProps(Mont-Bold, 12px, 700, 11px, $mainBlackColor);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: color 0.5s;
+
+    &:link,
+    &:visited,
+    &:active {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    &:hover {
+      color: $mainBlackColor;
+      text-decoration: none;
+    }
+  }
+}
