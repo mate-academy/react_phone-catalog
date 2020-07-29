@@ -1,0 +1,20 @@
+.hot-prices-section {
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__layout {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__arrow {
+    height: 32px;
+
+    &:last-child {
+      margin-left: 16px;
+    }
+  }
+}
