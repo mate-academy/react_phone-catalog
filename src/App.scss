@@ -1,0 +1,17 @@
+@import "./styles/variables.scss";
+@import "./styles/header";
+@import "./styles/logo.scss";
+@import "./styles/nav";
+@import "./styles/favourites-button.scss";
+@import "./styles/main";
+@import "./styles/promo";
+@import "./styles/slider-button";
+@import "./styles/rectangles";
+@import "./styles/product";
+@import "./styles/phone-props";
+@import "./styles/category";
+@import "./styles/footer.scss";
+
+html {
+  scroll-behavior: smooth;
+}

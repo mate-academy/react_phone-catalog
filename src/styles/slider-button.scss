@@ -1,0 +1,54 @@
+.slider-button {
+  position: relative;
+  width: 32px;
+  border: 1px solid #b4bdc4;
+  cursor: pointer;
+  transition: box-shadow 0.5s;
+
+  &::after {
+    $elemWidth: 5px;
+    $elemHeight: 9px;
+
+    position: absolute;
+    top: calc(50% - #{$elemHeight});
+    left: calc(50% - #{$elemWidth} / 2);
+    width: $elemWidth;
+    height: $elemHeight;
+  }
+
+  &:hover {
+    box-shadow: 0 0 3px 2px $mainGrayColor;
+  }
+
+  &--left {
+
+    &::after {
+      content: url("../arrow-left.png");
+    }
+  }
+
+  &--right {
+
+    &::after {
+      content: url("../arrow-right.png");
+    }
+  }
+
+  &--top {
+
+    &::after {
+      transform: rotate(90deg);
+      transform-origin: bottom center;
+      content: url("../arrow-left.png");
+    }
+  }
+
+  &--small {
+    height: 32px;
+    opacity: 0.5;
+  }
+
+  &--active {
+    opacity: 1;
+  }
+}

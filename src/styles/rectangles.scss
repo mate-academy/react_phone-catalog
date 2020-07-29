@@ -1,0 +1,25 @@
+.rectangles {
+  $elemWidth: 14px;
+  $elemHeight: 4px;
+  $elemsGap: 14px;
+
+  display: grid;
+  grid-template-columns: repeat(3, $elemWidth);
+  grid-column-gap: $elemsGap;
+  justify-content: center;
+
+  &__rectangle {
+    width: $elemWidth;
+    height: $elemHeight;
+    background-color: #e2e6e9;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $mainBlackColor;
+    }
+
+    &--active {
+      background-color: $mainBlackColor;
+    }
+  }
+}

@@ -1,0 +1,22 @@
+.promo {
+
+  $imgWidth: 1040px;
+  $buttonWidth: 32px;
+  $gapX: 16px;
+
+  display: grid;
+  grid-row-gap: 18px;
+  justify-content: center;
+  margin-bottom: 82px;
+
+  &__container {
+    width: calc(#{$imgWidth} + #{$buttonWidth} * 2 + #{$gapX} * 2);
+    display: grid;
+    grid-template-columns: $buttonWidth $imgWidth $buttonWidth;
+    grid-column-gap: $gapX;
+  }
+
+  &__img {
+    cursor: pointer;
+  }
+}

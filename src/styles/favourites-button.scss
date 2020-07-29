@@ -1,0 +1,33 @@
+.favourites-button {
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #e2e6e9;
+  transition: border-color 0.5s;
+
+  &--big {
+    width: 64px;
+    height: 64px;
+    border-top: none;
+    border-bottom: none;
+  }
+
+  &--small {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #b4bdc4;
+  }
+
+  &__img {
+    transition: transform 0.5s;
+  }
+
+  &:hover:not(&--big) {
+    border-color: $mainBlackColor;
+  }
+
+  &--big:hover &__img {
+    transform: scale(1.1);
+  }
+}
