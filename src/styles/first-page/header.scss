@@ -6,9 +6,6 @@
   grid-template-columns: 24px 40px 64px auto auto 64px 64px;
   grid-template-areas: ". a . b . c d";
   align-items: center;
-
-
-
   box-shadow: 0px 1px 0px #E2E6E9;
 
   &__logo {
@@ -29,6 +26,12 @@
     height: 64px;
     background: url(../../images/basket.svg) no-repeat center;
     box-shadow: -1px 0px 0px #E2E6E9;
+  }
+
+  &__choosen-items:hover,
+  &__basket:hover {
+    border: 1px solid #313237;
+    z-index: 2;
   }
 
   &__humburger-menu-button {
