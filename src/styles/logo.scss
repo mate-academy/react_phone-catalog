@@ -1,6 +1,13 @@
 .logo {
   display: block;
   width: 40px;
-  height: 24px;
-  background: url(../images/LOGO.svg) no-repeat center;
+  height: 22px;
+  background: url(../images/LOGO.svg) no-repeat ;
+  background-position: center center;
+  // align-self: center;
+  transition: transform 0.3s linear;
+}
+
+.logo:hover {
+  transform: scale(1.2);
 }
