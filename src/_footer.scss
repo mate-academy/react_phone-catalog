@@ -1,0 +1,80 @@
+.footer {
+  bottom: 0;
+  width: 100%;
+  box-shadow: 0 -1px 0 $colorBlockShadow;
+
+  &__inner {
+    height: $footerInnerHeight;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @media (max-width: $portableScreenSize) {
+      flex-direction: column;
+      height: inherit;
+    }
+  }
+
+  &__logo {
+
+    @media (max-width: $portableScreenSize) {
+      order: 2;
+    }
+  }
+
+  &__nav {
+
+    @media (max-width: $portableScreenSize) {
+      order: 3;
+    }
+  }
+
+  &__nav-list {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    grid-column-gap: 64px;
+  }
+
+  &__nav-link {
+    color: $colorSecondary;
+    transition: color $animHoverTime;
+
+    &:hover {
+      color: $colorPrimary;
+    }
+  }
+
+  &__anchor {
+    display: flex;
+    align-items: center;
+
+    @media (max-width: $portableScreenSize) {
+      order: 1;
+      margin-top: $sectionGapY;
+    }
+  }
+
+  &__button {
+    order: 2;
+  }
+
+  &__anchor-text {
+    order: 1;
+    color: $colorSecondary;
+    margin-right: $elementsGapX;
+    transition: color $animHoverTime;
+  }
+
+  &__button:hover ~ &__anchor-text {
+    color: $colorPrimary;
+  }
+
+  &__logo,
+  &__nav,
+  &__anchor {
+
+    @media (max-width: $portableScreenSize) {
+      margin-bottom: $elementsGapX;
+    }
+  }
+}

@@ -1,0 +1,103 @@
+.header {
+  position: relative;
+  display: flex;
+  background-color: $bgColor;
+  box-shadow: 0 $headerShadowHeight 0 $colorBlockShadow;
+
+  @media (max-width: $tabletScreenSize) {
+    height: $headerPortableHeight;
+    justify-content: center;
+  }
+
+  &__hamburger-input {
+    display: none;
+  }
+
+  &__hamburger-toggler {
+    position: absolute;
+    left: $sectionGapY;
+    bottom: ($navHeight - $hambMenuLabelHeight) / 2;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    width: $hambMenuLabelWidth;
+    height: $hambMenuLabelHeight;
+    cursor: pointer;
+
+    @media (min-width: $tabletScreenSize + 1px) {
+      display: none;
+    }
+  }
+
+  &__hamburger-icon,
+  &__hamburger-icon::before,
+  &__hamburger-icon::after {
+    position: relative;
+    display: block;
+    width: $hambMenuLineWidth;
+    height: $hambMenuLineHeight;
+    background-color: $colorPrimary;
+    transition: transform $animHoverTime,
+      top $animHoverTime,
+      opacity $animHoverTime;
+  }
+
+  &__hamburger-icon::before,
+  &__hamburger-icon::after {
+    content: "";
+  }
+
+  &__hamburger-icon::before {
+    bottom: $hambMenuLineHeight + $hambMenuLineGapY;
+    opacity: 1;
+  }
+
+  &__hamburger-icon::after {
+    top: $hambMenuLineGapY;
+  }
+
+  &__hamburger-input:checked ~ &__hamburger-toggler {
+    position: fixed;
+  }
+
+  &__hamburger-input:checked ~ &__hamburger-toggler &__hamburger-icon {
+    transform: rotate(45deg);
+  }
+
+  &__hamburger-input:checked ~ &__hamburger-toggler &__hamburger-icon::before {
+    top: 0;
+    opacity: 0;
+  }
+
+  &__hamburger-input:checked ~ &__hamburger-toggler &__hamburger-icon::after {
+    transform: rotate(-90deg);
+    top: -($hambMenuLineHeight);
+  }
+
+  &__logo {
+    margin-left: $sectionGapY;
+
+    @media (max-width: $tabletScreenSize) {
+      margin-left: 0;
+    }
+  }
+
+  &__right-side {
+    top: 0;
+    right: 0;
+    position: absolute;
+    display: flex;
+  }
+
+  &__button {
+
+    &:first-child {
+      position: relative;
+      left: 1px;
+    }
+
+    &:hover {
+      z-index: 1;
+    }
+  }
+}

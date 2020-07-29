@@ -1,0 +1,41 @@
+.promo-catalog {
+  display: grid;
+  max-width: ($cardWidth * 4) + ($catalogGapX * 3);
+  grid-template-columns: repeat(4, $cardWidth);
+  justify-content: space-between;
+  column-gap: $catalogGapX;
+
+  @media (max-width: $notebookScreenSize) {
+    grid-template-columns: repeat(3, $cardWidth);
+    justify-content: space-evenly;
+  }
+
+  @media (max-width: $tabletScreenSize) {
+    grid-template-columns: repeat(2, $cardWidth);
+    justify-content: center;
+  }
+
+  @media (max-width: $smallScreenSize) {
+    grid-template-columns: $cardWidth;
+  }
+
+  &__card {
+    @media (max-width: $notebookScreenSize) {
+      &:last-child {
+        display: none;
+      }
+    }
+  
+    @media (max-width: $tabletScreenSize) {
+      &:nth-last-child(2) {
+        display: none;
+      }
+    }
+
+    @media (max-width: $smallScreenSize) {
+      &:nth-last-child(3) {
+        display: none;
+      }
+    }
+  }
+}

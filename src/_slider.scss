@@ -1,0 +1,62 @@
+.slider {
+
+  &__main {
+    max-width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__button {
+    flex-shrink: 0;
+
+    &:first-child {
+      margin-right: $elementsGapX;
+    }
+
+    &:last-child {
+      margin-left: $elementsGapX;
+    }
+  }
+
+  &__picture {
+    flex-shrink: 1;
+    max-width: 100%;
+  }
+
+  &__img {
+    width: 100%;
+    height: $sliderHeight;
+    object-fit: cover;
+    transition: height $animHoverTime;
+
+    @media (max-width: $portableScreenSize) {
+      height: $sliderPortableHeight;
+    }
+  }
+
+  &__dots {
+    text-align: center;
+    cursor: pointer;
+  }
+
+  &__dot {
+    display: inline-block;
+    width: $sliderDotWidth;
+    height: $sliderDotHeight;
+    background-color: $colorElements;
+    margin-right: $sliderDotWidth;
+    transition: background-color $animHoverTime;
+
+    &:hover {
+      background-color: $colorPrimary;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &--is-active {
+      background-color: $colorPrimary;
+    }
+  }
+}

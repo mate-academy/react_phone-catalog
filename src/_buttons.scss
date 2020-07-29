@@ -1,0 +1,94 @@
+.button {
+  $blockName: &;
+  
+  width: $buttonDefaultWidth;
+  height: $buttonDefaultWidth;
+  background-color: $colorMainLight;
+  border: 1px solid $colorElements;
+  outline: 0;
+  cursor: pointer;
+  transition: border-color $animHoverTime;
+
+  &:hover {
+    border-color: $colorPrimary;
+  }
+
+  &__arrow-up,
+  &__arrow-left,
+  &__arrow-right,
+  &__heart,
+  &__shopping-bag {
+    fill: $colorPrimary;
+  }
+
+  &--header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: $navHeight;
+    height: $navHeight + $headerShadowHeight;
+    border-color: $colorBlockShadow;
+    text-align: center;
+  }
+
+  &--slider-btn {
+    height: $sliderHeight;
+    transition: height $animHoverTime,
+      border-color $animHoverTime;
+
+    @media (max-width: $portableScreenSize) {
+      height: $sliderPortableHeight;
+    }
+  }
+
+  &--anchor {
+    display: grid;
+    place-items: center;
+
+    #{$blockName}__arrow-up {
+      fill: $colorPrimary;
+    }
+  }
+
+  &--disabled {
+    border-color: $colorBlockShadow;
+    cursor: default;
+
+    &:hover {
+      border-color: $colorBlockShadow;
+    }
+
+    #{$blockName}__arrow-left,
+    #{$blockName}__arrow-right {
+      fill: $colorBlockShadow;
+    }
+    &:hover #{$blockName}__arrow-left,
+    &:hover #{$blockName}__arrow-right {
+      fill: $colorBlockShadow;
+    }
+  }
+
+  &--cart-add {
+    height: $buttonCardHeight;
+    color: $colorMainLight;
+    background-color: $colorPrimary;
+    border: 0;
+    transition: color $animHoverTime,
+      background-color $animHoverTime,
+      border $animHoverTime;
+
+    &:hover {
+      color: $colorMainGreen;
+      background-color: $colorMainLight;
+      border: 1px solid $colorBlockShadow;
+    }
+  }
+
+  &--card-liked {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: $buttonCardHeight;
+    height: $buttonCardHeight;
+  }
+}

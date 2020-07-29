@@ -1,0 +1,108 @@
+html {
+  scroll-behavior: smooth;
+
+  font-family: Mont, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+  color: $colorPrimary;
+}
+
+// .heading-1 {}
+
+.heading-2 {
+  font-family: Mont, sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+
+  @media (max-width: $portableScreenSize) {
+    font-size: 26px;
+    line-height: 32px;
+  }
+}
+
+.heading-3 {
+  font-family: Mont, sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 26px;
+}
+
+.heading-4 {
+  font-family: Mont, sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+.uppercase-text {
+  font-family: Mont, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.button,
+.text {
+  font-family: Mont, sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+.small-text {
+  font-family: Mont, sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+.content-container {
+  max-width: 1136px;
+  margin: 0 auto;
+  
+  @media (max-width: $notebookScreenSize) {
+    margin-left: 7%;
+    margin-right: 7%;
+  }
+}
+
+.content-section {
+  margin-top: $contentSectionMrgnTop;
+  transition: margin-top $animHoverTime;
+
+  @media (max-width: $portableScreenSize) {
+    margin-top: $contentSectionPortableMrgnTop;
+  }
+
+  &:first-child {
+    margin-top: $contentSectionMrgnTop / 2;
+
+    @media (max-width: $portableScreenSize) {
+      margin-top: $contentSectionPortableMrgnTop / 2;
+    }
+  }
+}
+
+.hot-prices,
+.new-models {
+
+  &__heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: $sectionGapY;
+  }
+
+  &__button {
+
+    &:first-child {
+      margin-right: $buttonDefaultWidth / 2;
+    }
+  }
+}

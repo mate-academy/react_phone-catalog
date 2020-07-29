@@ -1,0 +1,11 @@
+// .catalog {
+//   display: grid;
+//   max-width: ($cardWidth * 4) + ($catalogGapX * 3);
+//   grid-template-columns: repeat(4, $cardWidth);
+//   justify-content: space-between;
+//   column-gap: $catalogGapX;
+
+//   @media (max-width: $notebookScreenSize) {
+//     grid-template-columns: repeat(3, $cardWidth);
+//   }
+// }

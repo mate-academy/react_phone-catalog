@@ -1,0 +1,76 @@
+// -----Viewport breakpoints
+$notebookScreenSize: 1279px;
+$tabletScreenSize: 1023px;
+$portableScreenSize: 767px;
+$smallScreenSize: 640px;
+$mobileScreenSize: 320px;
+
+// -----Colors
+$colorPrimary: #313237;
+$colorSecondary: #89939a;
+$colorIcons: #b4bdc3;
+$colorElements: #b4bdc3;
+$colorHoverAndBg: #fafbfc;
+$colorMainLight: #fff;
+$colorMainGreen: #27ae60;
+$colorMainRed: #eb5757;
+$bgColor: $colorMainLight;
+$colorBlockShadow: #e2e6e9;
+$categoriesPhonesColor: #fcdbc1;
+$categoriesTabletsColor: #8d8d92;
+$categoriesAccesColor: #973d5f;
+
+// -----Animations
+$animMockupSizeTime: 1s;
+$animHoverTime: 0.3s;
+
+// -----Global
+$contentSectionMrgnTop: 80px;
+$contentSectionPortableMrgnTop: 50px;
+$sectionGapY: 24px;
+$elementsGapX: 16px;
+
+// -----Navigation
+$navHeight: 64px;
+$navItemMrgnLeft: $navHeight;
+
+// -----Header
+$headerShadowHeight: 1px;
+$headerPortableHeight: $navHeight;
+
+// -----Hambugrer menu
+$hambMenuLineWidth: 20px;
+$hambMenuLineHeight: 2px;
+$hambMenuLineGapY: 5px;
+$hambMenuLabelWidth: $hambMenuLineWidth;
+$hambMenuLabelHeight: $hambMenuLineHeight * 3 + $hambMenuLineGapY * 2;
+
+// -----Buttons
+$buttonDefaultWidth: 32px;
+$buttonCardHeight: 40px;
+
+// -----Slider
+$sliderHeight: 400px;
+$sliderPortableHeight: 250px;
+$sliderGapX: 16px;
+$sliderDotWidth: 14px;
+$sliderDotHeight: 4px;
+
+// -----Catalog
+$catalogGapX: $elementsGapX;
+
+// -----Card
+$cardBorderWidth: 1px;
+$cardPadding: $sectionGapY;
+$cardGapY: $elementsGapX / 2;
+$cardGapX: $cardGapY;
+$cardPicWidth: 208px;
+$cardPicMrgn: $cardGapY;
+$cardWidth: ($cardPadding * 2) + ($cardPicMrgn * 2) + $cardPicWidth;
+
+// -----Categories
+$categoriesPictureHeight: 368px;
+$categoriesPortablePictureHeight: $sliderPortableHeight;
+
+// -----Footer
+$footerInnerHeight: 96px;
