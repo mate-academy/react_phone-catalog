@@ -1,6 +1,7 @@
 @import "reset";
 @import "vars";
 @import "button-arrow";
+@import "title";
 
 @import "header/header";
 @import "header/navigation";
@@ -8,6 +9,7 @@
 @import "header/option";
 
 @import "main/promo";
+@import "main/hot-prices";
 
 * {
   box-sizing: border-box;

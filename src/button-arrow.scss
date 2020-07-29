@@ -13,4 +13,8 @@
     width: $buttonArrowWidth;
     height: $buttonArrowHeight;
   }
+
+  &--not-active {
+    opacity: 0.4;
+  }
 }

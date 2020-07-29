@@ -1,10 +1,10 @@
 .promo {
   display: flex;
   flex-direction: column;
+  padding: 40px $contentHorPadding1440px 0;
 
   &__slider {
     display: flex;
-    padding: 40px 152px 0;
   }
 
   &__img {
