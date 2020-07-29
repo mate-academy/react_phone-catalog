@@ -83,6 +83,18 @@
       color: $gray-one;
       border: 1px solid $icons-color;
       background: #fff;
+
+      transition: all 0 $transition-time linear;
+    }
+
+    &:hover {
+      box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+    }
+
+    &:active {
+      background-color: #fff;
+      border: 1px solid $elements-color;
+      color: $green;
     }
   }
 }
