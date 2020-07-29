@@ -4,8 +4,29 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Phone catalog</title>
+    <link rel="stylesheet" href="../src/App.scss">
   </head>
   <body>
-    <div id="root"></div>
+    <header class="header">
+      <a href="#" class="header__logo logo"></a>
+      <nav class="header__nav nav">
+        <ul class="nav__list">
+          <li class="nav__item">
+            <a href="#" class="nav__link nav__link--active">Home</a>
+          </li>
+          <li class="nav__item">
+            <a href="#" class="nav__link">Phones</a>
+          </li>
+          <li class="nav__item">
+            <a href="#" class="nav__link">Tablets</a>
+          </li>
+          <li class="nav__item">
+            <a href="#" class="nav__link">Accessories</a>
+          </li>
+        </ul>
+      </nav>
+      <a href="#" class="header__choosen-items"></a>
+      <a href="#" class="header__basket"></a>
+    </header>
   </body>
 </html>
