@@ -1,10 +1,13 @@
 @import "reset";
 @import "vars";
+@import "button-arrow";
 
 @import "header/header";
 @import "header/navigation";
 @import "header/logo";
 @import "header/option";
+
+@import "main/promo";
 
 * {
   box-sizing: border-box;
