@@ -50,23 +50,22 @@
 
     @media (max-width: $portableScreenSize) {
       order: 1;
-      margin-top: $sectionGapY;
+      margin-top: $largeGap;
     }
   }
 
-  &__button {
-    order: 2;
-  }
-
   &__anchor-text {
-    order: 1;
     color: $colorSecondary;
-    margin-right: $elementsGapX;
+    margin-right: $mediumGap;
     transition: color $animHoverTime;
   }
 
-  &__button:hover ~ &__anchor-text {
+  &__anchor:hover &__anchor-text {
     color: $colorPrimary;
+  }
+
+  &__anchor:hover &__button {
+    border-color: $colorPrimary;
   }
 
   &__logo,
@@ -74,7 +73,7 @@
   &__anchor {
 
     @media (max-width: $portableScreenSize) {
-      margin-bottom: $elementsGapX;
+      margin-bottom: $mediumGap;
     }
   }
 }

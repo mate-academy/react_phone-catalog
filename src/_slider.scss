@@ -1,4 +1,6 @@
 .slider {
+  position: relative;
+  overflow: hidden;
 
   &__main {
     max-width: 100%;
@@ -10,24 +12,34 @@
     flex-shrink: 0;
 
     &:first-child {
-      margin-right: $elementsGapX;
+      margin-right: $mediumGap;
+      top: 0;
+      left: 0;
     }
 
     &:last-child {
-      margin-left: $elementsGapX;
+      margin-left: $mediumGap;
+      top: 0;
+      right: 0;
+    }
+
+    @media (max-width: $portableScreenSize) {
+      position: absolute;
     }
   }
 
   &__picture {
     flex-shrink: 1;
     max-width: 100%;
+    transition: max-width $animMockupSizeTime;
   }
 
   &__img {
     width: 100%;
     height: $sliderHeight;
     object-fit: cover;
-    transition: height $animHoverTime;
+    transition: height $animHoverTime,
+      width $animMockupSizeTime;
 
     @media (max-width: $portableScreenSize) {
       height: $sliderPortableHeight;
@@ -36,15 +48,16 @@
 
   &__dots {
     text-align: center;
-    cursor: pointer;
   }
 
   &__dot {
+    position: relative;
     display: inline-block;
     width: $sliderDotWidth;
     height: $sliderDotHeight;
     background-color: $colorElements;
     margin-right: $sliderDotWidth;
+    cursor: pointer;
     transition: background-color $animHoverTime;
 
     &:hover {

@@ -1,7 +1,7 @@
 .categories {
 
   &__heading {
-    margin-bottom: $sectionGapY;
+    margin-bottom: $largeGap;
   }
 
   &__list {
@@ -16,12 +16,16 @@
   &__category {
     position: relative;
     width: 100%;
-    margin-right: $elementsGapX;
+    margin-right: $mediumGap;
     flex-shrink: 1;
     cursor: pointer;
 
+    &:last-child {
+      margin-right: 0;
+    }
+
     @media (max-width: $portableScreenSize) {
-      margin-bottom: $sectionGapY;
+      margin-bottom: $largeGap;
 
       &:last-child {
         margin-bottom: 0;
@@ -33,14 +37,14 @@
     position: relative;
     height: $categoriesPictureHeight;
     max-width: 100%;
-    margin-bottom: $sectionGapY;
+    margin-bottom: $largeGap;
     overflow: hidden;
     transition: height $animHoverTime,
       margin-bottom $animHoverTime;
 
     @media (max-width: $tabletScreenSize) {
       height: $categoriesPortablePictureHeight;
-      margin-bottom: $elementsGapX;
+      margin-bottom: $mediumGap;
     }
 
     &--phones {
@@ -73,8 +77,8 @@
     @media (max-width: $portableScreenSize) {
       position: absolute;
       z-index: 1;
-      top: $elementsGapX;
-      left: $elementsGapX;
+      top: $mediumGap;
+      left: $mediumGap;
     }
   }
 

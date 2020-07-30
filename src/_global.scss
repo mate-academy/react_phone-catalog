@@ -9,8 +9,7 @@ html {
   color: $colorPrimary;
 }
 
-// .heading-1 {}
-
+.heading-1,
 .heading-2 {
   font-family: Mont, sans-serif;
   font-weight: 700;
@@ -63,7 +62,7 @@ html {
 }
 
 .content-container {
-  max-width: 1136px;
+  max-width: $containerMaxWidth;
   margin: 0 auto;
   
   @media (max-width: $notebookScreenSize) {
@@ -96,7 +95,11 @@ html {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: $sectionGapY;
+    margin-bottom: $largeGap;
+  }
+
+  &__buttons {
+    display: flex;
   }
 
   &__button {
@@ -104,5 +107,28 @@ html {
     &:first-child {
       margin-right: $buttonDefaultWidth / 2;
     }
+  }
+}
+
+.page {
+  border-top: 1px solid red;
+  border-bottom: 1px solid red;
+  margin-bottom: 100px;
+
+  &:first-child {
+    border-top: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+    border-bottom: 0;
+  }
+}
+
+.page-header {
+  
+  &__items-quantity {
+    margin-top: $smallGap;
+    color: $colorSecondary;
   }
 }

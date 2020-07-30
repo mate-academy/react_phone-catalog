@@ -1,6 +1,6 @@
 .promo-catalog {
   display: grid;
-  max-width: ($cardWidth * 4) + ($catalogGapX * 3);
+  max-width: $containerMaxWidth;
   grid-template-columns: repeat(4, $cardWidth);
   justify-content: space-between;
   column-gap: $catalogGapX;

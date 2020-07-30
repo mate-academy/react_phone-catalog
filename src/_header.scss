@@ -15,7 +15,7 @@
 
   &__hamburger-toggler {
     position: absolute;
-    left: $sectionGapY;
+    left: $largeGap;
     bottom: ($navHeight - $hambMenuLabelHeight) / 2;
     z-index: 2;
     display: flex;
@@ -75,7 +75,7 @@
   }
 
   &__logo {
-    margin-left: $sectionGapY;
+    margin-left: $largeGap;
 
     @media (max-width: $tabletScreenSize) {
       margin-left: 0;
@@ -89,15 +89,58 @@
     display: flex;
   }
 
-  &__button {
+  &__search-label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: $navHeight;
+    height: $navHeight + $headerShadowHeight;
 
-    &:first-child {
-      position: relative;
-      left: 1px;
+    @media (max-width: $portableScreenSize) {
+      border: 1px solid $colorBlockShadow;
+      cursor: pointer;
+      transition: border-color $animHoverTime;
+
+      &:hover {
+        border-color: $colorPrimary;
+      }
+    }
+  }
+
+  &__search-input {
+    position: absolute;
+    right: $navHeight * 2;
+    width: $headerSearchLargeWidth;
+    height: $navHeight + $headerShadowHeight;
+    padding-left: $mediumGap;
+    border: 1px solid $colorBlockShadow;
+    outline: 0;
+    transition: border-color $animHoverTime,
+      width $animHoverTime;
+
+    @media (max-width: $notebookScreenSize) {
+      width: $headerSearchNotebookWidth;
     }
 
-    &:hover {
-      z-index: 1;
+    @media (max-width: $tabletScreenSize) {
+      width: $headerSearchTabletWidth;
     }
+
+    @media (max-width: $portableScreenSize) {
+      display: none;
+    }
+
+    &:hover,
+    &:focus {
+      border-color: $colorPrimary;
+    }
+
+    &::placeholder {
+      color: $colorElements;
+    }
+  }
+
+  &__search-icon {
+    z-index: 1;
   }
 }
