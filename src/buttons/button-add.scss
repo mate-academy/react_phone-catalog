@@ -1,0 +1,13 @@
+.button-add {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background: $activeColor;
+  font-family: "Mont", sans-serif;
+  color: #fff;
+  font-weight: 600;
+  font-size: 14px;
+  text-align: center;
+  cursor: pointer;
+}

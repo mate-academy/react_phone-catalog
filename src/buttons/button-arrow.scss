@@ -1,0 +1,29 @@
+.button-arrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid $buttonBorderColor;
+  cursor: pointer;
+
+  &__back {
+    transform: rotate(-180deg);
+    width: $buttonArrowWidth;
+    height: $buttonArrowHeight;
+  }
+
+  &__next {
+    width: $buttonArrowWidth;
+    height: $buttonArrowHeight;
+  }
+
+  &__top {
+    transform: rotate(-90deg);
+    width: $buttonArrowWidth;
+    height: $buttonArrowHeight;
+  }
+
+  &--not-active {
+    opacity: 0.4;
+  }
+
+}

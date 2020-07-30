@@ -1,0 +1,40 @@
+@import "reset";
+@import "vars";
+@import "buttons/button-arrow";
+@import "buttons/button-add";
+@import "buttons/button-like";
+@import "title";
+@import "phone-card";
+@import "catalog";
+@import "choice";
+
+@import "header/header";
+@import "header/navigation";
+@import "header/logo";
+@import "header/option";
+
+@import "main/promo";
+@import "main/hot-prices";
+@import "main/category";
+@import "main/new-model";
+
+@import "footer/footer";
+
+@import "second-page-catalog";
+@import "main2/mobile";
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "Mont", sans-serif;
+  font-weight: normal;
+  scroll-behavior: smooth;
+}
+
+.container {
+  position: relative;
+  margin: 0 auto;
+  width: 1440px;
+}

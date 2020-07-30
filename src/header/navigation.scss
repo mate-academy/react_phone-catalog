@@ -1,0 +1,37 @@
+.navigation {
+  &__list {
+    display: flex;
+  }
+
+  &__item {
+    margin-right: 64px - $navigationHorPadding * 2;
+  }
+
+  &__link {
+    position: relative;
+    display: inline-block;
+    padding: 5px $navigationHorPadding;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: $headerHeight;
+
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+
+    color: #89939a;
+
+    &--active {
+      color: $activeColor;
+
+      &::after {
+        position: absolute;
+        left: $navigationHorPadding;
+        bottom: 4px;
+        content: "";
+        width: calc(100% - #{$navigationHorPadding} * 2);
+        height: 3px;
+        background-color: $activeColor;
+      }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+.new-model {
+  padding: 80px $contentHorPadding1440px;
+
+  &__control {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__wrapper {
+    display: flex;
+  }
+
+  &__button-arrow {
+    &--back {
+      margin-right: 16px;
+      width: 32px;
+      height: 32px;
+    }
+
+    &--next {
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  &__catalog {
+    margin-top: 24px;
+  }
+}
