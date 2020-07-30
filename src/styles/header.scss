@@ -1,0 +1,42 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #e2e6e9;
+  &__left,
+  &__right {
+    display: flex;
+  }
+  &__wishlist,
+  &__shop {
+    box-shadow: -1px 0 0 #e2e6e9;
+    position: relative;
+    right: 0;
+    &:hover {
+      outline: 1px solid #313237;
+    }
+  }
+  &__link {
+    padding: 0 25px;
+    line-height: 64px;
+  }
+  &__search {
+    box-shadow: -1px 0 0 #e2e6e9;
+    display: flex;
+    align-items: center;
+  }
+  &__input {
+    height: 60px;
+    width: 320px;
+    border: 0;
+    padding-left: 24px;
+    &::placeholder {
+      font-family: $normal;
+      font-size: 14px;
+      color: #b4bdc4;
+    }
+  }
+  &__icon {
+    padding-right: 27px;
+  }
+}

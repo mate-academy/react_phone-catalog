@@ -1,0 +1,39 @@
+.hot {
+  margin: 0 auto 80px;
+  width: calc(4 * #{$cardWidth} + 3 * #{$gap});
+  &__top {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80px;
+  }
+  &__left,
+  &__right {
+    background-color: #fff;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 32px;
+    height: 32px;
+    text-align: center;
+    cursor: pointer;
+  }
+  &__left {
+    border: 1px solid #e2e6e9;
+    background-image: url(../Icons/ArrowLeft.svg);
+  }
+
+  &__right {
+    border: 1px solid #b4bdc4;
+    background-image: url(../Icons/ArrowRight.svg);
+  }
+  &__products {
+    margin-top: 24px;
+    display: grid;
+    grid-template-columns: repeat(4, $cardWidth);
+    grid-column-gap: $gap;
+  }
+}

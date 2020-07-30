@@ -1,0 +1,40 @@
+.slider {
+  margin: 40px 0 72px;
+  &__banner {
+    display: flex;
+    justify-content: center;
+  }
+  &__img {
+    margin: 0 16px;
+  }
+  &__left,
+  &__right {
+    border: 1px solid #b4bdc4;
+    background-color: #fff;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 32px;
+  }
+  &__left {
+    background-image: url(../Icons/ArrowLeft.svg);
+  }
+  &__right {
+    background-image: url(../Icons/ArrowRight.svg);
+  }
+  &__pages {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 32px;
+  }
+  &__page {
+    height: 4px;
+    width: 14px;
+    margin: 0 7px;
+    background: #e2e6e9;
+    cursor: pointer;
+    &--is-active {
+      background: #313237;
+    }
+  }
+}

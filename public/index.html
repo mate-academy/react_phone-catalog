@@ -4,8 +4,521 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Phone catalog</title>
+    <link rel="stylesheet" href="../src/App.scss">
   </head>
   <body>
+    <div class="homepage">
+      <header class="header">
+        <div class="header__left">
+          <a class="header__link" href="#home">
+            <img
+              class="header__logo logo"
+              src="./img/LOGO.png"
+              alt="company logo"
+            >
+          </a>
+          <nav class="header__nav nav">
+            <ul class="nav__list">
+              <li class="nav__item"><a class="nav__link nav__link--is-active" href="#home">Home</a></li>
+              <li class="nav__item"><a class="nav__link" href="#phones">Phones</a></li>
+              <li class="nav__item"><a class="nav__link" href="#tablets">Tablets</a></li>
+              <li class="nav__item"><a class="nav__link" href="#accessories">Accessories</a></li>
+            </ul>
+          </nav>
+        </div>
+        <div class="header__right">
+          <div class="header__wishlist">
+            <a class="header__link" href="#">
+              <img src="./img/Vector (Stroke).svg" alt="heart icon">
+            </a>
+          </div>
+          <div class="header__shop">
+            <a class="header__link" href="#shop">
+              <img src="./img/Shopping bag (Cart).svg" alt="shopping bag">
+            </a>
+          </div>
+        </div>
+      </header>
+      <main>
+        <div class="slider">
+          <div class="slider__banner">
+            <button class="slider__left"></button>
+            <img
+              class="slider__img"
+              src="./img/Banner.png"
+              alt="phones photo"
+            >
+            <button class="slider__right"></button>
+          </div>
+          <div class="slider__pages">
+            <div class="slider__page slider__page--is-active"></div>
+            <div class="slider__page"></div>
+            <div class="slider__page"></div>
+          </div>
+        </div>
+
+        <section class="hot">
+          <div class="hot__top">
+            <h1 class="hot__title">Hot prices</h1>
+            <div class="hot__buttons">
+              <button class="hot__left"></button>
+              <button class="hot__right"></button>
+            </div>
+          </div>
+          <div class="hot__products">
+            <div class="hot__product product">
+              <img
+                class="product__img"
+                src="./img/hot 1.png"
+                alt="iPhone Xs Silver"
+              >
+              <p class="product__name">Apple iPhone Xs 64GB Silver (iMT9G2FS/A)</p>
+              <p class="product__price">$799 <span>$899</span></p>
+              <div class="product__parameter">
+                <div class="product__parameter-name">Screen</div>
+                <div class="pruduct__parameter-value">5.8" OLED</div>
+              </div>
+              <div class="product__parameter">
+                <div class="product__parameter-name">Capacity</div>
+                <div class="pruduct__parameter-value">64 GB</div>
+              </div>
+              <div class="product__parameter">
+                <div class="product__parameter-name">RAM</div>
+                <div class="pruduct__parameter-value">4 GB</div>
+              </div>
+              <div class="product__buttons">
+                <button class="product__buy">Add to cart</button>
+                <button class="product__like"></button>
+              </div>
+            </div>
+
+            <div class="hot__product product">
+              <img
+                class="product__img"
+                src="./img/hot 2.png"
+                alt="iPhone 11 Pro Max"
+              >
+              <p class="product__name">Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)</p>
+              <p class="product__price">$1099 <span>$1199</span></p>
+              <div class="product__parameter">
+                <div class="product__parameter-name">Screen</div>
+                <div class="pruduct__parameter-value">6.5" OLED</div>
+              </div>
+              <div class="product__parameter">
+                <div class="product__parameter-name">Capacity</div>
+                <div class="pruduct__parameter-value">64 GB</div>
+              </div>
+              <div class="product__parameter">
+                <div class="product__parameter-name">RAM</div>
+                <div class="pruduct__parameter-value">4 GB</div>
+              </div>
+              <div class="product__buttons">
+                <button class="product__buy">Add to cart</button>
+                <button class="product__like"></button>
+              </div>
+            </div>
+
+            <div class="hot__product product">
+              <img
+                class="product__img"
+                src="./img/hot 3.png"
+                alt="iPhone 11 Purple"
+              >
+              <p class="product__name">Apple iPhone 11 128GB Purple (iMT9G2FS/A)</p>
+              <p class="product__price">$799 <span>$899</span></p>
+              <div class="product__parameter">
+                <div class="product__parameter-name">Screen</div>
+                <div class="pruduct__parameter-value">6.2" IPS</div>
+              </div>
+              <div class="product__parameter">
+                <div class="product__parameter-name">Capacity</div>
+                <div class="pruduct__parameter-value">128 GB</div>
+              </div>
+              <div class="product__parameter">
+                <div class="product__parameter-name">RAM</div>
+                <div class="pruduct__parameter-value">4 GB</div>
+              </div>
+              <div class="product__buttons">
+                <button class="product__buy">Add to cart</button>
+                <button class="product__like"></button>
+              </div>
+            </div>
+
+            <div class="hot__product product">
+              <img
+                class="product__img"
+                src="./img/hot 1.png"
+                alt="iPhone X Silver"
+              >
+              <p class="product__name">Apple iPhone X 256GB Silver (iMT9G2FS/A)</p>
+              <p class="product__price">$859 <span>$899</span></p>
+              <div class="product__parameter">
+                <div class="product__parameter-name">Screen</div>
+                <div class="pruduct__parameter-value">5.8" OLED</div>
+              </div>
+              <div class="product__parameter">
+                <div class="product__parameter-name">Capacity</div>
+                <div class="pruduct__parameter-value">256 GB</div>
+              </div>
+              <div class="product__parameter">
+                <div class="product__parameter-name">RAM</div>
+                <div class="pruduct__parameter-value">3 GB</div>
+              </div>
+              <div class="product__buttons">
+                <button class="product__buy">Add to cart</button>
+                <button class="product__like"></button>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <section class="shopBy">
+          <h1 class="shopBy__title">Shop by category</h1>
+          <div class="shopBy__categories">
+
+            <div class="shopBy__type">
+              <div class="shopBy__background shopBy__background--phones">
+                <img
+                class="shopBy__img"
+                src="./img/phones.png"
+                alt="mobile phones photo"
+              >
+              </div>
+              <h3>Mobile phones</h3>
+              <p class="shopBy__quantity">95 models</p>
+            </div>
+
+            <div class="shopBy__type">
+              <div class="shopBy__background shopBy__background--tablets">
+                <img
+                class="shopBy__img"
+                src="./img/tablets.png"
+                alt="tablets photo"
+              >
+              </div>
+              <h3>Tablets</h3>
+              <p class="shopBy__quantity">24 models</p>
+            </div>
+
+            <div class="shopBy__type">
+              <div class="shopBy__background shopBy__background--accessories">
+                <img
+                class="shopBy__img"
+                src="./img/accessorize.png"
+                alt="Accessories photo"
+              >
+              </div>
+              <h3>Accessories</h3>
+              <p class="shopBy__quantity">100 models</p>
+            </div>
+
+          </div>
+        </section>
+
+        <section class="brandNew">
+          <div class="brandNew__top">
+            <h1 class="brandNew__title">Brand new models</h1>
+            <div class="brandNew__buttons">
+              <button class="brandNew__left"></button>
+              <button class="brandNew__right"></button>
+            </div>
+          </div>
+          <div class="brandNew__products">
+            <div class="brandNew__product product">
+              <img
+                class="product__img"
+                src="./img/brandNew 1.png"
+                alt="iPhone 11 Pro Max"
+              >
+              <p class="product__name">Apple iPhone 11 Pro Max 512GB Midnight Green (iMT9G2FS/A)</p>
+              <p class="product__price">$1299</p>
+              <div class="product__parameter">
+                <div class="product__parameter-name">Screen</div>
+                <div class="pruduct__parameter-value">6.5" OLED</div>
+              </div>
+              <div class="product__parameter">
+                <div class="product__parameter-name">Capacity</div>
+                <div class="pruduct__parameter-value">512 GB</div>
+              </div>
+              <div class="product__parameter">
+                <div class="product__parameter-name">RAM</div>
+                <div class="pruduct__parameter-value">4 GB</div>
+              </div>
+              <div class="product__buttons">
+                <button class="product__buy">Add to cart</button>
+                <button class="product__like"></button>
+              </div>
+            </div>
+
+            <div class="brandNew__product product">
+              <img
+                class="product__img"
+                src="./img/hot 2.png"
+                alt="iPhone 11 Pro Max"
+              >
+              <p class="product__name">Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)</p>
+              <p class="product__price">$1099</p>
+              <div class="product__parameter">
+                <div class="product__parameter-name">Screen</div>
+                <div class="pruduct__parameter-value">6.5" OLED</div>
+              </div>
+              <div class="product__parameter">
+                <div class="product__parameter-name">Capacity</div>
+                <div class="pruduct__parameter-value">64 GB</div>
+              </div>
+              <div class="product__parameter">
+                <div class="product__parameter-name">RAM</div>
+                <div class="pruduct__parameter-value">4 GB</div>
+              </div>
+              <div class="product__buttons">
+                <button class="product__buy">Add to cart</button>
+                <button class="product__like"></button>
+              </div>
+            </div>
+
+            <div class="brandNew__product product">
+              <img
+                class="product__img"
+                src="./img/hot 3.png"
+                alt="iPhone 11 Purple"
+              >
+              <p class="product__name">Apple iPhone 11 256GB Purple (iMT9G2FS/A)</p>
+              <p class="product__price">$999</p>
+              <div class="product__parameter">
+                <div class="product__parameter-name">Screen</div>
+                <div class="pruduct__parameter-value">6.2" IPS</div>
+              </div>
+              <div class="product__parameter">
+                <div class="product__parameter-name">Capacity</div>
+                <div class="pruduct__parameter-value">256 GB</div>
+              </div>
+              <div class="product__parameter">
+                <div class="product__parameter-name">RAM</div>
+                <div class="pruduct__parameter-value">4 GB</div>
+              </div>
+              <div class="product__buttons">
+                <button class="product__buy">Add to cart</button>
+                <button class="product__like"></button>
+              </div>
+            </div>
+
+            <div class="brandNew__product product">
+              <img
+                class="product__img"
+                src="./img/brandNew 4.png"
+                alt="iPhone 11 Red"
+              >
+              <p class="product__name">Apple iPhone 11 128GB (Product) Red (iMT9G2FS/A)</p>
+              <p class="product__price">$999</p>
+              <div class="product__parameter">
+                <div class="product__parameter-name">Screen</div>
+                <div class="pruduct__parameter-value">6.2" IPS</div>
+              </div>
+              <div class="product__parameter">
+                <div class="product__parameter-name">Capacity</div>
+                <div class="pruduct__parameter-value">128 GB</div>
+              </div>
+              <div class="product__parameter">
+                <div class="product__parameter-name">RAM</div>
+                <div class="pruduct__parameter-value">4 GB</div>
+              </div>
+              <div class="product__buttons">
+                <button class="product__buy">Add to cart</button>
+                <button class="product__like"></button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+      <footer class="footer">
+        <div class="footer__content">
+          <a class="footer__link" href="#home">
+            <img
+              class="footer__logo logo"
+              src="./img/LOGO.png"
+              alt="company logo"
+            >
+          </a>
+          <div class="footer__links">
+            <a class="footer__link" href="#github">Github</a>
+            <a class="footer__link" href="#contacts">Contacts</a>
+            <a class="footer__link" href="#rights">Rights</a>
+          </div>
+          <div class="footer__toTop">
+            <p class="footer__subtitle">Back to top</p>
+            <button class="footer__button"></button>
+          </div>
+        </div>
+      </footer>
+
+    </div>
+
+
+
+
+    <div class="catalog">
+      <header class="header">
+        <div class="header__left">
+          <a class="header__link" href="#home">
+            <img
+              class="header__logo logo"
+              src="./img/LOGO.png"
+              alt="company logo"
+            >
+          </a>
+          <nav class="header__nav nav">
+            <ul class="nav__list">
+              <li class="nav__item"><a class="nav__link" href="#home">Home</a></li>
+              <li class="nav__item"><a class="nav__link nav__link--is-active" href="#phones">Phones</a></li>
+              <li class="nav__item"><a class="nav__link" href="#tablets">Tablets</a></li>
+              <li class="nav__item"><a class="nav__link" href="#accessories">Accessories</a></li>
+            </ul>
+          </nav>
+        </div>
+        <div class="header__right">
+          <div class="header__search">
+            <input
+              class="header__input"
+              type="search"
+              placeholder="Search in phones..."
+            >
+            <img class="header__icon" src="./img/Search.svg" alt="search icon">
+          </div>
+          <div class="header__wishlist">
+            <a class="header__link" href="#">
+              <img src="./img/Vector (Stroke).svg" alt="heart icon">
+            </a>
+          </div>
+          <div class="header__shop">
+            <a class="header__link" href="#shop">
+              <img src="./img/Shopping bag (Cart).svg" alt="shopping bag">
+            </a>
+          </div>
+        </div>
+      </header>
+
+      <section class="phones">
+        <div class="phones__top">
+          <h1 class="phones__title">Mobile phones</h1>
+
+        </div>
+        <div class="phones__products">
+          <div class="phones__product product">
+            <img
+              class="product__img"
+              src="./img/hot 1.png"
+              alt="iPhone Xs Silver"
+            >
+            <p class="product__name">Apple iPhone Xs 64GB Silver (iMT9G2FS/A)</p>
+            <p class="product__price">$799 <span>$899</span></p>
+            <div class="product__parameter">
+              <div class="product__parameter-name">Screen</div>
+              <div class="pruduct__parameter-value">5.8" OLED</div>
+            </div>
+            <div class="product__parameter">
+              <div class="product__parameter-name">Capacity</div>
+              <div class="pruduct__parameter-value">64 GB</div>
+            </div>
+            <div class="product__parameter">
+              <div class="product__parameter-name">RAM</div>
+              <div class="pruduct__parameter-value">4 GB</div>
+            </div>
+            <div class="product__buttons">
+              <button class="product__buy">Add to cart</button>
+              <button class="product__like"></button>
+            </div>
+          </div>
+
+          <div class="phones__product product">
+            <img
+              class="product__img"
+              src="./img/hot 2.png"
+              alt="iPhone 11 Pro Max"
+            >
+            <p class="product__name">Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)</p>
+            <p class="product__price">$1099 <span>$1199</span></p>
+            <div class="product__parameter">
+              <div class="product__parameter-name">Screen</div>
+              <div class="pruduct__parameter-value">6.5" OLED</div>
+            </div>
+            <div class="product__parameter">
+              <div class="product__parameter-name">Capacity</div>
+              <div class="pruduct__parameter-value">64 GB</div>
+            </div>
+            <div class="product__parameter">
+              <div class="product__parameter-name">RAM</div>
+              <div class="pruduct__parameter-value">4 GB</div>
+            </div>
+            <div class="product__buttons">
+              <button class="product__buy">Add to cart</button>
+              <button class="product__like"></button>
+            </div>
+          </div>
+
+          <div class="phones__product product">
+            <img
+              class="product__img"
+              src="./img/hot 3.png"
+              alt="iPhone 11 Purple"
+            >
+            <p class="product__name">Apple iPhone 11 128GB Purple (iMT9G2FS/A)</p>
+            <p class="product__price">$799 <span>$899</span></p>
+            <div class="product__parameter">
+              <div class="product__parameter-name">Screen</div>
+              <div class="pruduct__parameter-value">6.2" IPS</div>
+            </div>
+            <div class="product__parameter">
+              <div class="product__parameter-name">Capacity</div>
+              <div class="pruduct__parameter-value">128 GB</div>
+            </div>
+            <div class="product__parameter">
+              <div class="product__parameter-name">RAM</div>
+              <div class="pruduct__parameter-value">4 GB</div>
+            </div>
+            <div class="product__buttons">
+              <button class="product__buy">Add to cart</button>
+              <button class="product__like"></button>
+            </div>
+          </div>
+
+          <div class="phones__product product">
+            <img
+              class="product__img"
+              src="./img/hot 1.png"
+              alt="iPhone X Silver"
+            >
+            <p class="product__name">Apple iPhone X 256GB Silver (iMT9G2FS/A)</p>
+            <p class="product__price">$859 <span>$899</span></p>
+            <div class="product__parameter">
+              <div class="product__parameter-name">Screen</div>
+              <div class="pruduct__parameter-value">5.8" OLED</div>
+            </div>
+            <div class="product__parameter">
+              <div class="product__parameter-name">Capacity</div>
+              <div class="pruduct__parameter-value">256 GB</div>
+            </div>
+            <div class="product__parameter">
+              <div class="product__parameter-name">RAM</div>
+              <div class="pruduct__parameter-value">3 GB</div>
+            </div>
+            <div class="product__buttons">
+              <button class="product__buy">Add to cart</button>
+              <button class="product__like"></button>
+            </div>
+          </div>
+
+        </div>
+        <div class="phones__buttons">
+          <button class="phones__left"></button>
+          <button class="phones__right"></button>
+        </div>
+      </section>
+
+    </div>
+
+
+
     <div id="root"></div>
   </body>
 </html>
