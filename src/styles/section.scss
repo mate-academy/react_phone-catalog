@@ -1,0 +1,14 @@
+.section {
+  margin-bottom: 80px;
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__heading {
+    @include largeHeadingFont;
+    margin-bottom: 24px;
+  }
+}

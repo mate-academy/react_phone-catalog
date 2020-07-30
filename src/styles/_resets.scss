@@ -1,0 +1,39 @@
+html,
+body {
+  margin: 0;
+  scroll-behavior: smooth;
+}
+
+div,
+p,
+span,
+h1,
+h2,
+h3,
+ul,
+li,
+a,
+section,
+article,
+input,
+button {
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  border: none;
+}
+
+ul {
+  list-style: none;
+}

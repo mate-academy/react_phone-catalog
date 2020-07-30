@@ -1,0 +1,8 @@
+.hot {
+
+  &__catalog {
+    display: grid;
+    grid-template-columns: repeat(4, $cardWidth);
+    grid-column-gap: $cardGap;
+  }
+}

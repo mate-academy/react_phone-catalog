@@ -1,0 +1,34 @@
+.header {
+  display: flex;
+  align-items: center;
+  box-shadow: 0 1px 0 $elementsColor;
+
+  &__logo {
+    margin-left: 24px;
+  }
+
+  &__nav {
+    margin-left: 64px;
+  }
+
+  &__buttons {
+    margin-left: auto;
+    display: flex;
+
+    &--item {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 64px;
+      height: 64px;
+      box-shadow: -1px 0 0 $elementsColor;
+      margin-right: 1px;
+      //border-left: 1px solid $elementsColor;
+
+      &:hover {
+        border: 1px solid $primaryColor;
+        background-color: $hoverBackgroundColor;
+      }
+    }
+  }
+}

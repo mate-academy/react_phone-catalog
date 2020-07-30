@@ -1,0 +1,11 @@
+.container {
+  max-width: 1136px;
+  margin: 0 auto;
+
+  &--footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 96px;
+  }
+}
