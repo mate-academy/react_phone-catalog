@@ -1,0 +1,15 @@
+.banner {
+  display: flex;
+  &__button {
+    height: 400px;
+    width: 32px;
+    border: 1px solid #b4bdc4;
+    background-color: #fff;
+    margin: 0 16px;
+  }
+  
+  &__img {
+    height: 400px;
+    margin: 0 auto;
+  }
+}

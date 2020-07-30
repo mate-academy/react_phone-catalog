@@ -1,0 +1,15 @@
+@import "./style/header";
+@import "./style/banner";
+@import "./style/shop";
+@import "./style/hotprice";
+@import "./style/fonts";
+@import "./style/footer";
+
+body {
+  font-family: Mont, sans-serif, Arial, Helvetica;
+}
+
+.container {
+  width: 1200px;
+  margin: 80px auto 0;
+}
