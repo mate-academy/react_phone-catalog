@@ -1,0 +1,8 @@
+%afterLine {
+  position: absolute;
+  bottom: 0;
+  content: "";
+  height: 3px;
+  width: 100%;
+  background-color: $primary;
+}

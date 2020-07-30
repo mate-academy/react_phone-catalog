@@ -1,0 +1,59 @@
+%btnText {
+  font-family: $fontStack;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 150%;
+}
+
+%button {
+  width: $btnWidth;
+  height: $btnHeight;
+  background-color: $primary;
+  @extend %btnText;
+  color: $white;
+  text-align: center;
+  border: none;
+  outline: none;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+  }
+}
+
+%iconButton {
+  width: 40px;
+  height: 40px;
+  border: 1px solid $icons;
+  outline: none;
+  transition: border 500ms ease;
+
+  &:hover {
+    border: 1px solid $primary;
+  }
+}
+
+%smallIconButton {
+  width: 32px;
+  height: 32px;
+  border: 1px solid $icons;
+  outline: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: border 500ms ease;
+
+  &:hover {
+    border: 1px solid $primary;
+  }
+}
+
+%headerButton {
+  width: $headerHeight;
+  height: $headerHeight;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+}

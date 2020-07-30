@@ -1,0 +1,20 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: $fontStack;
+  font-style: normal;
+  font-weight: $medium-weight;
+  font-size: 14px;
+  line-height: 21px;
+  color: $primary;
+  scroll-behavior: smooth;
+}
+
+.container {
+  max-width: $containerSize;
+  margin: auto;
+}
