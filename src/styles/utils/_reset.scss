@@ -1,0 +1,38 @@
+html,
+body,
+h1,
+h2,
+h3,
+ul,
+li,
+p,
+input,
+textarea,
+pre,
+button {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: "Mont", Helvetica, sans-serif;
+  color: #313237;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h2 {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}

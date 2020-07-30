@@ -1,0 +1,57 @@
+.demo {
+  padding-bottom: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__photo-block {
+    display: flex;
+    margin-bottom: 8px;
+  }
+
+  &__button {
+    height: inherit;
+    min-width: 32px;
+    border: 1px solid $borderColor;
+    box-sizing: border-box;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    cursor: pointer;
+
+    &_left {
+      background-image: url("../img/demo/left-arrow.svg");
+    }
+
+    &_right {
+      background-image: url("../img/demo/right-arrow.svg");
+    }
+
+    &:hover {
+      border-color: $mainTextColor;
+    }
+  }
+
+  &__img {
+    margin: 0 16px;
+    object-fit: contain;
+  }
+
+  &__slider-block {
+    width: 80px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  &__slider {
+    width: 14px;
+    height: 4px;
+    background-color: #e2e6e9;
+
+    &_active {
+      background-color: $mainTextColor;
+    }
+  }
+
+}

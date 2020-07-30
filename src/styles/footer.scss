@@ -1,0 +1,47 @@
+.footer {
+  height: 96px;
+  padding: 0 25px;
+  margin: auto;
+  max-width: 1186px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__items {
+    width: 293px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__link {
+    padding: 10px 0;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: $secondaryTextColor;
+  }
+
+  &__up-container {
+    display: flex;
+    align-items: center;
+  }
+
+  &__up-text {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: $secondaryTextColor;
+  }
+
+  &__up-button {
+    @include smallSliderButton;
+    margin-left: 16px;
+    background-image: url("../img/footer-up.svg");
+
+    &:hover {
+      border-color: $mainTextColor;
+    }
+  }
+}

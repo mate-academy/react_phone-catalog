@@ -1,0 +1,38 @@
+.shop {
+
+  &__title {
+    margin-bottom: 24px;
+  }
+
+  &__catalog {
+    display: grid;
+    grid-template-columns: repeat(3, 368px);
+    grid-column-gap: 16px;
+  }
+
+  &__cart {
+    width: 368px;
+  }
+
+  &__photo {
+    display: block;
+    margin-bottom: 24px;
+    height: 368px;
+  }
+
+  &__name {
+    display: block;
+    margin-bottom: 4px;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 26px;
+  }
+
+  &__quantity {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $secondaryTextColor;
+  }
+
+}
