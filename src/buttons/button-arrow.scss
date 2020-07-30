@@ -2,7 +2,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid #b4bdc4;
+  border: 1px solid $buttonBorderColor;
+  cursor: pointer;
 
   &__back {
     width: $buttonArrowWidth;

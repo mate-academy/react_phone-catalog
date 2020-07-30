@@ -1,0 +1,6 @@
+.catalog {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, $phoneCardWidth);
+  column-gap: 16px;
+  row-gap: 40px;
+}

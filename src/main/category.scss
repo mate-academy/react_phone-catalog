@@ -1,0 +1,59 @@
+.category {
+  padding: 80px $contentHorPadding1440px 0;
+
+  &__shop {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__wrapper {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    margin-right: 16px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &__position {
+    position: relative;
+    width: 368px;
+    height: 368px;
+
+    &--mobile {
+      background-color: #fcdbc1;
+    }
+
+    &--tablet {
+      background-color: #8d8d92;
+    }
+
+    &--accessories {
+      background-color: #973d5f;
+    }
+  }
+
+  &__img {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+
+  &__subtitle {
+    margin-top: 24px;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 26px;
+    color: $activeColor;
+  }
+
+  &__quantity {
+    margin-top: 4px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $notActiveColor;
+  }
+}

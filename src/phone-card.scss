@@ -1,0 +1,81 @@
+.phone-card {
+  width: $phoneCardWidth;
+  display: flex;
+  flex-direction: column;
+  padding: $phoneCardPadding;
+  border: 1px solid #e2e6e9;
+  background-color: $backgroundColor;
+
+  &__img {
+    width: 208px;
+    height: 208px;
+    margin: 32px - $phoneCardPadding;
+    margin-bottom: 0;
+  }
+
+  &__model {
+    margin-top: 24px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $activeColor;
+  }
+
+  &__prices {
+    display: flex;
+    margin-top: 6.5px;
+  }
+
+  &__price {
+    margin-right: 8px;
+    font-weight: bold;
+    font-size: 22px;
+    color: $activeColor;
+
+    &--old {
+      font-weight: 500;
+      text-decoration: line-through;
+      color: $notActiveColor;
+    }
+  }
+
+  &__line {
+    margin-top: 8px;
+    width: 100%;
+    border: 1px solid #e2e6e9;
+  }
+
+  &__specifications-block {
+    display: flex;
+    flex-direction: column;
+    margin-top: 8px;
+  }
+
+  &__specifications {
+    margin-top: 8px;
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+    font-size: 12px;
+  }
+
+  &__characteristic {
+    color: $notActiveColor;
+  }
+
+  &__value {
+    text-transform: uppercase;
+    color: $activeColor;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
+  }
+
+  &__button-add {
+    width: 147px;
+    height: 40px;
+  }
+}
