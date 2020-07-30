@@ -18,6 +18,7 @@ $transitionDurationDefault: 0.5s;
 
 //general pixels
 $ChapterMarginBottom: 80px;
+$headingMarginBottom: 25px;
 
 //interface
 $transparentButtonSide: 32px;
@@ -41,6 +42,9 @@ $buttonsBelowHeight: 40px;
 
 //goods-row
 $goodsRowGoodMarginRight: ($horizontalContainerWidth - 4 * $goodsWidth) / 3;
+
+//shop-by
+$shopByItemsMargin: 15px;
 
 //normalize
 * {
@@ -489,7 +493,7 @@ input {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 25px;
+    margin-bottom: $headingMarginBottom;
   }
   &__buttons-box {
     display: flex;
@@ -574,5 +578,45 @@ input {
   &__buy-button {
     flex-grow: 1;
     margin-right: 8px;
+  }
+}
+
+.shop-by {
+  margin-bottom: $ChapterMarginBottom;
+  &__heading {
+    margin-bottom: $headingMarginBottom;
+  }
+
+  &__items-row {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__item {
+    display: block;
+    width: calc(100% - 3 * #{$shopByItemsMargin});
+    margin-right: $shopByItemsMargin;
+    transition-duration: $transitionDurationDefault;
+    &:last-child {
+      margin-right: 0;
+    }
+    &:hover {
+      transform: scale(1.03);
+    }
+  }
+  &__image {
+    display: block;
+    width: 100%;
+    height: 370px;
+    object-fit: cover;
+    margin-bottom: 25px;
+    @media (max-width: $horizontalContainerWidth) {
+      height: 28vw;
+    }
+  }
+  &__item-title {
+    margin-bottom: 5px;
+  }
+  &__subtitle {
+    color: $colorMiddleGray;
   }
 }
