@@ -28,12 +28,6 @@
     background-color: #fff;
 
     @include hover(border-color, $primaryColor);
-
-    &:active .buttons__checkbox:checked + .buttons__label::before {
-      content: url("./images/favorites-active.svg");
-      width: 15px;
-      height: 14px;
-    }
   }
 
   &__img {
