@@ -33,6 +33,7 @@
       &:after {
         position: absolute;
         content: "";
+        left: 0;
         bottom: -1px;
         background-color: $primaryColor;
         height: 3px;
