@@ -1,0 +1,72 @@
+.card {
+  width: $productCardWidth;
+  border: 1px solid $elements;
+  padding: 32px 24px 24px;
+
+  &__img {
+    width: $cardImgSize;
+    height: $cardImgSize;
+    transition: transform 1s ease;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__info {
+    margin-top: 24px;
+  }
+
+  &__price-block {
+    padding: 6.5px 0;
+    border-bottom: 1px solid $elements;
+  }
+
+  &__price {
+    font-weight: $bold-weight;
+    font-size: 22px;
+    line-height: 140%;
+
+    &--old {
+      padding-left: 8px;
+      font-weight: $medium-weight;
+      text-decoration-line: line-through;
+      color: $secondary;
+    }
+  }
+
+  &__specs {
+    margin: 8px 0;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: $semi-bold-weight;
+    color: $primary;
+  }
+
+  &__table {
+    width: 100%;
+  }
+
+  &__feature {
+    color: $secondary;
+  }
+
+  &__props {
+    text-align: right;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__btn {
+    @extend %button;
+  }
+
+  &__favorites {
+    background-color: $white;
+    margin-left: 8px;
+    @extend %iconButton;
+  }
+}
