@@ -16,10 +16,21 @@ $fontFamily: "Montserrat", sans-serif;
 //transition
 $transitionDurationDefault: 0.5s;
 
+//general pixels
+$ChapterMarginBottom: 80px;
+
+//interface
+$transparentButtonSide: 32px;
+
 //header
 $headerLinkSidePadding: 20px;
 $headerHeight: 70px;
 $headerAdditionalLinkIconSide: 15px;
+
+//wide slider
+$wideSliderHeight: 400px;
+$wideSliderIndentations: 15px;
+$wideSliderNavigationButtonWidth: 14px;
 
 //normalize
 * {
@@ -107,23 +118,23 @@ input {
 }
 
 //buttons
-.showed-page-button {
+.transparent-button {
   @extend .buttons-text;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 32px;
-  width: 32px;
+  height: $transparentButtonSide;
+  width: $transparentButtonSide;
   color: $colorBlack;
   background: transparent;
   transition-duration: $transitionDurationDefault;
-  border: 1px solid $colorElements;
+  border: 1px solid $colorIcons;
   cursor: pointer;
+  background-position: center;
+  // background-size: contain;
+  background-repeat: no-repeat;
   &:hover {
     border-color: $colorPrimary;
-  }
-  &--before-next {
-    border-color: $colorIcons;
   }
   &--selected {
     color: $colorWhite;
@@ -131,8 +142,7 @@ input {
     border-color: $colorPrimary;
   }
   &--disabled {
-    color: $colorIcons;
-    border-color: $colorElements;
+    opacity: 0.6;
   }
 }
 
@@ -383,6 +393,72 @@ input {
   &__additional-link--cart &__additional-link-icon-box {
     &::after {
       content: "3";
+    }
+  }
+}
+
+.horizontal-container {
+  margin: auto;
+  max-width: 1135px;
+}
+
+.wide-slider {
+  margin-top: $ChapterMarginBottom / 2;
+  margin-bottom: $ChapterMarginBottom;
+
+  &__row {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__side-button {
+    height: $wideSliderHeight;
+    &--before {
+      background-image: url(images_presaved/button-leftBack-icon.svg);
+    }
+    &--after {
+      background-image: url(images_presaved/button-rightNext-icon.svg);
+    }
+  }
+
+  &__slides-box {
+    overflow-x: scroll;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    width: calc(100%
+    - 2 * #{$transparentButtonSide}
+    - 2 * #{$wideSliderIndentations});
+  }
+  &__sliding-row {
+    display: flex;
+    width: calc(100% * 3); //PAY ATTENTION . BECAUSE OF 3 slides
+  }
+  &__slide {
+    display: block;
+    width: calc(100% / 3); //PAY ATTENTION . BECAUSE OF 3 slides
+    height: $wideSliderHeight;
+  }
+  &__slide-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__navigation-box {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  &__navigation-button {
+    display: block;
+    height: 4px;
+    width: $wideSliderNavigationButtonWidth;
+    background-color: $colorElements;
+    margin: 0 ($wideSliderNavigationButtonWidth / 2);
+    cursor: pointer;
+    &--selected {
+      background-color: $colorPrimary;
     }
   }
 }
