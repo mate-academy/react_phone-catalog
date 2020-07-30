@@ -3,7 +3,7 @@ $colorPrimary: #313237;
 $colorBlack: #000;
 $colorSecondary: #b9939a;
 $colorIcons: #b4bdc3;
-$colorMiddleGray: #b4bdc4;
+$colorMiddleGray: #89939a;
 $colorElements: #e2e6e9;
 $colorHoverAndBG: #fafbfc;
 $colorWhite: #fff;
@@ -27,15 +27,29 @@ $headerLinkSidePadding: 20px;
 $headerHeight: 70px;
 $headerAdditionalLinkIconSide: 15px;
 
+//container-horizontal
+$horizontalContainerWidth: 1135px;
+
 //wide slider
 $wideSliderHeight: 400px;
 $wideSliderIndentations: 15px;
 $wideSliderNavigationButtonWidth: 14px;
 
+//goods
+$goodsWidth: 270px;
+$buttonsBelowHeight: 40px;
+
+//goods-row
+$goodsRowGoodMarginRight: ($horizontalContainerWidth - 4 * $goodsWidth) / 3;
+
 //normalize
 * {
   box-sizing: border-box;
   outline: none;
+  &::selection {
+    color: $colorWhite;
+    background-color: $colorSecondary;
+  }
 }
 
 html,
@@ -142,7 +156,11 @@ input {
     border-color: $colorPrimary;
   }
   &--disabled {
-    opacity: 0.6;
+    opacity: 0.4;
+    cursor: initial;
+    &:hover {
+      border-color: $colorIcons;
+    }
   }
 }
 
@@ -178,8 +196,9 @@ input {
 }
 
 .like-button {
-  height: 40px;
-  width: 40px;
+  display: block;
+  height: $buttonsBelowHeight;
+  width: $buttonsBelowHeight;
   background: url(images_presaved/like-button-icon.svg) center no-repeat;
   background-size: 45% 45%;
   border: 2px solid $colorIcons;
@@ -198,8 +217,7 @@ input {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 40px;
-  width: 175px;
+  height: $buttonsBelowHeight;
   @extend .buttons-text;
   color: $colorWhite;
   background-color: $colorPrimary;
@@ -240,6 +258,7 @@ input {
   display: flex;
   justify-content: space-between;
   box-shadow: 0 1px 0 $colorElements;
+  user-select: none;
 
   &__left-part {
     display: flex;
@@ -270,7 +289,7 @@ input {
     padding: 15px $headerLinkSidePadding;
     margin: 0 12px;
     height: $headerHeight;
-    color: $colorMiddleGray;
+    color: $colorIcons;
     transition-duration: $transitionDurationDefault;
     &::after {
       content: "";
@@ -285,7 +304,7 @@ input {
     &:hover {
       color: $colorPrimary;
       &::after {
-        background-color: $colorMiddleGray;
+        background-color: $colorIcons;
       }
     }
 
@@ -320,7 +339,7 @@ input {
     padding-right: 45px;
     @extend .buttons-text;
     &::placeholder {
-      color: $colorMiddleGray;
+      color: $colorIcons;
     }
     &:focus {
       background-color: $colorHoverAndBG;
@@ -356,7 +375,7 @@ input {
     }
     &:hover {
       &::after {
-        background-color: $colorMiddleGray;
+        background-color: $colorIcons;
       }
     }
 
@@ -399,7 +418,7 @@ input {
 
 .horizontal-container {
   margin: auto;
-  max-width: 1135px;
+  max-width: $horizontalContainerWidth;
 }
 
 .wide-slider {
@@ -460,5 +479,100 @@ input {
     &--selected {
       background-color: $colorPrimary;
     }
+  }
+}
+
+.goods-row {
+  margin-bottom: $ChapterMarginBottom;
+
+  &__top-part {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+  }
+  &__buttons-box {
+    display: flex;
+  }
+  &__navigation-button {
+    &--previous {
+      margin-right: 15px;
+      background-image: url(images_presaved/button-leftBack-icon.svg);
+    }
+    &--next {
+      background-image: url(images_presaved/button-rightNext-icon.svg);
+    }
+  }
+
+  &__slider-box {
+    width: 100%;
+    overflow-x: scroll;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+  &__sliding-row {
+    display: flex;
+  }
+  &__slide {
+    flex-shrink: 0;
+    margin-right: $goodsRowGoodMarginRight;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+.goods {
+  width: $goodsWidth;
+  padding: 25px;
+  border: 1px solid $colorElements;
+
+  &__image-box {
+    display: block;
+    height: 215px;
+    width: 100%;
+    margin-bottom: 25px;
+  }
+  &__image {
+    display: block;
+    margin: auto;
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+  }
+  &__title {
+    transition-duration: $transitionDurationDefault;
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+  &__price {
+    margin-bottom: 15px;
+    padding: 6px 0;
+    border-bottom: 1px solid $colorElements;
+  }
+  &__old-price {
+    font-weight: 500;
+    color: $colorMiddleGray;
+    text-decoration: line-through;
+  }
+
+  &__parameter {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+  &__parameter-name {
+    color: $colorMiddleGray;
+  }
+
+  &__buttons-line {
+    display: flex;
+    margin-top: 16px;
+  }
+  &__buy-button {
+    flex-grow: 1;
+    margin-right: 8px;
   }
 }
