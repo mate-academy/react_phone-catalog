@@ -1,6 +1,11 @@
 $mainGrayColor: #89939a;
 $mainBlackColor: #313237;
 $selectedButtonColor: #27ae60;
+$mainRedColor: #eb5757;
+$promoImgWidth: 1040px;
+$cardWidth: 272px;
+$gapX: 16px;
+$sliderButtonWidth: 32px;
 
 @mixin fontProps($fontFam, $fontSize, $fontWeight, $lineHeight, $color) {
   font-family: $fontFam, sans-serif;

@@ -1,49 +1,43 @@
 .header {
-
   $blokName: &;
 
-  // position: fixed;
-  // top: 0;
-  // left: 0;
-  // right: 0;
-  // z-index: 1;
   background-color: #fff;
   box-shadow: 0 1px 0 #e2e6e9;
 
-  &--second {
+  &--second,
+  &--third {
     border-top: 1px solid #e2e6e9;
   }
 
   &__container {
-
     position: relative;
     display: flex;
     align-items: center;
     height: 64px;
-
   }
 
   &__additional-links {
-
     position: absolute;
     top: 0;
     right: 0;
     display: grid;
     grid-template-columns: repeat(2, auto);
-    // z-index: -1;
   }
 
   &__additional-link {
-
     display: flex;
     justify-content: center;
     align-items: center;
     width: 64px;
     height: 64px;
+    transition: box-shadow 0.5s;
+
+    &:hover {
+      box-shadow: 0 0 3px 2px $mainGrayColor;
+    }
   }
 
   &__additional-img {
-
     transition: transform 0.5s;
 
     &:hover {
@@ -51,7 +45,7 @@
     }
   }
 
-  &__hidden-block {
+  &__small-screens-menu {
     position: absolute;
     top: 0;
     left: -200%;
@@ -98,7 +92,7 @@
       }
     }
 
-    &:checked ~ #{$blokName}__hidden-block {
+    &:checked ~ #{$blokName}__small-screens-menu {
       left: 0;
     }
   }
@@ -113,6 +107,11 @@
     align-items: center;
     padding-right: 26px;
     border-left: 1px solid #e2e6e9;
+    transition: box-shadow 0.5s;
+
+    &:hover {
+      box-shadow: 0 0 3px 2px $mainGrayColor;
+    }
   }
 
   &__input {

@@ -1,5 +1,4 @@
 .category {
-
   &__img-holder {
     position: relative;
     height: 320px;
@@ -41,7 +40,6 @@
   }
 
   @media (min-width: 600px) {
-
     &--third {
       display: none;
     }
@@ -52,7 +50,6 @@
   }
 
   @media (min-width: 1024px) {
-
     &--third {
       display: block;
     }

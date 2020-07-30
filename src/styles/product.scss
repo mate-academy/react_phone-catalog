@@ -1,5 +1,4 @@
 .product {
-
   padding: 32px 24px 24px;
   width: 272px;
   border: 1px solid #e2e6e9;
@@ -18,25 +17,6 @@
     margin-top: 24px;
   }
 
-  &__price-container {
-    display: flex;
-  }
-
-  &__price {
-
-    margin: 6.5px 0;
-
-    &--new {
-      @include fontProps(Mont-Bold, 22px, 700, 140%, $mainBlackColor);
-      margin-right: 8px;
-    }
-
-    &--old {
-      @include fontProps(Mont-Regular, 22px, 500, 28px, #89939a);
-      text-decoration-line: line-through;
-    }
-  }
-
   &__line {
     margin: 0;
     color: $mainGrayColor;
@@ -46,45 +26,13 @@
     margin: 16px 0;
   }
 
-  &__buttons {
-    display: grid;
-    grid-template-columns: 176px 40px;
-    grid-column-gap: 8px;
-  }
-
-  &__cart-button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 40px;
-    padding: 10px 0;
-    @include fontProps(Mont-SemiBold, 14px, 600, 21px, #fff);
-    background-color: $mainBlackColor;
-    border: 1px solid $mainBlackColor;
-    transition: color 0.5s, background-color 0.5s;
-
-    &:link,
-    &:visited,
-    &:active {
-      color: #fff;
-      text-decoration: none;
-    }
-
-    &:hover {
-      color: $mainBlackColor;
-      background-color: #fff;
-    }
-  }
-
   @media (min-width: 1024px) {
-
     &:last-child {
       display: none;
     }
   }
 
   @media (min-width: 1280px) {
-
     &:last-child {
       display: block;
     }

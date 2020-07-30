@@ -1,0 +1,26 @@
+.capacities {
+  display: grid;
+  grid-template-columns: 56px 63px 60px;
+  grid-column-gap: 8px;
+
+  &__capacity {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 32px;
+    @include fontProps(Mont-Regular, 14px, 500, 21px, $mainBlackColor);
+    border: 1px solid #b4bdc4;
+    transition: color 0.5s, background-color 0.5s;
+    cursor: pointer;
+
+    &--active {
+      color: #fff;
+      background-color: $mainBlackColor;
+    }
+
+    &:hover {
+      color: #fff;
+      background-color: $mainBlackColor;
+    }
+  }
+}

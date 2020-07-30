@@ -1,0 +1,29 @@
+.phone-panel {
+  &__container {
+    width: 320px;
+  }
+
+  &__colors-title,
+  &__capasities-title {
+    @include fontProps(Mont-SemiBold, 12px, 600, 15px, #89939a);
+  }
+
+  &__colors-container,
+  &__capacities-container {
+    display: grid;
+    grid-row-gap: 8px;
+  }
+
+  &__line {
+    color: #e2e6e9;
+    margin: 24px 0;
+  }
+
+  &__buttons {
+    margin-top: 16px;
+  }
+
+  &__props {
+    margin-top: 32px;
+  }
+}

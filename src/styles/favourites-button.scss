@@ -1,16 +1,19 @@
 .favourites-button {
-
   display: flex;
   justify-content: center;
   align-items: center;
   border: 1px solid #e2e6e9;
-  transition: border-color 0.5s;
+  transition: box-shadow 0.5s;
 
   &--big {
     width: 64px;
     height: 64px;
     border-top: none;
     border-bottom: none;
+
+    &:hover {
+      box-shadow: 0 0 3px 2px $mainGrayColor;
+    }
   }
 
   &--small {
@@ -23,11 +26,12 @@
     transition: transform 0.5s;
   }
 
-  &:hover:not(&--big) {
-    border-color: $mainBlackColor;
+  &--medium {
+    width: 48px;
+    height: 48px;
   }
 
-  &--big:hover &__img {
-    transform: scale(1.1);
+  &:hover:not(&--big) {
+    border-color: $mainBlackColor;
   }
 }

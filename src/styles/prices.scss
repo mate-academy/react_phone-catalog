@@ -1,0 +1,25 @@
+.prices {
+  &__container {
+    display: flex;
+    align-items: center;
+  }
+
+  &__price {
+    margin: 6.5px 0;
+
+    &--new {
+      @include fontProps(Mont-Bold, 22px, 700, 140%, $mainBlackColor);
+      margin-right: 8px;
+    }
+
+    &--old {
+      @include fontProps(Mont-Regular, 22px, 500, 28px, #89939a);
+      text-decoration-line: line-through;
+    }
+
+    &--big {
+      @include fontProps(Mont-Bold, 32px, 700, 41px, $mainBlackColor);
+      margin: 0;
+    }
+  }
+}

@@ -3,7 +3,7 @@
 @import "./styles/header";
 @import "./styles/logo.scss";
 @import "./styles/nav";
-@import "./styles/hidden-block.scss";
+@import "./styles/small-screens-nav.scss";
 @import "./styles/page-title.scss";
 @import "./styles/favourites-button.scss";
 @import "./styles/main";
@@ -17,6 +17,12 @@
 @import "./styles/sort.scss";
 @import "./styles/products.scss";
 @import "./styles/pagination.scss";
+@import "./styles/phone.scss";
+@import "./styles/phone-panel.scss";
+@import "./styles/colors.scss";
+@import "./styles/capacities.scss";
+@import "./styles/prices.scss";
+@import "./styles/buttons.scss";
 
 html {
   scroll-behavior: smooth;

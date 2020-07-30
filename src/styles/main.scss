@@ -1,12 +1,9 @@
 .main {
-
-  $cardWidth: 272px;
-  $gapX: 16px;
   margin: 0 auto;
 
   &__container {
-    // padding-top: 50px;
-    &--second {
+    &--second,
+    &--third {
       padding-top: 25px;
     }
   }
@@ -50,27 +47,30 @@
   &__info {
     width: 272px;
     margin: 0 auto 24px;
+
+    &--second {
+      width: 100%;
+      padding: 0 20px;
+    }
   }
 
   &__page-info {
     display: grid;
-    grid-template-columns: 28px 45px;
+    grid-template-columns: 13px 5px 45px;
     grid-column-gap: 13px;
+    align-items: center;
+
+    &--modified {
+      grid-template-columns: 13px 5px 45px 5px 160px;
+      @include fontProps(Mont-SemiBold, 12px, 600, 15px, #89939a);
+    }
   }
 
   &__page-info-name {
-    position: relative;
     @include fontProps(Mont-SemiBold, 12px, 600, 15px, #89939a);
 
-    &::after {
-      $elemHeight: 9px;
-
-      position: absolute;
-      top: calc(50% - #{$elemHeight} / 2);
-      left: -13px;
-      width: 5px;
-      height: 9px;
-      content: url("../arrow-grey.png");
+    &--black {
+      color: $mainBlackColor;
     }
   }
 
@@ -80,6 +80,10 @@
 
   &__info-title {
     margin: 40px 0 8px;
+
+    &--big {
+      margin: 16px 0 40px;
+    }
   }
 
   &__info-description {
@@ -97,8 +101,25 @@
     margin-bottom: 80px;
   }
 
-  @media (min-width: 600px) {
+  &__info-action {
+    display: grid;
+    grid-template-columns: 5px 31px;
+    grid-column-gap: 9px;
+    align-items: center;
+    margin-top: 41px;
+  }
 
+  &__info-action-name {
+    @include fontProps(Mont-SemiBold, 12px, 600, 15px, #89939a);
+  }
+
+  &__phone {
+    display: grid;
+    grid-row-gap: 50px;
+    margin: 0 auto;
+  }
+
+  @media (min-width: 600px) {
     &__categories {
       display: grid;
       justify-content: center;
@@ -117,17 +138,26 @@
 
     &__sales-top-content,
     &__models-top-content,
-    &__info {
+    &__info,
+    &__phone {
       width: calc(#{$cardWidth} * 2 + #{$gapX});
+    }
+
+    &__info--second {
+      padding: 0;
+    }
+
+    &__page-info {
+      &--modified {
+        grid-template-columns: 13px 5px 45px 5px 291px;
+      }
     }
   }
 
   @media (min-width: 1024px) {
-
     width: calc(#{$cardWidth} * 3 + #{$gapX} * 2);
 
     &__container {
-      // padding-top: 64px;
       padding-top: 50px;
     }
 
@@ -142,19 +172,23 @@
 
     &__sales-top-content,
     &__models-top-content,
-    &__info {
+    &__info,
+    &__phone {
       width: 100%;
     }
-
   }
 
   @media(min-width: 1280px) {
-
     width: calc(#{$cardWidth} * 4 + #{$gapX} * 3);
     margin: 0 auto;
 
     &__categories-container {
       grid-template-columns: repeat(3, 368px);
+    }
+
+    &__phone {
+      grid-template-columns: 549px 320px;
+      grid-column-gap: 75px;
     }
   }
 }

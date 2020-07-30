@@ -1,5 +1,4 @@
 .footer {
-
   margin-bottom: 100px;
   box-shadow: 0 -1px 0 #e2e6e9;
   border-bottom: 1px solid #e2e6e9;
@@ -38,7 +37,7 @@
 
   @media (min-width: 1440px) {
     &__container {
-      width: calc(1040px + 32px * 2 + 16px * 2);
+      width: calc(#{$promoImgWidth} + #{$sliderButtonWidth} * 2 + #{$gapX} * 2);
     }
 
     &__logo {

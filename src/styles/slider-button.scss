@@ -19,7 +19,6 @@
   }
 
   &--left {
-
     &::after {
       content: url("../arrow-left.png");
     }
@@ -30,7 +29,6 @@
   }
 
   &--right {
-
     &::after {
       content: url("../arrow-right.png");
     }
@@ -41,7 +39,6 @@
   }
 
   &--top {
-
     &::after {
       transform: rotate(90deg);
       transform-origin: bottom center;

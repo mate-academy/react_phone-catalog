@@ -1,5 +1,4 @@
 .promo {
-
   $imgWidth: 280px;
   $buttonWidth: 16px;
   $gapX: 8px;
@@ -30,14 +29,12 @@
   }
 
   @media(min-width: 650px) {
-
     &__img-holder {
       height: 360px;
     }
   }
 
   @media (min-width: 1024px) {
-
     $imgWidth: 752px;
     $buttonWidth: 32px;
     $gapX: 16px;
@@ -56,7 +53,6 @@
   }
 
   @media (min-width: 1280px) {
-
     $imgWidth: 1040px;
     $buttonWidth: 32px;
     $gapX: 16px;
