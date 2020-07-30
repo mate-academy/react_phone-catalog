@@ -1,0 +1,49 @@
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 98px;
+  box-shadow: 0 -1px 0 #e2e6e9;
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    width: calc(4 * #{$cardWidth} + 3 * #{$gap});
+  }
+  &__links {
+    display: flex;
+    justify-content: space-between;
+    width: 290px;
+  }
+  &__link {
+    font-family: $bold;
+    font-size: 12px;
+    line-height: 20px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #89939a;
+  }
+  &__toTop {
+    display: flex;
+    justify-content: space-between;
+    width: 120px;
+  }
+  &__subtitle {
+    font-family: $normal;
+    font-size: 12px;
+    line-height: 32px;
+    color: #89939a;
+  }
+  &__button {
+    width: 32px;
+    height: 32px;
+    background-image: url(../Icons/ArrowUp.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #fff;
+    border: 1px solid #b4bdc4;
+    &:hover {
+      border: 1px solid #313237;
+    }
+  }
+}
