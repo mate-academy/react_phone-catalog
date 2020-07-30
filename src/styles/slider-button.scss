@@ -78,6 +78,7 @@
     display: grid;
     justify-content: center;
     align-items: center;
+    @include fontProps(Mont-Regular, 14px, 500, 21px, $mainBlackColor);
     transition: background-color 0.5s, color 0.5s;
     opacity: 1;
 
