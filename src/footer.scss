@@ -1,0 +1,36 @@
+.footer {
+  max-width: $maxContentWidth;
+  padding: 0 $desktopPaddingX;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0px -1px 0px $borderColor;
+
+  &__info {
+    @extend %upperCaseText;
+
+  }
+
+  &__link {
+    padding: 42px 15px;
+    margin: 0 17px;
+    line-height: $footerHeight;
+
+    color: $secondaryColor;
+    @include hover(color, $primaryColor);
+  }
+
+  &__slider {
+    display: flex;
+    align-items: center;
+  }
+
+  &__up {
+    margin-right: 16px;
+    @extend %smallText;
+    color: $secondaryColor;
+
+    @include hover(color, $primaryColor);
+  }
+}

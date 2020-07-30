@@ -1,0 +1,12 @@
+.card-section {
+
+  &__head {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__heading {
+    margin-bottom: 24px;
+  }
+
+}

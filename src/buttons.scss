@@ -1,0 +1,43 @@
+.buttons {
+  $blockName: &;
+  display: flex;
+  justify-content: space-between;
+
+  &__cart {
+    width: 176px;
+    height: 40px;
+
+    font-family: inherit;
+    font-weight: 600;
+    color: #fff;
+    border: none;
+    background-color: $primaryColor;
+
+    @include hover(box-shadow, 0px 3px 13px rgba(23, 32, 49, 0.26));
+  }
+
+  &__favorites {
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: $iconsBorder;
+    background-color: #fff;
+
+    @include hover(border-color, $primaryColor);
+
+    &:active .buttons__checkbox:checked + .buttons__label::before {
+      content: url("./images/favorites-active.svg");
+      width: 15px;
+      height: 14px;
+    }
+  }
+
+  &__img {
+    width: 15px;
+    height: 14px;
+  }
+}

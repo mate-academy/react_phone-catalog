@@ -1,0 +1,6 @@
+.cards-row {
+  display: grid;
+  justify-content: space-between;
+  grid-template-columns: repeat(4, 1fr);
+  grid-column-gap: 16px;
+}
