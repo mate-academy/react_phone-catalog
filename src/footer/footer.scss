@@ -1,13 +1,11 @@
 .footer {
-
+  box-shadow: 0 -1px 0 #e2e6e9;
   &__container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 $contentHorPadding1440px;
     height: 96px;
-    box-shadow: 0 -1px 0 #e2e6e9;
-    background-color: $backgroundColor;
   }
 
   &__up {

@@ -6,6 +6,7 @@
 @import "title";
 @import "phone-card";
 @import "catalog";
+@import "choice";
 
 @import "header/header";
 @import "header/navigation";
@@ -18,6 +19,9 @@
 @import "main/new-model";
 
 @import "footer/footer";
+
+@import "second-page-catalog";
+@import "main2/mobile";
 
 * {
   box-sizing: border-box;

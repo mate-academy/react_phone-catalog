@@ -1,0 +1,78 @@
+.mobile {
+  padding: 40px $contentHorPadding1440px 80px;
+
+  &__description {
+    margin-top: 8px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $notActiveColor;
+  }
+
+  &__wrapper {
+    margin-top: 40px;
+    display: flex;
+  }
+
+  &__filter {
+    display: flex;
+    flex-direction: column;
+    margin-right: 16px;
+  }
+
+  &__filter-descr {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: $notActiveColor;
+  }
+
+  &__filter-list {
+    margin-top: 4px;
+    width: 176px;
+    height: 40px;
+    background-color: grey;
+
+    &--small {
+      width: 128px;
+    }
+  }
+
+  &__catalog {
+    margin-top: 24px;
+  }
+
+  &__page {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+  }
+
+  &__page-number {
+    margin: 0 4px;
+    width: 32px;
+    height: 32px;
+    border: 1px solid #e2e6e9;
+    font-weight: 500;
+    font-size: 14px;
+    color: #000;
+
+    &--active {
+      background: $activeColor;
+      color: #fff;
+      border: none;
+    }
+  }
+
+  &__button-arrow--back {
+    width: 32px;
+    height: 32px;
+    margin-right: 14px;
+  }
+
+  &__button-arrow--next {
+    width: 32px;
+    height: 32px;
+    margin-left: 14px;
+  }
+}
