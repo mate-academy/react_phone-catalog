@@ -25,6 +25,11 @@ button {
   box-sizing: border-box;
 }
 
+a,
+button {
+  cursor: pointer;
+}
+
 a {
   text-decoration: none;
   color: inherit;
@@ -32,6 +37,7 @@ a {
 
 button {
   border: none;
+  font-family: inherit;
 }
 
 ul {
