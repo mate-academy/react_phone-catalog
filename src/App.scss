@@ -1,0 +1,18 @@
+@import "../src/styles/reset";
+@import "../src/styles/first-page/header.scss";
+@import "../src/styles/logo.scss";
+@import "../src/styles/__fonts";
+@import "../src/styles/first-page/_vars";
+@import "../src/styles/first-page/main.scss";
+@import "../src/styles/first-page/products-galery.scss";
+@import "../src/styles/first-page/hot-prices.scss";
+@import "../src/styles/phone-card.scss";
+@import "../src/styles/first-page/shop-categories.scss";
+@import "../src/styles/first-page/new-models.scss";
+@import "../src/styles/first-page/footer.scss";
+
+
+.second-page {
+  height: 100px;
+  background-color: #0fa;
+}

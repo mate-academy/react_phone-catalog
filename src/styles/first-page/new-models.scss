@@ -1,0 +1,50 @@
+.new-models {
+  &__description {
+    display: flex;
+    margin: 100px 0 24px;
+    justify-content: space-between;
+  }
+
+  &__header {
+   font-family: Mont;
+   font-style: normal;
+   font-weight: bold;
+   font-size: 32px;
+   line-height: 41px;
+   letter-spacing: -0.01em;
+   color: #313237;
+  }
+
+   &__btn {
+     display: inline-block;
+     height: 32px;
+     width: 32px;
+     margin-left: 16px;
+     border: 1px solid #E2E6E9;
+     background-color: inherit;
+     cursor: pointer;
+
+     &--left {
+       background: url(../../images/btn-left.svg) no-repeat center;
+       opacity: 0.6;
+
+       &:hover {
+         box-shadow: -1px 1px 3px;
+       }
+     }
+
+     &--right {
+       background: url(../../images/btn-right.svg) no-repeat center;
+
+       &:hover {
+         box-shadow: 1px 1px 3px;
+         }
+     }
+   }
+
+   &__phones-container {
+     display: flex;
+     flex-wrap: wrap;
+     margin-bottom: 80px;
+   }
+}
