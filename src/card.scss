@@ -8,6 +8,8 @@
 
   border: 1px solid $borderColor;
 
+  @include hover(box-shadow, 0 2px 10px $borderColor);
+
   &__img {
     width: 208px;
     height: 208px;
