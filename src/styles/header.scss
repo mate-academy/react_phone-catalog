@@ -2,13 +2,17 @@
 
   $blokName: &;
 
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1;
+  // position: fixed;
+  // top: 0;
+  // left: 0;
+  // right: 0;
+  // z-index: 1;
   background-color: #fff;
   box-shadow: 0 1px 0 #e2e6e9;
+
+  &--second {
+    border-top: 1px solid #e2e6e9;
+  }
 
   &__container {
 
@@ -26,7 +30,7 @@
     right: 0;
     display: grid;
     grid-template-columns: repeat(2, auto);
-    z-index: -1;
+    // z-index: -1;
   }
 
   &__additional-link {
@@ -55,6 +59,7 @@
     height: 500px;
     background-color: #eb5757;
     transition: all 0.5s;
+    z-index: 1;
   }
 
   &__logo {
@@ -95,6 +100,47 @@
 
     &:checked ~ #{$blokName}__hidden-block {
       left: 0;
+    }
+  }
+
+  &__search-container {
+    position: absolute;
+    top: 0;
+    right: 128px;
+    width: 327px;
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 26px;
+    border-left: 1px solid #e2e6e9;
+  }
+
+  &__input {
+    padding: 23px;
+    border: none;
+    outline: none;
+    @include fontProps(Mont-SemiBold, 14px, 600, 18px, #b4bdc4);
+    color: #b4bdc4;
+
+    &::placeholder {
+      color: #b4bdc4;
+    }
+  }
+
+  &__search-label {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    transition: transform 0.5s;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  @media (min-width: 768px) {
+    &__search-container {
+      display: flex;
     }
   }
 

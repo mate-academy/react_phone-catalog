@@ -1,0 +1,18 @@
+.products {
+  display: grid;
+  justify-content: center;
+  grid-row-gap: 16px;
+
+  @media (min-width: 600px) {
+    grid-template-columns: repeat(2, auto);
+    grid-column-gap: 16px;
+  }
+
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(3, auto);
+  }
+
+  @media (min-width: 1280px) {
+    grid-template-columns: repeat(4, auto);
+  }
+}

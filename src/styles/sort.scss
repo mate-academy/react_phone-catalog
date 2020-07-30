@@ -1,0 +1,47 @@
+.sort {
+
+  display: grid;
+  grid-template-columns: 150px 100px;
+  grid-column-gap: 16px;
+
+  &__type,
+  &__number {
+    display: grid;
+    grid-row-gap: 4px;
+  }
+
+  &__type-name,
+  &__number-name {
+    @include fontProps(Mont-SemiBold, 12px, 600, 15px, #89939a);
+  }
+
+  &__type-value,
+  &__number-value {
+    position: relative;
+    padding: 10px 0 10px 12px;
+    border: 1px solid #b4bdc4;
+    @include fontProps(Mont-SemiBold, 14px, 600, 21px, $mainBlackColor);
+    cursor: pointer;
+    transition: border-color 0.5s;
+
+    &::after {
+      $elemWidth: 9px;
+      $elemHeight: 5px;
+
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      width: $elemWidth;
+      height: $elemHeight;
+      content: url("../arrow-bottom.png");
+    }
+
+    &:hover {
+      border-color: $mainBlackColor;
+    }
+  }
+
+  @media (min-width: 768px) {
+    grid-template-columns: 176px 128px;
+  }
+}

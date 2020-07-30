@@ -1,4 +1,6 @@
 .slider-button {
+  $blockName: &;
+
   position: relative;
   width: 32px;
   border: 1px solid #b4bdc4;
@@ -16,14 +18,14 @@
     height: $elemHeight;
   }
 
-  &:hover {
-    box-shadow: 0 0 3px 2px $mainGrayColor;
-  }
-
   &--left {
 
     &::after {
       content: url("../arrow-left.png");
+    }
+
+    &:hover {
+      box-shadow: 0 0 3px 2px $mainGrayColor;
     }
   }
 
@@ -31,6 +33,10 @@
 
     &::after {
       content: url("../arrow-right.png");
+    }
+
+    &:hover {
+      box-shadow: 0 0 3px 2px $mainGrayColor;
     }
   }
 
@@ -40,6 +46,10 @@
       transform: rotate(90deg);
       transform-origin: bottom center;
       content: url("../arrow-left.png");
+    }
+
+    &:hover {
+      box-shadow: 0 0 3px 2px $mainGrayColor;
     }
   }
 
@@ -54,5 +64,33 @@
 
   &--active {
     opacity: 1;
+  }
+
+  &--selected {
+    background-color: $mainBlackColor;
+
+    &::before {
+      color: #fff;
+    }
+  }
+
+  &--numbered {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.5s, color 0.5s;
+    opacity: 1;
+
+    &:hover {
+      background-color: $mainBlackColor;
+      @include fontProps(Mont-Regular, 14px, 500, 21px, #fff);
+    }
+
+    @for $num from 1 through 4 {
+
+      &_#{$num}::before {
+        content: "#{$num}";
+      }
+    }
   }
 }

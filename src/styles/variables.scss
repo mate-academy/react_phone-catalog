@@ -1,5 +1,6 @@
 $mainGrayColor: #89939a;
 $mainBlackColor: #313237;
+$selectedButtonColor: #27ae60;
 
 @mixin fontProps($fontFam, $fontSize, $fontWeight, $lineHeight, $color) {
   font-family: $fontFam, sans-serif;
