@@ -19,7 +19,7 @@
 
     &--big {
       @include fontProps(Mont-Bold, 32px, 700, 41px, $mainBlackColor);
-      margin: 0;
+      margin: 0 8px 0 0;
     }
   }
 }
