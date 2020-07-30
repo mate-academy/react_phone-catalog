@@ -10,7 +10,7 @@
     .bar3 {
       width: 18px;
       height: 1px;
-      background-color: $mainColor;
+      background-color: $primaryColor;
       margin: 4px 0;
       transition: 0.35s;
     }
@@ -25,7 +25,7 @@
     & &__label {
       position: absolute;
       top: 24px;
-      right: 158px;
+      right: 220px;
       z-index: 2;
       display: block;
 

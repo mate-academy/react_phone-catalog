@@ -1,12 +1,13 @@
 .button {
   padding: 8px 48px;
-  background-color: $mainColor;
-  color: #fff;
-  border: 1px solid $mainColor;
+  background-color: $primaryColor;
+  color: $whiteColor;
+  border: 1px solid $primaryColor;
   transition: color 0.2s, background-color 0.25s;
 
   &:hover {
-    color: $mainColor;
-    background-color: #fff;
+    color: $primaryColor;
+    background-color: $whiteColor;
+    cursor: pointer;
   }
 }

@@ -5,6 +5,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-bottom: 24px;
   }
 
   &__arrows {
@@ -13,10 +14,8 @@
 
   &__arrow {
     height: 32px;
-
     &:first-child {
       margin-right: 16px;
-      background-image: url(../img/hot/arrow-not-active.svg);
     }
   }
 

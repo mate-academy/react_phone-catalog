@@ -1,24 +1,14 @@
 .arrow {
+  display: flex;
+  justify-content: center;
   width: 32px;
   border: 1px solid #B4BDC4;
   background-position: center;
   background-repeat: no-repeat;
-  transition: background-color 0.2s;
-
-  &-right {
-    background-image: url(../img/banner/arrow-right.svg);
-  }
-
-  &-left {
-    background-image: url(../img/banner/arrow-left.svg);
-  }
-
-  &-up {
-    background-image: url(../img/footer/arrow-up.svg);
-  }
+  transition: border 0.2s;
 
   &:hover {
-    background-color: #f3f3f3;
+    border: 1px solid $primaryColor;
     cursor: pointer;
   }
 }

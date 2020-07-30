@@ -1,35 +1,38 @@
 .nav {
-
   &__list {
     display: flex;
   }
 
   &__item {
-    margin-left: 64px;
+    margin-left: 16px;
   }
 
   &__link {
-    color: $subColor;
+    color: $secondaryColor;
     position: relative;
-    padding: 22px 0;
+    padding: 24px;
     text-transform: uppercase;
     transition: color 0.25s;
+    font-size: 12px;
+    letter-spacing: 0.04em;
 
     &:hover {
-      color: $mainColor;
+      color: $primaryColor;
     }
 
     &--active {
-      color: $mainColor;
+      color: $primaryColor;
+      position: relative;
 
       &::after {
         display: block;
         content: "";
         position: absolute;
-        bottom: -1px;
+        bottom: 0;
+        left: 24px;
         height: 3px;
-        width: 100%;
-        background-color: $mainColor;
+        width: calc(100% - 48px);
+        background-color: $primaryColor;
       }
     }
   }
@@ -41,7 +44,7 @@
       position: absolute;
       top: 0;
       left: 0;
-      background: #fff;
+      background: $whiteColor;
       width: 100%;
       height: 100%;
       transition: 0.35s;

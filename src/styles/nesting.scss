@@ -1,0 +1,32 @@
+.nesting {
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  line-height: 15px;
+
+  &__home {
+    background-image: url(../img/nesting/home.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 16px;
+    height: 16px;
+  }
+
+  &__arrow {
+    margin: 0 8px;
+    background-image: url(../img/nesting/arrow-right.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 16px;
+    height: 16px;
+  }
+
+  &__branch {
+    color: $primaryColor;
+  }
+
+  &__current {
+    font-family: "Mont-Regular";
+  }
+}

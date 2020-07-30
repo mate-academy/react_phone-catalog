@@ -1,0 +1,174 @@
+.cart {
+  margin-bottom: 87px;
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__products {
+    margin-right: 16px;
+  }
+
+  &__item {
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 128px;
+    border: 1px solid $elementsColor;
+  }
+
+  &__remove {
+    margin: 0 24px;
+    width: 16px;
+    height: 16px;
+    background-image: url(../img/cart/close.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  &__img-and-heading  {
+    display: flex;
+    align-items: center;
+  }
+
+  &__image-container {
+    margin-right: 24px;
+    padding: 7px;
+    width: 80px;
+    height: 80px;
+  }
+
+  &__name {
+    margin-right: 5%;
+    width: 40%;
+  }
+
+  &__count {
+    margin-right: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &--minus,
+    &--plus {
+      width: 32px;
+      height: 32px;
+      background-position: center;
+      background-repeat: no-repeat;
+      border: 1px solid $elementsColor;
+      transition: border 0.15s;
+
+
+      &:hover {
+        border: 1px solid $primaryColor;
+        cursor: pointer;
+      }
+    }
+
+    &--minus {
+      background-image: url(../img/cart/minus.svg);
+    }
+
+    &--plus {
+      background-image: url(../img/cart/plus.svg);
+    }
+
+
+  }
+
+  &__amount {
+    color: #000;
+    margin: 0 13px;
+  }
+
+  &__price {
+    margin-right: 40px;
+    font-size: 22px;
+    line-height: 140%;
+  }
+
+  &__total {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px;
+    width: 32%;
+    height: 206px;
+    border: 1px solid $elementsColor;
+
+    & p {
+      font-family: "Mont-Regular";
+      margin-bottom: 24px;
+
+    }
+
+    & hr {
+      border: none;
+      height: 1px;
+      width: 100%;
+      background-color: $elementsColor;
+      margin-bottom: 24px;
+    }
+  }
+
+  &__price-total {
+    margin: 0;
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 48px;
+    font-family: "Mont-Regular";
+  }
+
+  @media (max-width: 999px) {
+    &__content {
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    &__total,
+    &__products {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 599px) {
+    &__item {
+      flex-direction: column;
+      height: 100%;
+    }
+
+    &__img-and-heading {
+      justify-content: space-between;
+      margin: 20px 0 12px;
+    }
+
+    &__remove {
+      margin: 0 12px;
+    }
+
+    &__image-container {
+      margin-right: 0px;
+    }
+
+    &__name {
+      width: 80%;
+      margin-right: 12px;
+    }
+
+    &__count {
+      margin: 0 0 12px;
+    }
+
+    &__price {
+      margin: 0 0 12px;
+    }
+
+  }
+}

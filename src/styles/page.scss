@@ -1,0 +1,35 @@
+.page {
+  position: relative;
+  width: 272px;
+  left: calc(50% - 272px / 2);
+  display: flex;
+  margin-bottom: 80px;
+  font-family: "Mont-Regular";
+
+
+  &__number {
+    margin: 0 4px;
+    text-align: center;
+    line-height: 32px;
+    width: 32px;
+    height: 32px;
+    border: 1px solid $elementsColor;
+    transition: border 0.15s;
+
+    &--active {
+      color: $whiteColor;
+      background-color: $primaryColor;
+    }
+
+    &:hover {
+      border: 1px solid $primaryColor;
+      cursor: pointer;
+    }
+  }
+
+  &__arrow {
+    margin: 0 12px;
+    height: 32px;
+  }
+
+}

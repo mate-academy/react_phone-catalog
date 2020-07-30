@@ -1,6 +1,6 @@
 .card {
   width: 272px;
-  border: 1px solid #E2E6E9;
+  border: 1px solid $elementsColor;
   padding: 24px;
   margin: 0 16px 24px 0;
 
@@ -17,14 +17,14 @@
 
     &--old {
       margin-left: 8px;
-      color: $subColor;
+      color: $secondaryColor;
       font-family: "Mont-Regular";
       text-decoration-line: line-through;
     }
   }
 
-  hr {
-    border-top: 1px solid #E2E6E9;
+  & hr {
+    border-top: 1px solid $elementsColor;
     margin-bottom: 16px;
   }
 
@@ -36,15 +36,14 @@
       margin-bottom: 8px;
     }
 
-    margin-bottom: 8px;
-
     &--active {
-      color: $mainColor;
+      color: $primaryColor;
       justify-self: flex-end;
     }
   }
 
   &__bottom {
+    margin-top: 8px;
     display: flex;
     justify-content: space-between;
   }
@@ -54,11 +53,4 @@
     height: 40px;
     border: 1px solid #B4BDC4;
   }
-
-  @media (max-width: 1299px) {
-    & {
-      
-    }
-  }
-
 }

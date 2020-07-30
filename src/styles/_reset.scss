@@ -12,14 +12,14 @@ h3,
 h4,
 h5,
 h6 {
-  color: $mainColor;
+  color: $primaryColor;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
 p {
-  color: $subColor;
+  color: $secondaryColor;
   font-family: "Mont-SemiBold";
 }
 
@@ -35,11 +35,18 @@ html {
   line-height: 21px;
 }
 
-h2 {
+h1 {
+  font-family: "Mont-Bold";
   margin:24px 0;
   font-size: 32px;
   line-height: 41px;
   letter-spacing: -0.01em;
+}
+
+h2 {
+  font-family: "Mont-Bold";
+  font-size: 22px;
+  line-height: 31px;
 }
 
 h3 {
@@ -54,6 +61,7 @@ h4 {
   font-family: "Mont-Regular";
 }
 
+button,
 a {
   font-family: "Mont-SemiBold";
   text-decoration: none;

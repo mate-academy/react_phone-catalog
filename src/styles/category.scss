@@ -1,5 +1,5 @@
 .category {
-  margin-bottom: 80px - 24px;
+  margin-bottom: 56px;
 
   &-content {
     display: flex;
@@ -16,7 +16,7 @@
 
   &__image {
     margin-bottom: 18px;
-    width: 358px;
+    width: 368px;
     height: 368px;
     object-fit: contain;
     object-position: right bottom;
@@ -61,7 +61,7 @@
     }
 
     &__info--accessories &__name {
-      color: #fff;
+      color: $whiteColor;
     }
 
     &__name {
@@ -70,11 +70,11 @@
     }
 
     &__amount {
-      color: #fff;
+      color: $whiteColor;
     }
 
     &__info--phone &__amount {
-      color: $mainColor;
+      color: $primaryColor;
     }
   }
 
@@ -90,11 +90,11 @@
     }
 
     &__info &__name {
-      color: $mainColor;
+      color: $primaryColor;
     }
 
     &__amount {
-      color: $mainColor;
+      color: $primaryColor;
     }
   }
 

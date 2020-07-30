@@ -3,7 +3,7 @@
   justify-content: space-between;
   align-items: center;
   height: 96px;
-  box-shadow: 0px -1px 0px #E2E6E9;
+  box-shadow: 0px -1px 0px $elementsColor;
 
   &__back-top {
     display: flex;
@@ -11,12 +11,11 @@
 
     &:hover {
       .footer__arrow {
-        background-color: #f3f3f3;
         cursor: pointer;
       }
 
       .footer__back-top p {
-        color: $mainColor;
+        color: $primaryColor;
       }
     }
 
@@ -25,7 +24,7 @@
       transition: 0.2s;
 
       &:hover {
-        color: $mainColor;
+        color: $primaryColor;
       }
     }
   }

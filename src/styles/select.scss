@@ -1,0 +1,29 @@
+.select {
+  padding: 10px 12px;
+  height: 40px;
+  border: none;
+  outline: none;
+  color: $primaryColor;
+  border: 1px solid #b4bdc4;
+  font-family: "Mont-SemiBold";
+  font-size: 14px;
+  line-height: 21px;
+  -webkit-appearance: none;
+  background: url(../img/phones/arrow-down.svg);
+  background-position: 90% 50%;
+  background-repeat: no-repeat;
+
+  &__sort {
+    width: 176px;
+  }
+
+  &__items {
+    width: 128px;
+  }
+
+  @media (max-width: 399px) {
+    &__sort {
+      width: 128px;
+    }
+  }
+}

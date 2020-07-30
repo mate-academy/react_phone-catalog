@@ -23,13 +23,13 @@
   }
 
   &__slider {
-    margin: 0 7px 82px - 24px;
+    margin: 0 7px 58px;
     width: 14px;
     height: 4px;
-    background-color: #E2E6E9;
+    background-color: $elementsColor;
 
     &--active {
-      background-color: $mainColor;
+      background-color: $primaryColor;
     }
   }
 
