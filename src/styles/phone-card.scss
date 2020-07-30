@@ -1,0 +1,96 @@
+.phone-card {
+  display: flex;
+  flex-direction: column;
+  height: 507px;
+  width: 272px;
+  padding: 24px;
+  border: 1px solid #E2E6E9;
+  color: #313237;
+
+
+  &__iphone-img {
+    margin: 8px 8px 24px;
+    transition: transform 0.3s linear;
+  }
+
+  &__iphone-img:hover {
+    transform: scale(1.2);
+  }
+
+  &__phone-name {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+  }
+
+  &__phone-price {
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 140%;
+    margin: 6px 0 6px;
+
+    &--new-price {
+      font-weight: 500;
+      text-decoration-line: line-through;
+      color: #89939A;
+    }
+  }
+
+  &__section-line {
+    border: none;
+    height: 1px;
+    width: 100%;
+    background-color: #E2E6E9;
+    margin-bottom: 15px;
+  }
+
+  &__property {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: #89939A;
+
+    &--type {
+      color: #313237;
+
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px; 
+  }
+
+  &__btn-add-to-basket {
+    height: 40px;
+    width: 176px;
+    font-size: 14px;
+    color: #fff;
+    line-height: 21px;
+    text-align: center;
+    background: #313237;
+    cursor: pointer;
+    border: none;
+
+    &:hover {
+      box-shadow: 0px 3px 13px rgba(23, 32, 49, 0.56);
+    }
+  }
+
+  &__btn-add-to-favorite {
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+    border: 1px solid #B4BDC4;
+    background: url(../images/Favourites-Heart-Like.svg) no-repeat center;
+
+    &:hover {
+      border: 1px solid #313237;
+    }
+  }
+}
