@@ -1,0 +1,52 @@
+.shop-categories {
+
+  &__header {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    margin-bottom: 32px;
+  }
+
+  &__conteiner-for-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  &__product-section-box {
+    width: 368px;
+  }
+
+  &__link {
+    display: block;
+    height: 368px;
+    width: 368px;
+
+    &--mobiles-section {
+      background: url(../../images/Mobile-phones.svg);
+    }
+
+    &--tablets-section {
+      background: url(../../images/tablets.svg);
+    }
+
+    &--accessories-section {
+      background: url(../../images/Accessories.svg);
+    }
+  }
+
+  &__product-section-name {
+    margin-top: 24px;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 26px;
+  }
+
+  &__product-section-numbers-of-models {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #89939A;
+  }
+}
