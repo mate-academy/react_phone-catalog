@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react/jsx-filename-extension */
 import React from 'react';
 
@@ -22,14 +23,14 @@ import { Cart } from './Cart';
 const App = () => (
   <>
     <div className="App">
-      <header className="header">
+      <header className="header" id="home">
         <nav className="header__nav">
           <ul className="nav__list">
             <li className="nav__item">
               <img className="header__logo" src={logo} alt="logo" />
             </li>
             <li className="nav__item">
-              <a href="#home" className="nav__link">
+              <a href="#" className="nav__link">
                 Home
               </a>
             </li>
@@ -39,12 +40,12 @@ const App = () => (
               </a>
             </li>
             <li className="nav__item">
-              <a href="#tabl" className="nav__link">
+              <a href="#phones" className="nav__link">
                 Tablets
               </a>
             </li>
             <li className="nav__item">
-              <a href="#acces" className="nav__link">
+              <a href="#phones" className="nav__link">
                 accessories
               </a>
             </li>
@@ -52,12 +53,12 @@ const App = () => (
         </nav>
         <ul className="header__icon">
           <li className="icon__item">
-            <a href="#i" className="icon__link">
+            <a href="#" className="icon__link">
               <img src={fav} alt="" />
             </a>
           </li>
           <li className="icon__item">
-            <a href="#i" className="icon__link">
+            <a href="#cart" className="icon__link">
               <img src={cart} alt="" />
             </a>
           </li>
@@ -72,7 +73,7 @@ const App = () => (
           &#62;
         </button>
       </section>
-      <section className="hotprice container">
+      <section className="hotprice container" id="phones">
         <div className="hotprice__top">
           <p>Hot prices</p>
           <div>
@@ -88,15 +89,15 @@ const App = () => (
               $799
               <span className="hotprice__price hotprice__price--off">$899</span>
             </div>
-            <div className="hotprice__contant">
+            <div className="hotprice__sign">
               <span>Screen</span>
               <span className="hotprice__value">5.8” OLED</span>
             </div>
-            <div className="hotprice__contant">
+            <div className="hotprice__sign">
               <span>Capacity</span>
               <span className="hotprice__value">64 GB</span>
             </div>
-            <div className="hotprice__contant">
+            <div className="hotprice__sign">
               <span>Ram</span>
               <span className="hotprice__value">4 GB</span>
             </div>
@@ -117,15 +118,15 @@ const App = () => (
               $1099
               <span className="hotprice__price hotprice__price--off">$1199</span>
             </div>
-            <div className="hotprice__contant">
+            <div className="hotprice__sign">
               <span>Screen</span>
               <span className="hotprice__value">6.5” OLED</span>
             </div>
-            <div className="hotprice__contant">
+            <div className="hotprice__sign">
               <span>Capacity</span>
               <span className="hotprice__value">64 GB</span>
             </div>
-            <div className="hotprice__contant">
+            <div className="hotprice__sign">
               <span>Ram</span>
               <span className="hotprice__value">4 GB</span>
             </div>
@@ -146,15 +147,15 @@ const App = () => (
               $799
               <span className="hotprice__price hotprice__price--off">$899</span>
             </div>
-            <div className="hotprice__contant">
+            <div className="hotprice__sign">
               <span>Screen</span>
               <span className="hotprice__value">6.2” IPS</span>
             </div>
-            <div className="hotprice__contant">
+            <div className="hotprice__sign">
               <span>Capacity</span>
               <span className="hotprice__value">128GB</span>
             </div>
-            <div className="hotprice__contant">
+            <div className="hotprice__sign">
               <span>Ram</span>
               <span className="hotprice__value">4GB</span>
             </div>
@@ -175,15 +176,15 @@ const App = () => (
               $859
               <span className="hotprice__price hotprice__price--off">$899</span>
             </div>
-            <div className="hotprice__contant">
+            <div className="hotprice__sign">
               <span>Screen</span>
               <span className="hotprice__value">5.8” OLED</span>
             </div>
-            <div className="hotprice__contant">
+            <div className="hotprice__sign">
               <span>Capacity</span>
               <span className="hotprice__value">256 GB</span>
             </div>
-            <div className="hotprice__contant">
+            <div className="hotprice__sign">
               <span>Ram</span>
               <span className="hotprice__value">3 GB</span>
             </div>
@@ -235,15 +236,15 @@ const App = () => (
               $1299
               <span className="hotprice__price hotprice__price--off">$899</span>
             </div>
-            <div className="hotprice__contant">
+            <div className="hotprice__sign">
               <span>Screen</span>
               <span className="hotprice__value">6.5” OLED</span>
             </div>
-            <div className="hotprice__contant">
+            <div className="hotprice__sign">
               <span>Capacity</span>
               <span className="hotprice__value">512 GB</span>
             </div>
-            <div className="hotprice__contant">
+            <div className="hotprice__sign">
               <span>Ram</span>
               <span className="hotprice__value">4 GB</span>
             </div>
@@ -263,15 +264,15 @@ const App = () => (
             <div className="hotprice__price">
               $1099
             </div>
-            <div className="hotprice__contant">
+            <div className="hotprice__sign">
               <span>Screen</span>
               <span className="hotprice__value">6.5” OLED</span>
             </div>
-            <div className="hotprice__contant">
+            <div className="hotprice__sign">
               <span>Capacity</span>
               <span className="hotprice__value">64 GB</span>
             </div>
-            <div className="hotprice__contant">
+            <div className="hotprice__sign">
               <span>Ram</span>
               <span className="hotprice__value">4 GB</span>
             </div>
@@ -291,15 +292,15 @@ const App = () => (
             <div className="hotprice__price">
               $999
             </div>
-            <div className="hotprice__contant">
+            <div className="hotprice__sign">
               <span>Screen</span>
               <span className="hotprice__value">6.2” IPS</span>
             </div>
-            <div className="hotprice__contant">
+            <div className="hotprice__sign">
               <span>Capacity</span>
               <span className="hotprice__value">256 GB</span>
             </div>
-            <div className="hotprice__contant">
+            <div className="hotprice__sign">
               <span>Ram</span>
               <span className="hotprice__value">4 GB</span>
             </div>
@@ -319,15 +320,15 @@ const App = () => (
             <div className="hotprice__price">
               $999
             </div>
-            <div className="hotprice__contant">
+            <div className="hotprice__sign">
               <span>Screen</span>
               <span className="hotprice__value">6.2” IPS</span>
             </div>
-            <div className="hotprice__contant">
+            <div className="hotprice__sign">
               <span>Capacity</span>
               <span className="hotprice__value">128 GB</span>
             </div>
-            <div className="hotprice__contant">
+            <div className="hotprice__sign">
               <span>Ram</span>
               <span className="hotprice__value">4 GB</span>
             </div>
