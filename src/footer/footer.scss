@@ -1,0 +1,30 @@
+.footer {
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 $contentHorPadding1440px;
+    height: 96px;
+    box-shadow: 0 -1px 0 #e2e6e9;
+    background-color: $backgroundColor;
+  }
+
+  &__up {
+    display: flex;
+    align-items: center;
+  }
+
+  &__up-title {
+    margin-right: 16px;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: $notActiveColor;
+  }
+
+  &__button-arrow {
+    width: 32px;
+    height: 32px;
+  }
+}
