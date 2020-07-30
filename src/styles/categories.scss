@@ -1,0 +1,47 @@
+.categories {
+  &__layout {
+    display: flex;
+    justify-content: space-between;
+
+  }
+
+  &__image-container {
+    position: relative;
+
+    height: 368px;
+    width: 368px;
+    margin-bottom: 24px;
+
+    &_golden {
+      background-color: $golden;
+    }
+
+    &_grey {
+      background-color: $grey;
+    }
+
+    &_purple {
+      background-color: $purple;
+    }
+  }
+
+  &__image {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    display: block;
+  }
+
+  &__caption {
+    @extend %h3;
+  }
+
+  &__amount {
+    @extend %body-text;
+
+    display: block;
+    margin-top: 4px;
+
+    color: $secondary-color;
+  }
+}

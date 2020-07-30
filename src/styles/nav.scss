@@ -17,6 +17,8 @@
     @extend %uppercase;
     cursor: pointer;
     line-height: 64px;
+    text-transform: uppercase;
+
     transition: all $transition-time linear;
 
     &:hover {
