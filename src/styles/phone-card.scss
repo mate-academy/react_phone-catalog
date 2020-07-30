@@ -4,9 +4,13 @@
   height: 507px;
   width: 272px;
   padding: 24px;
+  margin-left: 16px;
   border: 1px solid #E2E6E9;
   color: #313237;
 
+  &:first-child {
+    margin-left: 0;
+  }
 
   &__iphone-img {
     margin: 8px 8px 24px;
@@ -63,7 +67,7 @@
   &__buttons {
     display: flex;
     justify-content: space-between;
-    margin-top: 8px; 
+    margin-top: 8px;
   }
 
   &__btn-add-to-basket {
