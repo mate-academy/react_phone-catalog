@@ -4,6 +4,7 @@
   align-items: center;
   background-color: $primaryColor;
   cursor: pointer;
+  font-family: inherit;
   @include buttonFont;
 
   &:hover {
