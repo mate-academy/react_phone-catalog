@@ -98,27 +98,20 @@
     }
   }
 
-  @media (min-width: 768px) {
-
-    &__container {
-      padding-left: 24px;
-    }
+  @media(min-width: 1024px) {
+    display: block;
 
     &__checkbox-label {
       display: none;
     }
 
+    &__container {
+      padding-left: 24px;
+    }
+
     &__logo {
       display: block;
     }
-
-    &__nav {
-      visibility: visible;
-    }
-  }
-
-  @media(min-width: 1024px) {
-    display: block;
   }
 
   @media(min-width: 1680px) {

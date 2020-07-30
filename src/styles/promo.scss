@@ -15,13 +15,14 @@
 
   &__img-holder {
     width: 100%;
-    height: 200px;
+    height: 340px;
   }
 
   &__img {
     width: 100%;
     height: 100%;
     cursor: pointer;
+    object-fit: cover;
   }
 
   &__slider-button {
