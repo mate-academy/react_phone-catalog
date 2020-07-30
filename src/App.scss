@@ -56,6 +56,10 @@ $shopByItemsMargin: 15px;
   }
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 html,
 body {
   font-family: $fontFamily;
@@ -272,7 +276,7 @@ input {
     width: 40px;
     margin-right: 35px;
     margin-left: 25px;
-    background: url(images_presaved/header/header-logo.svg) center no-repeat;
+    background: url(images_presaved/logo.svg) center no-repeat;
   }
   &__links-box {
     display: flex;
@@ -448,6 +452,7 @@ input {
     &::-webkit-scrollbar {
       display: none;
     }
+    scrollbar-width: none;
     width: calc(100%
     - 2 * #{$transparentButtonSide}
     - 2 * #{$wideSliderIndentations});
@@ -514,6 +519,7 @@ input {
     &::-webkit-scrollbar {
       display: none;
     }
+    scrollbar-width: none;
   }
   &__sliding-row {
     display: flex;
@@ -618,5 +624,48 @@ input {
   }
   &__subtitle {
     color: $colorMiddleGray;
+  }
+}
+
+.footer {
+  border-top: 1px solid $colorElements;
+  user-select: none;
+  &__horizontal-container {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    align-items: center;
+    justify-items: center;
+    height: 100px;
+  }
+  &__logo {
+    height: 12px;
+    width: 40px;
+    background: url(images_presaved/logo.svg) center no-repeat;
+    background-size: contain;
+  }
+  &__link {
+    color: $colorMiddleGray;
+    margin: 0 15px;
+    padding: 15px;
+    transition-duration: $transitionDurationDefault;
+    &:hover {
+      color: $colorPrimary;
+    }
+  }
+  &__go-top {
+    display: flex;
+    align-items: center;
+    color: $colorMiddleGray;
+    transition-duration: $transitionDurationDefault;
+    &:hover {
+      color: $colorPrimary;
+    }
+  }
+  &__go-top-picture {
+    margin-left: 15px;
+    background-image: url(images_presaved/go-above-button.svg);
+  }
+  &__go-top:hover &__go-top-picture {
+    border-color: $colorPrimary;
   }
 }
