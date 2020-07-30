@@ -1,0 +1,15 @@
+.container {
+  display: grid;
+  justify-content: center;
+
+  &_products {
+    grid-template-columns: repeat(auto-fill, 272px);
+    grid-gap: 16px;
+  }
+
+  &_category {
+    grid-template-columns: repeat(auto-fill, 368px);
+    grid-gap: 16px;
+    padding-top: 24px;
+  }
+}

@@ -1,0 +1,36 @@
+.promo {
+  display: grid;
+  grid-template-columns: 32px 1fr 32px;
+  grid-row-gap: 18px;
+
+  &__img {
+    padding: 0 16px;
+    position: relative;
+    max-height: 400px;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  &__hyphens {
+    display: flex;
+    grid-column-start: 2;
+    justify-self: center;
+  }
+
+  &__hyphen {
+    margin: 0 7px;
+    width: 14px;
+    height: 4px;
+    background: #e2e6e9;
+
+    &_is-active {
+      background: $main-text-color;
+    }
+  }
+}
+
+@media screen and(max-width: 1200px) {
+  .promo {
+    padding: 0 20px;
+  }
+}

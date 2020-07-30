@@ -1,0 +1,32 @@
+.category {
+  &__image-wrapper {
+    width: 368px;
+    height: 368px;
+    display: flex;
+    justify-content: flex-end;
+    
+    &_1 {
+      background-color: #fcdbc1;
+    }
+    &_2 {
+      background-color: #8d8d92;
+    }
+    &_3 {
+      background-color: #973d5f;
+    }
+  }
+
+  &__title {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 26px;
+    padding: 24px 0 4px;
+  }
+
+  &__items {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #89939a;
+  }
+}

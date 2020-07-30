@@ -1,0 +1,21 @@
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 96px;
+  font-size: 12px;
+  line-height: 15px;
+  text-align: right;
+  color: #89939a;
+  box-shadow: 0 -1px 0 #e2e6e9;
+
+  &__scroll-back {
+    display: flex;
+    align-items: center;
+
+    & > :first-child {
+      font-weight: 600;
+      padding-right: 16px;
+    }
+  }
+}

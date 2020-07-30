@@ -1,0 +1,40 @@
+@import "vars";
+
+body,
+html,
+nav,
+li,
+a,
+p,
+ul,
+ol,
+h1,
+h2,
+h3,
+h4 {
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  font-family: Mont, sans-serif;
+  font-weight: 400;
+  color: $main-text-color;
+  font-size: 12px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}

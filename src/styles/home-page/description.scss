@@ -1,0 +1,14 @@
+.description {
+  font-weight: 600;
+  line-height: 15px;
+
+  &__title {
+    color: #89939a;
+  }
+
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 8px;
+  }
+}
