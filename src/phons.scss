@@ -107,10 +107,15 @@
       line-height: 15px;
       color: $c-secondary;
 
+    &--colored {
+      color: $c-primary;
+    }
+
       &:before {
         content: ">";
         margin-right: 15px;
         width: 9px;
+        color: $c-secondary;
       }
     }
   }
@@ -143,5 +148,20 @@
       }
     }
   }
-}
 
+  &__link {
+    display: block;
+    margin-bottom: 15px;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: $c-secondary;
+
+    &::before {
+      content: "<";
+      margin-right: 15px;
+      width: 9px;
+      color: $c-primary;
+    }
+  }
+}
