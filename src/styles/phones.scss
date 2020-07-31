@@ -1,8 +1,10 @@
 .phones {
+  display: flex;
+  flex-direction: column;
   margin-top: 40px;
 
   &__heading {
-    margin: 40px 0 8px;
+    margin: 0 0 8px;
   }
 
   &__amount {
@@ -37,23 +39,18 @@
     grid-gap: 40px 16px;
   }
 
-  @media (max-width: 1199px) {
+  @media (max-width: 1299px) {
     &__content {
       grid-template-columns: repeat(3, 1fr);
-
-      & .card:nth-child(3n+2) {
-        justify-self: center;
-      }
-
-      & .card:nth-child(3n) {
-        justify-self: end;
-      }
+      justify-items: center;
     }
   }
 
   @media (max-width: 999px) {
     &__content {
       grid-template-columns: repeat(2, 1fr);
+      width: 80vw;
+      align-self: center;
 
       & .card:nth-child(n) {
         justify-self: center;
@@ -61,7 +58,7 @@
     }
   }
 
-  @media (max-width: 649px) {
+  @media (max-width: 699px) {
     &__content {
       grid-template-columns: 1fr;
     }

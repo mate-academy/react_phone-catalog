@@ -10,7 +10,8 @@
   &__link {
     color: $secondaryColor;
     position: relative;
-    padding: 24px;
+    padding: 27px 24px;
+    line-height: 64px;
     text-transform: uppercase;
     transition: color 0.25s;
     font-size: 12px;
@@ -22,10 +23,8 @@
 
     &--active {
       color: $primaryColor;
-      position: relative;
 
       &::after {
-        display: block;
         content: "";
         position: absolute;
         bottom: 0;
