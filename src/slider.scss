@@ -1,0 +1,34 @@
+.slider {
+  width: 32px;
+  height: 32px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border: $iconsBorder;
+  cursor: pointer;
+
+  @include hover(border-color, $primaryColor);
+
+  &__icon {
+    width: 5px;
+    height: 9px;
+  }
+
+  &--right {
+    transform: rotate(180deg);
+  }
+
+  &--up {
+    transform: rotate(90deg);
+  }
+
+  &--banner {
+    height: $bannerHeight;
+  }
+
+  &--disabled {
+    opacity: 0.4;
+  }
+}

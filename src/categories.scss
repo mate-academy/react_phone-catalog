@@ -1,0 +1,13 @@
+.categories {
+
+  &__container {
+    display: grid;
+    justify-content: space-between;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: $cardsGap;
+  }
+
+  &__heading {
+    margin-bottom: 24px;
+  }
+}
