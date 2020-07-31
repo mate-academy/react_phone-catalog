@@ -1,0 +1,69 @@
+html,
+body,
+p,
+input,
+ul,
+li,
+textarea,
+hr,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: $primaryColor;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+p {
+  color: $secondaryColor;
+  font-family: "Mont-SemiBold";
+}
+
+* {
+  box-sizing: border-box;
+
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: "Mont-Bold";
+  font-size: 14px;
+  line-height: 21px;
+}
+
+h1 {
+  font-family: "Mont-Bold";
+  margin:24px 0;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+}
+
+h2 {
+  font-family: "Mont-Bold";
+  font-size: 22px;
+  line-height: 31px;
+}
+
+h3 {
+  font-family: "Mont-SemiBold";
+  font-size: 20px;
+  line-height: 26px;
+}
+
+h4 {
+  font-size: 14px;
+  line-height: 21px;
+  font-family: "Mont-Regular";
+}
+
+button,
+a {
+  font-family: "Mont-SemiBold";
+  text-decoration: none;
+  color: #000;
+}

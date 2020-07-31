@@ -1,0 +1,66 @@
+.phones {
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+
+  &__heading {
+    margin: 0 0 8px;
+  }
+
+  &__amount {
+    font-family: "Mont-Regular";
+    margin-bottom: 40px;
+  }
+
+  &__select-container {
+    display: flex;
+    margin-bottom: 24px;
+  }
+
+  &__select-item:first-child {
+    margin-right: 16px;
+  }
+
+  &__select-sort-text {
+    margin-bottom: 4px;
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  & .card {
+    margin: 0;
+  }
+
+  &__content {
+    margin-bottom: 40px;
+    display: grid;
+    justify-content: space-between;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 40px 16px;
+  }
+
+  @media (max-width: 1299px) {
+    &__content {
+      grid-template-columns: repeat(3, 1fr);
+      justify-items: center;
+    }
+  }
+
+  @media (max-width: 999px) {
+    &__content {
+      grid-template-columns: repeat(2, 1fr);
+      width: 80vw;
+      align-self: center;
+
+      & .card:nth-child(n) {
+        justify-self: center;
+      }
+    }
+  }
+
+  @media (max-width: 699px) {
+    &__content {
+      grid-template-columns: 1fr;
+    }
+  }
+}

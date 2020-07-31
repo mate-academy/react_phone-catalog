@@ -1,0 +1,148 @@
+.header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 64px;
+  box-shadow: 0px 1px 0px $elementsColor;
+
+  &__search {
+    margin-left: 32px;
+    position: relative;
+    border-right: 1px solid $elementsColor;
+  }
+
+  .search {
+    padding: 23px 24px;
+    width: 327px;
+    border: none;
+    outline: none;
+    box-shadow: -1px 0px 0px #E2E6E9;
+    color: $primaryColor;
+    transition: 0.15s;
+
+    &-button {
+      padding:0 23px;
+      position: absolute;
+      top: calc(50% - 16px / 2);
+      right: 24px;
+      background-image: url(../img/header/search.svg);
+      background-position: center;
+      background-repeat: no-repeat;
+      width: 16px;
+      height: 16px;
+    }
+
+    &::placeholder {
+      font-family: "Mont-SemiBold";
+      color: #b4bdc4;
+    }
+
+    &:hover {
+      background-color: $hoverColor;
+    }
+
+    &:focus {
+      background-color: $hoverColor;
+    }
+  }
+
+  &__right {
+    margin-left: auto;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    z-index: 2;
+  }
+
+  &__favourite {
+    border: none;
+    right: 1px;
+    box-shadow: -1px 0px 0px $elementsColor;
+    height: 100%;
+    width: 64px;
+
+    &:hover {
+      box-shadow: none;
+    }
+  }
+
+  &__shopping-cart {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    right: 0;
+    height: 100%;
+    width: 64px;
+    cursor: pointer;
+    box-shadow: -1px 0px 0px $elementsColor;
+
+    &--active {
+      &::before {
+        display: block;
+        position: absolute;
+        content: '3';
+        font-family: "Mont-Regular";
+        font-size: 9px;
+        line-height: 15px;
+        color: $whiteColor;
+        text-align: center;
+        top: 28%;
+        left: 50%;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background-color: $redColor;
+      }
+
+      &::after {
+        display: block;
+        position: absolute;
+        content: "";
+        height: 3px;
+        width: 100%;
+        bottom: 0;
+        background-color: $primaryColor;
+      }
+    }
+  }
+
+  &__shopping-cart:hover {
+    border: 1px solid $primaryColor;
+  }
+
+  @media (max-width: 1299px) {
+    &__logo {
+      margin-left: 24px;
+    }
+  }
+
+  @media (max-width: 636px) {
+    &__logo {
+      margin-left: 15px;
+    }
+
+    &__search {
+      position: absolute;
+      right: 128px;
+    }
+
+    .search {
+      width: 64px;
+      transition: width 0.3s;
+
+      &::placeholder {
+        color: transparent;
+      }
+
+      &:focus {
+        width: 190px;
+      }
+
+      &-button {
+        margin: 0 13px;
+        padding: 0;
+        right: 10px;
+      }
+    }
+  }
+}

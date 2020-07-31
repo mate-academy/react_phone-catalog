@@ -1,0 +1,79 @@
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 96px;
+  box-shadow: 0px -1px 0px $elementsColor;
+
+  &__back-top {
+    display: flex;
+    align-items: center;
+
+    &:hover {
+      .footer__arrow {
+        cursor: pointer;
+      }
+
+      .footer__back-top p {
+        color: $primaryColor;
+      }
+    }
+
+    & p {
+      font-family: "Mont-Regular";
+      transition: 0.2s;
+
+      &:hover {
+        color: $primaryColor;
+      }
+    }
+  }
+
+  &-nav__list {
+    display: flex;
+  }
+
+  &-nav__item {
+    padding: 0 32px;
+  }
+
+  &__arrow {
+    width: 32px;
+    height: 32px;
+    margin-left: 16px;
+  }
+
+  @media (max-width: 999px) {
+    &__link {
+      font-size: 14px;
+    }
+  }
+
+  @media (max-width: 636px) {
+    & {
+      display: grid;
+      grid-template-columns: 2;
+      grid-template-rows: 3;
+    }
+
+    &__logo {
+      margin-top: 5px;
+    }
+
+    &-nav__list {
+      flex-direction: column;
+
+    }
+
+    &-nav__item {
+      padding: 0;
+      text-align: right;
+    }
+
+    &__nav {
+      grid-column: 2;
+      grid-row-start: 1;
+      grid-row-end: 3;
+    }
+  }
+}

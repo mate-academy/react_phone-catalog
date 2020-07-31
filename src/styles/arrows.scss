@@ -1,0 +1,14 @@
+.arrow {
+  display: flex;
+  justify-content: center;
+  width: 32px;
+  border: 1px solid #B4BDC4;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: border 0.2s;
+
+  &:hover {
+    border: 1px solid $primaryColor;
+    cursor: pointer;
+  }
+}

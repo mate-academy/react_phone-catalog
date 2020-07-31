@@ -1,0 +1,58 @@
+.favourite {
+  position: relative;
+  background-color: $whiteColor;
+  background-image: url(../img/header/favourite.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: border 0.2s;
+  outline: none;
+
+  &-icon {
+    display: flex;
+    justify-content: center;
+    z-index: 1;
+  }
+
+  &--active {
+    &::before {
+      display: block;
+      position: absolute;
+      content: '5';
+      font-family: "Mont-Regular";
+      font-size: 9px;
+      line-height: 15px;
+      color: $whiteColor;
+      text-align: center;
+      top: 28%;
+      left: 50%;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background-color: $redColor;
+    }
+
+    &::after {
+      display: block;
+      position: absolute;
+      content: "";
+      height: 3px;
+      width: 100%;
+      left: 0;
+      bottom: 0;
+      background-color: $primaryColor;
+    }
+  }
+
+  &--select {
+    background-image: url(../img/favourites/favourite-selected.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+
+  &:hover,
+  &-icon:hover {
+    border: 1px solid $primaryColor;
+    cursor: pointer;
+  }
+}

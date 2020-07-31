@@ -1,0 +1,17 @@
+.container {
+  padding: 0 6vw;
+
+  @media (min-width: 1300px) {
+    @include containerPadding;
+  }
+
+  &__header {
+    @media (min-width: 1300px) {
+      @include containerPadding;
+    }
+
+    @media (max-width: 999px) {
+      padding: 0;
+    }
+  }
+}

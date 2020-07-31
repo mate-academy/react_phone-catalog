@@ -1,0 +1,13 @@
+.button {
+  padding: 8px 48px;
+  background-color: $primaryColor;
+  color: $whiteColor;
+  border: 1px solid $primaryColor;
+  transition: color 0.2s, background-color 0.25s;
+
+  &:hover {
+    color: $primaryColor;
+    background-color: $whiteColor;
+    cursor: pointer;
+  }
+}
