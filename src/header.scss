@@ -23,9 +23,9 @@
     align-items: center;
 
     box-shadow: -1px 0px 0px $borderColor;
+    border: 1px solid transparent;
 
-    @include hover(border, 1px solid $primaryColor);
-    @include hover(background-color, #fafbfc); //????
+    @include hover(border-color, $primaryColor);
     cursor: pointer;
 
     &:hover .header__img {
