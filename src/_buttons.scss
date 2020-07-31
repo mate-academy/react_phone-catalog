@@ -19,8 +19,15 @@
   &__heart,
   &__shopping-bag,
   &__home,
-  &__search {
+  &__search,
+  &__close,
+  &__minus,
+  &__plus {
     fill: $colorPrimary;
+  }
+
+  &__heart-in-color {
+    fill: $colorMainRed;
   }
 
   &--promo-catalog {
@@ -65,6 +72,26 @@
       fill: $colorPrimary;
     }
   }
+  
+  &--active {
+    color: $colorPrimary;
+
+    &::after {
+      position: absolute;
+      bottom: 0;
+      display: block;
+      width: calc(100% + 2 * 1px); // $headerShadowHeight
+      height: 3px;
+      background-color: $colorPrimary;
+      content: "";
+    }
+  }
+
+  &--item-basket {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
   &--disabled {
     border-color: $colorBlockShadow;
@@ -75,7 +102,8 @@
     }
 
     #{$blockName}__arrow-left,
-    #{$blockName}__arrow-right {
+    #{$blockName}__arrow-right,
+    #{$blockName}__minus {
       fill: $colorBlockShadow;
     }
     &:hover #{$blockName}__arrow-left,
@@ -94,6 +122,15 @@
 
   &--cart-add {
     height: $buttonCardHeight;
+  }
+
+  &--basket {
+    width: 100%;
+    height: 48px;
+  }
+
+  &--cart-add,
+  &--basket {
     color: $colorMainLight;
     background-color: $colorPrimary;
     border: 0;

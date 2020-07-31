@@ -33,6 +33,10 @@
     display: grid;
     grid-template-columns: repeat(3, auto);
     grid-column-gap: 64px;
+
+    @media (max-width: $portableScreenSize) {
+      grid-column-gap: $xLargeGap;
+    }
   }
 
   &__nav-link {

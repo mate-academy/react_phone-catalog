@@ -32,10 +32,18 @@
 
   &__sort-select {
     width: 176px;
+
+    @media (max-width: $portableScreenSize) {
+      width: 150px;
+    }
   }
 
   &__on-page-select {
     width: 128px;
+
+    @media (max-width: $portableScreenSize) {
+      width: 100px;
+    }
   }
 
   &__sort-select:focus,

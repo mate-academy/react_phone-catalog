@@ -1,6 +1,7 @@
 .header {
   position: relative;
   display: flex;
+  height: $navHeight;
   background-color: $bgColor;
   box-shadow: 0 $headerShadowHeight 0 $colorBlockShadow;
 
@@ -96,7 +97,7 @@
     width: $navHeight;
     height: $navHeight + $headerShadowHeight;
 
-    @media (max-width: $portableScreenSize) {
+    @media (max-width: $tabletScreenSize) {
       border: 1px solid $colorBlockShadow;
       cursor: pointer;
       transition: border-color $animHoverTime;
@@ -115,7 +116,7 @@
     padding-left: $mediumGap;
     border: 1px solid $colorBlockShadow;
     outline: 0;
-    transition: border-color $animHoverTime,
+    transition: background-color $animHoverTime,
       width $animHoverTime;
 
     @media (max-width: $notebookScreenSize) {
@@ -123,16 +124,12 @@
     }
 
     @media (max-width: $tabletScreenSize) {
-      width: $headerSearchTabletWidth;
-    }
-
-    @media (max-width: $portableScreenSize) {
       display: none;
     }
 
     &:hover,
     &:focus {
-      border-color: $colorPrimary;
+      background-color: $colorHoverAndBg;
     }
 
     &::placeholder {
@@ -142,5 +139,30 @@
 
   &__search-icon {
     z-index: 1;
+  }
+
+  &__button {
+    position: relative;
+  }
+
+  &__selected-items-quantity {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: $navHeight / 3.5;
+    right: $navHeight / 3.9;
+    width: 14px;
+    height: 14px;
+    color: $colorMainLight;
+    background-color: $colorMainRed;
+    border: 1px solid $colorMainLight;
+    border-radius: 50%;
+  }
+
+  &__selected-items-number {
+    font-weight: 600;
+    font-size: 9px;
+    line-height: 12px;
   }
 }

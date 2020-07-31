@@ -19,7 +19,14 @@
     transition: color $animHoverTime;
   }
 
-  &__item:hover &__text {
+  &__text-back {
+    margin-left: $smallGap;
+    color: $colorSecondary;
+    transition: color $animHoverTime;
+  }
+
+  &__item:hover &__text,
+  &__item:hover &__text-back {
     color: $colorPrimary;
   }
 
