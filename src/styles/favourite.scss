@@ -7,6 +7,12 @@
   transition: border 0.2s;
   outline: none;
 
+  &-icon {
+    display: flex;
+    justify-content: center;
+    z-index: 1;
+  }
+
   &--active {
     &::before {
       display: block;
@@ -44,7 +50,8 @@
   }
 
 
-  &:hover {
+  &:hover,
+  &-icon:hover {
     border: 1px solid $primaryColor;
     cursor: pointer;
   }

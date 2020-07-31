@@ -60,6 +60,10 @@
     box-shadow: -1px 0px 0px $elementsColor;
     height: 100%;
     width: 64px;
+
+    &:hover {
+      box-shadow: none;
+    }
   }
 
   &__shopping-cart {
