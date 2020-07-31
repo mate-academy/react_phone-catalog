@@ -1,0 +1,39 @@
+html,
+body,
+ul,
+li,
+button,
+input,
+textarea,
+h1,
+h2,
+p {
+  margin: 0;
+  padding: 0;
+  border-width: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.divider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+  height: 100px;
+  border: 2px solid green;
+}

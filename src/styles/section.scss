@@ -1,0 +1,9 @@
+.section {
+  margin-top: 80px;
+  display: flex;
+  justify-content: center;
+
+  &__header {
+    @extend %h1;
+  }
+}

@@ -1,0 +1,19 @@
+.dropdown {
+  .dropdown__button {
+    @extend %buttons;
+
+    height: 40px;
+    margin-bottom: 4px;
+
+    background: #fff;
+    border: 1px solid $icons-color;
+
+    &_name {
+      width: 176px;
+    }
+
+    &_nums {
+      width: 128px;
+    }
+  }
+}

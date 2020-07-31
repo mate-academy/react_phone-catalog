@@ -1,0 +1,38 @@
+.banner-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 40px;
+
+  &__container {
+    display: flex;
+  }
+
+  &__image {
+    display: block;
+    margin: 0 16px;
+  }
+
+  &__indicators-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 18px;
+  }
+
+  &__indicator {
+    margin-right: 14px;
+    width: 14px;
+    height: 4px;
+
+    background-color: $elements-color;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &__indicator_active {
+    background-color: $primary-color;
+  }
+}

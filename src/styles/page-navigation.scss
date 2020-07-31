@@ -1,0 +1,22 @@
+.page-navigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-top: 24px;
+
+  &__container {
+    display: flex;
+    align-items: center;
+  }
+
+  &__arrow {
+    margin: 0 15px;
+  }
+
+  &__name {
+    @extend %small-text;
+
+    color: $secondary-color;
+  }
+}

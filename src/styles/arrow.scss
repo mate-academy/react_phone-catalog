@@ -1,0 +1,23 @@
+.arrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+
+  color: $icons-color;
+  border: 1px solid $elements-color;
+
+  cursor: pointer;
+
+  &_right {
+    transform: rotate(180deg);
+  }
+
+  &_active {
+    border-color: $icons-color;
+  }
+
+  &:hover {
+    border-color: $primary-color;
+  }
+}

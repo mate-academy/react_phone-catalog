@@ -1,0 +1,16 @@
+.search-bar {
+  @extend %buttons;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 327px;
+
+  padding: 0 24px;
+
+  box-shadow: -1px 0 0 $elements-color;
+
+  &__input {
+    @extend %buttons;
+  }
+}

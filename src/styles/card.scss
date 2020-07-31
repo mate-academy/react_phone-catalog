@@ -1,0 +1,102 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: $card-width;
+  padding: 32px 24px 24px;
+
+  border: 1px solid $elements-color;
+
+  &__image {
+    display: block;
+    align-self: center;
+  }
+
+  &__caption {
+    margin-top: 24px;
+    @extend %body-text;
+  }
+
+  &__price {
+    margin-top: 8px;
+    @extend %h2;
+  }
+
+  &__price_crossed {
+    font-family: "MontSemiBold", sans-serif;
+    color: $secondary-color;
+    text-decoration-line: line-through;
+  }
+
+  &__line {
+    height: 1px;
+    margin-top: 8px;
+
+    background-color: $elements-color;
+  }
+
+  &__specs {
+    margin-top: 16px;
+  }
+
+  &__hardware {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+
+    &:last-child {
+      margin-bottom: 16px;
+    }
+  }
+
+  &__spec {
+    @extend %small-text;
+    color: $secondary-color;
+
+    &_value {
+      @extend %small-text;
+    }
+  }
+
+  &__action {
+    display: flex;
+  }
+
+  &__button {
+    @extend %buttons;
+    width: 80%;
+
+    font-weight: 600;
+    color: #fff;
+    background-color: $primary-color;
+    outline: none;
+    border: none;
+
+    cursor: pointer;
+
+    &_favourites {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 40px;
+      height: 40px;
+      margin-left: 8px;
+
+      color: $gray-one;
+      border: 1px solid $icons-color;
+      background: #fff;
+
+      transition: all 0 $transition-time linear;
+    }
+
+    &:hover {
+      box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+    }
+
+    &_active {
+      background-color: #fff;
+      border: 1px solid $elements-color;
+      color: $green;
+    }
+  }
+}
