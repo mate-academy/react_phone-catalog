@@ -17,10 +17,6 @@ html {
   scroll-behavior: smooth;
 }
 
-//body {
-//  background-color: $background-color;
-//}
-
 a {
   text-decoration: none;
 }
@@ -31,4 +27,13 @@ ul {
 
 * {
   box-sizing: border-box;
+}
+
+.divider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+  height: 100px;
+  border: 2px solid green;
 }

@@ -72,6 +72,8 @@
     outline: none;
     border: none;
 
+    cursor: pointer;
+
     &_favourites {
       display: flex;
       justify-content: center;
@@ -91,7 +93,7 @@
       box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
     }
 
-    &:active {
+    &_active {
       background-color: #fff;
       border: 1px solid $elements-color;
       color: $green;

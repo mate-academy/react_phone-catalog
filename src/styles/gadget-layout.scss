@@ -1,0 +1,7 @@
+.gadget-layout {
+  display: grid;
+  grid-template-columns: repeat(4, $card-width);
+  column-gap: 16px;
+  row-gap: 40px;
+  justify-content: space-between;
+}

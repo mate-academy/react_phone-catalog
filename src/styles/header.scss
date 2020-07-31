@@ -18,9 +18,6 @@
 
   &__icons {
     display: flex;
-
-    background-color: $gray-one;
-
   }
 
   &__icon {
@@ -39,9 +36,7 @@
     background: #fff;
     box-shadow: -1px 0 0 $elements-color;
 
-    &:hover {
-      border: 1px solid $primary-color;
-    }
+    cursor: pointer;
   }
 
 }
