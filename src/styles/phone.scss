@@ -40,12 +40,20 @@
   }
 
   &__img-main {
-    width: 280px;
-    height: 280px;
+    width: 300px;
+    height: 300px;
     cursor: pointer;
   }
 
-  @media (min-width: 600px) {
+  @media (min-width: 768px) {
+
+    &__img-main {
+      width: 422px;
+      height: 422px;
+    }
+  }
+
+  @media (min-width: 1024px) {
     &__container {
       grid-template-columns: 80px 442px;
       grid-column-gap: 27px;
@@ -55,11 +63,6 @@
       display: grid;
       grid-template-columns: 80px;
       grid-row-gap: 16px;
-    }
-
-    &__img-main {
-      width: 422px;
-      height: 422px;
     }
   }
 }

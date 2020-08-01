@@ -27,11 +27,24 @@
     }
 
     &--big {
-      height: 48px;
+      height: 40px;
     }
   }
 
   &--big {
-    grid-template-columns: 263px 48px;
+    grid-template-columns: 176px 40px;
+  }
+
+  @media (min-width: 1280px) {
+
+    &__cart-button {
+      &--big {
+        height: 48px;
+      }
+    }
+
+    &--big {
+      grid-template-columns: 263px 48px;
+    }
   }
 }

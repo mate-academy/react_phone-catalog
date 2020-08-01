@@ -116,7 +116,11 @@
   &__phone {
     display: grid;
     grid-row-gap: 50px;
-    margin: 0 auto;
+    justify-content: center;
+  }
+
+  &__phone-info {
+    margin: 80px auto;
   }
 
   @media (min-width: 600px) {
@@ -138,8 +142,7 @@
 
     &__sales-top-content,
     &__models-top-content,
-    &__info,
-    &__phone {
+    &__info {
       width: calc(#{$cardWidth} * 2 + #{$gapX});
     }
 
@@ -151,6 +154,18 @@
       &--modified {
         grid-template-columns: 13px 5px 45px 5px 291px;
       }
+    }
+
+    &__phone {
+      grid-template-columns: repeat(2, 280px);
+      grid-column-gap: 20px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    &__phone {
+      grid-template-columns: 422px 280px;
+      justify-content: center;
     }
   }
 
@@ -172,9 +187,18 @@
 
     &__sales-top-content,
     &__models-top-content,
-    &__info,
-    &__phone {
+    &__info {
       width: 100%;
+    }
+
+    &__phone {
+      grid-template-columns: 549px 280px;
+      grid-column-gap: 50px;
+      justify-content: start;
+    }
+
+    &__phone-info {
+      margin: 80px 0;
     }
   }
 

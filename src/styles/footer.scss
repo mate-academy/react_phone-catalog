@@ -40,7 +40,8 @@
       width: calc(#{$promoImgWidth} + #{$sliderButtonWidth} * 2 + #{$gapX} * 2);
     }
 
-    &__logo {
+    &__logo,
+    &__button-container {
       padding: 0;
     }
   }

@@ -1,0 +1,53 @@
+.phone-info {
+  display: grid;
+  grid-row-gap: 50px;
+  width: 272px;
+
+  &__title {
+    margin-bottom: 16px;
+    @include fontProps(Mont-Bold, 22px, 700, 140%, $mainBlackColor);
+  }
+
+  &__description-title {
+    margin-top: 32px;
+    margin-bottom: 16px;
+    @include fontProps(Mont-SemiBold, 20px, 600, 26px, $mainBlackColor);
+  }
+
+  &__description-content {
+    @include fontProps(Mont-Regular, 14px, 500, 21px, #89939a);
+  }
+
+  &__line {
+    color: #e2e6e9;
+  }
+
+  &__props {
+    margin-top: 25px;
+  }
+
+  @media (min-width: 600px) {
+    grid-template-columns: 272px 272px;
+    grid-column-gap: 16px;
+    justify-content: center;
+  }
+
+  @media (min-width: 768px) {
+    grid-template-columns: 380px 272px;
+    grid-column-gap: 64px;
+  }
+
+  @media (min-width: 1024px) {
+    grid-template-columns: 540px 272px;
+    justify-content: start;
+  }
+
+  @media (min-width: 1280px) {
+    grid-template-columns: 560px 320px;
+    grid-column-gap: 64px;
+  }
+
+  @media (min-width: 1440px) {
+    grid-template-columns: 560px 512px;
+  }
+}

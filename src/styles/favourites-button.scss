@@ -27,11 +27,18 @@
   }
 
   &--medium {
-    width: 48px;
-    height: 48px;
+    width: 40px;
+    height: 40px;
   }
 
   &:hover:not(&--big) {
     border-color: $mainBlackColor;
+  }
+
+  @media (min-width: 1280px) {
+    &--medium {
+      width: 48px;
+      height: 48px;
+    }
   }
 }
