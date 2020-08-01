@@ -1,0 +1,61 @@
+.category {
+  &__img-holder {
+    position: relative;
+    height: 320px;
+    overflow: hidden;
+
+    &--first {
+      background-color: #fcdbc1;
+    }
+
+    &--second {
+      background-color: #8d8d92;
+    }
+
+    &--third {
+      background-color: #973d5f;
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    height: 90%;
+    cursor: pointer;
+    transition: transform 0.5s;
+
+    &:hover {
+      transform: scale(0.9) translateY(20px) translateX(22px);
+    }
+  }
+
+  &__name {
+    @include fontProps(Mont-SemiBold, 20px, 600, 26px, $mainBlackColor);
+    margin: 24px 0 4px;
+  }
+
+  &__info {
+    @include fontProps(Mont-Regular, 14px, 500, 21px, #89939a);
+  }
+
+  @media (min-width: 600px) {
+    &--third {
+      display: none;
+    }
+
+    &__photo {
+      height: 85%;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    &--third {
+      display: block;
+    }
+
+    &__photo {
+      height: 100%;
+    }
+  }
+}

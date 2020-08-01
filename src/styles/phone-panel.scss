@@ -1,0 +1,55 @@
+.phone-panel {
+  justify-self: center;
+
+  &__container {
+    width: 224px;
+  }
+
+  &__colors-title,
+  &__capacities-title {
+    @include fontProps(Mont-SemiBold, 12px, 600, 15px, #89939a);
+  }
+
+  &__colors-container,
+  &__capacities-container {
+    display: grid;
+    grid-row-gap: 8px;
+  }
+
+  &__line {
+    color: #e2e6e9;
+    margin: 10px 0;
+  }
+
+  &__buttons {
+    margin-top: 16px;
+  }
+
+  &__props {
+    margin-top: 32px;
+  }
+
+  @media (min-width: 600px) {
+    justify-self: start;
+
+    &__container {
+      width: 272px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    &__line {
+      margin: 24px 0;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    &__container {
+      width: 320px;
+    }
+
+    &__props {
+      width: 100%;
+    }
+  }
+}

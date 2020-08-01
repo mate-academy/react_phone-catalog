@@ -1,0 +1,17 @@
+.phone-props {
+  display: grid;
+  grid-row-gap: 8px;
+
+  &__prop {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__name {
+    @include fontProps(Mont-SemiBold, 12px, 600, 15px, #89939a);
+  }
+
+  &__value {
+    @include fontProps(Mont-SemiBold, 12px, 600, 15px, $mainBlackColor);
+  }
+}

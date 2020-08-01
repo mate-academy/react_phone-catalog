@@ -1,0 +1,40 @@
+.product {
+  padding: 32px 24px 24px;
+  width: 272px;
+  border: 1px solid #e2e6e9;
+
+  &__photo {
+    cursor: pointer;
+    transition: transform 0.5s;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__title {
+    @include fontProps(Mont-Regular, 14px, 500, 21px, $mainBlackColor);
+    margin-top: 24px;
+  }
+
+  &__line {
+    margin: 0;
+    color: $mainGrayColor;
+  }
+
+  &__props {
+    margin: 16px 0;
+  }
+
+  @media (min-width: 1024px) {
+    &:last-child {
+      display: none;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    &:last-child {
+      display: block;
+    }
+  }
+}

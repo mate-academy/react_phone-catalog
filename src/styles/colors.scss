@@ -1,0 +1,34 @@
+.colors {
+  $elemWidth: 32px;
+  $colors: (1: #fcdbc1, 2: #e2e6e9, 3: #4c4c4c, 4: #f0f0f0);
+
+  display: grid;
+  grid-template-columns: repeat(4, $elemWidth);
+  grid-column-gap: 9px;
+
+  &__color {
+    width: $elemWidth;
+    height: $elemWidth;
+
+    border: 1px solid #e2e6e9;
+    box-shadow: 0 0 0 2px #fff inset;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.5s, border-color 0.5s;
+
+    @each $num, $color in $colors {
+      &--#{$num} {
+        background-color: #{$color};
+      }
+    }
+
+    &--active {
+      border-color: $mainBlackColor;
+    }
+
+    &:hover {
+      border-color: $mainBlackColor;
+      transform: scale(1.2);
+    }
+  }
+}

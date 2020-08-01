@@ -1,0 +1,94 @@
+.slider-button {
+  $blockName: &;
+
+  position: relative;
+  width: 32px;
+  border: 1px solid #b4bdc4;
+  cursor: pointer;
+  transition: box-shadow 0.5s;
+
+  &::after {
+    $elemWidth: 5px;
+    $elemHeight: 9px;
+
+    position: absolute;
+    top: calc(50% - #{$elemHeight});
+    left: calc(50% - #{$elemWidth} / 2);
+    width: $elemWidth;
+    height: $elemHeight;
+  }
+
+  &--left {
+    &::after {
+      content: url("../arrow-left.png");
+    }
+
+    &:hover {
+      box-shadow: 0 0 3px 2px $mainGrayColor;
+    }
+  }
+
+  &--right {
+    &::after {
+      content: url("../arrow-right.png");
+    }
+
+    &:hover {
+      box-shadow: 0 0 3px 2px $mainGrayColor;
+    }
+  }
+
+  &--top {
+    &::after {
+      transform: rotate(90deg);
+      transform-origin: bottom center;
+      content: url("../arrow-left.png");
+    }
+
+    &:hover {
+      box-shadow: 0 0 3px 2px $mainGrayColor;
+    }
+  }
+
+  &--small {
+    height: 32px;
+    opacity: 0.5;
+
+    &:hover {
+      animation: rotate 0.5s ease;
+    }
+  }
+
+  &--active {
+    opacity: 1;
+  }
+
+  &--selected {
+    background-color: $mainBlackColor;
+
+    &::before {
+      color: #fff;
+    }
+  }
+
+  &--numbered {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    @include fontProps(Mont-Regular, 14px, 500, 21px, $mainBlackColor);
+    transition: background-color 0.5s, color 0.5s;
+    opacity: 1;
+
+    &:hover {
+      background-color: $mainBlackColor;
+      @include fontProps(Mont-Regular, 14px, 500, 21px, #fff);
+    }
+
+    @for $num from 1 through 4 {
+
+      &_#{$num}::before {
+        content: "#{$num}";
+      }
+    }
+  }
+}

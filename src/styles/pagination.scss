@@ -1,0 +1,6 @@
+.pagination {
+  display: grid;
+  grid-template-columns: repeat(6, 32px);
+  grid-column-gap: 16px;
+  justify-content: center;
+}

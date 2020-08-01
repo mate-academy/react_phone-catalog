@@ -1,0 +1,30 @@
+@import "./styles/_reset";
+@import "./styles/variables.scss";
+@import "./styles/header";
+@import "./styles/logo.scss";
+@import "./styles/nav";
+@import "./styles/small-screens-nav.scss";
+@import "./styles/page-title.scss";
+@import "./styles/favourites-button.scss";
+@import "./styles/main";
+@import "./styles/promo";
+@import "./styles/slider-button";
+@import "./styles/rectangles";
+@import "./styles/product";
+@import "./styles/phone-props";
+@import "./styles/category";
+@import "./styles/footer.scss";
+@import "./styles/sort.scss";
+@import "./styles/products.scss";
+@import "./styles/pagination.scss";
+@import "./styles/phone.scss";
+@import "./styles/phone-panel.scss";
+@import "./styles/colors.scss";
+@import "./styles/capacities.scss";
+@import "./styles/prices.scss";
+@import "./styles/buttons.scss";
+@import "./styles/phone-info.scss";
+
+html {
+  scroll-behavior: smooth;
+}

@@ -1,0 +1,44 @@
+.favourites-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #e2e6e9;
+  transition: box-shadow 0.5s;
+
+  &--big {
+    width: 64px;
+    height: 64px;
+    border-top: none;
+    border-bottom: none;
+
+    &:hover {
+      box-shadow: 0 0 3px 2px $mainGrayColor;
+    }
+  }
+
+  &--small {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #b4bdc4;
+  }
+
+  &__img {
+    transition: transform 0.5s;
+  }
+
+  &--medium {
+    width: 40px;
+    height: 40px;
+  }
+
+  &:hover:not(&--big) {
+    border-color: $mainBlackColor;
+  }
+
+  @media (min-width: 1280px) {
+    &--medium {
+      width: 48px;
+      height: 48px;
+    }
+  }
+}

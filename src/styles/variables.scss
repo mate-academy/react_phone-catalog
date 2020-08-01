@@ -1,0 +1,51 @@
+$mainGrayColor: #89939a;
+$mainBlackColor: #313237;
+$selectedButtonColor: #27ae60;
+$mainRedColor: #eb5757;
+$promoImgWidth: 1040px;
+$cardWidth: 272px;
+$gapX: 16px;
+$sliderButtonWidth: 32px;
+
+@mixin fontProps($fontFam, $fontSize, $fontWeight, $lineHeight, $color) {
+  font-family: $fontFam, sans-serif;
+  font-size: $fontSize;
+  font-weight: $fontWeight;
+  line-height: $lineHeight;
+  color: $color;
+}
+
+@font-face {
+  font-family: Mont-Bold;
+  src: url(../fonts/Mont-Bold.otf);
+}
+
+@font-face {
+  font-family: Mont-Regular;
+  src: url(../fonts/Mont-Regular.otf);
+}
+
+@font-face {
+  font-family: Mont-SemiBold;
+  src: url(../fonts/Mont-SemiBold.otf);
+}
+
+@keyframes linksUnderline {
+  0% {
+    transform: scale(0.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotateZ(0deg);
+  }
+
+  to {
+    transform: rotateZ(360deg);
+  }
+}
