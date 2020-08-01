@@ -26,6 +26,13 @@
     margin-top: 25px;
   }
 
+  &__description {
+    &--second,
+    &--third {
+      display: none;
+    }
+  }
+
   @media (min-width: 600px) {
     grid-template-columns: 272px 272px;
     grid-column-gap: 16px;
@@ -40,6 +47,13 @@
   @media (min-width: 1024px) {
     grid-template-columns: 540px 272px;
     justify-content: start;
+
+    &__description {
+      &--second,
+      &--third {
+        display: block;
+      }
+    }
   }
 
   @media (min-width: 1280px) {
