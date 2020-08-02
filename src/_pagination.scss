@@ -1,0 +1,21 @@
+.pagination {
+  
+  &__button {
+
+    &--left {
+      margin-right: $mediumGap;
+    }
+
+    &--right {
+      margin-left: $mediumGap;
+    }
+  }
+
+  &__button-number {
+    margin-right: $smallGap;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}

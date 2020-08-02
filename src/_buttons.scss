@@ -1,0 +1,170 @@
+.button {
+  $blockName: &;
+  
+  width: $buttonDefaultWidth;
+  height: $buttonDefaultWidth;
+  background-color: $colorMainLight;
+  border: 1px solid $colorElements;
+  outline: 0;
+  cursor: pointer;
+  color: $colorPrimary;
+  transition: border-color $animHoverTime;
+
+  &:hover {
+    border-color: $colorPrimary;
+  }
+
+  &__arrow-up,
+  &__arrow-left,
+  &__arrow-right,
+  &__arrow-down,
+  &__heart,
+  &__shopping-bag,
+  &__home,
+  &__search,
+  &__close,
+  &__minus,
+  &__plus {
+    fill: $colorPrimary;
+  }
+
+  &__heart-in-color {
+    fill: $colorMainRed;
+  }
+
+  &--promo-catalog {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &--header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: $navHeight;
+    height: $navHeight + $headerShadowHeight;
+    border-color: $colorBlockShadow;
+    text-align: center;
+  }
+
+  &--slider-btn {
+    height: $sliderHeight;
+    transition: height $animHoverTime,
+      border-color $animHoverTime;
+
+    @media (max-width: $portableScreenSize) {
+      height: $sliderPortableHeight;
+      background-color: transparent;
+      border: 0;
+
+      #{$blockName}__arrow-left,
+      #{$blockName}__arrow-right {
+        transform: scale(1.5);
+      }
+    }
+  }
+
+  &--anchor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    #{$blockName}__arrow-up {
+      fill: $colorPrimary;
+    }
+  }
+  
+  &--active {
+    color: $colorPrimary;
+
+    &::after {
+      position: absolute;
+      bottom: 0;
+      display: block;
+      width: calc(100% + 2 * 1px); // $headerShadowHeight
+      height: 3px;
+      background-color: $colorPrimary;
+      content: "";
+    }
+  }
+
+  &--is-active {
+    background-color: $colorPrimary;
+    color: $colorMainLight;
+    border-color: $colorPrimary;
+  }
+
+  &--item-basket {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &--disabled {
+    border-color: $colorBlockShadow;
+    cursor: default;
+
+    &:hover {
+      border-color: $colorBlockShadow;
+    }
+
+    #{$blockName}__arrow-left,
+    #{$blockName}__arrow-right,
+    #{$blockName}__minus {
+      fill: $colorBlockShadow;
+    }
+    &:hover #{$blockName}__arrow-left,
+    &:hover #{$blockName}__arrow-right {
+      fill: $colorBlockShadow;
+    }
+  }
+  
+  &--card-liked {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: $buttonCardHeight;
+    height: $buttonCardHeight;
+  }
+
+  &--cart-add {
+    height: $buttonCardHeight;
+  }
+
+  &--basket {
+    width: 100%;
+    height: 48px;
+  }
+
+  &--cart-add,
+  &--basket {
+    color: $colorMainLight;
+    background-color: $colorPrimary;
+    border: 0;
+    transition: color $animHoverTime,
+      background-color $animHoverTime,
+      border $animHoverTime;
+
+    &:hover {
+      color: $colorMainGreen;
+      background-color: $colorMainLight;
+      border: 1px solid $colorBlockShadow;
+    }
+  }
+
+  &--pagination-number {
+    border-color: $colorBlockShadow;
+  }
+
+  &--pagination-number-is-active {
+    background-color: $colorPrimary;
+    color: $colorMainLight;
+    border: 0;
+    cursor: default;
+  }
+
+  &--product-page-capacity {
+    width: 60px;
+  }
+}

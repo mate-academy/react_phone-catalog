@@ -1,0 +1,39 @@
+.breadcrumbs {
+
+  &__list {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  &__item {
+    margin-right: $mediumGap;
+  }
+
+  &__link {
+    display: block;
+  }
+
+  &__text {
+    color: $colorSecondary;
+    transition: color $animHoverTime;
+  }
+
+  &__item:hover &__text {
+    color: $colorPrimary;
+  }
+
+  &__icon-right {
+    margin-left: $mediumGap;
+    fill: $colorSecondary;
+  }
+
+  &__arrow {
+    fill: $colorSecondary;
+    transition: fill $animHoverTime;
+  }
+
+  &__item:hover &__arrow {
+    fill: $colorPrimary;
+  }
+}

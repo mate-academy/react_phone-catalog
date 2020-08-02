@@ -1,0 +1,83 @@
+.card {
+  padding: $cardPadding;
+  width: $cardWidth;
+  border: $cardBorderWidth solid $colorBlockShadow;
+  cursor: pointer;
+  transition: border-color $animHoverTime;
+
+  &:hover {
+    border-color: $colorPrimary;
+  }
+  
+  &__picture {
+    width: $cardPicWidth;
+    height: $cardPicWidth;
+    transition: transform $animHoverTime;
+    margin: $cardPadding / 2;
+  }
+
+  &:hover &__picture {
+    transform: scale(1.1);
+  }
+
+  &__title {
+    margin-top: $cardPadding;
+  }
+
+  &__price {
+    border-bottom: 1px solid $colorSecondary;
+    margin-top: $cardGapY;
+    padding-bottom: $cardGapY;
+    margin-bottom: $mediumGap;
+  }
+
+  &__actual-price,
+  &__old-price {
+    font-size: 22px;
+    line-height: 140%;
+  }
+
+  &__actual-price {
+    font-weight: bold;
+    margin-right: $cardGapX;
+  }
+
+  &__old-price {
+    color: $colorSecondary;
+    text-decoration: line-through;
+  }
+
+  &__characteristics {
+    margin-top: $cardGapY * 2;
+  }
+  &__screen-info,
+  &__capacity-info,
+  &__ram-info {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__capacity-info,
+  &__ram-info {
+    margin-top: $cardGapY;
+  }
+
+  &__screen-text,
+  &__capacity-text,
+  &__ram-text {
+    color: $colorSecondary;
+  }
+
+  &__buttons {
+    display: flex;
+    margin-top: $cardGapY * 2;
+  }
+
+  &__button {
+
+    &:first-child {
+      width: 100%;
+      margin-right: $cardGapX;
+    }
+  }
+}

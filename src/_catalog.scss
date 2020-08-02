@@ -1,0 +1,99 @@
+.catalog {
+
+  &__breadcrumbs {
+    margin-bottom: $xLargeGap;
+  }
+
+  &__header {
+    margin-bottom: $xLargeGap;
+  }
+
+  &__settings {
+    display: flex;
+    margin-bottom: $largeGap;
+  }
+
+  &__sort {
+    margin-right: $mediumGap;
+  }
+
+  &__sort-description,
+  &__on-page-description {
+    margin-bottom: $xSmallGap;
+    color: $colorSecondary;
+  }
+
+  &__select-wrapper {
+    position: relative;
+    display: flex;
+  }
+
+  &__sort-select,
+  &__on-page-select {
+    z-index: 1;
+    height: $xLargeGap;
+    color: $colorPrimary;
+    border-color: $colorElements;
+    padding-left: $xSmallGap + $smallGap;
+    outline: 0;
+    background-color: transparent;
+    cursor: pointer;
+    transition: border-color $animHoverTime;
+    appearance: none;
+  }
+
+  &__sort-select {
+    width: 176px;
+
+    @media (max-width: $portableScreenSize) {
+      width: 150px;
+    }
+  }
+
+  &__on-page-select {
+    width: 128px;
+
+    @media (max-width: $portableScreenSize) {
+      width: 100px;
+    }
+  }
+
+  &__sort-select:focus,
+  &__on-page-select:focus {
+    border-color: $colorPrimary;
+  }
+  
+  &__select-arrow {
+    position: absolute;
+    align-self: center;
+    right: $mediumGap;
+  }
+
+  &__cards {
+    display: grid;
+    grid-template-columns: repeat(4, $cardWidth);
+    justify-content: space-between;
+    column-gap: $catalogGapX;
+    row-gap: $catalogGapY;
+    max-width: $containerMaxWidth;
+
+    @media (max-width: $notebookScreenSize) {
+      grid-template-columns: repeat(3, $cardWidth);
+      justify-content: space-evenly;
+    }
+
+    @media (max-width: $tabletScreenSize) {
+      grid-template-columns: repeat(2, $cardWidth);
+      justify-content: center;
+    }
+  
+    @media (max-width: $smallScreenSize) {
+      grid-template-columns: $cardWidth;
+    }
+  }
+
+  &__pagination {
+    margin-top: $xLargeGap;
+    text-align: center;
+  }
+}

@@ -1,0 +1,119 @@
+.basket {
+
+  &__breadcrumbs {
+    margin-bottom: $xLargeGap;
+  }
+
+  &__header {
+    margin-bottom: $largeGap;
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: auto;
+    grid-gap: $mediumGap;
+    align-items: start;
+    max-width: $containerMaxWidth;
+
+    @media (max-width: $tabletScreenSize) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: $largeGap;
+    border: 1px solid $colorBlockShadow;
+    transition: border-color $animHoverTime;
+    margin-bottom: $mediumGap;
+
+    @media (max-width: $portableScreenSize) {
+      flex-direction: column;
+      align-items: end;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &:hover {
+      border-color: $colorPrimary;
+    }
+  }
+
+  &__product-info,
+  &__product-price {
+    display: flex;
+    align-items: center;
+  }
+
+  &__product-price {
+
+    @media (max-width: $portableScreenSize) {
+      justify-content: flex-start;
+      width: 100%;
+      margin-top: $largeGap;
+    }
+  }
+
+  &__delete-item {
+    margin-right: $mediumGap;
+    cursor: pointer;
+  }
+
+  &__item-picture {
+    min-width: $basketPictureWidth;
+    width: $basketPictureWidth;
+    min-height: $basketPictureWidth;
+    height: $basketPictureWidth;
+    margin-right: $mediumGap;
+    object-fit: contain;
+  }
+
+  &__item-img {
+    width: 100%;
+  }
+
+  &__plus-minus {
+    display: flex;
+    align-items: center;
+    margin-left: 50px;
+
+    @media (max-width: $portableScreenSize) {
+      margin-left: 0;
+    }
+  }
+
+  &__item-quantity {
+    margin-left: $smallGap;
+    margin-right: $smallGap;
+  }
+
+  &__item-price {
+    margin-left: $xLargeGap;
+    font-weight: bold;
+  }
+
+  &__checkout {
+    padding: $largeGap;
+    border: 1px solid $colorBlockShadow;
+
+    @media (max-width: $tabletScreenSize) {
+      margin-top: $largeGap;
+    }
+  }
+
+  &__price {
+    text-align: center;
+    padding-bottom: $largeGap;
+    margin-bottom: $largeGap;
+    border-bottom: 1px solid $colorBlockShadow;
+  }
+
+  &__price-description {
+    color: $colorSecondary;
+  }
+}
