@@ -3,9 +3,198 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../src/App.scss">
     <title>Phone catalog</title>
   </head>
   <body>
-    <div id="root"></div>
+    <header class="header">
+      <a href="#">
+        <img src="/img/LOGO.svg" alt="" class="logo header__logo">
+      </a>
+      <nav class="nav">
+        <ul class="nav__list">
+          <li class="nav__item"><a href="#" class="nav__link nav__link--active">Home</a></li>
+          <li class="nav__item"><a href="#" class="nav__link">Phones</a></li>
+          <li class="nav__item"><a href="#" class="nav__link">Tablets</a></li>
+          <li class="nav__item"><a href="#" class="nav__link">Accessories</a></li>
+        </ul>
+      </nav>  
+      <div class="header__buttons">
+        <a href="#" class="header__buttons--link">
+          <img
+            class="header__buttons--fav"
+            src="img/Fav.svg"
+            alt="Favourite"
+          >
+        </a>
+        <a href="#" class="header__buttons--link">
+          <img
+            class="header__buttons--cart"
+            src="img/Cart.svg"
+            alt="Cart"
+          >
+        </a>
+      </div>
+    </header>
+
+    <main class="content-container">
+      <section class="section prices">
+        <div class="promo__main">
+          <div class="promo__sidebar promo__sidebar--left"></div>
+          <div class="promo__banner">
+            <img
+              class="promo__img"
+              src="img/Banner.png"
+              alt="Promo banner"
+            >
+          </div>
+          <div class="promo__sidebar promo__sidebar--right"></div>
+        </div>
+        <div class="promo-slider">
+          <div class="promo-slider__item promo-slider__item--active"></div>
+          <div class="promo-slider__item"></div>
+          <div class="promo-slider__item"></div>
+        </div>
+      </section>
+
+      <section class="section goods">
+        <div class="goods-top">
+          <h2 class="goods__heading">Hot prices</h2>
+          <div class="goods-arrows">
+            <div class="goods-arrows__btn"></div>
+            <div class="goods-arrows__btn goods-arrows__btn--right"></div>
+          </div>
+        </div>
+
+        <div class="catalog">
+          <div class="product-card">
+            <div class="product-card__photo">
+              <img
+                class="product-card__img"
+                src="./img/product-card1.png"
+                alt="iPhone"
+              >
+            </div>
+            <h3 class="product-card__about">Apple iPhone Xs 64GB Silver (iMT9G2FS/A)</h3>
+            <div class="product-card__price">
+              <span class="product-card__amount">$799</span>
+              <span class="product-card__discount">$899</span>
+            </div>
+            <div class="product-card__property">
+              <span class="product-card__property--name">Screen</span>
+              <span class="product-card__property--value">5.8” OLED</span>
+            </div>
+            <div class="product-card__property">
+              <span class="product-card__property--name">Capacity</span>
+              <span class="product-card__property--value">64 GB</span>
+            </div>
+            <div class="product-card__property">
+              <span class="product-card__property--name">RAM</span>
+              <span class="product-card__property--value">4 GB</span>
+            </div>
+            <div class="product-card__buttons">
+              <button class="product-card__buy">Add to cart</button>
+              <div class="product-card__favourite"></div>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="product-card__photo">
+              <img
+                class="product-card__img"
+                src="./img/product-card2.png"
+                alt="iPhone"
+              >
+            </div>
+            <h3 class="product-card__about">Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)</h3>
+            <div class="product-card__price">
+              <span class="product-card__amount">$799</span>
+              <span class="product-card__discount">$899</span>
+            </div>
+            <div class="product-card__property">
+              <span class="product-card__property--name">Screen</span>
+              <span class="product-card__property--value">6.5” OLED</span>
+            </div>
+            <div class="product-card__property">
+              <span class="product-card__property--name">Capacity</span>
+              <span class="product-card__property--value">64 GB</span>
+            </div>
+            <div class="product-card__property">
+              <span class="product-card__property--name">RAM</span>
+              <span class="product-card__property--value">4 GB</span>
+            </div>
+            <div class="product-card__buttons">
+              <button class="product-card__buy">Add to cart</button>
+              <div class="product-card__favourite"></div>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="product-card__photo">
+              <img
+                class="product-card__img"
+                src="./img/product-card3.png"
+                alt="iPhone"
+              >
+            </div>
+            <h3 class="product-card__about">Apple iPhone 11 128GB Purple (iMT9G2FS/A)</h3>
+            <div class="product-card__price">
+              <span class="product-card__amount">$799</span>
+              <span class="product-card__discount">$899</span>
+            </div>
+            <div class="product-card__property">
+              <span class="product-card__property--name">Screen</span>
+              <span class="product-card__property--value">6.2” IPS</span>
+            </div>
+            <div class="product-card__property">
+              <span class="product-card__property--name">Capacity</span>
+              <span class="product-card__property--value">128 GB</span>
+            </div>
+            <div class="product-card__property">
+              <span class="product-card__property--name">RAM</span>
+              <span class="product-card__property--value">4 GB</span>
+            </div>
+            <div class="product-card__buttons">
+              <button class="product-card__buy">Add to cart</button>
+              <div class="product-card__favourite"></div>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="product-card__photo">
+              <img
+                class="product-card__img"
+                src="./img/product-card4.png"
+                alt="iPhone"
+              >
+            </div>
+            <h3 class="product-card__about">Apple iPhone X 256GB Silver (iMT9G2FS/A)</h3>
+            <div class="product-card__price">
+              <span class="product-card__amount">$799</span>
+              <span class="product-card__discount">$899</span>
+            </div>
+            <div class="product-card__property">
+              <span class="product-card__property--name">Screen</span>
+              <span class="product-card__property--value">5.8” OLED</span>
+            </div>
+            <div class="product-card__property">
+              <span class="product-card__property--name">Capacity</span>
+              <span class="product-card__property--value">256 GB</span>
+            </div>
+            <div class="product-card__property">
+              <span class="product-card__property--name">RAM</span>
+              <span class="product-card__property--value">3 GB</span>
+            </div>
+            <div class="product-card__buttons">
+              <button class="product-card__buy">Add to cart</button>
+              <div class="product-card__favourite"></div>
+            </div>
+          </div>
+        </div>
+        
+
+
+      </section>
+    </main>
   </body>
 </html>
