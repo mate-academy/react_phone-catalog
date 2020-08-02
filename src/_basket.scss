@@ -1,4 +1,13 @@
 .basket {
+
+  &__breadcrumbs {
+    margin-bottom: $xLargeGap;
+  }
+
+  &__header {
+    margin-bottom: $largeGap;
+  }
+
   &__content {
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -43,7 +52,7 @@
 
   &__product-price {
 
-    @media (max-width: $tabletScreenSize) {
+    @media (max-width: $portableScreenSize) {
       justify-content: flex-start;
       width: 100%;
       margin-top: $largeGap;

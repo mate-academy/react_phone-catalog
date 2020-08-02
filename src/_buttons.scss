@@ -7,6 +7,7 @@
   border: 1px solid $colorElements;
   outline: 0;
   cursor: pointer;
+  color: $colorPrimary;
   transition: border-color $animHoverTime;
 
   &:hover {
@@ -16,6 +17,7 @@
   &__arrow-up,
   &__arrow-left,
   &__arrow-right,
+  &__arrow-down,
   &__heart,
   &__shopping-bag,
   &__home,
@@ -87,6 +89,12 @@
     }
   }
 
+  &--is-active {
+    background-color: $colorPrimary;
+    color: $colorMainLight;
+    border-color: $colorPrimary;
+  }
+
   &--item-basket {
     display: flex;
     justify-content: center;
@@ -154,5 +162,9 @@
     color: $colorMainLight;
     border: 0;
     cursor: default;
+  }
+
+  &--product-page-capacity {
+    width: 60px;
   }
 }

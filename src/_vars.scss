@@ -18,6 +18,10 @@ $colorBlockShadow: #e2e6e9;
 $categoriesPhonesColor: #fcdbc1;
 $categoriesTabletsColor: #8d8d92;
 $categoriesAccesColor: #973d5f;
+$productColorPink: #fcdbc1;
+$productColorDarkGreen: #5f7170;
+$productColorBlack: #4c4c4c;
+$productColorWhite: #f0f0f0;
 
 // -----Animations
 $animMockupSizeTime: 1s;
@@ -73,6 +77,13 @@ $cardGapX: $smallGap;
 $cardPicWidth: 208px;
 $cardPicMrgn: $cardGapY;
 $cardWidth: ($cardPadding * 2) + ($cardPicMrgn * 2) + $cardPicWidth;
+
+// -----Product page
+$productPageSubsectionLargeWidth: 47.5%;
+$productPageItemChoiseAllLargeWidth: 70%;
+$productPageColorLinkWidth: 30px;
+$productPageGalleryItemWH: 80px;
+$productPageGalleryImgWidthHeight: 90%;
 
 // -----Categories
 $categoriesPictureHeight: 368px;

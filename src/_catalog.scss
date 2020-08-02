@@ -1,5 +1,9 @@
 .catalog {
 
+  &__breadcrumbs {
+    margin-bottom: $xLargeGap;
+  }
+
   &__header {
     margin-bottom: $xLargeGap;
   }
@@ -19,15 +23,23 @@
     color: $colorSecondary;
   }
 
+  &__select-wrapper {
+    position: relative;
+    display: flex;
+  }
+
   &__sort-select,
   &__on-page-select {
+    z-index: 1;
     height: $xLargeGap;
     color: $colorPrimary;
     border-color: $colorElements;
     padding-left: $xSmallGap + $smallGap;
     outline: 0;
+    background-color: transparent;
     cursor: pointer;
     transition: border-color $animHoverTime;
+    appearance: none;
   }
 
   &__sort-select {
@@ -49,6 +61,12 @@
   &__sort-select:focus,
   &__on-page-select:focus {
     border-color: $colorPrimary;
+  }
+  
+  &__select-arrow {
+    position: absolute;
+    align-self: center;
+    right: $mediumGap;
   }
 
   &__cards {

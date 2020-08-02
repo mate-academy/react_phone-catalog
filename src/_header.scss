@@ -1,4 +1,6 @@
 .header {
+  $blockName: &;
+
   position: relative;
   display: flex;
   height: $navHeight;
@@ -8,6 +10,16 @@
   @media (max-width: $tabletScreenSize) {
     height: $headerPortableHeight;
     justify-content: center;
+  }
+
+  &--with-search {
+
+    #{$blockName}__logo {
+
+      @media (max-width: $smallScreenSize) {
+        display: none;
+      }
+    }
   }
 
   &__hamburger-input {
