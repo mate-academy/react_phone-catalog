@@ -45,7 +45,7 @@ export const GoodItem: React.FC<Props> = ({ goodItem }) => {
                 className="button button-minus goods__button"
                 onClick={() => handleClickRemove(goodItem.goodItem)}
               >
-                -
+                +
               </button>
               <p>{goodItem.quantity}</p>
               <button

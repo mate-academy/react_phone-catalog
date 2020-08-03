@@ -5,12 +5,11 @@ import { getScreen } from '../store/index';
 
 export function useWindowSize() {
   const dispatch = useDispatch();
-  const isClient = typeof window === 'object';
 
   function getSize() {
     return {
-      width: isClient ? window.innerWidth : undefined,
-      height: isClient ? window.innerHeight : undefined,
+      width: window.innerWidth,
+      height: window.innerHeight,
     };
   }
 

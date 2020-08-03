@@ -1,5 +1,4 @@
 export const PRODUCTS_URL = 'https://mate-academy.github.io/react_phone-catalog/api/products.json';
-// export const DETAILS_URL = '';
 
 export const getData = async <T>(url: string): Promise<T[]> => {
   const response = await fetch(url);

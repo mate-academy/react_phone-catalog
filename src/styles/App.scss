@@ -82,7 +82,18 @@ a {
 }
 
 .red {
-  color: red;
+  background-color: red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  color: white;
+  position: absolute;
+  left: 30px;
+  top: 13px;
+  font-size: 10px;
 }
 
 .red-back {
