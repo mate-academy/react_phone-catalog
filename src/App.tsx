@@ -1,10 +1,11 @@
 import React from 'react';
+import Header from './components/Header/Header';
 
 import './App.scss';
 
 const App = () => (
   <div className="App">
-    <h1>React Phone Catalog</h1>
+    <Header />
   </div>
 );
 
