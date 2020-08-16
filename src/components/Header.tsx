@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import {
   HashRouter,
+  NavLink,
 } from 'react-router-dom';
 
 const Header: FC = () => {
@@ -13,22 +14,59 @@ const Header: FC = () => {
           className="nav__logo"
         />
         <ul className="nav__links">
-          <li className="nav__items">Home</li>
-          <li className="nav__items">Phones</li>
-          <li className="nav__items">Tablets</li>
-          <li className="nav__items">Accessories</li>
+          <NavLink
+            to="/"
+            exact
+            activeClassName="nav__selected"
+            className="nav__items"
+          >
+            Home
+          </NavLink>
+          <NavLink
+            to="/phones"
+            activeClassName="nav__selected"
+            className="nav__items"
+          >
+            Phones
+          </NavLink>
+          <NavLink
+            to="/tablets"
+            activeClassName="nav__selected"
+            className="nav__items"
+          >
+            Tablets
+          </NavLink>
+          <NavLink
+            to="accessories"
+            activeClassName="nav__selected"
+            className="nav__items"
+          >
+            Accessories
+          </NavLink>
         </ul>
         <div className="nav__fav-cart-container">
-          <img
-            src={`${window.location.origin}/img/favourites.svg`}
-            alt="Favourites"
-            className="nav__favourites"
-          />
-          <img
-            src={`${window.location.origin}/img/shopping-bag.svg`}
-            alt="Shopping bag"
-            className="nav__shopping-bag"
-          />
+          <NavLink
+            to="/favs"
+            activeClassName="nav__selected--1"
+            className="nav__items"
+          >
+            <img
+              src={`${window.location.origin}/img/favourites.svg`}
+              alt="Favourites"
+              className="nav__favourites"
+            />
+          </NavLink>
+          <NavLink
+            to="/cart"
+            activeClassName="nav__selected--1"
+            className="nav__items"
+          >
+            <img
+              src={`${window.location.origin}/img/cart.svg`}
+              alt="Shopping bag"
+              className="nav__cart"
+            />
+          </NavLink>
         </div>
       </nav>
     </HashRouter>

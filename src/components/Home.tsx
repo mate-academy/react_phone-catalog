@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
 
 import Slider from './Slider';
+import Title from './Title';
 import ProductSlider from './ProductSlider';
 import Category from './Category';
-import Title from './Title';
 
 const Home: FC = () => {
   return (
