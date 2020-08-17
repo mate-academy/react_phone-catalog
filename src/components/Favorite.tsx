@@ -11,9 +11,11 @@ export const Favorite: React.FC = () => {
       <h2 className="basket__title">Favorite list</h2>
       <ul className="phones__list">
         {
-          goodsList.map(product => (
-            <ProductPreview product={product} path={`/${product.type}s/`} key={product.id} />
-          ))
+          goodsList.length
+            ? goodsList.map(product => (
+              <ProductPreview product={product} path={`/${product.type}s/`} key={product.id} />
+            ))
+            : <h3 className="basket__empty">Please add something to cart</h3>
         }
       </ul>
     </div>

@@ -47,13 +47,13 @@ export const Navigation: React.FC = () => {
         <span>
           <NavLink className="fontMonte nav__special-link" to="/favorite/" exact onClick={handleClickOnLink}>
             <img src="img/images/favorite.svg" alt="favorite" />
-            <span className="red">
+            <span className={(numberFavorite !== 0) ? 'red' : 'white'}>
               {numberFavorite !== 0 && `${numberFavorite}`}
             </span>
           </NavLink>
           <NavLink className="fontMonte nav__special-link" to="/basket/" exact onClick={handleClickOnLink}>
             <img src="img/images/basket.png" alt="basket" />
-            <span className="red">
+            <span className={(numberInTheBasket !== 0) ? 'red' : 'white'}>
               {numberInTheBasket !== 0 && `${numberInTheBasket}`}
             </span>
           </NavLink>

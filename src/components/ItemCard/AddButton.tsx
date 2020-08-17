@@ -28,7 +28,7 @@ export const AddButton: React.FC<Props> = ({ goodItem }) => {
   };
 
   return (
-    <>
+    <div className="buttons__container">
       {
         !isAddedToBasket
           ? (
@@ -63,6 +63,6 @@ export const AddButton: React.FC<Props> = ({ goodItem }) => {
         }
 
       </button>
-    </>
+    </div>
   );
 };
