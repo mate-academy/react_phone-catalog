@@ -1,5 +1,8 @@
 import React from 'react';
-import { HashRouter } from 'react-router-dom';
+import {
+  HashRouter,
+  NavLink,
+} from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -12,9 +15,16 @@ const Footer = () => {
             className="footer__logo"
           />
           <ul className="footer__menu">
-            <li className="footer__menu-item">GitHub</li>
-            <li className="footer__menu-item">Contacts</li>
-            <li className="footer__menu-item">Rights</li>
+            <a
+              href="https://github.com/tyooma"
+              target="_blank"
+              rel="noreferrer noopener"
+              className="footer__menu-item"
+            >
+              GitHub
+            </a>
+            <NavLink to="/contacts" className="footer__menu-item">Contacts</NavLink>
+            <NavLink to="/rights" className="footer__menu-item">Rights</NavLink>
           </ul>
           <div className="footer__home">
             <p className="footer__text">Back to top</p>

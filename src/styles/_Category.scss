@@ -1,15 +1,20 @@
 .category {
-  margin: 0 auto;
+  margin: 0 auto 80px;
 
   width: 1136px;
 
   font-family: Mont, sans-serif;
   font-style: normal;
 
-  &__items {
+  &__list {
     display: flex;
     align-items: center;
     justify-content: space-between;
+  }
+
+  &__item {
+    color: #313237;
+    text-decoration: none;
   }
 
   &__image-wrapper {
@@ -35,15 +40,15 @@
     }
   }
 
-  &__image-wrapper--1 {
+  &__image-phones {
     background-color: #fcdbc1;
   }
 
-  &__image-wrapper--2 {
+  &__image-tablets {
     background-color: #8d8d92;
   }
 
-  &__image-wrapper--3 {
+  &__image-accessories {
     background-color: #973d5f;
   }
 

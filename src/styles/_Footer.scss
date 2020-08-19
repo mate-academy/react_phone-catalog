@@ -27,13 +27,14 @@
     letter-spacing: 0.04em;
     text-transform: uppercase;
 
-    color: #89939a;
-
     list-style: none;
     cursor: pointer;
   }
 
   &__menu-item {
+    color: #89939a;
+    text-decoration: none;
+
     transition: color 0.3s;
 
     &:hover {

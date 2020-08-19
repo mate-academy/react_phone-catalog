@@ -5,16 +5,25 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { Phones } from '../interfaces/interfaces';
 
 const actions = {
+  SET_PHONES: 'SET_PHONES',
   ADD_TO_CART: 'ADD_TO_CART',
   REMOVE_FROM_CART: 'REMOVE_FROM_CART',
   LIKE: 'LIKE',
   UNLIKE: 'UNLIKE',
 };
 
+export const setPhones = (phones: Phones[]) => ({ type: actions.SET_PHONES, phones });
 export const addToCart = (phoneId: string) => ({ type: actions.ADD_TO_CART, phoneId });
 export const removeFromCart = (phoneId: string) => ({ type: actions.REMOVE_FROM_CART, phoneId });
 export const like = (phoneId: string) => ({ type: actions.LIKE, phoneId });
 export const unlike = (phoneId: string) => ({ type: actions.UNLIKE, phoneId });
+
+export const getHotPriceProducts = (state: RootState) => (
+  state.phones.sort((a, b) => a.priceDiscount - b.priceDiscount)
+);
+export const getBrandNewProducts = (state: RootState) => (
+  state.phones.sort((a, b) => a.priceRegular - b.priceRegular)
+);
 
 export type RootState = {
   phones: Phones[];
@@ -30,6 +39,9 @@ const inititalState: RootState = {
 
 const reducer = (state = inititalState, action: AnyAction) => {
   switch (action.type) {
+    case actions.SET_PHONES:
+      return { ...state, phones: action.phones };
+
     case actions.ADD_TO_CART:
       return {
         ...state,
