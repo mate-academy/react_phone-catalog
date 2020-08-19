@@ -28,6 +28,8 @@
 
     border: 1px solid #e2e6e9;
 
+    cursor: pointer;
+
     transition: box-shadow 0.3s;
 
     &:hover {
@@ -35,10 +37,18 @@
     }
   }
 
+  &__item:hover > &__title {
+    text-decoration: underline;
+  }
+
+  &__item:hover > &__discount {
+    text-decoration: underline;
+  }
+
   &__img {
     margin: 8px auto 24px;
 
-    width: 170px;
+    width: 160px;
     height: 208px;
   }
 

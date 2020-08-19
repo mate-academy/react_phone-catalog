@@ -19,10 +19,11 @@ export const like = (phoneId: string) => ({ type: actions.LIKE, phoneId });
 export const unlike = (phoneId: string) => ({ type: actions.UNLIKE, phoneId });
 
 export const getHotPriceProducts = (state: RootState) => (
-  state.phones.sort((a, b) => a.priceDiscount - b.priceDiscount)
+  [...state.phones]
+    .sort((a, b) => b.priceDiscount - a.priceDiscount)
 );
 export const getBrandNewProducts = (state: RootState) => (
-  state.phones.sort((a, b) => a.priceRegular - b.priceRegular)
+  [...state.phones].sort((a, b) => b.year - a.year)
 );
 
 export type RootState = {

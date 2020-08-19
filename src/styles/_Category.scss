@@ -15,6 +15,10 @@
   &__item {
     color: #313237;
     text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
   &__image-wrapper {

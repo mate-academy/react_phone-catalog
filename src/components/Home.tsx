@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import Slider from './Slider';
@@ -28,9 +28,12 @@ const Home: FC<Props> = ({ phonesSetter, hotPricePhones, brandNewPhones }) => {
     phonesSetter(phones);
   };
 
+  useEffect(() => {
+    getAllPhones();
+  });
+
   return (
     <div>
-      <button type="button" onClick={getAllPhones}>Load</button>
       <Slider />
       <Title title="Hot Prices" />
       <ProductSlider phones={hotPricePhones} />
