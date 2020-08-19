@@ -1,39 +1,31 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC } from 'react';
 import { connect } from 'react-redux';
+
+import { Phones } from '../interfaces/interfaces';
+import {
+  getHotPriceProducts,
+  getBrandNewProducts,
+  RootState,
+  loadPhones,
+} from '../store';
 
 import Slider from './Slider';
 import Title from './Title';
 import ProductSlider from './ProductSlider';
 import Category from './Category';
 
-import { getPhones } from '../api';
-import { Phones } from '../interfaces/interfaces';
-import {
-  setPhones,
-  getHotPriceProducts,
-  getBrandNewProducts,
-  RootState,
-} from '../store';
-
 type Props = {
-  phonesSetter: (phones: Phones[]) => void;
+  phonesLoad: () => void;
   hotPricePhones: Phones[];
   brandNewPhones: Phones[];
 };
 
-const Home: FC<Props> = ({ phonesSetter, hotPricePhones, brandNewPhones }) => {
-  const getAllPhones = async () => {
-    const phones = await getPhones<Phones>();
-
-    phonesSetter(phones);
-  };
-
-  useEffect(() => {
-    getAllPhones();
-  });
-
+const Home: FC<Props> = ({
+  phonesLoad, hotPricePhones, brandNewPhones,
+}) => {
   return (
     <div>
+      <button type="button" onClick={phonesLoad}>Go</button>
       <Slider />
       <Title title="Hot Prices" />
       <ProductSlider phones={hotPricePhones} />
@@ -51,7 +43,7 @@ const mapState = (state: RootState) => ({
 });
 
 const mapDispatch = {
-  phonesSetter: setPhones,
+  phonesLoad: loadPhones,
 };
 
 export default connect(mapState, mapDispatch)(Home);

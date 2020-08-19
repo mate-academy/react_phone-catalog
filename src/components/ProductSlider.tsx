@@ -1,13 +1,32 @@
 import React, { FC } from 'react';
+import { useSelector } from 'react-redux';
+
+import { isLoading } from '../store';
 import { Phones } from '../interfaces/interfaces';
+import { isError } from 'util';
 
 type Props = {
   phones: Phones[];
 };
 
 const ProductSlider: FC<Props> = ({ phones }) => {
+  const loading = useSelector(isLoading);
+  const error = useSelector(isError);
+
   return (
     <div className="productSlider">
+      {
+        loading
+        && (
+          <div className="productSlider__loader" />
+        )
+      }
+      {
+        error
+        && (
+          <div className="productSlider__error">Loading error...</div>
+        )
+      }
       {phones.map(phone => (
         <div className="productSlider__item" key={phone.id}>
           <img

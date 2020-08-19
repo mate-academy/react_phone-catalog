@@ -1,8 +1,14 @@
 import React, { FC } from 'react';
 import {
-  HashRouter,
   NavLink,
+  Route,
+  HashRouter,
+  Switch,
 } from 'react-router-dom';
+
+import Tablets from './Tablets';
+import Home from './Home';
+import Phones from './Phones';
 
 const Header: FC = () => {
   return (
@@ -69,6 +75,11 @@ const Header: FC = () => {
           </NavLink>
         </div>
       </nav>
+      <Switch>
+        <Route path="/" exact component={Home} />
+        <Route path="/phones" exact component={Phones} />
+        <Route path="/tablets" exact component={Tablets} />
+      </Switch>
     </HashRouter>
   );
 };
