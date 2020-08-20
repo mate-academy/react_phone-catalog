@@ -1,12 +1,12 @@
 import React from 'react';
 import Title from './Title';
 
-const Phones = () => {
+const Accessories = () => {
   return (
     <div>
-      <Title title="Mobile phones" />
+      <Title title="Accessories" />
     </div>
   );
 };
 
-export default Phones;
+export default Accessories;

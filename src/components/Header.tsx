@@ -9,6 +9,7 @@ import {
 import Tablets from './Tablets';
 import Home from './Home';
 import Phones from './Phones';
+import Accessories from './Accessories';
 
 const Header: FC = () => {
   return (
@@ -79,6 +80,7 @@ const Header: FC = () => {
         <Route path="/" exact component={Home} />
         <Route path="/phones" exact component={Phones} />
         <Route path="/tablets" exact component={Tablets} />
+        <Route path="/accessories" exact component={Accessories} />
       </Switch>
     </HashRouter>
   );

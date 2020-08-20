@@ -1,0 +1,28 @@
+.sliderButtons {
+  width: 80px;
+
+  position: absolute;
+  top: 4px;
+  right: 158px;
+
+  display: flex;
+
+  &__btn {
+    margin: 0 4px;
+  
+    width: 32px;
+    height: 32px;
+  
+    background-color: #fff;
+    border: 1px solid #b4bdc4;
+    outline: none;
+
+    cursor: pointer;
+
+    transition: border 0.3s;
+
+    &:hover {
+      border: 1px solid #313237;
+    }
+  }
+}

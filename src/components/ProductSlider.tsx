@@ -1,9 +1,8 @@
 import React, { FC } from 'react';
 import { useSelector } from 'react-redux';
 
-import { isLoading } from '../store';
+import { isLoading, errorState } from '../store';
 import { Phones } from '../interfaces/interfaces';
-import { isError } from 'util';
 
 type Props = {
   phones: Phones[];
@@ -11,82 +10,109 @@ type Props = {
 
 const ProductSlider: FC<Props> = ({ phones }) => {
   const loading = useSelector(isLoading);
-  const error = useSelector(isError);
+  const error = useSelector(errorState);
+
+  const prev = () => {
+    // prev slide function
+  };
+
+  const next = () => {
+    // next slide function
+  };
 
   return (
-    <div className="productSlider">
-      {
-        loading
+    <div>
+      <div className="sliderButtons">
+        <button
+          type="button"
+          className="sliderButtons__btn"
+          onClick={prev}
+        >
+          <img src={`${window.location.origin}/img/left-arrow.svg`} alt="Left arrow" />
+        </button>
+        <button
+          type="button"
+          className="sliderButtons__btn"
+          onClick={next}
+        >
+          <img src={`${window.location.origin}/img/right-arrow.svg`} alt="Right arrow" />
+        </button>
+      </div>
+      <div className="productSlider">
+        {
+          loading
         && (
           <div className="productSlider__loader" />
         )
-      }
-      {
-        error
+        }
+        {
+          error
         && (
           <div className="productSlider__error">Loading error...</div>
         )
-      }
-      {phones.map(phone => (
-        <div className="productSlider__item" key={phone.id}>
-          <img
-            src={phone.image}
-            alt={phone.name}
-            className="productSlider__img"
-          />
-          <p className="productSlider__title">
-            {phone.name}
-          </p>
-          <h2 className="productSlider__discount">
-            $
-            {phone.priceDiscount}
-            &nbsp;
-            <span className="productSlider__price">
+        }
+        {phones.map(phone => (
+          <div className="productSlider__item" key={phone.id}>
+            <img
+              src={phone.image}
+              alt={phone.name}
+              className="productSlider__img"
+            />
+            <p className="productSlider__title">
+              {phone.name}
+            </p>
+            <h2 className="productSlider__discount">
               $
-              {phone.priceRegular}
-            </span>
-          </h2>
-          <div className="productSlider__description">
-            <p className="productSlider__info">
-              Screen
-            </p>
-            <p className="productSlider__characteristics">
-              {phone.screen}
-            </p>
+              {phone.priceDiscount}
+              &nbsp;
+              <span className="productSlider__price">
+                $
+                {phone.priceRegular}
+              </span>
+            </h2>
+            <div className="productSlider__description">
+              <p className="productSlider__info">
+                Screen
+              </p>
+              <p className="productSlider__characteristics">
+                {phone.screen}
+              </p>
+            </div>
+            <div className="productSlider__description">
+              <p className="productSlider__info">
+                Capacity
+              </p>
+              <p className="productSlider__characteristics">
+                {phone.capacity}
+              </p>
+            </div>
+            <div className="productSlider__description">
+              <p className="productSlider__info">
+                RAM
+              </p>
+              <p className="productSlider__characteristics">
+                {phone.ram}
+              </p>
+            </div>
+            <div className="productSlider__btn">
+              <button
+                type="button"
+                className="productSlider__btn--cart"
+              >
+                Add to cart
+              </button>
+              <button
+                type="button"
+                className="productSlider__btn--favs"
+              >
+                <img src={`${window.location.origin}/img/favourites.svg`} alt="favs logo" />
+              </button>
+            </div>
           </div>
-          <div className="productSlider__description">
-            <p className="productSlider__info">
-              Capacity
-            </p>
-            <p className="productSlider__characteristics">
-              {phone.capacity}
-            </p>
-          </div>
-          <div className="productSlider__description">
-            <p className="productSlider__info">
-              RAM
-            </p>
-            <p className="productSlider__characteristics">
-              {phone.ram}
-            </p>
-          </div>
-          <div className="productSlider__btn">
-            <button
-              type="button"
-              className="productSlider__btn--cart"
-            >
-              Add to cart
-            </button>
-            <button
-              type="button"
-              className="productSlider__btn--favs"
-            >
-              <img src={`${window.location.origin}/img/favourites.svg`} alt="favs logo" />
-            </button>
-          </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
+
   );
 };
 

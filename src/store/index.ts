@@ -20,7 +20,7 @@ export const setPhones = (phones: Phones[]) => ({ type: actions.SET_PHONES, phon
 export const hasError = () => ({ type: actions.HAS_ERROR });
 
 export const isLoading = (state: RootState) => state.loading;
-export const isError = (state: RootState) => state.error;
+export const errorState = (state: RootState) => state.error;
 export const getHotPriceProducts = (state: RootState) => (
   [...state.phones]
     .sort((a, b) => b.priceDiscount - a.priceDiscount)

@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { Phones } from '../interfaces/interfaces';
@@ -20,22 +20,29 @@ type Props = {
   brandNewPhones: Phones[];
 };
 
-const Home: FC<Props> = ({
-  phonesLoad, hotPricePhones, brandNewPhones,
-}) => {
-  return (
-    <div>
-      <button type="button" onClick={phonesLoad}>Go</button>
-      <Slider />
-      <Title title="Hot Prices" />
-      <ProductSlider phones={hotPricePhones} />
-      <Title title="Shop by category" />
-      <Category />
-      <Title title="Brand new models" />
-      <ProductSlider phones={brandNewPhones} />
-    </div>
-  );
-};
+class Home extends Component<Props> {
+  componentDidMount() {
+    this.props.phonesLoad();
+  }
+
+  render() {
+    return (
+      <div>
+        <Slider />
+        <div className="home__slider-wrapper">
+          <Title title="Hot Prices" />
+          <ProductSlider phones={this.props.hotPricePhones} />
+        </div>
+        <Title title="Shop by category" />
+        <Category />
+        <div className="home__slider-wrapper">
+          <Title title="Brand new models" />
+          <ProductSlider phones={this.props.brandNewPhones} />
+        </div>
+      </div>
+    );
+  }
+}
 
 const mapState = (state: RootState) => ({
   hotPricePhones: getHotPriceProducts(state),
