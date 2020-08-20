@@ -27,7 +27,7 @@ class Home extends Component<Props> {
 
   render() {
     return (
-      <div>
+      <div className="home">
         <Slider />
         <div className="home__slider-wrapper">
           <Title title="Hot Prices" />

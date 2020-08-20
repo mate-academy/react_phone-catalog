@@ -1,0 +1,134 @@
+.productCard {
+  padding: 24px;
+  margin-right: 16px;
+
+  display: flex;
+  flex-direction: column;
+
+  width: 272px;
+  height: 507px;
+
+  border: 1px solid #e2e6e9;
+
+  cursor: pointer;
+
+  transition: box-shadow 0.3s;
+
+  &:hover {
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+  }
+
+  &__img {
+    margin: 8px auto 24px;
+
+    width: 160px;
+    height: 208px;
+  }
+
+  
+  &__img:hover ~ &__title {
+    text-decoration: underline;
+  }
+
+  &__title {
+    margin-bottom: 7px;
+    min-height: 42px;
+
+    font-size: 14px;
+    line-height: 21px;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__discount {
+    padding-bottom: 7px;
+    margin-bottom: 16px;
+
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 140%;
+
+    border-bottom: 1px solid #e2e6e9;
+  }
+
+  &__price {
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 28px;
+    text-decoration-line: line-through;
+
+    color: #89939a;
+  }
+
+  &__description {
+    margin-bottom: 8px;
+
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__info {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+
+    color: #89939a;
+  }
+
+  &__characteristics {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+
+    color: #313237;
+  }
+
+  &__btn {
+    margin-top: 16px;
+
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__btn--cart {
+    margin-right: 8px;
+    width: 176px;
+    height: 40px;
+
+    font-size: 14px;
+    line-height: 21px;
+
+    color: #fff;
+    background-color: #313237;
+    border: none;
+    outline: none;
+
+    cursor: pointer;
+
+    transition: opacity 0.3s;
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+
+  &__btn--favs {
+    padding-top: 4px;
+    width: 40px;
+    height: 40px;
+
+    background-color: #fff;
+    border: 1px solid #b4bdc4;
+    outline: none;
+
+    cursor: pointer;
+
+    transition: opacity 0.3s;
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+}

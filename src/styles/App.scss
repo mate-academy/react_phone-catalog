@@ -6,10 +6,16 @@
 @import "ProductSlider";
 @import "Category";
 @import "Footer";
+@import "Breadcrumbs";
+@import "Phones";
+@import "ProductCard";
 
 * {
   padding: 0;
   margin: 0;
 
   box-sizing: border-box;
+
+  font-family: Mont, sans-serif;
+  font-style: normal;
 }

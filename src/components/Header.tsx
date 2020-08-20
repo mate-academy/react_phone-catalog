@@ -8,7 +8,7 @@ import {
 
 import Tablets from './Tablets';
 import Home from './Home';
-import Phones from './Phones';
+import Phones from './PhonesPage';
 import Accessories from './Accessories';
 
 const Header: FC = () => {
@@ -16,7 +16,7 @@ const Header: FC = () => {
     <HashRouter>
       <nav className="nav">
         <img
-          src={`${window.location.origin}/img/logo.svg`}
+          src="img/logo.svg"
           alt="Logo"
           className="nav__logo"
         />
@@ -58,7 +58,7 @@ const Header: FC = () => {
             className="nav__items"
           >
             <img
-              src={`${window.location.origin}/img/favourites.svg`}
+              src="img/favourites.svg"
               alt="Favourites"
               className="nav__favourites"
             />
@@ -69,7 +69,7 @@ const Header: FC = () => {
             className="nav__items"
           >
             <img
-              src={`${window.location.origin}/img/cart.svg`}
+              src="img/cart.svg"
               alt="Shopping bag"
               className="nav__cart"
             />

@@ -1,0 +1,19 @@
+.breadcrumbs {
+  margin: 24px 0 40px;
+
+  width: 93px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &__title {
+    font-family: Mont, sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+
+    color: #89939a;
+  }
+}

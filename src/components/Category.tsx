@@ -9,7 +9,7 @@ const Category = () => {
           <NavLink to="/phones" className="category__item">
             <div className="category__image-wrapper category__image-phones">
               <img
-                src={`${window.location.origin}/img/phones-category.png`}
+                src="img/phones-category.png"
                 alt="Phones"
                 className="category__image"
               />
@@ -20,7 +20,7 @@ const Category = () => {
           <NavLink to="/tablets" className="category__item">
             <div className="category__image-wrapper category__image-tablets">
               <img
-                src={`${window.location.origin}/img/tablets-category.png`}
+                src="img/tablets-category.png"
                 alt="Tablets"
                 className="category__image"
               />
@@ -31,7 +31,7 @@ const Category = () => {
           <NavLink to="/accessories" className="category__item">
             <div className="category__image-wrapper category__image-accessories">
               <img
-                src={`${window.location.origin}/img/accessories-category.png`}
+                src="img/accessories-category.png"
                 alt="Accessories"
                 className="category__image"
               />

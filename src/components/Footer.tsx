@@ -10,7 +10,7 @@ const Footer = () => {
       <div className="footer">
         <nav className="footer__nav">
           <img
-            src={`${window.location.origin}/img/logo.svg`}
+            src="img/logo.svg"
             alt="Logo"
             className="footer__logo"
           />
@@ -30,7 +30,7 @@ const Footer = () => {
             <p className="footer__text">Back to top</p>
             <button type="button" className="footer__button">
               <img
-                src={`${window.location.origin}/img/back-to-top-arrow.svg`}
+                src="img/back-to-top-arrow.svg"
                 alt="Back to top arrow"
                 className="footer__arrow"
               />

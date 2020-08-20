@@ -45,9 +45,9 @@ const Slider: FC = () => {
         <div className="slider__container">
           <div className="slider__slides">
             <div style={slidesMove}>
-              <img src={`${window.location.origin}/img/banner.png`} alt="iPhones" />
-              <img src={`${window.location.origin}/img/banner.png`} alt="iPhones" />
-              <img src={`${window.location.origin}/img/banner.png`} alt="iPhones" />
+              <img src="img/banner.png" alt="iPhones" />
+              <img src="img/banner.png" alt="iPhones" />
+              <img src="img/banner.png" alt="iPhones" />
             </div>
           </div>
         </div>

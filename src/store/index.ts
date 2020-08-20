@@ -15,12 +15,13 @@ const actions = {
   UNLIKE: 'UNLIKE',
 };
 
-export const startLoading = () => ({ type: actions.START_LOADING })
+export const startLoading = () => ({ type: actions.START_LOADING });
 export const setPhones = (phones: Phones[]) => ({ type: actions.SET_PHONES, phones });
 export const hasError = () => ({ type: actions.HAS_ERROR });
 
 export const isLoading = (state: RootState) => state.loading;
 export const errorState = (state: RootState) => state.error;
+export const getAllPhones = (state: RootState) => state.phones;
 export const getHotPriceProducts = (state: RootState) => (
   [...state.phones]
     .sort((a, b) => b.priceDiscount - a.priceDiscount)
