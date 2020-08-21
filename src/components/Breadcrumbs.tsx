@@ -6,11 +6,10 @@ const Breadcrumbs = (props: { title: React.ReactNode }) => {
   return (
     <HashRouter>
       <div className="breadcrumbs">
-        <NavLink to="/" exact>
+        <NavLink to="/" exact className="breadcrumbs__home">
           <img
             src="img/icons/home.svg"
             alt="home icon"
-            className="breadcrumbs__home"
           />
         </NavLink>
         <img

@@ -74,7 +74,7 @@ const ProductCard: FC<Props> = ({ phone }) => {
             type="button"
             className="productCard__btn--favs"
           >
-            <img src="img/favourites.svg" alt="favs logo" />
+            <img src="img/favs.svg" alt="favs logo" />
           </button>
         </div>
       </div>

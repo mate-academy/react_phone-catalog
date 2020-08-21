@@ -1,11 +1,18 @@
 .breadcrumbs {
   margin: 24px 0 40px;
 
-  width: 93px;
-
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
+
+  :nth-child(n) {
+    margin-right: 14px;
+  }
+
+  &__home {
+    width: 16px;
+    height: 17px;
+  }
 
   &__title {
     font-family: Mont, sans-serif;

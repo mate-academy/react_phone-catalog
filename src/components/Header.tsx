@@ -6,10 +6,11 @@ import {
   Switch,
 } from 'react-router-dom';
 
-import Tablets from './Tablets';
 import Home from './Home';
-import Phones from './PhonesPage';
-import Accessories from './Accessories';
+import PhonesPage from './PhonesPage';
+import TabletsPage from './TabletsPage';
+import AccessoriesPage from './AccessoriesPage';
+import Favs from './Favs';
 
 const Header: FC = () => {
   return (
@@ -58,9 +59,9 @@ const Header: FC = () => {
             className="nav__items"
           >
             <img
-              src="img/favourites.svg"
-              alt="Favourites"
-              className="nav__favourites"
+              src="img/favs.svg"
+              alt="Favorites"
+              className="nav__favs"
             />
           </NavLink>
           <NavLink
@@ -78,9 +79,10 @@ const Header: FC = () => {
       </nav>
       <Switch>
         <Route path="/" exact component={Home} />
-        <Route path="/phones" exact component={Phones} />
-        <Route path="/tablets" exact component={Tablets} />
-        <Route path="/accessories" exact component={Accessories} />
+        <Route path="/phones" exact component={PhonesPage} />
+        <Route path="/tablets" exact component={TabletsPage} />
+        <Route path="/accessories" exact component={AccessoriesPage} />
+        <Route path="/favs" exact component={Favs} />
       </Switch>
     </HashRouter>
   );
