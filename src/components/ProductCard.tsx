@@ -1,35 +1,42 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
+import {
+  NavLink, Route, HashRouter, Switch,
+} from 'react-router-dom';
+import { connect } from 'react-redux';
+
+import {
+  RootState, getCurrentPhone, loadPhone, like,
+} from '../store';
+
+import PhonePage from './PhonePage';
+import { PhoneOfPhones } from '../interfaces/interfaces';
 
 type Props = {
-  phone: {
-    id: string;
-    category: string;
-    phoneId: string;
-    itemId: string;
-    name: string;
-    priceRegular: number;
-    priceDiscount: number;
-    screen: string;
-    capacity: string;
-    color: string;
-    ram: string;
-    year: number;
-    image: string;
-  };
+  phone: PhoneOfPhones;
+  phoneLoad: (id: string) => void;
+  setLike: (phoneId: string) => void;
 };
 
-const ProductCard: FC<Props> = ({ phone }) => {
+const ProductCard: FC<Props> = ({ phone, phoneLoad, setLike }) => {
+  const [liked, setLiked] = useState(false);
+
   return (
-    <div>
+    <HashRouter>
       <div className="productCard">
-        <img
-          src={phone.image}
-          alt={phone.name}
-          className="productCard__img"
-        />
-        <p className="productCard__title">
-          {phone.name}
-        </p>
+        <NavLink
+          to={`/phones/${phone.phoneId}`}
+          className="productCard__link"
+          onClick={() => phoneLoad(phone.phoneId)}
+        >
+          <img
+            src={phone.image}
+            alt={phone.name}
+            className="productCard__img"
+          />
+          <p className="productCard__title">
+            {phone.name}
+          </p>
+        </NavLink>
         <h2 className="productCard__discount">
           $
           {phone.priceDiscount}
@@ -73,13 +80,33 @@ const ProductCard: FC<Props> = ({ phone }) => {
           <button
             type="button"
             className="productCard__btn--favs"
+            onClick={() => {
+              setLike(phone.phoneId);
+              setLiked(!liked);
+            }}
           >
-            <img src="img/favs.svg" alt="favs logo" />
+            {
+              liked
+                ? <img src="img/favs-liked.svg" alt="favs logo" />
+                : <img src="img/favs.svg" alt="favs logo" />
+            }
           </button>
         </div>
       </div>
-    </div>
+      <Switch>
+        <Route path={`/phones/${phone.phoneId}`} exact component={PhonePage} />
+      </Switch>
+    </HashRouter>
   );
 };
 
-export default ProductCard;
+const mapState = (state: RootState) => ({
+  currentPhone: getCurrentPhone(state),
+});
+
+const mapDispatch = {
+  phoneLoad: loadPhone,
+  setLike: like,
+};
+
+export default connect(mapState, mapDispatch)(ProductCard);

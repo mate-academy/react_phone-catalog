@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
+import React, { FC, useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import { Phones } from '../interfaces/interfaces';
 import {
-  getHotPriceProducts,
-  getBrandNewProducts,
   RootState,
   loadPhones,
+  getHotPricePhones,
+  getBrandNewPhones,
 } from '../store';
 
 import Slider from './Slider';
@@ -20,33 +20,31 @@ type Props = {
   brandNewPhones: Phones[];
 };
 
-class Home extends Component<Props> {
-  componentDidMount() {
-    this.props.phonesLoad();
-  }
+const Home: FC<Props> = ({ phonesLoad, hotPricePhones, brandNewPhones }) => {
+  useEffect(() => {
+    phonesLoad();
+  }, [phonesLoad]);
 
-  render() {
-    return (
-      <div className="home">
-        <Slider />
-        <div className="home__slider-wrapper">
-          <Title title="Hot Prices" />
-          <ProductSlider phones={this.props.hotPricePhones} />
-        </div>
-        <Title title="Shop by category" />
-        <Category />
-        <div className="home__slider-wrapper">
-          <Title title="Brand new models" />
-          <ProductSlider phones={this.props.brandNewPhones} />
-        </div>
+  return (
+    <div className="home">
+      <Slider />
+      <div className="home__slider-wrapper">
+        <Title title="Hot Prices" />
+        <ProductSlider phones={hotPricePhones} />
       </div>
-    );
-  }
-}
+      <Title title="Shop by category" />
+      <Category />
+      <div className="home__slider-wrapper">
+        <Title title="Brand new models" />
+        <ProductSlider phones={brandNewPhones} />
+      </div>
+    </div>
+  );
+};
 
 const mapState = (state: RootState) => ({
-  hotPricePhones: getHotPriceProducts(state),
-  brandNewPhones: getBrandNewProducts(state),
+  hotPricePhones: getHotPricePhones(state),
+  brandNewPhones: getBrandNewPhones(state),
 });
 
 const mapDispatch = {

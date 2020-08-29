@@ -8,6 +8,8 @@
   width: 272px;
   height: 507px;
 
+  color: #313237;
+
   border: 1px solid #e2e6e9;
 
   cursor: pointer;
@@ -16,6 +18,14 @@
 
   &:hover {
     box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+  }
+
+  &__link {
+    display: flex;
+    flex-direction: column;
+
+    color: inherit;
+    text-decoration: none;
   }
 
   &__img {

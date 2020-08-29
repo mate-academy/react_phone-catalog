@@ -38,7 +38,6 @@ const Footer = () => {
           </div>
         </nav>
       </div>
-
     </HashRouter>
   );
 };
