@@ -7,7 +7,7 @@
   </head>
   <body>
     <div id="root"></div>
-    <div class="first-page">
+    <div class="page">
       <header class="header">
         <a href="#">
           <img
@@ -49,317 +49,409 @@
           </a>
         </div>
       </header>
-      <main class="main container">
-        <section class="promo section">
-          <div class="promo__main">
-            <div class="promo__scroll scroll scroll--left"></div>
-            <div class="promo__image">
-              <img
-                src="./img/Banner.svg"
-                class="promo__banner"
-                alt="Banner"
-              >
-            </div>
-            <div class="promo__scroll scroll scroll--right"></div>
-          </div>
-          <div class="promo__slide">
-            <div class="promo__line promo__line--active"></div>
-            <div class="promo__line"></div>
-            <div class="promo__line"></div>
-          </div>
-
-        </section>
-
-        <section class="section">
-          <div class="section__top">
-            <h2 class="section__heading">Hot prices</h2>
-            <div class="scroll-container">
-              <div class="scroll scroll--left"></div>
-              <div class="scroll scroll--right"></div>
-            </div>
-          </div>
-          <div class="catalog">
-            <article class="product">
-              <img
-                class="product__image"
-                src="./img/iphoneXs.svg"
-                alt="iPhone XS"
-              >
-              <p class="product__name">Apple iPhone Xs 64GB Silver (iMT9G2FS/A)</p>
-              <div class="product__value">
-                <span class="product__price">$799</span>
-                <span class="product__price--discount">$899</span>
-              </div>
-              <div class="product__characteristics">
-                <span class="product__spec">Screen</span>
-                <span class="product__spec--info">5.8” OLED</span>
-              </div>
-              <div class="product__characteristics">
-                <span class="product__spec">Capacity</span>
-                <span class="product__spec--info">64 GB</span>
-              </div>
-              <div class="product__characteristics">
-                <span class="product__spec">RAM</span>
-                <span class="product__spec--info">4 GB</span>
-              </div>
-              <div class="product__buttons">
-                <button class="product__buy button">Add to cart</button>
-                <div class="product__fav"></div>
-              </div>
-            </article>
-
-            <article class="product">
-              <img
-                class="product__image"
-                src="./img/iphone11-pro-max.svg"
-                alt="iPhone 11 Pro Max"
-              >
-              <p class="product__name">Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)</p>
-              <div class="product__value">
-                <span class="product__price">$1099</span>
-                <span class="product__price--discount">$1199</span>
-              </div>
-              <div class="product__characteristics">
-                <span class="product__spec">Screen</span>
-                <span class="product__spec--info">6.5” OLED</span>
-              </div>
-              <div class="product__characteristics">
-                <span class="product__spec">Capacity</span>
-                <span class="product__spec--info">64 GB</span>
-              </div>
-              <div class="product__characteristics">
-                <span class="product__spec">RAM</span>
-                <span class="product__spec--info">4 GB</span>
-              </div>
-              <div class="product__buttons">
-                <button class="product__buy button">Add to cart</button>
-                <div class="product__fav"></div>
-              </div>
-            </article>
-
-            <article class="product">
-              <img
-                class="product__image"
-                src="./img/iphone11.svg"
-                alt="iPhone XS"
-              >
-              <p class="product__name">Apple iPhone 11 128GB Purple (iMT9G2FS/A)</p>
-              <div class="product__value">
-                <span class="product__price">$799</span>
-                <span class="product__price--discount">$899</span>
-              </div>
-              <div class="product__characteristics">
-                <span class="product__spec">Screen</span>
-                <span class="product__spec--info">6.2” IPS</span>
-              </div>
-              <div class="product__characteristics">
-                <span class="product__spec">Capacity</span>
-                <span class="product__spec--info">128 GB</span>
-              </div>
-              <div class="product__characteristics">
-                <span class="product__spec">RAM</span>
-                <span class="product__spec--info">4 GB</span>
-              </div>
-              <div class="product__buttons">
-                <button class="product__buy button">Add to cart</button>
-                <div class="product__fav"></div>
-              </div>
-            </article>
-
-            <article class="product">
-              <img
-                class="product__image"
-                src="./img/iphonex.svg"
-                alt="iPhone XS"
-              >
-              <p class="product__name">Apple iPhone X 256GB Silver (iMT9G2FS/A)</p>
-              <div class="product__value">
-                <span class="product__price">$859</span>
-                <span class="product__price--discount">$899</span>
-              </div>
-              <div class="product__characteristics">
-                <span class="product__spec">Screen</span>
-                <span class="product__spec--info">5.8” OLED</span>
-              </div>
-              <div class="product__characteristics">
-                <span class="product__spec">Capacity</span>
-                <span class="product__spec--info">256 GB</span>
-              </div>
-              <div class="product__characteristics">
-                <span class="product__spec">RAM</span>
-                <span class="product__spec--info">3 GB</span>
-              </div>
-              <div class="product__buttons">
-                <button class="product__buy button">Add to cart</button>
-                <div class="product__fav"></div>
-              </div>
-            </article>
-          </div>
-        </section>
-
-        <section class="categories section">
-          <h2 class="section__heading">Shop by category</h2>
-          <div class="categories__catalog">
-            <article class="categories__category">
-              <a href="#" class="categories__image-container categories__image-container--phones">
+      <main class="main main--padding">
+        <div class="main__content">
+          <section class="promo section">
+            <div class="promo__main">
+              <div class="promo__scroll scroll scroll--left"></div>
+              <div class="promo__image">
                 <img
-                  src="./img/phones.svg"
-                  class="categories__image"
-                  alt="Mobile phones"
+                  src="./img/Banner.svg"
+                  class="promo__banner"
+                  alt="Banner"
                 >
-              </a>
-              <a href="#" class="categories__name">Mobile phones</a>
-              <p class="categories__quantity">95 models</p>
-            </article>
-
-            <article class="categories__category">
-              <a href="#" class="categories__image-container categories__image-container--tablets">
-                <img
-                  src="./img/tablets.svg"
-                  class="categories__image"
-                  alt="Mobile phones"
-                >
-              </a>
-              <a href="#" class="categories__name">Tablets</a>
-              <p class="categories__quantity">24 models</p>
-            </article>
-
-            <article class="categories__category">
-              <a href="#" class="categories__image-container categories__image-container--accessories">
-                <img
-                  src="./img/accessories.svg"
-                  class="categories__image"
-                  alt="Mobile phones"
-                >
-              </a>
-              <a href="#" class="categories__name">Accessories</a>
-              <p class="categories__quantity">100 models</p>
-            </article>
-          </div>
-        </section>
-
-        <section class="section">
-          <div class="section__top">
-            <h2 class="section__heading">Brand new models</h2>
-            <div class="scroll-container">
-              <div class="scroll scroll--left"></div>
-              <div class="scroll scroll--right"></div>
+              </div>
+              <div class="promo__scroll scroll scroll--right"></div>
             </div>
+            <div class="promo__slide">
+              <div class="promo__line promo__line--active"></div>
+              <div class="promo__line"></div>
+              <div class="promo__line"></div>
+            </div>
+
+          </section>
+
+          <section class="section">
+            <div class="section__top">
+              <h2 class="section__heading">Hot prices</h2>
+              <div class="scroll-container">
+                <div class="scroll scroll--left"></div>
+                <div class="scroll scroll--right"></div>
+              </div>
+            </div>
+            <div class="catalog">
+              <article class="product">
+                <img
+                  class="product__image"
+                  src="./img/iphoneXs.svg"
+                  alt="iPhone XS"
+                >
+                <p class="product__name">Apple iPhone Xs 64GB Silver (iMT9G2FS/A)</p>
+                <div class="product__value">
+                  <span class="product__price">$799</span>
+                  <span class="product__price--discount">$899</span>
+                </div>
+                <div class="product__characteristics">
+                  <span class="product__spec">Screen</span>
+                  <span class="product__spec--info">5.8” OLED</span>
+                </div>
+                <div class="product__characteristics">
+                  <span class="product__spec">Capacity</span>
+                  <span class="product__spec--info">64 GB</span>
+                </div>
+                <div class="product__characteristics">
+                  <span class="product__spec">RAM</span>
+                  <span class="product__spec--info">4 GB</span>
+                </div>
+                <div class="product__buttons">
+                  <button class="product__buy button">Add to cart</button>
+                  <div class="product__fav"></div>
+                </div>
+              </article>
+
+              <article class="product">
+                <img
+                  class="product__image"
+                  src="./img/iphone11-pro-max.svg"
+                  alt="iPhone 11 Pro Max"
+                >
+                <p class="product__name">Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)</p>
+                <div class="product__value">
+                  <span class="product__price">$1099</span>
+                  <span class="product__price--discount">$1199</span>
+                </div>
+                <div class="product__characteristics">
+                  <span class="product__spec">Screen</span>
+                  <span class="product__spec--info">6.5” OLED</span>
+                </div>
+                <div class="product__characteristics">
+                  <span class="product__spec">Capacity</span>
+                  <span class="product__spec--info">64 GB</span>
+                </div>
+                <div class="product__characteristics">
+                  <span class="product__spec">RAM</span>
+                  <span class="product__spec--info">4 GB</span>
+                </div>
+                <div class="product__buttons">
+                  <button class="product__buy button">Add to cart</button>
+                  <div class="product__fav"></div>
+                </div>
+              </article>
+
+              <article class="product">
+                <img
+                  class="product__image"
+                  src="./img/iphone11.svg"
+                  alt="iPhone XS"
+                >
+                <p class="product__name">Apple iPhone 11 128GB Purple (iMT9G2FS/A)</p>
+                <div class="product__value">
+                  <span class="product__price">$799</span>
+                  <span class="product__price--discount">$899</span>
+                </div>
+                <div class="product__characteristics">
+                  <span class="product__spec">Screen</span>
+                  <span class="product__spec--info">6.2” IPS</span>
+                </div>
+                <div class="product__characteristics">
+                  <span class="product__spec">Capacity</span>
+                  <span class="product__spec--info">128 GB</span>
+                </div>
+                <div class="product__characteristics">
+                  <span class="product__spec">RAM</span>
+                  <span class="product__spec--info">4 GB</span>
+                </div>
+                <div class="product__buttons">
+                  <button class="product__buy button">Add to cart</button>
+                  <div class="product__fav"></div>
+                </div>
+              </article>
+
+              <article class="product">
+                <img
+                  class="product__image"
+                  src="./img/iphonex.svg"
+                  alt="iPhone XS"
+                >
+                <p class="product__name">Apple iPhone X 256GB Silver (iMT9G2FS/A)</p>
+                <div class="product__value">
+                  <span class="product__price">$859</span>
+                  <span class="product__price--discount">$899</span>
+                </div>
+                <div class="product__characteristics">
+                  <span class="product__spec">Screen</span>
+                  <span class="product__spec--info">5.8” OLED</span>
+                </div>
+                <div class="product__characteristics">
+                  <span class="product__spec">Capacity</span>
+                  <span class="product__spec--info">256 GB</span>
+                </div>
+                <div class="product__characteristics">
+                  <span class="product__spec">RAM</span>
+                  <span class="product__spec--info">3 GB</span>
+                </div>
+                <div class="product__buttons">
+                  <button class="product__buy button">Add to cart</button>
+                  <div class="product__fav"></div>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <section class="categories section">
+            <h2 class="section__heading">Shop by category</h2>
+            <div class="categories__catalog">
+              <article class="categories__category">
+                <a href="#" class="categories__image-container categories__image-container--phones">
+                  <img
+                    src="./img/phones.svg"
+                    class="categories__image"
+                    alt="Mobile phones"
+                  >
+                </a>
+                <a href="#" class="categories__name">Mobile phones</a>
+                <p class="categories__quantity">95 models</p>
+              </article>
+
+              <article class="categories__category">
+                <a href="#" class="categories__image-container categories__image-container--tablets">
+                  <img
+                    src="./img/tablets.svg"
+                    class="categories__image"
+                    alt="Mobile phones"
+                  >
+                </a>
+                <a href="#" class="categories__name">Tablets</a>
+                <p class="categories__quantity">24 models</p>
+              </article>
+
+              <article class="categories__category">
+                <a href="#" class="categories__image-container categories__image-container--accessories">
+                  <img
+                    src="./img/accessories.svg"
+                    class="categories__image"
+                    alt="Mobile phones"
+                  >
+                </a>
+                <a href="#" class="categories__name">Accessories</a>
+                <p class="categories__quantity">100 models</p>
+              </article>
+            </div>
+          </section>
+
+          <section class="section">
+            <div class="section__top">
+              <h2 class="section__heading">Brand new models</h2>
+              <div class="scroll-container">
+                <div class="scroll scroll--left"></div>
+                <div class="scroll scroll--right"></div>
+              </div>
+            </div>
+            <div class="catalog">
+              <article class="product">
+                <img
+                  class="product__image"
+                  src="./img/iphone11-pro-max-512.svg"
+                  alt="iPhone XS"
+                >
+                <p class="product__name">Apple iPhone 11 Pro Max 512GB Midnight Green (iMT9G2FS/A)</p>
+                <div class="product__value">
+                  <span class="product__price">$1299</span>
+                </div>
+                <div class="product__characteristics">
+                  <span class="product__spec">Screen</span>
+                  <span class="product__spec--info">6.5” OLED</span>
+                </div>
+                <div class="product__characteristics">
+                  <span class="product__spec">Capacity</span>
+                  <span class="product__spec--info">512 GB</span>
+                </div>
+                <div class="product__characteristics">
+                  <span class="product__spec">RAM</span>
+                  <span class="product__spec--info">4 GB</span>
+                </div>
+                <div class="product__buttons">
+                  <button class="product__buy button">Add to cart</button>
+                  <div class="product__fav"></div>
+                </div>
+              </article>
+
+              <article class="product">
+                <img
+                  class="product__image"
+                  src="./img/iphone11-pro-max-gold.svg"
+                  alt="iPhone 11 Pro Max"
+                >
+                <p class="product__name">Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)</p>
+                <div class="product__value">
+                  <span class="product__price">$1099</span>
+                </div>
+                <div class="product__characteristics">
+                  <span class="product__spec">Screen</span>
+                  <span class="product__spec--info">6.5” OLED</span>
+                </div>
+                <div class="product__characteristics">
+                  <span class="product__spec">Capacity</span>
+                  <span class="product__spec--info">64 GB</span>
+                </div>
+                <div class="product__characteristics">
+                  <span class="product__spec">RAM</span>
+                  <span class="product__spec--info">4 GB</span>
+                </div>
+                <div class="product__buttons">
+                  <button class="product__buy button">Add to cart</button>
+                  <div class="product__fav"></div>
+                </div>
+              </article>
+
+              <article class="product">
+                <img
+                  class="product__image"
+                  src="./img/iphone11-purple.svg"
+                  alt="iPhone XS"
+                >
+                <p class="product__name">Apple iPhone 11 256GB Purple (iMT9G2FS/A)</p>
+                <div class="product__value">
+                  <span class="product__price">$999</span>
+                </div>
+                <div class="product__characteristics">
+                  <span class="product__spec">Screen</span>
+                  <span class="product__spec--info">6.2” IPS</span>
+                </div>
+                <div class="product__characteristics">
+                  <span class="product__spec">Capacity</span>
+                  <span class="product__spec--info">256 GB</span>
+                </div>
+                <div class="product__characteristics">
+                  <span class="product__spec">RAM</span>
+                  <span class="product__spec--info">4 GB</span>
+                </div>
+                <div class="product__buttons">
+                  <button class="product__buy button">Add to cart</button>
+                  <div class="product__fav"></div>
+                </div>
+              </article>
+
+              <article class="product">
+                <img
+                  class="product__image"
+                  src="./img/iphone11-red.svg"
+                  alt="iPhone XS"
+                >
+                <p class="product__name">Apple iPhone 11 128GB (Product) Red (iMT9G2FS/A)</p>
+                <div class="product__value">
+                  <span class="product__price">$999</span>
+                </div>
+                <div class="product__characteristics">
+                  <span class="product__spec">Screen</span>
+                  <span class="product__spec--info">6.2” IPS</span>
+                </div>
+                <div class="product__characteristics">
+                  <span class="product__spec">Capacity</span>
+                  <span class="product__spec--info">128 GB</span>
+                </div>
+                <div class="product__characteristics">
+                  <span class="product__spec">RAM</span>
+                  <span class="product__spec--info">4 GB</span>
+                </div>
+                <div class="product__buttons">
+                  <button class="product__buy button">Add to cart</button>
+                  <div class="product__fav"></div>
+                </div>
+              </article>
+            </div>
+          </section>
+        </div>
+      </main>
+      <footer class="footer">
+        <div class="container container--footer">
+          <a href="#">
+            <img
+              class="logo"
+              src="./img/logo.svg"
+              alt="Site logo"
+            >
+          </a>
+          <nav class="footer__nav nav">
+            <ul class="nav__list">
+              <li class="nav__item">
+                <a href="#" class="nav__link">Github</a>
+              </li>
+              <li class="nav__item">
+                <a href="#" class="nav__link">Contacts</a>
+              </li>
+              <li class="nav__item">
+                <a href="#" class="nav__link">Rights</a>
+              </li>
+            </ul>
+          </nav>
+          <div class="footer__button-container">
+            <a href="#" class="footer__button-caption">Back to top</a>
+            <a href="#" class="footer__button scroll scroll--top"></a>
           </div>
-          <div class="catalog">
-            <article class="product">
-              <img
-                class="product__image"
-                src="./img/iphone11-pro-max-512.svg"
-                alt="iPhone XS"
-              >
-              <p class="product__name">Apple iPhone 11 Pro Max 512GB Midnight Green (iMT9G2FS/A)</p>
-              <div class="product__value">
-                <span class="product__price">$1299</span>
-              </div>
-              <div class="product__characteristics">
-                <span class="product__spec">Screen</span>
-                <span class="product__spec--info">6.5” OLED</span>
-              </div>
-              <div class="product__characteristics">
-                <span class="product__spec">Capacity</span>
-                <span class="product__spec--info">512 GB</span>
-              </div>
-              <div class="product__characteristics">
-                <span class="product__spec">RAM</span>
-                <span class="product__spec--info">4 GB</span>
-              </div>
-              <div class="product__buttons">
-                <button class="product__buy button">Add to cart</button>
-                <div class="product__fav"></div>
-              </div>
-            </article>
+        </div>
+      </footer>
+    </div>
+    <div class="page">
+      <header class="header">
+        <a href="#">
+          <img
+            class="logo header__logo"
+            src="./img/logo.svg"
+            alt="Site logo"
+          >
+        </a>
+        <nav class="header__nav nav">
+          <ul class="nav__list">
+            <li class="nav__item">
+              <a href="#" class="nav__link">Home</a>
+            </li>
+            <li class="nav__item">
+              <a href="#" class="nav__link nav__link--active">Phones</a>
+            </li>
+            <li class="nav__item">
+              <a href="#" class="nav__link">Tablets</a>
+            </li>
+            <li class="nav__item">
+              <a href="#" class="nav__link">Accessories</a>
+            </li>
+          </ul>
+        </nav>
+        <div class="header__buttons">
+          <a href="#" class="header__buttons--item">
+            <img
+              class="header__buttons--fav"
+              src="./img/fav.svg"
+              alt="Favourites"
+            >
+          </a>
+          <a href="#" class="header__buttons--item">
+            <img
+              class="header__buttons--cart"
+              src="./img/cart.svg"
+              alt="Cart"
+            >
+          </a>
+        </div>
+      </header>
+      <main class="main">
+        <div class="main__content">
+          <section class="section">
+            <div class="breadcrumbs section__breadcrumbs">
+              <a
+                href="#"
+                class="breadcrumbs__image"
+                alt ="Home"></a>
+              <img src="./img/corner-right.svg" class="breadcrumbs__scroll">
+              <a href="#" class="breadcrumbs__category">Phones</a>
+            </div>
+            <h2 class="section__heading section__heading--category">Mobile phones</h2>
+            <p class="section__heading--quantity">95 models</p>
+            <div class="filter section__filter">
 
-            <article class="product">
-              <img
-                class="product__image"
-                src="./img/iphone11-pro-max-gold.svg"
-                alt="iPhone 11 Pro Max"
-              >
-              <p class="product__name">Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)</p>
-              <div class="product__value">
-                <span class="product__price">$1099</span>
-              </div>
-              <div class="product__characteristics">
-                <span class="product__spec">Screen</span>
-                <span class="product__spec--info">6.5” OLED</span>
-              </div>
-              <div class="product__characteristics">
-                <span class="product__spec">Capacity</span>
-                <span class="product__spec--info">64 GB</span>
-              </div>
-              <div class="product__characteristics">
-                <span class="product__spec">RAM</span>
-                <span class="product__spec--info">4 GB</span>
-              </div>
-              <div class="product__buttons">
-                <button class="product__buy button">Add to cart</button>
-                <div class="product__fav"></div>
-              </div>
-            </article>
-
-            <article class="product">
-              <img
-                class="product__image"
-                src="./img/iphone11-purple.svg"
-                alt="iPhone XS"
-              >
-              <p class="product__name">Apple iPhone 11 256GB Purple (iMT9G2FS/A)</p>
-              <div class="product__value">
-                <span class="product__price">$999</span>
-              </div>
-              <div class="product__characteristics">
-                <span class="product__spec">Screen</span>
-                <span class="product__spec--info">6.2” IPS</span>
-              </div>
-              <div class="product__characteristics">
-                <span class="product__spec">Capacity</span>
-                <span class="product__spec--info">256 GB</span>
-              </div>
-              <div class="product__characteristics">
-                <span class="product__spec">RAM</span>
-                <span class="product__spec--info">4 GB</span>
-              </div>
-              <div class="product__buttons">
-                <button class="product__buy button">Add to cart</button>
-                <div class="product__fav"></div>
-              </div>
-            </article>
-
-            <article class="product">
-              <img
-                class="product__image"
-                src="./img/iphone11-red.svg"
-                alt="iPhone XS"
-              >
-              <p class="product__name">Apple iPhone 11 128GB (Product) Red (iMT9G2FS/A)</p>
-              <div class="product__value">
-                <span class="product__price">$999</span>
-              </div>
-              <div class="product__characteristics">
-                <span class="product__spec">Screen</span>
-                <span class="product__spec--info">6.2” IPS</span>
-              </div>
-              <div class="product__characteristics">
-                <span class="product__spec">Capacity</span>
-                <span class="product__spec--info">128 GB</span>
-              </div>
-              <div class="product__characteristics">
-                <span class="product__spec">RAM</span>
-                <span class="product__spec--info">4 GB</span>
-              </div>
-              <div class="product__buttons">
-                <button class="product__buy button">Add to cart</button>
-                <div class="product__fav"></div>
-              </div>
-            </article>
-          </div>
-        </section>
+            </div>
+          </section>
+        </div>
       </main>
       <footer class="footer">
         <div class="container container--footer">

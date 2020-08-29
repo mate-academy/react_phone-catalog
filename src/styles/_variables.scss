@@ -1,3 +1,6 @@
+$largeScreenBreakpoint: 1135px;
+$mobileBreakpoint: 767px;
+
 $backgroundColor: #fff;
 $primaryColor: #313237;
 $secondaryColor: #89939a;
@@ -7,7 +10,8 @@ $iconsColor: #b4bdc4;
 
 $hoverTransitionDuration: 0.3s;
 
-$cardGap: 16px;
+$cardColumnGap: 16px;
+$cardRowGap: 40px;
 $cardWidth: 272px;
 $cardHeight: 507px;
 

@@ -1,5 +1,13 @@
 .catalog {
   display: grid;
-  grid-template-columns: repeat(4, $cardWidth);
-  grid-column-gap: $cardGap;
+  justify-content: space-between;
+  grid-template-columns: repeat(auto-fill, $cardWidth);
+  grid-column-gap: $cardColumnGap;
+  grid-row-gap: $cardRowGap ;
+}
+
+@media (max-width: $mobileBreakpoint) {
+  .catalog {
+    justify-content: center;
+  }
 }

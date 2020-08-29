@@ -31,3 +31,12 @@
     }
   }
 }
+
+@media (max-width: $mobileBreakpoint) {
+  .header {
+
+    &__nav {
+      display: none;
+    }
+  }
+}

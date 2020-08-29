@@ -20,3 +20,13 @@
     }
   }
 }
+
+@media (max-width: $mobileBreakpoint) {
+  .footer {
+
+    &__nav {
+      display: none;
+    }
+
+  }
+}

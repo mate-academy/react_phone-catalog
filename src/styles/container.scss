@@ -9,3 +9,12 @@
     height: 96px;
   }
 }
+
+@media (max-width: $largeScreenBreakpoint) {
+  .container {
+
+    &--footer {
+      padding: 0 5vw;
+    }
+  }
+}

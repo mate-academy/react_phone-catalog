@@ -14,6 +14,8 @@
 @import "./styles/button";
 @import "./styles/categories";
 @import "./styles/footer";
+@import "./styles/breadcrumbs";
+@import "./styles/filter";
 
 body {
   font-family: Mont, sans-serif;
@@ -22,4 +24,8 @@ body {
   line-height: 21px;
   color: $primaryColor;
   background-color: $backgroundColor;
+}
+
+.page {
+  margin-bottom: 100px;
 }

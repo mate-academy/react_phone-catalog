@@ -2,7 +2,7 @@
   &__catalog {
     display: grid;
     grid-template-columns: repeat(3, 368px);
-    grid-column-gap: $cardGap;
+    grid-column-gap: $cardColumnGap;
   }
 
   &__categoty {
@@ -16,8 +16,6 @@
 
     &-container {
       display: block;
-      width: 368px;
-      height: 368px;
       margin-bottom: 24px;
 
       &--phones {
@@ -41,5 +39,18 @@
 
   &__quantity {
     color: $secondaryColor;
+  }
+}
+
+@media (max-width: $largeScreenBreakpoint) {
+  .categories {
+
+    &__catalog {
+      grid-template-columns: 1fr;
+    }
+
+    &__image {
+      width: 100%;
+    }
   }
 }
