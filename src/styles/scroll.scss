@@ -1,0 +1,42 @@
+.scroll {
+  border: 1px solid $iconsColor;
+  width: 32px;
+  height: 32px;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+
+  &:hover {
+    border-color: $primaryColor;
+  }
+
+  &--right {
+    background-image: url("../img/corner-right.svg");
+
+    &:hover {
+      background-image: url("../img/corner-right-hover.svg");
+    }
+  }
+
+  &--left {
+    background-image: url("../img/corner-left.svg");
+
+    &:hover {
+      background-image: url("../img/corner-left-hover.svg");
+    }
+  }
+
+  &--top {
+    background-image: url("../img/corner-up.svg");
+
+    &:hover {
+      background-image: url("../img/corner-up-hover.svg");
+    }
+  }
+
+  &-container {
+    display: flex;
+    justify-content: space-between;
+    width: 80px;
+  }
+}

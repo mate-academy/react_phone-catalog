@@ -1,0 +1,44 @@
+.nav {
+  text-transform: uppercase;
+  @include uppercaseFont;
+
+  &__list {
+    display: flex;
+    align-items: center;
+  }
+
+  &__item {
+    margin-right: 64px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &__link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 64px;
+    transition: color $hoverTransitionDuration;
+
+    &:hover {
+      color: $primaryColor;
+    }
+
+    &--active {
+      position: relative;
+      color: $primaryColor;
+
+      &:after {
+        position: absolute;
+        content: "";
+        left: 0;
+        bottom: -1px;
+        background-color: $primaryColor;
+        height: 3px;
+        width: 100%;
+      }
+    }
+  }
+}

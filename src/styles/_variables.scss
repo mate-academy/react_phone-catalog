@@ -1,0 +1,57 @@
+$largeScreenBreakpoint: 1135px;
+$mobileBreakpoint: 767px;
+
+$backgroundColor: #fff;
+$primaryColor: #313237;
+$secondaryColor: #89939a;
+$elementsColor: #e2e6e9;
+$hoverBackgroundColor: #fafbfc;
+$iconsColor: #b4bdc4;
+
+$hoverTransitionDuration: 0.3s;
+
+$cardColumnGap: 16px;
+$cardRowGap: 40px;
+$cardWidth: 272px;
+$cardHeight: 507px;
+
+$productImageSize: 208px;
+
+@mixin uppercaseFont {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 11px;
+  color: $secondaryColor;
+}
+
+@mixin smallFont {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+@mixin buttonFont {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: $backgroundColor;
+}
+
+@mixin largeHeadingFont {
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+}
+
+@mixin mediumHeadingFont {
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 31px;
+}
+
+@mixin smallHeadingFont {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 26px;
+}

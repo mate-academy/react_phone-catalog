@@ -1,0 +1,23 @@
+.breadcrumbs {
+  $margin: 14px;
+
+  display: flex;
+  align-items: center;
+  @include smallFont;
+  color: $secondaryColor;
+  height: 16px;
+
+  &__image {
+    background-image: url("../img/Home.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    margin-right: $margin;
+  }
+
+  &__scroll {
+    margin-right: $margin;
+  }
+
+}

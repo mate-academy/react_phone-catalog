@@ -1,0 +1,31 @@
+@import "./styles/fonts";
+@import "./styles/resets";
+@import "./styles/variables";
+@import "./styles/scroll.scss";
+@import "./styles/logo";
+@import "./styles/header";
+@import "./styles/nav";
+@import "./styles/container";
+@import "./styles/main";
+@import "./styles/promo";
+@import "./styles/section";
+@import "./styles/catalog.scss";
+@import "./styles/product";
+@import "./styles/button";
+@import "./styles/categories";
+@import "./styles/footer";
+@import "./styles/breadcrumbs";
+@import "./styles/filter";
+
+body {
+  font-family: Mont, sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  color: $primaryColor;
+  background-color: $backgroundColor;
+}
+
+.page {
+  margin-bottom: 100px;
+}
