@@ -1,11 +1,11 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import {
   NavLink, Route, HashRouter, Switch,
 } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import {
-  RootState, getCurrentPhone, loadPhone, like,
+  RootState, getCurrentPhone, loadPhone, like, getFavs,
 } from '../store';
 
 import PhonePage from './PhonePage';
@@ -13,12 +13,15 @@ import { PhoneOfPhones } from '../interfaces/interfaces';
 
 type Props = {
   phone: PhoneOfPhones;
+  favs: any;
   phoneLoad: (id: string) => void;
   setLike: (phoneId: string) => void;
 };
 
-const ProductCard: FC<Props> = ({ phone, phoneLoad, setLike }) => {
-  const [liked, setLiked] = useState(false);
+const ProductCard: FC<Props> = ({
+  phone, phoneLoad, setLike, favs,
+}) => {
+  const liked = favs.find((fav: string) => fav === phone.phoneId);
 
   return (
     <HashRouter>
@@ -82,7 +85,6 @@ const ProductCard: FC<Props> = ({ phone, phoneLoad, setLike }) => {
             className="productCard__btn--favs"
             onClick={() => {
               setLike(phone.phoneId);
-              setLiked(!liked);
             }}
           >
             {
@@ -102,6 +104,7 @@ const ProductCard: FC<Props> = ({ phone, phoneLoad, setLike }) => {
 
 const mapState = (state: RootState) => ({
   currentPhone: getCurrentPhone(state),
+  favs: getFavs(state),
 });
 
 const mapDispatch = {
