@@ -10,17 +10,17 @@ const actions = {
   SET_PHONES: 'SET_PHONES',
   SET_PHONE: 'SET_PHONE',
   HAS_ERROR: 'HAS_ERROR',
+  LIKE: 'LIKE',
   ADD_TO_CART: 'ADD_TO_CART',
   REMOVE_FROM_CART: 'REMOVE_FROM_CART',
-  LIKE: 'LIKE',
-  UNLIKE: 'UNLIKE',
 };
 
 export const startLoading = () => ({ type: actions.START_LOADING });
 export const setPhones = (phones: Phones[]) => ({ type: actions.SET_PHONES, phones });
 export const setPhone = (phone: Phone) => ({ type: actions.SET_PHONE, phone });
-export const like = (phoneId: string) => ({ type: actions.LIKE, phoneId });
 export const hasError = () => ({ type: actions.HAS_ERROR });
+export const like = (phoneId: string) => ({ type: actions.LIKE, phoneId });
+export const addToCart = (phoneId: string) => ({ type: actions.ADD_TO_CART, phoneId });
 
 export const isLoading = (state: RootState) => state.loading;
 export const errorState = (state: RootState) => state.error;
@@ -33,6 +33,7 @@ export const getBrandNewPhones = (state: RootState) => (
   [...state.phones].sort((a, b) => b.year - a.year)
 );
 export const getFavs = (state: RootState) => state.favs;
+export const getCart = (state: RootState) => state.cart;
 
 export const addFav = (state: RootState, id: string) => {
   const dublicate = state.favs.find((fav: string) => fav === id);
@@ -69,7 +70,7 @@ export type RootState = {
   error: boolean;
   phones: Phones[];
   phone: Phone;
-  cart: string[];
+  cart: any;
   favs: any;
 };
 
@@ -125,11 +126,14 @@ const reducer = (state = inititalState, action: AnyAction) => {
     case actions.SET_PHONE:
       return { ...state, loading: false, phone: action.phone };
 
+    case actions.HAS_ERROR:
+      return { ...state, loading: false, error: true };
+
     case actions.LIKE:
       return addFav(state, action.phoneId);
 
-    case actions.HAS_ERROR:
-      return { ...state, loading: false, error: true };
+    case actions.ADD_TO_CART:
+      return { ...state, cart: [...state.cart, action.phoneId] };
 
     default:
       return state;

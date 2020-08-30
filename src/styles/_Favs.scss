@@ -1,6 +1,11 @@
 .favs {
   padding: 0 152px;
 
+  &__oops {
+    padding: 152px;
+    text-align: center;
+  }
+
   &__quantity {
     margin-bottom: 40px;
 

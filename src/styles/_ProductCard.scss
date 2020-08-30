@@ -124,6 +124,21 @@
     }
   }
 
+  &__btn--added {
+    margin-right: 8px;
+    width: 176px;
+    height: 40px;
+
+    font-size: 14px;
+    line-height: 21px;
+
+    color: #27ae60;
+    background-color: #fff;
+    border: 1px solid #e2e6e9;
+
+    cursor: pointer;
+  }
+
   &__btn--favs {
     padding-top: 4px;
     width: 40px;

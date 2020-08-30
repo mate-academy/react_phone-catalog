@@ -5,7 +5,7 @@ import {
 import { connect } from 'react-redux';
 
 import {
-  RootState, getCurrentPhone, loadPhone, like, getFavs,
+  RootState, getCurrentPhone, loadPhone, like, getFavs, getCart, addToCart,
 } from '../store';
 
 import PhonePage from './PhonePage';
@@ -14,14 +14,17 @@ import { PhoneOfPhones } from '../interfaces/interfaces';
 type Props = {
   phone: PhoneOfPhones;
   favs: any;
+  cart: any;
   phoneLoad: (id: string) => void;
   setLike: (phoneId: string) => void;
+  setToCart: (phoneId: string) => void;
 };
 
 const ProductCard: FC<Props> = ({
-  phone, phoneLoad, setLike, favs,
+  phone, phoneLoad, setLike, favs, cart, setToCart,
 }) => {
   const liked = favs.find((fav: string) => fav === phone.phoneId);
+  const addedToCart = cart.find((item: string) => item === phone.phoneId);
 
   return (
     <HashRouter>
@@ -74,12 +77,29 @@ const ProductCard: FC<Props> = ({
           </p>
         </div>
         <div className="productCard__btn">
-          <button
-            type="button"
-            className="productCard__btn--cart"
-          >
-            Add to cart
-          </button>
+          {
+            addedToCart
+              ? (
+                <button
+                  type="button"
+                  className="productCard__btn--added"
+                  disabled
+                >
+                  Added to cart
+                </button>
+              )
+              : (
+                <button
+                  type="button"
+                  className="productCard__btn--cart"
+                  onClick={() => {
+                    setToCart(phone.phoneId);
+                  }}
+                >
+                  Add to cart
+                </button>
+              )
+          }
           <button
             type="button"
             className="productCard__btn--favs"
@@ -105,11 +125,13 @@ const ProductCard: FC<Props> = ({
 const mapState = (state: RootState) => ({
   currentPhone: getCurrentPhone(state),
   favs: getFavs(state),
+  cart: getCart(state),
 });
 
 const mapDispatch = {
   phoneLoad: loadPhone,
   setLike: like,
+  setToCart: addToCart,
 };
 
 export default connect(mapState, mapDispatch)(ProductCard);

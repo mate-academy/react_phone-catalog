@@ -23,19 +23,32 @@ const Favs: FC<Props> = ({ favs, phonesLoad, allPhones }) => {
     <div className="favs">
       <Breadcrumbs title="Favorites" />
       <Title title="Favorites" />
-      <p className="favs__quantity">
-        {favs.length}
-        &nbsp;items
-      </p>
-      <div className="favs__grid">
-        {allPhones
-          .filter(phone => favs.find((fav: string) => phone.phoneId === fav))
-          .map(phone => (
-            <div key={phone.id}>
-              <ProductCard phone={phone} />
-            </div>
-          ))}
-      </div>
+      {
+        favs.length
+          ? (
+            <>
+              <p className="favs__quantity">
+                {favs.length}
+                &nbsp;items
+              </p>
+              <div className="favs__grid">
+                {allPhones
+                  .filter(phone => favs.find((fav: string) => phone.phoneId === fav))
+                  .map(phone => (
+                    <div key={phone.id}>
+                      <ProductCard phone={phone} />
+                    </div>
+                  ))}
+              </div>
+            </>
+          )
+          : (
+            <h3 className="favs__oops">
+              Products that you like will be displayed here
+              <span role="img" aria-label="Grinny">👍</span>
+            </h3>
+          )
+      }
     </div>
   );
 };

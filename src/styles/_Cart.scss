@@ -1,0 +1,168 @@
+.cart {
+  padding: 0 152px;
+
+  &__breadcrumb-link {
+    text-decoration: none;
+
+    color:#89939a;
+  }
+
+  &__breadcrumb {
+    margin: 41px 0 16px;
+    display: flex;
+  }
+
+  &__breadcrumb-arrow {
+    margin-right: 9px;
+    transform: rotate(180deg);
+  }
+
+  &__breadcrumb-text {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  &__oops {
+    padding: 152px;
+    text-align: center;
+  }
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__items {
+    margin-bottom: 87px;
+
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__phone {
+    padding: 31px 0 31px 27px;
+    margin-bottom: 16px;
+
+    width: 752px;
+
+    display: flex;
+    align-items: center;
+
+    border: 1px solid #e2e6e9;
+
+    transition: box-shadow 0.3s;
+
+    &:hover {
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+    }
+  }
+
+  &__remove {
+    padding-top: 3px;
+    margin-right: 31px;
+
+    width: 16px;
+    height: 16px;
+
+    background-color: #fff;
+    border: none;
+
+    cursor: pointer;
+  }
+
+  &__phone-img {
+    margin-right: 31px;
+
+    width: 50px;
+    height: 66px;
+  }
+
+  &__phone-name {
+    margin-right: 49px;
+
+    min-width: 295px;
+  }
+
+  &__phone-amount {
+    margin-right: 43px;
+
+    display: flex;
+    align-items: center;
+  }
+
+  &__phone-amount-btn {
+    width: 32px;
+    height: 32px;
+
+    background-color: #fff;
+    border: 1px solid #b4bdc4;
+  }
+
+  &__phone-amount-text {
+    margin: 0 13px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+
+    color: #000;
+  }
+
+  &__overall {
+    width: 368px;
+    height: 206px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+
+    border: 1px solid #e2e6e9;
+  }
+
+  &__overall-container {
+    padding: 24px 0;
+
+    width: 321px;
+
+    text-align: center;
+
+    border-bottom: 1px solid #e2e6e9;
+  }
+
+  &__overall-sum {
+    margin-bottom: 8px;
+
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+
+    color: #313237;
+  }
+
+  &__overall-extra {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+
+    color: #89939a;
+  }
+
+  &__checkout-btn {
+    width: 320px;
+    height: 48px;
+
+    color: #fff;
+    background-color: #313237;
+    border: none;
+
+    cursor: pointer;
+
+    transition: opacity 0.3s;
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+}
