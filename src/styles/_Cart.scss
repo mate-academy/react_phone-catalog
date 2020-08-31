@@ -67,8 +67,15 @@
 
     background-color: #fff;
     border: none;
+    outline: none;
 
     cursor: pointer;
+
+    transition: opacity 0.3s;
+
+    &:hover {
+      opacity: 0.7;
+    }
   }
 
   &__phone-img {
@@ -81,7 +88,7 @@
   &__phone-name {
     margin-right: 49px;
 
-    min-width: 295px;
+    width: 295px;
   }
 
   &__phone-amount {
@@ -97,6 +104,15 @@
 
     background-color: #fff;
     border: 1px solid #b4bdc4;
+    outline: none;
+
+    cursor: pointer;
+
+    transition: opacity 0.3s;
+
+    &:hover {
+      opacity: 0.7;
+    }
   }
 
   &__phone-amount-text {

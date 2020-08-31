@@ -13,6 +13,8 @@ const actions = {
   LIKE: 'LIKE',
   ADD_TO_CART: 'ADD_TO_CART',
   REMOVE_FROM_CART: 'REMOVE_FROM_CART',
+  DECREASE_AMOUNT: 'DECREASE_AMOUNT',
+  INCREASE_AMOUNT: 'INCREASE_AMOUNT',
 };
 
 export const startLoading = () => ({ type: actions.START_LOADING });
@@ -21,6 +23,9 @@ export const setPhone = (phone: Phone) => ({ type: actions.SET_PHONE, phone });
 export const hasError = () => ({ type: actions.HAS_ERROR });
 export const like = (phoneId: string) => ({ type: actions.LIKE, phoneId });
 export const addToCart = (phoneId: string) => ({ type: actions.ADD_TO_CART, phoneId });
+export const removeFromCart = (phoneId: string) => ({ type: actions.REMOVE_FROM_CART, phoneId });
+export const decreaseAmount = (phoneId: string) => ({ type: actions.DECREASE_AMOUNT, phoneId });
+export const increaseAmount = (phoneId: string) => ({ type: actions.INCREASE_AMOUNT, phoneId });
 
 export const isLoading = (state: RootState) => state.loading;
 export const errorState = (state: RootState) => state.error;
@@ -133,7 +138,46 @@ const reducer = (state = inititalState, action: AnyAction) => {
       return addFav(state, action.phoneId);
 
     case actions.ADD_TO_CART:
-      return { ...state, cart: [...state.cart, action.phoneId] };
+      return {
+        ...state,
+        cart: [...state.cart, {
+          id: action.phoneId,
+          quantity: 1,
+        }],
+      };
+
+    case actions.REMOVE_FROM_CART:
+      return { ...state, cart: [...state.cart].filter(item => item.id !== action.phoneId) };
+
+    case actions.DECREASE_AMOUNT:
+      return {
+        ...state,
+        cart: [
+          ...state.cart.map((item: { id: string; quantity: number }) => (
+            item.id === action.phoneId && item.quantity > 1
+              ? {
+                id: item.id,
+                quantity: item.quantity - 1,
+              }
+              : item
+          )),
+        ],
+      };
+
+    case actions.INCREASE_AMOUNT:
+      return {
+        ...state,
+        cart: [
+          ...state.cart.map((item: { id: string; quantity: number }) => (
+            item.id === action.phoneId
+              ? {
+                id: item.id,
+                quantity: item.quantity + 1,
+              }
+              : item
+          )),
+        ],
+      };
 
     default:
       return state;

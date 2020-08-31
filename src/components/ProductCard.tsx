@@ -24,7 +24,7 @@ const ProductCard: FC<Props> = ({
   phone, phoneLoad, setLike, favs, cart, setToCart,
 }) => {
   const liked = favs.find((fav: string) => fav === phone.phoneId);
-  const addedToCart = cart.find((item: string) => item === phone.phoneId);
+  const addedToCart = cart.find((item: { id: string }) => item.id === phone.phoneId);
 
   return (
     <HashRouter>

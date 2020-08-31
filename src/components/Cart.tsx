@@ -4,17 +4,22 @@ import { NavLink } from 'react-router-dom';
 
 import Title from './Title';
 import {
-  RootState, getCart, getAllPhones, loadPhones,
+  RootState, getCart, getAllPhones, loadPhones, removeFromCart, decreaseAmount, increaseAmount,
 } from '../store';
 import { Phones } from '../interfaces/interfaces';
 
 type Props = {
   phonesLoad: () => void;
+  removeItem: (phoneId: string) => void;
+  decrease: (phoneId: string) => void;
+  increase: (phoneId: string) => void;
   phones: Phones[];
   cart: any;
 };
 
-const Cart: FC<Props> = ({ phonesLoad, phones, cart }) => {
+const Cart: FC<Props> = ({
+  phonesLoad, removeItem, decrease, increase, phones, cart,
+}) => {
   useEffect(() => {
     phonesLoad();
   }, [phonesLoad]);
@@ -22,8 +27,10 @@ const Cart: FC<Props> = ({ phonesLoad, phones, cart }) => {
   const overall: number[] = [];
 
   phones
-    .filter(phone => cart.find((item: string) => phone.phoneId === item))
-    .filter(phone => overall.push(phone.priceDiscount));
+    .filter(phone => cart.find((item: { id: string }) => phone.phoneId === item.id))
+    .filter(phone => overall.push(phone.priceDiscount * cart
+      .find((item: { id: string }) => item.id === phone.phoneId)
+      .quantity));
 
   return (
     <div className="cart">
@@ -46,12 +53,13 @@ const Cart: FC<Props> = ({ phonesLoad, phones, cart }) => {
               <div className="cart__items">
                 {
                   phones
-                    .filter(phone => cart.find((item: string) => phone.phoneId === item))
+                    .filter(phone => cart.find((item: { id: string }) => phone.phoneId === item.id))
                     .map(phone => (
                       <div className="cart__phone">
                         <button
                           type="button"
                           className="cart__remove"
+                          onClick={() => removeItem(phone.phoneId)}
                         >
                           <img src="img/icons/remove.svg" alt="remove icon" />
                         </button>
@@ -67,22 +75,32 @@ const Cart: FC<Props> = ({ phonesLoad, phones, cart }) => {
                           <button
                             type="button"
                             className="cart__phone-amount-btn"
+                            onClick={() => decrease(phone.phoneId)}
                           >
                             -
                           </button>
                           <p className="cart__phone-amount-text">
-                            1
+                            {
+                              cart
+                                .find((item: { id: string }) => item.id === phone.phoneId)
+                                .quantity
+                            }
                           </p>
                           <button
                             type="button"
                             className="cart__phone-amount-btn"
+                            onClick={() => increase(phone.phoneId)}
                           >
                             +
                           </button>
                         </div>
                         <h2>
                           $
-                          {phone.priceDiscount}
+                          {
+                            phone.priceDiscount * cart
+                              .find((item: { id: string }) => item.id === phone.phoneId)
+                              .quantity
+                          }
                         </h2>
                       </div>
                     ))
@@ -131,6 +149,9 @@ const mapState = (state: RootState) => ({
 
 const mapDispatch = {
   phonesLoad: loadPhones,
+  removeItem: removeFromCart,
+  decrease: decreaseAmount,
+  increase: increaseAmount,
 };
 
 export default connect(mapState, mapDispatch)(Cart);
