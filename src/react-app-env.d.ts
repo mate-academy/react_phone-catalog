@@ -12,6 +12,7 @@ interface Gadget {
   screen: string;
   capacity: string;
   ram: string;
+  count?: number;
 }
 
 interface GadgetDetail {
@@ -48,4 +49,12 @@ interface GadgetDetail {
     flash: string;
     ram: string;
   };
+}
+interface Contact {
+  photo: string;
+  name: string;
+  skype: string;
+  linkedIn: string;
+  email: string;
+  phone: string;
 }

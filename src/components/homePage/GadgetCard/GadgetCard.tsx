@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './GadgetCard.scss';
-import classNames from 'classnames';
+import CartButton from '../cartButton/cartButton';
+import FavoriteButton from '../FavoriteButton/FavoriteButton';
 
 type Props = {
   gadget: Gadget;
@@ -20,7 +21,6 @@ const GadgetCard: React.FC<Props> = ({ gadget }) => {
     tablet: 'tablet',
     accessories: 'accessories',
   };
-
 
   useEffect(() => {
     switch (type) {
@@ -89,24 +89,23 @@ const GadgetCard: React.FC<Props> = ({ gadget }) => {
       </div>
 
       <div className="gadget__button">
-        <input
-          type="button"
-          value="Add to cart"
-          className={classNames('gadget__button-add-to-cart', { 'gadget__button-add-to-cart-selected': true })}
+        <CartButton
+          gadget={gadget}
         />
 
-        <label
-          htmlFor={id}
-          className="gadget__button-favorite"
-        >
-          <input
-            id={id}
-            type="checkbox"
-            className="gadget__button-favorite-input"
-          />
+        <FavoriteButton gadget={gadget} />
+        {/*<label*/}
+        {/*  htmlFor={id}*/}
+        {/*  className="gadget__button-favorite"*/}
+        {/*>*/}
+        {/*  <input*/}
+        {/*    id={id}*/}
+        {/*    type="checkbox"*/}
+        {/*    className="gadget__button-favorite-input"*/}
+        {/*  />*/}
 
-          <span className="gadget__button-favorite-check" />
-        </label>
+        {/*  <span className="gadget__button-favorite-check" />*/}
+        {/*</label>*/}
       </div>
     </div>
   );

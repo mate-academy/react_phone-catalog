@@ -1,7 +1,17 @@
+@import "../../../Variables";
+
 .product-page {
   max-width: 1152px;
-  margin: auto;
   font-family: Arial, sans-serif;
+  padding: 24px $xAxisPadding 80px;
+
+  &__bread-crumbs {
+    margin-bottom: 40px;
+  }
+
+  &__button-back {
+    margin-bottom: 15px;
+  }
 
   &-slider {
     margin-top: 80px;

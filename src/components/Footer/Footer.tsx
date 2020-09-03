@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { animateScroll as scroll } from 'react-scroll';
 import './Footer.scss';
 import '../../commonStyles/Link.scss';
 
@@ -14,16 +15,18 @@ const Footer = () => {
       </div>
       <ul className="footer__link-list link__list">
         <li className="link__item">
-          <NavLink
-            to="/"
+          <a
+            href="https://github.com/FM-Phone-Catalog"
+            rel="noopener noreferrer"
+            target="_blank"
             className="link__routing-link"
           >
             github
-          </NavLink>
+          </a>
         </li>
         <li className="link__item">
           <NavLink
-            to="/phones"
+            to="/contacts"
             className="link__routing-link"
           >
             contacts
@@ -31,7 +34,7 @@ const Footer = () => {
         </li>
         <li className="link__item">
           <NavLink
-            to="/tablets"
+            to="/rights"
             className="link__routing-link"
           >
             rights
@@ -45,6 +48,7 @@ const Footer = () => {
         <button
           type="button"
           className="footer__button"
+          onClick={() => scroll.scrollToTop()}
         >
           <span className="footer__button-content">
             <img

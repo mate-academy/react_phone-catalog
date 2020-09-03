@@ -1,0 +1,42 @@
+@import "../../../Variables";
+
+.modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: $totalModalHeight;
+  background-color: rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50vw;
+    height: 50vh;
+    background-color: white;
+  }
+
+  &__header {
+    font-family: Mont, sans-serif;
+    margin-bottom: 30px;
+  }
+
+  &__link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 368px;
+    height: 48px;
+    background-color: #313237;
+    font-family: Mont, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: #fff;
+    text-decoration: none;
+  }
+}

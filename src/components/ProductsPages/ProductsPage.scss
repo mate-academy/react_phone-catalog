@@ -1,0 +1,34 @@
+@import "../../Variables";
+
+.productsPage {
+  padding: 25px $xAxisPadding 80px;
+
+  &__breadcrumbs {
+    margin-bottom: 40px;
+  }
+
+  &__header {
+    font-family: Mont, sans-serif;
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 41px;
+    color: #313237;
+    margin-bottom: 8px;
+  }
+
+  &__totalCount {
+    font-family: Mont, sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    color: #89939a;
+    margin-bottom: 40px;
+  }
+
+  &__dropdown {
+    margin-bottom: 24px;
+  }
+
+  &__pagination {
+    display: flex;
+  }
+}

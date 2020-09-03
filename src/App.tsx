@@ -11,8 +11,12 @@ import Header from './components/Header/Header';
 
 import Favorites from './components/Favorites/Favorites';
 import Cart from './components/Cart/Cart';
-import ProductsPage from './components/ProductsPage/ProductsPage';
+import ProductsPage from './components/ProductsPages/ProductsPage';
 import Footer from './components/Footer/Footer';
+import PhonePage from './components/ProductsPages/PhonePage/PhonePage';
+import Tablets from './components/ProductsPages/Tablets/Tablets';
+import Rights from './components/Rights/Rights';
+import Contacts from './components/Contacts/Contacts';
 
 const App = () => {
   return (
@@ -27,12 +31,12 @@ const App = () => {
         <Route
           path="/phone/:item?"
           exact
-          component={ProductsPage}
+          component={PhonePage}
         />
         <Route
           path="/tablet/:item?"
           exact
-          component={ProductsPage}
+          component={Tablets}
         />
         <Route
           path="/accessories/:item?"
@@ -48,6 +52,16 @@ const App = () => {
           path="/cart"
           exact
           component={Cart}
+        />
+        <Route
+          path="/rights"
+          exact
+          component={Rights}
+        />
+        <Route
+          path="/contacts"
+          exact
+          component={Contacts}
         />
       </Switch>
       <Footer />

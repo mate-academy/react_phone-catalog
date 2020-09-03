@@ -1,11 +1,11 @@
-@import "Variables";
+@import "../../Variables";
 
 .footer {
   display: flex;
   justify-content: space-between;
-  height: 96px;
+  height: $footerHeight;
   padding: 0 $xAxisPadding;
-  box-shadow: 0px -1px 0px #E2E6E9;
+  box-shadow: 0 -1px 0 #e2e6e9;
 
   &__logo {
     display: flex;
@@ -34,6 +34,7 @@
     border: 1px solid #e2e6e9;
     transition: border 0.4s;
     padding: 0;
+    outline: none;
   }
 
   &__button:hover {

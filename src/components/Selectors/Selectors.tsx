@@ -8,11 +8,11 @@ const selectSortBy = [
   'Cheapest',
 ];
 
-const selectPerPage = [
+const pagination = [
   'All',
   '4',
   '8',
-  '16',
+  '12',
 ];
 
 const Selectors = () => {
@@ -22,12 +22,14 @@ const Selectors = () => {
         <Dropdown
           dropdownItems={selectSortBy}
           dropdownLabel="Sort by"
+          id="sort"
         />
       </div>
       <div className="selectors__item">
         <Dropdown
-          dropdownItems={selectPerPage}
+          dropdownItems={pagination}
           dropdownLabel="Items on page"
+          id="pagination"
         />
       </div>
     </div>

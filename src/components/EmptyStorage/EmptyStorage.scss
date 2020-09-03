@@ -1,0 +1,24 @@
+.emptyStorage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 64px - 96px);
+
+  &__content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+    height: 60%;
+    background-image: url("./icon/cart.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &__header {
+    font-family: Mon, sans-serif;
+    font-weight: 600;
+    font-size: 34px;
+    color: #000;
+  }
+}

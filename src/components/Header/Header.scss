@@ -1,8 +1,10 @@
+@import "../../Variables";
+
 .header {
   display: flex;
   justify-content: space-between;
   padding-left: 24px;
-  height: 64px;
+  height: $headerHeight;
   box-shadow: 0 1px 0 #e2e6e9;
 
   &__routing-link {
@@ -23,10 +25,6 @@
     display: flex;
   }
 
-  //&__link-list :last-child {
-  //  border-left: none;
-  //}
-
   &__link-item {
     box-sizing: border-box;
     list-style: none;
@@ -42,9 +40,30 @@
     height: 100%;
     align-items: center;
     justify-content: center;
+    position: relative;
   }
 
   &__link-item:hover {
     border: 1px solid #313237;
+  }
+
+  &__storage-items-count {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    border: 1px solid #fff;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: #eb5757;
+    color: #fff;
+    font-family: Mon, sans-serif;
+    font-weight: 600;
+    font-size: 9px;
+    text-decoration: none;
   }
 }

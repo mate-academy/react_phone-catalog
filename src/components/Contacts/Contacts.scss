@@ -1,0 +1,11 @@
+.contacts {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 200px;
+
+  &__divide-line {
+    width: 2px;
+    height: 500px;
+    background-color: black;
+  }
+}

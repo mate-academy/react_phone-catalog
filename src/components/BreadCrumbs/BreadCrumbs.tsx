@@ -14,58 +14,60 @@ const BreadCrumbs = () => {
   const crumbs = pathname.match(pattern) || ['This is homePage'];
 
   return (
-    <ul className="breadCrumbs__list">
-      <li className="breadCrumbs__item">
-        <NavLink
-          to="/"
-          exact
-          className="breadCrumbs__link"
-        >
+    <div className="breadCrumbs">
+      <ul className="breadCrumbs__list">
+        <li className="breadCrumbs__item">
+          <NavLink
+            to="/"
+            exact
+            className="breadCrumbs__link"
+          >
+            <img
+              src="./img/icons/BreadCrumbs/Home.svg"
+              alt="home"
+              className="breadCrumbs__home"
+            />
+          </NavLink>
           <img
-            src="./img/icons/BreadCrumbs/Home.svg"
-            alt="home"
-            className="breadCrumbs__home"
+            src="./img/icons/BreadCrumbs/arrow-right.svg"
+            alt="arrow"
+            className="breadCrumbs__arrow"
           />
-        </NavLink>
-        <img
-          src="./img/icons/BreadCrumbs/arrow-right.svg"
-          alt="arrow"
-          className="breadCrumbs__arrow"
-        />
-      </li>
-      {crumbs.map(crumb => {
-        if (crumbs[crumbs.length - 1] !== crumb) {
+        </li>
+        {crumbs.map(crumb => {
+          if (crumbs[crumbs.length - 1] !== crumb) {
+            return (
+              <li
+                key={uuidv4()}
+                className="breadCrumbs__item"
+              >
+                <NavLink
+                  to={`/${crumb}`}
+                  exact
+                  className="breadCrumbs__link"
+                >
+                  {crumb}
+                </NavLink>
+                <img
+                  src="./img/icons/BreadCrumbs/arrow-right.svg"
+                  alt="arrow"
+                  className="breadCrumbs__arrow"
+                />
+              </li>
+            );
+          }
+
           return (
             <li
               key={uuidv4()}
-              className="breadCrumbs__item"
+              className="breadCrumbs__item breadCrumbs__item--last"
             >
-              <NavLink
-                to={`/${crumb}`}
-                exact
-                className="breadCrumbs__link"
-              >
-                {crumb}
-              </NavLink>
-              <img
-                src="./img/icons/BreadCrumbs/arrow-right.svg"
-                alt="arrow"
-                className="breadCrumbs__arrow"
-              />
+              {crumbs[crumbs.length - 1]}
             </li>
           );
-        }
-
-        return (
-          <li
-            key={uuidv4()}
-            className="breadCrumbs__item breadCrumbs__item--last"
-          >
-            {crumbs[crumbs.length - 1]}
-          </li>
-        );
-      })}
-    </ul>
+        })}
+      </ul>
+    </div>
   );
 };
 

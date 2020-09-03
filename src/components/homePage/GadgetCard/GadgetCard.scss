@@ -13,45 +13,50 @@
   font-family: Arial, sans-serif;
   color: black;
 
-  &__button-favorite {
-    position: relative;
-    width: 40px;
-    height: 40px;
-    background-image: url("./favorite.svg");
-    background-repeat: no-repeat;
-    background-position: center;
-    border: 1px solid black;
-    box-sizing: border-box;
-    transition: 0.4s;
-    cursor: pointer;
-
-    &:hover {
-      border-color: gold;
-    }
-
-    &-check {
-      position: absolute;
-      top: -1px;
-      left: -1px;
-      height: 40px;
-      width: 40px;
-      background-repeat: no-repeat;
-      background-position: center;
-      transition: background-image 0.4s;
-    }
-
-    &-input {
-      position: absolute;
-      opacity: 0;
-
-      &:checked ~ .item__button-favorite-check {
-        background-image: url("./favorite-hover.svg");
-      }
-    }
-  }
+  //&__button-favorite {
+  //  position: relative;
+  //  width: 40px;
+  //  height: 40px;
+  //  background-image: url("../FavoriteButton/favorite.svg");
+  //  background-repeat: no-repeat;
+  //  background-position: center;
+  //  border: 1px solid black;
+  //  box-sizing: border-box;
+  //  transition: 0.4s;
+  //  cursor: pointer;
+  //
+  //  &:hover {
+  //    border-color: gold;
+  //  }
+  //
+  //  &-check {
+  //    position: absolute;
+  //    top: -1px;
+  //    left: -1px;
+  //    height: 40px;
+  //    width: 40px;
+  //    background-repeat: no-repeat;
+  //    background-position: center;
+  //    transition: background-image 0.4s;
+  //  }
+  //
+  //  &-input {
+  //    position: absolute;
+  //    opacity: 0;
+  //
+  //    &:checked ~ .item__button-favorite-check {
+  //      background-image: url("../FavoriteButton/favorite-hover.svg");
+  //    }
+  //  }
+  //}
 
   &:hover {
     box-shadow: 5px 2px 5px rgba(0, 0, 0, 0.07);
+  }
+
+  &__img {
+    max-height: 208px;
+    transition: 0.4s;
   }
 
   &:hover .gadget__img {
@@ -65,11 +70,6 @@
 
   &__photo {
     height: 264px;
-  }
-
-  &__img {
-    max-height: 208px;
-    transition: 0.4s;
   }
 
   &__title {
@@ -131,6 +131,11 @@
       background-color: #313237;
       border: 1px solid black;
       color: white;
+    }
+
+    &-delete-from-cart {
+      color: #27ae60;
+      background-color: #fff;
     }
   }
 }

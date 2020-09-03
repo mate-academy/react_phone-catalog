@@ -4,6 +4,7 @@ import { getProducts } from '../../helpers/api';
 import HotPrices from './HotPrices/HotPrices';
 import ShopByCategory from './ShopByCategory/ShopByCategory';
 import BrandNewModels from './BrandNewModels/BrandNewModels';
+import Spinner from '../Spinner/Spinner';
 
 const HomePage = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -20,7 +21,7 @@ const HomePage = () => {
   if (isLoading) {
     return (
       <div>
-        Loading...
+        <Spinner />
       </div>
     );
   }

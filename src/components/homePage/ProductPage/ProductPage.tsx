@@ -1,27 +1,43 @@
-import React, {useEffect, useState} from 'react';
-import classNames from 'classnames';
-import {getDetails, getProducts} from '../../../helpers/api';
+import React, { useEffect, useState } from 'react';
+import { getDetails, getProducts } from '../../../helpers/api';
 import './ProductPage.scss';
-import GadgetInformation from "../GadgetInformation/GadgetInformation";
-import MiniSlider from "../MiniSlider/MiniSlider";
-import BreadCrumbs from "../../BreadCrumbs/BreadCrumbs";
+import GadgetInformation from '../GadgetInformation/GadgetInformation';
+import MiniSlider from '../MiniSlider/MiniSlider';
+import BreadCrumbs from '../../BreadCrumbs/BreadCrumbs';
+import ButtonBack from '../../button-back/ButtonBack';
+import CartButton from '../cartButton/cartButton';
+import FavoriteButton from '../FavoriteButton/FavoriteButton';
+import Spinner from '../../Spinner/Spinner';
 
 type Props = {
   currentProduct: string;
 };
 
-const ProductPage: React.FC<Props> = ({currentProduct}) => {
+const ProductPage: React.FC<Props> = ({ currentProduct }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [productDetail, setProductDetail] = useState<GadgetDetail>();
-  const [currentProductInformation, setCurrentProductInformation] = useState<Gadget>();
+  const [currentProductInformation, setCurrentProductInformation] = useState<Gadget>({
+    age: 0,
+    id: '',
+    type: '',
+    imageUrl: '',
+    name: '',
+    snippet: '',
+    price: 0,
+    discount: 0,
+    screen: '',
+    capacity: '',
+    ram: '',
+    count: 0,
+  });
   const [preparedPhones, setPreparedPhones] = useState<Gadget[]>([]);
   const [currentImg, setcurrentImg] = useState<string>();
 
   useEffect(() => {
     setIsLoading(true);
     getProducts()
-      .then(data => setCurrentProductInformation(data.
-      find((item: Gadget) => item.id === currentProduct)));
+      .then(data => setCurrentProductInformation(data
+        .find((item: Gadget) => item.id === currentProduct)));
     getDetails(currentProduct)
       .then(setProductDetail);
     getProducts()
@@ -46,14 +62,19 @@ const ProductPage: React.FC<Props> = ({currentProduct}) => {
       * (currentProductInformation.discount / 100));
 
   if (isLoading) {
-    return <div>
-      Loading...
-    </div>;
+    return (
+      <Spinner />
+    );
   }
 
   return (
     <div className="product-page">
-      <BreadCrumbs />
+      <div className="product-page__bread-crumbs">
+        <BreadCrumbs />
+      </div>
+      <div className="product-page__button-back">
+        <ButtonBack />
+      </div>
       <div className="product-description">
         <h3 className="product-description__title">
           {currentProductInformation && currentProductInformation.name}
@@ -95,10 +116,10 @@ const ProductPage: React.FC<Props> = ({currentProduct}) => {
               <p className="gadget__price-value">
                 {(currentProductInformation
                   && currentProductInformation.price === priceWithDiscount)
-                ? '' : (`$${currentProductInformation 
+                  ? '' : (`$${currentProductInformation
                   && currentProductInformation.price}`)}
-             </p>
-           </span>
+              </p>
+            </span>
 
             <div className="description gadget__description">
               <span className="characteristic__span">
@@ -112,7 +133,7 @@ const ProductPage: React.FC<Props> = ({currentProduct}) => {
                 </span>
               </span>
 
-                  <span className="characteristic__span">
+              <span className="characteristic__span">
                 <span>
                   Capacity
                 </span>
@@ -123,7 +144,7 @@ const ProductPage: React.FC<Props> = ({currentProduct}) => {
                 </span>
               </span>
 
-                  <span className="characteristic__span">
+              <span className="characteristic__span">
                 <span>
                   RAM
                 </span>
@@ -134,30 +155,10 @@ const ProductPage: React.FC<Props> = ({currentProduct}) => {
                 </span>
               </span>
             </div>
-
             <div className="gadget__button">
-              <input
-                type="button"
-                value="Add to cart"
-                className={classNames(
-                  'gadget__button-add-to-cart',
-                  {'gadget__button-add-to-cart-selected': true})}
-              />
+              <CartButton gadget={currentProductInformation} />
 
-              <label
-                htmlFor={currentProductInformation
-                && currentProductInformation.id}
-                className="gadget__button-favorite"
-              >
-                <input
-                  id={currentProductInformation
-                  && currentProductInformation.id}
-                  type="checkbox"
-                  className="gadget__button-favorite-input"
-                />
-
-                <span className="gadget__button-favorite-check"/>
-              </label>
+              <FavoriteButton gadget={currentProductInformation} />
             </div>
           </div>
         </div>
@@ -244,7 +245,7 @@ const ProductPage: React.FC<Props> = ({currentProduct}) => {
       </div>
 
       <div className="product-page-slider">
-        <MiniSlider gadgets={preparedPhones} name="You may also like"/>
+        <MiniSlider gadgets={preparedPhones} name="You may also like" />
       </div>
     </div>
   );
