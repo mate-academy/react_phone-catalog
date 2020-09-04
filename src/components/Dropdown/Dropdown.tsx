@@ -102,7 +102,8 @@ const Dropdown: React.FC<Props> = ({
               className={cn(
                 'dropdown__button',
                 {
-                  dropdown__button_active: urlSearchParam.get(`${id}Query`) === selector,
+                  dropdown__button_active:
+                    (urlSearchParam.get(`${id}Query`) || dropdownItems[0]) === selector,
                 },
               )}
               onClick={() => {
