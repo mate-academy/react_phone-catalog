@@ -5,4 +5,4 @@ Technologies:
 * HTML5
 * CSS(SCSS)
 * BEM
-* React, Redux, Type Script
+* React, React Router, Redux, Type Script
