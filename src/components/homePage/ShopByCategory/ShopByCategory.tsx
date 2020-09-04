@@ -19,7 +19,7 @@ const ShopByCategory: React.FC<Props> = ({ gadgets }) => {
       </h2>
 
       <div className="shop-by-category__cards">
-        <Link to="/Phone"
+        <Link to="/phone"
               className="shop-by-category__card shop-by-category__card-gadget"
         >
           <div
@@ -41,7 +41,7 @@ const ShopByCategory: React.FC<Props> = ({ gadgets }) => {
           </p>
         </Link>
 
-        <Link to="/Tablet"
+        <Link to="/tablet"
               className="shop-by-category__card shop-by-category__card-gadget"
         >
           <div
@@ -63,7 +63,7 @@ const ShopByCategory: React.FC<Props> = ({ gadgets }) => {
           </p>
         </Link>
 
-        <Link to="/Accessories"
+        <Link to="/accessories"
               className="shop-by-category__card shop-by-category__card-gadget"
         >
           <div

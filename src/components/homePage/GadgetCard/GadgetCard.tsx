@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './GadgetCard.scss';
-import CartButton from '../cartButton/cartButton';
+import CartButton from '../CartButton/CartButton';
 import FavoriteButton from '../FavoriteButton/FavoriteButton';
 
 type Props = {
@@ -40,12 +40,13 @@ const GadgetCard: React.FC<Props> = ({ gadget }) => {
 
   return (
     <div className="gadget">
-      <div className="gadget__photo">
-        <img className="gadget__img" src={imageUrl} alt="gadget" />
-      </div>
-
       <Link to={`/${gadgetType}/${id}`} className="gadget__title">
-        {name}
+        <div className="gadget__photo">
+          <img className="gadget__img" src={imageUrl} alt="gadget" />
+        </div>
+        <div className="gadget__name">
+          {name}
+        </div>
       </Link>
 
       <span className="gadget__price">

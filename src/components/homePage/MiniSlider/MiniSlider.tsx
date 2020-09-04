@@ -59,7 +59,12 @@ const MiniSlider: React.FC<Props> = ({gadgets, name}) => {
           <button
             id="nextGadget"
             type="button"
-            className={classNames('gadgetsSlider__button', { disabled: gadgetIndex === gadgets.length - gadgetOnPage })}
+            className={
+              classNames(
+                'gadgetsSlider__button',
+                { disabled: gadgetIndex === gadgets.length - gadgetOnPage },
+              )
+            }
             onClick={handleSwitchToNext}
           >
             {gadgetIndex === gadgets.length - gadgetOnPage

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
 import cn from 'classnames';
 import './Dropdown.scss';
@@ -7,10 +7,19 @@ type Props = {
   dropdownItems: string[];
   dropdownLabel: string;
   id: string;
+  isCheckedSortDropdown: boolean;
+  isCheckedPaginationDropdown: boolean;
+  setChecked: (arg: boolean) => void;
 };
 
-const Dropdown: React.FC<Props> = ({ dropdownItems, dropdownLabel, id }) => {
-  const [isChecked, setChecked] = useState<boolean>(false);
+const Dropdown: React.FC<Props> = ({
+  dropdownItems,
+  dropdownLabel,
+  id,
+  isCheckedSortDropdown,
+  isCheckedPaginationDropdown,
+  setChecked,
+}) => {
   const location = useLocation();
   const history = useHistory();
   const urlSearchParam = new URLSearchParams(location.search);
@@ -23,17 +32,18 @@ const Dropdown: React.FC<Props> = ({ dropdownItems, dropdownLabel, id }) => {
     });
   };
 
-  // useEffect(() => {
-  //   if (urlSearchParam.get(`${id}Query`)) {
-  //     urlSearchParam.set(`${id}Query`, `${urlSearchParam.get(`${id}Query`)}`);
-  //   } else {
-  //     urlSearchParam.set(`${id}Query`, `${dropdownItems[0]}`);
-  //   }
-  //
-  //   history.push({
-  //     search: urlSearchParam.toString(),
-  //   });
-  // }, [location.search]);
+  const changeCheckedStatus = (status: boolean) => {
+    if (!isCheckedSortDropdown && !isCheckedPaginationDropdown) {
+      setChecked(status);
+    } else if (
+      (!isCheckedSortDropdown && isCheckedPaginationDropdown)
+      || (isCheckedSortDropdown && !isCheckedPaginationDropdown)
+    ) {
+      if (!status) {
+        setChecked(status);
+      }
+    }
+  };
 
   return (
     <div className="dropdown">
@@ -42,16 +52,29 @@ const Dropdown: React.FC<Props> = ({ dropdownItems, dropdownLabel, id }) => {
       </div>
       <input
         type="checkbox"
-        checked={isChecked}
+        checked={
+          (id === 'sort')
+            ? isCheckedSortDropdown
+            : isCheckedPaginationDropdown
+        }
         id={dropdownLabel}
         className="dropdown__checkbox"
-        onChange={() => setChecked(!isChecked)}
+        onChange={() => changeCheckedStatus(
+          (id === 'sort')
+            ? !isCheckedSortDropdown
+            : !isCheckedPaginationDropdown,
+        )}
       />
       <label
         htmlFor={dropdownLabel}
         className={cn(
           'dropdown__label',
-          { dropdown__label_checked: isChecked },
+          {
+            dropdown__label_checked:
+              (id === 'sort')
+                ? isCheckedSortDropdown
+                : isCheckedPaginationDropdown,
+          },
         )}
       >
         {urlSearchParam.get(`${id}Query`)
@@ -61,7 +84,12 @@ const Dropdown: React.FC<Props> = ({ dropdownItems, dropdownLabel, id }) => {
       <ul
         className={cn(
           'dropdown__body',
-          { dropdown__body_checked: isChecked },
+          {
+            dropdown__body_checked:
+              (id === 'sort')
+                ? isCheckedSortDropdown
+                : isCheckedPaginationDropdown,
+          },
         )}
       >
         {dropdownItems.map(selector => (
@@ -71,9 +99,14 @@ const Dropdown: React.FC<Props> = ({ dropdownItems, dropdownLabel, id }) => {
           >
             <button
               type="button"
-              className="dropdown__button"
+              className={cn(
+                'dropdown__button',
+                {
+                  dropdown__button_active: urlSearchParam.get(`${id}Query`) === selector,
+                },
+              )}
               onClick={() => {
-                setChecked(false);
+                changeCheckedStatus(false);
                 pushSearchParam(selector);
               }}
             >

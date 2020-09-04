@@ -5,7 +5,7 @@ import GadgetInformation from '../GadgetInformation/GadgetInformation';
 import MiniSlider from '../MiniSlider/MiniSlider';
 import BreadCrumbs from '../../BreadCrumbs/BreadCrumbs';
 import ButtonBack from '../../button-back/ButtonBack';
-import CartButton from '../cartButton/cartButton';
+import CartButton from '../CartButton/CartButton';
 import FavoriteButton from '../FavoriteButton/FavoriteButton';
 import Spinner from '../../Spinner/Spinner';
 

@@ -95,4 +95,10 @@
     background: #fafbfc;
     color: #313237;
   }
+
+  &__button_active,
+  &__button_active:hover {
+    background-color: black;
+    color: white;
+  }
 }

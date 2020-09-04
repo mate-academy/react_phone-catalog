@@ -16,7 +16,11 @@
   }
 
   &__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     margin: 0 8px;
+    padding: 0;
     width: 32px;
     height: 32px;
     border: 1px solid black;
@@ -24,6 +28,8 @@
     background-color: inherit;
     transition: 0.3s;
     cursor: pointer;
+    outline: none;
+
     &:hover {
       border: 1px solid black;
     }
@@ -48,7 +54,9 @@
 }
 
 .disabled {
+  border: 1px solid #e2e6e9;
+
   &:hover {
-    border: 1px solid black;
+    border: 1px solid #e2e6e9;
   }
 }

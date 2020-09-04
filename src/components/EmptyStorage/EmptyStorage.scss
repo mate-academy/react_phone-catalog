@@ -2,7 +2,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: calc(100vh - 64px - 96px);
+  // 64px height header
+  // 96px height footer
+  // 32px height back button
+  // 130px horizontal padding emptyStorage container
+  height: calc(100vh - 64px - 96px - 32px - 130px);
 
   &__content {
     display: flex;
