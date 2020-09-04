@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { getBasket } from '../../store/index';
@@ -23,7 +24,7 @@ export const Basket: React.FC = () => {
                 <div className="basket__total">
                   <h1 className="basket__price">{`$${totalPrice}`}</h1>
                   <p className="basket__text">{`Total for ${totalQuantity} items`}</p>
-                  <button type="button" className="button card__button--add">Approve</button>
+                  <button type="button" onClick={() => {}} className="button card__button--add">Approve</button>
                 </div>
               </div>
             </>

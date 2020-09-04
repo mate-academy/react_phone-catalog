@@ -137,3 +137,20 @@ body {
     font-size: 10px;
   }
 }
+
+.form {
+  position: absolute;
+  left: 30%;
+  top: 30%;
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+  background-color: white;
+  border: 1px solid #cacdd3;
+
+  &__input {
+    padding: 10px;
+    background-color: #eff0f3;
+    margin-bottom: 15px;
+  }
+}

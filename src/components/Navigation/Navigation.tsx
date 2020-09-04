@@ -5,6 +5,7 @@ import { getBasket, getFavorite } from '../../store/index';
 import { useWindowSize } from '../../helpers/useWindowSize';
 import { NavList } from './NavList';
 import { BurgerButton } from './BurgerButton';
+import { LoginForm } from '../LoginForm';
 
 export const Navigation: React.FC = () => {
   const numberInTheBasket = useSelector(getBasket).length;
@@ -13,6 +14,7 @@ export const Navigation: React.FC = () => {
   const [burgerMenu, setBurgerMenu] = useState(false);
   const [visibleBurger, setVisibleBurger] = useState(false);
   const [translate, setTranslate] = useState('-1000');
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   const handleClick = () => {
     const tempTranslate = visibleBurger ? '-1000' : '65';
@@ -45,6 +47,7 @@ export const Navigation: React.FC = () => {
             : <BurgerButton handleClick={handleClick} />
         }
         <span>
+          <button type="button" onClick={() => setIsModalVisible(true)}>log in</button>
           <NavLink className="fontMonte nav__special-link" to="/favorite/" exact onClick={handleClickOnLink}>
             <img src="img/images/favorite.svg" alt="favorite" />
             <span className={(numberFavorite !== 0) ? 'red' : 'white'}>
@@ -59,6 +62,9 @@ export const Navigation: React.FC = () => {
           </NavLink>
         </span>
       </nav>
+      {
+        isModalVisible && <LoginForm />
+      }
       {
         burgerMenu && (
           <NavList
