@@ -21,7 +21,7 @@ const Favs: FC<Props> = ({ favs, phonesLoad, allPhones }) => {
 
   return (
     <div className="favs">
-      <Breadcrumbs title="Favorites" />
+      <Breadcrumbs title="Favorites" subtitle="" />
       <Title title="Favorites" />
       {
         favs.length

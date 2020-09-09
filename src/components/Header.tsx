@@ -9,8 +9,10 @@ import {
 
 import Home from './Home';
 import PhonesPage from './PhonesPage';
+import PhonePage from './PhonePage';
 import TabletsPage from './TabletsPage';
 import AccessoriesPage from './AccessoriesPage';
+import SearchBar from './SearchBar';
 import Favs from './Favs';
 import { RootState, getFavs, getCart } from '../store';
 import Cart from './Cart';
@@ -61,6 +63,7 @@ const Header: FC<Props> = ({ favs, cart }) => {
           </NavLink>
         </ul>
         <div className="nav__fav-cart-container">
+          <Route path="/phones" exact render={() => <SearchBar />} />
           <NavLink
             to="/favs"
             activeClassName="nav__selected--1"
@@ -122,6 +125,7 @@ const Header: FC<Props> = ({ favs, cart }) => {
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/phones" exact component={PhonesPage} />
+        <Route path="/phones/:phoneId?" exact component={PhonePage} />
         <Route path="/tablets" exact component={TabletsPage} />
         <Route path="/accessories" exact component={AccessoriesPage} />
         <Route path="/favs" exact component={Favs} />

@@ -1,34 +1,64 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Title from './Title';
 import { Phone } from '../interfaces/interfaces';
-import { RootState, getCurrentPhone } from '../store';
+import { RootState, getCurrentPhone, loadPhone } from '../store';
+import Breadcrumbs from './Breadcrumbs';
 
 type Props = {
+  phoneId: string;
+  phoneLoad: (id: string) => void;
   phone: Phone;
 };
 
-const PhonePage: FC<Props> = ({ phone }) => {
+const PhonePage: FC<Props> = ({ phoneId, phoneLoad, phone }) => {
+  useEffect(() => {
+    phoneLoad(phoneId);
+  });
+
   return (
     <div className="phone">
-      <NavLink to="/phones" className="phone__button--back">
-        <img src="img/icons/back-arrow.svg" alt="Back" />
-        <p>Back</p>
+      <Breadcrumbs title="Phones" subtitle={phone.name} />
+      <NavLink to="/" className="phone__breadcrumb-link">
+        <div className="phone__breadcrumb">
+          <img
+            src="img/icons/breadcrumbs-arrow.svg"
+            alt="back icon"
+            className="phone__breadcrumb-arrow"
+          />
+          <p className="phone__breadcrumb-text">Back</p>
+        </div>
       </NavLink>
       <Title title={phone.name} />
       <div className="phone__container">
         <div className="phone__images">
-          map images
+          {phone.images.map(image => (
+            <div className="phone__image-mini-container">
+              <img
+                src={image}
+                alt="item"
+                className="phone__image-mini"
+              />
+            </div>
+
+          ))}
         </div>
-        <div className="phone__image">
-          main image
+        <div className="phone__image-container">
+          <img
+            src={phone.images[0]}
+            alt="main"
+            className="phone__image"
+          />
         </div>
+
         <div className="phone__info">
           <div className="phone__colors">
-            <small className="phone__available-text">Available phones</small>
+            <small className="phone__available-text">Available colors</small>
             <div className="phone__available-colors">
-              colored circles
+              {phone.colorsAvailable.map(color => (
+                <div className="phone__available-color" style={{ backgroundColor: color }} />
+              ))}
             </div>
           </div>
           <div className="phone__capacity">
@@ -66,6 +96,7 @@ const PhonePage: FC<Props> = ({ phone }) => {
         </div>
         <div className="phone__id">Id</div>
       </div>
+
       <div className="phone__container--about">
         <div className="phone__about">
           <h2>About</h2>
@@ -126,4 +157,8 @@ const mapState = (state: RootState) => ({
   phone: getCurrentPhone(state),
 });
 
-export default connect(mapState)(PhonePage);
+const mapDispatch = {
+  phoneLoad: loadPhone,
+};
+
+export default connect(mapState, mapDispatch)(PhonePage);

@@ -20,7 +20,7 @@ const PhonesPage: FC<Props> = ({ phonesLoad, allPhones }) => {
 
   return (
     <div className="phones">
-      <Breadcrumbs title="Phones" />
+      <Breadcrumbs title="Phones" subtitle="" />
       <Title title="Mobile phones" />
       <p className="phones__quantity">
         {allPhones.length}

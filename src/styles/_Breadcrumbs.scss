@@ -5,6 +5,9 @@
   align-items: center;
   justify-content: flex-start;
 
+  font-family: Mont, sans-serif;
+  font-style: normal;
+
   :nth-child(n) {
     margin-right: 14px;
   }
@@ -15,9 +18,16 @@
   }
 
   &__title {
-    font-family: Mont, sans-serif;
-    font-style: normal;
     font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+
+    text-decoration: none;
+
+    color: #89939a;
+  }
+
+  &__subtitle {
     font-size: 12px;
     line-height: 15px;
 

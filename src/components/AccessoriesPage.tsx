@@ -6,7 +6,7 @@ import Title from './Title';
 const AccessoriesPage: FC = () => {
   return (
     <div className="accessories">
-      <Breadcrumbs title="Accessories" />
+      <Breadcrumbs title="Accessories" subtitle="" />
       <Title title="Accessories" />
       <h3 className="accessories__oops">
         There is no accessories yet. Please, come later

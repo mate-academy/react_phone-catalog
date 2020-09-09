@@ -34,8 +34,6 @@
   }
 
   &__items {
-    padding: 27px 0 26px;
-
     position: relative;
 
     color: #89939a;
@@ -56,9 +54,10 @@
   }
 
   &__fav-cart-container {
-    position: relative;
-
     margin-left: auto;
+
+    display: flex;
+    align-items: center;
 
     cursor: pointer;
   }
@@ -73,7 +72,7 @@
   &__counter {
     position: absolute;
     right: 18px;
-    top: -8px;
+    top: 20px;
 
     padding: 1px 0 0 1px;
 
@@ -95,7 +94,7 @@
   &__selected::after {
     content: "";
     position: absolute;
-    top: 64px;
+    top: 39px;
     left: 0;
 
     width: 100%;
@@ -107,7 +106,7 @@
   &__selected--1::after {
     content: "";
     position: absolute;
-    top: 37px;
+    top: 68px;
     left: 0;
 
     width: 100%;

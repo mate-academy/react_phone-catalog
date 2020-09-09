@@ -6,7 +6,7 @@ import Title from './Title';
 const TabletsPage: FC = () => {
   return (
     <div className="tablets">
-      <Breadcrumbs title="Tablets" />
+      <Breadcrumbs title="Tablets" subtitle="" />
       <Title title="Tablets" />
       <h3 className="tablets__oops">
         There is no tablets yet. Please, come later

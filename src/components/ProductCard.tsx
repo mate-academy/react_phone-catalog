@@ -1,27 +1,26 @@
 import React, { FC } from 'react';
 import {
-  NavLink, Route, HashRouter, Switch,
+  NavLink, HashRouter,
 } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import {
-  RootState, getCurrentPhone, loadPhone, like, getFavs, getCart, addToCart,
+  RootState, like, getFavs, getCart, addToCart, loadPhone,
 } from '../store';
 
-import PhonePage from './PhonePage';
 import { PhoneOfPhones } from '../interfaces/interfaces';
 
 type Props = {
   phone: PhoneOfPhones;
   favs: any;
   cart: any;
-  phoneLoad: (id: string) => void;
   setLike: (phoneId: string) => void;
   setToCart: (phoneId: string) => void;
+  setCurrentPhone: (id: string) => void;
 };
 
 const ProductCard: FC<Props> = ({
-  phone, phoneLoad, setLike, favs, cart, setToCart,
+  phone, setLike, setToCart, setCurrentPhone, favs, cart,
 }) => {
   const liked = favs.find((fav: string) => fav === phone.phoneId);
   const addedToCart = cart.find((item: { id: string }) => item.id === phone.phoneId);
@@ -32,7 +31,7 @@ const ProductCard: FC<Props> = ({
         <NavLink
           to={`/phones/${phone.phoneId}`}
           className="productCard__link"
-          onClick={() => phoneLoad(phone.phoneId)}
+          onClick={() => setCurrentPhone(phone.phoneId)}
         >
           <img
             src={phone.image}
@@ -115,23 +114,19 @@ const ProductCard: FC<Props> = ({
           </button>
         </div>
       </div>
-      <Switch>
-        <Route path={`/phones/${phone.phoneId}`} exact component={PhonePage} />
-      </Switch>
     </HashRouter>
   );
 };
 
 const mapState = (state: RootState) => ({
-  currentPhone: getCurrentPhone(state),
   favs: getFavs(state),
   cart: getCart(state),
 });
 
 const mapDispatch = {
-  phoneLoad: loadPhone,
   setLike: like,
   setToCart: addToCart,
+  setCurrentPhone: loadPhone,
 };
 
 export default connect(mapState, mapDispatch)(ProductCard);
