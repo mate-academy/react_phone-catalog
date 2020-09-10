@@ -23,38 +23,287 @@
     line-height: 15px;
   }
 
-  &__container {
+  &__main {
+    margin-bottom: 80px;
+
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__gallery {
     display: flex;
   }
 
-  &__images {
-    height: 442px;
+  &__gallery-list {
+    margin-right: 16px;
+
+    height: 464px;
 
     display: flex;
     flex-direction: column;
+    justify-content: flex-start;
+
+    list-style: none;
   }
 
-  &__image-mini-container {
+  &__gallery-item {
+    margin-bottom: 16px;
+
     width: 80px;
     height: 80px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: 1px solid #c4c4c4;
   }
 
-  &__image-container {
-    width: 442px;
+  &__gallery-img {
+    height: 66px;
+  }
+
+  &__gallery-item-large {
+    width: 464px;
+    height: 464px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__gallery-img-large {
     height: 442px;
   }
 
-  &__available-colors {
+  &__card-block {
+    margin-bottom: 24px;
+
+    width: 320px;
+
+    display: flex;
+    flex-direction: column;
+
+    border-bottom: 1px solid #e2e6e9;
+  }
+
+  &__label {
+    margin-bottom: 8px;
+
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+
+    color: #89939a;
+  }
+
+  &__colors {
+    margin-bottom: 24px;
+
     display: flex;
   }
 
-  &__available-color {
+  &__color-wrapper {
+    margin-right: 8px;
+
     width: 32px;
     height: 32px;
-  
+
     border: 1px solid #e2e6e9;
     border-radius: 50%;
-    
+  }
+
+  &__color {
+    width: 30px;
+    height: 30px;
+
     opacity: 0.7;
+
+    border: 2px solid #fff;
+    border-radius: 50%;
+  }
+
+  &__capacities {
+    margin-bottom: 24px;
+
+    display: flex;
+  }
+
+  &__capacity {
+    margin-right: 8px;
+    padding: 4px 8px;
+
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+
+    border: 1px solid #b4bdc4;
+  }
+
+  &__discount {
+    margin-right: 8px;
+
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 41px;
+
+    letter-spacing: -0.01em;
+  }
+
+  &__price-block {
+    margin: 32px 0 23px;
+
+    display: flex;
+    align-items: center;
+  }
+
+  &__price {
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 28px;
+    text-decoration-line: line-through;
+
+    color: #89939a;
+  }
+
+  &__btn-block {
+    margin-bottom: 32px;
+
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__btn--cart {
+    margin-right: 8px;
+    width: 263px;
+    height: 48px;
+
+    font-size: 14px;
+    line-height: 21px;
+
+    color: #fff;
+    background-color: #313237;
+    border: none;
+    outline: none;
+
+    cursor: pointer;
+
+    transition: opacity 0.3s;
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+
+  &__btn--added {
+    margin-right: 8px;
+    width: 263px;
+    height: 48px;
+
+    font-size: 14px;
+    line-height: 21px;
+
+    color: #27ae60;
+    background-color: #fff;
+    border: 1px solid #e2e6e9;
+
+    cursor: pointer;
+  }
+
+  &__btn--favs {
+    padding-top: 4px;
+    width: 48px;
+    height: 48px;
+
+    background-color: #fff;
+    border: 1px solid #b4bdc4;
+    outline: none;
+
+    cursor: pointer;
+
+    transition: opacity 0.3s;
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+
+  &__info-block {
+    width: 320px;
+
+    display: flex;
+    justify-content: space-between;
+
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  &__info-keys {
+    text-align: start;
+  }
+
+  &__info-values {
+    text-align: end;
+  }
+
+  &__info-key {
+    margin-bottom: 8px;
+
+    color: #89939a;
+  }
+
+  &__info-value {
+    margin-bottom: 8px;
+
+    color: #313237;
+  }
+
+  &__id {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+
+    color: #b4bdc4;
+  }
+
+  &__description {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__about {
+    width: 560px;
+  }
+
+  &__specs {
+    width: 512px;
+  }
+
+  &__subtitle {
+    margin-bottom: 32px;
+    padding-bottom: 16px;
+
+    border-bottom: 1px solid #e2e6e9;
+  }
+
+  &__subsubtitle {
+    margin-bottom: 16px;
+
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 26px;
+
+    color: #313237;
+  }
+
+  &__text {
+    margin-bottom: 32px;
+
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+
+    color: #89939a;
   }
 }

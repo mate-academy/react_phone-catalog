@@ -1,21 +1,39 @@
-import React, { FC, useEffect } from 'react';
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+import React, { FC, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Title from './Title';
-import { Phone } from '../interfaces/interfaces';
-import { RootState, getCurrentPhone, loadPhone } from '../store';
+import { Phone, Phones } from '../interfaces/interfaces';
+import {
+  RootState, getCurrentPhone, getAllPhones, like, addToCart, getFavs, getCart,
+} from '../store';
 import Breadcrumbs from './Breadcrumbs';
 
 type Props = {
   phoneId: string;
-  phoneLoad: (id: string) => void;
   phone: Phone;
+  phones: Phones[];
+  favs: any;
+  cart: any;
+  setLike: (phoneId: string) => void;
+  setToCart: (phoneId: string) => void;
 };
 
-const PhonePage: FC<Props> = ({ phoneId, phoneLoad, phone }) => {
-  useEffect(() => {
-    phoneLoad(phoneId);
-  });
+const PhonePage: FC<Props> = ({
+  phone, phones, setLike, setToCart, favs, cart,
+}) => {
+  const [currentImage, setCurrentImage] = useState(phone.images[0]);
+  const liked = favs.find((fav: string) => fav === phone.id);
+  const addedToCart = cart.find((item: { id: string }) => item.id === phone.id);
+  const picturesChanger = (e: { target: { src: React.SetStateAction<string> } }) => (
+    setCurrentImage(e.target.src)
+  );
+
+  const idGenerator = (min: number, max: number) => {
+    const rand = min + Math.random() * (max + 1 - min);
+
+    return Math.floor(rand);
+  };
 
   return (
     <div className="phone">
@@ -31,134 +49,183 @@ const PhonePage: FC<Props> = ({ phoneId, phoneLoad, phone }) => {
         </div>
       </NavLink>
       <Title title={phone.name} />
-      <div className="phone__container">
-        <div className="phone__images">
-          {phone.images.map(image => (
-            <div className="phone__image-mini-container">
-              <img
-                src={image}
-                alt="item"
-                className="phone__image-mini"
-              />
-            </div>
+      <div className="phone__main">
+        <div className="phone__gallery">
+          <ul
+            className="phone__gallery-list"
+            onClick={() => picturesChanger}
+            onKeyPress={() => picturesChanger}
+          >
+            {phone.images.map(image => (
+              <li className="phone__gallery-item" key={image}>
+                <img
+                  src={image}
+                  alt="phone pic"
+                  className="phone__gallery-img"
+                />
+              </li>
+            ))}
+          </ul>
 
-          ))}
-        </div>
-        <div className="phone__image-container">
-          <img
-            src={phone.images[0]}
-            alt="main"
-            className="phone__image"
-          />
+          <div className="phone__gallery-item-large">
+            <img
+              src={phone.images[0]}
+              alt="phone pic"
+              className="phone__gallery-img-large"
+            />
+          </div>
         </div>
 
-        <div className="phone__info">
-          <div className="phone__colors">
-            <small className="phone__available-text">Available colors</small>
-            <div className="phone__available-colors">
+        <div className="phone__card">
+          <div className="phone__card-block">
+            <p className="phone__label">
+              Available colors
+            </p>
+            <div className="phone__colors">
               {phone.colorsAvailable.map(color => (
-                <div className="phone__available-color" style={{ backgroundColor: color }} />
+                <div className="phone__color-wrapper" key={color}>
+                  <div style={{ backgroundColor: color }} className="phone__color" />
+                </div>
               ))}
             </div>
           </div>
-          <div className="phone__capacity">
-            <small>Select capacity</small>
-            <div>
-              capacites
+
+          <div className="phone__card-block">
+            <p className="phone__label">
+              Select capacity
+            </p>
+            <div className="phone__capacities">
+              {phone.capacityAvailable.map(size => (
+                <div className="phone__capacity">
+                  {size}
+                </div>
+              ))}
             </div>
           </div>
-          <div className="phone__price">
-            <h2>Discount</h2>
-            <p>Price</p>
+
+          <div className="phone__price-block">
+            <div className="phone__discount">
+              $
+              {
+              phones.find(product => product.phoneId === phone.id)?.priceDiscount
+              }
+            </div>
+            <div className="phone__price">
+              $
+              {
+                phones.find(product => product.phoneId === phone.id)?.priceRegular
+              }
+            </div>
           </div>
-          <div className="phone__actions">
-            <button type="button">Add to cart</button>
-            <button type="button">Like</button>
+
+          <div className="phone__btn-block">
+            {
+              addedToCart
+                ? (
+                  <button
+                    type="button"
+                    className="phone__btn--added"
+                    disabled
+                  >
+                    Added to cart
+                  </button>
+                )
+                : (
+                  <button
+                    type="button"
+                    className="phone__btn--cart"
+                    onClick={() => {
+                      setToCart(phone.id);
+                    }}
+                  >
+                    Add to cart
+                  </button>
+                )
+            }
+            <button
+              type="button"
+              className="phone__btn--favs"
+              onClick={() => {
+                setLike(phone.id);
+              }}
+            >
+              {
+                liked
+                  ? <img src="img/favs-liked.svg" alt="favs logo" />
+                  : <img src="img/favs.svg" alt="favs logo" />
+              }
+            </button>
           </div>
-          <div className="phone__characteristics">
-            <div>
-              <p>Screen</p>
-              <p />
+
+          <div className="phone__info-block">
+            <div className="phone__info-keys">
+              <p className="phone__info-key">
+                Screen
+              </p>
+              <p className="phone__info-key">
+                Resolution
+              </p>
+              <p className="phone__info-key">
+                Processor
+              </p>
+              <p className="phone__info-key">
+                RAM
+              </p>
             </div>
-            <div>
-              <p>Resolution</p>
-              <p />
-            </div>
-            <div>
-              <p>Processor</p>
-              <p />
-            </div>
-            <div>
-              <p>RAM</p>
-              <p />
+            <div className="phone__info-values">
+              <p className="phone__info-value">
+                {phone.screen}
+              </p>
+              <p className="phone__info-value">
+                {phone.resolution}
+              </p>
+              <p className="phone__info-value">
+                {phone.processor}
+              </p>
+              <p className="phone__info-value">
+                {phone.ram}
+              </p>
             </div>
           </div>
         </div>
-        <div className="phone__id">Id</div>
+
+        <div className="phone__id">
+          ID:
+          {' '}
+          {idGenerator(800000, 1000000)}
+        </div>
       </div>
 
-      <div className="phone__container--about">
+      <div className="phone__description">
         <div className="phone__about">
-          <h2>About</h2>
-          <h3>
-            <p>text</p>
-          </h3>
-          <h3>
-            <p>text</p>
-          </h3>
-          <h3>
-            <p>text</p>
-          </h3>
+          <h2 className="phone__subtitle">About</h2>
+          {phone.description.map(text => (
+            <>
+              <h3 className="phone__subsubtitle">{text.title}</h3>
+              <p className="phone__text">{text.text}</p>
+            </>
+          ))}
         </div>
         <div className="phone__specs">
-          <h2>Tech Specs</h2>
-          <div>
-            <div>
-              <p>Screen</p>
-              <p />
-            </div>
-            <div>
-              <p>Resolution</p>
-              <p />
-            </div>
-            <div>
-              <p>Processor</p>
-              <p />
-            </div>
-            <div>
-              <p>RAM</p>
-              <p />
-            </div>
-            <div>
-              <p>Built in memory</p>
-              <p />
-            </div>
-            <div>
-              <p>Camera</p>
-              <p />
-            </div>
-            <div>
-              <p>Zoom</p>
-              <p />
-            </div>
-            <div>
-              <p>Cell</p>
-              <p />
-            </div>
-          </div>
+          <h2 className="phone__subtitle">Tech specs</h2>
         </div>
       </div>
       <Title title="You may also like" />
+      <div>{currentImage}</div>
     </div>
   );
 };
 
 const mapState = (state: RootState) => ({
   phone: getCurrentPhone(state),
+  phones: getAllPhones(state),
+  favs: getFavs(state),
+  cart: getCart(state),
 });
 
 const mapDispatch = {
-  phoneLoad: loadPhone,
+  setLike: like,
+  setToCart: addToCart,
 };
 
 export default connect(mapState, mapDispatch)(PhonePage);

@@ -33,11 +33,13 @@ const ProductCard: FC<Props> = ({
           className="productCard__link"
           onClick={() => setCurrentPhone(phone.phoneId)}
         >
-          <img
-            src={phone.image}
-            alt={phone.name}
-            className="productCard__img"
-          />
+          <div className="productCard__img-container">
+            <img
+              src={phone.image}
+              alt={phone.name}
+              className="productCard__img"
+            />
+          </div>
           <p className="productCard__title">
             {phone.name}
           </p>

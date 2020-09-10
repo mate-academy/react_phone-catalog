@@ -28,15 +28,23 @@
     text-decoration: none;
   }
 
-  &__img {
-    margin: 8px auto 24px;
+  &__img-container {
+    margin: 8px 0 24px;
 
-    width: 160px;
+    width: 208px;
+    height: 208px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__img {
     height: 208px;
   }
 
   
-  &__img:hover ~ &__title {
+  &__img-container:hover ~ &__title {
     text-decoration: underline;
   }
 
