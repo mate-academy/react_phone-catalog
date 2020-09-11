@@ -30,9 +30,12 @@ const Contact: React.FC<Props> = ({ contactInfo }) => {
           src={skypeIcon}
           alt="skype"
         />
-        <p className="contact__text">
+        <a
+          href={`skype:${skype}`}
+          className="contact__text contact__link"
+        >
           {skype}
-        </p>
+        </a>
       </div>
       <div className="contact__information-wrapper contact__information">
         <img

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
+import cn from 'classnames';
 import './Pagination.scss';
 
 type Props = {
@@ -67,7 +68,10 @@ const Pagination: React.FC<Props> = ({ totalGadgets }) => {
           <button
             key={item}
             type="button"
-            className="pagination__button pagination__page-button"
+            className={cn(
+              'pagination__button pagination__page-button',
+              { pagination__button_active: Number(urlSearchParam.get('page')) === item },
+            )}
             onClick={() => {
               urlSearchParam.set('page', `${item}`);
               history.push({
