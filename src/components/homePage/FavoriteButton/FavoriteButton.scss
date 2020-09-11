@@ -1,0 +1,39 @@
+.favorites {
+
+  &__button {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    background-image: url("./favorite.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 1px solid black;
+    box-sizing: border-box;
+    transition: 0.4s;
+    cursor: pointer;
+  }
+
+  &__button_active {
+    background-image: url("./favorite-active.png");
+  }
+
+  &__button:hover {
+    border-color: gold;
+  }
+
+  &__button_check {
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    height: 40px;
+    width: 40px;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: background-image 0.4s;
+  }
+
+  &__button-input {
+    position: absolute;
+    opacity: 0;
+  }
+}

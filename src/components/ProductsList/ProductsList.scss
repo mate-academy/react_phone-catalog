@@ -1,0 +1,5 @@
+.products-list {
+  display: grid;
+  grid-template-columns: repeat(4, 272px);
+  grid-gap: 40px 16px;
+}

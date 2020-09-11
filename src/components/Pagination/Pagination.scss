@@ -1,0 +1,44 @@
+.pagination {
+  display: grid;
+  grid-template-columns: 32px minmax(32px, max-content) 32px;
+  grid-column-gap: 16px;
+  margin: 40px auto 0;
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    display: inline-block;
+    border: 1px solid #b4bdc4;
+    background-color: #fff;
+    font-family: Mont, sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    transition: border 0.4s;
+    outline: none;
+  }
+
+  &__button[disabled] {
+    border: 1px solid #e2e6e9;
+
+    &:hover {
+      border: 1px solid #e2e6e9;
+    }
+  }
+
+  &__button:hover {
+    border: 1px solid #313237;
+  }
+
+  &__page-button-wrapper :last-child {
+    margin-right: 0;
+  }
+
+  &__page-button {
+    margin-right: 8px;
+  }
+
+  &__button_active {
+    color: #fff;
+    background: #313237;
+  }
+}

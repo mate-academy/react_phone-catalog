@@ -1,0 +1,62 @@
+.gadgetsSlider {
+  max-width: 1140px;
+  margin: auto;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__article {
+    font-family: Arial, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 41px;
+  }
+
+  &__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 8px;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    border: 1px solid black;
+    box-sizing: border-box;
+    background-color: inherit;
+    transition: 0.3s;
+    cursor: pointer;
+    outline: none;
+
+    &:hover {
+      border: 1px solid black;
+    }
+  }
+
+  &__cards {
+    margin-top: 30px;
+    margin-bottom: 80px;
+  }
+}
+
+.carousel {
+  margin: auto;
+  overflow: hidden;
+
+  &__list {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+.disabled {
+  border: 1px solid #e2e6e9;
+
+  &:hover {
+    border: 1px solid #e2e6e9;
+  }
+}

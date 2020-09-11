@@ -1,0 +1,56 @@
+@import "../../Variables";
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  height: $footerHeight;
+  padding: 0 $xAxisPadding;
+  box-shadow: 0 -1px 0 #e2e6e9;
+
+  &__logo {
+    display: flex;
+    align-items: center;
+  }
+
+  &__button-wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  &__button-description {
+    font-family: Mont, sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: #89939a;
+    margin-right: 16px;
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    background: #fff;
+    border: 1px solid #e2e6e9;
+    transition: border 0.4s;
+    padding: 0;
+    outline: none;
+  }
+
+  &__button:hover {
+    border: 1px solid #313237;
+  }
+
+  &__button-content {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.4s;
+  }
+
+  &__button-content:hover {
+    transform: translateY(-5px);
+  }
+}
