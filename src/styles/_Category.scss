@@ -13,7 +13,7 @@
   }
 
   &__item {
-    color: #313237;
+    color: $dark-main;
     text-decoration: none;
 
     &:hover {
@@ -69,6 +69,6 @@
     font-size: 14px;
     line-height: 21px;
 
-    color: #89939a;
+    color: $grey-main;
   }
 }

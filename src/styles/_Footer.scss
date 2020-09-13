@@ -5,7 +5,7 @@
 
   background-color: #fff;
 
-  box-shadow: 0 -1px 0 #e2e6e9;
+  box-shadow: 0 -1px 0 $grey-light;
 
   &__nav {
     margin: 0 auto;
@@ -34,13 +34,13 @@
   }
 
   &__menu-item {
-    color: #89939a;
+    color: $grey-main;
     text-decoration: none;
 
     transition: color 0.3s;
 
     &:hover {
-      color: #313237;
+      color: $dark-main;
     }
   }
 
@@ -52,7 +52,7 @@
     font-size: 12px;
     line-height: 15px;
 
-    color: #89939a;
+    color: $grey-main;
   }
 
   &__text {
@@ -73,7 +73,7 @@
     transition: border 0.3s;
 
     &:hover {
-      border: 1px solid #313237;
+      border: 1px solid $dark-main;
     }
   }
 }

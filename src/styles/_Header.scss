@@ -1,4 +1,9 @@
 .nav {
+  position: sticky;
+  top: 0;
+  min-height: 2em;
+  z-index: 1;
+
   display: flex;
   align-items: center;
 
@@ -11,9 +16,10 @@
 
   letter-spacing: 0.04em;
   text-transform: uppercase;
+  background-color: #fff;
 
-  color: #89939a;
-  box-shadow: 0 1px 0 #e2e6e9;
+  color: $grey-main;
+  box-shadow: 0 1px 0 $grey-light;
 
   &__logo {
     margin: 0 64px 0 24px;
@@ -36,7 +42,7 @@
   &__items {
     position: relative;
 
-    color: #89939a;
+    color: $grey-main;
     text-decoration: none;
 
     transition: color 0.3s;
@@ -45,11 +51,11 @@
     cursor: pointer;
 
     &:hover {
-      color: #313237;
+      color: $dark-main;
     }
 
     &:focus {
-      color: #313237;
+      color: $dark-main;
     }
   }
 
@@ -66,7 +72,7 @@
   &__cart {
     padding: 27px 25px 26px;
 
-    box-shadow: -1px 0 0 #e2e6e9;
+    box-shadow: -1px 0 0 $grey-light;
   }
 
   &__counter {
@@ -100,7 +106,7 @@
     width: 100%;
     height: 3px;
 
-    background: #313237;
+    background: $dark-main;
   }
 
   &__selected--1::after {
@@ -112,6 +118,6 @@
     width: 100%;
     height: 3px;
 
-    background: #313237;
+    background: $dark-main;
   }
 }

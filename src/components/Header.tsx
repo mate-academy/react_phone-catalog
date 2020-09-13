@@ -122,6 +122,7 @@ const Header: FC<Props> = ({ favs, cart }) => {
           </NavLink>
         </div>
       </nav>
+
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/phones" exact component={PhonesPage} />

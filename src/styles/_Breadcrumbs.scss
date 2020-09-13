@@ -24,13 +24,13 @@
 
     text-decoration: none;
 
-    color: #89939a;
+    color: $grey-main;
   }
 
   &__subtitle {
     font-size: 12px;
     line-height: 15px;
 
-    color: #89939a;
+    color: $grey-main;
   }
 }

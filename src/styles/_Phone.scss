@@ -4,7 +4,7 @@
   &__breadcrumb-link {
     text-decoration: none;
 
-    color: #89939a;
+    color: $grey-main;
   }
 
   &__breadcrumb {
@@ -84,7 +84,7 @@
     display: flex;
     flex-direction: column;
 
-    border-bottom: 1px solid #e2e6e9;
+    border-bottom: 1px solid $grey-light;
   }
 
   &__label {
@@ -94,7 +94,7 @@
     font-size: 12px;
     line-height: 15px;
 
-    color: #89939a;
+    color: $grey-main;
   }
 
   &__colors {
@@ -109,7 +109,7 @@
     width: 32px;
     height: 32px;
 
-    border: 1px solid #e2e6e9;
+    border: 1px solid $grey-light;
     border-radius: 50%;
   }
 
@@ -163,7 +163,7 @@
     line-height: 28px;
     text-decoration-line: line-through;
 
-    color: #89939a;
+    color: $grey-main;
   }
 
   &__btn-block {
@@ -182,7 +182,7 @@
     line-height: 21px;
 
     color: #fff;
-    background-color: #313237;
+    background-color: $dark-main;
     border: none;
     outline: none;
 
@@ -205,7 +205,7 @@
 
     color: #27ae60;
     background-color: #fff;
-    border: 1px solid #e2e6e9;
+    border: 1px solid $grey-light;
 
     cursor: pointer;
   }
@@ -250,13 +250,13 @@
   &__info-key {
     margin-bottom: 8px;
 
-    color: #89939a;
+    color: $grey-main;
   }
 
   &__info-value {
     margin-bottom: 8px;
 
-    color: #313237;
+    color: $dark-main;
   }
 
   &__id {
@@ -286,7 +286,7 @@
     margin-bottom: 32px;
     padding-bottom: 16px;
 
-    border-bottom: 1px solid #e2e6e9;
+    border-bottom: 1px solid $grey-light;
   }
 
   &__subsubtitle {
@@ -296,7 +296,7 @@
     font-size: 20px;
     line-height: 26px;
 
-    color: #313237;
+    color: $dark-main;
   }
 
   &__text {
@@ -306,7 +306,7 @@
     font-size: 14px;
     line-height: 21px;
 
-    color: #89939a;
+    color: $grey-main;
   }
 
   &__characteristics {
@@ -321,7 +321,7 @@
 
     text-align: start;
 
-    color: #89939a;
+    color: $grey-main;
   }
 
   &__characteristics-key {
@@ -334,7 +334,7 @@
     line-height: 21px;
     text-align: end;
 
-    color: #313237;
+    color: $dark-main;
   }
 
   &__characteristics-value {

@@ -12,7 +12,7 @@
   font-style: normal;
   font-weight: 500;
 
-  color: #313237;
+  color: $dark-main;
 
   overflow: hidden;
 
@@ -30,8 +30,8 @@
       height: 64px;
       margin: 8px;
       border-radius: 50%;
-      border: 6px solid #313237;
-      border-color: #313237 transparent #313237 transparent;
+      border: 6px solid $dark-main;
+      border-color: $dark-main transparent $dark-main transparent;
       animation: dual-ring 1.2s linear infinite;
     }
   }
