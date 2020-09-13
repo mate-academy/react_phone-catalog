@@ -268,6 +268,8 @@
   }
 
   &__description {
+    margin-bottom: 80px;
+
     display: flex;
     justify-content: space-between;
   }
@@ -305,5 +307,37 @@
     line-height: 21px;
 
     color: #89939a;
+  }
+
+  &__characteristics {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__characteristics-keys {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+
+    text-align: start;
+
+    color: #89939a;
+  }
+
+  &__characteristics-key {
+    margin-bottom: 8px;
+  }
+
+  &__characteristics-values {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: end;
+
+    color: #313237;
+  }
+
+  &__characteristics-value {
+    margin-bottom: 8px;
   }
 }

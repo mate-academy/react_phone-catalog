@@ -5,9 +5,10 @@ import { connect } from 'react-redux';
 import Title from './Title';
 import { Phone, Phones } from '../interfaces/interfaces';
 import {
-  RootState, getCurrentPhone, getAllPhones, like, addToCart, getFavs, getCart,
+  RootState, getCurrentPhone, getAllPhones, like, addToCart, getFavs, getCart, getBrandNewPhones,
 } from '../store';
 import Breadcrumbs from './Breadcrumbs';
+import ProductSlider from './ProductSlider';
 
 type Props = {
   phoneId: string;
@@ -15,12 +16,13 @@ type Props = {
   phones: Phones[];
   favs: any;
   cart: any;
+  brandNewPhones: Phones[];
   setLike: (phoneId: string) => void;
   setToCart: (phoneId: string) => void;
 };
 
 const PhonePage: FC<Props> = ({
-  phone, phones, setLike, setToCart, favs, cart,
+  phone, phones, setLike, setToCart, favs, cart, brandNewPhones,
 }) => {
   const [currentImage, setCurrentImage] = useState(phone.images[0]);
   const liked = favs.find((fav: string) => fav === phone.id);
@@ -38,6 +40,7 @@ const PhonePage: FC<Props> = ({
   return (
     <div className="phone">
       <Breadcrumbs title="Phones" subtitle={phone.name} />
+
       <NavLink to="/" className="phone__breadcrumb-link">
         <div className="phone__breadcrumb">
           <img
@@ -48,7 +51,9 @@ const PhonePage: FC<Props> = ({
           <p className="phone__breadcrumb-text">Back</p>
         </div>
       </NavLink>
+
       <Title title={phone.name} />
+
       <div className="phone__main">
         <div className="phone__gallery">
           <ul
@@ -69,7 +74,7 @@ const PhonePage: FC<Props> = ({
 
           <div className="phone__gallery-item-large">
             <img
-              src={phone.images[0]}
+              src={currentImage}
               alt="phone pic"
               className="phone__gallery-img-large"
             />
@@ -206,12 +211,70 @@ const PhonePage: FC<Props> = ({
             </>
           ))}
         </div>
+
         <div className="phone__specs">
           <h2 className="phone__subtitle">Tech specs</h2>
+          <div className="phone__characteristics">
+            <div className="phone__characteristics-keys">
+              <p className="phone__characteristics-key">
+                Screen
+              </p>
+              <p className="phone__characteristics-key">
+                Resolution
+              </p>
+              <p className="phone__characteristics-key">
+                Processor
+              </p>
+              <p className="phone__characteristics-key">
+                RAM
+              </p>
+              <p className="phone__characteristics-key">
+                Built in memory
+              </p>
+              <p className="phone__characteristics-key">
+                Camera
+              </p>
+              <p className="phone__characteristics-key">
+                Zoom
+              </p>
+              <p className="phone__characteristics-key">
+                Cell
+              </p>
+            </div>
+            <div className="phone__characteristics-values">
+              <p className="phone__characteristics-value">
+                {phone.screen}
+              </p>
+              <p className="phone__characteristics-value">
+                {phone.resolution}
+              </p>
+              <p className="phone__characteristics-value">
+                {phone.processor}
+              </p>
+              <p className="phone__characteristics-value">
+                {phone.ram}
+              </p>
+              <p className="phone__characteristics-value">
+                {phone.capacity}
+              </p>
+              <p className="phone__characteristics-value">
+                {phone.camera}
+              </p>
+              <p className="phone__characteristics-value">
+                {phone.zoom}
+              </p>
+              <p className="phone__characteristics-value">
+                {phone.cell}
+              </p>
+            </div>
+          </div>
         </div>
       </div>
-      <Title title="You may also like" />
-      <div>{currentImage}</div>
+
+      <div className="home__slider-wrapper">
+        <Title title="You may also like" />
+        <ProductSlider phones={brandNewPhones} />
+      </div>
     </div>
   );
 };
@@ -221,6 +284,7 @@ const mapState = (state: RootState) => ({
   phones: getAllPhones(state),
   favs: getFavs(state),
   cart: getCart(state),
+  brandNewPhones: getBrandNewPhones(state),
 });
 
 const mapDispatch = {

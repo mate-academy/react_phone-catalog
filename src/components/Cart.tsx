@@ -4,7 +4,14 @@ import { NavLink } from 'react-router-dom';
 
 import Title from './Title';
 import {
-  RootState, getCart, getAllPhones, loadPhones, removeFromCart, decreaseAmount, increaseAmount,
+  RootState,
+  getCart,
+  getAllPhones,
+  loadPhones,
+  removeFromCart,
+  decreaseAmount,
+  increaseAmount,
+  loadPhone,
 } from '../store';
 import { Phones } from '../interfaces/interfaces';
 
@@ -13,12 +20,13 @@ type Props = {
   removeItem: (phoneId: string) => void;
   decrease: (phoneId: string) => void;
   increase: (phoneId: string) => void;
+  setCurrentPhone: (id: string) => void;
   phones: Phones[];
   cart: any;
 };
 
 const Cart: FC<Props> = ({
-  phonesLoad, removeItem, decrease, increase, phones, cart,
+  phonesLoad, removeItem, decrease, increase, phones, cart, setCurrentPhone,
 }) => {
   useEffect(() => {
     phonesLoad();
@@ -68,9 +76,13 @@ const Cart: FC<Props> = ({
                           alt={phone.name}
                           className="cart__phone-img"
                         />
-                        <p className="cart__phone-name">
+                        <NavLink
+                          to={`/phones/${phone.phoneId}`}
+                          className="cart__phone-name"
+                          onClick={() => setCurrentPhone(phone.phoneId)}
+                        >
                           {phone.name}
-                        </p>
+                        </NavLink>
                         <div className="cart__phone-amount">
                           <button
                             type="button"
@@ -152,6 +164,7 @@ const mapDispatch = {
   removeItem: removeFromCart,
   decrease: decreaseAmount,
   increase: increaseAmount,
+  setCurrentPhone: loadPhone,
 };
 
 export default connect(mapState, mapDispatch)(Cart);

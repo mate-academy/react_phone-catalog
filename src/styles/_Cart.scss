@@ -89,6 +89,13 @@
     margin-right: 49px;
 
     width: 295px;
+    
+    color: #313237;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
   &__phone-amount {
