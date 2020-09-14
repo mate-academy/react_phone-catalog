@@ -1,0 +1,51 @@
+.main-slider {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 100px;
+  max-width: 1400px;
+
+  &__button {
+    margin: 20px 0;
+    background-color: white;
+    border: 1px solid hsl(206, 12%, 74%);
+  }
+}
+
+.slider {
+  display: flex;
+  max-width: 1000px;
+  &__list {
+    display: flex;
+    overflow: hidden;
+    max-width: 1000px;
+    min-width: 500px;
+  }
+
+  &__item {
+    transition: 1s margin;
+  }
+
+  &__img {
+    min-width: 500px;
+    max-width: 1000px;
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  .main-slider {
+    justify-content: space-evenly;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .slider {
+    display: none;
+  }
+  .main-slider {
+
+    &__button {
+      display: none;
+    }
+  }
+}

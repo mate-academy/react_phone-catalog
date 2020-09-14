@@ -1,0 +1,27 @@
+.pagination {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  &__list {
+    display: flex;
+  }
+
+  &__item {
+    margin-right: 5px;
+  }
+
+  &__button {
+    outline: none;
+    background-color: white;
+    width: 32px;
+    height: 32px;
+    border: 1px solid hsl(206, 14%, 90%);
+    box-sizing: border-box;
+  }
+}
+
+.activePage {
+  background-color: #313237;
+  color: white;
+}

@@ -1,0 +1,74 @@
+.categories {
+  width: 100%;
+  margin-bottom: 80px;
+  max-width: 1400px;
+
+  &__list {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  &__item {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__name {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 26px;
+    color: #313237;
+  }
+
+  &__number {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: hsl(205, 8%, 57%);
+  }
+
+  &__img {
+    width: 20vw;
+    max-height: 400px;
+    max-width: 100%;
+    transition: transform 1s;
+    height: 20vw;
+
+    &--phones {
+      background-color: #ffe4cc;
+    }
+
+    &--tablets {
+      background-color: #898a8e;
+    }
+
+    &--accessories {
+      background-color: #963c5e;
+    }
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .categories {
+
+    &__list {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    &__item {
+      width: 60%;
+    }
+
+    &__img {
+      width: 40vw;
+      height: 40vw;
+    }
+  }
+}

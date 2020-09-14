@@ -1,0 +1,130 @@
+.nav {
+  display: flex;
+  height: 65px;
+  align-items: center;
+  box-shadow: 0 1px 0 hsl(206, 14%, 90%);
+  max-width: 1480px;
+  justify-content: space-between;
+  padding-left: 32px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  background-color: white;
+  box-sizing: border-box;
+
+  &__button {
+    height: 100%;
+    width: 45px;
+    background-color: white;
+    border: none;
+    outline: none;
+    box-shadow: -1px 0 0 hsl(206, 14%, 90%);
+  }
+
+  &__box {
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  &__button-img {
+    width: 60%;
+    height: 30%;
+
+  }
+
+  &__list {
+    display: flex;
+    list-style: none;
+  }
+
+  &__item {
+    margin-right: 65px;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: hsl(205, 8%, 57%);
+    transition: color 0.5s, border-bottom 0.5s ;
+
+    &:hover {
+      border-bottom: 1px solid black;
+      color: hsl(0, 0%, 0%);
+    }
+  }
+
+  &__special-link {
+    position: relative;
+    padding: 22px;
+    box-shadow: -1px 0 0 hsl(206, 14%, 90%);
+  }
+}
+
+.active {
+  color: black;
+}
+
+.footer-nav {
+  max-width: 1400px;
+  display: flex;
+  height: 65px;
+  align-items: center;
+  box-shadow: 0 1px 0 hsl(206, 14%, 90%);
+  justify-content: space-between;
+  padding-left: 32px;
+  width: 100%;
+  background-color: white;
+  box-sizing: border-box;
+  border-top: 1px solid hsl(206, 14%, 90%);
+  position: fixed;
+  bottom: 0;
+
+  &__link {
+    margin-right: 5%;
+  }
+}
+
+.burger-menu {
+
+  &__link {
+    font-size: 20px;
+    color: hsl(205, 8%, 57%);
+  }
+
+  &__icon {
+    width: 40px;
+    height: 40px;
+    color: hsl(206, 14%, 90%);
+  }
+
+  &__button {
+    border: none;
+    background-color: white;
+  }
+
+  &__list {
+    position: fixed;
+    left: 0;
+    padding-top: 40px;
+    width: 320px;
+    background-color: white;
+    box-sizing: border-box;
+    transition: transform 0.5s;
+    border: 2px solid hsl(206, 14%, 90%);
+    padding-bottom: 40px;
+  }
+
+  &__item {
+    box-sizing: border-box;
+    width: 100%;
+    margin-bottom: 40px;
+    padding: 20px;
+    border-bottom: 1px solid hsl(206, 14%, 90%);
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .footer-nav {
+    display: none;
+  }
+}

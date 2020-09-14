@@ -1,0 +1,28 @@
+.gallery {
+  &__img-list {
+    margin-right: 60px;
+  }
+
+  &__img-wrapper {
+    display: flex;
+    width: 40%;
+  }
+
+  &__image {
+    width: 66px;
+
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .gallery__img-wrapper {
+    display: flex;
+    justify-content: space-evenly;
+    width: 90%;
+  }
+
+  .gallery__main-image {
+    width: 50vw;
+    height: 50vw;
+  }
+}

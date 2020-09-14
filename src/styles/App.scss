@@ -1,0 +1,156 @@
+@import "./Navigation.scss";
+@import "./Home.scss";
+@import "./Slider.scss";
+@import "./Carousel.scss";
+@import "./Buttons.scss";
+@import "./Categories.scss";
+@import "./ItemCard.scss";
+@import "./Gallery.scss";
+@import "./Options.scss";
+@import "./Path.scss";
+@import "./Basket.scss";
+@import "./ProductsPage.scss";
+@import "./Pagination.scss";
+@import "./Search.scss";
+
+* {
+  box-sizing: border-box;
+}
+
+.fontMonte {
+  font-family: "Montserrat", sans-serif;
+}
+
+section {
+  scroll-behavior: smooth;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+button {
+  outline: none;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+h2 {
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  color: #313237;
+}
+
+#root {
+  width: 100%;
+}
+
+a {
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  color: #313237;
+}
+
+.line {
+  width: 100%;
+  height: 1px;
+  background-color: hsl(206, 14%, 90%);
+  margin-bottom: 25px;
+}
+
+.grey {
+  color: hsl(205, 8%, 57%);
+}
+
+.red {
+  background-color: red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  color: white;
+  position: absolute;
+  left: 30px;
+  top: 13px;
+  font-size: 10px;
+}
+
+.red-back {
+  background-color: red;
+}
+
+.title {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 41px;
+  margin-top: 50px;
+  letter-spacing: -0.01em;
+  color: #313237;
+}
+
+.App {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#root,
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+.input {
+  outline: none;
+}
+
+@media screen and (max-width: 500px) {
+  .input {
+    width: 100px;
+    padding-left: 4px;
+    padding-right: 4px;
+    font-size: 10px;
+  }
+}
+
+.form {
+  position: absolute;
+  left: 30%;
+  top: 30%;
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+  background-color: white;
+  border: 1px solid #cacdd3;
+
+  &__input {
+    padding: 10px;
+    background-color: #eff0f3;
+    margin-bottom: 15px;
+  }
+}

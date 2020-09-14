@@ -1,0 +1,18 @@
+.search {
+  height: 66px;
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  right: 142px;
+  border: 1px solid rgb(219, 213, 213);
+  border-right: none;
+  border-top: none;
+  padding: 23px;
+  font-style: normal;
+  font-weight: 300;
+  color: hsl(207, 4%, 55%);
+
+  &::placeholder {
+    color: hsl(206, 12%, 74%);
+  }
+}
