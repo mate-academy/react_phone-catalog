@@ -3,7 +3,7 @@
   height: 65px;
   align-items: center;
   box-shadow: 0 1px 0 hsl(206, 14%, 90%);
-  max-width: 1400px;
+  max-width: 1480px;
   justify-content: space-between;
   padding-left: 32px;
   width: 100%;
@@ -11,6 +11,27 @@
   top: 0;
   background-color: white;
   box-sizing: border-box;
+
+  &__button {
+    height: 100%;
+    width: 45px;
+    background-color: white;
+    border: none;
+    outline: none;
+    box-shadow: -1px 0 0 hsl(206, 14%, 90%);
+  }
+
+  &__box {
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  &__button-img {
+    width: 60%;
+    height: 30%;
+
+  }
 
   &__list {
     display: flex;
@@ -34,7 +55,7 @@
 
   &__special-link {
     position: relative;
-    padding: 24px;
+    padding: 22px;
     box-shadow: -1px 0 0 hsl(206, 14%, 90%);
   }
 }

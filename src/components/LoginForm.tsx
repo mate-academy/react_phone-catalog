@@ -1,15 +1,28 @@
 /* eslint-disable no-console */
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { userPostFetch } from '../helpers/login';
+import { userEnter } from '../helpers/login';
+import { setIsVerified } from '../store/isVerified';
+import { setToken } from '../store/token';
 
-export const LoginForm: React.FC = () => {
+interface Props {
+  hideModal: () => (void);
+}
+
+export const LoginForm: React.FC<Props> = ({ hideModal }) => {
   const [userName, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
 
-  const handleSubmit = () => {
-    dispatch(userPostFetch(userName, password));
+  const handleSubmit = async () => {
+    const token = await userEnter(userName, password);
+
+    if (token) {
+      dispatch(setToken(token));
+      localStorage.setItem('token', token);
+      dispatch(setIsVerified(true));
+      hideModal();
+    }
   };
 
   return (

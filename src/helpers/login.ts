@@ -35,3 +35,36 @@ export const userPostFetch = (userName: string, password: string) => {
     }
   };
 };
+
+export const userEnter = async (mail: string, password: string) => {
+  const user = { password, mail };
+
+  console.log(password, mail);
+
+  const resp = await fetch('http://localhost:3002/enter', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    },
+    body: JSON.stringify({ ...user }),
+  });
+
+  const data = await resp.json();
+
+  return data.token;
+};
+
+export const userLogout = async (token: string | null) => {
+  const response = await fetch('http://localhost:3002/logout',
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+        Accept: 'application/json',
+      },
+    });
+
+  console.log(response);
+};
