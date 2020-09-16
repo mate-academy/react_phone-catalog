@@ -57,6 +57,14 @@
     align-items: center;
 
     border: 1px solid #c4c4c4;
+
+    cursor: pointer;
+
+    transition: opacity 0.3s;
+
+    &:hover {
+      opacity: 0.7;
+    }
   }
 
   &__gallery-img {
@@ -138,6 +146,15 @@
     line-height: 21px;
 
     border: 1px solid #b4bdc4;
+
+    cursor: pointer;
+
+    transition: background-color 0.3s;
+
+    &:hover {
+      color: #fff;
+      background-color: $dark-main;
+    }
   }
 
   &__discount {

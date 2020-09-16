@@ -4,11 +4,13 @@ import { Provider } from 'react-redux';
 import { HashRouter } from 'react-router-dom';
 
 import App from './App';
+import ScrollToTop from './components/ScrollToTop';
 import store from './store';
 
 const Root = () => (
   <Provider store={store}>
     <HashRouter>
+      <ScrollToTop />
       <App />
     </HashRouter>
   </Provider>

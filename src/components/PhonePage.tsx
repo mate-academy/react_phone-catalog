@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-import React, { FC, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Title from './Title';
@@ -24,18 +24,19 @@ type Props = {
 const PhonePage: FC<Props> = ({
   phone, phones, setLike, setToCart, favs, cart, brandNewPhones,
 }) => {
-  const [currentImage, setCurrentImage] = useState(phone.images[0]);
+  const [currentImage, setCurrentImage] = useState('');
   const liked = favs.find((fav: string) => fav === phone.id);
   const addedToCart = cart.find((item: { id: string }) => item.id === phone.id);
-  const picturesChanger = (e: { target: { src: React.SetStateAction<string> } }) => (
-    setCurrentImage(e.target.src)
-  );
 
   const idGenerator = (min: number, max: number) => {
     const rand = min + Math.random() * (max + 1 - min);
 
     return Math.floor(rand);
   };
+
+  useEffect(() => {
+    setCurrentImage(phone.images[0]);
+  }, [phone.images]);
 
   return (
     <div className="phone">
@@ -58,11 +59,14 @@ const PhonePage: FC<Props> = ({
         <div className="phone__gallery">
           <ul
             className="phone__gallery-list"
-            onClick={() => picturesChanger}
-            onKeyPress={() => picturesChanger}
           >
             {phone.images.map(image => (
-              <li className="phone__gallery-item" key={image}>
+              <li
+                className="phone__gallery-item"
+                key={image}
+                onClick={() => setCurrentImage(image)}
+                onKeyPress={() => setCurrentImage(image)}
+              >
                 <img
                   src={image}
                   alt="phone pic"
