@@ -1,21 +1,14 @@
 import React, { FC } from 'react';
 import { connect } from 'react-redux';
 import { RootState, getAllPhones, search } from '../store';
-import { Phones } from '../interfaces/interfaces';
 
 type Props = {
-  phones: Phones[];
-  searchPhones: (phones: Phones[]) => void;
+  searchPhones: (inputData: string) => void;
 };
 
-const SearchBar: FC<Props> = ({ phones, searchPhones }) => {
-  const phonesSearch = (e: { target: { value: string } }) => {
-    const value = e.target.value.toLowerCase();
-    const filtered = phones.filter(phone => phone.name.toLowerCase().includes(value));
-
-    console.log(filtered);
-
-    return searchPhones(phones);
+const SearchBar: FC<Props> = ({ searchPhones }) => {
+  const searchedData = (event: { target: { value: string } }) => {
+    searchPhones(event.target.value);
   };
 
   return (
@@ -24,7 +17,7 @@ const SearchBar: FC<Props> = ({ phones, searchPhones }) => {
         type="text"
         placeholder="Search in phones..."
         className="searchbar__input"
-        onChange={phonesSearch}
+        onChange={searchedData}
       />
       <img
         src="img/icons/search.svg"

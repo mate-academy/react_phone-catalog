@@ -27,12 +27,13 @@ export const addToCart = (phoneId: string) => ({ type: actions.ADD_TO_CART, phon
 export const removeFromCart = (phoneId: string) => ({ type: actions.REMOVE_FROM_CART, phoneId });
 export const decreaseAmount = (phoneId: string) => ({ type: actions.DECREASE_AMOUNT, phoneId });
 export const increaseAmount = (phoneId: string) => ({ type: actions.INCREASE_AMOUNT, phoneId });
-export const search = (phones: Phones[]) => ({ type: actions.SEARCH, phones });
+export const search = (inputData: string) => ({ type: actions.SEARCH, inputData });
 
 export const isLoading = (state: RootState) => state.loading;
 export const errorState = (state: RootState) => state.error;
 export const getAllPhones = (state: RootState) => state.phones;
 export const getCurrentPhone = (state: RootState) => state.phone;
+export const getSearchedData = (state: RootState) => state.searched;
 export const getHotPricePhones = (state: RootState) => (
   [...state.phones].sort((a, b) => b.priceDiscount - a.priceDiscount)
 );
@@ -79,7 +80,7 @@ export type RootState = {
   phone: Phone;
   cart: any;
   favs: any;
-  reserved: Phones[];
+  searched: string;
 };
 
 const inititalState: RootState = {
@@ -121,7 +122,7 @@ const inititalState: RootState = {
   },
   cart: [],
   favs: [],
-  reserved: [],
+  searched: '',
 };
 
 const reducer = (state = inititalState, action: AnyAction) => {
@@ -131,7 +132,7 @@ const reducer = (state = inititalState, action: AnyAction) => {
 
     case actions.SET_PHONES:
       return {
-        ...state, loading: false, phones: action.phones, reserved: action.phones,
+        ...state, loading: false, phones: action.phones,
       };
 
     case actions.SET_PHONE:
@@ -188,7 +189,7 @@ const reducer = (state = inititalState, action: AnyAction) => {
     case actions.SEARCH:
       return {
         ...state,
-        phones: action.phones,
+        searched: action.inputData.toLowerCase(),
       };
 
     default:

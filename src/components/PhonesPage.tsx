@@ -1,6 +1,6 @@
 import React, { FC, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { getAllPhones, RootState, loadPhones } from '../store';
+import { getAllPhones, RootState, loadPhones, getSearchedData, search } from '../store';
 
 import Breadcrumbs from './Breadcrumbs';
 import Title from './Title';
@@ -11,12 +11,15 @@ import { Phones } from '../interfaces/interfaces';
 type Props = {
   phonesLoad: () => void;
   allPhones: Phones[];
+  searchedData: string;
+  searchData: (inputData: string) => void;
 };
 
-const PhonesPage: FC<Props> = ({ phonesLoad, allPhones }) => {
+const PhonesPage: FC<Props> = ({ phonesLoad, allPhones, searchedData, searchData }) => {
   useEffect(() => {
     phonesLoad();
-  }, [phonesLoad]);
+    searchData('');
+  }, [phonesLoad, searchData]);
 
   return (
     <div className="phones">
@@ -29,6 +32,7 @@ const PhonesPage: FC<Props> = ({ phonesLoad, allPhones }) => {
       <div className="phones__grid">
         {allPhones
           .sort((a, b) => a.name.localeCompare(b.name))
+          .filter(phone => phone.phoneId.includes(searchedData))
           .map(phone => (
             <div key={phone.id}>
               <ProductCard phone={phone} />
@@ -41,10 +45,12 @@ const PhonesPage: FC<Props> = ({ phonesLoad, allPhones }) => {
 
 const mapState = (state: RootState) => ({
   allPhones: getAllPhones(state),
+  searchedData: getSearchedData(state),
 });
 
 const mapDispatch = {
   phonesLoad: loadPhones,
+  searchData: search,
 };
 
 export default connect(mapState, mapDispatch)(PhonesPage);
