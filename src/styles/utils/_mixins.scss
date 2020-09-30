@@ -1,0 +1,70 @@
+@mixin linkActive($_color) {
+  &:hover,
+  &:active {
+    color: $_color;
+  }
+
+  &::after {
+    display: block;
+    position: absolute;
+    content: "";
+    bottom: 0;
+    right: 0;
+    left: 0;
+    height: 2px;
+    background-color: $_color;
+    opacity: 0;
+    transition: all 0.35s ease;
+    transform: scale(0.1);
+  }
+
+  &:hover::after,
+  &:focus::after,
+  &:active::after {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@mixin h1 {
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+}
+
+@mixin h2 {
+  font-weight: bolder;
+  font-size: 22px;
+  line-height: 31px;
+}
+
+@mixin h3 {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 26px;
+}
+
+@mixin uppercase {
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+@mixin small-text {
+  font-family: Mont, sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  color: $c-main-text;
+}
+
+@mixin body-text {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  color: $c-main-text;
+}
