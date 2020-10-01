@@ -1,19 +1,26 @@
-const API_URL = 'https://mate-academy.github.io/react_phone-catalog/api';
+export const sliderImages: SliderImage[] = [
+  { path: 'slider_img/slide1.jpg', alt: '1' },
+  { path: 'slider_img/slide2.jpg', alt: '2' },
+  { path: 'slider_img/slide3.jpg', alt: '3', },
+  { path: 'slider_img/slide4.jpg', alt: '4', },
+];
 
-export async function getData<T>(url: string): Promise<T[]> {
-  const response = await fetch(url);
-  return response.json();
-};
+export const navLinks: Link[] = [
+  { title: 'Home', path: '/'},
+  { title: 'Phones', path: '/phones'},
+  { title: 'Tablets', path: '/tablets'},
+  { title: 'Accessories', path: '/accessories'},
+]
 
-export async function fetchGoods() {
-  const phones = await getData<Good>(`${API_URL}/products.json`);
+export const footerLinks: Link[] = [
+  { title: 'Github',  path: 'https://github.com/Tata2222'},
+  { title: 'Contacts', path: 'https://www.linkedin.com/in/tatyana-olshanskaya'},
+  { title: 'Rights',  path: 'https://ru.wikipedia.org/wiki/All_rights_reserved'},
+]
 
-  return phones;
-}
-
-export async function fetchGoodDetails(id: string) {
-  const response = await fetch(`${API_URL}/products/${id}.json`);
-  const goodDetail = await response.json();
-
-  return goodDetail;
-}
+export const sortTypes: SortType[] = [
+  { type: 'price', sortBy: 'high_price', reverse: 1 },
+  { type: 'price', sortBy: 'low_price', reverse: -1 },
+  { type: 'age', sortBy: 'newest', reverse: 1 },
+  { type: 'list', sortBy: '', reverse: -1 },
+]

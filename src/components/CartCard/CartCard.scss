@@ -1,0 +1,119 @@
+.cart-card {
+  display: grid;
+  grid-template-areas: "wrapper count price";
+  grid-template-columns: 472px 96px 122px;
+  height: 128px;
+  column-gap: 30px;
+  margin-bottom: 16px;
+  border: 1px solid #e2e6e9;
+  box-sizing: border-box;
+  position: relative;
+
+  @media only screen and (max-width: 960px) {
+    grid-template-areas: "wrapper wrapper" "count price";
+    grid-template-columns: 2.5fr 0.5fr;
+    grid-template-rows: 70px 70px;
+    height: 140px;
+    column-gap: 0;
+    padding-right: 20px;
+  }
+
+  &__wrapper {
+    grid-area: wrapper;
+    display: flex;
+  }
+
+  &__delete {
+    display: flex;
+    min-width: 66px;
+    align-items: center;
+    justify-content: center;
+
+    &-btn {
+      width: 32px;
+      height: 32px;
+      background-color: #fff;
+    }
+  }
+
+  &__img-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-left: 5px;
+    min-width: 66px;
+    @media only screen and (max-width: 960px) {
+      min-width: 96px;
+      justify-content: center;
+    }
+  }
+
+  &__img {
+    width: 66px;
+  }
+
+  &__title {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 310px;
+    margin-left: 25px;
+    @include body-text;
+    @media only screen and (max-width: 960px) {
+      justify-content: flex-end;
+      margin-left: 0;
+    }
+  }
+
+  &__count {
+    grid-area: count;
+    display: flex;
+    align-items: center;
+
+    @media only screen and (max-width: 960px) {
+      padding-left: 66px;
+    }
+
+    &-number,
+    &-plus,
+    &-minus {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      background-color: #fff;
+      box-sizing: border-box;
+      transition: all 0.1s ease-in;
+    }
+
+    &-plus,
+    &-minus {
+      border: 1px solid #e2e6e9;
+    }
+
+    &-plus:hover,
+    &-minus:hover {
+      border: 1px solid #b4bdc4;
+
+      .icon {
+        fill: #313237;
+      }
+    }
+  }
+
+  &__price {
+    grid-area: price;
+    min-width: 122px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include h2;
+
+    @media only screen and (max-width: 960px) {
+      justify-content: flex-end;
+      min-width: auto;
+    }
+  }
+}

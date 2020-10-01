@@ -1,0 +1,60 @@
+.catalog__sort {
+  margin-bottom: 24px;
+  display: flex;
+
+  @media only screen and (max-width: 960px) {
+    justify-content: center;
+  }
+
+  &-form {
+    display: grid;
+    grid-template-columns: 176px 128px;
+    column-gap: 16px;
+
+    @media only screen and (max-width: 620px) {
+      display: grid;
+      width: 272px;
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  &-title {
+    display: block;
+    @include small-text;
+    color: $c-extra-text;
+    margin-bottom: 4px;
+
+    @media only screen and (max-width: 960px) {
+      text-align: center;
+    }
+  }
+
+  select {
+    padding-right: 25px;
+    appearance: none;
+
+  }
+
+  &-select {
+    position: relative;
+    width: 100%;
+    height: 40px;
+    border: 1px solid #b4bdc4;
+    box-sizing: border-box;
+    padding: 0.6em 1.4em 0.5em 0.8em;
+    background-color: #fff;
+    background-image: url("./arrow-down.svg");
+    background-position: 94% 50% ;
+    background-repeat: no-repeat;
+
+    &-option {
+      color: #89939a;
+      border: none;
+      outline: none;
+    }
+
+    &-option:checked {
+      color: #313237;
+    }
+  }
+}
