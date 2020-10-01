@@ -26,10 +26,10 @@ export const Footer = () => {
           <Link to="/" className="footer__logo">
             <Logo />
           </Link>
-          <ul className="footer__nav-list  nav__list">
+          <ul className="footer__nav-list nav__list">
             <NavList list={footerLinks}/>
           </ul>
-          <ul className="footer__nav-list--mini  nav__icons-list">
+          <ul className="footer__nav-list--mini nav__icons-list">
             <NavIconsList list={footerLinks}/>
           </ul>
           <div className="footer__link">
