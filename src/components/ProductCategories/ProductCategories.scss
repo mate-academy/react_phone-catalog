@@ -1,0 +1,111 @@
+.overlay {
+  background: rgba(0,0,0,0.4);
+  position: absolute;
+  margin: auto;
+  width: 100%;
+  height: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  transition: 0.4s ease;
+}
+
+.products-category {
+  max-width: 1136px;
+  padding: 0 50px;
+  margin: 80px 0;
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(30%, 368px));
+    column-gap: 16px;
+
+    @media only screen and (max-width: 620px) {
+      grid-template-columns: minmax(70%, 368px);
+      row-gap: 32px;
+    }
+  }
+
+  &__link-img-phones {
+    background-image: url("./categories-img/phones.png");
+  }
+
+  &__link {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    padding-bottom: 100%;
+
+    &-img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      cursor: pointer;
+    }
+
+    &-label {
+      color: #fff;
+      font-size: 2vw;
+      text-align: center;
+      position: absolute;
+      margin: auto;
+      width: 70%;
+      height: 40px;
+      line-height: 40px;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      opacity: 0;
+      transform: scale(0);
+      transition: transform 0.5s ease, opacity 0.7s ease;
+    }
+
+    &:hover .overlay {
+      opacity: 1;
+      height: 100%;
+    }
+
+    &:hover &-label {
+      opacity: 10;
+      transform: scale(1);
+      transition: transform 0.5s ease, opacity 1.3s ease;
+    }
+  }
+
+  &__link-img-tablets {
+    background-image: url("./categories-img/tablets.png");
+  }
+
+  &__link-img-accessories {
+    background-image: url("./categories-img/accessories.png");
+
+  }
+
+  &__category-title {
+    @include h3;
+    margin-top: 24px;
+    @media only screen and (max-width: 620px) {
+      text-align: center;
+      font-size: 2.5vw;
+    }
+  }
+
+  &__count {
+    display: block;
+    @include body-text;
+    color: $c-extra-text;
+    margin-top: 4px;
+
+    @media only screen and (max-width: 620px) {
+      text-align: center;
+      font-size: 2.5vw;
+    }
+  }
+}

@@ -1,0 +1,25 @@
+body {
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+}
+
+svg path {
+  fill: inherit;
+  stroke: inherit;
+  stroke-width: inherit;
+}
+
+.icon {
+  fill: #b4bdc4;
+  transition: all 0.1s ease-in;
+}
+
+.icon:hover {
+  fill: #313237;
+}
+
+.icon-logo {
+  fill: $c-main-text;
+}

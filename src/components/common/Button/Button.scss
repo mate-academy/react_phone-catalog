@@ -1,0 +1,61 @@
+.btn {
+  font-family: Mont, sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  padding: 0;
+
+  &__add-to-cart,
+  &__add-to-cart--primary {
+    position: relative;
+    height: 40px;
+    width: 176px;
+    color: #fff;
+    background-color: $bg-c-btn-primary;
+    border: none;
+    transition: all 0.5s ease-out;
+
+    background-image: linear-gradient(transparent 0%, $bg-c-btn-primary 10%);
+    background-size: 200% 200%;
+    background-repeat: no-repeat;
+
+  }
+
+  &__add-to-cart--primary {
+    position: relative;
+    height: 48px;
+    width: 263px;
+  }
+
+  &__add-to-cart.cart-active,
+  &__add-to-cart--primary.cart-active,
+  &__add-to-cart--primary:hover,
+  &__add-to-cart:hover {
+    color: #27ae60;
+    background-color: #fff;
+    border: 1px solid #b4bdc4;
+    background-position: 0 200%;
+  }
+
+  &__add-to-fav,
+  &__add-to-fav--primary {
+    height: 40px;
+    width: 40px;
+    background-image: url("./heart.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #fff;
+    border: 1px solid #b4bdc4;
+  }
+
+  &__add-to-fav--primary {
+    height: 48px;
+    width: 48px;
+  }
+
+  &__add-to-fav--primary.fav-active,
+  &__add-to-fav.fav-active {
+    background-image: url("./heart-like.png");
+  }
+}

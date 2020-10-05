@@ -1,0 +1,86 @@
+.cart {
+  margin: 0 20px 80px;
+
+  &__title {
+    @include h1;
+    margin-bottom: 24px;
+  }
+
+  &__container {
+    display: grid;
+    grid-template-columns: 752px 368px;
+    column-gap: 16px;
+
+    @media only screen and (max-width:1240px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__empty {
+    display: block;
+    @include h1;
+    color: $c-extra-text;
+    min-height: 70vh;
+  }
+
+  .cart__total {
+    padding: 0 24px;
+    border: 1px solid #e2e6e9;
+    box-sizing: border-box;
+    height: 206px;
+
+    &-data {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 110px;
+      border-bottom: 1px solid #e2e6e9;
+    }
+
+    &-price {
+      @include h1;
+    }
+
+    &-count {
+      @include body-text;
+      color: $c-extra-text;
+    }
+
+    &-btn {
+      height: 96px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  &__buy-btn {
+    height: 48px;
+    width: 320px;
+    color: #fff;
+    background-color: $bg-c-btn-primary;
+    border: none;
+    transition: all 0.1s ease-in;
+
+    & a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      text-decoration: none;
+      color: #fff;
+      transition: all 0.1s ease-in;
+    }
+
+    & a:hover {
+      color: #27ae60;
+    }
+  }
+
+  &__buy-btn:hover {
+    background-color: #fff;
+    border: 1px solid #b4bdc4;
+  }
+}

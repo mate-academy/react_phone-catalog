@@ -1,0 +1,76 @@
+.slider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  margin: 1px auto 80px;
+
+  @media only screen and (max-width:550px) {
+    display: none;
+  }
+
+  &__container {
+    display: flex;
+  }
+
+  &__button {
+    position: relative;
+    display: flex;
+    width: 32px;
+    height: 400px;
+    background-color: #fff;
+    border: 1px solid #b4bdc4;
+    box-sizing: border-box;
+    transform: matrix(-1, 0, 0, 1, 0, 0);
+    align-items: center;
+
+    &:active,
+    &:hover {
+      .icon {
+        fill: #313237;
+      }
+    }
+  }
+
+  &__img {
+    &-container {
+      max-width: 1040px;
+      overflow: hidden;
+      margin: 0 16px;
+    }
+
+    &-list {
+      display: flex;
+    }
+
+    &-item {
+      display: flex;
+      width: 100%;
+      max-height: 400px;
+
+    }
+
+    &-visible {
+      object-fit: cover;
+    }
+  }
+
+  &__item-points {
+
+    margin-top: 18px;
+    display: grid;
+    grid-template-columns: repeat(4, 14px);
+    column-gap: 14px;
+  }
+
+  &__item-point--active,
+  &__item-point {
+    height: 4px;
+    width: 100%;
+    background-color: #e2e6e9;
+  }
+
+  &__item-point--active {
+    background-color: #313237;
+  }
+}

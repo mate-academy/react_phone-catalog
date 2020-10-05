@@ -1,0 +1,43 @@
+.catalog {
+
+  &__title {
+    @include h1;
+    margin-bottom: 8px;
+    text-transform: capitalize;
+  }
+
+  &__items-count {
+    @include body-text;
+    color: $c-extra-text;
+    margin-bottom: 40px;
+  }
+
+  &__title,
+  &__items-count {
+    @media only screen and (max-width: 960px) {
+      text-align: center;
+    }
+  }
+
+  &__products {
+    display: grid;
+    grid-template-columns: repeat(4, 272px);
+    column-gap: 16px;
+    row-gap: 40px;
+
+    @media only screen and (max-width: 1240px) {
+      display: grid;
+      grid-template-columns: repeat(3, 272px);
+    }
+
+    @media only screen and (max-width: 960px) {
+      display: grid;
+      grid-template-columns: repeat(2, 272px);
+    }
+
+    @media only screen and (max-width: 620px) {
+      display: grid;
+      grid-template-columns: 272px;
+    }
+  }
+}
