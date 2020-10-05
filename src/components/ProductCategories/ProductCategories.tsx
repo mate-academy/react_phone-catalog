@@ -12,7 +12,7 @@ interface ProductCategoriesProps {
 }
 
 export const ProductCategories: React.FC<ProductCategoriesProps> = ({ goods }) => {
-  const phonesCount = goods.filter(good => good.type === 'phone').length;
+  const phonesCount  = goods.filter(good => good.type === 'phone').length;
   links[0].count = phonesCount;
   const tabletsCount = goods.filter(good => good.type === 'tablet').length;
   links[1].count = tabletsCount;
@@ -26,14 +26,15 @@ export const ProductCategories: React.FC<ProductCategoriesProps> = ({ goods }) =
         <nav className="products-category__nav">
           <ul className="products-category__list">
             {links.map(({title, path, count, cn}) => (
-              <li className="products-category__item" key={title}>
+              <li className="products-category__item">
                 <NavLink to={path}
                   className={`products-category__link`}
                 >
-                  <div className={`products-category__link-img-${cn}`}>
-                    <div className ={`products-category__link-img`}>
-                      <div className={`products-category__link-img_${cn}`} />
-                    </div>
+                  <div className ={`products-category__link-img products-category__link-img-${cn}`}>
+                    <div className="overlay" />
+                    <span className="products-category__link-label">
+                      {title}
+                    </span>
                   </div>
                 </NavLink>
                   <h3 className="products-category__category-title">

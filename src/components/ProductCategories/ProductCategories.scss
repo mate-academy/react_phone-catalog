@@ -1,3 +1,17 @@
+.overlay {
+  background: rgba(0,0,0,0.4);
+  position: absolute;
+  margin: auto;
+  width: 100%;
+  height: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  transition: 0.4s ease;
+}
+
 .products-category {
   max-width: 1136px;
   padding: 0 50px;
@@ -14,9 +28,14 @@
     }
   }
 
+  &__link-img-phones {
+    background-image: url("./categories-img/phones.png");
+  }
+
   &__link {
     display: block;
     position: relative;
+    overflow: hidden;
     width: 100%;
     padding-bottom: 100%;
 
@@ -24,35 +43,49 @@
       position: absolute;
       width: 100%;
       height: 100%;
-      bottom: 0;
-      overflow: hidden;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
       cursor: pointer;
-
-      &-phones {
-        background-color: #FCDBC1;
-      }
-
-      &-tablets {
-        background-color: #8D8D92;
-      }
-
-      &-accessories {
-        background-color: #973D5F;
-      }
-
-
-      &_phones {
-        background-image: url("./categories-img/phones.png");
-      }
-
-      &_tablets {
-        background-image: url("./categories-img/tablets.png");
-      }
-
-      &_accessories {
-        background-image: url("./categories-img/accessories.png");
-      }
     }
+
+    &-label {
+      color: #fff;
+      font-size: 2vw;
+      text-align: center;
+      position: absolute;
+      margin: auto;
+      width: 70%;
+      height: 40px;
+      line-height: 40px;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      opacity: 0;
+      transform: scale(0);
+      transition: transform 0.5s ease, opacity 0.7s ease;
+    }
+
+    &:hover .overlay {
+      opacity: 1;
+      height: 100%;
+    }
+
+    &:hover &-label {
+      opacity: 10;
+      transform: scale(1);
+      transition: transform 0.5s ease, opacity 1.3s ease;
+    }
+  }
+
+  &__link-img-tablets {
+    background-image: url("./categories-img/tablets.png");
+  }
+
+  &__link-img-accessories {
+    background-image: url("./categories-img/accessories.png");
+
   }
 
   &__category-title {
