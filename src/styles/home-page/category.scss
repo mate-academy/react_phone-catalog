@@ -4,6 +4,7 @@
     height: 368px;
     display: flex;
     justify-content: flex-end;
+    overflow: hidden;
     
     &_1 {
       background-color: #fcdbc1;
@@ -13,6 +14,14 @@
     }
     &_3 {
       background-color: #973d5f;
+    }
+  }
+
+  
+  &__img {
+    transition: all $hover-duration;
+    &:hover {
+      transform: scale(1.2);
     }
   }
 

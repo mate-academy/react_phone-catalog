@@ -5,6 +5,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 
   &_small {
     height: 32px;
@@ -19,9 +20,8 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-    width: 10px;
-    height: 6px;
-    display: block;
+    width: 5.33px;
+    height: 9.33px;
 
     &_right {
       transform: matrix(-1, 0, 0, 1, 0, 0);

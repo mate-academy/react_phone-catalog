@@ -14,17 +14,22 @@
   }
 
   &__icon {
+    display: block;
     background-repeat: no-repeat;
     background-size: contain;
     width: 16px;
     height: 16px;
-
+    transition: all 0.5s;
     &_shopping-cart {
       background-image: url(../img/Shopping-cart.svg);
     }
 
     &_favorites {
       background-image: url(../img/like.svg);
+
+      &:focus {
+        background-image: url(../img/like-active.svg);
+      }
     }
   }
 }
