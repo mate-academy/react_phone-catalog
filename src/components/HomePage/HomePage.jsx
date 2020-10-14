@@ -4,9 +4,6 @@ import React from 'react';
 export const HomePage = () => {
   return (
     <div className="home-page">
-
-    
-    
     <section className="section section_promo">
       <div className="promo">
         <button className="promo__slider slider slider_large">
