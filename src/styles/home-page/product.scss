@@ -6,7 +6,7 @@
   justify-content: space-between;
   padding: 32px 24px 24px;
   border: 1px solid #e2e6e9;
- 
+
   &__photo {
     width: 208px;
     height: 208px;
@@ -29,6 +29,24 @@
     display: flex;
   }
 
+  &__button {
+    & > :last-child {
+      display: none;
+    }
+    &:disabled {
+      background-color: #fff;
+      border: 1px solid #e2e6e9;
+      cursor: auto;
+
+      & > :first-child {
+        display: none;
+      }
+      & > :last-child {
+        color: #27ae60;
+        display: block;
+      }
+    }
+  }
   // &__details {
   // padding: 16px 0 8px;
   // }

@@ -3,6 +3,8 @@ import { getProducts } from '../../api/products';
 import { Pagination } from '../Pagination/Pagination';
 import { useHistory, useLocation } from 'react-router-dom';
 import './PhonesPage.scss';
+import { useDispatch, useSelector } from 'react-redux';
+import { actionCreators } from '../../redux/cart';
 
 export const PhonesPage = ({ phones }) => {
   const [itemsOnPage, setItemsOnPage] = useState(phones.length);
@@ -13,8 +15,15 @@ export const PhonesPage = ({ phones }) => {
   const history = useHistory();
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
+  const cartItems = useSelector(state => state.cart.items);
+  const dispatch = useDispatch();
 
-  const parseNumber = useCallback(number =>
+  const addToCart = (item) => {
+    const action = actionCreators.addToCart(item);
+    dispatch(action);
+  }
+
+  const parseNumber = useCallback((number) =>
     number ? parseFloat(number) + ' MB' : null);
 
   useEffect(() => {
@@ -24,7 +33,6 @@ export const PhonesPage = ({ phones }) => {
       buttonsCount.push(i);
     }
     setButtons(buttonsCount);
-
   }, [itemsOnPage]);
 
   useEffect(() => {
@@ -32,16 +40,10 @@ export const PhonesPage = ({ phones }) => {
   }, [startIndex, itemsOnPage]);
 
   function sortItems(sort) {
-    switch (sort) {
-      case 'age':
-        phones.sort((a, b) => a.age - b.age);
-        break;
-      case 'price':
-        phones.sort((a, b) => a.price - b.price);
-        break;
-      default:
-        phones.sort((a, b) => a.name.localeCompare(b.name))
-    }
+
+    phones.sort((a, b) => ((typeof b[sort] === "number") - (typeof a[sort] === "number"))
+    || (a[sort] > b[sort] ? 1 : -1));
+
     searchParams.set('sort', sort);
     history.push({
       search: searchParams.toString()
@@ -51,6 +53,7 @@ export const PhonesPage = ({ phones }) => {
 
   return (
     <>  <section className="store">
+
       <h1 className="store__title">Mobile phones</h1>
       <p className="store__subtitle">{phones.length} models</p>
 
@@ -64,7 +67,7 @@ export const PhonesPage = ({ phones }) => {
               sortItems(e.target.value);
             }}
           >
-            <option value='abc'>Alphabetically</option>
+            <option value='name'>Alphabetically</option>
             <option value="age">Newest</option>
             <option value="price">Cheapest</option>
           </select>
@@ -96,7 +99,7 @@ export const PhonesPage = ({ phones }) => {
           const { imageUrl, name, price, ram, screen, capacity, id } = phone;
           return (
             <div className="store__product product" key={id}>
-              <img src={imageUrl} alt="Apple iPhone 11" className="product__photo"></img>
+              <img src={require(`../../../public/${imageUrl}`)} alt={name} className="product__photo"></img>
               <h3 className="product__title">{name}</h3>
               <div className="price product__price">
                 <p className="price__current">${price}</p>
@@ -116,8 +119,19 @@ export const PhonesPage = ({ phones }) => {
                 </div>
               </div>
               <div className="product__bottom">
-                <button className="product__button button">
-                  <a href="#" className="button__link">Add to cart</a>
+                <button
+                  disabled={cartItems.includes(id)}
+                  className="product__button button"
+                  onClick={() => {
+                    addToCart(id);
+                  }}
+                >
+                  <span>
+                  Add to cart
+                  </span>
+                  <span>
+                  Added to cart
+                  </span>
                 </button>
                 <div className="product__icon-container icon-container">
                   <a href="#">

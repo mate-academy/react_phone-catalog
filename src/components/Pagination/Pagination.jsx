@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import './Pagination.scss';
-import classNames from 'class-names';
+import classNames from 'classnames';
 import { useHistory, useLocation } from 'react-router-dom';
 
 export const Pagination = ({

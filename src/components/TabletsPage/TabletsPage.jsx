@@ -2,6 +2,8 @@ import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { getProducts } from '../../api/products';
 import { useHistory, useLocation } from 'react-router-dom';
 import '../PhonesPage/PhonesPage.scss';
+import { useSelector, useDispatch } from 'react-redux';
+import { actionCreators } from '../../redux/cart';
 
 export const TabletsPage = ({ tablets }) => {
   const [itemsOnPage, setItemsOnPage] = useState(tablets.length);
@@ -11,22 +13,24 @@ export const TabletsPage = ({ tablets }) => {
   const history = useHistory();
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
+  const cartItems = useSelector(state => state.cart.items);
+  const dispatch = useDispatch();
 
-  const parseNumber = useCallback(number =>
-    number ? parseFloat(number) + ' MB' : null);
+  const addToCart = (item) => {
+    const action = actionCreators.addToCart(item);
+    dispatch(action);
+  }
+
+  const parseNumber = useCallback(number => {
+    return number ? parseFloat(number) + ' MB' : null
+  }, []);
 
 
   function sortItems(sort) {
-    switch (sort) {
-      case 'age':
-        tablets.sort((a, b) => a.age - b.age);
-        break;
-      case 'price':
-        tablets.sort((a, b) => a.price - b.price);
-        break;
-      default:
-        tablets.sort((a, b) => a.name.localeCompare(b.name))
-    }
+    
+    tablets.sort((a, b) => ((typeof b[sort] === "number") - (typeof a[sort] === "number"))
+    || (a[sort] > b[sort] ? 1 : -1));
+    
     searchParams.set('sort', sort);
     history.push({
       search: searchParams.toString()
@@ -49,7 +53,7 @@ export const TabletsPage = ({ tablets }) => {
               sortItems(e.target.value);
             }}
           >
-            <option value='abc'>Alphabetically</option>
+            <option value='name'>Alphabetically</option>
             <option value="age">Newest</option>
             <option value="price">Cheapest</option>
           </select>
@@ -81,7 +85,7 @@ export const TabletsPage = ({ tablets }) => {
           const { imageUrl, name, price, ram, screen, capacity, id } = tablet;
           return (
             <div className="store__product product" key={id}>
-              <img src={imageUrl} alt="Apple iPhone 11" className="product__photo"></img>
+              <img src={require(`../../../public/${imageUrl}`)} alt={name} className="product__photo"></img>
               <h3 className="product__title">{name}</h3>
               <div className="price product__price">
                 <p className="price__current">${price}</p>
@@ -101,8 +105,19 @@ export const TabletsPage = ({ tablets }) => {
                 </div>
               </div>
               <div className="product__bottom">
-                <button className="product__button button">
-                  <a href="#" className="button__link">Add to cart</a>
+                <button
+                  className="product__button button"
+                  disabled={cartItems.includes(id)}
+                  onClick={() => {
+                    addToCart(id);
+                  }}
+                >
+                  <span>
+                    Add to cart
+                  </span>
+                  <span>
+                    Added to cart
+                  </span>
                 </button>
                 <div className="product__icon-container icon-container">
                   <a href="#">

@@ -30,7 +30,7 @@ export const Header = () => {
         <a href="#" className="icon-container__icon icon-container__icon_favorites"></a>
       </button>
       <button className="icon-container header__icon-container">
-        <a href="#" className="icon-container__icon icon-container__icon_shopping-cart"></a>
+        <a href="#cart" className="icon-container__icon icon-container__icon_shopping-cart"></a>
       </button>
     </header>
   )

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { } from 'react-redux';
 import './App.scss';
 import { PhonesPage } from './components/PhonesPage/PhonesPage';
 import { HomePage } from './components/HomePage/HomePage';
@@ -7,17 +8,17 @@ import { Header } from './components/Header/Header';
 import { Route } from 'react-router-dom';
 import { Footer } from './components/Footer/Footer';
 import { TabletsPage } from './components/TabletsPage/TabletsPage';
-
+import { Cart } from './components/Cart/Cart';
 const App = () => {
   const [phones, setPhones] = useState([]);
   const [tablets, setTablets] = useState([]);
-
+  const [products, setProducts] = useState([]);
   useEffect(() => {
     getProducts().then(response => {
       setPhones(response.filter(product => product.type === 'phone'));
-    setTablets(response.filter(product => product.type === 'tablet'))
-    
-  })
+      setTablets(response.filter(product => product.type === 'tablet'));
+      setProducts(response);
+    })
   }, []);
 
   return (
@@ -30,9 +31,12 @@ const App = () => {
         {phones.length && <PhonesPage phones={phones} />}
       </Route>
       <Route path="/tablets/">
-        {tablets.length && <TabletsPage tablets={tablets}/> }
+        {tablets.length && <TabletsPage tablets={tablets} />}
       </Route>
-      <Footer/>
+      <Route path="/cart/">
+      {products.length && <Cart products={products}></Cart>}
+      </Route>
+      <Footer />
     </div>
   )
 }

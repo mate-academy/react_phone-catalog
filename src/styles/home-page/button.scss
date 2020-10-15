@@ -2,11 +2,9 @@
   height: 40px;
   width: 176px;
   background-color: $main-text-color;
-
-  &__link {
-    color: #fff;
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 21px;
-  }
+  color: #fff;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  cursor: pointer;
 }
