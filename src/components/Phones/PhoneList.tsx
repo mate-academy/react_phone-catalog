@@ -15,7 +15,7 @@ interface Props {
 
 const PhoneList: FC<Props> = ({ phones, isLoading, fetchPhones, match }) => {
   useEffect(() => {
-    console.log('sosa');
+    console.log('sosasasas');
     fetchPhones();
   }, [fetchPhones]);
 
