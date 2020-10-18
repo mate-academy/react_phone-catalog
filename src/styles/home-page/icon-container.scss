@@ -6,6 +6,7 @@
   background: #fff;
   border-radius: 0;
   cursor: pointer;
+  border-right: 0;
 
   &__circle {
     background-color: #eb5757;
@@ -35,12 +36,11 @@
 
     &_shopping-cart {
       background-image: url(../img/Shopping-cart.svg);
+     
     }
 
     &_favorites {
       background-image: url(../img/like.svg);
-
-    
     }
 
     &_liked {
@@ -53,7 +53,6 @@
 
     & > span {
       animation: buzz 0.5s linear none alternate-reverse;
-     
     }
   }
 }
