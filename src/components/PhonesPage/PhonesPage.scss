@@ -1,10 +1,15 @@
 @import "../../styles/home-page/vars";
 
 .store {
+  margin-top: 64px;
   display: flex;
   flex-direction: column;
   width: 100%;
   padding: 0 calc(50% - 1136px / 2);
+
+  @media screen and(max-width: 1200px) {
+    padding: 0 20px;
+  }
 
   &__inner {
     display: grid;

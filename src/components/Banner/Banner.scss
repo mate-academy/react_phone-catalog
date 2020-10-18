@@ -1,0 +1,86 @@
+@import "../../styles/home-page/vars";
+
+.banner {
+  &__img {
+    min-height: 200px;
+    height: 400px;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: all 0.5s;
+
+    @media screen and(max-width: 767px) {
+      height: 300px;
+    }
+  }
+
+  &__arrow {
+    display: block;
+    background-image: url(../../img/arrow-default.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    width: 5.33px;
+    height: 9.33px;
+
+    &_next {
+      transform: matrix(-1, 0, 0, 1, 0, 0);
+    }
+  }
+}
+
+.slider-banner {
+  .slick-arrow {
+    display: block;
+    padding: 13px;
+    border: 1px solid #b4bdc4;
+    background-color: #fff;
+    cursor: pointer;
+  }
+
+  .slick-slide {
+    padding: 0 16px;
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.slider-banner .slick-slider {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  width: 100%;
+  min-width: 0;
+
+  & .slick-list {
+    min-width: 0;
+    overflow-x: hidden;
+  }
+
+  & .slick-track {
+    display: flex;
+  }
+
+  .slick-dots {
+    display: flex !important;
+    position: absolute;
+    bottom: -10%;
+    left: calc(50% - 140px / 2 );
+    margin: 0 auto;
+
+    & > li > button {
+      font-size: 0;
+      margin: 0 7px;
+      width: 14px;
+      height: 4px;
+      background: #e2e6e9;
+      border: none;
+      cursor: pointer;
+    }
+
+    .slick-active > button {
+      background-color: $main-text-color;
+    }
+  }
+}

@@ -1,6 +1,12 @@
 .header {
   padding: 0 calc(50% - 1440px / 2);
   display: flex;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 2;
+  background-color: #fff;
+  height: 64px;
 
   &__nav {
     border: 1px solid #d3d3d3;

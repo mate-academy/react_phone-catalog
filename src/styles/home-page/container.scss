@@ -3,13 +3,20 @@
   justify-content: center;
 
   &_products {
-    grid-template-columns: repeat(auto-fill, 272px);
-    grid-gap: 16px;
+    grid-template-columns: 1fr;
   }
 
   &_category {
     grid-template-columns: repeat(auto-fill, 368px);
     grid-gap: 16px;
     padding-top: 24px;
+  }
+}
+
+@media screen and(max-width: 500px) {
+  .container {
+    &_category {
+      grid-template-columns: repeat(auto-fill, 300px);
+    }
   }
 }

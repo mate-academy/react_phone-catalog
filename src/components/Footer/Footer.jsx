@@ -1,8 +1,10 @@
 import React from 'react';
+import './Footer.scss';
 
 export const Footer = () => {
+
   return (
-    <div className="section">
+    <div className="section section_footer">
       <footer className="footer">
         <div className="logo footer__logo"></div>
         <nav className="nav footer__nav">
@@ -18,12 +20,17 @@ export const Footer = () => {
             </li>
           </ul>
         </nav>
-        <div className="footer__scroll-back">
-          <p>Back to top</p>
-          <button className="footer__slider slider slider_small">
-            <div className="slider__arrow slider__arrow_top"></div>
-          </button>
-        </div>
+          <div 
+          className="footer__scroll-back" 
+          onClick={() => window.scrollTo(0, 0)} >
+            <p>Back to top</p>
+            <button 
+            type="button" 
+            className="footer__button"
+            >
+              <div className="footer__arrow"></div>
+            </button>
+          </div>
       </footer>
     </div>
   )

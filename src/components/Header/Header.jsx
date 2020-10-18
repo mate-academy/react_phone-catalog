@@ -1,37 +1,38 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import Navbar from '../Navbar/Navbar';
+
 export const Header = () => {
+  const liked = useSelector(state => state.liked.items);
+  const cart = useSelector(state => state.cart.items);
 
   return (
-    <header className="header">
+    <header className="header" id="top">
       <nav className="nav header__nav">
         <div className="logo nav__logo"></div>
-        <ul className="nav__list nav__list_header">
-          <li className="nav__item">
-            <a href="#home" className="nav__link">Home</a>
-          </li>
-          <li className="nav__item">
-            <NavLink to="/phones/" className="nav__link">
-              Phones
-          </NavLink>
-
-
-          </li>
-          <li className="nav__item">
-            <a href="#tablets" className="nav__link">Tablets</a>
-          </li>
-          <li className="nav__item">
-            <a href="#accessories" className="nav__link">Accessories</a>
-          </li>
-        </ul>
+        <Navbar/>
       </nav>
 
-      <button className="icon-container header__icon-container header__icon-container-favorites">
-        <a href="#" className="icon-container__icon icon-container__icon_favorites"></a>
-      </button>
-      <button className="icon-container header__icon-container">
-        <a href="#cart" className="icon-container__icon icon-container__icon_shopping-cart"></a>
-      </button>
+      <NavLink to="/favorites">
+        <button className="icon-container header__icon-container header__icon-container-favorites">
+          <span href="#favorites" className="icon-container__icon icon-container__icon_favorites">
+            {liked.length > 0 &&
+              <span className="icon-container__circle">{liked.length}</span>
+            }
+          </span>
+        </button>
+      </NavLink>
+
+      <NavLink to="cart">
+        <button className="icon-container header__icon-container">
+          <span className="icon-container__icon icon-container__icon_shopping-cart">
+          {cart.length > 0 &&
+              <span className="icon-container__circle">{cart.length}</span>
+            }
+          </span>
+        </button>
+      </NavLink>
     </header>
   )
 }

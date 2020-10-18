@@ -3,8 +3,8 @@ import { getProducts } from '../../api/products';
 import { Pagination } from '../Pagination/Pagination';
 import { useHistory, useLocation } from 'react-router-dom';
 import './PhonesPage.scss';
-import { useDispatch, useSelector } from 'react-redux';
-import { actionCreators } from '../../redux/cart';
+import classNames from 'classnames';
+import { ProductCard } from '../ProductCard/ProductCard';
 
 export const PhonesPage = ({ phones }) => {
   const [itemsOnPage, setItemsOnPage] = useState(phones.length);
@@ -15,16 +15,6 @@ export const PhonesPage = ({ phones }) => {
   const history = useHistory();
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
-  const cartItems = useSelector(state => state.cart.items);
-  const dispatch = useDispatch();
-
-  const addToCart = (item) => {
-    const action = actionCreators.addToCart(item);
-    dispatch(action);
-  }
-
-  const parseNumber = useCallback((number) =>
-    number ? parseFloat(number) + ' MB' : null);
 
   useEffect(() => {
     let numOfPages = Math.ceil(phones.length / itemsOnPage);
@@ -40,9 +30,8 @@ export const PhonesPage = ({ phones }) => {
   }, [startIndex, itemsOnPage]);
 
   function sortItems(sort) {
-
     phones.sort((a, b) => ((typeof b[sort] === "number") - (typeof a[sort] === "number"))
-    || (a[sort] > b[sort] ? 1 : -1));
+      || (a[sort] > b[sort] ? 1 : -1));
 
     searchParams.set('sort', sort);
     history.push({
@@ -93,55 +82,11 @@ export const PhonesPage = ({ phones }) => {
           </select>
         </div>
       </div>
-
       <div className="store__inner">
-        {phones.slice(startIndex, lastIndex).map(phone => {
-          const { imageUrl, name, price, ram, screen, capacity, id } = phone;
-          return (
-            <div className="store__product product" key={id}>
-              <img src={require(`../../../public/${imageUrl}`)} alt={name} className="product__photo"></img>
-              <h3 className="product__title">{name}</h3>
-              <div className="price product__price">
-                <p className="price__current">${price}</p>
-              </div>
-              <div className="product__details details">
-                <div className="details__row details__row_1">
-                  <p className="details__title">Screen</p>
-                  <p className="details__parameter">{screen}</p>
-                </div>
-                <div className="details__row details__row_2">
-                  <p className="details__title">Capacity</p>
-                  <p className="details__parameter">{parseNumber(capacity)}</p>
-                </div>
-                <div className="details__row details__row_3">
-                  <p className="details__title">RAM</p>
-                  <p className="details__parameter">{parseNumber(ram)}</p>
-                </div>
-              </div>
-              <div className="product__bottom">
-                <button
-                  disabled={cartItems.includes(id)}
-                  className="product__button button"
-                  onClick={() => {
-                    addToCart(id);
-                  }}
-                >
-                  <span>
-                  Add to cart
-                  </span>
-                  <span>
-                  Added to cart
-                  </span>
-                </button>
-                <div className="product__icon-container icon-container">
-                  <a href="#">
-                    <span className="icon-container__icon icon-container__icon_favorites"></span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          )
-        }
+        {phones.slice(startIndex, lastIndex).map(phone =>
+          <React.Fragment key={phone.id}>
+            <ProductCard product={phone} />
+          </React.Fragment>
         )}
       </div>
       <Pagination

@@ -2,16 +2,25 @@
 
 .cart {
   padding: 0 calc(50% - 1136px / 2);
-  // display: flex;
+  margin-top: 64px;
+
   &__inner {
     display: grid;
     grid-template-columns: minmax(300px, 752px) minmax(200px, 368px);
     grid-gap: 16px;
+    transition: all 0.5s;
   }
+
   &__title {
+    font-weight: 600;
     font-size: 32px;
     line-height: 41px;
-    padding: 72px 0 24px;
+    padding-top: 40px;
+    margin-bottom: 24px;
+  }
+
+  &__item {
+    margin-bottom: 16px;
   }
 }
 
@@ -20,7 +29,6 @@
   display: grid;
   grid-template-columns: 2fr 1fr;
   grid-gap: 49px;
-  // width: 752px;
   height: 128px;
   padding: 0 49px 0 27px;
   justify-content: space-between;
@@ -38,6 +46,7 @@
     align-items: center;
     grid-template-columns: 66px minmax(60px, 295px);
     grid-gap: 30px;
+    transition: all 0.5s;
   }
   &__buttons {
     display: flex;
@@ -56,6 +65,7 @@
     border: 1px solid #b4bdc4;
     display: flex;
     cursor: pointer;
+    transition: all 0.5s;
 
     & > span {
       display: block;
@@ -70,7 +80,6 @@
       //   transform: rotate(180deg) scale(1.4);
       // }
     }
-
     &_add > span {
       background-image: url("../../img/button_add_active.svg");
     }
@@ -95,6 +104,7 @@
   &__img {
     width: 66px;
     height: 66px;
+    transition: all 0.5s;
   }
 
   &__price {
@@ -102,13 +112,16 @@
     font-weight: 600;
     font-size: 22px;
     line-height: 140%;
+    margin-left: 15px;
+    transition: all 0.5s;
   }
 }
 
 .total {
-  // width: 368px;
   border: 1px solid #e2e6e9;
   padding: 24px;
+  align-self: flex-start;
+  width: 100%;
 
   &__price {
     font-weight: bold;
@@ -143,5 +156,61 @@
     color: #fff;
     font-size: 14px;
     font-weight: 21px;
+  }
+}
+@media screen and(max-width: 1200px) {
+  .cart {
+    padding: 0 20px;
+  }
+}
+
+@media screen and(max-width: 900px) {
+  .cart {
+    &__inner {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+@media screen and(max-width: 767px) {
+  .item {
+    padding: 0 10px;
+    grid-gap: 15px;
+
+    &__main-content {
+      padding-left: 0;
+      grid-gap: 10px;
+    }
+  }
+}
+
+@media screen and(max-width: 450px) {
+  .item {
+    padding: 0 5px;
+    grid-gap: 5px;
+
+    &__main-content {
+      padding-left: 0;
+      grid-gap: 0;
+    }
+
+    &__button {
+      width: 22px;
+      height: 22px;
+    }
+    &__img {
+      width: 46px;
+      height: 46px;
+    }
+    &__price {
+      font-size: 17px;
+      line-height: 140%;
+      margin-left: 5px;
+    }
+
+    &__quantity {
+      width: 22px;
+      line-height: 22px;
+    }
   }
 }

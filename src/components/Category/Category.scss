@@ -1,11 +1,16 @@
+@import "../../styles/home-page/vars";
+
 .category {
+  transition: all 0.5s;
   &__image-wrapper {
-    width: 368px;
-    height: 368px;
+    // height: 100%;
+    // width: 368px;
+    // height: 368px;
     display: flex;
     justify-content: flex-end;
     overflow: hidden;
-    
+    transition: all 0.5s;
+
     &_1 {
       background-color: #fcdbc1;
     }
@@ -17,7 +22,6 @@
     }
   }
 
-  
   &__img {
     transition: all $hover-duration;
     &:hover {
@@ -30,6 +34,7 @@
     font-size: 20px;
     line-height: 26px;
     padding: 24px 0 4px;
+    text-transform: capitalize;
   }
 
   &__items {

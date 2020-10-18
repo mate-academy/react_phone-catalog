@@ -1,0 +1,148 @@
+@import "../../styles/home-page/vars";
+
+.nav {
+  display: flex;
+  align-items: center;
+
+  &__logo {
+    margin-left: 24px;
+    margin-right: 44px;
+  }
+
+  &__list {
+    display: flex;
+    transition: all 0.5s;
+  }
+
+  &__item {
+    margin-right: 24px;
+    padding: 0 20px;
+  }
+
+  &__link {
+    color: #89939a;
+    font-weight: bold;
+    line-height: 11px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    position: relative;
+    transition: color 0.4s ease;
+
+    &::before {
+      content: "";
+      position: absolute;
+      transition: transform 0.4s ease;
+      left: 0;
+      bottom: -24px;
+      width: 100%;
+      height: 3px;
+      background: $main-text-color;
+      transform: scaleX(0);
+    }
+
+    &:hover::before {
+      transform: scaleX(1);
+    }
+
+    &:hover {
+      color: $main-text-color;
+    }
+    &_isActive:before {
+      transform: scaleX(1);
+    }
+
+    &:hover:before {
+      transform: scaleX(1);
+    }
+  }
+}
+
+.burger {
+  width: 2rem;
+  height: 2rem;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 20;
+  display: none;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  @media (max-width: 1024px) {
+    display: flex;
+    justify-content: space-around;
+    flex-flow: column nowrap;
+  }
+}
+
+.burger__item {
+  width: 2rem;
+  height: 0.25rem;
+  background-color: $main-text-color;
+  border-radius: 10px;
+  transform-origin: 1px;
+  transition: all 0.3s linear;
+
+  &_dark {
+    background-color: #000;
+  }
+
+  &_first {
+    background-color: #333;
+    transform: rotate(45deg);
+  }
+
+  &_second {
+    background-color: #333;
+    transform: translateX(100%);
+    opacity: 0;
+  }
+
+  &_third {
+    background-color: #333;
+    transform: rotate(-45deg);
+  }
+}
+
+@media (max-width: 1024px) {
+  header {
+    .nav {
+      &__logo {
+        margin: auto;
+      }
+      &__list {
+        &_header {
+          transform: translate(100%);
+          align-items: center;
+          justify-content: center;
+          flex-flow: column;
+          position: fixed;
+          top: 0;
+          right: 0;
+          height: 100vh;
+          width: 100%;
+        }
+        &_burger {
+          transform: translate(0%);
+          background-color: #fff;
+          z-index: 2;
+        }
+      }
+      &__item {
+        padding: 30px;
+      }
+
+      &__link_header {
+        display: none;
+        font-size: 30px;
+      }
+
+      &__link_burger {
+        padding-bottom: 3px;
+        display: block;
+      }
+    }
+  }
+}

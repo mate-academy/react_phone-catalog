@@ -7,7 +7,7 @@ export const Cart = ({ products }) => {
   const [cart, setCart] = useState(products);
   const cartItems = useSelector(state => state.cart.items);
   const dispatch = useDispatch();
-  useEffect(() => console.log(cartItems))
+
   useEffect(() => {
     setCart(products.filter(product => cartItems.includes(product.id)));
   }, [cartItems]);
@@ -55,8 +55,8 @@ export const Cart = ({ products }) => {
           </div>
 
           <div className="cart__total total">
-            <p className="total__price">$3297</p>
-            <p className="total__title">Total for 3 items</p>
+            <p className="total__price">$ {cart.reduce((acc, el) => acc + el.price, 0)}</p>
+            <p className="total__title">Total for {cart.length} items</p>
             <button className="total__button">Checkout</button>
           </div>
         </div>
