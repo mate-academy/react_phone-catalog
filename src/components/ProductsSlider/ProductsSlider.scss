@@ -1,0 +1,51 @@
+.slider-sale {
+  min-width: 0;
+  .slick-slider {
+    position: relative;
+
+    & > button {
+      width: 32px;
+      height: 32px;
+      border: 1px solid #b4bdc4;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      position: absolute;
+      top: -12%;
+      transition: all 0.5s;
+
+      &:hover {
+        transform: scale(1.2);
+        background-color: #b4bdc4;
+      }
+    }
+
+    & > .slick-next {
+      right: 0;
+    }
+    & > .slick-prev {
+      right: 3rem;
+    }
+    .slick-slide {
+      display: flex;
+      justify-content: center;
+    }
+
+    & .slick-list {
+      width: 100%;
+      min-width: 0;
+      overflow-x: hidden;
+    }
+
+    .slick-track {
+      display: flex;
+      justify-content: space-around;
+
+      .product {
+        margin: 8px;
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+.price {
+  display: flex;
+  font-size: 22px;
+  line-height: 140%;
+  
+  &__current {
+    padding-right: 8px;
+    font-weight: bold;
+  }
+
+  &__old {
+    text-decoration-line: line-through;
+    color: #89939a;
+  }
+}

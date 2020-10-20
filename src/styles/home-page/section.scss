@@ -1,0 +1,56 @@
+.section {
+  padding: 80px calc(50% - 1136px / 2) 0;
+  transition: all 0.5s;
+
+  &_footer {
+    padding: 80px calc(50% - 1440px / 2) 0;
+    width: 100%;
+  }
+
+  &_product-details {
+    padding-top: 176px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 24px;
+  }
+
+  &__buttons {
+    display: flex;
+
+    & > :first-child {
+      margin-right: 16px;
+    }
+  }
+
+  &_hot-prices {
+    padding-top: 104px;
+    display: grid;
+  }
+
+  &_banner {
+    margin-top: 64px;
+    padding-top: 40px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .section {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+@media screen and (max-width: 757px) {
+  .section {
+    padding-top: 40px;
+
+    &_hot-prices {
+      padding-top: 80px;
+    }
+  }
+}

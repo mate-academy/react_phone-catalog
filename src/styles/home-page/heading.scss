@@ -1,0 +1,16 @@
+.heading {
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  transition: all 0.5s;
+
+  &_product-details {
+    padding-bottom: 50px;
+  }
+
+  @media screen and(max-width: 500px) {
+    font-size: 20px;
+    line-height: 32px;
+  }
+}

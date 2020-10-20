@@ -1,0 +1,51 @@
+@import "../../styles/home-page/vars";
+
+.category {
+  transition: all 0.5s;
+
+  &__image-wrapper {
+    width: 368px;
+    height: 368px;
+    display: flex;
+    justify-content: flex-end;
+    overflow: hidden;
+    transition: all 0.5s;
+    
+    @media screen and(max-width: 500px) {
+      width: 100%;
+      height: 100%;
+    }
+
+    &_1 {
+      background-color: #fcdbc1;
+    }
+    &_2 {
+      background-color: #8d8d92;
+    }
+    &_3 {
+      background-color: #973d5f;
+    }
+  }
+
+  &__img {
+    transition: all $hover-duration;
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  &__title {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 26px;
+    padding: 24px 0 4px;
+    text-transform: capitalize;
+  }
+
+  &__items {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #89939a;
+  }
+}

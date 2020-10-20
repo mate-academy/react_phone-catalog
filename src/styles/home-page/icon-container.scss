@@ -1,0 +1,66 @@
+.icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #d3d3d3;
+  background: #fff;
+  border-radius: 0;
+  cursor: pointer;
+
+  &__circle {
+    background-color: #eb5757;
+    width: 14px;
+    height: 14px;
+    display: block;
+    font-weight: 600;
+    font-size: 9px;
+    line-height: 14px;
+    color: #fff;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 1;
+    right: -50%;
+    bottom: 50%;
+    transition: all 0.5s;
+  }
+
+  &__icon {
+    display: block;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 16px;
+    height: 16px;
+    transition: all 0.5s;
+    position: relative;
+
+    &_shopping-cart {
+      background-image: url(../img/Shopping-cart.svg);
+     
+    }
+
+    &_favorites {
+      background-image: url(../img/like.svg);
+    }
+
+    &_liked {
+      background-image: url(../img/like-active.svg);
+    }
+  }
+
+  &:hover > span {
+    transform: scale(1.2);
+
+    & > span {
+      animation: buzz 0.5s linear none alternate-reverse;
+    }
+  }
+}
+
+@keyframes buzz {
+  50% {
+    transform: translateX(3px) rotate(30deg);
+  }
+  100% {
+    transform: translateX(-3px) rotate(-30deg);
+  }
+}

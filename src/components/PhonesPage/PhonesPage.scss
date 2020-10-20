@@ -1,0 +1,81 @@
+@import "../../styles/home-page/vars";
+
+.store {
+  margin-top: 64px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0 calc(50% - 1136px / 2);
+
+  @media screen and(max-width: 1200px) {
+    padding: 0 20px;
+  }
+
+  &__inner {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(auto-fit, 272px);
+    justify-content: center;
+    grid-gap: 16px;
+  }
+
+  &__title {
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 41px;
+    color: $main-text-color;
+    margin-top: 40px;
+    margin-bottom: 8px;
+  }
+
+  &__subtitle {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    margin-bottom: 40px;
+    color: #89939a;
+  }
+
+  &__options {
+    display: flex;
+    margin-bottom: 24px;
+
+    & > :first-child {
+      margin-right: 16px;
+    }
+
+    & > div {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  &__pagination {
+    margin: 40px 0 0;
+  }
+}
+
+.options {
+  &__title {
+    color: #89939a;
+    padding-bottom: 4px;
+  }
+
+  &__select {
+    border: 1px solid #b4bdc4;
+    font-family: inherit;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    color: $main-text-color;
+    height: 40px;
+    width: 176px;
+    padding: 0 12px;
+    cursor: pointer;
+
+    &_short {
+      width: 128px;
+    }
+  }
+}

@@ -1,0 +1,29 @@
+.header {
+  display: flex;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 2;
+  background-color: #fff;
+  height: 64px;
+
+  &__nav {
+    border: 1px solid #d3d3d3;
+    border-left: 0;
+    width: 100%;
+  }
+
+  &__icon-container {
+    width: 64px;
+    height: 64px;
+    border-right: 0;
+  }
+}
+
+@media screen and(max-width: 767px) {
+  .header {
+    &__nav {
+      display: none;
+    }
+  }
+}

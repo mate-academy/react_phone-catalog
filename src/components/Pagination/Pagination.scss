@@ -1,0 +1,50 @@
+@import "../../styles/home-page/vars";
+
+.pagination {
+  display: flex;
+  align-self: center;
+  
+  &__button {
+    width: 32px;
+    height: 32px;
+    background-color: transparent;
+    border: 1px solid #e2e6e9;
+    margin: 0 4px;
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    cursor: pointer;
+    transition: background-color 0.5s;
+
+    &:disabled {
+      cursor: auto;
+    }
+
+    &_active {
+      background-color: $main-text-color;
+      color: #fff;
+    }
+    &_prev {
+      margin: 0 12px 0 0;
+    }
+
+    &_next {
+      margin: 0 0 0 12px;
+      transform: rotate(180deg);
+    }
+
+    &_prev,
+    &_next {
+      display: flex;
+      background-image: url(../../img/arrow-default.svg);
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    &_prev:disabled,
+    &_next:disabled {
+      background-image: url(../../img/arrow-disabled.svg);
+    }
+  }
+}
