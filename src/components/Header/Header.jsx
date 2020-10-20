@@ -8,7 +8,7 @@ export const Header = () => {
   const cart = useSelector(state => state.cart.items);
 
   return (
-    <header className="header" id="top">
+    <header className="header">
       <nav className="nav header__nav">
         <div className="logo nav__logo"></div>
         <Navbar/>

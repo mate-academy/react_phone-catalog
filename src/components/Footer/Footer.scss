@@ -3,6 +3,7 @@
 .footer {
   width: 100%;
   display: flex;
+  padding: 0 152px;
   justify-content: space-between;
   align-items: center;
   font-size: 12px;
@@ -82,3 +83,15 @@
     transform: translateX(-3px) rotate(-30deg);
   }
 }
+
+@media screen and(max-width: 767px) {
+  .footer {
+    padding: 0 50px;
+  }
+}
+@media screen and(max-width: 500px) {
+  .footer {
+    padding: 0 10px;
+  }
+}
+

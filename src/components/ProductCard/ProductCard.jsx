@@ -3,12 +3,15 @@ import classNames from 'classnames';
 import { useDispatch, useSelector } from 'react-redux';
 import { actionCreators } from '../../redux/cart';
 import { actionCreators as actionCreatorsFavorites } from '../../redux/favourites';
+import { Link, useRouteMatch, Route } from 'react-router-dom';
+import {ProductDetails } from '../ProductDetails/ProductDetails';
 
 export const ProductCard = ({ product }) => {
   const cartItems = useSelector(state => state.cart.items);
   const likedItems = useSelector(state => state.liked.items);
   const dispatch = useDispatch();
-
+  const match = useRouteMatch();
+  // console.log(match)
   const addToCart = (item) => {
     const action = actionCreators.addToCart(item);
     dispatch(action);
@@ -31,7 +34,14 @@ export const ProductCard = ({ product }) => {
 
   return (
     <div className="store__product product">
-      <img src={require(`../../../public/${imageUrl}`)} alt={name} className="product__photo"></img>
+      <Link to={match.url + id}>
+        <img
+          src={require(`../../../public/${imageUrl}`)}
+          alt={name}
+          className="product__photo">
+        </img>
+      </Link>
+   
       <h3 className="product__title">{name}</h3>
       <div className="price product__price">
         <p className="price__current">${price * (100 - product.discount) / 100}</p>

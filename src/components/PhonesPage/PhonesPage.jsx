@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { getProducts } from '../../api/products';
 import { Pagination } from '../Pagination/Pagination';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useHistory, useLocation, useRouteMatch } from 'react-router-dom';
 import './PhonesPage.scss';
 import classNames from 'classnames';
 import { ProductCard } from '../ProductCard/ProductCard';
@@ -14,6 +14,8 @@ export const PhonesPage = ({ phones }) => {
   const [sortOrder, setSortOrder] = useState('abc');
   const history = useHistory();
   const location = useLocation();
+  const match = useRouteMatch();
+  console.log(match)
   const searchParams = new URLSearchParams(location.search);
 
   useEffect(() => {

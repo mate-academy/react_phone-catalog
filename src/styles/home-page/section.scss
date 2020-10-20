@@ -4,6 +4,13 @@
 
   &_footer {
     padding: 80px calc(50% - 1440px / 2) 0;
+    width: 100%;
+  }
+
+  &_product-details {
+    padding-top: 176px;
+    display: flex;
+    flex-direction: column;
   }
 
   &__top {
