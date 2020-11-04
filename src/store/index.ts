@@ -2,7 +2,7 @@ import { createStore, AnyAction, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
-import { getPhones, getPhone } from '../api';
+import { getPhones, getPhone } from '../api/api';
 import { Phones, Phone } from '../interfaces/interfaces';
 
 const actions = {
@@ -57,9 +57,7 @@ export const loadPhones = () => {
   return (dispatch: (arg0: { type: string; phones?: Phones[] }) => void) => {
     dispatch(startLoading());
 
-    return getPhones<Phones>()
-      .then(phones => dispatch(setPhones(phones)))
-      .catch(() => hasError());
+    return dispatch(setPhones(getPhones()));
   };
 };
 
@@ -67,9 +65,10 @@ export const loadPhone = (id: string) => {
   return (dispatch: (arg0: { type: string; phone?: Phone }) => void) => {
     dispatch(startLoading());
 
-    return getPhone<Phone>(id)
-      .then(phone => dispatch(setPhone(phone)))
-      .catch(() => hasError());
+    return dispatch(setPhone(getPhone(id)));
+    // return getPhone<Phone>(id)
+    //   .then(phone => dispatch(setPhone(phone)))
+    //   .catch(() => hasError());
   };
 };
 
