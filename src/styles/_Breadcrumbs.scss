@@ -1,0 +1,36 @@
+.breadcrumbs {
+  margin: 24px 0 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  font-family: Mont, sans-serif;
+  font-style: normal;
+
+  :nth-child(n) {
+    margin-right: 14px;
+  }
+
+  &__home {
+    width: 16px;
+    height: 17px;
+  }
+
+  &__title {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+
+    text-decoration: none;
+
+    color: $grey-main;
+  }
+
+  &__subtitle {
+    font-size: 12px;
+    line-height: 15px;
+
+    color: $grey-main;
+  }
+}

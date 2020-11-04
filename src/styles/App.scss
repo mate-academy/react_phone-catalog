@@ -1,0 +1,28 @@
+@import "Utils";
+@import "Header";
+@import "Home";
+@import "Slider";
+@import "Title";
+@import "SliderButtons";
+@import "ProductSlider";
+@import "Category";
+@import "Footer";
+@import "Breadcrumbs";
+@import "Phones";
+@import "ProductCard";
+@import "Tablets";
+@import "Accessories";
+@import "Favs";
+@import "Cart";
+@import "SearchBar";
+@import "Phone";
+
+* {
+  padding: 0;
+  margin: 0;
+
+  box-sizing: border-box;
+
+  font-family: Mont, sans-serif;
+  font-style: normal;
+}

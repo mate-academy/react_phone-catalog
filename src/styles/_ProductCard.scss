@@ -1,0 +1,167 @@
+.productCard {
+  padding: 24px;
+  margin-right: 16px;
+
+  display: flex;
+  flex-direction: column;
+
+  width: 272px;
+  height: 507px;
+
+  color: $dark-main;
+
+  border: 1px solid $grey-light;
+
+  cursor: pointer;
+
+  transition: box-shadow 0.3s;
+
+  &:hover {
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+  }
+
+  &__link {
+    display: flex;
+    flex-direction: column;
+
+    color: inherit;
+    text-decoration: none;
+  }
+
+  &__img-container {
+    margin: 8px 0 24px;
+
+    width: 208px;
+    height: 208px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__img {
+    height: 208px;
+  }
+
+  
+  &__img-container:hover ~ &__title {
+    text-decoration: underline;
+  }
+
+  &__title {
+    margin-bottom: 7px;
+    min-height: 42px;
+
+    font-size: 14px;
+    line-height: 21px;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__discount {
+    padding-bottom: 7px;
+    margin-bottom: 16px;
+
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 140%;
+
+    border-bottom: 1px solid $grey-light;
+  }
+
+  &__price {
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 28px;
+    text-decoration-line: line-through;
+
+    color: $grey-main;
+  }
+
+  &__description {
+    margin-bottom: 8px;
+
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__info {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+
+    color: $grey-main;
+  }
+
+  &__characteristics {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+
+    color: $dark-main;
+  }
+
+  &__btn {
+    margin-top: 16px;
+
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__btn--cart {
+    margin-right: 8px;
+    width: 176px;
+    height: 40px;
+
+    font-size: 14px;
+    line-height: 21px;
+
+    color: #fff;
+    background-color: $dark-main;
+    border: none;
+    outline: none;
+
+    cursor: pointer;
+
+    transition: opacity 0.3s;
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+
+  &__btn--added {
+    margin-right: 8px;
+    width: 176px;
+    height: 40px;
+
+    font-size: 14px;
+    line-height: 21px;
+
+    color: #27ae60;
+    background-color: #fff;
+    border: 1px solid $grey-light;
+
+    cursor: pointer;
+  }
+
+  &__btn--favs {
+    padding-top: 4px;
+    width: 40px;
+    height: 40px;
+
+    background-color: #fff;
+    border: 1px solid #b4bdc4;
+    outline: none;
+
+    cursor: pointer;
+
+    transition: opacity 0.3s;
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+}

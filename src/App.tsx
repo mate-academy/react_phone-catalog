@@ -1,10 +1,13 @@
 import React from 'react';
+import Header from './components/Header';
+import Footer from './components/Footer';
 
-import './App.scss';
+import './styles/App.scss';
 
 const App = () => (
   <div className="App">
-    <h1>React Phone Catalog</h1>
+    <Header />
+    <Footer />
   </div>
 );
 

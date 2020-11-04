@@ -1,9 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { HashRouter } from 'react-router-dom';
 
 import App from './App';
+import ScrollToTop from './components/ScrollToTop';
+import store from './store';
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('root'),
+const Root = () => (
+  <Provider store={store}>
+    <HashRouter>
+      <ScrollToTop />
+      <App />
+    </HashRouter>
+  </Provider>
 );
+
+ReactDOM.render(<Root />, document.getElementById('root'));
