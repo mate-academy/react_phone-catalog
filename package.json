@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "private": true,
   "keywords": [],
-  "author": "Mate Academy",
+  "author": "Kira Marks",
   "license": "GPL-3.0",
   "dependencies": {
     "@types/classnames": "^2.2.10",
@@ -17,6 +17,7 @@
     "@types/redux-thunk": "^2.1.0",
     "classnames": "^2.2.6",
     "node-sass": "^4.14.1",
+    "normalize.css": "^8.0.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.0",

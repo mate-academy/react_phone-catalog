@@ -2,7 +2,7 @@ import React, { useCallback, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getPrice } from '../../redux';
-import { resetCart } from '../../redux/cart';
+import { actions } from '../../redux/cart';
 
 export const CartTotal = ({ cartItems }: CartTotalProps) => {
   const price = useSelector(getPrice);
@@ -14,7 +14,7 @@ export const CartTotal = ({ cartItems }: CartTotalProps) => {
   );
 
   const handleResetCart = useCallback(
-    () => dispatch(resetCart()),
+    () => dispatch(actions.resetCart()),
     [dispatch],
   );
 
