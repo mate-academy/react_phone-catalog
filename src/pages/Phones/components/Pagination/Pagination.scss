@@ -1,0 +1,60 @@
+@import '../../../../helpers/utils/variables.scss';
+@import '../../../../helpers/utils/mixins.scss';
+
+.ProductsList-Pagination {
+  margin-bottom: 80px;
+}
+
+.Pagination {
+  display: flex;
+  justify-content: center;
+}
+
+.Pagination-SwitchArrow {
+  cursor: pointer;
+  @include icon-wrapper(32px);
+  background-color: #fff;
+  border: $border-grey;
+}
+
+.Pagination-SwitchArrow:hover {
+  border: $border-active;
+}
+
+.Pagination-SwitchArrow_inactive:hover {
+  border: $border-grey;
+  cursor: not-allowed;
+}
+
+// .Pagination-SwitchArrow_left {
+//   margin-right: 16px;
+// }
+
+// .Pagination-SwitchArrow_right {
+//   margin-left: 8px;
+// }
+
+
+.Pagination-ValuesBlock {
+  margin: 0 16px;
+}
+
+.Pagination-Value:not(:last-child) {
+  margin-right: 8px;
+}
+
+.Pagination-Value {
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  @include icon-wrapper(32px);
+  background-color: #fff;
+  border: $border-grey;
+  color: #000;
+}
+
+.Pagination-Value:hover, .Pagination-Value_active  {
+  background-color: $active-link-color;
+  color: #fff;
+  border: none;
+}

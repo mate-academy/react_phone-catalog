@@ -1,0 +1,21 @@
+@import '../../../helpers//utils/variables';
+
+.Favourites {
+
+  &-Quantity {
+    margin-top: 8px;
+    font-size: 14px;
+    color: $font-color;
+    line-height: 21px;
+  }
+
+  &-Products {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+}
+
+.Main-Favourites {
+  margin-top: 40px;
+}

@@ -1,0 +1,137 @@
+@import '../../../../helpers/utils/variables.scss';
+@import '../../../../helpers/utils/mixins.scss';
+
+.ProductCard-Wrapper {
+  margin-bottom: 40px;
+}
+
+.ProductCard-Wrapper:not(:last-child) {
+  margin-right: 16px;
+  @media (max-width: 1230px) {
+    margin: 0;
+  }
+}
+
+.ProductCard {
+  box-sizing: border-box;
+  padding: 32px 24px 24px;
+  width: $product-card-width;
+  height: $product-card-height;
+  border: $border;
+  display: flex;
+  flex-direction: column;
+}
+
+.ProductCard-Link {
+  text-decoration: none;
+}
+
+.ProductCard-Image {
+  margin: 0px 8px;
+  height: 208px;
+  width: 208px;
+}
+
+.ProductCard-Title {
+  margin-top: 24px;
+  margin-bottom: 8px;
+  height: 34px;
+  font-size: 14px;
+  font-weight: 500;
+  color: $product-card-black-font-color;
+}
+
+.Price-FinalPrice {
+  margin-right: 8px;
+  font-size: 22px;
+  font-weight: 700;
+  color: $product-card-black-font-color;
+  font-weight: bold;
+}
+
+.Price-WithoutDiscount {
+  font-size: 22px;
+  font-weight: 500;
+  color: $product-card-grey-font-color;
+  line-height: 31px;
+}
+
+.ProductCard-Price {
+  height: 31px;
+  position: relative;
+  margin-bottom: 8px;
+}
+
+.Price::after {
+  position: absolute;
+  content: '';
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: $white-color;
+  bottom: -8px;
+}
+
+.Info {
+  display: flex;
+  flex-direction: column;
+}
+
+.ProductCard-Info {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.Info-Block {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Info-Block:not(:first-child) {
+  margin-top: 8px;
+}
+
+.Info-Name {
+  font-size: 12px;
+  color: $product-card-grey-font-color;
+}
+
+.Info-Value {
+  font-size: 12px;
+  color: $product-card-black-font-color;
+}
+
+.Actions {
+  display: flex;
+}
+
+.Actions-CartButton {
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600px;
+  width: 176px;
+  height: 40px;
+  background-color: $product-card-black-font-color;
+  color: #fff;
+  margin-right: 8px;
+}
+
+.Actions-CartButton:hover {
+  box-shadow: 0px 3px 13px 0px #17203142;
+
+}
+
+.Actions-CartButton_active {
+  background-color: #fff;
+  border: $border;
+  color: $green-font-color;
+}
+
+.Actions-FavouriteButton {
+  box-sizing: border-box;
+  display: flex;
+  @include icon-wrapper (40px);
+  justify-content: center;
+  align-items: center;
+  border: $border
+}

@@ -1,0 +1,77 @@
+@import '../../../../helpers/utils/variables.scss';
+
+.Page-Slider {
+  position: relative;
+  margin-top: 40px;
+}
+
+.Slider {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  &-Image {
+    margin: 0px $slider-right-margin 18px;
+    box-sizing: border-box;
+    width: 1040px;
+    height: 400px;
+    object-fit: cover;
+    border: $border;
+
+    @media (max-width: 1230px) {
+      width: 72%;
+    }
+  }
+
+  &-Arrow {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+    width: 32px;
+    background-color: #fff;
+    border: $border;
+    cursor: pointer;
+  }
+
+  &-Arrow:hover {
+    border: $border-active;
+  }
+
+  &-Arrow:focus {
+    outline: none;
+  }
+
+  &-Icons {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+  }
+
+  &-Icon {
+    margin-right: 14px;
+    padding: 0;
+    width: 14px;
+    height: 4px;
+    border-radius: 0;
+    border: none;
+    background-color: $white-color;
+    cursor: pointer;
+  }
+
+  &-Icon_active {
+    background-color: $active-link-color;
+  }
+
+  &-Icon:focus {
+    border: none;
+    outline: none;
+  }
+}
+
+.Slider {
+  @media (max-width: 500px) {
+    display: none;
+  }
+}

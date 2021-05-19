@@ -1,0 +1,87 @@
+@import '../../../../helpers/utils/variables.scss';
+
+.Cart-Product:not(:first-child) {
+  margin-top: 16px;
+}
+
+.Cart-Product:last-child {
+  margin-bottom: 87px;
+}
+
+.Product {
+  box-sizing: border-box;
+  padding: 0 40px 0 28px;
+  display: flex;
+  align-items: center;
+  height: 128px;
+  width: 752px;
+  border: $border;
+
+  &-DeleteButton {
+    margin-right: 35px;
+    font-size: 12px;
+    background-color: #fff;
+    color: #E2E6E9;
+    cursor: pointer;
+  }
+
+  &-DeleteButton:hover {
+    color: $active-link-color;
+  }
+
+  &-Image {
+    margin-right: 31px;
+    height: 66px;
+    width: 66px;
+  }
+
+  &-Title {
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  &-Price {
+    font-size: 22px;
+    line-height: 31px;
+  }
+}
+
+.Quantity-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  flex-grow: 1;
+}
+
+.Product-Quantity {
+  margin-right: 43px;
+}
+
+.Quantity {
+
+  &-Button {
+    height: 32px;
+    width: 32px;
+    background-color: #fff;
+    border: $border;
+    cursor: pointer;
+  }
+
+  &-Button:nth-child(1) {
+    margin-right: 14px;
+  }
+
+  &-Button:hover {
+    border: $border-grey;
+  }
+
+  &-Value {
+    font-size: 14px;
+    line-height: 21px;
+    margin-right: 14px;
+  }
+
+  &-IncreaseButton {
+    height: 32px;
+    width: 32px;
+  }
+}

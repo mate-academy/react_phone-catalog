@@ -1,0 +1,49 @@
+@import '../../../helpers/utils/variables';
+
+.Images {
+  display: flex;
+  height: 560px;
+
+  &-Small {
+    display: flex;
+    flex-direction: column;
+    perspective: 900px;
+    margin-right: 27px;
+  }
+
+  &-Big {
+    display: flex;
+    align-items: center;
+    height: 464px;
+    width: 464px;
+  }
+
+  &-Button {
+    display: inline-flex;
+    margin-bottom: 16px;
+    background-color: #fff;
+    cursor: pointer;
+    border: $inactive-border-color;
+  }
+
+  &-SmallImage {
+    height: 80px;
+    width: 80px;
+    z-index: 1;
+  }
+
+  &-BigImage {
+    height: 442px;
+    width: 442px;
+  }
+  
+  &-Button:hover {
+    transform: translate3D(0px, 0px, 40px);
+    transition: 0.5s;
+    border: 1px solid #000;
+  }
+  
+  &-Button_active {
+    border: 1px solid #000;
+  }
+}
