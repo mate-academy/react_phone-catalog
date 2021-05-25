@@ -10,23 +10,13 @@ export type loadingActionType = {
   type: string;
 };
 
-const initialState = {
-  isLoading: false,
-};
-
-export const loadingReducer = (state = initialState, action: loadingActionType) => {
+export const loadingReducer = (state = false, action: loadingActionType) => {
   switch (action.type) {
     case START:
-      return {
-        ...state,
-        isLoading: true,
-      };
+      return true;
 
     case FINISH:
-      return {
-        ...state,
-        isLoading: false,
-      };
+      return false;
 
     default:
       return state;

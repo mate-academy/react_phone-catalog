@@ -1,0 +1,19 @@
+.Main {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  flex-grow: 1;
+
+  &-Container {
+    margin: 0 152px;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+}
+
+.Favourites-Title {
+  margin-top: 40px;
+}

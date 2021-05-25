@@ -1,0 +1,17 @@
+@import '../../helpers/utils/variables.scss';
+@import '../../helpers/utils/mixins';
+
+.Buttons-FavouriteButton {
+  box-sizing: border-box;
+  background-color: #fff;
+  display: flex;
+  @include icon-wrapper (48px);
+  justify-content: center;
+  align-items: center;
+  border: $border;
+  cursor: pointer;
+}
+
+.Buttons-FavouriteButton:hover {
+  border: $border-active;
+}

@@ -1,0 +1,40 @@
+@import '../../helpers/utils/variables';
+
+.TechSpecs {
+
+  &-Block {
+    margin-top: 8px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+  }
+  
+  &-Block:first-child {
+    margin-top: 25px;
+  }
+
+  &-Name {
+    color: #89939A;
+    font-style: normal;
+  }
+  
+  &-Value {
+    color: #313237;
+  }
+
+
+  &-Title {
+    margin-top: 115px;
+    font-size: 22px;
+  }
+
+  &-Title::after {
+    content: '';
+    display: block;
+    margin-top: 16px;
+    width: 100%;
+    height: 1px;
+    background-color: $white-color;
+  }
+}
+

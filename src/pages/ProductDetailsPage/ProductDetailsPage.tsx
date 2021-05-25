@@ -1,12 +1,21 @@
 import React from 'react';
-import { Header } from '../Home/components/Header/Header';
-import { Main } from './Main/Main';
-import { Footer } from '../Home/components/Footer/Footer';
+import { Header } from '../../components/Header/Header';
+import { ProductDetails } from '../../components/ProductDetails/ProductDetails';
+import { ProductsSlider } from '../../components/ProductsSlider/ProductsSlider';
+import { Footer } from '../../components/Footer/Footer';
+import './ProductDetailsPage.scss';
 
 export const ProductDetailsPage = () => (
   <div className="Page">
     <Header />
-    <Main />
+
+    <main className="Main">
+      <div className="Main-Container">
+        <ProductDetails />
+        <ProductsSlider sliderType="You may also like" />
+      </div>
+    </main>
+
     <Footer />
   </div>
 );

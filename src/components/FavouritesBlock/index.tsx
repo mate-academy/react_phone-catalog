@@ -1,0 +1,1 @@
+export { FavouritesBlock } from './FavouritesBlock';

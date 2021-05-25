@@ -75,3 +75,23 @@ export type ProductDetailsType = {
   connectivity: Connectivity;
   additionalFeatures: string;
 };
+
+export type PaginationType = {
+  itemsOnPage: string;
+  currentPage: string;
+  onNextPage: () => void;
+  onPreviousPage: () => void;
+  onCertainPage: (page: number) => void;
+  products: Products;
+};
+
+export type TechSpecsType = {
+  screen: string;
+  resolution: string;
+  camera: string;
+  flash: string;
+  ram: string;
+  bluetooth: string;
+  cpu: string;
+  wifi: string;
+};

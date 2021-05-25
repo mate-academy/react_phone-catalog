@@ -106,3 +106,5 @@ export const PRODUCT_CARD_INFO = [
     property: 'ram',
   },
 ];
+
+export const PRODUCTS_PER_SLIDER_PAGE = 4;

@@ -1,0 +1,59 @@
+@import '../../helpers/utils/variables.scss';
+@import '../../helpers/utils/mixins.scss';
+
+
+.ProductList-List {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.ProductCard-Wrapper:nth-child(4n) {
+  margin-right: 0;
+}
+
+.ProductList-TitleRow {
+  margin-top: 40px;
+}
+
+.ProductList-Title {
+  color: $active-link-color;
+}
+
+.ProductList-Quantity {
+  font-size: 12px;
+  color: $font-color;
+}
+
+.ProductList-Actions {
+  margin-top: 40px;
+  display: flex;
+}
+
+.Actions-Block {
+  display: flex;
+  flex-direction: column;
+  margin-right: 16px;
+}
+
+.Actions-Name {
+  font-size: 12px;
+  color: $font-color;
+}
+
+.Actions-Select {
+  font-family: Mont, sans-serif;
+  height: 40px;
+  width: 176px;
+  border: $border-grey;
+  color: $active-link-color;
+  font-size: 14px;
+}
+
+.Actions-Select:focus {
+  outline: none;
+}
+
+.ProductList-List {
+  margin-top: 24px;
+}
+
