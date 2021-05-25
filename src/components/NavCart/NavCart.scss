@@ -1,0 +1,49 @@
+@import '../../helpers/utils/variables';
+@import '../../helpers/utils/mixins.scss';
+
+.Header {
+
+  &-Cart {
+    position: relative;
+  }
+  
+  &-Cart_active::after {
+    display: flex;
+    position: absolute;
+    content: "";
+    height: 3px;
+    width: 100%;
+    background: $active-link-color;
+    bottom: 0;
+  }
+  
+  &-CartCounter {
+    font-size: 9px;
+    color: #fff;
+    text-align: center;
+    box-sizing: border-box;
+    position: absolute;
+    height: 14px;
+    width: 14px;
+    background: #EB5757;
+    border-radius: 100%;
+    border: 2px solid #fff;
+    bottom: 50%;
+    left: 49%;
+  }
+}
+
+
+
+.Container {
+  box-sizing: border-box;
+  display: flex;
+  @include icon-wrapper ($header-height);
+  justify-content: center;
+  align-items: center;
+  border-left: $border;
+
+  @media (max-width: 768px) {
+    width: 40px;
+  }
+}

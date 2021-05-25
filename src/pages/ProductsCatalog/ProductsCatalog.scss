@@ -1,0 +1,21 @@
+.Page {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.Main {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  flex-grow: 1;
+
+  &-Container {
+    margin: 0 152px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+}
