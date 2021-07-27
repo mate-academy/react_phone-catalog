@@ -13,11 +13,11 @@
   border-radius: 50%;
   width:  32px;
   height:  32px;
-  border: solid #F0F0F0 1px;
+  border: solid var(--elements-color) 1px;
 }
 
 .button_selected {
-  border-color: #313237;
+  border-color: var(--primary-color);
 }
 
 .list__button::after {
@@ -26,9 +26,9 @@
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  background-color: #313237;
+  background-color: var(--primary-color);
 }
 
 .list__button:hover {
-  border-color: #B4BDC4;
+  border-color: var(--icons-color);
 }
