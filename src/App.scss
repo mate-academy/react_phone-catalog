@@ -43,9 +43,8 @@ html {
 
   display: flex;
   flex-direction: column;
-  // position: relative;
   width: 100%;
-  // overflow: hidden;
+
   min-height: calc(100vh - var(--header-height) - var(--footer-height));
   max-width: 1440px;
   padding: 25px 152px 80px 152px;
@@ -113,7 +112,7 @@ html {
 }
 
 .h3 {
-  font-family: Mont;
+  font-family: 'Mont';
   font-style: normal;
   font-weight: 600;
   font-size: 20px;
@@ -132,7 +131,6 @@ html {
   font-weight: bold;
   font-size: 12px;
   line-height: 11px;
-  /* identical to box height, or 92% */
 
   letter-spacing: 0.04em;
   text-transform: uppercase;
