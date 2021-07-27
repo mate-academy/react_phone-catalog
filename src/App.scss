@@ -1,18 +1,18 @@
 @font-face {
   font-family: 'Mont';
-  src: url(/fonts/Mont-Bold.otf);
+  src: url(./fonts/Mont-Bold.otf);
   font-weight: 700;
 }
 
 @font-face {
   font-family: 'Mont';
-  src: url(/fonts/Mont-SemiBold.otf);
+  src: url(./fonts/Mont-SemiBold.otf);
   font-weight: 600;
 }
 
 @font-face {
   font-family: 'Mont';
-  src: url(/fonts/Mont-Regular.otf);
+  src: url(./fonts/Mont-Regular.otf);
   font-weight: 400;
 }
 body {
@@ -23,7 +23,7 @@ html {
   --button-height: 40px;
   --primary-color: #313237;
   --secondary-color: #89939A;
-  --icons-color: #B4BDC4;
+  --icons-color:  #B4BDC4;
   --elements-color: #E2E6E9;
   --bg-on-hover-color: #FAFBFC;
   --white-color: #FFFFFF;
@@ -290,21 +290,21 @@ html {
   position: absolute;
   bottom: 50%;
   transform: translate(-50%, 50%);
-  content: url(/img/icons/box.svg);
+  content: url(./icons/box.svg);
 }
 
 .heart-icon {
   position: absolute;
   bottom: 50%;
   transform: translate(-50%, 50%);
-  content: url(/img/icons/heart.svg);
+  content: url(./icons/heart.svg);
 }
 
 .heart-icon_filled {
   position: absolute;
   bottom: 50%;
   transform: translate(-50%, 50%);
-  content: url(/img/icons/filledHeart.svg);
+  content: url(./icons/filledHeart.svg);
 }
 
 .icon-size_large {
@@ -317,16 +317,16 @@ html {
   // position: absolute;
   // bottom: 50%;
   transform: translate(0, 5%);
-  content: url(/img/icons/home.svg);
+  content: url(./icons/home.svg);
 }
 
 .arrow {
-  content: url(/img/icons/arrowGray.svg);
+  content: url(./icons/arrowGray.svg);
   transform: translate(0, 5%);
 }
 
 .arrow_color_black {
-  content: url(/img/icons/arrowBlack.svg);
+  content: url(./icons/arrowBlack.svg);
   transform: translate(0, 5%);
 }
 
