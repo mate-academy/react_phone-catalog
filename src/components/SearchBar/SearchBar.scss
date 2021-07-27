@@ -1,0 +1,40 @@
+.search-bar {
+  display: inline-block;
+
+  box-sizing: border-box;
+  font-family: 'Mont';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18px;
+  
+  height: 100%;
+  width: 327px;
+  box-shadow: -1px 0px 0px var(--elements-color);
+
+  padding-left: 24px;
+
+  border:none;
+  border-radius: 0;
+  outline: none;
+}
+
+.search-bar::placeholder {
+  color: var(--icons-color);
+}
+
+.search-bar-container {
+  position: relative;
+  width: max-content;
+  height: 100%;
+}
+
+.search-bar-container::after {
+  content: url(../../icons/search.svg);
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  bottom: 50%;
+  right: 7%;
+  transform: translate(0, 50%);
+}

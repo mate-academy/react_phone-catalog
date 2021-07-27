@@ -1,0 +1,117 @@
+.select-container {
+  display: flex;
+  flex-direction: column;
+  width: min-content;
+}
+
+.select-container__select {
+  box-sizing: border-box;
+  min-width: 128px;
+  width: max-content;
+  height: 40px;
+
+  margin-bottom: 10px;
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+  text-align: left;
+  font: 'Mont';
+  font-size: 14px;
+  font-weight: 600;
+  appearance: none;
+  
+  background-color: var(--white-color);
+  border-radius: 0;
+  border: solid 1px var(--icons-color);
+
+  padding: 10px 0;
+
+  line-height: 21px;
+}
+
+.select-container__select::after {
+  position: absolute;
+  width: max-content;
+  transition: all 0.3s ease;
+  content: url(../../icons/arrowGray.svg);
+  transform: rotate(90deg);
+  transform-origin: center;
+  height: 16px;
+  color: var(--primary-color);
+  display: block;
+  right: 15.3px;
+  top: 33.33%;
+  bottom: 8.33%;
+}
+
+.select__text {
+  margin-left: 10px;
+}
+
+.select-container__select_active::after {
+  transform: rotate(-90deg);
+}
+
+.select__options-block {
+  outline: none;
+  display: block;
+  position: relative;
+
+  top: 10px;
+  // left: -10px;
+
+
+  // min-width: calc(max-content + 10px);
+  width:  max-content;
+  padding: 8px 0;
+  transform-origin: 50% 0;
+  transition: all 0.2s ease;
+  background-color: var(--white-color);
+  z-index: 2;
+  order: 2;
+  margin-top: 4px;
+  border: solid 1px var(--elements-color);;
+}
+
+.select__options-block_closed {
+  opacity: 0;
+  transform: scale(1, 0);
+}
+
+
+.options-block__option {
+  z-index: 3;
+  order: 3;
+
+  box-sizing: border-box;
+  min-width: 128px;
+  width: min-content;
+  transform-origin: 50% 0;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  color: var(--secondary-color);
+  position: relative;
+  text-align: left;
+  font: 'Mont';
+  font-size: 14px;
+  font-weight: 600;
+  appearance: none;
+  
+  background-color: var(--white-color);
+  border-radius: 0;
+  
+  padding: 10px 12px;
+  padding-right: 70px;
+
+  line-height: 21px;
+}
+
+.options-block__option:hover {
+  color: var(--primary-color);
+  background-color: var(--bg-on-hover-color);
+}
+
+.slelect__options-block_closed > .option {
+  opacity: 0;
+  transform: scale(1, 0);
+}

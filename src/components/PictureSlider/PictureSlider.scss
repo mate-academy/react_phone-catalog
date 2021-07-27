@@ -1,0 +1,55 @@
+.picture-slider {
+  margin: 0 0 18px 0;
+  box-sizing: border-box;
+  display: flex;
+  height: 400px;
+  width: 100%;
+}
+
+.picture-slider__picture {
+  transition: all 0.3s linear;
+  background-repeat: no-repeat;
+  object-fit: cover;
+  background-position: 50% 50%;
+  margin: 0 10px;
+  flex-grow: 1;
+  width: 90%;
+}
+
+.picture-slider__scroll-button {
+  cursor: pointer;
+  background-color: var(--white-color);
+  font-size: large;
+  font-family: 'Mont';
+  width: 30px;
+  border: solid 1px var(--secondary-color);
+  box-shadow: 0 0 5px var(--elements-color);
+}
+
+.picture-slider-container {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.scroll-state {
+  display: flex;
+  box-sizing: border-box;
+  width: max-content;
+}
+
+.scroll-state > div {
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background-color: var(--elements-color);
+  height: 4px;
+  width: 14px;
+  margin: 7px;
+}
+
+.scroll-state > div.is_active {
+  cursor: default;
+  background-color: var(--primary-color);
+}
