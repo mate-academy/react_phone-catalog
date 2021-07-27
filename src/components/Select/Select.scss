@@ -25,7 +25,6 @@
   border: solid 1px var(--icons-color);
 
   padding: 10px 0;
-  // padding-left: 10px;
 
   line-height: 21px;
 }
@@ -34,7 +33,7 @@
   position: absolute;
   width: max-content;
   transition: all 0.3s ease;
-  content: url(/img/icons/arrowGray.svg);
+  content: url(../../icons/arrowGray.svg);
   transform: rotate(90deg);
   transform-origin: center;
   height: 16px;
