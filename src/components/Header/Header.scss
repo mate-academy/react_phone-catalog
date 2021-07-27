@@ -1,0 +1,85 @@
+@font-face {
+  font-family: 'Mont';
+  src: url(/public/fonts/Mont-Bold.otf);
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'Mont';
+  src: url(/public/fonts/Mont-SemiBold.otf);
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: 'Mont';
+  src: url(/public/fonts/Mont-Regular.otf);
+  font-weight: 400;
+}
+
+.header {
+  position: sticky;
+  width: 100%;
+  height: var(--header-height);
+  top: 0;
+  z-index: 2;
+}
+
+.header__nav {
+  box-sizing: border-box;
+  padding-left: 30px;
+  margin: 0;
+  background-color: white;
+  border-bottom: 1px solid #E2E6E9;
+  display: flex;
+  justify-content: space-between;
+  // height: 64px;
+}
+
+.nav__link-list {
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.link-list__square-nav-link.is-active::after, .link.is-active::after {
+  transition: all 0.2s ease;
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 100%;
+  background-color: #313237;
+  border-bottom: 3px solid #313237;
+}
+
+.logo {
+  display: flex;
+  font-family: 'Mont', sans-serif;
+  font-size: medium;
+  white-space: nowrap;
+  align-items: center;
+  line-height: 100%;
+  font-weight: black;
+  font-size: larger;
+  object-fit: contain;
+  align-items: center;
+  line-height: 100%;
+}
+
+
+.link-list__link-container {
+  display: inline-flex;
+  height: 100%;
+  margin-right: 60px;
+}
+
+.link-list__square-nav-link {
+  position: relative;
+  width: 63px;
+  height: 63px;
+
+  text-align: center;
+  background: #FFFFFF;
+  box-shadow: -1px 0px 0px #E2E6E9;
+  margin-left: 1px;
+}

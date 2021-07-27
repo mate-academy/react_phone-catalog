@@ -1,0 +1,34 @@
+.radio-buttons-list {
+  display: flex;
+  gap: 8px;
+}
+
+.list__button {
+  transition: all 0.1s ease-in;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  width:  32px;
+  height:  32px;
+  border: solid #F0F0F0 1px;
+}
+
+.button_selected {
+  border-color: #313237;
+}
+
+.list__button::after {
+  content: "";
+  transition: all 0.05s ease-in;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: #313237;
+}
+
+.list__button:hover {
+  border-color: #B4BDC4;
+}

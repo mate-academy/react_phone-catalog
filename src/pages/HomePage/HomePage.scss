@@ -1,0 +1,15 @@
+section {
+  margin: 0 0;
+}
+
+.shop-by-category-link {
+  transition: all 0.1s ease-in;
+  width: 368px;
+  height: 368px;
+}
+
+.shop-by-category-link:hover {
+  width: 355px;
+  height: 355px;
+  border-radius: 25px;
+}

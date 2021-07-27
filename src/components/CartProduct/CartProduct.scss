@@ -1,0 +1,87 @@
+.cart-product__title {
+  font-family: 'Mont';
+  text-decoration: none;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+
+  color: var(--primary-color);
+}
+
+.deleteButton {
+  cursor: pointer;
+  content: url(/img/icons/delete.svg);
+  border: 2px solid rgba($color: #00000000, $alpha: 0);
+  display: block;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  background-color: none;
+  height: 16px;
+  width: 16px;
+  font-size: 40px;
+}
+
+.deleteButton:hover {
+  background-color: var(--elements-color);
+  border: 2px solid var(--elements-color);
+}
+
+.cart-product {
+  display: grid;
+  grid-template-columns: 70% 1fr 10%;
+  box-sizing:border-box;
+  border: 1.5px solid var(--elements-color);
+  align-items: center;
+  padding: 24px;
+  height: 128px;
+}
+
+.cart-product__main {
+  position: relative;
+  display: flex;
+  flex-flow: row;
+  gap: 31px;
+  // justify-self: right;
+  align-items: center;
+}
+
+// .card:hover {
+//   box-shadow: 0 0 10px #E2E6E9;
+// }
+
+.horizontal.phoneImg {
+  transition: all 0.2s ease;
+  cursor: pointer;
+  object-fit: contain;
+  height: 66px;
+  width:66px;
+}
+
+.horizontal.imgContainer::after {
+  content: "Read more";
+
+  transition: all 0.2s ease;
+
+  position: absolute;
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: #313237;
+  background-color: var(--white-color);
+  opacity: 0.5;
+  left: 9.44%;
+  right: 81.78%;
+  top: 24.22%;
+  bottom: 24.22%;
+  opacity: 0;
+}
+.cart-product__img {
+  transition: all 0.2s ease;
+  cursor: pointer;
+  object-fit: contain;
+  height: 66px;
+  width: 66px;
+}

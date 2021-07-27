@@ -1,0 +1,22 @@
+@import '../../App.scss';
+
+.checkout-block {
+  box-sizing: border-box;
+  width: 368px;
+  height: 206px;
+  padding: 24px;
+  justify-content: space-between;
+  background-color: white;
+  border: solid 1.5px #E2E6E9;
+  display: flex;
+  flex-direction: column;
+}
+
+.checkout-block_info {
+  box-sizing: border-box;
+  width: max-content;
+  align-items: center;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+}

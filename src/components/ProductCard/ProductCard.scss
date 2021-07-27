@@ -1,0 +1,116 @@
+html {
+  --card-width: 272px;
+  --card-height: 507px;
+  --card-margin-left: 10px;
+  font-size: 14x;
+}
+
+.is_crossed {
+  text-decoration: line-through;
+}
+
+
+.squareButton.is-active {
+  color: var(--red-color);
+}
+
+.card {
+  box-sizing:border-box;
+
+  height: var(--card-height);
+  width: var(--card-width);
+  min-width: var(--card-width);
+
+  transition: all 0.2s ease;
+
+  display: flex;
+  justify-content: space-between;
+  flex-flow: column;
+  align-items: center;
+
+  position: relative;
+
+  border: 1.5px solid var(--elements-color);
+  padding: 24px;
+  gap: 11px;
+}
+
+.card:hover {
+  box-shadow: 0 0 10px #E2E6E9;
+}
+
+.card__info {
+  justify-content: space-between;
+  display: flex;
+  position: relative;
+  flex-flow: column;
+  align-self: stretch;
+  height: auto;
+  gap: 6px;
+}
+
+.card__quick-action-buttons-block {
+  width: auto;
+  display: flex;
+  min-width: 100%;
+}
+
+.three-in-four {
+  flex-grow: 1;
+}
+
+.card__img-container {
+  position: relative;
+  box-sizing:border-box;
+  flex-grow: 1;
+  padding: 8px 0 24px 0;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+.card__img {
+  transition: all 0.2s ease;
+  cursor: pointer;
+  object-fit: contain;
+  height: 100%;
+}
+
+.card__img-container::after {
+  content: "Read more";
+
+  transition: all 0.2s ease;
+
+  position: absolute;
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: var(--primary-color);
+  background-color: white;
+  opacity: 0.5;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+
+.card__img-container:hover:after {
+  color: white;
+  background-color: #313237;
+  opacity: 0.5;
+}
+
+.info__characteristics {
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  display: grid;
+  width: 100%;
+  margin: 12px 0 12px 0
+}
+
+.characteristics__value_align_is-right {
+  text-align: right;
+}
