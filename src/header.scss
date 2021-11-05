@@ -1,0 +1,45 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  box-shadow: 0px 1px 0px $borderColor;
+
+  &__block {
+    display: flex;
+    align-items: center;
+  }
+
+  &__logo {
+    margin-left: 24px;
+  }
+
+  &__icon {
+    width: $headerHeight;
+    height: $headerHeight;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    box-shadow: -1px 0px 0px $borderColor;
+    border: 1px solid transparent;
+
+    @include hover(border-color, $primaryColor);
+    cursor: pointer;
+
+    &:hover .header__img {
+      transform: scale(1.2);
+    }
+
+    &:first-child {
+      margin-right: 1px;
+    }
+  }
+
+  &__img {
+    width: 15px;
+    height: 14px;
+    transition: transform 0.3s;
+  }
+}

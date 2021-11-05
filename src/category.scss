@@ -1,0 +1,61 @@
+.category {
+
+  &__picture {
+    position: relative;
+    width: 368px;
+    height: 368px;
+    overflow: hidden;
+    margin-bottom: 24px;
+
+    &--phone {
+      background-color: #fcdbc1;
+    }
+
+    &--tablets {
+      background-color: #8d8d92;
+    }
+
+    &--accessories {
+      background-color: #973d5f;
+    }
+  }
+
+  &__img {
+
+    &--phone {
+      position: absolute;
+      top: 8px;
+      left: 73px;
+      width: 386px;
+      height: 457px;
+    }
+
+    &--tablets {
+      position: absolute;
+      top: 20px;
+      left: 22px;
+      width: 386px;
+      height: 457px;
+    }
+
+    &--accessories {
+      position: absolute;
+      top: 65px;
+      left: 65px;
+      width: 605px;
+      height: 360px;
+    }
+  }
+
+  &__name {
+    margin-bottom: 4px;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 26px;
+    color: $primaryColor;
+  }
+
+  &__count {
+    color: $secondaryColor;
+  }
+}

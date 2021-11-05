@@ -1,0 +1,35 @@
+.banner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__container {
+    margin-top: 40px;
+    display: flex;
+  }
+
+  &__picture {
+    width: 1040px;
+    height: $bannerHeight;
+    margin: 0 16px;
+  }
+
+  &__switch {
+    margin-top: 18px;
+    display: flex;
+    cursor: pointer;
+
+    &-item {
+      width: 14px;
+      height: 4px;
+      margin: 0 7px;
+
+      background-color: $borderColor;
+      @include hover(background-color, $primaryColor);
+
+      &--active {
+        background-color: $primaryColor;
+      }
+    }
+  }
+}
