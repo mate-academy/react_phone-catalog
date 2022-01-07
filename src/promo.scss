@@ -1,0 +1,45 @@
+.promo__main {
+  display: flex;
+  justify-content: space-between;
+  // align-items: center;
+
+  .promo__img {
+    width: 1040px;
+    height: 400px;
+    margin: 0 16px;
+  }
+
+  .promo__sidebar {
+    cursor: pointer;
+    width: 32px;
+    height: 400px;
+    border: 1px solid #b4bdc4;
+  
+    &--left {
+      background: url("img/sidebar-left.png") center no-repeat;
+    }
+  
+    &--right {
+      background: url("img/sidebar-right.png") center no-repeat;
+    }
+  }
+
+}
+
+.promo-slider {
+  display: flex;
+  justify-content: center;
+  margin: 18px auto 0;
+
+  &__item {
+    cursor: pointer;
+    width: 14px;
+    height: 4px;
+    margin-right: 14px;
+    background-color: #e2e6e9;
+
+    &--active {
+      background-color: #313237;
+    }
+  }
+}
