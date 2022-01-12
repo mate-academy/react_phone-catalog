@@ -1,0 +1,106 @@
+@import "../../utils/vars.scss";
+
+.banner {
+  padding: 40px 0 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+
+  &__content {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__button {
+    width: 32px;
+    height: 400px;
+    color: $colorBlack;
+    background-color: #fff;
+    outline: none;
+    border: 1px solid $colorLightGray;
+    cursor: pointer;
+    transition: border-color 0.3s;
+
+    &:hover {
+      border-color: $colorBlack;
+    }
+
+    &:active {
+      color: #fff;
+      background: $colorBlack;
+    }
+  }
+
+  &__image {
+    height: 400px;
+    width: 100%;
+    position: relative;
+  
+    &::after {
+      content: "Welcome to our apple store";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #eee;
+      text-shadow: 0 0 4px #fff;
+      opacity: 0;
+      transition: opacity 0.5s;
+      font-size: 22px;
+      padding: 0 200px;
+      text-align: center;
+    }
+  
+    &:hover::after {
+      opacity: 1;
+    }
+  }
+
+  &__img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    opacity: 0;
+    transition: opacity 0.5s;
+  
+    &--active {
+      opacity: 1;
+    }
+  }
+
+  &__pagination {
+    display: flex;
+    gap: 14px;
+  }
+
+  &__pagination-item {
+    border: none;
+    outline: none;
+    width: 14px;
+    height: 4px;
+    background-color: $colorSilver;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &--active {
+      background-color: $colorBlack;
+    }
+
+    &:hover {
+      background-color: $colorBlack;
+    }
+  }
+}

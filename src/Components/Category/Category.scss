@@ -1,0 +1,81 @@
+@import "../../utils/vars.scss";
+
+.category {
+  padding-bottom: 40px;
+
+  &__title {
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 41px;
+    color: $colorBlack;
+    padding-bottom: 24px;
+  }
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+
+    @media (max-width: 1024px) {
+      flex-direction: column;
+    }
+  }
+
+  &__item {
+    padding: 20px;
+    padding-bottom: 24px;
+    position: relative;
+  }
+
+  &__item-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5em;
+    background-color: rgba(0, 0, 0, 0.9);
+    opacity: 0;
+    transition: opacity 0.3s;
+
+    & i {
+      transition: transform 0.5s;
+    }
+
+    &:hover {
+      opacity: 1;
+      color: #eee;
+    }
+
+    &:hover i {
+      transform: rotate(360deg);
+    }
+  }
+
+  &__item-image {
+    flex-basis: 33%;
+    height: 368px;
+    object-fit: cover;
+    object-position: bottom right;
+  }
+
+  &__item-title {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 26px;
+    color: $colorBlack;
+    padding-bottom: 4px;
+  }
+
+  &__item-count {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $colorGray;
+  }
+}
