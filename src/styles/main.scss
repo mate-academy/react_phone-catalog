@@ -1,0 +1,15 @@
+@import "./reset.scss";
+@import "../utils/vars.scss";
+
+.container {
+  margin: 0 auto;
+  width: 1136px;
+  
+  @media (max-width: 1136px) {
+    padding: 0 20px;
+  }
+}
+
+main {
+  min-height: calc(100vh - $headerHeigth - $footerHeight);
+}
