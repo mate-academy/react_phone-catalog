@@ -23,9 +23,55 @@ export const Cart:React.FC<Props> = ({ products }) => {
 
   const totalPrice = cart.map((product: CartItem) => product.price * product.count);
 
-  useEffect(() => {
+  const remove = (productId: string) => {
+    let carts = [];
 
-  }, [render]);
+    if (localStorage.getItem('carts')) {
+      carts = JSON.parse(localStorage.getItem('carts') || '');
+    }
+
+    localStorage.setItem('carts', JSON.stringify([
+      ...carts.filter((p: CartItem) => p.id !== productId),
+    ]));
+
+    setRender(!render);
+  };
+
+  const changeCount = (productId: string, action: string) => {
+    const item = cart.find((p: CartItem) => p.id === productId);
+    let carts = [];
+
+    if (localStorage.getItem('carts')) {
+      carts = JSON.parse(localStorage.getItem('carts') || '');
+    }
+
+    switch (action) {
+      case 'increase':
+        localStorage.setItem('carts', JSON.stringify([
+          ...carts.filter((p: CartItem) => p.id !== productId),
+          {
+            ...item,
+            count: item.count + 1,
+          },
+        ]));
+        break;
+      case 'decrease':
+        localStorage.setItem('carts', JSON.stringify([
+          ...carts.filter((p: CartItem) => p.id !== productId),
+          {
+            ...item,
+            count: item.count - 1 || 1,
+          },
+        ]));
+        break;
+      default:
+        break;
+    }
+
+    setRender(!render);
+  };
+
+  useEffect(() => {}, [render]);
 
   return (
     <>
@@ -43,17 +89,7 @@ export const Cart:React.FC<Props> = ({ products }) => {
                       type="button"
                       className="cart__item-delete-btn"
                       onClick={() => {
-                        let carts = [];
-
-                        if (localStorage.getItem('carts')) {
-                          carts = JSON.parse(localStorage.getItem('carts') || '');
-                        }
-
-                        localStorage.setItem('carts', JSON.stringify([
-                          ...carts.filter((p: CartItem) => p.id !== product.id),
-                        ]));
-
-                        setRender(!render);
+                        remove(product.id);
                       }}
                     >
                       x
@@ -67,22 +103,7 @@ export const Cart:React.FC<Props> = ({ products }) => {
                           'cart__item-count-btn--active': cart.find((p: CartItem) => p.id === product.id).count > 1,
                         })}
                         onClick={() => {
-                          const item = cart.find((p: CartItem) => p.id === product.id);
-                          let carts = [];
-
-                          if (localStorage.getItem('carts')) {
-                            carts = JSON.parse(localStorage.getItem('carts') || '');
-                          }
-
-                          localStorage.setItem('carts', JSON.stringify([
-                            ...carts.filter((p: CartItem) => p.id !== product.id),
-                            {
-                              ...item,
-                              count: item.count - 1 || 1,
-                            },
-                          ]));
-
-                          setRender(!render);
+                          changeCount(product.id, 'decrease');
                         }}
                       >
                         -
@@ -92,22 +113,7 @@ export const Cart:React.FC<Props> = ({ products }) => {
                         type="button"
                         className="cart__item-count-btn cart__item-count-btn--active"
                         onClick={() => {
-                          const item = cart.find((p: CartItem) => p.id === product.id);
-                          let carts = [];
-
-                          if (localStorage.getItem('carts')) {
-                            carts = JSON.parse(localStorage.getItem('carts') || '');
-                          }
-
-                          localStorage.setItem('carts', JSON.stringify([
-                            ...carts.filter((p: CartItem) => p.id !== product.id),
-                            {
-                              ...item,
-                              count: item.count + 1,
-                            },
-                          ]));
-
-                          setRender(!render);
+                          changeCount(product.id, 'increase');
                         }}
                       >
                         +

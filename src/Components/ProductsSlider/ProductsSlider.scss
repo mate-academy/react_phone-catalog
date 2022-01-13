@@ -183,15 +183,15 @@
     height: 46px;
     border-color: $colorLightGray;
 
-    & svg:nth-child(2) {
+    & img:nth-child(2) {
       display: none;
     }
 
-    &--active svg:nth-child(1) {
+    &--active img:nth-child(1) {
       display: none;
     }
 
-    &--active svg:nth-child(2) {
+    &--active img:nth-child(2) {
       display: block;
     }
 
