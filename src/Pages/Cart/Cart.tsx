@@ -23,9 +23,6 @@ export const Cart:React.FC<Props> = ({ products }) => {
 
   const totalPrice = cart.map((product: CartItem) => product.price * product.count);
 
-  // eslint-disable-next-line
-  console.log(totalPrice);
-
   useEffect(() => {
 
   }, [render]);

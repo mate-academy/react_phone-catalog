@@ -50,9 +50,6 @@ export const ProductsSlider:React.FC<Props> = ({ products, title }) => {
                 }
               }
 
-              // eslint-disable-next-line
-              console.log(value);
-
               setFirstElem(value);
             }}
           >
