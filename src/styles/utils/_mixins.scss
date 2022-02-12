@@ -1,0 +1,8 @@
+@mixin smallSliderButton {
+  height: 32px;
+  width: 32px;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  border: 1px solid $borderColor;
+  cursor: pointer;
+}

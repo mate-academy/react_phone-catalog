@@ -4,8 +4,390 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Phone catalog</title>
+    <link rel="stylesheet" href="../src/App.scss">
   </head>
   <body>
+    <header class="header">
+      <a href="#" class="logo">
+        <img
+          src="./img/logo.svg"
+          alt="logo"
+          class="logo__img"
+        >
+      </a>
+      <nav class="nav">
+        <ul class="nav__list">
+          <li class="nav__item">
+            <a href="" class="nav__link nav__link_active">Home</a>
+          </li>
+          <li class="nav__item">
+            <a href="" class="nav__link">Phones</a>
+          </li>
+          <li class="nav__item">
+            <a href="" class="nav__link">Tablets</a>
+          </li>
+          <li class="nav__item">
+            <a href="" class="nav__link">Accessories</a>
+          </li>
+        </ul>
+      </nav>
+      <div class="header__active">
+        <a href="" class="header__icon header__icon_favorite"></a>
+        <a href="" class="header__icon header__icon_cart"></a>
+      </div>
+    </header>
+    <main>
+      <section class="section demo">
+        <div class="demo__photo-block">
+          <div class="demo__button demo__button_left"></div>
+          <img
+            src="./img/demo/Banner.jpg"
+            alt="banner"
+            class="demo__img"
+          >
+          <div class="demo__button demo__button_right"></div>
+        </div>
+        <div class="demo__slider-block">
+          <div class="demo__slider demo__slider_active"></div>
+          <div class="demo__slider"></div>
+          <div class="demo__slider"></div>
+        </div>
+      </section>
+
+      <section class="section hot-prices">
+        <div class="hot-prices__top">
+          <h2 class="hot-prices__title">Hot prices</h2>
+          <div class="hot-prices__sliders">
+            <div class="
+              hot-prices__arrow
+              hot-prices__arrow_left
+              hot-prices__arrow_block"
+              ></div>
+            <div class="hot-prices__arrow hot-prices__arrow_right"></div>
+          </div>
+        </div>
+
+        <div class="hot-prices__catalog">
+
+          <div class="cart">
+            <div class="cart__photo">
+              <img src="./img/best-prices/tel1.jpg" alt="Apple iPhone Xs 64GB Silver" class="cart__img">
+            </div>
+
+            <h3 class="cart__name">Apple iPhone Xs 64GB Silver (iMT9G2FS/A)</h3>
+
+            <div class="cart__price">
+              <p class="cart__new-price">$799</p>
+              <p class="cart__old-price">$899</p>
+            </div>
+
+            <div class="cart__description">
+              <p class="cart__property">Screen</p>
+              <p class="cart__value">5.8” OLED</p>
+            </div>
+            <div class="cart__description">
+              <p class="cart__property">Capacity</p>
+              <p class="cart__value">64 GB</p>
+            </div>
+            <div class="cart__description">
+              <p class="cart__property">RAM</p>
+              <p class="cart__value">4 GB</p>
+            </div>
+
+            <div class="cart__active">
+              <button class="cart__button">Add to cart</button>
+              <button class="cart__like"></button>
+            </div>
+          </div>
+
+          <div class="cart">
+            <div class="cart__photo">
+              <img src="./img/best-prices/tel2.jpg" alt="Apple iPhone 11 Pro Max 64GB Gold" class="cart__img">
+            </div>
+
+            <h3 class="cart__name">Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)</h3>
+
+            <div class="cart__price">
+              <p class="cart__new-price">$1099</p>
+              <p class="cart__old-price">$1199</p>
+            </div>
+
+            <div class="cart__description">
+              <p class="cart__property">Screen</p>
+              <p class="cart__value">6.5” OLED</p>
+            </div>
+            <div class="cart__description">
+              <p class="cart__property">Capacity</p>
+              <p class="cart__value">64 GB</p>
+            </div>
+            <div class="cart__description">
+              <p class="cart__property">RAM</p>
+              <p class="cart__value">4 GB</p>
+            </div>
+
+            <div class="cart__active">
+              <button class="cart__button">Add to cart</button>
+              <button class="cart__like"></button>
+            </div>
+          </div>
+
+          <div class="cart">
+            <div class="cart__photo">
+              <img src="./img/best-prices/tel3.jpg" alt="Apple iPhone 11 128GB Purple" class="cart__img">
+            </div>
+
+            <h3 class="cart__name">Apple iPhone 11 128GB Purple (iMT9G2FS/A)</h3>
+
+            <div class="cart__price">
+              <p class="cart__new-price">$799</p>
+              <p class="cart__old-price">$899</p>
+            </div>
+
+            <div class="cart__description">
+              <p class="cart__property">Screen</p>
+              <p class="cart__value">6.2” IPS</p>
+            </div>
+            <div class="cart__description">
+              <p class="cart__property">Capacity</p>
+              <p class="cart__value">128 GB</p>
+            </div>
+            <div class="cart__description">
+              <p class="cart__property">RAM</p>
+              <p class="cart__value">4 GB</p>
+            </div>
+
+            <div class="cart__active">
+              <button class="cart__button">Add to cart</button>
+              <button class="cart__like"></button>
+            </div>
+          </div>
+
+          <div class="cart">
+            <div class="cart__photo">
+              <img src="./img/best-prices/tel4.jpg" alt="Apple iPhone X 256GB Silver" class="cart__img">
+            </div>
+
+            <h3 class="cart__name">Apple iPhone X 256GB Silver (iMT9G2FS/A)</h3>
+
+            <div class="cart__price">
+              <p class="cart__new-price">$859</p>
+              <p class="cart__old-price">$899</p>
+            </div>
+
+            <div class="cart__description">
+              <p class="cart__property">Screen</p>
+              <p class="cart__value">5.8” OLED</p>
+            </div>
+            <div class="cart__description">
+              <p class="cart__property">Capacity</p>
+              <p class="cart__value">256 GB</p>
+            </div>
+            <div class="cart__description">
+              <p class="cart__property">RAM</p>
+              <p class="cart__value">3 GB</p>
+            </div>
+
+            <div class="cart__active">
+              <button class="cart__button">Add to cart</button>
+              <button class="cart__like"></button>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <section class="section shop">
+        <h2 class="shop__title">Shop by category</h2>
+
+        <div class="shop__catalog">
+          <div class="shop__cart">
+            <a href="#" class="shop__photo">
+              <img src="./img/shop/phones.jpg" alt="phones">
+            </a>
+            <a href="#" class="shop__name">Mobile phones</a>
+            <p class="shop__quantity">95 models</p>
+          </div>
+
+          <div class="shop__cart">
+            <a href="#" class="shop__photo">
+              <img src="./img/shop/tablets.jpg" alt="tablets">
+            </a>
+            <a href="#" class="shop__name">Tablets</a>
+            <p class="shop__quantity">24 models</p>
+          </div>
+
+          <div class="shop__cart">
+            <a href="#" class="shop__photo">
+              <img src="./img/shop/accessories.jpg" alt="accessories">
+            </a>
+            <a href="#" class="shop__name">Accessories</a>
+            <p class="shop__quantity">100 models</p>
+          </div>
+
+        </div>
+      </section>
+
+      <section class="section brand-new">
+        <div class="brand-new__top">
+          <h2 class="brand-new__title">Brand new models</h2>
+          <div class="brand-new__sliders">
+            <div class="
+            brand-new__arrow
+            brand-new__arrow_left
+            brand-new__arrow_block"
+              ></div>
+            <div class="brand-new__arrow brand-new__arrow_right"></div>
+          </div>
+        </div>
+
+        <div class="brand-new__catalog">
+
+          <div class="cart">
+            <div class="cart__photo">
+              <img src="./img/best-prices/tel1.jpg" alt="Apple iPhone Xs 64GB Silver" class="cart__img">
+            </div>
+
+            <h3 class="cart__name">Apple iPhone Xs 64GB Silver (iMT9G2FS/A)</h3>
+
+            <div class="cart__price">
+              <p class="cart__new-price">$799</p>
+              <p class="cart__old-price">$899</p>
+            </div>
+
+            <div class="cart__description">
+              <p class="cart__property">Screen</p>
+              <p class="cart__value">5.8” OLED</p>
+            </div>
+            <div class="cart__description">
+              <p class="cart__property">Capacity</p>
+              <p class="cart__value">64 GB</p>
+            </div>
+            <div class="cart__description">
+              <p class="cart__property">RAM</p>
+              <p class="cart__value">4 GB</p>
+            </div>
+
+            <div class="cart__active">
+              <button class="cart__button">Add to cart</button>
+              <button class="cart__like"></button>
+            </div>
+          </div>
+
+          <div class="cart">
+            <div class="cart__photo">
+              <img src="./img/best-prices/tel2.jpg" alt="Apple iPhone 11 Pro Max 64GB Gold" class="cart__img">
+            </div>
+
+            <h3 class="cart__name">Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)</h3>
+
+            <div class="cart__price">
+              <p class="cart__new-price">$1099</p>
+              <p class="cart__old-price">$1199</p>
+            </div>
+
+            <div class="cart__description">
+              <p class="cart__property">Screen</p>
+              <p class="cart__value">6.5” OLED</p>
+            </div>
+            <div class="cart__description">
+              <p class="cart__property">Capacity</p>
+              <p class="cart__value">64 GB</p>
+            </div>
+            <div class="cart__description">
+              <p class="cart__property">RAM</p>
+              <p class="cart__value">4 GB</p>
+            </div>
+
+            <div class="cart__active">
+              <button class="cart__button">Add to cart</button>
+              <button class="cart__like"></button>
+            </div>
+          </div>
+
+          <div class="cart">
+            <div class="cart__photo">
+              <img src="./img/best-prices/tel3.jpg" alt="Apple iPhone 11 128GB Purple" class="cart__img">
+            </div>
+
+            <h3 class="cart__name">Apple iPhone 11 128GB Purple (iMT9G2FS/A)</h3>
+
+            <div class="cart__price">
+              <p class="cart__new-price">$799</p>
+              <p class="cart__old-price">$899</p>
+            </div>
+
+            <div class="cart__description">
+              <p class="cart__property">Screen</p>
+              <p class="cart__value">6.2” IPS</p>
+            </div>
+            <div class="cart__description">
+              <p class="cart__property">Capacity</p>
+              <p class="cart__value">128 GB</p>
+            </div>
+            <div class="cart__description">
+              <p class="cart__property">RAM</p>
+              <p class="cart__value">4 GB</p>
+            </div>
+
+            <div class="cart__active">
+              <button class="cart__button">Add to cart</button>
+              <button class="cart__like"></button>
+            </div>
+          </div>
+
+          <div class="cart">
+            <div class="cart__photo">
+              <img src="./img/best-prices/tel4.jpg" alt="Apple iPhone X 256GB Silver" class="cart__img">
+            </div>
+
+            <h3 class="cart__name">Apple iPhone X 256GB Silver (iMT9G2FS/A)</h3>
+
+            <div class="cart__price">
+              <p class="cart__new-price">$859</p>
+              <p class="cart__old-price">$899</p>
+            </div>
+
+            <div class="cart__description">
+              <p class="cart__property">Screen</p>
+              <p class="cart__value">5.8” OLED</p>
+            </div>
+            <div class="cart__description">
+              <p class="cart__property">Capacity</p>
+              <p class="cart__value">256 GB</p>
+            </div>
+            <div class="cart__description">
+              <p class="cart__property">RAM</p>
+              <p class="cart__value">3 GB</p>
+            </div>
+
+            <div class="cart__active">
+              <button class="cart__button">Add to cart</button>
+              <button class="cart__like"></button>
+            </div>
+          </div>
+
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <a href="#" class="logo">
+        <img
+          src="./img/logo.svg"
+          alt="logo"
+          class="logo__img"
+        >
+      </a>
+      <div class="footer__items">
+        <a href="#" class="footer__link">Github</a>
+        <a href="#" class="footer__link">Contacts</a>
+        <a href="#" class="footer__link">Rights</a>
+      </div>
+      <div class="footer__up-container">
+        <p class="footer__up-text">Back to top</p>
+        <a href="#" class="footer__up-button"></a>
+      </div>
+    </footer>
     <div id="root"></div>
   </body>
 </html>

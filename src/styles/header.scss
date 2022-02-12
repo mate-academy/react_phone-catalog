@@ -1,0 +1,35 @@
+.header {
+  margin-bottom: 40px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+
+  box-shadow: 0 1px 0 #e2e6e9;
+
+  &__active {
+    display: flex;
+    margin-left: auto;
+  }
+
+  &__icon {
+    display: flex;
+    width: 64px;
+    height: 64px;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    box-shadow: -1px 0 0 #e2e6e9;
+    transition: all 0.3s;
+
+    &:hover {
+      background-color: $hoverBackground;
+    }
+
+    &_favorite {
+      background-image: url("../img/header/favorites.svg");
+    }
+
+    &_cart {
+      background-image: url("../img/header/cart.svg");
+    }
+  }
+}

@@ -1,0 +1,47 @@
+.brand-new {
+
+  &__top {
+    margin-bottom: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__sliders {
+    display: flex;
+  }
+
+  &__arrow {
+    @include smallSliderButton;
+
+    &_left {
+      background-image: url("../img/best-prices/left-arrow.svg");
+    }
+
+    &_right {
+      background-image: url("../img/best-prices/right-arrow.svg");
+      margin-left: 16px;
+    }
+
+    &_block {
+      background-image: url("../img/best-prices/left-arrow-block.svg");
+      border-color: $borderColorBlock;
+      cursor: default;
+
+      &:hover.brand-new__arrow {
+        border-color: $borderColorBlock;
+      }
+    }
+
+    &:hover {
+      border-color: $mainTextColor;
+    }
+  }
+
+  &__catalog {
+    display: grid;
+    grid-template-columns: repeat(4, 272px);
+    grid-column-gap: 16px;
+  }
+
+}

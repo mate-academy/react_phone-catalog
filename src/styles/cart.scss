@@ -1,0 +1,116 @@
+.cart {
+  padding: 24px;
+  width: 272px;
+  border: 1px solid $borderColorBlock;
+
+  &:hover {
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+  }
+
+  &__photo {
+    padding: 8px;
+  }
+
+  &__img {
+    width: 208px;
+    height: 208px;
+  }
+
+  &__name {
+    margin-bottom: 6.5px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+  }
+
+  &__price {
+    margin-bottom: 22.5px;
+    display: flex;
+    position: relative;
+
+    &::after {
+      position: absolute;
+      content: "";
+      width: 100%;
+      height: 1px;
+      background-color: $borderColorBlock;
+      bottom: -6.5px;
+
+    }
+  }
+
+  &__new-price {
+    margin-right: 8px;
+    font-size: 22px;
+    line-height: 140%;
+    font-weight: bold;
+  }
+
+  &__old-price {
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 28px;
+    text-decoration-line: line-through;
+    color: $secondaryTextColor;
+  }
+
+  &__description {
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__property {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: $secondaryTextColor;
+  }
+
+  &__value {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  &__active {
+    margin-top: 16px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__button {
+    width: 176px;
+    height: 40px;
+    background-color: $mainTextColor;
+    outline: none;
+    border: none;
+
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    color: white;
+    font-family: "Mont", Helvetica, sans-serif;
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+    }
+  }
+
+  &__like {
+    width: 40px;
+    height: 40px;
+    background-image: url("../img/like.svg");
+    background-color: #fff;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    outline: none;
+    border: 1px solid $borderColorBlock;
+    cursor: pointer;
+
+    &:hover {
+      border-color: $mainTextColor;
+    }
+  }
+}
