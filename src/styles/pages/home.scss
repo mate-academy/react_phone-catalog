@@ -1,0 +1,255 @@
+.header {
+  max-width: 1440px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0 1px 0 $elements;
+
+  &__aligned-left {
+    display: flex;
+  }
+
+  &__logo {
+    padding-left: 24px;
+    cursor: pointer;
+  }
+
+  &__links {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+  }
+
+  &__favorites {
+    @extend %headerButton;
+    border: 1px solid $elements;
+    border-bottom: none;
+    border-top: none;
+  }
+
+  &__cart {
+    @extend %headerButton;
+  }
+}
+
+.nav {
+  margin-left: 64px;
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    grid-column-gap: 64px;
+  }
+
+  &__link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: $headerHeight;
+    font-family: $fontStack;
+    @extend %upperCase;
+    transition: color 500ms ease;
+
+    &--active {
+      color: $primary;
+
+      &::after {
+        @extend %afterLine;
+      }
+    }
+
+    &:hover {
+      color: $primary;
+
+      &::after {
+        @extend %afterLine;
+      }
+    }
+  }
+}
+
+.main {
+  display: grid;
+  grid-row-gap: 80px;
+}
+
+.promo {
+  margin-top: 40px;
+  height: $promoHeight;
+  display: grid;
+  grid-template-columns: 32px $bannerWidth 32px;
+  grid-template-rows: $promoHeight;
+  grid-column-gap: $cardColumnGap;
+  position: relative;
+
+  &__slider {
+    border: 1px solid $icons;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: box-shadow 0.75s ease;
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+    }
+  }
+
+  &__slider-dots {
+    position: absolute;
+    bottom: -30px;
+    right: 50%;
+    transform: translateX(50%);
+  }
+}
+
+.sales {
+  &__top {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  &__slider-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-column-gap: 16px;
+  }
+
+  &__btn {
+    @extend %smallIconButton;
+  }
+
+  &__product-slider {
+    margin-top: 24px;
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    grid-column-gap: $cardColumnGap;
+  }
+}
+
+.shop {
+  &__wrapper {
+    margin-top: 24px;
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    grid-column-gap: $cardColumnGap;
+  }
+
+  &__block {
+    position: relative;
+    width: $categoryBlockSize;
+    height: $categoryBlockSize;
+    overflow: hidden;
+    cursor: pointer;
+
+    &--phones {
+      background-color: $peach;
+    }
+
+    &--tablets {
+      background-color: $greySuite;
+    }
+
+    &--accessories {
+      background-color: $vinRouge;
+    }
+  }
+
+  &__img {
+    max-width: 100%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    transition: transform 0.75s ease;
+
+    &:hover {
+      transform: scale(1.1) translate(-10px, -10px);
+    }
+  }
+
+  &__category-name {
+    margin-top: 24px;
+    cursor: pointer;
+  }
+
+  &__quantity {
+    color: $secondary;
+  }
+}
+
+.new {
+  &__top {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  &__slider-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-column-gap: 16px;
+  }
+
+  &__btn {
+    @extend %smallIconButton;
+  }
+
+  &__product-slider {
+    margin-top: 24px;
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    grid-column-gap: $cardColumnGap;
+  }
+}
+
+.footer {
+  margin-top: 80px;
+  box-shadow: 0 -1px 0 #e2e6e9;
+  
+  &__container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__logo {
+    cursor: pointer;
+  }
+
+  &__info {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    grid-column-gap: 64px;
+  }
+
+  &__link {
+    height: 96px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @extend %upperCase;
+    transition: color 500ms ease;
+    cursor: pointer;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__arrow {
+    margin-left: 16px;
+    @extend %smallIconButton;
+  }
+
+  &__text {
+    color: $secondary;
+    transition: color 500ms ease;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+}

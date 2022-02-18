@@ -1,0 +1,36 @@
+h1,
+h2 {
+  font-weight: $bold-weight;
+}
+
+h1 {
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+}
+
+h2 {
+  font-size: 22px;
+  line-height: 140%;
+}
+
+h3 {
+  font-weight: $semi-bold-weight;
+  font-size: 20px;
+  line-height: 26px;
+}
+
+%upperCase {
+  font-weight: $bold-weight;
+  font-size: 12px;
+  line-height: 92%;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: $secondary;
+}
+
+%smallText {
+  font-weight: $semi-bold-weight;
+  font-size: 12px;
+  line-height: 15px;
+}
