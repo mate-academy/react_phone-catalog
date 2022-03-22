@@ -1,0 +1,56 @@
+.categories {
+  &__catalog {
+    display: grid;
+    grid-template-columns: repeat(3, 368px);
+    grid-column-gap: $cardColumnGap;
+  }
+
+  &__categoty {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__image {
+    width: 368px;
+    height: 368px;
+
+    &-container {
+      display: block;
+      margin-bottom: 24px;
+
+      &--phones {
+        background-color: #fcdbc1;
+      }
+
+      &--tablets {
+        background-color: #8d8d92;
+      }
+
+      &--accessories {
+        background-color: #973d5f;
+      }
+    }
+  }
+
+  &__name {
+    @include smallHeadingFont;
+    margin-bottom: 4px;
+  }
+
+  &__quantity {
+    color: $secondaryColor;
+  }
+}
+
+@media (max-width: $largeScreenBreakpoint) {
+  .categories {
+
+    &__catalog {
+      grid-template-columns: 1fr;
+    }
+
+    &__image {
+      width: 100%;
+    }
+  }
+}

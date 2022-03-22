@@ -1,0 +1,36 @@
+.section {
+  margin-bottom: 80px;
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__heading {
+    @include largeHeadingFont;
+    margin-bottom: 24px;
+
+    &--category {
+      margin-bottom: 8px;
+    }
+
+    &--quantity {
+      color: $secondaryColor;
+      margin-bottom: 40px;
+    }
+  }
+  &__breadcrumbs {
+    margin: 24px 0 40px;
+  }
+
+  &__filter {
+
+  }
+}
+
+@media (max-width: $largeScreenBreakpoint) {
+  .section {
+    padding: 0 5vw;
+  }
+}

@@ -1,0 +1,56 @@
+.promo {
+
+  &__main {
+    display: flex;
+  }
+
+  &__banner {
+    width: 1040px;
+    height: 400px;
+    margin: 0 16px;
+  }
+
+  &__scroll {
+    height: 400px;
+  }
+
+  &__slide {
+    display: flex;
+    justify-content: space-between;
+    width: 70px;
+    margin: 18px auto 2px;
+  }
+
+  &__line {
+    width: 14px;
+    height: 4px;
+    background-color: $elementsColor;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $secondaryColor;
+    }
+
+    &--active {
+      background-color: $primaryColor;
+    }
+  }
+
+}
+
+@media (max-width: $largeScreenBreakpoint) {
+  .promo {
+
+    &__scroll {
+      display: none;
+    }
+
+    &__banner {
+      width: 100%;
+      height: 100%;
+      margin: 0 auto;
+    }
+
+  }
+
+}

@@ -1,0 +1,32 @@
+.footer {
+  box-shadow: 0 -1px 0 $elementsColor;
+
+  &__button {
+    display: block;
+    margin-left: 16px;
+
+    &-caption {
+      @include smallFont;
+      color: $secondaryColor;
+
+      &:hover {
+        color: $primaryColor;
+      }
+    }
+
+    &-container {
+      display: flex;
+      align-items: center;
+    }
+  }
+}
+
+@media (max-width: $mobileBreakpoint) {
+  .footer {
+
+    &__nav {
+      display: none;
+    }
+
+  }
+}
