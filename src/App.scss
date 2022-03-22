@@ -1,0 +1,33 @@
+@import "./styles/cardsSlider.scss";
+@import "./styles/categories.scss";
+@import "./styles/categories.scss";
+@import "./styles/container.scss";
+@import "./styles/cssReset.scss";
+@import "./styles/dropDown.scss";
+@import "./styles/favorites.scss";
+@import "./styles/footer.scss";
+@import "./styles/gallery.scss";
+@import "./styles/header.scss";
+@import "./styles/logo.scss";
+@import "./styles/nav.scss";
+@import "./styles/noResult.scss";
+@import "./styles/pagination.scss";
+@import "./styles/productCard.scss";
+@import "./styles/productDetailsPage.scss";
+@import "./styles/productPage.scss";
+@import "./styles/section.scss";
+@import "./styles/sortedSlider.scss";
+@import "./styles/cartItem.scss";
+@import "./styles/cart.scss";
+
+html {
+  scroll-behavior: smooth;
+}
+
+.app {
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+}
