@@ -8,15 +8,17 @@ import { Favorites } from './pages/Favorites';
 import { Home } from './pages/Home';
 import { Phones } from './pages/Phones';
 import { Tablets } from './pages/Tablets';
-import { useLocalStorage } from './components/LocalStorage';
+// import { useLocalStorage } from './components/LocalStorage';
 import { requestAll } from './api';
 import { Phone } from './components/ProductCard';
 import { Cart } from './pages/Cart';
 
 const App = () => {
   const [gadgetsList, setGadgetsList] = useState([]);
-  const [favorite, setFavorite] = useLocalStorage([], 'favorites');
-  const [cart, setCart] = useLocalStorage([], 'cart');
+  const [favorite, setFavorite] = useState<string[]>([]);
+  // const [favorite, setFavorite] = useLocalStorage([], 'favorites');
+  const [cart, setCart] = useState<string[]>([]);
+  // const [cart, setCart] = useLocalStorage([], 'cart');
 
   const phonesList = gadgetsList.filter((phone: Phone) => phone.type === 'phone');
   const tabletsList = gadgetsList.filter((phone: Phone) => phone.type === 'tablet');
