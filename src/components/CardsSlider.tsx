@@ -56,6 +56,7 @@ export const CardsSlider: React.FC<Props> = ({
         >
           {list.map((phone: Phone) => (
             <ProductCard
+              key={phone.id}
               favorite={favorite}
               cart={cart}
               phone={phone}

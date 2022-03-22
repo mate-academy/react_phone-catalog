@@ -15,7 +15,7 @@ import { Cart } from './pages/Cart';
 
 const App = () => {
   const [gadgetsList, setGadgetsList] = useState([]);
-  const [favorite, setFavorite] = useLocalStorage([], 'favorite');
+  const [favorite, setFavorite] = useLocalStorage([], 'favorites');
   const [cart, setCart] = useLocalStorage([], 'cart');
 
   const phonesList = gadgetsList.filter((phone: Phone) => phone.type === 'phone');

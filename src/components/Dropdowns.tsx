@@ -30,7 +30,7 @@ export const Dropdowns = () => {
     const page = searchParams.get('page') || '';
     const perPageValue = searchParams.get('perPage') || '';
     const query = searchParams.get('query') || '';
-
+    // eslint-disable-next-line
     const params: any = {};
 
     params.sort = value;
@@ -51,7 +51,7 @@ export const Dropdowns = () => {
     const sortValue = searchParams.get('sort') || '';
     const page = searchParams.get('page') || '1';
     const query = searchParams.get('query') || '';
-
+    // eslint-disable-next-line
     const params: any = {};
 
     if (sort) {

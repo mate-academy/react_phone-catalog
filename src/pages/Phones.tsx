@@ -74,7 +74,7 @@ export const Phones: React.FC<Props> = ({
       const pageValue = searchParams.get('page') || '';
       const sortValue = searchParams.get('sort') || '';
       const perPageValue = searchParams.get('perPage') || '';
-
+      // eslint-disable-next-line
       const newParams: any = {};
 
       if (pageValue) {
