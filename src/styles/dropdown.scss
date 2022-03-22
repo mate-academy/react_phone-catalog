@@ -1,0 +1,72 @@
+.dropdown {
+  position: relative;
+
+  &__container {
+    display: flex;
+    margin-bottom: 40px;
+  }
+
+  &__button {
+    background-color: #fff;
+    width: 176px;
+    height: 40px;
+    border: 1px solid #b4bdc4;
+    background: url("../images/icons/Arrow\ Down.svg") 150px no-repeat;
+
+    &:hover {
+      border: 1px solid #89939a;
+    }
+
+    &:focus {
+      border: 1px solid #313237;
+    }
+
+    &--active {
+      background: url("../images/icons/Arrow\ Up.svg") 150px no-repeat;
+      & + .dropdown__list-container {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    &-title {
+      text-align: left;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 21px;
+      color: #313237;
+      padding-left: 12px;
+    }
+  }
+
+  &__list-container {
+    padding: 8px 1px;
+    position: absolute;
+    top: 44px;
+    background: #fff;
+    border: 1px solid #e2e6e9;
+    box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.05);
+    width: 176px;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 150ms ease-in-out;
+  }
+
+  &__item {
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    padding-left: 12px;
+    width: 174px;
+    height: 32px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #89939a;
+
+    &:hover {
+      color: #313237;
+      background: #fafbfc;
+    }
+  }
+}
