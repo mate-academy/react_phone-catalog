@@ -1,7 +1,3 @@
-import '../styles/gallery.scss';
-import '../styles/cardsSlider.scss';
-import '../styles/container.scss';
-import '../styles/categories.scss';
 import { Gallery } from '../components/Gallery';
 import { CardsSlider } from '../components/CardsSlider';
 import { Categories } from '../components/Categories';
