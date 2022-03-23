@@ -12,7 +12,11 @@
     width: 32px;
     height: 32px;
     border: 1px solid #b4bdc4;
-    background: url('../images/icons/Arrow\ Up.svg') center no-repeat;
+    background: url('../images/icons/Arrow\ Active.svg') center no-repeat;
+    transform: rotate(-90deg);
+    &:hover {
+      border: 1px solid #313237;
+    }
 
     &-container {
       display: flex;
