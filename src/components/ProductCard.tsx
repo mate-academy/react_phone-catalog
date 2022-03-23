@@ -34,7 +34,7 @@ export const ProductCard: React.FC<Props> = ({
     <div className="product-card">
       <NavLink to={`/${phone.type === 'accessory' ? 'accessorie' : phone.type}s/${phone.id}`}>
         <div className="product-card__image-container">
-          <img src={`/${phone.imageUrl}`} alt={phone.name} className="product-card__image" />
+          <img src={phone.imageUrl} alt={phone.name} className="product-card__image" />
         </div>
         <div className="product-card__name">{phone.name}</div>
         <div className="product-card__price">
