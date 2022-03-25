@@ -1,0 +1,26 @@
+.footer {
+  padding: 0 152px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 96px;
+  box-shadow: 0px -1px 0px #E2E6E9;
+
+  &__up-button {
+    margin-left: 16px;
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    border: 1px solid #b4bdc4;
+    background: url('../images/icons/Arrow\ Active.svg') center no-repeat;
+    transform: rotate(-90deg);
+    &:hover {
+      border: 1px solid #313237;
+    }
+
+    &-container {
+      display: flex;
+      align-items: center;
+    }
+  }
+}

@@ -1,0 +1,53 @@
+.pagination {
+  margin: 0 auto;
+  height: 32px;
+  width: max-content;
+
+  &__list {
+    display: flex;
+  }
+
+  &__button {
+    background-color: #fff;
+    width: 32px;
+    height: 32px;
+    border: 1px solid #e2e6e9;
+    margin-right: 8px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+
+    
+    &--active {
+      background: #313237;
+      color: #fff;
+      border-color: #000;
+    }
+    
+    &:last-child {
+      margin-right: 16px;
+    }
+
+    &--prev {
+      margin-right: 16px;
+      border: 1px solid #b4bdc4;
+      box-sizing: border-box;
+      background: url("../images/icons/Arrow\ Active.svg") center no-repeat;
+      transform: rotate(-180deg);
+    }
+
+    &--next {
+      border: 1px solid #b4bdc4;
+      box-sizing: border-box;
+      background: url("../images/icons/Arrow\ Active.svg") center no-repeat;
+    }
+
+    &--disabled {
+      border: 1px solid #e2e6e9;
+    }
+  }
+
+  &__phone {
+    margin-bottom: 80px;
+  }
+}

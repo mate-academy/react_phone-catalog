@@ -1,0 +1,65 @@
+.gallery {
+  &__picture {
+    display: inline-block;
+    width: 1040px;
+    height: 400px;
+    object-position: center;
+    object-fit: cover;
+  }
+
+  &__home {
+    margin-bottom: 82px;
+  }
+
+  &__picture-container {
+    display: flex;
+    transform: translateX(0);
+    transition-duration: 0.8s;
+  }
+
+  &__dot {
+    display: inline-block;
+    width: 14px;
+    height: 4px;
+    background: #e2e6e9;
+    margin: 0 8px;
+
+    &--active {
+      background: #313237;
+    }
+
+    &-container {
+      width: max-content;
+      margin: 18px auto 0;
+    }
+  }
+
+  &__window {
+    width: 1040px;
+    overflow: hidden;
+    margin: 0 16px;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: row;
+  }
+
+  &__arrow {
+    height: 400px;
+    width: 32px;
+    border: 1px solid #b4bdc4;
+    background: url("../images/icons/Arrow\ Active.svg") center no-repeat;
+    &:hover {
+      border: 1px solid #313237;
+    }
+
+    &--disabled {
+      background: url("../images/icons/Arrow\ Right.svg") center no-repeat;
+    }
+
+    &--left {
+      transform: rotate(180deg);
+    }
+  }
+}

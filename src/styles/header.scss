@@ -1,0 +1,57 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  height: 64px;
+  box-shadow: 0px 1px 0px #e2e6e9;
+
+  &__nav {
+    padding-left: 24px;
+    display: flex;
+    align-items: center;
+  }
+
+  &__home {
+    margin-bottom: 40px;
+  }
+
+  &__phones {
+    margin-bottom: 24px;
+  }
+
+  &__logo {
+    margin-right: 64px;
+  }
+
+  &__customer {
+    height: 64px;
+    width: 64px;
+    box-shadow: -1px 0px 0px #e2e6e9;
+    display: inline-block;
+
+    &--favorite {
+      position: relative;
+      background: url("../images/icons/Favorite\ Empty.svg") center no-repeat;
+    }
+
+    &--cart {
+      position: relative;
+      background: url("../images/icons/Basket\ Empty.svg") center no-repeat;
+    }
+  }
+}
+
+.counter {
+  position: absolute;
+  text-align: center;
+  font-weight: 600;
+  font-size: 9px;
+  line-height: 12px;
+  top: 20px;
+  left: 35px;
+  width: 14px;
+  height: 14px;
+  background-color: #eb5757;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  color: #fff;
+}

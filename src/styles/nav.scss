@@ -1,0 +1,19 @@
+.nav__link {
+  margin-left: 64px;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #89939a;
+
+  &:first-child {
+    margin-left: 0;
+  }
+}
+
+.active {
+  color: #313237;
+  padding-bottom: 22.5px;
+  border-bottom: 3px solid #313237;
+}

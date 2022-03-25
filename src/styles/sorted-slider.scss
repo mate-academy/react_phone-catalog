@@ -1,0 +1,45 @@
+.sorted-slider {
+
+  &__card-container {
+    width: 272px;
+    margin-bottom: 40px;
+    margin-right: 16px;
+    border: 1px solid #e2e6e9;
+  }
+
+  &__continer {
+    display: flex;
+    flex-wrap: wrap;
+    width: 1152px;
+  }
+
+  &__input {
+    width: 176px;
+    height: 40px;
+    border: 1px solid #b4bdc4;
+    margin-right: 16px;
+    padding-left: 12px;
+
+    &-container {
+      margin-right: 16px;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+
+    &::selection {
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 21px;
+      color: #313237;
+    }
+
+    &-title {
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 15px;
+      color: #89939a;
+      margin-bottom: 4px;
+    }
+  }
+}
