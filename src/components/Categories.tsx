@@ -17,7 +17,7 @@ export const Categories: React.FC<Props> = ({ gadgetsList }) => {
         <Link to="/phones" className="categories__link">
           <div>
             <img
-              src="/img/link-banners/link-mobile.png"
+              src="./img/link-banners/link-mobile.png"
               alt="mobile phones"
               className="categories__link-banner"
             />
@@ -30,7 +30,7 @@ export const Categories: React.FC<Props> = ({ gadgetsList }) => {
         <Link to="/tablets" className="categories__link">
           <div>
             <img
-              src="/img/link-banners/link-tablets.png"
+              src="./img/link-banners/link-tablets.png"
               alt="tablets"
               className="categories__link-banner"
             />
@@ -43,7 +43,7 @@ export const Categories: React.FC<Props> = ({ gadgetsList }) => {
         <Link to="/accessories" className="categories__link">
           <div>
             <img
-              src="/img/link-banners/link-accesories.png"
+              src="./img/link-banners/link-accesories.png"
               alt="accessories"
               className="categories__link-banner"
             />

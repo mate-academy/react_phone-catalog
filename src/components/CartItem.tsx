@@ -44,7 +44,7 @@ export const CartItem: React.FC<Props> = ({
             changeQuantity('-', quantity === 1 ? 0 : totalPrice);
           }}
         >
-          { }
+          -
         </button>
         <div className="cart-item__quantity">
           {quantity}
@@ -59,7 +59,7 @@ export const CartItem: React.FC<Props> = ({
             changeQuantity('+', totalPrice);
           }}
         >
-          { }
+          +
         </button>
       </div>
       <div className="cart-item__price">

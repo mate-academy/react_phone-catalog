@@ -87,7 +87,7 @@ export const ProductDetailsPage: React.FC<Props> = ({
   useEffect(() => {
     fetchInfo().then((phone: PhoneInfo) => {
       setPhoneInfo(phone);
-      setLinkForBigPhoto(`/${phone.images[0]}`);
+      setLinkForBigPhoto(phone.images[0]);
     });
   }, [id]);
 
@@ -135,15 +135,18 @@ export const ProductDetailsPage: React.FC<Props> = ({
         <div className="product-details__photo-container">
           <ul className="product-details__small-photos-container">
             {phoneInfo?.images.map((image: string) => (
-              <li className="product-details__small-photo-container">
+              <li
+                key={image}
+                className="product-details__small-photo-container"
+              >
                 <button
                   type="button"
                   className="product-details__small-photo-button"
                   onClick={() => {
-                    setLinkForBigPhoto(`/${image}`);
+                    setLinkForBigPhoto(image);
                   }}
                 >
-                  <img src={`/${image}`} alt={phoneInfo.name} className="product-details__small-photo" />
+                  <img src={image} alt={phoneInfo.name} className="product-details__small-photo" />
                 </button>
               </li>
             ))}

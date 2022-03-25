@@ -28,21 +28,21 @@ export const Gallery = () => {
           >
             <div>
               <img
-                src="/img/Banner.png"
+                src="./img/Banner.png"
                 alt="phone-banner"
                 className="gallery__picture"
               />
             </div>
             <div>
               <img
-                src="/img/Banner2.png"
+                src="./img/Banner2.png"
                 alt="phone-banner"
                 className="gallery__picture"
               />
             </div>
             <div>
               <img
-                src="/img/Banner3.png"
+                src="./img/Banner3.png"
                 alt="phone-banner"
                 className="gallery__picture"
               />

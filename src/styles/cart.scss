@@ -48,6 +48,7 @@
 }
 
 .message {
+  visibility: hidden;
   background-color: #eb5757;
   opacity: 0;
   top: 50%;
@@ -61,6 +62,7 @@
   transition-duration: 1.5s;
 
   &--active {
+    visibility: visible;
     opacity: 0.8;
   }
 }
