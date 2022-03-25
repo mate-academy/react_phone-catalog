@@ -1,5 +1,5 @@
 import { Link, useSearchParams, useLocation } from 'react-router-dom';
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import classNames from 'classnames';
 import debounce from 'lodash/debounce';
 import { SortedSlider } from '../components/SortedSlider';
@@ -27,6 +27,10 @@ export const Tablets: React.FC<Props> = ({
   const [query, setQuery] = useState('');
   const [inputClose, setInputClose] = useState(true);
   const [inputFilled, setInputFilled] = useState(false);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const page = searchParams.get('page') || 1;
   const initialPerPage = searchParams.get('perPage') || phonesList.length;

@@ -80,6 +80,10 @@ export const ProductDetailsPage: React.FC<Props> = ({
   const phonePrice = gadgetsList.find((phone: Phone) => phone.id === id);
   const navigate = useNavigate();
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [id]);
+
   const fetchInfo = () => {
     return requestSpecific(id || '');
   };

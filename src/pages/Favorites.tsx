@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { NoResult } from '../components/NoResult';
 import { SortedSlider } from '../components/SortedSlider';
@@ -18,6 +19,10 @@ export const Favorites: React.FC<Props> = ({
   favorite,
   cart,
 }) => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <>
       {
