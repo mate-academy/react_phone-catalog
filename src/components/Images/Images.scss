@@ -1,0 +1,38 @@
+@import "../../styles/utils";
+
+.Images {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  column-gap: $column-gap;
+
+  &__listItem {
+    margin-bottom: 16px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__button {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border: 1px solid $c-gray;
+    padding: 7px;
+    background-color: transparent;
+    cursor: pointer;
+
+    &--selected {
+      border-color: $c-very-dark-gray;
+    }
+  }
+
+  &__mainImageContainer {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    padding: 11px;
+  }
+
+  &__image {
+    width: 100%;
+  }
+}

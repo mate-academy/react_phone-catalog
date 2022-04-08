@@ -1,0 +1,50 @@
+@import "../../styles/utils";
+
+.ProductCard {
+  display: inline-flex;
+  flex-direction: column;
+  height: 100%;
+  border: 1px solid $c-light-gray;
+  padding: 24px;
+
+  &__image {
+    display: block;
+    margin-bottom: 24px;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    object-position: center;
+    cursor: pointer;
+    transition-duration: $anim-time;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__title {
+    flex-grow: 1;
+    margin-bottom: 8px;
+  }
+
+  &__price {
+    margin-bottom: 16px;
+    border-bottom: 1px solid $c-light-gray;
+    padding-bottom: 6px;
+    @extend %h2;
+  }
+
+  &__newPrice {
+    margin-right: 8px;
+  }
+
+  &__oldPrice {
+    font-weight: 500;
+    color: $c-dark-gray;
+    text-decoration: line-through;
+  }
+
+  &__info {
+    margin-bottom: 16px;
+  }
+}

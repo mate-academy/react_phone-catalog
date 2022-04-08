@@ -1,0 +1,18 @@
+@import "../../styles/utils";
+
+.Header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid $c-light-gray;
+  padding-left: 24px;
+  background-color: $c-white;
+
+  &__side {
+    display: flex;
+    align-items: center;
+  }
+}

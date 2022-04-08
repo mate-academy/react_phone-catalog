@@ -1,0 +1,13 @@
+@import "../../styles/utils";
+
+.CartPage {
+  &__title {
+    margin-bottom: 24px;
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: 1fr 368px;
+    column-gap: $column-gap;
+  }
+}

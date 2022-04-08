@@ -1,0 +1,13 @@
+.CardButtons {
+  display: grid;
+  grid-template-columns: 1fr 40px;
+  column-gap: 8px;
+  height: 40px;
+
+  &--big {
+    display: grid;
+    grid-template-columns: 1fr 48px;
+    column-gap: 8px;
+    height: 48px;
+  }
+}

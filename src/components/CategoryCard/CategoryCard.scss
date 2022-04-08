@@ -1,0 +1,25 @@
+@import "../../styles/utils";
+
+.CategoryCard {
+  &__image {
+    margin-bottom: 24px;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    object-position: center;
+    transition-duration: $anim-time;
+
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+    }
+  }
+
+  &__title {
+    margin-bottom: 4px;
+  }
+
+  &__modelsCount {
+    color: $c-dark-gray;
+  }
+}

@@ -1,0 +1,60 @@
+@import "../../styles/utils";
+
+.Banner {
+  display: grid;
+  grid-template-columns: 32px 1fr 32px;
+  grid-template-rows: 400px 4px;
+  column-gap: $column-gap;
+  row-gap: 18px;
+  margin-bottom: 80px;
+
+  &__imageWrapper {
+    position: relative;
+  }
+
+  &__image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0;
+    transition-duration: $anim-time;
+
+    &--selected {
+      opacity: 1;
+    }
+  }
+
+  &__pagination {
+    grid-column: 2 / 3;
+    display: flex;
+    justify-content: center;
+    height: 100%;
+  }
+
+  &__paginationItem {
+    margin-right: 14px;
+    width: 14px;
+    height: 100%;
+    border: none;
+    background-color: $c-light-gray;
+    transition-duration: $anim-time;
+    cursor: pointer;
+
+    &--selected {
+      background-color: $c-very-dark-gray;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &:hover {
+      background-color: $c-very-dark-gray;
+    }
+  }
+}

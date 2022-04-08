@@ -1,0 +1,15 @@
+.Nav {
+  margin-left: 64px;
+
+  &__list {
+    display: flex;
+  }
+
+  &__item {
+    margin-right: 64px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}

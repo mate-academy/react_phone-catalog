@@ -1,0 +1,27 @@
+@import "../../styles/utils";
+
+.PrimaryButton {
+  border: none;
+  width: 100%;
+  height: 100%;
+  @extend %buttons;
+  color: $c-white;
+  background-color: $c-very-dark-gray;
+  transition-duration: $anim-time;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+  }
+
+  &--selected {
+    border: 1px solid $c-light-gray;
+    background-color: transparent;
+    color: $c-green;
+
+    &:hover {
+      box-shadow: none;
+      border-color: $c-very-dark-gray;
+    }
+  }
+}

@@ -1,0 +1,29 @@
+%h1 {
+  @include text (700, 32px, 41px, -0.01em);
+}
+
+%h2 {
+  @include text (700, 22px, 31px);
+}
+
+%h3 {
+  @include text (600, 20px, 26px);
+}
+
+%uppercase {
+  @include text (700, 12px, 11px, 0.04em);
+
+  text-transform: uppercase;
+}
+
+%buttons {
+  @include text (600, 14px, 21px);
+}
+
+%body-text {
+  @include text (500, 14px, 21px);
+}
+
+%small-text {
+  @include text (600, 12px, 15px);
+}

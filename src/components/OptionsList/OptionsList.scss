@@ -1,0 +1,34 @@
+@import "../../styles/utils";
+
+.OptionsList {
+  position: absolute;
+  z-index: 1;
+  top: 108%;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  border: 1px solid $c-light-gray;
+  padding: 8px 0;
+  background-color: $c-white;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+  transition-duration: $anim-time;
+
+  &__item {
+    display: block;
+    height: 32px;
+    width: 100%;
+    border: none;
+    padding-left: 12px;
+    background-color: $c-white;
+    @extend %body-text;
+    text-align: left;
+    color: $c-dark-gray;
+    cursor: pointer;
+    transition-duration: $anim-time;
+
+    &:hover {
+      background-color: $c-very-light-gray;
+      color: $c-very-dark-gray;
+    }
+  }
+}

@@ -1,0 +1,77 @@
+@import "../../styles/utils";
+
+.HeaderLink {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  height: $header-h;
+  @extend %uppercase;
+  color: $c-dark-gray;
+  transition-duration: $anim-time;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: block;
+    height: 3px;
+    background-color: $c-very-dark-gray;
+    transition-duration: $anim-time;
+    opacity: 0;
+  }
+
+  &--active {
+    color: $c-very-dark-gray;
+    &::after {
+      opacity: 1;
+    }
+  }
+
+  &:hover {
+    color: $c-very-dark-gray;
+  }
+
+  &:hover::after {
+    opacity: 1;
+  }
+
+  &__icon {
+    margin: 0;
+    border-left: 1px solid $c-light-gray;
+    width: $header-h;
+    height: $header-h;
+    background-image: url(../../accets/Heart.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 16px;
+    transition-duration: $anim-time;
+
+    &--cart {
+      background-image: url(../../accets/Shopping_bag.svg);
+    }
+
+    &:hover {
+      background-size: 20px;
+    }
+  }
+
+  &__count {
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 14px;
+    height: 14px;
+    border: 1px solid $c-white;
+    border-radius: 50%;
+    background-color: $c-red;
+    font-size: 9px;
+    line-height: 9px;
+    font-weight: 600;
+    color: $c-white;
+  }
+}

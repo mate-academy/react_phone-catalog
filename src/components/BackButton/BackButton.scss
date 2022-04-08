@@ -1,0 +1,24 @@
+@import "../../styles/utils";
+
+.BackButton {
+  margin-bottom: 16px;
+  display: flex;
+  align-items: flex-end;
+  border: none;
+  background-color: transparent;
+  @extend %small-text;
+  color: $c-dark-gray;
+  cursor: pointer;
+
+  &::before {
+    content: "";
+    margin-right: 5px;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-image: url(../../accets/Arrow_left_black.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+}

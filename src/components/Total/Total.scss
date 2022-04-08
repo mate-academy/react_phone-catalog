@@ -1,0 +1,24 @@
+@import "../../styles/utils";
+
+.Total {
+  padding: 24px;
+  border: 1px solid $c-light-gray;
+  @extend %body-text;
+  color: $c-dark-gray;
+
+  &__sum {
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid $c-light-gray;
+    text-align: center;
+  }
+
+  &__title {
+    @extend %h1;
+    color: $c-very-dark-gray;
+  }
+
+  &__button {
+    height: 48px;
+  }
+}

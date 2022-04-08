@@ -1,0 +1,39 @@
+@import "../../styles/utils";
+
+.CartItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 128px;
+  border: 1px solid $c-light-gray;
+  padding-left: 24px;
+  padding-right: 40px;
+
+  &__leftSide {
+    display: grid;
+    grid-auto-flow: column;
+    column-gap: 31px;
+    align-items: center;
+  }
+
+  &__rightSide {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 200px;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 96px;
+  }
+
+  &__image {
+    display: block;
+    height: 80px;
+    aspect-ratio: 1 / 1;
+    padding: 7px;
+  }
+}

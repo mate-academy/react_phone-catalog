@@ -1,0 +1,25 @@
+@import "../../styles/utils";
+
+.TechSpecs {
+  color: $c-dark-gray;
+
+  &--smallText {
+    @extend %small-text;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__value {
+    max-width: 75%;
+    color: $c-very-dark-gray;
+    text-align: right;
+  }
+}

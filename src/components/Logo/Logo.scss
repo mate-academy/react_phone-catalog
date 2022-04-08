@@ -1,0 +1,15 @@
+@import "../../styles/utils";
+
+.Logo {
+  display: inline-block;
+  width: 40px;
+  height: 12px;
+  background-image: url(../../accets/Logo.svg);
+  background-position: center;
+  background-size: cover;
+  transition-duration: $anim-time;
+
+  &:hover {
+    transform: scale(1.2);
+  }
+}

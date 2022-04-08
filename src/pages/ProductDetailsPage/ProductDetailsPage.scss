@@ -1,0 +1,32 @@
+@import "../../styles/utils";
+
+.ProductDetailsPage {
+  &__title {
+    margin-bottom: 40px;
+  }
+
+  &__content {
+    display: grid;
+    row-gap: 80px;
+  }
+
+  &__info {
+    display: grid;
+    grid-template-columns: 50% 30%;
+    column-gap: 64px;
+  }
+
+  &__description {
+    display: grid;
+    grid-template-columns: 50% 1fr;
+    column-gap: 64px;
+    color: $c-dark-gray;
+  }
+
+  &__subTitle {
+    margin-bottom: 32px;
+    padding-bottom: 16px;
+    color: $c-very-dark-gray;
+    border-bottom: 1px solid $c-light-gray;
+  }
+}

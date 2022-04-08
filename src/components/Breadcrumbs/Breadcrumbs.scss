@@ -1,0 +1,42 @@
+@import "../../styles/utils";
+
+.Breadcrumbs {
+  display: grid;
+  grid-auto-flow: column;
+  column-gap: 32px;
+  align-items: flex-end;
+  margin-bottom: 40px;
+  width: max-content;
+  @extend %small-text;
+  color: $c-dark-gray;
+
+  &__link {
+    position: relative;
+    color: $c-very-dark-gray;
+
+    &--home {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      background-image: url(../../accets/Home.svg);
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: -24px;
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      background-image: url(../../accets/Arrow_right_gray.svg);
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      transform: translateY(-50%);
+    }
+  }
+}

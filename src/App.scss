@@ -1,0 +1,17 @@
+@import "./styles/utils";
+@import "./styles/fonts";
+@import "./styles/typography";
+@import "./styles/reset";
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  @extend %body-text;
+
+  &__content {
+    padding-top: 40px;
+    padding-bottom: 80px;
+    flex-grow: 1;
+  }
+}

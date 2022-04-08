@@ -1,0 +1,22 @@
+@import "../../styles/utils";
+
+.Footer {
+  border: 1px solid $c-light-gray;
+
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: $footer-h;
+  }
+
+  &__link {
+    @extend %uppercase;
+    color: $c-dark-gray;
+    transition-duration: $anim-time;
+    
+    &:hover {
+      color: $c-very-dark-gray;
+    }
+  }
+}

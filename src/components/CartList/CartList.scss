@@ -1,0 +1,6 @@
+@import "../../styles/utils";
+
+.CartList {
+  display: grid;
+  row-gap: $column-gap;
+}

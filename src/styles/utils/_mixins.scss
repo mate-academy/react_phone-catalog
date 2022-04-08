@@ -1,0 +1,7 @@
+@mixin text ($_weight, $_size, $_l-height, $l-spacing: 0) {
+  font-family: Mont, Arial, Helvetica, sans-serif;
+  font-weight: $_weight;
+  font-size: $_size;
+  line-height: $_l-height;
+  letter-spacing: $l-spacing;
+}

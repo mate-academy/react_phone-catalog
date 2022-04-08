@@ -1,0 +1,17 @@
+@import "../../styles/utils";
+
+.Categories {
+  display: grid;
+  row-gap: 24px;
+  margin-bottom: 80px;
+
+  &__title {
+    @extend %h1;
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: $column-gap;
+  }
+}
