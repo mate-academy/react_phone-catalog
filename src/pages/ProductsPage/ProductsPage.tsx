@@ -41,21 +41,21 @@ export const ProductsPage: FunctionComponent<Props> = ({ title, products }) => {
     switch (item) {
       case 'Newest':
         searchParams.set('sort', item);
-        visibleProducts.sort((firstProduct, secondProduct) => {
+        products.sort((firstProduct, secondProduct) => {
           return firstProduct.age - secondProduct.age;
         });
         break;
 
       case 'Alphabetically':
         searchParams.set('sort', item);
-        visibleProducts.sort((firstProduct, secondProduct) => {
+        products.sort((firstProduct, secondProduct) => {
           return firstProduct.name.localeCompare(secondProduct.name);
         });
         break;
 
       case 'Cheapest':
         searchParams.set('sort', item);
-        visibleProducts.sort((firstProduct, secondProduct) => {
+        products.sort((firstProduct, secondProduct) => {
           return firstProduct.newPrice - secondProduct.newPrice;
         });
         break;
@@ -96,14 +96,14 @@ export const ProductsPage: FunctionComponent<Props> = ({ title, products }) => {
     </>
   ) : (
     <>
-      {visibleProducts[0]
+      {products[0]
         ? (
           <>
             <Breadcrumbs />
 
             <h1 className="ProductsPage__title">{title}</h1>
 
-            <p className="ProductsPage__amount">{`${visibleProducts.length} models`}</p>
+            <p className="ProductsPage__amount">{`${products.length} models`}</p>
 
             {!isFavourites && (
               <div className="ProductsPage__controls">
@@ -124,7 +124,7 @@ export const ProductsPage: FunctionComponent<Props> = ({ title, products }) => {
             )}
 
             <ProductsList
-              products={visibleProducts.slice(firstProductIndex, lastProductIndex)}
+              products={products.slice(firstProductIndex, lastProductIndex)}
             />
 
             {pagesCount > 1 && (
