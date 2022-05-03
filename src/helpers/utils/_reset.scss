@@ -1,0 +1,21 @@
+
+body, h1, h2, p {
+  margin: 0;
+}
+
+h1 {
+  font-size: 32px;
+}
+
+h2 {
+  font-size: 14px;
+}
+
+button {
+  border: none;
+  padding: 0;
+}
+
+button:focus {
+  outline: none;
+}

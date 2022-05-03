@@ -1,0 +1,11 @@
+@import '../../helpers/utils/variables';
+
+.NoSelected {
+  display: flex;
+  justify-content: center;
+
+  &-Title {
+    color: $font-color;
+    margin-bottom: 20px;
+  }
+}

@@ -1,1 +1,23 @@
-// not empty
+@font-face {
+  font-family: Mont;
+  src: url(./helpers/fonts/Mont-Regular.otf);
+}
+
+@font-face {
+  font-family: Mont;
+  font-weight: bold;
+  src: url(./helpers/fonts/Mont-Bold.otf);
+}
+
+@font-face {
+  font-family: Mont;
+  font-weight: semi-bold;
+  src: url(./helpers/fonts/Mont-SemiBold.otf);
+}
+
+html, input, button {
+  font-family: Mont;
+  font-size: 14px;
+  scroll-behavior: smooth;
+}
+

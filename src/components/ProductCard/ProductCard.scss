@@ -1,0 +1,175 @@
+@import '../../helpers/utils/variables.scss';
+@import '../../helpers/utils/mixins.scss';
+
+.ProductCard {
+  box-sizing: border-box;
+  padding: 32px 24px 24px;
+  width: $product-card-width;
+  height: $product-card-height;
+  border: $border;
+  display: flex;
+  flex-direction: column;
+
+
+  &-Wrapper {
+    position: relative;
+    margin-bottom: 40px;
+  }
+  
+  &-Wrapper:not(:last-child) {
+    margin-right: 16px;
+    @media (max-width: 1230px) {
+      margin: 0;
+    }
+  }
+
+  &-Link {
+    text-decoration: none;
+    transition-duration: 1s;
+  }
+
+  &-Image {
+    padding: 0 8px;
+    height: 208px;
+    width: 208px;
+    opacity: 1;
+  }
+
+  &-TransText {
+    font-size: 16px;
+    color: #fff;
+  }
+
+  &-TransBox {
+    display: none;
+  }
+
+  &-Link &-TransBox {
+    display: none;
+  }
+
+  &-Link:hover &-TransBox {
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    height: 257px;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: $active-link-color;
+    opacity: 0.85;
+    transition-duration: 3s;
+  }
+
+  &-Title {
+    margin-top: 24px;
+    margin-bottom: 8px;
+    height: 34px;
+    font-size: 14px;
+    font-weight: 500;
+    color: $product-card-black-font-color;
+  }
+
+  &-Info {
+    margin-top: 16px;
+    margin-bottom: 16px;
+  }
+
+  &-Price {
+    height: 28px;
+    position: relative;
+    margin-bottom: 8px;
+  }
+}
+
+.Price {
+  &-FinalPrice {
+    margin-right: 8px;
+    font-size: 22px;
+    font-weight: 700;
+    color: $product-card-black-font-color;
+    font-weight: bold;
+  }
+
+  &-WithoutDiscount {
+    font-size: 22px;
+    font-weight: 500;
+    color: $product-card-grey-font-color;
+    line-height: 31px;
+  }
+
+  &::after {
+    position: absolute;
+    content: '';
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: $white-color;
+    bottom: -8px;
+  }
+}
+
+
+.Info {
+  display: flex;
+  flex-direction: column;
+
+  &-Block {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  &-Block:not(:first-child) {
+    margin-top: 8px;
+  }
+  
+  &-Name {
+    font-size: 12px;
+    color: $product-card-grey-font-color;
+  }
+
+  &-Value {
+    font-size: 12px;
+    color: $product-card-black-font-color;
+  }
+}
+
+.Actions {
+  display: flex;
+
+  &-CartButton {
+    cursor: pointer;
+    width: 176px;
+    height: 40px;
+    background-color: $product-card-black-font-color;
+    color: #fff;
+    margin-right: 8px;
+  }
+
+  &-CartButton:hover {
+    box-shadow: 0px 3px 13px 0px #17203142;
+
+  }
+
+  &-CartButton_active {
+    background-color: #fff;
+    border: $border;
+    color: $green-font-color;
+  }
+
+  &-FavouriteButton {
+    box-sizing: border-box;
+    display: flex;
+    @include icon-wrapper (40px);
+    justify-content: center;
+    align-items: center;
+    border: $border;
+    background-color: #fff;
+    cursor: pointer;
+  }
+
+  &-FavouriteButton:hover {
+    border: $border-active;
+  }
+}

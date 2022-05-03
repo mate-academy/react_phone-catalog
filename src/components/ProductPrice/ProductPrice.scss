@@ -1,0 +1,17 @@
+@import '../../helpers/utils/variables.scss';
+
+.Info-NewPrice {
+  margin-right: 8px;
+  font-size: 32px;
+  font-weight: 700;
+  color: $active-link-color;
+}
+
+.Info-Price {
+  margin-top: 200px;
+}
+
+.Info-OldPrice {
+  font-size: 22px;
+  color: $font-color;
+}

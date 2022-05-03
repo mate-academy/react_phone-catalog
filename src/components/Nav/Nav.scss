@@ -1,0 +1,39 @@
+@import '../../helpers/utils/variables';
+
+.Navbar {
+  display: flex;
+  align-items: center;
+  line-height: $header-height;
+
+  &-Link {
+    margin-right: $header-margin;
+    height: 100%;
+    position: relative;
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #89939A;
+
+    @media (max-width: 768px) {
+      font-size: $mob-font-size;
+      margin-right: $mob-margins-header-footer;
+    }
+  }
+
+  &-Link:hover {
+    color: $active-link-color;
+  }
+
+  &-Link_active {
+    color: $active-link-color;
+  }
+
+  &-Link_active::after {
+    display: flex;
+    content: "";
+    height: 3px;
+    width: 100%;
+    background: $active-link-color;
+  }
+}
