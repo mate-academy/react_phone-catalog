@@ -1,5 +1,7 @@
 import { page } from '../support/utils/common.js';
 
+const phone = 'Motorola XOOM™ with Wi-Fi';
+
 describe('Favorites', () => {
     it('should show the list with all the favorite products', () => {
         page.addToFavorites();
@@ -7,20 +9,20 @@ describe('Favorites', () => {
         cy.url()
             .should('eq', 'http://localhost:3000/#/favorites');
 
-        cy.contains('Motorola XOOM™ with Wi-Fi');
+        cy.contains(phone);
     });
 
-    it('should have an option to remove a favorite item by pressing a "hart"', () => {
+    it('should have an option to remove a favorite item by pressing a "heart"', () => {
         page.addToFavorites();
 
-        cy.contains('Motorola XOOM™ with Wi-Fi');
+        cy.contains(phone);
 
         cy.getByDataCy('addToFavorite')
             .click();
 
         cy.reload();
 
-        cy.contains('Motorola XOOM™ with Wi-Fi')
+        cy.contains(phone)
             .should('not.exist');
     });
 });
