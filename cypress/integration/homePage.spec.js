@@ -41,12 +41,13 @@ describe('Home page', () => {
   });
 
   it('should have "Shop by category" block implemented', () => {
-    cy.get('.ShopByCategory-Categories').within(() => {
-      cy.get('[href="#/phones"]');
+    cy.get('.ShopByCategory-Categories')
+      .within(() => {
+        cy.get('[href="#/phones"]');
 
-      cy.get('[href="#/tablets"]');
+        cy.get('[href="#/tablets"]');
 
-      cy.get('[href="#/accessories"]');
-    })
+        cy.get('[href="#/accessories"]');
+      })
   });
 });

@@ -1,6 +1,6 @@
 describe('App', () => {
   beforeEach(() => {
-    cy.visit('/'); 
+    cy.visit('/');
   });
 
   it('should have "Header" with links to all the pages implemented', () => {
