@@ -1,0 +1,31 @@
+@import "../../helpers/utils/variables";
+@import "../../helpers/utils/mixins";
+
+.footer {
+  width: 100%;
+  border-top: $border;
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.nav-item {
+  &__link-text {
+    text-transform: none;
+    font-weight: 600;
+    line-height: 15px;
+    margin-right: 16px;
+  }
+
+  &__icon {
+    transform: rotate(-90deg);
+  }
+}

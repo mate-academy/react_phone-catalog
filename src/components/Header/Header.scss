@@ -1,0 +1,80 @@
+@import "../../helpers/utils/variables";
+@import "../../helpers/utils/mixins";
+
+.header {
+  width: 100%;
+  border-bottom: $border;
+
+  &__nav-block {
+    max-width: 1440px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+}
+
+.order-info {
+  display: flex;
+  align-items: center;
+
+  &__link {
+    width: 65px;
+    height: $header-height;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-left: $border;
+    position: relative;
+
+    &:last-child {
+      border-right: $border;
+    }
+
+    &--is-selected {
+      &::after {
+        @include is-active;
+      }
+    }
+
+    @media(max-width: 768px) {
+      width: 55px;
+      height: $header-height-tb;
+    }
+  }
+
+  &__item {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    @include transition(transform);
+
+    &--bg-favourites {
+      background-image: url(../../helpers/img/icons/Favourites.svg);
+    }
+
+    &--bg-cart {
+      background-image: url(../../helpers/img/icons/Cart.svg);
+    }
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
+
+.cart {
+  &__count {
+    font-size: 0;
+    color: transparent;
+  }
+}

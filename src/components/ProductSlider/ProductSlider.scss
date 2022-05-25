@@ -1,0 +1,24 @@
+.product-slider {
+  &__inner {
+    width: 100%;
+    height: max-content;
+    margin: 0 auto;
+  }
+
+  &__list {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    margin: 0 0 80px;
+    position: relative;
+  }
+
+  &__list-item {
+    width: 272px;
+    margin: 0 16px 0 0;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}

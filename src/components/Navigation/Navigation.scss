@@ -1,0 +1,12 @@
+.nav {
+  display: flex;
+  align-items: center;
+
+  &__link {
+    margin-right: 65px;
+
+    @media(max-width: 768px) {
+      margin-right: 40px;
+    }
+  }
+}
