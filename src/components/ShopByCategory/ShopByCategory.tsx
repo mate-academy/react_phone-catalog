@@ -1,20 +1,32 @@
-import React, { useMemo } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { CategoryColumn } from '../CategoryColumn';
-import products from '../../api/products.json';
+import { getProducts } from '../../api/api';
+import { Product } from '../../types/Product';
 import './ShopByCategory.scss';
 
 export const ShopByCategory:React.FC = () => {
-  const phones = useMemo(() => {
-    return products.filter(p => p.type === 'phone').length;
-  }, [products]);
+  const [products, setProducts] = useState<Product[]>([]);
 
-  const tablets = useMemo(() => {
-    return products.filter(p => p.type === 'tablet').length;
-  }, [products]);
+  useEffect(() => {
+    getProducts()
+      .then(setProducts);
+  }, []);
 
-  const accessories = useMemo(() => {
-    return products.filter(p => p.type === 'accessorie').length;
-  }, [products]);
+  const getProductsByType = (type: string) => (
+    products.filter(product => product.type === type)
+  );
+
+  const phonesCount = useMemo(() => (
+    getProductsByType('phone').length
+  ), [products]);
+
+  const tabletsCount = useMemo(() => (
+    getProductsByType('tablet').length
+  ), [products]);
+
+  const accessoriesCount = useMemo(() => (
+    getProductsByType('accessories').length
+  ), [products]);
 
   return (
     <section className="shop-by-category home-page__shop-by-category">
@@ -26,15 +38,15 @@ export const ShopByCategory:React.FC = () => {
       <div className="shop-by-category__columns">
         <CategoryColumn
           title="phones"
-          quantity={phones}
+          quantity={phonesCount}
         />
         <CategoryColumn
           title="tablets"
-          quantity={tablets}
+          quantity={tabletsCount}
         />
         <CategoryColumn
           title="accessories"
-          quantity={accessories}
+          quantity={accessoriesCount}
         />
       </div>
     </section>

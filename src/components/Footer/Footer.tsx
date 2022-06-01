@@ -22,7 +22,13 @@ export const Footer: React.FC = React.memo(
             </div>
 
             <div className="nav-item footer__nav-item">
-              <Link to="/" className="link footer__link">
+              <button
+                type="button"
+                className="link footer__link"
+                onClick={() => {
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+              >
                 <p
                   className="nav-item__link-text"
                 >
@@ -35,7 +41,7 @@ export const Footer: React.FC = React.memo(
                 >
                   <span className="icon nav-item__icon" />
                 </span>
-              </Link>
+              </button>
 
             </div>
           </div>

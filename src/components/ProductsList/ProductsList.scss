@@ -1,0 +1,57 @@
+@import "../../helpers/utils/variables";
+
+.products {
+  &__controls {
+    display: flex;
+    align-items: center;
+    margin: 0 0 24px;
+  }
+
+  &__control {
+    width: max-content;
+    margin: 0 16px 0 0;
+  }
+
+  &__control-title {
+    font-size: 12px;
+    font-weight: 600;
+    color: $secondary-color;
+    margin: 0 0 4px;
+  }
+
+  &__select {
+    font-size: 14px;
+    font-family: "Mont", sans-serif;
+    font-weight: 600;
+    color: $primary-color;
+    cursor: pointer;
+    min-width: 128px;
+    outline: none;
+    padding: 10px 12px;
+    border: 1px solid $secondary-color;
+    background-color: $bg-hover-color;
+
+    &:hover {
+      border-color: $secondary-color;
+    }
+  }
+
+  &__list {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin: 0 0 40px;
+  }
+
+  &__list-item {
+    width: max-content;
+    margin: 0 0 40px;
+  }
+
+  &__footer {
+    margin: 0 0 80px;
+  }
+}

@@ -1,0 +1,60 @@
+@import "../../helpers/utils/variables";
+@import "../../helpers/utils/mixins";
+
+.galery {
+  min-height: 425px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &__list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 0 -16px;
+  }
+
+  &__list-item {
+    margin: 0 17px 16px 0;
+  }
+
+  &__list-item-button {
+    border: 1px solid $icons-color;
+    background-color: transparent;
+    outline: none;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7px;
+    @include transition(border-color);
+
+    &:hover,
+    &--is-selected {
+      border-color: $primary-color;
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    margin: 7px;
+  }
+
+  &__selected-image-box {
+    width: 442px;
+    height: 442px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__selected-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}

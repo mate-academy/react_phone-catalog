@@ -1,0 +1,9 @@
+.pagination-button {
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+
+  &--is-disabled {
+    pointer-events: none;
+  }
+}

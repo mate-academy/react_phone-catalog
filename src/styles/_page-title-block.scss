@@ -1,0 +1,15 @@
+@import "../helpers/utils/variables";
+
+.page-title-block {
+  &__title {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 41px;
+    margin: 0 0 8px;
+  }
+
+  &__item-quantity {
+    line-height: 21px;
+    color: $secondary-color;
+  }
+}

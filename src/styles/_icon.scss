@@ -2,18 +2,17 @@
 @import "../helpers/utils/mixins";
 
 .icon-box {
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: $border;
-  background-color: transparent;
+  @include box;
   @include transition( border-color);
 
   &--is-big {
     width: 40px;
     height: 40px;
+  }
+
+  &--is-large {
+    width: 48px;
+    height: 48px;
   }
 
   &:hover {
@@ -26,9 +25,7 @@
   width: 5.3px;
   height: 9.3px;
 
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
+  @include bg-image-option;
   background-image: url(../helpers/img/icons/Vector-arrow.svg);
 
   &--left {

@@ -9,6 +9,10 @@
 @import "./styles/block-header";
 @import "./styles/title";
 @import "./styles/button";
+@import "./styles/page-title-block";
+@import "./styles/pagination";
+@import "./styles/nav-button";
+@import "./styles/description";
 
 * {
   box-sizing: border-box;
@@ -20,7 +24,7 @@ body {
   font-size: 14px;
   font-family: "Mont", sans-serif;
   color: $primary-color;
-  background-color: $bg-hover-color;
+  background-color: $white-color;
 }
 
 .wrapper {

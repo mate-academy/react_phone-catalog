@@ -12,6 +12,11 @@
   line-height: 21px;
   font-weight: 600;
 
+  &--is-large {
+    width: 100%;
+    height: 48px;
+  }
+
   &--is-active {
     background-color: transparent;
     color: $green-color;

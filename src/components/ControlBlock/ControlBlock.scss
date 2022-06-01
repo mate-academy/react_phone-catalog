@@ -1,0 +1,18 @@
+.control-block {
+  width: 100%;
+  display: flex;
+  align-items: center;
+
+  &__button {
+    flex-grow: 1;
+
+    &:first-of-type {
+      margin-right: 8px;
+    }
+
+    &--is-transparent {
+      border: none;
+      background-color: transparent;
+    }
+  }
+}

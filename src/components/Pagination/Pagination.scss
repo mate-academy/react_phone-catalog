@@ -1,14 +1,5 @@
 .pagination {
-  &-button {
-    border: none;
-    background-color: transparent;
-
-    &:first-child {
-      margin-right: 16px;
-    }
-
-    &--is-disabled {
-      pointer-events: none;
-    }
-  }
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }

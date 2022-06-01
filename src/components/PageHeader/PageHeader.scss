@@ -1,0 +1,51 @@
+@import "../../helpers/utils/variables";
+@import "../../helpers/utils/mixins";
+
+.page-header {
+  &__content {
+    display: flex;
+    align-items: center;
+  }
+
+  &__icon,
+  &__arrow {
+    @include bg-image-option;
+  }
+
+  &__icon {
+    font-size: 0;
+    width: 13.3px;
+    height: 14.7px;
+    background-image: url(../../helpers/img/icons/Home.svg);
+    margin: 0 14.7px 0 0;
+  }
+
+  &__arrow {
+    font-size: 0;
+    width: 5.3px;
+    height: 9.3px;
+    background-image: url(../../helpers/img/icons/Vector-arrow-right-dis.svg);
+    margin: 0 13.3px 0 0;
+  }
+
+  &__title {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+    color: $secondary-color;
+
+    &--with-subtitle {
+      color: $primary-color;
+      margin: 0 13.3px 0 0;
+    }
+
+    &::first-letter {
+      text-transform: uppercase;
+    }
+  }
+
+  &__title-link {
+    text-decoration: none;
+    color: inherit;
+  }
+}

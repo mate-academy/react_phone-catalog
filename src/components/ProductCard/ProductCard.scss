@@ -1,8 +1,10 @@
 @import "../../helpers/utils/variables";
+@import "../../helpers/utils/mixins";
 
 .product-card {
-  width: 100%;
-  min-height: 507px;
+  width: 272px;
+  min-height: 519px;
+  height: 100%;
   background-color: $white-color;
   border: $border;
   display: flex;
@@ -23,6 +25,11 @@
     width: 100%;
     height: auto;
     object-fit: contain;
+    @include transition(transform);
+
+    &:hover {
+      transform: scale(1.05);
+    }
   }
 
   &__title {
@@ -33,59 +40,18 @@
     margin: 0 0 6.5px;
   }
 
-  &__price-block {
+  &__price-box {
     width: 100%;
     align-self: flex-start;
-    font-size: 22px;
-    font-weight: 700;
-    line-height: 30.8px;
-    border-bottom: $border;
-    padding: 0 0 6.5px;
     margin: 0 0 16px;
   }
 
-  &__price {
-    display: inline-block;
-    margin-right: 8px;
-
-    &--is-old {
-      text-decoration: line-through;
-      font-weight: 500;
-      color: $secondary-color;
-    }
-  }
-
-  &__description {
+  &__description-box {
     align-self: stretch;
-    list-style: none;
     margin: 0 0 16px;
   }
 
-  &__description-item {
-    font-size: 12px;
-    font-weight: 600;
-    line-height: 15.4px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  &__char {
-    color: $secondary-color;
-  }
-
-  &__control-block {
-    display: flex;
-    align-items: center;
-  }
-
-  &__button {
-    margin-left: 8px;
-
-    &--is-transparent {
-      border: none;
-      background-color: transparent;
-    }
+  &__control-box {
+    width: 100%;
   }
 }

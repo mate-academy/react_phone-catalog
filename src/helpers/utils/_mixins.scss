@@ -10,3 +10,19 @@
 @mixin transition($prop) {
   transition: #{$prop} 0.3s linear 0.05s;
 }
+
+@mixin box {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: $border;
+  background-color: transparent;
+}
+
+@mixin bg-image-option {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
