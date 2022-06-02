@@ -17,11 +17,11 @@ Store the Cart in the `localStorage`
 - Use component names as BEM block names with all the other BEM rules applied
 
 ### App
-1. Add a `Header` with links to all the pages containing `class="Header"` attribute
+1. Add `<header>` with links to all the pages
     - The `Logo` and the `Nav` are aligned left
     - The `Favorites` and the `Cart` are aligned right
 1. Use `NavLink` to highlight current page in `Header`
-1. Add `Footer` with `class="Footer"` attribute
+1. Add `<footer>`
     - Footer content is limited to the same width as the page content
     - Add the link to the Github repo
     - (*) Implement `Back to top` button
@@ -39,16 +39,17 @@ Store the Cart in the `localStorage`
       sorted by absolute discount value (not percentage given in API)
     - For now do all the filtering and sorting on client side
     - Create `ProductCard` component to use it everywhere and add `data-cy="cardsContainer"` attribute to the container of these elements
-    - Add ability to use `<` (add `data-cy="buttonLeft" attribute`) and `>` (add `data-cy="buttonRight" attribute`) buttons to scroll products.
+    - Add ability to use `<` and `>` buttons to scroll products.
 1. Add `Brand new` block using `ProductsSlider` 
     - Create `getBrandNewProducts` method fetching products without a discount from the API starting from the most expensive
-1. Add `Shop by category` block with the links to `/phones`, `/tablets` and `/accessories`.
-1. Replace the `Home page` title with slider and use `class="Slider-Image"` for pictures in this slider
+1. Add `Shop by category` block with the links to `/phones`, `/tablets` and `/accessories`. Add `data-cy="categoryLinksContainer"`
+to links container.
+1. Replace the `Home page` title with slider and use for picture element of this slider
     - User can change pictures with buttons infinitely
     - (*) Swipe pictures every 5 seconds
 
 ### Phones page
-1. Create `PhonesPage` available at `/phones` with just a `<h1>` title `Mobile phones`
+1. Create `PhonesPage` available at `/phones` with a `<h1>` title `Mobile phones`
     - Create `getPhones` API call fetching the products with the `type`: `phone`
 1. Add `ProductsList` with `data-cy="productList"` attribute showing all the `phones`
 1. Implement a `Loader` to show it while waiting for the data from server
@@ -74,7 +75,7 @@ Store the Cart in the `localStorage`
     - Use `Loader` when fetching the details
 1. Show the details on the page
     - Hide `Available colors` and `Select capacity` for now
-    - `About` section with `class="Info-Description"` should contain just a description (without any subheaders)
+    - `About` section with `data-cy="productDescription"` should contain just a description (without any subheaders)
     - Choose `Tech specs` you want to show
 1. Add ability to choose a picture
 1. Implement `You may also like` block with products chosen randomly
@@ -92,8 +93,8 @@ Store the Cart in the `localStorage`
   Later on it will interact with the API
 1. Add ability to remove items from the `Cart` with a `x` button. Add `data-cy="cartDeleteButton"` attribute to the `<button>` element.
 1. Add message `Your cart is empty` when there are no products in the `Cart`
-1. Add ability to change the quantity in the `Cart` with `-` and `+` buttons around the quantity.
-1. Total amount and quantity should be calculated automatically. The element showing the quantity should have `class="Quantity-Value"` attribute.
+1. Add ability to change the quantity in the `Cart` with buttons containing symbols `-` and `+` around the quantity.
+1. Total amount and quantity should be calculated automatically. The element showing the quantity should have `data-cy="productQauntity"` attribute.
 1. `Checkout` button should show the message `We are sorry, but this feature is not implemented yet` after clicking.
 1. (*) Show the total quantity near the `Cart` icon in the header.
 1. (*) Save the `Cart` to the `localSotrage` on each change and read it on page load.
@@ -104,9 +105,9 @@ Store the Cart in the `localStorage`
 1. (*) Show the favorites count near the `Favorites` icon in the header
 
 ### Search
-1. Add a `Search` component with an input into the `Header` to filter products
+1. Add a `Search` component with an input into the `<header>` to filter products
 1. It should be shown only at `/phones`, `/tablets`, `/accessories` and `/favorites` with an appropriate text
-1. The `x` sign with `class="Search-Delete"` attribute appears when the query is not empty and clears the search
+1. The `x` sign with `data-cy="searchDelete"` attribute appears when the query is not empty and clears the search
 1. It should work with pagination and sorting
 1. (*) Add `debounce` to the search field
 1. (*) Save `Search` params in the URL using `queryParams` (`?query=moto`) and apply them on page load

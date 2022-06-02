@@ -37,12 +37,12 @@ describe('Cart', () => {
 
         page.clickButton('+');
 
-        cy.get('.Quantity-Value')
+        cy.getByDataCy('productQauntity')
             .should('contain', 2);
 
         page.clickButton('-');
 
-        cy.get('.Quantity-Value')
+        cy.getByDataCy('productQauntity')
             .should('contain', 1);
     });
 
@@ -53,7 +53,7 @@ describe('Cart', () => {
 
         page.clickButton('+');
 
-        cy.get('.Quantity-Value')
+        cy.getByDataCy('productQauntity')
             .should('contain', 2);
 
         cy.contains(1560);
