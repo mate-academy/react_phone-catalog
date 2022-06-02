@@ -4,7 +4,7 @@ describe('Search', () => {
 
     cy.visit('/#/phones');
 
-    cy.get('.Header')
+    cy.get('header')
       .find('input')
       .as('search');
   });
@@ -16,7 +16,7 @@ describe('Search', () => {
       .should('not.exist');
   });
 
-  it('should be implemented', () => {
+  it('should have search function implemented', () => {
     cy.get('@search')
       .type('T-Mobile G2{enter}');
 
@@ -31,7 +31,7 @@ describe('Search', () => {
       .type('Moto')
       .should('have.value', 'Moto');
 
-    cy.get('.Search-Delete')
+    cy.getByDataCy('searchDelete')
       .click();
 
     cy.get('@search')

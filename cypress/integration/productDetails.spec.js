@@ -20,7 +20,7 @@ describe('Product details', () => {
             cy.get('a[href*="motorola"]')
                 .click();
 
-            cy.get('.Info-Description')
+            cy.getByDataCy('productDescription')
                 .should('contain', prodDetails.description);
         });
     });
