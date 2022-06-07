@@ -13,6 +13,10 @@
     align-items: center;
     justify-content: space-between;
   }
+
+  &__search-block {
+    align-self: stretch;
+  }
 }
 
 .navbar {
@@ -50,12 +54,11 @@
   }
 
   &__item {
+    position: relative;
     display: inline-block;
     width: 16px;
     height: 16px;
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
+    @include bg-image-option;
     @include transition(transform);
 
     &--bg-favourites {
@@ -70,11 +73,21 @@
       transform: scale(1.1);
     }
   }
-}
 
-.cart {
   &__count {
-    font-size: 0;
-    color: transparent;
+    font-size: 9px;
+    font-weight: 600;
+    color: $white-color;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid $white-color;
+    background: $red-color;
+    position: absolute;
+    top: -6px;
+    right: -6px;
   }
 }

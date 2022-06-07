@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Product } from '../../types/Product';
@@ -46,7 +47,10 @@ export const ProductCard: React.FC<Props> = React.memo(
           />
         </div>
         <div className="product-card__control-box">
-          <ControlBlock isLarge={false} />
+          <ControlBlock
+            product={product}
+            isLarge={false}
+          />
         </div>
       </div>
     );

@@ -1,6 +1,18 @@
+@import "../../helpers/utils/variables";
+
 .products-page {
-  &__top,
-  &__page-title-block {
+  &__top {
+    margin: 0 0 40px;
+  }
+
+  &__title {
+    margin: 0 0 8px;
+  }
+
+  &__item-quantity {
+    display: inline-block;
+    line-height: 21px;
+    color: $secondary-color;
     margin: 0 0 40px;
   }
 }

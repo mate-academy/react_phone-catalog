@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import React, { useMemo } from 'react';
 import { useSearchParams, useLocation } from 'react-router-dom';
 import { ProductCard } from '../ProductCard';

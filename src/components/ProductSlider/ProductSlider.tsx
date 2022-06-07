@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import React, { useState } from 'react';
 import { Product } from '../../types/Product';
 import { Pagination } from '../Pagination';

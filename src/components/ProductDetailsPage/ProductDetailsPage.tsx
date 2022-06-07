@@ -1,5 +1,6 @@
+/* eslint-disable import/no-cycle */
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import { getProduct, getProducts, getSuggestedProducts } from '../../api/api';
 import { Loader } from '../Loader/Loader';
 import { PageHeader } from '../PageHeader';
@@ -9,8 +10,10 @@ import { ControlBlock } from '../ControlBlock';
 import { Description, createItem } from '../Description';
 import { Product } from '../../types/Product';
 import { ProductDetail } from '../../types/ProductDetail';
-import './ProductDetailsPage.scss';
 import { ProductSlider } from '../ProductSlider';
+import { BackButton } from '../BackButton';
+
+import './ProductDetailsPage.scss';
 
 export const ProductDetailsPage: React.FC = () => {
   const [isLoad, setIsLoad] = useState(true);
@@ -18,6 +21,9 @@ export const ProductDetailsPage: React.FC = () => {
   const [productDetail, setProductDetail] = useState<ProductDetail>();
   const [products, setProducts] = useState<Product[]>([]);
   const { productId } = useParams();
+
+  const { pathname } = useLocation();
+  const type = pathname.split('/')[1].slice(0, -1);
 
   useEffect(() => {
     getProducts()
@@ -35,7 +41,7 @@ export const ProductDetailsPage: React.FC = () => {
 
   return (
     <>
-      {(productDetail && product) && (
+      {(productDetail && product) ? (
         <section className="product-details">
           <div className="product-details__top">
             <PageHeader
@@ -43,17 +49,9 @@ export const ProductDetailsPage: React.FC = () => {
               subtitle={productDetail.name}
             />
             <div className="container">
-              <button
-                type="button"
-                className="nav-button product-details__nav-button"
-                onClick={() => {
-                  window.history.back();
-                  window.scrollTo({ top: 0, behavior: 'smooth' });
-                }}
-              >
-                <span className="nav-button__icon" />
-                Back
-              </button>
+              <div className="product-details__nav-button">
+                <BackButton />
+              </div>
             </div>
           </div>
           <div className="product-details__content">
@@ -79,7 +77,10 @@ export const ProductDetailsPage: React.FC = () => {
                         />
                       </div>
                       <div className="order-block__control-box">
-                        <ControlBlock isLarge />
+                        <ControlBlock
+                          isLarge
+                          product={product}
+                        />
                       </div>
                     </div>
                     <div className="info-box product-info__info-box">
@@ -149,6 +150,10 @@ export const ProductDetailsPage: React.FC = () => {
             </div>
           </div>
         </section>
+      ) : (
+        <h3 className="info-text product-details__info-text">
+          {`${type} was not found`}
+        </h3>
       )}
     </>
   );

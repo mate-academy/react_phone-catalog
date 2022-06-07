@@ -1,2 +1,2 @@
 /* eslint-disable import/no-cycle */
-export * from './ProductsPage';
+export * from './FavoritesPage';
