@@ -75,6 +75,9 @@ export const Banner: React.FC = () => {
                           i === bannerIndex,
                     },
                   )}
+                  onClick={() => {
+                    setBannerIndex(i);
+                  }}
                 >
                   Click to change the picture
                 </button>

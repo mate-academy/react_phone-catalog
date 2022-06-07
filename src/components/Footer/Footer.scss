@@ -4,6 +4,8 @@
 .footer {
   width: 100%;
   border-top: $border;
+  position: relative;
+  z-index: 0;
 
   &__nav {
     display: flex;

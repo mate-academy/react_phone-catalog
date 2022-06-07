@@ -5,11 +5,12 @@ import './Pagination.scss';
 type Props = {
   length: number;
   indexOfStart: number;
+  numberOfItems: number;
   setIndexOfStart: React.Dispatch<React.SetStateAction<number>>
 };
 
 export const Pagination: React.FC<Props> = ({
-  length, indexOfStart, setIndexOfStart,
+  length, indexOfStart, numberOfItems, setIndexOfStart,
 }) => {
   return (
     <div className="pagination">
@@ -38,7 +39,7 @@ export const Pagination: React.FC<Props> = ({
           'pagination-button',
           {
             'pagination-button--is-disabled':
-            indexOfStart === length - 4,
+            indexOfStart === length - numberOfItems,
           },
         )}
         onClick={() => {
@@ -48,7 +49,7 @@ export const Pagination: React.FC<Props> = ({
         <div className="icon-box pagination__icon-box">
           <span className={classNames(
             'icon',
-            { 'icon--is-disabled': indexOfStart === length - 4 },
+            { 'icon--is-disabled': indexOfStart === length - numberOfItems },
           )}
           />
         </div>

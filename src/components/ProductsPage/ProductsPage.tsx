@@ -4,7 +4,7 @@ import { useSearchParams } from 'react-router-dom';
 import { Loader } from '../Loader/Loader';
 import { ProductsList } from '../ProductsList';
 import { PageHeader } from '../PageHeader';
-import { filterProducts } from '../FavouritesPage';
+import { filterProducts } from '../FavoritesPage';
 import { Product } from '../../types/Product';
 import { getPhones, getTablets, getAccessories } from '../../api/api';
 

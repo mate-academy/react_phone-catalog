@@ -40,6 +40,10 @@ body {
 .App {
   &__header {
     margin: 0 auto 40px;
+
+    @media (max-width: 768px) {
+      margin: 0 auto 25px;
+    }
   }
 }
 

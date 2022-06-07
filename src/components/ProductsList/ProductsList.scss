@@ -36,22 +36,15 @@
     }
   }
 
-  &__list {
-    list-style: none;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 16px;
-    margin: 0 0 40px;
-  }
-
-  &__list-item {
-    width: max-content;
+  &__list-box {
     margin: 0 0 40px;
   }
 
   &__footer {
     margin: 0 0 80px;
+
+    @media (max-width: 768px) {
+      margin: 0 0 50px;
+    }
   }
 }

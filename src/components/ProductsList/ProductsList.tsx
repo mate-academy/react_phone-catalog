@@ -1,9 +1,9 @@
 /* eslint-disable import/no-cycle */
 import React, { useMemo } from 'react';
 import { useSearchParams, useLocation } from 'react-router-dom';
-import { ProductCard } from '../ProductCard';
 import { Select } from '../Select';
 import { PagePagination } from '../PagePagination';
+import { List } from '../List';
 import { Product } from '../../types/Product';
 import './ProductsList.scss';
 
@@ -88,16 +88,9 @@ export const ProductsList: React.FC<Props> = ({ products }) => {
           onChange={changeSearchParamsBySelect}
         />
       </div>
-      <ul className="products__list">
-        {visibleProducts.map((product) => (
-          <li
-            key={product.id}
-            className="products-list__item"
-          >
-            <ProductCard product={product} />
-          </li>
-        ))}
-      </ul>
+      <div className="products__list-box">
+        <List products={visibleProducts} />
+      </div>
       {+itemsOnPage < products.length && (
         <div className="products__footer">
           <PagePagination

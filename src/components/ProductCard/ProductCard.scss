@@ -2,7 +2,7 @@
 @import "../../helpers/utils/mixins";
 
 .product-card {
-  width: 272px;
+  width: 100%;
   min-height: 519px;
   height: 100%;
   background-color: $white-color;
@@ -42,7 +42,6 @@
 
   &__price-box {
     width: 100%;
-    align-self: flex-start;
     margin: 0 0 16px;
   }
 

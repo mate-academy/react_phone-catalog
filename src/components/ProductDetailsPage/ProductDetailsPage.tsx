@@ -143,11 +143,11 @@ export const ProductDetailsPage: React.FC = () => {
                   </ul>
                 </div>
               </div>
-              <ProductSlider
-                title="You may also like"
-                products={products}
-              />
             </div>
+            <ProductSlider
+              title="You may also like"
+              products={products}
+            />
           </div>
         </section>
       ) : (

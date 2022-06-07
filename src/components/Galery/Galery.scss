@@ -7,16 +7,30 @@
   align-items: center;
   justify-content: space-between;
 
+  @media (max-width: 768px) {
+    min-height: auto;
+    flex-direction: column-reverse;
+  }
+
   &__list {
     list-style: none;
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 0 0 -16px;
+
+    @media (max-width: 768px) {
+      flex-direction: row;
+    }
   }
 
   &__list-item {
     margin: 0 17px 16px 0;
+
+    @media (max-width: 768px) {
+      width: 25%;
+      margin: 0 10px 16px 0;
+    }
   }
 
   &__list-item-button {
@@ -31,6 +45,11 @@
     padding: 7px;
     @include transition(border-color);
 
+    @media (max-width: 768px) {
+      width: 100%;
+      height: auto;
+    }
+
     &:hover,
     &--is-selected {
       border-color: $primary-color;
@@ -42,6 +61,10 @@
     height: 100%;
     object-fit: contain;
     margin: 7px;
+
+    @media (max-width: 768px) {
+      margin: 0;
+    }
   }
 
   &__selected-image-box {
@@ -50,6 +73,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+    @media (max-width: 768px) {
+      width: 300px;
+      height: 300px;
+    }
+
+    @media (max-width: 650px) {
+      width: 410px;
+      height: 410px;
+    }
   }
 
   &__selected-image {

@@ -17,6 +17,11 @@
     border: none;
     outline: none;
 
+    @media (max-width: 570px) {
+      padding: 0 15px;
+      width: 100%;
+    }
+
     &::placeholder {
       color: $icons-color;
     }

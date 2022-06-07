@@ -7,11 +7,11 @@ import { Search } from '../Search';
 
 type Props = {
   quantity: number;
-  favourites: number;
+  favorites: number;
 };
 
 export const Header: React.FC<Props> = React.memo(
-  ({ quantity, favourites }) => {
+  ({ quantity, favorites }) => {
     const [isVisibleSearchPanel, setIsVisibleSearchPanel] = useState(false);
     const { pathname } = useLocation();
 
@@ -54,8 +54,8 @@ export const Header: React.FC<Props> = React.memo(
                 <span
                   className="order-info__item order-info__item--bg-favourites"
                 >
-                  {favourites > 0
-                    && <span className="order-info__count">{favourites}</span>}
+                  {favorites > 0
+                    && <span className="order-info__count">{favorites}</span>}
                 </span>
               </NavLink>
             )}

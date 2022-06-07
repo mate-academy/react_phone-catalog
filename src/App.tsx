@@ -10,20 +10,20 @@ import { CartPage } from './components/CartPage';
 import { CartItem } from './types/CardItem';
 
 import './App.scss';
-import { FavouritesPage } from './components/FavouritesPage';
+import { FavoritesPage } from './components/FavoritesPage';
 import { NotFoundPage } from './components/NotFoundPage';
 
 type ShopContextType = {
   quantity: number;
   setQuantity: React.Dispatch<number>;
-  favouriteCount: number;
+  favoriteCount: number;
   setFavouriteCount: React.Dispatch<number>;
 };
 
 export const ShopContext = React.createContext<ShopContextType>({
   quantity: 0,
   setQuantity: () => {},
-  favouriteCount: 0,
+  favoriteCount: 0,
   setFavouriteCount: () => {},
 });
 
@@ -40,20 +40,20 @@ const favourites
 
 const App: React.FC = () => {
   const [quantity, setQuantity] = useState(quantityValue);
-  const [favouriteCount, setFavouriteCount] = useState(favourites);
+  const [favoriteCount, setFavoriteCount] = useState(favourites);
 
   const shopContextValue = {
     quantity,
     setQuantity,
-    favouriteCount,
-    setFavouriteCount,
+    favoriteCount,
+    setFavouriteCount: setFavoriteCount,
   };
 
   return (
     <div className="wrapper App">
       <Header
         quantity={quantity}
-        favourites={favouriteCount}
+        favorites={favoriteCount}
       />
       <ShopContext.Provider value={shopContextValue}>
         <main className="main App__main">
@@ -100,8 +100,8 @@ const App: React.FC = () => {
               <Route
                 path="/favorites"
                 element={(
-                  <FavouritesPage
-                    favouriteCount={favouriteCount}
+                  <FavoritesPage
+                    favouriteCount={favoriteCount}
                   />
                 )}
               />

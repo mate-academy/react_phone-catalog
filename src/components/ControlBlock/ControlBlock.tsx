@@ -31,7 +31,7 @@ export const ControlBlock: React.FC<Props> = ({
   const {
     quantity,
     setQuantity,
-    favouriteCount,
+    favoriteCount,
     setFavouriteCount,
   } = useContext(ShopContext);
 
@@ -73,7 +73,7 @@ export const ControlBlock: React.FC<Props> = ({
         favouritesItems.filter(item => item.id !== product.id),
       ));
 
-      setFavouriteCount(favouriteCount - 1);
+      setFavouriteCount(favoriteCount - 1);
     } else {
       localStorage.setItem('favouritesItems', JSON.stringify([
         ...favouritesItems,
@@ -82,7 +82,7 @@ export const ControlBlock: React.FC<Props> = ({
         },
       ]));
 
-      setFavouriteCount(favouriteCount + 1);
+      setFavouriteCount(favoriteCount + 1);
     }
   };
 

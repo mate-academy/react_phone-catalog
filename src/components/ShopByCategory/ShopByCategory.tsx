@@ -30,25 +30,28 @@ export const ShopByCategory:React.FC = () => {
 
   return (
     <section className="shop-by-category home-page__shop-by-category">
-      <div className="block-header shop-by-category__block-header">
-        <h2 className="title shop-by-category__title">
-          Shop by category
-        </h2>
+      <div className="container">
+        <div className="block-header shop-by-category__block-header">
+          <h2 className="title shop-by-category__title">
+            Shop by category
+          </h2>
+        </div>
+        <div className="shop-by-category__columns">
+          <CategoryColumn
+            title="phones"
+            quantity={phonesCount}
+          />
+          <CategoryColumn
+            title="tablets"
+            quantity={tabletsCount}
+          />
+          <CategoryColumn
+            title="accessories"
+            quantity={accessoriesCount}
+          />
+        </div>
       </div>
-      <div className="shop-by-category__columns">
-        <CategoryColumn
-          title="phones"
-          quantity={phonesCount}
-        />
-        <CategoryColumn
-          title="tablets"
-          quantity={tabletsCount}
-        />
-        <CategoryColumn
-          title="accessories"
-          quantity={accessoriesCount}
-        />
-      </div>
+
     </section>
   );
 };

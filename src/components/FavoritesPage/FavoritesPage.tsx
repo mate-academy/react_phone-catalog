@@ -2,10 +2,10 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { PageHeader } from '../PageHeader';
-import { ProductCard } from '../ProductCard';
 import { NoSearchResult } from '../NoSearchResult';
 import { Product } from '../../types/Product';
 import './FavouritesPage.scss';
+import { List } from '../List';
 
 type Props = {
   favouriteCount: number;
@@ -25,7 +25,7 @@ export const filterProducts = (
   ));
 };
 
-export const FavouritesPage: React.FC<Props> = ({ favouriteCount }) => {
+export const FavoritesPage: React.FC<Props> = ({ favouriteCount }) => {
   const [products, setProducts] = useState<Product[]>([]);
 
   const [searchParam] = useSearchParams();
@@ -56,16 +56,9 @@ export const FavouritesPage: React.FC<Props> = ({ favouriteCount }) => {
                 <h4 className="favourites-page__subtitle">
                   {`${filteredProducts.length} ${filteredProducts.length > 1 ? 'items' : 'item'}`}
                 </h4>
-                <ul className="products__list">
-                  {filteredProducts.map((product) => (
-                    <li
-                      key={product.id}
-                      className="products-list__item"
-                    >
-                      <ProductCard product={product} />
-                    </li>
-                  ))}
-                </ul>
+                <div className="favourites-page__list-box">
+                  <List products={filteredProducts} />
+                </div>
               </>
             )}
 

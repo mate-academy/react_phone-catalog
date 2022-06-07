@@ -29,7 +29,7 @@ export const PriceBlock: React.FC<Props> = (
               { 'price-block__price--is-big': isBig },
             )}
           >
-            {price - price / discount}
+            {Math.ceil(price - price / discount)}
             $
           </span>
           <span

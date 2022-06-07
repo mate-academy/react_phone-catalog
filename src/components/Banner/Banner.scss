@@ -27,6 +27,10 @@
     &--is-active {
       background-color: $primary-color;
     }
+
+    @media (max-width: 768px) {
+      margin: 10px 7px 0;
+    }
   }
 }
 
@@ -40,6 +44,10 @@
     height: 400px;
     object-fit: cover;
     @include transition(all);
+
+    @media (max-width: 1200px) {
+      width: 100%;
+    }
   }
 
   &__button {
@@ -60,8 +68,19 @@
       margin-left: 16px;
     }
 
+    &:first-child,
+    &:last-child {
+      @media (max-width: 1200px) {
+        margin: 0;
+      }
+    }
+
     &:hover {
       border-color: $primary-color;
+    }
+
+    @media (max-width: 768px) {
+      display: none;
     }
   }
 }

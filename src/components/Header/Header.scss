@@ -5,9 +5,18 @@
   width: 100%;
   border-bottom: $border;
 
+  @media (max-width: 768px) {
+    height: 55px;
+    background-color: $bg-hover-color;
+    border-bottom: 2px solid $secondary-color;
+    position: fixed;
+    z-index: 5;
+  }
+
   &__nav-block {
     max-width: 1440px;
     width: 100%;
+    height: 100%;
     margin: 0 auto;
     display: flex;
     align-items: center;
@@ -22,11 +31,17 @@
 .navbar {
   display: flex;
   align-items: center;
+
+  @media (max-width: 768px) {
+    justify-content: space-between;
+    flex-grow: 1;
+  }
 }
 
 .order-info {
   display: flex;
   align-items: center;
+  height: 100%;
 
   &__link {
     width: 65px;
@@ -36,6 +51,10 @@
     justify-content: center;
     border-left: $border;
     position: relative;
+
+    @media (max-width: 768px) {
+      display: none;
+    }
 
     &:last-child {
       border-right: $border;
