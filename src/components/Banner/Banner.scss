@@ -1,0 +1,86 @@
+@import "../../helpers/utils/mixins";
+@import "../../helpers/utils/variables";
+
+.banner {
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__pagination {
+    display: flex;
+    list-style: none;
+  }
+
+  &__pagination-button {
+    border: none;
+    outline: none;
+    font-size: 0;
+    color: transparent;
+    width: 14px;
+    height: 4px;
+    background-color: $elements-color;
+    margin: 18px 7px 0;
+    @include transition(background-color);
+
+    &--is-active {
+      background-color: $primary-color;
+    }
+
+    @media (max-width: 768px) {
+      margin: 10px 7px 0;
+    }
+  }
+}
+
+.banner-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &__image {
+    width: 1040px;
+    height: 400px;
+    object-fit: cover;
+    @include transition(all);
+
+    @media (max-width: 1200px) {
+      width: 100%;
+    }
+  }
+
+  &__button {
+    cursor: pointer;
+    width: 32px;
+    max-height: 400px;
+    align-self: stretch;
+
+    background-color: transparent;
+    border: $border;
+    @include transition(border-color);
+
+    &:first-child {
+      margin-right: 16px;
+    }
+
+    &:last-child {
+      margin-left: 16px;
+    }
+
+    &:first-child,
+    &:last-child {
+      @media (max-width: 1200px) {
+        margin: 0;
+      }
+    }
+
+    &:hover {
+      border-color: $primary-color;
+    }
+
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+}

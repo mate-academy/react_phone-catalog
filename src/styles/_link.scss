@@ -1,0 +1,35 @@
+@import "../helpers/utils/variables";
+@import "../helpers/utils/mixins";
+
+.link {
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  color: $secondary-color;
+
+  height: $header-height;
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  @include transition(color);
+
+  &--is-selected {
+    color: $primary-color;
+
+    &::after {
+      @include is-active;
+    }
+  }
+
+  &:hover {
+    color: $primary-color;
+  }
+
+  @media(max-width: 768px) {
+    height: $header-height-tb;
+  }
+}

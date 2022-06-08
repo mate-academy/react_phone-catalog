@@ -1,0 +1,14 @@
+@import "../../helpers/utils/variables";
+
+.no-search-result {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 50px;
+
+  &__title {
+    font-size: 24px;
+    color: $secondary-color;
+    text-align: center;
+  }
+}
