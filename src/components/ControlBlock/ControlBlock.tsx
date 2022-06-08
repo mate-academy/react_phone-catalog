@@ -20,15 +20,25 @@ export const ControlBlock: React.FC<Props> = ({
   isLarge,
   product,
 }) => {
-  const favourite
-    = JSON.parse(localStorage.getItem('favouritesItems') || '');
-  const addedToCart
-    = JSON.parse(localStorage.getItem('cartItems') || '');
-
   const isFavourite
-    = favourite.some((item: CartItem) => item.id === product.id);
-  const isAddedToCart
-    = addedToCart.some((item: CartItem) => item.id === product.id);
+    = JSON.parse(localStorage.getItem('favouritesItems') || '[]')
+      .some((item: CartItem) => item.id === product.id);
+
+  const isAddedToCart: boolean
+    = JSON.parse(localStorage.getItem('cartItems') || '[]')
+      .some((item: CartItem) => item.id === product.id);
+
+  // const favourites = localStorage.getItem('favouritesItems');
+  // const isFavourite: boolean = favourites
+  //   ? JSON.parse(favourites)
+  //     .some((item: CartItem) => item.id === product.id)
+  //   : false;
+
+  // const addedToCart = localStorage.getItem('cartItems');
+  // const isAddedToCart: boolean = addedToCart
+  //   ? JSON.parse(addedToCart)
+  //     .some((item: CartItem) => item.id === product.id)
+  //   : false;
 
   const {
     quantity,
@@ -39,7 +49,7 @@ export const ControlBlock: React.FC<Props> = ({
 
   const changeCartStore = () => {
     const cartItems: CartItem[]
-      = JSON.parse(localStorage.getItem('cartItems') || '');
+      = JSON.parse(localStorage.getItem('cartItems') || '[]');
 
     if (cartItems.some(item => item.id === product.id)) {
       localStorage.setItem('cartItems', JSON.stringify(
@@ -68,7 +78,7 @@ export const ControlBlock: React.FC<Props> = ({
 
   const changeFavouriteStore = () => {
     const favouritesItems: Product[]
-        = JSON.parse(localStorage.getItem('favouritesItems') || '');
+        = JSON.parse(localStorage.getItem('favouritesItems') || '[]');
 
     if (favouritesItems.some(item => item.id === product.id)) {
       localStorage.setItem('favouritesItems', JSON.stringify(
