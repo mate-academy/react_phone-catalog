@@ -3,7 +3,7 @@ import { useLocation, useSearchParams } from 'react-router-dom';
 import debounce from 'lodash/debounce';
 import './Search.scss';
 
-export const Search: React.FC = React.memo(() => {
+export const Search: React.FC = () => {
   const { search, pathname } = useLocation();
   const [searchParams, setSearchParams] = useSearchParams(search);
 
@@ -11,7 +11,7 @@ export const Search: React.FC = React.memo(() => {
   const [query, setQuery] = useState(appliedQuery);
 
   useEffect(() => {
-    setQuery('');
+    setQuery(search ? appliedQuery : '');
   }, [pathname]);
 
   const applyQuery = useCallback(
@@ -57,4 +57,4 @@ export const Search: React.FC = React.memo(() => {
       )}
     </div>
   );
-});
+};
