@@ -1,0 +1,94 @@
+@import "../../helpers/utils/variables";
+@import "../../helpers/utils/mixins";
+
+.galery {
+  min-height: 425px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @media (max-width: 768px) {
+    min-height: auto;
+    flex-direction: column-reverse;
+  }
+
+  &__list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 0 -16px;
+
+    @media (max-width: 768px) {
+      flex-direction: row;
+    }
+  }
+
+  &__list-item {
+    margin: 0 17px 16px 0;
+
+    @media (max-width: 768px) {
+      width: 25%;
+      margin: 0 10px 16px 0;
+    }
+  }
+
+  &__list-item-button {
+    border: 1px solid $icons-color;
+    background-color: transparent;
+    outline: none;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7px;
+    @include transition(border-color);
+
+    @media (max-width: 768px) {
+      width: 100%;
+      height: auto;
+    }
+
+    &:hover,
+    &--is-selected {
+      border-color: $primary-color;
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    margin: 7px;
+
+    @media (max-width: 768px) {
+      margin: 0;
+    }
+  }
+
+  &__selected-image-box {
+    width: 442px;
+    height: 442px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @media (max-width: 768px) {
+      width: 300px;
+      height: 300px;
+      margin-bottom: 15px;
+    }
+
+    @media (max-width: 650px) {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__selected-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}

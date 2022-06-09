@@ -1,0 +1,56 @@
+@import "../../helpers/utils/variables";
+@import "../../helpers/utils/mixins";
+
+.product-card {
+  width: 100%;
+  min-height: 519px;
+  height: 100%;
+  background-color: $white-color;
+  border: $border;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px 32px 24px;
+
+  &__image-box {
+    width: 208px;
+    height: 208px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 0 24px;
+  }
+
+  &__image {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    @include transition(transform);
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  &__title {
+    flex-grow: 1;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    margin: 0 0 6.5px;
+  }
+
+  &__price-box {
+    width: 100%;
+    margin: 0 0 16px;
+  }
+
+  &__description-box {
+    align-self: stretch;
+    margin: 0 0 16px;
+  }
+
+  &__control-box {
+    width: 100%;
+  }
+}

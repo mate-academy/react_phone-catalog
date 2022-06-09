@@ -1,0 +1,29 @@
+@import "../helpers/utils/variables";
+
+.button {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: $primary-color;
+  color: $white-color;
+  line-height: 21px;
+  font-weight: 600;
+
+  &--is-large {
+    width: 100%;
+    height: 48px;
+  }
+
+  &--is-active {
+    background-color: transparent;
+    color: $green-color;
+    border: $border;
+  }
+
+  &:hover {
+    box-shadow: 0 3px 13px $primary-color;
+  }
+}

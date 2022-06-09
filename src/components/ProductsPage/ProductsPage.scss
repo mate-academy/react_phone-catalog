@@ -1,0 +1,22 @@
+@import "../../helpers/utils/variables";
+
+.products-page {
+  @media (max-width: 768px) {
+    margin: 80px 0 0;
+  }
+
+  &__top {
+    margin: 0 0 40px;
+  }
+
+  &__title {
+    margin: 0 0 8px;
+  }
+
+  &__item-quantity {
+    display: inline-block;
+    line-height: 21px;
+    color: $secondary-color;
+    margin: 0 0 40px;
+  }
+}

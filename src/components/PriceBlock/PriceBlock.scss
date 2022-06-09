@@ -1,0 +1,33 @@
+@import "../../helpers/utils/variables";
+
+.price-block {
+  display: block;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 30.8px;
+  border-bottom: $border;
+  padding: 0 0 6.5px;
+
+  &--border-none {
+    border: none;
+  }
+
+  &__price {
+    display: inline-block;
+    margin-right: 8px;
+
+    &--is-big {
+      font-size: 32px;
+
+      @media (max-width: 768px) {
+        font-size: 42px;
+      }
+    }
+
+    &--is-old {
+      text-decoration: line-through;
+      font-weight: 500;
+      color: $secondary-color;
+    }
+  }
+}

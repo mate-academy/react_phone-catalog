@@ -1,0 +1,28 @@
+@import "../../helpers/utils/variables";
+@import "../../helpers/utils/mixins";
+
+.page-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__box {
+    @include box;
+    @include transition(all);
+    margin: 0 8px 0 0;
+
+    &--is-selected {
+      color: $white-color;
+      border-color: $primary-color;
+      background-color: $primary-color;
+    }
+  }
+
+  &__box:first-of-type {
+    margin: 0 8px 0 16px;
+  }
+
+  &__box:last-of-type {
+    margin: 0 16px 0 0;
+  }
+}
