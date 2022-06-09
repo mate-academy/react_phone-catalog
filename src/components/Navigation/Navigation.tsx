@@ -16,7 +16,10 @@ export const Navigation: React.FC = React.memo(() => {
     <nav className="nav header__nav">
       <button
         type="button"
-        className="nav__burger-button"
+        className={classNames(
+          'nav__burger-button',
+          { 'nav__burger-button--closed': isShowMenu },
+        )}
         onClick={() => setIsShowMenu(!isShowMenu)}
       >
         Menu
