@@ -1,0 +1,31 @@
+.list {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+
+  &__item {
+    width: 272px;
+    margin: 0 0 40px;
+
+    @media (max-width: 1200px) {
+      width: 23.5%;
+    }
+
+    @media (max-width: 990px) {
+      width: 31.5%;
+      margin: 0 0 30px;
+    }
+
+    @media (max-width: 768px) {
+      width: 48%;
+      margin: 0 0 20px;
+    }
+
+    @media (max-width: 475px) {
+      width: 100%;
+      margin: 0 0 10px;
+    }
+  }
+}

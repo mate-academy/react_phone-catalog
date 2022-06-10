@@ -1,0 +1,23 @@
+@import "../../helpers/utils/variables";
+@import "../../helpers/utils/mixins";
+
+.back-button {
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  color: $secondary-color;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &__icon {
+    width: 5.3px;
+    height: 9.3px;
+    @include bg-image-option;
+    background-image: url(../../helpers/img/icons/Vector-arrow-left-dis.svg);
+    margin: 0 9.3px 0 0;
+  }
+}

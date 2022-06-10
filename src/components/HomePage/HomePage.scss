@@ -1,0 +1,13 @@
+.home-page {
+  @media (max-width: 768px) {
+    margin: 70px 0 0;
+  }
+
+  &__banner {
+    margin: 0 0 104px;
+
+    @media (max-width: 768px) {
+      margin: 0 0 50px;
+    }
+  }
+}

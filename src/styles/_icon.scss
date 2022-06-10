@@ -1,0 +1,52 @@
+@import "../helpers/utils/variables";
+@import "../helpers/utils/mixins";
+
+.icon-box {
+  @include box;
+  @include transition( border-color);
+
+  &--is-big {
+    width: 40px;
+    height: 40px;
+  }
+
+  &--is-large {
+    width: 48px;
+    height: 48px;
+  }
+
+  &:hover {
+    border-color: $primary-color;
+  }
+}
+
+.icon {
+  display: inline-block;
+  width: 5.3px;
+  height: 9.3px;
+
+  @include bg-image-option;
+  background-image: url(../helpers/img/icons/Vector-arrow.svg);
+
+  &--left {
+    background-image: url(../helpers/img/icons/Vector-arrow-left.svg);
+  }
+
+  &--is-disabled {
+    background-image: url(../helpers/img/icons/Vector-arrow-right-dis.svg);
+  }
+
+  &--left.icon--is-disabled {
+    background-image: url(../helpers/img/icons/Vector-arrow-left-dis.svg);
+  }
+
+  &--heart {
+    width: 15.4px;
+    height: 13.6px;
+    background-image: url(../helpers/img/icons/Vector-heart.svg);
+  }
+
+  &--heart-selected {
+    background-image: url(../helpers/img/icons/Vector-heart-red.svg);
+  }
+}

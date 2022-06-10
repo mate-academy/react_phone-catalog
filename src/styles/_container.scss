@@ -1,0 +1,12 @@
+.container {
+  max-width: 1166px;
+  width: 100vw;
+  height: max-content;
+  padding: 0 15px;
+  margin: 0 auto;
+  overflow-x: hidden;
+
+  @media (max-width: 768px) {
+    padding: 0 10px;
+  }
+}

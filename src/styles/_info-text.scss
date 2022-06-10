@@ -1,0 +1,11 @@
+@import "../helpers/utils/variables";
+
+.info-text {
+  font-size: 24px;
+  font-weight: 700;
+  color: $icons-color;
+
+  &::first-letter {
+    text-transform: uppercase;
+  }
+}
