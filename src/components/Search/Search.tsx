@@ -8,7 +8,7 @@ export const Search: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams(search);
 
   const appliedQuery = searchParams.get('query') || '';
-  const [query, setQuery] = useState(appliedQuery);
+  const [query, setQuery] = useState(searchParams.get('query') || '');
 
   const applyQuery = useCallback(
     debounce((newQuery: string) => {
@@ -28,14 +28,14 @@ export const Search: React.FC = () => {
     applyQuery(event.target.value);
   };
 
-  const clearQueryHandler = async () => {
-    await searchParams.delete('query');
+  const clearQueryHandler = () => {
+    searchParams.delete('query');
     setQuery('');
-    applyQuery('');
+    // applyQuery('');
   };
 
   useEffect(() => {
-    if (search) {
+    if (search.includes('query')) {
       setQuery(appliedQuery);
       applyQuery(appliedQuery);
     } else {
