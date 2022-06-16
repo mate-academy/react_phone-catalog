@@ -1,4 +1,3 @@
-import './App.scss';
 import { Routes, Route } from 'react-router-dom';
 import { Header } from './components/Header';
 import { HomePage } from './pages/HomePage';
@@ -10,6 +9,8 @@ import { Favourites } from './pages/Favourites';
 import { Cart } from './pages/Cart';
 import { Footer } from './components/Footer';
 import { NotFound } from './pages/NotFound';
+
+import './assets/styles/main.scss';
 
 const App = () => (
   <div className="App">

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { ReactComponent as Arrow } from '../../icons/small-arrow.svg';
-import { ReactComponent as Home } from '../../icons/Home.svg';
+import { ReactComponent as Arrow } from '../../assets/icons/small-arrow.svg';
+import { ReactComponent as Home } from '../../assets/icons/Home.svg';
 
 import './breadCrumbs.scss';
 

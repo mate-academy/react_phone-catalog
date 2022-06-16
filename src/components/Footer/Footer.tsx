@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { BackToTop } from '../BackToTop';
-import { ReactComponent as Logo } from '../../icons/Logo.svg';
+import { ReactComponent as Logo } from '../../assets/icons/Logo.svg';
 
 import './footer.scss';
 

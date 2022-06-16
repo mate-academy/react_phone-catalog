@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ReactComponent as Arrow } from '../../icons/small-arrow.svg';
+import { ReactComponent as Arrow } from '../../assets/icons/small-arrow.svg';
 
 import './backBtn.scss';
 

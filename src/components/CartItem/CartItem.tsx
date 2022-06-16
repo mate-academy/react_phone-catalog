@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { CartList } from '../../types/CartList';
-import { ReactComponent as Close } from '../../icons/close.svg';
+import { ReactComponent as Close } from '../../assets/icons/close.svg';
 
 import './cartItem.scss';
 

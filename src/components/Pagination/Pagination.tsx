@@ -6,7 +6,7 @@ import React, {
 import ClassNames from 'classnames';
 import { nanoid } from 'nanoid';
 import { paginationView } from '../../functions/paginationView';
-import { ReactComponent as Arrow } from '../../icons/small-arrow.svg';
+import { ReactComponent as Arrow } from '../../assets/icons/small-arrow.svg';
 
 import './Pagination.scss';
 

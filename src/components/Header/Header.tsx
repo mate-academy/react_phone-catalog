@@ -10,9 +10,9 @@ import { Search } from '../Search/Search';
 
 import {
   ReactComponent as FavouritesIcon,
-} from '../../icons/favourites-icon.svg';
-import { ReactComponent as CartIcon } from '../../icons/cart-icon.svg';
-import { ReactComponent as Logo } from '../../icons/Logo.svg';
+} from '../../assets/icons/favourites-icon.svg';
+import { ReactComponent as CartIcon } from '../../assets/icons/cart-icon.svg';
+import { ReactComponent as Logo } from '../../assets/icons/Logo.svg';
 
 import './header.scss';
 

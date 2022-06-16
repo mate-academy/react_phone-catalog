@@ -56,19 +56,19 @@ h3 {
 @font-face {
   font-family: $MontRegular;
   src: local($MontRegular),
-    url("./fonts/Mont-Regular.otf");
+    url("../fonts/Mont-Regular.otf");
 }
 
 @font-face {
   font-family: $MontSemiBold;
   src: local($MontSemiBold),
-    url("./fonts/Mont-SemiBold.otf");
+    url("../fonts/Mont-SemiBold.otf");
 }
 
 @font-face {
   font-family: $MontBold;
   src: local($MontBold),
-    url("./fonts/Mont-Bold.otf");
+    url("../fonts/Mont-Bold.otf");
 }
 
 .container {
