@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
-import { ReactComponent as HeartIcon } from '../../images/favourites-icon.svg';
+import { ReactComponent as HeartIcon } from '../../icons/favourites-icon.svg';
 import { ProductItem } from '../../types/ProductItem';
 
 import './addFavouriteBtn.scss';

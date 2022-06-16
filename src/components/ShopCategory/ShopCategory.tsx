@@ -1,13 +1,24 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
-import PhonesImg from '../../images/phones-cat.jpg';
-import TabletsImg from '../../images/tablets-cat.jpg';
-import AccessoriesImg from '../../images/accessories-cat.jpg';
+import { ProductItem } from '../../types/ProductItem';
 
 import './shopCategory.scss';
 
-export const ShopCategory: React.FC = () => {
+type Props = {
+  products: ProductItem[];
+};
+
+export const ShopCategory: React.FC<Props> = ({ products }) => {
+  const phonesCount = [...products].filter((item: ProductItem) => (
+    item.type === 'phone'
+  )).length;
+  const tabletsCount = [...products].filter((item: ProductItem) => (
+    item.type === 'tablet'
+  )).length;
+  const accessoriesCount = [...products].filter((item: ProductItem) => (
+    item.type === 'accessories'
+  )).length;
+
   return (
     <div className="shopCategory">
       <div className="container">
@@ -19,12 +30,12 @@ export const ShopCategory: React.FC = () => {
             to="/phones"
             className="shopCategory__item"
           >
-            <img src={PhonesImg} alt="" />
+            <img src={`${process.env.REACT_APP_IMG_LINK}./img/Categories/phones-cat.jpg`} alt="" />
             <h3 className="shopCategory__name">
               Mobile phones
             </h3>
             <p className="shopCategory__count">
-              {`${95} models`}
+              {`${phonesCount} models`}
             </p>
           </Link>
 
@@ -32,12 +43,12 @@ export const ShopCategory: React.FC = () => {
             to="/tablets"
             className="shopCategory__item"
           >
-            <img src={TabletsImg} alt="" />
+            <img src={`${process.env.REACT_APP_IMG_LINK}./img/Categories/tablets-cat.jpg`} alt="" />
             <h3 className="shopCategory__name">
               Tablets
             </h3>
             <p className="shopCategory__count">
-              {`${95} models`}
+              {`${tabletsCount} models`}
             </p>
           </Link>
 
@@ -45,12 +56,12 @@ export const ShopCategory: React.FC = () => {
             to="/accessories"
             className="shopCategory__item"
           >
-            <img src={AccessoriesImg} alt="" />
+            <img src={`${process.env.REACT_APP_IMG_LINK}./img/Categories/accessories-cat.jpg`} alt="" />
             <h3 className="shopCategory__name">
               Accessories
             </h3>
             <p className="shopCategory__count">
-              {`${95} models`}
+              {`${accessoriesCount} models`}
             </p>
           </Link>
         </div>

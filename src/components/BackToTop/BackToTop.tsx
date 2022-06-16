@@ -1,5 +1,5 @@
 import React from 'react';
-import { ReactComponent as Arrow } from '../../images/small-arrow.svg';
+import { ReactComponent as Arrow } from '../../icons/small-arrow.svg';
 
 import './backToTop.scss';
 

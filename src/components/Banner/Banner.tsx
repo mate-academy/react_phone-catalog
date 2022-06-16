@@ -6,10 +6,6 @@ import { PrevArrow } from '../ProductsSlider/PrevArrow';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-import Banner1 from '../../images/banner1.jpg';
-import Banner2 from '../../images/banner2.jpeg';
-import Banner3 from '../../images/banner3.jpeg';
-
 import './banner.scss';
 
 export const Banner: React.FC = () => {
@@ -30,9 +26,9 @@ export const Banner: React.FC = () => {
           prevArrow={<PrevArrow />}
           nextArrow={<NextArrow />}
         >
-          <img src={Banner1} alt="" />
-          <img src={Banner2} alt="" />
-          <img src={Banner3} alt="" />
+          <img src="./img/Preview/preview1.jpg" alt="" />
+          <img src="./img/Preview/preview2.jpeg" alt="" />
+          <img src="./img/Preview/preview3.jpeg" alt="" />
         </Slider>
       </div>
     </div>

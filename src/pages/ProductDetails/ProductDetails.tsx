@@ -91,12 +91,12 @@ export const ProductDetails: React.FC = () => {
                         )}
                         onClick={() => setCurrentImage(image)}
                       >
-                        <img src={`${window.location.origin}/${image}`} alt="" />
+                        <img src={`${process.env.REACT_APP_IMG_LINK}${image}`} alt="" />
                       </button>
                     ))}
                   </div>
                   <div className="gallary__image">
-                    <img src={`${window.location.origin}/${currentImage}`} alt="" />
+                    <img src={`${process.env.REACT_APP_IMG_LINK}${currentImage}`} alt="" />
                   </div>
                 </div>
               )}

@@ -53,7 +53,7 @@ export const HomePage: React.FC = () => {
         />
       </div>
 
-      <ShopCategory />
+      <ShopCategory products={products} />
 
       <div className="brand-new">
         <ProductsSlider

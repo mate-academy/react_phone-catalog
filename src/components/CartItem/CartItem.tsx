@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { CartList } from '../../types/CartList';
-import { ReactComponent as Close } from '../../images/close.svg';
+import { ReactComponent as Close } from '../../icons/close.svg';
 
 import './cartItem.scss';
 
@@ -38,7 +38,7 @@ export const CartItem: React.FC<Props> = ({
         onClick={() => deleteItem(cartItem.item.id)}
       />
       <div className="cart-item__img">
-        <img src={cartItem.item.imageUrl} alt="" />
+        <img src={`${process.env.REACT_APP_IMG_LINK}${cartItem.item.imageUrl}`} alt="" />
       </div>
       <h2 className="cart-item__title">
         {cartItem.item.name}

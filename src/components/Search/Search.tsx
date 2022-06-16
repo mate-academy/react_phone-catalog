@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { ReactComponent as Close } from '../../images/close.svg';
-import { ReactComponent as SearchIcon } from '../../images/search.svg';
+import { ReactComponent as Close } from '../../icons/close.svg';
+import { ReactComponent as SearchIcon } from '../../icons/search.svg';
 
 import './search.scss';
 
