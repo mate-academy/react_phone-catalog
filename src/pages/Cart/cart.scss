@@ -1,0 +1,64 @@
+@import "../../variables/variables.scss";
+
+.cart {
+  &__title {
+    margin-bottom: 8px;
+  }
+  &__count {
+    font-size: 14px;
+    line-height: 21px;
+    color: $gray-secondary;
+    margin-bottom: 40px;
+  }
+  &__content {
+    display: grid;
+    grid-template-columns: 750px 370px;
+    justify-content: space-between;
+  }
+  &__list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  &__total {
+    border: 1px solid $gray-element;
+    padding: 24px;
+    height: max-content;
+  }
+  &__sum {
+    font-size: 32px;
+    line-height: 40px;
+    color: $gray-primary;
+    text-align: center;
+    font-family: $MontBold;
+    font-weight: 700;
+  }
+  &__itemsCount {
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+    color: $gray-secondary;
+    padding-bottom: 24px;
+    border-bottom: 1px solid $gray-element;
+    margin-bottom: 24px;
+  }
+  &__checkout {
+    background: $gray-primary;
+    height: 40px;
+    width: 100%;
+    font-size: 14px;
+    line-height: 21px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $white;
+    border: none;
+    font-family: $MontRegular;
+  }
+  &__empty {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+}

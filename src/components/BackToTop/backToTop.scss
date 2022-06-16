@@ -1,0 +1,27 @@
+@import "../../variables/variables.scss";
+
+.back-to-top {
+  display: flex;
+  align-items: center;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  span {
+    margin-right: 16px;
+    font-size: 12px;
+    line-height: 12px;
+    font-family: $MontSemiBold;
+    color: $gray-secondary;
+  }
+  &__arrow {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid $gray-icons;
+    svg {
+      transform: rotate(-90deg);
+    }
+  }
+}

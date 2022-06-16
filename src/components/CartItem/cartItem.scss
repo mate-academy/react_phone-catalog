@@ -1,0 +1,79 @@
+@import "../../variables/variables.scss";
+
+.cart-item {
+  border: 1px solid $gray-element;
+  display: flex;
+  align-items: center;
+  padding: 0 40px 0 28px;
+  height: 128px;
+  &__delete {
+    margin-right: 32px;
+    cursor: pointer;
+  }
+  &__img {
+    height: auto;
+    width: 66px;
+    margin-right: 32px;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  &__title {
+    width: 295px;
+    margin-right: 50px;
+    font-size: 14px;
+    line-height: 21px;
+    font-family: $MontRegular;
+    font-weight: 500;
+  }
+  &__price {
+    font-size: 22px;
+    line-height: 30px;
+    color: $gray-primary;
+    margin-left: auto;
+    font-family: $MontBold;
+    font-weight: 700;
+  }
+  &__count {
+    display: flex;
+    align-items: center;
+  }
+  &__add {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $gray-icons;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: $white;
+    color: $gray-icons;
+    font-size: 20px;
+    line-height: 20px;
+    cursor: pointer;
+  }
+  &__num {
+    font-size: 14px;
+    line-height: 21px;
+    margin: 0 14px;
+    width: 10px;
+    text-align: center;
+  }
+  &__remove {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $gray-icons;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: $white;
+    color: $gray-icons;
+    font-size: 20px;
+    line-height: 20px;
+    cursor: pointer;
+    &:disabled {
+      border: 1px solid $gray-element;
+      color: $gray-element;
+    }
+  }
+}
