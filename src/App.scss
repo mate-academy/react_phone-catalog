@@ -1,1 +1,18 @@
-// not empty
+@import "./styles/main.scss";
+
+* {
+  transition-duration: 0.3s;
+  scroll-behavior: smooth;
+  font-family: "Mont Regular", sans-serif;
+  font-weight: normal;
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  min-width: 800px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+}
