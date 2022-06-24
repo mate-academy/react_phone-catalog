@@ -1,0 +1,17 @@
+@import "../../styles/utils/vars";
+
+.FavoritesPage {
+  &__nav {
+    margin-top: 25px;
+  }
+  &__title {
+    margin-top: 40px;
+  }
+  &__count {
+    color: $secondaryColor;
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+  }
+}

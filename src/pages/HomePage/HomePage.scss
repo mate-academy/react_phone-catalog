@@ -1,0 +1,117 @@
+@import "../../styles/utils/vars";
+@import "../../styles/blocks/wrapper";
+
+.HomePage {
+  display: flex;
+  flex-direction: column;
+  &__slider {
+    margin-top: 40px;
+    height: 400px;
+  }
+  &__hot-prices {
+    margin-top: 82px;
+    &-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      &-title {
+        text-align: start;
+        color: $mainColor;
+      }
+    }
+    &-nav {
+      width: 80px;
+      display: flex;
+      justify-content: space-between;
+      &-button {
+        border: none;
+        &--right {
+          transform: rotate(180deg);
+        }
+      }
+    }
+    &-products {
+      margin-top: 24px;
+    }
+  }
+  &__category {
+    margin-top: 80px;
+    &-link {
+      text-decoration: none;
+    }
+    &-title {
+      color: $mainColor;
+    }
+    &-products {
+      margin-top: 24px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, 368px);
+      justify-content: center;
+      gap: 16px;
+    }
+    &-card {
+      text-decoration: none;
+    }
+    &-img {
+      width: 368px;
+      height: 368px;
+      object-fit: none;
+      object-position: right bottom;
+      &--tel {
+        background-color: #fcdbc1;
+      }
+      &--tab {
+        background-color: #8d8d92;
+      }
+      &--acc {
+        background-color: #973d5f;
+      }
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+    &-descrition {
+      margin-top: 24px;
+      color: $mainColor;
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 26px;
+      &:hover {
+        color: $redColor;
+      }
+    }
+    &-count {
+      margin-top: 4px;
+      color: $secondaryColor;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 21px;
+    }
+  }
+  &__new {
+    margin-top: 82px;
+    &-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      &-title {
+        text-align: start;
+        color: $mainColor;
+      }
+    }
+    &-nav {
+      width: 80px;
+      display: flex;
+      justify-content: space-between;
+      &-button {
+        border: none;
+        &--right {
+          transform: rotate(180deg);
+        }
+      }
+    }
+    &-products {
+      margin-top: 24px;
+    }
+  }
+}

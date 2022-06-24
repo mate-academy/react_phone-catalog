@@ -1,0 +1,9 @@
+@import "./utils/extends";
+
+h1 {
+  @extend %h1;
+}
+
+h2 {
+  @extend %h2;
+}

@@ -1,0 +1,18 @@
+.main-button {
+  cursor: pointer;
+  box-sizing: border-box;
+  background-color: $mainColor;
+  color: $whiteColor;
+  border: 1px solid $mainColor;
+  &:hover {
+    box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+  }
+  &:disabled {
+    color: $greenColor;
+    border: 1px solid $elementsColor;
+    background-color: $whiteColor;
+    &:hover {
+      box-shadow: none;
+    }
+  }
+}

@@ -1,0 +1,32 @@
+@import "../../styles/utils/vars";
+
+.Address {
+  display: flex;
+  align-items: center;
+  &__link {
+    display: flex;
+    height: 14px;
+    width: 14px;
+  }
+  &__path {
+    text-transform: capitalize;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+    color: $mainColor;
+    display: flex;
+    align-items: center;
+    height: 20px;
+    &--last {
+      color: $secondaryColor;
+    }
+    &::before {
+      content: url(../../images/icons/Address.svg);
+      display: block;
+      margin: 0 12px;
+      width: 6px;
+      height: 12px;
+    }
+  }
+}
