@@ -50,7 +50,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     <div className="ProductCard">
       <Link to={`/${product.type}s/${product.id}`} className="ProductCard__redirect">
         <img
-          src={`/${product.imageUrl}`}
+          src={`${product.imageUrl}`}
           alt={product.name}
           className="ProductCard__img"
         />

@@ -118,7 +118,7 @@ export const CartPage = () => {
                               />
                             </svg>
                           </button>
-                          <img src={`/${imageUrl}`} alt={name} className="CartPage__product-img" />
+                          <img src={`${imageUrl}`} alt={name} className="CartPage__product-img" />
                           <p className="CartPage__product-text">
                             {name}
                           </p>
