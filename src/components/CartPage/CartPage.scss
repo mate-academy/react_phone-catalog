@@ -1,0 +1,187 @@
+@import "../../vars";
+
+.cartPage {
+
+  &__go-back-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  &__go-back-img {
+    height: 10px;
+    width: 6px;
+    background-image: url("/icon/arrow_left.svg");
+  }
+
+  &__go-back-text {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: $secondary;
+    cursor: pointer;
+    transition: color 0.3s;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: $primary;
+    margin-bottom: 24px;
+  }
+
+  &__info {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    padding: 24px 40px 24px 24px;
+    height: 128px;
+    width: 752px;
+    border: 1px solid $elements;
+  }
+
+  &__item-btn {
+    width: 30px;
+    height: 30px;
+    margin-left: 4px;
+    color: $secondary;
+    background-color: $white;
+    border: 1px solid $white;
+    margin-right: 30px;
+
+    transition: all 0.3s;
+
+    &:hover {
+      color: $primary;
+      border-color: $icons;
+    }
+  }
+
+  &__img {
+    height: 66px;
+    width: 66px;
+    margin-right: 24px;
+  }
+
+  &__total-price {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px;
+    height: 206px;
+    width: 368px;
+    border: 1px solid $elements;
+  }
+
+  &__total-price-title {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: $primary;
+  }
+
+  &__total-price-subtitle {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $secondary;
+    margin-bottom: 24px;
+  }
+
+  &__total-price-line {
+    background-color: $icons;
+    height: 1px;
+    width: 100%;
+    margin-bottom: 24px;
+  }
+
+  &__total-price-btn {
+    height: 48px;
+    width: 320px;
+    background: $primary;
+    color: $white;
+  }
+
+  &__massage {
+    position: absolute;
+    bottom: -50px;
+    text-align: center;
+    font-weight: 600;
+    color: crimson;
+  }
+
+  &__item-title {
+    height: 42px;
+    width: 295px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $primary;
+  }
+  
+  &__count {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    margin-right: 43px;
+  }
+  
+  &__count-title {
+    width: 20px;
+    text-align: center;
+  }
+
+  &__count-btn {
+    height: 32px;
+    width: 32px;
+    background-color: $white;
+    border: 1px solid $icons;
+
+    &:hover {
+      border-color: $primary;
+    }
+  }
+
+  &__price {
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 140%;
+    color: $primary;
+  }
+}
+
+// Transition Group
+.item-exit-active {
+  opacity: 0;
+  animation: item-out 500ms forwards;
+}
+
+@keyframes item-out {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+}

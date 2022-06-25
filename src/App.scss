@@ -1,1 +1,46 @@
-// not empty
+@import "./vars";
+
+* {
+  box-sizing: border-box;
+}
+
+body,
+ul,
+li,
+h2,
+h3,
+h4,
+img,
+div {
+  padding: 0;
+  margin: 0;
+}
+
+.app {
+  position: relative;
+  min-height: 100vh;
+  padding-bottom: 96px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  max-width: 1136px;
+  margin: 0 auto;
+}
+
+.active {
+  color: $primary;
+}
+
+.active::after {
+  position: absolute;
+  content: "";
+  height: 4px;
+  width: 100%;
+  background-color: $primary;
+  left: 0;
+  bottom: 0;
+}

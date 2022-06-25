@@ -1,0 +1,96 @@
+@import "../../vars";
+
+.catalog {
+  &__btn-wrap {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    margin-bottom: 40px;
+  }
+
+  &__go-to-home {
+    height: 15px;
+    width: 15px;
+    background-image: url("/icon/home.svg");
+
+    transition: background-image 0.3s;
+
+    &:hover {
+      background-image: url("/icon/home-hover.svg");
+    }
+  }
+
+  &__arrow {
+    background-image: url("/icon/arrow_right.svg");
+    opacity: 0.6;
+    height: 10px;
+    width: 6px;
+  }
+
+  &__btn-text {
+    color: $secondary;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    transition: all 0.3s;
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 41px;
+    color: $primary;
+    letter-spacing: -0.01em;
+    margin-bottom: 8px;
+  }
+
+  &__subtitle {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $secondary;
+    margin-bottom: 40px;
+
+  }
+
+  &__params {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  &__param-title {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: $secondary;
+  }
+
+  &__select {
+    height: 40px;
+    width: 176px;
+    padding: 10px 12px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    color: $primary;
+    border: 1px solid $icons;
+
+    &::placeholder {
+      color: $icons;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+
+  &__tranGroup {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+}
