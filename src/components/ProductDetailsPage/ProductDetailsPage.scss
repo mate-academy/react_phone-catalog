@@ -11,17 +11,17 @@
   &__go-to-home {
     height: 15px;
     width: 15px;
-    background-image: url("/icon/home.svg");
+    background-image: url("../../img/icon/home.svg");
 
     transition: background-image 0.3s;
 
     &:hover {
-      background-image: url("/icon/home-hover.svg");
+      background-image: url("../../img/icon/home-hover.svg");
     }
   }
 
   &__arrow {
-    background-image: url("/icon/arrow_right.svg");
+    background-image: url("../../img/icon/arrow_right.svg");
     opacity: 0.6;
     height: 10px;
     width: 6px;
@@ -49,7 +49,7 @@
   &__go-back-img {
     height: 10px;
     width: 6px;
-    background-image: url("/icon/arrow_left.svg");
+    background-image: url("../../img/icon/arrow_left.svg");
   }
 
   &__go-back-text {

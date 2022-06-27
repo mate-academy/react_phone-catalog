@@ -19,7 +19,7 @@ const Footer:React.FC = () => {
         >
           <img
             className="footer__logo"
-            src="/img/LOGO.svg"
+            src="../../img/LOGO.svg"
             alt="logo"
           />
         </button>

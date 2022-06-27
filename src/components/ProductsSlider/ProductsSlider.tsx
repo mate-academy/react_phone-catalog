@@ -43,7 +43,7 @@ const ProductsSlider: React.FC = () => {
           className="productsSlider__btn"
           onClick={prevSlide}
         >
-          <img src="/img/icon/arrow_left.svg" alt="btn" />
+          <img src="../../img/icon/arrow_left.svg" alt="btn" />
         </button>
 
         <div className="productsSlider__container">
@@ -67,7 +67,7 @@ const ProductsSlider: React.FC = () => {
           className="productsSlider__btn"
           onClick={nextSlide}
         >
-          <img src="/img/icon/arrow_right.svg" alt="btn" />
+          <img src="../../img/icon/arrow_right.svg" alt="btn" />
         </button>
       </div>
 

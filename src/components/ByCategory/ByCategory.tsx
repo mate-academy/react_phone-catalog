@@ -27,7 +27,7 @@ const ByCategoty: React.FC<Props> = (
               byCategory__link-container--1"
             >
               <img
-                src="/img/category/Phones_11.png"
+                src="../../img/category/Phones_11.png"
                 alt="categoty"
                 className="byCategory__img"
               />
@@ -47,7 +47,7 @@ const ByCategoty: React.FC<Props> = (
               byCategory__link-container--2"
             >
               <img
-                src="/img/category/Phones_22.png"
+                src="../../img/category/Phones_22.png"
                 alt="categoty"
                 className="byCategory__img"
               />
@@ -67,7 +67,7 @@ const ByCategoty: React.FC<Props> = (
               byCategory__link-container--3"
             >
               <img
-                src="/img/category/Phones_33.png"
+                src="../../img/category/Phones_33.png"
                 alt="categoty"
                 className="byCategory__img"
               />
