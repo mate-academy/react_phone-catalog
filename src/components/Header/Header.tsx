@@ -126,7 +126,6 @@ const Header:React.FC = () => {
                 accessory
               </NavLink>
             </li>
-            {/* <img src="./img/icon/close.png" alt="123111111111" /> */}
           </ul>
         </nav>
       </section>

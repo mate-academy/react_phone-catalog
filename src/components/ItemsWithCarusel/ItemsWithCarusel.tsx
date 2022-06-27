@@ -49,7 +49,7 @@ const ItemsWithCarusel: React.FC<Props> = ({ items, title }) => {
                 className={classNames(
                   { 'itemsWithCarusel__img-off': position === 0 },
                 )}
-                src="../../img/icon/arrow_left.svg"
+                src="./img/icon/arrow_left.svg"
                 alt="btn"
               />
             </button>
@@ -63,7 +63,7 @@ const ItemsWithCarusel: React.FC<Props> = ({ items, title }) => {
                 className={classNames(
                   { 'itemsWithCarusel__img-off': imgOff },
                 )}
-                src="../../img/icon/arrow_right.svg"
+                src="./img/icon/arrow_right.svg"
                 alt="btn"
               />
             </button>
