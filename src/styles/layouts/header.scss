@@ -17,7 +17,7 @@
 
   &__icon {
     position: relative;
-    display: block;
+    display: flex;
     border-left: 1px solid $light-grey;
     height: 64px;
     width: 64px;
