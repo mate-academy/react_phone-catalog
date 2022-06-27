@@ -196,14 +196,20 @@ type Props = {
   children: React.ReactNode,
 };
 
+const getLocalStorae = (key: string) => {
+  try {
+    return JSON.parse(localStorage.getItem(key) || '');
+  } catch {
+    return '';
+  }
+};
+
 export const StateProvider:React.FC<Props> = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
-    const dataFromCart = JSON.parse(localStorage.getItem('cartItems') || '');
-
-    const dataFromFavorite
-      = JSON.parse(localStorage.getItem('favoriteItems') || '');
+    const dataFromCart = getLocalStorae('cartItems');
+    const dataFromFavorite = getLocalStorae('favoriteItems');
 
     dispatch({ type: 'getCartProducts', dataFromCart });
     dispatch({ type: 'getFavoriteProducts', dataFromFavorite });
