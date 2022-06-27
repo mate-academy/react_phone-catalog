@@ -12,11 +12,12 @@
     height: 15px;
     width: 15px;
     background-image: url("../../img/icon/home.svg");
+    opacity: 0.6;
 
-    transition: background-image 0.3s;
+    transition: opacity 0.3s;
 
     &:hover {
-      background-image: url("../../img/icon/home-hover.svg");
+      opacity: 1;
     }
   }
 

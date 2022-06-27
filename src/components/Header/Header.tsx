@@ -68,6 +68,8 @@ const Header:React.FC = () => {
   const clearInput = () => {
     dispatch({ type: 'clearInput', text: '' });
     dispatch({ type: 'setAppliedQuery', text: '' });
+    searchParams.delete('query');
+    history(`?${searchParams.toString()}`);
   };
 
   useEffect(() => {
