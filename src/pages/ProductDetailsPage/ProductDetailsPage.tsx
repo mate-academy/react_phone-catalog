@@ -121,7 +121,7 @@ export const ProductDetailsPage: React.FC<Props> = ({ products }) => {
                   <img
                     onClick={handleChangeImage}
                     id={image}
-                    src={`/${image}`}
+                    src={`${image}`}
                     alt={productId}
                     key={image}
                     className={
