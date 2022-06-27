@@ -1,0 +1,67 @@
+.DropDown {
+  &:not(:last-child) {
+    margin-right: 16px;
+  }
+
+  &__title {
+    @extend %small-text;
+    color: $secondary-grey;
+    margin-bottom: 4px;
+  }
+
+  &__listContainer {
+    position: relative;
+    width: fit-content;
+  }
+
+  &__value {
+    position: relative;
+    @extend %buttons-text;
+    border: 1px solid $icons-grey;
+    height: 40px;
+    width: 176px;
+    padding: 10px 0 10px 12px;
+    margin-bottom: 24px;
+    cursor: pointer;
+    &:hover {
+      border: 1px solid $secondary-grey;
+    }
+  }
+
+  &__arrow {
+    position: absolute;
+    transform-origin: center center;
+    transition: transform 0.3s;
+    top: 17px;
+    right: 15px;
+    height: 6px;
+    width: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__list {
+    top: 44px;
+    left: 0;
+    right: 0;
+    position: absolute;
+    border: 1px solid $light-grey;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+    background-color: $white;
+  }
+
+  &__option {
+    @extend %body-text;
+    color: $secondary-grey;
+    height: 32px;
+    line-height: 32px;
+    padding-left: 12px;
+    cursor: pointer;
+
+    &:hover {
+      color: $primary-dark;
+      background-color: $hover-grey;
+    }
+  }
+}

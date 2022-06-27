@@ -1,0 +1,33 @@
+.primary-button {
+  @extend %buttons-text;
+  text-decoration: none;
+  background-color: $primary-dark;
+  color: $white;
+  height: 40px;
+  width: 176px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+  }
+
+  &--selected {
+    border: 1px solid $light-grey;
+    color: $green;
+    background-color: $white;
+  }
+
+  &--large {
+    height: 48px;
+    width: 263px;
+  }
+
+  &--big {
+    width: 100%;
+    height: 48px;
+  }
+}

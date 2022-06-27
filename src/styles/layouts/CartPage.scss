@@ -1,0 +1,103 @@
+.CartPage {
+
+  &__title {
+    @extend %h1;
+    color: $primary-dark;
+    margin-bottom: 24px;
+  }
+
+  &__productsContainer {
+    @include onDesktop {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  &__item {
+    @include onDesktop {
+      display: flex;
+      align-items: center;
+      width: 750px;
+      height: 130px;
+    }
+    display: flex;
+    flex-wrap: wrap;
+
+    border: 1px solid $light-grey;
+    margin-bottom: 16px;
+  }
+
+  &__linkContainer {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    cursor: pointer;
+    flex-grow: 2;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__img {
+    width: 65px;
+    height: 65px;
+    object-fit: cover;
+    object-position: center;
+    margin-right: 30px;
+  }
+
+  &__productName {
+    @extend %body-text;
+    color: $primary-dark;
+  }
+
+  &__deleteBtn {
+    cursor: pointer;
+    border: 0;
+    outline: 0;
+    background-color: $white;
+    padding: 10px;
+    margin: 0 20px;
+
+    &:hover {
+      stroke: $primary-dark;
+    }
+  }
+
+  &__totalPrice {
+    @extend %h2;
+    color: $primary-dark;
+    margin: 0 40px;
+    width: 90px;
+  }
+
+  &__quantity {
+    @extend %body-text;
+    color: #000;
+    text-align: center;
+    width: 32px;
+  }
+
+  &__totalCheckContainer {
+    border: 1px solid $light-grey;
+    height: fit-content;
+    width: 370px;
+    padding: 24px;
+  }
+
+  &__totalPriceAll {
+    @extend %h1;
+    color: $primary-dark;
+    text-align: center;
+  }
+
+  &__totalItemQuantity {
+    @extend %body-text;
+    color: $secondary-grey;
+    text-align: center;
+    border-bottom: 1px solid $light-grey;
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+  }
+}

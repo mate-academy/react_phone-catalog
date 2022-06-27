@@ -1,0 +1,41 @@
+.footer {
+  border-top: 1px solid $light-grey;
+  height: 96px;
+  box-shadow: 0 -1px 0 $light-grey;
+
+  &__container {
+    max-width: 1136px;
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @include onMobile {
+      flex-direction: column;
+    }
+  }
+
+  &__link {
+    @extend %uppercase;
+    color: $secondary-grey;
+
+    &:not(:last-child) {
+      margin-right: 64px;
+    }
+  }
+
+  &__srcollTop {
+    display: flex;
+    align-items: center;
+  }
+
+  &__srcollTop-name {
+    @extend %small-text;
+    color: $secondary-grey;
+    margin-right: 16px;
+  }
+
+  &__img {
+    stroke: $primary-dark;
+  }
+}

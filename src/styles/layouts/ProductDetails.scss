@@ -1,0 +1,109 @@
+.ProductDetails {
+  &__title {
+    @extend %h1;
+    color: $primary-dark;
+    margin-bottom: 40px;
+  }
+
+  &__img-container {
+    display: flex;
+    margin-right: 64px;
+  }
+
+  &__img-list {
+    width: 80px;
+    height: 460px;
+    margin-right: 16px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &__small-img {
+    display: block;
+    width: 80px;
+    height: 80px;
+    border: 1px solid $light-grey;
+    margin-bottom: 16px;
+
+    &:hover {
+      border: 1px solid $primary-dark;
+    }
+  }
+
+  &__big-img {
+    height: 460px;
+    width: 460px;
+  }
+
+  &__price {
+    @extend %h1;
+    color: $primary-dark;
+  }
+
+  &__mainInformation {
+    display: flex;
+
+  }
+
+  &__mainSpec {
+    width: 320px;
+  }
+
+  &__buttons {
+    margin-bottom: 32px;
+  }
+
+  &__description {
+    display: flex;
+    flex-wrap: wrap;
+
+    @include onSmallDesktop {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    @include onMobile {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  &__article {
+    flex: 1;
+    flex-basis: 40%;
+    max-width: 50%;
+    margin-bottom: 32px;
+
+    @include onSmallDesktop {
+      width: 100%;
+      max-width: 100%;
+    }
+
+    &:nth-child(odd) {
+      margin-right: 64px;
+    }
+  }
+
+  &__article-title {
+    @extend %h3;
+    color: $primary-dark;
+    margin-bottom: 16px;
+  }
+
+  &__content {
+    @extend %body-text;
+    color: $secondary-grey;
+  }
+
+  &__section-title {
+    @extend %h2;
+    color: $primary-dark;
+    padding-bottom: 16px;
+    border-bottom: 1px solid $light-grey;
+    margin-bottom: 31px;
+  }
+}

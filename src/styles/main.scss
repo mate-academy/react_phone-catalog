@@ -1,0 +1,28 @@
+@import "./tools/reset";
+@import "./helpers/variables";
+@import "./helpers/mixins";
+@import "./helpers/placeholders";
+@import "./layouts/page.scss";
+@import "./components/primary-button.scss";
+@import "./components/BreadCrumps.scss";
+@import "./components/nav-bar.scss";
+@import "./layouts/header.scss";
+@import "./components/Banner.scss";
+@import "./layouts/Footer.scss";
+@import "./components/ProductCard.scss";
+@import "./components/ProductList.scss";
+@import "./components/Square-button.scss";
+@import "./components/ProductSlider.scss";
+@import "./components/ShopByCategory.scss";
+@import "./layouts/ProductPage.scss";
+@import "./components/DropDown.scss";
+@import "./components/Pagination.scss";
+@import "./layouts/ProductDetails.scss";
+@import "./layouts/CartPage.scss";
+@import "./components/BackButton.scss";
+@import "./components/SearchInput.scss";
+@import "./components/TechSpecs.scss";
+
+* {
+  box-sizing: border-box;
+}

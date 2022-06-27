@@ -1,0 +1,17 @@
+.ProductPage {
+  &__bredcrumps {
+    margin-bottom: 40px;
+  }
+
+  &__title {
+    @extend %h1;
+    color: $primary-dark;
+    margin-bottom: 8px;
+  }
+
+  &__amount {
+    @extend %body-text;
+    color: $secondary-grey;
+    margin-bottom: 40px;
+  }
+}

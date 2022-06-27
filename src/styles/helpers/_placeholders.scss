@@ -1,0 +1,77 @@
+@font-face {
+  font-family: "Mont-Bold";
+  src: url("../../assets/fonts/Mont-Bold.otf");
+}
+
+@font-face {
+  font-family: "Mont-Regular";
+  src: url("../../assets/fonts/Mont-Regular.otf");
+}
+
+@font-face {
+  font-family: "Mont-semiBold";
+  src: url("../../assets/fonts/Mont-SemiBold.otf");
+}
+
+%buttons-text {
+  font-family: "Mont-semiBold", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+}
+
+%uppercase {
+  font-family: "Mont-Bold", sans-serif;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+}
+
+%h1 {
+  font-family: "Mont-Bold", sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+}
+
+%h2 {
+  font-family: "Mont-Bold", sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 31px;
+  letter-spacing: 0;
+  text-decoration: none;
+}
+
+%h3 {
+  font-family: "Mont-semiBold", sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 26px;
+  letter-spacing: 0;
+  text-decoration: none;
+}
+
+%body-text {
+  font-family: "Mont-Regular", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+  text-decoration: none;
+}
+
+%small-text {
+  font-family: "Mont-semiBold", sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: 0;
+  text-decoration: none;
+}

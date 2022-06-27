@@ -1,0 +1,31 @@
+.ProductList {
+  &__list {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fill, 272px);
+    column-gap: 16px;
+    row-gap: 40px;
+    margin-bottom: 40px;
+  }
+
+  &__dropdownContainer {
+    display: flex;
+
+    &*:not(:last-child) {
+      margin-left: 16px;
+    }
+  }
+
+  &__pagination {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__notFound-container {
+    @extend %h3;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}

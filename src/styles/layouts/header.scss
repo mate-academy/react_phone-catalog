@@ -1,0 +1,44 @@
+.header {
+  display: flex;
+  align-items: center;
+  height: 64px;
+  margin-bottom: 40px;
+
+  &__logo {
+    display: block;
+    cursor: pointer;
+    margin: 0 64px 0 24px;
+    padding: 20px 0;
+  }
+
+  &__img {
+    height: 11px;
+  }
+
+  &__icon {
+    position: relative;
+    display: block;
+    border-left: 1px solid $light-grey;
+    height: 64px;
+    width: 64px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__cart-quantaty {
+    @extend %small-text;
+    font-size: 9px;
+    line-height: 12px;
+    text-align: center;
+    box-sizing: content-box;
+    position: absolute;
+    width: 12px;
+    border-radius: 50%;
+    color: $white;
+    background-color: $red;
+    border: 2px solid $white;
+    z-index: 1;
+    top: 16px;
+    right: 16px;
+  }
+}
