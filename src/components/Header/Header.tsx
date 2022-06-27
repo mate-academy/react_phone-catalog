@@ -86,7 +86,7 @@ const Header:React.FC = () => {
     <header className="header">
       <section className="header__left">
         <Link to="/">
-          <img className="header__logo" src="../../img/LOGO.svg" alt="logo" />
+          <img className="header__logo" src="./img/LOGO.svg" alt="logo" />
         </Link>
 
         <nav className="header__nav">
@@ -126,7 +126,7 @@ const Header:React.FC = () => {
                 accessory
               </NavLink>
             </li>
-            <img src="./img/icon/close.png" alt="123111111111" />
+            {/* <img src="./img/icon/close.png" alt="123111111111" /> */}
           </ul>
         </nav>
       </section>
@@ -166,7 +166,7 @@ const Header:React.FC = () => {
         >
           <div className="header__link-wrap">
             <img
-              src="../../img/icon/header_like.svg"
+              src="./img/icon/header_like.svg"
               className="header__link-img"
               alt="btn-like"
             />
@@ -181,7 +181,7 @@ const Header:React.FC = () => {
         <NavLink to="/cart" className="header__link">
           <div className="header__link-wrap">
             <img
-              src="../../img/icon/header_cart.svg"
+              src="./img/icon/header_cart.svg"
               className="header__link-img"
               alt="link-img"
             />
