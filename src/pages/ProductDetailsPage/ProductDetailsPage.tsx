@@ -138,7 +138,7 @@ export const ProductDetailsPage: React.FC<Props> = ({ products }) => {
               })}
             </div>
             <div className="ProductDetails__selected">
-              <img src={`/${selectedImg}`} alt={productId} />
+              <img src={`${selectedImg}`} alt={productId} />
             </div>
             <div className="ProductDetails__cart">
               <div className="ProductDetails__prices">
