@@ -4,15 +4,31 @@
   height: 64px;
   margin-bottom: 40px;
 
+  @include onSmallDesktop {
+    justify-content: space-between;
+  }
+
+  @include onMobile {
+    justify-content: space-between;
+  }
+
   &__logo {
     display: block;
     cursor: pointer;
-    margin: 0 64px 0 24px;
+    margin: 0 20px;
     padding: 20px 0;
+
+    @include onDesktop {
+      margin: 0 64px 0 24px;
+    }
   }
 
   &__img {
     height: 11px;
+  }
+
+  &__icon-container {
+    display: flex;
   }
 
   &__icon {
@@ -40,5 +56,23 @@
     z-index: 1;
     top: 16px;
     right: 16px;
+  }
+
+  &__sidemMenu-btn {
+    position: relative;
+    background-color: transparent;
+    border: 0;
+    display: flex;
+    border-right: 1px solid $light-grey;
+    height: 64px;
+    width: 64px;
+    padding: 20px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    @include onDesktop {
+      display: none;
+    }
   }
 }

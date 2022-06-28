@@ -8,41 +8,12 @@ type Props = {
 };
 
 const ProductCard: React.FC<Props> = ({ product }) => {
-  // const {
-  //   getItemQuantity,
-  //   removeFromCart,
-  //   increaseQuantity,
-  // } = useContext(CartContext);
-
-  // const {
-  //   favorites,
-  //   addInFavorites,
-  //   removeFromFavorites,
-  // } = useContext(FavoritesContext);
-
-  // const itemQuantity = getItemQuantity(product.id);
-
-  // const handleCart = () => {
-  //   if (itemQuantity) {
-  //     removeFromCart(product.id);
-  //   } else {
-  //     increaseQuantity(product.id);
-  //   }
-  // };
-
-  // const handleFaforites = () => {
-  //   if (favorites.includes(product.id)) {
-  //     removeFromFavorites(product.id);
-  //   } else {
-  //     addInFavorites(product.id);
-  //   }
-  // };
-
   const techList = [
     { name: 'Screen', spec: product.screen },
     { name: 'Capacity', spec: product.capacity },
     { name: 'RAM', spec: product.ram },
   ];
+
 
   return (
     <div className="card">
@@ -69,22 +40,6 @@ const ProductCard: React.FC<Props> = ({ product }) => {
       </p>
       <TechSpecs list={techList} />
       <ProductButtons id={product.id} />
-      {/* <div className="card__button-container">
-        <PrimatyButton
-          OnClick={handleCart}
-          classModificator={classNames({
-            'primary-button--selected': itemQuantity,
-          })}
-        >
-          Add to cart
-        </PrimatyButton>
-        <SquareButton
-          OnClick={handleFaforites}
-          classModificator="square-button--m"
-        >
-          {favorites.includes(product.id) ? <Liked /> : <NotLiked />}
-        </SquareButton>
-      </div> */}
     </div>
   );
 };

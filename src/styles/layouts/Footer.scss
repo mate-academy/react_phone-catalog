@@ -11,7 +11,17 @@
     align-items: center;
     justify-content: space-between;
     @include onMobile {
+      padding: 10px 0;
       flex-direction: column;
+      height: 150px;
+    }
+  }
+
+  &__contacts {
+    @include onMobile {
+      display: flex;
+      flex-direction: column;
+      text-align: center
     }
   }
 
@@ -21,6 +31,14 @@
 
     &:not(:last-child) {
       margin-right: 64px;
+      margin-bottom: 5px;
+    }
+
+    @include onMobile {
+      &:not(:last-child) {
+        margin-right: 0;
+        margin-bottom: 10px;
+      }
     }
   }
 

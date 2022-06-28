@@ -1,16 +1,18 @@
-.nav {
-  flex-grow: 1;
+.SideMenu {
+  position: fixed;
+  z-index: 3;
+  left: -50vw;
+  min-width: 50vw;
+  height: 100vh;
+  background-color: $light-grey;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 20vh 10%;
+  transition: 0.3s;
 
-  @include onMobile {
+  @include onDesktop {
     display: none;
-  }
-
-  @include onSmallDesktop {
-    display: none;
-  }
-
-  &__list {
-    display: flex;
   }
 
   &__link {
@@ -42,5 +44,17 @@
         background-color: $primary-dark;
       }
     }
+  }
+
+  &__sidemMenu-btn {
+    cursor: pointer;
+    border: 0;
+    position: absolute;
+    background-color: transparent;
+    width: 40px;
+    height: 40px;
+    stroke: $primary-dark;
+    top: 15px;
+    left: 15px;
   }
 }

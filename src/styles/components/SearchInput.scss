@@ -5,6 +5,14 @@
   border-left: 1px solid $light-grey;
   border-bottom: 1px solid $light-grey;
 
+  @include onMobile {
+    display: none;
+  }
+
+  @include onSmallDesktop {
+    margin-left: auto;
+  }
+
   &__input {
     height: 64px;
     @extend %body-text;
