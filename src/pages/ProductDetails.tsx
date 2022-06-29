@@ -73,7 +73,7 @@ const ProductDetails:React.FC<Props> = ({ list }) => {
                     onMouseEnter={() => setBigImg(image)}
                   >
                     <img
-                      src={`/${image}`}
+                      src={`${image}`}
                       alt="img-phone"
                       className="ProductDetails__small-img"
                     />
