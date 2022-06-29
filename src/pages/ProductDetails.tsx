@@ -7,6 +7,7 @@ import { Product } from '../types/Product';
 import ProductButtons from '../components/ProductButtons';
 import TechSpecs from '../components/TechSpecs';
 import ProductSlider from '../components/ProductSlider';
+import LoadingSpinner from '../components/Loader';
 
 type Props = {
   list: Product[];
@@ -16,7 +17,7 @@ const ProductDetails:React.FC<Props> = ({ list }) => {
   const [productDetails, setProductDetails]
   = useState<DetailsOfProduct | null>(null);
   const [bigImg, setBigImg] = useState('');
-  const { phoneId: ProductId } = useParams();
+  const { productId } = useParams();
   const location = useLocation();
   const path = location.pathname;
 
@@ -41,7 +42,7 @@ const ProductDetails:React.FC<Props> = ({ list }) => {
   const forSlider = list.slice(0, 10);
 
   const fetchData = async () => {
-    const res = await getProductDetails(ProductId || '');
+    const res = await getProductDetails(productId || '');
 
     setProductDetails(res);
     setBigImg(res.images[0]);
@@ -52,7 +53,7 @@ const ProductDetails:React.FC<Props> = ({ list }) => {
   }, []);
 
   if (!productDetails) {
-    return <h1> Not found</h1>;
+    return <LoadingSpinner />;
   }
 
   const productInfo = list.find(product => (

@@ -48,7 +48,7 @@ const App = () => {
                 element={<PhonesPage list={phonesList} />}
               />
               <Route
-                path="/phones/:phoneId"
+                path="/phones/:productId"
                 element={<ProductDetails list={productList} />}
               />
               <Route
@@ -56,7 +56,7 @@ const App = () => {
                 element={<TabletsPage list={tabletsList} />}
               />
               <Route
-                path="/tablets/:tabletId"
+                path="/tablets/:productId"
                 element={<ProductDetails list={productList} />}
               />
               <Route
@@ -64,7 +64,7 @@ const App = () => {
                 element={<TabletsPage list={accessoriesList} />}
               />
               <Route
-                path="/accessories/:accessorieId"
+                path="/accessories/:productId"
                 element={<ProductDetails list={productList} />}
               />
               <Route path="/cartPage" element={<CartPage />} />

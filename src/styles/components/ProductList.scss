@@ -14,6 +14,13 @@
     &*:not(:last-child) {
       margin-left: 16px;
     }
+
+    @include onMobile {
+      flex-direction: column;
+      &*:not(:last-child) {
+        margin-left: 0;
+      }
+    }
   }
 
   &__pagination {
