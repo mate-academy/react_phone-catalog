@@ -37,8 +37,6 @@ const ProductList: React.FC<Props> = ({ list, showSorting = true }) => {
     return filtretList.sort((a, b) => +a.price - +b.price);
   };
 
-  console.log(list)
-
   const listForRender = prepareList();
   // eslint-disable-next-line
   const changeSortType = (e: any) => {

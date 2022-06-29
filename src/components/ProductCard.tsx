@@ -21,7 +21,7 @@ const ProductCard: React.FC<Props> = ({ product }) => {
         className="card__img-container"
       >
         <img
-          src={`/${product.imageUrl}`}
+          src={`${product.imageUrl}`}
           alt="img-product"
           className="card__img"
         />

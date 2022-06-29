@@ -14,12 +14,12 @@
   }
 
   &__item {
-      display: flex;
-      align-items: center;
-      max-width: 750px;
-      height: 130px;
-      border: 1px solid $light-grey;
-      margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    max-width: 750px;
+    height: 130px;
+    border: 1px solid $light-grey;
+    margin-bottom: 16px;
 
     @include onMobile {
       display: flex;
@@ -86,7 +86,7 @@
 
     @include onMobile {
       align-self: flex-start;
-      margin-bottom: 16px
+      margin-bottom: 16px;
     }
   }
 
