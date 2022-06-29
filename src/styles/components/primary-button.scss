@@ -9,6 +9,7 @@
   align-items: center;
   justify-content: center;
   transition: 0.3s;
+  margin-right: 8px;
   cursor: pointer;
 
   &:hover {
@@ -24,10 +25,17 @@
   &--large {
     height: 48px;
     width: 263px;
+    margin-right: 8px;
+
+    @include onMobile{
+      height: 40px;
+      width: 176px;
+    }
   }
 
   &--big {
     width: 100%;
     height: 48px;
+    margin-right: 0;
   }
 }

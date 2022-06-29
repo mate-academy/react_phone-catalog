@@ -14,17 +14,31 @@
   }
 
   &__item {
-    @include onDesktop {
       display: flex;
       align-items: center;
-      width: 750px;
+      max-width: 750px;
       height: 130px;
-    }
-    display: flex;
-    flex-wrap: wrap;
+      border: 1px solid $light-grey;
+      margin-bottom: 16px;
 
-    border: 1px solid $light-grey;
-    margin-bottom: 16px;
+    @include onMobile {
+      display: flex;
+      flex-direction: column;
+      padding: 10px 5px;
+      max-width: 350px;
+      height: fit-content;
+      margin: 0 auto;
+      margin-bottom: 16px;
+    }
+  }
+
+  &__quantity-container {
+    display: flex;
+    align-items: center;
+
+    @include onMobile {
+      margin: 20px 0;
+    }
   }
 
   &__linkContainer {
@@ -36,6 +50,12 @@
 
     &:hover {
       text-decoration: underline;
+    }
+
+    @include onMobile {
+      width: 100%;
+      justify-content: space-between;
+      padding: 0 10px;
     }
   }
 
@@ -63,6 +83,11 @@
     &:hover {
       stroke: $primary-dark;
     }
+
+    @include onMobile {
+      align-self: flex-start;
+      margin-bottom: 16px
+    }
   }
 
   &__totalPrice {
@@ -70,6 +95,11 @@
     color: $primary-dark;
     margin: 0 40px;
     width: 90px;
+
+    @include onMobile {
+      margin: 0;
+      text-align: center;
+    }
   }
 
   &__quantity {
@@ -84,6 +114,11 @@
     height: fit-content;
     width: 370px;
     padding: 24px;
+
+    @include onMobile {
+      max-width: 100%;
+      margin-bottom: 16px;
+    }
   }
 
   &__totalPriceAll {

@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { HashRouter, Route, Routes } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import './App.scss';
 import Footer from './pages/Footer';
@@ -36,7 +36,7 @@ const App = () => {
   }, []);
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <CartProvider>
         <FavoritesProvider>
           <Header />
@@ -77,7 +77,7 @@ const App = () => {
           <Footer />
         </FavoritesProvider>
       </CartProvider>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 

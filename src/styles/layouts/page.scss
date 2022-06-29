@@ -15,13 +15,17 @@
     @extend %h1;
     color: $primary-dark;
     margin-bottom: 24px;
+
+    @include onMobile {
+      font-size: 20px;
+    }
   }
 }
 
 .container {
   max-width: 1136px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 22px;
   @include onDesktop {
     padding: 0;
   }

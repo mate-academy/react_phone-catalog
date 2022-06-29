@@ -34,7 +34,7 @@ const ProductSlider: React.FC<Props> = ({ list, title }) => {
     className: 'centerSlider',
     dots: false,
     arrows: false,
-    infinite: false,
+    infinite: true,
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 4,
@@ -60,7 +60,6 @@ const ProductSlider: React.FC<Props> = ({ list, title }) => {
       {
         breakpoint: 625,
         settings: {
-          centerMode: true,
           slidesToShow: 1,
           slidesToScroll: 1,
         },

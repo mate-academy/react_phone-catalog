@@ -112,22 +112,24 @@ const CartPage = () => {
                   />
                   <p className="CartPage__productName">{product.name}</p>
                 </Link>
-                <SquareButton
-                  OnClick={() => decreaseQuantity(product.id)}
-                  classModificator={productQuantity === 1
-                    ? 'square-button--disabled'
-                    : ''}
-                >
-                  <MinusIcon />
-                </SquareButton>
-                <p className="CartPage__quantity">
-                  {productQuantity}
-                </p>
-                <SquareButton
-                  OnClick={() => increaseQuantity(product.id)}
-                >
-                  <PlusIcon />
-                </SquareButton>
+                <div className="CartPage__quantity-container">
+                  <SquareButton
+                    OnClick={() => decreaseQuantity(product.id)}
+                    classModificator={productQuantity === 1
+                      ? 'square-button--disabled'
+                      : ''}
+                  >
+                    <MinusIcon />
+                  </SquareButton>
+                  <p className="CartPage__quantity">
+                    {productQuantity}
+                  </p>
+                  <SquareButton
+                    OnClick={() => increaseQuantity(product.id)}
+                  >
+                    <PlusIcon />
+                  </SquareButton>
+                </div>
                 <p className="CartPage__totalPrice">
                   {`$ ${productQuantity * product.newPrice}`}
                 </p>

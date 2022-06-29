@@ -37,6 +37,8 @@ const ProductList: React.FC<Props> = ({ list, showSorting = true }) => {
     return filtretList.sort((a, b) => +a.price - +b.price);
   };
 
+  console.log(list)
+
   const listForRender = prepareList();
   // eslint-disable-next-line
   const changeSortType = (e: any) => {
@@ -67,7 +69,11 @@ const ProductList: React.FC<Props> = ({ list, showSorting = true }) => {
     return (
       <div className="ProductList__notFound-container">
         <h1>Try to find something else</h1>
-        <img src={NotFaundImg} alt="img-not-faund" />
+        <img
+          src={NotFaundImg}
+          alt="img-not-faund"
+          className="ProductList__notFound-page"
+        />
       </div>
     );
   }
