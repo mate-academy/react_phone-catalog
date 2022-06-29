@@ -82,7 +82,7 @@ const ProductDetails:React.FC<Props> = ({ list }) => {
               </ul>
               <div className="ProductDetails__big-img-container">
                 <img
-                  src={`/${bigImg}`}
+                  src={`${bigImg}`}
                   alt="img-phone-main"
                   className="ProductDetails__big-img"
                 />

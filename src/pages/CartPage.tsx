@@ -106,7 +106,7 @@ const CartPage = () => {
                   className="CartPage__linkContainer"
                 >
                   <img
-                    src={`/${product.imageUrl}`}
+                    src={`${product.imageUrl}`}
                     alt="img-product"
                     className="CartPage__img"
                   />
