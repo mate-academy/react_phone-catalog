@@ -54,14 +54,14 @@ export const PhonePage: React.FC<Props> = ({ phones }) => {
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     if (event.target.id === 'SortBy') {
       setSortBy(event.target.value);
+    } else if (event.target.id !== 'SortBy') {
+      setStep(+event.target.value);
+
+      setvisibleItems({
+        start: 0,
+        end: +event.target.value,
+      });
     }
-
-    setStep(+event.target.value);
-
-    setvisibleItems({
-      start: 0,
-      end: +event.target.value,
-    });
   };
 
   const handleClickBack = () => {
