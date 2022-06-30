@@ -1,0 +1,42 @@
+@import "../../styles/utils/vars";
+@import "../../styles/blocks/wrapper";
+
+.AccessoriesPage {
+  &__nav {
+    margin-top: 25px;
+  }
+  &__title {
+    margin-top: 40px;
+    color: $mainColor;
+  }
+  &__models-count {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    color: $secondaryColor;
+    margin-top: 8px;
+  }
+  &__sorting {
+    margin-top: 40px;
+  }
+  &__products {
+    margin-top: 24px;
+  }
+  &__sort {
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+    width: 320px;
+    &-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    &-label {
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 15px;
+      color: $secondaryColor;
+    }
+  }
+}

@@ -1,0 +1,79 @@
+@import "../../styles/utils/vars";
+
+.ProductCard {
+  height: 507px;
+  width: 272px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  color: $mainColor;
+  &__wrapper {
+    margin: 24px auto 0;
+  }
+  &__img {
+    margin: 32px auto 0;
+    height: 208px;
+    width: 208px;
+  }
+  &__title {
+    width: 224px;
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    height: 42px;
+  }
+  &__prices {
+    display: flex;
+    align-content: flex-start;
+    align-items: center;
+    margin-top: 8px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid $elementsColor;
+    &-text {
+      font-size: 22px;
+      &--main {
+        font-weight: 700;
+        line-height: 31px;
+      }
+      &--with-discount {
+        text-decoration: line-through;
+        color: $secondaryColor;
+        font-weight: 500;
+        line-height: 28px;
+        margin-left: 8px;
+      }
+    }
+  }
+  &__info {
+    margin-top: 16px;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    &-text {
+      display: flex;
+      justify-content: space-between;
+      color: $secondaryColor;
+    }
+    &-value {
+      color: $mainColor;
+    }
+  }
+  &__actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
+    &-button {
+      height: 40px;
+      width: 176px;
+    }
+  }
+  &__redirect {
+    display: flex;
+    text-decoration: none;
+    color: $mainColor;
+  }
+}

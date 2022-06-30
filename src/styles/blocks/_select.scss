@@ -1,0 +1,41 @@
+.select {
+  background-color: $whiteColor;
+  position: relative;
+  &::after {
+    content: url(../../images/icons/Select.svg);
+    position: absolute;
+    right: 12px;
+    top: 10px;
+  }
+  &:hover,
+  :active {
+    &::after {
+      content: url(../../images/icons/SelectTop.svg);
+    }
+  }
+  &__item {
+    appearance: none;
+    cursor: pointer;
+    outline: none;
+    box-sizing: border-box;
+    height: 40px;
+    border: 1px solid #b4bdc3;
+    padding-left: 16px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    color: $mainColor;
+    &--number {
+      width: 128px;
+    }
+    &--sort {
+      width: 176px;
+    }
+    &:hover {
+      border-color: $secondaryColor;
+    }
+    &:focus {
+      border-color: $mainColor;
+    }
+  }
+}

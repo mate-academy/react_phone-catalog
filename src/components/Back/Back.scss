@@ -1,0 +1,19 @@
+@import "../../styles/utils/vars";
+
+.Back {
+  cursor: pointer;
+  display: block;
+  background-color: $whiteColor;
+  border: none;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15px;
+  color: $secondaryColor;
+  &::before {
+    content: url(../../images/icons/StrokeBack.svg);
+    padding-right: 9px;
+  }
+  &:hover {
+    color: $mainColor;
+  }
+}

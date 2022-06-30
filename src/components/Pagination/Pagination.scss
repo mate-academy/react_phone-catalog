@@ -1,0 +1,13 @@
+@import "../../styles/utils/vars";
+
+.Pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  &--left {
+    margin-right: 8px;
+  }
+  &--right {
+    margin-left: 8px;
+  }
+}

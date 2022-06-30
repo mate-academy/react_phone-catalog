@@ -1,0 +1,19 @@
+@import "../../styles/utils/vars";
+
+.Header {
+  position: relative;
+  height: 64px;
+  width: 100%;
+  background-color: $whiteColor;
+  box-shadow: 0 1px 0 $elementsColor;
+  display: flex;
+  justify-content: space-between;
+  &__nav {
+    margin-left: 24px;
+    display: flex;
+    flex-grow: 1;
+  }
+  &__products {
+    display: flex;
+  }
+}

@@ -1,0 +1,120 @@
+@import "../../styles/utils/vars";
+@import "../../styles/blocks/wrapper";
+
+.CartPage {
+  &:first-child {
+    margin-top: 41px;
+  }
+  &__products {
+    flex-grow: 1;
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  &__card {
+    border: 1px solid $elementsColor;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 128px;
+  }
+  &__title {
+    margin-top: 16px;
+  }
+  &__product {
+    display: flex;
+    align-items: center;
+    margin-left: 28px;
+    &-img {
+      height: 66px;
+      margin-left: 35px;
+    }
+    &-text {
+      margin-left: 31px;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 21px;
+      color: $mainColor;
+    }
+  }
+  &__price {
+    font-size: 22px;
+    line-height: 31px;
+    margin-right: 40px;
+  }
+  &__cross {
+    cursor: pointer;
+    border: none;
+    background-color: $whiteColor;
+    fill: $iconsColor;
+    &:hover {
+      fill: $mainColor;
+      transform: scale(1.2);
+    }
+  }
+  &__quantity {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    color: #000;
+    margin: 0 14px;
+  }
+  &__actions {
+    display: flex;
+    align-items: center;
+  }
+  &__plus {
+    margin-right: 43px;
+  }
+  &__minus {
+    margin-left: 20px;
+  }
+  &__total {
+    min-width: 370px;
+    height: 206px;
+    flex-grow: 1;
+    margin-top: 24px;
+    text-align: center;
+    border: 1px solid $elementsColor;
+    @media screen and (max-width: 1240px) {
+      min-width: 300px;
+    }
+    &-title {
+      margin-top: 24px;
+    }
+    &-text {
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 21px;
+      color: $secondaryColor;
+    }
+  }
+  &__info {
+    display: flex;
+    gap: 16px;
+    @media screen and (max-width: 1240px) {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+  &__button {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    width: calc(100% - 48px);
+    height: 48px;
+    margin: 48px 24px 0;
+    position: relative;
+    &::before {
+      display: block;
+      content: "";
+      height: 1px;
+      width: 100%;
+      background-color: $elementsColor;
+      position: absolute;
+      top: -25px;
+    }
+  }
+}

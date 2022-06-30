@@ -1,0 +1,18 @@
+@import "../../styles/utils/vars";
+
+.ScrollButton {
+  position: relative;
+  color: $secondaryColor;
+  &:hover {
+    color: $mainColor;
+  }
+  &::before {
+    content: "Back to top";
+    position: absolute;
+    width: 70px;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+    left: -86px;
+  }
+}

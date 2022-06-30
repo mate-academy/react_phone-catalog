@@ -1,0 +1,53 @@
+@import "../../styles/utils/vars";
+
+.Slider {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &__info {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+    &-img {
+      height: 100%;
+      width: 91.5%;
+      margin: 0 16px;
+      display: block;
+      object-fit: cover;
+    }
+    &-button {
+      cursor: pointer;
+      box-sizing: border-box;
+      display: block;
+      height: 100%;
+      width: 32px;
+      background-color: $whiteColor;
+      border: 1px solid $iconsColor;
+      fill: $mainColor;
+      &--right {
+        transform: rotate(180deg);
+      }
+      &:hover {
+        border-color: $mainColor;
+      }
+      &:disabled {
+        border-color: $elementsColor;
+        fill: $elementsColor;
+      }
+    }
+  }
+  &__number {
+    display: flex;
+    gap: 14px;
+    margin-top: 18px;
+    &-item {
+      width: 14px;
+      height: 4px;
+      background-color: $elementsColor;
+      &--active {
+        background-color: $mainColor;
+      }
+    }
+  }
+}

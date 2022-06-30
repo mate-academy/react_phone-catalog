@@ -1,0 +1,42 @@
+.button {
+  height: 32px;
+  width: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-sizing: border-box;
+  background-color: $whiteColor;
+  border: 1px solid $iconsColor;
+  fill: $mainColor;
+  &:hover {
+    border-color: $mainColor;
+    fill: $mainColor;
+  }
+  &--right {
+    transform: rotate(180deg);
+  }
+  &--heart {
+    height: 40px;
+    width: 40px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(../../images/icons/Heart.svg);
+    &--disabled {
+      background-image: url(../../images/icons/HeartSelected.svg);
+    }
+    &--big {
+      height: 48px;
+      width: 48px;
+    }
+  }
+  &--active {
+    background-color: $mainColor;
+    color: $whiteColor;
+  }
+  &:disabled {
+    fill: $iconsColor;
+    border-color: $iconsColor;
+  }
+}

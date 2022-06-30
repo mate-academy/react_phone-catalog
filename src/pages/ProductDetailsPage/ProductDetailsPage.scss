@@ -1,0 +1,165 @@
+@import "../../styles/utils/vars";
+@import "../../styles/blocks/wrapper";
+
+.ProductDetails {
+  &__nav {
+    margin-top: 25px;
+    & button {
+      margin-top: 41px;
+    }
+  }
+  &__title {
+    margin-top: 16px;
+  }
+  &__content {
+    margin-top: 40px;
+    display: flex;
+    @media screen and (max-width: 1240px) {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  &__images {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    &-item {
+      box-sizing: border-box;
+      height: 80px;
+      width: 80px;
+      object-fit: contain;
+      padding: 7px;
+      border: 1px solid $secondaryColor;
+      &--active {
+        border-color: $mainColor;
+      }
+      &:hover {
+        border-color: $mainColor;
+        cursor: pointer;
+      }
+    }
+  }
+  &__prices {
+    display: flex;
+    align-items: center;
+    &-full {
+      color: $mainColor;
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 41px;
+      letter-spacing: -0.01em;
+    }
+    &-discount {
+      color: $secondaryColor;
+      font-size: 22px;
+      font-weight: 500;
+      line-height: 28px;
+      text-decoration: line-through;
+      margin-left: 8px;
+    }
+  }
+  &__buttons {
+    width: 320px;
+    display: flex;
+    gap: 8px;
+    margin-top: 16px;
+  }
+  &__button {
+    font-size: 14px;
+    font-weight: 600;
+    font-style: normal;
+    line-height: 21px;
+    display: block;
+    width: 263px;
+    height: 48px;
+  }
+  &__info {
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    font-size: 12px;
+    line-height: 15px;
+    &-ram,
+    &-processor,
+    &-resolution,
+    &-screen {
+      display: flex;
+      justify-content: space-between;
+    }
+    &-text {
+      color: $secondaryColor;
+      font-weight: 600;
+    }
+    &-value {
+      color: $mainColor;
+      font-weight: 600;
+    }
+  }
+  &__description {
+    margin-top: 80px;
+    display: flex;
+    gap: 64px;
+    @media screen and (max-width: 1240px) {
+      flex-direction: column;
+      align-items: center;
+    }
+    &-text {
+      color: $secondaryColor;
+      margin-top: 32px;
+      padding-top: 32px;
+      border-top: 1px solid $elementsColor;
+      font-weight: 500;
+    }
+    &-info {
+      max-width: 560px;
+    }
+    &-tech {
+      width: 45%;
+      @media screen and (max-width: 1240px) {
+        width: 100%;
+      }
+      &-screen {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 32px;
+        padding-top: 32px;
+        border-top: 1px solid $elementsColor;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 21px;
+        &-text {
+          color: $secondaryColor;
+          font-weight: 600;
+        }
+        &-value {
+          color: $mainColor;
+          font-weight: 600;
+        }
+      }
+      &-ram,
+      &-resolution,
+      &-processor {
+        margin-top: 8px;
+        font-size: 14px;
+        line-height: 21px;
+        display: flex;
+        justify-content: space-between;
+        &-text {
+          font-weight: 600;
+          color: $secondaryColor;
+        }
+        &-value {
+          color: $mainColor;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+  &__analogs {
+    margin-top: 80px;
+    &-products {
+      margin-top: 24px;
+    }
+  }
+}

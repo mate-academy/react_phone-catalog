@@ -1,0 +1,46 @@
+@import "../../styles/utils/vars";
+
+.Favorites {
+  position: relative;
+  &--active {
+    &::after {
+      content: "";
+      height: 3px;
+      background-color: $mainColor;
+      width: 64px;
+      position: absolute;
+      bottom: 0;
+    }
+  }
+  &__img {
+    height: 100%;
+    width: 64px;
+    display: block;
+    object-fit: none;
+    object-position: center;
+    box-shadow: -1px 0 0 $elementsColor;
+    position: relative;
+    &:hover {
+      transform: rotate(360deg);
+    }
+  }
+  &__count {
+    position: absolute;
+    height: 14px;
+    width: 14px;
+    border-radius: 50%;
+    background-color: $redColor;
+    font-size: 9px;
+    font-weight: 600;
+    line-height: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $whiteColor;
+    box-sizing: border-box;
+    border: 1px solid $whiteColor;
+    top: 30%;
+    left: 30px;
+    z-index: 1;
+  }
+}
