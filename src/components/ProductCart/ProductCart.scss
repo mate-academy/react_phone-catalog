@@ -1,0 +1,170 @@
+@import "../../vars";
+
+.productCart {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 272px;
+  border: 1px solid $elements;
+  padding: 32px 24px 24px;
+
+  &__border {
+    position: absolute;
+    box-sizing: content-box;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 10px solid transparent;
+    box-shadow: 3px 3px 4px $white;
+  }
+
+  &__link:hover &__border {
+    box-shadow: 3px 3px 10px grey;
+  }
+
+  &__title {
+    display: inline-block;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    height: 42px;
+    margin-bottom: 8px;
+    color: $primary;
+    
+    transition-property: font-weight, transform;
+    transition-duration: 0.3s;
+  }
+
+  &__link:hover &__title {
+    transform: scale(1.05);
+    font-weight: 600;
+  }
+
+  &__img {
+    height: 208px;
+    width: 208px;
+    margin-bottom: 24px;
+    transition: transform 0.3s;
+  }
+
+  &__link:hover &__img {
+    transform: scale(1.1);
+  }
+
+  &__allPrice {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  &__price {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 22px;
+  }
+
+  &__discount {
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 28px;
+    text-decoration-line: line-through;
+    color: $secondary;
+  }
+
+  &__line {
+    border: 1px solid $elements;
+    background-color: $elements;
+    margin-bottom: 16px;
+  }
+
+  &__props {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__props-title {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: $secondary;
+  }
+
+  &__props-data {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: $primary;
+    margin-bottom: 8px;
+  }
+
+  &__info {
+    margin-bottom: 16px;
+  }
+
+  &__btn-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__btns {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__btn {
+    height: 40px;
+    width: 176px;
+    background: $primary;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    color: $white;
+    border: none;
+    cursor: pointer;
+
+    transition: all 0.3s;
+
+    &:hover {
+      border-radius: 5px;
+      border-color: $primary;
+      transform: scale(1.05);
+    }
+
+    &--act {
+      background: $white;
+      color: $green;
+      border: 1px solid $icons;
+
+      border-radius: 5px;
+      transform: scale(1.05);
+    }
+  }
+
+  &__btn-like {
+    height: 40px;
+    width: 40px;
+    border: 1px solid $icons;
+    background-color: $white;
+    background-image: url("./header_like.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+
+    transition: all 0.3s;
+
+    &:hover {
+      border-radius: 5px;
+      transform: scale(1.05);
+      border-color: $primary;
+    }
+
+    &--act {
+      border-radius: 5px;
+      transform: scale(1.05);
+      background-image: url("./header_like_act.svg");
+    }
+  }
+}

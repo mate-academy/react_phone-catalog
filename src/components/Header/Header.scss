@@ -1,0 +1,166 @@
+@import "../../vars";
+
+.header {
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  background: $white;
+  box-shadow: 0 1px 0 $elements;
+  margin-bottom: 40px;
+
+  &__left {
+    display: flex;
+    align-items: center;
+    margin-left: 24px;
+  }
+
+  &__logo {
+    width: 40px;
+    height: 11px;
+    background-repeat: no-repeat;
+  }
+
+  &__nav {
+    margin-left: 64px;
+  }
+
+  &__nav-list {
+    display: flex;
+    gap: 64px;
+    list-style: none;
+  }
+
+  &__nav-item {
+    position: relative;
+    height: max-content;
+    line-height: 64px;
+  }
+
+  &__nav-link {
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: $secondary;
+
+    transition-duration: 0.5s;
+    transition-property: color;
+
+    &:hover {
+      color: $primary;
+    }
+
+    &::after {
+      position: absolute;
+      content: "";
+      height: 4px;
+      width: 100%;
+      background-color: $white;
+      left: 0;
+      bottom: 0;
+
+      transition: background-color 0.3s;
+    }
+
+    &:hover::after {
+      background-color: $primary;
+    }
+  }
+
+  &__link {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    box-shadow: -1px 0 0 $elements;
+    width: 64px;
+
+    &::after {
+      position: absolute;
+      content: "";
+      height: 4px;
+      width: 100%;
+      background-color: $white;
+      left: 0;
+      bottom: 0;
+
+      transition: background-color 0.3s;
+    }
+
+    &:hover::after {
+      background-color: $primary;
+    }
+  }
+
+  &__link-wrap {
+    position: relative;
+  }
+
+  &__link-img {
+    transition: transform 0.3s;
+  }
+
+  &__link-img-count {
+    position: absolute;
+    top: -6px;
+    left: 10px;
+    height: 14px;
+    width: 14px;
+    background-color: red;
+    border-radius: 50%;
+    color: $white;
+    font-weight: 600;
+    font-size: 9px;
+    line-height: 14px;
+    text-align: center;
+  }
+
+  &__link:hover .header__link-img {
+    transform: scale(1.2);
+  }
+
+  &__right {
+    display: flex;
+  }
+
+  &__input {
+    height: 100%;
+    width: 327px;
+    border: none;
+    outline: none;
+    background: $white;
+    box-shadow: -1px 0 0 $elements;
+    padding-left: 24px;
+
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 18px;
+    color: $primary;
+
+    &::placeholder {
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 18px;
+      color: $icons;
+    }
+  }
+
+  &__input-wrap {
+    position: relative;
+  }
+
+  &__input-close {
+    position: absolute;
+    top: 22px;
+    right: 22px;
+    height: 16px;
+    width: 16px;
+    background-image: url("../../img/icon/close.png");
+    cursor: pointer;
+    opacity: 0.5;
+    transition: opacity 0.3s;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}

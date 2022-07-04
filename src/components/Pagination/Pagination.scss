@@ -1,0 +1,43 @@
+@import "../../vars";
+
+.pagination {
+
+  &__list {
+    list-style: none;
+    display: flex;
+    margin-bottom: 80px;
+    gap: 16px;
+  }
+
+  &__container {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 0;
+    border: 1px solid $elements;
+    background-color: $white;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    transition: border 0.3s;
+    
+    &:hover {
+      border: 1px solid $primary;
+    }
+
+    &--act {
+      background: $primary;
+      border: 1px solid $primary;
+      color: $white;
+    }
+  }
+
+  &__item-container {
+    display: flex;
+    gap: 8px;
+  }
+}

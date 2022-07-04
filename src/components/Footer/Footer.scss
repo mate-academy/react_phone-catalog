@@ -1,0 +1,90 @@
+@import "../../vars";
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 96px;
+  background: $white;
+  box-shadow: 0 -1px 0 $elements;
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+  }
+
+  &__nav-list {
+    display: flex;
+    gap: 64px;
+    list-style: none;
+  }
+
+  &__nav-item {
+    position: relative;
+    height: max-content;
+    line-height: 64px;
+  }
+
+  &__nav-link {
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: $secondary;
+
+    transition: color 0.3s;
+
+    &:hover {
+      color: $secondary;
+    }
+  }
+
+  &__logo {
+    background-color: $white;
+    border: none;
+  }
+
+  &__btn {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    text-decoration: none;
+    cursor: pointer;
+    color: $secondary;
+    border: none;
+    background-color: $white;
+    transition: color 0.3s;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+
+  &__btn-img {
+    height: 32px;
+    width: 32px;
+    border: 1px solid $icons;
+    background-image: url("/img/icon/go-to-up.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: border 0.3s;
+  }
+
+  &__btn:hover &__btn-img {
+    border: 1px solid $primary;
+  }
+
+  &__btn-text {
+    color: inherit;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  &__btn-border {
+    height: 32px;
+    width: 32px;
+    border: 1px solid $icons;
+  }
+}
