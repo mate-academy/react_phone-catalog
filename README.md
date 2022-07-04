@@ -15,4 +15,4 @@
 ## Preview
 * [DEMO LINK](https://pavlo-khashchevskyi.github.io/react_phone-catalog/)
 
-!![React phone catalog](https://media.giphy.com/media/Awchx0rDGJaKpAKe6N/giphy.gif)
+![React phone catalog](https://media.giphy.com/media/Awchx0rDGJaKpAKe6N/giphy.gif)
