@@ -1,0 +1,83 @@
+.category {
+  margin-top: 80px;
+  &__wrapper {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__mobile {
+    background-image: url(../../../images/category/mobile.svg);
+    background-color: #fcdbc1;
+    cursor: pointer;
+    width: 368px;
+    height: 368px;
+    transition: 0.5s;
+
+    &:hover {
+      transform: scale(0.95);
+      border-radius: 3%;
+    }
+  }
+
+  &__tablets {
+    background-image: url(../../../images/category/tablets.svg);
+    background-color: #89939a;
+    cursor: pointer;
+    width: 368px;
+    height: 368px;
+    transition: 0.5s;
+
+    &:hover {
+      transform: scale(0.95);
+      border-radius: 3%;
+    }
+  }
+
+  &__accessories {
+    background-image: url(../../../images/category/accessories.svg);
+    background-color: #973d5f;
+    cursor: pointer;
+    width: 368px;
+    height: 368px;
+    transition: 0.5s;
+
+    &:hover {
+      transform: scale(0.95);
+      border-radius: 3%;
+    }
+  }
+
+  &__title {
+    font-family: "Mont", sans-serif;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: #313237;
+
+  }
+
+  &__name {
+    font-family: "Mont", sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 26px;
+    color: #313237;
+    margin-top: 24px;
+    margin-bottom: 4px;
+    text-decoration: none;
+  }
+
+  &__number {
+    font-family: "Mont", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #89939a;
+  }
+}

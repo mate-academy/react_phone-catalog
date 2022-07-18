@@ -1,0 +1,31 @@
+.addButton {
+  background-color: #313237;
+  font-family: "Mont", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  text-align: center;
+  color: #fff;
+  border: 0;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+  }
+
+  &--cart {
+    width: 263px;
+    height: 48px;
+  }
+
+  &--card {
+    width: 176px;
+    height: 40px;
+  }
+
+  &--focus {
+    border: 1px solid #e2e6e9;
+    color: #27ae60;
+    background-color: #fff;
+  }
+}

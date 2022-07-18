@@ -1,0 +1,106 @@
+.card {
+  width: 272px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #e2e6e9;
+  padding: 32px 24px 24px;
+  box-sizing: border-box;
+
+  &__image {
+    width: 208px;
+    height: 208px;
+  }
+
+  &__link {
+    position: relative;
+    transition: all 1s;
+    &:hover {
+      &::after {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        content: "More details...";
+        position: absolute;
+        width: 271px;
+        height: 245px;
+        top: -15%;
+        left: -11%;
+        background-color: rgba(49,50,55, 0.8);
+        color: #fff;
+      }
+    }
+  }
+
+  &__title {
+    font-family: "Mont", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #313237;
+    margin-top: 0;
+    margin-bottom: 0;
+    height: 42px;
+  }
+
+  &__price {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 6.5px;
+    margin-top: 6.5px;
+  }
+
+  &__newPrice {
+    font-family: "Mont", sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 140%;
+    color: #313237;
+    margin: 0;
+  }
+
+  &__oldPrice {
+    font-family: "Mont", sans-serif;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 28px;
+    text-decoration-line: line-through;
+    color: #89939a;
+    margin: 0;
+  }
+
+  &__line {
+    border: 0.5px solid #e2e6e9;
+    margin-bottom: 16px;
+  }
+
+  &__characteristic {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+
+  &__name {
+    font-family: "Mont", sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: #89939a;
+    margin: 0;
+  }
+
+  &__value {
+    font-family: "Mont", sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    text-align: right;
+    color: #313237;
+    margin: 0;
+  }
+
+  &__button {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
+  }
+}

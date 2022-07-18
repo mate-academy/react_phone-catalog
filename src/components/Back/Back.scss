@@ -1,0 +1,25 @@
+.back {
+  margin-top: 85px;
+  display: flex;
+  gap: 10px;
+  &__strelka {
+    background-image: url(../../images/back.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 6px;
+    height: 10;
+  }
+
+  &__text {
+    color: #89939a;
+    background-color: #fff;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+
+    &:hover {
+      color: #313237;
+      text-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+    }
+  }
+}

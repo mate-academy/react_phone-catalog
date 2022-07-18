@@ -1,0 +1,83 @@
+.home {
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  &__content {
+    display: flex;
+    gap: 16px;
+    height: 400px;
+  }
+
+  &__leftright {
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 32px;
+    border: 1px solid #b4bdc4;
+    background-color: #fff;
+    cursor: pointer;
+
+    &:hover {
+      border: 1px solid #313237;
+    }
+  }
+
+  &__left {
+    background-image: url(../../../images/home/left.svg);
+
+    &:active {
+      background-image: url(../../../images/home/leftdisabled.svg);
+      background-color: #313237;
+    }
+  }
+
+  &__picture {
+    width: 1040px;
+    height: 400px;
+    transition: 1s linear;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    &--1 {
+      background-image: url(../../../images/home/Banner1.png);
+    }
+
+    &--2 {
+      background-image: url(../../../images/home/Banner2.png);
+    }
+
+    &--3 {
+      background-image: url(../../../images/home/Banner3.png);
+    }
+  }
+
+  &__right {
+    background-image: url(../../../images/home/right.svg);
+
+    &:active {
+      background-image: url(../../../images/home/rightdisabled.svg);
+      background-color: #313237;
+    }
+  }
+
+  &__navigation {
+    display: flex;
+    gap: 14px;
+  }
+
+  &__block {
+    width: 14px;
+    height: 4px;
+    background-color: #e2e6e9;
+    cursor: pointer;
+    border: 0;
+    outline: 0;
+
+    &--active {
+      background-color: #313237;
+    }
+  }
+}

@@ -1,0 +1,32 @@
+.navpages {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  margin-top: 85px;
+
+  &__arrow {
+    background-image: url(../../images/home/rightdisabled.svg);
+    height: 10px;
+    width: 6px;
+  }
+
+  &__link {
+    font-family: "Mont", sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: #89939a;
+    text-decoration: none;
+
+    &:hover {
+      color: #313237;
+      text-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+}

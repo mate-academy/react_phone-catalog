@@ -1,0 +1,81 @@
+.phones {
+  box-sizing: border-box;
+  &__left-right {
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid #b4bdc4;
+    background-color: #fff;
+    cursor: pointer;
+
+    &:hover {
+      border: 1px solid #313237;
+    }
+
+    &:disabled {
+      border: 1px solid #e2e6e9;
+    }
+  }
+
+  &__left {
+    background-image: url(../../images/home/left.svg);
+
+    &:disabled {
+      background-image: url(../../images/home/leftdisabled.svg);
+      cursor: auto;
+    }
+
+    &:active {
+      background-image: url(../../images/home/leftdisabled.svg);
+      background-color: #313237;
+    }
+  }
+
+  &__right {
+    background-image: url(../../images/home/right.svg);
+
+    &:disabled {
+      background-image: url(../../images/home/rightdisabled.svg);
+      cursor: auto;
+    }
+
+    &:active {
+      background-image: url(../../images/home/rightdisabled.svg);
+      background-color: #313237;
+    }
+  }
+
+  &__move {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+
+    &:first-child {
+      margin-right: 8px;
+    }
+  
+    &:last-child {
+      margin-left: 8px;
+    }
+  }
+
+  .phones__button {
+    border: 1px solid #e2e6e9;
+    font-family: "Mont", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+    color: #000;
+    width: 32px;
+    height: 32px;
+    background-color: #fff;
+    cursor: pointer;
+  
+    &--focus {
+      background-color: #313237;
+      color: #fff;
+    }
+  }
+}
