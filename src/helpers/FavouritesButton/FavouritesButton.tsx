@@ -36,6 +36,10 @@ export const FavouritesButton: React.FC<Props> = ({ cart, product }) => {
 
     setAddFavourites(prev => !prev);
   };
+  let favourite = [];
+  if (localStorage.getItem('favourites')) {
+    favourite = JSON.parse(localStorage.getItem('favourites') || '');
+  }
 
   return (
     <button
@@ -43,7 +47,7 @@ export const FavouritesButton: React.FC<Props> = ({ cart, product }) => {
       aria-label="Mute volume"
       className={classNames('favouritesButton', {
         'favouritesButton--focus': addFavourites === true
-          || JSON.parse(localStorage.getItem('favourites') || '')
+          || favourite
             .includes(product.id),
         'favouritesButton--cart': !cart,
         'favouritesButton--card': cart,

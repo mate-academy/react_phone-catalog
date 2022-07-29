@@ -8,7 +8,15 @@ export const Header: React.FC = () => {
   const location = useLocation();
   const searchParams = new URLSearchParams(useLocation().search);
   const pathname = location.pathname.split('/');
-
+  let parseFavourites = [];
+  if (localStorage.getItem('favourites')) {
+    parseFavourites = JSON.parse(localStorage.getItem('favourites') || '');
+  }
+  let parseCarts = [];
+  if (localStorage.getItem('carts')) {
+    parseCarts = JSON.parse(localStorage.getItem('carts') || '');
+  }
+  
   useEffect(() => {}, [searchParams]);
 
   return (
@@ -112,13 +120,12 @@ export const Header: React.FC = () => {
                 window.scrollTo({ top: 0 });
               }}
             >
-              {JSON.parse(localStorage.getItem('favourites') || '').length !== 0
+              {parseFavourites.length !== 0
                 && (
                   <div className="header__push">
-                    {JSON.parse(localStorage.getItem('favourites')
-                    || '').length}
+                    {parseFavourites.length}
                   </div>
-                )}
+              )}
             </button>
           </NavLink>
           <NavLink
@@ -134,10 +141,10 @@ export const Header: React.FC = () => {
                 window.scrollTo({ top: 0 });
               }}
             >
-              {JSON.parse(localStorage.getItem('carts') || '').length !== 0
+              {parseCarts.length !== 0
                 && (
                   <div className="header__push">
-                    {JSON.parse(localStorage.getItem('carts') || '').length}
+                    {parseCarts.length}
                   </div>
                 )}
             </button>

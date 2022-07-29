@@ -32,35 +32,37 @@ export const Favourites: React.FC<Props> = ({ products }) => {
   }, [searchInput, visibleProducts]);
 
   return (
-    <>
-      <Header />
-      <main className="favourites">
-        <div className="container">
-          <NavPages />
-          <h1 className="favourites__title h1">Favourites</h1>
-          {visibleProducts.length !== 0 ? (
-            <>
-              <div className="favourites__number bodytext">
-                {visibleProducts.length}
-                {' '}
-                items
+    <div className='wrapper'>
+      <div className="top">
+        <Header />
+        <main className="favourites">
+          <div className="container">
+            <NavPages />
+            <h1 className="favourites__title h1">Favourites</h1>
+            {visibleProducts.length !== 0 ? (
+              <>
+                <div className="favourites__number bodytext">
+                  {visibleProducts.length}
+                  {' '}
+                  items
+                </div>
+                <div className="favourites__list">
+                  {visibleProducts.map(product => (
+                    <div className="favourites__item card" key={product.id}>
+                      <PricesPhone product={product} />
+                    </div>
+                  ))}
+                </div>
+              </>
+            ) : (
+              <div className="favourites__not h2">
+                Not favourites
               </div>
-              <div className="favourites__list">
-                {visibleProducts.map(product => (
-                  <div className="favourites__item card" key={product.id}>
-                    <PricesPhone product={product} />
-                  </div>
-                ))}
-              </div>
-            </>
-          ) : (
-            <div className="favourites__not h2">
-              Not favourites
-            </div>
-          )}
-        </div>
-      </main>
+            )}
+          </div>
+        </main>
+      </div>
       <Footer />
-    </>
+    </div>
   );
 };

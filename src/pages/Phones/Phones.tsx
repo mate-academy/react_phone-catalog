@@ -45,119 +45,121 @@ export const Phones: React.FC<Props> = ({ products, title }) => {
   }, [sortBy, products, searchInput]);
 
   return (
-    <>
-      <Header />
-      <main className="phones">
-        <div className="container">
-          <NavPages />
-          <h1 className="phones__title">{title}</h1>
-          {products.length !== 0 ? (
-            <>
-              <p className="phones__number">
-                {products.length}
-                {' '}
-                models
-              </p>
-              <div className="phones__inputs">
-                <div className="phones__input">
-                  <label
-                    htmlFor="inputSort"
-                    className="phones__label"
-                  >
-                    Sort by
-                  </label>
-                  <select
-                    name="sort"
-                    id="inputSort"
-                    className="phones__select"
-                    value={sortBy}
-                    onChange={(event) => {
-                      searchParams.set('sortBy', event.target.value);
-                      navigate({
-                        search: searchParams.toString(),
-                      });
-                    }}
-                  >
-                    <option className="phones__option" value="newest">
-                      Newest
-                    </option>
-                    <option className="phones__option" value="cheaper">
-                      Сheaper
-                    </option>
-                    <option className="phones__option" value="expensive">
-                      More expensive
-                    </option>
-                  </select>
+    <div className='wrapper'>
+      <div className="top">
+        <Header />
+        <main className="phones">
+          <div className="container">
+            <NavPages />
+            <h1 className="phones__title">{title}</h1>
+            {products.length !== 0 ? (
+              <>
+                <p className="phones__number">
+                  {products.length}
+                  {' '}
+                  models
+                </p>
+                <div className="phones__inputs">
+                  <div className="phones__input">
+                    <label
+                      htmlFor="inputSort"
+                      className="phones__label"
+                    >
+                      Sort by
+                    </label>
+                    <select
+                      name="sort"
+                      id="inputSort"
+                      className="phones__select"
+                      value={sortBy}
+                      onChange={(event) => {
+                        searchParams.set('sortBy', event.target.value);
+                        navigate({
+                          search: searchParams.toString(),
+                        });
+                      }}
+                    >
+                      <option className="phones__option" value="newest">
+                        Newest
+                      </option>
+                      <option className="phones__option" value="cheaper">
+                        Сheaper
+                      </option>
+                      <option className="phones__option" value="expensive">
+                        More expensive
+                      </option>
+                    </select>
+                  </div>
+                  <div className="phones__input">
+                    <label
+                      htmlFor="inputItems"
+                      className="phones__label"
+                    >
+                      Items on page
+                    </label>
+                    <select
+                      name="numberPage"
+                      id="inputItems"
+                      className="phones__select"
+                      value={sortItems}
+                      onChange={(event) => {
+                        searchParams.set('sortItems', event.target.value);
+                        navigate({
+                          search: searchParams.toString(),
+                        });
+                      }}
+                    >
+                      <option className="phones__option" value="0">
+                        All
+                      </option>
+                      <option className="phones__option" value="4">
+                        4
+                      </option>
+                      <option className="phones__option" value="8">
+                        8
+                      </option>
+                    </select>
+                  </div>
                 </div>
-                <div className="phones__input">
-                  <label
-                    htmlFor="inputItems"
-                    className="phones__label"
-                  >
-                    Items on page
-                  </label>
-                  <select
-                    name="numberPage"
-                    id="inputItems"
-                    className="phones__select"
-                    value={sortItems}
-                    onChange={(event) => {
-                      searchParams.set('sortItems', event.target.value);
-                      navigate({
-                        search: searchParams.toString(),
-                      });
-                    }}
-                  >
-                    <option className="phones__option" value="0">
-                      All
-                    </option>
-                    <option className="phones__option" value="4">
-                      4
-                    </option>
-                    <option className="phones__option" value="8">
-                      8
-                    </option>
-                  </select>
+                <div className="phones__list">
+                  {sortItems === '0' || sortItems === ''
+                    ? visibleProducts?.slice().map(product => (
+                      <div className="phones__card card" key={product.id}>
+                        <PricesPhone product={product} />
+                      </div>
+                    )) : (
+                      visibleProducts?.slice((page - 1) * +sortItems,
+                        +sortItems * page)
+                        .map(product => (
+                          <div
+                            className="phones__card card"
+                            key={product.id}
+                          >
+                            <PricesPhone product={product} />
+                          </div>
+                        )))}
                 </div>
+                {sortItems !== '0' && sortItems !== '' && (
+                  <Pagination
+                    total={products.length}
+                    step={+sortItems}
+                    page={page}
+                    changePage={setPage}
+                    arrPages={Array.from({
+                      length: Math.ceil(products.length / +sortItems),
+                    }, (_, i) => i + 1)}
+                  />
+                )}
+              </>
+            ) : (
+              <div className="phones__notfound h2">
+                Product not found
               </div>
-              <div className="phones__list">
-                {sortItems === '0' || sortItems === ''
-                  ? visibleProducts?.slice().map(product => (
-                    <div className="phones__card card" key={product.id}>
-                      <PricesPhone product={product} />
-                    </div>
-                  )) : (
-                    visibleProducts?.slice((page - 1) * +sortItems,
-                      +sortItems * page)
-                      .map(product => (
-                        <div
-                          className="phones__card card"
-                          key={product.id}
-                        >
-                          <PricesPhone product={product} />
-                        </div>
-                      )))}
-              </div>
-              {sortItems !== '0' && sortItems !== '' && (
-                <Pagination
-                  total={products.length}
-                  step={+sortItems}
-                  page={page}
-                  changePage={setPage}
-                  arrPages={Array.from({
-                    length: Math.ceil(products.length / +sortItems),
-                  }, (_, i) => i + 1)}
-                />
-              )}
-            </>
-          ) : (
-            <div className="phones__notfound h2">
-              Product not found
-            </div>
-          )}
-        </div>
-      </main>
+            )}
+          </div>
+        </main>
+      </div>
       <Footer />
-    </>
+    </div>
   );
 };
