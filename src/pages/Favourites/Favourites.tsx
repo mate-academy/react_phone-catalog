@@ -32,7 +32,7 @@ export const Favourites: React.FC<Props> = ({ products }) => {
   }, [searchInput, visibleProducts]);
 
   return (
-    <div className='wrapper'>
+    <div className="wrapper">
       <div className="top">
         <Header />
         <main className="favourites">

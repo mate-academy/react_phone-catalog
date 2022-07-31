@@ -36,7 +36,9 @@ export const FavouritesButton: React.FC<Props> = ({ cart, product }) => {
 
     setAddFavourites(prev => !prev);
   };
+
   let favourite = [];
+
   if (localStorage.getItem('favourites')) {
     favourite = JSON.parse(localStorage.getItem('favourites') || '');
   }

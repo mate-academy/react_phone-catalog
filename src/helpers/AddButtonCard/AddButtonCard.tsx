@@ -12,9 +12,11 @@ type Props = {
 export const AddButtonCard: React.FC<Props> = ({ cart, product }) => {
   const [addCart, setAddCart] = useState('Add to cart');
   let cartsMain = [];
+
   if (localStorage.getItem('carts')) {
     cartsMain = JSON.parse(localStorage.getItem('carts') || '');
   }
+
   const searchParams = new URLSearchParams(useLocation().search);
   const navigate = useNavigate();
 

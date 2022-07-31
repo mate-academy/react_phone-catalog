@@ -9,14 +9,17 @@ export const Header: React.FC = () => {
   const searchParams = new URLSearchParams(useLocation().search);
   const pathname = location.pathname.split('/');
   let parseFavourites = [];
+
   if (localStorage.getItem('favourites')) {
     parseFavourites = JSON.parse(localStorage.getItem('favourites') || '');
   }
+
   let parseCarts = [];
+
   if (localStorage.getItem('carts')) {
     parseCarts = JSON.parse(localStorage.getItem('carts') || '');
   }
-  
+
   useEffect(() => {}, [searchParams]);
 
   return (
@@ -125,7 +128,7 @@ export const Header: React.FC = () => {
                   <div className="header__push">
                     {parseFavourites.length}
                   </div>
-              )}
+                )}
             </button>
           </NavLink>
           <NavLink

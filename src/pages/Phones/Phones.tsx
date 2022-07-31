@@ -45,7 +45,7 @@ export const Phones: React.FC<Props> = ({ products, title }) => {
   }, [sortBy, products, searchInput]);
 
   return (
-    <div className='wrapper'>
+    <div className="wrapper">
       <div className="top">
         <Header />
         <main className="phones">
