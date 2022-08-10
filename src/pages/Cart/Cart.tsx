@@ -43,14 +43,16 @@ export const Cart: React.FC<Props> = ({ products }) => {
           <div className="cart__wrapper">
             <div className="cart__list">
               {productInf?.images.map(image => (
-                <button
-                  type="button"
+                /* eslint-disable jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions */
+                <img
+                  src={image}
                   key={image}
-                  className="cart__item"
                   onClick={() => setImage(image)}
-                >
-                  <img src={image} alt="imageCart" />
-                </button>
+                  className={classNames('cart__item', {
+                    'cart__item--focus': image === imageCart,
+                  })}
+                  alt="imageCart"
+                />
               ))}
             </div>
             <img

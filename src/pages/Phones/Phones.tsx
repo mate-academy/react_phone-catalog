@@ -55,72 +55,74 @@ export const Phones: React.FC<Props> = ({ products, title }) => {
             {products.length !== 0 ? (
               <>
                 <p className="phones__number">
-                  {products.length}
+                  {visibleProducts?.length}
                   {' '}
                   models
                 </p>
-                <div className="phones__inputs">
-                  <div className="phones__input">
-                    <label
-                      htmlFor="inputSort"
-                      className="phones__label"
-                    >
-                      Sort by
-                    </label>
-                    <select
-                      name="sort"
-                      id="inputSort"
-                      className="phones__select"
-                      value={sortBy}
-                      onChange={(event) => {
-                        searchParams.set('sortBy', event.target.value);
-                        navigate({
-                          search: searchParams.toString(),
-                        });
-                      }}
-                    >
-                      <option className="phones__option" value="newest">
-                        Newest
-                      </option>
-                      <option className="phones__option" value="cheaper">
-                        Сheaper
-                      </option>
-                      <option className="phones__option" value="expensive">
-                        More expensive
-                      </option>
-                    </select>
+                {searchInput === '' && (
+                  <div className="phones__inputs">
+                    <div className="phones__input">
+                      <label
+                        htmlFor="inputSort"
+                        className="phones__label"
+                      >
+                        Sort by
+                      </label>
+                      <select
+                        name="sort"
+                        id="inputSort"
+                        className="phones__select"
+                        value={sortBy}
+                        onChange={(event) => {
+                          searchParams.set('sortBy', event.target.value);
+                          navigate({
+                            search: searchParams.toString(),
+                          });
+                        }}
+                      >
+                        <option className="phones__option" value="newest">
+                          Newest
+                        </option>
+                        <option className="phones__option" value="cheaper">
+                          Сheaper
+                        </option>
+                        <option className="phones__option" value="expensive">
+                          More expensive
+                        </option>
+                      </select>
+                    </div>
+                    <div className="phones__input">
+                      <label
+                        htmlFor="inputItems"
+                        className="phones__label"
+                      >
+                        Items on page
+                      </label>
+                      <select
+                        name="numberPage"
+                        id="inputItems"
+                        className="phones__select"
+                        value={sortItems}
+                        onChange={(event) => {
+                          searchParams.set('sortItems', event.target.value);
+                          navigate({
+                            search: searchParams.toString(),
+                          });
+                        }}
+                      >
+                        <option className="phones__option" value="0">
+                          All
+                        </option>
+                        <option className="phones__option" value="4">
+                          4
+                        </option>
+                        <option className="phones__option" value="8">
+                          8
+                        </option>
+                      </select>
+                    </div>
                   </div>
-                  <div className="phones__input">
-                    <label
-                      htmlFor="inputItems"
-                      className="phones__label"
-                    >
-                      Items on page
-                    </label>
-                    <select
-                      name="numberPage"
-                      id="inputItems"
-                      className="phones__select"
-                      value={sortItems}
-                      onChange={(event) => {
-                        searchParams.set('sortItems', event.target.value);
-                        navigate({
-                          search: searchParams.toString(),
-                        });
-                      }}
-                    >
-                      <option className="phones__option" value="0">
-                        All
-                      </option>
-                      <option className="phones__option" value="4">
-                        4
-                      </option>
-                      <option className="phones__option" value="8">
-                        8
-                      </option>
-                    </select>
-                  </div>
-                </div>
+                )}
                 <div className="phones__list">
                   {sortItems === '0' || sortItems === ''
                     ? visibleProducts?.slice().map(product => (
@@ -139,7 +141,8 @@ export const Phones: React.FC<Props> = ({ products, title }) => {
                           </div>
                         )))}
                 </div>
-                {sortItems !== '0' && sortItems !== '' && (
+                {sortItems !== '0' && sortItems !== ''
+                  && searchInput === '' && (
                   <Pagination
                     total={products.length}
                     step={+sortItems}
