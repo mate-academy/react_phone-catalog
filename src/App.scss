@@ -1,1 +1,51 @@
-// not empty
+@import "./styles/utils/vars.scss";
+@import "./styles/utils/typography.scss";
+@import "./styles/utils/mixins.scss";
+
+body,
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  flex: 0 1 auto;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  box-sizing: border-box;
+
+  &__mainBlock {
+    display: flex;
+    flex: 1 0 auto;
+    flex-direction: column;
+    width: 1136px;
+    height: max-content;
+    margin: 40px auto 80px;
+    box-sizing: border-box;
+
+    @include tablet {
+      width: 992px;
+    }
+
+    @include iPad {
+      width: 680px;
+      margin-bottom: 40px;
+    }
+
+    @media (min-width: 500px) and (max-width: 767px) {
+      width: 448px;
+      margin: 30px auto;
+    }
+
+    @media (min-width: 320px) and (max-width: 499px) {
+      width: 292px;
+      margin: 20px auto;
+    }
+  }
+}
