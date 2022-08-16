@@ -1,0 +1,48 @@
+@import "../../styles/utils/vars.scss";
+@import "../../styles/utils/typography.scss";
+@import "../../styles/utils/mixins.scss";
+
+.BreadCrumbs {
+  display: flex;
+  gap: 13px;
+  align-items: center;
+
+  @include mobile {
+    gap: 8px;
+  }
+
+  &__backToHome {
+    display: block;
+    height: 16px;
+    width: 16px;
+    background: url(../../icons/Home.png) no-repeat center;
+    background-size: cover;
+  }
+
+  &__span,
+  &__activePage {
+    @include bodyText;
+    color: $secondary;
+    padding-right: 8px;
+
+    @include mobile {
+      font-size: 12px;
+    }
+  }
+
+  &__activePage {
+    @include mobile {
+      width: 180px;
+    }
+  }
+
+  &__linkPage {
+    @include bodyText;
+    color: $primary;
+    text-decoration: none;
+
+    @include mobile {
+      font-size: 12px;
+    }
+  }
+}

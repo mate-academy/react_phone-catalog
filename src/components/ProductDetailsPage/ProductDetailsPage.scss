@@ -1,0 +1,485 @@
+@import "../../styles/utils/vars.scss";
+@import "../../styles/utils/typography.scss";
+@import "../../styles/utils/mixins.scss";
+
+.ProductDetailsPage {
+  display: flex;
+  flex-direction: column;
+
+  &__labelBack {
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    color: $secondary;
+    @include smallText;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background-color: #fff;
+    padding-left: 8px;
+
+    @include iPad {
+      margin-top: 30px;
+    }
+
+    @include mobile {
+      margin-top: 20px;
+    }
+  }
+
+  &__title {
+    @include h1;
+    color: $primary;
+    padding-top: 16px;
+    padding-bottom: 40px;
+
+    @include iPad {
+      padding-top: 30px;
+    }
+
+    @include mobile {
+      padding-bottom: 20px;
+    }
+  }
+
+  //  mainBlock  //
+  &__mainBlock {
+    display: flex;
+
+    @include iPad {
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    @include mobile {
+      flex-direction: column;
+      gap: 16px;
+    }
+  }
+
+  &__photos {
+    display: flex;
+    gap: 16px;
+    height: max-content;
+    padding-right: 75px;
+
+    @include tablet {
+      padding-right: 40px;
+    }
+
+    @include iPad {
+      padding-right: 20px;
+    }
+
+    @include mobile {
+      padding-right: 0;
+    }
+  }
+
+  &__bigFoto {
+    width: 464px;
+    height: 442px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    object-fit: contain;
+    object-position: center;
+
+    @include iPad {
+      width: 380px;
+      height: 380px;
+    }
+
+    @media (min-width: 500px) and (max-width: 767px) {
+      width: 334px;
+      height: 334px;
+    }
+
+    @media (min-width: 320px) and (max-width: 499px) {
+      width: 194px;
+      height: 194px;
+    }
+  }
+
+  &__allFotos {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-height: 464px;
+    width: 78px;
+    padding: 0;
+    list-style: none;
+    margin: 0;
+    overflow: auto;
+
+    @media (min-width: 500px) and (max-width: 767px) {
+      max-height: 360px;
+    }
+
+    @media (min-width: 320px) and (max-width: 499px) {
+      max-height: 360px;
+      width: 70px;
+    }
+  }
+
+  &__smallFotoLi {
+    border: 1px solid $elements;
+    height: 78px;
+    width: 78px;
+    box-sizing: border-box;
+
+    @media (min-width: 320px) and (max-width: 499px) {
+      height: 70px;
+      width: 70px;
+    }
+
+    &--active {
+      border-color: $primary;
+    }
+  }
+
+  &__smallFoto {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+  }
+
+  //  mainDetails  //
+  &__mainDetails {
+    display: flex;
+    justify-content: space-between;
+
+    @media (min-width: 320px) and (max-width: 499px) {
+      flex-direction: column-reverse;
+    }
+  }
+
+  &__options {
+    display: flex;
+    flex-direction: column;
+    width: 320px;
+
+    @media (min-width: 500px) and (max-width: 767px) {
+      width: 280px;
+    }
+
+    @media (min-width: 320px) and (max-width: 499px) {
+      width: 100%;
+    }
+  }
+
+  &__id {
+    @include smallText;
+    color: $icons;
+    text-transform: uppercase;
+
+    @media (min-width: 320px) and (max-width: 499px) {
+      align-self: flex-end;
+    }
+  }
+
+  &__colors,
+  &__capacity {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__capacity {
+    padding-top: 24px;
+
+    @include mobile {
+      padding-top: 16px;
+    }
+  }
+
+  &__availableColors {
+    @include smallText;
+    color: $secondary;
+  }
+
+  &__chooseColor,
+  &__chooseCapacity {
+    display: flex;
+    gap: 8px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid $elements;
+
+    @include mobile {
+      padding-bottom: 16px;
+    }
+  }
+
+  &__label {
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    border: 1px solid $elements;
+    cursor: pointer;
+
+    &--active {
+      border-color: $primary;
+    }
+  }
+
+  &__inputColor,
+  &__inputCapacity {
+    display: none;
+  }
+
+  &__decorColor {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 32px;
+    width: 32px;
+
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 32px;
+      width: 32px;
+      border: 2px solid white;
+      border-radius: 50%;
+      background-color: transparent;
+    }
+  }
+
+  &__labelCapacity {
+    background-color: transparent;
+    @include bodyText;
+    cursor: pointer;
+
+    &--active {
+      background-color: $primary;
+      color: $white;
+    }
+  }
+
+  &__decorCapacity {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+    width: 56px;
+    border: 1px solid $icons;
+  }
+
+  //  mainInfo //
+  &__mainInfo {
+    display: flex;
+    flex-direction: column;
+    padding-top: 32px;
+
+    @include mobile {
+      padding-top: 24px;
+    }
+  }
+
+  &__priceBlock {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-bottom: 16px;
+  }
+
+  &__priceWithDiscount {
+    @include h1;
+    color: $primary;
+  }
+
+  &__price {
+    @include h2;
+    font-family: "Mont regular", sans-serif;
+    font-weight: 500;
+    color: $secondary;
+    text-decoration: line-through;
+  }
+
+  &__add {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__addToCart {
+    @include button;
+    width: 263px;
+    height: 48px;
+
+    @include iPad {
+      width: 263px;
+      height: 48px;
+    }
+
+    @media (min-width: 500px) and (max-width: 767px) {
+      width: 263px;
+      height: 48px;
+    }
+
+    @media (min-width: 320px) and (max-width: 499px) {
+      width: 194px;
+      height: 40px;
+    }
+
+    &:hover,
+    &--added {
+      background-color: $white;
+      color: $green;
+      border-color: $elements;
+    }
+  }
+
+  &__addToFavorite {
+    @include addToFavourites;
+    width: 48px;
+    height: 48px;
+
+    @media (min-width: 320px) and (max-width: 499px) {
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  //  infoBlock //
+  &__infoBlock {
+    padding-top: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    @media (min-width: 500px) and (max-width: 767px) {
+      padding-top: 24px;
+    }
+  }
+
+  &__info {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__info-name {
+    @include smallText;
+    color: $secondary;
+    padding-right: 10px;
+  }
+
+  &__info-value {
+    @include smallText;
+    color: $primary;
+    text-align: end;
+  }
+
+  &__detailBlock {
+    display: flex;
+    justify-content: space-between;
+    padding: 80px 0;
+
+    @include iPad {
+      padding: 60px 0;
+    }
+
+    @include mobile {
+      padding: 40px 0;
+      flex-direction: column;
+      gap: 16px;
+    }
+  }
+
+  //  about  //
+  &__about {
+    display: flex;
+    flex-direction: column;
+    padding-right: 10px;
+    width: 560px;
+
+    @include mobile {
+      width: 100%;
+    }
+  }
+
+  &__detailTitle {
+    @include h2;
+    color: $primary;
+    padding-bottom: 16px;
+    border-bottom: 1px solid $elements;
+  }
+
+  &__paragraph {
+    @include h3;
+    padding-top: 32px;
+    color: $primary;
+
+    @include mobile {
+      padding-top: 20px;
+    }
+  }
+
+  &__text {
+    @include bodyText;
+    padding-top: 16px;
+    color: $secondary;
+
+    @include iPad {
+      font-size: 12px;
+    }
+
+    @media (min-width: 320px) and (max-width: 499px) {
+      font-size: 12px;
+    }
+  }
+
+  //  tech  //
+  &__tech {
+    display: flex;
+    flex-direction: column;
+    width: 512px;
+
+    @include mobile {
+      width: 100%;
+    }
+  }
+
+  &__techBlock {
+    display: flex;
+    flex-direction: column;
+    padding-top: 25px;
+    gap: 8px;
+  }
+
+  &__techInfo {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__tech-name {
+    @include bodyText;
+    color: $secondary;
+    padding-right: 10px;
+
+    @include iPad {
+      font-size: 12px;
+    }
+
+    @media (min-width: 320px) and (max-width: 499px) {
+      font-size: 12px;
+    }
+  }
+
+  &__tech-value {
+    @include bodyText;
+    color: $primary;
+    text-align: right;
+
+    @include iPad {
+      font-size: 12px;
+    }
+
+    @media (min-width: 320px) and (max-width: 499px) {
+      font-size: 12px;
+    }
+  }
+}

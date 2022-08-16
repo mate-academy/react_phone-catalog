@@ -1,0 +1,18 @@
+export type Product = {
+  type: string,
+  price: number,
+  discount: number,
+  age: number,
+  id: string,
+  imageUrl: string,
+  name: string,
+  snippet: string,
+  screen: string,
+  capacity: string,
+  ram?: string,
+  carrier?: string,
+  priceWithDiscount: number,
+  inOrder: boolean,
+  inFavourite: boolean,
+  quantityInOrder: number,
+};
