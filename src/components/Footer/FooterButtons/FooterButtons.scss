@@ -1,0 +1,35 @@
+.foobuttons {
+  margin: auto;
+
+  &__menu {
+    display: flex;
+    height: 100%;
+    margin-left: 57px;
+    padding: 0;
+    // border: solid 1px red;
+  }
+
+  &__menuitem {
+    list-style: none;
+    text-transform: uppercase;
+  }
+
+  &__link {
+    font-family: "Mont-Bold", sans-serif;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    text-decoration: none;
+    color: #89939a;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 0.04em;
+    margin-right: 64px;
+  }
+
+  &__link:hover {
+    color: #313237;
+  }
+}

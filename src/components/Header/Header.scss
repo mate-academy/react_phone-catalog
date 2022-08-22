@@ -1,0 +1,43 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+
+  &__container_left {
+    display: flex;
+  }
+
+  &__rectangle {
+    display: flex;
+    width: 64px;
+    height: 64px;
+    background-image: url(../../images/rectangle_def.svg);
+    background-position: center;
+    background-size: cover;
+    &:hover {
+      background-image: url(../../images/rectangle_hover.svg);
+    }
+  }
+
+  &__boxbadge {
+    margin: auto;
+  }
+
+  &__favorites {
+    width: 16px;
+    height: 16px;
+    background-image: url(../../images/favorit/heart_def_hover.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  &__bag {
+    width: 16px;
+    height: 16px;
+    background-image: url(../../images/bag/bag.svg);
+    background-position: center;
+  }
+}
+
+.MuiToolbar-root {
+  padding-right: 0 !important;
+}
