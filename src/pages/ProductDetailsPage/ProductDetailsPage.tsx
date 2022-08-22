@@ -46,6 +46,8 @@ export const ProductDetailsPage: React.FC = () => {
 
     getProductDetails();
     setMainImage('');
+    setAddedToCart(false);
+    setAddedToFavorites(false);
   }, [selectedProduct]);
 
   useEffect(() => {
