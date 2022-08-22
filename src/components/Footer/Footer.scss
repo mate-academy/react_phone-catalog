@@ -1,0 +1,31 @@
+@use "../../utilities/variables" as v;
+
+.nav-footer {
+  height: 55px;
+  padding: 0 152px;
+  border-top: 1px solid v.$border-color;
+}
+
+.navbar-item.navbar-center {
+  flex-grow: 1;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.logo {
+  color: v.$primary-color;
+  font-weight: bolder;
+}
+
+.back-to-top {
+  cursor: pointer;
+  font-weight: 12px;
+  text-transform: capitalize;
+}
+
+.footer-link {
+  color: v.$secondary-color;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 12px;
+}

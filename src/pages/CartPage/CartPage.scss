@@ -1,0 +1,166 @@
+@use "../../utilities/variables" as v;
+$header-footer-height: 110px;
+
+.cart-page {
+  min-height: calc(100vh - #{$header-footer-height});
+}
+
+.cart-page-wrapper {
+  padding: 41px 152px 87px;
+}
+
+.icons-container {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.icon {
+  margin-right: 5px;
+  margin-bottom: 16px;
+}
+
+.icon-title {
+  color: v.$secondary-color;
+  font-size: 12px;
+  font-weight: normal;
+  margin-bottom: 16px;
+}
+
+.header-container {
+  margin-bottom: 24px;
+}
+
+.header-price-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 24px;
+  justify-items: center;
+  align-items: center;
+}
+
+.total-price-title {
+  color: v.$primary-color;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.quantity-title {
+  color: v.$secondary-color;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.cart-sections-container {
+  display: flex;
+  width: 1136px;
+}
+
+.cart-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 0;
+  width: 752px;
+  margin-right: 16px;
+}
+
+.item-wrapper {
+  border: 1px solid v.$border-color;
+}
+
+.item-wrapper:not(:last-child) {
+  margin-bottom: 16px;
+}
+
+.item-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 752px;
+  height: 128px;
+  padding: 31px 40px 31px 28px;
+}
+
+.delete-item {
+  margin-right: 34px;
+}
+
+.delete-item-button {
+  border-style: none;
+  background-color: white;
+  color: v.$secondary-color;
+  cursor: pointer;
+}
+
+.item-image {
+  margin-right: 31px;
+  padding: 7px;
+  min-width: 80px;
+  min-height: 80px;
+}
+
+.cart-image {
+  width: 66px;
+  height: 66px;
+}
+
+.item-name {
+  margin-right: 45px;
+  min-width: 295px;
+}
+
+.name {
+  font-size: 14px;
+  font-style: normal;
+}
+
+.change-quantity-buttons-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.remove-item-button,
+.product-quantity {
+  margin-right: 13px;
+}
+
+.plus,
+.minus {
+  width: 32px;
+  height: 32px;
+  background-color: white;
+  border: 1px solid v.$border-button-color;
+  cursor: pointer;
+}
+
+.grey-color {
+  color: v.$primary-color;
+}
+
+.add-item-button {
+  margin-right: 43px;
+}
+
+.cart-checkout-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 368px;
+  height: 206px;
+  border: 1px solid v.$border-color;
+}
+
+.checkout-button {
+  font-family: Mont, sans-serif;
+  background: v.$primary-color;
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+  height: 48px;
+  width: 320px;
+  border-style: none;
+  cursor: pointer;
+}

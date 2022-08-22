@@ -1,0 +1,17 @@
+@use "../../utilities/variables" as v;
+$header-footer-height: 110px;
+
+.page {
+  min-height: calc(100vh - #{$header-footer-height});
+}
+
+.title-container {
+  display: flex;
+  height: 85vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.title-not-found {
+  color: v.$primary-color;
+}

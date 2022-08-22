@@ -1,0 +1,11 @@
+@use "../../utilities/variables" as v;
+
+.input-icon {
+  float: right;
+  margin-right: 10px;
+  margin-top: -27px;
+  position: relative;
+  background-color: white;
+  color: v.$secondary-color;
+  cursor: pointer;
+}
