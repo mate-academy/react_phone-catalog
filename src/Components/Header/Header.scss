@@ -1,0 +1,55 @@
+.Header {
+  &__route {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    height: 15px;
+    margin-bottom: 40px;
+  }
+
+  &__svg {
+    height: 15px;
+  }
+
+  &__routeText {
+    font-size: 12px;
+    line-height: 12px;
+    font-weight: 400;
+    color: #89939a;
+  }
+
+  &__PageTitle {
+    font-size: 32px;
+    color: #313237;
+    line-height: 40px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  &__foundNumber {
+    font-size: 14px;
+    color: #89939a;
+    line-height: 21px;
+    font-weight: 500;
+    margin-bottom: 40px;
+  }
+
+  &__select-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__selects {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__selectName {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 15px;
+    color: #89939a;
+    margin-bottom: 4px;
+  }
+}

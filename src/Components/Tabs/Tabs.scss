@@ -1,0 +1,86 @@
+// local variables
+
+$squireSide: 64px;
+$borderColor: #e2e6e9;
+
+@mixin common {
+  height: $squireSide;
+  width: $squireSide;
+  background: none;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Tab {
+  display: flex;
+
+  &__menuUnit {
+    border-left: 1px solid $borderColor;
+    height: $squireSide;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: $squireSide;
+  }
+
+  &__form {
+    width: 327px;
+    display: flex;
+  }
+
+  &__cancelBtn,
+  &__searchIcon {
+    @include common;
+
+    &:hover,
+    &:focus {
+      cursor: pointer;
+    }
+  }
+
+  &__button {
+    position: relative;
+    @include common;
+
+    &:before {
+      position: absolute;
+      content: "";
+      width: 100%;
+      height: 3px;
+      background: none;
+      bottom: 0;
+      left: 0;
+      transition: all 0.4s ease-in-out;
+    }
+
+    &:hover,
+    &:focus {
+      cursor: pointer;
+
+      &:before {
+        background: #313237;
+      }
+    }
+  }
+
+  &__input {
+    font-size: 14px;
+    color: #313237;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid $borderColor;
+    width: 100%;
+    padding: 0 24px;
+
+    &::placeholder {
+      color: #b4bdc3;
+    }
+  }
+
+  &__iconClose {
+    width: 20px;
+    height: 20px;
+  }
+}

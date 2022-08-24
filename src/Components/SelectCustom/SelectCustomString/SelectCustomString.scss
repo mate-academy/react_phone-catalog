@@ -1,0 +1,109 @@
+// local values
+$wide: 176px;
+$narrow: 128px;
+
+.Select {
+  width: $wide;
+  height: 40px;
+  border: 1px solid #b4bdc3;
+  outline: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 12px;
+  background: white;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+  z-index: 2;
+
+  &:hover,
+  &:focus {
+    cursor: pointer;
+    border: 1px solid #313237;
+  }
+
+  &.Number {
+    width: $narrow;
+  }
+
+  &__value {
+    font-size: 14px;
+    line-height: 21px;
+    color: #313237;
+  }
+
+  &__wrapper {
+    position: relative;
+    z-index: 1;
+  }
+
+  &__modal {
+    box-shadow: 0 2px 15px 0 #0000000d;
+    padding: 8px 0;
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    transform: translateY(100%);
+    width: $wide;
+    border: 1px solid #b4bdc3;
+    animation: appear;
+    animation-duration: 0.3s;
+    z-index: -1;
+
+    &.Number {
+      width: $narrow;
+    }
+
+    &.Dissapear {
+      animation: dissapear;
+      animation-duration: 0.3s;
+    }
+  }
+
+  &__modalOption {
+    outline: none;
+    border: none;
+    width: 100%;
+    text-align: left;
+    background: none;
+    padding-left: 14px;
+    font-size: 14px;
+    line-height: 32px;
+    color: #89939a;
+    transition: all 0.4s ease-in-out;
+
+    &:hover,
+    &:focus {
+      cursor: pointer;
+      color: #313237;
+    }
+  }
+}
+
+@keyframes appear {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  80% {
+    transform: translateY(110%);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes dissapear {
+  0% {
+    transform: translateY(100%);
+    opacity: 1;
+  }
+  70% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+}

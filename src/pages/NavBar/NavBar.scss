@@ -1,0 +1,29 @@
+.NavBar {
+  height: 64px;
+  width: 100vw;
+  border-bottom: 1px solid #e2e6e9;
+
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__link {
+    height: 63px;
+    margin-right: 64px;
+    margin-left: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover,
+    &:focus {
+      cursor: pointer;
+    }
+  }
+
+  &__left {
+    display: flex;
+  }
+}
