@@ -19,6 +19,7 @@ export const App = () => {
           path="/"
           element={(
             <HomePage />
+
           )}
         />
         <Route path="/phones" element={<PhonesPage />} />

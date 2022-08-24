@@ -1,3 +1,102 @@
-.PhonesPage {
-  display: static;
+.phonespage {
+  width: 1440px;
+  margin: auto;
+
+  &__container {
+    width: 1150px;
+    margin: auto;
+  }
+
+  &__boximghomearrow {
+    display: flex;
+    margin-bottom: 40px;
+  }
+
+  &__imghome {
+    width: 16px;
+    height: 16px;
+    background-image: url(../../images/home.svg);
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__arrow {
+    width: 16px;
+    height: 16px;
+    background-image: url(../../images/arrow_left_grey.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 0 8px;
+  }
+
+  &__namepage {
+    font-family: "Mont-SemiBold", sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+    color: #89939a ;
+  }
+
+  &__title {
+    font-family: "Mont-Bold", sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 41px;
+    color: #313237 ;
+    margin-bottom: 8px;
+  }
+
+  &__countmodels {
+    font-family: "Mont-Regular", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    color: #89939a;
+    margin-bottom: 40px;
+  }
+
+  &__boxselectors {
+    display: flex;
+    margin-bottom: 24px;
+  }
+
+  &__sortby {
+    margin-right: 16px;
+  }
+
+  &__labelname {
+    display: block;
+    font-family: "Mont-Regular", sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+    color: #89939a;
+    align-items: center;
+    margin-bottom: 4px;
+  }
+
+  &__select {
+    font-family: "Mont-Bold", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    height: 40px;
+    width: 176px;
+    background-image: url(../../images/arrow_down_grey.svg);
+    background-repeat: no-repeat;
+    background-position: calc(100% - 12px);
+  }
+}
+
+.MuiSelect-icon {
+  display: none !important; // global classes of MUI
+}
+
+.Mui-focused {
+  background-image: url(../../images/arrow_up_grey.svg);
+}
+
+.Mui-selected {
+  background-color: #fff !important; // global classes of MUI
 }

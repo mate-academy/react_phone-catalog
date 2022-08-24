@@ -85,7 +85,7 @@ export const HotPrices = () => {
         >
           {currentList.map(item => (
             <li
-              key={item.age}
+              key={item.id}
               className="hotprices__listitem"
             >
               <Card
