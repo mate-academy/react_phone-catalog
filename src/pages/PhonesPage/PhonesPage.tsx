@@ -13,6 +13,7 @@ import { ProductsList } from '../../components/Main/ProductsList/ProductsList';
 
 import './PhonesPage.scss';
 import { Product } from '../../react-app-env';
+import { NotFound } from '../../components/NotFound/NotFound';
 
 export const PhonesPage = () => {
   const onlyPhones = products.filter(item => item.type === 'phone');
@@ -172,7 +173,7 @@ export const PhonesPage = () => {
           </div>
         </div>
       </div>
-
+      {!onlyPhones.length && <NotFound />}
       <div className="phonespage__boxcards">
         <ProductsList
           currentListForRender={currentListForRender}
