@@ -16,3 +16,7 @@ export interface RootState {
   favorits: string[];
   selectedcart: Product[];
 }
+
+export interface AddInfo {
+  images: string[];
+}

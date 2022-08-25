@@ -5,6 +5,9 @@ import { HomePage } from './pages/HomePage/HomePage';
 import { PhonesPage } from './pages/PhonesPage/PhonesPage';
 import { TabletsPage } from './pages/TabletsPage/TabletsPage';
 import { AccessoriesPage } from './pages/AccessoriesPage/AccessoriesPage';
+import {
+  ProductDetailsPage,
+} from './pages/ProductDetailsPage/ProductDetailsPage';
 // import { Product } from './react-app-env';
 // import { ShopCategory } from './components/Main/ShopCategory/ShopCategory';
 // import { Footer } from './components/Footer/Footer';
@@ -27,6 +30,7 @@ export const App = () => {
         <Route path="/accessories" element={<AccessoriesPage />} />
         {/* <Route path=":tabId" element={<TabsPage />} />
         </Route> */}
+        <Route path="/det" element={<ProductDetailsPage />} />
       </Routes>
     </div>
   );
