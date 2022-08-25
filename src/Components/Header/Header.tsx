@@ -12,7 +12,19 @@ const sortBy = [
 
 const pagination = [4, 8, 16];
 
-export const Header = () => {
+type Props = {
+  setSortByParam: React.Dispatch<React.SetStateAction<string | null>>;
+  setPerPageParam: React.Dispatch<React.SetStateAction<string | null>>;
+  numberOfProducts: string | null;
+};
+
+export const Header: React.FC<Props> = (
+  {
+    setSortByParam,
+    setPerPageParam,
+    numberOfProducts,
+  },
+) => {
   return (
     <div className="Header">
       <div className="Header__route">
@@ -31,19 +43,29 @@ export const Header = () => {
         </h3>
       </div>
       <h1 className="Header__PageTitle">
-        Mobile Header
+        Mobile phones
       </h1>
-      <h3 className="Header__foundNumber">
-        95 models
-      </h3>
+      {
+        numberOfProducts && (
+          <h3 className="Header__foundNumber">
+            {`${numberOfProducts} models`}
+          </h3>
+        )
+      }
       <div className="Header__selects">
         <div className="Header__select">
           <h3 className="Header__selectName">Sort by</h3>
-          <SelectCustomString options={sortBy} />
+          <SelectCustomString
+            options={sortBy}
+            setSortByParam={setSortByParam}
+          />
         </div>
         <div className="Header__select">
           <h3 className="Header__selectName">Items on page</h3>
-          <SelectCustomNumber options={pagination} />
+          <SelectCustomNumber
+            options={pagination}
+            setPerPageParam={setPerPageParam}
+          />
         </div>
       </div>
     </div>

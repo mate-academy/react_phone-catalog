@@ -1,4 +1,4 @@
-import { Outlet, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Menu } from '../../Components/Menu/Menu';
 import { Tabs } from '../../Components/Tabs/Tabs';
 import './NavBar.scss';
@@ -23,7 +23,6 @@ export const NavBar: React.FC = () => {
           </div>
         </div>
       </div>
-      <Outlet />
     </>
   );
 };

@@ -7,6 +7,7 @@ type Props = {
   setPagination: React.Dispatch<React.SetStateAction<string>>;
   animationOnDisappear: boolean;
   closeHandler: () => void;
+  setPerPageParam: React.Dispatch<React.SetStateAction<string | null>>;
 };
 
 export const ModalforSelectNumber: React.FC<Props> = (
@@ -16,6 +17,7 @@ export const ModalforSelectNumber: React.FC<Props> = (
     setPagination,
     animationOnDisappear,
     closeHandler,
+    setPerPageParam,
   },
 ) => {
   const modal = useRef<HTMLDivElement>(null);
@@ -51,6 +53,7 @@ export const ModalforSelectNumber: React.FC<Props> = (
                 setSearchParams(searchParams);
                 setPagination(`${el}`);
                 closeHandler();
+                setPerPageParam(`${el}`);
               }}
             >
               {el}

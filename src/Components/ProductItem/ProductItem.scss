@@ -1,0 +1,114 @@
+// local variables
+$darkGray: #313237;
+$ligthishGray: #89939a;
+$veryLightGray: #e2e6e9;
+
+.ProductItem {
+  width: 272px;
+  height: 507px;
+  padding: 32px 24px 24px;
+  border: 1px solid $veryLightGray;
+
+  &__imageWrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__image {
+    width: 208px;
+    height: 208px;
+    margin-bottom: 24px;
+  }
+
+  &__name {
+    font-size: 14px;
+    line-height: 21px;
+    color: $darkGray;
+    margin-bottom: 6px;
+    height: 42px;
+  }
+
+  &__price {
+    width: 100%;
+    display: flex;
+    gap: 8px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid $veryLightGray;
+    margin-bottom: 16px;
+  }
+
+  &__original,
+  &__discounted {
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 31px;
+    color: $darkGray;
+  }
+
+  &__original {
+    text-decoration: line-through;
+    color: $ligthishGray;
+  }
+
+  &__description {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 8px;
+  }
+
+  &__category,
+  &__specifications {
+    font-size: 12px;
+    line-height: 15px;
+    color: $ligthishGray;
+  }
+
+  &__specifications {
+    color: $darkGray;
+  }
+
+  &__actions {
+    width: 100%;
+    margin-top: 8px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__cardBtn {
+    outline: none;
+    border: 1px solid $darkGray;
+    background: $darkGray;
+    width: 176px;
+    height: 40px;
+    color: white;
+    font-size: 14px;
+    line-height: 21px;
+    transition: box-shadow 0.3s ease-in-out;
+
+    &:hover,
+    &:focus {
+      cursor: pointer;
+      box-shadow: 0 3px 13px 0 #17203142;
+    }
+  }
+
+  &__liked {
+    width: 40px;
+    height: 40px;
+    background: none;
+    outline: none;
+    border: 1px solid #b4bdc3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: border 0.3s ease-in-out;
+
+    &:hover,
+    &:focus {
+      cursor: pointer;
+      border: 1px solid $darkGray;
+    }
+  }
+}

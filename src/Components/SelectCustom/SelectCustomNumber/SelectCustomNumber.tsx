@@ -9,14 +9,20 @@ import '../SelectCustomString/SelectCustomString.scss';
 
 type Props = {
   options: number[];
+  setPerPageParam: React.Dispatch<React.SetStateAction<string | null>>;
 };
 
-export const SelectCustomNumber: React.FC<Props> = ({ options }) => {
+export const SelectCustomNumber: React.FC<Props> = (
+  {
+    options,
+    setPerPageParam,
+  },
+) => {
   const [click, setClick] = useState(false);
   const [animationOnDisappear, setAnimationOnDisappear] = useState(false);
   const [searchParams] = useSearchParams();
   const perPage = searchParams.get('perPage');
-  const [pagination, setPagination] = useState(`${options[0]}`);
+  const [pagination, setPagination] = useState(`${options[options.length - 1]}`);
   const button = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
@@ -60,6 +66,7 @@ export const SelectCustomNumber: React.FC<Props> = ({ options }) => {
             button={button}
             setPagination={setPagination}
             animationOnDisappear={animationOnDisappear}
+            setPerPageParam={setPerPageParam}
           />
         )
       }

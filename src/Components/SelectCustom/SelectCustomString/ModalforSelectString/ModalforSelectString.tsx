@@ -7,6 +7,7 @@ type Props = {
   setSortBy: React.Dispatch<React.SetStateAction<string>>;
   animationOnDisappear: boolean;
   closeHandler: () => void;
+  setSortByParam: React.Dispatch<React.SetStateAction<string | null>>;
 };
 
 export const ModalforSelectString: React.FC<Props> = (
@@ -16,6 +17,7 @@ export const ModalforSelectString: React.FC<Props> = (
     setSortBy,
     animationOnDisappear,
     closeHandler,
+    setSortByParam,
   },
 ) => {
   const modal = useRef<HTMLDivElement>(null);
@@ -51,6 +53,7 @@ export const ModalforSelectString: React.FC<Props> = (
                 setSearchParams(searchParams);
                 setSortBy(el[1]);
                 closeHandler();
+                setSortByParam(el[0]);
               }}
             >
               {el[1]}

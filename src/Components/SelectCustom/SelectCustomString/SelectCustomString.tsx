@@ -9,9 +9,15 @@ import './SelectCustomString.scss';
 
 type Props = {
   options: string[][];
+  setSortByParam: React.Dispatch<React.SetStateAction<string | null>>;
 };
 
-export const SelectCustomString: React.FC<Props> = ({ options }) => {
+export const SelectCustomString: React.FC<Props> = (
+  {
+    options,
+    setSortByParam,
+  },
+) => {
   const [click, setClick] = useState(false);
   const [animationOnDisappear, setAnimationOnDisappear] = useState(false);
   const [searchParams] = useSearchParams();
@@ -21,7 +27,11 @@ export const SelectCustomString: React.FC<Props> = ({ options }) => {
 
   useEffect(() => {
     if (sort) {
-      setSortBy(sort);
+      options.forEach(arr => {
+        if (arr[0] === sort) {
+          setSortBy(arr[1]);
+        }
+      });
     }
   }, []);
 
@@ -60,6 +70,7 @@ export const SelectCustomString: React.FC<Props> = ({ options }) => {
             button={button}
             setSortBy={setSortBy}
             animationOnDisappear={animationOnDisappear}
+            setSortByParam={setSortByParam}
           />
         )
       }
