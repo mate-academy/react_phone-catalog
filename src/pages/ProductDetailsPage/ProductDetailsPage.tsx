@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { IconButton } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Footer } from '../../components/Footer/Footer';
 import { Header } from '../../components/Header/Header';
@@ -22,9 +22,9 @@ import {
 import { MayLike } from '../../components/Main/MayLike/MayLike';
 
 export const ProductDetailsPage = () => {
+  const { id } = useParams<{ id: string }>();
   const currentProduct: Product | undefined = products
-    .find(el => el.id === 'motorola-xoom-with-wi-fi');
-
+    .find(item => item.id === id);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [urlImage, setUrlImage] = useState(data.images[0]);
@@ -82,7 +82,7 @@ export const ProductDetailsPage = () => {
           </IconButton>
 
           <div className="productdetailspage__arrow" />
-          <a href="/phones" className="productdetailspage__link">
+          <a href="/#/phones" className="productdetailspage__link">
             <div
               className="productdetailspage__namecategory"
             >
@@ -91,13 +91,13 @@ export const ProductDetailsPage = () => {
           </a>
           <div className="productdetailspage__arrow" />
           <div className="productdetailspage__namepage">
-            Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)
+            {currentProduct?.name}
           </div>
         </div>
 
         <div className="productdetailspage__boxarrowback">
           <div className="productdetailspage__arrow--back" />
-          <a href="/phones" className="productdetailspage__link">
+          <a href="/#/phones" className="productdetailspage__link">
             <div
               className="productdetailspage__namepage"
             >
@@ -106,7 +106,7 @@ export const ProductDetailsPage = () => {
           </a>
         </div>
         <h1 className="productdetailspage__title">
-          Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)
+          {currentProduct?.name}
         </h1>
 
         <div className="productdetailspage__boxleftright">

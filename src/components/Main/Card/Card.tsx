@@ -1,6 +1,7 @@
 import { IconButton } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import './Card.scss';
 import {
   delFavorites, delFromCart, setFavorites, setSelectedCart,
@@ -39,7 +40,6 @@ export const Card: React.FC<Props> = ({
   ram,
 }) => {
   const dispatch = useDispatch();
-
   const currentFavorite = useSelector(getFavoritesSelector);
   const currentSelectedCart = useSelector(getSelectedCartSelector);
   const currentPrice = price * (1 - discount / 100);
@@ -65,12 +65,16 @@ export const Card: React.FC<Props> = ({
 
   return (
     <div data-cy="cardsContainer" className="card">
-      <div className="card__box-image">
-        <img
-          src={imageUrl}
-          alt={name}
-        />
-      </div>
+      <NavLink to={`/product/${id}`}>
+        <div className="card__box-image">
+
+          <img
+            src={imageUrl}
+            alt={name}
+          />
+
+        </div>
+      </NavLink>
 
       <div className="card__name-phone">
         <p className="card__name">{name}</p>

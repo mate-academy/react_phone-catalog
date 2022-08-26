@@ -18,19 +18,11 @@ export const App = () => {
   return (
     <div className="App">
       <Routes>
-        <Route
-          path="/"
-          element={(
-            <HomePage />
-
-          )}
-        />
+        <Route path="/" element={(<HomePage />)} />
         <Route path="/phones" element={<PhonesPage />} />
         <Route path="/tablets" element={<TabletsPage />} />
         <Route path="/accessories" element={<AccessoriesPage />} />
-        {/* <Route path=":tabId" element={<TabsPage />} />
-        </Route> */}
-        <Route path="/det" element={<ProductDetailsPage />} />
+        <Route path="/product/:id" element={<ProductDetailsPage />} />
       </Routes>
     </div>
   );

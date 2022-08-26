@@ -10,7 +10,6 @@ export const NewModels = () => {
   const [disablePrev, setdisablePrev] = useState(false);
   const [disableNext, setdisableNext] = useState(false);
   const [currentList, setCurrentList] = useState<Product[]>([]);
-
   const isDiscount: Product[] = products.filter(item => item.discount === 0);
   const widthFourCards = 1161;
   const perOneCard = 290.3;
