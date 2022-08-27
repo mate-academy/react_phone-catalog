@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { Product } from '../../../react-app-env';
 import { Card } from '../Card/Card';
 import { getProducts } from '../../../api/api';
+import { Loader } from '../../Loader/Loader';
 
 export const HotPrices = () => {
   const [position, setPosition] = useState(0);
@@ -52,9 +53,11 @@ export const HotPrices = () => {
 
   return (
     <div className="hotprices">
-      {errorMsg.length !== 0 && <p>{errorMsg}</p>}
+      {currentList.length === 0 && <Loader />}
+      {errorMsg.length !== 0 && <p className="hotprices__error">{errorMsg}</p>}
       <div className="hotprices__box-title-button">
         <h1 className="hotprices__title">Hot prices</h1>
+        {currentList.length === 0 && <Loader />}
         <div className="hotprices__box-button">
           <IconButton
             disabled={disablePrev}

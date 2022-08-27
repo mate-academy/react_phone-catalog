@@ -8,15 +8,14 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { Footer } from '../../components/Footer/Footer';
 import { Header } from '../../components/Header/Header';
-import products from '../../api/products.json';
 import { ProductsList } from '../../components/Main/ProductsList/ProductsList';
-
 import './PhonesPage.scss';
 import { Product } from '../../react-app-env';
 import { NotFound } from '../../components/NotFound/NotFound';
+import { getProducts } from '../../api/api';
+import { Loader } from '../../components/Loader/Loader';
 
 export const PhonesPage = () => {
-  const onlyPhones = products.filter(item => item.type === 'phone');
   const theme = createTheme({
     palette: {
       primary: {
@@ -33,10 +32,11 @@ export const PhonesPage = () => {
   });
   const [sortBy, setSortBy] = useState('');
   const [itemsPerPage, setItemsPerPage] = useState('16');
+  const [errorMsg, setErrorMsg] = useState('');
   const [
     currentListForRender,
     setCurrentListForRender,
-  ] = useState<Product[]>(onlyPhones);
+  ] = useState<Product[]>([]);
   let sorted = [];
 
   const handleChangeSortBy = (event: SelectChangeEvent) => {
@@ -48,33 +48,36 @@ export const PhonesPage = () => {
   };
 
   useEffect(() => {
+    getProducts()
+      .then(result => {
+        setCurrentListForRender(result
+          .filter((item: { type: string; }) => item.type === 'phone'));
+      })
+      .catch((error) => {
+        setErrorMsg(`${error}`);
+      });
+  }, []);
+
+  useEffect(() => {
     switch (sortBy) {
       case 'age':
         sorted = [...currentListForRender.sort((a, b) => a.age - b.age)];
         setCurrentListForRender(sorted);
-
-        // eslint-disable-next-line no-console
-        console.log('age:', sorted);
         break;
 
       case 'name':
         sorted = [...currentListForRender
           .sort((a, b) => a.name.localeCompare(b.name))];
         setCurrentListForRender(sorted);
-        // eslint-disable-next-line no-console
-        console.log('name:', sorted);
         break;
 
       case 'price':
         sorted = [...currentListForRender
           .sort((a, b) => a.price - b.price)];
         setCurrentListForRender(sorted);
-        // eslint-disable-next-line no-console
-        console.log('price:', sorted);
         break;
 
       default:
-        setCurrentListForRender(onlyPhones);
         break;
     }
   }, [sortBy]);
@@ -105,7 +108,8 @@ export const PhonesPage = () => {
         </div>
         <h1 className="phonespage__title">Mobile phones</h1>
         <p className="phonespage__countmodels">
-          { onlyPhones.length }
+          { currentListForRender.length }
+          {' '}
           models
         </p>
         <div className="phonespage__boxselectors">
@@ -173,7 +177,9 @@ export const PhonesPage = () => {
           </div>
         </div>
       </div>
-      {!onlyPhones.length && <NotFound />}
+      {errorMsg.length !== 0 && <p className="phonespage__error">{errorMsg}</p>}
+      {!currentListForRender && <NotFound />}
+      {currentListForRender.length === 0 && <Loader />}
       <div className="phonespage__boxcards">
         <ProductsList
           currentListForRender={currentListForRender}

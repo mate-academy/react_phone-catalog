@@ -12,6 +12,12 @@
     margin-bottom: 40px;
   }
 
+  &__error {
+    font-family: "Mont-Bold", sans-serif;
+    font-size: 30px;
+    color: red;
+  }
+
   &__imghome {
     width: 16px;
     height: 16px;

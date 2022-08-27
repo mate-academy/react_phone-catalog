@@ -1,23 +1,29 @@
 import { IconButton } from '@mui/material';
 import './NewModels.scss';
 import { useEffect, useState } from 'react';
-import products from '../../../api/products.json';
 import { Product } from '../../../react-app-env';
 import { Card } from '../Card/Card';
+import { Loader } from '../../Loader/Loader';
+import { getProducts } from '../../../api/api';
 
 export const NewModels = () => {
   const [position, setPosition] = useState(0);
   const [disablePrev, setdisablePrev] = useState(false);
   const [disableNext, setdisableNext] = useState(false);
   const [currentList, setCurrentList] = useState<Product[]>([]);
-  const isDiscount: Product[] = products.filter(item => item.discount === 0);
+  const [errorMsg, setErrorMsg] = useState('');
   const widthFourCards = 1161;
   const perOneCard = 290.3;
 
   useEffect(() => {
-    if (isDiscount) {
-      setCurrentList(isDiscount);
-    }
+    getProducts()
+      .then(result => {
+        setCurrentList(result
+          .filter((item: { discount: number; }) => item.discount === 0));
+      })
+      .catch((error) => {
+        setErrorMsg(`${error}`);
+      });
   }, []);
 
   const getNext = () => {
@@ -25,7 +31,7 @@ export const NewModels = () => {
 
     setdisablePrev(false);
 
-    if (position < perOneCard * isDiscount.length - 2 * widthFourCards) {
+    if (position < perOneCard * currentList.length - 2 * widthFourCards) {
       setdisableNext(false);
       setPosition(moveon);
     } else {
@@ -50,7 +56,9 @@ export const NewModels = () => {
 
   return (
     <div className="newmodels">
+      {errorMsg.length !== 0 && <p className="newmodels__error">{errorMsg}</p>}
       <div className="newmodels__box-title-button">
+        {currentList.length === 0 && <Loader />}
         <h1 className="newmodels__title">Brand new models</h1>
         <div className="newmodels__box-button">
           <IconButton

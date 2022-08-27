@@ -7,6 +7,12 @@
     margin: auto;
   }
 
+  &__error {
+    font-family: "Mont-Bold", sans-serif;
+    font-size: 30px;
+    color: red;
+  }
+
   &__boximghomearrow {
     display: flex;
     margin-bottom: 40px;

@@ -8,15 +8,15 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { Footer } from '../../components/Footer/Footer';
 import { Header } from '../../components/Header/Header';
-import products from '../../api/products.json';
 import { ProductsList } from '../../components/Main/ProductsList/ProductsList';
 
 import './AccessoriesPage.scss';
 import { Product } from '../../react-app-env';
 import { NotFound } from '../../components/NotFound/NotFound';
+import { Loader } from '../../components/Loader/Loader';
+import { getProducts } from '../../api/api';
 
 export const AccessoriesPage = () => {
-  const onlyAccessory = products.filter(item => item.type === 'accessory');
   const theme = createTheme({
     palette: {
       primary: {
@@ -33,10 +33,11 @@ export const AccessoriesPage = () => {
   });
   const [sortBy, setSortBy] = useState('');
   const [itemsPerPage, setItemsPerPage] = useState('16');
+  const [errorMsg, setErrorMsg] = useState('');
   const [
     currentListForRender,
     setCurrentListForRender,
-  ] = useState<Product[]>(onlyAccessory);
+  ] = useState<Product[]>([]);
   let sorted = [];
 
   const handleChangeSortBy = (event: SelectChangeEvent) => {
@@ -48,33 +49,36 @@ export const AccessoriesPage = () => {
   };
 
   useEffect(() => {
+    getProducts()
+      .then(result => {
+        setCurrentListForRender(result
+          .filter((item: { type: string; }) => item.type === 'accessory'));
+      })
+      .catch((error) => {
+        setErrorMsg(`${error}`);
+      });
+  }, []);
+
+  useEffect(() => {
     switch (sortBy) {
       case 'age':
         sorted = [...currentListForRender.sort((a, b) => a.age - b.age)];
         setCurrentListForRender(sorted);
-
-        // eslint-disable-next-line no-console
-        console.log('age:', sorted);
         break;
 
       case 'name':
         sorted = [...currentListForRender
           .sort((a, b) => a.name.localeCompare(b.name))];
         setCurrentListForRender(sorted);
-        // eslint-disable-next-line no-console
-        console.log('name:', sorted);
         break;
 
       case 'price':
         sorted = [...currentListForRender
           .sort((a, b) => a.price - b.price)];
         setCurrentListForRender(sorted);
-        // eslint-disable-next-line no-console
-        console.log('price:', sorted);
         break;
 
       default:
-        setCurrentListForRender(onlyAccessory);
         break;
     }
   }, [sortBy]);
@@ -105,7 +109,7 @@ export const AccessoriesPage = () => {
         </div>
         <h1 className="accessorypage__title">Accessories</h1>
         <p className="accessorypage__countmodels">
-          { onlyAccessory.length }
+          { currentListForRender.length }
           {' '}
           models
         </p>
@@ -174,7 +178,10 @@ export const AccessoriesPage = () => {
           </div>
         </div>
       </div>
-      {!onlyAccessory.length && <NotFound />}
+      {errorMsg.length !== 0
+        && <p className="accessorypage__error">{errorMsg}</p>}
+      {!currentListForRender.length && <NotFound />}
+      {currentListForRender.length === 0 && <Loader />}
       <div className="accessorypage__boxcards">
         <ProductsList
           currentListForRender={currentListForRender}

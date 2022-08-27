@@ -1,28 +1,47 @@
 import { IconButton } from '@mui/material';
 import './MayLike.scss';
 import { useEffect, useState } from 'react';
-import products from '../../../api/products.json';
 import { Product } from '../../../react-app-env';
 import { Card } from '../Card/Card';
+import { getProducts } from '../../../api/api';
+import { Loader } from '../../Loader/Loader';
 
 export const MayLike = () => {
   const [position, setPosition] = useState(0);
   const [disablePrev, setdisablePrev] = useState(false);
   const [disableNext, setdisableNext] = useState(false);
-  const [currentList, setCurrentList] = useState<Product[]>(products);
-
-  const randomList = new Array(products.length);
-
-  for (let i = 0; i < products.length; i += 1) {
-    randomList[i] = products[Math.floor(Math.random() * products.length)];
-  }
+  const [errorMsg, setErrorMsg] = useState('');
+  const [allProducts, setAllProducts] = useState<Product[]>([]);
 
   const widthFourCards = 1161;
   const perOneCard = 290.3;
 
   useEffect(() => {
+    getProducts()
+      .then(result => {
+        setAllProducts(result);
+      })
+      .catch((error) => {
+        setErrorMsg(`${error}`);
+      });
+  }, []);
+
+  const randomList = new Array(setAllProducts.length);
+
+  for (let i = 0; i < allProducts.length; i += 1) {
+    randomList[i] = {
+      ...allProducts[Math
+        .floor(Math.random() * allProducts.length)],
+      idKey: i + 1,
+    };
+  }
+
+  // eslint-disable-next-line no-console
+  console.log(randomList);
+
+  useEffect(() => {
     if (randomList) {
-      setCurrentList(randomList);
+      setAllProducts(randomList);
     }
   }, []);
 
@@ -54,7 +73,14 @@ export const MayLike = () => {
   return (
     <div className="maylike">
       <div className="maylike__box-title-button">
+        {errorMsg.length !== 0
+      && (
+        <p className="maylike__error">
+          {errorMsg}
+        </p>
+      )}
         <h1 className="maylike__title">You may also like</h1>
+        {allProducts?.length === 0 && <Loader />}
         <div className="maylike__box-button">
           <IconButton
             disabled={disablePrev}
@@ -88,9 +114,9 @@ export const MayLike = () => {
             transitionDuration: '1000ms',
           }}
         >
-          {currentList.map(item => (
+          {allProducts?.map(item => (
             <li
-              key={item.id}
+              key={item.idKey}
               className="maylike__listitem"
             >
               <Card
