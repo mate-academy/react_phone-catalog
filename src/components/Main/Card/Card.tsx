@@ -1,6 +1,6 @@
 import { IconButton } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import './Card.scss';
 import {
@@ -43,7 +43,6 @@ export const Card: React.FC<Props> = ({
   const currentFavorite = useSelector(getFavoritesSelector);
   const currentSelectedCart = useSelector(getSelectedCartSelector);
   const currentPrice = price * (1 - discount / 100);
-  const [currentId, setCurrentId] = useState('');
   const [isSelected, setIsSelected] = useState(false);
   const [isAddedProduct, setIsAddedProduct] = useState(false);
 
@@ -63,13 +62,19 @@ export const Card: React.FC<Props> = ({
     }
   };
 
-  const handlerAddOrDelete = () => {
-    if (currentFavorite.includes(currentId)) {
-      dispatch(delFavorites(id));
+  const handlerAddOrDelete = (index: string) => {
+    if (currentFavorite.includes(index)) {
+      dispatch(delFavorites(index));
     } else {
-      dispatch(setFavorites(id));
+      dispatch(setFavorites(index));
     }
   };
+
+  useEffect(() => {
+    if (window.location.href.includes('/favorites')) {
+      setIsSelected(true);
+    }
+  }, []);
 
   return (
     <div data-cy="cardsContainer" className="card">
@@ -150,17 +155,19 @@ export const Card: React.FC<Props> = ({
         </button>
         <IconButton
           size="small"
+          data-cy="addToFavorite"
           sx={{ padding: 0 }}
           onClick={() => {
-            setCurrentId(id);
             setIsSelected(!isSelected);
-            handlerAddOrDelete();
+            handlerAddOrDelete(id);
           }}
         >
           <div className="card__rectangle">
-            <div className={(currentId === id && isSelected)
-              ? 'card__favorites_selected'
-              : 'card__favorites'}
+            <div
+              id="heart"
+              className={isSelected
+                ? 'card__favorites_selected'
+                : 'card__favorites'}
             />
           </div>
         </IconButton>

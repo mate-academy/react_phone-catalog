@@ -41,6 +41,9 @@ export const Header = () => {
             <IconButton
               size="small"
               sx={{ padding: 0 }}
+              onClick={() => {
+                navigate('/favorites');
+              }}
             >
               <div className="header__rectangle">
                 <div className="header__boxbadge">
