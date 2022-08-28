@@ -13,7 +13,7 @@ import {
   setQuantity,
 } from '../../store/actions';
 
-export const CartPage = () => {
+const CartPage = () => {
   const [isPressed, setIsPressed] = useState(false);
   const dispatch = useDispatch();
   const selected = useSelector(getSelectedCartSelector);
@@ -104,6 +104,7 @@ export const CartPage = () => {
                   >
                     <div className="cartpage__boxcrossbutton">
                       <IconButton
+                        data-cy="cartDeleteButton"
                         onClick={() => {
                           handlerDelete(item.id);
                         }}
@@ -139,7 +140,10 @@ export const CartPage = () => {
                         </IconButton>
                       </div>
 
-                      <div className="cartpage__textquontity">
+                      <div
+                        className="cartpage__textquontity"
+                        data-cy="productQauntity"
+                      >
                         {item.quantity }
                       </div>
 
@@ -203,7 +207,14 @@ export const CartPage = () => {
               >
                 {isPressed ? 'Done' : 'Checkout'}
               </button>
+
             </div>
+            {isPressed && (
+              <p className="cartpage__sorry">
+                We are sorry, but this feature
+                is not implemented yet
+              </p>
+            ) }
 
           </div>
         </div>
@@ -213,3 +224,5 @@ export const CartPage = () => {
     </div>
   );
 };
+
+export default CartPage;

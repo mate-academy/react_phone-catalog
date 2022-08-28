@@ -1,5 +1,6 @@
 import './App.scss';
 import { Routes, Route } from 'react-router-dom';
+import CartPage from './pages/CartPage/CartPage';
 // import { Header } from './components/Header/Header';
 import { HomePage } from './pages/HomePage/HomePage';
 import { PhonesPage } from './pages/PhonesPage/PhonesPage';
@@ -8,7 +9,7 @@ import { AccessoriesPage } from './pages/AccessoriesPage/AccessoriesPage';
 import {
   ProductDetailsPage,
 } from './pages/ProductDetailsPage/ProductDetailsPage';
-import { CartPage } from './pages/CartPage/CartPage';
+
 // import { Product } from './react-app-env';
 // import { ShopCategory } from './components/Main/ShopCategory/ShopCategory';
 // import { Footer } from './components/Footer/Footer';
