@@ -2,15 +2,18 @@ import {
   AppBar, Toolbar, IconButton, Badge,
 } from '@mui/material';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import './Header.scss';
 import { Logo } from '../Logo/Logo';
 import { Nav } from '../Nav/Nav';
+
 import {
   getFavoritesSelector,
   getSelectedCartSelector,
 } from '../../store/selectors';
 
 export const Header = () => {
+  const navigate = useNavigate();
   const currentFavorite = useSelector(getFavoritesSelector);
   const currentSelectedCart = useSelector(getSelectedCartSelector);
 
@@ -53,6 +56,9 @@ export const Header = () => {
             <IconButton
               size="small"
               sx={{ padding: 0 }}
+              onClick={() => {
+                navigate('/cart');
+              }}
             >
               <div className="header__rectangle">
                 <div className="header__boxbadge">

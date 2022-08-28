@@ -49,9 +49,17 @@ export const Card: React.FC<Props> = ({
 
   const handlerSelectedToCart = (obj: Product, index: string) => {
     if (currentSelectedCart.some(item => item.id === index)) {
-      dispatch(delFromCart(obj));
+      dispatch(delFromCart({
+        id: obj.id,
+        quantity: 1,
+        product: obj,
+      }));
     } else {
-      dispatch(setSelectedCart(obj));
+      dispatch(setSelectedCart({
+        id: obj.id,
+        quantity: 1,
+        product: obj,
+      }));
     }
   };
 
@@ -138,7 +146,7 @@ export const Card: React.FC<Props> = ({
             handlerSelectedToCart(obj, id);
           }}
         >
-          {isAddedProduct ? 'Selected' : 'Add to cart'}
+          {isAddedProduct ? 'Added to cart' : 'Add to cart'}
         </button>
         <IconButton
           size="small"

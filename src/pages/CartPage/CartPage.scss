@@ -1,0 +1,274 @@
+.cartpage {
+  width: 1440px;
+  margin: auto;
+
+  &__link {
+    text-decoration: none;
+  }
+
+  &__error {
+    font-family: "Mont-Bold", sans-serif;
+    font-size: 30px;
+    color: red;
+  }
+
+  &__container {
+    width: 1150px;
+    margin: auto;
+  }
+
+  &__boxarrowback {
+    display: flex;
+  }
+
+  &__arrow {
+    width: 16px;
+    height: 16px;
+    background-image: url(../../images/arrow_left_grey.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 0 8px;
+    &--back {
+      width: 16px;
+      height: 16px;
+      background-image: url(../../images/arrow_left.svg);
+      background-repeat: no-repeat;
+      background-position: center;
+      margin-bottom: 16px;
+      margin-right: 9px;
+    }
+  }
+
+  &__namepage {
+    font-family: "Mont-Regular", sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+    color: #89939a ;
+  }
+
+  &__title {
+    font-family: "Mont-Bold", sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 41px;
+    color: #313237 ;
+    margin-bottom: 40px;
+  }
+
+  &__textcount {
+    font-family: "Mont-Regular", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    text-align: center;
+    color: #89939a ;
+    margin-bottom: 24px;
+  }
+
+  &__boxoneproduct {
+    width: 752px;
+  }
+
+  &__boxleftright {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__boxleft {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+  }
+
+  &__boxright {
+    display: flex;
+    width: 368px;
+    height: 206px;
+    flex-direction: column;
+    border: 1px solid #e2e6e9;
+    margin-bottom: 60px;
+  }
+
+  &__list {
+    padding: 0;
+    list-style: none;
+    margin: 0;
+  }
+
+  &__itemlist {
+    display: flex;
+    width: 752px;
+    height: 128px;
+    border: 1px solid #e2e6e9;
+    margin-bottom: 16px;
+  }
+
+  &__boxcrossbutton {
+    margin: 48px 0 56px 24px;
+    width: 32px;
+    height: 32px;
+  }
+
+  &__image {
+    display: flex;
+    width: 88px;
+    height: 88px;
+    margin: 24px;
+  }
+
+  &__nameitem {
+    height: 42px;
+    width: 295px;
+    font-family: "Mont-Regular", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    text-align: left;
+    color: #313237;
+    margin: auto 0;
+  }
+
+  &__boxplusminus {
+    display: flex;
+    height: 32px;
+    width: 96px;
+    justify-content: space-between;
+    margin: 48px 43px 48px 49px;
+  }
+
+  &__textquontity {
+    font-family: "Mont-Regular", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 32px;
+    text-align: center;
+    margin: 0 14px;
+  }
+
+  &__cross {
+    width: 16px;
+    height: 16px;
+    background-image: url(../../images/cross_grey.svg);
+    &:hover {
+      cursor: pointer;
+    }
+
+  }
+
+  &__divider {
+    border: solid 1px #e2e6e9;
+    width: 320px;
+    margin: 0 auto 24px;
+  }
+
+  &__text {
+    font-family: "Mont-Regular", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    color: #89939a ;
+    margin-bottom: 32px;
+  }
+
+  &__boxtext {
+    margin-bottom: 60px;
+  }
+
+  &__current-price {
+    font-family: "Mont-Bold", sans-serif;
+    font-weight: 700;
+    font-size: 32px;
+    width: 87px;
+    height: 41px;
+    line-height: 41px;
+    margin: 24px 140px 0;
+  }
+
+  &__box-buttons {
+    display: flex;
+    margin: auto;
+    width: 320px;
+    height: 48px;
+    margin-bottom: 32px;
+  }
+
+  &__checkout {
+    width: 100%;
+    height: 48px;
+    background-color: #313237;
+    font-family: "Mont-Regular", sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: #fff;
+
+    &--pressed {
+      background-color: #fff;
+      width: 100%;
+      height: 48px;
+      font-family: "Mont-Regular", sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      border: solid 1px #e2e6e9;
+      color: #27ae60;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__rectangle {
+    display: flex;
+    width: 32px;
+    height: 32px;
+    background-image: url(../../images/rectangle_def.svg);
+    background-position: center;
+    background-size: cover;
+    &:hover {
+      background-image: url(../../images/rectangle_hover.svg);
+    }
+  }
+
+  &__plus,
+  &__minus {
+    margin: auto;
+    width: 16px;
+    height: 16px;
+    background-position: center;
+    background-size: cover;
+  }
+
+  &__plus {
+    background-image: url(../../images/plus.svg);
+  }
+
+  &__minus {
+    background-image: url(../../images/minus.svg);
+  }
+
+  &__textworth {
+    font-family: "Mont-Bold", sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 31px;
+    text-align: left;
+  }
+
+  &__boxworth {
+    margin-top: 48px;
+  }
+
+  &__reminder {
+    font-family: "Mont-Bold", sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 31px;
+    text-align: center;
+    color: red;
+  }
+}

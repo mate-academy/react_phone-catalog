@@ -70,12 +70,20 @@ export const ProductDetailsPage = () => {
   const handlerSelectedToCart = (obj: Product, index: string) => {
     if (currentSelectedCart.some(item => item.id === index)) {
       if (obj) {
-        dispatch(delFromCart(obj));
+        dispatch(delFromCart({
+          id: obj.id,
+          quantity: 1,
+          product: obj,
+        }));
       }
     }
 
     if (obj) {
-      dispatch(setSelectedCart(obj));
+      dispatch(setSelectedCart({
+        id: obj.id,
+        quantity: 1,
+        product: obj,
+      }));
     }
   };
 
@@ -93,7 +101,10 @@ export const ProductDetailsPage = () => {
     <div className="productdetailspage">
       <Header />
       <div className="productdetailspage__container">
-        <div className="productdetailspage__boximghomearrow">
+        <div
+          className="productdetailspage__boximghomearrow"
+          data-cy="breadCrumbs"
+        >
           <IconButton
             color="inherit"
             sx={{
@@ -125,7 +136,11 @@ export const ProductDetailsPage = () => {
 
         <div className="productdetailspage__boxarrowback">
           <div className="productdetailspage__arrow--back" />
-          <a href="/#/phones" className="productdetailspage__link">
+          <a
+            href="/#/phones"
+            className="productdetailspage__link"
+            data-cy="backButton"
+          >
             <div
               className="productdetailspage__namepage"
             >
@@ -178,7 +193,12 @@ export const ProductDetailsPage = () => {
               className="productdetailspage__boxtext"
               data-cy="productDescription"
             >
-              <h2 className="productdetailspage__abouttitle">About</h2>
+              <h2
+                className="productdetailspage__abouttitle"
+                data-cy="productDescription"
+              >
+                About
+              </h2>
               <div className="productdetailspage__divider" />
               <h3 className="productdetailspage__aboutsubtitle">
                 Description

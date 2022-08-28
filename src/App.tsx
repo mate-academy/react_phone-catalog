@@ -8,6 +8,7 @@ import { AccessoriesPage } from './pages/AccessoriesPage/AccessoriesPage';
 import {
   ProductDetailsPage,
 } from './pages/ProductDetailsPage/ProductDetailsPage';
+import { CartPage } from './pages/CartPage/CartPage';
 // import { Product } from './react-app-env';
 // import { ShopCategory } from './components/Main/ShopCategory/ShopCategory';
 // import { Footer } from './components/Footer/Footer';
@@ -22,6 +23,7 @@ export const App = () => {
         <Route path="/phones" element={<PhonesPage />} />
         <Route path="/tablets" element={<TabletsPage />} />
         <Route path="/accessories" element={<AccessoriesPage />} />
+        <Route path="/cart" element={<CartPage />} />
         <Route path="/product/:id" element={<ProductDetailsPage />} />
       </Routes>
     </div>

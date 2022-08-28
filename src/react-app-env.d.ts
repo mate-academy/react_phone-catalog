@@ -15,7 +15,13 @@ export interface Product {
 
 export interface RootState {
   favorits: string[],
-  selectedcart: Product[],
+  selectedcart: ObjectForCart[],
+}
+
+export interface ObjectForCart {
+  id: string,
+  quantity: number,
+  product: Product,
 }
 
 export interface AddInfo {

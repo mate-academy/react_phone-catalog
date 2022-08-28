@@ -7,6 +7,8 @@ import {
   ActionType,
   DelFavorites,
   DelFromCart,
+  DelQuantity,
+  SetQuantity,
 } from './actions';
 
 // Initial state
@@ -18,7 +20,13 @@ const initialState: RootState = {
 // rootReducer - this function is called after dispatching an action
 const rootReducer = (
   state = initialState,
-  action: SetFavorites | SetSelectedCart | DelFavorites | DelFromCart,
+  action:
+  SetFavorites
+  | SetSelectedCart
+  | DelFavorites
+  | DelFromCart
+  | DelQuantity
+  | SetQuantity,
 ) => {
   switch (action.type) {
     case ActionType.SET_FAVORITES:
@@ -42,9 +50,22 @@ const rootReducer = (
     case ActionType.DEL_FROM_CART:
       return {
         ...state,
-        selectedcart: state
-          .selectedcart
+        selectedcart: state.selectedcart
           .filter(item => item.id !== action.payload.id),
+      };
+
+    case ActionType.SET_QUANTITY:
+      return {
+        ...state,
+        selectedcart: [...(state.selectedcart
+          .filter(item => item.id !== action.payload.id)), action.payload],
+      };
+
+    case ActionType.DEL_QUANTITY:
+      return {
+        ...state,
+        selectedcart: [...(state.selectedcart
+          .filter(item => item.id !== action.payload.id)), action.payload],
       };
 
     default:
