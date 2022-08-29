@@ -1,4 +1,10 @@
 .Heart {
   display: flex;
   align-items: center;
+  transition: all 0.3s ease-in-out;
+  color: #fff;
+
+  &__svg {
+    transition: all 0.3s ease-in-out;
+  }
 }

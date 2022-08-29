@@ -1,0 +1,23 @@
+//local variables
+$content-width: 1136px;
+
+.Details {
+  display: flex;
+  justify-content: center;
+  &__wrapper {
+    width: $content-width;
+    padding-top: 24px;
+  }
+
+  &__firstRow {
+    display: flex;
+    gap: 75px;
+    margin-bottom: 80px;
+  }
+
+  &__secondRow {
+    display: flex;
+    gap: 64px;
+    margin-bottom: 80px;
+  }
+}

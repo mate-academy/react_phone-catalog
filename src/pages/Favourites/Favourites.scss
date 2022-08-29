@@ -1,0 +1,27 @@
+// loacale variable
+$footer-height: 96px;
+$navbarHeight: 64px;
+$content-width: 1136px;
+
+.Favourites {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__wrapper {
+    width: $content-width;
+    padding-top: 24px;
+  }
+
+  &__content {
+    min-height: calc( 100vh - $footer-height - $navbarHeight - 190px);
+  }
+
+  .Favourites__products {
+    width: $content-width;
+    display: grid;
+    grid-template-columns: repeat(4, 272px);
+    gap: 40px 16px;
+    margin-bottom: 80px;
+  }
+}

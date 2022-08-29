@@ -26,6 +26,10 @@
     margin-bottom: 8px;
   }
 
+  &__link {
+    text-decoration: none;
+  }
+
   &__foundNumber {
     font-size: 14px;
     color: #89939a;
@@ -51,5 +55,8 @@
     line-height: 15px;
     color: #89939a;
     margin-bottom: 4px;
+    background: white;
+    z-index: 2;
+    position: relative;
   }
 }

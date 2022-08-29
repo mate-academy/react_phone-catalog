@@ -1,0 +1,22 @@
+//local value
+$width: 559px;
+
+.AboutDetails {
+  width: $width;
+
+  &__title {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 31px;
+    color: #313237;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #e2e6e9;
+    margin-bottom: 32px;
+  }
+
+  &__paragraph {
+    font-size: 14px;
+    line-height: 21px;
+    color: #89939a;
+  }
+}

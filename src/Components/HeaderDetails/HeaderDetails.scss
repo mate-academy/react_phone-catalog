@@ -1,0 +1,52 @@
+//loacal variables
+$darkGray: #313237;
+$ligthishGray: #89939a;
+
+.Header {
+  &__route {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    height: 15px;
+    margin-bottom: 40px;
+  }
+
+  &__svg {
+    height: 15px;
+  }
+
+  &__link {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  &__routeText {
+    font-size: 12px;
+    line-height: 12px;
+    font-weight: 400;
+    color: $ligthishGray;
+
+    &:hover,
+    &:focus {
+      cursor: pointer;
+      color: $darkGray;
+    }
+  }
+
+  &__back {
+    margin-top: 40px;
+    position: relative;
+    left: -4px;
+  }
+
+  &__title {
+    margin-top: 16px;
+    margin-bottom: 40px;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 41px;
+    color: $darkGray;
+  }
+}

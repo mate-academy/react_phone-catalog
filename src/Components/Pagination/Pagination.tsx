@@ -54,6 +54,7 @@ export const Pagination: React.FC<Props> = (
                   arrayOfNumbers.map((element) => {
                     return (
                       <button
+                        key={element}
                         type="button"
                         className={`Pagination__page ${pageSelected === Number(element) && 'Selected'}`}
                         onClick={() => {

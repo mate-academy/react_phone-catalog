@@ -1,10 +1,11 @@
-// import { useState } from 'react';
-import './Accessories.scss';
+import { Gadgets } from '../../Components/Gadgets/Gadgets';
 
 export const Accessories = () => {
+  const pageDescription = ['accessories', 'Accessories', 'accessory'];
+
   return (
-    <div className="Accessories">
-      Accessories
+    <div className="Phones">
+      <Gadgets pageDescription={pageDescription} />
     </div>
   );
 };

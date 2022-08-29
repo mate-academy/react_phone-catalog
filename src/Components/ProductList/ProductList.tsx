@@ -3,14 +3,14 @@ import { Phone } from '../../types/Phone';
 import './ProductList.scss';
 
 type Props = {
-  phoneCatalogCopy: Phone[] | null;
+  productCatalogCopy: Phone[] | null;
   perPageParam: string | null;
   pageSelected: number;
 };
 
 export const ProductList: React.FC<Props> = (
   {
-    phoneCatalogCopy,
+    productCatalogCopy,
     perPageParam,
     pageSelected,
   },
@@ -18,8 +18,8 @@ export const ProductList: React.FC<Props> = (
   return (
     <div className="ProductList">
       {
-        phoneCatalogCopy && phoneCatalogCopy.length > 0 && (
-          phoneCatalogCopy
+        productCatalogCopy && productCatalogCopy.length > 0 && (
+          productCatalogCopy
             .filter((el, index) => {
               if (!perPageParam) {
                 return el;
@@ -32,7 +32,10 @@ export const ProductList: React.FC<Props> = (
             })
             .map(info => {
               return (
-                <ProductItem info={info} key={info.id} />
+                <ProductItem
+                  info={info}
+                  key={info.id}
+                />
               );
             })
         )

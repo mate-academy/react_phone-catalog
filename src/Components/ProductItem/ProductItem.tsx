@@ -1,24 +1,45 @@
+import { Link } from 'react-router-dom';
+import { useContext } from 'react';
 import { Heart } from '../../SVG/Heart/Heart';
 import { Phone } from '../../types/Phone';
+import { useLikes } from '../../hooks/useLikes';
+import { useCart } from '../../hooks/useCart';
+import { usersChoiceContext } from '../../context/UsersChoiceContext';
 import './ProductItem.scss';
 
 type Props = {
   info: Phone;
 };
 
-export const ProductItem: React.FC<Props> = ({ info }) => {
+export const ProductItem: React.FC<Props> = (
+  {
+    info,
+  },
+) => {
+  const { addToLiked, removeFromLiked } = useLikes();
+  const { addToCart, removeFromCart } = useCart();
+  const { likedGadgetsID, inCartID } = useContext(usersChoiceContext);
+  const liked = likedGadgetsID.includes(info.id);
+  const inCheckOut = inCartID.includes(info.id);
+
   return (
     <div className="ProductItem">
-      <div className="ProductItem__imageWrapper">
+      <Link
+        to={`/${info.type}s/${info.id}`}
+        className="ProductItem__imageWrapper"
+      >
         <img
           src={info.imageUrl}
           alt="phone"
           className="ProductItem__image"
         />
-      </div>
-      <h1 className="ProductItem__name">
+      </Link>
+      <Link
+        to={`/${info.type}s/${info.id}`}
+        className="ProductItem__name"
+      >
         {info.name}
-      </h1>
+      </Link>
       <div className="ProductItem__price">
         {
           info.discount !== 0 ? (
@@ -64,15 +85,29 @@ export const ProductItem: React.FC<Props> = ({ info }) => {
       <div className="ProductItem__actions">
         <button
           type="button"
-          className="ProductItem__cardBtn"
+          className={`ProductItem__cardBtn ${inCheckOut && 'Checkout'}`}
+          onClick={() => {
+            if (!inCheckOut) {
+              addToCart(info);
+            } else {
+              removeFromCart(info.id);
+            }
+          }}
         >
-          Add to cart
+          {!inCheckOut ? 'Add to cart' : 'Selected'}
         </button>
         <button
           type="button"
           className="ProductItem__liked"
+          onClick={() => {
+            if (!liked) {
+              addToLiked(info);
+            } else {
+              removeFromLiked(info.id);
+            }
+          }}
         >
-          <Heart />
+          <Heart liked={liked} />
         </button>
       </div>
     </div>

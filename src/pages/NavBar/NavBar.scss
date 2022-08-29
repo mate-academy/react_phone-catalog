@@ -1,5 +1,7 @@
+$navbarHeight: 64px;
+
 .NavBar {
-  height: 64px;
+  height: $navbarHeight;
   border-bottom: 1px solid #e2e6e9;
 
   &__wrapper {

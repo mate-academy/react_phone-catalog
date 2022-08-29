@@ -1,5 +1,65 @@
+$content-width: 1136px;
+$footer-height: 96px;
+
 .Footer {
-  background: red;
-  width: 100%;
-  height: 60px;
+  height: $footer-height;
+  border-top: 1px solid #e2e6e9;
+
+  &__wrapper {
+    height: $footer-height;
+    width: $content-width;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__ul {
+    display: flex;
+    gap: 64px;
+    list-style: none;
+  }
+
+  &__link,
+  &__top {
+    text-decoration: none;
+    height: $footer-height;
+    display: flex;
+    align-items: center;
+  }
+
+  &__top {
+    gap: 16px;
+    border: none;
+    background: none;
+    outline: none;
+
+    &:hover,
+    &:focus {
+      cursor: pointer;
+    }
+  }
+
+  &__text {
+    font-size: 12px;
+    font-weight: 700;
+    color: #89939a;
+  }
+
+  &__text.SemiBold {
+    font-weight: 500;
+  }
+
+  &__btnTop {
+    border: 1px solid #b4bdc3;
+    background: none;
+    outline: none;
+    transition: all 0.3s ease-in-out;
+
+    &:hover,
+    &:focus {
+      cursor: pointer;
+      border: 1px solid #313237;
+    }
+  }
 }

@@ -1,0 +1,24 @@
+$darkGray: #313237;
+$ligthishGray: #89939a;
+
+.Cancel {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__path {
+    fill: $ligthishGray;
+    transition: all 0.3s ease-in-out;
+  }
+
+  &:hover,
+  &:focus {
+    cursor: pointer;
+
+    .Cancel__path {
+      fill: $darkGray;
+    }
+  }
+}

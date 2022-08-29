@@ -65,6 +65,22 @@ $borderColor: #e2e6e9;
     }
   }
 
+  &__numberOfLiked {
+    position: absolute;
+    top: calc($squireSide / 4);
+    right: calc($squireSide / 4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: 2px solid white;
+    width: 16px;
+    height: 16px;
+    background: #eb5757;
+    color: white;
+    font-size: 9px;
+  }
+
   &__input {
     font-size: 14px;
     color: #313237;
@@ -82,5 +98,9 @@ $borderColor: #e2e6e9;
   &__iconClose {
     width: 20px;
     height: 20px;
+  }
+
+  &__link {
+    text-decoration: none;
   }
 }

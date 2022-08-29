@@ -1,0 +1,40 @@
+// local variables
+$squireSize: 464px;
+
+.GalleryDetails {
+  display: flex;
+  gap: 27px;
+
+  &__left {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__btn {
+    width: 80px;
+    height: 80px;
+    border: 1px solid #e2e6e9;
+    outline: none;
+    background: none;
+    transition: border 0.3s ease-in-out;
+
+    &:hover,
+    &:focus {
+      cursor: pointer;
+      border: 1px solid #c4c4c4;
+    }
+  }
+
+  &__pics {
+    width: 100%;
+  }
+
+  &__rigth {
+    width: $squireSize;
+    height: $squireSize;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

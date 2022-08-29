@@ -1,0 +1,74 @@
+// locale Compare
+$content-width: 1136px;
+$darkGray: #313237;
+$ligthishGray: #89939a;
+$veryLightGray: #e2e6e9;
+$footer-height: 96px;
+$navbarHeight: 64px;
+
+.Cart {
+  padding-top: 40px;
+  display: flex;
+  justify-content: center;
+  min-height: calc( 100vh - $footer-height - $navbarHeight - 2px);
+
+  &__wrapper {
+    width: $content-width;
+  }
+
+  &__linkText {
+    font-size: 12px;
+    line-height: 15px;
+    color: $ligthishGray;
+    transition: all 0.4s ease-in-out;
+
+    &:hover,
+    &:focus {
+      color: $darkGray;
+      cursor: pointer;
+    }
+  }
+
+  &__Link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+
+  }
+
+  &__tilte {
+    margin-top: 16px;
+    margin-bottom: 24px;
+    font-size: 32px;
+    line-height: 41px;
+    font-weight: 700;
+    color: $darkGray;
+  }
+
+  &__Content {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 80px;
+  }
+
+  &__Left {
+    width: 752px;
+  }
+
+  &__Rigth {
+    width: 368px;
+  }
+
+  &__empty {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    min-height: calc( 100vh - $footer-height - $navbarHeight - 250px);
+  }
+
+  &__emptyText {
+    font-size: 14px;
+    color: $ligthishGray;
+  }
+}

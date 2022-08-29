@@ -1,0 +1,188 @@
+// local variables
+$darkGray: #313237;
+$ligthishGray: #89939a;
+$veryLightGray: #e2e6e9;
+$width: 320px;
+
+.AddtoCardDetails {
+  display: flex;
+  flex-direction: column;
+
+  &__chooseColor {
+    border-bottom: 1px solid $veryLightGray;
+    width: $width;
+    margin-bottom: 24px;
+  }
+
+  &__lightText {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 15px;
+    color: $ligthishGray;
+  }
+
+  &__colorBtns {
+    margin-top: 8px;
+    margin-bottom: 24px;
+    display: flex;
+    gap: 8px;
+  }
+
+  &__colorBtn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid $veryLightGray;
+    outline: none;
+    background: none;
+    transition: border 0.3s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover,
+    &:focus {
+      cursor: pointer;
+      border: 1px solid $ligthishGray;
+    }
+  }
+
+  &__color {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+  }
+
+  &__capacityBtn {
+    border: 1px solid #b4bdc3;
+    background: none;
+    width: 63px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $darkGray;
+    transition: all 0.3s ease-in-out;
+
+    &.Selected {
+      border: 1px solid $darkGray;
+      background: $darkGray;
+      color: #fff;
+    }
+
+    &:hover,
+    &:focus {
+      cursor: pointer;
+    }
+  }
+
+  &__price {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  &__discount {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 41px;
+    color: $darkGray;
+  }
+
+  &__original {
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 41px;
+    color: $ligthishGray;
+    text-decoration: line-through;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 32px;
+  }
+
+  &__addBtn {
+    width: 263px;
+    height: 48px;
+    font-size: 14px;
+    border: 1px solid $darkGray;
+    color: white;
+    background: $darkGray;
+    outline: none;
+    transition: all 0.3s ease-in-out;
+
+    &:hover,
+    &:focus {
+      cursor: pointer;
+      box-shadow: 0 3px 13px 0 #17203142;
+    }
+
+    &.Selected {
+      border: 1px solid #e2e6e9;
+      color: #27ae60;
+      background: none;
+
+      &:hover,
+      &:focus {
+        box-shadow: none;
+      }
+    }
+  }
+
+  &__heartBtn {
+    width: 48px;
+    height: 48px;
+    background: none;
+    border: 1px solid #b4bdc3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: border 0.3s ease-in-out;
+
+    &:hover,
+    &:focus {
+      cursor: pointer;
+      border: 1px solid $darkGray;
+    }
+  }
+
+  &__specs {
+    width: $width;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__specsUnit {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__specsKey {
+    font-size: 12px;
+    line-height: 15px;
+    color: $ligthishGray;
+    
+    &.Regular {
+      font-size: 14px;
+      line-height: 21px;
+    }
+  }
+
+  &__specsValue {
+    max-width: 150px;
+    text-align: right;
+    font-size: 12px;
+    line-height: 15px;
+    color: $darkGray;
+
+    &.Regular {
+      font-size: 14px;
+      line-height: 21px;
+      max-width: 300px;
+    }
+  }
+}
