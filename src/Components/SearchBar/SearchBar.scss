@@ -1,0 +1,58 @@
+// local variables
+$squireSide: 64px;
+$borderColor: #e2e6e9;
+
+@mixin common {
+  height: $squireSide;
+  width: $squireSide;
+  background: none;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.SearchBar {
+
+  &__form {
+    width: 327px;
+    display: flex;
+
+    @media screen and (max-width: 1040px) {
+      width: 100%;
+    }
+  }
+  
+  &__cancelBtn,
+  &__searchIcon {
+    @include common;
+  
+    &:hover,
+    &:focus {
+      cursor: pointer;
+    }
+  }
+  
+  &__iconClose {
+    width: 20px;
+    height: 20px;
+  }
+  
+  &__input {
+    font-size: 14px;
+    color: #313237;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid $borderColor;
+    width: 100%;
+    padding: 0 24px;
+  
+    &::placeholder {
+      color: #b4bdc3;
+    }
+
+    @media screen and (max-width: 440px) {
+      padding: 0 10px;
+    }
+  }
+}

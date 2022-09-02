@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './GalleryDetails.scss';
 
 type Props = {
@@ -7,6 +7,10 @@ type Props = {
 
 export const GalleryDetails: React.FC<Props> = ({ productDescription }) => {
   const [imgShown, setImgShown] = useState(productDescription[0]);
+
+  useEffect(() => {
+    setImgShown(productDescription[0]);
+  }, [productDescription]);
 
   return (
     <div className="GalleryDetails">

@@ -10,5 +10,4 @@ export interface Phone {
   screen: string;
   snippet: string;
   type: string;
-  // number?: number;
 }

@@ -1,11 +1,15 @@
 import { Gadgets } from '../../Components/Gadgets/Gadgets';
 
-export const Tablets = () => {
+type Props = {
+  searchInput: string;
+};
+
+export const Tablets: React.FC<Props> = ({ searchInput }) => {
   const pageDescription = ['tablets', 'Tablets', 'tablet'];
 
   return (
     <div className="Tablets">
-      <Gadgets pageDescription={pageDescription} />
+      <Gadgets pageDescription={pageDescription} searchInput={searchInput} />
     </div>
   );
 };

@@ -81,12 +81,12 @@ export const AddtoCardDetails: React.FC<Props> = (
             ? (
               <>
                 <h2 className="AddtoCardDetails__discount">
-                  {product.price - product.discount}
+                  {`$${product.price - product.discount}`}
                 </h2>
-                <h2 className="AddtoCardDetails__original">{product.price}</h2>
+                <h2 className="AddtoCardDetails__original">{`$${product.price}`}</h2>
               </>
             ) : (
-              <h2 className="AddtoCardDetails__discount">{product.price}</h2>
+              <h2 className="AddtoCardDetails__discount">{`$${product.price}`}</h2>
             )
         }
       </div>

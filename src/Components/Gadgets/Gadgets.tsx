@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import { useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useLocation, useSearchParams } from 'react-router-dom';
 import { Header } from '../Header/Header';
 import { ProductList } from '../ProductList/ProductList';
 import { useFetch } from '../../hooks/useFetch';
@@ -10,9 +10,10 @@ import './Gadgets.scss';
 
 type Props = {
   pageDescription: string[];
+  searchInput?: string;
 };
 
-export const Gadgets: React.FC<Props> = ({ pageDescription }) => {
+export const Gadgets: React.FC<Props> = ({ pageDescription, searchInput }) => {
   const { getFetch } = useFetch();
   const [gadgetCatalog, setGadgetCatalog] = useState<Phone[]>([]);
   const [searchParams] = useSearchParams();
@@ -21,6 +22,9 @@ export const Gadgets: React.FC<Props> = ({ pageDescription }) => {
   const [gadgetCatalogCopy, setGadgetCatalogCopy]
   = useState<Phone[] | null>(null);
   const [pageSelected, setPageSelected] = useState(1);
+  const location = useLocation();
+
+  console.log(searchInput);
 
   useEffect(() => {
     getFetch()
@@ -40,7 +44,7 @@ export const Gadgets: React.FC<Props> = ({ pageDescription }) => {
     setPageSelected(1);
 
     if (gadgetCatalog.length > 0) {
-      const catalog = gadgetCatalog
+      let catalog = gadgetCatalog
         .filter(el => el.type === pageDescription[2])
         .sort((a, b) => {
           switch (sortByParam) {
@@ -55,11 +59,16 @@ export const Gadgets: React.FC<Props> = ({ pageDescription }) => {
           }
         });
 
+      if (searchInput && searchInput !== '') {
+        catalog = catalog
+          .filter(el => el.name.toLowerCase().includes(searchInput));
+
+        console.log(catalog);
+      }
+
       setGadgetCatalogCopy(catalog);
     }
-  }, [gadgetCatalog, sortByParam, perPageParam]);
-
-  console.log(gadgetCatalogCopy);
+  }, [gadgetCatalog, sortByParam, perPageParam, searchInput]);
 
   return (
     <div className="Gadgets">
@@ -88,9 +97,18 @@ export const Gadgets: React.FC<Props> = ({ pageDescription }) => {
           ) : (
             <>
               {
-                gadgetCatalogCopy && gadgetCatalogCopy.length === 0 && (
+                location.pathname === '/accessories' && (
                   <div className="Gadgets__empty">
                     <h1 className="Gadgets__emtyText">Out of stock !</h1>
+                  </div>
+                )
+              }
+              {
+                location.pathname !== '/accessories'
+                && gadgetCatalogCopy
+                && gadgetCatalogCopy.length === 0 && (
+                  <div className="Gadgets__empty">
+                    <h1 className="Gadgets__noSearchRes">No search results</h1>
                   </div>
                 )
               }

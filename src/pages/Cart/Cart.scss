@@ -1,5 +1,14 @@
 // locale Compare
 $content-width: 1136px;
+$content-width2: 1000px;
+$content-width3: 850px;
+$content-width4: 700px;
+$content-width5: 550px;
+$content-width6: 480px;
+$content-width7: 420px;
+$content-width8: 370px;
+$content-width9: 330px;
+$content-width10: 300px;
 $darkGray: #313237;
 $ligthishGray: #89939a;
 $veryLightGray: #e2e6e9;
@@ -7,13 +16,42 @@ $footer-height: 96px;
 $navbarHeight: 64px;
 
 .Cart {
-  padding-top: 40px;
+  padding-top: calc(40px + 64px);
   display: flex;
   justify-content: center;
-  min-height: calc( 100vh - $footer-height - $navbarHeight - 2px);
+  min-height: calc( 100vh - $footer-height - 2px);
+
+  @media screen and (max-width: 1180px) {
+    padding-top: calc(20px + 64px);
+  }
 
   &__wrapper {
     width: $content-width;
+
+    @media screen and (max-width: 1180px) {
+      width: $content-width2;
+    }
+
+    @media screen and (max-width: 1040px) {
+      width: $content-width3;
+    }
+
+    @media screen and (max-width: 890px) {
+      width: $content-width4;
+    }
+
+    @media screen and (max-width: 720px) {
+      width: $content-width5;
+    }
+
+    @media screen and (max-width: 570px) {
+      width: $content-width6;
+    }
+
+    @media screen and (max-width: 500px) {
+      width: 90%;
+    }
+
   }
 
   &__linkText {
@@ -33,7 +71,6 @@ $navbarHeight: 64px;
     display: flex;
     align-items: center;
     text-decoration: none;
-
   }
 
   &__tilte {
@@ -43,20 +80,71 @@ $navbarHeight: 64px;
     line-height: 41px;
     font-weight: 700;
     color: $darkGray;
+
+    @media screen and (max-width: 1180px) {
+      font-size: 26px;
+    }
+
+    @media screen and (max-width: 1180px) {
+      font-size: 22px;
+      margin-top: 6px;
+      margin-bottom: 10px;
+    }
   }
 
   &__Content {
     display: flex;
     justify-content: space-between;
     padding-bottom: 80px;
+
+    @media screen and (max-width: 1180px) {
+      padding-bottom: 40px;
+    }
+
+    @media screen and (max-width: 720px) {
+      flex-direction: column-reverse;
+      gap: 20px;
+    }
   }
 
   &__Left {
     width: 752px;
+
+    @media screen and (max-width: 1180px) {
+      width: 684px;
+    }
+
+    @media screen and (max-width: 1040px) {
+      width: 584px;
+    }
+
+    @media screen and (max-width: 890px) {
+      width: 480px;
+    }
+
+    @media screen and (max-width: 720px) {
+      width: 100%;
+    }
   }
 
   &__Rigth {
     width: 368px;
+
+    @media screen and (max-width: 1180px) {
+      width: 300px;
+    }
+
+    @media screen and (max-width: 1040px) {
+      width: 250px;
+    }
+
+    @media screen and (max-width: 890px) {
+      width: 210px;
+    }
+
+    @media screen and (max-width: 720px) {
+      width: 100%;
+    }
   }
 
   &__empty {

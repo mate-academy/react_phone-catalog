@@ -10,6 +10,7 @@ import { AboutDetails } from '../../Components/AboutDetails/AboutDetails';
 import { SpecsDetails } from '../../Components/SpecsDetails/SpecsDetails';
 import { Phone } from '../../types/Phone';
 import './Details.scss';
+import { ProductsSlider } from '../../Components/ProductsSlider/ProductsSlider';
 
 type Props = {
   productCategory: string;
@@ -21,6 +22,7 @@ export const Details: React.FC<Props> = ({ productCategory }) => {
   const [product, setProduct] = useState<null | Phone>(null);
   const [productDescription, setProductDescription]
   = useState<null | ProductInfo>(null);
+  const [sliderImages, setSliderImages] = useState<Phone[]>([]);
 
   useEffect(() => {
     if (id) {
@@ -43,6 +45,8 @@ export const Details: React.FC<Props> = ({ productCategory }) => {
             if (phone) {
               setProduct(phone);
             }
+
+            setSliderImages(res);
           }
         })
         .catch(err => {
@@ -84,6 +88,14 @@ export const Details: React.FC<Props> = ({ productCategory }) => {
                 />
               </div>
             </>
+          )
+        }
+        {
+          sliderImages.length > 0 && (
+            <ProductsSlider
+              productArray={sliderImages}
+              description="You may also like"
+            />
           )
         }
       </div>

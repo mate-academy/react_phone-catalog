@@ -27,6 +27,9 @@ export const ProductItem: React.FC<Props> = (
       <Link
         to={`/${info.type}s/${info.id}`}
         className="ProductItem__imageWrapper"
+        onClick={() => {
+          window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+        }}
       >
         <img
           src={info.imageUrl}
@@ -37,6 +40,9 @@ export const ProductItem: React.FC<Props> = (
       <Link
         to={`/${info.type}s/${info.id}`}
         className="ProductItem__name"
+        onClick={() => {
+          window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+        }}
       >
         {info.name}
       </Link>

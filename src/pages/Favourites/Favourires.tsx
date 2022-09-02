@@ -1,12 +1,29 @@
 import { Link } from 'react-router-dom';
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { usersChoiceContext } from '../../context/UsersChoiceContext';
 import { ProductItem } from '../../Components/ProductItem/ProductItem';
 import '../../Components/Header/Header.scss';
 import './Favourites.scss';
+import '../../Components/Gadgets/Gadgets.scss';
 
-export const Favourites = () => {
+type Props = {
+  searchInput?: string;
+};
+
+export const Favourites: React.FC<Props> = ({ searchInput }) => {
   const { likedGadgets } = useContext(usersChoiceContext);
+  const [likedGadgetsCopy, setLikedGadgetsCopy] = useState(likedGadgets);
+
+  useEffect(() => {
+    if (searchInput && searchInput !== '') {
+      const catalog = likedGadgets
+        .filter(el => el.name.toLowerCase().includes(searchInput));
+
+      setLikedGadgetsCopy(catalog);
+    } else {
+      setLikedGadgetsCopy(likedGadgets);
+    }
+  }, [likedGadgets, searchInput]);
 
   return (
     <div className="Favourites">
@@ -32,20 +49,24 @@ export const Favourites = () => {
           Favourites
         </h1>
         <h3 className="Header__foundNumber">
-          {`${likedGadgets.length} items`}
+          {`${likedGadgetsCopy.length} items`}
         </h3>
       </div>
       <div className="Favourites__content">
         {
-          likedGadgets.length > 0 && (
+          likedGadgetsCopy.length > 0 ? (
             <div className="Favourites__products">
               {
-                likedGadgets.map((el) => {
+                likedGadgetsCopy.map((el) => {
                   return (
-                    <ProductItem info={el} />
+                    <ProductItem info={el} key={el.id} />
                   );
                 })
               }
+            </div>
+          ) : (
+            <div className="Favourites__empty">
+              <h1 className="Favourites__noSearchRes">No search results</h1>
             </div>
           )
         }

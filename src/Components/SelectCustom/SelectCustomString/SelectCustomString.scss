@@ -16,6 +16,10 @@ $narrow: 128px;
   position: relative;
   z-index: 2;
 
+  @media screen and (max-width: 350px) {
+    width: 162px;
+  }
+
   &:hover,
   &:focus {
     cursor: pointer;
@@ -50,6 +54,10 @@ $narrow: 128px;
     animation: appear;
     animation-duration: 0.3s;
     z-index: -1;
+
+    @media screen and (max-width: 350px) {
+      width: 162px;
+    }
 
     &.Number {
       width: $narrow;

@@ -1,10 +1,22 @@
 $content-width: 1136px;
+$content-width2: 1000px;
+$content-width3: 850px;
+$content-width4: 700px;
+$content-width5: 550px;
+$content-width6: 480px;
+$content-width7: 420px;
+$content-width8: 370px;
+$content-width9: 330px;
+$content-width10: 300px;
 $footer-height: 96px;
 $navbarHeight: 64px;
 $paddingTop: 24px;
+$darkGray: #313237;
+$ligthishGray: #89939a;
+$lightGray:#b4bdc3;
 
 .Gadgets {
-  padding-top: $paddingTop;
+  padding-top: calc($paddingTop + $navbarHeight);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -17,6 +29,37 @@ $paddingTop: 24px;
     display: flex;
     flex-direction: column;
     flex: 1;
+
+    @media screen and (max-width:1180px) {
+      width: $content-width2;
+    }
+
+    @media screen and (max-width:1040px) {
+      width: $content-width3;
+      align-items: center;
+    }
+
+    @media screen and (max-width:890px) {
+      width: $content-width4;
+    }
+    @media screen and (max-width:720px) {
+      width: $content-width5;
+    }
+    @media screen and (max-width:570px) {
+      width: 420px;
+
+    }
+    @media screen and (max-width:440px) {
+      width: 370px;
+    }
+
+    @media screen and (max-width:390px) {
+      width: 330px;
+    }
+
+    @media screen and (max-width:350px) {
+      width: 300px;
+    }
   }
 
   &__list {
@@ -25,6 +68,11 @@ $paddingTop: 24px;
     grid-template-columns: repeat(4, 272px);
     grid-template-rows: auto;
     gap: 40px 16px;
+
+    @media screen and (max-width: 1180px) {
+      grid-template-columns: repeat(4, 220px);
+      gap: 20px;
+    }
   }
 
   &__empty {
@@ -45,6 +93,21 @@ $paddingTop: 24px;
     color: tomato;
     animation: appearOutOfStock;
     animation-duration: 0.5s;
+
+    @media screen and (max-width: 1180px) {
+      font-size: 32px;
+      line-height: 46px;
+      border-top: 4px solid tomato;
+      border-bottom: 4px solid tomato;
+    }
+  }
+
+  &__noSearchRes {
+    transform: translateY(-100px);
+    color: $ligthishGray;
+    font-size: 26px;
+    animation: appearNoSearchRes;
+    animation-duration: 0.8s;
   }
 }
 
@@ -56,5 +119,20 @@ $paddingTop: 24px;
   100% {
     opacity: 1;
     transform: scale(1) translateY(-100%);
+  }
+}
+
+@keyframes appearNoSearchRes {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  50% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(-100px);
   }
 }

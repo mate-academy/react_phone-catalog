@@ -2,10 +2,14 @@ import { Outlet } from 'react-router-dom';
 import { NavBar } from '../NavBar/NavBar';
 import { Footer } from '../Footer/Footer';
 
-export function BasicLayout() {
+type Props = {
+  setSearchInput: React.Dispatch<React.SetStateAction<string>>;
+};
+
+export function BasicLayout({ setSearchInput }: Props) {
   return (
     <>
-      <NavBar />
+      <NavBar setSearchInput={setSearchInput} />
       <Outlet />
       <Footer />
     </>

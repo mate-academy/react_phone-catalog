@@ -1,5 +1,4 @@
 // local variables
-
 $squireSide: 64px;
 $borderColor: #e2e6e9;
 
@@ -55,6 +54,12 @@ $borderColor: #e2e6e9;
       transition: all 0.4s ease-in-out;
     }
 
+    &.borderDark {
+      &:before {
+        background: #313237;
+      }
+    }
+
     &:hover,
     &:focus {
       cursor: pointer;
@@ -81,26 +86,28 @@ $borderColor: #e2e6e9;
     font-size: 9px;
   }
 
-  &__input {
-    font-size: 14px;
-    color: #313237;
-    outline: none;
-    border: none;
-    border-bottom: 1px solid $borderColor;
-    width: 100%;
-    padding: 0 24px;
-
-    &::placeholder {
-      color: #b4bdc3;
-    }
-  }
-
-  &__iconClose {
-    width: 20px;
-    height: 20px;
-  }
-
   &__link {
     text-decoration: none;
+  }
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+@media screen and (max-width: 1040px) {
+  .Tab__searchBar {
+    width: 100%;
+  }
+
+  .Tab__form {
+    width: 100%;
+    flex-grow: 1;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .heartUnit {
+    display: none;
   }
 }

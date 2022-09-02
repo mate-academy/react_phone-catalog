@@ -11,6 +11,33 @@ $veryLightGray: #e2e6e9;
   animation: appearProductItem;
   animation-duration: 0.5s;
 
+  @media screen and (max-width: 1180px) {
+    width: 220px;
+    height: 415px;
+    padding: 15px;
+  }
+
+  @media screen and (max-width: 500px) {
+    width: 205px;
+    height: 398px;
+    padding: 10px;
+  }
+
+  @media screen and (max-width: 440px) {
+    width: 180px;
+    height: 380px;
+  }
+
+  @media screen and (max-width: 390px) {
+    width: 160px;
+    height: 365px;
+  }
+
+  @media screen and (max-width: 350px) {
+    width: 145px;
+    height: 350px;
+  }
+
   &__imageWrapper {
     width: 100%;
     display: flex;
@@ -18,9 +45,35 @@ $veryLightGray: #e2e6e9;
   }
 
   &__image {
+    background: rgb(243, 243, 243);
     width: 208px;
     height: 208px;
     margin-bottom: 24px;
+
+    @media screen and (max-width: 1180px) {
+      width: 188px;
+      height: 188px;
+      margin-bottom: 15px;
+    }
+
+    @media screen and (max-width: 500px) {
+      margin-bottom: 10px;
+    }
+
+    @media screen and (max-width: 440px) {
+      width: 170px;
+      height: 170px;
+    }
+
+    @media screen and (max-width: 390px) {
+      width: 155px;
+      height: 155px;
+    }
+
+    @media screen and (max-width: 350px) {
+      width: 140px;
+      height: 140px;
+    }
   }
 
   &__name {
@@ -31,6 +84,22 @@ $veryLightGray: #e2e6e9;
     display: flex;
     height: 42px;
     text-decoration: none;
+
+    @media screen and (max-width: 1180px) {
+      font-size: 13px;
+      line-height: 18px;
+      height: 36px;
+    }
+
+    @media screen and (max-width: 390px) {
+      font-size: 12px;
+      line-height: 15px;
+      height: 36px;
+    }
+
+    @media screen and (max-width: 350px) {
+      font-size: 11px;
+    }
   }
 
   &__price {
@@ -40,6 +109,11 @@ $veryLightGray: #e2e6e9;
     padding-bottom: 6px;
     border-bottom: 1px solid $veryLightGray;
     margin-bottom: 16px;
+
+    @media screen and (max-width: 1180px) {
+      padding-bottom: 4px;
+      margin-bottom: 8px;
+    }
   }
 
   &__original,
@@ -48,6 +122,20 @@ $veryLightGray: #e2e6e9;
     font-weight: 500;
     line-height: 31px;
     color: $darkGray;
+
+    @media screen and (max-width: 1180px) {
+      font-size: 20px;
+      line-height: 26px;
+    }
+
+    @media screen and (max-width: 500px) {
+      font-size: 16px;
+      line-height: 22px;
+    }
+
+    @media screen and (max-width: 350px) {
+      font-size: 14px;
+    }
   }
 
   &__original {
@@ -67,6 +155,11 @@ $veryLightGray: #e2e6e9;
     font-size: 12px;
     line-height: 15px;
     color: $ligthishGray;
+
+    @media screen and (max-width: 1180px) {
+      font-size: 11px;
+      line-height: 13px;
+    }
   }
 
   &__specifications {
@@ -78,6 +171,10 @@ $veryLightGray: #e2e6e9;
     margin-top: 8px;
     display: flex;
     justify-content: space-between;
+
+    @media screen and (max-width: 1180px) {
+      margin-top: 4px;
+    }
   }
 
   &__cardBtn {
@@ -90,6 +187,30 @@ $veryLightGray: #e2e6e9;
     font-size: 14px;
     line-height: 21px;
     transition: all 0.3s ease-in-out;
+
+    @media screen and (max-width: 1180px) {
+      font-size: 13px;
+      width: 145px;
+      height: 34px;
+    }
+
+    @media screen and (max-width: 500px) {
+      width: 140px;
+    }
+
+    @media screen and (max-width: 440px) {
+      width: 115px;
+    }
+
+    @media screen and (max-width: 390px) {
+      width: 100px;
+      font-size: 12px;
+    }
+
+    @media screen and (max-width: 350px) {
+      width: 85px;
+      font-size: 11px;
+    }
 
     &:hover,
     &:focus {
@@ -120,6 +241,11 @@ $veryLightGray: #e2e6e9;
     align-items: center;
     transition: border 0.3s ease-in-out;
 
+    @media screen and (max-width: 1180px) {
+      width: 34px;
+      height: 34px;
+    }
+
     &:hover,
     &:focus {
       cursor: pointer;
@@ -131,10 +257,8 @@ $veryLightGray: #e2e6e9;
 @keyframes appearProductItem {
   0% {
     opacity: 0;
-    transform: translateY(100px);
   }
   100% {
     opacity: 1;
-    transform: translateY(0);
   }
 }

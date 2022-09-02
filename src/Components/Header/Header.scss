@@ -1,10 +1,35 @@
 .Header {
+
+  @media screen and (max-width: 1040px) {
+    width: 460px;
+  }
+
+  @media screen and (max-width: 570px) {
+    width: 420px;
+  }
+
+  @media screen and (max-width: 440px) {
+    width: 370px;
+  }
+
+  @media screen and (max-width: 390px) {
+    width: 330px;
+  }
+
+  @media screen and (max-width: 350px) {
+    width: 300px;
+  }
+
   &__route {
     display: flex;
     align-items: center;
     gap: 12px;
     height: 15px;
     margin-bottom: 40px;
+
+    @media screen and (max-width: 1180px) {
+      margin-bottom: 20px;
+    }
   }
 
   &__svg {
@@ -24,6 +49,14 @@
     line-height: 40px;
     font-weight: 700;
     margin-bottom: 8px;
+
+    @media screen and (max-width: 1180px) {
+      font-size: 26px;
+    }
+
+    @media screen and (max-width: 440px) {
+      font-size: 22px;
+    }
   }
 
   &__link {
@@ -36,6 +69,11 @@
     line-height: 21px;
     font-weight: 500;
     margin-bottom: 40px;
+
+    @media screen and (max-width: 1180px) {
+      font-size: 13px;
+      margin-bottom: 20px;
+    }
   }
 
   &__select-wrapper {
@@ -46,7 +84,11 @@
 
   &__selects {
     display: flex;
-    gap: 16px;
+    gap: 20px;
+
+    @media screen and (max-width: 440px) {
+      gap: 10px;
+    }
   }
 
   &__selectName {

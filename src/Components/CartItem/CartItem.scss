@@ -1,6 +1,11 @@
 $darkGray: #313237;
 $ligthishGray: #89939a;
 $lightGray:#b4bdc3;
+$content-width: 1136px;
+$content-width2: 1000px;
+$content-width3: 850px;
+$content-width4: 700px;
+$content-width5: 550px;
 
 .CartItem {
   border: 1px solid #e2e6e9;
@@ -11,6 +16,41 @@ $lightGray:#b4bdc3;
   padding-left: 15px;
   animation: appearCartItem;
   animation-duration: 0.5s;
+  position: relative;
+
+  @media screen and (max-width: 1180px) {
+    height: 110px;
+    padding-right: 35px;
+  }
+
+  @media screen and (max-width: 1040px) {
+    height: 100px;
+    padding-right: 30px;
+  }
+
+  @media screen and (max-width: 890px) {
+    padding-right: 20px;
+  }
+
+  @media screen and (max-width: 500px) {
+    height: 290px;
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  &__number-price {
+    display: flex;
+
+    @media screen and (max-width: 500px) {
+      flex-direction: row-reverse;
+      gap: 30px;
+    }
+  }
+
+  &.cartItemDisappearAnimation {
+    animation: cartItemDisappearAnimation;
+    animation-duration: 0.4s;
+  }
 
   &__cancelBtn {
     display: flex;
@@ -21,6 +61,12 @@ $lightGray:#b4bdc3;
     background: none;
     outline: none;
     border: none;
+
+    @media screen and (max-width: 500px) {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
   }
 
   &__imgWrap {
@@ -28,6 +74,21 @@ $lightGray:#b4bdc3;
     margin-right: 24px;
     width: 70px;
     height: 70px;
+
+    @media screen and (max-width: 1040px) {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+
+    @media screen and (max-width: 890px) {
+      margin-left: 5px;
+      margin-right: 5px;
+    }
+
+    @media screen and (max-width: 500px) {
+      width: 150px;
+      height: 150px;
+    }
   }
 
   &__img {
@@ -40,6 +101,27 @@ $lightGray:#b4bdc3;
     width: 295px;
     color: $darkGray;
     margin-right: 50px;
+
+    @media screen and (max-width: 1040px) {
+      width: 210px;
+      margin-right: 20px;
+    }
+
+    @media screen and (max-width: 890px) {
+      line-height: 18px;
+      margin-right: 10px;
+      width: 200px;
+    }
+
+    @media screen and (max-width: 500px) {
+      line-height: 16px;
+      margin-right: 0;
+      width: 200px;
+      height: 32px;
+      text-align: center;
+      margin-top: 15px;
+      margin-bottom: 15px;
+    }
   }
 
   &__number-wrapper {
@@ -47,6 +129,10 @@ $lightGray:#b4bdc3;
     align-items: center;
     width: 96px;
     justify-content: space-between;
+
+    @media screen and (max-width: 890px) {
+      line-height: 90px;
+    }
   }
 
   &__numberBtn {
@@ -67,6 +153,11 @@ $lightGray:#b4bdc3;
       border: 1px solid $darkGray;
       cursor: pointer;
     }
+
+    @media screen and (max-width: 890px) {
+      width: 30px;
+      height: 30px;
+    }
   }
 
   &__number {
@@ -81,6 +172,20 @@ $lightGray:#b4bdc3;
     font-weight: 700;
     color: $darkGray;
     margin-left: 45px;
+
+    @media screen and (max-width: 1040px) {
+      margin-left: 30px;
+    }
+
+    @media screen and (max-width: 890px) {
+      font-size: 18px;
+      margin-left: 20px;
+    }
+
+    @media screen and (max-width: 500px) {
+      font-size: 22px;
+      margin-left: 0;
+    }
   }
 }
 
@@ -92,5 +197,16 @@ $lightGray:#b4bdc3;
   100% {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes cartItemDisappearAnimation {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-50px);
   }
 }

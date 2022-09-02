@@ -4,6 +4,14 @@ $width: 512px;
 .SpecsDetails {
   width: $width;
 
+  @media screen and (max-width: 1180px) {
+    width: 470px;
+  }
+  
+  @media screen and (max-width: 720px) {
+    width: 100%;
+  }
+
   &__title {
     font-size: 22px;
     line-height: 31px;

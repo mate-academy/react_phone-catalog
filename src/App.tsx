@@ -1,4 +1,5 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { useState } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import './App.scss';
 import { BasicLayout } from './pages/BasicLayout/BasicLayout';
@@ -10,30 +11,40 @@ import { Details } from './pages/Details/Details';
 import { Favourites } from './pages/Favourites/Favourires';
 import { Cart } from './pages/Cart/Cart';
 
-const App = () => (
-  <Routes>
-    <Route path="/" element={<BasicLayout />}>
-      <Route index element={<Home />} />
-      <Route path="/home" element={<Navigate to="/" replace />} />
-      <Route path="/phones">
-        <Route index element={<Phones />} />
+const App = () => {
+  const [searchInput, setSearchInput] = useState<string>('');
+
+  return (
+    <Routes>
+      <Route
+        path="/"
+        element={(<BasicLayout setSearchInput={setSearchInput} />)}
+      >
+        <Route index element={<Home />} />
+        <Route path="/home" element={<Navigate to="/" replace />} />
+        <Route path="/phones">
+          <Route index element={<Phones searchInput={searchInput} />} />
+          <Route
+            path="/phones:id"
+            element={<Details productCategory="phones" />}
+          />
+        </Route>
+        <Route path="/tablets">
+          <Route index element={<Tablets searchInput={searchInput} />} />
+          <Route
+            path="/tablets:id"
+            element={<Details productCategory="tablets" />}
+          />
+        </Route>
+        <Route path="/accessories" element={<Accessories />} />
         <Route
-          path="/phones:id"
-          element={<Details productCategory="phones" />}
+          path="/favourites"
+          element={<Favourites searchInput={searchInput} />}
         />
+        <Route path="/cart" element={<Cart />} />
       </Route>
-      <Route path="/tablets">
-        <Route index element={<Tablets />} />
-        <Route
-          path="/tablets:id"
-          element={<Details productCategory="tablets" />}
-        />
-      </Route>
-      <Route path="/accessories" element={<Accessories />} />
-      <Route path="/favourites" element={<Favourites />} />
-      <Route path="/cart" element={<Cart />} />
-    </Route>
-  </Routes>
-);
+    </Routes>
+  );
+};
 
 export default App;

@@ -1,23 +1,99 @@
 //local variables
 $content-width: 1136px;
+$content-width2: 1000px;
+$content-width3: 850px;
+$content-width4: 700px;
+$content-width5: 550px;
+$content-width6: 480px;
+$content-width7: 420px;
+$content-width8: 370px;
+$content-width9: 330px;
+$content-width10: 300px;
+$navbarHeight: 64px;
 
 .Details {
   display: flex;
   justify-content: center;
+
   &__wrapper {
     width: $content-width;
-    padding-top: 24px;
+    padding-top: calc(24px + $navbarHeight);
+
+    @media screen and (max-width: 1180px) {
+      width: $content-width2;
+    }
+
+    @media screen and (max-width: 1040px) {
+      width: $content-width3;
+    }
+
+    @media screen and (max-width: 890px) {
+      width: $content-width4;
+    }
+
+    @media screen and (max-width:720px) {
+      width: $content-width5;
+    }
+
+    @media screen and (max-width: 570px) {
+      width: $content-width6;
+    }
+
+    @media screen and (max-width: 500px) {
+      width: $content-width7;
+    }
+
+    @media screen and (max-width: 440px) {
+      width: $content-width8;
+    }
+
+    @media screen and (max-width: 390px) {
+      width: $content-width9;
+    }
+
+    @media screen and (max-width: 350px) {
+      width: $content-width10;
+    }
   }
 
   &__firstRow {
     display: flex;
     gap: 75px;
     margin-bottom: 80px;
+
+    @media screen and (max-width: 1180px) {
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+
+    @media screen and (max-width: 1180px) {
+      gap: 20px;
+    }
+
+    @media screen and (max-width:720px) {
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    @media screen and (max-width:570px) {
+      gap: 20px;
+    }
   }
 
   &__secondRow {
     display: flex;
     gap: 64px;
-    margin-bottom: 80px;
+
+    @media screen and (max-width: 1180px) {
+      gap: 30px;
+    }
+
+    @media screen and (max-width: 1040px) {
+      gap: 20px;
+    }
+
+    @media screen and (max-width: 720px) {
+      flex-direction: column;
+    }
   }
 }

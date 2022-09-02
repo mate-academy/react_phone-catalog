@@ -18,3 +18,19 @@ $darkGray: #313237;
     border: 1px solid $darkGray;
   }
 }
+
+.sliderBtn {
+  width: 32px;
+  height: 398px;
+  border: 1px solid white;
+
+  &:hover,
+  &:focus {
+    border: 1px solid white;
+  }
+
+  @media screen and (max-width: 1180px) {
+    height: 32px;
+    border-radius: 50%;
+  }
+}

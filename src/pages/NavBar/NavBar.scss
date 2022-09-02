@@ -3,6 +3,10 @@ $navbarHeight: 64px;
 .NavBar {
   height: $navbarHeight;
   border-bottom: 1px solid #e2e6e9;
+  position: fixed;
+  width: 100%;
+  background: white;
+  z-index: 10;
 
   &__wrapper {
     display: flex;
@@ -26,5 +30,36 @@ $navbarHeight: 64px;
 
   &__left {
     display: flex;
+  }
+}
+
+.tablet__menuBtn {
+  display: none;
+}
+
+@media screen and (max-width: 1040px) {
+  .tablet__hidden {
+    display: none;
+  }
+
+  .tablet__menuBtn {
+    display: flex;
+    background: none;
+    outline: none;
+    width: 64px;
+    height: 64px;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #e2e6e9;
+    border-left: 1px solid #e2e6e9;
+  }
+
+  .tablet__menuImg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .NavBar__right {
+    width: calc(100vw - 64px);
   }
 }

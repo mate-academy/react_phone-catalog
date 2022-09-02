@@ -10,12 +10,30 @@ $lightGray:#b4bdc3;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background: white;
+
+  @media screen and (max-width: 1180px) {
+    height: 236px ;
+  }
+
+  @media screen and (max-width: 1040px) {
+    height: 216px ;
+  }
+
+  @media screen and (max-width: 890px) {
+    height: 210px ;
+    padding: 20px 15px;
+  }
 
   &__price {
     font-size: 32px;
     font-weight: 700;
     line-height: 41px;
     color: $darkGray;
+
+    @media screen and (max-width: 890px) {
+      font-size: 26px;
+    }
   }
 
   &__text {
@@ -27,6 +45,10 @@ $lightGray:#b4bdc3;
     width: 100%;
     text-align: center;
     border-bottom: 1px solid #e2e6e9;
+
+    @media screen and (max-width: 890px) {
+      font-size: 13px;
+    }
   }
 
   &__btn {
@@ -44,5 +66,52 @@ $lightGray:#b4bdc3;
       cursor: pointer;
       box-shadow: 0 3px 13px 0 #17203142;
     }
+
+    @media screen and (max-width: 1040px) {
+      font-size: 13px;
+    }
+  }
+}
+
+.NotImplemented {
+  width: 100%;
+  padding: 24px;
+  border: 1px solid #e2e6e9;
+  margin-top: 16px;
+  animation: appearWarning;
+  animation-duration: 0.5s;
+  z-index: -1;
+
+  &.dissapear {
+    animation: dissapearWarning;
+    animation-duration: 0.5s;
+  }
+
+  &__text {
+    background: rgb(244, 244, 244);
+    padding: 3px 4px;
+    color: rgb(254, 124, 101);
+  }
+}
+
+@keyframes appearWarning {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes dissapearWarning {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-50px);
   }
 }
