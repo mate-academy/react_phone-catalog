@@ -26,3 +26,20 @@
   font-family: "Mont", Arial, Helvetica, sans-serif;
   font-weight: normal;
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 5px white;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgb(164, 164, 164);
+  border-radius: 4px;
+}
