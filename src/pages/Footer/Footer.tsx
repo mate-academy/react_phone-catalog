@@ -11,18 +11,26 @@ export const Footer = () => {
         </Link>
         <ul className="Footer__ul">
           <li className="Footer__list">
-            <Link to="/" className="Footer__link">
+            <a
+              // eslint-disable-next-line max-len
+              href="https://github.com/pavel-gutsal/react_phone-catalog/tree/solution"
+              className="Footer__link"
+              target="blank"
+            >
               <h1 className="Footer__text">
                 GITHUB
               </h1>
-            </Link>
+            </a>
           </li>
           <li className="Footer__list">
-            <Link to="/" className="Footer__link">
+            <a
+              className="Footer__link"
+              href="mailto: pavel.gutsal@gmail.com"
+            >
               <h1 className="Footer__text">
                 CONTACTS
               </h1>
-            </Link>
+            </a>
           </li>
           <li className="Footer__list">
             <Link to="/" className="Footer__link">
