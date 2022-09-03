@@ -1,0 +1,166 @@
+.card {
+  width: 272px;
+  height: 507px;
+  border: 1px solid #e2e6e9;
+  margin-right: 16px;
+
+  &__box-image {
+    display: flex;
+    margin: 32px 32px 24px;
+    width: 208px;
+    height: 208px;
+    overflow: hidden;
+  }
+
+  &__name-phone {
+    margin: 24px 24px 8px;
+    width: 224px;
+    height: 42px;
+  }
+
+  &__name {
+    font-family: "Mont-SemiBold", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+  }
+
+  &__box-price-phone {
+    display: flex;
+    margin-bottom: 7px;
+  }
+
+  &__current-price {
+    font-family: "Mont-Bold", sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    width: 50px;
+    height: 31px;
+    margin-left: 24px;
+    line-height: 31px;
+  }
+
+  &__prev-price {
+    font-family: "Mont-Regular", sans-serif;
+    font-weight: 500;
+    text-decoration: line-through;
+    font-size: 22px;
+    color: #89939a;
+    width: 50px;
+    height: 31px;
+    margin-left: 8px;
+    line-height: 28px;
+    &--none {
+      display: none;
+    }
+  }
+
+  &__divider {
+    margin: 0 auto;
+    width: 224px;
+    height: 1px;
+    background-color: #e2e6e9;
+    margin-bottom: 16px;
+  }
+
+  &__box-info {
+    margin: 0 24px;
+  }
+
+  &__screen-name,
+  &__capacity-name,
+  &__ram-name {
+    display: flex;
+    width: 224px;
+    height: 15px;
+    margin-bottom: 8px;
+    justify-content: space-between;
+  }
+
+  &__text-features {
+    font-family: "Mont-Regular", sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    color: #89939a;
+    line-height: 15px;
+  }
+
+  &__value-features {
+    font-family: "Mont-Bold", sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    color: #313237;
+    line-height: 15px;
+  }
+
+  &__ram-name:last-child {
+    margin-bottom: 16px;
+  }
+
+  &__box-buttons {
+    display: flex;
+    margin: 0 auto;
+    width: 224px;
+    height: 40px;
+  }
+
+  &__addtocart {
+    width: 176px;
+    height: 40px;
+    background-color: #313237;
+    margin-right: 8px;
+    font-family: "Mont-Regular", sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: #fff;
+
+    &--pressed {
+      background-color: #fff;
+      width: 176px;
+      height: 40px;
+      margin-right: 8px;
+      font-family: "Mont-Regular", sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      border: solid 1px #e2e6e9;
+      color: #27ae60;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__rectangle {
+    display: flex;
+    width: 40px;
+    height: 40px;
+    background-image: url(../../../images/rectangle_def.svg);
+    background-position: center;
+    background-size: cover;
+    &:hover {
+      background-image: url(../../../images/rectangle_hover.svg);
+    }
+  }
+
+  &__favorites {
+    margin: auto;
+    width: 16px;
+    height: 16px;
+    background-image: url(../../../images/favorit/heart_def_hover.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  &__favorites_selected {
+    margin: auto;
+    width: 16px;
+    height: 16px;
+    background-image: url(../../../images/favorit/heart_red_selected.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+}

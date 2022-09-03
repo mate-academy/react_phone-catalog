@@ -1,0 +1,73 @@
+
+.hotprices {
+  box-sizing: border-box;
+  width: 1150px;
+  margin: auto;
+  margin-bottom: 80px;
+
+  &__box-title-button {
+    display: flex;
+    margin-bottom: 24px;
+  }
+
+  &__error {
+    font-family: "Mont-Bold", sans-serif;
+    font-size: 30px;
+    color: red;
+  }
+
+  &__title {
+    font-family: "Mont-Bold", sans-serif;
+    flex-grow: 2;
+  }
+
+  &__box-button {
+    display: flex;
+    width: 80px;
+    justify-content: space-between;
+  }
+
+  &__boxlist {
+    overflow: hidden;
+    margin: 0 auto;
+  }
+
+  &__listitem {
+    margin-bottom: 18px;
+  }
+
+  &__list {
+    list-style: none;
+    display: flex;
+    padding: 0;
+  }
+
+  &__rectangle {
+    display: flex;
+    width: 32px;
+    height: 32px;
+    border: 1px solid #b4bdc3;
+
+    &:hover {
+      border: 1px solid #313237;
+    }
+  }
+
+  &__arrowright {
+    margin: auto;
+    width: 16px;
+    height: 16px;
+    background-image: url(../../../images/arrow_right.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  &__arrowleft {
+    margin: auto;
+    width: 16px;
+    height: 16px;
+    background-image: url(../../../images/arrow_left.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+}

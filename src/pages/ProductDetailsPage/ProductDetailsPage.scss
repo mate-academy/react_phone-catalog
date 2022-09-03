@@ -1,0 +1,321 @@
+.productdetailspage {
+  width: 1440px;
+  margin: auto;
+
+  &__link {
+    text-decoration: none;
+  }
+
+  &__error {
+    font-family: "Mont-Bold", sans-serif;
+    font-size: 30px;
+    color: red;
+  }
+
+  &__container {
+    width: 1150px;
+    margin: auto;
+  }
+
+  &__boximghomearrow {
+    display: flex;
+    margin-bottom: 41px;
+  }
+
+  &__boxarrowback {
+    display: flex;
+  }
+
+  &__imghome {
+    width: 16px;
+    height: 16px;
+    background-image: url(../../images/home.svg);
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__arrow {
+    width: 16px;
+    height: 16px;
+    background-image: url(../../images/arrow_left_grey.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 0 8px;
+    &--back {
+      width: 16px;
+      height: 16px;
+      background-image: url(../../images/arrow_left.svg);
+      background-repeat: no-repeat;
+      background-position: center;
+      margin-bottom: 16px;
+      margin-right: 9px;
+    }
+  }
+
+  &__namepage {
+    font-family: "Mont-Regular", sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+    color: #89939a ;
+  }
+
+  &__namecategory {
+    font-family: "Mont-Bold", sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+    color: #313237 ;
+  }
+
+  &__title {
+    font-family: "Mont-Bold", sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 41px;
+    color: #313237 ;
+    margin-bottom: 40px;
+  }
+
+  &__boxleftright {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__boxleft {
+    display: flex;
+    width: 561px;
+    flex-direction: column;
+  }
+
+  &__boxright {
+    display: flex;
+    width: 520px;
+    flex-direction: column;
+  }
+
+  &__list {
+    padding: 0;
+  }
+
+  &__boximg {
+    display: flex;
+    margin-bottom: 91px ;
+  }
+
+  &__mainimg {
+    width: 464px;
+    height: 464px;
+  }
+
+  &__littleimg {
+    display: flex;
+    width: 80px;
+    height: 80px;
+    border: solid 1px #c4c4c4 ;
+    &:hover {
+      border: solid 1px #313237;
+    }
+  }
+
+  &__abouttitle {
+    font-family: "Mont-Bold", sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 31px;
+    color: #313237 ;
+    margin-bottom: 16px;
+  }
+
+  &__divider {
+    border: solid 1px #e2e6e9;
+    width: 560px;
+    margin-bottom: 32px;
+    &--right {
+      width: 100%;
+    }
+  }
+
+  &__aboutsubtitle {
+    font-family: "Mont-Bold", sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 26px;
+    color: #313237 ;
+    margin-bottom: 16px;
+  }
+
+  &__text {
+    font-family: "Mont-Regular", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    color: #89939a ;
+    margin-bottom: 32px;
+  }
+
+  &__boxtext {
+    margin-bottom: 60px;
+  }
+
+  &__box-price-phone {
+    display: flex;
+    margin-bottom: 16px;
+  }
+
+  &__current-price {
+    font-family: "Mont-Bold", sans-serif;
+    font-weight: 700;
+    font-size: 32px;
+    width: 87px;
+    height: 41px;
+    line-height: 41px;
+  }
+
+  &__prev-price {
+    font-family: "Mont-Regular", sans-serif;
+    font-weight: 500;
+    text-decoration: line-through;
+    font-size: 22px;
+    color: #89939a;
+    width: 52px;
+    height: 100%;
+    line-height: 38px;
+    text-align: left;
+
+    &--none {
+      display: none;
+    }
+  }
+
+  &__box-info {
+    width: 320px;
+    margin-bottom: 100px;
+  }
+
+  &__screen-name,
+  &__capacity-name,
+  &__ram-name {
+    display: flex;
+    width: 100%;
+    height: 15px;
+    margin-bottom: 8px;
+    justify-content: space-between;
+  }
+
+  &__text-features {
+    font-family: "Mont-Regular", sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    color: #89939a;
+    line-height: 15px;
+  }
+
+  &__value-features {
+    font-family: "Mont-Bold", sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    color: #313237;
+    line-height: 15px;
+  }
+
+  &__ram-name:last-child {
+    margin-bottom: 16px;
+  }
+
+  &__box-buttons {
+    display: flex;
+    width: 320px;
+    height: 48px;
+    margin-bottom: 32px;
+  }
+
+  &__addtocart {
+    width: 263px;
+    height: 48px;
+    background-color: #313237;
+    margin-right: 8px;
+    font-family: "Mont-Regular", sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: #fff;
+
+    &--pressed {
+      background-color: #fff;
+      width: 263px;
+      height: 48px;
+      margin-right: 8px;
+      font-family: "Mont-Regular", sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      border: solid 1px #e2e6e9;
+      color: #27ae60;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__rectangle {
+    display: flex;
+    width: 48px;
+    height: 48px;
+    background-image: url(../../images/rectangle_def.svg);
+    background-position: center;
+    background-size: cover;
+    &:hover {
+      background-image: url(../../images/rectangle_hover.svg);
+    }
+  }
+
+  &__favorites {
+    margin: auto;
+    width: 16px;
+    height: 16px;
+    background-image: url(../../images/favorit/heart_def_hover.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  &__favorites_selected {
+    margin: auto;
+    width: 16px;
+    height: 16px;
+    background-image: url(../../images/favorit/heart_red_selected.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  &__techspecs {
+    margin-bottom: 60px;
+  }
+
+  &__techspecs-name {
+    display: flex;
+    width: 100%;
+    margin-bottom: 8px;
+    justify-content: space-between;
+  }
+
+  &__text-techspecs {
+    font-family: "Mont-SemiBold", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    color: #89939a;
+    line-height: 21px;
+  }
+
+  &__value-techspecs {
+    font-family: "Mont-SemiBold", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    color: #313237;
+    line-height: 21px;
+  }
+}

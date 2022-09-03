@@ -1,0 +1,40 @@
+.footer {
+  display: flex;
+  margin: auto;
+  justify-content: space-between;
+  width: 1136px;
+  height: 96px;
+
+  &__rectangle {
+    display: flex;
+    width: 32px;
+    height: 32px;
+    background-image: url(../../images/rectangle_def.svg);
+    background-position: center;
+    background-size: cover;
+    &:hover {
+      background-image: url(../../images/rectangle_hover.svg);
+    }
+  }
+
+  &__boxarrow {
+    margin: auto;
+  }
+
+  &__textbutton {
+    font-family: "Mont-Regular", sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+    color: #89939a;
+    margin-right: 16px;
+  }
+
+  &__arrow {
+    width: 16px;
+    height: 16px;
+    background-image: url(../../images/arrow_top.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+}

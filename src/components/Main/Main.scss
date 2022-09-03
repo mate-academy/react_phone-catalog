@@ -1,0 +1,18 @@
+.main {
+  &__smallbars {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 82px;
+  }
+
+  &__bar {
+    margin-right: 14px;
+    width: 14px;
+    height: 4px;
+    background-color: #e2e6e9;
+
+    &--isactive {
+      background-color: #313237;
+    }
+  }
+}

@@ -1,0 +1,55 @@
+
+.productslist {
+  box-sizing: border-box;
+  width: 1150px;
+  margin: auto;
+
+  &__box-title-button {
+    display: flex;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    font-family: "Mont-Bold", sans-serif;
+    flex-grow: 2;
+  }
+
+  &__box-button {
+    display: flex;
+    width: 80px;
+    justify-content: space-between;
+  }
+
+  &__boxlist {
+    overflow: hidden;
+    margin: 0 auto;
+  }
+
+  &__listitem {
+    margin-bottom: 18px;
+    justify-content: space-between;
+  }
+
+  &__list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 0;
+    flex-wrap: wrap;
+  }
+
+  &__rectangle {
+    display: flex;
+    width: 32px;
+    height: 32px;
+    border: 1px solid #b4bdc3;
+
+    &:hover {
+      border: 1px solid #313237;
+    }
+  }
+}
+
+.paginations {
+  display: none;
+}
