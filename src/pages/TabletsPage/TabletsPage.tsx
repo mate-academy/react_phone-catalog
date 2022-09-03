@@ -9,7 +9,6 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { Footer } from '../../components/Footer/Footer';
 import { Header } from '../../components/Header/Header';
-import products from '../../api/products.json';
 import { ProductsList } from '../../components/Main/ProductsList/ProductsList';
 import './TabletsPage.scss';
 import { Product } from '../../react-app-env';
@@ -19,7 +18,6 @@ import { Loader } from '../../components/Loader/Loader';
 import { getQuery } from '../../store/selectors';
 
 export const TabletsPage = () => {
-  const onlyTablets = products.filter(item => item.type === 'tablet');
   const theme = createTheme({
     palette: {
       primary: {
@@ -124,7 +122,7 @@ export const TabletsPage = () => {
         </div>
         <h1 className="tabletspage__title">Tablets</h1>
         <p className="tabletspage__countmodels">
-          { onlyTablets.length }
+          { currentListForRender.length }
           {' '}
           models
         </p>
