@@ -1,9 +1,17 @@
+import { Header } from './components/Header';
+import { Novelties } from './components/Novelties';
+import { Footer } from './components/Footer';
+
 import './App.scss';
 
 const App = () => (
-  <div className="App">
-    <h1>React Phone Catalog</h1>
-  </div>
+  <>
+    <Header />
+    <div className="container">
+      <Novelties />
+    </div>
+    <Footer />
+  </>
 );
 
 export default App;

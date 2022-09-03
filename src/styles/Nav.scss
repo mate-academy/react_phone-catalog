@@ -1,0 +1,45 @@
+@import "/src/styles/utils/_vars.scss";
+
+.nav {
+  &__list {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 44px
+  }
+
+  &__link {
+    line-height: 64px;
+    display: block;
+    padding: 0 10px;
+
+    font-family: 'Mont';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 12px;
+
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+
+    color: $c-secondary;
+
+    &:hover {
+      color: $c-primary;
+    }
+  }
+}
+
+.is-active {
+  position: relative;
+
+  &::after {
+    position: absolute;
+    content: "";
+    background-color: $c-primary;
+    border-radius: 4px;
+    height: 4px;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+  }
+}

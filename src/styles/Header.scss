@@ -1,0 +1,39 @@
+@import "/src/styles/utils/_vars.scss";
+
+.header {
+  box-shadow: 0px 1px 0px $c-elements;
+  overflow: hidden;
+  height: 64px;
+  margin-bottom: 40px;
+
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+  }
+
+  &__left {
+    display: flex;
+  }
+
+  &__icon {
+    display: flex;
+    box-sizing: border-box;
+    padding: ((64px - 25px / 2px) / 2);
+    background: $c-white;
+    box-shadow: -1px 1px 1px #E2E6E9;
+  }
+}
+
+.logo {
+  margin-right: 44px;
+  &__link {
+    padding: 20px 20px;
+  }
+}
