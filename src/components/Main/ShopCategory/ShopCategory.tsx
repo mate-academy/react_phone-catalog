@@ -1,18 +1,35 @@
 import { IconButton } from '@mui/material';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { getProducts } from '../../../api/api';
+import { Product } from '../../../react-app-env';
 import './ShopCategory.scss';
-import products from '../../../api/products.json';
 
 export const ShopCategory: React.FC = () => {
   const navigate = useNavigate();
-  const phonesAll = products.filter(item => item.type === 'phone');
-  const tabletsAll = products.filter(item => item.type === 'tablet');
-  const accessoriesAll = products.filter(item => item.type === 'accessories');
+  const [allProducts, setAllProducts] = useState<Product[]>([]);
+  const [errorMsg, setErrorMsg] = useState('');
+  const phonesAll = allProducts.filter(item => item.type === 'phone');
+  const tabletsAll = allProducts.filter(item => item.type === 'tablet');
+  const accessoriesAll = allProducts.filter(item => item.type === 'accessory');
+
+  useEffect(() => {
+    getProducts()
+      .then(result => {
+        setAllProducts(result);
+      })
+      .catch((error) => {
+        setErrorMsg(`${error}`);
+      });
+  },
+  []);
 
   return (
     <div data-cy="categoryLinksContainer" className="shopcategory">
       <h1 className="shopcategory__title">Shop by category</h1>
       <div className="shopcategory__box-content">
+        {errorMsg.length !== 0
+        && <p className="phonespage__error">{errorMsg}</p>}
         <div className="shopcategory__box-category">
           <IconButton
             size="small"
