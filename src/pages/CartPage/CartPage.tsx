@@ -73,7 +73,7 @@ const CartPage = () => {
         <div className="cartpage__boxarrowback">
           <div className="cartpage__arrow--back" />
           <a
-            href="/#/phones"
+            href="#/phones"
             className="cartpage__link"
             data-cy="backButton"
           >
