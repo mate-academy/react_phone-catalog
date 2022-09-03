@@ -89,7 +89,7 @@ const CartPage = () => {
           Cart
         </h1>
         {currentItems === 0
-        && <p className="cartpage__reminder">The cart is empty!!!</p>}
+        && <p className="cartpage__reminder">Your cart is empty</p>}
 
         <div className="cartpage__boxleftright">
           <div className="cartpage__boxleft">

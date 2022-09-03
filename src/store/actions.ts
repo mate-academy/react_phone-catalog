@@ -8,6 +8,7 @@ export enum ActionType {
   DEL_FROM_CART = 'DEL_FROM_CART',
   SET_QUANTITY = 'SET_QUANTITY',
   DEL_QUANTITY = 'DEL_QUANTITY',
+  SET_QUERY = 'SET_QUERY',
 }
 
 export interface SetFavorites {
@@ -40,6 +41,11 @@ export interface SetQuantity {
   payload: ObjectForCart,
 }
 
+export interface SetQuery {
+  type: ActionType.SET_QUERY,
+  payload: string,
+}
+
 // Action creators - a function returning an action object
 export const setFavorites = (payload: string): SetFavorites => ({
   type: ActionType.SET_FAVORITES,
@@ -68,5 +74,10 @@ export const delQuantity = (payload: ObjectForCart): DelQuantity => ({
 
 export const setQuantity = (payload: ObjectForCart): SetQuantity => ({
   type: ActionType.SET_QUANTITY,
+  payload,
+});
+
+export const setQuery = (payload: string): SetQuery => ({
+  type: ActionType.SET_QUERY,
   payload,
 });

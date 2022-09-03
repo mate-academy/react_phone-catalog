@@ -1,5 +1,4 @@
 import './FooterButtons.scss';
-import { NavLink } from 'react-router-dom';
 
 export const FooterButtons = () => {
   return (
@@ -8,30 +7,32 @@ export const FooterButtons = () => {
         <li
           className="foobuttons__menuitem"
         >
-          <NavLink
-            to="/"
+          <a
+            href="https://github.com/vlasiuk-anatolii"
             className="foobuttons__link"
+            target="_blank"
+            rel="noreferrer"
           >
             Github
-          </NavLink>
+          </a>
         </li>
 
         <li className="foobuttons__menuitem">
-          <NavLink
-            to="/"
+          <a
+            href="/"
             className="foobuttons__link"
           >
             Contacts
-          </NavLink>
+          </a>
         </li>
 
         <li className="foobuttons__menuitem">
-          <NavLink
-            to="/"
+          <a
+            href="/"
             className="foobuttons__link"
           >
-            rights
-          </NavLink>
+            Rights
+          </a>
         </li>
       </ul>
 

@@ -46,7 +46,7 @@ export const ProductsList: React.FC<Props> = ({
 
   return (
     <>
-      <div className="productslist">
+      <div data-cy="productList" className="productslist">
         {!currentListPerPage && <Loader />}
         <ul
           className="productslist__list"

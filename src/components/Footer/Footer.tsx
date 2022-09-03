@@ -8,7 +8,7 @@ import { FooterButtons } from './FooterButtons/FooterButtons';
 
 export const Footer = () => {
   function topFunction() {
-    document.documentElement.scrollTop = 0;
+    window.scroll({ top: 0, behavior: 'smooth' });
   }
 
   return (
@@ -17,13 +17,8 @@ export const Footer = () => {
         position="static"
         sx={{ backgroundColor: '#fff' }}
       >
-        <Toolbar
-          className="footer"
-        >
-
-          <IconButton
-            color="inherit"
-          >
+        <Toolbar className="footer">
+          <IconButton color="inherit">
             <Logo />
           </IconButton>
           <FooterButtons />
@@ -41,7 +36,6 @@ export const Footer = () => {
               </div>
             </div>
           </IconButton>
-
         </Toolbar>
       </AppBar>
     </div>

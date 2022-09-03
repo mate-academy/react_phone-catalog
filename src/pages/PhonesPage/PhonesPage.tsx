@@ -6,6 +6,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { useSelector } from 'react-redux';
 import { Footer } from '../../components/Footer/Footer';
 import { Header } from '../../components/Header/Header';
 import { ProductsList } from '../../components/Main/ProductsList/ProductsList';
@@ -14,6 +15,7 @@ import { Product } from '../../react-app-env';
 import { NotFound } from '../../components/NotFound/NotFound';
 import { getProducts } from '../../api/api';
 import { Loader } from '../../components/Loader/Loader';
+import { getQuery } from '../../store/selectors';
 
 export const PhonesPage = () => {
   const theme = createTheme({
@@ -39,6 +41,9 @@ export const PhonesPage = () => {
   ] = useState<Product[]>([]);
   let sorted = [];
 
+  const queryFromStore = useSelector(getQuery);
+  let filtered = [];
+
   const handleChangeSortBy = (event: SelectChangeEvent) => {
     setSortBy(event.target.value as string);
   };
@@ -46,17 +51,6 @@ export const PhonesPage = () => {
   const handleChangeItemsPerPage = (event: SelectChangeEvent) => {
     setItemsPerPage(event.target.value as string);
   };
-
-  useEffect(() => {
-    getProducts()
-      .then(result => {
-        setCurrentListForRender(result
-          .filter((item: { type: string; }) => item.type === 'phone'));
-      })
-      .catch((error) => {
-        setErrorMsg(`${error}`);
-      });
-  }, []);
 
   useEffect(() => {
     switch (sortBy) {
@@ -81,6 +75,26 @@ export const PhonesPage = () => {
         break;
     }
   }, [sortBy]);
+
+  useEffect(() => {
+    if (queryFromStore.length !== 0) {
+      filtered = currentListForRender
+        .filter(item => item.name
+          .toLowerCase().includes(queryFromStore.toLowerCase())
+        || item.id.toLowerCase().includes(queryFromStore.toLowerCase())
+        || item.snippet.toLowerCase().includes(queryFromStore.toLowerCase()));
+      setCurrentListForRender(filtered);
+    } else {
+      getProducts()
+        .then(result => {
+          setCurrentListForRender(result
+            .filter((item: { type: string; }) => item.type === 'phone'));
+        })
+        .catch((error) => {
+          setErrorMsg(`${error}`);
+        });
+    }
+  }, [queryFromStore, currentListForRender]);
 
   const navigate = useNavigate();
 
@@ -178,7 +192,7 @@ export const PhonesPage = () => {
         </div>
       </div>
       {errorMsg.length !== 0 && <p className="phonespage__error">{errorMsg}</p>}
-      {!currentListForRender && <NotFound />}
+      {!currentListForRender.length && <NotFound />}
       {currentListForRender.length === 0 && <Loader />}
       <div className="phonespage__boxcards">
         <ProductsList

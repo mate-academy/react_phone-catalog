@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { IconButton } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import Box from '@mui/material/Box';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
@@ -10,12 +11,12 @@ import { Footer } from '../../components/Footer/Footer';
 import { Header } from '../../components/Header/Header';
 import products from '../../api/products.json';
 import { ProductsList } from '../../components/Main/ProductsList/ProductsList';
-
 import './TabletsPage.scss';
 import { Product } from '../../react-app-env';
 import { NotFound } from '../../components/NotFound/NotFound';
 import { getProducts } from '../../api/api';
 import { Loader } from '../../components/Loader/Loader';
+import { getQuery } from '../../store/selectors';
 
 export const TabletsPage = () => {
   const onlyTablets = products.filter(item => item.type === 'tablet');
@@ -42,6 +43,9 @@ export const TabletsPage = () => {
   ] = useState<Product[]>([]);
   let sorted = [];
 
+  const queryFromStore = useSelector(getQuery);
+  let filtered = [];
+
   const handleChangeSortBy = (event: SelectChangeEvent) => {
     setSortBy(event.target.value as string);
   };
@@ -49,17 +53,6 @@ export const TabletsPage = () => {
   const handleChangeItemsPerPage = (event: SelectChangeEvent) => {
     setItemsPerPage(event.target.value as string);
   };
-
-  useEffect(() => {
-    getProducts()
-      .then(result => {
-        setCurrentListForRender(result
-          .filter((item: { type: string; }) => item.type === 'tablet'));
-      })
-      .catch((error) => {
-        setErrorMsg(`${error}`);
-      });
-  }, []);
 
   useEffect(() => {
     switch (sortBy) {
@@ -84,6 +77,26 @@ export const TabletsPage = () => {
         break;
     }
   }, [sortBy]);
+
+  useEffect(() => {
+    if (queryFromStore.length !== 0) {
+      filtered = currentListForRender
+        .filter(item => item.name
+          .toLowerCase().includes(queryFromStore.toLowerCase())
+        || item.id.toLowerCase().includes(queryFromStore.toLowerCase())
+        || item.snippet.toLowerCase().includes(queryFromStore.toLowerCase()));
+      setCurrentListForRender(filtered);
+    } else {
+      getProducts()
+        .then(result => {
+          setCurrentListForRender(result
+            .filter((item: { type: string; }) => item.type === 'tablet'));
+        })
+        .catch((error) => {
+          setErrorMsg(`${error}`);
+        });
+    }
+  }, [queryFromStore, currentListForRender]);
 
   const navigate = useNavigate();
 

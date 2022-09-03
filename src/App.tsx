@@ -10,6 +10,7 @@ import {
   ProductDetailsPage,
 } from './pages/ProductDetailsPage/ProductDetailsPage';
 import { FavoritesPage } from './pages/FavoritesPage/FavoritesPage';
+import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
 
 // import { Product } from './react-app-env';
 // import { ShopCategory } from './components/Main/ShopCategory/ShopCategory';
@@ -28,6 +29,7 @@ export const App = () => {
         <Route path="/cart" element={<CartPage />} />
         <Route path="/favorites" element={<FavoritesPage />} />
         <Route path="/product/:id" element={<ProductDetailsPage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </div>
   );

@@ -1,0 +1,18 @@
+.search {
+  &--none {
+    display: none;
+  }
+  
+  &__lupa,
+  &__cross {
+    width: 16px;
+    height: 16px;
+    margin: 11px;
+    background-image: url(../../images/search.svg);
+    background-repeat: no-repeat;
+  }
+
+  &__cross {
+    background-image: url(../../images/cross.svg);
+  }
+}

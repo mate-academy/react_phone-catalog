@@ -89,20 +89,5 @@
     line-height: 21px;
     height: 40px;
     width: 176px;
-    background-image: url(../../images/arrow_down_grey.svg);
-    background-repeat: no-repeat;
-    background-position: calc(100% - 12px);
   }
-}
-
-.MuiSelect-icon {
-  display: none !important; // global classes of MUI
-}
-
-.Mui-focused {
-  background-image: url(../../images/arrow_up_grey.svg);
-}
-
-.Mui-selected {
-  background-color: #fff !important; // global classes of MUI
 }

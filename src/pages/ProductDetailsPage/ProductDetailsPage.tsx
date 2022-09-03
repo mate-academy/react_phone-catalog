@@ -118,7 +118,7 @@ export const ProductDetailsPage = () => {
           </IconButton>
 
           <div className="productdetailspage__arrow" />
-          <a href="/#/phones" className="productdetailspage__link">
+          <a href="#/phones" className="productdetailspage__link">
             <div
               className="productdetailspage__namecategory"
             >
@@ -137,7 +137,7 @@ export const ProductDetailsPage = () => {
         <div className="productdetailspage__boxarrowback">
           <div className="productdetailspage__arrow--back" />
           <a
-            href="/#/phones"
+            href="#/phones"
             className="productdetailspage__link"
             data-cy="backButton"
           >
@@ -195,7 +195,6 @@ export const ProductDetailsPage = () => {
             >
               <h2
                 className="productdetailspage__abouttitle"
-                data-cy="productDescription"
               >
                 About
               </h2>

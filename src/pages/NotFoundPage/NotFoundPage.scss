@@ -1,0 +1,19 @@
+.notfoundpage {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+
+  &__textbox {
+    margin: auto;
+  }
+
+  &__text {
+    font-family: "Mont-Bold", sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 41px;
+    color: #313237 ;
+    margin-bottom: 8px;
+    text-align: center;
+  }
+}

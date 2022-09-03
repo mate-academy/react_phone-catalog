@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import './Header.scss';
 import { Logo } from '../Logo/Logo';
 import { Nav } from '../Nav/Nav';
+import { Search } from '../Search/Search';
 
 import {
   getFavoritesSelector,
@@ -26,18 +27,15 @@ export const Header = () => {
           mb: '40px',
         }}
       >
-        <Toolbar
-          className="header"
-        >
+        <Toolbar className="header">
           <div className="header__container_left">
-            <IconButton
-              color="inherit"
-            >
+            <IconButton color="inherit">
               <Logo />
             </IconButton>
             <Nav />
           </div>
           <div className="header__container_right">
+            <Search />
             <IconButton
               size="small"
               sx={{ padding: 0 }}

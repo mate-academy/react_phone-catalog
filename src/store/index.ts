@@ -9,12 +9,14 @@ import {
   DelFromCart,
   DelQuantity,
   SetQuantity,
+  SetQuery,
 } from './actions';
 
 // Initial state
 const initialState: RootState = {
   favorits: [],
   selectedcart: [],
+  query: '',
 };
 
 // rootReducer - this function is called after dispatching an action
@@ -26,7 +28,8 @@ const rootReducer = (
   | DelFavorites
   | DelFromCart
   | DelQuantity
-  | SetQuantity,
+  | SetQuantity
+  | SetQuery,
 ) => {
   switch (action.type) {
     case ActionType.SET_FAVORITES:
@@ -66,6 +69,12 @@ const rootReducer = (
         ...state,
         selectedcart: [...(state.selectedcart
           .filter(item => item.id !== action.payload.id)), action.payload],
+      };
+
+    case ActionType.SET_QUERY:
+      return {
+        ...state,
+        query: action.payload,
       };
 
     default:

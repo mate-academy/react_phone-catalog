@@ -70,9 +70,10 @@ export const Pagination: React.FC<Props> = (
   }, [itemsPerPage]);
 
   return (
-    <div className="pagination">
+    <div data-cy="pagination" className="pagination">
       <div className="pagination__buttons">
         <button
+          data-cy="paginationLeft"
           type="button"
           onClick={() => {
             if (currentPage !== 1) {
@@ -105,6 +106,7 @@ export const Pagination: React.FC<Props> = (
 
             return (
               <button
+                data-cy="paginationRight"
                 key={item.id}
                 type="button"
                 onClick={() => {

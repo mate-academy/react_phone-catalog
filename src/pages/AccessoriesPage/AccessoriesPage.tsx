@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { IconButton } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import Box from '@mui/material/Box';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
@@ -9,12 +10,12 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { Footer } from '../../components/Footer/Footer';
 import { Header } from '../../components/Header/Header';
 import { ProductsList } from '../../components/Main/ProductsList/ProductsList';
-
 import './AccessoriesPage.scss';
 import { Product } from '../../react-app-env';
 import { NotFound } from '../../components/NotFound/NotFound';
 import { Loader } from '../../components/Loader/Loader';
 import { getProducts } from '../../api/api';
+import { getQuery } from '../../store/selectors';
 
 export const AccessoriesPage = () => {
   const theme = createTheme({
@@ -40,6 +41,9 @@ export const AccessoriesPage = () => {
   ] = useState<Product[]>([]);
   let sorted = [];
 
+  const queryFromStore = useSelector(getQuery);
+  let filtered = [];
+
   const handleChangeSortBy = (event: SelectChangeEvent) => {
     setSortBy(event.target.value as string);
   };
@@ -47,17 +51,6 @@ export const AccessoriesPage = () => {
   const handleChangeItemsPerPage = (event: SelectChangeEvent) => {
     setItemsPerPage(event.target.value as string);
   };
-
-  useEffect(() => {
-    getProducts()
-      .then(result => {
-        setCurrentListForRender(result
-          .filter((item: { type: string; }) => item.type === 'accessory'));
-      })
-      .catch((error) => {
-        setErrorMsg(`${error}`);
-      });
-  }, []);
 
   useEffect(() => {
     switch (sortBy) {
@@ -82,6 +75,26 @@ export const AccessoriesPage = () => {
         break;
     }
   }, [sortBy]);
+
+  useEffect(() => {
+    if (queryFromStore.length !== 0) {
+      filtered = currentListForRender
+        .filter(item => item.name
+          .toLowerCase().includes(queryFromStore.toLowerCase())
+        || item.id.toLowerCase().includes(queryFromStore.toLowerCase())
+        || item.snippet.toLowerCase().includes(queryFromStore.toLowerCase()));
+      setCurrentListForRender(filtered);
+    } else {
+      getProducts()
+        .then(result => {
+          setCurrentListForRender(result
+            .filter((item: { type: string; }) => item.type === 'accessory'));
+        })
+        .catch((error) => {
+          setErrorMsg(`${error}`);
+        });
+    }
+  }, [queryFromStore, currentListForRender]);
 
   const navigate = useNavigate();
 

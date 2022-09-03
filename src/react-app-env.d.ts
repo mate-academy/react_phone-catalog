@@ -16,6 +16,7 @@ export interface Product {
 export interface RootState {
   favorits: string[],
   selectedcart: ObjectForCart[],
+  query: string,
 }
 
 export interface ObjectForCart {
