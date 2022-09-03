@@ -6,14 +6,16 @@ import { HomePage } from './pages/HomePage';
 
 const App = () => (
   <div className="App">
-    <Header />
-    <main>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/home" element={<HomePage />} />
-      </Routes>
-    </main>
-    <Footer />
+    <div className="wrapper">
+      <Header />
+      <main className="main page__section">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/home" element={<HomePage />} />
+        </Routes>
+      </main>
+      <Footer />
+    </div>
   </div>
 );
 

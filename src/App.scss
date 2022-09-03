@@ -20,4 +20,29 @@ html {
 }
 
 @import "styles/utils/reset";
+@import "styles/utils/typography";
 @import "styles/container";
+
+.page {
+  &__section {
+    margin-bottom: 72px;
+  }
+}
+
+html,
+body,
+#root,
+.App {
+  height: 100%;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+
+  min-height: 100%;
+}
+
+.main {
+  flex: 1 1 auto;
+}

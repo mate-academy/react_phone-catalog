@@ -1,0 +1,58 @@
+.carousel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__gallery {
+    display: flex;
+    align-items: center;
+    margin: 0 auto 14px;
+  }
+
+  &__swap {
+    overflow: hidden;
+
+    width: 1040px;
+    height: 400px;
+
+    margin: 0 16px;
+  }
+
+  &__slide {
+    height: 400px;
+  }
+
+  &__list {
+    display: flex;
+  }
+
+  &__image {
+    width: 1040px;
+    height: 400px;
+
+    object-fit: cover;
+    object-position: center;
+  }
+
+  &__pagination {
+    display: flex;
+  }
+
+  &__dot {
+    height: 4px;
+    width: 14px;
+    margin-right: 14px;
+
+    background-color: #e2e6e9;
+
+    transition: background-color 0.3s ease-in-out;
+
+    &--active {
+      background-color: #313237;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}

@@ -7,6 +7,7 @@ import { ArrowTypes } from '../../../ArrowTypes';
 type Props = {
   arrowType: ArrowTypes,
   isActive?: boolean,
+  isBig?: boolean,
   OnClick?: CallableFunction,
 };
 
@@ -14,6 +15,7 @@ export const Arrow: FC<Props> = (props) => {
   const {
     arrowType,
     isActive,
+    isBig,
     OnClick,
   } = props;
 
@@ -43,6 +45,9 @@ export const Arrow: FC<Props> = (props) => {
       type="button"
       className={classNames(
         'arrow',
+        {
+          'arrow--big': isBig,
+        },
       )}
       onClick={(event) => (OnClick ? OnClick(event) : {})}
       disabled={!isActive}
@@ -67,6 +72,7 @@ export const Arrow: FC<Props> = (props) => {
 
 Arrow.defaultProps = {
   isActive: true,
+  isBig: false,
   OnClick: () => {
   },
 };
@@ -74,5 +80,6 @@ Arrow.defaultProps = {
 Arrow.propTypes = {
   arrowType: PropTypes.number.isRequired,
   isActive: PropTypes.bool,
+  isBig: PropTypes.bool,
   OnClick: PropTypes.func,
 };

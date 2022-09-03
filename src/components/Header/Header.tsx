@@ -4,7 +4,7 @@ import { Logo } from '../Logo/Logo';
 
 export const Header = () => {
   return (
-    <header className="header">
+    <header className="header page__section">
       <div className="header__content">
         <div className="header__navigation">
           <div className="header__logo">
