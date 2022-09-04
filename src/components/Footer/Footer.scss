@@ -3,7 +3,7 @@
 .footer {
   height: 96px;
   background: $c-white;
-  box-shadow: 0px -1px 0px $c-elements;
+  box-shadow: 0 -1px 0 $c-elements;
   margin-top: auto;
 
   &__content {
@@ -16,14 +16,27 @@
     display: flex;
     align-items: center;
     gap: 16px;
+    transition: transform 0.3s linear;
 
-    &-text{
+    &:hover {
+      transform: scale(110%);
+    }
+    &:hover &-text {
+      color: $c-primary;
+    }
+
+    &:hover &-button {
+      border-color: $c-primary;
+    }
+
+    &-text {
       color: $c-secondary;
       font-style: normal;
       font-weight: 300;
       font-size: 12px;
       line-height: 15px;
       text-align: right;
+      transition: color 0.3s linear;
     }
 
     &-button {
@@ -33,6 +46,7 @@
       width: 32px;
       height: 32px;
       border: 1px solid $c-icons;
+      transition: border-color 0.3s linear;
     }
   }
 

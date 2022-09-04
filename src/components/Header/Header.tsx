@@ -1,4 +1,4 @@
-import '../../styles/Header.scss';
+import './Header.scss';
 import '../../styles/Nav.scss';
 
 export const Header: React.FC = () => {

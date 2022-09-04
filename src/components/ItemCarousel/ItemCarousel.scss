@@ -1,0 +1,40 @@
+@import "/src/styles/utils/_vars";
+
+.itemCarousel {
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    border: 1px solid #b4bdc3;
+    transition: border-color 0.3s linear;
+
+    &--disabled {
+      border: 1px solid $c-elements;
+    }
+
+    &:hover:enabled {
+      border-color: $c-primary;
+    }
+  }
+
+  &__body {
+    overflow: hidden;
+  }
+
+  &__wrapper {
+    display: flex;
+    gap: 17px;
+    transition: transform 0.5s linear;
+  }
+}

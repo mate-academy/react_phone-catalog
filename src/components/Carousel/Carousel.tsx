@@ -8,7 +8,7 @@ import {
   useState,
 } from 'react';
 import { Img } from '../../types/Img';
-import '../../styles/Carousel.scss';
+import './Carousel.scss';
 
 type Props = {
   imgs: Img[]

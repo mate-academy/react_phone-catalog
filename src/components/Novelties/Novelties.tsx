@@ -1,4 +1,4 @@
-import '../../styles/Novelties.scss';
+import './Novelties.scss';
 import React from 'react';
 import { Carousel } from '../Carousel';
 import { Img } from '../../types/Img';
