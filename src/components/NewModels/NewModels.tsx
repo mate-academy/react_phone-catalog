@@ -2,6 +2,8 @@ import { useMemo } from 'react';
 import { Phone } from '../../types/Phone';
 import { ItemCarousel } from '../ItemCarousel';
 
+import './NewModels.scss';
+
 type Props = {
   products: Phone[],
 };
@@ -15,7 +17,7 @@ export const NewModels: React.FC<Props> = ({ products }) => {
   [products]);
 
   return (
-    <section className="hotPrice">
+    <section className="newModels">
       {newPhones
         && <ItemCarousel title="Brand new models" items={newPhones} />}
     </section>

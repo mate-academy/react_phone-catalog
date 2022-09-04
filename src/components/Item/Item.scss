@@ -38,7 +38,7 @@
     width: 100%;
     padding-bottom: 6px;
     margin-bottom: 16px;
-    border-bottom:1px solid $c-elements;
+    border-bottom: 1px solid $c-elements;
   }
 
   &__specs {
@@ -52,7 +52,7 @@
     color: $c-primary;
 
     &::before {
-      content: ('$');
+      content: ("$");
     }
   }
 
@@ -64,7 +64,7 @@
     color: $c-secondary;
 
     &::before {
-      content: ('$');
+      content: ("$");
     }
   }
 

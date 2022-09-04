@@ -4,10 +4,11 @@ import { Novelties } from './components/Novelties';
 import { Footer } from './components/Footer';
 import { HotPrice } from './components/HotPrice';
 import { getPhones } from './api';
-
-import './App.scss';
 import { Phone } from './types/Phone';
 import { NewModels } from './components/NewModels';
+import { Category } from './components/Category';
+
+import './App.scss';
 
 const App = () => {
   const [products, setProducts] = useState<Phone[]>();
@@ -25,6 +26,7 @@ const App = () => {
           {products && (
             <>
               <HotPrice products={products} />
+              <Category />
               <NewModels products={products} />
             </>
           )}

@@ -29,6 +29,7 @@ html {
 body {
   height: 100%;
 }
+
 .arrow {
   &__reverse {
     transform: rotateZ(90deg);
@@ -42,5 +43,5 @@ body {
 }
 
 .main {
-  flex: 1 1 auto
+  flex: 1 1 auto;
 }
