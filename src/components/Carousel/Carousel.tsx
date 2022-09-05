@@ -126,7 +126,7 @@ export const Carousel:React.FC<Props> = ({ imgs }) => {
           className="carousel__button"
           onClick={() => actionHandler('prev')}
         >
-          <img src="/img/Vector (Stroke).svg" alt="Prev" />
+          <img src="./img/Vector (Stroke).svg" alt="Prev" />
         </button>
 
         <div className="carousel__wrapper">
@@ -147,7 +147,7 @@ export const Carousel:React.FC<Props> = ({ imgs }) => {
           onClick={() => actionHandler('next')}
         >
           <img
-            src="/img/Vector (Stroke).svg"
+            src="./img/Vector (Stroke).svg"
             alt="Next"
             className="carousel__mirrored"
           />
