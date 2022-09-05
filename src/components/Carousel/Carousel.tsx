@@ -148,7 +148,7 @@ export const Carousel:React.FC<Props> = ({ imgs }) => {
         >
           <img
             src="./img/Vector (Stroke).svg"
-            alt="Next"
+            alt="Nextjuiojuiu"
             className="carousel__mirrored"
           />
         </button>
