@@ -1,4 +1,4 @@
-import './SliderCarousel.scss';
+import './BannerCarousel.scss';
 import { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { Arrow } from '../Buttons/Arrow/Arrow';
@@ -17,7 +17,7 @@ const slideDuration = 600;
 const autoSlideDuration = 2000;
 const itemWidth = 1040;
 
-export const SliderCarousel = () => {
+export const BannerCarousel = () => {
   const [currentPosition, setCurrentPosition] = useState(0);
 
   const maxPosTransform = (images.length - 1) * itemWidth;

@@ -1,0 +1,123 @@
+.product-card {
+  width: 270px;
+  height: 506px;
+
+  border: 1px solid #e2e6e9;
+
+  &__photo {
+    display: flex;
+    justify-content: center;
+
+    margin-bottom: 24px;
+    padding: 32px 32px 0;
+  }
+
+  &__image {
+    height: 208px;
+    width: 208px;
+
+    object-fit: contain;
+    object-position: center;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+
+    padding: 0 24px;
+  }
+
+  &__title {
+    margin-bottom: 6px;
+
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #313237;
+  }
+
+  &__cost {
+    display: flex;
+
+    margin-bottom: 6px;
+
+    font-size: 22px;
+    line-height: 28px;
+    color: #313237;
+  }
+
+  &__price {
+    margin-right: 8px;
+
+    font-weight: 700;
+    color: #313237;
+  }
+
+  &__discount {
+    font-weight: 500;
+    text-decoration-line: line-through;
+    color: #89939a;
+  }
+
+  &__line {
+    width: 100%;
+    height: 1px;
+
+    margin-bottom: 16px;
+
+    background-color: #e2e6e9;
+  }
+
+  &__characteristics {
+    margin-bottom: 16px;
+  }
+
+  &__option {
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: 8px;
+
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__option-title {
+    color: #89939a;
+  }
+
+  &__option-value {
+    color: #313237;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__buy {
+    height: 40px;
+    width: 176px;
+
+    background-color: #313237;
+
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+    color: #fff;
+  }
+
+  &__addFavourite {
+    height: 40px;
+    width: 40px;
+
+    border: 1px solid #b4bdc4;
+    background-color: white;
+  }
+}
