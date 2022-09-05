@@ -20,6 +20,9 @@
       justify-content: center;
       align-items: center;
       margin-bottom: 24px;
+      height: 208px;
+      width: 208px;
+      background-image: url("./Banner.png")
     }
   }
 
@@ -83,6 +86,12 @@
     text-align: center;
     background-color: $c-primary;
     color: $c-white;
+    transition: box-shadow 0.1s linear, transform 0.3s linear;;
+
+    &:hover {
+      box-shadow: 0px 3px 13px rgba(23, 32, 49, 0.26);
+      transform: scale(105%);
+    }
   }
 
   &__favorite {
@@ -92,6 +101,12 @@
     justify-content: center;
     align-items: center;
     border: 1px solid $c-icons;
+    transition: border-color 0.3s linear, transform 0.3s linear;
+
+    &:hover {
+      border-color: $c-primary;
+      transform: scale(105%);
+    }
   }
 }
 

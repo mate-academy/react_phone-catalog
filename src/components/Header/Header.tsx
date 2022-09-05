@@ -1,7 +1,12 @@
 import './Header.scss';
 import '../../styles/Nav.scss';
 
-export const Header: React.FC = () => {
+type Props = {
+  favoriteSize: number;
+  withdrawSize: number;
+};
+
+export const Header: React.FC<Props> = ({ favoriteSize, withdrawSize }) => {
   return (
     <header className="header">
       <div className="header__content">
@@ -44,9 +49,21 @@ export const Header: React.FC = () => {
 
         <div className="header__left">
           <a href="/" className="header__icon">
+            {favoriteSize > 0
+            && (
+              <p className="header__ellipse">
+                {favoriteSize}
+              </p>
+            )}
             <img src="/img/header/favorite(Stroke).svg" alt="Favorite" />
           </a>
           <a href="/" className="header__icon">
+            {withdrawSize > 0
+              && (
+                <p className="header__ellipse">
+                  {withdrawSize}
+                </p>
+              )}
             <img src="/img/header/withdraw.svg" alt="Withdraw" />
           </a>
         </div>

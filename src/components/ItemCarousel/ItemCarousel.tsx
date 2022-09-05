@@ -8,9 +8,16 @@ import './ItemCarousel.scss';
 type Props = {
   title: string,
   items: Phone[],
+  addFavorite: CallableFunction,
+  addWithdraw: CallableFunction,
 };
 
-export const ItemCarousel: React.FC<Props> = ({ title, items }) => {
+export const ItemCarousel: React.FC<Props> = ({
+  title,
+  items,
+  addFavorite,
+  addWithdraw,
+}) => {
   const [currPage, setCurrPage] = useState(0);
   const step = 272 * 4 + 17 * 4;
 
@@ -75,7 +82,14 @@ export const ItemCarousel: React.FC<Props> = ({ title, items }) => {
           className="itemCarousel__wrapper"
           style={{ transform: `translateX(${-currPage * step}px)` }}
         >
-          {items?.map(phone => <Item item={phone} />)}
+          {items?.map(phone => (
+            <Item
+              item={phone}
+              key={phone.id}
+              addFavorite={addFavorite}
+              addWithdraw={addWithdraw}
+            />
+          ))}
         </div>
       </div>
     </div>

@@ -9,5 +9,6 @@ export interface Phone {
   discount: number,
   screen: string,
   capacity: string | undefined,
-  ram: string
+  ram: string,
+  favorite: boolean,
 }

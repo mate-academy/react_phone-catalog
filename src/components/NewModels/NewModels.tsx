@@ -6,9 +6,15 @@ import './NewModels.scss';
 
 type Props = {
   products: Phone[],
+  addFavorite: CallableFunction,
+  addWithdraw: CallableFunction,
 };
 
-export const NewModels: React.FC<Props> = ({ products }) => {
+export const NewModels: React.FC<Props> = ({
+  products,
+  addFavorite,
+  addWithdraw,
+}) => {
   const newPhones = useMemo(() => {
     const preparedPhones = products.filter(phone => phone.age < 10);
 
@@ -19,7 +25,14 @@ export const NewModels: React.FC<Props> = ({ products }) => {
   return (
     <section className="newModels">
       {newPhones
-        && <ItemCarousel title="Brand new models" items={newPhones} />}
+        && (
+          <ItemCarousel
+            title="Brand new models"
+            items={newPhones}
+            addFavorite={addFavorite}
+            addWithdraw={addWithdraw}
+          />
+        )}
     </section>
   );
 };

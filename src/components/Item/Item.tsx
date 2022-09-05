@@ -3,19 +3,33 @@ import React from 'react';
 import { Phone } from '../../types/Phone';
 
 type Props = {
-  item: Phone
+  item: Phone,
+  addFavorite: CallableFunction,
+  addWithdraw: CallableFunction,
 };
 
-export const Item: React.FC<Props> = ({ item }) => {
+export const Item: React.FC<Props> = ({
+  item,
+  addFavorite,
+  addWithdraw,
+}) => {
+  const buttonHandle = (place: string) => {
+    if (place === 'favorite') {
+      addFavorite(item.id);
+    } else if (place === 'withdraw') {
+      addWithdraw(item.id);
+    }
+  };
+
   return (
     <div className="item">
       <div className="item__header">
         <div className="item__photo-container">
-          <img
+          {/* <img
             src={item.imageUrl}
             alt={item.id}
             className="item__photo"
-          />
+          /> */}
         </div>
 
         <h2 className="item__title">
@@ -77,6 +91,7 @@ export const Item: React.FC<Props> = ({ item }) => {
           <button
             type="button"
             className="item__buy"
+            onClick={() => buttonHandle('withdraw')}
           >
             Add to cart
           </button>
@@ -84,8 +99,9 @@ export const Item: React.FC<Props> = ({ item }) => {
           <button
             type="button"
             className="item__favorite"
+            onClick={() => buttonHandle('favorite')}
           >
-            <img src="/img/ShopItem/favorite.svg" alt="add to favorite" />
+            <img src={`/img/ShopItem/favorite${item.favorite ? '(filled)' : ''}.svg`} alt="add to favorite" />
           </button>
         </div>
       </div>
