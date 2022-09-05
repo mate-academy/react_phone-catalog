@@ -25,11 +25,11 @@ export const Item: React.FC<Props> = ({
     <div className="item">
       <div className="item__header">
         <div className="item__photo-container">
-          {/* <img
-            src={item.imageUrl}
+          <img
+            src="../../images/Banner.png"
             alt={item.id}
             className="item__photo"
-          /> */}
+          />
         </div>
 
         <h2 className="item__title">
