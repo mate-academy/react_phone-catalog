@@ -14,6 +14,7 @@ import { Header } from '../../Components/Header/Header';
 import { ToCartButton } from '../../Components/ToCartButton/ToCartButton';
 import { ToFavButton } from '../../Components/ToFavButton/ToFavButton';
 import { deductDiscount } from '../../Helpers/functions/deductDiscount';
+import { BASE_URL } from '../../Helpers/api/api';
 
 const colors = ['gold', 'grey', 'black', 'white'];
 const capacity = ['64', '256', '512'];
@@ -124,7 +125,11 @@ export const ProductDetailsPage = () => {
                             )}
                             onClick={() => setMainImg(image)}
                           >
-                            <img src={`/${image}`} alt="productImage" className="ProductDetailsPage__image" />
+                            <img
+                              src={`${BASE_URL}/${image}`}
+                              alt="productImage"
+                              className="ProductDetailsPage__image"
+                            />
                           </button>
                         </div>
                       ))}
@@ -133,7 +138,7 @@ export const ProductDetailsPage = () => {
 
                 <div className="grid__item grid__item--3-12">
                   <img
-                    src={`/${mainImg}`}
+                    src={`${BASE_URL}/${mainImg}`}
                     alt="productImage"
                     className="ProductDetailsPage__image"
                   />

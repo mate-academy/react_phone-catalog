@@ -1,7 +1,5 @@
 import { Product } from '../types/Product';
-
-// eslint-disable-next-line
-const BASE_URL = 'https://mate-academy.github.io/react_phone-catalog/api';
+import { API } from './api';
 
 export const request = (url: string) => {
   return fetch(url)
@@ -14,7 +12,7 @@ export const request = (url: string) => {
     });
 };
 
-export const getProducts = () => request(`${BASE_URL}/products.json`);
+export const getProducts = () => request(`${API}/products.json`);
 
 export const getHotPriceProducts = () => {
   return getProducts()
@@ -54,7 +52,7 @@ export const getAccessories = () => {
 };
 
 export const getProductDetails = (id: string) => {
-  return request(`${BASE_URL}/products/${id}.json`);
+  return request(`${API}/products/${id}.json`);
 };
 
 export const getSuggestedProducts = () => {

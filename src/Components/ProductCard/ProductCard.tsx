@@ -5,6 +5,7 @@ import { ToCartButton } from '../ToCartButton/ToCartButton';
 import { ToFavButton } from '../ToFavButton/ToFavButton';
 import { findNavItem } from '../../Helpers/navItems';
 import { deductDiscount } from '../../Helpers/functions/deductDiscount';
+import { BASE_URL } from '../../Helpers/api/api';
 
 type Props = {
   product: Product,
@@ -27,7 +28,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     <div className="ProductCard product">
       <Link to={`${navLink}/${id}`}>
         <img
-          src={`/${imageUrl}`}
+          src={`${BASE_URL}/${imageUrl}`}
           alt="productImage"
           className="ProductCard__image"
         />

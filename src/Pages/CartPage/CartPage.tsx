@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { BackButton } from '../../Components/BackButton';
 import { CartContext } from '../../Components/Context/CartContextProvider';
 import { Header } from '../../Components/Header';
+import { BASE_URL } from '../../Helpers/api/api';
 import { deductDiscount } from '../../Helpers/functions/deductDiscount';
 import {
   parseStorage, setItemInStorage,
@@ -100,7 +101,7 @@ export const CartPage = () => {
                     />
                     <Link to={`${navLink}/${item.id}`}>
                       <img
-                        src={`/${item.product.imageUrl}`}
+                        src={`${BASE_URL}/${item.product.imageUrl}`}
                         alt="product_image"
                         className="CartPage__image"
                       />
