@@ -1,0 +1,25 @@
+@import '../../Helpers/utils';
+
+.Header {
+  width: 100vw;
+  box-shadow: 0px 1px 0px $elementsColour;
+
+  &__content {
+    margin: 0 auto 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1440px;
+  }
+
+  &__left {
+    padding-left: 24px;
+    display: flex;
+    align-items: center;
+    gap: 64px;
+  }
+
+  &__right {
+    display: flex;
+  }
+}

@@ -1,0 +1,28 @@
+@import '../../Helpers/utils';
+
+.ProductCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  box-sizing: border-box;
+  padding: 32px 24px 24px;
+  width: 272px;
+  border: 1px solid $elementsColour;
+
+  &__image {
+    margin: 0 auto 24px;
+    height: 208px;
+    width: 208px;
+
+    &:hover {
+      transform: scale(1.1);
+      transition: 0.5s;
+    }
+  }
+
+  &__name {
+    margin-bottom: 8px;
+    height: 42px;
+  }
+}

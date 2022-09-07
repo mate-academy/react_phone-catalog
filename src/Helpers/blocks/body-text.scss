@@ -1,0 +1,21 @@
+.body-text {
+  font-family: 'Mont';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  color: $primaryColour;
+
+  &--light {
+    color: $secondaryColour;
+  }
+
+  &--center {
+    text-align: center;
+    color: #000000;
+  }
+
+  &--white {
+    color: $whiteColour;
+  }
+}

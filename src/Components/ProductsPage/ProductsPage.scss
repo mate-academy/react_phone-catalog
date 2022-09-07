@@ -1,0 +1,17 @@
+@import '../../Helpers/utils';
+
+.ProductsPage {
+  &__models {
+    margin-bottom: 40px;
+  }
+
+  &__selects {
+    margin-bottom: 24px;
+    display: flex;
+    gap: 16px;
+  }
+
+  &__label {
+    margin-bottom: 4px;
+  }
+}

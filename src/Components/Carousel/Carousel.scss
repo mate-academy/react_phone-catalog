@@ -1,0 +1,44 @@
+@import '../../Helpers/utils';
+
+.Carousel {
+  display: flex;
+  
+  &__header {
+    position: relative;
+    margin-bottom: 104px;
+  }
+  
+  &__container {
+    margin: 0 auto;
+    overflow: hidden;
+    max-width: 1040px;
+    max-height: 480px;
+    white-space: nowrap;
+  }
+
+  &__item {
+    width: 100%;
+    object-fit: contain;
+  }
+
+  &__indicators {
+    position: absolute;
+    transform: translateX(-50%);
+    left: 50%;
+    bottom: -18px;
+    display: flex;
+    gap: 14px;
+  }
+
+  &__indicator {
+    width: 14px;
+    height: 4px;
+    background-color: $elementsColour;
+    border: none;
+    cursor: pointer;
+  
+    &--active {
+      background-color: $primaryColour;
+    }
+  }
+}

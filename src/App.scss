@@ -1,1 +1,23 @@
-// not empty
+@import "./Helpers/Reset.css";
+@import "./Helpers/utils";
+@import "./Helpers/blocks/page.scss";
+@import "./Helpers/blocks/body-text.scss";
+@import "./Helpers/blocks/button-small.scss";
+@import "./Helpers/blocks/button.scss";
+@import "./Helpers/blocks/container.scss";
+@import "./Helpers/blocks/grid.scss";
+@import "./Helpers/blocks/link.scss";
+@import "./Helpers/blocks/page.scss";
+@import "./Helpers/blocks/product.scss";
+@import "./Helpers/blocks/title.scss";
+@import "./Helpers/blocks/text.scss";
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  &__main {
+    flex-grow: 1;
+  }
+}

@@ -1,0 +1,15 @@
+.BackButton {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+  
+  &::before {
+    content: "";
+    display: block;
+    width: 6px;
+    height: 10px;
+    padding-left: 8px;
+    background-image: url(../../Images/activeleft.svg);
+    background-repeat: no-repeat;
+  }
+}

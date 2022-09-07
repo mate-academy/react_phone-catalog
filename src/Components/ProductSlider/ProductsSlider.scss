@@ -1,0 +1,19 @@
+.ProductSlider {
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+  }
+
+  &__scroll {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__container {
+    display: flex;
+    flex-wrap: nowrap;
+    max-width: 1440px;
+    gap: 16px;
+  }
+}

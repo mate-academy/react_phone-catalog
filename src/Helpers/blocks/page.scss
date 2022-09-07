@@ -1,0 +1,15 @@
+.page {
+  scroll-behavior: smooth;
+
+  &__section {
+    margin-bottom: 80px;
+  }
+
+  &__title {
+    margin-bottom: 24px;
+
+    &--products {
+      margin-bottom: 8px;
+    }
+  }
+}

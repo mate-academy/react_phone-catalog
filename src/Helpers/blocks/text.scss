@@ -1,0 +1,16 @@
+.text {
+  font-family: 'Mont';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  color: $secondaryColour;
+
+  &--light {
+    color: $iconsColour;
+  }
+
+  &--dark {
+    color: $primaryColour;
+  }
+}
