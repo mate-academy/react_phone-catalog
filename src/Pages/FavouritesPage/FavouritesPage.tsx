@@ -19,14 +19,11 @@ export const FavouritesPage = () => {
 
   useMemo(() => {
     const parsedFavItems = parseStorage('FavItems');
+    const productsArray = parsedFavItems.map((item: StorageItem) => {
+      return item.product;
+    });
 
-    if (parsedFavItems.length !== 0) {
-      const productsArray = parsedFavItems.map((item: StorageItem) => {
-        return item.product;
-      });
-
-      setProducts(productsArray);
-    }
+    setProducts(productsArray);
   }, [fav]);
 
   useEffect(() => {
@@ -45,7 +42,7 @@ export const FavouritesPage = () => {
               <Breadcrumbs />
               <h1 className="title page__title--products">Favourites</h1>
               <p className="body-text body-text--light FavouritesPage__qty">{`${products.length} models`}</p>
-              {products && <ProductsList products={products} />}
+              <ProductsList products={products} />
             </>
           )}
       </div>
