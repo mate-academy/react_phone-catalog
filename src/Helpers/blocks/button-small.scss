@@ -12,6 +12,7 @@
   background-position: center;
   background-repeat: no-repeat;
   border: 1px solid $iconsColour;
+  @extend %transition;
 
   &:hover {
     border: 1px solid $primaryColour;

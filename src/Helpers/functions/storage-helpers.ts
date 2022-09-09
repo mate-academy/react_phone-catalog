@@ -1,6 +1,5 @@
 import { Dispatch, SetStateAction } from 'react';
-import { Product } from '../types/Product';
-import { StorageCartItem } from '../types/StorageCartItem';
+import { StorageItem } from '../types/StorageItem';
 
 export const parseStorage = (storageName: string) => {
   const items = localStorage.getItem(storageName);
@@ -11,17 +10,17 @@ export const parseStorage = (storageName: string) => {
 };
 
 export const findItem = (
-  storage: StorageCartItem[] | Product[],
+  storage: StorageItem[],
   id: string,
 ) => {
-  return storage.some(
-    (item: StorageCartItem | Product) => item.id === id,
+  return storage.find(
+    (item: StorageItem) => item.id === id,
   );
 };
 
 export const setItemInStorage = (
   storageName: string,
-  storage: StorageCartItem[] | Product[],
+  storage: StorageItem[],
 ) => {
   localStorage.setItem(
     storageName,
@@ -29,19 +28,10 @@ export const setItemInStorage = (
   );
 };
 
-// const filterItemsInStorage = (
-//   id: string,
-//   pa: StorageCartItem[] | Product[],
-// ) => pa.filter(
-//   (storageItem: StorageCartItem | Product) => {
-//     return storageItem.id !== id;
-//   },
-// );
-
 export const addHandler = (
   storageName: string,
-  addedItem: StorageCartItem | Product,
-  setState: Dispatch<SetStateAction<boolean>>,
+  addedItem: StorageItem,
+  setState: Dispatch<SetStateAction<StorageItem | undefined>>,
   setContext: Dispatch<SetStateAction<number>>,
   prevContext: number,
 ) => {
@@ -49,17 +39,16 @@ export const addHandler = (
   const isAdded = findItem(parsedStorage, addedItem.id);
 
   if (isAdded) {
+    setContext(prevContext - addedItem.quantity);
+    setState(undefined);
     parsedStorage = parsedStorage.filter(
-      (storageItem: StorageCartItem | Product) => {
+      (storageItem: StorageItem) => {
         return storageItem.id !== addedItem.id;
       },
     );
-
-    setState(false);
-    setContext(prevContext - 1);
   } else {
     parsedStorage.push(addedItem);
-    setState(true);
+    setState(addedItem);
     setContext(prevContext + 1);
   }
 

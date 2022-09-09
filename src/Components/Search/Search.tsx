@@ -1,6 +1,6 @@
 import { debounce } from 'lodash';
 import {
-  useCallback, useContext, useState,
+  useCallback, useContext, useRef, useState,
 } from 'react';
 import { useLocation } from 'react-router-dom';
 import { QueryContext } from '../Context/QueryContext';
@@ -9,22 +9,13 @@ import './Search.scss';
 export const Search = () => {
   const location = useLocation().pathname;
   const [value, setValue] = useState('');
+  const inputRef = useRef<HTMLInputElement>(null);
   const { setQuery } = useContext(QueryContext);
 
   const paths = ['/phones', '/tablets', '/accessories', '/favourites'];
   const isValidPath = () => paths.find(path => path === location);
 
   const applyQuery = useCallback(debounce(setQuery, 1000), []);
-
-  // useMemo(() => {
-  //   if (!query) {
-  //     searchParams.delete('query');
-  //   } else {
-  //     searchParams.set('query', query);
-  //   }
-
-  //   setSearchParams(searchParams);
-  // }, [query]);
 
   return (
     <>
@@ -36,6 +27,7 @@ export const Search = () => {
             value={value}
             placeholder={`Search in ${location.slice(1)}...`}
             className="Search__input"
+            ref={inputRef}
             onChange={(ev) => {
               setValue(ev.target.value);
               applyQuery(ev.target.value);
@@ -62,7 +54,15 @@ export const Search = () => {
             />
           )}
           {!value && (
-            <div className="Search__icon Search__icon--search" />
+            <button
+              type="button"
+              aria-label="focus search"
+              className="Search__icon Search__icon--search"
+              onClick={() => {
+                inputRef.current?.focus();
+              }}
+              data-cy="searchDelete"
+            />
           )}
         </div>
       )}

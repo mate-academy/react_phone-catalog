@@ -11,7 +11,7 @@ import {
 } from '../../Helpers/functions/storage-helpers';
 import { findNavItem } from '../../Helpers/navItems';
 import { Product } from '../../Helpers/types/Product';
-import { StorageCartItem } from '../../Helpers/types/StorageCartItem';
+import { StorageItem } from '../../Helpers/types/StorageItem';
 import './CartPage.scss';
 
 export const CartPage = () => {
@@ -22,11 +22,11 @@ export const CartPage = () => {
   const [products, setProducts] = useState(parsedCartItems);
 
   const [quantity, setQuantity] = useState(parsedCartItems.reduce(
-    ((a: number, b: StorageCartItem) => a + b.quantity), 0,
+    ((a: number, b: StorageItem) => a + b.quantity), 0,
   ));
 
   const [totalPrice, setTotalPrice] = useState(parsedCartItems.reduce(
-    ((a: number, b: StorageCartItem) => {
+    ((a: number, b: StorageItem) => {
       return a + b.quantity * deductDiscount(b.product);
     }),
     0,
@@ -44,7 +44,7 @@ export const CartPage = () => {
     }
 
     const parsedItems = parseStorage('CartItems');
-    const itemsWithUpdatedQty = parsedItems.map((item: StorageCartItem) => {
+    const itemsWithUpdatedQty = parsedItems.map((item: StorageItem) => {
       if (item.id === product.id) {
         return {
           ...item,
@@ -59,10 +59,10 @@ export const CartPage = () => {
     setProducts(itemsWithUpdatedQty);
   };
 
-  const removeItem = (item: StorageCartItem) => {
+  const removeItem = (item: StorageItem) => {
     const parsedItems = parseStorage('CartItems');
     const filteredItems = parsedItems.filter(
-      (storageItem: StorageCartItem) => {
+      (storageItem: StorageItem) => {
         return storageItem.id !== item.id;
       },
     );
@@ -86,7 +86,7 @@ export const CartPage = () => {
             {products.length === 0 && (
               <p className="body-text">Your cart is empty now</p>
             )}
-            {products.map((item: StorageCartItem) => {
+            {products.map((item: StorageItem) => {
               const navLink = findNavItem(item.product.type)?.link;
 
               return (

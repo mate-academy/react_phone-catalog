@@ -9,13 +9,22 @@
   color: $secondaryColour;
   display: block;
   position: relative;
+  @extend %transition;
 
   &--active {
     color: $primaryColour;
-    @include decor-line($primaryColour);
+
+    &::after {
+      @include decor-line($primaryColour);
+    }
   }
 
   &:hover {
-    @extend .link--active;
+    color: $primaryColour;
+
+    &::after {
+      @include decor-line($primaryColour);
+      animation: move 0.5s;
+    }
   }
 }

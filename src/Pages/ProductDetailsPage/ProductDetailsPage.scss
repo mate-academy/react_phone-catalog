@@ -8,7 +8,10 @@
       position: relative;
       padding-bottom: 16px;
       margin-bottom: 32px;
-      @include decor-line($elementsColour);
+
+      &::after {
+        @include decor-line($elementsColour);
+      }
     }
   }
 
@@ -43,10 +46,10 @@
     position: relative;
     box-sizing: border-box;
     border: 1px solid $elementsColour;
-
     border-radius: 36px;
-    height: 32px;
-    width: 32px;
+
+    @include square(32px);
+    @extend %transition;
 
     &:hover {
       border: 1px solid $iconsColour;
@@ -62,8 +65,7 @@
     top: 0;
     left: 0;
     border: 2px solid $whiteColour;
-    height: 30px;
-    width: 30px;
+    @include square(30px);
 
     &--gold {
       background: #FCDBC1;
@@ -86,7 +88,10 @@
     position: relative;
     padding-bottom: 24px;
     margin-bottom: 24px;
-    @include decor-line($elementsColour);
+
+    &::after {
+      @include decor-line($elementsColour);
+    }
 
     &--last {
       margin-bottom: 32px;
@@ -96,7 +101,6 @@
   &__spec-capacity {
     display: flex;
     align-items: center;
-
     height: 32px;
     // text-align: center;
 

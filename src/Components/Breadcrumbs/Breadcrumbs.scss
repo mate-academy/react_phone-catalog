@@ -27,6 +27,7 @@
       background-repeat: no-repeat;
     }
 
+    @extend %transition;
     &:hover {
       color: $primaryColour;
     }

@@ -14,7 +14,7 @@ type Props = {
 
 export const ToFavButton: React.FC<Props> = ({ id, product, isLarge }) => {
   const { fav, setFav } = useContext(FavContext);
-  const [productInFav, setProductInFav] = useState(
+  const [isInFav, setIsInFav] = useState(
     findItem(parseStorage('FavItems'), id),
   );
 
@@ -24,15 +24,19 @@ export const ToFavButton: React.FC<Props> = ({ id, product, isLarge }) => {
       className={classNames(
         'button-small',
         'button-small--fav',
-        { 'button-small--fav--active': productInFav },
+        { 'button-small--fav--active': isInFav },
         { 'button-small--fav--large': isLarge },
       )}
       aria-label="fav"
       data-cy="addToFavorite"
       onClick={() => addHandler(
         'FavItems',
-        product,
-        setProductInFav,
+        {
+          id,
+          quantity: 1,
+          product,
+        },
+        setIsInFav,
         setFav,
         fav,
       )}

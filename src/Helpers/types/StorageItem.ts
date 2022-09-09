@@ -1,6 +1,6 @@
 import { Product } from './Product';
 
-export type StorageCartItem = {
+export type StorageItem = {
   id: string,
   quantity: number,
   product: Product,

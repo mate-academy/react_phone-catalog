@@ -17,6 +17,7 @@ export const Select: React.FC<Props> = ({
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const selectRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const detectClickOutside = (event: MouseEvent) => {
@@ -58,11 +59,12 @@ export const Select: React.FC<Props> = ({
       >
         {selectedValue}
       </button>
-
-      {isOpen && (
-        <div
-          className="Select__content"
-        >
+      <div
+        className="Select__content-container"
+        ref={contentRef}
+        style={{ height: `${isOpen ? `${contentRef.current?.scrollHeight}px` : '0px'}` }}
+      >
+        <div className="Select__content">
           {options.map(option => (
             <button
               type="button"
@@ -74,7 +76,7 @@ export const Select: React.FC<Props> = ({
             </button>
           ))}
         </div>
-      )}
+      </div>
     </div>
   );
 };

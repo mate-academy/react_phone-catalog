@@ -12,12 +12,11 @@
 
   &__image {
     margin: 0 auto 24px;
-    height: 208px;
-    width: 208px;
+    @include square(208px);
+    @extend %transition;
 
     &:hover {
       transform: scale(1.1);
-      transition: 0.5s;
     }
   }
 

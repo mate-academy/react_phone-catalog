@@ -1,5 +1,7 @@
 .page {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  max-width: 100%;
 
   &__section {
     margin-bottom: 80px;

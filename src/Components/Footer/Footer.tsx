@@ -24,9 +24,9 @@ export const Footer = () => {
           <Logo />
 
           <div className="Footer__socials">
-            <Link to="/" className="link">GitHub</Link>
-            <Link to="/" className="link">Contacts</Link>
-            <Link to="/" className="link">Rights</Link>
+            <Link to="/" className="link Footer__link">GitHub</Link>
+            <Link to="/" className="link Footer__link">Contacts</Link>
+            <Link to="/" className="link Footer__link">Rights</Link>
           </div>
           <div
             className={classNames(

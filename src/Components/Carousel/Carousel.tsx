@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import cn from 'classnames';
-import BannerOne from '../../Images/Banner.png';
-import BannerTwo from '../../Images/BannerTwo.png';
-import BannerThree from '../../Images/BannerThree.png';
+import classNames from 'classnames';
+import BannerOne from '../../Images/picone.png';
+import BannerTwo from '../../Images/pictwo.png';
+import BannerThree from '../../Images/picthree.png';
 import './Carousel.scss';
 
 const slides = [BannerOne, BannerTwo, BannerThree];
@@ -30,7 +30,7 @@ export const Carousel = () => {
       setCurrentSlide(
         currentSlide < slides.length - 1 ? currentSlide + 1 : 0,
       );
-    }, 5000);
+    }, 3000);
 
     return () => {
       clearInterval(intervalId);
@@ -38,14 +38,19 @@ export const Carousel = () => {
   });
 
   return (
-    <div className="Carousel Carousel__header">
+    <div className="Carousel">
       <div className="Carousel__container">
-        {slides.map(slide => (
+        {slides.map((slide, i) => (
           <img
             src={slide}
             alt="slide"
-            className="Carousel__item"
-            style={{ transform: `translateX(${-currentSlide * 100}%)` }}
+            className={classNames(
+              'Carousel__item',
+              { 'Carousel__item--visible': i === currentSlide },
+            )}
+            // style={
+            //   { transform: `translateX(${-currentSlide * 100}%)`, transition: 'all 1s' }
+            // }
             key={slide}
           />
         ))}
@@ -82,7 +87,7 @@ export const Carousel = () => {
           <button
             type="button"
             key={slide}
-            className={cn(
+            className={classNames(
               'Carousel__indicator',
               { 'Carousel__indicator--active': i === currentSlide },
             )}

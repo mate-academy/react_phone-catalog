@@ -1,4 +1,3 @@
-import classNames from 'classnames';
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './Breadcrumbs.scss';
@@ -24,11 +23,7 @@ export const Breadcrumbs: React.FC<Props> = ({ name }) => {
       </Link>
       <Link
         to={`/${categoryLocation}`}
-        className={classNames(
-          'Breadcrumbs__element',
-          'text',
-          { 'text--dark': locationArray[2] },
-        )}
+        className="Breadcrumbs__element text"
       >
         {category}
       </Link>

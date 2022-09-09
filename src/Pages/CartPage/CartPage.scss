@@ -32,10 +32,20 @@
   &__cross {
     @include square(14px);
     background-image: url(../../Images/cross.svg);
+    @extend %transition;
+
+    &:hover {
+      transform: rotate(180deg)
+    }
   }
 
   &__image {
     @include square(80px);
+    @extend %transition;
+
+    &:hover {
+      transform: scale(1.1);
+    }
   }
 
   &__actions {
@@ -69,7 +79,10 @@
     margin-bottom: 24px;
     position: relative;
     text-align: center;
-    @include decor-line($elementsColour);
+
+    &::after {
+      @include decor-line($elementsColour);
+    }
   }
 
   &__checkout {

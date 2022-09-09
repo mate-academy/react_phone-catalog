@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react';
-import { StorageCartItem } from '../../Helpers/types/StorageCartItem';
+import { StorageItem } from '../../Helpers/types/StorageItem';
 
 type CartContextType = {
   cart: number,
@@ -21,7 +21,7 @@ export const CartContextProvider: React.FC<Props> = ({ children }) => {
     ? JSON.parse(storage)
     : [];
 
-  const amount = parsedStorage.reduce((a: number, b: StorageCartItem) => {
+  const amount = parsedStorage.reduce((a: number, b: StorageItem) => {
     return a + b.quantity;
   }, 0);
 

@@ -253,13 +253,7 @@ export const ProductDetailsPage = () => {
                           key={spec.value}
                         >
                           <p className="text">{spec.title}</p>
-                          <p
-                            className="
-                              text
-                              text--dark
-                              ProductDetailsPage__details-value
-                            "
-                          >
+                          <p className="text text--dark product__details-value">
                             {spec.value}
                           </p>
                         </div>

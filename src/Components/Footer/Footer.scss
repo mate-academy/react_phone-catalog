@@ -16,6 +16,11 @@
     gap: 64px;
   }
 
+  &__link {
+    box-sizing: border-box;
+    padding-bottom: 4px;
+  }
+
   &__back {
     display: flex;
     gap: 16px;

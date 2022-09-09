@@ -13,7 +13,7 @@ type Props = {
 };
 
 export const ToCartButton: React.FC<Props> = ({ id, product, isLarge }) => {
-  const [productInCart, setProductInCart] = useState(
+  const [isInCart, setIsInCart] = useState(
     findItem(parseStorage('CartItems'), id),
   );
 
@@ -26,21 +26,21 @@ export const ToCartButton: React.FC<Props> = ({ id, product, isLarge }) => {
         'button',
         'body-text',
         { 'button--large': isLarge },
-        { 'button--active': productInCart },
+        { 'button--active': isInCart },
       )}
       onClick={() => addHandler(
         'CartItems',
         {
           id,
-          quantity: 1,
+          quantity: isInCart?.quantity || 1,
           product,
         },
-        setProductInCart,
+        setIsInCart,
         setCart,
         cart,
       )}
     >
-      {productInCart ? 'Added to cart' : 'Add to cart'}
+      {isInCart ? 'Added to cart' : 'Add to cart'}
     </button>
   );
 };

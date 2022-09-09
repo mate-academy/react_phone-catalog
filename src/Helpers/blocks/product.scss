@@ -8,7 +8,10 @@
     &--ProductCard {
       position: relative;
       padding-bottom: 8px;
-      @include decor-line($elementsColour);
+
+      &::after {
+        @include decor-line($elementsColour);
+      }
     }
   }
 
@@ -35,7 +38,7 @@
   }
 
   &__details-value {
-    width: 50%;
+    width: 60%;
     text-align: right;
   }
 

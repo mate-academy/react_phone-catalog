@@ -16,7 +16,16 @@
   align-items: center;
 
   &--active {
-    @include decor-line($primaryColour);
+    &::after {
+      @include decor-line($primaryColour);
+    }
+  }
+
+  &:hover {
+    &::after {
+      @include decor-line($primaryColour);
+      animation: move 0.5s;
+    }
   }
 
   &__count {

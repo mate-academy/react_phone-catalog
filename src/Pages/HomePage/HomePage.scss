@@ -7,14 +7,14 @@
   }
 
   &__category-img {
-    background-repeat: no-repeat;
-    background-size: cover;
-    @include square(368px);
     margin-bottom: 24px;
+    background-repeat: no-repeat;
+    background-size: 368px;
+    @include square(368px);
+    @extend %transition;
 
     &:hover {
-      transform: scale(1.05);
-      transition: 0.5s;
+      background-size: 400px;
     }
 
     &--phones {

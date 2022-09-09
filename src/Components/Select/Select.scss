@@ -8,11 +8,9 @@
   // padding: 12px;
 
   position: relative;
-
+  margin-bottom: 4px;
   display: flex;
   align-items: center;
-
-  margin-bottom: 4px;
 
   &--small {
     width: 128px;
@@ -22,23 +20,30 @@
     border: 1px solid $primaryColour;
   }
 
+  @extend %transition;
   &:hover {
     border: 1px solid $secondaryColour;
   }
 
   &__content {
-    position: absolute;
     box-sizing: border-box;
     padding: 8px 0;
-    z-index: 1;
+    border: 1px solid $elementsColour;
+  }
 
+  &__content-container {
+    position: absolute;
     top: 115%;
     right: 0;
     left: 0;
+    z-index: 2;
 
-    border: 1px solid $elementsColour;
     background-color: $whiteColour;
     box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.05);
+
+    @extend %transition;
+    height: 0;
+    overflow: hidden;
   }
 
   &__btn {
@@ -62,6 +67,7 @@
     cursor: pointer;
     text-align: left;
 
+    @extend %transition;
     &:hover {
       background: #FAFBFC;
       color: $primaryColour;

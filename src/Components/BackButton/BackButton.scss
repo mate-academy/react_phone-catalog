@@ -1,3 +1,5 @@
+@import '../../Helpers/utils';
+
 .BackButton {
   display: flex;
   align-items: center;
@@ -11,5 +13,10 @@
     padding-left: 8px;
     background-image: url(../../Images/activeleft.svg);
     background-repeat: no-repeat;
+  }
+
+  @extend %transition;
+  &:hover {
+    color: $primaryColour;
   }
 }

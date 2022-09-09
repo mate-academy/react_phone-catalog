@@ -20,6 +20,7 @@
     width: 262px;
   }
 
+  @extend %transition;
   &:hover {
     box-shadow: 0px 3px 13px rgba(23, 32, 49, 0.26);
   }
