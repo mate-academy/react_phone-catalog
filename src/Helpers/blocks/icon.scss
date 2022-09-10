@@ -1,11 +1,11 @@
 @import "../utils/mixins";
 
-.button-small {
+.icon {
   @include square(32px);
-
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-shrink: 0;
   box-sizing: border-box;
   cursor: pointer;
   background-color: $whiteColour;

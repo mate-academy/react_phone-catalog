@@ -99,11 +99,10 @@
   }
 
   &__spec-capacity {
+    box-sizing: border-box;
     display: flex;
     align-items: center;
     height: 32px;
-    // text-align: center;
-
     padding: 8px;
     border: 1px solid $iconsColour;
 

@@ -90,8 +90,8 @@ export const CartPage = () => {
               const navLink = findNavItem(item.product.type)?.link;
 
               return (
-                <div className="CartPage__card" key={item.id}>
-                  <div className="CartPage__card-left">
+                <div className="CartPage__cart" key={item.id}>
+                  <div className="CartPage__cart-left">
                     <button
                       type="button"
                       aria-label="remove"
@@ -111,16 +111,16 @@ export const CartPage = () => {
                     </p>
                   </div>
 
-                  <div className="CartPage__card-right">
+                  <div className="CartPage__cart-right">
 
                     <div className="CartPage__actions">
                       <button
                         type="button"
                         className={classNames(
-                          'button-small',
-                          'button-small--remove',
+                          'icon',
+                          'icon--remove',
                           {
-                            'button-small--remove--disable':
+                            'icon--remove--disable':
                             item.quantity === 1,
                           },
                         )}
@@ -144,8 +144,8 @@ export const CartPage = () => {
                       <button
                         type="button"
                         className={classNames(
-                          'button-small',
-                          'button-small--add',
+                          'icon',
+                          'icon--add',
                         )}
                         onClick={() => {
                           saveQuantity(
@@ -169,7 +169,7 @@ export const CartPage = () => {
           </div>
 
           <div className="grid__item grid__item--17-24">
-            <div className="CartPage__card-total">
+            <div className="CartPage__cart-total">
               <p className="title CartPage__price-total">
                 $
                 {totalPrice}
@@ -182,7 +182,7 @@ export const CartPage = () => {
               </p>
               <button
                 type="button"
-                className="button body-text CartPage__checkout"
+                className="button body-text button--large"
                 onClick={() => {
                   setNotification(true);
                   setTimeout(() => {

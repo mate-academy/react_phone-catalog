@@ -1,10 +1,10 @@
 @import '../../Helpers/utils';
 
 .Carousel {
-  position: relative;
-  margin-bottom: 104px;
   height: 480px;
   width: 100%;
+  position: relative;
+  margin-bottom: 104px;
 
   &__item {
     height: 480px;
@@ -16,7 +16,6 @@
 
     &--visible {
       opacity: 1;
-      transform: translateX(0);
     }
   }
 
@@ -33,9 +32,7 @@
     width: 14px;
     height: 4px;
     background-color: $elementsColour;
-    border: none;
-    cursor: pointer;
-  
+
     &--active {
       background-color: $primaryColour;
     }

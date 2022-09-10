@@ -8,13 +8,13 @@ export const Footer = () => {
   const [show, setShow] = useState(false);
 
   useEffect(() => {
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 0) {
-        setShow(true);
-      } else {
-        setShow(false);
-      }
-    });
+    const scrollUp = () => setShow(window.scrollY > 0);
+
+    window.addEventListener('scroll', scrollUp);
+
+    return () => {
+      window.removeEventListener('scroll', scrollUp);
+    };
   }, []);
 
   return (
@@ -38,7 +38,7 @@ export const Footer = () => {
               Back to top
             </p>
             <button type="button" onClick={() => window.scrollTo(0, 0)}>
-              <div className="button-small button-small--back" />
+              <div className="icon icon--back" />
             </button>
           </div>
         </div>

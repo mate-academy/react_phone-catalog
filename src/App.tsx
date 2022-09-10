@@ -1,17 +1,17 @@
 import { Routes, Route } from 'react-router-dom';
 import './App.scss';
-import { Footer } from './Components/Footer';
 import { HomePage } from './Pages/HomePage';
 import { PhonesPage } from './Pages/PhonesPage';
 import { TabletsPage } from './Pages/TabletsPage';
 import { AccessoriesPage } from './Pages/AccessoriesPage';
 import { ProductDetailsPage } from './Pages/ProductDetailsPage';
+import { FavouritesPage } from './Pages/FavouritesPage';
 import { CartPage } from './Pages/CartPage';
+import { NotFoundPage } from './Pages/NotFoundPage';
+import { Footer } from './Components/Footer';
 import { CartContextProvider } from './Components/Context/CartContextProvider';
 import { FavContextProvider } from './Components/Context/FavContextProvider';
 import { QueryContextProvider } from './Components/Context/QueryContext';
-import { FavouritesPage } from './Pages/FavouritesPage';
-import { NotFoundPage } from './Pages/NotFoundPage';
 
 const App = () => {
   return (

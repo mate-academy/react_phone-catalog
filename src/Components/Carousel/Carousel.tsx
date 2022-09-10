@@ -6,23 +6,14 @@ import BannerThree from '../../Images/picthree.png';
 import './Carousel.scss';
 
 const slides = [BannerOne, BannerTwo, BannerThree];
-let intervalId = setInterval(() => {}, 0);
 
 export const Carousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  let intervalId = setInterval(() => {}, 0);
 
-  const prev = () => {
+  const selectById = (i: number) => {
     clearInterval(intervalId);
-    const index = currentSlide > 0 ? currentSlide - 1 : slides.length - 1;
-
-    setCurrentSlide(index);
-  };
-
-  const next = () => {
-    clearInterval(intervalId);
-    const index = currentSlide < slides.length - 1 ? currentSlide + 1 : 0;
-
-    setCurrentSlide(index);
+    setCurrentSlide(i);
   };
 
   useEffect(() => {
@@ -48,37 +39,38 @@ export const Carousel = () => {
               'Carousel__item',
               { 'Carousel__item--visible': i === currentSlide },
             )}
-            // style={
-            //   { transform: `translateX(${-currentSlide * 100}%)`, transition: 'all 1s' }
-            // }
             key={slide}
           />
         ))}
       </div>
 
-      <div className="scroll Carousel__scroll">
+      <div className="scroll">
         <button
           type="button"
           className="
-            button-small
-            button-small--left
-            button-small--carousel
-            button-small--carousel--left
+            icon
+            icon--left
+            icon--carousel
+            icon--carousel--left
           "
-          onClick={prev}
-          aria-label="Mute volume"
+          onClick={() => selectById(
+            currentSlide > 0 ? currentSlide - 1 : slides.length - 1,
+          )}
+          aria-label="Prev"
         />
 
         <button
           type="button"
           className="
-            button-small
-            button-small--right
-            button-small--carousel
-            button-small--carousel--right
+            icon
+            icon--right
+            icon--carousel
+            icon--carousel--right
           "
-          onClick={next}
-          aria-label="Mute volume"
+          onClick={() => selectById(
+            currentSlide < slides.length - 1 ? currentSlide + 1 : 0,
+          )}
+          aria-label="Next"
         />
       </div>
 
@@ -91,7 +83,8 @@ export const Carousel = () => {
               'Carousel__indicator',
               { 'Carousel__indicator--active': i === currentSlide },
             )}
-            aria-label="Mute volume"
+            aria-label="Indicators"
+            onClick={() => selectById(i)}
           />
         ))}
 

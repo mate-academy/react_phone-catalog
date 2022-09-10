@@ -36,9 +36,9 @@ export const ProductSlider: React.FC<Props> = ({ title, products }) => {
           <button
             type="button"
             className={classNames(
-              'button-small',
-              'button-small--left',
-              { 'button-small--left--disable': prevDisable },
+              'icon',
+              'icon--left',
+              { 'icon--left--disable': prevDisable },
             )}
             onClick={prev}
             aria-label="swipe left"
@@ -47,9 +47,9 @@ export const ProductSlider: React.FC<Props> = ({ title, products }) => {
           <button
             type="button"
             className={classNames(
-              'button-small',
-              'button-small--right',
-              { 'button-small--right--disable': nextDisable },
+              'icon',
+              'icon--right',
+              { 'icon--right--disable': nextDisable },
             )}
             onClick={next}
             aria-label="swipe right"

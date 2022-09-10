@@ -22,10 +22,10 @@ export const ToFavButton: React.FC<Props> = ({ id, product, isLarge }) => {
     <button
       type="button"
       className={classNames(
-        'button-small',
-        'button-small--fav',
-        { 'button-small--fav--active': isInFav },
-        { 'button-small--fav--large': isLarge },
+        'icon',
+        'icon--fav',
+        { 'icon--fav--active': isInFav },
+        { 'icon--fav--large': isLarge },
       )}
       aria-label="fav"
       data-cy="addToFavorite"

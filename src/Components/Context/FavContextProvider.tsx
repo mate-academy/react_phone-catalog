@@ -1,12 +1,9 @@
 import React, { useMemo, useState } from 'react';
+import { parseStorage } from '../../Helpers/functions/storage-helpers';
 
 type FavContextType = {
   fav: number,
   setFav: React.Dispatch<React.SetStateAction<number>>
-};
-
-type Props = {
-  children: React.ReactNode,
 };
 
 export const FavContext = React.createContext<FavContextType>({
@@ -14,16 +11,12 @@ export const FavContext = React.createContext<FavContextType>({
   setFav: () => {},
 });
 
-export const FavContextProvider: React.FC<Props> = ({ children }) => {
-  const storage = localStorage.getItem('FavItems');
-  const parsedStorage = storage
-    ? JSON.parse(storage)
-    : [];
-
+export const FavContextProvider:
+React.FC<React.PropsWithChildren<React.ReactNode>>
+= ({ children }) => {
+  const parsedStorage = parseStorage('FavItems');
   const amount = parsedStorage.length;
-
   const [fav, setFav] = useState<number>(amount);
-
   const contextValue = useMemo(() => {
     return {
       fav,

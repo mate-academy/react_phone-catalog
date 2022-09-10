@@ -6,13 +6,13 @@ import { deductDiscount } from '../../Helpers/functions/deductDiscount';
 import { Product } from '../../Helpers/types/Product';
 import { Quantity } from '../../Helpers/types/Quantity';
 import { Sorter } from '../../Helpers/types/Sorter';
-import { SearchPage } from '../../Pages/SearchPage/SearchPage';
-import { Breadcrumbs } from '../Breadcrumbs/Breadcrumbs';
+import { SearchPage } from '../../Pages/SearchPage';
 import { QueryContext } from '../Context/QueryContext';
+import { Breadcrumbs } from '../Breadcrumbs';
 import { NoResults } from '../NoResults';
-import { Pagination } from '../Pagination/Pagination';
-import { ProductsList } from '../ProductsList/ProductsList';
-import { Select } from '../Select/Select';
+import { Pagination } from '../Pagination';
+import { ProductsList } from '../ProductsList';
+import { Select } from '../Select';
 
 type Props = {
   productsFromServer: Product[],

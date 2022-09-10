@@ -26,9 +26,9 @@ export const Pagination: React.FC<Props> = ({
         onClick={() => onPageChange(currentPage - 1)}
         disabled={disableLeft}
         className={classNames(
-          'button-small',
-          'button-small--left',
-          { 'button-small--left--disable': disableLeft },
+          'icon',
+          'icon--left',
+          { 'icon--left--disable': disableLeft },
         )}
         aria-label="Left"
       />
@@ -43,7 +43,7 @@ export const Pagination: React.FC<Props> = ({
               }
             }}
             className={classNames(
-              'button-small',
+              'icon',
               'body-text',
               'body-text--center',
               {
@@ -62,9 +62,9 @@ export const Pagination: React.FC<Props> = ({
         onClick={() => onPageChange(currentPage + 1)}
         disabled={disableRight}
         className={classNames(
-          'button-small',
-          'button-small--right',
-          { 'button-small--right--disable': disableRight },
+          'icon',
+          'icon--right',
+          { 'icon--right--disable': disableRight },
         )}
         aria-label="Right"
       />
