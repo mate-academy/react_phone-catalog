@@ -1,0 +1,90 @@
+@import "../utils/mixins.scss";
+@import "../utils/vars.scss";
+
+.footer {
+  padding: 0 50px;
+
+  @include laptop {
+    padding: 0 25px;
+
+  }
+
+  @include tablet {
+    padding: 0 25px;
+
+  }
+
+  &__wrapper {
+    padding: 43px 0;
+  }
+
+  &__logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include tablet {
+      grid-column: 1 / 1;
+    }
+
+    @include mobile {
+      grid-column: 1 / 1;
+      display: none;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    @include tablet {
+      grid-column: 2 / 6;
+    }
+
+    @include mobile {
+      grid-column: 1 / 6;
+      width: 120%;
+      margin-left: -20px;
+    }
+  }
+
+  &__link {
+    font-family: "Mont", sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #89939a;
+    transition: $transition;
+
+    &:hover {
+      color: #313237;
+    }
+
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    border: 1px solid #b4bdc3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: $transition;
+
+    &:hover {
+      border: 1px solid #313237;
+    }
+
+    @include tablet {
+      grid-column: 6 / 6;
+    }
+
+    @include mobile {
+      grid-column: 6 / 6;
+    }
+  }
+}

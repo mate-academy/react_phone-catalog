@@ -1,0 +1,150 @@
+@import "../utils/mixins.scss";
+@import "../utils/vars.scss";
+
+* {
+  scroll-behavior: smooth;
+}
+
+.menu {
+
+  display: none;
+  justify-self: end;
+
+  &--mobile {
+
+    @include mobile {
+      display: block;
+    }
+  }
+
+  &__btn {
+    display: flex;
+    align-items: center;
+    position: relative;
+    top: 0;
+    left: 15px;
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+    z-index: 11;
+    outline: none;
+
+    & > span {
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background-color: #333;
+      transition: $transition;
+    }
+
+    & > span::before {
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background-color: #333;
+      transition: $transition;
+      content: "";
+      top: -8px;
+    }
+
+    & > span::after {
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background-color: #333;
+      transition: $transition;
+      content: "";
+      top: 8px;
+    }
+
+    &:hover span {
+      background-color: #333;
+    }
+
+    &:hover span::before {
+      background-color: #333;
+    }
+
+    &:hover span::after {
+      background-color: #333;
+    }
+  }
+
+  &__box {
+    display: block;
+    position: fixed;
+    visibility: hidden;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 60px 10px;
+    list-style: none;
+    background-color: $hover;
+    box-shadow: 1px 0 6px rgba(0, 0, 0, 0.2);
+    transition: $transition;
+    z-index: 10;
+    text-align: center;
+
+    & > li {
+      // border-bottom: 1px solid #333;
+      margin-bottom: 50px;
+
+      @include mobile {
+        margin-bottom: 30px;
+      }
+    }
+  }
+
+  &__item {
+    display: block;
+    color: #333;
+    font-weight: 600;
+    text-decoration: none;
+    transition: $transition;
+    padding-bottom: 10px;
+
+    &:hover {
+      color: #333;
+    }
+  }
+
+  &__toggle {
+    opacity: 0;
+  }
+}
+
+.menu-opened {
+
+  .menu__btn {
+    position: fixed;
+
+    @include mobile {
+      top: 20px;
+      left: 15px;
+    }
+  }
+
+  .menu__btn > span {
+    transform: rotate(45deg);
+  }
+
+  .menu__btn > span::before {
+    top: 0;
+    transform: rotate(0);
+  }
+
+  .menu__btn > span::after {
+    top: 0;
+    transform: rotate(90deg);
+  }
+
+  .menu__box {
+    visibility: visible;
+    left: 0;
+  }
+}

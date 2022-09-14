@@ -1,0 +1,114 @@
+@import "../utils/mixins.scss";
+@import "../utils/vars.scss";
+
+.header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 64px;
+  width: 100%;
+  margin-bottom: 40px;
+  border-bottom: 1px solid $elements;
+  background: $hover;
+  z-index: 3;
+  
+  &__wrapper {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 2.5fr 20fr 2fr;
+    grid-template-rows: 1fr;
+    width: 100%;
+
+    @include tablet {
+      grid-template-columns: 21fr 3fr;
+    }
+    @include mobile {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  &__logo {
+    margin-left: 24px;
+
+    @include tablet {
+      display: none;
+    }
+
+    @include mobile {
+      display: none;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    gap: 64px;
+    width: 100%;
+    align-items: center;
+
+    @include tablet {
+      padding-left: 24px;
+    }
+
+    @include mobile {
+      display: none;
+    }
+  }
+
+  &__icon {
+    display: block;
+    padding: 24px;
+    width: 15px;
+    height: 15px;
+    border: 1px solid $elements;
+    transition: $transition;
+
+    &:hover {
+      border: 1px solid $black;
+    }
+
+    &--active > svg > path {
+      fill: $red;
+    }
+
+    &--active > svg {
+      fill: $red;
+      stroke: $red;
+    }
+  }
+
+  &__icons {
+    display: flex;
+
+    @include mobile {
+      justify-self: end;
+    }
+  }
+
+  &__link {
+    padding: 24px 0;
+    color: $secondary;
+    border-bottom: 2px solid transparent;
+    height: 100%;
+    transition: $transition;
+
+    &:hover {
+      color: $black;
+    }
+
+    &--active {
+      color: black;
+      border-bottom: 2px solid $black;
+
+      @include mobile {
+        border-bottom: none;
+      }
+    }
+  }
+
+  &__input {
+    width: 95%;
+    height: 100%;
+  }
+}

@@ -1,0 +1,240 @@
+@import "../utils/mixins.scss";
+@import "../utils/vars.scss";
+
+.slick-slider {
+  margin: 0 auto;
+  background: $white;
+}
+
+.slider {
+  width: 100%;
+  margin: 0 auto;
+  margin-bottom: 80px;
+
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+
+    @include tablet {
+      grid-column: 1 / 7;
+    }
+
+    @include mobile {
+      grid-column: 1 / 7;
+    }
+  }
+
+  &__card {
+    padding: 32px 24px 24px;
+    border: 1px solid $elements;
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    transition: $transition;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    &--top-slider {
+      display: flex !important;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    @include mobile {
+      padding: 20px 16px 16px;
+    }
+  }
+
+  &__img {
+    object-fit: contain;
+
+    &--top {
+      @include mobile {
+        width: 100%;
+      }
+    }
+
+    &--hot {
+      max-width: 208px;
+      width: 100%;
+      margin-bottom: 24px;
+    }
+  }
+
+  &__title {
+    text-align: center;
+    margin-bottom: 7px;
+    height: 55px;
+
+  }
+
+  &__price {
+    align-self: start;
+    margin-bottom: 7px;
+  }
+
+  &__fullprice {
+    text-decoration: line-through;
+    color: $secondary;
+    margin-left: 8px;
+  }
+
+  &__line {
+    width: 100%;
+    height: 1px;
+    background: $elements;
+    border: none;
+    margin-bottom: 16px;
+  }
+
+  &__features {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+
+    &--1 {
+      color: $secondary;
+    }
+
+    &:last-child {
+      margin-bottom: 16px;
+    }
+  }
+
+  &__button-wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    width: 100%;
+
+    & > .slider__navigation {
+      height: 40px;
+      width: 40px;
+    }
+  }
+
+  &__button {
+    height: 40px;
+    width: 78%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: $black;
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 150%;
+    border: 1px solid #333;
+    transition: $transition;
+    box-shadow: inset 0 0 0 0 #f7f7f7;
+    align-self: start;
+
+    &:hover {
+      color: $black;
+      background: $white;
+      box-shadow: inset 0 -100px 0 0 #f7f7f7;
+    }
+  }
+}
+
+.slick-slider .slider__navigation {
+
+  &--top {
+    border: 1px solid $icons;
+    height: 100%;
+    color: $icons;
+    display: flex;
+    align-items: center;
+    padding: 0 7px;
+    z-index: 2;
+    background: $white;
+
+    @include mobile {
+      border: none;
+      padding: 0;
+      display: none;
+    }
+  
+    &::before {
+      display: block;
+      color: $icons;
+      align-self: center;
+      transform: translateY(950%);
+
+      @include mobile {
+        transform: translateY(650%);
+      }
+  
+    }
+  }
+}
+
+.slick-slider .slick-arrow .slick-next .slider__navigation--top {
+  @include mobile {
+    display: none;
+  }
+  
+}
+
+.slider__navigation--hot {
+  height: 32px;
+  width: 32px;
+  border: 1px solid $icons;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: $transition;
+
+  @include tablet {
+    &--n {
+      grid-column: 6 / 7;
+    }
+  
+    &--p {
+      grid-column: 5 / 6;
+    }
+  }
+
+  @include mobile {
+    &--n {
+      grid-column: 6 / 7;
+    }
+  
+    &--p {
+      grid-column: 5 / 6;
+    }
+  }
+
+  & > svg > path {
+    transition: $transition;
+  }
+
+  &:hover {
+    border-color: $black;
+
+    & > svg > path {
+      fill: $black;
+    }
+  }
+
+}
+
+.slick-list {
+  margin: 0 auto;
+}
+
+.slick-slider .slick-track {
+  margin: 0 auto;
+  z-index: 1;
+}
+
+.slick-slider .slick-dots {
+  @include mobile {
+    margin-top: 50px;
+  }
+}
