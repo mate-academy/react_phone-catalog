@@ -5,14 +5,10 @@ import { ItemCarousel } from '../ItemCarousel';
 
 type Props = {
   products: Phone[],
-  addFavorite: CallableFunction,
-  addWithdraw: CallableFunction,
 };
 
 export const HotPrice: React.FC<Props> = ({
   products,
-  addFavorite,
-  addWithdraw,
 }) => {
   const hotPhones = useMemo(() => {
     const phonesSorted = products.sort((phone1, phone2) => (
@@ -29,8 +25,6 @@ export const HotPrice: React.FC<Props> = ({
           <ItemCarousel
             title="Hot prices"
             items={hotPhones}
-            addFavorite={addFavorite}
-            addWithdraw={addWithdraw}
           />
         )}
     </section>

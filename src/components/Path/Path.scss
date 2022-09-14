@@ -1,0 +1,28 @@
+@import "/src/styles/utils/_vars.scss";
+
+.path {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 40px;
+
+  &__link {
+    display: flex;
+  }
+
+  &__img {
+    width: 14px;
+    height: 14px;
+  }
+
+  &__text {
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 15px;
+    color: $c-secondary;
+  }
+
+  &__arrow {
+    color: $c-icons;
+  }
+}

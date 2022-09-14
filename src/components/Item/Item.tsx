@@ -1,23 +1,47 @@
 import './Item.scss';
-import React from 'react';
+import React, { useMemo } from 'react';
+import classNames from 'classnames';
 import { Phone } from '../../types/Phone';
+import { addFavourite, removeFavourite } from '../../features/favouriteSlice';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { RootState } from '../../app/store';
+import { addWithdraw, deleteWithdraw } from '../../features/withdrawSlice';
 
 type Props = {
   item: Phone,
-  addFavorite: CallableFunction,
-  addWithdraw: CallableFunction,
 };
 
 export const Item: React.FC<Props> = ({
   item,
-  addFavorite,
-  addWithdraw,
 }) => {
+  const favourites = useAppSelector((state: RootState) => (
+    state.favorite.favorites));
+  const withdraw = useAppSelector((state: RootState) => (
+    state.withdraw.withdraw));
+
+  const dispatch = useAppDispatch();
+
+  const isWithdraw = useMemo(() => {
+    return Object.keys(withdraw).includes(item.id);
+  }, [withdraw]);
+
+  const isFavorite = useMemo(() => {
+    return favourites.includes(item.id);
+  }, [favourites]);
+
   const buttonHandle = (place: string) => {
     if (place === 'favorite') {
-      addFavorite(item.id);
+      if (isFavorite) {
+        dispatch(removeFavourite(item.id));
+      } else {
+        dispatch(addFavourite(item.id));
+      }
     } else if (place === 'withdraw') {
-      addWithdraw(item.id);
+      if (isWithdraw) {
+        dispatch(deleteWithdraw(item.id));
+      } else {
+        dispatch(addWithdraw(item.id));
+      }
     }
   };
 
@@ -26,7 +50,7 @@ export const Item: React.FC<Props> = ({
       <div className="item__header">
         <div className="item__photo-container">
           <img
-            src="../../images/Banner.png"
+            src={item.imageUrl}
             alt={item.id}
             className="item__photo"
           />
@@ -90,7 +114,10 @@ export const Item: React.FC<Props> = ({
         <div className="item__buttons">
           <button
             type="button"
-            className="item__buy"
+            className={classNames(
+              'item__buy',
+              { 'item__buy--selected': isWithdraw },
+            )}
             onClick={() => buttonHandle('withdraw')}
           >
             Add to cart
@@ -101,7 +128,7 @@ export const Item: React.FC<Props> = ({
             className="item__favorite"
             onClick={() => buttonHandle('favorite')}
           >
-            <img src={`/img/ShopItem/favorite${item.favorite ? '(filled)' : ''}.svg`} alt="add to favorite" />
+            <img src={`/img/ShopItem/favorite${isFavorite ? '(filled)' : ''}.svg`} alt="add to favorite" />
           </button>
         </div>
       </div>

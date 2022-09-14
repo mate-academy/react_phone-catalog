@@ -10,5 +10,4 @@ export interface Phone {
   screen: string,
   capacity: string | undefined,
   ram: string,
-  favorite: boolean,
 }

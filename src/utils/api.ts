@@ -1,10 +1,20 @@
 // import { Phone } from './types/Phone'
 
 // eslint-disable-next-line max-len
-const products = 'https://mate-academy.github.io/react_phone-catalog/api/products.json';
+const mainLink = 'https://mate-academy.github.io/react_phone-catalog/api/products';
 
 export const getPhones = () => {
-  return fetch(products).then(responce => {
+  return fetch(`${mainLink}.json`).then(responce => {
+    if (!responce.ok) {
+      throw new Error();
+    }
+
+    return responce.json();
+  });
+};
+
+export const getCurrPhone = (phoneId: string) => {
+  return fetch(`${mainLink}/${phoneId}.json`).then(responce => {
     if (!responce.ok) {
       throw new Error();
     }

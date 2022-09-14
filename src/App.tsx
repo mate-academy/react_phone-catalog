@@ -1,4 +1,5 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { Header } from './components/Header';
 import { Novelties } from './components/Novelties';
 import { Footer } from './components/Footer';
@@ -7,56 +8,53 @@ import { getPhones } from './utils/api';
 import { Phone } from './types/Phone';
 import { NewModels } from './components/NewModels';
 import { Category } from './components/Category';
+import { Favourites } from './components/Favorites';
 
 import './App.scss';
-import { isLocalStoragehas, useLocalStorage } from './utils/localStorage';
 
 const App = () => {
   const [products, setProducts] = useState<Phone[]>();
-  const [favorite, setFavorite] = useLocalStorage('favorite');
-  const [withdraw, setWithdraw] = useLocalStorage('withdraw');
 
   useEffect(() => {
     getPhones().then((phones: Phone[]) => setProducts(phones));
   }, []);
 
-  const preparedPhone = useMemo(() => {
-    if (products) {
-      const productsId = isLocalStoragehas(
-        'favorite',
-        products.map((curr:Phone) => curr.id),
-      );
-
-      if (typeof productsId !== 'boolean') {
-        return products.map((curr, id) => (
-          { ...curr, favorite: productsId[id] }));
-      }
-    }
-
-    return [];
-  }, [products]);
-
   return (
     <>
-      <Header favoriteSize={favorite.length} withdrawSize={withdraw.length} />
+      <Header />
       <main className="main">
         <div className="container">
-          <Novelties />
-          {products && (
-            <>
-              <HotPrice
-                products={preparedPhone}
-                addFavorite={setFavorite}
-                addWithdraw={setWithdraw}
-              />
-              <Category />
-              <NewModels
-                products={preparedPhone}
-                addFavorite={setFavorite}
-                addWithdraw={setWithdraw}
-              />
-            </>
-          )}
+          <Routes>
+            <Route path="/" element={<Navigate to="/home" replace />} />
+
+            <Route
+              path="/home"
+              element={(
+                <>
+                  <Novelties />
+                  {products && (
+                    <>
+                      <HotPrice
+                        products={products}
+                      />
+                      <Category />
+                      <NewModels
+                        products={products}
+                      />
+                    </>
+                  )}
+                </>
+              )}
+            />
+
+            <Route
+              path="/favourites"
+              element={<Favourites />}
+            />
+
+            <Route path="*" element={<p>Page not found</p>} />
+
+          </Routes>
         </div>
       </main>
       <Footer />

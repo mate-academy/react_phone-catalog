@@ -1,63 +1,117 @@
+import { useMemo } from 'react';
+import { NavLink } from 'react-router-dom';
 import './Header.scss';
 import '../../styles/Nav.scss';
+import classNames from 'classnames';
+import { useAppSelector } from '../../app/hooks';
+import { RootState } from '../../app/store';
 
-type Props = {
-  favoriteSize: number;
-  withdrawSize: number;
-};
+export const Header: React.FC = () => {
+  const favoritesSize = useAppSelector((state: RootState) => (
+    state.favorite.favorites)).length;
+  const withdraw = useAppSelector((state: RootState) => (
+    state.withdraw.withdraw));
 
-export const Header: React.FC<Props> = ({ favoriteSize, withdrawSize }) => {
+  const withdrawSize = useMemo(() => {
+    let counter = 0;
+
+    Object.keys(withdraw).forEach(e => {
+      counter += withdraw[e];
+    });
+
+    return counter;
+  }, [withdraw]);
+
   return (
     <header className="header">
       <div className="header__content">
         <div className="header__right">
           <div className="logo">
-            <a href="/" className="logo__link">
+            <NavLink
+              to="/home"
+              className="logo__link"
+            >
               <img
                 src="/img/header/logo.svg"
                 alt="logo"
                 className="logo__img"
               />
-            </a>
+            </NavLink>
           </div>
 
           <nav className="nav">
             <ul className="nav__list">
               <li className="nav__item">
-                <a href="/" className="nav__link is-active">
+                <NavLink
+                  to="/home"
+                  className={({ isActive }) => classNames(
+                    'nav__link',
+                    { 'is-active': isActive },
+                  )}
+                >
                   Home
-                </a>
+                </NavLink>
               </li>
               <li className="nav__item">
-                <a href="/" className="nav__link">
+                <NavLink
+                  to="/phones"
+                  className={({ isActive }) => classNames(
+                    'nav__link',
+                    { 'is-active': isActive },
+                  )}
+                >
                   Phones
-                </a>
+                </NavLink>
               </li>
               <li className="nav__item">
-                <a href="/" className="nav__link">
+                <NavLink
+                  to="/tablets"
+                  className={({ isActive }) => classNames(
+                    'nav__link',
+                    { 'is-active': isActive },
+                  )}
+                >
                   Tablets
-                </a>
+                </NavLink>
               </li>
               <li className="nav__item">
-                <a href="/" className="nav__link">
+                <NavLink
+                  to="/accessories"
+                  className={({ isActive }) => classNames(
+                    'nav__link',
+                    { 'is-active': isActive },
+                  )}
+                >
                   Accessories
-                </a>
+                </NavLink>
               </li>
             </ul>
           </nav>
         </div>
 
         <div className="header__left">
-          <a href="/" className="header__icon">
-            {favoriteSize > 0
+          <NavLink
+            to="/favourites"
+            className={({ isActive }) => classNames(
+              'header__icon',
+              { 'is-active': isActive },
+            )}
+          >
+            {favoritesSize > 0
             && (
               <p className="header__ellipse">
-                {favoriteSize}
+                {favoritesSize}
               </p>
             )}
             <img src="/img/header/favorite(Stroke).svg" alt="Favorite" />
-          </a>
-          <a href="/" className="header__icon">
+          </NavLink>
+          <NavLink
+            to="/withdraw"
+            className={({ isActive }) => classNames(
+              'header__icon',
+              { 'is-active': isActive },
+            )}
+          >
             {withdrawSize > 0
               && (
                 <p className="header__ellipse">
@@ -65,7 +119,7 @@ export const Header: React.FC<Props> = ({ favoriteSize, withdrawSize }) => {
                 </p>
               )}
             <img src="/img/header/withdraw.svg" alt="Withdraw" />
-          </a>
+          </NavLink>
         </div>
       </div>
     </header>

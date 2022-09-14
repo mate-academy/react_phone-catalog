@@ -22,7 +22,6 @@
       margin-bottom: 24px;
       height: 208px;
       width: 208px;
-      // background-image: url("../../images/Banner.png");
     }
   }
 
@@ -77,6 +76,7 @@
   }
 
   &__buy {
+    box-sizing: border-box;
     width: 176px;
     height: 40px;
     font-style: normal;
@@ -91,6 +91,12 @@
     &:hover {
       box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
       transform: scale(105%);
+    }
+
+    &--selected {
+      background-color: $c-white;
+      color: $c-green;
+      border: 1px solid $c-elements;
     }
   }
 
