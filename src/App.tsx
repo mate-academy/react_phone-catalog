@@ -11,6 +11,7 @@ import { Category } from './components/Category';
 import { Favourites } from './components/Favorites';
 
 import './App.scss';
+import { Withdraw } from './components/Withdraw';
 
 const App = () => {
   const [products, setProducts] = useState<Phone[]>();
@@ -50,6 +51,11 @@ const App = () => {
             <Route
               path="/favourites"
               element={<Favourites />}
+            />
+
+            <Route
+              path="/withdraw"
+              element={<Withdraw />}
             />
 
             <Route path="*" element={<p>Page not found</p>} />

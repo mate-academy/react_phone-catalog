@@ -40,7 +40,7 @@ export const Item: React.FC<Props> = ({
       if (isWithdraw) {
         dispatch(deleteWithdraw(item.id));
       } else {
-        dispatch(addWithdraw(item.id));
+        dispatch(addWithdraw(item));
       }
     }
   };
@@ -50,7 +50,7 @@ export const Item: React.FC<Props> = ({
       <div className="item__header">
         <div className="item__photo-container">
           <img
-            src={item.imageUrl}
+            src={`./${item.imageUrl}`}
             alt={item.id}
             className="item__photo"
           />
@@ -128,7 +128,7 @@ export const Item: React.FC<Props> = ({
             className="item__favorite"
             onClick={() => buttonHandle('favorite')}
           >
-            <img src={`/img/ShopItem/favorite${isFavorite ? '(filled)' : ''}.svg`} alt="add to favorite" />
+            <img src={`./img/ShopItem/favorite${isFavorite ? '(filled)' : ''}.svg`} alt="add to favorite" />
           </button>
         </div>
       </div>

@@ -16,7 +16,7 @@ export const Header: React.FC = () => {
     let counter = 0;
 
     Object.keys(withdraw).forEach(e => {
-      counter += withdraw[e];
+      counter += withdraw[e].amount;
     });
 
     return counter;
@@ -32,7 +32,7 @@ export const Header: React.FC = () => {
               className="logo__link"
             >
               <img
-                src="/img/header/logo.svg"
+                src="./img/header/logo.svg"
                 alt="logo"
                 className="logo__img"
               />
@@ -103,7 +103,7 @@ export const Header: React.FC = () => {
                 {favoritesSize}
               </p>
             )}
-            <img src="/img/header/favorite(Stroke).svg" alt="Favorite" />
+            <img src="./img/header/favorite(Stroke).svg" alt="Favorite" />
           </NavLink>
           <NavLink
             to="/withdraw"
@@ -118,7 +118,7 @@ export const Header: React.FC = () => {
                   {withdrawSize}
                 </p>
               )}
-            <img src="/img/header/withdraw.svg" alt="Withdraw" />
+            <img src="./img/header/withdraw.svg" alt="Withdraw" />
           </NavLink>
         </div>
       </div>

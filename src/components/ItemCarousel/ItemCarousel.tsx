@@ -49,7 +49,7 @@ export const ItemCarousel: React.FC<Props> = ({
             onClick={() => actionHandler('prev')}
           >
             <img
-              src="/img/Vector (Stroke).svg"
+              src="./img/Vector (Stroke).svg"
               alt="prev"
               className="arrow__reverse"
             />
@@ -65,7 +65,7 @@ export const ItemCarousel: React.FC<Props> = ({
             onClick={() => actionHandler('next')}
           >
             <img
-              src="/img/Vector (Stroke).svg"
+              src="./img/Vector (Stroke).svg"
               alt="prev"
               className="arrow"
             />

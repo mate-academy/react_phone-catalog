@@ -1,0 +1,100 @@
+@import "/src/styles/utils/_vars.scss";
+
+.withdraw {
+  margin-bottom: 87px;
+
+  &__item {
+    height: 128px;
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid $c-elements;
+    margin-bottom: 16px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &-info {
+      display: flex;
+      gap: 34px;
+      align-items: center;
+      word-wrap: break-word;
+    }
+
+    &-price {
+      display: flex;
+      align-items: center;
+      gap: 43px;
+    }
+  }
+
+  &__text {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $c-primary;
+    max-width: 295px;
+    word-wrap: break-word;
+  }
+
+  &__img {
+    width: 66px;
+    height: 66px;
+  }
+
+  &__cross {
+    width: 14px;
+    height: 14px;
+    margin-left: 27px;
+  }
+
+  &__counter {
+    display: flex;
+
+  }
+
+  &__container {
+    width: 32px;
+    height: 32px;
+    overflow: hidden;
+    line-height: 32px;
+    text-align: center;
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    width: 32px;
+    height: 32px;
+    font-weight: 500;
+    font-size: 22px;
+    border: 1px solid $c-elements;
+    color: $c-icons;
+
+    &--active {
+      border: 1px solid $c-icons;
+      color: $c-black;
+    }
+  }
+
+  &__price {
+    margin-right: 40px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 140%;
+    color: $c-primary;
+  }
+
+  &__amount {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 32px;
+    text-align: center;
+    color: $c-black;
+  }
+}

@@ -32,6 +32,7 @@ export const Path: React.FC<Props> = ({ pathElems, pathBoldElems }) => {
                   'path__text',
                   { path__bold: pathBoldElems.includes(elem) },
                 )}
+                key={elem}
               >
                 {elem}
               </Link>
@@ -47,6 +48,7 @@ export const Path: React.FC<Props> = ({ pathElems, pathBoldElems }) => {
               'path__text',
               { path__bold: pathBoldElems.includes(elem) },
             )}
+            key={elem}
           >
             {elem}
           </Link>

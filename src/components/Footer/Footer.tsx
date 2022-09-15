@@ -8,7 +8,7 @@ export const Footer:React.FC = () => {
         <div className="footer__logo">
           <a href="/" className="footer__link">
             <img
-              src="/img/header/logo.svg"
+              src="./img/header/logo.svg"
               alt="logo"
             />
           </a>
@@ -46,7 +46,7 @@ export const Footer:React.FC = () => {
             className="footer__to-top-button"
           >
             <img
-              src="/img/Vector (Stroke).svg"
+              src="./img/Vector (Stroke).svg"
               alt="to top"
               className="footer__arrow"
             />

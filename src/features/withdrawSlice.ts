@@ -1,8 +1,13 @@
 /* eslint-disable no-param-reassign */
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { Phone } from '../types/Phone';
+
+interface WithdrawPhone extends Phone {
+  amount: number,
+}
 
 interface Withdraw {
-  [key: string]: number,
+  [key: string]: WithdrawPhone,
 }
 
 export interface WithdrawState {
@@ -32,34 +37,53 @@ export const withdrawSlice = createSlice({
   name: withdrawLocalStorageKey,
   initialState,
   reducers: {
-    addWithdraw: (state, action: PayloadAction<string>) => {
+    addWithdraw: (state, action: PayloadAction<Phone>) => {
       const hasProperty = Object.prototype.hasOwnProperty.call(
         getWithdrawFromLocalStorage(),
-        action.payload,
+        action.payload.id,
       );
 
-      if (hasProperty) {
-        state.withdraw[action.payload] += 1;
-      } else {
-        state.withdraw[action.payload] = 1;
+      if (!hasProperty) {
+        state.withdraw = {
+          ...state.withdraw,
+          [action.payload.id]: { ...action.payload, amount: 1 },
+        };
       }
 
       saveWithdrawToLocalStorage(state.withdraw);
     },
-    removeWithdraw: (state, action: PayloadAction<string>) => {
-      if (state.withdraw[action.payload] > 1) {
-        state.withdraw[action.payload] -= 1;
+    encreaseAmount: (state, action: PayloadAction<[number, string]>) => {
+      const hasProperty = Object.prototype.hasOwnProperty.call(
+        getWithdrawFromLocalStorage(),
+        action.payload[1],
+      );
+
+      if (hasProperty) {
+        state.withdraw[action.payload[1]].amount += action.payload[0];
+      }
+    },
+    decreaseAmount: (state, action: PayloadAction<[number, string]>) => {
+      const hasProperty = Object.prototype.hasOwnProperty.call(
+        getWithdrawFromLocalStorage(),
+        action.payload[1],
+      );
+
+      if (hasProperty
+        && state.withdraw[action.payload[1]].amount - action.payload[0] > 0) {
+        state.withdraw[action.payload[1]].amount -= action.payload[0];
       }
     },
     deleteWithdraw: (state, action: PayloadAction<string>) => {
       delete state.withdraw[action.payload];
+      saveWithdrawToLocalStorage(state.withdraw);
     },
   },
 });
 
 export const {
   addWithdraw,
-  removeWithdraw,
+  decreaseAmount,
   deleteWithdraw,
+  encreaseAmount,
 } = withdrawSlice.actions;
 export default withdrawSlice.reducer;

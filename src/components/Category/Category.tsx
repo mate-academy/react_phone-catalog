@@ -12,7 +12,7 @@ export const Category: React.FC = () => {
       <ul className="category__list">
         <li className="category__item">
           <img
-            src="/img/Category/phones.jpg"
+            src="./img/Category/phones.jpg"
             alt="Phones"
             className="category__photo"
           />
@@ -21,7 +21,7 @@ export const Category: React.FC = () => {
         </li>
         <li className="category__item">
           <img
-            src="/img/Category/tablets.jpg"
+            src="./img/Category/tablets.jpg"
             alt="Phones"
             className="category__photo"
           />
@@ -30,7 +30,7 @@ export const Category: React.FC = () => {
         </li>
         <li className="category__item">
           <img
-            src="/img/Category/accessories.jpg"
+            src="./img/Category/accessories.jpg"
             alt="Phones"
             className="category__photo"
           />

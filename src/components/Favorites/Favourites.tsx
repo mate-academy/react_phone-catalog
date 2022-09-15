@@ -7,7 +7,7 @@ import { Item } from '../Item';
 import { Path } from '../Path';
 import './Favourites.scss';
 
-export const Favourites:React.FC = () => {
+export const Favourites: React.FC = () => {
   const [favItems, setFavItems] = useState<Phone[]>([]);
 
   const title = () => {
@@ -34,21 +34,19 @@ export const Favourites:React.FC = () => {
   }, [favourites]);
 
   return (
-    <>
-      <section className="favourites">
-        <Path pathElems={[title()]} pathBoldElems={[]} />
-        <h1 className="favourites__title">
-          {title()}
-        </h1>
+    <section className="favourites">
+      <Path pathElems={[title()]} pathBoldElems={[]} />
+      <h1 className="favourites__title">
+        {title()}
+      </h1>
 
-        <h3 className="favourites__subtitle">
-          {`${favourites.length} items`}
-        </h3>
+      <h3 className="favourites__subtitle">
+        {`${favourites.length} items`}
+      </h3>
 
-        <div className="favourites__body">
-          {favItems.map(item => <Item item={item} key={item.id} />)}
-        </div>
-      </section>
-    </>
+      <div className="favourites__body">
+        {favItems.map(item => <Item item={item} key={item.id} />)}
+      </div>
+    </section>
   );
 };
