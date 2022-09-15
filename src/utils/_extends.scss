@@ -1,0 +1,87 @@
+@import "./vars";
+
+%font-bold {
+  font-family: Mont, sans-serif;
+  font-weight: bolder;
+  font-style: normal;
+}
+
+%font-semiBold {
+  font-family: Mont, sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+%font-regular {
+  font-family: Mont, sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+%h1-bold-32 {
+  @extend %font-bold;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+}
+
+%h2-blod-22 {
+  @extend %font-bold;
+  font-size: 22px;
+  line-height: 31px;
+  letter-spacing: 0;
+}
+
+%text-regular-22 {
+  @extend %font-regular;
+  font-size: 22px;
+  line-height: 28px;
+}
+
+%h3-semiBold-20 {
+  @extend %font-semiBold;
+  font-size: 20px;
+  line-height: 26px;
+  letter-spacing: 0.04em;
+}
+
+%text-uppercase-bold-12 {
+  @extend %font-bold;
+  font-size: 12px;
+  line-height: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+%font-buttons-semibold-14 {
+  @extend %font-semiBold;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+}
+
+%font-body-text-regular-14 {
+  @extend %font-regular;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+}
+
+%font-small-text-semiBold {
+  @extend %font-semiBold;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: 0;
+}
+
+%container {
+  max-width: 1136px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+%link {
+  @extend %text-uppercase-bold-12;
+  color: $colorSecondary;
+  text-decoration: none;
+}

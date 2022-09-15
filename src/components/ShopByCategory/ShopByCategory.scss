@@ -1,0 +1,36 @@
+@import "../../utils/extends";
+@import "../../utils/vars";
+
+.ShopByCategory {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__title {
+    @extend %h1-bold-32;
+    color: $colorPrimary;
+  }
+
+  &__content {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__img {
+    max-width: 368px;
+    width: 100%;
+    max-height: 368px;
+    height: 100%;
+  }
+
+  &__name {
+    @extend %h3-semiBold-20;
+    color: $colorPrimary;
+    padding: 24px 0 4px;
+  }
+
+  &__count {
+    @extend %font-body-text-regular-14;
+    color: $colorSecondary;
+  }
+}

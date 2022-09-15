@@ -1,0 +1,241 @@
+@import '../../utils/extends';
+@import '../../utils/vars';
+
+.ProductDetailsPage {
+  &__title {
+    @extend %h1-bold-32;
+    padding: 16px 0 40px;
+    color: $colorPrimary;
+  }
+
+  &__preview {
+    display: flex;
+    gap: 64px;
+    padding-bottom: 80px;
+  }
+
+  &__imgs {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__img-icons {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__img-view {
+    width: 464px;
+    height: 464px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__img-label {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 80px;
+    border: 1px solid $colorBorderImg;
+    cursor: pointer;
+
+    &:hover {
+      border-color: $colorSecondary;
+    }
+
+    &--isActive {
+      border-color: $colorPrimary;
+    }
+  }
+
+  &__img-icon {
+    width: 80%;
+  }
+
+  &__addToCart {
+    max-width: 320px;
+    width: 100%;
+  }
+
+  &__availableColors {
+    padding-bottom: 25px;
+    border-bottom: 1px solid $colorElements;
+
+    & span {
+      @extend %font-small-text-semiBold;
+      color: $colorSecondary;
+    }
+  }
+
+  &__productColors {
+    display: flex;
+    gap: 8px;
+    padding-top: 8px;
+  }
+
+  &__colorLabel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid $colorElements;
+    transition: all 0.3s;
+    cursor: pointer;
+
+    &--isActive {
+      border-color: $colorPrimary;
+    }
+
+    &--isGold {
+      &::before {
+        content: '';
+        display: block;
+        width: 26px;
+        height: 26px;
+        background-color: #fcdbc1;
+        border-radius: 50%;
+      }
+    }
+    &--isBlack{
+      &::before {
+        content: '';
+        display: block;
+        width: 26px;
+        height: 26px;
+        background-color: #4c4c4c;
+        border-radius: 50%;
+      }
+    }
+    &--isWhite{
+      &::before {
+        content: '';
+        display: block;
+        width: 26px;
+        height: 26px;
+        background-color: rgb(243, 241, 241);
+        border-radius: 50%;
+      }
+    }
+  }
+
+  &__selectCapacity {
+    padding: 24px 0;
+    border-bottom: 1px solid $colorElements;
+
+    & span {
+      @extend %font-small-text-semiBold;
+      color: $colorSecondary;
+    }
+  }
+
+  &__memorySize {
+    display: flex;
+    gap: 8px;
+    padding-top: 8px;
+  }
+
+  &__memoryLabel {
+    padding: 7px;
+    border: 1px solid #B4BDC4;
+    @extend %font-body-text-regular-14;
+    color: $colorPrimary;
+    transition: all 0.3s;
+
+    &--isActive {
+      background-color: $colorPrimary;
+      border-color: $colorPrimary;
+      color: $colorCardBG;
+    }
+  }
+
+  &__price {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    padding-top: 32px;
+  }
+
+  &__newPrice {
+    @extend %h1-bold-32;
+    color: $colorPrimary;
+  }
+
+  &__oldPrice {
+    @extend %text-regular-22;
+    color: $colorSecondary;
+    text-decoration: line-through;
+  }
+
+  &__buttons {
+    padding: 16px 0 32px;
+  }
+
+  &__techSpecs {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__previewSpecsItem {
+    display: flex;
+    justify-content: space-between;
+    @extend %font-small-text-semiBold;
+  }
+
+  &__item--isSecondary {
+    color: $colorSecondary;
+  }
+
+  &__content {
+    display: flex;
+    gap: 64px;
+    padding-bottom: 80px;
+  }
+
+  &__about {
+    max-width: 560px;
+  }
+
+  &__aboutDescription {
+    padding-top: 25px;
+    color: $colorSecondary;
+  }
+
+  &__subTitle {
+    @extend %h2-blod-22;
+    color: $colorPrimary;
+    padding-bottom: 16px;
+    border-bottom: 1px solid $colorElements;
+  }
+
+  &__techSpecsBlock {
+    max-width: 521px;
+    width: 100%;
+  }
+
+  &__techSpecsItems {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-top: 25px;
+  }
+
+  &__techSpecsItem {
+    display: flex;
+    justify-content: space-between;
+    @extend %font-body-text-regular-14;
+  }
+
+}
+
+[type="radio"] {
+  display: none;
+}

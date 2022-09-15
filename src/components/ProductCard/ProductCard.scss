@@ -1,0 +1,94 @@
+@import '../../utils/vars';
+@import '../../utils/extends';
+
+.ProductCard {
+  box-sizing: border-box;
+  background-color: $colorCardBG;
+  border: 1px solid $colorElements;
+  max-width: 272px;
+  padding: 23px 23px;
+  position: relative;
+
+  &__link {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 60px;
+    text-decoration: none;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 260px;
+    z-index: 1;
+    opacity: 0;
+    background: rgba(0, 0, 0, 0.897);
+    transition: all 0.3s;
+
+    & i::before {
+      color: #fff;
+    }
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  &__img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 8px;
+    height: 208px;
+    & img {
+      height: 100%;
+    }
+  }
+
+  &__title {
+    padding-top: 24px;
+    width: 224px;
+    height: 42px;
+    @extend %font-body-text-regular-14;
+  }
+
+  &__price {
+    display: flex;
+    gap: 8px;
+    padding: 6px 0;
+    border-bottom: 1px solid $colorElements;
+  }
+
+  &__newPrice {
+    @extend %h2-blod-22;
+  }
+
+  &__oldPrice {
+    @extend %text-regular-22;
+    color: $colorSecondary;
+    text-decoration: line-through;
+  }
+
+  &__features {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-top: 16px;
+  }
+
+  &__feature-item {
+    @extend %font-small-text-semiBold;
+    color: $colorSecondary;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__feature-info {
+    @extend %font-small-text-semiBold;
+    color: $colorPrimary;
+  }
+
+  &__buttons {
+    padding-top: 16px;
+  }
+}

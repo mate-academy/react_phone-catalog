@@ -1,0 +1,61 @@
+@import '../../utils/extends';
+@import '../../utils/vars';
+
+.CardButtons {
+  display: flex;
+  gap: 8px;
+
+  &__add-cart {
+    @extend %font-buttons-semibold-14;
+    background-color: $colorPrimary;
+    color: #fff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 0;
+    transition: box-shadow 0.3s;
+
+    &--isSmall {
+      height: 40px;
+      width: 176px;
+    }
+
+    &--isBig {
+      width: 263px;
+      height: 48px;
+    }
+
+    &:hover {
+      box-shadow: 0px 3px 13px rgba(23, 32, 49, 0.26);
+    }
+  }
+  
+  &__add-like {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    border: 1px solid $colorIcons;
+    padding: 0;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &--isSmall {
+      width: 40px;
+      height: 40px;
+    }
+
+    &--isBig {
+      width: 48px;
+      height: 48px;
+    }
+  
+    &:hover {
+      border-color: $colorPrimary;
+    }
+  
+    &--selected {
+      border-color: $colorElements;
+    }
+  }
+}

@@ -1,0 +1,26 @@
+@import "../../utils/extends";
+@import "../../utils/vars";
+
+.Nav {
+  display: flex;
+  gap: 64px;
+
+  &__link {
+    @extend %link;
+    position: relative;
+    display: flex;
+    align-items: center;
+    transition: border 0.3s, color 0.3s;
+    border-bottom: 3px solid transparent;
+
+    &--active {
+      color: $colorPrimary;
+      border-bottom: 3px solid $colorPrimary;
+    }
+
+    &:hover {
+      color: $colorPrimary;
+      border-bottom: 3px solid $colorPrimary;
+    }
+  }
+}

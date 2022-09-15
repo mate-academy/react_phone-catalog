@@ -1,0 +1,81 @@
+@import '../../utils/extends';
+@import '../../utils/vars';
+
+.CartItem {
+  display: flex;
+  box-sizing: border-box;
+  align-items: center;
+  border: 1px solid $colorElements;
+  max-width: 752px;
+  width: 100%;
+  height: 128px;
+  padding-left: 24px;
+
+  &__delete {
+    padding-right: 31px;
+  }
+
+  &__btn-delete {
+    background: none;
+    border: none;
+    cursor: pointer;
+    & i::before {
+      color: $colorIcons;
+    }
+  }
+
+  &__img {
+    width: 66px;
+    height: 66px;
+
+    & img {
+      width: 100%;
+    }
+  }
+
+  &__title {
+    @extend %font-body-text-regular-14;
+    color: $colorPrimary;
+    max-width: 295px;
+    width: 100%;
+    padding: 0 49px 0 24px;
+  }
+
+  &__quantity {
+    width: 96px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__button {
+    background: none;
+    outline: none;
+    border: 1px solid $colorIcons;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover {
+      border-color: $colorPrimary;
+    }
+
+    &:active {
+      background-color: $colorPrimary;
+      border-color: $colorPrimary;
+      color: #fff;
+    }
+    
+    &:disabled {
+      background: none;
+      border-color: $colorIcons;
+      color: $colorIcons;
+    }
+  }
+
+  &__price {
+    padding-left: 43px;
+    @extend %h2-blod-22;
+  }
+}

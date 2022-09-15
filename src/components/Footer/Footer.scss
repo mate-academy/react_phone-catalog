@@ -1,0 +1,54 @@
+@import "../../utils/vars";
+@import "../../utils/extends";
+
+.Footer {
+  height: $heightFooter;
+  box-sizing: border-box;
+  border-top: 1px solid $colorElements;
+  display: flex;
+  align-items: center;
+
+  &__container {
+    @extend %container;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__link {
+    @extend %link;
+    transition: color 0.3s;
+    &:hover {
+      color: $colorPrimary;
+    }
+  }
+
+  &__button-top {
+    background: none;
+    border: none;
+    transition: color 0.3s, border 0.3s;
+    @extend %font-small-text-semiBold;
+    color: $colorSecondary;
+    cursor: pointer;
+    &:hover {
+      color: $colorPrimary;
+    }
+
+    &:hover span {
+      border-color: $colorPrimary;
+      &::before {
+        color: $colorSecondary;
+      }
+    }
+  }
+
+  &__icon {
+    border: 1px solid $colorIcons;
+    padding: 9px;
+    margin-left: 16px;
+    transition: color 0.3s, border 0.3s;
+    &::before {
+      color: $colorPrimary;
+    }
+  }
+
+}

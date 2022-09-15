@@ -1,0 +1,50 @@
+@import "../../utils/extends";
+@import "../../utils/vars";
+
+.Pagination {
+  display: flex;
+  justify-content: center;
+
+  &__btn {
+    cursor: pointer;
+    box-sizing: border-box;
+    border: 1px solid $colorElements;
+    width: 32px;
+    height: 32px;
+    background-color: $colorCardBG;
+    color: $colorPrimary;
+    @extend %font-body-text-regular-14;
+    transition: all 0.3s;
+    margin: 0 4px;
+
+    &:hover {
+      border-color: $colorPrimary;
+    }
+
+    &--arrow {
+      border-color: $colorIcons;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 12px;
+
+      &:disabled {
+        border-color: $colorElements;
+      }
+
+      &:disabled i::before {
+        color: $colorIcons;
+      }
+
+      ::before {
+        color: $colorPrimary;
+      }
+    }
+
+    &--active {
+      background-color: $colorPrimary;
+      color: $colorCardBG;
+      border-color: $colorPrimary;
+    }
+  }
+}

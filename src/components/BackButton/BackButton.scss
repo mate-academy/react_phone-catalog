@@ -1,0 +1,24 @@
+@import "../../utils/extends";
+@import "../../utils/vars";
+
+.BackButton {
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  gap: 5px;
+  border: none;
+  background: none;
+  font-size: 12px;
+  @extend %font-small-text-semiBold;
+  color: $colorSecondary;
+
+  &:hover {
+    color: $colorPrimary;
+    cursor: pointer;
+  }
+
+  &__arrow::before {
+    color: $colorPrimary;
+  }
+}

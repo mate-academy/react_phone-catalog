@@ -1,0 +1,80 @@
+@import "../../utils/extends";
+@import "../../utils/vars";
+
+.ProductsList {
+  &__title {
+    @extend %h1-bold-32;
+    color: $colorPrimary;
+    padding-bottom: 8px;
+  }
+
+  &__subTitle {
+    @extend %font-body-text-regular-14;
+    color: $colorSecondary;
+  }
+
+  &__content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px 16px;
+    padding-bottom: 40px;
+  }
+
+  &__settings {
+    display: flex;
+    gap: 16px;
+    padding-bottom: 24px;
+  }
+
+  &__sort {
+    width: 176px;
+    color: $colorPrimary;
+    padding-top: 4px;
+  }
+  
+  &__control {
+    border-color: $colorIcons !important;
+    border-radius: 0 !important;
+    @extend %font-buttons-semibold-14;
+    
+    &--is-focused {
+      border-color: $colorPrimary !important;
+      box-shadow: none !important;
+    }
+
+    &:hover {
+      border-color: $colorSecondary !important;
+    }
+
+  }
+
+  &__menu-list {
+    @extend %font-body-text-regular-14;
+    color: $colorSecondary;
+  }
+
+  &__option {
+    &--is-selected {
+      color: $colorSecondary !important;
+      background: none !important;
+      &:hover {
+        color: $colorPrimary !important;
+        background: #f3f3f3 !important;
+      }
+    }
+    &:hover {
+      background: #f3f3f3;
+      color: $colorPrimary;
+    }
+  }
+
+  &__select-title {
+    @extend %font-small-text-semiBold;
+    color: $colorSecondary;
+  }
+
+  &__menu {
+    z-index: 2 !important;
+  }
+
+}

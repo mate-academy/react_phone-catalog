@@ -1,0 +1,79 @@
+@import "../../utils/extends";
+@import "../../utils/vars";
+
+.CartPage {
+  &__title {
+    @extend %h1-bold-32;
+    color: $colorPrimary;
+    padding: 16px 0 24px;
+  }
+
+  &__content {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__items {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 752px;
+  }
+
+  &__totalPrice {
+    width: 368px;
+    height: 206px;
+    box-sizing: border-box;
+    border: 1px solid $colorElements;
+    padding: 24px;
+    position: relative;
+  }
+
+  &__totalCost {
+    @extend %h1-bold-32;
+    color: $colorPrimary;
+    text-align: center;
+  }
+
+  &__totalItems {
+    @extend %font-body-text-regular-14;
+    text-align: center;
+    color: $colorSecondary;
+  }
+
+  &__separator {
+    height: 1px;
+    background-color: $colorElements;
+    margin: 24px 0;
+  }
+
+  &__checkout {
+    @extend %font-buttons-semibold-14;
+    background-color: $colorPrimary;
+    color: #fff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 0;
+    transition: box-shadow 0.3s;
+    width: 320px;
+    height: 48px;
+
+    &:hover {
+      box-shadow: 0px 3px 13px rgba(23, 32, 49, 0.26);
+    }
+  }
+
+  &__notification {
+    border: 2px solid $colorSecondary;
+    @extend %font-buttons-semibold-14;
+    color: $colorSecondary;
+    text-align: center;
+    padding: 10px 0;
+    border-radius: 6px;
+    position: absolute;
+    bottom: -50px;
+    left: 0;
+    right: 0;
+  }
+}

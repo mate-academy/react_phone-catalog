@@ -1,0 +1,65 @@
+@import "../../utils/vars";
+
+.SliderHome {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+
+  &__container {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__content {
+    max-width: 1040px;
+    height: 400px;
+    width: 100%;
+    position: relative;
+  }
+
+  &__img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.3s;
+    opacity: 0;
+
+    &--isActive {
+      opacity: 1;
+    }
+  }
+
+  &__button {
+    width: 32px;
+    padding: 0;
+    border: 1px solid $colorIcons;
+    background-color: $colorCardBG;
+    cursor: pointer;
+    transition: all 0.3s;
+    & i::before {
+      color: $colorPrimary;
+    }
+
+    &:hover {
+      border-color: $colorPrimary;
+    }
+  }
+
+  &__indicates {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+  }
+
+  &__indicate {
+    width: 14px;
+    height: 4px;
+    transition: all 0.3s;
+    background-color: $colorElements;
+
+    &--isActive {
+      background-color: $colorPrimary;
+    }
+  }
+}

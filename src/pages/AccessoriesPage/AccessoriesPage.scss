@@ -1,0 +1,19 @@
+@import "../../utils/extends";
+@import "../../utils/vars";
+
+.AccessoriesPage {
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    @extend %h1-bold-32;
+    color: $colorPrimary;
+    padding-bottom: 8px;
+  }
+
+  &__subTitle {
+    @extend %font-body-text-regular-14;
+    color: $colorSecondary;
+    padding-bottom: 40px;
+  }
+}

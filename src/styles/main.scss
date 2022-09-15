@@ -1,0 +1,18 @@
+@import "../utils/vars";
+
+h1, h2, h3, h4, h5, h6, p, span {
+  font-family: Mont, sans-serif;
+}
+
+main {
+  min-height: $main;
+  box-sizing: border-box;
+  padding-bottom: 80px;
+}
+
+.container {
+  max-width: 1136px;
+  width: 100%;
+  margin: 0 auto;
+  padding-top: 27px;
+}

@@ -1,0 +1,54 @@
+@import "../../utils/vars";
+@import "../../utils/extends";
+
+.ProductsSlider {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__title {
+    @extend %h1-bold-32;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__body {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    box-sizing: border-box;
+    border: 1px solid $colorIcons;
+    background-color: $colorCardBG;
+    transition: all 0.3s;
+    cursor: pointer;
+
+    &:hover {
+      border-color: $colorPrimary;
+    }
+
+    & i::before {
+      color: $colorPrimary;
+    }
+
+    &:disabled {
+      border: 1px solid $colorElements;
+
+      & i::before {
+        color: $colorIcons;
+      }
+    }
+  }
+}

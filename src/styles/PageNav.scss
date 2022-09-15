@@ -1,0 +1,42 @@
+@import "../utils/extends";
+@import "../utils/vars";
+
+.PageNav {
+  &__nav {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    height: 16px;
+    margin-bottom: 40px;
+  }
+
+  &__link {
+    text-decoration: none;
+    text-transform: capitalize;
+    height: 16px;
+    @extend %font-small-text-semiBold;
+    color: $colorPrimary;
+    transition: all 0.3s;
+
+    &--isActive {
+      color: $colorSecondary;
+      cursor: default;
+    }
+  }
+
+  &__arrow {
+    display: flex;
+    &::before {
+      font-size: 12px;
+    }
+  }
+
+  &__icon {
+    width: 100%;
+
+    &::before {
+      height: 16px;
+      color: $colorPrimary;
+    }
+  }
+}

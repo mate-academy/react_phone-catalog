@@ -1,0 +1,16 @@
+@import "../../utils/extends";
+@import "../../utils/vars";
+
+.FavoritesPage {
+  &__title {
+    @extend %h1-bold-32;
+    color: $colorPrimary;
+    padding-bottom: 8px;
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+}

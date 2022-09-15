@@ -1,0 +1,54 @@
+@import "../../utils/extends";
+@import "../../utils/vars";
+
+.PhonesPage {
+  display: flex;
+  flex-direction: column;
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    height: 16px;
+    margin-bottom: 40px;
+  }
+
+  &__link {
+    text-decoration: none;
+    width: 16px;
+    height: 16px;
+    transition: all 0.3s;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__arrow {
+    display: flex;
+    &::before {
+      font-size: 12px;
+    }
+  }
+
+  &__icon {
+    width: 100%;
+
+    &::before {
+      height: 16px;
+      color: $colorPrimary;
+    }
+  }
+
+  &__title {
+    @extend %h1-bold-32;
+    color: $colorPrimary;
+    padding-bottom: 8px;
+  }
+
+  &__subTitle {
+    @extend %font-body-text-regular-14;
+    color: $colorSecondary;
+    padding-bottom: 40px;
+  }
+}

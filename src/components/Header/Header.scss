@@ -1,0 +1,73 @@
+@import "../../utils/vars";
+@import "../../utils/extends";
+
+.Header {
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: 0 0 0 24px;
+  border-bottom: 1px solid $colorElements;
+  height: $heightHeader;
+
+  &__logo {
+    padding-right: 64px;
+    display: flex;
+    align-items: center;
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $colorPrimary;
+    display: flex;
+    padding: 24px 24px;
+    transition: border 0.3s;
+    border-bottom: 3px solid transparent;
+      &:hover {
+        border-bottom: 3px solid $colorPrimary;
+      }
+
+    &--active {
+      border-bottom: 3px solid $colorPrimary;
+    }
+  }
+
+  &__like {
+    display: flex;
+    align-items: center;
+    border-left: 1px solid $colorElements;
+    font-size: 14px;
+    position: relative;
+  }
+
+
+  &__cart {
+    position: relative;
+    display: flex;
+    align-items: center;
+    border-left: 1px solid $colorElements;
+    font-size: 14px;
+
+    &-count {
+      @extend %font-semiBold;
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 14px;
+      height: 14px;
+      border: 1px solid #fff;
+      border-radius: 50%;
+      color: #fff;
+      font-size: 9px;
+      background-color: $colorRed;
+      top: 14px;
+      right: 17px;
+    }
+  }
+}
