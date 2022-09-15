@@ -25,7 +25,10 @@ export const App: React.FC = () => {
             <Route path="/phones" element={<PhonesPage />} />
             <Route path="/phones/:productId" element={<ProductDetailsPage />} />
             <Route path="/tablets" element={<TabletsPage />} />
-            <Route path="/tablets/:productId" element={<ProductDetailsPage />} />
+            <Route
+              path="/tablets/:productId"
+              element={<ProductDetailsPage />}
+            />
             <Route path="/accessories" element={<AccessoriesPage />} />
             <Route path="/cart" element={<CartPage />} />
             <Route path="/favorites" element={<FavoritesPage />} />
