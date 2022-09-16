@@ -52,7 +52,7 @@ export const Item: React.FC<Props> = ({
       <div className="item__header">
         <div className="item__photo-container">
           <img
-            src={require(`./${item.imageUrl}`)}
+            src={require(`../../../public/img/phones/${item.imageUrl}`)}
             alt={item.id}
             className="item__photo"
           />
@@ -130,7 +130,7 @@ export const Item: React.FC<Props> = ({
             className="item__favorite"
             onClick={() => buttonHandle('favorite')}
           >
-            <img src={require(`./img/shopItem/favorite${isFavorite ? '(filled)' : ''}.svg`)} alt="add to favorite" />
+            <img src={require(`../../../public/img/shopItem/favorite${isFavorite ? '(filled)' : ''}.svg`)} alt="add to favorite" />
           </button>
         </div>
       </div>
