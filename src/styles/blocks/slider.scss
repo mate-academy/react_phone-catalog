@@ -150,6 +150,7 @@
 .slick-slider .slider__navigation {
 
   &--top {
+    box-sizing: content-box;
     border: 1px solid $icons;
     height: 100%;
     color: $icons;
