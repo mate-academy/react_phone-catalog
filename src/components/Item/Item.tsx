@@ -128,7 +128,7 @@ export const Item: React.FC<Props> = ({
             className="item__favorite"
             onClick={() => buttonHandle('favorite')}
           >
-            <img src={`./img/ShopItem/favorite${isFavorite ? '(filled)' : ''}.svg`} alt="add to favorite" />
+            <img src={`./img/shopItem/favorite${isFavorite ? '(filled)' : ''}.svg`} alt="add to favorite" />
           </button>
         </div>
       </div>
