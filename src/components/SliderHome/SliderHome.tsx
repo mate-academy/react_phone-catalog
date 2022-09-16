@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-
 import classNames from 'classnames';
 
 import './SladerHome.scss';
@@ -36,19 +35,28 @@ export const SliderHome: React.FC = () => {
 
         <div className="SliderHome__content">
           <img
-            src="./img/banner/banner-3.jpg"
+            src="./img/banners/banner-3.jpg"
             alt="banner-iphone"
-            className={classNames('SliderHome__img', { 'SliderHome__img--isActive': indexSlide === 0 })}
+            className={classNames(
+              'SliderHome__img',
+              { 'SliderHome__img--isActive': indexSlide === 0 },
+            )}
           />
           <img
-            src="./img/banner/banner-2.png"
+            src="./img/banners/banner-2.png"
             alt="banner-iphone"
-            className={classNames('SliderHome__img', { 'SliderHome__img--isActive': indexSlide === 1 })}
+            className={classNames(
+              'SliderHome__img',
+              { 'SliderHome__img--isActive': indexSlide === 1 },
+            )}
           />
           <img
-            src="./img/banner/Banner.jpg"
+            src="./img/banners/Banner.jpg"
             alt="banner-iphone"
-            className={classNames('SliderHome__img', { 'SliderHome__img--isActive': indexSlide === 2 })}
+            className={classNames('SliderHome__img',
+
+              { 'SliderHome__img--isActive': indexSlide === 2 },
+            )}
           />
         </div>
 
@@ -62,13 +70,16 @@ export const SliderHome: React.FC = () => {
       </div>
       <div className="SliderHome__indicates">
         <span
-          className={classNames('SliderHome__indicate', { 'SliderHome__indicate--isActive': indexSlide === 0 })}
+          className={classNames('SliderHome__indicate',
+            { 'SliderHome__indicate--isActive': indexSlide === 0 })}
         />
         <span
-          className={classNames('SliderHome__indicate', { 'SliderHome__indicate--isActive': indexSlide === 1 })}
+          className={classNames('SliderHome__indicate',
+            { 'SliderHome__indicate--isActive': indexSlide === 1 })}
         />
         <span
-          className={classNames('SliderHome__indicate', { 'SliderHome__indicate--isActive': indexSlide === 2 })}
+          className={classNames('SliderHome__indicate',
+            { 'SliderHome__indicate--isActive': indexSlide === 2 })}
         />
       </div>
     </div>

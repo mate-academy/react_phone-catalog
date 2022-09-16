@@ -21,21 +21,24 @@ export const getAllProducts = async () => {
 
 export const getAllPhones = async () => {
   const response = await request('products.json')
-    .then(devices => devices.filter((device: Product) => device.type === 'phone'));
+    .then(devices => devices
+      .filter((device: Product) => device.type === 'phone'));
 
   return response;
 };
 
 export const getAllTablets = async () => {
   const response = await request('products.json')
-    .then(devices => devices.filter((device: Product) => device.type === 'tablet'));
+    .then(devices => devices
+      .filter((device: Product) => device.type === 'tablet'));
 
   return response;
 };
 
 export const getAllAccessories = async () => {
   const response = await request('products.json')
-    .then(devices => devices.filter((device: Product) => device.type === 'accessory'));
+    .then(devices => devices
+      .filter((device: Product) => device.type === 'accessory'));
 
   return response;
 };
