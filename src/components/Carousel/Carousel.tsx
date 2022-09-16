@@ -126,7 +126,7 @@ export const Carousel:React.FC<Props> = ({ imgs }) => {
           className="carousel__button"
           onClick={() => actionHandler('prev')}
         >
-          <img src="./img/Banner.png" alt="Prev" />
+          <img src="../../assets/Banner.png" alt="Prev" />
         </button>
 
         <div className="carousel__wrapper">
