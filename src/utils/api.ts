@@ -1,5 +1,4 @@
-// import { Phone } from './types/Phone'
-
+export const BASE_URL = 'https://mate-academy.github.io/react_phone-catalog';
 // eslint-disable-next-line max-len
 const mainLink = 'https://mate-academy.github.io/react_phone-catalog/api/products';
 

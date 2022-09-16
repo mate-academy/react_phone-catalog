@@ -18,21 +18,10 @@
     gap: 16px;
     transition: transform 0.3s linear;
 
-    &:hover {
-      transform: scale(110%);
-    }
-    &:hover &-text {
-      color: $c-primary;
-    }
-
-    &:hover &-button {
-      border-color: $c-primary;
-    }
-
     &-text {
       color: $c-secondary;
       font-style: normal;
-      font-weight: 300;
+      font-weight: 600;
       font-size: 12px;
       line-height: 15px;
       text-align: right;
@@ -47,10 +36,22 @@
       height: 32px;
       border: 1px solid $c-icons;
       transition: border-color 0.3s linear;
+      background-image: url("../../img/vector.svg");
+      background-position: center;
+      background-repeat: no-repeat;
+      transform: rotate(-90deg);
     }
-  }
 
-  &__arrow {
-    transform: rotate(-90deg);
+    &:hover {
+      transform: scale(110%);
+    }
+
+    &:hover &-text {
+      color: $c-primary;
+    }
+
+    &:hover &-button {
+      border-color: $c-primary;
+    }
   }
 }

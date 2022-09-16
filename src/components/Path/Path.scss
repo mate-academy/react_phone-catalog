@@ -8,11 +8,11 @@
 
   &__link {
     display: flex;
-  }
-
-  &__img {
     width: 14px;
     height: 14px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url("../../img/path/pathHome.svg");
   }
 
   &__text {
@@ -24,5 +24,10 @@
 
   &__arrow {
     color: $c-icons;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url("../../img/path/pathArrow.svg");
+    width: 6px;
+    height: 9px;
   }
 }

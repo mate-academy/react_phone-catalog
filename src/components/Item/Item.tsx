@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable global-require */
 /* eslint-disable import/no-dynamic-require */
 import './Item.scss';
@@ -8,6 +9,7 @@ import { addFavourite, removeFavourite } from '../../features/favouriteSlice';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { RootState } from '../../app/store';
 import { addWithdraw, deleteWithdraw } from '../../features/withdrawSlice';
+import { BASE_URL } from '../../utils/api';
 
 type Props = {
   item: Phone,
@@ -52,7 +54,7 @@ export const Item: React.FC<Props> = ({
       <div className="item__header">
         <div className="item__photo-container">
           <img
-            src={require(`../../../public/img/phones/${item.imageUrl}`)}
+            src={`${BASE_URL}/${item.imageUrl}`}
             alt={item.id}
             className="item__photo"
           />
@@ -122,16 +124,17 @@ export const Item: React.FC<Props> = ({
             )}
             onClick={() => buttonHandle('withdraw')}
           >
-            Add to cart
+            {isWithdraw ? 'Added to cart' : 'Add to cart'}
           </button>
 
           <button
             type="button"
-            className="item__favorite"
+            className={classNames(
+              'item__favorite',
+              { 'item__favorite--active': isFavorite },
+            )}
             onClick={() => buttonHandle('favorite')}
-          >
-            <img src={require(`../../../public/img/shopItem/favorite${isFavorite ? '(filled)' : ''}.svg`)} alt="add to favorite" />
-          </button>
+          />
         </div>
       </div>
     </div>

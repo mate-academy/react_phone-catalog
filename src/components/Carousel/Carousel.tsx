@@ -123,11 +123,10 @@ export const Carousel:React.FC<Props> = ({ imgs }) => {
       <div className="carousel__body">
         <button
           type="button"
+          aria-label="prev"
           className="carousel__button"
           onClick={() => actionHandler('prev')}
-        >
-          <img src="./img/vector.svg" alt="Prev" />
-        </button>
+        />
 
         <div className="carousel__wrapper">
           <ul
@@ -143,15 +142,10 @@ export const Carousel:React.FC<Props> = ({ imgs }) => {
 
         <button
           type="button"
-          className="carousel__button"
+          aria-label="next"
+          className="carousel__button carousel__button--reversed"
           onClick={() => actionHandler('next')}
-        >
-          <img
-            src="./img/vector.svg"
-            alt="Next"
-            className="carousel__mirrored"
-          />
-        </button>
+        />
       </div>
 
       <div className="carousel__info">

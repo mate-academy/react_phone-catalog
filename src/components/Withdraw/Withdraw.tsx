@@ -11,6 +11,7 @@ import {
   deleteWithdraw,
   encreaseAmount,
 } from '../../features/withdrawSlice';
+import { BASE_URL } from '../../utils/api';
 
 // interface WithdrawPhone extends Phone {
 //   amount?: number,
@@ -61,15 +62,15 @@ export const Withdraw: React.FC = () => {
             {Object.values(withdraws).map(item => (
               <li className="withdraw__item" key={item.id}>
                 <div className="withdraw__item-info">
-                  <img
-                    src="./img/withdraw/Close.svg"
-                    alt="delete"
+                  <button
+                    type="button"
+                    aria-label="delete"
                     className="withdraw__cross"
                     onClick={() => deleteItemHandle(item.id)}
                   />
 
                   <img
-                    src={`./${item.imageUrl}`}
+                    src={`${BASE_URL}/${item.imageUrl}`}
                     alt={item.id}
                     className="withdraw__img"
                   />

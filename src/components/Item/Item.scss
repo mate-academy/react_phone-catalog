@@ -108,10 +108,17 @@
     align-items: center;
     border: 1px solid $c-icons;
     transition: border-color 0.3s linear, transform 0.3s linear;
+    background-image: url("../../img/shopItem/favorite.svg");
+    background-position: center;
+    background-repeat: no-repeat;
 
     &:hover {
       border-color: $c-primary;
       transform: scale(105%);
+    }
+
+    &--active {
+      background-image: url("../../img/shopItem/favorite\(filled\).svg");
     }
   }
 }

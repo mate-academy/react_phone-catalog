@@ -26,9 +26,16 @@
     height: 32px;
     border: 1px solid #b4bdc3;
     transition: border-color 0.3s linear;
+    background-image: url("../../img/vector.svg");
+    background-position: center;
+    background-repeat: no-repeat;
 
     &--disabled {
       border: 1px solid $c-elements;
+    }
+
+    &--reversed {
+      transform: rotateZ(180deg);
     }
 
     &:hover:enabled {

@@ -9,7 +9,6 @@
     justify-content: center;
     gap: 16px;
     margin-bottom: 18px;
-    background-image: url("../../assets/dell-streak-7.1.jpg");
   }
 
   &__container {
@@ -33,6 +32,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background-image: url("../../img/vector.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+
+    &--reversed {
+      transform: rotateZ(0deg);
+    }
   }
 
   &__info {

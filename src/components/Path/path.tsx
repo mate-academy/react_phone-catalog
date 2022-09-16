@@ -14,14 +14,8 @@ export const Path: React.FC<Props> = ({ pathElems, pathBoldElems }) => {
       <Link
         to="/home"
         className="path__link"
-      >
-        <img
-          src="./img/path/pathHome.svg"
-          alt="home"
-          className="path__img"
-        />
-      </Link>
-      <div className="path__arrow">{'>'}</div>
+      />
+      <div className="path__arrow" />
       {pathElems.map((elem, index, arr) => {
         if (arr.length - 1 > index) {
           return (
@@ -36,7 +30,7 @@ export const Path: React.FC<Props> = ({ pathElems, pathBoldElems }) => {
               >
                 {elem}
               </Link>
-              <div className="path__arrow">{'>'}</div>
+              <div className="path__arrow" />
             </>
           );
         }

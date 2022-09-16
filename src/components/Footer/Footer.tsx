@@ -2,6 +2,10 @@ import './Footer.scss';
 import '../../styles/Nav.scss';
 
 export const Footer:React.FC = () => {
+  const toTopHandle = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <footer className="footer">
       <div className="container footer__content">
@@ -35,23 +39,20 @@ export const Footer:React.FC = () => {
           </nav>
         </div>
 
-        <a
-          href="/"
+        <button
+          type="button"
           className="footer__to-top"
+          onClick={() => toTopHandle()}
         >
           <h3 className="footer__to-top-text">
             Back to top
           </h3>
-          <div
+          <button
+            type="button"
+            aria-label="to top"
             className="footer__to-top-button"
-          >
-            <img
-              src="./img/Vector (Stroke).svg"
-              alt="to top"
-              className="footer__arrow"
-            />
-          </div>
-        </a>
+          />
+        </button>
       </div>
     </footer>
   );

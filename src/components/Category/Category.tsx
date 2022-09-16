@@ -1,6 +1,5 @@
+import { Link } from 'react-router-dom';
 import './Category.scss';
-
-// src="/img/Vector (Stroke).svg"
 
 export const Category: React.FC = () => {
   return (
@@ -11,31 +10,31 @@ export const Category: React.FC = () => {
 
       <ul className="category__list">
         <li className="category__item">
-          <img
-            src="./img/Category/phones.jpg"
-            alt="Phones"
-            className="category__photo"
-          />
-          <h2 className="category__name">Mobile phones</h2>
-          <p className="category__amount">amount</p>
+          <Link to="/phones">
+            <div
+              className="category__photo--phones category__photo"
+            />
+            <h2 className="category__name">Mobile phones</h2>
+            <p className="category__amount">amount</p>
+          </Link>
         </li>
         <li className="category__item">
-          <img
-            src="./img/Category/tablets.jpg"
-            alt="Phones"
-            className="category__photo"
-          />
-          <h2 className="category__name">Tabets</h2>
-          <p className="category__amount">amount</p>
+          <Link to="/tablets">
+            <div
+              className="category__photo--tablets category__photo"
+            />
+            <h2 className="category__name">Tabets</h2>
+            <p className="category__amount">amount</p>
+          </Link>
         </li>
         <li className="category__item">
-          <img
-            src="./img/Category/accessories.jpg"
-            alt="Phones"
-            className="category__photo"
-          />
-          <h2 className="category__name">Accessories</h2>
-          <p className="category__amount">amount</p>
+          <Link to="accessories">
+            <div
+              className="category__photo--accessories category__photo"
+            />
+            <h2 className="category__name">Accessories</h2>
+            <p className="category__amount">amount</p>
+          </Link>
         </li>
       </ul>
     </section>

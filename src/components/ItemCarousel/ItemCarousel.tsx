@@ -40,36 +40,27 @@ export const ItemCarousel: React.FC<Props> = ({
         <div className="itemCarousel__buttons">
           <button
             disabled={currPage === 0}
+            aria-label="prev"
             className={classNames(
               'itemCarousel__button',
-              'arrow__reverse',
+              'itemCarousel__button--reversed',
               { 'itemCarousel__button--disabled': currPage === 0 },
             )}
             type="button"
             onClick={() => actionHandler('prev')}
-          >
-            <img
-              src="./img/vector.svg"
-              alt="prev"
-              className="arrow__reverse"
-            />
-          </button>
+          />
 
           <button
             disabled={currPage === pageAmount - 1}
+            aria-label="next"
             className={classNames(
               'itemCarousel__button',
               { 'itemCarousel__button--disabled': currPage === pageAmount - 1 },
             )}
             type="button"
             onClick={() => actionHandler('next')}
-          >
-            <img
-              src="./img/vector.svg"
-              alt="prev"
-              className="arrow"
-            />
-          </button>
+          />
+
         </div>
       </div>
 
