@@ -1,10 +1,14 @@
-import React, { ReactNode, useMemo, useState } from 'react';
+import React, {
+  ReactNode, useEffect, useMemo, useState,
+} from 'react';
 import { getProducts } from '../api/api';
 import { Product } from '../types/Product';
 
 type ContextValue = {
   products: Product[],
   setProducts: React.Dispatch<React.SetStateAction<Product[]>>;
+  isLoading: boolean,
+  setIsLoading: (value: boolean) => void,
 };
 
 type Props = {
@@ -37,17 +41,29 @@ getProducts().then(res => {
 export const ProductsContext = React.createContext<ContextValue>({
   products: productsFromServer,
   setProducts: () => {},
+  isLoading: false,
+  setIsLoading: () => {},
 });
 
 export const ProductsProvider: React.FC<Props> = ({ children }) => {
   // const [products, setProducts] = useLocalStorage<Product[]>('products', []);
 
   const [products, setProducts] = useState<Product[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    getProducts().then(res => {
+      setProducts(res);
+      setIsLoading(false);
+    });
+  }, [isLoading]);
 
   const contextValue = useMemo(() => (
     {
       products,
       setProducts,
+      isLoading,
+      setIsLoading,
     }
   ), [products]);
 

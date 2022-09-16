@@ -31,6 +31,12 @@
     flex-direction: column;
     align-items: center;
     transition: $transition;
+    margin-bottom: 40px;
+
+    &--slider {
+      margin: 25px;
+      margin-bottom: 0;
+    }
 
     &:hover {
       transform: scale(1.05);

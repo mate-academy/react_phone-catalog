@@ -1,7 +1,6 @@
 import {
-  useContext, useEffect, memo, useState, useMemo,
+  useContext, memo, useMemo,
 } from 'react';
-import { getProducts } from '../api/api';
 import { Categories } from './Categories';
 import { CustomSlider } from './CustomSlider';
 import { Loader } from './Loader';
@@ -9,7 +8,6 @@ import { ProductsContext } from './ProductsContext';
 import { ProductSlider } from './ProductSlider';
 
 const hotPricesSettings = {
-  dots: true,
   infinite: true,
   slidesToShow: 4,
   slidesToScroll: 2,
@@ -46,10 +44,9 @@ const hotPricesSettings = {
 };
 
 const brandNewSettings = {
-  dots: true,
   infinite: true,
   slidesToShow: 4,
-  slidesToScroll: 1,
+  slidesToScroll: 2,
   autoplay: true,
   autoplaySpeed: 3000,
   pauseOnHover: true,
@@ -83,15 +80,7 @@ const brandNewSettings = {
 };
 
 export const Home = memo(() => {
-  const { products, setProducts } = useContext(ProductsContext);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    getProducts().then(res => {
-      setProducts(res);
-      setIsLoading(false);
-    });
-  }, []);
+  const { products, isLoading } = useContext(ProductsContext);
 
   const getHotPriceProducts = () => {
     return [...products].filter(product => product.discount !== 0);

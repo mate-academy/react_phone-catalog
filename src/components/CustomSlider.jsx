@@ -67,7 +67,7 @@ export const CustomSlider = ({ products, settings, title }) => {
           <Slider {...settings} className="slider" ref={sliderRef}>
             {products.map(item => (
               <div style={{ margin: 50 }} key={item.id} data-cy="cardsContainer">
-                <ProductCard product={item} />
+                <ProductCard product={item} isSlider />
               </div>
             ))}
           </Slider>

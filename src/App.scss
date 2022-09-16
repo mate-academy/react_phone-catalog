@@ -9,11 +9,16 @@
 @import "./styles/blocks/categories.scss";
 @import "./styles/blocks/menu.scss";
 @import "./styles/blocks/loader.scss";
+@import "./styles/blocks/subheader.scss";
+@import "./styles/blocks/pagination.scss";
+@import "./styles/blocks/productlist.scss";
+@import "./styles/blocks/sort.scss";
 
 * {
   margin: 0;
   padding: 0;
   scroll-behavior: smooth;
+  box-sizing: border-box;
 }
 
 body {

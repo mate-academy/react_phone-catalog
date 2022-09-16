@@ -1,13 +1,20 @@
 /* eslint-disable max-len */
+import classNames from 'classnames';
 import { Product } from '../types/Product';
 
 type Props = {
   product: Product;
+  isSlider: boolean
 };
 
-export const ProductCard:React.FC<Props> = ({ product }) => {
+export const ProductCard:React.FC<Props> = ({ product, isSlider }) => {
   return (
-    <div className="slider__card slider__card--1" key={product.id} style={{ margin: 25 }}>
+    <div
+      className={classNames(
+        'slider__card', { 'slider__card--slider': isSlider },
+      )}
+      key={product.id}
+    >
       <img
         className="slider__img--hot slider__img--hot"
         src={product.imageUrl}
@@ -17,8 +24,19 @@ export const ProductCard:React.FC<Props> = ({ product }) => {
       <p className="body-text slider__title">{product.name}</p>
 
       <h2 className="slider__price">
-        {`$${product.price - (product.price * (product.discount / 100))}`}
-        <span className="slider__fullprice">{`$${product.price}`}</span>
+        {product.discount === 0
+          && `$${product.price}`}
+
+        {product.discount !== 0
+         && (
+           <>
+             $
+             {
+               product.price - (product.price * (product.discount / 100))
+             }
+             <span className="slider__fullprice">{`$${product.price}`}</span>
+           </>
+         )}
       </h2>
 
       <hr className="slider__line" />

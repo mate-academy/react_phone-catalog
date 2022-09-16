@@ -5,7 +5,15 @@
   max-width: 1200px;
   margin: 0 auto;
 
+  @include laptop {
+    padding: 0 30px;
+  }
+
   @include tablet {
     padding: 0 30px;
+  }
+
+  @include mobile {
+    padding: 0 15px;
   }
 }

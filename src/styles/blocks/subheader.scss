@@ -1,0 +1,30 @@
+@import "../utils/mixins.scss";
+@import "../utils/vars.scss";
+
+.subheader {
+  display: flex;
+
+  width: 85%;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  height: 100%;
+
+  @include tablet {
+    grid-column: 1 / 3;
+    width: 70%;
+  }
+
+  &__text {
+    color: $secondary;
+  }
+
+  &__title {
+    margin-bottom: 8px;
+  }
+
+  &__quantity {
+    color: $secondary;
+    margin-bottom: 40px;
+  }
+}

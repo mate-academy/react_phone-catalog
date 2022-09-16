@@ -6,7 +6,7 @@
   top: 0;
   right: 0;
   left: 0;
-  height: 64px;
+  height: fit-content;
   width: 100%;
   margin-bottom: 40px;
   border-bottom: 1px solid $elements;
@@ -23,9 +23,23 @@
     @include tablet {
       grid-template-columns: 21fr 3fr;
     }
+
     @include mobile {
       display: flex;
-      justify-content: space-between;
+    }
+
+    &--search {
+      grid-template-columns: 2.5fr 20fr 5fr 2fr;
+
+      @include tablet {
+        grid-template-columns: 15fr 8fr 3fr;
+      }
+
+      @include mobile {
+        justify-self: end;
+        display: flex;
+        justify-content: space-between;
+      }
     }
   }
 
@@ -49,6 +63,8 @@
 
     @include tablet {
       padding-left: 24px;
+      gap: 15px;
+
     }
 
     @include mobile {
@@ -57,32 +73,51 @@
   }
 
   &__icon {
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding: 24px;
-    width: 15px;
-    height: 15px;
     border: 1px solid $elements;
     transition: $transition;
 
-    &:hover {
-      border: 1px solid $black;
+    &--search {
+      border-right: none;
+      border-bottom: none;
+
+      &:first-child {
+        border-left: none;
+
+        @include mobile {
+          border-left: 1px solid $elements;
+        }
+      }
     }
 
-    &--active > svg > path {
-      fill: $red;
+    & > svg {
+      transition: $transition;
     }
 
     &--active > svg {
       fill: $red;
       stroke: $red;
     }
+
+    &:hover > svg {
+      transform: scale(1.1);
+    }
+
+    &--active > svg > path {
+      fill: $red;
+    }
   }
 
   &__icons {
     display: flex;
+    width: 100%;
+    height: 100%;
 
     @include mobile {
-      justify-self: end;
+      justify-content: flex-end;
     }
   }
 
@@ -107,8 +142,26 @@
     }
   }
 
-  &__input {
-    width: 95%;
+  &__search {
+    padding: 22px;
+    border: 1px solid $elements;
+    border-bottom: none;
+    width: 99%;
     height: 100%;
+    outline: none;
+    color: $secondary;
+    transition: $transition;
+
+    &:focus {
+      border: 1px solid $black;
+    }
+
+    &:hover {
+      border: 1px solid $secondary;
+    }
+
+    @include mobile {
+      margin-left: 40px;
+    }
   }
 }
