@@ -47,9 +47,7 @@ export const Footer:React.FC = () => {
           <h3 className="footer__to-top-text">
             Back to top
           </h3>
-          <button
-            type="button"
-            aria-label="to top"
+          <div
             className="footer__to-top-button"
           />
         </button>

@@ -1,4 +1,5 @@
 {
+  "homepage": "./",
   "name": "react_phone-catalog",
   "version": "0.1.0",
   "keywords": [],
@@ -6,10 +7,13 @@
   "license": "GPL-3.0",
   "dependencies": {
     "@cypress/react": "^5.12.4",
+    "@reduxjs/toolkit": "^1.8.5",
     "bulma": "^0.9.3",
     "classnames": "^2.3.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-redux": "^8.0.2",
+    "react-router-dom": "^6.4.0",
     "react-scripts": "^4.0.3"
   },
   "devDependencies": {
