@@ -167,96 +167,94 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
   }
 
   return (
-    <>
-      <div className="products-page">
-        {products.length === 0
-          ? (
-            <div className="title-container">
-              <h1 className="title-not-found">{`${productType} not found`}</h1>
+    <div className="products-page">
+      {products.length === 0
+        ? (
+          <div className="title-container">
+            <h1 className="title-not-found">{`${productType} not found`}</h1>
+          </div>
+        )
+        : (
+          <div className="products-page-wrapper">
+            <i className="fa-solid fa-house icon" />
+            <i className="fa-solid fa-angle-right icon" />
+            <span className="icon-title">{productType}</span>
+            <div className="header-container">
+              <h1 className="mobile-title">{productType}</h1>
+              <p className="models-title">{`${products.length} models`}</p>
             </div>
-          )
-          : (
-            <div className="products-page-wrapper">
-              <i className="fa-solid fa-house icon" />
-              <i className="fa-solid fa-angle-right icon" />
-              <span className="icon-title">{productType}</span>
-              <div className="header-container">
-                <h1 className="mobile-title">{productType}</h1>
-                <p className="models-title">{`${products.length} models`}</p>
-              </div>
-              <div className="products-sort-container">
-                <div className="select-container">
-                  <p className="select-title">Sort by</p>
-                  <select
-                    name="sortBy"
-                    value={sortBy}
-                    className="select"
-                    onChange={(event) => handleSortBy(event.target.value)}
-                  >
-                    <option hidden value="">Sort by</option>
-                    <option
-                      className="option"
-                      value="age"
-                    >
-                      Newest
-                    </option>
-                    <option
-                      className="option"
-                      value="name"
-                    >
-                      Alphabetically
-                    </option>
-                    <option
-                      className="option"
-                      value="price"
-                    >
-                      Cheapest
-                    </option>
-                  </select>
-                </div>
-                <div className="select-container">
-                  <p className="select-title">Items on page</p>
-                  <select
-                    name="pagination"
-                    className="select"
-                    value={perPage}
-                    onChange={(event) => {
-                      handleItemsPerPage(event.target.value);
-                    }}
-                  >
-                    {products.length >= 16 && (<option value="16">16</option>)}
-                    {products.length >= 8 && (<option value="8">8</option>)}
-                    {products.length >= 4 && (<option value="4">4</option>)}
-                    <option value={products.length}>All</option>
-                  </select>
-                </div>
-              </div>
-              <div
-                className="products-list-container"
-                data-cy="productList"
-                style={productStyleContainer}
-              >
-                <div
-                  className="products-list"
-                  style={productSliderList as React.CSSProperties}
+            <div className="products-sort-container">
+              <div className="select-container">
+                <p className="select-title">Sort by</p>
+                <select
+                  name="sortBy"
+                  value={sortBy}
+                  className="select"
+                  onChange={(event) => handleSortBy(event.target.value)}
                 >
-                  <ProductsList products={filteredProducts} />
-                </div>
+                  <option hidden value="">Sort by</option>
+                  <option
+                    className="option"
+                    value="age"
+                  >
+                    Newest
+                  </option>
+                  <option
+                    className="option"
+                    value="name"
+                  >
+                    Alphabetically
+                  </option>
+                  <option
+                    className="option"
+                    value="price"
+                  >
+                    Cheapest
+                  </option>
+                </select>
               </div>
-              <div>
-                <Pagination
-                  total={products.length}
-                  perPage={perPage ? +perPage : 4}
-                  page={currentPage ? +currentPage : 1}
-                  onPageChange={handleCurrentPage}
-                  slideNextPage={slideNextPage}
-                  slidePreviousPage={slidePreviousPage}
-                  slideSelectedPage={slideSelectedPage}
-                />
+              <div className="select-container">
+                <p className="select-title">Items on page</p>
+                <select
+                  name="pagination"
+                  className="select"
+                  value={perPage}
+                  onChange={(event) => {
+                    handleItemsPerPage(event.target.value);
+                  }}
+                >
+                  {products.length >= 16 && (<option value="16">16</option>)}
+                  {products.length >= 8 && (<option value="8">8</option>)}
+                  {products.length >= 4 && (<option value="4">4</option>)}
+                  <option value={products.length}>All</option>
+                </select>
               </div>
             </div>
-          )}
-      </div>
-    </>
+            <div
+              className="products-list-container"
+              data-cy="productList"
+              style={productStyleContainer}
+            >
+              <div
+                className="products-list"
+                style={productSliderList as React.CSSProperties}
+              >
+                <ProductsList products={filteredProducts} />
+              </div>
+            </div>
+            <div>
+              <Pagination
+                total={products.length}
+                perPage={perPage ? +perPage : 4}
+                page={currentPage ? +currentPage : 1}
+                onPageChange={handleCurrentPage}
+                slideNextPage={slideNextPage}
+                slidePreviousPage={slidePreviousPage}
+                slideSelectedPage={slideSelectedPage}
+              />
+            </div>
+          </div>
+        )}
+    </div>
   );
 };

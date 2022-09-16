@@ -27,34 +27,32 @@ export const FavoritesPage: React.FC = () => {
   }
 
   return (
-    <>
-      <div className="favorites-page">
-        {favorites.length === 0
-          ? (
-            <div className="title-container">
-              <h1 className="title-not-found">No favorites items</h1>
+    <div className="favorites-page">
+      {favorites.length === 0
+        ? (
+          <div className="title-container">
+            <h1 className="title-not-found">No favorites items</h1>
+          </div>
+        )
+        : (
+          <div className="favorites-page-wrapper">
+            <i className="fa-solid fa-house icon" />
+            <i className="fa-solid fa-angle-right icon" />
+            <span className="icon-title">Favorites</span>
+            <div className="header-container">
+              <h1 className="favorites-title">Favorites</h1>
+              <p className="favorites-quantity-title">{`${favorites.length} items`}</p>
             </div>
-          )
-          : (
-            <div className="favorites-page-wrapper">
-              <i className="fa-solid fa-house icon" />
-              <i className="fa-solid fa-angle-right icon" />
-              <span className="icon-title">Favorites</span>
-              <div className="header-container">
-                <h1 className="favorites-title">Favorites</h1>
-                <p className="favorites-quantity-title">{`${favorites.length} items`}</p>
-              </div>
-              <div
-                className="products-list-container"
-                data-cy="productList"
-              >
-                <div className="products-list">
-                  <ProductsList products={filteredProducts} />
-                </div>
+            <div
+              className="products-list-container"
+              data-cy="productList"
+            >
+              <div className="products-list">
+                <ProductsList products={filteredProducts} />
               </div>
             </div>
-          )}
-      </div>
-    </>
+          </div>
+        )}
+    </div>
   );
 };

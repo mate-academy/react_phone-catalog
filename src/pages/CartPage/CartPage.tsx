@@ -61,120 +61,118 @@ export const CartPage: React.FC = () => {
   }
 
   return (
-    <>
-      <div className="cart-page">
-        {cart.length === 0
-          ? (
-            <div className="cart-page">
-              <div className="title-container">
-                <h1 className="title-not-found">Your cart is empty</h1>
-              </div>
+    <div className="cart-page">
+      {cart.length === 0
+        ? (
+          <div className="cart-page">
+            <div className="title-container">
+              <h1 className="title-not-found">Your cart is empty</h1>
             </div>
-          )
-          : (
-            <div className="cart-page-wrapper">
-              <div className="icons-container" onClick={() => goBackPage()}>
-                <i className="fa-solid fa-angle-left icon" />
-                <span className="icon-title">Back</span>
-              </div>
-              <div className="header-container">
-                <h1 className="mobile-title">Cart</h1>
-              </div>
-              <div className="cart-sections-container">
-                <div className="cart-list-container">
-                  <div className="cart-list">
-                    {uniqueItems.map(item => (
-                      <div className="item-wrapper" key={item.id}>
-                        <div className="item-container">
-                          <div className="delete-item">
+          </div>
+        )
+        : (
+          <div className="cart-page-wrapper">
+            <div className="icons-container" onClick={() => goBackPage()}>
+              <i className="fa-solid fa-angle-left icon" />
+              <span className="icon-title">Back</span>
+            </div>
+            <div className="header-container">
+              <h1 className="mobile-title">Cart</h1>
+            </div>
+            <div className="cart-sections-container">
+              <div className="cart-list-container">
+                <div className="cart-list">
+                  {uniqueItems.map(item => (
+                    <div className="item-wrapper" key={item.id}>
+                      <div className="item-container">
+                        <div className="delete-item">
+                          <button
+                            type="button"
+                            className="delete-item-button"
+                            data-cy="cartDeleteButton"
+                            onClick={
+                              () => removeFromLocalStorage('cart', item)
+                            }
+                          >
+                            <i className="fa-solid fa-xmark" />
+                          </button>
+                        </div>
+                        <Link to={`/product/${item.id}`}>
+                          <div className="item-image">
+                            <img
+                              className="cart-image"
+                              src={item.imageUrl}
+                              alt={item.name}
+                            />
+                          </div>
+                        </Link>
+                        <div className="item-name">
+                          <p className="name">
+                            {`${item.name.replace('™', '')} ${item.ram || ''}`}
+                          </p>
+                        </div>
+                        <div className="change-quantity-buttons-container">
+                          <div className="remove-item-button">
                             <button
                               type="button"
-                              className="delete-item-button"
-                              data-cy="cartDeleteButton"
-                              onClick={
-                                () => removeFromLocalStorage('cart', item)
-                              }
+                              className="minus"
+                              onClick={() => minusItem(item)}
                             >
-                              <i className="fa-solid fa-xmark" />
+                              <i className="fa-solid fa-minus grey-color" />
                             </button>
                           </div>
-                          <Link to={`/product/${item.id}`}>
-                            <div className="item-image">
-                              <img
-                                className="cart-image"
-                                src={item.imageUrl}
-                                alt={item.name}
-                              />
-                            </div>
-                          </Link>
-                          <div className="item-name">
-                            <p className="name">
-                              {`${item.name.replace('™', '')} ${item.ram || ''}`}
+                          <div
+                            className="product-quantity-container"
+                            data-cy="productQauntity"
+                          >
+                            <p className="product-quantity">
+                              {quantityOfItems(item)}
                             </p>
                           </div>
-                          <div className="change-quantity-buttons-container">
-                            <div className="remove-item-button">
-                              <button
-                                type="button"
-                                className="minus"
-                                onClick={() => minusItem(item)}
-                              >
-                                <i className="fa-solid fa-minus grey-color" />
-                              </button>
-                            </div>
-                            <div
-                              className="product-quantity-container"
-                              data-cy="productQauntity"
+                          <div className="add-item-button">
+                            <button
+                              type="button"
+                              className="plus"
+                              onClick={() => addToLocalStorage('cart', item)}
                             >
-                              <p className="product-quantity">
-                                {quantityOfItems(item)}
-                              </p>
-                            </div>
-                            <div className="add-item-button">
-                              <button
-                                type="button"
-                                className="plus"
-                                onClick={() => addToLocalStorage('cart', item)}
-                              >
-                                <i className="fa-solid fa-plus grey-color" />
-                              </button>
-                            </div>
-                          </div>
-                          <div className="item-price">
-                            <p className="price">
-                              {
-                                `$${item.discount
-                                  ? (
-                                    Math.round(item.price
-                                      - (item.price / item.discount)))
-                                  : item.price}`
-                              }
-                            </p>
+                              <i className="fa-solid fa-plus grey-color" />
+                            </button>
                           </div>
                         </div>
+                        <div className="item-price">
+                          <p className="price">
+                            {
+                              `$${item.discount
+                                ? (
+                                  Math.round(item.price
+                                    - (item.price / item.discount)))
+                                : item.price}`
+                            }
+                          </p>
+                        </div>
                       </div>
-                    ))}
-                  </div>
+                    </div>
+                  ))}
                 </div>
-                <div className="cart-checkout-container">
-                  <div className="header-price-container">
-                    <h1 className="total-price-title">{`$${totalPrice}`}</h1>
-                    <p className="quantity-title">{`Total for ${cart.length} items`}</p>
-                  </div>
-                  <div className="checkout">
-                    <button
-                      type="button"
-                      className="checkout-button"
-                      onClick={() => setCheckout(true)}
-                    >
-                      Checkout
-                    </button>
-                  </div>
+              </div>
+              <div className="cart-checkout-container">
+                <div className="header-price-container">
+                  <h1 className="total-price-title">{`$${totalPrice}`}</h1>
+                  <p className="quantity-title">{`Total for ${cart.length} items`}</p>
+                </div>
+                <div className="checkout">
+                  <button
+                    type="button"
+                    className="checkout-button"
+                    onClick={() => setCheckout(true)}
+                  >
+                    Checkout
+                  </button>
                 </div>
               </div>
             </div>
-          )}
-      </div>
-    </>
+          </div>
+        )}
+    </div>
   );
 };
