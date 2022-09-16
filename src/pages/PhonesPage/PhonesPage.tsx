@@ -11,7 +11,9 @@ import '../../styles/PageNav.scss';
 export const PhonesPage: React.FC = () => {
   const [phones, setPhones] = useState<Product[]>([]);
 
-  const setActive = ({ isActive }: { isActive:boolean }) => (isActive ? 'PageNav__link PageNav__link--isActive' : 'PageNav__link');
+  const setActive = (
+    { isActive }: { isActive: boolean },
+  ) => (isActive ? 'PageNav__link PageNav__link--isActive' : 'PageNav__link');
 
   useEffect(() => {
     ((async () => {
@@ -38,7 +40,9 @@ export const PhonesPage: React.FC = () => {
         {' '}
         models
       </span>
-      {phones.length !== 0 ? <ProductsList devices={phones} /> : <NoResults title="Phones" />}
+      {phones.length !== 0
+        ? <ProductsList devices={phones} />
+        : <NoResults title="Phones" />}
     </div>
   );
 };

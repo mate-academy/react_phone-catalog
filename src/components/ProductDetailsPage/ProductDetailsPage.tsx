@@ -16,8 +16,13 @@ export const ProductDetailsPage: React.FC = () => {
   const [allProducts, setAllProducts] = useState<Product[]>([]);
   const [foundProduct, setFoundProduct] = useState<Product | undefined>();
   const [product, setProduct] = useState<ProductDetails | undefined>();
-  const [suggestedProducts, setSuggestedProducts] = useState<Product[] | []>([]);
-  const setActive = ({ isActive }: { isActive:boolean }) => (isActive ? 'PageNav__link PageNav__link--isActive' : 'PageNav__link');
+  const [suggestedProducts, setSuggestedProducts] = useState<Product[] | []>(
+    [],
+  );
+
+  const setActive = (
+    { isActive }: { isActive: boolean },
+  ) => (isActive ? 'PageNav__link PageNav__link--isActive' : 'PageNav__link');
 
   const location = useLocation();
 
@@ -29,7 +34,9 @@ export const ProductDetailsPage: React.FC = () => {
     const numberArr: number[] = [];
 
     do {
-      const randomNumber = Math.floor(Math.random() * (allProducts.length - 1)) + 1;
+      const randomNumber = Math.floor(
+        Math.random() * (allProducts.length - 1),
+      ) + 1;
 
       numberArr.push(randomNumber);
     } while (numberArr.length < allProducts.length / 2);
@@ -65,7 +72,8 @@ export const ProductDetailsPage: React.FC = () => {
   }, [product]);
 
   useMemo(() => {
-    const findProduct = allProducts.find((device: Product) => device.id === idProduct);
+    const findProduct = allProducts
+      .find((device: Product) => device.id === idProduct);
 
     setFoundProduct(findProduct);
     getSuggestedProducts();
@@ -75,8 +83,12 @@ export const ProductDetailsPage: React.FC = () => {
     setBigImg(event.target.id);
   };
 
-  const newPriceProduct = foundProduct?.discount !== 0 && foundProduct?.discount !== undefined
-    ? foundProduct?.price - ((foundProduct?.price / 100) * foundProduct?.discount)
+  const newPriceProduct = foundProduct?.discount !== 0 && (
+    foundProduct?.discount !== undefined
+  )
+    ? foundProduct?.price - (
+      (foundProduct?.price / 100) * foundProduct?.discount
+    )
     : foundProduct?.price;
 
   return (
@@ -98,8 +110,14 @@ export const ProductDetailsPage: React.FC = () => {
             {product?.images.map(foto => (
               <label
                 htmlFor={foto}
-                className={classNames('ProductDetailsPage__img-label',
-                  { 'ProductDetailsPage__img-label--isActive': foto === bigImg })}
+                className={classNames(
+                  'ProductDetailsPage__img-label',
+                  {
+                    'ProductDetailsPage__img-label--isActive': (
+                      foto === bigImg
+                    ),
+                  },
+                )}
                 key={foto}
               >
                 <img
@@ -133,13 +151,36 @@ export const ProductDetailsPage: React.FC = () => {
                   { 'ProductDetailsPage__colorLabel--isActive': true },
                 )}
               >
-                <input className="ProductDetailsPage__colorRadio" type="radio" id="gold-color" name="color" />
+                <input
+                  className="ProductDetailsPage__colorRadio"
+                  type="radio"
+                  id="gold-color"
+                  name="color"
+                />
               </label>
-              <label htmlFor="black-color" className="ProductDetailsPage__colorLabel ProductDetailsPage__colorLabel--isBlack">
-                <input className="ProductDetailsPage__colorRadio" type="radio" id="black-color" name="color" />
+              <label
+                htmlFor="black-color"
+                className="ProductDetailsPage__colorLabel
+              ProductDetailsPage__colorLabel--isBlack"
+              >
+                <input
+                  className="ProductDetailsPage__colorRadio"
+                  type="radio"
+                  id="black-color"
+                  name="color"
+                />
               </label>
-              <label htmlFor="white-color" className="ProductDetailsPage__colorLabel ProductDetailsPage__colorLabel--isWhite">
-                <input className="ProductDetailsPage__colorRadio" type="radio" id="white-color" name="color" />
+              <label
+                htmlFor="white-color"
+                className="ProductDetailsPage__colorLabel
+                  ProductDetailsPage__colorLabel--isWhite"
+              >
+                <input
+                  className="ProductDetailsPage__colorRadio"
+                  type="radio"
+                  id="white-color"
+                  name="color"
+                />
               </label>
             </div>
           </div>
@@ -183,15 +224,27 @@ export const ProductDetailsPage: React.FC = () => {
           </div>
           <div className="ProductDetailsPage__techSpecs">
             <div className="ProductDetailsPage__previewSpecsItem">
-              <span className="ProductDetailsPage__item--isSecondary">Screen</span>
+              <span
+                className="ProductDetailsPage__item--isSecondary"
+              >
+                Screen
+              </span>
               <span>{product?.display.screenSize}</span>
             </div>
             <div className="ProductDetailsPage__previewSpecsItem">
-              <span className="ProductDetailsPage__item--isSecondary">Resolution</span>
+              <span
+                className="ProductDetailsPage__item--isSecondary"
+              >
+                Resolution
+              </span>
               <span>{product?.display.screenResolution}</span>
             </div>
             <div className="ProductDetailsPage__previewSpecsItem">
-              <span className="ProductDetailsPage__item--isSecondary">Processor</span>
+              <span
+                className="ProductDetailsPage__item--isSecondary"
+              >
+                Processor
+              </span>
               <span>{product?.hardware.cpu}</span>
             </div>
             <div className="ProductDetailsPage__previewSpecsItem">
@@ -204,21 +257,37 @@ export const ProductDetailsPage: React.FC = () => {
       <div className="ProductDetailsPage__content">
         <div className="ProductDetailsPage__about">
           <h3 className="ProductDetailsPage__subTitle">About</h3>
-          <p className="ProductDetailsPage__aboutDescription">{product?.description}</p>
+          <p
+            className="ProductDetailsPage__aboutDescription"
+          >
+            {product?.description}
+          </p>
         </div>
         <div className="ProductDetailsPage__techSpecsBlock">
           <h3 className="ProductDetailsPage__subTitle">Tech specs</h3>
           <div className="ProductDetailsPage__techSpecsItems">
             <div className="ProductDetailsPage__techSpecsItem">
-              <span className="ProductDetailsPage__item--isSecondary">Screen</span>
+              <span
+                className="ProductDetailsPage__item--isSecondary"
+              >
+                Screen
+              </span>
               <span>{product?.display.screenSize}</span>
             </div>
             <div className="ProductDetailsPage__techSpecsItem">
-              <span className="ProductDetailsPage__item--isSecondary">Resolution</span>
+              <span
+                className="ProductDetailsPage__item--isSecondary"
+              >
+                Resolution
+              </span>
               <span>{product?.display.screenResolution}</span>
             </div>
             <div className="ProductDetailsPage__techSpecsItem">
-              <span className="ProductDetailsPage__item--isSecondary">Processor</span>
+              <span
+                className="ProductDetailsPage__item--isSecondary"
+              >
+                Processor
+              </span>
               <span>{product?.hardware.cpu}</span>
             </div>
             <div className="ProductDetailsPage__techSpecsItem">
@@ -226,15 +295,27 @@ export const ProductDetailsPage: React.FC = () => {
               <span>{product?.storage.ram}</span>
             </div>
             <div className="ProductDetailsPage__techSpecsItem">
-              <span className="ProductDetailsPage__item--isSecondary">Built in memory</span>
+              <span
+                className="ProductDetailsPage__item--isSecondary"
+              >
+                Built in memory
+              </span>
               <span>{product?.storage.flash}</span>
             </div>
             <div className="ProductDetailsPage__techSpecsItem">
-              <span className="ProductDetailsPage__item--isSecondary">Camera</span>
+              <span
+                className="ProductDetailsPage__item--isSecondary"
+              >
+                Camera
+              </span>
               <span>{product?.camera.primary}</span>
             </div>
             <div className="ProductDetailsPage__techSpecsItem">
-              <span className="ProductDetailsPage__item--isSecondary">Weight</span>
+              <span
+                className="ProductDetailsPage__item--isSecondary"
+              >
+                Weight
+              </span>
               <span>{product?.sizeAndWeight.weight}</span>
             </div>
           </div>

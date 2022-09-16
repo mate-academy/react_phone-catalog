@@ -8,8 +8,12 @@ type Props = {
   updateAllCost: () => void,
 };
 
-export const CartItem: React.FC<Props> = ({ product, deleteCart, updateAllCost }) => {
-  const [quantity, setQuantity] = useState<number>(product.quantity ? product.quantity : 0);
+export const CartItem: React.FC<Props> = ({
+  product, deleteCart, updateAllCost,
+}) => {
+  const [quantity, setQuantity] = useState<number>(
+    product.quantity ? product.quantity : 0,
+  );
 
   const changesQuantity = (action: string) => {
     const getStorageCard = localStorage.getItem('cart');

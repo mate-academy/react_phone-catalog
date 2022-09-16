@@ -28,7 +28,9 @@ export const ContextProvider: React.FC = ({ children }) => {
   }
 
   const [countCart, setCountCart] = useState<number>(cartFromLocal.length);
-  const [countFavorites, setCountFavorites] = useState<number>(favoritesFromLocal.length);
+  const [countFavorites, setCountFavorites] = useState<number>(
+    favoritesFromLocal.length,
+  );
 
   const counterCart = (count: number) => {
     setCountCart(prev => prev + count);

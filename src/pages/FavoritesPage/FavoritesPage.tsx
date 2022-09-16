@@ -12,7 +12,9 @@ export const FavoritesPage: React.FC = () => {
 
   const context = useCounter();
 
-  const setActive = ({ isActive }: { isActive: boolean }) => (isActive ? 'PageNav__link PageNav__link--isActive' : 'PageNav__link');
+  const setActive = (
+    { isActive }: { isActive: boolean },
+  ) => (isActive ? 'PageNav__link PageNav__link--isActive' : 'PageNav__link');
 
   const getFavorigesFromStorage = () => {
     const getFavorites = localStorage.getItem('favorites') || '';

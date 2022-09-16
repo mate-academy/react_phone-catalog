@@ -3,8 +3,10 @@ import { NavLink } from 'react-router-dom';
 
 import './Nav.scss';
 
-export const Nav:React.FC = () => {
-  const setActive = ({ isActive }: { isActive:boolean }) => (isActive ? 'Nav__link Nav__link--active' : 'Nav__link');
+export const Nav: React.FC = () => {
+  const setActive = (
+    { isActive }: { isActive: boolean },
+  ) => (isActive ? 'Nav__link Nav__link--active' : 'Nav__link');
 
   return (
     <div className="Nav">

@@ -9,7 +9,9 @@ import './AccessoriesPage.scss';
 export const AccessoriesPage: React.FC = () => {
   const [accessories, setAccessories] = useState<Product[]>([]);
 
-  const setActive = ({ isActive }: { isActive:boolean }) => (isActive ? 'PageNav__link PageNav__link--isActive' : 'PageNav__link');
+  const setActive = (
+    { isActive }: { isActive: boolean },
+  ) => (isActive ? 'PageNav__link PageNav__link--isActive' : 'PageNav__link');
 
   useEffect(() => {
     ((async () => {
@@ -36,7 +38,9 @@ export const AccessoriesPage: React.FC = () => {
         {' '}
         models
       </span>
-      {accessories.length !== 0 ? <ProductsList devices={accessories} /> : <NoResults title="Accessories" />}
+      {accessories.length !== 0
+        ? <ProductsList devices={accessories} />
+        : <NoResults title="Accessories" />}
     </div>
   );
 };

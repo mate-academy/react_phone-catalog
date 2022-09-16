@@ -39,7 +39,9 @@ export const Pagination: React.FC<Props> = ({
         <button
           type="button"
           key={elem}
-          className={classnames('Pagination__btn', { 'Pagination__btn--active': page === elem })}
+          className={classnames(
+            'Pagination__btn', { 'Pagination__btn--active': page === elem },
+          )}
           hidden={
             elem !== page
             && elem !== page + 1

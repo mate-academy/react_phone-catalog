@@ -23,14 +23,16 @@ export const CardButtons: React.FC<Props> = ({ size, product }) => {
   useEffect(() => {
     if (checkActiveFavorites) {
       const qwe = JSON.parse(checkActiveFavorites);
-      const activeFavoritesButton = qwe.some((elem: Product) => elem.id === product?.id);
+      const activeFavoritesButton = qwe
+        .some((elem: Product) => elem.id === product?.id);
 
       setSelectedLike(activeFavoritesButton);
     }
 
     if (checkActiveCart) {
       const checkCart = JSON.parse(checkActiveCart);
-      const activeCartButton = checkCart.some((elem: Product) => elem.id === product?.id);
+      const activeCartButton = checkCart
+        .some((elem: Product) => elem.id === product?.id);
 
       setAddedToCart(activeCartButton);
     }
@@ -47,10 +49,12 @@ export const CardButtons: React.FC<Props> = ({ size, product }) => {
       if (checkFavoritesLocation !== null) {
         const productFromLocal = JSON.parse(checkFavoritesLocation);
 
-        const findProduct = productFromLocal.some((elem: Product) => elem.id === product.id);
+        const findProduct = productFromLocal
+          .some((elem: Product) => elem.id === product.id);
 
         if (findProduct) {
-          const filter = productFromLocal.filter((elem: Product) => elem.id !== product.id);
+          const filter = productFromLocal
+            .filter((elem: Product) => elem.id !== product.id);
 
           if (context) {
             context.counterFavorites(-1);
@@ -85,10 +89,12 @@ export const CardButtons: React.FC<Props> = ({ size, product }) => {
       if (checkCartLocation !== null) {
         const productFromLocal = JSON.parse(checkCartLocation);
 
-        const findProduct = productFromLocal.some((elem: Product) => elem.id === product.id);
+        const findProduct = productFromLocal
+          .some((elem: Product) => elem.id === product.id);
 
         if (findProduct) {
-          const filter = productFromLocal.filter((elem: Product) => elem.id !== product.id);
+          const filter = productFromLocal
+            .filter((elem: Product) => elem.id !== product.id);
 
           if (context) {
             context.counterCart(-1);

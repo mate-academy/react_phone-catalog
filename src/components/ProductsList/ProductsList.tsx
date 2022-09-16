@@ -39,7 +39,9 @@ export const ProductsList: React.FC<Props> = ({ devices }) => {
   const itemsOnPage = searchParams.get('prePage') || 4;
   const visiblePage = searchParams.get('page') || 1;
 
-  const handlerSortChange = (newValue: SingleValue<{ value: string; label: string; }>) => {
+  const handlerSortChange = (
+    newValue: SingleValue<{ value: string; label: string; }>,
+  ) => {
     const value = newValue?.value;
 
     setPage(1);
@@ -52,7 +54,9 @@ export const ProductsList: React.FC<Props> = ({ devices }) => {
     history(`?${searchParams.toString()}`);
   };
 
-  const handlerPagination = (newValue: SingleValue<{ value: string; label: string; }>) => {
+  const handlerPagination = (
+    newValue: SingleValue<{ value: string; label: string; }>,
+  ) => {
     const value = newValue?.value;
 
     setPage(1);
@@ -72,7 +76,9 @@ export const ProductsList: React.FC<Props> = ({ devices }) => {
         case 'age':
           return a.age - b.age;
         case 'name':
-          return a.name.toLocaleLowerCase().localeCompare(b.name.toLocaleLowerCase());
+          return (
+            a.name.toLocaleLowerCase().localeCompare(b.name.toLocaleLowerCase())
+          );
         case 'price':
           return a.price - b.price;
         default:
@@ -144,7 +150,12 @@ export const ProductsList: React.FC<Props> = ({ devices }) => {
         <Loader />
       )}
       {coutPage > 1 && (
-        <Pagination btn={btn} coutPage={coutPage} page={+visiblePage} pageChange={pageChange} />
+        <Pagination
+          btn={btn}
+          coutPage={coutPage}
+          page={+visiblePage}
+          pageChange={pageChange}
+        />
       )}
     </div>
   );

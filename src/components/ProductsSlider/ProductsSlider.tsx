@@ -15,16 +15,14 @@ export const ProductsSlider: React.FC<Props> = ({ products, title }) => {
 
   const countPage = Math.ceil(products.length / 4) * 4;
 
-  // // eslint-disable-next-line no-console
-  // console.log(countPage);
-
-  // // eslint-disable-next-line no-console
-  // console.log(lastProduct + 1);
-
   const handlerForward = () => {
     if (lastProduct !== products.length - 1) {
       setFirstProduct(firstProduct + 4);
-      setLastProduct(lastProduct >= products.length - 1 ? (products.length - 1) : lastProduct + 4);
+      setLastProduct(
+        lastProduct >= products.length - 1
+          ? (products.length - 1)
+          : lastProduct + 4,
+      );
     }
   };
 

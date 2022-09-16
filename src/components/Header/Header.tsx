@@ -9,7 +9,9 @@ import './Header.scss';
 export const Header: React.FC = () => {
   const context = useCounter();
 
-  const setActive = ({ isActive }: { isActive: boolean }) => (isActive ? 'Header__link Header__link--active' : 'Header__link');
+  const setActive = (
+    { isActive }: { isActive: boolean },
+  ) => (isActive ? 'Header__link Header__link--active' : 'Header__link');
 
   return (
     <div className="Header" id="header">
@@ -24,8 +26,15 @@ export const Header: React.FC = () => {
             className={setActive}
           >
             <span className="icon-Favourites-Heart-Like" />
-            {context?.countFavorites !== undefined && context?.countFavorites > 0
-              ? <span className="Header__cart-count">{context?.countFavorites}</span> : ''}
+            {context?.countFavorites && context?.countFavorites > 0
+              ? (
+                <span
+                  className="Header__cart-count"
+                >
+                  {context?.countFavorites}
+                </span>
+              )
+              : ''}
           </NavLink>
         </div>
       </nav>
@@ -35,8 +44,14 @@ export const Header: React.FC = () => {
           className={setActive}
         >
           <span className="icon-Shopping-bag-Cart" />
-          {context?.countCart !== undefined && context?.countCart > 0
-            ? <span className="Header__cart-count">{context?.countCart}</span> : ''}
+          {context?.countCart && context?.countCart > 0
+            ? (
+              <span
+                className="Header__cart-count"
+              >
+                {context?.countCart}
+              </span>
+            ) : ''}
         </NavLink>
       </div>
     </div>

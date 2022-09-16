@@ -55,8 +55,7 @@ export const SliderHome: React.FC = () => {
             alt="banner-iphone"
             className={classNames('SliderHome__img',
 
-              { 'SliderHome__img--isActive': indexSlide === 2 },
-            )}
+              { 'SliderHome__img--isActive': indexSlide === 2 })}
           />
         </div>
 

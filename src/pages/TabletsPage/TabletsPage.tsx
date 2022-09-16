@@ -12,7 +12,9 @@ import '../../styles/PageNav.scss';
 export const TabletsPage: React.FC = () => {
   const [tablets, setTablets] = useState<Product[]>([]);
 
-  const setActive = ({ isActive }: { isActive:boolean }) => (isActive ? 'PageNav__link PageNav__link--isActive' : 'PageNav__link');
+  const setActive = (
+    { isActive }: { isActive: boolean },
+  ) => (isActive ? 'PageNav__link PageNav__link--isActive' : 'PageNav__link');
 
   useEffect(() => {
     ((async () => {
@@ -39,7 +41,9 @@ export const TabletsPage: React.FC = () => {
         {' '}
         models
       </span>
-      {tablets.length !== 0 ? <ProductsList devices={tablets} /> : <NoResults title="Tablets" />}
+      {tablets.length !== 0
+        ? <ProductsList devices={tablets} />
+        : <NoResults title="Tablets" />}
     </div>
   );
 };

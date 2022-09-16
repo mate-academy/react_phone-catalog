@@ -30,7 +30,8 @@ export const CartPage: React.FC = () => {
       allCost.push(((100 - item.discount) / 100) * item.price * item.quantity);
     });
 
-    const priceReduce = allCost.reduce((prev: number, curr: number) => prev + curr, 0);
+    const priceReduce = allCost
+      .reduce((prev: number, curr: number) => prev + curr, 0);
 
     setTotalCost(priceReduce);
   };
@@ -46,7 +47,8 @@ export const CartPage: React.FC = () => {
   const deleteCart = (id: string) => {
     const dateFromStorage = getDateFromStorage();
 
-    const delCart = dateFromStorage.filter((product: Product) => product.id !== id);
+    const delCart = dateFromStorage
+      .filter((product: Product) => product.id !== id);
 
     setProductFromCart(delCart);
     localStorage.setItem('cart', JSON.stringify(delCart));
@@ -104,7 +106,13 @@ export const CartPage: React.FC = () => {
                 Checkout
               </button>
 
-              {openerNotification && <p className="CartPage__notification">Sorry! This functionality is not implemented yet</p>}
+              {openerNotification && (
+                <p
+                  className="CartPage__notification"
+                >
+                  Sorry! This functionality is not implemented yet
+                </p>
+              )}
             </div>
           )}
         </div>

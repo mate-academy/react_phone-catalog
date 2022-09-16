@@ -4,13 +4,18 @@ import { Logo } from '../Logo';
 
 import './Footer.scss';
 
-export const Footer:React.FC = () => {
+export const Footer: React.FC = () => {
   return (
     <div className="Footer">
       <div className="Footer__container">
         <Logo />
         <div className="Footer__nav">
-          <a className="Footer__link" href="https://github.com/PermiakovDima">Github</a>
+          <a
+            className="Footer__link"
+            href="https://github.com/PermiakovDima"
+          >
+            Github
+          </a>
         </div>
         <button
           type="button"

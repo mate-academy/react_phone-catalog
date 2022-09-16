@@ -9,7 +9,8 @@ type Props = {
 };
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
-  const newPrice = product.discount > 0 ? product.price - ((product.price / 100) * product.discount)
+  const newPrice = product.discount > 0
+    ? product.price - ((product.price / 100) * product.discount)
     : product.price;
 
   return (
@@ -21,7 +22,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       <h3 className="ProductCard__title">{product.name}</h3>
       <div className="ProductCard__price">
         <span className="ProductCard__newPrice">{`$${newPrice}`}</span>
-        {product.discount > 0 && <span className="ProductCard__oldPrice">{`$${product.price}`}</span> }
+        {product.discount > 0 && <span className="ProductCard__oldPrice">{`$${product.price}`}</span>}
       </div>
       <div className="ProductCard__features">
         <span className="ProductCard__feature-item">
