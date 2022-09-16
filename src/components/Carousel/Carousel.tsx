@@ -32,13 +32,13 @@ export const Carousel:React.FC<Props> = ({ imgs }) => {
       return [
         <li key={imgs[0].id - 1} className="carousel__slide">
           <img
-            src={`./${imgs[imgs.length - 1].path}`}
+            src={`${imgs[imgs.length - 1].path}`}
             alt={imgs[imgs.length - 1].desc}
           />
         </li>,
         ...items,
         <li key={imgs[imgs.length - 1].id + 1} className="carousel__slide">
-          <img src={`./${imgs[0].path}`} alt={imgs[0].desc} />
+          <img src={`${imgs[0].path}`} alt={imgs[0].desc} />
         </li>,
       ];
     }
