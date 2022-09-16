@@ -1,3 +1,5 @@
+/* eslint-disable global-require */
+/* eslint-disable import/no-dynamic-require */
 import './Item.scss';
 import React, { useMemo } from 'react';
 import classNames from 'classnames';
@@ -50,7 +52,7 @@ export const Item: React.FC<Props> = ({
       <div className="item__header">
         <div className="item__photo-container">
           <img
-            src={`./${item.imageUrl}`}
+            src={require(`./${item.imageUrl}`)}
             alt={item.id}
             className="item__photo"
           />
@@ -128,7 +130,7 @@ export const Item: React.FC<Props> = ({
             className="item__favorite"
             onClick={() => buttonHandle('favorite')}
           >
-            <img src={`./img/shopItem/favorite${isFavorite ? '(filled)' : ''}.svg`} alt="add to favorite" />
+            <img src={require(`./img/shopItem/favorite${isFavorite ? '(filled)' : ''}.svg`)} alt="add to favorite" />
           </button>
         </div>
       </div>
