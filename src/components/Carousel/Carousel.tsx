@@ -10,6 +10,8 @@ import {
 import { Img } from '../../types/Img';
 import './Carousel.scss';
 
+import banner from '../../assets/Banner.png';
+
 type Props = {
   imgs: Img[]
 };
@@ -126,7 +128,7 @@ export const Carousel:React.FC<Props> = ({ imgs }) => {
           className="carousel__button"
           onClick={() => actionHandler('prev')}
         >
-          <img src="../../assets/Banner.png" alt="Prev" />
+          <img src={banner} alt="Prev" />
         </button>
 
         <div className="carousel__wrapper">
