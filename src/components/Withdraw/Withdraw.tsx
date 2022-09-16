@@ -13,13 +13,8 @@ import {
 } from '../../features/withdrawSlice';
 import { BASE_URL } from '../../utils/api';
 
-// interface WithdrawPhone extends Phone {
-//   amount?: number,
-// }
-
 export const Withdraw: React.FC = () => {
   const dispatch = useAppDispatch();
-  // const [withdraw, setWithdraw] = useState<WithdrawPhone[]>([]);
   const [scrollPos, setScrollPos] = useState(window.scrollY);
 
   const withdraws = useAppSelector((state: RootState) => (
@@ -27,10 +22,9 @@ export const Withdraw: React.FC = () => {
   ));
 
   const title = () => {
-    const paths = window.location.pathname.split('/');
-    const titlePrepared = paths[paths.length - 1];
+    const paths = window.location.hash.slice(2);
 
-    return titlePrepared[0].toUpperCase() + titlePrepared.slice(1);
+    return paths[0].toUpperCase() + paths.slice(1);
   };
 
   const deleteItemHandle = (id: string) => {

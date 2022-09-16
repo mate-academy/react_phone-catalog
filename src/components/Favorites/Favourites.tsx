@@ -11,10 +11,9 @@ export const Favourites: React.FC = () => {
   const [favItems, setFavItems] = useState<Phone[]>([]);
 
   const title = () => {
-    const paths = window.location.pathname.split('/');
-    const titlePrepared = paths[paths.length - 1];
+    const paths = window.location.hash.slice(2);
 
-    return titlePrepared[0].toUpperCase() + titlePrepared.slice(1);
+    return paths[0].toUpperCase() + paths.slice(1);
   };
 
   const favourites = useAppSelector((state: RootState) => (
