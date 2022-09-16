@@ -7,17 +7,17 @@ export const Novelties: React.FC = () => {
   const imgs:Img[] = [
     {
       id: 1,
-      path: '/img/banner.png',
+      path: './assets/banner.png',
       desc: 'photo 1',
     },
     {
       id: 2,
-      path: '/img/banner.png',
+      path: './assets/banner.png',
       desc: 'photo 1',
     },
     {
       id: 3,
-      path: '/img/banner.png',
+      path: './assets/banner.png',
       desc: 'photo 1',
     },
   ];
