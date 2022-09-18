@@ -65,7 +65,7 @@
     text-align: center;
   }
 
-  &__button {
+  &__itembtn {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -84,6 +84,8 @@
   }
 
   &__price {
+    width: 100px;
+    text-align: right;
     margin-right: 40px;
     font-style: normal;
     font-weight: 700;
@@ -99,5 +101,47 @@
     line-height: 32px;
     text-align: center;
     color: $c-black;
+  }
+
+  &__checkout {
+    text-align: center;
+    border: 1px solid $c-elements;
+    height: fit-content;
+  }
+
+  &__total-price {
+    margin-top: 24px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: #313237;
+  }
+
+  &__inner-text {
+    margin: 0 auto;
+    max-width: 321px;
+    padding-bottom: 24px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+    color: $c-secondary;
+    border-bottom: 1px solid $c-elements;
+  }
+
+  &__button {
+    width: 320px;
+    height: 48px;
+    margin: 0 auto 24px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+    color: $c-white;
+    background-color: $c-primary;
   }
 }

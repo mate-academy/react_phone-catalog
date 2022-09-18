@@ -1,0 +1,268 @@
+@import "/src/styles/utils/_vars.scss";
+
+.itemPage {
+  &__section {
+    margin-bottom: 80px;
+  }
+
+  &__back {
+    display: flex;
+    align-items: center;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: $c-secondary;
+    margin-bottom: 16px;
+
+    &-img {
+      width: 6px;
+      height: 10px;
+      margin-right: 10px;
+      background-image: url("../../img/vector.svg");
+      background-position: center;
+      background-repeat: no-repeat;
+      transform: rotateZ(-180deg)
+    }
+  }
+
+  &__title {
+    margin-bottom: 40px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: #313237;
+  }
+
+  &__secondaryPhoto {
+    box-sizing: border-box;
+    padding: 6px;
+    width: 80px;
+    height: 80px;
+    border: 1px solid $c-icons;
+
+    &--active {
+      border: 1px solid $c-primary;
+    }
+  }
+
+  &__activePhoto {
+    width: 442px;
+    height: 442px;
+  }
+
+  &__id {
+    text-align: end;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: $c-icons;
+  }
+
+  &__colors {
+    padding-bottom: 24px;
+    border-bottom: 1px solid $c-elements;
+    margin-bottom: 24px;
+
+    &-text {
+      font-family: 'Mont';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 15px;
+      color: $c-secondary;
+      margin-bottom: 8px;
+    }
+
+    &-wrapper {
+      width: 30px;
+      height: 30px;
+      display: inline-block;
+      border: 1px solid $c-elements;
+      border-radius: 36px;
+      margin-right: 8px;
+      transition: all 0.3s linear;
+
+      &--active {
+        border: 1px solid $c-primary;
+      }
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+
+    &-btn {
+      width: 30px;
+      height: 30px;
+      border: 2px solid $c-white;
+      border-radius: 36px;
+    }
+  }
+
+  &__capacity {
+    padding-bottom: 24px;
+    margin-bottom: 32px;
+    border-bottom: 1px solid $c-elements;
+
+    &-text {
+      margin-bottom: 8px;
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 15px;
+      color: $c-secondary;
+    }
+
+    &-value {
+      margin-right: 8px;
+      padding: 4px 8px;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 21px;
+      text-align: center;
+      color: $c-primary;
+      border: 1px solid $c-icons;
+      transition: all 0.3s linear;
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      &--active {
+        color: $c-white;
+        background-color: $c-primary;
+      }
+    }
+  }
+
+  &__price {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+
+    &-current {
+      font-weight: 700;
+      font-size: 32px;
+      line-height: 41px;
+      letter-spacing: -0.01em;
+      color: $c-primary;
+    }
+
+    &-original {
+      font-weight: 500;
+      font-size: 22px;
+      line-height: 28px;
+      text-decoration-line: line-through;
+      color: $c-secondary;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 32px;
+
+    &-buy {
+      width: 263px;
+      height: 48px;
+      background-color: $c-primary;
+      color: $c-white;
+      transition: box-shadow 0.1s linear, transform 0.3s linear;
+
+      &:hover {
+        box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+        transform: scale(105%);
+      }
+
+      &--selected {
+        background-color: $c-white;
+        color: $c-green;
+        border: 1px solid $c-elements;
+      }
+    }
+
+    &-favourite {
+      width: 48px;
+      height: 48px;
+      border: 1px solid $c-icons;
+      transition: border-color 0.3s linear, transform 0.3s linear;
+      background-image: url("../../img/shopItem/favorite.svg");
+      background-position: center;
+      background-repeat: no-repeat;
+
+      &:hover {
+        border-color: $c-primary;
+        transform: scale(105%);
+      }
+
+      &--active {
+        background-image: url("../../img/shopItem/favorite\(filled\).svg");
+      }
+    }
+  }
+
+  &__specs {
+    &-title {
+      font-weight: 700;
+      font-size: 22px;
+      line-height: 140%;
+      color: $c-primary;
+      padding-bottom: 16px;
+      border-bottom: 1px solid $c-elements;
+      margin-bottom: 25px;
+    }
+
+    &-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      &-title {
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 15px;
+        color: $c-secondary;
+      }
+
+      &-value {
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 15px;
+        text-align: right;
+        color: $c-primary;
+      }
+    }
+  }
+
+  &__about {
+    &-title {
+      font-weight: 700;
+      font-size: 22px;
+      line-height: 140%;
+      color: $c-primary;
+      padding-bottom: 16px;
+      border-bottom: 1px solid $c-elements;
+      margin-bottom: 25px;
+    }
+
+    &-text {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 21px;
+      color: #89939A;
+    }
+  }
+
+  &__similarPhones {
+    margin-bottom: 80px;
+  }
+}

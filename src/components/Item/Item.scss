@@ -22,6 +22,11 @@
       margin-bottom: 24px;
       height: 208px;
       width: 208px;
+      transition: transform 0.3s linear;
+
+      &:hover {
+        transform: scale(110%);
+      }
     }
   }
 

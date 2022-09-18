@@ -60,6 +60,7 @@ export const withdrawSlice = createSlice({
 
       if (hasProperty) {
         state.withdraw[action.payload[1]].amount += action.payload[0];
+        saveWithdrawToLocalStorage(state.withdraw);
       }
     },
     decreaseAmount: (state, action: PayloadAction<[number, string]>) => {
@@ -71,6 +72,7 @@ export const withdrawSlice = createSlice({
       if (hasProperty
         && state.withdraw[action.payload[1]].amount - action.payload[0] > 0) {
         state.withdraw[action.payload[1]].amount -= action.payload[0];
+        saveWithdrawToLocalStorage(state.withdraw);
       }
     },
     deleteWithdraw: (state, action: PayloadAction<string>) => {

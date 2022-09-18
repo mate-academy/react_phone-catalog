@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import React, { useMemo } from 'react';
 import classNames from 'classnames';
 
 import './Path.scss';
@@ -9,6 +10,11 @@ type Props = {
 };
 
 export const Path: React.FC<Props> = ({ pathElems, pathBoldElems }) => {
+  const prepPathElems = useMemo(() => pathElems.map(elem => (
+    elem[0].toUpperCase() + elem.slice(1))), [pathElems]);
+  const prepPathBoldElems = useMemo(() => pathBoldElems.map(elem => (
+    elem[0].toUpperCase() + elem.slice(1))), [pathBoldElems]);
+
   return (
     <div className="path">
       <Link
@@ -16,28 +22,27 @@ export const Path: React.FC<Props> = ({ pathElems, pathBoldElems }) => {
         className="path__link"
       />
       <div className="path__arrow" />
-      {pathElems.map((elem, index, arr) => {
+      {prepPathElems.map((elem, index, arr) => {
         if (arr.length - 1 > index) {
           return (
-            <>
+            <React.Fragment key={elem}>
               <Link
                 to={`/${elem}`}
                 className={classNames(
                   'path__text',
-                  { path__bold: pathBoldElems.includes(elem) },
+                  { path__bold: prepPathBoldElems.includes(elem) },
                 )}
                 key={elem}
               >
                 {elem}
               </Link>
               <div className="path__arrow" />
-            </>
+            </React.Fragment>
           );
         }
 
         return (
-          <Link
-            to={`/${elem}`}
+          <p
             className={classNames(
               'path__text',
               { path__bold: pathBoldElems.includes(elem) },
@@ -45,7 +50,7 @@ export const Path: React.FC<Props> = ({ pathElems, pathBoldElems }) => {
             key={elem}
           >
             {elem}
-          </Link>
+          </p>
         );
       })}
     </div>

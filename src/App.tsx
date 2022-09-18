@@ -8,10 +8,11 @@ import { getPhones } from './utils/api';
 import { Phone } from './types/Phone';
 import { NewModels } from './components/NewModels';
 import { Category } from './components/Category';
-import { Favourites } from './components/Favorites';
+import { Favourites } from './components/Favourites';
 
 import './App.scss';
 import { Withdraw } from './components/Withdraw';
+import { ItemPage } from './components/ItemPage';
 
 const App = () => {
   const [products, setProducts] = useState<Phone[]>();
@@ -47,6 +48,11 @@ const App = () => {
                 </>
               )}
             />
+
+            <Route path="/phones">
+              <Route index element={<p>Wow</p>} />
+              <Route path=":itemId" element={<ItemPage />} />
+            </Route>
 
             <Route
               path="/favourites"

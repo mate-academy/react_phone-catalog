@@ -1,6 +1,5 @@
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-import { useEffect, useState } from 'react';
+import classNames from 'classnames';
+import { useMemo } from 'react';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { RootState } from '../../app/store';
 import { Path } from '../Path';
@@ -15,7 +14,6 @@ import { BASE_URL } from '../../utils/api';
 
 export const Withdraw: React.FC = () => {
   const dispatch = useAppDispatch();
-  const [scrollPos, setScrollPos] = useState(window.scrollY);
 
   const withdraws = useAppSelector((state: RootState) => (
     state.withdraw.withdraw
@@ -27,22 +25,24 @@ export const Withdraw: React.FC = () => {
     return paths[0].toUpperCase() + paths.slice(1);
   };
 
+  const totalPrice = useMemo(() => (
+    Object.values(withdraws).reduce((prev, curr) => (
+      prev + Math.ceil(
+        curr.amount * curr.price * ((100 - curr.discount) / 100),
+      )), 0)
+  ), [withdraws]);
+
   const deleteItemHandle = (id: string) => {
-    setScrollPos(window.scrollY);
     dispatch(deleteWithdraw(id));
   };
 
-  const amountActionHandle = (type:string, id: string) => {
+  const amountActionHandle = (type: string, id: string) => {
     if (type === 'add') {
       dispatch(encreaseAmount([1, id]));
     } else if (type === 'remove') {
       dispatch(decreaseAmount([1, id]));
     }
   };
-
-  useEffect(() => {
-    window.scrollTo(0, scrollPos);
-  }, [window.scrollY]);
 
   return (
     <section className="withdraw">
@@ -76,7 +76,10 @@ export const Withdraw: React.FC = () => {
                   <div className="withdraw__counter">
                     <button
                       type="button"
-                      className="withdraw__button"
+                      className={classNames(
+                        'withdraw__itembtn',
+                        { 'withdraw__itembtn--active': item.amount > 1 },
+                      )}
                       onClick={() => amountActionHandle('remove', item.id)}
                     >
                       -
@@ -88,19 +91,32 @@ export const Withdraw: React.FC = () => {
 
                     <button
                       type="button"
-                      className="withdraw__button withdraw__button--active"
+                      className="withdraw__itembtn withdraw__itembtn--active"
                       onClick={() => amountActionHandle('add', item.id)}
                     >
                       +
                     </button>
                   </div>
                   <p className="withdraw__price">
-                    {`$${Math.ceil(item.price * ((100 - item.discount) / 100))}`}
+                    {`$${Math.ceil(item.amount * item.price * ((100 - item.discount) / 100))}`}
                   </p>
                 </div>
               </li>
             ))}
           </ul>
+        </div>
+
+        <div className="grid__item grid__item-17-24 withdraw__checkout">
+          <p className="withdraw__total-price">
+            {`$${totalPrice}`}
+          </p>
+          <p className="withdraw__inner-text">{`Total for ${Object.keys(withdraws).length} items`}</p>
+          <button
+            type="button"
+            className="withdraw__button"
+          >
+            Checkout
+          </button>
         </div>
       </div>
     </section>

@@ -1,7 +1,5 @@
-/* eslint-disable jsx-a11y/control-has-associated-label */
-/* eslint-disable global-require */
-/* eslint-disable import/no-dynamic-require */
 import './Item.scss';
+import { Link } from 'react-router-dom';
 import React, { useMemo } from 'react';
 import classNames from 'classnames';
 import { Phone } from '../../types/Phone';
@@ -50,8 +48,13 @@ export const Item: React.FC<Props> = ({
   };
 
   return (
-    <div className="item">
-      <div className="item__header">
+    <div
+      className="item"
+    >
+      <Link
+        className="item__header"
+        to={`/phones/${item.id}`}
+      >
         <div className="item__photo-container">
           <img
             src={`${BASE_URL}/${item.imageUrl}`}
@@ -63,7 +66,7 @@ export const Item: React.FC<Props> = ({
         <h2 className="item__title">
           {item.name}
         </h2>
-      </div>
+      </Link>
 
       <div className="item__body">
         <div className="item__price">
@@ -129,6 +132,7 @@ export const Item: React.FC<Props> = ({
 
           <button
             type="button"
+            aria-label="favorite"
             className={classNames(
               'item__favorite',
               { 'item__favorite--active': isFavorite },
