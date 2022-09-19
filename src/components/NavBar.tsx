@@ -25,7 +25,7 @@ export const Navbar = () => {
 
     <header className="header">
 
-      {pathname === '/phones'
+      {pathname === '/phones' || pathname === '/tablets'
         ? (
           <div className="header__wrapper header__wrapper--search">
 
@@ -64,7 +64,7 @@ export const Navbar = () => {
                 setMenuOpened={setMenuOpened}
               />
               <PageNavLink
-                to="accesories"
+                to="accessories"
                 text="Accesories"
                 setMenuOpened={setMenuOpened}
               />
@@ -232,7 +232,7 @@ export const Navbar = () => {
                 setMenuOpened={setMenuOpened}
               />
               <PageNavLink
-                to="accesories"
+                to="accessories"
                 text="Accesories"
                 setMenuOpened={setMenuOpened}
               />

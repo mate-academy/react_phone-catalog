@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
 import classNames from 'classnames';
+import { Link } from 'react-router-dom';
 import { Product } from '../types/Product';
 
 type Props = {
@@ -9,7 +10,8 @@ type Props = {
 
 export const ProductCard:React.FC<Props> = ({ product, isSlider }) => {
   return (
-    <div
+    <Link
+      to={`../${product.id}`}
       className={classNames(
         'slider__card', { 'slider__card--slider': isSlider },
       )}
@@ -67,6 +69,6 @@ export const ProductCard:React.FC<Props> = ({ product, isSlider }) => {
         </a>
       </div>
 
-    </div>
+    </Link>
   );
 };
