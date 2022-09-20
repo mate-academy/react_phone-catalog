@@ -3,8 +3,8 @@ import { useAppSelector } from '../../app/hooks';
 import { RootState } from '../../app/store';
 import { Phone } from '../../types/Phone';
 import { getPhones } from '../../utils/api';
-import { Item } from '../Item';
-import { Path } from '../Path';
+import { Item } from '../../components/Item';
+import { Path } from '../../components/Path';
 import './Favourites.scss';
 
 export const Favourites: React.FC = () => {

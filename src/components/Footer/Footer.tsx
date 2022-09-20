@@ -1,5 +1,6 @@
 import './Footer.scss';
 import '../../styles/Nav.scss';
+import { NavLink } from 'react-router-dom';
 
 export const Footer:React.FC = () => {
   const toTopHandle = () => {
@@ -21,19 +22,19 @@ export const Footer:React.FC = () => {
           <nav className="nav">
             <ul className="nav__list">
               <li className="nav__item">
-                <a href="/" className="nav__link">
+                <NavLink to="/" className="nav__link">
                   Github
-                </a>
+                </NavLink>
               </li>
               <li className="nav__item">
-                <a href="/" className="nav__link">
+                <NavLink to="/" className="nav__link">
                   Contacts
-                </a>
+                </NavLink>
               </li>
               <li className="nav__item">
-                <a href="/" className="nav__link">
+                <NavLink to="/" className="nav__link">
                   Rights
-                </a>
+                </NavLink>
               </li>
             </ul>
           </nav>

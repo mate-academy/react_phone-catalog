@@ -22,7 +22,7 @@
       background-image: url("../../img/vector.svg");
       background-position: center;
       background-repeat: no-repeat;
-      transform: rotateZ(-180deg)
+      transform: rotateZ(-180deg);
     }
   }
 
@@ -68,7 +68,6 @@
     margin-bottom: 24px;
 
     &-text {
-      font-family: 'Mont';
       font-style: normal;
       font-weight: 600;
       font-size: 12px;
@@ -258,7 +257,7 @@
       font-weight: 500;
       font-size: 14px;
       line-height: 21px;
-      color: #89939A;
+      color: $c-secondary;
     }
   }
 

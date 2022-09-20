@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import { useMemo } from 'react';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { RootState } from '../../app/store';
-import { Path } from '../Path';
+import { Path } from '../../components/Path';
 import './Withdraw.scss';
 import '../../styles/grid.scss';
 import {

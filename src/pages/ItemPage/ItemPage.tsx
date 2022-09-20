@@ -10,8 +10,8 @@ import { addWithdraw, deleteWithdraw } from '../../features/withdrawSlice';
 import { ItemDetails } from '../../types/ItemDetails';
 import { Phone } from '../../types/Phone';
 import { BASE_URL, getCurrPhone, getPhones } from '../../utils/api';
-import { ItemCarousel } from '../ItemCarousel';
-import { Path } from '../Path';
+import { ItemCarousel } from '../../components/ItemCarousel';
+import { Path } from '../../components/Path';
 
 import './ItemPage.scss';
 

@@ -53,7 +53,7 @@ export const Item: React.FC<Props> = ({
     >
       <Link
         className="item__header"
-        to={`/phones/${item.id}`}
+        to={`/${item.type}s/${item.id}`}
       >
         <div className="item__photo-container">
           <img
