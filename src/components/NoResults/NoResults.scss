@@ -1,0 +1,20 @@
+@import "../../styles/utils/vars.scss";
+@import "../../styles/utils/typography.scss";
+@import "../../styles/utils/mixins.scss";
+
+.NoResults {
+  &__backToHome {
+    display: flex;
+    gap: 8px;
+    text-decoration: none;
+    @include smallText;
+    color: $secondary;
+    align-items: center;
+  }
+
+  &__title {
+    @include h1;
+    color: $primary;
+    padding-top: 16px;
+  }
+}

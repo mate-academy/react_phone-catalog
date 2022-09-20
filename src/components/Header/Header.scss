@@ -1,0 +1,136 @@
+@import "../../styles/utils/vars.scss";
+@import "../../styles/utils/typography.scss";
+@import "../../styles/utils/mixins.scss";
+
+.Header {
+  position: relative;
+  display: flex;
+  padding-left: 26px;
+  height: 64px;
+  width: 100%;
+  box-sizing: border-box;
+  align-items: center;
+  box-shadow: 0 1px 0 $elements;
+
+  @media (min-width: 500px) and (max-width: 767px) {
+    height: 42px;
+  }
+
+  @media (min-width: 320px) and (max-width: 499px) {
+    height: 90px;
+    justify-content: space-between;
+  }
+
+  &__left-block {
+    display: flex;
+    height: 100%;
+  }
+
+  &__logo {
+    @include logo;
+  }
+
+  &__nav {
+    display: flex;
+    gap: 64px;
+    height: 100%;
+
+    @include iPad {
+      gap: 30px;
+    }
+
+    @media (min-width: 500px) and (max-width: 767px) {
+      gap: 20px;
+    }
+
+    @media (min-width: 320px) and (max-width: 499px) {
+      gap: 0;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+    }
+  }
+
+  &__link {
+    @include uppercase;
+    color: $secondary;
+    text-decoration: none;
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+    &--active {
+      color: $primary;
+
+      &::before {
+        content: "";
+        display: block;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 3px;
+        width: 100%;
+        background-color: $primary;
+      }
+    }
+  }
+
+  &__right-block {
+    display: flex;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    @media (min-width: 320px) and (max-width: 499px) {
+      position: relative;
+    }
+  }
+
+  &__favourite-link,
+  &__cart-link {
+    position: relative;
+    width: 64px;
+    height: 64px;
+    box-shadow: -1px 0 0 $elements;
+
+    @include iPad {
+      width: 48px;
+    }
+
+    @media (min-width: 500px) and (max-width: 767px) {
+      width: 42px;
+      height: 42px;
+    }
+
+    @media (min-width: 320px) and (max-width: 499px) {
+      height: 90px;
+      box-shadow: none;
+    }
+  }
+
+  &__favourite-link {
+    background: url(../../icons/Favourites.png) no-repeat center;
+  }
+
+  &__cart-link {
+    background: url(../../icons/Cart.png) no-repeat center;
+  }
+
+  &__order-quantity,
+  &__favorites-quantity {
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: $red;
+    color: $white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+  }
+}

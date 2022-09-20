@@ -1,0 +1,52 @@
+@import "../../styles/utils/vars.scss";
+@import "../../styles/utils/typography.scss";
+@import "../../styles/utils/mixins.scss";
+
+.Loader {
+  display: flex;
+  justify-content: center;
+
+  &__circle {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    background-color: $elements;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  &__loading {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 50%;
+    background-color: $primary;
+    transform-origin: bottom left;
+    animation-name: move;
+    animation-duration: 5000;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+
+  &__center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: $white;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@keyframes move {
+  from {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}

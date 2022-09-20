@@ -1,0 +1,24 @@
+.Favourites {
+  display: flex;
+  flex-direction: column;
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 40px;
+    column-gap: 16px;
+    list-style: none;
+    padding-top: 40px;
+
+    @media (min-width: 500px) and (max-width: 1023px) {
+      row-gap: 20px;
+      padding-top: 30px;
+    }
+
+    @media (min-width: 320px) and (max-width: 499px) {
+      row-gap: 12px;
+      column-gap: 12px;
+      padding-top: 20px;
+    }
+  }
+}

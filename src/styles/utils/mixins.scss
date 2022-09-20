@@ -1,0 +1,141 @@
+// media //
+@mixin mobile {
+  @media (min-width: 320px) and (max-width: 767px) {
+    @content;
+  }
+}
+
+@mixin iPad {
+  @media (min-width: 768px) and (max-width: 1023px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: 1024px) and (max-width: 1279px) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: 1280px) and (max-width: 1919px) {
+    @content;
+  }
+}
+
+@mixin full {
+  @media (min-width: 1920px) {
+    @content;
+  }
+}
+
+@mixin logo {
+  background: url(../../icons/LOGO.png) no-repeat center;
+  background-size: contain;
+  width: 40px;
+  height: 100%;
+  margin: 0;
+  margin-right: 64px;
+
+  @include iPad {
+    margin-right: 30px;
+  }
+
+  @media (min-width: 500px) and (max-width: 1023px) {
+    margin-right: 36px;
+  }
+
+  @media (min-width: 320px) and (max-width: 499px) {
+    margin-right: 0;
+  }
+}
+
+@mixin buttonArrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid $icons;
+  border-radius: 2px;
+  color: $primary;
+  cursor: pointer;
+  background-color: #fff;
+  @include bodyText;
+
+  @include tablet {
+    width: 30px;
+    height: 30px;
+  }
+
+  @include mobile() {
+    width: 28px;
+    height: 28px;
+  }
+
+  &:hover {
+    border-color: $primary;
+  }
+
+  &:disabled {
+    color: $icons;
+  }
+}
+
+@mixin button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 176px;
+  height: 40px;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  @include bodyText;
+  color: $white;
+  cursor: pointer;
+  background-color: $primary;
+
+  @include tablet {
+    width: 156px;
+    height: 36px;
+  }
+
+  @include iPad {
+    height: 32px;
+    width: 140px;
+  }
+
+  @media (min-width: 500px) and (max-width: 767px) {
+    height: 30px;
+    width: 130px;
+    font-size: 12px;
+  }
+
+  @media (min-width: 320px) and (max-width: 499px) {
+    font-size: 10px;
+    line-height: 1em;
+    height: 30px;
+    width: 76px;
+  }
+
+  &--selected {
+    background-color: #fff;
+    border-color: $elements;
+    color: $green;
+  }
+}
+
+@mixin addToFavourites {
+  display: flex;
+  border: 1px solid $icons;
+  border-radius: 2px;
+  background: url("../../icons/Favourites.png") no-repeat center;
+
+  &:hover {
+    border-color: $primary;
+  }
+
+  &--added {
+    background-image: url("../../icons/FavouritesFilled.png");
+  }
+}
