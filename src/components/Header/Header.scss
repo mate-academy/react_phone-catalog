@@ -19,9 +19,17 @@
       transform: scale(1.2);
     }
   }
-
-  &__nav {
+  &__list {
+    list-style: none;
     display: flex;
+    grid-gap: 64px;
+    gap: 64px;
+    transition: all 1s ease-in-out;
+    box-sizing: border-box;
+  }
+
+  &__link {
+    text-decoration: none;
   }
 
   &__input {
@@ -47,22 +55,22 @@
       background-color: #fafbfc;
     }
   }
+  
 
-  &__icon {
+  &__icons {
     display: flex;
     height: 64px;
 
     &--focus {
-      color: #313237;
-
-      &::after {
+      &::before {
+        position: absolute;
         content: "";
-        display: block;
-        width: auto;
+        width: 100%;
         height: 3px;
         background-color: #313237;
-        position: relative;
-        bottom: 5%;
+        bottom: 0;
+        left: 0;
+        transition: all 1s ease-in-out;
       }
     }
   }
@@ -74,32 +82,29 @@
     align-items: center;
   }
 
-  &__item {
-    font-family: "Mont", sans-serif;
-    font-weight: 700;
+  &__name {
+    position: relative;
+    line-height: 63px;
     font-size: 12px;
-    line-height: 11px;
-    letter-spacing: 0.04em;
+    font-weight: 700;
     color: #89939a;
-    text-decoration: none;
-    margin-right: 64px;
-
-    &--focus {
-      color: #313237;
-
-      &::after {
-        content: "";
-        display: block;
-        width: auto;
-        height: 3px;
-        background-color: #313237;
-        position: relative;
-        bottom: -26px;
-      }
-    }
-
+    transition: all 1s ease-in-out;
+    
+    &--focus,
     &:hover {
       color: #313237;
+
+      &::before {
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 3px;
+        background: none;
+        bottom: 0;
+        background-color: #313237;
+        left: 0;
+        transition: all 1s ease-in-out;
+      }
     }
   }
 
@@ -116,13 +121,20 @@
     padding: 0;
     position: relative;
     cursor: pointer;
+    transition: all 1s ease-in-out;
 
     &:hover {
       background-image: url(../../images/favouritesfocus.svg);
-    }
-
-    &:focus {
-      background-image: url(../../images/favouritesfocus.svg);
+      &::before {
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 3px;
+        background-color: #313237;
+        bottom: 0;
+        left: 0;
+        transition: all 1s ease-in-out;
+      }
     }
   }
 
@@ -139,6 +151,20 @@
     padding: 0;
     position: relative;
     cursor: pointer;
+    transition: all 1s ease-in-out;
+
+    &:hover {
+      &::before {
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 3px;
+        background-color: #313237;
+        bottom: 0;
+        left: 0;
+        transition: all 1s ease-in-out;
+      }
+    }
   }
 
   &__push {

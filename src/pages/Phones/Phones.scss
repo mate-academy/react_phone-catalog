@@ -59,18 +59,14 @@
   }
 
   &__select {
-    box-sizing: border-box;
-    border: 1px solid #b4bdc4;
     width: 176px;
     height: 40px;
-    padding-left: 12px;
     font-family: "Mont", sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 14px;
     line-height: 21px;
     color: #313237;
-    outline: 0;
   }
 
   &__list {

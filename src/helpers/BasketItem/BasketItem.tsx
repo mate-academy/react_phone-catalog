@@ -1,58 +1,35 @@
 import React from 'react';
 import './BasketItem.scss';
-import { Product, CartItem } from '../../type';
+import { CartItem } from '../../type';
 
 type Props = {
-  product: Product
+  product: CartItem,
   renderFunc: () => void
 };
 
 export const BasketItem: React.FC<Props> = ({ product, renderFunc }) => {
-  const cart = JSON.parse(localStorage.getItem('carts') || '');
+  const cart: CartItem[] = JSON.parse(localStorage.getItem('carts') || '');
   const remove = (productId: string) => {
-    let carts = [];
-
-    if (localStorage.getItem('carts')) {
-      carts = JSON.parse(localStorage.getItem('carts') || '');
-    }
-
     localStorage.setItem('carts', JSON.stringify([
-      ...carts.filter((p: CartItem) => p.id !== productId),
+      ...cart.filter((p: CartItem) => p.id !== productId),
     ]));
 
     renderFunc();
   };
 
   const changeCount = (productId: string, action: string) => {
-    const item = cart.find((p: CartItem) => p.id === productId);
-    let carts = [];
-
-    if (localStorage.getItem('carts')) {
-      carts = JSON.parse(localStorage.getItem('carts') || '');
-    }
-
-    switch (action) {
-      case 'increase':
-        localStorage.setItem('carts', JSON.stringify([
-          ...carts.filter((p: CartItem) => p.id !== productId),
-          {
+    localStorage.setItem('carts', JSON.stringify(
+      cart.map((item: CartItem) => (
+        item.id === productId
+          ? ({
             ...item,
-            count: item.count + 1,
-          },
-        ]));
-        break;
-      case 'decrease':
-        localStorage.setItem('carts', JSON.stringify([
-          ...carts.filter((p: CartItem) => p.id !== productId),
-          {
-            ...item,
-            count: item.count - 1 || 1,
-          },
-        ]));
-        break;
-      default:
-        break;
-    }
+            count: (action === 'increase'
+              ? item.count + 1
+              : item.count - 1 || 1),
+          })
+          : item
+      )),
+    ));
 
     renderFunc();
   };
@@ -66,12 +43,11 @@ export const BasketItem: React.FC<Props> = ({ product, renderFunc }) => {
         onClick={() => remove(product.id)}
       />
       <img
-        src={product.imageUrl}
+        src={product.image}
         className="basket__image"
-        alt="PhotoBaske
-        "
+        alt="PhotoBasket"
       />
-      <div className="basket__name bodytext">{product.name}</div>
+      <div className="basket__name bodytext">{product.title}</div>
       <div className="basket__counter">
         <button
           type="button"
@@ -97,7 +73,7 @@ export const BasketItem: React.FC<Props> = ({ product, renderFunc }) => {
       </div>
       <div className="basket__price h2">
         $
-        {product.newPrice}
+        {product.price}
       </div>
     </>
   );

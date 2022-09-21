@@ -15,9 +15,19 @@ type Props = {
 export const Favourites: React.FC<Props> = ({ products }) => {
   const searchParams = new URLSearchParams(useLocation().search);
   const searchInput = searchParams.get('searchInput') || '';
-  let visibleProducts = products
-    .filter(product => localStorage
-      .getItem('favourites')?.includes(product.id));
+  let visibleProducts = useMemo(() => {
+    return products.filter(product => {
+      const favourites = localStorage
+        .getItem('favourites');
+
+      if (favourites) {
+        return JSON.parse(favourites).includes(product.id);
+      }
+
+      return false;
+    });
+  }, [products, localStorage
+    .getItem('favourites')]);
 
   visibleProducts = useMemo(() => {
     if (searchInput) {

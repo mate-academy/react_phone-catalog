@@ -91,7 +91,7 @@ const App: React.FC = () => {
         />
         <Route
           path="/cart"
-          element={<Basket products={products} />}
+          element={<Basket />}
         />
       </Routes>
     </div>

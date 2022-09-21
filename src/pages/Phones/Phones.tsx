@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import '../../container.scss';
 import { useLocation, useNavigate } from 'react-router-dom';
+import Select from 'react-select';
 import { Product } from '../../type';
 import './Phones.scss';
 import { PricesPhone } from '../../helpers/PricesPhone/PricesPhone';
@@ -22,26 +23,38 @@ export const Phones: React.FC<Props> = ({ products, title }) => {
   const sortItems = searchParams.get('sortItems') || '';
   const sortBy = searchParams.get('sortBy') || '';
   const searchInput = searchParams.get('searchInput') || '';
+  const customStyles = {
+    // eslint-disable-next-line
+    option: (provided: any, state: any) => ({
+      ...provided,
+      color: state.isSelected ? '#313237' : '#89939a',
+      backgroundColor: state.isSelected ? '#fff' : '#fff',
+    }),
+  };
 
   const visibleProducts = useMemo(() => {
-    if (sortBy || searchInput) {
+    let mass: Product[] = products;
+
+    if (sortBy) {
       switch (sortBy) {
         case 'newest':
-          return products.sort((a, b) => a.age - b.age)
-            .filter(product => product.name.toLowerCase()
-              .includes(searchInput.toLowerCase()));
+          mass = mass.sort((a, b) => a.age - b.age);
+          break;
         case 'cheaper':
-          return products.sort((a, b) => a.price - b.price)
-            .filter(product => product.name
-              .includes(searchInput));
+          mass = mass.sort((a, b) => a.price - b.price);
+          break;
         case 'expensive':
-          return products.sort((a, b) => b.price - a.price)
-            .filter(product => product.name.includes(searchInput));
+          mass = mass.sort((a, b) => b.price - a.price);
+          break;
         default: return null;
       }
     }
 
-    return products;
+    mass = mass.filter(product => product.name.toLowerCase()
+      .includes(searchInput.toLowerCase()));
+    searchParams.delete('searchInput');
+
+    return mass;
   }, [sortBy, products, searchInput]);
 
   return (
@@ -52,7 +65,7 @@ export const Phones: React.FC<Props> = ({ products, title }) => {
           <div className="container">
             <NavPages />
             <h1 className="phones__title">{title}</h1>
-            {products.length !== 0 ? (
+            {visibleProducts?.length !== 0 ? (
               <>
                 <p className="phones__number">
                   {visibleProducts?.length}
@@ -68,28 +81,24 @@ export const Phones: React.FC<Props> = ({ products, title }) => {
                       >
                         Sort by
                       </label>
-                      <select
-                        name="sort"
+                      <Select
+                        name="inputSort"
                         id="inputSort"
                         className="phones__select"
-                        value={sortBy}
+                        styles={customStyles}
+                        options={[
+                          { value: 'newest', label: 'Newest' },
+                          { value: 'cheaper', label: 'Сheaper' },
+                          { value: 'expensive', label: 'More expensive' },
+                        ]}
+                        placeholder="Newest"
                         onChange={(event) => {
-                          searchParams.set('sortBy', event.target.value);
+                          searchParams.set('sortBy', event?.value || '');
                           navigate({
                             search: searchParams.toString(),
                           });
                         }}
-                      >
-                        <option className="phones__option" value="newest">
-                          Newest
-                        </option>
-                        <option className="phones__option" value="cheaper">
-                          Сheaper
-                        </option>
-                        <option className="phones__option" value="expensive">
-                          More expensive
-                        </option>
-                      </select>
+                      />
                     </div>
                     <div className="phones__input">
                       <label
@@ -98,28 +107,24 @@ export const Phones: React.FC<Props> = ({ products, title }) => {
                       >
                         Items on page
                       </label>
-                      <select
+                      <Select
                         name="numberPage"
-                        id="inputItems"
+                        id="inputSort"
                         className="phones__select"
-                        value={sortItems}
+                        placeholder="All"
+                        styles={customStyles}
+                        options={[
+                          { value: '0', label: 'All' },
+                          { value: '4', label: '4' },
+                          { value: '8', label: '8' },
+                        ]}
                         onChange={(event) => {
-                          searchParams.set('sortItems', event.target.value);
+                          searchParams.set('sortItems', event?.value || '');
                           navigate({
                             search: searchParams.toString(),
                           });
                         }}
-                      >
-                        <option className="phones__option" value="0">
-                          All
-                        </option>
-                        <option className="phones__option" value="4">
-                          4
-                        </option>
-                        <option className="phones__option" value="8">
-                          8
-                        </option>
-                      </select>
+                      />
                     </div>
                   </div>
                 )}

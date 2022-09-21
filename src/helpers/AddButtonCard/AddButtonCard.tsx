@@ -34,6 +34,8 @@ export const AddButtonCard: React.FC<Props> = ({ cart, product }) => {
         ...carts,
         {
           id: product.id,
+          title: product.name,
+          image: product.imageUrl,
           count: 1,
           price: product.newPrice,
         },

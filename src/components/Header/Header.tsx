@@ -71,56 +71,80 @@ export const Header: React.FC = () => {
             </svg>
           </NavLink>
           <nav className="header__nav">
-            <NavLink
-              to="/"
-              className={({ isActive }) => classNames('header__item', {
-                'header__item--focus': isActive,
-              })}
-            >
-              HOME
-            </NavLink>
-            <NavLink
-              to="/phones"
-              className={({ isActive }) => classNames('header__item', {
-                'header__item--focus': isActive,
-              })}
-            >
-              PHONES
-            </NavLink>
-            <NavLink
-              to="/tablets"
-              className={({ isActive }) => classNames('header__item', {
-                'header__item--focus': isActive,
-              })}
-            >
-              TABLETS
-            </NavLink>
-            <NavLink
-              to="/accessories"
-              className={({ isActive }) => classNames('header__item', {
-                'header__item--focus': isActive,
-              })}
-            >
-              ACCESSORIES
-            </NavLink>
+            <ul className="header__list">
+              <li className="header__item">
+                <NavLink
+                  to="/"
+                  className="header__link"
+                >
+                  <p className={classNames('header__name', {
+                    'header__name--focus': location.pathname === '/',
+                  })}
+                  >
+                    HOME
+                  </p>
+                </NavLink>
+              </li>
+              <li className="header__item">
+                <NavLink
+                  to="/phones"
+                  className="header__link"
+                >
+                  <p className={classNames('header__name', {
+                    'header__name--focus': location.pathname === '/phones',
+                  })}
+                  >
+                    PHONES
+                  </p>
+
+                </NavLink>
+              </li>
+              <li className="header__item">
+                <NavLink
+                  to="/tablets"
+                  className="header__link"
+                >
+                  <p className={classNames('header__name', {
+                    'header__name--focus': location.pathname === '/tablets',
+                  })}
+                  >
+                    TABLETS
+                  </p>
+
+                </NavLink>
+              </li>
+              <li className="header__item">
+                <NavLink
+                  to="/accessories"
+                  className="header__link"
+                >
+                  <p className={classNames('header__name', {
+                    'header__name--focus': location.pathname === '/accessories',
+                  })}
+                  >
+                    ACCESSORIES
+                  </p>
+
+                </NavLink>
+              </li>
+            </ul>
           </nav>
         </div>
-        <div className="header__icon">
+        <div className="header__icons">
           {pathname.length === 2 && pathname[1] === 'phones' && <Search />}
           {pathname.length === 2 && pathname[1] === 'tablets' && <Search />}
           {pathname.length === 2 && pathname[1] === 'accessories' && <Search />}
           {pathname.length === 2 && pathname[1] === 'favourites' && <Search />}
           <NavLink
             to="/favourites"
-            className={({ isActive }) => classNames({
-              'header__icon--focus': isActive,
-            })}
           >
             <button
               type="button"
-              className="header__favourites"
+              className={classNames('header__favourites', {
+                'header__icons--focus': location.pathname === '/favourites',
+              })}
               onClick={() => {
-                window.scrollTo({ top: 0 });
+                window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
             >
               {parseFavourites.length !== 0
@@ -133,13 +157,12 @@ export const Header: React.FC = () => {
           </NavLink>
           <NavLink
             to="/cart"
-            className={({ isActive }) => classNames({
-              'header__icon--focus': isActive,
-            })}
           >
             <button
               type="button"
-              className="header__cart"
+              className={classNames('header__cart', {
+                'header__icons--focus': location.pathname === '/cart',
+              })}
               onClick={() => {
                 window.scrollTo({ top: 0 });
               }}
