@@ -15,45 +15,35 @@ type Props = {
   children: ReactNode,
 };
 
-let productsFromServer:Product[] = [];
+let productsFromServer: Product[] = [];
 
 getProducts().then(res => {
   productsFromServer = res;
 });
 
-// function useLocalStorage<T>(key: string, initialValue: T) {
-//   const [value, setValue] = useState(() => {
-//     try {
-//       return JSON.parse(localStorage.getItem(key) || '') || initialValue;
-//     } catch {
-//       return initialValue;
-//     }
-//   });
-
-//   const save = (newValue: T) => {
-//     setValue(newValue);
-//     localStorage.setItem(key, JSON.stringify(newValue));
-//   };
-
-//   return [value, save];
-// }
-
 export const ProductsContext = React.createContext<ContextValue>({
   products: productsFromServer,
-  setProducts: () => {},
+  setProducts: () => { },
   isLoading: false,
-  setIsLoading: () => {},
+  setIsLoading: () => { },
 });
 
 export const ProductsProvider: React.FC<Props> = ({ children }) => {
-  // const [products, setProducts] = useLocalStorage<Product[]>('products', []);
-
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     getProducts().then(res => {
       setProducts(res);
+
+      const newRes: Product[] = [];
+
+      for (let i = 0; i < res.length; i += 1) {
+        newRes.push({ ...res[i], number: 1 });
+      }
+
+      setProducts(newRes);
+
       setIsLoading(false);
     });
   }, [isLoading]);

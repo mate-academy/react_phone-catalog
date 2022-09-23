@@ -14,6 +14,7 @@
 @import "./styles/blocks/productlist.scss";
 @import "./styles/blocks/sort.scss";
 @import "./styles/blocks/product.scss";
+@import "./styles/blocks/cart.scss";
 
 * {
   margin: 0;
@@ -32,6 +33,12 @@ a {
 
 .app {
   padding-top: 104px;
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
 .title {

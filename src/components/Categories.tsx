@@ -1,9 +1,13 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ProductsContext } from './ProductsContext';
 
 export const Categories = React.memo(() => {
   const { products } = useContext(ProductsContext);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+  }, []);
 
   const phoneCount = products.filter(item => item.type === 'phone').length;
 

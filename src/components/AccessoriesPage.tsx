@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 import classNames from 'classnames';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { Product } from '../types/Product';
 import { Pagination } from './Pagination';
@@ -26,6 +26,10 @@ export const AccessoriesPage = React.memo(() => {
   const filter = searchParams.get('sort') || '';
   const query = searchParams.get('query') || '';
   let activeFilter = 'All';
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+  }, []);
 
   let sortedProducts: Product[] = [];
   const accessories = [...products].filter(item => item.type === 'accessories');

@@ -3,6 +3,10 @@
 
 .footer {
   padding: 0 50px;
+  // position: relative;
+  // bottom: 0;
+  // left: 0;
+  // right: 0;
 
   @include laptop {
     padding: 0 25px;
@@ -13,6 +17,12 @@
     padding: 0 25px;
 
   }
+
+  // &__outer {
+  //   // margin-top: 20px;
+  //   position: absolute;
+  //   bottom: 0;
+  // }
 
   &__wrapper {
     padding: 43px 0;
@@ -74,6 +84,8 @@
     justify-content: center;
     align-items: center;
     transition: $transition;
+    background: $white;
+    cursor: pointer;
 
     &:hover {
       border: 1px solid #313237;

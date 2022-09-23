@@ -1,20 +1,13 @@
 /* eslint-disable max-len */
 import classNames from 'classnames';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
+import { getFullPrice } from '../helpers/getFullPrice';
 import { Product } from '../types/Product';
 import { Pagination } from './Pagination';
 import { ProductList } from './ProductList';
 import { ProductsContext } from './ProductsContext';
 import { SearchLink } from './SearchLink';
-
-const getFullPrice = (price: number, discount: number) => {
-  if (!discount) {
-    return price;
-  }
-
-  return price - (price * (discount / 100));
-};
 
 export const PhonesPage = React.memo(() => {
   const { products } = useContext(ProductsContext);
@@ -26,6 +19,10 @@ export const PhonesPage = React.memo(() => {
   const filter = searchParams.get('sort') || '';
   const query = searchParams.get('query') || '';
   let activeFilter = 'All';
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+  }, []);
 
   let sortedProducts: Product[] = [];
   const phones = [...products].filter(item => item.type === 'phone');

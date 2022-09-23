@@ -16,8 +16,9 @@ export const Gallery: React.FC<Props> = ({ photos }) => {
       <div
         className="product__img-list grid__item--1-2"
       >
-        {photos.map((photo) => (
+        {photos.map((photo, idx) => (
           <button
+            key={JSON.stringify(new Date()) + idx.toString()}
             type="button"
             className="product__photo-link"
             onClick={(e) => {

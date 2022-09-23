@@ -25,7 +25,7 @@ export const Navbar = () => {
 
     <header className="header">
 
-      {pathname === '/phones' || pathname === '/tablets'
+      {pathname === '/phones' || pathname === '/tablets' || pathname === '/favorites' || pathname === '/accessories'
         ? (
           <div className="header__wrapper header__wrapper--search">
 
@@ -133,7 +133,7 @@ export const Navbar = () => {
 
             <div className="header__icons">
               <NavLink
-                to="../favourites"
+                to="../favorites"
                 className={({ isActive }) => (
                   classNames('header__icon header__icon--search',
                     { 'header__icon--active': isActive })
@@ -293,7 +293,7 @@ export const Navbar = () => {
 
             <div className="header__icons">
               <NavLink
-                to="../favourites"
+                to="../favorites"
                 className={({ isActive }) => (
                   classNames('header__icon',
                     { 'header__icon--active': isActive })

@@ -1,5 +1,5 @@
 import {
-  useContext, memo, useMemo,
+  useContext, memo, useMemo, useEffect,
 } from 'react';
 import { Categories } from './Categories';
 import { CustomSlider } from './CustomSlider';
@@ -79,6 +79,10 @@ const brandNewSettings = {
 
 export const Home = memo(() => {
   const { products, isLoading } = useContext(ProductsContext);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+  }, []);
 
   const getHotPriceProducts = () => {
     return [...products].filter(product => product.discount !== 0);

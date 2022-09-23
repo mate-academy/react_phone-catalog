@@ -11,4 +11,5 @@ export interface Product {
   'screen': string,
   'capacity': string,
   'ram': string,
+  'number': number,
 }

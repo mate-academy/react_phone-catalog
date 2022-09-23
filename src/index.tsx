@@ -14,6 +14,8 @@ import { PhonesPage } from './components/PhonesPage';
 import { TabletsPage } from './components/TabletsPage';
 import { AccessoriesPage } from './components/AccessoriesPage';
 import { ProductDetailsPage } from './components/ProductDetailsPage';
+import { Cart } from './components/Cart';
+import { Favorites } from './components/Favorites';
 
 ReactDOM.render(
   <ProductsProvider>
@@ -32,8 +34,9 @@ ReactDOM.render(
             <Route index element={<TabletsPage />} />
             <Route path=":slug" element={<ProductDetailsPage />} />
           </Route>
-          {/* <Route path="tablets" element={<TabletsPage />} /> */}
           <Route path="accessories" element={<AccessoriesPage />} />
+          <Route path="cart" element={<Cart />} />
+          <Route path="favorites" element={<Favorites />} />
         </Route>
       </Routes>
     </HashRouter>
