@@ -2,42 +2,38 @@
 import classNames from 'classnames';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useLocalStorage } from '../helpers/useLocalStorage';
 import { Product } from '../types/Product';
 
-type Props = {
+interface Props<T> {
   product: Product;
-  isSlider: boolean
-};
+  isSlider: boolean,
+  products: Product[],
+  save: (value: T) => void,
+  favorites: Product[],
+  saveFav: (value: T) => void,
+}
 
-export const ProductCard: React.FC<Props> = ({ product, isSlider }) => {
-  const [cartProducts, save] = useLocalStorage<Product[]>('products', []);
-  const [favorites, saveFav] = useLocalStorage<Product[]>('favorites', []);
-  const [products, setProducts] = useState<Product[]>([]);
+export const ProductCard: React.FC<Props<Product[]>> = (
+  {
+    product, isSlider, products, save, favorites, saveFav,
+  },
+) => {
   const [hasErrorMessage, setHasErrorMessage] = useState(false);
   const [isDuplicate, setIsDuplicate] = useState(false);
   let isFavourite = false;
 
   useEffect(() => {
-    for (let i = 0; i < products.length; i += 1) {
-      if (products[i].id === product.id) {
-        setIsDuplicate(true);
+    if (products.length) {
+      for (let i = 0; i < products.length; i += 1) {
+        if (products[i].id === product.id) {
+          setIsDuplicate(true);
+        }
       }
     }
   }, []);
 
-  useEffect(() => {
-    setProducts(cartProducts);
-
-    for (let i = 0; i < products.length; i += 1) {
-      if (products[i].id === product.id) {
-        setIsDuplicate(true);
-      }
-    }
-  }, [cartProducts]);
-
   if (product) {
-    isFavourite = favorites.find((item: Product) => item.id === product.id);
+    isFavourite = favorites.some((item: Product) => item.id === product.id);
   }
 
   return (
@@ -102,7 +98,6 @@ export const ProductCard: React.FC<Props> = ({ product, isSlider }) => {
 
             for (let i = 0; i < products.length; i += 1) {
               if (products[i].id === product.id) {
-                setIsDuplicate(true);
                 setHasErrorMessage(true);
 
                 setTimeout(() => {
@@ -114,7 +109,7 @@ export const ProductCard: React.FC<Props> = ({ product, isSlider }) => {
             }
 
             if (!hasErrorMessage) {
-              save([...cartProducts, product]);
+              save([...products, product]);
             }
           }}
         >

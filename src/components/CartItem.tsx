@@ -2,17 +2,17 @@
 import { getFullPrice } from '../helpers/getFullPrice';
 import { Product } from '../types/Product';
 
-type Props = {
+interface Props<T> {
   product: Product,
-  save: (value: any) => void,
+  save: (value: T) => void,
   products: Product[],
   setTotalPrice: (value: number) => void,
   totalPrice: number,
-};
+}
 
 enum Action { add, substract }
 
-export const CartItem: React.FC<Props> = (
+export const CartItem: React.FC<Props<Product[]>> = (
   {
     product, save, products, setTotalPrice, totalPrice,
   },

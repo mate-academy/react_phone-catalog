@@ -20,6 +20,7 @@ export const Cart = () => {
   const [products, save] = useLocalStorage<Product[]>('products', []);
   const navigate = useNavigate();
   const [totalPrice, setTotalPrice] = useState(getTotalPrice(products));
+  const [isPopUp, setIsPopUp] = useState(false);
 
   useEffect(() => {
     setTotalPrice(getTotalPrice(products));
@@ -67,9 +68,23 @@ export const Cart = () => {
               <button
                 type="button"
                 className="cart__co-button button-text"
+                onClick={() => {
+                  setIsPopUp(true);
+
+                  setTimeout(() => {
+                    setIsPopUp(false);
+                  }, 3000);
+                }}
               >
                 Checkout
               </button>
+
+              {isPopUp
+                && (
+                  <div className="cart__popup">
+                    <p className="body-text">This feature is unavailable yet</p>
+                  </div>
+                )}
             </div>
           </>
         )

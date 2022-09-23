@@ -4,6 +4,7 @@
 /* eslint-disable jsx-a11y/interactive-supports-focus */
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import Slider from 'react-slick';
+import { Link } from 'react-router-dom';
 import { Product } from '../types/Product';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -80,13 +81,17 @@ export const ProductSlider: React.FC<Props> = (
       <div style={{ margin: 30 }}>
         <Slider {...settings} className="slider">
           {products.map(item => (
-            <div className="slider__card--top-slider" key={item.id}>
+            <Link
+              to={`../${item.id}`}
+              className="slider__card--top-slider"
+              key={item.id}
+            >
               <img
                 className="slider__img slider__img--top"
                 src={item.imageUrl}
                 alt={item.name}
               />
-            </div>
+            </Link>
           ))}
         </Slider>
       </div>

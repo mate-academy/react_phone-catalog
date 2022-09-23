@@ -86,7 +86,7 @@
   }
 
   &__card {
-    padding: 32px 24px 24px;
+    padding: 32px 24px 0;
     border: 1px solid $elements;
     display: flex !important;
     flex-direction: column;
@@ -219,7 +219,7 @@
 
     &--active {
       height: 48px;
-      width: 100%;
+      width: 78%;
       padding: 7px;
       display: flex;
       justify-content: center;
@@ -285,13 +285,15 @@
   
 }
 
-.slick-list {
-  margin: 0 auto;
-}
-
 .slick-slider .slick-track {
   margin: 0 auto;
   z-index: 1;
+}
+
+.slick-slider .slick-list {
+  margin: 0 auto;
+  z-index: 1;
+  height: 105%;
 }
 
 .slick-slider .slick-dots {

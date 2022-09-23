@@ -15,6 +15,7 @@ const hotPricesSettings = {
   autoplaySpeed: 3000,
   pauseOnHover: true,
   swipeToSlide: true,
+  arrows: false,
   responsive: [
     {
       breakpoint: 580,
@@ -50,6 +51,9 @@ const brandNewSettings = {
   autoplaySpeed: 3000,
   pauseOnHover: true,
   swipeToSlide: true,
+  nextArrow: false,
+  prevArrow: false,
+  arrows: false,
   responsive: [
     {
       breakpoint: 580,
@@ -97,7 +101,7 @@ export const Home = memo(() => {
   const brandNewProducts = useMemo(getHotBrandNewProducts, [products]);
 
   return (
-    <section>
+    <section className="app__section">
       {isLoading
         ? <Loader />
         : (

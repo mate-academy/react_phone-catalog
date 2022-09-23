@@ -1,6 +1,10 @@
 @import "../utils/mixins.scss";
 @import "../utils/vars.scss";
 
+.cart__button > svg > path {
+  transition: $transition;
+}
+
 .cart {
   &__title {
     margin-bottom: 24px;
@@ -12,6 +16,14 @@
     flex-direction: column;
     gap: 16px;
     align-items: center;
+
+    @include tablet {
+      grid-column: 1 / 7;
+    }
+
+    @include mobile {
+      grid-column: 1 / 7;
+    }
   }
 
   &__item {
@@ -21,6 +33,14 @@
     grid-template-columns: repeat(16, 1fr);
     align-items: center;
     padding: 30px 40px 30px 27px;
+
+    @include tablet {
+      padding: 25px 35px 25px 22px;
+    }
+
+    @include mobile {
+      padding: 15px 25px 15px 12px;
+    }
   }
 
   &__close {
@@ -28,16 +48,40 @@
     border: none;
     grid-column: 1 / 2;
     cursor: pointer;
+
+    & > svg > path {
+      transition: $transition;
+    }
+
+    &:hover > svg > path {
+      fill: $red;
+    }
   }
 
   &__img {
     width: 66px;
     object-fit: contain;
     grid-column: 3 / 5;
+
+    @include tablet {
+      grid-column: 2 / 4;
+    }
+
+    @include mobile {
+      grid-column: 2 / 4;
+    }
   }
 
   &__text {
     grid-column: 5 / 11;
+
+    @include tablet {
+      grid-column: 4 / 10;
+    }
+
+    @include mobile {
+      grid-column: 4 / 10;
+    }
   }
 
   &__quantity {
@@ -46,6 +90,14 @@
     align-items: center;
     width: 100%;
     grid-column: 12 / 14;
+
+    @include tablet {
+      grid-column: 10 / 14;
+    }
+
+    @include mobile {
+      grid-column: 10 / 14;
+    }
   }
 
   &__button {
@@ -59,10 +111,6 @@
     cursor: pointer;
     transition: $transition;
 
-    & > svg > path {
-      transition: $transition;
-    }
-
     &:hover {
       border-color: $secondary;
     }
@@ -70,10 +118,28 @@
     &:hover > svg > path {
       fill: $secondary;
     }
+
+    @include tablet {
+      width: 28px;
+      height: 28px;
+    }
+
+    @include mobile {
+      width: 28px;
+      height: 28px;
+    }
   }
 
   &__price {
     grid-column: 15 / 17;
+
+    @include tablet {
+      font-size: 16px;
+    }
+
+    @include mobile {
+      font-size: 16px;
+    }
   }
 
   &__checkout {
@@ -83,6 +149,15 @@
     grid-row: 3 / 4;
     height: fit-content;
     text-align: center;
+    position: relative;
+
+    @include tablet {
+      grid-column: 1 / 7;
+    }
+
+    @include mobile {
+      grid-column: 1 / 7;
+    }
   }
 
   &__totalprice {
@@ -121,5 +196,17 @@
       height: 48px;
       margin-bottom: 32px;
     }
+  }
+
+  &__popup {
+    position: absolute;
+    bottom: -50px;
+    left: 0;
+    right: 0;
+
+    border: 1px solid $elements;
+    padding: 10px;
+    display: block;
+    background: $white;
   }
 }

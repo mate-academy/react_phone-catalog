@@ -11,6 +11,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import '../styles/blocks/slider.scss';
 import { ProductCard } from './ProductCard';
+import { useLocalStorage } from '../helpers/useLocalStorage';
 
 /*
   FILE WAS CHANGED TO JSX INSTEAD OF TSX, BECAUSE TYPESRIPT DIDN'T
@@ -19,6 +20,8 @@ import { ProductCard } from './ProductCard';
 
 export const CustomSlider = ({ products, settings, title }) => {
   const sliderRef = useRef(null);
+  const [cartProducts, save] = useLocalStorage('products', []);
+  const [favorites, saveFav] = useLocalStorage('favorites', []);
 
   const NextButton = () => {
     return (
@@ -67,7 +70,14 @@ export const CustomSlider = ({ products, settings, title }) => {
           <Slider {...settings} className="slider" ref={sliderRef}>
             {products.map(item => (
               <div style={{ margin: 50 }} key={item.id} data-cy="cardsContainer">
-                <ProductCard product={item} isSlider />
+                <ProductCard
+                  product={item}
+                  isSlider
+                  products={cartProducts}
+                  save={save}
+                  favorites={favorites}
+                  saveFav={saveFav}
+                />
               </div>
             ))}
           </Slider>
