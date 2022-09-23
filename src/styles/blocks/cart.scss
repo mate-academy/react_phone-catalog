@@ -153,10 +153,12 @@
 
     @include tablet {
       grid-column: 1 / 7;
+      margin-bottom: 54px;
     }
 
     @include mobile {
       grid-column: 1 / 7;
+      margin-bottom: 54px;
     }
   }
 

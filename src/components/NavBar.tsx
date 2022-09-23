@@ -114,7 +114,7 @@ export const Navbar = () => {
 
                 <li>
                   <PageNavLink
-                    to="accesories"
+                    to="accessories"
                     text="Accesories"
                     setMenuOpened={setMenuOpened}
                   />
