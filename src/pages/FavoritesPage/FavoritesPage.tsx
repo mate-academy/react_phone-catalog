@@ -14,14 +14,11 @@ export const FavoritesPage: React.FC = () => {
 
   if (searchQuery) {
     filteredProducts = favorites
-      .filter(product => (
-        product.name !== null
-        && product.id !== null
-      )
-        && (product.name
-          .toLowerCase().includes(searchQuery)
-          || product.id
-            .toLowerCase().includes(searchQuery)));
+      .filter(product => ((product.name && product.id)
+    && (product.name.toLowerCase().includes(searchQuery)
+      || product.id.toLowerCase().includes(searchQuery)
+    )
+      ));
   } else {
     filteredProducts = favorites;
   }

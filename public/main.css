@@ -16,6 +16,10 @@
 }
 
 * {
+  box-sizing: border-box;
+}
+
+.page {
   font-family: Mont, Arial, Helvetica, sans-serif;
 }
 

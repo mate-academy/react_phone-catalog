@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
 import * as Scroll from 'react-scroll';
 import './Footer.scss';
@@ -40,13 +38,14 @@ export const Footer: React.FC = () => {
       </div>
 
       <div className="navbar-end">
-        <div
+        <button
+          type="button"
           className="navbar-item back-to-top footer-link"
           onClick={scrollToTop}
         >
           Back to top
           <i className="fa-solid fa-arrow-up ml-2" />
-        </div>
+        </button>
       </div>
     </nav>
   );

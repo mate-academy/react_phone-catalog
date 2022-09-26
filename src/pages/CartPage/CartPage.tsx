@@ -62,7 +62,7 @@ export const CartPage: React.FC = () => {
 
   return (
     <div className="cart-page">
-      {cart.length === 0
+      {!cart.length
         ? (
           <div className="cart-page">
             <div className="title-container">

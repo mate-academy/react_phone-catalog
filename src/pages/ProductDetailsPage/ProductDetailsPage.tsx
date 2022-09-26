@@ -74,24 +74,10 @@ export const ProductDetailsPage: React.FC = () => {
     navigate(-1);
   };
 
-  if (!isLoaded) {
-    return (
-      <>
-        <Loader />
-      </>
-    );
-  }
-
-  if (phoneNotFound) {
-    return (
-      <>
-        <NotFoundPage />
-      </>
-    );
-  }
-
   return (
     <div className="details-page">
+      {!isLoaded && <Loader />}
+      {phoneNotFound && <NotFoundPage />}
       <div className="details-page-wrapper">
         <div className="breadcrumbs-container" data-cy="breadCrumbs">
           <Link to="/">

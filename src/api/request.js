@@ -1,4 +1,4 @@
-const productsURL = 'https://mate-academy.github.io/react_phone-catalog/api';
+const PRODUCTS_URL = 'https://mate-academy.github.io/react_phone-catalog/api';
 
 export const getDataFromServer = (url) => {
   return fetch(url)
@@ -7,9 +7,9 @@ export const getDataFromServer = (url) => {
       : Promise.reject(new Error('Cannot load data from server'))));
 };
 
-export const getProducts = () => getDataFromServer(`${productsURL}/products.json`);
+export const getProducts = () => getDataFromServer(`${PRODUCTS_URL}/products.json`);
 
-export const getProductDetails = (productId) => getDataFromServer(`${productsURL}/products/${productId}.json`);
+export const getProductDetails = (productId) => getDataFromServer(`${PRODUCTS_URL}/products/${productId}.json`);
 
 export const getHotPriceProducts = () => {
   return getProducts()

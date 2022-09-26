@@ -3,19 +3,22 @@ import * as request from '../api/request';
 import { Product } from '../types/Product';
 
 type Context = {
-  products: Product[],
-  setProducts: (products: Product[]
-  | ((prevState: Product[]) => Product[])) => void,
-  cart: Product[],
-  setCart: (products: Product[]
-  | ((prevState: Product[]) => Product[])) => void,
-  favorites: Product[],
-  setFavorites: (products: Product[]
-  | ((prevState: Product[]) => Product[])) => void,
-  addToLocalStorage: CallableFunction,
-  removeFromLocalStorage: CallableFunction,
-  getLocalStorageArray: CallableFunction,
-  error: string,
+  products: Product[];
+  setProducts: (
+    products: Product[] | ((prevState: Product[]) => Product[])
+  ) => void;
+  cart: Product[];
+  setCart: (
+    products: Product[] | ((prevState: Product[]) => Product[])
+  ) => void;
+  favorites: Product[];
+  setFavorites: (
+    products: Product[] | ((prevState: Product[]) => Product[])
+  ) => void;
+  addToLocalStorage: CallableFunction;
+  removeFromLocalStorage: CallableFunction;
+  getLocalStorageArray: CallableFunction;
+  error: string;
 };
 
 export const ProductsContext = React.createContext<Context>({
