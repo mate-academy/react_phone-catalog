@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import Select, { SingleValue } from 'react-select';
 import { ProductCard } from '../ProductCard';
 import { Pagination } from '../Pagination';
-import { Loader } from '../Loader';
+import { NoSearchResultsL } from '../NoSearchResults';
 
 import './ProductList.scss';
 
@@ -136,7 +136,7 @@ export const ProductsList: React.FC<Props> = ({ devices }) => {
           />
         </div>
       </div>
-      {visiblePhones ? (
+      {visiblePhones.length > 0 ? (
         <div className="ProductsList__content">
           {visiblePhones.filter((phone, index) => {
             if (index >= firstItemOnPage && index <= lastItemOnPage) {
@@ -147,7 +147,7 @@ export const ProductsList: React.FC<Props> = ({ devices }) => {
           }).map(phone => <ProductCard key={phone.id} product={phone} />)}
         </div>
       ) : (
-        <Loader />
+        <NoSearchResultsL />
       )}
       {coutPage > 1 && (
         <Pagination

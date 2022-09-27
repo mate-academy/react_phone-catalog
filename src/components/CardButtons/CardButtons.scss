@@ -1,5 +1,5 @@
-@import '../../utils/extends';
-@import '../../utils/vars';
+@import "../../utils/extends";
+@import "../../utils/vars";
 
 .CardButtons {
   display: flex;
@@ -26,10 +26,18 @@
     }
 
     &:hover {
-      box-shadow: 0px 3px 13px rgba(23, 32, 49, 0.26);
+      box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+      background-color: $colorPrimary;
+      color: #fff;
     }
   }
-  
+
+  &__isActive {
+    color: $colorGreen;
+    background: none;
+    border: 1px solid $colorElements;
+  }
+
   &__add-like {
     display: flex;
     justify-content: center;
@@ -49,11 +57,11 @@
       width: 48px;
       height: 48px;
     }
-  
+
     &:hover {
       border-color: $colorPrimary;
     }
-  
+
     &--selected {
       border-color: $colorElements;
     }

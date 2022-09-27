@@ -122,6 +122,7 @@ export const CardButtons: React.FC<Props> = ({ size, product }) => {
         className={classNames('CardButtons__add-cart', {
           'CardButtons__add-cart--isSmall': size === 'small',
           'CardButtons__add-cart--isBig': size === 'big',
+          CardButtons__isActive: addedToCart,
         })}
         onClick={() => {
           addToCart();

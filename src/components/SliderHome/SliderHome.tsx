@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
 
 import './SladerHome.scss';
@@ -13,6 +13,14 @@ export const SliderHome: React.FC = () => {
       setIndexSlide(0);
     }
   };
+
+  useEffect(() => {
+    const timer1 = setTimeout(forwardSlider, 5000);
+
+    return () => {
+      clearTimeout(timer1);
+    };
+  }, [indexSlide]);
 
   const backSlider = () => {
     if (indexSlide === 0) {

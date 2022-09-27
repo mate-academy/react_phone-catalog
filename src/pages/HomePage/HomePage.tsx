@@ -11,6 +11,10 @@ export const HomePage: React.FC = () => {
   const [hotProducts, setHotProducts] = useState<Product[]>([]);
   const [brandNewProducts, setBrandNewProducts] = useState<Product[]>([]);
 
+  const [countPhones, setCountPhones] = useState<number>(0);
+  const [countTablet, setCountTablet] = useState<number>(0);
+  const [countAccessories, setCountAccessories] = useState<number>(0);
+
   const getHotPriceProducts = () => {
     const hotPriceFilter = allProducts.filter(product => product.discount > 0)
       .sort((a, b) => (
@@ -30,6 +34,21 @@ export const HomePage: React.FC = () => {
   useMemo(() => {
     getHotPriceProducts();
     getBrandNewProducts();
+
+    allProducts.forEach(el => {
+      switch (el.type) {
+        case 'phone':
+          setCountPhones((prev) => prev + 1);
+          break;
+        case 'tablet':
+          setCountTablet((prev) => prev + 1);
+          break;
+        case 'accessory':
+          setCountAccessories((prev) => prev + 1);
+          break;
+        default:
+      }
+    });
   }, [allProducts]);
 
   useEffect(() => {
@@ -46,7 +65,11 @@ export const HomePage: React.FC = () => {
       {hotProducts && (
         <ProductsSlider products={hotProducts} title="Hot prices" />
       )}
-      <ShopByCategory />
+      <ShopByCategory
+        countPhones={countPhones}
+        countTablet={countTablet}
+        countAccessories={countAccessories}
+      />
       {brandNewProducts && (
         <ProductsSlider products={brandNewProducts} title="Brand new models" />
       )}

@@ -1,0 +1,8 @@
+@import "../../utils/extends";
+@import "../../utils/vars";
+
+.NoSearchResultsL {
+  padding: 40px 0;
+  @extend %h2-blod-22;
+  text-align: center;
+}

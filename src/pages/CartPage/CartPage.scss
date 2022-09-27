@@ -60,7 +60,7 @@
     height: 48px;
 
     &:hover {
-      box-shadow: 0px 3px 13px rgba(23, 32, 49, 0.26);
+      box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
     }
   }
 
@@ -75,5 +75,11 @@
     bottom: -50px;
     left: 0;
     right: 0;
+  }
+
+  &__empty {
+    padding-top: 30px;
+    @extend %h2-blod-22;
+    color: $colorSecondary;
   }
 }

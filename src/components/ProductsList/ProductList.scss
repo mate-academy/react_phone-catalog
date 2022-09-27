@@ -44,6 +44,7 @@
 
     &:hover {
       border-color: $colorSecondary !important;
+      cursor: pointer;
     }
 
   }
@@ -65,6 +66,7 @@
     &:hover {
       background: #f3f3f3;
       color: $colorPrimary;
+      cursor: pointer;
     }
   }
 
@@ -76,5 +78,4 @@
   &__menu {
     z-index: 2 !important;
   }
-
 }

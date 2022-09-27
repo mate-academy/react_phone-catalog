@@ -1,0 +1,16 @@
+@import "../../utils/extends";
+@import "../../utils/vars";
+
+.SearchList {
+  &__count {
+    @extend %font-body-text-regular-14;
+    color: $colorSecondary;
+    padding-bottom: 24px;
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px 16px;
+  }
+}

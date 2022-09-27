@@ -75,14 +75,16 @@ export const CartPage: React.FC = () => {
         <h2 className="CartPage__title">Cart</h2>
         <div className="CartPage__content">
           <div className="CartPage__items">
-            {productFromCart.map(product => (
-              <CartItem
-                key={product.id}
-                product={product}
-                deleteCart={deleteCart}
-                updateAllCost={updateAllCost}
-              />
-            ))}
+            {productFromCart.length > 0
+              ? productFromCart.map(product => (
+                <CartItem
+                  key={product.id}
+                  product={product}
+                  deleteCart={deleteCart}
+                  updateAllCost={updateAllCost}
+                />
+              ))
+              : <span className="CartPage__empty">Cart is empty!</span>}
           </div>
           {totalCost !== 0 && (
             <div className="CartPage__totalPrice">

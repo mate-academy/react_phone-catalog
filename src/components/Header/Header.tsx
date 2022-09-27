@@ -1,12 +1,40 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
 import { Nav } from '../Nav';
 import { Logo } from '../Logo';
 import { useCounter } from '../Context/Context';
+import { SearchPanel } from '../SearchPanel';
 
 import './Header.scss';
 
 export const Header: React.FC = () => {
+  const [isVisibleSearch, setIsVisibleSearch] = useState<boolean>(true);
+  const [isVisibleNav, setIsVisibleNav] = useState<boolean>(true);
+
+  const location = useLocation();
+
+  useEffect(() => {
+    switch (location.pathname) {
+      case '/':
+        setIsVisibleSearch(false);
+        setIsVisibleNav(true);
+        break;
+      case '/cart':
+        setIsVisibleSearch(false);
+        setIsVisibleNav(false);
+        break;
+      case '/phones':
+      case '/tablets':
+      case '/accessories':
+      case '/favorites':
+        setIsVisibleSearch(true);
+        setIsVisibleNav(true);
+        break;
+      default:
+        break;
+    }
+  }, [location.pathname]);
+
   const context = useCounter();
 
   const setActive = (
@@ -19,7 +47,11 @@ export const Header: React.FC = () => {
         <Logo />
       </div>
       <nav className="Header__nav">
-        <Nav />
+        {isVisibleNav && <Nav />}
+        {isVisibleSearch && <SearchPanel />}
+      </nav>
+
+      {isVisibleNav && (
         <div className="Header__like">
           <NavLink
             to="/favorites"
@@ -37,7 +69,8 @@ export const Header: React.FC = () => {
               : ''}
           </NavLink>
         </div>
-      </nav>
+      )}
+
       <div className="Header__cart">
         <NavLink
           to="/cart"

@@ -1,0 +1,28 @@
+@import "../../utils/extends";
+@import "../../utils/vars";
+
+.SearchPanel {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 327px;
+  border-left: 1px solid #e2e6e9;
+  background-color: #fafbfc;
+  
+  &__input {
+    box-sizing: border-box;
+    padding: 0 24px;
+    background: none;
+    width: 100%;
+    border: none;
+    @extend %font-buttons-semibold-14;
+    color: $colorPrimary;
+    outline: none;
+  }
+
+  &__btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+}
