@@ -22,8 +22,8 @@ export const CardButtons: React.FC<Props> = ({ size, product }) => {
 
   useEffect(() => {
     if (checkActiveFavorites) {
-      const qwe = JSON.parse(checkActiveFavorites);
-      const activeFavoritesButton = qwe
+      const parseActiveFavorites = JSON.parse(checkActiveFavorites);
+      const activeFavoritesButton = parseActiveFavorites
         .some((elem: Product) => elem.id === product?.id);
 
       setSelectedLike(activeFavoritesButton);

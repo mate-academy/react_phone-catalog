@@ -8,8 +8,6 @@ import './HomePage.scss';
 
 export const HomePage: React.FC = () => {
   const [allProducts, setAllProducts] = useState<Product[]>([]);
-  const [hotProducts, setHotProducts] = useState<Product[]>([]);
-  const [brandNewProducts, setBrandNewProducts] = useState<Product[]>([]);
 
   const [countPhones, setCountPhones] = useState<number>(0);
   const [countTablet, setCountTablet] = useState<number>(0);
@@ -20,7 +18,7 @@ export const HomePage: React.FC = () => {
       .sort((a, b) => (
         (b.price / 100) * b.discount) - ((a.price / 100) * a.discount));
 
-    setHotProducts(hotPriceFilter);
+    return hotPriceFilter;
   };
 
   const getBrandNewProducts = () => {
@@ -28,13 +26,10 @@ export const HomePage: React.FC = () => {
       .filter(product => product.discount === 0)
       .sort((a, b) => b.price - a.price);
 
-    setBrandNewProducts(brandNewProductsFilter);
+    return brandNewProductsFilter;
   };
 
   useMemo(() => {
-    getHotPriceProducts();
-    getBrandNewProducts();
-
     allProducts.forEach(el => {
       switch (el.type) {
         case 'phone':
@@ -62,16 +57,19 @@ export const HomePage: React.FC = () => {
   return (
     <div className="HomePage container">
       <SliderHome />
-      {hotProducts && (
-        <ProductsSlider products={hotProducts} title="Hot prices" />
+      {getHotPriceProducts() && (
+        <ProductsSlider products={getHotPriceProducts()} title="Hot prices" />
       )}
       <ShopByCategory
         countPhones={countPhones}
         countTablet={countTablet}
         countAccessories={countAccessories}
       />
-      {brandNewProducts && (
-        <ProductsSlider products={brandNewProducts} title="Brand new models" />
+      {getBrandNewProducts() && (
+        <ProductsSlider
+          products={getBrandNewProducts()}
+          title="Brand new models"
+        />
       )}
     </div>
   );

@@ -29,7 +29,7 @@ export const AccessoriesPage: React.FC = () => {
   return (
     <div className="AccessoriesPage container">
       {
-        search.length <= 0
+        search.length === 0
           ? (
             <>
               <div className="PageNav__nav">
