@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useLocation } from 'react-router-dom';
 import { ProductCard } from '../ProductCard';
 
@@ -15,11 +15,11 @@ export const SearchList: React.FC<Props> = ({ devices }) => {
 
   let products = devices;
 
-  if (search) {
+  useMemo(() => {
     products = devices.filter(device => device.name
       .toLocaleLowerCase()
       .includes(search.toLocaleLowerCase()));
-  }
+  }, [search]);
 
   return (
     <div className="SearchList">
