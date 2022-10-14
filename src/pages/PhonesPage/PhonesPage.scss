@@ -1,0 +1,33 @@
+.phones-page {
+  display: flex;
+  flex-direction: column;
+  max-width: 1136px;
+
+  &__status {
+    margin-top: 24px;
+  }
+}
+
+.status {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+
+  &__home-logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    object-position: center;
+    height: min-content;
+  }
+
+  &__title {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: #89939a;
+  }
+}

@@ -1,0 +1,42 @@
+.products-list {
+  display: flex;
+  flex-direction: column;
+
+  &__products-count {
+    margin-top: 8px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #89939a;
+  }
+
+  &__filters {
+    margin-top: 40px;
+  }
+
+  &__products-container {
+    margin-top: 24px;
+  }
+}
+
+.filters {
+  display: flex;
+
+  &__subtitle {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: #89939a;
+  }
+
+  &__filter {
+    margin-top: 14px;
+    margin-right: 16px;
+  }
+}
+
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px 16px;
+}

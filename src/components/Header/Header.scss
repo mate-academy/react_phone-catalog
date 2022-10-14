@@ -1,0 +1,118 @@
+.header {
+  align-self: stretch;
+  display: flex;
+  justify-content: space-between;
+  background-color: #fff;
+  box-shadow: 0px 1px 0px #E2E6E9;
+
+  &__left-side-container {
+    display: flex;
+    align-items: center;
+  }
+
+  &__right-side-container {
+    display: flex;
+  }
+
+  &__logo {
+    margin-left: 24px;
+  }
+}
+
+.logo {
+  &__title {
+    height: 11px;
+    width: 40px;
+    display: inline-block;
+    background-image: url("../../assets/img/icons/logo.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}
+
+.nav {
+  display: flex;
+
+  &__list {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__item {
+    box-sizing: border-box;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 26px 0;
+    line-height: 11px;
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #89939a;
+    margin-left: 64px;
+    letter-spacing: 0.04em;
+    transition: all 0.3s;
+
+    &--is-active {
+      color: #313237;
+
+      &::after {
+        content: '';
+        position: absolute;
+        height: 3px;
+        width: 100%;
+        display: block;
+        background-color: #313237;
+        top: 61.5px;
+      }
+    }
+
+    &:hover {
+      color: #313237;
+    }
+  }
+}
+
+.favourites {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border: 1px solid transparent;
+  box-shadow: -1px 0px 0px #E2E6E9;
+  background-image: url("../../assets/img/icons/favourites.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: all 0.3s;
+  z-index: 1;
+
+  &:hover {
+    border: 1px solid #313237;
+  }
+}
+
+.bag {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  box-shadow: -1px 0px 0px #E2E6E9;
+  border: 1px solid transparent;
+  background-image: url("../../assets/img/icons/shop-bag.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: all 0.3s;
+
+  &:hover {
+    border: 1px solid #313237;
+    z-index: 1;
+  }
+}
