@@ -1,0 +1,18 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  height: 64px;
+  background: $colorWhite;
+  box-shadow: 0 1px 0 $colorElements;
+
+  &__links {
+    display: flex;
+    align-items: stretch;
+    gap: 64px;
+  }
+
+  &__icons-link {
+    display: flex;
+  }
+
+}

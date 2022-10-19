@@ -1,0 +1,55 @@
+.banner {
+  height: 432px;
+
+  &__slider {
+    height: 400px;
+    display: flex;
+    gap: 16px;
+    margin-bottom: 18px;
+  }
+ 
+  &__button {
+    box-sizing: border-box;
+    width: 32px;
+    height: 100%;
+    border: 1px solid $colorIcons;
+    background-color: $colorWhite;
+    padding: 0;
+    cursor: pointer;
+
+    &--prev {
+      background: url("../../image/icons/button_prev.svg") no-repeat center;
+    }
+
+    &--next {
+      background: url("../../image/icons/button_next.svg") no-repeat center;
+    }
+
+    @include hover("border-color", $colorPrimary);
+  }
+
+  &__image {
+    flex-grow: 1;
+    object-fit: cover;
+  }
+
+  &__dots {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+  }
+
+  &__dot {
+    width: 14px;
+    height: 4px;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    background-color: $colorElements;
+    cursor: pointer;
+
+    &--active {
+      background-color: $colorPrimary;
+    }
+  }
+}

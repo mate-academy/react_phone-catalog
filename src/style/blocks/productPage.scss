@@ -1,0 +1,39 @@
+.productsPage {
+  margin-bottom: 80px;
+
+  &__nav {
+    margin-bottom: 40px;
+  }
+
+  &__top {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 40px;
+  }
+
+  &__title {
+    @extend %h1;
+    margin: 0;
+  }
+
+  &__number {
+    @extend %body-text-14;
+    color: $colorSecondary;
+
+    &--found {
+      margin-bottom: 24px;
+    }
+  }
+
+  &__sort-block {
+    display: grid;
+    grid-template-columns: 176px 128px;
+    column-gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  &__productList {
+    margin-bottom: 40px;
+  }
+}

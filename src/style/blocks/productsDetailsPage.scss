@@ -1,0 +1,113 @@
+.productsDetailsPage {
+  &__nav {
+    margin-bottom: 40px;
+  }
+
+  &__title {
+    @extend %h1;
+    margin: 0 0 40px;
+  }
+
+  &__content {
+    display: flex;
+    gap: 64px;
+    margin-bottom: 80px;
+  }
+
+  &__gallery {
+    display: flex;
+    gap: 27px;
+  }
+
+  &__photos {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__photo {
+    @include square(80);
+    margin-bottom: 16px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__photo-button {
+    box-sizing: border-box;
+    @include square(80);
+    border: 1px solid $colorIconsPlaceholders;
+    padding: 0;
+    cursor: pointer;
+
+    &--isActive {
+      border-color: $colorPrimary;
+    }
+  }
+
+  &__photo-image {
+    width: 100%;
+  }
+
+  &__mainFoto {
+    @include square(464);
+  }
+
+  &__cardId {
+    @extend %small-text-12;
+    color: $colorIconsPlaceholders;
+    margin-bottom: 24px;
+  }
+
+  &__cost {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  &__price {
+    @extend %h1;
+  }
+
+  &__priceInitial {
+    @extend %body-text-14;
+    font-size: 22px;
+    line-height: 28px;
+    color: $colorSecondary;
+    text-decoration-line: line-through;
+  }
+
+  &__about {
+    width: 560px;
+
+    &-text {
+      @extend %body-text-14;
+      color: $colorSecondary;
+    }
+  }
+
+  &__techSpecs {
+    width: 512px;
+  }
+
+  &__line {
+    height: 1px;
+    background-color: $colorElements;
+    margin-bottom: 32px;
+
+    &--techSpecs {
+      margin-bottom: 25px;
+    }
+  }
+
+  &__title-content {
+    @extend %h2;
+    margin: 0 0 16px;
+  }
+
+  &__slider {
+    margin-bottom: 80px;
+  }
+}

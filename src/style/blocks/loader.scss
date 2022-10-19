@@ -1,0 +1,11 @@
+.loader {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
+  &__message {
+    @extend %small-text-12;
+  }
+}

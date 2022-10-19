@@ -1,0 +1,47 @@
+@font-face {
+  font-family: "Mont";
+  font-weight: 500;
+  src: url(../fonts/Mont-Regular.otf);
+}
+
+@font-face {
+  font-family: "Mont";
+  font-weight: 600;
+  src: url(../fonts/Mont-SemiBold.otf);
+}
+
+@font-face {
+  font-family: "Mont";
+  font-weight: 700;
+  src: url(../fonts/Mont-Bold.otf);
+}
+
+.page {
+  font-family: "Mont", sans-serif;
+
+  &__body {
+    box-sizing: border-box;
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+
+  &__header {
+    margin-bottom: 25px;
+  }
+
+  &__main {
+    flex-grow: 1;
+  }
+
+  &__homePage {
+    margin-top: 15px;
+  }
+
+  &__section {
+    margin-bottom: 80px;
+  }
+
+  &__cartPage {
+    margin-top: 15px;
+  }
+}
