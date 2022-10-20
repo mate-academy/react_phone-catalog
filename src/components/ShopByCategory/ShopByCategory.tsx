@@ -64,7 +64,7 @@ export const ShopByCategory: React.FC = () => {
           </Link>
 
           <Link
-            to="/accesories"
+            to="/accessories"
             className="categories__item"
           >
             <img

@@ -4,9 +4,18 @@
   display: flex;
   flex-direction: column;
   border: 1px solid #e2e6e9;
+  transition: all 0.3s;
+
+  &:hover {
+    box-shadow: 0px 2px 5px 0px rgba(49, 50, 55, 1);
+  }
 
   &__product-image {
     align-self: center;
+  }
+
+  &__product-link {
+    text-decoration: none;
   }
 
   &__title {
@@ -32,6 +41,12 @@
       height: 1px;
       background-color: #E2E6E9;
       top: 30px;
+    }
+
+    &--in-details {
+      margin-top: 8px;
+      display: flex;
+      position: relative;
     }
   }
 
@@ -64,15 +79,37 @@
   &--initial-price {
     text-decoration-line: line-through;
     color: #89939A;
+
+    &--in-details {
+      font-weight: 500;
+      font-size: 22px;
+      line-height: 28px;
+      color: #89939A;
+      display: flex;
+      align-items: center;
+    }
   }
 
   &--discount-price {
     color: #313237;
     margin-right: 8px;
+
+    &--in-details {
+      font-size: 32px;
+      line-height: 41px;
+      letter-spacing: -0.01em;
+    }
   }
 
   &--normal-price {
     color: #313237;
+
+    &--in-details {
+      color: #313237;
+      font-size: 32px;
+      line-height: 41px;
+      letter-spacing: -0.01em;
+    }
   }
 }
 
@@ -140,6 +177,9 @@
   transition: all 0.3s;
   cursor: pointer;
 
+  &--is-favorite {
+    background-image: url("../../assets/img/icons/red-heart.svg");
+  }
 
   &:hover {
     border: 1px solid #313237;

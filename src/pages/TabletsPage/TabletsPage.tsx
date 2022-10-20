@@ -1,15 +1,12 @@
 import classNames from 'classnames';
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { ProductsList } from '../../components/ProductsList';
 import { ProductsContext } from '../../helpers/ProductsContext';
 
-export const PhonesPage: React.FC = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
+export const TabletsPage: React.FC = () => {
   const { products } = useContext(ProductsContext);
+
   const [searchParams] = useSearchParams();
 
   const query = searchParams.get('query');
@@ -37,7 +34,7 @@ export const PhonesPage: React.FC = () => {
           className="status__arrow"
         />
 
-        <p className="status__title">Phones</p>
+        <p className="status__title">Tablets</p>
       </div>
 
       <section className="products-list">
@@ -46,12 +43,12 @@ export const PhonesPage: React.FC = () => {
             'section__title--is-hidden': query,
           })}
         >
-          Mobile phones
+          Tablets
         </div>
 
         <ProductsList
           products={products}
-          productType="phone"
+          productType="tablet"
         />
       </section>
     </div>

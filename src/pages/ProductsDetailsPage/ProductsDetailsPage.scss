@@ -1,0 +1,10 @@
+.products-details-page {
+  width: 100%;
+  align-items: flex-start;
+  flex-direction: column;
+  max-width: 1136px;
+
+  &__container {
+    margin-top: 16px;
+  }
+}

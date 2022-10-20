@@ -1,0 +1,18 @@
+.favorites {
+  &__residue {
+    margin-top: 8px;
+    margin-bottom: 40px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #89939A;
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1136px;
+    gap: 16px;
+  }
+
+}

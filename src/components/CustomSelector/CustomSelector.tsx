@@ -69,13 +69,19 @@ export const CustomSelector: React.FC<Props> = ({
   };
 
   const getRoute = (propType: string, option: string) => {
-    console.log(propType);
+    if (propType === 'sort') {
+      return {
+        sort: filterOptionsValue[option],
+        perPage: searchParams.get('perPage'),
+        page: searchParams.get('page'),
+      };
+    }
 
     return {
-      sort: filterOptionsValue[option] || searchParams.get('sort'),
-      perPage: paginationOptionsValue[option] || searchParams.get('perPage'),
+      sort: searchParams.get('sort'),
+      perPage: paginationOptionsValue[option],
+      page: option === 'All' ? null : '1',
     };
-    // передавать в getSearchWith вместо params getRoute
   };
 
   return (

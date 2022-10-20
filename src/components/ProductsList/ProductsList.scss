@@ -1,6 +1,7 @@
 .products-list {
   display: flex;
   flex-direction: column;
+  width: 1136px;
 
   &__products-count {
     margin-top: 8px;
@@ -8,6 +9,10 @@
     font-size: 14px;
     line-height: 21px;
     color: #89939a;
+
+    &--is-query {
+      margin-top:24px;
+    }
   }
 
   &__filters {
@@ -17,10 +22,24 @@
   &__products-container {
     margin-top: 24px;
   }
+
+  &__no-items {
+    margin-top: 50px;
+    height: 30vh;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: #313237;
+  }
 }
 
 .filters {
   display: flex;
+
+  &--is-hidden {
+    display: none;
+  }
 
   &__subtitle {
     font-weight: 600;
