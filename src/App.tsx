@@ -2,7 +2,7 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { HomePage } from './pages/HomePage';
 import { NotFoundPage } from './pages/NotFoundPage';
-import { PhonesPage } from './pages/PhonesPage';
+import { PhonesPage } from './pages/PhonesPage/PhonesPage';
 import { TabletsPage } from './pages/TabletsPage';
 import { AccessoriesPage } from './pages/AccessoriesPage';
 import { ProductDetailsPage }

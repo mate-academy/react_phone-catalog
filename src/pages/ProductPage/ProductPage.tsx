@@ -3,7 +3,7 @@ import { Select } from '../../components/Select';
 import { Product } from '../../types/Product';
 import { priceWithDiscount } from '../../helpers/priceWithDiscount';
 import { Pagination } from '../../components/Pagination';
-import { ProductList } from '../../components/ProductList';
+import { ProductList } from '../../components/ProductList/ProductList';
 import { Search } from '../../components/Search';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import './ProductPage.scss';

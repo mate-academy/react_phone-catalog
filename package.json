@@ -1,6 +1,6 @@
 {
   "name": "react_phone-catalog",
-  "homepage": ".",
+  "homepage": "https://DimaShm.github.io/react_phone-catalog",
   "version": "0.1.0",
   "keywords": [],
   "author": "Mate Academy",
@@ -42,6 +42,7 @@
     "url-loader": "^4.1.1"
   },
   "scripts": {
+    "predeploy": "npm run build",
     "start": "mate-scripts start -l",
     "build": "mate-scripts build",
     "test": "mate-scripts test",
@@ -50,7 +51,6 @@
     "lint": "npm run lint-js && npm run lint-css",
     "update": "mate-scripts update",
     "postinstall": "npm run update && cypress verify",
-    "predeploy": "npm run build",
     "deploy": "mate-scripts deploy"
   },
   "browserslist": {

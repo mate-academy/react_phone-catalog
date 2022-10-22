@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useAppSelector } from '../../app/hooks';
-import { ProductList } from '../../components/ProductList';
+import { ProductList } from '../../components/ProductList/ProductList';
 import { BackButton } from '../../components/BackButton';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 

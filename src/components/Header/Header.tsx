@@ -47,11 +47,7 @@ export const Header = () => {
     <div className="Header">
       <nav className="Header__navblock">
         <Link to="/">
-          <img
-            className="logo"
-            src="img/logo.svg"
-            alt="logo"
-          />
+          <div className="logo" />
         </Link>
         <nav
           data-cy="categoryLinksContainer"
