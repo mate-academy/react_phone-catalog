@@ -1,0 +1,31 @@
+.color-option {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  transition: $transition;
+
+  &:hover {
+    opacity: 0.2;
+    cursor: no-drop;
+  }
+
+  &--pink {
+    background-color: #fcdbc1;
+  }
+
+  &--grey {
+    background-color: #4c4c4c;
+  }
+
+  &--light-grey {
+    background-color: #5f7170;
+  }
+
+  &--silver {
+    background-color: #f0f0f0;
+  }
+
+  &--purple {
+    background-color: #963366;
+  }
+}

@@ -1,0 +1,28 @@
+.icon-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: $icon-button-border;
+  background-color: #fff;
+  width: 32px;
+  height: 32px;
+  transition: $transition;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: default;
+  }
+
+  &:hover:not(:disabled) {
+    cursor: pointer;
+    box-shadow: $small-button-shadow;
+  }
+
+  &--active {
+    border: 1px solid $color-dark-grey;
+
+    &:hover {
+      box-shadow: $small-button-shadow;
+    }
+  }
+}

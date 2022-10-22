@@ -1,0 +1,46 @@
+@import "../../styles/variables";
+
+.Carousel {
+  width: 100%;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+
+  &__header-button-group {
+    display: flex;
+    justify-content: space-between;
+    width: 80px;
+  }
+  
+  &__body-wrapper {
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    min-width: $content-width;
+    background: rgba(255, 255, 255, 1);
+  }
+
+  &__body-content {
+    position: relative;
+    display: flex;
+    transition: $transition;
+  }
+
+  &__body-content-list {
+    display: flex;
+    list-style: none;
+  }
+
+  &__body-content-list-item {
+    display: inline-block;
+    margin-right: 16px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}

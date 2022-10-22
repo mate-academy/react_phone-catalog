@@ -1,0 +1,22 @@
+.text {
+  font-family: Mont-Regular, sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+  color: $color-dark-grey;
+
+  &--light {
+    color: $color-light-grey;
+  }
+
+  &--upper {
+    text-transform: uppercase;
+  }
+
+  &--huge {
+    padding-bottom: 7px;
+  }
+
+  &--white {
+    color: #fff;
+  }
+}  

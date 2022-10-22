@@ -1,0 +1,32 @@
+@import "../../styles/variables";
+
+.Pagination {
+  display: flex;
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 8px;
+    border: $icon-button-border;
+    background-color: #fff;
+    width: 32px;
+    height: 32px;
+    transition: $transition;
+  
+    &:disabled {
+      opacity: 0.5;
+      cursor: default;
+    }
+  
+    &:hover:not(:disabled) {
+      cursor: pointer;
+      box-shadow: $small-button-shadow;
+    }
+    
+    &--active {
+      border: 1px solid $color-dark-grey;
+      background-color: $color-dark-grey;
+    }
+  }
+}

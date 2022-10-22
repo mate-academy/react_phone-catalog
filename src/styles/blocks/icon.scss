@@ -1,0 +1,60 @@
+.icon {
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 15px;
+  height: 18px;
+
+  &--home {
+    background-image: url("../../icons/home.png");
+    opacity: 0.6;
+    transition: opacity 0.4s ease;
+
+    &:hover {
+      cursor: pointer;
+      opacity: 1;
+    }
+  }
+
+  &--arrow-right {
+    height: 10px;
+    width: 10px;
+    background-image: url("../../icons/arrow_right.svg");
+  }
+
+  &--arrow-right-light {
+    margin: 0 10px;
+    height: 10px;
+    width: 10px;
+    background-image: url("../../icons/arrow_right_light.svg");
+  }
+  
+  &--arrow-left {
+    height: 10px;
+    width: 10px;
+    background-image: url("../../icons/arrow_left.svg");
+  }
+
+  &--minus {
+    background-image: url("../../icons/minus.png");
+    opacity: 0.5;
+  }
+
+  &--minus-active {
+    background-image: url("../../icons/minus.png");
+    opacity: 1;
+  }
+
+  &--plus {
+    background-image: url("../../icons/plus.png");
+    opacity: 1;
+  }
+
+  &--arrow-up {
+    background-image: url("../../icons/arrow_right.svg");
+    transform: rotate(-90deg);
+    opacity: 1;
+  }
+
+  
+}

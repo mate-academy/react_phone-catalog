@@ -1,0 +1,35 @@
+.link {
+  position: relative;
+  font-family: Mont-Bold, sans-serif;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: $color-light-grey;
+  transition: $transition;
+
+  &:hover {
+    color: $color-dark-grey;
+    cursor: pointer;
+
+    &:after {
+      border: 2px solid $color-dark-grey;
+    }
+  }
+
+  &--is-active {
+    color: $color-light-grey;
+   
+    &:after {
+      position: absolute;
+      box-sizing: border-box;
+      bottom: 0;
+      left: 0;
+      content: "";
+      width: 100%;
+      border: 2px solid $color-light-grey;
+      transition: $transition;
+    }
+  }
+}

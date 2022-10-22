@@ -1,0 +1,18 @@
+.cross-button {
+  height: 26px;
+  width: 26px;
+  background-color: #fff;
+  border: 0;
+  background-image: url("../../icons/cross.svg");
+  background-size: 18px;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.5;
+  box-shadow: 1px 1px 3px rgba(23, 32, 49, 0.66);
+  transition: $transition;
+
+  &:hover {
+    opacity: 1;
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,85 @@
+@import "../../styles/variables";
+
+.Order {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+  &__cart-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Mont-SemiBold, sans-serif;
+    font-size: 14px;
+    color: #fff;
+    border: 1px solid $color-dark-grey;
+    background-color: $color-dark-grey;
+    transition: $transition;
+  
+    &:hover {
+      box-shadow: $big-button-shadow;
+      cursor: pointer;
+    }
+  
+    &--active {
+      background-color: #fff;
+      border: $icon-button-border;
+      color: #27ae60;
+
+      &:hover {
+        box-shadow: none;
+        border: 1px solid $color-dark-grey;
+        cursor: pointer;
+      }
+    }
+  
+    &--small {
+      width: 176px;
+      height: 40px;
+    }
+  
+    &--big {
+      width: 278px;
+      height: 48px;
+    }
+  }
+
+  &__favorite-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: $icon-button-border;
+    background-color: #fff;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("../../icons/heart.svg");
+    transition: $transition;
+  
+    &:hover {
+      cursor: pointer;
+    }
+  
+    &--active {
+      background-image: url("../../icons/heart_red.svg");
+      box-shadow: none;
+    }
+
+    &--small {
+      width: 40px;
+      height: 40px;
+
+      &:hover {
+        border: 1px solid $color-dark-grey;
+      }
+    }
+  
+    &--big {
+      width: 48px;
+      height: 48px;
+
+      &:hover {
+        border: 1px solid $color-dark-grey;
+      }
+    }
+  }
+}

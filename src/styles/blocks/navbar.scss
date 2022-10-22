@@ -1,0 +1,17 @@
+.navbar {
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__item {
+    display: inline-block;
+    margin-left: 64px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}

@@ -1,0 +1,32 @@
+@import "../../styles/variables";
+
+.HomePage {
+  &__section {
+    margin-bottom: 80px;
+  }
+
+  &__category {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+  }
+
+  &__category-img {
+    width: 280px;
+    height: 340px;
+    transition: $transition;
+  }
+
+  &__category-img-container {
+    display: flex;
+    justify-content: end;
+    align-items: flex-end;
+    margin-bottom: 24px;
+    width: 368px;
+    height: 368px;
+
+    &:hover .HomePage__category-img {
+      transform: scale(1.1);
+    }
+  }
+}

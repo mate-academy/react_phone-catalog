@@ -1,0 +1,43 @@
+@import "../../styles/variables";
+
+.Search {
+  position: fixed;
+  top: 0;
+  left: calc(100vw - 400px);
+  z-index: 11;
+
+  @media (max-width: 1100px) {
+    top: 65px;
+    border-bottom: $icon-button-border;
+    border-right: $icon-button-border;
+  }
+
+  @media (max-width: 600px) {
+    left: 200px;
+  }
+
+  &__input {
+    margin: 0;
+    height: 64px;
+    padding: 0 24px 0 50px;
+    width: 240px;
+    border: 0;
+    outline: none;
+    border-left: 1px solid #e2e6e9;
+    background-image: url("../../icons/search.svg");
+    background-position: 10px 20px;
+    background-repeat: no-repeat;
+    background-size: 30px;
+  }
+
+  &__button {
+    position: relative;
+    top: 8px;
+    right: 20px;
+
+    &:hover {
+      opacity: 1;
+      border: 0;
+    }
+  }
+}
