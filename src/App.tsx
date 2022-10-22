@@ -5,7 +5,8 @@ import { NotFoundPage } from './pages/NotFoundPage';
 import { PhonesPage } from './pages/PhonesPage';
 import { TabletsPage } from './pages/TabletsPage';
 import { AccessoriesPage } from './pages/AccessoriesPage';
-import { ProductDetailsPage } from './pages/ProductDetailsPage';
+import { ProductDetailsPage }
+  from './pages/ProductDetailsPage/ProductDetailsPage';
 import { Header } from './components/Header/Header';
 import { Footer } from './components/Footer';
 import { Product } from './types/Product';

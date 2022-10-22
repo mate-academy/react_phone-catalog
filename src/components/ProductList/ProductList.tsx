@@ -3,7 +3,7 @@ import { ProductCard } from '../ProductCard';
 import './ProductList.scss';
 
 type Props = {
-  productList: Product[];
+  productList: Product[],
 };
 
 export const ProductList: React.FC<Props> = ({ productList }) => {

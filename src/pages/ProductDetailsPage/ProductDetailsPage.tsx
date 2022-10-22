@@ -10,7 +10,6 @@ import { Product } from '../../types/Product';
 import { ProductDetails } from '../../types/ProductDetails';
 import { Choice } from '../../components/Choice';
 import { priceWithDiscount } from '../../helpers/priceWithDiscount';
-import { Details } from '../../components/Details';
 import { Order } from '../../components/Order';
 import { BackButton } from '../../components/BackButton';
 import { NoResults } from '../../components/NoResults';
@@ -154,7 +153,14 @@ export const ProductDetailsPage = () => {
                     buttonSize="big"
                   />
                   <br />
-                  <Details product={productDetails} />
+                  {productDetails
+                    && (
+                      <TechSpecs
+                        product={productDetails}
+                        title=""
+                        baseClassName="small-text"
+                      />
+                    )}
                 </div>
               </section>
 
@@ -171,7 +177,14 @@ export const ProductDetailsPage = () => {
                 </div>
 
                 <div className="ProductDetailsPage__description-item">
-                  <TechSpecs product={productDetails} />
+                  {productDetails
+                    && (
+                      <TechSpecs
+                        product={productDetails}
+                        title="TechSpecs"
+                        baseClassName="text"
+                      />
+                    )}
                 </div>
               </section>
 

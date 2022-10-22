@@ -1,60 +1,58 @@
+import { bigTechSpecs, Details, smallTechSpecs } from '../../data/tech-specs';
 import { ProductDetails } from '../../types/ProductDetails';
 
 type Props = {
-  product: ProductDetails | null;
+  product: ProductDetails;
+  title: string,
+  baseClassName: string;
 };
+export const TechSpecs: React.FC<Props> = ({
+  product,
+  title,
+  baseClassName,
+}) => {
+  let techSpecs: Details = [];
 
-export const TechSpecs: React.FC<Props> = ({ product }) => {
+  if (!title) {
+    techSpecs = smallTechSpecs(product);
+  } else {
+    techSpecs = bigTechSpecs(product);
+  }
+
   return (
-    <div className="details-table">
-      <h2>Tech specs</h2>
+    <div data-cy="TechSpecs">
+      <h2>{title}</h2>
       <div className="row" />
-      <div className="details-table__grid">
-        <div className="details-table__options">
-          <span className="text text--light text--huge">
-            Screen
-          </span>
-          <span className="text text--light text--huge">
-            Resolution
-          </span>
-          <span className="text text--light text--huge">
-            Processor
-          </span>
-          <span className="text text--light text--huge">
-            Ram
-          </span>
-          <span className="text text--light text--huge">
-            Memory
-          </span>
-          <span className="text text--light text--huge">
-            Camera
-          </span>
-          <span className="text text--light text--huge">
-            Weight
-          </span>
-        </div>
-        <div className="details-table__values">
-          <span className="text text--huge">
-            {product?.display.screenSize}
-          </span>
-          <span className="text text--huge">
-            {product?.display.screenResolution}
-          </span>
-          <span className="text text--huge">
-            {product?.hardware.cpu}
-          </span>
-          <span className="text text--huge">
-            {product?.storage.ram}
-          </span>
-          <span className="text text--huge">
-            {product?.storage.flash}
-          </span>
-          <span className="text text--huge">
-            {product?.camera.primary}
-          </span>
-          <span className="text text--huge">
-            {product?.sizeAndWeight.weight}
-          </span>
+      <div className="details-table">
+        <div className="details-table__grid">
+          <div className="details-table__options">
+            {techSpecs.map(item => (
+              <span
+                key={item.option}
+                className={`
+                  ${baseClassName} 
+                  ${baseClassName}--light 
+                  ${baseClassName}--huge
+                `}
+              >
+                {item.option}
+              </span>
+            ))}
+          </div>
+
+          <div className="details-table__values">
+            {techSpecs.map(item => (
+              <span
+                key={item.option}
+                className={`
+                  ${baseClassName} 
+                  ${baseClassName}--huge
+                `}
+              >
+                {item.value}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
     </div>
