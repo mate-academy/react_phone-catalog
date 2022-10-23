@@ -1,0 +1,17 @@
+@import "./variables";
+
+@mixin is-active {
+  content: "";
+  position: absolute;
+  height: 3px;
+  background-color: $primaryColor;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+}
+
+@mixin flex-center-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

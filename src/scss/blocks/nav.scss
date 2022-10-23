@@ -1,0 +1,42 @@
+@import "../variables";
+@import "../mixins";
+
+.nav {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+
+  &__pages {
+    list-style: none;
+    display: flex;
+    gap: 64px;
+  }
+
+  &__link {
+    position: relative;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 64px;
+    color: $secondColor;
+    padding: 26px 0;
+
+    &--active {
+      color: $primaryColor;
+
+      &::after {
+        @include is-active;
+      }
+    }
+
+    &:hover {
+      color: $primaryColor;
+
+      &::after {
+        @include is-active;
+      }
+    }
+  }
+}

@@ -1,0 +1,58 @@
+@import "../../scss/variables";
+@import "../../scss/mixins";
+
+.ProductsSlider {
+  overflow: hidden;
+
+  &__top {
+    @include flex-center-between;
+  }
+
+  &__title {
+    margin-bottom: 24px;
+  }
+
+  &__controls {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $buttonBorderColor;
+
+    &:disabled {
+      border-color: $borderItem;
+      cursor: not-allowed;
+
+      &:hover {
+        border-color: $borderItem;
+      }
+    }
+
+    &--left {
+      background-image: url("../../img/icons/arrow_left_black.svg");
+
+      &:disabled {
+        background-image: url("../../img/icons/Chevron (Arrow Left).svg");
+      }
+    }
+
+    &--right {
+      background-image: url("../../img/icons/arrow_right_black.svg");
+
+      &:disabled {
+        background-image: url("../../img/icons/Chevron (Arrow Right).svg");
+      }
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
+    gap: 16px;
+    transition: transform 0.5s cubic-bezier(0.25,0.72,0.51,0.96);
+  }
+}

@@ -1,0 +1,9 @@
+@import "../../scss/variables";
+
+.Error {
+  background-color: lightcoral;
+  padding: 20px;
+  border-radius: 10px;
+  font-size: 20px;
+  color: $primaryColor;
+}

@@ -1,0 +1,52 @@
+@import "../../scss/variables";
+@import "../../scss/mixins";
+@import "../../scss/blocks/logo.scss";
+@import "../../scss/blocks/button.scss";
+
+.header {
+  width: 100%;
+  height: 64px;
+  box-shadow: 0 1px 5px #e2e6e9;
+  display: flex;
+  align-items: center;
+  font-family: Mont, Arial, Helvetica, sans-serif;
+  padding-left: 24px;
+
+  &__logo {
+    margin-right: 64px;
+  }
+
+  &__buttons {
+    list-style: none;
+    display: flex;
+    gap: 1px;
+  }
+
+  &__button {
+    width: 64px;
+    height: 64px;
+    box-shadow: -1px 0 0 #e2e6e9;
+    border: none;
+
+    &--heart {
+      background-image: url("../../img/icons/Favourites\ \(Heart\ Like\).svg");
+    }
+
+    &--cart {
+      background-image: url("../../img/icons/Shopping\ bag\ \(Cart\).svg");
+    }
+
+    &--active {
+      &::after {
+        @include is-active;
+      }
+    }
+
+    &:hover {
+      border: none;
+      &::after {
+        @include is-active;
+      }
+    }
+  }
+}

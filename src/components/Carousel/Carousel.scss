@@ -1,0 +1,78 @@
+@import "../../scss/variables";
+@import "../../scss/mixins";
+
+.Carousel {
+  &__container {
+    width: 1136px;
+    height: 400px;
+  }
+
+  &__inner {
+    @include flex-center-between;
+  }
+
+  &__wrapper {
+    display: flex;
+    width: 1040px;
+    height: 400px;
+    position: relative;
+    justify-content: space-between;
+    overflow: hidden;
+  }
+
+  &__contentWrapper {
+    &--active {
+      cursor: grabbing;
+    }
+  }
+
+  &__content {
+    display: flex;
+    gap: 16px;
+    transition: transform 0.5s cubic-bezier(0.25,0.72,0.51,0.96);
+  }
+
+  &__img {
+    width: 1040px;
+    height: 400px;
+  }
+
+  &__button {
+    width: 32px;
+    height: 400px;
+    z-index: 1;
+    border: 1px solid $buttonBorderColor;
+
+    &--left {
+      background-image: url("../../img/icons/arrow_left_black.svg");
+    }
+
+    &--right {
+      background-image: url("../../img/icons/arrow_right_black.svg");
+    }
+  }
+
+  &__controls {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 18px;
+    list-style: none;
+  }
+
+  &__control {
+    width: 14px;
+    height: 4px;
+    background-color: $borderItem;
+    border: none;
+    cursor: pointer;
+
+    &--active {
+      background-color: $primaryColor;
+    }
+
+    &:hover {
+      background-color: $primaryColor;
+    }
+  }
+}
