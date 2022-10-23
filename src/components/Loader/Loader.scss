@@ -1,4 +1,4 @@
-@import "../../styles/variables";
+@import "../../styles/utils/variables";
 
 .Loader {
   display: flex;
@@ -11,7 +11,7 @@
     width: 70px;
     height: 70px;
     margin: 50px auto;
-    border: 5px solid $color-icon-button-border;
+    border: 5px solid $color-light-blue;
     border-left-color: $color-dark-grey;
     animation: load8 1.2s infinite linear;
   }

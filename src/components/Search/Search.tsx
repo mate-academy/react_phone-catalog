@@ -20,16 +20,6 @@ export const Search: React.FC<Props> = ({
     applyQuery(newQuery);
   };
 
-  const handlerInputKeyDown = (key: string) => {
-    setCurrentPage(1);
-    if (key !== 'Enter') {
-      return;
-    }
-
-    setQuery('');
-    applyQuery('');
-  };
-
   const handlerCrossButtonClick = () => {
     setCurrentPage(1);
     setQuery('');
@@ -44,7 +34,6 @@ export const Search: React.FC<Props> = ({
         className="Search__input text"
         placeholder={`Search in ${pageName}...`}
         onChange={(e) => handlerInputOnChange(e.currentTarget.value)}
-        onKeyDown={(e) => handlerInputKeyDown(e.key)}
       />
       {query
         && (

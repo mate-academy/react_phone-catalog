@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Select } from '../../components/Select';
 import { Product } from '../../types/Product';
 import { priceWithDiscount } from '../../helpers/priceWithDiscount';
@@ -38,18 +39,11 @@ export const ProductPage: React.FC<Props> = ({
     perPageOptions[perPageOptions.length - 1],
   );
   const [query, setQuery] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
   const [appliedQuery, setAppliedQuery] = useState('');
-  const productName = pageName.toLocaleLowerCase();
+  const navigate = useNavigate();
   const visibleProducts: Product[] = [];
-  let errorMessage = '';
-
-  if (!products.length) {
-    errorMessage = `No ${productName} available at the moment`;
-  }
-
-  if (products.length && !filteredProduct.length) {
-    errorMessage = 'No products matching your request';
-  }
+  const productName = pageName.toLowerCase();
 
   let start = 0;
   let finish: number = sortedProducts.length;
@@ -106,12 +100,32 @@ export const ProductPage: React.FC<Props> = ({
   }, [appliedQuery]);
 
   useEffect(() => {
-    sortProducts();
-  }, [sortValue, filteredProduct]);
+    setCurrentPage(1);
+  }, [perPage, appliedQuery]);
 
   useEffect(() => {
-    setCurrentPage(1);
-  }, [perPage]);
+    sortProducts();
+
+    if (filteredProduct.length === 1) {
+      navigate(
+        `/${filteredProduct[0].type}s/${filteredProduct[0].id}`,
+      );
+    }
+
+    if (products.length && !filteredProduct.length) {
+      setErrorMessage('No products matching your request');
+    }
+
+    if (products.length && filteredProduct.length) {
+      setErrorMessage('');
+    }
+  }, [filteredProduct]);
+
+  useEffect(() => {
+    if (!products.length) {
+      setErrorMessage(`No ${productName} available at the moment`);
+    }
+  }, []);
 
   return (
     <div className="ProductPage">
@@ -172,9 +186,7 @@ export const ProductPage: React.FC<Props> = ({
             </div>
           </div>
         ) : (
-          <h2 className="ProductPage__error-message">
-            {errorMessage}
-          </h2>
+          <h2>{errorMessage}</h2>
         )}
 
       <div

@@ -40,7 +40,7 @@ export const HomePage: React.FC<Props> = ({ products }) => {
               className="HomePage__category-img-container color-option--pink"
             >
               <img
-                src="img/category/phones.png"
+                src="img/category/phones.svg"
                 alt="phones"
                 className="HomePage__category-img"
               />
@@ -59,7 +59,7 @@ export const HomePage: React.FC<Props> = ({ products }) => {
               "
             >
               <img
-                src="img/category/tablets.png"
+                src="img/category/tablets.svg"
                 alt="tablets"
                 className="HomePage__category-img"
               />
@@ -76,7 +76,7 @@ export const HomePage: React.FC<Props> = ({ products }) => {
               className="HomePage__category-img-container color-option--purple"
             >
               <img
-                src="img/category/accessories.png"
+                src="img/category/accessories.svg"
                 alt="accessories"
                 className="HomePage__category-img"
               />

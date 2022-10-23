@@ -41,7 +41,6 @@ export const Select: React.FC<Props> = ({
       >
         {options.map(option => (
           <option
-            id={option}
             key={option}
             value={option}
             className="Select__item text text--light"

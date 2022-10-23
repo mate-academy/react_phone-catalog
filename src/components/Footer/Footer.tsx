@@ -12,7 +12,9 @@ export const Footer = () => {
           <ul className="navbar__list">
             <li className="navbar__item">
               <a
-                href="https://github.com/DimaShm/react_phone-catalog/branches"
+                href="
+                  https://github.com/DimaShm/react_phone-catalog/tree/develop
+                "
                 className="link Footer__link"
                 target="_blank"
                 rel="noreferrer"

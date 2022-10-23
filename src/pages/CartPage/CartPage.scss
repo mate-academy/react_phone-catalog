@@ -1,4 +1,4 @@
-@import "../../styles/variables";
+@import "../../styles/utils/variables";
 
 .CartPage {
   position: relative;
@@ -75,7 +75,7 @@
     padding: 15px 30px;
     width: 400px;
     height: 90px;
-    background-color: $color-icon-button-border;
+    background-color: $color-light-blue;
     box-shadow: $big-button-shadow;
 
     @media (max-width: 1100px) {

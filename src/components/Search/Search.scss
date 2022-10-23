@@ -1,19 +1,16 @@
-@import "../../styles/variables";
+@import "../../styles/utils/variables";
 
 .Search {
   position: fixed;
   top: 0;
-  left: calc(100vw - 400px);
+  left: calc(100% - 400px);
   z-index: 11;
 
   @media (max-width: 1100px) {
     top: 65px;
+    left: 200px;
     border-bottom: $icon-button-border;
     border-right: $icon-button-border;
-  }
-
-  @media (max-width: 600px) {
-    left: 200px;
   }
 
   &__input {

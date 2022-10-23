@@ -1,4 +1,4 @@
-@import "../../styles/variables";
+@import "../../styles/utils/variables";
 
 .Header {
   position: sticky;
@@ -34,7 +34,13 @@
     width: 64px;
     height: 64px;
     border: 0;
-    border-left: 1px solid #e2e6e9;
+    border-left: 1px solid $color-light-blue;
+    opacity: 0.7;
+    transition: none;
+
+    &:hover {
+      opacity: 1;
+    }
   }
 
   &__cart-button {
@@ -45,14 +51,15 @@
     width: 64px;
     height: 64px;
     border: 0;
-    border-left: 1px solid #e2e6e9;
+    border-left: 1px solid $color-light-blue;
     background-color: #fff;
     background-repeat: no-repeat;
     background-position: center;
     background-image: url("../../icons/cart.svg");
+    opacity: 0.7;
 
     &:hover {
-      box-shadow: $small-button-shadow;
+      opacity: 1;
       cursor: pointer;
     }
   }

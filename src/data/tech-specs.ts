@@ -9,7 +9,7 @@ export const smallTechSpecs = (product: ProductDetails) => {
   const techSpecs: Details = [
     { option: 'Screen', value: product?.display.screenSize },
     { option: 'Resolution', value: product?.display.screenResolution },
-    { option: 'Processor', value: product?.hardware.cpu },
+    { option: 'Processor', value: product?.hardware.cpu.slice(0, 35) },
     { option: 'RAM', value: product?.storage.ram },
   ];
 

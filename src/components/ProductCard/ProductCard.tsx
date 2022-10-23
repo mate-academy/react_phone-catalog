@@ -25,9 +25,12 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           alt={product.name}
         />
       </Link>
-      <div className="ProductCard__name">
+      <Link
+        to={`/${product.type}s/${product.id}`}
+        className="ProductCard__name"
+      >
         <span className="text">{product.name}</span>
-      </div>
+      </Link>
       <h2 className="ProductCard__price">
         {`$${newPrice}`}
       </h2>

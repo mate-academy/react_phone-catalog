@@ -1,6 +1,6 @@
-@import "./variables";
-@import "./reset.scss";
-@import "./normalize.scss";
+@import "./utils/reset.scss";
+@import "./utils/normalize.scss";
+@import "./utils/variables";
 @import "./blocks/logo.scss";
 @import "./blocks/navbar.scss";
 @import "./blocks/text.scss";

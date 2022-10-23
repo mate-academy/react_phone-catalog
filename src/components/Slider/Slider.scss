@@ -1,4 +1,4 @@
-@import "../../styles/variables";
+@import "../../styles/utils/variables";
 
 .Slider {
   display: flex;
@@ -20,6 +20,7 @@
     height: 400px;
     border: $icon-button-border;
     background-color: #fff;
+    transition: $transition;
 
     &:hover {
       cursor: pointer;
