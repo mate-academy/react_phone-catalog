@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   width: 1136px;
+  min-height: 60vh;
 
   &__products-count {
     margin-top: 8px;
@@ -11,7 +12,7 @@
     color: #89939a;
 
     &--is-query {
-      margin-top:24px;
+      margin-top: 24px;
     }
   }
 
@@ -20,7 +21,7 @@
   }
 
   &__products-container {
-    margin-top: 24px;
+    margin-top: 20px;
   }
 
   &__no-items {

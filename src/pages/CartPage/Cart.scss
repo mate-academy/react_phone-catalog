@@ -25,14 +25,14 @@
     &--close-icon {
       width: 16px;
       height: 16px;
-      background-image: url('../../assets/img/icons/close-disabled.svg');
+      background-image: url("../../assets/img/icons/close-disabled.svg");
       background-position: center;
       background-repeat: no-repeat;
       cursor: pointer;
       transition: all 0.3s;
 
       &:hover {
-        background-image: url('../../assets/img/icons/close.svg');
+        background-image: url("../../assets/img/icons/close.svg");
       }
     }
   }
@@ -68,7 +68,7 @@
     font-size: 14px;
     line-height: 21px;
     text-align: center;
-    color: #000000;
+    color: #000;
   }
 
   &__price {
@@ -81,6 +81,17 @@
 
   &__checkout-block {
     margin-left: 16px;
+  }
+
+  &__empty-phrase {
+    width: 100%;
+    margin-top: 30px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: #313237;
   }
 }
 
@@ -101,12 +112,83 @@
     transition: all 0.3s;
 
     &:hover {
-      border-color: #b4bdc4
+      border-color: #b4bdc4;
+    }
+
+    &:hover:disabled {
+      border-color: #e2e6e9;
     }
   }
 }
 
 .checkout-block {
   display: flex;
+  height: 206px;
+  position: relative;
   flex-direction: column;
+  justify-content: center;
+  padding: 24px;
+  border: 1px solid #e2e6e9;
+
+  &__total-price {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    text-align: center;
+    color: #313237;
+  }
+
+  &__total-for {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+    color: #89939a;
+  }
+
+  &__check-button {
+    position: relative;
+    margin-top: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 320px;
+    height: 48px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+    color: #fff;
+    background-color: #313237;
+    cursor: pointer;
+    border: none;
+    box-sizing: border-box;
+    transition: all 0.3s;
+
+    &:hover {
+      box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+    }
+
+    &::before {
+      position: absolute;
+      content: "";
+      top: -24px;
+      height: 1px;
+      background-color: #e2e6e9;
+      display: block;
+      width: 100%;
+    }
+  }
+
+  &__feature {
+    width: 200px;
+    top: 100px;
+    position: absolute;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    color: #313237;
+    text-align: center;
+  }
 }

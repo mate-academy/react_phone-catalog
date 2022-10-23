@@ -40,7 +40,10 @@ export const ProductsDetailsPage: React.FC<Props> = ({
       ) : (
         <>
           <div className="category-page">
-            <div className="category-page__status status">
+            <div
+              data-cy="breadCrumbs"
+              className="category-page__status status"
+            >
               <Link
                 to="/"
                 className="status__home-logo"
@@ -74,6 +77,7 @@ export const ProductsDetailsPage: React.FC<Props> = ({
             </div>
 
             <div
+              data-cy="backButton"
               className="category-page__back"
               onClick={() => window.history.back()}
             >

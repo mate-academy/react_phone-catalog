@@ -1,18 +1,18 @@
 @font-face {
   font-family: Mont;
-  src: url("assets/fonts/Mont-Regular.otf");
+  src: url(assets/fonts/Mont-Regular.otf);
 }
 
 @font-face {
   font-family: Mont;
   font-weight: 700;
-  src: url("assets/fonts/Mont-Bold.otf");
+  src: url(assets/fonts/Mont-Bold.otf);
 }
 
 @font-face {
   font-family: Mont;
   font-weight: 600;
-  src: url("assets/fonts/Mont-SemiBold.otf");
+  src: url(assets/fonts/Mont-SemiBold.otf);
 }
 
 * {
@@ -23,7 +23,7 @@
 
 .App {
   font-family: "Mont", Arial, Helvetica, sans-serif;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -74,7 +74,7 @@
     cursor: pointer;
     transition: all 0.3s;
 
-    &:hover>p {
+    &:hover > p {
       color: #313237;
     }
   }
@@ -119,8 +119,5 @@
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.loader {
   height: 90vh;
 }

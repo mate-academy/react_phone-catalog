@@ -21,13 +21,42 @@ export const Footer: React.FC = () => {
             <NavLink
               to="../"
               className="logo__title"
-            />
+            >
+              <img
+                src="img/icons/logo.svg"
+                alt="logo"
+              />
+            </NavLink>
           </div>
 
           <div className="footer__links">
-            <div className="footer__link">Github</div>
-            <div className="footer__link">Contacts</div>
-            <div className="footer__link">Rights</div>
+            <a
+              // eslint-disable-next-line max-len
+              href="https://github.com/dm-sheremetiev/phone-catalog"
+              className="footer__link"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Github
+            </a>
+            <a
+              // eslint-disable-next-line max-len
+              href="https://docs.google.com/document/d/1Sbe28D2ksqbdBdx4ZJaUED9uKdRoLKTMvg-syd2LrSA/edit?usp=sharing"
+              className="footer__link"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Contacts
+            </a>
+            <a
+              // eslint-disable-next-line max-len
+              href="https://zakon.rada.gov.ua/laws/show/254%D0%BA/96-%D0%B2%D1%80#Text"
+              className="footer__link"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Rights
+            </a>
           </div>
 
           <div

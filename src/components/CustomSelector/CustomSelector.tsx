@@ -90,7 +90,9 @@ export const CustomSelector: React.FC<Props> = ({
       onMouseLeave={() => setIsDropdownOpened(false)}
     >
       <button
-        className="custom-selector__picker"
+        className={classNames('custom-selector__picker', {
+          'custom-selector__picker--is-focused': isDropdownOpened,
+        })}
         type="button"
         onClick={handleDropdownClick}
       >
@@ -99,7 +101,12 @@ export const CustomSelector: React.FC<Props> = ({
         </div>
 
         <div className="custom-selector__picker--arrow">
-          <img src="img/icons/arrow-down.svg" alt="" />
+          <img
+            src={isDropdownOpened
+              ? 'img/icons/arrow-up-disabled.svg'
+              : 'img/icons/arrow-down.svg'}
+            alt=""
+          />
         </div>
 
       </button>
@@ -123,5 +130,6 @@ export const CustomSelector: React.FC<Props> = ({
         ))}
       </ul>
     </div>
+
   );
 };

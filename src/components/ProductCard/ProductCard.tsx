@@ -1,10 +1,11 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
-import React, { useContext, useState } from 'react';
-import classNames from 'classnames';
+import React from 'react';
+// import classNames from 'classnames';
 import './ProductCard.scss';
 import { Link } from 'react-router-dom';
 import { Product } from '../../types/Product';
-import { ProductsContext } from '../../helpers/ProductsContext';
+import { FavoriteButton } from '../FavoriteButton';
+import { BuyButton } from '../BuyButton';
 
 type Props = {
   product: Product,
@@ -13,13 +14,6 @@ type Props = {
 export const ProductCard: React.FC<Props> = ({
   product,
 }) => {
-  const {
-    favorites,
-    setFavorites,
-    cartItems,
-    setCartItems,
-  } = useContext(ProductsContext);
-  const [tempFavorites, setTempFavorites] = useState([...favorites]);
   const calculateDiscount = (price: number, discount: number) => (
     Math.round(price - price * (discount / 100))
   );
@@ -35,34 +29,6 @@ export const ProductCard: React.FC<Props> = ({
       default:
         return '';
     }
-  };
-
-  const handleFavoriteClick = () => {
-    if (favorites.find(prod => prod.name === product.name)) {
-      const newFavorites = favorites.filter(prod => prod.name !== product.name);
-
-      setTempFavorites(newFavorites);
-      setFavorites(newFavorites);
-
-      return;
-    }
-
-    setTempFavorites([...favorites, product]);
-    setFavorites([...favorites, product]);
-  };
-
-  const handleBuyButton = () => {
-    if (cartItems.find(prod => prod.name === product.name)) {
-      const newCartProducts = cartItems.filter(prod => (
-        prod.name !== product.name
-      ));
-
-      setCartItems(newCartProducts);
-
-      return;
-    }
-
-    setCartItems([...cartItems, product]);
   };
 
   return (
@@ -135,21 +101,14 @@ export const ProductCard: React.FC<Props> = ({
         </Link>
 
         <div className="card__buttons buttons">
-          <button
-            type="button"
-            className="buttons__buy-button buy-button"
-            onClick={handleBuyButton}
-          >
-            Add to card
-          </button>
+          <BuyButton
+            product={product}
+            inDetails={false}
+          />
 
-          <button
-            type="button"
-            className={classNames('buttons__buy-button favourites-button', {
-              'favourites-button--is-favorite':
-              tempFavorites.find(prod => prod.name === product.name),
-            })}
-            onClick={handleFavoriteClick}
+          <FavoriteButton
+            product={product}
+            inDetails={false}
           />
         </div>
       </div>

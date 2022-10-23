@@ -22,20 +22,16 @@
 
 .image-list {
   position: relative;
-  // display: flex;
   list-style: none;
   transition: transform 1s;
-  // margin: 0 16px;
-
-
 
   &__item {
-    transition: all ease .7s;
+    transition: all ease 0.7s;
     &__image {
       width: 1040px;
       height: 400px;
       position: absolute;
-      object-fit:fill;
+      object-fit: fill;
     }
   }
 
@@ -48,7 +44,7 @@
   background-position: center;
   background-color: #fff;
   cursor: pointer;
-  border: 1px solid #B4BDC4;
+  border: 1px solid #b4bdc4;
   transition: all 0.3s;
 
   &--prev-button {

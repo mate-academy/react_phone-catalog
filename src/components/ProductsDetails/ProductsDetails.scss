@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
 
-
   &__title {
     font-weight: 700;
     font-size: 32px;
@@ -87,7 +86,7 @@
     font-weight: 600;
     font-size: 12px;
     line-height: 15px;
-    color: #89939A;
+    color: #89939a;
     margin-bottom: 8px;
   }
 
@@ -112,7 +111,7 @@
   position: relative;
 
   &::after {
-    content: '';
+    content: "";
     width: 100%;
     display: block;
     position: absolute;
@@ -158,7 +157,7 @@
   position: relative;
 
   &::after {
-    content: '';
+    content: "";
     width: 100%;
     display: block;
     position: absolute;
@@ -174,7 +173,7 @@
   }
 
   &__item {
-    padding: 7px 8px 4px 8px;
+    padding: 7px 8px 4px;
     font-weight: 500;
     font-size: 14px;
     line-height: 21px;
@@ -197,41 +196,6 @@
 
 .detail-buttons {
   display: flex;
-
-  &__buy-button {
-    width: 263px;
-    height: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 21px;
-    background-color: #313237;
-    transition: all 0.3s;
-    cursor: pointer;
-
-    &:hover {
-      box-shadow: 0px 3px 13px rgba(23, 32, 49, 0.26);
-    }
-  }
-
-  &__favourites-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 48px;
-    height: 48px;
-    border: 1px solid #B4BDC4;
-    margin-left: 8px;
-    transition: all 0.3s;
-    cursor: pointer;
-
-    &:hover {
-      border-color: #313237;
-    }
-  }
 }
 
 .detail-options {
@@ -254,7 +218,7 @@
       font-weight: 600;
       font-size: 12px;
       line-height: 15px;
-      color: #89939A;
+      color: #89939a;
 
       &--big {
         font-weight: 500;
@@ -300,7 +264,7 @@
     color: #313237;
 
     &::after {
-      content: '';
+      content: "";
       width: 100%;
       display: block;
       position: absolute;
@@ -315,7 +279,7 @@
     font-weight: 500;
     font-size: 14px;
     line-height: 21px;
-    color: #89939A;
+    color: #89939a;
   }
 
   &__options {

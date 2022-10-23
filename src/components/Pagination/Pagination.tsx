@@ -86,6 +86,7 @@ export const Pagination: React.FC<Props> = ({
 
   return (
     <ul
+      data-cy="pagination"
       className={classNames('pagination', {
         'pagination--is-hidden': !totalPaginationPages
           || totalPaginationPages === 1,
@@ -96,6 +97,7 @@ export const Pagination: React.FC<Props> = ({
         className="pagination__button"
         onClick={() => handlePaginationButtonClick('prev')}
         disabled={page === '1'}
+        data-cy="paginationLeft"
       >
         <img
           src={page === '1'
@@ -124,6 +126,7 @@ export const Pagination: React.FC<Props> = ({
         className="pagination__button"
         onClick={() => handlePaginationButtonClick('next')}
         disabled={page === totalPaginationPages.toString()}
+        data-cy="paginationRight"
       >
         <img
           src={page === totalPaginationPages.toString()

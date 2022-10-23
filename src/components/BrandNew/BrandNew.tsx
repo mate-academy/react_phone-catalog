@@ -2,8 +2,6 @@ import React, { useContext } from 'react';
 import { ProductsContext } from '../../helpers/ProductsContext';
 import { ProductsSlider } from '../ProductsSlider';
 
-import './BrandNew.scss';
-
 export const BrandNew: React.FC = () => {
   const { products } = useContext(ProductsContext);
 

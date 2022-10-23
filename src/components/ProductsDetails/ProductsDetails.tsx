@@ -6,7 +6,10 @@ import React, { useContext, useState } from 'react';
 import { ProductsContext } from '../../helpers/ProductsContext';
 import { Product } from '../../types/Product';
 import { ProductDetails } from '../../types/ProductDetails';
+import { BuyButton } from '../BuyButton';
+import { FavoriteButton } from '../FavoriteButton';
 import { ProductsSlider } from '../ProductsSlider';
+import { clearProduct } from '../../helpers/clearProduct';
 
 import './ProductsDetails.scss';
 
@@ -94,9 +97,9 @@ export const ProductsDetails: React.FC<Props> = ({
                           color === selectedColor,
                       })}
                       onClick={() => setSelectedColor(color)}
+                      key={color}
                     >
                       <li
-                        key={color}
                         className="colors__item"
                         style={{ backgroundColor: `${color}` }}
                       />
@@ -117,6 +120,7 @@ export const ProductsDetails: React.FC<Props> = ({
                         'capacity__item--is-active': selectedCapacity === cap,
                       })}
                       onClick={() => setSelectedCapacity(cap)}
+                      key={cap}
                     >
                       {cap}
                     </li>
@@ -157,16 +161,15 @@ export const ProductsDetails: React.FC<Props> = ({
               </div>
 
               <div className="selecting-block__detail-buttons detail-buttons">
-                <div className="detail-buttons__buy-button">
-                  Add to cart
-                </div>
+                <BuyButton
+                  product={selectedFromAll || clearProduct}
+                  inDetails
+                />
 
-                <div className="detail-buttons__favourites-button">
-                  <img
-                    src="img/icons/favourites.svg"
-                    alt=""
-                  />
-                </div>
+                <FavoriteButton
+                  product={selectedFromAll || clearProduct}
+                  inDetails
+                />
               </div>
 
               <div className="selecting-block__detail-options">
@@ -220,7 +223,10 @@ export const ProductsDetails: React.FC<Props> = ({
           </div>
 
           <div className="products-details__description description">
-            <div className="description__about">
+            <div
+              className="description__about"
+              data-cy="productDescription"
+            >
               <h1 className="description__title">
                 About
               </h1>

@@ -4,8 +4,8 @@
 }
 
 .footer {
-  padding: 43px 0 43px;
-  box-shadow: 0px -1px 0px #e2e6e9;
+  padding: 43px 0;
+  box-shadow: 0 -1px 0 #e2e6e9;
   display: flex;
   justify-content: center;
 
@@ -25,10 +25,15 @@
     font-weight: 700;
     font-size: 12px;
     line-height: 11px;
-
     letter-spacing: 0.04em;
     text-transform: uppercase;
     color: #89939a;
+    text-decoration: none;
+    transition: all 0.3s;
+
+    &:hover {
+      color: #313237;
+    }
   }
 
   &__back-top {
@@ -41,13 +46,6 @@
   align-items: center;
   cursor: pointer;
 
-  &:hover > &__image{
-    border-color: #313237;
-  }
-  &:hover > &__title{
-    color: #313237;
-  }
-
   &__title {
     font-weight: 600;
     font-size: 12px;
@@ -55,7 +53,6 @@
     color: #89939a;
     transition: all 0.3s;
   }
-
 
   &__image {
     padding: 11px;
@@ -67,5 +64,12 @@
     justify-content: center;
     border: 1px solid #b4bdc4;
     transition: all 0.3s;
+  }
+
+  &:hover > &__image {
+    border-color: #313237;
+  }
+  &:hover > &__title {
+    color: #313237;
   }
 }

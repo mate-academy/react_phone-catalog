@@ -82,6 +82,7 @@ export const ProductsList: React.FC<Props> = ({
         className={classNames('products-list__products-count', {
           'products-list__products-count--is-query': query,
         })}
+        data-cy="productList"
       >
         {`${resultProducts.length} models`}
       </div>

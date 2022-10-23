@@ -1,12 +1,18 @@
-import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
+import { Link, useSearchParams } from 'react-router-dom';
 import { ProductCard } from '../../components/ProductCard';
+import { Product } from '../../types/Product';
 
-import { ProductsContext } from '../../helpers/ProductsContext';
 import './FavoritesPage.scss';
 
 export const FavoritesPage: React.FC = () => {
-  const { favorites } = useContext(ProductsContext);
+  const favorites = JSON.parse(localStorage.getItem('favorites') || '');
+
+  const [searchParams] = useSearchParams();
+  const query = searchParams.get('query') || '';
+  const favoritesByQuery = favorites.filter((favorite: Product) => (
+    favorite.name.toLowerCase().includes(query.toLocaleLowerCase())
+    || favorite.id.toLowerCase().includes(query.toLocaleLowerCase())));
 
   return (
 
@@ -36,12 +42,13 @@ export const FavoritesPage: React.FC = () => {
       </div>
 
       <div className="favorites__residue">
-        {`${favorites.length} items`}
+        {`${favoritesByQuery.length} items`}
       </div>
 
       <div className="favorites__list">
-        {favorites.map(favorite => (
+        {favoritesByQuery.map((favorite: Product) => (
           <ProductCard
+            key={favorite.id}
             product={favorite}
           />
         ))}

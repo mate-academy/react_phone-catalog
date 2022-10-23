@@ -1,15 +1,17 @@
 import classNames from 'classnames';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { ProductsList } from '../../components/ProductsList';
 import { ProductsContext } from '../../helpers/ProductsContext';
 
 export const TabletsPage: React.FC = () => {
   const { products } = useContext(ProductsContext);
-
   const [searchParams] = useSearchParams();
-
   const query = searchParams.get('query');
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="category-page">

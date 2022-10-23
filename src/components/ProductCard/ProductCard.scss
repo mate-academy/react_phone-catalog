@@ -1,13 +1,14 @@
 .card {
+  max-height: 507px;
   box-sizing: border-box;
-  padding: 31px 23px 31px;
+  padding: 31px 23px;
   display: flex;
   flex-direction: column;
   border: 1px solid #e2e6e9;
   transition: all 0.3s;
 
   &:hover {
-    box-shadow: 0px 2px 5px 0px rgba(49, 50, 55, 1);
+    box-shadow: 0 2px 5px 0 rgba(49, 50, 55, 1);
   }
 
   &__product-image {
@@ -39,7 +40,7 @@
       display: block;
       width: 100%;
       height: 1px;
-      background-color: #E2E6E9;
+      background-color: #e2e6e9;
       top: 30px;
     }
 
@@ -75,16 +76,15 @@
     content: "$";
   }
 
-
   &--initial-price {
     text-decoration-line: line-through;
-    color: #89939A;
+    color: #89939a;
 
     &--in-details {
       font-weight: 500;
       font-size: 22px;
       line-height: 28px;
-      color: #89939A;
+      color: #89939a;
       display: flex;
       align-items: center;
     }
@@ -150,18 +150,28 @@
   width: 176px;
   height: 40px;
   color: #fff;
-  font-family: Mont;
+  font-family: Mont, Arial, Helvetica, sans-serif;
   font-size: 14px;
   font-weight: 600;
   line-height: 21px;
-  letter-spacing: 0em;
+  letter-spacing: 0;
   text-align: center;
   transition: all 0.3s;
   cursor: pointer;
 
+  &--in-cart {
+    background-color: #fff;
+    border: 1px solid #e2e6e9;
+    color: #27ae60;
+  }
+
+  &--in-details {
+    width: 264px;
+    height: 48px;
+  }
 
   &:hover {
-    box-shadow: 0px 3px 13px rgba(23, 32, 49, 0.26);
+    box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
   }
 }
 
@@ -169,7 +179,7 @@
   margin-left: 8px;
   width: 40px;
   height: 40px;
-  border: 1px solid #B4BDC4;
+  border: 1px solid #b4bdc4;
   background-image: url("../../assets/img/icons/favourites.svg");
   background-repeat: no-repeat;
   background-position: center;
@@ -179,6 +189,22 @@
 
   &--is-favorite {
     background-image: url("../../assets/img/icons/red-heart.svg");
+  }
+
+  &--in-details {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border: 1px solid #b4bdc4;
+    margin-left: 8px;
+    transition: all 0.3s;
+    cursor: pointer;
+
+    &:hover {
+      border-color: #313237;
+    }
   }
 
   &:hover {

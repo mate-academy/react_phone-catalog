@@ -1,11 +1,12 @@
 .favorites {
+  min-height: 65vh;
   &__residue {
     margin-top: 8px;
     margin-bottom: 40px;
     font-weight: 500;
     font-size: 14px;
     line-height: 21px;
-    color: #89939A;
+    color: #89939a;
   }
 
   &__list {
@@ -14,5 +15,4 @@
     max-width: 1136px;
     gap: 16px;
   }
-
 }
