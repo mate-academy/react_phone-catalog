@@ -5,13 +5,13 @@ import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 
 const App: React.FC = () => (
-  <main className="App">
+  <div className="App">
     <Header />
 
     <Outlet />
 
     <Footer />
-  </main>
+  </div>
 );
 
 export default App;
