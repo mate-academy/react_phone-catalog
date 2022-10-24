@@ -12,6 +12,7 @@ export const CartPage = () => {
   const [isCheckoutActive, setIsCheckoutActive] = useState(false);
   const { cartProducts } = useAppSelector(state => state.cartProducts);
   const dispatch = useAppDispatch();
+  const newCartProducts: CartProduct[] = [];
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -25,10 +26,6 @@ export const CartPage = () => {
       );
     }
   }, []);
-
-  const newCartProducts = cartProducts.map((cartProduct) => ({
-    ...cartProduct,
-  }));
 
   const totalSum = () => {
     let total = 0;
@@ -45,17 +42,27 @@ export const CartPage = () => {
       return;
     }
 
-    newCartProducts.map(product => {
-      /* eslint-disable-next-line */
-      return product.id === id ? product.quantity -= 1 : product.quantity;
+    cartProducts.forEach(currentProduct => {
+      const copy = { ...currentProduct };
+
+      if (currentProduct.id === id) {
+        copy.quantity = currentProduct.quantity - 1;
+      }
+
+      newCartProducts.push(copy);
     });
     dispatch(cartProductActions.setCartProducts(newCartProducts));
   };
 
   const handlerPlusButtonClick = (id: string) => {
-    newCartProducts.map(product => {
-      /* eslint-disable-next-line */
-      return product.id === id ? product.quantity += 1 : product.quantity;
+    cartProducts.forEach(currentProduct => {
+      const copy = { ...currentProduct };
+
+      if (currentProduct.id === id) {
+        copy.quantity = currentProduct.quantity + 1;
+      }
+
+      newCartProducts.push(copy);
     });
     dispatch(cartProductActions.setCartProducts(newCartProducts));
   };
@@ -94,14 +101,17 @@ export const CartPage = () => {
                       handlerCartDeleteButtonClick(cartProduct);
                     }}
                   />
+
                   <img
                     className="CartPage__image"
                     src={cartProduct.product.imageUrl}
                     alt=""
                   />
+
                   <p className="CartPage__product-name text">
                     {cartProduct.product.name}
                   </p>
+
                   <div className="container">
                     <button
                       type="button"
@@ -137,6 +147,7 @@ export const CartPage = () => {
                       <div className="icon icon--plus" />
                     </button>
                   </div>
+
                   <h2>
                     {`$${priceWithDiscount(cartProduct.product)}`}
                   </h2>

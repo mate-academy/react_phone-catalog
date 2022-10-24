@@ -26,9 +26,9 @@ export const FavoritesPage = () => {
       <span className="text text--light">
         {`${favorites.length} models`}
       </span>
+      <br />
+      <br />
 
-      <br />
-      <br />
       <div data-cy="cardsContainer">
         <ProductList productList={favorites} />
       </div>
