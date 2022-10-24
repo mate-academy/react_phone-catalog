@@ -167,6 +167,7 @@ export const ProductDetailsPage: React.FC = () => {
                             </button>
                             <button
                               type="button"
+                              data-cy="addToFavorite"
                               className={classNames(
                                 'productCard__buttonToFavourites',
                                 'productCard__buttonToFavourites--details',
@@ -207,7 +208,10 @@ export const ProductDetailsPage: React.FC = () => {
                     </div>
                   </div>
                   <div className="productsDetailsPage__content">
-                    <div className="productsDetailsPage__about">
+                    <div
+                      className="productsDetailsPage__about"
+                      data-cy="productDescription"
+                    >
                       <h2 className="productsDetailsPage__title-content">
                         About
                       </h2>

@@ -32,7 +32,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   };
 
   return (
-    <div className="productCard">
+    <div className="productCard" data-cy="cardsContainer">
       <div className="productCard__foto">
         <Link
           to={`/${type}s/${id}`}
@@ -99,6 +99,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         </button>
         <button
           type="button"
+          data-cy="addToFavorite"
           className={classNames(
             'productCard__buttonToFavourites',
             {

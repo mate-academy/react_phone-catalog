@@ -7,7 +7,7 @@ export const Breadcrumbs: React.FC = () => {
   const breadcrumbs = useBreadcrumbs();
 
   return (
-    <nav className="breadcrumbs">
+    <nav className="breadcrumbs" data-cy="breadCrumbs">
       <ul className="breadcrumbs__list">
         {breadcrumbs.map(({ breadcrumb, match }, index, array) => (
           <li key={match.pathname} className="breadcrumbs__item">

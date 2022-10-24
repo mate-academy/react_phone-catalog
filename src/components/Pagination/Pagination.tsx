@@ -27,9 +27,9 @@ export const Pagination: React.FC<Props> = ({
   }, [pages]);
 
   return (
-    <div className="pagination">
+    <div className="pagination" data-cy="pagination">
       <ul className="pagination__list">
-        <li className="pagination__item">
+        <li className="pagination__item" data-cy="paginationLeft">
           <Link
             to={`${pathname}${search}`}
             className={classNames(
@@ -55,7 +55,7 @@ export const Pagination: React.FC<Props> = ({
             </Link>
           </li>
         ))}
-        <li className="pagination__item">
+        <li className="pagination__item" data-cy="paginationRight">
           <Link
             to={`${pathname}${search}`}
             className={classNames(

@@ -20,6 +20,7 @@ export const CartItem: React.FC<Props> = ({ cartItem }) => {
         <button
           type="button"
           className="cartItem__button-remove"
+          data-cy="cartDeleteButton"
           onClick={() => removeFromCart(id)}
         />
         <div className="cartItem__foto">

@@ -56,6 +56,7 @@ export const Search: React.FC = () => {
       {query && (
         <button
           type="button"
+          data-cy="searchDelete"
           className="search__button"
           onClick={reset}
         />

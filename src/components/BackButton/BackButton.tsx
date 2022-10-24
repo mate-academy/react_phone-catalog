@@ -8,6 +8,7 @@ export const BackButton: React.FC = () => {
     <button
       type="button"
       className="backButton"
+      data-cy="backButton"
       onClick={() => navigate(-1)}
     >
       Back

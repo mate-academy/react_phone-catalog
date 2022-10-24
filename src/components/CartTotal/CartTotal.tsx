@@ -16,7 +16,7 @@ export const CartTotal: React.FC = () => {
   return (
     <div className="cartTotal">
       <div className="cartTotal__amount">{`$${totalAmount}`}</div>
-      <div className="cartTotal__quantity">
+      <div className="cartTotal__quantity" data-cy="productQauntity">
         {`Total for ${totalQuantity} ${totalQuantity > 1 ? 'items' : 'item'}`}
       </div>
       <div className="cartTotal__line" />

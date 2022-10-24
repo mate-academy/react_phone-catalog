@@ -8,7 +8,7 @@ export const ShopByCategory: React.FC = () => {
   return (
     <div className="shopByCategory">
       <h2 className="shopByCategory__title">Shop by category</h2>
-      <div className="shopByCategory__items">
+      <div className="shopByCategory__items" data-cy="categoryLinksContainer">
         <div className="shopByCategory__item">
           <div
             className="
