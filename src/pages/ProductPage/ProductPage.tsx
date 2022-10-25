@@ -1,12 +1,13 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Select } from '../../components/Select';
 import { Product } from '../../types/Product';
 import { priceWithDiscount } from '../../helpers/priceWithDiscount';
 import { Pagination } from '../../components/Pagination';
 import { ProductList } from '../../components/ProductList/ProductList';
-import { Search } from '../../components/Search';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import * as queryActions from '../../app/features/querySlice';
 import './ProductPage.scss';
 
 const sortOptions = ['Newest', 'Alphabetically', 'Cheapest'];
@@ -17,30 +18,20 @@ type Props = {
   products: Product[];
 };
 
-const debounce = (f: (query: string) => void, delay: number) => {
-  let timerId: number;
-
-  return (...args: string[]) => {
-    clearTimeout(timerId);
-
-    timerId = window.setTimeout(f, delay, ...args);
-  };
-};
-
 export const ProductPage: React.FC<Props> = ({
   pageName,
   products,
 }) => {
-  const [filteredProduct, setFilteredProducts] = useState(products);
   const [sortedProducts, setSortedProducts] = useState(products);
+  const [filteredProduct, setFilteredProducts] = useState(products);
   const [sortValue, setSortValue] = useState(sortOptions[0]);
   const [currentPage, setCurrentPage] = useState(1);
   const [perPage, setPerPage] = useState(
     perPageOptions[perPageOptions.length - 1],
   );
-  const [query, setQuery] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-  const [appliedQuery, setAppliedQuery] = useState('');
+  const { query } = useAppSelector(state => state.query);
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const visibleProducts: Product[] = [];
   const productName = pageName.toLowerCase();
@@ -56,10 +47,6 @@ export const ProductPage: React.FC<Props> = ({
   for (let i: number = start; i < finish; i += 1) {
     visibleProducts.push(sortedProducts[i]);
   }
-
-  const applyQuery = useCallback(
-    debounce(setAppliedQuery, 1000), [],
-  );
 
   const sortProducts = () => {
     switch (sortValue) {
@@ -92,23 +79,25 @@ export const ProductPage: React.FC<Props> = ({
 
   useEffect(() => {
     const filter = products.filter(
-      product => product.name.toLocaleLowerCase()
-        .includes(appliedQuery.toLocaleLowerCase()),
+      product => product.name
+        .toLowerCase().includes(query.toLowerCase()),
     );
 
     setFilteredProducts(filter);
-  }, [appliedQuery]);
+  }, [query]);
 
   useEffect(() => {
     setCurrentPage(1);
-  }, [perPage, appliedQuery]);
+  }, [perPage, query]);
 
   useEffect(() => {
     sortProducts();
 
     if (filteredProduct.length === 1) {
+      dispatch(queryActions.deleteQuery());
+
       navigate(
-        `/${filteredProduct[0].type}s/${filteredProduct[0].id}`,
+        `/${filteredProduct[0].type}s/${filteredProduct[0].id}/found`,
       );
     }
 
@@ -119,7 +108,7 @@ export const ProductPage: React.FC<Props> = ({
     if (products.length && filteredProduct.length) {
       setErrorMessage('');
     }
-  }, [filteredProduct]);
+  }, [sortValue, filteredProduct]);
 
   useEffect(() => {
     if (!products.length) {
@@ -140,17 +129,6 @@ export const ProductPage: React.FC<Props> = ({
       <span className="ProductPage__subtitle text text--light">
         {`${filteredProduct.length} models`}
       </span>
-
-      {products.length > 0
-        && (
-          <Search
-            pageName={productName}
-            query={query}
-            setQuery={setQuery}
-            applyQuery={applyQuery}
-            setCurrentPage={setCurrentPage}
-          />
-        )}
 
       {!errorMessage
         ? (

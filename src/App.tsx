@@ -14,6 +14,7 @@ import { getProducts } from './api/getProducts';
 import { CartPage } from './pages/CartPage';
 import { FavoritesPage } from './pages/FavoritesPage';
 import { LoadingError } from './components/LoadingError';
+import { ExactMatchPage } from './pages/ExactMatchPage';
 import './App.scss';
 
 const App = () => {
@@ -34,7 +35,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <Header />
+      <Header products={products} />
 
       {error
         ? <LoadingError />
@@ -52,16 +53,25 @@ const App = () => {
                     path="/phones/:productId"
                     element={<ProductDetailsPage />}
                   />
+                  <Route
+                    path="/phones/:productId/:found"
+                    element={<ExactMatchPage />}
+                  />
+
                   <Route path="/tablets" element={<TabletsPage />} />
                   <Route
                     path="/tablets/:productId"
                     element={<ProductDetailsPage />}
                   />
+
+                  <Route
+                    path="/tablets/:productId/:found"
+                    element={<ExactMatchPage />}
+                  />
                   <Route
                     path="/accessories"
                     element={<AccessoriesPage />}
                   />
-
                   <Route path="/cart" element={<CartPage />} />
                   <Route path="/favorites" element={<FavoritesPage />} />
                   <Route path="*" element={<NotFoundPage />} />

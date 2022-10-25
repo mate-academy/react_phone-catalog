@@ -54,7 +54,6 @@ export const ProductDetailsPage = () => {
   useEffect(() => {
     if (products && productId) {
       const match = products.find(product => product.id === productId);
-
       /* eslint-disable-next-line */
       match
         ? setCurrentProduct(match)

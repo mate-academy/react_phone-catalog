@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './Select.scss';
 
 type Props = {
@@ -21,14 +22,19 @@ export const Select: React.FC<Props> = ({
       onMouseLeave={() => setIsSelectOpen(false)}
     >
       <div className="Select__header ">
-        <option
+        <button
+          type="button"
+          data-cy="selectHeader"
+          aria-label="selectHeader"
           className="Select__title text"
           onClick={() => setIsSelectOpen((prevState) => !prevState)}
         >
           {currentOption}
-        </option>
+        </button>
+
         <button
           type="button"
+          data-cy="toggle"
           aria-label="toggle"
           className="Select__button"
           onClick={() => setIsSelectOpen((prevState) => !prevState)}
@@ -40,17 +46,19 @@ export const Select: React.FC<Props> = ({
       )}
       >
         {options.map(option => (
-          <option
+          <Link
+            to="/phones"
             key={option}
-            value={option}
             className="Select__item text text--light"
             onClick={(e) => {
               setIsSelectOpen(false);
-              setCurrentOption(e.currentTarget.value);
+              if (e.currentTarget.textContent) {
+                setCurrentOption(e.currentTarget.textContent);
+              }
             }}
           >
             {option}
-          </option>
+          </Link>
         ))}
       </div>
     </div>

@@ -1,50 +1,69 @@
+import { useCallback, useEffect, useState } from 'react';
+import classNames from 'classnames';
+import { useAppDispatch } from '../../app/hooks';
+import * as queryActions from '../../app/features/querySlice';
 import './Search.scss';
 
 type Props = {
-  query: string;
-  setQuery: React.Dispatch<React.SetStateAction<string>>;
-  applyQuery: (query: string) => void,
-  pageName: string | null;
-  setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
+  pageName: string;
+};
+
+const debounce = (f: (query: string) => void, delay: number) => {
+  let timerId: number;
+
+  return (...args: string[]) => {
+    clearTimeout(timerId);
+
+    timerId = window.setTimeout(f, delay, ...args);
+  };
 };
 
 export const Search: React.FC<Props> = ({
-  query,
-  setQuery,
-  applyQuery,
   pageName,
-  setCurrentPage,
 }) => {
+  const [appliedQuery, setAppliedQuery] = useState('');
+  const [value, setValue] = useState('');
+  const dispatch = useAppDispatch();
+
+  const applyQuery = useCallback(
+    debounce(setAppliedQuery, 1000), [],
+  );
+
   const handlerInputOnChange = (newQuery: string) => {
-    setQuery(newQuery);
+    setValue(newQuery);
     applyQuery(newQuery);
   };
 
   const handlerCrossButtonClick = () => {
-    setCurrentPage(1);
-    setQuery('');
-    applyQuery('');
+    setValue('');
+    setAppliedQuery('');
+    dispatch(queryActions.deleteQuery());
   };
+
+  useEffect(() => {
+    dispatch(queryActions.setQuery(appliedQuery));
+  }, [appliedQuery]);
 
   return (
     <div className="Search">
       <input
         type="text"
-        value={query}
+        value={value}
         className="Search__input text"
         placeholder={`Search in ${pageName}...`}
         onChange={(e) => handlerInputOnChange(e.currentTarget.value)}
       />
-      {query
-        && (
-          <button
-            data-cy="searchDelete"
-            aria-label="searchDelete"
-            type="button"
-            className="cross-button Search__button"
-            onClick={handlerCrossButtonClick}
-          />
+
+      <button
+        data-cy="searchDelete"
+        aria-label="searchDelete"
+        type="button"
+        className={classNames(
+          'Search__button',
+          { 'cross-button': value },
         )}
+        onClick={handlerCrossButtonClick}
+      />
     </div>
   );
 };
