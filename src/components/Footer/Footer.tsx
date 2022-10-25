@@ -8,14 +8,16 @@ import './Footer.scss';
 
 export const Footer: React.FC = () => {
   const handleTopClick = () => {
-    const header = document.querySelector('.header');
-
-    header?.scrollIntoView({ behavior: 'smooth' });
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
   };
 
   return (
-    <div className="footer-container">
-      <footer className="footer">
+
+    <footer className="footer-container">
+      <div className="footer">
         <div className="footer__content">
           <div className="logo">
             <NavLink
@@ -59,7 +61,8 @@ export const Footer: React.FC = () => {
             </a>
           </div>
 
-          <div
+          <button
+            type="button"
             className="footer__back-top back-top"
             onClick={handleTopClick}
           >
@@ -69,9 +72,10 @@ export const Footer: React.FC = () => {
               alt="top arrow"
               className="back-top__image"
             />
-          </div>
+          </button>
         </div>
-      </footer>
-    </div>
+      </div>
+    </footer>
+
   );
 };

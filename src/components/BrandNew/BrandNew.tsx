@@ -6,16 +6,18 @@ export const BrandNew: React.FC = () => {
   const { products } = useContext(ProductsContext);
 
   const prodWithoutDiscount = products.filter(product => (
-    product.discount === 0
+    !product.discount
   ));
 
-  prodWithoutDiscount.sort((item1, item2) => item2.price - item1.price);
+  const resultProducts = prodWithoutDiscount.sort((item1, item2) => (
+    item2.price - item1.price
+  ));
 
   return (
     <section className="section">
       <ProductsSlider
         title="Brand new"
-        products={prodWithoutDiscount}
+        products={resultProducts}
       />
     </section>
   );

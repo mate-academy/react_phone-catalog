@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import classNames from 'classnames';
 import React, { useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
@@ -29,7 +27,7 @@ export const CustomSelector: React.FC<Props> = ({
     Cheapest: 'price',
   };
 
-  if (type === 'sort') {
+  if (type === filterOptionsValue.Alphabetically) {
     switch (selectedValue) {
       case 'name':
         visibleValue = 'Alphabetically';
@@ -58,16 +56,6 @@ export const CustomSelector: React.FC<Props> = ({
     setIsDropdownOpened(false);
   };
 
-  const handleDropdownClick = () => {
-    if (isDropdownOpened) {
-      setIsDropdownOpened(false);
-
-      return;
-    }
-
-    setIsDropdownOpened(true);
-  };
-
   const getRoute = (propType: string, option: string) => {
     if (propType === 'sort') {
       return {
@@ -94,7 +82,7 @@ export const CustomSelector: React.FC<Props> = ({
           'custom-selector__picker--is-focused': isDropdownOpened,
         })}
         type="button"
-        onClick={handleDropdownClick}
+        onClick={() => setIsDropdownOpened(!isDropdownOpened)}
       >
         <div className="custom-selector__picker--title">
           {visibleValue}

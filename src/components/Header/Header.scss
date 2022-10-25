@@ -25,7 +25,7 @@
     box-shadow: -1px 0 0 #e2e6e9;
     width: 327px;
     padding: 23px 24px;
-    cursor: pointer;
+    cursor: text;
 
     &--is-hidden {
       visibility: hidden;
@@ -37,7 +37,6 @@
 
     &--field {
       border: none;
-      cursor: pointer;
 
       &:focus {
         outline: none;

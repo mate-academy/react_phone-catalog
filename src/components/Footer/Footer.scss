@@ -37,7 +37,9 @@
   }
 
   &__back-top {
-    text-decoration: none;
+    margin: 0;
+    background-color: #fff;
+    border: none;
   }
 }
 
@@ -47,6 +49,7 @@
   cursor: pointer;
 
   &__title {
+    font-family: "Mont", Arial, Helvetica, sans-serif;
     font-weight: 600;
     font-size: 12px;
     line-height: 15px;
