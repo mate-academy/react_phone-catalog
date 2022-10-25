@@ -74,9 +74,9 @@ export const ProductsSlider: React.FC<Props> = ({
           <button
             type="button"
             className="
-              ProductsSlider__button
+              arrowButton
               button
-              ProductsSlider__button--left
+              arrowButton--left
             "
             disabled={currentIndex === 0}
             onClick={prev}
@@ -86,9 +86,9 @@ export const ProductsSlider: React.FC<Props> = ({
           <button
             type="button"
             className="
-              ProductsSlider__button
+              arrowButton
               button
-              ProductsSlider__button--right
+              arrowButton--right
             "
             disabled={currentIndex === visileProducts.length - 4}
             onClick={next}

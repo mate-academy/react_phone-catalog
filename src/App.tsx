@@ -5,18 +5,20 @@ import { Outlet } from 'react-router-dom';
 import { Header } from './components/Header/Header';
 import { Footer } from './components/Footer/Footer';
 
-const App = () => (
-  <div className="App">
-    <Header />
+const App = () => {
+  return (
+    <div className="App">
+      <Header />
 
-    <main className="page">
-      <div className="container">
-        <Outlet />
-      </div>
-    </main>
+      <main className="page">
+        <div className="container">
+          <Outlet />
+        </div>
+      </main>
 
-    <Footer />
-  </div>
-);
+      <Footer />
+    </div>
+  );
+};
 
 export default App;

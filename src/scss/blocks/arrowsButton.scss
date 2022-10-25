@@ -1,0 +1,30 @@
+.arrowButton {
+  width: 32px;
+  height: 32px;
+  border: 1px solid $buttonBorderColor;
+
+  &:disabled {
+    border-color: $borderItem;
+    cursor: not-allowed;
+
+    &:hover {
+      border-color: $borderItem;
+    }
+  }
+
+  &--left {
+    background-image: url("../../img/icons/arrow_left_black.svg");
+
+    &:disabled {
+      background-image: url("../../img/icons/Chevron (Arrow Left).svg");
+    }
+  }
+
+  &--right {
+    background-image: url("../../img/icons/arrow_right_black.svg");
+
+    &:disabled {
+      background-image: url("../../img/icons/Chevron (Arrow Right).svg");
+    }
+  }
+}

@@ -1,5 +1,6 @@
 @import "../../scss/variables";
 @import "../../scss/mixins";
+@import "../../scss/blocks/arrowsButton.scss";
 
 .ProductsSlider {
   overflow: hidden;
@@ -15,37 +16,6 @@
   &__controls {
     display: flex;
     gap: 16px;
-  }
-
-  &__button {
-    width: 32px;
-    height: 32px;
-    border: 1px solid $buttonBorderColor;
-
-    &:disabled {
-      border-color: $borderItem;
-      cursor: not-allowed;
-
-      &:hover {
-        border-color: $borderItem;
-      }
-    }
-
-    &--left {
-      background-image: url("../../img/icons/arrow_left_black.svg");
-
-      &:disabled {
-        background-image: url("../../img/icons/Chevron (Arrow Left).svg");
-      }
-    }
-
-    &--right {
-      background-image: url("../../img/icons/arrow_right_black.svg");
-
-      &:disabled {
-        background-image: url("../../img/icons/Chevron (Arrow Right).svg");
-      }
-    }
   }
 
   &__content {

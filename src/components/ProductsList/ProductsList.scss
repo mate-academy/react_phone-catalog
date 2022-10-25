@@ -1,0 +1,33 @@
+@import "../../scss/variables";
+@import "../../scss/blocks/arrowsButton.scss";
+
+.ProductsList {
+  &__filterSelects {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  &__filterSelect {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__filterName {
+    color: $secondColor;
+    margin-bottom: 4px;
+    line-height: 15px;
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: repeat(4,  minmax(272px, 1fr));
+    width: 100%;
+    gap: 40px 16px;
+    margin-bottom: 40px;
+  }
+
+  &__pagination {
+    margin-bottom: 80px;
+  }
+}

@@ -1,4 +1,4 @@
-import { Product } from './types/Product';
+import { Product } from '../types/Product';
 
 // eslint-disable-next-line max-len
 const API_URL = 'https://mate-academy.github.io/react_phone-catalog/api/products.json';

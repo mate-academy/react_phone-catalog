@@ -48,9 +48,9 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       </div>
       <div className="ProductCard__bottom">
         <p className="ProductCard__price">
-          <span className="ProductCard__withDiscount">{`$${price * ((100 - discount) / 100)}`}</span>
+          <span className="ProductCard__withDiscount">{`$${price}`}</span>
           {!!discount && (
-            <span className="ProductCard__noDiscount">{`$${price}`}</span>
+            <span className="ProductCard__noDiscount">{`$${Math.floor(price * ((100 + discount) / 100))}`}</span>
           )}
         </p>
         <div className="ProductCard__line"> </div>
