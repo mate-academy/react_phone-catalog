@@ -93,7 +93,7 @@ export const CustomSelector: React.FC<Props> = ({
             src={isDropdownOpened
               ? 'img/icons/arrow-up-disabled.svg'
               : 'img/icons/arrow-down.svg'}
-            alt=""
+            alt="arrow"
           />
         </div>
 

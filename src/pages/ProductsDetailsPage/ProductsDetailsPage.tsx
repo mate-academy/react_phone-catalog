@@ -50,13 +50,13 @@ export const ProductsDetailsPage: React.FC<Props> = ({
               >
                 <img
                   src="img/icons/home.svg"
-                  alt=""
+                  alt="home"
                 />
               </Link>
 
               <img
                 src="img/icons/next-arrow-disabled.svg"
-                alt=""
+                alt="arrow"
                 className="status__arrow"
               />
 
@@ -69,7 +69,7 @@ export const ProductsDetailsPage: React.FC<Props> = ({
 
               <img
                 src="img/icons/next-arrow-disabled.svg"
-                alt=""
+                alt="arrow"
                 className="status__arrow"
               />
 

@@ -67,7 +67,7 @@ export const ProductsDetails: React.FC<Props> = ({
                   >
                     <img
                       src={imageUrl}
-                      alt=""
+                      alt="product"
                       className="info-image"
                     />
                   </div>

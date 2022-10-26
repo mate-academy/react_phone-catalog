@@ -102,7 +102,7 @@ export const CartPage: React.FC = () => {
                   <div className="cart__image--container">
                     <img
                       src={item.imageUrl}
-                      alt=""
+                      alt="product"
                       className="cart__image"
                     />
                   </div>
