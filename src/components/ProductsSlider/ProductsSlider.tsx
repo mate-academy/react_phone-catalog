@@ -16,7 +16,10 @@ export const ProductsSlider: React.FC<Props> = ({
 }) => {
   const [offset, setOffset] = useState(0);
 
-  const fullWidthOfList = 288 * (products.length - 4);
+  const cardWidthWithGap = 288;
+  const cardsOnFrame = 4;
+
+  const fullWidthOfList = cardWidthWithGap * (products.length - cardsOnFrame);
   const handleClickButton = (direction: string) => {
     switch (direction) {
       case 'prev':
@@ -26,7 +29,7 @@ export const ProductsSlider: React.FC<Props> = ({
           return;
         }
 
-        setOffset(current => current - 288);
+        setOffset(current => current - cardWidthWithGap);
         break;
       case 'next':
         if (offset === fullWidthOfList) {
@@ -35,7 +38,7 @@ export const ProductsSlider: React.FC<Props> = ({
           return;
         }
 
-        setOffset(current => current + 288);
+        setOffset(current => current + cardWidthWithGap);
         break;
       default:
         break;

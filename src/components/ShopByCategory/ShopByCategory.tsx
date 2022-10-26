@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 
 import { ProductsContext } from '../../helpers/ProductsContext';
@@ -8,11 +8,15 @@ import './ShopByCategory.scss';
 export const ShopByCategory: React.FC = () => {
   const { products } = useContext(ProductsContext);
 
-  const phones = products.filter(product => product.type === 'phone');
-  const tablets = products.filter(product => product.type === 'tablet');
-  const accessories = products.filter(product => (
-    product.type === 'accessories'
-  ));
+  const phones = useMemo(() => (
+    products.filter(product => product.type === 'phone')
+  ), [products]);
+  const tablets = useMemo(() => (
+    products.filter(product => product.type === 'tablet')
+  ), [products]);
+  const accessories = useMemo(() => (
+    products.filter(product => product.type === 'accessories')
+  ), [products]);
 
   return (
     <section className="section shop-by-category">

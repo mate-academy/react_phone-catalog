@@ -11,9 +11,9 @@ export const CartPage: React.FC = () => {
   const [isUpdated, setIsUpdated] = useState(false);
 
   const realCartItems = cartItems.filter(
-    (value: Product, index: number, self: Product[]) => (
-      index === self.findIndex((t) => (
-        t.name === value.name
+    (product: Product, index: number, self: Product[]) => (
+      index === self.findIndex((targetProduct) => (
+        targetProduct.name === product.name
       ))
     ),
   );
@@ -29,7 +29,9 @@ export const CartPage: React.FC = () => {
   };
 
   const handleDeleteClick = (item: Product) => {
-    cartItems = cartItems.filter((prod: Product) => prod.name !== item.name);
+    cartItems = cartItems.filter((product: Product) => (
+      product.name !== item.name
+    ));
     localStorage.setItem('cartItems', JSON.stringify(cartItems));
     setIsUpdated(!isUpdated);
     window.dispatchEvent(new Event('storage'));

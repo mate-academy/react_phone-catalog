@@ -14,6 +14,7 @@ import './Header.scss';
 import { getSearchWith } from '../../helpers/searchHelper';
 import { Product } from '../../types/Product';
 import { NavType } from '../../types/navType';
+import { findUniqueProducts } from '../../helpers/findUniqueProducts';
 
 export const Header: React.FC = () => {
   const location = useLocation();
@@ -37,13 +38,7 @@ export const Header: React.FC = () => {
     setInputValue(query);
   }, [query]);
 
-  const realCartItems = cartItems.filter(
-    (value: Product, index: number, self: Product[]) => (
-      index === self.findIndex((t) => (
-        t.name === value.name
-      ))
-    ),
-  );
+  const realCartItems = findUniqueProducts(cartItems);
 
   const visiblePath = ['/phones', '/accessories', '/tablets', '/favorites'];
 

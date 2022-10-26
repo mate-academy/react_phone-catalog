@@ -10,12 +10,16 @@ export const FavoritesPage: React.FC = () => {
 
   const [searchParams] = useSearchParams();
   const query = searchParams.get('query') || '';
-  const favoritesByQuery = favorites.filter((favorite: Product) => (
-    favorite.name.toLowerCase().includes(query.toLocaleLowerCase())
-    || favorite.id.toLowerCase().includes(query.toLocaleLowerCase())));
+
+  const findProductsByQuery = (products: Product[], queryProp: string) => {
+    return products.filter((product: Product) => (
+      product.name.toLowerCase().includes(queryProp.toLocaleLowerCase())
+      || product.id.toLowerCase().includes(queryProp.toLocaleLowerCase())));
+  };
+
+  const productsBuQuery = findProductsByQuery(favorites, query);
 
   return (
-
     <div className="category-page favorites">
       <div className="category-page__status status">
         <Link
@@ -42,19 +46,17 @@ export const FavoritesPage: React.FC = () => {
       </div>
 
       <div className="favorites__residue">
-        {`${favoritesByQuery.length} items`}
+        {`${productsBuQuery.length} items`}
       </div>
 
       <div className="favorites__list">
-        {favoritesByQuery.map((favorite: Product) => (
+        {productsBuQuery.map((favorite: Product) => (
           <ProductCard
             key={favorite.id}
             product={favorite}
           />
         ))}
       </div>
-
     </div>
-
   );
 };

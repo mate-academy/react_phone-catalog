@@ -27,13 +27,13 @@ export const PhonesPage: React.FC = () => {
         >
           <img
             src="img/icons/home.svg"
-            alt=""
+            alt="home"
           />
         </Link>
 
         <img
           src="img/icons/next-arrow-disabled.svg"
-          alt=""
+          alt="arrow"
           className="status__arrow"
         />
 

@@ -8,6 +8,7 @@ import { Product } from '../../types/Product';
 
 import './ProductsList.scss';
 import { Pagination } from '../Pagination';
+import { findMatchByQuery } from '../../helpers/findMatchByQuery';
 
 type Props = {
   products: Product[];
@@ -35,9 +36,7 @@ export const ProductsList: React.FC<Props> = ({
   });
 
   if (query) {
-    gadgets = gadgets.filter(gadget => (
-      gadget.name.toLowerCase().includes(query.toLocaleLowerCase())
-      || gadget.id.toLowerCase().includes(query.toLocaleLowerCase())));
+    gadgets = findMatchByQuery(gadgets, query);
   }
 
   switch (sort) {
