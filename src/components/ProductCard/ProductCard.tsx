@@ -1,6 +1,4 @@
-/* eslint-disable jsx-a11y/control-has-associated-label */
 import React from 'react';
-// import classNames from 'classnames';
 import './ProductCard.scss';
 import { Link } from 'react-router-dom';
 import { Product } from '../../types/Product';

@@ -24,9 +24,9 @@ export const FavoriteButton: React.FC<Props> = ({
     }
 
     if (favorites.find((prod: Product) => prod.id === product.id)) {
-      localStorage.setItem('favorites', JSON.stringify([
-        ...favorites.filter((prod: Product) => prod.id !== product.id),
-      ]));
+      localStorage.setItem('favorites', JSON.stringify(
+        favorites.filter((prod: Product) => prod.id !== product.id),
+      ));
     } else {
       localStorage.setItem('favorites', JSON.stringify([
         ...favorites,

@@ -75,7 +75,7 @@ export const CustomSelector: React.FC<Props> = ({
   return (
     <div
       className="custom-selector"
-      onMouseLeave={() => setIsDropdownOpened(false)}
+      onMouseLeave={handleOptionClick}
     >
       <button
         className={classNames('custom-selector__picker', {
@@ -111,7 +111,7 @@ export const CustomSelector: React.FC<Props> = ({
             }}
             key={option}
             className="custom-selector__item"
-            onClick={() => handleOptionClick()}
+            onClick={handleOptionClick}
           >
             {option}
           </Link>

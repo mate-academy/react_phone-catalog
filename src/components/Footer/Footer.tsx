@@ -1,6 +1,3 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/control-has-associated-label */
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
@@ -33,7 +30,6 @@ export const Footer: React.FC = () => {
 
           <div className="footer__links">
             <a
-              // eslint-disable-next-line max-len
               href="https://github.com/dm-sheremetiev/phone-catalog"
               className="footer__link"
               target="_blank"

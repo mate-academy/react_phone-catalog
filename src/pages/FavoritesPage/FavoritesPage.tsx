@@ -17,7 +17,7 @@ export const FavoritesPage: React.FC = () => {
       || product.id.toLowerCase().includes(queryProp.toLocaleLowerCase())));
   };
 
-  const productsBuQuery = findProductsByQuery(favorites, query);
+  const productsByQuery = findProductsByQuery(favorites, query);
 
   return (
     <div className="category-page favorites">
@@ -46,11 +46,11 @@ export const FavoritesPage: React.FC = () => {
       </div>
 
       <div className="favorites__residue">
-        {`${productsBuQuery.length} items`}
+        {`${productsByQuery.length} items`}
       </div>
 
       <div className="favorites__list">
-        {productsBuQuery.map((favorite: Product) => (
+        {productsByQuery.map((favorite: Product) => (
           <ProductCard
             key={favorite.id}
             product={favorite}
