@@ -1,6 +1,6 @@
 @import "../../scss/variables";
 
-.UrlNavigation {
+.Breadcrumbs {
   display: flex;
   align-items: center;
   width: 100%;
@@ -11,13 +11,20 @@
     background-image: url("../../img/icons/Home.svg");
   }
 
-  &__arrowLeft {
-    left: 24px;
-    background-image: url("../../img/icons/Chevron (Arrow Right).svg");
+  &__path {
+    display: flex;
+    align-items: center;
+    gap: 8px;
   }
 
   &__name {
     font-size: 12px;
     color: $secondColor;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $primaryColor;
+    font-size: 12px;
   }
 }

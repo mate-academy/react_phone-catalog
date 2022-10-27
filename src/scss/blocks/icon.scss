@@ -3,4 +3,20 @@
   height: 16px;
   background-repeat: no-repeat;
   background-position: center;
+
+  &--arrowRight {
+    background-image: url("../../img/icons/Chevron (Arrow Right).svg");
+  }
+
+  &--arrowLeft {
+    background-image: url("../../img/icons/Chevron (Arrow Left).svg");
+  }
+
+  &--arrowLeftBlack {
+    background-image: url("../../img/icons/arrow_left_black.svg");
+  }
+
+  &--arrowRightBlack {
+    background-image: url("../../img/icons/arrow_right_black.svg");
+  }
 }

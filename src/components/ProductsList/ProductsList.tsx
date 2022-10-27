@@ -20,10 +20,10 @@ const itemsOnPage = [
 ];
 
 type Props = {
-  phones: Product[];
+  products: Product[];
 };
 
-export const ProductsList: React.FC<Props> = ({ phones }) => {
+export const ProductsList: React.FC<Props> = ({ products }) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const sort = searchParams.get('sort');
@@ -32,10 +32,10 @@ export const ProductsList: React.FC<Props> = ({ phones }) => {
 
   const [currentPage, changeCurrentPage] = useState(page ? +page : 1);
   const [itemsPerPage, addItemsPerPage] = useState(perPage || +Sixteen);
-  const countPages = Math.ceil(phones.length / +itemsPerPage);
+  const countPages = Math.ceil(products.length / +itemsPerPage);
 
   const visiblePhones = useMemo(() => {
-    let sortedPhones = [...phones];
+    let sortedPhones = [...products];
 
     switch (sort) {
       case Price:
@@ -63,7 +63,7 @@ export const ProductsList: React.FC<Props> = ({ phones }) => {
     }
 
     return sortedPhones;
-  }, [phones, sort, perPage, currentPage]);
+  }, [products, sort, perPage, currentPage]);
 
   function updateSearch(params: { [key: string]: string | null }) {
     Object.entries(params).forEach(([key, value]) => {
@@ -101,7 +101,7 @@ export const ProductsList: React.FC<Props> = ({ phones }) => {
     if (value !== All) {
       addItemsPerPage(+value);
     } else {
-      addItemsPerPage(phones.length);
+      addItemsPerPage(products.length);
     }
   };
 
@@ -136,7 +136,7 @@ export const ProductsList: React.FC<Props> = ({ phones }) => {
         ))}
       </div>
       <div className="ProductsList__pagination">
-        {visiblePhones.length < phones.length && (
+        {visiblePhones.length < products.length && (
           <Pagination
             currentPage={currentPage}
             countPages={countPages}

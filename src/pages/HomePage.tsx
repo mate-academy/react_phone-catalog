@@ -10,13 +10,12 @@ import { ProductsSlider } from '../components/ProductsSlider/ProductsSlider';
 import { ShopByCategory } from '../components/ShopByCategory/ShopByCategory';
 
 export const HomePage = () => {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [loadingError, setLoadingError] = useState(false);
   const [products, setProducts] = useState<Product[]>([]);
   const noError = !loadingError && !isLoading;
 
   async function loadProducts() {
-    setIsLoading(true);
     try {
       setLoadingError(false);
       const response = await getProducts();
@@ -55,7 +54,7 @@ export const HomePage = () => {
 
       {noError && (
         <>
-          <section className="page__sectionHome Carousel">
+          <section className="page__section Carousel">
             <Carousel
               infinite
               autoplay
@@ -74,14 +73,14 @@ export const HomePage = () => {
               })}
             </Carousel>
           </section>
-          <section className="page__sectionHome ProductsSlider">
+          <section className="page__section ProductsSlider">
             <ProductsSlider
               products={products}
               filter="hotPrice"
               title="Hot prices"
             />
           </section>
-          <section className="page__sectionHome ProductsSlider">
+          <section className="page__section ProductsSlider">
             <ProductsSlider
               products={products}
               filter="hotPrice"
@@ -94,7 +93,7 @@ export const HomePage = () => {
           >
             <ShopByCategory products={products} />
           </section>
-          <section className="page__sectionHome ProductsSlider">
+          <section className="page__section ProductsSlider">
             <ProductsSlider
               products={products}
               filter="newModels"

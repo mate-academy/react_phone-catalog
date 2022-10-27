@@ -6,7 +6,7 @@ import './ProductsSlider.scss';
 
 type Props = {
   products: Product[];
-  filter: string;
+  filter?: string;
   title: string;
 };
 

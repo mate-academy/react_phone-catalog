@@ -6,15 +6,16 @@
   font-size: 14px;
   flex: 1 0 auto;
 
-  &__sectionHome {
+  &__section {
     margin-bottom: 80px;
   }
 
   &__sectionTitle {
     font-size: 32px;
+    line-height: 41px;
   }
 
-  &__urlNavigation {
+  &__breadcrumbs {
     margin-top: 24px;
     margin-bottom: 40px;
   }
@@ -30,5 +31,9 @@
   &__count {
     color: $secondColor;
     margin-bottom: 40px;
+  }
+
+  &__backButton {
+    margin-bottom: 16px;
   }
 }

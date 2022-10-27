@@ -1,8 +1,11 @@
 /* eslint-disable no-console */
 import classNames from 'classnames';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Product } from '../../types/Product';
 import './ProductCard.scss';
+import '../../scss/blocks/addToCartButtons.scss';
+import '../../scss/blocks/productParameters.scss';
 
 type Props = {
   product: Product;
@@ -29,12 +32,23 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     return value;
   };
 
+  const productType = () => {
+    if (product.type === 'accessory') {
+      return 'accessories';
+    }
+
+    return `${product.type}s`;
+  };
+
   return (
     <div
       data-cy="cardsContainer"
       className="ProductCard"
     >
-      <div className="ProductCard__top">
+      <Link
+        className="ProductCard__top"
+        to={`/${productType()}/${product.id}`}
+      >
         <div className="ProductCard__imgContainer">
           <img
             src={`https://mate-academy.github.io/react_phone-catalog/${product.imageUrl}`}
@@ -45,7 +59,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         <p className="ProductCard__title">
           {name}
         </p>
-      </div>
+      </Link>
       <div className="ProductCard__bottom">
         <p className="ProductCard__price">
           <span className="ProductCard__withDiscount">{`$${price}`}</span>
@@ -54,32 +68,32 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           )}
         </p>
         <div className="ProductCard__line"> </div>
-        <div className="ProductCard__parameters">
-          <div className="ProductCard__parameter">
-            <span className="ProductCard__character">Screen</span>
-            <span className="ProductCard__value">
+        <div className="productParameters ProductCard__parameters">
+          <div className="productParameters__parameter">
+            <span className="productParameters__character">Screen</span>
+            <span className="productParameters__value">
               {screen.replace(/ inches/, '"')}
             </span>
           </div>
-          <div className="ProductCard__parameter">
-            <span className="ProductCard__character">Capacity</span>
-            <span className="ProductCard__value">
+          <div className="productParameters__parameter">
+            <span className="productParameters__character">Capacity</span>
+            <span className="productParameters__value">
               {getMemoryValue(capacity)}
             </span>
           </div>
-          <div className="ProductCard__parameter">
-            <span className="ProductCard__character">RAM</span>
-            <span className="ProductCard__value">
+          <div className="productParameters__parameter">
+            <span className="productParameters__character">RAM</span>
+            <span className="productParameters__value">
               {getMemoryValue(ram)}
             </span>
           </div>
         </div>
-        <div className="ProductCard__buttons">
+        <div className="addToCartButtons">
           <button
             type="button"
             className={classNames(
-              'ProductCard__buy',
-              { 'ProductCard__buy--added': isaddedToCard },
+              'addToCartButtons__buy',
+              { 'addToCartButtons__buy--added': isaddedToCard },
             )}
             onClick={() => setIsAddedToCard(state => !state)}
           >
@@ -88,9 +102,9 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           <button
             type="button"
             className={classNames(
-              'ProductCard__like',
+              'addToCartButtons__like',
               'button',
-              { 'ProductCard__like--selected': isSelected },
+              { 'addToCartButtons__like--selected': isSelected },
             )}
             onClick={() => setIsSelected(state => !state)}
           >

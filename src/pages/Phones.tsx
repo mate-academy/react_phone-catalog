@@ -1,24 +1,24 @@
 import { useState, useEffect } from 'react';
 import { Error } from '../components/Error/Error';
 import { Loader } from '../components/Loader';
+import { NoResults } from '../components/NoResults/NoResults';
 import { ProductsList } from '../components/ProductsList/ProductsList';
-import { UrlNavigation } from '../components/UrlNavigation/UrlNavigation';
+import { Breadcrumbs } from '../components/Breadcrumbs/Breadcrumbs';
 import { getProducts } from '../helpers/api';
 import { Product } from '../types/Product';
 
 export const Phones = () => {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [loadingError, setLoadingError] = useState(false);
   const [phones, setPhones] = useState<Product[]>([]);
   const noError = !loadingError && !isLoading;
 
-  async function loadProducts() {
-    setIsLoading(true);
+  async function getPhones() {
     try {
       setLoadingError(false);
       const response = await getProducts();
 
-      setPhones(response.filter(phone => phone.type === 'phone'));
+      setPhones(response.filter(product => product.type === 'phone'));
     } catch (e) {
       setLoadingError(true);
     }
@@ -29,7 +29,7 @@ export const Phones = () => {
   useEffect(() => {
     const abortController = new AbortController();
 
-    loadProducts();
+    getPhones();
 
     return () => {
       abortController.abort();
@@ -49,13 +49,21 @@ export const Phones = () => {
           <Loader />
         </div>
       )}
+
       {noError && (
         <>
-          <UrlNavigation />
-          <h1 className="page__sectionTitle page__title">Mobile phones</h1>
+          <Breadcrumbs />
+          <h1 className="page__sectionTitle page__title">Mobile Phones</h1>
           <p className="page__count">{`${phones.length} models`}</p>
-          <ProductsList phones={phones} />
         </>
+      )}
+
+      {noError && phones.length > 0 && (
+        <ProductsList products={phones} />
+      )}
+
+      {noError && phones.length === 0 && (
+        <NoResults />
       )}
     </>
   );
