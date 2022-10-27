@@ -1,22 +1,17 @@
 /* eslint-disable no-console */
-import classNames from 'classnames';
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Product } from '../../types/Product';
 import './ProductCard.scss';
-import '../../scss/blocks/addToCartButtons.scss';
 import '../../scss/blocks/productParameters.scss';
+import { BuyFavButton } from '../BuyFavButton/BuyFavButton';
 
 type Props = {
   product: Product;
 };
-
 export const ProductCard: React.FC<Props> = ({ product }) => {
   const {
     name, price, screen, capacity, ram, discount,
   } = product;
-  const [isSelected, setIsSelected] = useState(false);
-  const [isaddedToCard, setIsAddedToCard] = useState(false);
 
   const getMemoryValue = (value: string) => {
     if (!value) {
@@ -88,29 +83,9 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
             </span>
           </div>
         </div>
-        <div className="addToCartButtons">
-          <button
-            type="button"
-            className={classNames(
-              'addToCartButtons__buy',
-              { 'addToCartButtons__buy--added': isaddedToCard },
-            )}
-            onClick={() => setIsAddedToCard(state => !state)}
-          >
-            {`${!isaddedToCard ? 'Add' : 'Added'} to cart`}
-          </button>
-          <button
-            type="button"
-            className={classNames(
-              'addToCartButtons__like',
-              'button',
-              { 'addToCartButtons__like--selected': isSelected },
-            )}
-            onClick={() => setIsSelected(state => !state)}
-          >
-            &nbsp;
-          </button>
-        </div>
+        <BuyFavButton
+          product={product}
+        />
       </div>
     </div>
   );

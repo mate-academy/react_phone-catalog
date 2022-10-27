@@ -11,7 +11,7 @@ import { Phones } from './pages/Phones';
 import { Tablets } from './pages/Tablets';
 import { Accessories } from './pages/Accessories';
 import { Favorites } from './pages/Favorites';
-import { Cart } from './pages/Cart';
+import { Cart } from './pages/Cart/Cart';
 import { NotFoundPage } from './pages/NotFoundPage';
 import App from './App';
 import {

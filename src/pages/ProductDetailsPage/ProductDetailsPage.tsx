@@ -16,6 +16,7 @@ import { getProducts } from '../../helpers/api';
 import { Product } from '../../types/Product';
 import '../../scss/blocks/addToCartButtons.scss';
 import { ProductsSlider } from '../../components/ProductsSlider/ProductsSlider';
+import { BuyFavButton } from '../../components/BuyFavButton/BuyFavButton';
 
 const availableColors = ['#fcdbc1', '#5f7170', '#4c4c4c', '#f0f0f0'];
 const capacity = ['64 GB', '256 GB', '512 GB'];
@@ -30,8 +31,6 @@ export const ProductDetailsPage = () => {
   const noError = !loadingError && !isLoading;
   const [selectedCapacity, setSelectedCapacity] = useState(capacity[0]);
   const [selectedColor, setSelectedColor] = useState(availableColors[0]);
-  const [isSelected, setIsSelected] = useState(false);
-  const [isaddedToCard, setIsAddedToCard] = useState(false);
   const [mainPhoto, setMainPhoto] = useState<string>();
   const [suggestedProducts, setSuggestedProducts] = useState<Product[]>([]);
 
@@ -200,30 +199,9 @@ export const ProductDetailsPage = () => {
                   )}
                 </div>
                 <div className="
-                  addToCartButtons
                   ProductDetailsPage__buyButtons"
                 >
-                  <button
-                    type="button"
-                    className={classNames(
-                      'addToCartButtons__buy',
-                      { 'addToCartButtons__buy--added': isaddedToCard },
-                    )}
-                    onClick={() => setIsAddedToCard(state => !state)}
-                  >
-                    {`${!isaddedToCard ? 'Add' : 'Added'} to cart`}
-                  </button>
-                  <button
-                    type="button"
-                    className={classNames(
-                      'addToCartButtons__like',
-                      'button',
-                      { 'addToCartButtons__like--selected': isSelected },
-                    )}
-                    onClick={() => setIsSelected(state => !state)}
-                  >
-                    &nbsp;
-                  </button>
+                  <BuyFavButton product={device} />
                 </div>
                 <div className="productParameters ProductDetailsPage__params">
                   <div className="productParameters__parameter">

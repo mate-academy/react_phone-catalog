@@ -12,7 +12,7 @@
     font-size: 14px;
     font-family: Mont, Arial, Helvetica, sans-serif;
     border: none;
-    transition: all 0.2s cubic-bezier(0.25,0.72,0.51,0.96);
+    transition: all 0.5s cubic-bezier(0.25,0.72,0.51,0.96);
 
     &--added {
       border: 1px solid $borderItem;
