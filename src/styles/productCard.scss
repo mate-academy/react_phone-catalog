@@ -1,0 +1,23 @@
+.productCard {
+  width: 272px;
+  border: 1px solid #e2e6e9;
+  box-sizing: border-box;
+
+  &__image {
+    height: 208px;
+    width: 208px;
+  }
+
+  &__price {
+    gap: 8px;
+    border-bottom: 1px solid #e2e6e9;
+  }
+
+  &__title {
+    height: 42px;
+  }
+
+  &__old-price {
+    text-decoration-line: line-through;
+  }
+}

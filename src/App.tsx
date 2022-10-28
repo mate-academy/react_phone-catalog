@@ -1,9 +1,24 @@
-import './App.scss';
+import { Navigate, Route, Routes } from 'react-router-dom';
+import { MainNav } from './components/MainNav';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import { HomePage } from './Pages/HomePage';
+import { PageNotFound } from './Pages/PageNotFound';
+import { ProductsProvider } from './ProductsContext';
+import { Footer } from './components/Footer';
 
-const App = () => (
-  <div className="App">
-    <h1>React Phone Catalog</h1>
-  </div>
-);
-
-export default App;
+export const App = () => {
+  return (
+    <ProductsProvider>
+      <div className="App">
+        <MainNav />
+        <Routes>
+          <Route path="*" element={<PageNotFound />} />
+          <Route path="home" element={<Navigate to="/" replace />} />
+          <Route path="/" element={<HomePage />} />
+        </Routes>
+        <Footer />
+      </div>
+    </ProductsProvider>
+  );
+};

@@ -1,0 +1,13 @@
+.category {
+  &__phones {
+    background-color: $color-beige;
+  }
+
+  &__tablets {
+    background-color: $color-grey;
+  }
+
+  &__accessories {
+    background-color: $color-pomegranate;
+  }
+}

@@ -1,0 +1,35 @@
+.baner {
+  --baner-height: 400px;
+  --buttom-width: 32px;
+  --container-margin: 10px;
+
+  height: var(--baner-height);
+
+  &__container {
+    width: calc(
+      100% - (calc(var(--buttom-width) * 2) + calc(var(--container-margin) * 2))
+    );
+    display: inline-block;
+    margin: 0 var(--container-margin);
+  }
+
+  &__button {
+    height: 100%;
+    width: var(--buttom-width);
+  }
+
+  &__image {
+    height: var(--baner-height);
+    background-size: cover;
+    background-position: center;
+    &--1 {
+      background-image: url(/img/baners/Banner1.png);
+    }
+    &--2 {
+      background-image: url(/img/baners/Banner2.png);
+    }
+    &--3 {
+      background-image: url(/img/baners/Banner3.png);
+    }
+  }
+}
