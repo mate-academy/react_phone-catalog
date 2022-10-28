@@ -1,21 +1,24 @@
 /* eslint-disable no-console */
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import classNames from 'classnames';
 import '../../scss/blocks/addToCartButtons.scss';
 import { Product } from '../../types/Product';
+import { CartContext } from '../CartContext/CartContext';
+import { CartItem } from '../../types/CartItem';
 
 type Props = {
-  product: Product | undefined;
+  product: Product;
 };
 export const BuyFavButton: React.FC<Props> = ({ product }) => {
   const [isAddedToCart, setIsAddedToCard] = useState(false);
-  const [isFavorite, setIsFavorite] = useState(false);
-  const [cartProducts, setCartProducts] = useState<string | null>(
-    localStorage.getItem('products'),
-  );
-  const [favProducts, setFavProducts] = useState<string | null>(
-    localStorage.getItem('favorites'),
-  );
+  // const [isFavorite, setIsFavorite] = useState(false);
+  const { cartProducts, addToCart } = useContext(CartContext);
+  // const [cartProducts, setCartProducts] = useState<string | null>(
+  //   localStorage.getItem('products'),
+  // );
+  // const [favProducts, setFavProducts] = useState<string | null>(
+  //   localStorage.getItem('favorites'),
+  // );
 
   const addedToCard = () => {
     if (cartProducts === null) {
@@ -24,79 +27,79 @@ export const BuyFavButton: React.FC<Props> = ({ product }) => {
       return;
     }
 
-    const isAdded = JSON.parse(cartProducts)
-      .some((prod: Product) => prod.id === product?.id);
+    const isAdded = cartProducts
+      .some((prod: CartItem) => prod.id === product?.id);
 
     setIsAddedToCard(isAdded);
   };
 
-  const addedToFavorite = () => {
-    if (favProducts === null) {
-      setIsFavorite(false);
+  // const addedToFavorite = () => {
+  //   if (favProducts === null) {
+  //     setIsFavorite(false);
 
-      return;
-    }
+  //     return;
+  //   }
 
-    const isAdded = JSON.parse(favProducts)
-      .some((prod: Product) => prod.id === product?.id);
+  //   const isAdded = JSON.parse(favProducts)
+  //     .some((prod: Product) => prod.id === product?.id);
 
-    setIsFavorite(isAdded);
-  };
+  //   setIsFavorite(isAdded);
+  // };
 
   useEffect(() => {
     addedToCard();
-    addedToFavorite();
-  }, [cartProducts, favProducts]);
+    // addedToFavorite();
+  }, [cartProducts]);
 
-  const handleAdd = (category: string) => {
-    let newProduct;
-    const setProducts = (category === 'products')
-      ? setCartProducts
-      : setFavProducts;
+  // const handleAdd = (category: string) => {
+  //   let newProduct;
+  //   const setProducts = (category === 'products')
+  //     ? setCartProducts
+  //     : setFavProducts;
 
-    if (category === 'products') {
-      newProduct = {
-        id: product?.id,
-        quantity: 1,
-        product,
-      };
-    } else {
-      newProduct = product;
-    }
+  //   if (category === 'products') {
+  //     newProduct = {
+  //       id: product?.id,
+  //       quantity: 1,
+  //       product,
+  //     };
+  //   } else {
+  //     newProduct = product;
+  //   }
 
-    const addedProducts = localStorage.getItem(category);
+  //   const addedProducts = localStorage.getItem(category);
 
-    if (addedProducts === null || JSON.parse(addedProducts).length === 0) {
-      localStorage.setItem(category, JSON.stringify([newProduct]));
-      setProducts(JSON.stringify([newProduct]));
+  //   if (addedProducts === null || JSON.parse(addedProducts).length === 0) {
+  //     localStorage.setItem(category, JSON.stringify([newProduct]));
+  //     setProducts(JSON.stringify([newProduct]));
 
-      return;
-    }
+  //     return;
+  //   }
 
-    let newProducts = JSON.parse(addedProducts);
+  //   let newProducts = JSON.parse(addedProducts);
 
-    const isProductAdded = newProducts
-      .some((prod: Product) => prod.id === product?.id);
+  //   const isProductAdded = newProducts
+  //     .some((prod: Product) => prod.id === product?.id);
 
-    if (isProductAdded) {
-      newProducts = newProducts
-        .filter((prod: Product) => prod.id !== product?.id);
-    } else {
-      newProducts = [...newProducts, newProduct];
-    }
+  //   if (isProductAdded) {
+  //     newProducts = newProducts
+  //       .filter((prod: Product) => prod.id !== product?.id);
+  //   } else {
+  //     newProducts = [...newProducts, newProduct];
+  //   }
 
-    if (newProducts.length === 0) {
-      localStorage.removeItem(category);
-      setProducts(null);
+  //   if (newProducts.length === 0) {
+  //     localStorage.removeItem(category);
+  //     setProducts(null);
 
-      return;
-    }
+  //     return;
+  //   }
 
-    localStorage.setItem(category,
-      JSON.stringify(newProducts));
+  //   localStorage.setItem(category,
+  //     JSON.stringify(newProducts));
 
-    setProducts(JSON.stringify(newProducts));
-  };
+  //   setProducts(JSON.stringify(newProducts));
+  // };
 
   return (
     <div className="addToCartButtons">
@@ -106,7 +109,7 @@ export const BuyFavButton: React.FC<Props> = ({ product }) => {
           'addToCartButtons__buy',
           { 'addToCartButtons__buy--added': isAddedToCart },
         )}
-        onClick={() => handleAdd('products')}
+        onClick={() => addToCart(product)}
       >
         {`${!isAddedToCart ? 'Add' : 'Added'} to cart`}
       </button>
@@ -116,9 +119,9 @@ export const BuyFavButton: React.FC<Props> = ({ product }) => {
         className={classNames(
           'addToCartButtons__like',
           'button',
-          { 'addToCartButtons__like--selected': isFavorite },
+          // { 'addToCartButtons__like--selected': isFavorite },
         )}
-        onClick={() => handleAdd('favorites')}
+        // onClick={() => handleAdd('favorites')}
       >
         &nbsp;
       </button>

@@ -88,6 +88,17 @@
       background-image: url("../../img/icons/Shopping\ bag\ \(Cart\).svg");
     }
 
+    // &--cartItems {
+    //   position: absolute;
+    //   top: 18px;
+    //   right: 18px;
+    //   width: 13px;
+    //   height: 13px;
+    //   background-color: #eb5757;
+    //   border-radius: 50%;
+    //   border: 1px solid #fff;
+    // }
+
     &--active {
       &::after {
         @include is-active;
@@ -100,5 +111,22 @@
         @include is-active;
       }
     }
+  }
+
+  &__countItems {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    width: 14px;
+    height: 14px;
+    background-color: #eb5757;
+    border-radius: 50%;
+    border: 1px solid #fff;
+    font-size: 9px;
+    font-style: normal;
+    color: #fff;
   }
 }

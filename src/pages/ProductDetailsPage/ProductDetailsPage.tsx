@@ -43,12 +43,18 @@ export const ProductDetailsPage = () => {
       const responseProducts = await getProducts();
       const responseProduct = await getProduct(productId);
 
-      const findDevice = responseProducts
-        .find(product => product.id === productId);
+      // const findDevice = responseProducts
+      //   .find(product => product.id === productId);
+
+      responseProducts.forEach(prod => {
+        if (prod.id === productId) {
+          setDevice(prod);
+        }
+      });
 
       setSuggestedProducts(responseProducts);
       setDetailProduct(responseProduct);
-      setDevice(findDevice);
+      // setDevice(findDevice);
       setMainPhoto(responseProduct?.images[0]);
     } catch (e) {
       setLoadingError(true);
@@ -201,7 +207,9 @@ export const ProductDetailsPage = () => {
                 <div className="
                   ProductDetailsPage__buyButtons"
                 >
-                  <BuyFavButton product={device} />
+                  {device && (
+                    <BuyFavButton product={device} />
+                  )}
                 </div>
                 <div className="productParameters ProductDetailsPage__params">
                   <div className="productParameters__parameter">

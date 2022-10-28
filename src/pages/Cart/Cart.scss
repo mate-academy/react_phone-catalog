@@ -114,4 +114,13 @@
     width: 100%;
     height: 48px;
   }
+
+  &__notification {
+    background-color: $primaryColor;
+    color: #fff;
+    width: 50%;
+    padding: 10px;
+    font-size: 20px;
+    border-radius: 10px;
+  }
 }
