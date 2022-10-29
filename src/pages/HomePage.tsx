@@ -79,13 +79,6 @@ export const HomePage = () => {
               title="Hot prices"
             />
           </section>
-          <section className="page__section ProductsSlider">
-            <ProductsSlider
-              products={products}
-              filter="hotPrice"
-              title="Hot prices"
-            />
-          </section>
           <section
             className="page__shopByCategory ShopByCategory"
             data-cy="categoryLinksContainer"
