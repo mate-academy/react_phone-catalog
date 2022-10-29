@@ -1,6 +1,3 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable no-console */
 import './Carousel.scss';
 import React, {
   useState,
@@ -226,6 +223,8 @@ export const Carousel: React.FC<Props> = ({
             onMouseMove={(e) => {
               handleMouseMove(e);
             }}
+            role="button"
+            tabIndex={0}
           >
             <div
               className="Carousel__content"

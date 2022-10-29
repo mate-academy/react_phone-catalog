@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { useState, useMemo } from 'react';
 import { Product } from '../../types/Product';
 import { ProductCard } from '../ProductCard/ProductCard';

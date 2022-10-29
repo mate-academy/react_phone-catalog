@@ -28,15 +28,15 @@
     }
   }
 
-  &--minus {
-    background-image: url("../../img/icons/Minus.svg");
+  // &--minus {
+  //   background-image: url("../../img/icons/Minus.svg");
 
-    &:disabled {
-      background-image: url("../../img/icons/Minus-disabled.svg");
-    }
-  }
+  //   &:disabled {
+  //     background-image: url("../../img/icons/Minus-disabled.svg");
+  //   }
+  // }
 
-  &--plus {
-    background-image: url("../../img/icons/Plus.svg");
-  }
+  // &--plus {
+  //   background-image: url("../../img/icons/Plus.svg");
+  // }
 }

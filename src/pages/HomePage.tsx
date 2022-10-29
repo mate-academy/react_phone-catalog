@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { useState, useEffect } from 'react';
 import { Carousel } from '../components/Carousel/Carousel';
 import { images } from '../components/Carousel/images';

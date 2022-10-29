@@ -2,6 +2,11 @@
 @import "../../scss/blocks/arrowsButton.scss";
 
 .ProductsList {
+  &__countResult {
+    color: $secondColor;
+    margin: 24px 0;
+  }
+
   &__filterSelects {
     display: flex;
     gap: 16px;

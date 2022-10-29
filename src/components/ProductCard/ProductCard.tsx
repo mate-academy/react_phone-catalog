@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { Link } from 'react-router-dom';
 import { Product } from '../../types/Product';
 import './ProductCard.scss';

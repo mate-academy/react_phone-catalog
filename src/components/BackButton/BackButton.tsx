@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
 import { useNavigate } from 'react-router-dom';
 import './BackButton.scss';
 
@@ -12,6 +10,9 @@ export const BackButton = () => {
         className="BackButton"
         data-cy="backButton"
         onClick={() => history(-1)}
+        role="button"
+        tabIndex={0}
+        aria-hidden="true"
       >
         <i className="icon icon--arrowLeftBlack" />
         <p className="BackButton__text">

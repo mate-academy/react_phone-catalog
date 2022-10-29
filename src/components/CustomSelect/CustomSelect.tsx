@@ -1,7 +1,3 @@
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable no-console */
 import classNames from 'classnames';
 import {
   useState,
@@ -61,6 +57,9 @@ export const CustomSelect: React.FC<Props> = (props) => {
       )}
       onClick={handleListDisplay}
       style={{ width }}
+      role="button"
+      tabIndex={0}
+      aria-hidden="true"
     >
       <div>
         {defaultText}
@@ -76,6 +75,7 @@ export const CustomSelect: React.FC<Props> = (props) => {
                 className="CustomSelect__option"
                 key={option}
                 onClick={() => handleOptionClick(option)}
+                aria-hidden="true"
               >
                 {option}
               </li>

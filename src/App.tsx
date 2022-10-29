@@ -5,22 +5,25 @@ import { Outlet } from 'react-router-dom';
 import { Header } from './components/Header/Header';
 import { Footer } from './components/Footer/Footer';
 import { CartProvider } from './components/CartContext/CartContext';
+import { FavProvider } from './components/FavContext/FavContext';
 
 const App = () => {
   return (
-    <CartProvider>
-      <div className="App">
-        <Header />
+    <FavProvider>
+      <CartProvider>
+        <div className="App">
+          <Header />
 
-        <main className="page">
-          <div className="container">
-            <Outlet />
-          </div>
-        </main>
+          <main className="page">
+            <div className="container">
+              <Outlet />
+            </div>
+          </main>
 
-        <Footer />
-      </div>
-    </CartProvider>
+          <Footer />
+        </div>
+      </CartProvider>
+    </FavProvider>
   );
 };
 

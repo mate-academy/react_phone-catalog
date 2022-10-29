@@ -1,29 +1,13 @@
-/* eslint-disable no-console */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-import { createRef, useState } from 'react';
-import classNames from 'classnames';
 import './Header.scss';
 import '../../scss/blocks/nav.scss';
 import { Link, useLocation } from 'react-router-dom';
 import { PageNavLink } from '../PageNavLink';
 import logo from '../../img/LOGO.svg';
+import { Search } from '../Search/Search';
 
 export const Header = () => {
-  const inputRef = createRef<HTMLInputElement>();
-  const [inputValue, setInputValue] = useState<string>('');
   const location = useLocation();
   const currentPath = location.pathname;
-
-  const handleClick = () => {
-    if (!inputValue) {
-      inputRef.current?.focus();
-
-      return;
-    }
-
-    setInputValue('');
-  };
 
   return (
     <header className="header" id="header">
@@ -48,26 +32,12 @@ export const Header = () => {
           </li>
         </ul>
       </nav>
-      {currentPath === '/phones' && (
-        <div className="header__search">
-          <input
-            ref={inputRef}
-            type="text"
-            className="header__input"
-            placeholder="Search in phones..."
-            value={inputValue}
-            onChange={(e) => setInputValue(e.target.value)}
-          />
-          <i
-            className={classNames(
-              'icon',
-              'header__icon',
-              { 'header__icon--search': !inputValue },
-              { 'header__icon--delete': inputValue },
-            )}
-            onClick={handleClick}
-          />
-        </div>
+      {(currentPath === '/phones'
+          || currentPath === '/tablets'
+          || currentPath === '/accessories'
+          || currentPath === '/favorites'
+      ) && (
+        <Search />
       )}
       <div className="header__buttons">
         <PageNavLink to="favorites" text="" button icon="heart" />

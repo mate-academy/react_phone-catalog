@@ -30,6 +30,7 @@
     display: flex;
     gap: 24px;
     align-items: center;
+    width: 512px;
   }
 
   &__close {
@@ -73,10 +74,15 @@
   &__priceAndQuantity {
     display: flex;
     gap: 43px;
+    width: 240px;
   }
 
   &__quantity {
     display: flex;
+  }
+
+  &__changeCount {
+    font-size: 20px;
   }
 
   &__price {

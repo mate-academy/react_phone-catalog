@@ -1,12 +1,13 @@
-/* eslint-disable no-console */
 import './ProductsList.scss';
 import { useMemo, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useLocation, useSearchParams } from 'react-router-dom';
 import { CustomSelect } from '../CustomSelect/CustomSelect';
 import { Product } from '../../types/Product';
 import { ProductCard } from '../ProductCard/ProductCard';
 import { SortBy, ItemsPage } from '../../types/Sort';
 import { Pagination } from '../Pagination/Pagination';
+import { updateSearch } from '../../helpers/updateSearch';
+import { NoSearchResults } from '../NoSearchResults/NoSearchResults';
 
 const { New, Name, Price } = SortBy;
 const sortBy = [New, Name, Price];
@@ -25,10 +26,13 @@ type Props = {
 
 export const ProductsList: React.FC<Props> = ({ products }) => {
   const [searchParams, setSearchParams] = useSearchParams();
+  const location = useLocation();
+  const path = location.pathname;
 
   const sort = searchParams.get('sort');
   const perPage = searchParams.get('perPage');
   const page = searchParams.get('page');
+  const query = searchParams.get('query');
 
   const [currentPage, changeCurrentPage] = useState(page ? +page : 1);
   const [itemsPerPage, addItemsPerPage] = useState(perPage || +Sixteen);
@@ -36,6 +40,17 @@ export const ProductsList: React.FC<Props> = ({ products }) => {
 
   const visiblePhones = useMemo(() => {
     let sortedPhones = [...products];
+
+    if (query) {
+      sortedPhones = sortedPhones
+        .filter(device => {
+          return (
+            device.name.toLowerCase().includes(query.trim().toLowerCase())
+          );
+        });
+
+      return sortedPhones;
+    }
 
     switch (sort) {
       case Price:
@@ -63,40 +78,36 @@ export const ProductsList: React.FC<Props> = ({ products }) => {
     }
 
     return sortedPhones;
-  }, [products, sort, perPage, currentPage]);
-
-  function updateSearch(params: { [key: string]: string | null }) {
-    Object.entries(params).forEach(([key, value]) => {
-      if (value === null) {
-        searchParams.delete(key);
-      } else {
-        searchParams.set(key, value);
-      }
-    });
-
-    setSearchParams(searchParams);
-  }
+  }, [products, sort, perPage, currentPage, query]);
 
   const handlePageParams = (number: number | null) => {
     if (number === null) {
-      updateSearch({ page: number });
+      setSearchParams(
+        updateSearch(searchParams, { page: number }),
+      );
       changeCurrentPage(1);
     }
 
     if (number !== currentPage && number !== null) {
-      updateSearch({ page: number.toString() });
+      setSearchParams(
+        updateSearch(searchParams, { page: number.toString() }),
+      );
       changeCurrentPage(number);
     }
   };
 
   const handleSortParams = (value: string) => {
     handlePageParams(null);
-    updateSearch({ sort: value });
+    setSearchParams(
+      updateSearch(searchParams, { sort: value }),
+    );
   };
 
   const handlePerPageParams = (value: string) => {
     handlePageParams(null);
-    updateSearch({ perPage: value });
+    setSearchParams(
+      updateSearch(searchParams, { perPage: value }),
+    );
 
     if (value !== All) {
       addItemsPerPage(+value);
@@ -110,33 +121,46 @@ export const ProductsList: React.FC<Props> = ({ products }) => {
       className="Phones__productsList ProductsList"
       data-cy="productList"
     >
-      <div className="ProductsList__filterSelects">
-        <div className="ProductsList__filterSelect">
-          <span className="ProductsList__filterName">Sort by</span>
-          <CustomSelect
-            optionsList={sortBy}
-            default={sort || New}
-            size="176px"
-            filterBy={handleSortParams}
-          />
+      {query && visiblePhones.length > 0 && (
+        <div className="ProductsList__countResult">
+          {`${visiblePhones.length} results`}
         </div>
-        <div className="ProductsList__filterSelect">
-          <span className="ProductsList__filterName">Items on page</span>
-          <CustomSelect
-            optionsList={itemsOnPage}
-            default={perPage || Sixteen}
-            size="128px"
-            filterBy={handlePerPageParams}
-          />
+      )}
+
+      {query && visiblePhones.length === 0 && (
+        <NoSearchResults />
+      )}
+
+      {!path.includes('favorites') && !query && (
+        <div className="ProductsList__filterSelects">
+          <div className="ProductsList__filterSelect">
+            <span className="ProductsList__filterName">Sort by</span>
+            <CustomSelect
+              optionsList={sortBy}
+              default={sort || New}
+              size="176px"
+              filterBy={handleSortParams}
+            />
+          </div>
+          <div className="ProductsList__filterSelect">
+            <span className="ProductsList__filterName">Items on page</span>
+            <CustomSelect
+              optionsList={itemsOnPage}
+              default={perPage || Sixteen}
+              size="128px"
+              filterBy={handlePerPageParams}
+            />
+          </div>
         </div>
-      </div>
+      )}
+
       <div className="ProductsList__content">
         {visiblePhones.map(phone => (
           <ProductCard product={phone} key={phone.id} />
         ))}
       </div>
       <div className="ProductsList__pagination">
-        {visiblePhones.length < products.length && (
+        {visiblePhones.length < products.length && !query && (
           <Pagination
             currentPage={currentPage}
             countPages={countPages}

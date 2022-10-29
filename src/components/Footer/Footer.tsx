@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { Link, useLocation } from 'react-router-dom';
 import './Footer.scss';
 import '../../scss/blocks/nav.scss';
@@ -36,20 +35,11 @@ export const Footer = () => {
             </li>
             <li className="nav__page">
               <a
-                href="https://github.com/sanyokmalyshev"
+                href="https://t.me/sanyokmalyshev"
                 target="blank"
                 className="Footer__link nav__link"
               >
                 Contacts
-              </a>
-            </li>
-            <li className="nav__page">
-              <a
-                href="https://github.com/sanyokmalyshev"
-                target="blank"
-                className="Footer__link nav__link"
-              >
-                Rights
               </a>
             </li>
           </ul>

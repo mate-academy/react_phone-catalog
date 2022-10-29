@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { Error } from '../components/Error/Error';
 import { Loader } from '../components/Loader';
 import { NoResults } from '../components/NoResults/NoResults';
@@ -12,6 +13,8 @@ export const Tablets = () => {
   const [loadingError, setLoadingError] = useState(false);
   const [tablets, setTablets] = useState<Product[]>([]);
   const noError = !loadingError && !isLoading;
+  const [searchParams] = useSearchParams();
+  const query = searchParams.get('query');
 
   async function getTablets() {
     try {
@@ -50,7 +53,7 @@ export const Tablets = () => {
         </div>
       )}
 
-      {noError && (
+      {noError && !query && (
         <>
           <Breadcrumbs />
           <h1 className="page__sectionTitle page__title">Tablets</h1>

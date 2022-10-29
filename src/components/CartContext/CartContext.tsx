@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import React, { useState, useMemo } from 'react';
 import { CartItem } from '../../types/CartItem';
 import { CartContextType } from '../../types/CartContextType';
@@ -16,7 +15,9 @@ export const CartContext = React.createContext<CartContextType>({
 });
 
 export const CartProvider: React.FC = ({ children }) => {
-  const [cartProducts, setCartProducts] = useState<CartItem[]>([]);
+  const [cartProducts, setCartProducts] = useState<CartItem[]>(
+    JSON.parse(localStorage.getItem('products') || '[]'),
+  );
   const [noItems, setNoItems] = useState(false);
   const newCartProducts: CartItem[] = [];
 

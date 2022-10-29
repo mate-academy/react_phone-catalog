@@ -1,0 +1,51 @@
+@import "../../scss/variables";
+
+.Search {
+  display: flex;
+  flex: 0 0 327px;
+  height: 64px;
+  box-shadow: -1px 0 0 #e2e6e9;
+  position: relative;
+
+  &__input {
+    width: 100%;
+    height: 100%;
+    outline: none;
+    padding: 23px 50px 23px 24px;
+    font-family: Mont, Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 18px;
+    color: $primaryColor;
+    border: 1px solid transparent;
+
+    &::placeholder {
+      color: $buttonBorderColor;
+    }
+
+    &:focus {
+      background-color: #fafbfc;
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 26px;
+    transition: transform 0.2s cubic-bezier(0.25,0.72,0.51,0.96);
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(1.2) translateY(-50%);
+    }
+
+    &--search {
+      background-image: url("../../img/icons/Search.svg");
+    }
+
+    &--delete {
+      background-image: url("../../img/icons/Close.svg");
+    }
+  }
+}

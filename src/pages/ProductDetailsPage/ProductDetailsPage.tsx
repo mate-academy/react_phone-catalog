@@ -1,6 +1,3 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable no-console */
 import { useState, useEffect, useMemo } from 'react';
 import classNames from 'classnames';
 import { useLocation } from 'react-router-dom';
@@ -43,9 +40,6 @@ export const ProductDetailsPage = () => {
       const responseProducts = await getProducts();
       const responseProduct = await getProduct(productId);
 
-      // const findDevice = responseProducts
-      //   .find(product => product.id === productId);
-
       responseProducts.forEach(prod => {
         if (prod.id === productId) {
           setDevice(prod);
@@ -54,7 +48,6 @@ export const ProductDetailsPage = () => {
 
       setSuggestedProducts(responseProducts);
       setDetailProduct(responseProduct);
-      // setDevice(findDevice);
       setMainPhoto(responseProduct?.images[0]);
     } catch (e) {
       setLoadingError(true);
@@ -120,6 +113,9 @@ export const ProductDetailsPage = () => {
                     )}
                     key={image}
                     onClick={() => setMainPhoto(image)}
+                    role="button"
+                    tabIndex={0}
+                    aria-hidden="true"
                   >
                     <img
                       src={`https://mate-academy.github.io/react_phone-catalog/${image}`}
@@ -161,6 +157,9 @@ export const ProductDetailsPage = () => {
                         )}
                         key={color}
                         onClick={() => setSelectedColor(color)}
+                        role="button"
+                        tabIndex={0}
+                        aria-hidden="true"
                       >
                         <div
                           className="ProductDetailsPage__color"
