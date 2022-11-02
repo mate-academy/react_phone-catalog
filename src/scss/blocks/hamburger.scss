@@ -7,6 +7,7 @@
   width: 32px;
   height: 26px;
   align-items: center;
+  cursor: pointer;
 
   @include onLaptop() {
     display: flex;
@@ -46,18 +47,6 @@
     z-index: 5;
     opacity: 0;
     cursor: pointer;
-
-    // &:checked ~ .hamburger__lines .hamburger__line1 {
-    //   transform: rotate(45deg);
-    // }
-
-    // &:checked ~ .hamburger__lines .hamburger__line2 {
-    //   transform: scaleY(0);
-    // }
-
-    // &:checked ~ .hamburger__lines .hamburger__line3 {
-    //   transform: rotate(-45deg);
-    // }
   }
 
   &__lines {
