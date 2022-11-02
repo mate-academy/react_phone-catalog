@@ -1,0 +1,81 @@
+@import "../variables";
+@import "../mixins";
+
+.hamburger {
+  display: none;
+  position: relative;
+  width: 32px;
+  height: 26px;
+  align-items: center;
+
+  @include onLaptop() {
+    display: flex;
+  }
+
+  &__line1 {
+    transform-origin: 0% 0%;
+    transition: transform 0.4s ease-in-out;
+
+    &--active {
+      transform: rotate(45deg);
+    }
+  }
+
+  &__line2 {
+    transition: transform 0.2s ease-in-out;
+
+    &--active {
+      transform: scaleY(0);
+    }
+  }
+
+  &__line3 {
+    transform-origin: 0% 100%;
+    transition: transform 0.4s ease-in-out;
+
+    &--active {
+      transform: rotate(-45deg);
+    }
+  }
+
+  &__checkbox {
+    position: absolute;
+    display: block;
+    height: 32px;
+    width: 32px;
+    z-index: 5;
+    opacity: 0;
+    cursor: pointer;
+
+    // &:checked ~ .hamburger__lines .hamburger__line1 {
+    //   transform: rotate(45deg);
+    // }
+
+    // &:checked ~ .hamburger__lines .hamburger__line2 {
+    //   transform: scaleY(0);
+    // }
+
+    // &:checked ~ .hamburger__lines .hamburger__line3 {
+    //   transform: rotate(-45deg);
+    // }
+  }
+
+  &__lines {
+    height: 26px;
+    width: 32px;
+    position: absolute;
+    top: 0;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__line {
+    display: block;
+    height: 4px;
+    width: 100%;
+    border-radius: 10px;
+    background: #0e2431;
+  }
+}

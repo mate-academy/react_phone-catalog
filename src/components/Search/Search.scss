@@ -1,11 +1,15 @@
 @import "../../scss/variables";
+@import "../../scss/mixins";
 
 .Search {
-  display: flex;
-  flex: 0 0 327px;
+  flex-basis: 327px;
   height: 64px;
   box-shadow: -1px 0 0 #e2e6e9;
   position: relative;
+
+  @include onLaptop() {
+    flex-basis: 100%;
+  }
 
   &__input {
     width: 100%;

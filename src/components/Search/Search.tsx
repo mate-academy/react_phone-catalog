@@ -28,7 +28,7 @@ export const Search = () => {
   };
 
   return (
-    <div className="Search">
+    <div className="header__search Search">
       <input
         ref={inputRef}
         type="text"

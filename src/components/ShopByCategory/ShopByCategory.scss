@@ -1,7 +1,9 @@
 @import "../../scss/variables";
+@import "../../scss/mixins";
 
 .ShopByCategory {
   margin-bottom: 80px;
+  max-width: 100%;
 
   &__title {
     margin-bottom: 24px;
@@ -10,6 +12,8 @@
   &__cards {
     display: flex;
     gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
   &__imgContainer {

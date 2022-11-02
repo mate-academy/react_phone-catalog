@@ -1,4 +1,5 @@
 @import "../../scss/variables";
+@import "../../scss/mixins";
 
 .Footer {
   width: 100%;
@@ -13,12 +14,26 @@
   }
 
   &__nav {
+    display: flex;
     justify-content: center;
+    align-items: center;
+  }
+
+  &__pages {
+    list-style: none;
+    display: flex;
+    gap: 64px;
   }
 
   &__link {
     line-height: 96px;
     padding: 42px 0;
+    position: relative;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 12px;
+    color: $secondColor;
   }
 
   &__backToTop {

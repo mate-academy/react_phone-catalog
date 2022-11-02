@@ -15,3 +15,21 @@
   justify-content: space-between;
   align-items: center;
 }
+
+@mixin onMobile {
+  @media (max-width: 480px) {
+    @content;
+  }
+}
+
+@mixin onLaptop {
+  @media (max-width: 840px) {
+    @content;
+  }
+}
+
+@mixin onMobile {
+  @media (max-width: 640px) {
+    @content;
+  }
+}

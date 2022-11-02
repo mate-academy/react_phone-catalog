@@ -100,7 +100,9 @@ export const ProductDetailsPage = () => {
             <section className="ProductDetailsPage__content page__section grid">
               <div className="
                 ProductDetailsPage__smallPhotos
-                grid__item--1-2"
+                grid__item--1-2
+                grid__item--laptop--1-1
+                grid__item--mobile--1-6"
               >
                 {detailProduct?.images.map(image => (
                   <div
@@ -127,7 +129,10 @@ export const ProductDetailsPage = () => {
               </div>
               <div className="
                 ProductDetailsPage__mainPhoto
-                grid__item--3-12"
+                grid__item--3-12
+                grid__item--laptop--2-7
+                grid__item--mobile--1-6
+              "
               >
                 <div className="ProductDetailsPage__mainPhotoContainer">
                   <img
@@ -139,7 +144,9 @@ export const ProductDetailsPage = () => {
               </div>
               <div className="
                 ProductDetailsPage__parameters
-                grid__item--14-20"
+                grid__item--14-20
+                grid__item--laptop--8-12
+                grid__item--mobile--1-6"
               >
                 <div className="ProductDetailsPage__colors">
                   <p className="ProductDetailsPage__blockName">
@@ -240,7 +247,10 @@ export const ProductDetailsPage = () => {
             >
               <div className="
                 ProductDetailsPage__aboutText
-                grid__item--1-12"
+                grid__item--1-12
+                grid__item--laptop--1-6
+                grid__item--mobile--1-6
+              "
               >
                 <h2 className="ProductDetailsPage__aboutTitle">
                   About
@@ -255,7 +265,10 @@ export const ProductDetailsPage = () => {
               </div>
               <div className="
                 ProductDetailsPage__techSpecs
-                grid__item--14-24"
+                grid__item--14-24
+                grid__item--laptop--7-12
+                grid__item--mobile--1-6
+              "
               >
                 <h2 className="ProductDetailsPage__aboutTitle">
                   Tech Specs

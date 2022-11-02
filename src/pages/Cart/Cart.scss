@@ -1,9 +1,16 @@
 @import "../../scss//variables";
+@import "../../scss//mixins";
 
 .Cart {
+
   &__backBtn {
     margin-top: 40px;
     margin-bottom: 16px;
+  }
+
+  &__content {
+    row-gap: 16px;
+    justify-content: center;
   }
 
   &__title {
@@ -24,6 +31,12 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    @include onMobile {
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+    }
   }
 
   &__description {
@@ -42,7 +55,7 @@
   }
 
   &__photoContainer {
-    width: 80px;
+    min-width: 80px;
     height: 80px;
     padding: 7px;
   }
@@ -73,7 +86,8 @@
 
   &__priceAndQuantity {
     display: flex;
-    gap: 43px;
+    justify-content: space-between;
+    gap: 16px;
     width: 240px;
   }
 

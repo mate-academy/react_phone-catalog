@@ -3,19 +3,20 @@
 
 .Carousel {
   margin-top: 40px;
-  
+
   &__container {
-    width: 1136px;
+    max-width: 1136px;
     height: 400px;
   }
 
   &__inner {
-    @include flex-center-between;
+    display: flex;
+    gap: 16px;
   }
 
   &__wrapper {
     display: flex;
-    width: 1040px;
+    max-width: 1040px;
     height: 400px;
     position: relative;
     justify-content: space-between;
@@ -40,9 +41,8 @@
   }
 
   &__button {
-    width: 32px;
+    min-width: 32px;
     height: 400px;
-    z-index: 1;
     border: 1px solid $buttonBorderColor;
 
     &--left {

@@ -1,4 +1,5 @@
 @import "../../scss/variables";
+@import "../../scss/mixins";
 
 .ProductDetailsPage {
   &__title {
@@ -9,6 +10,12 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
+
+    @include onMobile {
+      flex-direction: row;
+      gap: 25px;
+      justify-content: center;
+    }
   }
 
   &__smallPhotoContainer {
@@ -16,6 +23,7 @@
     height: 80px;
     border: 1px solid $borderItem;
     padding: 7px;
+    z-index: 1;
 
     &:hover {
       border-color: $primaryColor;
@@ -37,9 +45,13 @@
   }
 
   &__mainPhotoContainer {
-    width: 464px;
-    height: 464px;
+    max-width: 464px;
+    max-height: 464px;
     padding: 11px;
+
+    @include onMobile {
+      margin: 0 auto;
+    }
   }
 
   &__mainImg {

@@ -1,4 +1,6 @@
 .container {
+  box-sizing: content-box;
   max-width: 1136px;
+  padding: 0 20px;
   margin: 0 auto;
 }

@@ -22,13 +22,13 @@ export const Footer = () => {
             <img src={logo} alt="Logo" />
           </Link>
         </div>
-        <nav className="Footer__nav nav">
-          <ul className="nav__pages">
-            <li className="nav__page">
+        <nav className="Footer__nav">
+          <ul className="Footer__pages">
+            <li className="Footer__page">
               <a
                 href="https://github.com/sanyokmalyshev"
                 target="blank"
-                className="Footer__link nav__link"
+                className="Footer__link"
               >
                 Github
               </a>
@@ -37,7 +37,7 @@ export const Footer = () => {
               <a
                 href="https://t.me/sanyokmalyshev"
                 target="blank"
-                className="Footer__link nav__link"
+                className="Footer__link"
               >
                 Contacts
               </a>

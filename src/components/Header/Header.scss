@@ -10,12 +10,37 @@
   box-shadow: 0 1px 5px #e2e6e9;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   font-family: Mont, Arial, Helvetica, sans-serif;
   padding-left: 24px;
   flex: 0 0 auto;
+  position: relative;
+
+  &__left,
+  &__right {
+    display: flex;
+    align-items: center;
+  }
+
+  &__right {
+    flex-basis: 476px;
+    justify-content: right;
+
+    @include onLaptop() {
+      flex-basis: 100%;
+    }
+  }
+
+  &__hamburger {
+    margin-right: 24px;
+  }
 
   &__logo {
     margin-right: 64px;
+
+    @include onLaptop() {
+      margin: 0;
+    }
   }
 
   &__buttons {
@@ -37,17 +62,6 @@
     &--cart {
       background-image: url("../../img/icons/Shopping\ bag\ \(Cart\).svg");
     }
-
-    // &--cartItems {
-    //   position: absolute;
-    //   top: 18px;
-    //   right: 18px;
-    //   width: 13px;
-    //   height: 13px;
-    //   background-color: #eb5757;
-    //   border-radius: 50%;
-    //   border: 1px solid #fff;
-    // }
 
     &--active {
       &::after {
@@ -78,5 +92,9 @@
     font-size: 9px;
     font-style: normal;
     color: #fff;
+  }
+
+  &__search {
+    margin-left: 20px;
   }
 }

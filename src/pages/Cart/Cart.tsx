@@ -40,7 +40,13 @@ export const Cart = () => {
         <>
           <h1 className="page__sectionTitle Cart__title">Cart</h1>
           <div className="Cart__content grid">
-            <div className="Cart__items grid__item--1-16">
+            <div
+              className="
+                Cart__items
+                grid__item--1-16
+                grid__item--laptop--1-12
+              "
+            >
               {cartProducts.map(item => (
                 <div
                   className="Cart__item"
@@ -115,7 +121,13 @@ export const Cart = () => {
                 </div>
               ))}
             </div>
-            <div className="Cart__checkout grid__item--17-24">
+            <div
+              className="
+                Cart__checkout
+                grid__item--17-24
+                grid__item--laptop--1-12
+              "
+            >
               <p className="Cart__checkoutPrice">{totalPrice}</p>
               <p className="Cart__countItems">{`Total for ${cartProducts.length} items`}</p>
               <div className="Cart__line" />
