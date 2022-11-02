@@ -14,14 +14,10 @@ export const Header = () => {
   const [isActiveMobile, setIsActiveMobile] = useState(false);
 
   useEffect(() => {
-    // eslint-disable-next-line no-console
-    console.log(isActiveMobile);
     if (!isActiveMobile) {
       return;
     }
 
-    // eslint-disable-next-line no-console
-    console.log('here');
     const handleDocumentClick = () => {
       setIsActiveMobile(false);
     };
