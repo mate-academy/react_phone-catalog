@@ -1,0 +1,307 @@
+@import "../utils/mixins.scss";
+@import "../utils/vars.scss";
+
+.product {
+  &__subheader {
+    @include tablet {
+      grid-column: 1 / 6;
+    }
+
+    @include mobile {
+      grid-column: 1 / 7;
+    }
+  }
+
+  &__group {
+    color: $black;
+    font-weight: 600;
+  }
+
+  &__back {
+    background: $white;
+    color: $secondary;
+    border: none;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: $transition;
+    margin-bottom: 16px;
+
+    & > svg > path {
+      transition: $transition;
+    }
+
+    &:hover {
+      color: $black;
+    }
+
+    &:hover > svg > path {
+      fill: $black;
+    }
+
+    @include tablet {
+      grid-column: 1 / 2;
+    }
+
+    @include mobile {
+      grid-column: 1 / 2;
+    }
+  }
+
+  &__header {
+    margin-bottom: 40px;
+
+    @include tablet {
+      grid-column: 1 / 7;
+    }
+
+    @include mobile {
+      grid-column: 1 / 7;
+    }
+  }
+
+  &__img {
+    grid-row: 4 / 5;
+    width: 100%;
+    object-fit: contain;
+
+    @include tablet {
+      grid-column: 2 / 7;
+    }
+
+    @include mobile {
+      grid-column: 1 / 7;
+    }
+  }
+
+  &__img-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 80px;
+
+    @include tablet {
+      grid-column: 1 / 2;
+      grid-row: 4 / 5;
+      gap: 60px;
+    }
+
+    @include mobile {
+      grid-column: 1 / 7;
+      grid-row: 5 / 6;
+      gap: 10px;
+      flex-direction: row;
+    }
+
+    &:last-child {
+      @include mobile {
+        display: none;
+      }
+    }
+  }
+
+  &__photo-link {
+    border: 1px solid $elements;
+    height: 80px;
+    width: 80px;
+    padding: 7px;
+    cursor: pointer;
+    transition: $transition;
+    background: $white;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  &__small-img {
+    object-fit: contain;
+    width: 66px;
+    height: 66px;
+
+    @include mobile {
+      width: 50px;
+      height: 50px;
+    }
+  }
+
+  &__info {
+    grid-row: 4 / 5;
+
+    @include tablet {
+      grid-column: 1 / 7;
+      grid-row: auto;
+    }
+
+    @include mobile {
+      grid-column: 1 / 7;
+      grid-row: auto;
+    }
+  }
+
+  &__colors {
+    color: $secondary;
+    width: 70%;
+
+    @include tablet {
+      width: 100%;
+    }
+
+    @include mobile {
+      width: 100%;
+    }
+  }
+
+  &__color-buttons {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    margin-top: 8px;
+  }
+
+  &__color {
+    background: $white;
+    border: none;
+    cursor: pointer;
+
+    & > svg > rect:last-child {
+      transition: $transition;
+    }
+
+    &--active {
+      & > svg > rect:last-child {
+        stroke: $black;
+      }
+    }
+
+    &:hover > svg > rect:last-child {
+      stroke: $icons;
+    }
+  }
+
+  &__line {
+    height: 1px;
+    width: 100%;
+    background: $elements;
+    margin-bottom: 24px;
+    align-self: end;
+    border: none;
+  }
+
+  &__price {
+    align-self: start;
+    margin-bottom: 16px;
+  }
+
+  &__fullprice {
+    text-decoration: line-through;
+    color: $secondary;
+    margin-left: 8px;
+  }
+
+  &__capacity {
+    width: 70%;
+
+    @include tablet {
+      width: 100%;
+    }
+
+    @include mobile {
+      width: 100%;
+    }
+  }
+
+  &__button {
+    width: fit-content;
+    padding: 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: $white;
+    color: $black;
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 150%;
+    border: 1px solid #333;
+    transition: $transition;
+    box-shadow: inset 0 0 0 0 $black;
+    align-self: start;
+    cursor: pointer;
+
+    &--active {
+      color: $green;
+      border: 1px solid $green;
+    }
+
+    &:hover {
+      color: $white;
+      background: $black;
+      border: 1px solid $black;
+      box-shadow: inset 0 -100px 0 0 $black;
+    }
+  }
+
+  &__data {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+
+  &__data-name {
+    color: $secondary;
+  }
+
+  &__about {
+    margin-bottom: 80px;
+
+    @include tablet {
+      grid-column: 1 / 7;
+    }
+
+    @include mobile {
+      grid-column: 1 / 7;
+    }
+  }
+
+  &__about-title {
+    margin-bottom: 16px;
+    align-self: flex-start;
+  }
+
+  &__text {
+    color: $secondary;
+  }
+
+  &__tech {
+    grid-row: 5 / 6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 80px;
+
+    @include tablet {
+      grid-column: 1 / 7;
+    }
+
+    @include mobile {
+      grid-column: 1 / 7;
+      grid-row: 6 / 7;
+    }
+  }
+
+  &__slider {
+    @include tablet {
+      grid-column: 1 / 7;
+    }
+
+    @include mobile {
+      grid-column: 1 / 7;
+    }
+  }
+}
