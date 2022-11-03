@@ -56,7 +56,7 @@ export const HomePage = () => {
           <section className="page__section Carousel">
             <Carousel
               infinite
-              autoplay={false}
+              autoplay
               autoflow={5000}
               dots
             >

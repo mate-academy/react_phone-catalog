@@ -1,3 +1,5 @@
+@import "../../scss//variables";
+
 .Loader {
   display: flex;
   width: 100%;
@@ -9,9 +11,9 @@
     width: 2em;
     height: 2em;
     margin: 1em auto;
-    border: 0.3em solid #ddd;
-    border-left-color: #000;
-    animation: load8 1.2s infinite linear;
+    border: 0.3em solid $loader-border;
+    border-left-color: $loader-border_left;
+    animation: load8 $loader-animation infinite linear;
   }
 }
 

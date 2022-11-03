@@ -11,7 +11,7 @@
   align-items: center;
   background-color: white;
   cursor: pointer;
-  transition: all 0.2s cubic-bezier(0.25,0.72,0.51,0.96);
+  transition: all $transition-fast-time cubic-bezier(0.25,0.72,0.51,0.96);
   font-family: Mont, Arial, Helvetica, sans-serif;
 
   &--active {

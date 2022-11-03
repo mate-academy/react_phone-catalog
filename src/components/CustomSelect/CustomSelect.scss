@@ -2,7 +2,7 @@
 
 .CustomSelect {
   position: relative;
-  border: 1px solid #b4bdc4;
+  border: 1px solid $buttonBorderColor;
   height: 40px;
   display: flex;
   align-items: center;
@@ -21,7 +21,7 @@
     height: 16px;
     right: 12px;
     background-image: url("../../img/icons/Chevron\ \(Arrow\ Down\).svg");
-    transition: 0.2s all ease-in-out;
+    transition: $transition-fast-time all ease-in-out;
   }
 
   &:active {

@@ -20,7 +20,7 @@
     margin-bottom: 24px;
     width: 368px;
     height: 368px;
-    transition: transform 0.5s cubic-bezier(0.25,0.72,0.51,0.96);
+    transition: transform $transition-time cubic-bezier(0.25,0.72,0.51,0.96);
 
     &:hover {
       transform: scale(1.05);
@@ -43,7 +43,7 @@
     margin-bottom: 4px;
     text-decoration: none;
     color: $primaryColor;
-    transition: transform 0.5s cubic-bezier(0.25,0.72,0.51,0.96);
+    transition: transform $transition-time cubic-bezier(0.25,0.72,0.51,0.96);
     border-bottom: 1px solid transparent;
 
     &:hover {

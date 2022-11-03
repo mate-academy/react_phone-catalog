@@ -32,7 +32,7 @@
   &__content {
     display: flex;
     gap: 16px;
-    transition: transform 0.5s cubic-bezier(0.25,0.72,0.51,0.96);
+    transition: transform $transition-time cubic-bezier(0.25,0.72,0.51,0.96);
   }
 
   &__img {

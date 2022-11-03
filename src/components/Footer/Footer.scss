@@ -3,9 +3,10 @@
 
 .Footer {
   width: 100%;
-  box-shadow: 0 1px 5px #e2e6e9;
+  box-shadow: 0 1px 5px $borderItem;
   font-family: Mont, Arial, Helvetica, sans-serif;
   flex: 0 0 auto;
+  height: 96px;
 
   &__container {
     display: flex;
@@ -26,7 +27,7 @@
   }
 
   &__link {
-    line-height: 96px;
+    line-height: 94px;
     padding: 42px 0;
     position: relative;
     text-transform: uppercase;
