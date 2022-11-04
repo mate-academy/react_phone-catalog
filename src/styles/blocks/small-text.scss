@@ -1,0 +1,14 @@
+.small-text {
+  font-family: Mont-SemiBold, sans-serif;
+  font-size: 12px;
+  line-height: 15px;
+  color: $color-dark-grey;
+
+  &--light {
+    color: $color-light-grey;
+  }
+
+  &--huge {
+    line-height: 22px;
+  }
+}

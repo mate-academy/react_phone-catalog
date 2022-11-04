@@ -1,0 +1,79 @@
+@import "../../styles/utils/variables";
+
+.Select {
+  display: flex;
+  padding-right: 10px;
+  flex-direction: column;
+  z-index: 1;
+  margin-bottom: -150px;
+  
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    width: 22px;
+    height: 100%;
+    background-image: url("../../icons/arrow_down.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    border: 0;
+    background-color: #fff;
+  }
+
+  &__header {
+    padding-right: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: $icon-button-border;
+   
+    &:hover {
+      border-color: $color-dark-grey;
+    }
+
+    &:hover .Select__button {
+      background-image: url("../../icons/arrow_right.svg");
+      rotate: 90deg;
+    }
+  }
+
+  &__title {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    outline: none;
+    width: 130px;
+    border: none;
+    user-select: none;
+    background-color: #fff;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    border: $icon-button-border;
+    opacity: 0;
+   
+    &--is-active {
+      opacity: 1;
+      background: rgba(255, 255, 255, 1);
+      box-shadow: 5px 5px 5px #888;
+    }
+  }
+
+  &__item {
+    text-decoration: none;
+    padding: 10px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: lightgrey;
+      color: #000;
+    }
+  }
+}

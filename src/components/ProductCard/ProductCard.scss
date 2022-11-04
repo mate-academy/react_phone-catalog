@@ -1,0 +1,44 @@
+@import "../../styles/utils/variables";
+
+.ProductCard {
+  padding: 24px;
+  width: 272px;
+  border: 1px solid #e2e6e9;
+
+  &__img {
+    display: block;
+    margin: 0 auto 24px;
+    width: 208px;
+    height: 208px;
+    cursor: pointer;
+    transition: $transition;
+
+    &:hover {
+      scale: 1.2;
+    }
+  }
+
+  &__name {
+    display: block;
+    text-decoration: none;
+    height: 42px;
+    margin-bottom: 6px;
+  }
+
+  &__price {
+    display: inline-block;
+
+    &--old {
+      display: inline-block;
+      padding-left: 8px;
+      color: $color-light-grey;
+      text-decoration: line-through;
+    }
+  }
+
+  &__description {
+    padding-top: 8px;
+    justify-content: space-around;
+    margin-bottom: 16px;
+  }
+}

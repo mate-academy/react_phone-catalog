@@ -1,0 +1,27 @@
+.ProductPage {
+  width: 100%;
+  
+  &__title {
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  &__nav {
+    display: flex;
+    margin-bottom: 40px;
+  }
+
+  &__subtitle {
+    display: block;
+    margin-bottom: 40px;
+  }
+
+  &__select-label {
+    margin-bottom: 6px;
+  }
+
+  &__pagination {
+    margin: 0 auto;
+    width: fit-content;
+  }
+}

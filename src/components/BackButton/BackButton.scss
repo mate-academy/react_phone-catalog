@@ -1,0 +1,22 @@
+@import "../../styles/utils/variables";
+
+.BackButton {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+  padding: 10px 20px;
+  width: 50px;
+  height: 30px;
+  background-color: #fff;
+  background-image: url("../../icons/arrow_left.svg");
+  background-position: left;
+  background-repeat: no-repeat;
+  border: 0;
+  opacity: 0.5;
+  cursor: pointer;
+  transition: $transition;
+
+  &:hover {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,85 @@
+@import "../../styles/utils/variables";
+
+.CartPage {
+  position: relative;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 16px;
+  }
+
+  &__list {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+  }
+
+  &__list-item {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-bottom: 30px;
+    padding: 30px 0;
+    border: 1px solid #e2e6e9;
+  }
+
+  &__total {
+    display: flex;
+    padding: 24px;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #e2e6e9;
+    height: fit-content;
+  }
+
+  &__image {
+    width: 66px;
+    height: 66px;
+  }
+
+  &__product-name {
+    width: 295px;
+  }
+
+  &__quantity {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 32px;
+    min-width: 32px;
+  }
+
+  &__checkout-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 320px;
+    height: 48px;
+    background-color: $color-dark-grey;
+    transition: $transition;
+
+    &:hover {
+      box-shadow: $big-button-shadow;
+      cursor: pointer;
+    }
+  }
+
+  &__checkout-info {
+    position: absolute;
+    top: 380px;
+    left: calc(100% - 400px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 30px;
+    width: 400px;
+    height: 90px;
+    background-color: $color-light-blue;
+    box-shadow: $big-button-shadow;
+
+    @media (max-width: 1100px) {
+      left: 600px;
+    }
+  }
+}

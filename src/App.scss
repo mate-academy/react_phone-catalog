@@ -1,1 +1,21 @@
-// not empty
+@import "./styles/utils/variables";
+
+.App {
+  width: 100%;
+  @media (max-width: 1160px) {
+    padding-left: 10px;
+    
+  }
+  
+  &__section {
+    margin: 0 auto;
+    padding: 24px 0 80px;
+    width: $content-width;
+    min-height: calc(100vh - 160px);
+  }
+
+  &__error-message {
+    padding: 50px;
+    color: rgb(170, 0, 0);
+  }
+}

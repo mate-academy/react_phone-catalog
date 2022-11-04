@@ -1,0 +1,28 @@
+@import "../../styles/utils/variables";
+
+.Breadcrumbs {
+  display: flex;
+  align-items: center;
+
+  &__split {
+    margin: 0 8px;
+  }
+
+  &__link {
+    pointer-events: none;
+    text-decoration: none;
+    font-family: Mont-SemiBold, sans-serif;
+    font-size: 12px;
+    line-height: 15px;
+    color: $color-light-grey;
+    transition: $transition;
+
+    &--active {
+      pointer-events: all;
+
+      &:hover {
+        color: $color-dark-grey;
+      }
+    }
+  }
+}

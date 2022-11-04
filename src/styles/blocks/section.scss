@@ -1,0 +1,23 @@
+.section {
+  margin: 0 auto;
+  padding: 24px 24px 80px;
+  width: 100%;
+  min-height: calc(100vh - 160px);
+
+  &--loader {
+    min-height: calc(100vh - 96px);
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+  }
+
+  &__card-container {
+    display: grid;
+    margin: -160px 0 40px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 16px;
+  }
+}

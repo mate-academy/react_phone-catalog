@@ -1,0 +1,26 @@
+@import "./variables";
+
+h1 {
+  display: inline-block;
+  font-family: Mont-Bold, sans-serif;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  color: $color-dark-grey;
+}
+
+h2 {
+  font-family: Mont-Bold, sans-serif;
+  font-size: 22px;
+  line-height: 31px;
+  letter-spacing: 0;
+  color: $color-dark-grey;
+}
+
+h3 {
+  font-family: Mont-SemiBold, sans-serif;
+  font-size: 20px;
+  line-height: 26px;
+  letter-spacing: 0;
+  color: $color-dark-grey;
+}

@@ -1,0 +1,34 @@
+@import "./utils/reset.scss";
+@import "./utils/normalize.scss";
+@import "./utils/variables";
+@import "./blocks/logo.scss";
+@import "./blocks/navbar.scss";
+@import "./blocks/text.scss";
+@import "./blocks/section.scss";
+@import "./blocks/icon.scss";
+@import "./blocks/container.scss";
+@import "./blocks/small-text.scss";
+@import "./blocks/row.scss";
+@import "./blocks/color-option.scss";
+@import "./blocks/cross-button.scss";
+@import "./blocks/icon-button.scss";
+@import "./blocks/link.scss";
+@import "./blocks/details-table.scss";
+
+@font-face {
+  font-family: "Mont-Regular";
+  src: url(./fonts/Mont-Regular.otf);
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Mont-SemiBold";
+  src: url(./fonts/Mont-SemiBold.otf);
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "Mont-Bold";
+  src: url(./fonts/Mont-Bold.otf);
+  font-weight: 700;
+}

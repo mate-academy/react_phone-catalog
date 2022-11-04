@@ -1,0 +1,27 @@
+@import "../../styles/utils/variables";
+
+.Search {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  width: 310px;
+
+  &__input {
+    margin: 0;
+    height: 64px;
+    padding: 0 24px 0 50px;
+    width: 240px;
+    border: 0;
+    outline: none;
+    border-left: 1px solid #e2e6e9;
+    background-image: url("../../icons/search.svg");
+    background-position: 10px 20px;
+    background-repeat: no-repeat;
+    background-size: 30px;
+  }
+
+  &__button {
+    display: none;
+  }
+}
