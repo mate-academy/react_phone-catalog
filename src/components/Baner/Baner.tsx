@@ -32,7 +32,7 @@ export const Baner = () => {
   };
 
   return (
-    <div className="baner">
+    <div className="baner px-3">
       <button
         type="button"
         className="button is-paddingless baner__button"

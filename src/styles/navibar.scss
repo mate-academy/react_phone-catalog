@@ -42,4 +42,20 @@
     width: 32px;
     height: 32px;
   }
+
+  &__filter {
+    box-shadow: -1px 0 0 #e2e6e9;
+
+    &-input {
+      border: none;
+      box-shadow: none;
+      &:focus {
+        box-shadow: none;
+      }
+    }
+
+    @include toTablet {
+      display: none;
+    }
+  }
 }

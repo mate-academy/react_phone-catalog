@@ -15,8 +15,8 @@ export const HomePage: React.FC = () => {
       .map((product: Product) => ({
         ...product,
         newPrice: (
-          product.price - ((product.discount + product.price) / 100))
-          .toFixed(0),
+          (product.price - ((product.discount * product.price) / 100))
+            .toString()),
       }));
   }, [products]);
 
@@ -41,7 +41,7 @@ export const HomePage: React.FC = () => {
 
       <div className="section">
         <div className="container">
-          <h1 className="title has-text-weight-bold">Shop by category</h1>
+          <h1 className="title has-text-weight-bold px-3">Shop by category</h1>
           <Category />
         </div>
       </div>

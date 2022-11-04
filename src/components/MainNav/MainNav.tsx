@@ -1,11 +1,15 @@
 import classNames from 'classnames';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import { Burger } from '../Burger';
 import { PageNavLink } from '../PageNavLink';
+import { Filter } from '../Filter';
 
-export const MainNav = () => {
+export const MainNav: React.FC = () => {
   const [burgerActive, setBurgerActive] = useState(false);
+  const location = useLocation().pathname;
+
+  const isPhonePage = location.split('/').filter(x => x)[0] === 'phones';
 
   return (
     <nav
@@ -27,11 +31,20 @@ export const MainNav = () => {
         id="navMenu"
       >
         <div className="navbar-start navibar--start">
-          <PageNavLink text="Home" to="/" />
+          <Link
+            to="/"
+            className={classNames(
+              'navbar-item', { 'navibar__item--active': location === '/' },
+            )}
+          >
+            Home
+          </Link>
           <PageNavLink text="Phones" to="phones" />
           <PageNavLink text="Tablets" to="tablets" />
           <PageNavLink text="Accessories" to="accessories" />
         </div>
+
+        {isPhonePage && <Filter />}
 
         <NavLink
           to="favs"

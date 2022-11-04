@@ -10,9 +10,9 @@ export const Footer = () => {
   };
 
   return (
-    <section className="section">
+    <section style={{ boxShadow: '0px -1px 0px #e2e6e9' }} className="section">
       <div className="container">
-        <div className="columns">
+        <div className="columns is-mobile">
           <div className="column is-flex is-align-items-center">
             <Link to="/" className="navibar__logo">
               <span className="navibar__logo" />

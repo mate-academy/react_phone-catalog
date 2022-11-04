@@ -5,11 +5,13 @@ import { Product } from '../types/Product';
 type ContextProps = {
   products: Product[]
   setProducts: React.Dispatch<React.SetStateAction<Product[] | []>>
+  phones: Product[]
 };
 
 export const ProductsContext = React.createContext<ContextProps>({
   products: [],
   setProducts: () => {},
+  phones: [],
 });
 
 type Props = {
@@ -29,10 +31,22 @@ export const ProductsProvider: React.FC<Props> = ({ children }) => {
     fetchProducts();
   }, []);
 
+  const phones: Product[] = products.filter(product => product.type === 'phone')
+    .map((product: Product) => ({
+      ...product,
+      newPrice: (
+        product.discount
+          ? (product.price - ((product.discount * product.price) / 100))
+            .toString()
+          : null
+      ),
+    }));
+
   const contextValue = useMemo(() => {
     return {
       products,
       setProducts,
+      phones,
     };
   }, [products]);
 

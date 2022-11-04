@@ -1,4 +1,4 @@
-import ReactDOM from 'react-dom';
+import * as ReactDOM from 'react-dom';
 import { HashRouter } from 'react-router-dom';
 
 import 'bulma/css/bulma.css';

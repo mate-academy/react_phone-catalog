@@ -1,11 +1,11 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
-import { MainNav } from './components/MainNav';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
 import { HomePage } from './Pages/HomePage';
 import { PageNotFound } from './Pages/PageNotFound';
 import { ProductsProvider } from './ProductsContext';
 import { Footer } from './components/Footer';
+import { PhonePage } from './Pages/PhonePage';
+import { MainNav } from './components/MainNav';
+import { ProductDetails } from './components/ProductDetails';
 
 export const App = () => {
   return (
@@ -16,6 +16,10 @@ export const App = () => {
           <Route path="*" element={<PageNotFound />} />
           <Route path="home" element={<Navigate to="/" replace />} />
           <Route path="/" element={<HomePage />} />
+          <Route path="phones">
+            <Route index element={<PhonePage />} />
+            <Route path=":phoneId" element={<ProductDetails />} />
+          </Route>
         </Routes>
         <Footer />
       </div>

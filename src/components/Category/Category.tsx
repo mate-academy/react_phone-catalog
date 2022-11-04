@@ -12,7 +12,7 @@ export const Category = () => {
   const accessories = products.filter(product => product.type === 'accessory');
 
   return (
-    <div className="columns">
+    <div className="columns px-3">
       <div className="column">
         <figure className="image is-square mb-5 category__phones">
           <img src={Phones} alt="Phones" />

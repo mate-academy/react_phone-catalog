@@ -10,5 +10,5 @@ export interface Product {
   capacity: string;
   ram: string;
   quantity: number;
-  newPrice: string;
+  newPrice: string | null;
 }

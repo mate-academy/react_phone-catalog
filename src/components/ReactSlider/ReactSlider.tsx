@@ -1,5 +1,7 @@
 import { useRef } from 'react';
 import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 import { Product } from '../../types/Product';
 import { ReactComponent as ArrowLeft } from '../../img/icons/VectorLeft.svg';
 import { ReactComponent as ArrowRight } from '../../img/icons/VectorRight.svg';
@@ -60,7 +62,7 @@ export const ReactSlider: React.FC<Props> = ({ products, title }) => {
 
   return (
     <div>
-      <nav className="level is-mobile">
+      <nav className="level is-mobile px-3">
         <div className="level-left">
           <div className="level-item">
             <h1 className="title has-text-weight-bold">{title}</h1>
@@ -89,12 +91,12 @@ export const ReactSlider: React.FC<Props> = ({ products, title }) => {
         </div>
       </nav>
 
-      <Slider className="hello" ref={sliderRef} {...settings}>
-
+      <Slider className="test2" ref={sliderRef} {...settings}>
         {products.map(product => (
-          <ProductCard product={product} />
+          <div className="column px-3 py-0">
+            <ProductCard product={product} />
+          </div>
         ))}
-
       </Slider>
     </div>
   );
