@@ -1,0 +1,59 @@
+@import"../utils/vars.scss";
+
+.footer {
+  padding: 0 50px;
+  padding-bottom: 42px;
+
+  &__outer {
+    width: 100%;
+
+  }
+
+  &__wrapper {
+    padding: 43px 0;
+  }
+
+  &__logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  &__link {
+    font-family: "Mont", sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #89939a;
+    transition: $transition;
+
+    &:hover {
+      color: #313237;
+    }
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    border: 1px solid #b4bdc3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: $transition;
+    background: $white;
+    cursor: pointer;
+
+    &:hover {
+      border: 1px solid #313237;
+    }
+  }
+}

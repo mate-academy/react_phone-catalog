@@ -1,0 +1,23 @@
+@import "../utils/vars.scss";
+
+.subheader {
+  display: flex;
+
+  width: 85%;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+
+  &__text {
+    color: $secondary;
+  }
+
+  &__title {
+    margin-bottom: 8px;
+  }
+
+  &__quantity {
+    color: $secondary;
+    margin-bottom: 40px;
+  }
+}

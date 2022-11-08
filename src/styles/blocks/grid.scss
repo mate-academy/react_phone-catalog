@@ -1,0 +1,27 @@
+@import "../utils/mixins.scss";
+@import "../utils/vars.scss";
+
+.grid {
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
+  column-gap: 15px;
+  grid-auto-flow: column;
+  justify-content: center;
+
+  @include desktop {
+    grid-template-columns: repeat(24, 1fr);
+    column-gap: 30px;
+  }
+
+  &__item {
+    @for $start from 1 through 24 {
+      @for $end from $start through 24 {
+        &--#{$start}-#{$end} {
+          grid-column: #{$start} / #{$end + 1};
+        }
+      }
+    }
+  }
+}
