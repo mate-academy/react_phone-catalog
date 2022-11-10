@@ -18,7 +18,13 @@ export const Footer = () => {
               <span className="navibar__logo" />
             </Link>
           </div>
-          <div className="column is-flex is-justify-content-space-between">
+          <div className="
+            column
+            is-flex
+            is-justify-content-space-between
+            is-hidden-mobile
+            "
+          >
             <a
               href="#0"
               className="

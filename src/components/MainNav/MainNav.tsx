@@ -1,15 +1,20 @@
 import classNames from 'classnames';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { Burger } from '../Burger';
 import { PageNavLink } from '../PageNavLink';
 import { Filter } from '../Filter';
+import 'bulma/css/bulma-badge.min.css';
+import { ProductsContext } from '../../ProductsContext';
 
 export const MainNav: React.FC = () => {
+  const { favProducts, cart } = useContext(ProductsContext);
   const [burgerActive, setBurgerActive] = useState(false);
-  const location = useLocation().pathname;
-
-  const isPhonePage = location.split('/').filter(x => x)[0] === 'phones';
+  const location = useLocation().pathname.split('/').filter(x => x).join('');
+  const isPhonePage = location === 'phones'
+    || location === 'tablets'
+    || location === 'accessories'
+    || location === 'favourites';
 
   return (
     <nav
@@ -34,7 +39,8 @@ export const MainNav: React.FC = () => {
           <Link
             to="/"
             className={classNames(
-              'navbar-item', { 'navibar__item--active': location === '/' },
+              'navbar-item has-text-dark',
+              { 'navibar__item--active': useLocation().pathname === '/' },
             )}
           >
             Home
@@ -47,17 +53,53 @@ export const MainNav: React.FC = () => {
         {isPhonePage && <Filter />}
 
         <NavLink
-          to="favs"
-          className="navbar-item navibar__icon is-justify-content-center"
+          to="favourites"
+          className={({ isActive }) => classNames(
+            'navbar-item navibar__icon is-justify-content-center',
+            { 'navibar__item--active': isActive },
+          )}
         >
-          <i className="fa-regular fa-heart navibar__icon--hidden" />
+          {favProducts.length
+            ? (
+              <i
+                className="
+              fa-regular
+              fa-heart
+              navibar__icon--hidden
+              has-badge-rounded
+              has-badge-danger
+              "
+                data-badge={favProducts.length}
+              />
+
+            ) : (
+              <i className="fa-regular fa-heart navibar__icon--hidden" />
+            ) }
           <span className="navibar__icon-text">Favorites</span>
         </NavLink>
         <NavLink
-          to="basket"
-          className="navbar-item navibar__icon is-justify-content-center"
+          to="cart"
+          className={({ isActive }) => classNames(
+            'navbar-item navibar__icon is-justify-content-center',
+            { 'navibar__item--active': isActive },
+          )}
         >
-          <i className="fa-solid fa-bag-shopping navibar__icon--hidden" />
+          {cart.length
+            ? (
+              <i
+                className="
+              fa-solid
+              fa-bag-shopping
+              navibar__icon--hidden
+              has-badge-rounded
+              has-badge-danger
+              "
+                data-badge={cart.length}
+              />
+
+            ) : (
+              <i className="fa-solid fa-bag-shopping navibar__icon--hidden" />
+            ) }
           <span className="navibar__icon-text">Basket</span>
         </NavLink>
       </div>

@@ -1,9 +1,10 @@
-import { useSearchParams } from 'react-router-dom';
+import { useLocation, useSearchParams } from 'react-router-dom';
 import { getSearchWith } from '../../utils/searchHelper';
 
 export const Filter: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query') || '';
+  const location = useLocation().pathname.split('/').filter(x => x).join('');
 
   return (
     <div className="
@@ -17,7 +18,7 @@ export const Filter: React.FC = () => {
         className="input is-small navibar__filter-input"
         type="search"
         defaultValue={query}
-        placeholder="Search in phones..."
+        placeholder={`search in ${location}`}
         onChange={(event) => {
           searchParams.set('page', '1');
           setSearchParams(getSearchWith(searchParams, {

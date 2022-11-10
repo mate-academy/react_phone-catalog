@@ -1,13 +1,15 @@
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { ProductsContext } from '../../ProductsContext';
 import { itemsInSelect } from '../../utils/itemsInSelect';
 import { SearchLink } from '../SearchLink';
 
-export const ItemsPerPageMenu: React.FC = () => {
-  const { phones } = useContext(ProductsContext);
+type Props = {
+  totaItems: number
+};
+
+export const ItemsPerPageMenu: React.FC<Props> = ({ totaItems }) => {
   const [searchParams] = useSearchParams();
-  const perPage = searchParams.get('perPage') || phones.length;
+  const perPage = searchParams.get('perPage') || totaItems;
   const [dropdownIsActive, setDropdownIsActive] = useState(false);
   const itemsPerPageMenuWidth = '13vmax';
 
@@ -34,7 +36,7 @@ export const ItemsPerPageMenu: React.FC = () => {
             }}
           >
             <span className="has-text-weight-semibold">
-              {+perPage === phones.length ? 'All' : perPage}
+              {+perPage === totaItems ? 'All' : perPage}
             </span>
             <span className="icon is-small">
               <i
@@ -57,7 +59,7 @@ export const ItemsPerPageMenu: React.FC = () => {
             >
               <SearchLink
                 className="dropdown-item has-text-weight-semibold"
-                params={{ perPage: phones.length.toString(), page: '1' }}
+                params={{ perPage: totaItems.toString(), page: '1' }}
                 onClick={() => {
                   setDropdownIsActive(!dropdownIsActive);
                 }}

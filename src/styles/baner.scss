@@ -1,9 +1,14 @@
 .baner {
   --baner-height: 400px;
+  --baner-heightTablet: 200px;
   --buttom-width: 32px;
   --container-margin: 10px;
 
   height: var(--baner-height);
+
+  @include toTablet {
+    height: var(--baner-heightTablet);
+  }
 
   &__container {
     width: calc(
@@ -20,6 +25,10 @@
 
   &__image {
     height: var(--baner-height);
+
+    @include toTablet {
+      height: var(--baner-heightTablet);
+    }
     background-size: cover;
     background-position: center;
     &--1 {

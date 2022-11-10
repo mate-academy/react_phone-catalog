@@ -17,12 +17,15 @@ export const BreadCrumb = () => {
             />
           </a>
         </li>
-        <li>
-          <a href="#0" className="has-text-grey-light">
-            {[location[0][0].toLocaleUpperCase(),
-              ...location[0].split('').slice(1)]}
-          </a>
-        </li>
+        {location.map(item => (
+          <li>
+            <a href="#0" className="has-text-grey-light">
+              {item.split('-').map(
+                x => (x[0].toLocaleUpperCase() + x.slice(1)),
+              ).join(' ')}
+            </a>
+          </li>
+        ))}
       </ul>
     </nav>
   );

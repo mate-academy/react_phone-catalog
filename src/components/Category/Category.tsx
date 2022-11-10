@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import Phones from '../../img/Category/Category1.png';
 import Tablets from '../../img/Category/Category2.png';
 import Accessories from '../../img/Category/Category3.png';
@@ -14,28 +15,52 @@ export const Category = () => {
   return (
     <div className="columns px-3">
       <div className="column">
-        <figure className="image is-square mb-5 category__phones">
+        <figure
+          style={{ backgroundColor: '#fcdbc1' }}
+          className="image is-square mb-5"
+        >
           <img src={Phones} alt="Phones" />
         </figure>
-        <p className="has-text-weight-semibold is-size-4">Mobile Phones</p>
+        <Link
+          to="phones"
+          className="has-text-dark has-text-weight-semibold is-size-4"
+        >
+          Mobile Phones
+        </Link>
         <p className="has-text-grey-light">
           {phones.length ? `${phones.length} models` : 'no products yes'}
         </p>
       </div>
       <div className="column">
-        <figure className="image is-square mb-5 category__tablets">
+        <figure
+          style={{ backgroundColor: '#8d8d92' }}
+          className="image is-square mb-5"
+        >
           <img src={Tablets} alt="Tablets" />
         </figure>
-        <p className="has-text-weight-semibold is-size-4">Tablets</p>
+        <Link
+          to="tablets"
+          className="has-text-dark has-text-weight-semibold is-size-4"
+        >
+          Tablets
+        </Link>
         <p className="has-text-grey-light">
           {tablets.length ? `${tablets.length} models` : 'no products yes'}
         </p>
       </div>
       <div className="column">
-        <figure className="image is-square mb-5 category__accessories">
+        <figure
+          style={{ backgroundColor: '#973d5f' }}
+          className="image is-square mb-5"
+        >
           <img src={Accessories} alt="Accessories" />
         </figure>
-        <p className="has-text-weight-semibold is-size-4">Accessories</p>
+        <Link
+          to="accessories"
+          className="has-text-dark has-text-weight-semibold is-size-4"
+        >
+          Accessories
+        </Link>
         <p className="has-text-grey-light">
           {accessories.length ? `${accessories.length} models` : 'no products yet'}
         </p>

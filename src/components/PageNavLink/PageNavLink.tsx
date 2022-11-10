@@ -11,7 +11,7 @@ export const PageNavLink: React.FC<Props> = ({ text, to }) => {
     <NavLink
       to={to}
       className={({ isActive }) => classNames(
-        'navbar-item', { 'navibar__item--active': isActive },
+        'navbar-item has-text-dark', { 'navibar__item--active': isActive },
       )}
     >
       {text}

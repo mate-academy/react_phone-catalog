@@ -8,7 +8,7 @@ export const SortMenu = () => {
   const [searchParams] = useSearchParams();
   const sort = searchParams.get('sort') || 'newest';
 
-  const sortMenuWidth = '20vmax';
+  const sortMenuWidth = '19vmax';
 
   return (
     <div>

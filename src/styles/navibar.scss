@@ -15,6 +15,9 @@
       @include toTablet {
         display: none;
       }
+      @include toMobile {
+        display: none;
+      }
     }
 
     &-text {
@@ -55,6 +58,9 @@
     }
 
     @include toTablet {
+      display: none;
+    }
+    @include toMobile {
       display: none;
     }
   }
