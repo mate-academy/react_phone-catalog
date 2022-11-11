@@ -1,1 +1,57 @@
-// not empty
+@import "./styles/grid.scss";
+@import "./styles/normalize.scss";
+@import "./fonts/stylesheet.css";
+@import "./styles/utils/vars.scss";
+@import "./styles/blocks/container.scss";
+@import "./styles/blocks/footer.scss";
+@import "./styles/blocks/header.scss";
+@import "./styles/blocks/slider.scss";
+@import "./styles/blocks/categories.scss";
+@import "./styles/blocks/menu.scss";
+@import "./styles/blocks/loader.scss";
+@import "./styles/blocks/subheader.scss";
+@import "./styles/blocks/pagination.scss";
+@import "./styles/blocks/productlist.scss";
+@import "./styles/blocks/sort.scss";
+@import "./styles/blocks/product.scss";
+@import "./styles/blocks/cart.scss";
+
+* {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: $white;
+}
+
+a {
+  text-decoration: none;
+}
+
+.app {
+  padding-top: 104px;
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  &__section {
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+
+.title {
+  @include tablet {
+    grid-column: 1 / 3;
+  }
+
+  @include mobile {
+    grid-column: 1 / 5;
+  }
+}

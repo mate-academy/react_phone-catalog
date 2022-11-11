@@ -1,0 +1,53 @@
+@import "./utils/mixins.scss";
+@import "./utils/vars.scss";
+
+.grid {
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
+  column-gap: 15px;
+  grid-auto-flow: column;
+  justify-content: center;
+
+  @include mobile {
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 20px;
+
+  }
+ 
+  @include tablet {
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 30px;
+  }
+
+  @include laptop {
+    grid-template-columns: repeat(24, 1fr);
+    column-gap: 30px;
+  }
+
+  // @include design {
+  //   grid-template-columns: repeat(12, 1fr);
+  //   column-gap: 30px;
+  // }
+
+  @include desktop {
+    grid-template-columns: repeat(24, 1fr);
+    column-gap: 30px;
+  }
+
+  @include large {
+    grid-template-columns: repeat(24, 1fr);
+    column-gap: 30px;
+  }
+
+  &__item {
+    @for $start from 1 through 24 {
+      @for $end from $start through 24 {
+        &--#{$start}-#{$end} {
+          grid-column: #{$start} / #{$end + 1};
+        }
+      }
+    }
+  }
+}

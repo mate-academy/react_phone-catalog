@@ -1,0 +1,24 @@
+@import "../utils/mixins.scss";
+@import "../utils/vars.scss";
+
+.productlist {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto;
+  column-gap: 15px;
+  grid-auto-flow: row;
+  justify-content: center;
+  margin-bottom: 15px;
+
+  @include tablet {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media screen and (max-width: 680px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include mobile {
+    grid-template-columns: 1fr;
+  }
+}
