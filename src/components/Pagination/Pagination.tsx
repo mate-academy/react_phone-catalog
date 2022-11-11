@@ -30,7 +30,7 @@ export const Pagination: React.FC<Props> = (
               className={classNames(
                 'pagination-previous', { 'is-disabled': +page === 1 },
               )}
-              params={{ page: (+page - 1).toString() }}
+              params={{ page: (+page - (+page > 1 ? 1 : 0)).toString() }}
             >
               «
             </SearchLink>
@@ -57,7 +57,9 @@ export const Pagination: React.FC<Props> = (
             <SearchLink
               className={classNames('pagination-next',
                 { 'is-disabled': +page === pageNumbers.length })}
-              params={{ page: (+page + 1).toString() }}
+              params={{
+                page: (+page + (+page < pageNumbers.length ? 1 : 0)).toString(),
+              }}
             >
               »
             </SearchLink>
