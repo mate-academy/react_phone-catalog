@@ -1,7 +1,12 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ReactComponent as ArrowUP } from '../../img/icons/VectorUP.svg';
+import { ContacsModal } from './ContactsModal';
+import { RightsModal } from './RightsModal';
 
 export const Footer = () => {
+  const [isContacts, setIsContacts] = useState(false);
+  const [isRights, setIsRights] = useState(false);
   const srollTop = () => {
     window.scrollTo({
       top: 0,
@@ -12,6 +17,18 @@ export const Footer = () => {
   return (
     <section style={{ boxShadow: '0px -1px 0px #e2e6e9' }} className="section">
       <div className="container">
+        {isContacts && (
+          <ContacsModal
+            isContacts={isContacts}
+            setIsContacts={setIsContacts}
+          />
+        )}
+        {isRights && (
+          <RightsModal
+            isRights={isRights}
+            setIsRights={setIsRights}
+          />
+        )}
         <div className="columns is-mobile">
           <div className="column is-flex is-align-items-center">
             <Link to="/" className="navibar__logo">
@@ -26,7 +43,7 @@ export const Footer = () => {
             "
           >
             <a
-              href="#0"
+              href="https://github.com/YaroslavKolbaiev"
               className="
                 has-text-grey-light
                 has-text-weight-bold
@@ -46,6 +63,10 @@ export const Footer = () => {
                 is-flex
                 is-align-items-center
               "
+              onClick={(event) => {
+                event.preventDefault();
+                setIsContacts(!isContacts);
+              }}
             >
               <p>CONTACTS</p>
             </a>
@@ -58,6 +79,10 @@ export const Footer = () => {
                 is-flex
                 is-align-items-center
               "
+              onClick={(event) => {
+                event.preventDefault();
+                setIsRights(!isRights);
+              }}
             >
               <p>RIGHTS</p>
             </a>
