@@ -1,4 +1,4 @@
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 export const BreadCrumb = () => {
   const location = useLocation().pathname.split('/').filter(x => x);
@@ -10,20 +10,20 @@ export const BreadCrumb = () => {
     >
       <ul className="is-flex is-align-items-center">
         <li>
-          <a href="#0">
+          <Link to="/">
             <i
               className="fa-solid fa-house has-text-black"
               aria-hidden="true"
             />
-          </a>
+          </Link>
         </li>
         {location.map(item => (
           <li>
-            <a href="#0" className="has-text-grey-light">
+            <Link to={`/${item}`} className="has-text-grey-light">
               {item.split('-').map(
                 x => (x[0].toLocaleUpperCase() + x.slice(1)),
               ).join(' ')}
-            </a>
+            </Link>
           </li>
         ))}
       </ul>

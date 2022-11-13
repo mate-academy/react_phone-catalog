@@ -1,8 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { getProduct } from '../../api/products';
+import { ProductsContext } from '../../ProductsContext';
 import { ProductSpecs } from '../../types/ProductSpecs';
 import { BreadCrumb } from '../Breadcrumb';
+import { ReactSlider } from '../ReactSlider';
 import { CapacityButton } from './ProductParts/CapacityButton';
 import { CartAndFavButtons } from './ProductParts/CartAndFavButtons';
 import { ColorsPart } from './ProductParts/ColorsPart';
@@ -15,6 +17,7 @@ import { TechSpecs } from './ProductParts/TechSpecs';
 export const ProductDetails: React.FC = () => {
   const { productId = '' } = useParams();
   const [product, setProduct] = useState<ProductSpecs>();
+  const { products } = useContext(ProductsContext);
   const [imageSelector, setImageSelector] = useState(0);
 
   const fetchProduct = async () => {
@@ -30,7 +33,7 @@ export const ProductDetails: React.FC = () => {
   return (
     <>
       <section className="section">
-        <div className="container">
+        <div className="container px-3">
           <BreadCrumb />
           <ReturnButton />
           <h1 className="title">{product?.name}</h1>
@@ -73,6 +76,11 @@ export const ProductDetails: React.FC = () => {
           </div>
         </div>
       </section>
+      <div className="section">
+        <div className="container">
+          <ReactSlider products={products} title="You may also like" />
+        </div>
+      </div>
     </>
   );
 };
