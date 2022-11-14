@@ -1,0 +1,236 @@
+@import "../utils/vars.scss";
+
+.slick-slider {
+  margin: 0 auto;
+  background: $white;
+}
+
+.slider__button--like {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid $icons;
+  height: 48px;
+  width: 48px;
+  // margin-bottom: 32px;
+  transition: $transition;
+  background: $white;
+  cursor: pointer;
+
+  &:hover {
+    border-color: $black;
+  }
+}
+
+.slider__navigation--hot {
+  height: 32px;
+  width: 32px;
+  border: 1px solid $icons;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: $transition;
+  background: $white;
+
+  &:hover {
+    border-color: $black;
+
+    & > svg > path {
+      fill: $black;
+    }
+  }
+}
+
+.slider {
+  width: 100%;
+  margin: 0 auto;
+  margin-bottom: 80px;
+
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__card {
+    padding: 32px 24px 0;
+    border: 1px solid $elements;
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    transition: $transition;
+    margin-bottom: 40px;
+
+    &--slider {
+      margin: 25px;
+      margin-bottom: 0;
+    }
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    &--top-slider {
+      display: flex !important;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+  }
+
+  &__img {
+    object-fit: contain;
+
+    &--hot {
+      max-width: 208px;
+      width: 100%;
+      margin-bottom: 24px;
+    }
+  }
+
+  &__title {
+    text-align: center;
+    margin-bottom: 7px;
+    height: 55px;
+
+  }
+
+  &__price {
+    align-self: start;
+    margin-bottom: 7px;
+  }
+
+  &__fullprice {
+    text-decoration: line-through;
+    color: $secondary;
+    margin-left: 8px;
+  }
+
+  &__line {
+    width: 100%;
+    height: 1px;
+    background: $elements;
+    border: none;
+    margin-bottom: 16px;
+  }
+
+  &__features {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+
+    &--1 {
+      color: $secondary;
+    }
+
+    &:last-child {
+      margin-bottom: 16px;
+    }
+  }
+
+  &__button-wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    width: 100%;
+    margin-bottom: 32px;
+
+    & > .slider__navigation {
+      height: 40px;
+      width: 40px;
+    }
+
+    &--product {
+      height: 48px;
+    }
+  }
+
+  &__button {
+    height: 48px;
+    width: 78%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: $black;
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 150%;
+    border: 1px solid #333;
+    transition: $transition;
+    box-shadow: inset 0 0 0 0 #f7f7f7;
+    align-self: start;
+    cursor: pointer;
+
+    &:hover {
+      color: $black;
+      background: $white;
+      box-shadow: inset 0 -100px 0 0 #f7f7f7;
+    }
+
+    &--product {
+      height: 48px;
+      margin-bottom: 32px;
+    }
+
+    &--active {
+      height: 48px;
+      width: 78%;
+      padding: 7px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: $white;
+      color: $green;
+      text-decoration: none;
+      font-size: 14px;
+      line-height: 150%;
+      border: 1px solid #333;
+      transition: $transition;
+      box-shadow: inset 0 0 0 0 $black;
+      align-self: start;
+      cursor: pointer;
+  
+      &:hover {
+        color: $green;
+        background: $black;
+        border: 1px solid $black;
+        box-shadow: inset 0 -100px 0 0 $black;
+      }
+    }
+  }
+}
+
+.slick-slider .slider__navigation {
+
+  &--top {
+    box-sizing: content-box;
+    border: 1px solid $icons;
+    height: 100%;
+    color: $icons;
+    display: flex;
+    align-items: center;
+    padding: 0 7px;
+    z-index: 2;
+    background: $white;
+  
+    &::before {
+      display: block;
+      color: $icons;
+      align-self: center;
+      transform: translateY(950%);
+    }
+  }
+}
+
+.slick-slider .slick-track {
+  margin: 0 auto;
+  z-index: 1;
+}
+
+.slick-slider .slick-list {
+  margin: 0 auto;
+  z-index: 1;
+  height: 105%;
+}

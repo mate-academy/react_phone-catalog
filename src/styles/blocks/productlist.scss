@@ -1,0 +1,11 @@
+@import "../utils/vars.scss";
+
+.productlist {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto;
+  column-gap: 15px;
+  grid-auto-flow: row;
+  justify-content: center;
+  margin-bottom: 15px;
+}

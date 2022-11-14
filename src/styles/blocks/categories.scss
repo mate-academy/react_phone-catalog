@@ -1,0 +1,31 @@
+@import "../utils/vars.scss";
+
+.categories {
+
+  padding: 0 20px;
+  margin-bottom: 80px;
+
+  &__title {
+    margin-bottom: 4px;
+  }
+
+  &__category {
+    grid-row: 2 / 3;
+
+    transition: $transition;
+
+    &:hover {
+      transform: scale(1.03);
+    }
+  }
+
+  &__img {
+    margin-bottom: 24px;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  &__quantity {
+    color: $secondary;
+  }
+}
