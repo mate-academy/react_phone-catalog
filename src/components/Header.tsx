@@ -20,10 +20,12 @@ export const Header = () => {
     );
   };
 
+  const arrayOfPathnames = ['/phones', '/tablets', '/favorites', '/accessories'];
+
   return (
     <header className="header">
 
-      {pathname === '/phones' || pathname === '/tablets' || pathname === '/favorites' || pathname === '/accessories'
+      {arrayOfPathnames.includes(pathname)
         ? (
           <div className="header__wrapper header__wrapper--search">
 

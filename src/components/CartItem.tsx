@@ -10,7 +10,7 @@ interface Props<T> {
   totalPrice: number,
 }
 
-enum Action { add, substruct }
+enum Action { add, substract }
 
 export const CartItem: React.FC<Props<Product[]>> = (
   {
@@ -18,7 +18,7 @@ export const CartItem: React.FC<Props<Product[]>> = (
   },
 ) => {
   const handleNumberChange = (action: Action) => {
-    if (action === Action.substruct) {
+    if (action === Action.substract) {
       if (product.number === 1) {
         return;
       }
@@ -39,16 +39,18 @@ export const CartItem: React.FC<Props<Product[]>> = (
     }
   };
 
+  const deleteFromCart = () => {
+    const newProducts = products.filter((prod: Product) => prod.id !== product.id);
+
+    save([...newProducts]);
+  };
+
   return (
     <div className="cart__item">
       <button
         className="cart__close"
         type="button"
-        onClick={() => {
-          const newProducts = products.filter((prod: Product) => prod.id !== product.id);
-
-          save([...newProducts]);
-        }}
+        onClick={deleteFromCart}
       >
         <img src="img/svg/cross.svg" alt="Cross" />
 
@@ -67,7 +69,7 @@ export const CartItem: React.FC<Props<Product[]>> = (
           className="cart__button"
           type="button"
           onClick={() => {
-            handleNumberChange(Action.substruct);
+            handleNumberChange(Action.substract);
           }}
         >
           <img src="img/svg/minus.svg" alt="Minus" />

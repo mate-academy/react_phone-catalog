@@ -99,16 +99,14 @@ export const ProductCard: React.FC<Props<Product[]>> = (
           onClick={(e) => {
             e.preventDefault();
 
-            for (let i = 0; i < products.length; i += 1) {
-              if (products[i].id === product.id) {
-                setHasErrorMessage(true);
+            if (products.find(prod => prod.id === product.id)) {
+              setHasErrorMessage(true);
 
-                setTimeout(() => {
-                  setHasErrorMessage(false);
-                }, 3000);
+              setTimeout(() => {
+                setHasErrorMessage(false);
+              }, 3000);
 
-                return;
-              }
+              return;
             }
 
             if (!hasErrorMessage) {

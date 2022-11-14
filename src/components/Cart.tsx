@@ -26,6 +26,16 @@ export const Cart = () => {
     setTotalPrice(getTotalPrice(products));
   }, [products]);
 
+  const sortedProducts = products.sort((a: Product, b: Product) => a.age - b.age);
+
+  const handleCheckout = () => {
+    setIsPopUp(true);
+
+    setTimeout(() => {
+      setIsPopUp(false);
+    }, 3000);
+  };
+
   return (
     <div className="container grid">
       <button
@@ -45,18 +55,16 @@ export const Cart = () => {
         ? (
           <>
             <div className="cart__list grid__item--1-16">
-              {products
-                .sort((a: Product, b: Product) => a.age - b.age)
-                .map((product: Product) => (
-                  <CartItem
-                    key={product.id}
-                    product={product}
-                    save={save}
-                    products={products}
-                    setTotalPrice={setTotalPrice}
-                    totalPrice={totalPrice}
-                  />
-                ))}
+              {sortedProducts.map((product: Product) => (
+                <CartItem
+                  key={product.id}
+                  product={product}
+                  save={save}
+                  products={products}
+                  setTotalPrice={setTotalPrice}
+                  totalPrice={totalPrice}
+                />
+              ))}
             </div>
             <div className="cart__checkout grid__item--17-24">
               <h1 className="cart__totalPrice">{`$${totalPrice}`}</h1>
@@ -66,13 +74,7 @@ export const Cart = () => {
               <button
                 type="button"
                 className="cart__co-button button-text"
-                onClick={() => {
-                  setIsPopUp(true);
-
-                  setTimeout(() => {
-                    setIsPopUp(false);
-                  }, 3000);
-                }}
+                onClick={handleCheckout}
               >
                 Checkout
               </button>

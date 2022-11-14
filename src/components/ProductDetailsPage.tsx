@@ -123,7 +123,7 @@ export const ProductDetailsPage = () => {
 
               {product.type === 'tablet'
             && (
-              <Link to="//tablets" className="subheader__text small-text product__group">
+              <Link to="/tablets" className="subheader__text small-text product__group">
                 Tablets
               </Link>
             )}
