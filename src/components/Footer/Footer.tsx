@@ -1,18 +1,13 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ReactComponent as ArrowUP } from '../../img/icons/VectorUP.svg';
+import { srollToTop } from '../../utils/scrollToTop';
 import { ContacsModal } from './ContactsModal';
 import { RightsModal } from './RightsModal';
 
 export const Footer = () => {
   const [isContacts, setIsContacts] = useState(false);
   const [isRights, setIsRights] = useState(false);
-  const srollTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
-  };
 
   return (
     <section style={{ boxShadow: '0px -1px 0px #e2e6e9' }} className="section">
@@ -107,7 +102,7 @@ export const Footer = () => {
             <button
               type="button"
               className="button navibar__button p-0"
-              onClick={srollTop}
+              onClick={srollToTop}
             >
               <ArrowUP />
             </button>
