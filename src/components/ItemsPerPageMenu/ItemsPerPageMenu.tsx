@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { UseClickOutside } from '../../hooks/UseClickOutside';
 import { itemsInSelect } from '../../utils/itemsInSelect';
 import { SearchLink } from '../SearchLink';
 
@@ -12,6 +13,9 @@ export const ItemsPerPageMenu: React.FC<Props> = ({ totaItems }) => {
   const perPage = searchParams.get('perPage') || totaItems;
   const [dropdownIsActive, setDropdownIsActive] = useState(false);
   const itemsPerPageMenuWidth = '13vmax';
+  const menuRef = UseClickOutside(() => {
+    setDropdownIsActive(false);
+  });
 
   return (
     <div>
@@ -23,7 +27,7 @@ export const ItemsPerPageMenu: React.FC<Props> = ({ totaItems }) => {
       >
         Items Per Page
       </p>
-      <div className="dropdown is-active">
+      <div ref={menuRef} className="dropdown is-active">
         <div className="dropdown-trigger">
           <button
             type="button"

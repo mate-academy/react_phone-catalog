@@ -1,5 +1,7 @@
+import classNames from 'classnames';
 import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { UseClickOutside } from '../../hooks/UseClickOutside';
 import { sortParams } from '../../utils/sortParams';
 import { SearchLink } from '../SearchLink';
 
@@ -7,6 +9,9 @@ export const SortMenu = () => {
   const [dropdownIsActive, setDropdownIsActive] = useState(false);
   const [searchParams] = useSearchParams();
   const sort = searchParams.get('sort') || 'newest';
+  const menuRef = UseClickOutside(() => {
+    setDropdownIsActive(false);
+  });
 
   const sortMenuWidth = '19vmax';
 
@@ -20,7 +25,10 @@ export const SortMenu = () => {
       >
         Sort by
       </p>
-      <div className="dropdown is-active">
+      <div
+        ref={menuRef}
+        className={classNames('dropdown', { 'is-active': dropdownIsActive })}
+      >
         <div className="dropdown-trigger">
           <button
             type="button"
@@ -45,28 +53,30 @@ export const SortMenu = () => {
           </button>
         </div>
 
-        {dropdownIsActive && (
-          <div className="dropdown-menu" id="dropdown-menu" role="menu">
-            <div
-              style={{ width: sortMenuWidth }}
-              className="dropdown-content"
-            >
-              {sortParams.map(sortType => (
-                <SearchLink
-                  className="dropdown-item has-text-weight-semibold"
-                  key={sortType}
-                  params={{ sort: sortType }}
-                  onClick={() => {
-                    setDropdownIsActive(!dropdownIsActive);
-                  }}
-                >
-                  {[sortType[0].toLocaleUpperCase(),
-                    ...sortType.split('').slice(1)]}
-                </SearchLink>
-              ))}
-            </div>
+        <div
+          className="dropdown-menu"
+          id="dropdown-menu"
+          role="menu"
+        >
+          <div
+            style={{ width: sortMenuWidth }}
+            className="dropdown-content"
+          >
+            {sortParams.map(sortType => (
+              <SearchLink
+                className="dropdown-item has-text-weight-semibold"
+                key={sortType}
+                params={{ sort: sortType }}
+                onClick={() => {
+                  setDropdownIsActive(!dropdownIsActive);
+                }}
+              >
+                {[sortType[0].toLocaleUpperCase(),
+                  ...sortType.split('').slice(1)]}
+              </SearchLink>
+            ))}
           </div>
-        )}
+        </div>
       </div>
     </div>
   );

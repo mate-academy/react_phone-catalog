@@ -4,6 +4,10 @@
   &__image {
     height: 208px;
     width: 208px;
+    transition: transform 0.2s;
+    &:hover {
+      transform: scale(1.2);
+    }
   }
 
   &__title {
