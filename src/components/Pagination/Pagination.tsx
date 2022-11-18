@@ -14,12 +14,17 @@ export const Pagination: React.FC<Props> = (
   },
 ) => {
   const pageNumbers = [];
-  const [searchParams] = useSearchParams();
-  const page = searchParams.get('page') || 1;
 
   for (let i = 1; i <= Math.ceil(totalItems / itemsPerPage); i += 1) {
     pageNumbers.push(i);
   }
+
+  const [searchParams] = useSearchParams();
+  const page = searchParams.get('page') || 1;
+  const prevPage = (+page - (+page > 1 ? 1 : 0)).toString();
+  const nextPage = (+page + (+page < pageNumbers.length ? 1 : 0)).toString();
+  const prevDisabled = +page === 1;
+  const nextDisabled = +page === pageNumbers.length;
 
   return (
     <>
@@ -28,9 +33,9 @@ export const Pagination: React.FC<Props> = (
           <li>
             <SearchLink
               className={classNames(
-                'pagination-previous', { 'is-disabled': +page === 1 },
+                'pagination-previous', { 'is-disabled': prevDisabled },
               )}
-              params={{ page: (+page - (+page > 1 ? 1 : 0)).toString() }}
+              params={{ page: prevPage }}
             >
               «
             </SearchLink>
@@ -56,10 +61,8 @@ export const Pagination: React.FC<Props> = (
           <li>
             <SearchLink
               className={classNames('pagination-next',
-                { 'is-disabled': +page === pageNumbers.length })}
-              params={{
-                page: (+page + (+page < pageNumbers.length ? 1 : 0)).toString(),
-              }}
+                { 'is-disabled': nextDisabled })}
+              params={{ page: nextPage }}
             >
               »
             </SearchLink>

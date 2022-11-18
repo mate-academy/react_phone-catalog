@@ -9,6 +9,7 @@ export const Favourites = () => {
   const { favProducts } = useContext(ProductsContext);
   const [searchParams] = useSearchParams();
   const query = searchParams.get('query') || '';
+
   const visibleFavProducts = favProducts.filter(product => {
     return product.name.toLocaleLowerCase()
       .includes(query.toLocaleLowerCase());
@@ -42,10 +43,12 @@ export const Favourites = () => {
                 "
               >
                 {visibleFavProducts.map(product => (
-                  <div className="
-                    column
-                    is-one-quarter-desktop
-                    is-one-third-tablet
+                  <div
+                    key={product.id}
+                    className="
+                      column
+                      is-one-quarter-desktop
+                      is-one-third-tablet
                     "
                   >
                     <ProductCard product={product} />

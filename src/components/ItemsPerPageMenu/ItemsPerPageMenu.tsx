@@ -13,6 +13,8 @@ export const ItemsPerPageMenu: React.FC<Props> = ({ totaItems }) => {
   const perPage = searchParams.get('perPage') || totaItems;
   const [dropdownIsActive, setDropdownIsActive] = useState(false);
   const itemsPerPageMenuWidth = '13vmax';
+  const dropdownHandler = () => setDropdownIsActive(!dropdownIsActive);
+
   const menuRef = UseClickOutside(() => {
     setDropdownIsActive(false);
   });
@@ -35,9 +37,7 @@ export const ItemsPerPageMenu: React.FC<Props> = ({ totaItems }) => {
             className="button is-flex is-justify-content-space-between"
             aria-haspopup="true"
             aria-controls="dropdown-menu"
-            onClick={() => {
-              setDropdownIsActive(!dropdownIsActive);
-            }}
+            onClick={dropdownHandler}
           >
             <span className="has-text-weight-semibold">
               {+perPage === totaItems ? 'All' : perPage}
@@ -64,9 +64,7 @@ export const ItemsPerPageMenu: React.FC<Props> = ({ totaItems }) => {
               <SearchLink
                 className="dropdown-item has-text-weight-semibold"
                 params={{ perPage: totaItems.toString(), page: '1' }}
-                onClick={() => {
-                  setDropdownIsActive(!dropdownIsActive);
-                }}
+                onClick={dropdownHandler}
               >
                 All
               </SearchLink>
@@ -75,9 +73,7 @@ export const ItemsPerPageMenu: React.FC<Props> = ({ totaItems }) => {
                   className="dropdown-item has-text-weight-semibold"
                   key={item}
                   params={{ perPage: item, page: '1' }}
-                  onClick={() => {
-                    setDropdownIsActive(!dropdownIsActive);
-                  }}
+                  onClick={dropdownHandler}
                 >
                   {item}
                 </SearchLink>

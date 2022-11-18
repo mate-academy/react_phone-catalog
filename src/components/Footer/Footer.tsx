@@ -9,6 +9,16 @@ export const Footer = () => {
   const [isContacts, setIsContacts] = useState(false);
   const [isRights, setIsRights] = useState(false);
 
+  const contactsHandler = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+    setIsContacts(!isContacts);
+  };
+
+  const rightsHandler = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+    setIsRights(!isRights);
+  };
+
   return (
     <section style={{ boxShadow: '0px -1px 0px #e2e6e9' }} className="section">
       <div className="container">
@@ -58,10 +68,7 @@ export const Footer = () => {
                 is-flex
                 is-align-items-center
               "
-              onClick={(event) => {
-                event.preventDefault();
-                setIsContacts(!isContacts);
-              }}
+              onClick={contactsHandler}
             >
               <p>CONTACTS</p>
             </a>
@@ -74,10 +81,7 @@ export const Footer = () => {
                 is-flex
                 is-align-items-center
               "
-              onClick={(event) => {
-                event.preventDefault();
-                setIsRights(!isRights);
-              }}
+              onClick={rightsHandler}
             >
               <p>RIGHTS</p>
             </a>

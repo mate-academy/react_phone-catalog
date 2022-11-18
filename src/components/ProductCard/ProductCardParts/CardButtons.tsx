@@ -13,12 +13,28 @@ export const CardButtons: React.FC<Props> = ({ product }) => {
     cart,
     setCart,
   } = useContext(ProductsContext);
+
   const isFavourite = favProducts.some(
     favProduct => favProduct.id === product.id,
   );
+
   const isCartItem = cart.some(
     cartitem => cartitem.id === product.id,
   );
+
+  const removeFromCart = () => {
+    setCart(cart.filter(cartItem => cartItem.id !== product.id));
+  };
+
+  const addToCart = () => {
+    setCart([...cart, { ...product, quantity: 1 }]);
+  };
+
+  const handleFavorites = () => {
+    setFavProducts(isFavourite
+      ? favProducts.filter(favProduct => favProduct.id !== product.id)
+      : [...favProducts, product]);
+  };
 
   return (
     <p className="buttons">
@@ -32,9 +48,7 @@ export const CardButtons: React.FC<Props> = ({ product }) => {
           has-background-white
           has-text-success
          "
-          onClick={() => {
-            setCart(cart.filter(cartItem => cartItem.id !== product.id));
-          }}
+          onClick={removeFromCart}
         >
           Added to cart
         </button>
@@ -48,9 +62,7 @@ export const CardButtons: React.FC<Props> = ({ product }) => {
           has-background-dark
           has-text-light
          "
-          onClick={() => {
-            setCart([...cart, { ...product, quantity: 1 }]);
-          }}
+          onClick={addToCart}
         >
           Add to cart
         </button>
@@ -58,11 +70,7 @@ export const CardButtons: React.FC<Props> = ({ product }) => {
       <button
         type="button"
         className="button"
-        onClick={() => {
-          setFavProducts(isFavourite
-            ? favProducts.filter(favProduct => favProduct.id !== product.id)
-            : [...favProducts, product]);
-        }}
+        onClick={handleFavorites}
       >
         <span className="icon">
           {isFavourite ? (

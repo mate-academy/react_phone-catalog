@@ -4,6 +4,7 @@ import { ProductsContext } from '../../../ProductsContext';
 
 export const CartAndFavButtons = () => {
   const { productId = '' } = useParams();
+
   const {
     products,
     favProducts,
@@ -11,13 +12,28 @@ export const CartAndFavButtons = () => {
     cart,
     setCart,
   } = useContext(ProductsContext);
+
   const currentProduct = products.filter(
     product => product.id === productId,
   )[0];
-  const isFavourite = favProducts.some(x => x.id === currentProduct?.id);
+
   const isCartItem = cart.some(
     cartitem => cartitem.id === currentProduct?.id,
   );
+
+  const removeFromCart = () => {
+    setCart(cart.filter(cartItem => cartItem.id !== currentProduct.id));
+  };
+
+  const addToCart = () => setCart([...cart, currentProduct]);
+
+  const isFavourite = favProducts.some(x => x.id === currentProduct?.id);
+
+  const favoritesHandler = () => {
+    setFavProducts(isFavourite
+      ? favProducts.filter(x => x.id !== currentProduct.id)
+      : [...favProducts, currentProduct]);
+  };
 
   return (
     <p className="buttons">
@@ -30,9 +46,7 @@ export const CartAndFavButtons = () => {
           has-background-white
           has-text-success
          "
-          onClick={() => {
-            setCart(cart.filter(cartItem => cartItem.id !== currentProduct.id));
-          }}
+          onClick={removeFromCart}
         >
           Added to cart
         </button>
@@ -45,9 +59,7 @@ export const CartAndFavButtons = () => {
           has-background-dark
           has-text-light
          "
-          onClick={() => {
-            setCart([...cart, currentProduct]);
-          }}
+          onClick={addToCart}
         >
           Add to cart
         </button>
@@ -55,11 +67,7 @@ export const CartAndFavButtons = () => {
       <button
         type="button"
         className="button"
-        onClick={() => {
-          setFavProducts(isFavourite
-            ? favProducts.filter(x => x.id !== currentProduct.id)
-            : [...favProducts, currentProduct]);
-        }}
+        onClick={favoritesHandler}
       >
         <span className="icon is-small">
           {isFavourite ? (

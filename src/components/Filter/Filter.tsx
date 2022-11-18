@@ -6,6 +6,13 @@ export const Filter: React.FC = () => {
   const query = searchParams.get('query') || '';
   const location = useLocation().pathname.split('/').filter(x => x).join('');
 
+  const filterHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+    searchParams.set('page', '1');
+    setSearchParams(getSearchWith(searchParams, {
+      query: event.target.value || null,
+    }));
+  };
+
   return (
     <div className="
       control
@@ -19,12 +26,7 @@ export const Filter: React.FC = () => {
         type="search"
         defaultValue={query}
         placeholder={`search in ${location}`}
-        onChange={(event) => {
-          searchParams.set('page', '1');
-          setSearchParams(getSearchWith(searchParams, {
-            query: event.target.value || null,
-          }));
-        }}
+        onChange={filterHandler}
       />
       <i className="fas fa-search" />
     </div>

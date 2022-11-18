@@ -3,9 +3,14 @@ import { useContext } from 'react';
 import { NoProductsWaring } from '../../components/NoProductsWaring';
 import { ReturnButton } from '../../components/ProductDetails/ProductParts/ReturnButton';
 import { ProductsContext } from '../../ProductsContext';
+import { Product } from '../../types/Product';
 
 export const CartPage = () => {
   const { cart, setCart } = useContext(ProductsContext);
+
+  const removeFromCart = (cartItem: Product) => {
+    setCart(cart.filter(cartProduct => cartProduct.id !== cartItem.id));
+  };
 
   const handleIncrement = (cardId: string) => {
     setCart(cartItem => cartItem.map(item => (cardId === item.id ? {
@@ -40,7 +45,7 @@ export const CartPage = () => {
                         type="button"
                         className="button"
                         onClick={() => {
-                          setCart(cart.filter(cartProduct => cartProduct.id !== cartItem.id));
+                          removeFromCart(cartItem);
                         }}
                       >
                         <span className="icon">

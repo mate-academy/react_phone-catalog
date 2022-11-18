@@ -93,7 +93,10 @@ export const ReactSlider: React.FC<Props> = ({ products, title }) => {
 
       <Slider className="test2" ref={sliderRef} {...settings}>
         {products.map(product => (
-          <div className="column px-3 py-0">
+          <div
+            key={product.id}
+            className="column px-3 py-0"
+          >
             <ProductCard product={product} />
           </div>
         ))}

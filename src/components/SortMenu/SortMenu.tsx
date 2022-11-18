@@ -9,6 +9,8 @@ export const SortMenu = () => {
   const [dropdownIsActive, setDropdownIsActive] = useState(false);
   const [searchParams] = useSearchParams();
   const sort = searchParams.get('sort') || 'newest';
+  const sortMenuHandler = () => setDropdownIsActive(!dropdownIsActive);
+
   const menuRef = UseClickOutside(() => {
     setDropdownIsActive(false);
   });
@@ -18,10 +20,11 @@ export const SortMenu = () => {
   return (
     <div>
       <p className="
-                has-text-grey-light
-                is-size-7
-                has-text-weight-bold
-                mb-1"
+        has-text-grey-light
+        is-size-7
+        has-text-weight-bold
+        mb-1
+      "
       >
         Sort by
       </p>
@@ -36,9 +39,7 @@ export const SortMenu = () => {
             className="button is-flex is-justify-content-space-between"
             aria-haspopup="true"
             aria-controls="dropdown-menu"
-            onClick={() => {
-              setDropdownIsActive(!dropdownIsActive);
-            }}
+            onClick={sortMenuHandler}
           >
             <span className="has-text-weight-semibold">
               {[sort[0].toLocaleUpperCase(),
@@ -67,9 +68,7 @@ export const SortMenu = () => {
                 className="dropdown-item has-text-weight-semibold"
                 key={sortType}
                 params={{ sort: sortType }}
-                onClick={() => {
-                  setDropdownIsActive(!dropdownIsActive);
-                }}
+                onClick={sortMenuHandler}
               >
                 {[sortType[0].toLocaleUpperCase(),
                   ...sortType.split('').slice(1)]}

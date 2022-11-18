@@ -15,7 +15,10 @@ export const ImagePart: React.FC<Props> = ({
     <div className="columns">
       <div className="column is-one-quarter is-flex-mobile">
         {product?.images.slice(0, 3).map((image, i) => (
-          <div className="box p-2 m-0 is-shadowless">
+          <div
+            key={product.id}
+            className="box p-2 m-0 is-shadowless"
+          >
             <button
               type="button"
               className="productDetails__image p-1"

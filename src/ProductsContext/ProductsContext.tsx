@@ -28,8 +28,11 @@ type Props = {
 
 export const ProductsProvider: React.FC<Props> = ({ children }) => {
   const [products, setProducts] = useState<Product[] | []>([]);
-  // eslint-disable-next-line max-len
-  const [favProducts, setFavProducts] = UseLocalStorage<Product[]>('favProducts', []);
+
+  const [favProducts, setFavProducts] = UseLocalStorage<Product[]>(
+    'favProducts', [],
+  );
+
   const [cart, setCart] = UseLocalStorage<Product[]>('cart', []);
 
   const fetchProducts = async () => {
@@ -42,33 +45,49 @@ export const ProductsProvider: React.FC<Props> = ({ children }) => {
     fetchProducts();
   }, []);
 
+  const sortProducts = (productsToSort: Product[], sort: string): Product[] => {
+    return productsToSort.sort((product1, product2) => {
+      switch (sort) {
+        case 'newest':
+          return +product2.age - +product1.age;
+        case 'priceDown':
+          return product2.price - product1.price;
+        case 'priceUp':
+          return product1.price - product2.price;
+        case 'discount':
+          return product2.discount - product1.discount;
+        default:
+          return 0;
+      }
+    });
+  };
+
+  const filterProducts = (
+    productsToFilter: Product[],
+    query: string,
+  ): Product[] => {
+    return productsToFilter.filter(product => {
+      return product.name.toLocaleLowerCase()
+        .includes(query.toLocaleLowerCase());
+    });
+  };
+
   const productsList = (type: string, sort: string, query: string) => {
-    return [...products].filter(product => product.type === type)
-      .map((product: Product) => ({
-        ...product,
-        newPrice: (
-          product.discount
-            ? (product.price - ((product.discount * product.price) / 100))
-              .toString()
-            : null
-        ),
-      })).sort((product1, product2) => {
-        switch (sort) {
-          case 'newest':
-            return +product2.age - +product1.age;
-          case 'priceDown':
-            return product2.price - product1.price;
-          case 'priceUp':
-            return product1.price - product2.price;
-          case 'discount':
-            return product2.discount - product1.discount;
-          default:
-            return 0;
-        }
-      }).filter(product => {
-        return product.name.toLocaleLowerCase()
-          .includes(query.toLocaleLowerCase());
-      });
+    const productsWithPrice = [...products].filter(
+      product => product.type === type,
+    ).map((product: Product) => ({
+      ...product,
+      newPrice: (
+        product.discount
+          ? (product.price - ((product.discount * product.price) / 100))
+            .toString()
+          : null
+      ),
+    }));
+
+    const sortedProducts = sortProducts(productsWithPrice, sort);
+
+    return filterProducts(sortedProducts, query);
   };
 
   const contextValue = useMemo(() => {

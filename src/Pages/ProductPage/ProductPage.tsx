@@ -24,12 +24,15 @@ export const ProductPage: React.FC<Props> = ({ type }) => {
   const indexOfLastItem = +page * +perPage;
   const indexOfFirstItem = indexOfLastItem - +perPage;
   const paginationHidden = +perPage >= products.length;
+
   const totaItems = useMemo(() => {
     return products.length;
   }, [products]);
+
   const currentProducts = useCallback((product: Product[]) => {
     return product.slice(indexOfFirstItem, indexOfLastItem);
   }, [products, sort, query, indexOfFirstItem, indexOfLastItem]);
+
   const title = (value: string) => {
     switch (value) {
       case 'phone':
@@ -75,17 +78,19 @@ export const ProductPage: React.FC<Props> = ({ type }) => {
               </div>
 
               <div className="
-                columns
-                is-mobile
-                is-multiline
+                  columns
+                  is-mobile
+                  is-multiline
                 "
               >
                 {currentProducts(products).map(phone => (
-                  <div className="
-                column
-                is-one-quarter-desktop
-                is-one-third-tablet
-                "
+                  <div
+                    className="
+                      column
+                      is-one-quarter-desktop
+                      is-one-third-tablet
+                    "
+                    key={phone.id}
                   >
                     <ProductCard product={phone} />
                   </div>
