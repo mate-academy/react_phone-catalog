@@ -50,12 +50,16 @@ export const ProductsProvider: React.FC<Props> = ({ children }) => {
       switch (sort) {
         case 'newest':
           return +product2.age - +product1.age;
+
         case 'priceDown':
           return product2.price - product1.price;
+
         case 'priceUp':
           return product1.price - product2.price;
+
         case 'discount':
           return product2.discount - product1.discount;
+
         default:
           return 0;
       }

@@ -22,7 +22,7 @@ export const BreadCrumb = () => {
           </Link>
         </li>
         {location.map(item => (
-          <li>
+          <li key={item}>
             <Link to={`/${item}`} className="has-text-grey-light">
               {breadcrumbItem(item)}
             </Link>
