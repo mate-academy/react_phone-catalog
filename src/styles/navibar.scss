@@ -64,4 +64,28 @@
       display: none;
     }
   }
+
+  &__transition {
+    &-enter {
+      opacity: 0;
+    }
+
+    &-enter-active {
+      opacity: 1;
+      animation: growDown 300ms ease-in-out forwards;
+      transform-origin: top center;
+
+      @keyframes growDown {
+        0% {
+          transform: scaleY(0);
+        }
+        80% {
+          transform: scaleY(1.1);
+        }
+        100% {
+          transform: scaleY(1);
+        }
+      }
+    }
+  }
 }

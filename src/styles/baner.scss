@@ -9,6 +9,9 @@
   @include toTablet {
     height: var(--baner-heightTablet);
   }
+  @include toMobile {
+    height: var(--baner-heightTablet);
+  }
 
   &__container {
     width: calc(
@@ -27,6 +30,9 @@
     height: var(--baner-height);
 
     @include toTablet {
+      height: var(--baner-heightTablet);
+    }
+    @include toMobile {
       height: var(--baner-heightTablet);
     }
     background-size: cover;
