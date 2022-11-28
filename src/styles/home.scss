@@ -23,26 +23,6 @@
       height: 10px;
     }
   }
-}
-
-.hot-prise {
-  &__title {
-    padding-bottom: 6px;
-  }
-}
-
-.slider {
-  padding-bottom: 13px;
-  margin-bottom: 82px;
-  &__product {
-    height: 400px;
-    width: auto;
-    margin: 0 auto;
-
-    @include max-winth740px {
-      height: 200px;
-    }
-  }
 
   &-slider {
     display: flex;
@@ -103,6 +83,26 @@
       & button {
         background: $primary;
       }
+    }
+  }
+}
+
+.hot-prise {
+  &__title {
+    padding-bottom: 6px;
+  }
+}
+
+.slider {
+  padding-bottom: 13px;
+  margin-bottom: 82px;
+  &__product {
+    height: 400px;
+    width: auto;
+    margin: 0 auto;
+
+    @include max-winth740px {
+      height: 200px;
     }
   }
 }
