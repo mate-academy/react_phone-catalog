@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { ButtonBack } from '../Blocs';
 import { Context } from '../context';
-import { CartItem } from './CartItem';
+import { CartItem } from '../CartItem/CartItem';
 
 export const Cart: React.FC = () => {
   const { cart } = useContext(Context);
