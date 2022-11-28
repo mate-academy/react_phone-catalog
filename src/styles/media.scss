@@ -1,0 +1,17 @@
+@mixin max-winth1100px {
+  @media screen and (max-width: 1100px) {
+    @content;
+  }
+}
+
+@mixin max-winth740px {
+  @media screen and (max-width: 810px) {
+    @content;
+  }
+}
+
+@mixin max-winth400px {
+  @media screen and (max-width: 550px) {
+    @content;
+  }
+}

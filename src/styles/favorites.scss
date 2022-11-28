@@ -1,0 +1,24 @@
+.favorites {
+  &__list {
+    margin-top: 40px;
+    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto;
+
+    @include max-winth1100px {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include max-winth740px {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include max-winth400px {
+      grid-template-columns: 1fr;
+    }
+    
+    gap: 16px;
+  }
+
+}

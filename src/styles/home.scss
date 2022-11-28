@@ -1,0 +1,186 @@
+
+.slick {
+  &-next {
+    &::before {
+      content: "";
+      margin: 0 auto;
+      opacity: 1;
+      display: block;
+      background: url("../svg/arrow-rigth.svg");
+      width: 6px;
+      height: 10px;
+    }
+  }
+
+  &-prev {
+    &::before {
+      content: "";
+      margin: 0 auto;
+      opacity: 1;
+      display: block;
+      background: url("../svg/arrow-left.svg");
+      width: 6px;
+      height: 10px;
+    }
+  }
+
+  &-slider {
+    display: flex;
+  }
+  &-list {
+    display: block;
+    margin: 0 16px;
+    max-width: 1040px;
+    min-width: 1px;
+    flex-shrink: 2;
+  }
+
+  &-arrow {
+    background: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    border: 1px solid $icons;
+    position: static;
+    transform: translate(0, 0);
+    width: 32px;
+    height: 400px;
+    transition: 0.3s;
+
+    @include max-winth740px {
+      height: 200px;
+    }
+  }
+
+  &-arrow:hover {
+    border: 1px solid $secondary;
+    background: $hoverBg;
+  }
+
+  &-dots {
+    bottom: 0;
+    height: 4px;
+    & li {
+      width: 14px;
+      height: 4px;
+      margin: 0 7px;
+
+      & button {
+        width: 14px;
+        height: 4px;
+        background: $elements;
+        padding: 0;
+
+        &::before {
+          content: "";
+          display: none;
+        }
+      }
+    }
+  
+    .slick-active {
+      & button {
+        background: $primary;
+      }
+    }
+  }
+}
+
+.hot-prise {
+  &__title {
+    padding-bottom: 6px;
+  }
+}
+
+.slider {
+  padding-bottom: 13px;
+  margin-bottom: 82px;
+  &__product {
+    height: 400px;
+    width: auto;
+    margin: 0 auto;
+
+    @include max-winth740px {
+      height: 200px;
+    }
+  }
+}
+
+.slider-cards {
+  grid-template-rows: 42px 507px;
+  max-width: 1200px;
+
+  .slick {
+    &-slide {
+      margin: 0 8px;
+    }
+    &-track {
+      display: flex;
+      
+
+      &::before {
+        display: none;
+      }
+    }
+
+    &-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: -60px;
+      
+      border: 1px solid $icons;
+      transform: translate(0, 0);
+      width: 32px;
+      height: 32px;
+      transition: 0.3s;
+
+      &:hover {
+        border: 1px solid $secondary;
+        background: $hoverBg;
+      }
+    }
+
+    &-next {
+      right: 0;
+    }
+  
+    &-prev {
+      left: calc(100% - 80px);
+    }
+  }
+}
+
+.categorys {
+  display: flex;
+  gap: 16px;
+
+  @include max-winth740px {
+    flex-direction: column;
+  }
+}
+
+.category {
+  &__item {
+    transition: 0.3s;
+    &:hover {
+      transform: scale(1.01);
+    }
+  }
+
+  &__img {
+    width: 100%;
+    height: auto;
+  }
+
+  &__text {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+
+    color: $secondary;
+
+  }
+}
