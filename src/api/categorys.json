@@ -2,19 +2,16 @@
   {
     "imageUrl": "img/categorys/phones.jpg",
     "title": "Mobile phones",
-    "text": "95 models",
     "link": "phones"
   },
   {
     "imageUrl": "img/categorys/tablets.jpg",
     "title": "Tablets",
-    "text": "24 models",
     "link": "tablets"
   },
   {
     "imageUrl": "img/categorys/accessories.jpg",
     "title": "Accessories",
-    "text": "100 models",
     "link": "accessories"
   }
 ]

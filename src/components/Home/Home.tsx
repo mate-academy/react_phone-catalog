@@ -143,7 +143,7 @@ export const Home: React.FC = () => {
 
         <div className="categorys">
           {categorusFromApi.map(category => (
-            <div key={category.text}>
+            <div key={category.title}>
               <Category category={category} />
             </div>
           ))}

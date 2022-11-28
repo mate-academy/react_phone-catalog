@@ -27,10 +27,10 @@
   &-slider {
     display: flex;
   }
+
   &-list {
     display: block;
     margin: 0 16px;
-    max-width: 1040px;
     min-width: 1px;
     flex-shrink: 2;
   }
@@ -45,6 +45,7 @@
     position: static;
     transform: translate(0, 0);
     width: 32px;
+    padding: 0 12px;
     height: 400px;
     transition: 0.3s;
 
