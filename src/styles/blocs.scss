@@ -6,6 +6,8 @@
   height: 32px;
   border: 1px solid $icons;
   transition: 0.3s;
+  cursor: pointer;
+
   &::before {
     content: "";
     display: block;
@@ -59,6 +61,7 @@
     padding: 10px 0 9px 12px;
     text-align: start;
     transition: 0.3s;
+    cursor: pointer;
 
     &:hover {
       border: 1px solid $primary;
@@ -93,6 +96,7 @@
     transition: 0.4s;
 
     color: $secondary;
+    cursor: pointer;
 
     &:hover {
       color: $primary;

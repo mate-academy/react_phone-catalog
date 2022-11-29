@@ -1,7 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 export const Footer: React.FC = () => {
+  const location = useLocation();
+
   return (
     <footer className="footer">
       <div className="container">
@@ -80,15 +82,18 @@ export const Footer: React.FC = () => {
             <label htmlFor="button--toTop" className="footer__button_text">
               Back to top
             </label>
-            <button
-              type="button"
+            <Link
+              to={`${location.pathname}`}
+              // type="button"
               id="button--toTop"
               className="button footer__button_to_top"
               aria-label="Back to top"
               onClick={() => {
-                document.documentElement.scrollTop = 0;
+                window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
               }}
-            />
+            >
+              <i aria-hidden="true" />
+            </Link>
           </li>
         </ul>
       </div>

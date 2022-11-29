@@ -36,6 +36,10 @@
     max-height: 128px;
     border: 1px solid $elements;
 
+    &__delete {
+      cursor: pointer;
+    }
+
     &__img {
       width: 66px;
       height: auto;
@@ -63,6 +67,7 @@
     }
 
     &__button {
+
       &::before {
         display: none;
       }
@@ -94,6 +99,7 @@
     }
 
     &__button {
+      cursor: pointer;
       width: 100%;
       height: 48px;
       background: $primary;

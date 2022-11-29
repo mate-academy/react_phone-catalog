@@ -36,7 +36,12 @@ export const Cart: React.FC = () => {
             items
           </h5>
           <div className="line" />
-          <div className="cart__totalPrice__button">Checkout</div>
+          <button
+            type="button"
+            className="cart__totalPrice__button"
+          >
+            Checkout
+          </button>
         </div>
       </div>
     </main>
