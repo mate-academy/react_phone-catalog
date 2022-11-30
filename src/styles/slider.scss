@@ -1,0 +1,39 @@
+.slider {
+  margin-bottom: 80px;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__button {
+    @include createButton(32px, 32px);
+    background-image: url("../img/icons/default-button.svg");
+    background-color: white;
+
+    &--prev {
+      transform: scaleX(-1);
+    }
+
+    &:hover {
+      background-image: url("../img/icons/hover-button.svg");
+    }
+
+    &:disabled {
+      background-image: url("../img/icons/disabled-button.svg");
+    }
+  }
+
+  &__products {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+  }
+}

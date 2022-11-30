@@ -1,0 +1,76 @@
+.product {
+  padding: 32px 24px 24px 24px;
+  border: 1px solid #E2E6E9;
+  box-sizing: border-box;
+
+  &__img {
+    display: block;
+    width: 208px;
+    height: 208px;
+    margin: 0 auto;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    @extend %bodyText;
+    margin-bottom: 6px;
+    min-width: 222px;
+    height: 42px;
+  }
+
+  &__price {
+    height: 30px;
+    padding-bottom: 6px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #E2E6E9;
+  }
+
+  &__price-current {
+    @extend %boldH2;
+    margin-right: 8px;
+  }
+
+  &__price-full {
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 28px;
+    color: $secondaryColor;
+    text-decoration-line: line-through;
+  }
+
+  &__info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+
+    &:last-child {
+      margin-bottom: 16px;
+    }
+  }
+
+  &__info-title {
+    @extend %smallText;
+  }
+
+  &__info-description {
+    @extend %smallText;
+    color: $primaryColor;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__add-to-cart {
+    @include createButton(176px, 40px);
+    background-color: $primaryColor;
+    @extend %buttonText;
+  }
+
+  &__add-to-favorites {
+    @include createButton(40px, 40px);
+    background-image: url("../img/icons/add-to-favorites.svg");
+    background-color: white;
+  }
+}

@@ -1,0 +1,18 @@
+.top {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+
+  &__title {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: $secondaryColor;
+  }
+
+  &__button {
+    @include createButton(32px, 32px);
+    background-image: url("../img/icons/top-button.svg");
+  }
+}

@@ -1,0 +1,54 @@
+.category {
+
+  &__container {
+    width: 368px;
+    height: 368px;
+    overflow: hidden;
+    margin-bottom: 24px;
+
+    &--phones {
+      background-color: #FCDBC1;
+    }
+
+    &--tablets {
+      background-color: #8D8D92;
+    }
+
+    &--accessories {
+      background-color: #973D5F;
+    }
+  }
+
+  &__title {
+    @extend %h3Title;
+    text-decoration: none;
+  }
+
+  &__description {
+    display: block;
+    @extend %bodyText;
+  }
+
+  &__photo {
+    display: block;
+    width: 368px;
+    height: 368px;
+    background-position: right center;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    @include hover(transform, scale(1.15));
+
+    &--phones {
+      background-image: url("../img/categories/phones.png");
+    }
+
+    &--tablets {
+      background-image: url("../img/categories/tablets.png");
+    }
+
+    &--accessories {
+      background-image: url("../img/categories/accessories.png");
+    }
+  }
+}

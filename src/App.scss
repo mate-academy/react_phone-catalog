@@ -1,1 +1,22 @@
-// not empty
+@import "reset.css";
+
+@import "./styles/_utils";
+
+@import "./styles/page";
+@import "./styles/header";
+@import "./styles/icon";
+@import "./styles/logo";
+@import "./styles/nav";
+@import "./styles/constainer";
+@import "styles/content-wrapper";
+@import "./styles/footer";
+@import "./styles/top";
+@import "./styles/product";
+@import "./styles/slider";
+@import "./styles/title";
+@import "./styles/categories";
+@import "./styles/category";
+
+.phones {
+  height: 500px;
+}

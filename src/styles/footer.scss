@@ -1,0 +1,22 @@
+.footer {
+  box-shadow: 0px -1px 0px #E2E6E9;
+
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__list {
+    display: flex;
+    gap: 64px;
+  }
+
+  &__item {
+    padding: 42px 0;
+  }
+
+  &__link {
+    @extend %nav-link;
+  }
+}
