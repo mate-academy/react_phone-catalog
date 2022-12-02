@@ -1,0 +1,46 @@
+@import "../../colors";
+
+.action-buttons {
+  &__container {
+    display: flex;
+    height: 100%;
+  }
+
+  &__to-cart {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    flex: 1;
+    margin-right: 8px;
+    color: $color-white;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    background-color: $color-primary-dark-gray;
+    transition: all 0.5s;
+    border: none;
+  
+    &--in-cart {
+      color: $color-green;
+      background-color: $color-white;
+      border: 1px solid $color-elements-light-gray;
+    }
+  
+    &:hover {
+      cursor: pointer;
+      box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+    }
+  }
+
+  &__to-favs {
+    padding: 0;
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    background-image: url(../../icons/favs.png);
+  
+    &--in-favs {
+      background-image: url(../../icons/heart_filled.png);
+    }
+  }
+}

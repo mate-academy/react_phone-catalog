@@ -1,0 +1,13 @@
+@import "../../colors";
+
+.product-details-page {
+  padding-top: 24px;
+
+  &__breadcrumbs {
+    margin-bottom: 44px;
+  }
+
+  &__back-button {
+    margin-bottom: 19px;
+  }
+}
