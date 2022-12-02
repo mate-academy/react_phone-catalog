@@ -1,0 +1,22 @@
+.slider-button {
+  background-color: white;
+  border: 1px solid #B4BDC4;
+  box-sizing: border-box;
+  padding: 0 8px;
+
+  &__icon {
+    display: block;
+    width: 16px;
+    height: 16px;
+
+    &--prev {
+      background-image: url("../img/icons/arrow-left.svg");
+    }
+
+    &--next {
+      background-image: url("../img/icons/arrow-right.svg");
+    }
+  }
+
+
+}

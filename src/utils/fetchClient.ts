@@ -2,6 +2,12 @@ const BASE_URL = 'https://mate-academy.github.io/react_phone-catalog/api';
 
 type RequestMethod = 'GET' | 'POST' | 'PATCH' | 'DELETE';
 
+const wait = (delay: number) => {
+  return new Promise(resolve => {
+    setTimeout(resolve, delay);
+  });
+};
+
 function request<T>(
   url: string,
   method: RequestMethod = 'GET',
@@ -16,7 +22,8 @@ function request<T>(
     };
   }
 
-  return fetch(BASE_URL + url, options)
+  return wait(0)
+    .then(() => fetch(BASE_URL + url, options))
     .then(response => {
       if (!response.ok) {
         throw new Error();
