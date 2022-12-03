@@ -1,0 +1,217 @@
+@import "../../styles/utils/vars.scss";
+@import "../../styles/utils/typography.scss";
+@import "../../styles/utils/mixins.scss";
+
+.HomePage {
+  // carousel //
+  &__carousel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @media (min-width: 320px) and (max-width: 499px) {
+      display: none;
+    }
+  }
+
+  &__carousel-banners {
+    height: 400px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    @media (min-width: 500px) and (max-width: 767px) {
+      height: 286px;
+    }
+  }
+
+  &__bannersArrow {
+    @include buttonArrow;
+    height: 100%;
+
+    @include tablet {
+      height: 100%;
+    }
+  }
+
+  &__banners-block {
+    max-width: $bannerWidth;
+    overflow: hidden;
+  }
+
+  &__visibleBanner {
+    max-width: $bannerWidth;
+    height: 100%;
+    display: flex;
+    transition: translate;
+    transition-property: transform;
+    transition-duration: 500ms;
+    transition-timing-function: ease-in-out;
+
+    @media (min-width: 500px) and (max-width: 767px) {
+      max-width: 384px;
+    }
+  }
+
+  &__banner {
+    min-width: $bannerWidth;
+    height: 100%;
+
+    @media (min-width: 500px) and (max-width: 767px) {
+      min-width: 384px;
+    }
+
+    &--1 {
+      background: url("../../images/Banner.png") no-repeat;
+      background-size: cover;
+    }
+
+    &--2 {
+      background: url("../../images/Banner2.png") no-repeat;
+      background-size: cover;
+    }
+
+    &--3 {
+      background: url("../../images/Banner3.png") no-repeat;
+      background-size: cover;
+    }
+  }
+
+  &__carousel-labels {
+    display: flex;
+    gap: 14px;
+    margin-top: 18px;
+    height: 4px;
+  }
+
+  &__carousel-label {
+    width: 14px;
+    height: 100%;
+    background-color: $elements;
+
+    &--active {
+      background-color: $primary;
+    }
+  }
+
+  &__block-title {
+    @include h1;
+    color: $primary;
+    margin: 0;
+  }
+
+  &__shopByCategory {
+    display: flex;
+    flex-direction: column;
+    margin-top: 80px;
+
+    @include iPad {
+      margin-top: 60px;
+    }
+
+    @media (min-width: 500px) and (max-width: 767px) {
+      margin-top: 40px;
+    }
+
+    @media (min-width: 320px) and (max-width: 499px) {
+      margin-top: 30px;
+    }
+  }
+
+  &__categories {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 24px;
+
+    @include mobile {
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    @media (min-width: 320px) and (max-width: 449px) {
+      padding-top: 16px;
+    }
+  }
+
+  &__category {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    width: 368px;
+    height: max-content;
+    text-decoration: none;
+
+    @include tablet {
+      width: 268px;
+    }
+
+    @include iPad {
+      width: 226px;
+    }
+
+    @include mobile {
+      align-items: center;
+    }
+
+    @media (min-width: 320px) and (max-width: 499px) {
+      width: 100%;
+    }
+  }
+
+  &__categoryImg {
+    height: 368px;
+    width: 100%;
+
+    @include tablet {
+      height: 268px;
+    }
+
+    @include iPad {
+      height: 226px;
+    }
+
+    @media (min-width: 500px) and (max-width: 767px) {
+      width: 168px;
+      height: 168px;
+    }
+
+    @media (min-width: 320px) and (max-width: 499px) {
+      width: 272px;
+      height: 272px;
+    }
+
+    &--phones {
+      background: url("../../images/PhonesCategory.png") no-repeat center;
+      background-size: cover;
+    }
+
+    &--tablets {
+      background: url("../../images/TabletsCategory.png") no-repeat center;
+      background-size: cover;
+    }
+
+    &--acces {
+      background: url("../../images/AccessoriesCategory.png") no-repeat center;
+      background-size: cover;
+    }
+  }
+
+  &__category-name {
+    @include h3;
+    color: $primary;
+    padding-top: 24px;
+    text-decoration: none;
+
+    @include mobile {
+      padding-top: 8px;
+    }
+  }
+
+  &__category-quantity {
+    @include bodyText;
+    color: $secondary;
+    padding-top: 4px;
+    text-decoration: none;
+  }
+}

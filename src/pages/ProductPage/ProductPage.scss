@@ -1,0 +1,110 @@
+@import "../../styles/utils/vars.scss";
+@import "../../styles/utils/typography.scss";
+@import "../../styles/utils/mixins.scss";
+
+.ProductPage {
+  &__title {
+    padding-top: 40px;
+    @include h1;
+    color: $primary;
+
+    @include iPad {
+      padding-top: 20px;
+    }
+
+    @include mobile {
+      padding-top: 20px;
+    }
+  }
+
+  &__numberOfModels {
+    padding-top: 8px;
+    @include bodyText;
+    color: $secondary;
+  }
+
+  &__sortBlocks {
+    display: flex;
+    gap: 16px;
+    padding-top: 40px;
+
+    @include iPad {
+      padding-top: 20px;
+    }
+
+    @include mobile {
+      padding-top: 20px;
+    }
+  }
+
+  &__sortBlock {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: max-content;
+    gap: 4px;
+  }
+
+  &__sortBlock-label {
+    @include smallText;
+    color: $secondary;
+  }
+
+  &__sort-select {
+    width: 176px;
+    height: 40px;
+    border: 1px solid $icons;
+    @include bodyText;
+    color: $primary;
+
+    @media (min-width: 320px) and (max-width: 499px) {
+      width: 146px;
+    }
+  }
+
+  &__option {
+    @include bodyText;
+    color: $primary;
+    padding: 0 12px;
+    line-height: 36px;
+  }
+
+  &__items-select {
+    width: 128px;
+    height: 40px;
+    border: 1px solid $icons;
+    @include bodyText;
+    color: $primary;
+  }
+
+  &__conteiner {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 16px;
+    row-gap: 40px;
+    list-style: none;
+    padding-top: 24px;
+    transition: translate;
+    transition-property: transform;
+    transition-duration: 1000ms;
+    transition-timing-function: ease-in-out;
+
+    @include iPad {
+      row-gap: 20px;
+    }
+
+    @media (min-width: 500px) and (max-width: 767px) {
+      row-gap: 20px;
+    }
+
+    @media (min-width: 320px) and (max-width: 499px) {
+      row-gap: 12px;
+      column-gap: 12px;
+    }
+  }
+}

@@ -1,0 +1,128 @@
+@import "../../styles/utils/vars.scss";
+@import "../../styles/utils/typography.scss";
+@import "../../styles/utils/mixins.scss";
+
+.Cart {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  &__backToHome {
+    display: flex;
+    gap: 4px;
+    text-decoration: none;
+    @include smallText;
+    color: $primary;
+    align-items: center;
+  }
+
+  &__back {
+    @include bodyText;
+    color: $secondary;
+  }
+
+  &__title {
+    @include h1;
+    color: $primary;
+    padding-top: 16px;
+  }
+
+  &__isEmpty {
+    @include h2;
+    color: $primary;
+    padding-top: 24px;
+  }
+
+  &__conteiner {
+    display: flex;
+    gap: 16px;
+
+    @media (min-width: 320px) and (max-width: 1023px) {
+      flex-direction: column;
+    }
+  }
+
+  &__itemsList {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    gap: 16px;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__totalOrder {
+    display: flex;
+    flex-direction: column;
+    height: max-content;
+    width: 368px;
+    align-items: center;
+    border: 1px solid $elements;
+    padding: 24px;
+    box-sizing: border-box;
+
+    @include iPad {
+      align-self: flex-end;
+    }
+
+    @media (min-width: 500px) and (max-width: 767px) {
+      align-self: flex-end;
+      width: 280px;
+    }
+
+    @media (min-width: 320px) and (max-width: 499px) {
+      width: 100%;
+      padding: 16px;
+    }
+  }
+
+  &__sum {
+    @include h1;
+    color: $primary;
+  }
+
+  &__totalItems {
+    position: relative;
+    @include bodyText;
+    color: $secondary;
+    padding-bottom: 24px;
+    width: 100%;
+    border-bottom: 1px solid $elements;
+    text-align: center;
+
+    @media (min-width: 320px) and (max-width: 1023px) {
+      padding-bottom: 20px;
+    }
+  }
+
+  &__checkout {
+    @include button;
+    margin-top: 24px;
+    width: 320px;
+    height: 48px;
+
+    @media (min-width: 320px) and (max-width: 1023px) {
+      margin-top: 20px;
+    }
+  }
+
+  &__message {
+    position: absolute;
+    @include bodyText;
+    color: red;
+    padding: 16px;
+    right: 0;
+    top: 0;
+    box-sizing: border-box;
+
+    @media (min-width: 500px) and (max-width: 1023px) {
+      padding: 0 6px;
+      bottom: -60px;
+    }
+
+    @media (min-width: 320px) and (max-width: 499px) {
+      position: relative;
+      padding: 6px;
+    }
+  }
+}

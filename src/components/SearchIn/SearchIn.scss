@@ -1,0 +1,78 @@
+@import "../../styles/utils/vars.scss";
+@import "../../styles/utils/typography.scss";
+@import "../../styles/utils/mixins.scss";
+
+.SearchIn {
+  position: absolute;
+  top: 0;
+  right: 128px;
+
+  @include iPad {
+    right: 96px;
+  }
+
+  @media (min-width: 500px) and (max-width: 767px) {
+    right: 0;
+    top: 42px;
+  }
+
+  @media (min-width: 320px) and (max-width: 499px) {
+    right: 0;
+    top: 90px;
+  }
+
+  &__label {
+    display: flex;
+    align-items: center;
+    height: 64px;
+    width: 327px;
+    box-sizing: border-box;
+    padding: 0 24px;
+    box-shadow: -1px 0 0 $elements;
+    background: url(../../icons/Union.png) no-repeat;
+    background-size: 12px;
+    background-position: 280px;
+
+    @include iPad {
+      padding: 0 16px;
+      width: 242px;
+      background-position: 208px;
+    }
+
+    @media (min-width: 500px) and (max-width: 767px) {
+      padding: 0 12px;
+      width: 242px;
+      height: 48px;
+      background-position: 208px;
+      box-shadow: -1px 1px 1px $elements;
+    }
+
+    @media (min-width: 320px) and (max-width: 499px) {
+      padding: 0 8px;
+      width: 182px;
+      height: 42px;
+      background-position: 162px;
+      border: 1px solid $elements;
+    }
+  }
+
+  &__input {
+    border: none;
+    width: max-content;
+
+    &::placeholder {
+      @include bodyText;
+      color: $icons;
+    }
+
+    &:hover,
+    &:focus {
+      border: none;
+      outline: none;
+    }
+
+    @media (min-width: 320px) and (max-width: 499px) {
+      width: 150px;
+    }
+  }
+}
