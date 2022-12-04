@@ -1,58 +1,101 @@
-import { FC, useEffect, useState } from 'react';
+import {
+  FC, useEffect, useMemo, useRef, useState,
+} from 'react';
 
-import iphones from '../img/banners/slider-iphones.png';
-import tablets from '../img/banners/tablets.jpg';
-import accessories from '../img/banners/accessories.jpg';
 import { SliderButton } from './UI/SliderButton';
+import { sliderImages } from '../helpers/sliderImages';
 
 export const PicturesSlider: FC = () => {
   const [translateX, setTranslateX] = useState(-1040);
   const [transitionValue, setTransitionValue] = useState(500);
+  const [isDisabledButtons, setIsDisabledButtons] = useState(false);
+  const [imgWidth, setImgWidth] = useState(0);
+  const [images, setImages] = useState(sliderImages);
+  const imgContainer = useRef<HTMLDivElement | null>(null);
 
-  if (transitionValue === 0) {
-    setTimeout(() => setTransitionValue(500), 10);
-  }
+  const DEFAULT_TRANSITION = 500;
+  const AUTO_SWIPE_TIME = 5000;
 
-  const sliderConfig = {
-    imgWidth: 1040,
-    visibleProducts: 1,
-  };
+  const firstImgPosition = imgWidth * -1;
+  const lastImgPosition = useMemo(() => {
+    const imagesCountWithoutClones = images.length - 2;
 
-  const images = [
-    { title: 'iphones', link: iphones },
-    { title: 'tablets', link: tablets },
-    { title: 'accessories', link: accessories },
-  ];
+    return (imgWidth * imagesCountWithoutClones) * -1;
+  }, [imgWidth, images]);
 
-  const moveTo = (value: number) => {
-    setTimeout(() => {
-      setTransitionValue(0);
-      setTranslateX(value);
-    }, 500);
-  };
-
-  useEffect(() => {
-    if (translateX === 0) {
-      moveTo(-3120);
-    }
-
-    if (translateX === -4160) {
-      moveTo(-1040);
-    }
-  }, [translateX]);
-
-  const nextSlide = () => {
-    setTranslateX(current => current - sliderConfig.imgWidth);
-  };
-
-  const prevSlide = () => {
-    setTranslateX(current => current + sliderConfig.imgWidth);
-  };
+  const firstClonedImgPosition = 0;
+  const lastClonedImgPosition = useMemo(() => {
+    return imgWidth * (images.length - 1) * -1;
+  }, [imgWidth, images]);
 
   const sliderListStyles = {
     transform: `translateX(${translateX}px)`,
     transition: `transform ${transitionValue}ms`,
   };
+
+  const moveTo = (value: number) => {
+    setIsDisabledButtons(true);
+    setTimeout(() => {
+      setTransitionValue(0);
+      setTranslateX(value);
+    }, DEFAULT_TRANSITION);
+  };
+
+  const nextSlide = () => {
+    setTranslateX(current => current - imgWidth);
+  };
+
+  const prevSlide = () => {
+    setTranslateX(current => current + imgWidth);
+  };
+
+  const autoFlipSlides = (width: number | undefined) => {
+    if (width) {
+      setTranslateX(current => current - width);
+    }
+  };
+
+  useEffect(() => {
+    let moveSlideIntervalId: NodeJS.Timer;
+
+    if (imgContainer.current) {
+      setImgWidth(imgContainer.current?.offsetWidth);
+
+      moveSlideIntervalId = setInterval(() => autoFlipSlides(
+        imgContainer.current?.offsetWidth,
+      ), AUTO_SWIPE_TIME);
+    }
+
+    const imagesWithClones = [...images];
+
+    imagesWithClones.unshift(images[images.length - 1]);
+    imagesWithClones.push(images[0]);
+
+    setImages(imagesWithClones);
+
+    return () => {
+      clearInterval(moveSlideIntervalId);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (isDisabledButtons) {
+      setTimeout(() => {
+        setIsDisabledButtons(false);
+        setTransitionValue(DEFAULT_TRANSITION);
+      }, DEFAULT_TRANSITION * 1.05);
+    }
+  }, [isDisabledButtons]);
+
+  useEffect(() => {
+    if (translateX === firstClonedImgPosition) {
+      moveTo(lastImgPosition);
+    }
+
+    if (translateX === lastClonedImgPosition) {
+      moveTo(firstImgPosition);
+    }
+  }, [translateX]);
 
   return (
     <div className="pictures-slider">
@@ -61,27 +104,18 @@ export const PicturesSlider: FC = () => {
         height="400px"
         direction="prev"
         action={prevSlide}
+        isDisabled={isDisabledButtons}
       />
-      <div className="pictures-slider__container">
+      <div ref={imgContainer} className="pictures-slider__container">
         <div className="pictures-slider__content" style={sliderListStyles}>
-          <img
-            src={accessories}
-            alt="helpArmy"
-            className="pictures-slider__img"
-          />
           {images.map(image => (
             <img
-              key={image.link}
+              key={image.link + Math.random()}
               src={image.link}
               alt={image.title}
               className="pictures-slider__img"
             />
           ))}
-          <img
-            src={iphones}
-            alt="iphones"
-            className="pictures-slider__img"
-          />
         </div>
       </div>
       <SliderButton
@@ -89,6 +123,7 @@ export const PicturesSlider: FC = () => {
         height="400px"
         direction="next"
         action={nextSlide}
+        isDisabled={isDisabledButtons}
       />
     </div>
   );

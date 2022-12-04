@@ -8,6 +8,12 @@
     margin-bottom: 24px;
   }
 
+  &__products {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
   &__buttons {
     display: flex;
     gap: 16px;
@@ -29,11 +35,5 @@
     &:disabled {
       background-image: url("../img/icons/disabled-button.svg");
     }
-  }
-
-  &__products {
-    display: flex;
-    justify-content: space-between;
-    gap: 16px;
   }
 }

@@ -1,22 +1,21 @@
 .slider-button {
   background-color: white;
-  border: 1px solid #B4BDC4;
+  border: 1px solid #b4bdc4;
   box-sizing: border-box;
   padding: 0 8px;
 
-  &__icon {
-    display: block;
-    width: 16px;
-    height: 16px;
+  @include hover(border, 1px solid $primaryColor);
 
-    &--prev {
-      background-image: url("../img/icons/arrow-left.svg");
-    }
-
-    &--next {
-      background-image: url("../img/icons/arrow-right.svg");
-    }
+  &:disabled {
+    border: 1px solid $elementsColor;
   }
 
+  &__icon {
+    display: flex;
+    width: 16px;
+    height: 16px;
+    justify-content: center;
+    align-items: center;
+  }
 
 }

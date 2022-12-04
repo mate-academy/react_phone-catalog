@@ -4,7 +4,7 @@ import { Category } from './Category';
 
 export const CategoryList: FC = () => {
   return (
-    <div className="categories">
+    <div className="categories" data-cy="categoryLinksContainer">
       <div className="categories__header">
         <Title title="Shop by category" />
       </div>

@@ -1,10 +1,13 @@
 import { FC } from 'react';
+import arrowRight from '../../img/icons/arrow-right.svg';
+import arrowRightDisabled from '../../img/icons/arrow-right-disabled.svg';
 
 type Props = {
   width: string;
   height: string;
   direction: 'prev' | 'next';
   action: () => void;
+  isDisabled: boolean;
 };
 
 export const SliderButton: FC<Props> = (
@@ -13,6 +16,7 @@ export const SliderButton: FC<Props> = (
     height,
     direction,
     action,
+    isDisabled = false,
   },
 ) => {
   const styles = {
@@ -20,6 +24,11 @@ export const SliderButton: FC<Props> = (
     width,
     height,
     cursor: 'pointer',
+    transform: direction === 'prev' ? 'scaleX(-1)' : '',
+  };
+
+  const iconStyles = {
+    backgroundImage: `url(${isDisabled ? arrowRightDisabled : arrowRight})`,
   };
 
   return (
@@ -29,13 +38,16 @@ export const SliderButton: FC<Props> = (
       aria-label="slider-button"
       style={styles}
       onClick={action}
+      disabled={isDisabled}
     >
-      <span className={
-        `slider-button__icon
+      <span
+        style={iconStyles}
+        className={
+          `slider-button__icon
         ${(direction === 'prev')
       ? 'slider-button__icon--prev'
       : 'slider-button__icon--next'}`
-      }
+        }
       />
     </button>
   );

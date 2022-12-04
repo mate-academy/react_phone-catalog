@@ -4,6 +4,7 @@ import { Product } from '../types/Product';
 import { Title } from './UI/Title';
 import { SliderTitleLoader } from './Loaders/SliderTitleLoader';
 import { ProductCardLoader } from './Loaders/ProductCardLoader';
+import { SliderButton } from './UI/SliderButton';
 
 type Props = {
   title: string;
@@ -15,6 +16,7 @@ export const ProductsSlider: FC<Props> = (
   { title, products, isLoading },
 ) => {
   const [sliderTransform, setSliderTransform] = useState(0);
+
   const sliderConfig = {
     productsCount: products.length,
     productWithGapWidth: 288,
@@ -53,25 +55,28 @@ export const ProductsSlider: FC<Props> = (
           <>
             <Title title={title} />
             <div className="slider__buttons">
-              <button
-                type="button"
-                className="slider__button slider__button--prev"
-                aria-label="slider-button-prev"
-                onClick={prevProduct}
-                disabled={sliderTransform === 0}
+              <SliderButton
+                width="32px"
+                height="32px"
+                direction="prev"
+                action={prevProduct}
+                isDisabled={sliderTransform === 0}
               />
-              <button
-                type="button"
-                className="slider__button slider__button--next"
-                aria-label="slider-button-next"
-                onClick={nextProduct}
-                disabled={maxTransformWidth() <= Math.abs(sliderTransform)}
+              <SliderButton
+                width="32px"
+                height="32px"
+                direction="next"
+                action={nextProduct}
+                isDisabled={maxTransformWidth() <= Math.abs(sliderTransform)}
               />
             </div>
           </>
         )}
       </div>
-      <div className="slider__products" style={sliderListStyles}>
+      <div
+        className="slider__products"
+        style={sliderListStyles}
+      >
         {isLoading ? (
           <>
             <ProductCardLoader />
