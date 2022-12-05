@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams, useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { Loader } from '../../components/Loader';
 import './ProductDetailsPage.scss';
@@ -12,10 +12,6 @@ export const ProductDetailsPage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const { productId } = useParams();
-  const location = useLocation();
-
-  // eslint-disable-next-line
-  console.log(location)
 
   useEffect(() => {
     fetchCompleteDetails(productId || '')
