@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ProductActionButtons } from '../ProductActionButtons';
 import { FeaturesList } from '../FeaturesList';
-import { generateSlug } from './utils';
+import { generateSlugForProduct } from '../../helpers/utils';
 import './ProductCard.scss';
 
 export const ProductCard:React.FC<Product> = (props) => {
@@ -17,7 +17,7 @@ export const ProductCard:React.FC<Product> = (props) => {
     ram,
   } = props;
   const priceAfterDiscount = price * ((100 - discount) / 100);
-  const slug = generateSlug({ type, id });
+  const slug = generateSlugForProduct({ type, id });
 
   return (
     <div className="product-card">

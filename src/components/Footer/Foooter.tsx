@@ -4,6 +4,17 @@ import { Logo } from '../Logo';
 import './Footer.scss';
 import '../../App.scss';
 
+const FooterLink:React.FC<{ text: string }> = ({ text }) => (
+  <a
+    href="https://github.com/ArtemFedoseev"
+    rel="noreferrer"
+    target="_blank"
+    className="footer__link"
+  >
+    {text}
+  </a>
+);
+
 export const Footer = () => {
   const [hasVerticalScroll, setHasVerticalScroll] = useState(false);
   const { pathname } = useLocation();
@@ -40,9 +51,9 @@ export const Footer = () => {
             <Logo />
           </div>
           <div className="footer__links">
-            <a href="github.com" className="footer__link">github</a>
-            <a href="github.com" className="footer__link">contacts</a>
-            <a href="github.com" className="footer__link">rights</a>
+            <FooterLink text="github" />
+            <FooterLink text="contacts" />
+            <FooterLink text="rights" />
           </div>
           <div
             style={hasVerticalScroll ? {} : { visibility: 'hidden' }}
@@ -57,7 +68,10 @@ export const Footer = () => {
                 type="button"
                 className="button to-top__button"
                 onClick={() => {
-                  window.scrollTo(0, 0);
+                  window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth',
+                  });
                 }}
               >
                 {' '}

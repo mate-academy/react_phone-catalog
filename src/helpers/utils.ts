@@ -90,3 +90,25 @@ export const getSortedProducts = (products: Product[], sortBy: string) => {
 export const capitalize = (input: string) => {
   return `${input.charAt(0).toUpperCase()}${input.slice(1).toLowerCase()}`;
 };
+
+export const generateSlugForProduct = (
+  { type, id }: Pick<Product, 'type' | 'id'>,
+) => {
+  let directory: string;
+
+  switch (type) {
+    case 'phone':
+      directory = 'phones';
+      break;
+    case 'tablet':
+      directory = 'tablets';
+      break;
+    case 'accessory':
+      directory = 'accessories';
+      break;
+    default:
+      return '/';
+  }
+
+  return `/${directory}/${id}`;
+};

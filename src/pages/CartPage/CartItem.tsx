@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import {
   CartContext,
 } from '../../helpers/SavedItemsContext';
+import { generateSlugForProduct } from '../../helpers/utils';
 
 export const CartItem:React.FC<Product> = (product) => {
   const {
@@ -11,9 +12,12 @@ export const CartItem:React.FC<Product> = (product) => {
     imageUrl,
     quantity,
     name,
+    type,
+    id,
   } = product;
   const priceAfterDiscount = price * ((100 - discount) / 100);
   const { changeCartItems } = useContext(CartContext);
+  const slug = generateSlugForProduct({ type, id });
 
   return (
     <div className="cart-item">
@@ -28,12 +32,12 @@ export const CartItem:React.FC<Product> = (product) => {
           {}
         </button>
         <Link
-          to="/"
+          to={slug}
           className="cart-item__product-preview"
           style={{ backgroundImage: `url(${imageUrl})` }}
         />
         <Link
-          to="/"
+          to={slug}
           className="cart-item__product-name"
         >
           {name}

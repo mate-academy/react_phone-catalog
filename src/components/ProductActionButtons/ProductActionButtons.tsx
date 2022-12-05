@@ -22,8 +22,9 @@ export const ProductActionButtons:React.FC<Product> = (props) => {
       <button
         type="button"
         className={classNames(
+          'dark-button',
           'action-buttons__to-cart',
-          { 'action-buttons__to-cart--in-cart': isInCart },
+          { 'dark-button--in-cart': isInCart },
         )}
         onClick={() => {
           changeCartItems(props);
