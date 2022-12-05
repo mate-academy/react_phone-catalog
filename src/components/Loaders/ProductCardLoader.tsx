@@ -4,7 +4,7 @@ export const ProductCardLoader = () => (
   <div className="product">
     <ContentLoader
       speed={2}
-      width={208}
+      width={224}
       height={451}
       viewBox="0 0 208 451"
       backgroundColor="#f3f3f3"

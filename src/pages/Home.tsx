@@ -21,7 +21,7 @@ export const Home = () => {
 
         setProducts(loadedProducts);
       } catch (e) {
-        throw new Error('getHotPriceProducts error');
+        throw new Error('getProducts error');
       } finally {
         setIsLoading(false);
       }

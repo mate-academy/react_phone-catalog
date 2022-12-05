@@ -68,7 +68,7 @@ to links container.
     - Create `getAccessories` method fetching the products with `type`: `accessory`
     - Implement `NoResults` component displayed if there are no products available containing text `<Category name> not found`
 
-### Product details page
+### ProductCard details page
 1. Create `ProductDetailsPage` available at `/product/:productId`
     - `ProductCard` should be a link to the details page
 1. Fetch phone details from API taking the `phoneId` from the URL

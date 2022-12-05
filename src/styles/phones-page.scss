@@ -1,0 +1,12 @@
+.phones-page {
+
+  &__header {
+    margin-bottom: 8px;
+  }
+
+  &__count {
+    display: block;
+    @extend %bodyText;
+    margin-bottom: 40px;
+  }
+}

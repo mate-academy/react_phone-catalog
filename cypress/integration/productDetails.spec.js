@@ -1,6 +1,6 @@
 import { page } from '../support/utils/common.js';
 
-describe('Product details', () => {
+describe('ProductCard details', () => {
     it('should have "ProductCard" as a link to the details page', () => {
         page.getProduct();
 
