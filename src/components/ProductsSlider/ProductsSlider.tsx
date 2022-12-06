@@ -94,27 +94,29 @@ export const ProductsSlider:React.FC<Props> = ({
           disabled={lastVisibleCard === products.length}
         />
       </div>
-      {loading ? <Loader /> : (
-        <div className="products-slider__products-container">
-          <div className="products-slider__products">
-            {products.map((product) => (
-              <div
-                key={product.id}
-                style={styles}
-                className="products-slider__product-container"
-              >
-                <ProductCard
-                  {...product}
-                />
+      {errorMessage ? (
+        <h1 className="main-title">Something went wrong</h1>
+      ) : (
+        <>
+          {loading && <Loader />}
+          {!loading && (
+            <div className="products-slider__products-container">
+              <div className="products-slider__products">
+                {products.map((product) => (
+                  <div
+                    key={product.id}
+                    style={styles}
+                    className="products-slider__product-container"
+                  >
+                    <ProductCard
+                      {...product}
+                    />
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
-        </div>
-      )}
-      {errorMessage && (
-        <div className="products-slider__error-message">
-          {errorMessage}
-        </div>
+            </div>
+          )}
+        </>
       )}
     </div>
   );

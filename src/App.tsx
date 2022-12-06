@@ -11,6 +11,7 @@ import { SavedItemsProvider } from './helpers/SavedItemsContext';
 import './App.scss';
 import { FavoritesPage } from './pages/FavoritesPage';
 import { CartPage } from './pages/CartPage';
+import { PageNotFound } from './pages/PageNotFound';
 
 const App = () => {
   const { pathname } = useLocation();
@@ -28,6 +29,7 @@ const App = () => {
       <SavedItemsProvider>
         <Header />
         <Routes>
+          <Route path="*" element={<PageNotFound />} />
           <Route path="/" element={<HomePage />} />
           <Route path="/phones" element={<PhonesPage />} />
           <Route path="/phones/:productId" element={<ProductDetailsPage />} />

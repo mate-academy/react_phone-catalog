@@ -42,17 +42,22 @@ export const ProductsPage:React.FC<Props> = ({
               {`${products.length} products`}
             </div>
           </section>
-          <section className="products-page__section">
-            {loading && <Loader />}
-            {!loading && (products.length === 0 ? (
-              <NoResults />
-            ) : (
-              <ProductsList
-                products={products}
-              />
-            ))}
-            {error && `The following error occured: ${error}`}
-          </section>
+          {error ? (
+            <h1 className="main-title">
+              Something went wrong
+            </h1>
+          ) : (
+            <section className="products-page__section">
+              {loading && <Loader />}
+              {!loading && (products.length === 0 ? (
+                <NoResults />
+              ) : (
+                <ProductsList
+                  products={products}
+                />
+              ))}
+            </section>
+          )}
         </div>
       </div>
     </div>

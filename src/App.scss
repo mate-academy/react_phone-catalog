@@ -60,6 +60,13 @@ body {
 }
 
 .button {
+  font-family: "Mont", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  text-decoration: none;
+  color: $color-primary-dark-gray;
   background-color: $color-white;
   background-repeat: no-repeat;
   background-position: center center;
