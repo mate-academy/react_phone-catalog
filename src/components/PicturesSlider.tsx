@@ -2,7 +2,7 @@ import {
   FC, useEffect, useMemo, useRef, useState,
 } from 'react';
 
-import { SliderButton } from './UI/SliderButton';
+import { NavButton } from './UI/NavButton';
 import { sliderImages } from '../helpers/sliderImages';
 
 export const PicturesSlider: FC = () => {
@@ -99,7 +99,7 @@ export const PicturesSlider: FC = () => {
 
   return (
     <div className="pictures-slider">
-      <SliderButton
+      <NavButton
         width="32px"
         height="400px"
         direction="prev"
@@ -118,7 +118,7 @@ export const PicturesSlider: FC = () => {
           ))}
         </div>
       </div>
-      <SliderButton
+      <NavButton
         width="32px"
         height="400px"
         direction="next"

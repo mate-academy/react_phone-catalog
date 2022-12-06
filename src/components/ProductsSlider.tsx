@@ -4,7 +4,7 @@ import { Product } from '../types/Product';
 import { Title } from './UI/Title';
 import { SliderTitleLoader } from './Loaders/SliderTitleLoader';
 import { ProductCardLoader } from './Loaders/ProductCardLoader';
-import { SliderButton } from './UI/SliderButton';
+import { NavButton } from './UI/NavButton';
 
 type Props = {
   title: string;
@@ -55,14 +55,14 @@ export const ProductsSlider: FC<Props> = (
           <>
             <Title title={title} />
             <div className="slider__buttons">
-              <SliderButton
+              <NavButton
                 width="32px"
                 height="32px"
                 direction="prev"
                 action={prevProduct}
                 isDisabled={sliderTransform === 0}
               />
-              <SliderButton
+              <NavButton
                 width="32px"
                 height="32px"
                 direction="next"

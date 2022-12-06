@@ -10,7 +10,7 @@ type Props = {
   isDisabled: boolean;
 };
 
-export const SliderButton: FC<Props> = (
+export const NavButton: FC<Props> = (
   {
     width,
     height,

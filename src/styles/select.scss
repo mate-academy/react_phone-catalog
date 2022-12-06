@@ -1,0 +1,51 @@
+.select {
+  @extend %buttonText;
+  color: $primaryColor;
+  cursor: pointer;
+
+  &__title {
+    @extend %smallText;
+  }
+
+  &__selected-value {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid $iconsColor;
+    margin-bottom: 4px;
+    padding: 10px 15px 10px 12px;
+
+    &:after {
+      content: "";
+      width: 16px;
+      height: 16px;
+      transform: rotate(90deg);
+      background-image: url("../img/icons/arrow-right-disabled.svg");
+    }
+
+    &--focus {
+      border: 1px solid $primaryColor;
+    }
+  }
+
+  &__options {
+    position: absolute;
+    width: 100%;
+    box-sizing: border-box;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+    border: solid 1px $elementsColor;
+    z-index: 1;
+    background-color: white;
+  }
+
+  &__option {
+    @extend %bodyText;
+    color: $secondaryColor;
+    height: 32px;
+    padding: 6px 0 6px 12px;
+    &:hover {
+      background-color: $hoverColor;
+      color: $primaryColor;
+    }
+  }
+}
