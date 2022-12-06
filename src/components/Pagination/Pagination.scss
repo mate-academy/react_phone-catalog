@@ -19,13 +19,14 @@
   &__button {
     height: 32px;
     width: 32px;
-
+    transition: all 0.3s !important;
+    
     &--page {
       border: 1px solid $color-elements-light-gray !important;
     }
-
+    
     &--active {
-      color: $color-white;
+      color: $color-white !important;
       background-color: $color-primary-dark-gray !important;
       cursor: unset;
     }
