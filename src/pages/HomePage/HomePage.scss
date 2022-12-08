@@ -58,7 +58,7 @@
     height: 100%;
 
     @media (min-width: 500px) and (max-width: 767px) {
-      min-width: 384px;
+      min-width: 400px;
     }
 
     &--1 {
@@ -67,12 +67,12 @@
     }
 
     &--2 {
-      background: url("../../images/Banner2.png") no-repeat;
+      background: url("../../images/Banner2.jpg") no-repeat;
       background-size: cover;
     }
 
     &--3 {
-      background: url("../../images/Banner3.png") no-repeat;
+      background: url("../../images/Banner3.jpg") no-repeat;
       background-size: cover;
     }
   }

@@ -18,7 +18,7 @@ export const Header: React.FC = () => {
 
   return (
     <div className="Header" id="header">
-      <div className="Header__logo" />
+      <NavLink to="/home" className="Header__logo" />
       <div className="Header__left-block">
         {isActive !== 'cart' && (
           <nav className="Header__nav">

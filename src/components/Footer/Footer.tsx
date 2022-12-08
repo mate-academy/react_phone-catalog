@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, NavLink } from 'react-router-dom';
 import './Footer.scss';
 
 export const Footer: React.FC = () => {
@@ -19,7 +19,7 @@ export const Footer: React.FC = () => {
   return (
     <div className="Footer">
       <div className="Footer__block">
-        <div className="Footer__logo" />
+        <NavLink to="/home" className="Footer__logo" />
         <nav className="Footer__nav">
           <a
             href="https://github.com/Oleksii-Blyzniuk/react_phone-catalog"
@@ -34,7 +34,8 @@ export const Footer: React.FC = () => {
             Contacts
           </a>
           <a
-            href="////"
+            // eslint-disable-next-line max-len
+            href="https://www.pinsentmasons.com/out-law/guides/intellectual-property-in-websites-ownership-and-protection"
             className="Footer__link"
           >
             Rights
