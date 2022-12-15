@@ -4,6 +4,7 @@
   width: $width;
   height: $height;
   cursor: pointer;
+  font-family: Montserrat, sans-serif;
 }
 
 @mixin hover($_property, $_toValue) {

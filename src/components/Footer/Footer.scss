@@ -1,0 +1,24 @@
+@import "../../styles/utils";
+
+.footer {
+  box-shadow: 0 -1px 0 #e2e6e9;
+
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__list {
+    display: flex;
+    gap: 64px;
+  }
+
+  &__item {
+    padding: 42px 0;
+  }
+
+  &__link {
+    @extend %nav-link;
+  }
+}

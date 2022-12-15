@@ -2,8 +2,5 @@
   "extends": "@mate-academy/students-ts-config",
   "include": [
     "src"
-  ],
-  "compilerOptions": {
-    "typeRoots" : ["node_modules/@types", "src/types"]
-  }
+  ]
 }

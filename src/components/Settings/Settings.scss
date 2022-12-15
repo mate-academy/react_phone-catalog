@@ -1,0 +1,14 @@
+.settings {
+  &__selects {
+    display: flex;
+    gap: 48px;
+    margin-top: 40px;
+    margin-bottom: 24px;
+  }
+
+  &__paginator {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 80px;
+  }
+}

@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import { Paginator } from './Paginator';
+import './Settings.scss';
 import { Select } from '../UI/Select';
 
 type Props = {
@@ -24,6 +25,8 @@ export const Settings: FC<Props> = (
 ) => {
   const pagesCount = Math.ceil(totalItems / +perPage);
 
+  const showPagination = totalItems >= 5;
+
   const sortOptions = [
     { title: 'Newest', value: 'age' },
     { title: 'Alphabetically', value: 'name' },
@@ -44,18 +47,24 @@ export const Settings: FC<Props> = (
           action={setSort}
           defaultValue={sort}
         />
-        <Select
-          title="Items on page"
-          options={perPageOptions}
-          action={setPage}
-          defaultValue={perPage}
-        />
+        { showPagination && (
+          <Select
+            title="Items on page"
+            options={perPageOptions}
+            action={setPage}
+            defaultValue={perPage}
+          />
+        )}
       </div>
       { children }
-      <Paginator
-        pagesCount={pagesCount}
-        currentPage={page}
-      />
+      {showPagination && (
+        <div className="settings__paginator">
+          <Paginator
+            pagesCount={pagesCount}
+            currentPage={page}
+          />
+        </div>
+      )}
     </section>
   );
 };

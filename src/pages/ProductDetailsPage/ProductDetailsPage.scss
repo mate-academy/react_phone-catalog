@@ -1,0 +1,13 @@
+@import "../../styles/utils";
+
+.details-page {
+
+  &__loader {
+    height: calc(
+            100vh - (#{$headerHeight} + #{$footerHeight} + #{$breadcrumbsHeight})
+    );
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

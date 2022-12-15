@@ -1,0 +1,30 @@
+@import "../../styles/utils";
+
+.catalog {
+
+  &__header {
+    margin-bottom: 8px;
+  }
+
+  &__count {
+    display: block;
+    @extend %bodyText;
+  }
+
+  &__not-found {
+    height: 100vh;
+    display: block;
+    font-size: 21px;
+    @extend %bodyText;
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+
+  &__breadcrumbs {
+    margin-bottom: 15px;
+  }
+
+  &__product-list {
+    margin-bottom: 40px;
+  }
+}

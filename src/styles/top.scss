@@ -14,5 +14,6 @@
   &__button {
     @include createButton(32px, 32px);
     background-image: url("../img/icons/top-button.svg");
+    background-color: white;
   }
 }

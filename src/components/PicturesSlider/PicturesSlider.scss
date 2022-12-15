@@ -1,0 +1,21 @@
+@import "../../styles/utils";
+
+.pictures-slider {
+  display: flex;
+  gap: 16px;
+  overflow: hidden;
+
+  &__container {
+    height: 400px;
+    overflow: hidden;
+  }
+
+  &__content {
+    display: flex;
+  }
+
+  &__img {
+    width: 1040px;
+  }
+
+}

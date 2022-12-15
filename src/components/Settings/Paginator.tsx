@@ -2,8 +2,9 @@ import { FC } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import classNames from 'classnames';
 import { updateSearch } from '../../helpers/updateSearch';
-import { NavButton } from '../UI/NavButton';
+import { NavButton } from '../UI/NavButton/NavButton';
 import { getNumbers } from '../../helpers/getNumbers';
+import './Pagination.scss';
 
 type Props = {
   currentPage: string;
@@ -47,6 +48,7 @@ export const Paginator:FC<Props> = (
     <ul className="pagination">
       <li>
         <NavButton
+          data-cy="paginationLeft"
           width="32px"
           height="32px"
           direction="prev"
@@ -71,6 +73,7 @@ export const Paginator:FC<Props> = (
       </ul>
       <li>
         <NavButton
+          data-cy="paginationRight"
           width="32px"
           height="32px"
           direction="next"

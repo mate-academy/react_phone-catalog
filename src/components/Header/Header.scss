@@ -1,0 +1,30 @@
+@import "../../styles/utils";
+
+.header {
+  box-shadow: 0 1px 0 #e2e6e9;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    gap: 64px;
+    margin-left: 24px;
+  }
+
+  &__icons {
+    display: flex;
+  }
+
+  &__cart {
+    @extend %icon;
+    background-image: url("../../img/icons/cart.svg");
+  }
+
+  &__favorites {
+    @extend %icon;
+    background-image: url("../../img/icons/favorites.svg");
+  }
+
+}
