@@ -1,11 +1,11 @@
 @import "../../styles/utils";
 
+$sumHeight: (#{$headerHeight} - #{$footerHeight} - #{$breadcrumbsHeight});
+
 .details-page {
 
   &__loader {
-    height: calc(
-            100vh - (#{$headerHeight} + #{$footerHeight} + #{$breadcrumbsHeight})
-    );
+    height: 100vh - $sumHeight;
     display: flex;
     justify-content: center;
     align-items: center;
