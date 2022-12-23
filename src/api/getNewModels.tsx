@@ -1,4 +1,4 @@
-import { Product } from "types/Product";
+import { Product } from 'src/types/Product';
 
 export const getNewModels = (products: Product[]) => {
   const sortedProductsByAge = [...products].sort((product1, product2) => {

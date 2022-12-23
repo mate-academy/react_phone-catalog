@@ -1,17 +1,35 @@
 @import "../abstracts/variables";
 
+$arrow-distance: 45px;
+
 .slider-container {
   margin: 40px auto 0;
+  @include onPhone {
+    width: $container-phone-width;
+  }
+
+  @include onTablet {
+    width: $container-tablet-width;
+  }
+
+  @include onDesktop-small {
+    width: $container-desktop-small-width;
+  }
+
+  @include onDesktop {
+    width: $container-desktop-width;
+  }
 }
 
 .slider {
-  max-width: 1040px;
   margin: 0 auto;
+  width: calc(100% - (2 * #{$arrow-distance}));
   height: 430px;
   position: relative;
 
   &__image {
     height: 430px;
+    width: 430px;
     object-fit: cover;
   }
 

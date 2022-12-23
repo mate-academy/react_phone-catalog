@@ -1,5 +1,5 @@
-import { LogoIcon } from 'components/Icons/LogoIcon';
-import { PrevArrowIcon } from 'components/Icons/PrevArrowIcon';
+import { LogoIcon } from 'src/components/Icons/LogoIcon';
+import { PrevArrowIcon } from 'src/components/Icons/PrevArrowIcon';
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -21,22 +21,40 @@ export const Footer: FC<Props> = ({ scrollToRef }) => {
     <div className="footer-container">
       <footer className="footer">
         <div className="footer__logo">
-          <Link to="/">
+          <div
+            role="button"
+            aria-hidden
+            onClick={scrollHandler}
+          >
             <LogoIcon />
-          </Link>
+          </div>
         </div>
 
-        <div className="footer__links">
-          <div className="footer__link--github footer__link">
-            Github
-          </div>
-          <div className="footer__link--contact footer__link">
-            Contact
-          </div>
-          <div className="footer__link--rights footer__link">
-            Rights
-          </div>
-        </div>
+        <ul className="footer__links">
+          <li className="footer__link--github footer__link">
+            <a
+              href="https://github.com/matvii1"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Github
+            </a>
+          </li>
+
+          <li className="footer__link--contact footer__link">
+            <a
+              href="https://www.instagram.com/matwvey/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Contact
+            </a>
+          </li>
+
+          <li className="footer__link--rights footer__link">
+            <Link to="/">Rights</Link>
+          </li>
+        </ul>
 
         <div
           className="footer__back-to-top"

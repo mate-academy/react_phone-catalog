@@ -1,42 +1,45 @@
-import { useEffect, useState } from 'react';
-import { getHotPriceProducts } from 'api/getHotPriceProducts';
-import { getProducts } from 'api/products';
-import { Product } from 'types/Product';
-import { getNewModels } from 'api/getNewModels';
+import { useContext, useEffect, useState } from 'react';
+import { getHotPriceProducts } from 'src/api/getHotPriceProducts';
+import { Product } from 'src/types/Product';
+import { getNewModels } from 'src/api/getNewModels';
+import { SliderSection } from 'src/pages/HomePage/sections/SliderSection';
+import { ProductContext } from 'src/contexts/ProductContext';
 import { SliderComponent } from './sections/SliderComponent';
-import { HotPricesSlider } from './sections/HotPrices';
 import { ShopByCategory } from './sections/ShopByCategory';
-import { BrandNewModels } from './sections/BrandNewModels';
 
 export const HomePage = () => {
-  const [products, setProducts] = useState<Product[]>([]);
   const [hotPriceProducts, setHotPriceProducts] = useState<Product[]>([]);
   const [newModels, setNewModels] = useState<Product[]>([]);
-
-  const fetchProducts = async () => {
-    const data = await getProducts();
-
-    setProducts(data);
-
-    setHotPriceProducts(getHotPriceProducts(data));
-    setNewModels(getNewModels(data));
-
-    return data;
-  };
-
-  // eslint-disable-next-line no-console
-  console.log(products);
+  const products = useContext(ProductContext);
 
   useEffect(() => {
-    fetchProducts();
+    setHotPriceProducts(getHotPriceProducts(products));
+    setNewModels(getNewModels(products));
   }, []);
 
   return (
-    <div className="container">
+    <>
       <SliderComponent />
-      <HotPricesSlider hotPriceProducts={hotPriceProducts} />
-      <ShopByCategory />
-      <BrandNewModels newModels={newModels} />
-    </div>
+
+      <div className="container">
+
+        {!!hotPriceProducts.length
+          && (
+            <SliderSection
+              sectionTitle="Hot prices"
+              renderedProducts={hotPriceProducts}
+            />
+          )}
+
+        <ShopByCategory products={products} />
+
+        {!!newModels.length && (
+          <SliderSection
+            sectionTitle="Brand new models"
+            renderedProducts={newModels}
+          />
+        )}
+      </div>
+    </>
   );
 };

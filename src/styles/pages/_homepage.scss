@@ -1,9 +1,6 @@
-@import "../../abstracts/variables";
-@import "../slider";
-
-.phones-section {
-  margin-top: 80px;
-}
+@import "../abstracts/variables";
+@import "../abstracts/mixins";
+@import "../layout/slider";
 
 .icon::before {
   display: inline-block;
@@ -15,18 +12,37 @@
   -webkit-font-smoothing: antialiased;
 }
 
-//#region hot prices section
-.hot-prices {
+.phones-section {
+  margin-top: 80px;
+}
+
+.slider-section {
   position: relative;
 
   &__catalog {
     margin-top: 24px;
   }
+}
 
-  &__card {
-    border: 1px solid $elements-c;
-    padding: 32px 32px 24px;
-    min-width: 272px;
+.card {
+  min-width: 272px;
+  border: 1px solid $elements-c;
+  padding: 32px 32px 24px;
+
+  &__img-wrapper {
+    cursor: pointer;
+  }
+
+  &__img {
+    margin: 0 auto;
+    height: 208px;
+    width: 208px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.05);
+    }
   }
 
   &__top-block {
@@ -35,28 +51,13 @@
     justify-content: space-between;
     height: 120px;
   }
-}
-
-.card {
-  width: 272px;
-  margin-right: 14px;
-
-  &:last-child {
-    margin-right: 0;
-  }
-
-  &__img {
-    margin: 0 auto;
-    height: 208px;
-    width: 208px;
-    object-fit: cover;
-  }
 
   &__desc {
     margin-top: 24px;
     font-weight: 500;
     font-size: 14px;
   }
+
 
   &__price {
     display: flex;
@@ -108,62 +109,63 @@
     }
   }
 
-  &__buttons {
-    margin-top: 16px;
-    display: flex;
-    gap: 8px;
+  &__catalog {
+    margin-top: 24px;
   }
 }
 
-.button-add-to-card {
+.card__buttons {
+  margin-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.card__button {
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
+}
+
+.card__button--add-to-cart {
   width: 176px;
+  flex-grow: 1;
   height: 40px;
   padding: 10px 0;
   color: $white-c;
   background: $primary-c;
-  cursor: pointer;
+  transition: box-shadow 250ms ease-in-out;
 
   &:hover {
     box-shadow: 0px 3px 13px rgba(23, 32, 49, 0.26);
-    transition: box-shadow 250ms ease-in-out;
+  }
+
+  &--selected {
+    background: $white-c;
+    color: $green-c;
+    border: 1px solid #E2E6E9;
   }
 }
 
-.button-add-to-fav {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.card__button--add-to-fav {
   height: 40px;
   width: 40px;
   border: 1px solid $icons-c;
-  cursor: pointer;
+  transition: border-color $transition-btns-duration ease-in-out;
 
-  &:hover .icon-heart {
-    scale: 1.15;
+  & > .icon-heart {
     transition: scale $transition-btns-duration ease-in-out;
   }
-}
 
-.hot-prices__arrow {
-  top: -10%;
-  right: 0;
-  position: absolute;
-  display: flex;
-  width: 32px;
-  height: 32px;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid $icons-c;
-  cursor: pointer;
+  &:hover {
+    border-color: $primary-c;
+  }
 
-  &--prev {
-    right: 5%;
+  &:hover .icon-heart {
+    scale: 1.1;
   }
 }
-//#endregion
 
 //#region shop by category section
 
@@ -177,11 +179,17 @@
   &__content {
     margin-top: 24px;
     display: flex;
-    gap: 16px;
+    justify-content: space-between;
   }
 
   &__card {
     width: 368px;
+    height: 368px;
+
+    @mixin onTablet {
+      width: 200px;
+      height: 200px;
+    }
   }
 
   &__background {
@@ -189,8 +197,8 @@
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
-    width: 368px;
-    aspect-ratio: 1;
+    min-width: 100%;
+    min-height: 100%;
     overflow: hidden;
 
     &__image {
@@ -256,9 +264,7 @@
 //#endregion
 
 //#region brand new models
-.new-model {
-  position: relative;
-
+.slider-section {
   &__catalog {
     margin-top: 24px;
   }

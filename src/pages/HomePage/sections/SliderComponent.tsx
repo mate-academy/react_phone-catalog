@@ -1,8 +1,6 @@
 import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-import { NextArrowIcon } from 'components/Icons/NextArrowIcon';
-import { PrevArrowIcon } from 'components/Icons/PrevArrowIcon';
+import { NextArrowIcon } from 'src/components/Icons/NextArrowIcon';
+import { PrevArrowIcon } from 'src/components/Icons/PrevArrowIcon';
 import classNames from 'classnames';
 
 const NextArrow = (props: any) => {
@@ -52,32 +50,6 @@ export const SliderComponent = () => {
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
     customPaging: CustomDots,
-    adaptiveHeight: true,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          infinite: true,
-          dots: true,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
   };
 
   return (
@@ -88,26 +60,14 @@ export const SliderComponent = () => {
         autoplay
         autoplaySpeed={5000}
       >
-        <img
-          src={img1}
-          alt="mobile"
-          className="slider__image"
-        />
-        <img
-          src={require('assets/img/slides/slider-img2.jpeg').default}
-          alt="mobile"
-          className="slider__image"
-        />
-        <img
-          src={require('assets/img/slides/slider-img3.jpeg').default}
-          alt="mobile"
-          className="slider__image"
-        />
-        <img
-          src={require('assets/img/slides/slider-img4.jpeg').default}
-          alt="mobile"
-          className="slider__image"
-        />
+        {[1, 2, 3, 4].map(imgCount => (
+          <img
+            key={imgCount}
+            src={`assets/slider/slider-${imgCount}.jpeg`}
+            alt="mobile"
+            className="slider__image"
+          />
+        ))}
       </Slider>
     </div>
   );

@@ -3,21 +3,31 @@
 .footer-container {
   width: 100%;
   box-shadow: 0px -1px 0px #e2e6e9;
+  margin-top: 80px;
+  flex-shrink: 0;
+  flex-grow: 0;
 }
 
 .footer {
-  @include onDesktop {
-    min-width: $container-desktop-width;
-  }
-
-  @include onTablet {
-    min-width: $container-tablet-width;
-  }
+  flex-shrink: 0;
+  margin: 0 auto;
 
   @include onPhone {
     width: $container-phone-width;
   }
-  margin: 80px auto 0;
+
+  @include onTablet {
+    width: $container-tablet-width;
+  }
+
+  @include onDesktop-small {
+    width: $container-desktop-small-width;
+  }
+
+  @include onDesktop {
+    min-width: $container-desktop-width;
+  }
+
   min-height: 96px;
   display: flex;
   justify-content: space-between;
@@ -25,7 +35,9 @@
 
   &__links {
     display: flex;
-    width: 200px;
+    min-width: 250px;
+    flex: 0 1 auto;
+    max-width: 300px;
     justify-content: space-between;
   }
 
@@ -60,6 +72,14 @@
       font-size: 12px;
       line-height: 15px;
       color: $secondary-c;
+    }
+  }
+
+  &__logo {
+    cursor: pointer;
+
+    & > div {
+      padding: 12px;
     }
   }
 }

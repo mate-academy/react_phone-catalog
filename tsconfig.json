@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
-    "baseUrl": "src"
+    "baseUrl": "."
   },
   "extends": "@mate-academy/students-ts-config",
   "include": [
-    "src"
-, "craco.config.js"  ],
+    "src",
+  ]
 }

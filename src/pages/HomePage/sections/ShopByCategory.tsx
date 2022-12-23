@@ -1,31 +1,42 @@
-import { CategoryCard } from 'components/CategoryCard';
-import { Category } from 'types/Category';
+import { FC } from 'react';
+import { CategoryCard } from 'src/components/CategoryCard';
+import { Category } from 'src/types/Category';
+import { Product } from 'src/types/Product';
 
-const categoriesData: Category[] = [
-  {
-    imageUrl: 'phones.png',
-    name: 'Mobile Phones',
-    itemsLeft: 0,
-    backgrondColor: '#FCDBC1',
-    id: 1,
-  },
-  {
-    imageUrl: 'tablets.png',
-    name: 'Tablets',
-    itemsLeft: 4,
-    backgrondColor: '#8D8D92',
-    id: 2,
-  },
-  {
-    imageUrl: 'accessories.png',
-    name: 'Accessories',
-    itemsLeft: 12,
-    backgrondColor: '#D53C51',
-    id: 3,
-  },
-];
+type Props = {
+  products: Product[],
+};
 
-export const ShopByCategory = () => {
+export const ShopByCategory: FC<Props> = ({ products }) => {
+  const mobilesCount = products.filter(el => el.type === 'phone').length;
+  const tabletsCount = products.filter(el => el.type === 'tablet').length;
+  const accessoriesCount = products
+    .filter(el => el.type === 'accessory').length;
+
+  const categoriesData: Category[] = [
+    {
+      imageUrl: 'phones.png',
+      name: 'Mobile Phones',
+      itemsLeft: mobilesCount,
+      backgrondColor: '#FCDBC1',
+      id: 1,
+    },
+    {
+      imageUrl: 'tablets.png',
+      name: 'Tablets',
+      itemsLeft: tabletsCount,
+      backgrondColor: '#8D8D92',
+      id: 2,
+    },
+    {
+      imageUrl: 'accessories.png',
+      name: 'Accessories',
+      itemsLeft: accessoriesCount,
+      backgrondColor: '#D53C51',
+      id: 3,
+    },
+  ];
+
   return (
     <div className="shop-by-category phones-section">
       <div className="shop-by-category__title">
@@ -35,7 +46,10 @@ export const ShopByCategory = () => {
       <div className="shop-by-category__content">
         {categoriesData.map(category => {
           return (
-            <CategoryCard key={category.id} category={category} />
+            <CategoryCard
+              key={category.id}
+              category={category}
+            />
           );
         })}
       </div>

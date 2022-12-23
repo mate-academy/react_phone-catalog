@@ -4,26 +4,41 @@
 @import "./abstracts/functions";
 @import "./base/typography";
 @import "./base//flickity";
+@import './keenSlider.scss';
 
+
+// it puts footer to the bottom of the page
+.App {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
 
 .container {
+  flex: 1 0 auto;
+  margin: 0 auto;
+
   @include onPhone {
-    max-width: $container-phone-width;
-    margin: 0 auto;
+    width: $container-phone-width;
   }
 
   @include onTablet {
-    min-width: $container-tablet-width;
-    margin: 0 auto;
+    width: $container-tablet-width;
+  }
+
+  @include onDesktop-small {
+    width: $container-desktop-small-width;
   }
 
   @include onDesktop {
-    max-width: $container-desktop-width;
-    margin: 0 auto;
+    width: $container-desktop-width;
   }
 }
 
 // layout
 @import "./layout/header";
 @import "./layout/footer";
-@import "./layout/pages/homepage";
+@import "./pages/homepage";
+@import "./pages/products-page";
+@import "./pages/no-items-left";
+@import "./pages/products-details";
