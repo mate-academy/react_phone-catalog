@@ -1,0 +1,29 @@
+@import "./base/reset";
+@import "./abstracts/variables";
+@import "./abstracts/mixins";
+@import "./abstracts/functions";
+@import "./base/typography";
+@import "./base//flickity";
+
+
+.container {
+  @include onPhone {
+    max-width: $container-phone-width;
+    margin: 0 auto;
+  }
+
+  @include onTablet {
+    min-width: $container-tablet-width;
+    margin: 0 auto;
+  }
+
+  @include onDesktop {
+    max-width: $container-desktop-width;
+    margin: 0 auto;
+  }
+}
+
+// layout
+@import "./layout/header";
+@import "./layout/footer";
+@import "./layout/pages/homepage";

@@ -1,0 +1,48 @@
+@import "../abstracts/variables";
+
+.slider-container {
+  margin: 40px auto 0;
+}
+
+.slider {
+  max-width: 1040px;
+  margin: 0 auto;
+  height: 430px;
+  position: relative;
+
+  &__image {
+    height: 430px;
+    object-fit: cover;
+  }
+
+  &__dots {
+    position: absolute;
+    height: 4px;
+    width: 14px;
+    background: $secondary-c;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+
+  &__arrow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    right: -45px;
+    height: 100%;
+    width: 32px;
+    border: 1px solid $secondary-c;
+    cursor: pointer;
+
+    &--prev {
+      left: -45px;
+    }
+  }
+}
+
+.slick-active .slider__dots {
+  background: $primary-c;
+}
