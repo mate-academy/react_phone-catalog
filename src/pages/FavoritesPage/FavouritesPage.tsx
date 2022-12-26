@@ -3,9 +3,14 @@ import { ProductsList } from '../../components/ProductList';
 import { useAppSelector } from '../../hooks/useAppSelector';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { NotFound } from '../../components/NotFound/NotFound';
+import { compareProduct } from '../../helpers/compareProduct';
 
 export const FavouritesPage = () => {
   const favorites = useAppSelector(state => state.favorites);
+  const query = useAppSelector(state => state.query);
+
+  const visibleProducts = favorites
+    .filter(product => compareProduct(product, query));
 
   return (
     <div className="favourites">
@@ -19,7 +24,7 @@ export const FavouritesPage = () => {
       ) : (
         <>
           <span className="favourites__count">{`${favorites.length} items`}</span>
-          <ProductsList products={favorites} isLoaded />
+          <ProductsList products={visibleProducts} isLoaded />
         </>
       )}
     </div>

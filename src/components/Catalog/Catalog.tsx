@@ -10,6 +10,7 @@ import { filterProductByType } from '../../helpers/filterProductByType';
 import './Catalog.scss';
 import { useAppSelector } from '../../hooks/useAppSelector';
 import { NotFound } from '../NotFound/NotFound';
+import { compareProduct } from '../../helpers/compareProduct';
 
 type Props = {
   title: string;
@@ -23,22 +24,8 @@ export const Catalog: FC<Props> = (
   const [searchParams, setSearchParams] = useSearchParams();
   const query = useAppSelector(state => state.query);
 
-  const compareProduct = (product: Product) => {
-    const searchQueries = query.toLowerCase().split(' ');
-
-    for (let i = 0; i < searchQueries.length; i += 1) {
-      const searchQuery = searchQueries[i];
-
-      if (!product.name.toLowerCase().includes(searchQuery)) {
-        return false;
-      }
-    }
-
-    return true;
-  };
-
   const visibleProducts = products
-    .filter(product => compareProduct(product));
+    .filter(product => compareProduct(product, query));
 
   const totalItems = visibleProducts.length;
 
