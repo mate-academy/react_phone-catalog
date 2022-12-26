@@ -1,5 +1,10 @@
+@import "../styles/utils";
+
+$headerAndFooter: $headerHeight + $footerHeight;
+
 .content-wrapper {
   max-width: 1136px;
+  min-height: calc(100vh - $headerAndFooter);
   margin: 0 auto;
   overflow: hidden;
 }

@@ -1,71 +1,59 @@
 import { FC } from 'react';
 import classNames from 'classnames';
 import { Product } from '../../../types/Product';
-import { CartItem } from '../../../types/CartItem';
-import { useLocalStorage } from '../../../hooks/useLocalStorage';
 import './ToCardButton.scss';
+import { actions } from '../../../features/cart';
+import { useAppSelector } from '../../../hooks/useAppSelector';
+import { useAppDispatch } from '../../../hooks/useAppDispatch';
 
 type Props = {
   width: string;
   height: string;
-  currentProduct: Product;
+  product: Product;
 };
 
-export const ToCardButton: FC<Props> = ({ width, height, currentProduct }) => {
-  const [cartItems, setCartItems] = useLocalStorage<CartItem[]>('cart', []);
+export const ToCardButton: FC<Props> = ({ width, height, product }) => {
+  const dispatch = useAppDispatch();
+  const cart = useAppSelector(state => state.cart);
+
+  const isAdded = cart.some(cartProduct => cartProduct.id === product.id);
 
   const styles = {
     width,
     height,
   };
 
-  const handleClick = () => {
-    const isAdded = cartItems
-      .some(cartItem => cartItem.product.id === currentProduct.id);
+  const addCartItem = () => {
+    const cartItem = {
+      id: product.id,
+      quantity: 1,
+      product,
+    };
 
-    if (!isAdded) {
-      const newCartItem: CartItem = {
-        id: currentProduct.id,
-        quantity: 1,
-        product: currentProduct,
-      };
-
-      setCartItems([...cartItems, newCartItem]);
-    } else {
-      setCartItems([...cartItems
-        .filter(cartItem => cartItem.product.id !== currentProduct.id)]);
-    }
+    dispatch(actions.add(cartItem));
   };
 
-  // const addToCart = () => {
-  //   const newCartItem: CartItem = {
-  //     id: currentProduct.id,
-  //     quantity: 1,
-  //     product: currentProduct,
-  //   };
-  //
-  //   setCartItems((currentItems) => {
-  //     console.log(currentItems)
-  //     localStorage
-  //       .setItem('cart', JSON.stringify([...currentItems, newCartItem]));
-  //
-  //     return [...currentItems, newCartItem];
-  //   });
-  // };
+  const removeCartItem = () => {
+    const cartItem = {
+      id: product.id,
+      quantity: 1,
+      product,
+    };
+
+    dispatch(actions.remove(cartItem));
+  };
 
   return (
     <button
       type="button"
       className={classNames(
         'to-card-button',
-        // { 'to-card-button--added': isAdded },
+        { 'to-card-button--added': isAdded },
       )}
       style={styles}
-      onClick={handleClick}
+      onClick={isAdded ? removeCartItem : addCartItem}
     >
-      Added to cart
-
-      {/* {isAdded ? 'Added to cart' : 'Add to cart'} */}
+      {isAdded ? 'Added to cart' : 'Add to cart'}
     </button>
   );
 };

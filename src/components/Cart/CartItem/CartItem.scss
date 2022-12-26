@@ -2,7 +2,7 @@
 
 .cart-item {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   border: 1px solid $elementsColor;
   padding: 24px 40px 24px 24px;
@@ -11,12 +11,11 @@
     @include createButton(16px, 16px);
     background-image: url("../../../img/icons/delete-icon.svg");
     background-color: white;
-    margin-right: 31px;
   }
 
   &__product {
     display: flex;
-    gap: 31px;
+    gap: 32px;
     align-items: center;
   }
 
@@ -29,6 +28,7 @@
 
   &__title {
     @extend %bodyText;
+    width: 295px;
   }
 
   &__button {
@@ -38,11 +38,16 @@
     background-position: center;
   }
 
-  &__quantity-container {
+  &__quantity-and-price {
     display: flex;
     align-items: center;
+    gap: 43px;
+  }
+
+  &__quantity-container {
+    display: flex;
     gap: 14px;
-    margin-right: 42px;
+    align-items: center;
   }
 
   &__minus {

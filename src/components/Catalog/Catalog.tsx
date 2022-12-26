@@ -1,13 +1,15 @@
 import { FC, useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { Title } from '../UI/Title/Title';
-import { ProductsList } from '../ProductList/ProductsList';
+import { Title } from '../UI/Title';
+import { ProductsList } from '../ProductList';
 import { Settings } from '../Settings';
 import { updateSearch } from '../../helpers/updateSearch';
 import { Product } from '../../types/Product';
 import { getProducts } from '../../api/products';
 import { filterProductByType } from '../../helpers/filterProductByType';
 import './Catalog.scss';
+import { useAppSelector } from '../../hooks/useAppSelector';
+import { NotFound } from '../NotFound/NotFound';
 
 type Props = {
   title: string;
@@ -19,8 +21,26 @@ export const Catalog: FC<Props> = (
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoaded, setIsLoaded] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
+  const query = useAppSelector(state => state.query);
 
-  const totalItems = products.length;
+  const compareProduct = (product: Product) => {
+    const searchQueries = query.toLowerCase().split(' ');
+
+    for (let i = 0; i < searchQueries.length; i += 1) {
+      const searchQuery = searchQueries[i];
+
+      if (!product.name.toLowerCase().includes(searchQuery)) {
+        return false;
+      }
+    }
+
+    return true;
+  };
+
+  const visibleProducts = products
+    .filter(product => compareProduct(product));
+
+  const totalItems = visibleProducts.length;
 
   const sort = searchParams.get('sort') || 'age';
   const perPage = searchParams.get('perPage') || '4';
@@ -53,23 +73,17 @@ export const Catalog: FC<Props> = (
   const sortProducts = () => {
     switch (sort) {
       case 'name':
-        return [...products]
+        return [...visibleProducts]
           .sort((p1, p2) => p1.name.localeCompare(p2.name));
 
       case 'price':
-        return [...products]
+        return [...visibleProducts]
           .sort((p1, p2) => p1.price - p2.price);
 
       default:
-        return [...products]
+        return [...visibleProducts]
           .sort((p1, p2) => p1.age - p2.age);
     }
-  };
-
-  const getVisibleProducts = () => {
-    const sortedProducts = sortProducts();
-
-    return sortedProducts.slice(start - 1, end);
   };
 
   const onChangeSortValue = (value: string) => {
@@ -90,6 +104,12 @@ export const Catalog: FC<Props> = (
     );
   };
 
+  const getVisibleProducts = () => {
+    const sortedProducts = sortProducts();
+
+    return sortedProducts.slice(start - 1, end);
+  };
+
   return (
     <main className="catalog" data-cy="productList">
       <div className="catalog__header">
@@ -98,24 +118,30 @@ export const Catalog: FC<Props> = (
       {isLoaded && (
         <span className="catalog__count">{`${products.length} models`}</span>
       )}
-      {isLoaded && totalItems === 0 ? (
-        <p className="catalog__not-found">{`${title} not found`}</p>
+      {isLoaded && products.length === 0 ? (
+        <NotFound>{`${title} not found`}</NotFound>
       ) : (
-        <Settings
-          sort={sort}
-          perPage={perPage}
-          page={page}
-          totalItems={totalItems}
-          setSort={onChangeSortValue}
-          setPage={onChangeProductsPerPage}
-        >
-          <div className="catalog__product-list">
-            <ProductsList
-              products={getVisibleProducts()}
-              isLoaded={isLoaded}
-            />
-          </div>
-        </Settings>
+        <>
+          {isLoaded && totalItems === 0 ? (
+            <NotFound>No search results</NotFound>
+          ) : (
+            <Settings
+              sort={sort}
+              perPage={perPage}
+              page={page}
+              totalItems={totalItems}
+              setSort={onChangeSortValue}
+              setPage={onChangeProductsPerPage}
+            >
+              <div className="catalog__product-list">
+                <ProductsList
+                  products={getVisibleProducts()}
+                  isLoaded={isLoaded}
+                />
+              </div>
+            </Settings>
+          )}
+        </>
       )}
     </main>
   );

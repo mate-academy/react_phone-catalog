@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
 import './Nav.scss';
 
@@ -13,13 +13,19 @@ type Props = {
 };
 
 export const Nav: FC<Props> = ({ pages }) => {
+  const location = useLocation();
+
   return (
     <nav className="nav">
       <ul className="nav__list">
         {pages.map(page => (
           <li key={page.link} className="nav__item">
             <NavLink
-              to={page.link}
+              to={
+                page.link === '/'
+                  ? page.link
+                  : ({ pathname: page.link, search: location.search })
+              }
               className={({ isActive }) => classNames(
                 'nav__link',
                 { 'nav__link--active': isActive },

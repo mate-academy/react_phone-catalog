@@ -20,11 +20,27 @@
   &__cart {
     @extend %icon;
     background-image: url("../../img/icons/cart.svg");
+
+    &--active:after {
+      @extend %activeLink;
+    }
   }
 
   &__favorites {
     @extend %icon;
     background-image: url("../../img/icons/favorites.svg");
+
+    &--active:after {
+      @extend %activeLink;
+    }
+  }
+
+  &__cart-quantity {
+    @extend %quantity;
+  }
+
+  &__favorites-quantity {
+    @extend %quantity;
   }
 
 }

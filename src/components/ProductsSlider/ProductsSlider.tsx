@@ -2,8 +2,8 @@ import { FC, useState } from 'react';
 import { ProductCard } from '../ProductCard/ProductCard';
 import { Product } from '../../types/Product';
 import { Title } from '../UI/Title/Title';
-import { SliderTitleLoader } from '../Loaders/SliderTitleLoader';
-import { ProductCardLoader } from '../Loaders/ProductCardLoader';
+import { SliderTitleLoader } from '../UI/Loaders/SliderTitleLoader';
+import { ProductCardLoader } from '../UI/Loaders/ProductCardLoader';
 import { NavButton } from '../UI/NavButton/NavButton';
 import './ProductSlider.scss';
 

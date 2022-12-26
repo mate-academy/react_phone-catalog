@@ -1,8 +1,26 @@
+@import "../../../styles/utils";
+
 .to-favorites-button {
-  display: block;
-  border: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid $iconsColor;
   cursor: pointer;
-  background-image: url("../../../img/icons/add-to-favorites.svg");
+  background-image: url("../../../img/icons/favorites.svg");
   background-color: white;
-  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  &:hover {
+    border-color: $primaryColor;
+  }
+
+  &--active {
+    background-image: url("../../../img/icons/favorites-active.svg");
+    border-color: $elementsColor;
+
+    &:hover {
+      border-color: $elementsColor;
+    }
+  }
 }

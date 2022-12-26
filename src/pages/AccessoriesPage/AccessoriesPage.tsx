@@ -1,8 +1,15 @@
-import { Catalog } from '../../components/Catalog/Catalog';
+import { Catalog } from '../../components/Catalog';
+import { Breadcrumbs } from '../../components/Breadcrumbs';
 
 export const AccessoriesPage = () => (
-  <Catalog
-    title="Accessories"
-    productType="accessory"
-  />
+  <>
+    <Breadcrumbs
+      currentPage="Accessories"
+      productType={null}
+    />
+    <Catalog
+      title="Accessories"
+      productType="accessory"
+    />
+  </>
 );

@@ -7,6 +7,15 @@
     margin-bottom: 87px;
   }
 
+  &__back {
+    margin-top: 41px;
+  }
+
+  &__empty {
+    @extend %not-fount-title;
+    margin-top: 0;
+  }
+
   &__title {
     @extend %boldH1;
     margin-bottom: 24px;
@@ -52,5 +61,15 @@
     @include createButton(320px, 48px);
     @extend %buttonText;
     background-color: $primaryColor;
+  }
+
+  &__checkout-message {
+    @extend %buttonText;
+    width: 370px;
+    background-color: $green;
+    margin-top: 32px;
+    padding: 24px;
+    border-radius: 10px;
+    box-sizing: border-box;
   }
 }

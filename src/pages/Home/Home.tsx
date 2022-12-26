@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { ProductsSlider } from '../../components/ProductsSlider/ProductsSlider';
+import { ProductsSlider } from '../../components/ProductsSlider';
 import { Product } from '../../types/Product';
 import { getProducts } from '../../api/products';
 import { getHotPriceProducts } from '../../helpers/getHotPriceProducts';
@@ -7,7 +7,7 @@ import { getBrandNewProducts } from '../../helpers/getBrandNewProducts';
 
 import { CategoryList } from '../../components/CategoryList/CategoryList';
 
-import { PicturesSlider } from '../../components/PicturesSlider/PicturesSlider';
+import { PicturesSlider } from '../../components/PicturesSlider';
 import './Home.scss';
 
 export const Home = () => {

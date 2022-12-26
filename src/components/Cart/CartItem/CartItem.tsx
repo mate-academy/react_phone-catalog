@@ -1,26 +1,44 @@
 import { FC } from 'react';
-import iphone from '../../../img/categories/phones.png';
+import { useDispatch } from 'react-redux';
 import './CartItem.scss';
-import { CartItem as CartItemType } from '../../../types/CartItem';
+import { ProductOfCart } from '../../../types/ProductOfCart';
+import { actions } from '../../../features/cart';
+import { getProductPrices } from '../../../helpers/getProductPrices';
 
 type Props = {
-  cartItem: CartItemType;
+  cartItem: ProductOfCart;
 };
 
 export const CartItem: FC<Props> = ({ cartItem }) => {
   const { quantity, product } = cartItem;
+  const dispatch = useDispatch();
+
+  const { currentPrice } = getProductPrices(product);
+
+  const removeCartItem = () => {
+    dispatch(actions.remove(cartItem));
+  };
+
+  const increaseQuantity = () => {
+    dispatch(actions.increase(cartItem));
+  };
+
+  const decreaseQuantity = () => {
+    dispatch(actions.decrease(cartItem));
+  };
 
   return (
     <div className="cart-item">
-      <button
-        type="button"
-        aria-label="delete-item"
-        className="cart-item__delete"
-        data-cy="cartDeleteButton"
-      />
       <div className="cart-item__product">
+        <button
+          type="button"
+          aria-label="delete-item"
+          className="cart-item__delete"
+          data-cy="cartDeleteButton"
+          onClick={removeCartItem}
+        />
         <img
-          src={iphone}
+          src={cartItem.product.imageUrl}
           alt="cart-item"
           className="cart-item__img"
         />
@@ -29,22 +47,31 @@ export const CartItem: FC<Props> = ({ cartItem }) => {
         </h4>
       </div>
       <div
-        className="cart-item__quantity-container"
+        className="cart-item__quantity-and-price"
         data-cy="productQauntity"
       >
-        <button
-          type="button"
-          aria-label="decrement-products-in-cart"
-          className="cart-item__button cart-item__minus"
-        />
-        <span className="cart-item__quantity">{quantity}</span>
-        <button
-          type="button"
-          aria-label="increment-products-in-cart"
-          className="cart-item__button cart-item__plus"
-        />
+        <div className="cart-item__quantity-container">
+          <button
+            type="button"
+            aria-label="decrement-products-in-cart"
+            className="cart-item__button cart-item__minus"
+            onClick={decreaseQuantity}
+          />
+          <span
+            data-cy="productQuantity"
+            className="cart-item__quantity"
+          >
+            {quantity}
+          </span>
+          <button
+            type="button"
+            aria-label="increment-products-in-cart"
+            className="cart-item__button cart-item__plus"
+            onClick={increaseQuantity}
+          />
+        </div>
+        <span className="cart-item__price">{`$${currentPrice}`}</span>
       </div>
-      <span className="cart-item__price">{product.price}</span>
     </div>
   );
 };

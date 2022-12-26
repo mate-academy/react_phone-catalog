@@ -1,0 +1,36 @@
+@import "../../styles/utils";
+
+.search {
+  display: flex;
+  align-items: center;
+  box-shadow: -1px 0 0 $elementsColor;
+  padding: 1px 24px;
+
+  &__input {
+    @extend %bodyText;
+    border: 0;
+    height: 100%;
+
+    &:focus {
+      outline: none;
+    }
+
+    &::placeholder {
+      @extend %bodyText;
+      color: $iconsColor;
+    }
+  }
+
+  &__button {
+    width: 16px;
+    height: 16px;
+    background-color: transparent;
+    background-image: url("../../img/icons/search.svg");
+    border: 0;
+  }
+
+  &__button--clear {
+    background-image: url("../../img/icons/delete-icon.svg");
+    cursor: pointer;
+  }
+}

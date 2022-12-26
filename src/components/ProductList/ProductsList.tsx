@@ -1,7 +1,7 @@
 import { FC } from 'react';
-import { ProductCardLoader } from '../Loaders/ProductCardLoader';
+import { ProductCardLoader } from '../UI/Loaders/ProductCardLoader';
 import { Product } from '../../types/Product';
-import { ProductCard } from '../ProductCard/ProductCard';
+import { ProductCard } from '../ProductCard';
 import './ProductList.scss';
 
 type Props = {

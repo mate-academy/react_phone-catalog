@@ -53,10 +53,46 @@
 
 %icon {
   display: block;
+  position: relative;
   width: 16px;
   height: 16px;
   padding: 24px;
   background-repeat: no-repeat;
   background-position: center;
   box-shadow: -1px 0 0 #e2e6e9;
+}
+
+%not-fount-title {
+  @extend %bodyText;
+  display: block;
+  font-size: 21px;
+  margin-top: 40px;
+}
+
+%activeLink {
+  content: "";
+  display: block;
+  position: absolute;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  background-color: $primaryColor;
+}
+
+%quantity {
+  position: absolute;
+  right: 18px;
+  top: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: $red;
+  font-weight: 600;
+  font-size: 9px;
+  line-height: 12px;
 }

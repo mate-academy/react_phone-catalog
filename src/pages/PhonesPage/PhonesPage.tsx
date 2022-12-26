@@ -1,8 +1,15 @@
-import { Catalog } from '../../components/Catalog/Catalog';
+import { Catalog } from '../../components/Catalog';
+import { Breadcrumbs } from '../../components/Breadcrumbs';
 
 export const PhonesPage = () => (
-  <Catalog
-    title="Mobile phones"
-    productType="phone"
-  />
+  <>
+    <Breadcrumbs
+      currentPage="Phones"
+      productType={null}
+    />
+    <Catalog
+      title="Mobile phones"
+      productType="phone"
+    />
+  </>
 );

@@ -1,9 +1,10 @@
 import { FC, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { Product } from '../../types/Product';
-import { ToCardButton } from '../UI/ToCardButton/ToCardButton';
-import { ToFavoritesButton } from '../UI/ToFavoritesButton/ToFavoritesButton';
+import { ToCardButton } from '../UI/ToCardButton';
+import { ToFavoritesButton } from '../UI/ToFavoritesButton';
 import './Product.scss';
+import { getProductPrices } from '../../helpers/getProductPrices';
 
 type Props = {
   product: Product;
@@ -15,8 +16,6 @@ export const ProductCard: FC<Props> = ({ product }) => {
     imageUrl,
     name,
     type,
-    price,
-    discountSum,
     screen,
     capacity,
     ram,
@@ -35,6 +34,8 @@ export const ProductCard: FC<Props> = ({ product }) => {
     }
   }, [type]);
 
+  const { currentPrice, fullPrice } = getProductPrices(product);
+
   return (
     <div className="product" data-cy="cardsContainer">
       <img
@@ -47,13 +48,13 @@ export const ProductCard: FC<Props> = ({ product }) => {
           {name}
         </Link>
         <div className="product__price">
-          {discountSum !== undefined ? (
+          {currentPrice !== fullPrice ? (
             <>
-              <span className="product__price-current">{`$${price - discountSum}`}</span>
-              <span className="product__price-full">{`$${price}`}</span>
+              <span className="product__price-current">{`$${currentPrice}`}</span>
+              <span className="product__price-full">{`$${fullPrice}`}</span>
             </>
           ) : (
-            <span className="product__price-current">{`$${price}`}</span>
+            <span className="product__price-current">{`$${currentPrice}`}</span>
           )}
         </div>
       </div>
@@ -75,9 +76,13 @@ export const ProductCard: FC<Props> = ({ product }) => {
         <ToCardButton
           width="176px"
           height="40px"
-          currentProduct={product}
+          product={product}
         />
-        <ToFavoritesButton width="40px" height="40px" />
+        <ToFavoritesButton
+          width="40px"
+          height="40px"
+          product={product}
+        />
       </div>
     </div>
   );

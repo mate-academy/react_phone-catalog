@@ -12,4 +12,9 @@
     @extend %smallText;
     margin-bottom: 40px;
   }
+
+  &__empty {
+    @extend %not-fount-title;
+    margin-top: 24px;
+  }
 }

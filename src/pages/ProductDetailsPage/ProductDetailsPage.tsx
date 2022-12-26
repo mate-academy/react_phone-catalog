@@ -8,6 +8,7 @@ import { Details } from '../../types/Details';
 import { getSuggestedProducts } from '../../helpers/getSuggestedProducts';
 import { ProductsSlider } from '../../components/ProductsSlider';
 import './ProductDetailsPage.scss';
+import { NotFound } from '../../components/NotFound/NotFound';
 
 export const ProductDetailsPage = () => {
   const { productId } = useParams();
@@ -17,9 +18,11 @@ export const ProductDetailsPage = () => {
   ] = useState<Details | null>(null);
 
   const [isLoaded, setIsLoaded] = useState(false);
+  const [isError, setIsError] = useState(false);
 
   const product = products
     .find(currentProduct => currentProduct.id === productId);
+
   const availableColors = ['#FCDBC1', '#5F7170', '#4C4C4C', '#F0F0F0'];
   const availableCapacity = ['64', '256', '512'];
 
@@ -27,12 +30,17 @@ export const ProductDetailsPage = () => {
 
   useEffect(() => {
     async function getProductDetails() {
-      if (typeof productId === 'string') {
-        const loadedProducts = await getProducts();
-        const loadedProductDetails = await getProductsDetails(productId);
+      try {
+        if (typeof productId === 'string') {
+          const loadedProducts = await getProducts();
+          const loadedProductDetails = await getProductsDetails(productId);
 
-        setProducts(loadedProducts);
-        setProductDetails(loadedProductDetails);
+          setProducts(loadedProducts);
+          setProductDetails(loadedProductDetails);
+        }
+      } catch {
+        setIsError(true);
+      } finally {
         setIsLoaded(true);
       }
     }
@@ -48,17 +56,23 @@ export const ProductDetailsPage = () => {
         </div>
       ) : (
         <>
-          <ProductDetails
-            product={product}
-            productDetails={productDetails}
-            availableColors={availableColors}
-            availableCapacity={availableCapacity}
-          />
-          <ProductsSlider
-            title="You may also like"
-            products={suggestProducts}
-            isLoaded={isLoaded}
-          />
+          {isError ? (
+            <NotFound>Product details not found</NotFound>
+          ) : (
+            <>
+              <ProductDetails
+                product={product}
+                productDetails={productDetails}
+                availableColors={availableColors}
+                availableCapacity={availableCapacity}
+              />
+              <ProductsSlider
+                title="You may also like"
+                products={suggestProducts}
+                isLoaded={isLoaded}
+              />
+            </>
+          )}
         </>
       )}
     </div>

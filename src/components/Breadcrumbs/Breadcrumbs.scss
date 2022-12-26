@@ -5,6 +5,7 @@
   align-items: center;
   gap: 8px;
   height: 65px;
+  margin-bottom: 15px;
 
   &__home {
     display: block;
@@ -23,5 +24,9 @@
   &__link {
     @extend %smallText;
     text-decoration: none;
+
+    &::first-letter {
+      text-transform: uppercase;
+    }
   }
 }

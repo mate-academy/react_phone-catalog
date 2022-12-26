@@ -2,11 +2,12 @@ import { FC } from 'react';
 import { Product } from '../../types/Product';
 import { Details } from '../../types/Details';
 import { getPriceWithDiscount } from '../../helpers/getPriceWithDiscount';
-import { ProductImages } from './ProductImages';
+import { ProductImages } from './ProductImages/ProductImages';
 import { ToCardButton } from '../UI/ToCardButton';
 import { ToFavoritesButton } from '../UI/ToFavoritesButton';
 import { BackButton } from '../UI/BackButton';
 import './ProductDetails.scss';
+import { Breadcrumbs } from '../Breadcrumbs';
 
 type Props = {
   product: Product | undefined;
@@ -29,6 +30,10 @@ export const ProductDetails: FC<Props> = (
 
   return (
     <div className="product-details">
+      <Breadcrumbs
+        currentPage={productDetails?.name || ''}
+        productType={product?.type || null}
+      />
       <BackButton />
       <h1 className="product-details__title">
         {productDetails?.name}
@@ -79,11 +84,15 @@ export const ProductDetails: FC<Props> = (
               {product !== undefined && (
                 <>
                   <ToCardButton
-                    currentProduct={product}
+                    product={product}
                     width="263px"
                     height="48px"
                   />
-                  <ToFavoritesButton width="48px" height="48px" />
+                  <ToFavoritesButton
+                    product={product}
+                    width="48px"
+                    height="48px"
+                  />
                 </>
               )}
             </div>
