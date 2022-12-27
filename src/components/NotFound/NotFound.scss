@@ -1,0 +1,23 @@
+@import "../../styles/main.scss";
+
+.not-found-page {
+  &__title {
+    display: flex;
+    justify-content: center;
+    margin: 0 0 40px;
+    padding-top: 40px;
+
+    @extend %h1-text;
+    color: $color-primary;
+  }
+
+  &__image {
+    display: flex;
+    align-items: center;
+    height: 400px;
+    width: 100%;
+
+    background-image: url(../../images/notFoundPage/funny_amination.gif);
+    background-position: center;
+  }
+}

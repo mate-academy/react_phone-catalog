@@ -1,0 +1,16 @@
+@mixin onTablet {
+  @media (min-width: 640px) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin squareSize($size) {
+  width: $size;
+  height: $size;
+}

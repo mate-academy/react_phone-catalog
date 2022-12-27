@@ -1,0 +1,42 @@
+@import "../../styles/main.scss";
+
+.button-top {
+  display: flex;
+  align-items: center;
+
+  @extend %small-text;
+  color: $color-secondary;
+  background: none;
+  border: none;
+  text-decoration: none;
+  transition: color 0.5s, border 0.5s;
+  cursor: pointer;
+
+  &__icon {
+    margin-left: 0;
+    padding: 9px;
+    border: 1px solid $color-icons;
+    transition: color 0.5s, border 0.5s;
+
+    @include onTablet {
+      margin-left: 16px;
+    }
+  }
+
+  &__text {
+    display: none;
+
+    @include onTablet {
+      display: flex;
+    }
+  }
+
+  &:hover {
+    color: $color-primary;
+  }
+
+  &:hover .button-top__icon {
+    border-color: $color-primary;
+  }
+
+}

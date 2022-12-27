@@ -1,0 +1,58 @@
+@import "../../styles/main.scss";
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+
+  @extend %body-text;
+  list-style: none;
+
+  &--is-hidden {
+    display: none;
+  }
+
+  &__button {
+    @include squareSize(32px);
+    background-color: $color-white;
+    border: 1px solid $color-grey;
+    transition: all 0.5s;
+    cursor: pointer;
+
+    &:hover {
+      border-color: $color-primary;
+    }
+
+    &:hover:disabled {
+      border-color: $color-grey;
+      cursor: default;
+    }
+  }
+
+  &__list {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include squareSize(32px);
+
+    background-color: $color-white;
+    border: 1px solid $color-elements;
+    transition: all 0.5s;
+    cursor: pointer;
+
+    &--is-active {
+      color: $color-white;
+      background-color: $color-primary;
+    }
+
+    &:hover {
+      border-color: $color-grey;
+    }
+  }
+}

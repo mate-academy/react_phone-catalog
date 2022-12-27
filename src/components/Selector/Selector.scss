@@ -1,0 +1,105 @@
+@import "../../styles/main.scss";
+
+.filters {
+  display: flex;
+  justify-content: flex-start;
+
+  &--is-hidden {
+    display: none;
+  }
+
+  &__subtitle {
+    margin-bottom: 14px;
+
+    @extend %small-text;
+    color: $color-secondary;
+  }
+
+  &__filter {
+    margin-right: 16px;
+  }
+}
+
+.selector {
+  position: relative;
+  margin-bottom: 24px;
+
+  &__picker {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 176px;
+    height: 40px;
+    margin-bottom: 4px;
+    padding: 0;
+
+    background-color: $color-white;
+    border: 1px solid $color-icons;
+    transition: all 0.5s;
+    cursor: pointer;
+
+    &:focus {
+      border: 1px solid $color-primary;
+    }
+
+    &:hover {
+      border: 1px solid $color-secondary;
+    }
+
+    &--title {
+      margin-left: 12px;
+
+      @extend %buttons-text;
+      color: $color-primary;
+    }
+
+    &--arrow {
+      margin-right: 13px;
+    }
+  }
+
+  &__list {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    width: 100%;
+    max-height: 144px;
+
+    @extend %body-text;
+    background-color: $color-white;
+    list-style: none;
+    border-top: none;
+    border: 1px solid $color-elements;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+
+    overflow: hidden;
+    transition: all 0.5s;
+    z-index: 1;
+
+    &--is-hidden {
+      top: 0;
+      height: 0;
+      margin: 0;
+      max-height: 0;
+      border: none;
+      transition: all 0.5s;
+    }
+  }
+
+  &__item {
+    padding: 5px 0 5px 12px;
+
+    @extend %body-text;
+    color: $color-secondary;
+    text-decoration: none;
+    transition: all 0.5s;
+    cursor: pointer;
+
+    &:hover {
+      background: $color-background;
+      color: $color-primary;
+    }
+  }
+}

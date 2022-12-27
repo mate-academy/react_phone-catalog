@@ -1,1 +1,60 @@
-// not empty
+@import "./styles/main.scss";
+
+.page {
+  scroll-behavior: smooth;
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 54px;
+    visibility: hidden;
+
+    &--opened {
+      top: 64px;
+      height: 64px;
+      visibility: visible;
+      transition: height 0.5s;
+
+      @include onDesktop {
+        visibility: hidden;
+      }
+    }
+
+    @include onDesktop {
+      visibility: hidden;
+    }
+  }
+
+  &__header {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+
+  &__section {
+    margin-bottom: 40px;
+
+    @include onTablet {
+      margin-bottom: 60px;
+    }
+
+    @include onDesktop {
+      margin-bottom: 80px;
+    }
+  }
+
+  &__section-title {
+    margin: 0 0 24px;
+
+    @extend %h1-text;
+    color: $color-primary;
+  }
+}
+
+.container {
+  max-width: 1136px;
+  margin: 0 auto;
+  padding: 0 20px;
+}

@@ -1,0 +1,19 @@
+@import "../../styles/main.scss";
+
+.footer {
+  display: flex;
+  align-items: center;
+  height: $footer-height;
+  box-sizing: border-box;
+  border-top: 1px solid $color-elements;
+
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1136px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+}
