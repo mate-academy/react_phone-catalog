@@ -1,9 +1,17 @@
 import { FC } from 'react';
-import { Title } from '../UI/Title/Title';
+import { Title } from '../UI/Title';
 import { Category } from './Category';
 import './CategoryList.scss';
 
-export const CategoryList: FC = () => {
+type Props = {
+  count: {
+    phonesCount: number,
+    tabletsCount: number,
+    accessoriesCount: number,
+  };
+};
+
+export const CategoryList: FC<Props> = ({ count }) => {
   return (
     <div className="categories" data-cy="categoryLinksContainer">
       <div className="categories__header">
@@ -12,17 +20,17 @@ export const CategoryList: FC = () => {
       <div className="categories__container">
         <Category
           title="Mobile phones"
-          description="95 models"
+          description={`${count.phonesCount} models`}
           category="phones"
         />
         <Category
           title="Tablets"
-          description="24 models"
+          description={`${count.tabletsCount} models`}
           category="tablets"
         />
         <Category
           title="Accessories"
-          description="100 models"
+          description={`${count.accessoriesCount} models`}
           category="accessories"
         />
       </div>

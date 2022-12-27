@@ -3,9 +3,16 @@ import './Footer.scss';
 import { Logo } from '../UI/Logo/Logo';
 
 export const Footer = () => {
+  const toTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
   return (
     <footer className="footer">
-      <div className="container">
+      <div className="footer__container">
         <div className="footer__content">
           <Logo />
           <nav className="footer__nav">
@@ -31,12 +38,13 @@ export const Footer = () => {
               </li>
             </ul>
           </nav>
-          <div className="top">
-            <span className="top__title">Back to top</span>
+          <div className="footer__top">
+            <span className="footer__top-title">Back to top</span>
             <button
               type="button"
-              className="top__button"
+              className="footer__top-button"
               aria-label="top-button"
+              onClick={toTop}
             />
           </div>
         </div>

@@ -30,8 +30,28 @@ export const Home = () => {
     fetchProducts();
   }, []);
 
+  const getCount = (type: string) => {
+    return products.reduce((sum, product) => {
+      if (product.type === type) {
+        return sum + 1;
+      }
+
+      return sum;
+    }, 0);
+  };
+
   const hotPriceProducts = getHotPriceProducts(products);
   const brandNewProducts = getBrandNewProducts(products);
+
+  const phonesCount = getCount('phone');
+  const tabletsCount = getCount('tablet');
+  const accessoriesCount = getCount('accessory');
+
+  const count = {
+    phonesCount,
+    tabletsCount,
+    accessoriesCount,
+  };
 
   return (
     <main className="home">
@@ -46,7 +66,7 @@ export const Home = () => {
         />
       </section>
       <section className="home__categories">
-        <CategoryList />
+        <CategoryList count={count} />
       </section>
       <section className="home__brand-new-models">
         <ProductsSlider

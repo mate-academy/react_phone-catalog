@@ -3,6 +3,11 @@
 .footer {
   box-shadow: 0 -1px 0 #e2e6e9;
 
+  &__container {
+    max-width: 1136px;
+    margin: 0 auto
+  }
+
   &__content {
     display: flex;
     align-items: center;
@@ -20,5 +25,32 @@
 
   &__link {
     @extend %nav-link;
+  }
+
+  &__top {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+
+    &-title {
+      font-style: normal;
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 15px;
+      color: $secondaryColor;
+    }
+
+    &-button {
+      @include createButton(32px, 32px);
+      border: 1px solid $iconsColor;
+      background-image: url("../../img/icons/arrow-top.svg");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-color: white;
+
+      &:hover {
+        border-color: $primaryColor;
+      }
+    }
   }
 }
