@@ -3,7 +3,7 @@
 .footer {
   &__nav {
     display: flex;
-    gap: 36px;
+    gap: 20px;
 
     @include onTablet {
       gap: 50px;

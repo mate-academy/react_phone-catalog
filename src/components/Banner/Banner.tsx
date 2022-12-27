@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { Icon } from '../Icon';
 import bannerImages from '../../api/banner.json';
+import { useWindowSize } from '../../utils/useWindowSize';
 import { SliderButtonType } from '../../types/SliderType';
 import { IconType } from '../../types/Icon';
 import './Banner.scss';
@@ -9,6 +10,8 @@ import './Banner.scss';
 export const Banner: React.FC = () => {
   const [position, setPosition] = useState(0);
   const [touchPosition, setTouchPosition] = useState<number | null>(null);
+
+  const size = useWindowSize();
 
   const handleClickButton = (arrowDirection: SliderButtonType) => {
     if (arrowDirection === 'prev') {
@@ -42,7 +45,6 @@ export const Banner: React.FC = () => {
     }
 
     const currentTouch = event.touches[0].clientX;
-
     const diff = touchDown - currentTouch;
 
     if (diff > 5) {
@@ -75,20 +77,22 @@ export const Banner: React.FC = () => {
         grid__item--desktop-1-24"
     >
       <div className="banner__container">
-        <button
-          className="
-            banner__button
-            grid__item--tablet-1-1
-            grid__item--desktop-1-1"
-          type="button"
-          aria-label="PREV"
-          onClick={() => handleClickButton('prev')}
-        >
-          <Icon
-            type={IconType.ARROW_LEFT}
-            addClassName="banner__button--icon"
-          />
-        </button>
+        {size.width > 500 && (
+          <button
+            className="
+              banner__button
+              grid__item--tablet-1-1
+              grid__item--desktop-1-1"
+            type="button"
+            aria-label="PREV"
+            onClick={() => handleClickButton('prev')}
+          >
+            <Icon
+              type={IconType.ARROW_LEFT}
+              addClassName="banner__button--icon"
+            />
+          </button>
+        )}
 
         <div
           className="
@@ -111,20 +115,22 @@ export const Banner: React.FC = () => {
           ))}
         </div>
 
-        <button
-          className="
-            banner__button
-            grid__item--tablet-12-12
-            grid__item--desktop-24-24"
-          type="button"
-          aria-label="NEXT"
-          onClick={() => handleClickButton('next')}
-        >
-          <Icon
-            type={IconType.ARROW_RIGHT}
-            addClassName="banner__button--icon"
-          />
-        </button>
+        {size.width > 500 && (
+          <button
+            className="
+              banner__button
+              grid__item--tablet-12-12
+              grid__item--desktop-24-24"
+            type="button"
+            aria-label="NEXT"
+            onClick={() => handleClickButton('next')}
+          >
+            <Icon
+              type={IconType.ARROW_RIGHT}
+              addClassName="banner__button--icon"
+            />
+          </button>
+        )}
       </div>
 
       <div

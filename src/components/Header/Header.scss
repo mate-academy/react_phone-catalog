@@ -16,6 +16,7 @@
   &__logo {
     display: flex;
     align-items: center;
+    padding: 0 6px;
 
     @include onDesktop {
       padding-left: 24px;

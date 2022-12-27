@@ -29,7 +29,7 @@
     justify-content: space-between;
     align-items: center;
 
-    width: 176px;
+    width: 128px;
     height: 40px;
     margin-bottom: 4px;
     padding: 0;
@@ -38,6 +38,10 @@
     border: 1px solid $color-icons;
     transition: all 0.5s;
     cursor: pointer;
+
+    @include onTablet {
+      width: 176px;
+    }
 
     &:focus {
       border: 1px solid $color-primary;

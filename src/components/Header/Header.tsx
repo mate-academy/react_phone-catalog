@@ -13,6 +13,7 @@ import { MenuButton } from '../MenuButton';
 import { PageNav } from '../PageNav';
 import { TopActionButton } from '../TopActionButton';
 import { SearchBar } from '../SearchBar';
+import { useWindowSize } from '../../utils/useWindowSize';
 import productCategory from '../../api/productCategory.json';
 import './Header.scss';
 
@@ -20,7 +21,10 @@ export const Header: React.FC = () => {
   const location = useLocation();
   const { productId = '' } = useParams();
 
+  const size = useWindowSize();
+
   const [isOpened, setIsOpened] = useState(false);
+  const [isSearchBar, setIsSearchBar] = useState(false);
 
   const productCategoryList = productCategory.map(item => item.type);
 
@@ -38,6 +42,14 @@ export const Header: React.FC = () => {
   useEffect(() => {
     setIsOpened(false);
   }, [location]);
+
+  useEffect(() => {
+    if (size.width > 400) {
+      setIsSearchBar(true);
+    } else {
+      setIsSearchBar(false);
+    }
+  }, [size.width]);
 
   return (
     <header className="page__header header">
@@ -78,10 +90,16 @@ export const Header: React.FC = () => {
             top-actions"
         >
           {searchBarCondition
-            && <SearchBar />}
+            && isSearchBar
+            && (
+              <SearchBar />
+            )}
 
           {favoriteCondition
-            && <SearchBar />}
+            && isSearchBar
+            && (
+              <SearchBar />
+            )}
 
           {!cartCondition && (
             <TopActionButton

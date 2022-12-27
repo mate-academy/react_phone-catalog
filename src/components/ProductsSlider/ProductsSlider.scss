@@ -4,6 +4,10 @@
   gap: 24px;
   cursor: default;
 
+  &__title {
+    margin-right: 8px;
+  }
+
   &__header {
     display: flex;
     justify-content: space-between;

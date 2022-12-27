@@ -163,7 +163,6 @@ export const ProductDetails: React.FC = () => {
     }
 
     const currentTouch = event.touches[0].clientY;
-
     const diff = touchDown - currentTouch;
 
     if (diff > 5) {

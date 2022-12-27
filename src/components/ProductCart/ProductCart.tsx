@@ -6,6 +6,7 @@ import {
 import { Context } from '../Context';
 import { Icon } from '../Icon';
 import { useLocalStorage } from '../../utils/useLocalStorage';
+import { useWindowSize } from '../../utils/useWindowSize';
 import { IconType } from '../../types/Icon';
 import { Product } from '../../types/Product';
 import './ProductCart.scss';
@@ -22,6 +23,8 @@ export const ProductCart: React.FC<Props> = ({ product }) => {
   } = product;
 
   const { cart, setCart } = useContext(Context);
+
+  const size = useWindowSize();
 
   const [setCartLocalStorage] = useLocalStorage('cart', cart);
 
@@ -41,6 +44,7 @@ export const ProductCart: React.FC<Props> = ({ product }) => {
   };
 
   const [cartItemValue, setCartItemValue] = useState(defaultCountValue());
+  const [isImage, setIsImage] = useState(false);
 
   const handleDeleteItem = () => {
     setCartLocalStorage(cart.filter(cartProduct => (
@@ -76,6 +80,14 @@ export const ProductCart: React.FC<Props> = ({ product }) => {
     defaultCountValue();
   }, [cart.length]);
 
+  useEffect(() => {
+    if (size.width > 440) {
+      setIsImage(true);
+    } else {
+      setIsImage(false);
+    }
+  }, [size.width]);
+
   return (
     <li className="cart__item">
       <button
@@ -88,13 +100,15 @@ export const ProductCart: React.FC<Props> = ({ product }) => {
         />
       </button>
 
-      <div className="cart__image--container">
-        <img
-          src={imageUrl}
-          alt="product"
-          className="cart__image"
-        />
-      </div>
+      {isImage && (
+        <div className="cart__image--container">
+          <img
+            src={imageUrl}
+            alt="product"
+            className="cart__image"
+          />
+        </div>
+      )}
 
       <div className="cart__item-title">
         {name}

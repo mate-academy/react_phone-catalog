@@ -183,7 +183,6 @@ export const ProductsSlider: React.FC<Props> = ({ type }) => {
     }
 
     const currentTouch = event.touches[0].clientX;
-
     const diff = touchDown - currentTouch;
 
     if (diff > 5) {
