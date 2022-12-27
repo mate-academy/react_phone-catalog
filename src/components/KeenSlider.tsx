@@ -1,12 +1,11 @@
 /* eslint-disable max-len */
-/* eslint-disable react/button-has-type */
-/* eslint-disable jsx-a11y/control-has-associated-label */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, {
   FC, ReactNode, useEffect, useState,
 } from 'react';
-import 'src/styles/keenSlider.scss';
 import { useKeenSlider } from 'keen-slider/react';
 import 'keen-slider/keen-slider.min.css';
+import { throttle } from 'src/utils/throttle';
 
 const PrevArrowIcon = (props: {
   disabled: boolean,
@@ -83,12 +82,14 @@ export const KeenSlider: FC<Props> = ({ children }) => {
   const [windowSize, setWindowSize] = useState(getWindowSize());
   const [slidesPerView, setSlidesPerView] = useState(4);
 
-  useEffect(() => {
-    function handleWindowResize() {
-      setWindowSize(getWindowSize());
-    }
+  const handleWindowResize = () => {
+    setWindowSize(getWindowSize());
+  };
 
-    window.addEventListener('resize', handleWindowResize);
+  const handleWindowThrottling = throttle(handleWindowResize, 250);
+
+  useEffect(() => {
+    window.addEventListener('resize', handleWindowThrottling);
 
     return () => {
       window.removeEventListener('resize', handleWindowResize);
@@ -143,8 +144,11 @@ export const KeenSlider: FC<Props> = ({ children }) => {
 
           <NextArrowIcon
             onClick={e => e.stopPropagation()
-              || instanceRef.current?.moveToIdx(currentSlide + slidesPerView, true)}
-            disabled={currentSlide === instanceRef.current.track.details.slides.length - slidesPerView}
+          || instanceRef.current?.moveToIdx(currentSlide + slidesPerView, true)}
+            disabled={
+              currentSlide === instanceRef
+                .current.track.details.slides.length - slidesPerView
+            }
           />
         </>
       )}

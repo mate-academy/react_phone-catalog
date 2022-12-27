@@ -1,5 +1,5 @@
 import { ProductsDetails } from '../ProductsPage/ProductsDetails';
-import { NavHistory } from './sections/NavHistory';
+import { NavHistory } from '../ProductsPage/sections/NavHistory';
 
 export const PhoneDetails = () => {
   return (

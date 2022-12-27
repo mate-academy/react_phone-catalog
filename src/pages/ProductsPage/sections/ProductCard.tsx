@@ -2,8 +2,9 @@ import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { Product } from 'src/types/Product';
 import classNames from 'classnames';
-import { getRenderedCapacity, getRenderedRam } from '../utils/helpers';
-import { AddButton } from './AddButtons';
+import { getRenderedRam } from 'src/utils/helpers/getRenderedRam';
+import { getRenderedCapacity } from 'src/utils/helpers/getRenderedCapacity';
+import { AddButton } from 'src/components/AddButtons';
 
 type Props = {
   isSlide: boolean,
@@ -50,7 +51,7 @@ export const ProductCard: FC<Props> = ({
       >
         <img
           className="card__img"
-          src={`assets/phones/${phoneEndPoint}`}
+          src={`/assets/phones/${phoneEndPoint}`}
           alt="phone"
         />
       </Link>
@@ -65,7 +66,9 @@ export const ProductCard: FC<Props> = ({
         <div className="card__price">
           <div className="card__price-actual">{`$${priceAfterDiscount}`}</div>
 
-          <span className="card__price-previous">{`$${price}`}</span>
+          {!(priceAfterDiscount === price) && (
+            <span className="card__price-previous">{`$${price}`}</span>
+          )}
         </div>
       </div>
 

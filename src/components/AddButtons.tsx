@@ -47,11 +47,6 @@ export const AddButton: FC<Props> = ({
   };
 
   useEffect(() => {
-    setFavourites(JSON.parse(localStorage.getItem('favourites') || '[]'));
-    setCartProducts(JSON.parse(localStorage.getItem('cart') || '[]'));
-  }, []);
-
-  useEffect(() => {
     localStorage.setItem('favourites', JSON.stringify(favourites));
     window.dispatchEvent(new Event('storage'));
   }, [favourites]);
@@ -60,6 +55,12 @@ export const AddButton: FC<Props> = ({
     localStorage.setItem('cart', JSON.stringify(cartProducts));
     window.dispatchEvent(new Event('storage'));
   }, [cartProducts]);
+
+  useEffect(() => {
+    return () => {
+      window.dispatchEvent(new Event('storage'));
+    };
+  }, []);
 
   return (
     <div className="specifications__buttons">

@@ -21,7 +21,8 @@
     "react-router-dom": "^6.4.5",
     "react-scripts": "^4.0.3",
     "react-slick": "^0.29.0",
-    "react-transition-group": "^4.4.5"
+    "react-transition-group": "^4.4.5",
+    "ts-debounce": "^4.0.0"
   },
   "devDependencies": {
     "@craco/craco": "^7.0.0",

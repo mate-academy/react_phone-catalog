@@ -3,8 +3,8 @@ import { FC } from 'react';
 import { PrevArrowIcon } from 'src/components/Icons/PrevArrowIcon';
 import { NextArrowIcon } from 'src/components/Icons/NextArrowIcon';
 import { useSearchParams } from 'react-router-dom';
-import { getSearchWith } from 'src/utils/searchHelper';
-import { PaginationNumbers } from './PaginationNumbers';
+import { getSearchWith } from 'src/utils/helpers/searchHelper';
+import { PaginationNumbers } from '../subsections/PaginationNumbers';
 
 type Props = {
   perPage: number,

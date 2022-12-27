@@ -27,7 +27,7 @@ export const Gallery: FC<Props> = ({ selectedProductDetails }) => {
               onClick={() => setSelectedImage(image)}
             >
               <img
-                src={`assets/phones/${image}`}
+                src={`/assets/phones/${image}`}
                 alt="phone"
                 className="gallery--left__img"
               />
@@ -38,7 +38,7 @@ export const Gallery: FC<Props> = ({ selectedProductDetails }) => {
 
       <div className="gallery__large">
         <img
-          src={`assets/phones/${selectedImage}`}
+          src={`/assets/phones/${selectedImage}`}
           alt="phone"
           className="gallery__item--large"
         />

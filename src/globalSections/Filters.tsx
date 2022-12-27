@@ -6,8 +6,8 @@ import { useSearchParams } from 'react-router-dom';
 import { HistoryStepIcon } from 'src/components/Icons/HistoryStepIcon';
 import { Product } from 'src/types/Product';
 import { SortBy } from 'src/types/SortBy';
-import { capitalize } from 'src/utils/helpers';
-import { FilterList } from '../pages/PhonesPage/sections/FilterList';
+import { capitalize } from 'src/utils/shortHands';
+import { FilterList } from './FilterList';
 
 const fromNameToProps: SortBy = {
   Newest: 'age',
@@ -25,14 +25,14 @@ type Props = {
   isSort: boolean,
   dropDownContent: string[],
   title: string,
-  visibleProducts: Product[],
+  typeProducts: Product[],
 };
 
 export const Filters: FC<Props> = ({
   isSort,
   dropDownContent,
   title,
-  visibleProducts,
+  typeProducts,
 }) => {
   const [searchParams] = useSearchParams();
   const [isDropdown, setIsDropdown] = useState<boolean>(false);
@@ -99,8 +99,8 @@ export const Filters: FC<Props> = ({
               dropDownContent={dropDownContent}
               setIsDropdown={setIsDropdown}
               isSort={isSort}
-              visibleProducts={visibleProducts}
               fromNameToProps={fromNameToProps}
+              typeProducts={typeProducts}
             />
           </div>
         </div>

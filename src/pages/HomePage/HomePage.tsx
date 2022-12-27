@@ -10,11 +10,12 @@ import { ShopByCategory } from './sections/ShopByCategory';
 export const HomePage = () => {
   const [hotPriceProducts, setHotPriceProducts] = useState<Product[]>([]);
   const [newModels, setNewModels] = useState<Product[]>([]);
-  const products = useContext(ProductContext);
+  const { products } = useContext(ProductContext);
 
   useEffect(() => {
     setHotPriceProducts(getHotPriceProducts(products));
     setNewModels(getNewModels(products));
+    window.scrollTo(0, 0);
   }, []);
 
   return (
@@ -22,14 +23,13 @@ export const HomePage = () => {
       <SliderComponent />
 
       <div className="container">
-
         {!!hotPriceProducts.length
-          && (
-            <SliderSection
-              sectionTitle="Hot prices"
-              renderedProducts={hotPriceProducts}
-            />
-          )}
+              && (
+                <SliderSection
+                  sectionTitle="Hot prices"
+                  renderedProducts={hotPriceProducts}
+                />
+              )}
 
         <ShopByCategory products={products} />
 

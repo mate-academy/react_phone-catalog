@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 export const LogoIcon = () => (
   <svg className="icon icon-logo" width="40" height="11" viewBox="0 0 40 11" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M2.93333 8.0966V0.254421H0V10.7306H6.65986V8.0966H2.93333Z" fill="#313237" />

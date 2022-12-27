@@ -8,6 +8,7 @@ export const Colors = () => {
     <div className="options-wrapper">
       {[1, 2, 3, 4].map(el => (
         <button
+          key={el}
           type="button"
           className={classNames(
             'options-wrapper__color--outer',

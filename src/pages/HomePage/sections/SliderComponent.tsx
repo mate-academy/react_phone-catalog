@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import Slider from 'react-slick';
 import { NextArrowIcon } from 'src/components/Icons/NextArrowIcon';
 import { PrevArrowIcon } from 'src/components/Icons/PrevArrowIcon';

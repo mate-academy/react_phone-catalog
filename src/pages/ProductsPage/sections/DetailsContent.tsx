@@ -2,18 +2,18 @@ import { FC, useContext } from 'react';
 import { ProductContext } from 'src/contexts/ProductContext';
 import { Product } from 'src/types/Product';
 import { ProdcutDetails } from 'src/types/ProductDetails';
-import { getMultupleRandom } from 'src/utils/helpers';
 import { GoBack } from 'src/components/GoBack';
-import { SliderSection } from '../HomePage/sections/SliderSection';
-import { ShopButton } from './sections/ShopButton';
-import { Capacity } from './sections/Capacity';
-import { Colors } from './sections/Colors';
-import { Gallery } from './sections/Gallery';
-import { GeneralSpec } from './sections/GeneralSpec';
-import { Paragraph } from './sections/Paragraph';
-import { Prices } from './sections/Prices';
-import { TechSpecs } from './sections/TechSpecs';
-import { Title } from './sections/Title';
+import { getMultupleRandom } from 'src/utils/helpers/getMultupleRandom';
+import { SliderSection } from '../../HomePage/sections/SliderSection';
+import { ShopButton } from '../subsections/ShopButton';
+import { Capacity } from '../subsections/Capacity';
+import { Colors } from '../subsections/Colors';
+import { Gallery } from '../subsections/Gallery';
+import { GeneralSpec } from '../subsections/GeneralSpec';
+import { Paragraph } from '../subsections/Paragraph';
+import { Prices } from '../subsections/Prices';
+import { TechSpecs } from '../subsections/TechSpecs';
+import { Title } from '../subsections/Title';
 
 type Props = {
   selectedProductDetails: ProdcutDetails,
@@ -24,8 +24,10 @@ export const DetailsContent: FC<Props> = ({
   selectedProductDetails,
   selectedProductGeneralInfo,
 }) => {
-  const products = useContext(ProductContext);
-  const randomSuggestedProducts = getMultupleRandom(products, 8);
+  const { products } = useContext(ProductContext);
+  const productsWithoutCurrent = [...products]
+    .filter(x => x.id !== selectedProductGeneralInfo.id);
+  const randomSuggestedProducts = getMultupleRandom(productsWithoutCurrent, 8);
 
   return (
     <div className="products-details">

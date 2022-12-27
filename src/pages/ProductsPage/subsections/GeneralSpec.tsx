@@ -1,7 +1,8 @@
 import { FC } from 'react';
 import { Product } from 'src/types/Product';
 import { ProdcutDetails } from 'src/types/ProductDetails';
-import { getRenderedCapacity, getRenderedRam } from 'src/utils/helpers';
+import { getRenderedCapacity } from 'src/utils/helpers/getRenderedCapacity';
+import { getRenderedRam } from 'src/utils/helpers/getRenderedRam';
 
 type Props = {
   selectedProductDetails: ProdcutDetails,
@@ -23,12 +24,13 @@ export const GeneralSpec: FC<Props> = ({
 
   const renderedCapacity = getRenderedCapacity(capacity) || '-';
   const renderedRam = getRenderedRam(ram) || '-';
+  const renderedDisplay = display.screenSize || '-';
 
   return (
     <div className="card__features specifications__card__features">
       <div className="card__feature">
         <div className="card__feature-key">Screen</div>
-        <div className="card__feature-vaue">{display.screenSize}</div>
+        <div className="card__feature-vaue">{renderedDisplay}</div>
       </div>
       <div className="card__feature">
         <div className="card__feature-key">Capacity</div>

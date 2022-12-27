@@ -27,6 +27,9 @@
 
 .products-section {
   margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  height: 80%;
 
   &__selects {
     display: flex;
@@ -170,7 +173,7 @@
 }
 
 .product-section__catalog-wrapper {
-  margin: 24px auto 0;
+  margin-top: 24px;
 }
 
 .product-section__catalog {

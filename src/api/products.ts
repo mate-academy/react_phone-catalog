@@ -1,3 +1,4 @@
+import { ProdcutDetails } from 'src/types/ProductDetails';
 import { Product } from '../types/Product';
 import { client } from '../utils/fetchClient';
 
@@ -6,5 +7,5 @@ export const getProducts = () => {
 };
 
 export const getProductDetails = (productId: string) => {
-  return client.get<any>(`/products/${productId}`);
+  return client.get<ProdcutDetails>(`/products/${productId}`);
 };

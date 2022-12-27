@@ -3,35 +3,7 @@ import { Product } from 'src/types/Product';
 
 type InitValue = string | (() => void);
 
-// function getSavedValue(key: string, initialValue: InitValue) {
-//   const savedValue = JSON.parse(localStorage.getItem(key) || '[]');
-
-//   if (savedValue) {
-//     return savedValue;
-//   }
-
-//   if (initialValue instanceof Function) {
-//     return initialValue();
-//   }
-
-//   return initialValue;
-// }
-
 export function useLocalStorage(key: string, initialValue: InitValue) {
-  // const [value, setValue] = useState(() => {
-  //   try {
-  //     return getSavedValue(key, initialValue);
-  //   } catch {
-  //     return initialValue;
-  //   }
-  // });
-
-  // useEffect(() => {
-  //   localStorage.setItem(key, JSON.stringify(value));
-  // }, [value]);
-
-  // return [value, setValue];
-
   const [storedValue, setStoredValue] = useState(() => {
     if (typeof window === 'undefined') {
       return initialValue;

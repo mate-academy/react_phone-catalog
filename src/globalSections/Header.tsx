@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react';
+import { FC, useContext, useEffect } from 'react';
 import classNames from 'classnames';
 import {
   Link, NavLink, Route, Routes,
@@ -7,8 +7,10 @@ import { CartIcon } from 'src/components/Icons/CartIcon';
 import { HeartIcon } from 'src/components/Icons/HeartIcon';
 import { LogoIcon } from 'src/components/Icons/LogoIcon';
 import { InputSearch } from 'src/components/InputSearch';
-import { PageLink } from 'src/components/PageLink';
 import { useLocalStorage } from 'src/hooks/useLocalStorage';
+import { HeaderList } from 'src/components/HeaderList';
+import { ProductContext } from 'src/contexts/ProductContext';
+import { hasProducts } from 'src/utils/helpers/hasProducts';
 
 type Props = {
   scrollToRef: React.MutableRefObject<null>,
@@ -17,6 +19,10 @@ type Props = {
 export const Header: FC<Props> = ({ scrollToRef }) => {
   const [favourites, setFavourites] = useLocalStorage('favourites', '');
   const [cart, setCart] = useLocalStorage('cart', '');
+  const { products } = useContext(ProductContext);
+  const hasAccessories = hasProducts(products, 'accessory');
+  const hasTablets = hasProducts(products, 'tablet');
+  const hasPhone = hasProducts(products, 'phone');
 
   useEffect(() => {
     window.addEventListener('storage', () => {
@@ -36,27 +42,34 @@ export const Header: FC<Props> = ({ scrollToRef }) => {
           </Link>
         </div>
 
-        <ul className="header__list">
-          <li className="header__item">
-            <PageLink to="/" text="Home" />
-          </li>
-          <li className="header__item">
-            <PageLink to="/phones" text="Phones" />
-          </li>
-          <li className="header__item">
-            <PageLink to="/tablets" text="Tablets" />
-          </li>
-          <li className="header__item">
-            <PageLink to="/accessories" text="Accessories" />
-          </li>
-        </ul>
+        <Routes>
+          <Route path="/">
+            <Route index element={<HeaderList />} />
+            <Route path="phones" element={<HeaderList />} />
+            <Route path="phones/:productId" element={<HeaderList />} />
+            <Route path="tablets" element={<HeaderList />} />
+            <Route path="tablets/:productId" element={<HeaderList />} />
+            <Route path="accessories" element={<HeaderList />} />
+            <Route path="accessories/:productId" element={<HeaderList />} />
+            <Route path="favourites" element={<HeaderList />} />
+          </Route>
+        </Routes>
+
       </div>
 
       <div className="header__nav header__nav-right">
         <Routes>
-          <Route path="/phones" element={<InputSearch />} />
-          <Route path="/tablets" element={<InputSearch />} />
-          <Route path="/accessories" element={<InputSearch />} />
+          {hasPhone && (
+            <Route path="/phones" element={<InputSearch />} />
+          )}
+
+          {hasTablets && (
+            <Route path="/tablets" element={<InputSearch />} />
+          )}
+
+          {hasAccessories && (
+            <Route path="/accessories" element={<InputSearch />} />
+          )}
         </Routes>
 
         <NavLink

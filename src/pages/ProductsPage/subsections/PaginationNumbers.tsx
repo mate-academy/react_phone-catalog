@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import { FC } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { getSearchWith } from 'src/utils/searchHelper';
+import { getSearchWith } from 'src/utils/helpers/searchHelper';
 
 type Props = {
   pageNumbers: number[],

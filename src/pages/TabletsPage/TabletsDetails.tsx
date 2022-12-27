@@ -1,4 +1,4 @@
-import { NavHistory } from '../PhonesPage/sections/NavHistory';
+import { NavHistory } from '../ProductsPage/sections/NavHistory';
 import { ProductsDetails } from '../ProductsPage/ProductsDetails';
 
 export const TabletsDetails = () => {

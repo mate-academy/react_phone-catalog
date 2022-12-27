@@ -1,16 +1,20 @@
-import { FC, useContext, useMemo } from 'react';
+import {
+  FC, useContext, useEffect, useMemo,
+} from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { GoBack } from 'src/components/GoBack';
 import { ProductContext } from 'src/contexts/ProductContext';
-import { NoItemsLeftSection } from 'src/globalSections/NoItemsLeftSection';
-import { ProductSection } from 'src/globalSections/ProductSection';
+import { NoItemsLeftSection } from 'src/features/NoItemsLeftSection';
+import { ProductSection } from 'src/pages/ProductsPage/sections/ProductSection';
 import { useLocalStorage } from 'src/hooks/useLocalStorage';
-import { NavHistory } from 'src/pages/PhonesPage/sections/NavHistory';
+import { NavHistory } from 'src/pages/ProductsPage/sections/NavHistory';
 import {
   getProductsWithActualPrice,
-  lower,
-  sortProducts,
-} from 'src/utils/helpers';
+} from 'src/utils/helpers/getProductsWithActualPrice';
+import { sortProducts } from 'src/utils/helpers/sortProducts';
+import { lower } from 'src/utils/shortHands';
+import { Product } from 'src/types/Product';
+import { hasMatches } from 'src/utils/helpers/hasMatches';
 
 type Props = {
   title: string,
@@ -24,11 +28,18 @@ export const ProductsPage: FC<Props> = ({
   title,
   pageType,
 }) => {
-  const products = useContext(ProductContext);
+  const {
+    products,
+    currentProducts,
+    setCurrentProducts,
+    setVisibleProducts,
+    visibleProducts,
+  } = useContext(ProductContext);
   const [searchParams] = useSearchParams();
   const [favourites, setFavourites] = useLocalStorage('favourites', '');
   const [cartProducts, setCartProducts] = useLocalStorage('cart', '');
 
+  const query = searchParams.get('query') || '';
   const sort = searchParams.get('sort') || 'age';
   const perPage = searchParams.get('perPage') || 'all';
   const isAll = lower(perPage) === 'all';
@@ -41,10 +52,10 @@ export const ProductsPage: FC<Props> = ({
     return sortProducts([...allTypeProducts], sort);
   }, [sort, perPage]);
 
-  let visibleProducts;
+  let filteredProductsAfterPagination: Product[];
 
   if (isAll) {
-    visibleProducts = sortedProducts;
+    filteredProductsAfterPagination = sortedProducts;
   } else {
     const indexOfLastProduct = +currentPage
     * (isAll
@@ -55,9 +66,29 @@ export const ProductsPage: FC<Props> = ({
       ? sortedProducts.length
       : +perPage);
 
-    visibleProducts = sortedProducts
+    filteredProductsAfterPagination = sortedProducts
       .slice(indexOfFirstProduct, indexOfLastProduct);
   }
+
+  useEffect(() => {
+    if (query) {
+      setVisibleProducts(filteredProductsAfterPagination
+        .filter(el => {
+          return hasMatches(el.name, query);
+        }));
+    } else {
+      setVisibleProducts(filteredProductsAfterPagination);
+    }
+
+    setCurrentProducts(filteredProductsAfterPagination);
+  }, [sort, perPage, currentPage]);
+
+  useEffect(() => {
+  }, []);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="container">
@@ -69,12 +100,12 @@ export const ProductsPage: FC<Props> = ({
           />
         )}
 
-      {visibleProducts.length > 0 && setFavourites
+      {currentProducts.length > 0
+      && setFavourites
         ? (
           <ProductSection
             title={title}
             typeProducts={typeProducts}
-            visibleProducts={visibleProducts}
             dropdownSortContent={dropdownSortContent}
             dropdownFilterContent={dropdownFilterContent}
             favourites={favourites}

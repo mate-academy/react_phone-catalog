@@ -11,4 +11,6 @@ export interface Product {
   capacity: string,
   ram: string,
   priceAfterDiscount?: number,
+  discountValue: number,
+  count: number,
 }

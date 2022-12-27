@@ -3,7 +3,7 @@ import { FC } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { HistoryStepIcon } from 'src/components/Icons/HistoryStepIcon';
 import { HomeIcon } from 'src/components/Icons/HomeIcon';
-import { lower } from 'src/utils/helpers';
+import { lower } from 'src/utils/shortHands';
 
 type Props = {
   pageType: string,

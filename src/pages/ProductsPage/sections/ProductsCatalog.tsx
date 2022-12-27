@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { ProductCard } from 'src/components/ProductCard';
+import { ProductCard } from 'src/pages/ProductsPage/sections/ProductCard';
 import { Product } from 'src/types/Product';
 
 type Props = {

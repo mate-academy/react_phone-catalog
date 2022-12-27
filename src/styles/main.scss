@@ -5,6 +5,7 @@
 @import "./base/typography";
 @import "./base//flickity";
 @import './keenSlider.scss';
+@import "./base/Loader.scss";
 
 
 // it puts footer to the bottom of the page
@@ -42,3 +43,6 @@
 @import "./pages/products-page";
 @import "./pages/no-items-left";
 @import "./pages/products-details";
+@import "./pages/favourites";
+@import "./pages/cart-page";
+@import "./pages/no-matches";

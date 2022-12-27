@@ -3,13 +3,14 @@ import {
 } from 'react';
 import { useLocation } from 'react-router-dom';
 import { getProductDetails } from 'src/api/products';
+import { Loader } from 'src/components/Loader';
 import { ProductContext } from 'src/contexts/ProductContext';
 import { ProdcutDetails } from 'src/types/ProductDetails';
-import { getRandomId } from 'src/utils/helpers';
-import { DetailsContent } from './DetailsContent';
+import { getRandomId } from 'src/utils/shortHands';
+import { DetailsContent } from './sections/DetailsContent';
 
 export const ProductsDetails = () => {
-  const products = useContext(ProductContext);
+  const { products } = useContext(ProductContext);
   const [
     selectedProductDetails,
     setSelectedProductDetails,
@@ -25,7 +26,7 @@ export const ProductsDetails = () => {
       const data = await getProductDetails(productId);
 
       setSelectedProductDetails(data);
-      setIsLoader(false)
+      setIsLoader(false);
 
       return data;
     } catch {
@@ -51,7 +52,7 @@ export const ProductsDetails = () => {
   return (
     <>
       {isLoader
-        ? <div>Loader</div>
+        ? <Loader />
         : (
           selectedProductDetails && selectedProductGeneralInfo && (
             <DetailsContent

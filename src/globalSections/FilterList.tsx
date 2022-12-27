@@ -3,23 +3,23 @@ import React, { FC } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Product } from 'src/types/Product';
 import { SortBy } from 'src/types/SortBy';
-import { lower } from 'src/utils/helpers';
-import { getSearchWith } from 'src/utils/searchHelper';
+import { lower } from 'src/utils/shortHands';
+import { getSearchWith } from 'src/utils/helpers/searchHelper';
 
 type Props = {
   dropDownContent: string[],
   setIsDropdown: React.Dispatch<React.SetStateAction<boolean>>,
   isSort: boolean,
-  visibleProducts: Product[],
   fromNameToProps: SortBy,
+  typeProducts: Product[],
 };
 
 export const FilterList: FC<Props> = ({
   dropDownContent,
   setIsDropdown,
   isSort,
-  visibleProducts,
   fromNameToProps,
+  typeProducts,
 }) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -45,7 +45,7 @@ export const FilterList: FC<Props> = ({
 
   const isDropDownItemDisabled = (el: string) => {
     if (!isSort && lower(el) !== 'all') {
-      return +el > visibleProducts.length;
+      return +el > typeProducts.length;
     }
 
     return false;

@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 export const PrevArrowIcon = () => (
   <svg
     className="prev-arrow-icon"

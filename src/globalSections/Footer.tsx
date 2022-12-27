@@ -43,7 +43,7 @@ export const Footer: FC<Props> = ({ scrollToRef }) => {
 
           <li className="footer__link--contact footer__link">
             <a
-              href="https://www.instagram.com/matwvey/"
+              href="https://t.me/matviiiiii"
               target="_blank"
               rel="noreferrer"
             >
