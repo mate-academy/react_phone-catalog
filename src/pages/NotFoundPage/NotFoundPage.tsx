@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { BackButton } from '../../components/BackButton';
 import { Context } from '../../components/Context';
 import { Loader } from '../../components/Loader';
@@ -6,6 +6,10 @@ import { NotFound } from '../../components/NotFound';
 
 export const NotFoundPage: React.FC = () => {
   const { isLoading } = useContext(Context);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <>

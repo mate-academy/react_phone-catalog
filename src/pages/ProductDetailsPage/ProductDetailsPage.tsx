@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { BackButton } from '../../components/BackButton';
 import { Context } from '../../components/Context';
 import { ErrorNotification } from '../../components/ErrorNotification';
@@ -9,6 +9,10 @@ import { ProductsSlider } from '../../components/ProductsSlider';
 
 export const ProductDetailsPage: React.FC = () => {
   const { isLoading, error } = useContext(Context);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <>
