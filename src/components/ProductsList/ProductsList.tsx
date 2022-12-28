@@ -24,7 +24,7 @@ export const ProductsList: React.FC = () => {
   const { products, favorite } = useContext(Context);
 
   const location = useLocation();
-  const size = useWindowSize();
+  const { width } = useWindowSize();
   const [searchParams] = useSearchParams();
 
   const [category, setCategory] = useState<Category | null>(null);
@@ -143,22 +143,22 @@ export const ProductsList: React.FC = () => {
   } = productListSettings;
 
   const productListWidth = () => {
-    if (size.width > 1193) {
+    if (width > 1193) {
       setItemsInList(4);
     }
 
-    if (size.width > 599 && size.width < 1193) {
+    if (width > 599 && width < 1193) {
       setItemsInList(2);
     }
 
-    if (size.width < 599) {
+    if (width < 599) {
       setItemsInList(1);
     }
   };
 
   useEffect(() => {
     productListWidth();
-  }, [size.width]);
+  }, [width]);
 
   useEffect(() => {
     getCategory();

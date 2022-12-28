@@ -26,7 +26,7 @@ export const ProductDetails: React.FC = () => {
   } = useContext(Context);
 
   const { productId = '' } = useParams();
-  const size = useWindowSize();
+  const { width } = useWindowSize();
 
   const capacityList = [16, 256, 512];
   const colourList = ['pink', 'grey', 'black', 'white'];
@@ -132,7 +132,7 @@ export const ProductDetails: React.FC = () => {
   };
 
   const sliderHeight = () => {
-    if (size.width > 640) {
+    if (width > 640) {
       if (defaultImagesLength < 4) {
         setItemsInSlider(defaultImagesLength);
       } else {
@@ -140,7 +140,7 @@ export const ProductDetails: React.FC = () => {
       }
     }
 
-    if (size.width < 640) {
+    if (width < 640) {
       if (defaultImagesLength < 2) {
         setItemsInSlider(defaultImagesLength);
       } else {
@@ -178,7 +178,7 @@ export const ProductDetails: React.FC = () => {
 
   useEffect(() => {
     sliderHeight();
-  }, [size.width]);
+  }, [width]);
 
   useEffect(() => {
     setPosition(0);

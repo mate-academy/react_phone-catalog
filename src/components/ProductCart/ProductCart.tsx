@@ -24,7 +24,7 @@ export const ProductCart: React.FC<Props> = ({ product }) => {
 
   const { cart, setCart } = useContext(Context);
 
-  const size = useWindowSize();
+  const { width } = useWindowSize();
 
   const [setCartLocalStorage] = useLocalStorage('cart', cart);
 
@@ -81,12 +81,12 @@ export const ProductCart: React.FC<Props> = ({ product }) => {
   }, [cart.length]);
 
   useEffect(() => {
-    if (size.width > 440) {
+    if (width > 440) {
       setIsImage(true);
     } else {
       setIsImage(false);
     }
-  }, [size.width]);
+  }, [width]);
 
   return (
     <li className="cart__item">

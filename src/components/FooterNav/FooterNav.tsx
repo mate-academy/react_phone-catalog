@@ -9,6 +9,8 @@ export const FooterNav: React.FC = () => {
           key={navItem.title}
           href={navItem.link}
           className="footer__link"
+          target="_blank"
+          rel="noreferrer"
         >
           {navItem.title}
         </a>

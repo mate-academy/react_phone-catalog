@@ -32,7 +32,7 @@ export const ProductsSlider: React.FC<Props> = ({ type }) => {
 
   const { productId = '' } = useParams();
   const location = useLocation();
-  const size = useWindowSize();
+  const { width } = useWindowSize();
 
   const [position, setPosition] = useState(0);
   const [itemsInSlider, setItemsInSlider] = useState(4);
@@ -140,7 +140,7 @@ export const ProductsSlider: React.FC<Props> = ({ type }) => {
   };
 
   const sliderWidth = () => {
-    if (size.width > 1175) {
+    if (width > 1175) {
       if (sliderProductList.length < 4) {
         setItemsInSlider(sliderProductList.length);
       } else {
@@ -148,7 +148,7 @@ export const ProductsSlider: React.FC<Props> = ({ type }) => {
       }
     }
 
-    if (size.width > 887 && size.width < 1176) {
+    if (width > 887 && width < 1176) {
       if (sliderProductList.length < 3) {
         setItemsInSlider(sliderProductList.length);
       } else {
@@ -156,7 +156,7 @@ export const ProductsSlider: React.FC<Props> = ({ type }) => {
       }
     }
 
-    if (size.width > 599 && size.width < 888) {
+    if (width > 599 && width < 888) {
       if (sliderProductList.length < 2) {
         setItemsInSlider(sliderProductList.length);
       } else {
@@ -164,7 +164,7 @@ export const ProductsSlider: React.FC<Props> = ({ type }) => {
       }
     }
 
-    if (size.width < 599) {
+    if (width < 599) {
       setItemsInSlider(1);
     }
   };
@@ -198,7 +198,7 @@ export const ProductsSlider: React.FC<Props> = ({ type }) => {
 
   useEffect(() => {
     sliderWidth();
-  }, [size.width]);
+  }, [width]);
 
   useEffect(() => {
     setPosition(0);

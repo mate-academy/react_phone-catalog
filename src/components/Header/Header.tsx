@@ -21,7 +21,7 @@ export const Header: React.FC = () => {
   const location = useLocation();
   const { productId = '' } = useParams();
 
-  const size = useWindowSize();
+  const { width } = useWindowSize();
 
   const [isOpened, setIsOpened] = useState(false);
   const [isSearchBar, setIsSearchBar] = useState(false);
@@ -30,7 +30,7 @@ export const Header: React.FC = () => {
 
   const searchBarCondition = productCategoryList.some(
     item => location.pathname.includes(item),
-  ) && !productId.length;
+  ) && !productId;
 
   const cartCondition = location.pathname.includes('cart');
   const favoriteCondition = location.pathname.includes('favorite');
@@ -44,12 +44,12 @@ export const Header: React.FC = () => {
   }, [location]);
 
   useEffect(() => {
-    if (size.width > 400) {
+    if (width > 400) {
       setIsSearchBar(true);
     } else {
       setIsSearchBar(false);
     }
-  }, [size.width]);
+  }, [width]);
 
   return (
     <header className="page__header header">

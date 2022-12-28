@@ -11,7 +11,7 @@ export const Banner: React.FC = () => {
   const [position, setPosition] = useState(0);
   const [touchPosition, setTouchPosition] = useState<number | null>(null);
 
-  const size = useWindowSize();
+  const { width } = useWindowSize();
 
   const handleClickButton = (arrowDirection: SliderButtonType) => {
     if (arrowDirection === 'prev') {
@@ -77,7 +77,7 @@ export const Banner: React.FC = () => {
         grid__item--desktop-1-24"
     >
       <div className="banner__container">
-        {size.width > 500 && (
+        {width > 500 && (
           <button
             className="
               banner__button
@@ -115,7 +115,7 @@ export const Banner: React.FC = () => {
           ))}
         </div>
 
-        {size.width > 500 && (
+        {width > 500 && (
           <button
             className="
               banner__button
