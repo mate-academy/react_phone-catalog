@@ -1,8 +1,15 @@
+import { Route, Routes } from 'react-router-dom';
 import './App.scss';
+import { Layout } from './components/Layout/Layout';
+import { HomePage } from './pages/HomePage';
 
 const App = () => (
   <div className="App">
-    <h1>React Phone Catalog</h1>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<HomePage />} />
+      </Route>
+    </Routes>
   </div>
 );
 

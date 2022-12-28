@@ -1,0 +1,68 @@
+@import "../../styles/utils/variables";
+
+.header {
+  display: flex;
+  padding-left: 24px;
+  height: 64px;
+  border-bottom: 1px solid $lightGrayColor;
+
+  &__left {
+    display: flex;
+    align-items: center;
+
+    gap: 64px;
+    height: 100%;
+  }
+
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.nav {
+  display: flex;
+  height: 100%;
+
+  &__list {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 64px;
+  }
+
+  &__item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: $secondaryColor;
+
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+
+    &--active {
+      color: $primaryColor;
+
+      &::after {
+        position: absolute;
+        content: "";
+        width: 100%;
+        bottom: 0;
+        height: 3px;
+        background-color: $primaryColor;
+      }
+    }
+  }
+}

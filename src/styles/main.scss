@@ -1,0 +1,11 @@
+@import "utils/variables";
+@import "utils/reset.scss";
+@import "utils/normalize.scss";
+@import "utils/mixins";
+@import "fonts/fonts";
+
+@import "blocks/container";
+
+.main {
+  height: calc(100vh - 96px - 64px);
+}

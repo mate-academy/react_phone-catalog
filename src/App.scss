@@ -1,1 +1,6 @@
-// not empty
+@import "./styles/utils/variables";
+
+.footer {
+  height: 96px;
+  background-color: $lightGrayColor;
+}
