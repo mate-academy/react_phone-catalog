@@ -1,0 +1,17 @@
+@import "../../styles/utils/variables";
+
+.search {
+  padding: 24px;
+  border: none;
+  outline: none;
+  border-left: 1px solid $lightGrayColor;
+  width: 327px;
+  font-size: 14px;
+  background-repeat: no-repeat;
+  background-position: center right 24px;
+  background-image: url("../../img/icons/magnifying-glass/magnifying-glass.svg");
+  
+  &::placeholder {
+    color: $grayColor;
+  }
+}

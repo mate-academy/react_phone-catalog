@@ -2,6 +2,7 @@
 
 .header {
   display: flex;
+  justify-content: space-between;
   padding-left: 24px;
   height: 64px;
   border-bottom: 1px solid $lightGrayColor;
@@ -14,43 +15,27 @@
     height: 100%;
   }
 
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  height: 100%;
-}
-
-.nav {
-  display: flex;
-  height: 100%;
-
-  &__list {
+  &__right {
     display: flex;
-    align-items: center;
-    list-style: none;
-    gap: 64px;
   }
 
-  &__item {
-    position: relative;
-    display: flex;
-    align-items: center;
+  &__button {
     height: 100%;
-  }
+    width: 64px;
+    border-left: 1px solid $lightGrayColor;
 
-  &__link {
-    display: flex;
-    align-items: center;
-    height: 100%;
-    text-decoration: none;
-    text-transform: uppercase;
-    color: $secondaryColor;
+    background-repeat: no-repeat;
+    background-position: center;
 
-    font-weight: 700;
-    font-size: 12px;
-    letter-spacing: 0.04em;
+    &--favorites {
+      position: relative;
+      background-image: url("../../img/icons/heart/heart-black.svg");
+    }
+
+    &--cart {
+      position: relative;
+      background-image: url("../../img/icons/shopping-cart/shopping-cart.svg");
+    }
 
     &--active {
       color: $primaryColor;
