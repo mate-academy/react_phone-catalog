@@ -29,6 +29,12 @@
     font-size: 12px;
     letter-spacing: 0.04em;
 
+    transition: 0.3s all linear;
+
+    &:hover {
+      color: $primaryColor;
+    }
+
     &--active {
       color: $primaryColor;
 

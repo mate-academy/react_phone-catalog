@@ -1,4 +1,43 @@
+@import "../../styles/utils/mixins";
+@import "../../styles/utils/variables";
+
 .footer {
+  display: flex;
   height: 96px;
-  background-color: #e2e6e9;
+  background-color: #fff;
+
+  &__content {
+    display: flex;
+    height: 100%;
+    justify-content: space-between;
+  }
+
+  &__buttons {
+    display: flex;
+  }
+}
+
+.buttons {
+  &__text {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-weight: 600;
+    font-size: 12px;
+    color: $secondaryColor;
+  }
+}
+
+.button {
+  @include btnSize(32px);
+  background-color: #fff;
+  border: 1px solid $secondaryColor;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  cursor: pointer;
+
+  &--back-to-top {
+    background-image: url("../../img/icons/arrows/arrow-up--disabled.svg");
+  }
 }
