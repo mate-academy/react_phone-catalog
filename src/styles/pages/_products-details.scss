@@ -16,18 +16,6 @@
 
 // #region gallery
 
-// @for $img-number from 1 to 5 {
-//   .gallery__item--#{$img-number} {
-//     grid-area: img-#{$img-number};
-//   }
-// }
-
-// .gallery__item--6 {
-//   grid-area: big;
-//   background: $primary-c;
-//   color: $white-c;
-// }
-
 .gallery {
   display: flex;
   // height: 464px;
@@ -107,22 +95,14 @@
     font-size: 12px;
     line-height: 15px;
     color: $secondary-c;
-    font-weight: 600;
-  }
-
-  &-wrapper {
-    display: flex;
-    margin-top: 9px;
-    gap: 10px;
   }
 }
 
-
 $backgrounds: (
-  1: #FCDBC1,
-  2: #5F7170,
-  3: #4C4C4C,
-  4: #F0F0F0,
+  1: #fcdbc1,
+  2: #5f7170,
+  3: #4c4c4c,
+  4: #f0f0f0,
 );
 
 .options-wrapper__color--outer {
@@ -150,6 +130,10 @@ $backgrounds: (
 }
 
 .options-wrapper {
+  display: flex;
+  margin-top: 9px;
+  gap: 10px;
+
   &__capacity {
     display: flex;
     justify-content: center;
@@ -161,7 +145,8 @@ $backgrounds: (
     background: $white-c;
     border: 1px solid $icons-c;
     transition-property: background-color, color;
-    transition: 0.08s ease;
+    transition-duration: 0.8s;
+    transition-timing-function: ease;
     cursor: pointer;
 
     &:hover {
@@ -278,7 +263,7 @@ $backgrounds: (
     font-weight: 500;
     font-size: 14px;
     line-height: 21px;
-    color:$secondary-c
+    color: $secondary-c;
   }
 
   &__value {
@@ -290,8 +275,6 @@ $backgrounds: (
 }
 
 // #endregion
-
-
 .grid-2-col {
   display: grid;
 
@@ -302,10 +285,8 @@ $backgrounds: (
   }
 
   @include onTablet {
-      grid-template-columns: 6fr 4fr;
-      grid-template-rows: 1fr;
-      grid-gap: 0 75px;
+    grid-template-columns: 6fr 4fr;
+    grid-template-rows: 1fr;
+    grid-gap: 0 75px;
   }
 }
-
-

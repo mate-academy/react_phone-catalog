@@ -4,8 +4,8 @@
 
 .icon::before {
   display: inline-block;
-  line-height: .9;
-  font-family: "Font Awesome 5 Free";
+  line-height: 0.9;
+  font-family: "Font Awesome 5 Free", sans-serif;
   font-style: normal;
   font-variant: normal;
   text-rendering: auto;
@@ -22,10 +22,24 @@
   &__catalog {
     margin-top: 24px;
   }
+
+  &__card {
+    border: 1px solid $elements-c;
+    padding: 32px 32px 24px;
+    min-width: 272px;
+  }
+
+  &__top-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 120px;
+  }
 }
 
 .card {
-  min-width: 272px;
+  min-width: 255px;
+  max-width: 272px;
   border: 1px solid $elements-c;
   padding: 32px 32px 24px;
 
@@ -57,7 +71,6 @@
     font-weight: 500;
     font-size: 14px;
   }
-
 
   &__price {
     display: flex;
@@ -138,13 +151,13 @@
   transition: box-shadow 250ms ease-in-out;
 
   &:hover {
-    box-shadow: 0px 3px 13px rgba(23, 32, 49, 0.26);
+    box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
   }
 
   &--selected {
     background: $white-c;
     color: $green-c;
-    border: 1px solid #E2E6E9;
+    border: 1px solid #e2e6e9;
   }
 }
 
@@ -192,6 +205,33 @@
     }
   }
 
+  &__overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba($primary-c, 0);
+    transition: 300ms ease-in-out;
+
+    &::before {
+      content: "\f0fe";
+      position: absolute;
+      font-weight: 400;
+      font-size: 40px;
+      color: $white-c;
+      top: 50%;
+      right: 50%;
+      opacity: 0;
+      z-index: 100;
+
+      transform-origin: top right;
+      transform: rotate(180deg) translate(50%, -50%);
+      transition-property: opacity, transform;
+      transition-delay: 200ms;
+      transition-duration: 500ms;
+      transition-timing-function: ease-in-out;
+    }
+  }
+
   &__background {
     position: relative;
     display: flex;
@@ -220,32 +260,6 @@
     }
   }
 
-  &__overlay {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: rgba($primary-c, 0);
-    transition: 300ms ease-in-out;
-
-    &::before {
-      content: "\f0fe";
-      position: absolute;
-      font-weight: 400;
-      font-size: 40px;
-      color: $white-c;
-      top: 50%;
-      right: 50%;
-      opacity: 0;
-      z-index: 100;
-
-      transform-origin: top right;
-      transform: rotate(180deg) translate(50%, -50%);
-      transition-delay: 200ms;
-      transition: 500ms ease-in-out;
-      transition-property: opacity, transform;
-    }
-  }
-
   &__desc {
     margin-top: 24px;
     font-weight: 600;
@@ -259,27 +273,6 @@
     font-weight: 500;
     font-size: 14px;
     line-height: 21px;
-  }
-}
-//#endregion
-
-//#region brand new models
-.slider-section {
-  &__catalog {
-    margin-top: 24px;
-  }
-
-  &__card {
-    border: 1px solid $elements-c;
-    padding: 32px 32px 24px;
-    min-width: 272px;
-  }
-
-  &__top-block {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 120px;
   }
 }
 //#endregion
