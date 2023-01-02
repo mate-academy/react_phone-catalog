@@ -1,17 +1,3 @@
-// type Callback = (arg: string) => any;
-
-// export function debounce(callback: Callback, delay = 1000) {
-//   let timeout: ReturnType<typeof setTimeout>;
-
-//   return (arg: string) => {
-//     clearTimeout(timeout);
-
-//     timeout = setTimeout(() => {
-//       callback(arg);
-//     }, delay);
-//   };
-// }
-
 export function debounce<A = unknown, R = void>(
   fn: (args: A) => R,
   ms: number,

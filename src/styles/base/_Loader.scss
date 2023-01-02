@@ -5,7 +5,7 @@
   place-items: center;
 }
 
-.loader{
+.loader {
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -13,7 +13,8 @@
   margin: 0 auto;
 }
 
-#loader-1:before, #loader-1:after{
+#loader-1:before,
+#loader-1:after {
   content: "";
   position: absolute;
   top: -10px;
@@ -25,24 +26,24 @@
   border-top-color: #3498db;
 }
 
-#loader-1:before{
+#loader-1:before {
   z-index: 100;
   animation: spin 1s infinite;
 }
 
-#loader-1:after{
+#loader-1:after {
   border: 3px solid #ccc;
 }
 
-@keyframes spin{
-  0%{
+@keyframes spin {
+  0% {
     -webkit-transform: rotate(0deg);
     -ms-transform: rotate(0deg);
     -o-transform: rotate(0deg);
     transform: rotate(0deg);
   }
 
-  100%{
+  100% {
     -webkit-transform: rotate(360deg);
     -ms-transform: rotate(360deg);
     -o-transform: rotate(360deg);

@@ -4,11 +4,9 @@
 @import "./abstracts/functions";
 @import "./base/typography";
 @import "./base//flickity";
-@import './keenSlider.scss';
+@import "./keenSlider.scss";
 @import "./base/Loader.scss";
 
-
-// it puts footer to the bottom of the page
 .App {
   display: flex;
   flex-direction: column;
