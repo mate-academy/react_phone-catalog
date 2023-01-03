@@ -1,0 +1,20 @@
+.page-heading {
+  margin: 40px 0;
+  width: 100vw;
+
+  @include desktop-end {
+    margin: 40px 25px;
+  }
+
+  @include on-mobile {
+    margin: 40px 10px;
+  }
+
+  &__count {
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    color: $color-gray;
+  }
+}

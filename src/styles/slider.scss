@@ -1,0 +1,46 @@
+.slider {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  @include desktop-end {
+    width: 568px;
+    margin: 0 auto;
+  }
+
+  @include on-mobile {
+    box-sizing: border-box;
+    width: 480px;
+    padding: 0 20px;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    margin: 80px 0 24px;
+
+    @include desktop-end {
+      margin: 80px 15px 24px;
+    }
+
+    &__buttons {
+      display: flex;
+      justify-content: flex-end;
+      gap: 16px;
+
+      &__button {
+        height: 32px;
+        @include buttons-effect;
+
+        &:disabled {
+          color: $color-gray;
+          box-shadow: none;
+        }
+      }
+    }
+  }
+
+  &-content {
+    transition: 0.8s;
+  }
+}

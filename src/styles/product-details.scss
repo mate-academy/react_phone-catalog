@@ -1,0 +1,109 @@
+.product-details {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  @include desktop-end {
+    justify-content: center;
+    padding: 0 30px;
+  }
+
+  &__images {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+
+    @include desktop-end {
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    &__buttons {
+      display: grid;
+      grid-auto-flow: column;
+      grid-template-rows: repeat(4, 80px);
+      gap: 16px;
+
+      @include desktop-end {
+        display: flex;
+        flex-wrap: wrap;
+        width: 450px;
+      }
+
+      &__button {
+        @include buttons-effect;
+        width: 80px;
+        height: 80px;
+        padding: 7px;
+
+        &-isActive {
+          cursor: pointer;
+          box-shadow: 0 1px 5px -1px $color-dark;
+        }
+      }
+
+      &__img {
+        width: 63px;
+        height: 63px;
+      }
+    }
+
+    &__main-image {
+      display: flex;
+      padding: 11px;
+    }
+  }
+
+  &__product-card {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+
+    @include desktop-end {
+      width: 335px;
+      margin: 0 auto;
+    }
+  }
+
+  &__section {
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+
+    @include desktop-end {
+      width: 100%;
+      margin-top: 30px;
+    }
+
+    &__title {
+      padding-bottom: 32px;
+      border-bottom: 1px solid $color-elements;
+    }
+
+    &__subtitle {
+      margin: 32px 0 16px;
+    }
+
+    &__tech-specs {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 600;
+      font-size: 13px;
+      margin-bottom: 8px;
+
+      &:first-of-type {
+        margin-top: 25px;
+      }
+
+      &__prop {
+        width: 50%;
+        color: $color-gray;
+      }
+
+      &__value {
+        width: 50%;
+        color: $color-dark;
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+@font-face {
+  font-family: "Mont";
+  src: local("Mont Regular"),
+    local("Mont-Regular"),
+    url ("/assets/fonts/Mont-Regular.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Mont";
+  src: local("Mont SemiBold"),
+    local("Mont-SemiBold"),
+    url ("/assets/fonts/Mont-SemiBold.otf") format("opentype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Mont";
+  src: local("Mont Bold"),
+    local("Mont-Bold"),
+    url ("/assets/fonts/Mont-Bold.otf") format("opentype");
+  font-weight: bold;
+  font-style: normal;
+}

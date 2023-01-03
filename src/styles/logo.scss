@@ -1,0 +1,16 @@
+.logo {
+  display: flex;
+  align-items: center;
+  margin: 0 64px 0 25px;
+
+  @include desktop-end {
+    position: absolute;
+    align-self: self-start;
+    transform: translateY(10px);
+  }
+
+  &__img {
+    width: 40px;
+    height: 11px;
+  }
+}

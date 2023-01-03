@@ -1,0 +1,52 @@
+@mixin on-mobile {
+  @media (max-width: 480px) {
+    @content;
+  }
+}
+
+@mixin desktop-end {
+  @media (max-width: 1120px) {
+    @content;
+  }
+}
+
+@mixin buttons-effect {
+  width: 32px;
+  font-size: 15px;
+  font-weight: 600;
+  color: $color-dark;
+  background-color: $color-active;
+  border: 1px solid $color-border;
+  transition: box-shadow 0.3s, opacity 0.3s;
+
+  &:hover {
+    cursor: pointer;
+    box-shadow: 0 1px 5px -1px $color-dark;
+  }
+}
+
+@mixin buttons-submit {
+  color: $color-white;
+  border: none;
+  background-color: $color-dark;
+  transition: box-shadow 0.5s, background-color 0.5s, color 0.5s;
+
+  &:hover {
+    cursor: pointer;
+    color: $color-dark;
+    background-color: $color-white;
+    box-shadow: 0 1px 5px -1px $color-dark;
+  }
+}
+
+@mixin select-arrow {
+  background-image: linear-gradient(45deg, transparent 50%, gray 50%),
+    linear-gradient(135deg, gray 50%, transparent 50%);
+  background-position: calc(100% - 20px) calc(1em + 2px),
+    calc(100% - 15px) calc(1em + 2px),
+    calc(100% - 2.5em) 0.5em;
+  background-size: 5px 5px,
+    5px 5px,
+    1px 1.5em;
+  background-repeat: no-repeat;
+}

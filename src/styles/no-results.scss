@@ -1,0 +1,27 @@
+.no-results {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding-top: 60px;
+
+  &__text {
+    font-size: 25px;
+
+    &:first-letter {
+      text-transform: uppercase;
+    }
+  }
+}
+
+.backHome-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 165px;
+  height: 40px;
+  font-weight: 600;
+  @include buttons-submit;
+}

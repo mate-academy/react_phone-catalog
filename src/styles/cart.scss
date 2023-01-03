@@ -1,0 +1,144 @@
+.cart {
+  display: grid;
+  grid-template-columns: 7fr 3fr;
+  grid-column-gap: 1em;
+  gap: 16px;
+
+  @include desktop-end {
+    grid-template-columns: 1fr;
+    margin: 0 20px;
+  }
+
+  &-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+
+    &__products {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      height: max-content;
+      padding: 30px 40px 30px 27px;
+      border: 1px solid $color-border;
+
+      @include desktop-end {
+        width: 100%;
+        margin: 0 15px;
+      }
+
+      &__delete {
+        font-size: 15px;
+        margin-right: 30px;
+        padding: 0;
+        border: none;
+        background-color: $color-white;
+        color: $color-gray;
+        cursor: pointer;
+
+        @include desktop-end {
+          align-self: baseline;
+          font-size: 20px;
+        }
+      }
+
+      &__image {
+        width: 80px;
+        height: 80px;
+        margin-right: 30px;
+
+        @include desktop-end {
+          margin-bottom: 20px;
+        }
+      }
+
+      &__name {
+        display: block;
+        width: 295px;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 21px;
+        color: $color-dark;
+
+        @include desktop-end {
+          text-align: center;
+          font-size: 17px;
+          margin-bottom: 20px;
+        }
+      }
+
+      &__quantity {
+        display: flex;
+        align-items: center;
+        width: 150px;
+
+        &__button {
+          @include buttons-effect;
+          box-sizing: content-box;
+          width: 32px;
+          height: 32px;
+
+          &:disabled {
+            color: $color-gray;
+            box-shadow: none;
+            border: none;
+          }
+        }
+
+        &__number {
+          font-size: 18px;
+          text-align: center;
+          margin: 0 14px;
+        }
+      }
+
+      &__price {
+        font-size: 22px;
+        font-weight: 700;
+        line-height: 140%;
+        margin-left: 43px;
+        width: 60px;
+      }
+    }
+  }
+
+  &-checkout {
+    display: flex;
+    flex-direction: column;
+    height: max-content;
+    padding: 24px;
+    border: 1px solid $color-border;
+
+    &__info {
+      text-align: center;
+      padding-bottom: 24px;
+      margin-bottom: 24px;
+      border-bottom: 1px solid $color-elements;
+
+      &__price {
+        font-size: 32px;
+        font-weight: 700;
+        line-height: 41px;
+        letter-spacing: -0.01em;
+      }
+
+      &__total {
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 21px;
+        color: $color-gray;
+      }
+    }
+
+    &__button {
+      @include buttons-submit;
+      height: 48px;
+    }
+
+    &__text {
+      font-size: 15px;
+      text-align: center;
+    }
+  }
+}

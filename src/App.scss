@@ -1,1 +1,40 @@
-// not empty
+@import "./styles/utils/vars";
+@import "./styles/utils/mixins";
+@import "./styles/utils/selectors";
+@import "./styles/utils/typography";
+@import "./styles/utils/fonts";
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.isHidden {
+  display: none;
+}
+
+.isVisible {
+  visibility: hidden;
+}
+
+@import "./styles/loader.scss";
+@import "./styles/main.scss";
+@import "./styles/logo.scss";
+@import "./styles/navbar.scss";
+@import "./styles/searchbar.scss";
+@import "./styles/page-heading.scss";
+@import "./styles/carousel.scss";
+@import "./styles/slider.scss";
+@import "./styles/product-list.scss";
+@import "./styles/productCard.scss";
+@import "./styles/category.scss";
+@import "./styles/pagination.scss";
+@import "./styles/no-results.scss";
+@import "./styles/product-details.scss";
+@import "./styles/cart.scss";
+@import "./styles/back-button.scss";
+@import "./styles/top-button.scss";
+@import "./styles/breadcrumbs.scss";
+@import "./styles/footer.scss";

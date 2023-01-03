@@ -1,0 +1,13 @@
+.main {
+  max-width: 1120px;
+  flex: 1 1 auto;
+  margin: 0 auto;
+  margin-bottom: 80px;
+  padding: 0 10px;
+
+  @include desktop-end {
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+  }
+}

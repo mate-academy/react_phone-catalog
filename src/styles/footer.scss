@@ -1,0 +1,48 @@
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 96px;
+  margin-top: 20px;
+  box-shadow: 0 -1px 0 $color-elements;
+
+  @include desktop-end {
+    justify-content: space-evenly;
+    align-items: baseline;
+  }
+
+  @include on-mobile {
+    flex-direction: column;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding-bottom: 20px;
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    gap: 64px;
+
+    @include desktop-end {
+      margin: 50px 0 30px;
+    }
+
+    @include on-mobile {
+      justify-content: center;
+      width: 100%;
+    }
+
+    &__link {
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 11px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: $color-gray;
+
+      &:hover {
+        color: $color-dark;
+      }
+    }
+  }
+}

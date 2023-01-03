@@ -1,0 +1,25 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Mont", sans-serif;
+  font-weight: normal;
+  box-sizing: border-box;
+}
+
+ul {
+  list-style: none;
+}
+
+ul,
+li,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
