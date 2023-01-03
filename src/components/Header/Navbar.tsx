@@ -120,7 +120,7 @@ export const Navbar = () => {
             >
               <img
                 className="navbar__button-img"
-                src="/img/icons/favs.png"
+                src="img/icons/favs.png"
                 alt="favorite"
               />
               {favoritesProducts.length > 0 && (
@@ -141,7 +141,7 @@ export const Navbar = () => {
             >
               <img
                 className="navbar__button-img"
-                src="/img/icons/cart.png"
+                src="img/icons/cart.png"
                 alt="cart"
               />
               {cartProducts.length > 0 && (

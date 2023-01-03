@@ -12,7 +12,7 @@ type Props = {
 
 export const ProductCardButtons: React.FC<Props> = ({ product }) => {
   const favsIcon = 'img/icons/favs.png';
-  const favsIconAdded = 'img/icons/favsAdd.png';
+  const favsIconAdded = 'img/icons/FavsAdd.png';
 
   const { favoritesProducts, setFavoritesProducts }
   = useContext(FavoritesProducts);
