@@ -5,9 +5,9 @@
 ## Description
 Implement Products catalog following [this design](https://www.figma.com/file/uEetgWenSRxk9jgiym6Yzp/Phone-catalog-redesign?node-id=1%3A2).
 
-Use [products](https://mate-academy.github.io/react_phone-catalog/api/phones.json)
-and [product details](https://mate-academy.github.io/react_phone-catalog/api/phones/apple-iphone-7-32gb-black.json)
-tо fetch data (use actual `productId` as a last part of the URL before `.json`).
+Use [products](https://mate-academy.github.io/react_phone-catalog/api/products.json)
+and [product details](https://mate-academy.github.io/react_phone-catalog/api/products/apple-iphone-7-32gb-black.json)
+tо fetch data (use actual `itemId` as a last part of the URL before `.json`).
 
 Store the Cart in the `localStorage`
 
