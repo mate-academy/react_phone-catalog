@@ -31,8 +31,8 @@ export const Searchbar: React.FC<Props> = ({ isHidden }) => {
       <div className={classNames('searchbar', { isHidden })}>
         <img
           className="searchbar__img"
-          src="/img/icons/search.png"
-          alt="logo"
+          src="img/icons/search.png"
+          alt="search"
         />
 
         <input

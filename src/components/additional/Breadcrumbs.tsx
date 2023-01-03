@@ -19,7 +19,7 @@ export const Breadcrumbs = () => {
       >
         <img
           className="breadcrumbs__img"
-          src="/img/icons/home.png"
+          src="img/icons/home.png"
           alt="home"
         />
 
@@ -34,7 +34,7 @@ export const Breadcrumbs = () => {
       >
         <img
           className="breadcrumbs__img"
-          src="/img/icons/ArrowRight.png"
+          src="img/icons/ArrowRight.png"
           alt="home"
         />
 
@@ -50,7 +50,7 @@ export const Breadcrumbs = () => {
         >
           <img
             className="breadcrumbs__img"
-            src="/img/icons/ArrowRight.png"
+            src="img/icons/ArrowRight.png"
             alt="home"
           />
 

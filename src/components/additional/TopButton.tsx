@@ -30,7 +30,7 @@ export const TopButton = () => {
       Back to top
       <img
         className="button-top__img"
-        src="/img/icons/ArrowUp.png"
+        src="img/icons/ArrowUp.png"
         alt="back"
       />
     </button>

@@ -9,7 +9,7 @@ export const Logo = () => {
     >
       <img
         className="logo__img"
-        src="/img/logo.png"
+        src="img/logo.png"
         alt="logo"
       />
     </NavLink>

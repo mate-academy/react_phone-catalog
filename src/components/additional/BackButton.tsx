@@ -12,7 +12,7 @@ export const BackButton = () => {
     >
       <img
         className="back-button__img"
-        src="/img/icons/backButton.png"
+        src="img/icons/backButton.png"
         alt="back"
       />
       Back

@@ -11,8 +11,8 @@ type Props = {
 };
 
 export const ProductCardButtons: React.FC<Props> = ({ product }) => {
-  const favsIcon = '/img/icons/favs.png';
-  const favsIconAdded = '/img/icons/favsAdd.png';
+  const favsIcon = 'img/icons/favs.png';
+  const favsIconAdded = 'img/icons/favsAdd.png';
 
   const { favoritesProducts, setFavoritesProducts }
   = useContext(FavoritesProducts);
