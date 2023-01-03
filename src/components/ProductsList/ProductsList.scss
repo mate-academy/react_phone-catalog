@@ -1,0 +1,23 @@
+.products-list {
+
+  &__dropdowns {
+    margin-bottom: 24px;
+  }
+
+  &__dropdowns > *:not(:last-child) {
+    margin-right: 16px;
+  }
+
+  &__products {
+    margin-bottom: 40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 272px);
+    justify-content: space-between;
+    row-gap: 40px;
+  }
+
+  &__pagination {
+    display: flex;
+    justify-content: center;
+  }
+}

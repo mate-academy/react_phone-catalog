@@ -1,0 +1,73 @@
+@import "../../colors";
+
+.footer {
+  height: 96px;
+  box-shadow: 0 -1px 0 $color-elements-light-gray;
+  
+  &__content {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__link {
+    color: $color-secondary-gray;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    text-decoration: none;
+    margin-right: 64px;
+
+    &:hover {
+      color: $color-primary-dark-gray;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &__logo,
+  &__to-top {
+    flex: 1;
+    display: flex;
+  }
+
+  &__to-top {
+    justify-content: flex-end;
+  }
+}
+
+.to-top {
+  color: $color-secondary-gray;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  transition: color 0.3s;
+
+  &__label {
+    display: flex;
+    align-items: center;
+  }
+
+  &__text {
+    margin-right: 16px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__button {
+    height: 32px;
+    width: 32px;
+    background-image: url(../../icons/Chevron_Arrow_Up_Bold.png);
+  }
+
+  &:hover {
+    color: $color-primary-dark-gray;
+  }
+}

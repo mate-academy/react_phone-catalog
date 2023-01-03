@@ -1,0 +1,60 @@
+@import "../../colors";
+
+.category-nav {
+  &__title {
+    margin: 0;
+    margin-bottom: 24px;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__link-image {
+    display: block;
+    width: 368px;
+    height: 368px;
+    margin-bottom: 24px;
+    background-repeat: no-repeat;
+    background-position: right bottom;
+
+    &--phones {
+      background-color: #fcdbc1;
+      background-image: url(./images/phones.png);
+    }
+
+    &--tablets {
+      background-color: #8d8d92;
+      background-image: url(./images/tablets.png);
+    }
+
+    &--accessories {
+      background-color: #973d5f;
+      background-image: url(./images/accessories.png);
+    }
+  }
+
+  &__link-text {
+    margin-bottom: 4px;
+    color: $color-primary-dark-gray;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 26px;
+    text-decoration: none;
+  }
+
+  &__amount {
+    color: $color-secondary-gray;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+  }
+}
