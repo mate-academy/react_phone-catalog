@@ -36,7 +36,7 @@ export const SearchBar: React.FC = () => {
       navigate({
         search: getSearchWith(
           searchParams,
-          { query: value || null },
+          { query: value.trim() || null },
         ),
       });
     }, 1000,
@@ -47,6 +47,17 @@ export const SearchBar: React.FC = () => {
 
     setInputValue(value);
     handleDebounceQuery(event);
+  };
+
+  const handleDeleteQuery = () => {
+    setInputValue('');
+
+    navigate({
+      search: getSearchWith(
+        searchParams,
+        { query: null },
+      ),
+    });
   };
 
   return (
@@ -63,10 +74,26 @@ export const SearchBar: React.FC = () => {
         value={inputValue}
       />
 
-      <Icon
-        type={IconType.SEARCH}
-        addClassName="search-panel__icon"
-      />
+      {!inputValue && (
+        <Icon
+          type={IconType.SEARCH}
+          addClassName="search-panel__icon"
+        />
+      )}
+
+      {inputValue.length > 0 && (
+        <div
+          className="search-panel__icon"
+          role="button"
+          tabIndex={0}
+          onKeyDown={() => handleDeleteQuery()}
+          onClick={() => handleDeleteQuery()}
+        >
+          <Icon
+            type={IconType.CLOSE}
+          />
+        </div>
+      )}
     </div>
   );
 };
