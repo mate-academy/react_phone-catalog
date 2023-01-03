@@ -49,13 +49,12 @@ export const Footer: React.FC = () => {
               <input
                 aria-label="backToTopBtn"
                 type="button"
-                className="button button--back-to-top"
+                className="button button--up"
                 onClick={() => window.scrollTo({
                   top: 0, left: 0, behavior: 'smooth',
                 })}
               />
             </label>
-
           </div>
         </div>
       </div>

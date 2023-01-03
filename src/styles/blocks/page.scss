@@ -1,0 +1,8 @@
+.page {
+  min-height: calc(100vh - 96px - 64px);
+  padding-top: 24px;
+
+  &__section {
+    padding-bottom: 80px;
+  }
+}

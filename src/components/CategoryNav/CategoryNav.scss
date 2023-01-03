@@ -1,0 +1,51 @@
+@import "../../styles/utils/variables";
+@import "../../styles/utils/mixins";
+
+.category-nav {
+  display: flex;
+  justify-content: space-between;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__item {
+    margin-bottom: 24px;
+    display: flex;
+    @include squareSize(368px);
+    background-repeat: no-repeat;
+    background-position: right 0 bottom 0;
+
+    &--phones {
+      background-color: #fcdbc1;
+      background-image: url("../../img/category/category--phones.png");
+    }
+
+    &--tablets {
+      background-color: #8d8d92;
+      background-image: url("../../img/category/category--tablets.png");
+    }
+
+    &--accessories {
+      background-color: #d53c51;
+      background-image: url("../../img/category/category--accessories.png");
+    }
+  }
+
+  &__title {
+    margin-bottom: 4px;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 26px;
+    color: $primaryColor;
+  }
+
+  &__models {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+
+    color: $secondaryColor;
+  }
+}

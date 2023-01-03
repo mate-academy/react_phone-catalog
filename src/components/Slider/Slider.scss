@@ -1,0 +1,69 @@
+@import "../../styles/utils/variables";
+
+.slider {
+  display: flex;
+  flex-direction: column;
+
+  &__main {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 16px;
+  }
+  
+  &__container {
+    position: relative;
+    overflow: hidden;
+    height: 400px;
+    width: 1040px;
+    display: flex;
+  }
+
+  &__images {
+    display: flex;
+    position: absolute;
+    height: 400px;
+    width: 1040px;
+    left: -1040px;
+  }
+
+  &__image {
+    height: 100%;
+    width: 100%;
+  }
+  
+  &__button {
+    background-repeat: no-repeat;
+    background-position: center;
+
+    &--left {
+      background-image: url("../../img/icons/arrows/arrow-left--active.svg");
+    }
+    
+    &--right {
+      background-image: url("../../img/icons/arrows/arrow-right--active.svg");
+    }
+  }
+
+  &__dots {
+    margin: 0 auto;
+    display: flex;
+    gap: 14px;
+  }
+
+  &__dot {
+    margin: 2px 0;
+    width: 14px;
+    height: 4px;
+    background-color: $lightGrayColor;
+
+    transition: 0.3s all ease-in-out;
+
+    &--active {
+      background-color: $primaryColor;
+    }
+  }
+
+  .button {
+    height: unset;
+  }
+}

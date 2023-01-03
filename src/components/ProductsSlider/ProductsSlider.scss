@@ -1,0 +1,27 @@
+.products-slider {
+  transition: 0.3s all ease-out;
+  overflow: hidden;
+
+  &__header {
+    margin-bottom: 24px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 32px;
+    letter-spacing: -0.01em;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__slider {
+    display: flex;
+    gap: 16px;
+    transition: 0.3s all ease-out;
+  }
+}

@@ -1,0 +1,43 @@
+@import "../../styles/utils/mixins";
+
+.button {
+  transition: 0.3s all ease-in-out;
+
+  @include squareSize(32px);
+  background-color: #fff;
+  border: 1px solid $grayColor;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  cursor: pointer;
+
+  &:hover {
+    border-color: $primaryColor;
+  }
+
+  &--disabled {
+    border-color: $lightGrayColor;
+  }
+
+  &--left {
+    background-image: url("../../img/icons/arrows/arrow-left--active.svg");
+    &_disabled {
+      background-image: url("../../img/icons/arrows/arrow-left--disabled.svg");
+    }
+  }
+  &--right {
+    background-image: url("../../img/icons/arrows/arrow-right--active.svg");
+    
+    &_disabled {
+      background-image: url("../../img/icons/arrows/arrow-right--disabled.svg");
+    }
+  }
+
+  &--up {
+    background-image: url("../../img/icons/arrows/arrow-up--disabled.svg");
+
+    &:hover {
+      background-image: url("../../img/icons/arrows/arrow-up--active.svg");
+    }
+  }
+}

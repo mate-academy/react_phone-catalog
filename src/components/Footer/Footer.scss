@@ -1,10 +1,10 @@
-@import "../../styles/utils/mixins";
 @import "../../styles/utils/variables";
 
 .footer {
   display: flex;
   height: 96px;
   background-color: #fff;
+  border-top: 1px solid $lightGrayColor;
 
   &__content {
     display: flex;
@@ -25,19 +25,5 @@
     font-weight: 600;
     font-size: 12px;
     color: $secondaryColor;
-  }
-}
-
-.button {
-  @include btnSize(32px);
-  background-color: #fff;
-  border: 1px solid $secondaryColor;
-  background-repeat: no-repeat;
-  background-position: center;
-
-  cursor: pointer;
-
-  &--back-to-top {
-    background-image: url("../../img/icons/arrows/arrow-up--disabled.svg");
   }
 }
