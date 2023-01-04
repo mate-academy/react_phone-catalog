@@ -1,0 +1,81 @@
+.slider {
+  margin-top: 82px;
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__title {
+    font-family: "Mont", sans-serif;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: #313237;
+    margin-top: 0;
+  }
+
+  &__left-right {
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid #b4bdc4;
+    background-color: #fff;
+    cursor: pointer;
+
+    &:hover {
+      border: 1px solid #313237;
+    }
+
+    &:disabled {
+      border: 1px solid #e2e6e9;
+      cursor: auto;
+    }
+  }
+
+  &__left {
+    background-image: url(../../images/home/left.svg);
+
+    &:disabled {
+      background-image: url(../../images/home/leftdisabled.svg);
+    }
+
+    &:active {
+      background-image: url(../../images/home/leftdisabled.svg);
+      background-color: #313237;
+    }
+  }
+
+  &__right {
+    background-image: url(../../images/home/right.svg);
+    margin-left: 16px;
+
+    &:disabled {
+      background-image: url(../../images/home/rightdisabled.svg);
+    }
+
+    &:active {
+      background-image: url(../../images/home/rightdisabled.svg);
+      background-color: #313237;
+    }
+  }
+
+  &__content {
+    display: flex;
+    gap: 16px;
+  }
+}
+
+.card {
+  width: 272px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #e2e6e9;
+  padding: 32px 24px 24px;
+
+  &:hover {
+    border: 1px solid #313237;
+  }
+}

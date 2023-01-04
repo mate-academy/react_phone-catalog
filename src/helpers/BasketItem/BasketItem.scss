@@ -1,0 +1,55 @@
+.basket {
+
+  &__delete {
+    background-image: url(../../images/close.svg);
+    background-repeat: no-repeat;
+    background-color: inherit;
+    width: 10px;
+    height: 10px;
+    border: 0;
+    cursor: pointer;
+
+    &:hover {
+      background-image: url(../../images/closeHover.svg);
+    }
+  }
+
+  &__image {
+    width: 66px;
+    height: 66px;
+    margin-left: 35px;
+    margin-right: 31px;
+  }
+
+  &__number {
+    color: #000;
+  }
+
+  &__name {
+    width: 300px;
+    margin-right: 50px;
+  }
+
+  &__counter {
+    display: flex;
+    gap: 13px;
+    align-items: center;
+    margin-right: 43px;
+  }
+
+  &__minuse {
+    background-color: inherit;
+    width: 32px;
+    height: 32px;
+    border: 1px solid #e2e6e9;
+    cursor: pointer;
+  }
+
+  &__pluse {
+    background-color: inherit;
+    width: 32px;
+    height: 32px;
+    border: 1px solid #e2e6e9;
+    cursor: pointer;
+  }
+}

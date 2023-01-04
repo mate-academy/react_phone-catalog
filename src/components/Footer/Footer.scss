@@ -1,0 +1,70 @@
+.footer {
+  margin-top: 80px;
+  box-shadow: 0 -1px 0 #e2e6e9;
+  padding-top: 42px;
+  padding-bottom: 42px;
+
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__logo {
+    transition: 0.5s;
+  
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+  
+
+  &__back {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+
+  &__label {
+    font-family: "Mont", sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    text-align: right;
+    color: #89939a;
+    cursor: pointer;
+  }
+
+  &__button {
+    border: 1px solid #b4bdc4;
+    background-image: url(../../images/footerBack.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #fff;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    transition: transform 0.5s;
+
+    &:hover {
+      transform: scale(0.9);
+    }
+  }
+
+  &__link {
+    font-family: "Mont", sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #89939a;
+    transition: 0.5s;
+
+    &:hover {
+      text-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+      transform: scale(1.2);
+    }
+  }
+}

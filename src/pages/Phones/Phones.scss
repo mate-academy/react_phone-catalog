@@ -1,0 +1,140 @@
+.phones {
+  // padding-bottom: 96px;
+  &__nav {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+  }
+
+  &__arrow {
+    background-image: url(../../images/home/rightdisabled.svg);
+    height: 10px;
+    width: 6px;
+  }
+
+  &__secondary {
+    font-family: "Mont", sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: #89939a;
+  }
+
+  &__title {
+    font-family: "Mont", sans-serif;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: #313237;
+    margin-bottom: 8px;
+  }
+
+  &__number {
+    font-family: "Mont", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #89939a;
+  }
+
+  &__inputs {
+    display: flex;
+    gap: 16px;
+    margin-top: 40px;
+  }
+
+  &__input {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__label {
+    font-family: "Mont", sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: #89939a;
+  }
+
+  &__select {
+    width: 176px;
+    height: 40px;
+    font-family: "Mont", sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    color: #313237;
+  }
+
+  &__list {
+    box-sizing: border-box;
+    margin-top: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  &__left-right {
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid #b4bdc4;
+    background-color: #fff;
+    cursor: pointer;
+
+    &:hover {
+      border: 1px solid #313237;
+    }
+
+    &:disabled {
+      border: 1px solid #e2e6e9;
+    }
+  }
+
+  &__left {
+    background-image: url(../../images/home/left.svg);
+
+    &:disabled {
+      background-image: url(../../images/home/leftdisabled.svg);
+    }
+
+    &:active {
+      background-image: url(../../images/home/leftdisabled.svg);
+      background-color: #313237;
+    }
+  }
+
+  &__right {
+    background-image: url(../../images/home/right.svg);
+
+    &:disabled {
+      background-image: url(../../images/home/rightdisabled.svg);
+    }
+
+    &:active {
+      background-image: url(../../images/home/rightdisabled.svg);
+      background-color: #313237;
+    }
+  }
+
+  &__move {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin-top: 40px;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 6px;
+  }
+
+  &__option {
+    background-color: #e2e6e9;
+    color: #313237;
+  }
+}

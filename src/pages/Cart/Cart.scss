@@ -1,0 +1,160 @@
+.cart {
+  &__wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    margin-right: 25px;
+    gap: 17px;
+  }
+
+  &__functional {
+    display: flex;
+    flex-direction: column;
+    width: 320px;
+  }
+
+  &__image {
+    width: 442px;
+    height: 442px;
+    margin-right: 76px;
+  }
+
+  &__button {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
+    margin-bottom: 32px;
+  }
+
+  &__item {
+    width: 80px;
+    height: 80px;
+    border: 1px solid #e2e6e9;
+    box-sizing: border-box;
+    padding: 8px;
+
+    &--focus {
+      border: 1px solid #313237;
+    }
+  }
+
+  &__cart {
+    background-color: #313237;
+    height: 48px;
+    width: 263px;
+    padding: 0;
+    line-height: 21px;
+    text-align: center;
+    color: #fff;
+    border: 0;
+    cursor: pointer;
+    margin-right: 0;
+
+    &:hover {
+      box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+    }
+
+    &--focus {
+      border: 1px solid #e2e6e9;
+      color: #27ae60;
+      background-color: #fff;
+    }
+
+  }
+
+  &__favourites {
+    background-image: url(../../images/favouriteslogo.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    border: 1px solid #b4bdc4;
+    cursor: pointer;
+    background-color: #fff;
+    margin-left: 0;
+
+    &--focus {
+      background-image: url(../../images/favouritesfocus.svg);
+    }
+
+    &:hover {
+      border: 1px solid #313237;
+    }
+  }
+
+  &__price {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  &__newPrice {
+    font-family: "Mont", sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 140%;
+    color: #313237;
+    margin: 0;
+  }
+
+  &__oldPrice {
+    font-family: "Mont", sans-serif;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 28px;
+    text-decoration-line: line-through;
+    color: #89939a;
+    margin: 0;
+  }
+
+  &__characteristic {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+
+  &__name {
+    color: #89939a;
+    margin: 0;
+  }
+
+  &__value {
+    color: #313237;
+    margin: 0;
+  }
+
+  &__content {
+    display: flex;
+    gap: 64px;
+    margin-top: 80px;
+  }
+
+  &__about {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__specs {
+    display: flex;
+    flex-direction: column;
+
+    &--line {
+      width: 512px;
+    }
+  }
+
+  &__line {
+    border: 0.5px solid #e2e6e9;
+    width: 560px;
+    margin-bottom: 32px;
+  }
+
+  &__subtitle {
+    margin-bottom: 16px;
+  }
+}
