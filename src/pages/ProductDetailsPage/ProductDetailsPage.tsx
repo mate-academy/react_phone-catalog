@@ -120,7 +120,7 @@ export const ProductDetailsPage = () => {
                     aria-hidden="true"
                   >
                     <img
-                      src={`https://mate-academy.github.io/react_phone-catalog/${image}`}
+                      src={`${process.env.PUBLIC_URL}/${image}`}
                       alt={detailProduct?.id}
                       className="ProductDetailsPage__smallImg"
                     />
@@ -136,7 +136,7 @@ export const ProductDetailsPage = () => {
               >
                 <div className="ProductDetailsPage__mainPhotoContainer">
                   <img
-                    src={`https://mate-academy.github.io/react_phone-catalog/${mainPhoto}`}
+                    src={`${process.env.PUBLIC_URL}/${mainPhoto}`}
                     alt={detailProduct?.id}
                     className="ProductDetailsPage__mainImg"
                   />
