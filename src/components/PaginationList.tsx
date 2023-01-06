@@ -14,8 +14,8 @@ export const PaginationList: FC<Props> = ({
   currentPage,
   setCurrentSection,
 }) => {
-  const showMorePrev = pageNumbers.length >= 8 && numbersToShow[0] > 8;
-  const showMoreNext = pageNumbers.length >= 8
+  const showMorePrev = pageNumbers.length > 9 && numbersToShow[0] > 9;
+  const showMoreNext = pageNumbers.length > 9
   && numbersToShow[0] < pageNumbers.length - 3;
 
   const handlePrevClick = () => {

@@ -11,11 +11,11 @@ export const PaginationNumbers: FC<Props> = ({
   pageNumbers,
   currentPage,
 }) => {
-  const maxNumbersOnPagination = 8;
+  const maxNumbersOnPagination = 9;
   const [currentSection, setCurrentSection] = useState(1);
 
   useEffect(() => {
-    if (currentPage <= 8) {
+    if (currentPage <= 9) {
       setCurrentSection(1);
     }
 
@@ -29,7 +29,7 @@ export const PaginationNumbers: FC<Props> = ({
     //   }
     // }
 
-    if (currentPage > 8) {
+    if (currentPage > 9) {
       setCurrentSection(2);
     }
 
@@ -61,7 +61,7 @@ export const PaginationNumbers: FC<Props> = ({
         break;
 
       case 2:
-        numbersToShow = pageNumbers.slice(8, 14);
+        numbersToShow = pageNumbers.slice(9, 14);
         break;
 
       case 3:
