@@ -6,35 +6,46 @@ import {
 } from 'src/utils/helpers/getProductsWithActualPrice';
 import { CartCard } from './CartCard';
 import { Checkout } from './Checkout';
+import { EmptyCartPage } from './EmptyCartPage';
 
 export const CartPage = () => {
   const [cartProducts, setCartProducts] = useLocalStorage('cart', '');
   const productWithActualPrice = getProductsWithActualPrice(cartProducts);
 
   return (
-    <div className="container">
-      <GoBack />
+    <>
+      {cartProducts.length === 0
+        ? (
+          <EmptyCartPage />
+        ) : (
+          <div className="container">
+            <GoBack />
 
-      <div className="products-section cart-section">
-        <div className="products-section__top cart-section__top">
-          <h1 className="products-section__title">Cart</h1>
-        </div>
-
-        <div className="cart-section__catalog cart-section__grid">
-          <div className="cart-section__grid-left">
-            {productWithActualPrice.map((product: Product) => (
-              <div className="cart-section__card-wrapper" key={product.id}>
-                <CartCard
-                  product={product}
-                  setCartProducts={setCartProducts}
-                />
+            <div className="products-section cart-section">
+              <div className="products-section__top cart-section__top">
+                <h1 className="products-section__title">Cart</h1>
               </div>
-            ))}
-          </div>
 
-          <Checkout cartProducts={cartProducts} />
-        </div>
-      </div>
-    </div>
+              <div className="cart-section__catalog cart-section__grid">
+                <div className="cart-section__grid-left">
+                  {productWithActualPrice.map((product: Product) => (
+                    <div
+                      key={product.id}
+                      className="cart-section__card-wrapper"
+                    >
+                      <CartCard
+                        product={product}
+                        setCartProducts={setCartProducts}
+                      />
+                    </div>
+                  ))}
+                </div>
+
+                <Checkout cartProducts={cartProducts} />
+              </div>
+            </div>
+          </div>
+        )}
+    </>
   );
 };

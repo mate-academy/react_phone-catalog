@@ -13,11 +13,10 @@ export function sortProducts(
         return product1[sortKey].localeCompare(product2[sortKey]);
 
       case 'price':
-        return (product1.priceAfterDiscount || product1[sortKey])
-        - (product2.priceAfterDiscount || product2[sortKey]);
+        return product1.price - product2.price;
 
       case 'age':
-        return product1[sortKey] - product2[sortKey];
+        return product2.year - product1.year;
 
       default:
         return 0;

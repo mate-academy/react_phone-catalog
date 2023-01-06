@@ -15,7 +15,7 @@ export const HomePage = () => {
   useEffect(() => {
     setHotPriceProducts(getHotPriceProducts(products));
     setNewModels(getNewModels(products));
-    window.scrollTo(0, 0);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 
   return (

@@ -6,17 +6,19 @@ type Props = {
 };
 
 export const Prices: FC<Props> = ({ selectedProductGeneralInfo }) => {
-  const { price, discount } = selectedProductGeneralInfo;
-  const priceAfterDiscount = price - (price / 100) * discount;
+  const { price, fullPrice } = selectedProductGeneralInfo;
 
   return (
     <div className="specifications__prices">
       <div className="specifications__prices--new">
-        {`$${priceAfterDiscount}`}
+        {`$${price || fullPrice}`}
       </div>
-      <div className="specifications__prices--old">
-        {`$${price}`}
-      </div>
+
+      {price && (
+        <div className="specifications__prices--old">
+          {`$${fullPrice}`}
+        </div>
+      )}
     </div>
   );
 };

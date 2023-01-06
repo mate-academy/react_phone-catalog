@@ -25,17 +25,15 @@ export const ProductCard: FC<Props> = ({
 }) => {
   const {
     name,
-    imageUrl,
+    image,
     price,
-    discount,
+    fullPrice,
     screen,
     capacity,
     ram,
-    type,
-    id,
+    category,
+    itemId,
   } = product;
-  const priceAfterDiscount = price - (price / 100) * discount;
-  const phoneEndPoint = imageUrl.split('/').at(-1);
   const renderedCapacity = getRenderedCapacity(capacity) || '-';
   const renderedRam = getRenderedRam(ram) || '-';
 
@@ -47,27 +45,27 @@ export const ProductCard: FC<Props> = ({
     >
       <Link
         className="card__img-wrapper"
-        to={`/${type}s/${id}`}
+        to={`/${category}/${itemId}`}
       >
         <img
           className="card__img"
-          src={`/assets/phones/${phoneEndPoint}`}
+          src={`../${image}`}
           alt="phone"
         />
       </Link>
       <div className="card__top-block">
         <Link
           className="card__desc"
-          to={`/${type}s/${id}`}
+          to={`/${category}/${itemId}`}
         >
           {name}
         </Link>
 
         <div className="card__price">
-          <div className="card__price-actual">{`$${priceAfterDiscount}`}</div>
+          <div className="card__price-actual">{`$${price}`}</div>
 
-          {!(priceAfterDiscount === price) && (
-            <span className="card__price-previous">{`$${price}`}</span>
+          {fullPrice && (
+            <span className="card__price-previous">{`$${fullPrice}`}</span>
           )}
         </div>
       </div>
@@ -75,11 +73,11 @@ export const ProductCard: FC<Props> = ({
       <div className="card__features">
         <div className="card__feature">
           <div className="card__feature-key">Screen</div>
-          <div className="card__feature-vaue">{screen}</div>
+          <div className="card__feature-value">{screen}</div>
         </div>
         <div className="card__feature">
           <div className="card__feature-key">Capacity</div>
-          <div className="card__feature-vaue">{renderedCapacity}</div>
+          <div className="card__feature-value">{renderedCapacity}</div>
         </div>
         <div className="card__feature">
           <div className="card__feature-key">RAM</div>

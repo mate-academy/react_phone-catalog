@@ -132,7 +132,7 @@
 
     width: 66px;
     height: 66px;
-    object-fit: cover;
+    object-fit: contain;
   }
 
   &__close-icon {
@@ -181,8 +181,6 @@
 
   &--disabled {
     border: 1px solid $elements-c;
-    // pointer-events: none;
-    // cursor: not-allowed;
 
     & :first-child {
       background: $elements-c;

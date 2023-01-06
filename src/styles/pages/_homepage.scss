@@ -51,7 +51,7 @@
     margin: 0 auto;
     height: 208px;
     width: 208px;
-    object-fit: cover;
+    object-fit: contain;
     transition: transform 0.3s ease;
 
     &:hover {
@@ -196,13 +196,9 @@
   }
 
   &__card {
+    position: relative;
     width: 368px;
-    height: 368px;
-
-    @mixin onTablet {
-      width: 200px;
-      height: 200px;
-    }
+    height: min-content;
   }
 
   &__overlay {
@@ -224,10 +220,10 @@
       z-index: 100;
 
       transform-origin: top right;
-      transform: rotate(180deg) translate(50%, -50%);
+      transform: rotate(90deg) translate(50%, -50%);
       transition-property: opacity, transform;
-      transition-delay: 200ms;
-      transition-duration: 500ms;
+      transition-delay: 100ms;
+      transition-duration: 150ms;
       transition-timing-function: ease-in-out;
     }
   }
@@ -235,14 +231,21 @@
   &__background {
     position: relative;
     display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
     min-width: 100%;
     min-height: 100%;
     overflow: hidden;
 
     &__image {
+      position: relative;
+      bottom: -50px;
+      right: -70px;
+      height: 368px;
+      object-fit: cover;
       transition: transform 300ms ease-in-out;
+
+      &--accessories {
+        left: 0;
+      }
     }
 
     &:hover .shop-by-category__background__image {

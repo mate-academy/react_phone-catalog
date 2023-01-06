@@ -1,68 +1,46 @@
 import {
-  useContext, useEffect, useState,
+  useContext, useEffect,
 } from 'react';
 import { useLocation } from 'react-router-dom';
-import { getProductDetails } from 'src/api/products';
-import { Loader } from 'src/components/Loader';
 import { ProductContext } from 'src/contexts/ProductContext';
-import { ProdcutDetails } from 'src/types/ProductDetails';
-import { getRandomId } from 'src/utils/shortHands';
+import { useLocalStorage } from 'src/hooks/useLocalStorage';
 import { DetailsContent } from './sections/DetailsContent';
 
 export const ProductsDetails = () => {
   const { products } = useContext(ProductContext);
-  const [
+  const {
     selectedProductDetails,
-    setSelectedProductDetails,
-  ] = useState<ProdcutDetails>();
+  } = useContext(ProductContext);
   const location = useLocation();
   const arrOfLocation = location.pathname.split('/').filter(a => !!a);
   const selectedProductId = arrOfLocation.at(-1);
-  const [isLoader, setIsLoader] = useState(false);
-
-  const fetchDetails = async (productId: string) => {
-    try {
-      setIsLoader(true);
-      const data = await getProductDetails(productId);
-
-      setSelectedProductDetails(data);
-      setIsLoader(false);
-
-      return data;
-    } catch {
-      setIsLoader(false); // TODO: error page handler
-    }
-
-    return 0;
-  };
+  const [selectedCapacity, setSelectedCapacity] = useLocalStorage(
+    'capacity', '',
+  );
 
   useEffect(() => {
-    if (arrOfLocation.length > 1 && selectedProductId) {
-      fetchDetails(selectedProductId);
+    if (!selectedCapacity) {
+      setSelectedCapacity(selectedProductDetails?.capacity);
     }
-  }, [selectedProductId]);
-
-  const selectedProductGeneralInfo = products
-    .find(el => el.id === selectedProductId);
+  }, [selectedProductDetails]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [selectedProductDetails]);
 
+  const selectedProductGeneralInfo = products.find(x => {
+    return x.itemId === selectedProductId;
+  });
+
   return (
     <>
-      {isLoader
-        ? <Loader />
-        : (
-          selectedProductDetails && selectedProductGeneralInfo && (
-            <DetailsContent
-              selectedProductGeneralInfo={selectedProductGeneralInfo}
-              selectedProductDetails={
-                { ...selectedProductDetails, id: getRandomId() }
-              }
-            />
-          )
-        )}
+      {selectedProductGeneralInfo && selectedProductDetails && (
+        <DetailsContent
+          selectedProductGeneralInfo={selectedProductGeneralInfo}
+          selectedCapacity={selectedCapacity}
+          setSelectedCapacity={setSelectedCapacity}
+        />
+      )}
     </>
   );
 };

@@ -1,14 +1,11 @@
 import { Product } from 'src/types/Product';
-import { getProductsWithActualPrice } from './getProductsWithActualPrice';
 
 export function getTotalPrice(arr: Product[]) {
-  const withActualPrice = getProductsWithActualPrice(arr);
-
   const arrOfPrices = [];
 
-  for (let i = 0; i < withActualPrice.length; i += 1) {
-    const numToPush = (withActualPrice[i].priceAfterDiscount
-      || withActualPrice[i].price) * (arr[i].count || 1);
+  for (let i = 0; i < arr.length; i += 1) {
+    const numToPush = (arr[i].price
+      || arr[i].fullPrice) * (arr[i].count || 1);
 
     arrOfPrices.push(numToPush);
   }

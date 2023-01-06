@@ -2,7 +2,7 @@ import { GoBack } from 'src/components/GoBack';
 
 export const EmptyCartPage = () => {
   return (
-    <div className="empty-favourites">
+    <div className="empty-favourites container">
       <GoBack />
 
       <div className="empty-favourites__title-wrapper">

@@ -92,7 +92,7 @@ export const KeenSlider: FC<Props> = ({ children }) => {
     window.addEventListener('resize', handleWindowThrottling);
 
     return () => {
-      window.removeEventListener('resize', handleWindowResize);
+      return window.removeEventListener('resize', handleWindowThrottling);
     };
   }, []);
 

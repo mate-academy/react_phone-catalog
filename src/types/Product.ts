@@ -1,16 +1,15 @@
 export interface Product {
-  age: number,
   id: string,
-  type: string,
-  imageUrl: string
+  itemId: string,
+  category: string,
+  image: string,
+  year: number,
   name: string,
-  snippet: string,
   price: number,
+  fullPrice: number,
   discount: number,
   screen: string,
   capacity: string,
   ram: string,
-  priceAfterDiscount?: number,
-  discountValue: number,
   count: number,
 }

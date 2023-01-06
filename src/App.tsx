@@ -1,5 +1,5 @@
 import {
-  Navigate, Route, Routes,
+  Navigate, Route, Routes, useLocation,
 } from 'react-router-dom';
 import 'src/styles/main.scss';
 import { Footer } from 'src/globalSections/Footer';
@@ -12,23 +12,32 @@ import { AccessoriesPage } from './pages/AccessoriesPage/AccessoriesPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 import { PhoneDetails } from './pages/PhonesPage/PhoneDetails';
 import { Product } from './types/Product';
-import { getProducts } from './api/products';
+import { getProductDetails, getProducts } from './api/products';
 import { TabletsDetails } from './pages/TabletsPage/TabletsDetails';
 import { ProductContext } from './contexts/ProductContext';
 import { AccessoryDetails } from './pages/AccessoriesPage/AccessoryDetails';
 import { Loader } from './components/Loader';
 import { FavouritesPage } from './pages/FavouritesPage/FavouritesPage';
 import { CartPage } from './pages/CartPage/CartPage';
+import { ProdcutDetails } from './types/ProductDetails';
 
 const App = () => {
   const scrollToRef = useRef(null);
   const [products, setProducts] = useState<Product[]>([]);
   const [currentProducts, setCurrentProducts] = useState<Product[]>([]);
+  const location = useLocation();
+  const arrOfLocation = location.pathname.split('/').filter(x => !!x);
+  const selectedProductId = arrOfLocation.at(-1);
   const [
     visibleProducts,
     setVisibleProducts,
   ] = useState<Product[]>([]);
+  const [
+    selectedProductDetails,
+    setSelectedProductDetails,
+  ] = useState<ProdcutDetails | null>(null);
   const [isLoader, setIsLoader] = useState(false);
+  const [isDetailsLoader, setIsDetailsLoader] = useState(false);
 
   const fetchProducts = async () => {
     setIsLoader(true);
@@ -51,6 +60,28 @@ const App = () => {
     fetchProducts();
   }, []);
 
+  const fetchDetails = async (productId: string) => {
+    try {
+      setIsDetailsLoader(true);
+      const data = await getProductDetails(productId);
+
+      setIsDetailsLoader(false);
+      setSelectedProductDetails(data);
+
+      return data;
+    } catch {
+      setIsDetailsLoader(false);
+    }
+
+    return 0;
+  };
+
+  useEffect(() => {
+    if (arrOfLocation.length > 1 && selectedProductId) {
+      fetchDetails(selectedProductId);
+    }
+  }, [selectedProductId]);
+
   return (
     <ProductContext.Provider value={{
       currentProducts,
@@ -58,6 +89,8 @@ const App = () => {
       products,
       visibleProducts,
       setVisibleProducts,
+      selectedProductDetails,
+      setSelectedProductDetails,
     }}
     >
       <div className="App">
@@ -87,7 +120,7 @@ const App = () => {
                   : (
                     <PhonesPage
                       title="Mobile Phones"
-                      pageType="phone"
+                      pageType="phones"
                     />
                   )
               }
@@ -95,7 +128,11 @@ const App = () => {
 
             <Route
               path=":productId"
-              element={<PhoneDetails />}
+              element={isDetailsLoader
+                ? <Loader />
+                : (
+                  selectedProductDetails && <PhoneDetails />
+                )}
             />
           </Route>
 
@@ -107,7 +144,7 @@ const App = () => {
                 : (
                   <TabletsPage
                     title="Tablets"
-                    pageType="tablet"
+                    pageType="tablets"
                   />
                 )}
             />
@@ -127,7 +164,7 @@ const App = () => {
                 : (
                   <AccessoriesPage
                     title="Accessories"
-                    pageType="accessory"
+                    pageType="accessories"
                   />
                 )}
             />

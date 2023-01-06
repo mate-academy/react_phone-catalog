@@ -8,10 +8,10 @@ type Props = {
 };
 
 export const ShopByCategory: FC<Props> = ({ products }) => {
-  const mobilesCount = products.filter(el => el.type === 'phone').length;
-  const tabletsCount = products.filter(el => el.type === 'tablet').length;
+  const mobilesCount = products.filter(el => el.category === 'phones').length;
+  const tabletsCount = products.filter(el => el.category === 'tablets').length;
   const accessoriesCount = products
-    .filter(el => el.type === 'accessory').length;
+    .filter(el => el.category === 'accessory').length;
 
   const categoriesData: Category[] = [
     {

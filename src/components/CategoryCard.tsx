@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { lower } from 'src/utils/shortHands';
@@ -34,7 +35,13 @@ export const CategoryCard: FC<Props> = ({ category }) => {
         style={{ background: backgrondColor }}
       >
         <img
-          className="shop-by-category__background__image"
+          className={classNames(
+            'shop-by-category__background__image',
+            {
+              'shop-by-category__background__image--accessories':
+              name === 'Accessories',
+            },
+          )}
           src={`assets/categories/${imageUrl}`}
           alt=""
         />

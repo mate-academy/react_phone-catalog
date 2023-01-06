@@ -1,5 +1,6 @@
 import React from 'react';
 import { Product } from 'src/types/Product';
+import { ProdcutDetails } from 'src/types/ProductDetails';
 
 interface Context {
   products: Product[],
@@ -7,6 +8,9 @@ interface Context {
   setCurrentProducts: React.Dispatch<React.SetStateAction<Product[]>>,
   visibleProducts: Product[],
   setVisibleProducts: React.Dispatch<React.SetStateAction<Product[]>>,
+  selectedProductDetails: ProdcutDetails | null,
+  setSelectedProductDetails:
+  React.Dispatch<React.SetStateAction<ProdcutDetails | null>>,
 }
 
 export const ProductContext = React.createContext<Context>({
@@ -15,4 +19,6 @@ export const ProductContext = React.createContext<Context>({
   setCurrentProducts: () => {},
   visibleProducts: [],
   setVisibleProducts: () => {},
+  selectedProductDetails: null,
+  setSelectedProductDetails: () => {},
 });

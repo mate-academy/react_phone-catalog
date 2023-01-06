@@ -8,9 +8,6 @@ import { NoItemsLeftSection } from 'src/features/NoItemsLeftSection';
 import { ProductSection } from 'src/pages/ProductsPage/sections/ProductSection';
 import { useLocalStorage } from 'src/hooks/useLocalStorage';
 import { NavHistory } from 'src/pages/ProductsPage/sections/NavHistory';
-import {
-  getProductsWithActualPrice,
-} from 'src/utils/helpers/getProductsWithActualPrice';
 import { sortProducts } from 'src/utils/helpers/sortProducts';
 import { lower } from 'src/utils/shortHands';
 import { Product } from 'src/types/Product';
@@ -45,11 +42,10 @@ export const ProductsPage: FC<Props> = ({
   const isAll = lower(perPage) === 'all';
   const currentPage = searchParams.get('page') || '1';
 
-  const typeProducts = products.filter(el => el.type === pageType);
-  const allTypeProducts = getProductsWithActualPrice(typeProducts);
+  const typeProducts = products.filter(el => el.category === pageType);
 
   const sortedProducts = useMemo(() => {
-    return sortProducts([...allTypeProducts], sort);
+    return sortProducts([...typeProducts], sort);
   }, [sort, perPage]);
 
   let filteredProductsAfterPagination: Product[];
@@ -84,10 +80,7 @@ export const ProductsPage: FC<Props> = ({
   }, [sort, perPage, currentPage]);
 
   useEffect(() => {
-  }, []);
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 
   return (

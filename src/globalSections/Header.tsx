@@ -20,9 +20,9 @@ export const Header: FC<Props> = ({ scrollToRef }) => {
   const [favourites, setFavourites] = useLocalStorage('favourites', '');
   const [cart, setCart] = useLocalStorage('cart', '');
   const { products } = useContext(ProductContext);
-  const hasAccessories = hasProducts(products, 'accessory');
-  const hasTablets = hasProducts(products, 'tablet');
-  const hasPhone = hasProducts(products, 'phone');
+  const hasAccessories = hasProducts(products, 'accessories');
+  const hasTablets = hasProducts(products, 'tablets');
+  const hasPhone = hasProducts(products, 'phones');
 
   useEffect(() => {
     window.addEventListener('storage', () => {

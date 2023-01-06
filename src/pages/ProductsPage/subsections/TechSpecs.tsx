@@ -1,35 +1,29 @@
 import { FC } from 'react';
-import { Product } from 'src/types/Product';
 import { ProdcutDetails } from 'src/types/ProductDetails';
 import { getRenderedCapacity } from 'src/utils/helpers/getRenderedCapacity';
 import { getRenderedRam } from 'src/utils/helpers/getRenderedRam';
 
 type Props = {
   selectedProductDetails: ProdcutDetails,
-  selectedProductGeneralInfo: Product,
 };
 
 export const TechSpecs: FC<Props> = ({
   selectedProductDetails,
-  selectedProductGeneralInfo,
 }) => {
   const {
-    display,
     camera,
-    battery,
-  } = selectedProductDetails;
-
-  const {
+    screen,
+    resolution,
     ram,
     capacity,
-  } = selectedProductGeneralInfo;
+    zoom,
+  } = selectedProductDetails;
 
   const renderedCapacity = getRenderedCapacity(capacity) || '-';
   const renderedRam = getRenderedRam(ram) || '-';
-  const renderedDisplay = display.screenSize || '-';
-  const renderedCamera = camera.primary || '-';
-  const renderedBattery = battery.type || '-';
-  const renderedScreen = display.screenResolution || '-';
+  const renderedDisplay = screen || '-';
+  const renderedCamera = camera || '-';
+  const renderedScreen = resolution || '-';
 
   return (
     <div className="about__spec">
@@ -57,15 +51,15 @@ export const TechSpecs: FC<Props> = ({
           </div>
         </div>
         <div className="card__feature">
-          <div className="card__feature-key tech-specs__key">RAM</div>
+          <div className="card__feature-key tech-specs__key">Zoom</div>
           <div className="card__feature-value tech-specs__value">
-            {renderedRam}
+            {zoom}
           </div>
         </div>
         <div className="card__feature">
-          <div className="card__feature-key tech-specs__key">Battery</div>
+          <div className="card__feature-key tech-specs__key">RAM</div>
           <div className="card__feature-value tech-specs__value">
-            {renderedBattery}
+            {renderedRam}
           </div>
         </div>
         <div className="card__feature">

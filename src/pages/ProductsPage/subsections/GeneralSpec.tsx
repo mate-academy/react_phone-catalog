@@ -1,30 +1,23 @@
 import { FC } from 'react';
-import { Product } from 'src/types/Product';
 import { ProdcutDetails } from 'src/types/ProductDetails';
 import { getRenderedCapacity } from 'src/utils/helpers/getRenderedCapacity';
 import { getRenderedRam } from 'src/utils/helpers/getRenderedRam';
 
 type Props = {
   selectedProductDetails: ProdcutDetails,
-  selectedProductGeneralInfo: Product,
 };
 
 export const GeneralSpec: FC<Props> = ({
   selectedProductDetails,
-  selectedProductGeneralInfo,
 }) => {
   const {
-    display,
-  } = selectedProductDetails;
-
-  const {
+    screen,
     ram,
     capacity,
-  } = selectedProductGeneralInfo;
-
+  } = selectedProductDetails;
   const renderedCapacity = getRenderedCapacity(capacity) || '-';
   const renderedRam = getRenderedRam(ram) || '-';
-  const renderedDisplay = display.screenSize || '-';
+  const renderedDisplay = screen || '-';
 
   return (
     <div className="card__features specifications__card__features">

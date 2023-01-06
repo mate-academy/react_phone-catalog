@@ -18,7 +18,6 @@
 
 .gallery {
   display: flex;
-  // height: 464px;
   gap: 16px;
 
   &--left {
@@ -32,6 +31,7 @@
     &__img {
       width: 60px;
       height: 60px;
+
     }
   }
 
@@ -51,6 +51,10 @@
     align-items: center;
     cursor: pointer;
 
+    & img {
+      object-fit: contain;
+    }
+
     &:not(.gallery__item--selected):hover {
       border: 1px solid;
       border-color: rgba($secondary-c, 0.5);
@@ -63,7 +67,7 @@
     &--large {
       width: 442px;
       height: 442px;
-      object-fit: cover;
+      object-fit: contain;
     }
   }
 }
@@ -98,13 +102,6 @@
   }
 }
 
-$backgrounds: (
-  1: #fcdbc1,
-  2: #5f7170,
-  3: #4c4c4c,
-  4: #f0f0f0,
-);
-
 .options-wrapper__color--outer {
   border-radius: 50%;
   border: 1px solid $elements-c;
@@ -113,16 +110,6 @@ $backgrounds: (
 
 .options-wrapper__color--selected {
   border: 1px solid $primary-c;
-}
-
-@each $num, $bg in $backgrounds {
-  .options-wrapper__color--#{$num} {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    border: 2px solid $white-c;
-    background: $bg;
-  }
 }
 
 .options-memory {
@@ -145,14 +132,9 @@ $backgrounds: (
     background: $white-c;
     border: 1px solid $icons-c;
     transition-property: background-color, color;
-    transition-duration: 0.8s;
+    transition-duration: 0.2s;
     transition-timing-function: ease;
     cursor: pointer;
-
-    &:hover {
-      background-color: $primary-c;
-      color: $white-c;
-    }
 
     &--selected {
       background-color: $primary-c;

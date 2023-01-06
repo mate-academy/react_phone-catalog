@@ -2,13 +2,13 @@ import { Product } from '../types/Product';
 
 export const getHotPriceProducts = (products: Product[]): Product[] => {
   const filteredProducts = products.filter(product => {
-    return product.discount > 0;
+    return product.fullPrice !== product.price;
   });
 
   const productsWithAbsDiscount = filteredProducts.map(product => {
     return {
       ...product,
-      discountValue: (product.price / 100) * product.discount,
+      discountValue: product.fullPrice - product.price,
     };
   });
 
@@ -16,5 +16,5 @@ export const getHotPriceProducts = (products: Product[]): Product[] => {
     return prodcut2.discountValue - prodcut1.discountValue;
   });
 
-  return sortedProducts;
+  return sortedProducts.slice(0, 8);
 };

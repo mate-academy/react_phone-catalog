@@ -61,14 +61,27 @@ export const SliderComponent = () => {
         autoplay
         autoplaySpeed={5000}
       >
-        {[1, 2, 3, 4].map(imgCount => (
-          <img
-            key={imgCount}
-            src={`assets/slider/slider-${imgCount}.jpeg`}
-            alt="mobile"
-            className="slider__image"
-          />
-        ))}
+        <img
+          src="assets/slider/slider-1.png"
+          alt="mobile"
+          className="slider__image"
+        />
+        <img
+          src="assets/slider/slider-2.png"
+          alt="mobile"
+          className="slider__image"
+        />
+        <img
+          src="assets/slider/slider-3.png"
+          alt="mobile"
+          className="slider__image"
+        />
+        <img
+          src="assets/slider/slider-4.jpeg"
+          alt="mobile"
+          className="slider__image"
+        />
+
       </Slider>
     </div>
   );

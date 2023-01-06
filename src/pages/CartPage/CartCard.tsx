@@ -12,8 +12,7 @@ export const CartCard: FC<Props> = ({
   product,
   setCartProducts,
 }) => {
-  const phoneEndPoint = product.imageUrl.split('/').at(-1);
-  const renderedPrice = (product.priceAfterDiscount || product.price)
+  const renderedPrice = (product.price || product.fullPrice)
   * (product.count || 1);
   const buyingLimit = 10;
 
@@ -57,6 +56,8 @@ export const CartCard: FC<Props> = ({
     setCartProducts(prev => {
       return prev.filter(item => item.id !== clickedId);
     });
+
+    window.dispatchEvent(new Event('storage'));
   };
 
   return (
@@ -72,7 +73,7 @@ export const CartCard: FC<Props> = ({
 
         <div className="cart-card__wrapper">
           <img
-            src={`/assets/phones/${phoneEndPoint}`}
+            src={product.image}
             alt="mobile"
             className="cart-card__img"
           />

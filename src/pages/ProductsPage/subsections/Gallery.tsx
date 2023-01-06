@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { ProdcutDetails } from 'src/types/ProductDetails';
 
 type Props = {
@@ -8,14 +8,16 @@ type Props = {
 
 export const Gallery: FC<Props> = ({ selectedProductDetails }) => {
   const { images } = selectedProductDetails;
-  const imagesEndPoint = images
-    .map((img: string) => img.split('/').at(-1));
-  const [selectedImage, setSelectedImage] = useState(imagesEndPoint[0]);
+  const [selectedImage, setSelectedImage] = useState<string>('');
+
+  useEffect(() => {
+    setSelectedImage(images[0]);
+  }, [selectedProductDetails]);
 
   return (
     <section className="gallery">
       <div className="gallery--left">
-        {imagesEndPoint.map(image => {
+        {images.map(image => {
           return (
             <button
               key={image}
@@ -27,7 +29,7 @@ export const Gallery: FC<Props> = ({ selectedProductDetails }) => {
               onClick={() => setSelectedImage(image)}
             >
               <img
-                src={`/assets/phones/${image}`}
+                src={`../${image}`}
                 alt="phone"
                 className="gallery--left__img"
               />
@@ -38,7 +40,7 @@ export const Gallery: FC<Props> = ({ selectedProductDetails }) => {
 
       <div className="gallery__large">
         <img
-          src={`/assets/phones/${selectedImage}`}
+          src={`../${selectedImage}`}
           alt="phone"
           className="gallery__item--large"
         />

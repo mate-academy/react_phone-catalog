@@ -1,13 +1,20 @@
 import classNames from 'classnames';
-import { useState } from 'react';
+import { FC } from 'react';
 
-export const Capacity = () => {
-  const [selectedCapacity, setSelectedCapacity] = useState('');
-  const capacityArray = ['64 GB', '256 GB', '512 GB'];
+type Props = {
+  capacityAvailable: string[],
+  selectedCapacity: string,
+  setSelectedCapacity: React.Dispatch<React.SetStateAction<string>>,
+};
 
+export const Capacity: FC<Props> = ({
+  capacityAvailable,
+  selectedCapacity,
+  setSelectedCapacity,
+}) => {
   return (
     <div className="options-wrapper">
-      {capacityArray.map(el => {
+      {capacityAvailable.map(el => {
         return (
           <button
             key={el}
