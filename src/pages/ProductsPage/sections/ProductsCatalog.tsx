@@ -1,9 +1,11 @@
 import { FC } from 'react';
-import { ProductCard } from 'src/pages/ProductsPage/sections/ProductCard';
+import {
+  ProductCard,
+} from 'src/pages/ProductsPage/sections/ProductCard/ProductCard';
 import { Product } from 'src/types/Product';
 
 type Props = {
-  currentProducts: Product[],
+  currentItems: Product[],
   favourites: Product[],
   setFavourites:React.Dispatch<React.SetStateAction<Product[]>>,
   cartProducts: Product[],
@@ -11,7 +13,7 @@ type Props = {
 };
 
 export const ProductsCatalog: FC<Props> = ({
-  currentProducts,
+  currentItems,
   favourites,
   setFavourites,
   cartProducts,
@@ -19,7 +21,7 @@ export const ProductsCatalog: FC<Props> = ({
 }) => {
   return (
     <div className="product-section__catalog">
-      {currentProducts.map(product => {
+      {currentItems.map(product => {
         return (
           <ProductCard
             key={product.id}

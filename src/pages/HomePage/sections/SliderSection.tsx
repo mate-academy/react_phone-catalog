@@ -1,7 +1,9 @@
 import { FC } from 'react';
 import { Product } from 'src/types/Product';
 import { KeenSlider } from 'src/components/KeenSlider';
-import { ProductCard } from 'src/pages/ProductsPage/sections/ProductCard';
+import {
+  ProductCard,
+} from 'src/pages/ProductsPage/sections/ProductCard/ProductCard';
 import { useLocalStorage } from 'src/hooks/useLocalStorage';
 
 type Props = {

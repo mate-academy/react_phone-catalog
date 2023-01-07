@@ -1,4 +1,4 @@
-import { useCallback, useContext } from 'react';
+import { useCallback, useContext, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { ProductContext } from 'src/contexts/ProductContext';
 import { hasMatches } from 'src/utils/helpers/hasMatches';
@@ -15,6 +15,16 @@ export const InputSearch = () => {
     currentProducts,
     visibleProducts,
   } = useContext(ProductContext);
+  const {
+    isProductsFetched,
+    setIsProductsFetched,
+  } = useContext(ProductContext);
+
+  useEffect(() => {
+    if (visibleProducts.length > 0) {
+      setIsProductsFetched(true);
+    }
+  }, [visibleProducts]);
 
   const updateDebounce = useCallback(
     debounce((val: string) => {
@@ -29,16 +39,22 @@ export const InputSearch = () => {
 
   const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchParams(
-      getSearchWith(searchParams, { query: event.target.value || null }),
+      getSearchWith(searchParams, {
+        query: event.target.value || null,
+      }),
     );
-
-    updateDebounce(event.target.value);
   };
+
+  useEffect(() => {
+    if (query) {
+      updateDebounce(query);
+    }
+  }, [isProductsFetched, query]);
 
   const handleOnClear = () => {
     setVisibleProducts(currentProducts);
     setSearchParams(
-      getSearchWith(searchParams, { query: null }),
+      getSearchWith(searchParams, { query: null, page: '1' }),
     );
   };
 
@@ -47,8 +63,8 @@ export const InputSearch = () => {
       <input
         className="header__search"
         type="text"
-        placeholder="Search in favourites..."
-        maxLength={30}
+        placeholder="Search favourites..."
+        maxLength={40}
         value={query}
         onChange={handleOnChange}
       />

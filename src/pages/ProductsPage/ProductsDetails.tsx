@@ -4,7 +4,7 @@ import {
 import { useLocation } from 'react-router-dom';
 import { ProductContext } from 'src/contexts/ProductContext';
 import { useLocalStorage } from 'src/hooks/useLocalStorage';
-import { DetailsContent } from './sections/DetailsContent';
+import { DetailsContent } from './sections/DetailsContent/DetailsContent';
 
 export const ProductsDetails = () => {
   const { products } = useContext(ProductContext);

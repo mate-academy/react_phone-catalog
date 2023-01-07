@@ -2,9 +2,15 @@ import namedColors from 'color-name-list';
 
 export function getColor(el: string) {
   const missingColorInHex: { [key: string]: string } = {
-    spacegray: '#343d46',
-    midnightgreen: '#004953',
+    spacegray: '#535150',
+    midnightgreen: '#4e5851',
     rosegold: '#b76e79',
+    green: '#aee1cd',
+    yellow: '#ffe681',
+    purple: '#b8afe6',
+    red: '#e23636',
+    gold: '#fad7bd',
+    silver: '#f5f5f0',
   };
 
   const hexColor = namedColors.find(colorEl => {
@@ -17,5 +23,5 @@ export function getColor(el: string) {
     window.alert(`add missing color! for ${el}`);
   }
 
-  return hexColor?.hex || missingColorInHex[el];
+  return missingColorInHex[el] || hexColor?.hex;
 }

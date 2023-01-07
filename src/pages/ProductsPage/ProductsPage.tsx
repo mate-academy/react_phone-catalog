@@ -9,9 +9,6 @@ import { ProductSection } from 'src/pages/ProductsPage/sections/ProductSection';
 import { useLocalStorage } from 'src/hooks/useLocalStorage';
 import { NavHistory } from 'src/pages/ProductsPage/sections/NavHistory';
 import { sortProducts } from 'src/utils/helpers/sortProducts';
-import { lower } from 'src/utils/shortHands';
-import { Product } from 'src/types/Product';
-import { hasMatches } from 'src/utils/helpers/hasMatches';
 
 type Props = {
   title: string,
@@ -27,10 +24,8 @@ export const ProductsPage: FC<Props> = ({
 }) => {
   const {
     products,
-    currentProducts,
     setCurrentProducts,
     setVisibleProducts,
-    visibleProducts,
   } = useContext(ProductContext);
   const [searchParams] = useSearchParams();
   const [favourites, setFavourites] = useLocalStorage('favourites', '');
@@ -39,45 +34,25 @@ export const ProductsPage: FC<Props> = ({
   const query = searchParams.get('query') || '';
   const sort = searchParams.get('sort') || 'age';
   const perPage = searchParams.get('perPage') || 'all';
-  const isAll = lower(perPage) === 'all';
-  const currentPage = searchParams.get('page') || '1';
-
+  const page = searchParams.get('page') || '1';
   const typeProducts = products.filter(el => el.category === pageType);
 
   const sortedProducts = useMemo(() => {
     return sortProducts([...typeProducts], sort);
-  }, [sort, perPage]);
+  }, [sort, perPage, page]);
 
-  let filteredProductsAfterPagination: Product[];
-
-  if (isAll) {
-    filteredProductsAfterPagination = sortedProducts;
-  } else {
-    const indexOfLastProduct = +currentPage
-    * (isAll
-      ? sortedProducts.length
-      : +perPage);
-    const indexOfFirstProduct = indexOfLastProduct
-    - (isAll
-      ? sortedProducts.length
-      : +perPage);
-
-    filteredProductsAfterPagination = sortedProducts
-      .slice(indexOfFirstProduct, indexOfLastProduct);
-  }
+  // !not working solution (two useEffects)
+  useEffect(() => {
+    setCurrentProducts(sortedProducts);
+    setVisibleProducts(sortedProducts);
+  }, []);
 
   useEffect(() => {
-    if (query) {
-      setVisibleProducts(filteredProductsAfterPagination
-        .filter(el => {
-          return hasMatches(el.name, query);
-        }));
-    } else {
-      setVisibleProducts(filteredProductsAfterPagination);
+    if (!query) {
+      setCurrentProducts(sortedProducts);
+      setVisibleProducts(sortedProducts);
     }
-
-    setCurrentProducts(filteredProductsAfterPagination);
-  }, [sort, perPage, currentPage]);
+  }, [sort, perPage, page]);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -85,16 +60,17 @@ export const ProductsPage: FC<Props> = ({
 
   return (
     <div className="container">
-      {!visibleProducts.length
-        ? <GoBack />
-        : (
-          <NavHistory
-            pageType={pageType}
-          />
-        )}
+      {!query && (
+        !sortedProducts.length
+          ? <GoBack />
+          : (
+            <NavHistory
+              pageType={pageType}
+            />
+          )
+      )}
 
-      {currentProducts.length > 0
-      && setFavourites
+      {typeProducts.length > 0
         ? (
           <ProductSection
             title={title}
@@ -107,7 +83,6 @@ export const ProductsPage: FC<Props> = ({
             setCartProducts={setCartProducts}
             perPage={perPage}
             sortedProducts={sortedProducts}
-            currentPage={currentPage}
           />
         )
         : <NoItemsLeftSection />}

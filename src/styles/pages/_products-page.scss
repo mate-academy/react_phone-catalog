@@ -43,6 +43,7 @@
 
   &__product-count {
     font-weight: 500;
+    margin-top: 8px;
     font-size: 14px;
     line-height: 21px;
     color: $secondary-c;
@@ -201,11 +202,15 @@
     border: 1px solid $elements-c;
     cursor: pointer;
 
-    &--active {
-      background: $primary-c;
-      color: $white-c;
+    & a {
+      padding: 6px 11px;
     }
   }
+}
+
+.pagination__page-number.selected {
+  background: $primary-c;
+  color: $white-c;
 }
 
 .pagination__button {

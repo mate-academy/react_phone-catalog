@@ -1,14 +1,10 @@
 import { FC, useContext } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { ProductContext } from 'src/contexts/ProductContext';
 import { NoMatches } from 'src/features/NoMatches';
 import { Filters } from 'src/globalSections/Filters';
-import {
-  ProductPagination,
-} from 'src/pages/ProductsPage/sections/ProductPagination';
-import {
-  ProductsCatalog,
-} from 'src/pages/ProductsPage/sections/ProductsCatalog';
 import { Product } from 'src/types/Product';
+import { PaginatedProducts } from './PaginatedProducts';
 
 type Props = {
   title: string,
@@ -21,7 +17,6 @@ type Props = {
   setCartProducts: React.Dispatch<React.SetStateAction<Product[]>>,
   perPage: string,
   sortedProducts: Product[],
-  currentPage: string,
 };
 
 export const ProductSection: FC<Props> = ({
@@ -35,20 +30,31 @@ export const ProductSection: FC<Props> = ({
   setCartProducts,
   perPage,
   sortedProducts,
-  currentPage,
 }) => {
-  const { visibleProducts } = useContext(ProductContext);
+  const { visibleProducts, isProductsFetched } = useContext(ProductContext);
+  const [searchParams] = useSearchParams();
+  const query = searchParams.get('query');
+  const foundProducts = query ? visibleProducts.length : typeProducts.length;
+  let perPageInNumber;
+
+  if (perPage === 'all') {
+    perPageInNumber = sortedProducts.length;
+  } else {
+    perPageInNumber = perPage;
+  }
 
   return (
     <div className="products-section">
       <div className="products-section__top">
-        <h1 className="products-section__title">{title}</h1>
-        <div className="products-section__product-count">{`${typeProducts.length} models`}</div>
+        {!query && (
+          <h1 className="products-section__title">{title}</h1>
+        )}
+        <div className="products-section__product-count">{`${foundProducts} models`}</div>
       </div>
 
-      {visibleProducts.length > 0
-        ? (
-          <>
+      {visibleProducts.length > 0 && isProductsFetched && (
+        <>
+          {!query && (
             <div className="products-section__selects">
               <Filters
                 typeProducts={typeProducts}
@@ -63,26 +69,24 @@ export const ProductSection: FC<Props> = ({
                 title="Items on page"
               />
             </div>
+          )}
 
-            <div className="product-section__catalog-wrapper">
-              <ProductsCatalog
-                currentProducts={visibleProducts}
-                favourites={favourites}
-                setFavourites={setFavourites}
-                cartProducts={cartProducts}
-                setCartProducts={setCartProducts}
-              />
-            </div>
-          </>
-        ) : <NoMatches />}
+          <div className="product-section__catalog-wrapper">
+            <PaginatedProducts
+              sortedProducts={sortedProducts}
+              favourites={favourites}
+              setFavourites={setFavourites}
+              cartProducts={cartProducts}
+              setCartProducts={setCartProducts}
+              itemsPerPage={+perPageInNumber}
+            />
+          </div>
+        </>
+      )}
 
-      <div className="product-section__pagination-wrapper">
-        <ProductPagination
-          perPage={+perPage}
-          totalProducts={sortedProducts.length}
-          currentPage={+currentPage}
-        />
-      </div>
+      {visibleProducts.length === 0 && isProductsFetched && (
+        <NoMatches />
+      )}
     </div>
   );
 };

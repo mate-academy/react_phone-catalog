@@ -76,7 +76,6 @@ export const FilterList: FC<Props> = ({
           );
         })}
       </ul>
-
     </>
   );
 };

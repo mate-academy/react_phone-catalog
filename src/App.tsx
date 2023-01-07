@@ -32,6 +32,7 @@ const App = () => {
     visibleProducts,
     setVisibleProducts,
   ] = useState<Product[]>([]);
+  const [isProductsFetched, setIsProductsFetched] = useState<boolean>(false);
   const [
     selectedProductDetails,
     setSelectedProductDetails,
@@ -91,6 +92,8 @@ const App = () => {
       setVisibleProducts,
       selectedProductDetails,
       setSelectedProductDetails,
+      isProductsFetched,
+      setIsProductsFetched,
     }}
     >
       <div className="App">

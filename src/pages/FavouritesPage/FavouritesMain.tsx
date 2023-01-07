@@ -27,7 +27,7 @@ export const FavouritesMain: FC<Props> = ({
         : (
           <div className="product-section__catalog-wrapper">
             <ProductsCatalog
-              currentProducts={favourites}
+              currentItems={favourites}
               favourites={favourites}
               setFavourites={setFavourites}
               cartProducts={cartProducts}
