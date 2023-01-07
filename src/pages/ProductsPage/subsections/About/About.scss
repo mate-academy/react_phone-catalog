@@ -1,0 +1,36 @@
+@import "src/styles/abstracts/variables";
+@import "src/styles/abstracts/mixins";
+
+.about {
+  margin-top: 90px;
+
+  &__title {
+    padding-bottom: 16px;
+    border-bottom: 1px solid $elements-c;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 140%;
+  }
+
+  &__subsection {
+    margin-top: 32px;
+  }
+
+  &__subtitle {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 26px;
+  }
+
+  &__paragraph {
+    margin-top: 16px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $secondary-c;
+  }
+
+  &__spec {
+    height: max-content;
+  }
+}

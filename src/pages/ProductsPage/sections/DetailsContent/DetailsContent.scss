@@ -1,0 +1,141 @@
+@import "src/styles/abstracts/variables";
+@import "src/styles/abstracts/mixins";
+
+.grid-2-col {
+  display: grid;
+
+  @include onPhone {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-gap: 32px 0;
+  }
+
+  @include onTablet {
+    grid-template-columns: 6fr 4fr;
+    grid-template-rows: 1fr;
+    grid-gap: 0 75px;
+  }
+}
+
+.details {
+  margin-top: 16px;
+
+  &__title {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 41px;
+  }
+}
+
+.details__general {
+  margin-top: 40px;
+}
+
+.options {
+  padding-bottom: 25px;
+  border-bottom: 1px solid $elements-c;
+  height: max-content;
+
+  &-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  &__id {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    text-transform: uppercase;
+    color: $icons-c;
+  }
+
+  &__title {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: $secondary-c;
+  }
+}
+
+
+.options-memory {
+  margin-top: 24px;
+}
+
+.specifications__prices {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 32px;
+
+  &--old {
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 28px;
+    text-decoration-line: line-through;
+    color: $secondary-c;
+  }
+
+  &--new {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 41px;
+    color: $primary-c;
+  }
+}
+
+.specifications__buttons {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.specifications__button--add-to-cart {
+  height: 48px;
+  flex-grow: 1;
+  flex-shrink: 1;
+  cursor: pointer;
+}
+
+.specifications__button--add-to-fav {
+  height: 48px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.specifications__card__features {
+  margin-top: 32px;
+
+  & .card__feature-value {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  & .card__feature-key {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+}
+
+.tech-specs {
+  margin-top: 25px;
+
+  &__key {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $secondary-c;
+  }
+
+  &__value {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $primary-c;
+  }
+}
+

@@ -1,0 +1,11 @@
+@import "src/styles/abstracts/variables";
+
+.options-wrapper__color--outer {
+  border-radius: 50%;
+  border: 1px solid $elements-c;
+  cursor: pointer;
+}
+
+.options-wrapper__color--selected {
+  border: 1px solid $primary-c;
+}
