@@ -1,6 +1,7 @@
 import { useCallback, useContext, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { ProductContext } from 'src/contexts/ProductContext';
+import { useLocalStorage } from 'src/hooks/useLocalStorage';
 import { hasMatches } from 'src/utils/helpers/hasMatches';
 import { getSearchWith } from 'src/utils/helpers/searchHelper';
 import { debounce } from 'ts-debounce';
@@ -8,6 +9,7 @@ import { ClearIcon } from './Icons/ClearIcon';
 import { SearchIcon } from './Icons/SearchIcon';
 
 export const InputSearch = () => {
+  const [inputValue, setInputValue] = useLocalStorage('query', '');
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query') || '';
   const {
@@ -49,7 +51,19 @@ export const InputSearch = () => {
     if (query) {
       updateDebounce(query);
     }
+
+    setInputValue(query);
   }, [isProductsFetched, query]);
+
+  useEffect(() => {
+    if (inputValue) {
+      setSearchParams(
+        getSearchWith(searchParams, {
+          query: inputValue,
+        }),
+      );
+    }
+  }, []);
 
   const handleOnClear = () => {
     setVisibleProducts(currentProducts);
@@ -68,7 +82,7 @@ export const InputSearch = () => {
         value={query}
         onChange={handleOnChange}
       />
-      {!query.length
+      {query.length === 0
         ? (
           <i className="header__search__icon">
             <SearchIcon />
@@ -77,6 +91,7 @@ export const InputSearch = () => {
         : (
           <button
             type="button"
+            data-cy="searchDelete"
             className="header__search__icon header__clear-icon"
             onClick={handleOnClear}
           >

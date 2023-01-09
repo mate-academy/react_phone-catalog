@@ -3,6 +3,7 @@ import { ProductContext } from 'src/contexts/ProductContext';
 import { Product } from 'src/types/Product';
 import { GoBack } from 'src/components/GoBack';
 import { getMultupleRandom } from 'src/utils/helpers/getMultupleRandom';
+import { PhoneNotFound } from 'src/features/PhoneNotFound/PhoneNotFound';
 import { SliderSection } from '../../../HomePage/sections/SliderSection';
 import { ShopButton } from '../../subsections/ShopButton';
 import { Capacity } from '../../subsections/Capacity/Capacity';
@@ -26,88 +27,102 @@ export const DetailsContent: FC<Props> = ({
   selectedCapacity,
   setSelectedCapacity,
 }) => {
-  const { products, selectedProductDetails } = useContext(ProductContext);
+  const {
+    products,
+    selectedProductDetails,
+    isDetailsFailed,
+  } = useContext(ProductContext);
   const productsWithoutCurrent = [...products]
     .filter(x => x.id !== selectedProductGeneralInfo.id);
   const randomSuggestedProducts = getMultupleRandom(productsWithoutCurrent, 8);
 
   return (
-    <div className="products-details">
-      <GoBack />
-
-      {selectedProductDetails && (
-        <div className="details">
-          <Title selectedProductDetails={selectedProductDetails} />
-
-          <div className="details__general grid-2-col">
-            <Gallery selectedProductDetails={selectedProductDetails} />
-
-            <section className="specifications">
-              <div className="options options-color">
-                <div className="options-top">
-                  <div className="options__title">
-                    Available colors
-                  </div>
-                  <div className="options__id">
-                    {`ID: ${selectedProductGeneralInfo.id}`}
-                  </div>
-                </div>
-
-                <Colors
-                  selectedProductDetails={selectedProductDetails}
-                  selectedProductGeneralInfo={selectedProductGeneralInfo}
-                />
-
-              </div>
-
-              <div className="options options-memory">
-                <div className="options-top">
-                  <div className="options__title">
-                    Select capacity
-                  </div>
-                </div>
-
-                <Capacity
-                  capacityAvailable={selectedProductDetails.capacityAvailable}
-                  selectedCapacity={selectedCapacity}
-                  setSelectedCapacity={setSelectedCapacity}
-                />
-              </div>
-
-              <Prices
-                selectedProductGeneralInfo={selectedProductGeneralInfo}
-              />
-
-              <ShopButton
-                selectedProductGeneralInfo={selectedProductGeneralInfo}
-              />
-
-              <GeneralSpec
-                selectedProductDetails={selectedProductDetails}
-              />
-            </section>
-          </div>
-
-          <section className="about grid-2-col">
-            <div className="about__content">
-              <h1 className="about__title">About</h1>
-
-              <Paragraph
-                selectedProductDetails={selectedProductDetails}
-              />
+    <>
+      {isDetailsFailed
+        ? <PhoneNotFound />
+        : (
+          <div className="products-details">
+            <div className="product-details__go-back">
+              <GoBack />
             </div>
 
-            <TechSpecs
-              selectedProductDetails={selectedProductDetails}
-            />
-          </section>
-        </div>
-      )}
+            {selectedProductDetails && (
+              <div className="details">
+                <Title selectedProductDetails={selectedProductDetails} />
 
-      <SliderSection
-        sectionTitle="You may also like"
-        renderedProducts={randomSuggestedProducts}
-      />
-    </div>
+                <div className="details__general grid-2-col">
+                  <Gallery selectedProductDetails={selectedProductDetails} />
+
+                  <section className="specifications">
+                    <div className="options options-color">
+                      <div className="options-top">
+                        <div className="options__title">
+                          Available colors
+                        </div>
+                        <div className="options__id">
+                          {`ID: ${selectedProductGeneralInfo.id}`}
+                        </div>
+                      </div>
+
+                      <Colors
+                        selectedProductDetails={selectedProductDetails}
+                        selectedProductGeneralInfo={selectedProductGeneralInfo}
+                      />
+
+                    </div>
+
+                    <div className="options options-memory">
+                      <div className="options-top">
+                        <div className="options__title">
+                          Select capacity
+                        </div>
+                      </div>
+
+                      <Capacity
+                        capacityAvailable={
+                          selectedProductDetails.capacityAvailable
+                        }
+                        selectedCapacity={selectedCapacity}
+                        setSelectedCapacity={setSelectedCapacity}
+                      />
+                    </div>
+
+                    <Prices
+                      selectedProductGeneralInfo={selectedProductGeneralInfo}
+                    />
+
+                    <ShopButton
+                      selectedProductGeneralInfo={selectedProductGeneralInfo}
+                    />
+
+                    <GeneralSpec
+                      selectedProductDetails={selectedProductDetails}
+                    />
+                  </section>
+                </div>
+
+                <section className="about grid-2-col">
+                  <div className="about__content">
+                    <h1 className="about__title">About</h1>
+
+                    <Paragraph
+                      selectedProductDetails={selectedProductDetails}
+                    />
+                  </div>
+
+                  <TechSpecs
+                    selectedProductDetails={selectedProductDetails}
+                  />
+                </section>
+              </div>
+            )}
+
+            <SliderSection
+              sectionTitle="You may also like"
+              renderedProducts={randomSuggestedProducts}
+            />
+          </div>
+        )}
+    </>
   );
 };

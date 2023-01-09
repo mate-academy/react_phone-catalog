@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { Product } from 'src/types/Product';
-import { KeenSlider } from 'src/components/KeenSlider';
+import { KeenSlider } from 'src/components/KeenSlider/KeenSlider';
 import {
   ProductCard,
 } from 'src/pages/ProductsPage/sections/ProductCard/ProductCard';
@@ -26,7 +26,6 @@ export const SliderSection: FC<Props> = ({
         </div>
 
         <div
-          data-cy="cardsContainer"
           className="slider-section__catalog"
         >
           <KeenSlider>

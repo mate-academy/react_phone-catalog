@@ -1,0 +1,48 @@
+.go-back {
+  display: inline-flex;
+  align-content: center;
+  font-weight: 500;
+  font-size: 12px;
+  color: $secondary-c;
+
+  &__icon {
+    position: relative;
+    padding-right: 8px;
+    top: 1px;
+    cursor: pointer;
+  }
+
+  &__link {
+    transition: color $transition-btns-duration ease;
+    cursor: pointer;
+
+    &:hover {
+      color: $primary-c;
+    }
+  }
+}
+
+.phones-section {
+  margin-top: 80px;
+}
+
+.slider-section {
+  position: relative;
+
+  &__catalog {
+    margin-top: 24px;
+  }
+
+  &__card {
+    border: 1px solid $elements-c;
+    padding: 32px 32px 24px;
+    min-width: 272px;
+  }
+
+  &__top-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 120px;
+  }
+}

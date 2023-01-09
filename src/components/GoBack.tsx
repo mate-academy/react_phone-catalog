@@ -8,6 +8,7 @@ export const GoBack = () => {
     <button
       type="button"
       className="go-back"
+      data-cy="backButton"
       onClick={() => navigate(-1)}
     >
       <div className="go-back__icon">

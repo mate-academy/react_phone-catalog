@@ -1,9 +1,8 @@
 import {
-  useContext, useEffect,
+  useContext, useEffect, useState,
 } from 'react';
 import { useLocation } from 'react-router-dom';
 import { ProductContext } from 'src/contexts/ProductContext';
-import { useLocalStorage } from 'src/hooks/useLocalStorage';
 import { DetailsContent } from './sections/DetailsContent/DetailsContent';
 
 export const ProductsDetails = () => {
@@ -14,12 +13,10 @@ export const ProductsDetails = () => {
   const location = useLocation();
   const arrOfLocation = location.pathname.split('/').filter(a => !!a);
   const selectedProductId = arrOfLocation.at(-1);
-  const [selectedCapacity, setSelectedCapacity] = useLocalStorage(
-    'capacity', '',
-  );
+  const [selectedCapacity, setSelectedCapacity] = useState('capacity');
 
   useEffect(() => {
-    if (!selectedCapacity) {
+    if (selectedProductDetails) {
       setSelectedCapacity(selectedProductDetails?.capacity);
     }
   }, [selectedProductDetails]);

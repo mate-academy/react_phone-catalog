@@ -1,0 +1,137 @@
+@import "src/styles/abstracts/variables";
+@import "src/styles/abstracts/mixins";
+
+.counter-icon-inner {
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+  width: 10px;
+  height: 1px;
+  background: $primary-c;
+}
+
+.counter-icon {
+  width: 32px;
+  height: 32px;
+  position: relative;
+
+  border: 1px solid $primary-c;
+  cursor: pointer;
+}
+
+.rotate90 {
+  position: relative;
+  border-radius: 2px;
+  transform: rotate(90deg);
+  transform-origin: center;
+}
+
+.cart-card-right,
+.cart-card-left {
+  display: flex;
+  align-items: center;
+}
+
+.cart-card-right {
+  max-width: 200px;
+  flex-grow: 1;
+  justify-content: space-between;
+}
+
+.cart-card {
+  padding: 31px 40px 31px 27px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  align-self: flex-start;
+
+  &__img {
+    @include onPhone {
+      margin-left: 16px;
+    }
+
+    @include onTablet {
+      margin-left: 43px;
+    }
+
+    width: 66px;
+    height: 66px;
+    object-fit: contain;
+  }
+
+  &__close-icon {
+    cursor: pointer;
+  }
+
+  &__product-name {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+
+    @include onPhone {
+      max-width: 125px;
+      margin-left: 16px;
+    }
+
+    @include onTablet {
+      margin-left: 20px;
+      max-width: 150px;
+    }
+
+    @include onDesktop {
+      margin-left: 31px;
+      max-width: 280px;
+    }
+  }
+
+  &__price {
+    font-weight: 700;
+    font-size: 22px;
+  }
+}
+
+.cart-card__counter-wrapper {
+  display: flex;
+  gap: 13px;
+  align-items: center;
+}
+
+.cart-card__counter-left-icon {
+  @extend .counter-icon;
+
+  & :first-child {
+    @extend .counter-icon-inner;
+  }
+
+  &--disabled {
+    border: 1px solid $elements-c;
+
+    & :first-child {
+      background: $elements-c;
+    }
+  }
+}
+
+.cart-card__counter-right-icon {
+  @extend .counter-icon;
+
+  & .horizontal {
+    @extend .counter-icon-inner;
+  }
+
+  & .vertical {
+    @extend .counter-icon-inner;
+  }
+
+  &--disabled {
+    border: 1px solid $elements-c;
+    pointer-events: none;
+    cursor: not-allowed;
+
+    & .horizontal,
+    & .vertical {
+      background: $icons-c;
+    }
+  }
+}

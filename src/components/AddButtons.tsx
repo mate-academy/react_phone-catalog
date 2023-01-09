@@ -81,6 +81,7 @@ export const AddButton: FC<Props> = ({
 
       <button
         type="button"
+        data-cy="addToFavorite"
         className={classNames(
           'card__button--add-to-fav',
           'card__button',

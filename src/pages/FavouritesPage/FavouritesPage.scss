@@ -1,0 +1,16 @@
+@import "src/styles/abstracts/variables";
+
+.favourites-section {
+  height: 100%;
+}
+
+.empty-favourites {
+  height: 65%;
+
+  &__title-wrapper {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+  }
+}

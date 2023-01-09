@@ -1,0 +1,23 @@
+@import "../abstracts/variables";
+@import "../abstracts/mixins";
+
+.container {
+  flex: 1 0 auto;
+  margin: 0 auto;
+
+  @include onPhone {
+    width: $container-phone-width;
+  }
+
+  @include onTablet {
+    width: $container-tablet-width;
+  }
+
+  @include onDesktop-small {
+    width: $container-desktop-small-width;
+  }
+
+  @include onDesktop {
+    width: $container-desktop-width;
+  }
+}

@@ -4,10 +4,14 @@ import {
 import { useSearchParams } from 'react-router-dom';
 import { GoBack } from 'src/components/GoBack';
 import { ProductContext } from 'src/contexts/ProductContext';
-import { NoItemsLeftSection } from 'src/features/NoItemsLeftSection';
-import { ProductSection } from 'src/pages/ProductsPage/sections/ProductSection';
+import {
+  NoItemsLeftSection,
+} from 'src/features/NoItemsLeft/NoItemsLeftSection';
+import {
+  ProductSection,
+} from 'src/pages/ProductsPage/sections/ProductSection/ProductSection';
 import { useLocalStorage } from 'src/hooks/useLocalStorage';
-import { NavHistory } from 'src/pages/ProductsPage/sections/NavHistory';
+import { NavHistory } from 'src/pages/ProductsPage/NavHistory/NavHistory';
 import { sortProducts } from 'src/utils/helpers/sortProducts';
 
 type Props = {
@@ -62,7 +66,11 @@ export const ProductsPage: FC<Props> = ({
     <div className="container">
       {!query && (
         !sortedProducts.length
-          ? <GoBack />
+          ? (
+            <div className="no-items-left__go-back">
+              <GoBack />
+            </div>
+          )
           : (
             <NavHistory
               pageType={pageType}

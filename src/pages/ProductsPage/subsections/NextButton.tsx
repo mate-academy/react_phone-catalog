@@ -5,12 +5,11 @@ export const NextButton = () => {
   return (
     <button
       type="button"
+      data-cy="paginationRight"
       className={classNames(
         'pagination__button-next',
         'pagination__button',
-        // { 'pagination__button--disabled': isNextButtonDisabled },
       )}
-      // onClick={handleNextButtonClick}
     >
       <NextArrowIcon />
     </button>

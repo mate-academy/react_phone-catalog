@@ -17,7 +17,11 @@ export const Paragraph: FC<Props> = ({ selectedProductDetails }) => {
         const key = generateKey(title);
 
         return (
-          <div key={key} className="about__subsection">
+          <div
+            key={key}
+            className="about__subsection"
+            data-cy="productDescription"
+          >
             <h1 className="about__subtitle">{title}</h1>
             <p className="about__paragraph">
               {text}

@@ -4,9 +4,10 @@ import { Product } from 'src/types/Product';
 import {
   getProductsWithActualPrice,
 } from 'src/utils/helpers/getProductsWithActualPrice';
-import { CartCard } from './CartCard';
-import { Checkout } from './Checkout';
+import { CartCard } from './CartCard/CartCard';
+import { Checkout } from './Checkout/Checkout';
 import { EmptyCartPage } from './EmptyCartPage';
+import './CartPage.scss';
 
 export const CartPage = () => {
   const [cartProducts, setCartProducts] = useLocalStorage('cart', '');
@@ -19,7 +20,9 @@ export const CartPage = () => {
           <EmptyCartPage />
         ) : (
           <div className="container">
-            <GoBack />
+            <div className="cart-section__go-back">
+              <GoBack />
+            </div>
 
             <div className="products-section cart-section">
               <div className="products-section__top cart-section__top">

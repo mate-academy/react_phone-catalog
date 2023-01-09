@@ -28,7 +28,7 @@ export const CategoryCard: FC<Props> = ({ category }) => {
   const firstLinkName = name.split(' ')[0];
 
   return (
-    <div className="shop-by-category__card">
+    <div className="shop-by-category__card" data-cy="categoryLinksContainer">
       <Link
         to={`/${fromNameToLink[lower(firstLinkName)]}`}
         className="shop-by-category__background"

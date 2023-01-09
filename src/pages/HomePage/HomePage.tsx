@@ -4,8 +4,8 @@ import { Product } from 'src/types/Product';
 import { getNewModels } from 'src/api/getNewModels';
 import { SliderSection } from 'src/pages/HomePage/sections/SliderSection';
 import { ProductContext } from 'src/contexts/ProductContext';
-import { SliderComponent } from './sections/SliderComponent';
-import { ShopByCategory } from './sections/ShopByCategory';
+import { SliderComponent } from './sections/sliderComponent/SliderComponent';
+import { ShopByCategory } from './sections/ShopByCategory/ShopByCategory';
 
 export const HomePage = () => {
   const [hotPriceProducts, setHotPriceProducts] = useState<Product[]>([]);

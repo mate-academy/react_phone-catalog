@@ -1,0 +1,33 @@
+@import "src/styles/abstracts/variables";
+@import "src/styles/abstracts/mixins";
+
+.cart-section__go-back {
+  margin-top: 41px;
+}
+
+.cart-section__grid {
+  display: grid;
+  grid-template-rows: auto;
+  margin-top: 24px;
+  align-items: flex-start;
+
+  @include onPhone {
+    grid-template-columns: 1fr;
+    grid-gap: 24px 0;
+  }
+
+  @include onTablet {
+    grid-template-columns: 2fr 1fr;
+    grid-gap: 0 16px;
+  }
+
+  &-left {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
+.empty-cart__go-back {
+  margin-top: 41px;
+}

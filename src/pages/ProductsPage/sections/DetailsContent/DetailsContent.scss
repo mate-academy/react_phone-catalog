@@ -17,6 +17,11 @@
   }
 }
 
+.product-details__go-back {
+  margin-top: 44px;
+  height: min-content;
+}
+
 .details {
   margin-top: 16px;
 
@@ -57,7 +62,6 @@
     color: $secondary-c;
   }
 }
-
 
 .options-memory {
   margin-top: 24px;
@@ -138,4 +142,3 @@
     color: $primary-c;
   }
 }
-

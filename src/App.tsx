@@ -2,21 +2,21 @@ import {
   Navigate, Route, Routes, useLocation,
 } from 'react-router-dom';
 import 'src/styles/main.scss';
-import { Footer } from 'src/globalSections/Footer';
+import { Footer } from 'src/globalSections/Footer/Footer';
 import { useEffect, useRef, useState } from 'react';
 import { HomePage } from './pages/HomePage/HomePage';
 import { PhonesPage } from './pages/PhonesPage/PhonesPage';
-import { Header } from './globalSections/Header';
+import { Header } from './globalSections/Header/Header';
 import { TabletsPage } from './pages/TabletsPage/TabletsPage';
 import { AccessoriesPage } from './pages/AccessoriesPage/AccessoriesPage';
-import { NotFoundPage } from './pages/NotFoundPage';
+import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
 import { PhoneDetails } from './pages/PhonesPage/PhoneDetails';
 import { Product } from './types/Product';
 import { getProductDetails, getProducts } from './api/products';
 import { TabletsDetails } from './pages/TabletsPage/TabletsDetails';
 import { ProductContext } from './contexts/ProductContext';
 import { AccessoryDetails } from './pages/AccessoriesPage/AccessoryDetails';
-import { Loader } from './components/Loader';
+import { Loader } from './components/Loader/Loader';
 import { FavouritesPage } from './pages/FavouritesPage/FavouritesPage';
 import { CartPage } from './pages/CartPage/CartPage';
 import { ProdcutDetails } from './types/ProductDetails';
@@ -37,8 +37,9 @@ const App = () => {
     selectedProductDetails,
     setSelectedProductDetails,
   ] = useState<ProdcutDetails | null>(null);
-  const [isLoader, setIsLoader] = useState(false);
-  const [isDetailsLoader, setIsDetailsLoader] = useState(false);
+  const [isLoader, setIsLoader] = useState<boolean>(false);
+  const [isDetailsLoader, setIsDetailsLoader] = useState<boolean>(false);
+  const [isDetailsFailed, setIsDetailsFailed] = useState<boolean>(false);
 
   const fetchProducts = async () => {
     setIsLoader(true);
@@ -64,6 +65,7 @@ const App = () => {
   const fetchDetails = async (productId: string) => {
     try {
       setIsDetailsLoader(true);
+      setIsDetailsFailed(false);
       const data = await getProductDetails(productId);
 
       setIsDetailsLoader(false);
@@ -72,6 +74,7 @@ const App = () => {
       return data;
     } catch {
       setIsDetailsLoader(false);
+      setIsDetailsFailed(true);
     }
 
     return 0;
@@ -94,6 +97,7 @@ const App = () => {
       setSelectedProductDetails,
       isProductsFetched,
       setIsProductsFetched,
+      isDetailsFailed,
     }}
     >
       <div className="App">

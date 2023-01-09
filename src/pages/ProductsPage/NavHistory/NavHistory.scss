@@ -1,0 +1,25 @@
+@import "src/styles/abstracts/variables";
+@import "src/styles/abstracts/mixins";
+
+.nav-history {
+  margin-top: 24px;
+
+  &__list {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+  }
+
+  &__item {
+    height: 16px;
+    line-height: 15px;
+    font-weight: normal;
+    font-size: 12px;
+    color: $secondary-c;
+
+    &--active {
+      color: $primary-c;
+      font-weight: 600;
+    }
+  }
+}

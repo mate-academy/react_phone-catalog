@@ -1,6 +1,8 @@
 import { FC } from 'react';
 import { useLocalStorage } from 'src/hooks/useLocalStorage';
-import { ProductsCatalog } from '../ProductsPage/sections/ProductsCatalog';
+import {
+  ProductsCatalog,
+} from '../ProductsPage/sections/ProductsCatalog/ProductsCatalog';
 import { EmptyFavourites } from './EmptyFavourites';
 
 type Props = {
@@ -15,12 +17,12 @@ export const FavouritesMain: FC<Props> = ({
 
   return (
     <div className="products-section favourites-section">
-      <div className="products-section__top">
-        <h1 className="products-section__title">{title}</h1>
-        {!!favourites.length && (
+      {favourites.length > 0 && (
+        <div className="products-section__top">
+          <h1 className="products-section__title">{title}</h1>
           <div className="products-section__product-count">{`${favourites.length} models`}</div>
-        )}
-      </div>
+        </div>
+      )}
 
       {!favourites.length
         ? <EmptyFavourites />

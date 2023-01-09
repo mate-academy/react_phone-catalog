@@ -34,13 +34,13 @@ Store the Cart in the `localStorage`
     - `discount` is give in percents `%`
     - `age` is used to sort by `Newest`
     - `id` is required to fetch product details
-1. Create `ProductsSlider` component and use it in `Hot prices` block
+1. Create `ProductsSlider` component and use it in `Hot prices`
     - Create `getHotPriceProducts` method fetching products with discount from API
       sorted by absolute discount value (not percentage given in API)
     - For now do all the filtering and sorting on client side
     - Create `ProductCard` component to use it everywhere and add `data-cy="cardsContainer"` attribute to the container of these elements
     - Add ability to use `<` and `>` buttons to scroll products.
-1. Add `Brand new` block using `ProductsSlider` 
+1. Add `Brand new` block using `ProductsSlider`
     - Create `getBrandNewProducts` method fetching products without a discount from the API starting from the most expensive
 1. Add `Shop by category` block with the links to `/phones`, `/tablets` and `/accessories`. Add `data-cy="categoryLinksContainer"`
 to links container.

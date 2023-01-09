@@ -1,0 +1,58 @@
+@import "src/styles/abstracts/variables";
+
+.pagination {
+  margin-top: 64px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+
+  &__page-number {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    font-weight: 500;
+    font-size: 14px;
+    border: 1px solid $elements-c;
+    cursor: pointer;
+
+    & a {
+      padding: 6px 11px;
+    }
+  }
+}
+
+.pagination__page-number.selected {
+  background: $primary-c;
+  color: $white-c;
+}
+
+.pagination__button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid $icons-c;
+  transition: border $transition-btns-duration ease;
+  cursor: pointer;
+
+  &:hover {
+    border: 1px solid $primary-c;
+  }
+
+  &-next {
+    margin-left: 16px;
+  }
+
+  &-prev {
+    margin-right: 16px;
+  }
+
+  &--disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}

@@ -13,6 +13,7 @@ interface Context {
   React.Dispatch<React.SetStateAction<ProdcutDetails | null>>,
   isProductsFetched: boolean,
   setIsProductsFetched: React.Dispatch<React.SetStateAction<boolean>>,
+  isDetailsFailed: boolean,
 }
 
 export const ProductContext = React.createContext<Context>({
@@ -25,4 +26,5 @@ export const ProductContext = React.createContext<Context>({
   setSelectedProductDetails: () => {},
   isProductsFetched: false,
   setIsProductsFetched: () => {},
+  isDetailsFailed: false,
 });
