@@ -1,0 +1,32 @@
+@use "../../utilities/variables" as v;
+
+.pagination-container {
+  display: flex;
+  justify-content: center;
+}
+
+.pagination-button-container:not(:last-child) {
+  margin-right: 16px;
+}
+
+.pagination-button-prev,
+.pagination-button-page,
+.pagination-button-next {
+  background-color: white;
+  border: 1px solid v.$border-button-color;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.is-selected-page {
+  background-color: v.$primary-color;
+  border: none;
+  color: white;
+}
+
+.pagination-button-page:not(:last-child) {
+  margin-right: 8px;
+}

@@ -1,0 +1,22 @@
+@use "../../utilities/variables" as v;
+$header-footer-height: 110px;
+
+.favorites-page {
+  min-height: calc(100vh - #{$header-footer-height});
+}
+
+.favorites-page-wrapper {
+  padding: 25px 152px 80px;
+}
+
+.favorites-title {
+  color: v.$primary-color;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.favorites-quantity-title {
+  color: v.$secondary-color;
+  font-size: 14px;
+  font-weight: normal;
+}

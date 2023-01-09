@@ -1,0 +1,38 @@
+@use "../../utilities/variables" as v;
+
+.slider {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 104px;
+  margin-bottom: 24px;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.button-slider {
+  margin-left: 16px;
+  background-color: white;
+  border: 1px solid v.$border-button-color;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+
+  &:hover {
+    border: 1px solid v.$primary-color;
+  }
+}
+
+.products-slider-container {
+  overflow: hidden;
+}
+
+.products-slider-list {
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+}

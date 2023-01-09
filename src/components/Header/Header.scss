@@ -1,0 +1,28 @@
+@use "../../utilities/variables" as v;
+
+.logo {
+  color: v.$primary-color;
+  font-weight: 5000;
+}
+
+.navbar-item {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.nav-title {
+  color: v.$secondary-color;
+}
+
+.navbar-item.is-active {
+  color: v.$primary-color;
+  border-bottom: 2px solid v.$primary-color;
+}
+
+.cart-quantity {
+  top: -15px;
+  right: -10px;
+  color: white;
+  background-color: #eb5757;
+}
