@@ -1,17 +1,13 @@
 import { GoBack } from 'src/components/GoBack';
 import { useLocalStorage } from 'src/hooks/useLocalStorage';
 import { Product } from 'src/types/Product';
-import {
-  getProductsWithActualPrice,
-} from 'src/utils/helpers/getProductsWithActualPrice';
 import { CartCard } from './CartCard/CartCard';
 import { Checkout } from './Checkout/Checkout';
 import { EmptyCartPage } from './EmptyCartPage';
 import './CartPage.scss';
 
 export const CartPage = () => {
-  const [cartProducts, setCartProducts] = useLocalStorage('cart', '');
-  const productWithActualPrice = getProductsWithActualPrice(cartProducts);
+  const [cartProducts, setCartProducts] = useLocalStorage('cart', '[]');
 
   return (
     <>
@@ -31,7 +27,7 @@ export const CartPage = () => {
 
               <div className="cart-section__catalog cart-section__grid">
                 <div className="cart-section__grid-left">
-                  {productWithActualPrice.map((product: Product) => (
+                  {cartProducts.map((product: Product) => (
                     <div
                       key={product.id}
                       className="cart-section__card-wrapper"
