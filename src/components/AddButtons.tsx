@@ -74,7 +74,7 @@ export const AddButton: FC<Props> = ({
         )}
         onClick={() => handleAddToCart(product)}
       >
-        {cartProductsids.includes(product.id)
+        {cartProductsIds.includes(product.id)
           ? ButtonStates.Added
           : ButtonStates.NotAdded}
       </button>
