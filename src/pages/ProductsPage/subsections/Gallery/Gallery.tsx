@@ -30,7 +30,7 @@ export const Gallery: FC<Props> = ({ selectedProductDetails }) => {
               onClick={() => setSelectedImage(image)}
             >
               <img
-                src={`../${image}`}
+                src={image}
                 alt="phone"
                 className="gallery--left__img"
               />
