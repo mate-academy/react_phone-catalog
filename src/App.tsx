@@ -1,7 +1,7 @@
 import {
   Navigate, Route, Routes, useLocation,
 } from 'react-router-dom';
-import 'src/styles/main.scss';
+import 'src/styles/App.scss';
 import { Footer } from 'src/globalSections/Footer/Footer';
 import { useEffect, useRef, useState } from 'react';
 import { HomePage } from './pages/HomePage/HomePage';
