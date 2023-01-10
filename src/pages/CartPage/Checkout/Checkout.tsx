@@ -53,7 +53,7 @@ export const Checkout: FC<Props> = ({ cartProducts }) => {
 
         {isCheckout && (
           <div className="cart-section__checkout-message">
-            I need some back end here ;(
+            This feature is not implemented yet ;(
           </div>
         )}
       </div>

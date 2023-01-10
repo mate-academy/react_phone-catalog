@@ -32,8 +32,8 @@ export const ProductsPage: FC<Props> = ({
     setVisibleProducts,
   } = useContext(ProductContext);
   const [searchParams] = useSearchParams();
-  const [favourites, setFavourites] = useLocalStorage('favourites', '');
-  const [cartProducts, setCartProducts] = useLocalStorage('cart', '');
+  const [favourites, setFavourites] = useLocalStorage('favourites', '[]');
+  const [cartProducts, setCartProducts] = useLocalStorage('cart', '[]');
 
   const query = searchParams.get('query') || '';
   const sort = searchParams.get('sort') || 'age';
@@ -45,7 +45,6 @@ export const ProductsPage: FC<Props> = ({
     return sortProducts([...typeProducts], sort);
   }, [sort, perPage, page]);
 
-  // !not working solution (two useEffects)
   useEffect(() => {
     setCurrentProducts(sortedProducts);
     setVisibleProducts(sortedProducts);

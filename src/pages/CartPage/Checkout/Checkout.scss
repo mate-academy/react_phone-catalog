@@ -23,12 +23,12 @@
 
     &-message {
       position: absolute;
-      bottom: -70px;
+      bottom: -80px;
       padding: 16px;
-      font-size: 18px;
-      font-weight: 600;
-      border-radius: 3px;
-      border: 2px solid rgba($color: rgb(174, 174, 174), $alpha: 0.2);
+      font-size: 16px;
+      font-weight: 500;
+      border: 1px solid $elements-c;
+
     }
 
     &-price-wrapper {

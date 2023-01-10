@@ -25,9 +25,9 @@ export const AddButton: FC<Props> = ({
   product,
 }) => {
   const favouritesIds = favourites.map(el => el.id);
-  const cartProductsids = cartProducts.map(el => el.id);
+  const cartProductsIds = cartProducts.map(el => el.id);
 
-  const isProductAddedToCart = cartProductsids.includes(product.id);
+  const isProductAddedToCart = cartProductsIds.includes(product.id);
   const isProductAddedTofav = favouritesIds.includes(product.id);
 
   const handleAddToFav = (favProduct: Product) => {
@@ -40,7 +40,7 @@ export const AddButton: FC<Props> = ({
 
   const handleAddToCart = (cartProduct: Product) => {
     setCartProducts(prev => {
-      return cartProductsids.includes(cartProduct.id)
+      return cartProductsIds.includes(cartProduct.id)
         ? prev.filter(el => el.id !== cartProduct.id)
         : [...prev, cartProduct];
     });
