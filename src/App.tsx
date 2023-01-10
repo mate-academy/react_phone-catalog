@@ -116,71 +116,71 @@ const App = () => {
               }
             />
             <Route path="home" element={<Navigate to="/" />} />
-          </Route>
 
-          <Route path="/phones">
-            <Route
-              index
-              element={
-                isLoader
+            <Route path="phones">
+              <Route
+                index
+                element={
+                  isLoader
+                    ? <Loader />
+                    : (
+                      <PhonesPage
+                        title="Mobile Phones"
+                        pageType="phones"
+                      />
+                    )
+                }
+              />
+
+              <Route
+                path=":productId"
+                element={isDetailsLoader
                   ? <Loader />
                   : (
-                    <PhonesPage
-                      title="Mobile Phones"
-                      pageType="phones"
+                    selectedProductDetails && <PhoneDetails />
+                  )}
+              />
+            </Route>
+
+            <Route path="tablets">
+              <Route
+                index
+                element={isLoader
+                  ? <Loader />
+                  : (
+                    <TabletsPage
+                      title="Tablets"
+                      pageType="tablets"
                     />
-                  )
-              }
-            />
-
-            <Route
-              path=":productId"
-              element={isDetailsLoader
-                ? <Loader />
-                : (
-                  selectedProductDetails && <PhoneDetails />
+                  )}
+              />
+              <Route
+                path=":productId"
+                element={(
+                  <TabletsDetails />
                 )}
-            />
+              />
+            </Route>
+
+            <Route path="accessories">
+              <Route
+                index
+                element={isLoader
+                  ? <Loader />
+                  : (
+                    <AccessoriesPage
+                      title="Accessories"
+                      pageType="accessories"
+                    />
+                  )}
+              />
+              <Route path=":productId" element={<AccessoryDetails />} />
+            </Route>
+
+            <Route path="favourites" element={<FavouritesPage />} />
+
+            <Route path="cart" element={<CartPage />} />
           </Route>
-
-          <Route path="/tablets">
-            <Route
-              index
-              element={isLoader
-                ? <Loader />
-                : (
-                  <TabletsPage
-                    title="Tablets"
-                    pageType="tablets"
-                  />
-                )}
-            />
-            <Route
-              path=":productId"
-              element={(
-                <TabletsDetails />
-              )}
-            />
-          </Route>
-
-          <Route path="/accessories">
-            <Route
-              index
-              element={isLoader
-                ? <Loader />
-                : (
-                  <AccessoriesPage
-                    title="Accessories"
-                    pageType="accessories"
-                  />
-                )}
-            />
-            <Route path=":productId" element={<AccessoryDetails />} />
-          </Route>
-
-          <Route path="/favourites" element={<FavouritesPage />} />
-
-          <Route path="/cart" element={<CartPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
 
