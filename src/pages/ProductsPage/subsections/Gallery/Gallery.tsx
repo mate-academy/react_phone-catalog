@@ -41,7 +41,7 @@ export const Gallery: FC<Props> = ({ selectedProductDetails }) => {
 
       <div className="gallery__large">
         <img
-          src={`../${selectedImage}`}
+          src={selectedImage}
           alt="phone"
           className="gallery__item--large"
         />
