@@ -50,7 +50,7 @@ export const ProductCard: FC<Props> = ({
       >
         <img
           className="card__img"
-          src={`../${image}`}
+          src={image}
           alt="phone"
         />
       </Link>
