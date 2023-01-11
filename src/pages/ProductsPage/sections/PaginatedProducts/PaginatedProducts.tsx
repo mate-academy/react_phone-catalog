@@ -2,6 +2,7 @@ import { FC, useContext, useState } from 'react';
 import ReactPaginate from 'react-paginate';
 import { useSearchParams } from 'react-router-dom';
 import { ProductContext } from 'src/contexts/ProductContext';
+import { useLocalStorage } from 'src/hooks/useLocalStorage';
 import { Product } from 'src/types/Product';
 import { getSearchWith } from 'src/utils/helpers/searchHelper';
 import { NextButton } from '../../subsections/NextButton';
@@ -18,6 +19,8 @@ export const PaginatedProducts: FC<Props> = ({
   sortedProducts,
   itemsPerPage,
 }) => {
+  const [favourites, setFavourites] = useLocalStorage('favourites', '[]');
+  const [cartProducts, setCartProducts] = useLocalStorage('cart', '[]');
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query');
   const page = searchParams.get('page') || 1;
@@ -44,6 +47,10 @@ export const PaginatedProducts: FC<Props> = ({
     <>
       <ProductsCatalog
         currentItems={itemsToSet}
+        favourites={favourites}
+        setFavourites={setFavourites}
+        cartProducts={cartProducts}
+        setCartProducts={setCartProducts}
       />
       {!query && (
         <div data-cy="pagination">

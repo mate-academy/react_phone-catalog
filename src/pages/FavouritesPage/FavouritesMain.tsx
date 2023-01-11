@@ -12,7 +12,8 @@ type Props = {
 export const FavouritesMain: FC<Props> = ({
   title,
 }) => {
-  const [favourites] = useLocalStorage('favourites', '[]');
+  const [favourites, setFavourites] = useLocalStorage('favourites', '[]');
+  const [cartProducts, setCartProducts] = useLocalStorage('cart', '[]');
 
   return (
     <div className="products-section favourites-section">
@@ -29,6 +30,10 @@ export const FavouritesMain: FC<Props> = ({
           <div className="product-section__catalog-wrapper">
             <ProductsCatalog
               currentItems={favourites}
+              favourites={favourites}
+              setFavourites={setFavourites}
+              cartProducts={cartProducts}
+              setCartProducts={setCartProducts}
             />
           </div>
         )}

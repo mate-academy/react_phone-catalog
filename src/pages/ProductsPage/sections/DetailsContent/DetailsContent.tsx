@@ -20,12 +20,20 @@ type Props = {
   selectedProductGeneralInfo: Product,
   selectedCapacity: string,
   setSelectedCapacity: React.Dispatch<React.SetStateAction<string>>,
+  favourites: Product[],
+  setFavourites: React.Dispatch<React.SetStateAction<Product[]>>,
+  cartProducts: Product[],
+  setCartProducts: React.Dispatch<React.SetStateAction<Product[]>>,
 };
 
 export const DetailsContent: FC<Props> = ({
   selectedProductGeneralInfo,
   selectedCapacity,
   setSelectedCapacity,
+  favourites,
+  setFavourites,
+  cartProducts,
+  setCartProducts,
 }) => {
   const {
     products,
@@ -93,6 +101,10 @@ export const DetailsContent: FC<Props> = ({
 
                     <ShopButton
                       selectedProductGeneralInfo={selectedProductGeneralInfo}
+                      favourites={favourites}
+                      setFavourites={setFavourites}
+                      cartProducts={cartProducts}
+                      setCartProducts={setCartProducts}
                     />
 
                     <GeneralSpec

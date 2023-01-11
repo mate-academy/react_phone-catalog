@@ -1,6 +1,5 @@
 import classNames from 'classnames';
 import { FC, useEffect } from 'react';
-import { useLocalStorage } from 'src/hooks/useLocalStorage';
 import { Product } from 'src/types/Product';
 import { HeartActiveIcon } from './Icons/HeartActiveIcon';
 import { HeartIcon } from './Icons/HeartIcon';
@@ -12,14 +11,19 @@ enum ButtonStates {
 
 type Props = {
   product: Product,
+  favourites: Product[],
+  setFavourites: React.Dispatch<React.SetStateAction<Product[]>>,
+  cartProducts: Product[],
+  setCartProducts: React.Dispatch<React.SetStateAction<Product[]>>,
 };
 
 export const AddButton: FC<Props> = ({
   product,
+  favourites,
+  setFavourites,
+  cartProducts,
+  setCartProducts,
 }) => {
-  const [favourites, setFavourites] = useLocalStorage('favourites', '[]');
-  const [cartProducts, setCartProducts] = useLocalStorage('cart', '[]');
-
   const favouritesIds = favourites.map((el: Product) => el.id);
   const cartProductsIds = cartProducts.map((el: Product) => el.id);
 

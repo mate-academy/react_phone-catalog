@@ -7,10 +7,18 @@ import './ProductsCatalog.scss';
 
 type Props = {
   currentItems: Product[],
+  favourites: Product[],
+  setFavourites: React.Dispatch<React.SetStateAction<Product[]>>,
+  cartProducts: Product[],
+  setCartProducts: React.Dispatch<React.SetStateAction<Product[]>>,
 };
 
 export const ProductsCatalog: FC<Props> = ({
   currentItems,
+  favourites,
+  setFavourites,
+  cartProducts,
+  setCartProducts,
 }) => {
   return (
     <div className="product-section__catalog" data-cy="productList">
@@ -20,6 +28,10 @@ export const ProductsCatalog: FC<Props> = ({
             key={product.id}
             isSlide={false}
             product={product}
+            favourites={favourites}
+            setFavourites={setFavourites}
+            cartProducts={cartProducts}
+            setCartProducts={setCartProducts}
           />
         );
       })}

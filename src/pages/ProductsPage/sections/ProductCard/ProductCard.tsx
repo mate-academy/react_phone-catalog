@@ -10,11 +10,19 @@ import './ProductCard.scss';
 type Props = {
   isSlide: boolean,
   product: Product,
+  favourites: Product[],
+  setFavourites: React.Dispatch<React.SetStateAction<Product[]>>,
+  cartProducts: Product[],
+  setCartProducts: React.Dispatch<React.SetStateAction<Product[]>>,
 };
 
 export const ProductCard: FC<Props> = ({
   product,
   isSlide,
+  favourites,
+  setFavourites,
+  cartProducts,
+  setCartProducts,
 }) => {
   const {
     name,
@@ -79,6 +87,10 @@ export const ProductCard: FC<Props> = ({
       </div>
 
       <AddButton
+        favourites={favourites}
+        setFavourites={setFavourites}
+        cartProducts={cartProducts}
+        setCartProducts={setCartProducts}
         product={product}
       />
     </div>
