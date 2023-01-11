@@ -1,17 +1,23 @@
 @mixin onPhone {
-  @media (min-width: 450px) {
+  @media (min-width: 450px) and (max-width: 900px) {
     @content;
   }
 }
 
 @mixin onTablet {
+  @media (min-width: 900px) and (max-width: 1000px) {
+    @content;
+  }
+}
+
+@mixin fromOnTablet {
   @media (min-width: 900px) {
     @content;
   }
 }
 
 @mixin onDesktop-small {
-  @media (min-width: 1000px) {
+  @media (min-width: 1000px) and (max-width: 1250px) {
     @content;
   }
 }

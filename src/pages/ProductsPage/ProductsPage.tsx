@@ -10,7 +10,6 @@ import {
 import {
   ProductSection,
 } from 'src/pages/ProductsPage/sections/ProductSection/ProductSection';
-import { useLocalStorage } from 'src/hooks/useLocalStorage';
 import { NavHistory } from 'src/pages/ProductsPage/NavHistory/NavHistory';
 import { sortProducts } from 'src/utils/helpers/sortProducts';
 
@@ -32,8 +31,6 @@ export const ProductsPage: FC<Props> = ({
     setVisibleProducts,
   } = useContext(ProductContext);
   const [searchParams] = useSearchParams();
-  const [favourites, setFavourites] = useLocalStorage('favourites', '[]');
-  const [cartProducts, setCartProducts] = useLocalStorage('cart', '[]');
 
   const query = searchParams.get('query') || '';
   const sort = searchParams.get('sort') || 'age';
@@ -84,10 +81,6 @@ export const ProductsPage: FC<Props> = ({
             typeProducts={typeProducts}
             dropdownSortContent={dropdownSortContent}
             dropdownFilterContent={dropdownFilterContent}
-            favourites={favourites}
-            setFavourites={setFavourites}
-            cartProducts={cartProducts}
-            setCartProducts={setCartProducts}
             perPage={perPage}
             sortedProducts={sortedProducts}
           />

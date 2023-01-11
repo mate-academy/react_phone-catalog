@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import { FC, useEffect } from 'react';
+import { useLocalStorage } from 'src/hooks/useLocalStorage';
 import { Product } from 'src/types/Product';
 import { HeartActiveIcon } from './Icons/HeartActiveIcon';
 import { HeartIcon } from './Icons/HeartIcon';
@@ -10,28 +11,23 @@ enum ButtonStates {
 }
 
 type Props = {
-  favourites: Product[],
-  setFavourites: React.Dispatch<React.SetStateAction<Product[]>>,
-  cartProducts: Product[],
-  setCartProducts: React.Dispatch<React.SetStateAction<Product[]>>,
   product: Product,
 };
 
 export const AddButton: FC<Props> = ({
-  favourites,
-  setFavourites,
-  cartProducts,
-  setCartProducts,
   product,
 }) => {
-  const favouritesIds = favourites.map(el => el.id);
-  const cartProductsIds = cartProducts.map(el => el.id);
+  const [favourites, setFavourites] = useLocalStorage('favourites', '[]');
+  const [cartProducts, setCartProducts] = useLocalStorage('cart', '[]');
+
+  const favouritesIds = favourites.map((el: Product) => el.id);
+  const cartProductsIds = cartProducts.map((el: Product) => el.id);
 
   const isProductAddedToCart = cartProductsIds.includes(product.id);
   const isProductAddedTofav = favouritesIds.includes(product.id);
 
   const handleAddToFav = (favProduct: Product) => {
-    setFavourites(prev => {
+    setFavourites((prev: Product[]) => {
       return favouritesIds.includes(favProduct.id)
         ? prev.filter(el => el.id !== favProduct.id)
         : [...prev, favProduct];
@@ -39,7 +35,7 @@ export const AddButton: FC<Props> = ({
   };
 
   const handleAddToCart = (cartProduct: Product) => {
-    setCartProducts(prev => {
+    setCartProducts((prev: Product[]) => {
       return cartProductsIds.includes(cartProduct.id)
         ? prev.filter(el => el.id !== cartProduct.id)
         : [...prev, cartProduct];

@@ -10,7 +10,7 @@
     grid-gap: 32px 0;
   }
 
-  @include onTablet {
+  @include fromOnTablet {
     grid-template-columns: 6fr 4fr;
     grid-template-rows: 1fr;
     grid-gap: 0 75px;

@@ -16,5 +16,5 @@ export const getHotPriceProducts = (products: Product[]): Product[] => {
     return prodcut2.discountValue - prodcut1.discountValue;
   });
 
-  return sortedProducts.slice(0, 8);
+  return sortedProducts.slice(0, 10);
 };

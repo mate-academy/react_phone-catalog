@@ -11,19 +11,11 @@ import './PaginatedProducts.scss';
 
 type Props = {
   sortedProducts: Product[],
-  favourites: Product[],
-  setFavourites:React.Dispatch<React.SetStateAction<Product[]>>,
-  cartProducts: Product[],
-  setCartProducts: React.Dispatch<React.SetStateAction<Product[]>>,
   itemsPerPage: number,
 };
 
 export const PaginatedProducts: FC<Props> = ({
   sortedProducts,
-  favourites,
-  setFavourites,
-  cartProducts,
-  setCartProducts,
   itemsPerPage,
 }) => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -52,10 +44,6 @@ export const PaginatedProducts: FC<Props> = ({
     <>
       <ProductsCatalog
         currentItems={itemsToSet}
-        favourites={favourites}
-        setFavourites={setFavourites}
-        cartProducts={cartProducts}
-        setCartProducts={setCartProducts}
       />
       {!query && (
         <div data-cy="pagination">

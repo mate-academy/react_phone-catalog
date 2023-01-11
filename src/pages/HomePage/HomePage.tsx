@@ -2,10 +2,12 @@ import { useContext, useEffect, useState } from 'react';
 import { getHotPriceProducts } from 'src/api/getHotPriceProducts';
 import { Product } from 'src/types/Product';
 import { getNewModels } from 'src/api/getNewModels';
-import { SliderSection } from 'src/pages/HomePage/sections/SliderSection';
 import { ProductContext } from 'src/contexts/ProductContext';
 import { SliderComponent } from './sections/sliderComponent/SliderComponent';
 import { ShopByCategory } from './sections/ShopByCategory/ShopByCategory';
+import {
+  SwiperSlider,
+} from '../../features/SwiperSlider/SwiperSlider';
 
 export const HomePage = () => {
   const [hotPriceProducts, setHotPriceProducts] = useState<Product[]>([]);
@@ -25,7 +27,7 @@ export const HomePage = () => {
       <div className="container">
         {!!hotPriceProducts.length
               && (
-                <SliderSection
+                <SwiperSlider
                   sectionTitle="Hot prices"
                   renderedProducts={hotPriceProducts}
                 />
@@ -34,7 +36,7 @@ export const HomePage = () => {
         <ShopByCategory products={products} />
 
         {!!newModels.length && (
-          <SliderSection
+          <SwiperSlider
             sectionTitle="Brand new models"
             renderedProducts={newModels}
           />

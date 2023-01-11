@@ -5,5 +5,5 @@ export const getNewModels = (products: Product[]) => {
     return product2.year - product1.year;
   });
 
-  return sortedProductsByAge.slice(0, 8);
+  return sortedProductsByAge.slice(0, 12);
 };

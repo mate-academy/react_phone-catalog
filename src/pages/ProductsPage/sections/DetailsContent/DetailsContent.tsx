@@ -4,7 +4,6 @@ import { Product } from 'src/types/Product';
 import { GoBack } from 'src/components/GoBack';
 import { getMultupleRandom } from 'src/utils/helpers/getMultupleRandom';
 import { PhoneNotFound } from 'src/features/PhoneNotFound/PhoneNotFound';
-import { SliderSection } from '../../../HomePage/sections/SliderSection';
 import { ShopButton } from '../../subsections/ShopButton';
 import { Capacity } from '../../subsections/Capacity/Capacity';
 import { Colors } from '../../subsections/Colors/Colors';
@@ -15,6 +14,7 @@ import { Prices } from '../../subsections/Prices';
 import { TechSpecs } from '../../subsections/TechSpecs';
 import { Title } from '../../subsections/Title';
 import './DetailsContent.scss';
+import { SwiperSlider } from '../../../../features/SwiperSlider/SwiperSlider';
 
 type Props = {
   selectedProductGeneralInfo: Product,
@@ -117,7 +117,7 @@ export const DetailsContent: FC<Props> = ({
               </div>
             )}
 
-            <SliderSection
+            <SwiperSlider
               sectionTitle="You may also like"
               renderedProducts={randomSuggestedProducts}
             />

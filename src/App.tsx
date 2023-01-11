@@ -101,6 +101,7 @@ const App = () => {
     }}
     >
       <div className="App">
+
         <Header
           scrollToRef={scrollToRef}
         />

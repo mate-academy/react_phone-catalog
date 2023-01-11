@@ -51,7 +51,7 @@
       margin-left: 16px;
     }
 
-    @include onTablet {
+    @include fromOnTablet {
       margin-left: 43px;
     }
 
@@ -74,7 +74,7 @@
       margin-left: 16px;
     }
 
-    @include onTablet {
+    @include fromOnTablet {
       margin-left: 20px;
       max-width: 150px;
     }

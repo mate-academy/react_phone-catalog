@@ -12,10 +12,6 @@ type Props = {
   typeProducts: Product[],
   dropdownSortContent: string[],
   dropdownFilterContent: string[],
-  favourites: Product[],
-  setFavourites: React.Dispatch<React.SetStateAction<Product[]>>,
-  cartProducts: Product[],
-  setCartProducts: React.Dispatch<React.SetStateAction<Product[]>>,
   perPage: string,
   sortedProducts: Product[],
 };
@@ -25,10 +21,6 @@ export const ProductSection: FC<Props> = ({
   typeProducts,
   dropdownSortContent,
   dropdownFilterContent,
-  favourites,
-  setFavourites,
-  cartProducts,
-  setCartProducts,
   perPage,
   sortedProducts,
 }) => {
@@ -75,10 +67,6 @@ export const ProductSection: FC<Props> = ({
           <div className="product-section__catalog-wrapper">
             <PaginatedProducts
               sortedProducts={sortedProducts}
-              favourites={favourites}
-              setFavourites={setFavourites}
-              cartProducts={cartProducts}
-              setCartProducts={setCartProducts}
               itemsPerPage={+perPageInNumber}
             />
           </div>
