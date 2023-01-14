@@ -1,8 +1,10 @@
-import './App.scss';
+import React from 'react';
+import './styles/App.scss';
+import { Header } from './components/Header';
 
-const App = () => (
+const App: React.FC = () => (
   <div className="App">
-    <h1>React Phone Catalog</h1>
+    <Header />
   </div>
 );
 
