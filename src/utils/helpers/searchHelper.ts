@@ -13,7 +13,7 @@ export const getSearchWith = (
       currentSearchParams.delete(key);
     } else {
       currentSearchParams.set(key, value);
-  }
+    }
   });
 
   return currentSearchParams.toString();
