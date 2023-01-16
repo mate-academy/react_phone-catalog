@@ -1,4 +1,6 @@
-import { FC, useContext, useState } from 'react';
+import {
+  FC, useContext, useEffect, useState,
+} from 'react';
 import ReactPaginate from 'react-paginate';
 import { useSearchParams } from 'react-router-dom';
 import { ProductContext } from 'src/contexts/ProductContext';
@@ -24,21 +26,33 @@ export const PaginatedProducts: FC<Props> = ({
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query');
   const page = searchParams.get('page') || 1;
-  const { visibleProducts } = useContext(ProductContext);
+  const perPage = searchParams.get('perPage');
   const [itemOffset, setItemOffset] = useState(0);
+
+  const { visibleProducts } = useContext(ProductContext);
 
   const endOffset = itemOffset + itemsPerPage;
   const currentItems = sortedProducts.slice(itemOffset, endOffset);
   const pageCount = Math.ceil(sortedProducts.length / itemsPerPage);
 
+  useEffect(() => {
+    if (perPage) {
+      if (perPage === 'all') {
+        setItemOffset(0);
+      } else {
+        setItemOffset(+perPage);
+      }
+    }
+  }, [perPage]);
+
   const handlePageClick = (event: { selected: number; }) => {
     const newOffset = (event.selected * itemsPerPage) % sortedProducts.length;
-
-    setItemOffset(newOffset);
 
     setSearchParams(
       getSearchWith(searchParams, { page: `${+event.selected + 1}` || null }),
     );
+
+    setItemOffset(newOffset);
   };
 
   const itemsToSet = query ? visibleProducts : currentItems;

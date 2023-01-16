@@ -87,11 +87,10 @@ export const DetailsContent: FC<Props> = ({
                       </div>
 
                       <Capacity
-                        capacityAvailable={
-                          selectedProductDetails.capacityAvailable
-                        }
                         selectedCapacity={selectedCapacity}
                         setSelectedCapacity={setSelectedCapacity}
+                        selectedProductGeneralInfo={selectedProductGeneralInfo}
+                        selectedProductDetails={selectedProductDetails}
                       />
                     </div>
 
