@@ -1,0 +1,32 @@
+.productDetails {
+  &__image {
+    border: 1px solid #c4c4c4;
+    background-color: transparent;
+
+    &:focus {
+      border: 1px solid black;
+    }
+  }
+
+  &__button {
+    border-radius: 50px;
+    height: 16px;
+    width: 16px;
+    @include toTablet {
+      height: 20px;
+      width: 20px;
+    }
+    @include toDesktop {
+      height: 30px;
+      width: 30px;
+    }
+  }
+}
+
+.budge {
+  position: absolute;
+}
+
+.rel {
+  position: relative;
+}
