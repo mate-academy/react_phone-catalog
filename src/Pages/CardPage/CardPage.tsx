@@ -55,7 +55,7 @@ export const CardPage = () => {
                         </span>
                       </button>
                       <figure>
-                        <img className="image imageSmall" src={`../../${cartItem.image}`} alt="Img" />
+                        <img className="image imageSmall" src={cartItem.image} alt="Img" />
                       </figure>
                       <p>{cartItem.name}</p>
                     </div>
