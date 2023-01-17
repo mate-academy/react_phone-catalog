@@ -6,7 +6,7 @@ import { Footer } from './components/Footer';
 import { ProductPage } from './Pages/ProductPage';
 import { MainNav } from './components/MainNav';
 import { ProductDetails } from './components/ProductDetails';
-import { CartPage } from './Pages/CartPage';
+import { CardPage } from './Pages/CardPage';
 import { Favourites } from './Pages/Favourites';
 
 export const App = () => {
@@ -31,7 +31,7 @@ export const App = () => {
             <Route path=":productId" element={<ProductDetails />} />
           </Route>
           <Route path="favourites" element={<Favourites />} />
-          <Route path="cart" element={<CartPage />} />
+          <Route path="cart" element={<CardPage />} />
         </Routes>
         <Footer />
       </div>

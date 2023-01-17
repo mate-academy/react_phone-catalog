@@ -13,19 +13,23 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   return (
     <div className="card is-shadowless productCard pt-5">
       <Link
-        to={`/${product.category}s/${product.id}`}
+        to={`/${product.category}/${product.id}`}
         onClick={srollToTop}
       >
         <div className="card-image is-flex is-justify-content-center">
           <figure>
-            <img className="image productCard__image" src={`../_new/${product.image}`} alt="CardImg" />
+            <img
+              className="image productCard__image"
+              src={`../../${product.image}`}
+              alt="CardImg"
+            />
           </figure>
         </div>
       </Link>
       <div className="card-content">
         <Link
           className="has-text-dark"
-          to={`/${product.category}s/${product.id}`}
+          to={`/${product.category}/${product.id}`}
           onClick={srollToTop}
         >
           <div className="productCard__title mb-2">

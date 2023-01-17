@@ -22,6 +22,9 @@ export const ProductDetails: React.FC = () => {
 
   const fetchProduct = async () => {
     const res = await getProduct(productId);
+    // eslint-disable-next-line no-console
+
+    // console.log(res);
 
     setProduct(res);
   };

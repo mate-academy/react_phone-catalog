@@ -70,7 +70,7 @@ export const ProductPage: React.FC<Props> = ({ category }) => {
         </div>
       </div>
 
-      {products.length !== 0
+      {products.length
         ? (
           <div className="section">
             <div className="container">
