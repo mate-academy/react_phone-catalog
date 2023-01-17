@@ -1,0 +1,21 @@
+.productCard {
+  border: 1px solid #e2e6e9;
+
+  &__image {
+    height: 208px;
+    width: 208px;
+    object-fit: contain;
+    transition: transform 0.2s;
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  &__title {
+    height: 42px;
+  }
+
+  &__old-price {
+    text-decoration-line: line-through;
+  }
+}
