@@ -33,6 +33,11 @@
     margin-top: 24px;
     font-weight: 500;
     font-size: 14px;
+    transition: transform $transition-btns-duration ease-in-out;
+
+    &:hover {
+      transform: scale(1.01);
+    }
   }
 
   &__price {

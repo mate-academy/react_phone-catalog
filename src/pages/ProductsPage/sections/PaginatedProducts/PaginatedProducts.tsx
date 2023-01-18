@@ -39,8 +39,6 @@ export const PaginatedProducts: FC<Props> = ({
     if (perPage) {
       if (perPage === 'all') {
         setItemOffset(0);
-      } else {
-        setItemOffset(+perPage);
       }
     }
   }, [perPage]);
