@@ -37,9 +37,7 @@ export const PaginatedProducts: FC<Props> = ({
 
   useEffect(() => {
     if (perPage) {
-      if (perPage === 'all') {
-        setItemOffset(0);
-      }
+      setItemOffset(0);
     }
   }, [perPage]);
 
