@@ -11,7 +11,11 @@
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   grid-gap: 16px;
 
-  @mixin onDesktop-small {
+  @include onPhone {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include onDesktop-small {
     grid-template-columns: repeat(3, 1fr);
   }
 }
