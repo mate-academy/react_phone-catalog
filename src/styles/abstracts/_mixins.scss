@@ -1,5 +1,11 @@
+@mixin onPhone-small {
+  @media (min-width: 250px) and (max-width: 600px) {
+    @content;
+  }
+}
+
 @mixin onPhone {
-  @media (min-width: 450px) and (max-width: 900px) {
+  @media (min-width: 600px) and (max-width: 900px) {
     @content;
   }
 }

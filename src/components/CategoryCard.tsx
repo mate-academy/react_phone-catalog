@@ -49,7 +49,11 @@ export const CategoryCard: FC<Props> = ({ category }) => {
       </Link>
 
       <div className="shop-by-category__desc">
-        <h3>{name}</h3>
+        <Link
+          to={`/${fromNameToLink[lower(firstLinkName)]}`}
+        >
+          <h3>{name}</h3>
+        </Link>
       </div>
 
       <div className="shop-by-category__models-quantity">

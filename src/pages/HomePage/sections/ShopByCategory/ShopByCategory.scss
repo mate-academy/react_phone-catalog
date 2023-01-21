@@ -12,12 +12,33 @@
     margin-top: 24px;
     display: flex;
     justify-content: space-between;
+    height: 368px;
+
+    @include onPhone {
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      height: min-content;
+    }
+
+    @include onDesktop-small {
+      height: 368px;
+    }
+
+    @include onDesktop {
+      height: min-content;
+    }
+
   }
 
   &__card {
     position: relative;
     width: 368px;
     height: min-content;
+
+    @include onPhone {
+      max-width: 250px;
+    }
   }
 
   &__overlay {
@@ -26,6 +47,7 @@
     height: 100%;
     background: rgba($primary-c, 0);
     transition: 300ms ease-in-out;
+
 
     &::before {
       content: "\f0fe";
@@ -53,6 +75,14 @@
     min-width: 100%;
     min-height: 100%;
     overflow: hidden;
+
+    @include onPhone {
+      max-height: 250px;
+    }
+
+    @include fromOnTablet {
+      max-height: 100%;
+    }
 
     &__image {
       position: relative;

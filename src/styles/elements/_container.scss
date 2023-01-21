@@ -5,8 +5,13 @@
   flex: 1 0 auto;
   margin: 0 auto;
 
+  @include onPhone-small {
+    margin: 0 auto;
+    width: 90vw;
+  }
+
   @include onPhone {
-    width: $container-phone-width;
+    max-width: $container-phone-width;
   }
 
   @include onTablet {
