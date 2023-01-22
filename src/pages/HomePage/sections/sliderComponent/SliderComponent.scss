@@ -5,6 +5,7 @@ $arrow-distance: 45px;
 
 .slider-container {
   margin: 40px auto 0;
+
   @include onPhone {
     width: $container-phone-width;
   }
@@ -42,6 +43,10 @@ $arrow-distance: 45px;
     top: 50%;
     transform: translateY(-50%);
     cursor: pointer;
+
+    @include onPhone {
+      display: none;
+    }
   }
 
   &__arrow {
@@ -58,6 +63,27 @@ $arrow-distance: 45px;
 
     &--prev {
       left: -45px;
+
+      @include onPhone {
+        left: 15px;
+        z-index: 4;
+        color: red;
+      }
+    }
+
+    @include onPhone {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: white;
+      height: 20px;
+      width: 20px;
+      border-radius: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      scale: 2;
+      border: none;
+      right: 15px;
     }
   }
 }

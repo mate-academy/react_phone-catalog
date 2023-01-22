@@ -19,7 +19,7 @@ export const Footer: FC<Props> = ({ scrollToRef }) => {
   };
 
   return (
-    <div className="footer-container">
+    <div className="footer-container container">
       <footer className="footer">
         <div className="footer__logo">
           <Link

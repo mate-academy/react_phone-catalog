@@ -5,25 +5,25 @@
 }
 
 @mixin onPhone {
-  @media (min-width: 600px) and (max-width: 900px) {
+  @media (min-width: 250px) and (max-width: 876px) {
     @content;
   }
 }
 
 @mixin onTablet {
-  @media (min-width: 900px) and (max-width: 1000px) {
+  @media (min-width: 876px) and (max-width: 1024px) {
     @content;
   }
 }
 
 @mixin fromOnTablet {
-  @media (min-width: 900px) {
+  @media (min-width: 876px) {
     @content;
   }
 }
 
 @mixin onDesktop-small {
-  @media (min-width: 1000px) and (max-width: 1250px) {
+  @media (min-width: 1024px) and (max-width: 1250px) {
     @content;
   }
 }

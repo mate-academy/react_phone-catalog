@@ -28,19 +28,19 @@ export const SwiperSlider: FC<Props> = ({
     simulateTouch: false,
     modules: [Navigation],
     breakpoints: {
-      450: {
+      350: {
         slidesPerView: 2,
         slidesPerGroup: 2,
         spaceBetween: 21,
         simulateTouch: false,
       },
-      900: {
+      876: {
         slidesPerView: 3,
         slidesPerGroup: 3,
         spaceBetween: 18,
         simulateTouch: false,
       },
-      1000: {
+      1024: {
         slidesPerView: 3,
         slidesPerGroup: 3,
         simulateTouch: false,

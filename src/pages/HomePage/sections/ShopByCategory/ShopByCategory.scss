@@ -22,14 +22,12 @@
       height: min-content;
     }
 
-    @include onTablet {
+    @include fromOnTablet {
+      flex-direction: row;
       height: min-content;
-      gap: 24px;
+      gap: 16px;
+      align-items: center;
       justify-content: space-between;
-
-      & > * {
-        flex-basis: 33.3%;
-      }
     }
 
     @include onDesktop-small {
@@ -55,6 +53,7 @@
     @include onPhone {
       max-width: 250px;
     }
+
   }
 
   &__overlay {
@@ -91,13 +90,10 @@
     min-height: 100%;
     overflow: hidden;
 
-    @include onPhone {
-      max-height: 350px;
-      min-width: 350px;
-    }
-
     @include onTablet {
-      max-height: 280px;
+      min-width: 100%;
+      max-width: 250px;
+      max-height: 270px;
     }
 
     @include onDesktop-small {

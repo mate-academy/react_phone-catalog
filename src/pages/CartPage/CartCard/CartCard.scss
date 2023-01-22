@@ -46,6 +46,10 @@
   justify-content: space-between;
   align-self: flex-start;
 
+  @include onPhone {
+    padding: 25px 20px 25px;
+  }
+
   &__img {
     @include onPhone {
       margin-left: 16px;
@@ -70,7 +74,7 @@
     line-height: 21px;
 
     @include onPhone {
-      max-width: 125px;
+      max-width: 250px;
       margin-left: 16px;
     }
 
@@ -88,6 +92,10 @@
   &__price {
     font-weight: 700;
     font-size: 22px;
+
+    @include onTablet {
+      font-size: 18px;
+    }
   }
 }
 
@@ -95,6 +103,10 @@
   display: flex;
   gap: 13px;
   align-items: center;
+
+  @include onPhone {
+    scale: 0.8
+  }
 }
 
 .cart-card__counter-left-icon {

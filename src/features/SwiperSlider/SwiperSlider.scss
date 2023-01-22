@@ -13,9 +13,9 @@
   display: flex;
   justify-content: space-between;
 
-  @media (min-width: 350px) and (max-width: 900px) {
+  @media (min-width: 350px) and (max-width: 876px) {
     .card {
-      max-width: 265px;
+      max-width: 290px;
     }
   }
 
