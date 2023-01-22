@@ -1,0 +1,21 @@
+@import "src/styles/abstracts//variables";
+@import "src/styles/abstracts//mixins";
+
+.product-section__catalog-wrapper {
+  margin-top: 24px;
+}
+
+.product-section__catalog {
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-gap: 16px;
+
+  @include onPhone {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include onDesktop-small {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

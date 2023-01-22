@@ -1,0 +1,15 @@
+export interface Product {
+  id: string,
+  itemId: string,
+  category: string,
+  image: string,
+  year: number,
+  name: string,
+  price: number,
+  fullPrice: number,
+  discount: number,
+  screen: string,
+  capacity: string,
+  ram: string,
+  count: number,
+}

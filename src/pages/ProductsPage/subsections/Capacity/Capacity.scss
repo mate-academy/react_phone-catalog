@@ -1,0 +1,28 @@
+@import "src/styles/abstracts/variables";
+
+.options-wrapper {
+  display: flex;
+  margin-top: 9px;
+  gap: 10px;
+
+  &__capacity {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 32px;
+    padding: 0 8px;
+    font-weight: 500;
+    font-size: 14px;
+    background: $white-c;
+    border: 1px solid $icons-c;
+    transition-property: background-color, color;
+    transition-duration: 0.2s;
+    transition-timing-function: ease;
+    cursor: pointer;
+
+    &--selected {
+      background-color: $primary-c;
+      color: $white-c;
+    }
+  }
+}

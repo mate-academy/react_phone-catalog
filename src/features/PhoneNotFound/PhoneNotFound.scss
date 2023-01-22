@@ -1,0 +1,14 @@
+.phone-not-found-wrapper {
+  height: 100%;
+  display: grid;
+  place-items: center;
+}
+
+.phone-not-found {
+  font-weight: 600;
+  text-align: center;
+
+  &__message {
+    margin-top: 16px;
+  }
+}

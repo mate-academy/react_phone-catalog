@@ -1,0 +1,118 @@
+@import "src/styles/abstracts/variables";
+@import "src/styles/abstracts/mixins";
+
+.dropdown-section {
+  &__title {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: $secondary-c;
+  }
+
+  &__name {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    color: $primary-c;
+  }
+
+  &__content {
+    position: absolute;
+    top: 100%;
+    width: 176px;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: max-height $transition-btns-duration ease-in-out;
+  }
+
+  &__icon {
+    transform: rotate(90deg);
+    transition: transform $transition-btns-duration ease-in-out;
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    margin-top: 4px;
+    padding: 0 12px;
+    border: 1px solid $icons-c;
+    cursor: pointer;
+    transition: border-color 0.1s ease-in-out;
+
+    &:hover {
+      border: 1px solid $secondary-c;
+    }
+  }
+
+  &__dropdown {
+    position: relative;
+
+    &--active {
+      & .dropdown-section__content {
+        max-height: 500px;
+        padding-top: 4px;
+        opacity: 1;
+        pointer-events: all;
+        z-index: 1;
+      }
+
+      .dropdown-section__button {
+        border: 1px solid $secondary-c;
+      }
+
+      .dropdown-section__icon {
+        transform: rotate(-90deg);
+      }
+    }
+  }
+
+  &__trigger {
+    height: 40px;
+    width: 176px;
+  }
+
+  &__list {
+    background: $white-c;
+    border: 1px solid $elements-c;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+  }
+
+  &__item {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $secondary-c;
+    background: $white-c;
+    padding: 6px 12px;
+    cursor: pointer;
+    transition: color 0.1s ease-in-out;
+
+    &:hover {
+      color: $primary-c;
+    }
+  }
+
+  &__item:first-child {
+    padding-top: 14px;
+  }
+
+  &__item:last-child {
+    padding-bottom: 14px;
+  }
+
+  &__item.disabled {
+    text-decoration: line-through;
+    opacity: 0.3;
+    pointer-events: none;
+    cursor: none;
+  }
+}
+
+.dropdown-smaller-w {
+  width: 128px;
+}

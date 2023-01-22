@@ -1,0 +1,86 @@
+@import "src/styles/abstracts/variables";
+@import "src/styles/abstracts/mixins";
+
+.footer-container {
+  width: 100%;
+  box-shadow: 0 -1px 0 #e2e6e9;
+  margin-top: 80px;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.footer {
+  flex-shrink: 0;
+  margin: 0 auto;
+
+  @include onPhone {
+    width: $container-phone-width;
+  }
+
+  @include onTablet {
+    width: $container-tablet-width;
+  }
+
+  @include onDesktop-small {
+    width: $container-desktop-small-width;
+  }
+
+  @include onDesktop {
+    width: $container-desktop-width;
+  }
+
+  min-height: 96px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__links {
+    display: flex;
+    min-width: 250px;
+    flex: 0 1 auto;
+    max-width: 300px;
+    justify-content: space-between;
+  }
+
+  &__link {
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 11px;
+    color: $secondary-c;
+
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  &__back-to-top {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    cursor: pointer;
+
+    &__button {
+      width: 32px;
+      height: 32px;
+      display: grid;
+      place-items: center;
+      border: 1px solid $icons-c;
+      transform: rotate(90deg);
+      cursor: pointer;
+    }
+
+    &__text {
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 15px;
+      color: $secondary-c;
+    }
+  }
+
+  &__logo {
+    cursor: pointer;
+
+    & > div {
+      padding: 12px;
+    }
+  }
+}

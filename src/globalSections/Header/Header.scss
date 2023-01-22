@@ -1,0 +1,144 @@
+@import "src/styles/abstracts/variables";
+@import "src/styles/abstracts/mixins";
+
+.header {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: space-between;
+  height: $header-logo-width;
+  box-shadow: 0px 1px 0px $elements-c;
+
+  @media (min-width: 300px) and (max-width: 700px) {
+    min-width: 699px;
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    height: 100%;
+
+    &-left {
+      margin-left: 24px;
+      min-width: 450px;
+      justify-content: space-between;
+    }
+  }
+
+  &__search-control {
+    position: relative;
+    width: 327px;
+
+    @media (min-width: 250px) and (max-width: 970px) {
+      max-width: 250px;
+    }
+  }
+
+  &__search {
+    height: $header-logo-width;
+    width: 80%;
+    outline: none;
+    border: 0;
+    padding-left: 24px;
+    box-shadow: -1px 0px 0px $elements-c;
+
+    &__icon {
+      position: absolute;
+      right: 30px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+    }
+  }
+
+  &__clear__icon {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+  }
+
+  &__list {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 350px;
+    height: 100%;
+  }
+
+  &__link {
+    position: relative;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding-block: 25px;
+    color: $secondary-c;
+  }
+
+  &__favourites {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    min-width: $header-logo-width;
+    box-shadow: -1px 0px 0px $elements-c;
+
+    &__link {
+      align-self: center;
+      position: relative;
+    }
+  }
+
+  &__cart {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    height: 100%;
+    min-width: $header-logo-width;
+    box-shadow: -1px 0px 0px $elements-c;
+
+    &__link {
+      position: relative;
+      align-self: center;
+    }
+  }
+}
+
+// class in svg
+.icon-clear {
+  position: relative;
+  bottom: 2px;
+  left: 2px;
+  scale: 1.15;
+}
+
+// active links
+.is-header-link-active {
+  color: $primary-c;
+  transition: color, 100ms, ease-in;
+}
+
+.is-header-link-active::before {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  width: 100%;
+  height: 3px;
+  background-color: $primary-c;
+}
+
+.link-counter {
+  position: absolute;
+  top: -8px;
+  right: -12px;
+  width: 19px;
+  height: 19px;
+  color: $white-c;
+  background-color: $red-c;
+  border: 2px solid $white-c;
+  -moz-border-radius: 50%;
+  font-size: 10px;
+  border-radius: 50%;
+  line-height: 16px;
+  text-align: center;
+}

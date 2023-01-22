@@ -1,0 +1,10 @@
+@import "./base/reset";
+@import "./base/typography";
+@import "./elements/elements";
+@import "./elements/container";
+
+.App {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}

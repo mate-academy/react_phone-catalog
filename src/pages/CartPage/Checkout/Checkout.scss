@@ -1,0 +1,70 @@
+@import "src/styles/abstracts/variables";
+
+.cart-section {
+  margin-top: 16px;
+
+  &__go-back {
+    margin-top: 41px;
+  }
+
+  &__card-wrapper {
+    border: 1px solid $elements-c;
+  }
+
+  &__checkout {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    &-wrapper {
+      border: 1px solid $elements-c;
+    }
+
+    &-message {
+      position: absolute;
+      bottom: -80px;
+      padding: 16px;
+      font-size: 16px;
+      font-weight: 500;
+      border: 1px solid $elements-c;
+
+    }
+
+    &-price-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 24px 24px 0;
+    }
+
+    &-total {
+      margin-top: 6px;
+      padding-bottom: 24px;
+      font-weight: 500;
+      width: 100%;
+      font-size: 14px;
+      text-align: center;
+      color: $secondary-c;
+      border-bottom: 1px solid $elements-c;
+    }
+  }
+
+  &__checkout-price {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 41px;
+  }
+
+  &__checkout-button-wrapper {
+    padding: 24px;
+  }
+
+  &__checkout-button {
+    width: 100%;
+    padding: 14px 0;
+    color: $white-c;
+    background: $primary-c;
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,66 @@
+@import "src/styles/abstracts/variables";
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  display: none;
+}
+
+.swiper {
+  overflow: hidden;
+}
+
+.swiper-wrapper {
+  display: flex;
+  justify-content: space-between;
+
+  @media (min-width: 350px) and (max-width: 876px) {
+    .card {
+      max-width: 290px;
+    }
+  }
+
+  @media (min-width: 1000px) and (max-width: 1250px) {
+    .card {
+      min-width: 306px;
+    }
+  }
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  position: absolute;
+  top: 9px;
+  right: 0;
+  width: 32px;
+  height: 32px;
+  background-repeat: no-repeat;
+  background-size: 6px;
+  background-position: center;
+  border: 1px solid $icons-c;
+  cursor: pointer;
+}
+
+// next
+.swiper-button-next {
+  background-image: url("../../components/Icons/nextArrow.svg");
+}
+
+.swiper-button-next.swiper-button-disabled {
+  background-image: url("../../components/Icons/nextArrowDisabled.svg");
+}
+
+// prev
+.swiper-button-prev {
+  right: 48px;
+  background-image: url("../../components/Icons/nextArrow.svg");
+  transform: rotate(180deg);
+}
+
+.swiper-button-prev.swiper-button-disabled {
+  background-image: url("../../components/Icons/nextArrowDisabled.svg");
+  transform: rotate(180deg);
+}
+
+.swiper-button-disabled {
+  border: 1px solid $elements-c;
+}

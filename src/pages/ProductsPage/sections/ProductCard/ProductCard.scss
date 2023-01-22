@@ -1,0 +1,149 @@
+@import "src/styles/abstracts/variables";
+
+.card {
+  min-width: 255px;
+  max-width: 272px;
+  border: 1px solid $elements-c;
+  padding: 32px 32px 24px;
+
+  &__img-wrapper {
+    cursor: pointer;
+  }
+
+  &__img {
+    margin: 0 auto;
+    height: 208px;
+    width: 208px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  &__top-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 120px;
+  }
+
+  &__desc {
+    margin-top: 24px;
+    font-weight: 500;
+    font-size: 14px;
+    transition: transform $transition-btns-duration ease-in-out;
+
+    &:hover {
+      transform: scale(1.01);
+    }
+  }
+
+  &__price {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-top: 8px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid $elements-c;
+
+    &-actual {
+      font-weight: 700;
+      font-size: 22px;
+      line-height: 140%;
+    }
+
+    &-previous {
+      font-weight: 500;
+      font-size: 22px;
+      color: $secondary-c;
+      line-height: 28px;
+      text-decoration: line-through;
+    }
+  }
+
+  &__features {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__feature {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+
+    &-key {
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 15px;
+      color: $secondary-c;
+    }
+
+    &-value {
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 15px;
+      color: $primary-c;
+    }
+  }
+
+  &__catalog {
+    margin-top: 24px;
+  }
+}
+
+.card__buttons {
+  margin-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.card__button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.card__button--add-to-cart {
+  width: 176px;
+  flex-grow: 1;
+  height: 40px;
+  padding: 10px 0;
+  color: $white-c;
+  background: $primary-c;
+  transition: box-shadow 250ms ease-in-out;
+
+  &:hover {
+    box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+  }
+
+  &--selected {
+    background: $white-c;
+    color: $green-c;
+    border: 1px solid #e2e6e9;
+  }
+}
+
+.card__button--add-to-fav {
+  height: 40px;
+  width: 40px;
+  border: 1px solid $icons-c;
+  transition: border-color $transition-btns-duration ease-in-out;
+
+  & > .icon-heart {
+    transition: scale $transition-btns-duration ease-in-out;
+  }
+
+  &:hover {
+    border-color: $primary-c;
+  }
+
+  &:hover .icon-heart {
+    scale: 1.1;
+  }
+}

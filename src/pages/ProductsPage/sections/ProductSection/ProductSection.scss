@@ -1,0 +1,31 @@
+@import "src/styles/abstracts/variables";
+
+.products-section {
+  margin-top: 40px;
+  height: 80%;
+
+  &__selects {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: $primary-c;
+  }
+
+  &__product-count {
+    font-weight: 500;
+    margin-top: 8px;
+    font-size: 14px;
+    line-height: 21px;
+    color: $secondary-c;
+  }
+
+  &__filters {
+    margin-top: 40px;
+  }
+}
