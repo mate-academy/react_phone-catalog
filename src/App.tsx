@@ -27,7 +27,6 @@ const App = () => {
 
           <Route path="bag" element={<BagPage />} />
           <Route path="favorite" element={<FavPage />} />
-
           <Route path="*" element={<EmptyPage />} />
         </Routes>
         <Footer />
