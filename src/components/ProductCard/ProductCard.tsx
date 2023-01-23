@@ -11,7 +11,6 @@ type Props = {
 
 export const ProductCard: React.FC<Props> = ({ phone, position }) => {
   const {
-    category,
     phoneId,
     name,
     fullPrice,

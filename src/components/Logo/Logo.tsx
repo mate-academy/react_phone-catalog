@@ -5,7 +5,7 @@ export const Logo: React.FC = () => {
   return (
     <Link to="/">
       <img
-        src="/_new/UI_KIT.svg"
+        src="img/UI_KIT.svg"
         alt="logo"
         className="logo"
       />

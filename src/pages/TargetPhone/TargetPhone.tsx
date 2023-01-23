@@ -51,8 +51,6 @@ export const TargetPhone: React.FC = () => {
   const capacity = targetPhone?.capacity.toLowerCase();
   const color = targetPhone?.color;
 
-  console.log(targetImg);
-
   const getColor = (colorPhone: string) => {
     switch (colorPhone) {
       case 'spacegray':

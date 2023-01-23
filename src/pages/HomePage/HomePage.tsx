@@ -26,7 +26,7 @@ export const HomePage: React.FC = () => {
       to: '/phones',
       color: Colors.One,
       width: '386px',
-      imgSrc: '/_new/img/category-phones.png',
+      imgSrc: 'img/category-phones.png',
       name: 'Mobile phones',
       count: `${phones.length - 1} models`,
     },
@@ -35,7 +35,7 @@ export const HomePage: React.FC = () => {
       to: '/tablets',
       color: Colors.Two,
       width: '546px',
-      imgSrc: '/_new/img/category-tablets.png',
+      imgSrc: 'img/category-tablets.png',
       name: 'Tablets',
       count: `${
         tablets.filter(item => item.type === 'tablet').length - 1
@@ -46,7 +46,7 @@ export const HomePage: React.FC = () => {
       to: '/accessories',
       color: Colors.Three,
       width: '872px',
-      imgSrc: '/_new/img/category-accessories.png',
+      imgSrc: 'img/category-accessories.png',
       name: 'Accessories',
       count: '0 models',
     },
