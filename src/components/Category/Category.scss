@@ -1,0 +1,62 @@
+@import "/src/styles/utils/_vars";
+
+.category {
+  margin-bottom: 80px;
+
+  &__title {
+    margin-bottom: 24px;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: $c-primary;
+  }
+
+  &__list {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__photo {
+    width: 368px;
+    height: 368px;
+    margin-bottom: 24px;
+    transition: all 0.5s ease;
+    background-size: 368px;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    &--phones {
+      background-image: url("../../img/category/Phones.jpg");
+    }
+
+    &--accessories {
+      background-image: url("../../img/category/Accessories.jpg");
+    }
+
+    &--tablets {
+      background-image: url("../../img/category/Tablets.jpg");
+    }
+
+    &:hover {
+      background-size: 400px;
+    }
+  }
+
+  &__name {
+    margin-bottom: 4px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 26px;
+    color: $c-primary;
+  }
+
+  &__amount {
+    font-style: normal;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 21px;
+    color: $c-secondary;
+  }
+}

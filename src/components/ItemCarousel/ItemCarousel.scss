@@ -1,0 +1,55 @@
+@import "/src/styles/utils/_vars";
+
+.itemCarousel {
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: $c-primary;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    border: 1px solid #b4bdc3;
+    transition: border-color 0.3s linear;
+    background-image: url("../../img/vector.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+
+    &--disabled {
+      border: 1px solid $c-elements;
+    }
+
+    &--reversed {
+      transform: rotateZ(180deg);
+    }
+
+    &:hover:enabled {
+      border-color: $c-primary;
+    }
+  }
+
+  &__body {
+    overflow: hidden;
+  }
+
+  &__wrapper {
+    display: flex;
+    gap: 17px;
+    transition: transform 0.5s linear;
+  }
+}

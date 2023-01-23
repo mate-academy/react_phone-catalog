@@ -1,0 +1,59 @@
+@import "/src/styles/utils/_vars.scss";
+
+.header {
+  box-shadow: 0 1px 0 $c-elements;
+  overflow: hidden;
+  height: 64px;
+  margin-bottom: 40px;
+
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+  }
+
+  &__left {
+    display: flex;
+  }
+
+  &__icon {
+    position: relative;
+    display: flex;
+    box-sizing: border-box;
+    padding: ((64px - 25px / 2px) / 2);
+    background: $c-white;
+    box-shadow: -1px 1px 1px $c-elements;
+  }
+
+  &__ellipse {
+    position: absolute;
+    right: 30%;
+    top: 30%;
+    width: 14px;
+    height: 14px;
+    text-align: center;
+    background-image: url("./Ellipse.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 9px;
+    line-height: 14px;
+    color: $c-white;
+  }
+}
+
+.logo {
+  margin-right: 44px;
+
+  &__link {
+    padding: 20px;
+  }
+}

@@ -1,0 +1,105 @@
+@import "/src/styles/utils/_vars.scss";
+
+.categoryPage {
+  &__title {
+    margin-bottom: 8px;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: $c-primary;
+  }
+
+  &__amount {
+    margin-bottom: 40px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $c-secondary;
+  }
+
+  &__sort-prop {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  &__sort-text {
+    margin-bottom: 4px;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: $c-secondary;
+  }
+
+  &__sortSelect {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    color: $c-primary;
+    border: 1px solid #B4BDC4;
+
+    &:focus {
+      outline:none;
+      border: 1px solid #B4BDC4;
+    }
+  }
+
+  &__sortType {
+    &-amount {
+      width: 128px;
+      height: 40px;
+    }
+
+    &-type {
+      width: 176px;
+      height: 40px;
+    }
+  }
+
+  &__body {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+    gap: 40px 16px;
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    background-image: url("../../img/vector.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 1px solid $c-icons;
+
+    &--reversed {
+      transform: rotateZ(180deg);
+    }
+
+    &:first-child {
+      margin-right: 8px;
+    }
+
+    &:last-child {
+      margin-left: 8px;
+    }
+  }
+
+  &__selector {
+    margin-bottom: 80px;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  &__unit {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $c-icons;
+
+    &--active {
+      background-color: $c-primary;
+      color: $c-white;
+    }
+  }
+}
