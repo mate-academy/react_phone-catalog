@@ -1,0 +1,47 @@
+{
+  "id": "dell-streak-7",
+  "namespaceId": "Dell-Streak-7",
+  "name": "Dell Streak 7",
+  "capacityAvailable": ["16000MB"],
+  "capacity": "16000MB",
+  "priceRegular": 0,
+  "priceDiscount": 150,
+  "colorsAvailable": ["black"],
+  "color": "black",
+  "images": [
+    "img/phones/dell-streak-7.0.jpg", 
+    "img/phones/dell-streak-7.1.jpg", 
+    "img/phones/dell-streak-7.2.jpg", 
+    "img/phones/dell-streak-7.3.jpg", 
+    "img/phones/dell-streak-7.4.jpg"
+  ],
+  "description": [
+    {
+      "title": "About device",
+      "text": [
+        "Introducing Dell\u2122 Streak 7. Share photos, videos and movies together. It\u2019s small enough to carry around, big enough to gather around. Android\u2122 2.2-based tablet with over-the-air upgrade capability for future OS releases.  A vibrant 7-inch, multitouch display with full Adobe\u00ae Flash 10.1 pre-installed.  Includes a 1.3 MP front-facing camera for face-to-face chats on popular services such as Qik or Skype.  16 GB of internal storage, plus Wi-Fi, Bluetooth and built-in GPS keeps you in touch with the world around you.  Connect on your terms. Save with 2-year contract or flexibility with prepaid pay-as-you-go plans"
+      ]
+    },
+    {
+      "title": "Camera",
+      "text": [
+        "features: Flash / Video",
+        "5.0 megapixels"
+      ]
+    },
+    {
+      "title": "Battery",
+      "text": [
+        "battery: Lithium Ion (Li-Ion) (2780 mAH)"
+      ]
+    }
+  ],
+  "screen": "5.8' OLED",
+  "resolution": "199.9 mm (w) x 119.8 mm (h) x 12.4 mm (d)",
+  "processor": "nVidia Tegra T20, Android 2.2",
+  "ram": "512MB",
+  "camera": "5.0 megapixels, 1.3MP Camera",
+  "zoom": "WVGA (800 x 480), 7.0 inches",
+  "cell": ["Bluetooth", "gps", "wifi"],
+  "type": "tablet"
+  }

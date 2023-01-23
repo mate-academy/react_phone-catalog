@@ -1,0 +1,58 @@
+.footer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: 0 -1px 0 $elements;
+  height: 96px;
+
+  &_links {
+    display: flex;
+    gap: 64px;
+
+    &_link {
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 11px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: $secondary;
+
+      &:hover {
+        color: $primary;
+        border-color: $primary;
+      }
+    }
+  }
+
+  &_button {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: $secondary;
+    border: 0 solid $icons;
+    background-color: transparent;
+    cursor: pointer;
+
+    &::after {
+      content: ">";
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform: rotate(-90deg);
+      width: 32px;
+      height: 32px;
+      border: 1px solid;
+    }
+
+    &:hover {
+      border-color: $primary;
+      color: $primary;
+    }
+  }
+}
