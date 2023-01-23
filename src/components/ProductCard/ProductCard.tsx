@@ -44,12 +44,12 @@ export const ProductCard: React.FC<Props> = ({ phone, position }) => {
       }}
     >
       <Link
-        to={category === 'phones' ? `/phones/${phoneId}` : `/tablets/${phoneId}`}
+        to={`/phones/${phoneId}`}
         className="productCard_image"
         onClick={click}
       >
         <img
-          src={`/${image}`}
+          src={image}
           alt={phoneId}
           className="productCard_image_img"
         />
@@ -57,7 +57,7 @@ export const ProductCard: React.FC<Props> = ({ phone, position }) => {
 
       <div className="productCard_text">
         <Link
-          to={category === 'phones' ? `/phones/${phoneId}` : `/tablets/${phoneId}`}
+          to={`/phones/${phoneId}`}
           className="productCard_text_title"
         >
           {name}

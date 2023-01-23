@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react';
 
 export const Carousel = () => {
   const images = [
-    { link: '/_new/img/banner-phones.png', id: 1 },
-    { link: '/_new/img/banner-accessories.png', id: 2 },
-    { link: '/_new/img/banner-tablets.png', id: 3 },
+    { link: '_new/img/banner-phones.png', id: 1 },
+    { link: '_new/img/banner-accessories.png', id: 2 },
+    { link: '_new/img/banner-tablets.png', id: 3 },
   ];
 
   const [currentPosition, setCurrentPosition] = useState(0);
