@@ -19,6 +19,7 @@ export const ProductCard: React.FC<Props> = ({ phone, position }) => {
     capacity,
     ram,
     image,
+    category,
   } = phone;
 
   const click = () => {
@@ -43,7 +44,7 @@ export const ProductCard: React.FC<Props> = ({ phone, position }) => {
       }}
     >
       <Link
-        to={`/phones/${phoneId}`}
+        to={category === 'phones' ? `/phones/${phoneId}` : `/tablets/${phoneId}`}
         className="productCard_image"
         onClick={click}
       >
@@ -56,7 +57,7 @@ export const ProductCard: React.FC<Props> = ({ phone, position }) => {
 
       <div className="productCard_text">
         <Link
-          to={`/phones/${phoneId}`}
+          to={category === 'phones' ? `/phones/${phoneId}` : `/tablets/${phoneId}`}
           className="productCard_text_title"
         >
           {name}

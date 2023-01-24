@@ -1,7 +1,8 @@
 .TargetPhone {
-  width: 1136px;
+  width: 1440px;
   min-height: calc(100vh - 180px);
   margin: 0 auto;
+  padding: 0 152px;
 
   &_loader {
     min-height: calc(100vh - 180px);

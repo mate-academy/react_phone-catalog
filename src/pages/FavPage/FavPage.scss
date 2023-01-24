@@ -2,6 +2,8 @@
   display: flex;
   flex-direction: column;
   padding: 0 152px 80px;
+  margin: 0 auto;
+  max-width: 1440px;
 
   &_nav {
     display: flex;

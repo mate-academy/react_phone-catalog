@@ -1,5 +1,7 @@
 .BagPage {
   padding: 0 152px 87px;
+  margin: 0 auto;
+  max-width: 1440px;
   min-height: calc(100vh - 200px);
 
   &_nav {

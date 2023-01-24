@@ -7,3 +7,10 @@
   background-repeat: no-repeat;
   background-size: contain;
 }
+
+.NotCompleate {
+  min-height: calc(100vh - 200px);
+  max-width: 1440px;
+  padding: 0 152px;
+  margin: 0 auto;
+}

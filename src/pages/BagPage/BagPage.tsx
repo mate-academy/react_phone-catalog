@@ -55,7 +55,10 @@ export const BagPage: React.FC = () => {
   return (
     <>
       {showNotif && (
-        <Notification title="Succes" text="Comming soon" />
+        <Notification
+          title="Sorry"
+          text="That feature will be implemented soon"
+        />
       )}
 
       {Boolean(!list.length) && (
@@ -87,7 +90,7 @@ export const BagPage: React.FC = () => {
                   </button>
                   <Link
                     to={
-                      phone.category === 'tablet'
+                      phone.category !== 'tablet'
                         ? `/phones/${phone.phoneId}`
                         : `/tablets/${phone.phoneId}`
                     }
@@ -101,7 +104,7 @@ export const BagPage: React.FC = () => {
                   </Link>
                   <Link
                     to={
-                      phone.category === 'tablet'
+                      phone.category !== 'tablet'
                         ? `/phones/${phone.phoneId}`
                         : `/tablets/${phone.phoneId}`
                     }
