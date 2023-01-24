@@ -48,7 +48,7 @@ export const Footer: FC<Props> = ({ className = '' }) => {
         <Logo className={logo} />
 
         <ul className={info}>
-          {Object.entries(FooterLinks).map(([key, value]) => (
+          {Object.entries(FooterLinks).map(([key, value], i) => (
             <li
               className={infoItem}
               key={key}
@@ -58,7 +58,7 @@ export const Footer: FC<Props> = ({ className = '' }) => {
                   infoLink,
                   { [infoLinkDark]: isThemeDark },
                 )}
-                href={value}
+                href={!i ? value : `#${value}`}
                 target="_blank"
                 rel="noreferrer"
               >
