@@ -42,7 +42,7 @@ BEM methodology is used for naming and styling.
 - Ability to sort products by name, price, and age is implemented.
 - All sorting parameters are saved in the URL.
 
-![Filters and pagination](./READEMEimg/filters_pagination.gif)
+![Filters and pagination](./READEMEimg/catalog_filters_pagination.gif)
 
 - Pagination is implemented. The number of products displayed on the page can be changed by the user.
 - Search and filter products by name is implemented.
