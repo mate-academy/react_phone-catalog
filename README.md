@@ -39,6 +39,7 @@ BEM methodology is used for naming and styling.
 
 ## Catalog pages
 - Products are fetched from the server by category.
+- `Wait` function was used to simulate the loading of products from the server to demonstrate the loader.
 - Ability to sort products by name, price, and age is implemented.
 - All sorting parameters are saved in the URL.
 
@@ -52,6 +53,7 @@ BEM methodology is used for naming and styling.
 
 ## Product details page
 - Product details are fetched from the server.
+- `Wait` function was used to simulate the loading of products from the server to demonstrate the loader.
 - User can pick a color and capacity of the product.
 - Photos of the product can be changed by clicking on the thumbnails or by swiping them (on Mobile devices).
 - User can add the product to the cart or favorites.
