@@ -52,7 +52,11 @@ export const Header: React.FC = () => {
           {boolean && (
             <input
               type="search"
-              placeholder="Search in phones..."
+              placeholder={
+                location.pathname === '/phones'
+                  ? 'Search in phones...'
+                  : 'Search in tablets...'
+              }
               className="header_links_to_buy_input"
               value={inputValue || ''}
               onChange={changeQuery}

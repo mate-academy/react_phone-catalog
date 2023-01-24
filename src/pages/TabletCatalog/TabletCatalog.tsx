@@ -17,6 +17,18 @@ export const TabletCatalog: React.FC = () => {
 
   const sortValue = searchParams.get('sort');
   const countItems = searchParams.get('count') || 4;
+  const inputValue = searchParams.get('query');
+
+  useEffect(() => {
+    setCurrentPage(1);
+    if (inputValue) {
+      setCorrectList(
+        [...tablets].filter(
+          item => (item.name.toLowerCase()).includes(inputValue.toLowerCase()),
+        ),
+      );
+    }
+  }, [inputValue]);
 
   const start = (currentPage - 1) * Number(countItems);
   const end = (

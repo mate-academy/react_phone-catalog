@@ -62,7 +62,10 @@ export const BagPage: React.FC = () => {
       )}
 
       {Boolean(!list.length) && (
-        <NavLink to="/phones" className="BagPage_isEmpty">
+        <NavLink
+          to="/phones"
+          className="BagPage_isEmpty"
+        >
           You have no items in your shopping cart.
         </NavLink>
       )}

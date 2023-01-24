@@ -86,21 +86,6 @@ export const Pagination: React.FC<Props> = ({
       <button
         className="pagination_button"
         type="button"
-        disabled={firstItem === currentPage}
-        onClick={() => {
-          first();
-          window.scrollTo({
-            top: 0,
-            behavior: 'smooth',
-          });
-        }}
-      >
-        {'|<'}
-      </button>
-
-      <button
-        className="pagination_button"
-        type="button"
         onClick={() => {
           minus(currentPage);
           window.scrollTo({
@@ -112,7 +97,24 @@ export const Pagination: React.FC<Props> = ({
         {'<'}
       </button>
 
-      {(correctList.length > 6 && index >= 2) && (
+      {currentPage > 2 && (
+        <button
+          className="pagination_button"
+          type="button"
+          disabled={firstItem === currentPage}
+          onClick={() => {
+            first();
+            window.scrollTo({
+              top: 0,
+              behavior: 'smooth',
+            });
+          }}
+        >
+          {firstItem}
+        </button>
+      )}
+
+      {(correctList.length >= 6 && index > 2) && (
         <span className="pagination_span">
           ...
         </span>
@@ -141,10 +143,27 @@ export const Pagination: React.FC<Props> = ({
         ))}
       </div>
 
-      {(correctList.length > 6 && index < correctList.length - 3) && (
+      {(correctList.length >= 6 && index < correctList.length - 4) && (
         <span className="pagination_span">
           ...
         </span>
+      )}
+
+      {currentPage < lastItem - 2 && (
+        <button
+          className="pagination_button"
+          type="button"
+          disabled={lastItem === currentPage}
+          onClick={() => {
+            last();
+            window.scrollTo({
+              top: 0,
+              behavior: 'smooth',
+            });
+          }}
+        >
+          {lastItem}
+        </button>
       )}
 
       <button
@@ -159,21 +178,6 @@ export const Pagination: React.FC<Props> = ({
         }}
       >
         {'>'}
-      </button>
-
-      <button
-        className="pagination_button"
-        type="button"
-        disabled={lastItem === currentPage}
-        onClick={() => {
-          last();
-          window.scrollTo({
-            top: 0,
-            behavior: 'smooth',
-          });
-        }}
-      >
-        {'>|'}
       </button>
     </div>
   );
