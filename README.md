@@ -1,7 +1,7 @@
 # Online gadgets store
 A single-page application implements online store functionality. User can browse products, add them to the cart and favorites, search products, sort products, change the quantity of products in the cart, and view product details.
 
-# [DEMO](https://anastaiia-tilikina.github.io/react_phone-catalog/)
+# [DEMO](https://anastasiia-tilikina.github.io/react_phone-catalog/)
 
 # Table of contents
 - [Technologies used](#technologies-used)
