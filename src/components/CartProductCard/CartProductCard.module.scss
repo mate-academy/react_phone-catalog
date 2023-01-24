@@ -33,7 +33,15 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 24px;
+    gap: 16px;
+  }
+
+  &__remaining-count {
+    @extend %small-text;
+    font-weight: 500;
+    color: $color-red;
+
+    opacity: 0.8;
   }
 
   &__wrapper {

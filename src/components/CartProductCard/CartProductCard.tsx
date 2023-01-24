@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-import { FC, useContext } from 'react';
+import { FC, useContext, useState } from 'react';
 import cn from 'classnames';
 import { Link } from 'react-router-dom';
 import { Product } from '../../types/Product';
@@ -20,6 +20,7 @@ const {
   CartProductCard__photo: photo,
   CartProductCard__counter: counter,
   CartProductCard__price: price,
+  'CartProductCard__remaining-count': remainingCount,
 } = styles;
 
 type Props = {
@@ -44,6 +45,8 @@ export const CartProductCard: FC<Props> = ({ className = '', product }) => {
   const itemsCount = cart.find(
     (item) => item.product.productId === productId,
   )?.count || 1;
+
+  const [remains, setRemains] = useState(count - itemsCount);
 
   const image = getImgUrl({
     category,
@@ -94,7 +97,10 @@ export const CartProductCard: FC<Props> = ({ className = '', product }) => {
         <div className={counter}>
           <IconButton
             counter={{ action: 'Minus', disabled: itemsCount === 1 }}
-            onClick={() => changeCount(productId, -1)}
+            onClick={() => {
+              changeCount(productId, -1);
+              setRemains(remains + 1);
+            }}
           />
 
           <span>
@@ -102,10 +108,19 @@ export const CartProductCard: FC<Props> = ({ className = '', product }) => {
           </span>
 
           <IconButton
-            counter={{ action: 'Plus', disabled: itemsCount === count }}
-            onClick={() => changeCount(productId, 1)}
+            counter={{ action: 'Plus', disabled: !remains }}
+            onClick={() => {
+              changeCount(productId, 1);
+              setRemains(remains - 1);
+            }}
           />
         </div>
+
+        {remains < 10 && (
+          <p className={remainingCount}>
+            {`${remains} left`}
+          </p>
+        )}
 
         <div className={price}>
           $
