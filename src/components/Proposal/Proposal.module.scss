@@ -1,0 +1,36 @@
+@import "utils";
+
+.Proposal {
+  &__top {
+    @extend %container-mobile;
+    @extend %container-tablet;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    @extend %h3;
+
+    @include onTablet {
+      font-size: 32px;
+      font-weight: 800;
+      line-height: 42px;
+      letter-spacing: -0.01em;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__ProductsList {
+    margin-left: 16px;
+
+    @include onDesktop {
+      margin-left: 0;
+    }
+  }
+}

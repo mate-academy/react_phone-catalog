@@ -1,0 +1,23 @@
+@import "utils";
+
+.NavigationLink {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: fit-content;
+  padding: 4px 0;
+
+  @extend %small-text;
+
+  @include transition;
+
+  &:hover {
+    color: $color-secondary;
+  }
+
+  &--dark {
+    &:hover {
+      color: $color-secondary-dark;
+    }
+  }
+}

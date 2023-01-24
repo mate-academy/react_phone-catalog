@@ -1,0 +1,35 @@
+@import "utils";
+
+.ErrorMessage {
+  width: fit-content;
+  padding: 24px;
+  color: $color-secondary;
+
+  background-color: scale-color($color: $color-secondary,
+  $lightness: 70%,
+  $alpha: -80%);
+  border: 1px solid $color-secondary;
+
+  border-radius: 15px;
+
+  &--dark {
+    color: $color-secondary-dark;
+    background-color: scale-color($color: $color-secondary-dark,
+    $lightness: 70%,
+    $alpha: -90%);
+    border-color: $color-secondary-dark;
+  }
+
+  &--big {
+    @extend %h3;
+    font-weight: 500;
+  }
+
+  &--warn {
+    color: $color-red;
+    background-color: scale-color($color: $color-red,
+    $lightness: 70%,
+    $alpha: -80%);
+    border-color: $color-red;
+  }
+}

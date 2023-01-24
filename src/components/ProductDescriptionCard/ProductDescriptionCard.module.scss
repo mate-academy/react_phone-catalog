@@ -1,0 +1,219 @@
+@import "utils";
+
+.ProductDescriptionCard {
+  &__title {
+    margin-bottom: 40px;
+    @extend %h3;
+  }
+
+  &__container {
+    margin-bottom: 56px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    @include onTablet {
+      display: grid;
+      grid-template-columns: repeat(2, auto);
+      gap: 16px;
+      margin-bottom: 64px;
+
+      &:last-child {
+        display: block;
+        margin-bottom: 0;
+      }
+    }
+
+    @include onDesktop {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 75px;
+      margin-bottom: 80px;
+
+      &:last-child {
+        display: grid;
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__Photos {
+    margin-bottom: 40px;
+
+    @include onTablet {
+      margin-bottom: 0;
+    }
+  }
+
+  &__info-container {
+    @include onDesktop {
+      width: 65%;
+    }
+  }
+
+  &__info-item {
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid $color-secondary-2;
+
+    &--dark {
+      border-bottom-color: $color-secondary-dark-2;
+    }
+  }
+
+  &__info-item-title {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    @extend %small-text;
+    color: $color-secondary;
+
+    &--dark {
+      color: $color-secondary-dark;
+    }
+  }
+
+  &__colors {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__color-link {
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include shape (32px, 32px, 50%);
+    padding: 1px;
+    border: 1px solid $color-secondary-2;
+
+    &--active {
+      border-color: $color-primary;
+    }
+
+    &--dark {
+      border-color: $color-secondary-dark-2;
+    }
+
+    &--active-dark {
+      border-color: $color-primary-dark;
+    }
+  }
+
+  &__color {
+    @include shape (100%, 100%, 50%);
+    opacity: 0.6;
+
+    @include transition(opacity);
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  &__capacities {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__capacity-link {
+    padding: 8px;
+    border: 1px solid $color-secondary-2;
+
+    @include transition;
+
+    &:hover {
+      border-color: $color-primary;
+    }
+
+    &--active {
+      color: $color-white;
+      background-color: $color-primary;
+      border-color: $color-primary;
+    }
+
+    &--dark {
+      border-color: $color-secondary-dark-2;
+
+      &:hover {
+        border-color: $color-primary-dark;
+      }
+    }
+
+    &--active-dark {
+      color: $background-color-dark;
+      background-color: $color-primary-dark;
+      border-color: $color-primary-dark;
+    }
+  }
+
+  &__price {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 24px;
+    @extend %h2;
+  }
+
+  &__full-price {
+    @extend %h3;
+    color: $color-secondary;
+    text-decoration: line-through;
+
+    &--dark {
+      color: $color-secondary-dark;
+    }
+  }
+
+  &__unavailable {
+    margin-bottom: 24px;
+    font-size: 22px;
+    line-height: 42px;
+    color: $color-red;
+  }
+
+  &__last-items {
+    margin-bottom: 16px;
+    @extend %small-text;
+    color: $color-red;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+
+    margin-bottom: 32px;
+  }
+
+  &__About {
+    margin-bottom: 56px;
+
+    @include onTablet {
+      margin-bottom: 64px;
+    }
+
+    @include onDesktop {
+      margin-bottom: 0;
+    }
+  }
+
+  &__tech-specs-title {
+    padding-bottom: 16px;
+    margin-bottom: 32px;
+    @extend %h4;
+
+    border-bottom: 1px solid $color-secondary-2;
+
+    @include onTablet {
+      font-size: 32px;
+      font-weight: 800;
+      line-height: 42px;
+      letter-spacing: -0.01em;
+    }
+
+    &--dark {
+      border-color: $color-secondary-dark-2;
+    }
+  }
+}

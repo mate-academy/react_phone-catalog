@@ -1,0 +1,23 @@
+@import "utils";
+
+.PageTitle {
+  &:not(:last-child) {
+    margin-bottom: 8px;
+  }
+
+  @extend %h2;
+
+  @include onTablet {
+    font-size: 48px;
+    line-height: 56px;
+    letter-spacing: -0.01em;
+  }
+
+  &__item-counter {
+    color: $color-secondary;
+
+    &--dark {
+      color: $color-secondary-dark;
+    }
+  }
+}

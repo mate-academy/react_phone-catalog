@@ -1,0 +1,27 @@
+@import "utils";
+
+.ProductsList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 250px);
+  row-gap: 40px;
+  column-gap: 16px;
+  justify-content: center;
+
+  @include onDesktop {
+    grid-template-columns: repeat(auto-fill, 270px);
+  }
+
+  &--slider {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+
+    overflow-x: hidden;
+  }
+
+  &--cart {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+}

@@ -1,0 +1,32 @@
+@import "utils";
+
+.Loader {
+  margin: 100px auto 0;
+
+  @include shape (50px);
+  border: 8px solid $color-secondary-2;
+  border-top-color: $color-primary;
+  border-radius: 50%;
+
+  animation: spin 1s linear infinite;
+
+  &--dark {
+    border-color: $color-secondary-dark-2;
+    border-top-color: $color-primary-dark;
+  }
+
+  @include onTablet {
+    @include shape (80px);
+    border-width: 12px;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

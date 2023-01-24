@@ -1,0 +1,110 @@
+@import "utils";
+
+.Selector {
+  position: relative;
+  width: 170px;
+
+  @include onTablet {
+    width: 200px;
+  }
+
+  &__description {
+    margin-bottom: 4px;
+
+    @extend %small-text;
+    color: $color-secondary;
+
+    &--dark {
+      color: $color-secondary-dark;
+    }
+  }
+
+  &__button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include shape (100%, 40px);
+    padding: 10px;
+
+    border: 1px solid #b4bdc3;
+
+    @include transition;
+
+    &:hover {
+      border-color: $color-secondary;
+    }
+
+    &--open {
+      border-color: $color-primary;
+
+      &:hover {
+        border-color: $color-primary;
+      }
+    }
+
+    &--dark {
+      background-color: $color-secondary-dark-2;
+      border-color: $color-secondary-dark-2;
+
+      &:hover {
+        border-color: $color-grey-dark-1;
+      }
+    }
+
+    &--open-dark {
+      border-color: $color-purple-dark;
+
+      &:hover {
+        border-color: $color-purple-dark;
+      }
+    }
+  }
+
+  &__menu {
+    position: absolute;
+    z-index: 1;
+
+    width: 100%;
+    margin-top: 4px;
+
+    background-color: $color-white;
+    border: 1px solid $color-secondary-2;
+    box-shadow: 0px 2px 15px 0px #0000000d;
+
+    &--dark {
+      background-color: $color-secondary-dark-2;
+      border-color: $color-grey-dark-2;
+    }
+  }
+
+  &__menu-button {
+    width: 100%;
+    padding: 6px 12px;
+    color: $color-secondary;
+
+    @include transition;
+
+    &:hover {
+      color: $color-primary;
+      background-color: $color-grey-2;
+    }
+
+    &--selected {
+      color: $color-primary;
+    }
+
+    &--dark {
+      color: $color-secondary-dark;
+
+      &:hover {
+        color: $color-primary-dark;
+        background-color: $color-secondary-dark-2;
+      }
+    }
+
+    &--selected-dark {
+      color: $color-primary-dark;
+    }
+  }
+}

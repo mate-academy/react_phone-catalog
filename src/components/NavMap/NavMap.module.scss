@@ -1,0 +1,24 @@
+@import "utils";
+
+.NavMap {
+  &__list {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    margin-bottom: 24px;
+
+    @include onTablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__item {
+    @extend %small-text;
+    color: $color-secondary;
+
+    &--dark {
+      color: $color-secondary-dark;
+    }
+  }
+}

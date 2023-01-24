@@ -1,0 +1,85 @@
+@import "utils";
+
+.Categories {
+  @extend %container-mobile;
+  @extend %container-tablet;
+
+  &__title {
+    margin-bottom: 24px;
+    @extend %h3;
+
+    @include onTablet {
+      font-size: 32px;
+      font-weight: 800;
+      line-height: 42px;
+      letter-spacing: -0.01em;
+    }
+  }
+
+  &__list {
+    @include onTablet {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+  }
+
+  &__item {
+    margin-bottom: 32px;
+
+    @include onTablet {
+      margin-bottom: 0;
+    }
+  }
+
+  &__link {
+    width: 100%;
+    max-height: 280px;
+    aspect-ratio: 1/1;
+    overflow: hidden;
+    margin-bottom: 24px;
+
+    &--phones {
+      background-color: #6d6474;
+    }
+
+    &--tablets {
+      background-color: #8d8d92;
+    }
+
+    &--accessories {
+      background-color: #973d5f;
+    }
+
+    @include onTablet {
+      max-height: 200px;
+    }
+
+    @include onDesktop {
+      max-height: 370px;
+    }
+  }
+
+  &__image {
+    @extend %photo;
+
+    @include transition(transform);
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__item-title {
+    margin-bottom: 4px;
+    @extend %h4;
+  }
+
+  &__item-count {
+    color: $color-secondary;
+
+    &--dark {
+      color: $color-secondary-dark;
+    }
+  }
+}

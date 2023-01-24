@@ -1,0 +1,16 @@
+@import "utils";
+
+.CatalogPageWrapper {
+  &__ErrorMessage {
+    max-width: 280px;
+    margin: 100px auto 64px;
+
+    @include onTablet {
+      max-width: 600px;
+    }
+
+    @include onDesktop {
+      margin-bottom: 80px;
+    }
+  }
+}

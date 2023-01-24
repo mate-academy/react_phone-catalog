@@ -1,0 +1,40 @@
+@import "utils";
+
+.PrimaryButton {
+  justify-content: center;
+  align-items: center;
+
+  @include shape(100%, 40px);
+
+  @extend %buttons;
+  color: $color-white;
+
+  background-color: $color-primary;
+
+  @include transition;
+
+  &:hover {
+    box-shadow: 0px 3px 13px 0px #17203166;
+  }
+
+  &--dark {
+    background-color: $color-purple-dark;
+
+    &:hover {
+      background-color: #a378ff;
+      box-shadow: none;
+    }
+  }
+
+  &--selected {
+    color: $color-green;
+    background-color: transparent;
+    border: 1px solid $color-secondary-2;
+  }
+
+  &--dark-selected {
+    color: inherit;
+    background-color: $color-secondary-dark-2;
+    border-color: $color-secondary-dark-2;
+  }
+}

@@ -1,0 +1,34 @@
+@import "./vars";
+
+@mixin onDesktop {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin onTablet {
+  @media (min-width: 640px) {
+    @content;
+  }
+}
+
+@mixin onMobile {
+  @media (max-width: 639px) {
+    @content;
+  }
+}
+
+@mixin shape ($width,
+$height: $width,
+$radius: false) {
+  width: $width;
+  height: $height;
+
+  @if $radius {
+    border-radius: $radius;
+  }
+}
+
+@mixin transition($prop: all) {
+  transition: $prop $duration linear;
+}

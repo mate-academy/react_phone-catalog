@@ -1,0 +1,80 @@
+{
+  "id": 795725,
+  "category": "tablets",
+  "year": 2021,
+  "namespaceId": "apple-ipad-mini-6",
+  "name": "Apple iPad Mini 6",
+  "screen": "8,3' IPS",
+  "resolution": "2266 x 1488",
+  "processor": "Apple A15 Bionic",
+  "ram": "4GB",
+  "camera": "12 Mp",
+  "colors": [
+    "gold",
+    "gray",
+    "pink",
+    "purple"
+  ],
+  "capacities": [
+    "64GB",
+    "128GB",
+    "256GB"
+  ],
+  "models": [
+    {
+      "capacity": "64GB",
+      "fullPrice": 675,
+      "discountPrice": 607,
+      "colorsAvailable": {
+        "gold": 6,
+        "gray": 50,
+        "pink": 11,
+        "purple": 0
+      }
+    },
+    {
+      "capacity": "128GB",
+      "fullPrice": 810,
+      "discountPrice": 729,
+      "colorsAvailable": {
+        "gold": 16,
+        "gray": 0,
+        "pink": 4,
+        "purple": 44
+      }
+    },
+    {
+      "capacity": "256GB",
+      "fullPrice": 972,
+      "discountPrice": 874,
+      "colorsAvailable": {
+        "gold": 61,
+        "gray": 74,
+        "pink": 86,
+        "purple": 14
+      }
+    }
+  ],
+  "description": [
+    {
+      "title": "Beauty all around",
+      "text": [
+        "iPad lets you immerse yourself in whatever you’re reading, watching, or creating. The Liquid Retina display features advanced technologies like True Tone, P3 wide color, and an anti reflective coating.",
+        "TouchID is built into the button, so you can use your fingerprint to unlock your iPad, sign in to apps, and make payments securely with Apple Pay. And iPad comes in gorgeous colors."
+      ]
+    },
+    {
+      "title": "Fun at the speed",
+      "text": [
+        "The breakthrough chip is now in iPad. It delivers up to 60 percent faster performance than the previous generation, making iPad a creative and mobile gaming powerhouse. Multitask smoothly between powerful apps and play graphics-intensive games. So you can go even further with your creativity with apps like SketchUp."
+      ]
+    },
+    {
+      "title": "Camera",
+      "text": [
+        "The 12MP Ultra Wide front camera enables Center Stage, making video calls more natural and content creation more fun. As you move around, the camera automatically pans to keep you centered in the shot. When others join or leave the frame, the view expands or zooms in. So you can focus on the conversation.",
+        "The 12MP Wide back camera is perfect for capturing photos and 4K videos. And with the powerful ISP, iPad now features Smart HDR, so your photos look even more beautiful."
+      ]
+    }
+  ]
+}

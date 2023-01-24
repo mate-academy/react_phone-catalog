@@ -1,0 +1,42 @@
+@import "utils";
+
+.CatalogPage {
+  @extend %container;
+  width: 100%;
+
+  &__title {
+    margin-bottom: 32px;
+
+    @include onDesktop {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__NavMap {
+    margin-bottom: 24px;
+
+    @include onTablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__filters {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  &__ProductsList {
+    margin-bottom: 40px;
+  }
+
+  &__Pagination,
+  &__ErrorMessage {
+    margin: 0 auto 64px;
+
+    @include onDesktop {
+      margin-bottom: 80px;
+    }
+  }
+}

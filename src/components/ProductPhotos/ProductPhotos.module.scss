@@ -1,0 +1,97 @@
+@import "utils";
+
+.ProductPhotos {
+  @include onTablet {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 16px;
+  }
+
+  &__slider-container {
+    display: flex;
+    width: 100%;
+    max-height: 280px;
+    aspect-ratio: 1/1;
+
+    margin-bottom: 24px;
+    overflow: hidden;
+
+    @include onTablet {
+      max-height: 275px;
+      margin-bottom: 0;
+    }
+
+    @include onDesktop {
+      max-height: 400px;
+    }
+  }
+
+  &__photo-container {
+    flex-shrink: 0;
+    width: 100%;
+    max-height: 280px;
+    aspect-ratio: 1/1;
+
+    margin-bottom: 24px;
+
+    @include transition;
+
+    @include onTablet {
+      max-height: 275px;
+      margin-bottom: 0;
+    }
+
+    @include onDesktop {
+      max-height: 400px;
+    }
+  }
+
+  &__photo {
+    @extend %photo;
+    object-fit: contain;
+  }
+
+  &__buttons {
+    flex-shrink: 0;
+    display: flex;
+    gap: 8px;
+
+    @include onTablet {
+      flex-direction: column;
+    }
+  }
+
+  &__button {
+    max-height: 50px;
+    aspect-ratio: 1/1;
+
+    border: 1px solid $color-secondary-2;
+
+    @include transition;
+
+    @include onDesktop {
+      max-height: 80px;
+    }
+
+    &--active {
+      border-color: $color-primary;
+    }
+
+    &--dark {
+      border-color: $color-secondary-dark-2;
+    }
+
+    &--active-dark {
+      border-color: $color-primary-dark;
+    }
+
+    &:hover {
+      transform: scale(1.1) translateY(-10%);
+      box-shadow: 0px 2px 15px 0px #0000001a;
+
+      @include onTablet {
+        transform: scale(1.1) translateX(10%);
+      }
+    }
+  }
+}

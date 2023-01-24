@@ -1,0 +1,213 @@
+@import "utils";
+
+.NavBar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @include shape(100vw, 100vh);
+  background-color: $color-white;
+
+  &--dark {
+    background-color: $background-color-dark;
+  }
+
+  @include onTablet {
+    flex-direction: row;
+    height: fit-content;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 32px;
+    border-bottom: 1px solid $color-secondary-2;
+
+    &--dark {
+      border-color: $color-secondary-dark-2;
+    }
+
+    @include onTablet {
+      display: none;
+    }
+  }
+
+  &__logo {
+    margin-left: 16px;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    height: 100%;
+
+    @include onTablet {
+      flex-direction: row;
+      justify-content: space-between;
+      height: fit-content;
+    }
+
+    @include onDesktop {
+      gap: 64px;
+    }
+  }
+
+  &__item {
+    text-align: center;
+
+    @include onTablet {
+      display: block;
+    }
+  }
+
+  &__link {
+    padding: 16px 0;
+    @extend %uppercase;
+    line-height: 18px;
+    color: $color-secondary;
+    text-align: center;
+
+    @include onTablet {
+      padding: 20px 0;
+    }
+
+    @include onDesktop {
+      padding: 25px 0;
+    }
+
+    @include transition;
+
+    &:hover {
+      color: $color-primary;
+    }
+
+    &--dark {
+      color: $color-secondary-dark;
+
+      &:hover {
+        color: $color-primary-dark;
+      }
+    }
+
+    &--active {
+      position: relative;
+      color: $color-primary;
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        display: block;
+        @include shape(100%, 3px);
+        background-color: $color-primary;
+      }
+    }
+
+    &--active-dark {
+      color: $color-primary-dark;
+
+      &::after {
+        background-color: $color-primary-dark;
+      }
+    }
+  }
+
+  &__actions {
+    display: flex;
+    width: 100%;
+    border-top: 1px solid $color-secondary-2;
+
+    @include onTablet {
+      width: fit-content;
+      border: none;
+    }
+
+    &--dark {
+      border-color: $color-secondary-dark-2;
+    }
+  }
+
+  &__actions-link {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 25px;
+    border-left: 1px solid $color-secondary-2;
+
+    &--dark {
+      border-color: $color-secondary-dark-2;
+    }
+
+    &--close {
+      width: fit-content;
+    }
+
+    @include onTablet {
+      width: fit-content;
+      padding: 20px;
+    }
+
+    @include onDesktop {
+      padding: 25px;
+    }
+
+    &--active {
+      @include onTablet {
+        &::after {
+          content: "";
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          display: block;
+          @include shape(100%, 3px);
+          background-color: $color-primary;
+        }
+      }
+    }
+
+    &--active-dark {
+      @include onTablet {
+        &::after {
+          background-color: $color-primary-dark;
+        }
+      }
+    }
+  }
+
+  &__items-counter {
+    position: absolute;
+    top: 27%;
+    left: 50%;
+
+    display: block;
+    @include shape(16px);
+
+    color: $color-white;
+    text-align: center;
+
+    border: 1.5px solid $color-white;
+    border-radius: 50%;
+    background-color: $color-red;
+
+    &--dark {
+      color: $color-primary-dark;
+      border-color: $background-color-dark;
+    }
+  }
+
+  &__items-count {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    font-size: 9px;
+    line-height: 9px;
+
+    transform: translate(-50%, -50%);
+  }
+}

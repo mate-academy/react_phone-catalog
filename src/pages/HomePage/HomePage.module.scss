@@ -1,0 +1,51 @@
+@import "utils";
+
+.HomePage {
+  @extend %container-desktop;
+  width: 100%;
+
+  &__title {
+    @extend %container-mobile;
+    @extend %container-tablet;
+
+    margin-bottom: 24px;
+
+    @include onTablet {
+      margin-bottom: 32px;
+    }
+
+    @include onDesktop {
+      margin-bottom: 56px;
+    }
+  }
+
+  &__Banner {
+    @extend %container-tablet;
+  }
+
+  &__Banner,
+  &__section {
+    margin-bottom: 64px;
+
+    @include onDesktop {
+      margin-bottom: 80px;
+    }
+  }
+
+  &__Loader,
+  &__ErrorMessage {
+    margin: 0 auto 64px;
+
+    @include onDesktop {
+      margin-bottom: 80px;
+    }
+  }
+
+  &__ErrorMessage {
+    max-width: 280px;
+
+    @include onTablet {
+      max-width: 600px;
+    }
+  }
+}

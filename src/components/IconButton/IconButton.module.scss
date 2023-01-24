@@ -1,0 +1,71 @@
+@import "utils";
+
+.IconButton {
+  flex-shrink: 0;
+  @include shape (32px);
+
+  justify-content: center;
+  align-items: center;
+
+  border: 1px solid #b4bdc3;
+
+  background-repeat: no-repeat;
+  background-position: center;
+
+  @include transition;
+
+  &--favorite {
+    @include shape (40px);
+  }
+
+  &:hover {
+    border-color: $color-primary;
+  }
+
+  &:disabled,
+  &--disabled {
+    border-color: $color-secondary-2;
+
+    cursor: default;
+    pointer-events: none;
+  }
+
+  &--dark {
+    border-color: $color-secondary-dark-2;
+    background-color: $color-secondary-dark-2;
+
+    &:hover {
+      border-color: $color-grey-dark-1;
+      background-color: $color-grey-dark-1;
+    }
+
+    &:disabled {
+      border-color: $color-grey-dark-2;
+      background-color: transparent;
+    }
+  }
+
+  &--disabled-dark {
+    border-color: $color-grey-dark-2;
+    background-color: transparent;
+
+    cursor: default;
+    pointer-events: none;
+  }
+
+  &--selected {
+    color: $color-white;
+    background-color: $color-primary;
+    border-color: $color-primary;
+  }
+
+  &--selected-dark {
+    background-color: $color-purple-dark;
+    border-color: $color-purple-dark;
+
+    &:hover {
+      background-color: $color-purple-dark;
+      border-color: $color-purple-dark;
+    }
+  }
+}

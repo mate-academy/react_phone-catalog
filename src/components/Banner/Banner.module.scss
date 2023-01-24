@@ -1,0 +1,88 @@
+@import "utils";
+
+.Banner {
+  &__slider-container {
+    margin: 0 auto 20px;
+
+    @include onTablet {
+      display: flex;
+      gap: 20px;
+    }
+
+    @include onDesktop {
+      gap: 16px;
+    }
+  }
+
+  &__side-button {
+    display: none;
+
+    @include onTablet {
+      flex-shrink: 0;
+      display: inline-flex;
+      height: auto;
+    }
+  }
+
+  &__slider {
+    display: flex;
+    width: 100%;
+    max-height: 490px;
+    aspect-ratio: 1/1;
+
+    overflow: hidden;
+
+    @include onTablet {
+      aspect-ratio: 8/3;
+    }
+  }
+
+  &__photo-container {
+    flex-shrink: 0;
+    width: 100%;
+    max-height: 490px;
+    aspect-ratio: 1/1;
+
+    @include onTablet {
+      aspect-ratio: 8/3;
+
+      &:nth-child(2) :first-child {
+        object-fit: contain;
+      }
+
+      &:nth-child(3) :first-child {
+        object-position: top;
+      }
+    }
+
+    @include transition(transform);
+  }
+
+  &__photo {
+    @extend %photo;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 14px;
+    width: fit-content;
+    margin: 0 auto;
+  }
+
+  &__button {
+    @include shape (14px, 4px);
+    background-color: $color-secondary-2;
+
+    &--active {
+      background-color: $color-primary;
+    }
+
+    &--dark {
+      background-color: $color-secondary-dark-2;
+    }
+
+    &--active-dark {
+      background-color: $color-primary-dark;
+    }
+  }
+}

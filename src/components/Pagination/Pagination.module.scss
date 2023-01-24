@@ -1,0 +1,11 @@
+.Pagination {
+  display: flex;
+  gap: 16px;
+
+  width: fit-content;
+
+  &__list {
+    display: flex;
+    gap: 8px;
+  }
+}

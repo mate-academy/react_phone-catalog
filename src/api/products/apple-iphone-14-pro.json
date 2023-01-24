@@ -1,0 +1,86 @@
+{
+  "id": 173136,
+  "category": "phones",
+  "year": 2022,
+  "namespaceId": "apple-iphone-14-pro",
+  "name": "Apple iPhone 14 Pro",
+  "screen": "6,1' IPS",
+  "resolution": "2556 x 1179",
+  "processor": "Apple A16 Bionic",
+  "ram": "6GB",
+  "camera": "48 Mp + 12 Mp + 12MP",
+  "colors": [
+    "black",
+    "gold",
+    "purple",
+    "silver"
+  ],
+  "capacities": [
+    "128GB",
+    "256GB",
+    "512GB"
+  ],
+  "models": [
+    {
+      "capacity": "128GB",
+      "fullPrice": 1355,
+      "discountPrice": 1355,
+      "colorsAvailable": {
+        "black": 7,
+        "gold": 1,
+        "purple": 67,
+        "silver": 18
+      }
+    },
+    {
+      "capacity": "256GB",
+      "fullPrice": 1626,
+      "discountPrice": 1626,
+      "colorsAvailable": {
+        "black": 82,
+        "gold": 0,
+        "purple": 48,
+        "silver": 99
+      }
+    },
+    {
+      "capacity": "512GB",
+      "fullPrice": 1951,
+      "discountPrice": 1951,
+      "colorsAvailable": {
+        "black": 69,
+        "gold": 0,
+        "purple": 0,
+        "silver": 40
+      }
+    }
+  ],
+  "description": [
+    {
+      "title": "Beyond",
+      "text": [
+        "A magical new way to interact with iPhone. Groundbreaking safety features designed to save lives. An innovative camera for mind-blowing detail. All powered by the ultimate smartphone chip.",
+        "iPhone is also designed from the ground up to protect your privacy and put you in control of what you share and who you share it with"
+      ]
+    },
+    {
+      "title": "Camera",
+      "text": [
+        "Meet the first camera system to combine cutting-edge technology with the legendary simplicity of iPhone. Capture up to four times more scene. Get beautiful images in drastically lower light. Shoot the highest-quality video in a smartphone — then edit with the same tools you love for photos. You’ve never shot with anything like it.",
+        "Give your camera direction with Photographic Styles. Choose a look — such as Warm or Cool — and iPhone selectively applies the adjustments, keeping skies and skin tones natural. So your photos will automatically have the look you love."
+      ]
+    },
+    {
+      "title": "Big-time battery life",
+      "text": [
+        "A highly efficient chip, an enhanced battery, and iOS 16 work together to boost battery life. When you do need to charge, just place iPhone on a wireless charger. Or connect a 20W or higher adapter to fast charge from zero to up to 50 percent charge in 30 minutes"
+      ]
+    },
+    {
+      "title": "Faster downloads. Faster streaming. Faster gaming. Less lag. More fun.",
+      "text": [
+        "From live streaming to multiplayer gaming to video sharing, 5G really speeds things up. It even makes FaceTime in high definition and SharePlay feel smooth and seamless when you’re on the go."
+      ]
+    }
+  ]
+}

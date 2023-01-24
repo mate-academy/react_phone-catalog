@@ -1,0 +1,23 @@
+@import "utils";
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  &__Header {
+    margin-bottom: 24px;
+
+    @include onTablet {
+      margin-bottom: 32px;
+    }
+
+    @include onDesktop {
+      margin-bottom: 56px;
+    }
+  }
+
+  &__Footer {
+    margin-top: auto;
+  }
+}

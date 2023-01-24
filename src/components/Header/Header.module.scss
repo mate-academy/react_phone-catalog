@@ -1,0 +1,75 @@
+@import "utils";
+
+.Header {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid $color-secondary-2;
+  overflow: hidden;
+
+  &--dark {
+    border-color: $color-secondary-dark-2;
+  }
+
+  &__Logo {
+    margin-left: 16px;
+
+    @include onTablet {
+      margin-right: 24px;
+    }
+
+    @include onDesktop {
+      margin: 0 64px;
+    }
+  }
+
+  &__nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1;
+    overflow-y: auto;
+    transform: translateX(100%);
+
+    @include transition;
+
+    &--open {
+      transform: translateX(0);
+    }
+
+    @include onTablet {
+      position: initial;
+      overflow-y: initial;
+      transform: translateX(0);
+    }
+  }
+
+  &__actions {
+    display: flex;
+  }
+
+  &__actions-button {
+    padding: 25px;
+    border-left: 1px solid $color-secondary-2;
+
+    @include onTablet {
+      padding: 20px;
+    }
+
+    @include onDesktop {
+      padding: 25px;
+    }
+
+    &--dark {
+      border-left-color: $color-secondary-dark-2;
+    }
+
+    &--menu {
+      @include onTablet {
+        display: none;
+      }
+    }
+  }
+}

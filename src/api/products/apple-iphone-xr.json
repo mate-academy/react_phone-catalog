@@ -1,0 +1,90 @@
+{
+  "id": 637856,
+  "category": "phones",
+  "year": 2018,
+  "namespaceId": "apple-iphone-xr",
+  "name": "Apple iPhone XR",
+  "screen": "6,1' IPS",
+  "resolution": "1792 x 828",
+  "processor": "Apple A12 Bionic",
+  "ram": "4GB",
+  "camera": "12 Mp",
+  "colors": [
+    "black",
+    "blue",
+    "coral",
+    "red",
+    "white"
+  ],
+  "capacities": [
+    "64GB",
+    "128GB",
+    "256GB"
+  ],
+  "models": [
+    {
+      "capacity": "64GB",
+      "fullPrice": 380,
+      "discountPrice": 342,
+      "colorsAvailable": {
+        "black": 45,
+        "blue": 57,
+        "coral": 19,
+        "red": 20,
+        "white": 29
+      }
+    },
+    {
+      "capacity": "128GB",
+      "fullPrice": 456,
+      "discountPrice": 410,
+      "colorsAvailable": {
+        "black": 0,
+        "blue": 13,
+        "coral": 74,
+        "red": 0,
+        "white": 0
+      }
+    },
+    {
+      "capacity": "256GB",
+      "fullPrice": 547,
+      "discountPrice": 492,
+      "colorsAvailable": {
+        "black": 0,
+        "blue": 7,
+        "coral": 26,
+        "red": 74,
+        "white": 39
+      }
+    }
+  ],
+  "description": [
+    {
+      "title": "Beyond",
+      "text": [
+        "A magical new way to interact with iPhone. Groundbreaking safety features designed to save lives. An innovative camera for mind-blowing detail. All powered by the ultimate smartphone chip.",
+        "iPhone is also designed from the ground up to protect your privacy and put you in control of what you share and who you share it with"
+      ]
+    },
+    {
+      "title": "Camera",
+      "text": [
+        "Meet the first camera system to combine cutting-edge technology with the legendary simplicity of iPhone. Capture up to four times more scene. Get beautiful images in drastically lower light. Shoot the highest-quality video in a smartphone — then edit with the same tools you love for photos. You’ve never shot with anything like it.",
+        "Give your camera direction with Photographic Styles. Choose a look — such as Warm or Cool — and iPhone selectively applies the adjustments, keeping skies and skin tones natural. So your photos will automatically have the look you love."
+      ]
+    },
+    {
+      "title": "Big-time battery life",
+      "text": [
+        "A highly efficient chip, an enhanced battery, and iOS 16 work together to boost battery life. When you do need to charge, just place iPhone on a wireless charger. Or connect a 20W or higher adapter to fast charge from zero to up to 50 percent charge in 30 minutes"
+      ]
+    },
+    {
+      "title": "Faster downloads. Faster streaming. Faster gaming. Less lag. More fun.",
+      "text": [
+        "From live streaming to multiplayer gaming to video sharing, 5G really speeds things up. It even makes FaceTime in high definition and SharePlay feel smooth and seamless when you’re on the go."
+      ]
+    }
+  ]
+}

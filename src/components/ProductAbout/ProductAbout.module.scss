@@ -1,0 +1,47 @@
+@import "utils";
+
+.ProductAbout {
+  &__title {
+    padding-bottom: 16px;
+    margin-bottom: 32px;
+
+    @extend %h4;
+
+    border-bottom: 1px solid $color-secondary-2;
+
+    @include onTablet {
+      font-size: 32px;
+      font-weight: 800;
+      line-height: 42px;
+      letter-spacing: -0.01em;
+    }
+
+    &--dark {
+      border-color: $color-secondary-dark-2;
+    }
+  }
+
+  &__section {
+    &:not(:last-child) {
+      margin-bottom: 32px;
+    }
+  }
+
+  &__section-title {
+    margin-bottom: 16px;
+
+    @extend %h4;
+  }
+
+  &__paragraph {
+    &:not(:last-child) {
+      margin-bottom: 16px;
+    }
+
+    color: $color-secondary;
+
+    &--dark {
+      color: $color-secondary-dark;
+    }
+  }
+}

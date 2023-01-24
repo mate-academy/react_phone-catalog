@@ -1,0 +1,38 @@
+@import "utils";
+
+.FavoritesPage {
+  @extend %container;
+  width: 100%;
+
+  &__NavMap {
+    margin-bottom: 24px;
+
+    @include onTablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__title {
+    margin-bottom: 32px;
+
+    @include onDesktop {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__ProductsList {
+    margin-bottom: 64px;
+
+    @include onDesktop {
+      margin-bottom: 80px;
+    }
+  }
+
+  &__ErrorMessage {
+    margin: 0 auto 64px;
+
+    @include onDesktop {
+      margin-bottom: 80px;
+    }
+  }
+}

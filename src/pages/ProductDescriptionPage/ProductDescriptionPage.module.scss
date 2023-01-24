@@ -1,0 +1,44 @@
+@import "utils";
+
+.ProductDescriptionPage {
+  @extend %container-desktop;
+  width: 100%;
+
+  &__NavMap {
+    @extend %container-mobile;
+    @extend %container-tablet;
+
+    margin-bottom: 24px;
+
+    @include onTablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__ProductDescriptionCard {
+    @extend %container-mobile;
+    @extend %container-tablet;
+  }
+
+  &__ProductDescriptionCard,
+  &__Proposal {
+    margin-bottom: 64px;
+
+    @include onDesktop {
+      margin-bottom: 80px;
+    }
+  }
+
+  &__ErrorMessage {
+    max-width: 280px;
+    margin: 0 auto 64px;
+
+    @include onTablet {
+      max-width: 600px;
+    }
+
+    @include onDesktop {
+      margin-bottom: 80px;
+    }
+  }
+}

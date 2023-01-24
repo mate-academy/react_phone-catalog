@@ -1,0 +1,20 @@
+@import "utils";
+
+.NotFoundPage {
+  @extend %container;
+  margin-top: 100px;
+  @extend %h3;
+  color: $color-secondary;
+  text-align: center;
+
+  @include onTablet {
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 42px;
+    letter-spacing: -0.01em;
+  }
+
+  &--dark {
+    color: $color-secondary-dark;
+  }
+}

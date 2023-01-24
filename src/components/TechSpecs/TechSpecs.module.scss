@@ -1,0 +1,23 @@
+@import "utils";
+
+.TechSpecs {
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @extend %small-text;
+
+    &:not(:last-child) {
+      margin-bottom: 8px;
+    }
+  }
+
+  &__item-title {
+    color: $color-secondary;
+
+    &--dark {
+      color: $color-secondary-dark;
+    }
+  }
+}

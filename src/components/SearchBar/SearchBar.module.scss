@@ -1,0 +1,93 @@
+@import "utils";
+
+.SearchBar {
+  &__input-container {
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 1;
+
+    @include shape(100%);
+
+    @include transition;
+
+    &--hidden {
+      transform: translateX(100%);
+    }
+  }
+
+  &__clear-button {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 2;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+
+    @include onTablet {
+      padding: 20px;
+    }
+
+    @include onDesktop {
+      padding: 25px;
+    }
+
+    &--hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
+
+  &__input {
+    @include shape(100%);
+    padding: 25px;
+    background-color: $color-white;
+    border: 2px solid transparent;
+
+    &::placeholder {
+      color: $color-secondary;
+    }
+
+    &:focus {
+      border-color: $color-primary;
+    }
+
+    &--dark {
+      background-color: $background-color-dark;
+
+      &::placeholder {
+        color: $color-secondary-dark;
+      }
+
+      &:focus {
+        border-color: $color-primary-dark;
+      }
+    }
+
+    @include onTablet {
+      padding: 20px;
+    }
+  }
+
+  &__button {
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+
+    border-left: 1px solid $color-secondary-2;
+
+    &--dark {
+      border-left-color: $color-secondary-dark-2;
+    }
+
+    @include onTablet {
+      padding: 20px;
+    }
+
+    @include onDesktop {
+      padding: 25px;
+    }
+  }
+}

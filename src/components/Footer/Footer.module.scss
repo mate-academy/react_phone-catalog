@@ -1,0 +1,104 @@
+@import "utils";
+
+.Footer {
+  padding: 32px 0;
+  border-top: 1px solid $color-secondary-2;
+
+  &--dark {
+    border-top-color: $color-grey-dark-2;
+  }
+
+  @include onTablet {
+    padding: 0;
+  }
+
+  &__container {
+    @extend %container;
+
+    @include onTablet {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  &__Logo {
+    margin-bottom: 32px;
+
+    @include onTablet {
+      margin-bottom: 0;
+    }
+  }
+
+  &__info {
+    margin-bottom: 32px;
+
+    @include onTablet {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 0;
+    }
+
+    @include onDesktop {
+      gap: 100px;
+    }
+  }
+
+  &__info-item {
+    margin-bottom: 8px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    @include onTablet {
+      margin-bottom: 0;
+    }
+  }
+
+  &__info-link {
+    padding: 8px 0;
+
+    @extend %uppercase;
+    color: $color-secondary;
+
+    @include onTablet {
+      padding: 42px 0;
+    }
+
+    @include transition;
+
+    &:hover {
+      color: $color-primary;
+    }
+
+    &--dark {
+      color: inherit;
+
+      &:hover {
+        color: $color-secondary-dark;
+      }
+    }
+  }
+
+  &__action {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: fit-content;
+    margin: 0 auto;
+
+    @include onTablet {
+      margin: 0;
+    }
+  }
+
+  &__action-text {
+    @extend %small-text;
+    color: $color-secondary;
+
+    &--dark {
+      color: $color-secondary-dark;
+    }
+  }
+}
