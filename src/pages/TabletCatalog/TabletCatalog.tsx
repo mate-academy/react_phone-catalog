@@ -21,6 +21,8 @@ export const TabletCatalog: React.FC = () => {
 
   useEffect(() => {
     setCurrentPage(1);
+    setCorrectList([...tabletList]);
+
     if (inputValue) {
       setCorrectList(
         [...tablets].filter(

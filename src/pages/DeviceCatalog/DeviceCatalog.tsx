@@ -61,6 +61,8 @@ export const DeviceCatalog: React.FC = () => {
 
   useEffect(() => {
     setCurrentPage(1);
+    setCorrectList([...phones]);
+
     if (inputValue) {
       setCorrectList(
         [...phones].filter(
