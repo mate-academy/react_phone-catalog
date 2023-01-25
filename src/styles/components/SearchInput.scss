@@ -1,0 +1,40 @@
+.SearchInput {
+  position: relative;
+  width: 327px;
+  background-color: $hover-grey;
+  border-left: 1px solid $light-grey;
+  border-bottom: 1px solid $light-grey;
+
+  @include onMobile {
+    display: none;
+  }
+
+  @include onSmallDesktop {
+    margin-left: auto;
+  }
+
+  &__input {
+    height: 64px;
+    @extend %body-text;
+    color: $primary-dark;
+    background-color: $hover-grey;
+    outline: none;
+    border: none;
+    padding: 0 24px;
+  }
+
+  &__button {
+    position: absolute;
+    height: 14px;
+    width: 14px;
+    border: none;
+    background-color: transparent;
+    top: 25px;
+    right: 25px;
+    fill: $primary-dark;
+
+    &:hover {
+      stroke: $primary-dark;
+    }
+  }
+}

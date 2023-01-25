@@ -1,0 +1,29 @@
+.sliderList {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 80px;
+
+  &__topContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__btnContainer {
+    align-self: flex-end;
+    display: flex;
+    margin-bottom: 28px;
+
+  }
+
+  &__btn {
+    &:not(:last-child) {
+      margin-right: 16px;
+    }
+  }
+
+  &__item {
+    display: flex;
+    justify-content: center;
+  }
+}

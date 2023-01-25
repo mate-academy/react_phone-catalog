@@ -1,0 +1,46 @@
+.nav {
+  flex-grow: 1;
+
+  @include onMobile {
+    display: none;
+  }
+
+  @include onSmallDesktop {
+    display: none;
+  }
+
+  &__list {
+    display: flex;
+  }
+
+  &__link {
+    @extend %uppercase;
+    color: $secondary-grey;
+    padding: 27px 0;
+
+    &:not(:last-child) {
+      margin-right: 64px;
+    }
+
+    @include onMobile {
+      &:not(:last-child) {
+        margin-right: 0;
+      }
+    }
+
+    &--active {
+      color: $primary-dark;
+      position: relative;
+
+      &::after {
+        content: "";
+        position: absolute;
+        height: 3px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: $primary-dark;
+      }
+    }
+  }
+}

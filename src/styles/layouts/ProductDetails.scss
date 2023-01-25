@@ -1,0 +1,146 @@
+.ProductDetails {
+  &__title {
+    @extend %h1;
+    color: $primary-dark;
+    margin-bottom: 40px;
+  }
+
+  &__img-container {
+    display: flex;
+    margin-right: 64px;
+
+    @include onSmallDesktop {
+      margin-right: 10px;
+    }
+
+    @include onMobile {
+      margin-right: 0;
+    }
+  }
+
+  &__img-list {
+    width: 80px;
+    height: 210px;
+    margin-right: 16px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+
+    @include onDesktop {
+      height: 460px;
+      width: 80px;
+      overflow-x: hidden;
+      overflow-y: scroll;
+    }
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &__small-img {
+    @include onDesktop {
+      width: 80px;
+      height: 80px;
+    }
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 1px solid $light-grey;
+    margin-bottom: 16px;
+
+    &:hover {
+      border: 1px solid $primary-dark;
+    }
+  }
+
+  &__big-img-container {
+    max-width: 460px;
+
+    @include onMobile {
+      width: 100%;
+    }
+  }
+
+  &__big-img {
+    width: 100%;
+  }
+
+  &__price {
+    @extend %h1;
+    color: $primary-dark;
+  }
+
+  &__mainInformation {
+    @include onDesktop {
+      display: flex;
+      margin-bottom: 80px;
+    }
+  }
+
+  &__buttons {
+    margin-bottom: 32px;
+  }
+
+  &__description {
+    display: flex;
+    flex-wrap: wrap;
+
+    @include onSmallDesktop {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    @include onMobile {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  &__article {
+    flex: 1;
+    flex-basis: 40%;
+    max-width: 50%;
+    margin-bottom: 32px;
+
+    &--techSpec {
+      @include onMobile {
+        order: -1;
+      }
+    }
+
+    @include onDesktop {
+      &:nth-child(odd) {
+        margin-right: 64px;
+      }
+    }
+
+    @include onSmallDesktop {
+      width: 100%;
+      max-width: 100%;
+    }
+
+    @include onMobile {
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+
+  &__article-title {
+    @extend %h3;
+    color: $primary-dark;
+    margin-bottom: 16px;
+  }
+
+  &__content {
+    @extend %body-text;
+    color: $secondary-grey;
+  }
+
+  &__section-title {
+    @extend %h2;
+    color: $primary-dark;
+    padding-bottom: 16px;
+    border-bottom: 1px solid $light-grey;
+    margin-bottom: 31px;
+  }
+}

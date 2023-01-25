@@ -1,0 +1,56 @@
+.Pagination {
+  &__container {
+    display: flex;
+  }
+
+  &__btn {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $light-grey;
+    text-align: center;
+    cursor: pointer;
+
+    &:hover {
+      border: 1px solid $primary-dark;
+    }
+
+    &:not(:last-child) {
+      margin-right: 8px;
+    }
+
+    &:first-child {
+      margin-right: 16px;
+    }
+
+    &--active {
+      background-color: $primary-dark;
+      color: white;
+    }
+
+    &--previous {
+      border: 1px solid $icons-grey;
+      background-image: url("../../assets/images/icons/arrow-left.svg");
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    &--next {
+      border: 1px solid $icons-grey;
+      background-image: url("../../assets/images/icons/arrow-right.svg");
+      background-repeat: no-repeat;
+      background-position: center;
+      margin-left: 9px;
+    }
+  }
+
+  &__link {
+    @extend %body-text;
+    color: #000;
+    line-height: 32px;
+    padding: 5px;
+
+    &--active {
+      color: $white;
+    }
+  }
+}

@@ -1,0 +1,52 @@
+.ShopByCategory {
+  &__categories {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include onMobile {
+      flex-direction: column;
+    }
+  }
+
+  &__category {
+    text-decoration: none;
+    &:not(:last-child) {
+      margin-right: 16px;
+    }
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__img-container {
+    max-width: 368px;
+    max-height: 368px;
+    overflow: hidden;
+    margin-bottom: 24px;
+    transition: box-shadow 0.3s;
+
+    &:hover {
+      box-shadow: 1px 2px 5px $secondary-grey;
+    }
+  }
+
+  &__img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__name {
+    @extend %h3;
+    color: $primary-dark;
+    margin-bottom: 4px;
+  }
+
+  &__amount {
+    @extend %body-text;
+    color: $secondary-grey;
+  }
+}

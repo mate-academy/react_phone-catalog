@@ -1,0 +1,54 @@
+.square-button {
+  @extend %buttons-text;
+  text-decoration: none;
+  background-color: $white;
+  color: $primary-dark;
+  height: 32px;
+  width: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s;
+  border: 1px solid $icons-grey;
+  cursor: pointer;
+
+  &--m {
+    width: 40px;
+    height: 40px;
+  }
+
+  &--l {
+    width: 48px;
+    height: 48px;
+
+    @include onMobile {
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  &:hover {
+    border: 1px solid $primary-dark;
+  }
+
+  &--disabled {
+    border: 1px solid $light-grey;
+    color: $icons-grey;
+    background-color: $white;
+    pointer-events: none;
+
+    &:hover {
+      border: 1px solid $light-grey;
+    }
+  }
+
+  &__content {
+    color: $primary-dark;
+
+    &--disabled {
+      border: 1px solid $light-grey;
+      color: $icons-grey;
+      background-color: $white;
+    }
+  }
+}

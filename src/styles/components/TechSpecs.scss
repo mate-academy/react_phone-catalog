@@ -1,0 +1,26 @@
+.TechSpec {
+  width: 100%;
+  &__details-list {
+    margin-bottom: 16px;
+  }
+
+  &__details-item {
+    display: flex;
+    justify-content: space-between;
+    &:not(:last-child) {
+      margin-bottom: 7px;
+    }
+  }
+
+  &__name {
+    @extend %small-text;
+    line-height: 15px;
+    color: $secondary-grey;
+  }
+
+  &__spec {
+    @extend %small-text;
+    line-height: 15px;
+    color: $primary-dark;
+  }
+}

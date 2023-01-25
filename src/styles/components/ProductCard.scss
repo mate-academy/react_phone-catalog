@@ -1,0 +1,71 @@
+.card {
+  height: 507px;
+  width: 272px;
+  border: 1px solid $light-grey;
+  padding: 32px 24px 24px;
+
+  &__img-container {
+    display: block;
+    margin-bottom: 24px;
+    width: 100%;
+    height: 208px;
+
+    &:hover {
+      position: relative;
+      transition: all 0.3s;
+
+      &::after {
+        transition: 0.3s;
+        @extend %body-text;
+        color: $primary-dark;
+        text-align: center;
+        line-height: 208px;
+        position: absolute;
+        content: "Show more details";
+        z-index: 3;
+        left: 0;
+        right: 0;
+        background-color: $light-grey;
+        bottom: 0;
+        top: 0;
+        opacity: 0.85;
+      }
+    }
+  }
+
+  &__img {
+    width: 100%;
+    height: 208px;
+    object-fit: contain;
+    object-position: center;
+  }
+
+  &__name {
+    @extend %body-text;
+    color: $primary-dark;
+    margin-bottom: 6px;
+    height: 42px;
+  }
+
+  &__price {
+    @extend %h2;
+    padding-bottom: 6px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid $light-grey;
+
+    &--discount {
+      color: $primary-dark;
+      margin-right: 8px;
+    }
+
+    &--oldPrice {
+      color: $secondary-grey;
+      text-decoration: line-through;
+    }
+  }
+
+  &__button-container {
+    display: flex;
+    width: 100%;
+  }
+}
