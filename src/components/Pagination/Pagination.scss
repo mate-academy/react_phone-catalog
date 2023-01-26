@@ -1,0 +1,67 @@
+@import "../../styles/utils/variables";
+@import "../../styles/utils/mixins";
+
+.pagination {
+  padding-top: 40px;
+  display: flex;
+  gap: 16px;
+
+  transition: 0.3s all ease-in-out;
+
+  &__button {
+    @include squareSize($buttonSize);
+    background-color: #fff;
+    border: 1px solid $grayColor;
+
+    background-repeat: no-repeat;
+    background-position: center;
+
+    cursor: pointer;
+
+    transition: 0.3s all ease-in-out;
+
+    &--left {
+      background-image: url("../../img/icons/arrows/arrow-left--active.svg");
+
+      &:disabled {
+        cursor: default;
+        border-color: $lightGrayColor;
+        background-image: url("../../img/icons/arrows/arrow-left--disabled.svg");
+      }
+    }
+
+    &--right {
+      background-image: url("../../img/icons/arrows/arrow-right--active.svg");
+
+      &:disabled {
+        cursor: default;
+        border-color: $lightGrayColor;
+        background-image: url("../../img/icons/arrows/arrow-right--disabled.svg");
+      }
+    }
+  }
+
+  &__pages {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__page {
+    @include squareSize($buttonSize);
+    background-color: #fff;
+    border: 1px solid $lightGrayColor;
+
+    background-repeat: no-repeat;
+    background-position: center;
+
+    cursor: pointer;
+
+    transition: 0.3s all ease-in-out;
+
+    &--active {
+      border: none;
+      background-color: $primaryColor;
+      color: #fff;
+    }
+  }
+}

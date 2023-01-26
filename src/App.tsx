@@ -1,11 +1,12 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.scss';
 import { Layout } from './components/Layout/Layout';
-import { AccessoriesPage } from './pages/AccesoriesPage';
+import { AccessoriesPage } from './pages/AccessoriesPage';
 import { CartPage } from './pages/CartPage';
 import { FavoritesPage } from './pages/FavoritesPage';
 import { HomePage } from './pages/HomePage';
 import { PhonesPage } from './pages/PhonesPage';
+import { ProductDetailsPage } from './pages/ProductDetailsPage';
 import { TabletsPage } from './pages/TabletsPage';
 
 const App = () => (
@@ -13,9 +14,18 @@ const App = () => (
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<HomePage />} />
-        <Route path="phones" element={<PhonesPage />} />
-        <Route path="tablets" element={<TabletsPage />} />
-        <Route path="accessories" element={<AccessoriesPage />} />
+        <Route path="phones">
+          <Route index element={<PhonesPage />} />
+          <Route path=":productId" element={<ProductDetailsPage />} />
+        </Route>
+        <Route path="tablets">
+          <Route index element={<TabletsPage />} />
+          <Route path=":productId" element={<ProductDetailsPage />} />
+        </Route>
+        <Route path="accessories">
+          <Route index element={<AccessoriesPage />} />
+          <Route path=":productId" element={<ProductDetailsPage />} />
+        </Route>
         <Route path="favorites" element={<FavoritesPage />} />
         <Route path="cart" element={<CartPage />} />
       </Route>

@@ -12,71 +12,71 @@ tо fetch data (use actual `productId` as a last part of the URL before `.json`)
 Store the Cart in the `localStorage`
 
 ## Tasks
-- Create `pages`, `components` and `helpers` folders to structure your app
-- Use `scss` files per component
-- Use component names as BEM block names with all the other BEM rules applied
++ Create `pages`, `components` and `helpers` folders to structure your app 
++ Use `scss` files per component
++ Use component names as BEM block names with all the other BEM rules applied
 
 ### App
 1. Add `<header>` with links to all the pages
-    - The `Logo` and the `Nav` are aligned left
-    - The `Favorites` and the `Cart` are aligned right
+    + The `Logo` and the `Nav` are aligned left
+    + The `Favorites` and the `Cart` are aligned right
 1. Use `NavLink` to highlight current page in `Header`
 1. Add `<footer>`
-    - Footer content is limited to the same width as the page content
-    - Add the link to the Github repo
-    - (*) Implement `Back to top` button
+    + Footer content is limited to the same width as the page content
+    + Add the link to the Github repo
+    + (*) Implement `Back to top` button
 
 ### Home page
 1. Create `HomePage` available at `/` with just a title `Home page`
 1. Fetch products from API
-    - Each product has a `type`: `phone`, `tablet` or `accessory`
-    - `price` is given before `discount`
-    - `discount` is give in percents `%`
-    - `age` is used to sort by `Newest`
-    - `id` is required to fetch product details
+    + Each product has a `type`: `phone`, `tablet` or `accessory`
+    + `price` is given before `discount`
+    + `discount` is give in percents `%`
+    + `age` is used to sort by `Newest`
+    + `id` is required to fetch product details
 1. Create `ProductsSlider` component and use it in `Hot prices` block
-    - Create `getHotPriceProducts` method fetching products with discount from API
+    + Create `getHotPriceProducts` method fetching products with discount from API
       sorted by absolute discount value (not percentage given in API)
-    - For now do all the filtering and sorting on client side
-    - Create `ProductCard` component to use it everywhere and add `data-cy="cardsContainer"` attribute to the container of these elements
-    - Add ability to use `<` and `>` buttons to scroll products.
+    + For now do all the filtering and sorting on client side
+    + Create `ProductCard` component to use it everywhere and add `data-cy="cardsContainer"` attribute to the container of these elements
+    + Add ability to use `<` and `>` buttons to scroll products.
 1. Add `Brand new` block using `ProductsSlider` 
-    - Create `getBrandNewProducts` method fetching products without a discount from the API starting from the most expensive
+    + Create `getBrandNewProducts` method fetching products without a discount from the API starting from the most expensive
 1. Add `Shop by category` block with the links to `/phones`, `/tablets` and `/accessories`. Add `data-cy="categoryLinksContainer"`
 to links container.
 1. Replace the `Home page` title with slider and use for picture element of this slider
-    - User can change pictures with buttons infinitely
-    - (*) Swipe pictures every 5 seconds
+    + User can change pictures with buttons infinitely
+    + (*) Swipe pictures every 5 seconds
 
 ### Phones page
 1. Create `PhonesPage` available at `/phones` with a `<h1>` title `Mobile phones`
-    - Create `getPhones` API call fetching the products with the `type`: `phone`
+    + Create `getPhones` API call fetching the products with the `type`: `phone`
 1. Add `ProductsList` with `data-cy="productList"` attribute showing all the `phones`
 1. Implement a `Loader` to show it while waiting for the data from server
 1. Add ability to sort the products by `age` (`Newest`, `value="age"`), `name` (`Alphabetically`, `value="name"`) and `price` (`Cheapest`, `value="price"`) using `<select>` element.
-    - (*) save sort order in the URL `?sort=age` and apply it after the page reload
+    + (*) save sort order in the URL `?sort=age` and apply it after the page reload
 1. Add `Pagination` using `data-cy="pagination"` for it's components container and `Items on page` using `<select>` element with `4`, `8`, `16` and `all` options. Add attributes `data-cy="paginationLeft"` and `data-cy="paginationRight"` to pagination buttons
-    - It should limit the products you show to the user
-    - Read [the description](https://github.com/mate-academy/react_pagination#react-pagination) for more detailed explanation
-    - Hide all the pagination elements if there are a few items (less than 1 smallest page size)
-    - (*) Save `?page=2&perPage=8` in the URL and apply them after the page reload
+    + It should limit the products you show to the user
+    + Read [the description](https://github.com/mate-academy/react_pagination#react-pagination) for more detailed explanation
+    + Hide all the pagination elements if there are a few items (less than 1 smallest page size)
+    + (*) Save `?page=2&perPage=8` in the URL and apply them after the page reload
 
 ## Tablets and accessories
 1. Create `TabletsPage` page with `<h1>` title `Tablets` available at `/tablets` working the same way as `PhonesPage`
-    - Create `getTablets` method fetching the products with `type`: `tablet`
+    + Create `getTablets` method fetching the products with `type`: `tablet`
 1. Create `AccessoriesPage` with `<h1>` title `Accessories` page available at `/accessories` working the same way as `PhonesPage`
-    - Create `getAccessories` method fetching the products with `type`: `accessory`
-    - Implement `NoResults` component displayed if there are no products available containing text `<Category name> not found`
+    + Create `getAccessories` method fetching the products with `type`: `accessory`
+    + Implement `NoResults` component displayed if there are no products available containing text `<Category name> not found`
 
 ### Product details page
 1. Create `ProductDetailsPage` available at `/product/:productId`
-    - `ProductCard` should be a link to the details page
+    + `ProductCard` should be a link to the details page
 1. Fetch phone details from API taking the `phoneId` from the URL
-    - Use `Loader` when fetching the details
+    + Use `Loader` when fetching the details
 1. Show the details on the page
-    - Hide `Available colors` and `Select capacity` for now
-    - `About` section with `data-cy="productDescription"` should contain just a description (without any subheaders)
-    - Choose `Tech specs` you want to show
+    + Hide `Available colors` and `Select capacity` for now
+    + `About` section with `data-cy="productDescription"` should contain just a description (without any subheaders)
+    + Choose `Tech specs` you want to show
 1. Add ability to choose a picture
 1. Implement `You may also like` block with products chosen randomly
     - create `getSuggestedProducts` method fetching the suggested products
@@ -116,3 +116,11 @@ to links container.
 ### Other tasks
 1. Add `NotFoundPage` containing text `Page not found` for all the other URLs with the link to `HomePage`
 1. Implement `Phone was not found` state for the `PhoneDetailsPage` if there is no phone with a given `phoneId` on the server
+
+
+to do: 
+
+1. Add `NotFoundPage` containing text `Page not found` for all the other URLs with the link to `HomePage`
+1. Implement `Phone was not found` state for the `PhoneDetailsPage` if there is no phone with a given `phoneId` on the server
+1. Implement `You may also like` block with products chosen randomly for ProductDetails page
+    - create `getSuggestedProducts` method fetching the suggested products

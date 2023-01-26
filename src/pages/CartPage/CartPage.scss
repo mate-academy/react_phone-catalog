@@ -1,0 +1,24 @@
+@import "../../styles/utils/variables";
+@import "../../styles/utils/mixins";
+
+.cart-items {
+  display: grid;
+  grid-template-columns: repeat(24, 32px);
+  column-gap: 16px;
+
+  &__list {
+    grid-column: 1 / 17;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__checkout {
+    grid-column: 17 / 25;
+    border: 1px solid $lightGrayColor;
+    height: 206px;
+  }
+}

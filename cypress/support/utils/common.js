@@ -95,7 +95,7 @@ export const page = {
             .click();
     },
 
-    addToCart() {
+    handleCart() {
         cy.intercept('**products.json', { fixture: 'oneProduct' });
 
         cy.visit('/');

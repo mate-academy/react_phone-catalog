@@ -1,0 +1,127 @@
+@import "../../styles/utils/variables";
+@import "../../styles/utils/mixins";
+
+.cart-item {
+  display: flex;
+  padding: 0 40px 0 24px;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid $lightGrayColor;
+  height: 128px;
+
+  &__delete-button {
+    position: relative;
+    background-color: #fff;
+    border: none;
+
+    @include squareSize(32px);
+
+    color: $secondaryColor;
+    cursor: pointer;
+
+    &::before {
+      position: absolute;
+      display: block;
+      content: "";
+      height: 2px;
+      width: 12px;
+      background-color: $secondaryColor;
+      transform: rotate(-45deg);
+      transition: 0.3s all ease-in-out;
+    }
+
+    &::after {
+      position: absolute;
+      display: block;
+      content: "";
+      height: 2px;
+      width: 12px;
+      background-color: $secondaryColor;
+      transform: rotate(45deg);
+      transition: 0.3s all ease-in-out;
+    }
+
+    &:hover::before,
+    &:hover::after {
+      background-color: $primaryColor;
+    }
+  }
+
+  &__info {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  &__img-container {
+    @include squareSize(80px);
+    padding: 7px;
+  }
+
+  &__img {
+    height: 100%;
+  }
+
+  &__link {
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $primaryColor;
+  }
+
+  &__price-info {
+    display: flex;
+    align-items: center;
+    width: 200px;
+    justify-content: space-between;
+  }
+
+  &__counter {
+    display: flex;
+  }
+
+  &__button {
+    @include squareSize(32px);
+
+    cursor: pointer;
+
+    &--decrease {
+      background-image: url("../../img/icons/counter/minus--disabled.svg");
+
+      &:hover {
+        background-image: url("../../img/icons/counter/minus--active.svg");
+      }
+
+      &:disabled {
+        background-image: url("../../img/icons/counter/minus--disabled.svg");
+
+        opacity: 0.4;
+
+        &:hover {
+          border-color: #b4bdc3;
+        }
+      }
+    }
+
+    &--increase {
+      background-image: url("../../img/icons/counter/plus--disabled.svg");
+
+      &:hover {
+        background-image: url("../../img/icons/counter/plus--active.svg");
+      }
+    }
+  }
+
+  &__quantity {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include squareSize(32px);
+  }
+
+  &__price {
+    font-weight: 700;
+    font-size: 22px;
+  }
+}

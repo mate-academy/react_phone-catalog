@@ -3,6 +3,32 @@
   padding-top: 24px;
 
   &__section {
-    padding-bottom: 80px;
+    margin-bottom: 80px;
+  }
+
+  &__back-button {
+    margin: 40px 0 16px;
+
+    &--cart-page {
+      margin: 16px 0;
+    }
+  }
+
+  &__title {
+    margin: 40px 0 8px;
+
+    &--product-details {
+      margin: 20px 0 36px;
+    }
+
+    &--cart-page {
+      margin: 0 0 24px;
+    }
+
+  }
+
+  &__search-results {
+    color: $secondaryColor;
+    margin-bottom: 24px;
   }
 }

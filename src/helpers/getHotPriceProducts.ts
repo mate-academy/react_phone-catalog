@@ -3,13 +3,6 @@ import { Product } from '../types/Product';
 
 export const getHotPriceProducts = async () => {
   return request()
-    .then(response => {
-      if (!response.ok) {
-        throw new Error(`${response.status} - ${response.statusText}`);
-      }
-
-      return response.json();
-    })
     .then(products => products.filter(
       (product: Product) => product.discount,
     ))

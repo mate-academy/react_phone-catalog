@@ -25,5 +25,13 @@
     font-weight: 600;
     font-size: 12px;
     color: $secondaryColor;
+
+    cursor: pointer;
+
+    transition: 0.3s all ease-in-out;
+
+    &:hover {
+      color: $primaryColor;
+    }
   }
 }

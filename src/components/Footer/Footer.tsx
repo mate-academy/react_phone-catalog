@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './Footer.scss';
 
 export const Footer: React.FC = () => {
@@ -13,28 +13,34 @@ export const Footer: React.FC = () => {
           <nav className="nav">
             <ul className="nav__list">
               <li className="nav__item">
-                <NavLink
-                  to="/"
+                <a
+                  href="https://github.com/eugenekh81/react_phone-catalog"
                   className="nav__link"
+                  target="_blank"
+                  rel="noreferrer"
                 >
                   Github
-                </NavLink>
+                </a>
               </li>
               <li className="nav__item">
-                <NavLink
-                  to="/phones"
+                <a
+                  href="https://github.com/eugenekh81"
                   className="nav__link"
+                  target="_blank"
+                  rel="noreferrer"
                 >
                   Contacts
-                </NavLink>
+                </a>
               </li>
               <li className="nav__item">
-                <NavLink
-                  to="/tablets"
+                <a
+                  href="https://github.com/eugenekh81"
                   className="nav__link"
+                  target="_blank"
+                  rel="noreferrer"
                 >
                   Rights
-                </NavLink>
+                </a>
               </li>
             </ul>
           </nav>

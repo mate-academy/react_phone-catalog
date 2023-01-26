@@ -46,7 +46,10 @@ export const CategoryNav: React.FC = () => {
   }, []);
 
   return (
-    <div className="category-nav">
+    <div
+      className="category-nav"
+      data-cy="categoryLinksContainer"
+    >
       <CategoryNavLink
         path="/phones"
         type="phones"

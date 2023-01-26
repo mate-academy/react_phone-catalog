@@ -1,5 +1,9 @@
-import React from 'react';
+import classNames from 'classnames';
+import React, { useContext } from 'react';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import { Product } from '../../types/Product';
+import { CartContext } from '../CartContext';
+import { FavContext } from '../FavContext';
 import './ProductCard.scss';
 
 type Props = {
@@ -10,7 +14,9 @@ export const ProductCard: React.FC<Props> = ({
   product,
 }) => {
   const {
+    id,
     name,
+    type,
     price,
     discount,
     imageUrl,
@@ -19,13 +25,33 @@ export const ProductCard: React.FC<Props> = ({
     capacity,
   } = product;
 
+  const { productId } = useParams();
+
+  const { pathname } = useLocation();
+  const showFullPath
+    = pathname === '/'
+    || pathname === '/favorites'
+    || !productId;
+
+  const linkAddress
+    = showFullPath
+      ? `../${type}s/${id}`
+      : `../${id}`;
+
+  const { favs, handleFavs } = useContext(FavContext);
+  const { cart, handleCart } = useContext(CartContext);
+
   const currentPrice = discount > 0
     ? price * (1 - discount / 100)
     : price;
 
+  const inFavs = favs.includes(id);
+  const inCart = cart.some(item => item.id === product.id);
+
   return (
     <div className="product-card">
-      <div
+      <Link
+        to={linkAddress}
         className="product-card__image-container"
       >
         <img
@@ -33,10 +59,15 @@ export const ProductCard: React.FC<Props> = ({
           alt="phone"
           className="product-card__image"
         />
-      </div>
-      <h2 className="product-card__title">
-        {name}
-      </h2>
+      </Link>
+      <Link
+        to={linkAddress}
+        className="product-card__title--link"
+      >
+        <h2 className="product-card__title">
+          {name}
+        </h2>
+      </Link>
       <div className="product-card__prices">
         <div
           className="product-card__current-price"
@@ -78,22 +109,32 @@ export const ProductCard: React.FC<Props> = ({
       </div>
       <div className="product-card__buttons">
         <button
-          aria-label="addToCartBtn"
+          aria-label="handleCartBtn"
           type="button"
-          className="
-            product-card__button
-            product-card__button--add-to-cart
-          "
+          className={classNames(
+            'product-card__button',
+            'product-card__button--add-to-cart',
+            {
+              'product-card__button--add-to-cart_added':
+                inCart,
+            },
+          )}
+          onClick={() => handleCart(product)}
         >
-          Add to cart
+          {`Add${inCart ? 'ed' : ''} to cart`}
         </button>
         <button
           aria-label="addToFavsBtn"
           type="button"
-          className="
-            product-card__button
-            product-card__button--add-to-favs
-          "
+          className={classNames(
+            'product-card__button',
+            'product-card__button--add-to-favs',
+            {
+              'product-card__button--add-to-favs_added':
+                inFavs,
+            },
+          )}
+          onClick={() => handleFavs(id)}
         />
       </div>
     </div>

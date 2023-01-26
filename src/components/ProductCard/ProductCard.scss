@@ -7,6 +7,7 @@
   padding: 32px 32px 24px;
 
   &__image-container {
+    display: block;
     margin-bottom: 24px;
     height: 208px;
     width: 208px;
@@ -19,9 +20,13 @@
   &__title {
     height: 42px;
     margin-bottom: 8px;
-    font-weight: 500;
     font-size: 14px;
+    font-weight: 500;
     color: $primaryColor;
+    
+    &--link {
+      text-decoration: none;
+    }
   }
 
   &__prices {
@@ -69,13 +74,21 @@
     &--add-to-cart {
       height: 100%;
       width: 176px;
-      border: none;
       outline: none;
       background-color: $primaryColor;
 
       font-weight: 600;
       font-size: 14px;
       color: #fff;
+      border: 1px solid $lightGrayColor;
+
+      transition: 0.3s all ease-in-out;
+
+      &_added {
+        border-color: $lightGrayColor;
+        color: $greenColor;
+        background-color: #fff;
+      }
     }
 
     &--add-to-favs {
@@ -86,6 +99,16 @@
       background-position: center;
 
       border: 1px solid $lightGrayColor;
+      
+      transition: 0.3s all ease-in-out;
+
+      &:hover {
+        border-color: $secondaryColor;
+      }
+
+      &_added {
+        background-image: url("../../img/icons/heart/heart-red.svg");
+      }
     }
   }
 }

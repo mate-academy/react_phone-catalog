@@ -1,0 +1,115 @@
+@import "../../styles/utils/variables";
+@import "../../styles/utils/mixins";
+
+.product-page {
+  &__models-count {
+    margin-bottom: 40px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+
+    color: $secondaryColor;
+  }
+
+  &__filters {
+    margin-bottom: 24px;
+    display: flex;
+    gap: 16px;
+  }
+}
+
+.select {
+  cursor: pointer;
+
+  &__title {
+    margin-bottom: 4px;
+    font-weight: 600;
+    font-size: 12px;
+
+    color: $secondaryColor;
+  }
+
+  &__field {
+    position: relative;
+    display: inline-flex;
+    padding: 10px 12px;
+    border: 1px solid $lightGrayColor;
+
+    background-color: transparent;
+
+    font-weight: 600;
+    font-size: 14px;
+
+    color: $primaryColor;
+
+    width: 176px;
+
+    transition: 0.3s all ease-in-out;
+
+    &::after {
+      position: absolute;
+      right: 12px;
+      content: "";
+      @include squareSize(16px);
+      background-image: url("../../img/icons/arrows/arrow-down--disabled.svg");
+      background-repeat: no-repeat;
+
+      transition: 0.3s all ease-in-out;
+      cursor: pointer;
+    }
+
+    &--open {
+      border-color: $primaryColor;
+
+      &::after {
+        transform: rotate(-180deg);
+      }
+    }
+
+    &:hover {
+      border-color: $secondaryColor;
+
+      &::after {
+        background-image: url("../../img/icons/arrows/arrow-down--active.svg");
+      }
+    }
+  }
+}
+
+.dropdown-list {
+  position: absolute;
+  height: 0;
+  overflow: hidden;
+
+  width: 176px;
+  border: 1px solid $lightGrayColor;
+  border-top-width: 0;
+  border-bottom-width: 0;
+
+  background-color: #fff;
+
+  transition: 0.3s ease-in-out;
+
+  &__item {
+    display: flex;
+    width: 100%;
+    padding: 10px 12px;
+    background-color: transparent;
+    cursor: pointer;
+
+    border: none;
+
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+
+    color: $secondaryColor;
+
+    transition: 0.3s ease-in-out;
+
+    &:hover {
+      color: $primaryColor;
+      background-color: $lightGrayColor;
+    }
+  }
+}

@@ -1,17 +1,67 @@
 @import "../../styles/utils/variables";
+@import "../../styles/utils/mixins";
 
 .search {
-  padding: 24px;
-  border: none;
-  outline: none;
-  border-left: 1px solid $lightGrayColor;
-  width: 327px;
-  font-size: 14px;
-  background-repeat: no-repeat;
-  background-position: center right 24px;
-  background-image: url("../../img/icons/magnifying-glass/magnifying-glass.svg");
-  
-  &::placeholder {
-    color: $grayColor;
+  position: relative;
+
+  &__input {
+    padding: 22px;
+    border: none;
+    outline: none;
+    border-left: 1px solid $lightGrayColor;
+    width: 327px;
+    font-size: 14px;
+    background-repeat: no-repeat;
+    background-position: center right 24px;
+    background-image: url("../../img/icons/magnifying-glass/magnifying-glass.svg");
+
+    cursor: pointer;
+
+    &::placeholder {
+      color: $grayColor;
+    }
+  }
+
+  &__delete-button {
+    background-color: #fff;
+    border: none;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 4px;
+
+    @include squareSize(12px);
+
+    cursor: pointer;
+
+    display: block;
+
+    &::before {
+      position: absolute;
+      display: block;
+      content: "";
+
+      top: 50%;
+      transform: translateY(-50%) rotate(-45deg);
+      left: 4px;
+
+      height: 2px;
+      width: 12px;
+      background-color: #ff9292;
+    }
+
+    &::after {
+      position: absolute;
+      display: block;
+      content: "";
+
+      top: 50%;
+      transform: translateY(-50%) rotate(45deg);
+      left: 4px;
+
+      height: 2px;
+      width: 12px;
+      background-color: #ff9292;
+    }
   }
 }

@@ -3,6 +3,7 @@
 .slider {
   display: flex;
   flex-direction: column;
+  padding-top: calc(40px - 24px);
 
   &__main {
     display: flex;

@@ -1,0 +1,41 @@
+@import "../../styles/utils/variables";
+@import "../../styles/utils/mixins";
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  height: 16px;
+  gap: 8px;
+
+  background-repeat: no-repeat;
+  background-position: center;
+
+  &__home {
+    @include squareSize(16px);
+    background-image: url("../../img/icons/home/home.svg");
+  }
+
+  &__arrow {
+    @include squareSize(16px);
+    background-image: url("../../img/icons/arrows/arrow-right--disabled.svg");
+  }
+
+  &__category,
+  &__product-name {
+    display: flex;
+    padding-top: 3px;
+  }
+  
+  &__link,
+  &__product-name {
+    display: flex;
+    font-weight: 600;
+    font-size: 12px;
+    color: $secondaryColor;
+    text-decoration: none;
+
+    &--active {
+      color: $primaryColor;
+    }
+  }
+}

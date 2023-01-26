@@ -31,44 +31,46 @@ export const ProductsSlider: React.FC<Props> = ({
           {title}
         </h2>
 
-        <div className="products-slider__buttons">
-          <button
-            className={classNames(
-              'button',
-              'button--left',
-              {
-                'button--left_disabled': imageNo === 0,
-                'button--disabled': imageNo === 0,
-              },
-            )}
-            aria-label="leftBtn"
-            type="button"
-            onClick={() => {
-              setImageNo(prev => prev - 1);
-            }}
-            disabled={
-              imageNo === 0
-            }
-          />
-          <button
-            className={classNames(
-              'button',
-              'button--right',
-              {
-                'button--right_disabled': imageNo === products.length - 4,
-                'button--disabled': imageNo === products.length - 4,
-              },
-            )}
-            aria-label="rightBtn"
-            type="button"
-            onClick={() => {
-              setImageNo(prev => prev + 1);
-            }}
-            disabled={
-              imageNo === products.length - 4
-            }
-          />
-        </div>
+        {products.length > 4 && (
+          <div className="products-slider__buttons">
+            <button
+              className={classNames(
+                'button',
+                'button--left',
+                {
+                  'button--left_disabled': imageNo === 0,
+                  'button--disabled': imageNo === 0,
+                },
+              )}
+              aria-label="leftBtn"
+              type="button"
+              onClick={() => {
+                setImageNo(prev => prev - 1);
+              }}
+              disabled={
+                imageNo === 0
+              }
+            />
+            <button
+              className={classNames(
+                'button',
+                'button--right',
+                {
+                  'button--right_disabled': imageNo === products.length - 4,
+                  'button--disabled': imageNo === products.length - 4,
+                },
+              )}
+              aria-label="rightBtn"
+              type="button"
+              onClick={() => {
+                setImageNo(prev => prev + 1);
+              }}
+              disabled={
+                imageNo === products.length - 4
+              }
+            />
+          </div>
+        )}
       </div>
       <div
         data-cy="cardsContainer"

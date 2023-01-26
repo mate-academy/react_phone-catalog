@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import './Slider.scss';
 
 interface SliderImage {
@@ -130,6 +130,14 @@ export const Slider: React.FC = () => {
       }
     }
   };
+
+  useEffect(() => {
+    const timer = setTimeout(() => moveRight(), 5000);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [currentImage]);
 
   return (
     <div className="slider">

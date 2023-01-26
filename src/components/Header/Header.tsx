@@ -1,14 +1,31 @@
 import classNames from 'classnames';
-import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import React, { useContext } from 'react';
+import {
+  Link, NavLink, useLocation,
+} from 'react-router-dom';
+import { CartContext } from '../CartContext';
+import { FavContext } from '../FavContext';
 import { Search } from '../Search';
 import './Header.scss';
 
 export const Header: React.FC = () => {
+  const { pathname, search } = useLocation();
+  const { favs } = useContext(FavContext);
+  const { cart } = useContext(CartContext);
+
+  const showSearchInput
+    = pathname === '/phones'
+    || pathname === '/tablets'
+    || pathname === '/accessories'
+    || pathname === '/favorites';
+
   return (
     <header className="header">
       <div className="header__left">
-        <Link to="/" className="logo">
+        <Link
+          to="/"
+          className="logo"
+        >
           <img src="img/main-logo/logo.svg" alt="" />
         </Link>
         <nav className="nav">
@@ -28,7 +45,10 @@ export const Header: React.FC = () => {
             </li>
             <li className="nav__item">
               <NavLink
-                to="/phones"
+                to={{
+                  pathname: '/phones',
+                  search,
+                }}
                 className={
                   ({ isActive }) => classNames(
                     'nav__link',
@@ -41,7 +61,10 @@ export const Header: React.FC = () => {
             </li>
             <li className="nav__item">
               <NavLink
-                to="/tablets"
+                to={{
+                  pathname: '/tablets',
+                  search,
+                }}
                 className={
                   ({ isActive }) => classNames(
                     'nav__link',
@@ -54,7 +77,10 @@ export const Header: React.FC = () => {
             </li>
             <li className="nav__item">
               <NavLink
-                to="/accessories"
+                to={{
+                  pathname: '/accessories',
+                  search,
+                }}
                 className={
                   ({ isActive }) => classNames(
                     'nav__link',
@@ -69,27 +95,41 @@ export const Header: React.FC = () => {
         </nav>
       </div>
       <div className="header__right">
-        <Search />
-        <NavLink
-          to="/favorites"
-          className={
-            ({ isActive }) => classNames(
-              'header__button',
-              'header__button--favorites',
-              { 'header__button--active': isActive },
-            )
-          }
-        />
-        <NavLink
-          to="/cart"
-          className={
-            ({ isActive }) => classNames(
-              'header__button',
-              'header__button--cart',
-              { 'header__button--active': isActive },
-            )
-          }
-        />
+        {showSearchInput && <Search />}
+        <div className="header__button">
+          <NavLink
+            to="/favorites"
+            className={
+              ({ isActive }) => classNames(
+                'header__button--link',
+                'header__button--favorites',
+                { 'header__button--active': isActive },
+              )
+            }
+          />
+          {favs.length > 0 && (
+            <span className="header__button--count">
+              {favs.length}
+            </span>
+          )}
+        </div>
+        <div className="header__button">
+          <NavLink
+            to="/cart"
+            className={
+              ({ isActive }) => classNames(
+                'header__button--link',
+                'header__button--cart',
+                { 'header__button--active': isActive },
+              )
+            }
+          />
+          {cart.length > 0 && (
+            <span className="header__button--count">
+              {cart.length}
+            </span>
+          )}
+        </div>
       </div>
     </header>
   );

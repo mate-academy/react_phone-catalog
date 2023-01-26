@@ -18,7 +18,7 @@ export const HomePage: React.FC = () => {
   }, []);
 
   return (
-    <div className="home-page">
+    <>
       <section className="page__section">
         <Slider />
       </section>
@@ -41,6 +41,6 @@ export const HomePage: React.FC = () => {
           products={brandNewModels}
         />
       </section>
-    </div>
+    </>
   );
 };
