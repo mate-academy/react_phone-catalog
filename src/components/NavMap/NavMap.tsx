@@ -1,7 +1,5 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 import { FC, Fragment, useContext } from 'react';
 import cn from 'classnames';
-// import { Link } from 'react-router-dom';
 import { ThemeContext } from '../../contexts/ThemeContext';
 import { NavigationLink } from '../NavigationLink';
 

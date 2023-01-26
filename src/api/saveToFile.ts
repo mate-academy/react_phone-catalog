@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable global-require */
-/* eslint-disable @typescript-eslint/no-var-requires */
+
 
 type FileParams = {
   fileName: string;

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 import {
   FC, useContext, useEffect, useState,
 } from 'react';

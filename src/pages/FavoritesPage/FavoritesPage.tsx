@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 import { FC, useContext } from 'react';
 import { NavMap } from '../../components/NavMap';
 import { FavoritesContext } from '../../contexts/FavoritesContext';

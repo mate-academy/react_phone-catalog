@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-/* eslint-disable @typescript-eslint/no-var-requires */
+
 
 import { Category } from '../types/Category';
 import { Product } from '../types/Product';

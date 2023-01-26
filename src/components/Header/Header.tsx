@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 import cn from 'classnames';
 import {
   FC, useContext, useEffect, useState,

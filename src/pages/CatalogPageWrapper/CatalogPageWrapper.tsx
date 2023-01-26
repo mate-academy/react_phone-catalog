@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 import { FC, Suspense } from 'react';
 import { Await, useLoaderData, useParams } from 'react-router-dom';
 import { ErrorMessage } from '../../components/ErrorMessage';

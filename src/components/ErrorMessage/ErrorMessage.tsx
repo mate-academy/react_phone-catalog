@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 import { FC, useContext } from 'react';
 import cn from 'classnames';
 import { ErrorText } from '../../types/ErrorText';

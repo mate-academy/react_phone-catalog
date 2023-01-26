@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 import {
   FC, useContext,
 } from 'react';
@@ -125,6 +124,22 @@ export const ProductDescriptionCard: FC<Props> = ({ className = '' }) => {
     RAM: ram,
     'Build-in memory': currentCapacity,
     Camera: camera,
+  };
+
+  const handleCartButtonClick = () => {
+    if (isInCart(productId)) {
+      removeFromCart(productId);
+    } else {
+      saveToCart(currentProduct);
+    }
+  };
+
+  const handleFavoritesButtonClick = () => {
+    if (isInFavorites(productId)) {
+      removeFromFavorites(productId);
+    } else {
+      saveToFavorites(currentProduct);
+    }
   };
 
   return (
@@ -269,13 +284,7 @@ export const ProductDescriptionCard: FC<Props> = ({ className = '' }) => {
               {count ? (
                 <>
                   <PrimaryButton
-                    onClick={() => {
-                      if (isInCart(productId)) {
-                        removeFromCart(productId);
-                      } else {
-                        saveToCart(currentProduct);
-                      }
-                    }}
+                    onClick={handleCartButtonClick}
                     selected={isInCart(productId)}
                   >
                     {isInCart(productId)
@@ -284,13 +293,7 @@ export const ProductDescriptionCard: FC<Props> = ({ className = '' }) => {
                   </PrimaryButton>
 
                   <IconButton
-                    onClick={() => {
-                      if (isInFavorites(productId)) {
-                        removeFromFavorites(productId);
-                      } else {
-                        saveToFavorites(currentProduct);
-                      }
-                    }}
+                    onClick={handleFavoritesButtonClick}
                     favorite={{ filled: isInFavorites(productId) }}
                   />
                 </>

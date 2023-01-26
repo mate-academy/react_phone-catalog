@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 import { FC, useEffect, useState } from 'react';
 import cn from 'classnames';
 import { useSearchParams } from 'react-router-dom';

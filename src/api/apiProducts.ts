@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 import { defer } from 'react-router-dom';
 import { Category } from '../types/Category';
 import { Product } from '../types/Product';
@@ -133,9 +132,8 @@ export function homePageLoader() {
   });
 }
 
-export function catalogPageLoader(category: string | undefined) {
-  if (!category
-    || !Object.values(Category).includes(category as Category)) {
+export function catalogPageLoader(category: Category) {
+  if (!Object.values(Category).includes(category)) {
     throw new Error();
   }
 

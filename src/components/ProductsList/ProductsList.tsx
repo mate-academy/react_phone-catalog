@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 import { FC } from 'react';
 import cn from 'classnames';
 import { Product } from '../../types/Product';

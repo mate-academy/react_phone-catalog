@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 import { FC, useContext, useEffect } from 'react';
 import useReactFontLoader from 'react-font-loader';
 import './styles/normalize.scss';

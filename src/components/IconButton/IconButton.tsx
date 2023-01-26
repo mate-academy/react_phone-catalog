@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-/* eslint-disable jsx-a11y/control-has-associated-label */
 import { FC, useContext } from 'react';
 import cn from 'classnames';
 import { ThemeContext } from '../../contexts/ThemeContext';

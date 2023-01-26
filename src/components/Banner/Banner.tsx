@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import {
   FC, useState, useContext, useEffect,

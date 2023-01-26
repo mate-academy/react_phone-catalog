@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 import cn from 'classnames';
 import { FC, useContext } from 'react';
 import { NavLink } from 'react-router-dom';

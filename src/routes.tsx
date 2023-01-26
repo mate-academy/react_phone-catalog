@@ -17,6 +17,7 @@ import { HomePage } from './pages/HomePage';
 import { NotFoundPage } from './pages/NotFoundPage';
 import { ProductDescriptionPage } from './pages/ProductDescriptionPage';
 import { Root } from './Root';
+import { Category } from './types/Category';
 
 export const routes = createRoutesFromElements(
   <Route
@@ -40,7 +41,7 @@ export const routes = createRoutesFromElements(
         index
         element={<CatalogPageWrapper />}
         errorElement={<NotFoundPage />}
-        loader={({ params }) => catalogPageLoader(params.category)}
+        loader={({ params }) => catalogPageLoader(params.category as Category)}
         shouldRevalidate={({ currentParams, nextParams }) => {
           return revalidate(currentParams.category, nextParams.category);
         }}

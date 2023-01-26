@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-var-requires */
+
 import {
   FC, useCallback, useContext, useEffect, useRef, useState,
 } from 'react';

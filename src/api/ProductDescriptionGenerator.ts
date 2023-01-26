@@ -1,5 +1,5 @@
 /* eslint-disable global-require */
-/* eslint-disable @typescript-eslint/no-var-requires */
+
 /* eslint-disable max-len */
 
 import { Category } from '../types/Category';
