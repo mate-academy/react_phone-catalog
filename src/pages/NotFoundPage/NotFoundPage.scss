@@ -1,0 +1,18 @@
+@import "../../styles/utils/variables";
+
+.not-found {
+  &__link {
+    margin-top: 48px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 176px;
+
+    text-decoration: none;
+
+    background-color: $primaryColor;
+    color: #fff;
+  }
+}

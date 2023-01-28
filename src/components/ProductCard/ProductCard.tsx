@@ -126,6 +126,7 @@ export const ProductCard: React.FC<Props> = ({
         <button
           aria-label="addToFavsBtn"
           type="button"
+          data-cy="addToFavorite"
           className={classNames(
             'product-card__button',
             'product-card__button--add-to-favs',

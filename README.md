@@ -42,7 +42,7 @@ Store the Cart in the `localStorage`
     + Add ability to use `<` and `>` buttons to scroll products.
 1. Add `Brand new` block using `ProductsSlider` 
     + Create `getBrandNewProducts` method fetching products without a discount from the API starting from the most expensive
-1. Add `Shop by category` block with the links to `/phones`, `/tablets` and `/accessories`. Add `data-cy="categoryLinksContainer"`
+1. + Add `Shop by category` block with the links to `/phones`, `/tablets` and `/accessories`. Add `data-cy="categoryLinksContainer"`
 to links container.
 1. Replace the `Home page` title with slider and use for picture element of this slider
     + User can change pictures with buttons infinitely
@@ -79,48 +79,40 @@ to links container.
     + Choose `Tech specs` you want to show
 1. Add ability to choose a picture
 1. Implement `You may also like` block with products chosen randomly
-    - create `getSuggestedProducts` method fetching the suggested products
-1. Add `Back` button with `data-cy="backButton"` attribute working the same way as a Browser `Back` button
+    + create `getSuggestedProducts` method fetching the suggested products
+1. Add `Back` button with `data-cy="backButton"` attribute working the same way as a Browser `Back` button +
 1. Add `Breadcrumbs` at the top with `data-cy="breadCrumbs"` attribute in elements container
-    - The last part is a plain text all the other ones are links
+    + The last part is a plain text all the other ones are links
 
 ### Cart
 1. Implement `CartPage` storing an array of `CartItems`
-    - Each item should have `id`, `quantity` and a `product`
+    + Each item should have `id`, `quantity` and a `product`
 1. `Add to cart` button in `ProductCart` should add a product to the `Cart`
 1. If the product is already in the `Cart` the button should say `Added to cart`
 1. Implement `Cart` helper storing the items in memory and having all the required methods.
   Later on it will interact with the API
 1. Add ability to remove items from the `Cart` with a `x` button. Add `data-cy="cartDeleteButton"` attribute to the `<button>` element.
-1. Add message `Your cart is empty` when there are no products in the `Cart`
-1. Add ability to change the quantity in the `Cart` with buttons containing symbols `-` and `+` around the quantity.
-1. Total amount and quantity should be calculated automatically. The element showing the quantity should have `data-cy="productQauntity"` attribute.
-1. `Checkout` button should show the message `We are sorry, but this feature is not implemented yet` after clicking.
-1. (*) Show the total quantity near the `Cart` icon in the header.
-1. (*) Save the `Cart` to the `localSotrage` on each change and read it on page load.
+1. Add message `Your cart is empty` when there are no products in the `Cart` +
+1. Add ability to change the quantity in the `Cart` with buttons containing symbols `-` and `+` around the quantity.+
+1. Total amount and quantity should be calculated automatically. The element showing the quantity should have `data-cy="productQauntity"` attribute.+
+1. `Checkout` button should show the message `We are sorry, but this feature is not implemented yet` after clicking.+
+1. (*) Show the total quantity near the `Cart` icon in the header.+
+1. (*) Save the `Cart` to the `localSotrage` on each change and read it on page load.+
 
 ### Favorites
-1. Create `FavoritesPage` it should show the `ProductsList` with all the favorite products
-1. Add ability to add/remove favorite products by pressing a hart and add `data-cy="addToFavorite"` attribute to this `<button>` element.
-1. (*) Show the favorites count near the `Favorites` icon in the header
+1. Create `FavoritesPage` it should show the `ProductsList` with all the favorite products+
+1. Add ability to add/remove favorite products by pressing a hart and add `data-cy="addToFavorite"` attribute to this `<button>` element.+
+1. (*) Show the favorites count near the `Favorites` icon in the header+
 
 ### Search
-1. Add a `Search` component with an input into the `<header>` to filter products
-1. It should be shown only at `/phones`, `/tablets`, `/accessories` and `/favorites` with an appropriate text
+1. Add a `Search` component with an input into the `<header>` to filter products+
+1. It should be shown only at `/phones`, `/tablets`, `/accessories` and `/favorites` with an appropriate text+
 1. The `x` sign with `data-cy="searchDelete"` attribute appears when the query is not empty and clears the search
 1. It should work with pagination and sorting
-1. (*) Add `debounce` to the search field
-1. (*) Save `Search` params in the URL using `queryParams` (`?query=moto`) and apply them on page load
-1. (*) Implement `NoSearchResults` component and show it when there are no products matching the query
+1. (*) Add `debounce` to the search field +
+1. (*) Save `Search` params in the URL using `queryParams` (`?query=moto`) and apply them on page load +
+1. (*) Implement `NoSearchResults` component and show it when there are no products matching the query +
 
 ### Other tasks
 1. Add `NotFoundPage` containing text `Page not found` for all the other URLs with the link to `HomePage`
 1. Implement `Phone was not found` state for the `PhoneDetailsPage` if there is no phone with a given `phoneId` on the server
-
-
-to do: 
-
-1. Add `NotFoundPage` containing text `Page not found` for all the other URLs with the link to `HomePage`
-1. Implement `Phone was not found` state for the `PhoneDetailsPage` if there is no phone with a given `phoneId` on the server
-1. Implement `You may also like` block with products chosen randomly for ProductDetails page
-    - create `getSuggestedProducts` method fetching the suggested products

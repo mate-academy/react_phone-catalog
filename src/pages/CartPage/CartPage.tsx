@@ -11,7 +11,12 @@ export const CartPage: React.FC = () => {
   return (
     <>
       {cart.length === 0 ? (
-        <h1>No items in cart...</h1>
+        <>
+          <div className="page__back-button page__back-button--cart-page">
+            <BackButton />
+          </div>
+          <h1>Your cart is empty...</h1>
+        </>
       ) : (
         <>
           <div
