@@ -10,24 +10,18 @@ export const CartPage: React.FC = () => {
 
   return (
     <>
-      {cart.length === 0 ? (
-        <>
-          <div className="page__back-button page__back-button--cart-page">
-            <BackButton />
-          </div>
-          <h1>Your cart is empty...</h1>
-        </>
-      ) : (
-        <>
-          <div
-            className="
+      <div
+        className="
           page__back-button
           page__back-button--cart-page
         "
-          >
-            <BackButton />
-          </div>
-
+      >
+        <BackButton />
+      </div>
+      {cart.length === 0 ? (
+        <h1>Your cart is empty...</h1>
+      ) : (
+        <>
           <h1 className="page__title page__title--cart-page">
             Cart
           </h1>
@@ -43,7 +37,7 @@ export const CartPage: React.FC = () => {
               ))}
             </ul>
             <div className="cart-items__checkout">
-              <CartCheckout />
+              <CartCheckout cart={cart} />
             </div>
           </div>
         </>

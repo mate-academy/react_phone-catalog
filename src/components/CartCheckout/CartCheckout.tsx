@@ -1,10 +1,13 @@
 import classNames from 'classnames';
-import React, { useContext, useState } from 'react';
-import { CartContext } from '../CartContext';
+import React, { useState } from 'react';
+import { CartItemType } from '../../types/CartItemType';
 import './CartCheckout.scss';
 
-export const CartCheckout: React.FC = () => {
-  const { cart } = useContext(CartContext);
+type Props = {
+  cart: CartItemType[],
+};
+
+export const CartCheckout: React.FC<Props> = ({ cart }) => {
   const [isError, setIsError] = useState<boolean>(false);
 
   if (isError) {
