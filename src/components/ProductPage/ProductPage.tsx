@@ -28,14 +28,14 @@ export const ProductPage: React.FC<Props> = ({
   const [
     itemsOnPage,
     setItemsOnPage,
-  ] = useState<string>(
+  ] = useState(
     searchParams.get('perPage') || 'All',
   );
 
   const [
     sortBy,
     setSortBy,
-  ] = useState<string>(
+  ] = useState(
     searchParams.get('sortBy') || 'Newest',
   );
 

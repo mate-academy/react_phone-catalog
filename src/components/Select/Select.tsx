@@ -16,7 +16,7 @@ export const Select: React.FC<Props> = ({
   currentOption,
   onSelect,
 }) => {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   const selectField = useRef<HTMLButtonElement | null>(null);
   const dropdownList = useRef<HTMLDivElement | null>(null);

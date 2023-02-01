@@ -30,7 +30,7 @@ export const Slider: React.FC = () => {
     sliderImagesUrl[1],
   ]);
   const [currentImage, setCurrentImage] = useState<number>(1);
-  const [isScrolling, setIsScrolling] = useState<boolean>(false);
+  const [isScrolling, setIsScrolling] = useState(false);
 
   const offset = 1040;
   const delay = 800;

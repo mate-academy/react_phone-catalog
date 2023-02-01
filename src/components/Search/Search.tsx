@@ -19,10 +19,10 @@ const debounce = (
 export const Search: React.FC = () => {
   const { pathname } = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
-  const [query, setQuery] = useState<string>(
+  const [query, setQuery] = useState(
     searchParams.get('query') || '',
   );
-  const [appliedQuery, setAppliedQuery] = useState<string>(
+  const [appliedQuery, setAppliedQuery] = useState(
     '',
   );
 

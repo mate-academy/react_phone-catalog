@@ -6,8 +6,8 @@ import { Product } from '../../types/Product';
 
 export const TabletsPage: React.FC = () => {
   const [tablets, setTablets] = useState<Product[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [isError, setIsError] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
 
   useEffect(() => {
     (async () => {

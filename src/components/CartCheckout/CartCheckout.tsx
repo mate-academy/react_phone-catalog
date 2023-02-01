@@ -8,7 +8,7 @@ type Props = {
 };
 
 export const CartCheckout: React.FC<Props> = ({ cart }) => {
-  const [isError, setIsError] = useState<boolean>(false);
+  const [isError, setIsError] = useState(false);
 
   if (isError) {
     setTimeout(() => setIsError(false), 2000);

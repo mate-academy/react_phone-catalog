@@ -8,8 +8,8 @@ import { Product } from '../../types/Product';
 export const FavoritesPage: React.FC = () => {
   const { favs } = useContext(FavContext);
   const [products, setProducts] = useState<Product[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [isError, setIsError] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
 
   useEffect(() => {
     (async () => {

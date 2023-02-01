@@ -23,7 +23,7 @@ export const ProductDetailsPage: React.FC = () => {
   const cart = useContext(CartContext);
 
   const { productId } = useParams();
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [products, setProducts] = useState<Product[]>([]);
   const [randomProducts, setRandomProducts] = useState<Product[]>([]);
   const [product, setProduct] = useState<Product>();
@@ -32,16 +32,16 @@ export const ProductDetailsPage: React.FC = () => {
     oldPrice: null,
   });
   const [productDetails, setProductDetails] = useState<ProductDetails>();
-  const [currentImg, setCurrentImg] = useState<string>('');
+  const [currentImg, setCurrentImg] = useState('');
   const colorOptions = ['beige', 'teal', 'graphite', 'eggwhite'];
-  const [selectedColor, setSelectedColor] = useState<string>('');
+  const [selectedColor, setSelectedColor] = useState('');
   const capacityOptions = ['64 GB', '256 GB', '512 GB'];
-  const [selectedCapacity, setSelectCapacity] = useState<string>('');
+  const [selectedCapacity, setSelectCapacity] = useState('');
 
   const inFavs = favs.favs.some(id => id === product?.id);
   const inCart = cart.cart.some(item => item.id === product?.id);
 
-  const [error, setError] = useState<boolean>(false);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     (async () => {

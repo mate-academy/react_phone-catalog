@@ -6,8 +6,8 @@ import { Product } from '../../types/Product';
 
 export const AccessoriesPage: React.FC = () => {
   const [acessories, setAccessories] = useState<Product[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [isError, setIsError] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
 
   useEffect(() => {
     (async () => {
