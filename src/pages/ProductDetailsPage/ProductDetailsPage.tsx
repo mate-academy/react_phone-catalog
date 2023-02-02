@@ -47,7 +47,6 @@ export const ProductDetailsPage: React.FC = () => {
     if (productId) {
       setError(false);
       setIsLoading(true);
-
       getProducts()
         .then(data => {
           setProducts(data);
