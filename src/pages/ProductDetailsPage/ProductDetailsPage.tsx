@@ -44,35 +44,26 @@ export const ProductDetailsPage: React.FC = () => {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    (async () => {
-      if (productId) {
-        setError(false);
+    if (productId) {
+      setError(false);
+      setIsLoading(true);
 
-        try {
-          setIsLoading(true);
-          const productResponse = getProducts().then(data => {
-            setProducts(data);
+      getProducts()
+        .then(data => {
+          setProducts(data);
 
-            return data.find(
-              (item: Product) => item.id === productId,
-            );
-          });
-
-          const productDetailsResponse = await getProduct(productId);
-
-          setProduct(
-            await productResponse,
-          );
-
-          setProductDetails(productDetailsResponse);
-          setCurrentImg(productDetailsResponse.images[0]);
-        } catch {
-          setError(true);
-        } finally {
-          setIsLoading(false);
-        }
-      }
-    })();
+          setProduct(data.find(
+            (item: Product) => item.id === productId,
+          ));
+        })
+        .then(() => getProduct(productId))
+        .then(data => {
+          setProductDetails(data);
+          setCurrentImg(data.images[0]);
+        })
+        .catch(() => setError(true))
+        .finally(() => setIsLoading(false));
+    }
   }, [productId]);
 
   useEffect(() => {

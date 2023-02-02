@@ -12,20 +12,13 @@ export const FavoritesPage: React.FC = () => {
   const [isError, setIsError] = useState(false);
 
   useEffect(() => {
-    (async () => {
-      setIsError(false);
-      setIsLoading(true);
+    setIsError(false);
+    setIsLoading(true);
 
-      try {
-        const response = await getProducts();
-
-        setProducts(response);
-      } catch {
-        setIsError(true);
-      } finally {
-        setIsLoading(false);
-      }
-    })();
+    getProducts()
+      .then(setProducts)
+      .catch(() => setIsError(true))
+      .finally(() => setIsLoading(false));
   }, []);
 
   const showProductPage

@@ -10,19 +10,15 @@ export const AccessoriesPage: React.FC = () => {
   const [isError, setIsError] = useState(false);
 
   useEffect(() => {
-    (async () => {
-      setIsError(false);
-      setIsLoading(true);
-      try {
-        const response = await getAccessories();
+    setIsError(false);
+    setIsLoading(true);
 
-        setAccessories(response);
-      } catch {
-        setIsError(true);
-      } finally {
+    getAccessories()
+      .then(setAccessories)
+      .catch(() => setIsError(true))
+      .finally(() => {
         setIsLoading(false);
-      }
-    })();
+      });
   }, []);
 
   const showProductPage

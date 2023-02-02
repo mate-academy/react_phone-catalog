@@ -10,19 +10,15 @@ export const TabletsPage: React.FC = () => {
   const [isError, setIsError] = useState(false);
 
   useEffect(() => {
-    (async () => {
-      setIsError(false);
-      setIsLoading(true);
-      try {
-        const response = await getTablets();
+    setIsError(false);
+    setIsLoading(true);
 
-        setTablets(response);
-      } catch {
-        setIsError(true);
-      } finally {
+    getTablets()
+      .then(setTablets)
+      .catch(() => setIsError(true))
+      .finally(() => {
         setIsLoading(false);
-      }
-    })();
+      });
   }, []);
 
   const showProductPage
