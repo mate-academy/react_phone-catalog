@@ -1,1 +1,70 @@
-// not empty
+*{
+	margin: 0;
+}
+iframe {
+  pointer-events: none;
+}
+
+body {
+	font-family: 'Mont';
+	font-style: normal;
+	margin: 0 auto;
+	max-width: 1440px;
+}
+
+main {
+	max-width: 1140px;
+	margin: 0 auto;
+}
+
+h1 {
+	font-family: 'Mont';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 32px;
+	line-height: 41px;
+	letter-spacing: -0.01em;
+	color: #313237;
+}
+
+h2 {
+	font-family: 'Mont';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 22px;
+	line-height: 140%;
+	
+}
+
+h3 {
+	font-family: 'Mont';
+	font-style: normal;
+	font-weight: 600;
+	font-size: 20px;
+	line-height: 26px;
+	color: #313237;
+}
+
+ul {
+	padding: 0;
+}
+
+.body14 {
+	font-family: 'Mont';
+	font-style: normal;
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 21px;
+}
+
+.body12 {
+	font-family: 'Mont';
+	font-style: normal;
+	font-weight: 600;
+	font-size: 12px;
+	line-height: 15px
+}
+
+p {
+	margin: 0;
+}

@@ -1,0 +1,50 @@
+.slider {
+	display: flex;
+	flex-direction: row;
+	margin-top: 40px;
+	justify-content: space-between;
+
+	&__images {
+		width: 1040px;
+		max-width: 1040px;
+		height: 400px;
+		background-position: center;
+		background-size: cover;
+	}
+
+	&__subbuttons {
+		display: flex;
+		justify-content: center;
+		margin-top: 18px;
+	}
+
+	&__subbutton {
+		height: 4px;
+		width: 14px;
+		margin-right: 14px;
+		background-color: #E2E6E9;
+	}
+}
+
+.active__subbutton {
+	background: #313237;
+}
+
+.arrow {
+	display: flex;
+	background-color: white;
+	border: 1px solid #B4BDC4;
+	align-items: center;
+
+	&-img {
+		color: #313237;
+	}
+}
+
+.left {
+	margin-right: 16px;
+}
+
+.right {
+	margin-left: 16px;
+}

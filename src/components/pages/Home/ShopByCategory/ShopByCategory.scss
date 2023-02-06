@@ -1,0 +1,31 @@
+.category {
+	&__title {
+		margin: 0;
+		margin-bottom: 24px;
+	}
+
+	&__list {
+		display: flex;
+
+	}
+
+	&__image {
+		object-fit: cover;
+		padding: 10% 0px 0 30%;
+		width: 350px;
+		height: 430px;
+		object-position: left;
+
+		&-block {
+			height: 370px;
+			width: 370px;
+			overflow: hidden;
+			margin-right: 16px;
+			margin-bottom: 24px;
+		}
+	}
+
+	&__models-number {
+		color: #89939A;
+	}
+}

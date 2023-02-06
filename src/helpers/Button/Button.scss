@@ -1,0 +1,36 @@
+.button-link {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	box-sizing: border-box;
+	border: 1px solid #B4BDC4;
+	width: 40px;
+	cursor: pointer;
+
+	&:hover {
+    border: 1px solid #313237;
+	}
+}
+
+.button-image {
+	height: 16px;
+	width: 16px;
+}
+
+.header-button {
+	height: 66px;
+	width: 64px;
+	margin-top: -1px;
+	margin-right: -1px;
+	border: 1px solid #E2E6E9;
+	box-sizing: border-box;
+}
+
+.small {
+	height: 40px;
+}
+
+.no-border {
+	border: 0;
+	width: 16px;
+}

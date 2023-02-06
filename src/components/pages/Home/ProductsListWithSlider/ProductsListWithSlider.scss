@@ -1,0 +1,23 @@
+.products-list-with-slider__block {
+	margin-top: 80px;
+	max-width: 1140px;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.block__title {
+	color: #313237;
+	margin: 0;
+}
+
+
+.products-list-with-slider__header {
+  display: flex;
+	justify-content: space-between;
+}
+
+.slider-buttons {
+	display: flex;
+}

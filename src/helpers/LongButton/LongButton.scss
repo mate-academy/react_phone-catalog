@@ -1,0 +1,17 @@
+.long-button__link {
+	width: 176px;
+	height: 40px;
+  display: flex;
+	margin-right: 8px;
+	box-sizing: border-box;
+  justify-content: center;
+	align-items: center;
+	background: #313237;
+	font-weight: 600;
+	color: #FFFFFF;
+	cursor: pointer;
+
+	&:hover {
+		background-color: red;
+	}
+}

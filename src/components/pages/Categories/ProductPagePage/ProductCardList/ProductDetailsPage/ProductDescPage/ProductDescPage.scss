@@ -1,0 +1,38 @@
+.product-desc {
+	&__info {
+		display: grid;
+    grid-template-columns: 1fr 1fr;
+		gap: 64px;
+	}
+	&__info:not(:last-child) {
+		margin-right: 64px;
+	}
+
+	&__title {
+		margin-bottom: 47px;
+	}
+
+	&__block {
+		// display: flex;
+		// display: grid;
+		// grid-template-columns: 1fr 1fr;
+	}
+
+
+	&__tech-details-block {
+		display: flex;
+		justify-content: space-between;
+		color: #89939A;
+	}
+
+	&__values {
+		text-align: end;
+		color: #313237;
+	}
+}
+
+.horizontal-line {
+	width: 100%;
+	border: .5px solid #E2E6E9;
+	margin-bottom: 32px;
+}

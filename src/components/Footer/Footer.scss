@@ -1,0 +1,36 @@
+.footer {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 96px;
+	box-shadow: 0px -1px 0px #E2E6E9;
+
+
+	&__navigation {
+		&-list {
+			display: flex;
+			padding: 0;
+			text-transform: uppercase;
+			font-weight: 700;
+			font-size: 12px;
+			line-height: 11px;
+			letter-spacing: 0.04em;
+		}
+
+		&-item {
+			margin-left: 64px;
+			height: 11px;
+		}
+	}
+
+	&__top {
+		display: flex;
+	}
+
+	&__button-text {
+		margin-right: 16px;
+		text-align: right;
+		color: #89939A;
+
+	}
+}

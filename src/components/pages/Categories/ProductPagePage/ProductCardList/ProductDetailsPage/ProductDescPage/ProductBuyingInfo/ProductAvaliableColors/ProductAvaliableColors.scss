@@ -1,0 +1,23 @@
+.avaliable-colors {
+	color: #89939A;
+
+	&__list {
+		display: flex;
+		margin-top: 8px;
+		margin-bottom: 24px;
+	}
+
+	&__item {
+		box-sizing: border-box;
+		width: 32px;
+		height: 32px;
+		margin-right: 9px;
+		outline: 1px solid #E2E6E9;
+		border: 3px solid white;
+		border-radius: 100%;
+	}
+}
+
+.product-id {
+	color: #B4BDC4;
+}
