@@ -1,0 +1,59 @@
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $backgound;
+  border: 1px solid $icons;
+  cursor: pointer;
+  font-family: "Mont", sans-serif;
+  text-decoration: none;
+
+  &:hover {
+    border: 1px solid $primary;
+  }
+
+  &:disabled {
+    cursor: default;
+    border: 1px solid $elements;
+
+    &:hover {
+      border: 1px solid $elements;
+    }
+  }
+
+  &--is-success {
+    color: $green;
+  }
+
+  &--is-dark {
+    background-color: $primary;
+    border: none;
+    color: #fff;
+
+    &:hover {
+      box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+    }
+  }
+
+  &__icon {
+    position: relative;
+  }
+
+  &__quantity {
+    width: 14px;
+    height: 14px;
+    text-decoration: none;
+    background-color: $red;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    font-family: "Mont", sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+    color: white;
+    top: -7px;
+    right: -7px;
+  }
+}

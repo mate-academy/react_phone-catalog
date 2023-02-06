@@ -1,0 +1,31 @@
+@import "../utils/vars.scss";
+
+.footer {
+  border-top: 1px solid $elements;
+  border-left: 1px solid $elements;
+  border-right: 1px solid $elements;
+  padding: 0 150px;
+
+  &__container {
+    padding: 43px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: $backgound;
+  }
+  
+  &__back {
+    display: flex;
+    align-items: center;
+  }
+
+  &__back-text {
+    color: $secondary;
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    margin-left: 16px;
+  }
+}

@@ -1,0 +1,72 @@
+@import "./vars.scss";
+
+@mixin textcolors {
+  &--primary {
+    color: $primary;
+  }
+
+  &--secondary {
+    color: $secondary;
+  }
+
+  &--icons {
+    color: $icons;
+  }
+
+  &--elements {
+    color: $elements;
+  }
+}
+
+.title {
+  &__h1 {
+    font-size: 32px;
+    line-height: 32px;
+    font-weight: 700;
+    @include textcolors;
+  }
+
+  &__h2 {
+    font-size: 22px;
+    line-height: 22px;
+    font-weight: 700;
+    @include textcolors;
+  }
+
+  &__h3 {
+    font-size: 20px;
+    line-height: 20px;
+    font-weight: 600;
+    @include textcolors;
+  }
+}
+
+.text {
+  &__uppercase {
+    font-size: 12px;
+    line-height: 12px;
+    font-weight: 700;
+    @include textcolors;
+  }
+
+  &__buttons {
+    font-size: 14px;
+    line-height: 14px;
+    font-weight: 600;
+    @include textcolors;
+  }
+
+  &__body {
+    font-size: 14px;
+    line-height: 14px;
+    font-weight: 500;
+    @include textcolors;
+  }
+
+  &__small {
+    font-size: 12px;
+    line-height: 12px;
+    font-weight: 600;
+    @include textcolors;
+  }
+}

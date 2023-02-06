@@ -1,0 +1,15 @@
+.breadcrumps {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  text-decoration: none;
+  cursor: pointer;
+  background: none;
+  border: none;
+
+  &__item {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+  }
+}

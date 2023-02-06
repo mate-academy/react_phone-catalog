@@ -1,0 +1,7 @@
+@import "../utils/vars.scss";
+
+.error {
+  padding: 20px;
+  border: 1px solid $primary;
+  width: fit-content;
+}
