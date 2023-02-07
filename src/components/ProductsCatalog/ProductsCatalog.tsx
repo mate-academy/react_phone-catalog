@@ -28,7 +28,7 @@ export const ProductsCatalog: React.FC<Props> = ({
   error,
   setError,
 }) => {
-  const [paginationLength, setPaginationLength] = useState(0);
+  const [matchProductsQuantity, setMatchProductsQuantity] = useState(0);
   const [visibleProducts, setVisibleProducts]
     = useState<Product[] | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
@@ -36,6 +36,9 @@ export const ProductsCatalog: React.FC<Props> = ({
   const sort = searchParams.get('sort') || 'newest';
   const perPage = searchParams.get('perPage') || '4';
   const { query, setQuery } = useContext(Context);
+  const showPagination = perPage !== 'all' 
+    && matchProductsQuantity > +perPage 
+    && !error;
 
   const onSetSearchParams = (paramsToUpdate: SearchParams) => {
     setSearchParams(getSearchWith(searchParams, paramsToUpdate));
@@ -73,7 +76,7 @@ export const ProductsCatalog: React.FC<Props> = ({
         }
       }
 
-      setPaginationLength(processedProducts.length);
+      setMatchProductsQuantity(processedProducts.length);
 
       if (perPage === 'all') {
         setVisibleProducts(processedProducts);
@@ -121,7 +124,7 @@ export const ProductsCatalog: React.FC<Props> = ({
         </h1>
         {products && (
           <span className="products-catalog__quantity">
-            {`${products.length} models`}
+            {`${matchProductsQuantity || 0} models`}
           </span>
         )}
         {error && (
@@ -140,10 +143,10 @@ export const ProductsCatalog: React.FC<Props> = ({
             <ProductList
               products={visibleProducts}
             />
-            {(perPage !== 'all' && paginationLength > +perPage && !error) && (
+            {showPagination && (
               <div className="products-catalog__pagination">
                 <Pagination
-                  quantity={paginationLength}
+                  quantity={matchProductsQuantity}
                   perPage={+perPage}
                   currentPage={currentPage}
                   setCurrentPage={setCurrentPage}
