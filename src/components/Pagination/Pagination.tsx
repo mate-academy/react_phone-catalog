@@ -31,6 +31,7 @@ export const Pagination: React.FC<Props> = ({
         type="button"
         className="button pagination__button"
         onClick={() => setCurrentPage(currentPage - 1)}
+        disabled={currentPage === 1}
       >
         <img src="./assets/arrow-prev.svg" alt="arrow-prev" />
       </button>
@@ -52,6 +53,7 @@ export const Pagination: React.FC<Props> = ({
         type="button"
         className="button pagination__button"
         onClick={() => setCurrentPage(currentPage + 1)}
+        disabled={currentPage === quantityOfPages}
       >
         <img src="./assets/arrow-next.svg" alt="arrow-prev" />
       </button>

@@ -6,7 +6,7 @@ export const Footer: React.FC = () => {
   const goToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: "smooth",
+      behavior: 'smooth',
     });
   };
 
