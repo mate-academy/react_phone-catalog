@@ -30,7 +30,7 @@ export const ProductsCardPage: React.FC<any>
 
     setVisibleProducts(products.filter((
       product: any, index: any) => {
-      return product.id > firstIndex && index < lastIndex;
+      return index > firstIndex && index <= lastIndex;
     }));
   }, [itemsOnPage, currentPage, itemsSort]);
 

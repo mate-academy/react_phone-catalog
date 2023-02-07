@@ -1,0 +1,32 @@
+.cart-page {	
+	&__blocks {
+		display: grid;
+		grid-template-columns: 2fr 1fr;
+		gap: 16px;
+	}
+
+	&__list {
+		margin-bottom: 70px;
+		margin-top: 0;
+	}
+
+	&__price {
+		box-sizing: border-box;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: space-between;
+		height: 206px;
+		width: 368px;
+		border: 1px solid #E2E6E9;
+		padding: 24px;
+
+		&-total {
+			margin: 0;
+		}
+	}
+
+	&__total-items {
+		margin-bottom: 24px;
+	}
+}

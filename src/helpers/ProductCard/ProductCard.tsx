@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { CartAndFavContext } from '../../context/CartAndFavContext';
 import { Button } from '../Button/Button';
 import { LongButton } from '../LongButton/LongButton';
 import './ProductCard.scss';
@@ -11,22 +12,79 @@ export const ProductCard: React.FC<any> = ({
   product,
 }) => {
   const [isAddedToCart, setIsAddedToCart] = useState(false);
+  const [isAddedToFav, setIsAddedToFav] = useState(false);
   const {
     name, price,
     fullPrice, screen, capacity, ram, image,
   } = product;
+  const {
+    cartProducts, setCartProducts,
+    favProducts, setFavProducts,
+  } = useContext(CartAndFavContext);
 
-  const addToCart = (event: any) => {
+  // const { cartProducts, setCartProducts } = useContext(CartContext);
+
+  const addToList = async (
+    event: any,
+    products,
+    setProducts,
+    isAdded,
+    setIsAdded,
+  ) => {
     event.preventDefault();
-    // if (event.target == event.currentTarget) {
-    //   event.stopPropagation();
+    const exists = products.find((one) => {
+      setIsAdded(true);
+      if (one.id === product.id) {
+        return one.id === product.id;
+      }
+    });
 
-    // }
-    setIsAddedToCart(!isAddedToCart);
-    // console.log('added');
+    if (exists) {
+      return;
+    }
 
-    // event.stopPropagation();
+    await setProducts([...products, product]);
+    console.log(isAdded);
   };
+
+  useEffect(() => {
+    console.log(isAddedToCart);
+  }, [isAddedToCart]);
+
+  useEffect(() => {
+    console.log(isAddedToCart);
+    localStorage.setItem('cartProducts', JSON.stringify(cartProducts));
+    localStorage.setItem('favProducts', JSON.stringify(favProducts));
+  }, [cartProducts, favProducts]);
+
+  useEffect(() => {
+    console.log(cartProducts, product);
+    cartProducts.map((one) => {
+      if (one.id === product.id) {
+        setIsAddedToCart(true);
+      }
+    });
+    // favProducts.map((one) => {
+    //   // if (one.id === product.id) {
+    //   //   setFavProducts(true);
+    //   // }
+    // });
+  }, []);
+
+  // const addToFavourites = (event: any) => {
+  //   event.preventDefault();
+  //   const exists = cartProducts.find((one) => one.id === product.id);
+
+  //   if (!exists) {
+  //     setFavProducts([...favProducts, product]);
+  //     console.log(favProducts);
+  //     localStorage.setItem('favProducts', JSON.stringify(favProducts));
+  //     setIsAddedToCart(!isAddedToFav);
+  //     const roducts = localStorage.getItem('favProducts');
+
+  //     console.log(roducts);
+  //   }
+  // };
   // console.log(pathname, pathname ===`/${product.category}/${product.id}`)
 
   return (
@@ -74,12 +132,30 @@ export const ProductCard: React.FC<any> = ({
         </div>
         <div className="product__buttons">
           <LongButton
-            text="Add to cart"
-            onClick={(event:any) => {
-              addToCart(event);
+            text={isAddedToCart ? 'Added to cart' : 'Add to cart'}
+            onClick={(event: any) => {
+              addToList(event,
+                cartProducts,
+                setCartProducts,
+                isAddedToCart,
+                setIsAddedToCart);
             }}
+            className={isAddedToCart && 'selected'}
           />
-          <Button image="/icons/Favourites.svg" title="favourites" />
+          <Button
+            image="/icons/Favourites.svg"
+            title="favourites"
+            onClick={(event: any) => {
+              addToList(
+                event,
+                favProducts,
+                setFavProducts,
+                isAddedToFav,
+                setIsAddedToFav,
+              );
+            }}
+            // className={isAddedToFav && 'favourite'}
+          />
         </div>
 
       </div>

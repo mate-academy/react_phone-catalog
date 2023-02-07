@@ -1,5 +1,5 @@
 import './ProductDetailsPage.scss';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { ProductDescPage } from './ProductDescPage/ProductDescPage';
 import {
@@ -9,7 +9,7 @@ import { Button } from '../../../../../../helpers/Button/Button';
 
 export const ProductDetailsPage: React.FC<any> = ({ products }) => {
   const { id } = useParams();
-
+  const navigate = useNavigate();
   const [product, setProduct] = useState();
 
   const getProduct = async () => {
@@ -17,7 +17,7 @@ export const ProductDetailsPage: React.FC<any> = ({ products }) => {
       return (one.id === id);
     });
 
-    console.log(singleProduct)
+    console.log(singleProduct);
 
     try {
       const response = await fetch(
@@ -49,7 +49,12 @@ export const ProductDetailsPage: React.FC<any> = ({ products }) => {
   return (
     <div className="details__page">
       <NavigationButtons product={product} id={id} />
-      <div className="back-button body12">
+      <div
+        className="back-button body12"
+        onClick={() => {
+          navigate(-1);
+        }}
+      >
         <Button
           className="no-border"
           image="/icons/Chevron (Arrow Left).svg"

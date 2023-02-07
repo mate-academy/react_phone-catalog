@@ -1,0 +1,10 @@
+.favourites {
+	&__list {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr 1fr;
+	}
+
+	&__item {
+		margin-bottom: 40px ;
+	}
+}

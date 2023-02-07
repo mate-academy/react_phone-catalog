@@ -64,11 +64,13 @@ export const Header = ({ setVisibleIPhones, IPhones, visibleProducts }) => {
           <Button
             image="/icons/Favourites.svg"
             alt="favourites"
+            link="favourites"
             className="header-button"
           />
           <Button
             image="/icons/Cart.svg"
             alt="cart"
+            link="cart"
             className="header-button"
           />
         </div>

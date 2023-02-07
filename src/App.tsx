@@ -21,6 +21,8 @@ import {
 import {
   ProductDetailsPage,
 } from './components/pages/Categories/ProductPagePage/ProductCardList/ProductDetailsPage/ProductDetailsPage';
+import { CartPage } from './components/pages/Cart/CartPage';
+import { FavouritesPage } from './components/pages/Favourites/FavouritesPage';
 
 const App = () => {
   const [items, setItems] = useState([]);
@@ -173,6 +175,22 @@ const App = () => {
             )}
           />
         </Route>
+        <Route
+          path="/cart"
+          element={(
+            <main>
+              <CartPage />
+            </main>
+          )}
+        />
+        <Route
+          path="/favourites"
+          element={(
+            <main>
+              <FavouritesPage />
+            </main>
+          )}
+        />
         <Route path="*" element={<p>Page not found</p>} />
       </Routes>
       {/* )} */}
