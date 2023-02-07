@@ -13,9 +13,9 @@ export const HomePage: React.FC = () => {
   const [brandNewProducts, setBrandNewProducts]
     = useState<Product[] | null>(null);
   const slides = [
-    './_new/img/banner-phones.png',
-    './_new/img/banner-tablets.png',
-    './_new/img/banner-accessories.png',
+    './slider/banner-phones.png',
+    './slider/img/banner-tablets.png',
+    './slider/img/banner-accessories.png',
   ];
 
   const phonesQuantity
@@ -87,7 +87,7 @@ export const HomePage: React.FC = () => {
             >
               <div className="categories__image">
                 <img
-                  src="./_new/img/category-phones.png"
+                  src="./categories/category-phones.png"
                   alt="category"
                   className="categories__photo"
                 />
@@ -106,7 +106,7 @@ export const HomePage: React.FC = () => {
             >
               <div className="categories__image">
                 <img
-                  src="./_new/img/category-tablets.png"
+                  src="./categories/category-tablets.png"
                   alt="category"
                   className="categories__photo"
                 />
@@ -125,7 +125,7 @@ export const HomePage: React.FC = () => {
             >
               <div className="categories__image">
                 <img
-                  src="./_new/img/category-accessories.png"
+                  src="./categories/category-accessories.png"
                   alt="category"
                   className="categories__photo"
                 />

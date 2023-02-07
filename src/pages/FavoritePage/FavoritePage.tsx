@@ -12,10 +12,10 @@ export const FavoritePage: React.FC = () => {
     <div className="container favorite-page">
       <div className="breadcrumps">
         <Link to="/" className="breadcrumps__item">
-          <img src="../assets/home.svg" alt="home-icon" />
+          <img src="./assets/home.svg" alt="home-icon" />
         </Link>
         <img
-          src="../assets/arrow-next-grey.svg"
+          src="./assets/arrow-next-grey.svg"
           className="breadcrumps__divider"
           alt="arrow-next"
         />

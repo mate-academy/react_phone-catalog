@@ -51,9 +51,9 @@ export const Footer: React.FC = () => {
           >
             Back to top
           </span>
-          <a href="#header" className="button footer__button">
+          <Link to="#header" className="button footer__button">
             <img src="./assets/arrow-top.svg" alt="arrow-top" />
-          </a>
+          </Link>
         </div>
       </div>
     </footer>

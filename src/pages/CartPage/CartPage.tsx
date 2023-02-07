@@ -28,7 +28,7 @@ export const CartPage: React.FC = () => {
         className="breadcrumps cart-page__back"
       >
         <img
-          src="../assets/arrow-prev.svg"
+          src="./assets/arrow-prev.svg"
           alt="prev-icon"
           className="breadcrumps__item"
         />
