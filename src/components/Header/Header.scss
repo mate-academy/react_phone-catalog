@@ -1,0 +1,74 @@
+@import "../../styles/utils/vars.scss";
+
+.header {
+  box-shadow: $shadow;
+
+  &__container {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    max-width: 1400px;
+    margin: auto;
+    background-color: $backgound;
+    position: relative;
+  }
+
+  &__left {
+    display: flex;
+  }
+
+  &__right {
+    display: flex;
+  }
+
+  &__search {
+    border-left: 1px solid $elements;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 330px;
+    cursor: pointer;
+  }
+
+  &__input {
+    border: none;
+    outline: none;
+    width: 60%;
+    font-family: "Mont", sans-serif;
+    font-size: 13px;
+  }
+
+  &__clear-search {
+    border: none;
+    background: none;
+    display: flex;
+    cursor: pointer;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    margin: 0 65px 0 25px;
+  }
+
+  &__button {
+    width: 64px;
+    height: 64px;
+    border: none;
+    border-left: 1px solid $elements;
+
+    &--is-active {
+      border-bottom: 3px solid $primary;
+    }
+  
+
+    &:last-of-type {
+      border-right: 1px solid $elements;
+
+      &:hover {
+        border: 1px solid $primary;
+      }
+    }
+  }
+}

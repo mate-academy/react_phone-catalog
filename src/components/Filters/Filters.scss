@@ -1,0 +1,59 @@
+@import "../../styles/utils/vars.scss";
+
+.filters {
+  margin-top: 40px;
+  display: flex;
+  gap: 16px;
+
+  &__item {
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    color: $secondary;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  &__select {
+    margin-top: 4px;
+    border: 1px solid #b4bdc4;
+    padding: 10px 12px 12px 17px;
+    appearance: none;
+    font-family: "Mont", sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    color: $primary;
+    cursor: pointer;
+
+    &:hover {
+      border: 1px solid #89939a;
+    }
+
+    &:focus {
+      outline: none;
+      border: 1px solid #89939a;
+    }
+  }
+
+  &__option {
+    font-family: "Mont", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $secondary;
+
+    &:checked {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 21px;
+      color: $primary;
+      background: #fafbfc;
+    }
+
+    &:focus {
+      background-image: url(https://ru.w3docs.com/build/images/logo-color-w3.png);
+    }
+  }
+}

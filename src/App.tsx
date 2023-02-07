@@ -1,14 +1,14 @@
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import './styles/App.scss';
-import { Header } from './components/Header';
-import { Footer } from './components/Footer';
-import { ContextProvider } from './components/ContextProvider';
-import { Main } from './components/Main';
+import { Header } from './components/Header/Header';
+import { Footer } from './components/Footer/Footer';
+import { ContextProvider } from './helpers/ContextProvider';
+import { Main } from './components/Main/Main';
 
 const App: React.FC = () => {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <ContextProvider>
         <div className="App">
           <Header />
@@ -16,7 +16,7 @@ const App: React.FC = () => {
           <Footer />
         </div>
       </ContextProvider>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 
