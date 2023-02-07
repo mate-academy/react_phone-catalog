@@ -55,7 +55,7 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
             onClick={() => onShowPrev()}
             disabled={firstProduct === 0}
           >
-            <img src="../assets/arrow-prev.svg" alt="prev" />
+            <img src="./assets/arrow-prev.svg" alt="prev" />
           </button>
           <button
             type="button"
@@ -65,7 +65,7 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
               (products && lastProduct === products.length - 1) || false
             }
           >
-            <img src="../assets/arrow-next.svg" alt="prev" />
+            <img src="./assets/arrow-next.svg" alt="prev" />
           </button>
         </div>
       </div>

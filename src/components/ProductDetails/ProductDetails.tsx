@@ -67,10 +67,10 @@ export const ProductDetails: React.FC<Props> = ({
         data-cy="breadCrumbs"
       >
         <Link to="/" className="breadcrumps__item">
-          <img src="../assets/home.svg" alt="home-icon" />
+          <img src="./assets/home.svg" alt="home-icon" />
         </Link>
         <img
-          src="../assets/arrow-next-grey.svg"
+          src="./assets/arrow-next-grey.svg"
           alt="arrow-next"
         />
         <Link
@@ -80,7 +80,7 @@ export const ProductDetails: React.FC<Props> = ({
           {breadcrumpsInfo.category}
         </Link>
         <img
-          src="../assets/arrow-next-grey.svg"
+          src="./assets/arrow-next-grey.svg"
           alt="arrow-next"
         />
         <p className="text__small text__small--secondary breadcrumps__item">
@@ -129,7 +129,7 @@ export const ProductDetails: React.FC<Props> = ({
           </div>
           <div className="product-details__viewport">
             <img
-              src={`../${selectedPhoto}`}
+              src={`./${selectedPhoto}`}
               alt="product"
               className="product-details__selected-photo"
             />
@@ -176,9 +176,9 @@ export const ProductDetails: React.FC<Props> = ({
               onClick={() => favoriteAdd(product)}
             >
               {isInFavorites ? (
-                <img src="../assets/favorites-active.svg" alt="favorite" />
+                <img src="./assets/favorites-active.svg" alt="favorite" />
               ) : (
-                <img src="../assets/favorites.svg" alt="favorite" />
+                <img src="./assets/favorites.svg" alt="favorite" />
               )}
 
             </button>

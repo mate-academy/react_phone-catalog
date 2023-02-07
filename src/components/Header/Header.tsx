@@ -149,7 +149,7 @@ export const Header: React.FC = () => {
           >
             <div className="button__icon">
               <img
-                src="/assets/cart.svg"
+                src="./assets/cart.svg"
                 alt="icon"
               />
               {cartQuantity && (

@@ -53,7 +53,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     >
       <div className="product-card__top">
         <img
-          src={`../${imageUrl}`}
+          src={`./${imageUrl}`}
           alt="product"
           className="product-card__image"
         />
@@ -116,9 +116,9 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
             onClick={() => favoriteAdd(product)}
           >
             {isInFavorite ? (
-              <img src="../assets/favorites-active.svg" alt="favorite-icon" />
+              <img src="./assets/favorites-active.svg" alt="favorite-icon" />
             ) : (
-              <img src="../assets/favorites.svg" alt="favorite-icon" />
+              <img src="./assets/favorites.svg" alt="favorite-icon" />
             )}
           </button>
         </div>

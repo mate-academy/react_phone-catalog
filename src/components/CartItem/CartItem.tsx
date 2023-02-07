@@ -29,10 +29,10 @@ export const CartItem: React.FC<Props> = ({ product }) => {
           onClick={() => cartDelete(product)}
           data-cy="cartDeleteButton"
         >
-          <img src="../assets/cross.svg" alt="cross" />
+          <img src="./assets/cross.svg" alt="cross" />
         </button>
         <img
-          src={`../${imageUrl}`}
+          src={`./${imageUrl}`}
           alt="product"
           className="cart-item__image"
         />
@@ -48,7 +48,7 @@ export const CartItem: React.FC<Props> = ({ product }) => {
             disabled={quantity === 1}
             onClick={() => cartChangeQuantity(product, -1)}
           >
-            <img src="../assets/minus.svg" alt="minus" />
+            <img src="./assets/minus.svg" alt="minus" />
           </button>
           <span className="text__body text__body--primary">
             {quantity}
@@ -58,7 +58,7 @@ export const CartItem: React.FC<Props> = ({ product }) => {
             className="button cart-item__button"
             onClick={() => cartChangeQuantity(product, 1)}
           >
-            <img src="../assets/plus.svg" alt="plus" />
+            <img src="./assets/plus.svg" alt="plus" />
           </button>
         </div>
         <p className="title__h2 title__h2--primary cart-item__price">

@@ -103,10 +103,10 @@ export const ProductsCatalog: React.FC<Props> = ({
     <div className="container products-catalog">
       <div className="breadcrumps">
         <Link to="/" className="breadcrumps__item">
-          <img src="../assets/home.svg" alt="home-icon" />
+          <img src="./assets/home.svg" alt="home-icon" />
         </Link>
         <img
-          src="../assets/arrow-next-grey.svg"
+          src="./assets/arrow-next-grey.svg"
           className="breadcrumps__divider"
           alt="arrow-next"
         />
