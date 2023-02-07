@@ -36,8 +36,8 @@ export const ProductsCatalog: React.FC<Props> = ({
   const sort = searchParams.get('sort') || 'newest';
   const perPage = searchParams.get('perPage') || '4';
   const { query, setQuery } = useContext(Context);
-  const showPagination = perPage !== 'all' 
-    && matchProductsQuantity > +perPage 
+  const showPagination = perPage !== 'all'
+    && matchProductsQuantity > +perPage
     && !error;
 
   const onSetSearchParams = (paramsToUpdate: SearchParams) => {

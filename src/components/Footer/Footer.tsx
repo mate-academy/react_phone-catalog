@@ -3,6 +3,13 @@ import { Link } from 'react-router-dom';
 import './Footer.scss';
 
 export const Footer: React.FC = () => {
+  const goToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <footer className="footer">
       <div className="container footer__container">
@@ -51,9 +58,13 @@ export const Footer: React.FC = () => {
           >
             Back to top
           </span>
-          <Link to="#header" className="button footer__button">
+          <button
+            type="button"
+            className="button footer__button"
+            onClick={() => goToTop()}
+          >
             <img src="./assets/arrow-top.svg" alt="arrow-top" />
-          </Link>
+          </button>
         </div>
       </div>
     </footer>

@@ -14,8 +14,8 @@ export const HomePage: React.FC = () => {
     = useState<Product[] | null>(null);
   const slides = [
     './slider/banner-phones.png',
-    './slider/img/banner-tablets.png',
-    './slider/img/banner-accessories.png',
+    './slider/banner-tablets.png',
+    './slider/banner-accessories.png',
   ];
 
   const phonesQuantity
