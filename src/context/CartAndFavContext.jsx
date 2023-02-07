@@ -1,4 +1,3 @@
-import { isArray } from 'cypress/types/lodash';
 import React, { useEffect, useState } from 'react';
 // import { TodoContextType } from '../../types/TodoContextType';
 
@@ -13,10 +12,9 @@ export const CartAndFavProvider = ({ children }) => {
   const cart = JSON.parse(localStorage.getItem('cartProducts'));
 
   console.log(fav, cart);
-  
 
   const [cartProducts, setCartProducts] = useState(cart || []);
-  const [favProducts, setFavProducts] = useState([]);
+  const [favProducts, setFavProducts] = useState(fav || []);
   // const [visibleTodos, setVisibleTodos] = useState(todos);
 
   return (
