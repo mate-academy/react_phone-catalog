@@ -24,16 +24,12 @@ export const ProductCard: React.FC<any> = ({
 
   // const { cartProducts, setCartProducts } = useContext(CartContext);
 
-  const addToList = async (
+  const addToCart = async (
     event: any,
-    products,
-    setProducts,
-    isAdded,
-    setIsAdded,
   ) => {
     event.preventDefault();
-    const exists = products.find((one) => {
-      setIsAdded(true);
+    setIsAddedToCart(true);
+    const exists = cartProducts.find((one) => {
       if (one.id === product.id) {
         return one.id === product.id;
       }
@@ -43,49 +39,59 @@ export const ProductCard: React.FC<any> = ({
       return;
     }
 
-    await setProducts([...products, product]);
-    console.log(isAdded);
+    await setCartProducts([...cartProducts, { ...product, count: 1 }]);
   };
 
   useEffect(() => {
-    console.log(isAddedToCart);
-  }, [isAddedToCart]);
-
-  useEffect(() => {
-    console.log(isAddedToCart);
     localStorage.setItem('cartProducts', JSON.stringify(cartProducts));
-    localStorage.setItem('favProducts', JSON.stringify(favProducts));
-  }, [cartProducts, favProducts]);
+  }, [cartProducts]);
+
+  const toggleFav = async () => {
+    setIsAddedToFav(!isAddedToFav);
+    const exists = favProducts.find((one) => {
+      if (one.id === product.id) {
+        return one.id === product.id;
+      }
+    });
+
+    if (exists) {
+      console.log('ex')
+      setFavProducts(favProducts.filter((one) => one.id !== product.id));
+      // isAddedToFav(false)
+
+      return;
+    }
+
+    if(isAddedToFav === true) {
+      console.log('am i useful?????---')
+      setFavProducts([...favProducts, product]);
+      return
+    }
+
+    if(isAddedToFav === false) {
+      console.log('goooo')
+      setFavProducts([...favProducts, product]);
+      // isAddedToFav()
+      return
+    }
+  };
 
   useEffect(() => {
-    console.log(cartProducts, product);
+    localStorage.setItem('favProducts', JSON.stringify(favProducts));
+  }, [favProducts]);
+
+  useEffect(() => {
     cartProducts.map((one) => {
       if (one.id === product.id) {
         setIsAddedToCart(true);
       }
     });
-    // favProducts.map((one) => {
-    //   // if (one.id === product.id) {
-    //   //   setFavProducts(true);
-    //   // }
-    // });
+    favProducts.map((one) => {
+      if (one.id === product.id) {
+        setIsAddedToFav(true);
+      }
+    });
   }, []);
-
-  // const addToFavourites = (event: any) => {
-  //   event.preventDefault();
-  //   const exists = cartProducts.find((one) => one.id === product.id);
-
-  //   if (!exists) {
-  //     setFavProducts([...favProducts, product]);
-  //     console.log(favProducts);
-  //     localStorage.setItem('favProducts', JSON.stringify(favProducts));
-  //     setIsAddedToCart(!isAddedToFav);
-  //     const roducts = localStorage.getItem('favProducts');
-
-  //     console.log(roducts);
-  //   }
-  // };
-  // console.log(pathname, pathname ===`/${product.category}/${product.id}`)
 
   return (
     <>
@@ -133,28 +139,17 @@ export const ProductCard: React.FC<any> = ({
         <div className="product__buttons">
           <LongButton
             text={isAddedToCart ? 'Added to cart' : 'Add to cart'}
-            onClick={(event: any) => {
-              addToList(event,
-                cartProducts,
-                setCartProducts,
-                isAddedToCart,
-                setIsAddedToCart);
-            }}
+            onClick={addToCart}
             className={isAddedToCart && 'selected'}
           />
           <Button
-            image="/icons/Favourites.svg"
+            image={isAddedToFav
+              ? '/icons/Favourites Filled (Heart Like).svg'
+              : '/icons/Favourites.svg'}
             title="favourites"
             onClick={(event: any) => {
-              addToList(
-                event,
-                favProducts,
-                setFavProducts,
-                isAddedToFav,
-                setIsAddedToFav,
-              );
+              toggleFav();
             }}
-            // className={isAddedToFav && 'favourite'}
           />
         </div>
 

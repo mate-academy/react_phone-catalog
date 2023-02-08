@@ -66,12 +66,14 @@ export const Header = ({ setVisibleIPhones, IPhones, visibleProducts }) => {
             alt="favourites"
             link="favourites"
             className="header-button"
+            spanClass="favourite-amount"
           />
           <Button
             image="/icons/Cart.svg"
             alt="cart"
             link="cart"
             className="header-button"
+            spanClass="cart-amount"
           />
         </div>
       </div>

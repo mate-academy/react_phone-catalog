@@ -17,8 +17,6 @@ export const ProductDetailsPage: React.FC<any> = ({ products }) => {
       return (one.id === id);
     });
 
-    console.log(singleProduct);
-
     try {
       const response = await fetch(
         `/_new/products/${singleProduct.itemId}.json`,

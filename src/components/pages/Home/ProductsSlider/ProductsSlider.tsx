@@ -60,7 +60,6 @@ export const ProductsSlider = () => {
 
       <div className="slider__subbuttons">
         {[...Array(banners.length)].map((one, index) => {
-          console.log(index);
           one = index;
 
           return (

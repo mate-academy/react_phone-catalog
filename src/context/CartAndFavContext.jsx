@@ -11,7 +11,8 @@ export const CartAndFavProvider = ({ children }) => {
   const fav = JSON.parse(localStorage.getItem('favProducts'));
   const cart = JSON.parse(localStorage.getItem('cartProducts'));
 
-  console.log(fav, cart);
+  // console.log(cart);
+  console.log(fav);
 
   const [cartProducts, setCartProducts] = useState(cart || []);
   const [favProducts, setFavProducts] = useState(fav || []);

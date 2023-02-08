@@ -1,11 +1,12 @@
+import { useContext } from 'react';
+import { CartAndFavContext } from '../../../context/CartAndFavContext';
 import { NavigationButtons } from '../../../helpers/NavigationButtons/NavigationButtons';
 import { ProductCard } from '../../../helpers/ProductCard/ProductCard';
 import './FavouritesPage.scss';
 
 export const FavouritesPage = () => {
-  const favProducts = JSON.parse(localStorage.getItem('favProducts'));
-
-  console.log(favProducts);
+  // const favProducts = JSON.parse(localStorage.getItem('favProducts'));
+  const { favProducts } = useContext(CartAndFavContext);
 
   return (
     <div className="favourites">
@@ -15,9 +16,9 @@ export const FavouritesPage = () => {
         {
           favProducts.map((favProduct) => {
             return (
-							<li className='favourites__item'>
-								<ProductCard product={favProduct} />
-							</li>
+              <li className="favourites__item" key={favProduct.id}>
+                <ProductCard product={favProduct} />
+              </li>
             );
           })
         }

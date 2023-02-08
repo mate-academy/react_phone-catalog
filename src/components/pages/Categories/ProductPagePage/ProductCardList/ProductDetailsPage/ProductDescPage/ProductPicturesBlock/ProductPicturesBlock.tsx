@@ -5,8 +5,6 @@ export const ProductPicturesBlock = ({ product }) => {
   const [mainPicture, setMainPicture] = useState(0);
   const isSelected = (pictureNumber: number) => pictureNumber === mainPicture;
 
-  console.log(product);
-
   return (
     <div className="pictures-block">
       <ul className="pictures-block__list">

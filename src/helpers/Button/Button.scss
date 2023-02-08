@@ -38,3 +38,20 @@
 .favourite {
 	filter: invert(46%) sepia(20%) saturate(1964%) hue-rotate(313deg) brightness(96%) contrast(90%);
 }
+
+.cart-amount, .favourite-amount {
+	content: '123';
+	position: relative; /*or absolute*/
+	// z-index:100000; /*a number that's more than the modal box*/
+	left:-6px;
+	font-size: 9px;
+	height: 14px;
+	width: 14px;
+	top:-7px;
+	background-color: #EB5757;
+	color: #FFFFFF;
+	border-radius: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
