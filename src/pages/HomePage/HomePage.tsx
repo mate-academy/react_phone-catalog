@@ -12,11 +12,6 @@ export const HomePage: React.FC = () => {
     = useState<Product[] | null>(null);
   const [brandNewProducts, setBrandNewProducts]
     = useState<Product[] | null>(null);
-  const slides = [
-    './slider/banner-phones.png',
-    './slider/banner-tablets.png',
-    './slider/banner-accessories.png',
-  ];
 
   const phonesQuantity
     = products?.filter(product => product.type === 'phone').length;
@@ -60,11 +55,19 @@ export const HomePage: React.FC = () => {
     getBrandNewProducts();
   }, [products]);
 
+  const images = [
+    './slider/banner-phones.png',
+    './slider/banner-tablets.png',
+    './slider/banner-accessories.png',
+    './slider/banner-iphone.png',
+    './slider/banner-galaxy.png',
+  ];
+
   return (
     <>
       <div className="container">
         <section className="home-page__slider">
-          <Slider slides={slides} />
+          <Slider images={images} infinite />
         </section>
 
         <section className="home-page__section">
