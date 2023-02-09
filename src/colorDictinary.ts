@@ -1,4 +1,19 @@
-export const colorsHex = {
+export type Colors = {
+  black: string,
+  white: string,
+  rosegold: string,
+  purple: string,
+  red: string,
+  yellow: string,
+  gold: string,
+  silver: string,
+  green: string,
+  midnightgreen: string,
+  spacegray: string,
+  coral: string,
+};
+
+export const colorsHex: Colors = {
   black: '#000000',
   white: '#ffffff',
   rosegold: '#f5cec7',

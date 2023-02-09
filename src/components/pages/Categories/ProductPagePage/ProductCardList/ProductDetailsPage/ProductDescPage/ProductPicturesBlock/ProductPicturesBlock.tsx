@@ -1,7 +1,11 @@
 import { useState } from 'react';
 import './ProductPicturesBlock.scss';
 
-export const ProductPicturesBlock = ({ product }) => {
+type Props = {
+  product: any,
+};
+
+export const ProductPicturesBlock:React.FC<Props> = ({ product }) => {
   const [mainPicture, setMainPicture] = useState(0);
   const isSelected = (pictureNumber: number) => pictureNumber === mainPicture;
 
@@ -16,13 +20,14 @@ export const ProductPicturesBlock = ({ product }) => {
               onClick={() => {
                 return setMainPicture(index);
               }}
+              aria-hidden="true"
             >
-            <img
-              src={`/_new/${one}`}
-              alt="phone"
-              className="pictures-block__image"
-            />
-             </li>
+              <img
+                src={`/_new/${one}`}
+                alt="phone"
+                className="pictures-block__image"
+              />
+            </li>
           );
         })}
       </ul>

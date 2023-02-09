@@ -1,11 +1,11 @@
 import './ProductDetailsPage.scss';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { ProductDescPage } from './ProductDescPage/ProductDescPage';
+import { Button } from '../../../../../../common/Button/Button';
 import {
   NavigationButtons,
-} from '../../../../../../helpers/NavigationButtons/NavigationButtons';
-import { Button } from '../../../../../../helpers/Button/Button';
+} from '../../../../../../common/NavigationButtons/NavigationButtons';
+import { ProductDescPage } from './ProductDescPage/ProductDescPage';
 
 export const ProductDetailsPage: React.FC<any> = ({ products }) => {
   const { id } = useParams();
@@ -47,16 +47,14 @@ export const ProductDetailsPage: React.FC<any> = ({ products }) => {
   return (
     <div className="details__page">
       <NavigationButtons product={product} id={id} />
-      <div
-        className="back-button body12"
-        onClick={() => {
-          navigate(-1);
-        }}
-      >
+      <div className="back-button body12">
         <Button
           className="no-border"
           image="/icons/Chevron (Arrow Left).svg"
           alt="<"
+          onClick={() => {
+            navigate(-1);
+          }}
         />
         <div className="back-button__text">
           Back

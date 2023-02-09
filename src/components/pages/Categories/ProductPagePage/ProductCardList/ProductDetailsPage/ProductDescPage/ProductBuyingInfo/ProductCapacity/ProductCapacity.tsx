@@ -1,6 +1,15 @@
+import { Product } from '../../../../../../../../../types/types';
 import './ProductCapacity.scss';
 
-export const ProductCapacity = ({ product, products, setProduct }) => {
+type Props = {
+  products: Product[],
+  product: Product[] | any,
+  setProduct: any,
+};
+
+export const ProductCapacity:React.FC<Props> = (
+  { product, products, setProduct },
+) => {
   const searchProductByCapacity = async (capacity: string) => {
     const newProduct = products.find((one: any) => {
       return (
@@ -8,9 +17,9 @@ export const ProductCapacity = ({ product, products, setProduct }) => {
         === product.id.replace(product.capacity.toLowerCase(),
           capacity.toLowerCase()));
     });
-    // console.log(newProduct)
 
-    try {
+    // console.log(newProduct)
+    if (newProduct) {
       const response = await fetch(
         `/_new/products/${newProduct.itemId}.json`,
         {
@@ -23,11 +32,8 @@ export const ProductCapacity = ({ product, products, setProduct }) => {
 
         window.history.replaceState(null, '', `/phones/${newProduct.id}`);
 
-        // pathname=`phones${newProduct.id}`
         return setProduct(result);
       }
-    } catch (err) {
-      throw err;
     }
 
     setProduct(newProduct);
@@ -43,7 +49,7 @@ export const ProductCapacity = ({ product, products, setProduct }) => {
       </div>
       <ul className="capacity__list">
         {
-          product.capacityAvailable.map((one) => {
+          product.capacityAvailable.map((one: any) => {
             return (
               <li
                 className={`capacity__item ${one && 'active-button'}`}
@@ -51,6 +57,7 @@ export const ProductCapacity = ({ product, products, setProduct }) => {
                 onClick={() => {
                   searchProductByCapacity(one);
                 }}
+                aria-hidden="true"
               >
                 {one}
               </li>

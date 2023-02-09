@@ -8,21 +8,24 @@ import { Footer } from './components/Footer/Footer';
 import { Header } from './components/Header/Header/Header';
 import {
   ProductsListWithSlider,
-} from './components/pages/Home/ProductsListWithSlider/ProductsListWithSlider';
+} from './components/Pages/Home/ProductsListWithSlider/ProductsListWithSlider';
 import {
   ProductsSlider,
-} from './components/pages/Home/ProductsSlider/ProductsSlider';
+} from './components/Pages/Home/ProductsSlider/ProductsSlider';
 import {
   ShopByCategory,
-} from './components/pages/Home/ShopByCategory/ShopByCategory';
+} from './components/Pages/Home/ShopByCategory/ShopByCategory';
+import { CartPage } from './components/Pages/Cart/CartPage';
+import { FavouritesPage } from './components/Pages/Favourites/FavouritesPage';
 import {
   ProductsCardPage,
-} from './components/pages/Categories/ProductPagePage/ProductCardList/ProductsCardPage/ProductsCardPage';
+} from
+'./components/Pages/Categories/ProductPagePage/ProductCardList/ProductsCardPage/ProductsCardPage';
 import {
   ProductDetailsPage,
-} from './components/pages/Categories/ProductPagePage/ProductCardList/ProductDetailsPage/ProductDetailsPage';
-import { CartPage } from './components/pages/Cart/CartPage';
-import { FavouritesPage } from './components/pages/Favourites/FavouritesPage';
+} from
+  './components/Pages/Categories/ProductPagePage/ProductCardList/ProductDetailsPage/ProductDetailsPage';
+import { NotFoundPage } from './components/NotFoundPage/NotFoundPage';
 
 const App = () => {
   const [items, setItems] = useState([]);
@@ -30,15 +33,7 @@ const App = () => {
   const [visibleIPhones, setVisibleIPhones] = useState(IPhones);
   const [hotPriceProducts, setHotPriceProducts] = useState(items);
   const [brandNewProducts, setBrandNewProducts] = useState(items);
-  const [isLoading, setLoading] = useState(true);
-
-  const [addedToCartList, setAddedToCartList] = useState(false);
-
-  const scrollUp = window.scroll({
-    top: 0,
-    left: 0,
-    behavior: 'smooth',
-  });
+  // const [isLoading, setLoading] = useState(true);
 
   // oldPhones
   // const getHotPriceProducts = () => {
@@ -105,7 +100,7 @@ const App = () => {
 
         setIPhones(result);
         setVisibleIPhones(result);
-        setLoading(false);
+        // setLoading(false);
       }
     } catch (err) {
       // console.error(err);
@@ -122,7 +117,6 @@ const App = () => {
       <Header
         setVisibleIPhones={setVisibleIPhones}
         IPhones={IPhones}
-        visibleProducts={visibleIPhones}
       />
       {/* {!isLoading && ( */}
       <Routes>
@@ -191,7 +185,7 @@ const App = () => {
             </main>
           )}
         />
-        <Route path="*" element={<p>Page not found</p>} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
       {/* )} */}
       <footer>

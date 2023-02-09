@@ -12,10 +12,11 @@ export const CartAndFavProvider = ({ children }) => {
   const cart = JSON.parse(localStorage.getItem('cartProducts'));
 
   // console.log(cart);
-  console.log(fav);
 
   const [cartProducts, setCartProducts] = useState(cart || []);
   const [favProducts, setFavProducts] = useState(fav || []);
+  const [visbleFavProducts, setVisbleFavProducts] = useState(favProducts);
+
   // const [visibleTodos, setVisibleTodos] = useState(todos);
 
   return (
@@ -24,6 +25,8 @@ export const CartAndFavProvider = ({ children }) => {
       setCartProducts,
       favProducts,
       setFavProducts,
+      visbleFavProducts,
+      setVisbleFavProducts,
     }}
     >
       {children}

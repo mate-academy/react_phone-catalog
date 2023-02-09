@@ -9,11 +9,11 @@ export const ProductTextDesc = ({ product }: any) => {
       <div className="horizontal-line" />
       <ul className="product-desc__list">
         {
-          product.description.map((one) => {
+          product.description.map((one: any) => {
             return (
               <li className="product-desc__item" key={one}>
                 <h3 className="product-desc__item-title">{one.title}</h3>
-                {one.text.map((text) => {
+                {one.text.map((text: string) => {
                   return (
                     <p className="product-desc__item-text body14">
                       {text}

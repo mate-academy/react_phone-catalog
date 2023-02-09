@@ -11,6 +11,22 @@
 		display: flex;
 	}
 
+	&-button {
+		display: flex;
+		align-items: center;
+    justify-content: center;
+		height: 66px;
+		width: 64px;
+		border: 0.5px solid #E2E6E9;
+		box-sizing: border-box;
+		
+		&__image {
+			width: 15px;
+			height: 15px;
+			margin-left: 6px;
+		}
+	}
+
 	&__navigation {
 		display: flex;
 		align-items: center;
@@ -38,7 +54,7 @@
 			// transition: 0.3s;
 			&:hover {
 				color: #313237;
-				min-width: 100%;
+				// min-width: 100%;
 				border-bottom: 3px solid #313237;
 				padding-bottom: 24px;
 			}
@@ -49,7 +65,7 @@
 
 .active {
 	color: #313237;
-	min-width: 100%;
+	// min-width: 100%;
 	border-bottom: 3px solid #313237;
 	padding-bottom: 24px;
 }
@@ -79,4 +95,22 @@ li {
 a {
 	color: #89939A;
 	text-decoration: none;
+}
+
+.cart-amount,
+.favourite-amount {
+	position: relative;
+	/*or absolute*/
+	// z-index:100000; /*a number that's more than the modal box*/
+	left: -6px;
+	font-size: 9px;
+	height: 14px;
+	width: 14px;
+	top: -7px;
+	background-color: #EB5757;
+	color: #FFFFFF;
+	border-radius: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }

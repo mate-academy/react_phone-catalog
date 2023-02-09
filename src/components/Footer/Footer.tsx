@@ -1,5 +1,5 @@
-import { Button } from '../../helpers/Button/Button';
-import { Logo } from '../../helpers/Logo/Logo';
+import { Button } from '../../common/Button/Button';
+import { Logo } from '../../common/Logo/Logo';
 import './Footer.scss';
 
 export const Footer = () => {

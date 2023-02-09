@@ -1,7 +1,12 @@
 import './ShopByCategory.scss';
 import { Link } from 'react-router-dom';
+import { Product } from '../../../../types/types';
 
-export const ShopByCategory = ({ phones }) => {
+type Props = {
+  phones: Product[],
+};
+
+export const ShopByCategory:React.FC<Props> = ({ phones }) => {
   const categories = [
     {
       title: 'Mobile phones',

@@ -1,14 +1,15 @@
 import './ProductsListWithSlider.scss';
 
 import { useState, useRef } from 'react';
-import { ProductCard } from '../../../../helpers/ProductCard/ProductCard';
-import { Button } from '../../../../helpers/Button/Button';
+import { Button } from '../../../../common/Button/Button';
+import { ProductCard } from '../../../../common/ProductCard/ProductCard';
 
 export const ProductsListWithSlider: React.FC<any> = (
   { products, title },
 ) => {
   const [width, setWidth] = useState(0);
   const [initialWidth, setInitialWidth] = useState<any>(0);
+  // const [isDisabled, setIsDisabled] = useState(false);
   const ref = useRef<any>(null);
 
   const maxMargin = initialWidth * (products.length - 5);
@@ -31,6 +32,9 @@ export const ProductsListWithSlider: React.FC<any> = (
     if (width > 0) {
       setWidth(width - ref.current.offsetWidth);
     }
+    // if(visibleBanner <= 0){
+    //   return;
+    // }
   };
 
   return (
@@ -43,6 +47,7 @@ export const ProductsListWithSlider: React.FC<any> = (
             onClick={moveLeft}
             image="/icons/Chevron (Arrow Left).svg"
             alt="<"
+            // disabled={isDisabled}
           />
           <Button
             className="arrow right small"
@@ -64,8 +69,6 @@ export const ProductsListWithSlider: React.FC<any> = (
             >
               <ProductCard
                 product={product}
-                key={product.id}
-                productImg={undefined}
               />
 
             </li>

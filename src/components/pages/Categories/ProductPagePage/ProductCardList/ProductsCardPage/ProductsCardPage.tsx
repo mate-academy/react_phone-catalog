@@ -1,11 +1,10 @@
-// import { useState } from 'react';
-// import { useEffect } from 'react';
 import { useEffect, useState } from 'react';
-import { Button } from '../../../../../../helpers/Button/Button';
+import { Button } from '../../../../../../common/Button/Button';
 import {
   NavigationButtons,
-} from '../../../../../../helpers/NavigationButtons/NavigationButtons';
-import { ProductCard } from '../../../../../../helpers/ProductCard/ProductCard';
+} from '../../../../../../common/NavigationButtons/NavigationButtons';
+import { ProductCard } from '../../../../../../common/ProductCard/ProductCard';
+
 import './ProductsCardPage.scss';
 
 export const ProductsCardPage: React.FC<any>
@@ -14,25 +13,31 @@ export const ProductsCardPage: React.FC<any>
 }) => {
   // const [selectValue, setSelectValue] = useState('');
   const [itemsOnPage, setItemsOnPage] = useState(16);
+
+  console.log(itemsOnPage, visibleProducts);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsSort, setItemsSort] = useState('');
   const buttonsNumber = Math.ceil(products.length / itemsOnPage);
   const isSelected = (one: any) => {
     return currentPage === one;
   };
-  // const [buttonsNumber, setButtonsNumber] = useState(number);
-  // const [visibleProducts, setVisibleProducts] = useState([]);
 
-  // let result = getVisibleProducts()
+  const firstIndex = currentPage * itemsOnPage - itemsOnPage;
+  const lastIndex = currentPage * itemsOnPage;
+
   useEffect(() => {
-    const firstIndex = currentPage * itemsOnPage - itemsOnPage;
-    const lastIndex = currentPage * itemsOnPage;
-
+    console.log('444444', firstIndex, lastIndex);
     setVisibleProducts(products.filter((
-      product: any, index: any) => {
+      product: any, index: any,
+    ) => {
+      console.log('hmm', product);
+
       return index > firstIndex && index <= lastIndex;
     }));
   }, [itemsOnPage, currentPage, itemsSort]);
+  useEffect(() => {
+    console.log('3333');
+  }, []);
 
   const sortItemsBy = async (value: any) => {
     switch (value) {
@@ -72,7 +77,7 @@ export const ProductsCardPage: React.FC<any>
   // console.log(setButtonsNumber)
   return (
     <div className="product-page">
-      <NavigationButtons product={undefined} id={undefined} />
+      <NavigationButtons />
       <div className="product-page__main">
         <div className="product-page__main-info">
           <h1 className="product-page__title">{title}</h1>
@@ -95,7 +100,7 @@ export const ProductsCardPage: React.FC<any>
                   sortItemsBy(event.target.value);
                 }}
               >
-                <option selected value="newest">Newest</option>
+                <option defaultValue={itemsSort} value="newest">Newest</option>
                 <option value="alphabetically">Alphabetically</option>
                 <option value="cheapest">Cheapest</option>
               </select>
@@ -116,7 +121,7 @@ export const ProductsCardPage: React.FC<any>
                   backgroundImage: 'url("/icons/Chevron (Arrow Down).svg")',
                 }}
               >
-                <option selected value="4">4</option>
+                <option defaultValue={itemsOnPage} value="4">4</option>
                 <option value="8">8</option>
                 <option value="16">16</option>
                 <option value={products.length}>All</option>
@@ -132,7 +137,9 @@ export const ProductsCardPage: React.FC<any>
                   className="product-page__item"
                   key={product.id}
                 >
-                  <ProductCard product={product} productImg={`./_new/${product.image}`} />
+                  <ProductCard
+                    product={product}
+                  />
                 </li>
               );
             })
@@ -157,8 +164,6 @@ export const ProductsCardPage: React.FC<any>
           <ul className="product-page__buttons-list">
             {
               [...Array(buttonsNumber)].map((one, index) => {
-                one = index + 1;
-
                 return (
 
                   <li
@@ -166,7 +171,7 @@ export const ProductsCardPage: React.FC<any>
                     className="product-page__buttons-item"
                   >
                     <Button
-                      className={`arrow small ${isSelected(one) && 'active-button'}`}
+                      className={`arrow small ${isSelected(index + 1) && 'active-button'}`}
                       onClick={() => {
                         setCurrentPage(index + 1);
                       }}

@@ -1,12 +1,11 @@
 import './ProductBuyingInfo.scss';
-// import { ProductCapacity } from './ProductCapacity/ProductCapacity';
+import { Button } from '../../../../../../../../common/Button/Button';
+import {
+  LongButton,
+} from '../../../../../../../../common/LongButton/LongButton';
 import {
   ProductAvaliableColors,
 } from './ProductAvaliableColors/ProductAvaliableColors';
-import {
-  LongButton,
-} from '../../../../../../../../helpers/LongButton/LongButton';
-import { Button } from '../../../../../../../../helpers/Button/Button';
 
 export const ProductBuyingInfo = ({ product, products, setProduct }:any) => {
   return (
@@ -17,11 +16,6 @@ export const ProductBuyingInfo = ({ product, products, setProduct }:any) => {
           products={products}
           setProduct={setProduct}
         />
-        {/* <ProductCapacity
-          product={product}
-          products={products}
-          setProduct={setProduct}
-        /> */}
         <div className="buying-info__price">
           <h1 className="product__price">
             $

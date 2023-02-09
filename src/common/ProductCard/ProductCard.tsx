@@ -1,14 +1,16 @@
 import { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { CartAndFavContext } from '../../context/CartAndFavContext';
+import { Product } from '../../types/types';
 import { Button } from '../Button/Button';
 import { LongButton } from '../LongButton/LongButton';
 import './ProductCard.scss';
 
-// import { Button } from '../../../helpers/Button/Button';
-// import { LongButton } from '../../../helpers/LongButton/LongButton';
+type Props = {
+  product: Product,
+};
 
-export const ProductCard: React.FC<any> = ({
+export const ProductCard: React.FC<Props> = ({
   product,
 }) => {
   const [isAddedToCart, setIsAddedToCart] = useState(false);
@@ -20,7 +22,8 @@ export const ProductCard: React.FC<any> = ({
   const {
     cartProducts, setCartProducts,
     favProducts, setFavProducts,
-  } = useContext(CartAndFavContext);
+    // visibleFavProducts, setVisibleFavProducts,
+  } = useContext<any>(CartAndFavContext);
 
   // const { cartProducts, setCartProducts } = useContext(CartContext);
 
@@ -29,10 +32,12 @@ export const ProductCard: React.FC<any> = ({
   ) => {
     event.preventDefault();
     setIsAddedToCart(true);
-    const exists = cartProducts.find((one) => {
+    const exists = cartProducts.find((one:any) => {
       if (one.id === product.id) {
         return one.id === product.id;
       }
+
+      return;
     });
 
     if (exists) {
@@ -48,31 +53,36 @@ export const ProductCard: React.FC<any> = ({
 
   const toggleFav = async () => {
     setIsAddedToFav(!isAddedToFav);
-    const exists = favProducts.find((one) => {
+    const exists = favProducts.find((one: any) => {
       if (one.id === product.id) {
         return one.id === product.id;
       }
+
+      return;
     });
 
     if (exists) {
-      console.log('ex')
-      setFavProducts(favProducts.filter((one) => one.id !== product.id));
-      // isAddedToFav(false)
+      console.log('ex');
+      setFavProducts(favProducts.filter((one: any) => one.id !== product.id));
+      // setVisibleFavProducts(visibleFavProducts.filter((one) => one.id !== product.id));
+      // isAddedToFav(false);
 
       return;
     }
 
-    if(isAddedToFav === true) {
-      console.log('am i useful?????---')
+    if (isAddedToFav === true) {
+      console.log('am i useful?????---');
       setFavProducts([...favProducts, product]);
-      return
+
+      // setVisibleFavProducts([...visibleFavProducts, product]);
+      return;
     }
 
-    if(isAddedToFav === false) {
-      console.log('goooo')
+    if (isAddedToFav === false) {
+      console.log('goooo');
       setFavProducts([...favProducts, product]);
+      // setVisibleFavProducts([...visibleFavProducts, product]);
       // isAddedToFav()
-      return
     }
   };
 
@@ -81,12 +91,12 @@ export const ProductCard: React.FC<any> = ({
   }, [favProducts]);
 
   useEffect(() => {
-    cartProducts.map((one) => {
+    cartProducts.map((one: any) => {
       if (one.id === product.id) {
         setIsAddedToCart(true);
       }
     });
-    favProducts.map((one) => {
+    favProducts.map((one: any) => {
       if (one.id === product.id) {
         setIsAddedToFav(true);
       }
@@ -147,9 +157,7 @@ export const ProductCard: React.FC<any> = ({
               ? '/icons/Favourites Filled (Heart Like).svg'
               : '/icons/Favourites.svg'}
             title="favourites"
-            onClick={(event: any) => {
-              toggleFav();
-            }}
+            onClick={toggleFav}
           />
         </div>
 

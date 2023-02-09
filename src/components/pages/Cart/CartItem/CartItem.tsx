@@ -1,35 +1,44 @@
 import { useContext, useEffect, useState } from 'react';
 import { CartAndFavContext } from '../../../../context/CartAndFavContext';
-import { Button } from '../../../../helpers/Button/Button';
+import { Button } from '../../../../common/Button/Button';
 import './CartItem.scss';
+import { Product } from '../../../../types/types';
 
-export const CartItem = ({ product }) => {
+type Props = {
+  product: Product,
+};
+
+export const CartItem:React.FC<Props> = ({ product }) => {
   const [count, setCount] = useState(product.count);
-  const { cartProducts, setCartProducts } = useContext(CartAndFavContext);
+  const { cartProducts, setCartProducts } = useContext<any>(CartAndFavContext);
 
   const deleteProduct = async () => {
     // const productsList = );
 
-    await setCartProducts(cartProducts.filter((p) => p.id !== product.id));
+    await setCartProducts(cartProducts.filter(
+      (p:Product) => p.id !== product.id,
+    ));
   };
 
   useEffect(() => {
     localStorage.setItem('cartProducts', JSON.stringify(cartProducts));
   }, [cartProducts]);
   useEffect(() => {
-    if (count <= 0) {
-      deleteProduct();
+    if (count) {
+      if (count <= 0) {
+        deleteProduct();
 
-      return;
-    }
-
-    setCartProducts(cartProducts.map((p) => {
-      if (p.id === product.id) {
-        return { ...p, count };
+        return;
       }
 
-      return p;
-    }));
+      setCartProducts(cartProducts.map((p:Product) => {
+        if (p.id === product.id) {
+          return { ...p, count };
+        }
+
+        return p;
+      }));
+    }
   }, [count]);
 
   // const phonesAmount = localStorage.getItem('count');
@@ -61,7 +70,7 @@ export const CartItem = ({ product }) => {
           <Button
             className="minus"
             onClick={() => {
-              setCount(prev => prev - 1);
+              setCount((prev = 1) => prev - 1);
             }}
             image="/icons/Minus.svg"
             alt="-"
@@ -72,7 +81,7 @@ export const CartItem = ({ product }) => {
           <Button
             className="plus"
             onClick={() => {
-              setCount(prev => prev + 1);
+              setCount((prev = 1) => prev + 1);
             }}
             // onClick={moveRight}
             image="/icons/Plus.svg"
@@ -81,7 +90,7 @@ export const CartItem = ({ product }) => {
         </div>
         <h2 className="cart-item__price">
           $
-          {product.price * product.count}
+          { product.count && product.price * product.count}
         </h2>
       </div>
     </div>

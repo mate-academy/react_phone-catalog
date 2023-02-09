@@ -1,7 +1,6 @@
 import './ProductSlider.scss';
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Button } from '../../../../helpers/Button/Button';
+import { Button } from '../../../../common/Button/Button';
 
 export const ProductsSlider = () => {
   // console.log(items)

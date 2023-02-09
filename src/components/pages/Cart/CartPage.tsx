@@ -1,34 +1,43 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CartAndFavContext } from '../../../context/CartAndFavContext';
-import { Button } from '../../../helpers/Button/Button';
-import { LongButton } from '../../../helpers/LongButton/LongButton';
-import { CartItem } from './CartItem/CartItem';
+import { Button } from '../../../common/Button/Button';
 import './CartPage.scss';
+import { CartItem } from './CartItem/CartItem';
+import { LongButton } from '../../../common/LongButton/LongButton';
+import { Product } from '../../../types/types';
 
 export const CartPage = () => {
   const navigate = useNavigate();
 
-  const { cartProducts } = useContext(CartAndFavContext);
-  const totalPrice = cartProducts.reduce((current, prev) => {
-    return current + (prev.price * prev.count);
+  const { cartProducts } = useContext<any>(CartAndFavContext);
+  const totalPrice = cartProducts.reduce((current:number, prev: Product) => {
+    if (prev.count) {
+      return current + (prev.price * prev.count);
+    }
+
+    return;
   }, 0);
-  const totalAmount = cartProducts.reduce((current, prev) => {
-    return current + prev.count;
+  const totalAmount = cartProducts.reduce((current:number, prev: Product) => {
+    if (prev.count) {
+      return current + prev.count;
+    }
+
+    return;
   }, 0);
 
   return (
     <div className="cart-page">
       <div
         className="back-button body12"
-        onClick={() => {
-          navigate(-1);
-        }}
       >
         <Button
           className="no-border"
           image="/icons/Chevron (Arrow Left).svg"
           alt="<"
+          onClick={() => {
+            navigate(-1);
+          }}
         />
         <div className="back-button__text">
           Back
@@ -41,7 +50,7 @@ export const CartPage = () => {
         <div className="cart-page__products">
           {cartProducts && (
             <ul className="cart-page__list">
-              {cartProducts.map((product) => {
+              {cartProducts.map((product: any) => {
                 return (
                   <li className="cart-page__item">
                     <CartItem

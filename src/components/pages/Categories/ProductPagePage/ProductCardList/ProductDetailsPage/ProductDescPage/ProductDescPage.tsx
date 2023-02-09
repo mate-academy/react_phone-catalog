@@ -1,9 +1,9 @@
 import './ProductDescPage.scss';
+import { ProductBuyingInfo } from './ProductBuyingInfo/ProductBuyingInfo';
 import {
   ProductPicturesBlock,
 } from './ProductPicturesBlock/ProductPicturesBlock';
 import { ProductTextDesc } from './ProductTextDesc/ProductTextDesc';
-import { ProductBuyingInfo } from './ProductBuyingInfo/ProductBuyingInfo';
 
 export const ProductDescPage: React.FC<any> = ({
   product, products, setProduct,

@@ -1,39 +1,30 @@
 import './ProductAvaliableColors.scss';
 // import { useNavigate, useHistory } from 'react-router-dom';
-import { colorsHex } from '../../../../../../../../../colorDictinary';
+import { Colors, colorsHex } from '../../../../../../../../../colorDictinary';
 
 export const ProductAvaliableColors = ({
   product, products, setProduct,
 } : any) => {
-  // let {pathname} = useLocation();
-  // const history = useHistory();
-
   const searchProductByColor = async (color: string) => {
     const newProduct = products.find((one: any) => {
       return one.phoneId === product.id.replace(product.color, color);
     });
 
-    // console.log(pathname)
+    const response = await fetch(
+      `/_new/products/${newProduct.itemId}.json`,
+      {
+        method: 'GET',
+      },
+    );
 
-    try {
-      const response = await fetch(
-        `/_new/products/${newProduct.itemId}.json`,
-        {
-          method: 'GET',
-        },
-      );
+    if (response.status === 200) {
+      const result = await response.json();
 
-      if (response.status === 200) {
-        const result = await response.json();
+      // navigate(`../${newProduct.id}`);
+      window.history.replaceState(null, '', `/phones/${newProduct.id}`);
 
-        // navigate(`../${newProduct.id}`);
-        window.history.replaceState(null, '', `/phones/${newProduct.id}`);
-
-        // pathname=`phones${newProduct.id}`
-        return setProduct(result);
-      }
-    } catch (err) {
-      throw err;
+      // pathname=`phones${newProduct.id}`
+      return setProduct(result);
     }
 
     // setProduct(newProduct)
@@ -57,11 +48,12 @@ export const ProductAvaliableColors = ({
                 className="avaliable-colors__item"
                 key={one}
                 style={{
-                  backgroundColor: colorsHex[one],
+                  backgroundColor: colorsHex[one as keyof Colors],
                 }}
                 onClick={() => {
                   searchProductByColor(one);
                 }}
+                aria-hidden="true"
               >
                 {/* {one} */}
               </li>

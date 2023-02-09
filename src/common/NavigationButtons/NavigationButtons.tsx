@@ -1,8 +1,14 @@
 import { Link } from 'react-router-dom';
+import { Product } from '../../types/types';
 import { Button } from '../Button/Button';
 import './NavigationButtons.scss';
 
-export const NavigationButtons = ({ product, id }) => {
+type Props = {
+  product?: Product,
+  id?: string,
+};
+
+export const NavigationButtons:React.FC<Props> = ({ product, id }) => {
   return (
     <div className="navigation-buttons">
       <div className="sub-buttons">
