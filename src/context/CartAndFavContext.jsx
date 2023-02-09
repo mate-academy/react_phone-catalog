@@ -11,11 +11,11 @@ export const CartAndFavProvider = ({ children }) => {
   const fav = JSON.parse(localStorage.getItem('favProducts'));
   const cart = JSON.parse(localStorage.getItem('cartProducts'));
 
-  // console.log(cart);
+  console.log(cart);
 
   const [cartProducts, setCartProducts] = useState(cart || []);
   const [favProducts, setFavProducts] = useState(fav || []);
-  const [visbleFavProducts, setVisbleFavProducts] = useState(favProducts);
+  const [visibleFavProducts, setVisibleFavProducts] = useState(favProducts);
 
   // const [visibleTodos, setVisibleTodos] = useState(todos);
 
@@ -25,8 +25,8 @@ export const CartAndFavProvider = ({ children }) => {
       setCartProducts,
       favProducts,
       setFavProducts,
-      visbleFavProducts,
-      setVisbleFavProducts,
+      visibleFavProducts,
+      setVisibleFavProducts,
     }}
     >
       {children}

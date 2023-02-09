@@ -1,16 +1,18 @@
 import './ProductDetailsPage.scss';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { Button } from '../../../../../../common/Button/Button';
 import {
   NavigationButtons,
 } from '../../../../../../common/NavigationButtons/NavigationButtons';
 import { ProductDescPage } from './ProductDescPage/ProductDescPage';
+import { ProductContext } from '../../../../../../context/ProductContext';
 
 export const ProductDetailsPage: React.FC<any> = ({ products }) => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [product, setProduct] = useState();
+  // const [product, setProduct] = useState();
+  const { product, setProduct } = useContext<any>(ProductContext);
 
   const getProduct = async () => {
     const singleProduct = products.find((one: any) => {
@@ -63,8 +65,6 @@ export const ProductDetailsPage: React.FC<any> = ({ products }) => {
       {
         product && (
           <ProductDescPage
-            product={product}
-            setProduct={setProduct}
             products={products}
           />
         )

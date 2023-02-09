@@ -6,15 +6,17 @@ import {
 import {
   ProductAvaliableColors,
 } from './ProductAvaliableColors/ProductAvaliableColors';
+import { ProductCapacity } from './ProductCapacity/ProductCapacity';
 
 export const ProductBuyingInfo = ({ product, products, setProduct }:any) => {
   return (
     <div className="buying-info">
       <div className="buying-info__details">
         <ProductAvaliableColors
-          product={product}
           products={products}
-          setProduct={setProduct}
+        />
+        <ProductCapacity
+          products={products}
         />
         <div className="buying-info__price">
           <h1 className="product__price">

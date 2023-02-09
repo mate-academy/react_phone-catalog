@@ -33,6 +33,8 @@ const App = () => {
   const [visibleIPhones, setVisibleIPhones] = useState(IPhones);
   const [hotPriceProducts, setHotPriceProducts] = useState(items);
   const [brandNewProducts, setBrandNewProducts] = useState(items);
+  const [searchInput, setSearchInput] = useState('');
+
   // const [isLoading, setLoading] = useState(true);
 
   // oldPhones
@@ -117,6 +119,8 @@ const App = () => {
       <Header
         setVisibleIPhones={setVisibleIPhones}
         IPhones={IPhones}
+        searchInput={searchInput}
+        setSearchInput={setSearchInput}
       />
       {/* {!isLoading && ( */}
       <Routes>
@@ -151,6 +155,7 @@ const App = () => {
                   setVisibleProducts={setVisibleIPhones}
                   visibleProducts={visibleIPhones}
                   title="Mobile phones"
+                  searchInput={searchInput}
                 />
               </main>
             )}

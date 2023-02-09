@@ -1,15 +1,17 @@
+import { useContext } from 'react';
+import { ProductContext } from '../../../../../../../../../context/ProductContext';
 import { Product } from '../../../../../../../../../types/types';
 import './ProductCapacity.scss';
 
 type Props = {
   products: Product[],
-  product: Product[] | any,
-  setProduct: any,
 };
 
 export const ProductCapacity:React.FC<Props> = (
-  { product, products, setProduct },
+  { products },
 ) => {
+  const { product, setProduct } = useContext<any>(ProductContext);
+
   const searchProductByCapacity = async (capacity: string) => {
     const newProduct = products.find((one: any) => {
       return (

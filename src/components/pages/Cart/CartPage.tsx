@@ -6,6 +6,7 @@ import './CartPage.scss';
 import { CartItem } from './CartItem/CartItem';
 import { LongButton } from '../../../common/LongButton/LongButton';
 import { Product } from '../../../types/types';
+import { NoProducts } from '../../../common/NoProducts/NoProducts';
 
 export const CartPage = () => {
   const navigate = useNavigate();
@@ -18,6 +19,7 @@ export const CartPage = () => {
 
     return;
   }, 0);
+
   const totalAmount = cartProducts.reduce((current:number, prev: Product) => {
     if (prev.count) {
       return current + prev.count;
@@ -48,11 +50,11 @@ export const CartPage = () => {
       </h1>
       <div className="cart-page__blocks">
         <div className="cart-page__products">
-          {cartProducts && (
+          {cartProducts.length ? (
             <ul className="cart-page__list">
               {cartProducts.map((product: any) => {
                 return (
-                  <li className="cart-page__item">
+                  <li className="cart-page__item" key={product.id}>
                     <CartItem
                       product={product}
                     />
@@ -60,7 +62,9 @@ export const CartPage = () => {
                 );
               })}
             </ul>
-          )}
+          )
+        :<NoProducts/>
+        }
         </div>
         <div className="cart-page__price">
           <h1 className="cart-page__price-total">
@@ -74,7 +78,6 @@ export const CartPage = () => {
           <LongButton text="Checkout" />
         </div>
       </div>
-
     </div>
 	 );
 };

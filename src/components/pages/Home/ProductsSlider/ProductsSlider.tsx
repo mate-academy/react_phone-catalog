@@ -31,9 +31,9 @@ export const ProductsSlider = () => {
   };
 
   useEffect(() => {
-    // setInterval(() => {
-    //   setVisibleBanner(prevCount => prevCount + 1);
-    // }, 5000);
+    setInterval(() => {
+      setVisibleBanner(prevCount => prevCount + 1);
+    }, 5000);
   }, []);
 
   return (
@@ -47,7 +47,10 @@ export const ProductsSlider = () => {
         />
         <div
           className="slider__images"
-          style={{ backgroundImage: `url('${banners[visibleBanner]}')` }}
+          style={{
+            backgroundImage: `url('${banners[visibleBanner]}')`,
+            transition: '0.3s',
+          }}
         />
         <Button
           className="arrow right long"

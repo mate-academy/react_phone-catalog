@@ -1,8 +1,10 @@
+
+
 *{
 	margin: 0;
 }
 iframe {
-  pointer-events: none;
+	pointer-events: none;
 }
 
 body {
@@ -10,10 +12,18 @@ body {
 	font-style: normal;
 	margin: 0 auto;
 	max-width: 1440px;
+	// width: 400px;
+	// overflow-x: hidden;
+	display: flex;
+  justify-content: center;
+}
+
+main, header, footer {
+	// overflow-x: hidden;
+	max-width: 1140px;
 }
 
 main {
-	max-width: 1140px;
 	margin: 0 auto;
 }
 

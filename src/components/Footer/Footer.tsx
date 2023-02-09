@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { Button } from '../../common/Button/Button';
 import { Logo } from '../../common/Logo/Logo';
 import './Footer.scss';
@@ -22,12 +23,7 @@ export const Footer = () => {
         }
       </ul>
       <div className="footer__top">
-        <p className="footer__button-text body12">
-          Back to top
-        </p>
-        <Button
-          className="arrow up small"
-          // onClick={moveLeft}
+        <div
           onClick={() => {
             window.scroll({
               top: 0,
@@ -35,9 +31,19 @@ export const Footer = () => {
               behavior: 'smooth',
             });
           }}
-          image="/icons/Chevron (Arrow Up).svg"
-          alt="^"
-        />
+          className="footer__button-up"
+          aria-hidden
+        >
+          <p className="footer__button-text body12">
+            Back to top
+          </p>
+          <Button
+            className="arrow up small"
+            // onClick={moveLeft}
+            image="/icons/Chevron (Arrow Up).svg"
+            alt="^"
+          />
+        </div>
       </div>
     </div>
   );

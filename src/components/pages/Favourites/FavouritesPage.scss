@@ -1,10 +1,13 @@
 .favourites {
 	&__list {
-		display: grid;
-		grid-template-columns: 1fr 1fr 1fr 1fr;
+		// display: grid;
+		// grid-template-columns: 1fr 1fr 1fr 1fr;
+		display: flex;
+		flex-wrap: wrap;
 	}
 
 	&__item {
 		margin-bottom: 40px ;
+		margin-right: 14px;
 	}
 }

@@ -4,10 +4,14 @@ import {
   ProductPicturesBlock,
 } from './ProductPicturesBlock/ProductPicturesBlock';
 import { ProductTextDesc } from './ProductTextDesc/ProductTextDesc';
+import { useContext } from 'react';
+import { ProductContext } from '../../../../../../../context/ProductContext';
 
 export const ProductDescPage: React.FC<any> = ({
-  product, products, setProduct,
+ products,
 }) => {
+  const { product, setProduct } = useContext<any>(ProductContext);
+
   return (
     <div className="product-desc">
       <h1 className="product-desc__title">

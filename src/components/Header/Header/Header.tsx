@@ -1,7 +1,7 @@
 import './Header.scss';
 import { useLocation } from 'react-router';
 import { NavLink } from 'react-router-dom';
-import { ChangeEvent, useContext, useState } from 'react';
+import { ChangeEvent, useContext } from 'react';
 import { Logo } from '../../../common/Logo/Logo';
 import { CartAndFavContext } from '../../../context/CartAndFavContext';
 import { Product } from '../../../types/types';
@@ -9,18 +9,21 @@ import { Product } from '../../../types/types';
 type Props = {
   setVisibleIPhones: any,
   IPhones: Product[],
+  setSearchInput: any,
+  searchInput: string,
 };
 
 export const Header:React.FC<Props> = ({
   setVisibleIPhones,
   IPhones,
+  setSearchInput,
+  searchInput,
 }) => {
   const { pathname } = useLocation();
   // const pathname = '/';
   const navLinksList = ['home', 'phones', 'tablets', 'accessories'];
-  const [searchInput, setSearchInput] = useState('');
   const {
-    cartProducts, favProducts, setVisbleFavProducts,
+    cartProducts, favProducts, setVisibleFavProducts,
   } = useContext<any>(CartAndFavContext);
   // const [visbleFavProducts, setVisbleFavProducts] = useState(favProducts)
 
@@ -35,7 +38,7 @@ export const Header:React.FC<Props> = ({
         }));
         break;
       case '/favourites':
-        setVisbleFavProducts(favProducts.filter((one: any) => {
+        setVisibleFavProducts(favProducts.filter((one: any) => {
           return (
             one.name.toLowerCase().includes(
               event.target.value.toLowerCase(),

@@ -14,15 +14,20 @@ export const CartItem:React.FC<Props> = ({ product }) => {
 
   const deleteProduct = async () => {
     // const productsList = );
-
     await setCartProducts(cartProducts.filter(
       (p:Product) => p.id !== product.id,
     ));
+
+    if (cartProducts.length === 1) {
+      localStorage.setItem('cartProducts', JSON.stringify([]));
+    }
   };
 
   useEffect(() => {
+    console.log('dfdf')
     localStorage.setItem('cartProducts', JSON.stringify(cartProducts));
   }, [cartProducts]);
+
   useEffect(() => {
     if (count) {
       if (count <= 0) {

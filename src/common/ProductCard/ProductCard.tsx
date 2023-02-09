@@ -8,10 +8,11 @@ import './ProductCard.scss';
 
 type Props = {
   product: Product,
+  link?: string,
 };
 
 export const ProductCard: React.FC<Props> = ({
-  product,
+  product, link,
 }) => {
   const [isAddedToCart, setIsAddedToCart] = useState(false);
   const [isAddedToFav, setIsAddedToFav] = useState(false);
@@ -22,7 +23,7 @@ export const ProductCard: React.FC<Props> = ({
   const {
     cartProducts, setCartProducts,
     favProducts, setFavProducts,
-    // visibleFavProducts, setVisibleFavProducts,
+    visibleFavProducts, setVisibleFavProducts,
   } = useContext<any>(CartAndFavContext);
 
   // const { cartProducts, setCartProducts } = useContext(CartContext);
@@ -36,8 +37,6 @@ export const ProductCard: React.FC<Props> = ({
       if (one.id === product.id) {
         return one.id === product.id;
       }
-
-      return;
     });
 
     if (exists) {
@@ -57,38 +56,34 @@ export const ProductCard: React.FC<Props> = ({
       if (one.id === product.id) {
         return one.id === product.id;
       }
-
-      return;
     });
 
     if (exists) {
-      console.log('ex');
-      setFavProducts(favProducts.filter((one: any) => one.id !== product.id));
-      // setVisibleFavProducts(visibleFavProducts.filter((one) => one.id !== product.id));
-      // isAddedToFav(false);
+      setFavProducts(favProducts.filter((one: any) => one.id !== exists.id));
+      setVisibleFavProducts(visibleFavProducts.filter(
+        (one) => one.id !== exists.id,
+      ));
 
-      return;
-    }
+      if (favProducts.length === 1) {
+        localStorage.setItem('favProducts', JSON.stringify([]));
+      }
 
-    if (isAddedToFav === true) {
-      console.log('am i useful?????---');
-      setFavProducts([...favProducts, product]);
-
-      // setVisibleFavProducts([...visibleFavProducts, product]);
       return;
     }
 
     if (isAddedToFav === false) {
-      console.log('goooo');
+      setVisibleFavProducts([...visibleFavProducts, product]);
       setFavProducts([...favProducts, product]);
-      // setVisibleFavProducts([...visibleFavProducts, product]);
-      // isAddedToFav()
     }
   };
 
   useEffect(() => {
     localStorage.setItem('favProducts', JSON.stringify(favProducts));
   }, [favProducts]);
+
+  // const style = index % 4 === 0
+  //   ? { marginLeft: '0px' }
+  //   : { marginLeft: '0px' };
 
   useEffect(() => {
     cartProducts.map((one: any) => {
@@ -105,9 +100,11 @@ export const ProductCard: React.FC<Props> = ({
 
   return (
     <>
-      <div className="product">
+      <div className="product" 
+      // style={style}
+      >
         <Link
-          to={`../${product.category}/${product.id}`}
+          to={link || `../${product.category}/${product.id}`}
           onClick={() => {
             window.scroll({
               top: 0,

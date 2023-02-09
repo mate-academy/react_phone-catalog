@@ -1,10 +1,16 @@
 import './ProductAvaliableColors.scss';
 // import { useNavigate, useHistory } from 'react-router-dom';
+import { useContext } from 'react';
 import { Colors, colorsHex } from '../../../../../../../../../colorDictinary';
+import {
+  ProductContext,
+} from '../../../../../../../../../context/ProductContext';
 
 export const ProductAvaliableColors = ({
-  product, products, setProduct,
+   products,
 } : any) => {
+  const { product, setProduct } = useContext<any>(ProductContext);
+
   const searchProductByColor = async (color: string) => {
     const newProduct = products.find((one: any) => {
       return one.phoneId === product.id.replace(product.color, color);
@@ -20,7 +26,6 @@ export const ProductAvaliableColors = ({
     if (response.status === 200) {
       const result = await response.json();
 
-      // navigate(`../${newProduct.id}`);
       window.history.replaceState(null, '', `/phones/${newProduct.id}`);
 
       // pathname=`phones${newProduct.id}`
