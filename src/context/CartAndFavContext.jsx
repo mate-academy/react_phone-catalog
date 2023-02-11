@@ -8,6 +8,9 @@ export const CartAndFavContext = React.createContext(null);
 // };
 
 export const CartAndFavProvider = ({ children }) => {
+  const [isAddedToCart, setIsAddedToCart] = useState(false);
+  const [isAddedToFav, setIsAddedToFav] = useState(false);
+
   const fav = JSON.parse(localStorage.getItem('favProducts'));
   const cart = JSON.parse(localStorage.getItem('cartProducts'));
 
@@ -27,6 +30,10 @@ export const CartAndFavProvider = ({ children }) => {
       setFavProducts,
       visibleFavProducts,
       setVisibleFavProducts,
+      isAddedToCart,
+      setIsAddedToCart,
+      isAddedToFav,
+      setIsAddedToFav,
     }}
     >
       {children}

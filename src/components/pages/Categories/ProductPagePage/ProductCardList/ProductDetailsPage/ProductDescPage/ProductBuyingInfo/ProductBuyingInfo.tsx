@@ -1,4 +1,5 @@
 import './ProductBuyingInfo.scss';
+import { useContext, useEffect } from 'react';
 import { Button } from '../../../../../../../../common/Button/Button';
 import {
   LongButton,
@@ -7,8 +8,44 @@ import {
   ProductAvaliableColors,
 } from './ProductAvaliableColors/ProductAvaliableColors';
 import { ProductCapacity } from './ProductCapacity/ProductCapacity';
+import {
+  DetailedProductContext,
+} from '../../../../../../../../context/DetailedProductContext';
+import {
+  CartAndFavContext,
+} from '../../../../../../../../context/CartAndFavContext';
 
-export const ProductBuyingInfo = ({ product, products, setProduct }:any) => {
+export const ProductBuyingInfo = ({ products, singleProduct }:any) => {
+  const {
+    cartProducts, favProducts,
+    setIsAddedToCart, isAddedToCart,
+    setIsAddedToFav, isAddedToFav,
+  } = useContext<any>(CartAndFavContext);
+
+  const {
+    detailedProduct,
+  } = useContext<any>(DetailedProductContext);
+
+  useEffect(() => {
+    cartProducts.map((one: any) => {
+      if (one.phoneId === detailedProduct.id) {
+        setIsAddedToCart(true);
+      } else {
+        setIsAddedToCart(false);
+      }
+    });
+  }, [detailedProduct, cartProducts]);
+
+  useEffect(() => {
+    setIsAddedToFav(false);
+
+    favProducts.map((one: any) => {
+      if (one.phoneId === detailedProduct.id) {
+        setIsAddedToFav(true);
+      }
+    });
+  }, [detailedProduct, favProducts]);
+
   return (
     <div className="buying-info">
       <div className="buying-info__details">
@@ -21,16 +58,28 @@ export const ProductBuyingInfo = ({ product, products, setProduct }:any) => {
         <div className="buying-info__price">
           <h1 className="product__price">
             $
-            {product.priceDiscount}
+            {detailedProduct.priceDiscount}
           </h1>
           <h2 className="product__old-price">
             $
-            {product.priceRegular}
+            {detailedProduct.priceRegular}
           </h2>
         </div>
         <div className="buying-info__buttons">
-          <LongButton text="Add to cart" />
-          <Button image="/icons/Favourites.svg" title="favourites" />
+          <LongButton
+            text={isAddedToCart ? 'Added to cart' : 'Add to cart'}
+            className={isAddedToCart && 'selected'}
+            product={singleProduct}
+            products={products}
+          />
+          <Button
+            image={isAddedToFav
+              ? '/icons/Favourites Filled (Heart Like).svg'
+              : '/icons/Favourites.svg'}
+            // image="/icons/Favourites.svg"
+            title="favourites"
+            products={products}
+          />
         </div>
         <div className="buying-info__tech-details body12">
           <div className="buying-info__keys">
@@ -40,15 +89,15 @@ export const ProductBuyingInfo = ({ product, products, setProduct }:any) => {
             <p className="buying-info__key">RAM</p>
           </div>
           <div className="buying-info__values">
-            <p className="buying-info__value">{product.screen}</p>
-            <p className="buying-info__value">{product.resolution}</p>
-            <p className="buying-info__value">{product.processor}</p>
-            <p className="buying-info__value">{product.ram}</p>
+            <p className="buying-info__value">{detailedProduct.screen}</p>
+            <p className="buying-info__value">{detailedProduct.resolution}</p>
+            <p className="buying-info__value">{detailedProduct.processor}</p>
+            <p className="buying-info__value">{detailedProduct.ram}</p>
           </div>
         </div>
       </div>
       <p className="product-id body12">
-        {product.id}
+        {detailedProduct.id}
       </p>
     </div>
   );

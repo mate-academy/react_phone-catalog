@@ -20,7 +20,7 @@ import { FavouritesPage } from './components/Pages/Favourites/FavouritesPage';
 import {
   ProductsCardPage,
 } from
-'./components/Pages/Categories/ProductPagePage/ProductCardList/ProductsCardPage/ProductsCardPage';
+  './components/Pages/Categories/ProductPagePage/ProductCardList/ProductsCardPage/ProductsCardPage';
 import {
   ProductDetailsPage,
 } from
@@ -30,6 +30,7 @@ import { NotFoundPage } from './components/NotFoundPage/NotFoundPage';
 const App = () => {
   const [items, setItems] = useState([]);
   const [IPhones, setIPhones] = useState([]);
+  const [shuffeledIPhones, setShuffeledIPhones] = useState([]);
   const [visibleIPhones, setVisibleIPhones] = useState(IPhones);
   const [hotPriceProducts, setHotPriceProducts] = useState(items);
   const [brandNewProducts, setBrandNewProducts] = useState(items);
@@ -61,9 +62,14 @@ const App = () => {
     );
   };
 
+  const getSuggestedProducts = () => {
+    setShuffeledIPhones(IPhones.sort((a, b) => 0.5 - Math.random()));
+  };
+
   useEffect(() => {
     getBrandNewProducts();
     getHotPriceProducts();
+    getSuggestedProducts();
   }, [IPhones]);
 
   const getItems = async () => {
@@ -167,7 +173,7 @@ const App = () => {
               <main>
                 <ProductDetailsPage products={IPhones} />
                 <ProductsListWithSlider
-                  products={IPhones}
+                  products={shuffeledIPhones}
                   title="You may also like"
                 />
               </main>

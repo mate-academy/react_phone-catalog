@@ -61,7 +61,7 @@ export const Header:React.FC<Props> = ({
                   <li key={item} className="header__navigation-item">
                     <NavLink
                       to={item}
-                      // activeClassName="active"
+                      activeClassName="active"
                       className="header__navigation-link"
                     >
                       {item}

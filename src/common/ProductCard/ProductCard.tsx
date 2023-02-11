@@ -1,89 +1,33 @@
 import { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { CartAndFavContext } from '../../context/CartAndFavContext';
+import { DetailedProductContext } from '../../context/DetailedProductContext';
 import { Product } from '../../types/types';
 import { Button } from '../Button/Button';
 import { LongButton } from '../LongButton/LongButton';
 import './ProductCard.scss';
 
 type Props = {
+  products: Product[],
   product: Product,
   link?: string,
 };
 
 export const ProductCard: React.FC<Props> = ({
-  product, link,
+  product, link, products,
 }) => {
   const [isAddedToCart, setIsAddedToCart] = useState(false);
   const [isAddedToFav, setIsAddedToFav] = useState(false);
+  const { setDetailedProduct } = useContext<any>(DetailedProductContext);
+
   const {
     name, price,
     fullPrice, screen, capacity, ram, image,
   } = product;
   const {
-    cartProducts, setCartProducts,
-    favProducts, setFavProducts,
-    visibleFavProducts, setVisibleFavProducts,
+    cartProducts,
+    favProducts,
   } = useContext<any>(CartAndFavContext);
-
-  // const { cartProducts, setCartProducts } = useContext(CartContext);
-
-  const addToCart = async (
-    event: any,
-  ) => {
-    event.preventDefault();
-    setIsAddedToCart(true);
-    const exists = cartProducts.find((one:any) => {
-      if (one.id === product.id) {
-        return one.id === product.id;
-      }
-    });
-
-    if (exists) {
-      return;
-    }
-
-    await setCartProducts([...cartProducts, { ...product, count: 1 }]);
-  };
-
-  useEffect(() => {
-    localStorage.setItem('cartProducts', JSON.stringify(cartProducts));
-  }, [cartProducts]);
-
-  const toggleFav = async () => {
-    setIsAddedToFav(!isAddedToFav);
-    const exists = favProducts.find((one: any) => {
-      if (one.id === product.id) {
-        return one.id === product.id;
-      }
-    });
-
-    if (exists) {
-      setFavProducts(favProducts.filter((one: any) => one.id !== exists.id));
-      setVisibleFavProducts(visibleFavProducts.filter(
-        (one) => one.id !== exists.id,
-      ));
-
-      if (favProducts.length === 1) {
-        localStorage.setItem('favProducts', JSON.stringify([]));
-      }
-
-      return;
-    }
-
-    if (isAddedToFav === false) {
-      setVisibleFavProducts([...visibleFavProducts, product]);
-      setFavProducts([...favProducts, product]);
-    }
-  };
-
-  useEffect(() => {
-    localStorage.setItem('favProducts', JSON.stringify(favProducts));
-  }, [favProducts]);
-
-  // const style = index % 4 === 0
-  //   ? { marginLeft: '0px' }
-  //   : { marginLeft: '0px' };
 
   useEffect(() => {
     cartProducts.map((one: any) => {
@@ -91,26 +35,48 @@ export const ProductCard: React.FC<Props> = ({
         setIsAddedToCart(true);
       }
     });
+  }, [cartProducts]);
+
+  useEffect(() => {
+    setIsAddedToFav(false);
+
     favProducts.map((one: any) => {
       if (one.id === product.id) {
         setIsAddedToFav(true);
       }
     });
-  }, []);
+  }, [favProducts]);
 
   return (
     <>
-      <div className="product" 
-      // style={style}
-      >
+      <div className="product">
         <Link
           to={link || `../${product.category}/${product.id}`}
-          onClick={() => {
-            window.scroll({
-              top: 0,
-              left: 0,
-              behavior: 'smooth',
-            });
+          onClick={async () => {
+            const newProduct = products.find(
+              (one: any) => one.id === product.id,
+            );
+
+            const response = await fetch(
+              `/_new/products/${newProduct.itemId}.json`,
+              {
+                method: 'GET',
+              },
+            );
+
+            if (response.status === 200) {
+              const result = await response.json();
+
+              window.history.replaceState(null, '', `/phones/${newProduct.id}`);
+
+              window.scroll({
+                top: 0,
+                left: 0,
+                behavior: 'smooth',
+              });
+
+              return setDetailedProduct(result);
+            }
           }}
         >
           <img
@@ -146,15 +112,18 @@ export const ProductCard: React.FC<Props> = ({
         <div className="product__buttons">
           <LongButton
             text={isAddedToCart ? 'Added to cart' : 'Add to cart'}
-            onClick={addToCart}
+            // onClick={addToCart}
             className={isAddedToCart && 'selected'}
+            product={product}
           />
           <Button
             image={isAddedToFav
               ? '/icons/Favourites Filled (Heart Like).svg'
               : '/icons/Favourites.svg'}
             title="favourites"
-            onClick={toggleFav}
+            // onClick={toggleFav}
+            product={product}
+
           />
         </div>
 

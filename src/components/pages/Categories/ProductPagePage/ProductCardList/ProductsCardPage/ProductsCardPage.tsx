@@ -58,7 +58,13 @@ export const ProductsCardPage: React.FC<any>
       setVisibleProducts(products.filter((
         product: any, index: any,
       ) => {
-        console.log(product);
+        if (firstIndex > products.length) {
+          setCurrentPage(Math.ceil(products.length / itemsOnPage));
+          console.log(products.length / itemsOnPage)
+
+          return index > products.length - itemsOnPage;
+        }
+        // console.log(index > firstIndex && index <= lastIndex)
 
         return index > firstIndex && index <= lastIndex;
       }));
@@ -97,7 +103,12 @@ export const ProductsCardPage: React.FC<any>
                     sortItemsBy(event.target.value);
                   }}
                 >
-                  <option defaultValue={itemsSort} value="newest">Newest</option>
+                  <option
+                    defaultValue={itemsSort}
+                    value="newest"
+                  >
+                    Newest
+                  </option>
                   <option value="alphabetically">Alphabetically</option>
                   <option value="cheapest">Cheapest</option>
                 </select>

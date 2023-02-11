@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { Button } from '../../common/Button/Button';
 import { Logo } from '../../common/Logo/Logo';
 import './Footer.scss';
@@ -14,9 +14,12 @@ export const Footer = () => {
           navLinksList.map((item) => {
             return (
               <li key={item} className="footer__navigation-item">
-                <a className="footer__navigation-link" href={item}>
+                <NavLink
+                  className="footer__navigation-link"
+                  to={item}
+                >
                   {item}
-                </a>
+                </NavLink>
               </li>
             );
           })

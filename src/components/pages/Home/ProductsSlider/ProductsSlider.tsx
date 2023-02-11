@@ -21,12 +21,12 @@ export const ProductsSlider = () => {
   }
 
   const moveRight = (event: any) => {
-    event.preventDefault();
+    // event.preventDefault();
     setVisibleBanner(visibleBanner + 1);
   };
 
   const moveLeft = (event: any) => {
-    event.preventDefault();
+    // event.preventDefault();
     setVisibleBanner(visibleBanner - 1);
   };
 
@@ -49,7 +49,8 @@ export const ProductsSlider = () => {
           className="slider__images"
           style={{
             backgroundImage: `url('${banners[visibleBanner]}')`,
-            transition: '0.3s',
+            // marginLeft: '-50px',
+            transition: 'background-image .5s, margin-left .5s',
           }}
         />
         <Button

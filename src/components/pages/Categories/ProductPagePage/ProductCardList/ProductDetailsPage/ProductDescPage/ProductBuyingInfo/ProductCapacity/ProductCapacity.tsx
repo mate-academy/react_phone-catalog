@@ -1,7 +1,9 @@
 import { useContext } from 'react';
-import { ProductContext } from '../../../../../../../../../context/ProductContext';
-import { Product } from '../../../../../../../../../types/types';
 import './ProductCapacity.scss';
+import {
+  DetailedProductContext,
+} from '../../../../../../../../../context/DetailedProductContext';
+import { Product } from '../../../../../../../../../types/types';
 
 type Props = {
   products: Product[],
@@ -10,17 +12,19 @@ type Props = {
 export const ProductCapacity:React.FC<Props> = (
   { products },
 ) => {
-  const { product, setProduct } = useContext<any>(ProductContext);
-
+  const {
+    detailedProduct,
+    setDetailedProduct,
+  } = useContext<any>(DetailedProductContext);
+  const isActive = (capacity: string) => capacity === detailedProduct.capacity;
   const searchProductByCapacity = async (capacity: string) => {
     const newProduct = products.find((one: any) => {
       return (
         one.phoneId
-        === product.id.replace(product.capacity.toLowerCase(),
+        === detailedProduct.id.replace(detailedProduct.capacity.toLowerCase(),
           capacity.toLowerCase()));
     });
 
-    // console.log(newProduct)
     if (newProduct) {
       const response = await fetch(
         `/_new/products/${newProduct.itemId}.json`,
@@ -34,14 +38,11 @@ export const ProductCapacity:React.FC<Props> = (
 
         window.history.replaceState(null, '', `/phones/${newProduct.id}`);
 
-        return setProduct(result);
+        return setDetailedProduct(result);
       }
     }
 
-    setProduct(newProduct);
-
-    // navigate(`../${newProduct.id}`);
-    // window.location.reload(true);
+    setDetailedProduct(newProduct);
   };
 
   return (
@@ -51,10 +52,10 @@ export const ProductCapacity:React.FC<Props> = (
       </div>
       <ul className="capacity__list">
         {
-          product.capacityAvailable.map((one: any) => {
+          detailedProduct.capacityAvailable.map((one: any) => {
             return (
               <li
-                className={`capacity__item ${one && 'active-button'}`}
+                className={`capacity__item ${isActive(one)  && 'active-button'}`}
                 key={one}
                 onClick={() => {
                   searchProductByCapacity(one);

@@ -1,0 +1,23 @@
+.product-page{
+	
+	&__block {
+		// overflow: hidden;
+		margin: 0;
+		height: 32px;
+		margin-bottom: 80px;
+		display: flex;
+		justify-content: center;
+		
+	}
+	&__buttons {
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		overflow: hidden;
+		// width: 240px;
+		
+		&-list {
+			display: flex;
+		}
+	}
+}

@@ -1,23 +1,33 @@
 import './ProductDetailsPage.scss';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useState, useEffect, useContext } from 'react';
+import { useEffect, useContext, useState } from 'react';
 import { Button } from '../../../../../../common/Button/Button';
 import {
   NavigationButtons,
 } from '../../../../../../common/NavigationButtons/NavigationButtons';
 import { ProductDescPage } from './ProductDescPage/ProductDescPage';
-import { ProductContext } from '../../../../../../context/ProductContext';
+import {
+  DetailedProductContext,
+} from '../../../../../../context/DetailedProductContext';
 
-export const ProductDetailsPage: React.FC<any> = ({ products }) => {
+export const ProductDetailsPage: React.FC<any> = (
+  { products },
+) => {
   const { id } = useParams();
   const navigate = useNavigate();
   // const [product, setProduct] = useState();
-  const { product, setProduct } = useContext<any>(ProductContext);
+  const {
+    detailedProduct,
+    setDetailedProduct,
+  } = useContext<any>(DetailedProductContext);
+  const [product, setProduct] = useState()
 
   const getProduct = async () => {
     const singleProduct = products.find((one: any) => {
       return (one.id === id);
     });
+
+    setProduct(singleProduct)
 
     try {
       const response = await fetch(
@@ -31,7 +41,7 @@ export const ProductDetailsPage: React.FC<any> = ({ products }) => {
       if (response.status === 200) {
         const result = await response.json();
 
-        return setProduct(result);
+        return setDetailedProduct(result);
       }
     } catch (err) {
       // console.error(err);
@@ -48,7 +58,7 @@ export const ProductDetailsPage: React.FC<any> = ({ products }) => {
 
   return (
     <div className="details__page">
-      <NavigationButtons product={product} id={id} />
+      <NavigationButtons id={id} />
       <div className="back-button body12">
         <Button
           className="no-border"
@@ -63,9 +73,10 @@ export const ProductDetailsPage: React.FC<any> = ({ products }) => {
         </div>
       </div>
       {
-        product && (
+        detailedProduct && (
           <ProductDescPage
             products={products}
+            singleProduct={product}
           />
         )
       }

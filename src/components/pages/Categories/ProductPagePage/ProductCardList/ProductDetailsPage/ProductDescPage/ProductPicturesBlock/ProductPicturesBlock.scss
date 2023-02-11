@@ -8,7 +8,7 @@
 			margin: 0;
 		}
 
-		&__item:not(:last-child) {
+		&__item {
 			// &:target {
 			border: .5px solid #C4C4C4;
 			// }
@@ -18,6 +18,10 @@
 			height: 80px;
 			width: 80px;
 			margin-bottom: 16px;
+
+			&:hover {
+				border: 1px solid black;
+			}
 		}
 
 		&__image {
@@ -36,4 +40,5 @@
 
 	.selected-picture {
 		border: 1px solid black;
+
 	}

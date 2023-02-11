@@ -1,15 +1,58 @@
+import { useEffect, useRef, useState } from 'react';
 import { Button } from '../Button/Button';
 import './PagesList.scss';
 
-export const PagesList:React.FC<any> = ({
+export const PagesList: React.FC<any> = ({
   setCurrentPage, currentPage, buttonsNumber,
 }) => {
+  // const show5NumButtons = () => {
+  //   console.log(num);
+  //   if(num > 5){
+  //     return
+  //   }
+
+  //   return num
+
+  // }
+  const [initialWidth, setInitialWidth] = useState<any>(0);
+
+  const ref = useRef<any>(null);
+  // const { setProduct } = useContext<any>(ProductContext);
+  const [width, setWidth] = useState(0);
+  const [divWidth, setDivWidth] = useState(0);
+
+  const maxMargin = initialWidth * (buttonsNumber - 6);
+  console.log(currentPage);
+  const moveRight = () => {
+    if (width <= maxMargin) {
+      console.log(currentPage * ref.current.offsetWidth, 'currentPage + ref.current.offsetWidth');
+    setWidth(currentPage * ref.current.offsetWidth);
+    }
+  };
+
+  const moveLeft = () => {
+    console.log(width, initialWidth, maxMargin);
+    if (width > 0) {
+    setWidth(width - ref.current.offsetWidth);
+    }
+  };
+
   const isSelected = (one: any) => {
     return currentPage === one;
   };
 
+  useEffect(() => {
+    setDivWidth(ref.current.offsetWidth * 5);
+    setInitialWidth(ref.current.offsetWidth);
+  }, []);
+  // useEffect(() => {
+  //   setWidth(width + ref.current.offsetWidth);
+  // }, [currentPage]);
+
   return (
-    <div className="product-page__buttons">
+    <div
+      className="product-page__block"
+    >
       <Button
         className="arrow left small"
         image="/icons/Chevron (Arrow Left).svg"
@@ -20,31 +63,44 @@ export const PagesList:React.FC<any> = ({
           }
 
           setCurrentPage((prev: number) => prev - 1);
+          moveLeft();
         }}
       />
-      <ul className="product-page__buttons-list">
-        {
-          [...Array(buttonsNumber)].map((one, index) => {
-            return (
+      <div
+        className="product-page__buttons"
+        style={{ maxWidth: `${divWidth}px` }}
+      >
+        <ul
+          style={{ marginLeft: `${-width}px` }}
+          className="product-page__buttons-list"
+        >
+          {
+            [...Array(buttonsNumber)].map((one, index) => {
+              // console.log(index);
 
-              <li
-                key={one}
-                className="product-page__buttons-item"
-              >
-                <Button
-                  className={`arrow small ${isSelected(index + 1) && 'active-button'}`}
-                  onClick={() => {
-                    setCurrentPage(index + 1);
-                  }}
-                  num={index + 1}
-                  alt={index + 1}
+              // if (index < 5) {
+              return (
+                <li
+                  ref={ref}
+                  key={one}
+                  className="product-page__buttons-item"
+                >
+                  <Button
+                    className={`arrow small ${isSelected(index + 1) && 'active-button'}`}
+                    onClick={() => {
+                      setCurrentPage(index + 1);
+                    }}
+                    num={index + 1}
+                    alt={index + 1}
 
-                />
-              </li>
-            );
-          })
-        }
-      </ul>
+                  />
+                </li>
+              );
+              // }
+            })
+          }
+        </ul>
+      </div>
       <Button
         className="arrow right small"
         image="/icons/Chevron (Arrow Right).svg"
@@ -54,6 +110,7 @@ export const PagesList:React.FC<any> = ({
           }
 
           setCurrentPage((prev: number) => prev + 1);
+          moveRight();
         }}
         alt=">"
       />

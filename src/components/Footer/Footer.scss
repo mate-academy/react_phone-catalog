@@ -20,6 +20,22 @@
 		&-item {
 			margin-left: 64px;
 			height: 11px;
+			// padding-bottom: 28px;
+
+		}
+
+		&-link {
+			&:hover {
+				color: #313237;
+
+				&::after {
+					content: "";
+					display: block;
+					width: 100%;
+					margin-top: 24px;
+					border-bottom: 3px solid #313237;
+				}
+			}
 		}
 	}
 
@@ -31,10 +47,14 @@
 		margin-right: 16px;
 		text-align: right;
 		color: #89939A;
+
+		&:hover {
+			color: #313237;
+		}
 	}
 
-	&__button-up{
+	&__button-up {
 		display: flex;
-		align-items:center;
+		align-items: center;
 	}
 }

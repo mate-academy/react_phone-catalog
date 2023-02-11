@@ -4,7 +4,7 @@ import { useState, useRef, useContext } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Button } from '../../../../common/Button/Button';
 import { ProductCard } from '../../../../common/ProductCard/ProductCard';
-import { ProductContext } from '../../../../context/ProductContext';
+import { DetailedProductContext } from '../../../../context/DetailedProductContext';
 
 export const ProductsListWithSlider: React.FC<any> = (
   { products, title },
@@ -14,13 +14,13 @@ export const ProductsListWithSlider: React.FC<any> = (
   const [initialWidth, setInitialWidth] = useState<any>(0);
   // const [isDisabled, setIsDisabled] = useState(true);
   const ref = useRef<any>(null);
-  const { setProduct } = useContext<any>(ProductContext);
+  // const { setProduct } = useContext<any>(ProductContext);
 
   const maxMargin = initialWidth * (products.length - 5);
   const moveRight = (event: any) => {
     if (ref.current && ref) {
       setInitialWidth(ref.current.offsetWidth);
-      event.preventDefault();
+      // event.preventDefault();
       if (width <= maxMargin) {
         setWidth(width + ref.current.offsetWidth);
       }
@@ -28,7 +28,7 @@ export const ProductsListWithSlider: React.FC<any> = (
   };
 
   const moveLeft = (event: any) => {
-    event.preventDefault();
+    // event.preventDefault();
     if (!ref.current || !ref) {
       return;
     }
@@ -36,13 +36,6 @@ export const ProductsListWithSlider: React.FC<any> = (
     if (width > 0) {
       setWidth(width - ref.current.offsetWidth);
     }
-    // console.log(width)
-    // if (width <= 0) {
-    //   setIsDisabled(true);
-    // }
-    // if(visibleBanner <= 0){
-    //   return;
-    // }
   };
 
   return (
@@ -67,7 +60,7 @@ export const ProductsListWithSlider: React.FC<any> = (
       </div>
       <ul
         className="product-list"
-        style={{ marginLeft: `${-width}px` }}
+        style={{ marginLeft: `${-width}px`, transition: 'margin-left .3s' }}
       >
         {products.map((p: any) => {
           return (
@@ -76,28 +69,11 @@ export const ProductsListWithSlider: React.FC<any> = (
               ref={ref}
               className="product-list__slider-item"
               aria-hidden
-              onClick={async () => {
-                const newProduct = products.find((one: any) => one.id === p.id);
-
-                const response = await fetch(
-                  `/_new/products/${newProduct.itemId}.json`,
-                  {
-                    method: 'GET',
-                  },
-                );
-
-                if (response.status === 200) {
-                  const result = await response.json();
-
-                  window.history.replaceState(null, '', `/phones/${newProduct.id}`);
-
-                  return setProduct(result);
-                }
-              }}
             >
 
               <ProductCard
                 product={p}
+                products={products}
                 link={pathname !== '/home'
                   ? `../${p.id}`
                   : `../${p.category}/${p.id}`}

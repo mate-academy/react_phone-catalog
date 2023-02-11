@@ -15,9 +15,18 @@
 		outline: 1px solid #E2E6E9;
 		border: 3px solid white;
 		border-radius: 100%;
+
+		&:hover {
+			outline: 1px solid #B4BDC4
+		}
 	}
 }
 
 .product-id {
 	color: #B4BDC4;
+}
+
+.active-color {		
+	outline: 1px solid #313237;
+	border: 3px solid white;
 }

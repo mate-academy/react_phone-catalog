@@ -3,17 +3,22 @@ import './ProductAvaliableColors.scss';
 import { useContext } from 'react';
 import { Colors, colorsHex } from '../../../../../../../../../colorDictinary';
 import {
-  ProductContext,
-} from '../../../../../../../../../context/ProductContext';
+  DetailedProductContext,
+} from '../../../../../../../../../context/DetailedProductContext';
 
 export const ProductAvaliableColors = ({
-   products,
+  products,
 } : any) => {
-  const { product, setProduct } = useContext<any>(ProductContext);
+  const {
+    detailedProduct, setDetailedProduct,
+  } = useContext<any>(DetailedProductContext);
 
+
+  const isActive = (color) => color === detailedProduct.color;
   const searchProductByColor = async (color: string) => {
     const newProduct = products.find((one: any) => {
-      return one.phoneId === product.id.replace(product.color, color);
+      return one.phoneId
+      === detailedProduct.id.replace(detailedProduct.color, color);
     });
 
     const response = await fetch(
@@ -29,15 +34,12 @@ export const ProductAvaliableColors = ({
       window.history.replaceState(null, '', `/phones/${newProduct.id}`);
 
       // pathname=`phones${newProduct.id}`
-      return setProduct(result);
+      return setDetailedProduct(result);
     }
 
     // setProduct(newProduct)
     // console.log(window.history);
     window.history.replaceState(null, '', `/product/${newProduct.id}`);
-    // history.replace({ pathname: `/product/${{newProduct.id}` });
-
-    // window.location.reload(true);
   };
 
   return (
@@ -47,10 +49,10 @@ export const ProductAvaliableColors = ({
       </p>
       <ul className="avaliable-colors__list">
         {
-          product.colorsAvailable.map((one: string) => {
+          detailedProduct.colorsAvailable.map((one: string) => {
             return (
               <li
-                className="avaliable-colors__item"
+                className={`avaliable-colors__item ${isActive(one) && 'active-color'}`}
                 key={one}
                 style={{
                   backgroundColor: colorsHex[one as keyof Colors],

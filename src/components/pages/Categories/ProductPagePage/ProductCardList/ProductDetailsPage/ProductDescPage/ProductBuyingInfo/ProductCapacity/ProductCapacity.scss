@@ -19,5 +19,9 @@
 		align-items: center;
 		margin-right: 8px;
 		margin-bottom: 24px;
+
+		&:hover {
+			border: 1px solid #313237;
+		}
 	}
 }

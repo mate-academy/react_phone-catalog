@@ -10,8 +10,12 @@
 	display: flex;
 	margin-right: 10px;
 	align-items: center;
+
 }
 
 .sub-link {
 	margin-left: 10px;
+	&:hover {
+		color: #313237;
+	}
 }
