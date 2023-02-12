@@ -23,34 +23,36 @@ export const Footer: React.FC = () => {
             className="logo__image"
           />
         </Link>
-        <nav className="nav">
-          <ul className="nav__list">
-            <li className="nav__item">
-              <a
-                href="https://github.com/savchuksavchuk"
-                className="nav__link"
-              >
-                Github
-              </a>
-            </li>
-            <li className="nav__item">
-              <a
-                href="/contacts"
-                className="nav__link"
-              >
-                Contacts
-              </a>
-            </li>
-            <li className="nav__item">
-              <a
-                href="/rights"
-                className="nav__link"
-              >
-                Rights
-              </a>
-            </li>
-          </ul>
-        </nav>
+        <div className="footer__nav">
+          <nav className="nav">
+            <ul className="nav__list">
+              <li className="nav__item">
+                <a
+                  href="https://github.com/savchuksavchuk"
+                  className="nav__link"
+                >
+                  Github
+                </a>
+              </li>
+              <li className="nav__item">
+                <Link
+                  to="/contacts"
+                  className="nav__link"
+                >
+                  Contacts
+                </Link>
+              </li>
+              <li className="nav__item">
+                <Link
+                  to="/rights"
+                  className="nav__link"
+                >
+                  Rights
+                </Link>
+              </li>
+            </ul>
+          </nav>
+        </div>
         <div className="footer__back">
           <span className="text__small
             text__small--secondary

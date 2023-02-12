@@ -8,7 +8,7 @@ type Props = {
 export const Error: React.FC<Props> = ({ text }) => {
   return (
     <div className="error">
-      <p className="error__text">
+      <p className="text__body text__body--primary">
         {text}
       </p>
     </div>

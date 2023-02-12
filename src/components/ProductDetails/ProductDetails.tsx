@@ -95,7 +95,7 @@ export const ProductDetails: React.FC<Props> = ({
         data-cy="backButton"
       >
         <img
-          src="../assets/arrow-prev.svg"
+          src="./assets/arrow-prev.svg"
           alt="prev-icon"
           className="breadcrumps__item"
         />
@@ -120,7 +120,7 @@ export const ProductDetails: React.FC<Props> = ({
                 onClick={() => setSelectedPhoto(image)}
               >
                 <img
-                  src={`../${image}`}
+                  src={`./${image}`}
                   alt="product"
                   className="product-details__photo"
                 />

@@ -45,7 +45,7 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
   return (
     <section>
       <div className="products-slider__top">
-        <h1 className="title title--h1">
+        <h1 className="title__h1 title__h1--primary">
           {title}
         </h1>
         <div className="products-slider__buttons">

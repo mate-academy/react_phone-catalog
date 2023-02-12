@@ -54,50 +54,52 @@ export const Header: React.FC = () => {
               />
             </Link>
           </div>
-          <nav className="nav">
-            <ul className="nav__list">
-              <li className="nav__item">
-                <NavLink
-                  to="/"
-                  className={({ isActive }) => classNames('nav__link', {
-                    'nav__link--selected': isActive,
-                  })}
-                >
-                  Home
-                </NavLink>
-              </li>
-              <li className="nav__item">
-                <NavLink
-                  to="/phones"
-                  className={({ isActive }) => classNames('nav__link', {
-                    'nav__link--selected': isActive,
-                  })}
-                >
-                  Phones
-                </NavLink>
-              </li>
-              <li className="nav__item">
-                <NavLink
-                  to="/tablets"
-                  className={({ isActive }) => classNames('nav__link', {
-                    'nav__link--selected': isActive,
-                  })}
-                >
-                  Tablets
-                </NavLink>
-              </li>
-              <li className="nav__item">
-                <NavLink
-                  to="/accessories"
-                  className={({ isActive }) => classNames('nav__link', {
-                    'nav__link--selected': isActive,
-                  })}
-                >
-                  Accesories
-                </NavLink>
-              </li>
-            </ul>
-          </nav>
+          <div className="header__nav">
+            <nav className="nav">
+              <ul className="nav__list">
+                <li className="nav__item">
+                  <NavLink
+                    to="/"
+                    className={({ isActive }) => classNames('nav__link', {
+                      'nav__link--selected': isActive,
+                    })}
+                  >
+                    Home
+                  </NavLink>
+                </li>
+                <li className="nav__item">
+                  <NavLink
+                    to="/phones"
+                    className={({ isActive }) => classNames('nav__link', {
+                      'nav__link--selected': isActive,
+                    })}
+                  >
+                    Phones
+                  </NavLink>
+                </li>
+                <li className="nav__item">
+                  <NavLink
+                    to="/tablets"
+                    className={({ isActive }) => classNames('nav__link', {
+                      'nav__link--selected': isActive,
+                    })}
+                  >
+                    Tablets
+                  </NavLink>
+                </li>
+                <li className="nav__item">
+                  <NavLink
+                    to="/accessories"
+                    className={({ isActive }) => classNames('nav__link', {
+                      'nav__link--selected': isActive,
+                    })}
+                  >
+                    Accesories
+                  </NavLink>
+                </li>
+              </ul>
+            </nav>
+          </div>
         </div>
         <div className="header__right">
           {showSearch && (

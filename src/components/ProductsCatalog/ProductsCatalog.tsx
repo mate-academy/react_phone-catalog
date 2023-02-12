@@ -123,7 +123,7 @@ export const ProductsCatalog: React.FC<Props> = ({
           {title}
         </h1>
         {products && (
-          <span className="products-catalog__quantity">
+          <span className="text__body text__body--secondary">
             {`${matchProductsQuantity || 0} models`}
           </span>
         )}

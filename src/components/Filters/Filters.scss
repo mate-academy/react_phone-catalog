@@ -10,9 +10,6 @@
     display: flex;
     flex-direction: column;
     color: $secondary;
-    font-weight: 600;
-    font-size: 12px;
-    line-height: 15px;
   }
 
   &__select {
@@ -20,11 +17,7 @@
     border: 1px solid #b4bdc4;
     padding: 10px 12px 12px 17px;
     appearance: none;
-    font-family: "Mont", sans-serif;
-    font-weight: 600;
-    font-size: 14px;
     line-height: 21px;
-    color: $primary;
     cursor: pointer;
 
     &:hover {
@@ -40,9 +33,6 @@
   &__option {
     font-family: "Mont", sans-serif;
     font-weight: 500;
-    font-size: 14px;
-    line-height: 21px;
-    color: $secondary;
 
     &:checked {
       font-weight: 500;

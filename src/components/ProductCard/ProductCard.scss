@@ -11,33 +11,41 @@
   padding: 32px 24px 24px;
   text-decoration: none;
 
+  &:last-of-type {
+    margin-right: 0;
+  }
+
   &__image {
     width: 100%;
     max-width: 208px;
-  }
-
-  &__title {
-    margin-top: 25px;
-    font-weight: 500;
-    font-size: 14px;
-    color: $primary;
   }
 
   &__bottom {
     display: flex;
     flex-direction: column;
     width: 100%;
+    margin-top: 25px;
+  }
+
+  &__title {
+    font-weight: 500;
+    font-size: 0.88rem;
+    color: $primary;
+    justify-self: flex-start;
+
+    @media (max-width: 960px) {
+      font-size: 12px;
+    }
   }
 
   &__price {
     width: 100%;
     margin-top: 7px;
     font-weight: 700;
-    font-size: 22px;
+    font-size: 1.38rem;
     display: flex;
     justify-content: flex-start;
     gap: 8px;
-    flex-wrap: wrap;
   }
 
   &__new-price {
@@ -57,8 +65,8 @@
     justify-content: space-between;
     align-items: center;
     font-weight: 600;
-    font-size: 12px;
-    line-height: 15px;
+    font-size: 0.75rem;
+    line-height: 0.75rem;
   }
 
   &__property {

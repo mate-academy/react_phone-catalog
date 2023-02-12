@@ -12,6 +12,7 @@ import { TabletsPage } from '../../pages/TabletsPage/TabletsPage';
 export const Main: React.FC = () => {
   const checkoutText = 'We are sorry, but this feature is not implemented yet';
   const notFoundPageText = "Sorry, but this page doesn't exist";
+  const pageInDelevopText = 'We are sorry, but this page is in develop';
 
   return (
     <main className="main">
@@ -30,6 +31,14 @@ export const Main: React.FC = () => {
         <Route
           path="/checkout"
           element={<NotFoundPage text={checkoutText} />}
+        />
+        <Route
+          path="/contacts"
+          element={<NotFoundPage text={pageInDelevopText} />}
+        />
+        <Route
+          path="/rights"
+          element={<NotFoundPage text={pageInDelevopText} />}
         />
         <Route path="*" element={<NotFoundPage text={notFoundPageText} />} />
       </Routes>

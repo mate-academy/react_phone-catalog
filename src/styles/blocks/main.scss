@@ -2,4 +2,8 @@
   margin: 0 150px;
   padding: 25px 0 80px;
   flex-grow: 1;
+
+  @media (max-width: 1149px) {
+    margin: 0 30px;
+  }
 }

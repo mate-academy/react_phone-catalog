@@ -20,22 +20,22 @@
 
 .title {
   &__h1 {
-    font-size: 32px;
-    line-height: 32px;
+    font-size: 2rem;
+    line-height: 2rem;
     font-weight: 700;
     @include textcolors;
   }
 
   &__h2 {
-    font-size: 22px;
-    line-height: 22px;
+    font-size: 1.38rem;
+    line-height: 1.38rem;
     font-weight: 700;
     @include textcolors;
   }
 
   &__h3 {
-    font-size: 20px;
-    line-height: 20px;
+    font-size: 1.25rem;
+    line-height: 1.25rem;
     font-weight: 600;
     @include textcolors;
   }
@@ -43,29 +43,29 @@
 
 .text {
   &__uppercase {
-    font-size: 12px;
-    line-height: 12px;
+    font-size: 0.75rem;
+    line-height: 0.75rem;
     font-weight: 700;
     @include textcolors;
   }
 
   &__buttons {
-    font-size: 14px;
-    line-height: 14px;
+    font-size: 0.88rem;
+    line-height: 0.88rem;
     font-weight: 600;
     @include textcolors;
   }
 
   &__body {
-    font-size: 14px;
-    line-height: 14px;
+    font-size: 0.88rem;
+    line-height: 0.88rem;
     font-weight: 500;
     @include textcolors;
   }
 
   &__small {
-    font-size: 12px;
-    line-height: 12px;
+    font-size: 0.75rem;
+    line-height: 0.75rem;
     font-weight: 600;
     @include textcolors;
   }

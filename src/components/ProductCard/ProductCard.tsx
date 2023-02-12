@@ -51,18 +51,16 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       className="product-card"
       data-cy="cardsContainer"
     >
-      <div className="product-card__top">
-        <img
-          src={`./${imageUrl}`}
-          alt="product"
-          className="product-card__image"
-        />
+      <img
+        src={`./${imageUrl}`}
+        alt="product"
+        className="product-card__image"
+      />
+
+      <div className="product-card__bottom">
         <h4 className="product-card__title">
           {name}
         </h4>
-      </div>
-
-      <div className="product-card__bottom">
         <div className="product-card__price">
           <h2 className="product-card__new-price">
             {`$${actualPrice}`}

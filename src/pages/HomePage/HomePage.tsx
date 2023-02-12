@@ -78,7 +78,7 @@ export const HomePage: React.FC = () => {
         </section>
 
         <section className="home-page__section categories">
-          <h1 className="title title--h1">
+          <h1 className="title__h1 title__h1--primary">
             Shop by category
           </h1>
 
