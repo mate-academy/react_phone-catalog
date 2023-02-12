@@ -20,7 +20,6 @@ export const ProductsListWithSlider: React.FC<any> = (
   const moveRight = (event: any) => {
     if (ref.current && ref) {
       setInitialWidth(ref.current.offsetWidth);
-      // event.preventDefault();
       if (width <= maxMargin) {
         setWidth(width + ref.current.offsetWidth);
       }

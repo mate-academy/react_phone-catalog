@@ -74,7 +74,8 @@ export const Header:React.FC<Props> = ({
         </div>
         <div className="header__buttons">
           {
-            (pathname === '/favourites' || pathname === '/phones') && (
+            (pathname === '/favourites' || pathname === '/phones'
+            || pathname === '/tablets' || pathname === '/accessories') && (
               <label className="products-search">
                 <input
                   type="text"

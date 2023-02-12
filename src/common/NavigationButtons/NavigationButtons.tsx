@@ -9,23 +9,19 @@ type Props = {
   id?: string,
 };
 
-export const NavigationButtons:React.FC<Props> = ({ id }) => {
+export const NavigationButtons:React.FC<Props> = ({ id, title }) => {
   const { detailedProduct } = useContext<any>(DetailedProductContext);
   const { pathname } = useLocation();
-
-  console.log(detailedProduct)
 
   return (
     <div className="navigation-buttons">
       <NavLink to="/">
-        {/* <div className="sub-buttons"> */}
         <Button
           image="/icons/Home.svg"
           alt="home"
           link="/home"
           className="no-border"
         />
-        {/* </div> */}
       </NavLink>
       <div className="sub-buttons body12">
         <img
@@ -33,7 +29,7 @@ export const NavigationButtons:React.FC<Props> = ({ id }) => {
           src="/icons/Chevron (Arrow Right).svg"
           alt=">"
         />
-        <a href="/phones" className="sub-link">Phones</a>
+        <a href={`/${title}`} className="sub-link">{title}</a>
       </div>
       {
         detailedProduct && pathname.includes(id) && (
@@ -43,7 +39,7 @@ export const NavigationButtons:React.FC<Props> = ({ id }) => {
               src="/icons/Chevron (Arrow Right).svg"
               alt=">"
             />
-            <Link to={`/phones/${id}`} className="sub-link">{detailedProduct.name}</Link>
+            <Link to={`/${title}/${id}`} className="sub-link">{detailedProduct.name}</Link>
           </div>
         )
       }

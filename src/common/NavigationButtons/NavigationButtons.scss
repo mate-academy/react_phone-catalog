@@ -15,6 +15,11 @@
 
 .sub-link {
 	margin-left: 10px;
+
+	&::first-letter {
+		text-transform: capitalize;
+	}
+
 	&:hover {
 		color: #313237;
 	}

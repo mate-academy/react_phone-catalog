@@ -72,13 +72,14 @@ export const ProductDetailsPage: React.FC<any> = (
           Back
         </div>
       </div>
-      {
-        detailedProduct && (
+      { id <= products.length
+        ? detailedProduct && (
           <ProductDescPage
             products={products}
             singleProduct={product}
           />
         )
+        : <h1>No product found</h1>
       }
     </div>
   );

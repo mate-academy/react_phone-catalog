@@ -1,6 +1,8 @@
 // import React, { useEffect, useState } from 'react';
 import './App.scss';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import {
+  Routes, Route, Navigate, useParams,
+} from 'react-router-dom';
 // import { useParams } from 'react-router-dom';
 
 import { useState, useEffect } from 'react';
@@ -121,6 +123,7 @@ const App = () => {
   }, []);
 
   return (
+
     <>
       <Header
         setVisibleIPhones={setVisibleIPhones}
@@ -128,7 +131,6 @@ const App = () => {
         searchInput={searchInput}
         setSearchInput={setSearchInput}
       />
-      {/* {!isLoading && ( */}
       <Routes>
         <Route path="/" element={<Navigate to="/home" />} />
         <Route
@@ -180,6 +182,45 @@ const App = () => {
             )}
           />
         </Route>
+
+        <Route
+          path="/tablets"
+        >
+          <Route
+            index
+            element={(
+              <main>
+                <ProductsCardPage
+                  products={[]}
+                  visibleProducts={[]}
+
+                  title="Tablets"
+                  searchInput={searchInput}
+                />
+              </main>
+            )}
+          />
+        </Route>
+
+        <Route
+          path="/accessories"
+        >
+          <Route
+            index
+            element={(
+              <main>
+                <ProductsCardPage
+                  products={[]}
+                  visibleProducts={[]}
+
+                  title="Accessories"
+                  searchInput={searchInput}
+                />
+              </main>
+            )}
+          />
+        </Route>
+
         <Route
           path="/cart"
           element={(
@@ -193,6 +234,35 @@ const App = () => {
           element={(
             <main>
               <FavouritesPage />
+            </main>
+          )}
+        />
+
+        <Route
+          path="/rights"
+          element={(
+            <main>
+              <div className="body12">
+                At vero eos et
+                accusamus et iusto odio dignissimos ducimus qui blanditiis 
+                praesentium
+                voluptatum deleniti
+                atque corrupti quos dolores et
+                quas molestias excepturi sint.
+              </div>
+            </main>
+          )}
+        />
+
+        <Route
+          path="/contacts"
+          element={(
+            <main>
+              <h3 className="body12">
+               Modile: 12345678
+               <br />
+               Facebook: iphone777
+              </h3>
             </main>
           )}
         />

@@ -11,15 +11,19 @@ export const Footer = () => {
       <Logo />
       <ul className="footer__navigation-list">
         {
-          navLinksList.map((item) => {
+          navLinksList.map((link) => {
             return (
-              <li key={item} className="footer__navigation-item">
-                <NavLink
+              <li key={link} className="footer__navigation-item">
+                {
+                  link !== 'github'
+                  ? <NavLink
                   className="footer__navigation-link"
-                  to={item}
+                  to={link}
                 >
-                  {item}
+                  {link}
                 </NavLink>
+                : <a href="https://github.com/Alina-Yermolenko" />
+                }
               </li>
             );
           })

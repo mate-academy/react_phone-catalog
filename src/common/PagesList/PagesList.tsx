@@ -76,9 +76,6 @@ export const PagesList: React.FC<any> = ({
         >
           {
             [...Array(buttonsNumber)].map((one, index) => {
-              // console.log(index);
-
-              // if (index < 5) {
               return (
                 <li
                   ref={ref}

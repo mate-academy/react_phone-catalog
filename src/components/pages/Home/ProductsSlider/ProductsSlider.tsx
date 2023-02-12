@@ -1,5 +1,5 @@
 import './ProductSlider.scss';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Button } from '../../../../common/Button/Button';
 
 export const ProductsSlider = () => {
@@ -20,13 +20,11 @@ export const ProductsSlider = () => {
     setVisibleBanner(banners.length - 1);
   }
 
-  const moveRight = (event: any) => {
-    // event.preventDefault();
+  const moveRight = () => {
     setVisibleBanner(visibleBanner + 1);
   };
 
-  const moveLeft = (event: any) => {
-    // event.preventDefault();
+  const moveLeft = () => {
     setVisibleBanner(visibleBanner - 1);
   };
 
@@ -45,14 +43,29 @@ export const ProductsSlider = () => {
           image="/icons/Chevron (Arrow Left).svg"
           alt="<"
         />
-        <div
-          className="slider__images"
+        <ul
           style={{
-            backgroundImage: `url('${banners[visibleBanner]}')`,
-            // marginLeft: '-50px',
-            transition: 'background-image .5s, margin-left .5s',
+            display: 'flex',
+            overflow: 'hidden',
           }}
-        />
+        >
+          {[...Array(banners.length)].map((one, index) => {
+            return (
+              <li>
+                <div
+                  className="slider__images"
+                  style={{
+                    backgroundImage: `url('${banners[index]}')`,
+                    transform: `translateX(${-visibleBanner * 100}%)`,
+                    transition: 'transform .3s',
+                  }}
+                />
+
+              </li>
+            );
+          })}
+
+        </ul>
         <Button
           className="arrow right long"
           onClick={moveRight}
@@ -68,10 +81,11 @@ export const ProductsSlider = () => {
           return (
             <div
               key={`${one}slider`}
-              className={`slider__subbutton ${visibleBanner == index && 'active__subbutton'}`}
+              className={`slider__subbutton ${visibleBanner === index && 'active__subbutton'}`}
               onClick={() => {
                 setVisibleBanner(index);
               }}
+              aria-hidden
             />
           );
         })}
