@@ -1,5 +1,5 @@
+/* eslint-disable consistent-return */
 import './ProductAvaliableColors.scss';
-// import { useNavigate, useHistory } from 'react-router-dom';
 import { useContext } from 'react';
 import { Colors, colorsHex } from '../../../../../../../../../colorDictinary';
 import {
@@ -57,9 +57,7 @@ export const ProductAvaliableColors = ({
                   searchProductByColor(one);
                 }}
                 aria-hidden="true"
-              >
-                {/* {one} */}
-              </li>
+              />
             );
           })
         }

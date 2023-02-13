@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-// import { TodoContextType } from '../../types/TodoContextType';
+import React, { useState } from 'react';
 
 export const CartAndFavContext = React.createContext(null);
 
@@ -13,8 +12,6 @@ export const CartAndFavProvider = ({ children }) => {
 
   const fav = JSON.parse(localStorage.getItem('favProducts'));
   const cart = JSON.parse(localStorage.getItem('cartProducts'));
-
-  console.log(cart);
 
   const [cartProducts, setCartProducts] = useState(cart || []);
   const [favProducts, setFavProducts] = useState(fav || []);

@@ -16,13 +16,19 @@ export const Footer = () => {
               <li key={link} className="footer__navigation-item">
                 {
                   link !== 'github'
-                  ? <NavLink
-                  className="footer__navigation-link"
-                  to={link}
-                >
-                  {link}
-                </NavLink>
-                : <a href="https://github.com/Alina-Yermolenko" />
+                    ? (
+                      <NavLink
+                        className="footer__navigation-link"
+                        to={link}
+                      >
+                        {link}
+                      </NavLink>
+                    )
+                    : (
+                      <a href="https://github.com/Alina-Yermolenko">
+                        github
+                      </a>
+                    )
                 }
               </li>
             );

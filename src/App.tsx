@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import './App.scss';
 import {
   Routes, Route, Navigate,

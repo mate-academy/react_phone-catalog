@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-// import { TodoContextType } from '../../types/TodoContextType';
+import React, { useState } from 'react';
 
 export const DetailedProductContext = React.createContext(null);
 
@@ -9,8 +8,6 @@ export const DetailedProductContext = React.createContext(null);
 
 export const DetailedProductProvider = ({ children }) => {
   const [detailedProduct, setDetailedProduct] = useState();
-
-  // const [visibleTodos, setVisibleTodos] = useState(todos);
 
   return (
     <DetailedProductContext.Provider value={{
