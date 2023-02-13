@@ -1,9 +1,23 @@
-import './App.scss';
+import React from 'react';
+import { HashRouter } from 'react-router-dom';
+import './styles/App.scss';
+import { Header } from './components/Header/Header';
+import { Footer } from './components/Footer/Footer';
+import { ContextProvider } from './helpers/ContextProvider';
+import { Main } from './components/Main/Main';
 
-const App = () => (
-  <div className="App">
-    <h1>React Phone Catalog</h1>
-  </div>
-);
+const App: React.FC = () => {
+  return (
+    <HashRouter>
+      <ContextProvider>
+        <div className="App">
+          <Header />
+          <Main />
+          <Footer />
+        </div>
+      </ContextProvider>
+    </HashRouter>
+  );
+};
 
 export default App;

@@ -1,0 +1,19 @@
+.products-catalog {
+  &__title {
+    margin-top: 40px;
+
+    @media (max-width: 900px) {
+      margin-top: 20px;
+    }
+  }
+
+  &__notification {
+    margin-top: 40px;
+  }
+
+  &__pagination {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+  }
+}

@@ -1,0 +1,107 @@
+@import "../../styles/utils/vars.scss";
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+  width: 100%;
+  justify-content: space-between;
+  border: 1px solid $elements;
+  padding: 32px 24px 24px;
+  text-decoration: none;
+  box-sizing: border-box;
+
+  &:last-of-type {
+    margin-right: 0;
+  }
+
+  &__image {
+    width: 100%;
+    max-width: 208px;
+    transition: transform 0.3s;
+    
+    &:hover {
+      transform: scale(1.04);
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 25px;
+  }
+
+  &__title {
+    font-weight: 500;
+    font-size: 0.88rem;
+    color: $primary;
+    justify-self: flex-start;
+
+    @media (max-width: 960px) {
+      font-size: 12px;
+    }
+  }
+
+  &__price {
+    width: 100%;
+    margin-top: 7px;
+    font-weight: 700;
+    font-size: 1.38rem;
+    display: flex;
+    justify-content: flex-start;
+    gap: 8px;
+  }
+
+  &__new-price {
+    color: $primary;
+  }
+
+  &__old-price {
+    font-weight: 500;
+    color: $secondary;
+    text-decoration: line-through;
+  }
+
+  &__info {
+    margin-top: 8px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    font-size: 0.75rem;
+    line-height: 0.75rem;
+  }
+
+  &__property {
+    color: $secondary;
+  }
+
+  &__value {
+    color: $primary;
+  }
+
+  &__line {
+    margin: 8px 0;
+  }
+
+  &__buttons {
+    display: flex;
+    margin-top: 16px;
+    width: 100%;
+    gap: 8px;
+    align-self: end;
+  }
+
+  &__cart-button {
+    flex-grow: 1;
+    font-family: "Mont", sans-serif;
+  }
+
+  &__favorite-button {
+    width: 40px;
+    height: 40px;
+  }
+}

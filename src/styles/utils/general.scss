@@ -1,0 +1,32 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+
+  // @media (max-width: 1100px) {
+  //   font-size: 14px;
+  // }
+
+  @media (max-width: 780px) {
+    font-size: 14px;
+  }
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+body {
+  background-color: $backgound;
+  font-family: "Mont", sans-serif;
+}
+
+.with-menu {
+  overflow: hidden;
+}

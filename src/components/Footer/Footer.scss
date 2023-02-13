@@ -1,0 +1,45 @@
+@import "../../styles/utils/vars.scss";
+
+.footer {
+  border-top: 1px solid $elements;
+  border-left: 1px solid $elements;
+  border-right: 1px solid $elements;
+  padding: 0 150px;
+
+  @media (max-width: 790px) {
+    padding: 0 30px;
+  }
+
+  &__container {
+    padding: 43px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: $backgound;
+  }
+
+  &__nav {
+    width: 100%;
+    max-width: 250px;
+    margin: 0 40px;
+  }
+  
+  &__back {
+    display: flex;
+    align-items: center;
+  }
+
+  &__back-text {
+    color: $secondary;
+
+    @media (max-width: 540px) {
+      display: none;
+    }
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    margin-left: 16px;
+  }
+}

@@ -1,0 +1,30 @@
+@import "../../styles/utils/vars.scss";
+
+.products-slider {
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__content {
+    justify-content: space-between;
+    margin-top: 24px;
+    display: flex;
+    gap: 16px;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+  }
+
+  // &__cart-wrapper {
+  //   width: 100%;
+  // }
+}

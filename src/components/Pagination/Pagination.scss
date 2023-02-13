@@ -1,0 +1,9 @@
+.pagination {
+  display: flex;
+  gap: 8px;
+
+  &__button {
+    width: 32px;
+    height: 32px;
+  }
+}

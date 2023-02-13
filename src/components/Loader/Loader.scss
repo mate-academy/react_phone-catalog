@@ -1,0 +1,45 @@
+@import "../../styles/utils/vars.scss";
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+
+  &__item {
+    width: 50px;
+    height: 50px;
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      display: block;
+      width: 50px;
+      height: 50px;
+      border-top: 3px solid $primary;
+      border-bottom: 3px solid $primary;
+      border-right: 3px solid transparent;
+      border-left: 3px solid transparent;
+      border-radius: 50%;
+      box-sizing: border-box;
+      animation: loading 1s ease-in-out infinite;
+    }
+  }
+}
+
+@keyframes loading {
+  0% {
+    transform: rotate(0deg);
+    opacity: 0.2;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: rotate(360deg);
+    opacity: 0.2;
+  }
+}

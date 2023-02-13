@@ -1,0 +1,17 @@
+.home-page {
+  &__slider {
+    margin-top: 40px;
+
+    @media (max-width: 780px) {
+      margin-top: 20px;
+    }
+  }
+
+  &__section {
+    margin-top: 80px;
+
+    @media (max-width: 780px) {
+      margin-top: 40px;
+    }
+  }
+}
