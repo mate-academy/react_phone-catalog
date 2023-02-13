@@ -21,7 +21,7 @@ export const ProductAvaliableColors = ({
     });
 
     const response = await fetch(
-      `/_new/products/${newProduct.itemId}.json`,
+      `new/products/${newProduct.itemId}.json`,
       {
         method: 'GET',
       },

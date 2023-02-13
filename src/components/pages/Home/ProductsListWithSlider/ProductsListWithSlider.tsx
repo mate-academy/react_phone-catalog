@@ -43,14 +43,14 @@ export const ProductsListWithSlider: React.FC<any> = (
           <Button
             className="arrow left small"
             onClick={moveLeft}
-            image="/icons/Chevron (Arrow Left).svg"
+            image="icons/Chevron (Arrow Left).svg"
             alt="<"
             // disabled={isDisabled}
           />
           <Button
             className="arrow right small"
             onClick={moveRight}
-            image="/icons/Chevron (Arrow Right).svg"
+            image="icons/Chevron (Arrow Right).svg"
             alt=">"
           />
         </div>

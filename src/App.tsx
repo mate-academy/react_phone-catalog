@@ -95,7 +95,7 @@ const App = () => {
   const getIPhones = async () => {
     try {
       const response = await fetch(
-        '../_new/products.json',
+        '_new/products.json',
         {
           method: 'GET',
         },
@@ -127,9 +127,9 @@ const App = () => {
         setSearchInput={setSearchInput}
       />
       <Routes>
-        <Route path="/" element={<Navigate to="/home" />} />
+        <Route path="/home" element={<Navigate to="/" />} />
         <Route
-          path="/home"
+          path="/"
           element={(
             <main>
               <ProductsSlider />

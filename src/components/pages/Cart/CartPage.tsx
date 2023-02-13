@@ -39,7 +39,7 @@ export const CartPage = () => {
       >
         <Button
           className="no-border"
-          image="/icons/Chevron (Arrow Left).svg"
+          image="icons/Chevron (Arrow Left).svg"
           alt="<"
           onClick={() => {
             navigate(-1);

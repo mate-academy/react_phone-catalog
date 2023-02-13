@@ -64,7 +64,7 @@ export const ProductCard: React.FC<Props> = ({
 
             if (newProduct) {
               const response = await fetch(
-                `/_new/products/${newProduct.itemId}.json`,
+                `new/products/${newProduct.itemId}.json`,
                 {
                   method: 'GET',
                 },
@@ -88,8 +88,8 @@ export const ProductCard: React.FC<Props> = ({
         >
           <img
             className="product__image"
-            src={`/_new/${image}`}
-            // || productImg || `/_new/${image}`}
+            src={`_new/${image}`}
+            // || productImg || `new/${image}`}
             alt={name}
           />
           <h3 className="product__title body14">{name}</h3>
@@ -125,8 +125,8 @@ export const ProductCard: React.FC<Props> = ({
           />
           <Button
             image={isAddedToFav
-              ? '/icons/Favourites Filled (Heart Like).svg'
-              : '/icons/Favourites.svg'}
+              ? 'icons/Favourites Filled (Heart Like).svg'
+              : 'icons/Favourites.svg'}
             title="favourites"
             // onClick={toggleFav}
             product={product}

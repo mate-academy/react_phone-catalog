@@ -17,7 +17,7 @@ export const NavigationButtons:React.FC<Props> = ({ id = '0', title }) => {
     <div className="navigation-buttons">
       <NavLink to="/">
         <Button
-          image="/icons/Home.svg"
+          image="icons/Home.svg"
           alt="home"
           link="/home"
           className="no-border"
@@ -26,7 +26,7 @@ export const NavigationButtons:React.FC<Props> = ({ id = '0', title }) => {
       <div className="sub-buttons body12">
         <img
           className="button-image"
-          src="/icons/Chevron (Arrow Right).svg"
+          src="icons/Chevron (Arrow Right).svg"
           alt=">"
         />
         <a href={`/${title}`} className="sub-link">{title}</a>
@@ -36,7 +36,7 @@ export const NavigationButtons:React.FC<Props> = ({ id = '0', title }) => {
           <div className="sub-buttons body12">
             <img
               className="button-image"
-              src="/icons/Chevron (Arrow Right).svg"
+              src="icons/Chevron (Arrow Right).svg"
               alt=">"
             />
             <Link to={`/${title}/${id}`} className="sub-link">{detailedProduct.name}</Link>

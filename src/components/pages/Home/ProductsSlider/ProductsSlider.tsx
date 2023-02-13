@@ -5,9 +5,9 @@ import { Button } from '../../../../common/Button/Button';
 
 export const ProductsSlider = () => {
   const banners = [
-    '/_new/img/banner-phones.png',
-    '/_new/img/banner-accessories.png',
-    '/_new/img/banner-tablets.png',
+    'new/img/banner-phones.png',
+    'new/img/banner-accessories.png',
+    'new/img/banner-tablets.png',
   ];
 
   const [visibleBanner, setVisibleBanner] = useState(0);
@@ -40,7 +40,7 @@ export const ProductsSlider = () => {
         <Button
           className="arrow left long"
           onClick={moveLeft}
-          image="/icons/Chevron (Arrow Left).svg"
+          image="icons/Chevron (Arrow Left).svg"
           alt="<"
         />
         <ul
@@ -69,7 +69,7 @@ export const ProductsSlider = () => {
         <Button
           className="arrow right long"
           onClick={moveRight}
-          image="/icons/Chevron (Arrow Right).svg"
+          image="icons/Chevron (Arrow Right).svg"
           alt=">"
         />
       </div>

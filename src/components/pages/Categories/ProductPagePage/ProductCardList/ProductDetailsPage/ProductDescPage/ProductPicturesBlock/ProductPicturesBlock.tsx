@@ -27,7 +27,7 @@ export const ProductPicturesBlock:React.FC<any> = () => {
               aria-hidden="true"
             >
               <img
-                src={`/_new/${one}`}
+                src={`new/${one}`}
                 alt="phone"
                 className="pictures-block__image"
               />
@@ -36,7 +36,7 @@ export const ProductPicturesBlock:React.FC<any> = () => {
         })}
       </ul>
       <img
-        src={`/_new/${detailedProduct.images[mainPicture]}`}
+        src={`new/${detailedProduct.images[mainPicture]}`}
         alt="main"
         className="pictures-block__main"
       />

@@ -50,7 +50,7 @@ export const CartItem:React.FC<Props> = ({ product }) => {
       <div className="cart-item__sub-block">
         <Button
           className="no-border cart-item__close"
-          image="/icons/Close.svg"
+          image="icons/Close.svg"
           alt="x"
           onClick={deleteProduct}
         />
@@ -72,7 +72,7 @@ export const CartItem:React.FC<Props> = ({ product }) => {
             onClick={() => {
               setCount((prev = 1) => prev - 1);
             }}
-            image="/icons/Minus.svg"
+            image="icons/Minus.svg"
             alt="-"
           />
           <div className="count">
@@ -83,7 +83,7 @@ export const CartItem:React.FC<Props> = ({ product }) => {
             onClick={() => {
               setCount((prev = 1) => prev + 1);
             }}
-            image="/icons/Plus.svg"
+            image="icons/Plus.svg"
             alt="+"
           />
         </div>

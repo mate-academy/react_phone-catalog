@@ -28,7 +28,7 @@ export const ProductCapacity:React.FC<Props> = (
 
     if (newProduct) {
       const response = await fetch(
-        `/_new/products/${newProduct.itemId}.json`,
+        `new/products/${newProduct.itemId}.json`,
         {
           method: 'GET',
         },

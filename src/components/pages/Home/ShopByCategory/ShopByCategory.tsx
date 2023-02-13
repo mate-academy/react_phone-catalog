@@ -10,21 +10,21 @@ export const ShopByCategory:React.FC<Props> = ({ phones }) => {
   const categories = [
     {
       title: 'Mobile phones',
-      image: '/_new/img/category-phones.png',
+      image: '_new/img/category-phones.png',
       amount: phones.length,
       background: '#fcdbc1',
       category: 'phones',
     },
     {
       title: 'Tablets',
-      image: '/_new/img/category-tablets.png',
+      image: '_new/img/category-tablets.png',
       amount: 24,
       background: '#8d8d92',
       category: 'tablets',
     },
     {
       title: 'Accessories',
-      image: '/_new/img/category-accessories.png',
+      image: '_new/img/category-accessories.png',
       amount: 100,
       background: '#D53C51',
       category: 'accessories',

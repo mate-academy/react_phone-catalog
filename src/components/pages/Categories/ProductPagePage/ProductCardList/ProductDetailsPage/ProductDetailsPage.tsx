@@ -28,7 +28,7 @@ export const ProductDetailsPage: React.FC<any> = (
     });
 
     const response = await fetch(
-      `/_new/products/${singleProduct.itemId}.json`,
+      `new/products/${singleProduct.itemId}.json`,
       {
         method: 'GET',
       },
@@ -57,7 +57,7 @@ export const ProductDetailsPage: React.FC<any> = (
       <div className="back-button body12">
         <Button
           className="no-border"
-          image="/icons/Chevron (Arrow Left).svg"
+          image="icons/Chevron (Arrow Left).svg"
           alt="<"
           onClick={() => {
             navigate(-1);

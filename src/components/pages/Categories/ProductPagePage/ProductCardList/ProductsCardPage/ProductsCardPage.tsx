@@ -104,7 +104,7 @@ export const ProductsCardPage: React.FC<Props>
                         id="sortBy"
                         style={{
                           backgroundImage:
-                          'url("/icons/Chevron (Arrow Down).svg")',
+                          'url("icons/Chevron (Arrow Down).svg")',
                         }}
                         value={itemsSort}
                         onChange={(event) => {
@@ -135,7 +135,7 @@ export const ProductsCardPage: React.FC<Props>
                         }}
                         style={{
                           backgroundImage:
-                          'url("/icons/Chevron (Arrow Down).svg")',
+                          'url("icons/Chevron (Arrow Down).svg")',
                         }}
                       >
                         <option defaultValue={itemsOnPage} value="4">4</option>

@@ -89,7 +89,7 @@ export const Header:React.FC<Props> = ({
                   }}
                 />
                 <img
-                  src="/icons/Search.svg"
+                  src="icons/Search.svg"
                   alt="Search"
                   className="small no-border"
                 />
@@ -100,7 +100,7 @@ export const Header:React.FC<Props> = ({
             <div className="header-button">
               <img
                 className="header-button__image"
-                src="/icons/Favourites.svg"
+                src="icons/Favourites.svg"
                 alt="favourites"
               />
               {
@@ -113,7 +113,7 @@ export const Header:React.FC<Props> = ({
             <div className="header-button">
               <img
                 className="header-button__image"
-                src="/icons/Cart.svg"
+                src="icons/Cart.svg"
                 alt="cart"
               />
 

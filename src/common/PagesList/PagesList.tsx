@@ -38,7 +38,7 @@ export const PagesList: React.FC<any> = ({
     >
       <Button
         className="arrow left small"
-        image="/icons/Chevron (Arrow Left).svg"
+        image="icons/Chevron (Arrow Left).svg"
         alt="<"
         onClick={() => {
           if (currentPage <= 1) {
@@ -83,7 +83,7 @@ export const PagesList: React.FC<any> = ({
       </div>
       <Button
         className="arrow right small"
-        image="/icons/Chevron (Arrow Right).svg"
+        image="icons/Chevron (Arrow Right).svg"
         onClick={() => {
           if (currentPage >= buttonsNumber) {
             return;
