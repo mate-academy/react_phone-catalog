@@ -18,7 +18,7 @@ export const FavouritesPage = () => {
       <h1 className="favourites__title">Favourites</h1>
       <ul className="favourites__list">
         { visibleFavProducts.length
-          ? visibleFavProducts.map((favProduct: Product, index: number) => {
+          ? visibleFavProducts.map((favProduct: Product) => {
             return (
               <li className="favourites__item" key={favProduct.id}>
                 <ProductCard

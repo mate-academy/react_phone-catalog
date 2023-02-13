@@ -1,10 +1,7 @@
-// import React, { useEffect, useState } from 'react';
 import './App.scss';
 import {
-  Routes, Route, Navigate, useParams,
+  Routes, Route, Navigate,
 } from 'react-router-dom';
-// import { useParams } from 'react-router-dom';
-
 import { useState, useEffect } from 'react';
 import { Footer } from './components/Footer/Footer';
 import { Header } from './components/Header/Header/Header';
@@ -65,7 +62,7 @@ const App = () => {
   };
 
   const getSuggestedProducts = () => {
-    setShuffeledIPhones(IPhones.sort((a, b) => 0.5 - Math.random()));
+    setShuffeledIPhones(IPhones.sort(() => 0.5 - Math.random()));
   };
 
   useEffect(() => {
@@ -106,11 +103,8 @@ const App = () => {
       if (response.status === 200) {
         const result = await response.json();
 
-        // console.log(result);
-
         setIPhones(result);
         setVisibleIPhones(result);
-        // setLoading(false);
       }
     } catch (err) {
       // console.error(err);
@@ -173,7 +167,10 @@ const App = () => {
             path=":id"
             element={(
               <main>
-                <ProductDetailsPage products={IPhones} />
+                <ProductDetailsPage
+                  products={IPhones}
+                  setProducts={setIPhones}
+                />
                 <ProductsListWithSlider
                   products={shuffeledIPhones}
                   title="You may also like"
@@ -193,7 +190,6 @@ const App = () => {
                 <ProductsCardPage
                   products={[]}
                   visibleProducts={[]}
-
                   title="Tablets"
                   searchInput={searchInput}
                 />
@@ -212,7 +208,6 @@ const App = () => {
                 <ProductsCardPage
                   products={[]}
                   visibleProducts={[]}
-
                   title="Accessories"
                   searchInput={searchInput}
                 />
@@ -244,7 +239,7 @@ const App = () => {
             <main>
               <div className="body12">
                 At vero eos et
-                accusamus et iusto odio dignissimos ducimus qui blanditiis 
+                accusamus et iusto odio dignissimos ducimus qui blanditiis
                 praesentium
                 voluptatum deleniti
                 atque corrupti quos dolores et
@@ -259,9 +254,9 @@ const App = () => {
           element={(
             <main>
               <h3 className="body12">
-               Modile: 12345678
-               <br />
-               Facebook: iphone777
+                Modile: 12345678
+                <br />
+                Facebook: iphone777
               </h3>
             </main>
           )}

@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 import { useContext } from 'react';
 import './ProductCapacity.scss';
 import {
@@ -18,7 +19,7 @@ export const ProductCapacity:React.FC<Props> = (
   } = useContext<any>(DetailedProductContext);
   const isActive = (capacity: string) => capacity === detailedProduct.capacity;
   const searchProductByCapacity = async (capacity: string) => {
-    const newProduct = products.find((one: any) => {
+    const newProduct = products.find((one: Product) => {
       return (
         one.phoneId
         === detailedProduct.id.replace(detailedProduct.capacity.toLowerCase(),
@@ -55,7 +56,7 @@ export const ProductCapacity:React.FC<Props> = (
           detailedProduct.capacityAvailable.map((one: any) => {
             return (
               <li
-                className={`capacity__item ${isActive(one)  && 'active-button'}`}
+                className={`capacity__item ${isActive(one) && 'active-button'}`}
                 key={one}
                 onClick={() => {
                   searchProductByCapacity(one);

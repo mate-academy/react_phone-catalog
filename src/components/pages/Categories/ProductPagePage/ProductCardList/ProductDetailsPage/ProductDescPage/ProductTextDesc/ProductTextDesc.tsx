@@ -19,7 +19,7 @@ export const ProductTextDesc = () => {
         {
           detailedProduct.description.map((one: any) => {
             return (
-              <li className="product-desc__item" key={one}>
+              <li className="product-desc__item" key={one.title}>
                 <h3 className="product-desc__item-title">{one.title}</h3>
                 {one.text.map((text: string) => {
                   return (

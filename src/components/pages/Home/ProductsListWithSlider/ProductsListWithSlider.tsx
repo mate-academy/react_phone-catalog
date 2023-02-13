@@ -1,10 +1,9 @@
 import './ProductsListWithSlider.scss';
 
-import { useState, useRef, useContext } from 'react';
+import { useState, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Button } from '../../../../common/Button/Button';
 import { ProductCard } from '../../../../common/ProductCard/ProductCard';
-import { DetailedProductContext } from '../../../../context/DetailedProductContext';
 
 export const ProductsListWithSlider: React.FC<any> = (
   { products, title },
@@ -17,7 +16,7 @@ export const ProductsListWithSlider: React.FC<any> = (
   // const { setProduct } = useContext<any>(ProductContext);
 
   const maxMargin = initialWidth * (products.length - 5);
-  const moveRight = (event: any) => {
+  const moveRight = () => {
     if (ref.current && ref) {
       setInitialWidth(ref.current.offsetWidth);
       if (width <= maxMargin) {
@@ -26,8 +25,7 @@ export const ProductsListWithSlider: React.FC<any> = (
     }
   };
 
-  const moveLeft = (event: any) => {
-    // event.preventDefault();
+  const moveLeft = () => {
     if (!ref.current || !ref) {
       return;
     }

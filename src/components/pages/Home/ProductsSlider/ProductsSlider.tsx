@@ -1,9 +1,9 @@
+/* eslint-disable react/no-array-index-key */
 import './ProductSlider.scss';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button } from '../../../../common/Button/Button';
 
 export const ProductsSlider = () => {
-  // console.log(items)
   const banners = [
     '/_new/img/banner-phones.png',
     '/_new/img/banner-accessories.png',
@@ -49,7 +49,7 @@ export const ProductsSlider = () => {
             overflow: 'hidden',
           }}
         >
-          {[...Array(banners.length)].map((one, index) => {
+          {[...Array(banners.length)].map((_one, index) => {
             return (
               <li>
                 <div
@@ -75,12 +75,10 @@ export const ProductsSlider = () => {
       </div>
 
       <div className="slider__subbuttons">
-        {[...Array(banners.length)].map((one, index) => {
-          one = index;
-
+        {[...Array(banners.length)].map((_one, index) => {
           return (
             <div
-              key={`${one}slider`}
+              key={`${index}slider`}
               className={`slider__subbutton ${visibleBanner === index && 'active__subbutton'}`}
               onClick={() => {
                 setVisibleBanner(index);

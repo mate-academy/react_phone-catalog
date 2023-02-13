@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 import { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { CartAndFavContext } from '../../context/CartAndFavContext';
@@ -8,7 +9,7 @@ import { LongButton } from '../LongButton/LongButton';
 import './ProductCard.scss';
 
 type Props = {
-  products: Product[],
+  products?: Product[],
   product: Product,
   link?: string,
 };
@@ -53,29 +54,35 @@ export const ProductCard: React.FC<Props> = ({
         <Link
           to={link || `../${product.category}/${product.id}`}
           onClick={async () => {
+            if (!products) {
+              return;
+            }
+
             const newProduct = products.find(
               (one: any) => one.id === product.id,
             );
 
-            const response = await fetch(
-              `/_new/products/${newProduct.itemId}.json`,
-              {
-                method: 'GET',
-              },
-            );
+            if (newProduct) {
+              const response = await fetch(
+                `/_new/products/${newProduct.itemId}.json`,
+                {
+                  method: 'GET',
+                },
+              );
 
-            if (response.status === 200) {
-              const result = await response.json();
+              if (response.status === 200) {
+                const result = await response.json();
 
-              window.history.replaceState(null, '', `/phones/${newProduct.id}`);
+                window.history.replaceState(null, '', `/phones/${newProduct.id}`);
 
-              window.scroll({
-                top: 0,
-                left: 0,
-                behavior: 'smooth',
-              });
+                window.scroll({
+                  top: 0,
+                  left: 0,
+                  behavior: 'smooth',
+                });
 
-              return setDetailedProduct(result);
+                setDetailedProduct(result);
+              }
             }
           }}
         >

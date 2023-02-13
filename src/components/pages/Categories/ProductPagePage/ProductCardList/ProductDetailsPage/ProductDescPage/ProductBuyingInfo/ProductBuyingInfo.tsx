@@ -1,3 +1,5 @@
+/* eslint-disable consistent-return */
+/* eslint-disable array-callback-return */
 import './ProductBuyingInfo.scss';
 import { useContext, useEffect } from 'react';
 import { Button } from '../../../../../../../../common/Button/Button';
@@ -14,6 +16,7 @@ import {
 import {
   CartAndFavContext,
 } from '../../../../../../../../context/CartAndFavContext';
+import { Product } from '../../../../../../../../types/types';
 
 export const ProductBuyingInfo = ({ products, singleProduct }:any) => {
   const {
@@ -27,11 +30,10 @@ export const ProductBuyingInfo = ({ products, singleProduct }:any) => {
   } = useContext<any>(DetailedProductContext);
 
   useEffect(() => {
-    cartProducts.map((one: any) => {
+    setIsAddedToCart(false);
+    cartProducts.map((one: Product) => {
       if (one.phoneId === detailedProduct.id) {
-        setIsAddedToCart(true);
-      } else {
-        setIsAddedToCart(false);
+        return setIsAddedToCart(true);
       }
     });
   }, [detailedProduct, cartProducts]);
@@ -39,7 +41,7 @@ export const ProductBuyingInfo = ({ products, singleProduct }:any) => {
   useEffect(() => {
     setIsAddedToFav(false);
 
-    favProducts.map((one: any) => {
+    favProducts.map((one: Product) => {
       if (one.phoneId === detailedProduct.id) {
         setIsAddedToFav(true);
       }
@@ -76,7 +78,6 @@ export const ProductBuyingInfo = ({ products, singleProduct }:any) => {
             image={isAddedToFav
               ? '/icons/Favourites Filled (Heart Like).svg'
               : '/icons/Favourites.svg'}
-            // image="/icons/Favourites.svg"
             title="favourites"
             products={products}
           />

@@ -24,7 +24,6 @@ export const CartItem:React.FC<Props> = ({ product }) => {
   };
 
   useEffect(() => {
-    console.log('dfdf')
     localStorage.setItem('cartProducts', JSON.stringify(cartProducts));
   }, [cartProducts]);
 
@@ -45,10 +44,6 @@ export const CartItem:React.FC<Props> = ({ product }) => {
       }));
     }
   }, [count]);
-
-  // const phonesAmount = localStorage.getItem('count');
-
-  // console.log(phonesAmount);
 
   return (
     <div className="cart-item">
@@ -88,7 +83,6 @@ export const CartItem:React.FC<Props> = ({ product }) => {
             onClick={() => {
               setCount((prev = 1) => prev + 1);
             }}
-            // onClick={moveRight}
             image="/icons/Plus.svg"
             alt="+"
           />

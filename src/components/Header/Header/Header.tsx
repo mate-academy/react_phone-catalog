@@ -61,8 +61,9 @@ export const Header:React.FC<Props> = ({
                   <li key={item} className="header__navigation-item">
                     <NavLink
                       to={item}
-                      activeClassName="active"
-                      className="header__navigation-link"
+                      className={({ isActive }) => (
+                        isActive ? 'active' : 'header__navigation-link'
+                      )}
                     >
                       {item}
                     </NavLink>

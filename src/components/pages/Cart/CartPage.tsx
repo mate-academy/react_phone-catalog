@@ -1,3 +1,6 @@
+/* eslint-disable no-useless-return */
+/* eslint-disable array-callback-return */
+/* eslint-disable consistent-return */
 import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CartAndFavContext } from '../../../context/CartAndFavContext';
@@ -20,6 +23,7 @@ export const CartPage = () => {
     return;
   }, 0);
 
+  // eslint-disable-next-line array-callback-return
   const totalAmount = cartProducts.reduce((current:number, prev: Product) => {
     if (prev.count) {
       return current + prev.count;
@@ -63,8 +67,7 @@ export const CartPage = () => {
               })}
             </ul>
           )
-        :<NoProducts/>
-        }
+            : <NoProducts />}
         </div>
         <div className="cart-page__price">
           <h1 className="cart-page__price-total">
@@ -79,5 +82,5 @@ export const CartPage = () => {
         </div>
       </div>
     </div>
-	 );
+  );
 };

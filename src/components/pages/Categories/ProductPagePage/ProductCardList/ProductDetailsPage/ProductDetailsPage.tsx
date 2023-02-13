@@ -15,40 +15,35 @@ export const ProductDetailsPage: React.FC<any> = (
 ) => {
   const { id } = useParams();
   const navigate = useNavigate();
-  // const [product, setProduct] = useState();
   const {
     detailedProduct,
     setDetailedProduct,
   } = useContext<any>(DetailedProductContext);
-  const [product, setProduct] = useState()
+  const [product, setProduct] = useState();
+  let category = '';
 
   const getProduct = async () => {
     const singleProduct = products.find((one: any) => {
       return (one.id === id);
     });
 
-    setProduct(singleProduct)
+    const response = await fetch(
+      `/_new/products/${singleProduct.itemId}.json`,
+      {
+        method: 'GET',
+      },
+    );
 
-    try {
-      const response = await fetch(
-        `/_new/products/${singleProduct.itemId}.json`,
-        {
-          method: 'GET',
-        },
-      );
+    if (response.status === 200) {
+      const result = await response.json();
 
-      // console.log(response.json());
-      if (response.status === 200) {
-        const result = await response.json();
-
-        return setDetailedProduct(result);
-      }
-    } catch (err) {
-      // console.error(err);
+      return setDetailedProduct(result);
     }
-  };
 
-  // let res = getProduct()
+    category = singleProduct.category;
+
+    return setProduct(singleProduct);
+  };
 
   useEffect(() => {
     if (products) {
@@ -58,7 +53,7 @@ export const ProductDetailsPage: React.FC<any> = (
 
   return (
     <div className="details__page">
-      <NavigationButtons id={id} />
+      <NavigationButtons id={id} title={category} />
       <div className="back-button body12">
         <Button
           className="no-border"
@@ -72,15 +67,14 @@ export const ProductDetailsPage: React.FC<any> = (
           Back
         </div>
       </div>
-      { id <= products.length
+      { id && id <= products.length
         ? detailedProduct && (
           <ProductDescPage
             products={products}
             singleProduct={product}
           />
         )
-        : <h1>No product found</h1>
-      }
+        : <h1>No product found</h1>}
     </div>
   );
 };

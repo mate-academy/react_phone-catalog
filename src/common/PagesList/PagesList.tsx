@@ -5,35 +5,21 @@ import './PagesList.scss';
 export const PagesList: React.FC<any> = ({
   setCurrentPage, currentPage, buttonsNumber,
 }) => {
-  // const show5NumButtons = () => {
-  //   console.log(num);
-  //   if(num > 5){
-  //     return
-  //   }
-
-  //   return num
-
-  // }
   const [initialWidth, setInitialWidth] = useState<any>(0);
-
   const ref = useRef<any>(null);
-  // const { setProduct } = useContext<any>(ProductContext);
   const [width, setWidth] = useState(0);
   const [divWidth, setDivWidth] = useState(0);
 
   const maxMargin = initialWidth * (buttonsNumber - 6);
-  console.log(currentPage);
   const moveRight = () => {
     if (width <= maxMargin) {
-      console.log(currentPage * ref.current.offsetWidth, 'currentPage + ref.current.offsetWidth');
-    setWidth(currentPage * ref.current.offsetWidth);
+      setWidth(currentPage * ref.current.offsetWidth);
     }
   };
 
   const moveLeft = () => {
-    console.log(width, initialWidth, maxMargin);
     if (width > 0) {
-    setWidth(width - ref.current.offsetWidth);
+      setWidth(width - ref.current.offsetWidth);
     }
   };
 
@@ -45,9 +31,6 @@ export const PagesList: React.FC<any> = ({
     setDivWidth(ref.current.offsetWidth * 5);
     setInitialWidth(ref.current.offsetWidth);
   }, []);
-  // useEffect(() => {
-  //   setWidth(width + ref.current.offsetWidth);
-  // }, [currentPage]);
 
   return (
     <div

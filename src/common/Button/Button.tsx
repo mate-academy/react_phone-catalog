@@ -1,39 +1,46 @@
+/* eslint-disable no-useless-return */
+/* eslint-disable consistent-return */
+/* eslint-disable array-callback-return */
 import { useContext, useEffect } from 'react';
 import { CartAndFavContext } from '../../context/CartAndFavContext';
 import { DetailedProductContext } from '../../context/DetailedProductContext';
+import { Product } from '../../types/types';
 import './Button.scss';
 
 export const Button = ({
   num, image, alt, className, onClick,
-  imageClass, disabled, product, products,
+  imageClass, product, products,
 }: any) => {
   const {
     favProducts, setFavProducts,
     visibleFavProducts, setVisibleFavProducts,
-    // isAddedToFav, setIsAddedToFav,
   } = useContext<any>(CartAndFavContext);
   const {
     detailedProduct,
   } = useContext<any>(DetailedProductContext);
+  let singleProduct = product;
 
   const toggleFav = async () => {
     if (products) {
-      product = products.find((one) => {
+      singleProduct = products.find((one: Product) => {
         return one.phoneId === detailedProduct.id;
       });
     }
 
-    // setIsAddedToFav(!isAddedToFav);
-    const exists = favProducts.find((one: any) => {
-      if (one.id === product.id) {
-        return one.id === product.id;
+    const exists = favProducts.find((one: Product) => {
+      if (one.id === singleProduct.id) {
+        return one.id === singleProduct.id;
       }
+
+      return;
     });
 
     if (exists) {
-      setFavProducts(favProducts.filter((one: any) => one.id !== exists.id));
+      setFavProducts(favProducts.filter((
+        one: Product,
+      ) => one.id !== exists.id));
       setVisibleFavProducts(visibleFavProducts.filter(
-        (one) => one.id !== exists.id,
+        (one: Product) => one.id !== exists.id,
       ));
 
       if (favProducts.length === 1) {
@@ -43,8 +50,8 @@ export const Button = ({
       return;
     }
 
-    setVisibleFavProducts([...visibleFavProducts, product]);
-    setFavProducts([...favProducts, product]);
+    setVisibleFavProducts([...visibleFavProducts, singleProduct]);
+    setFavProducts([...favProducts, singleProduct]);
   };
 
   useEffect(() => {
@@ -52,14 +59,10 @@ export const Button = ({
   }, [favProducts]);
 
   return (
-    // <Link to={link}>
     <button
-      onClick={(event) => {
-        !num && image.includes('Favourite')
-          ? toggleFav(event)
-          : onClick();
-      }}
-      // onClick={image.includes('Heart') ? toggleFav :onClick}
+      onClick={!num && image.includes('Favourite')
+        ? toggleFav
+        : onClick}
       className={`button-link ${className}`}
       type="button"
     >

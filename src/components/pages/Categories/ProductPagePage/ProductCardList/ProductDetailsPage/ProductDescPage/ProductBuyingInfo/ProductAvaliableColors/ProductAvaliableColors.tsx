@@ -13,8 +13,7 @@ export const ProductAvaliableColors = ({
     detailedProduct, setDetailedProduct,
   } = useContext<any>(DetailedProductContext);
 
-
-  const isActive = (color) => color === detailedProduct.color;
+  const isActive = (color: string) => color === detailedProduct.color;
   const searchProductByColor = async (color: string) => {
     const newProduct = products.find((one: any) => {
       return one.phoneId
@@ -33,12 +32,9 @@ export const ProductAvaliableColors = ({
 
       window.history.replaceState(null, '', `/phones/${newProduct.id}`);
 
-      // pathname=`phones${newProduct.id}`
       return setDetailedProduct(result);
     }
 
-    // setProduct(newProduct)
-    // console.log(window.history);
     window.history.replaceState(null, '', `/product/${newProduct.id}`);
   };
 

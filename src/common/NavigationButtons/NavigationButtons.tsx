@@ -1,15 +1,15 @@
 import { useContext } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { DetailedProductContext } from '../../context/DetailedProductContext';
-import { Product } from '../../types/types';
 import { Button } from '../Button/Button';
 import './NavigationButtons.scss';
 
 type Props = {
   id?: string,
+  title?: string,
 };
 
-export const NavigationButtons:React.FC<Props> = ({ id, title }) => {
+export const NavigationButtons:React.FC<Props> = ({ id = '0', title }) => {
   const { detailedProduct } = useContext<any>(DetailedProductContext);
   const { pathname } = useLocation();
 

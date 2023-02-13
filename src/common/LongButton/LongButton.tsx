@@ -1,14 +1,19 @@
+/* eslint-disable no-useless-return */
+/* eslint-disable consistent-return */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable array-callback-return */
 import {
-  useEffect, useContext, useRef, useState,
+  useEffect, useContext, useRef,
 } from 'react';
 import { CartAndFavContext } from '../../context/CartAndFavContext';
 import { DetailedProductContext } from '../../context/DetailedProductContext';
-// import { DetailedProductContext } from '../../context/DetailedProductContext';
+import { Product } from '../../types/types';
 import './LongButton.scss';
 
 export const LongButton = ({
   text, onClick, className, product, products,
 }: any) => {
+  let singleProduct = product;
   const ref = useRef<any>(null);
   const {
     detailedProduct,
@@ -22,23 +27,25 @@ export const LongButton = ({
     event: any,
   ) => {
     if (products) {
-      product = products.find((one) => {
+      singleProduct = products.find((one: Product) => {
         return one.phoneId === detailedProduct.id;
       });
     }
 
     event.preventDefault();
     const exists = cartProducts.find((one: any) => {
-      if (one.id === product.id) {
-        return one.id === product.id;
+      if (one.id === singleProduct.id) {
+        return one.id === singleProduct.id;
       }
+
+      return;
     });
 
     if (exists) {
       return;
     }
 
-    await setCartProducts([...cartProducts, { ...product, count: 1 }]);
+    await setCartProducts([...cartProducts, { ...singleProduct, count: 1 }]);
   };
 
   useEffect(() => {
@@ -50,11 +57,11 @@ export const LongButton = ({
       className={`long-button__link body14 ${className}`}
       href="/"
       ref={ref}
-      onClick={(event) => {
+      onClick={
         text.includes('cart')
-          ? addToCart(event)
-          : onClick;
-      }}
+          ? addToCart
+          : onClick
+      }
     >
       {text}
     </a>

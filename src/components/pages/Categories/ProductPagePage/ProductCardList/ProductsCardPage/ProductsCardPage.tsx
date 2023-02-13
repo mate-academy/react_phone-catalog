@@ -5,7 +5,6 @@ import {
 import { NoProducts } from '../../../../../../common/NoProducts/NoProducts';
 import { PagesList } from '../../../../../../common/PagesList/PagesList';
 import { ProductCard } from '../../../../../../common/ProductCard/ProductCard';
-import { Product } from '../../../../../../types/types';
 
 import './ProductsCardPage.scss';
 
@@ -23,11 +22,8 @@ export const ProductsCardPage: React.FC<Props>
     products, title, setVisibleProducts,
     visibleProducts, setProducts, searchInput,
   }) => {
-    // const [selectValue, setSelectValue] = useState('');
     const [itemsOnPage, setItemsOnPage] = useState(16);
     const [isProducts, setIsProducts] = useState(false);
-
-    // console.log(itemsOnPage, visibleProducts);
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsSort, setItemsSort] = useState('newest');
     const productsAmount = searchInput ? 1 : products.length;
@@ -67,21 +63,17 @@ export const ProductsCardPage: React.FC<Props>
     useEffect(() => {
       if (products.length) {
         setVisibleProducts(products.filter((
-          product: any, index: any,
+          _product: any, index: any,
         ) => {
           if (firstIndex > products.length) {
             setCurrentPage(Math.ceil(products.length / itemsOnPage));
-            console.log(products.length / itemsOnPage);
 
             return index > products.length - itemsOnPage;
           }
-          // console.log(index > firstIndex && index <= lastIndex)
 
           return index > firstIndex && index <= lastIndex;
         }));
       }
-
-      // sortItemsBy(itemsSort);
     }, [itemsOnPage, currentPage, itemsSort, isProducts]);
     useEffect(() => {
       if (visibleProducts.length > 0) {
@@ -111,7 +103,8 @@ export const ProductsCardPage: React.FC<Props>
                         className="product-page__select sort"
                         id="sortBy"
                         style={{
-                          backgroundImage: 'url("/icons/Chevron (Arrow Down).svg")',
+                          backgroundImage:
+                          'url("/icons/Chevron (Arrow Down).svg")',
                         }}
                         value={itemsSort}
                         onChange={(event) => {
@@ -141,7 +134,8 @@ export const ProductsCardPage: React.FC<Props>
                           setItemsOnPage(+event.target.value);
                         }}
                         style={{
-                          backgroundImage: 'url("/icons/Chevron (Arrow Down).svg")',
+                          backgroundImage:
+                          'url("/icons/Chevron (Arrow Down).svg")',
                         }}
                       >
                         <option defaultValue={itemsOnPage} value="4">4</option>
@@ -180,11 +174,8 @@ export const ProductsCardPage: React.FC<Props>
                 }
               </>
             )
-            : <h2>No products found</h2>
-          }
-
+            : <h2>No products found</h2>}
         </div>
       </div>
-
     );
   };
