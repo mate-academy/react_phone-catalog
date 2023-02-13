@@ -19,6 +19,11 @@
   &__image {
     width: 100%;
     max-width: 208px;
+    transition: transform 0.3s;
+    
+    &:hover {
+      transform: scale(1.04);
+    }
   }
 
   &__bottom {

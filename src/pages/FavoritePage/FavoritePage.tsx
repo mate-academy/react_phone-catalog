@@ -20,11 +20,11 @@ export const FavoritePage: React.FC = () => {
           alt="arrow-next"
         />
         <p className="text__small text__small--secondary breadcrumps__item">
-          Favotites
+          Favourites
         </p>
       </div>
       <h1 className="title__h1 title__h1-primary favorite-page__title">
-        Favorites
+        Favourites
       </h1>
       <section className="favorite-page__content">
         {favorite ? (

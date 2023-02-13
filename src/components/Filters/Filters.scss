@@ -5,6 +5,10 @@
   display: flex;
   gap: 16px;
 
+  @media (max-width: 900px) {
+    margin-top: 20px;
+  }
+
   &__item {
     width: 150px;
     display: flex;

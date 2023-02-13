@@ -1,0 +1,47 @@
+@import "../utils/vars.scss";
+
+.nav-mobile {
+  position: fixed;
+  justify-content: center;
+  width: 100vw;
+  background: $backgound;
+  z-index: 99;
+  transition: left 0.3s;
+  display: flex;
+  top: 0;
+  bottom: 0;
+  left: -150%;
+    
+  &__close {
+    width: 64px;
+    height: 64px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+
+  &__list {
+    list-style-type: none;
+    text-transform: uppercase;
+    transform: translateY(10vh);
+  }
+
+  &__link {
+    text-decoration: none;
+    font-size: 2.5rem;
+    color: $primary;
+    font-weight: 700;
+    margin: 20px 0;
+    display: block;
+    cursor: pointer;
+    width: fit-content;
+
+    &--selected {
+      border-bottom: 3px solid $primary;
+    }
+  }
+
+  &--visible {
+    left: 0;
+  }
+}

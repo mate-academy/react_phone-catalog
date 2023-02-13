@@ -12,6 +12,10 @@
   &__content {
     padding-top: 24px;
     display: flex;
+
+    @media (max-width: 800px) {
+      flex-direction: column;
+    }
   }
 
   &__list {
@@ -36,6 +40,11 @@
     align-items: center;
     justify-content: center;
     margin-left: 16px;
+
+    @media (max-width: 800px) {
+      max-width: none;
+      margin: 40px 0;
+    }
   }
 
   &__quantity {

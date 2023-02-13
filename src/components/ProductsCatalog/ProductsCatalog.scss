@@ -1,12 +1,10 @@
 .products-catalog {
   &__title {
     margin-top: 40px;
-  }
 
-  &__filters {
-    margin-top: 40px;
-    display: flex;
-    gap: 16px;
+    @media (max-width: 900px) {
+      margin-top: 20px;
+    }
   }
 
   &__notification {
