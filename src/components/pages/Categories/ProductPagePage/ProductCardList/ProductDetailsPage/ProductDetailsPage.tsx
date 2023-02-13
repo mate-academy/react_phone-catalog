@@ -63,7 +63,13 @@ export const ProductDetailsPage: React.FC<any> = (
             navigate(-1);
           }}
         />
-        <div className="back-button__text">
+        <div
+          className="back-button__text"
+          onClick={() => {
+            navigate(-1);
+          }}
+          aria-hidden
+        >
           Back
         </div>
       </div>

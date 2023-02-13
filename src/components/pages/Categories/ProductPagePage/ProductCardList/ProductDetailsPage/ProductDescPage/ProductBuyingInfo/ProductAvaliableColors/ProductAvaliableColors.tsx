@@ -30,12 +30,12 @@ export const ProductAvaliableColors = ({
     if (response.status === 200) {
       const result = await response.json();
 
-      window.history.replaceState(null, '', `/phones/${newProduct.id}`);
+      window.location.replace(`#/${newProduct.category}/${newProduct.id}`);
 
       return setDetailedProduct(result);
     }
 
-    window.history.replaceState(null, '', `/product/${newProduct.id}`);
+    window.history.replaceState(null, '', `#/${newProduct.category}/${newProduct.id}`);
   };
 
   return (
