@@ -88,7 +88,7 @@ export const ProductCard: React.FC<Props> = ({
         >
           <img
             className="product__image"
-            src={`_new/${image}`}
+            src={`new/${image}`}
             // || productImg || `new/${image}`}
             alt={name}
           />

@@ -95,7 +95,7 @@ const App = () => {
   const getIPhones = async () => {
     try {
       const response = await fetch(
-        '_new/products.json',
+        'new/products.json',
         {
           method: 'GET',
         },
