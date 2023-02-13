@@ -4,12 +4,21 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
-  max-width: 272px;
+  flex-grow: 1;
+  max-width: 31%;
   justify-content: space-between;
   border: 1px solid $elements;
   padding: 32px 24px 24px;
   text-decoration: none;
+  box-sizing: border-box;
+
+  @media (max-width: 720px) {
+    max-width: 45%;
+  }
+
+  @media (max-width: 425px) {
+    max-width: 100%;
+  }
 
   &:last-of-type {
     margin-right: 0;
