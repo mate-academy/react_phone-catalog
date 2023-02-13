@@ -39,7 +39,7 @@ export const NavigationButtons:React.FC<Props> = ({ id = '0', title }) => {
               src="icons/Chevron (Arrow Right).svg"
               alt=">"
             />
-            <Link to={`/${title}/${id}`} className="sub-link">{detailedProduct.name}</Link>
+            <Link to={`/phones/${id}`} className="sub-link">{detailedProduct.name}</Link>
           </div>
         )
       }

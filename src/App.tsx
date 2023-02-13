@@ -127,9 +127,9 @@ const App = () => {
         setSearchInput={setSearchInput}
       />
       <Routes>
-        <Route path="/home" element={<Navigate to="/" />} />
+        <Route path="/" element={<Navigate to="/home" />} />
         <Route
-          path="/"
+          path="/home"
           element={(
             <main>
               <ProductsSlider />

@@ -28,7 +28,7 @@ export const ProductDetailsPage: React.FC<any> = (
     });
 
     const response = await fetch(
-      `new/products/${singleProduct.itemId}.json`,
+      `/new/products/${singleProduct.itemId}.json`,
       {
         method: 'GET',
       },

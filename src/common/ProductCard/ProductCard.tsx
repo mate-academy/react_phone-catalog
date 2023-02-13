@@ -52,7 +52,8 @@ export const ProductCard: React.FC<Props> = ({
     <>
       <div className="product">
         <Link
-          to={link || `../${product.category}/${product.id}`}
+          // to={`/`}
+          to={link || `/${product.category}/${product.id}`}
           onClick={async () => {
             if (!products) {
               return;
@@ -72,8 +73,7 @@ export const ProductCard: React.FC<Props> = ({
 
               if (response.status === 200) {
                 const result = await response.json();
-
-                window.history.replaceState(null, '', `/phones/${newProduct.id}`);
+                // window.history.replaceState(null, '', `/${newProduct.category}/${newProduct.id}`);
 
                 window.scroll({
                   top: 0,

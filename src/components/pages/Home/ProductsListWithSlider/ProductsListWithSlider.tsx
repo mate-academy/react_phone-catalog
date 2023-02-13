@@ -11,9 +11,7 @@ export const ProductsListWithSlider: React.FC<any> = (
   const { pathname } = useLocation();
   const [width, setWidth] = useState(0);
   const [initialWidth, setInitialWidth] = useState<any>(0);
-  // const [isDisabled, setIsDisabled] = useState(true);
   const ref = useRef<any>(null);
-  // const { setProduct } = useContext<any>(ProductContext);
 
   const maxMargin = initialWidth * (products.length - 5);
   const moveRight = () => {
