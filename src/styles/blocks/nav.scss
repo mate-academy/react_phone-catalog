@@ -1,12 +1,19 @@
 .nav {
   width: 100%;
   height: 100%;
+
   &__list {
     width: 100%;
     display: flex;
     height: 100%;
     font-weight: 700;
     justify-content: space-between;
+    gap: 20px;
+
+    @media (max-width: 440px) {
+      flex-direction: column;
+      align-items: center;
+    }
   }
 
   &__item {
@@ -14,11 +21,6 @@
     list-style-type: none;
     display: flex;
     align-items: center;
-    margin-right: 20px;
-
-    &:last-of-type {
-      margin-right: 0;
-    }
   }
 
   &__link {

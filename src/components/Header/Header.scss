@@ -10,7 +10,6 @@
     max-width: 1400px;
     margin: auto;
     background-color: $backgound;
-    position: relative;
   }
 
   &__left {
@@ -24,6 +23,10 @@
     width: 100%;
     max-width: 410px;
     margin-right: 40px;
+
+    @media (max-width: 780px) {
+      display: none;
+    }
   }
 
   &__right {
@@ -39,6 +42,18 @@
     width: 100%;
     min-width: fit-content;
     cursor: pointer;
+  }
+
+  &__burger {
+    min-width: 64px;
+    height: 64px;
+    border: none;
+    border-left: 1px solid $elements;
+    display: none;
+
+    @media (max-width: 780px) {
+      display: flex;
+    }
   }
 
   &__input {
@@ -60,6 +75,10 @@
     display: flex;
     align-items: center;
     margin: 0 65px 0 25px;
+
+    @media (max-width: 390px) {
+      margin: 0 10px 0 25px;
+    }
   }
 
   &__button {
@@ -67,6 +86,10 @@
     height: 64px;
     border: none;
     border-left: 1px solid $elements;
+
+    @media (max-width: 520px) {
+      display: none;
+    }
 
     &--is-active {
       border-bottom: 3px solid $primary;

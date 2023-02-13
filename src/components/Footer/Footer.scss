@@ -6,6 +6,10 @@
   border-right: 1px solid $elements;
   padding: 0 150px;
 
+  @media (max-width: 790px) {
+    padding: 0 30px;
+  }
+
   &__container {
     padding: 43px 0;
     display: flex;
@@ -27,6 +31,10 @@
 
   &__back-text {
     color: $secondary;
+
+    @media (max-width: 540px) {
+      display: none;
+    }
   }
 
   &__button {

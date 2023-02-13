@@ -16,6 +16,25 @@ export const Header: React.FC = () => {
   const location = useLocation();
   const currentPage = location.pathname.slice(1);
   const [showSearch, setShowSearch] = useState(false);
+  const [mobileNavVisible, setMobileNavVisible] = useState(false);
+
+  useEffect(() => {
+    setMobileNavVisible(false);
+  }, [location]);
+
+  const setBodyOverflow = () => {
+    if (mobileNavVisible) {
+      document.body.classList.add('with-menu');
+
+      return;
+    }
+
+    document.body.classList.remove('with-menu');
+  };
+
+  useEffect(() => {
+    setBodyOverflow();
+  }, [mobileNavVisible]);
 
   useEffect(() => {
     if (
@@ -125,6 +144,16 @@ export const Header: React.FC = () => {
               <img src="./assets/search.svg" alt="search" />
             </label>
           )}
+          <button
+            type="button"
+            className="button header__burger"
+            onClick={() => setMobileNavVisible(prev => !prev)}
+          >
+            <img
+              src="./assets/burger.svg"
+              alt="menu"
+            />
+          </button>
           <NavLink
             to="/favorites"
             className={({ isActive }) => classNames('button header__button', {
@@ -163,6 +192,82 @@ export const Header: React.FC = () => {
           </NavLink>
         </div>
       </div>
+
+      <nav
+        className={classNames('nav-mobile', {
+          'nav-mobile--visible': mobileNavVisible,
+        })}
+      >
+        <button
+          type="button"
+          className="button nav-mobile__close"
+          onClick={() => setMobileNavVisible(false)}
+        >
+          <img src="./assets/close.svg" alt="close" />
+        </button>
+        <ul className="nav-mobile__list">
+          <li className="nav-mobile__item">
+            <NavLink
+              to="/"
+              className={({ isActive }) => classNames('nav-mobile__link', {
+                'nav-mobile__link--selected': isActive,
+              })}
+            >
+              Home
+            </NavLink>
+          </li>
+          <li className="nav-mobile__item">
+            <NavLink
+              to="/phones"
+              className={({ isActive }) => classNames('nav-mobile__link', {
+                'nav-mobile__link--selected': isActive,
+              })}
+            >
+              Phones
+            </NavLink>
+          </li>
+          <li className="nav-mobile__item">
+            <NavLink
+              to="/tablets"
+              className={({ isActive }) => classNames('nav-mobile__link', {
+                'nav-mobile__link--selected': isActive,
+              })}
+            >
+              Tablets
+            </NavLink>
+          </li>
+          <li className="nav-mobile__item">
+            <NavLink
+              to="/accessories"
+              className={({ isActive }) => classNames('nav-mobile__link', {
+                'nav-mobile__link--selected': isActive,
+              })}
+            >
+              Accessories
+            </NavLink>
+          </li>
+          <li className="nav-mobile__item">
+            <NavLink
+              to="/favorites"
+              className={({ isActive }) => classNames('nav-mobile__link', {
+                'nav-mobile__link--selected': isActive,
+              })}
+            >
+              Favorites
+            </NavLink>
+          </li>
+          <li className="nav-mobile__item">
+            <NavLink
+              to="/cart"
+              className={({ isActive }) => classNames('nav-mobile__link', {
+                'nav-mobile__link--selected': isActive,
+              })}
+            >
+              Cart
+            </NavLink>
+          </li>
+        </ul>
+      </nav>
     </header>
   );
 };
