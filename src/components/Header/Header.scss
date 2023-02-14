@@ -1,0 +1,52 @@
+@import "../../colors";
+
+.header {
+  min-width: 1136px;
+  height: 64px;
+  position: sticky;
+  top: 0;
+  background-color: $color-white;
+  box-shadow: 0 1px 0 $color-elements-light-gray;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 24px;
+  z-index: 90;
+
+  &__left {
+    display: flex;
+    align-items: center;
+  }
+
+  &__right {
+    display: flex;
+    align-items: flex-end;
+  }
+
+  &__logo {
+    display: block;
+    margin-right: 64px;
+  }
+
+  &__navlink {
+    margin-right: 64px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+.cart-button {
+  height: 100%;
+  width: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: -1px 0 0 $color-elements-light-gray;
+  box-sizing: border-box;
+
+  &:hover {
+    z-index: 999;
+    border: 1px solid $color-primary-dark-gray;
+  }
+}

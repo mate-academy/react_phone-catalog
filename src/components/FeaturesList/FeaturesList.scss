@@ -1,0 +1,28 @@
+@import "../../colors";
+
+.features-list {
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 8px;
+
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+
+    &:last-child {
+      padding-bottom: 0;
+    }
+  }
+
+  &__param {
+    flex: 1;
+    color: $color-secondary-gray;
+  }
+
+  &__value {
+    flex: 1;
+    text-align: end;
+  }
+}

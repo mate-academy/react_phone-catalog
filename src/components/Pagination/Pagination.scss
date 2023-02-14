@@ -1,0 +1,43 @@
+@import "../../colors";
+
+.pagination {
+  display: flex;
+
+  & > * {
+    margin-right: 8px;
+  }
+
+  & > :first-child,
+  :nth-last-child(2) {
+    margin-right: 16px;
+  }
+
+  & > :last-child {
+    margin-right: 0;
+  }
+
+  &__button {
+    height: 32px;
+    width: 32px;
+    transition: all 0.3s !important;
+
+    &--page {
+      border: 1px solid $color-elements-light-gray !important;
+    }
+
+    &--active {
+      color: $color-white !important;
+      background-color: $color-primary-dark-gray !important;
+      cursor: unset;
+    }
+
+    &--prev {
+      margin-right: 16px;
+      background-image: url(../../icons/Chevron_Arrow_Left_Bold.png);
+    }
+
+    &--next {
+      background-image: url(../../icons/Chevron_Arrow_Right_Bold.png);
+    }
+  }
+}

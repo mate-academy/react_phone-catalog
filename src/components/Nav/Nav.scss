@@ -1,0 +1,44 @@
+@import "../../colors";
+
+.navbar {
+  height: 100%;
+  display: flex;
+  align-items: center;
+
+  &__navlink {
+    margin-right: 64px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+.navlink {
+  display: flex;
+  position: relative;
+  align-items: center;
+  height: 100%;
+  text-decoration: none;
+  color: $color-secondary-gray;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 11px;
+
+  &:hover {
+    color: $color-primary-dark-gray;
+  }
+
+  &--selected {
+    color: $color-primary-dark-gray;
+
+    &::after {
+      content: "";
+      width: 100%;
+      height: 3px;
+      background-color: $color-primary-dark-gray;
+      position: absolute;
+      bottom: 0;
+    }
+  }
+}

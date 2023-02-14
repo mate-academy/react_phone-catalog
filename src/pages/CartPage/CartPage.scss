@@ -1,0 +1,135 @@
+@import "../../colors";
+
+.cart-page {
+  padding: 40px 0;
+
+  &__back-button {
+    margin-bottom: 16px;
+  }
+
+  &__title {
+    margin-bottom: 24px;
+  }
+
+  &__cart-items {
+    grid-column: 1 / 17;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__checkout {
+    grid-column: 17 / -1;
+    box-sizing: border-box;
+    height: max-content;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid $color-elements-light-gray;
+  }
+
+  &__checkout-subtitle {
+    width: 100%;
+    padding-bottom: 24px;
+    text-align: center;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $color-secondary-gray;
+    border-bottom: 1px solid $color-elements-light-gray;
+  }
+
+  &__checkout-button {
+    height: 48px;
+    width: 100%;
+    margin-top: 24px;
+  }
+}
+
+.cart-item {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 16px;
+  padding: 31px 40px 31px 27px;
+  border: 1px solid $color-elements-light-gray;
+
+  &__content-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  &__remove-item {
+    width: 10px;
+    height: 10px;
+    margin: 0;
+    margin-right: 27px;
+    padding: 0;
+    border: none;
+    background-color: $color-white;
+    background-image: url(../../icons/Close.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &__product-preview {
+    box-sizing: border-box;
+    height: 80px;
+    width: 80px;
+    margin-right: 24px;
+    padding: 7px;
+    background-size: cover;
+    background-origin: content-box;
+    background-repeat: no-repeat;
+    cursor: pointer;
+  }
+
+  &__product-name {
+    width: 295px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $color-primary-dark-gray;
+    text-decoration: none;
+  }
+
+  &__quantity {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 96px;
+  }
+
+  &__quantity-button {
+    height: 32px;
+    width: 32px;
+
+    &--remove {
+      background-image: url(../../icons/Minus.png);
+    }
+
+    &--add {
+      background-image: url(../../icons/Plus.png);
+    }
+  }
+
+  &__price {
+    width: 104px;
+    text-align: end;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 140%;
+  }
+}

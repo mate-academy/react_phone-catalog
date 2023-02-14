@@ -1,0 +1,47 @@
+@import "../../colors";
+
+.products-slider {
+
+  &__header {
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    margin: 0;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    align-self: center;
+    grid-column: 1 / -5;
+  }
+
+  &__button {
+    height: 32px;
+    align-self: center;
+
+    &--prev {
+      grid-column: -3 / -2;
+      background-image: url(../../icons/Chevron_Arrow_Left_Bold.png);
+    }
+
+    &--next {
+      grid-column: -2 / -1;
+      background-image: url(../../icons/Chevron_Arrow_Right_Bold.png);
+    }
+  }
+
+  &__products-container {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  &__products {
+    display: flex;
+    width: max-content;
+  }
+
+  &__product-container {
+    margin-right: 16px;
+  }
+}
