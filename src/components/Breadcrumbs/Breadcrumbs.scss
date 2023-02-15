@@ -1,0 +1,33 @@
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 14px;
+  margin: 25px 0 40px;
+
+  &__link {
+    display: flex;
+  }
+
+  &__category {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: #89939a;
+
+    &--link {
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 15px;
+      color: #313237;
+      text-decoration: none;
+    }
+  }
+
+  &__activeProduct {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: #89939a;
+  }
+}

@@ -1,0 +1,81 @@
+.cart {
+  &__title {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: #313237;
+    margin-bottom: 24px;
+  }
+
+  &__main {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    list-style-type: none;
+    padding: 0;
+  }
+
+  &__totalAmount {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 368px;
+    height: 206px;
+    padding: 23px;
+    border: 1px solid #e2e6e9;
+  }
+
+  &__totalPrice {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: #313237;
+  }
+
+  &__totalItems {
+    display: flex;
+    justify-content: center;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #89939a;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #e2e6e9;
+    width: 100%;
+    margin-bottom: 23px;
+  }
+
+  &__totalButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #313237;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    color: white;
+    width: 100%;
+    height: 48px;
+    padding: 0;
+    cursor: pointer;
+    text-decoration: none;
+
+    &:hover {
+      box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+    }
+  }
+
+  &__empty {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 26px;
+    color: #313237;
+  }
+}

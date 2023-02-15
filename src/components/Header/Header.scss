@@ -1,0 +1,150 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+  box-shadow: 0 1px 0 #e2e6e9;
+  padding-left: 24px;
+
+  &__logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__list {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    padding-left: 64px;
+    gap: 64px;
+  }
+
+  &__icons {
+    display: flex;
+  }
+
+  &__icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 64px;
+    width: 64px;
+    box-shadow: -1px 0 0 #e2e6e9;
+    position: relative;
+
+    &--isActive {
+      &::after {
+        content: "";
+        height: 3px;
+        background-color: #313237;
+        width: 65px;
+        position: absolute;
+        top: 62px;
+        z-index: 1;
+        transform: translateX(-0.5px);
+      }
+    }
+  }
+
+  &__countCircle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 25px;
+    left: 39px;
+  }
+
+  &__circle {
+    position: absolute;
+  }
+
+  &__count {
+    position: absolute;
+    font-weight: 600;
+    font-size: 9px;
+    line-height: 12px;
+    color: white;
+  }
+
+  &__item {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 0.04em;
+    color: #89939a;
+    box-sizing: border-box;
+    position: relative;
+  }
+
+  &__search {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    box-shadow: -1px 0 0 #e2e6e9;
+    height: 64px;
+    width: 327px;
+    padding: 0 24px;
+
+    &:hover {
+      background: #fafbfc;
+    }
+
+    &:focus-within {
+      background: #fafbfc;
+    }
+  }
+
+  &__input {
+    padding: 0;
+    font-family: "Mont", sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 18px;
+    color: #313237;
+    outline: none;
+    border: none;
+
+    &:hover {
+      background: #fafbfc;
+    }
+
+    &:focus {
+      background: #fafbfc;
+    }
+
+    &::placeholder {
+      font-family: "Mont", sans-serif;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 18px;
+      color: #b4bdc4;
+    }
+  }
+
+  &__inputDelete {
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
+}
+
+.is-active {
+  color: #313237;
+
+  &::after {
+    content: "";
+    height: 3px;
+    background-color: black;
+    width: 100%;
+    margin-top: 24.5px;
+    display: block;
+    position: absolute;
+  }
+}

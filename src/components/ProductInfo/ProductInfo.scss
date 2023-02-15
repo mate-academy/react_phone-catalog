@@ -1,0 +1,196 @@
+.productInfo {
+  &__title {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: #313237;
+    margin-bottom: 40px;
+  }
+
+  &__main {
+    display: flex;
+    margin-bottom: 80px;
+  }
+
+  &__images {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-right: 16px;
+  }
+
+  &__smallImage {
+    height: 80px;
+    width: 80px;
+    padding: 0;
+    border: #e2e6e9 1px solid;
+    cursor: pointer;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    &--selected {
+      border-color: #313237;
+    }
+  }
+
+  &__bigImage {
+    height: 464px;
+    width: 464px;
+    margin-right: 64px;
+  }
+
+  &__colors {
+    display: none;
+  }
+
+  &__capacity {
+    display: none;
+  }
+
+  &__prices {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  &__price {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: #313237;
+  }
+
+  &__oldPrice {
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 28px;
+    text-decoration-line: line-through;
+    color: #89939a;
+  }
+
+  &__cartAndFav {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 32px;
+  }
+
+  &__cart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #313237;
+    font-family: "Mont", sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    color: white;
+    border: none;
+    height: 48px;
+    width: 263px;
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+    }
+
+    &--added {
+      background-color: white;
+      border: 1px solid #e2e6e9;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 21px;
+      text-align: center;
+      color: #27ae60;
+    }
+  }
+
+  &__favourites {
+    border: 1px solid #b4bdc4;
+    height: 48px;
+    width: 48px;
+    background-color: white;
+    cursor: pointer;
+
+    &:hover {
+      border: 1px solid #313237;
+    }
+
+    &--added {
+      border-color: #e2e6e9;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__characteristic {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: #89939a;
+
+    &--techSpecs {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 21px;
+    }
+  }
+
+  &__value {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: #313237;
+
+    &--techSpecs {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 21px;
+    }
+  }
+
+  &__aboutAndTechSpecs {
+    display: flex;
+    gap: 64px;
+  }
+
+  &__about {
+    width: 560px;
+  }
+
+  &__subTitle {
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 140%;
+    color: #313237;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #e2e6e9;
+    margin-bottom: 32px;
+
+    &--techSpecs {
+      margin-bottom: 25px;
+    }
+  }
+
+  &__text {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #89939a;
+  }
+
+  &__techSpecs {
+    width: 512px;
+  }
+}

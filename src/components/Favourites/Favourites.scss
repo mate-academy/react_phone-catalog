@@ -1,0 +1,27 @@
+.favourites {
+  &__title {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: #313237;
+    margin-bottom: 8px;
+  }
+
+  &__amount {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #89939a;
+    margin-bottom: 40px;
+  }
+
+  &__list {
+    display: flex;
+    row-gap: 40px;
+    column-gap: 16px;
+    flex-wrap: wrap;
+    list-style-type: none;
+    padding: 0;
+  }
+}

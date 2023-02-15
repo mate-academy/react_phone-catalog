@@ -1,0 +1,77 @@
+.cartItem {
+  display: flex;
+  align-items: center;
+  border: 1px solid #e2e6e9;
+  height: 128px;
+  width: 752px;
+  padding: 0 39px 0 23px;
+
+  &__delete {
+    border: none;
+    background-color: white;
+    padding: 0;
+    cursor: pointer;
+    background-image: url(./crossDisabled.svg);
+    width: 16px;
+    height: 16px;
+    margin-right: 31px;
+
+    &:hover {
+      background-image: url(./cross.svg);
+    }
+  }
+
+  &__image {
+    height: 66px;
+    width: 66px;
+    margin-right: 31px;
+  }
+
+  &__name {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #313237;
+    width: 295px;
+    margin-right: 49px;
+  }
+
+  &__amount {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 96px;
+    margin-right: 43px;
+  }
+
+  &__button {
+    border: 1px solid #b4bdc4;
+    height: 32px;
+    width: 32px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    &--disabled {
+      border: 1px solid #e2e6e9;
+      cursor: default;
+    }
+  }
+
+  &__count {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #000;
+  }
+
+  &__price {
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 140%;
+    color: #313237;
+    width: 61px;
+  }
+}
