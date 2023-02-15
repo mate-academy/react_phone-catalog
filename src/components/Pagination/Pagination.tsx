@@ -84,7 +84,7 @@ export const Pagination: React.FC<Props> = ({
   return (
     <div className="pagination">
       <button
-        className="pagination_button"
+        className="pagination_button pagination_extreme"
         type="button"
         onClick={() => {
           minus(currentPage);
@@ -167,7 +167,7 @@ export const Pagination: React.FC<Props> = ({
       )}
 
       <button
-        className="pagination_button"
+        className="pagination_button pagination_extreme"
         type="button"
         onClick={() => {
           plus(currentPage);

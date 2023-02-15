@@ -113,16 +113,23 @@ export const DeviceCatalog: React.FC = () => {
             key={device.id}
           />
         ))}
+        {Boolean(!correctItems.length) && (
+          <div className="DeviceCatalog_title DeviceCatalog_no-criteria">
+            There are no devices matching current filter criteria
+          </div>
+        )}
       </div>
 
-      <div className="DeviceCatalog_pagination">
-        <Pagination
-          total={correctList.length}
-          perPage={+countItems}
-          currentPage={currentPage}
-          onPageChange={setCurrentPage}
-        />
-      </div>
+      {Boolean(correctList.length) && (
+        <div className="DeviceCatalog_pagination">
+          <Pagination
+            total={correctList.length}
+            perPage={+countItems}
+            currentPage={currentPage}
+            onPageChange={setCurrentPage}
+          />
+        </div>
+      )}
     </div>
   );
 };

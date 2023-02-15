@@ -1,6 +1,10 @@
 .pagination {
   display: flex;
-  gap: 16px;
+  gap: 8px;
+
+  &_extreme {
+    margin: 0 20px;
+  }
 
   &_span {
     display: flex;

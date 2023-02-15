@@ -124,6 +124,12 @@ export const TabletCatalog: React.FC = () => {
         })}
       </div>
 
+      {Boolean(!correctItems.length) && (
+        <div className="DeviceCatalog_title DeviceCatalog_no-criteria">
+          There are no devices matching current filter criteria
+        </div>
+      )}
+
       <div className="TabletCatalog_pagination">
         {isShowPagination && (
           <Pagination
