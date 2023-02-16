@@ -11,7 +11,7 @@ export const BackButton: React.FC = () => {
       onClick={() => navigate(-1)}
       data-cy="backButton"
     >
-      <img src="../../img/arrowLeft.svg" alt="back" />
+      <img src="./img/arrowLeft.svg" alt="back" />
       Back
     </button>
   );

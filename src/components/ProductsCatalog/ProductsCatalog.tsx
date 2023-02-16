@@ -91,8 +91,8 @@ export const ProductsCatalog: React.FC<Props> = ({ products, category }) => {
             {sortBy === 'name' && 'Alphabetically'}
 
             {openSortMenu
-              ? <img src="../../img/arrowUpDisabled.svg" alt="arrowUp" />
-              : <img src="../../img/arrowDownDisabled.svg" alt="arrowDown" />}
+              ? <img src="./img/arrowUpDisabled.svg" alt="arrowUp" />
+              : <img src="./img/arrowDownDisabled.svg" alt="arrowDown" />}
           </button>
 
           {openSortMenu && (
@@ -162,8 +162,8 @@ export const ProductsCatalog: React.FC<Props> = ({ products, category }) => {
             {(itemsPerPage === 'all' ? 'All' : itemsPerPage) || 16}
 
             {openPerPageMenu
-              ? <img src="../../img/arrowUpDisabled.svg" alt="arrowUp" />
-              : <img src="../../img/arrowDownDisabled.svg" alt="arrowDown" />}
+              ? <img src="./img/arrowUpDisabled.svg" alt="arrowUp" />
+              : <img src="./img/arrowDownDisabled.svg" alt="arrowDown" />}
           </button>
 
           {openPerPageMenu && (

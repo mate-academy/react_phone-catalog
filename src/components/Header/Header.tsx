@@ -17,7 +17,7 @@ export const Header: React.FC = () => {
   return (
     <nav className="navbar">
       <Link to="/" className="navbar__logo">
-        <img src="../../img/logo.svg" alt="logo" className="logo" />
+        <img src="./img/logo.svg" alt="logo" className="logo" />
       </Link>
 
       {location.pathname !== '/cart' && (
@@ -52,14 +52,14 @@ export const Header: React.FC = () => {
                 ? (
                   <>
                     <img
-                      src="../../img/favourites.svg"
+                      src="./img/favourites.svg"
                       alt="favourites"
                       className="icon"
                     />
 
                     <div className="navbar__countCircle">
                       <img
-                        src="../../img/redCircle.svg"
+                        src="./img/redCircle.svg"
                         alt="count"
                         className="navbar__circle"
                       />
@@ -72,7 +72,7 @@ export const Header: React.FC = () => {
                 )
                 : (
                   <img
-                    src="../../img/favourites.svg"
+                    src="./img/favourites.svg"
                     alt="favourites"
                     className="icon"
                   />
@@ -92,14 +92,14 @@ export const Header: React.FC = () => {
             ? (
               <>
                 <img
-                  src="../../img/cart.svg"
+                  src="./img/cart.svg"
                   alt="cart"
                   className="icon"
                 />
 
                 <div className="navbar__countCircle">
                   <img
-                    src="../../img/redCircle.svg"
+                    src="./img/redCircle.svg"
                     alt="count"
                     className="navbar__circle"
                   />
@@ -112,7 +112,7 @@ export const Header: React.FC = () => {
             )
             : (
               <img
-                src="../../img/cart.svg"
+                src="./img/cart.svg"
                 alt="cart"
                 className="icon"
               />

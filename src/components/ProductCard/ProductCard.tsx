@@ -135,11 +135,11 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           {favourites.includes(product.id)
             ? (
               <img
-                src="../../img/addedToFavourites.svg"
+                src="./img/addedToFavourites.svg"
                 alt="addedToFavourites"
               />
             )
-            : <img src="../../img/favourites.svg" alt="addToFavourites" />}
+            : <img src="./img/favourites.svg" alt="addToFavourites" />}
         </button>
       </div>
     </div>

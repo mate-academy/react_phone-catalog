@@ -5,7 +5,7 @@ import { Error } from '../Error/Error';
 import { Footer } from '../Footer/Footer';
 import { Header } from '../Header/Header';
 import { Loader } from '../Loader';
-import { Breadcrumbs } from '../Breadcrumbs/BreadCrumbs';
+import { Breadcrumbs } from '../Breadcrumbs/Breadcrumbs';
 import { ProductsCatalog } from '../ProductsCatalog/ProductsCatalog';
 
 export const TabletsPage: React.FC = () => {

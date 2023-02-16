@@ -3,7 +3,7 @@ import { Product } from '../../types/Product';
 import { Favourites } from '../Favourites/Favourites';
 import { Footer } from '../Footer/Footer';
 import { Header } from '../Header/Header';
-import { Breadcrumbs } from '../Breadcrumbs/BreadCrumbs';
+import { Breadcrumbs } from '../Breadcrumbs/Breadcrumbs';
 import { Loader } from '../Loader';
 import { getProducts } from '../../api/products';
 import { Error } from '../Error/Error';

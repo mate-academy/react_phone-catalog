@@ -37,10 +37,10 @@ export const Pagination: React.FC<Props> = ({ pages }) => {
         data-cy="paginationLeft"
       >
         {page && page !== '1'
-          ? (<img src="../../img/arrowLeft.svg" alt="prevPage" />)
+          ? (<img src="./img/arrowLeft.svg" alt="prevPage" />)
           : (
             <img
-              src="../../img/arrowLeftDisabled.svg"
+              src="./img/arrowLeftDisabled.svg"
               alt="prevPageDisabled"
             />
           )}
@@ -183,10 +183,10 @@ export const Pagination: React.FC<Props> = ({ pages }) => {
         data-cy="paginationRight"
       >
         {!page || +page !== pages.length
-          ? (<img src="../../img/arrowRight.svg" alt="nextPage" />)
+          ? (<img src="./img/arrowRight.svg" alt="nextPage" />)
           : (
             <img
-              src="../../img/arrowRightDisabled.svg"
+              src="./img/arrowRightDisabled.svg"
               alt="nextPageDisabled"
             />
           )}

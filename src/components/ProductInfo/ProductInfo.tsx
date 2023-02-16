@@ -124,13 +124,13 @@ export const ProductInfo: React.FC<Props> = ({
               {favourites.includes(activeProduct.id)
                 ? (
                   <img
-                    src="../../img/addedToFavourites.svg"
+                    src="./img/addedToFavourites.svg"
                     alt="addedToFavourites"
                   />
                 )
                 : (
                   <img
-                    src="../../img/favourites.svg"
+                    src="./img/favourites.svg"
                     alt="addToFavourites"
                   />
                 )}

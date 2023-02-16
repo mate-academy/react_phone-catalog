@@ -46,13 +46,13 @@ export const CartItem: React.FC<Props> = ({
           {product.quantity > 1
             ? (
               <img
-                src="../../img/deleteItem.svg"
+                src="./img/deleteItem.svg"
                 alt="deleteItem"
               />
             )
             : (
               <img
-                src="../../img/deleteItemDisabled.svg"
+                src="./img/deleteItemDisabled.svg"
                 alt="deleteItemDisabled"
               />
             )}
@@ -65,7 +65,7 @@ export const CartItem: React.FC<Props> = ({
           type="button"
           className="cartItem__button"
         >
-          <img src="../../img/addItem.svg" alt="addItem" />
+          <img src="./img/addItem.svg" alt="addItem" />
         </button>
       </div>
 

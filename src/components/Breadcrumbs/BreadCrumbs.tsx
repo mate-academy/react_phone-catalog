@@ -15,11 +15,11 @@ export const Breadcrumbs: React.FC<Props> = ({ products }) => {
   return (
     <div className="breadcrumbs" data-cy="breadCrumbs">
       <Link to="/" className="breadcrumbs__link">
-        <img src="../../img/home.svg" alt="home" className="icon" />
+        <img src="./img/home.svg" alt="home" className="icon" />
       </Link>
 
       <img
-        src="../../img/arrowRightDisabled.svg"
+        src="./img/arrowRightDisabled.svg"
         alt="arrowLeft"
       />
 
@@ -59,7 +59,7 @@ export const Breadcrumbs: React.FC<Props> = ({ products }) => {
       {productId && (
         <>
           <img
-            src="../../img/arrowRightDisabled.svg"
+            src="./img/arrowRightDisabled.svg"
             alt="arrowLeft"
           />
 

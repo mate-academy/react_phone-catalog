@@ -8,7 +8,7 @@ export const Footer: React.FC = () => {
     <div className="footer">
       <div className="footer__content">
         <Link to="/" className="footer__logo">
-          <img src="../../img/logo.svg" alt="logo" className="logo" />
+          <img src="./img/logo.svg" alt="logo" className="logo" />
         </Link>
 
         <div className="footer__list">
@@ -38,7 +38,7 @@ export const Footer: React.FC = () => {
             className="footer__button"
             onClick={() => window.scrollTo(0, 0)}
           >
-            <img src="../../img/arrowUp.svg" alt="up" />
+            <img src="./img/arrowUp.svg" alt="up" />
           </button>
         </div>
       </div>

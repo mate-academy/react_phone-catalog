@@ -41,7 +41,7 @@ export const Slider: React.FC = () => {
           onClick={prevBanner}
         >
           <img
-            src="../../img/arrowLeft.svg"
+            src="./img/arrowLeft.svg"
             alt="prevImg"
             className="slider__arrow"
           />
@@ -51,7 +51,7 @@ export const Slider: React.FC = () => {
           className="slider__images"
         >
           <img
-            src="../../img/Banner1.png"
+            src="./img/Banner1.png"
             alt="banner1"
             className="slider__img"
             style={{
@@ -60,7 +60,7 @@ export const Slider: React.FC = () => {
           />
 
           <img
-            src="../../img/Banner2.jpg"
+            src="./img/Banner2.jpg"
             alt="banner2"
             className="slider__img"
             style={{
@@ -69,7 +69,7 @@ export const Slider: React.FC = () => {
           />
 
           <img
-            src="../../img/Banner3.png"
+            src="./img/Banner3.png"
             alt="banner3"
             className="slider__img"
             style={{
@@ -85,7 +85,7 @@ export const Slider: React.FC = () => {
           onClick={nextBanner}
         >
           <img
-            src="../../img/arrowRight.svg"
+            src="./img/arrowRight.svg"
             alt="nextImg"
             className="slider__arrow"
           />

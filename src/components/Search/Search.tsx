@@ -37,7 +37,7 @@ export const Search: React.FC<Props> = ({ query }) => {
             }}
           >
             <img
-              src="../../img/cross.svg"
+              src="./img/cross.svg"
               alt="cross"
               className="icon"
             />
@@ -45,7 +45,7 @@ export const Search: React.FC<Props> = ({ query }) => {
         )
         : (
           <img
-            src="../../img/search.svg"
+            src="./img/search.svg"
             alt="search"
             className="icon"
           />
