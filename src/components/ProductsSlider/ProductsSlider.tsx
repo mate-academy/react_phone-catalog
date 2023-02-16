@@ -38,11 +38,11 @@ export const ProductsSlider: React.FC<Props> = ({
           {sliderPosition === 0
             ? (
               <img
-                src="./img/ArrowLeftDisabled.svg"
+                src="./img/arrowLeftDisabled.svg"
                 alt="prevItemDisabled"
               />
             )
-            : <img src="./img/ArrowLeft.svg" alt="prevItem" />}
+            : <img src="./img/arrowLeft.svg" alt="prevItem" />}
         </button>
 
         <button
@@ -61,11 +61,11 @@ export const ProductsSlider: React.FC<Props> = ({
               === (itemsAmount * 288 - visibleItems)
             ? (
               <img
-                src="./img/ArrowRightDisabled.svg"
+                src="./img/arrowRightDisabled.svg"
                 alt="nextItemDisabled"
               />
             )
-            : <img src="./img/ArrowRight.svg" alt="nextItem" />}
+            : <img src="./img/arrowRight.svg" alt="nextItem" />}
         </button>
       </div>
     </div>
