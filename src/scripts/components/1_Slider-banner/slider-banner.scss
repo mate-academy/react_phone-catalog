@@ -1,0 +1,27 @@
+@import '../../../styles/main.scss';
+
+.slider-banner {
+  display: flex;
+  margin-top: 40px;
+  overflow: hidden;
+  height: 400px;
+  max-width: 1140px;
+
+  &__button {
+    height: 400px;
+  };
+
+  &__main {
+    @extend %image;
+    overflow: hidden;
+    height: 400px;
+    width: 1040px;
+    background-size: contain;
+  }
+
+  &__main-photos {
+    @extend %image;
+    background-size: contain;
+    max-width: 1040px;
+  }
+}

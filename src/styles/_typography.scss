@@ -1,0 +1,76 @@
+h1 {
+  @extend %h-base;
+
+  // @include onTablet {
+  //   size: 72px;
+  // }
+
+  // @include onDesktop {
+  //   size: 96px;
+  // }
+}
+
+h2 {
+  @extend %h-base;
+  size: 22px;
+  line-height: 31px;
+
+  // @include onTablet {
+  //   size: 62px;
+  // }
+
+  // @include onDesktop {
+  //   size: 80px;
+  // }
+}
+
+h3 {
+  @extend %h-base;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 26px;
+  color: $primary;
+
+  // @include onTablet {
+  //   size: 40px;
+  // }
+
+  // @include onDesktop {
+  //   size: 58px;
+  // }
+}
+
+button {
+  @extend %button-main;
+
+  &:hover {
+    @include hover(transition, 0.3);
+    cursor: pointer;
+  }
+
+  // &:active {
+
+  // }
+}
+
+p {
+  @extend %Body-text;
+}
+
+img {
+  @extend %image;
+}
+
+select {
+  @extend %button-white;
+
+  &:hover {
+    @include hover(transition, 0.3);
+    cursor: pointer;
+  }
+}
+
+a {
+  text-decoration: none;
+  @extend %link;
+}

@@ -1,0 +1,58 @@
+@import '../../../styles/main.scss';
+
+.category {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  // overflow: hidden;
+
+
+  &__container {
+    margin-top: 80px;
+    // display: flex;
+    // flex-wrap: wrap;
+    // align-items: center;
+    // margin: 0 auto;
+    // display: flex;
+    // align-items: center;
+    // justify-content: space-between;
+  }
+
+  &__section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  &__mobile {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__img-1 {
+    background-image: url("../../../images/total/Filter/Filter1.png");
+  }
+
+  &__img-2 {
+    background-image: url("../../../images/total/Filter/Filter2.png");
+  }
+
+  &__img-3 {
+    background-image: url("../../../images/total/Filter/Filter3.png");
+  }
+
+  &__models {
+    margin-top: 4px;
+    color: $secondary;
+  }
+}
+
+.img {
+  @extend %image;
+
+  min-width: 330px;
+  max-width: 368px;
+  // min-height: 250px;
+  height: 368px;
+  margin: 24px 0;
+}

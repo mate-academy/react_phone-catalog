@@ -1,0 +1,10 @@
+@import '../../../styles/main.scss';
+
+.layout {
+
+  &__container {
+    padding: 0 150px 80px;
+    overflow: hidden;
+    max-width: 100%;
+  }
+}

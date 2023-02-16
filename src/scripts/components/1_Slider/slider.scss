@@ -1,0 +1,44 @@
+@import '../../../styles/main.scss';
+
+
+.slider {
+  display: flex;
+  gap: 27px;
+  padding: 40px;
+
+  &__small-photo {
+    display: flex;
+    flex-direction: column;
+    gap: 17px;
+  }
+
+  &__small-wrap {
+    @extend %button-white;
+
+
+  }
+
+  &__small-img {
+    @extend %icon;
+    background-size: cover;
+    background-position: center;
+    width: 80px;
+    height: 80px;
+    margin: 8px;
+  }
+  &__main-photo {
+    padding: 11px;
+    width: 442px;
+    height: 442px;
+  }
+
+  &__main-img {
+    @extend %image;
+    background-size:cover;
+    background-position: center;
+  }
+}
+
+.activePhoto {
+  border: 1px solid $secondary;
+}
