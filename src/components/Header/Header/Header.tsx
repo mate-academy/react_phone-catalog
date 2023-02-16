@@ -3,12 +3,11 @@ import { useLocation } from 'react-router';
 import { NavLink } from 'react-router-dom';
 import { ChangeEvent, useContext, useState } from 'react';
 import { Logo } from '../../../common/Logo/Logo';
-import { CartAndFavContext } from '../../../context/CartAndFavContext';
 import { Product } from '../../../types/types';
 import {
   HeaderNavTextButtons,
 } from './HeaderNavTextButtons/HeaderNavTextButtons';
-import { Button } from '../../../common/Button/Button';
+import { CartAndFavContext } from '../../../context/CartAndFavContext';
 
 type Props = {
   setVisibleIPhones: any,
@@ -61,31 +60,24 @@ export const Header: React.FC<Props> = ({
             navLinksList={navLinksList}
           />
           <div>
-            {/* <NavLink
-          // to="/menu"
-          > */}
             <div
-              className="header__burger"
+              className="header__burger header-button"
               onClick={() => {
                 setIsBurgerVisible(!isBurgerVisible);
               }}
               aria-hidden
             >
+              <img
+                className="header-button__image burger__image "
+                src="icons/menu-burger.svg"
+                alt="burger"
+              />
 
-              <div className="">
-                <img
-                  className="header-button__image"
-                  src="icons/menu-burger.svg"
-                  alt="burger"
-                />
-
-              </div>
               <ul
                 className="header__burger-list"
                 style={{
-                  opacity: isBurgerVisible ? '0' : '1',
+                  opacity: isBurgerVisible ? '1' : '0',
                   visibility: isBurgerVisible ? 'visible' : 'hidden',
-                  // zIndex: isBurgerVisible ? '1' : '-10',
                   transition: 'opacity .3s',
                 }}
 
@@ -100,7 +92,8 @@ export const Header: React.FC<Props> = ({
                         <NavLink
                           to={item}
                           className={({ isActive }) => (
-                            isActive ? 'active__burger-link' : 'header__burger-link'
+                            isActive
+                              ? 'active__burger-link' : 'header__burger-link'
                           )}
                         >
                           {item}
@@ -109,20 +102,8 @@ export const Header: React.FC<Props> = ({
                     );
                   })
                 }
-
               </ul>
             </div>
-            {/* </NavLink> */}
-
-            {/* <img
-                alt="burger"
-                className="header__burger"
-                onClick={() => {
-                  setIsBurgerVisible(!isBurgerVisible);
-                }}
-                src="icons/menu-burger.svg"
-              /> */}
-
           </div>
         </div>
         <div className="header__buttons">

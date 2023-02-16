@@ -9,44 +9,18 @@
 	background-color: #fff;
 	margin-right: 8px;
 
-
 	&:hover {
 		border: 1px solid #313237;
 	}
 }
 
-// .number-buttons {
-// 	&:not(:last-child) {
-// 		background-color: rebeccapurple;
-// 	}
-// }
-
 .button-image {
 	height: 16px;
 	width: 16px;
-	// filter: invert(16%) sepia(14%) saturate(307%) hue-rotate(192deg) brightness(97%) contrast(90%);
-	// filter: invert(36%) sepia(87%) saturate(3621%) hue-rotate(154deg) brightness(97%) contrast(104%);
-
-	// &:disabled {
-	// 	background-color: rebeccapurple;
-	// 	filter: invert(87%) sepia(15%) saturate(151%) hue-rotate(164deg) brightness(87%) contrast(85%);
-	// }
-
-	// margin-left: 6px;
-
 }
-
-// .header-button {
-// 	height: 66px;
-// 	width: 64px;
-// 	border: 0.5px solid #E2E6E9;
-// 	box-sizing: border-box;
-// 	// margin-left: 6px;
-// }
 
 .header-svg {
 	margin-left: 6px;
-
 }
 
 .small {

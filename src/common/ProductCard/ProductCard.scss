@@ -1,12 +1,8 @@
 .product {
-	// background-color: red;
 	box-sizing: border-box;
-	// height: 507px;
 	width: 270px;
 	padding: 24px;
-	// background: #FFFFFF;	
 	border: 1px solid #E2E6E9;
-	margin-right: 15px;
 
 	&:hover {
 		box-shadow: 0px 3px 13px rgba(23, 32, 49, 0.26);
@@ -21,8 +17,6 @@
 	&__image {
 		height: 205px;
 		width: 205px;
-		// margin: 8px;
-		// margin-bottom: 24px;
 		object-fit: contain;
 	}
 
@@ -34,10 +28,9 @@
 
 	&__prices {
 		display: flex;
-		// margin: 8px 0;
 		border-bottom: 1px solid #E2E6E9;
 	}
-	
+
 	&__old-price {
 		margin: 0 8px 7px 0;
 		font-weight: 500;
@@ -45,7 +38,7 @@
 		text-decoration-line: line-through;
 		color: #89939A;
 	}
-	
+
 	&__price {
 		margin: 0 8px 7px 0;
 		color: #313237;
@@ -61,7 +54,7 @@
 		color: #89939A;
 		margin-bottom: 8px;
 	}
-	
+
 	&__value {
 		text-align: right;
 		margin-bottom: 8px;

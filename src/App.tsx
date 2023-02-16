@@ -27,7 +27,6 @@ import {
   './components/Pages/Categories/ProductPagePage/ProductCardList/ProductDetailsPage/ProductDetailsPage';
 import { NotFoundPage } from './components/NotFoundPage/NotFoundPage';
 import { Product } from './types/types';
-import { Menu } from './components/Pages/Menu/Menu';
 
 const App = () => {
   const [items, setItems] = useState([]);
@@ -224,15 +223,6 @@ const App = () => {
           )}
         />
         <Route
-          path="/menu"
-          element={(
-            <main>
-              <Menu />
-            </main>
-          )}
-        />
-
-        <Route
           path="/rights"
           element={(
             <main>
@@ -247,7 +237,6 @@ const App = () => {
             </main>
           )}
         />
-
         <Route
           path="/contacts"
           element={(
@@ -262,7 +251,6 @@ const App = () => {
         />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
-      {/* )} */}
       <footer>
         <Footer />
       </footer>

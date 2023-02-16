@@ -6,24 +6,22 @@
 	justify-content: space-between;
 
 
-  &__picture {
+	&__picture {
 		height: 80px;
 		width: 80px;
 		display: flex;
-    align-items: center;
-    justify-content: center
-	  // margin-left: 24px;	
+		align-items: center;
+		justify-content: center
 	}
 
-	&__image{
+	&__image {
 		height: 66px;
 		width: 66px;
 		object-fit: contain;
 	}
 
-	&__close{
+	&__close {
 		margin: 0 30px;
-		// color: #B4BDC4;
 	}
 
 	&__title {
@@ -40,7 +38,7 @@
 	&__count {
 		display: flex;
 	}
-	
+
 	&__price {
 		min-width: 62px;
 		margin-left: 43px;
@@ -48,7 +46,8 @@
 	}
 }
 
-.minus, .plus {
+.minus,
+.plus {
 	height: 32px;
 	width: 32px;
 }

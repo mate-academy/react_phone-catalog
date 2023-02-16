@@ -55,7 +55,6 @@ export const Footer = () => {
           </p>
           <Button
             className="arrow up small"
-            // onClick={moveLeft}
             image="icons/Chevron (Arrow Up).svg"
             alt="^"
           />

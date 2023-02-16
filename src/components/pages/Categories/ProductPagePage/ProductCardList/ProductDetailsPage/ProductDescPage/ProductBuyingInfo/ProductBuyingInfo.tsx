@@ -78,7 +78,6 @@ export const ProductBuyingInfo = ({ products, singleProduct }:any) => {
             image={isAddedToFav
               ? 'icons/Favourites Filled (Heart Like).svg'
               : 'icons/Favourites.svg'}
-            title="favourites"
             products={products}
           />
         </div>

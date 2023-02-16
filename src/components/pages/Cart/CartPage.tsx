@@ -3,13 +3,13 @@
 /* eslint-disable consistent-return */
 import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { CartAndFavContext } from '../../../context/CartAndFavContext';
 import { Button } from '../../../common/Button/Button';
 import './CartPage.scss';
 import { CartItem } from './CartItem/CartItem';
 import { LongButton } from '../../../common/LongButton/LongButton';
 import { Product } from '../../../types/types';
 import { NoProducts } from '../../../common/NoProducts/NoProducts';
+import { CartAndFavContext } from '../../../context/CartAndFavContext';
 
 export const CartPage = () => {
   const navigate = useNavigate();

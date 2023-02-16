@@ -1,10 +1,11 @@
-@media screen and (min-width: 0px) and (max-width: 569px) {
+@media screen and (min-width: 0px) and (max-width: 790px) {
 	#hidden {
 		display: none;
 	}
 
 	div.header__burger {
-		display: block;
+		display: flex;
+		margin-left: 24px;
 	}
 }
 
@@ -13,7 +14,6 @@
 		margin-left: 30px;
 	}
 }
-
 
 .header {
 	&__block {
@@ -65,11 +65,8 @@
 		}
 
 		&-link {
-
-			// transition: 0.3s;
 			&:hover {
 				color: #313237;
-				// min-width: 100%;
 				border-bottom: 3px solid #313237;
 				padding-bottom: 24px;
 			}
@@ -78,7 +75,6 @@
 
 	&__burger {
 		display: none;
-		// transition: 1s;
 
 		&-list {
 			right: 0;
@@ -108,12 +104,14 @@
 
 .active__burger-link {
 	color: #313237;
+}
 
+.burger__image {
+	margin: 0;
 }
 
 .active {
 	color: #313237;
-	// min-width: 100%;
 	border-bottom: 3px solid #313237;
 	padding-bottom: 24px;
 }
@@ -148,8 +146,6 @@ a {
 .cart-amount,
 .favourite-amount {
 	position: relative;
-	/*or absolute*/
-	// z-index:100000; /*a number that's more than the modal box*/
 	left: -6px;
 	font-size: 9px;
 	height: 14px;

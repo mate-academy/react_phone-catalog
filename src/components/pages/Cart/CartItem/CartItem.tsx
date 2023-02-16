@@ -1,8 +1,9 @@
 import { useContext, useEffect, useState } from 'react';
-import { CartAndFavContext } from '../../../../context/CartAndFavContext';
+// import { CartAndFavContext } from '../../../../context/CartAndFavContext';
 import { Button } from '../../../../common/Button/Button';
 import './CartItem.scss';
 import { Product } from '../../../../types/types';
+import { CartAndFavContext } from '../../../../context/CartAndFavContext';
 
 type Props = {
   product: Product,
@@ -13,7 +14,6 @@ export const CartItem:React.FC<Props> = ({ product }) => {
   const { cartProducts, setCartProducts } = useContext<any>(CartAndFavContext);
 
   const deleteProduct = async () => {
-    // const productsList = );
     await setCartProducts(cartProducts.filter(
       (p:Product) => p.id !== product.id,
     ));

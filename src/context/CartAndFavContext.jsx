@@ -2,10 +2,6 @@ import React, { useState } from 'react';
 
 export const CartAndFavContext = React.createContext(null);
 
-// type Props = {
-//   children: React.ReactNode;
-// };
-
 export const CartAndFavProvider = ({ children }) => {
   const [isAddedToCart, setIsAddedToCart] = useState(false);
   const [isAddedToFav, setIsAddedToFav] = useState(false);
@@ -16,8 +12,6 @@ export const CartAndFavProvider = ({ children }) => {
   const [cartProducts, setCartProducts] = useState(cart || []);
   const [favProducts, setFavProducts] = useState(fav || []);
   const [visibleFavProducts, setVisibleFavProducts] = useState(favProducts);
-
-  // const [visibleTodos, setVisibleTodos] = useState(todos);
 
   return (
     <CartAndFavContext.Provider value={{

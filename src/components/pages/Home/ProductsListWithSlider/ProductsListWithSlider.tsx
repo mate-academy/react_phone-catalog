@@ -19,8 +19,8 @@ export const ProductsListWithSlider: React.FC<Props> = (
   const [initialWidth, setInitialWidth] = useState<number>(285);
   const [containerWidth, setContainerWidth] = useState<number>(0);
   const [maxMargin, setMaxMargin] = useState<number>(0);
-  const ref = useRef<any>(null);
-  const containerRef = useRef<any>(null);
+  const ref = useRef<HTMLHeadingElement | any>(null);
+  const containerRef = useRef<HTMLHeadingElement | any>(null);
 
   const moveRight = () => {
     setMaxMargin(initialWidth
@@ -44,7 +44,9 @@ export const ProductsListWithSlider: React.FC<Props> = (
   };
 
   useEffect(() => {
-    setContainerWidth(containerRef.current.offsetWidth);
+    if (containerRef.current) {
+      setContainerWidth(containerRef.current.offsetWidth);
+    }
   }, []);
 
   return (
@@ -79,18 +81,19 @@ export const ProductsListWithSlider: React.FC<Props> = (
               className="product-list__slider-item"
               aria-hidden
             >
-              <ProductCard
-                product={p}
-                products={products}
-                link={pathname !== '/home'
-                  ? `../${p.id}`
-                  : `../${p.category}/${p.id}`}
-              />
+              <div className="product-list__slider-card">
+                <ProductCard
+                  product={p}
+                  products={products}
+                  link={pathname !== '/home'
+                    ? `../${p.id}`
+                    : `../${p.category}/${p.id}`}
+                />
+              </div>
             </li>
           );
         })}
       </ul>
-
     </div>
   );
 };

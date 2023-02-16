@@ -10,12 +10,12 @@ import { Product } from '../../../../../../types/types';
 import './ProductsCardPage.scss';
 
 type Props = {
-  products?: any,
-  visibleProducts?: any,
+  products?: Product[],
+  visibleProducts?: Product[],
   title: string,
+  searchInput: string,
   setVisibleProducts?: any,
   setProducts?: any,
-  searchInput: string,
 };
 
 export const ProductsCardPage: React.FC<Props>
@@ -27,12 +27,16 @@ export const ProductsCardPage: React.FC<Props>
     const [isProducts, setIsProducts] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsSort, setItemsSort] = useState('newest');
-    const productsAmount = searchInput ? 1 : products.length;
+    const productsAmount = !searchInput && products ? products.length : 1;
     const buttonsNumber = Math.ceil(productsAmount / itemsOnPage);
     const firstIndex = currentPage * itemsOnPage - itemsOnPage;
     const lastIndex = currentPage * itemsOnPage;
 
     const sortItemsBy = async (value: string) => {
+      if (!products) {
+        return;
+      }
+
       switch (value) {
         case 'newest':
           setProducts(products.sort((a: Product, b: Product) => {
@@ -62,9 +66,13 @@ export const ProductsCardPage: React.FC<Props>
     };
 
     useEffect(() => {
+      if (!products) {
+        return;
+      }
+
       if (products.length) {
         setVisibleProducts(products.filter((
-          _product: Product[], index: number,
+          _product: any, index: number,
         ) => {
           if (firstIndex > products.length) {
             setCurrentPage(Math.ceil(products.length / itemsOnPage));
@@ -77,6 +85,10 @@ export const ProductsCardPage: React.FC<Props>
       }
     }, [itemsOnPage, currentPage, itemsSort, isProducts]);
     useEffect(() => {
+      if (!visibleProducts) {
+        return;
+      }
+
       if (visibleProducts.length > 0) {
         setIsProducts(true);
         sortItemsBy(itemsSort);
@@ -89,9 +101,9 @@ export const ProductsCardPage: React.FC<Props>
         <div className="product-page__main">
           <div className="product-page__main-info">
             <h1 className="product-page__title">{title}</h1>
-            <p className="product-page__subtitle body14">{`${products.length} models`}</p>
+            <p className="product-page__subtitle body14">{`${products ? products.length : 0} models`}</p>
           </div>
-          {products.length
+          {products && products.length
             ? (
               <>
                 <div className="product-page__search">
@@ -148,7 +160,7 @@ export const ProductsCardPage: React.FC<Props>
                   </div>
                 </div>
                 <ul className="product-page__list">
-                  {visibleProducts.length
+                  {visibleProducts && visibleProducts.length
                     ? visibleProducts.map((product: Product) => {
                       return (
                         <li
@@ -164,7 +176,7 @@ export const ProductsCardPage: React.FC<Props>
                     : <NoProducts />}
                 </ul>
                 {
-                  !!visibleProducts.length
+                  visibleProducts && !!visibleProducts.length
             && (
               <PagesList
                 currentPage={currentPage}
