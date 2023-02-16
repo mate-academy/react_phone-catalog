@@ -6,6 +6,13 @@
 
 	&__list {
 		display: flex;
+		flex-wrap: wrap;
+		justify-content: center
+	}
+
+	&__item {
+		margin-right: 15px;
+		margin-bottom: 30px;
 
 	}
 
@@ -20,7 +27,6 @@
 			height: 370px;
 			width: 370px;
 			overflow: hidden;
-			margin-right: 16px;
 			margin-bottom: 24px;
 		}
 	}
@@ -28,4 +34,8 @@
 	&__models-number {
 		color: #89939A;
 	}
+}
+
+.category__item:last-child{
+	margin-right: 0;
 }

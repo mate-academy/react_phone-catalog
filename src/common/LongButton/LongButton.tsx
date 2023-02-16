@@ -10,9 +10,17 @@ import { DetailedProductContext } from '../../context/DetailedProductContext';
 import { Product } from '../../types/types';
 import './LongButton.scss';
 
-export const LongButton = ({
+type Props = {
+  text: string,
+  className?: string,
+  product?: any,
+  products?: Product[],
+  onClick?: any,
+};
+
+export const LongButton:React.FC<Props> = ({
   text, onClick, className, product, products,
-}: any) => {
+}) => {
   let singleProduct = product;
   const ref = useRef<any>(null);
   const {
@@ -24,7 +32,7 @@ export const LongButton = ({
   } = useContext<any>(CartAndFavContext);
 
   const addToCart = async (
-    event: any,
+    event: { preventDefault: () => void; },
   ) => {
     if (products) {
       singleProduct = products.find((one: Product) => {

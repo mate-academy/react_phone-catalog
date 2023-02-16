@@ -9,7 +9,10 @@ export const Footer = () => {
   return (
     <div className="footer">
       <Logo />
-      <ul className="footer__navigation-list">
+      <ul
+        className="footer__navigation-list"
+        id="footer__navigation-list"
+      >
         {
           navLinksList.map((link) => {
             return (

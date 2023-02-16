@@ -7,10 +7,21 @@ import { DetailedProductContext } from '../../context/DetailedProductContext';
 import { Product } from '../../types/types';
 import './Button.scss';
 
-export const Button = ({
+type Props = {
+  alt?: string,
+  className?: string | boolean,
+  image?: string,
+  num?: number,
+  onClick?: any,
+  imageClass?: string,
+  product?: any,
+  products?: Product[],
+};
+
+export const Button:React.FC<Props> = ({
   num, image, alt, className, onClick,
   imageClass, product, products,
-}: any) => {
+}) => {
   const {
     favProducts, setFavProducts,
     visibleFavProducts, setVisibleFavProducts,
@@ -60,7 +71,7 @@ export const Button = ({
 
   return (
     <button
-      onClick={!num && image.includes('Favourite')
+      onClick={!num && image && image.includes('Favourite')
         ? toggleFav
         : onClick}
       className={`button-link ${className}`}

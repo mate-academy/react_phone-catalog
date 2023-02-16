@@ -26,6 +26,8 @@ import {
 } from
   './components/Pages/Categories/ProductPagePage/ProductCardList/ProductDetailsPage/ProductDetailsPage';
 import { NotFoundPage } from './components/NotFoundPage/NotFoundPage';
+import { Product } from './types/types';
+import { Menu } from './components/Pages/Menu/Menu';
 
 const App = () => {
   const [items, setItems] = useState([]);
@@ -36,29 +38,17 @@ const App = () => {
   const [brandNewProducts, setBrandNewProducts] = useState(items);
   const [searchInput, setSearchInput] = useState('');
 
-  // const [isLoading, setLoading] = useState(true);
-
-  // oldPhones
-  // const getHotPriceProducts = () => {
-  //   setHotPriceProducts(items.filter((item: any) => item.discount > 0)
-  //     .sort((a: any, b: any) => b.discount - a.discount));
-  // };
-  // const getBrandNewProducts = () => {
-  //   setBrandNewProducts(items.filter((item: any) => item.discount === 0)
-  //     .sort((a: any, b: any) => a.price - b.price));
-  // };
-
   const getHotPriceProducts = () => {
     setHotPriceProducts(
-      IPhones.filter((item: any) => item.price < item.fullPrice)
-        .sort((a: any, b: any) => a.price - b.price),
+      IPhones.filter((item: Product) => item.price < item.fullPrice)
+        .sort((a: Product, b: Product) => a.price - b.price),
     );
   };
 
   const getBrandNewProducts = () => {
     setBrandNewProducts(
-      IPhones.filter((item: any) => item.price < item.fullPrice)
-        .sort((a: any, b: any) => b.price - a.price),
+      IPhones.filter((item: Product) => item.price < item.fullPrice)
+        .sort((a: Product, b: Product) => b.price - a.price),
     );
   };
 
@@ -88,7 +78,7 @@ const App = () => {
         setItems(result);
       }
     } catch (err) {
-      // console.error(err);
+      throw new Error('Error');
     }
   };
 
@@ -108,7 +98,7 @@ const App = () => {
         setVisibleIPhones(result);
       }
     } catch (err) {
-      // console.error(err);
+      throw new Error('Error');
     }
   };
 
@@ -157,7 +147,7 @@ const App = () => {
                   setProducts={setIPhones}
                   setVisibleProducts={setVisibleIPhones}
                   visibleProducts={visibleIPhones}
-                  title="Mobile phones"
+                  title="Phones"
                   searchInput={searchInput}
                 />
               </main>
@@ -230,6 +220,14 @@ const App = () => {
           element={(
             <main>
               <FavouritesPage />
+            </main>
+          )}
+        />
+        <Route
+          path="/menu"
+          element={(
+            <main>
+              <Menu />
             </main>
           )}
         />

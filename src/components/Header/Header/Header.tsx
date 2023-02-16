@@ -1,10 +1,14 @@
 import './Header.scss';
 import { useLocation } from 'react-router';
 import { NavLink } from 'react-router-dom';
-import { ChangeEvent, useContext } from 'react';
+import { ChangeEvent, useContext, useState } from 'react';
 import { Logo } from '../../../common/Logo/Logo';
 import { CartAndFavContext } from '../../../context/CartAndFavContext';
 import { Product } from '../../../types/types';
+import {
+  HeaderNavTextButtons,
+} from './HeaderNavTextButtons/HeaderNavTextButtons';
+import { Button } from '../../../common/Button/Button';
 
 type Props = {
   setVisibleIPhones: any,
@@ -13,24 +17,23 @@ type Props = {
   searchInput: string,
 };
 
-export const Header:React.FC<Props> = ({
+export const Header: React.FC<Props> = ({
   setVisibleIPhones,
   IPhones,
   setSearchInput,
   searchInput,
 }) => {
   const { pathname } = useLocation();
-  // const pathname = '/';
-  const navLinksList = ['home', 'phones', 'tablets', 'accessories'];
   const {
     cartProducts, favProducts, setVisibleFavProducts,
   } = useContext<any>(CartAndFavContext);
-  // const [visbleFavProducts, setVisbleFavProducts] = useState(favProducts)
+  const navLinksList = ['home', 'phones', 'tablets', 'accessories'];
+  const [isBurgerVisible, setIsBurgerVisible] = useState(false);
 
   const searchOnPage = (event: ChangeEvent<HTMLInputElement>) => {
     switch (pathname) {
       case '/phones':
-        setVisibleIPhones(IPhones.filter((one: any) => {
+        setVisibleIPhones(IPhones.filter((one: Product) => {
           return (
             one.name.toLowerCase().includes(
               event.target.value.toLowerCase(),
@@ -38,7 +41,7 @@ export const Header:React.FC<Props> = ({
         }));
         break;
       case '/favourites':
-        setVisibleFavProducts(favProducts.filter((one: any) => {
+        setVisibleFavProducts(favProducts.filter((one: Product) => {
           return (
             one.name.toLowerCase().includes(
               event.target.value.toLowerCase(),
@@ -54,30 +57,79 @@ export const Header:React.FC<Props> = ({
       <div className="header__block">
         <div className="header__navigation">
           <Logo />
-          <ul className="header__navigation-list">
-            {
-              navLinksList.map((item) => {
-                return (
-                  <li key={item} className="header__navigation-item">
-                    <NavLink
-                      to={item}
-                      className={({ isActive }) => (
-                        isActive ? 'active' : 'header__navigation-link'
-                      )}
-                    >
-                      {item}
-                    </NavLink>
-                  </li>
-                );
-              })
-            }
-          </ul>
+          <HeaderNavTextButtons
+            navLinksList={navLinksList}
+          />
+          <div>
+            {/* <NavLink
+          // to="/menu"
+          > */}
+            <div
+              className="header__burger"
+              onClick={() => {
+                setIsBurgerVisible(!isBurgerVisible);
+              }}
+              aria-hidden
+            >
+
+              <div className="">
+                <img
+                  className="header-button__image"
+                  src="icons/menu-burger.svg"
+                  alt="burger"
+                />
+
+              </div>
+              <ul
+                className="header__burger-list"
+                style={{
+                  opacity: isBurgerVisible ? '0' : '1',
+                  visibility: isBurgerVisible ? 'visible' : 'hidden',
+                  // zIndex: isBurgerVisible ? '1' : '-10',
+                  transition: 'opacity .3s',
+                }}
+
+              >
+                {
+                  navLinksList.map((item: string) => {
+                    return (
+                      <li
+                        key={item}
+                        className="header__burger-item"
+                      >
+                        <NavLink
+                          to={item}
+                          className={({ isActive }) => (
+                            isActive ? 'active__burger-link' : 'header__burger-link'
+                          )}
+                        >
+                          {item}
+                        </NavLink>
+                      </li>
+                    );
+                  })
+                }
+
+              </ul>
+            </div>
+            {/* </NavLink> */}
+
+            {/* <img
+                alt="burger"
+                className="header__burger"
+                onClick={() => {
+                  setIsBurgerVisible(!isBurgerVisible);
+                }}
+                src="icons/menu-burger.svg"
+              /> */}
+
+          </div>
         </div>
         <div className="header__buttons">
           {
             (pathname === '/favourites' || pathname === '/phones'
-            || pathname === '/tablets' || pathname === '/accessories') && (
-              <label className="products-search">
+              || pathname === '/tablets' || pathname === '/accessories') && (
+              <label className="products-search" id="hidden">
                 <input
                   type="text"
                   placeholder={`Search in ${pathname.slice(1)}...`}
@@ -105,7 +157,13 @@ export const Header:React.FC<Props> = ({
               />
               {
                 favProducts.length > 0
-              && <span className="favourite-amount">{favProducts.length}</span>
+                && (
+                  <span
+                    className="favourite-amount"
+                  >
+                    {favProducts.length}
+                  </span>
+                )
               }
             </div>
           </NavLink>
@@ -118,7 +176,7 @@ export const Header:React.FC<Props> = ({
               />
 
               {cartProducts.length > 0
-              && <span className="cart-amount">{cartProducts.length}</span>}
+                && <span className="cart-amount">{cartProducts.length}</span>}
             </div>
           </NavLink>
         </div>

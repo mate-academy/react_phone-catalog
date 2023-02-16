@@ -4,11 +4,7 @@ import {
 } from '../../../../../../../../context/DetailedProductContext';
 import './ProductPicturesBlock.scss';
 
-// type Props = {
-//   detailedProduct: any,
-// };
-
-export const ProductPicturesBlock:React.FC<any> = () => {
+export const ProductPicturesBlock:React.FC = () => {
   const [mainPicture, setMainPicture] = useState(0);
   const isSelected = (pictureNumber: number) => pictureNumber === mainPicture;
   const { detailedProduct } = useContext<any>(DetailedProductContext);
@@ -16,7 +12,7 @@ export const ProductPicturesBlock:React.FC<any> = () => {
   return (
     <div className="pictures-block">
       <ul className="pictures-block__list">
-        {detailedProduct.images.map((one: any, index: number) => {
+        {detailedProduct.images.map((one: string, index: number) => {
           return (
             <li
               key={one}

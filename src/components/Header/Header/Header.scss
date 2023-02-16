@@ -1,3 +1,20 @@
+@media screen and (min-width: 0px) and (max-width: 569px) {
+	#hidden {
+		display: none;
+	}
+
+	div.header__burger {
+		display: block;
+	}
+}
+
+@media screen and (min-width: 570px) and (max-width: 859px) {
+	#header__navigation-item {
+		margin-left: 30px;
+	}
+}
+
+
 .header {
 	&__block {
 		height: 64px;
@@ -14,12 +31,12 @@
 	&-button {
 		display: flex;
 		align-items: center;
-    justify-content: center;
+		justify-content: center;
 		height: 66px;
 		width: 64px;
 		border: 0.5px solid #E2E6E9;
 		box-sizing: border-box;
-		
+
 		&__image {
 			width: 15px;
 			height: 15px;
@@ -58,6 +75,39 @@
 			}
 		}
 	}
+
+	&__burger {
+		display: none;
+		// transition: 1s;
+
+		&-list {
+			right: 0;
+			margin: 0;
+			top: 0;
+			background-color: white;
+			position: fixed;
+			padding: 20px 40px 20px 20px;
+			padding-top: 20%;
+			height: 100%;
+			flex-direction: column;
+			z-index: 9999;
+		}
+
+		&-item {
+			padding: 20px;
+			text-transform: uppercase;
+			font-size: 150%;
+		}
+
+		&-link:hover {
+			color: #313237;
+
+		}
+	}
+}
+
+.active__burger-link {
+	color: #313237;
 
 }
 

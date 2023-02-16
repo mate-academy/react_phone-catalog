@@ -5,17 +5,22 @@ import { Colors, colorsHex } from '../../../../../../../../../colorDictinary';
 import {
   DetailedProductContext,
 } from '../../../../../../../../../context/DetailedProductContext';
+import { Product } from '../../../../../../../../../types/types';
 
-export const ProductAvaliableColors = ({
+type Props = {
+  products: Product,
+};
+
+export const ProductAvaliableColors:React.FC<Props> = ({
   products,
-} : any) => {
+}) => {
   const {
     detailedProduct, setDetailedProduct,
   } = useContext<any>(DetailedProductContext);
 
   const isActive = (color: string) => color === detailedProduct.color;
   const searchProductByColor = async (color: string) => {
-    const newProduct = products.find((one: any) => {
+    const newProduct = products.find((one: Product) => {
       return one.phoneId
       === detailedProduct.id.replace(detailedProduct.color, color);
     });

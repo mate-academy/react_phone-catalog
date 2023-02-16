@@ -5,6 +5,7 @@ import {
 import { NoProducts } from '../../../../../../common/NoProducts/NoProducts';
 import { PagesList } from '../../../../../../common/PagesList/PagesList';
 import { ProductCard } from '../../../../../../common/ProductCard/ProductCard';
+import { Product } from '../../../../../../types/types';
 
 import './ProductsCardPage.scss';
 
@@ -14,7 +15,7 @@ type Props = {
   title: string,
   setVisibleProducts?: any,
   setProducts?: any,
-  searchInput: any,
+  searchInput: string,
 };
 
 export const ProductsCardPage: React.FC<Props>
@@ -31,24 +32,24 @@ export const ProductsCardPage: React.FC<Props>
     const firstIndex = currentPage * itemsOnPage - itemsOnPage;
     const lastIndex = currentPage * itemsOnPage;
 
-    const sortItemsBy = async (value: any) => {
+    const sortItemsBy = async (value: string) => {
       switch (value) {
         case 'newest':
-          setProducts(products.sort((a: any, b: any) => {
+          setProducts(products.sort((a: Product, b: Product) => {
             return b.year - a.year;
           }));
           setItemsSort(value);
 
           return;
         case 'alphabetically':
-          setProducts(products.sort((a: any, b: any) => {
+          setProducts(products.sort((a: Product, b: Product) => {
             return a.name.localeCompare(b.name, 'en', { numeric: true });
           }));
           setItemsSort(value);
 
           return;
         case 'cheapest':
-          setProducts(products.sort((a: any, b: any) => {
+          setProducts(products.sort((a: Product, b: Product) => {
             return a.price - b.price;
           }));
           setItemsSort(value);
@@ -63,7 +64,7 @@ export const ProductsCardPage: React.FC<Props>
     useEffect(() => {
       if (products.length) {
         setVisibleProducts(products.filter((
-          _product: any, index: any,
+          _product: Product[], index: number,
         ) => {
           if (firstIndex > products.length) {
             setCurrentPage(Math.ceil(products.length / itemsOnPage));
@@ -148,7 +149,7 @@ export const ProductsCardPage: React.FC<Props>
                 </div>
                 <ul className="product-page__list">
                   {visibleProducts.length
-                    ? visibleProducts.map((product: any) => {
+                    ? visibleProducts.map((product: Product) => {
                       return (
                         <li
                           className="product-page__item"

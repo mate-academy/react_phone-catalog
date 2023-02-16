@@ -9,12 +9,11 @@ import { Product } from '../../../types/types';
 import './FavouritesPage.scss';
 
 export const FavouritesPage = () => {
-  // const favProducts = JSON.parse(localStorage.getItem('favProducts'));
   const { visibleFavProducts } = useContext<any>(CartAndFavContext);
 
   return (
     <div className="favourites">
-      <NavigationButtons />
+      <NavigationButtons title="favourites" />
       <h1 className="favourites__title">Favourites</h1>
       <ul className="favourites__list">
         { visibleFavProducts.length

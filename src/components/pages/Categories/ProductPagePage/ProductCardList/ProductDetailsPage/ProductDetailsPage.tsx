@@ -20,12 +20,10 @@ export const ProductDetailsPage: React.FC<any> = (
     setDetailedProduct,
   } = useContext<any>(DetailedProductContext);
   const [product, setProduct] = useState();
-  let category = '';
+  const [category, setCategory] = useState('');
 
   const getProduct = async () => {
-    const singleProduct = products.find((one: any) => {
-      return (one.id === id);
-    });
+    const singleProduct = products.find((one: any) => one.id === id);
 
     const response = await fetch(
       `/new/products/${singleProduct.itemId}.json`,
@@ -37,10 +35,10 @@ export const ProductDetailsPage: React.FC<any> = (
     if (response.status === 200) {
       const result = await response.json();
 
+      setCategory(singleProduct.category);
+
       return setDetailedProduct(result);
     }
-
-    category = singleProduct.category;
 
     return setProduct(singleProduct);
   };
@@ -58,7 +56,7 @@ export const ProductDetailsPage: React.FC<any> = (
         <Button
           className="no-border"
           image="icons/Chevron (Arrow Left).svg"
-          alt="<"
+          alt="arrow-left"
           onClick={() => {
             navigate(-1);
           }}

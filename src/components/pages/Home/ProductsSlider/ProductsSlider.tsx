@@ -35,13 +35,13 @@ export const ProductsSlider = () => {
   }, []);
 
   return (
-    <div>
+    <div id="slider-main">
       <div className="slider">
         <Button
           className="arrow left long"
           onClick={moveLeft}
           image="icons/Chevron (Arrow Left).svg"
-          alt="<"
+          alt="arrow-left"
         />
         <ul
           style={{
@@ -60,7 +60,6 @@ export const ProductsSlider = () => {
                     transition: 'transform .3s',
                   }}
                 />
-
               </li>
             );
           })}
@@ -70,7 +69,7 @@ export const ProductsSlider = () => {
           className="arrow right long"
           onClick={moveRight}
           image="icons/Chevron (Arrow Right).svg"
-          alt=">"
+          alt="arrow-right"
         />
       </div>
 

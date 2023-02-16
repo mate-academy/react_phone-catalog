@@ -5,12 +5,12 @@ import './PagesList.scss';
 export const PagesList: React.FC<any> = ({
   setCurrentPage, currentPage, buttonsNumber,
 }) => {
-  const [initialWidth, setInitialWidth] = useState<any>(0);
+  const [initialWidth, setInitialWidth] = useState<number>(0);
   const ref = useRef<any>(null);
   const [width, setWidth] = useState(0);
   const [divWidth, setDivWidth] = useState(0);
 
-  const maxMargin = initialWidth * (buttonsNumber - 6);
+  const maxMargin = initialWidth * (buttonsNumber - 5);
   const moveRight = () => {
     if (width <= maxMargin) {
       setWidth(currentPage * ref.current.offsetWidth);
@@ -23,12 +23,30 @@ export const PagesList: React.FC<any> = ({
     }
   };
 
-  const isSelected = (one: any) => {
+  const isSelected = (one: number) => {
     return currentPage === one;
   };
 
+  const pagesToLeft = () => {
+    if (currentPage <= 1) {
+      return;
+    }
+
+    setCurrentPage((prev: number) => prev - 1);
+    moveLeft();
+  };
+
+  const pagesToRight = () => {
+    if (currentPage >= buttonsNumber) {
+      return;
+    }
+
+    setCurrentPage((prev: number) => prev + 1);
+    moveRight();
+  };
+
   useEffect(() => {
-    setDivWidth(ref.current.offsetWidth * 5);
+    setDivWidth(ref.current.offsetWidth * 4);
     setInitialWidth(ref.current.offsetWidth);
   }, []);
 
@@ -39,15 +57,8 @@ export const PagesList: React.FC<any> = ({
       <Button
         className="arrow left small"
         image="icons/Chevron (Arrow Left).svg"
-        alt="<"
-        onClick={() => {
-          if (currentPage <= 1) {
-            return;
-          }
-
-          setCurrentPage((prev: number) => prev - 1);
-          moveLeft();
-        }}
+        alt="arrow-left"
+        onClick={pagesToLeft}
       />
       <div
         className="product-page__buttons"
@@ -58,7 +69,7 @@ export const PagesList: React.FC<any> = ({
           className="product-page__buttons-list"
         >
           {
-            [...Array(buttonsNumber)].map((one, index) => {
+            [...Array(buttonsNumber)].map((one, index: number) => {
               return (
                 <li
                   ref={ref}
@@ -71,12 +82,10 @@ export const PagesList: React.FC<any> = ({
                       setCurrentPage(index + 1);
                     }}
                     num={index + 1}
-                    alt={index + 1}
-
+                    alt={String(index + 1)}
                   />
                 </li>
               );
-              // }
             })
           }
         </ul>
@@ -84,15 +93,8 @@ export const PagesList: React.FC<any> = ({
       <Button
         className="arrow right small"
         image="icons/Chevron (Arrow Right).svg"
-        onClick={() => {
-          if (currentPage >= buttonsNumber) {
-            return;
-          }
-
-          setCurrentPage((prev: number) => prev + 1);
-          moveRight();
-        }}
-        alt=">"
+        onClick={pagesToRight}
+        alt="arrow-right"
       />
     </div>
   );

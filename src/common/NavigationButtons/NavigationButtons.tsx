@@ -19,7 +19,6 @@ export const NavigationButtons:React.FC<Props> = ({ id = '0', title }) => {
         <Button
           image="icons/Home.svg"
           alt="home"
-          link="/home"
           className="no-border"
         />
       </NavLink>
@@ -27,9 +26,9 @@ export const NavigationButtons:React.FC<Props> = ({ id = '0', title }) => {
         <img
           className="button-image"
           src="icons/Chevron (Arrow Right).svg"
-          alt=">"
+          alt="arrow-right"
         />
-        <a href={`/${title}`} className="sub-link">{title}</a>
+        <a href={`#/${title}`} className="sub-link">{title}</a>
       </div>
       {
         detailedProduct && pathname.includes(id) && (
@@ -37,7 +36,7 @@ export const NavigationButtons:React.FC<Props> = ({ id = '0', title }) => {
             <img
               className="button-image"
               src="icons/Chevron (Arrow Right).svg"
-              alt=">"
+              alt="arrow-right"
             />
             <Link to={`/phones/${id}`} className="sub-link">{detailedProduct.name}</Link>
           </div>

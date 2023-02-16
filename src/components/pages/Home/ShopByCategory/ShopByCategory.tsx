@@ -42,11 +42,11 @@ export const ShopByCategory:React.FC<Props> = ({ phones }) => {
               title, amount, image, background, category,
             }) => {
               return (
+                <li className="category__item">
                 <Link
                   to={`../${category}`}
                   key={title}
                 >
-                  <li className="category__item">
                     <div className="category__image-block">
                       <img
                         className="category__image"
@@ -63,8 +63,8 @@ export const ShopByCategory:React.FC<Props> = ({ phones }) => {
                         {`${amount} models`}
                       </div>
                     </div>
-                  </li>
                 </Link>
+                  </li>
               );
             })
           }

@@ -31,7 +31,7 @@ export const ProductCard: React.FC<Props> = ({
   } = useContext<any>(CartAndFavContext);
 
   useEffect(() => {
-    cartProducts.map((one: any) => {
+    cartProducts.map((one: Product) => {
       if (one.id === product.id) {
         setIsAddedToCart(true);
       }
@@ -41,7 +41,7 @@ export const ProductCard: React.FC<Props> = ({
   useEffect(() => {
     setIsAddedToFav(false);
 
-    favProducts.map((one: any) => {
+    favProducts.map((one: Product) => {
       if (one.id === product.id) {
         setIsAddedToFav(true);
       }
@@ -52,7 +52,6 @@ export const ProductCard: React.FC<Props> = ({
     <>
       <div className="product">
         <Link
-          // to={`/`}
           to={link || `/${product.category}/${product.id}`}
           onClick={async () => {
             if (!products) {
@@ -60,7 +59,7 @@ export const ProductCard: React.FC<Props> = ({
             }
 
             const newProduct = products.find(
-              (one: any) => one.id === product.id,
+              (one: Product) => one.id === product.id,
             );
 
             if (newProduct) {
@@ -85,11 +84,11 @@ export const ProductCard: React.FC<Props> = ({
               }
             }
           }}
+          className="product__link"
         >
           <img
             className="product__image"
             src={`new/${image}`}
-            // || productImg || `new/${image}`}
             alt={name}
           />
           <h3 className="product__title body14">{name}</h3>
@@ -119,18 +118,14 @@ export const ProductCard: React.FC<Props> = ({
         <div className="product__buttons">
           <LongButton
             text={isAddedToCart ? 'Added to cart' : 'Add to cart'}
-            // onClick={addToCart}
-            className={isAddedToCart && 'selected'}
+            className={isAddedToCart ? 'selected' : ''}
             product={product}
           />
           <Button
             image={isAddedToFav
               ? 'icons/Favourites Filled (Heart Like).svg'
               : 'icons/Favourites.svg'}
-            title="favourites"
-            // onClick={toggleFav}
             product={product}
-
           />
         </div>
 

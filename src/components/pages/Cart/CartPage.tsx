@@ -40,7 +40,7 @@ export const CartPage = () => {
         <Button
           className="no-border"
           image="icons/Chevron (Arrow Left).svg"
-          alt="<"
+          alt="arrow-left"
           onClick={() => {
             navigate(-1);
           }}
@@ -56,7 +56,7 @@ export const CartPage = () => {
         <div className="cart-page__products">
           {cartProducts.length ? (
             <ul className="cart-page__list">
-              {cartProducts.map((product: any) => {
+              {cartProducts.map((product: Product) => {
                 return (
                   <li className="cart-page__item" key={product.id}>
                     <CartItem

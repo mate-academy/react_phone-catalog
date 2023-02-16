@@ -53,7 +53,7 @@ export const ProductCapacity:React.FC<Props> = (
       </div>
       <ul className="capacity__list">
         {
-          detailedProduct.capacityAvailable.map((one: any) => {
+          detailedProduct.capacityAvailable.map((one: string) => {
             return (
               <li
                 className={`capacity__item ${isActive(one) && 'active-button'}`}
