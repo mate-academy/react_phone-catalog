@@ -16,21 +16,21 @@ export const ProductsListWithSlider: React.FC<Props> = (
 ) => {
   const { pathname } = useLocation();
   const [width, setWidth] = useState(0);
-  const [initialWidth, setInitialWidth] = useState<number>(285);
   const [containerWidth, setContainerWidth] = useState<number>(0);
   const [maxMargin, setMaxMargin] = useState<number>(0);
+  const [toggled, setToggled] = useState<boolean>(false);
   const ref = useRef<HTMLHeadingElement | any>(null);
   const containerRef = useRef<HTMLHeadingElement | any>(null);
+  
 
   const moveRight = () => {
-    setMaxMargin(initialWidth
-      * (products.length - 1 - (containerWidth / initialWidth)));
-    if (ref.current && ref) {
-      setInitialWidth(ref.current.offsetWidth);
-      if (width <= maxMargin) {
-        setWidth(width + ref.current.offsetWidth);
-      }
+    setToggled(!toggled)
+    console.log(ref.current.offsetWidth, width, maxMargin, Math.ceil(containerWidth / ref.current.offsetWidth))
+    if (width > maxMargin){
+      return;
     }
+    setWidth(width + ref.current.offsetWidth)
+    setMaxMargin(ref.current.offsetWidth * (products.length - 1 - Math.ceil(containerWidth / ref.current.offsetWidth)))
   };
 
   const moveLeft = () => {
@@ -44,13 +44,13 @@ export const ProductsListWithSlider: React.FC<Props> = (
   };
 
   useEffect(() => {
-    if (containerRef.current) {
-      setContainerWidth(containerRef.current.offsetWidth);
-    }
-  }, []);
+    setContainerWidth(containerRef.current.offsetWidth);
+  }, [width]);
 
   return (
-    <div className="products-list-with-slider__block">
+    <div className="products-list-with-slider__block"
+      ref={containerRef}
+    >
       <div className="products-list-with-slider__header">
         <h1 className="block__title">{title}</h1>
         <div className="slider-buttons">
@@ -71,7 +71,6 @@ export const ProductsListWithSlider: React.FC<Props> = (
       <ul
         className="product-list"
         style={{ marginLeft: `${-width}px`, transition: 'margin-left .5s' }}
-        ref={containerRef}
       >
         {products.map((p: Product) => {
           return (

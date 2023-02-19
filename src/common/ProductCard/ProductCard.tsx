@@ -2,7 +2,6 @@
 import { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { CartAndFavContext } from '../../context/CartAndFavContext';
-// import { CartAndFavContext } from '../../context/CartAndFavContext';
 import { DetailedProductContext } from '../../context/DetailedProductContext';
 import { Product } from '../../types/types';
 import { Button } from '../Button/Button';
