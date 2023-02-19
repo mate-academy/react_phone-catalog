@@ -25,7 +25,6 @@ export const ProductsListWithSlider: React.FC<Props> = (
 
   const moveRight = () => {
     setToggled(!toggled)
-    console.log(ref.current.offsetWidth, width, maxMargin, Math.ceil(containerWidth / ref.current.offsetWidth))
     if (width > maxMargin){
       return;
     }
