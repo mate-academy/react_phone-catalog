@@ -72,7 +72,6 @@ export const ProductCard: React.FC<Props> = ({
 
               if (response.status === 200) {
                 const result = await response.json();
-                // window.history.replaceState(null, '', `/${newProduct.category}/${newProduct.id}`);
 
                 window.scroll({
                   top: 0,

@@ -1,5 +1,4 @@
 import { useContext, useEffect, useState } from 'react';
-// import { CartAndFavContext } from '../../../../context/CartAndFavContext';
 import { Button } from '../../../../common/Button/Button';
 import './CartItem.scss';
 import { Product } from '../../../../types/types';

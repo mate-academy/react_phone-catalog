@@ -64,7 +64,6 @@ const App = () => {
   const getItems = async () => {
     try {
       const response = await fetch(
-        // 'https://mate-academy.github.io/react_phone-catalog/api/products.json',
         '../api/products.json',
         {
           method: 'GET',
