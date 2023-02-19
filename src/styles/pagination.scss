@@ -1,0 +1,33 @@
+@import "./vars.scss";
+
+.pagination {
+  padding-top: 40px;
+  text-align: center;
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+
+  &__button {
+    padding: 7px 15px;
+    cursor: pointer;
+    border: 1px solid $lightGray;
+    background-color: #fff;
+    color: $black;
+    transition: border-color 0.3s;
+
+    &:disabled {
+      border-color: $silver;
+      color: $silver;
+    }
+
+    &:hover:not(&--active):not(:disabled) {
+      border-color: $black;
+    }
+
+    &--active {
+      border-color: $black;
+      background-color: $black;
+      color: #fff;
+    }
+  }
+}

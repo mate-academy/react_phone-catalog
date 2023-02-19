@@ -1,0 +1,12 @@
+.logo {
+  cursor: pointer;
+  transition: transform 0.5s;
+
+  &:hover {
+    transform: scale(1.25);
+  }
+
+  &:hover svg path {
+    fill: #000;
+  }
+}

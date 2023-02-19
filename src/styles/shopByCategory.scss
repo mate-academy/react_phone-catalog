@@ -1,0 +1,85 @@
+@import "./vars.scss";
+
+.category {
+  padding-bottom: 40px;
+
+  &__title {
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 41px;
+    color: $black;
+    padding-bottom: 24px;
+  }
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 17px;
+
+    @media (max-width: 1024px) {
+      flex-direction: column;
+    }
+  }
+
+  &__item {
+    position: relative;
+  }
+
+  &__item-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5em;
+    background-color: rgba(0, 0, 0, 0.9);
+    opacity: 0;
+    transition: opacity 0.3s;
+
+  }
+
+  &__item-image {
+    display: block;
+    width: 368px;
+    height: 368px;
+    margin-bottom: 24px;
+    background-repeat: no-repeat;
+    background-position: 100% 100%;
+
+    &--phones {
+      background-color: #fcdbc1;
+      background-image: url(./categoryImg/phones.png);
+    }
+
+    &--tablets {
+      background-color: #8d8d92;
+      background-image: url(./categoryImg/tablets.png);
+    }
+
+    &--accessories {
+      background-color: #973d5f;
+      background-image: url(./categoryImg/accessories.png);
+    }
+
+  }
+
+  &__item-title {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 26px;
+    color: $black;
+    padding-bottom: 4px;
+  }
+
+  &__item-count {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $gray;
+  }
+}

@@ -1,0 +1,14 @@
+.breadcrumbs {
+  padding: 25px 0;
+  word-spacing: 3px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 15px;
+  color: #89939a;
+  cursor: default;
+
+  &__link {
+    color: #313237;
+    letter-spacing: 3px;
+  }
+}
