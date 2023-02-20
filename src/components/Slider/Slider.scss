@@ -1,0 +1,60 @@
+.slider {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 82px;
+
+  &__banner {
+    display: flex;
+    justify-content: flex-start;
+    gap: 16px;
+    margin-bottom: 18px;
+  }
+
+  &__images {
+    display: flex;
+    width: 1040px;
+    height: 400px;
+    overflow: hidden;
+  }
+
+  &__img {
+    min-width: 1040px;
+    object-fit: cover;
+    object-position: top;
+    transition: all 0.5s ease;
+  }
+
+  &__button {
+    background-color: white;
+    border: 1px solid #b4bdc4;
+    height: 400px;
+    width: 32px;
+    cursor: pointer;
+
+    &:hover {
+      border: 1px solid #313237;
+    }
+  }
+
+  &__arrow {
+    height: 10px;
+    width: 6px;
+  }
+
+  &__position {
+    display: flex;
+    gap: 14px;
+  }
+
+  &__rectangle {
+    width: 14px;
+    height: 4px;
+    background: #e2e6e9;
+
+    &--isActive {
+      background: #313237;
+    }
+  }
+}

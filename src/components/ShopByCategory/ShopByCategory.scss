@@ -1,0 +1,57 @@
+.shopByCategory {
+  margin-bottom: 80px;
+
+  &__title {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: #313237;
+    margin-bottom: 24px;
+  }
+
+  &__items {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__image {
+    display: flex;
+    height: 368px;
+    width: 368px;
+    object-fit: contain;
+    object-position: right;
+    margin-bottom: 24px;
+
+    &--mobiles {
+      background-color: #fcdbc1;
+    }
+
+    &--tablets {
+      background: #8d8d92;
+    }
+
+    &--accessories {
+      background: #973d5f;
+    }
+  }
+
+  &__subTitle {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 26px;
+    color: #313237;
+    margin-bottom: 4px;
+  }
+
+  &__link {
+    text-decoration: none;
+  }
+
+  &__itemAmount {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #89939a;
+  }
+}

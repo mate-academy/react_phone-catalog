@@ -1,0 +1,133 @@
+.productCard {
+  display: flex;
+  flex-direction: column;
+  height: 507px;
+  width: 272px;
+  border: 1px solid #e2e6e9;
+  padding: 31px 23px 23px;
+  text-decoration: none;
+
+  &__imageLink {
+    display: flex;
+    justify-content: center;
+    height: 208px;
+    margin-bottom: 24px;
+  }
+
+  &__image {
+    height: 208px;
+    width: 208px;
+  }
+
+  &__title {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #313237;
+    margin-bottom: 6.5px;
+    height: 42px;
+    text-decoration: none;
+  }
+
+  &__prices {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid #e2e6e9;
+    padding-bottom: 5.5px;
+    margin-bottom: 16px;
+  }
+
+  &__price {
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 31px;
+    color: #313237;
+  }
+
+  &__oldPrice {
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 28px;
+    text-decoration-line: line-through;
+    color: #89939a;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  &__characteristic {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: #89939a;
+  }
+
+  &__value {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: #313237;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__addToCart {
+    height: 40px;
+    width: 176px;
+    background: #313237;
+    cursor: pointer;
+    border: none;
+    font-family: "Mont", sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+    color: white;
+    padding: 0;
+
+    &:hover {
+      box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+    }
+
+    &--added {
+      background-color: white;
+      border: 1px solid #e2e6e9;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 21px;
+      text-align: center;
+      color: #27ae60;
+    }
+  }
+
+  &__addToFavourites {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #b4bdc4;
+    height: 40px;
+    width: 40px;
+    box-sizing: border-box;
+    cursor: pointer;
+    background-color: white;
+
+    &:hover {
+      border: 1px solid #313237;
+    }
+
+    &--added {
+      border-color: #e2e6e9;
+    }
+  }
+}

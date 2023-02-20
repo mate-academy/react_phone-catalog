@@ -1,0 +1,40 @@
+.productSlider__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  width: 1136px;
+}
+
+.productSlider__title {
+  display: flex;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  color: #313237;
+}
+
+.productSlider__buttons {
+  display: flex;
+  gap: 16px;
+}
+
+.productSlider__button {
+  height: 32px;
+  width: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #e2e6e9;
+  background: white;
+
+  &--active {
+    border: 1px solid #b4bdc4;
+    cursor: pointer;
+
+    &:hover {
+      border: 1px solid #313237;
+    }
+  }
+}

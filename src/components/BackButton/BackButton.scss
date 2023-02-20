@@ -1,0 +1,22 @@
+.backButton {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-family: "Mont", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  color: #89939a;
+  outline: none;
+  background-color: white;
+  border: none;
+  cursor: pointer;
+  padding: 0 0 0 5px;
+  height: 16px;
+  margin: 40px 0 16px;
+
+  &:hover {
+    color: #313237;
+  }
+}

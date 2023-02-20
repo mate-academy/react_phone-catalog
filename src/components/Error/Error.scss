@@ -1,0 +1,42 @@
+.error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  &__title {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: #313237;
+    margin-bottom: 40px;
+  }
+
+  &__message {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 26px;
+    color: #313237;
+    margin-bottom: 25px;
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    height: 40px;
+    width: 176px;
+    background: #313237;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    color: white;
+
+    &:hover {
+      box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+    }
+  }
+}

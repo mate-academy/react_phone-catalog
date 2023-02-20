@@ -1,0 +1,120 @@
+.productsCatalog {
+  &__title {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: #313237;
+    margin-bottom: 8px;
+  }
+
+  &__subtitle {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #89939a;
+    margin-bottom: 40px;
+  }
+
+  &__sort {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  &__configuration {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    position: relative;
+  }
+
+  &__text {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: #89939a;
+  }
+
+  &__select {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #b4bdc4;
+    outline: none;
+    height: 40px;
+    width: 176px;
+    font-family: "Mont", sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    color: #313237;
+    padding: 0 17px 0 12px;
+    background-color: white;
+    cursor: pointer;
+
+    &:hover {
+      border: 1px solid #89939a;
+    }
+
+    &:focus {
+      border: 1px solid #313237;
+    }
+
+    &--visibleItems {
+      width: 128px;
+    }
+  }
+
+  &__options {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 7px 0;
+    border: 1px solid #e2e6e9;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+    background-color: white;
+    position: absolute;
+    top: 63px;
+    left: 0;
+
+    &--sortBy {
+      width: 176px;
+    }
+
+    &--visibleItems {
+      width: 128px;
+    }
+  }
+
+  &__option {
+    background-color: white;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-family: "Mont", sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #89939a;
+    text-align: left;
+    padding-left: 12px;
+    height: 32px;
+
+    &:hover {
+      color: #313237;
+      background: #fafbfc;
+    }
+  }
+
+  &__catalog {
+    display: flex;
+    row-gap: 40px;
+    column-gap: 16px;
+    flex-wrap: wrap;
+    list-style-type: none;
+    padding: 0;
+  }
+}
