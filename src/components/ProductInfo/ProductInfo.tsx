@@ -100,7 +100,9 @@ export const ProductInfo: React.FC<Props> = ({
               type="button"
               onClick={() => addItem(activeProduct.id)}
             >
-              Add to cart
+              {cartItems.find(item => item.name === activeProduct.name)
+                ? 'Added to cart'
+                : 'Add to cart'}
             </button>
 
             <button

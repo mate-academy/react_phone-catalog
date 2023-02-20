@@ -16,7 +16,8 @@ export const ProductsSlider: React.FC<Props> = ({
   prevItem,
   nextItem,
 }) => {
-  const visibleItems = 288 * 4;
+  const productCardWidth = 288;
+  const visibleItems = productCardWidth * 4;
 
   return (
     <div className="productSlider__header">
@@ -50,15 +51,15 @@ export const ProductsSlider: React.FC<Props> = ({
           className={classNames(
             'productSlider__button', {
               'productSlider__button--active': sliderPosition
-                < (itemsAmount * 288 - visibleItems),
+                < (itemsAmount * productCardWidth - visibleItems),
             },
           )}
           onClick={nextItem}
           disabled={sliderPosition
-              === (itemsAmount * 288 - visibleItems)}
+              === (itemsAmount * productCardWidth - visibleItems)}
         >
           {sliderPosition
-              === (itemsAmount * 288 - visibleItems)
+              === (itemsAmount * productCardWidth - visibleItems)
             ? (
               <img
                 src="./img/arrowRightDisabled.svg"

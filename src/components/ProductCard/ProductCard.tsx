@@ -111,7 +111,11 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           name={product.id}
           onClick={(item) => addItem(item.currentTarget.name)}
         >
-          Add to cart
+          {cartItems.some(
+            (item: { id: string; }) => item.id === product.id,
+          )
+            ? 'Added to cart'
+            : 'Add to cart'}
         </button>
 
         <button
