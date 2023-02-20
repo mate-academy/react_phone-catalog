@@ -73,15 +73,13 @@
     justify-content: center;
     align-items: center;
     font-size: 2em;
-    color: #eee;
-    text-shadow: 0 0 2px #fff;
     opacity: 0;
 
     &:hover {
       color: black;
       background-color: rgba(46, 46, 46, 0.9);
       opacity: 1;
-      transition: opacity 0.5s;
+      transition: opacity 1s;
     }
   }
 

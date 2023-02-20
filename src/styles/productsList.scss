@@ -52,4 +52,12 @@
     flex-wrap: wrap;
     gap: 16px;
   }
+
+  &__loader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20%;
+    font-size: 60px;
+  }
 }

@@ -10,22 +10,28 @@ import { Home } from './components/Home';
 import { Product } from './types/Product';
 import { ProductsList } from './components/ProductsList';
 import { PageNotFound } from './components/PageNotFound';
+import { ProductDetailsPage } from './components/ProductDetailsPage';
 
 const App: FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
+  const [isloading, setIsLoading] = useState(false);
 
   const loadProducts = async () => {
     try {
+      setIsLoading(true);
       const data = await getAllProducts();
 
       setProducts(data);
     } catch {
       Promise.reject(new Error('error'));
+    } finally {
+      setIsLoading(false);
     }
   };
 
   const phonesList = products.filter(product => product.type === 'phone');
   const tabletList = products.filter(product => product.type === 'tablet');
+  const accessoriesList = products.filter(product => product.type === 'accessories');
 
   useEffect(() => {
     loadProducts();
@@ -36,8 +42,11 @@ const App: FC = () => {
       <Route path="/" element={<Home products={products} />}>
         <Route path="/home" element={<Navigate to="/" />} />
       </Route>
-      <Route path="/phones" element={<ProductsList products={phonesList} title="Mobile phones" />} />
-      <Route path="/tablets" element={<ProductsList products={tabletList} title="Tablets" />} />
+      <Route path="/phones" element={<ProductsList products={phonesList} isloading={isloading} title="Mobile phones" />} />
+      <Route path="/phones/:productId" element={<ProductDetailsPage products={phonesList} />} />
+      <Route path="/tablets" element={<ProductsList products={tabletList} isloading={isloading} title="Tablets" />} />
+      <Route path="/tablets/:productId" element={<ProductDetailsPage products={tabletList} />} />
+      <Route path="/accessories" element={<ProductsList products={accessoriesList} isloading={isloading} title="Accessories" />} />
       <Route path="/*" element={<PageNotFound />} />
     </Routes>
 

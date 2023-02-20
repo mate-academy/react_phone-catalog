@@ -18,6 +18,7 @@ export const LikeButton: FC<Props> = ({ product }) => {
       type="button"
     >
       <img src="./img/icons/Like.svg" alt="add" />
+      <img src="./img/icons/Red Like.svg" alt="remove" />
     </button>
   );
 };
