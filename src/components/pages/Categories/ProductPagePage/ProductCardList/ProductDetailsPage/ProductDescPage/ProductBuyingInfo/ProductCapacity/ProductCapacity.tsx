@@ -36,6 +36,7 @@ export const ProductCapacity:React.FC<Props> = (
 
       if (response.status === 200) {
         const result = await response.json();
+
         return setDetailedProduct(result);
       }
     }
