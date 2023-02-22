@@ -11,6 +11,8 @@ import { Product } from './types/Product';
 import { ProductsList } from './components/ProductsList';
 import { PageNotFound } from './components/PageNotFound';
 import { ProductDetailsPage } from './components/ProductDetailsPage';
+import { CartPage } from './components/CartPage';
+import { FavoritesPage } from './components/FavoritePage';
 
 const App: FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -47,6 +49,8 @@ const App: FC = () => {
       <Route path="/tablets" element={<ProductsList products={tabletList} isloading={isloading} title="Tablets" />} />
       <Route path="/tablets/:productId" element={<ProductDetailsPage products={tabletList} />} />
       <Route path="/accessories" element={<ProductsList products={accessoriesList} isloading={isloading} title="Accessories" />} />
+      <Route path="/cart" element={<CartPage products={products} />} />
+      <Route path="/favorites" element={<FavoritesPage products={products} />} />
       <Route path="/*" element={<PageNotFound />} />
     </Routes>
 

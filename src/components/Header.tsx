@@ -7,14 +7,11 @@ import '../styles/header.scss';
 
 export const Header: FC = () => {
   let likes = 0;
-  let inBag = 0;
+
+  const inBag = JSON.parse(localStorage.getItem('carts') || '').length;
 
   if (localStorage.getItem('favorites')) {
     likes = JSON.parse(localStorage.getItem('favorites') || '').length;
-  }
-
-  if (localStorage.getItem('carts')) {
-    inBag = JSON.parse(localStorage.getItem('carts') || '').length;
   }
 
   return (
@@ -24,16 +21,22 @@ export const Header: FC = () => {
         <Navbar />
       </div>
       <div className="header-right">
-        <NavLink to="/favorites" className="header__icon">
+        <NavLink
+          to="/favorites"
+          className="header__icon"
+        >
           <img src="./img/icons/Like.svg" alt="favorites" />
-          {!!likes && (
+          {likes > 0 && (
             <span className="header__counter">{likes}</span>
           )}
         </NavLink>
-        <NavLink to="/cart" className="header__icon">
-          <img src="./img/icons/Cart.svg" alt="favorites" />
+        <NavLink
+          to="/cart"
+          className="header__icon"
+        >
+          <img src="./img/icons/Cart.svg" alt="cart" />
 
-          {!!inBag && (
+          {inBag > 0 && (
             <span className="header__counter">{inBag}</span>
           )}
         </NavLink>
