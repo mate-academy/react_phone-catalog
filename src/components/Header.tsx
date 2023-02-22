@@ -6,13 +6,8 @@ import { Navbar } from './Navbar';
 import '../styles/header.scss';
 
 export const Header: FC = () => {
-  let likes = 0;
-
   const inBag = JSON.parse(localStorage.getItem('carts') || '').length;
-
-  if (localStorage.getItem('favorites')) {
-    likes = JSON.parse(localStorage.getItem('favorites') || '').length;
-  }
+  const likes = JSON.parse(localStorage.getItem('favorites') || '').length;
 
   return (
     <header className="header">
