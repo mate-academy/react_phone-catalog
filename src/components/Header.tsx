@@ -9,12 +9,18 @@ import '../styles/header.scss';
 export const Header: FC = () => {
   const foundCart
   = JSON.parse(localStorage.getItem('carts') || '').filter((item: CartProduct) => item.id);
-  const likes = JSON.parse(localStorage.getItem('favorites') || '').length;
+  const foundFav
+  = JSON.parse(localStorage.getItem('favorites') || '').map((item: CartProduct) => item.id);
   const [cartlist, setCartList] = useState(foundCart);
+  const [favlist, setFavList] = useState(foundFav);
 
   useEffect(() => {
     setCartList(foundCart);
   }, [foundCart]);
+
+  useEffect(() => {
+    setFavList(foundFav);
+  }, [foundFav]);
 
   return (
     <header className="header">
@@ -28,8 +34,8 @@ export const Header: FC = () => {
           className="header__icon"
         >
           <img src="./img/icons/Like.svg" alt="favorites" />
-          {likes > 0 && (
-            <span className="header__counter">{likes}</span>
+          {foundFav.length > 0 && (
+            <span className="header__counter">{favlist.length}</span>
           )}
         </NavLink>
         <NavLink
