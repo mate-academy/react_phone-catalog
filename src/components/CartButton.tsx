@@ -10,7 +10,7 @@ type Props = {
 export const CartButton: FC<Props> = ({ product }) => {
   const [isAddCart, setIsAddCart] = useState(false);
 
-  const toggleCart = () => {
+  const toggleCart = (productId: string) => {
     const carts = JSON.parse(localStorage.getItem('carts') || '');
     const newCart = {
       id: product.id,
@@ -19,7 +19,7 @@ export const CartButton: FC<Props> = ({ product }) => {
     };
 
     const foundCart
-      = carts.find((item: CartProduct) => item.id === product.id);
+      = carts.find((item: CartProduct) => item.id === productId);
 
     if (!foundCart) {
       localStorage.setItem('carts', JSON.stringify([
@@ -29,7 +29,7 @@ export const CartButton: FC<Props> = ({ product }) => {
 
     if (foundCart) {
       localStorage.setItem('carts', JSON.stringify([
-        ...carts.filter((item: CartProduct) => item.id !== product.id),
+        ...carts.filter((item: CartProduct) => item.id !== productId),
       ]));
     }
 
@@ -45,7 +45,7 @@ export const CartButton: FC<Props> = ({ product }) => {
         },
       )}
       type="button"
-      onClick={toggleCart}
+      onClick={() => toggleCart(product.id)}
     >
       {localStorage.getItem('carts')?.includes(product.id) && (
         'Added to cart'

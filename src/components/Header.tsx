@@ -1,13 +1,20 @@
 /* eslint-disable max-len */
-import { FC } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Logo } from './Logo';
 import { Navbar } from './Navbar';
+import { CartProduct } from '../types/CartProduct';
 import '../styles/header.scss';
 
 export const Header: FC = () => {
-  const inBag = JSON.parse(localStorage.getItem('carts') || '').length;
+  const foundCart
+  = JSON.parse(localStorage.getItem('carts') || '').filter((item: CartProduct) => item.id);
   const likes = JSON.parse(localStorage.getItem('favorites') || '').length;
+  const [cartlist, setCartList] = useState(foundCart);
+
+  useEffect(() => {
+    setCartList(foundCart);
+  }, [foundCart]);
 
   return (
     <header className="header">
@@ -31,8 +38,8 @@ export const Header: FC = () => {
         >
           <img src="./img/icons/Cart.svg" alt="cart" />
 
-          {inBag > 0 && (
-            <span className="header__counter">{inBag}</span>
+          {foundCart.length > 0 && (
+            <span className="header__counter">{cartlist.length}</span>
           )}
         </NavLink>
       </div>
