@@ -8,6 +8,7 @@ Implement Products catalog following [this design](https://www.figma.com/file/uE
 Use [products](https://mate-academy.github.io/react_phone-catalog/api/products.json)
 and [product details](https://mate-academy.github.io/react_phone-catalog/api/products/dell-streak-7.json)
 tо fetch data (use actual `productId` as a last part of the URL before `.json`).
+[DEMO](https://oleksii-bieliaiev.github.io/react_phone-catalog/)
 
 Store the Cart in the `localStorage`
 
