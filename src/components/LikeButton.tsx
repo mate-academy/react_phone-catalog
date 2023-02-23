@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { FC, useState, useEffect } from 'react';
+import { FC, useState } from 'react';
 import { Product } from '../types/Product';
 
 type Props = {
@@ -8,16 +8,6 @@ type Props = {
 
 export const LikeButton: FC<Props> = ({ product }) => {
   const [isAddLike, setIsAddLike] = useState(false);
-  const foundFav
-  = JSON.parse(localStorage.getItem('favorites') || '').map(
-    (el: string) => el,
-  );
-
-  const [items, setItems] = useState(foundFav);
-
-  useEffect(() => {
-    setItems(foundFav);
-  }, [foundFav]);
 
   const toggleLike = () => {
     if (localStorage.getItem('favorites')) {
@@ -29,7 +19,6 @@ export const LikeButton: FC<Props> = ({ product }) => {
         localStorage.setItem('favorites', JSON.stringify([
           ...likes, product.id,
         ]));
-        setItems(items);
         setIsAddLike(!isAddLike);
       }
 
@@ -37,7 +26,6 @@ export const LikeButton: FC<Props> = ({ product }) => {
         localStorage.setItem('favorites', JSON.stringify([
           ...likes.filter((item: string) => item !== product.id),
         ]));
-        setItems(items);
         setIsAddLike(!isAddLike);
       }
     }
