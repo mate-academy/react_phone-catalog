@@ -10,7 +10,7 @@ export const Header: FC = () => {
   const foundCart
   = JSON.parse(localStorage.getItem('carts') || '').filter((item: CartProduct) => item.id);
   const foundFav
-  = JSON.parse(localStorage.getItem('favorites') || '').map((item: CartProduct) => item.id);
+  = JSON.parse(localStorage.getItem('favorites') || '').map((item: string) => item);
   const [cartlist, setCartList] = useState(foundCart);
   const [favlist, setFavList] = useState(foundFav);
 
