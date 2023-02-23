@@ -1,3 +1,23 @@
+@media screen and (min-width: 579px) and (max-width: 859px) {
+	ul.product-page__list {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+	}
+}
+@media screen and (min-width: 860px) and (max-width: 1139px) {
+	ul.product-page__list {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+	}
+}
+
+@media screen and (min-width: 1140px) {
+	ul.product-page__list {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr 1fr;
+	}
+}
+
 .product-page {
 	overflow: hidden;
 
@@ -37,7 +57,7 @@
 		}
 	}
 
-	
+
 	&__select {
 		height: 40px;
 		margin-top: 4px;
@@ -50,7 +70,7 @@
 		background-position-x: 92%;
 		background-position-y: 50%;
 	}
-	
+
 	&__list {
 		margin: 0;
 		margin-top: 24px;
@@ -73,6 +93,7 @@
 }
 
 .active-button {
+	transition: 0.3s;
 	color: #FFFFFF;
 	background: #313237;
 }

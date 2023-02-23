@@ -1,13 +1,16 @@
 import './Header.scss';
 import { useLocation } from 'react-router';
 import { NavLink } from 'react-router-dom';
-import { ChangeEvent, useContext, useState } from 'react';
+import {
+  ChangeEvent, useContext, useEffect, useState,
+} from 'react';
 import { Logo } from '../../../common/Logo/Logo';
 import { Product } from '../../../types/types';
 import {
   HeaderNavTextButtons,
 } from './HeaderNavTextButtons/HeaderNavTextButtons';
 import { CartAndFavContext } from '../../../context/CartAndFavContext';
+import { SortAndPagesContext } from '../../../context/sortAndPagesContext';
 
 type Props = {
   setVisibleIPhones: any,
@@ -26,8 +29,33 @@ export const Header: React.FC<Props> = ({
   const {
     cartProducts, favProducts, setVisibleFavProducts,
   } = useContext<any>(CartAndFavContext);
+  const {
+    itemsOnPage,
+    currentPage,
+    setCurrentPage,
+    sortingByValue,
+  } = useContext<any>(SortAndPagesContext);
   const navLinksList = ['home', 'phones', 'tablets', 'accessories'];
   const [isBurgerVisible, setIsBurgerVisible] = useState(false);
+  const firstIndex = currentPage * itemsOnPage - itemsOnPage;
+  const lastIndex = currentPage * itemsOnPage;
+
+  const setProductsAccordingToPages = (
+    setProducts: (value: any) => void,
+    products: any[],
+  ) => {
+    setProducts(products.filter((
+      _product: any, index: number,
+    ) => {
+      if (firstIndex > products.length) {
+        setCurrentPage(Math.ceil(products.length / itemsOnPage));
+
+        return index > products.length - itemsOnPage;
+      }
+
+      return index > firstIndex && index <= lastIndex;
+    }));
+  };
 
   const searchOnPage = (event: ChangeEvent<HTMLInputElement>) => {
     switch (pathname) {
@@ -38,6 +66,7 @@ export const Header: React.FC<Props> = ({
               event.target.value.toLowerCase(),
             ));
         }));
+
         break;
       case '/favourites':
         setVisibleFavProducts(favProducts.filter((one: Product) => {
@@ -49,7 +78,24 @@ export const Header: React.FC<Props> = ({
         break;
       default:
     }
+
+    if (event.target.value.length === 0) {
+      if (pathname === '/phones') {
+        setProductsAccordingToPages(setVisibleIPhones, IPhones);
+      }
+    }
   };
+
+  useEffect(() => {
+    setSearchInput('');
+    if (pathname === '/favourites') {
+      setVisibleFavProducts(favProducts.map((one: any) => one));
+    }
+
+    if (pathname === '/phones') {
+      setProductsAccordingToPages(setVisibleIPhones, IPhones);
+    }
+  }, [pathname, itemsOnPage, sortingByValue]);
 
   return (
     <header className="header">

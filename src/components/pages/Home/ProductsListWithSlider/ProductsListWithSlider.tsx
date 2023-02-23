@@ -21,15 +21,16 @@ export const ProductsListWithSlider: React.FC<Props> = (
   const [toggled, setToggled] = useState<boolean>(false);
   const ref = useRef<HTMLHeadingElement | any>(null);
   const containerRef = useRef<HTMLHeadingElement | any>(null);
-  
 
   const moveRight = () => {
-    setToggled(!toggled)
-    if (width > maxMargin){
+    setToggled(!toggled);
+    if (width > maxMargin) {
       return;
     }
-    setWidth(width + ref.current.offsetWidth)
-    setMaxMargin(ref.current.offsetWidth * (products.length - 1 - Math.ceil(containerWidth / ref.current.offsetWidth)))
+
+    setWidth(width + ref.current.offsetWidth);
+    setMaxMargin(ref.current.offsetWidth * (products.length
+      - 1 - Math.ceil(containerWidth / ref.current.offsetWidth)));
   };
 
   const moveLeft = () => {
@@ -47,7 +48,8 @@ export const ProductsListWithSlider: React.FC<Props> = (
   }, [width]);
 
   return (
-    <div className="products-list-with-slider__block"
+    <div
+      className="products-list-with-slider__block"
       ref={containerRef}
     >
       <div className="products-list-with-slider__header">

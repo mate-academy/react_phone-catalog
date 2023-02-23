@@ -26,7 +26,6 @@ export const FavouritesPage = () => {
               </li>
             );
           })
-
           : <NoProducts />}
       </ul>
     </div>

@@ -23,12 +23,42 @@ export const ProductCard: React.FC<Props> = ({
 
   const {
     name, price,
-    fullPrice, screen, capacity, ram, image,
+    fullPrice, screen, capacity, ram, image, imageUrl, discount,
   } = product;
   const {
     cartProducts,
     favProducts,
   } = useContext<any>(CartAndFavContext);
+
+  const getDetailedProduct = async () => {
+    if (!products) {
+      return;
+    }
+    const newProduct = products.find(
+      (one: Product) => one.id === product.id,
+    );
+
+    if (newProduct) {
+      const response = await fetch(
+        `new/products/${newProduct.itemId}.json`,
+        {
+          method: 'GET',
+        },
+      );
+
+      if (response.status === 200) {
+        const result = await response.json();
+
+        window.scroll({
+          top: 0,
+          left: 0,
+          behavior: 'smooth',
+        });
+
+        setDetailedProduct(result);
+      }
+    }
+  }
 
   useEffect(() => {
     cartProducts.map((one: Product) => {
@@ -52,42 +82,13 @@ export const ProductCard: React.FC<Props> = ({
     <>
       <div className="product">
         <Link
-          to={link || `/${product.category}/${product.id}`}
-          onClick={async () => {
-            if (!products) {
-              return;
-            }
-
-            const newProduct = products.find(
-              (one: Product) => one.id === product.id,
-            );
-
-            if (newProduct) {
-              const response = await fetch(
-                `new/products/${newProduct.itemId}.json`,
-                {
-                  method: 'GET',
-                },
-              );
-
-              if (response.status === 200) {
-                const result = await response.json();
-
-                window.scroll({
-                  top: 0,
-                  left: 0,
-                  behavior: 'smooth',
-                });
-
-                setDetailedProduct(result);
-              }
-            }
-          }}
+          to={link || product.category ? `/${product.category}/${product.id}` : '/'}
+          onClick={getDetailedProduct}
           className="product__link"
         >
           <img
             className="product__image"
-            src={`new/${image}`}
+            src={image ? `new/${image}` : imageUrl}
             alt={name}
           />
           <h3 className="product__title body14">{name}</h3>
@@ -95,12 +96,23 @@ export const ProductCard: React.FC<Props> = ({
         <div className="product__prices">
           <h2 className="product__price">
             $
-            {price}
+            {discount
+              ? price - (price * discount / 100)
+              : price
+            }
           </h2>
-          <h2 className="product__old-price">
-            $
-            {fullPrice}
-          </h2>
+          {!!discount && discount > 0 &&
+            <h2 className="product__old-price">
+              $
+              {price}
+            </h2>
+          }
+          {fullPrice &&
+            <h2 className="product__old-price">
+              $
+              {fullPrice}
+            </h2>
+          }
         </div>
         <div className="product__info">
           <div className="product__keys body12">

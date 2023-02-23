@@ -4,9 +4,10 @@ import { Product } from '../../../../types/types';
 
 type Props = {
   phones: Product[],
+  tablets: Product[],
 };
 
-export const ShopByCategory:React.FC<Props> = ({ phones }) => {
+export const ShopByCategory:React.FC<Props> = ({ phones, tablets }) => {
   const categories = [
     {
       title: 'Mobile phones',
@@ -18,14 +19,14 @@ export const ShopByCategory:React.FC<Props> = ({ phones }) => {
     {
       title: 'Tablets',
       image: 'new/img/category-tablets.png',
-      amount: 24,
+      amount: tablets.length,
       background: '#8d8d92',
       category: 'tablets',
     },
     {
       title: 'Accessories',
       image: 'new/img/category-accessories.png',
-      amount: 100,
+      amount: 0,
       background: '#D53C51',
       category: 'accessories',
     }];

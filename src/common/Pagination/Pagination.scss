@@ -9,6 +9,7 @@
 	}
 
 	&__buttons {
+		box-sizing: border-box;
 		display: flex;
 		justify-content: flex-start;
 		align-items: center;
@@ -16,6 +17,11 @@
 
 		&-list {
 			display: flex;
+			justify-content: space-between
 		}
 	}
+}
+
+.pagination-right {
+	margin-left: 8px;
 }

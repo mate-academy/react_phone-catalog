@@ -14,6 +14,7 @@ export const ProductDetailsPage: React.FC<any> = (
   { products },
 ) => {
   const { id } = useParams();
+  console.log(id)
   const navigate = useNavigate();
   const {
     detailedProduct,
@@ -24,17 +25,13 @@ export const ProductDetailsPage: React.FC<any> = (
 
   const getProduct = async () => {
     const singleProduct = products.find((one: any) => one.id === id);
-
-    const response = await fetch(
-      `/new/products/${singleProduct.itemId}.json`,
-      {
-        method: 'GET',
-      },
+    const fetchLink = `/new/products/${singleProduct.itemId}.json`
+    const response = await fetch(fetchLink,
+      {method: 'GET'},
     );
 
     if (response.status === 200) {
       const result = await response.json();
-
       setCategory(singleProduct.category);
 
       return setDetailedProduct(result);
@@ -71,7 +68,7 @@ export const ProductDetailsPage: React.FC<any> = (
           Back
         </div>
       </div>
-      { id && id <= products.length
+      {id && id <= products.length
         ? detailedProduct && (
           <ProductDescPage
             products={products}

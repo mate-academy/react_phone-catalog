@@ -15,7 +15,7 @@ export const CartPage = () => {
   const navigate = useNavigate();
 
   const { cartProducts } = useContext<any>(CartAndFavContext);
-  const totalPrice = cartProducts.reduce((current:number, prev: Product) => {
+  const totalPrice = cartProducts.reduce((current: number, prev: Product) => {
     if (prev.count) {
       return current + (prev.price * prev.count);
     }
@@ -24,7 +24,7 @@ export const CartPage = () => {
   }, 0);
 
   // eslint-disable-next-line array-callback-return
-  const totalAmount = cartProducts.reduce((current:number, prev: Product) => {
+  const totalAmount = cartProducts.reduce((current: number, prev: Product) => {
     if (prev.count) {
       return current + prev.count;
     }
@@ -53,33 +53,33 @@ export const CartPage = () => {
         Cart
       </h1>
       <div className="cart-page__blocks">
-        <div className="cart-page__products">
-          {cartProducts.length ? (
-            <ul className="cart-page__list">
-              {cartProducts.map((product: Product) => {
-                return (
-                  <li className="cart-page__item" key={product.id}>
-                    <CartItem
-                      product={product}
-                    />
-                  </li>
-                );
-              })}
-            </ul>
-          )
-            : <NoProducts />}
-        </div>
-        <div className="cart-page__price">
-          <h1 className="cart-page__price-total">
-            $
-            {totalPrice}
-          </h1>
-          <div className="cart-page__total-items">
-            {`Total for ${totalAmount} items`}
-          </div>
-          <div className="horizontal-line" />
-          <LongButton text="Checkout" />
-        </div>
+        {cartProducts.length ? (
+          <>
+            <div className="cart-page__products">
+              <ul className="cart-page__list">
+                {cartProducts.map((product: Product) => {
+                  return (
+                    <li className="cart-page__item" key={product.id}>
+                      <CartItem
+                        product={product} />
+                    </li>
+                  );
+                })}
+              </ul>
+            </div><div className="cart-page__price">
+              <h1 className="cart-page__price-total">
+                $
+                {totalPrice}
+              </h1>
+              <div className="cart-page__total-items">
+                {`Total for ${totalAmount} items`}
+              </div>
+              <div className="horizontal-line" />
+              <LongButton text="Checkout" />
+            </div>
+          </>
+        )
+          : <NoProducts />}
       </div>
     </div>
   );

@@ -8,13 +8,13 @@ type Props = {
   product: Product,
 };
 
-export const CartItem:React.FC<Props> = ({ product }) => {
-  const [count, setCount] = useState(product.count);
+export const CartItem: React.FC<Props> = ({ product }) => {
+  const [count, setCount] = useState(product.count || 0);
   const { cartProducts, setCartProducts } = useContext<any>(CartAndFavContext);
 
   const deleteProduct = async () => {
     await setCartProducts(cartProducts.filter(
-      (p:Product) => p.id !== product.id,
+      (p: Product) => p.id !== product.id,
     ));
 
     if (cartProducts.length === 1) {
@@ -27,21 +27,18 @@ export const CartItem:React.FC<Props> = ({ product }) => {
   }, [cartProducts]);
 
   useEffect(() => {
-    if (count) {
-      if (count <= 0) {
-        deleteProduct();
+    if (count <= 0) {
+      deleteProduct();
 
-        return;
+      return;
+    }
+    setCartProducts(cartProducts.map((p: Product) => {
+      if (p.id === product.id) {
+        return { ...p, count };
       }
 
-      setCartProducts(cartProducts.map((p:Product) => {
-        if (p.id === product.id) {
-          return { ...p, count };
-        }
-
-        return p;
-      }));
-    }
+      return p;
+    }));
   }, [count]);
 
   return (
@@ -88,7 +85,7 @@ export const CartItem:React.FC<Props> = ({ product }) => {
         </div>
         <h2 className="cart-item__price">
           $
-          { product.count && product.price * product.count}
+          {product.count && product.price * product.count}
         </h2>
       </div>
     </div>

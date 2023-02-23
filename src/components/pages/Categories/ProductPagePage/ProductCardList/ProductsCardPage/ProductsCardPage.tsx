@@ -1,10 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import {
   NavigationButtons,
 } from '../../../../../../common/NavigationButtons/NavigationButtons';
 import { NoProducts } from '../../../../../../common/NoProducts/NoProducts';
-import { PagesList } from '../../../../../../common/PagesList/PagesList';
+import { Pagination } from '../../../../../../common/Pagination/Pagination';
 import { ProductCard } from '../../../../../../common/ProductCard/ProductCard';
+import { SortAndPagesContext } from '../../../../../../context/sortAndPagesContext';
 import { Product } from '../../../../../../types/types';
 
 import './ProductsCardPage.scss';
@@ -23,12 +24,18 @@ export const ProductsCardPage: React.FC<Props>
     products, title, setVisibleProducts,
     visibleProducts, setProducts, searchInput,
   }) => {
-    const [itemsOnPage, setItemsOnPage] = useState(16);
+    const {
+      itemsOnPage,
+      setItemsOnPage,
+      currentPage,
+      setCurrentPage,
+      sortingByValue,
+      setSortingByValue,
+    } = useContext<any>(SortAndPagesContext);
+
     const [isProducts, setIsProducts] = useState(false);
-    const [currentPage, setCurrentPage] = useState(1);
-    const [itemsSort, setItemsSort] = useState('newest');
     const productsAmount = !searchInput && products ? products.length : 1;
-    const buttonsNumber = Math.ceil(productsAmount / itemsOnPage);
+    const totalPages = Math.ceil(productsAmount / itemsOnPage);
     const firstIndex = currentPage * itemsOnPage - itemsOnPage;
     const lastIndex = currentPage * itemsOnPage;
 
@@ -42,21 +49,21 @@ export const ProductsCardPage: React.FC<Props>
           setProducts(products.sort((a: Product, b: Product) => {
             return b.year - a.year;
           }));
-          setItemsSort(value);
+          setSortingByValue(value);
 
           return;
         case 'alphabetically':
           setProducts(products.sort((a: Product, b: Product) => {
             return a.name.localeCompare(b.name, 'en', { numeric: true });
           }));
-          setItemsSort(value);
+          setSortingByValue(value);
 
           return;
         case 'cheapest':
           setProducts(products.sort((a: Product, b: Product) => {
             return a.price - b.price;
           }));
-          setItemsSort(value);
+          setSortingByValue(value);
 
           return;
 
@@ -83,7 +90,7 @@ export const ProductsCardPage: React.FC<Props>
           return index > firstIndex && index <= lastIndex;
         }));
       }
-    }, [itemsOnPage, currentPage, itemsSort, isProducts]);
+    }, [itemsOnPage, currentPage, sortingByValue, isProducts]);
     useEffect(() => {
       if (!visibleProducts) {
         return;
@@ -91,7 +98,7 @@ export const ProductsCardPage: React.FC<Props>
 
       if (visibleProducts.length > 0) {
         setIsProducts(true);
-        sortItemsBy(itemsSort);
+        sortItemsBy(sortingByValue);
       }
     }, [visibleProducts]);
 
@@ -117,15 +124,15 @@ export const ProductsCardPage: React.FC<Props>
                         id="sortBy"
                         style={{
                           backgroundImage:
-                          'url("icons/Chevron (Arrow Down).svg")',
+                            'url("icons/Chevron (Arrow Down).svg")',
                         }}
-                        value={itemsSort}
+                        value={sortingByValue}
                         onChange={(event) => {
                           sortItemsBy(event.target.value);
                         }}
                       >
                         <option
-                          defaultValue={itemsSort}
+                          defaultValue={sortingByValue}
                           value="newest"
                         >
                           Newest
@@ -148,7 +155,7 @@ export const ProductsCardPage: React.FC<Props>
                         }}
                         style={{
                           backgroundImage:
-                          'url("icons/Chevron (Arrow Down).svg")',
+                            'url("icons/Chevron (Arrow Down).svg")',
                         }}
                       >
                         <option defaultValue={itemsOnPage} value="4">4</option>
@@ -162,6 +169,7 @@ export const ProductsCardPage: React.FC<Props>
                 <ul className="product-page__list">
                   {visibleProducts && visibleProducts.length
                     ? visibleProducts.map((product: Product) => {
+                      console.log(product)
                       return (
                         <li
                           className="product-page__item"
@@ -176,14 +184,14 @@ export const ProductsCardPage: React.FC<Props>
                     : <NoProducts />}
                 </ul>
                 {
-                  visibleProducts && !!visibleProducts.length
-            && (
-              <PagesList
-                currentPage={currentPage}
-                setCurrentPage={setCurrentPage}
-                buttonsNumber={buttonsNumber}
-              />
-            )
+                  visibleProducts && totalPages > 1
+                  && (
+                    <Pagination
+                      currentPage={currentPage}
+                      setCurrentPage={setCurrentPage}
+                      totalPages={totalPages}
+                    />
+                  )
                 }
               </>
             )

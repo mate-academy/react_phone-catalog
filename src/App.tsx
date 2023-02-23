@@ -29,13 +29,18 @@ import { NotFoundPage } from './components/NotFoundPage/NotFoundPage';
 import { Product } from './types/types';
 
 const App = () => {
-  const [items, setItems] = useState([]);
+  const [tablets, setTablets] = useState([]);
   const [IPhones, setIPhones] = useState([]);
   const [shuffeledIPhones, setShuffeledIPhones] = useState([]);
   const [visibleIPhones, setVisibleIPhones] = useState(IPhones);
-  const [hotPriceProducts, setHotPriceProducts] = useState(items);
-  const [brandNewProducts, setBrandNewProducts] = useState(items);
+  const [visibleTablets, setVisibleTablets] = useState(tablets);
+  const [hotPriceProducts, setHotPriceProducts] = useState([]);
+  const [brandNewProducts, setBrandNewProducts] = useState([]);
   const [searchInput, setSearchInput] = useState('');
+  // const [itemsOnPage, setTabletsOnPage] = useState(16);
+  // const [currentPage, setCurrentPage] = useState(1);
+  // const [itemsSort, setTabletsSort] = useState('newest');
+
 
   const getHotPriceProducts = () => {
     setHotPriceProducts(
@@ -61,7 +66,7 @@ const App = () => {
     getSuggestedProducts();
   }, [IPhones]);
 
-  const getItems = async () => {
+  const getTablets = async () => {
     try {
       const response = await fetch(
         '../api/products.json',
@@ -72,8 +77,10 @@ const App = () => {
 
       if (response.status === 200) {
         const result = await response.json();
-
-        setItems(result);
+        const tablets = result.filter((one: any) => one.type === 'tablet')
+        console.log(tablets)
+        setTablets(tablets);
+        setVisibleTablets(tablets);
       }
     } catch (err) {
       throw new Error('Error');
@@ -101,12 +108,11 @@ const App = () => {
   };
 
   useEffect(() => {
-    getItems();
+    getTablets();
     getIPhones();
   }, []);
 
   return (
-
     <>
       <Header
         setVisibleIPhones={setVisibleIPhones}
@@ -125,7 +131,10 @@ const App = () => {
                 products={hotPriceProducts}
                 title="Hot prices"
               />
-              <ShopByCategory phones={IPhones} />
+              <ShopByCategory
+                phones={IPhones}
+                tablets={tablets}
+              />
               <ProductsListWithSlider
                 products={brandNewProducts}
                 title="Brand new models"
@@ -133,9 +142,8 @@ const App = () => {
             </main>
           )}
         />
-        <Route
-          path="/phones"
-        >
+
+        <Route path="/phones">
           <Route
             index
             element={(
@@ -151,7 +159,6 @@ const App = () => {
               </main>
             )}
           />
-
           <Route
             path=":id"
             element={(
@@ -169,16 +176,16 @@ const App = () => {
           />
         </Route>
 
-        <Route
-          path="/tablets"
-        >
+        <Route path="/tablets">
           <Route
             index
             element={(
               <main>
                 <ProductsCardPage
-                  products={[]}
-                  visibleProducts={[]}
+                  products={tablets}
+                  setProducts={setTablets}
+                  setVisibleProducts={setVisibleTablets}
+                  visibleProducts={visibleTablets}
                   title="Tablets"
                   searchInput={searchInput}
                 />
@@ -187,9 +194,7 @@ const App = () => {
           />
         </Route>
 
-        <Route
-          path="/accessories"
-        >
+        <Route path="/accessories">
           <Route
             index
             element={(

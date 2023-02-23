@@ -16,6 +16,7 @@ export const ProductDescPage: React.FC<any> = ({
   const {
     detailedProduct,
   } = useContext<any>(DetailedProductContext);
+  console.log(detailedProduct)
 
   return (
     <div className="product-desc">
