@@ -53,7 +53,6 @@ const App: FC = () => {
       <Route path="/favorites" element={<FavoritesPage products={products} />} />
       <Route path="/*" element={<PageNotFound />} />
     </Routes>
-
   );
 };
 

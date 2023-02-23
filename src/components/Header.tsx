@@ -7,20 +7,16 @@ import { CartProduct } from '../types/CartProduct';
 import '../styles/header.scss';
 
 export const Header: FC = () => {
-  const foundCart
-  = JSON.parse(localStorage.getItem('carts') || '').filter((item: CartProduct) => item.id);
-  const foundFav
-  = JSON.parse(localStorage.getItem('favorites') || '').map((item: string) => item);
-  const [cartlist, setCartList] = useState(foundCart);
-  const [favlist, setFavList] = useState(foundFav);
+  const [cartlist, setCartList] = useState(JSON.parse(localStorage.getItem('carts') || '').filter((item: CartProduct) => item.id));
+  const [favlist, setFavList] = useState(JSON.parse(localStorage.getItem('favorites') || '').map((item: string) => item));
 
   useEffect(() => {
-    setCartList(foundCart);
-  }, [foundCart]);
+    setCartList(JSON.parse(localStorage.getItem('carts') || '').filter((item: CartProduct) => item.id));
+  }, [JSON.parse(localStorage.getItem('carts') || '').filter((item: CartProduct) => item.id)]);
 
   useEffect(() => {
-    setFavList(foundFav);
-  }, [foundFav]);
+    setFavList(JSON.parse(localStorage.getItem('favorites') || '').map((item: string) => item));
+  }, [JSON.parse(localStorage.getItem('favorites') || '').map((item: string) => item)]);
 
   return (
     <header className="header">
@@ -34,7 +30,7 @@ export const Header: FC = () => {
           className="header__icon"
         >
           <img src="./img/icons/Like.svg" alt="favorites" />
-          {foundFav.length > 0 && (
+          {favlist.length > 0 && (
             <span className="header__counter">{favlist.length}</span>
           )}
         </NavLink>
@@ -44,7 +40,7 @@ export const Header: FC = () => {
         >
           <img src="./img/icons/Cart.svg" alt="cart" />
 
-          {foundCart.length > 0 && (
+          {cartlist.length > 0 && (
             <span className="header__counter">{cartlist.length}</span>
           )}
         </NavLink>

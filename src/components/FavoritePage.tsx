@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { Product } from '../types/Product';
 import { Breadcrumbs } from './Breadcrumbs';
 import { Footer } from './Footer';
@@ -16,17 +15,6 @@ export const FavoritesPage: React.FC<Props> = ({ products }) => {
       product => localStorage.getItem('favorites')?.includes(product.id),
     );
 
-  const foundFav
-    = JSON.parse(localStorage.getItem('favorites') || '').map(
-      (item: string) => item,
-    );
-
-  const [items, setItems] = useState(foundFav);
-
-  useEffect(() => {
-    setItems(foundFav);
-  }, [foundFav]);
-
   return (
     <>
       <Header />
@@ -36,7 +24,7 @@ export const FavoritesPage: React.FC<Props> = ({ products }) => {
           <h2 className="favorites__title">Favourites</h2>
           {availableProducts.length > 0 ? (
             <>
-              <p className="favorites__count">{`${items.length} items`}</p>
+              <p className="favorites__count">{`${availableProducts.length} items`}</p>
               <div className="favorites__content">
                 {availableProducts.map(product => (
                   <ProductCard product={product} key={product.id} />
