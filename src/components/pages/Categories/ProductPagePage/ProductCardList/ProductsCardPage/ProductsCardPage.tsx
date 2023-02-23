@@ -5,7 +5,7 @@ import {
 import { NoProducts } from '../../../../../../common/NoProducts/NoProducts';
 import { Pagination } from '../../../../../../common/Pagination/Pagination';
 import { ProductCard } from '../../../../../../common/ProductCard/ProductCard';
-import { SortAndPagesContext } from '../../../../../../context/sortAndPagesContext';
+import { SortAndPagesContext } from '../../../../../../context/SortAndPagesContext';
 import { Product } from '../../../../../../types/types';
 
 import './ProductsCardPage.scss';

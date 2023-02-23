@@ -37,10 +37,6 @@ const App = () => {
   const [hotPriceProducts, setHotPriceProducts] = useState([]);
   const [brandNewProducts, setBrandNewProducts] = useState([]);
   const [searchInput, setSearchInput] = useState('');
-  // const [itemsOnPage, setTabletsOnPage] = useState(16);
-  // const [currentPage, setCurrentPage] = useState(1);
-  // const [itemsSort, setTabletsSort] = useState('newest');
-
 
   const getHotPriceProducts = () => {
     setHotPriceProducts(
@@ -78,7 +74,6 @@ const App = () => {
       if (response.status === 200) {
         const result = await response.json();
         const tablets = result.filter((one: any) => one.type === 'tablet')
-        console.log(tablets)
         setTablets(tablets);
         setVisibleTablets(tablets);
       }

@@ -10,7 +10,7 @@ import {
   HeaderNavTextButtons,
 } from './HeaderNavTextButtons/HeaderNavTextButtons';
 import { CartAndFavContext } from '../../../context/CartAndFavContext';
-import { SortAndPagesContext } from '../../../context/sortAndPagesContext';
+import { SortAndPagesContext } from '../../../context/SortAndPagesContext';
 
 type Props = {
   setVisibleIPhones: any,
