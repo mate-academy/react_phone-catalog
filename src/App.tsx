@@ -65,7 +65,7 @@ const App = () => {
   const getTablets = async () => {
     try {
       const response = await fetch(
-        '../api/products.json',
+        'api/products.json',
         {
           method: 'GET',
         },
