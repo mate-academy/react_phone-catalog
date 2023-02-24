@@ -88,12 +88,6 @@ export const Pagination: React.FC<Props> = ({
     if (totalPages <= currentPage) {
       setMarginLeft((totalPages - 5) * elementWidth);
     }
-
-    // if (currentPage < totalPages) {
-    //   console.log(marginLeft)
-    //   setMarginLeft(marginLeft + (elementWidth * 2))
-
-    // }
   }, [totalPages]);
 
   return (

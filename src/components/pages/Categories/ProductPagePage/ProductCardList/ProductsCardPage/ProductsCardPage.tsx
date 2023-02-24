@@ -5,7 +5,6 @@ import {
 import { NoProducts } from '../../../../../../common/NoProducts/NoProducts';
 import { Pagination } from '../../../../../../common/Pagination/Pagination';
 import { ProductCard } from '../../../../../../common/ProductCard/ProductCard';
-import { TabletCard } from '../../../../../../common/TabletCard/TabletCard';
 import {
   SortAndPagesContext,
 } from '../../../../../../context/SortAndPagesContext';
@@ -177,13 +176,6 @@ export const ProductsCardPage: React.FC<Props>
                           className="product-page__item"
                           key={product.id}
                         >
-
-                          {product.type === 'tablet' && (
-                            <TabletCard
-                              product={product}
-                              products={products}
-                            />
-                          )}
                           {product.category === 'phones'
                             && (
                               <ProductCard

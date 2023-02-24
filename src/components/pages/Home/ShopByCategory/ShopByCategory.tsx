@@ -4,10 +4,9 @@ import { Product } from '../../../../types/types';
 
 type Props = {
   phones: Product[],
-  tablets: Product[],
 };
 
-export const ShopByCategory:React.FC<Props> = ({ phones, tablets }) => {
+export const ShopByCategory:React.FC<Props> = ({ phones }) => {
   const categories = [
     {
       title: 'Mobile phones',
@@ -19,7 +18,7 @@ export const ShopByCategory:React.FC<Props> = ({ phones, tablets }) => {
     {
       title: 'Tablets',
       image: 'new/img/category-tablets.png',
-      amount: tablets.length,
+      amount: 0,
       background: '#8d8d92',
       category: 'tablets',
     },

@@ -29,11 +29,9 @@ import { NotFoundPage } from './components/NotFoundPage/NotFoundPage';
 import { Product } from './types/types';
 
 const App = () => {
-  const [tablets, setTablets] = useState([]);
   const [IPhones, setIPhones] = useState([]);
   const [shuffeledIPhones, setShuffeledIPhones] = useState([]);
   const [visibleIPhones, setVisibleIPhones] = useState<Product[]>(IPhones);
-  const [visibleTablets, setVisibleTablets] = useState(tablets);
   const [hotPriceProducts, setHotPriceProducts] = useState([]);
   const [brandNewProducts, setBrandNewProducts] = useState([]);
   const [searchInput, setSearchInput] = useState('');
@@ -62,27 +60,6 @@ const App = () => {
     getSuggestedProducts();
   }, [IPhones]);
 
-  const getTablets = async () => {
-    try {
-      const response = await fetch(
-        'api/products.json',
-        {
-          method: 'GET',
-        },
-      );
-
-      if (response.status === 200) {
-        const result = await response.json();
-        const tabletsByType = result.filter((one: any) => one.type === 'tablet');
-
-        setTablets(tabletsByType);
-        setVisibleTablets(tabletsByType);
-      }
-    } catch (err) {
-      throw new Error('Error');
-    }
-  };
-
   const getIPhones = async () => {
     try {
       const response = await fetch(
@@ -104,7 +81,6 @@ const App = () => {
   };
 
   useEffect(() => {
-    getTablets();
     getIPhones();
   }, []);
 
@@ -129,7 +105,6 @@ const App = () => {
               />
               <ShopByCategory
                 phones={IPhones}
-                tablets={tablets}
               />
               <ProductsListWithSlider
                 products={brandNewProducts}
@@ -178,10 +153,8 @@ const App = () => {
             element={(
               <main>
                 <ProductsCardPage
-                  products={tablets}
-                  setProducts={setTablets}
-                  setVisibleProducts={setVisibleTablets}
-                  visibleProducts={visibleTablets}
+                  products={[]}
+                  visibleProducts={[]}
                   title="Tablets"
                   searchInput={searchInput}
                 />
@@ -195,7 +168,7 @@ const App = () => {
                 <h1>
                   Ooops..
                   <br />
-                  This product is sold out
+                  This product doesn't exist
                 </h1>
 
                 <Link to="../../home">Return to the home page</Link>
