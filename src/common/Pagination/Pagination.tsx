@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Button } from '../Button/Button';
 import './Pagination.scss';
 
@@ -112,11 +112,13 @@ export const Pagination: React.FC<Props> = ({
           className="product-page__buttons-list"
         >
           {
-            [...Array(totalPages)].map((one, index: number) => {
+            [...Array(totalPages)].map((_one, index: number) => {
+              const keyIndex = index;
+
               return (
                 <li
+                  key={keyIndex}
                   ref={ref}
-                  key={one}
                   className="product-page__buttons-item"
                 >
                   <Button

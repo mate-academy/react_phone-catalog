@@ -29,9 +29,13 @@ export const ProductsSlider = () => {
   };
 
   useEffect(() => {
-    setInterval(() => {
+    const sliderChang = setInterval(() => {
       setVisibleBanner(prevCount => prevCount + 1);
     }, 5000);
+
+    return () => {
+      clearInterval(sliderChang);
+    };
   }, []);
 
   return (
@@ -50,8 +54,10 @@ export const ProductsSlider = () => {
           }}
         >
           {[...Array(banners.length)].map((_one, index) => {
+            const keyIndex = index;
+
             return (
-              <li>
+              <li key={keyIndex}>
                 <div
                   className="slider__images"
                   style={{
@@ -76,7 +82,7 @@ export const ProductsSlider = () => {
       <div className="slider__subbuttons">
         {[...Array(banners.length)].map((_one, index) => {
           return (
-            <div
+            <li
               key={`${index}slider`}
               className={`slider__subbutton ${visibleBanner === index && 'active__subbutton'}`}
               onClick={() => {

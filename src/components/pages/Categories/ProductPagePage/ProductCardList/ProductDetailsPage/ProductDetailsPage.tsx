@@ -10,7 +10,11 @@ import {
   DetailedProductContext,
 } from '../../../../../../context/DetailedProductContext';
 
-export const ProductDetailsPage: React.FC<any> = (
+type Props = {
+  products: any,
+};
+
+export const ProductDetailsPage: React.FC<Props> = (
   { products },
 ) => {
   const { id } = useParams();
@@ -18,13 +22,18 @@ export const ProductDetailsPage: React.FC<any> = (
   const {
     detailedProduct,
     setDetailedProduct,
-  } = useContext<any>(DetailedProductContext);
+  } = useContext(DetailedProductContext);
   const [product, setProduct] = useState();
   const [category, setCategory] = useState('');
 
   const getProduct = async () => {
     const singleProduct = products.find((one: any) => one.id === id);
-    const fetchLink = `/new/products/${singleProduct.itemId}.json`;
+
+    if (!singleProduct) {
+      return;
+    }
+
+    const fetchLink = `../new/products/${singleProduct.itemId}.json`;
     const response = await fetch(fetchLink,
       { method: 'GET' });
 
@@ -33,10 +42,10 @@ export const ProductDetailsPage: React.FC<any> = (
 
       setCategory(singleProduct.category);
 
-      return setDetailedProduct(result);
+      setDetailedProduct(result);
     }
 
-    return setProduct(singleProduct);
+    setProduct(singleProduct);
   };
 
   useEffect(() => {

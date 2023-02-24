@@ -1,4 +1,4 @@
-import { Key, useContext } from 'react';
+import { useContext } from 'react';
 import {
   DetailedProductContext,
 } from '../../../../../../../../context/DetailedProductContext';
@@ -18,9 +18,9 @@ export const ProductTextDesc = () => {
       <ul className="product-desc__list">
         {
           detailedProduct.description.map((one:
-          { title: Key, text: [string] }) => {
+          { title: string; text: string[]; }) => {
             return (
-              <li className="product-desc__item" key={one.title}>
+              <li key={one.title} className="product-desc__item">
                 <h3 className="product-desc__item-title">{one.title}</h3>
                 {one.text.map((text: string) => {
                   return (

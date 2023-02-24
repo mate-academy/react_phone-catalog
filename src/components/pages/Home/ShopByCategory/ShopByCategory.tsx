@@ -6,7 +6,7 @@ type Props = {
   phones: Product[],
 };
 
-export const ShopByCategory:React.FC<Props> = ({ phones }) => {
+export const ShopByCategory: React.FC<Props> = ({ phones }) => {
   const categories = [
     {
       title: 'Mobile phones',
@@ -42,10 +42,12 @@ export const ShopByCategory:React.FC<Props> = ({ phones }) => {
               title, amount, image, background, category,
             }) => {
               return (
-                <li className="category__item">
+                <li
+                  className="category__item"
+                  key={title}
+                >
                   <Link
                     to={`../${category}`}
-                    key={title}
                   >
                     <div className="category__image-block">
                       <img

@@ -136,7 +136,6 @@ const App = () => {
               <main>
                 <ProductDetailsPage
                   products={IPhones}
-                  setProducts={setIPhones}
                 />
                 <ProductsListWithSlider
                   products={shuffeledIPhones}
