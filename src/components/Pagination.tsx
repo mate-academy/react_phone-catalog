@@ -19,10 +19,11 @@ export const Pagination:FC<Props> = ({
   const arrayOfPages = Array.from({ length: numberOfPages }, (_, i) => i + 1);
 
   return (
-    <div className="pagination">
+    <div className="pagination" data-cy="pagination">
       <button
         type="button"
         className="pagination__button"
+        data-cy="paginationLeft"
         disabled={currentPage === 1}
         onClick={() => setCurrentPage(currentPage - 1)}
       >
@@ -32,6 +33,7 @@ export const Pagination:FC<Props> = ({
       {arrayOfPages.map(arrayPage => (
         <button
           type="button"
+          data-cy="paginationRight"
           className={classNames('pagination__button',
             { 'pagination__button--active': arrayPage === currentPage })}
           onClick={() => setCurrentPage(arrayPage)}

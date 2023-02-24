@@ -14,7 +14,7 @@ export const ShopByCategory: FC<Props> = ({ products }) => {
   = products.filter(product => product.type === 'accessories');
 
   return (
-    <div className="category container">
+    <div className="category container" data-cy="categoryLinksContainer">
       <h2 className="category__title">Shop by category</h2>
       <div className="category__content">
         <div className="category__item">

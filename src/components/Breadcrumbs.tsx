@@ -7,7 +7,7 @@ export const Breadcrumbs:FC = () => {
   const section = location.pathname.split('/');
 
   return (
-    <div className="breadcrumbs">
+    <div className="breadcrumbs" data-cy="breadCrumbs">
       <NavLink
         to="/"
         className="breadcrumbs__link"

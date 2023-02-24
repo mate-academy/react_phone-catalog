@@ -80,6 +80,7 @@ export const CartPage: FC<Props> = ({ products }) => {
                   <div className="cart__item" key={product.id}>
                     <button
                       type="button"
+                      data-cy="cartDeleteButton"
                       className="cart__item-delete-btn"
                       onClick={() => {
                         removeCart(product.id);
@@ -126,7 +127,9 @@ export const CartPage: FC<Props> = ({ products }) => {
                 ))}
               </div>
               <div className="cart__sum">
-                <h2 className="cart__sum-amout">{`$${sumTotal.reduce((a: number, b: number) => a + b)}`}</h2>
+                <h2 className="cart__sum-amout" data-cy="productQauntity">
+                  {`$${sumTotal.reduce((a: number, b: number) => a + b)}`}
+                </h2>
                 <p className="cart__sum-items">{`Total price for ${currentCarts.length} items`}</p>
                 <button
                   className="cart__sum-button"

@@ -14,7 +14,10 @@ export const ProductCard: FC<Props> = ({ product }) => {
     = product.price - ((product.price / 100) * product.discount);
 
   return (
-    <div className="products-slider__item">
+    <div
+      className="products-slider__item"
+      data-cy="cardsContainer"
+    >
       <NavLink
         to={`/${product.type}s/${product.id}`}
         className="products-slider__item-link"

@@ -118,7 +118,7 @@ export const ProductDetailsPage: FC<Props> = ({ products }) => {
                     </div>
                   </div>
                   <div className="product-details__info">
-                    <div className="product-details__about">
+                    <div className="product-details__about" data-cy="productDescription">
                       <h2 className="product-details__subtitle">About</h2>
                       <br />
                       <p className="product-details__text">{foundGadget.description}</p>

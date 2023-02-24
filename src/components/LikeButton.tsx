@@ -40,6 +40,7 @@ export const LikeButton: FC<Props> = ({ product }) => {
         },
       )}
       type="button"
+      data-cy="addToFavorite"
       onClick={toggleLike}
     >
       <img src="./img/icons/Like.svg" alt="add" />
