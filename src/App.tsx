@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 import './App.scss';
 import {
-  Routes, Route, Navigate, Link,
+  Routes, Route, Navigate,
 } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { Footer } from './components/Footer/Footer';

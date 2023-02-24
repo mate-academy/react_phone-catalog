@@ -92,7 +92,7 @@ export const ProductsListWithSlider: React.FC<Props> = (
                   product={p}
                   products={products}
                   link={pathname !== '/home'
-                    ? `/${p.category}/${p.id}`
+                    ? `../${p.id}`
                     : `../${p.category}/${p.id}`}
                 />
               </div>
