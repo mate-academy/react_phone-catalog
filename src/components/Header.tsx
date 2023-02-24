@@ -1,22 +1,14 @@
 /* eslint-disable max-len */
-import { FC, useEffect, useState } from 'react';
+import { FC } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Logo } from './Logo';
 import { Navbar } from './Navbar';
-import { CartProduct } from '../types/CartProduct';
 import '../styles/header.scss';
+import { CartProduct } from '../types/CartProduct';
 
 export const Header: FC = () => {
-  const [cartlist, setCartList] = useState(JSON.parse(localStorage.getItem('carts') || '').filter((item: CartProduct) => item.id));
-  const [favlist, setFavList] = useState(JSON.parse(localStorage.getItem('favorites') || '').map((item: string) => item));
-
-  useEffect(() => {
-    setCartList(JSON.parse(localStorage.getItem('carts') || '').filter((item: CartProduct) => item.id));
-  }, [JSON.parse(localStorage.getItem('carts') || '').filter((item: CartProduct) => item.id)]);
-
-  useEffect(() => {
-    setFavList(JSON.parse(localStorage.getItem('favorites') || '').map((item: string) => item));
-  }, [JSON.parse(localStorage.getItem('favorites') || '').map((item: string) => item)]);
+  const fav = JSON.parse(localStorage.getItem('favorites') || '').map((item: string) => item);
+  const cart = JSON.parse(localStorage.getItem('carts') || '').filter((item: CartProduct) => item.id);
 
   return (
     <header className="header">
@@ -30,8 +22,8 @@ export const Header: FC = () => {
           className="header__icon"
         >
           <img src="./img/icons/Like.svg" alt="favorites" />
-          {favlist.length > 0 && (
-            <span className="header__counter">{favlist.length}</span>
+          {fav.length > 0 && (
+            <span className="header__counter">{fav.length}</span>
           )}
         </NavLink>
         <NavLink
@@ -40,8 +32,8 @@ export const Header: FC = () => {
         >
           <img src="./img/icons/Cart.svg" alt="cart" />
 
-          {cartlist.length > 0 && (
-            <span className="header__counter">{cartlist.length}</span>
+          {cart.length > 0 && (
+            <span className="header__counter">{cart.length}</span>
           )}
         </NavLink>
       </div>
