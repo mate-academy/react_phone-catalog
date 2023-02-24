@@ -13,10 +13,13 @@ export const ProductDescPage: React.FC<any> = ({
   products,
   singleProduct,
 }) => {
+  console.log('111111')
   const {
     detailedProduct,
   } = useContext<any>(DetailedProductContext);
-  console.log(detailedProduct)
+
+  console.log(detailedProduct, singleProduct);
+
 
   return (
     <div className="product-desc">
@@ -32,7 +35,7 @@ export const ProductDescPage: React.FC<any> = ({
           />
         </div>
         <div className="product-desc__info">
-          <ProductTextDesc />
+          {/* <ProductTextDesc /> */}
           <div className="product-desc__text">
             <div className="product-desc__tech-details">
               <h2 className="product-desc__title">
@@ -51,7 +54,7 @@ export const ProductDescPage: React.FC<any> = ({
                   <p className="product-desc__key">Cell</p>
                 </div>
                 <div className="product-desc__values body14">
-                  <p className="product-desc__value">
+                  {/* <p className="product-desc__value">
                     {detailedProduct.screen}
                   </p>
                   <p className="product-desc__value">
@@ -74,7 +77,7 @@ export const ProductDescPage: React.FC<any> = ({
                   </p>
                   <p className="product-desc__value">
                     {detailedProduct.cell}
-                  </p>
+                  </p> */}
                 </div>
               </div>
             </div>

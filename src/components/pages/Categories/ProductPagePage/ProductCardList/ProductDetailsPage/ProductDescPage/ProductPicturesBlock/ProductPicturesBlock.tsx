@@ -13,6 +13,8 @@ export const ProductPicturesBlock:React.FC = () => {
     <div className="pictures-block">
       <ul className="pictures-block__list">
         {detailedProduct.images.map((one: string, index: number) => {
+          console.log(one, detailedProduct.images[mainPicture]);
+
           return (
             <li
               key={one}
@@ -23,8 +25,8 @@ export const ProductPicturesBlock:React.FC = () => {
               aria-hidden="true"
             >
               <img
-                src={`new/${one}`}
-                alt="phone"
+                src={`new/${one}` || `/${one}`}
+                alt="product"
                 className="pictures-block__image"
               />
             </li>

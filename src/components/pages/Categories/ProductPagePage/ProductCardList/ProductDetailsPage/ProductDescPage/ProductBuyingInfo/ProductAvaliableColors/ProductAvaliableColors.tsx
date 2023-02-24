@@ -49,8 +49,8 @@ export const ProductAvaliableColors:React.FC<Props> = ({
         Avaliable colors
       </p>
       <ul className="avaliable-colors__list">
-        {
-          detailedProduct.colorsAvailable.map((one: string) => {
+        {detailedProduct
+          && detailedProduct.colorsAvailable.map((one: string) => {
             return (
               <li
                 className={`avaliable-colors__item ${isActive(one) && 'active-color'}`}
@@ -64,8 +64,7 @@ export const ProductAvaliableColors:React.FC<Props> = ({
                 aria-hidden="true"
               />
             );
-          })
-        }
+          })}
       </ul>
       <div className="horizontal-line" />
     </div>

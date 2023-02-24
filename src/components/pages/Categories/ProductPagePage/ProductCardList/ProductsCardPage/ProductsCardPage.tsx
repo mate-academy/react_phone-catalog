@@ -5,6 +5,7 @@ import {
 import { NoProducts } from '../../../../../../common/NoProducts/NoProducts';
 import { Pagination } from '../../../../../../common/Pagination/Pagination';
 import { ProductCard } from '../../../../../../common/ProductCard/ProductCard';
+import { TabletCard } from '../../../../../../common/TabletCard/TabletCard';
 import { SortAndPagesContext } from '../../../../../../context/SortAndPagesContext';
 import { Product } from '../../../../../../types/types';
 
@@ -169,15 +170,23 @@ export const ProductsCardPage: React.FC<Props>
                 <ul className="product-page__list">
                   {visibleProducts && visibleProducts.length
                     ? visibleProducts.map((product: Product) => {
-                      console.log(product)
                       return (
                         <li
                           className="product-page__item"
                           key={product.id}
                         >
-                          <ProductCard
-                            product={product}
-                          />
+                          {product.type === 'tablet' && (
+                            <TabletCard
+                              product={product}
+                              products={products}
+                            />
+                          )}
+                          {product.category === 'phones'
+                            && (
+                              <ProductCard
+                                product={product}
+                              />
+                            )}
                         </li>
                       );
                     })

@@ -73,9 +73,10 @@ const App = () => {
 
       if (response.status === 200) {
         const result = await response.json();
-        const tablets = result.filter((one: any) => one.type === 'tablet')
-        setTablets(tablets);
-        setVisibleTablets(tablets);
+        const tabletsByType = result.filter((one: any) => one.type === 'tablet');
+
+        setTablets(tabletsByType);
+        setVisibleTablets(tabletsByType);
       }
     } catch (err) {
       throw new Error('Error');
@@ -183,6 +184,21 @@ const App = () => {
                   visibleProducts={visibleTablets}
                   title="Tablets"
                   searchInput={searchInput}
+                />
+              </main>
+            )}
+          />
+          <Route
+            path=":id"
+            element={(
+              <main>
+                <ProductDetailsPage
+                  products={tablets}
+                  setProducts={setTablets}
+                />
+                <ProductsListWithSlider
+                  products={tablets}
+                  title="You may also like"
                 />
               </main>
             )}

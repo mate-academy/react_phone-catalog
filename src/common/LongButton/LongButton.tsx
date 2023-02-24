@@ -42,6 +42,7 @@ export const LongButton:React.FC<Props> = ({
 
     event.preventDefault();
     const exists = cartProducts.find((one: any) => {
+      console.log(one, singleProduct)
       if (one.id === singleProduct.id) {
         return one.id === singleProduct.id;
       }
