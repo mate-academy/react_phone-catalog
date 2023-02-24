@@ -7,7 +7,7 @@ import './ProductTextDesc.scss';
 export const ProductTextDesc = () => {
   const {
     detailedProduct,
-  } = useContext<any>(DetailedProductContext);
+  } = useContext(DetailedProductContext);
 
   return (
     <div className="product-desc__text">

@@ -6,7 +6,9 @@ import { NoProducts } from '../../../../../../common/NoProducts/NoProducts';
 import { Pagination } from '../../../../../../common/Pagination/Pagination';
 import { ProductCard } from '../../../../../../common/ProductCard/ProductCard';
 import { TabletCard } from '../../../../../../common/TabletCard/TabletCard';
-import { SortAndPagesContext } from '../../../../../../context/SortAndPagesContext';
+import {
+  SortAndPagesContext,
+} from '../../../../../../context/SortAndPagesContext';
 import { Product } from '../../../../../../types/types';
 
 import './ProductsCardPage.scss';
@@ -16,8 +18,8 @@ type Props = {
   visibleProducts?: Product[],
   title: string,
   searchInput: string,
-  setVisibleProducts?: any,
-  setProducts?: any,
+  setVisibleProducts?: (value: any) => void,
+  setProducts?: (value: any) => void,
 };
 
 export const ProductsCardPage: React.FC<Props>
@@ -32,7 +34,7 @@ export const ProductsCardPage: React.FC<Props>
       setCurrentPage,
       sortingByValue,
       setSortingByValue,
-    } = useContext<any>(SortAndPagesContext);
+    } = useContext(SortAndPagesContext);
 
     const [isProducts, setIsProducts] = useState(false);
     const productsAmount = !searchInput && products ? products.length : 1;
@@ -41,7 +43,7 @@ export const ProductsCardPage: React.FC<Props>
     const lastIndex = currentPage * itemsOnPage;
 
     const sortItemsBy = async (value: string) => {
-      if (!products) {
+      if (!products || !setProducts) {
         return;
       }
 
@@ -78,9 +80,9 @@ export const ProductsCardPage: React.FC<Props>
         return;
       }
 
-      if (products.length) {
+      if (products.length && setVisibleProducts) {
         setVisibleProducts(products.filter((
-          _product: any, index: number,
+          _product: Product, index: number,
         ) => {
           if (firstIndex > products.length) {
             setCurrentPage(Math.ceil(products.length / itemsOnPage));
@@ -175,6 +177,7 @@ export const ProductsCardPage: React.FC<Props>
                           className="product-page__item"
                           key={product.id}
                         >
+
                           {product.type === 'tablet' && (
                             <TabletCard
                               product={product}

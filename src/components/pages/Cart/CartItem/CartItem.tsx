@@ -32,6 +32,7 @@ export const CartItem: React.FC<Props> = ({ product }) => {
 
       return;
     }
+
     setCartProducts(cartProducts.map((p: Product) => {
       if (p.id === product.id) {
         return { ...p, count };

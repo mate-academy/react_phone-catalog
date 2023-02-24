@@ -14,9 +14,8 @@ type Props = {
 export const ProductAvaliableColors:React.FC<Props> = ({
   products,
 }) => {
-  const {
-    detailedProduct, setDetailedProduct,
-  } = useContext<any>(DetailedProductContext);
+  const { detailedProduct, setDetailedProduct }
+  = useContext(DetailedProductContext);
 
   const isActive = (color: string) => color === detailedProduct.color;
   const searchProductByColor = async (color: string) => {

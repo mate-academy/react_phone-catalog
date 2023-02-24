@@ -1,13 +1,12 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { DetailedProductContext } from '../../context/DetailedProductContext';
-import { Button } from '../Button/Button';
+import { Product } from '../../types/types';
 import { LongButton } from '../LongButton/LongButton';
-import './TabletCard.scss';
 
 type Props = {
-  product: any,
-  products?: any,
+  product: Product,
+  products?: Product[],
 };
 
 export const TabletCard: React.FC<Props> = ({ product, products }) => {
@@ -15,18 +14,15 @@ export const TabletCard: React.FC<Props> = ({ product, products }) => {
     imageUrl, name, discount, price, screen, capacity, ram,
   } = product;
 
-  const [isAddedToCart, setIsAddedToCart] = useState(false);
-  const [isAddedToFav, setIsAddedToFav] = useState(false);
-  const { setDetailedProduct } = useContext<any>(DetailedProductContext);
+  const { setDetailedProduct } = useContext(DetailedProductContext);
 
-  console.log(setIsAddedToCart, setIsAddedToFav)
   const getDetailedProduct = async () => {
     if (!products) {
       return;
     }
 
     const newProduct = products.find(
-      (one: any) => one.id === product.id,
+      (one: Product) => one.id === product.id,
     );
 
     if (newProduct) {
@@ -95,18 +91,11 @@ export const TabletCard: React.FC<Props> = ({ product, products }) => {
         </div>
         <div className="product__buttons">
           <LongButton
-            text={isAddedToCart ? 'Added to cart' : 'Add to cart'}
-            className={isAddedToCart ? 'selected' : ''}
-            product={product}
-          />
-          <Button
-            image={isAddedToFav
-              ? 'icons/Favourites Filled (Heart Like).svg'
-              : 'icons/Favourites.svg'}
+            text="This product is sold out"
+            className="disabled"
             product={product}
           />
         </div>
-
       </div>
     </>
   );

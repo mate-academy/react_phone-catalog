@@ -22,3 +22,9 @@
 	border: 1px solid #E2E6E9;
 	color: #27AE60;
 }
+
+.disabled {
+  background-color: #5c5e69;
+	pointer-events: none;
+	cursor: default;
+}

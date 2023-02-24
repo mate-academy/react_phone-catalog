@@ -25,10 +25,10 @@ export const Button:React.FC<Props> = ({
   const {
     favProducts, setFavProducts,
     visibleFavProducts, setVisibleFavProducts,
-  } = useContext<any>(CartAndFavContext);
+  } = useContext(CartAndFavContext);
   const {
     detailedProduct,
-  } = useContext<any>(DetailedProductContext);
+  } = useContext(DetailedProductContext);
   let singleProduct = product;
 
   const toggleFav = async () => {

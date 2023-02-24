@@ -24,27 +24,20 @@ export const ProductDetailsPage: React.FC<any> = (
 
   const getProduct = async () => {
     const singleProduct = products.find((one: any) => one.id === id);
-
-    const fetchLink
-    = singleProduct.category
-      ? `/new/products/${singleProduct.itemId}.json`
-      : `/api/phones/${singleProduct.id}.json`;
-
+    const fetchLink = `/new/products/${singleProduct.itemId}.json`;
     const response = await fetch(fetchLink,
       { method: 'GET' });
 
     if (response.status === 200) {
       const result = await response.json();
 
-      setCategory(singleProduct.category
-        ? singleProduct.category : singleProduct.type);
+      setCategory(singleProduct.category);
 
-      setDetailedProduct(result);
+      return setDetailedProduct(result);
     }
 
     return setProduct(singleProduct);
   };
-
 
   useEffect(() => {
     if (products) {
@@ -74,8 +67,7 @@ export const ProductDetailsPage: React.FC<any> = (
           Back
         </div>
       </div>
-      {id
-      // && id <= products.length
+      {id && id <= products.length
         ? detailedProduct && (
           <ProductDescPage
             products={products}

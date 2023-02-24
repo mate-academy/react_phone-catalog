@@ -14,7 +14,7 @@ import { CartAndFavContext } from '../../../context/CartAndFavContext';
 export const CartPage = () => {
   const navigate = useNavigate();
 
-  const { cartProducts } = useContext<any>(CartAndFavContext);
+  const { cartProducts } = useContext(CartAndFavContext);
   const totalPrice = cartProducts.reduce((current: number, prev: Product) => {
     if (prev.count) {
       return current + (prev.price * prev.count);
@@ -61,12 +61,14 @@ export const CartPage = () => {
                   return (
                     <li className="cart-page__item" key={product.id}>
                       <CartItem
-                        product={product} />
+                        product={product}
+                      />
                     </li>
                   );
                 })}
               </ul>
-            </div><div className="cart-page__price">
+            </div>
+            <div className="cart-page__price">
               <h1 className="cart-page__price-total">
                 $
                 {totalPrice}

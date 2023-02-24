@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 import './App.scss';
 import {
-  Routes, Route, Navigate,
+  Routes, Route, Navigate, Link,
 } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { Footer } from './components/Footer/Footer';
@@ -32,7 +32,7 @@ const App = () => {
   const [tablets, setTablets] = useState([]);
   const [IPhones, setIPhones] = useState([]);
   const [shuffeledIPhones, setShuffeledIPhones] = useState([]);
-  const [visibleIPhones, setVisibleIPhones] = useState(IPhones);
+  const [visibleIPhones, setVisibleIPhones] = useState<Product[]>(IPhones);
   const [visibleTablets, setVisibleTablets] = useState(tablets);
   const [hotPriceProducts, setHotPriceProducts] = useState([]);
   const [brandNewProducts, setBrandNewProducts] = useState([]);
@@ -192,14 +192,13 @@ const App = () => {
             path=":id"
             element={(
               <main>
-                <ProductDetailsPage
-                  products={tablets}
-                  setProducts={setTablets}
-                />
-                <ProductsListWithSlider
-                  products={tablets}
-                  title="You may also like"
-                />
+                <h1>
+                  Ooops..
+                  <br />
+                  This product is sold out
+                </h1>
+
+                <Link to="../../home">Return to the home page</Link>
               </main>
             )}
           />

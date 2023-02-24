@@ -9,7 +9,7 @@ import { Product } from '../../../types/types';
 import './FavouritesPage.scss';
 
 export const FavouritesPage = () => {
-  const { visibleFavProducts } = useContext<any>(CartAndFavContext);
+  const { visibleFavProducts } = useContext(CartAndFavContext);
 
   return (
     <div className="favourites">

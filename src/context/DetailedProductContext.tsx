@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
 
-export const DetailedProductContext = React.createContext(null);
+export const DetailedProductContext
+= React.createContext<null | any>(null);
 
-export const DetailedProductProvider = ({ children }) => {
+type Props = {
+  children: React.ReactNode;
+};
+
+export const DetailedProductProvider: React.FC<Props> = ({ children }) => {
   const [detailedProduct, setDetailedProduct] = useState();
 
   return (

@@ -13,9 +13,9 @@ import { CartAndFavContext } from '../../../context/CartAndFavContext';
 import { SortAndPagesContext } from '../../../context/SortAndPagesContext';
 
 type Props = {
-  setVisibleIPhones: any,
+  setVisibleIPhones: (value: Product[]) => void,
   IPhones: Product[],
-  setSearchInput: any,
+  setSearchInput: (value: string) => void,
   searchInput: string,
 };
 
@@ -28,13 +28,13 @@ export const Header: React.FC<Props> = ({
   const { pathname } = useLocation();
   const {
     cartProducts, favProducts, setVisibleFavProducts,
-  } = useContext<any>(CartAndFavContext);
+  } = useContext(CartAndFavContext);
   const {
     itemsOnPage,
     currentPage,
     setCurrentPage,
     sortingByValue,
-  } = useContext<any>(SortAndPagesContext);
+  } = useContext(SortAndPagesContext);
   const navLinksList = ['home', 'phones', 'tablets', 'accessories'];
   const [isBurgerVisible, setIsBurgerVisible] = useState(false);
   const firstIndex = currentPage * itemsOnPage - itemsOnPage;
@@ -42,10 +42,10 @@ export const Header: React.FC<Props> = ({
 
   const setProductsAccordingToPages = (
     setProducts: (value: any) => void,
-    products: any[],
+    products: Product[],
   ) => {
     setProducts(products.filter((
-      _product: any, index: number,
+      _product: Product, index: number,
     ) => {
       if (firstIndex > products.length) {
         setCurrentPage(Math.ceil(products.length / itemsOnPage));
@@ -89,7 +89,7 @@ export const Header: React.FC<Props> = ({
   useEffect(() => {
     setSearchInput('');
     if (pathname === '/favourites') {
-      setVisibleFavProducts(favProducts.map((one: any) => one));
+      setVisibleFavProducts(favProducts.map((one: Product) => one));
     }
 
     if (pathname === '/phones') {
