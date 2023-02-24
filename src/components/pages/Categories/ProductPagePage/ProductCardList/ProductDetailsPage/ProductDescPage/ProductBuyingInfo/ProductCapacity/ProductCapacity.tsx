@@ -37,6 +37,8 @@ export const ProductCapacity:React.FC<Props> = (
       if (response.status === 200) {
         const result = await response.json();
 
+        window.location.replace(`#/${newProduct.category}/${newProduct.id}`);
+
         return setDetailedProduct(result);
       }
     }

@@ -40,23 +40,27 @@ export const ProductCard: React.FC<Props> = ({
     );
 
     if (newProduct) {
-      const response = await fetch(
-        `new/products/${newProduct.itemId}.json`,
-        {
-          method: 'GET',
-        },
-      );
+      try {
+        const response = await fetch(
+          `new/products/${newProduct.itemId}.json`,
+          {
+            method: 'GET',
+          },
+        );
 
-      if (response.status === 200) {
-        const result = await response.json();
+        if (response.status === 200) {
+          const result = await response.json();
 
-        window.scroll({
-          top: 0,
-          left: 0,
-          behavior: 'smooth',
-        });
+          window.scroll({
+            top: 0,
+            left: 0,
+            behavior: 'smooth',
+          });
 
-        setDetailedProduct(result);
+          setDetailedProduct(result);
+        }
+      } catch (error) {
+        throw new Error(String(error));
       }
     }
   };

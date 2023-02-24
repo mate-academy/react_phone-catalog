@@ -10,8 +10,8 @@ export const CartAndFavProvider: React.FC<Props> = ({ children }) => {
   const [isAddedToCart, setIsAddedToCart] = useState(false);
   const [isAddedToFav, setIsAddedToFav] = useState(false);
 
-  const fav = JSON.parse(localStorage.getItem('favProducts') || '');
-  const cart = JSON.parse(localStorage.getItem('cartProducts') || '');
+  const fav = JSON.parse(localStorage.getItem('favProducts') as string);
+  const cart = JSON.parse(localStorage.getItem('cartProducts') as string);
 
   const [cartProducts, setCartProducts] = useState(cart || []);
   const [favProducts, setFavProducts] = useState(fav || []);

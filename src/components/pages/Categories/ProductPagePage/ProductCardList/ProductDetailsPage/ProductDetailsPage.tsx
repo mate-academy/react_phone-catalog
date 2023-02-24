@@ -33,7 +33,7 @@ export const ProductDetailsPage: React.FC<Props> = (
       return;
     }
 
-    const fetchLink = `../new/products/${singleProduct.itemId}.json`;
+    const fetchLink = `new/products/${singleProduct.itemId}.json`;
     const response = await fetch(fetchLink,
       { method: 'GET' });
 
@@ -41,10 +41,10 @@ export const ProductDetailsPage: React.FC<Props> = (
       const result = await response.json();
 
       setCategory(singleProduct.category);
-
       setDetailedProduct(result);
     }
 
+    setCategory(singleProduct.category);
     setProduct(singleProduct);
   };
 
@@ -52,7 +52,8 @@ export const ProductDetailsPage: React.FC<Props> = (
     if (products) {
       getProduct();
     }
-  }, [products]);
+  }, [products, id, category, product]);
+  // }, []);
 
   return (
     <div className="details__page">
