@@ -161,20 +161,6 @@ const App = () => {
               </main>
             )}
           />
-          <Route
-            path=":id"
-            element={(
-              <main>
-                <h1>
-                  Ooops..
-                  <br />
-                  This product doesn't exist
-                </h1>
-
-                <Link to="../../home">Return to the home page</Link>
-              </main>
-            )}
-          />
         </Route>
 
         <Route path="/accessories">
