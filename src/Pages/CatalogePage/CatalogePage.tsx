@@ -144,13 +144,13 @@ export const PhonesPage: React.FC<PropTypes> = ({ product }) => {
             <div className="catalog__root-box">
               <a href="/">
                 <img
-                  src="../img/Icons/home.svg"
+                  src="img/Icons/home.svg"
                   alt="toHome"
                   className="catalog__home-img"
                 />
               </a>
               <img
-                src="../img/Icons/arr-right-hover.svg"
+                src="img/Icons/arr-right-hover.svg"
                 alt="arr-right"
                 className="catalog__arr-right"
               />
@@ -182,7 +182,7 @@ export const PhonesPage: React.FC<PropTypes> = ({ product }) => {
                     >
                       {defaultValue}
                       <img
-                        src="../img/Icons/arr-down.svg"
+                        src="img/Icons/arr-down.svg"
                         alt="dropdown"
                         className="catalog__drop-icon"
                       />
@@ -232,7 +232,7 @@ export const PhonesPage: React.FC<PropTypes> = ({ product }) => {
                         {itemsPerPage}
                       </span>
                       <img
-                        src="../img/Icons/arr-down.svg"
+                        src="img/Icons/arr-down.svg"
                         alt="dropdown"
                         className="catalog__drop-icon"
                       />

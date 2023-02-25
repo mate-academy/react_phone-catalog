@@ -24,13 +24,13 @@ export const DetailsOfProduct: React.FC<PropTypes> = ({
       <div className="details__root-box">
         <Link to="/">
           <img
-            src="../img/Icons/home.svg"
+            src="img/Icons/home.svg"
             alt="toHome"
             className="details__home-img"
           />
         </Link>
         <img
-          src="../img/Icons/arr-right-hover.svg"
+          src="img/Icons/arr-right-hover.svg"
           alt="arr-right"
           className="details__arr-right"
         />
@@ -38,7 +38,7 @@ export const DetailsOfProduct: React.FC<PropTypes> = ({
           Phones
         </Link>
         <img
-          src="../img/Icons/arr-right-hover.svg"
+          src="img/Icons/arr-right-hover.svg"
           alt="arr-right"
           className="details__arr-right"
         />
@@ -48,7 +48,7 @@ export const DetailsOfProduct: React.FC<PropTypes> = ({
       </div>
       <a className="details__back-link" href="/">
         <img
-          src="../img/Icons/arr-left.svg"
+          src="img/Icons/arr-left.svg"
           alt="back-arrow"
           className="details__back-arrow"
         />

@@ -34,7 +34,7 @@ export const ImagesOnProductPage: React.FC<PropTypes> = ({ images }) => {
               >
                 <div
                   className="imagesOnProduct__small-img"
-                  style={{ backgroundImage: `url(../_new/${image})` }}
+                  style={{ backgroundImage: `url(${image})` }}
                 />
               </button>
             );
@@ -43,7 +43,7 @@ export const ImagesOnProductPage: React.FC<PropTypes> = ({ images }) => {
         <div className="imagesOnProduct__main-image">
           <div
             className="imagesOnProduct__big-image"
-            style={{ backgroundImage: `url(../_new/${images[currentIndex]})` }}
+            style={{ backgroundImage: `url(${images[currentIndex]})` }}
           />
         </div>
       </div>

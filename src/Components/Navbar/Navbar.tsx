@@ -49,7 +49,7 @@ export const Navbar = () => {
           className="logo header__logo"
         >
           <img
-            src="../img/Icons/logo-new.svg"
+            src="img/Icons/logo-new.svg"
             alt="my-phone-logo"
             className="logo__img"
           />
@@ -106,7 +106,7 @@ export const Navbar = () => {
             data-count-favorite={itemsInFavorite.length}
           >
             <img
-              src="../img/Icons/heart.svg"
+              src="img/Icons/heart.svg"
               alt="favorite"
               className="header__box-image"
             />
@@ -128,7 +128,7 @@ export const Navbar = () => {
             data-count-cart={totalLength}
           >
             <img
-              src="../img/Icons/cart.svg"
+              src="img/Icons/cart.svg"
               alt="cart"
               className="header__box-image"
             />

@@ -44,13 +44,13 @@ export const Favourites = () => {
             to="/"
           >
             <img
-              src="../img/Icons/home.svg"
+              src="img/Icons/home.svg"
               alt="toHome"
               className="favorite__home-img"
             />
           </Link>
           <img
-            src="../img/Icons/arr-right-hover.svg"
+            src="img/Icons/arr-right-hover.svg"
             alt="arr-right"
             className="favorite__arr-right"
           />

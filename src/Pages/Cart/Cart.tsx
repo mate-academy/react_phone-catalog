@@ -61,13 +61,13 @@ export const Cart = () => {
         <div className="cart__root-box">
           <Link to="/">
             <img
-              src="../img/Icons/home.svg"
+              src="img/Icons/home.svg"
               alt="toHome"
               className="cart__home-img"
             />
           </Link>
           <img
-            src="../img/Icons/arr-right-hover.svg"
+            src="img/Icons/arr-right-hover.svg"
             alt="arr-right"
             className="cart__arr-right"
           />
@@ -100,7 +100,7 @@ export const Cart = () => {
                         onClick={(e) => handleClick(e, 'delete', item)}
                       >
                         <img
-                          src="../img/Icons/cross.svg"
+                          src="img/Icons/cross.svg"
                           alt="delete from cart"
                           className="cart__button-cross--img"
                         />
@@ -113,7 +113,7 @@ export const Cart = () => {
                           }}
                         >
                           <img
-                            src={`../_new/${image}`}
+                            src={image}
                             className="cart__chosen-img"
                             alt="chosen-item"
                           />
@@ -142,7 +142,7 @@ export const Cart = () => {
                           onClick={(e) => handleClick(e, 'subtract', item)}
                         >
                           <img
-                            src="../img/Icons/minus.svg"
+                            src="img/Icons/minus.svg"
                             alt="remove-one"
                             className="cart__button-cataloge--img"
                           />
@@ -160,7 +160,7 @@ export const Cart = () => {
                           type="button"
                           onClick={(e) => handleClick(e, 'add', item)}
                         >
-                          <img src="../img/Icons/Plus.svg" alt="add-one" />
+                          <img src="img/Icons/Plus.svg" alt="add-one" />
                         </button>
                       </div>
                       <p className="cart__price-cataloge">

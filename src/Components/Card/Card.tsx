@@ -90,7 +90,7 @@ export const Card: React.FC<PropTypes> = ({ product }) => {
           <img
             alt="product"
             className="card__img"
-            src={`../_new/${image}`}
+            src={image}
           />
         </Link>
       </div>
