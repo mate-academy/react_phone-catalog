@@ -1,0 +1,129 @@
+@import "../../utils/mixins";
+@import "../../utils/variables";
+
+.card {
+  width: 250px;
+  height: 520px;
+  padding: 32px 24px 24px;
+  border: 1px solid #e2e6e9;
+
+  &__img-box {
+    width: 208px;
+    height: 208px;
+    margin-bottom: 24px;
+  }
+
+  &__img {
+    margin: 0 auto;
+    display: block;
+    height: 200px;
+    width: max-content;
+  }
+
+  &__name {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    height: 42px;
+    margin-bottom: 7px;
+  }
+
+  &__price {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #e2e6e9;
+  }
+
+  &__price-amount {
+    &--old {
+      font-weight: 500;
+      font-size: 22px;
+      line-height: 28px;
+      text-decoration-line: line-through;
+      color: $color-secondary;
+    }
+  }
+
+  &__desc {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+  }
+
+  &__box-left,
+  &__box-right {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__desc-title {
+    color: $color-secondary;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  &__desc-char {
+    color: $color-primary;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    text-align: right;
+  }
+
+  &__box-button {
+    display: flex;
+    gap: 8px;
+    justify-content: space-between;
+  }
+
+  &__button {
+    width: 100%;
+    height: 40px;
+    background-color: $color-primary;
+    color: #fff;
+    cursor: pointer;
+    transition: 0.3s linear;
+
+    &--active {
+      color: $color-green;
+      background-color: $color-white;
+      border: 1px solid #e2e6e9;
+    }
+  }
+
+  &__button-heart {
+    cursor: pointer;
+    border: 1px solid #b4bdc4;
+    background-color: white;
+    width: 40px;
+    transition: 0.3s linear;
+
+    &--active {
+      border: 1px solid #e2e6e9;
+    }
+  }
+
+  &__button-img {
+    background-image: url(../../img/Icons/heart.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
+    display: block;
+    transition: 0.3s linear;
+
+    &--active {
+      background-image: url(../../img/Icons/Heart_filled.svg);
+    }
+  }
+
+  &:hover {
+    box-shadow: 0 5px 5px -5px rgba(0, 0, 0, 0.5);
+    border: 1px solid $color-primary;
+  }
+}

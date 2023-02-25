@@ -1,0 +1,103 @@
+@import "../../utils/mixins";
+@import "../../utils/variables";
+
+.imagesOnProduct {
+
+  &__images {
+    display: flex;
+    align-items: center;
+    flex-direction: column-reverse;
+    gap: 34px;
+    margin-bottom: 40px;
+
+    @include onDesktopSmall {
+      flex-direction: row;
+      margin-bottom: 0;
+    }
+  }
+
+  &__left-block-img {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+
+    @include onDesktopSmall {
+      flex-direction: column;
+    }
+  }
+
+  &__main-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 280px;
+    height: 280px;
+
+    @include onDesktopSmall {
+      width: 464px;
+      height: 464px;
+    }
+  }
+
+  &__small-img-wrap {
+    height: 40px;
+    width: 40px;
+    border: 1px solid#C4C4C4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $color-white;
+    transition: 0.3s linear;
+
+    &:hover {
+      box-shadow: 0 5px 5px -5px rgba(0, 0, 0, 0.5);
+      border: 1px solid $color-primary;
+    }
+
+    &--active {
+      border: 1px solid $color-primary;
+    }
+
+    @include onTablet {
+      height: 60px;
+      width: 60px;
+    }
+
+    @include onDesktopSmall {
+      height: 80px;
+      width: 80px;
+    }
+  }
+
+  &__small-img {
+    height: 33px;
+    width: 100%;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: block;
+
+    @include onTablet {
+      height: 43px;
+    }
+
+    @include onDesktopSmall {
+      height: 66px;
+    }
+  }
+
+  &__big-image {
+    height: 280px;
+    display: block;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    transition: 0.1s linear;
+
+    @include onDesktopSmall {
+      height: 442px;
+    }
+  }
+}

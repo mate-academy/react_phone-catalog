@@ -1,0 +1,52 @@
+.page {
+  &__section-header {
+    margin: 0 auto;
+    position: sticky;
+    z-index: 1;
+    top: 0;
+    min-width: 100%;
+    max-width: 1920px;
+    margin-bottom: 40px;
+  }
+
+  &__main {
+    flex-grow: 1;
+  }
+
+  &__content {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__section-footer {
+    padding: 0 30px;
+    margin: 0 auto;
+    min-width: 100%;
+    max-width: 1920px;
+
+    @include onTablet {
+      padding: 0 70px;
+    }
+
+    @include onDesktopSmall {
+      padding: 0 220px;
+    }
+
+    @include onDesktop {
+      padding: 0 280px;
+    }
+  }
+
+  &__section {
+    margin-bottom: 50px;
+
+    @include onTablet {
+      margin-bottom: 60px;
+    }
+
+    @include onDesktop {
+      margin-bottom: 80px;
+    }
+  }
+}
