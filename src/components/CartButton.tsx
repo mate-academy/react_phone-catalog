@@ -8,32 +8,50 @@ type Props = {
 };
 
 export const CartButton: FC<Props> = ({ product }) => {
-  const [isAddCart, setIsAddCart] = useState(false);
+  const [addCart, setAddCart] = useState(false);
 
-  const toggleCart = () => {
-    const carts = JSON.parse(localStorage.getItem('carts') || '');
-    const newCart = {
-      id: product.id,
-      count: 1,
-      price: product.price - ((product.price / 100) * product.discount),
-    };
+  const addToCart = () => {
+    let cart = [];
 
-    const foundCart
-      = carts.find((item: CartProduct) => item.id === product.id);
+    if (localStorage.getItem('carts')) {
+      cart = JSON.parse(localStorage.getItem('carts') || '');
 
-    if (!foundCart) {
-      localStorage.setItem('carts', JSON.stringify([
-        ...carts, newCart,
-      ]));
+      const foundCart = cart.find(
+        (item: CartProduct) => item.id === product.id,
+      );
+
+      const newCart = {
+        id: product.id,
+        count: 1,
+        price: product.price - ((product.price / 100) * product.discount),
+      };
+
+      if (!foundCart) {
+        localStorage.setItem('carts', JSON.stringify([
+          ...cart,
+          newCart,
+        ]));
+      }
+
+      setAddCart(!addCart);
     }
+  };
 
-    if (foundCart) {
-      localStorage.setItem('carts', JSON.stringify([
-        ...carts.filter((item: CartProduct) => item.id !== product.id),
-      ]));
+  const removeFromCart = () => {
+    let cart = [];
+
+    if (localStorage.getItem('carts')) {
+      cart = JSON.parse(localStorage.getItem('carts') || '');
+      const foundCart = cart.find((p: CartProduct) => p.id === product.id);
+
+      if (foundCart) {
+        localStorage.setItem('carts', JSON.stringify([...cart.filter(
+          (p: CartProduct) => p.id !== product.id,
+        )]));
+      }
+
+      setAddCart(!addCart);
     }
-
-    setIsAddCart(!isAddCart);
   };
 
   return (
@@ -45,7 +63,13 @@ export const CartButton: FC<Props> = ({ product }) => {
         },
       )}
       type="button"
-      onClick={toggleCart}
+      onClick={() => {
+        if (!localStorage.getItem('carts')?.includes(product.id)) {
+          addToCart();
+        } else {
+          removeFromCart();
+        }
+      }}
     >
       {localStorage.getItem('carts')?.includes(product.id) && (
         'Added to cart'

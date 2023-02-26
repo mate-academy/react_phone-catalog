@@ -10,8 +10,10 @@ export const LikeButton: FC<Props> = ({ product }) => {
   const [isAddLike, setIsAddLike] = useState(false);
 
   const toggleLike = () => {
+    let likes = [];
+
     if (localStorage.getItem('favorites')) {
-      const likes = JSON.parse(localStorage.getItem('favorites') || '');
+      likes = JSON.parse(localStorage.getItem('favorites') || '');
 
       const foundLike = likes.includes(product.id);
 

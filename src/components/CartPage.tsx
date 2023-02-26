@@ -57,13 +57,17 @@ export const CartPage: FC<Props> = ({ products }) => {
   };
 
   const removeCart = (productId: string) => {
-    const carts = JSON.parse(localStorage.getItem('carts') || '');
+    let cart = [];
 
-    localStorage.setItem('carts', JSON.stringify([
-      ...carts.filter((cartItem: CartProduct) => cartItem.id !== productId),
-    ]));
+    if (localStorage.getItem('carts')) {
+      cart = JSON.parse(localStorage.getItem('carts') || '');
 
-    setIsAction(!isAction);
+      localStorage.setItem('carts', JSON.stringify([
+        ...cart.filter((cartItem: CartProduct) => cartItem.id !== productId),
+      ]));
+
+      setIsAction(!isAction);
+    }
   };
 
   return (
