@@ -13,11 +13,12 @@ type Props = {
 
 export const CartPage: FC<Props> = ({ products }) => {
   const [isAction, setIsAction] = useState(false);
-  const currentCarts = JSON.parse(localStorage.getItem('carts') || '');
 
   const availableCarts = products.filter(product => (
     localStorage.getItem('carts')?.includes(product.id)
   ));
+
+  const currentCarts = JSON.parse(localStorage.getItem('carts') || '');
 
   const sumTotal
     = currentCarts.map((product: CartProduct) => product.price * product.count);
