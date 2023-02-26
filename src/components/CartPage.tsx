@@ -26,15 +26,20 @@ export const CartPage: FC<Props> = ({ products }) => {
     const item = currentCarts.find(
       (cartItem: CartProduct) => cartItem.id === productId,
     );
-    const carts = JSON.parse(localStorage.getItem('carts') || '');
 
-    localStorage.setItem('carts', JSON.stringify([
-      ...carts.filter((cartItem: CartProduct) => cartItem.id !== productId),
-      {
-        ...item,
-        count: item.count + 1,
-      },
-    ]));
+    let carts = [];
+
+    if (localStorage.getItem('carts')) {
+      carts = JSON.parse(localStorage.getItem('carts') || '');
+
+      localStorage.setItem('carts', JSON.stringify([
+        ...carts.filter((cartItem: CartProduct) => cartItem.id !== productId),
+        {
+          ...item,
+          count: item.count + 1,
+        },
+      ]));
+    }
 
     setIsAction(!isAction);
   };
@@ -43,15 +48,20 @@ export const CartPage: FC<Props> = ({ products }) => {
     const item = currentCarts.find(
       (cartItem: CartProduct) => cartItem.id === productId,
     );
-    const carts = JSON.parse(localStorage.getItem('carts') || '');
 
-    localStorage.setItem('carts', JSON.stringify([
-      ...carts.filter((cartItem: CartProduct) => cartItem.id !== productId),
-      {
-        ...item,
-        count: item.count - 1 || 1,
-      },
-    ]));
+    let carts = [];
+
+    if (localStorage.getItem('carts')) {
+      carts = JSON.parse(localStorage.getItem('carts') || '');
+
+      localStorage.setItem('carts', JSON.stringify([
+        ...carts.filter((cartItem: CartProduct) => cartItem.id !== productId),
+        {
+          ...item,
+          count: item.count - 1 || 1,
+        },
+      ]));
+    }
 
     setIsAction(!isAction);
   };
