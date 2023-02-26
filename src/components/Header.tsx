@@ -6,8 +6,8 @@ import { Navbar } from './Navbar';
 import '../styles/header.scss';
 
 export const Header: FC = () => {
-  const fav = JSON.parse(localStorage.getItem('favorites') || '');
-  const cart = JSON.parse(localStorage.getItem('carts') || '');
+  const fav = JSON.parse(localStorage.getItem('favorites') || '').length;
+  const cart = JSON.parse(localStorage.getItem('carts') || '').length;
 
   return (
     <header className="header">
@@ -21,8 +21,8 @@ export const Header: FC = () => {
           className="header__icon"
         >
           <img src="./img/icons/Like.svg" alt="favorites" />
-          {fav.length > 0 && (
-            <span className="header__counter">{fav.length}</span>
+          {fav > 0 && (
+            <span className="header__counter">{fav}</span>
           )}
         </NavLink>
         <NavLink
@@ -31,8 +31,8 @@ export const Header: FC = () => {
         >
           <img src="./img/icons/Cart.svg" alt="cart" />
 
-          {cart.length > 0 && (
-            <span className="header__counter">{cart.length}</span>
+          {cart > 0 && (
+            <span className="header__counter">{cart}</span>
           )}
         </NavLink>
       </div>
