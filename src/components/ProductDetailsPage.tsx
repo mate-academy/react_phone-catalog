@@ -87,7 +87,7 @@ export const ProductDetailsPage: FC<Props> = ({ products }) => {
                         )}
                       </p>
                       <div className="products-slider__item-buttons">
-                        <CartButton product={device} />
+                        <CartButton id={device.id} product={device} />
                         <LikeButton product={device} />
                       </div>
                       <br />

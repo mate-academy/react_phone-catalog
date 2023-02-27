@@ -49,7 +49,7 @@ const App: FC = () => {
       <Route path="/tablets" element={<ProductsList products={tabletList} isloading={isloading} title="Tablets" />} />
       <Route path="/tablets/:productId" element={<ProductDetailsPage products={tabletList} />} />
       <Route path="/accessories" element={<ProductsList products={accessoriesList} isloading={isloading} title="Accessories" />} />
-      <Route path="/cart" element={<CartPage products={products} />} />
+      <Route path="/cart" element={<CartPage />} />
       <Route path="/favorites" element={<FavoritesPage products={products} />} />
       <Route path="/*" element={<PageNotFound />} />
     </Routes>

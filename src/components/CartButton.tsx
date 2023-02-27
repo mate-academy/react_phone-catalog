@@ -1,54 +1,50 @@
 import classNames from 'classnames';
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { Product } from '../types/Product';
 import { CartProduct } from '../types/CartProduct';
 
 type Props = {
+  id: string,
   product: Product,
 };
 
-export const CartButton: FC<Props> = ({ product }) => {
+export const CartButton: FC<Props> = ({ id, product }) => {
   const [addCart, setAddCart] = useState(false);
 
+  useEffect(() => {
+    const storageValue: string | null = localStorage.getItem('cart');
+    const parsedStorage: CartProduct[] | [] = storageValue
+      ? JSON.parse(storageValue)
+      : [];
+
+    if (parsedStorage.find(
+      (cartList: CartProduct) => cartList.item.id === id,
+    )) {
+      setAddCart(true);
+    } else {
+      setAddCart(false);
+    }
+  }, []);
+
   const addToCart = () => {
-    let cart = [];
+    if (addCart) {
+      const storageValue: string | null = localStorage.getItem('cart');
 
-    if (localStorage.getItem('carts')) {
-      cart = JSON.parse(localStorage.getItem('carts') || '');
+      let cartStorage = storageValue ? JSON.parse(storageValue) : [];
 
-      const foundCart = cart.find(
-        (item: CartProduct) => item.id === product.id,
-      );
-
-      const newCart = {
-        id: product.id,
-        count: 1,
-        price: product.price - ((product.price / 100) * product.discount),
-      };
-
-      if (!foundCart) {
-        localStorage.setItem('carts', JSON.stringify([
-          ...cart,
-          newCart,
-        ]));
-      }
+      cartStorage = cartStorage.filter((cartList: any) => (
+        cartList.item.id !== id
+      ));
+      window.localStorage.setItem('cart', JSON.stringify(cartStorage));
 
       setAddCart(!addCart);
-    }
-  };
+    } else {
+      const storageValue: string | null = localStorage.getItem('cart');
 
-  const removeFromCart = () => {
-    let cart = [];
+      const cartStorage = storageValue ? JSON.parse(storageValue) : [];
 
-    if (localStorage.getItem('carts')) {
-      cart = JSON.parse(localStorage.getItem('carts') || '');
-      const foundCart = cart.find((p: CartProduct) => p.id === product.id);
-
-      if (foundCart) {
-        localStorage.setItem('carts', JSON.stringify([...cart.filter(
-          (p: CartProduct) => p.id !== product.id,
-        )]));
-      }
+      cartStorage.push({ count: 1, item: { ...product } });
+      window.localStorage.setItem('cart', JSON.stringify(cartStorage));
 
       setAddCart(!addCart);
     }
@@ -58,18 +54,11 @@ export const CartButton: FC<Props> = ({ product }) => {
     <button
       className={classNames(
         'products-slider__item-button products-slider__item-button-cart', {
-          'products-slider__item-button-cart--active':
-          localStorage.getItem('carts')?.includes(product.id),
+          'products-slider__item-button-cart--active': addCart,
         },
       )}
       type="button"
-      onClick={() => {
-        if (!localStorage.getItem('carts')?.includes(product.id)) {
-          addToCart();
-        } else {
-          removeFromCart();
-        }
-      }}
+      onClick={() => addToCart()}
     >
       {localStorage.getItem('carts')?.includes(product.id) && (
         'Added to cart'

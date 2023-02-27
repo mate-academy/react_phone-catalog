@@ -7,15 +7,25 @@ import '../styles/header.scss';
 
 export const Header: FC = () => {
   let fav = 0;
-  let cart = 0;
 
   if (localStorage.getItem('favorites')) {
     fav = JSON.parse(localStorage.getItem('favorites') || '').length;
   }
 
-  if (localStorage.getItem('carts')) {
-    cart = JSON.parse(localStorage.getItem('carts') || '').length;
-  }
+  const cartCounter = () => {
+    const count: string | null = localStorage.getItem('cart');
+    const counter = count ? JSON.parse(count) : [];
+
+    if (counter.length > 0) {
+      return (
+        <span className="header__counter">
+          {counter.length}
+        </span>
+      );
+    }
+
+    return '';
+  };
 
   return (
     <header className="header">
@@ -39,9 +49,7 @@ export const Header: FC = () => {
         >
           <img src="./img/icons/Cart.svg" alt="cart" />
 
-          {cart > 0 && (
-            <span className="header__counter">{cart}</span>
-          )}
+          {cartCounter()}
         </NavLink>
       </div>
 
