@@ -32,7 +32,7 @@ export const CartButton: FC<Props> = ({ id, product }) => {
 
       let cartStorage = storageValue ? JSON.parse(storageValue) : [];
 
-      cartStorage = cartStorage.filter((cartList: any) => (
+      cartStorage = cartStorage.filter((cartList: CartProduct) => (
         cartList.item.id !== id
       ));
       window.localStorage.setItem('cart', JSON.stringify(cartStorage));

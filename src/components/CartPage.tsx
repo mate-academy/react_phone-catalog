@@ -34,8 +34,8 @@ export const CartPage: FC = () => {
     ), 0);
   };
 
-  const updateCount = (id: any, itemCount: any) => {
-    setCart(cart.map((cartItem: any) => {
+  const updateCount = (id: string, itemCount: number) => {
+    setCart(cart.map((cartItem: CartProduct) => {
       if (id === cartItem.item.id) {
         return ({
           ...cartItem,
