@@ -10,12 +10,12 @@ export const CartPage: FC = () => {
   const [cart, setCart] = useState<CartProduct[]>([]);
 
   useEffect(() => {
-    const storageValue: string | null = localStorage.getItem('cart');
-    const parsedStorage: CartProduct[] | [] = storageValue
-      ? JSON.parse(storageValue)
+    const value: string | null = localStorage.getItem('cart');
+    const cartStorage: CartProduct[] | [] = value
+      ? JSON.parse(value)
       : [];
 
-    setCart(parsedStorage);
+    setCart(cartStorage);
   }, []);
 
   useEffect(() => {

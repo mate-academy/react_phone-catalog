@@ -1,13 +1,14 @@
 @import "./vars.scss";
 
 .cart {
-  padding: 40px 0;
+  padding-bottom: 40px;
 
   &__title {
     font-weight: bold;
     font-size: 32px;
     line-height: 41px;
     color: #313237;
+    padding-top: 20px;
     padding-bottom: 24px;
   }
 

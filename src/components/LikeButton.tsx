@@ -1,35 +1,47 @@
 import classNames from 'classnames';
-import { FC, useState } from 'react';
+import { FC, useState, useEffect } from 'react';
 import { Product } from '../types/Product';
 
 type Props = {
+  id: string,
   product: Product;
 };
 
-export const LikeButton: FC<Props> = ({ product }) => {
+export const LikeButton: FC<Props> = ({ id, product }) => {
   const [isAddLike, setIsAddLike] = useState(false);
 
+  useEffect(() => {
+    const value: string | null = localStorage.getItem('favourite');
+    const likeStorage: Product[] | [] = value
+      ? JSON.parse(value)
+      : [];
+
+    if (likeStorage.find((item: Product) => item.id === id)) {
+      setIsAddLike(true);
+    } else {
+      setIsAddLike(false);
+    }
+  }, []);
+
   const toggleLike = () => {
-    let likes = [];
+    if (isAddLike) {
+      const value: string | null = localStorage.getItem('favourite');
 
-    if (localStorage.getItem('favorites')) {
-      likes = JSON.parse(localStorage.getItem('favorites') || '');
+      let likeStorage = value ? JSON.parse(value) : [];
 
-      const foundLike = likes.includes(product.id);
+      likeStorage = likeStorage.filter((item: Product) => item.id !== id);
+      window.localStorage.setItem('favourite', JSON.stringify(likeStorage));
 
-      if (!foundLike) {
-        localStorage.setItem('favorites', JSON.stringify([
-          ...likes, product.id,
-        ]));
-        setIsAddLike(!isAddLike);
-      }
+      setIsAddLike(!isAddLike);
+    } else {
+      const value: string | null = localStorage.getItem('favourite');
 
-      if (foundLike) {
-        localStorage.setItem('favorites', JSON.stringify([
-          ...likes.filter((item: string) => item !== product.id),
-        ]));
-        setIsAddLike(!isAddLike);
-      }
+      const likeStorage = value ? JSON.parse(value) : [];
+
+      likeStorage.push(product);
+      window.localStorage.setItem('favourite', JSON.stringify(likeStorage));
+
+      setIsAddLike(!isAddLike);
     }
   };
 
@@ -37,8 +49,7 @@ export const LikeButton: FC<Props> = ({ product }) => {
     <button
       className={classNames(
         'products-slider__item-button products-slider__item-button-favorite', {
-          'products-slider__item-button-favorite--active':
-          localStorage.getItem('favorites')?.includes(product.id),
+          'products-slider__item-button-favorite--active': isAddLike,
         },
       )}
       type="button"

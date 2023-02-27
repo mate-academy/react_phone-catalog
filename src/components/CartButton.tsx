@@ -12,25 +12,25 @@ export const CartButton: FC<Props> = ({ id, product }) => {
   const [addCart, setAddCart] = useState(false);
 
   useEffect(() => {
-    const storageValue: string | null = localStorage.getItem('cart');
-    const parsedStorage: CartProduct[] | [] = storageValue
-      ? JSON.parse(storageValue)
+    const value: string | null = localStorage.getItem('cart');
+    const storage: CartProduct[] | [] = value
+      ? JSON.parse(value)
       : [];
 
-    if (parsedStorage.find(
+    if (storage.find(
       (cartList: CartProduct) => cartList.item.id === id,
     )) {
       setAddCart(true);
     } else {
       setAddCart(false);
     }
-  }, []);
+  });
 
-  const addToCart = () => {
+  const toggleCart = () => {
     if (addCart) {
-      const storageValue: string | null = localStorage.getItem('cart');
+      const value: string | null = localStorage.getItem('cart');
 
-      let cartStorage = storageValue ? JSON.parse(storageValue) : [];
+      let cartStorage = value ? JSON.parse(value) : [];
 
       cartStorage = cartStorage.filter((cartList: CartProduct) => (
         cartList.item.id !== id
@@ -39,9 +39,9 @@ export const CartButton: FC<Props> = ({ id, product }) => {
 
       setAddCart(!addCart);
     } else {
-      const storageValue: string | null = localStorage.getItem('cart');
+      const value: string | null = localStorage.getItem('cart');
 
-      const cartStorage = storageValue ? JSON.parse(storageValue) : [];
+      const cartStorage = value ? JSON.parse(value) : [];
 
       cartStorage.push({ count: 1, item: { ...product } });
       window.localStorage.setItem('cart', JSON.stringify(cartStorage));
@@ -58,7 +58,7 @@ export const CartButton: FC<Props> = ({ id, product }) => {
         },
       )}
       type="button"
-      onClick={() => addToCart()}
+      onClick={() => toggleCart()}
     >
       {localStorage.getItem('carts')?.includes(product.id) && (
         'Added to cart'

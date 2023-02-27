@@ -50,7 +50,7 @@ const App: FC = () => {
       <Route path="/tablets/:productId" element={<ProductDetailsPage products={tabletList} />} />
       <Route path="/accessories" element={<ProductsList products={accessoriesList} isloading={isloading} title="Accessories" />} />
       <Route path="/cart" element={<CartPage />} />
-      <Route path="/favorites" element={<FavoritesPage products={products} />} />
+      <Route path="/favorites" element={<FavoritesPage />} />
       <Route path="/*" element={<PageNotFound />} />
     </Routes>
   );
