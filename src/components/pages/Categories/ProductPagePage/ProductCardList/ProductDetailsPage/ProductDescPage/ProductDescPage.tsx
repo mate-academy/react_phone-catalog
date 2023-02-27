@@ -21,7 +21,7 @@ export const ProductDescPage: React.FC<Props> = ({
 }) => {
   const {
     detailedProduct,
-  } = useContext<any>(DetailedProductContext);
+  } = useContext(DetailedProductContext);
 
   return (
     <div className="product-desc">

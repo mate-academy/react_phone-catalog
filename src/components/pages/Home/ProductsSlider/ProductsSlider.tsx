@@ -46,6 +46,7 @@ export const ProductsSlider = () => {
           onClick={moveLeft}
           image="icons/Chevron (Arrow Left).svg"
           alt="arrow-left"
+          imageClass="arrow-left__active"
         />
         <ul
           style={{
@@ -76,6 +77,7 @@ export const ProductsSlider = () => {
           onClick={moveRight}
           image="icons/Chevron (Arrow Right).svg"
           alt="arrow-right"
+          imageClass="arrow-right__active"
         />
       </div>
 

@@ -35,3 +35,7 @@
 		border: none;
 	}
 }
+
+.button-left__active, .button-right__active, .arrow-top__active {
+	filter: invert(1%) sepia(1%) brightness(0%) contrast(1);
+}

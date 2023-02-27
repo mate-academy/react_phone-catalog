@@ -18,7 +18,7 @@ type Props = {
   products?: Product[],
 };
 
-export const Button:React.FC<Props> = ({
+export const Button: React.FC<Props> = ({
   num, image, alt, className, onClick,
   imageClass, product, products,
 }) => {
@@ -76,6 +76,7 @@ export const Button:React.FC<Props> = ({
         : onClick}
       className={`button-link ${className}`}
       type="button"
+      style={{ border: imageClass && '1px solid rgba(180, 189, 195, 1)' }}
     >
       {
         num ? <div>{num}</div>

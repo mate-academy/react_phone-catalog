@@ -15,6 +15,8 @@ export const Pagination: React.FC<Props> = ({
   const [elementWidth, setElementWidth] = useState(0);
   const [blockWidth, setBlockWidth] = useState(0);
   const [marginLeft, setMarginLeft] = useState(0);
+  const [leftButtonClass, setLeftButtonClass] = useState<string>('');
+  const [rightButtonClass, setRightButtonClass] = useState<string>('');
 
   useEffect(() => {
     setElementWidth(ref.current.offsetWidth);
@@ -66,12 +68,7 @@ export const Pagination: React.FC<Props> = ({
       return;
     }
 
-    if (
-      currentPage === 2
-      || currentPage === 3
-      || currentPage === 4
-      || currentPage === 5
-    ) {
+    if ([2, 3, 4, 5].includes(currentPage)) {
       setMarginLeft(0);
       setCurrentPage(currentPage - 1);
 
@@ -85,10 +82,20 @@ export const Pagination: React.FC<Props> = ({
   };
 
   useEffect(() => {
+    setRightButtonClass('button-right__active');
+    setLeftButtonClass('button-right__active');
     if (totalPages <= currentPage) {
       setMarginLeft((totalPages - 5) * elementWidth);
     }
-  }, [totalPages]);
+
+    if (totalPages === currentPage) {
+      setRightButtonClass('');
+    }
+
+    if (currentPage <= 1) {
+      setLeftButtonClass('');
+    }
+  }, [totalPages, currentPage]);
 
   return (
     <div
@@ -99,6 +106,7 @@ export const Pagination: React.FC<Props> = ({
         image="icons/Chevron (Arrow Left).svg"
         alt="arrow-left"
         onClick={movePagesLeft}
+        imageClass={leftButtonClass}
       />
       <div
         className="product-page__buttons"
@@ -140,6 +148,7 @@ export const Pagination: React.FC<Props> = ({
         image="icons/Chevron (Arrow Right).svg"
         onClick={movePagesRight}
         alt="arrow-right"
+        imageClass={rightButtonClass}
       />
     </div>
   );

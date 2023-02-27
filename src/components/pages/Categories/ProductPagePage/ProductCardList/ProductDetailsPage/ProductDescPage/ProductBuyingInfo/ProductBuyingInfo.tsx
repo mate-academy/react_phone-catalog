@@ -19,7 +19,7 @@ import {
 import { Product } from '../../../../../../../../types/types';
 
 type Props = {
-  singleProduct: any,
+  singleProduct: Product[] | undefined,
   products: any,
 };
 

@@ -25,11 +25,11 @@ export const LongButton:React.FC<Props> = ({
   const ref = useRef<any>(null);
   const {
     detailedProduct,
-  } = useContext<any>(DetailedProductContext);
+  } = useContext(DetailedProductContext);
 
   const {
     cartProducts, setCartProducts,
-  } = useContext<any>(CartAndFavContext);
+  } = useContext(CartAndFavContext);
 
   const addToCart = async (
     event: { preventDefault: () => void; },

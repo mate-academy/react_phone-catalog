@@ -19,11 +19,14 @@ export const ProductsListWithSlider: React.FC<Props> = (
   const [containerWidth, setContainerWidth] = useState<number>(0);
   const [maxMargin, setMaxMargin] = useState<number>(0);
   const [toggled, setToggled] = useState<boolean>(false);
+  const [leftButtonClass, setLeftButtonClass] = useState<string>('');
+  const [rightButtonClass, setRightButtonClass] = useState<string>('');
   const ref = useRef<HTMLHeadingElement | any>(null);
   const containerRef = useRef<HTMLHeadingElement | null>(null);
 
   const moveRight = () => {
     setToggled(!toggled);
+    setRightButtonClass('');
     if (width > maxMargin) {
       return;
     }
@@ -38,6 +41,7 @@ export const ProductsListWithSlider: React.FC<Props> = (
   };
 
   const moveLeft = () => {
+    setLeftButtonClass('');
     if (!ref.current || !ref) {
       return;
     }
@@ -51,6 +55,19 @@ export const ProductsListWithSlider: React.FC<Props> = (
     if (containerRef.current) {
       setContainerWidth(containerRef.current.offsetWidth);
     }
+
+    if (width > 0) {
+      setLeftButtonClass('button-left__active');
+      if (width <= maxMargin) {
+        setRightButtonClass('button-right__active');
+
+        return;
+      }
+
+      return;
+    }
+
+    setRightButtonClass('button-right__active');
   }, [width]);
 
   return (
@@ -64,12 +81,14 @@ export const ProductsListWithSlider: React.FC<Props> = (
           <Button
             className="arrow left small"
             onClick={moveLeft}
+            imageClass={leftButtonClass}
             image="icons/Chevron (Arrow Left).svg"
             alt="arrow-left"
           />
           <Button
             className="arrow right small"
             onClick={moveRight}
+            imageClass={rightButtonClass}
             image="icons/Chevron (Arrow Right).svg"
             alt="arrow-right"
           />

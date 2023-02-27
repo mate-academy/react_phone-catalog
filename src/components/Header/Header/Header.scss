@@ -134,6 +134,14 @@
 	border: none;
 }
 
+.search-button {
+	transition: transform 0.2s;
+}
+
+.search-button:hover {
+	transform: scale(1.3);
+}
+
 li {
 	list-style: none;
 }

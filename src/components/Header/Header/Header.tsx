@@ -2,7 +2,7 @@ import './Header.scss';
 import { useLocation } from 'react-router';
 import { NavLink } from 'react-router-dom';
 import {
-  ChangeEvent, useContext, useEffect, useState,
+  useContext, useEffect, useState,
 } from 'react';
 import { Logo } from '../../../common/Logo/Logo';
 import { Product } from '../../../types/types';
@@ -18,6 +18,7 @@ type Props = {
   setSearchInput: (value: string) => void,
   searchInput: string,
 };
+const NAV_LINKS_LIST = ['home', 'phones', 'tablets', 'accessories'];
 
 export const Header: React.FC<Props> = ({
   setVisibleIPhones,
@@ -35,10 +36,12 @@ export const Header: React.FC<Props> = ({
     setCurrentPage,
     sortingByValue,
   } = useContext(SortAndPagesContext);
-  const navLinksList = ['home', 'phones', 'tablets', 'accessories'];
   const [isBurgerVisible, setIsBurgerVisible] = useState(false);
   const firstIndex = currentPage * itemsOnPage - itemsOnPage;
   const lastIndex = currentPage * itemsOnPage;
+  const pathsWithSearch = (
+    pathname === '/favourites' || pathname === '/phones'
+    || pathname === '/tablets' || pathname === '/accessories');
 
   const setProductsAccordingToPages = (
     setProducts: (value: any) => void,
@@ -57,13 +60,13 @@ export const Header: React.FC<Props> = ({
     }));
   };
 
-  const searchOnPage = (event: ChangeEvent<HTMLInputElement>) => {
+  const searchOnPage = (value: string) => {
     switch (pathname) {
       case '/phones':
         setVisibleIPhones(IPhones.filter((one: Product) => {
           return (
             one.name.toLowerCase().includes(
-              event.target.value.toLowerCase(),
+              value.toLowerCase(),
             ));
         }));
 
@@ -72,14 +75,14 @@ export const Header: React.FC<Props> = ({
         setVisibleFavProducts(favProducts.filter((one: Product) => {
           return (
             one.name.toLowerCase().includes(
-              event.target.value.toLowerCase(),
+              value.toLowerCase(),
             ));
         }));
         break;
       default:
     }
 
-    if (event.target.value.length === 0) {
+    if (value.length === 0) {
       if (pathname === '/phones') {
         setProductsAccordingToPages(setVisibleIPhones, IPhones);
       }
@@ -103,7 +106,7 @@ export const Header: React.FC<Props> = ({
         <div className="header__navigation">
           <Logo />
           <HeaderNavTextButtons
-            navLinksList={navLinksList}
+            navLinksList={NAV_LINKS_LIST}
           />
           <div>
             <div
@@ -129,7 +132,7 @@ export const Header: React.FC<Props> = ({
 
               >
                 {
-                  navLinksList.map((item: string) => {
+                  NAV_LINKS_LIST.map((item: string) => {
                     return (
                       <li
                         key={item}
@@ -154,8 +157,7 @@ export const Header: React.FC<Props> = ({
         </div>
         <div className="header__buttons">
           {
-            (pathname === '/favourites' || pathname === '/phones'
-              || pathname === '/tablets' || pathname === '/accessories') && (
+            pathsWithSearch && (
               <label className="products-search" id="hidden">
                 <input
                   type="text"
@@ -164,14 +166,21 @@ export const Header: React.FC<Props> = ({
                   value={searchInput}
                   onChange={(event) => {
                     setSearchInput(event.target.value);
-                    searchOnPage(event);
                   }}
                 />
-                <img
-                  src="icons/Search.svg"
-                  alt="Search"
-                  className="small no-border"
-                />
+                <div
+                  className="search-button"
+                >
+                  <img
+                    src="icons/Search.svg"
+                    alt="Search"
+                    className="small no-border"
+                    onClick={() => {
+                      searchOnPage(searchInput);
+                    }}
+                    aria-hidden
+                  />
+                </div>
               </label>
             )
           }
@@ -183,8 +192,7 @@ export const Header: React.FC<Props> = ({
                 alt="favourites"
               />
               {
-                favProducts.length > 0
-                && (
+                !!favProducts.length && (
                   <span
                     className="favourite-amount"
                   >

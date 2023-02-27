@@ -5,6 +5,13 @@ import './Footer.scss';
 
 export const Footer = () => {
   const navLinksList = ['github', 'contacts', 'rights'];
+  const scrollUp = () => {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
+  };
 
   return (
     <div className="footer">
@@ -40,13 +47,7 @@ export const Footer = () => {
       </ul>
       <div className="footer__top">
         <div
-          onClick={() => {
-            window.scroll({
-              top: 0,
-              left: 0,
-              behavior: 'smooth',
-            });
-          }}
+          onClick={scrollUp}
           className="footer__button-up"
           aria-hidden
         >
@@ -56,7 +57,8 @@ export const Footer = () => {
           <Button
             className="arrow up small"
             image="icons/Chevron (Arrow Up).svg"
-            alt="^"
+            alt="arrow-top"
+            imageClass="arrow-top__active"
           />
         </div>
       </div>

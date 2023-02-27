@@ -16,7 +16,7 @@ export const ProductCapacity:React.FC<Props> = (
   const {
     detailedProduct,
     setDetailedProduct,
-  } = useContext<any>(DetailedProductContext);
+  } = useContext(DetailedProductContext);
   const isActive = (capacity: string) => capacity === detailedProduct.capacity;
   const searchProductByCapacity = async (capacity: string) => {
     const newProduct = products.find((one: Product) => {
