@@ -6,8 +6,11 @@ import '../styles/header.scss';
 
 export const Header: FC = () => {
   const cartCounter = () => {
-    const count: string | null = localStorage.getItem('cart');
-    const counter = count ? JSON.parse(count) : [];
+    let counter = [];
+
+    if (localStorage.getItem('cart')) {
+      counter = JSON.parse(localStorage.getItem('cart') || '');
+    }
 
     if (counter.length) {
       return (
@@ -17,12 +20,15 @@ export const Header: FC = () => {
       );
     }
 
-    return [];
+    return '';
   };
 
   const favCounter = () => {
-    const count: string | null = localStorage.getItem('favourite');
-    const counter = count ? JSON.parse(count) : [];
+    let counter = [];
+
+    if (localStorage.getItem('favourite')) {
+      counter = JSON.parse(localStorage.getItem('favourite') || '');
+    }
 
     if (counter.length) {
       return (
@@ -32,7 +38,7 @@ export const Header: FC = () => {
       );
     }
 
-    return [];
+    return '';
   };
 
   return (
