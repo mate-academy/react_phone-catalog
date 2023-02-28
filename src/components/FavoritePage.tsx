@@ -6,9 +6,8 @@ import { ProductCard } from './ProductCard';
 import '../styles/favoritePage.scss';
 
 export const FavoritesPage: React.FC = () => {
-  const value: string | null = localStorage.getItem('favourite');
-  const favStorage: Product[] | [] = value
-    ? JSON.parse(value)
+  const favStorage = localStorage.getItem('favourite')
+    ? JSON.parse(localStorage.getItem('favourite') || '')
     : [];
 
   return (
@@ -22,7 +21,7 @@ export const FavoritesPage: React.FC = () => {
             <>
               <p className="favorites__count">{`${favStorage.length} items`}</p>
               <div className="favorites__content">
-                {favStorage.map(product => (
+                {favStorage.map((product: Product) => (
                   <ProductCard product={product} key={product.id} />
                 ))}
               </div>

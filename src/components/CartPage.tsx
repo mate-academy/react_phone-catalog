@@ -10,9 +10,8 @@ export const CartPage: FC = () => {
   const [cart, setCart] = useState<CartProduct[]>([]);
 
   useEffect(() => {
-    const value: string | null = localStorage.getItem('cart');
-    const cartStorage: CartProduct[] | [] = value
-      ? JSON.parse(value)
+    const cartStorage = localStorage.getItem('cart')
+      ? JSON.parse(localStorage.getItem('cart') || '')
       : [];
 
     setCart(cartStorage);
@@ -34,12 +33,12 @@ export const CartPage: FC = () => {
     ), 0);
   };
 
-  const updateCount = (id: string, itemCount: number) => {
+  const updateCount = (id: string, countNum: number) => {
     setCart(cart.map((cartItem: CartProduct) => {
       if (id === cartItem.item.id) {
         return ({
           ...cartItem,
-          count: itemCount,
+          count: countNum,
         });
       }
 
