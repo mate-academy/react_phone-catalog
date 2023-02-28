@@ -11,9 +11,8 @@ export const LikeButton: FC<Props> = ({ id, product }) => {
   const [isAddLike, setIsAddLike] = useState(false);
 
   useEffect(() => {
-    const value: string | null = localStorage.getItem('favourite');
-    const likeStorage: Product[] | [] = value
-      ? JSON.parse(value)
+    const likeStorage = localStorage.getItem('favourite')
+      ? JSON.parse(localStorage.getItem('favourite') || '')
       : [];
 
     if (likeStorage.find((item: Product) => item.id === id)) {
@@ -25,18 +24,18 @@ export const LikeButton: FC<Props> = ({ id, product }) => {
 
   const toggleLike = () => {
     if (isAddLike) {
-      const value: string | null = localStorage.getItem('favourite');
-
-      let likeStorage = value ? JSON.parse(value) : [];
+      let likeStorage = localStorage.getItem('favourite')
+        ? JSON.parse(localStorage.getItem('favourite') || '')
+        : [];
 
       likeStorage = likeStorage.filter((item: Product) => item.id !== id);
       window.localStorage.setItem('favourite', JSON.stringify(likeStorage));
 
       setIsAddLike(!isAddLike);
     } else {
-      const value: string | null = localStorage.getItem('favourite');
-
-      const likeStorage = value ? JSON.parse(value) : [];
+      const likeStorage = localStorage.getItem('favourite')
+        ? JSON.parse(localStorage.getItem('favourite') || '')
+        : [];
 
       likeStorage.push(product);
       window.localStorage.setItem('favourite', JSON.stringify(likeStorage));

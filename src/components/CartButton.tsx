@@ -12,12 +12,11 @@ export const CartButton: FC<Props> = ({ id, product }) => {
   const [addCart, setAddCart] = useState(false);
 
   useEffect(() => {
-    const value: string | null = localStorage.getItem('cart');
-    const storage: CartProduct[] | [] = value
-      ? JSON.parse(value)
+    const cartStorage = localStorage.getItem('cart')
+      ? JSON.parse(localStorage.getItem('cart') || '')
       : [];
 
-    if (storage.find(
+    if (cartStorage.find(
       (cartList: CartProduct) => cartList.item.id === id,
     )) {
       setAddCart(true);
@@ -28,9 +27,9 @@ export const CartButton: FC<Props> = ({ id, product }) => {
 
   const toggleCart = () => {
     if (addCart) {
-      const value: string | null = localStorage.getItem('cart');
-
-      let cartStorage = value ? JSON.parse(value) : [];
+      let cartStorage = localStorage.getItem('cart')
+        ? JSON.parse(localStorage.getItem('cart') || '')
+        : [];
 
       cartStorage = cartStorage.filter((cartList: CartProduct) => (
         cartList.item.id !== id
@@ -39,9 +38,9 @@ export const CartButton: FC<Props> = ({ id, product }) => {
 
       setAddCart(!addCart);
     } else {
-      const value: string | null = localStorage.getItem('cart');
-
-      const cartStorage = value ? JSON.parse(value) : [];
+      const cartStorage = localStorage.getItem('cart')
+        ? JSON.parse(localStorage.getItem('cart') || '')
+        : [];
 
       cartStorage.push({ count: 1, item: { ...product } });
       window.localStorage.setItem('cart', JSON.stringify(cartStorage));
