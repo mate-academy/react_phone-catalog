@@ -84,7 +84,7 @@ export const CartPage: FC = () => {
             </div>
           )}
           {!cart.length && (
-            <p>Products not found</p>
+            <p className="cart__subtitle">The list is empty</p>
           )}
         </div>
       </main>

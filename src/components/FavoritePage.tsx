@@ -27,7 +27,7 @@ export const FavoritesPage: React.FC = () => {
               </div>
             </>
           ) : (
-            <p>Products not found</p>
+            <p className="favorites__subtitle">The list is empty</p>
           )}
         </div>
       </main>

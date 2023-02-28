@@ -12,6 +12,11 @@
     padding-bottom: 7px;
   }
 
+  &__subtitle {
+    display: block;
+    margin-top: 100px;
+  }
+
   &__content {
     display: flex;
     gap: 16px;
