@@ -59,10 +59,10 @@ export const CartButton: FC<Props> = ({ id, product }) => {
       type="button"
       onClick={() => toggleCart()}
     >
-      {localStorage.getItem('carts')?.includes(product.id) && (
+      {isAddedInCart && (
         'Added to cart'
       )}
-      {!localStorage.getItem('carts')?.includes(product.id) && (
+      {!isAddedInCart && (
         'Add to cart'
       )}
     </button>
