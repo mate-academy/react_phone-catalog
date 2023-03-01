@@ -1,0 +1,83 @@
+@import "../../helpers/vars.scss";
+
+.product-card {
+  box-sizing: border-box;
+  max-width: 272px;
+
+  padding: 32px 24px 24px;
+  background: $whiteColor;
+  border: 1px solid $elementsColor;
+  text-decoration: none;
+
+  &__context {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__photo {
+    width: 100%;
+    height: 100%;
+    margin-bottom: 24px;
+  }
+
+  &__name {
+    margin: 0 0 6px;
+
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $primaryColor;
+  }
+
+  &__prices {
+    margin-bottom: 6px;
+  }
+
+  &__new-price {
+    margin-right: 8px;
+
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 140%;
+    color: $primaryColor;
+  }
+
+  &__old-price {
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 28px;
+    text-decoration-line: line-through;
+    color: $secondaryColor;
+  }
+
+  &__characteristic {
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: 8px;
+  }
+
+  &__characteristic-name {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: $secondaryColor;
+  }
+
+  &__characteristic-value {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    text-align: right;
+    color: $primaryColor;
+  }
+
+  &__buttons-wrapper {
+    display: flex;
+    justify-content: space-between;
+    text-decoration: none;
+  }
+}

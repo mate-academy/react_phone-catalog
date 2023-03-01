@@ -1,0 +1,28 @@
+@import "../../helpers/vars.scss";
+
+.button {
+  display: inline-block;
+  width: 175px;
+  height: 40px;
+
+  margin-right: 8px;
+
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  text-align: center;
+  color: $whiteColor;
+  background-color: $primaryColor;
+  cursor: pointer;
+
+  &--active {
+    color: $greenColor;
+    background-color: $whiteColor;
+    border: 1px solid $elementsColor;
+  }
+
+  &--big {
+    width: 263px;
+    height: 48px;
+  }
+}

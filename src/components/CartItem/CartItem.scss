@@ -1,0 +1,96 @@
+@import '../../helpers/vars.scss';
+
+.cart-item {
+  &__content {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 16px;
+
+    height: 128px;
+    padding: 0 40px 0 24px;
+
+    border: 1px solid $elementsColor;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__cross-button {
+    margin-right: 34px;
+
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+  &__part {
+    display: flex;
+    align-items: center;
+  }
+
+  &__image-wrapper {
+    width: 66px;
+    height: 66px;
+
+    margin-right: 32px;
+  }
+
+  &__image {
+    width: 100%;
+  }
+
+  &__text {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $primaryColor;
+
+    &--name {
+      margin: 0 50px 0 0;
+    }
+  }
+
+  &__buttons-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    margin-right: 43px;
+  }
+
+  &__button {
+    box-sizing: border-box;
+
+    width: 32px;
+    height: 32px;
+
+    color: $primaryColor;
+    background-color: $whiteColor;
+    border: 1px solid $iconsColor;
+    cursor: pointer;
+
+    &:disabled {
+      border: 1px solid $elementsColor;
+      color: $iconsColor;
+    }
+  }
+
+  &__icon {
+    fill: $primaryColor;
+
+    &--disabled {
+      fill: $iconsColor;
+    }
+  }
+
+  &__price {
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 140%;
+    color: $primaryColor;
+  }
+}

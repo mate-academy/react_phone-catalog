@@ -1,0 +1,72 @@
+@import "../../helpers/vars.scss";
+
+.home-page-slider {
+  margin-bottom: 82px;
+
+  // &__content {
+  //   display: flex;
+  //   gap: 16px;
+  // }
+
+  &__wrapper {
+    display: flex;
+    overflow-x: hidden;
+  }
+
+  &__image-wrapper {
+    width: 1040px;
+    height: 400px;
+  }
+
+  &__slides {
+    display: flex;
+    margin: 0 0 18px;
+
+    transition: 3000ms;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+  }
+
+  &__button {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 32px;
+    height: 400px;
+
+    background-color: $whiteColor;
+    border: 1px solid $iconsColor;
+
+    cursor: pointer;
+  }
+
+  &__radio-controls {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+  }
+
+  &__radio-control {
+    display: block;
+    width: 14px;
+    height: 4px;
+    background-color: $elementsColor;
+    cursor: pointer;
+
+    &--checked {
+      background-color: $primaryColor;
+    }
+  }
+
+  &__radio-button {
+    display: none;
+  }
+}

@@ -1,0 +1,39 @@
+@import '../../helpers/vars.scss';
+
+.paginations {
+  &__list {
+    display: flex;
+    justify-content: center;
+
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__item {
+    margin-right: 8px;
+  }
+
+  &__link {
+    box-sizing: border-box;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #000;
+    border: 1px solid $elementsColor;
+    text-decoration: none;
+    cursor: pointer;
+
+    &--active {
+      color: #fff;
+      background-color: $primaryColor;
+    }
+  }
+}

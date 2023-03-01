@@ -1,0 +1,19 @@
+@import '../../helpers/vars.scss';
+
+.pages-links {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+
+  &__item {
+    display: flex;
+    align-items: center;
+
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 12px;
+    color: $secondaryColor;
+    text-decoration: none;
+    cursor: pointer;
+  }
+}

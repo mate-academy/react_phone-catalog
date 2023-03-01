@@ -1,0 +1,35 @@
+@import '../../helpers/vars.scss';
+
+.icon {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 64px;
+  height: 64px;
+  box-shadow: -1px 0px 0px $elementsColor;
+  cursor: pointer;
+
+  &__counter {
+    position: absolute;
+    top: 40%;
+    right: 30%;
+    transform: translateY(-50%);
+
+    box-sizing: border-box;
+
+    width: 14px;
+    height: 14px;
+
+    font-weight: 600;
+    font-size: 9px;
+    line-height: 12px;
+    text-align: center;
+    color: $whiteColor;
+    background-color: $redColor;
+    border: 1px solid $whiteColor;
+    border-radius: 50%;
+  }
+}
