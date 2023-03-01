@@ -9,7 +9,7 @@ type Props = {
 };
 
 export const CartButton: FC<Props> = ({ id, product }) => {
-  const [addCart, setAddCart] = useState(false);
+  const [isAddedInCart, setIsAddedInCart] = useState(false);
 
   useEffect(() => {
     const cartStorage = localStorage.getItem('cart')
@@ -19,14 +19,14 @@ export const CartButton: FC<Props> = ({ id, product }) => {
     if (cartStorage.find(
       (cartList: CartProduct) => cartList.item.id === id,
     )) {
-      setAddCart(true);
+      setIsAddedInCart(true);
     } else {
-      setAddCart(false);
+      setIsAddedInCart(false);
     }
   });
 
   const toggleCart = () => {
-    if (addCart) {
+    if (isAddedInCart) {
       let cartStorage = localStorage.getItem('cart')
         ? JSON.parse(localStorage.getItem('cart') || '')
         : [];
@@ -36,7 +36,7 @@ export const CartButton: FC<Props> = ({ id, product }) => {
       ));
       window.localStorage.setItem('cart', JSON.stringify(cartStorage));
 
-      setAddCart(!addCart);
+      setIsAddedInCart(!isAddedInCart);
     } else {
       const cartStorage = localStorage.getItem('cart')
         ? JSON.parse(localStorage.getItem('cart') || '')
@@ -45,7 +45,7 @@ export const CartButton: FC<Props> = ({ id, product }) => {
       cartStorage.push({ count: 1, item: { ...product } });
       window.localStorage.setItem('cart', JSON.stringify(cartStorage));
 
-      setAddCart(!addCart);
+      setIsAddedInCart(!isAddedInCart);
     }
   };
 
@@ -53,7 +53,7 @@ export const CartButton: FC<Props> = ({ id, product }) => {
     <button
       className={classNames(
         'products-slider__item-button products-slider__item-button-cart', {
-          'products-slider__item-button-cart--active': addCart,
+          'products-slider__item-button-cart--active': isAddedInCart,
         },
       )}
       type="button"
