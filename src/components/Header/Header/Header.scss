@@ -134,11 +134,12 @@
 	border: none;
 }
 
-.search-button {
+.input-button {
+	padding: 0 3px;
 	transition: transform 0.2s;
 }
 
-.search-button:hover {
+.input-button:hover {
 	transform: scale(1.3);
 }
 
@@ -165,4 +166,10 @@ a {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+
+.input-buttons {
+	display: flex;
+	width: 50px;
+  justify-content: flex-end;
 }

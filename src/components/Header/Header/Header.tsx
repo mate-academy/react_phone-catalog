@@ -15,6 +15,7 @@ import { SortAndPagesContext } from '../../../context/SortAndPagesContext';
 type Props = {
   setVisibleIPhones: (value: Product[]) => void,
   IPhones: Product[],
+  visibleIPhones: Product[],
   setSearchInput: (value: string) => void,
   searchInput: string,
 };
@@ -35,6 +36,8 @@ export const Header: React.FC<Props> = ({
     currentPage,
     setCurrentPage,
     sortingByValue,
+    searchIsClicked,
+    setSearchIsClicked,
   } = useContext(SortAndPagesContext);
   const [isBurgerVisible, setIsBurgerVisible] = useState(false);
   const firstIndex = currentPage * itemsOnPage - itemsOnPage;
@@ -60,16 +63,19 @@ export const Header: React.FC<Props> = ({
     }));
   };
 
-  const searchOnPage = (value: string) => {
+  const searchOnPage = async (value: string) => {
     switch (pathname) {
       case '/phones':
-        setVisibleIPhones(IPhones.filter((one: Product) => {
-          return (
-            one.name.toLowerCase().includes(
-              value.toLowerCase(),
-            ));
-        }));
+        setVisibleIPhones(
+          IPhones.filter((one: Product) => {
+            return (
+              one.name.toLowerCase().includes(
+                value.toLowerCase(),
+              ));
+          }),
+        );
 
+        setSearchIsClicked(!searchIsClicked);
         break;
       case '/favourites':
         setVisibleFavProducts(favProducts.filter((one: Product) => {
@@ -90,7 +96,7 @@ export const Header: React.FC<Props> = ({
   };
 
   useEffect(() => {
-    setSearchInput('');
+    // setSearchInput('');
     if (pathname === '/favourites') {
       setVisibleFavProducts(favProducts.map((one: Product) => one));
     }
@@ -156,34 +162,46 @@ export const Header: React.FC<Props> = ({
           </div>
         </div>
         <div className="header__buttons">
-          {
-            pathsWithSearch && (
-              <label className="products-search" id="hidden">
-                <input
-                  type="text"
-                  placeholder={`Search in ${pathname.slice(1)}...`}
-                  className="search-input"
-                  value={searchInput}
-                  onChange={(event) => {
-                    setSearchInput(event.target.value);
+          {pathsWithSearch && (
+            <label className="products-search" id="hidden">
+              <input
+                type="text"
+                placeholder={`Search in ${pathname.slice(1)}...`}
+                className="search-input"
+                value={searchInput}
+                onChange={(event) => {
+                  setSearchInput(event.target.value);
+                }}
+              />
+              <div className="input-buttons">
+                {
+                  searchInput && (
+                    <img
+                      src="icons/Close.svg"
+                      alt="close"
+                      className="input-button small no-border"
+                      onClick={() => {
+                        setSearchInput('');
+                        searchOnPage(searchInput);
+                      }}
+                      aria-hidden
+                    />
+                  )
+                }
+                {/* <div className="search-button"> */}
+                <img
+                  src="icons/Search.svg"
+                  alt="Search"
+                  className="input-button small no-border"
+                  onClick={() => {
+                    searchOnPage(searchInput);
                   }}
+                  aria-hidden
                 />
-                <div
-                  className="search-button"
-                >
-                  <img
-                    src="icons/Search.svg"
-                    alt="Search"
-                    className="small no-border"
-                    onClick={() => {
-                      searchOnPage(searchInput);
-                    }}
-                    aria-hidden
-                  />
-                </div>
-              </label>
-            )
-          }
+                {/* </div> */}
+              </div>
+            </label>
+          )}
           <NavLink to="/favourites">
             <div className="header-button">
               <img

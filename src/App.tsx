@@ -35,6 +35,7 @@ const App = () => {
   return (
     <>
       <Header
+        visibleIPhones={visibleIPhones}
         setVisibleIPhones={setVisibleIPhones}
         IPhones={IPhones}
         searchInput={searchInput}

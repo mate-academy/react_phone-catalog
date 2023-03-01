@@ -95,6 +95,10 @@ export const Pagination: React.FC<Props> = ({
     if (currentPage <= 1) {
       setLeftButtonClass('');
     }
+
+    if (totalPages <= 5) {
+      setMarginLeft(0);
+    }
   }, [totalPages, currentPage]);
 
   return (
@@ -111,7 +115,7 @@ export const Pagination: React.FC<Props> = ({
       <div
         className="product-page__buttons"
         style={{
-          minWidth: `${blockWidth}px`,
+          // minWidth: `${blockWidth}px`,
           maxWidth: `${blockWidth}px`,
         }}
       >

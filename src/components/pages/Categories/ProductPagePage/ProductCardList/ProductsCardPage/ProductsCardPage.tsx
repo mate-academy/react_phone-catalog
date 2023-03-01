@@ -33,13 +33,19 @@ export const ProductsCardPage: React.FC<Props>
       setCurrentPage,
       sortingByValue,
       setSortingByValue,
+      searchIsClicked,
     } = useContext(SortAndPagesContext);
 
     const [isProducts, setIsProducts] = useState(false);
-    const productsAmount = !searchInput && products ? products.length : 1;
-    const totalPages = Math.ceil(productsAmount / itemsOnPage);
+    const productsAmount = products?.length || 1;
+    const [totalPages, setTotalPages]
+    = useState(Math.ceil(productsAmount / itemsOnPage));
     const firstIndex = currentPage * itemsOnPage - itemsOnPage;
     const lastIndex = currentPage * itemsOnPage;
+
+    const filteredProducts = products?.filter((one) => {
+      return one.name.toLowerCase().includes(searchInput.toLowerCase());
+    });
 
     const sortItemsBy = async (value: string) => {
       if (!products || !setProducts) {
@@ -79,20 +85,27 @@ export const ProductsCardPage: React.FC<Props>
         return;
       }
 
-      if (products.length && setVisibleProducts) {
-        setVisibleProducts(products.filter((
-          _product: Product, index: number,
-        ) => {
-          if (firstIndex > products.length) {
-            setCurrentPage(Math.ceil(products.length / itemsOnPage));
+      const setProductsOnPage = () => {
+        if (products.length && setVisibleProducts) {
+          setVisibleProducts(filteredProducts?.filter((
+            _product: Product, index: number,
+          ) => {
+            if (firstIndex > filteredProducts.length) {
+              setCurrentPage(Math.ceil(filteredProducts.length / itemsOnPage));
 
-            return index > products.length - itemsOnPage;
-          }
+              return index > filteredProducts.length - itemsOnPage;
+            }
 
-          return index > firstIndex && index <= lastIndex;
-        }));
-      }
-    }, [itemsOnPage, currentPage, sortingByValue, isProducts]);
+            setTotalPages(Math.ceil(filteredProducts.length / itemsOnPage));
+
+            return index >= firstIndex && index < lastIndex;
+          }));
+        }
+      };
+
+      setProductsOnPage();
+    }, [itemsOnPage, currentPage, sortingByValue, isProducts, searchIsClicked]);
+
     useEffect(() => {
       if (!visibleProducts) {
         return;
@@ -188,7 +201,7 @@ export const ProductsCardPage: React.FC<Props>
                     : <NoProducts />}
                 </ul>
                 {
-                  visibleProducts && totalPages > 1
+                  !!visibleProducts?.length && totalPages > 1
                   && (
                     <Pagination
                       currentPage={currentPage}
