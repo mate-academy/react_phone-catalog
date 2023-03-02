@@ -8,23 +8,7 @@ import { Context } from '../contexts/Context';
 export const Header: FC = () => {
   const { cart } = useContext(Context);
 
-  const favCounter = () => {
-    let counter = [];
-
-    if (localStorage.getItem('favourite')) {
-      counter = JSON.parse(localStorage.getItem('favourite') || '');
-    }
-
-    if (counter.length) {
-      return (
-        <span className="header__counter">
-          {counter.length}
-        </span>
-      );
-    }
-
-    return '';
-  };
+  const { fav } = useContext(Context);
 
   return (
     <header className="header">
@@ -38,7 +22,11 @@ export const Header: FC = () => {
           className="header__icon"
         >
           <img src="./img/icons/Like.svg" alt="favorites" />
-          {favCounter()}
+          {fav.length > 0 && (
+            <span className="header__counter">
+              {fav.length}
+            </span>
+          )}
         </NavLink>
         <NavLink
           to="/cart"

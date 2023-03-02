@@ -20,6 +20,7 @@ const App: FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [isloading, setIsLoading] = useState(false);
   const [cart, setCart] = useState<CartProduct[]>([]);
+  const [fav, setFav] = useState<Product[]>([]);
   const [isTick, setIsTick] = useState(false);
 
   const toggleCart = (product: Product) => {
@@ -34,6 +35,23 @@ const App: FC = () => {
       setIsTick(!isTick);
     }
   };
+
+  const toggleFav = (product: Product) => {
+    if (fav.find((favList: Product) => (
+      favList.id === product.id))) {
+      setFav(fav.filter((favList: Product) => (favList.id !== product.id)));
+      window.localStorage.setItem('favourite', JSON.stringify(fav));
+      setIsTick(!isTick);
+    } else {
+      fav.push(product);
+      window.localStorage.setItem('favourite', JSON.stringify(fav));
+      setIsTick(!isTick);
+    }
+  };
+
+  useEffect(() => {
+    window.localStorage.setItem('favourite', JSON.stringify(fav));
+  }, [fav]);
 
   useEffect(() => {
     window.localStorage.setItem('cart', JSON.stringify(cart));
@@ -92,7 +110,10 @@ const App: FC = () => {
   return (
     <Context.Provider value={{
       cart,
+      fav,
+      setFav,
       toggleCart,
+      toggleFav,
       setCart,
       totalCount,
       totalPrice,

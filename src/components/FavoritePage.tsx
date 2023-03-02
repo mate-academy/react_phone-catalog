@@ -1,14 +1,14 @@
+import { useContext } from 'react';
 import { Product } from '../types/Product';
 import { Breadcrumbs } from './Breadcrumbs';
 import { Footer } from './Footer';
 import { Header } from './Header';
 import { ProductCard } from './ProductCard';
 import '../styles/favoritePage.scss';
+import { Context } from '../contexts/Context';
 
 export const FavoritesPage: React.FC = () => {
-  const favStorage = localStorage.getItem('favourite')
-    ? JSON.parse(localStorage.getItem('favourite') || '')
-    : [];
+  const { fav } = useContext(Context);
 
   return (
     <>
@@ -17,11 +17,11 @@ export const FavoritesPage: React.FC = () => {
         <div className="favorites container">
           <Breadcrumbs />
           <h2 className="favorites__title">Favourites</h2>
-          {favStorage.length > 0 ? (
+          {fav.length > 0 ? (
             <>
-              <p className="favorites__count">{`${favStorage.length} items`}</p>
+              <p className="favorites__count">{`${fav.length} items`}</p>
               <div className="favorites__content">
-                {favStorage.map((product: Product) => (
+                {fav.map((product: Product) => (
                   <ProductCard product={product} key={product.id} />
                 ))}
               </div>
