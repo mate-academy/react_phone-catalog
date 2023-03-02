@@ -65,7 +65,7 @@ const App: FC = () => {
 
   const totalPrice = () => {
     return cart.reduce((prev, current) => (
-      prev + (current.item.price * +current.count)
+      prev + ((current.item.price - ((current.item.price / 100) * current.item.discount)) * +current.count)
     ), 0);
   };
 
