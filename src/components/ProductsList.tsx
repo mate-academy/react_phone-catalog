@@ -71,7 +71,7 @@ export const ProductsList: FC<Props> = ({ products, title, isloading }) => {
       <Header />
       <main>
         {!isloading ? (
-          <div className="product-list container" data-cy="productList">
+          <div className="product-list product-list__container" data-cy="productList">
             <Breadcrumbs />
             <h1 className="product-list__title">{title}</h1>
             {products.length > 0 ? (
