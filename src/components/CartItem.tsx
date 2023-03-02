@@ -1,19 +1,23 @@
 import classNames from 'classnames';
-import { FC, useEffect, useState } from 'react';
+import {
+  FC, useContext, useEffect, useState,
+} from 'react';
+import { Context } from '../contexts/Context';
 import { CartProduct } from '../types/CartProduct';
 
 type Props = {
   cartItem: CartProduct;
-  updateCount: (id: string, itemCount: number) => void;
-  deleteItem: (id: string) => void;
 };
 
 export const CartItem: FC<Props> = ({
   cartItem,
-  updateCount,
-  deleteItem,
 }) => {
   const [count, setCount] = useState(+cartItem.count);
+
+  const {
+    updateCount,
+    deleteItem,
+  } = useContext(Context);
 
   useEffect(() => {
     updateCount(cartItem.item.id, count);

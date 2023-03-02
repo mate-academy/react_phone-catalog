@@ -60,7 +60,7 @@ export const ProductCard: FC<Props> = ({ product }) => {
         </p>
       </div>
       <div className="products-slider__item-buttons">
-        <CartButton id={product.id} product={product} />
+        <CartButton product={product} />
         <LikeButton id={product.id} product={product} />
       </div>
     </div>

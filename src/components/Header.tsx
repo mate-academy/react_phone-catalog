@@ -1,27 +1,12 @@
-import { FC } from 'react';
+import { FC, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Logo } from './Logo';
 import { Navbar } from './Navbar';
 import '../styles/header.scss';
+import { Context } from '../contexts/Context';
 
 export const Header: FC = () => {
-  const cartCounter = () => {
-    let counter = [];
-
-    if (localStorage.getItem('cart')) {
-      counter = JSON.parse(localStorage.getItem('cart') || '');
-    }
-
-    if (counter.length) {
-      return (
-        <span className="header__counter">
-          {counter.length}
-        </span>
-      );
-    }
-
-    return '';
-  };
+  const { cart } = useContext(Context);
 
   const favCounter = () => {
     let counter = [];
@@ -61,7 +46,11 @@ export const Header: FC = () => {
         >
           <img src="./img/icons/Cart.svg" alt="cart" />
 
-          {cartCounter()}
+          {cart.length > 0 && (
+            <span className="header__counter">
+              {cart.length}
+            </span>
+          )}
         </NavLink>
       </div>
 

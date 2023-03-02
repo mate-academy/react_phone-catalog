@@ -1,54 +1,18 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, useContext } from 'react';
 import { CartProduct } from '../types/CartProduct';
 import { BackButton } from './BackButton';
 import { Footer } from './Footer';
 import { Header } from './Header';
 import '../styles/cartPage.scss';
 import { CartItem } from './CartItem';
+import { Context } from '../contexts/Context';
 
 export const CartPage: FC = () => {
-  const [cart, setCart] = useState<CartProduct[]>([]);
-
-  useEffect(() => {
-    const cartStorage = localStorage.getItem('cart')
-      ? JSON.parse(localStorage.getItem('cart') || '')
-      : [];
-
-    setCart(cartStorage);
-  }, []);
-
-  useEffect(() => {
-    window.localStorage.setItem('cart', JSON.stringify(cart));
-  }, [cart]);
-
-  const totalCount = () => {
-    return cart.reduce((prev, current) => (
-      prev + +current.count
-    ), 0);
-  };
-
-  const totalPrice = () => {
-    return cart.reduce((prev, current) => (
-      prev + (current.item.price * +current.count)
-    ), 0);
-  };
-
-  const updateCount = (id: string, countNum: number) => {
-    setCart(cart.map((cartItem: CartProduct) => {
-      if (id === cartItem.item.id) {
-        return ({
-          ...cartItem,
-          count: countNum,
-        });
-      }
-
-      return cartItem;
-    }));
-  };
-
-  const deleteItem = (id: string) => {
-    setCart(cart.filter((cartItem) => cartItem.item.id !== id));
-  };
+  const {
+    cart,
+    totalPrice,
+    totalCount,
+  } = useContext(Context);
 
   return (
     <>
@@ -60,12 +24,10 @@ export const CartPage: FC = () => {
           {cart.length > 0 && (
             <div className="cart__content">
               <div className="cart__items">
-                {cart.map(cartItem => (
+                {cart.map((cartItem: CartProduct) => (
                   <CartItem
                     key={cartItem.item.id}
                     cartItem={cartItem}
-                    updateCount={updateCount}
-                    deleteItem={deleteItem}
                   />
                 ))}
               </div>

@@ -1,68 +1,37 @@
 import classNames from 'classnames';
-import { FC, useEffect, useState } from 'react';
+import { FC, useContext } from 'react';
 import { Product } from '../types/Product';
+import { Context } from '../contexts/Context';
 import { CartProduct } from '../types/CartProduct';
 
 type Props = {
-  id: string,
   product: Product,
 };
 
-export const CartButton: FC<Props> = ({ id, product }) => {
-  const [isAddedInCart, setIsAddedInCart] = useState(false);
+export const CartButton: FC<Props> = ({ product }) => {
+  const {
+    cart,
+    toggleCart,
+  } = useContext(Context);
 
-  useEffect(() => {
-    const cartStorage = localStorage.getItem('cart')
-      ? JSON.parse(localStorage.getItem('cart') || '')
-      : [];
-
-    if (cartStorage.find(
-      (cartList: CartProduct) => cartList.item.id === id,
-    )) {
-      setIsAddedInCart(true);
-    } else {
-      setIsAddedInCart(false);
-    }
-  });
-
-  const toggleCart = () => {
-    if (isAddedInCart) {
-      let cartStorage = localStorage.getItem('cart')
-        ? JSON.parse(localStorage.getItem('cart') || '')
-        : [];
-
-      cartStorage = cartStorage.filter((cartList: CartProduct) => (
-        cartList.item.id !== id
-      ));
-      window.localStorage.setItem('cart', JSON.stringify(cartStorage));
-
-      setIsAddedInCart(!isAddedInCart);
-    } else {
-      const cartStorage = localStorage.getItem('cart')
-        ? JSON.parse(localStorage.getItem('cart') || '')
-        : [];
-
-      cartStorage.push({ count: 1, item: { ...product } });
-      window.localStorage.setItem('cart', JSON.stringify(cartStorage));
-
-      setIsAddedInCart(!isAddedInCart);
-    }
-  };
+  const foundProduct = cart.find((cartList: CartProduct) => (
+    cartList.item.id === product.id));
 
   return (
     <button
       className={classNames(
         'products-slider__item-button products-slider__item-button-cart', {
-          'products-slider__item-button-cart--active': isAddedInCart,
+          'products-slider__item-button-cart--active':
+          foundProduct,
         },
       )}
       type="button"
-      onClick={() => toggleCart()}
+      onClick={() => toggleCart(product)}
     >
-      {isAddedInCart && (
+      {foundProduct && (
         'Added to cart'
       )}
-      {!isAddedInCart && (
+      {!foundProduct && (
         'Add to cart'
       )}
     </button>
