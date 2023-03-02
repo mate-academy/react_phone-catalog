@@ -9,14 +9,14 @@ import { Product } from '../../../types/types';
 import './FavouritesPage.scss';
 
 export const FavouritesPage = () => {
-  const { visibleFavProducts } = useContext(CartAndFavContext);
+  const { visibleFavProducts } = useContext(CartAndFavContext) ?? {};
 
   return (
     <div className="favourites">
       <NavigationButtons title="favourites" />
       <h1 className="favourites__title">Favourites</h1>
       <ul className="favourites__list">
-        { visibleFavProducts.length
+        { visibleFavProducts && visibleFavProducts.length
           ? visibleFavProducts.map((favProduct: Product) => {
             return (
               <li className="favourites__item" key={favProduct.id}>

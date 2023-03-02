@@ -19,17 +19,20 @@ import {
 import { Product } from '../../../../../../../../types/types';
 
 type Props = {
-  singleProduct: Product[] | undefined,
-  products: any,
+  products: Product[],
+  singleProduct: Product | undefined,
 };
 
 export const ProductBuyingInfo: React.FC<Props>
   = ({ products, singleProduct }) => {
     const {
-      cartProducts, favProducts,
-      setIsAddedToCart, isAddedToCart,
-      setIsAddedToFav, isAddedToFav,
-    } = useContext(CartAndFavContext);
+      cartProducts = [],
+      favProducts = [],
+      setIsAddedToCart = () => {},
+      setIsAddedToFav = () => {},
+      isAddedToCart,
+      isAddedToFav,
+    } = useContext(CartAndFavContext) || {};
 
     const { detailedProduct } = useContext(DetailedProductContext);
 
@@ -37,23 +40,39 @@ export const ProductBuyingInfo: React.FC<Props>
       ram, processor, id,
       screen, resolution, priceDiscount,
       priceRegular, capacity, colorsAvailable,
-    } = detailedProduct;
+    } = detailedProduct || {};
 
     useEffect(() => {
+      if (!cartProducts.length || !setIsAddedToCart) {
+        return;
+      }
+
       setIsAddedToCart(false);
-      cartProducts.map((one: Product) => {
-        if (one.phoneId === detailedProduct.id) {
-          return setIsAddedToCart(true);
+      cartProducts.some((one: Product) => {
+        if (one.phoneId === detailedProduct?.id) {
+          setIsAddedToCart(true);
+
+          return true;
         }
+
+        return false;
       });
     }, [detailedProduct, cartProducts]);
 
     useEffect(() => {
+      if (!favProducts || !setIsAddedToFav) {
+        return;
+      }
+
       setIsAddedToFav(false);
-      favProducts.map((one: Product) => {
-        if (one.phoneId === detailedProduct.id) {
+      favProducts.some((one: Product) => {
+        if (one.phoneId === detailedProduct?.id) {
           setIsAddedToFav(true);
+
+          return true;
         }
+
+        return false;
       });
     }, [detailedProduct, favProducts]);
 
@@ -87,7 +106,7 @@ export const ProductBuyingInfo: React.FC<Props>
             <div className="buying-info__buttons">
               <LongButton
                 text={isAddedToCart ? 'Added to cart' : 'Add to cart'}
-                className={isAddedToCart && 'selected'}
+                className={isAddedToCart ? 'selected' : ''}
                 product={singleProduct}
                 products={products}
               />

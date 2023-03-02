@@ -12,7 +12,7 @@ import { Product } from '../../../../../../../types/types';
 
 type Props = {
   products: Product[],
-  singleProduct: Product[] | undefined,
+  singleProduct: Product | undefined,
 };
 
 export const ProductDescPage: React.FC<Props> = ({

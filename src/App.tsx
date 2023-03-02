@@ -41,14 +41,16 @@ const App = () => {
         searchInput={searchInput}
         setSearchInput={setSearchInput}
       />
-      <CreatedRoutes
-        IPhones={IPhones}
-        visibleIPhones={visibleIPhones}
-        isError={isError}
-        setIPhones={setIPhones}
-        setVisibleIPhones={setVisibleIPhones}
-        searchInput={searchInput}
-      />
+      <main>
+        <CreatedRoutes
+          IPhones={IPhones}
+          visibleIPhones={visibleIPhones}
+          isError={isError}
+          setIPhones={setIPhones}
+          setVisibleIPhones={setVisibleIPhones}
+          searchInput={searchInput}
+        />
+      </main>
       <footer>
         <Footer />
       </footer>

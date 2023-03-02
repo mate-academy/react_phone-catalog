@@ -11,7 +11,7 @@ type Props = {
 export const Pagination: React.FC<Props> = ({
   setCurrentPage, currentPage, totalPages,
 }) => {
-  const ref = useRef<any>(null);
+  const ref = useRef<HTMLLIElement>(null);
   const [elementWidth, setElementWidth] = useState(0);
   const [blockWidth, setBlockWidth] = useState(0);
   const [marginLeft, setMarginLeft] = useState(0);
@@ -19,6 +19,10 @@ export const Pagination: React.FC<Props> = ({
   const [rightButtonClass, setRightButtonClass] = useState<string>('');
 
   useEffect(() => {
+    if (!ref || !ref.current) {
+      return;
+    }
+
     setElementWidth(ref.current.offsetWidth);
     setBlockWidth(ref.current.offsetWidth * 5);
   }, []);

@@ -12,24 +12,28 @@ import './LongButton.scss';
 
 type Props = {
   text: string,
+  link?: string,
   className?: string,
-  product?: any,
+  product?: Product,
   products?: Product[],
-  onClick?: any,
+  onClick?: () => void,
 };
 
 export const LongButton:React.FC<Props> = ({
-  text, onClick, className, product, products,
+  text,
+  link = '/',
+  onClick,
+  className = '',
+  product,
+  products,
 }) => {
   let singleProduct = product;
-  const ref = useRef<any>(null);
-  const {
-    detailedProduct,
-  } = useContext(DetailedProductContext);
+  const ref = useRef<HTMLAnchorElement>(null);
+  const { detailedProduct } = useContext(DetailedProductContext);
 
   const {
     cartProducts, setCartProducts,
-  } = useContext(CartAndFavContext);
+  } = useContext(CartAndFavContext) ?? {};
 
   const addToCart = async (
     event: { preventDefault: () => void; },
@@ -41,8 +45,12 @@ export const LongButton:React.FC<Props> = ({
     }
 
     event.preventDefault();
-    const exists = cartProducts.find((one: any) => {
-      if (one.id === singleProduct.id) {
+    if (!cartProducts || !setCartProducts || !singleProduct) {
+      return;
+    }
+
+    const exists = cartProducts.find((one) => {
+      if (singleProduct && one.id === singleProduct.id) {
         return one.id === singleProduct.id;
       }
 
@@ -63,7 +71,7 @@ export const LongButton:React.FC<Props> = ({
   return (
     <a
       className={`long-button__link body14 ${className}`}
-      href="/"
+      href={link || '/'}
       ref={ref}
       onClick={
         text.includes('cart')

@@ -17,8 +17,8 @@ type Props = {
   visibleProducts?: Product[],
   title: string,
   searchInput: string,
-  setVisibleProducts?: (value: any) => void,
-  setProducts?: (value: any) => void,
+  setVisibleProducts?: (value: Product[]) => void,
+  setProducts?: (value: Product[]) => void,
 };
 
 export const ProductsCardPage: React.FC<Props>
@@ -34,7 +34,7 @@ export const ProductsCardPage: React.FC<Props>
       sortingByValue,
       setSortingByValue,
       searchIsClicked,
-    } = useContext(SortAndPagesContext);
+    } = useContext<any>(SortAndPagesContext);
 
     const [isProducts, setIsProducts] = useState(false);
     const productsAmount = products?.length || 1;
@@ -86,8 +86,8 @@ export const ProductsCardPage: React.FC<Props>
       }
 
       const setProductsOnPage = () => {
-        if (products.length && setVisibleProducts) {
-          setVisibleProducts(filteredProducts?.filter((
+        if (products.length && setVisibleProducts && filteredProducts) {
+          setVisibleProducts(filteredProducts.filter((
             _product: Product, index: number,
           ) => {
             if (firstIndex > filteredProducts.length) {

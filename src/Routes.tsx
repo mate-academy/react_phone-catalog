@@ -19,9 +19,12 @@ import {
   ProductDetailsPage,
 } from
   './components/Pages/Categories/ProductPagePage/ProductCardList/ProductDetailsPage/ProductDetailsPage';
-import { NotFoundPage } from './components/NotFoundPage/NotFoundPage';
+import { NotFoundPage } from './components/Pages/NotFoundPage/NotFoundPage';
 import { Product } from './types/types';
 import { ProductsListWithSlider } from './components/Pages/Home/ProductsListWithSlider/ProductsListWithSlider';
+import { Contacts } from './components/Pages/Contacts/Contacts';
+import { Rights } from './components/Pages/Rights/Rights';
+import { Checkout } from './components/Pages/Checkout/Checkout';
 
 type Props = {
   IPhones: Product[],
@@ -70,7 +73,7 @@ export const CreatedRoutes:React.FC<Props> = ({
       <Route
         path="/home"
         element={(
-          <main>
+          <>
             <ProductsSlider />
             {!isError
               ? (
@@ -89,29 +92,27 @@ export const CreatedRoutes:React.FC<Props> = ({
                 </>
               )
               : <h2>No products found</h2>}
-          </main>
+          </>
         )}
       />
       <Route path="/phones">
         <Route
           index
           element={(
-            <main>
-              <ProductsCardPage
-                products={IPhones}
-                setProducts={setIPhones}
-                setVisibleProducts={setVisibleIPhones}
-                visibleProducts={visibleIPhones}
-                title="Phones"
-                searchInput={searchInput}
-              />
-            </main>
+            <ProductsCardPage
+              products={IPhones}
+              setProducts={setIPhones}
+              setVisibleProducts={setVisibleIPhones}
+              visibleProducts={visibleIPhones}
+              title="Phones"
+              searchInput={searchInput}
+            />
           )}
         />
         <Route
           path=":id"
           element={(
-            <main>
+            <>
               <ProductDetailsPage
                 products={IPhones}
               />
@@ -119,7 +120,7 @@ export const CreatedRoutes:React.FC<Props> = ({
                 products={shuffeledIPhones}
                 title="You may also like"
               />
-            </main>
+            </>
           )}
         />
       </Route>
@@ -128,14 +129,12 @@ export const CreatedRoutes:React.FC<Props> = ({
         <Route
           index
           element={(
-            <main>
-              <ProductsCardPage
-                products={[]}
-                visibleProducts={[]}
-                title="Tablets"
-                searchInput={searchInput}
-              />
-            </main>
+            <ProductsCardPage
+              products={[]}
+              visibleProducts={[]}
+              title="Tablets"
+              searchInput={searchInput}
+            />
           )}
         />
       </Route>
@@ -144,14 +143,12 @@ export const CreatedRoutes:React.FC<Props> = ({
         <Route
           index
           element={(
-            <main>
-              <ProductsCardPage
-                products={[]}
-                visibleProducts={[]}
-                title="Accessories"
-                searchInput={searchInput}
-              />
-            </main>
+            <ProductsCardPage
+              products={[]}
+              visibleProducts={[]}
+              title="Accessories"
+              searchInput={searchInput}
+            />
           )}
         />
       </Route>
@@ -159,45 +156,26 @@ export const CreatedRoutes:React.FC<Props> = ({
       <Route
         path="/cart"
         element={(
-          <main>
-            <CartPage />
-          </main>
+          <CartPage />
         )}
       />
       <Route
         path="/favourites"
         element={(
-          <main>
-            <FavouritesPage />
-          </main>
+          <FavouritesPage />
         )}
+      />
+      <Route
+        path="/checkout"
+        element={(<Checkout />)}
       />
       <Route
         path="/rights"
-        element={(
-          <main>
-            <div className="body12">
-              At vero eos et
-              accusamus et iusto odio dignissimos ducimus qui blanditiis
-              praesentium
-              voluptatum deleniti
-              atque corrupti quos dolores et
-              quas molestias excepturi sint.
-            </div>
-          </main>
-        )}
+        element={(<Rights />)}
       />
       <Route
         path="/contacts"
-        element={(
-          <main>
-            <h3 className="body12">
-              Modile: 12345678
-              <br />
-              Facebook: iphone777
-            </h3>
-          </main>
-        )}
+        element={<Contacts />}
       />
       <Route path="*" element={<NotFoundPage />} />
     </Routes>

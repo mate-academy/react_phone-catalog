@@ -30,7 +30,7 @@ export const Header: React.FC<Props> = ({
   const { pathname } = useLocation();
   const {
     cartProducts, favProducts, setVisibleFavProducts,
-  } = useContext(CartAndFavContext);
+  } = useContext(CartAndFavContext) ?? {};
   const {
     itemsOnPage,
     currentPage,
@@ -38,7 +38,7 @@ export const Header: React.FC<Props> = ({
     sortingByValue,
     searchIsClicked,
     setSearchIsClicked,
-  } = useContext(SortAndPagesContext);
+  } = useContext<any>(SortAndPagesContext);
   const [isBurgerVisible, setIsBurgerVisible] = useState(false);
   const firstIndex = currentPage * itemsOnPage - itemsOnPage;
   const lastIndex = currentPage * itemsOnPage;
@@ -47,7 +47,7 @@ export const Header: React.FC<Props> = ({
     || pathname === '/tablets' || pathname === '/accessories');
 
   const setProductsAccordingToPages = (
-    setProducts: (value: any) => void,
+    setProducts: (value: Product[]) => void,
     products: Product[],
   ) => {
     setProducts(products.filter((
@@ -64,6 +64,10 @@ export const Header: React.FC<Props> = ({
   };
 
   const searchOnPage = async (value: string) => {
+    if (!setVisibleFavProducts || !favProducts) {
+      return;
+    }
+
     switch (pathname) {
       case '/phones':
         setVisibleIPhones(
@@ -96,7 +100,10 @@ export const Header: React.FC<Props> = ({
   };
 
   useEffect(() => {
-    // setSearchInput('');
+    if (!setVisibleFavProducts || !favProducts) {
+      return;
+    }
+
     if (pathname === '/favourites') {
       setVisibleFavProducts(favProducts.map((one: Product) => one));
     }
@@ -182,13 +189,12 @@ export const Header: React.FC<Props> = ({
                       className="input-button small no-border"
                       onClick={() => {
                         setSearchInput('');
-                        searchOnPage(searchInput);
+                        searchOnPage('');
                       }}
                       aria-hidden
                     />
                   )
                 }
-                {/* <div className="search-button"> */}
                 <img
                   src="icons/Search.svg"
                   alt="Search"
@@ -198,7 +204,6 @@ export const Header: React.FC<Props> = ({
                   }}
                   aria-hidden
                 />
-                {/* </div> */}
               </div>
             </label>
           )}
@@ -210,7 +215,7 @@ export const Header: React.FC<Props> = ({
                 alt="favourites"
               />
               {
-                !!favProducts.length && (
+                favProducts && !!favProducts.length && (
                   <span
                     className="favourite-amount"
                   >
@@ -228,7 +233,7 @@ export const Header: React.FC<Props> = ({
                 alt="cart"
               />
 
-              {cartProducts.length > 0
+              {cartProducts && cartProducts.length > 0
                 && <span className="cart-amount">{cartProducts.length}</span>}
             </div>
           </NavLink>

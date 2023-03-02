@@ -9,9 +9,10 @@ import { ProductDescPage } from './ProductDescPage/ProductDescPage';
 import {
   DetailedProductContext,
 } from '../../../../../../context/DetailedProductContext';
+import { Product } from '../../../../../../types/types';
 
 type Props = {
-  products: any,
+  products: Product[],
 };
 
 export const ProductDetailsPage: React.FC<Props> = (
@@ -23,11 +24,11 @@ export const ProductDetailsPage: React.FC<Props> = (
     detailedProduct,
     setDetailedProduct,
   } = useContext(DetailedProductContext);
-  const [product, setProduct] = useState();
+  const [product, setProduct] = useState<Product | undefined>();
   const [category, setCategory] = useState('');
 
   const getProduct = async () => {
-    const singleProduct = products.find((one: any) => one.id === id);
+    const singleProduct = products.find((one) => one.id === id);
 
     if (!singleProduct) {
       return;
@@ -77,7 +78,7 @@ export const ProductDetailsPage: React.FC<Props> = (
           Back
         </div>
       </div>
-      {id && id <= products.length
+      {id && +id <= products.length
         ? detailedProduct && (
           <ProductDescPage
             products={products}

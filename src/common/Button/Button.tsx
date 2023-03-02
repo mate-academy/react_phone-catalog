@@ -12,9 +12,9 @@ type Props = {
   className?: string | boolean,
   image?: string,
   num?: number,
-  onClick?: any,
+  onClick?: () => void,
   imageClass?: string,
-  product?: any,
+  product?: Product,
   products?: Product[],
 };
 
@@ -25,7 +25,7 @@ export const Button: React.FC<Props> = ({
   const {
     favProducts, setFavProducts,
     visibleFavProducts, setVisibleFavProducts,
-  } = useContext(CartAndFavContext);
+  } = useContext(CartAndFavContext) ?? {};
   const {
     detailedProduct,
   } = useContext(DetailedProductContext);
@@ -38,8 +38,13 @@ export const Button: React.FC<Props> = ({
       });
     }
 
+    if (!favProducts || !setFavProducts || !singleProduct
+      || !visibleFavProducts || !setVisibleFavProducts) {
+      return;
+    }
+
     const exists = favProducts.find((one: Product) => {
-      if (one.id === singleProduct.id) {
+      if (singleProduct && one.id === singleProduct.id) {
         return one.id === singleProduct.id;
       }
 

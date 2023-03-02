@@ -1,7 +1,21 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
+import { Product } from '../types/types';
+
+interface CartAndFavContextValue {
+  cartProducts: Product[];
+  setCartProducts: React.Dispatch<React.SetStateAction<Product[]>>;
+  favProducts: Product[];
+  setFavProducts: React.Dispatch<React.SetStateAction<Product[]>>;
+  visibleFavProducts: Product[];
+  setVisibleFavProducts: React.Dispatch<React.SetStateAction<Product[]>>;
+  isAddedToCart: boolean;
+  setIsAddedToCart: React.Dispatch<React.SetStateAction<boolean>>;
+  isAddedToFav: boolean;
+  setIsAddedToFav: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
 export const CartAndFavContext
-= React.createContext<any | null>(null);
+= React.createContext<CartAndFavContextValue | null>(null);
 type Props = {
   children: React.ReactNode;
 };
@@ -10,8 +24,12 @@ export const CartAndFavProvider: React.FC<Props> = ({ children }) => {
   const [isAddedToCart, setIsAddedToCart] = useState(false);
   const [isAddedToFav, setIsAddedToFav] = useState(false);
 
-  const fav = JSON.parse(localStorage.getItem('favProducts') as string);
-  const cart = JSON.parse(localStorage.getItem('cartProducts') as string);
+  const fav = useMemo(() => JSON.parse(
+    localStorage.getItem('favProducts') || '[]',
+  ), []);
+  const cart = useMemo(() => JSON.parse(
+    localStorage.getItem('cartProducts') || '[]',
+  ), []);
 
   const [cartProducts, setCartProducts] = useState(cart || []);
   const [favProducts, setFavProducts] = useState(fav || []);

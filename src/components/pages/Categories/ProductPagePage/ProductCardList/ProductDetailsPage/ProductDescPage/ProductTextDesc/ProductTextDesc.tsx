@@ -24,7 +24,7 @@ export const ProductTextDesc = () => {
                 <h3 className="product-desc__item-title">{one.title}</h3>
                 {one.text.map((text: string) => {
                   return (
-                    <p className="product-desc__item-text body14">
+                    <p key={text} className="product-desc__item-text body14">
                       {text}
                     </p>
                   );

@@ -14,23 +14,27 @@ import { CartAndFavContext } from '../../../context/CartAndFavContext';
 export const CartPage = () => {
   const navigate = useNavigate();
 
-  const { cartProducts } = useContext(CartAndFavContext);
-  const totalPrice = cartProducts.reduce((current: number, prev: Product) => {
-    if (prev.count) {
-      return current + (prev.price * prev.count);
-    }
+  const { cartProducts } = useContext(CartAndFavContext) ?? {};
+  const totalPrice = (cartProducts || []).reduce(
+    (current = 0, prev?: Product) => {
+      if (prev && prev.count) {
+        return current + (prev.price * prev.count);
+      }
 
-    return;
-  }, 0);
+      return;
+    }, 0,
+  );
 
   // eslint-disable-next-line array-callback-return
-  const totalAmount = cartProducts.reduce((current: number, prev: Product) => {
-    if (prev.count) {
-      return current + prev.count;
-    }
+  const totalAmount = (cartProducts || []).reduce(
+    (current = 0, prev?: Product) => {
+      if (prev && prev.count) {
+        return current + prev.count;
+      }
 
-    return;
-  }, 0);
+      return;
+    }, 0,
+  );
 
   return (
     <div className="cart-page">
@@ -53,7 +57,7 @@ export const CartPage = () => {
         Cart
       </h1>
       <div className="cart-page__blocks">
-        {cartProducts.length ? (
+        {cartProducts && cartProducts.length ? (
           <>
             <div className="cart-page__products">
               <ul className="cart-page__list">
@@ -77,7 +81,10 @@ export const CartPage = () => {
                 {`Total for ${totalAmount} items`}
               </div>
               <div className="horizontal-line" />
-              <LongButton text="Checkout" />
+              <LongButton
+                text="Checkout"
+                link="../#/checkout"
+              />
             </div>
           </>
         )

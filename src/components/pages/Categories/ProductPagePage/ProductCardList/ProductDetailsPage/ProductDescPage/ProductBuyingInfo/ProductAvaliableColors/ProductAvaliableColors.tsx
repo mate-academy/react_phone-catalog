@@ -8,7 +8,7 @@ import {
 import { Product } from '../../../../../../../../../types/types';
 
 type Props = {
-  products: Product,
+  products: Product[],
 };
 
 export const ProductAvaliableColors:React.FC<Props> = ({
@@ -23,6 +23,10 @@ export const ProductAvaliableColors:React.FC<Props> = ({
       return one.phoneId
       === detailedProduct.id.replace(detailedProduct.color, color);
     });
+
+    if (!newProduct) {
+      return;
+    }
 
     const response = await fetch(
       `new/products/${newProduct.itemId}.json`,
