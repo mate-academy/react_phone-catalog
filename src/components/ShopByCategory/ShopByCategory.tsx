@@ -25,7 +25,7 @@ export const ShopByCategory: React.FC<Props> = ({ products }) => {
       <div className="grid">
         <div className="grid__item grid__item--1-8">
           <Category
-            image="_new/img/category-phones.png"
+            image="../../images/category-phones.png"
             backgroundColor="#fcdbc1"
             title="Mobile phones"
             text={`${phonesAmount} models`}
