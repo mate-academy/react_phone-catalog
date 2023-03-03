@@ -1,5 +1,7 @@
 /* eslint-disable import/no-cycle */
-import { useContext, useEffect, useState } from 'react';
+import {
+  useContext, useEffect, useMemo, useState,
+} from 'react';
 import {
   NavigationButtons,
 } from '../../../../../../common/NavigationButtons/NavigationButtons';
@@ -24,8 +26,12 @@ type Props = {
 
 export const ProductsCardPage: React.FC<Props>
   = ({
-    products, title, setVisibleProducts,
-    visibleProducts, setProducts, searchInput,
+    products,
+    title,
+    setVisibleProducts,
+    visibleProducts,
+    setProducts,
+    searchInput,
   }) => {
     const {
       itemsOnPage = 16,
@@ -37,16 +43,17 @@ export const ProductsCardPage: React.FC<Props>
       searchIsClicked = false,
     } = useContext(SortAndPagesContext) ?? {};
 
+    const filteredProducts = useMemo(() => products?.filter(
+      (one) => one.name.toLowerCase().includes(searchInput.toLowerCase()),
+    ),
+    [products, searchInput]);
+
     const [isProducts, setIsProducts] = useState(false);
     const productsAmount = products?.length || 1;
     const [totalPages, setTotalPages]
-    = useState(Math.ceil(productsAmount / itemsOnPage));
+      = useState(Math.ceil(productsAmount / itemsOnPage));
     const firstIndex = currentPage * itemsOnPage - itemsOnPage;
     const lastIndex = currentPage * itemsOnPage;
-
-    const filteredProducts = products?.filter((one) => {
-      return one.name.toLowerCase().includes(searchInput.toLowerCase());
-    });
 
     const sortItemsBy = async (value: string) => {
       if (!products || !setProducts || !setSortingByValue) {
@@ -55,21 +62,21 @@ export const ProductsCardPage: React.FC<Props>
 
       switch (value) {
         case 'newest':
-          setProducts(products.sort((a: Product, b: Product) => {
+          setProducts([...products].sort((a: Product, b: Product) => {
             return b.year - a.year;
           }));
           setSortingByValue(value);
 
           return;
         case 'alphabetically':
-          setProducts(products.sort((a: Product, b: Product) => {
+          setProducts([...products].sort((a: Product, b: Product) => {
             return a.name.localeCompare(b.name, 'en', { numeric: true });
           }));
           setSortingByValue(value);
 
           return;
         case 'cheapest':
-          setProducts(products.sort((a: Product, b: Product) => {
+          setProducts([...products].sort((a: Product, b: Product) => {
             return a.price - b.price;
           }));
           setSortingByValue(value);

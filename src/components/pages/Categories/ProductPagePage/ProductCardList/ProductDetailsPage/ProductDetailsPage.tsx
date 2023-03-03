@@ -54,7 +54,6 @@ export const ProductDetailsPage: React.FC<Props> = (
       getProduct();
     }
   }, [products, id, category, product]);
-  // }, []);
 
   return (
     <div className="details__page">

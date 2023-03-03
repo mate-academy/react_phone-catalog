@@ -1,4 +1,3 @@
-/* eslint-disable import/no-cycle */
 import './App.scss';
 import { useState, useEffect } from 'react';
 import { Footer } from './components/Footer/Footer';

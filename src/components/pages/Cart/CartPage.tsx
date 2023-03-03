@@ -1,10 +1,7 @@
-/* eslint-disable no-useless-return */
-/* eslint-disable array-callback-return */
-/* eslint-disable consistent-return */
+import './CartPage.scss';
 import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '../../../common/Button/Button';
-import './CartPage.scss';
 import { CartItem } from './CartItem/CartItem';
 import { LongButton } from '../../../common/LongButton/LongButton';
 import { Product } from '../../../types/types';
@@ -13,27 +10,20 @@ import { CartAndFavContext } from '../../../context/CartAndFavContext';
 
 export const CartPage = () => {
   const navigate = useNavigate();
+  const { cartProducts = [] } = useContext(CartAndFavContext) ?? {};
 
-  const { cartProducts } = useContext(CartAndFavContext) ?? {};
   const totalPrice = (cartProducts || []).reduce(
     (current = 0, prev?: Product) => {
-      if (prev && prev.count) {
-        return current + (prev.price * prev.count);
-      }
-
-      return;
-    }, 0,
+      return prev?.count ? current + prev.price * prev.count : current;
+    },
+    0,
   );
 
-  // eslint-disable-next-line array-callback-return
   const totalAmount = (cartProducts || []).reduce(
     (current = 0, prev?: Product) => {
-      if (prev && prev.count) {
-        return current + prev.count;
-      }
-
-      return;
-    }, 0,
+      return prev?.count ? current + prev.count : current;
+    },
+    0,
   );
 
   return (
