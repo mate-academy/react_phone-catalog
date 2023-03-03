@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 /* eslint-disable max-len */
 import React, { useEffect, useState } from 'react';
 import {
@@ -33,6 +34,14 @@ type Props = {
   searchInput: string,
   setIPhones: (value: Product[])=> void,
   setVisibleIPhones: (value: Product[])=>void,
+};
+
+export const scrollUp = () => {
+  window.scroll({
+    top: 0,
+    left: 0,
+    behavior: 'smooth',
+  });
 };
 
 export const CreatedRoutes:React.FC<Props> = ({

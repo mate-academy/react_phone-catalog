@@ -23,7 +23,7 @@ export const ProductDetailsPage: React.FC<Props> = (
   const {
     detailedProduct,
     setDetailedProduct,
-  } = useContext(DetailedProductContext);
+  } = useContext(DetailedProductContext) ?? {};
   const [product, setProduct] = useState<Product | undefined>();
   const [category, setCategory] = useState('');
 
@@ -38,7 +38,7 @@ export const ProductDetailsPage: React.FC<Props> = (
     const response = await fetch(fetchLink,
       { method: 'GET' });
 
-    if (response.status === 200) {
+    if (response.status === 200 && setDetailedProduct) {
       const result = await response.json();
 
       setCategory(singleProduct.category);

@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import './ProductsListWithSlider.scss';
 
 import { useState, useRef, useEffect } from 'react';
@@ -21,7 +22,7 @@ export const ProductsListWithSlider: React.FC<Props> = (
   const [toggled, setToggled] = useState<boolean>(false);
   const [leftButtonClass, setLeftButtonClass] = useState<string>('');
   const [rightButtonClass, setRightButtonClass] = useState<string>('');
-  const ref = useRef<HTMLHeadingElement | any>(null);
+  const ref = useRef<HTMLLIElement>(null);
   const containerRef = useRef<HTMLHeadingElement | null>(null);
 
   const moveRight = () => {

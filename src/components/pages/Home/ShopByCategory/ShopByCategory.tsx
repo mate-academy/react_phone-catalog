@@ -1,6 +1,8 @@
+/* eslint-disable import/no-cycle */
 import './ShopByCategory.scss';
 import { Link } from 'react-router-dom';
 import { Product } from '../../../../types/types';
+import { scrollUp } from '../../../../Routes';
 
 type Props = {
   phones: Product[],
@@ -48,6 +50,7 @@ export const ShopByCategory: React.FC<Props> = ({ phones }) => {
                 >
                   <Link
                     to={`../${category}`}
+                    onClick={scrollUp}
                   >
                     <div className="category__image-block">
                       <img

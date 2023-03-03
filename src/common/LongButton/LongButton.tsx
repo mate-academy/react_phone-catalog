@@ -29,7 +29,7 @@ export const LongButton:React.FC<Props> = ({
 }) => {
   let singleProduct = product;
   const ref = useRef<HTMLAnchorElement>(null);
-  const { detailedProduct } = useContext(DetailedProductContext);
+  const { detailedProduct } = useContext(DetailedProductContext) ?? {};
 
   const {
     cartProducts, setCartProducts,
@@ -40,7 +40,7 @@ export const LongButton:React.FC<Props> = ({
   ) => {
     if (products) {
       singleProduct = products.find((one: Product) => {
-        return one.phoneId === detailedProduct.id;
+        return one.phoneId === detailedProduct?.id;
       });
     }
 

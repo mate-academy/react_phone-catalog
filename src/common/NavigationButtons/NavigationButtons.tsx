@@ -10,7 +10,7 @@ type Props = {
 };
 
 export const NavigationButtons:React.FC<Props> = ({ id = '0', title }) => {
-  const { detailedProduct } = useContext<any>(DetailedProductContext);
+  const { detailedProduct } = useContext(DetailedProductContext) ?? {};
   const { pathname } = useLocation();
 
   return (

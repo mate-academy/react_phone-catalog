@@ -32,13 +32,13 @@ export const Header: React.FC<Props> = ({
     cartProducts, favProducts, setVisibleFavProducts,
   } = useContext(CartAndFavContext) ?? {};
   const {
-    itemsOnPage,
-    currentPage,
+    itemsOnPage = 16,
+    currentPage = 1,
     setCurrentPage,
-    sortingByValue,
-    searchIsClicked,
+    sortingByValue = 'newest',
+    searchIsClicked = false,
     setSearchIsClicked,
-  } = useContext<any>(SortAndPagesContext);
+  } = useContext(SortAndPagesContext) ?? {};
   const [isBurgerVisible, setIsBurgerVisible] = useState(false);
   const firstIndex = currentPage * itemsOnPage - itemsOnPage;
   const lastIndex = currentPage * itemsOnPage;
@@ -54,7 +54,9 @@ export const Header: React.FC<Props> = ({
       _product: Product, index: number,
     ) => {
       if (firstIndex > products.length) {
-        setCurrentPage(Math.ceil(products.length / itemsOnPage));
+        if (setCurrentPage) {
+          setCurrentPage(Math.ceil(products.length / itemsOnPage));
+        }
 
         return index > products.length - itemsOnPage;
       }
@@ -78,8 +80,10 @@ export const Header: React.FC<Props> = ({
               ));
           }),
         );
+        if (setSearchIsClicked) {
+          setSearchIsClicked(!searchIsClicked);
+        }
 
-        setSearchIsClicked(!searchIsClicked);
         break;
       case '/favourites':
         setVisibleFavProducts(favProducts.filter((one: Product) => {

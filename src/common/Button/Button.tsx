@@ -28,13 +28,13 @@ export const Button: React.FC<Props> = ({
   } = useContext(CartAndFavContext) ?? {};
   const {
     detailedProduct,
-  } = useContext(DetailedProductContext);
+  } = useContext(DetailedProductContext) ?? {};
   let singleProduct = product;
 
   const toggleFav = async () => {
     if (products) {
       singleProduct = products.find((one: Product) => {
-        return one.phoneId === detailedProduct.id;
+        return one.phoneId === detailedProduct?.id;
       });
     }
 

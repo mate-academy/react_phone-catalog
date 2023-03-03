@@ -7,12 +7,12 @@ import './ProductPicturesBlock.scss';
 export const ProductPicturesBlock:React.FC = () => {
   const [mainPicture, setMainPicture] = useState(0);
   const isSelected = (pictureNumber: number) => pictureNumber === mainPicture;
-  const { detailedProduct } = useContext<any>(DetailedProductContext);
+  const { detailedProduct } = useContext(DetailedProductContext) ?? {};
 
   return (
     <div className="pictures-block">
       <ul className="pictures-block__list">
-        {detailedProduct.images.map((one: string, index: number) => {
+        {detailedProduct?.images.map((one: string, index: number) => {
           return (
             <li
               key={one}
@@ -32,7 +32,7 @@ export const ProductPicturesBlock:React.FC = () => {
         })}
       </ul>
       <img
-        src={`new/${detailedProduct.images[mainPicture]}`}
+        src={`new/${detailedProduct?.images[mainPicture]}`}
         alt="main"
         className="pictures-block__main"
       />

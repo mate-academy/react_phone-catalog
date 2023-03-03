@@ -21,12 +21,12 @@ export const ProductDescPage: React.FC<Props> = ({
 }) => {
   const {
     detailedProduct,
-  } = useContext(DetailedProductContext);
+  } = useContext(DetailedProductContext) ?? {};
 
   return (
     <div className="product-desc">
       <h1 className="product-desc__title">
-        {detailedProduct.name}
+        {detailedProduct?.name}
       </h1>
       <div className="product-desc__block">
         <div className="product-desc__info">
@@ -57,28 +57,28 @@ export const ProductDescPage: React.FC<Props> = ({
                 </div>
                 <div className="product-desc__values body14">
                   <p className="product-desc__value">
-                    {detailedProduct.screen}
+                    {detailedProduct?.screen}
                   </p>
                   <p className="product-desc__value">
-                    {detailedProduct.resolution}
+                    {detailedProduct?.resolution}
                   </p>
                   <p className="product-desc__value">
-                    {detailedProduct.processor}
+                    {detailedProduct?.processor}
                   </p>
                   <p className="product-desc__value">
-                    {detailedProduct.ram}
+                    {detailedProduct?.ram}
                   </p>
                   <p className="product-desc__value">
-                    {detailedProduct.capacity}
+                    {detailedProduct?.capacity}
                   </p>
                   <p className="product-desc__value">
-                    {detailedProduct.camera}
+                    {detailedProduct?.camera}
                   </p>
                   <p className="product-desc__value">
-                    {detailedProduct.zoom}
+                    {detailedProduct?.zoom}
                   </p>
                   <p className="product-desc__value">
-                    {detailedProduct.cell}
+                    {detailedProduct?.cell}
                   </p>
                 </div>
               </div>

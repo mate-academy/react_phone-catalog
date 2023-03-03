@@ -7,7 +7,7 @@ import './ProductTextDesc.scss';
 export const ProductTextDesc = () => {
   const {
     detailedProduct,
-  } = useContext(DetailedProductContext);
+  } = useContext(DetailedProductContext) ?? {};
 
   return (
     <div className="product-desc__text">
@@ -17,7 +17,7 @@ export const ProductTextDesc = () => {
       <div className="horizontal-line" />
       <ul className="product-desc__list">
         {
-          detailedProduct.description.map((one:
+          detailedProduct?.description.map((one:
           { title: string; text: string[]; }) => {
             return (
               <li key={one.title} className="product-desc__item">

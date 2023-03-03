@@ -10,9 +10,13 @@ type Props = {
 
 export const CartItem: React.FC<Props> = ({ product }) => {
   const [count, setCount] = useState(product.count || 0);
-  const { cartProducts, setCartProducts } = useContext<any>(CartAndFavContext);
+  const { cartProducts, setCartProducts } = useContext(CartAndFavContext) ?? {};
 
   const deleteProduct = async () => {
+    if (!setCartProducts || !cartProducts) {
+      return;
+    }
+
     await setCartProducts(cartProducts.filter(
       (p: Product) => p.id !== product.id,
     ));
@@ -30,6 +34,10 @@ export const CartItem: React.FC<Props> = ({ product }) => {
     if (count <= 0) {
       deleteProduct();
 
+      return;
+    }
+
+    if (!setCartProducts || !cartProducts) {
       return;
     }
 

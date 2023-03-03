@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-type SortAndPagesContextValue = {
+export type SortAndPagesContextType = {
   itemsOnPage: number;
   setItemsOnPage: (value: number) => void;
   currentPage: number;
@@ -16,7 +16,7 @@ type Props = {
 };
 
 export const SortAndPagesContext = React.createContext<
-SortAndPagesContextValue | null>(null);
+SortAndPagesContextType | null>(null);
 
 export const SortAndPagesProvider: React.FC<Props> = ({ children }) => {
   const [itemsOnPage, setItemsOnPage] = useState<number>(16);
@@ -24,19 +24,18 @@ export const SortAndPagesProvider: React.FC<Props> = ({ children }) => {
   const [sortingByValue, setSortingByValue] = useState<string>('newest');
   const [searchIsClicked, setSearchIsClicked] = useState<boolean>(false);
 
-  const contextValue: SortAndPagesContextValue = {
-    itemsOnPage,
-    setItemsOnPage,
-    currentPage,
-    setCurrentPage,
-    sortingByValue,
-    setSortingByValue,
-    searchIsClicked,
-    setSearchIsClicked,
-  };
-
   return (
-    <SortAndPagesContext.Provider value={contextValue}>
+    <SortAndPagesContext.Provider value={{
+      itemsOnPage,
+      setItemsOnPage,
+      currentPage,
+      setCurrentPage,
+      sortingByValue,
+      setSortingByValue,
+      searchIsClicked,
+      setSearchIsClicked,
+    }}
+    >
       {children}
     </SortAndPagesContext.Provider>
   );

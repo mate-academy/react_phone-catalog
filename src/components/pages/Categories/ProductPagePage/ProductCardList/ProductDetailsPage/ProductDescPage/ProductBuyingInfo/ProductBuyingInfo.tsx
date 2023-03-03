@@ -34,13 +34,13 @@ export const ProductBuyingInfo: React.FC<Props>
       isAddedToFav,
     } = useContext(CartAndFavContext) || {};
 
-    const { detailedProduct } = useContext(DetailedProductContext);
+    const { detailedProduct } = useContext<any>(DetailedProductContext);
 
     const {
       ram, processor, id,
       screen, resolution, priceDiscount,
       priceRegular, capacity, colorsAvailable,
-    } = detailedProduct || {};
+    } = detailedProduct;
 
     useEffect(() => {
       if (!cartProducts.length || !setIsAddedToCart) {

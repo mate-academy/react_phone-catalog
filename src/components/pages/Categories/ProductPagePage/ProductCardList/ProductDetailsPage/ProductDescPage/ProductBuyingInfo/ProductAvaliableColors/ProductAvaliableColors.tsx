@@ -15,13 +15,13 @@ export const ProductAvaliableColors:React.FC<Props> = ({
   products,
 }) => {
   const { detailedProduct, setDetailedProduct }
-  = useContext(DetailedProductContext);
+  = useContext(DetailedProductContext) ?? {};
 
-  const isActive = (color: string) => color === detailedProduct.color;
+  const isActive = (color: string) => color === detailedProduct?.color;
   const searchProductByColor = async (color: string) => {
     const newProduct = products.find((one: Product) => {
       return one.phoneId
-      === detailedProduct.id.replace(detailedProduct.color, color);
+      === detailedProduct?.id.replace(detailedProduct?.color, color);
     });
 
     if (!newProduct) {
@@ -35,7 +35,7 @@ export const ProductAvaliableColors:React.FC<Props> = ({
       },
     );
 
-    if (response.status === 200) {
+    if (response.status === 200 && setDetailedProduct) {
       const result = await response.json();
 
       window.location.replace(`#/${newProduct.category}/${newProduct.id}`);

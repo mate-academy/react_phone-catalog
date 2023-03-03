@@ -1,8 +1,10 @@
+/* eslint-disable import/no-cycle */
 /* eslint-disable array-callback-return */
 import { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { CartAndFavContext } from '../../context/CartAndFavContext';
 import { DetailedProductContext } from '../../context/DetailedProductContext';
+import { scrollUp } from '../../Routes';
 import { Product } from '../../types/types';
 import { Button } from '../Button/Button';
 import { LongButton } from '../LongButton/LongButton';
@@ -19,7 +21,7 @@ export const ProductCard: React.FC<Props> = ({
 }) => {
   const [isAddedToCart, setIsAddedToCart] = useState(false);
   const [isAddedToFav, setIsAddedToFav] = useState(false);
-  const { setDetailedProduct } = useContext<any>(DetailedProductContext);
+  const { setDetailedProduct } = useContext(DetailedProductContext) ?? {};
 
   const {
     name, price,
@@ -28,9 +30,11 @@ export const ProductCard: React.FC<Props> = ({
   const {
     cartProducts,
     favProducts,
-  } = useContext<any>(CartAndFavContext);
+  } = useContext(CartAndFavContext) ?? {};
 
   const getDetailedProduct = async () => {
+    scrollUp();
+
     if (!products) {
       return;
     }
@@ -51,11 +55,9 @@ export const ProductCard: React.FC<Props> = ({
         if (response.status === 200) {
           const result = await response.json();
 
-          window.scroll({
-            top: 0,
-            left: 0,
-            behavior: 'smooth',
-          });
+          if (!setDetailedProduct) {
+            return;
+          }
 
           setDetailedProduct(result);
         }
@@ -66,7 +68,7 @@ export const ProductCard: React.FC<Props> = ({
   };
 
   useEffect(() => {
-    cartProducts.map((one: Product) => {
+    cartProducts?.map((one: Product) => {
       if (one.id === product.id) {
         setIsAddedToCart(true);
       }
@@ -76,7 +78,7 @@ export const ProductCard: React.FC<Props> = ({
   useEffect(() => {
     setIsAddedToFav(false);
 
-    favProducts.map((one: Product) => {
+    favProducts?.map((one: Product) => {
       if (one.id === product.id) {
         setIsAddedToFav(true);
       }

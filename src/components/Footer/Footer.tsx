@@ -1,17 +1,12 @@
+/* eslint-disable import/no-cycle */
 import { NavLink } from 'react-router-dom';
 import { Button } from '../../common/Button/Button';
 import { Logo } from '../../common/Logo/Logo';
+import { scrollUp } from '../../Routes';
 import './Footer.scss';
 
 export const Footer = () => {
   const navLinksList = ['github', 'contacts', 'rights'];
-  const scrollUp = () => {
-    window.scroll({
-      top: 0,
-      left: 0,
-      behavior: 'smooth',
-    });
-  };
 
   return (
     <div className="footer">

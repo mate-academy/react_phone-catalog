@@ -1,6 +1,7 @@
 /* eslint-disable react/no-array-index-key */
 import './ProductSlider.scss';
 import { useEffect, useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import { Button } from '../../../../common/Button/Button';
 
 export const ProductsSlider = () => {
@@ -56,17 +57,20 @@ export const ProductsSlider = () => {
         >
           {[...Array(banners.length)].map((_one, index) => {
             const keyIndex = index;
+            const link = banners[index].split('-')[1].slice(0, -4);
 
             return (
               <li key={keyIndex}>
-                <div
-                  className="slider__images"
-                  style={{
-                    backgroundImage: `url('${banners[index]}')`,
-                    transform: `translateX(${-visibleBanner * 100}%)`,
-                    transition: 'transform .3s',
-                  }}
-                />
+                <NavLink to={`/${link}`}>
+                  <div
+                    className="slider__images"
+                    style={{
+                      backgroundImage: `url('${banners[index]}')`,
+                      transform: `translateX(${-visibleBanner * 100}%)`,
+                      transition: 'transform .3s',
+                    }}
+                  />
+                </NavLink>
               </li>
             );
           })}

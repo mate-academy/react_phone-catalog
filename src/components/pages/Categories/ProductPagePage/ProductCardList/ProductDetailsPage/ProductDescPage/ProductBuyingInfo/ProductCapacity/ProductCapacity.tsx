@@ -16,15 +16,19 @@ export const ProductCapacity:React.FC<Props> = (
   const {
     detailedProduct,
     setDetailedProduct,
-  } = useContext(DetailedProductContext);
-  const isActive = (capacity: string) => capacity === detailedProduct.capacity;
+  } = useContext(DetailedProductContext) ?? {};
+  const isActive = (capacity: string) => capacity === detailedProduct?.capacity;
   const searchProductByCapacity = async (capacity: string) => {
     const newProduct = products.find((one: Product) => {
       return (
         one.phoneId
-        === detailedProduct.id.replace(detailedProduct.capacity.toLowerCase(),
+        === detailedProduct?.id.replace(detailedProduct.capacity.toLowerCase(),
           capacity.toLowerCase()));
     });
+
+    if (!setDetailedProduct) {
+      return;
+    }
 
     if (newProduct) {
       const response = await fetch(
@@ -53,7 +57,7 @@ export const ProductCapacity:React.FC<Props> = (
       </div>
       <ul className="capacity__list">
         {
-          detailedProduct.capacityAvailable.map((one: string) => {
+          detailedProduct?.capacityAvailable.map((one: string) => {
             return (
               <li
                 className={`capacity__item ${isActive(one) && 'active-button'}`}

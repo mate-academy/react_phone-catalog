@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import { useContext, useEffect, useState } from 'react';
 import {
   NavigationButtons,
@@ -27,14 +28,14 @@ export const ProductsCardPage: React.FC<Props>
     visibleProducts, setProducts, searchInput,
   }) => {
     const {
-      itemsOnPage,
+      itemsOnPage = 16,
       setItemsOnPage,
-      currentPage,
+      currentPage = 1,
       setCurrentPage,
-      sortingByValue,
+      sortingByValue = 'newest',
       setSortingByValue,
-      searchIsClicked,
-    } = useContext<any>(SortAndPagesContext);
+      searchIsClicked = false,
+    } = useContext(SortAndPagesContext) ?? {};
 
     const [isProducts, setIsProducts] = useState(false);
     const productsAmount = products?.length || 1;
@@ -48,7 +49,7 @@ export const ProductsCardPage: React.FC<Props>
     });
 
     const sortItemsBy = async (value: string) => {
-      if (!products || !setProducts) {
+      if (!products || !setProducts || !setSortingByValue) {
         return;
       }
 
@@ -86,6 +87,10 @@ export const ProductsCardPage: React.FC<Props>
       }
 
       const setProductsOnPage = () => {
+        if (!setCurrentPage) {
+          return;
+        }
+
         if (products.length && setVisibleProducts && filteredProducts) {
           setVisibleProducts(filteredProducts.filter((
             _product: Product, index: number,
@@ -166,7 +171,9 @@ export const ProductsCardPage: React.FC<Props>
                         className="product-page__select pages"
                         value={itemsOnPage}
                         onChange={(event) => {
-                          setItemsOnPage(+event.target.value);
+                          if (setItemsOnPage) {
+                            setItemsOnPage(+event.target.value);
+                          }
                         }}
                         style={{
                           backgroundImage:
@@ -201,7 +208,7 @@ export const ProductsCardPage: React.FC<Props>
                     : <NoProducts />}
                 </ul>
                 {
-                  !!visibleProducts?.length && totalPages > 1
+                  !!visibleProducts?.length && totalPages > 1 && setCurrentPage
                   && (
                     <Pagination
                       currentPage={currentPage}
