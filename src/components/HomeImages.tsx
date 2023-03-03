@@ -1,6 +1,7 @@
 import { FC, useState } from 'react';
 import classNames from 'classnames';
 import '../styles/homeImages.scss';
+import { Link } from 'react-router-dom';
 
 export const HomeImages: FC = () => {
   const [activeImage, setActiveImage] = useState(0);
@@ -20,27 +21,39 @@ export const HomeImages: FC = () => {
           <i className="fas fa-chevron-left" />
         </button>
         <div className="banner__image">
-          <img
-            src="./img/newBanners/banner1.png"
-            alt="Banner-1"
-            className={classNames(
-              'banner__img', { 'banner__img--active': activeImage === 0 },
-            )}
-          />
-          <img
-            src="./img/newBanners/banner2.png"
-            alt="Banner-2"
-            className={classNames(
-              'banner__img', { 'banner__img--active': activeImage === 1 },
-            )}
-          />
-          <img
-            src="./img/newBanners/banner3.png"
-            alt="Banner-3"
-            className={classNames(
-              'banner__img', { 'banner__img--active': activeImage === 2 },
-            )}
-          />
+          {activeImage === 0 && (
+            <Link to="/phones" className="banner__item">
+              <img
+                src="./img/newBanners/banner1.png"
+                alt="phones"
+                className={classNames(
+                  'banner__img', { 'banner__img--active': activeImage === 0 },
+                )}
+              />
+            </Link>
+          )}
+          {activeImage === 1 && (
+            <Link to="/tablets" className="banner__item">
+              <img
+                src="./img/newBanners/banner2.png"
+                alt="tablets"
+                className={classNames(
+                  'banner__img', { 'banner__img--active': activeImage === 1 },
+                )}
+              />
+            </Link>
+          )}
+          {activeImage === 2 && (
+            <Link to="/accessories" className="banner__item">
+              <img
+                src="./img/newBanners/banner3.png"
+                alt="accessories"
+                className={classNames(
+                  'banner__img', { 'banner__img--active': activeImage === 2 },
+                )}
+              />
+            </Link>
+          )}
         </div>
         <button
           type="button"
@@ -63,7 +76,7 @@ export const HomeImages: FC = () => {
           )}
           onClick={() => setActiveImage(0)}
         >
-          {}
+          { }
         </button>
         <button
           type="button"
@@ -73,7 +86,7 @@ export const HomeImages: FC = () => {
           )}
           onClick={() => setActiveImage(1)}
         >
-          {}
+          { }
         </button>
         <button
           type="button"
@@ -83,7 +96,7 @@ export const HomeImages: FC = () => {
           )}
           onClick={() => setActiveImage(2)}
         >
-          {}
+          { }
         </button>
       </div>
     </div>

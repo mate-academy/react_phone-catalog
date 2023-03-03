@@ -1,4 +1,5 @@
-import { FC, useContext } from 'react';
+import { FC, useContext, useState } from 'react';
+import classNames from 'classnames';
 import { CartProduct } from '../types/CartProduct';
 import { BackButton } from './BackButton';
 import { Footer } from './Footer';
@@ -8,6 +9,7 @@ import { CartItem } from './CartItem';
 import { Context } from '../contexts/Context';
 
 export const CartPage: FC = () => {
+  const [isClick, setIsClick] = useState(false);
   const {
     cart,
     totalPrice,
@@ -37,10 +39,18 @@ export const CartPage: FC = () => {
                 </h2>
                 <p className="cart__sum-items">{`Total price for ${totalCount()} items`}</p>
                 <button
-                  className="cart__sum-button"
+                  className={classNames('cart__sum-button',
+                    { 'cart__sum-button--active': isClick })}
                   type="button"
+                  onClick={() => setIsClick(!isClick)}
                 >
-                  Checkout
+                  {!isClick && (
+                    'Checkout'
+                  )}
+                  {isClick && (
+                    'Order is processed'
+                  )}
+
                 </button>
               </div>
             </div>

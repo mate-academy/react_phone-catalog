@@ -59,13 +59,19 @@
     line-height: 21px;
     color: #fff;
     background-color: $black;
-    border: none;
-    outline: none;
+    border-color: $black;
     cursor: pointer;
+    outline: none;
     transition: box-shadow 0.3s;
 
+    &--active {
+      border-color: $silver;
+      background-color: #fff;
+      color: $green;
+    }
+
     &:hover {
-      box-shadow: 0 3px 13px rgba(23, 32, 49, 0.3);
+      box-shadow: 0 20px 20px rgb(20, 20, 21);
     }
   }
 
