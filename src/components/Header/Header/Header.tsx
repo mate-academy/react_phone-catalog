@@ -117,6 +117,10 @@ export const Header: React.FC<Props> = ({
     }
   }, [pathname, itemsOnPage, sortingByValue]);
 
+  useEffect(() => {
+    setSearchInput('');
+  }, [pathname]);
+
   return (
     <header className="header">
       <div className="header__block">
