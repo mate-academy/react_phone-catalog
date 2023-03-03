@@ -50,6 +50,22 @@ const App: FC = () => {
   };
 
   useEffect(() => {
+    const cartStorage = localStorage.getItem('cart')
+      ? JSON.parse(localStorage.getItem('cart') || '')
+      : [];
+
+    setCart(cartStorage);
+  }, []);
+
+  useEffect(() => {
+    const favStorage = localStorage.getItem('favourite')
+      ? JSON.parse(localStorage.getItem('favourite') || '')
+      : [];
+
+    setFav(favStorage);
+  }, []);
+
+  useEffect(() => {
     window.localStorage.setItem('favourite', JSON.stringify(fav));
   }, [fav]);
 
