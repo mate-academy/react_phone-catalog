@@ -20,7 +20,6 @@ export const Button: React.FC<Props> = ({ product, isBigButton }) => {
           classNames(
             'button',
             {
-              // eslint-disable-next-line max-len
               'button--active': isInCart(product),
               'button--big': isBigButton,
             },

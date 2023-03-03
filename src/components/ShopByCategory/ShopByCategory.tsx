@@ -3,6 +3,9 @@ import '../../pages/page.scss';
 import '../../helpers/grid.scss';
 import { Category } from '../Category/Category';
 import { Product } from '../../types/Product';
+import phones from '../../images/category-phones.png';
+import tablets from '../../images/category-tablets.png';
+import accessories from '../../images/category-accessories.png';
 
 type Props = {
   products: Product[];
@@ -25,7 +28,7 @@ export const ShopByCategory: React.FC<Props> = ({ products }) => {
       <div className="grid">
         <div className="grid__item grid__item--1-8">
           <Category
-            image="../../images/category-phones.png"
+            image={phones}
             backgroundColor="#fcdbc1"
             title="Mobile phones"
             text={`${phonesAmount} models`}
@@ -34,7 +37,7 @@ export const ShopByCategory: React.FC<Props> = ({ products }) => {
         </div>
         <div className="grid__item grid__item--9-16">
           <Category
-            image="_new/img/category-tablets.png"
+            image={tablets}
             backgroundColor="#8d8d92"
             title="Tablets"
             text={`${tabletsAmount} models`}
@@ -43,7 +46,7 @@ export const ShopByCategory: React.FC<Props> = ({ products }) => {
         </div>
         <div className="grid__item grid__item--17-24">
           <Category
-            image="_new/img/category-accessories.png"
+            image={accessories}
             backgroundColor="#973d5f"
             title="Accessories"
             text={`${accessoriesAmount} models`}
