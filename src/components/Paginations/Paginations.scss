@@ -1,4 +1,4 @@
-@import '../../helpers/vars.scss';
+@import "../../helpers/vars.scss";
 
 .paginations {
   &__list {
@@ -14,7 +14,7 @@
     margin-right: 8px;
   }
 
-  &__link {
+  &__button {
     box-sizing: border-box;
 
     display: flex;
@@ -28,6 +28,7 @@
     line-height: 21px;
     color: #000;
     border: 1px solid $elementsColor;
+    background-color: $whiteColor;
     text-decoration: none;
     cursor: pointer;
 

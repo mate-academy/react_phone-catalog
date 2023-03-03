@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import classNames from 'classnames';
 import './Button.scss';
+
 import { Product } from '../../types/Product';
 import { ProductsContext } from '../../helpers/ProductsContext';
 
@@ -34,4 +35,8 @@ export const Button: React.FC<Props> = ({ product, isBigButton }) => {
       </button>
     </>
   );
+};
+
+Button.defaultProps = {
+  isBigButton: false,
 };

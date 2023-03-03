@@ -47,7 +47,7 @@ export const Total: React.FC = () => {
       <div className="total__amount">
         {`$${amount}`}
       </div>
-      <p className="total__text">
+      <p className="total__text" data-cy="productQauntity">
         {`Total for ${totalQuantity} items`}
       </p>
 

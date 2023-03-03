@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Product } from '../../types/Product';
-import { Button } from '../Button';
-import { ButtonFavourite } from '../ButtonFavourive';
 import './ProductCard.scss';
+import { Product } from '../../types/Product';
+import { Button } from '../Button/Button';
+import { ButtonFavourite } from '../ButtonFavourive/ButtonFavourite';
 
 type Props = {
   product: Product,
@@ -15,7 +15,12 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     : product.price;
 
   return (
-    <Link to={`${product.id}`} key={product.id} className="product-card">
+    <Link
+      to={`/${product.type}s/${product.id}`}
+      key={product.id}
+      className="product-card"
+      data-cy="cardsContainer"
+    >
       <div className="product-card__content">
         <img
           className="product-card__photo"

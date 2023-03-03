@@ -1,21 +1,15 @@
-import React, { useState } from 'react';
-import { Footer } from '../components/Footer';
-import { Header } from '../components/Header';
-import '../helpers/page.scss';
+import React, { useState, useContext } from 'react';
+import './page.scss';
 import '../helpers/grid.scss';
-import { Product } from '../types/Product';
-import { ProductCard } from '../components/ProductCard';
 
-type Props = {
-//   addProductToCart: (product: Product) => void;
-//   addProductToFavourites: (product: Product) => void;
-};
+import { ProductsContext } from '../helpers/ProductsContext';
+import { Header } from '../components/Header/Header';
+import { ProductCard } from '../components/ProductCard/ProductCard';
+import { Footer } from '../components/Footer/Footer';
 
-export const FavouritesPage: React.FC<Props> = () => {
-  const favouritesFromLocalStorage = localStorage.getItem('favourites');
-  const favourites: Product[] = favouritesFromLocalStorage
-    ? JSON.parse(favouritesFromLocalStorage)
-    : [];
+export const FavouritesPage: React.FC = () => {
+  const { favourites } = useContext(ProductsContext);
+  const numberOfFavourites = favourites.length;
 
   const [query, setQuery] = useState('');
 
@@ -36,23 +30,21 @@ export const FavouritesPage: React.FC<Props> = () => {
         </h1>
 
         <h2 className="page__subtitle">
-          models
+          {`${numberOfFavourites} items`}
         </h2>
 
-        {favourites.length > 0
-          ? (
-            <div className="page__cards-list">
-              {filteredProducts.map(product => (
-                <ProductCard
-                  product={product}
-                  // addProductToCart={addProductToCart}
-                  // addProductToFavourites={addProductToFavourites}
-                />
-              ))}
-            </div>
-          ) : (
-            <p>Your favourites cart is empty</p>
-          )}
+        <section className="page__section">
+          {favourites.length > 0
+            ? (
+              <div className="page__cards-list">
+                {filteredProducts.map(product => (
+                  <ProductCard product={product} />
+                ))}
+              </div>
+            ) : (
+              <p>Your favourites cart is empty</p>
+            )}
+        </section>
       </div>
 
       <Footer />

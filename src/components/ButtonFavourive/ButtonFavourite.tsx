@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import classNames from 'classnames';
 import './ButtonFavourite.scss';
+
 import { Product } from '../../types/Product';
 import { ProductsContext } from '../../helpers/ProductsContext';
 
@@ -25,6 +26,7 @@ export const ButtonFavourite: React.FC<Props> = ({ product, isBigButton }) => {
       )}
       type="button"
       onClick={() => addProductToFavourites(product)}
+      data-cy="addToFavorite"
     >
       {!isInFavourites(product)
         ? (
@@ -62,4 +64,8 @@ export const ButtonFavourite: React.FC<Props> = ({ product, isBigButton }) => {
         )}
     </button>
   );
+};
+
+ButtonFavourite.defaultProps = {
+  isBigButton: false,
 };

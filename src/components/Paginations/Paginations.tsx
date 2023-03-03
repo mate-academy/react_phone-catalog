@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import './Paginations.scss';
 
@@ -8,7 +7,6 @@ type Props = {
   perPage: number;
   currentPage: number;
   setCurrentPage: (currentPage: number) => void,
-  // setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
 };
 
 export const Paginations: React.FC<Props> = ({
@@ -24,34 +22,29 @@ export const Paginations: React.FC<Props> = ({
     pages.push(i);
   }
 
-  const onPageChange = (page: number) => {
-    setCurrentPage(page);
-    // setCurrentPage(page);
-  };
-
   const handlePrevPage = () => {
     if (currentPage !== 1) {
-      onPageChange(currentPage - 1);
+      setCurrentPage(currentPage - 1);
     }
   };
 
   const handleNextPage = () => {
     if (currentPage !== numberOfPages) {
-      onPageChange(currentPage + 1);
+      setCurrentPage(currentPage + 1);
     }
   };
 
   return (
-    <div className="paginations">
+    <div className="paginations" data-cy="pagination">
       <ul className="paginations__list">
-        <li className="paginations__item">
-          <Link
-            to="./"
-            className="paginations__link"
+        <li className="paginations__item" data-cy="paginationLeft">
+          <button
+            type="button"
+            className="paginations__button"
             onClick={handlePrevPage}
           >
             {'<'}
-          </Link>
+          </button>
         </li>
 
         {pages.map(item => (
@@ -59,29 +52,29 @@ export const Paginations: React.FC<Props> = ({
             key={item}
             className="paginations__item"
           >
-            <Link
-              to="./"
+            <button
+              type="button"
               className={classNames(
-                'paginations__link',
+                'paginations__button',
                 {
-                  'paginations__link--active': item === currentPage,
+                  'paginations__button--active': item === currentPage,
                 },
               )}
-              onClick={() => onPageChange(item)}
+              onClick={() => setCurrentPage(item)}
             >
               {item}
-            </Link>
+            </button>
           </li>
         ))}
 
-        <li className="paginations__item">
-          <Link
-            to="./"
-            className="paginations__link"
+        <li className="paginations__item" data-cy="paginationRight">
+          <button
+            type="button"
+            className="paginations__button"
             onClick={handleNextPage}
           >
             {'>'}
-          </Link>
+          </button>
         </li>
       </ul>
     </div>

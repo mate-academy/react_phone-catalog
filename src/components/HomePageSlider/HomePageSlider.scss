@@ -1,12 +1,9 @@
 @import "../../helpers/vars.scss";
 
 .home-page-slider {
-  margin-bottom: 82px;
-
-  // &__content {
-  //   display: flex;
-  //   gap: 16px;
-  // }
+  &__content {
+    margin-bottom: 82px;
+  }
 
   &__wrapper {
     display: flex;

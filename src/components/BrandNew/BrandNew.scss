@@ -2,18 +2,4 @@
 
 .brand-new {
   position: relative;
-
-  &__title {
-    margin: 0 0 24px;
-
-    font-weight: 700;
-    font-size: 32px;
-    line-height: 41px;
-    letter-spacing: -0.01em;
-    color: $primaryColor;
-  }
-
-  &__content {
-    margin-bottom: 80px;
-  }
 }

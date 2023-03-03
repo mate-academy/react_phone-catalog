@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { Product, ProductDet } from '../../types/Product';
-import { Button } from '../Button';
-import { ButtonFavourite } from '../ButtonFavourive';
-import { SuggestedProducts } from '../SuggestedProducts';
 import './ProductDetails.scss';
+import { Product, ProductDet } from '../../types/Product';
+
+import { Button } from '../Button/Button';
+import { ButtonFavourite } from '../ButtonFavourive/ButtonFavourite';
 
 type Props = {
   productDetails: ProductDet | undefined;
@@ -28,7 +28,7 @@ export const ProductDetails: React.FC<Props> = ({
 
   return (
     <div className="product-details">
-      <div className="product-details__content grid">
+      <div className="grid">
         <div className="grid__item grid__item--1-2">
           {productDetails?.images.map(image => (
             <div
@@ -57,30 +57,6 @@ export const ProductDetails: React.FC<Props> = ({
         </div>
 
         <div className="grid__item grid__item--14-20">
-          {/* <div className="product-details__item">
-            <p className="product-details__subtitle product-details__text">
-              Available colors
-            </p>
-
-            <div className="product-details__options">
-              <div className="product-details__color" />
-              <div className="product-details__color" />
-              <div className="product-details__color" />
-              <div className="product-details__color" />
-            </div>
-          </div>
-
-          <div className="product-details__item">
-            <p className="product-details__subtitle product-details__text">
-              Select capacity
-            </p>
-
-            <div className="product-details__options">
-              <div className="product-details__button-info">64 GB</div>
-              <div className="product-details__button-info">256 GB</div>
-              <div className="product-details__button-info">512 GB</div>
-            </div>
-          </div> */}
 
           <div className="product-details__prices">
             <span className="product-details__new-price">
@@ -146,11 +122,14 @@ export const ProductDetails: React.FC<Props> = ({
 
         <div className="grid__item grid__item--23-24">
           <div className="product-details__text product-details__id">
-            {selectedProduct.id}
+            {`ID: ${selectedProduct.id}`}
           </div>
         </div>
 
-        <div className="grid__item grid__item--1-12">
+        <div
+          className="grid__item grid__item--1-12"
+          data-cy="productDescription"
+        >
           <h2 className="product-details__description-title">
             About
           </h2>
@@ -187,6 +166,19 @@ export const ProductDetails: React.FC<Props> = ({
               {productDetails?.display.screenResolution}
             </span>
           </div>
+
+          <div className="product-details__characteristic">
+            <span className="product-details__description-text">
+              OS
+            </span>
+            <span className="
+              product-details__description-text
+              product-details__description-text--primary"
+            >
+              {productDetails?.android.os}
+            </span>
+          </div>
+
           <div className="product-details__characteristic">
             <span className="product-details__description-text">
               Processor
@@ -198,37 +190,27 @@ export const ProductDetails: React.FC<Props> = ({
               processor
             </span>
           </div>
+
           <div className="product-details__characteristic">
             <span className="product-details__description-text">
-              RAM
+              Weight
             </span>
             <span className="
               product-details__description-text
               product-details__description-text--primary"
             >
-              {productDetails?.storage.ram}
+              {productDetails?.sizeAndWeight.weight}
             </span>
           </div>
           <div className="product-details__characteristic">
             <span className="product-details__description-text">
-              Built in memory
+              Battery type
             </span>
             <span className="
               product-details__description-text
               product-details__description-text--primary"
             >
-              {productDetails?.storage.flash}
-            </span>
-          </div>
-          <div className="product-details__characteristic">
-            <span className="product-details__description-text">
-              Camera
-            </span>
-            <span className="
-              product-details__description-text
-              product-details__description-text--primary"
-            >
-              {productDetails?.camera.primary}
+              {productDetails?.battery.type}
             </span>
           </div>
           <div className="product-details__characteristic">
@@ -244,8 +226,6 @@ export const ProductDetails: React.FC<Props> = ({
           </div>
         </div>
       </div>
-
-      <SuggestedProducts selectedProduct={selectedProduct} />
     </div>
   );
 };

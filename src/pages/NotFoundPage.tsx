@@ -1,5 +1,5 @@
 import React from 'react';
-import '../helpers/page.scss';
+import './page.scss';
 
 export const NotFoundPage: React.FC = () => (
   <div className="page">

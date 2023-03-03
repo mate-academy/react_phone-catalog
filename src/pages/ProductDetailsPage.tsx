@@ -1,27 +1,25 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import '../helpers/page.scss';
+import { useParams, Link } from 'react-router-dom';
+import './page.scss';
 import '../helpers/grid.scss';
-import { Footer } from '../components/Footer';
-import { Header } from '../components/Header';
-import { PagesLinks } from '../components/PagesLinks';
+
+import { Header } from '../components/Header/Header';
+import { Breadcrumbs } from '../components/Breadcrumbs/Breadcrumbs';
 import { Product, ProductDet } from '../types/Product';
-import { ProductDetails } from '../components/ProductDetails';
+import { ProductDetails } from '../components/ProductDetails/ProductDetails';
+import { Footer } from '../components/Footer/Footer';
+import {
+  SuggestedProducts,
+} from '../components/SuggestedProducts/SuggestedProducts';
 
 // eslint-disable-next-line max-len
 const BASE_URL = 'https://mate-academy.github.io/react_phone-catalog/api/products';
 
 type Props = {
   products: Product[];
-  // addProductToCart: (product: Product) => void;
-  // addProductToFavourites: (product: Product) => void;
 };
 
-export const ProductDetailsPage: React.FC<Props> = ({
-  products,
-  // addProductToCart,
-  // addProductToFavourites,
-}) => {
+export const ProductDetailsPage: React.FC<Props> = ({ products }) => {
   const [productDetails, setProductDetails] = useState<ProductDet>();
   const { productId = '' } = useParams();
 
@@ -46,20 +44,35 @@ export const ProductDetailsPage: React.FC<Props> = ({
 
       <div className="page__content">
         <div className="page__links-wrapper">
-          <PagesLinks />
+          <Breadcrumbs
+            link={selectedProduct?.type || ''}
+            text={selectedProduct?.name || ''}
+          />
         </div>
 
-        <h1 className="page__title">
-          {productDetails?.name}
-        </h1>
+        <Link
+          to="../"
+          className="page__link-back"
+          data-cy="backButton"
+        >
+          Back
+        </Link>
+
+        <section className="page__section">
+          <h1 className="page__title page__title--margin-40">
+            {productDetails?.name}
+          </h1>
+
+          {selectedProduct && (
+            <ProductDetails
+              productDetails={productDetails}
+              selectedProduct={selectedProduct}
+            />
+          )}
+        </section>
 
         {selectedProduct && (
-          <ProductDetails
-            productDetails={productDetails}
-            selectedProduct={selectedProduct}
-            // addProductToCart={addProductToCart}
-            // addProductToFavourites={addProductToFavourites}
-          />
+          <SuggestedProducts selectedProduct={selectedProduct} />
         )}
       </div>
 

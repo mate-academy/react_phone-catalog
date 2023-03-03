@@ -1,7 +1,6 @@
-/* eslint-disable jsx-a11y/control-has-associated-label */
 import React from 'react';
-import { PageNavLink } from '../PageNavLink';
 import './Nav.scss';
+import { PageNavLink } from '../PageNavLink/PageNavLink';
 
 export const Nav: React.FC = () => {
   return (

@@ -1,6 +1,6 @@
-@import '../../helpers/vars.scss';
+@import "../../helpers/vars.scss";
 
-.pages-links {
+.breadcrumbs {
   display: flex;
   align-items: center;
   gap: 13px;
@@ -13,7 +13,11 @@
     font-size: 12px;
     line-height: 12px;
     color: $secondaryColor;
-    text-decoration: none;
-    cursor: pointer;
+
+    &--link {
+      color: $primaryColor;
+      text-decoration: none;
+      cursor: pointer;
+    }
   }
 }

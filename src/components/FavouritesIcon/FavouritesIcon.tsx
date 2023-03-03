@@ -1,14 +1,14 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { ProductsContext } from '../../helpers/ProductsContext';
-import './Favourites.scss';
+import './FavouritesIcon.scss';
 
-export const Favourites: React.FC = () => {
+export const FavouritesIcon: React.FC = () => {
   const { favourites } = useContext(ProductsContext);
   const numberOfFavourites = favourites.length;
 
   return (
-    <Link to="/favourites" className="icon">
+    <Link to="/favourites" className="favourites-icon">
       <svg
         width="16"
         height="14"
@@ -26,7 +26,7 @@ export const Favourites: React.FC = () => {
       </svg>
 
       {!!numberOfFavourites && (
-        <div className="icon__counter">
+        <div className="favourites-icon__counter">
           {numberOfFavourites}
         </div>
       )}

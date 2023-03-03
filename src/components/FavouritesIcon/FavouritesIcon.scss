@@ -1,6 +1,6 @@
-@import '../../helpers/vars.scss';
+@import "../../helpers/vars.scss";
 
-.icon {
+.favourites-icon {
   position: relative;
 
   display: flex;
@@ -9,7 +9,7 @@
 
   width: 64px;
   height: 64px;
-  box-shadow: -1px 0px 0px $elementsColor;
+  box-shadow: -1px 0 0 $elementsColor;
   cursor: pointer;
 
   &__counter {

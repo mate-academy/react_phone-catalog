@@ -2,7 +2,6 @@
 
 .footer {
   display: flex;
-  justify-content: space-between;
   align-items: center;
 
   padding: 0 152px;
@@ -10,7 +9,11 @@
   height: $footerHeight;
 
   background-color: $whiteColor;
-  box-shadow: 0px -1px 0px $elementsColor;
+  box-shadow: 0 -1px 0 $elementsColor;
+
+  &__nav {
+    margin: 0 auto;
+  }
 
   &__list {
     display: flex;
@@ -36,39 +39,6 @@
     text-transform: uppercase;
     color: $secondaryColor;
     text-decoration: none;
-  }
-
-  &__up-button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    position: relative;
-    width: 32px;
-    height: 32px;
-
-    background-color: $whiteColor;
-    border: 1px solid $iconsColor;
     cursor: pointer;
-
-    &::before {
-      content: 'Back to top';
-
-      position: absolute;
-      top: 50%;
-      right: 100%;
-      transform: translateY(-50%);
-
-      display: block;
-      width: 70px;
-
-      margin-right: 16px;
-
-      font-weight: 600;
-      font-size: 12px;
-      line-height: 15px;
-      text-align: right;
-      color: $secondaryColor;
-    }
   }
 }

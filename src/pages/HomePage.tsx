@@ -1,23 +1,19 @@
 import React, { useMemo } from 'react';
-import { BrandNew } from '../components/BrandNew';
-import { Footer } from '../components/Footer';
-import { Header } from '../components/Header';
-import { HomePageSlider } from '../components/HomePageSlider';
-import { HotPrices } from '../components/HotPrices';
-import { ShopByCategory } from '../components/ShopByCategory';
+import './page.scss';
 import { Product } from '../types/Product';
+
+import { Header } from '../components/Header/Header';
+import { HomePageSlider } from '../components/HomePageSlider/HomePageSlider';
+import { HotPrices } from '../components/HotPrices/HotPrices';
+import { ShopByCategory } from '../components/ShopByCategory/ShopByCategory';
+import { BrandNew } from '../components/BrandNew/BrandNew';
+import { Footer } from '../components/Footer/Footer';
 
 type Props = {
   products: Product[];
-  // addProductToCart: (product: Product) => void;
-  // addProductToFavourites: (product: Product) => void;
 };
 
-export const HomePage: React.FC<Props> = ({
-  products,
-  // addProductToCart,
-  // addProductToFavourites,
-}) => {
+export const HomePage: React.FC<Props> = ({ products }) => {
   const productsWithDiscont = useMemo(() => {
     return products.filter(product => product.discount > 0);
   }, [products]);
@@ -33,19 +29,11 @@ export const HomePage: React.FC<Props> = ({
       <div className="page__content">
         <HomePageSlider />
 
-        <HotPrices
-          products={productsWithDiscont}
-          // addProductToCart={addProductToCart}
-          // addProductToFavourites={addProductToFavourites}
-        />
+        <HotPrices products={productsWithDiscont} />
 
         <ShopByCategory products={products} />
 
-        <BrandNew
-          products={productsWithoutDiscont}
-          // addProductToCart={addProductToCart}
-          // addProductToFavourites={addProductToFavourites}
-        />
+        <BrandNew products={productsWithoutDiscont} />
       </div>
 
       <Footer />

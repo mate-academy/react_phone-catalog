@@ -1,7 +1,10 @@
 @import "../../helpers/vars.scss";
 
 .category {
-  height: 368px;
+  &__content {
+    height: 368px;
+    margin-bottom: 80px;
+  }
 
   &__image-wrapper {
     position: relative;

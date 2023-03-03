@@ -1,7 +1,7 @@
 import React from 'react';
-import './ShopByCategory.scss';
+import '../../pages/page.scss';
 import '../../helpers/grid.scss';
-import { Category } from '../Category';
+import { Category } from '../Category/Category';
 import { Product } from '../../types/Product';
 
 type Props = {
@@ -13,14 +13,16 @@ export const ShopByCategory: React.FC<Props> = ({ products }) => {
     .filter(product => product.type === 'phone').length;
   const tabletsAmount = products
     .filter(product => product.type === 'tablet').length;
+  const accessoriesAmount = products
+    .filter(product => product.type === 'accessory').length;
 
   return (
-    <div className="shop-by-category">
-      <h2 className="shop-by-category__title">
+    <section className="shop-by-category page__section">
+      <h2 className="page__section-title">
         Shop by category
       </h2>
 
-      <div className="grid shop-by-category__content">
+      <div className="grid">
         <div className="grid__item grid__item--1-8">
           <Category
             image="_new/img/category-phones.png"
@@ -44,11 +46,11 @@ export const ShopByCategory: React.FC<Props> = ({ products }) => {
             image="_new/img/category-accessories.png"
             backgroundColor="#973d5f"
             title="Accessories"
-            text="100 models"
+            text={`${accessoriesAmount} models`}
             link="accessories"
           />
         </div>
       </div>
-    </div>
+    </section>
   );
 };

@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
 import classNames from 'classnames';
-import { CartItemInfo } from '../../types/CartItemInfo';
 import './CartItem.scss';
+
+import { CartItemInfo } from '../../types/CartItemInfo';
 import { ProductsContext } from '../../helpers/ProductsContext';
 
 type Props = {
@@ -28,6 +29,7 @@ export const CartItem: React.FC<Props> = ({ cartItem }) => {
             type="button"
             className="cart-item__cross-button"
             onClick={() => deleteProductFromCart(cartItem.product)}
+            data-cy="cartDeleteButton"
           >
             <svg
               width="16"

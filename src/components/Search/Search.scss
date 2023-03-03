@@ -1,18 +1,8 @@
-@import '../../helpers/vars.scss';
+@import "../../helpers/vars.scss";
 
 .search {
   position: relative;
-
   cursor: pointer;
-
-  // &::after {
-  //   content: url(../../images/search.svg);
-
-  //   position: absolute;
-  //   top: 50%;
-  //   right: 24px;
-  //   transform: translateY(-50%);
-  // }
 
   &__field {
     box-sizing: border-box;
@@ -23,7 +13,7 @@
     background-color: $whiteColor;
     border: 1px solid transparent;
     border-right: 1px solid $elementsColor;
-    box-shadow: -1px 0px 0px $elementsColor;
+    box-shadow: -1px 0 0 $elementsColor;
     outline: none;
 
     font-weight: 600;

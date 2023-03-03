@@ -2,12 +2,11 @@ import React from 'react';
 import './Header.scss';
 import '../../helpers/grid.scss';
 
-import { Favourites } from '../Favourites';
 import { Logo } from '../Logo/Logo';
-import { Nav } from '../Nav';
-import { ShoppingBag } from '../ShoppingBag';
-import { Search } from '../Search';
-// import { Product } from '../../types/Product';
+import { Nav } from '../Nav/Nav';
+import { Search } from '../Search/Search';
+import { FavouritesIcon } from '../FavouritesIcon/FavouritesIcon';
+import { ShoppingBag } from '../ShoppingBag/ShoppingBag';
 
 type Props = {
   search?: string;
@@ -30,10 +29,16 @@ export const Header: React.FC<Props> = ({
 
         <div className="header__links-wrapper">
           {search && setQuery && <Search text={search} setQuery={setQuery} />}
-          {!isCartPageOpen && <Favourites />}
+          {!isCartPageOpen && <FavouritesIcon />}
           <ShoppingBag />
         </div>
       </div>
     </header>
   );
+};
+
+Header.defaultProps = {
+  search: '',
+  setQuery: undefined,
+  isCartPageOpen: false,
 };
