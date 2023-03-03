@@ -148,7 +148,7 @@ const App: FC = () => {
         <Route path="/accessories" element={<ProductsList products={accessoriesList} isloading={isloading} title="Accessories" />} />
         <Route path="/cart" element={<CartPage />} />
         <Route path="/favorites" element={<FavoritesPage />} />
-        <Route path="/*" element={<PageNotFound />} />
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </Context.Provider>
   );
