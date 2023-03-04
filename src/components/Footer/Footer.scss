@@ -1,0 +1,65 @@
+@media screen and (min-width: 285px) and (max-width: 569px) {
+
+  #footer__navigation-list {
+    display: none;
+  }
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 96px;
+  box-shadow: 0 -1px 0 #e2e6e9;
+
+  &__navigation {
+    &-list {
+      display: flex;
+      padding: 0;
+      text-transform: uppercase;
+      font-family: "Mont Bold", sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 11px;
+      letter-spacing: 0.04em;
+    }
+
+    &-item {
+      margin-left: 64px;
+      height: 11px;
+    }
+
+    &-link {
+      &:hover {
+        color: #313237;
+
+        &::after {
+          content: "";
+          display: block;
+          width: 100%;
+          margin-top: 24px;
+          border-bottom: 3px solid #313237;
+        }
+      }
+    }
+  }
+
+  &__top {
+    display: flex;
+  }
+
+  &__button-text {
+    margin-right: 16px;
+    text-align: right;
+    color: #89939a;
+
+    &:hover {
+      color: #313237;
+    }
+  }
+
+  &__button-up {
+    display: flex;
+    align-items: center;
+  }
+}

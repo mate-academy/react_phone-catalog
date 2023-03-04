@@ -1,1 +1,132 @@
-// not empty
+@font-face {
+  font-family: "Mont", sans-serif;
+  src: url("./fonts/Mont-Regular.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Mont SemiBold", sans-serif;
+  src: url("./fonts/Mont-SemiBold.otf") format("opentype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Mont Bold", sans-serif;
+  src: url("./fonts/Mont-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@media screen and (min-width: 0) and (max-width: 569px) {
+  main {
+    max-width: 400px;
+    padding: 0 20px;
+    overflow-x: hidden;
+  }
+
+  #slider-main {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 570px) and (max-width: 859px) {
+  main {
+    max-width: 570px;
+    padding: 0 20px;
+  }
+}
+
+@media screen and (min-width: 860px) and (max-width: 1140px) {
+  main {
+    max-width: 855px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+}
+
+@media screen and (min-width: 1140px) {
+  main,
+  footer {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+}
+
+* {
+  margin: 0;
+}
+
+iframe {
+  pointer-events: none;
+}
+
+body {
+  font-family: "Mont", sans-serif;
+  font-style: normal;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+main {
+  margin: 0 auto;
+  min-height: 75vh;
+}
+
+h1 {
+  font-family: "Mont Bold", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  color: #313237;
+}
+
+h2 {
+  font-family: "Mont Bold", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 140%;
+}
+
+h3 {
+  font-family: "Mont SemiBold", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 26px;
+  color: #313237;
+}
+
+ul {
+  padding: 0;
+}
+
+.body14 {
+  font-family: "Mont", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+.body12 {
+  font-family: "Mont SemiBold", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+p {
+  margin: 0;
+}
+
+#root {
+  width: 100%;
+}

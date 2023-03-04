@@ -1,0 +1,27 @@
+.capacity {
+  &__text {
+    color: #89939a;
+    margin-bottom: 8px;
+  }
+
+  &__list {
+    display: flex;
+    margin: 0;
+  }
+
+  &__item {
+    box-sizing: border-box;
+    width: 56px;
+    height: 32px;
+    border: 1px solid #b4bdc4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 8px;
+    margin-bottom: 24px;
+
+    &:hover {
+      border: 1px solid #313237;
+    }
+  }
+}
