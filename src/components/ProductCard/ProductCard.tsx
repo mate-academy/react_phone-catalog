@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import './ProductCard.scss';
 import { Product } from '../../types/Product';
 import { Button } from '../Button/Button';
@@ -13,6 +13,8 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   const newPrice = product.discount > 0
     ? product.price - (product.price * product.discount) / 100
     : product.price;
+
+  const location = useLocation();
 
   return (
     <Link
@@ -67,7 +69,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           </div>
         </div>
 
-        <Link to="./" className="product-card__buttons-wrapper">
+        <Link to={`./${location.search}`} className="product-card__buttons-wrapper">
           <Button product={product} />
 
           <ButtonFavourite product={product} />
