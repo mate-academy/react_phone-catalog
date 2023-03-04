@@ -1,38 +1,35 @@
-
 @media screen and (min-width: 860px) and (max-width: 1140px) {
-	.contacts__block {
-		margin-left: -10vw;
-		margin-right: 20vw;
-		padding: 20px 100px;
-	}
+  .contacts__block {
+    margin-left: -10vw;
+    margin-right: 20vw;
+    padding: 20px 100px;
+  }
 }
 
 .contacts {
-	height: 75vh;
-	display: flex;
-	flex-direction: column;
-	flex-wrap: wrap;
-	align-items: center;
-	color: white;
-	justify-content: space-evenly;
+  height: 75vh;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  color: white;
+  justify-content: space-evenly;
 
+  &__block {
+    height: 30vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    background-color: black;
+  }
 
-	&__block {
-		height: 30vh;
-		width: 100%;
-		display: flex;
-		align-items: center;
-		justify-content: space-evenly;
-		flex-wrap: wrap;
-		background-color: black;
-	}
+  &__title {
+    color: white;
+  }
 
-	&__title {
-		color: white;
-	}
-
-	&-link:hover {
-		color: white;
-
-	}
+  &-link:hover {
+    color: white;
+  }
 }

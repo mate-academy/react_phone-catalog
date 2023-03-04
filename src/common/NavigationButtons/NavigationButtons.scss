@@ -1,24 +1,24 @@
 .navigation-buttons {
-	display: flex;
-	align-items: center;
-	margin-top: 24px;
-	margin-bottom: 40px;
+  display: flex;
+  align-items: center;
+  margin-top: 24px;
+  margin-bottom: 40px;
 }
 
 .sub-buttons {
-	display: flex;
-	margin-right: 10px;
-	align-items: flex-end
+  display: flex;
+  margin-right: 10px;
+  align-items: flex-end;
 }
 
 .sub-link {
-	margin-left: 10px;
+  margin-left: 10px;
 
-	&::first-letter {
-		text-transform: capitalize;
-	}
+  &::first-letter {
+    text-transform: capitalize;
+  }
 
-	&:hover {
-		color: #313237;
-	}
+  &:hover {
+    color: #313237;
+  }
 }

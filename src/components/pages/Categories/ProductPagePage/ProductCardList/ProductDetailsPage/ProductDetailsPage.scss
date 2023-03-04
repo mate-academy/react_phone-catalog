@@ -1,12 +1,11 @@
-
 .back-button {
-	display: flex;
-	height: 16px;
-	margin-bottom: 16px;
-	color: #89939A;
+  display: flex;
+  height: 16px;
+  margin-bottom: 16px;
+  color: #89939a;
 
-	&__text {
-		margin-left: 9px;
-		cursor: pointer;
-	}
+  &__text {
+    margin-left: 9px;
+    cursor: pointer;
+  }
 }

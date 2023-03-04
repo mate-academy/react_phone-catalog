@@ -73,7 +73,7 @@ export const CartPage = () => {
               <div className="horizontal-line" />
               <LongButton
                 text="Checkout"
-                link="../#/checkout"
+                link="/#/checkout"
               />
             </div>
           </>

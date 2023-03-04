@@ -1,17 +1,17 @@
 .product-desc {
-	&__title {
-		margin: 0;
-		margin-bottom: 16px;
-	}
+  &__title {
+    margin: 0;
+    margin-bottom: 16px;
+  }
 
-	&__list {
-		margin: 0;
-	}
+  &__list {
+    margin: 0;
+  }
 
-	&__item {
-		&-text {
-			margin-bottom: 32px;
-			color: #89939A;
-		}
-	}
+  &__item {
+    &-text {
+      margin-bottom: 32px;
+      color: #89939a;
+    }
+  }
 }

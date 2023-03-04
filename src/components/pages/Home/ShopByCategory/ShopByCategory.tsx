@@ -33,7 +33,10 @@ export const ShopByCategory: React.FC<Props> = ({ phones }) => {
     }];
 
   return (
-    <div className="category">
+    <div
+      className="category"
+      data-cy="categoryLinksContainer"
+    >
       <h1 className="category__title">
         Shop by category
       </h1>

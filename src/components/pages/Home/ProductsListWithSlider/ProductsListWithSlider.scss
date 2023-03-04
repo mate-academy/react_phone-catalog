@@ -1,34 +1,33 @@
-@media screen and (min-width: 0px) and (max-width: 569px) {
-	div.products-list-with-slider__block {
-		max-width: 285px;
-		margin: 40px auto
-	}
+@media screen and (min-width: 0) and (max-width: 569px) {
+  div.products-list-with-slider__block {
+    max-width: 285px;
+    margin: 40px auto;
+  }
 }
 
 .products-list-with-slider__block {
-	margin-top: 80px;
-	max-width: 1140px;
-	overflow: hidden;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
+  margin-top: 80px;
+  max-width: 1140px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .product-list__slider-card {
-	margin-right: 16px;
+  margin-right: 16px;
 }
 
 .block__title {
-	color: #313237;
-	margin: 0;
+  color: #313237;
+  margin: 0;
 }
 
-
 .products-list-with-slider__header {
-	display: flex;
-	justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .slider-buttons {
-	display: flex;
+  display: flex;
 }

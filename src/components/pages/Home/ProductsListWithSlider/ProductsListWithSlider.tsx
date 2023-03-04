@@ -75,6 +75,7 @@ export const ProductsListWithSlider: React.FC<Props> = (
     <div
       className="products-list-with-slider__block"
       ref={containerRef}
+      data-cy="cardsContainer"
     >
       <div className="products-list-with-slider__header">
         <h1 className="block__title">{title}</h1>
