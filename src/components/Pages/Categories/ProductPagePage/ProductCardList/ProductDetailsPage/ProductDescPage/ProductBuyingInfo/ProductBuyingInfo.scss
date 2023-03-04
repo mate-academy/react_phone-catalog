@@ -1,0 +1,36 @@
+.buying-info {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+
+  &__price {
+    display: flex;
+    align-items: center;
+    margin-top: 0;
+    margin-bottom: 16px;
+    height: 42px;
+  }
+
+  &__buttons {
+    display: flex;
+  }
+
+  &__tech-details {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 32px;
+  }
+
+  &__keys {
+    color: #89939a;
+  }
+
+  &__values {
+    font-family: "Mont SemiBold", sans-serif;
+    text-align: end;
+    font-weight: 600;
+  }
+}
+
+.product-id {
+  text-align: end;
+}
