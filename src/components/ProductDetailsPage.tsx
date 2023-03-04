@@ -24,6 +24,8 @@ export const ProductDetailsPage: FC<Props> = ({ products }) => {
   const [gadgetPhoto, setgGadgetPhoto] = useState(device?.imageUrl);
   const [isloading, setIsLoading] = useState(false);
 
+  const foundId = products.find((product) => product.id === productId);
+
   const loadDevices = async () => {
     try {
       setIsLoading(true);
@@ -39,11 +41,10 @@ export const ProductDetailsPage: FC<Props> = ({ products }) => {
 
   useEffect(() => {
     loadDevices();
-  }, [productId]);
+  }, []);
 
   return (
     <>
-
       <Header />
       <main className="container">
         {!isloading ? (
@@ -51,7 +52,12 @@ export const ProductDetailsPage: FC<Props> = ({ products }) => {
             <div className="product-details-page">
               <Breadcrumbs />
               <BackButton />
-              {device && foundGadget && (
+              {!foundId && (
+                <>
+                  <h2 className="product-details__problem">It&apos;s fuckin problem</h2>
+                </>
+              )}
+              {foundId && device && foundGadget && (
                 <div className="product-details">
                   <h2 className="product-details__title">{foundGadget.name}</h2>
                   <div className="product-details__content">

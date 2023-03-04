@@ -11,6 +11,15 @@
     padding-bottom: 40px;
   }
 
+  &__problem {
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 41px;
+    color: red;
+    padding-bottom: 320px;
+    padding-top: 220px;
+  }
+
   &__content {
     display: flex;
     align-items: center;

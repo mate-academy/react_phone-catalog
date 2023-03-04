@@ -14,9 +14,9 @@ export const Breadcrumbs:FC = () => {
       >
         <i className="fa-solid fa-house" />
       </NavLink>
-      {section.map(x => (
+      {section.slice(1).map(x => (
         <NavLink to={`/${x}`} className="breadcrumbs__link" key={x}>
-          {` ${x} >`}
+          {` > ${x} `}
         </NavLink>
       ))}
     </div>
