@@ -1,7 +1,7 @@
 import './App.scss';
 import { useState, useEffect } from 'react';
 import { Footer } from './components/Footer/Footer';
-import { Header } from './components/Header/Header/Header';
+import { Header } from './components/Header/Header';
 import { Product } from './types/types';
 import { CreatedRoutes } from './Routes';
 
