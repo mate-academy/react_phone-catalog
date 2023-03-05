@@ -21,6 +21,22 @@ export const ProductsList: FC<Props> = ({ products, title, isloading }) => {
   const [sortBy, setSortBy] = useState('newest');
   const [list, setlist] = useState('100');
   const [currentPage, setCurrentPage] = useState(1);
+  const query = searchParams.get('query') || '';
+  const [newQuery, setNewQuery] = useState(query);
+
+  const productAfterQuery = (devices: Product[], selectedQuery: string) => {
+    if (!selectedQuery) {
+      return devices;
+    }
+
+    const normalizeQuery = selectedQuery.replace(/ /g, '').toUpperCase();
+
+    return devices.filter(({ name }) => {
+      return name.replace(/ /g, '').toUpperCase().includes(normalizeQuery);
+    });
+  };
+
+  const productsFilteredByQuery = productAfterQuery(products, query);
 
   const sortMenu = () => {
     const sort = searchParams.get('sortBy') || 'newest';
@@ -66,6 +82,10 @@ export const ProductsList: FC<Props> = ({ products, title, isloading }) => {
     filterMenu();
   }, [setlist]);
 
+  useEffect(() => {
+    setNewQuery(newQuery);
+  }, [query]);
+
   return (
     <>
       <Header />
@@ -74,9 +94,9 @@ export const ProductsList: FC<Props> = ({ products, title, isloading }) => {
           <div className="product-list product-list__container" data-cy="productList">
             <Breadcrumbs />
             <h1 className="product-list__title">{title}</h1>
-            {products.length > 0 ? (
+            {productsFilteredByQuery.length > 0 ? (
               <>
-                <p className="product-list__count">{`${products.length} models`}</p>
+                <p className="product-list__count">{`${productsFilteredByQuery.length} models`}</p>
                 <div className="product-list__menu">
                   <label htmlFor="#">
                     Sort By
@@ -111,17 +131,17 @@ export const ProductsList: FC<Props> = ({ products, title, isloading }) => {
                   </label>
                 </div>
                 <div className="product-list__content">
-                  {products.slice((currentPage - 1) * +list, +list * currentPage).map(product => (
+                  {productsFilteredByQuery.slice((currentPage - 1) * +list, +list * currentPage).map(product => (
                     <ProductCard product={product} key={product.id} />
                   ))}
                 </div>
               </>
             ) : (
-              <h2>Products not found</h2>
+              <h2 className="product-list__error">Products not found</h2>
             )}
             {+list < products.length && (
               <Pagination
-                productsLength={products.length}
+                productsLength={productsFilteredByQuery.length}
                 list={+list}
                 currentPage={currentPage}
                 setCurrentPage={setCurrentPage}

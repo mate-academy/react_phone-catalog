@@ -70,4 +70,12 @@
     margin-top: 20%;
     font-size: 60px;
   }
+
+  &__error {
+    margin-top: 180px;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 41px;
+    color: $black;
+  }
 }
