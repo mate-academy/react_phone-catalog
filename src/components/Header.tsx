@@ -1,5 +1,5 @@
 import { FC, useContext } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useLocation, useParams } from 'react-router-dom';
 import { Logo } from './Logo';
 import { Navbar } from './Navbar';
 import '../styles/header.scss';
@@ -8,14 +8,14 @@ import { Search } from './Search';
 
 export const Header: FC = () => {
   const { cart } = useContext(Context);
+  const { productId = '' } = useParams();
 
   const { fav } = useContext(Context);
   const { pathname } = useLocation();
-  const notDetailsPage = pathname.split('/').filter(el => el !== '').length;
 
   const visibleSearch
-  = pathname !== '/' && pathname !== '/cart' && pathname !== '/favorites'
-  && notDetailsPage === 1;
+  = pathname !== '/' && pathname !== '/cart'
+  && !productId && pathname !== '*';
 
   return (
     <header className="header">

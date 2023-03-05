@@ -51,6 +51,7 @@ export const Search = () => {
           <button
             type="button"
             className="search__clear-button"
+            data-cy="searchDelete"
             onClick={() => {
               setSearchQuery('');
               queryRequest('', pathname, searchParams);
