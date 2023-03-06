@@ -1,5 +1,6 @@
 import { FC, useContext, useState } from 'react';
 import classNames from 'classnames';
+import { useLocation } from 'react-router-dom';
 import { CartProduct } from '../types/CartProduct';
 import { BackButton } from './BackButton';
 import { Footer } from './Footer';
@@ -15,6 +16,8 @@ export const CartPage: FC = () => {
     totalPrice,
     totalCount,
   } = useContext(Context);
+
+  const { pathname } = useLocation();
 
   return (
     <>
@@ -56,7 +59,7 @@ export const CartPage: FC = () => {
             </div>
           )}
           {!cart.length && (
-            <p className="cart__subtitle">The list is empty</p>
+            <p className="cart__subtitle">{`The ${pathname.slice(1)} is empty`}</p>
           )}
         </div>
       </main>

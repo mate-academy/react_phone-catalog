@@ -54,7 +54,7 @@ export const ProductDetailsPage: FC<Props> = ({ products }) => {
               <BackButton />
               {!foundId && (
                 <>
-                  <h2 className="product-details__problem">It&apos;s fuckin problem</h2>
+                  <h2 className="product-details__problem">Page not found</h2>
                 </>
               )}
               {foundId && device && foundGadget && (

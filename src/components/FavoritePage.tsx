@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Product } from '../types/Product';
 import { Breadcrumbs } from './Breadcrumbs';
 import { Footer } from './Footer';
@@ -9,6 +10,7 @@ import { Context } from '../contexts/Context';
 
 export const FavoritesPage: React.FC = () => {
   const { fav } = useContext(Context);
+  const { pathname } = useLocation();
 
   return (
     <>
@@ -27,7 +29,7 @@ export const FavoritesPage: React.FC = () => {
               </div>
             </>
           ) : (
-            <p className="favorites__subtitle">The list is empty</p>
+            <p className="favorites__subtitle">{`The ${pathname.slice(1)} is empty`}</p>
           )}
         </div>
       </main>
