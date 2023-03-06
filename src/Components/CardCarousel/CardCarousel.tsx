@@ -16,7 +16,7 @@ export const CardCarousel: React.FC<PropTypes> = ({
   title,
 }) => {
   const CARD_WIDTH = 250;
-  const CARD_GAP = 20;
+  const CARD_GAP = 22;
   const CARDS_PER_PAGE = window.innerWidth < 1020 ? 1 : 4;
 
   const [lastVisibleCard, setLastVisibleCard] = useState(CARDS_PER_PAGE);

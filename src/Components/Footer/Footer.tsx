@@ -16,7 +16,7 @@ export const Footer = () => {
           className="logo"
         >
           <img
-            src="img/Icons/logo-new.svg"
+            src="img/Icons/logo.svg"
             alt="my-phone-logo"
             className="logo__img footer__logo"
           />

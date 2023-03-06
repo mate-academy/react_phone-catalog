@@ -4,7 +4,7 @@ import {
   useRef,
   useState,
 } from 'react';
-import { useSearchParams, useLocation } from 'react-router-dom';
+import { useSearchParams, useLocation, Link } from 'react-router-dom';
 import { getProducts } from '../../api/products';
 import { Product } from '../../types/Product';
 import { Phones } from '../../Components/Phones';
@@ -116,13 +116,13 @@ export const PhonesPage: React.FC<PropTypes> = ({ product }) => {
     }
   });
 
-  const lastItemIndex = currentPage * itemsPerPage;
-  const firstItemIndex = lastItemIndex - itemsPerPage;
-  const currentItem = visiblePhones.slice(firstItemIndex, lastItemIndex);
-
   if (isReversed) {
     visiblePhones.reverse();
   }
+
+  const lastItemIndex = currentPage * itemsPerPage;
+  const firstItemIndex = lastItemIndex - itemsPerPage;
+  const currentItem = visiblePhones.slice(firstItemIndex, lastItemIndex);
 
   const quantity = visiblePhones.length;
 
@@ -142,13 +142,13 @@ export const PhonesPage: React.FC<PropTypes> = ({ product }) => {
         {!isLoading ? (
           <>
             <div className="catalog__root-box">
-              <a href="/">
+              <Link to="/">
                 <img
                   src="img/Icons/home.svg"
                   alt="toHome"
                   className="catalog__home-img"
                 />
-              </a>
+              </Link>
               <img
                 src="img/Icons/arr-right-hover.svg"
                 alt="arr-right"

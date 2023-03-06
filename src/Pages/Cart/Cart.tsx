@@ -2,7 +2,6 @@ import classNames from 'classnames';
 import { useCallback, useContext, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
-import { Modal } from '../../Components/Modal';
 import {
   addQuantity,
   ProductForCart,
@@ -15,8 +14,6 @@ import './Cart.scss';
 
 export const Cart = () => {
   const { setSearchVisible } = useContext(SearchContext);
-
-  const [modalActive, setModalActive] = useState<boolean>(false);
   const [notifyActive, setNotifyActive] = useState<boolean>(false);
 
   setSearchVisible(false);
@@ -188,19 +185,15 @@ export const Cart = () => {
                   <p className="cart__notification-text">
                     this feature is not implemented yet
                     <hr />
-                    but you
-                    can look at the
-                    received data with which you we can work further
                   </p>
                   <button
                     className="cart__checkout-button"
                     type="button"
                     onClick={() => {
-                      setModalActive(true);
                       setNotifyActive(false);
                     }}
                   >
-                    Open data
+                    Close
                   </button>
                 </div>
               )}
@@ -218,9 +211,6 @@ export const Cart = () => {
           </div>
         )}
       </div>
-      <Modal setActive={setModalActive} active={modalActive}>
-        {JSON.stringify(items)}
-      </Modal>
     </main>
   );
 };

@@ -49,7 +49,7 @@ export const Navbar = () => {
           className="logo header__logo"
         >
           <img
-            src="img/Icons/logo-new.svg"
+            src="img/Icons/logo.svg"
             alt="my-phone-logo"
             className="logo__img"
           />

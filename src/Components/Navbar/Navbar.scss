@@ -35,6 +35,8 @@
     }
 
     &--active {
+      color: $color-primary;
+
       &::after {
         content: "";
         position: absolute;

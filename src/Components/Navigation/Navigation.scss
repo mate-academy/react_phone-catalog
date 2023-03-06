@@ -43,7 +43,13 @@
     color: $color-secondary;
     position: relative;
 
+    &:hover {
+      color: $color-primary;
+    }
+
     &--active {
+      color: $color-primary;
+
       &::after {
         content: "";
         position: absolute;

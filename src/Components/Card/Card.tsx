@@ -95,9 +95,14 @@ export const Card: React.FC<PropTypes> = ({ product }) => {
         </Link>
       </div>
       <p className="card__name">
-        <a href="/">
+        <Link
+          to={{
+            pathname: `/${product.category}/${product.itemId}`,
+            search: location.search,
+          }}
+        >
           {name}
-        </a>
+        </Link>
       </p>
       <div className="card__price">
         <h2 className="card__price-amount">

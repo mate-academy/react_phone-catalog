@@ -59,6 +59,7 @@ export const Pagination: React.FC<PropTypes> = ({
             'pagination__button',
             {
               'pagination__button--active': currentPage === number,
+              'pagination__button--hidden': currentPage === number,
             },
           )}
         >
