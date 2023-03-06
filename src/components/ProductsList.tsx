@@ -28,10 +28,10 @@ export const ProductsList: FC<Props> = ({ products, title, isloading }) => {
       return devices;
     }
 
-    const normalizeQuery = selectedQuery.replace(/ /g, '').toUpperCase();
+    const normalizeQuery = selectedQuery.trim().toUpperCase();
 
     return devices.filter(({ name }) => {
-      return name.replace(/ /g, '').toUpperCase().includes(normalizeQuery);
+      return name.trim().toUpperCase().includes(normalizeQuery);
     });
   };
 
