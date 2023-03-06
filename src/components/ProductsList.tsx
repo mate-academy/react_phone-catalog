@@ -22,7 +22,6 @@ export const ProductsList: FC<Props> = ({ products, title, isloading }) => {
   const [list, setlist] = useState('100');
   const [currentPage, setCurrentPage] = useState(1);
   const query = searchParams.get('query') || '';
-  const [newQuery, setNewQuery] = useState(query);
 
   const productAfterQuery = (devices: Product[], selectedQuery: string) => {
     if (!selectedQuery) {
@@ -81,10 +80,6 @@ export const ProductsList: FC<Props> = ({ products, title, isloading }) => {
     sortMenu();
     filterMenu();
   }, [setlist]);
-
-  useEffect(() => {
-    setNewQuery(newQuery);
-  }, [query]);
 
   return (
     <>
