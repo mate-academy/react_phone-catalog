@@ -53,6 +53,9 @@
     width: 32px;
     height: 32px;
     border: 1px solid $iconsColor;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     @include hover(border-color $primaryColor);
 

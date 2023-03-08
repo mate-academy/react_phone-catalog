@@ -40,7 +40,7 @@ export const ShopByCategory = () => {
                   className="shop-by-category__image"
                 >
                   <img
-                    src={`_new/img/category-${link.category}-v2.jpg`}
+                    src={`img/category-${link.category}-v2.jpg`}
                     alt={`${link.category} category`}
                   />
                 </div>

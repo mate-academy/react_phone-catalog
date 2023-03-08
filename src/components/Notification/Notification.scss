@@ -23,7 +23,10 @@
     position: absolute;
     bottom: 80%;
     left: 90%;
-    filter: brightness(0) saturate(100%);
+    filter: (invert(94%) sepia(6%) saturate(150%)
+    hue-rotate(200deg) brightness(98%) contrast(91%));
+
+    @include hover(transform scale(1.1));
   }
 
   &-enter {
