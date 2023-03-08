@@ -9,12 +9,15 @@ export const Nav: React.FC = () => {
         <li className="nav__item">
           <PageNavLink to="/" text="home" />
         </li>
+
         <li className="nav__item">
           <PageNavLink to="/phones" text="phones" />
         </li>
+
         <li className="nav__item">
           <PageNavLink to="/tablets" text="tablets" />
         </li>
+
         <li className="nav__item">
           <PageNavLink to="/accessories" text="accessories" />
         </li>

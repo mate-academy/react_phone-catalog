@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import classNames from 'classnames';
+import cn from 'classnames';
 import './CartButton.scss';
 
 import { Product } from '../../types/Product';
@@ -18,15 +18,10 @@ export const CartButton: React.FC<Props> = ({ product, isBigButton }) => {
 
   return (
     <button
-      className={
-        classNames(
-          'cart-button',
-          {
-            'cart-button--active': isProductInCart,
-            'cart-button--big': isBigButton,
-          },
-        )
-      }
+      className={cn('cart-button', {
+        'cart-button--active': isProductInCart,
+        'cart-button--big': isBigButton,
+      })}
       type="button"
       onClick={handleClick}
     >

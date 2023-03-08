@@ -9,6 +9,7 @@ import { AccessoriesPage } from './pages/AccessoriesPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 import { ProductDetailsPage } from './pages/ProductDetailsPage';
 import { Product } from './types/Product';
+import { ProductType } from './types/ProductType';
 import { CartPage } from './pages/CartPage';
 import { FavoritesPage } from './pages/FavoritesPage';
 
@@ -34,9 +35,13 @@ export const App: React.FC = () => {
       });
   }, []);
 
-  const phones = products.filter(product => product.type === 'phone');
-  const tablets = products.filter(product => product.type === 'tablet');
-  const accessories = products.filter(product => product.type === 'accessory');
+  const phones = products.filter(product => product.type === ProductType.phone);
+
+  const tablets = products
+    .filter(product => product.type === ProductType.tablet);
+
+  const accessories = products
+    .filter(product => product.type === ProductType.accessory);
 
   return (
     <div className="App">
@@ -46,6 +51,7 @@ export const App: React.FC = () => {
             index
             element={<HomePage products={products} isError={isError} />}
           />
+
           <Route
             path=":productId"
             element={<ProductDetailsPage products={products} />}
@@ -57,6 +63,7 @@ export const App: React.FC = () => {
             index
             element={<PhonesPage phones={phones} isError={isError} />}
           />
+
           <Route
             path=":productId"
             element={<ProductDetailsPage products={phones} />}
@@ -68,6 +75,7 @@ export const App: React.FC = () => {
             index
             element={<TabletsPage tablets={tablets} isError={isError} />}
           />
+
           <Route
             path=":productId"
             element={<ProductDetailsPage products={tablets} />}

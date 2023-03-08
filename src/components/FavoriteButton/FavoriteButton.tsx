@@ -1,5 +1,5 @@
-import React, { useContext } from 'react';
-import classNames from 'classnames';
+import React, { useContext, useMemo } from 'react';
+import cn from 'classnames';
 import './FavoriteButton.scss';
 
 import { Product } from '../../types/Product';
@@ -20,24 +20,22 @@ export const FavoriteButton: React.FC<Props> = ({ product, isBigButton }) => {
 
   const handleClick = () => addProductToFavorites(product);
 
+  const imageSrc = useMemo(() => {
+    const isFavoriteProduct = isInFavorites(product);
+
+    return isFavoriteProduct ? favoritesIconRed : favoritesIcon;
+  }, [isInFavorites]);
+
   return (
     <button
-      className={classNames(
-        'favorite-button',
-        {
-          'favorite-button--big': isBigButton,
-        },
-      )}
+      className={cn('favorite-button', {
+        'favorite-button--big': isBigButton,
+      })}
       type="button"
       onClick={handleClick}
       data-cy="addToFavorite"
     >
-      {isInFavorites(product)
-        ? (
-          <img src={favoritesIconRed} alt="heart icon" />
-        ) : (
-          <img src={favoritesIcon} alt="heart icon" />
-        )}
+      <img src={imageSrc} alt="heart icon" />
     </button>
   );
 };

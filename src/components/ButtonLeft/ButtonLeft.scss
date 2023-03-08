@@ -10,7 +10,7 @@
   background-color: $whiteColor;
   border: 1px solid $iconsColor;
   cursor: pointer;
-  transition: 300ms;
+  transition: border-color $transitionDuration;
 
   &:hover {
     border-color: $primaryColor;

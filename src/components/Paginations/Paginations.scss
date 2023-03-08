@@ -33,7 +33,7 @@
     cursor: pointer;
 
     &--active {
-      color: #fff;
+      color: $whiteColor;
       background-color: $primaryColor;
     }
   }

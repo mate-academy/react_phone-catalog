@@ -28,10 +28,7 @@ export const Total: React.FC = () => {
       return quantity1 + quantity2;
     });
 
-  const amount = cartItems
-    .map(item => {
-      return item.quantity * newPrice(item.product);
-    })
+  const amount = cartItems.map(item => item.quantity * newPrice(item.product))
     .reduce((sum1, sum2) => sum1 + sum2);
 
   const handleClick = () => {

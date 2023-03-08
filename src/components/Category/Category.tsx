@@ -22,9 +22,7 @@ export const Category: React.FC<Props> = ({
       <div className="category__content">
         <div
           className="category__image-wrapper"
-          style={{
-            background: backgroundColor,
-          }}
+          style={{ backgroundColor }}
         >
           <img
             src={image}
@@ -40,6 +38,7 @@ export const Category: React.FC<Props> = ({
         >
           {title}
         </Link>
+
         <p className="category__text">{text}</p>
       </div>
     </div>

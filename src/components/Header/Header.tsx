@@ -1,7 +1,6 @@
 import React from 'react';
 import './Header.scss';
 import '../../styles/grid.scss';
-
 import { Logo } from '../Logo/Logo';
 import { Nav } from '../Nav/Nav';
 import { Search } from '../Search/Search';
@@ -24,12 +23,15 @@ export const Header: React.FC<Props> = ({
       <div className="header__top-action">
         <div className="header__links-wrapper">
           <Logo />
+
           {!isCartPageOpen && <Nav />}
         </div>
 
         <div className="header__links-wrapper">
           {search && setQuery && <Search text={search} setQuery={setQuery} />}
+
           {!isCartPageOpen && <FavoritesIcon />}
+
           <ShoppingBag />
         </div>
       </div>

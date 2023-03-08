@@ -6,6 +6,7 @@ import { Product } from '../../types/Product';
 import phones from '../../images/category-phones.png';
 import tablets from '../../images/category-tablets.png';
 import accessories from '../../images/category-accessories.png';
+import { ProductType } from '../../types/ProductType';
 
 type Props = {
   products: Product[];
@@ -13,11 +14,11 @@ type Props = {
 
 export const ShopByCategory: React.FC<Props> = ({ products }) => {
   const phonesAmount = products
-    .filter(product => product.type === 'phone').length;
+    .filter(product => product.type === ProductType.phone).length;
   const tabletsAmount = products
-    .filter(product => product.type === 'tablet').length;
+    .filter(product => product.type === ProductType.tablet).length;
   const accessoriesAmount = products
-    .filter(product => product.type === 'accessory').length;
+    .filter(product => product.type === ProductType.accessory).length;
 
   return (
     <section className="shop-by-category page__section">
@@ -35,6 +36,7 @@ export const ShopByCategory: React.FC<Props> = ({ products }) => {
             link="phones"
           />
         </div>
+
         <div className="grid__item grid__item--9-16">
           <Category
             image={tablets}
@@ -44,6 +46,7 @@ export const ShopByCategory: React.FC<Props> = ({ products }) => {
             link="tablets"
           />
         </div>
+
         <div className="grid__item grid__item--17-24">
           <Category
             image={accessories}

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import './Dropdowns.scss';
 import { getSearchWith } from '../../helpers/getSearchWith';
+import { SelectPerPage } from '../../types/SelectPerPage';
 
 type Props = {
   total: number,
@@ -11,16 +12,23 @@ export const Dropdowns: React.FC<Props> = ({ total }) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const [sortValue, setSortValue] = useState('Newest');
-  const [pageValue, setPageValue] = useState('4');
+  const [pageValue, setPageValue] = useState(SelectPerPage.four);
   const [isOpen, setIsOpen] = useState(false);
   const [isOpenPages, setIsOpenPages] = useState(false);
 
+  const pagesOptions: SelectPerPage[] = [
+    SelectPerPage.four,
+    SelectPerPage.eight,
+    SelectPerPage.sixteen,
+    SelectPerPage.all,
+  ];
+
   const toggle = () => {
-    setIsOpen(!isOpen);
+    setIsOpen(isCurrentOpen => !isCurrentOpen);
   };
 
   const togglePages = () => {
-    setIsOpenPages(!isOpenPages);
+    setIsOpenPages(isCurrentOpenPages => !isCurrentOpenPages);
   };
 
   const onSelectSortOption = (option: string, value: string) => {
@@ -32,12 +40,12 @@ export const Dropdowns: React.FC<Props> = ({ total }) => {
     toggle();
   };
 
-  const onSelectPerPage = (option: string) => {
+  const onSelectPerPage = (option: SelectPerPage) => {
     setSearchParams(
       getSearchWith(
         searchParams,
         {
-          perPage: option !== 'all'
+          perPage: option !== SelectPerPage.all
             ? option
             : `${total}`,
           page: '1',
@@ -71,6 +79,7 @@ export const Dropdowns: React.FC<Props> = ({ total }) => {
               >
                 Newest
               </li>
+
               <li
                 className="dropdowns__item"
                 onClick={() => onSelectSortOption('name', 'Alphabetically')}
@@ -78,6 +87,7 @@ export const Dropdowns: React.FC<Props> = ({ total }) => {
               >
                 Alphabetically
               </li>
+
               <li
                 className="dropdowns__item"
                 onClick={() => onSelectSortOption('price', 'Cheapest')}
@@ -99,9 +109,10 @@ export const Dropdowns: React.FC<Props> = ({ total }) => {
           >
             {pageValue}
           </button>
+
           {isOpenPages && (
             <ul className="dropdowns__list dropdowns__list--small">
-              {['4', '8', '16', 'all'].map(option => (
+              {pagesOptions.map(option => (
                 <li
                   key={option}
                   className="dropdowns__item"

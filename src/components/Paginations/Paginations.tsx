@@ -1,6 +1,7 @@
 import React from 'react';
-import classNames from 'classnames';
 import './Paginations.scss';
+import { PaginationsButton } from '../PaginationsButton/PaginationsButton';
+import { PaginationsItem } from '../PaginationsItem/PaginationsItem';
 
 type Props = {
   total: number;
@@ -38,43 +39,26 @@ export const Paginations: React.FC<Props> = ({
     <div className="paginations" data-cy="pagination">
       <ul className="paginations__list">
         <li className="paginations__item" data-cy="paginationLeft">
-          <button
-            type="button"
-            className="paginations__button"
-            onClick={handlePrevPage}
-          >
-            {'<'}
-          </button>
+          <PaginationsButton
+            onChange={handlePrevPage}
+            text="<"
+          />
         </li>
 
         {pages.map(item => (
-          <li
+          <PaginationsItem
             key={item}
-            className="paginations__item"
-          >
-            <button
-              type="button"
-              className={classNames(
-                'paginations__button',
-                {
-                  'paginations__button--active': item === currentPage,
-                },
-              )}
-              onClick={() => setCurrentPage(item)}
-            >
-              {item}
-            </button>
-          </li>
+            item={item}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+          />
         ))}
 
         <li className="paginations__item" data-cy="paginationRight">
-          <button
-            type="button"
-            className="paginations__button"
-            onClick={handleNextPage}
-          >
-            {'>'}
-          </button>
+          <PaginationsButton
+            onChange={handleNextPage}
+            text=">"
+          />
         </li>
       </ul>
     </div>

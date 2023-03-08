@@ -1,5 +1,5 @@
-import classNames from 'classnames';
 import React, { useEffect, useRef, useState } from 'react';
+import cn from 'classnames';
 import '../../styles/grid.scss';
 import './HomePageSlider.scss';
 import bannerPhones from '../../images/banner-phones.png';
@@ -94,12 +94,9 @@ export const HomePageSlider: React.FC = () => {
 
         <div className="home-page-slider__radio-controls">
           <label
-            className={classNames(
-              'home-page-slider__radio-control',
-              {
-                'home-page-slider__radio-control--checked': transform === 0,
-              },
-            )}
+            className={cn('home-page-slider__radio-control', {
+              'home-page-slider__radio-control--checked': transform === 0,
+            })}
           >
             <input
               id="radio-1"
@@ -111,12 +108,9 @@ export const HomePageSlider: React.FC = () => {
           </label>
 
           <label
-            className={classNames(
-              'home-page-slider__radio-control',
-              {
-                'home-page-slider__radio-control--checked': transform === 1,
-              },
-            )}
+            className={cn('home-page-slider__radio-control', {
+              'home-page-slider__radio-control--checked': transform === 1,
+            })}
           >
             <input
               id="radio-2"
@@ -128,12 +122,9 @@ export const HomePageSlider: React.FC = () => {
           </label>
 
           <label
-            className={classNames(
-              'home-page-slider__radio-control',
-              {
-                'home-page-slider__radio-control--checked': transform === 2,
-              },
-            )}
+            className={cn('home-page-slider__radio-control', {
+              'home-page-slider__radio-control--checked': transform === 2,
+            })}
           >
             <input
               id="radio-3"

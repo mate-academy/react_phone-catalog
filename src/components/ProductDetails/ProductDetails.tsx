@@ -22,10 +22,6 @@ export const ProductDetails: React.FC<Props> = ({
     currentPhoto, setCurrentPhoto,
   ] = useState<string | undefined>(productDetails?.images[0]);
 
-  const changePhoto = (photo: string) => {
-    setCurrentPhoto(photo);
-  };
-
   return (
     <div className="product-details">
       <div className="grid">
@@ -34,7 +30,7 @@ export const ProductDetails: React.FC<Props> = ({
             <div
               className="product-details__image-wrapper"
               key={image}
-              onClick={() => changePhoto(image)}
+              onClick={() => setCurrentPhoto(image)}
               aria-hidden="true"
             >
               <img
@@ -80,6 +76,7 @@ export const ProductDetails: React.FC<Props> = ({
               <span className="product-details__text">
                 Screen
               </span>
+
               <span className="
                 product-details__characteristic-value product-details__text"
               >
@@ -91,6 +88,7 @@ export const ProductDetails: React.FC<Props> = ({
               <span className="product-details__text">
                 Resolution
               </span>
+
               <span className="
                 product-details__characteristic-value product-details__text"
               >
@@ -102,6 +100,7 @@ export const ProductDetails: React.FC<Props> = ({
               <span className="product-details__text">
                 Processor
               </span>
+
               <span className="
                 product-details__characteristic-value product-details__text"
               >
@@ -111,6 +110,7 @@ export const ProductDetails: React.FC<Props> = ({
 
             <div className="product-details__characteristic">
               <span className="product-details__text">RAM</span>
+
               <span className="
                 product-details__characteristic-value product-details__text"
               >
@@ -148,6 +148,7 @@ export const ProductDetails: React.FC<Props> = ({
             <span className="product-details__description-text">
               Screen
             </span>
+
             <span className="
               product-details__description-text
               product-details__description-text--primary"
@@ -159,6 +160,7 @@ export const ProductDetails: React.FC<Props> = ({
             <span className="product-details__description-text">
               Resolution
             </span>
+
             <span className="
               product-details__description-text
               product-details__description-text--primary"
@@ -171,6 +173,7 @@ export const ProductDetails: React.FC<Props> = ({
             <span className="product-details__description-text">
               OS
             </span>
+
             <span className="
               product-details__description-text
               product-details__description-text--primary"
@@ -183,6 +186,7 @@ export const ProductDetails: React.FC<Props> = ({
             <span className="product-details__description-text">
               Processor
             </span>
+
             <span className="
               product-details__description-text
               product-details__description-text--primary"
@@ -195,6 +199,7 @@ export const ProductDetails: React.FC<Props> = ({
             <span className="product-details__description-text">
               Weight
             </span>
+
             <span className="
               product-details__description-text
               product-details__description-text--primary"
@@ -206,6 +211,7 @@ export const ProductDetails: React.FC<Props> = ({
             <span className="product-details__description-text">
               Battery type
             </span>
+
             <span className="
               product-details__description-text
               product-details__description-text--primary"
@@ -217,6 +223,7 @@ export const ProductDetails: React.FC<Props> = ({
             <span className="product-details__description-text">
               Cell
             </span>
+
             <span className="
               product-details__description-text
               product-details__description-text--primary"

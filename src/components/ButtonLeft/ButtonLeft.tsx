@@ -2,16 +2,16 @@ import React from 'react';
 import './ButtonLeft.scss';
 
 type Props = {
-  handleClick: () => void;
+  onClick: () => void;
   transform: number;
 };
 
-export const ButtonLeft: React.FC<Props> = ({ handleClick, transform }) => {
+export const ButtonLeft: React.FC<Props> = ({ onClick, transform }) => {
   return (
     <button
       type="button"
       className="button-left"
-      onClick={handleClick}
+      onClick={onClick}
       disabled={!transform}
     >
       <svg

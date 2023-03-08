@@ -27,6 +27,7 @@ export const Footer: React.FC = () => {
               Github
             </a>
           </li>
+
           <li className="footer__item">
             <a
               className="footer__link"
@@ -37,6 +38,7 @@ export const Footer: React.FC = () => {
               Contacts
             </a>
           </li>
+
           <li className="footer__item">
             <a
               className="footer__link"

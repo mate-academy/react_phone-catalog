@@ -30,12 +30,12 @@ export const ProductsSlider: React.FC<Props> = ({ products }) => {
       <div className="products-slider__buttons-wrapper">
 
         <ButtonLeft
-          handleClick={handlePrev}
+          onClick={handlePrev}
           transform={transform}
         />
 
         <ButtonRight
-          handleClick={handleNext}
+          onClick={handleNext}
           transform={transform}
           productsNumber={products.length}
         />

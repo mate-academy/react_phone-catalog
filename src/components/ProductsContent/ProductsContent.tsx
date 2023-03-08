@@ -37,19 +37,21 @@ export const ProductsContent: React.FC<Props> = ({
     );
   };
 
-  const phonePrice = (phone: Product) => {
-    if (phone.discount > 0) {
-      return (phone.price - (phone.price * phone.discount) / 100);
+  const getProductPrice = (product: Product) => {
+    if (product.discount > 0) {
+      return (product.price - (product.price * product.discount) / 100);
     }
 
-    return phone.price;
+    return product.price;
   };
 
-  const filteredProducts = query
-    ? products.filter(phone => {
-      return phone.name.toLowerCase().includes(query.toLowerCase().trim());
-    })
-    : [...products];
+  const filteredProducts = useMemo(() => {
+    return query
+      ? products.filter(phone => {
+        return phone.name.toLowerCase().includes(query.toLowerCase().trim());
+      })
+      : [...products];
+  }, [query, products]);
 
   const getSortedPhones = () => {
     const sortedPhones = [...filteredProducts].sort((phone1, phone2) => {
@@ -61,7 +63,7 @@ export const ProductsContent: React.FC<Props> = ({
           return phone1.age - phone2.age;
 
         case SortOptions.Price:
-          return phonePrice(phone1) - phonePrice(phone2);
+          return getProductPrice(phone1) - getProductPrice(phone2);
 
         default:
           return 0;

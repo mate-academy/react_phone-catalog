@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import classNames from 'classnames';
+import cn from 'classnames';
 import './CartItem.scss';
 
 import { CartItemInfo } from '../../types/CartItemInfo';
@@ -26,6 +26,8 @@ export const CartItem: React.FC<Props> = ({ cartItem }) => {
   const handleDelete = () => deleteProductFromCart(product);
   const handleDecrease = () => decreaseQuantity(product);
   const handleIncrease = () => increaseQuantity(product);
+
+  const isDisabled = quantity === 1;
 
   return (
     <div className="cart-item">
@@ -59,17 +61,17 @@ export const CartItem: React.FC<Props> = ({ cartItem }) => {
               type="button"
               className="cart-item__button"
               onClick={handleDecrease}
-              disabled={quantity === 1}
+              disabled={isDisabled}
             >
               <svg
                 width="16"
                 height="16"
                 viewBox="0 0 16 16"
                 xmlns="http://www.w3.org/2000/svg"
-                className={classNames(
+                className={cn(
                   'cart-item__icon',
                   {
-                    'cart-item__icon--disabled': quantity === 1,
+                    'cart-item__icon--disabled': isDisabled,
                   },
                 )}
               >

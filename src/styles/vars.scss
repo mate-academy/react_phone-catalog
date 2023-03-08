@@ -7,6 +7,8 @@ $whiteColor: #fff;
 $greenColor: #27ae60;
 $redColor:#eb5757;
 
+$transitionDuration: 300ms;
+
 $headerHeight: 64px;
 $footerHeight: 96px;
 $pageContentHeight: calc(100vh - #{$headerHeight} - #{$footerHeight});

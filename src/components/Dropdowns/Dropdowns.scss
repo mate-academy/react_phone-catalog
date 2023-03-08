@@ -34,12 +34,14 @@
     border: 1px solid $iconsColor;
     background-color: $whiteColor;
 
+    cursor: pointer;
+
     &--small {
       width: 128px;
     }
 
     &:hover {
-      border: 1px solid #89939a;
+      border: 1px solid $secondaryColor;
     }
 
     &::after {
