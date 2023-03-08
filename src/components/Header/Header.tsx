@@ -1,11 +1,11 @@
 import React from 'react';
 import './Header.scss';
-import '../../helpers/grid.scss';
+import '../../styles/grid.scss';
 
 import { Logo } from '../Logo/Logo';
 import { Nav } from '../Nav/Nav';
 import { Search } from '../Search/Search';
-import { FavouritesIcon } from '../FavouritesIcon/FavouritesIcon';
+import { FavoritesIcon } from '../FavoritesIcon/FavoritesIcon';
 import { ShoppingBag } from '../ShoppingBag/ShoppingBag';
 
 type Props = {
@@ -29,7 +29,7 @@ export const Header: React.FC<Props> = ({
 
         <div className="header__links-wrapper">
           {search && setQuery && <Search text={search} setQuery={setQuery} />}
-          {!isCartPageOpen && <FavouritesIcon />}
+          {!isCartPageOpen && <FavoritesIcon />}
           <ShoppingBag />
         </div>
       </div>

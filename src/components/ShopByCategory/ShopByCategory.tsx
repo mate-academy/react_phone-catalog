@@ -1,6 +1,6 @@
 import React from 'react';
 import '../../pages/page.scss';
-import '../../helpers/grid.scss';
+import '../../styles/grid.scss';
 import { Category } from '../Category/Category';
 import { Product } from '../../types/Product';
 import phones from '../../images/category-phones.png';
@@ -32,7 +32,7 @@ export const ShopByCategory: React.FC<Props> = ({ products }) => {
             backgroundColor="#fcdbc1"
             title="Mobile phones"
             text={`${phonesAmount} models`}
-            link="phone"
+            link="phones"
           />
         </div>
         <div className="grid__item grid__item--9-16">

@@ -13,6 +13,7 @@ type Props = {
 
 export const SuggestedProducts: React.FC<Props> = ({ selectedProduct }) => {
   const [products, setProducts] = useState<Product[]>([]);
+  const [isError, setIsError] = useState(false);
 
   useEffect(() => {
     fetch(BASE_URL)
@@ -23,19 +24,26 @@ export const SuggestedProducts: React.FC<Props> = ({ selectedProduct }) => {
 
         return response.json();
       })
-      .then(setProducts);
+      .then(setProducts)
+      .catch(() => {
+        setIsError(true);
+      });
   }, []);
 
   const filteredProducts = products
     .filter(product => product.id !== selectedProduct.id);
 
   return (
-    <section className="suggested-products page__section">
-      <h2 className="page__section-title">
-        You may also like
-      </h2>
+    <>
+      {!isError && (
+        <section className="suggested-products page__section">
+          <h2 className="page__section-title">
+            You may also like
+          </h2>
 
-      <ProductsSlider products={filteredProducts} />
-    </section>
+          <ProductsSlider products={filteredProducts} />
+        </section>
+      )}
+    </>
   );
 };

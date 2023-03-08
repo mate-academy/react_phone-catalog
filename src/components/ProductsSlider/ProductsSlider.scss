@@ -1,4 +1,4 @@
-@import "../../helpers/vars.scss";
+@import "../../styles/vars.scss";
 
 .products-slider {
   overflow-x: hidden;
@@ -11,27 +11,6 @@
 
     display: flex;
     gap: 16px;
-  }
-
-  &__button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    width: 32px;
-    height: 32px;
-    background-color: $whiteColor;
-    border: 1px solid $iconsColor;
-    cursor: pointer;
-    transition: 300ms;
-
-    &:hover {
-      border-color: $primaryColor;
-    }
-
-    &:disabled {
-      border-color: $elementsColor;
-    }
   }
 
   &__slides {

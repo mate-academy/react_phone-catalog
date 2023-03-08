@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import './ProductDetails.scss';
 import { Product, ProductDet } from '../../types/Product';
 
-import { Button } from '../Button/Button';
-import { ButtonFavourite } from '../ButtonFavourive/ButtonFavourite';
+import { CartButton } from '../CartButton/CartButton';
+import { FavoriteButton } from '../FavoriteButton/FavoriteButton';
 
 type Props = {
   productDetails: ProductDet | undefined;
@@ -70,9 +70,9 @@ export const ProductDetails: React.FC<Props> = ({
           </div>
 
           <div className="product-details__buttons-wrapper">
-            <Button product={selectedProduct} isBigButton />
+            <CartButton product={selectedProduct} isBigButton />
 
-            <ButtonFavourite product={selectedProduct} isBigButton />
+            <FavoriteButton product={selectedProduct} isBigButton />
           </div>
 
           <div className="product-details__characteristics">

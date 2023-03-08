@@ -1,9 +1,12 @@
-@import "../../helpers/vars.scss";
+@import "../../styles/vars.scss";
 
 .dropdowns {
-  display: flex;
-  gap: 16px;
-  margin-bottom: 24px;
+  &__content {
+    position: relative;
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
 
   &__text {
     margin: 0 0 14px;
@@ -52,6 +55,12 @@
   }
 
   &__list {
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+
+    width: 176px;
+
     margin: 0;
     padding: 6px 12px;
 
@@ -59,6 +68,11 @@
     border: 1px solid $elementsColor;
     box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
     list-style: none;
+
+    &--small {
+      left: 192px;
+      width: 128px;
+    }
   }
 
   &__item {

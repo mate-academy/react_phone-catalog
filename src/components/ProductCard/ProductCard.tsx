@@ -1,9 +1,9 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './ProductCard.scss';
 import { Product } from '../../types/Product';
-import { Button } from '../Button/Button';
-import { ButtonFavourite } from '../ButtonFavourive/ButtonFavourite';
+import { CartButton } from '../CartButton/CartButton';
+import { FavoriteButton } from '../FavoriteButton/FavoriteButton';
 
 type Props = {
   product: Product,
@@ -14,16 +14,15 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     ? product.price - (product.price * product.discount) / 100
     : product.price;
 
-  const location = useLocation();
-
   return (
-    <Link
-      to={`/${product.type}s/${product.id}`}
-      key={product.id}
+    <div
       className="product-card"
       data-cy="cardsContainer"
     >
-      <div className="product-card__content">
+      <Link
+        to={`/${product.type}s/${product.id}`}
+        className="product-card__content"
+      >
         <img
           className="product-card__photo"
           src={product.imageUrl}
@@ -68,13 +67,13 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
             </span>
           </div>
         </div>
+      </Link>
 
-        <Link to={`./${location.search}`} className="product-card__buttons-wrapper">
-          <Button product={product} />
+      <div className="product-card__buttons-wrapper">
+        <CartButton product={product} />
 
-          <ButtonFavourite product={product} />
-        </Link>
+        <FavoriteButton product={product} />
       </div>
-    </Link>
+    </div>
   );
 };

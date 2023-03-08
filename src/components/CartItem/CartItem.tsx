@@ -16,11 +16,16 @@ export const CartItem: React.FC<Props> = ({ cartItem }) => {
     increaseQuantity,
     decreaseQuantity,
   } = useContext(ProductsContext);
+  const { quantity, product } = cartItem;
 
-  const newPrice = cartItem.product.discount > 0
-    ? cartItem.product.price
-      - (cartItem.product.price * cartItem.product.discount) / 100
-    : cartItem.product.price;
+  const newPrice = product.discount > 0
+    ? product.price
+      - (product.price * product.discount) / 100
+    : product.price;
+
+  const handleDelete = () => deleteProductFromCart(product);
+  const handleDecrease = () => decreaseQuantity(product);
+  const handleIncrease = () => increaseQuantity(product);
 
   return (
     <div className="cart-item">
@@ -29,7 +34,7 @@ export const CartItem: React.FC<Props> = ({ cartItem }) => {
           <button
             type="button"
             className="cart-item__cross-button"
-            onClick={() => deleteProductFromCart(cartItem.product)}
+            onClick={handleDelete}
             data-cy="cartDeleteButton"
           >
             <img src={crossIcon} alt="cross icon" />
@@ -37,14 +42,14 @@ export const CartItem: React.FC<Props> = ({ cartItem }) => {
 
           <div className="cart-item__image-wrapper">
             <img
-              src={cartItem.product.imageUrl}
-              alt={cartItem.product.name}
+              src={product.imageUrl}
+              alt={product.name}
               className="cart-item__image"
             />
           </div>
 
           <p className="cart-item__text cart-item__text--name">
-            {cartItem.product.name}
+            {product.name}
           </p>
         </div>
 
@@ -53,8 +58,8 @@ export const CartItem: React.FC<Props> = ({ cartItem }) => {
             <button
               type="button"
               className="cart-item__button"
-              onClick={() => decreaseQuantity(cartItem.product)}
-              disabled={cartItem.quantity === 1}
+              onClick={handleDecrease}
+              disabled={quantity === 1}
             >
               <svg
                 width="16"
@@ -64,7 +69,7 @@ export const CartItem: React.FC<Props> = ({ cartItem }) => {
                 className={classNames(
                   'cart-item__icon',
                   {
-                    'cart-item__icon--disabled': cartItem.quantity === 1,
+                    'cart-item__icon--disabled': quantity === 1,
                   },
                 )}
               >
@@ -78,13 +83,13 @@ export const CartItem: React.FC<Props> = ({ cartItem }) => {
             </button>
 
             <span className="cart-item__text">
-              {cartItem.quantity}
+              {quantity}
             </span>
 
             <button
               type="button"
               className="cart-item__button"
-              onClick={() => increaseQuantity(cartItem.product)}
+              onClick={handleIncrease}
             >
               <svg
                 width="16"

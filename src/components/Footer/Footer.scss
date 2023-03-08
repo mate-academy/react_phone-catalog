@@ -1,8 +1,9 @@
-@import "../../helpers/vars.scss";
+@import "../../styles/vars.scss";
 
 .footer {
   display: flex;
   align-items: center;
+  justify-content: space-between;
 
   padding: 0 152px;
 
@@ -10,10 +11,6 @@
 
   background-color: $whiteColor;
   box-shadow: 0 -1px 0 $elementsColor;
-
-  &__nav {
-    margin: 0 auto;
-  }
 
   &__list {
     display: flex;
@@ -40,5 +37,29 @@
     color: $secondaryColor;
     text-decoration: none;
     cursor: pointer;
+  }
+
+  &__scroll-button {
+    position: relative;
+    width: 32px;
+    height: 32px;
+    background-color: $whiteColor;
+    border: 1px solid $iconsColor;
+    cursor: pointer;
+
+    &::before {
+      content: "Back to top";
+
+      position: absolute;
+      right: 48px;
+      left: -300%;
+
+      display: block;
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 15px;
+      text-align: right;
+      color: $secondaryColor;
+    }
   }
 }

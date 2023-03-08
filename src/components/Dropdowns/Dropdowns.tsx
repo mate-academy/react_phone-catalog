@@ -51,67 +51,69 @@ export const Dropdowns: React.FC<Props> = ({ total }) => {
 
   return (
     <div className="dropdowns">
-      <div>
-        <p className="dropdowns__text">Sort by</p>
+      <div className="dropdowns__content">
+        <div>
+          <p className="dropdowns__text">Sort by</p>
 
-        <button
-          type="button"
-          onClick={toggle}
-          className="dropdowns__button"
-        >
-          {sortValue}
-        </button>
-        {isOpen && (
-          <ul className="dropdowns__list">
-            <li
-              className="dropdowns__item"
-              onClick={() => onSelectSortOption('age', 'Newest')}
-              aria-hidden="true"
-            >
-              Newest
-            </li>
-            <li
-              className="dropdowns__item"
-              onClick={() => onSelectSortOption('name', 'Alphabetically')}
-              aria-hidden="true"
-            >
-              Alphabetically
-            </li>
-            <li
-              className="dropdowns__item"
-              onClick={() => onSelectSortOption('price', 'Cheapest')}
-              aria-hidden="true"
-            >
-              Cheapest
-            </li>
-          </ul>
-        )}
-      </div>
-
-      <div>
-        <p className="dropdowns__text">Items on page</p>
-
-        <button
-          type="button"
-          onClick={togglePages}
-          className="dropdowns__button dropdowns__button--small"
-        >
-          {pageValue}
-        </button>
-        {isOpenPages && (
-          <ul className="dropdowns__list">
-            {['4', '8', '16', 'all'].map(option => (
+          <button
+            type="button"
+            onClick={toggle}
+            className="dropdowns__button"
+          >
+            {sortValue}
+          </button>
+          {isOpen && (
+            <ul className="dropdowns__list">
               <li
-                key={option}
                 className="dropdowns__item"
-                onClick={() => onSelectPerPage(option)}
+                onClick={() => onSelectSortOption('age', 'Newest')}
                 aria-hidden="true"
               >
-                {option}
+                Newest
               </li>
-            ))}
-          </ul>
-        )}
+              <li
+                className="dropdowns__item"
+                onClick={() => onSelectSortOption('name', 'Alphabetically')}
+                aria-hidden="true"
+              >
+                Alphabetically
+              </li>
+              <li
+                className="dropdowns__item"
+                onClick={() => onSelectSortOption('price', 'Cheapest')}
+                aria-hidden="true"
+              >
+                Cheapest
+              </li>
+            </ul>
+          )}
+        </div>
+
+        <div>
+          <p className="dropdowns__text">Items on page</p>
+
+          <button
+            type="button"
+            onClick={togglePages}
+            className="dropdowns__button dropdowns__button--small"
+          >
+            {pageValue}
+          </button>
+          {isOpenPages && (
+            <ul className="dropdowns__list dropdowns__list--small">
+              {['4', '8', '16', 'all'].map(option => (
+                <li
+                  key={option}
+                  className="dropdowns__item"
+                  onClick={() => onSelectPerPage(option)}
+                  aria-hidden="true"
+                >
+                  {option}
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
       </div>
     </div>
   );

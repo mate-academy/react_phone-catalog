@@ -4,12 +4,12 @@ import { Product } from '../types/Product';
 
 type ContextType = {
   cartItems: CartItemInfo[],
-  favourites: Product[],
+  favorites: Product[],
   addProductToCart: (product: Product) => void,
   deleteProductFromCart: (product: Product) => void,
-  addProductToFavourites: (product: Product) => void,
+  addProductToFavorites: (product: Product) => void,
   isInCart: (product: Product) => boolean,
-  isInFavourites: (product: Product) => boolean,
+  isInFavorites: (product: Product) => boolean,
   increaseQuantity: (product: Product) => void,
   decreaseQuantity: (product: Product) => void,
 };
@@ -26,21 +26,21 @@ export const ProductsProvider: React.FC<Props> = ({ children }) => {
     ? JSON.parse(cartItemsFromLocalStorage)
     : [];
 
-  const favouritesFromLocalStorage = localStorage.getItem('favourites');
-  const initialFavourites = favouritesFromLocalStorage
-    ? JSON.parse(favouritesFromLocalStorage)
+  const favoritesFromLocalStorage = localStorage.getItem('favorites');
+  const initialFavorites = favoritesFromLocalStorage
+    ? JSON.parse(favoritesFromLocalStorage)
     : [];
 
   const [cartItems, setCartItems] = useState<CartItemInfo[]>(initialItems);
-  const [favourites, setFavourites] = useState<Product[]>(initialFavourites);
+  const [favorites, setFavorites] = useState<Product[]>(initialFavorites);
 
   useEffect(() => {
     localStorage.setItem('cartItems', JSON.stringify(cartItems));
   }, [cartItems]);
 
   useEffect(() => {
-    localStorage.setItem('favourites', JSON.stringify(favourites));
-  }, [favourites]);
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+  }, [favorites]);
 
   const addProductToCart = (product: Product) => {
     if (!cartItems.find(item => item.id === product.id)) {
@@ -57,20 +57,20 @@ export const ProductsProvider: React.FC<Props> = ({ children }) => {
     return setCartItems(cartItems.filter(item => item.id !== product.id));
   };
 
-  const addProductToFavourites = (product: Product) => {
-    if (!favourites.find(item => item.id === product.id)) {
-      return setFavourites([...favourites, product]);
+  const addProductToFavorites = (product: Product) => {
+    if (!favorites.find(item => item.id === product.id)) {
+      return setFavorites([...favorites, product]);
     }
 
-    return setFavourites(favourites.filter(item => item.id !== product.id));
+    return setFavorites(favorites.filter(item => item.id !== product.id));
   };
 
   const isInCart = (product: Product) => {
     return !!cartItems.find(item => item.id === product.id);
   };
 
-  const isInFavourites = (product: Product) => {
-    return !!favourites.find(item => item.id === product.id);
+  const isInFavorites = (product: Product) => {
+    return !!favorites.find(item => item.id === product.id);
   };
 
   const increaseQuantity = (product: Product) => {
@@ -96,12 +96,12 @@ export const ProductsProvider: React.FC<Props> = ({ children }) => {
   return (
     <ProductsContext.Provider value={{
       cartItems,
-      favourites,
+      favorites,
       addProductToCart,
       deleteProductFromCart,
-      addProductToFavourites,
+      addProductToFavorites,
       isInCart,
-      isInFavourites,
+      isInFavorites,
       increaseQuantity,
       decreaseQuantity,
     }}

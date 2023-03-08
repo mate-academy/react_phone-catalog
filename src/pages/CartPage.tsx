@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import '../helpers/grid.scss';
 import './page.scss';
+import '../styles/grid.scss';
 import { ProductsContext } from '../helpers/ProductsContext';
 
 import { Header } from '../components/Header/Header';

@@ -8,12 +8,14 @@ import { HotPrices } from '../components/HotPrices/HotPrices';
 import { ShopByCategory } from '../components/ShopByCategory/ShopByCategory';
 import { BrandNew } from '../components/BrandNew/BrandNew';
 import { Footer } from '../components/Footer/Footer';
+import { ErrorMessage } from '../components/ErrorMessage/ErrorMessage';
 
 type Props = {
   products: Product[];
+  isError: boolean;
 };
 
-export const HomePage: React.FC<Props> = ({ products }) => {
+export const HomePage: React.FC<Props> = ({ products, isError }) => {
   const productsWithDiscont = useMemo(() => {
     return products.filter(product => product.discount > 0);
   }, [products]);
@@ -27,13 +29,20 @@ export const HomePage: React.FC<Props> = ({ products }) => {
       <Header />
 
       <div className="page__content">
-        <HomePageSlider />
+        {isError
+          ? (
+            <ErrorMessage />
+          ) : (
+            <>
+              <HomePageSlider />
 
-        <HotPrices products={productsWithDiscont} />
+              <HotPrices products={productsWithDiscont} />
 
-        <ShopByCategory products={products} />
+              <ShopByCategory products={products} />
 
-        <BrandNew products={productsWithoutDiscont} />
+              <BrandNew products={productsWithoutDiscont} />
+            </>
+          )}
       </div>
 
       <Footer />

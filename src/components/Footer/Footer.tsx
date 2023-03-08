@@ -1,8 +1,16 @@
 import React from 'react';
 import './Footer.scss';
 import { Logo } from '../Logo/Logo';
+import arrowUp from '../../images/arrow-up.svg';
 
 export const Footer: React.FC = () => {
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
   return (
     <div className="footer">
       <Logo />
@@ -41,6 +49,14 @@ export const Footer: React.FC = () => {
           </li>
         </ul>
       </nav>
+
+      <button
+        type="button"
+        onClick={scrollToTop}
+        className="footer__scroll-button"
+      >
+        <img src={arrowUp} alt="arrow up" />
+      </button>
     </div>
   );
 };

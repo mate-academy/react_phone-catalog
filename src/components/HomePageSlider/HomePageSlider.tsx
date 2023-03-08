@@ -1,6 +1,6 @@
 import classNames from 'classnames';
-import React, { useEffect, useState } from 'react';
-import '../../helpers/grid.scss';
+import React, { useEffect, useRef, useState } from 'react';
+import '../../styles/grid.scss';
 import './HomePageSlider.scss';
 import bannerPhones from '../../images/banner-phones.png';
 import bannerTablets from '../../images/banner-tablets.png';
@@ -10,6 +10,7 @@ import arrowRight from '../../images/arrow-right.svg';
 
 export const HomePageSlider: React.FC = () => {
   const [transform, setTransform] = useState(0);
+  const slider = useRef<HTMLDivElement>(null);
 
   const images = [
     bannerPhones,
@@ -19,7 +20,7 @@ export const HomePageSlider: React.FC = () => {
 
   useEffect(() => {
     const timer = setInterval(() => {
-      if (transform < 2) {
+      if (transform < images.length - 1) {
         setTransform(transform + 1);
       } else {
         setTransform(0);
@@ -30,7 +31,7 @@ export const HomePageSlider: React.FC = () => {
   }, [transform]);
 
   const handleNext = () => {
-    if (transform !== 2) {
+    if (transform !== images.length - 1) {
       setTransform(transform + 1);
     } else {
       setTransform(0);
@@ -44,6 +45,8 @@ export const HomePageSlider: React.FC = () => {
       setTransform(0);
     }
   };
+
+  const slideWidth = slider.current ? slider.current.offsetWidth : 0;
 
   return (
     <div className="home-page-slider">
@@ -62,12 +65,13 @@ export const HomePageSlider: React.FC = () => {
           >
             <div
               className="home-page-slider__slides"
-              style={{ transform: `translateX(-${transform * 1040}px)` }}
+              style={{ transform: `translateX(-${transform * slideWidth}px)` }}
             >
               {images.map(image => (
                 <div
                   key={image}
                   className="home-page-slider__image-wrapper"
+                  ref={slider}
                 >
                   <img
                     src={image}

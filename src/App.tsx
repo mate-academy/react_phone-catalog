@@ -10,13 +10,14 @@ import { NotFoundPage } from './pages/NotFoundPage';
 import { ProductDetailsPage } from './pages/ProductDetailsPage';
 import { Product } from './types/Product';
 import { CartPage } from './pages/CartPage';
-import { FavouritesPage } from './pages/FavouritesPage';
+import { FavoritesPage } from './pages/FavoritesPage';
 
 // eslint-disable-next-line max-len
 const BASE_URL = 'https://mate-academy.github.io/react_phone-catalog/api/products.json';
 
 export const App: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
+  const [isError, setIsError] = useState(false);
 
   useEffect(() => {
     fetch(BASE_URL)
@@ -27,7 +28,10 @@ export const App: React.FC = () => {
 
         return response.json();
       })
-      .then(setProducts);
+      .then(setProducts)
+      .catch(() => {
+        setIsError(true);
+      });
   }, []);
 
   const phones = products.filter(product => product.type === 'phone');
@@ -40,7 +44,7 @@ export const App: React.FC = () => {
         <Route path="/">
           <Route
             index
-            element={<HomePage products={products} />}
+            element={<HomePage products={products} isError={isError} />}
           />
           <Route
             path=":productId"
@@ -51,7 +55,7 @@ export const App: React.FC = () => {
         <Route path="phones">
           <Route
             index
-            element={<PhonesPage phones={phones} />}
+            element={<PhonesPage phones={phones} isError={isError} />}
           />
           <Route
             path=":productId"
@@ -62,7 +66,7 @@ export const App: React.FC = () => {
         <Route path="tablets">
           <Route
             index
-            element={<TabletsPage tablets={tablets} />}
+            element={<TabletsPage tablets={tablets} isError={isError} />}
           />
           <Route
             path=":productId"
@@ -73,17 +77,21 @@ export const App: React.FC = () => {
         <Route path="accessories">
           <Route
             index
-            element={<AccessoriesPage accessories={accessories} />}
+            element={
+              <AccessoriesPage accessories={accessories} isError={isError} />
+            }
           />
           <Route
             path=":productId"
-            element={<ProductDetailsPage products={accessories} />}
+            element={
+              <ProductDetailsPage products={accessories} />
+            }
           />
         </Route>
 
         <Route
-          path="favourites"
-          element={<FavouritesPage />}
+          path="favorites"
+          element={<FavoritesPage />}
         />
 
         <Route
