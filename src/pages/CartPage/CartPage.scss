@@ -1,0 +1,105 @@
+@import "../../styles/utils/utils";
+
+.cart {
+  padding-top: 25px;
+  flex-grow: 1;
+  display: inline-flex;
+
+  @extend %body-text;
+
+  &__items {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 32px;
+
+    @include onDesktop {
+      margin-bottom: 0;
+    }
+  }
+
+  &__total {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid $elementsColor;
+    padding: 24px;
+    height: fit-content;
+
+    & > .line {
+      width: 100%;
+    }
+
+    @include onTablet {
+      padding: 32px;
+    }
+  }
+
+  &__total-price {
+    color: $primaryColor;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+  }
+
+  &__length {
+    color: $secondaryColor;
+    margin-bottom: 16px;
+  }
+
+  &__checkout {
+    margin-top: 16px;
+    width: 100%;
+    height: 48px;
+    background-color: $primaryColor;
+    color: $whiteColor;
+    @include hover(box-shadow (0 3px 13px rgba(23, 32, 49, 0.26)));
+  }
+}
+
+.item-enter {
+  max-height: 0;
+}
+
+.item-enter-active {
+  overflow: hidden;
+  max-height: 58px;
+  transition: max-height 0.3s ease-in-out;
+}
+
+.item-exit {
+  max-height: 58px;
+}
+
+.item-exit-active {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.3s ease-in-out;
+}
+
+.temp-item-enter {
+  max-height: 0;
+}
+
+.temp-item-enter-active {
+  overflow: hidden;
+  max-height: 58px;
+  transition: max-height 0.3s ease-in-out;
+}
+
+.temp-item-exit {
+  max-height: 58px;
+}
+
+.temp-item-exit-active {
+  transform: translateY(-58px);
+  max-height: 0;
+  opacity: 0;
+  transition: 0.3s ease-in-out;
+  transition-property: opacity, max-height, transform;
+}
+
+.has-error .temp-item-exit-active {
+  transform: translateY(0);
+  overflow: hidden;
+}

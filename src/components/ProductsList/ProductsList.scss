@@ -1,0 +1,23 @@
+@import "../../styles/utils/utils";
+
+.products-list {
+  flex-grow: 1;
+  display: inline-flex;
+
+  &__title {
+    margin-bottom: 8px;
+  }
+
+  &__subtitle {
+    @extend %body-text;
+    color: $secondaryColor;
+    margin-bottom: 40px;
+  }
+
+  &__items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 40px 16px;
+  }
+}

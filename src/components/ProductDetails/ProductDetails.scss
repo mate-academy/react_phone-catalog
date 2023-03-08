@@ -1,0 +1,105 @@
+@import "../../styles/utils/utils";
+
+.product-details {
+  color: $primaryColor;
+
+  &__title {
+    margin-bottom: 40px;
+    @extend %h2;
+
+    @include onTablet {
+      font-size: 32px;
+    }
+  }
+
+  &__image {
+    width: 100%;
+    max-height: 100%;
+    margin-bottom: 20px;
+
+    @include onTablet {
+      margin-bottom: 0;
+    }
+  }
+
+  &__img-selector {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 40px;
+    
+
+    @include onTablet {
+      flex-direction: column;
+      justify-content: flex-start;
+      grid-row: 1;
+      margin-bottom: 0;
+    }
+  }
+
+  &__img-selector-item {
+    width: 80%;
+    object-fit: contain;
+    border: 1px solid $elementsColor;
+    padding: 2px;
+
+    @include hover (transform scale(0.8));
+
+    @include onTablet {
+      width: 100%;
+    }
+
+    &--selected {
+      border-color: $primaryColor;
+    }
+  }
+
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    text-align: right;
+    @extend %small-text;
+  }
+
+  &__option {
+    color: $secondaryColor;
+  }
+
+  &__section-about {
+    margin: 56px 0;
+
+    @include onTablet {
+      margin: 64px 0;
+    }
+
+    @include onDesktop {
+      margin-top: 80px;
+      margin-bottom: 0;
+    }
+  }
+
+  &__section-tech-specs {
+    @include onDesktop {
+      margin-top: 80px;
+      margin-bottom: 0;
+    }
+  }
+
+  &__subtitle {
+    margin-bottom: 16px;
+    @extend %h3;
+  }
+
+  &__about {
+    margin-top: 32px;
+    color: $secondaryColor;
+    @extend %body-text;
+  }
+
+  &__tech-specs {
+    margin-top: 32px;
+    & > .product-details__row {
+      @extend %body-text;
+    }
+  }
+}

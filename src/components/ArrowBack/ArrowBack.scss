@@ -1,0 +1,16 @@
+@import "../../styles/utils/utils";
+
+.arrow-back {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  @extend %small-text;
+  color: $secondaryColor;
+  padding-bottom: 16px;
+
+  @include hover (transform scale(1.1));
+
+  &__arrow {
+    transform: rotate(-90deg);
+  }
+}

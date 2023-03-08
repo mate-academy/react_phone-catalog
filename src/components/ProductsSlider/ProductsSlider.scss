@@ -1,0 +1,65 @@
+@import "../../styles/utils/utils";
+
+.hot-prices-slider,
+.brand-new-slider,
+.random-slider {
+  overflow: hidden;
+  
+  .swiper {
+    overflow: visible;
+    @include onDesktop {
+      overflow: hidden;
+    }
+  }
+
+  .swiper-slide {
+    width: 272px;
+
+    @include onDesktop {
+      width: 100%;
+    }
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+
+    & h1 {
+      @include onTablet {
+        font-size: 32px;
+      }
+    }
+  }
+
+  &__control {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid $iconsColor;
+    @include hover(border-color $primaryColor);
+
+    &:disabled {
+      border-color: $elementsColor;
+
+      & > img {
+        filter: (invert(94%) sepia(6%) saturate(150%)
+        hue-rotate(200deg) brightness(98%) contrast(91%));
+      }
+    }
+
+    &--prev {
+      transform: rotate(-90deg);
+    }
+
+    &--next {
+      transform: rotate(90deg);
+    }
+  }
+}

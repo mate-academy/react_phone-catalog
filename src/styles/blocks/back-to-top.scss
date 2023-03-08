@@ -1,0 +1,30 @@
+.back-to-top {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background-color: white;
+  border: none;
+  font-family: inherit, sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  text-align: right;
+  color: $secondaryColor;
+  border-color: $primaryColor;
+  align-self: center;
+  @include transition;
+
+  &__image {
+    @include transition;
+    border: 1px solid $iconsColor;
+    padding: 13px 12px;
+  }
+
+  &:hover {
+    color: $primaryColor;
+  }
+
+  &:hover > &__image {
+    border-color: $primaryColor;
+  }
+}

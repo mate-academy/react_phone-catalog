@@ -7,10 +7,18 @@
   "license": "GPL-3.0",
   "dependencies": {
     "@cypress/react": "^5.12.4",
+    "@types/lodash": "^4.14.191",
     "bulma": "^0.9.3",
+    "classnames": "^2.3.1",
+    "lodash": "^4.17.21",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-scripts": "^4.0.3"
+    "react-paginate": "^8.1.4",
+    "react-router-dom": "^6.4.1",
+    "react-scripts": "^4.0.3",
+    "react-select": "^5.7.0",
+    "react-transition-group": "^4.4.5",
+    "swiper": "^9.0.3"
   },
   "devDependencies": {
     "@cypress/webpack-dev-server": "^1.8.4",
@@ -21,7 +29,7 @@
     "@mate-academy/students-ts-config": "*",
     "@mate-academy/stylelint-config": "*",
     "@types/node": "^17.0.23",
-    "@types/react": "^17.0.43",
+    "@types/react": "^18.0.0",
     "@types/react-dom": "^17.0.14",
     "cypress": "^9.5.3",
     "eslint": "^7.32.0",

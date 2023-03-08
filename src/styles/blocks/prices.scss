@@ -1,0 +1,19 @@
+.prices {
+  display: flex;
+  gap: 8px;
+  padding-bottom: 6px;
+
+  &__price {
+    @extend %h2;
+  
+    &--discount {
+      color: $secondaryColor;
+      font-weight: 500;
+      text-decoration-line: line-through;
+    }
+  }
+
+  &--details {
+    padding-bottom: 16px;
+  }
+}

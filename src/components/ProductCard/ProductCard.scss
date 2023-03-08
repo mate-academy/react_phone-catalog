@@ -1,0 +1,95 @@
+@import "../../styles/utils/utils";
+
+.product-card {
+  color: $primaryColor;
+  display: flex;
+  flex-direction: column;
+  height: 507px;
+  width: 272px;
+  border: 1px solid $elementsColor;
+  padding: 24px;
+
+  @include hover (border-color $primaryColor);
+
+  &__link {
+    color: $primaryColor;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+  }
+
+  &__image {
+    align-self: center;
+    height: 208px;
+    width: 208px;
+    object-fit: contain;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    @extend %body-text;
+    margin-bottom: 8px;
+    flex-grow: 2;
+  }
+
+  &__prices {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__price {
+    @extend %h2;
+    margin-bottom: 6px;
+
+    &--discount {
+      color: $secondaryColor;
+      font-weight: 500;
+      text-decoration-line: line-through;
+    }
+  }
+
+  &__details {
+    @extend %small-text;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  &__details-row {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__details-option {
+    color: $secondaryColor;
+  }
+
+  &__control {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__button-buy {
+    background-color: $primaryColor;
+    height: 40px;
+    width: 176px;
+    color: $whiteColor;
+    font-size: 14px;
+    line-height: 21px;
+
+    @include hover(box-shadow (0 3px 13px rgba(23, 32, 49, 0.26)));
+  }
+
+  &__button-favorite {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid $iconsColor;
+
+    @include hover(border-color $primaryColor);
+  }
+}

@@ -1,0 +1,53 @@
+%indicatorSelected {
+  content: "";
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  bottom: 0;
+  background-color: #313237;
+}
+
+%h1 {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+}
+
+%h2 {
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 140%;
+}
+
+%h3 {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 26px;
+}
+
+%uppercase {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+%buttons {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+%body-text {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+%small-text {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+}

@@ -1,0 +1,33 @@
+@import "../../styles/utils/utils";
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: $primaryColor;
+  @extend %small-text;
+  padding: 24px 0;
+
+  @include onTablet {
+    padding-bottom: 40px;
+  }
+
+  &__home-link {
+    width: 16px;
+    height: 16px;
+
+    @include hover (transform scale(1.2));
+  }
+
+  &__arrow {
+    transform: rotate(90deg);
+    filter: (invert(94%) sepia(6%) saturate(150%)
+    hue-rotate(200deg) brightness(98%) contrast(91%));
+  }
+
+  &__title {
+    &--selected {
+      color: $secondaryColor;
+    }
+  }
+}
