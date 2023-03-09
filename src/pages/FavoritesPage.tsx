@@ -9,7 +9,7 @@ import { Footer } from '../components/Footer/Footer';
 
 export const FavoritesPage: React.FC = () => {
   const { favorites } = useContext(ProductsContext);
-  const numberOfFavourites = favorites.length;
+  const numberOfFavorites = favorites.length;
 
   const [query, setQuery] = useState('');
 
@@ -30,7 +30,7 @@ export const FavoritesPage: React.FC = () => {
         </h1>
 
         <h2 className="page__subtitle">
-          {`${numberOfFavourites} items`}
+          {`${numberOfFavorites} items`}
         </h2>
 
         <section className="page__section">
