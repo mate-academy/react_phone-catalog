@@ -1,0 +1,38 @@
+.search {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  position: relative;
+
+  &__input {
+    position: relative;
+    outline: none;
+    padding-left: 24px;
+    height: 100%;
+    width: 327px;
+    border: none;
+    box-shadow: -1px 0px 0px $c-elements;
+    background-image: url('../../images/svg/Search.svg');
+    background-repeat: no-repeat;
+    background-position: 290px;
+
+    &--show {
+      background-image: none;
+    }
+  }
+
+  &__reset-btn {
+    position: absolute;
+    right: 21px;
+    height: 16px;
+    width: 16px;
+    border: none;
+    background-color: transparent;
+    background-image: url('../../images/svg/Close.svg');
+    background-repeat: no-repeat;
+
+    &--show {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,21 @@
+@mixin btn-square($size) {
+  @extend %buttons;
+  @extend %flex-center;
+  width: $size;
+  height: $size;
+  transition: all 0.3s;
+  border: 1px solid $c-icons;
+  transition: all 0.3s;
+  background-color: transparent;
+}
+
+@mixin btn($sizeW, $sizeH) {
+  @extend %buttons;
+  @extend %flex-center;
+  text-align: center;
+  width: $sizeW;
+  height: $sizeH;
+  background-color: $c-primary;
+  color: $c-white;
+  border: none;
+}

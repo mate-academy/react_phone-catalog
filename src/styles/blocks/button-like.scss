@@ -1,0 +1,14 @@
+.button-like {
+  @include btn-square(32px);
+  background-image: url('../../images/svg/heartTransparent.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+
+  &--selected {
+    background-image: url('../../images/svg/heartRed.svg');
+  }
+
+  &:hover {
+    border: 1px solid $c-primary;
+  }
+}

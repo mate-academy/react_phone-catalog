@@ -1,0 +1,19 @@
+.results-search {
+  &__count {
+    margin: 24px 0;
+  }
+
+  &__found {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 40px;
+    column-gap: 16px;
+    margin-bottom: 40px;
+  }
+
+  &__not-found {
+    @extend %h2;
+    color: $c-secondary;
+    margin-bottom: 40px;
+  }
+}

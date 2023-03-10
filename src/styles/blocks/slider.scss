@@ -1,0 +1,10 @@
+.slider {
+  &__button {
+    display: block;
+    height: 30px;
+    width: 30px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}

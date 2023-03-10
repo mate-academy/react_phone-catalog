@@ -1,0 +1,15 @@
+.button-back {
+  @extend %buttons;
+  @extend %flex-center;
+  color: $c-secondary;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+
+  &::before {
+    content: '❯';
+    transform: rotate(180deg);
+    color: $c-primary;
+    margin-right: 9px;
+  }
+}

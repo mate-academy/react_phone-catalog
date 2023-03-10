@@ -1,0 +1,16 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+  overflow-y: scroll;
+
+  &__content {
+    flex-grow: 1;
+  }
+}
+
+[class*='__container'] {
+  margin: 0 auto;
+  max-width: 1136px;
+}
