@@ -1,4 +1,4 @@
-@import "../../styles/utils/utils";
+@import "../../styles/main";
 
 .breadcrumbs {
   display: flex;
@@ -28,6 +28,10 @@
   &__title {
     &--selected {
       color: $secondaryColor;
+    }
+
+    &:first-letter {
+      text-transform: uppercase;
     }
   }
 }

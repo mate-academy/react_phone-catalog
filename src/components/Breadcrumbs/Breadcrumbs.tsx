@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
+import { transformType } from '../../helpers/different';
 import './Breadcrumbs.scss';
 
 type Props = {
@@ -8,22 +9,6 @@ type Props = {
 };
 
 export const Breadcrumbs: React.FC<Props> = ({ type, productName }) => {
-  const transformType = () => {
-    switch (type) {
-      case 'phone':
-        return 'Phones';
-
-      case 'tablet':
-        return 'Tablets';
-
-      case 'accessory':
-        return 'Accessories';
-
-      default:
-        return '';
-    }
-  };
-
   return (
     <div
       className="breadcrumbs"
@@ -47,7 +32,7 @@ export const Breadcrumbs: React.FC<Props> = ({ type, productName }) => {
           { 'breadcrumbs__title--selected': !productName },
         )}
       >
-        {transformType()}
+        {transformType(type)}
       </p>
 
       {productName && (

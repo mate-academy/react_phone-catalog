@@ -1,6 +1,7 @@
 import { useContext, useState } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
+import { NavLinks } from '../../types/NavLinks';
 import { HeaderNavLink } from './HeaderNavLink';
 import { HeaderMobileMenu } from './HeaderMobileMenu';
 import {
@@ -10,16 +11,16 @@ import { SearchInput } from '../SearchInput';
 import './Header.scss';
 
 export const Header = () => {
-  const navLinks = ['home', 'phones', 'tablets', 'accessories'];
+  const navLinks = Object.keys(NavLinks);
   const [hasMobileMenu, setHasMobileMenu] = useState(false);
-  const handleClickMenu = () => (setHasMobileMenu(true));
+  const handleClickMenu = () => setHasMobileMenu(true);
   const { cart } = useContext(CartContext);
   const { favorites } = useContext(FavoritesContext);
   const location = useLocation();
   const { productId } = useParams();
-  const hasSearchInput = (navLinks.some(link => (
-    location.pathname.includes(link) || location.pathname.includes('favorites')
-  ))) && !productId;
+  const hasSearchInput = (
+    [...navLinks, 'favorites'].some(link => (location.pathname.includes(link)))
+  ) && !productId;
 
   return (
     <>

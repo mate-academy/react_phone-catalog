@@ -1,62 +1,20 @@
+import { MouseEventHandler } from 'react';
 import { Link } from 'react-router-dom';
 import { CartItemType } from '../../types/CartItemType';
-import { calculatePrice } from '../../helpers/calculatePriceHelper';
+import { calculatePrice, transformType } from '../../helpers/different';
 
 import './CartItem.scss';
 
 type Props = {
   cartItem: CartItemType,
-  cart: CartItemType[],
-  setCart: (cart: CartItemType[]) => void,
+  handleDeleteItem: (id: string) => MouseEventHandler<HTMLButtonElement>,
+  handleClickPlus: (id: string) => MouseEventHandler<HTMLButtonElement>,
+  handleClickMinus: (id: string) => MouseEventHandler<HTMLButtonElement>,
 };
 
-export const CartItem: React.FC<Props> = ({ cartItem, cart, setCart }) => {
-  const transformType = (type: string) => {
-    switch (type) {
-      case 'phone':
-        return 'phones';
-
-      case 'tablet':
-        return 'tablets';
-
-      case 'accessory':
-        return 'accessories';
-
-      default:
-        return '';
-    }
-  };
-
-  const handleClickDeleteItem = (productId: string) => () => {
-    setCart(
-      cart.filter((item) => item.id !== productId),
-    );
-  };
-
-  const handleClickPlus = (productId: string) => () => {
-    setCart(
-      cart.map((item) => (item.id === productId
-        ? {
-          id: item.id,
-          quantity: item.quantity + 1,
-          product: item.product,
-        }
-        : item)),
-    );
-  };
-
-  const handleClickMinus = (productId: string) => () => {
-    setCart(
-      cart.map((item) => (item.id === productId
-        ? {
-          id: item.id,
-          quantity: item.quantity - 1,
-          product: item.product,
-        }
-        : item)),
-    );
-  };
-
+export const CartItem: React.FC<Props> = ({
+  cartItem, handleDeleteItem, handleClickPlus, handleClickMinus,
+}) => {
   return (
     <div className="cart-item">
       <div className="cart-item__top">
@@ -64,7 +22,7 @@ export const CartItem: React.FC<Props> = ({ cartItem, cart, setCart }) => {
           type="button"
           className="cart-item__delete-button"
           data-cy="cartDeleteButton"
-          onClick={handleClickDeleteItem(cartItem.id)}
+          onClick={handleDeleteItem(cartItem.id)}
         >
           <img
             src="icons/cross.svg"

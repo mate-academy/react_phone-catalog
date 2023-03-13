@@ -1,4 +1,4 @@
-@import "../../styles/utils/utils";
+@import "../../styles/main";
 
 .products-list {
   flex-grow: 1;
@@ -15,9 +15,13 @@
   }
 
   &__items {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    gap: 40px 16px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(272px, max-content));
+    grid-gap: 40px 16px;
+    justify-content: center;
+
+    @include onDesktop {
+      grid-template-columns: repeat(4, minmax(272px, max-content));
+    }
   }
 }

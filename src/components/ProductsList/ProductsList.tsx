@@ -8,7 +8,7 @@ import { Pagination } from '../Pagination';
 import { SelectItem } from '../Select';
 import { NoResults } from '../NoResults';
 import { Breadcrumbs } from '../Breadcrumbs';
-import { calculatePrice } from '../../helpers/calculatePriceHelper';
+import { calculatePrice } from '../../helpers/different';
 import './ProductsList.scss';
 
 type Props = {

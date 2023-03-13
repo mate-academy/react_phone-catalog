@@ -3,7 +3,7 @@ import { ArrowBack } from '../../components/ArrowBack';
 import { CartContext } from '../../helpers/LocaleStorageContext';
 import { NotificationContext } from '../../helpers/ErrorContext';
 import { CartItem } from '../../components/CartItem';
-import { calculatePrice } from '../../helpers/calculatePriceHelper';
+import { calculatePrice } from '../../helpers/different';
 import { NoResults } from '../../components/NoResults';
 
 import './CartPage.scss';
@@ -22,6 +22,36 @@ export const CartPage = () => {
   const handleNotImplemented = () => (
     setNotification('We are sorry, but this feature is not implemented yet')
   );
+
+  const handleDeleteItem = (productId: string) => () => {
+    setCart(
+      cart.filter((item) => item.id !== productId),
+    );
+  };
+
+  const handleClickPlus = (productId: string) => () => {
+    setCart(
+      cart.map((item) => (item.id === productId
+        ? {
+          id: item.id,
+          quantity: item.quantity + 1,
+          product: item.product,
+        }
+        : item)),
+    );
+  };
+
+  const handleClickMinus = (productId: string) => () => {
+    setCart(
+      cart.map((item) => (item.id === productId
+        ? {
+          id: item.id,
+          quantity: item.quantity - 1,
+          product: item.product,
+        }
+        : item)),
+    );
+  };
 
   return (
     <section className="cart">
@@ -43,8 +73,9 @@ export const CartPage = () => {
                   {cart.map(cartItem => (
                     <CartItem
                       cartItem={cartItem}
-                      cart={cart}
-                      setCart={setCart}
+                      handleDeleteItem={handleDeleteItem}
+                      handleClickPlus={handleClickPlus}
+                      handleClickMinus={handleClickMinus}
                     />
                   ))}
                 </div>

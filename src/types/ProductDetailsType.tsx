@@ -1,4 +1,4 @@
-export type ProductDetailsType = {
+export interface ProductDetailsType {
   android: {
     os: string;
   },
@@ -28,4 +28,4 @@ export type ProductDetailsType = {
     ram: string,
     flash: string,
   };
-};
+}
