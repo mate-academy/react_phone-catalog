@@ -113,7 +113,9 @@ export const ProductsList: React.FC<Props> = ({
         {totalCount > 0
           ? (
             <>
-              <Breadcrumbs type={products[0].type} />
+              <Breadcrumbs
+                type={isFavorites ? 'favorites' : products[0].type}
+              />
 
               <h1 className="products-list__title">
                 {title}

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
-import { transformType } from '../../helpers/different';
+import { NavLinks } from '../../types/NavLinks';
 import './Breadcrumbs.scss';
 
 type Props = {
@@ -32,7 +32,7 @@ export const Breadcrumbs: React.FC<Props> = ({ type, productName }) => {
           { 'breadcrumbs__title--selected': !productName },
         )}
       >
-        {transformType(type)}
+        {NavLinks[`${type}` as keyof typeof NavLinks] || 'favorites'}
       </p>
 
       {productName && (

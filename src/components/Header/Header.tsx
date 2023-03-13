@@ -11,7 +11,7 @@ import { SearchInput } from '../SearchInput';
 import './Header.scss';
 
 export const Header = () => {
-  const navLinks = Object.keys(NavLinks);
+  const navLinks = Object.values(NavLinks);
   const [hasMobileMenu, setHasMobileMenu] = useState(false);
   const handleClickMenu = () => setHasMobileMenu(true);
   const { cart } = useContext(CartContext);

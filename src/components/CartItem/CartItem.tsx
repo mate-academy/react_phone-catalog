@@ -1,7 +1,8 @@
 import { MouseEventHandler } from 'react';
 import { Link } from 'react-router-dom';
 import { CartItemType } from '../../types/CartItemType';
-import { calculatePrice, transformType } from '../../helpers/different';
+import { calculatePrice } from '../../helpers/different';
+import { NavLinks } from '../../types/NavLinks';
 
 import './CartItem.scss';
 
@@ -15,6 +16,8 @@ type Props = {
 export const CartItem: React.FC<Props> = ({
   cartItem, handleDeleteItem, handleClickPlus, handleClickMinus,
 }) => {
+  const typeForLink = NavLinks[`${cartItem.product.type}` as keyof typeof NavLinks];
+
   return (
     <div className="cart-item">
       <div className="cart-item__top">
@@ -31,7 +34,7 @@ export const CartItem: React.FC<Props> = ({
         </button>
 
         <Link
-          to={`../${transformType(cartItem.product.type)}/${cartItem.product.id}`}
+          to={`../${typeForLink}/${cartItem.product.id}`}
           className="cart-item__link"
         >
           <img
