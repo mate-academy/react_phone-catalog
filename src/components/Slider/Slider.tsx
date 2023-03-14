@@ -20,7 +20,7 @@ export const Slider: FC<Props> = ({ images }) => {
             className={classNames('slider__button', {
               'slider__button--active': selected === img,
             })}
-            style={{ backgroundImage: `url(../${img})` }}
+            style={{ backgroundImage: `url(${img})` }}
             onClick={() => setSelected(img)}
           />
         ))}
