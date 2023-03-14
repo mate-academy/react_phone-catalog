@@ -4,4 +4,5 @@ export enum SortType {
   Price = 'price',
   Year = 'year',
   MaxDiscount = 'maxDiscount',
+  Random = 'random',
 }

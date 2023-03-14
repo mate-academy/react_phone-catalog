@@ -3,10 +3,13 @@
   @extend %flex-center;
   width: $size;
   height: $size;
-  transition: all 0.3s;
   border: 1px solid $c-icons;
-  transition: all 0.3s;
   background-color: transparent;
+  transition: all 0.3s;
+
+  &:hover {
+    border: 1px solid $c-primary;
+  }
 }
 
 @mixin btn($sizeW, $sizeH) {

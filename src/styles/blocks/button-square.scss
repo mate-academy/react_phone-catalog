@@ -1,33 +1,12 @@
 .button-square {
   @include btn-square(32px);
 
-  &:hover {
-    border: 1px solid $c-primary;
+  &:active {
+    background-color: $c-hover_BG;
   }
 
   &--disabled {
     pointer-events: none;
-    opacity: 0.5;
-
-    &::before {
-      color: $c-icons;
-    }
-  }
-
-  &--prev {
-    &::before {
-      content: '❯';
-      display: block;
-      transform: rotate(180deg);
-      color: $c-primary;
-    }
-  }
-
-  &--next {
-    &::before {
-      content: '❯';
-      display: block;
-      color: $c-primary;
-    }
+    opacity: 0.6;
   }
 }

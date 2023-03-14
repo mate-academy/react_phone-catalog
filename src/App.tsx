@@ -1,5 +1,5 @@
-import './App.scss';
 import { Page } from './pages/Page';
+import './App.scss';
 
 export const App = () => {
   return (

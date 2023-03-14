@@ -24,6 +24,9 @@ export const sortProducts = (products: Product[], sortValue: string) => {
         return diffA - diffB;
       });
 
+    case SortType.Random:
+      return products.sort(() => Math.random() - 0.5);
+
     default:
       return products;
   }

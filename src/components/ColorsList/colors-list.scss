@@ -1,0 +1,18 @@
+@import "../../styles/utils";
+
+.colors-list {
+  flex: 0 0 auto;
+  @include btn-square(30px);
+  border-radius: 50%;
+  border: 2px solid $c-white;
+  outline: 1px solid $c-elements;
+
+  &--active {
+    outline: 1px solid $c-primary;
+    pointer-events: none;
+  }
+
+  &:hover {
+    outline: 1px solid $c-primary;
+  }
+}

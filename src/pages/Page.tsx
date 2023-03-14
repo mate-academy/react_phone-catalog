@@ -1,4 +1,3 @@
-/* eslint-disable object-curly-newline */
 import { FC, useEffect, useState } from 'react';
 import {
   Navigate,
@@ -8,19 +7,22 @@ import {
   useSearchParams,
 } from 'react-router-dom';
 import { Header } from '../components/Header';
-import { Footer } from './Footer';
-import { HomePage } from './HomePage';
-import { Phones } from './Phones';
-import { Tablets } from './Tablets';
-import { Accessories } from './Accessories';
-import { Cart } from './Cart';
-import { Favourites } from './Favourites';
-import { useLocaleStorage } from '../hooks/useLocaleStorage';
+import { Footer } from '../components/Footer/Footer';
+import { NotFound } from './NotFound/NotFound';
+import { HomePage } from './HomePage/HomePage';
+import { Phones } from './Phones/Phones';
+import { Tablets } from './Tablets/Tablets';
+import { Accessories } from './Accessories/Accessories';
+import { Cart } from './Cart/Cart';
+import { Favourites } from './Favourites/Favourites';
+import { ProductDetails } from './ProductDetails/ProductDetails';
 import { AppProvider } from '../context/AppContext';
-import { ProductInCart } from '../types/ProductInCart';
-import { ProductDetails } from './ProductDetails';
+import { useLocaleStorage } from '../hooks/useLocaleStorage';
 import { Product } from '../types/Product';
+import { ProductInCart } from '../types/ProductInCart';
 import { getProducts } from '../api/fetchData';
+import { Pathname } from '../types/Pathname';
+import './page.scss';
 
 export const Page: FC = () => {
   const { pathname } = useLocation();
@@ -34,7 +36,6 @@ export const Page: FC = () => {
   const [searchParams] = useSearchParams();
   const query = searchParams.get('query') || '';
   const isShowResSearch = query.trim().length !== 0;
-  let productsToSearch = [...products];
 
   const isSelectedProduct = (
     itemId: string,
@@ -85,17 +86,6 @@ export const Page: FC = () => {
     }
   };
 
-  if (query.trim() && pathname === '/favourites' && favorites.length !== 0) {
-    productsToSearch = [...favorites];
-    productsToSearch = productsToSearch.filter((product: Product) => {
-      return product.name.toLowerCase().includes(query.trim().toLowerCase());
-    });
-  } else if (query.trim()) {
-    productsToSearch = productsToSearch.filter((product: Product) => {
-      return product.name.toLowerCase().includes(query.trim().toLowerCase());
-    });
-  }
-
   const updateCount = (newCount: number, itemId: string) => {
     const newInCart = inCart.map((el: ProductInCart) => {
       if (el.itemId === itemId) {
@@ -116,6 +106,36 @@ export const Page: FC = () => {
     tablets: tablets.length,
     accessories: accessories.length,
   };
+
+  let productsToSearch = [...products];
+
+  switch (pathname) {
+    case Pathname.Phones:
+      productsToSearch = [...phones];
+      break;
+
+    case Pathname.Tablets:
+      productsToSearch = [...tablets];
+      break;
+
+    case Pathname.Accessories:
+      productsToSearch = [...accessories];
+      break;
+
+    case Pathname.Favourites:
+      productsToSearch = [...favorites];
+      break;
+
+    default:
+      productsToSearch = [...products];
+      break;
+  }
+
+  if (query.trim()) {
+    productsToSearch = productsToSearch.filter((product: Product) => {
+      return product.name.toLowerCase().includes(query.trim().toLowerCase());
+    });
+  }
 
   return (
     <AppProvider
@@ -143,31 +163,46 @@ export const Page: FC = () => {
                 <HomePage products={products} countProducts={countProducts} />
               }
             />
-            <Route path="/home" element={<Navigate to="/" replace />} />
-            <Route path="/phones">
+            <Route path={Pathname.Home} element={<Navigate to="/" replace />} />
+            <Route path={Pathname.Phones}>
               <Route
                 index
                 element={<Phones products={phones} isLoading={isLoading} />}
               />
-              <Route path=":productId" element={<ProductDetails />} />
+              <Route
+                path=":productId"
+                element={<ProductDetails goods={products} />}
+              />
             </Route>
 
-            <Route
-              path="/tablets"
-              element={<Tablets products={tablets} isLoading={isLoading} />}
-            />
-            <Route
-              path="/accessories"
-              element={
-                <Accessories products={accessories} isLoading={isLoading} />
-              }
-            />
-            <Route path="/cart" element={<Cart products={inCart} />} />
+            <Route path={Pathname.Tablets}>
+              <Route
+                index
+                element={<Tablets products={tablets} isLoading={isLoading} />}
+              />
+              <Route
+                path=":productId"
+                element={<ProductDetails goods={products} />}
+              />
+            </Route>
+            <Route path={Pathname.Accessories}>
+              <Route
+                index
+                element={
+                  <Accessories products={accessories} isLoading={isLoading} />
+                }
+              />
+              <Route
+                path=":productId"
+                element={<ProductDetails goods={products} />}
+              />
+            </Route>
+            <Route path={Pathname.Cart} element={<Cart products={inCart} />} />
 
-            <Route
-              path="/favourites"
-              element={<Favourites products={favorites} />}
-            />
+            <Route path={Pathname.Favourites}>
+              <Route index element={<Favourites products={favorites} />} />
+            </Route>
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
         <Footer />
