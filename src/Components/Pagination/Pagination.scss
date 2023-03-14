@@ -19,26 +19,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
+    user-select: none;
+
+    &:hover {
+      border: 2px solid $color-primary;
+    }
 
     &--active {
       background-color: $color-primary;
       color: $color-white;
-    }
-  }
-
-  &__arr {
-    background-repeat: no-repeat;
-    background-position: center;
-    display: block;
-    height: 100%;
-    width: 100%;
-
-    &--left {
-      background-image: url(../../img/Icons/arr-left.svg);
-    }
-
-    &--right {
-      background-image: url(../../img/Icons/arr-right.svg);
     }
   }
 

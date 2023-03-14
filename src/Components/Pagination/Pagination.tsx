@@ -1,88 +1,46 @@
-import classNames from 'classnames';
-import { Link, useSearchParams } from 'react-router-dom';
+import ReactPaginate from 'react-paginate';
+import { useSearchParams } from 'react-router-dom';
 import { getSearchWith } from '../../helpers/searchHelpers';
+import { LabelLink } from '../LabelLink';
 import './Pagination.scss';
 
 type PropTypes = {
-  totalItems: number;
-  itemsPerPage: number;
+  totalPages: number;
   currentPage: number;
 };
 
 export const Pagination: React.FC<PropTypes> = ({
-  itemsPerPage,
-  totalItems,
+  totalPages,
   currentPage,
 }) => {
-  const pageNumbers = [];
-  const pages = Math.ceil(totalItems / itemsPerPage);
-  const [searchParams] = useSearchParams();
-
-  // eslint-disable-next-line no-plusplus
-  for (let i = 1; i <= pages; i++) {
-    pageNumbers.push(i);
-  }
-
-  const setCurrentPage = (newCurrentPage: number) => {
-    return getSearchWith(searchParams, {
-      page: `${newCurrentPage}`,
-    });
+  const [searchParams, setSearchParams] = useSearchParams();
+  const handleClick = (newPage: number) => {
+    setSearchParams(
+      getSearchWith(searchParams, { page: `${newPage}` || null }),
+    );
   };
 
-  const firstPage = pageNumbers[0];
-
   return (
-    <ul className="pagination__box-select">
-      <li
-        className="button pagination__button"
-      >
-        <Link
-          to={{
-            search: setCurrentPage(currentPage - 1),
-          }}
-          className={classNames(
-            'pagination__arr pagination__arr--left',
-            {
-              pagination__disabled: firstPage === currentPage,
-            },
-          )}
-        />
-      </li>
-
-      {pageNumbers.map(number => (
-        <Link
-          key={number}
-          to={{
-            search: setCurrentPage(number),
-          }}
-          className={classNames(
-            'pagination__button',
-            {
-              'pagination__button--active': currentPage === number,
-              'pagination__button--hidden': currentPage === number,
-            },
-          )}
-        >
-          {number}
-        </Link>
-      ))}
-
-      <li
-        className="button pagination__button"
-      >
-        <Link
-          to={{
-            search: setCurrentPage(currentPage + 1),
-          }}
-          className={classNames(
-            'pagination__arr pagination__arr--right',
-            {
-              pagination__disabled: currentPage
-                === pageNumbers[pageNumbers.length - 1],
-            },
-          )}
-        />
-      </li>
-    </ul>
+    <ReactPaginate
+      containerClassName="pagination__box-select"
+      previousLinkClassName="pagination__button"
+      nextLinkClassName="pagination__button"
+      pageLinkClassName="pagination__button"
+      breakLinkClassName="pagination__button"
+      activeLinkClassName="pagination__button--active"
+      disabledClassName="pagination__disabled"
+      marginPagesDisplayed={1}
+      forcePage={+currentPage - 1}
+      pageRangeDisplayed={4}
+      breakLabel="..."
+      pageCount={totalPages}
+      previousLabel={
+        <LabelLink currentPage={currentPage} value="<" />
+      }
+      nextLabel={
+        <LabelLink currentPage={currentPage} value=">" />
+      }
+      onPageChange={(data) => handleClick(data.selected + 1)}
+    />
   );
 };

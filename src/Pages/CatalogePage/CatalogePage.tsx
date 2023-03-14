@@ -125,6 +125,7 @@ export const PhonesPage: React.FC<PropTypes> = ({ product }) => {
   const currentItem = visiblePhones.slice(firstItemIndex, lastItemIndex);
 
   const quantity = visiblePhones.length;
+  const totalPages = Math.ceil(quantity / itemsPerPage);
 
   if (isError) {
     return (
@@ -268,8 +269,7 @@ export const PhonesPage: React.FC<PropTypes> = ({ product }) => {
         </div>
         {!!quantity && (
           <Pagination
-            totalItems={quantity}
-            itemsPerPage={itemsPerPage}
+            totalPages={totalPages}
             currentPage={currentPage}
           />
         )}
