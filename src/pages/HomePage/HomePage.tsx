@@ -1,33 +1,37 @@
-import { Carousel } from '../../components/Carousel';
+import { useContext, useEffect } from 'react';
+import { Banner } from '../../components/Banner';
+import { Context } from '../../components/Context';
+import { Loader } from '../../components/Loader';
 import { ProductsSlider } from '../../components/ProductsSlider';
-import { CategoryNav } from '../../components/CategoryNav';
-import './HomePage.scss';
+import { ShopByCategory } from '../../components/ShopByCategory';
 
-export const HomePage = () => {
+export const HomePage: React.FC = () => {
+  const { isLoading } = useContext(Context);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
-    <div className="home">
-      <div className="container container--with-min-height">
-        <section className="home__section">
-          <Carousel />
-        </section>
-        <section className="home__section">
+    <>
+      {isLoading
+        && <Loader />}
+
+      {!isLoading && (
+        <>
+          <Banner />
+
           <ProductsSlider
-            title="Hot prices"
-            filterCriteria="discount"
-            sortBy="discount-value"
+            type="hot-prices"
           />
-        </section>
-        <section className="home__section">
-          <CategoryNav />
-        </section>
-        <section className="home__section">
+
+          <ShopByCategory />
+
           <ProductsSlider
-            title="Brand new models"
-            filterCriteria="no-discount"
-            sortBy="age"
+            type="new-models"
           />
-        </section>
-      </div>
-    </div>
+        </>
+      )}
+    </>
   );
 };

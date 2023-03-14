@@ -1,35 +1,134 @@
-import { useLocation } from 'react-router-dom';
+import {
+  useCallback,
+  useEffect,
+  useState,
+} from 'react';
+import {
+  useLocation,
+  useParams,
+} from 'react-router-dom';
+import classNames from 'classnames';
 import { Logo } from '../Logo';
-import { Nav } from '../Nav';
+import { MenuButton } from '../MenuButton';
+import { PageNav } from '../PageNav';
+import { TopActionButton } from '../TopActionButton';
 import { SearchBar } from '../SearchBar';
-import { SavedProductsButton } from '../SavedProductsButton';
+import { useWindowSize } from '../../utils/useWindowSize';
+import productCategory from '../../api/productCategory.json';
 import './Header.scss';
 
-export const Header = () => {
-  const { pathname } = useLocation();
-  const nestingDepth = pathname.split('/').filter(el => el !== '').length;
+export const Header: React.FC = () => {
+  const location = useLocation();
+  const { productId = '' } = useParams();
 
-  const showSearchbar = pathname !== '/'
-    && pathname !== '/cart'
-    && nestingDepth === 1;
+  const { width } = useWindowSize();
+
+  const [isOpened, setIsOpened] = useState(false);
+  const [isSearchBar, setIsSearchBar] = useState(false);
+
+  const productCategoryList = productCategory.map(item => item.type);
+
+  const searchBarCondition = productCategoryList.some(
+    item => location.pathname.includes(item),
+  ) && !productId;
+
+  const cartCondition = location.pathname.includes('cart');
+  const favoriteCondition = location.pathname.includes('favorite');
+
+  const handleIsOpened = useCallback((menuStatus: boolean) => {
+    setIsOpened(menuStatus);
+  }, []);
+
+  useEffect(() => {
+    setIsOpened(false);
+  }, [location]);
+
+  useEffect(() => {
+    if (width > 400) {
+      setIsSearchBar(true);
+    } else {
+      setIsSearchBar(false);
+    }
+  }, [width]);
 
   return (
-    <div className="header">
-      <div className="header__left">
-        <div className="header__logo">
+    <header className="page__header header">
+      <div className="header__main-container">
+        {!cartCondition && (
+          <div
+            className="
+              header__menu
+              top-actions__menu"
+          >
+            <MenuButton
+              isOpened={isOpened}
+              onClick={handleIsOpened}
+            />
+          </div>
+        )}
+
+        <div
+          className={classNames(
+            'header__logo',
+            { 'header__logo--cart': cartCondition },
+          )}
+        >
           <Logo />
         </div>
-        <Nav />
+
+        {!cartCondition && (
+          <nav className="header__nav">
+            <PageNav
+              type="header"
+            />
+          </nav>
+        )}
+
+        <div
+          className="
+            header__actions
+            top-actions"
+        >
+          {searchBarCondition
+            && isSearchBar
+            && (
+              <SearchBar />
+            )}
+
+          {favoriteCondition
+            && isSearchBar
+            && (
+              <SearchBar />
+            )}
+
+          {!cartCondition && (
+            <TopActionButton
+              type="favorite"
+            />
+          )}
+
+          <TopActionButton
+            type="cart"
+          />
+        </div>
       </div>
-      <div className="header__right">
-        {showSearchbar && <SearchBar />}
-        <SavedProductsButton
-          type="favs"
-        />
-        <SavedProductsButton
-          type="cart"
-        />
-      </div>
-    </div>
+
+      {!cartCondition && (
+        <div className="header__menu-list-container">
+          <nav
+            className={classNames(
+              'header__menu-list',
+              'menu',
+              { page__menu: !isOpened },
+              { 'page__menu--opened': isOpened },
+            )}
+          >
+            <PageNav
+              type="menu"
+            />
+          </nav>
+        </div>
+      )}
+    </header>
   );
 };

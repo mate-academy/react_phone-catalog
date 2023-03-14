@@ -1,65 +1,100 @@
-import { useContext } from 'react';
-import { BackButton } from '../../components/BackButton';
-import { CartItem } from './CartItem';
 import {
-  CartContext,
-} from '../../helpers/SavedItemsContext';
-import './CartPage.scss';
+  useContext,
+  useEffect,
+  useState,
+} from 'react';
+import uuid from 'react-uuid';
+import { BackButton } from '../../components/BackButton';
+import { CartCheckout } from '../../components/CartCheckout';
+import { Context } from '../../components/Context';
+import { Loader } from '../../components/Loader';
+import { ProductCart } from '../../components/ProductCart';
+import { ProductsSlider } from '../../components/ProductsSlider';
+import { getUniqueItems } from '../../helpers/getUniqueItems';
+import { Product } from '../../types/Product';
 
-export const CartPage = () => {
-  const { cartItems } = useContext(CartContext);
-  const total = cartItems.length === 0 ? 0 : cartItems.map((item) => {
-    const priceAfterDiscount = item.price * ((100 - item.discount) / 100);
-    const quantity = item.quantity || 1;
+export const CartPage: React.FC = () => {
+  const { isLoading, cart } = useContext(Context);
 
-    return priceAfterDiscount * quantity;
-  }).reduce((a, b) => a + b);
-  let totalItems = 0;
+  const [cartList, setCartList] = useState<Product[]>([]);
 
-  cartItems.forEach(item => {
-    const quantity = item.quantity || 1;
+  const cartItems = () => {
+    const list = getUniqueItems(cart, (item: Product) => item.id);
 
-    totalItems += quantity;
-  });
+    setCartList(list);
+  };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
+    cartItems();
+  }, [cart.length]);
 
   return (
-    <div className="container container--with-min-height">
-      <div className="cart-page">
-        <div className="cart-page__back-button">
-          <BackButton />
-        </div>
-        <div className="cart-page__title">
-          <h1 className="main-title">
-            Cart
-          </h1>
-        </div>
-        {cartItems.length === 0 ? (
-          <h2>Cart is empty</h2>
-        ) : (
-          <div className="grid">
-            <div className="cart-page__cart-items">
-              {cartItems.map((cartItem) => (
-                <CartItem key={cartItem.id} {...cartItem} />
-              ))}
-            </div>
-            <div className="cart-page__checkout">
-              <h1 className="main-title">
-                {String.fromCodePoint(0x00024)}
-                {total}
-              </h1>
-              <span className="cart-page__checkout-subtitle">
-                {`Total for ${totalItems} items`}
-              </span>
-              <button
-                type="button"
-                className="dark-button cart-page__checkout-button"
+    <>
+      {isLoading
+        && <Loader />}
+
+      {!isLoading
+        && (
+          <div
+            className="
+              grid__item--tablet-1-12
+              grid__item--desktop-1-24"
+          >
+            <BackButton />
+
+            <section className="page__section cart">
+              <h1
+                className="
+                  page__section-title
+                  section__title
+                  cart__title"
               >
-                Checkout
-              </button>
-            </div>
+                Cart
+              </h1>
+
+              {!cartList.length && (
+                <>
+                  <h2 className="cart__empty-title">
+                    Your cart is empty...
+                  </h2>
+
+                  <ProductsSlider
+                    type="recommendations"
+                  />
+                </>
+              )}
+
+              {cartList.length > 0 && (
+                <div
+                  className="
+                    cart__container
+                    grid
+                    grid--desktop"
+                >
+                  <ul
+                    className="
+                      cart__list
+                      grid__item--tablet-1-12
+                      grid__item--desktop-1-16"
+                  >
+                    {cartList.map(product => (
+                      <ProductCart
+                        key={uuid()}
+                        product={product}
+                      />
+                    ))}
+                  </ul>
+
+                  <CartCheckout />
+                </div>
+              )}
+            </section>
           </div>
         )}
-      </div>
-    </div>
+    </>
   );
 };

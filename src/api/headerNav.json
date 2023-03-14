@@ -1,0 +1,18 @@
+[
+  {
+    "title": "Home",
+    "link": "/"
+  },
+  {
+    "title": "Phones",
+    "link": "/phones"
+  },
+  {
+    "title": "Tablets",
+    "link": "/tablets"
+  },
+  {
+    "title": "Accessories",
+    "link": "/accessories"
+  }
+]

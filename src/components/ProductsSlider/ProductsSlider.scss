@@ -1,47 +1,50 @@
-@import "../../colors";
+@import "../../styles/main.scss";
 
-.products-slider {
-
-  &__header {
-    margin-bottom: 24px;
-  }
+.product-slider {
+  gap: 24px;
+  cursor: default;
 
   &__title {
-    margin: 0;
-    font-weight: 700;
-    font-size: 32px;
-    line-height: 41px;
-    letter-spacing: -0.01em;
-    align-self: center;
-    grid-column: 1 / -5;
+    margin-right: 8px;
   }
 
-  &__button {
-    height: 32px;
-    align-self: center;
-
-    &--prev {
-      grid-column: -3 / -2;
-      background-image: url(../../icons/Chevron_Arrow_Left_Bold.png);
-    }
-
-    &--next {
-      grid-column: -2 / -1;
-      background-image: url(../../icons/Chevron_Arrow_Right_Bold.png);
-    }
+  &__header {
+    display: flex;
+    justify-content: space-between;
   }
 
-  &__products-container {
-    width: 100%;
+  &__buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__body {
+    display: flex;
+    margin: 0 auto;
     overflow: hidden;
   }
 
-  &__products {
+  &__container {
     display: flex;
-    width: max-content;
+    justify-content: center;
+    gap: 16px;
   }
 
-  &__product-container {
-    margin-right: 16px;
+  &__button {
+    @include squareSize(32px);
+    box-sizing: border-box;
+    background-color: $color-white;
+    border: 1px solid $color-icons;
+    transition: all 0.5s;
+    cursor: pointer;
+
+    &:hover {
+      border-color: $color-primary;
+    }
+
+    &:disabled {
+      border: 1px solid $color-elements;
+      cursor: default;
+    }
   }
 }

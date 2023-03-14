@@ -1,0 +1,28 @@
+@import "../../styles/main.scss";
+
+.top-actions {
+  &__link {
+    display: flex;
+    padding: 22px 24px;
+    color: $color-primary;
+    border-bottom: 3px solid transparent;
+    text-decoration: none;
+    transition: border 0.5s;
+
+    &--button {
+      background-color: $color-white;
+      border-top-style: none;
+      border-right-style: none;
+      border-left-style: none;
+    }
+
+    &--active {
+      border-bottom: 3px solid $color-primary;
+    }
+
+    &:hover {
+      border-bottom: 3px solid $color-primary;
+      cursor: pointer;
+    }
+  }
+}

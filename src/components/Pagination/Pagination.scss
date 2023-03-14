@@ -1,43 +1,58 @@
-@import "../../colors";
+@import "../../styles/main.scss";
 
 .pagination {
   display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
 
-  & > * {
-    margin-right: 8px;
-  }
+  @extend %body-text;
+  list-style: none;
 
-  & > :first-child,
-  :nth-last-child(2) {
-    margin-right: 16px;
-  }
-
-  & > :last-child {
-    margin-right: 0;
+  &--is-hidden {
+    display: none;
   }
 
   &__button {
-    height: 32px;
-    width: 32px;
-    transition: all 0.3s !important;
+    @include squareSize(32px);
+    background-color: $color-white;
+    border: 1px solid $color-grey;
+    transition: all 0.5s;
+    cursor: pointer;
 
-    &--page {
-      border: 1px solid $color-elements-light-gray !important;
+    &:hover {
+      border-color: $color-primary;
     }
 
-    &--active {
-      color: $color-white !important;
-      background-color: $color-primary-dark-gray !important;
-      cursor: unset;
+    &:hover:disabled {
+      border-color: $color-grey;
+      cursor: default;
+    }
+  }
+
+  &__list {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include squareSize(32px);
+
+    background-color: $color-white;
+    border: 1px solid $color-elements;
+    transition: all 0.5s;
+    cursor: pointer;
+
+    &--is-active {
+      color: $color-white;
+      background-color: $color-primary;
     }
 
-    &--prev {
-      margin-right: 16px;
-      background-image: url(../../icons/Chevron_Arrow_Left_Bold.png);
-    }
-
-    &--next {
-      background-image: url(../../icons/Chevron_Arrow_Right_Bold.png);
+    &:hover {
+      border-color: $color-grey;
     }
   }
 }

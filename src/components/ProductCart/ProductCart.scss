@@ -1,0 +1,142 @@
+@import "../../styles/main.scss";
+
+.cart {
+  &__empty-title {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+    padding-top: 16px;
+
+    @extend %h1-text;
+    color: $color-primary;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+
+    @include onDesktop {
+      margin-right: 16px;
+    }
+  }
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    padding: 12px;
+
+    border: 1px solid $color-elements;
+    transition: all 0.5s;
+
+    @include onDesktop {
+      padding: 24px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    &:hover {
+      box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+    }
+
+    &--close-icon {
+      padding: 0;
+      background-color: $color-white;
+      margin-right: 6px;
+      border: none;
+      transition: all 0.5s;
+      cursor: pointer;
+
+      @include onDesktop {
+        margin-right: 24px;
+      }
+    }
+  }
+
+  &__image {
+    height: 100%;
+
+    &--container {
+      @include squareSize(80px);
+      padding: 7px;
+      margin-right: 16px;
+
+      @include onDesktop {
+        margin-right: 24px;
+      }
+    }
+  }
+
+  &__item-title {
+    @extend %body-text;
+    width: 100px;
+    margin-right: 16px;
+
+    @include onTablet {
+      width: 280px;
+      margin-right: 49px;
+    }
+  }
+
+  &__buttons {
+    margin-right: 16px;
+
+    @include onDesktop {
+      margin-right: 43px;
+    }
+  }
+
+  &__quantity {
+    min-width: 32px;
+    width: 100%;
+
+    @extend %body-text;
+    text-align: center;
+    color: #000;
+  }
+
+  &__price {
+    min-width: 60px;
+
+    @extend %h2-text;
+    color: $color-primary;
+  }
+
+  &__empty-phrase {
+    width: 100%;
+    margin-top: 30px;
+
+    @extend %h1-text;
+    text-align: center;
+    color: $color-primary;
+  }
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include squareSize(32px);
+    padding: 15px 10px;
+
+    border: 1px solid $color-elements;
+    background-color: $color-white;
+    transition: all 0.5s;
+    cursor: pointer;
+
+    &:hover {
+      border-color: $color-grey;
+    }
+
+    &:hover:disabled {
+      border-color: $color-elements;
+    }
+  }
+}

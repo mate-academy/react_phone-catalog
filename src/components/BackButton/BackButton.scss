@@ -1,25 +1,22 @@
-@import "../../colors";
+@import "../../styles/main.scss";
 
 .back-button {
-  width: 50px;
-  height: max-content;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 16px;
   padding: 0;
-  font-family: "Mont", sans-serif;
-  text-align: end;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 12px;
-  line-height: 15px;
-  color: $color-secondary-gray;
-  background-color: $color-white;
-  background-image: url(../../icons/Chevron_Arrow_Left_Bold.png);
-  background-repeat: no-repeat;
-  background-position: left center;
+
+  @extend %small-text;
+  color: $color-secondary;
+  text-decoration: none;
+
+  background: none;
   border: none;
-  cursor: pointer;
-  transition: color 0.5s;
+  transition: all 0.5s;
 
   &:hover {
-    color: $color-primary-dark-gray;
+    color: $color-primary;
+    cursor: pointer;
   }
 }

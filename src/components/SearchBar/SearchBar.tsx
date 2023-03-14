@@ -1,87 +1,99 @@
-import React, {
+import {
+  useMemo,
   useState,
-  useCallback,
-  useEffect,
+  ChangeEvent,
 } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import debounce from 'lodash/debounce';
-import classNames from 'classnames';
-import { generatePlaceHolderText, MAX_SEARCH_CHARS } from './utils';
+import {
+  useLocation,
+  useNavigate,
+  useSearchParams,
+} from 'react-router-dom';
+import { debounce } from 'lodash';
+import { Icon } from '../Icon';
+import { getSearchWith } from '../../utils/searchHelper';
+import { IconType } from '../../types/Icon';
 import './SearchBar.scss';
 
-export const SearchBar = () => {
-  const { search, pathname } = useLocation();
+export const SearchBar: React.FC = () => {
+  const location = useLocation();
   const navigate = useNavigate();
-  const searchParams = new URLSearchParams(search);
+  const [searchParams] = useSearchParams();
 
-  const appliedQuery = searchParams.get('query') || '';
-  const [searchQuery, setSearchQuery] = useState(appliedQuery);
+  const query = searchParams.get('query') || '';
 
-  const applyQuery = useCallback(
-    debounce((
-      newQuery: string,
-      currentPathname: string,
-      currentSearchParams: URLSearchParams,
-    ) => {
-      if (newQuery) {
-        currentSearchParams.set('query', newQuery);
-      } else {
-        currentSearchParams.delete('query');
-      }
+  const [inputValue, setInputValue] = useState(query);
+
+  const currentLocation = location.pathname.slice(1);
+
+  useMemo(() => {
+    setInputValue(query);
+  }, [query]);
+
+  const handleDebounceQuery = debounce(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      const { value } = event.target;
 
       navigate({
-        pathname: currentPathname,
-        search: currentSearchParams.toString(),
+        search: getSearchWith(
+          searchParams,
+          { query: value.trim() || null },
+        ),
       });
-    }, 500),
-    [],
+    }, 1000,
   );
 
-  useEffect(() => {
-    if (appliedQuery === '' && searchQuery !== '') {
-      setSearchQuery('');
-    }
-  }, [appliedQuery]);
+  const handleChangeQuery = (event: ChangeEvent<HTMLInputElement>) => {
+    const { value } = event.target;
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newQuery = e.target.value.trimStart();
-
-    if (newQuery.length >= MAX_SEARCH_CHARS) {
-      return;
-    }
-
-    setSearchQuery(newQuery);
-    applyQuery(newQuery, pathname, searchParams);
+    setInputValue(value);
+    handleDebounceQuery(event);
   };
 
-  const isNotEmpty = searchQuery !== '';
+  const handleDeleteQuery = () => {
+    setInputValue('');
+
+    navigate({
+      search: getSearchWith(
+        searchParams,
+        { query: null },
+      ),
+    });
+  };
 
   return (
-    <div className="searchbar-container">
+    <div
+      className="
+        top-actions__search
+        search-panel"
+    >
       <input
+        className="search-panel__input"
         type="text"
-        placeholder={generatePlaceHolderText(pathname)}
-        value={searchQuery}
-        className={classNames(
-          'searchbar',
-          { 'searchbar--has-text': isNotEmpty },
-        )}
-        onChange={handleInputChange}
+        placeholder={`Search in ${currentLocation}...`}
+        onChange={(event) => handleChangeQuery(event)}
+        value={inputValue}
       />
-      {
-        isNotEmpty && (
-          <button
-            type="button"
-            className="searchbar__clear-button"
-            onClick={() => {
-              setSearchQuery('');
-              applyQuery('', pathname, searchParams);
-            }}
-          >
-            {}
-          </button>
-        )
-      }
+
+      {!inputValue && (
+        <Icon
+          type={IconType.SEARCH}
+          addClassName="search-panel__icon"
+        />
+      )}
+
+      {inputValue.length > 0 && (
+        <div
+          className="search-panel__icon"
+          role="button"
+          tabIndex={0}
+          onKeyDown={() => handleDeleteQuery()}
+          onClick={() => handleDeleteQuery()}
+        >
+          <Icon
+            type={IconType.CLOSE}
+          />
+        </div>
+      )}
     </div>
   );
 };

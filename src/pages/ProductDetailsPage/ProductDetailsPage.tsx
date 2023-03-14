@@ -1,51 +1,48 @@
-import { useState, useEffect } from 'react';
-import { useParams, useLocation } from 'react-router-dom';
-import { Breadcrumbs } from '../../components/Breadcrumbs';
-import { Loader } from '../../components/Loader';
-import './ProductDetailsPage.scss';
-import { fetchCompleteDetails } from '../../api';
-import { ProductDetails } from '../../components/ProductDetails';
+import { useContext, useEffect } from 'react';
 import { BackButton } from '../../components/BackButton';
-import { ProductNotFound } from './ProductNotFound';
+import { Context } from '../../components/Context';
+import { ErrorNotification } from '../../components/ErrorNotification';
+import { Loader } from '../../components/Loader';
+import { PageNavStatus } from '../../components/PageNavStatus';
+import { ProductDetails } from '../../components/ProductDetails';
+import { ProductsSlider } from '../../components/ProductsSlider';
 
-export const ProductDetailsPage = () => {
-  const [details, setDetails] = useState<Product>();
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
-  const { pathname } = useLocation();
-  const { productId } = useParams();
-
-  const directory = pathname.split('/')[1];
+export const ProductDetailsPage: React.FC = () => {
+  const { isLoading, error } = useContext(Context);
 
   useEffect(() => {
-    fetchCompleteDetails(productId || '')
-      .then(res => setDetails(res))
-      .catch(err => setError(err));
-    setLoading(false);
-  }, [productId]);
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
-    <div className="container container--with-min-height">
-      {error ? (
-        <ProductNotFound directory={directory} />
-      ) : (
-        <div className="product-details-page">
-          <div className="product-details-page__breadcrumbs">
-            <Breadcrumbs
-              productName={details?.name || productId}
-            />
-          </div>
-          <div className="product-details-page__back-button">
+    <>
+      {isLoading
+        && <Loader />}
+
+      {!isLoading
+        && (
+          <>
+            <PageNavStatus />
+
             <BackButton />
-          </div>
-          {loading && <Loader />}
-          {details && (
-            <ProductDetails
-              {...details}
-            />
-          )}
-        </div>
-      )}
-    </div>
+
+            {!error && (
+              <>
+                <ProductDetails />
+
+                <ProductsSlider
+                  type="recommendations"
+                />
+              </>
+            )}
+
+            {error && (
+              <ErrorNotification
+                error={error}
+              />
+            )}
+          </>
+        )}
+    </>
   );
 };

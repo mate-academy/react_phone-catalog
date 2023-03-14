@@ -1,23 +1,37 @@
-.products-list {
+@import "../../styles/main.scss";
 
-  &__dropdowns {
-    margin-bottom: 24px;
-  }
-
-  &__dropdowns > *:not(:last-child) {
-    margin-right: 16px;
-  }
+.product-list {
+  display: grid;
 
   &__products {
-    margin-bottom: 40px;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, 272px);
-    justify-content: space-between;
-    row-gap: 40px;
-  }
-
-  &__pagination {
     display: flex;
     justify-content: center;
+  }
+
+  &__products-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin: 0 0 40px;
+  }
+
+  &__title {
+    margin-bottom: 8px;
+  }
+
+  &__count {
+    margin-bottom: 40px;
+
+    @extend %body-text;
+    color: $color-secondary;
+  }
+
+  &__no-results {
+    justify-content: flex-start;
+    margin: 0 0 40px;
+    padding-top: 40px;
+
+    @extend %h1-text;
+    color: $color-primary;
   }
 }

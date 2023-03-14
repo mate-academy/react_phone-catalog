@@ -1,18 +1,8 @@
-@import "../../colors";
+@import "../../styles/main.scss";
 
 .no-results {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  padding-top: 40px;
 
-  &__button {
-    color: $color-primary-dark-gray;
-    font-family: "Mont", sans-serif;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 14px;
-    text-decoration: none;
-    line-height: 21px;
-    padding: 10px 15px;
-  }
+  @extend %h1-text;
+  color: $color-primary;
 }

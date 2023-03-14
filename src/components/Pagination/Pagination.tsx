@@ -1,57 +1,162 @@
+import { useEffect } from 'react';
+import {
+  useNavigate,
+  useSearchParams,
+} from 'react-router-dom';
 import classNames from 'classnames';
+import { Icon } from '../Icon';
+import { getSearchWith } from '../../utils/searchHelper';
+import { IconType } from '../../types/Icon';
+import { SliderButtonType } from '../../types/SliderType';
 import './Pagination.scss';
 
 type Props = {
-  page: number,
-  totalProducts: number,
-  perPage: number,
-  setPage: (page: string) => void;
+  length: number,
 };
 
-export const Pagination:React.FC<Props> = ({
-  page,
-  totalProducts,
-  perPage,
-  setPage,
-}) => {
-  const totalPages = Math.ceil(totalProducts / perPage);
-  const pageButtons = Array.from({ length: totalPages }, (_, i) => i + 1);
+export const Pagination: React.FC<Props> = ({ length }) => {
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+
+  const perPage = searchParams.get('perPage');
+  const page = searchParams.get('page') || '1';
+
+  const getTotalPages = () => {
+    if (!perPage) {
+      return 0;
+    }
+
+    return Math.ceil(length / +perPage);
+  };
+
+  const paginationList = (getTotalPages() > 1)
+    ? (Array.from(
+      { length: getTotalPages() },
+      (_, i) => i + 1,
+    ))
+    : [1];
+
+  const disabledLeftButton = (page === '1');
+
+  const disabledRightButton = (page === '1')
+    ? (page === `${getTotalPages() + 1}`)
+    : (page === `${getTotalPages()}`);
+
+  const handlePageClick = (pageItem: number) => {
+    if (page === `${pageItem}`) {
+      return;
+    }
+
+    const newParams = getSearchWith(
+      searchParams, {
+        page: `${pageItem}`,
+      },
+    );
+
+    navigate({ search: newParams });
+  };
+
+  const handleArrowClick = (type: SliderButtonType) => {
+    const currentPage = page
+      ? +page
+      : null;
+
+    if (type === 'prev' && currentPage) {
+      if (currentPage === 1) {
+        return;
+      }
+
+      const newParams = getSearchWith(
+        searchParams, {
+          page: `${currentPage - 1}`,
+        },
+      );
+
+      navigate({ search: newParams });
+    }
+
+    if (type === 'next' && currentPage) {
+      if (currentPage === getTotalPages()) {
+        return;
+      }
+
+      const newParams = getSearchWith(
+        searchParams, {
+          page: `${currentPage + 1}`,
+        },
+      );
+
+      navigate({ search: newParams });
+    }
+  };
+
+  useEffect(() => {
+    getTotalPages();
+  }, [perPage, length]);
 
   return (
-    <div className="pagination">
-      <button
-        type="button"
-        className="button pagination__button pagination__button--prev"
-        onClick={() => setPage(`${page - 1}`)}
-        disabled={page <= 1}
-      >
-        {}
-      </button>
-      {pageButtons.map(value => (
+    <div className="category-page__pagination">
+      <ul className="pagination">
         <button
-          key={value}
           type="button"
-          className={classNames(
-            'button',
-            'pagination__button',
-            'pagination__button--page',
-            { 'pagination__button--active': value === page },
-          )}
-          onClick={() => {
-            setPage(`${value}`);
-          }}
+          className="pagination__button"
+          data-cy="paginationLeft"
+          disabled={disabledLeftButton}
+          onClick={() => handleArrowClick('prev')}
         >
-          {value}
+          {!disabledLeftButton && (
+            <Icon
+              type={IconType.ARROW_LEFT}
+            />
+          )}
+
+          {disabledLeftButton && (
+            <Icon
+              type={IconType.ARROW_LEFT_DISABLED}
+            />
+          )}
         </button>
-      ))}
-      <button
-        type="button"
-        className="button pagination__button pagination__button--next"
-        onClick={() => setPage(`${page + 1}`)}
-        disabled={page >= totalPages}
-      >
-        {}
-      </button>
+
+        <div className="pagination__list">
+          {paginationList.map(pageNumber => (
+            <button
+              key={pageNumber}
+              type="button"
+              className={
+                classNames('pagination__item', {
+                  'pagination__item--is-active':
+                    page
+                      ? +page === pageNumber
+                      : false,
+                })
+              }
+              onClick={() => handlePageClick(pageNumber)}
+            >
+              {pageNumber}
+            </button>
+          ))}
+        </div>
+
+        <button
+          type="button"
+          className="pagination__button"
+          data-cy="paginationRight"
+          disabled={disabledRightButton}
+          onClick={() => handleArrowClick('next')}
+        >
+          {!disabledRightButton && (
+            <Icon
+              type={IconType.ARROW_RIGHT}
+            />
+          )}
+
+          {disabledRightButton && (
+            <Icon
+              type={IconType.ARROW_RIGHT_DISABLED}
+            />
+          )}
+        </button>
+      </ul>
     </div>
   );
 };

@@ -1,52 +1,110 @@
-@import "../../colors";
+@import "../../styles/main.scss";
 
 .header {
-  min-width: 1136px;
-  height: 64px;
-  position: sticky;
-  top: 0;
+  position: absolute;
+  box-sizing: border-box;
+  height: $header-height;
+  margin: 0 0 40px;
   background-color: $color-white;
-  box-shadow: 0 1px 0 $color-elements-light-gray;
-  display: flex;
-  justify-content: space-between;
-  padding-left: 24px;
-  z-index: 90;
+  border-bottom: 1px solid $color-elements;
 
-  &__left {
+  &__main-container {
     display: flex;
-    align-items: center;
-  }
-
-  &__right {
-    display: flex;
-    align-items: flex-end;
+    justify-content: space-between;
+    border: 0 1px solid $color-elements;
+    max-width: 1136px;
+    margin: 0 auto;
   }
 
   &__logo {
-    display: block;
-    margin-right: 64px;
+    display: flex;
+    align-items: center;
+    padding: 0 6px;
+
+    @include onDesktop {
+      padding-left: 24px;
+      padding-right: 64px;
+    }
+
+    &--cart {
+      padding-left: 24px;
+    }
   }
 
-  &__navlink {
-    margin-right: 64px;
+  &__nav {
+    display: none;
 
-    &:last-child {
-      margin-right: 0;
+    @include onDesktop {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
     }
   }
 }
 
-.cart-button {
-  height: 100%;
-  width: 64px;
+.top-actions {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: -1px 0 0 $color-elements-light-gray;
-  box-sizing: border-box;
+  justify-content: flex-end;
+  height: 64px;
 
-  &:hover {
-    z-index: 999;
-    border: 1px solid $color-primary-dark-gray;
+  &__menu {
+    position: relative;
+    display: flex;
+    align-items: center;
+    border-right: 1px solid $color-elements;
+    border-bottom: 1px solid $color-elements;
+
+    @include onDesktop {
+      display: none;
+    }
+  }
+
+  &__item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    border-left: 1px solid $color-elements;
+
+    &-count {
+      position: absolute;
+      top: 14px;
+      right: 17px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      @include squareSize(14px);
+
+      @extend %tiny-text;
+      color: $color-white;
+      background-color: $color-red;
+      border: 1px solid #fff;
+      border-radius: 50%;
+    }
+  }
+
+  &__link {
+    display: flex;
+    padding: 22px 24px;
+    color: $color-primary;
+    border-bottom: 3px solid transparent;
+    text-decoration: none;
+    transition: border 0.5s;
+
+    &--button {
+      background-color: $color-white;
+      border-top-style: none;
+      border-right-style: none;
+      border-left-style: none;
+    }
+
+    &--active {
+      border-bottom: 3px solid $color-primary;
+    }
+
+    &:hover {
+      border-bottom: 3px solid $color-primary;
+      cursor: pointer;
+    }
   }
 }
