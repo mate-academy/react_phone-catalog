@@ -2,10 +2,12 @@
 
 .colors-list {
   flex: 0 0 auto;
-  @include btn-square(30px);
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   border: 2px solid $c-white;
   outline: 1px solid $c-elements;
+  transition: all 0.3s;
 
   &--active {
     outline: 1px solid $c-primary;
