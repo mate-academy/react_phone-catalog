@@ -90,17 +90,19 @@ export const CardCarousel: React.FC<PropTypes> = ({
             </button>
           </div>
         </div>
-        <div className="card-carousel__wrapper">
-          <ul
-            className="card-carousel__card-container"
-            style={styles}
-          >
-            <Phones
-              data-cy="cardsContainer"
-              products={products}
-              isLoading={isLoading}
-            />
-          </ul>
+        <div className="card-carousel__base-container">
+          <div className="card-carousel__wrapper">
+            <ul
+              className="card-carousel__card-container"
+              style={styles}
+            >
+              <Phones
+                data-cy="cardsContainer"
+                products={products}
+                isLoading={isLoading}
+              />
+            </ul>
+          </div>
         </div>
       </div>
     </section>
