@@ -1,3 +1,4 @@
+import { gitHub } from '../../variables/variables';
 import './Footer.scss';
 
 export const Footer = () => {
@@ -27,7 +28,7 @@ export const Footer = () => {
           <ul className="nav__list">
             <li className="nav__item">
               <a
-                href="https://github.com/valntyn"
+                href={gitHub}
                 className="nav__link"
                 rel="noreferrer"
                 target="_blank"
@@ -37,7 +38,7 @@ export const Footer = () => {
             </li>
             <li className="nav__item">
               <a
-                href="https://github.com/valntyn"
+                href={gitHub}
                 className="nav__link"
                 rel="noreferrer"
                 target="_blank"
@@ -47,7 +48,7 @@ export const Footer = () => {
             </li>
             <li className="nav__item">
               <a
-                href="https://github.com/valntyn"
+                href={gitHub}
                 className="nav__link"
                 rel="noreferrer"
                 target="_blank"

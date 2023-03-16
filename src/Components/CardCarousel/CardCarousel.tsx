@@ -68,7 +68,7 @@ export const CardCarousel: React.FC<PropTypes> = ({
                   'card-carousel__disabled': disabledOnPrev,
                 },
               )}
-              onClick={() => onPrev()}
+              onClick={onPrev}
               disabled={disabledOnPrev}
             >
               <div className="card-carousel__arr card-carousel__arr--left" />
@@ -81,7 +81,7 @@ export const CardCarousel: React.FC<PropTypes> = ({
                   'card-carousel__disabled': disabledOnNext,
                 },
               )}
-              onClick={() => onNext()}
+              onClick={onNext}
               disabled={disabledOnNext}
             >
               <div

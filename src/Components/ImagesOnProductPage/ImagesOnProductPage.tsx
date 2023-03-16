@@ -9,7 +9,7 @@ type PropTypes = {
 export const ImagesOnProductPage: React.FC<PropTypes> = ({ images }) => {
   const [currentIndex, setCurrenrIndex] = useState(0);
 
-  const handleClick = (newIndex: number) => {
+  const handleClick = (newIndex: number) => () => {
     setCurrenrIndex(newIndex);
   };
 
@@ -17,28 +17,24 @@ export const ImagesOnProductPage: React.FC<PropTypes> = ({ images }) => {
     <div className="imagesOnProduct__images-block">
       <div className="imagesOnProduct__images">
         <ul className="imagesOnProduct__left-block-img">
-          {images.map((image, i) => {
-            const isSelected = currentIndex === i;
-
-            return (
-              <button
-                type="button"
-                className={classNames(
-                  'imagesOnProduct__small-img-wrap',
-                  {
-                    'imagesOnProduct__small-img-wrap--active': isSelected,
-                  },
-                )}
-                key={image}
-                onClick={() => handleClick(i)}
-              >
-                <div
-                  className="imagesOnProduct__small-img"
-                  style={{ backgroundImage: `url(${image})` }}
-                />
-              </button>
-            );
-          })}
+          {images.map((image, i) => (
+            <button
+              type="button"
+              className={classNames(
+                'imagesOnProduct__small-img-wrap',
+                {
+                  'imagesOnProduct__small-img-wrap--active': currentIndex === i,
+                },
+              )}
+              key={image}
+              onClick={handleClick(i)}
+            >
+              <div
+                className="imagesOnProduct__small-img"
+                style={{ backgroundImage: `url(${image})` }}
+              />
+            </button>
+          ))}
         </ul>
         <div className="imagesOnProduct__main-image">
           <div

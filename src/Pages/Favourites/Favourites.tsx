@@ -73,7 +73,7 @@ export const Favourites = () => {
             <p
               className="favorite__text-empty"
             >
-              Your favorite list is empty,
+              Your Favorites List is empty,
               come back here when you add some items
             </p>
             <div className="favorite__img-empty" />

@@ -80,3 +80,5 @@ export const categories: CategoryType[] = [
     imageBackground: '#973d5f',
   },
 ];
+
+export const gitHub = 'https://github.com/valntyn';

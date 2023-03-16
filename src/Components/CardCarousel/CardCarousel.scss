@@ -32,12 +32,11 @@
     }
   }
 
-
   &__base-container {
     width: 250px;
     margin: 0 auto;
 
-    @include onTablet {
+    @include onTabletLarge {
       width: 540px;
     }
 

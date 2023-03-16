@@ -4,6 +4,12 @@
   }
 }
 
+@mixin onTabletLarge {
+  @media (min-width: 680px) {
+    @content;
+  }
+}
+
 @mixin onDesktopSmall {
   @media (min-width:1280px) {
     @content;
@@ -15,7 +21,6 @@
     @content;
   }
 }
-
 
 @mixin onDesktop {
   @media (min-width:1920px) {

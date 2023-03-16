@@ -104,7 +104,7 @@ export const Slider: React.FC<PropTypes> = ({ isLoading }) => {
           <button
             type="button"
             className="slider__arrow"
-            onClick={() => onPrev()}
+            onClick={onPrev}
           >
             <div className="slider__arr slider__arr--left"> </div>
           </button>
@@ -139,7 +139,7 @@ export const Slider: React.FC<PropTypes> = ({ isLoading }) => {
           <button
             type="button"
             className="slider__arrow"
-            onClick={() => onNext()}
+            onClick={onNext}
           >
             <div className="slider__arr slider__arr--right"> </div>
           </button>
