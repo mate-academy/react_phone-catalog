@@ -62,11 +62,25 @@ export const Favourites = () => {
           </Link>
         </div>
         <h1 className="favorite__title">Favourites</h1>
-        {visiblePhones.length ? (
+        {itemsInFavorite.length ? (
           <div className="favorite__cataloge">
-            <ul className="grid">
-              <Phones data-cy="cardsContainer" products={visiblePhones} />
-            </ul>
+            {visiblePhones.length ? (
+              <ul className="grid">
+                <Phones data-cy="cardsContainer" products={visiblePhones} />
+              </ul>
+            ) : (
+              <div className="favorite__empty-box">
+                <p
+                  className="favorite__text-empty"
+                >
+                  NOTHING MATCHES YOUR SEARCH
+                </p>
+                <p className="favorite__text-less">
+                  But do not give up,
+                  check the spelling or try less specific search terms.
+                </p>
+              </div>
+            )}
           </div>
         ) : (
           <div className="favorite__wrap-empty">

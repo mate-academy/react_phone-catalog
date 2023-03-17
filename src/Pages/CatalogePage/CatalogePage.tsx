@@ -168,93 +168,114 @@ export const PhonesPage: React.FC<PropTypes> = ({ product }) => {
                 </p>
               )}
             </div>
-            {quantity ? (
-              <div className="catalog__sort-buttons">
-                <div className="catalog__sort-left">
-                  <p className="catalog__sort-title">
-                    Sort by
-                  </p>
-                  <div className="catalog__dropdown-trigger">
-                    <button
-                      ref={menuRef}
-                      type="button"
-                      className="catalog__button-dropdown"
-                      onClick={() => setOpenSort(!openSort)}
-                    >
-                      {defaultValue}
-                      <img
-                        src="img/Icons/arr-down.svg"
-                        alt="dropdown"
-                        className="catalog__drop-icon"
-                      />
-                    </button>
-                    {openSort && (
-                      <ul className="catalog__dropdown-content">
-                        <li>
-                          <SortLink
-                            sort="name"
-                            title="Alphabetically"
-                            setDefaultValue={setDefaultValue}
-                          />
-                        </li>
-                        <li>
-                          <SortLink
-                            sort="price"
-                            title="Price"
-                            setDefaultValue={setDefaultValue}
-                          />
-                        </li>
-                        <li>
-                          <SortLink
-                            sort="year"
-                            title="Newest"
-                            setDefaultValue={setDefaultValue}
-                          />
-                        </li>
-                      </ul>
-                    )}
+            {goods.length ? (
+              <>
+                <div className="catalog__sort-buttons">
+                  <div className="catalog__sort-left">
+                    <p className="catalog__sort-title">
+                      Sort by
+                    </p>
+                    <div className="catalog__dropdown-trigger">
+                      <button
+                        ref={menuRef}
+                        type="button"
+                        className="catalog__button-dropdown"
+                        onClick={() => setOpenSort(!openSort)}
+                      >
+                        {defaultValue}
+                        <img
+                          src="img/Icons/arr-down.svg"
+                          alt="dropdown"
+                          className="catalog__drop-icon"
+                        />
+                      </button>
+                      {openSort && (
+                        <ul className="catalog__dropdown-content">
+                          <li>
+                            <SortLink
+                              sort="name"
+                              title="Alphabetically"
+                              setDefaultValue={setDefaultValue}
+                            />
+                          </li>
+                          <li>
+                            <SortLink
+                              sort="price"
+                              title="Price"
+                              setDefaultValue={setDefaultValue}
+                            />
+                          </li>
+                          <li>
+                            <SortLink
+                              sort="year"
+                              title="Newest"
+                              setDefaultValue={setDefaultValue}
+                            />
+                          </li>
+                        </ul>
+                      )}
+                    </div>
                   </div>
-                </div>
-                <div className="catalog__sort-right">
-                  <p className="catalog__sort-title">
-                    Items on page
-                  </p>
-                  <div className="catalog__dropdown-trigger">
-                    <button
-                      ref={paginationRef}
-                      type="button"
-                      className="
+                  <div className="catalog__sort-right">
+                    <p className="catalog__sort-title">
+                      Items on page
+                    </p>
+                    <div className="catalog__dropdown-trigger">
+                      <button
+                        ref={paginationRef}
+                        type="button"
+                        className="
                                 catalog__button-dropdown
                                 catalog__button-dropdown--right
                             "
-                      onClick={() => setOpenPagination(!openPagintation)}
-                    >
-                      <span className="catalog__button-text">
-                        {itemsPerPage}
-                      </span>
-                      <img
-                        src="img/Icons/arr-down.svg"
-                        alt="dropdown"
-                        className="catalog__drop-icon"
-                      />
-                    </button>
-                    {openPagintation && (
-                      <ul className="catalog__dropdown-content">
-                        {['4', '8', '16', 'All'].map(value => (
-                          <li>
-                            <PaginateLink
-                              key={value}
-                              value={value}
-                              quantity={quantity}
-                              defaultPage={DAFAULT_PAGE}
-                            />
-                          </li>
-                        ))}
-                      </ul>
-                    )}
+                        onClick={() => setOpenPagination(!openPagintation)}
+                      >
+                        <span className="catalog__button-text">
+                          {itemsPerPage}
+                        </span>
+                        <img
+                          src="img/Icons/arr-down.svg"
+                          alt="dropdown"
+                          className="catalog__drop-icon"
+                        />
+                      </button>
+                      {openPagintation && (
+                        <ul className="catalog__dropdown-content">
+                          {['4', '8', '16', 'All'].map(value => (
+                            <li>
+                              <PaginateLink
+                                key={value}
+                                value={value}
+                                quantity={quantity}
+                                defaultPage={DAFAULT_PAGE}
+                              />
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
                   </div>
                 </div>
-              </div>
+                <div className="catalog__cataloge">
+                  {visiblePhones.length ? (
+                    <ul className="grid">
+                      <Phones products={currentItem} isLoading={isLoading} />
+                    </ul>
+                  ) : (
+                    <div className="catalog__empty-box">
+                      <p
+                        className="catalog__text-empty"
+                      >
+                        NOTHING MATCHES YOUR SEARCH
+                      </p>
+                      <p className="catalog__text-less">
+                        But do not give up,
+                        check the spelling or try less specific search terms.
+                      </p>
+                    </div>
+                  )}
+                </div>
+              </>
             ) : (
               <div>
                 <EmptyNotification />
@@ -262,11 +283,6 @@ export const PhonesPage: React.FC<PropTypes> = ({ product }) => {
             )}
           </>
         ) : (<Spinner />)}
-        <div className="catalog__cataloge">
-          <ul className="grid">
-            <Phones products={currentItem} isLoading={isLoading} />
-          </ul>
-        </div>
         {!!quantity && (
           <Pagination
             totalPages={totalPages}

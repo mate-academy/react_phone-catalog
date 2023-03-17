@@ -5,7 +5,7 @@
   &--mob-no-display {
     display: none;
 
-    @include onTablet {
+    @include onTabletLarge {
       display: inherit;
     }
   }
