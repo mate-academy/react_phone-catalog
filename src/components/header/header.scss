@@ -1,0 +1,34 @@
+@import "../../variabls.scss";
+
+.header {
+   display: grid;
+   grid-template-columns: 100px 1fr;
+   align-items: center;
+   grid-column-start: 1;
+   grid-column-end: 4;
+   border-bottom: 1px solid $icons;
+   grid-auto-flow: column;
+}
+
+@media screen and (max-width: $lg) {
+   .header {
+      height: 150px;
+      grid-template-rows: 1fr auto auto;
+   }
+}
+
+.logo {
+   display: flex;
+   justify-content: center;
+   background-image: url("../../img/phones/LOGO.png");
+   background-repeat: no-repeat;
+   background-position: center;
+   height: 100%;
+}
+
+@media screen and (max-width: $lg) {
+   .logo {
+      grid-column-start: 1;
+      grid-column-end: 3;
+   }
+}

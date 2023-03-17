@@ -1,8 +1,14 @@
+import { Route, Routes } from 'react-router-dom';
 import './App.scss';
+import { Header } from './components/header';
+import { Home } from './pages/home/Home';
 
 const App = () => (
   <div className="App">
-    <h1>React Phone Catalog</h1>
+    <Header />
+    <Routes>
+      <Route path="/" element={<Home />} />
+    </Routes>
   </div>
 );
 
