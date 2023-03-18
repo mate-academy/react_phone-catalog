@@ -49,6 +49,7 @@ export const Dropdown:React.FC<Props> = (
             onClick={() => choose(el)}
             onKeyDown={() => choose(el)}
             key={el}
+            className={classNames('', { selected: el === selected })}
           >
             {el}
           </div>

@@ -44,7 +44,11 @@ export const ProductCatalog = () => {
       <Way />
       <div className="products__describe">
         <h1>{renderTitle()}</h1>
-        <span>95 model</span>
+        <span>
+          {renderFilterList.length}
+          {' '}
+          model
+        </span>
       </div>
       <div className="products__dropdowns">
         <div className="drop-first">
