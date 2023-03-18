@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import { BanerSlider } from '../../components/banerSlider/BanerSlider';
 import { Catalogs } from '../../components/catalogs/Catalogs';
 import { Catalog } from '../../components/productSlider/ProductSlider';
@@ -7,19 +7,12 @@ import { Product } from '../../types/product';
 import './home.scss';
 
 export const Home = () => {
-  const [state, dispatch] = useContext(GlobalContext);
-
-  useEffect(() => {
-    // eslint-disable-next-line max-len
-    fetch('https://mate-academy.github.io/react_phone-catalog/api/products.json')
-      .then(res => res.json())
-      .then(res => dispatch({ type: 'addCatalog', list: res }));
-  });
+  const [state] = useContext(GlobalContext);
 
   const banners = [
-    '../../img/banners/banner-accessories.png',
-    '../../img/banners/banner-phones.png',
-    '../../img/banners/banner-tablets.png'];
+    './img/banners/banner-accessories.png',
+    './img/banners/banner-phones.png',
+    './img/banners/banner-tablets.png'];
 
   return (
     <section className="contant">

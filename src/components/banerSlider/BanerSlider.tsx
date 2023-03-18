@@ -50,7 +50,7 @@ export const BanerSlider:React.FC<Props> = ({ listElements }) => {
     <div className="wrapper-slider">
       <div className="content">
         <button type="button" className="button" onClick={prev}>
-          <img src="../../img/icons/Left.png" alt="prev" />
+          <img src="./img/icons/Left.png" alt="prev" />
         </button>
         <div className="container">
           {listElements.map((el) => (
@@ -66,7 +66,7 @@ export const BanerSlider:React.FC<Props> = ({ listElements }) => {
           className="button"
           onClick={next}
         >
-          <img src="../../img/icons/Right.png" alt="next" />
+          <img src="./img/icons/Right.png" alt="next" />
         </button>
       </div>
       <div className="slider-pointers">

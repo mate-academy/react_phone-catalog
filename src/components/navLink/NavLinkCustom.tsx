@@ -11,7 +11,7 @@ type Props = {
 
 export const NavLinkCustom:React.FC<Props> = (
   {
-    text, way, children, classStyle,
+    text, way, children, classStyle, ...props
   },
 ) => (
   <NavLink
@@ -21,6 +21,7 @@ export const NavLinkCustom:React.FC<Props> = (
       });
     }}
     to={way}
+    {...props}
   >
     {children || text}
   </NavLink>

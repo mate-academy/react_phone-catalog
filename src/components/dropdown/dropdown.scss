@@ -1,0 +1,57 @@
+@import "../../variabls.scss";
+
+.dropdown {
+  width: 100%;
+}
+
+.currently-value {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  border: 1px solid #B4BDC4;
+  padding: 10px 12px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: $primary;
+  cursor: pointer;
+
+  & img {
+    transition: all 0.3s ease;
+  }
+}
+
+.currently-value:hover {
+  border: 1px solid $secondary;
+}
+
+.elements {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-height: 0;
+  padding: 0 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  background-color: $white;
+  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.05);
+  margin-top: 4px;
+  cursor: pointer;
+
+  & div {
+    display: flex;
+    padding: 6px 0 6px 6px;
+    width: 100%;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $secondary;
+  }
+}
+
+.active-menu {
+  max-height: 200px;
+  transition: all 0.3s ease;
+  border: 1px solid $elements;
+}

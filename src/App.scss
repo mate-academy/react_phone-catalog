@@ -1,24 +1,22 @@
 @import "./variabls.scss";
 
 body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif, Mont;
-    box-sizing: border-box;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif, Mont;
+  box-sizing: border-box;
 }
 
 .App {
-    max-width: 1440px;
-    display: grid;
-    justify-content: center;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 64px 1fr;
-    margin: 0 auto;
+  max-width: 1440px;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 64px 1fr;
+  margin: 0 auto;
 }
-
 
 @media screen and (max-width: $lg) {
-    .App {
-        grid-template-rows: 160px 1fr;
-    }
+  .App {
+    grid-template-rows: 160px 1fr;
+  }
 }
-

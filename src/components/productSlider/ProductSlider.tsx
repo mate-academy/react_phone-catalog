@@ -55,14 +55,14 @@ export const Catalog:React.FC<Props> = ({ title, list }) => {
             className="managment__buttons__button"
             onClick={prev}
           >
-            <img src="../../img/icons/Left.png" alt="left" />
+            <img src="./img/icons/Left.png" alt="left" />
           </button>
           <button
             type="button"
             className="managment__buttons__button"
             onClick={next}
           >
-            <img src="../../img/icons/Right.png" alt="right" />
+            <img src="./img/icons/Right.png" alt="right" />
           </button>
         </div>
       </div>
