@@ -1,0 +1,50 @@
+@import "../../variabls.scss";
+
+.wrapper-pagination {
+  display: flex;
+  justify-content: center;
+}
+
+.paggination-arrow {
+  width: 32px;
+  height: 32px;
+  border: 1px solid $icons;
+  cursor: pointer;
+  margin: 0 16px 0 8px; 
+}
+
+.wrapper-pagination {
+  & button:hover {
+    border-color: $primary;
+  }
+}
+
+.steps {
+  display: flex;
+
+  & button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 8px 0 0;
+    width: 32px;
+    height: 32px;
+    border: 1px solid $icons;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #000;
+    cursor: pointer;
+  }
+}
+
+.steps {
+  & button:hover {
+    border-color: $primary;
+  }
+}
+
+.active-step {
+  background-color: $primary;
+  color: $white !important;
+}

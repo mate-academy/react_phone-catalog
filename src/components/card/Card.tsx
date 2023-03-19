@@ -20,7 +20,7 @@ export const Card: React.FC<Props> = ({ product, move }) => {
       <div className="price">
         <span className="price__current">
           $
-          {discount}
+          {Math.floor(discount)}
         </span>
         {discount !== product.price && (
           <span className="price__old">

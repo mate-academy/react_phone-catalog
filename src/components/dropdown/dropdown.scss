@@ -56,7 +56,11 @@
   border: 1px solid $elements;
 }
 
-
 .selected {
   background-color: $hover;
+}
+
+.disable {
+  color: $primary !important;
+  text-decoration: line-through;
 }
