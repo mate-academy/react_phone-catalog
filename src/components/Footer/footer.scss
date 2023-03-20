@@ -1,0 +1,28 @@
+/* eslint-disable */
+@import "../../variables/variables.scss";
+
+.footer {
+  padding: 42px 0;
+  box-shadow: 0 -1px 0 $gray-element;
+  margin-top: 80px;
+  &__block {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &__links {
+    display: flex;
+    align-items: center;
+    a {
+      font-size: 12px;
+      text-transform: uppercase;
+      color: $gray-secondary;
+      line-height: 12px;
+      text-decoration: none;
+      font-family: $MontSemiBold;
+      &:not(:last-child) {
+        margin-right: 64px;
+      }
+    }
+  }
+}

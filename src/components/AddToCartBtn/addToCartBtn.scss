@@ -1,0 +1,23 @@
+/* eslint-disable */
+@import "../../variables/variables.scss";
+
+.add-to-cart {
+  background: $gray-primary;
+  height: 40px;
+  width: 100%;
+  font-size: 14px;
+  line-height: 21px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $white;
+  border: none;
+  font-family: $MontRegular;
+  transition: 0.4s;
+  cursor: pointer;
+  &_active {
+    background: $white;
+    color: $green;
+    border: 1px solid $gray-element;
+  }
+}

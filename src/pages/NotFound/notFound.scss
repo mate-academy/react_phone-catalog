@@ -1,0 +1,16 @@
+/* eslint-disable */
+.not-found {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  &__num {
+    font-size: 60px;
+    text-align: center;
+  }
+  &__text {
+    font-size: 20px;
+  }
+}
