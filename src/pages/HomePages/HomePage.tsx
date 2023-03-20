@@ -1,4 +1,13 @@
 /* eslint-disable */
+import accesorize from './accessories-cat.jpg';
+
+class Nav extends React.Component {
+  render() {
+    return (
+      <img src={accesorize} alt={"accesorize"} />
+    )
+  }
+}
 
 import React, { useState, useEffect } from 'react';
 import { ProductsSlider } from '../../components/ProductsSlider';
