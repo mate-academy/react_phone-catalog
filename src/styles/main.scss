@@ -1,0 +1,67 @@
+@import "./utils/extends";
+@import './utils/mixins';
+@import "./utils/vars";
+
+@font-face {
+  font-family: 'Mont';
+  src: url('https://fonts.cdnfonts.com/css/mont') format('woff');
+}
+
+// @font-face {
+//   font-family: 'Mont';
+//   src: url('../../public/fonts/Mont-Regular.otf') format('woff');
+// }
+
+body {
+  margin: 0;
+  font-family: 'Mont', sans-serif;
+  font-style: normal;
+}
+
+h1 {
+  color: $primary;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 41px;
+}
+
+h2 {
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 140%;
+}
+
+h3 {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 26px;
+}
+
+.uppercase_text {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 11px;
+  text-transform: uppercase;
+}
+
+.buttons_text {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+.body_text {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+.small_text {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+@import './header.scss';
+@import './footer.scss';
+@import './homePage.scss';
