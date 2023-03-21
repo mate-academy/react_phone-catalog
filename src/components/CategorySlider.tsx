@@ -1,5 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Slide } from '../types/Slide';
+import { useWindowWidth } from '../hooks/useWindowWidth';
+import { Width } from '../types/Width';
 
 const path = process.env.PUBLIC_URL;
 const leftButton = '_new/img/buttons/VectorLeft.svg';
@@ -14,10 +16,15 @@ export const CategorySlider: React.FC = () => {
   const start = 0;
   const end = length - 1;
 
-  const sliderWindow = useRef<HTMLUListElement>(null);
   const [imageList, setImageList] = useState<Slide[]>([]);
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+  const windowWidth = useWindowWidth();
 
-  useEffect(() => {
+  const sliderWidth = useMemo(() => {
+    return windowWidth < Width.desc ? Width.tablet : Width.desc;
+  }, [windowWidth]);
+
+  const updateList = () => {
     if (!imageList.length) {
       setImageList(sliderList.map((image, ind) => {
         return {
@@ -26,22 +33,21 @@ export const CategorySlider: React.FC = () => {
           opacity: 1,
           adress: image,
           transition: 'none',
-          width: Number(`${sliderWindow.current?.clientWidth}`) / length,
+          width: sliderWidth,
         };
       }));
     } else {
       setImageList(current => current.map(image => (
         {
           ...image,
-          width: Number(`${sliderWindow.current?.clientWidth}`) / length,
+          transition: 'none',
+          width: sliderWidth,
         }
       )));
     }
-  }, [sliderWindow.current?.clientWidth]);
+  };
 
-  // console.log(sliderWindow.current?.clientWidth);
-
-  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+  useEffect(updateList, [sliderWidth]);
 
   useEffect(() => {
     if (isButtonDisabled) {
@@ -120,7 +126,7 @@ export const CategorySlider: React.FC = () => {
         <img src={path + leftButton} alt="leftButton" className="icon-bck" />
       </button>
       <div className="slider__body">
-        <ul className="album" ref={sliderWindow}>
+        <ul className="album">
           {imageList.map(picture => (
             <li key={picture.adress.slice(16, -4)}>
               <img
