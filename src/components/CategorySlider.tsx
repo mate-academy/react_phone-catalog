@@ -2,20 +2,17 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { Slide } from '../types/Slide';
 import { useWindowWidth } from '../hooks/useWindowWidth';
 import { Width } from '../types/Width';
-
-const path = process.env.PUBLIC_URL;
-const leftButton = '_new/img/buttons/VectorLeft.svg';
-const rightButton = '_new/img/buttons/VectorRight.svg';
-const phones = '_new/img/banner-phones.png';
-const tablets = '_new/img/banner-tablets.png';
-const accessories = '_new/img/banner-accessories.png';
-const sliderList = [accessories, phones, tablets];
+import {
+  moveBck,
+  moveFwd,
+  path,
+  leftButton,
+  rightButton,
+  sliderList,
+  slideStyleObject,
+} from './utils/categorySliderUtils';
 
 export const CategorySlider: React.FC = () => {
-  const { length } = sliderList;
-  const start = 0;
-  const end = length - 1;
-
   const [imageList, setImageList] = useState<Slide[]>([]);
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
   const windowWidth = useWindowWidth();
@@ -59,38 +56,6 @@ export const CategorySlider: React.FC = () => {
     return () => {};
   }, [isButtonDisabled]);
 
-  const moveFwd = (slide: Slide) => {
-    const edit = { ...slide };
-
-    edit.transition = 'transform 0.8s ease-in-out';
-
-    if (slide.position === start) {
-      edit.opacity = 0;
-      edit.position = end;
-    } else {
-      edit.opacity = 1;
-      edit.position -= 1;
-    }
-
-    return edit;
-  };
-
-  const moveBck = (slide: Slide) => {
-    const edit = { ...slide };
-
-    edit.transition = 'transform 0.8s ease-in-out';
-
-    if (slide.position === end) {
-      edit.opacity = 0;
-      edit.position = start;
-    } else {
-      edit.opacity = 1;
-      edit.position += 1;
-    }
-
-    return edit;
-  };
-
   const handleClik = (direction: 'fwd' | 'bck') => {
     setIsButtonDisabled(true);
 
@@ -101,18 +66,6 @@ export const CategorySlider: React.FC = () => {
       default:
         setImageList(current => current.map(item => moveBck(item)));
     }
-  };
-
-  const slideStyleObject = (slide: Slide) => {
-    if (slide.width) {
-      return {
-        opacity: `${slide.opacity}`,
-        transform: `translate(${slide.position * slide.width}px)`,
-        transition: slide.transition,
-      };
-    }
-
-    return {};
   };
 
   return (
