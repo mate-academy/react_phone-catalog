@@ -1,4 +1,4 @@
-import { Slide } from '../../types/Slide';
+import { Slide } from '../types/Slide';
 
 export const path = process.env.PUBLIC_URL;
 export const leftButton = '_new/img/buttons/VectorLeft.svg';

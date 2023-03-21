@@ -14,10 +14,12 @@
   justify-content: space-between;
   height: 400px;
   width: $sliderWidthDesc + 96px;
+  padding: 18px;
 
   @include onTablet {
     height: 350px;
     width: $sliderWidthTablet + 80px;
+    padding: 10px;;
   }
 
   &__body {
@@ -70,4 +72,24 @@
       width: $sliderWidthTablet;
     }
   }
+}
+
+.rectangles {
+  bottom: -18px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  margin: auto;
+  list-style: none;
+  gap: 14px;
+
+  &__item {
+    width: 14px;
+    height: 4px;
+    background-image: url('../images/icons/Rectangle_.svg');
+  }
+}
+
+.is-active {
+  background-image: url('../images/icons/Rectangle_active.svg');
 }

@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
+import classNames from 'classnames';
 import { Slide } from '../types/Slide';
 import { useWindowWidth } from '../hooks/useWindowWidth';
 import { Width } from '../types/Width';
@@ -10,7 +11,7 @@ import {
   rightButton,
   sliderList,
   slideStyleObject,
-} from './utils/categorySliderUtils';
+} from '../utils/categorySliderUtils';
 
 export const CategorySlider: React.FC = () => {
   const [imageList, setImageList] = useState<Slide[]>([]);
@@ -69,37 +70,58 @@ export const CategorySlider: React.FC = () => {
   };
 
   return (
-    <section className="slider">
-      <button
-        className="slider__button"
-        type="button"
-        disabled={isButtonDisabled}
-        onClick={() => handleClik('bck')}
-      >
-        <img src={path + leftButton} alt="leftButton" className="icon-bck" />
-      </button>
-      <div className="slider__body">
-        <ul className="album">
-          {imageList.map(picture => (
-            <li key={picture.adress.slice(16, -4)}>
-              <img
-                src={path + picture.adress}
-                alt="banner"
-                className="album__img"
-                style={slideStyleObject(picture)}
-              />
-            </li>
-          ))}
-        </ul>
-      </div>
-      <button
-        className="slider__button"
-        type="button"
-        disabled={isButtonDisabled}
-        onClick={() => handleClik('fwd')}
-      >
-        <img src={path + rightButton} alt="rightButton" className="icon-fwd" />
-      </button>
-    </section>
+    <>
+      <section className="slider">
+        <button
+          className="slider__button"
+          type="button"
+          disabled={isButtonDisabled}
+          onClick={() => handleClik('bck')}
+        >
+          <img
+            src={path + leftButton}
+            alt="leftButton"
+            className="icon-bck"
+          />
+        </button>
+        <div className="slider__body">
+          <ul className="album">
+            {imageList.map(picture => (
+              <li key={picture.adress.slice(16, -4)}>
+                <img
+                  src={path + picture.adress}
+                  alt="banner"
+                  className="album__img"
+                  style={slideStyleObject(picture)}
+                />
+              </li>
+            ))}
+          </ul>
+        </div>
+        <button
+          className="slider__button"
+          type="button"
+          disabled={isButtonDisabled}
+          onClick={() => handleClik('fwd')}
+        >
+          <img
+            src={path + rightButton}
+            alt="rightButton"
+            className="icon-fwd"
+          />
+        </button>
+      </section>
+      <ul className="rectangles">
+        {imageList.map(item => (
+          <li
+            key={item.adress}
+            className={classNames(
+              'rectangles__item',
+              { 'is-active': item.position === 0 },
+            )}
+          />
+        ))}
+      </ul>
+    </>
   );
 };
