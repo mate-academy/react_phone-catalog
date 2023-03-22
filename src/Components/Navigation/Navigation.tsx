@@ -7,7 +7,7 @@ type PropTypes = {
   text: string
 };
 
-const PageNavLink: React.FC<PropTypes> = ({ to, text = '' }) => (
+export const PageNavLink: React.FC<PropTypes> = ({ to, text = '' }) => (
   <NavLink
     className={({ isActive }) => classNames(
       'nav__link',
