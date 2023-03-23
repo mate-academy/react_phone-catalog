@@ -1,8 +1,15 @@
-import './App.scss';
+import { FC } from 'react';
+import { Navigate, Route, Routes } from 'react-router-dom';
+import { Header } from './Components/Header/Header';
+import './Style/App.scss';
 
-const App = () => (
+const App: FC = () => (
   <div className="App">
-    <h1>React Phone Catalog</h1>
+    <Header />
+
+    <Routes>
+      <Route path="/" element={<Navigate to="/home" />} />
+    </Routes>
   </div>
 );
 

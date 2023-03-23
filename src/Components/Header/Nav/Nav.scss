@@ -1,0 +1,36 @@
+@import "../../../Style/utils/variables.scss";
+
+.nav {
+  &__list {
+    display: flex;
+    gap: 65px;
+  }
+
+  &__item {
+    position: relative;
+  }
+
+  &__link {
+    display: block;
+    position: absolute;
+    padding: 27px 0;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: $Secondary;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 11px;
+    transition: all 100ms;
+
+    &--active {
+      color: $Primary;
+      border-bottom: 3px solid $Primary;
+    }
+
+    &:hover {
+      color: $Primary;
+      border-bottom: 3px solid $Primary;
+    }
+  }
+}
