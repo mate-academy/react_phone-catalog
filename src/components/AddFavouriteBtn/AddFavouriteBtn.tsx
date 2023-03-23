@@ -56,7 +56,7 @@ export const AddFavouriteBtn: React.FC<Props> = ({ id, card }) => {
         'add-favourite-btn',
         { 'add-favourite-btn_active': isActive },
       )}
-      onClick={() => addToFavourite()}
+      onClick={()=>addToFavourite()}
     >
       <HeartIcon />
     </button>

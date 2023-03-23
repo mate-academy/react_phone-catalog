@@ -4,9 +4,9 @@ import { BreadCrumbs } from '../../components/BreadCrumbs';
 import { ProductCard } from '../../components/ProductCard';
 import { ProductItem } from '../../types/ProductItem';
 
-import './favorites.scss';
+import './favourites.scss';
 
-export const Favorites: React.FC = () => {
+export const Favourites: React.FC = () => {
   const storageValue: string | null = localStorage.getItem('favourite');
   let parsedStorage: ProductItem[] | [] = storageValue
     ? JSON.parse(storageValue)

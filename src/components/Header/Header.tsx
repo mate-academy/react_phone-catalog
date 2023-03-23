@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React from 'react';
 import {
   NavLink,
@@ -8,15 +7,18 @@ import {
 } from 'react-router-dom';
 import { Nav } from './Nav';
 import { Search } from '../Search/Search';
-import { ReactComponent as FavouritesIcon } from '../../icons/favourites-icon.svg';
+
+import {
+  ReactComponent as FavouritesIcon,
+} from '../../icons/favourites-icon.svg';
 import { ReactComponent as CartIcon } from '../../icons/cart-icon.svg';
 import { ReactComponent as Logo } from '../../icons/Logo.svg';
 
 import './header.scss';
 
-export const Header:React.FC = () => {
-  const favoritesCount = () => {
-    const count:string | null = localStorage.getItem('favorite');
+export const Header: React.FC = () => {
+  const favouritesCount = () => {
+    const count: string | null = localStorage.getItem('favourite');
     const countParsed = count ? JSON.parse(count) : [];
 
     if (countParsed.length > 0) {
@@ -50,7 +52,6 @@ export const Header:React.FC = () => {
       <Link to="/" className="header__logo">
         <Logo />
       </Link>
-
       <Nav />
 
       <Routes>
@@ -67,7 +68,7 @@ export const Header:React.FC = () => {
           element={<Search placeholder="Search in tablets..." />}
         />
         <Route
-          path="/acccessorize"
+          path="/accessories"
           element={<Search placeholder="Search in accessories..." />}
         />
       </Routes>
@@ -76,13 +77,12 @@ export const Header:React.FC = () => {
         to="/favourites"
         className={({ isActive }) => (isActive
           ? 'header__favourites active-link'
-          : 'header__favourites')}
+          : 'header__favourites'
+        )}
       >
-
         <FavouritesIcon />
-        {favoritesCount()}
+        {favouritesCount()}
       </NavLink>
-
       <NavLink
         to="/cart"
         className={({ isActive }) => (isActive
@@ -90,11 +90,9 @@ export const Header:React.FC = () => {
           : 'header__cart'
         )}
       >
-
         <CartIcon />
         {cartCount()}
       </NavLink>
-
     </div>
   );
 };

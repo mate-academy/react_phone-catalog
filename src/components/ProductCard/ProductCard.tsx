@@ -48,7 +48,7 @@ export const ProductCard: React.FC<Props> = ({ card }) => {
     <div className="product-card">
       <Link to={`/${card.type}s/${card.id}`}>
         <img
-          src={`${process.env.REACT_APP_IMG_LINK}${card.imageUrl}`}
+          src={`img/products/${card.id}.jpg`}
           alt=""
           className="product-card__image"
         />
@@ -58,10 +58,10 @@ export const ProductCard: React.FC<Props> = ({ card }) => {
         {card.name}
       </h3>
 
-      <span className='"product-card__price"'>
+      <span className="product-card__price">
         {card.discount > 0
           ? isDiscounted()
-          : notDiscounted}
+          : notDiscounted()}
       </span>
 
       <div className="product-card__properties">

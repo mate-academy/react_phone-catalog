@@ -34,7 +34,7 @@ export const Nav: React.FC = () => {
 
         <li>
           <NavLink
-            to="/acccessorize"
+            to="/accessorize"
             className={({ isActive }) => (isActive ? 'active-link' : '')}
           >
             accesorise
