@@ -1,0 +1,14 @@
+@import "../../styles/utils";
+
+.breadcrumbs {
+  padding: 25px 0;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 15px;
+  color: $colorGray;
+  cursor: default;
+
+  &__link {
+    color: $colorBlack;
+  }
+}

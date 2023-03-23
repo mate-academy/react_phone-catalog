@@ -1,9 +1,24 @@
-import './App.scss';
+import React from 'react';
+import { Outlet } from 'react-router-dom';
+import { Header } from './components/Header/Header';
+import { Footer } from './components/Footer/Footer';
 
-const App = () => (
-  <div className="App">
-    <h1>React Phone Catalog</h1>
-  </div>
-);
+import './styles/App.scss';
+import { FavouritesProvider } from './helpers/FavouritesProvider';
+import { CartProvider } from './helpers/CartProvider';
 
-export default App;
+export const App: React.FC = () => {
+  return (
+    <FavouritesProvider>
+      <CartProvider>
+        <div className="App">
+          <Header />
+
+          <Outlet />
+
+          <Footer />
+        </div>
+      </CartProvider>
+    </FavouritesProvider>
+  );
+};

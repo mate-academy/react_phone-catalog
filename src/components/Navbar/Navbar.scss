@@ -1,0 +1,75 @@
+@import "../../styles/utils";
+
+.nav {
+  &__list {
+    display: flex;
+    list-style: none;
+    gap: 60px;
+  }
+
+  &__link {
+    padding: 20px 0;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 11px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: $colorGray;
+    transition: color 0.3s, border-color 0.3s;
+    border-bottom: 3px solid transparent;
+
+    &--active {
+      color: $colorBlack;
+      border-color: $colorBlack;
+    }
+
+    &:hover {
+      color: $colorBlack;
+      border-color: $colorBlack;
+    }
+  }
+}
+
+// .nav {
+//   &__list {
+//     display: flex;
+//     list-style: none;
+//     padding: 0;
+//     margin: 0;
+//   }
+
+//   &__item {
+//     &:not(:last-child) {
+//       margin-right: 64px;
+//     }
+//   }
+  
+//   &__link {
+//     display: block;
+//     line-height: 12px;
+//     padding: 27px 0;
+//     text-transform: uppercase;
+//     text-decoration: none;
+//     color: $color-gray;
+//   }
+  
+//   &__link:hover {
+//     color: blue;
+//   }
+// }
+
+// .is-active {
+//   position: relative;
+//   color: $color-dark;
+
+//   &::after {
+//     display: block;
+//     content: "";
+//     position: absolute;
+//     bottom: 0;
+//     left: 0;
+//     width: 100%;
+//     border: 3px solid #313237;
+//     border-radius: 4px;
+//   }
+// }

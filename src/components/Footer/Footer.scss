@@ -1,0 +1,66 @@
+@import "../../styles/utils";
+
+.footer {
+  padding: 0;
+  width: 100%;
+  height: $footerHeight;
+  background: #fff;
+  box-shadow: 0 -1px 0 $colorSilver;
+  display: flex;
+  align-items: center;
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__link-container {
+    display: flex;
+    gap: 64px;
+  }
+
+  &__link {
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 11px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: $colorGray;
+    transition: color 0.3s;
+
+    &:hover {
+      color: $colorBlack;
+    }
+  }
+
+  &__button {
+    border: none;
+    background: none;
+    outline: none;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    text-align: right;
+    color: $colorGray;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    cursor: pointer;
+
+    & i {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid $colorGray;
+      transition: color 0.3s, border-color 0.3s;
+    }
+
+    &:hover i {
+      border-color: $colorBlack;
+      color: $colorBlack;
+    }
+  }
+}

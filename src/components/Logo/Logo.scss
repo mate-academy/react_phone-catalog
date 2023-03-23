@@ -1,0 +1,28 @@
+.logo {
+  cursor: pointer;
+  transition: transform 0.3s;
+
+  &:hover {
+    transform: scale(1.2);
+  }
+
+  &:hover svg path:nth-child(1) {
+    transition-delay: 0.1s;
+    fill: #046ab5;
+  }
+
+  &:hover svg path:nth-child(2) {
+    transition-delay: 0.2s;
+    fill: #00aead;
+  }
+
+  &:hover svg path:nth-child(3) {
+    transition-delay: 0.3s;
+    fill: #03a762;
+  }
+
+  &:hover svg path:nth-child(4) {
+    transition-delay: 0.4s;
+    fill: #75c147;
+  }
+}

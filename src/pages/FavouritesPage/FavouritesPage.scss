@@ -1,0 +1,27 @@
+@import "../../styles/utils";
+
+.favourites {
+  padding-bottom: 40px;
+
+  &__title {
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 41px;
+    color: $colorBlack;
+    padding-bottom: 8px;
+  }
+
+  &__count {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $colorGray;
+    padding-bottom: 40px;
+  }
+
+  &__content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+}
