@@ -5,7 +5,11 @@ import { CardItem } from '../types/CardItem';
 
 export const CartContext = createContext({
   cart: JSON.parse(localStorage.getItem('carts') || '[]'),
-  setCart: (value: CardItem[]) => {
+  setCart: (value: ((prev: CardItem[]) => CardItem[]) | CardItem[]) => {
+    if (typeof value === 'function' || !value) {
+      return;
+    }
+
     localStorage.setItem('carts', JSON.stringify(value));
   },
 });

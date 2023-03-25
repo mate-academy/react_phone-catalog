@@ -117,41 +117,12 @@
     }
   }
 
-  &__buttons {
-    padding-top: 8px;
-    display: flex;
-    justify-content: space-between;
-    gap: 8px;
-    background: none;
-  }
-
   &__button {
     background: none;
     outline: none;
     border: 1px solid transparent;
     cursor: pointer;
     transition: all 0.3s;
-  }
-
-  &__button-cart {
-    width: 100%;
-    height: 46px;
-    border-color: $colorBlack;
-    background-color: $colorBlack;
-    color: #fff;
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 21px;
-
-    &--active {
-      border-color: $colorSilver;
-      background-color: #fff;
-      color: $colorGreen;
-    }
-
-    &:hover {
-      box-shadow: 0 3px 13px rgba(23, 32, 49, 0.3);
-    }
   }
 
   &__colors {

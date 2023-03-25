@@ -4,6 +4,7 @@ import { Header } from '../Header/Header';
 import { Pagination } from '../Pagination/Pagination';
 import { ProductCard } from '../ProductCard/ProductCard';
 import { Product } from '../../types/Product';
+import { SortProduct } from '../../types/sortProduct';
 
 import './ProductList.scss';
 
@@ -36,12 +37,12 @@ export const ProductList: React.FC<Props> = ({ products, title }) => {
     setSortBy(sort);
 
     switch (sort) {
-      case 'alphabetically':
+      case SortProduct.ALPHABETICALLY:
         products.sort((a, b) => (
           a.name.localeCompare(b.name)
         ));
         break;
-      case 'price':
+      case SortProduct.PRICE:
         products.sort((a, b) => (
           a.price - b.price
         ));

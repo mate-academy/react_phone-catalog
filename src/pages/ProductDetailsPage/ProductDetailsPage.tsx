@@ -1,5 +1,4 @@
 import React, {
-  useContext,
   useEffect,
   useState,
   useMemo,
@@ -12,21 +11,14 @@ import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 import { ProductsSlider } from '../../components/ProductSlider/ProductsSlider';
 import { Device } from '../../types/Device';
 import { Product } from '../../types/Product';
-import { CardItem } from '../../types/CardItem';
 
 import { useLocalStorage } from '../../utils/useLocalStorage';
-import { Like } from '../../components/Like/Like';
-import { LikeActive } from '../../components/Like/LikeActive';
 
 import './ProductDetailsPage.scss';
-import { FavouritesContext } from '../../helpers/FavouritesProvider';
-import { CartContext } from '../../helpers/CartProvider';
+import { ProductButtons } from '../../components/ProductButtons/ProductButtons';
 
 export const ProductDetailsPage: React.FC = () => {
   const [products] = useLocalStorage<Product[]>('products', []);
-  const { favourites, setFavourites } = useContext(FavouritesContext);
-  const { cart, setCart } = useContext(CartContext);
-  const [handleChange, setHandleChange] = useState(false);
   const params = useParams()['*'] || '';
   const [deviceInfo, setDeviceInfo] = useState<Device | null>(null);
 
@@ -44,46 +36,6 @@ export const ProductDetailsPage: React.FC = () => {
     } catch {
       Promise.reject(new Error('error'));
     }
-  };
-
-  const handleFavourites = () => {
-    let newFavourites = [];
-
-    if (favourites.includes(device?.id)) {
-      newFavourites = favourites.filter((favourite: string) => {
-        return favourite !== device?.id;
-      });
-    } else {
-      newFavourites = [...favourites, device?.id];
-    }
-
-    setFavourites(newFavourites);
-    setHandleChange(!handleChange);
-  };
-
-  const handleCart = () => {
-    let carts = [];
-
-    if (cart.length) {
-      carts = cart;
-    }
-
-    if (!carts.find((p: CardItem) => p.id === device?.id)) {
-      setCart([
-        ...carts,
-        {
-          id: device?.id,
-          count: 1,
-          price: device?.price,
-        },
-      ]);
-    } else {
-      setCart([
-        ...carts.filter((p: CardItem) => p.id !== device?.id),
-      ]);
-    }
-
-    setHandleChange(!handleChange);
   };
 
   useEffect(() => {
@@ -121,7 +73,7 @@ export const ProductDetailsPage: React.FC = () => {
               <div className="product-details__photos">
                 {deviceInfo.images.map(photo => (
                   <img
-                    src={`../_new/${photo}`}
+                    src={`_new/${photo}`}
                     alt="#"
                     aria-hidden="true"
                     key={photo}
@@ -132,7 +84,7 @@ export const ProductDetailsPage: React.FC = () => {
               </div>
 
               <img
-                src={devicePhoto || `../_new/${device.image}`}
+                src={devicePhoto || `_new/${device.image}`}
                 alt="#"
                 className="product-details__photo"
               />
@@ -205,39 +157,9 @@ export const ProductDetailsPage: React.FC = () => {
                     </span>
                   )}
                 </p>
-
-                <div className="product-details__buttons">
-                  <button
-                    className={classNames(
-                      'product-details__button',
-                      'product-details__button-cart',
-                      {
-                        'product-details__button-cart--active':
-                          cart.find((p: CardItem) => p.id === device.id),
-                      },
-                    )}
-                    type="button"
-                    onClick={handleCart}
-                  >
-                    Add to cart
-                  </button>
-                  <button
-                    className={classNames(
-                      'product-details__button',
-                      'product-details__button-favorite',
-                      {
-                        'product-details__button-favorite--active':
-                          favourites?.includes(device.id),
-                      },
-                    )}
-                    type="button"
-                    onClick={handleFavourites}
-                  >
-                    <Like />
-
-                    <LikeActive />
-                  </button>
-                </div>
+                <ProductButtons
+                  product={device}
+                />
                 <br />
                 <p className="product-details__data">
                   Screen

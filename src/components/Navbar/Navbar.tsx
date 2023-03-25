@@ -12,7 +12,7 @@ export const Navbar = () => {
       data-cy="categoryLinksContainer"
     >
       <ul className="nav__list">
-        <PageNavLink to="/" title={<Logo />} />
+        <Logo />
 
         <PageNavLink to="/" title="Home" />
 

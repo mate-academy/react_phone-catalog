@@ -18,40 +18,41 @@ export const HomePage: FC = () => {
     .sort((a, b) => b.price - a.price);
 
   useEffect(() => {
-    (async () => {
-      try {
-        setIsloading(true);
-        const productsFromServer = await getProducts();
+    if (!products.length) {
+      (async () => {
+        try {
+          setIsloading(true);
+          const productsFromServer = await getProducts();
 
-        setProducts(productsFromServer);
-      } catch (error) {
-        Promise.reject(new Error('error'));
-      } finally {
-        setIsloading(false);
-      }
-    })();
+          setProducts(productsFromServer);
+        } catch (error) {
+          Promise.reject(new Error('error'));
+        } finally {
+          setIsloading(false);
+        }
+      })();
+    }
   }, []);
 
   return (
-    <>
-      {isLoading ? <Loader />
-        : (
-          <main>
-            <Banner />
+    <main>
+      {isLoading ? <Loader /> : (
+        <>
+          <Banner />
 
-            <ProductsSlider
-              products={products}
-              title="Hot prices"
-            />
+          <ProductsSlider
+            products={products}
+            title="Hot prices"
+          />
 
-            <Categories products={products} />
+          <Categories products={products} />
 
-            <ProductsSlider
-              products={newModels}
-              title="Brand new models"
-            />
-          </main>
-        )}
-    </>
+          <ProductsSlider
+            products={newModels}
+            title="Brand new models"
+          />
+        </>
+      )}
+    </main>
   );
 };

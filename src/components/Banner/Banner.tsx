@@ -1,24 +1,36 @@
 import { FC, useEffect, useState } from 'react';
-import classNames from 'classnames';
-
-import './Banner.scss';
+import { ImageBanner } from '../ImageBanner/ImageBanner';
+import {
+  ButtonBannerPagination,
+} from '../ButtonBannerPagination/ButtonBannerPagination';
 import { ArrowLeft } from '../ArrowLeft/ArrowLeft';
 import { ArrowRight } from '../ArrowRight/ArrowRight';
 
+import './Banner.scss';
+
 export const Banner: FC = () => {
   const [activeBanner, setActiveBanner] = useState(0);
+  const imagesForBanner = [
+    '_new/img/banner-phones.png',
+    '_new/img/banner-tablets.png',
+    '_new/img/banner-accessories.png',
+  ];
+
+  const startBanner = () => {
+    if (activeBanner === 2) {
+      setActiveBanner(0);
+    } else {
+      setActiveBanner(activeBanner + 1);
+    }
+  };
 
   useEffect(() => {
-    const changeBanner = setInterval(() => {
-      if (activeBanner === 2) {
-        setActiveBanner(0);
-      } else {
-        setActiveBanner(activeBanner + 1);
-      }
+    const timerId = setInterval(() => {
+      startBanner();
     }, 5000);
 
     return () => {
-      clearInterval(changeBanner);
+      clearInterval(timerId);
     };
   }, [activeBanner]);
 
@@ -28,90 +40,39 @@ export const Banner: FC = () => {
         <button
           type="button"
           className="banner__button banner__button--left"
-          onClick={() => {
-            if (activeBanner === 0) {
-              setActiveBanner(2);
-            } else {
-              setActiveBanner(activeBanner - 1);
-            }
-          }}
+          onClick={() => startBanner()}
         >
           <ArrowLeft />
         </button>
 
         <div className="banner__image">
-          <img
-            src="../_new/img/banner-phones.png"
-            alt=""
-            className={classNames(
-              'banner__img',
-              { 'banner__img--active': activeBanner === 0 },
-            )}
-          />
-
-          <img
-            src="../_new/img/banner-tablets.png"
-            alt=""
-            className={classNames(
-              'banner__img',
-              { 'banner__img--active': activeBanner === 1 },
-            )}
-          />
-
-          <img
-            src="../_new/img/banner-accessories.png"
-            alt=""
-            className={classNames(
-              'banner__img',
-              { 'banner__img--active': activeBanner === 2 },
-            )}
-          />
+          {imagesForBanner.map((image, index) => (
+            <ImageBanner
+              key={image}
+              activeBanner={activeBanner}
+              image={image}
+              index={index}
+            />
+          ))}
         </div>
 
         <button
           type="button"
           className="banner__button banner__button--right"
-          onClick={() => {
-            if (activeBanner === 2) {
-              setActiveBanner(0);
-            } else {
-              setActiveBanner(activeBanner + 1);
-            }
-          }}
+          onClick={() => startBanner()}
         >
           <ArrowRight />
         </button>
       </div>
       <div className="banner__pagination">
-        <button
-          type="button"
-          aria-label="banner"
-          className={classNames(
-            'banner__pagination-item',
-            { 'banner__pagination-item--active': activeBanner === 0 },
-          )}
-          onClick={() => setActiveBanner(0)}
-        />
-
-        <button
-          type="button"
-          aria-label="banner"
-          className={classNames(
-            'banner__pagination-item',
-            { 'banner__pagination-item--active': activeBanner === 1 },
-          )}
-          onClick={() => setActiveBanner(1)}
-        />
-
-        <button
-          type="button"
-          aria-label="banner"
-          className={classNames(
-            'banner__pagination-item',
-            { 'banner__pagination-item--active': activeBanner === 2 },
-          )}
-          onClick={() => setActiveBanner(2)}
-        />
+        {imagesForBanner.map((image, index) => (
+          <ButtonBannerPagination
+            key={image}
+            activeBanner={activeBanner}
+            setActiveBanner={setActiveBanner}
+            index={index}
+          />
+        ))}
       </div>
     </div>
   );

@@ -1,7 +1,7 @@
-import React from 'react';
+import { FC } from 'react';
 import './BackButton.scss';
 
-export const BackButton:React.FC = () => {
+export const BackButton: FC = () => {
   return (
     <button
       type="button"

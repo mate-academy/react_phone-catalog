@@ -5,78 +5,70 @@ import { CartContext } from '../../helpers/CartProvider';
 import { CardItem } from '../../types/CardItem';
 import { Product } from '../../types/Product';
 import { useLocalStorage } from '../../utils/useLocalStorage';
+import { warningTimer } from '../../utils/warningTimer';
 
 import './Cart.scss';
 
 export const CardsPage: React.FC = () => {
-  const [products] = useLocalStorage<Product[]>('products', []);
-  const { setCart } = useContext(CartContext);
-  const [cards, setCards] = useLocalStorage<CardItem[]>('carts', []);
   const [render, setRender] = useState(false);
+  const [warning, setWarning] = useState(false);
+  const [products] = useLocalStorage<Product[]>('products', []);
+  const { cart, setCart } = useContext(CartContext);
+
+  const cards = JSON.parse(localStorage.getItem('carts') || '');
 
   const visibleProducts = useMemo(() => {
-    return products.filter(product => cards.some((value: CardItem) => {
+    return products.filter(product => cart.some((value: CardItem) => {
       return value.id === product.id;
     }));
-  }, [cards]);
-
-  const cart = JSON.parse(localStorage.getItem('carts') || '');
+  }, [cart]);
 
   const deleteCart = (product: Product) => {
-    let carts = [];
-
-    if (localStorage.getItem('carts')) {
-      carts = JSON.parse(localStorage.getItem('carts') || '');
-    }
-
-    setCards([
-      ...carts.filter((p: CardItem) => p.id !== product.id),
+    setCart(prev => [
+      ...prev.filter((p: CardItem) => p.id !== product.id),
     ]);
 
     setRender(!render);
   };
 
   const increaseCountCart = (product: Product) => {
-    const item = cart.find((p: CardItem) => p.id === product.id);
-    let carts = [];
+    setCart(prevCart => prevCart.map(carts => {
+      if (carts.id === product.id) {
+        return {
+          ...carts,
+          count: carts.count + 1,
+        };
+      }
 
-    if (localStorage.getItem('carts')) {
-      carts = JSON.parse(localStorage.getItem('carts') || '');
-    }
-
-    setCart([
-      ...carts.filter((p: CardItem) => p.id !== product.id),
-      {
-        ...item,
-        count: item.count + 1,
-      },
-    ]);
+      return carts;
+    }));
 
     setRender(!render);
   };
 
   const decreaseCountCart = (product: Product) => {
-    const item = cart.find((p: CardItem) => p.id === product.id);
-    let carts = [];
+    setCart(prevCart => prevCart.map(carts => {
+      if (carts.id === product.id) {
+        return {
+          ...carts,
+          count: carts.count - 1 || 1,
+        };
+      }
 
-    if (localStorage.getItem('carts')) {
-      carts = JSON.parse(localStorage.getItem('carts') || '');
-    }
-
-    localStorage.setItem('carts', JSON.stringify([
-      ...carts.filter((p: CardItem) => p.id !== product.id),
-      {
-        ...item,
-        count: item.count - 1 || 1,
-      },
-    ]));
+      return carts;
+    }));
 
     setRender(!render);
   };
 
   const totalPrice = cart.map((product: CardItem) => {
     return product.price * product.count;
-  });
+  }).reduce((a: number, b: number) => a + b, 0);
+
+  const isWarning = () => {
+    setWarning(true);
+    warningTimer(setWarning, false, 3000);
+  };
 
   return (
     <main>
@@ -96,7 +88,7 @@ export const CardsPage: React.FC = () => {
                     x
                   </button>
 
-                  <img src={`../_new/${product.image}`} alt="#" className="cart__item-image" />
+                  <img src={`_new/${product.image}`} alt="#" className="cart__item-image" />
                   <h2 className="cart__item-title">{product.name}</h2>
                   <div className="cart__item-counter">
                     <button
@@ -105,7 +97,7 @@ export const CardsPage: React.FC = () => {
                         'cart__item-count-btn',
                         {
                           'cart__item-count-btn--active':
-                            cart.find((p: CardItem) => p.id === product.id),
+                            cards.find((p: CardItem) => p.id === product.id),
                         },
                       )}
                       onClick={() => decreaseCountCart(product)}
@@ -113,7 +105,7 @@ export const CardsPage: React.FC = () => {
                       -
                     </button>
 
-                    {cart.find((p: CardItem) => p.id === product.id).count}
+                    {cards.find((p: CardItem) => p.id === product.id).count}
                     <button
                       type="button"
                       className="
@@ -130,11 +122,12 @@ export const CardsPage: React.FC = () => {
               ))}
             </div>
             <div className="cart__sum">
-              <h2 className="cart__sum-amout">{`$${totalPrice.reduce((a: number, b: number) => a + b)}`}</h2>
-              <p className="cart__sum-items">{`Total for ${cart.length} items`}</p>
+              <h2 className="cart__sum-amout">{`$${totalPrice}`}</h2>
+              <p className="cart__sum-items">{`Total for ${cards.length} items`}</p>
               <button
                 className="cart__sum-button"
                 type="button"
+                onClick={() => isWarning()}
               >
                 Checkout
               </button>
@@ -143,6 +136,11 @@ export const CardsPage: React.FC = () => {
         )}
         {!visibleProducts.length && (
           <p>Your cart is emty</p>
+        )}
+        {warning && (
+          <p>
+            We are sorry, but this feature is not implemented yet.
+          </p>
         )}
       </div>
     </main>

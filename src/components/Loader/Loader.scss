@@ -1,6 +1,7 @@
 @import "../../styles/utils";
 
 .Loader {
+  min-height: calc(100vh - #{$headerHeigth} - #{$footerHeight});
   display: flex;
   justify-content: center;
   align-items: center;
