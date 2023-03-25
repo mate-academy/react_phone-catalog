@@ -1,0 +1,134 @@
+@import "../../styles/mixins";
+@import "../../styles//variables";
+
+.cart {
+  @include page-styles;
+
+  &__message {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    position: absolute;
+    bottom: -40px;
+    height: 60px;
+    width: 320px;
+    background: rgba(202, 150, 150, 0.7);
+    @include mont-semi-bold;
+    color: $text-color;
+  }
+
+  /*#region Links back */
+  &__links-container {
+    display: flex;
+    height: 16px;
+    width: 66px;
+    margin-bottom: 16px;
+  }
+
+  &__products {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__title-empty {
+    @include mont-semi-bold;
+    color: $text-color-light;
+    font-size: 42px;
+  }
+
+  &__back-link {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    @include mont-regular;
+    font-size: 12px;
+    line-height: 15px;
+    color: $text-color-light;
+  }
+
+  &__back-link:first-of-type {
+    margin-right: 4px;
+  }
+
+  &__back-link:hover {
+    color: $text-color;
+  }
+
+  &__back-button {
+    position: relative;
+    margin-right: 4px;
+    height: 16px;
+    width: 16px;
+    border: none;
+    padding: 0;
+    background: transparent;
+  }
+
+  &__back-button::before {
+    position: absolute;
+    content: "";
+    bottom: 50%;
+    right: 50%;
+    height: 6px;
+    width: 10px;
+    margin: auto;
+    transform: rotate(-90deg);
+    translate: 50% 50%;
+    transform-origin: 50% 50%;
+    background-image: url("../../components/icons/arrow.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  /*#endregion Links back */
+
+  &__title {
+    @include title;
+  }
+
+  &__shop-list {
+    display: flex;
+  }
+
+  &__checkout-wrapper {
+    position: relative;
+    padding: 24px;
+    height: 206px;
+    width: 368px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #e2e6e9;
+    box-sizing: border-box;
+  }
+
+  &__total-price {
+    @include mont-bold;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: $text-color;
+  }
+
+  &__total-products {
+    margin-bottom: 48px;
+    @include mont-regular;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+    color: $text-color-light;
+  }
+
+  &__checkout-button {
+    height: 48px;
+    width: 320px;
+    background: #313237;
+    @include mont-semi-bold;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+    color: #fff;
+  }
+}

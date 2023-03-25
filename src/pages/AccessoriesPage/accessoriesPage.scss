@@ -1,0 +1,14 @@
+@import "../../styles/mixins";
+@import "../../styles//variables";
+
+.accessories {
+  @include page-styles;
+
+  &__title {
+    @include title;
+  }
+
+  &__models-number {
+    @include models-number;
+  }
+}

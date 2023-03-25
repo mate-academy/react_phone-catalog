@@ -1,0 +1,32 @@
+@import "../../styles/mixins";
+@import "../../styles//variables";
+
+.no-search-result {
+  position: relative;
+  @include page-styles;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+
+  &__message {
+    margin-top: 80px;
+    @include mont-bold;
+    font-size: 64px;
+    color: $text-color;
+    margin-bottom: 20px;
+  }
+
+  &__description {
+    @include mont-semi-bold;
+    font-size: 28px;
+    color: $text-color-light;
+    text-align: center;
+    margin-bottom: 80px;
+  }
+
+  &__image {
+    position: absolute;
+    height: 100%;
+    z-index: -1;
+  }
+}

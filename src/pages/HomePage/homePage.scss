@@ -1,0 +1,9 @@
+@import "../../styles//variables";
+
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: $content-width;
+  margin: 0 auto;
+}

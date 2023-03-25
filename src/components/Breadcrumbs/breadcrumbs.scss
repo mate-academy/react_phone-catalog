@@ -1,0 +1,54 @@
+@import "../../styles/mixins";
+@import "../../styles//variables";
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  height: 16px;
+  width: $content-width;
+  margin: 0 auto;
+  margin-bottom: 40px;
+
+  &__list {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+  }
+
+  &__home-link {
+    display: flex;
+    height: 100%;
+  }
+
+  &__img-home {
+    object-fit: cover;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+  }
+
+  &__item:not(:last-of-type) {
+    margin-right: 13px;
+  }
+
+  &__img-arrow {
+    transform: rotate(90deg);
+  }
+
+  &__page {
+    margin-top: 1px;
+    margin-left: 13px;
+    @include mont-semi-bold;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: $text-color;
+  }
+
+  &__page--light {
+    color: $text-color-light;
+    cursor: default;
+  }
+}

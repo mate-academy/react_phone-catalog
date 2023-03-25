@@ -1,0 +1,110 @@
+@import "../../styles/mixins";
+@import "../../styles//variables";
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  padding: 0 40px 0 24px;
+  width: 752px;
+  height: 128px;
+  border: 1px solid #e2e6e9;
+  box-sizing: border-box;
+
+  &__delete {
+    margin-right: 24px;
+    height: 16px;
+    width: 16px;
+    background-color: transparent;
+    background-image: url("../icons/close-light.svg");
+  }
+
+  &__delete:hover {
+    background-image: url("../icons/close.svg");
+  }
+
+  &__image-wrapper {
+    margin-right: 24px;
+    display: flex;
+    justify-content: center;
+    height: 80px;
+    width: 80px;
+    padding: 7px;
+    box-sizing: border-box;
+  }
+
+  &__image {
+    height: 100%;
+    width: auto;
+  }
+
+  &__name {
+    margin-right: 49px;
+    width: 295px;
+    @include mont-regular;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $text-color;
+  }
+
+  &__quantity-items {
+    margin-right: 43px;
+    display: flex;
+    @include mont-regular;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #000;
+  }
+
+  &__decrease,
+  &__quantity,
+  &__increase {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+    width: 32px;
+  }
+
+  &__decrease,
+  &__increase {
+    background-color: transparent;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 1px solid #b4bdc4;
+  }
+
+  &__decrease {
+    background-image: url("../icons/minus.svg");
+  }
+
+  &__decrease:disabled {
+    background-image: url("../icons/minus-light.svg");
+    border: 1px solid #e2e6e9;
+  }
+
+  &__increase {
+    background-image: url("../icons/plus.svg");
+  }
+
+  &__increase:disabled {
+    background-image: url("../icons/plus-light.svg");
+    border: 1px solid #e2e6e9;
+  }
+
+  &__price {
+    @include mont-bold;
+    font-size: 22px;
+    line-height: 140%;
+    color: $text-color;
+  }
+}
+
+.cart-item:not(:last-of-type) {
+  margin-bottom: 16px;
+}
+
+.cart-item:hover {
+  border: 1px solid #313237;
+}

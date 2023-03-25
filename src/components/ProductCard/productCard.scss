@@ -1,0 +1,138 @@
+@import "../../styles/mixins";
+@import "../../styles//variables";
+
+.product-card {
+  width: 272px;
+  height: 507px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  background: #fff;
+  border: 1px solid #e2e6e9;
+
+  &__name {
+    height: 42px;
+    display: block;
+    @include mont-regular;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $text-color;
+    margin-bottom: 7px;
+  }
+
+  &__image-wrapper {
+    display: flex;
+    justify-content: center;
+    height: 208px;
+    width: 208px;
+    margin: 8px 8px 24px;
+  }
+
+  &__image {
+    height: 100%;
+    width: auto;
+  }
+
+  &__price-wrapper {
+    display: flex;
+    margin-bottom: 22px;
+  }
+
+  &__price {
+    @include mont-bold;
+    font-size: 22px;
+    line-height: 140%;
+    color: $text-color;
+    margin-right: 8px;
+    
+  }
+
+  &__old-price {
+    @include mont-regular;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 28px;
+    text-decoration-line: line-through;
+    color: $text-color-light;
+  }
+
+  &__technical-data {
+    margin-bottom: 16px;
+  }
+
+  &__technical-data-item {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__technical-data-item:not(:last-of-type) {
+    margin-bottom: 8px;
+  }
+
+  &__technical-data-name {
+    @include mont-regular;
+    font-size: 12px;
+    line-height: 15px;
+    color: $text-color-light;
+  }
+
+  &__technical-data-info {
+    @include mont-regular;
+    font-size: 12px;
+    line-height: 15px;
+    text-align: right;
+    color: $text-color;
+  }
+
+  &__buttons {
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__button-add {
+    width: 176px;
+    height: 40px;
+    background: #313237;
+    @include mont-semi-bold;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+    color: #fff;
+  }
+
+  &__button-add--selected {
+    background: transparent;
+    border: 1px solid #e2e6e9;
+    color: #27ae60;
+  }
+
+  &__button-add:hover {
+    box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+  }
+
+  &__button-favourite {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #b4bdc4;
+    background-image: url("../icons/favourites.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &__button-favourite:hover {
+    border: $border-hover;
+  }
+
+  &__button-favourite--selected {
+    background-image: url("../icons/favourites-red.svg");
+    border: 1px solid #e2e6e9;
+  }
+
+}
+
+.product-card:hover {
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+}

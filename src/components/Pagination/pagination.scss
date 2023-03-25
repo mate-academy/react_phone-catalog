@@ -1,0 +1,83 @@
+@import "../../styles/mixins";
+@import "../../styles//variables";
+
+.pagination {
+  display: flex;
+  align-self: center;
+  margin-top: auto;
+
+  &__container {
+    margin: 0 16px;
+  }
+
+  &__page-list {
+    display: flex;
+    list-style: none;
+  }
+
+  &__page:not(:last-of-type) {
+    margin-right: 8px;
+  }
+
+  &__link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 32px;
+    width: 32px;
+    border: 1px solid #e2e6e9;
+    @include mont-regular;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #000;
+  }
+
+  &__link:hover {
+    border: 1px solid #313237;
+  }
+
+  &__link--active {
+    background: #313237;
+    color: #fff;
+    border: none;
+    box-sizing: border-box;
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: 32px;
+    width: 32px;
+    border: 1px solid #b4bdc4;
+  }
+
+  &__button:hover {
+    border: 1px solid #313237;
+  }
+
+  &__button:disabled {
+    border: 1px solid #e2e6e9;
+  }
+
+  &__button::before {
+    content: "";
+    position: absolute;
+    height: 16px;
+    width: 16px;
+    background-image: url("../../components/icons/arrow.svg");
+    rotate: -90deg;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &__button:disabled::before {
+    background-image: url("../../components/icons/arrow-disabled.svg");
+  }
+
+  &__button-next::before {
+    rotate: 90deg;
+  }
+}

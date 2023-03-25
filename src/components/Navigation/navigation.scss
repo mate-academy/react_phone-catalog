@@ -1,0 +1,40 @@
+@import "../../styles/mixins";
+@import "../../styles//variables";
+
+.navigation {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+
+  &__item {
+    margin-left: 64px;
+  }
+
+  &__link {
+    position: relative;
+    @include mont-bold;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: $text-color-light;
+    vertical-align: middle;
+  }
+
+  &__link:hover,
+  &__link:active {
+    color: $text-color;
+  }
+
+  &__link:hover::after,
+  &__link:active::after,
+  &__link--active::after {
+    content: "";
+    margin-top: 20px;
+    position: absolute;
+    width: 100%;
+    display: block;
+    border-bottom: 3px solid $text-color;
+    color: $text-color;
+  }
+}
