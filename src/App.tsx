@@ -8,7 +8,7 @@ import {
 } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
-import { Header } from './components/Header';
+import { Header } from './components/Header/Header';
 import { Footer } from './components/Footer';
 
 import { HomePage } from './pages/HomePage/HomePage';
