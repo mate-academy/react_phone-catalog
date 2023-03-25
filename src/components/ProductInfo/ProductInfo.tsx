@@ -6,7 +6,7 @@ import {
   getFavouritesList,
   isProductInStorage,
   setToLocaleStorage,
-} from '../interactionLocaleStorage';
+} from '../interactionLocaleStorage/interactionLocaleStorage';
 import './productInfo.scss';
 
 import { Details } from '../../type/details';

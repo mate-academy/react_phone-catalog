@@ -8,7 +8,7 @@ import {
   getFavouritesList,
   isProductInStorage,
   setToLocaleStorage,
-} from '../interactionLocaleStorage';
+} from '../interactionLocaleStorage/interactionLocaleStorage';
 
 import { Product } from '../../type/product';
 

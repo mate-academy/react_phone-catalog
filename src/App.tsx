@@ -11,7 +11,7 @@ import { useEffect, useState } from 'react';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 
-import { HomePage } from './pages/HomePage';
+import { HomePage } from './pages/HomePage/HomePage';
 import { PhonesPage } from './pages/PhonesPage';
 import { ProductDetails } from './pages/ProductDetails';
 import { TabletsPage } from './pages/Tabletspage';

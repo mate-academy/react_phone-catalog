@@ -3,7 +3,8 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { CartList } from '../../components/CartList';
-import { getCartList } from '../../components/interactionLocaleStorage';
+import { getCartList } from
+  '../../components/interactionLocaleStorage/interactionLocaleStorage';
 
 import { Product } from '../../type/product';
 

@@ -5,7 +5,8 @@ import { useSearchParams } from 'react-router-dom';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { SearchList } from '../../components/SearchList';
 import { ProductsList } from '../../components/ProductsList';
-import { getFavouritesList } from '../../components/interactionLocaleStorage';
+import { getFavouritesList } from
+  '../../components/interactionLocaleStorage/interactionLocaleStorage';
 import { NoResults } from '../../components/NoResults';
 
 import { Product } from '../../type/product';
