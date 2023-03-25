@@ -1,0 +1,203 @@
+.product-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 270px;
+  height: 505px;
+  margin: 0;
+  border: 1px solid $element;
+
+  @include onTablet {
+    width: 218px;
+    height: 458px;
+  }
+
+  &__picture {
+    width: 208px;
+    height: 208px;
+    padding: 32px 0 24px 0;
+
+    @include onTablet {
+      width: 185px;
+      height: 185px;
+      padding: 25px 0 18px 0;
+    }
+  }
+
+  &__title {
+    display: flex;
+    align-items: center;
+    @extend .body_text;
+    width: 100%;
+    padding-bottom: 8px;
+    color: $primary;
+
+    @include onTablet {
+      padding-bottom: 4px;
+    }
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 16px;
+
+    @include onTablet {
+      padding-bottom: 10px;
+    }
+  }
+}
+
+.product-info-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 224px;
+
+  @include onTablet {
+    width: 178px;
+  }
+}
+
+.product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.product-price {
+  position: relative;
+  display: flex;
+  justify-content: left;
+  gap: 8px;
+  padding-bottom: 23px;
+
+  @include onTablet {
+    gap: 5px;
+    padding-bottom: 18px;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 16px;
+    box-sizing: border-box;
+    width: 100%;
+    border-bottom: 1px solid $element;
+
+    @include onTablet {
+      bottom: 12px;
+    }
+  }
+
+  &__regular {
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 140%;
+    height: 31px;
+    color: $primary;
+
+    @include onTablet {
+      font-weight: 600;
+      font-size: 18px;
+      line-height: 130%;
+      height: 25px;
+    }
+  }
+
+  &__full {
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 28px;
+    height: 31px;
+    color: $secondary;
+    text-decoration-line: line-through;
+
+    @include onTablet {
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 25px;
+      height: 25px;
+    }
+  }
+}
+
+.info-block {
+  @extend .small_text;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 15px;
+  padding-bottom: 8px;
+
+  @include onTablet {
+    height: 12px;
+    padding-bottom: 5px;
+  }
+
+  &__title {
+    color: $secondary;
+  }
+
+  &__value {
+    color: $primary;
+  }
+}
+
+.card-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-bottom: 24px;
+
+  @include onTablet {
+    padding-bottom: 20px;
+  }
+
+  &__add {
+    @extend .buttons_text;
+    @extend %flexCenter;
+    color: $white;
+    background-color: $primary;
+    height: 40px;
+    width: 176px;
+    border: 0;
+
+    @include onTablet {
+      height: 33px;
+      width: 118px;
+    }
+
+    &:hover {
+      box-shadow: 0px 3px 13px #17203142;
+    }
+
+    &--selected {
+      color: #27AE60;
+      background-color: $white;
+    }
+  }
+
+  &__favourite {
+    width: 40px;
+    height: 40px;
+    border: 1px solid $icons;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: $white;
+    background-image: url('../images/buttons/Favourite.svg');
+
+    @include onTablet {
+      width: 33px;
+      height: 33px;
+    }
+
+    &:hover {
+      border: 1px solid $primary;
+    }
+
+    &--selected {
+      background-image: url('../images/buttons/Favourites\ Filled\ \(Heart\ Like\).svg');
+    }
+  }
+}

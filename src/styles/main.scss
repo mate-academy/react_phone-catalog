@@ -4,13 +4,8 @@
 
 @font-face {
   font-family: 'Mont';
-  src: url('https://fonts.cdnfonts.com/css/mont') format('woff');
+  src: url('../fonts/Mont-Regular.otf') format('woff');
 }
-
-// @font-face {
-//   font-family: 'Mont';
-//   src: url('../../public/fonts/Mont-Regular.otf') format('woff');
-// }
 
 body {
   margin: 0;
@@ -23,18 +18,22 @@ h1 {
   font-weight: 700;
   font-size: 32px;
   line-height: 41px;
+  letter-spacing: -0.01em;
+  margin: 0;
 }
 
 h2 {
   font-weight: 700;
   font-size: 22px;
   line-height: 140%;
+  letter-spacing: 0;
 }
 
 h3 {
   font-weight: 600;
   font-size: 20px;
   line-height: 26px;
+  letter-spacing: 0;
 }
 
 .uppercase_text {
@@ -42,26 +41,32 @@ h3 {
   font-size: 12px;
   line-height: 11px;
   text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
 .buttons_text {
   font-weight: 600;
   font-size: 14px;
   line-height: 21px;
+  letter-spacing: 0;
 }
 
 .body_text {
   font-weight: 500;
   font-size: 14px;
   line-height: 21px;
+  letter-spacing: 0;
 }
 
 .small_text {
   font-weight: 600;
   font-size: 12px;
   line-height: 15px;
+  letter-spacing: 0;
 }
 
 @import "./header.scss";
 @import "./footer.scss";
-@import "./homePage.scss";
+@import "./home-page.scss";
+@import "./product-card.scss";
+@import "./product-slider.scss";
