@@ -25,19 +25,19 @@ export const Categories: FC<Props> = ({ products }) => {
       <div className="categories__content" data-cy="categoryLinksContainer">
         <Category
           name="Mobile phones"
-          srcImage="../_new/img/category-phones.png"
+          srcImage="_new/img/category-phones.png"
           count={countPhones}
         />
 
         <Category
           name="Tablets"
-          srcImage="../_new/img/category-tablets.png"
+          srcImage="_new/img/category-tablets.png"
           count={countTablets}
         />
 
         <Category
           name="Accessories"
-          srcImage="../_new/img/category-accessories.png"
+          srcImage="_new/img/category-accessories.png"
           count={countAccessories}
         />
       </div>

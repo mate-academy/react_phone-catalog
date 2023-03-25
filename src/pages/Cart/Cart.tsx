@@ -14,7 +14,6 @@ export const CardsPage: React.FC = () => {
   const [warning, setWarning] = useState(false);
   const [products] = useLocalStorage<Product[]>('products', []);
   const { cart, setCart } = useContext(CartContext);
-
   const cards = JSON.parse(localStorage.getItem('carts') || '');
 
   const visibleProducts = useMemo(() => {
@@ -122,6 +121,11 @@ export const CardsPage: React.FC = () => {
               ))}
             </div>
             <div className="cart__sum">
+              {warning && (
+                <p>
+                  We are sorry, but this feature is not implemented yet.
+                </p>
+              )}
               <h2 className="cart__sum-amout">{`$${totalPrice}`}</h2>
               <p className="cart__sum-items">{`Total for ${cards.length} items`}</p>
               <button
@@ -136,11 +140,6 @@ export const CardsPage: React.FC = () => {
         )}
         {!visibleProducts.length && (
           <p>Your cart is emty</p>
-        )}
-        {warning && (
-          <p>
-            We are sorry, but this feature is not implemented yet.
-          </p>
         )}
       </div>
     </main>
