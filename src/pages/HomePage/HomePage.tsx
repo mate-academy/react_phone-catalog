@@ -34,7 +34,7 @@ export const HomePage: React.FC<Props> = ({ products, isLoading }) => {
         title="Hot prices"
       />
 
-      <ShopByCategory />
+      <ShopByCategory products={products} />
 
       <ProductsSlider
         isLoading={isLoading}

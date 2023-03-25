@@ -1,7 +1,16 @@
 import './shopByCategory.scss';
 import { Link } from 'react-router-dom';
+import { Product } from '../../type/product';
 
-export const ShopByCategory = () => {
+type Props = {
+  products: Product[];
+};
+
+export const ShopByCategory: React.FC<Props> = ({ products }) => {
+  const getProductsNumber = (type: 'phone' | 'tablet' | 'accessories') => {
+    return products.filter((item: Product) => item.type === type).length;
+  };
+
   return (
     <article className="shop-by-category">
       <h2 className="shop-by-category__title">
@@ -32,7 +41,7 @@ export const ShopByCategory = () => {
           </Link>
 
           <p className="shop-by-category__models-number">
-            95 models
+            {`${getProductsNumber('phone')} models`}
           </p>
         </div>
 
@@ -53,7 +62,7 @@ export const ShopByCategory = () => {
           </Link>
 
           <p className="shop-by-category__models-number">
-            95 models
+            {`${getProductsNumber('tablet')} models`}
           </p>
         </div>
 
@@ -77,7 +86,7 @@ export const ShopByCategory = () => {
           </Link>
 
           <p className="shop-by-category__models-number">
-            95 models
+            {`${getProductsNumber('accessories')} models`}
           </p>
         </div>
       </div>
