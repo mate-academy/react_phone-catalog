@@ -3,19 +3,21 @@ import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import classNames from 'classnames';
 
-enum BannerList {
-  Accessories = 'accessories',
-  Phones = 'phones',
-  Tablets = 'tablets',
-}
+import Phones from './images/banner-phones.png';
+import Tablets from './images/banner-tablets.png';
+import Accessories from './images/banner-accessories.png';
 
 export const BannerSlider = () => {
   const [currentPositionSlider, setCurrentPositionSlider] = useState(0);
+  const bannerImages = [
+    [Phones, 'phones'],
+    [Tablets, 'tablets'],
+    [Accessories, 'accessories'],
+  ];
   const carouselWidth = 1040;
-  const carouselList = Object.values(BannerList);
 
   const onHandleMoveBanner = (action: 'prev' | 'next') => {
-    const bannerLength = carouselList.length;
+    const bannerLength = bannerImages.length;
 
     switch (action) {
       case 'prev':
@@ -66,12 +68,12 @@ export const BannerSlider = () => {
             className="banner-slider__inner"
             style={{ transform: `translateX(${currentPositionSlider}px)` }}
           >
-            {carouselList.map((item, index) => (
-              <div key={`${item + index}`} className="banner-slider__carousel-item">
-                <Link to={item}>
+            {bannerImages.map((banner) => (
+              <div key={banner[0]} className="banner-slider__carousel-item">
+                <Link to={banner[1]}>
                   <img
                     className="banner-slider__carousel-image"
-                    src={`_new/img/banner-${item}.png`}
+                    src={banner[0]}
                     alt="banner-img"
                   />
                 </Link>
@@ -89,7 +91,7 @@ export const BannerSlider = () => {
       </div>
 
       <div className="banner-slider__indacators-wrapper">
-        {carouselList.map((item, index) => (
+        {[0, 1, 2].map((item, index) => (
           <div
             key={`${index + item}`}
             className={classNames('banner-slider__indicator', {

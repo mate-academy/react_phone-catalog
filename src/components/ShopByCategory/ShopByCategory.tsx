@@ -2,25 +2,36 @@ import './shopByCategory.scss';
 import { Link } from 'react-router-dom';
 import { Product } from '../../type/product';
 
+import Phones from './images/category-phones.png';
+import Tablets from './images/category-tablets.png';
+import Accessories from './images/category-accessories.png';
+
 type Props = {
   products: Product[];
 };
 
+enum Categories {
+  Phone = 'phone',
+  Tablet = 'tablet',
+  Accesorie = 'accessories',
+}
+
 export const ShopByCategory: React.FC<Props> = ({ products }) => {
-  const getProductsNumber = (type: 'phone' | 'tablet' | 'accessories') => {
-    return products.filter((item: Product) => item.type === type).length;
+  const getProductsNumber = (category: Categories) => {
+    return products.filter((item: Product) => item.type === category).length;
   };
 
   return (
     <article className="shop-by-category">
       <h2 className="shop-by-category__title">
-        Brand new models
+        Shop by category
       </h2>
 
       <div
         data-cy="categoryLinksContainer"
         className="shop-by-category__categories"
       >
+
         <div className="shop-by-category__card">
           <Link
             to="phones"
@@ -28,7 +39,7 @@ export const ShopByCategory: React.FC<Props> = ({ products }) => {
             shop-by-category__img-wrapper--phones"
           >
             <img
-              src="_new/img/category-phones.png"
+              src={Phones}
               alt="mobile phones"
             />
           </Link>
@@ -41,7 +52,7 @@ export const ShopByCategory: React.FC<Props> = ({ products }) => {
           </Link>
 
           <p className="shop-by-category__models-number">
-            {`${getProductsNumber('phone')} models`}
+            {`${getProductsNumber(Categories.Phone)} models`}
           </p>
         </div>
 
@@ -52,7 +63,7 @@ export const ShopByCategory: React.FC<Props> = ({ products }) => {
             shop-by-category__img-wrapper--tablets"
           >
             <img
-              src="_new/img/category-tablets.png"
+              src={Tablets}
               alt="tablets"
             />
           </Link>
@@ -62,7 +73,7 @@ export const ShopByCategory: React.FC<Props> = ({ products }) => {
           </Link>
 
           <p className="shop-by-category__models-number">
-            {`${getProductsNumber('tablet')} models`}
+            {`${getProductsNumber(Categories.Tablet)} models`}
           </p>
         </div>
 
@@ -73,7 +84,7 @@ export const ShopByCategory: React.FC<Props> = ({ products }) => {
             shop-by-category__img-wrapper--accessories"
           >
             <img
-              src="_new/img/category-accessories.png"
+              src={Accessories}
               alt="accessories"
             />
           </Link>
@@ -86,7 +97,7 @@ export const ShopByCategory: React.FC<Props> = ({ products }) => {
           </Link>
 
           <p className="shop-by-category__models-number">
-            {`${getProductsNumber('accessories')} models`}
+            {`${getProductsNumber(Categories.Accesorie)} models`}
           </p>
         </div>
       </div>
