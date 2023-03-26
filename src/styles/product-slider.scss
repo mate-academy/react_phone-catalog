@@ -4,6 +4,10 @@
   gap: 24px;
   padding-bottom: 80px;
 
+  @include onTablet {
+    gap: 18px;
+  }
+
   &__heading {
     display: flex;
     flex-direction: row;

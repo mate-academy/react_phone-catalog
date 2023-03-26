@@ -19,10 +19,13 @@ export const ProductSlider: React.FC<Props> = ({
 }) => {
   const [position, setPosition] = useState(0);
   const [areButtonsDisabled, setAreButtonsDisabled] = useState(false);
-  const blockLength
-  = (phones.length * width.element + width.interval * (phones.length - 1));
   const start = 0;
-  const end = useMemo(() => width.slider - blockLength, [width]);
+  const end = width.items - phones.length;
+  const step = width.element + width.interval;
+
+  const sliderStyles = {
+    transform: `translate(${position * step}px)`,
+  };
 
   useEffect(() => {
     const timerId = setTimeout(() => setAreButtonsDisabled(false), 800);
@@ -39,24 +42,20 @@ export const ProductSlider: React.FC<Props> = ({
 
   const moveFwd = () => {
     setAreButtonsDisabled(true);
-    if (blockLength + position - width.slider <= width.slider) {
+    if (position - width.items <= end) {
       setPosition(end);
     } else {
-      setPosition(current => current - width.slider - width.interval);
+      setPosition(current => current - width.items);
     }
   };
 
   const moveBck = () => {
     setAreButtonsDisabled(true);
-    if (-position <= width.slider) {
+    if (position + width.items > start) {
       setPosition(start);
     } else {
-      setPosition(current => current + width.slider + width.interval);
+      setPosition(current => current + width.items);
     }
-  };
-
-  const sliderStyles = {
-    transform: `translate(${position}px)`,
   };
 
   return (

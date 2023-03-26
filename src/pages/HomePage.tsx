@@ -1,11 +1,13 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { CategorySlider } from '../components/CategorySlider';
 import { ProductSlider } from '../components/ProductsSlider';
+import { ShopCategory } from '../components/ShopCategory';
 import { useWindowWidth } from '../hooks/useWindowWidth';
 
 import { getPhonesList } from '../api';
 import { Phone } from '../types/Phone';
 import { CategoryWidth } from '../types/CategoryWidth';
+import { SliderSizes } from '../types/SliderSizes';
 
 export const HomePage: React.FC = () => {
   const [phones, setPhones] = useState<Phone[]>([]);
@@ -17,17 +19,17 @@ export const HomePage: React.FC = () => {
       : CategoryWidth.desc;
   }, [windowWidth]);
 
-  const productWidth: ProductWidth = useMemo(() => {
+  const productWidth: SliderSizes = useMemo(() => {
     return windowWidth < CategoryWidth.desc
       ? {
-        slider: CategoryWidth.tablet + 80,
         element: 220,
         interval: 10,
+        items: 3,
       }
       : {
-        slider: CategoryWidth.desc + 96,
         element: 272,
         interval: 16,
+        items: 4,
       };
   }, [windowWidth]);
 
@@ -48,6 +50,7 @@ export const HomePage: React.FC = () => {
         phones={discauntPhones}
         width={productWidth}
       />
+      <ShopCategory phonesNumber={phones.length} />
       <ProductSlider
         title="Brand new models"
         phones={newPhonesSorted}

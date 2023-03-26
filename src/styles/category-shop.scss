@@ -1,0 +1,67 @@
+.category-shop {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-bottom: 80px;
+
+  @include onTablet {
+    gap: 18px;
+  }
+
+  &__title {
+    @extend h1;
+    color: $primary;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 16px;
+    list-style: none;
+    padding: 0;
+
+    @include onTablet {
+      gap: 10px
+    }
+  }
+}
+
+.category-block {
+  display: flex;
+  flex-direction: column;
+
+  &__picture {
+    width: 368px;
+    height: 368px;
+
+    @include onTablet {
+      width: 220px;
+      height: 220px;
+    }
+
+    &--gray-white {
+      background-color: $grayWhite;
+    }
+
+    &--gray-secondary {
+      background-color: $secondary;
+    }
+
+    &--purple {
+      background-color: $purple;
+    }
+  }
+
+  &__title {
+    @extend h3;
+    color: $primary;
+    padding-bottom: 4px;
+    text-decoration: none;
+  }
+
+  &__info {
+    @extend .buttons_text;
+    color: $secondary;
+  }
+}
