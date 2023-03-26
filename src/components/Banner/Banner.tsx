@@ -13,9 +13,9 @@ export const Banner: FC = () => {
   // const url = 'https://oleksandrose.github.io/react_phone-catalog/';
   // const imgPhones = `${url}_new/img/banner-phones.png`;
   const imagesForBanner = [
-    '/_new/img/banner-phones.png',
-    '/_new/img/banner-tablets.png',
-    '/_new/img/banner-accessories.png',
+    '_new/img/banner-phones.png',
+    '_new/img/banner-tablets.png',
+    '_new/img/banner-accessories.png',
   ];
 
   const startBanner = () => {
