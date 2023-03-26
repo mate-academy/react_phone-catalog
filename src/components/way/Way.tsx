@@ -19,7 +19,7 @@ export const Way:React.FC = () => {
           <NavLinkCustom way="/" classStyle="home-link">
             <img src="./img/icons/Home.png" alt="home" />
           </NavLinkCustom>
-          <img src="../../img/icons/Right.png" alt="right" />
+          <img src="./img/icons/Right.png" alt="right" />
         </>
       ) : <></>}
       <Link
