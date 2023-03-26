@@ -6,6 +6,7 @@ import './Breadcrumbs.scss';
 
 export const Breadcrumbs: React.FC = () => {
   const location = useLocation().pathname.split('/').slice(1);
+  const pathName = location.join('').toUpperCase();
 
   return (
     <div className="breadcrumbs" data-cy="breadCrumbs">
@@ -18,7 +19,7 @@ export const Breadcrumbs: React.FC = () => {
           {`${x} > `}
         </NavLink>
       ))}
-      <span>{location[location.length - 1]}</span>
+      <span>{pathName}</span>
     </div>
   );
 };
