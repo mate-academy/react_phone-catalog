@@ -1,54 +1,11 @@
 @import "../../variabls.scss";
 
-.managment {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-
-  & h2 {
-    font-weight: 700;
-    font-size: 32px;
-    line-height: 41px;
-    color: $primary;
-  }
-
-  &__buttons {
-    display: flex;
-    justify-content: space-between;
-    width: 80px;
-
-    &__button {
-      border: 1px solid #b4bdc4;
-      width: 32px;
-      height: 32px;
-      background-color: transparent;
-      cursor: pointer;
-    }
-
-    &__button:hover {
-      border: 1px solid $primary;
-    }
-  }
-}
-
-@media screen and (max-width: $md) {
-  .managment {
-    flex-direction: column;
-
-    &__buttons {
-      margin-bottom: 10px;
-    }
-  }
-}
-
 .product {
+  position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
   width: 100%;
-  max-width: 1136px;
-  margin: 0 auto;
+  margin: 100px auto 0 auto;
 }
 
 @media screen and (max-width: $lg) {
@@ -63,7 +20,67 @@
   }
 }
 
-.product-slider {
+.product-title {
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 41px;
+  color: $primary;
+  padding-left: 16px;
+  margin: 0;
+}
+
+@media screen and (max-width: $sm) {
+  .product-title {
+    font-size: 22px;
+    line-height: 30px;
+    padding-left: 0;
+  }
+}
+
+.wrapper-slider-product {
   display: flex;
-  overflow: hidden;
+  justify-content: center;
+}
+
+.prev {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: 51px;
+  top: -37px;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  border: 1px solid $icons;
+}
+
+.next {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: 0;
+  top: -37px;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  border: 1px solid $icons;
+}
+
+@media screen and (max-width: $sm) {
+  .prev,
+  .next {
+    width: 28px;
+    height: 28px;
+    top: -35px;
+  }
+}
+
+.test {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: fit-content;
+  margin: 0 auto;
 }

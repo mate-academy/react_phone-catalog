@@ -26,17 +26,21 @@ export const Pagination: React.FC<Props> = ({
 
   return (
     <div className="wrapper-pagination">
-      <button type="button" onClick={prev} className="paggination-arrow">
+      <button
+        type="button"
+        onClick={prev}
+        className="paggination-arrow"
+        data-cy="paginationLeft"
+      >
         <img src="./img/icons/Left.png" alt="left" />
       </button>
       <div className="steps">
-        {stepsCount.map((_el:string, index:number) => (
+        {stepsCount.map((el:string, index:number) => (
           <button
             type="button"
-            // eslint-disable-next-line react/no-array-index-key
-            key={index}
+            key={el}
             onClick={() => setTep(index)}
-            className={classNames('', {
+            className={classNames('item-step', {
               'active-step': currentStep === index,
             })}
           >
@@ -44,7 +48,12 @@ export const Pagination: React.FC<Props> = ({
           </button>
         ))}
       </div>
-      <button type="button" onClick={next} className="paggination-arrow">
+      <button
+        type="button"
+        onClick={next}
+        className="paggination-arrow"
+        data-cy="paginationRight"
+      >
         <img src="./img/icons/Right.png" alt="right" />
       </button>
     </div>

@@ -1,8 +1,10 @@
 @import "../../variabls.scss";
+@import "../../mixin.scss";
 
 .wrapper-way {
   display: flex;
   margin-top: 25px;
+  margin-bottom: 20px;
   align-items: center;
 
   & img {
@@ -10,10 +12,7 @@
   }
 
   & span {
-    font-weight: 600;
-    font-size: 12px;
-    line-height: 15px;
-    color: $secondary;
+    @include span
   }
 }
 
@@ -23,7 +22,7 @@
   font-weight: 600;
   font-size: 12px;
   line-height: 15px;
-  color: $secondary;
+  color: $primary;
   text-decoration: none;
 
   & img {
@@ -34,4 +33,9 @@
 .home-link {
   display: flex;
   align-items: center;
+}
+
+.wrapper-productName {
+  margin-left: 20px;
+  color: $secondary;
 }

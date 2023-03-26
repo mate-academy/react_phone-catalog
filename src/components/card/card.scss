@@ -8,6 +8,7 @@
   background-color: $white;
   padding-top: 32px;
   margin-right: 16px;
+  margin-top: 40px;
   min-width: 270px;
   min-height: 552px;
   transition: all 0.3s ease;
@@ -33,17 +34,20 @@
 @media screen and (max-width: $sm) {
   .container-card {
     min-width: 318px;
-    margin: 0;
+    margin-right: 0;
   }
 }
 
 .card-title {
+  text-align: center;
   font-weight: 500;
   font-size: 14px;
   line-height: 21px;
   width: 100%;
   max-width: 224px;
   min-height: 126px;
+  margin-top: 24px;
+  color: $primary;
 }
 
 @media screen and (max-width: $lg) {
@@ -101,6 +105,7 @@
     justify-content: space-between;
     margin-top: 16px;
     margin-bottom: 24px;
+    height: 48px;
   }
 }
 
@@ -111,7 +116,6 @@
     &__buttons {
       justify-content: space-around;
     }
-
   }
   
 }
@@ -129,39 +133,4 @@
   line-height: 15px;
   text-align: right;
   color: $primary;
-}
-
-.card-button {
-  background-color: $primary;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 21px;
-  color: $white;
-  width: 100%;
-  max-width: 176px;
-  height: 40px;
-  border: none;
-}
-
-@media screen and (max-width: $lg) {
-  .card-button {
-    max-width: 150px;
-  }
-}
-
-.like-button {
-  width: 40px;
-  height: 40px;
-  background-color: transparent;
-  border: 1px solid $icons;
-  cursor: pointer;
-
-  & img {
-    width: 16px;
-    height: 16px;
-  }
-}
-
-.like-button:hover {
-  border: 1px solid $primary;
 }

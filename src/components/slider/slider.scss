@@ -1,0 +1,30 @@
+@import "../../variabls.scss";
+
+.slider-container {
+  position: relative;
+  display: flex;
+}
+
+.button {
+    border: none;
+    background-color: transparent;
+    padding: 0;
+}
+
+.slider-window {
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+}
+
+.tracer {
+  display: flex;
+  width: 100%;
+  height: fit-content;
+  transition: all 0.3s ease;
+}
+
+.transition-without-animation {
+  @extend .tracer;
+  transition: all 0s ease !important;
+}

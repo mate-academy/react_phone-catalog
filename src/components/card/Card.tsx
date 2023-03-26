@@ -1,33 +1,59 @@
+import { useContext } from 'react';
+import { useLocation, useParams } from 'react-router-dom';
+import { GlobalContext } from '../../reducer';
 import { Product } from '../../types/product';
+import { AddToCart } from '../addToCart/AddToCard';
+import { AddToFavorite } from '../addToFavorite/AddToFavorite';
+import { NavLinkCustom } from '../navLink/NavLinkCustom';
 import './card.scss';
 
 type Props = {
   product: Product;
-  move: number;
 };
 
-export const Card: React.FC<Props> = ({ product, move }) => {
-  const discount = product.price - (product.price / 100) * product.discount;
+export const Card: React.FC<Props> = ({ product }) => {
+  // eslint-disable-next-line no-empty-pattern
+  const [{}, dispatch] = useContext(GlobalContext);
+  const location = useLocation();
+  const { id = '' } = useParams();
+
+  const setSelectProduct = () => {
+    dispatch({ type: 'selectProduct', product });
+    localStorage.setItem('product', JSON.stringify(product));
+  };
+
+  const createPath = () => {
+    if (location.pathname === '/') {
+      return `${product.type}s/${product.id}`;
+    }
+
+    return `${location.pathname.replace(`/${id}`, '')}/${product.id}`;
+  };
 
   return (
     <div
       className="container-card"
-      style={{ transform: `translate(${move}px)` }}
       data-cy="cardsContainer"
     >
       <img src={`./${product.imageUrl}`} alt="product" />
-      <h2 className="card-title">{product.snippet}</h2>
+      <NavLinkCustom
+        way={createPath()}
+        onClick={setSelectProduct}
+        classStyle="card-title"
+      >
+        {product.name}
+      </NavLinkCustom>
       <div className="price">
         <span className="price__current">
           $
-          {Math.floor(discount)}
+          {Math.floor(product.price - (product.price / 100) * product.discount)}
         </span>
-        {discount !== product.price && (
+        {product.discount ? (
           <span className="price__old">
             $
             {product.price}
           </span>
-        )}
+        ) : <></>}
       </div>
       <div className="describe">
         <div className="describe__parametr">
@@ -50,12 +76,8 @@ export const Card: React.FC<Props> = ({ product, move }) => {
           </span>
         </div>
         <div className="describe__buttons">
-          <button type="button" className="card-button">
-            Add to cart
-          </button>
-          <button type="button" className="like-button">
-            <img src="./img/icons/Hearth.png" alt="hearth" />
-          </button>
+          <AddToCart product={product} />
+          <AddToFavorite product={product} />
         </div>
       </div>
     </div>

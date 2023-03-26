@@ -31,22 +31,23 @@
   flex-direction: column;
   width: 100%;
   max-height: 0;
-  padding-right: 24px;
   overflow: hidden;
   transition: all 0.3s ease;
   background-color: $white;
   margin-top: 4px;
   cursor: pointer;
 
-  & div {
+  & button {
     display: flex;
     padding: 6px 0 6px 6px;
     width: 100%;
-    padding-right: 22px;
+    border: none;
+    background-color: transparent;
     font-weight: 500;
     font-size: 14px;
     line-height: 21px;
     color: $secondary;
+    cursor: pointer;
   }
 }
 
@@ -57,10 +58,18 @@
 }
 
 .selected {
-  background-color: $hover;
+  background-color: $hover !important;
 }
 
 .disable {
   color: $primary !important;
   text-decoration: line-through;
+}
+
+.open {
+  transform: rotate(-90deg);
+}
+
+.close {
+  transform: rotate(90deg);
 }

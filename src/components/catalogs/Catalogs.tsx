@@ -38,7 +38,7 @@ export const Catalogs = () => {
         <div className="catalog">
           <img src="./img/banners/tablets.png" alt="tablets" />
           <div className="catalog__info">
-            <span>Mobile phones</span>
+            <span>Tablets</span>
             <span>
               {
                 state.catalogsProducts.filter(
@@ -59,7 +59,7 @@ export const Catalogs = () => {
         <div className="catalog">
           <img src="./img/banners/accessories.png" alt="accessories" />
           <div className="catalog__info">
-            <span>Mobile phones</span>
+            <span>Accessories</span>
             <span>
               {
                 state.catalogsProducts.filter(

@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import classNames from 'classnames';
 import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useSearchParams } from 'react-router-dom';
 import './dropdown.scss';
 
 type Props = {
@@ -16,9 +16,10 @@ export const Dropdown:React.FC<Props> = (
     listOptions,
     selected,
     choosSelected,
-    lengthList = 1,
+    lengthList,
   },
 ) => {
+  const [searchParams, setSearchParams] = useSearchParams();
   const [active, setActive] = useState(false);
   const { pathname } = useLocation();
 
@@ -31,6 +32,16 @@ export const Dropdown:React.FC<Props> = (
   };
 
   const choose = (item:string) => {
+    if (!lengthList) {
+      searchParams.set('sort', item);
+      setSearchParams(searchParams);
+    }
+
+    if (lengthList) {
+      searchParams.set('perPage', item);
+      setSearchParams(searchParams);
+    }
+
     choosSelected(item);
     setActive(false);
   };
@@ -46,7 +57,9 @@ export const Dropdown:React.FC<Props> = (
         <img
           src="./img/icons/Right.png"
           alt="arrow"
-          style={{ transform: `rotate(${active ? '-90deg' : '90deg'})` }}
+          className={classNames('close', {
+            open: active,
+          })}
         />
       </div>
       <div className={classNames('elements', {
@@ -54,9 +67,10 @@ export const Dropdown:React.FC<Props> = (
       })}
       >
         {listOptions.map((el) => (
-          <div
+          <button
+            type="button"
+            disabled={lengthList ? lengthList < +el : false}
             onClick={() => choose(el)}
-            onKeyDown={() => choose(el)}
             key={el}
             className={classNames('',
               {
@@ -65,7 +79,7 @@ export const Dropdown:React.FC<Props> = (
               })}
           >
             {el}
-          </div>
+          </button>
         ))}
       </div>
     </div>

@@ -27,6 +27,12 @@
   }
 }
 
+.shopping-page {
+  @extend .navigation;
+  justify-content: flex-end;
+  width: 100%;
+}
+
 .nav-link {
   display: flex;
   align-items: center;
@@ -93,6 +99,10 @@
   border-bottom: 1px solid $icons;
   padding-left: 24px;
   outline: none;
+}
+
+.search:focus {
+  background: #FAFBFC;
 }
 
 .search::placeholder {

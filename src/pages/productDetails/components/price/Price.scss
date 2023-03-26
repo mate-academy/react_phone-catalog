@@ -1,0 +1,31 @@
+@import "../../../../variabls.scss";
+@import "../../../../mixin.scss";
+
+.details-product-price {
+  margin-top: 32px;
+}
+
+.price {
+  display: flex;
+  align-items: center;
+
+  &__new {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 41px;
+    color: $primary;
+  }
+}
+
+.price-buttons {
+  display: flex;
+  max-width: 320px;
+  height: 48px;
+  margin-top: 16px;
+}
+
+.specs {
+  display: flex;
+  flex-direction: column;
+  margin-top: 32px;
+}

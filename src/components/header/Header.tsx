@@ -2,22 +2,27 @@ import { useContext, useEffect } from 'react';
 import './header.scss';
 import { Navigation } from '../navigation/Navigation';
 import { GlobalContext } from '../../reducer';
+import { requestListProducts } from '../../helpers/api';
 
 export const Header = () => {
-  // eslint-disable-next-line no-empty-pattern
-  const [{}, dispatch] = useContext(GlobalContext);
+  const [state, dispatch] = useContext(GlobalContext);
 
   useEffect(() => {
-    // eslint-disable-next-line max-len
-    fetch('https://mate-academy.github.io/react_phone-catalog/api/products.json')
-      .then(res => res.json())
-      .then(res => dispatch({ type: 'addCatalog', list: res }));
+    dispatch({ type: 'load', active: true });
+    requestListProducts()
+      .then(res => {
+        dispatch({ type: 'addCatalog', list: res });
+        dispatch({ type: 'load', active: false });
+      });
   }, []);
 
   return (
     <header className="header">
       <div className="logo" />
-      <Navigation favorite={10} shoping={6} />
+      <Navigation
+        favorite={state.favoriteProducts.length}
+        shoping={state.basketList.length}
+      />
     </header>
   );
 };

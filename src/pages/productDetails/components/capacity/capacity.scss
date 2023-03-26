@@ -1,0 +1,32 @@
+@import "../../../../variabls.scss";
+@import "../../../../mixin.scss";
+
+.capacity {
+  display: flex;
+  flex-direction: column;
+  margin-top: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid $elements;
+
+  & span {
+    @include span
+  }
+
+  &__button {
+    display: flex;
+    justify-content: space-between;
+    width: 200px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $primary;
+    margin-top: 8px;
+
+    & button {
+      border: 1px solid $icons;
+      padding: 7px 8px 4px 8px;
+      background-color: transparent;
+      cursor: pointer;
+    }
+  }
+}

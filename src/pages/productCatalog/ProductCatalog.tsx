@@ -1,7 +1,7 @@
 import {
   useContext, useEffect, useMemo, useState,
 } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useSearchParams } from 'react-router-dom';
 import { Dropdown } from '../../components/dropdown/Dropdown';
 import { Way } from '../../components/way/Way';
 import { GlobalContext } from '../../reducer';
@@ -9,6 +9,7 @@ import { Product } from '../../types/product';
 import { Card } from '../../components/card/Card';
 import './productCatalog.scss';
 import { Pagination } from '../../components/pagination/Pagination';
+import { Loader } from '../../components/Loader/Loader';
 
 enum SortProducts {
   'name' = 'Name',
@@ -18,14 +19,30 @@ enum SortProducts {
 }
 
 export const ProductCatalog = () => {
+  const [searchParams] = useSearchParams();
   const { pathname } = useLocation();
-  const [sortBy, setSortBy] = useState('Default');
+  const [sortBy, setSortBy] = useState(searchParams.get('sort') || 'Default');
   const [items, setItems] = useState('16');
   const [start, setStart] = useState(0);
   const [end, setEnd] = useState(16);
   const [currentStep, setCurrentStep] = useState(0);
   const [steps, setSteps] = useState<string[]>([]);
   const [state] = useContext(GlobalContext);
+  const query = searchParams.get('query');
+
+  const renderFilterList = useMemo(() => {
+    if (pathname.includes('phones')) {
+      return state.catalogsProducts.filter((el:Product) => el.type === 'phone');
+    }
+
+    if (pathname.includes('tablets')) {
+      return state.catalogsProducts
+        .filter((el:Product) => el.type === 'tablet');
+    }
+
+    return state.catalogsProducts
+      .filter((el:Product) => el.type === 'accessorie');
+  }, [pathname, state.catalogsProducts]);
 
   useEffect(() => {
     setStart(0);
@@ -43,20 +60,6 @@ export const ProductCatalog = () => {
 
     return 'Accessories';
   };
-
-  const renderFilterList = useMemo(() => {
-    if (pathname.includes('phones')) {
-      return state.catalogsProducts.filter((el:Product) => el.type === 'phone');
-    }
-
-    if (pathname.includes('tablets')) {
-      return state.catalogsProducts
-        .filter((el:Product) => el.type === 'tablet');
-    }
-
-    return state.catalogsProducts
-      .filter((el:Product) => el.type === 'accessorie');
-  }, [pathname, state.catalogsProducts]);
 
   const sortListProducts = useMemo(() => {
     const result = [...renderFilterList];
@@ -79,6 +82,20 @@ export const ProductCatalog = () => {
 
     return result;
   }, [sortBy, state.catalogsProducts, pathname]);
+
+  const filterBySearchField = useMemo(() => {
+    const result = [...sortListProducts];
+
+    if (query) {
+      return result
+        .filter(
+          (el:Product) => el.name.toLowerCase()
+            .includes(query.toLowerCase() as string),
+        );
+    }
+
+    return result;
+  }, [searchParams.get('query'), sortListProducts]);
 
   const paginationNext = () => {
     if (end < renderFilterList.length) {
@@ -116,52 +133,70 @@ export const ProductCatalog = () => {
 
   return (
     <section className="products">
-      <Way />
-      <div className="products__describe">
-        <h1>{renderTitle()}</h1>
-        <span>
-          {renderFilterList.length}
-          {' '}
-          model
-        </span>
-      </div>
-      <div className="products__dropdowns">
-        <div className="drop-first">
-          <h3>Sort by</h3>
-          <Dropdown
-            listOptions={['Name', 'Price', 'Ram', 'Screen']}
-            selected={sortBy}
-            choosSelected={setSortBy}
-          />
+      {!query ? <Way /> : (
+        <div className="result">
+          {
+            `${filterBySearchField.length} ${filterBySearchField.length > 1 ? 'results' : 'result'}`
+          }
         </div>
-        <div className="drop-second">
-          <h3>Items on page</h3>
-          <Dropdown
-            listOptions={['16', '8', '4']}
-            selected={items}
-            choosSelected={setItems}
-            lengthList={renderFilterList.length}
-          />
+      )}
+      {!query
+        ? (
+          <>
+            <div className="products__describe">
+              <h1>{renderTitle()}</h1>
+              <span>
+                {renderFilterList.length}
+                {' '}
+                model
+              </span>
+            </div>
+            {filterBySearchField.length ? (
+              <div className="products__dropdowns">
+                <div className="drop-first">
+                  <h3>Sort by</h3>
+                  <Dropdown
+                    listOptions={['Name', 'Price', 'Ram', 'Screen']}
+                    selected={sortBy}
+                    choosSelected={setSortBy}
+                  />
+                </div>
+                <div className="drop-second">
+                  <h3>Items on page</h3>
+                  <Dropdown
+                    listOptions={['16', '8', '4']}
+                    selected={items}
+                    choosSelected={setItems}
+                    lengthList={renderFilterList.length}
+                  />
+                </div>
+              </div>
+            ) : <></>}
+          </>
+        ) : ''}
+      {state.loader ? <Loader /> : (
+        <div className="pagination" data-cy="productList">
+          {filterBySearchField.slice(start, end).map((el:Product) => (
+            <div className="pagination__wrapper-card" key={el.age}>
+              <Card
+                product={el}
+              />
+            </div>
+          ))}
         </div>
-      </div>
-      <div className="pagination">
-        {sortListProducts.slice(start, end).map((el:Product) => (
-          <div className="pagination__wrapper-card" key={el.age}>
-            <Card
-              product={el}
-              move={0}
-            />
-          </div>
-        ))}
-      </div>
-      <Pagination
-        prev={paginationPrev}
-        next={paginationNext}
-        currentStep={currentStep}
-        stepsCount={steps}
-        setCurrenStep={setCurrentStep}
-        setNumberStep={setNumberStep}
-      />
+      )}
+      {(!query && filterBySearchField.length > 4) ? (
+        <Pagination
+          prev={paginationPrev}
+          next={paginationNext}
+          currentStep={currentStep}
+          stepsCount={steps}
+          setCurrenStep={setCurrentStep}
+          setNumberStep={setNumberStep}
+        />
+      ) : <></> }
+      {!filterBySearchField.length
+      && <div>List products is empty, please check later</div>}
     </section>
   );
 };

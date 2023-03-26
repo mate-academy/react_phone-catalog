@@ -1,7 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useResponseHook } from '../../hooks/useResponseHook';
 import { Product } from '../../types/product';
 import { Card } from '../card/Card';
+import { Slider } from '../slider/Slider';
 import './productSlider.scss';
 
 type Props = {
@@ -10,70 +11,68 @@ type Props = {
 };
 
 export const Catalog:React.FC<Props> = ({ title, list }) => {
-  const [stepWidth, setStepWidth] = useState(0);
-  const [step, setStep] = useState(0);
-  const ref = useRef<HTMLDivElement>(null);
+  const [step, setStep] = useState(-1);
+  const [countProduct, setCountProduct] = useState(4);
   const width = useResponseHook();
 
   useEffect(() => {
-    if (ref.current && step !== 0) {
-      if (width > 1200) {
-        setStepWidth(ref.current.getBoundingClientRect().width + 16);
-      } else {
-        setStepWidth(ref.current.getBoundingClientRect().width);
-      }
+    if (width > 1200) {
+      setCountProduct(4);
     }
-  }, [ref, step, width]);
 
-  useEffect(() => {
-    setStep(0);
+    if (width < 1200) {
+      setCountProduct(3);
+    }
+
+    if (width < 768) {
+      setCountProduct(2);
+    }
+
+    if (width < 540) {
+      setCountProduct(1);
+    }
   }, [width]);
 
-  const next = () => {
-    if (width < 768) {
-      if (step < list.length - 1) {
-        setStep(step + 1);
-      }
-    } else if (step < Math.floor(list.length / 4) - 1) {
-      setStep(step + 1);
+  const renderSlider = useMemo(() => {
+    if (list.length) {
+      return (
+        <Slider
+          step={step}
+          setStep={setStep}
+          leftButton={(
+            <div className="prev">
+              <img src="./img/icons/Left.png" alt="prev" />
+            </div>
+          )}
+          rightButton={
+            (
+              <div className="next">
+                <img src="./img/icons/Right.png" alt="next" />
+              </div>
+            )
+          }
+          countElement={countProduct}
+        >
+          {list.map((product:Product) => (
+            <Card
+              product={product}
+              key={product.age}
+            />
+          ))}
+        </Slider>
+      );
     }
-  };
 
-  const prev = () => {
-    if (step > 0) {
-      setStep(step - 1);
-    }
-  };
+    return '';
+  }, [list, step, countProduct, width]);
 
   return (
     <div className="product">
-      <div className="managment">
-        <h2>{title}</h2>
-        <div className="managment__buttons">
-          <button
-            type="button"
-            className="managment__buttons__button"
-            onClick={prev}
-          >
-            <img src="./img/icons/Left.png" alt="left" />
-          </button>
-          <button
-            type="button"
-            className="managment__buttons__button"
-            onClick={next}
-          >
-            <img src="./img/icons/Right.png" alt="right" />
-          </button>
+      <div className="test">
+        <h2 className="product-title">{title}</h2>
+        <div className="wrapper-slider-product">
+          {renderSlider}
         </div>
-      </div>
-      <div className="product-slider" ref={ref}>
-        {list.map((product:Product) => (
-          <Card
-            product={product}
-            move={step * -(stepWidth)}
-            key={product.age}
-          />
-        ))}
       </div>
     </div>
   );
