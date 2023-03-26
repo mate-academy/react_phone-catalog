@@ -10,10 +10,10 @@ import './Banner.scss';
 
 export const Banner: FC = () => {
   const [activeBanner, setActiveBanner] = useState(0);
-  const url = 'https://oleksandrose.github.io/react_phone-catalog/';
-  const imgPhones = `${url}_new/img/banner-phones.png`;
+  // const url = 'https://oleksandrose.github.io/react_phone-catalog/';
+  // const imgPhones = `${url}_new/img/banner-phones.png`;
   const imagesForBanner = [
-    imgPhones,
+    '/_new/img/banner-phones.png',
     '/_new/img/banner-tablets.png',
     '/_new/img/banner-accessories.png',
   ];
