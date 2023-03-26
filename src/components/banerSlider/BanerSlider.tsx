@@ -24,6 +24,7 @@ export const BanerSlider:React.FC = () => {
             <img src="./img/icons/Right.png" alt="next" />
           </div>
         )}
+        items
       >
         {banners.map((el) => (
           <div

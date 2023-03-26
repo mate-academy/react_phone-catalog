@@ -29,12 +29,12 @@ export const Way:React.FC = () => {
         className="page"
       >
         { renderString() === 'Shopping'
-        && <img src="../../img/icons/Left.png" alt="left" />}
+        && <img src="./img/icons/Left.png" alt="left" />}
         {renderString() === 'Shopping' ? 'Back' : renderString()}
       </Link>
       {id && (
         <div className="wrapper-productName">
-          <img src="../../img/icons/Right.png" alt="right" />
+          <img src="./img/icons/Right.png" alt="right" />
           <span>{id}</span>
         </div>
       )}

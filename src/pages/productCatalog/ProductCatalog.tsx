@@ -30,6 +30,10 @@ export const ProductCatalog = () => {
   const [state] = useContext(GlobalContext);
   const query = searchParams.get('query');
 
+  useEffect(() => {
+    window.scroll({ top: 0, left: 0, behavior: 'smooth' });
+  }, []);
+
   const renderFilterList = useMemo(() => {
     if (pathname.includes('phones')) {
       return state.catalogsProducts.filter((el:Product) => el.type === 'phone');

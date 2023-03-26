@@ -10,7 +10,7 @@
   border-bottom: 1px solid $elements;
 
   & span {
-    @include span
+    @include span;
   }
 }
 

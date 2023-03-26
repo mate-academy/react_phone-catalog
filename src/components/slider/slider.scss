@@ -3,12 +3,18 @@
 .slider-container {
   position: relative;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.wrapper-content {
+  display: flex;
 }
 
 .button {
-    border: none;
-    background-color: transparent;
-    padding: 0;
+  border: none;
+  background-color: transparent;
+  padding: 0;
 }
 
 .slider-window {
@@ -27,4 +33,24 @@
 .transition-without-animation {
   @extend .tracer;
   transition: all 0s ease !important;
+}
+
+.slider-buttom {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 18px;
+  width: fit-content;
+
+  & button {
+    background-color: $elements;
+    border: none;
+    width: 14px;
+    height: 4px;
+    cursor: pointer;
+    margin: 0 7px;
+  }
+}
+
+.active {
+  background-color: $primary !important;
 }

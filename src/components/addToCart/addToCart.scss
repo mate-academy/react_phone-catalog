@@ -1,20 +1,20 @@
 @import "../../variabls.scss";
 
 .card-button {
-    background-color: $primary;
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 21px;
-    color: $white;
-    width: 100%;
-    border: none;
-    cursor: pointer;
-    margin-right: 5px;
-  }
+  background-color: $primary;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: $white;
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  margin-right: 5px;
+}
 
   
-  .selected {
-    border: 1px solid $elements;
-    background-color: transparent;
-    color: #27AE60;
-  }
+.selected {
+  border: 1px solid $elements;
+  background-color: transparent;
+  color: #27ae60;
+}

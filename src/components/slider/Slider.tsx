@@ -11,7 +11,8 @@ type Props = {
   setStep: (value:number) => void,
   leftButton: React.ReactNode,
   rightButton: React.ReactNode,
-  countElement?: number
+  countElement?: number,
+  items?: boolean
 };
 
 export const Slider:React.FC<Props> = ({
@@ -21,13 +22,24 @@ export const Slider:React.FC<Props> = ({
   leftButton,
   rightButton,
   countElement = 1,
+  items,
 }) => {
   const ref = useRef<HTMLDivElement>(null);
   const [widthStep, setWidthStep] = useState<number>(0);
   const [transition, setTransition] = useState(true);
   const [widthElement, setWidthElement] = useState(0);
   const [margin, setMargin] = useState({ left: 0, rigth: 0 });
+  const [buttons, setButtons] = useState(
+    [...Array(Math.ceil(children.length / countElement))].map(() => true),
+  );
   const width = useResponseHook();
+
+  useEffect(() => {
+    setButtons(
+      [...Array(Math.ceil(children.length / countElement))]
+        .map(() => 1).map(() => true),
+    );
+  }, [countElement]);
 
   useEffect(() => {
     if (ref.current) {
@@ -110,26 +122,46 @@ export const Slider:React.FC<Props> = ({
 
   return (
     <div className="slider-container">
-      <button onClick={prev} type="button" className="button">
-        { leftButton }
-      </button>
-      <div className="slider-window" style={{ width: `${widthElement}px` }}>
-        <div
-          className={classNames('tracer', {
-            'transition-without-animation': transition,
-          })}
-          style={{ transform: `translate(${step * (widthStep)}px)` }}
-        >
-          <div ref={ref} style={{ marginLeft: `${margin.left}px`, marginRight: `${margin.rigth}px` }}>
-            {children[children.length - 1]}
+      <div className="wrapper-content">
+        <button onClick={prev} type="button" className="button">
+          { leftButton }
+        </button>
+        <div className="slider-window" style={{ width: `${widthElement}px` }}>
+          <div
+            className={classNames('tracer', {
+              'transition-without-animation': transition,
+            })}
+            style={{ transform: `translate(${step * (widthStep)}px)` }}
+          >
+            <div ref={ref} style={{ marginLeft: `${margin.left}px`, marginRight: `${margin.rigth}px` }}>
+              {children[children.length - 1]}
+            </div>
+            {children}
+            {children}
           </div>
-          {children}
-          {children}
         </div>
+        <button type="button" onClick={next} className="button">
+          {rightButton}
+        </button>
       </div>
-      <button type="button" onClick={next} className="button">
-        {rightButton}
-      </button>
+      <div className="slider-buttom">
+        {items
+        && buttons
+          .map((el, index) => (
+            <button
+              type="button"
+              className={classNames({
+                active: -(index + 1) === step,
+              })}
+              onClick={() => {
+                setStep(-(index + 1));
+              }}
+              key={Math.random() * (100 - 1) + 1}
+            >
+              {el}
+            </button>
+          ))}
+      </div>
     </div>
   );
 };

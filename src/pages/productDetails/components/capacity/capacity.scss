@@ -9,7 +9,7 @@
   border-bottom: 1px solid $elements;
 
   & span {
-    @include span
+    @include span;
   }
 
   &__button {
@@ -24,7 +24,7 @@
 
     & button {
       border: 1px solid $icons;
-      padding: 7px 8px 4px 8px;
+      padding: 7px 8px 4px;
       background-color: transparent;
       cursor: pointer;
     }
