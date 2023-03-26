@@ -11,9 +11,9 @@ import './Banner.scss';
 export const Banner: FC = () => {
   const [activeBanner, setActiveBanner] = useState(0);
   const imagesForBanner = [
-    '_new/img/banner-phones.png',
-    '_new/img/banner-tablets.png',
-    '_new/img/banner-accessories.png',
+    'img/banner-phones.png',
+    'img/banner-tablets.png',
+    'img/banner-accessories.png',
   ];
 
   const startBanner = () => {
