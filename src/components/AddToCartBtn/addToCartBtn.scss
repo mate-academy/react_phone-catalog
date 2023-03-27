@@ -1,4 +1,3 @@
-/* eslint-disable */
 @import "../../variables/variables.scss";
 
 .add-to-cart {
@@ -15,6 +14,7 @@
   font-family: $MontRegular;
   transition: 0.4s;
   cursor: pointer;
+
   &_active {
     background: $white;
     color: $green;

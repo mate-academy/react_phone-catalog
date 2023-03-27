@@ -1,5 +1,4 @@
-/* eslint-disable */
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   NavLink,
   Link,
@@ -8,49 +7,51 @@ import {
 } from 'react-router-dom';
 import { Nav } from './Nav';
 import { Search } from '../Search/Search';
-import { ReactComponent as FavouritesIcon } from '../../icons/favourites-icon.svg';
+
+import {
+  ReactComponent as FavouritesIcon,
+} from '../../icons/favourites-icon.svg';
 import { ReactComponent as CartIcon } from '../../icons/cart-icon.svg';
 import { ReactComponent as Logo } from '../../icons/Logo.svg';
-
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
+import { getProductsAction } from '../../redux/reducers/actionCreators';
+import { ProductItem } from '../../types/ProductItem';
+import { CartList } from '../../types/CartList';
+import { loadFavourites } from '../../redux/reducers/favouritesSlice';
+import { loadCart } from '../../redux/reducers/cartSlice';
 import './header.scss';
 
-export const Header:React.FC = () => {
-  const favoritesCount = () => {
-    const count:string | null = localStorage.getItem('favorite');
-    const countParsed = count ? JSON.parse(count) : [];
+export const Header: React.FC = () => {
+  const dispatch = useAppDispatch();
+  const { favourites } = useAppSelector(state => state.favourites);
+  const { cart } = useAppSelector(state => state.cart);
+  const cartCount = cart.reduce((prev, current) => prev + +current.count, 0);
 
-    if (countParsed.length > 0) {
-      return (
-        <span className="header__favouritesCount">
-          {countParsed.length}
-        </span>
-      );
-    }
+  useEffect(() => {
+    dispatch(getProductsAction());
+    const favouriteValue: string | null = localStorage.getItem('favourite');
+    const parsedFavourite: ProductItem[] | [] = favouriteValue
+      ? JSON.parse(favouriteValue)
+      : [];
 
-    return '';
-  };
+    const cartValue: string | null = localStorage.getItem('cart');
+    const parsedCart: CartList[] | [] = cartValue
+      ? JSON.parse(cartValue)
+      : [];
 
-  const cartCount = () => {
-    const count: string | null = localStorage.getItem('cart');
-    const countParsed = count ? JSON.parse(count) : [];
+    dispatch(loadFavourites(parsedFavourite));
+    dispatch(loadCart(parsedCart));
+  }, []);
 
-    if (countParsed.length > 0) {
-      return (
-        <span className="header__cartCount">
-          {countParsed.length}
-        </span>
-      );
-    }
-
-    return '';
-  };
+  useEffect(() => {
+    window.localStorage.setItem('cart', JSON.stringify(cart));
+  }, [cart]);
 
   return (
     <div className="header">
       <Link to="/" className="header__logo">
         <Logo />
       </Link>
-
       <Nav />
 
       <Routes>
@@ -67,7 +68,7 @@ export const Header:React.FC = () => {
           element={<Search placeholder="Search in tablets..." />}
         />
         <Route
-          path="/acccessorize"
+          path="/accessories"
           element={<Search placeholder="Search in accessories..." />}
         />
       </Routes>
@@ -76,13 +77,16 @@ export const Header:React.FC = () => {
         to="/favourites"
         className={({ isActive }) => (isActive
           ? 'header__favourites active-link'
-          : 'header__favourites')}
+          : 'header__favourites'
+        )}
       >
-
         <FavouritesIcon />
-        {favoritesCount()}
+        {favourites.length > 0 && (
+          <span className="header__favouritesCount">
+            {favourites.length}
+          </span>
+        )}
       </NavLink>
-
       <NavLink
         to="/cart"
         className={({ isActive }) => (isActive
@@ -90,11 +94,13 @@ export const Header:React.FC = () => {
           : 'header__cart'
         )}
       >
-
         <CartIcon />
-        {cartCount()}
+        {cart.length > 0 && (
+          <span className="header__cartCount">
+            {cartCount}
+          </span>
+        )}
       </NavLink>
-
     </div>
   );
 };

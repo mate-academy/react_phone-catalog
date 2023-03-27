@@ -1,8 +1,15 @@
 /* eslint-disable */
-const PRODUCTS = `https://mate-academy.github.io/react_phone-catalog
-/api/products.json`;
-const PRODUCT_DETAILS = `https://mate-academy.github.io/react_phone-catalog/
-api/products/`;
+const PRODUCTS = '/api/products.json';
+const PRODUCT_DETAILS = '/api/products/';
+
+export const getProducts = () => fetch(PRODUCTS)
+  .then((res) => {
+    if (!res.ok) {
+      throw new Error('Error with loading data...');
+    }
+
+    return res.json();
+  })
 
 export const getPhones = (setPhoneList: any) => fetch(PRODUCTS)
   .then((res) => {
@@ -48,8 +55,6 @@ export const getAccessories = (setAccessoriesList: any) => fetch(PRODUCTS)
 
 export const getProductItem = (
   id: string,
-  setProductInfo: any,
-  setDefaultImage: any,
 ) => (
   fetch(`${PRODUCT_DETAILS}${id}.json`)
     .then((res) => {
@@ -58,9 +63,5 @@ export const getProductItem = (
       }
 
       return res.json();
-    })
-    .then((data) => {
-      setProductInfo(data);
-      setDefaultImage(data.images[0]);
     })
 );

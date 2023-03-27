@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import classNames from 'classnames';
 import { getProductItem } from '../../api/api';
-import { ProductItem } from '../../types/ProductItem';
 import { ProductInfo } from '../../types/ProductInfo';
 import { BreadCrumbs } from '../../components/BreadCrumbs';
 import { BackBtn } from '../../components/BackBtn';
@@ -11,56 +10,52 @@ import { AddFavouriteBtn } from '../../components/AddFavouriteBtn';
 import { ProductsSlider } from '../../components/ProductsSlider';
 
 import './productDetails.scss';
+import { useAppSelector } from '../../hooks/redux';
 
 export const ProductDetails: React.FC = () => {
   const [productDetails, setProductDetails] = useState<ProductInfo>();
-  const [productInfo, setProductInfo] = useState<ProductItem>();
   const { productId } = useParams();
   const [currentImage, setCurrentImage] = useState('');
-  const [suggProducts, setSuggProducts] = useState<ProductItem[]>([]);
-
-  const BASE_URL = 'https://mate-academy.github.io/react_phone-catalog/';
+  const [currentColor, setCurrentColor] = useState();
+  const [capacity, setCapacity] = useState('');
+  const { products } = useAppSelector((state) => state.products);
 
   useEffect(() => {
-    if (productId !== undefined) {
-      getProductItem(productId, setProductDetails, setCurrentImage);
-
-      fetch(`${BASE_URL}api/products.json`)
-        .then((resp) => resp.json())
-        .then((data) => {
-          setSuggProducts(data);
-          setProductInfo(data.find((item: ProductItem) => (
-            item.id === productId
-          )));
-        });
+    if (productId) {
+      getProductItem(productId).then((data) => {
+        setProductDetails(data);
+        setCurrentColor(data.images[0].colorName);
+        setCurrentImage(data.images[0].src[0]);
+        setCapacity(data.storage.capacity);
+      });
     }
-  }, []);
+  }, [productId]);
 
-  const setPrice = (() => {
-    if (productInfo) {
-      if (productInfo.discount > 0) {
-        const discount = (productInfo.price / 100) * productInfo.discount;
+  useEffect(() => {
+    setCurrentImage(
+      productDetails?.images.find(
+        (item: any) => item.colorName === currentColor,
+      ).src[0],
+    );
+  }, [currentColor]);
+
+  const setPrice = () => {
+    if (productDetails) {
+      if (productDetails.discount > 0) {
+        const discount = (productDetails.price / 100) * productDetails.discount;
 
         return (
           <>
-            {`$${productInfo.price - discount}`}
-            <span>{`$${productInfo.price}`}</span>
+            {`$${(productDetails.price - discount).toFixed(0)}`}
+            <span>{`$${productDetails.price}`}</span>
           </>
         );
       }
 
-      return (
-        <>
-          {`$${productInfo.price}`}
-        </>
-      );
+      return <>{`$${productDetails.price}`}</>;
     }
 
     return '';
-  });
-
-  const getsuggProducts = () => {
-    return suggProducts;
   };
 
   return (
@@ -72,46 +67,86 @@ export const ProductDetails: React.FC = () => {
           <BackBtn />
 
           <div className="product__content">
-            <h1 className="product__title">
-              {productDetails.name}
-            </h1>
+            <h1 className="product__title">{productDetails.name}</h1>
             <div className="product__block">
-              {productDetails.images && (
+              {productDetails.images && currentColor && (
                 <div className="product__gallary gallary">
                   <div className="gallary__thumbs">
-                    {productDetails.images.map((image) => (
-                      <button
-                        key={image}
-                        type="button"
-                        className={classNames(
-                          'gallary__thumbItem',
-                          {
+                    {productDetails.images
+                      .find((item: any) => item.colorName === currentColor)
+                      .src.map((image: any) => (
+                        <button
+                          key={image.colorId}
+                          type="button"
+                          className={classNames('gallary__thumbItem', {
                             gallary__thumbItem_active: currentImage === image,
-                          },
-                        )}
-                        onClick={() => setCurrentImage(image)}
-                      >
-                        <img src={`${process.env.REACT_APP_IMG_LINK}${image}`} alt="" />
-                      </button>
-                    ))}
+                          })}
+                          onClick={() => setCurrentImage(image)}
+                        >
+                          <img src={`${image}`} alt="" />
+                        </button>
+                      ))}
                   </div>
                   <div className="gallary__image">
-                    <img src={`${process.env.REACT_APP_IMG_LINK}${currentImage}`} alt="" />
+                    <img src={`${currentImage}`} alt="" />
                   </div>
                 </div>
               )}
 
               <div className="product-options">
-                {productInfo && (
-                  <div className="product-options__price">
-                    {setPrice()}
+                <div className="product-colors">
+                  <span>Available colors</span>
+                  <div className="product-colors__block">
+                    {productDetails.images
+                      && productDetails.images.map((item: any) => (
+                        <div
+                          aria-hidden
+                          key={item.colorId}
+                          onClick={() => setCurrentColor(item.colorName)}
+                          className={classNames('product-colors__item', {
+                            'product-colors__item_active':
+                              item.colorName === currentColor,
+                          })}
+                        >
+                          <div
+                            className="circle"
+                            style={{ backgroundColor: item.colorId }}
+                          />
+                        </div>
+                      ))}
                   </div>
+                </div>
+                <div className="product-memory">
+                  <span>Select capacity</span>
+                  <div className="product-memory__block">
+                    {productDetails.storage.availableCapacity
+                      && productDetails.storage.availableCapacity.map(
+                        (item: any) => (
+                          <button
+                            key={item.name}
+                            type="button"
+                            onClick={() => setCapacity(item.name)}
+                            className={classNames('product-memory__item', {
+                              'product-memory__item_active':
+                                item.name === capacity,
+                            })}
+                          >
+                            <Link to={`/${productDetails.type}s/${item.link}`}>
+                              {item.name}
+                            </Link>
+                          </button>
+                        ),
+                      )}
+                  </div>
+                </div>
+                {productDetails && (
+                  <div className="product-options__price">{setPrice()}</div>
                 )}
                 <div className="product-options__buttons">
-                  {productId && productInfo && (
+                  {productId && productDetails && (
                     <>
-                      <AddToCartBtn id={productId} card={productInfo} />
-                      <AddFavouriteBtn id={productId} card={productInfo} />
+                      <AddToCartBtn id={productId} color={currentColor} />
+                      <AddFavouriteBtn id={productId} />
                     </>
                   )}
                 </div>
@@ -142,21 +177,14 @@ export const ProductDetails: React.FC = () => {
                   )}
                 </div>
               </div>
-
             </div>
             <div className="product__bottom">
               <div className="product__descr">
-                <h2 className="product__subtitle">
-                  About
-                </h2>
-                <p>
-                  {productDetails.description}
-                </p>
+                <h2 className="product__subtitle">About</h2>
+                <p>{productDetails.description}</p>
               </div>
               <div className="tech-specs">
-                <h2 className="product__subtitle">
-                  Tech specs
-                </h2>
+                <h2 className="product__subtitle">Tech specs</h2>
                 <div className="tech-specs__block">
                   {productDetails.display.screenSize && (
                     <div className="tech-specs__item">
@@ -182,10 +210,10 @@ export const ProductDetails: React.FC = () => {
                       <p>{productDetails.storage.ram}</p>
                     </div>
                   )}
-                  {productDetails.storage.flash && (
+                  {productDetails.storage.capacity && (
                     <div className="tech-specs__item">
                       <span>Built in memory</span>
-                      <p>{productDetails.storage.flash}</p>
+                      <p>{productDetails.storage.capacity}</p>
                     </div>
                   )}
                   {productDetails.camera.primary && (
@@ -207,18 +235,20 @@ export const ProductDetails: React.FC = () => {
         </div>
       )}
 
-      <ProductsSlider
-        productsList={getsuggProducts()}
-        title="Hot prices"
-        sliderSettings={{
-          dots: false,
-          arrows: true,
-          infinite: true,
-          speed: 500,
-          slidesToShow: 4,
-          slidesToScroll: 1,
-        }}
-      />
+      {productDetails && products && (
+        <ProductsSlider
+          productsList={products}
+          title="Hot prices"
+          sliderSettings={{
+            dots: false,
+            arrows: true,
+            infinite: true,
+            speed: 500,
+            slidesToShow: 4,
+            slidesToScroll: 1,
+          }}
+        />
+      )}
     </div>
   );
 };

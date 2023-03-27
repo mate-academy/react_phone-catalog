@@ -1,30 +1,13 @@
-/* eslint-disable */
-import accesorize from './accessories-cat.jpg';
-
-class Nav extends React.Component {
-  render() {
-    return (
-      <img src={accesorize} alt={"accesorize"} />
-    )
-  }
-}
-
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { ProductsSlider } from '../../components/ProductsSlider';
 import { Banner } from '../../components/Banner';
 import { ProductItem } from '../../types/ProductItem';
-
-import './homePage.scss';
 import { ShopCategory } from '../../components/ShopCategory';
+import { useAppSelector } from '../../hooks/redux';
+import './homePage.scss';
 
-export const HomePage:React.FC = () => {
-  const [products, setProducts] = useState<ProductItem[]>([]);
-
-  useEffect(() => {
-    fetch('https://mate-academy.github.io/react_phone-catalog/api/products.json')
-      .then((resp) => resp.json())
-      .then((data: ProductItem[]) => setProducts(data));
-  }, []);
+export const HomePage: React.FC = () => {
+  const { products } = useAppSelector(state => state.products);
 
   const hotPrice = () => {
     const hotPrices = [...products];
@@ -33,14 +16,14 @@ export const HomePage:React.FC = () => {
   };
 
   const brandNew = () => {
-    const brandNewList = [...products];
+    let brandNewList = [...products];
 
-    brandNewList.filter((item: ProductItem) => {
-      item.discount === 0;
-    });
+    brandNewList = brandNewList.filter((item: ProductItem) => (
+      item.discount === 0
+    ));
 
     return brandNewList.sort((a: ProductItem, b: ProductItem) => (
-      a.price - b.price
+      b.price - a.price
     ));
   };
 
@@ -62,6 +45,7 @@ export const HomePage:React.FC = () => {
           }}
         />
       </div>
+
       <ShopCategory products={products} />
 
       <div className="brand-new">

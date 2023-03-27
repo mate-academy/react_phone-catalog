@@ -12,10 +12,9 @@ type Props = {
 
 export const ProductCard: React.FC<Props> = ({ card }) => {
   const discount = (card.price / 100) * card.discount;
-
   const isDiscounted = (() => (
     <>
-      {`$${card.price - discount}`}
+      {`$${(card.price - discount).toFixed(0)}`}
       <span>{`$${card.price}`}</span>
     </>
   ));
@@ -26,7 +25,7 @@ export const ProductCard: React.FC<Props> = ({ card }) => {
     </>
   ));
 
-  const isCapasity = (() => (
+  const isCapacity = (() => (
     <>
       <span>Capacity</span>
       <div className="product-card__propValue">
@@ -46,24 +45,18 @@ export const ProductCard: React.FC<Props> = ({ card }) => {
 
   return (
     <div className="product-card">
-      <Link to={`/${card.type}s/${card.id}`}>
-        <img
-          src={`${process.env.REACT_APP_IMG_LINK}${card.imageUrl}`}
-          alt=""
-          className="product-card__image"
-        />
+      <Link to={`/${card.type}s/${card.id}`} className="product-card__image">
+        <img src={`${card.imageUrl}`} alt="" />
       </Link>
 
       <h3 className="product-card__title">
         {card.name}
       </h3>
-
-      <span className='"product-card__price"'>
+      <span className="product-card__price">
         {card.discount > 0
-          ? isDiscounted()
-          : notDiscounted}
+          ? (isDiscounted())
+          : (notDiscounted())}
       </span>
-
       <div className="product-card__properties">
         <div className="product-card__propItem">
           <span>Screen</span>
@@ -71,21 +64,16 @@ export const ProductCard: React.FC<Props> = ({ card }) => {
             {card.screen}
           </div>
         </div>
-
         <div className="product-card__propItem">
-          {card.capacity && (isCapasity())}
+          {card.capacity && (isCapacity())}
         </div>
-
         <div className="product-card__propItem">
           {card.ram && (isRam())}
         </div>
-
-        <div className="product-card__nav">
-          <AddToCartBtn id={card.id} card={card} />
-
-          <AddFavouriteBtn id={card.id} card={card} />
-        </div>
-
+      </div>
+      <div className="product-card__nav">
+        <AddToCartBtn id={card.id} />
+        <AddFavouriteBtn id={card.id} />
       </div>
     </div>
   );

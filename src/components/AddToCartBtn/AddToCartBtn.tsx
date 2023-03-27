@@ -5,48 +5,42 @@ import { CartList } from '../../types/CartList';
 import { ProductItem } from '../../types/ProductItem';
 
 import './addToCartBtn.scss';
+import { useAppDispatch, useAppSelector } from "../../hooks/redux";
+import {
+  addNewItemToCart,
+  removeFromCart,
+} from "../../redux/reducers/cartSlice";
 
 type Props = {
   id: string;
-  card: ProductItem;
+  color?: string;
 };
 
-export const AddToCartBtn: React.FC<Props> = ({ id, card }) => {
+export const AddToCartBtn: React.FC<Props> = ({ id, color }) => {
+  const dispatch = useAppDispatch();
+  const { cart } = useAppSelector((state) => state.cart);
+  const { products } = useAppSelector((state) => state.products);
   const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
-    const storageValue: string | null = localStorage.getItem('cart');
-    const parsedStorage: CartList[] | [] = storageValue
-      ? JSON.parse(storageValue)
-      : [];
-
-    if (parsedStorage.find((cartList: CartList) => cartList.item.id === id)) {
+    if (cart.find((cartList: CartList) => cartList.item.id === id)) {
       setIsActive(true);
     } else {
       setIsActive(false);
     }
-  }, []);
+  }, [id]);
 
   const addToCart = () => {
     if (isActive) {
-      const storageValue: string | null = localStorage.getItem('cart');
-
-      let parsedStorage = storageValue ? JSON.parse(storageValue) : [];
-
-      parsedStorage = parsedStorage.filter((cartList: any) => (
-        cartList.item.id !== id
-      ));
-      window.localStorage.setItem('cart', JSON.stringify(parsedStorage));
-
+      dispatch(removeFromCart(id));
       setIsActive(!isActive);
     } else {
-      const storageValue: string | null = localStorage.getItem('cart');
+      const card = products?.filter((item: ProductItem) => item.id === id)[0];
+      const options = {
+        color: !color ? '' : color,
+      }
 
-      const parsedStorage = storageValue ? JSON.parse(storageValue) : [];
-
-      parsedStorage.push({ count: 1, item: { ...card } });
-      window.localStorage.setItem('cart', JSON.stringify(parsedStorage));
-
+      dispatch(addNewItemToCart({ count: 1, item: { ...card, ...options, } }));
       setIsActive(!isActive);
     }
   };
@@ -54,15 +48,10 @@ export const AddToCartBtn: React.FC<Props> = ({ id, card }) => {
   return (
     <button
       type="button"
-      className={classNames(
-        'add-to-cart',
-        { 'add-to-cart_active': isActive },
-      )}
+      className={classNames("add-to-cart", { "add-to-cart_active": isActive })}
       onClick={() => addToCart()}
     >
-      {isActive
-        ? 'Added to cart'
-        : 'Add to cart'}
+      {isActive ? "Added to cart" : "Add to cart"}
     </button>
   );
 };

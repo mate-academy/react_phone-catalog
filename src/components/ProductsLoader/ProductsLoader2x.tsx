@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 import ContentLoader from 'react-content-loader';
 
 export const ProductsLoader2x = (props: any) => (

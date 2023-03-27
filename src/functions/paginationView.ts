@@ -1,4 +1,3 @@
-/* eslint-disable */
 export const paginationView = (
   page: number,
   total: number,

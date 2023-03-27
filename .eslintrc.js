@@ -5,8 +5,30 @@ module.exports = {
       ignoreTemplateLiterals: true,
       ignoreComments: true,
     }],
+
     'jsx-a11y/label-has-associated-control': ["error", {
       assert: "either",
     }],
+
+
+    '@typescript-eslint/no-explicit-any': ['off'],
+
+    'jsx-a11y/no-static-element-interactions': [
+      'error',
+      {
+        handlers: [
+          'onClick',
+          'onMouseDown',
+          'onMouseUp',
+          'onKeyPress',
+          'onKeyDown',
+          'onKeyUp',
+        ],
+        allowExpressionValues: true,
+      },
+    ],
+
+    'jsx-a11y/click-events-have-key-events': 'off',
+
   },
 };

@@ -1,5 +1,7 @@
 export interface ProductInfo {
   additionalFeatures: string;
+  price: number;
+  discount: number;
   android: Android;
   availability?: (string)[] | null;
   battery: Battery;
@@ -9,10 +11,11 @@ export interface ProductInfo {
   display: Display;
   hardware: Hardware;
   id: string;
-  images?: (string)[] | null;
+  images?: (string)[] | null | any;
   name: string;
   sizeAndWeight: SizeAndWeight;
   storage: Storage;
+  type: string;
 }
 
 export interface Android {
@@ -60,6 +63,7 @@ export interface SizeAndWeight {
 }
 
 export interface Storage {
-  flash: string;
+  capacity: string;
+  availableCapacity: string[];
   ram: string;
 }

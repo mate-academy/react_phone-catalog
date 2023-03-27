@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React from 'react';
 
 import Slider from 'react-slick';
@@ -20,16 +19,16 @@ export const Banner:React.FC = () => {
   };
 
   return (
-<div className="banner">
+    <div className="banner">
       <div className="container">
         <Slider
           {...sliderSettings}
           prevArrow={<PrevArrow />}
           nextArrow={<NextArrow />}
         >
-          <img src="img/Preview/preview1.jpg" alt="" />
-          <img src="img/Preview/preview2.jpeg" alt="" />
-          <img src="img/Preview/preview3.jpeg" alt="" />
+          <img src="/img/Preview/preview1.jpg" alt="" />
+          <img src="/img/Preview/preview2.jpg" alt="" />
+          <img src="/img/Preview/preview3.jpg" alt="" />
         </Slider>
       </div>
     </div>

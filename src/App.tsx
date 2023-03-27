@@ -5,8 +5,8 @@ import { Footer } from './components/Footer';
 import { HomePage } from './pages/HomePages';
 import { Phones } from './pages/Phones';
 import { Tablets } from './pages/Tablets';
-import { Accesorize } from './pages/Accesorize';
-import { Favorites } from './pages/Favorites';
+import { Accessories } from './pages/Accessories';
+import { Favourites } from './pages/Favourites';
 import { Cart } from './pages/Cart';
 
 import './App.scss';
@@ -32,11 +32,11 @@ const App = () => {
 
           <Route path="tablets/:productId" element={<ProductDetails />} />
 
-          <Route path="/acccessorize" element={<Accesorize />} />
+          <Route path="/accessories" element={<Accessories />} />
 
-          <Route path="/acccessorize/:productId" element={<ProductDetails />} />
+          <Route path="/accessories/:productId" element={<ProductDetails />} />
 
-          <Route path="/favorites" element={<Favorites />} />
+          <Route path="/favourites" element={<Favourites />} />
 
           <Route path="/cart" element={<Cart />} />
 

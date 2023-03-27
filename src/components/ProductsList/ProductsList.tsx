@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 import React, { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import Select from 'react-select';
@@ -27,7 +25,7 @@ export const ProductsList: React.FC<Props> = ({ phonesList }) => {
 
   const initialSortValue = searchParams.has('sort')
     ? sortOptions.find((item) => item.value === searchParams.get('sort'))
-    || sortOptions[0]
+      || sortOptions[0]
     : sortOptions[0];
 
   const [sortBy, setSortBy] = useState(initialSortValue);
@@ -37,7 +35,7 @@ export const ProductsList: React.FC<Props> = ({ phonesList }) => {
     case 'price':
       sortedList.sort((a: ProductItem, b: ProductItem) => (
         (a.price - ((a.price / 100) * a.discount))
-        - (b.price - ((b.price / 100) * b.discount))
+          - (b.price - ((b.price / 100) * b.discount))
       ));
       break;
     case 'name':
@@ -163,16 +161,16 @@ export const ProductsList: React.FC<Props> = ({ phonesList }) => {
       )}
 
       {totalItemsCount > perPage.value
-    && (
-      <Pagination
-        total={totalItemsCount}
-        perPage={perPage.value}
-        page={page}
-        onPageChange={onPageChange}
-        nextPage={nextPage}
-        prevPage={prevPage}
-      />
-    )}
+      && (
+        <Pagination
+          total={totalItemsCount}
+          perPage={perPage.value}
+          page={page}
+          onPageChange={onPageChange}
+          nextPage={nextPage}
+          prevPage={prevPage}
+        />
+      )}
     </div>
   );
 };

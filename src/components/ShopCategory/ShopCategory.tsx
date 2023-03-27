@@ -3,10 +3,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ProductItem } from '../../types/ProductItem';
 
-// import PhonesImg from 'img/Categories/phones-cat.jpg';
-// import TabletsImg from '../../../public/img/Categories/tablets-cat.jpg';
-// import AccessoriesImg from '../../../public/img/Categories/accessories-cat.jpg';
-
 import './shopCategory.scss';
 
 type Props = {
@@ -17,12 +13,17 @@ export const ShopCategory: React.FC<Props> = ({ products }) => {
   const phonesCount = [...products].filter((item: ProductItem) => (
     item.type === 'phone'
   )).length;
+
+
   const tabletsCount = [...products].filter((item: ProductItem) => (
     item.type === 'tablet'
   )).length;
+
+
   const accessoriesCount = [...products].filter((item: ProductItem) => (
     item.type === 'accessories'
   )).length;
+
 
   return (
     <div className="shopCategory">
@@ -35,7 +36,7 @@ export const ShopCategory: React.FC<Props> = ({ products }) => {
             to="/phones"
             className="shopCategory__item"
           >
-            <img src="/react_phone-catalog/phones-cat.jpg" alt="" />
+            <img src="/img/Categories/phones-cat.jpg" alt="" />
             <h3 className="shopCategory__name">
               Mobile phones
             </h3>
@@ -48,7 +49,7 @@ export const ShopCategory: React.FC<Props> = ({ products }) => {
             to="/tablets"
             className="shopCategory__item"
           >
-            <img src="/react_phone-catalog/tablets-cat.jpg" alt="" />
+            <img src="/img/Categories/tablets-cat.jpg" alt="" />
             <h3 className="shopCategory__name">
               Tablets
             </h3>
@@ -61,7 +62,7 @@ export const ShopCategory: React.FC<Props> = ({ products }) => {
             to="/accessories"
             className="shopCategory__item"
           >
-            <img src="/react_phone-catalog/accessories-cat.jpg" alt="" />
+            <img src="/img/Categories/accessories-cat.jpg" alt="" />
             <h3 className="shopCategory__name">
               Accessories
             </h3>

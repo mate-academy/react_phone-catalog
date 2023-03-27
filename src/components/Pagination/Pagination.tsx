@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 import React, {
   useState,
   useMemo,
@@ -14,15 +12,20 @@ import './pagination.scss';
 
 type Props = {
   total: number,
-  page: number,
   perPage: number,
+  page: number,
   onPageChange: (num: number) => void,
   nextPage: () => void,
   prevPage: () => void,
 };
 
 export const Pagination: React.FC<Props> = ({
-  total, page, perPage, onPageChange, nextPage, prevPage,
+  total,
+  page,
+  perPage,
+  onPageChange,
+  nextPage,
+  prevPage,
 }) => {
   const [prevActive, setPrevActive] = useState(true);
   const [nextActive, setNextActive] = useState(true);

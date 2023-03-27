@@ -13,16 +13,14 @@ export const Nav: React.FC = () => {
             home
           </NavLink>
         </li>
-
         <li>
           <NavLink
             to="/phones"
             className={({ isActive }) => (isActive ? 'active-link' : '')}
           >
-            phones
+            Phones
           </NavLink>
         </li>
-
         <li>
           <NavLink
             to="/tablets"
@@ -31,13 +29,12 @@ export const Nav: React.FC = () => {
             tablets
           </NavLink>
         </li>
-
         <li>
           <NavLink
-            to="/acccessorize"
+            to="/accessories"
             className={({ isActive }) => (isActive ? 'active-link' : '')}
           >
-            accesorise
+            accessories
           </NavLink>
         </li>
       </ul>

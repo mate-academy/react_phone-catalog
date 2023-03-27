@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 import React from 'react';
 import { ReactComponent as Arrow } from '../../icons/small-arrow.svg';
 

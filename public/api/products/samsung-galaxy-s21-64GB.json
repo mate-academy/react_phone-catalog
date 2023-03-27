@@ -1,0 +1,88 @@
+{
+  "id": "samsung-galaxy-s21-64GB",
+  "images": [
+    {
+      "colorName": "Gray",
+      "colorId": "#ccc",
+      "src": [
+        "https://content2.rozetka.com.ua/goods/images/big/45467269.jpg",
+        "https://content.rozetka.com.ua/goods/images/big/45467270.jpg",
+        "https://content2.rozetka.com.ua/goods/images/big/45467271.jpg"
+      ]
+    },
+    {
+      "colorName": "White",
+      "colorId": "#fff",
+      "src": [
+        "https://content.rozetka.com.ua/goods/images/big/45431445.jpg",
+        "https://content.rozetka.com.ua/goods/images/big/45431446.jpg",
+        "https://content.rozetka.com.ua/goods/images/big/45431447.jpg"
+      ]
+    },
+    {
+      "colorName": "Violet",
+      "colorId": "#8F00FF",
+      "src": [
+        "https://content1.rozetka.com.ua/goods/images/big/45447908.jpg",
+        "https://content.rozetka.com.ua/goods/images/big/45447912.jpg",
+        "https://content.rozetka.com.ua/goods/images/big/45447920.jpg"
+      ]
+    }
+  ],
+  "name": "Samsung Galaxy S21 64 GB",
+  "type": "phone",
+  "storage": {
+    "capacity": "64GB",
+    "ram": "12 GB",
+    "availableCapacity": [
+      {
+        "name": "32GB",
+        "link": "samsung-galaxy-s21-32GB"
+      },
+      {
+        "name": "64GB",
+        "link": "samsung-galaxy-s21-64GB"
+      },
+      {
+        "name": "128GB",
+        "link": "samsung-galaxy-s21-128GB"
+      }
+    ]
+  },
+  "price": 799,
+  "discount": 0,
+  "additionalFeatures": "Front Facing 1.3MP Camera",
+  "android": {
+    "os": "Android 12"
+  },
+  "availability": ["Rozetka"],
+  "battery": {
+    "standbyTime": "",
+    "talkTime": "",
+    "type": "Lithium Ion (Li-Ion) (2780 mAH)"
+  },
+  "camera": {
+    "features": ["Flash", "Video"],
+    "primary": "108mp + 12mp + 10mp + 10mp"
+  },
+  "connectivity": {
+    "cell": "3G / LTE / 5G / GPS / 2 SIM",
+    "gps": true,
+    "infrared": false,
+    "wifi": "802.11 b/g"
+  },
+  "description": "Meet the Galaxy S22 Ultra with Note capabilities. A sleek polished bezel encircles the case with a raised surface for a symmetrical elegance. And the camera block drawn in a line, accented by the same rings of lenses, seems to be hovering over the back cover.",
+  "display": {
+    "screenResolution": "Dynamic AMOLED 2X, 3088x1440",
+    "screenSize": "6.8 inches",
+    "touchScreen": true
+  },
+  "hardware": {
+    "accelerometer": true,
+    "audioJack": "3.5mm",
+    "cpu": "nVidia Tegra T20",
+    "fmRadio": false,
+    "physicalKeyboard": false,
+    "usb": "USB 2.0"
+  }
+}
