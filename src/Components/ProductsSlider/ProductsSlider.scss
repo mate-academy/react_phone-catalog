@@ -1,0 +1,49 @@
+@import "../../Style/utils/variables.scss";
+
+.sliderProduct {
+  &__header {
+    display: flex;
+    margin-bottom: 24px;
+    justify-content: space-between;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    background-color: $White;
+    border: 1px solid $Icons;
+    cursor: pointer;
+    background-size: 6px 10px;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: border 300ms;
+
+    &:hover {
+      border: 1px solid $Primary;
+    }
+
+    &--prev {
+      background-image: url(../../images/icons/iconPrev.svg);
+    }
+
+    &--next {
+      background-image: url(../../images/icons/iconNext.svg);
+    }
+  }
+
+  &__container {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  &__imageBlock {
+    width: 100%;
+    display: flex;
+    transition: transform 300ms;
+  }
+}

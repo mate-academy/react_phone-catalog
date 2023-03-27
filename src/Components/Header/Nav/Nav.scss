@@ -1,4 +1,5 @@
 @import "../../../Style/utils/variables.scss";
+@import "../../../Style/utils/placecholder.scss";
 
 .nav {
   &__list {
@@ -11,16 +12,13 @@
   }
 
   &__link {
+    @extend %h4;
     display: block;
     position: absolute;
-    padding: 27px 0;
+    padding: 25px 0;
     text-transform: uppercase;
     text-decoration: none;
     color: $Secondary;
-    font-family: inherit;
-    font-weight: 700;
-    font-size: 12px;
-    line-height: 11px;
     transition: all 100ms;
 
     &--active {

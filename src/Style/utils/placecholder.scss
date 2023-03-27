@@ -1,0 +1,50 @@
+@import "./fonts.scss";
+
+%h1 {
+  font-family: "Mont", sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 41px;
+}
+
+%h2 {
+  font-family: "Mont", sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 140%;
+}
+
+%h3 {
+  font-family: "Mont", sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 26px;
+}
+
+%h4 {
+  font-family: "Mont", sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 11px;
+}
+
+%h5 {
+  font-family: "Mont", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+%h6 {
+  font-family: "Mont", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+%h7 {
+  font-family: "Mont", sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+}

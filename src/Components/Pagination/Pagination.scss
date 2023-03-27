@@ -1,0 +1,57 @@
+@import "../../Style/utils/variables.scss";
+@import "../../Style/utils/placecholder.scss";
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+
+  &__button {
+    width: 32px;
+    height: 32px;
+  }
+
+  &__arrow {
+    border: 1px solid $Icons;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: border-color 300ms;
+
+    &:hover {
+      border-color: $Primary;
+    }
+
+    &--prev {
+      background-image: url(../../images/icons/iconPrev.svg);
+    }
+    
+    &--next {
+      background-image: url(../../images/icons/iconNext.svg);
+    }
+  }
+
+  &__pages {
+    @extend %h6;
+    display: flex;
+    gap: 8px;
+  }
+
+  &__page {
+    border: 1px solid $Elements;
+    text-align: center;
+    line-height: 32px;
+    cursor: pointer;
+    user-select: none;
+    color: #000;
+    transition: border-color 300ms;
+
+    &:hover {
+      border-color: $Primary;
+    }
+
+    &--active {
+      color: $White;
+      background-color: $Primary;
+    }
+  }
+}

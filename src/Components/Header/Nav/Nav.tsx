@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 import './Nav.scss';
 
-const navigationLinks = ['home', 'phones', 'tablets', 'accessories'];
+const navigationLinks = ['', 'phones', 'tablets', 'accessories'];
 
 export const Nav = () => {
   return (
@@ -18,7 +18,7 @@ export const Nav = () => {
                 { 'nav__link--active': isActive },
               )}
             >
-              {link}
+              {link || 'home'}
             </NavLink>
           </li>
         ))}

@@ -1,0 +1,90 @@
+@import "../../Style/utils/variables.scss";
+
+.slider {
+  &__lables {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+  }
+
+  &__lable {
+    display: block;
+    background-color: $Elements;
+    width: 14px;
+    height: 4px;
+
+    &--active {
+      background-color: $Primary;
+    }
+  }
+
+  &__content {
+    width: 100%;
+    padding-bottom: 18px;
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    height: 400px;
+  }
+
+  &__button {
+    background-color: $White;
+    height: 100%;
+    width: 32px;
+    border: 1px solid $Icons;
+    cursor: pointer;
+    transition: all 300ms;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 6px;
+
+    &:hover {
+      transform: scale(1.05, 1);
+      border: 1px solid $Primary;
+    }
+
+    &--prev {
+      background-image: url(../../images/icons/iconPrev.svg);
+    }
+
+    &--next {
+      background-image: url(../../images/icons/iconNext.svg);
+    }
+  }
+
+  &__container {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  &__imageBlock {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-grow: 1;
+    transition: transform 500ms;
+  }
+
+  &__image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 100%;
+    max-width: 100%;
+    height: 100%;
+
+    &--1 {
+      background-image: url(../../images/slider/accessories.jpg);
+    }
+    &--2 {
+      background-image: url(../../images/slider/slider-iphones.png);
+    }
+    &--3 {
+      background-image: url(../../images/slider/tablets.jpg);
+    }
+    &--4 {
+      background-image: url(../../images/slider/tablets2.jpg);
+    }
+  }
+}

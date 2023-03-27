@@ -1,8 +1,9 @@
-// @import './utils/typegraphy.scss';
+@import "./utils/fonts.scss";
+@import "./utils/placecholder.scss";
 
 body {
   margin: 0;
-  font-family: "Mont regular", sans-serif;
+  font-family: "Mont", sans-serif;
   font-weight: 600;
 }
 
@@ -12,7 +13,18 @@ ul {
   margin: 0;
 }
 
-li {
+li,
+p,
+h1 {
   padding: 0;
   margin: 0;
+}
+
+.container {
+  max-width: 1136px;
+  margin: 0 auto;
+}
+
+h1 {
+  @extend %h1;
 }
