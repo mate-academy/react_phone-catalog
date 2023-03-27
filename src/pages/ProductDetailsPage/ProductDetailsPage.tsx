@@ -73,7 +73,7 @@ export const ProductDetailsPage: React.FC = () => {
               <div className="product-details__photos">
                 {deviceInfo.images.map(photo => (
                   <img
-                    src={`_new/${photo}`}
+                    src={`new/${photo}`}
                     alt="#"
                     aria-hidden="true"
                     key={photo}

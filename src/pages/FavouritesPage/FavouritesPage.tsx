@@ -8,21 +8,16 @@ import { useLocalStorage } from '../../utils/useLocalStorage';
 
 import './FavouritesPage.scss';
 
-export const FavouritePage: React.FC = () => {
+export const FavouritesPage: React.FC = () => {
   const [products] = useLocalStorage<Product[]>('products', []);
   const { favourites } = useContext(FavouritesContext);
   const searchParams = new URLSearchParams(useLocation().search);
   const query = searchParams.get('query')?.toString() || '';
 
-  let visibleProducts = useMemo(() => {
-    return products.filter(product => favourites.includes(product.id));
-  }, [favourites]);
-
-  if (query) {
-    visibleProducts = visibleProducts.filter(product => {
-      return product.name.toLowerCase().includes(query);
-    });
-  }
+  const visibleProducts = useMemo(() => {
+    return products.filter(product => favourites.includes(product.id)
+      && (!query || product.name.toLowerCase().includes(query)));
+  }, [favourites, query]);
 
   return (
     <main>

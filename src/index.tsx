@@ -10,7 +10,7 @@ import { App } from './App';
 import { HomePage, NotFoundPage } from './pages';
 import { Cart } from './pages/Cart/Cart';
 import { CatalogList } from './pages/CatalogList/CatalogList';
-import { FavouritePage } from './pages/FavouritesPage/FavouritesPage';
+import { FavouritesPage } from './pages/FavouritesPage/FavouritesPage';
 import {
   ProductDetailsPage,
 } from './pages/ProductDetailsPage/ProductDetailsPage';
@@ -32,7 +32,7 @@ ReactDOM.render(
         />
         <Route path="/accessories/*" element={<ProductDetailsPage />} />
         <Route path="/cart" element={<Cart />} />
-        <Route path="/favorites" element={<FavouritePage />} />
+        <Route path="/favorites" element={<FavouritesPage />} />
 
         <Route path="*" element={<NotFoundPage />} />
       </Route>
