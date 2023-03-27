@@ -46,6 +46,20 @@ export const Dropdown:React.FC<Props> = (
     setActive(false);
   };
 
+  useEffect(() => {
+    if (lengthList) {
+      listOptions.forEach((el:string) => {
+        if (lengthList < +el) {
+          choosSelected(`${lengthList}`);
+        }
+      });
+
+      if (lengthList > +selected) {
+        choosSelected(`${lengthList}`);
+      }
+    }
+  }, [lengthList]);
+
   return (
     <div className="dropdown">
       <div
@@ -71,7 +85,7 @@ export const Dropdown:React.FC<Props> = (
             type="button"
             disabled={lengthList ? lengthList < +el : false}
             onClick={() => choose(el)}
-            key={el}
+            key={Math.random() * (100 - 1) + 1}
             className={classNames('',
               {
                 selected: el === selected,

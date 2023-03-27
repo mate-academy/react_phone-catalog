@@ -18,11 +18,13 @@ enum SortProducts {
   'screen' = 'Screen',
 }
 
+const optionsListPageCount = ['16', '8', '4'];
+
 export const ProductCatalog = () => {
   const [searchParams] = useSearchParams();
   const { pathname } = useLocation();
   const [sortBy, setSortBy] = useState(searchParams.get('sort') || 'Default');
-  const [items, setItems] = useState('16');
+  const [items, setItems] = useState(searchParams.get('perPage') || '16');
   const [start, setStart] = useState(0);
   const [end, setEnd] = useState(16);
   const [currentStep, setCurrentStep] = useState(0);
@@ -168,7 +170,7 @@ export const ProductCatalog = () => {
                 <div className="drop-second">
                   <h3>Items on page</h3>
                   <Dropdown
-                    listOptions={['16', '8', '4']}
+                    listOptions={optionsListPageCount}
                     selected={items}
                     choosSelected={setItems}
                     lengthList={renderFilterList.length}
