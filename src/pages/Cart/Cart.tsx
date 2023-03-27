@@ -14,7 +14,12 @@ export const CardsPage: React.FC = () => {
   const [warning, setWarning] = useState(false);
   const [products] = useLocalStorage<Product[]>('products', []);
   const { cart, setCart } = useContext(CartContext);
-  const cards = JSON.parse(localStorage.getItem('carts') || '');
+  /* eslint-disable  @typescript-eslint/no-explicit-any */
+  let cards: any[] = [];
+
+  if (cart.length) {
+    cards = JSON.parse(localStorage.getItem('carts') || '');
+  }
 
   const visibleProducts = useMemo(() => {
     return products.filter(product => cart.some((value: CardItem) => {
@@ -87,7 +92,7 @@ export const CardsPage: React.FC = () => {
                     x
                   </button>
 
-                  <img src={`_new/${product.image}`} alt="#" className="cart__item-image" />
+                  <img src={`new/${product.image}`} alt="#" className="cart__item-image" />
                   <h2 className="cart__item-title">{product.name}</h2>
                   <div className="cart__item-counter">
                     <button

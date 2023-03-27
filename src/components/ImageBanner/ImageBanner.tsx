@@ -10,8 +10,8 @@ type Props = {
 export const ImageBanner: FC<Props> = ({ activeBanner, image, index }) => {
   return (
     <img
-      //src={(`${image}`)}
-      src={`${process.env.PUBLIC_URL}${image}`}
+      // src={(`${image}`)}
+      src={image}
       alt=""
       className={classNames(
         'banner__img',

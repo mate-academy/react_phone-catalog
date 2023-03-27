@@ -6,7 +6,8 @@ import './Breadcrumbs.scss';
 
 export const Breadcrumbs: React.FC = () => {
   const location = useLocation().pathname.split('/').slice(1);
-  const pathName = location.join('').toUpperCase();
+  const pathName = location
+    .join('')[0].toUpperCase() + location.join('').slice(1);
 
   return (
     <div className="breadcrumbs" data-cy="breadCrumbs">

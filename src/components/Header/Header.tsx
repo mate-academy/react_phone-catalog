@@ -13,7 +13,11 @@ export const Header: React.FC = () => {
   const { favourites } = useContext(FavouritesContext);
   const { cart } = useContext(CartContext);
   const { pathname } = useLocation();
-  const isHomePage = pathname !== '/';
+  const path = pathname.slice(1);
+  const isSearch = path === 'phones'
+    || path === 'tablets'
+    || path === 'accessories'
+    || path === 'favorites';
 
   return (
     <header className="header">
@@ -21,7 +25,7 @@ export const Header: React.FC = () => {
         <Navbar />
       </div>
       <div className="header-right">
-        {isHomePage && <Search />}
+        {isSearch && <Search />}
         <NavLink to="/favorites" className="header__icon">
           <Like />
           {!!favourites.length && (

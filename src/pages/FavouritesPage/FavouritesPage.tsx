@@ -1,4 +1,5 @@
 import React, { useContext, useMemo } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 import { ProductCard } from '../../components/ProductCard/ProductCard';
 import { FavouritesContext } from '../../helpers/FavouritesProvider';
@@ -10,10 +11,18 @@ import './FavouritesPage.scss';
 export const FavouritePage: React.FC = () => {
   const [products] = useLocalStorage<Product[]>('products', []);
   const { favourites } = useContext(FavouritesContext);
+  const searchParams = new URLSearchParams(useLocation().search);
+  const query = searchParams.get('query')?.toString() || '';
 
-  const visibleProducts = useMemo(() => {
+  let visibleProducts = useMemo(() => {
     return products.filter(product => favourites.includes(product.id));
   }, [favourites]);
+
+  if (query) {
+    visibleProducts = visibleProducts.filter(product => {
+      return product.name.toLowerCase().includes(query);
+    });
+  }
 
   return (
     <main>

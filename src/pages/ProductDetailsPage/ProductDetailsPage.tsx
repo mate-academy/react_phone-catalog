@@ -78,13 +78,13 @@ export const ProductDetailsPage: React.FC = () => {
                     aria-hidden="true"
                     key={photo}
                     className="product-details__set-photo"
-                    onClick={() => setDevicePhoto(`../_new/${photo}`)}
+                    onClick={() => setDevicePhoto(`../new/${photo}`)}
                   />
                 ))}
               </div>
 
               <img
-                src={devicePhoto || `_new/${device.image}`}
+                src={devicePhoto || `new/${device.image}`}
                 alt="#"
                 className="product-details__photo"
               />
