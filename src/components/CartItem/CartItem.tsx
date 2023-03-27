@@ -1,3 +1,4 @@
+/* eslint-disable  @typescript-eslint/no-explicit-any */
 import React, { useState, useEffect } from 'react';
 import { CartList } from '../../types/CartList';
 import { ReactComponent as Close } from '../../icons/close.svg';

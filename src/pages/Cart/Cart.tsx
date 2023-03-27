@@ -1,3 +1,4 @@
+/* eslint-disable  @typescript-eslint/no-explicit-any */
 import React from 'react';
 import { BackBtn } from '../../components/BackBtn';
 import { CartItem } from '../../components/CartItem/CartItem';

@@ -1,3 +1,4 @@
+/* eslint-disable  @typescript-eslint/no-explicit-any */
 import React, { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import Select from 'react-select';

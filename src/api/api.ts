@@ -1,6 +1,6 @@
 /* eslint-disable */
-const PRODUCTS = '/api/products.json';
-const PRODUCT_DETAILS = '/api/products/';
+const PRODUCTS = `${process.env.REACT_APP_LINK}api/products.json`;
+const PRODUCT_DETAILS = `${process.env.REACT_APP_LINK}api/products/`;
 
 export const getProducts = () => fetch(PRODUCTS)
   .then((res) => {

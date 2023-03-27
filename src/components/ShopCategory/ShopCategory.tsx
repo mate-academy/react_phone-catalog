@@ -36,7 +36,7 @@ export const ShopCategory: React.FC<Props> = ({ products }) => {
             to="/phones"
             className="shopCategory__item"
           >
-            <img src="/img/Categories/phones-cat.jpg" alt="" />
+            <img src="./react_phone-catalog/img/Categories/phones-cat.jpg" alt="" />
             <h3 className="shopCategory__name">
               Mobile phones
             </h3>
@@ -49,7 +49,7 @@ export const ShopCategory: React.FC<Props> = ({ products }) => {
             to="/tablets"
             className="shopCategory__item"
           >
-            <img src="/img/Categories/tablets-cat.jpg" alt="" />
+            <img src="./react_phone-catalog/img/Categories/tablets-cat.jpg" alt="" />
             <h3 className="shopCategory__name">
               Tablets
             </h3>
@@ -62,7 +62,7 @@ export const ShopCategory: React.FC<Props> = ({ products }) => {
             to="/accessories"
             className="shopCategory__item"
           >
-            <img src="/img/Categories/accessories-cat.jpg" alt="" />
+            <img src="./react_phone-catalog/img/Categories/accessories-cat.jpg" alt="" />
             <h3 className="shopCategory__name">
               Accessories
             </h3>

@@ -1,3 +1,4 @@
+/* eslint-disable  @typescript-eslint/no-explicit-any */
 import ContentLoader from 'react-content-loader';
 
 export const ProductsLoader2x = (props: any) => (

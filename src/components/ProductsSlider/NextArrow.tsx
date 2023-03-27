@@ -1,3 +1,4 @@
+/* eslint-disable  @typescript-eslint/no-explicit-any */
 import React from 'react';
 import { ReactComponent as Arrow } from '../../icons/small-arrow.svg';
 
