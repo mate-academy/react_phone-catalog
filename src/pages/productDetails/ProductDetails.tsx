@@ -1,9 +1,14 @@
-import { useEffect, useMemo, useState } from 'react';
+import {
+  useContext, useEffect, useMemo, useState,
+} from 'react';
 import { useParams } from 'react-router-dom';
 import { Error } from '../../components/error/Error';
 import { Loader } from '../../components/Loader/Loader';
+import { Catalog } from '../../components/productSlider/ProductSlider';
 import { Way } from '../../components/way/Way';
 import { requestDetailsProduct } from '../../helpers/api';
+import { GlobalContext } from '../../reducer';
+import { Product } from '../../types/product';
 import { IproductDetails } from '../../types/productDetails';
 import { Capacity } from './components/capacity/Capacity';
 import { Colors } from './components/colors/Colors';
@@ -14,11 +19,13 @@ import { Property } from './components/property/Property';
 import './productDetails.scss';
 
 export const ProductDetails = () => {
+  const [state] = useContext(GlobalContext);
   const { id = '' } = useParams();
   const [details, setDetails] = useState<IproductDetails | null>(null);
   const [error, setError] = useState(false);
 
   useEffect(() => {
+    window.scroll({ top: 0, left: 0, behavior: 'smooth' });
     if (id) {
       requestDetailsProduct(id).then((res) => setDetails(res))
         .catch(() => setError(true));
@@ -91,6 +98,11 @@ export const ProductDetails = () => {
     <section className="details-wrapper">
       <Way />
       {!details ? <Loader /> : renderDetails}
+      <Catalog
+        title="You may also like"
+        list={state.catalogsProducts
+          .filter((el:Product) => el.type === state.selectedProduct?.type)}
+      />
     </section>
   );
 };

@@ -7,12 +7,13 @@ type Props = {
   way: string,
   children?: ReactNode,
   classStyle: string,
-  onClick?: () => void
+  onClick?: () => void,
+  active?: boolean
 };
 
 export const NavLinkCustom:React.FC<Props> = (
   {
-    text, way, children, classStyle, ...props
+    text, way, children, classStyle, active, ...props
   },
 ) => {
   const { search } = useLocation();
@@ -22,7 +23,7 @@ export const NavLinkCustom:React.FC<Props> = (
       style={{ textDecoration: 'none' }}
       className={({ isActive }) => {
         return classNames(`${classStyle}`, {
-          'active-link': isActive,
+          'active-link': isActive && !active,
         });
       }}
       to={`${way}${search}`}

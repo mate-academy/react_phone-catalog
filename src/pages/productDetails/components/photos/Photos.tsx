@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import './photo.scss';
 
@@ -8,6 +8,10 @@ type Props = {
 
 export const Photos:React.FC<Props> = ({ listImages }) => {
   const [photo, setPhoto] = useState(listImages[0]);
+
+  useEffect(() => {
+    setPhoto(listImages[0]);
+  }, [listImages]);
 
   const choosePhoto = (image:string) => {
     setPhoto(image);

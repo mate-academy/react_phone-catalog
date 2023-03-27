@@ -40,6 +40,7 @@ export const Card: React.FC<Props> = ({ product }) => {
         way={createPath()}
         onClick={setSelectProduct}
         classStyle="card-title"
+        active
       >
         {product.name}
       </NavLinkCustom>

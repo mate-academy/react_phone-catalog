@@ -30,8 +30,10 @@ export const AddToCart:React.FC<Props> = ({ product }) => {
       .some((el:
       { item:Product, value: number }) => el.item.age === product.age)) {
       setSelected(true);
+    } else {
+      setSelected(false);
     }
-  }, [state.basketList]);
+  }, [state.basketList, state.selectedProduct]);
 
   return (
     <button
