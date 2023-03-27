@@ -22,7 +22,7 @@ export const CartProvider: FC = ({ children }) => {
       cart,
       setCart,
     };
-  }, [cart.length]);
+  }, [cart]);
 
   return (
     <CartContext.Provider value={contextValue}>

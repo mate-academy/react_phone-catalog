@@ -33,7 +33,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       </NavLink>
 
       <img
-        src={`_new/${image}`}
+        src={`new/${image}`}
         alt={name}
         className="product-card__image"
       />

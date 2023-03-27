@@ -1,5 +1,10 @@
 import classNames from 'classnames';
-import React, { useState, useMemo, useContext } from 'react';
+import React, {
+  useState,
+  useMemo,
+  useContext,
+  useCallback,
+} from 'react';
 import { BackButton } from '../../components/BackButton/BackButton';
 import { CartContext } from '../../helpers/CartProvider';
 import { CardItem } from '../../types/CardItem';
@@ -9,17 +14,10 @@ import { warningTimer } from '../../utils/warningTimer';
 
 import './Cart.scss';
 
-export const CardsPage: React.FC = () => {
-  const [render, setRender] = useState(false);
+export const Cart: React.FC = () => {
   const [warning, setWarning] = useState(false);
   const [products] = useLocalStorage<Product[]>('products', []);
   const { cart, setCart } = useContext(CartContext);
-  /* eslint-disable  @typescript-eslint/no-explicit-any */
-  let cards: any[] = [];
-
-  if (cart.length) {
-    cards = JSON.parse(localStorage.getItem('carts') || '');
-  }
 
   const visibleProducts = useMemo(() => {
     return products.filter(product => cart.some((value: CardItem) => {
@@ -31,11 +29,9 @@ export const CardsPage: React.FC = () => {
     setCart(prev => [
       ...prev.filter((p: CardItem) => p.id !== product.id),
     ]);
-
-    setRender(!render);
   };
 
-  const increaseCountCart = (product: Product) => {
+  const increaseCountCart = useCallback((product: Product) => {
     setCart(prevCart => prevCart.map(carts => {
       if (carts.id === product.id) {
         return {
@@ -46,11 +42,9 @@ export const CardsPage: React.FC = () => {
 
       return carts;
     }));
+  }, [cart]);
 
-    setRender(!render);
-  };
-
-  const decreaseCountCart = (product: Product) => {
+  const decreaseCountCart = useCallback((product: Product) => {
     setCart(prevCart => prevCart.map(carts => {
       if (carts.id === product.id) {
         return {
@@ -61,13 +55,11 @@ export const CardsPage: React.FC = () => {
 
       return carts;
     }));
+  }, [cart]);
 
-    setRender(!render);
-  };
-
-  const totalPrice = cart.map((product: CardItem) => {
+  const totalPrice = useCallback(cart.map((product: CardItem) => {
     return product.price * product.count;
-  }).reduce((a: number, b: number) => a + b, 0);
+  }).reduce((a: number, b: number) => a + b, 0), [cart]);
 
   const isWarning = () => {
     setWarning(true);
@@ -101,7 +93,7 @@ export const CardsPage: React.FC = () => {
                         'cart__item-count-btn',
                         {
                           'cart__item-count-btn--active':
-                            cards.find((p: CardItem) => p.id === product.id),
+                            cart.find((p: CardItem) => p.id === product.id),
                         },
                       )}
                       onClick={() => decreaseCountCart(product)}
@@ -109,7 +101,7 @@ export const CardsPage: React.FC = () => {
                       -
                     </button>
 
-                    {cards.find((p: CardItem) => p.id === product.id).count}
+                    {cart.find((p: CardItem) => p.id === product.id).count}
                     <button
                       type="button"
                       className="
@@ -125,6 +117,7 @@ export const CardsPage: React.FC = () => {
                 </div>
               ))}
             </div>
+
             <div className="cart__sum">
               {warning && (
                 <p>
@@ -132,7 +125,7 @@ export const CardsPage: React.FC = () => {
                 </p>
               )}
               <h2 className="cart__sum-amout">{`$${totalPrice}`}</h2>
-              <p className="cart__sum-items">{`Total for ${cards.length} items`}</p>
+              <p className="cart__sum-items">{`Total for ${cart.length} items`}</p>
               <button
                 className="cart__sum-button"
                 type="button"

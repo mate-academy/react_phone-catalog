@@ -1,6 +1,5 @@
 import { createContext, FC, useMemo } from 'react';
 
-// Hooks
 import { useLocalStorage } from '../utils/useLocalStorage';
 
 export const FavouritesContext = createContext({
@@ -21,7 +20,7 @@ export const FavouritesProvider: FC = ({ children }) => {
       favourites,
       setFavourites,
     };
-  }, [favourites.length]);
+  }, [favourites]);
 
   return (
     <FavouritesContext.Provider value={contextValue}>
