@@ -78,7 +78,7 @@ export const ProductDetailsPage: React.FC = () => {
                     aria-hidden="true"
                     key={photo}
                     className="product-details__set-photo"
-                    onClick={() => setDevicePhoto(`../new/${photo}`)}
+                    onClick={() => setDevicePhoto(`new/${photo}`)}
                   />
                 ))}
               </div>
