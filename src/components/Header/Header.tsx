@@ -22,10 +22,11 @@ import { loadCart } from '../../redux/reducers/cartSlice';
 import './header.scss';
 
 export const Header: React.FC = () => {
-  const dispatch = useAppDispatch();
   const { favourites } = useAppSelector(state => state.favourites);
   const { cart } = useAppSelector(state => state.cart);
   const cartCount = cart.reduce((prev, current) => prev + +current.count, 0);
+
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     dispatch(getProductsAction());

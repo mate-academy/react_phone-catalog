@@ -111,7 +111,9 @@ export const ProductDetails: React.FC = () => {
                           <div
                             className="circle"
                             style={{ backgroundColor: item.colorId }}
-                          />
+                          >
+                            «
+                          </div>
                         </div>
                       ))}
                   </div>
