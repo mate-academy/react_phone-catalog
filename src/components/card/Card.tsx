@@ -32,7 +32,7 @@ export const Card: React.FC<Props> = ({ product }) => {
 
   return (
     <div className="container-card" data-cy="cardsContainer">
-      <img src={`./${product.imageUrl}`} alt="product" />
+      <img src={`./${product.imageUrl}`} alt="product" className="container-card__product" />
       <NavLinkCustom
         way={createPath()}
         onClick={setSelectProduct}

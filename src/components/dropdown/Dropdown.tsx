@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import classNames from 'classnames';
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import './dropdown.scss';
 
@@ -26,7 +26,7 @@ export const Dropdown: React.FC<Props> = ({
   }, [pathname]);
 
   const openMenu = () => {
-    setActive(!active);
+    setActive(prev => !prev);
   };
 
   const choose = (item: string) => {
@@ -58,13 +58,6 @@ export const Dropdown: React.FC<Props> = ({
     }
   }, [lengthList]);
 
-  const disable = useCallback(
-    (el: string) => {
-      return lengthList ? lengthList < +el : false;
-    },
-    [lengthList],
-  );
-
   return (
     <div className="dropdown">
       <div className="currently-value" onClick={openMenu} onKeyDown={openMenu}>
@@ -82,20 +75,24 @@ export const Dropdown: React.FC<Props> = ({
           'active-menu': active,
         })}
       >
-        {listOptions.map((el) => (
-          <button
-            type="button"
-            disabled={disable(el)}
-            onClick={() => choose(el)}
-            key={Math.random() * (100 - 1) + 1}
-            className={classNames({
-              selected: el === selected,
-              disable: disable(el),
-            })}
-          >
-            {el}
-          </button>
-        ))}
+        {listOptions.map((el) => {
+          const isDisable = lengthList ? lengthList < +el : false;
+
+          return (
+            <button
+              type="button"
+              disabled={isDisable}
+              onClick={() => choose(el)}
+              key={Math.random() * (100 - 1) + 1}
+              className={classNames({
+                selected: el === selected,
+                disable: isDisable,
+              })}
+            >
+              {el}
+            </button>
+          );
+        })}
       </div>
     </div>
   );

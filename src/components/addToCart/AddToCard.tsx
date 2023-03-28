@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import { useContext, useEffect, useState } from 'react';
-import { setLocalStorageItem } from '../../helpers/util';
+import { getItemLocalStorage, setLocalStorageItem } from '../../helpers/util';
 import { addBasket, GlobalContext, removeProductInBasket } from '../../reducer';
 import { Product } from '../../types/product';
 import { ShoppingProduct } from '../../types/shoppingProduct';
@@ -13,7 +13,7 @@ type Props = {
 
 export const AddToCart: React.FC<Props> = ({ product }) => {
   const [state, dispatch] = useContext(GlobalContext);
-  const [selected, setSelected] = useState(false);
+  const [isSelected, setIsSelected] = useState(false);
 
   const addProductToBasket = (item: Product) => {
     if (!state.basketList.some((el: ShoppingProduct) => el.item === item)) {
@@ -27,7 +27,7 @@ export const AddToCart: React.FC<Props> = ({ product }) => {
 
   const remove = () => {
     const list: ShoppingProduct[] | []
-      = JSON.parse(localStorage.getItem('shoppingList') as string) || [];
+      = getItemLocalStorage('shoppingList') || [];
 
     if (list.length) {
       setLocalStorageItem(
@@ -43,7 +43,7 @@ export const AddToCart: React.FC<Props> = ({ product }) => {
   };
 
   useEffect(() => {
-    setSelected(
+    setIsSelected(
       state.basketList.some(
         (el: ShoppingProduct) => el.item.age === product.age,
       ),
@@ -51,18 +51,18 @@ export const AddToCart: React.FC<Props> = ({ product }) => {
   }, [state.basketList, state.selectedProduct]);
 
   const actionButtonHandler = () => {
-    return selected ? removeProductCard() : addProductToBasket(product);
+    return isSelected ? removeProductCard() : addProductToBasket(product);
   };
 
   return (
     <button
       type="button"
       className={classNames('card-button', {
-        selected,
+        selected: isSelected,
       })}
       onClick={actionButtonHandler}
     >
-      {selected ? 'Added to cart' : 'Add to cart'}
+      {isSelected ? 'Added to cart' : 'Add to cart'}
     </button>
   );
 };
