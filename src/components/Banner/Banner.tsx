@@ -28,7 +28,7 @@ export const Banner:React.FC = () => {
           nextArrow={<NextArrow />}
         >
           <img
-            src={`${process.env.PUBLIC_URL}` + '/img/Preview/preview1.jpg'}
+            src= './img/Preview/preview1.jpg'
             alt=""
           />
           <img
