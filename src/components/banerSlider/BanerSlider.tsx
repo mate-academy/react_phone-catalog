@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import { Slider } from '../slider/Slider';
 import './slider.scss';
 
+const banners = [
+  './img/banners/banner-accessories.png',
+  './img/banners/banner-phones.png',
+  './img/banners/banner-tablets.png'];
+
 export const BanerSlider:React.FC = () => {
   const [step, setStep] = useState(-1);
-  const banners = [
-    './img/banners/banner-accessories.png',
-    './img/banners/banner-phones.png',
-    './img/banners/banner-tablets.png'];
 
   return (
     <div className="wrapper-banner">

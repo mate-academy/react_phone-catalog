@@ -1,4 +1,8 @@
 import { useContext } from 'react';
+import {
+  getItemLocalStorage,
+  setLocalStorageItem,
+} from '../../../helpers/util';
 import { GlobalContext } from '../../../reducer';
 import { ShoppingProduct } from '../../../types/shoppingProduct';
 import './cardPrice.scss';
@@ -14,16 +18,12 @@ export const ShoppingCard:React.FC<Props> = ({ product }) => {
     product.item.price / 100) * product.item.discount;
 
   const remove = () => {
-    const list: ShoppingProduct [] | [] = JSON
-      .parse(localStorage.getItem('shoppingList') as string) || [];
+    const list: ShoppingProduct [] = getItemLocalStorage('shoppingList')
+    || [];
 
     if (list.length) {
-      localStorage
-        .setItem(
-          'shoppingList',
-          JSON.stringify(list
-            .filter((el: ShoppingProduct) => el.item.age !== product.item.age)),
-        );
+      setLocalStorageItem('shoppingList', (list
+        .filter((el: ShoppingProduct) => el.item.age !== product.item.age)));
     }
   };
 

@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
+import { setLocalStorageItem } from '../../helpers/util';
 import { GlobalContext } from '../../reducer';
 import { Product } from '../../types/product';
 
@@ -13,27 +14,19 @@ export const AddToFavorite:React.FC<Props> = ({ product }) => {
   const [selectedLike, setSelectedLike] = useState(false);
 
   const remove = () => {
-    const list: Product [] | [] = JSON
+    const list: Product [] = JSON
       .parse(localStorage.getItem('likeList') as string) || [];
 
     setSelectedLike(false);
     if (list.length) {
-      localStorage
-        .setItem(
-          'likeList',
-          JSON.stringify(list
-            .filter((el: Product) => el.age !== product.age)),
-        );
+      setLocalStorageItem('likeList', list
+        .filter((el: Product) => el.age !== product.age));
     }
   };
 
   const setLike = () => {
     dispatch({ type: 'addFavorite', product });
-    localStorage
-      .setItem(
-        'likeList',
-        JSON.stringify([...state.favoriteProducts, product]),
-      );
+    setLocalStorageItem('likeList', [...state.favoriteProducts, product]);
   };
 
   const removeLike = () => {
@@ -55,9 +48,7 @@ export const AddToFavorite:React.FC<Props> = ({ product }) => {
       type="button"
       data-cy="addToFavorite"
       className="like-button"
-      onClick={() => (selectedLike
-        ? removeLike()
-        : setLike())}
+      onClick={selectedLike ? removeLike : setLike}
     >
       <img
         className="hearth"

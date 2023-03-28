@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import classNames from 'classnames';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import './dropdown.scss';
 
@@ -60,6 +60,10 @@ export const Dropdown:React.FC<Props> = (
     }
   }, [lengthList]);
 
+  const disable = useCallback((el: string) => {
+    return lengthList ? lengthList < +el : false;
+  }, [lengthList]);
+
   return (
     <div className="dropdown">
       <div
@@ -83,14 +87,15 @@ export const Dropdown:React.FC<Props> = (
         {listOptions.map((el) => (
           <button
             type="button"
-            disabled={lengthList ? lengthList < +el : false}
+            disabled={disable(el)}
             onClick={() => choose(el)}
             key={Math.random() * (100 - 1) + 1}
-            className={classNames('',
+            className={classNames(
               {
                 selected: el === selected,
-                disable: lengthList ? lengthList < +el : false,
-              })}
+                disable: disable(el),
+              },
+            )}
           >
             {el}
           </button>

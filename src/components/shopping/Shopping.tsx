@@ -31,16 +31,14 @@ export const Shopping = () => {
             <>
               <div className="wrapper-shopping-cards">
                 {
-                  state.basketList.map((product: ShoppingProduct) => {
-                    return (
-                      <ShoppingCard product={product} key={product.item.age} />
-                    );
-                  })
+                  state.basketList.map((product: ShoppingProduct) => (
+                    <ShoppingCard product={product} key={product.item.age} />
+                  ))
                 }
               </div>
               <div className="total-info" data-cy="productQauntity">
                 <div className="total-info__cost">
-                  <h2>{totalCost}</h2>
+                  <h2>{`$${totalCost}`}</h2>
                   <span>{`Total for ${state.basketList.length} items`}</span>
                 </div>
                 <div className="total-info__checkout">

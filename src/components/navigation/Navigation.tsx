@@ -22,10 +22,12 @@ export const Navigation: React.FC<Props> = ({ favorite, shoping }) => {
   const [search, setSearch] = useState(searchParams.get('query') || '');
 
   const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    searchParams.set('query', event.target.value);
-    setSearch(event.target.value);
+    const { value } = event.target;
+
+    searchParams.set('query', value);
+    setSearch(value);
     setSearchParams(searchParams);
-    if (!event.target.value) {
+    if (value) {
       searchParams.delete('query');
       setSearchParams(searchParams);
     }
@@ -93,13 +95,15 @@ export const Navigation: React.FC<Props> = ({ favorite, shoping }) => {
                   <img src="./img/icons/Close.png" alt="close" />
                 </button>
               )}
-              <img
-                className={classNames({
-                  hidden: isCatalog,
-                })}
-                src="./img/icons/Search.png"
-                alt="search"
-              />
+              {!search && (
+                <img
+                  className={classNames({
+                    hidden: isCatalog,
+                  })}
+                  src="./img/icons/Search.png"
+                  alt="search"
+                />
+              )}
             </label>
             <NavLinkCustom
               way="/favourites"

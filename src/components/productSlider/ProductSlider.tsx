@@ -63,7 +63,7 @@ export const Catalog:React.FC<Props> = ({ title, list }) => {
       );
     }
 
-    return '';
+    return <></>;
   }, [list, step, countProduct, width]);
 
   return (

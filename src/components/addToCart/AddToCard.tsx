@@ -1,7 +1,9 @@
 import classNames from 'classnames';
 import { useContext, useEffect, useState } from 'react';
+import { setLocalStorageItem } from '../../helpers/util';
 import { GlobalContext } from '../../reducer';
 import { Product } from '../../types/product';
+import { ShoppingProduct } from '../../types/shoppingProduct';
 
 import './addToCart.scss';
 
@@ -9,30 +11,37 @@ type Props = {
   product:Product
 };
 
-export const AddToCart:React.FC<Props> = ({ product }) => {
+export const AddToCart: React.FC<Props> = ({ product }) => {
   const [state, dispatch] = useContext(GlobalContext);
   const [selected, setSelected] = useState(false);
 
   const addProductToBasket = (item:Product) => {
     if (!state.basketList
-      .some((el:{ item:Product, value: number }) => el.item === item)) {
+      .some((el: ShoppingProduct) => el.item === item)) {
       dispatch({ type: 'addBasket', product: { item, value: 1 } });
-      localStorage
-        .setItem(
-          'shoppingList',
-          JSON.stringify([...state.basketList, { item, value: 1 }]),
-        );
+      setLocalStorageItem('shoppingList',
+        [...state.basketList, { item, value: 1 }]);
     }
   };
 
-  useEffect(() => {
-    if (state.basketList
-      .some((el:
-      { item:Product, value: number }) => el.item.age === product.age)) {
-      setSelected(true);
-    } else {
-      setSelected(false);
+  const remove = () => {
+    const list: ShoppingProduct [] | [] = JSON
+      .parse(localStorage.getItem('shoppingList') as string) || [];
+
+    if (list.length) {
+      setLocalStorageItem('shoppingList', list
+        .filter((el: ShoppingProduct) => el.item.age !== product.age));
     }
+  };
+
+  const removeProductCard = () => {
+    dispatch({ type: 'removeProductInBasket', age: product.age });
+    remove();
+  };
+
+  useEffect(() => {
+    setSelected(state.basketList
+      .some((el: ShoppingProduct) => el.item.age === product.age));
   }, [state.basketList, state.selectedProduct]);
 
   return (
@@ -41,7 +50,9 @@ export const AddToCart:React.FC<Props> = ({ product }) => {
       className={classNames('card-button', {
         selected,
       })}
-      onClick={() => addProductToBasket(product)}
+      onClick={() => (selected
+        ? removeProductCard()
+        : addProductToBasket(product))}
     >
       { selected ? 'Added to cart' : 'Add to cart' }
     </button>

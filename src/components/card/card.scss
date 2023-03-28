@@ -23,7 +23,7 @@
 
 @media screen and (max-width: $lg) {
   .container-card {
-    min-width: 217px;
+    min-width: 247px;
 
     & img {
       max-width: 160px;
@@ -39,7 +39,7 @@
 }
 
 .card-title {
-  text-align: center;
+  text-align: left;
   font-weight: 500;
   font-size: 14px;
   line-height: 21px;

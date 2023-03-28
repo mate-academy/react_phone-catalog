@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
+import { setLocalStorageItem } from '../../helpers/util';
 import { GlobalContext } from '../../reducer';
 import { Product } from '../../types/product';
 import { AddToCart } from '../addToCart/AddToCard';
@@ -12,14 +13,13 @@ type Props = {
 };
 
 export const Card: React.FC<Props> = ({ product }) => {
-  // eslint-disable-next-line no-empty-pattern
-  const [{}, dispatch] = useContext(GlobalContext);
+  const [,dispatch] = useContext(GlobalContext);
   const location = useLocation();
   const { id = '' } = useParams();
 
   const setSelectProduct = () => {
     dispatch({ type: 'selectProduct', product });
-    localStorage.setItem('product', JSON.stringify(product));
+    setLocalStorageItem('product', product);
   };
 
   const createPath = () => {

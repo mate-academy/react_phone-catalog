@@ -40,11 +40,7 @@ export const Catalogs = () => {
           <div className="catalog__info">
             <span>Tablets</span>
             <span>
-              {
-                state.catalogsProducts.filter(
-                  (el: Product) => el.type === 'tablet',
-                ).length
-              }
+              {state.catalogsProducts.length}
               {' '}
               models
             </span>

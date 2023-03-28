@@ -9,11 +9,12 @@ export const Header = () => {
 
   useEffect(() => {
     dispatch({ type: 'load', active: true });
-    requestListProducts()
-      .then(res => {
-        dispatch({ type: 'addCatalog', list: res });
-        dispatch({ type: 'load', active: false });
-      });
+    (async () => {
+      const result = await requestListProducts();
+
+      dispatch({ type: 'addCatalog', list: result });
+      dispatch({ type: 'load', active: false });
+    })();
   }, []);
 
   return (
