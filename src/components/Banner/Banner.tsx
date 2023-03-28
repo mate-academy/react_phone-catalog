@@ -32,11 +32,11 @@ export const Banner:React.FC = () => {
             alt=""
           />
           <img
-            src='./img/Preview/preview1.jpg'
+            src='./img/Preview/preview2.jpg'
             alt=""
           />
           <img
-            src='./img/Preview/preview1.jpg'
+            src='./img/Preview/preview3.jpg'
             alt=""
           />
         </Slider>
