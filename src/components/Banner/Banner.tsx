@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 
 import Slider from 'react-slick';
@@ -27,15 +28,15 @@ export const Banner:React.FC = () => {
           nextArrow={<NextArrow />}
         >
           <img
-            src={`${process.env.PUBLIC_URL} + '/img/Preview/preview1.jpg'`}
+            src={`${process.env.PUBLIC_URL}` + '/img/Preview/preview1.jpg'}
             alt=""
           />
           <img
-            src={`${process.env.PUBLIC_URL} + '/img/Preview/preview1.jpg'`}
+            src={`${process.env.PUBLIC_URL}` + '/img/Preview/preview1.jpg'}
             alt=""
           />
           <img
-            src={`${process.env.PUBLIC_URL} + '/img/Preview/preview1.jpg'`}
+            src={`${process.env.PUBLIC_URL}` + '/img/Preview/preview1.jpg'}
             alt=""
           />
         </Slider>
