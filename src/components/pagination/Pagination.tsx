@@ -3,12 +3,12 @@ import React from 'react';
 import './pagination.scss';
 
 type Props = {
-  prev: () => void,
-  next: () => void,
+  prev: () => void;
+  next: () => void;
   currentStep: number;
-  stepsCount: string[],
-  setCurrenStep: (num:number) => void,
-  setNumberStep: (index: number) => void
+  stepsCount: string[];
+  setCurrenStep: (num: number) => void;
+  setNumberStep: (index: number) => void;
 };
 
 export const Pagination: React.FC<Props> = ({
@@ -35,7 +35,7 @@ export const Pagination: React.FC<Props> = ({
         <img src="./img/icons/Left.png" alt="left" />
       </button>
       <div className="steps">
-        {stepsCount.map((el:string, index:number) => (
+        {stepsCount.map((el: string, index: number) => (
           <button
             type="button"
             key={el}

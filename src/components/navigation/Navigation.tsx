@@ -40,10 +40,11 @@ export const Navigation: React.FC<Props> = ({ favorite, shoping }) => {
   };
 
   const isCatalog = useMemo(() => {
-    if (pathname.includes(CatalogsNames.Phone)
-    || pathname.includes(CatalogsNames.Tablet)
-    || pathname.includes(CatalogsNames.Accessor)
-    || pathname.includes(CatalogsNames.Favorite)
+    if (
+      pathname.includes(CatalogsNames.Phone)
+      || pathname.includes(CatalogsNames.Tablet)
+      || pathname.includes(CatalogsNames.Accessor)
+      || pathname.includes(CatalogsNames.Favorite)
     ) {
       return false;
     }
@@ -52,9 +53,10 @@ export const Navigation: React.FC<Props> = ({ favorite, shoping }) => {
   }, [pathname]);
 
   return (
-    <nav className={classNames('navigation', {
-      'shopping-page': pathname.includes('shopping'),
-    })}
+    <nav
+      className={classNames('navigation', {
+        'shopping-page': pathname.includes('shopping'),
+      })}
     >
       {!pathname.includes('shopping') ? (
         <>
@@ -111,24 +113,16 @@ export const Navigation: React.FC<Props> = ({ favorite, shoping }) => {
             >
               <div className="count">{favorite}</div>
             </NavLinkCustom>
-            <NavLinkCustom
-              way="/shopping"
-              classStyle="nav-link link-shopping "
-            >
+            <NavLinkCustom way="/shopping" classStyle="nav-link link-shopping ">
               <div className="count">{shoping}</div>
             </NavLinkCustom>
           </div>
-
         </>
-      )
-        : (
-          <NavLinkCustom
-            way="/shopping"
-            classStyle="nav-link link-shopping "
-          >
-            <div className="count">{shoping}</div>
-          </NavLinkCustom>
-        )}
+      ) : (
+        <NavLinkCustom way="/shopping" classStyle="nav-link link-shopping ">
+          <div className="count">{shoping}</div>
+        </NavLinkCustom>
+      )}
     </nav>
   );
 };

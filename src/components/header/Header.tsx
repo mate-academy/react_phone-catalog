@@ -1,19 +1,19 @@
 import { useContext, useEffect } from 'react';
 import './header.scss';
 import { Navigation } from '../navigation/Navigation';
-import { GlobalContext } from '../../reducer';
+import { addCatalog, GlobalContext, load } from '../../reducer';
 import { requestListProducts } from '../../helpers/api';
 
 export const Header = () => {
   const [state, dispatch] = useContext(GlobalContext);
 
   useEffect(() => {
-    dispatch({ type: 'load', active: true });
+    dispatch({ type: load, active: true });
     (async () => {
       const result = await requestListProducts();
 
-      dispatch({ type: 'addCatalog', list: result });
-      dispatch({ type: 'load', active: false });
+      dispatch({ type: addCatalog, list: result });
+      dispatch({ type: load, active: false });
     })();
   }, []);
 

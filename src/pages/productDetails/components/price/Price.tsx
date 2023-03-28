@@ -11,16 +11,20 @@ import { Property } from '../property/Property';
 import './Price.scss';
 
 type Props = {
-  details: IproductDetails
+  details: IproductDetails;
 };
 
-export const Price:React.FC<Props> = ({ details }) => {
+export const Price: React.FC<Props> = ({ details }) => {
   const [state] = useContext(GlobalContext);
 
   const renderPrice = useMemo(() => {
     if (state.selectedProduct) {
       // eslint-disable-next-line max-len
-      return Math.floor(state.selectedProduct?.price - (state.selectedProduct?.price / 100) * state.selectedProduct?.discount);
+      return Math.floor(
+        state.selectedProduct?.price
+          - (state.selectedProduct?.price / 100)
+          * state.selectedProduct?.discount,
+      );
     }
 
     return 0;
@@ -29,9 +33,7 @@ export const Price:React.FC<Props> = ({ details }) => {
   return (
     <div className="details-product-price">
       <div className="price">
-        <span className="price__new">
-          {`$${renderPrice}`}
-        </span>
+        <span className="price__new">{`$${renderPrice}`}</span>
         <span className="price__old">
           {renderPrice !== state.selectedProduct?.price
             && state.selectedProduct?.price}
@@ -43,22 +45,13 @@ export const Price:React.FC<Props> = ({ details }) => {
       </div>
       <div className="specs">
         <div>
-          <Property
-            title="Screen"
-            value={details.display.screenSize}
-          />
+          <Property title="Screen" value={details.display.screenSize} />
           <Property
             title="Resolution"
             value={details.display.screenResolution}
           />
-          <Property
-            title="Processor"
-            value={details.hardware.cpu}
-          />
-          <Property
-            title="RAM"
-            value={details.storage.ram}
-          />
+          <Property title="Processor" value={details.hardware.cpu} />
+          <Property title="RAM" value={details.storage.ram} />
         </div>
       </div>
     </div>

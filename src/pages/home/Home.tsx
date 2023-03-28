@@ -12,29 +12,22 @@ export const Home = () => {
 
   return (
     <section className="contant">
-      {
-        state.loader
-          ? <Loader />
-          : (
-            <>
-              <BanerSlider />
-              <Catalog
-                title="Hot prices"
-                list={
-                  state.catalogsProducts.filter((el:Product) => el.discount)
-                }
-              />
-              <Catalogs />
-              <Catalog
-                title="Brand new models"
-                list={
-                  state.catalogsProducts.filter((el:Product) => !el.discount)
-                }
-              />
-            </>
-          )
-      }
-
+      {state.loader ? (
+        <Loader />
+      ) : (
+        <>
+          <BanerSlider />
+          <Catalog
+            title="Hot prices"
+            list={state.catalogsProducts.filter((el: Product) => el.discount)}
+          />
+          <Catalogs />
+          <Catalog
+            title="Brand new models"
+            list={state.catalogsProducts.filter((el: Product) => !el.discount)}
+          />
+        </>
+      )}
     </section>
   );
 };

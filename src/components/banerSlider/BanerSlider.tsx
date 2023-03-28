@@ -5,9 +5,10 @@ import './slider.scss';
 const banners = [
   './img/banners/banner-accessories.png',
   './img/banners/banner-phones.png',
-  './img/banners/banner-tablets.png'];
+  './img/banners/banner-tablets.png',
+];
 
-export const BanerSlider:React.FC = () => {
+export const BanerSlider: React.FC = () => {
   const [step, setStep] = useState(-1);
 
   return (
@@ -35,7 +36,6 @@ export const BanerSlider:React.FC = () => {
           />
         ))}
       </Slider>
-
     </div>
   );
 };

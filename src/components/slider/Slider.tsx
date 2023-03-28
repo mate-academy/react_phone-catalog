@@ -5,17 +5,17 @@ import './slider.scss';
 
 type Props = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  children: any[],
+  children: any[];
   // step use negative number for move track
-  step: number,
-  setStep: (value:number) => void,
-  leftButton: React.ReactNode,
-  rightButton: React.ReactNode,
-  countElement?: number,
-  items?: boolean
+  step: number;
+  setStep: (value: number) => void;
+  leftButton: React.ReactNode;
+  rightButton: React.ReactNode;
+  countElement?: number;
+  items?: boolean;
 };
 
-export const Slider:React.FC<Props> = ({
+export const Slider: React.FC<Props> = ({
   children,
   step,
   setStep,
@@ -37,19 +37,24 @@ export const Slider:React.FC<Props> = ({
   useEffect(() => {
     setButtons(
       [...Array(Math.ceil(children.length / countElement))]
-        .map(() => 1).map(() => true),
+        .map(() => 1)
+        .map(() => true),
     );
   }, [countElement]);
 
   useEffect(() => {
     if (ref.current) {
-      const element = document.querySelector(`.${ref.current.children[0].className}`) as any;
+      const element = document.querySelector(
+        `.${ref.current.children[0].className}`,
+      ) as any;
       const elementWidth = element.offsetWidth;
       const marginLeft = parseInt(
-        getComputedStyle(element as Element).marginLeft, 10,
+        getComputedStyle(element as Element).marginLeft,
+        10,
       );
       const marginRight = parseInt(
-        getComputedStyle(element as Element).marginRight, 10,
+        getComputedStyle(element as Element).marginRight,
+        10,
       );
 
       setMargin({ left: marginLeft, rigth: marginRight });
@@ -94,7 +99,7 @@ export const Slider:React.FC<Props> = ({
       backTimerId();
     }
 
-    if (Math.abs(step) > (children.length / countElement)) {
+    if (Math.abs(step) > children.length / countElement) {
       startTimerId();
     }
 
@@ -124,16 +129,22 @@ export const Slider:React.FC<Props> = ({
     <div className="slider-container">
       <div className="wrapper-content">
         <button onClick={prev} type="button" className="button">
-          { leftButton }
+          {leftButton}
         </button>
         <div className="slider-window" style={{ width: `${widthElement}px` }}>
           <div
             className={classNames('tracer', {
               'transition-without-animation': transition,
             })}
-            style={{ transform: `translate(${step * (widthStep)}px)` }}
+            style={{ transform: `translate(${step * widthStep}px)` }}
           >
-            <div ref={ref} style={{ marginLeft: `${margin.left}px`, marginRight: `${margin.rigth}px` }}>
+            <div
+              ref={ref}
+              style={{
+                marginLeft: `${margin.left}px`,
+                marginRight: `${margin.rigth}px`,
+              }}
+            >
               {children[children.length - 1]}
             </div>
             {children}
@@ -146,8 +157,7 @@ export const Slider:React.FC<Props> = ({
       </div>
       <div className="slider-buttom">
         {items
-        && buttons
-          .map((el, index) => (
+          && buttons.map((el, index) => (
             <button
               type="button"
               className={classNames({

@@ -38,16 +38,20 @@ export const ProductCatalog = () => {
 
   const renderFilterList = useMemo(() => {
     if (pathname.includes('phones')) {
-      return state.catalogsProducts.filter((el:Product) => el.type === 'phone');
+      return state.catalogsProducts.filter(
+        (el: Product) => el.type === 'phone',
+      );
     }
 
     if (pathname.includes('tablets')) {
-      return state.catalogsProducts
-        .filter((el:Product) => el.type === 'tablet');
+      return state.catalogsProducts.filter(
+        (el: Product) => el.type === 'tablet',
+      );
     }
 
-    return state.catalogsProducts
-      .filter((el:Product) => el.type === 'accessorie');
+    return state.catalogsProducts.filter(
+      (el: Product) => el.type === 'accessorie',
+    );
   }, [pathname, state.catalogsProducts]);
 
   useEffect(() => {
@@ -94,10 +98,8 @@ export const ProductCatalog = () => {
 
     if (query) {
       return result
-        .filter(
-          (el:Product) => el.name.toLowerCase()
-            .includes(query.toLowerCase() as string),
-        );
+        .filter((el: Product) => el.name.toLowerCase()
+          .includes(query.toLowerCase() as string));
     }
 
     return result;
@@ -106,28 +108,28 @@ export const ProductCatalog = () => {
   const paginationNext = () => {
     if (end < renderFilterList.length) {
       setStart(end);
-      setEnd(end + (+items));
+      setEnd(end + +items);
       setCurrentStep(currentStep + 1);
     }
   };
 
   const paginationPrev = () => {
     if (start) {
-      setStart(start - (+items));
-      setEnd(end - (+items));
+      setStart(start - +items);
+      setEnd(end - +items);
       setCurrentStep(currentStep - 1);
     }
   };
 
-  const setNumberStep = (index:number) => {
+  const setNumberStep = (index: number) => {
     if (start && index < currentStep) {
-      setStart(start - ((currentStep - index) * +items));
-      setEnd(end - ((currentStep - index) * +items));
+      setStart(start - (currentStep - index) * +items);
+      setEnd(end - (currentStep - index) * +items);
     }
 
     if (end < renderFilterList.length && index > currentStep) {
-      setStart(start + ((index - currentStep) * +items));
-      setEnd(end + ((index - currentStep) * +items));
+      setStart(start + (index - currentStep) * +items);
+      setEnd(end + (index - currentStep) * +items);
     }
   };
 
@@ -139,59 +141,64 @@ export const ProductCatalog = () => {
 
   return (
     <section className="products">
-      {!query ? <Way /> : (
+      {!query ? (
+        <Way />
+      ) : (
         <div className="result">
-          {
-            `${filterBySearchField.length} ${filterBySearchField.length > 1 ? 'results' : 'result'}`
-          }
+          {`${filterBySearchField.length} ${
+            filterBySearchField.length > 1 ? 'results' : 'result'
+          }`}
         </div>
       )}
-      {!query
-        ? (
-          <>
-            <div className="products__describe">
-              <h1>{renderTitle()}</h1>
-              <span>
-                {renderFilterList.length}
-                {' '}
-                model
-              </span>
-            </div>
-            {filterBySearchField.length ? (
-              <div className="products__dropdowns">
-                <div className="drop-first">
-                  <h3>Sort by</h3>
-                  <Dropdown
-                    listOptions={['Name', 'Price', 'Ram', 'Screen']}
-                    selected={sortBy}
-                    choosSelected={setSortBy}
-                  />
-                </div>
-                <div className="drop-second">
-                  <h3>Items on page</h3>
-                  <Dropdown
-                    listOptions={optionsListPageCount}
-                    selected={items}
-                    choosSelected={setItems}
-                    lengthList={renderFilterList.length}
-                  />
-                </div>
+      {!query ? (
+        <>
+          <div className="products__describe">
+            <h1>{renderTitle()}</h1>
+            <span>
+              {renderFilterList.length}
+              {' '}
+              model
+            </span>
+          </div>
+          {filterBySearchField.length ? (
+            <div className="products__dropdowns">
+              <div className="drop-first">
+                <h3>Sort by</h3>
+                <Dropdown
+                  listOptions={['Name', 'Price', 'Ram', 'Screen']}
+                  selected={sortBy}
+                  choosSelected={setSortBy}
+                />
               </div>
-            ) : <></>}
-          </>
-        ) : ''}
-      {state.loader ? <Loader /> : (
+              <div className="drop-second">
+                <h3>Items on page</h3>
+                <Dropdown
+                  listOptions={optionsListPageCount}
+                  selected={items}
+                  choosSelected={setItems}
+                  lengthList={renderFilterList.length}
+                />
+              </div>
+            </div>
+          ) : (
+            <></>
+          )}
+        </>
+      ) : (
+        ''
+      )}
+      {state.loader ? (
+        <Loader />
+      ) : (
         <div className="pagination" data-cy="productList">
-          {filterBySearchField.slice(start, end).map((el:Product) => (
+          {filterBySearchField.slice(start, end).map((el: Product) => (
             <div className="pagination__wrapper-card" key={el.age}>
-              <Card
-                product={el}
-              />
+              <Card product={el} />
             </div>
           ))}
         </div>
       )}
-      {(!query && filterBySearchField.length > 4) ? (
+      {!query && filterBySearchField.length > 4 ? (
         <Pagination
           prev={paginationPrev}
           next={paginationNext}
@@ -200,9 +207,12 @@ export const ProductCatalog = () => {
           setCurrenStep={setCurrentStep}
           setNumberStep={setNumberStep}
         />
-      ) : <></> }
-      {!filterBySearchField.length
-      && <div>List products is empty, please check later</div>}
+      ) : (
+        <></>
+      )}
+      {!filterBySearchField.length && (
+        <div>List products is empty, please check later</div>
+      )}
     </section>
   );
 };

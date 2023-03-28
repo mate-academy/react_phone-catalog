@@ -2,101 +2,109 @@ import React, { createContext, useReducer } from 'react';
 import { Product } from './types/product';
 import { ShoppingProduct } from './types/shoppingProduct';
 
+export const addCatalog = 'ADDCATALOG';
+export const addFavorite = 'ADDFAVORITE';
+export const removeFavorite = 'REMOVEFAVORITE';
+export const addBasket = 'ADDBASKET';
+export const removeProductInBasket = 'REMOVEPRODUCTINBASKET';
+export const riseValueProduct = 'RISEVALUEPRODUCT';
+export const reductionValueProduct = 'REDUCTIONVALUEPRODUCT';
+export const selectProduct = 'SELECTPRODUCT';
+export const load = 'LOAD';
+
 type State = {
-  catalogsProducts: Product[] | [],
-  favoriteProducts: Product[] | [],
-  basketList: ShoppingProduct [] | [],
-  selectedProduct: Product | null,
-  loader: boolean
+  catalogsProducts: Product[] | [];
+  favoriteProducts: Product[] | [];
+  basketList: ShoppingProduct[] | [];
+  selectedProduct: Product | null;
+  loader: boolean;
 };
 
-export type Action = {
-  type: 'addCatalog', list: Product[]
-}
-| { type: 'addFavorite', product: Product }
-| { type: 'removeFavorite', age: number }
-| { type: 'addBasket', product: ShoppingProduct }
-| { type: 'removeProductInBasket', age: number }
-| { type: 'riseValueProduct', id: number }
-| { type: 'reductionValueProduct', id: number }
-| { type: 'selectProduct', product: Product }
-| { type: 'load', active: boolean };
+export type Action =
+  | {
+    type: typeof addCatalog;
+    list: Product[];
+  }
+  | { type: typeof addFavorite; product: Product }
+  | { type: typeof removeFavorite; age: number }
+  | { type: typeof addBasket; product: ShoppingProduct }
+  | { type: typeof removeProductInBasket; age: number }
+  | { type: typeof riseValueProduct; id: number }
+  | { type: typeof reductionValueProduct; id: number }
+  | { type: typeof selectProduct; product: Product }
+  | { type: typeof load; active: boolean };
 
 export const initialState: State = {
   catalogsProducts: [],
-  favoriteProducts: JSON.parse(localStorage
-    .getItem('likeList') as string) || [],
+  favoriteProducts:
+    JSON.parse(localStorage.getItem('likeList') as string) || [],
   basketList: JSON.parse(localStorage.getItem('shoppingList') as string) || [],
-  selectedProduct: JSON.parse(localStorage.getItem('product') as string)
-  || null,
+  selectedProduct:
+    JSON.parse(localStorage.getItem('product') as string) || null,
   loader: false,
 };
 
 const reducer = (state: State, action: Action) => {
   switch (action.type) {
-    case 'addCatalog':
+    case addCatalog:
       return {
         ...state,
         catalogsProducts: action.list,
       };
-    case 'addFavorite':
+    case addFavorite:
       return {
         ...state,
         favoriteProducts: [...state.favoriteProducts, action.product],
       };
-    case 'removeFavorite':
+    case removeFavorite:
       return {
         ...state,
-        favoriteProducts: state.favoriteProducts
-          .filter((product:Product) => product.age !== action.age),
+        favoriteProducts: state.favoriteProducts.filter(
+          (product: Product) => product.age !== action.age,
+        ),
       };
-    case 'addBasket':
+    case addBasket:
       return {
         ...state,
         basketList: [...state.basketList, action.product],
       };
-    case 'riseValueProduct':
+    case riseValueProduct:
       return {
         ...state,
-        basketList: state.basketList
-          .map((product: ShoppingProduct) => {
-            if (product.item.age === action.id) {
-              // eslint-disable-next-line no-param-reassign
-              product.value += 1;
-            }
+        basketList: state.basketList.map((product: ShoppingProduct) => {
+          if (product.item.age === action.id) {
+            // eslint-disable-next-line no-param-reassign
+            product.value += 1;
+          }
 
-            return product;
-          }),
+          return product;
+        }),
       };
-    case 'reductionValueProduct':
+    case reductionValueProduct:
       return {
         ...state,
-        basketList: state.basketList
-          .map((product: ShoppingProduct) => {
-            if (product.item.age === action.id) {
-              // eslint-disable-next-line no-param-reassign
-              product.value -= 1;
-            }
+        basketList: state.basketList.map((product: ShoppingProduct) => {
+          if (product.item.age === action.id) {
+            // eslint-disable-next-line no-param-reassign
+            product.value -= 1;
+          }
 
-            return product;
-          }),
+          return product;
+        }),
       };
-    case 'removeProductInBasket':
+    case removeProductInBasket:
       return {
         ...state,
-        basketList: state.basketList
-          .filter(
-            (product: {
-              item:Product, value: number
-            }) => product.item.age !== action.age,
-          ),
+        basketList: state.basketList.filter(
+          (product: ShoppingProduct) => product.item.age !== action.age,
+        ),
       };
-    case 'selectProduct':
+    case selectProduct:
       return {
         ...state,
         selectedProduct: action.product,
       };
-    case 'load':
+    case load:
       return {
         ...state,
         loader: action.active,
@@ -106,9 +114,10 @@ const reducer = (state: State, action: Action) => {
   }
 };
 
-export const GlobalContext = createContext<
-[State, React.Dispatch<Action>]
->([initialState, (obj:Action) => obj]);
+export const GlobalContext = createContext<[State, React.Dispatch<Action>]>([
+  initialState,
+  (obj: Action) => obj,
+]);
 
 const StateProvider: React.FC = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);

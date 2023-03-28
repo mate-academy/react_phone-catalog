@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 import { setLocalStorageItem } from '../../helpers/util';
-import { GlobalContext } from '../../reducer';
+import { GlobalContext, selectProduct } from '../../reducer';
 import { Product } from '../../types/product';
 import { AddToCart } from '../addToCart/AddToCard';
 import { AddToFavorite } from '../addToFavorite/AddToFavorite';
@@ -13,12 +13,12 @@ type Props = {
 };
 
 export const Card: React.FC<Props> = ({ product }) => {
-  const [,dispatch] = useContext(GlobalContext);
+  const [, dispatch] = useContext(GlobalContext);
   const location = useLocation();
   const { id = '' } = useParams();
 
   const setSelectProduct = () => {
-    dispatch({ type: 'selectProduct', product });
+    dispatch({ type: selectProduct, product });
     setLocalStorageItem('product', product);
   };
 
@@ -31,10 +31,7 @@ export const Card: React.FC<Props> = ({ product }) => {
   };
 
   return (
-    <div
-      className="container-card"
-      data-cy="cardsContainer"
-    >
+    <div className="container-card" data-cy="cardsContainer">
       <img src={`./${product.imageUrl}`} alt="product" />
       <NavLinkCustom
         way={createPath()}
@@ -49,12 +46,12 @@ export const Card: React.FC<Props> = ({ product }) => {
           $
           {Math.floor(product.price - (product.price / 100) * product.discount)}
         </span>
-        {product.discount ? (
+        {product.discount && (
           <span className="price__old">
             $
             {product.price}
           </span>
-        ) : <></>}
+        )}
       </div>
       <div className="describe">
         <div className="describe__parametr">

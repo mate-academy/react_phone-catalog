@@ -3,50 +3,52 @@ import {
   getItemLocalStorage,
   setLocalStorageItem,
 } from '../../../helpers/util';
-import { GlobalContext } from '../../../reducer';
+import {
+  GlobalContext,
+  reductionValueProduct,
+  removeProductInBasket,
+  riseValueProduct,
+} from '../../../reducer';
 import { ShoppingProduct } from '../../../types/shoppingProduct';
 import './cardPrice.scss';
 
 type Props = {
-  product: ShoppingProduct,
+  product: ShoppingProduct;
 };
 
-export const ShoppingCard:React.FC<Props> = ({ product }) => {
+export const ShoppingCard: React.FC<Props> = ({ product }) => {
   // eslint-disable-next-line no-empty-pattern
   const [{}, dispatch] = useContext(GlobalContext);
-  const discount = product.item.price - (
-    product.item.price / 100) * product.item.discount;
+  const discount
+    = product.item.price - (product.item.price / 100) * product.item.discount;
 
   const remove = () => {
-    const list: ShoppingProduct [] = getItemLocalStorage('shoppingList')
-    || [];
+    const list: ShoppingProduct[] = getItemLocalStorage('shoppingList') || [];
 
     if (list.length) {
-      setLocalStorageItem('shoppingList', (list
-        .filter((el: ShoppingProduct) => el.item.age !== product.item.age)));
+      setLocalStorageItem(
+        'shoppingList',
+        list.filter((el: ShoppingProduct) => el.item.age !== product.item.age),
+      );
     }
   };
 
   const increase = () => {
-    dispatch({ type: 'riseValueProduct', id: product.item.age });
+    dispatch({ type: riseValueProduct, id: product.item.age });
   };
 
   const decrease = () => {
-    dispatch({ type: 'reductionValueProduct', id: product.item.age });
+    dispatch({ type: reductionValueProduct, id: product.item.age });
   };
 
   const removeProductCard = () => {
-    dispatch({ type: 'removeProductInBasket', age: product.item.age });
+    dispatch({ type: removeProductInBasket, age: product.item.age });
     remove();
   };
 
   return (
     <div className="warpper-card-price" data-cy="cartDeleteButton">
-      <button
-        type="button"
-        className="delete"
-        onClick={removeProductCard}
-      >
+      <button type="button" className="delete" onClick={removeProductCard}>
         <img src="./img/icons/Close.png" alt="close" />
       </button>
       <div className="describe-card">
@@ -62,9 +64,7 @@ export const ShoppingCard:React.FC<Props> = ({ product }) => {
         >
           -
         </button>
-        <div className="count-product__value">
-          {product.value}
-        </div>
+        <div className="count-product__value">{product.value}</div>
         <button
           type="button"
           className="count-product__button"
@@ -73,7 +73,7 @@ export const ShoppingCard:React.FC<Props> = ({ product }) => {
           +
         </button>
       </div>
-      <h2 className="product-price">{`$ ${(discount) * product.value}`}</h2>
+      <h2 className="product-price">{`$ ${discount * product.value}`}</h2>
     </div>
   );
 };

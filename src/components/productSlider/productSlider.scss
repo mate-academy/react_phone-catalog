@@ -7,12 +7,6 @@
   width: 100%;
   margin: 100px auto 0;
 }
-/* 
-@media screen and (max-width: $lg) {
-  .product {
-    max-width: 700px;
-  }
-} */
 
 @media screen and (max-width: $sm) {
   .product {
@@ -55,11 +49,6 @@
   border: 1px solid $icons;
 }
 
-.prev:hover,
-.next:hover {
-  border-color: $primary;
-}
-
 .next {
   display: flex;
   align-items: center;
@@ -71,6 +60,11 @@
   height: 32px;
   cursor: pointer;
   border: 1px solid $icons;
+}
+
+.prev:hover,
+.next:hover {
+  border-color: $primary;
 }
 
 @media screen and (max-width: $sm) {

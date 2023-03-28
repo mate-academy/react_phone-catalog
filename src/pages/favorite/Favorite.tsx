@@ -15,19 +15,19 @@ export const Favorit = () => {
       {state.favoriteProducts.length ? (
         <>
           <div className="count-product">
-            {
-              `${state.favoriteProducts.length} ${state.favoriteProducts.length > 1 ? 'items' : 'item'}`
-            }
-
+            {`${state.favoriteProducts.length} ${
+              state.favoriteProducts.length > 1 ? 'items' : 'item'
+            }`}
           </div>
           <div className="list-favorite-wrapper">
-            {
-              state.favoriteProducts
-                .map((el:Product) => <Card product={el} key={el.age} />)
-            }
+            {state.favoriteProducts.map((el: Product) => (
+              <Card product={el} key={el.age} />
+            ))}
           </div>
         </>
-      ) : <div>List is empty, please choose device </div>}
+      ) : (
+        <div>List is empty, please choose device </div>
+      )}
     </div>
   );
 };

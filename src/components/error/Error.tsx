@@ -1,5 +1,5 @@
 type Props = {
-  text: string
+  text: string;
 };
 
 export const Error: React.FC<Props> = ({ text }) => (

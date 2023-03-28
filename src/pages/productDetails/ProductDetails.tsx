@@ -27,70 +27,51 @@ export const ProductDetails = () => {
   useEffect(() => {
     window.scroll({ top: 0, left: 0, behavior: 'smooth' });
     if (id) {
-      requestDetailsProduct(id).then((res) => setDetails(res))
+      requestDetailsProduct(id)
+        .then((res) => setDetails(res))
         .catch(() => setError(true));
     }
   }, [id]);
 
   const renderDetails = useMemo(() => {
-    return (
-      details && !error ? (
-        <div>
-          <h1>{details.name}</h1>
-          <div className="wrapper-info">
-            <Photos listImages={details.images} />
-            <div>
-              <Colors />
-              <Capacity />
-              <Price details={details} />
-            </div>
+    return details && !error ? (
+      <div>
+        <h1>{details.name}</h1>
+        <div className="wrapper-info">
+          <Photos listImages={details.images} />
+          <div>
+            <Colors />
+            <Capacity />
+            <Price details={details} />
           </div>
-          <div className="describe-details">
-            <div className="describe-details__about">
-              <h2>About</h2>
-              <p>{details.description}</p>
-            </div>
-            <div className="describe-details__tech">
-              <h2>Tech specs</h2>
-              <div>
-                <Property
-                  title="Sreen"
-                  value={details.display.screenSize}
-                />
-                <Property
-                  title="Resolution"
-                  value={details.display.screenResolution}
-                />
-                <Property
-                  title="Processor"
-                  value={details.hardware.cpu}
-                />
+        </div>
+        <div className="describe-details">
+          <div className="describe-details__about">
+            <h2>About</h2>
+            <p>{details.description}</p>
+          </div>
+          <div className="describe-details__tech">
+            <h2>Tech specs</h2>
+            <div>
+              <Property title="Sreen" value={details.display.screenSize} />
+              <Property
+                title="Resolution"
+                value={details.display.screenResolution}
+              />
+              <Property title="Processor" value={details.hardware.cpu} />
 
-                <Property
-                  title="RAM"
-                  value={details.storage.ram}
-                />
-                <Property
-                  title="Built in memory"
-                  value={details.storage.flash}
-                />
-                <Property
-                  title="Camera"
-                  value={details.camera.primary}
-                />
-                <Property
-                  title="Cell"
-                  value={details.connectivity.cell}
-                />
-              </div>
+              <Property title="RAM" value={details.storage.ram} />
+              <Property title="Built in memory" value={details.storage.flash} />
+              <Property title="Camera" value={details.camera.primary} />
+              <Property title="Cell" value={details.connectivity.cell} />
             </div>
           </div>
         </div>
-      ) : (
-        <Error
-          text="Something went wrong please check your connect with internet"
-        />
-      )
+      </div>
+    ) : (
+      <Error
+        text="Something went wrong please check your connect with internet"
+      />
     );
   }, [details, error]);
 
@@ -100,8 +81,9 @@ export const ProductDetails = () => {
       {!details ? <Loader /> : renderDetails}
       <Catalog
         title="You may also like"
-        list={state.catalogsProducts
-          .filter((el:Product) => el.type === state.selectedProduct?.type)}
+        list={state.catalogsProducts.filter(
+          (el: Product) => el.type === state.selectedProduct?.type,
+        )}
       />
     </section>
   );

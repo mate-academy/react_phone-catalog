@@ -3,17 +3,17 @@ import { useEffect, useState } from 'react';
 import './photo.scss';
 
 type Props = {
-  listImages: string[],
+  listImages: string[];
 };
 
-export const Photos:React.FC<Props> = ({ listImages }) => {
+export const Photos: React.FC<Props> = ({ listImages }) => {
   const [photo, setPhoto] = useState(listImages[0]);
 
   useEffect(() => {
     setPhoto(listImages[0]);
   }, [listImages]);
 
-  const choosePhoto = (image:string) => {
+  const choosePhoto = (image: string) => {
     setPhoto(image);
   };
 
@@ -27,10 +27,7 @@ export const Photos:React.FC<Props> = ({ listImages }) => {
             onClick={() => choosePhoto(`./${el}`)}
             key={el}
           >
-            <img
-              src={`./${el}`}
-              alt="product"
-            />
+            <img src={`./${el}`} alt="product" />
           </button>
         ))}
       </div>

@@ -16,20 +16,18 @@ export const Capacity = () => {
     <div className="capacity">
       <span>Select capacity</span>
       <div className="capacity__button">
-        {
-          memorySize.map((el:string) => (
-            <button
-              className={classNames({
-                'active-memory': el === memory,
-              })}
-              type="button"
-              key={el}
-              onClick={() => chooseMemory(el)}
-            >
-              {el}
-            </button>
-          ))
-        }
+        {memorySize.map((el: string) => (
+          <button
+            className={classNames({
+              'active-memory': el === memory,
+            })}
+            type="button"
+            key={el}
+            onClick={() => chooseMemory(el)}
+          >
+            {el}
+          </button>
+        ))}
       </div>
     </div>
   );

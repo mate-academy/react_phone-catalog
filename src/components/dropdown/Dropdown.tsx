@@ -5,20 +5,18 @@ import { useLocation, useSearchParams } from 'react-router-dom';
 import './dropdown.scss';
 
 type Props = {
-  listOptions: string[],
-  selected: string,
-  choosSelected: (item: string) => void,
-  lengthList?: number
+  listOptions: string[];
+  selected: string;
+  choosSelected: (item: string) => void;
+  lengthList?: number;
 };
 
-export const Dropdown:React.FC<Props> = (
-  {
-    listOptions,
-    selected,
-    choosSelected,
-    lengthList,
-  },
-) => {
+export const Dropdown: React.FC<Props> = ({
+  listOptions,
+  selected,
+  choosSelected,
+  lengthList,
+}) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [active, setActive] = useState(false);
   const { pathname } = useLocation();
@@ -31,7 +29,7 @@ export const Dropdown:React.FC<Props> = (
     setActive(!active);
   };
 
-  const choose = (item:string) => {
+  const choose = (item: string) => {
     if (!lengthList) {
       searchParams.set('sort', item);
       setSearchParams(searchParams);
@@ -48,7 +46,7 @@ export const Dropdown:React.FC<Props> = (
 
   useEffect(() => {
     if (lengthList) {
-      listOptions.forEach((el:string) => {
+      listOptions.forEach((el: string) => {
         if (lengthList < +el) {
           choosSelected(`${lengthList}`);
         }
@@ -60,17 +58,16 @@ export const Dropdown:React.FC<Props> = (
     }
   }, [lengthList]);
 
-  const disable = useCallback((el: string) => {
-    return lengthList ? lengthList < +el : false;
-  }, [lengthList]);
+  const disable = useCallback(
+    (el: string) => {
+      return lengthList ? lengthList < +el : false;
+    },
+    [lengthList],
+  );
 
   return (
     <div className="dropdown">
-      <div
-        className="currently-value"
-        onClick={openMenu}
-        onKeyDown={openMenu}
-      >
+      <div className="currently-value" onClick={openMenu} onKeyDown={openMenu}>
         {selected}
         <img
           src="./img/icons/Right.png"
@@ -80,9 +77,10 @@ export const Dropdown:React.FC<Props> = (
           })}
         />
       </div>
-      <div className={classNames('elements', {
-        'active-menu': active,
-      })}
+      <div
+        className={classNames('elements', {
+          'active-menu': active,
+        })}
       >
         {listOptions.map((el) => (
           <button
@@ -90,12 +88,10 @@ export const Dropdown:React.FC<Props> = (
             disabled={disable(el)}
             onClick={() => choose(el)}
             key={Math.random() * (100 - 1) + 1}
-            className={classNames(
-              {
-                selected: el === selected,
-                disable: disable(el),
-              },
-            )}
+            className={classNames({
+              selected: el === selected,
+              disable: disable(el),
+            })}
           >
             {el}
           </button>
