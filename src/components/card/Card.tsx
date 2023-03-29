@@ -46,12 +46,12 @@ export const Card: React.FC<Props> = ({ product }) => {
           $
           {Math.floor(product.price - (product.price / 100) * product.discount)}
         </span>
-        {product.discount && (
+        {product.discount ? (
           <span className="price__old">
             $
             {product.price}
           </span>
-        )}
+        ) : <></>}
       </div>
       <div className="describe">
         <div className="describe__parametr">

@@ -27,7 +27,7 @@ export const Navigation: React.FC<Props> = ({ favorite, shoping }) => {
     searchParams.set('query', value);
     setSearch(value);
     setSearchParams(searchParams);
-    if (value) {
+    if (!value) {
       searchParams.delete('query');
       setSearchParams(searchParams);
     }
@@ -108,7 +108,7 @@ export const Navigation: React.FC<Props> = ({ favorite, shoping }) => {
               )}
             </label>
             <NavLinkCustom
-              way="/favourites"
+              way="/favorites"
               classStyle="nav-link link-favorite"
             >
               <div className="count">{favorite}</div>

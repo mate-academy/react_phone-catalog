@@ -34,11 +34,31 @@ export const ShoppingCard: React.FC<Props> = ({ product }) => {
   };
 
   const increase = () => {
+    const list: ShoppingProduct[] = getItemLocalStorage('shoppingList') || [];
+
     dispatch({ type: riseValueProduct, id: product.item.age });
+    // eslint-disable-next-line
+    list.map((el:ShoppingProduct) => {
+      if (el.item.age === product.item.age) {
+        // eslint-disable-next-line no-param-reassign
+        el.value += 1;
+      }
+    });
+    setLocalStorageItem('shoppingList', [...list]);
   };
 
   const decrease = () => {
+    const list: ShoppingProduct[] = getItemLocalStorage('shoppingList') || [];
+
     dispatch({ type: reductionValueProduct, id: product.item.age });
+    // eslint-disable-next-line
+    list.map((el:ShoppingProduct) => {
+      if (el.item.age === product.item.age) {
+        // eslint-disable-next-line no-param-reassign
+        el.value -= 1;
+      }
+    });
+    setLocalStorageItem('shoppingList', [...list]);
   };
 
   const removeProductCard = () => {

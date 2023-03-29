@@ -11,7 +11,7 @@ export const Favorit = () => {
   return (
     <div className="favorite">
       <Way />
-      <h2 className="favorite-title">Favourites</h2>
+      <h2 className="favorite-title">Favorites</h2>
       {state.favoriteProducts.length ? (
         <>
           <div className="count-product">

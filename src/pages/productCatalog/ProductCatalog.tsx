@@ -16,6 +16,7 @@ enum SortProducts {
   'price' = 'Price',
   'ram' = 'Ram',
   'screen' = 'Screen',
+  'age' = 'Age',
 }
 
 const optionsListPageCount = ['16', '8', '4'];
@@ -84,11 +85,12 @@ export const ProductCatalog = () => {
       case SortProducts.screen:
         return result
           .sort((a, b) => parseFloat(a.screen) - parseFloat(b.screen));
+      case SortProducts.age:
+        return result
+          .sort((a, b) => b.age - a.age);
       default:
         return result;
     }
-
-    return result;
   }, [sortBy, state.catalogsProducts, pathname]);
 
   const filterBySearchField = useMemo(() => {
@@ -163,7 +165,7 @@ export const ProductCatalog = () => {
               <div className="drop-first">
                 <h3>Sort by</h3>
                 <Dropdown
-                  listOptions={['Name', 'Price', 'Ram', 'Screen']}
+                  listOptions={['Name', 'Price', 'Ram', 'Screen', 'Age']}
                   selected={sortBy}
                   choosSelected={setSortBy}
                 />

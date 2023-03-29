@@ -83,7 +83,7 @@ export const Dropdown: React.FC<Props> = ({
               type="button"
               disabled={isDisable}
               onClick={() => choose(el)}
-              key={Math.random() * (100 - 1) + 1}
+              key={el}
               className={classNames({
                 selected: el === selected,
                 disable: isDisable,
