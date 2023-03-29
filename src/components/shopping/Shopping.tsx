@@ -19,9 +19,7 @@ export const Shopping = () => {
   useEffect(() => {
     setTotalCost(
       state.basketList
-        .map((el: ShoppingProduct) => {
-          return getPrice(el) * el.value;
-        })
+        .map((el: ShoppingProduct) => getPrice(el) * el.value)
         .reduce((acc, el) => acc + el, 0),
     );
   }, [state.basketList]);

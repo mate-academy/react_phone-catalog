@@ -37,11 +37,8 @@ export const AddToFavorite: React.FC<Props> = ({ product }) => {
   };
 
   useEffect(() => {
-    if (state.favoriteProducts.some((el: Product) => el.age === product.age)) {
-      setSelectedLike(true);
-    } else {
-      setSelectedLike(false);
-    }
+    setSelectedLike(state.favoriteProducts
+      .some((el: Product) => el.age === product.age));
   }, [state.favoriteProducts, state.selectedProduct]);
 
   return (

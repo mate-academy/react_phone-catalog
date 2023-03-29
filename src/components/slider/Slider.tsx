@@ -4,8 +4,7 @@ import { useResponseHook } from '../../hooks/useResponseHook';
 import './slider.scss';
 
 type Props = {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  children: any[];
+  children: React.ReactNode[];
   // step use negative number for move track
   step: number;
   setStep: (value: number) => void;

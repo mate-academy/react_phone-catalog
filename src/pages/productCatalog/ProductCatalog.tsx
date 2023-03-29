@@ -74,20 +74,18 @@ export const ProductCatalog = () => {
   const sortListProducts = useMemo(() => {
     const result = [...renderFilterList];
 
-    if (sortBy === SortProducts.name) {
-      return result.sort((a, b) => a.name.localeCompare(b.name));
-    }
-
-    if (sortBy === SortProducts.price) {
-      return result.sort((a, b) => b.price - a.price);
-    }
-
-    if (sortBy === SortProducts.ram) {
-      return result.sort((a, b) => parseFloat(a.ram) - parseFloat(b.ram));
-    }
-
-    if (sortBy === SortProducts.screen) {
-      return result.sort((a, b) => parseFloat(a.screen) - parseFloat(b.screen));
+    switch (sortBy) {
+      case SortProducts.name:
+        return result.sort((a, b) => a.name.localeCompare(b.name));
+      case SortProducts.price:
+        return result.sort((a, b) => b.price - a.price);
+      case SortProducts.ram:
+        return result.sort((a, b) => parseFloat(a.ram) - parseFloat(b.ram));
+      case SortProducts.screen:
+        return result
+          .sort((a, b) => parseFloat(a.screen) - parseFloat(b.screen));
+      default:
+        return result;
     }
 
     return result;
