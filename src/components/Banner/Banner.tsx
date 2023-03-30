@@ -29,15 +29,15 @@ export const Banner:React.FC = () => {
         >
           <img
             src='./img/Preview/preview1.jpg'
-            alt=""
+            alt="Banner"
           />
           <img
             src='./img/Preview/preview2.jpg'
-            alt=""
+            alt="Banner"
           />
           <img
             src='./img/Preview/preview3.jpg'
-            alt=""
+            alt="Banner"
           />
         </Slider>
       </div>

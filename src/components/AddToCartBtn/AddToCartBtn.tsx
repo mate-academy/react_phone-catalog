@@ -23,11 +23,7 @@ export const AddToCartBtn: React.FC<Props> = ({ id, color }) => {
   const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
-    if (cart.find((cartList: CartList) => cartList.item.id === id)) {
-      setIsActive(true);
-    } else {
-      setIsActive(false);
-    }
+    setIsActive(!!cart.find((cartList: CartList) => cartList.item.id === id));
   }, [id]);
 
   const addToCart = () => {
@@ -37,7 +33,7 @@ export const AddToCartBtn: React.FC<Props> = ({ id, color }) => {
     } else {
       const card = products?.filter((item: ProductItem) => item.id === id)[0];
       const options = {
-        color: !color ? '' : color,
+        color: color ?? '',
       }
 
       dispatch(addNewItemToCart({ count: 1, item: { ...card, ...options, } }));
@@ -49,7 +45,7 @@ export const AddToCartBtn: React.FC<Props> = ({ id, color }) => {
     <button
       type="button"
       className={classNames("add-to-cart", { "add-to-cart_active": isActive })}
-      onClick={() => addToCart()}
+      onClick={addToCart}
     >
       {isActive ? "Added to cart" : "Add to cart"}
     </button>

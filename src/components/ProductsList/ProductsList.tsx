@@ -17,7 +17,6 @@ export const ProductsList: React.FC<Props> = ({ phonesList }) => {
   const query = searchParams.get('query') || '';
   const newSearch = new URLSearchParams(searchParams.toString());
 
-  // Sort
   const sortOptions = [
     { value: 'age', label: 'Newest' },
     { value: 'name', label: 'Aplphabetical' },
@@ -57,7 +56,6 @@ export const ProductsList: React.FC<Props> = ({ phonesList }) => {
     });
   }
 
-  // Pagination
   const totalItemsCount = sortedList.length;
   const paginationOptions = [
     { value: 4, label: '4' },

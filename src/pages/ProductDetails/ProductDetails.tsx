@@ -84,12 +84,12 @@ export const ProductDetails: React.FC = () => {
                           })}
                           onClick={() => setCurrentImage(image)}
                         >
-                          <img src={`${image}`} alt="" />
+                          <img src={image} alt="" />
                         </button>
                       ))}
                   </div>
                   <div className="gallary__image">
-                    <img src={`${currentImage}`} alt="" />
+                    <img src={currentImage} alt="" />
                   </div>
                 </div>
               )}

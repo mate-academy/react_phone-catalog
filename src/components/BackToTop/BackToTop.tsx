@@ -15,7 +15,7 @@ export const BackToTop: React.FC = () => {
     <button
       type="button"
       className="back-to-top"
-      onClick={() => scrollToTop()}
+      onClick={scrollToTop}
     >
       <span>Back to top</span>
       <div className="back-to-top__arrow">

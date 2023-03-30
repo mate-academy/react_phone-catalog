@@ -17,7 +17,7 @@ export const Phones: React.FC = () => {
       .then(() => setIsLoaded(true));
   }, []);
 
-  const content = () => {
+  const getContent = () => {
     if (phonesList.length === 0) {
       return (
         <p className="accessories__error">
@@ -41,7 +41,7 @@ export const Phones: React.FC = () => {
         </h1>
 
         {isLoaded
-          ? content()
+          ? getContent()
           : <ProductsLoader2x style={{ marginTop: '100px' }} />}
       </div>
     </div>

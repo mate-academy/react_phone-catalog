@@ -34,17 +34,8 @@ export const Pagination: React.FC<Props> = ({
   const maxPage = Math.ceil(total / perPage);
 
   useEffect(() => {
-    if (page === 1) {
-      setPrevActive(false);
-    } else {
-      setPrevActive(true);
-    }
-
-    if (page === maxPage) {
-      setNextActive(false);
-    } else {
-      setNextActive(true);
-    }
+    setPrevActive(page !== 1);
+    setNextActive(page !== maxPage);
   }, [page]);
 
   const prevPageHandler = () => {
