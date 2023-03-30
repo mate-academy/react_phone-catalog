@@ -117,10 +117,6 @@ export const ProductInfo: React.FC<Props> = ({ details, generalData }) => {
                   style={{ backgroundColor: item }}
                 />
               ))}
-
-              <div data-color="gray" className="product-info__color" />
-
-              <div data-color="navy" className="product-info__color" />
             </div>
           </div>
 
