@@ -6,19 +6,17 @@ import { Path } from '../../type/types';
 
 type Props = {
   isActive: Path | string,
-  setIsActive: (arg: Path | '') => void,
 };
 
-export const Navigation: React.FC<Props> = ({ isActive, setIsActive }) => {
+export const Navigation: React.FC<Props> = ({ isActive }) => {
   return (
     <nav>
       <ul className="navigation">
         <li className="navigation__item">
           <NavLink
             className={classNames('navigation__link',
-              { 'navigation__link--active': isActive === Path.Home })}
+              { 'navigation__link--active': isActive.includes(Path.Home) })}
             to="/"
-            onClick={() => setIsActive(Path.Home)}
           >
             home
           </NavLink>
@@ -27,9 +25,8 @@ export const Navigation: React.FC<Props> = ({ isActive, setIsActive }) => {
         <li className="navigation__item">
           <NavLink
             className={classNames('navigation__link',
-              { 'navigation__link--active': isActive === Path.Phones })}
+              { 'navigation__link--active': isActive.includes(Path.Phones) })}
             to="/phones"
-            onClick={() => setIsActive(Path.Phones)}
           >
             phones
           </NavLink>
@@ -38,9 +35,8 @@ export const Navigation: React.FC<Props> = ({ isActive, setIsActive }) => {
         <li className="navigation__item">
           <NavLink
             className={classNames('navigation__link',
-              { 'navigation__link--active': isActive === Path.Tablets })}
+              { 'navigation__link--active': isActive.includes(Path.Tablets) })}
             to="/tablets"
-            onClick={() => setIsActive(Path.Tablets)}
           >
             tablets
           </NavLink>
@@ -49,9 +45,11 @@ export const Navigation: React.FC<Props> = ({ isActive, setIsActive }) => {
         <li className="navigation__item">
           <NavLink
             className={classNames('navigation__link',
-              { 'navigation__link--active': isActive === Path.Accessories })}
+              {
+                'navigation__link--active':
+                isActive.includes(Path.Accessories),
+              })}
             to="/accessories"
-            onClick={() => setIsActive(Path.Accessories)}
           >
             accessories
           </NavLink>

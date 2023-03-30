@@ -16,7 +16,7 @@ import { Path } from '../../type/types';
 export const Header = () => {
   const location = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
-  const [isActive, setIsActive] = useState<Path | string>('');
+  const [isActive, setIsActive] = useState<Path | string>('/');
   const [cartList, setCartList] = useState<Product[] | null>(null);
   const [favouritesList, setFavouritesList] = useState<Product[] | null>(null);
   const [query, setQuery] = useState('');
@@ -62,16 +62,19 @@ export const Header = () => {
     }
   }, [location]);
 
+  const setActiveNav = useCallback(() => {
+    const pathName = location.pathname.substring(1) || 'home';
+
+    setIsActive(pathName);
+  }, [location]);
+
   const clearSearchForm = useCallback(() => {
     setQuery('');
   }, []);
 
-  const getLocationPathname = useCallback(() => {
-    return location.pathname.replace('/', '');
-  }, []);
-
   useEffect(() => {
     clearSearchForm();
+    setActiveNav();
   }, [location.pathname]);
 
   useEffect(() => {
@@ -83,7 +86,7 @@ export const Header = () => {
 
     setFavouritesList(getLocaleStorageData(Path.Favourites));
     setCartList(getLocaleStorageData(Path.Cart));
-    setIsActive(getLocationPathname());
+    setActiveNav();
 
     window.addEventListener('storage', () => {
       setFavouritesList(getLocaleStorageData(Path.Favourites));
@@ -111,10 +114,7 @@ export const Header = () => {
           />
         </Link>
 
-        <Navigation
-          isActive={isActive}
-          setIsActive={setIsActive}
-        />
+        <Navigation isActive={isActive} />
       </div>
 
       <div className="header__items-block">

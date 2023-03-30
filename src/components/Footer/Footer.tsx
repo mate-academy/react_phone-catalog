@@ -16,13 +16,13 @@ export const Footer: React.FC<Props> = ({ pageUp }) => {
 
   return (
     <footer className="Footer">
-      <a href="/" className="Footer__link-logo">
+      <Link to="home" className="Footer__link-logo">
         <img
           className="Footer__logo"
           src={logo}
           alt="Page logo"
         />
-      </a>
+      </Link>
 
       <ul className="Footer__contacts-list">
         <li className="Footer__item">
