@@ -17,11 +17,11 @@ export const ProductsSlider: FC<Props> = ({ title, children }) => {
     ? 15
     : (widthWindow - productsInSlider * widthProduct) / (productsInSlider - 1);
   const widthByMove = widthWindow >= 1136 ? 1136 + gap : widthWindow + gap;
-  const amountProducts = blockProducts.current?.childNodes.length || 0;
-  const maxWidthBlockProducts = amountProducts * widthProduct
-  + gap * amountProducts - 1;
 
   const hendlerNext = () => {
+    const amountProducts = blockProducts.current?.childNodes.length || 0;
+    const maxWidthBlockProducts = amountProducts * widthProduct
+    + gap * amountProducts - 1;
     const moveMax = amountProducts * widthProduct + gap * amountProducts
     - 1 - widthByMove + 1;
 

@@ -9,8 +9,6 @@ import {
 export const SliderGallery: FC = ({ children }) => {
   const divImgBlock = useRef<HTMLDivElement>(null);
   const [imgWidthMove, setImgWidthMove] = useState(0);
-  const amountChildren = divImgBlock.current?.childElementCount || 0;
-  const widthDiv = divImgBlock.current?.clientWidth || 0;
 
   useEffect(() => {
     const amountChildrenForTimer = divImgBlock.current?.childElementCount || 0;
@@ -37,6 +35,9 @@ export const SliderGallery: FC = ({ children }) => {
   }, [imgWidthMove]);
 
   const hendlerPrev = () => {
+    const amountChildren = divImgBlock.current?.childElementCount || 0;
+    const widthDiv = divImgBlock.current?.clientWidth || 0;
+
     if (!amountChildren && !widthDiv) {
       return;
     }
@@ -51,6 +52,9 @@ export const SliderGallery: FC = ({ children }) => {
   };
 
   const hendlerNext = () => {
+    const amountChildren = divImgBlock.current?.childElementCount || 0;
+    const widthDiv = divImgBlock.current?.clientWidth || 0;
+
     if (!amountChildren && !widthDiv) {
       return;
     }
