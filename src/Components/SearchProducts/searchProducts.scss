@@ -1,0 +1,15 @@
+.searchProducts {
+  padding: 24px 0 64px;
+
+  &__subTitle {
+    padding-bottom: 24px;
+    @extend %h6;
+    color: $Secondary;
+  }
+
+  &__productList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+}

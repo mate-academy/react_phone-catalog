@@ -1,5 +1,4 @@
 import { FC, useState, useRef } from 'react';
-import './ProductsSlider.scss';
 
 type Props = {
   title: string,
@@ -15,7 +14,7 @@ export const ProductsSlider: FC<Props> = ({ title, children }) => {
     ? 4
     : Math.floor(widthWindow / widthProduct);
   const gap = widthWindow >= 1136
-    ? 16
+    ? 15
     : (widthWindow - productsInSlider * widthProduct) / (productsInSlider - 1);
   const widthByMove = widthWindow >= 1136 ? 1136 + gap : widthWindow + gap;
   const amountProducts = blockProducts.current?.childNodes.length || 0;
@@ -59,13 +58,13 @@ export const ProductsSlider: FC<Props> = ({ title, children }) => {
           <button
             type="button"
             onClick={hendlerPrev}
-            className="sliderProduct__button sliderProduct__button--prev"
+            className="icon icon--left sliderProduct__button"
           />
           {/* eslint-disable-next-line */}
           <button
             type="button"
             onClick={hendlerNext}
-            className="sliderProduct__button sliderProduct__button--next"
+            className="icon icon--right sliderProduct__button"
           />
         </div>
       </div>

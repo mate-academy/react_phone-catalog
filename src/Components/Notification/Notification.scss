@@ -1,0 +1,13 @@
+.error {
+  margin: 0 auto;
+  margin-block-start: 40px;
+  width: max-content;
+  padding: 10px 60px;
+  border: 2px solid $Red;
+  background-color: #ffd0d080;
+  border-radius: 10px;
+
+  & > h1 {
+    color: $Red;
+  }
+}

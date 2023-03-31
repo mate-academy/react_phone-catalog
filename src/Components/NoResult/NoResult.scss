@@ -1,0 +1,8 @@
+.noResult {
+  display: block;
+  padding-top: 80px;
+
+  & > h1 {
+    text-align: center;
+  }
+}

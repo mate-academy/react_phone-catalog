@@ -1,0 +1,258 @@
+@import "../../Style/utils/placecholder.scss";
+@import "../../Style/utils/variables.scss";
+
+.details {
+  padding: 40px 0 80px;
+
+  &__content {
+    display: grid;
+    grid-template-columns: 560px 512px;
+    grid-template-rows: auto auto;
+    gap: 64px;
+    margin-bottom: 80px;
+  }
+
+  &__title {
+    margin-bottom: 40px;
+  }
+
+  &__images {
+    grid-area: 1 / 1;
+  }
+
+  &__description {
+    grid-area: 2 / 1;
+  }
+
+  &__actions {
+    grid-area: 1 / 2;
+    display: flex;
+    gap: 64px;
+    justify-content: space-between;
+  }
+
+  &__descriptionsInfo {
+    grid-area: 2 / 2;
+  }
+
+  &__line {
+    margin-bottom: 25px;
+  }
+
+  &__descriptionTitle {
+    margin-bottom: 16px;
+  }
+
+  &__info {
+    @extend %h6;
+    color: $Secondary;
+    text-indent: 20px;
+    text-align: justify;
+  }
+
+  &__idText {
+    @extend %h7;
+    color: $Icons;
+  }
+}
+
+.images {
+  display: flex;
+  gap: 17px;
+
+  &__blockButtons {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__button {
+    width: 80px;
+    height: 80px;
+    background-color: $White;
+    border: 1px solid $Icons;
+    transition: border-color 300ms;
+    cursor: pointer;
+
+    &:hover {
+      border-color: $Primary;
+    }
+
+    &--active {
+      border-color: $Primary;
+    }
+  }
+
+  &__imgSmall {
+    width: 70px;
+    height: 70px;
+  }
+
+  &__blockImg {
+    width: 464px;
+    height: 464px;
+    margin: 10px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__imgBig {
+    object-fit: contain;
+  }
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  &__block {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    @extend %h6;
+
+    &--small {
+      @extend %h5;
+    }
+  }
+
+  &__title {
+    color: $Secondary;
+  }
+
+  &__description {
+    color: $Primary;
+  }
+}
+
+.buttons {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 32px;
+
+  &__addCart {
+    width: 263px;
+    height: 48px;
+  }
+
+  &__like {
+    height: 48px;
+    width: 48px;
+  }
+}
+
+.prise {
+  display: flex;
+  gap: 8px;
+  @extend %h1;
+  margin-bottom: 16px;
+
+  &__new {
+    color: $Primary;
+  }
+
+  &__old {
+    text-decoration: line-through;
+    color: $Secondary;
+    font-weight: 500;
+    font-size: 22px;
+  }
+}
+
+.capacity {
+  padding-bottom: 24px;
+  margin-bottom: 32px;
+  border-bottom: 1px solid $Elements;
+
+  &__title {
+    @extend %h7;
+    color: $Secondary;
+    margin-bottom: 8px;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__button {
+    @extend %h5;
+    height: 32px;
+    border: 1px solid $Primary;
+    background-color: $White;
+    transition: box-shadow 300ms;
+    color: $Primary;
+    font-weight: 500;
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: 0 3px 13px #17203142;
+    }
+
+    &--active {
+      border-color: $Primary;
+      color: $White;
+      background-color: $Primary;
+    }
+  }
+}
+
+.colors {
+  padding-bottom: 24px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid $Elements;
+
+  &__title {
+    @extend %h7;
+    color: $Secondary;
+    margin-bottom: 8px;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__button {
+    padding: 2px;
+    border-radius: 50%;
+    background-color: $White;
+    border: 1px solid $Elements;
+    transition: border-color 300ms;
+    cursor: pointer;
+
+    &:hover {
+      border-color: $Primary;
+    }
+
+    &--active {
+      border-color: $Primary;
+    }
+  }
+
+  &__background {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+
+    &--blond {
+      background-color: #fcdbc1;
+    }
+
+    &--grey {
+      background-color: #5f7170;
+    }
+
+    &--camel {
+      background-color: #4c4c4c;
+    }
+
+    &--light {
+      background-color: #f0f0f0;
+    }
+  }
+  
+}

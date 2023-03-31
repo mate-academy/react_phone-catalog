@@ -1,42 +1,63 @@
 import classNames from 'classnames';
 import { FC } from 'react';
-import { Link } from 'react-router-dom';
-import './Pagination.scss';
+import { useSearchParams } from 'react-router-dom';
+import { getAmountPages } from '../../helpers/utils/getAmountPages';
 
 type Props = {
   amount: number,
 };
 
-export const Pagination: FC<Props> = ({ amount = 4 }) => {
-  const amountPage = [];
+export const Pagination: FC<Props> = ({ amount }) => {
+  const amountPage = getAmountPages(amount);
+  const [searchParams, setSearchParams] = useSearchParams();
 
-  for (let i = 1; i <= amount; i += 1) {
-    amountPage.push(i);
-  }
+  const activePage = searchParams.get('page') || '1';
+
+  const setSearchPage = (key: string, value: number) => {
+    searchParams.set(key, value.toString());
+
+    setSearchParams(searchParams);
+  };
 
   return (
-    <div className="pagination">
-      <Link
-        to="/#"
-        className="pagination__button pagination__arrow pagination__arrow--prev"
+    <div className="pagination" data-cy="pagination">
+      {/* eslint-disable-next-line */}
+      <button
+        onClick={() => setSearchPage(
+          'page',
+          +activePage - 1,
+        )}
+        type="button"
+        className="icon icon--left pagination__button"
+        data-cy="paginationLeft"
+        disabled={+activePage === 1}
       />
 
       <div className="pagination__pages">
         {amountPage.map(num => (
-          <div
+          <button
+            type="button"
+            onClick={() => setSearchPage('page', num)}
             key={num}
             className={classNames(
               'pagination__page pagination__button',
-              { 'pagination__page--active': num === 3 },
+              { 'pagination__page--active': num === Number(activePage) },
             )}
           >
             {num}
-          </div>
+          </button>
         ))}
       </div>
-      <Link
-        to="/#"
-        className="pagination__button pagination__arrow pagination__arrow--next"
+      {/* eslint-disable-next-line */}
+      <button
+        onClick={() => setSearchPage(
+          'page',
+          +activePage + 1,
+        )}
+        type="button"
+        className="icon icon--right pagination__button"
+        data-cy="paginationRight"
+        disabled={+activePage === amount}
       />
     </div>
   );

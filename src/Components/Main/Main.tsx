@@ -1,5 +1,4 @@
 import { FC } from 'react';
-import './Main.scss';
 
 export const Main: FC = ({ children }) => (
   <main className="main">

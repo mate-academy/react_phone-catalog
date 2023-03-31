@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import './Category.scss';
 
 export const Category = () => {
   return (

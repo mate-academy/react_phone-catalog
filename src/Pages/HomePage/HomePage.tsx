@@ -1,20 +1,38 @@
-import { useEffect, useState, useMemo } from 'react';
-import { getProducts } from '../../utils/API';
-import { Error } from '../../types/Error';
-import { Product } from '../../types/Product';
+import {
+  FC,
+  useEffect,
+  useState,
+  useMemo,
+} from 'react';
+import { Link } from 'react-router-dom';
+import { getProducts } from '../../helpers/utils/API';
+import { Product } from '../../helpers/types/Product';
 import { ProductsSlider } from '../../Components/ProductsSlider/ProductsSlider';
-import { ProductCard } from '../../Components/ProductCard/ProductCard';
 import { Category } from '../../Components/Category/Category';
 import { SliderGallery } from '../../Components/SliderGallery/SliderGallery';
-import './homePage.scss';
+import { Loader } from '../../Components/Loader/Loader';
+import { Notification } from '../../Components/Notification/Notification';
+/* eslint-disable-next-line */
+import { getLinkForProductCard } from '../../helpers/utils/getLinkForProductCard';
+/* eslint-disable-next-line */
+import { ProductCardInfo } from '../../Components/ProductCardInfo/ProductCardInfo';
 
-export const HomePage = () => {
+type Props = {
+  favoriteProducts: Product[],
+  setFavorite: (item: Product) => void,
+  selectedProducts: Product[],
+  setSelectedProducts: (item: Product) => void,
+};
+
+export const HomePage: FC<Props> = ({
+  selectedProducts,
+  setSelectedProducts,
+  favoriteProducts,
+  setFavorite,
+}) => {
   const [products, setProduct] = useState<Product[]>([]);
   const [isLoadProducts, setIsLoadProducts] = useState(false);
-  const [error, setError] = useState({
-    error: false,
-    message: Error.NONE,
-  });
+  const [isError, setIsError] = useState(false);
 
   const hotPriceProducts = useMemo(() => {
     return products
@@ -31,18 +49,12 @@ export const HomePage = () => {
   const fetchProduct = async () => {
     try {
       setIsLoadProducts(true);
-      setError({
-        error: false,
-        message: Error.NONE,
-      });
+      setIsError(false);
       const productsFromAPI = await getProducts();
 
       setProduct(productsFromAPI);
     } catch {
-      setError({
-        error: true,
-        message: Error.LOAD,
-      });
+      setIsError(true);
     } finally {
       setIsLoadProducts(false);
     }
@@ -52,10 +64,16 @@ export const HomePage = () => {
     fetchProduct();
   }, []);
 
+  if (isError) {
+    return <Notification message="Can`t load products" />;
+  }
+
+  if (isLoadProducts) {
+    return <Loader />;
+  }
+
   return (
     <div className="homePage">
-      {isLoadProducts && <>load</>}
-      {error.error && <>{error.message}</>}
       <section className="homePage__section">
         <SliderGallery>
           <span id="1" className="slider__image slider__image--1" />
@@ -68,13 +86,20 @@ export const HomePage = () => {
       <section className="homePage__section">
         <ProductsSlider title="Hot prices">
           {hotPriceProducts.map(product => (
-            <div
+            <Link
+              to={`/${getLinkForProductCard(product.type)}/${product.id}`}
               className="productCard"
               key={product.id}
               data-cy="cardsContainer"
             >
-              <ProductCard product={product} isDiscount />
-            </div>
+              <ProductCardInfo
+                setSelectedProducts={setSelectedProducts}
+                selectedProducts={selectedProducts}
+                favoriteProducts={favoriteProducts}
+                setFavorite={setFavorite}
+                product={product}
+              />
+            </Link>
           ))}
         </ProductsSlider>
       </section>
@@ -84,13 +109,20 @@ export const HomePage = () => {
       <section className="homePage__section">
         <ProductsSlider title="Brand new models">
           {getBrandNewProducts.map(product => (
-            <div
+            <Link
+              to={`/${getLinkForProductCard(product.type)}/${product.id}`}
               className="productCard"
               key={product.id}
               data-cy="cardsContainer"
             >
-              <ProductCard product={product} isDiscount={false} />
-            </div>
+              <ProductCardInfo
+                selectedProducts={selectedProducts}
+                setSelectedProducts={setSelectedProducts}
+                favoriteProducts={favoriteProducts}
+                setFavorite={setFavorite}
+                product={product}
+              />
+            </Link>
           ))}
         </ProductsSlider>
       </section>

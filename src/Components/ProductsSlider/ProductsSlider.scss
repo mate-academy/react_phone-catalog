@@ -1,5 +1,3 @@
-@import "../../Style/utils/variables.scss";
-
 .sliderProduct {
   &__header {
     display: flex;
@@ -15,25 +13,6 @@
   &__button {
     width: 32px;
     height: 32px;
-    background-color: $White;
-    border: 1px solid $Icons;
-    cursor: pointer;
-    background-size: 6px 10px;
-    background-repeat: no-repeat;
-    background-position: center;
-    transition: border 300ms;
-
-    &:hover {
-      border: 1px solid $Primary;
-    }
-
-    &--prev {
-      background-image: url(../../images/icons/iconPrev.svg);
-    }
-
-    &--next {
-      background-image: url(../../images/icons/iconNext.svg);
-    }
   }
 
   &__container {

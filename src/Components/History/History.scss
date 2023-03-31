@@ -1,0 +1,58 @@
+.history {
+  &--current {
+    padding: 0 5px 40px;
+    display: flex;
+  }
+
+  &--back {
+    display: flex;
+    gap: 10px;
+    cursor: pointer;
+    width: min-content;
+    margin-bottom: 20px;
+    text-decoration: none;
+    color: $Secondary;
+    background-color: $White;
+    border: none;
+  }
+
+  &__home {
+    display: block;
+    margin: auto 0;
+    width: 13px;
+    height: 15px;
+    cursor: pointer;
+    background-image: url(../../images/icons/Home.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+
+  &__arrow {
+    display: block;
+    width: 6px;
+    height: 10px;
+    margin: auto 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+    &--next {
+      background-image: url(../../images/icons/iconNext-grey.svg);
+      margin-inline: 14px;
+    }
+
+    &--back {
+      background-image: url(../../images/icons/iconPrev.svg);
+    }
+  }
+
+  &__page {
+    @extend %h7;
+    user-select: none;
+
+    &--last {
+      color: $Secondary;
+    }
+  }
+}

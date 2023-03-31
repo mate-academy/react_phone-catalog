@@ -1,11 +1,10 @@
-import classNames from 'classnames';
 import {
   FC,
   useMemo,
   useRef,
   useState,
+  useEffect,
 } from 'react';
-import './SliderGallery.scss';
 
 export const SliderGallery: FC = ({ children }) => {
   const divImgBlock = useRef<HTMLDivElement>(null);
@@ -13,25 +12,29 @@ export const SliderGallery: FC = ({ children }) => {
   const amountChildren = divImgBlock.current?.childElementCount || 0;
   const widthDiv = divImgBlock.current?.clientWidth || 0;
 
-  // useEffect(() => {
-  //   const timerId = setTimeout(() => {
-  //     if (!amountChildren && !widthDiv) {
-  //       return;
-  //     }
+  useEffect(() => {
+    const amountChildrenForTimer = divImgBlock.current?.childElementCount || 0;
+    const widthDivForTimer = divImgBlock.current?.clientWidth || 0;
+    const fullWidthContainer = amountChildrenForTimer * widthDivForTimer;
 
-  //     setImgWidthMove((prevState) => {
-  //       if (prevState + widthDiv >= amountChildren * widthDiv) {
-  //         return 0;
-  //       }
+    const timerId = setTimeout(() => {
+      if (!amountChildrenForTimer && !widthDivForTimer) {
+        return;
+      }
 
-  //       return prevState + widthDiv;
-  //     });
-  //   }, 5000);
+      setImgWidthMove((prevState) => {
+        if (prevState + widthDivForTimer >= fullWidthContainer) {
+          return 0;
+        }
 
-  //   return () => {
-  //     clearTimeout(timerId);
-  //   }
-  // }, [imgWidthMove]);
+        return prevState + widthDivForTimer;
+      });
+    }, 5000);
+
+    return () => {
+      clearTimeout(timerId);
+    };
+  }, [imgWidthMove]);
 
   const hendlerPrev = () => {
     if (!amountChildren && !widthDiv) {
@@ -66,13 +69,13 @@ export const SliderGallery: FC = ({ children }) => {
   }), [imgWidthMove]);
 
   return (
-    <div className="slider homePage__gallerySlider">
+    <div className="slider">
       <div className="slider__content">
         {/* eslint-disable-next-line */}
         <button
           type="button"
           onClick={hendlerPrev}
-          className="slider__button slider__button--prev"
+          className="icon icon--left slider__button"
         />
         <div className="slider__container">
           <div
@@ -87,33 +90,7 @@ export const SliderGallery: FC = ({ children }) => {
         <button
           type="button"
           onClick={hendlerNext}
-          className="slider__button slider__button--next"
-        />
-      </div>
-      <div className="slider__lables">
-        <span
-          className={classNames(
-            'slider__lable',
-            { 'slider__lable--active': false },
-          )}
-        />
-        <span
-          className={classNames(
-            'slider__lable',
-            { 'slider__lable--active': false },
-          )}
-        />
-        <span
-          className={classNames(
-            'slider__lable',
-            { 'slider__lable--active': true },
-          )}
-        />
-        <span
-          className={classNames(
-            'slider__lable',
-            { 'slider__lable--active': false },
-          )}
+          className="icon icon--right slider__button"
         />
       </div>
     </div>

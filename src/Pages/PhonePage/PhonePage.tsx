@@ -1,20 +1,70 @@
-import { FC, useState, useEffect } from 'react';
+import {
+  FC,
+  useState,
+  useEffect,
+  useMemo,
+} from 'react';
+import { Link, useSearchParams } from 'react-router-dom';
+import { Notification } from '../../Components/Notification/Notification';
+import { History } from '../../Components/History/HistoryNav';
+import { Loader } from '../../Components/Loader/Loader';
+import { NoResult } from '../../Components/NoResult/NoResult';
 import { Pagination } from '../../Components/Pagination/Pagination';
-import { ProductCard } from '../../Components/ProductCard/ProductCard';
-import { Product } from '../../types/Product';
-import { getPhones } from '../../utils/API';
-import './PhonePage.scss';
+import { SearchProducts } from '../../Components/SearchProducts/SearchProducts';
+import { SortForm } from '../../Components/SortForm/SortForm';
+import { Product } from '../../helpers/types/Product';
+import { getPhones } from '../../helpers/utils/API';
+import { getVisibleProduct } from '../../helpers/utils/GetVisibleProducts';
+import { getSearchProducts } from '../../helpers/utils/searchHelper';
+/* eslint-disable-next-line */
+import { getLinkForProductCard } from '../../helpers/utils/getLinkForProductCard';
+/* eslint-disable-next-line */
+import { ProductCardInfo } from '../../Components/ProductCardInfo/ProductCardInfo';
 
-export const PhonePage: FC = () => {
+type Props = {
+  favoriteProducts: Product[],
+  setFavorite: (item: Product) => void,
+  selectedProducts: Product[],
+  setSelectedProducts: (item: Product) => void,
+};
+
+export const PhonePage: FC<Props> = ({
+  setSelectedProducts,
+  selectedProducts,
+  favoriteProducts,
+  setFavorite,
+}) => {
   const [phones, setPhones] = useState<Product[]>([]);
+  const [searchParams] = useSearchParams();
+  const [isLoad, setIsLoad] = useState(false);
+  const [isError, setIsError] = useState(false);
+  const sortBy = searchParams.get('sortBy') || 'age';
+  const itemsPerPage = searchParams.get('perPage') || 'All';
+  const page = searchParams.get('page') || '1';
+  const query = searchParams.get('query') || '';
+
+  const visiblePhones = useMemo(() => getVisibleProduct(
+    phones,
+    sortBy,
+    +itemsPerPage || phones.length,
+    +page,
+  ), [sortBy, phones, itemsPerPage, page]);
+
+  const amountPages = itemsPerPage === 'All'
+    ? 1
+    : Math.ceil(phones.length / +itemsPerPage);
 
   const fetchPhones = async () => {
     try {
+      setIsLoad(true);
+      setIsError(false);
       const phonesFromAPI = await getPhones();
 
       setPhones(phonesFromAPI);
     } catch {
-      throw Error();
+      setIsError(true);
+    } finally {
+      setIsLoad(false);
     }
   };
 
@@ -22,52 +72,60 @@ export const PhonePage: FC = () => {
     fetchPhones();
   }, []);
 
+  if (isLoad) {
+    return <Loader />;
+  }
+
+  if (isError) {
+    return (
+      <Notification message="Something went wrong" />
+    );
+  }
+
+  if (!phones.length) {
+    return <NoResult message="Phones not found" />;
+  }
+
+  if (query) {
+    return (
+      <SearchProducts
+        products={getSearchProducts(phones, query)}
+        setSelectedProducts={setSelectedProducts}
+        selectedProducts={selectedProducts}
+        favoriteProducts={favoriteProducts}
+        setFavorite={setFavorite}
+      />
+    );
+  }
+
   return (
-    <>
-      <h1 className="phonePage__title">Mobile phones</h1>
-      <p className="phonePage__subTitle">{`${phones.length} models`}</p>
+    <div className="productPage">
+      <History pages={['Phone']} />
+      <h1 className="productPage__title">Mobile phones</h1>
+      <p className="productPage__subTitle">{`${phones.length} models`}</p>
 
-      <form className="phonePage__sortForm">
-        <div>
-          <p className="phonePage__label">
-            Sort by
-          </p>
-          <select
-            className="phonePage__select phonePage__select--sort"
-            value="age"
-          >
-            <option value="age">Newest</option>
-            <option value="name">Alphabetically</option>
-            <option value="price">Cheapest</option>
-          </select>
-        </div>
-        <div>
-          <p className="phonePage__label">
-            Items on page
-          </p>
-          <select
-            className="phonePage__select phonePage__select--itemPerPage"
-            value="All"
-          >
-            <option value="All">All</option>
-            <option value="4">4</option>
-            <option value="8">8</option>
-            <option value="16">16</option>
-          </select>
-        </div>
-      </form>
+      <SortForm />
 
-      <div className="phonePage__productList" data-cy="productList">
-        {phones.map(phone => (
-          <div className="productCard" key={phone.id}>
-            <ProductCard product={phone} isDiscount={false} />
-          </div>
+      <div className="productPage__productList" data-cy="productList">
+        {visiblePhones.map(phone => (
+          <Link
+            to={`/${getLinkForProductCard(phone.type)}/${phone.id}`}
+            className="productCard"
+            key={phone.id}
+            data-cy="cardsContainer"
+          >
+            <ProductCardInfo
+              setSelectedProducts={setSelectedProducts}
+              selectedProducts={selectedProducts}
+              favoriteProducts={favoriteProducts}
+              product={phone}
+              setFavorite={setFavorite}
+            />
+          </Link>
         ))}
       </div>
 
-      <div className="phonePage__pagination">
-        <Pagination amount={5} />
-      </div>
-    </>
+      <Pagination amount={amountPages} />
+    </div>
   );
 };

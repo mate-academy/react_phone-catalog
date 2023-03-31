@@ -1,5 +1,4 @@
 import { Logo } from '../Logo/Logo';
-import './Footer.scss';
 
 export const Footer = () => {
   return (
@@ -19,12 +18,12 @@ export const Footer = () => {
               </a>
             </li>
             <li className="footer__item">
-              <a href="tell:000000000" className="footer__link">
+              <a href="tel:+000000000" className="footer__link">
                 contacts
               </a>
             </li>
             <li className="footer__item">
-              <a href="#rights" className="footer__link">
+              <a href="/" className="footer__link">
                 rights
               </a>
             </li>
@@ -32,7 +31,11 @@ export const Footer = () => {
           <div className="footer__toTop">
             <span className="footer__toTopTitle">Back to top</span>
             {/* eslint-disable-next-line */}
-            <a href="#page" className="footer__LinkToTop" />
+            <button
+              type="button"
+              className="icon icon--up footer__buttonToTop"
+              onClick={() => window.scrollTo(0, 0)}
+            />
           </div>
         </footer>
       </div>

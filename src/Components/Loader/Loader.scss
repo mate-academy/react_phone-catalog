@@ -1,0 +1,24 @@
+.loader {
+  display: block;
+  padding-top: 80px;
+
+  &__circle {
+    margin: 0 auto;
+    width: 20px;
+    height: 20px;
+    border: 3px solid $Primary;
+    border-left: 3px solid transparent;
+    border-radius: 50%;
+    animation: spiner 1s linear infinite;
+  }
+}
+
+@keyframes spiner {
+  from {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -1,23 +1,4 @@
-@import "../../Style/utils/variables.scss";
-
 .slider {
-  &__lables {
-    display: flex;
-    gap: 14px;
-    justify-content: center;
-  }
-
-  &__lable {
-    display: block;
-    background-color: $Elements;
-    width: 14px;
-    height: 4px;
-
-    &--active {
-      background-color: $Primary;
-    }
-  }
-
   &__content {
     width: 100%;
     padding-bottom: 18px;
@@ -28,28 +9,8 @@
   }
 
   &__button {
-    background-color: $White;
     height: 100%;
     width: 32px;
-    border: 1px solid $Icons;
-    cursor: pointer;
-    transition: all 300ms;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 6px;
-
-    &:hover {
-      transform: scale(1.05, 1);
-      border: 1px solid $Primary;
-    }
-
-    &--prev {
-      background-image: url(../../images/icons/iconPrev.svg);
-    }
-
-    &--next {
-      background-image: url(../../images/icons/iconNext.svg);
-    }
   }
 
   &__container {

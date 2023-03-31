@@ -1,13 +1,21 @@
+import { FC } from 'react';
 import classNames from 'classnames';
 import { NavLink, Route, Routes } from 'react-router-dom';
 import { Logo } from '../Logo/Logo';
-import { Nav } from './Nav/Nav';
-import { Search } from './Search/Search';
-import './Header.scss';
+import { Nav } from '../Nav/Nav';
+import { Search } from '../Search/Search';
 
-export const Header = () => {
+type Props = {
+  favoriteProductLength: number,
+  storeCard: number,
+};
+
+export const Header: FC<Props> = ({
+  favoriteProductLength,
+  storeCard,
+}) => {
   return (
-    <header className="header page__header">
+    <header className="header">
       <div className="header__left">
         <Logo />
         <Nav />
@@ -16,29 +24,40 @@ export const Header = () => {
         <Routes>
           <Route path="/favorite" element={<Search />} />
           <Route path="/phones" element={<Search />} />
+          <Route path="/tablets" element={<Search />} />
+          <Route path="/accessories" element={<Search />} />
         </Routes>
 
-        <div className="icons">
-          <div className="icons__icon">
+        <div className="header__icons">
+          <div className="header__icon">
             <NavLink
               to="/favorite"
               className={({ isActive }) => classNames(
-                'icons__link icons__link_heart',
-                { 'icons__link--active': isActive },
+                'header__link header__link--heart',
+                { 'header__link--active': isActive },
               )}
+              replace
             />
-            <span className="icons__count">1</span>
+            {!!favoriteProductLength && (
+              <span className="header__count">
+                {favoriteProductLength}
+              </span>
+            )}
           </div>
 
-          <div className="icons__icon">
+          <div className="header__icon">
             <NavLink
               to="/store"
               className={({ isActive }) => classNames(
-                'icons__link icons__link_catalog',
-                { 'icons__link--active': isActive },
+                'header__link header__link--catalog',
+                { 'header__link--active': isActive },
               )}
             />
-            <span className="icons__count">1</span>
+            {!!storeCard && (
+              <span className="header__count">
+                {storeCard}
+              </span>
+            )}
           </div>
         </div>
       </div>
