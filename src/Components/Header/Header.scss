@@ -1,0 +1,71 @@
+.header {
+  box-shadow: 0 1px 0 $Elements;
+  display: flex;
+  height: $headerHeight;
+  justify-content: space-between;
+  gap: 65px;
+  padding-left: 25px;
+
+  &__left {
+    display: flex;
+    gap: 65px;
+  }
+
+  &__right {
+    display: flex;
+  }
+
+  &__icons {
+    display: flex;
+  }
+
+  &__icon {
+    display: flex;
+    position: relative;
+  }
+  
+  &__count {
+    display: block;
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border: 2px solid $White;
+    border-radius: 50%;
+    background-color: $Red;
+    transform: translate(34px, 18px);
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 9px;
+    line-height: 14px;
+    color: $White;
+    text-align: center;
+    user-select: none;
+    cursor: pointer;
+  }
+
+  &__link {
+    border-left: 1px solid $HoverBG;
+    width: 65px;
+    height: 65px;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-bottom: 3px solid $White;
+    transition: border-bottom 300ms;
+
+    &--active {
+      border-bottom: 3px solid $Primary;
+    }
+
+    &--heart {
+      background-image: url(../../images/icons/heart.svg);
+    }
+
+    &--catalog {
+      background-image: url(../../images/icons/catalog.svg);
+    }
+
+    &:hover {
+      border-bottom: 3px solid $Primary;
+    }
+  }
+}

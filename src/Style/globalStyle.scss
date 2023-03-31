@@ -1,0 +1,17 @@
+@import "./utils/variables.scss";
+
+body {
+  margin: 0;
+  font-family: "Mont", sans-serif;
+  font-weight: 600;
+  scroll-behavior: smooth;
+}
+
+.container {
+  max-width: 1136px;
+  margin: 0 auto;
+}
+
+h1 {
+  @extend %h1;
+}

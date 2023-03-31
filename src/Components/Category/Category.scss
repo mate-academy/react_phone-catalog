@@ -1,0 +1,30 @@
+.category {
+  &__title {
+    margin-bottom: 24px;
+  }
+
+  &__links {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__link {
+    color: $Primary;
+    text-decoration: none;
+  }
+
+  &__image {
+    margin-bottom: 24px;
+  }
+
+  &__subTitle {
+    @extend %h3;
+    color: $Primary;
+    margin-bottom: 4px;
+  }
+
+  &__amountDevices {
+    @extend %h6;
+    color: $Secondary;
+  }
+}

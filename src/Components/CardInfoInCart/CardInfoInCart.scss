@@ -1,0 +1,61 @@
+.cart {
+  display: flex;
+  width: max-content;
+  padding: 25px 40px 25px 25px;
+  border: 1px solid $Elements;
+
+  &__buttonCross {
+    margin: auto 0;
+    margin-inline-end: 35px;
+    width: 10px;
+    height: 10px;
+    background-image: url(../../images/icons/cross.svg);
+    background-color: $White;
+    border: none;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+  }
+
+  &__image {
+    height: 80px;
+    width: 80px;
+    margin: auto 0;
+    margin-inline-end: 25px;
+  }
+
+  &__title {
+    @extend %h6;
+    color: $Primary;
+    width: 300px;
+    margin: auto 0;
+    margin-inline-end: 50px;
+  }
+
+  &__changeAmount {
+    display: flex;
+    margin: auto 0;
+    margin-inline-end: 43px;
+  }
+
+  &__button {
+    height: 32px;
+    width: 32px;
+  }
+
+  &__amount {
+    @extend %h6;
+    color: $Primary;
+    display: block;
+    height: 32px;
+    width: 32px;
+    text-align: center;
+    line-height: 32px;
+  }
+
+  &__price {
+    @extend %h2;
+    color: $Primary;
+    margin: auto 0;
+  }
+}

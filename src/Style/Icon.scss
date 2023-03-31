@@ -1,0 +1,60 @@
+.icon {
+  display: block;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: $White;
+  transition: border-color 300ms;
+  border: 1px solid $Icons;
+  cursor: pointer;
+
+  &:hover {
+    border-color: $Primary;
+  }
+
+  &--up {
+    background-image: url(../images/icons/arroyUp.svg);
+  }
+
+  &--left {
+    background-image: url(../images/icons/iconPrev.svg);
+  }
+
+  &--right {
+    background-image: url(../images/icons/iconNext.svg);
+  }
+
+  &--heart {
+    background-image: url(../images/icons/heart.svg);
+  }
+
+  &--redHeart {
+    background-image: url(../images/icons/red-heart.svg);
+  }
+
+  &--minus {
+    background-image: url(../images/icons/minus.svg);
+  }
+
+  &--plus {
+    background-image: url(../images/icons/plus.svg);
+  }
+}
+
+.buttonAdd {
+  background-color: $Primary;
+  color: $White;
+  border: 1px solid $Primary;
+  cursor: pointer;
+  @extend %h5;
+  transition: box-shadow 300ms;
+
+  &:hover {
+    box-shadow: 0 3px 13px #17203142;
+  }
+
+  &--active {
+    border: 1px solid $Elements;
+    background-color: $White;
+    color: $Green;
+  }
+}

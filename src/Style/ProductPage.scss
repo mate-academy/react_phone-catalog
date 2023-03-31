@@ -1,0 +1,44 @@
+.productPage {
+  padding: 25px 0 80px;
+
+  &--cart {
+    padding-top: 40px;
+  }
+
+  &__containerCart {
+    padding-top: 40px;
+  }
+
+  &__title {
+    margin-bottom: 8px;
+    color: $Primary;
+  }
+
+  &__subTitle {
+    @extend %h6;
+    color: $Secondary;
+    margin-bottom: 40px;
+  }
+
+  &__sortForm {
+    margin-bottom: 24px;
+  }
+
+  &__productList {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 80px;
+    gap: 15px;
+  }
+
+  &__contentCart {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__cartsList {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+}

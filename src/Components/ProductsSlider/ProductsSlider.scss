@@ -1,0 +1,28 @@
+.sliderProduct {
+  &__header {
+    display: flex;
+    margin-bottom: 24px;
+    justify-content: space-between;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+  }
+
+  &__container {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  &__imageBlock {
+    width: 100%;
+    display: flex;
+    transition: transform 300ms;
+  }
+}

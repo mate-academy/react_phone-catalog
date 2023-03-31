@@ -1,0 +1,37 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+
+  &__button {
+    width: 32px;
+    height: 32px;
+  }
+
+  &__pages {
+    @extend %h6;
+    display: flex;
+    gap: 8px;
+  }
+
+  &__page {
+    background-color: $White;
+    cursor: pointer;
+    border: 1px solid $Elements;
+    text-align: center;
+    line-height: 32px;
+    user-select: none;
+    color: #000;
+    text-decoration: none;
+    transition: border-color 300ms;
+
+    &:hover {
+      border-color: $Primary;
+    }
+
+    &--active {
+      color: $White;
+      background-color: $Primary;
+    }
+  }
+}

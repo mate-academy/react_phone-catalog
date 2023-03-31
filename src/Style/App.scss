@@ -1,0 +1,31 @@
+@import "./reset.scss";
+@import "./utils/fonts.scss";
+@import "./utils/placecholder.scss";
+@import "./utils/variables.scss";
+
+@import "./globalStyle.scss";
+@import "./Icon.scss";
+
+@import "../Components/Logo/Logo.scss";
+@import "../Components/Nav/Nav.scss";
+@import "../Components/Search/Search.scss";
+@import "../Components/Header/Header.scss";
+@import "../Components/Footer/Footer.scss";
+@import "../Components/Main/Main.scss";
+@import "../Components/Loader/Loader.scss";
+@import "../Components/NoResult/NoResult.scss";
+@import "../Components/Notification/Notification.scss";
+@import "../Components/SliderGallery/SliderGallery.scss";
+@import "../Components/ProductsSlider/ProductsSlider.scss";
+@import "../Components/ProductCardInfo/ProductCardInfo.scss";
+@import "../Components/Category/Category.scss";
+@import "../Components/History/History.scss";
+@import "../Components/SortForm/SortForm.scss";
+@import "../Components/Pagination/Pagination.scss";
+@import "../Components/CardInfoInCart/CardInfoInCart.scss";
+@import "../Components/TotalPriceCart/TotalPriceCart.scss";
+@import "../Components/SearchProducts/searchProducts.scss";
+@import "../Components/NotFoundPage/NotFoundPage.scss";
+
+@import "../Pages/HomePage/homePage.scss";
+@import "./ProductPage.scss";

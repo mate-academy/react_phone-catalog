@@ -1,0 +1,75 @@
+.productCard {
+  box-sizing: border-box;
+  display: block;
+  border: 1px solid $HoverBG;
+  padding: 32px 24px 24px;
+  text-decoration: none;
+
+  &__image {
+    display: block;
+    width: 206px;
+    height: 208px;
+    margin: 0 auto 24px;
+  }
+
+  &__title {
+    width: 222px;
+    height: 42px;
+    @extend %h6;
+    color: $Primary;
+  }
+
+  &__price {
+    display: flex;
+    gap: 8px;
+    padding: 6px 0;
+    margin-bottom: 16px;
+    border-bottom: 1px solid $HoverBG;
+    @extend %h2;
+  }
+
+  &__newPrice {
+    color: $Primary;
+  }
+
+  &__oldPrice {
+    font-weight: 500;
+    color: $Secondary;
+    text-decoration: line-through;
+  }
+
+  &__description {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    @extend %h7;
+  }
+
+  &__descriptionTitle {
+    color: $Secondary;
+  }
+
+  &__descriptionCard {
+    color: $Primary;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+    justify-content: space-between;
+    margin-top: 16px;
+  }
+
+  &__button {
+    flex-grow: 1;
+    height: 40px;
+    text-decoration: none;
+    text-align: center;
+    line-height: 40px;
+  }
+
+  &__like {
+    width: 40px;
+    height: 40px;
+  }
+}
