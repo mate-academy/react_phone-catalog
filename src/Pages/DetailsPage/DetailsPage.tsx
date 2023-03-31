@@ -117,7 +117,7 @@ export const DetailsPage: FC<Props> = ({
               >
                 <img
                   className="images__imgSmall"
-                  src={`/${image}`}
+                  src={`./${image}`}
                   alt="product"
                 />
               </button>
@@ -125,7 +125,7 @@ export const DetailsPage: FC<Props> = ({
           </div>
           <div className="images__blockImg">
             <img
-              src={`/${activeURLImg}`}
+              src={`./${activeURLImg}`}
               className="details__imgBig"
               alt="product"
             />
