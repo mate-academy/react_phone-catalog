@@ -82,6 +82,10 @@
     background-color: transparent;
   }
 
+  &__selected-option:hover {
+    cursor: pointer;
+  }
+
   &__options-wrapper {
     height: max-content;
     width: max-content;
@@ -117,5 +121,6 @@
     font-size: 14px;
     line-height: 21px;
     color: $text-color;
+    cursor: pointer;
   }
 }
