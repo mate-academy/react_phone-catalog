@@ -78,7 +78,7 @@ export const Navigation: React.FC<Props> = ({ isActive }) => {
                   isActive.includes(Path.Accessories),
               })}
             >
-              ccessories
+              accessories
             </p>
           </NavLink>
         </li>
