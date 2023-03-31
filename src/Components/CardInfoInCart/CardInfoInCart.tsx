@@ -35,7 +35,7 @@ export const CardInfoInCart: FC<Props> = ({
         type="button"
         className="icon icon--minus cart__button"
         onClick={() => onChangeAmount(product.item.id, 'incr')}
-        disabled={product.amount === 0}
+        disabled={product.amount === 1}
       />
       <p
         className="cart__amount"

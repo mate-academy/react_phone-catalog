@@ -50,6 +50,8 @@
   &__page {
     @extend %h7;
     user-select: none;
+    text-decoration: none;
+    color: $Primary;
 
     &--last {
       color: $Secondary;

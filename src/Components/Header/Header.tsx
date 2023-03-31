@@ -31,7 +31,7 @@ export const Header: FC<Props> = ({
         <div className="header__icons">
           <div className="header__icon">
             <NavLink
-              to="/favorite"
+              to="/favorites"
               className={({ isActive }) => classNames(
                 'header__link header__link--heart',
                 { 'header__link--active': isActive },
@@ -47,7 +47,7 @@ export const Header: FC<Props> = ({
 
           <div className="header__icon">
             <NavLink
-              to="/store"
+              to="/cart"
               className={({ isActive }) => classNames(
                 'header__link header__link--catalog',
                 { 'header__link--active': isActive },

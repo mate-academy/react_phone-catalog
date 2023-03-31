@@ -44,7 +44,7 @@ export const FavoritesPage: FC<Props> = ({
 
   return (
     <div className="productPage">
-      <History pages={['Favourites']} />
+      <History lastPage="Favourites" />
       <h1 className="productPage__title">Favourites</h1>
       <p className="productPage__subTitle">{`${favoriteProducts.length} models`}</p>
       <div className="productPage__productList">

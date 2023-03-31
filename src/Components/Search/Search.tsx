@@ -15,7 +15,7 @@ export const Search = () => {
       <input
         className="search__input"
         type="text"
-        placeholder="Search in favourites..."
+        placeholder="Search in favorites..."
         value={query}
         onChange={hendlerInput}
       />

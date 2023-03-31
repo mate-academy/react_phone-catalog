@@ -26,6 +26,7 @@ import { ProductCardInfo } from '../../Components/ProductCardInfo/ProductCardInf
 
 type Props = {
   type: string,
+  link: string,
   favoriteProducts: Product[],
   setFavorite: (item: Product | null) => void,
   selectedProducts: Product[],
@@ -34,6 +35,7 @@ type Props = {
 
 export const DetailsPage: FC<Props> = ({
   type,
+  link,
   setSelectedProducts,
   selectedProducts,
   favoriteProducts,
@@ -97,7 +99,7 @@ export const DetailsPage: FC<Props> = ({
 
   return (
     <div className="details">
-      <History pages={[type, productDetails.id]} />
+      <History type={type} link={link} lastPage={productDetails.id} />
       <HistoryBack />
       <h1 className="details__title">{productDetails.name}</h1>
       <div className="details__content">

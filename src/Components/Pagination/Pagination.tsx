@@ -19,6 +19,10 @@ export const Pagination: FC<Props> = ({ amount }) => {
     setSearchParams(searchParams);
   };
 
+  if (amount < 2) {
+    return null;
+  }
+
   return (
     <div className="pagination" data-cy="pagination">
       {/* eslint-disable-next-line */}

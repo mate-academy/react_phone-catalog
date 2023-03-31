@@ -42,7 +42,7 @@ export const ProductCardInfo: FC<Props> = ({
       <img
         className="productCard__image"
         src={`./${product.imageUrl}`}
-        alt={product.name}
+        alt={product.id}
       />
       <p className="productCard__title">{product.name}</p>
       <div className="productCard__price">

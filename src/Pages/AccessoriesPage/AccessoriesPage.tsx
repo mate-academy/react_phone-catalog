@@ -99,7 +99,7 @@ export const AccessoriesPage: FC<Props> = ({
 
   return (
     <div className="productPage">
-      <History pages={['Accessories']} />
+      <History lastPage="Accessories" />
       <h1 className="productPage__title">Tablets</h1>
       <p className="productPage__subTitle">{`${accessories.length} models`}</p>
 

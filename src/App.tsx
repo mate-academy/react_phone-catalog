@@ -12,6 +12,7 @@ import { StorePage } from './Pages/StorePage/StorePage';
 import { TablePage } from './Pages/TabletsPage/TabletsPage';
 import './Style/App.scss';
 import { useLocalStorage } from './helpers/utils/useLocaleStorage';
+import { NotFoundPage } from './Components/NotFoundPage/NotFoundPage';
 
 const App: FC = () => {
   const [favoriteProducts, setFavorite] = useLocalStorage('favorite');
@@ -26,6 +27,7 @@ const App: FC = () => {
       <Main>
         <Routes>
           <Route path="/home" element={<Navigate to="/" />} />
+          <Route path="*" element={<NotFoundPage />} />
           <Route
             path="/"
             element={(
@@ -54,6 +56,7 @@ const App: FC = () => {
               element={(
                 <DetailsPage
                   type="Phones"
+                  link="phones"
                   favoriteProducts={favoriteProducts}
                   setFavorite={setFavorite}
                   selectedProducts={selectedProducts}
@@ -79,6 +82,7 @@ const App: FC = () => {
               element={(
                 <DetailsPage
                   type="Tablets"
+                  link="tablets"
                   favoriteProducts={favoriteProducts}
                   setFavorite={setFavorite}
                   selectedProducts={selectedProducts}
@@ -105,6 +109,7 @@ const App: FC = () => {
               element={(
                 <DetailsPage
                   type="Accessories"
+                  link="accessories"
                   favoriteProducts={favoriteProducts}
                   setFavorite={setFavorite}
                   selectedProducts={selectedProducts}
@@ -114,7 +119,7 @@ const App: FC = () => {
             />
           </Route>
           <Route
-            path="/favorite"
+            path="/favorites"
             element={(
               <FavoritesPage
                 favoriteProducts={favoriteProducts}
@@ -125,7 +130,7 @@ const App: FC = () => {
             )}
           />
           <Route
-            path="/store"
+            path="/cart"
             element={(
               <StorePage
                 selectedProducts={selectedProducts}
