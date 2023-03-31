@@ -81,6 +81,10 @@
     background-position: center;
     background-repeat: no-repeat;
   }
+
+  &__back-button:hover {
+    cursor: pointer;
+  }
   /*#endregion Links back */
 
   &__title {
@@ -130,5 +134,9 @@
     line-height: 21px;
     text-align: center;
     color: #fff;
+  }
+
+  &__checkout-button:hover {
+    cursor: pointer;
   }
 }

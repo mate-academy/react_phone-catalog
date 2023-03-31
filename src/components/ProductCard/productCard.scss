@@ -111,6 +111,7 @@
 
   &__button-add:hover {
     box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+    cursor: pointer;
   }
 
   &__button-favourite {
@@ -124,6 +125,7 @@
 
   &__button-favourite:hover {
     border: $border-hover;
+    cursor: pointer;
   }
 
   &__button-favourite--selected {

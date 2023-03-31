@@ -55,6 +55,7 @@
 
   &__box-image:hover {
     border: 1px solid $text-color;
+    cursor: pointer;
   }
 
   &__box-image:not(:last-of-type) {
@@ -133,6 +134,10 @@
   &__color:hover::before {
     border: 1px solid #b4bdc4;
   }
+
+  &__color:hover {
+    cursor: pointer;
+  }
   /*#endregion Colors */
 
   /*#region Capacity */
@@ -174,6 +179,7 @@
 
   &__capacity:hover {
     border: 1px solid #313237;
+    cursor: pointer;
   }
 
   &__capacity:disabled:hover {
@@ -230,6 +236,7 @@
 
   &__add-button:hover {
     box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+    cursor: pointer;
   }
 
   &__add-button--selected {
@@ -250,6 +257,7 @@
 
   &__button-favourite:hover {
     border: $border-hover;
+    cursor: pointer;
   }
 
   &__button-favourite--selected {

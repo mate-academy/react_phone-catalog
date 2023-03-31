@@ -79,6 +79,12 @@
     background-image: url("../icons/minus.svg");
   }
 
+  &__increase,
+  &__decrease,
+  &__delete:hover {
+    cursor: pointer;
+  }
+
   &__decrease:disabled {
     background-image: url("../icons/minus-light.svg");
     border: 1px solid #e2e6e9;

@@ -43,7 +43,7 @@ export const TabletsPage = () => {
       </h1>
 
       <p className="tablets__models-number">
-        95 models
+        {`${tablets.length} models`}
       </p>
 
       <Form />

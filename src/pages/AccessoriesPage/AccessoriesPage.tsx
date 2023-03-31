@@ -43,7 +43,7 @@ export const AccessoriesPage = () => {
       </h1>
 
       <p className="accessories__models-number">
-        95 models
+        {`${accessories.length} models`}
       </p>
 
       <Form />

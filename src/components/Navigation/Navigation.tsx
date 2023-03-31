@@ -10,15 +10,22 @@ type Props = {
 
 export const Navigation: React.FC<Props> = ({ isActive }) => {
   return (
-    <nav>
-      <ul className="navigation">
+    <nav className="navigation">
+      <ul className="navigation__list">
         <li className="navigation__item">
           <NavLink
             className={classNames('navigation__link',
               { 'navigation__link--active': isActive.includes(Path.Home) })}
             to="/"
           >
-            home
+            <p className={classNames('navigation__text-link',
+              {
+                'navigation__text-link--active':
+                  isActive.includes(Path.Home),
+              })}
+            >
+              home
+            </p>
           </NavLink>
         </li>
 
@@ -28,7 +35,14 @@ export const Navigation: React.FC<Props> = ({ isActive }) => {
               { 'navigation__link--active': isActive.includes(Path.Phones) })}
             to="/phones"
           >
-            phones
+            <p className={classNames('navigation__text-link',
+              {
+                'navigation__text-link--active':
+                  isActive.includes(Path.Phones),
+              })}
+            >
+              phones
+            </p>
           </NavLink>
         </li>
 
@@ -38,7 +52,14 @@ export const Navigation: React.FC<Props> = ({ isActive }) => {
               { 'navigation__link--active': isActive.includes(Path.Tablets) })}
             to="/tablets"
           >
-            tablets
+            <p className={classNames('navigation__text-link',
+              {
+                'navigation__text-link--active':
+                  isActive.includes(Path.Tablets),
+              })}
+            >
+              tablets
+            </p>
           </NavLink>
         </li>
 
@@ -51,7 +72,14 @@ export const Navigation: React.FC<Props> = ({ isActive }) => {
               })}
             to="/accessories"
           >
-            accessories
+            <p className={classNames('navigation__text-link',
+              {
+                'navigation__text-link--active':
+                  isActive.includes(Path.Accessories),
+              })}
+            >
+              ccessories
+            </p>
           </NavLink>
         </li>
       </ul>
