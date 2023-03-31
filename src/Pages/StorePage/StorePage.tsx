@@ -50,7 +50,7 @@ export const StorePage: FC<Props> = ({
   };
 
   if (!selectedProducts.length) {
-    return <NoResult message="Cart is empty" />;
+    return <NoResult message="Your cart is empty" />;
   }
 
   return (

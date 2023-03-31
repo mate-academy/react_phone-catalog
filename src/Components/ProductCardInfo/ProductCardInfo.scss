@@ -63,6 +63,9 @@
   &__button {
     flex-grow: 1;
     height: 40px;
+    text-decoration: none;
+    text-align: center;
+    line-height: 40px;
   }
 
   &__like {

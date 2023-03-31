@@ -18,7 +18,12 @@ export const TotalPriceCart: FC<Props> = ({
   return (
     <div className="totalPrice">
       <div className="totalPrice__priceBlock">
-        <p className="totalPrice__price">{`$${totalPrice}`}</p>
+        <p
+          className="totalPrice__price"
+          data-cy="productQauntity"
+        >
+          {`$${totalPrice}`}
+        </p>
         <p className="totalPrice__priceForItems">{`Total for ${totalProducts} items`}</p>
       </div>
       <button
