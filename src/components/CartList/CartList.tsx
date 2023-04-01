@@ -17,6 +17,7 @@ export const CartList: React.FC<Props> = ({
     <ul className="cart-list">
       {products.map((product) => (
         <CartItem
+          key={product.id}
           product={product}
           setTotalCost={setTotalCost}
           setTotalItems={setTotalItems}

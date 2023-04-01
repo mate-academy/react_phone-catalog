@@ -2,18 +2,10 @@ import './bannerSlider.scss';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import classNames from 'classnames';
-
-import Phones from './images/banner-phones.png';
-import Tablets from './images/banner-tablets.png';
-import Accessories from './images/banner-accessories.png';
+import { bannerImages } from './images/bannerImages';
 
 export const BannerSlider = () => {
   const [currentPositionSlider, setCurrentPositionSlider] = useState(0);
-  const bannerImages = [
-    [Phones, 'phones'],
-    [Tablets, 'tablets'],
-    [Accessories, 'accessories'],
-  ];
   const carouselWidth = 1040;
 
   const onHandleMoveBanner = (action: 'prev' | 'next') => {

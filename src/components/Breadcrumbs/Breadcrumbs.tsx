@@ -1,14 +1,13 @@
 import './breadcrumbs.scss';
+import { Location } from 'history';
 import { Link, useLocation } from 'react-router-dom';
 import arrow from '../icons/arrow-disabled.svg';
 import home from '../icons/home.svg';
+import { breadcrumbsArray } from '../../helpers/breadcrumbsArray';
 
 export const Breadcrumbs = () => {
-  const location = useLocation();
-
-  const arrLink = location.pathname.split('/')
-    .filter((e) => e !== '%' && e !== '#' && e)
-    .map((e) => e.charAt(0).toUpperCase() + e.slice(1));
+  const location: Location = useLocation();
+  const breadcrumbsLinks = breadcrumbsArray(location);
 
   return (
     <article data-cy="breadCrumbs" className="breadcrumb">
@@ -26,7 +25,7 @@ export const Breadcrumbs = () => {
           </Link>
         </li>
 
-        {arrLink.map((el, index, arr) => (
+        {breadcrumbsLinks.map((el, index, arr) => (
           <li key={`${index + arr.length}`} className="breadcrumb__item">
             <img
               className="breadcrumb__img-arrow"
