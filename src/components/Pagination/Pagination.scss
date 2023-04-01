@@ -1,0 +1,33 @@
+@import "../../styles/utils";
+
+.pagination {
+  padding-top: 40px;
+  text-align: center;
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+
+  &__button {
+    padding: 7px 15px;
+    cursor: pointer;
+    border: 1px solid $colorLightGray;
+    background-color: #fff;
+    color: $colorBlack;
+    transition: border-color 0.3s;
+
+    &:disabled {
+      border-color: $colorSilver;
+      color: $colorSilver;
+    }
+
+    &:hover:not(&--active):not(:disabled) {
+      border-color: $colorBlack;
+    }
+
+    &--active {
+      border-color: $colorBlack;
+      background-color: $colorBlack;
+      color: #fff;
+    }
+  }
+}

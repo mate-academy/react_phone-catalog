@@ -1,0 +1,18 @@
+@import "../../styles/utils";
+
+.back-button {
+  border: none;
+  outline: none;
+  background: none;
+  padding: 15px 0;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 15px;
+  cursor: pointer;
+  color: $colorGray;
+  transition: color 0.3s;
+
+  &:hover {
+    color: $colorBlack;
+  }
+}

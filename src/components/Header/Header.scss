@@ -1,0 +1,50 @@
+@import "../../styles/utils";
+
+.header {
+  width: 100%;
+  height: $headerHeigth;
+  padding-left: 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 1px 0 $colorSilver;
+
+  &-left {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+  }
+
+  &-right {
+    display: flex;
+    align-items: center;
+  }
+
+  &__icon {
+    padding: 23px;
+    box-shadow: -1px 0 0 $colorSilver;
+    position: relative;
+
+    &:hover svg path {
+      transition: fill 0.3s;
+      fill: #046ab5;
+    }
+  }
+
+  &__counter {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    border-radius: 50%;
+    width: 14px;
+    height: 14px;
+    background-color: red;
+    font-weight: 600;
+    font-size: 9px;
+    line-height: 12px;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

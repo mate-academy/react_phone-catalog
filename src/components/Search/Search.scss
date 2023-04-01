@@ -1,0 +1,50 @@
+@import "../../styles/utils";
+
+.search {
+  position: relative;
+
+  &__input {
+    padding: 0 24px;
+    height: $headerHeigth;
+    width: 327px;
+    border: none;
+    border-left: 1px solid $colorLightGray;
+    background-color: $colorWhite;
+    background-image: url(../../images/Search.svg);
+    background-repeat: no-repeat;
+    background-size: 16px;
+    background-position: 291px center;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 18px;
+
+    &::placeholder {
+      color: $colorGray;
+    }
+
+    &:focus {
+      outline: none;
+      background-color: $colorLightGray;
+    }
+
+    &--filled {
+      background-image: none;
+    }
+  }
+
+  &__button {
+    position: absolute;
+    top: 50%;
+    left: 292px;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    border: none;
+
+    &--close {
+      font-size: 16px;
+      border: none;
+      background-color: inherit;
+    }
+  }
+}

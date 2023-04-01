@@ -1,0 +1,237 @@
+@import "../../styles/utils";
+
+.product-details {
+  padding-bottom: 80px;
+
+  &__title {
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 41px;
+    color: $colorBlack;
+    padding-bottom: 40px;
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+  }
+
+  &__photos {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__set-photo {
+    border: 1px solid $colorGray;
+    outline: none;
+    background: none;
+    padding: 10px;
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    transition: border-color 0.3s;
+    cursor: pointer;
+
+    &:hover {
+      border-color: $colorBlack;
+    }
+  }
+
+  &__photo {
+    width: 442px;
+    height: 442px;
+    object-fit: contain;
+    object-position: center;
+  }
+
+  &__main-info {
+    min-width: 375px;
+  }
+
+  &__info {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__price {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid $colorSilver;
+  }
+
+  &__current-price {
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 40px;
+    color: $colorBlack;
+  }
+
+  &__old-price {
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 28px;
+    text-decoration-line: line-through;
+    color: $colorGray;
+  }
+
+  &__about {
+    width: 45%;
+  }
+
+  &__subtitle {
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 140%;
+    color: $colorBlack;
+    padding: 16px 0;
+    border-bottom: 1px solid $colorSilver;
+  }
+
+  &__text {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $colorGray;
+  }
+
+  &__specs {
+    width: 45%;
+  }
+
+  &__data {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $colorGray;
+    padding-bottom: 8px;
+
+    & span {
+      max-width: 300px;
+      color: $colorBlack;
+    }
+  }
+
+  &__button {
+    background: none;
+    outline: none;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  &__colors {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $colorGray;
+    padding-bottom: 8px;
+  }
+
+  &__colors-content {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 22px;
+    line-height: 140%;
+    padding-bottom: 8px;
+    border-bottom: 1px solid $colorSilver;
+  }
+
+  &__button-colors {
+    background: none;
+    outline: 1px solid $colorSilver;
+    border: 2px solid white;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border-color: $colorSilver;
+    text-decoration: none;
+    transition: all 0.3s;
+
+    &--active {
+      outline: 1px solid $colorBlack;
+
+    }
+
+    &--spacegray {
+      background-color: $colorSpaceGray;
+    }
+
+    &--rosegold {
+      background-color: $colorRoseGold;
+    }
+
+    &:hover {
+      box-shadow: 0 3px 13px rgba(23, 32, 49, 0.3);
+    }
+  }
+
+  &__capacity {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $colorGray;
+    padding-bottom: 8px;
+  }
+
+  &__capacity-content {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 22px;
+    line-height: 140%;
+    padding-bottom: 8px;
+    border-bottom: 1px solid $colorSilver;
+  }
+
+  &__button-capacity {
+    padding: 6px 8px;
+    border-color: $colorSilver;
+    background-color: #fff;
+    color: $colorBlack;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    text-decoration: none;
+
+    &--active {
+      border-color: $colorBlack;
+      background-color: $colorBlack;
+      color: #fff;
+    }
+
+    &:hover {
+      box-shadow: 0 3px 13px rgba(23, 32, 49, 0.3);
+    }
+  }
+
+  &__button-favorite {
+    padding: 14px;
+    width: 46px;
+    height: 46px;
+    border-color: $colorLightGray;
+
+    & svg:nth-child(2) {
+      display: none;
+    }
+
+    &--active svg:nth-child(1) {
+      display: none;
+    }
+
+    &--active svg:nth-child(2) {
+      display: block;
+    }
+
+    &:hover {
+      border-color: $colorBlack;
+    }
+  }
+}
