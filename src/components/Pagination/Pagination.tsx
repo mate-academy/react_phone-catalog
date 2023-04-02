@@ -1,5 +1,4 @@
 import cn from 'classnames';
-import { useMemo } from 'react';
 import { Button } from '../Button';
 import { getPages } from '../../helpers/helpers';
 import './pagination.scss';
@@ -15,7 +14,7 @@ export const Pagination: React.FC<Props> = ({
   total, perPage, onPageChange, currentPage,
 }) => {
   const pageAmount = Math.ceil(total / perPage);
-  const pageNumbers = useMemo(() => getPages(pageAmount), [total]);
+  const pageNumbers = getPages(pageAmount);
 
   return (
     <>
