@@ -1,5 +1,5 @@
 import { Product } from '../types/Product';
-import { CategoryProduct } from './CategoryProducts';
+import { CategoryProduct } from '../types/CategoryProducts';
 
 export const filterByCategory = (
   products: Product[],

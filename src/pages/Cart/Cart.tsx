@@ -4,6 +4,7 @@ import React, {
   useCallback,
 } from 'react';
 import { BackButton } from '../../components/BackButton/BackButton';
+
 import { CartItems } from '../../components/CartItems/CartItems';
 import {
   CartTotalAmount,

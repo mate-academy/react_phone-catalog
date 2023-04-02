@@ -1,10 +1,12 @@
 import React, { useMemo, useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
+
 import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 import { Pagination } from '../../components/Pagination/Pagination';
 import { ProductCard } from '../../components/ProductCard/ProductCard';
 import { Product } from '../../types/Product';
 import { useLocalStorage } from '../../utils/useLocalStorage';
+
 import { sortByProducts } from '../../utils/sortByProducts';
 import { filterByCategory } from '../../utils/filterByCategory';
 
@@ -57,6 +59,7 @@ export const CatalogList: React.FC<Props> = ({ title }) => {
               />
               <div className="catalog-list__content">
                 {visibleProducts.map(p => (
+
                   <ProductCard product={p} key={p.id} />
                 ))}
               </div>

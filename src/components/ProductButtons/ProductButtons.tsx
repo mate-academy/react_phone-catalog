@@ -1,4 +1,5 @@
 import { FC, useContext } from 'react';
+
 import classNames from 'classnames';
 import { CartContext } from '../../helpers/CartProvider';
 import { FavouritesContext } from '../../helpers/FavouritesProvider';
@@ -37,6 +38,7 @@ export const ProductButtons: FC<Props> = ({ product }) => {
     if (!isCart) {
       setCart(prevCart => [
         ...prevCart,
+
         {
           id,
           count: 1,
@@ -67,6 +69,7 @@ export const ProductButtons: FC<Props> = ({ product }) => {
         className={classNames(
           'product-card__button',
           'product-card__button-favorite',
+          'product-card__button product-card__button-favorite',
           { 'product-card__button-favorite--active': isFavourites },
         )}
         type="button"

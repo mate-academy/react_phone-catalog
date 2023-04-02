@@ -3,6 +3,7 @@ import { FC, useState, useMemo } from 'react';
 import './ProductsSlider.scss';
 import { ProductCard } from '../ProductCard/ProductCard';
 import { Product } from '../../types/Product';
+
 import {
   ProductsSliderButtons,
 } from '../ProductsSliderButtons/ProductsSliderButtons';

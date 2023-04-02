@@ -1,5 +1,5 @@
 import { Product } from '../types/Product';
-import { SortProduct } from '../types/sortProduct';
+import { SortProduct } from '../types/SortProduct';
 
 export const sortByProducts = (
   products: Product[],

@@ -3,7 +3,9 @@ import React, {
   useState,
   useMemo,
 } from 'react';
+
 import { useParams } from 'react-router-dom';
+
 import { getDevice } from '../../api/products';
 import { BackButton } from '../../components/BackButton/BackButton';
 import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
@@ -85,6 +87,7 @@ export const ProductDetailsPage: React.FC = () => {
             </div>
 
             <ProductDetailsInfo deviceInfo={deviceInfo} />
+
           </div>
         )}
       </div>

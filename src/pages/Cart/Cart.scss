@@ -95,7 +95,8 @@
   &__item-image {
     width: 66px;
     height: 66px;
-    object-fit: cover;
+    object-fit: contain;
+    object-position: center;
   }
 
   &__item-title {
