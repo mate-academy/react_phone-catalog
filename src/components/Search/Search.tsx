@@ -41,10 +41,18 @@ export const Search = () => {
           type="button"
           onClick={() => setQuery('')}
         >
-          <img className="search__img" src="./img/icons/Close.svg" alt="close" />
+          <img
+            className="search__img"
+            src="./img/icons/Close.svg"
+            alt="close"
+          />
         </button>
       ) : (
-        <img className="search__img" src="./img/icons/Search.svg" alt="search" />
+        <img
+          className="search__img"
+          src="./img/icons/Search.svg"
+          alt="search"
+        />
       )}
     </div>
   );
