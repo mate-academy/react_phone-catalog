@@ -1,6 +1,5 @@
 import { FC } from 'react';
 
-// Styles
 import './Loader.scss';
 
 export const Loader: FC = () => (

@@ -38,7 +38,6 @@ export const ProductButtons: FC<Props> = ({ product }) => {
     if (!isCart) {
       setCart(prevCart => [
         ...prevCart,
-
         {
           id,
           count: 1,
@@ -56,6 +55,7 @@ export const ProductButtons: FC<Props> = ({ product }) => {
     <div className="product-card__buttons">
       <button
         className={classNames(
+
           'product-card__button',
           'product-card__button-cart',
           { 'product-card__button-cart--active': isCart },
@@ -67,6 +67,7 @@ export const ProductButtons: FC<Props> = ({ product }) => {
       </button>
       <button
         className={classNames(
+
           'product-card__button',
           'product-card__button-favorite',
           'product-card__button product-card__button-favorite',
