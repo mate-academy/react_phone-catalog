@@ -26,7 +26,10 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
   return (
     <div className="card">
-      <Link to={`/${type === 'tablet' ? 'tablets' : 'phones'}/${id}`} className="card__link">
+      <Link
+        to={`/${type === 'tablet' ? 'tablets' : 'phones'}/${id}`}
+        className="card__link"
+      >
         <img className="card__img" src={imageUrl} alt="card" />
         <h3 className="card__title">
           {name}

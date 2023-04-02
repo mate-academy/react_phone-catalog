@@ -4,4 +4,4 @@ export type CartItemType = {
   product: string;
   imageUrl: string;
   price: number;
-}
+};

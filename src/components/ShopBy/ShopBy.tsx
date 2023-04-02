@@ -37,6 +37,7 @@ export const ShopBy = () => {
               </div>
               Mobile phones
             </Link>
+
             <span className="shopBy__category-count">
               {`${phoneCount} models`}
             </span>
@@ -53,6 +54,7 @@ export const ShopBy = () => {
               </div>
               Tablets
             </Link>
+
             <span className="shopBy__category-count">
               {`${tabletCount} models`}
             </span>
@@ -69,6 +71,7 @@ export const ShopBy = () => {
               </div>
               Accessories
             </Link>
+
             <span className="shopBy__category-count">
               {`${accessoriesCount} models`}
             </span>

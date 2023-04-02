@@ -1,5 +1,5 @@
 @import "../styles/vars";
-@import "../styles/mixins";
+@import "../styles/extends";
 
 .page {
 
@@ -12,19 +12,15 @@
   }
 
   &__title {
+    @extend %h1;
     padding-bottom: 8px;
-    font-size: 32px;
-    font-weight: 700;
-    line-height: 41px;
     color: $color-primary;
   }
 
   &__models-count {
+    @extend %text-normal;
     display: block;
     margin-bottom: 60px;
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 21px;
     color: $color-secondary;
   }
 
@@ -33,6 +29,13 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    gap: 16px;
+    gap: $gap;
+  }
+
+  &__block {
+    padding: $padding-size;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }

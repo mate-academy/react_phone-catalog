@@ -21,14 +21,15 @@ export const CustomSelect: React.FC<Props> = ({
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [currentOption, setCurrentOption] = useState(defaultValue);
-  const toggle = useCallback(() => setIsOpen(!isOpen), [isOpen]);
   const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
-    return !searchParams.get(search)
-      ? setCurrentOption(defaultValue)
-      : setCurrentOption(search);
+    if (!searchParams.get(search)) {
+      setCurrentOption(defaultValue);
+    }
   }, [searchParams]);
+
+  const toggle = useCallback(() => setIsOpen(!isOpen), [isOpen]);
 
   const onOptionSelect = (value: string) => {
     const sortParams = {

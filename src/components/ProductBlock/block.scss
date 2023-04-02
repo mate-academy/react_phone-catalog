@@ -1,8 +1,9 @@
 @import "../../styles/vars";
 @import "../../styles/mixins";
+@import "../../styles/extends";
 
 .block {
-  padding: 40px 0;
+  padding: $padding-size 0;
 
   &__header {
     padding-bottom: 24px;
@@ -19,7 +20,7 @@
   }
 
   &__title {
-    @include titleStyle;
+    @extend %h1;
   }
 
   &__wrapper {

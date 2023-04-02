@@ -1,20 +1,17 @@
 @import "../../styles/vars";
-@import "../../styles/mixins";
+@import "../../styles/extends";
 
 .cart {
   padding-top: 40px;
 
   &__back-btn {
-    all: unset;
     margin-bottom: 16px;
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 10px;
-    font-size: 12px;
-    font-weight: 600;
-    line-height: 15px;
+    @extend %text-small;
     color: $color-secondary;
     cursor: pointer;
 
@@ -68,17 +65,13 @@
   }
 
   &__amount {
-    font-size: 32px;
-    font-weight: 700;
-    line-height: 41px;
+    @extend %h1;
     color: $color-primary;
   }
 
   &__items-count {
     display: inline-block;
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 21px;
+    @extend %text-normal;
     color: $color-secondary;
   }
 
@@ -89,12 +82,10 @@
   }
 
   &__message {
+    @extend %text-normal;
     position: absolute;
     bottom: 0;
     left: 18px;
     padding-top: 20px;
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 21px;
   }
 }

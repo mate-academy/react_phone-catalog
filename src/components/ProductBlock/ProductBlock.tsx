@@ -12,7 +12,7 @@ type Props = {
 export const ProductBlock: React.FC<Props> = ({ sectionTitle, products }) => {
   const [currIndex, setCurrIndex] = useState(0);
   const wrapper = useRef<HTMLDivElement>(null);
-  const slideStep = 272 + 16;
+  const slideStep = 288;
 
   const slideNext = () => {
     if (currIndex === products.length - 4) {

@@ -7,6 +7,7 @@ import { BreadCrumbs } from '../BreadCrumbs';
 import { CustomSelect } from '../CustomSelect';
 import { Pagination } from '../Pagination';
 import { ProductList } from '../ProductList';
+import { NoResults } from '../NoResults/NoResults';
 
 const options = {
   sort: ['Newest', 'Alphabetically', 'Cheapest'],
@@ -23,6 +24,7 @@ export const ProductBrowse: React.FC<Props> = ({ title, products }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const sortParam = searchParams.get('sort') || '';
   const query = searchParams.get('query') || '';
+
   const getProductsOnPage = useCallback(() => {
     const itemsOnPage = searchParams.get('perPage');
 
@@ -39,6 +41,18 @@ export const ProductBrowse: React.FC<Props> = ({ title, products }) => {
   }, [searchParams]);
 
   const perPage = getProductsOnPage();
+
+  const onPageSelect = () => {
+    setCurrentPage(1);
+  };
+
+  const paginate = (pageNumber: number) => {
+    setCurrentPage(pageNumber);
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
 
   const getSortedProducts = useCallback((sortOption: string) => {
     const copy = [...products];
@@ -72,12 +86,8 @@ export const ProductBrowse: React.FC<Props> = ({ title, products }) => {
     .filter(item => item.name.toLowerCase().includes(query.toLowerCase()))
     .slice(firstItemIndex, lastItemIndex);
 
-  const onPageSelect = () => {
-    setCurrentPage(1);
-  };
-
-  const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
-  const isNoPagination = perPage <= currItems.length;
+  const isNoPagination = perPage < currItems.length
+    || currItems.length === products.length;
 
   return (
     <section className="page__products">
@@ -110,15 +120,21 @@ export const ProductBrowse: React.FC<Props> = ({ title, products }) => {
         />
       </div>
 
-      <ProductList products={currItems} />
+      {currItems.length > 0 ? (
+        <>
+          <ProductList products={currItems} />
 
-      {isNoPagination && (
-        <Pagination
-          total={query ? currItems.length : products.length}
-          perPage={perPage}
-          currentPage={currentPage}
-          onPageChange={paginate}
-        />
+          {!isNoPagination && (
+            <Pagination
+              total={query ? currItems.length : products.length}
+              perPage={perPage}
+              currentPage={currentPage}
+              onPageChange={paginate}
+            />
+          )}
+        </>
+      ) : (
+        <NoResults name="Product" />
       )}
     </section>
   );

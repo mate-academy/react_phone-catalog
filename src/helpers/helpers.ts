@@ -73,3 +73,13 @@ export function getGoodsLink(
 
   return `/${productType}/${name}-${model}-${color}-${capacity}`;
 }
+
+export function getPages(amount: number) {
+  const pages = [];
+
+  for (let i = 1; i <= amount; i += 1) {
+    pages.push(i);
+  }
+
+  return pages;
+}

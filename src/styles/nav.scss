@@ -1,6 +1,9 @@
+@import "../styles/extends";
+
 .nav {
 
   &__list {
+    @extend %upperCase;
     margin: 0;
     display: flex;
     flex-direction: row;
@@ -14,8 +17,6 @@
     padding: 24px 0;
     display: inline-block;
     position: relative;
-    font-size: 12px;
-    font-weight: 700;
     text-decoration: none;
     text-transform: uppercase;
     color: $color-secondary;

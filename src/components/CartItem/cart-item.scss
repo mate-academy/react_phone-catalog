@@ -1,7 +1,8 @@
 @import "../../styles/vars";
-@import "../../styles/mixins";
+@import "../../styles/extends";
 
 .cart-item {
+  @extend %text-normal;
   padding: 24px 40px 24px 15px;
   display: flex;
   flex-direction: row;
@@ -16,6 +17,10 @@
 
   &__name {
     max-width: 35ch;
+  }
+
+  &__price {
+    @extend %h2;
   }
 
   &__count {

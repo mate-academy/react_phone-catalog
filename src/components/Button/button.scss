@@ -1,12 +1,12 @@
 @import "../../styles/vars";
-@import "../../styles/mixins";
+@import "../../styles/extends";
 
 .button {
+  @extend %buttons;
   box-sizing: border-box;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-weight: 600;
   border: 1px solid $color-icons;
   color: #000;
   cursor: pointer;

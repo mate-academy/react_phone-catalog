@@ -4,6 +4,7 @@ import { BreadCrumbs } from '../components/BreadCrumbs';
 import { ProductList } from '../components/ProductList';
 import { CatalogContext } from '../context';
 import '../styles/favorites.scss';
+import { NoResults } from '../components/NoResults/NoResults';
 
 export const FavoritesPage = () => {
   const { favorites } = useContext(CatalogContext);
@@ -23,7 +24,11 @@ export const FavoritesPage = () => {
           {query ? `${visibleItems.length} results` : `${favorites.length} items`}
         </div>
 
-        <ProductList products={visibleItems} />
+        {visibleItems.length > 0 ? (
+          <ProductList products={visibleItems} />
+        ) : (
+          <NoResults name="Product" />
+        )}
       </div>
     </section>
   );

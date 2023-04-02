@@ -6,7 +6,6 @@ type Props = {
   disabled?: boolean;
   handler?: () => void;
   type?: string;
-  padding?: string;
 };
 
 export const Button: React.FC<Props> = ({
@@ -16,14 +15,13 @@ export const Button: React.FC<Props> = ({
   handler,
   type,
   disabled,
-  padding,
 }) => {
   return (
     <button
       type="button"
       className={`button ${type || ''}`}
       disabled={disabled}
-      style={{ width: `${width}`, height: `${height}`, padding: `${padding}` }}
+      style={{ width: `${width}`, height: `${height}` }}
       onClick={handler}
     >
       {children}

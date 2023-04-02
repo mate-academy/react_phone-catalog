@@ -15,7 +15,8 @@ export const Footer = () => {
             <ul className="nav__list">
               <li className="nav__item">
                 <NavLink
-                  to="/github"
+                  to="https://github.com/"
+                  target="_blank"
                   className={({ isActive }) => classNames(
                     'nav__link',
                     { 'nav__link--active': isActive },
@@ -26,7 +27,8 @@ export const Footer = () => {
               </li>
               <li className="nav__item">
                 <NavLink
-                  to="/contacts"
+                  to="https://github.com/"
+                  target="_blank"
                   className={({ isActive }) => classNames(
                     'nav__link',
                     { 'nav__link--active': isActive },
@@ -37,7 +39,8 @@ export const Footer = () => {
               </li>
               <li className="nav__item">
                 <NavLink
-                  to="/rights"
+                  to="https://github.com/"
+                  target="_blank"
                   className={({ isActive }) => classNames(
                     'nav__link',
                     { 'nav__link--active': isActive },

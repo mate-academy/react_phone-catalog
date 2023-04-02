@@ -1,7 +1,8 @@
-import classNames from 'classnames';
 import { useEffect, useRef, useState } from 'react';
+import classNames from 'classnames';
 import './slider.scss';
 import { sliderImgs } from '../../data/data';
+import { Button } from '../Button';
 
 export const Slider = () => {
   const [currIndex, setCurrIndex] = useState(0);
@@ -42,12 +43,14 @@ export const Slider = () => {
 
   return (
     <div className="slider">
-      <div
-        aria-hidden="true"
-        className="slider__button--prev"
-        onClick={slidePrev}
-        onKeyDown={slidePrev}
-      />
+      <Button
+        width="32px"
+        height=""
+        handler={slidePrev}
+      >
+        <img src="./img/icons/arrowLeft.svg" alt="prev" />
+
+      </Button>
 
       <div className="slider__content">
         <div ref={wrapper} className="slider__wrapper">
@@ -65,12 +68,14 @@ export const Slider = () => {
         </div>
       </div>
 
-      <div
-        aria-hidden="true"
-        className="slider__button--next"
-        onClick={slideNext}
-        onKeyDown={slideNext}
-      />
+      <Button
+        width="32px"
+        height=""
+        handler={slideNext}
+      >
+        <img src="./img/icons/arrowRight.svg" alt="next" />
+
+      </Button>
 
       <div className="slider__navigation">
         {sliderImgs.map((item, index) => (

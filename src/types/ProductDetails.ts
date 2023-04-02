@@ -8,9 +8,9 @@ export type ProductDetails = {
   camera: string;
   zoom: string;
   cell: string;
-}
+};
 
 export type Color = {
   color: string;
   hex: string;
-}
+};

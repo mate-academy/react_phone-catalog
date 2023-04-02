@@ -1,5 +1,6 @@
 @import "../../styles/vars";
 @import "../../styles/mixins";
+@import "../../styles/extends";
 
 .select {
   position: relative;
@@ -24,12 +25,10 @@
   }
 
   &__head {
+    @extend %buttons;
     position: relative;
     margin-bottom: 0.8em;
     padding: 10px 15px 9px 12px;
-    font-size: 14px;
-    line-height: 21px;
-    font-weight: 600;
     color: $color-primary;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
     display: flex;
@@ -46,12 +45,10 @@
   }
 
   &__list {
+    @extend %text-normal;
     padding: 8px 0;
     margin: 0;
     font-family: inherit;
-    font-size: 14px;
-    line-height: 21px;
-    font-weight: 500;
     color: $color-primary;
     border: 1px solid $color-icons;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);

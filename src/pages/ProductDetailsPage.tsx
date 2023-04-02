@@ -87,15 +87,13 @@ export const ProductDetailsPage = () => {
 
   const specs: { [key: string]: string | undefined } = getProductSpecs();
 
-  if (!product || !productData) {
-    return <NoResults name="Product" />;
+  if (isLoading) {
+    return <Loader />;
   }
 
   return (
-    <div className="details">
-      {isLoading ? (
-        <Loader />
-      ) : (
+    <section className="details">
+      {product && productData && !isLoading ? (
         <div className="container">
           <BreadCrumbs />
           <button
@@ -346,7 +344,9 @@ export const ProductDetailsPage = () => {
             products={visibleProducts}
           />
         </div>
+      ) : (
+        <NoResults name="Product" />
       )}
-    </div>
+    </section>
   );
 };

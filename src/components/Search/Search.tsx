@@ -24,7 +24,7 @@ export const Search = () => {
   const applyQuery = useCallback(debounce(setApliedQuery, 500), []);
 
   return (
-    <>
+    <div className="search__container">
       <input
         type="search"
         name="query"
@@ -46,6 +46,6 @@ export const Search = () => {
       ) : (
         <img className="search__img" src="img/icons/Search.svg" alt="search" />
       )}
-    </>
+    </div>
   );
 };
