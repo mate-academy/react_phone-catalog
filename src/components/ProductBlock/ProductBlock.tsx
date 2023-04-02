@@ -56,7 +56,7 @@ export const ProductBlock: React.FC<Props> = ({ sectionTitle, products }) => {
             handler={slidePrev}
             disabled={currIndex === 0}
           >
-            <img src="/img/icons/arrowLeft.svg" alt="prev" />
+            <img src="./img/icons/arrowLeft.svg" alt="prev" />
           </Button>
 
           <Button
@@ -65,7 +65,7 @@ export const ProductBlock: React.FC<Props> = ({ sectionTitle, products }) => {
             handler={slideNext}
             disabled={currIndex === products.length - 4}
           >
-            <img src="/img/icons/arrowRight.svg" alt="next" />
+            <img src="./img/icons/arrowRight.svg" alt="next" />
           </Button>
         </div>
       </div>

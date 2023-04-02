@@ -36,7 +36,7 @@ export const CartItem: React.FC<Props> = ({ item }) => {
         type="button--close"
         handler={onRemove}
       >
-        <img src="/img/icons/Close.svg" alt="Remove" />
+        <img src="./img/icons/Close.svg" alt="Remove" />
       </Button>
 
       <img className="cart-item__img" src={item.imageUrl} alt="item" />
@@ -51,7 +51,7 @@ export const CartItem: React.FC<Props> = ({ item }) => {
           disabled={item.quantity === 1}
           handler={onDecrease}
         >
-          <img src="/img/icons/Minus.svg" alt="decrease" />
+          <img src="./img/icons/Minus.svg" alt="decrease" />
         </Button>
 
         <span className="cart-item__count">
@@ -63,7 +63,7 @@ export const CartItem: React.FC<Props> = ({ item }) => {
           height="32px"
           handler={onIncrease}
         >
-          <img src="/img/icons/Plus.svg" alt="increase" />
+          <img src="./img/icons/Plus.svg" alt="increase" />
         </Button>
       </div>
 

@@ -32,7 +32,7 @@ export const Pagination: React.FC<Props> = ({
               }
             }}
           >
-            <img src="/img/icons/arrowLeft.svg" alt="prev" />
+            <img src="./img/icons/arrowLeft.svg" alt="prev" />
           </Button>
         </li>
 
@@ -65,7 +65,7 @@ export const Pagination: React.FC<Props> = ({
             }
           }}
         >
-          <img src="/img/icons/arrowRight.svg" alt="next" />
+          <img src="./img/icons/arrowRight.svg" alt="next" />
         </Button>
       </ul>
     </>

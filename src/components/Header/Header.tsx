@@ -90,7 +90,7 @@ export const Header = () => {
       >
         <img
           className="header__img"
-          src="/img/icons/favourites.svg"
+          src="./img/icons/favourites.svg"
           alt="favourites"
         />
 
@@ -100,7 +100,7 @@ export const Header = () => {
       </Link>
 
       <Link className="header__icon" to="/cart">
-        <img src="/img/icons/cart.svg" alt="cart" />
+        <img src="./img/icons/cart.svg" alt="cart" />
 
         {!!cart.length && (
           <span className="header__countLabel">{cart.length}</span>

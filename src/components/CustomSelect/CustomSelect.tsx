@@ -65,9 +65,9 @@ export const CustomSelect: React.FC<Props> = ({
         {currentOption}
         <span className="select__arrow">
           {isOpen ? (
-            <img src="/img/icons/arrowUp.svg" alt="select" />
+            <img src="./img/icons/arrowUp.svg" alt="select" />
           ) : (
-            <img src="/img/icons/arrowDown.svg" alt="select" />
+            <img src="./img/icons/arrowDown.svg" alt="select" />
           )}
         </span>
       </div>

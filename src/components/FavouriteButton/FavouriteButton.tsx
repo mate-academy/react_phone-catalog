@@ -27,9 +27,9 @@ export const FavouriteButton: React.FC<Props> = ({ size, product }) => {
       type="button--favour"
     >
       {isFavorite ? (
-        <img src="/img/icons/favouritesFilled.svg" alt="favourites" />
+        <img src="./img/icons/favouritesFilled.svg" alt="favourites" />
       ) : (
-        <img src="/img/icons/favourites.svg" alt="favourites" />
+        <img src="./img/icons/favourites.svg" alt="favourites" />
       )}
     </Button>
   );

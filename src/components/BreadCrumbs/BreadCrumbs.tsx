@@ -15,13 +15,13 @@ export const BreadCrumbs = () => {
           <Link
             to="/"
           >
-            <img src="img/icons/Home.svg" alt="Home" />
+            <img src="./img/icons/Home.svg" alt="Home" />
           </Link>
         </li>
 
         {path.map((p, index) => (
           <li key={p} className="crumbs__item">
-            <img src="img/icons/arrowRight.svg" alt="arrow" />
+            <img src="./img/icons/arrowRight.svg" alt="arrow" />
             {
               path[index] === path[path.length - 1]
                 ? <span className="crumbs__path">{p}</span>
