@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import { FC, useMemo, useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
 
 import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
@@ -19,7 +19,7 @@ type Props = {
   title: string;
 };
 
-export const CatalogList: React.FC<Props> = ({ title }) => {
+export const CatalogList: FC<Props> = ({ title }) => {
   const [products] = useLocalStorage<Product[]>('products', []);
   const { pathname } = useLocation();
   const [searchParams] = useSearchParams();

@@ -1,4 +1,5 @@
-import React, {
+import {
+  FC,
   useMemo,
   useContext,
   useCallback,
@@ -17,7 +18,7 @@ import { useLocalStorage } from '../../utils/useLocalStorage';
 
 import './Cart.scss';
 
-export const Cart: React.FC = () => {
+export const Cart: FC = () => {
   const [products] = useLocalStorage<Product[]>('products', []);
   const { cart, setCart } = useContext(CartContext);
 
