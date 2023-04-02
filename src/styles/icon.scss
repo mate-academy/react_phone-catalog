@@ -1,0 +1,12 @@
+.icon {
+  display: block;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  text-decoration: none;
+  transition: border-color 0.3s ease;
+
+  &:hover {
+    border-color: $color-primary;
+  }
+}

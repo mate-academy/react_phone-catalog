@@ -1,0 +1,36 @@
+@import "../../styles/vars";
+
+.crumbs {
+  padding: 25px 0 40px;
+
+  &__list {
+    padding-left: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 13px;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 16px;
+    color: $color-secondary;
+    list-style: none;
+  }
+
+  &__item {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 13px;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: inherit;
+
+    &:visited {
+      color: inherit;
+    }
+  }
+}

@@ -1,0 +1,35 @@
+@import "../../styles/vars";
+@import "../../styles/mixins";
+
+.block {
+  padding: 40px 0;
+
+  &__header {
+    padding-bottom: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: $gap;
+  }
+
+  &__title {
+    @include titleStyle;
+  }
+
+  &__wrapper {
+    overflow: hidden;
+  }
+
+  &__cards {
+    display: flex;
+    flex-direction: row;
+    gap: $gap;
+    transition: transform 0.3s ease-in-out;
+  }
+}

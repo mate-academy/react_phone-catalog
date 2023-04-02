@@ -1,0 +1,101 @@
+@import "../../styles/vars";
+
+.card {
+  width: 272px;
+  padding: 32px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: $color-primary;
+  border: 1px solid $color-elements;
+  transition: all 0.3s ease-in-out;
+  flex-shrink: 0;
+
+  &:hover {
+    border-color: color-hover;
+    box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+  }
+
+  &__img {
+    width: auto;
+    height: 208px;
+    margin-bottom: 16px;
+  }
+
+  &__link {
+    margin-bottom: 8px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    font-size: 14px;
+    font-weight: normal;
+    font-family: inherit;
+    line-height: 21px;
+    text-decoration: none;
+    color: $color-primary;
+
+    &:visited {
+      text-decoration: none;
+    }
+  }
+
+  &__title {
+    flex: 1 0 42px;
+    font-weight: inherit;
+  }
+
+  &__price {
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 31px;
+
+    &--sale {
+      margin-left: 8px;
+      font-weight: 500;
+      line-height: 28px;
+      text-decoration: line-through;
+      color: $color-secondary;
+    }
+  }
+
+  &__line {
+    margin: 6px 0 12px;
+    width: 100%;
+    border: 1px solid $color-elements;
+  }
+
+  &__characteristics {
+    margin-bottom: 16px;
+
+    &-row {
+      width: 100%;
+      display: inline-flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 15px;
+      color: $color-secondary;
+
+      &:not(:last-child) {
+        margin-bottom: 8px;
+      }
+    }
+
+    &-value {
+      color: $color-primary;
+    }
+  }
+
+  &__buttons {
+    width: 100%;
+    display: inline-flex;
+    gap: 8px;
+  }
+}

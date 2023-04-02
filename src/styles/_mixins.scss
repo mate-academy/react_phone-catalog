@@ -1,0 +1,38 @@
+@mixin list-style {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 64px;
+  list-style: none;
+}
+
+@mixin arrow-btn ($url) {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin titleStyle {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 41px;
+  color: $color-primary;
+}
+
+@mixin cardsLayout {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(272px, 100%), 1fr));
+  gap: 16px;
+}
+
+@mixin select-aft-lbl {
+  display: block;
+  position: absolute;
+  top: -18px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15px;
+  color: $color-secondary;
+}

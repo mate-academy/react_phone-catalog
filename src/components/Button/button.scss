@@ -1,0 +1,48 @@
+@import "../../styles/vars";
+@import "../../styles/mixins";
+
+.button {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  border: 1px solid $color-icons;
+  color: #000;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+
+  &--close {
+    border: none;
+  }
+
+  &--page {
+    color: $color-white;
+  }
+
+  &__action {
+    color: $color-white;
+    background-color: $color-primary;
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+    }
+
+    &--active {
+      color: $color-green;
+      background-color: $color-white;
+    }
+  }
+
+  &:hover {
+    border-color: $color-primary;
+  }
+
+  &:disabled {
+    border-color: $color-elements;
+  }
+
+  &--favour {
+    flex-shrink: 0;
+  }
+}

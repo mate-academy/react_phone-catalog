@@ -1,0 +1,38 @@
+html {
+  font-family: "Mont", sans-serif;
+  scroll-behavior: smooth;
+}
+
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
+a,
+body,
+h1,
+h2,
+h3,
+img,
+p,
+span {
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  all: unset;
+  cursor: pointer;
+}
+
+body {
+  height: 100vh;
+}
+
+@import "./styles/vars";
+@import "./styles/fonts";
+@import "./styles/nav";
+@import "./styles/container";
+@import "./styles/icon";
+@import "./styles/page";

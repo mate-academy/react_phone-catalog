@@ -1,0 +1,38 @@
+@import "../styles/vars";
+@import "../styles/mixins";
+
+.page {
+
+  &__main {
+    height: 100%;
+  }
+
+  &__products {
+    padding-bottom: $padding-size;
+  }
+
+  &__title {
+    padding-bottom: 8px;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 41px;
+    color: $color-primary;
+  }
+
+  &__models-count {
+    display: block;
+    margin-bottom: 60px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    color: $color-secondary;
+  }
+
+  &__selectWrapper {
+    margin-bottom: 24px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 16px;
+  }
+}

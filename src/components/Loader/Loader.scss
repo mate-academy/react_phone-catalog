@@ -1,0 +1,28 @@
+@import "../../styles/vars";
+
+.Loader {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+
+  &__content {
+    border-radius: 50%;
+    width: 2em;
+    height: 2em;
+    margin: 1em auto;
+    border: 0.3em solid $color-primary;
+    border-left-color: $color-secondary;
+    animation: load8 1.2s infinite linear;
+  }
+}
+
+@keyframes load8 {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

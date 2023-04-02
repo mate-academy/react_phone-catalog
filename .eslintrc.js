@@ -4,6 +4,7 @@ module.exports = {
     'max-len': ['error', {
       ignoreTemplateLiterals: true,
       ignoreComments: true,
+      ignorePattern: "<path([\\s\\S]*?)/>",
     }],
     'jsx-a11y/label-has-associated-control': ["error", {
       assert: "either",

@@ -1,0 +1,16 @@
+@import "../../styles/vars";
+@import "../../styles/mixins";
+
+.search {
+  all: unset;
+  position: relative;
+  padding: 22px;
+  min-width: 327px;
+  font-family: inherit;
+  color: $color-primary;
+  border-left: 1px solid $color-elements;
+
+  &__img {
+    padding-right: 26px;
+  }
+}

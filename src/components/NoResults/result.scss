@@ -1,0 +1,10 @@
+@import "../../styles/vars";
+
+.result {
+  padding: 80px;
+
+  &__title {
+    color: $color-secondary;
+    text-align: center;
+  }
+}

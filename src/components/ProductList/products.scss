@@ -1,0 +1,6 @@
+@import "../../styles/vars";
+@import "../../styles/mixins";
+
+.products {
+  @include cardsLayout;
+}

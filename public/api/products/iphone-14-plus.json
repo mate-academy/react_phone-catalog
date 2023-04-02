@@ -1,0 +1,19 @@
+{
+  "capacity": [
+    "256GB",
+    "512GB"
+  ],
+  "colors": [
+    {
+      "color": "red",
+      "hex": "#A50011"
+    }
+  ],
+  "processor": "Apple A15 Bionic",
+  "ram": "6GB",
+  "screen": "6.7",
+  "resolution": "2778x1284",
+  "camera": "12Mp + 12Mp (Dual)",
+  "zoom": "Optical, 2.5x",
+  "cell": "GSM, LTE, 5G"
+}

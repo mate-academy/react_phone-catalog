@@ -1,0 +1,64 @@
+@import "../../styles/vars";
+@import "../../styles/mixins";
+
+.shopBy {
+  &__title {
+    margin-bottom: 24px;
+    @include titleStyle;
+  }
+
+  &__categories {
+    display: grid;
+    grid-template-columns: repeat(3, 368px);
+    gap: 16px;
+  }
+
+  &__category {
+    display: flex;
+    flex-direction: column;
+
+    &-img {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+    }
+  }
+
+  &__link {
+    margin-bottom: 4px;
+    display: block;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 26px;
+    color: $color-primary;
+    text-decoration: none;
+  }
+
+  &__category-count {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    color: $color-secondary;
+  }
+
+  &__container {
+    position: relative;
+    max-width: 368px;
+    height: 368px;
+    background-color: $color-gold;
+    margin-bottom: 24px;
+    transition: all 0.3s ease-in-out;
+
+    &--grey {
+      background-color: $color-secondary;
+    }
+
+    &--red {
+      background-color: $color-bg-red;
+    }
+
+    &:hover {
+      border-radius: 40px;
+    }
+  }
+}

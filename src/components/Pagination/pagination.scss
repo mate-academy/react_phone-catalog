@@ -1,0 +1,25 @@
+@import "../../styles/vars";
+
+.pagination {
+  padding: $padding-size 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  list-style: none;
+
+  &__button {
+    all: unset;
+    padding: 14px 7px;
+    font-size: 14px;
+    line-height: 21px;
+    text-decoration: none;
+    color: #000;
+    cursor: pointer;
+
+    &--active {
+      color: #fff;
+      background-color: $color-primary;
+    }
+  }
+}

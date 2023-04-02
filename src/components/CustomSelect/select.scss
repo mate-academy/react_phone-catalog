@@ -1,0 +1,76 @@
+@import "../../styles/vars";
+@import "../../styles/mixins";
+
+.select {
+  position: relative;
+
+  &__sort {
+    &::before {
+      content: "Sort by";
+      @include select-aft-lbl;
+    }
+  }
+
+  &__pagination {
+    &::before {
+      content: "Items on page";
+      @include select-aft-lbl;
+    }
+  }
+
+  &__arrow {
+    display: block;
+    height: 100%;
+  }
+
+  &__head {
+    position: relative;
+    margin-bottom: 0.8em;
+    padding: 10px 15px 9px 12px;
+    font-size: 14px;
+    line-height: 21px;
+    font-weight: 600;
+    color: $color-primary;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  &__holder {
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    background-color: $color-white;
+  }
+
+  &__list {
+    padding: 8px 0;
+    margin: 0;
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 21px;
+    font-weight: 500;
+    color: $color-primary;
+    border: 1px solid $color-icons;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
+    list-style: none;
+    cursor: pointer;
+  }
+
+  &__item {
+    height: 32px;
+    width: 100%;
+    padding-left: 12px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    color: $color-secondary;
+
+    &:hover {
+      color: $color-primary;
+      background-color: $color-hover;
+    }
+  }
+}
