@@ -1,0 +1,159 @@
+@import "../../helpers/mixins.scss";
+@import "../../helpers/variables.scss";
+
+.search {
+  position: relative;
+
+  &__input-container {
+    margin: 0;
+    display: flex;
+    align-items: flex-end;
+  }
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+    background-image: url("../../assets/images/Search.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    pointer-events: none;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__input {
+    display: flex;
+    width: 327px;
+
+    padding: 24px;
+    background: $whiteColor;
+    border: 0;
+    box-shadow: -1px 0 0 $elementsColor;
+
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    color: $primaryColor;
+
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    &::placeholder {
+      font-style: normal;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 18px;
+      color: $iconsColor;
+
+      @include onLaptop {
+        visibility: hidden;
+      }
+
+      @include onTablet {
+        visibility: hidden;
+      }
+
+      @include onMobile {
+        visibility: hidden;
+      }
+    }
+
+    &:focus {
+      background: $hoverBGColor;
+      box-shadow: -1px 0 0 $elementsColor;
+      border: 0;
+      outline: none;
+
+      & ~ .search__icon {
+        display: none;
+      }
+
+      & ~ .search__delete--visible {
+        display: inherit;
+      }
+
+      @include onLaptop {
+        width: 327px;
+      }
+
+      @include onTablet {
+        width: 327px;
+      }
+
+      @include onMobile {
+        width: 95vw;
+        right: -128px;
+        z-index: 1;
+        box-shadow: 1px 0 10px $elementsColor;
+      }
+    }
+
+    @include onLaptop {
+      width: 64px;
+
+      transition: width 1s ease-in-out;
+
+      &:focus::placeholder {
+        visibility: visible;
+      }
+    }
+
+    @include onTablet {
+      width: 64px;
+
+      transition: width 1s ease-in-out;
+
+      &:focus::placeholder {
+        visibility: visible;
+      }
+    }
+
+    @include onMobile {
+      width: 64px;
+
+      &:focus::placeholder {
+        visibility: visible;
+      }
+    }
+  }
+
+  &__value {
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    pointer-events: none;
+  }
+
+  &__delete {
+    display: none;
+    width: 16px;
+    height: 16px;
+
+    position: absolute;
+    top: 24px;
+    right: 24px;
+
+    border: 0;
+    background-color: transparent;
+    background-image: url("../../assets/images/cart_delete_button_hover.svg");
+    z-index: 1;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    @include onMobile {
+      right: -104px;
+    }
+  }
+}

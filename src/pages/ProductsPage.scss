@@ -1,0 +1,116 @@
+@import "../helpers/mixins.scss";
+@import "../helpers/variables.scss";
+
+.products-page {
+  display: flex;
+  flex-direction: column;
+  padding-top: 24px;
+
+  &__products {
+    margin-bottom: -40px;
+
+    @include onTablet {
+      margin-bottom: 0;
+    }
+
+    @include onMobile {
+      margin-bottom: 0;
+    }
+  }
+
+  &__path {
+    margin-bottom: 40px;
+  }
+
+  &__back-button {
+    margin-bottom: 16px;
+  }
+
+  &__title {
+    margin: 0 0 8px;
+
+    &--product {
+      margin-bottom: 40px;
+    }
+
+    &--not-found {
+      align-self: center;
+    }
+  }
+
+  &__total-amount {
+    margin: 0 0 40px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $secondaryColor;
+  }
+
+  &__selectors {
+    margin-bottom: 24px;
+  }
+
+  &__pagination {
+    margin: 40px auto 0;
+  }
+}
+
+.selectors {
+  display: flex;
+
+  &__dropdown {
+    margin-right: 16px;
+
+    &:last-of-type {
+      margin-right: 0;
+    }
+
+    @include onMobile {
+      margin: 0 0 24px;
+    }
+  }
+
+  @include onMobile {
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+.load-more-button {
+  display: none;
+
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+  border: 0;
+  border-radius: 50%;
+  outline: thick double $primaryColor;
+
+  background-color: transparent;
+  color: $primaryColor;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+
+  @include onTablet {
+    display: flex;
+  }
+
+  @include onMobile {
+    display: flex;
+  }
+
+  &--hide {
+    @include onTablet {
+      display: none;
+    }
+  
+    @include onMobile {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,33 @@
+@import "../../helpers/variables.scss";
+
+.back-button {
+  display: flex;
+  align-items: center;
+
+  &__arrow {
+    width: 16px;
+    height: 16px;
+    background-image: url("../../assets/images/arrow_back_button.svg");
+    background-repeat: no-repeat;
+    object-fit: cover;
+    object-position: center;
+
+    margin-right: 4px;
+  }
+
+  &__button {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    color: $secondaryColor;
+    background-color: transparent;
+    border: none;
+    height: 15px;
+    transition: all 0.3s;
+
+    &:hover {
+      color: $primaryColor;
+      cursor: pointer;
+    }
+  }
+}

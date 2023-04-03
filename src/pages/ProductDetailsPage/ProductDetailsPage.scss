@@ -1,0 +1,113 @@
+@import "../../helpers/mixins.scss";
+@import "../../helpers/variables.scss";
+
+.product-details {
+  display: flex;
+  flex-direction: column;
+
+  &__options {
+    display: flex;
+    margin-bottom: 80px;
+    position: relative;
+
+    @include onTablet {
+      flex-direction: column;
+      margin-bottom: 64px;
+    }
+
+    @include onMobile {
+      flex-direction: column;
+      margin-bottom: 64px;
+    }
+  }
+
+  &__info-block {
+    flex-grow: 1;
+    max-width: 30%;
+
+    @include onTablet {
+      max-width: unset;
+    }
+
+    @include onMobile {
+      max-width: unset;
+    }
+  }
+
+  &__description {
+    display: flex;
+
+    @include onTablet {
+      flex-direction: column-reverse;
+    }
+
+    @include onMobile {
+      flex-direction: column-reverse;
+    }
+  }
+
+  &__about {
+    margin-right: 64px;
+
+    @include onTablet {
+      margin-right: 0;
+    }
+
+    @include onMobile {
+      margin-right: 0;
+    }
+  }
+
+  &__id {
+    text-align: end;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: $iconsColor;
+
+    position: absolute;
+    right: 0;
+
+    @include onLaptop {
+      top: -5.7em;
+    }
+
+    @include onTablet {
+      top: 50%;
+    }
+
+    @include onMobile {
+      top: 50%;
+    }
+  }
+}
+
+.interactive-gallery {
+  position: relative;
+  margin: 0 74px 0 0;
+
+  @include onLaptop {
+    margin-right: 32px;
+  }
+
+  @include onTablet {
+    margin: 0 0 48px;
+  }
+
+  @include onMobile {
+    align-self: center;
+    margin: 0 0 48px;
+  }
+}
+
+.description-title {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 140%;
+  color: $primaryColor;
+
+  padding-bottom: 16px;
+  border-bottom: 1px solid $elementsColor;
+}

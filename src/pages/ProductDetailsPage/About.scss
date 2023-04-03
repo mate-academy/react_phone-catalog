@@ -1,0 +1,46 @@
+@import "../../helpers/mixins.scss";
+@import "../../helpers/variables.scss";
+
+.about {
+  max-width: 50%;
+  flex-grow: 1;
+  flex-shrink: 3;
+
+  @include onTablet {
+    max-width: unset;
+  }
+
+  @include onMobile {
+    max-width: unset;
+  }
+
+  &__description-title {
+    margin: 0 0 32px;
+  }
+
+  &__container {
+    margin-bottom: 32px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__section-title {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 26px;
+
+    color: $primaryColor;
+    margin: 0 0 16px;
+  }
+
+  &__section-text {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $secondaryColor;
+  }
+}

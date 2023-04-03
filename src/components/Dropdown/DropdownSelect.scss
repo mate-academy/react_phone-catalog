@@ -1,0 +1,118 @@
+@import "../../helpers/mixins.scss";
+@import "../../helpers/variables.scss";
+
+.selector {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  &__sort-by {
+    margin-right: 16px;
+  }
+
+  &__selector-label {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: $secondaryColor;
+    display: inline-block;
+    margin: 0 0 4px;
+  }
+
+  &__container {
+    border: 1px solid $iconsColor;
+    
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    color: $primaryColor;
+    text-align: start;
+  }
+
+  &__selector-container {
+    width: 176px;
+    height: 40px;
+    padding: 10px 30px 10px 12px;
+    background-color: transparent;
+
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &::after {
+      content: url("../../assets/images/arrow_right_svg.svg");
+      transform: rotate(90deg);
+      position: absolute;
+      right: 12px;
+      top: 12px;
+      pointer-events: none;
+      height: 16px;
+
+      transition: all 0.3s;
+    }
+
+    &:hover {
+      border-color: $secondaryColor;
+    }
+
+    &:focus {
+      border-color: $primaryColor;
+    }
+  }
+
+  &__options-container {
+    display: none;
+    flex-direction: column;
+    margin: 0;
+    padding: 8px 0;
+    list-style: none;
+    width: 100%;
+    background-color: $whiteColor;
+    
+    position: absolute;
+    top: 4rem;
+
+    @include onMobile {
+      z-index: 10;
+    }
+  }
+
+  &__option {
+    padding: 6px 12px;
+    width: 100%;
+    background-color: transparent;
+    border: 0;
+    color: $secondaryColor;
+    font-weight: 500;
+    transition: all 0.3s;
+    overflow-y: auto;
+
+    &:hover {
+      cursor: pointer;
+      background-color: $hoverBGColor;
+      color: $primaryColor;
+    }
+  }
+}
+
+.show {
+  display: flex;
+}
+
+.opened {
+  &::after {
+    transform: rotate(270deg);
+  }
+}
+
+@keyframes showOptions {
+  0% {
+    height: 0;
+  }
+
+  100% {
+    height: 100%;
+  }
+}

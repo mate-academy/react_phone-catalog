@@ -1,0 +1,38 @@
+@import "../../helpers/variables.scss";
+
+.button {
+  &__buy {
+    box-sizing: border-box;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+    width: 176px;
+    height: 40px;
+
+    margin-right: 8px;
+  }
+
+  &__add-to-cart {
+    color: $whiteColor;
+    background-color: $primaryColor;
+    border: 0;
+    padding: 10px 46px;
+
+    transition: all 0.3s;
+
+    &:hover {
+      cursor: pointer;
+      box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+    }
+  }
+
+  &__selected {
+    border: 1px solid $elementsColor;
+    background-color: transparent;
+    color: $greenColor;
+
+    padding: 10px 36px;
+  }
+}

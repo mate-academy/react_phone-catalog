@@ -1,0 +1,45 @@
+.thumbs-gallery {
+  display: flex;
+  align-items: center;
+  height: 464px;
+
+  &__thumbs {
+    display: flex;
+    height: 100%;
+  }
+
+  &__thumb-picture {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+  }
+
+  &__main-picture {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 20px;
+  }
+
+  &__picture {
+    height: 100%;
+  }
+}
+
+.can-open-modal {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.picture-container {
+  width: 80px;
+  height: 80px;
+  padding: 7px;
+  display: block;
+
+  &:hover {
+    cursor: pointer;
+  }
+}

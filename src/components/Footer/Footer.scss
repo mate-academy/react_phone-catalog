@@ -1,0 +1,92 @@
+@import "../../helpers/mixins.scss";
+@import "../../helpers/variables.scss";
+
+.footer {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  background: $whiteColor;
+  box-shadow: 0 -1px 0 $elementsColor;
+
+  @include onMobile {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__logo {
+    padding: 38px 0;
+
+    @include onMobile {
+      width: 30vw;
+      padding: 24px 0 0;
+    }
+  }
+
+  &__links-container {
+    display: flex;
+  }
+
+  &__link {
+    padding: 42px 0;
+    margin-right: 64px;
+
+    &:last-of-type {
+      margin-right: 0;
+    }
+
+    @include onMobile {
+      margin-right: 32px;
+    }
+  }
+}
+
+.back-to-top {
+  display: flex;
+  margin: 32px 0;
+  flex-wrap: wrap;
+  align-content: center;
+
+  &__title {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    text-align: right;
+    color: $secondaryColor;
+    padding: 8px 0;
+    margin: 0 16px 0 0;
+
+    transition: all 0.3s;
+
+    &:hover {
+      color: $primaryColor;
+    }
+  }
+
+  &__button {
+    height: 32px;
+    width: 32px;
+    border: 1px solid $iconsColor;
+
+    position: relative;
+
+    transition: all 0.3s;
+
+    &::after {
+      content: url("../../assets/images/arrow_right_svg.svg");
+      position: absolute;
+      height: 16px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-90deg);
+    }
+
+    &:hover {
+      border-color: $primaryColor;
+    }
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}

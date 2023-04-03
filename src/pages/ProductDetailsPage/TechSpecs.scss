@@ -1,0 +1,22 @@
+@import "../../helpers/mixins.scss";
+
+.tech-specs {
+  max-width: 50%;
+  flex-grow: 1;
+
+  @include onTablet {
+    max-width: unset;
+
+    margin: 0 0 64px;
+  }
+
+  @include onMobile {
+    max-width: unset;
+
+    margin: 0 0 64px;
+  }
+
+  &__description-title {
+    margin: 0 0 32px;
+  }
+}

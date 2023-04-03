@@ -1,0 +1,60 @@
+@import "../../helpers/mixins.scss";
+@import "../../helpers/variables.scss";
+
+.no-results {
+  align-self: center;
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  &__message {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 140%;
+    color: $primaryColor;
+
+    align-self: center;
+  }
+
+  &__image-container {
+    position: relative;
+
+    box-sizing: border-box;
+    max-height: 700px;
+    width: 80vw;
+
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: 70%;
+
+      @include onTablet {
+        padding-bottom: 100%;
+      }
+
+      @include onMobile {
+        padding-bottom: 100%;
+      }
+    }
+
+    @include onDesktop {
+      height: 700px;
+      padding-bottom: 0;
+    }
+  }
+
+  &__wasnt-found {
+    align-self: center;
+  }
+
+  &__image {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+
+    object-fit: contain;
+    object-position: center;
+  }
+}
