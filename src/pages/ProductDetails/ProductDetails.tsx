@@ -29,6 +29,7 @@ export const ProductDetails: React.FC<Props> = ({ products }) => {
 
     getDetails(productId)
       .then(data => setDetails({ ...data, color: ['black', 'silver', 'red'] }))
+      .catch(() => setDetails(null))
       .finally(() => setIsLoading(false));
   }, [productId]);
 
