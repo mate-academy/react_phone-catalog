@@ -31,9 +31,9 @@ export const categoryArray: CategoryCard[] = [
 
 export const animationString = 'translate .7s ease-in-out';
 export const MainSiderimages: string[] = [
-  '_new/img/banner-phones.png',
-  '_new/img/banner-tablets.png',
-  '_new/img/banner-accessories.png',
+  'img/banners/banner-phones.png',
+  'img/banners/banner-tablets.png',
+  'img/banners/banner-accessories.png',
 ];
 export const itemsPerSlide = 4;
 export const itemWidth = 272;
