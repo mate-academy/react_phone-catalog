@@ -1,0 +1,16 @@
+.title {
+  color: #313237;
+
+  &--large {
+    font-family: "Mont Bold";
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+
+  &--small {
+    font-family: "Mont Semibold";
+    font-size: 20px;
+    line-height: 26px;
+  }
+}

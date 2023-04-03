@@ -1,0 +1,215 @@
+.product-info {
+  &__name {
+    margin: 0;
+    margin-top: 16px;
+  }
+
+  &__content {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(24, 1fr);
+  }
+
+  &__images {
+    grid-column: 1 / 2;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__image {
+    height: 80px;
+    width: 80px;
+    object-fit: contain;
+    padding: 5px;
+    &-btn {
+      background-color: #fff;
+      cursor: pointer;
+      border: 0.5px solid #c4c4c4;
+
+      &--active {
+        border: 0.5px solid #313237;
+      }
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 32px;
+  }
+
+  &__cart-btn {
+    padding: 14px 85px;
+    width: 263px;
+
+    &:hover {
+      box-shadow: 0 4px 13px rgba(23, 32, 49, 0.6);
+    }
+  }
+
+  &__fav-btn {
+    padding: 16px;
+    border: 1px solid #b4bdc4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: border 0.3s ease-in-out;
+
+    &:hover {
+      border: 1px solid #313237;
+    }
+  }
+
+  &__price {
+    font-family: "Mont Bold";
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: #313237;
+  }
+
+  &__fullprice {
+    font-family: "Mont Regular";
+    font-size: 22px;
+    line-height: 28px;
+    text-decoration-line: line-through;
+    color: #89939a;
+  }
+
+  &__prices {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  &__main-image {
+    height: 442px;
+    grid-column: 4 / 12;
+    align-self: center;
+  }
+
+  &__short-description {
+    grid-column: 14 / 21;
+  }
+
+  &__options {
+    padding-bottom: 24px;
+    border-bottom: 1px solid #e2e6e9;
+
+    margin-bottom: 24px;
+
+    &:last-child {
+      margin-bottom: 32px;
+    }
+
+    &-title {
+      font-family: "Mont Semibold";
+      font-size: 12px;
+      line-height: 15px;
+      margin-bottom: 8px;
+      color: #89939a;
+    }
+
+    &-body {
+      display: flex;
+      gap: 8px;
+    }
+  }
+
+  &__capacity-btn {
+    font-family: "Mont Regular";
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+    color: #313237;
+    padding: 6px;
+    border: 1px solid #b4bdc4;
+    transition: background-color 0.3s ease-in-out;
+
+    &--active {
+      color: #fff;
+      background: #313237;
+    }
+
+    &:hover {
+      background: #e2e6e9;
+    }
+  }
+
+  &__color {
+    width: 30px;
+    height: 30px;
+    border: 3px solid #fff;
+    border-radius: 36px;
+
+    &-wrap {
+      border: 2px solid #e2e6e9;
+      border-radius: 36px;
+
+      transition: border-color 0.3s ease-in-out;
+
+      &--active {
+        border-color: #313237;
+      }
+
+      &:hover {
+        border-color: #89939a;
+      }
+    }
+  }
+
+  &__description {
+    margin: 80px 0;
+    display: grid;
+    grid-template-columns: repeat(24, 1fr);
+  }
+
+  &__subtitle {
+    font-family: "Mont Bold";
+    font-size: 22px;
+    color: #313237;
+    margin: 0;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #e2e6e9;
+    margin-bottom: 25px;
+  }
+
+  &__about {
+    grid-column: 1 / 13;
+
+    &-text {
+      font-family: "Mont Regular";
+      font-size: 14px;
+      line-height: 21px;
+      color: #89939a;
+    }
+  }
+
+  &__pair {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: "Mont Regular";
+    font-size: 14px;
+    line-height: 21px;
+
+    &:not(:last-child) {
+      margin-bottom: 8px;
+    }
+  }
+
+  & &__property {
+    color: #89939a;
+  }
+
+  &__value {
+    color: #313237;
+  }
+
+  &__tech-spec {
+    grid-column: 14 / 24;
+  }
+}

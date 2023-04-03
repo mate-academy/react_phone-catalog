@@ -1,0 +1,68 @@
+.cart-page {
+  padding-top: 41px;
+
+  &__title {
+    margin: 0;
+    margin-top: 16px;
+    margin-bottom: 24px;
+  }
+
+  &__body {
+    display: grid;
+    grid-template-columns: repeat(24, 1fr);
+    position: relative;
+  }
+
+  &__total {
+    margin: 0;
+  }
+
+  &__message {
+    position: absolute;
+    right: 40px;
+    top: -100px;
+  }
+
+  &__info {
+    font-family: "Mont Regular";
+    font-size: 14px;
+    line-height: 21px;
+    color: #89939a;
+    margin-bottom: 24px;
+  }
+
+  &__checkout {
+    font-family: "Mont Semibold";
+    font-size: 14px;
+    line-height: 21px;
+    padding: 14px 125px;
+    color: #fff;
+    background: #313237;
+
+    box-shadow: 0;
+    transition: box-shadow 0.3s ease-in-out;
+
+    &:hover {
+      box-shadow: 0 3px 13px rgba(23, 32, 49, 0.8);
+    }
+
+    &-wrapper {
+      padding-top: 24px;
+      border-top: 1px solid #e2e6e9;
+    }
+  }
+
+  &__products {
+    grid-column: 1 / 16;
+  }
+
+  &__action {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    grid-column: 17 / 25;
+    border: 1px solid #e2e6e9;
+    height: fit-content;
+    padding: 24px;
+  }
+}

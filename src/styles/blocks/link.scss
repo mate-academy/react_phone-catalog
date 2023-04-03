@@ -1,0 +1,14 @@
+.link {
+  font-family: "Mont Bold";
+  font-style: normal;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #89939a;
+  transition: color 0.3s ease-in-out;
+
+  &:hover {
+    color: #313237;
+  }
+}

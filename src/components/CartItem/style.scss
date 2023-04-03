@@ -1,0 +1,81 @@
+.cart-item {
+  font-family: "Mont Regular";
+  font-size: 14px;
+  line-height: 21px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: 1px solid #e2e6e9;
+  padding: 31px 40px 31px 24px;
+
+  &__image {
+    height: 66px;
+    width: 66px;
+    object-position: center;
+    object-fit: contain;
+    margin-right: 31px;
+  }
+
+  &__cross {
+    margin-right: 31px;
+  }
+
+  &__name {
+    margin-right: 49px;
+    color: #313237;
+    width: 250px;
+  }
+
+  &__quantity {
+    margin-right: 43px;
+
+    display: flex;
+    gap: 13px;
+    align-items: center;
+    color: #000;
+
+    &-decrease {
+      background-image: url(../../images/cart-images/minus.svg);
+
+      &--disabled {
+        background-image: url(../../images/cart-images/minus-disabled.svg);
+        cursor: default;
+        pointer-events: none;
+      }
+    }
+
+    &-increase {
+      background-image: url(../../images/cart-images/plus.svg);
+    }
+
+    &-text {
+      width: 15px;
+      text-align: center;
+    }
+  }
+
+  &__price {
+    display: block;
+    margin: 0;
+    width: 110px;
+    text-align: center;
+    font-family: "Mont Bold";
+    font-size: 22px;
+    line-height: 140%;
+    color: #313237;
+  }
+
+  &__btn {
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 32px;
+    width: 32px;
+    border: 1px solid #b4bdc4;
+
+    transition: border-color 0.3s ease-in-out;
+
+    &:hover {
+      border-color: #313237;
+    }
+  }
+}

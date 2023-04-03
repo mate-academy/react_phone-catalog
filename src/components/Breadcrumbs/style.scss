@@ -1,0 +1,22 @@
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: "Mont Semibold";
+  font-size: 12px;
+  line-height: 15px;
+
+  &__part {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  &__text {
+    color: #89939a;
+  }
+
+  &__link {
+    color: #313237;
+  }
+}

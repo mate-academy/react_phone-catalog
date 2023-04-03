@@ -1,0 +1,11 @@
+.product-list {
+  &__item {
+    display: inline-block;
+    margin-right: 16px;
+    margin-bottom: 40px;
+
+    &:nth-of-type(4n) {
+      margin-right: 0;
+    }
+  }
+}

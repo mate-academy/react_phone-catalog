@@ -1,0 +1,21 @@
+.back-button {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  align-items: center;
+  padding: 4px;
+  cursor: pointer;
+  background-color: transparent;
+  border: 0;
+
+  font-family: "Mont Semibold";
+  font-size: 12px;
+  line-height: 15px;
+  color: #89939a;
+
+  transition: color 0.3s ease-in-out;
+
+  &:hover {
+    color: #313237;
+  }
+}

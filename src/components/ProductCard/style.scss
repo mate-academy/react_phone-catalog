@@ -1,0 +1,98 @@
+.product-card {
+  border: 1px solid #e2e6e9;
+  padding: 32px 24px 24px;
+  width: 272px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0;
+  transition: box-shadow 0.25s ease-in-out;
+
+  &__tech {
+    min-height: 69px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &:hover {
+    box-shadow: rgba(0, 0, 0, 0.3) 0 5px 15px,
+    rgba(0, 0, 0, 0.1) 0 3px 10px;
+  }
+
+  &__img {
+    height: 208px;
+    margin: 0 auto;
+    object-fit: contain;
+    margin-bottom: 24px;
+  }
+
+  &__cart {
+    width: 176px;
+    height: 40px;
+  }
+
+  &__link {
+    text-align: center;
+  }
+
+  &__title {
+    font-family: "Mont Regular";
+    font-size: 14px;
+    line-height: 21px;
+    color: #313237;
+    height: 42px;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    text-align: left;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 16px;
+  }
+
+  &__prices {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-bottom: 6.5px;
+    border-bottom: 1px solid #e2e6e9;
+    margin-bottom: 16px;
+  }
+
+  &__price {
+    font-family: "Mont Bold";
+    font-size: 22px;
+    line-height: 140%;
+    color: #313237;
+    margin-right: 8px;
+  }
+
+  &__discount {
+    font-family: "Mont Regular";
+    font-size: 22px;
+    line-height: 28px;
+    text-decoration-line: line-through;
+    color: #89939a;
+  }
+
+  &__pair {
+    font-family: "Mont Semibold";
+    font-size: 12px;
+    line-height: 15px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+
+    &-prop {
+      color: #89939a;
+    }
+
+    &-value {
+      color: #313237;
+    }
+  }
+}

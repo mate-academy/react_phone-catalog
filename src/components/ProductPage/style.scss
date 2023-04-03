@@ -1,0 +1,23 @@
+.products {
+  &__title {
+    margin: 0;
+    margin-bottom: 8px;
+  }
+
+  &__quantity {
+    font-family: "Mont Regular";
+    font-size: 14px;
+    line-height: 21px;
+    color: #89939a;
+  }
+
+  &__header {
+    margin-bottom: 40px;
+  }
+
+  &__filter {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+}

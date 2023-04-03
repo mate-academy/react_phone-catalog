@@ -1,0 +1,59 @@
+.dropdown {
+  position: relative;
+
+  &__title {
+    font-family: "Mont Semibold";
+    font-size: 12px;
+    line-height: 15px;
+    color: #89939a;
+    margin-bottom: 4px;
+  }
+
+  &__item {
+    text-align: left;
+    background-color: #fff;
+    padding: 0;
+    border: 1px solid #b4bdc4;
+    font-family: "Mont Semibold";
+    font-size: 14px;
+    line-height: 21px;
+    color: #313237;
+    display: block;
+    padding: 10px 90px 10px 12px;
+
+    &--main {
+      position: relative;
+      border-bottom: 0;
+    }
+
+    &--option {
+      border: 0;
+
+      &:hover {
+        background: #fafbfc;
+      }
+    }
+  }
+
+  &__list {
+    position: absolute;
+    border: 1px solid #b4bdc4;
+    border-top: 0;
+    transition: height 0.5s ease-in-out;
+    height: 0;
+    overflow: hidden;
+    pointer-events: none;
+
+    &--open {
+      pointer-events: all;
+    }
+
+  }
+  &__arrow {
+    position: absolute;
+    right: 15px;
+    top: 17px;
+    height: 6px;
+    width: 9px;
+  }
+}
