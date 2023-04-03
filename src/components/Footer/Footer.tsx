@@ -19,7 +19,7 @@ export const Footer: FC = () => {
   return (
     <footer className="footer">
       <img
-        src="_new/img/Logo.svg"
+        src="/new/img/Logo.svg"
         alt="MAIN_LOGO"
         className="footer__logo"
       />

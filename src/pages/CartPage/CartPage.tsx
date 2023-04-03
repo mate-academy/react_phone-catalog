@@ -67,7 +67,7 @@ export const CartPage: FC = () => {
         ? (
           <NoResults
             title="Your cart is empty &#x1F614;"
-            imageUrl="/_new/img/empty_cart.jpg"
+            imageUrl="/new/img/empty_cart.jpg"
           />
         ) : (
           <div className="cart__info-container">

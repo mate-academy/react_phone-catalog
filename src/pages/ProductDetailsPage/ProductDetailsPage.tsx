@@ -99,7 +99,7 @@ export const ProductDetailsPage: FC = () => {
             "
           >
             <img
-              src="/_new/img/Wasnt_found.jpg"
+              src="/new/img/Wasnt_found.jpg"
               alt="Wasn't found"
               className="no-results__image"
             />

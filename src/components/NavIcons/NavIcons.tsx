@@ -11,13 +11,13 @@ export const NavIcons: FC = () => {
     <>
       <PageNavLink
         url="/favorites"
-        imagePath="/_new/img/Favourites_heart.svg"
+        imagePath="/new/img/Favourites_heart.svg"
         counter={favourites.length > 0 ? favourites.length : null}
       />
 
       <PageNavLink
         url="/cart"
-        imagePath="/_new/img/Shopping_bag_cart.svg"
+        imagePath="/new/img/Shopping_bag_cart.svg"
         counter={getTotalCartItems && getTotalCartItems()}
       />
     </>

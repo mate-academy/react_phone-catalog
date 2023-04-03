@@ -15,7 +15,7 @@ export const NoSearchResults: FC = () => {
 
       <div className="no-results__image-container">
         <img
-          src="/_new/img/No_search_results.jpg"
+          src="/new/img/No_search_results.jpg"
           alt="No results"
           className="no-results__image"
         />

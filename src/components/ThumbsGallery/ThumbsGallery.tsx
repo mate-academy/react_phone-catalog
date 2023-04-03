@@ -65,7 +65,7 @@ export const ThumbsGallery: FC<Props> = ({
                 tabIndex={0}
               >
                 <img
-                  src={`_new/${pictureUrl}`}
+                  src={`/new/${pictureUrl}`}
                   alt={`Slide ${i}`}
                   className="thumbs-gallery__thumb-picture"
                 />
@@ -105,7 +105,7 @@ export const ThumbsGallery: FC<Props> = ({
                 onKeyDown={handleKeyBoardClick}
               >
                 <img
-                  src={`_new/${pictureUrl}`}
+                  src={`/new/${pictureUrl}`}
                   alt={`Main slide ${i}`}
                   className="thumbs-gallery__picture"
                 />

@@ -60,7 +60,7 @@ export const FavoritesPage: FC = () => {
       {!isLoading && !favourites.length && (
         <NoResults
           title="Click the heart icon on any product to add a favorite &#x2764;"
-          imageUrl="/_new/img/no_favorites.jpg"
+          imageUrl="/new/img/no_favorites.jpg"
         />
       )}
 

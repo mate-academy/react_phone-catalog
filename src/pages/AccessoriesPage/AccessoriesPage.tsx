@@ -113,7 +113,7 @@ export const AccessoriesPage: FC = () => {
         !isLoading && (
           <NoResults
             title="Sorry, there are no products found &#128533;"
-            imageUrl="_new/img/No_results.jpg"
+            imageUrl="/new/img/No_results.jpg"
           />
         )
       )}
