@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import './slider.scss';
 import { sliderImgs } from '../../data/data';
 import { Button } from '../Button';
+import { SliderNav } from '../SliderNav/SliderNav';
 
 export const Slider = () => {
   const [currIndex, setCurrIndex] = useState(0);
@@ -77,20 +78,10 @@ export const Slider = () => {
 
       </Button>
 
-      <div className="slider__navigation">
-        {sliderImgs.map((item, index) => (
-          <div
-            aria-hidden="true"
-            key={item.id}
-            className={classNames(
-              'slider__dot',
-              { 'slider__dot--active': sliderImgs[currIndex].id === item.id },
-            )}
-            onClick={() => setCurrIndex(index)}
-            onKeyDown={() => setCurrIndex(index)}
-          />
-        ))}
-      </div>
+      <SliderNav
+        currentIndex={currIndex}
+        onSlideChange={setCurrIndex}
+      />
     </div>
   );
 };

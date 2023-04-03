@@ -6,17 +6,17 @@ import { countProducts } from '../../helpers/helpers';
 
 export const ShopBy = () => {
   const { products } = useContext(CatalogContext);
-  const phoneCount = useMemo(
-    () => countProducts('smartphone', products), [products],
-  );
+  const phoneCount = useMemo(() => (
+    countProducts('smartphone', products)
+  ), [products]);
 
-  const tabletCount = useMemo(
-    () => countProducts('tablet', products), [products],
-  );
+  const tabletCount = useMemo(() => (
+    countProducts('tablet', products)
+  ), [products]);
 
-  const accessoriesCount = useMemo(
-    () => countProducts('accessories', products), [products],
-  );
+  const accessoriesCount = useMemo(() => (
+    countProducts('accessories', products)
+  ), [products]);
 
   return (
     <section className="page__section shopBy">
@@ -27,7 +27,11 @@ export const ShopBy = () => {
 
         <div className="shopBy__categories">
           <div className="shopBy__category">
-            <Link to="/phones" className="shopBy__link">
+            <Link
+              data-cy="categoryLinksContainer"
+              to="/phones"
+              className="shopBy__link"
+            >
               <div className="shopBy__container">
                 <img
                   src="./img/categories/phone.svg"
@@ -44,7 +48,11 @@ export const ShopBy = () => {
           </div>
 
           <div className="shopBy__category">
-            <Link to="/tablets" className="shopBy__link">
+            <Link
+              data-cy="categoryLinksContainer"
+              to="/tablets"
+              className="shopBy__link"
+            >
               <div className="shopBy__container shopBy__container--grey">
                 <img
                   src="./img/categories/tablet.svg"
@@ -61,7 +69,11 @@ export const ShopBy = () => {
           </div>
 
           <div className="shopBy__category">
-            <Link to="/accessories" className="shopBy__link">
+            <Link
+              data-cy="categoryLinksContainer"
+              to="/accessories"
+              className="shopBy__link"
+            >
               <div className="shopBy__container shopBy__container--red">
                 <img
                   src="./img/categories/cases.svg"

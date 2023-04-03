@@ -1,7 +1,9 @@
+import { useCallback } from 'react';
 import cn from 'classnames';
 import { Button } from '../Button';
-import { getPages } from '../../helpers/helpers';
+import { getNumbers } from '../../helpers/helpers';
 import './pagination.scss';
+import { PageList } from '../PageList';
 
 type Props = {
   total: number;
@@ -14,60 +16,49 @@ export const Pagination: React.FC<Props> = ({
   total, perPage, onPageChange, currentPage,
 }) => {
   const pageAmount = Math.ceil(total / perPage);
-  const pageNumbers = getPages(pageAmount);
+  const pageNumbers = getNumbers(pageAmount);
+
+  const handlePrevClick = useCallback(() => {
+    if (currentPage > 1) {
+      onPageChange(currentPage - 1);
+    }
+  }, [currentPage]);
+
+  const handleNextClick = useCallback(() => {
+    if (currentPage <= total) {
+      onPageChange(currentPage + 1);
+    }
+  }, [currentPage]);
 
   return (
-    <>
-      <ul className="pagination">
-        <li
-          className={cn('page-item', { disabled: currentPage === 1 })}
-        >
-          <Button
-            width="32px"
-            height="32px"
-            disabled={currentPage === 1}
-            handler={() => {
-              if (currentPage > 1) {
-                onPageChange(currentPage - 1);
-              }
-            }}
-          >
-            <img src="./img/icons/arrowLeft.svg" alt="prev" />
-          </Button>
-        </li>
-
-        {pageNumbers.map(page => (
-          <li
-            key={page}
-            className={cn(
-              'page-item ',
-              { 'pagination__button--active': page === currentPage },
-            )}
-          >
-            <Button
-              width="32px"
-              height="32px"
-              type={page === currentPage ? 'button--page' : ''}
-              handler={() => onPageChange(page)}
-            >
-              {page}
-            </Button>
-          </li>
-        ))}
-
+    <ul className="pagination">
+      <li
+        className={cn('page-item', { disabled: currentPage === 1 })}
+      >
         <Button
           width="32px"
           height="32px"
-          disabled={currentPage === pageAmount}
-          handler={() => {
-            if (currentPage <= total) {
-              onPageChange(currentPage + 1);
-            }
-          }}
+          disabled={currentPage === 1}
+          handler={handlePrevClick}
         >
-          <img src="./img/icons/arrowRight.svg" alt="next" />
+          <img src="./img/icons/arrowLeft.svg" alt="prev" />
         </Button>
-      </ul>
-    </>
+      </li>
+
+      <PageList
+        pages={pageNumbers}
+        currentPage={currentPage}
+        onPageChange={onPageChange}
+      />
+
+      <Button
+        width="32px"
+        height="32px"
+        disabled={currentPage === pageAmount}
+        handler={handleNextClick}
+      >
+        <img src="./img/icons/arrowRight.svg" alt="next" />
+      </Button>
+    </ul>
   );
 };

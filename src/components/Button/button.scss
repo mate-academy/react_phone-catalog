@@ -8,9 +8,9 @@
   justify-content: center;
   align-items: center;
   border: 1px solid $color-icons;
-  color: #000;
+  color: $color-black;
   cursor: pointer;
-  transition: border-color 0.3s ease;
+  transition: border-color $transitionDuration ease;
 
   &--close {
     border: none;

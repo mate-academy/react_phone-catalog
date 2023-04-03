@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import { Link, NavLink } from 'react-router-dom';
 import './footer.scss';
+import { ToTopButton } from '../ToTopButton';
 
 export const Footer = () => {
   return (
@@ -52,19 +53,7 @@ export const Footer = () => {
             </ul>
           </nav>
 
-          <button
-            type="button"
-            className="footer__backToTop icon"
-            onClick={(e) => {
-              e.preventDefault();
-              window.scrollTo({
-                top: 0,
-                behavior: 'smooth',
-              });
-            }}
-          >
-            Back to top
-          </button>
+          <ToTopButton />
         </div>
       </div>
     </footer>

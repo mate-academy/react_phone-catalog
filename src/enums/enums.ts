@@ -17,3 +17,10 @@ export enum Sort {
   ALPHABET = 'name',
   CHEAPEST = 'price',
 }
+
+export enum ItemsOnPage {
+  ALL = 'All',
+  FOUR = '4',
+  EIGHT = '8',
+  SIXTEEN = '16',
+}

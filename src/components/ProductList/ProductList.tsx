@@ -9,7 +9,7 @@ type Props = {
 
 export const ProductList: React.FC<Props> = memo(({ products }) => {
   return (
-    <div className="products">
+    <div className="products" data-cy="productList">
       {products.map(product => (
         <ProductCard key={product.id} product={product} />
       ))}

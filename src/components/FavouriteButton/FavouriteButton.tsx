@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useMemo } from 'react';
 import { CatalogContext } from '../../context';
 import { FavoritesAction } from '../../enums/enums';
 import { Product } from '../../types/Product';
@@ -18,6 +18,11 @@ export const FavouriteButton: React.FC<Props> = ({ size, product }) => {
       ? dispatchFavorites({ type: FavoritesAction.REMOVE, payload: product.id })
       : dispatchFavorites({ type: FavoritesAction.ADD, payload: product })
   );
+  const imagePath = useMemo(() => (
+    isFavorite
+      ? './img/icons/favouritesFilled.svg'
+      : './img/icons/favourites.svg'
+  ), [isFavorite]);
 
   return (
     <Button
@@ -26,11 +31,7 @@ export const FavouriteButton: React.FC<Props> = ({ size, product }) => {
       handler={onFavoriteClick}
       type="button--favour"
     >
-      {isFavorite ? (
-        <img src="./img/icons/favouritesFilled.svg" alt="favourites" />
-      ) : (
-        <img src="./img/icons/favourites.svg" alt="favourites" />
-      )}
+      <img src={imagePath} alt="favourites" />
     </Button>
   );
 };

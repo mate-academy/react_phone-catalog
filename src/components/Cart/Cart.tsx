@@ -6,8 +6,8 @@ import {
 } from 'react';
 import { useNavigate } from 'react-router';
 import { CatalogContext } from '../../context';
+import { CartList } from '../CartList';
 import { Button } from '../Button';
-import { CartItem } from '../CartItem';
 import './cart.scss';
 
 export const Cart = () => {
@@ -29,7 +29,9 @@ export const Cart = () => {
     () => cart
       .reduce((total, curr) => total + (curr.quantity * curr.price), 0), [cart],
   );
-  const cartItemsTotal = cart.reduce((total, curr) => total + curr.quantity, 0);
+  const cartItemsTotal = useMemo(
+    () => cart.reduce((total, curr) => total + curr.quantity, 0), [cart],
+  );
 
   return (
     <div className="container">
@@ -48,15 +50,7 @@ export const Cart = () => {
 
         <div className="cart__content">
           <div className="cart__items-block">
-            {!cart.length ? (
-              <h2 className="cart__empty">Your cart is empty</h2>
-            ) : (
-              <div className="cart__items">
-                {cart.map(item => (
-                  <CartItem key={item.id} item={item} />
-                ))}
-              </div>
-            )}
+            <CartList />
           </div>
 
           <div className="cart__total-block">

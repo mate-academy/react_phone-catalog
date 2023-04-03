@@ -71,7 +71,11 @@ export const ProductBlock: React.FC<Props> = ({ sectionTitle, products }) => {
       </div>
 
       <div className="block__wrapper">
-        <div ref={wrapper} className="block__cards">
+        <div
+          data-cy="cardsContainer"
+          ref={wrapper}
+          className="block__cards"
+        >
           {products.map(product => (
             <ProductCard key={product.id} product={product} />
           ))}

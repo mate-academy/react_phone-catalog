@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { Sort } from '../../enums/enums';
+import { ItemsOnPage, Sort } from '../../enums/enums';
 import { getSalePrice } from '../../helpers/helpers';
 import { Product } from '../../types/Product';
 import { BreadCrumbs } from '../BreadCrumbs';
@@ -29,14 +29,20 @@ export const ProductBrowse: React.FC<Props> = ({ title, products }) => {
     const itemsOnPage = searchParams.get('perPage');
 
     switch (itemsOnPage) {
-      case 'All':
+      case ItemsOnPage.ALL:
         return products.length;
 
-      case null:
+      case ItemsOnPage.FOUR:
+        return 4;
+
+      case ItemsOnPage.EIGHT:
+        return 8;
+
+      case ItemsOnPage.SIXTEEN:
         return 16;
 
       default:
-        return Number(itemsOnPage);
+        return 16;
     }
   }, [searchParams]);
 

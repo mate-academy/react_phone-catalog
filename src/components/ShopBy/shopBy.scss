@@ -43,7 +43,7 @@
     height: 368px;
     background-color: $color-gold;
     margin-bottom: 24px;
-    transition: all 0.3s ease-in-out;
+    transition: all $transitionDuration ease-in-out;
 
     &--grey {
       background-color: $color-secondary;

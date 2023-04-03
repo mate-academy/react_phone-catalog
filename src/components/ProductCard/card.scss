@@ -10,7 +10,7 @@
   align-items: center;
   color: $color-primary;
   border: 1px solid $color-elements;
-  transition: all 0.3s ease-in-out;
+  transition: all $transitionDuration ease-in-out;
   flex-shrink: 0;
 
   &:hover {

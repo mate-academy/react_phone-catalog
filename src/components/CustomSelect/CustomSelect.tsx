@@ -1,6 +1,8 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import './select.scss';
+import { useToggle } from '../../hooks/useToggle';
+import { SelectList } from '../SelectList';
 
 type Props = {
   type: string;
@@ -19,17 +21,9 @@ export const CustomSelect: React.FC<Props> = ({
   onSelect,
   search,
 }) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen, toggle] = useToggle();
   const [currentOption, setCurrentOption] = useState(defaultValue);
   const [searchParams, setSearchParams] = useSearchParams();
-
-  useEffect(() => {
-    if (!searchParams.get(search)) {
-      setCurrentOption(defaultValue);
-    }
-  }, [searchParams]);
-
-  const toggle = useCallback(() => setIsOpen(!isOpen), [isOpen]);
 
   const onOptionSelect = (value: string) => {
     const sortParams = {
@@ -50,6 +44,12 @@ export const CustomSelect: React.FC<Props> = ({
     onSelect();
     setIsOpen(false);
   };
+
+  useEffect(() => {
+    if (!searchParams.get(search)) {
+      setCurrentOption(defaultValue);
+    }
+  }, [searchParams]);
 
   return (
     <div
@@ -78,18 +78,7 @@ export const CustomSelect: React.FC<Props> = ({
           style={{ width: `${width}px` }}
           onMouseLeave={toggle}
         >
-          <ul className="select__list">
-            {options.map(option => (
-              <li
-                aria-hidden="true"
-                key={option}
-                className="select__item"
-                onClick={() => onOptionSelect(option)}
-              >
-                {option}
-              </li>
-            ))}
-          </ul>
+          <SelectList options={options} onSelect={onOptionSelect} />
         </div>
       )}
     </div>

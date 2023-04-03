@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import './button.scss';
 
 type Props = {
@@ -19,7 +20,10 @@ export const Button: React.FC<Props> = ({
   return (
     <button
       type="button"
-      className={`button ${type || ''}`}
+      className={classNames(
+        'button',
+        { [type as string]: type !== '' },
+      )}
       disabled={disabled}
       style={{ width: `${width}`, height: `${height}` }}
       onClick={handler}

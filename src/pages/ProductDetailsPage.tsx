@@ -22,6 +22,9 @@ import { CatalogContext } from '../context';
 import { AddToCartButton } from '../components/AddToCartButton/AddToCartButton';
 import { FavouriteButton } from '../components/FavouriteButton/FavouriteButton';
 import { NoResults } from '../components/NoResults/NoResults';
+import { DetailsAbout } from '../components/DetailsAbout';
+import { DetailsPhotos } from '../components/DetailsPhotos';
+import { DetailsSpecs } from '../components/DetailsSpecs';
 
 export const ProductDetailsPage = () => {
   const { products } = useContext(CatalogContext);
@@ -61,9 +64,9 @@ export const ProductDetailsPage = () => {
     loadDetails();
   }, [params]);
 
-  const product = useMemo(
-    () => products.find(item => item.id === params.productId), [products],
-  );
+  const product = useMemo(() => (
+    products.find(item => item.id === params.productId)
+  ), [products]);
 
   const visibleProducts = products.filter(item => item.age <= 1);
   const priceWithDiscount = product && getSalePrice(
@@ -86,6 +89,7 @@ export const ProductDetailsPage = () => {
   );
 
   const specs: { [key: string]: string | undefined } = getProductSpecs();
+  const specsPreview = useMemo(() => Object.keys(specs).slice(0, 4), []);
 
   if (isLoading) {
     return <Loader />;
@@ -109,37 +113,11 @@ export const ProductDetailsPage = () => {
           </h1>
 
           <div className="details__wrapper details__wrapper--top">
-            <div className="details__photos">
-              <div className="details__photos-sml">
-                {[1, 2, 3].map(photoId => (
-                  <button
-                    type="button"
-                    key={photoId}
-                    className={classNames(
-                      'details__photo-btn',
-                      {
-                        'details__photo-btn--active': photoId === currentPhoto,
-                      },
-                    )}
-                    onClick={() => onPhotoChange(photoId)}
-                  >
-                    <img
-                      className="details__img-sml"
-                      src={`./img/apple/${productData?.name}-${productData?.model}-${productData?.color}-${photoId}.jpg`}
-                      alt="phone"
-                    />
-                  </button>
-                ))}
-              </div>
-
-              <div className="details__photo-l">
-                <img
-                  className="details__img-l"
-                  src={`./img/apple/${productData?.name}-${productData?.model}-${productData?.color}-${currentPhoto}.jpg`}
-                  alt="phone"
-                />
-              </div>
-            </div>
+            <DetailsPhotos
+              productData={productData}
+              currentPhoto={currentPhoto}
+              onPhotoChange={onPhotoChange}
+            />
 
             <div className="details__actions">
               <div className="details__holder">
@@ -195,18 +173,16 @@ export const ProductDetailsPage = () => {
                   ))}
                 </div>
 
-                {product?.discount ? (
-                  <div className="details__price">
-                    {`$${priceWithDiscount}`}
-                    <span className="details__price--sale">
-                      {`$${product?.price}`}
-                    </span>
-                  </div>
-                ) : (
-                  <div className="details__price">
-                    {`$${product?.price}`}
-                  </div>
-                )}
+                <div className="details__price">
+                  {product?.discount ? (
+                    <>
+                      {`$${priceWithDiscount}`}
+                      <span className="details__price--sale">
+                        {`$${product?.price}`}
+                      </span>
+                    </>
+                  ) : (`$${product?.price}`)}
+                </div>
 
                 <div className="details__buttons">
                   {product && (
@@ -218,124 +194,24 @@ export const ProductDetailsPage = () => {
                   )}
                 </div>
 
-                <div className="details__specs">
-                  <div className="details__specs-row">
-                    <span className="details__specs-title">
-                      Screen
-                    </span>
-                    <span className="details__specs-value">
-                      {`${details?.screen}" OLED`}
-                    </span>
-                  </div>
-
-                  <div className="details__specs-row">
-                    <span className="details__specs-title">
-                      Resolution
-                    </span>
-
-                    <span className="details__specs-value">
-                      {details?.resolution}
-                    </span>
-                  </div>
-
-                  <div className="details__specs-row">
-                    <span className="details__specs-title">
-                      Processor
-                    </span>
-
-                    <span className="details__specs-value">
-                      {details?.processor}
-                    </span>
-                  </div>
-
-                  <div className="details__specs-row">
-                    <span className="details__specs-title">
-                      RAM
-                    </span>
-                    <span className="details__specs-value">
-                      {details?.ram}
-                    </span>
-                  </div>
-                </div>
+                <DetailsSpecs keys={specsPreview} specs={specs} />
               </div>
             </div>
           </div>
 
           <div className="details__wrapper">
-            <div className="details__block details__block-about">
-              <h2 className="details__title-h2">
-                About
-              </h2>
-
-              <div className="details__feature-descp">
-                <h3 className="details__title-h3">
-                  And then there was Pro
-                </h3>
-
-                <p className="details__text">
-                  A transformative triple‑camera system
-                  that adds tons of capability without complexity.
-
-                  An unprecedented leap in battery life.
-                  And a mind‑blowing chip that doubles down on machine learning
-                  and pushes the boundaries of what a smartphone can do.
-                  Welcome to the first iPhone powerful enough to be called Pro.
-                </p>
-              </div>
-              <div className="details__feature-descp">
-                <h3 className="details__title-h3">
-                  Camera
-                </h3>
-
-                <p className="details__text">
-                  Meet the first triple‑camera system
-                  to combine cutting‑edge technology
-                  with the legendary simplicity of iPhone.
-                  Capture up to four times more scene.
-                  Get beautiful images in drastically lower light.
-                  Shoot the highest‑quality video
-                  in a smartphone — then edit with
-                  the same tools you love for photos.
-                  You’ve never shot with anything like it.
-                </p>
-              </div>
-              <div className="details__feature-descp">
-                <h3 className="details__title-h3">
-                  Shoot it. Flip it. Zoom it.
-                  Crop it. Cut it. Light it.
-                  Tweak it. Love it.
-                </h3>
-
-                <p className="details__text">
-                  iPhone 11 Pro lets you capture videos that
-                  are beautifully true to life,
-                  with greater detail and smoother motion.
-                  Epic processing power means it can shoot 4K video
-                  with extended dynamic range and
-                  cinematic video stabilization — all at 60 fps.
-                  You get more creative control, too, with four times more scene
-                  and powerful new editing tools to play with.
-                </p>
-              </div>
-            </div>
+            <DetailsAbout />
 
             <div className="details__block-specs">
               <h2 className="details__title-h2">
                 Tech specs
               </h2>
 
-              <div className="details__specs">
-                {Object.keys(specs).map(spec => (
-                  <div className="details__specs-row">
-                    <span className="details__specs-title details__text">
-                      {spec}
-                    </span>
-                    <span className="details__specs-value details__text">
-                      {specs[spec]}
-                    </span>
-                  </div>
-                ))}
-              </div>
+              <DetailsSpecs
+                keys={Object.keys(specs)}
+                specs={specs}
+                extraClass="details__text"
+              />
             </div>
           </div>
 

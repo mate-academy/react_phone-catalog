@@ -1,13 +1,13 @@
-import { useContext } from 'react';
+import { useContext, useMemo } from 'react';
 import { ProductBlock } from '../ProductBlock';
 import { CatalogContext } from '../../context';
 
 export const BrandNew = () => {
   const { products } = useContext(CatalogContext);
 
-  const visibleProducts = products
+  const visibleProducts = useMemo(() => products
     .filter(product => product.age <= 1 && product.discount === 0)
-    .sort((a, b) => b.price - a.price);
+    .sort((a, b) => b.price - a.price), [products]);
 
   return (
     <section className="page__section brandNew">

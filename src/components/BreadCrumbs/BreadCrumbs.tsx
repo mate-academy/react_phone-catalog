@@ -9,12 +9,10 @@ export const BreadCrumbs = () => {
     .map(p => p[0].toUpperCase().concat(p.slice(1)).replaceAll(/-/g, ' '));
 
   return (
-    <div className="crumbs">
+    <div className="crumbs" data-cy="breadCrumbs">
       <ul className="crumbs__list">
         <li className="crumbs__item">
-          <Link
-            to="/"
-          >
+          <Link to="/">
             <img src="./img/icons/Home.svg" alt="Home" />
           </Link>
         </li>
