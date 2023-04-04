@@ -39,6 +39,7 @@ export const itemsPerSlide = 4;
 export const itemWidth = 272;
 export const itemMargin = 14;
 export const sliderWidth = getSliderWidth(itemsPerSlide, itemWidth, itemMargin);
+export const slideWidth = 1040;
 
 export const dropdownWidth = 150;
 export const dropdownItemHeight = 41;

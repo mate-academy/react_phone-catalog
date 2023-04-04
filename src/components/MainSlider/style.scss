@@ -22,10 +22,9 @@
     position: relative;
     width: 32px;
     height: 400px;
-    border: 1px solid #b4bdc4;
+    border: 1px solid var(--border-secondary-color);
     background-color: #ffff;
-    transition: background-color 0.3s ease-in-out;
-    cursor: pointer;
+    transition: background-color var(--tranistion-time) ease-in-out;
 
     &:hover {
       background-color: #e2e6e9;
@@ -58,15 +57,14 @@
   }
 
   &__pick-button {
-    cursor: pointer;
     border: 0;
     width: 14px;
     height: 4px;
-    background-color: #e2e6e9;
-    transition: background-color 0.3s ease-in-out ;
+    background-color: var(--border-primary-color);
+    transition: background-color var(--tranistion-time) ease-in-out ;
 
     &:hover {
-      background-color: #b4bdc4;
+      background-color: var(--border-secondary-color);
     }
 
     &:not(:last-child) {
@@ -74,10 +72,10 @@
     }
 
     &--active {
-      background: #313237;
+      background: var(--primary-color);
 
       &:hover {
-        background-color: #313237;
+        background-color: var(--primary-color);
       }
     }
   }

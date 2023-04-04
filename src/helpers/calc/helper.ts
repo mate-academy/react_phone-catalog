@@ -4,6 +4,9 @@ import { Product, ProductDetails } from '../../types/Product';
 import { RouteTypes } from '../../types/RouteTypes';
 import { SearchParams } from '../../types/SearchParams';
 import { SortTypes } from '../../types/SortTypes';
+import { TechSpec } from '../../types/TechSpec';
+
+const techSpec: string[] = Object.values(TechSpec);
 
 export const getDiscount = (price: number, fullPrice: number) => {
   return fullPrice - price;
@@ -228,24 +231,6 @@ export const generateMessage: GenerateMessageParams = (
   }, 3000);
 };
 
-export const getCorrectLink = (
-  category: string,
-  productId: string,
-  currentPath: string,
-) => {
-  let correctLink = '';
-
-  if (currentPath.includes(`${category}/`)) {
-    correctLink = `../${productId}`;
-  } else if (currentPath.includes(category)) {
-    correctLink = `./${productId}`;
-  } else {
-    correctLink = `${category}/${productId}`;
-  }
-
-  return correctLink;
-};
-
 export const getCorrectPathname = (pathname: string) => {
   switch (true) {
     case pathname.includes(RouteTypes.Phones):
@@ -261,4 +246,20 @@ export const getCorrectPathname = (pathname: string) => {
     default:
       return pathname;
   }
+};
+
+export const firstLetterToUppercase = (word: string) => {
+  return word[0].toUpperCase() + word.slice(1);
+};
+
+export const getTechSpec = (productInfo: ProductDetails) => {
+  const arrayOfTechSpec: [string, string | string[]][] = [];
+
+  Object.entries(productInfo).forEach(([key, value]) => {
+    if (techSpec.includes(key) && arrayOfTechSpec) {
+      arrayOfTechSpec.push([key, value]);
+    }
+  });
+
+  return arrayOfTechSpec;
 };

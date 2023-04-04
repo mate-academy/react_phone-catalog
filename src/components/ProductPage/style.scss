@@ -5,10 +5,7 @@
   }
 
   &__quantity {
-    font-family: "Mont Regular";
-    font-size: 14px;
-    line-height: 21px;
-    color: #89939a;
+    color: var(--secondary-color);
   }
 
   &__header {

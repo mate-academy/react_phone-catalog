@@ -3,12 +3,12 @@ import { useState } from 'react';
 import {
   animationString,
   MainSiderimages,
+  slideWidth,
 } from '../../helpers/constants/constants';
 import './style.scss';
 
 export const MainSlider: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const slideWidth = 1040;
   const lastSlide = MainSiderimages.length - 1;
 
   const handleNextButton = () => {

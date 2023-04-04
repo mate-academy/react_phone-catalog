@@ -1,12 +1,9 @@
 .pagination {
   &__page-btn {
-    font-family: "Mont Regular";
-    font-size: 14px;
-    line-height: 21px;
 
     &-selected {
       color: #fff;
-      background: #313237;
+      background: var(--primary-color);
     }
   }
 
@@ -17,7 +14,7 @@
   }
 
   &__slide-btn--disabled {
-    border-color: #e2e6e9;
+    border-color: var(--border-primary-color);
     pointer-events: none;
     cursor: default;
   }

@@ -1,39 +1,35 @@
 .footer {
-  box-shadow: 0 -1px 0 #e2e6e9;
+  box-shadow: 0 -1px 0 var(--border-primary-color);
 
   &__inner {
     padding: 15px 0;
-
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
 
-  &__back-btn {
-    display: block;
-    position: relative;
-    width: 118px;
-    font-family: "Mont Semibold";
-    font-size: 12px;
-    line-height: 15px;
-    color: #89939a;
-    transition: color 0.3s ease-in-out;
-
-    &:hover {
-      color: #313237;
-      .footer__back-btn-arow {
-        border-color: #313237;
-      }
-    }
+  &__back-btn-arow {
+    transition: border-color, var(--tranistion-time) ease-in-out;
+    padding: 16px;
+    border: 1px solid var(--border-secondary-color);
   }
 
-  &__back-btn-arow {
-    transition: border-color, 0.3s ease-in-out;
-    position: absolute;
-    top: 50%;
-    right: 0;
-    transform: translateY(-50%);
-    padding: 16px;
-    border: 1px solid #b4bdc4;
+  &__back-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 125px;
+    font-family: var(--font-semibold);
+    font-size: 12px;
+    line-height: 15px;
+    color: var(--secondary-color);
+    transition: color var(--tranistion-time) ease-in-out;
+
+    &:hover {
+      color: var(--primary-color);
+      .footer__back-btn-arow {
+        border-color: var(--primary-color);
+      }
+    }
   }
 }

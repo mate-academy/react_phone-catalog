@@ -10,17 +10,13 @@ export function useLocalStorage<T>(
   initialValue: T,
 ): ReturnValue<T> {
   const [value, setValue] = useState<T>(() => {
-    try {
-      const storedItem = localStorage.getItem(key);
+    const storedItem = localStorage.getItem(key);
 
-      if (storedItem) {
-        return JSON.parse(storedItem);
-      }
-
-      return initialValue;
-    } catch {
-      return initialValue;
+    if (storedItem) {
+      return JSON.parse(storedItem);
     }
+
+    return initialValue;
   });
 
   const saveToStorage = (newValue: T) => {

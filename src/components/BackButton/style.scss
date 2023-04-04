@@ -4,18 +4,14 @@
   gap: 4px;
   align-items: center;
   padding: 4px;
-  cursor: pointer;
-  background-color: transparent;
-  border: 0;
-
-  font-family: "Mont Semibold";
+  font-family: var(--font-semibold);
   font-size: 12px;
   line-height: 15px;
-  color: #89939a;
+  color: var(--secondary-color);
 
-  transition: color 0.3s ease-in-out;
+  transition: color var(--tranistion-time) ease-in-out;
 
   &:hover {
-    color: #313237;
+    color: var(--primary-color);
   }
 }

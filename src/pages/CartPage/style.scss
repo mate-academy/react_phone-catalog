@@ -24,23 +24,18 @@
   }
 
   &__info {
-    font-family: "Mont Regular";
-    font-size: 14px;
-    line-height: 21px;
-    color: #89939a;
+    color: var(--secondary-color);
     margin-bottom: 24px;
   }
 
   &__checkout {
-    font-family: "Mont Semibold";
-    font-size: 14px;
-    line-height: 21px;
+    font-family: var(--font-semibold);
     padding: 14px 125px;
     color: #fff;
-    background: #313237;
+    background: var(--primary-color);
 
     box-shadow: 0;
-    transition: box-shadow 0.3s ease-in-out;
+    transition: box-shadow var(--tranistion-time) ease-in-out;
 
     &:hover {
       box-shadow: 0 3px 13px rgba(23, 32, 49, 0.8);
@@ -48,7 +43,7 @@
 
     &-wrapper {
       padding-top: 24px;
-      border-top: 1px solid #e2e6e9;
+      border-top: 1px solid var(--border-primary-color);
     }
   }
 
@@ -61,7 +56,7 @@
     align-items: center;
     flex-direction: column;
     grid-column: 17 / 25;
-    border: 1px solid #e2e6e9;
+    border: 1px solid var(--border-primary-color);
     height: fit-content;
     padding: 24px;
   }

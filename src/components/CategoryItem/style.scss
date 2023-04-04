@@ -1,11 +1,27 @@
 .category__item {
+  &-bg {
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    transition: opacity var(--tranistion-time) ease-in;
+  }
+
+  &-photo {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    transform: scale();
+    transition: transform var(--tranistion-time) ease-in,
+      right var(--tranistion-time) ease-in;
+  }
+
   &-wrapper {
     position: relative;
     height: 368px;
     width: 368px;
     overflow: hidden;
     border-radius: 0;
-    transition: border-radius 0.3s ease-in;
+    transition: border-radius var(--tranistion-time) ease-in;
 
     &:hover {
       border-radius: 10px;
@@ -21,30 +37,11 @@
     }
   }
 
-  &-bg {
-    width: 100%;
-    height: 100%;
-    opacity: 1;
-    transition: opacity 0.4s ease-in;
-  }
-
-  &-photo {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    transform: scale();
-
-    transition: transform 0.4s ease-in, right 0.4s ease-in;
-  }
-
   &-title {
     margin: 24px 0 4px;
   }
 
   &-quantity {
-    font-family: "Mont Regular";
-    font-size: 14px;
-    line-height: 21px;
-    color: #89939a;
+    color: var(--secondary-color);
   }
 }

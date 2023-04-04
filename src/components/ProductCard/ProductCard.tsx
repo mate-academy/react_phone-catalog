@@ -1,10 +1,7 @@
-import classNames from 'classnames';
-import { useContext } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { createCartItem, getCorrectLink } from '../../helpers/calc/helper';
+import { Link } from 'react-router-dom';
 import { Product } from '../../types/Product';
-import { CartContext } from '../contexts/CartContextProvider';
-import { FavContext } from '../contexts/FavContextProvider';
+import { CartButton } from '../CartButton';
+import { FavButton } from '../FavButton';
 import './style.scss';
 
 type ProductCardProps = {
@@ -14,21 +11,7 @@ type ProductCardProps = {
 export const ProductCard: React.FC<ProductCardProps> = ({
   product,
 }) => {
-  const { pathname } = useLocation();
   const {
-    cart,
-    addToCart,
-    removeFromCart,
-  } = useContext(CartContext);
-
-  const {
-    favItems,
-    addToFav,
-    removeFromFav,
-  } = useContext(FavContext);
-
-  const {
-    id,
     name,
     price,
     screen,
@@ -41,34 +24,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   }
     = product;
 
-  const isInCart = cart?.find(item => item.product.id === id);
-  const isInFav = favItems?.find(item => item.id === id);
-
-  const handleToggleToCart = () => {
-    if (isInCart && removeFromCart) {
-      removeFromCart(id);
-    } else {
-      const createdCartItem = createCartItem(product);
-
-      if (addToCart) {
-        addToCart(createdCartItem);
-      }
-    }
-  };
-
-  const handleToggleToFav = () => {
-    if (isInFav && removeFromFav) {
-      removeFromFav(id);
-    } else if (addToFav) {
-      addToFav(product);
-    }
-  };
-
-  const correctLink = getCorrectLink(category, phoneId, pathname);
-
   return (
     <div className="product-card" data-cy="cardsContainer">
-      <Link className="product-card__link" to={correctLink}>
+      <Link className="product-card__link" to={`/${category}/${phoneId}`}>
         <img className="product-card__img" src={image} alt={name} />
         <p className="product-card__title">{name}</p>
         <div className="product-card__prices">
@@ -97,29 +55,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({
       </div>
 
       <div className="product-card__actions">
-        <button
-          type="button"
-          className={classNames(
-            'button',
-            'button--primary',
-            'product-card__cart', {
-              'button--selected': isInCart,
-            },
-          )}
-          onClick={handleToggleToCart}
-        >
-          {isInCart ? 'Added to cart' : 'Add to cart'}
-        </button>
-        <button
-          type="button"
-          onClick={handleToggleToFav}
-          className="product-card__fav icon__btn"
-        >
-          <i className={classNames('icon', 'icon--fav', {
-            'icon--fav-active': isInFav,
-          })}
-          />
-        </button>
+        <CartButton width={176} height={40} product={product} />
+        <FavButton width={40} height={40} product={product} />
       </div>
     </div>
   );

@@ -36,10 +36,9 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
           }
 
           return (
-            <div className="breadcrumb__part">
+            <div key={path} className="breadcrumb__part">
               <i className="icon icon--arrow-right--disabled" />
               <Link
-                key={path}
                 to={correctLink}
                 className="breadcrumb__link"
               >

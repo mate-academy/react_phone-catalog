@@ -7,7 +7,11 @@ type FavContextType = {
   removeFromFav: (productId: string) => void,
 };
 
-export const FavContext = createContext<Partial<FavContextType>>({});
+export const FavContext = createContext<FavContextType>({
+  favItems: [],
+  addToFav() {},
+  removeFromFav() {},
+});
 
 export const FavContextProvider: React.FC = ({
   children,

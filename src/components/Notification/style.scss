@@ -1,11 +1,11 @@
 .notification {
   opacity: 1;
-  transition: opacity 0.3s ease-in-out;
-  border: 2px solid black;
+  transition: opacity var(--tranistion-time) ease-in-out;
+  border: 2px solid var(--primary-color);
   padding: 10px;
   width: 300px;
 
-  font-family: "Mont Bold";
+  font-family: var(--font-bold);
   font-size: 18px;
 
   &--hidden {

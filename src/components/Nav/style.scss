@@ -16,13 +16,12 @@
 
     &::after {
       opacity: 0;
-      transition: opacity 0.3s ease-in-out;
+      transition: opacity var(--tranistion-time) ease-in-out;
       content: "";
       position: absolute;
       bottom: 0;
       left: 0;
       height: 3px;
-      background-color: #313237;
       width: 100%;
     }
 
@@ -31,7 +30,7 @@
     }
 
     &--active {
-      color: #313237;
+      color: var(--primary-color);
 
       &::after {
         opacity: 1;

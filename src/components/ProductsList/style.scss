@@ -1,8 +1,8 @@
 .product-list {
   &__item {
     display: inline-block;
-    margin-right: 16px;
-    margin-bottom: 40px;
+    margin-right: var(--list-item-horiz-margin);
+    margin-bottom: var(--list-item-bottom-margin);
 
     &:nth-of-type(4n) {
       margin-right: 0;

@@ -1,14 +1,13 @@
 .link {
-  font-family: "Mont Bold";
-  font-style: normal;
+  font-family: var(--font-bold);
   font-size: 12px;
   line-height: 11px;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: #89939a;
-  transition: color 0.3s ease-in-out;
+  color: var(--secondary-color);
+  transition: color var(--tranistion-time) ease-in-out;
 
   &:hover {
-    color: #313237;
+    color: var(--primary-color);
   }
 }

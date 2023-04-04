@@ -16,9 +16,10 @@ export const ProductDetailsArticle: React.FC<ProductDetailsArticleProps> = ({
     >
       <h4
         className="
-        product-article__title
-        title
-        title--small"
+          product-article__title
+          title
+          title--small
+        "
       >
         {title}
       </h4>

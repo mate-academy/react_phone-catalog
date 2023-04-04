@@ -30,7 +30,7 @@
     background-image: url(../../images/arrows/arrow-left.svg);
 
     &--disabled {
-      background-image: url(../../images/arrows/left-disabled.svg)
+      background-image: url(../../images/arrows/left-disabled.svg);
     }
   }
 
@@ -38,7 +38,7 @@
     background-image: url(../../images/arrows/arrow-right.svg);
 
     &--disabled {
-      background-image: url(../../images/arrows/right-disabled.svg)
+      background-image: url(../../images/arrows/right-disabled.svg);
     }
   }
 
@@ -50,22 +50,19 @@
     background-image: url(../../images/header-images/cross.svg);
   }
 
-  &--arrow-down{
+  &--arrow-down {
     background-image: url(../../images/arrows/arrow-down.svg);
   }
 
-  &__btn {
-    height: 40px;
-    width: 40px;
+  &--btn {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid #B4BDC4;
-    transition: border-color .3s ease-in-out;
-    margin-left: 8px;
+    border: 1px solid var(--border-secondary-color);
+    transition: border-color var(--tranistion-time) ease-in-out;
 
     &:hover {
-      border-color: #313237;
+      border-color: var(--primary-color);
     }
   }
 }

@@ -1,16 +1,12 @@
 .product-article {
-
   &__title {
     margin: 0;
     margin-bottom: 16px;
   }
 
   &__text {
-    font-family: "Mont Regular";
-    font-size: 14px;
-    line-height: 21px;
     margin: 0;
-    color: #89939a;
+    color: var(--secondary-color);
     &:not(:last-child) {
       margin-bottom: 12px;
     }

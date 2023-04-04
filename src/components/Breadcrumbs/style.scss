@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  font-family: "Mont Semibold";
+  font-family: var(--font-semibold);
   font-size: 12px;
   line-height: 15px;
 
@@ -13,10 +13,6 @@
   }
 
   &__text {
-    color: #89939a;
-  }
-
-  &__link {
-    color: #313237;
+    color: var(--secondary-color);
   }
 }

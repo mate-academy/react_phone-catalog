@@ -6,8 +6,8 @@ export const NoResults: React.FC<NoResultsProps> = ({
   category,
 }) => {
   return (
-    <p className="title title--large">
+    <h2 className="title title--large">
       {`${category} not found`}
-    </p>
+    </h2>
   );
 };

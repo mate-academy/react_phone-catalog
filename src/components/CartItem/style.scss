@@ -1,11 +1,8 @@
 .cart-item {
-  font-family: "Mont Regular";
-  font-size: 14px;
-  line-height: 21px;
   display: flex;
   flex-direction: row;
   align-items: center;
-  border: 1px solid #e2e6e9;
+  border: 1px solid var(--border-primary-color);
   padding: 31px 40px 31px 24px;
 
   &__image {
@@ -22,13 +19,11 @@
 
   &__name {
     margin-right: 49px;
-    color: #313237;
     width: 250px;
   }
 
   &__quantity {
     margin-right: 43px;
-
     display: flex;
     gap: 13px;
     align-items: center;
@@ -59,10 +54,9 @@
     margin: 0;
     width: 110px;
     text-align: center;
-    font-family: "Mont Bold";
+    font-family: var(--font-bold);
     font-size: 22px;
     line-height: 140%;
-    color: #313237;
   }
 
   &__btn {
@@ -70,12 +64,12 @@
     background-repeat: no-repeat;
     height: 32px;
     width: 32px;
-    border: 1px solid #b4bdc4;
+    border: 1px solid var(--border-secondary-color);
 
-    transition: border-color 0.3s ease-in-out;
+    transition: border-color var(--tranistion-time) ease-in-out;
 
     &:hover {
-      border-color: #313237;
+      border-color: var(--primary-color);
     }
   }
 }

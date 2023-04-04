@@ -1,24 +1,22 @@
 .button {
-  border: 1px solid transparent;
-  font-family: "Mont Semibold";
-  font-size: 14px;
-  line-height: 21px;
+  border: 2px solid transparent;
+  font-family: var(--font-semibold);
   text-align: center;
   color: #fff;
   box-shadow: 0;
-  transition: box-shadow 0.3s ease-in-out;
+  transition: box-shadow var(--tranistion-time) ease-in-out;
 
   &:hover {
-    box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+    box-shadow: 0 4px 13px rgba(23, 32, 49, 0.6);
   }
 
   &--primary {
-    background: #313237;
+    background: var(--primary-color);
   }
 
   &--selected {
-    border-color: #e2e6e9;
+    border-color: var(--border-primary-color);
     background-color: #fff;
-    color: #27ae60;
+    color: var(--selected-color);
   }
 }

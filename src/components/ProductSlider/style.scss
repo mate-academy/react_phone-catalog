@@ -19,19 +19,19 @@
     width: 32px;
     height: 32px;
     border: 1px solid;
-    border-color:#b4bdc4;
-    transition: border-color 0.3s ease-in-out;
+    border-color: var(--border-secondary-color);
+    transition: border-color var(--tranistion-time) ease-in-out;
 
     &:hover {
-      border-color:#313237;
+      border-color: var(--primary-color);
     }
 
     &:disabled {
-      border-color:#e2e6e9;
+      border-color: var(--border-primary-color);
       cursor: default;
 
       &:hover {
-        border-color:#e2e6e9;
+        border-color: var(--border-primary-color);
       }
     }
   }

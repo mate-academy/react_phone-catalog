@@ -1,16 +1,19 @@
+@import "./styles/utils/vars.scss";
 @import "./styles/utils/fonts.scss";
 @import "./styles/utils/reset.scss";
 @import "./styles/blocks/icon.scss";
 @import "./styles/blocks/link.scss";
 @import "./styles/blocks/buttons.scss";
 @import "./styles/blocks/title.scss";
-@import "./styles/utils/vars.scss";
 
 .App {
   display: grid;
   grid-template-rows: 64px 1fr 96px;
   height: 100vh;
-  color: $primary-color;
+  color: var(--primary-color);
+  font-family: var(--font-regular);
+  font-size: 14px;
+  line-height: 21px;
 
   &__main {
     padding-bottom: 80px;

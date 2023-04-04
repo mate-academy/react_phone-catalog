@@ -3,6 +3,7 @@ import './App.scss';
 import { Footer } from './components/Footer';
 import { Header } from './components/Header';
 import { ProductDetailsPage } from './components/ProductDetailsPage';
+import { ScrollToTop } from './components/ScrollToTop/ScrollToTop';
 import { AccessoriesPage } from './pages/AccessoriesPage/AccessoriesPage';
 import { CartPage } from './pages/CartPage/CartPage';
 import { FavPage } from './pages/FavPage/FavPage';
@@ -41,6 +42,7 @@ const App = () => {
         </div>
       </main>
       <Footer />
+      <ScrollToTop />
     </div>
   );
 };

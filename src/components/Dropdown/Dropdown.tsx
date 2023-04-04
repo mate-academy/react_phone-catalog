@@ -1,16 +1,13 @@
 import classNames from 'classnames';
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { firstLetterToUppercase } from '../../helpers/calc/helper';
 import {
   dropdownItemHeight,
   dropdownWidth,
 } from '../../helpers/constants/constants';
 import { SearchLink } from '../SearchLink/SearchLink';
 import './style.scss';
-
-const firstLetterToUppercase = (word: string) => {
-  return word[0].toUpperCase() + word.slice(1);
-};
 
 type DropdownProps = {
   title: string,
