@@ -210,7 +210,7 @@ export const ProductDetailsPage = () => {
               <DetailsSpecs
                 keys={Object.keys(specs)}
                 specs={specs}
-                extraClass="details__text"
+                type="details__text"
               />
             </div>
           </div>

@@ -88,12 +88,10 @@ export const ProductBrowse: React.FC<Props> = ({ title, products }) => {
   const lastItemIndex = currentPage * perPage;
   const firstItemIndex = lastItemIndex - perPage;
 
-  const currItems = getSortedProducts(sortParam)
-    .filter(item => item.name.toLowerCase().includes(query.toLowerCase()))
-    .slice(firstItemIndex, lastItemIndex);
+  const processedItems = getSortedProducts(sortParam)
+    .filter(item => item.name.toLowerCase().includes(query.toLowerCase()));
 
-  const isNoPagination = perPage < currItems.length
-    || currItems.length === products.length;
+  const visibleItems = processedItems.slice(firstItemIndex, lastItemIndex);
 
   return (
     <section className="page__products">
@@ -103,7 +101,7 @@ export const ProductBrowse: React.FC<Props> = ({ title, products }) => {
       </h1>
 
       <span className="page__models-count">
-        {query ? `${currItems.length} results` : `${products.length} models`}
+        {query ? `${processedItems.length} results` : `${products.length} models`}
       </span>
 
       <div className="page__selectWrapper">
@@ -126,18 +124,16 @@ export const ProductBrowse: React.FC<Props> = ({ title, products }) => {
         />
       </div>
 
-      {currItems.length > 0 ? (
+      {processedItems.length > 0 ? (
         <>
-          <ProductList products={currItems} />
+          <ProductList products={visibleItems} />
 
-          {!isNoPagination && (
-            <Pagination
-              total={query ? currItems.length : products.length}
-              perPage={perPage}
-              currentPage={currentPage}
-              onPageChange={paginate}
-            />
-          )}
+          <Pagination
+            total={query ? processedItems.length : products.length}
+            perPage={perPage}
+            currentPage={currentPage}
+            onPageChange={paginate}
+          />
         </>
       ) : (
         <NoResults name="Product" />

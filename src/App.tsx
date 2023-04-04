@@ -1,4 +1,5 @@
 import { Navigate, Route, Routes } from 'react-router';
+import './App.scss';
 import { Footer } from './components/Footer';
 import { Header } from './components/Header';
 import { CartPage } from './pages/CartPage';
@@ -7,7 +8,6 @@ import { HomePage } from './pages/HomePage';
 import { PageNotFound } from './pages/PageNotFound';
 import { PhonesPage } from './pages/PhonesPage';
 import { ProductDetailsPage } from './pages/ProductDetailsPage';
-import './App.scss';
 import { TabletsPage } from './pages/TabletsPage';
 import { AccessoriesPage } from './pages/AccessoriesPage';
 

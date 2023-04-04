@@ -1,32 +1,31 @@
 import classNames from 'classnames';
-import React from 'react';
 
 type Props = {
   specs: { [key: string]: string | undefined };
   keys: string[];
-  extraClass?: string;
+  type?: string;
 };
 
 export const DetailsSpecs: React.FC<Props> = ({
   specs,
   keys,
-  extraClass,
+  type,
 }) => {
   return (
     <div className="details__specs">
       {keys.map(spec => (
-        <div className="details__specs-row">
+        <div key={spec} className="details__specs-row">
           <span
             className={classNames(
               'details__specs-title',
-              { [extraClass as string]: extraClass },
+              { [type as string]: !!type },
             )}
           >
             {spec}
           </span>
           <span className={classNames(
             'details__specs-value',
-            { [extraClass as string]: extraClass },
+            { [type as string]: !!type },
           )}
           >
             {specs[spec]}

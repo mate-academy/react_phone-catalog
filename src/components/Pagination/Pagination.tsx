@@ -30,6 +30,10 @@ export const Pagination: React.FC<Props> = ({
     }
   }, [currentPage]);
 
+  if (currentPage === 0 || pageAmount < 2) {
+    return null;
+  }
+
   return (
     <ul className="pagination">
       <li
