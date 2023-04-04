@@ -43,7 +43,7 @@
     display: flex;
     height: 100%;
  
-    & > img {
+    & img {
       object-fit: cover;
       width: 100%;
       height: 400px;
@@ -93,4 +93,12 @@
     border-color: $primaryColor;
     cursor: pointer;
   }
+}
+
+.infinite-slider-link {
+  text-decoration: none;
+}
+
+.infinite-slider-image {
+  vertical-align: bottom;
 }

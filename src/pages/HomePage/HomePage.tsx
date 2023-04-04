@@ -10,10 +10,10 @@ import { getProductsList } from '../../helpers/fetchData';
 import { InfiniteSlider } from '../../components/InfiniteSlider';
 import { MobileSwiper } from '../../components/MobileSwiper';
 
-const carouselImagesUrl = [
-  './img/img/banner-phones.png',
-  './img/img/banner-tablets.png',
-  './img/img/banner-accessories.png',
+const carouselImages = [
+  { path: '/phones', imageUrl: './img/img/banner-phones.png' },
+  { path: '/tablets', imageUrl: './img/img/banner-tablets.png' },
+  { path: '/accessories', imageUrl: './img/img/banner-accessories.png' },
 ];
 
 export const HomePage: FC = () => {
@@ -82,7 +82,7 @@ export const HomePage: FC = () => {
 
   return (
     <div className="home-page main__page">
-      <InfiniteSlider carouselImagesUrl={carouselImagesUrl} />
+      <InfiniteSlider carouselImages={carouselImages} />
 
       <ProductsSlider
         title="Hot prices"

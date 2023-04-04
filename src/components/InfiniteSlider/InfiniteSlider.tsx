@@ -2,6 +2,7 @@ import { FC } from 'react';
 import './InfiniteSlider.scss';
 import Slider, { CustomArrowProps } from 'react-slick';
 import classNames from 'classnames';
+import { Link } from 'react-router-dom';
 
 const SamplePrevArrow = ({
   currentSlide, slideCount, onClick, ...props
@@ -41,11 +42,16 @@ const SampleNextArrow = ({
   );
 };
 
+interface SliderImage {
+  path: string,
+  imageUrl: string,
+}
+
 type Props = {
-  carouselImagesUrl: string[];
+  carouselImages: SliderImage[];
 };
 
-export const InfiniteSlider: FC<Props> = ({ carouselImagesUrl }) => {
+export const InfiniteSlider: FC<Props> = ({ carouselImages }) => {
   const settings = {
     dots: true,
     infinite: true,
@@ -69,8 +75,18 @@ export const InfiniteSlider: FC<Props> = ({ carouselImagesUrl }) => {
   return (
     <div>
       <Slider {...settings}>
-        {carouselImagesUrl.map(imageUrl => (
-          <img key={imageUrl} src={imageUrl} alt="Images banner" />
+        {carouselImages.map(image => (
+          <Link
+            to={image.path}
+            key={image.imageUrl}
+            className="infinite-slider-link"
+          >
+            <img
+              src={image.imageUrl}
+              alt="Images banner"
+              className="infinite-slider-image"
+            />
+          </Link>
         ))}
       </Slider>
     </div>

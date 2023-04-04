@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import { Link } from 'react-router-dom';
 import { NavContacts } from './NavContacts';
 import './Footer.scss';
 
@@ -18,11 +19,13 @@ export const Footer: FC = () => {
 
   return (
     <footer className="footer">
-      <img
-        src="./img/img/Logo.svg"
-        alt="MAIN_LOGO"
-        className="footer__logo"
-      />
+      <Link to="/" className="footer__logo-link" onClick={handleClick}>
+        <img
+          src="./img/img/Logo.svg"
+          alt="MAIN_LOGO"
+          className="footer__logo"
+        />
+      </Link>
 
       <NavContacts />
 

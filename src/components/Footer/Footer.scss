@@ -13,8 +13,13 @@
     align-items: center;
   }
 
+  &__logo-link {
+    text-decoration: none;
+  }
+
   &__logo {
     padding: 38px 0;
+    vertical-align: bottom;
 
     @include onMobile {
       width: 30vw;

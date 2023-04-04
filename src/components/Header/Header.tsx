@@ -3,7 +3,7 @@ import {
   useEffect,
   useState,
 } from 'react';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { NavBar } from '../NavBar';
 import { NavIcons } from '../NavIcons/NavIcons';
 import './Header.scss';
@@ -41,11 +41,13 @@ export const Header: FC = () => {
   return (
     <header className="header">
       <div className="nav-container">
-        <img
-          src="./img/img/Logo.svg"
-          alt="MAIN_LOGO"
-          className="header__logo"
-        />
+        <Link to="/" className="header__link">
+          <img
+            src="./img/img/Logo.svg"
+            alt="MAIN_LOGO"
+            className="header__logo"
+          />
+        </Link>
 
         <NavBar />
 
