@@ -11,9 +11,9 @@ import { InfiniteSlider } from '../../components/InfiniteSlider';
 import { MobileSwiper } from '../../components/MobileSwiper';
 
 const carouselImagesUrl = [
-  '/new/img/banner-phones.png',
-  '/new/img/banner-tablets.png',
-  '/new/img/banner-accessories.png',
+  './img/img/banner-phones.png',
+  './img/img/banner-tablets.png',
+  './img/img/banner-accessories.png',
 ];
 
 export const HomePage: FC = () => {

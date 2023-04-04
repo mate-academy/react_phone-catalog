@@ -43,7 +43,7 @@ export const ProductCard: FC<Props> = ({
       >
         <div className="image-container">
           <img
-            src={`/new/${image}`}
+            src={`./img/${image}`}
             alt={name}
             className="card__image"
           />

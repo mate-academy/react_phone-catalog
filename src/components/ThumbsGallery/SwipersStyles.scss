@@ -98,6 +98,12 @@ $swiper-navigation-color: #000;
   }
 }
 
+.main-button-prev {
+  &::after {
+    transform: translate(-50%, -50%) scale(1.5);
+  }
+}
+
 .main-button-prev,
 .main-button-next {
   width: 50px;
@@ -111,7 +117,6 @@ $swiper-navigation-color: #000;
     content: url("../../assets/images/arrow_back_button.svg");
     position: absolute;
     height: 16px;
-    transform: translate(-50%, -50%) scale(1.5);
     top: 50%;
     left: 50%;
   }

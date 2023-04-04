@@ -45,7 +45,7 @@ export const CartItem: FC<Props> = ({
 
       <div className="cart-item__image-container">
         <img
-          src={`/new/${imageUrl}`}
+          src={`./img/${imageUrl}`}
           alt={`${id}`}
           className="cart-item__image"
         />

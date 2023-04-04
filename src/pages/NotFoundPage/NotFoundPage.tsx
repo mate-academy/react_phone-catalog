@@ -19,7 +19,7 @@ export const NotFoundPage: FC = () => (
 
     <div className="no-results__image-container">
       <img
-        src="/new/img/Not_found_page.jpg"
+        src="./img/img/Not_found_page.jpg"
         alt="No results"
         className="no-results__image"
       />
