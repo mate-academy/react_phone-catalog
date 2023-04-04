@@ -26,7 +26,7 @@ export const Search = () => {
   return (
     <div className="search__container">
       <input
-        type="search"
+        type="text"
         name="query"
         className="search"
         value={query}
