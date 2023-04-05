@@ -1,0 +1,29 @@
+.capacity-details {
+  @extend .color-details;
+
+  &__collection {
+    @extend .color-details__collection;
+    gap: 8px;
+    padding: 0;
+  }
+}
+
+.capacity {
+  @extend %flexCenter;
+  @extend .body_text;
+  color: $primary;
+  border: 1px solid #B4BDC4;
+  width: 60px;
+  height: 32px;
+  text-decoration: none;
+
+  &:active {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+.active-capacity {
+  color: $white;
+  background-color: $primary;
+  border: 0;
+}

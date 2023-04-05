@@ -9,3 +9,10 @@ export async function getPhonesList(): Promise<Phone[]> {
 
   return phonesList;
 }
+
+// eslint-disable-next-line no-useless-catch
+try {
+  getPhonesList();
+} catch (error) {
+  throw (error);
+}

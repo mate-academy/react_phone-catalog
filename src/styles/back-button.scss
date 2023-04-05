@@ -1,0 +1,23 @@
+.back-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  align-self: start;
+  gap: 9px;
+  width: 47px;
+  margin-bottom: 16px;
+
+  &__title {
+    @extend .small_text;
+    color: $secondary;
+    height: 12px;
+  }
+
+  &__vector {
+    width: 7px;
+    height: 10px;
+    background-image: url('../images/buttons/Left.svg');
+    background-repeat: no-repeat;
+  }
+}

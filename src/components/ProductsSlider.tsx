@@ -64,11 +64,11 @@ export const ProductSlider: React.FC<Props> = ({
         <div className="product-slider-title">
           <h1>{title}</h1>
         </div>
-        <div className="product-slider-button">
+        <div className="slider-button">
           <button
             className={classNames(
-              { 'product-slider-button__left': !isBckDisabled },
-              { 'product-slider-button__left--disabled': isBckDisabled },
+              { 'slider-button__left': !isBckDisabled },
+              { 'slider-button__left--disabled': isBckDisabled },
             )}
             type="button"
             disabled={areButtonsDisabled}
@@ -76,8 +76,8 @@ export const ProductSlider: React.FC<Props> = ({
           />
           <button
             className={classNames(
-              { 'product-slider-button__right': !isFwdDisabled },
-              { 'product-slider-button__right--disabled': isFwdDisabled },
+              { 'slider-button__right': !isFwdDisabled },
+              { 'slider-button__right--disabled': isFwdDisabled },
             )}
             type="button"
             disabled={areButtonsDisabled}

@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Phone } from '../types/Phone';
 
 export const path = process.env.PUBLIC_URL;
@@ -12,7 +13,11 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
   const imagePath = `${path}_new/${phone.image}`;
 
   return (
-    <div className="product-card" data-cy="cardsContainer">
+    <Link
+      to={`/Phones/${phone.id}`}
+      className="product-card"
+      data-cy="cardsContainer"
+    >
       <div className="product-card__picture">
         <img
           className="product-image"
@@ -54,15 +59,17 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
           <button
             className="card-button__add"
             type="button"
+            onClick={(event) => event.preventDefault()}
           >
             Add to cart
           </button>
           <button
             className="card-button__favourite"
             type="button"
+            onClick={(event) => event.preventDefault()}
           />
         </div>
       </div>
-    </div>
+    </Link>
   );
 };

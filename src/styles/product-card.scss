@@ -7,6 +7,11 @@
   height: 505px;
   margin: 0;
   border: 1px solid $element;
+  text-decoration: none;
+
+  &:active {
+    -webkit-tap-highlight-color: transparent;
+  }
 
   @include onTablet {
     width: 218px;
@@ -123,17 +128,7 @@
 }
 
 .info-block {
-  @extend .small_text;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  height: 15px;
-  padding-bottom: 8px;
-
-  @include onTablet {
-    height: 12px;
-    padding-bottom: 5px;
-  }
+  @extend %cardInfoBlock;
 
   &__title {
     color: $secondary;
@@ -155,49 +150,19 @@
   }
 
   &__add {
-    @extend .buttons_text;
-    @extend %flexCenter;
-    color: $white;
-    background-color: $primary;
-    height: 40px;
-    width: 176px;
-    border: 0;
+    @include add-button(40px, 176px, 33px, 118px);
 
-    @include onTablet {
-      height: 33px;
-      width: 118px;
-    }
-
-    &:hover {
-      box-shadow: 0px 3px 13px #17203142;
-    }
-
-    &--selected {
-      color: #27AE60;
-      background-color: $white;
-    }
+    // &--selected {
+    //   color: #27AE60;
+    //   background-color: $white;
+    // }
   }
 
   &__favourite {
-    width: 40px;
-    height: 40px;
-    border: 1px solid $icons;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-color: $white;
-    background-image: url('../images/buttons/Favourite.svg');
+    @include favorite-button(40px, 33px);
 
-    @include onTablet {
-      width: 33px;
-      height: 33px;
-    }
-
-    &:hover {
-      border: 1px solid $primary;
-    }
-
-    &--selected {
-      background-image: url('../images/buttons/Favourites\ Filled\ \(Heart\ Like\).svg');
-    }
+    // &--selected {
+    //   background-image: url('../images/buttons/Favourites\ Filled\ \(Heart\ Like\).svg');
+    // }
   }
 }

@@ -9,3 +9,50 @@
     @content;
   }
 }
+
+@mixin add-button($hight, $width, $tabHight, $tabWidth) {
+  @extend .buttons_text;
+  @extend %flexCenter;
+  color: $white;
+  background-color: $primary;
+  height: $hight;
+  width: $width;
+  border: 0;
+
+  @include onTablet {
+    height: $tabHight;
+    width: $tabWidth;
+  }
+
+  &:hover {
+    box-shadow: 0px 3px 13px #17203142;
+  }
+
+  &--selected {
+    color: #27AE60;
+    background-color: $white;
+  }
+}
+
+@mixin favorite-button($size, $tabSize) {
+  width: $size;
+  height: $size;
+  border: 1px solid $icons;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: $white;
+  background-image: url('../../images/buttons/Favourite.svg');
+
+  @include onTablet {
+    width: $tabSize;
+    height: $tabSize;
+  }
+
+  &:hover {
+    border: 1px solid $primary;
+  }
+
+  &--selected {
+    background-image: url('../../images/buttons/Favourites\ Filled\ \(Heart\ Like\).svg');
+  }
+}

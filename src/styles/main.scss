@@ -27,6 +27,7 @@ h2 {
   font-size: 22px;
   line-height: 140%;
   letter-spacing: 0;
+  margin: 0;
 }
 
 h3 {
@@ -34,6 +35,16 @@ h3 {
   font-size: 20px;
   line-height: 26px;
   letter-spacing: 0;
+  margin: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  margin: 0;
 }
 
 .uppercase_text {
@@ -45,6 +56,8 @@ h3 {
 }
 
 .buttons_text {
+  margin: 0;
+  font-family: 'Mont', sans-serif;
   font-weight: 600;
   font-size: 14px;
   line-height: 21px;
@@ -71,3 +84,12 @@ h3 {
 @import "./product-card.scss";
 @import "./product-slider.scss";
 @import "./category-shop.scss";
+@import "./location.scss";
+@import "./phones-page.scss";
+@import "./slider-button.scss";
+@import "./select.scss";
+@import "./loader.scss";
+@import "./back-button.scss";
+@import "./product-details-page.scss";
+@import "./color-details.scss";
+@import "./capacity-details.scss";
