@@ -13,8 +13,11 @@ export const Accessories: React.FC = () => {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    getAccessories(setAccessoriesList)
-      .then(() => setIsLoaded(true));
+    getAccessories()
+      .then(data => {
+        setAccessoriesList(data);
+        setIsLoaded(true);
+      });
   }, []);
 
   const content = () => {

@@ -11,7 +11,7 @@ export const getProducts = () => fetch(PRODUCTS)
     return res.json();
   })
 
-export const getPhones = (setPhoneList: any) => fetch(PRODUCTS)
+export const getPhones = () => fetch(PRODUCTS)
   .then((res) => {
     if (!res.ok) {
       throw new Error('Error with loading data...');
@@ -19,13 +19,11 @@ export const getPhones = (setPhoneList: any) => fetch(PRODUCTS)
 
     return res.json();
   })
-  .then((data) => {
-    const phones = data.filter((item: any) => item.type === 'phone');
+  .then((data) => data.filter((item: any) => item.type === 'phone')
 
-    setPhoneList(phones);
-  });
+  );
 
-export const getTablets = (setTabletsList: any) => fetch(PRODUCTS)
+export const getTablets = () => fetch(PRODUCTS)
   .then((res) => {
     if (!res.ok) {
       throw new Error('Error with loading data...');
@@ -33,13 +31,11 @@ export const getTablets = (setTabletsList: any) => fetch(PRODUCTS)
 
     return res.json();
   })
-  .then((data) => {
-    const tablets = data.filter((item: any) => item.type === 'tablet');
+  .then((data) => data.filter((item: any) => item.type === 'tablet')
 
-    setTabletsList(tablets);
-  });
+  );
 
-export const getAccessories = (setAccessoriesList: any) => fetch(PRODUCTS)
+export const getAccessories = () => fetch(PRODUCTS)
   .then((res) => {
     if (!res.ok) {
       throw new Error('Error with loading data...');
@@ -47,11 +43,9 @@ export const getAccessories = (setAccessoriesList: any) => fetch(PRODUCTS)
 
     return res.json();
   })
-  .then((data) => {
-    const accessories = data.filter((item: any) => item.type === 'accessories');
+  .then((data) => data.filter((item: any) => item.type === 'accessories')
 
-    setAccessoriesList(accessories);
-  });
+  );
 
 export const getProductItem = (
   id: string,

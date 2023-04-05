@@ -13,8 +13,11 @@ export const Tablets: React.FC = () => {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    getTablets(setTabletsList)
-      .then(() => setIsLoaded(true));
+    getTablets()
+      .then(data => {
+        setTabletsList(data);
+          setIsLoaded(true);
+  });
   }, []);
 
   const content = () => {

@@ -7,17 +7,22 @@ import {
 } from '../../components/ProductsLoader/ProductsLoader2x';
 
 import './phones.scss';
+import { ProductItem } from '../../types/ProductItem';
 
 export const Phones: React.FC = () => {
-  const [phonesList, setPhonesList] = useState([]);
+  const [phonesList, setPhonesList] = useState<ProductItem[]>([]);
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    getPhones(setPhonesList)
-      .then(() => setIsLoaded(true));
+    getPhones()
+      .then(data => {
+        setPhonesList(data);
+        setIsLoaded(true);
+      });
+
   }, []);
 
-  const content = () => {
+  const getContent = () => {
     if (phonesList.length === 0) {
       return (
         <p className="accessories__error">
@@ -41,7 +46,7 @@ export const Phones: React.FC = () => {
         </h1>
 
         {isLoaded
-          ? content()
+          ? getContent()
           : <ProductsLoader2x style={{ marginTop: '100px' }} />}
       </div>
     </div>
