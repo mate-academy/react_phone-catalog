@@ -1,0 +1,78 @@
+// @import '../../Helpers.scss';
+@import '../../Helpers/Helpers.scss';
+
+.footer {
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid $grey-lite;
+
+  position: sticky;
+  bottom: 0;
+
+  &__list {
+    display: flex;
+    gap: 10px;
+    padding: 0;
+    list-style: none;
+
+    @include tablet() {
+      gap: 30px;
+    }
+  }
+
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__link {
+    color: $grey-dark;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-weight: 500;
+    font-size: 8px;
+
+    @media (min-width: 350px) {
+      font-weight: 700;
+      font-size: 12px;
+    }
+  }
+
+  &__backTo {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    >p {
+      display: none;
+      color: $grey-dark;
+      font-weight: 500;
+
+      @include tablet() {
+        display: flex;
+      }
+    }
+  }
+
+  &__button {
+    width: 20px;
+    height: 20px;
+    line-height: 10px;
+    border: 1px solid #E2E6E9;
+
+    background-color: $white;
+
+    @media (min-width: 350px) {
+      width: 30px;
+      height: 30px;
+
+      line-height: 0;
+    }
+
+    &--icon {
+      transform: rotate(90deg);
+    }
+  }
+}

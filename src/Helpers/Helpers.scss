@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700;800;900&display=swap');
+
+$black: #313237;
+$grey-dark: #89939A;
+$grey-medium: #b4bdc3;
+$grey-lite: #e2e6e9;
+$white-dark: #fafbfc;
+$white: #fff;
+$green: #27ae60;
+$red: #eb5757;
+
+* {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+}
+
+h1 {
+  font-size: 32px;
+  line-height: 41px;
+  font-weight: 700;
+}
+
+h2 {
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 31px;
+}
+
+h3 {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 26px;
+}
+
+%smallText {
+  font-weight: 500;
+  font-size: 12px;
+}
+
+@mixin mobile {
+  @media (min-width: 320px) {
+    @content
+  }
+};
+
+@mixin tablet {
+  @media (min-width: 640px) {
+    @content
+  }
+};
+
+@mixin desktop {
+  @media (min-width: 1200px) {
+    @content
+  }
+}
+
+button {
+  cursor: pointer;
+
+  transition: 300ms;
+
+  &:active {
+      transform: scale(0.9);
+  }
+}
+
+.container {
+  padding: 15px 20px;
+  height: 100%;
+
+  max-width: 900px;
+  margin: 0 auto;
+  
+  @include tablet() {
+    padding: 25px 39px;
+  }
+  
+  @include desktop() {
+    padding: 30px 55px;
+  }
+}
