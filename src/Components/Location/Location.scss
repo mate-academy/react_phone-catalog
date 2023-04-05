@@ -1,0 +1,25 @@
+@import '../../Helpers/Helpers.scss';
+
+.location {
+    &__container {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    &__link {
+      color: $grey-medium;
+      font-weight:600;
+      font-size: 16px;
+      text-decoration: none;
+    }
+  &__img {
+    width: 20px;
+    height: 20px;
+
+    &--arrow {
+        width: 13px;
+        height: 13px;
+    }
+  }
+}

@@ -1,1 +1,10 @@
-// not empty
+@import './Helpers/Helpers.scss';
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  overflow: hidden;
+}
