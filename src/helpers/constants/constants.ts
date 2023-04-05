@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
 import { CategoryCard } from '../../types/Category';
+import { RouteTypes } from '../../types/RouteTypes';
 import { getSliderWidth } from '../calc/helper';
 
 export const URL = 'https://mate-academy.github.io/react_phone-catalog/_new/products.json';
@@ -11,21 +12,21 @@ export const categoryArray: CategoryCard[] = [
     imageUrl: 'img/category/phone.png',
     name: 'Mobile Phones',
     quantity: undefined,
-    link: '/phones',
+    link: RouteTypes.Phones,
   },
   {
     backImageUrl: 'img/category/tablets-bg.png',
     imageUrl: 'img/category/tablets.png',
     name: 'Tablets',
     quantity: undefined,
-    link: '/tablets',
+    link: RouteTypes.Tablets,
   },
   {
     backImageUrl: 'img/category/accs-bg.png',
     imageUrl: 'img/category/accs.png',
     name: 'Accessories',
     quantity: undefined,
-    link: '/accessories',
+    link: RouteTypes.Accessories,
   },
 ];
 

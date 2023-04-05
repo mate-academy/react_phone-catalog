@@ -1,5 +1,7 @@
 .pagination {
   &__page-btn {
+    height: 32px;
+    width: 32px;
 
     &-selected {
       color: #fff;
@@ -8,9 +10,15 @@
   }
 
   &__buttons {
+    gap: 8px;
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  &__slide-btn {
+    height: 32px;
+    width: 32px;
   }
 
   &__slide-btn--disabled {

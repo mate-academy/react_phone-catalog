@@ -21,8 +21,8 @@ export const Header: React.FC = () => {
   const { cart } = useContext(CartContext);
   const { favItems } = useContext(FavContext);
 
-  const hasCart = cart?.length !== 0;
-  const hasFavs = favItems?.length !== 0;
+  const hasCart = cart.length !== 0;
+  const hasFavs = favItems.length !== 0;
   const isNotOnCartPage = pathname !== '/cart';
 
   return (

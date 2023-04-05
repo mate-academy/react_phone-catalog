@@ -1,6 +1,10 @@
 import { createContext, useState } from 'react';
 import { Product } from '../../types/Product';
 
+type FavContextProviderProps = {
+  children: React.ReactNode,
+};
+
 type FavContextType = {
   favItems: Product[],
   addToFav: (product: Product) => void,
@@ -13,7 +17,7 @@ export const FavContext = createContext<FavContextType>({
   removeFromFav() {},
 });
 
-export const FavContextProvider: React.FC = ({
+export const FavContextProvider: React.FC<FavContextProviderProps> = ({
   children,
 }) => {
   const [favItems, setFavItems] = useState<Product[]>([]);

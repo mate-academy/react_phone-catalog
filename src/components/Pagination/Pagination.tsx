@@ -45,7 +45,7 @@ export const Pagination: React.FC<PaginationProps> = ({
             >
               <SearchLink
                 data-cy="paginationLeft"
-                className={cn('pagination__slide-btn', 'icon__btn', {
+                className={cn('pagination__slide-btn', 'icon--btn', {
                   'pagination__slide-btn--disabled': isPageFirst,
                 })}
                 type="button"
@@ -62,7 +62,7 @@ export const Pagination: React.FC<PaginationProps> = ({
               return (
                 <li key={pageItem}>
                   <SearchLink
-                    className={cn('pagination__page-btn', 'icon__btn', {
+                    className={cn('pagination__page-btn', 'icon--btn', {
                       'pagination__page-btn-selected': pageItem === currentPage,
                     })}
                     params={{ page: `${pageItem}` }}
@@ -79,7 +79,7 @@ export const Pagination: React.FC<PaginationProps> = ({
             >
               <SearchLink
                 data-cy="paginationRight"
-                className={cn('pagination__slide-btn', 'icon__btn', {
+                className={cn('pagination__slide-btn', 'icon--btn', {
                   'pagination__slide-btn--disabled': isPageLast,
                 })}
                 params={{ page: `${prevPage}` }}

@@ -20,9 +20,9 @@ export const CartButton: React.FC<CartButtonProps> = ({
     .find(cartItem => cartItem.product.id === product.id);
 
   const handleCartToggle = () => {
-    if (isInCart && product) {
+    if (isInCart) {
       removeFromCart(product.id);
-    } else if (product) {
+    } else {
       const cartItem = createCartItem(product);
 
       addToCart(cartItem);
