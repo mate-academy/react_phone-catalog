@@ -1,0 +1,40 @@
+// @import '../../Helpers.scss';
+@import '../../Helpers/Helpers.scss';
+
+.header {
+  padding-left: 20px;
+  border-bottom: 1px solid $grey-lite;
+
+  @include tablet() {
+    padding-left: 0px;
+  }
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    gap: 35px ;
+    width: max-content;
+  }
+
+  &__menu {
+    border: 0px;
+    background-color: transparent;
+    cursor: pointer;
+
+    &--icon {
+      display: block;
+      width: 20px;
+      height: 20px;
+  
+      @include tablet() {
+        display: none;
+      }
+    }
+  }
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
