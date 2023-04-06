@@ -36,7 +36,7 @@ export const ProductsList: React.FC<Props> = ({ phonesList }) => {
       case 'price':
         sortedList.sort((a: ProductItem, b: ProductItem) => (
           (a.price - ((a.price / 100) * a.discount))
-            - (b.price - ((b.price / 100) * b.discount))
+          - (b.price - ((b.price / 100) * b.discount))
         ));
         break;
       case 'name':
@@ -50,7 +50,7 @@ export const ProductsList: React.FC<Props> = ({ phonesList }) => {
           a.age - b.age
         ));
     }
- }, [sortBy,sortedList])
+  }, [sortBy, sortedList]);
 
   if (query) {
     sortedList = sortedList.filter((item) => {
@@ -161,7 +161,7 @@ export const ProductsList: React.FC<Props> = ({ phonesList }) => {
         </p>
       )}
 
-{totalItemsCount > perPage.value && (
+      {totalItemsCount > perPage.value && (
         <Pagination
           total={totalItemsCount}
           perPage={perPage.value}

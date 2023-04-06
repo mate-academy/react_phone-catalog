@@ -1,6 +1,6 @@
 /* eslint-disable  @typescript-eslint/no-explicit-any */
-import React, { useState, useEffect} from 'react';
-import { Link, useParams, useNavigate} from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import classNames from 'classnames';
 import { getProductItem } from '../../api/api';
 import { ProductInfo } from '../../types/ProductInfo';
@@ -26,32 +26,32 @@ export const ProductDetails: React.FC = () => {
 
   const isProduct = () => {
     const areProducts = [...products];
-    const isResult = areProducts.some((item: ProductItem) => item.id === productId);
+    const isResult = areProducts.some(
+
+      (item: ProductItem) => item.id === productId,
+    );
+
     return isResult;
   };
 
   const navigate = useNavigate();
+
   useEffect(() => {
-    console.log(productId);
-    if (!isProduct()){
-        navigate("/404", { replace: true });
-          }
-      }
-  , [productId, navigate]);
+    if (!isProduct()) {
+      navigate('/404', { replace: true });
+    }
+  }, [productId, navigate]);
 
   useEffect(() => {
     if (productId) {
       getProductItem(productId).then((data) => {
-          setProductDetails(data);
-          setCurrentColor(data.images[0].colorName);
-          setCurrentImage(data.images[0].src[0]);
-          setCapacity(data.storage.capacity);
-
-        }
-      );
+        setProductDetails(data);
+        setCurrentColor(data.images[0].colorName);
+        setCurrentImage(data.images[0].src[0]);
+        setCapacity(data.storage.capacity);
+      });
     }
-    }
-  , [productId]);
+  }, [productId]);
 
   useEffect(() => {
     setCurrentImage(

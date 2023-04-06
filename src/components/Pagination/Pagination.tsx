@@ -1,5 +1,5 @@
 /* eslint-disable  @typescript-eslint/no-explicit-any */
-import React, {useMemo} from 'react';
+import React, { useMemo } from 'react';
 import ClassNames from 'classnames';
 import { nanoid } from 'nanoid';
 import { paginationView } from '../../functions/paginationView';
@@ -24,11 +24,9 @@ export const Pagination: React.FC<Props> = ({
   nextPage,
   prevPage,
 }) => {
-
   const maxPage = Math.ceil(total / perPage);
   const prevActive = useMemo(() => page !== 1, [page]);
   const nextActive = useMemo(() => page !== maxPage, [page, maxPage]);
-
 
   const prevPageHandler = () => {
     if (page - 1 > 0) {

@@ -16,8 +16,8 @@ export const Tablets: React.FC = () => {
     getTablets()
       .then(data => {
         setTabletsList(data);
-          setIsLoaded(true);
-  });
+        setIsLoaded(true);
+      });
   }, []);
 
   const content = () => {

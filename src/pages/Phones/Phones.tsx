@@ -19,7 +19,6 @@ export const Phones: React.FC = () => {
         setPhonesList(data);
         setIsLoaded(true);
       });
-
   }, []);
 
   const getContent = () => {

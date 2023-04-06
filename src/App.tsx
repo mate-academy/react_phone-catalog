@@ -1,4 +1,4 @@
-import { Routes, Route,Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
@@ -21,7 +21,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<HomePage />} />
 
-          <Route path="/phones" >
+          <Route path="/phones">
             <Route index element={<Phones />} />
             <Route path=":productId" element={<ProductDetails />} />
           </Route>
@@ -31,7 +31,7 @@ const App = () => {
             <Route path=":productId" element={<ProductDetails />} />
           </Route>
 
-          <Route path="/accessories" >
+          <Route path="/accessories">
             <Route index element={<Accessories />} />
             <Route path=":productId" element={<ProductDetails />} />
           </Route>
