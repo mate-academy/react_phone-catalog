@@ -1,1 +1,75 @@
-// not empty
+@import "./variables/variables.scss";
+
+iframe {
+  display: none !important;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.App {
+  min-height: 100vh;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: $MontRegular;
+}
+
+main {
+  flex: 1 0 auto;
+  position: relative;
+}
+
+.footer {
+  flex: 0 0 auto;
+}
+
+h1 {
+  font-size: 32px;
+  line-height: 41px;
+  font-family: $MontBold;
+  color: $gray-primary;
+}
+
+h2 {
+  font-size: 22px;
+  line-height: 31px;
+  font-family: $MontBold;
+  color: $gray-primary;
+}
+
+h3 {
+  font-size: 20px;
+  line-height: 26px;
+  font-family: $MontSemiBold;
+  color: $gray-primary;
+}
+
+@font-face {
+  font-family: $MontRegular;
+  src: local($MontRegular),
+    url("./fonts/Mont-Regular.otf");
+}
+
+@font-face {
+  font-family: $MontSemiBold;
+  src: local($MontSemiBold),
+    url("./fonts/Mont-SemiBold.otf");
+}
+
+@font-face {
+  font-family: $MontBold;
+  src: local($MontBold),
+    url("./fonts/Mont-Bold.otf");
+}
+
+.container {
+  width: 1136px;
+  margin: 0 auto;
+}

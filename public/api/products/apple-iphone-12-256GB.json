@@ -1,0 +1,88 @@
+{
+  "id": "apple-iphone-12-256GB",
+  "images": [
+    {
+      "colorName": "Black",
+      "colorId": "#000",
+      "src": [
+        "https://content1.rozetka.com.ua/goods/images/big/30873013.jpg",
+        "https://content2.rozetka.com.ua/goods/images/big/30872906.jpg",
+        "https://content.rozetka.com.ua/goods/images/big/30872934.jpg"
+      ]
+    },
+    {
+      "colorName": "White",
+      "colorId": "#fff",
+      "src": [
+        "https://content1.rozetka.com.ua/goods/images/big/30872967.jpg",
+        "https://content.rozetka.com.ua/goods/images/big/30872853.jpg",
+        "https://content2.rozetka.com.ua/goods/images/big/30872896.jpg"
+      ]
+    },
+    {
+      "colorName": "Light purple",
+      "colorId": "#D1CDDA",
+      "src": [
+        "https://content.rozetka.com.ua/goods/images/big/173867780.jpg",
+        "https://content1.rozetka.com.ua/goods/images/big/173867781.jpg",
+        "https://content1.rozetka.com.ua/goods/images/big/173867782.jpg"
+      ]
+    }
+  ],
+  "name": "Apple Iphone 12 256 GB",
+  "storage": {
+    "capacity": "256GB",
+    "availableCapacity": [
+      {
+        "name": "64GB",
+        "link": "apple-iphone-12-64GB"
+      },
+      {
+        "name": "128GB",
+        "link": "apple-iphone-12-128GB"
+      },
+      {
+        "name": "256GB",
+        "link": "apple-iphone-12-256GB"
+      }
+    ],
+    "ram": "12 GB"
+  },
+  "price": 799,
+  "discount": 3,
+  "type": "phone",
+  "additionalFeatures": "Front Facing 1.3MP Camera",
+  "android": {
+    "os": "Android 12"
+  },
+  "availability": ["Rozetka"],
+  "battery": {
+    "standbyTime": "",
+    "talkTime": "",
+    "type": "Lithium Ion (Li-Ion) (2780 mAH)"
+  },
+  "camera": {
+    "features": ["Flash", "Video"],
+    "primary": "108mp + 12mp + 10mp + 10mp"
+  },
+  "connectivity": {
+    "cell": "3G / LTE / 5G / GPS / 2 SIM",
+    "gps": true,
+    "infrared": false,
+    "wifi": "802.11 b/g"
+  },
+  "description": "Meet the Galaxy S22 Ultra with Note capabilities. A sleek polished bezel encircles the case with a raised surface for a symmetrical elegance. And the camera block drawn in a line, accented by the same rings of lenses, seems to be hovering over the back cover.",
+  "display": {
+    "screenResolution": "Dynamic AMOLED 2X, 3088x1440",
+    "screenSize": "6.8 inches",
+    "touchScreen": true
+  },
+  "hardware": {
+    "accelerometer": true,
+    "audioJack": "3.5mm",
+    "cpu": "nVidia Tegra T20",
+    "fmRadio": false,
+    "physicalKeyboard": false,
+    "usb": "USB 2.0"
+  }
+}

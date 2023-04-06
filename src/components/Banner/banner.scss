@@ -1,0 +1,79 @@
+@import "../../variables/variables.scss";
+
+.banner {
+  margin-bottom: 82px;
+  .slick-list {
+    margin: 0 48px;
+  }
+
+  .slick-slide {
+    height: 400px;
+    & > div {
+      height: 400px;
+    }
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+  .slick-dots {
+    height: 4px;
+    bottom: -22px;
+    li {
+      width: 14px;
+      height: 4px;
+      margin: 0 7px;
+      padding: 0;
+      background: $gray-element;
+      button {
+        width: 14px;
+        height: 4px;
+        padding: 0;
+        &::before {
+          width: 14px;
+          height: 4px;
+          padding: 0;
+          font-size: 0;
+          position: static;
+        }
+      }
+    }
+    .slick-active {
+      background: $gray-primary;
+    }
+  }
+
+  .slick-slider {
+    .next-arrow {
+      position: absolute;
+      width: 32px;
+      height: 100%;
+      border: 1px solid $gray-icons;
+      top: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: $white;
+      cursor: pointer;
+    }
+
+    .prev-arrow {
+      position: absolute;
+      width: 32px;
+      height: 100%;
+      border: 1px solid $gray-icons;
+      top: 0;
+      left: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: $white;
+      cursor: pointer;
+      svg {
+        transform: rotate(180deg);
+      }
+    }
+  }
+}

@@ -1,0 +1,218 @@
+@import "../../variables/variables.scss";
+
+.gallary {
+  display: flex;
+  align-items: center;
+  &__thumbs {
+    display: flex;
+    flex-direction: column;
+  }
+  &__thumbItem {
+    width: 80px;
+    height: 80px;
+    padding: 7px;
+    border: 1px solid $gray-element;
+    background: transparent;
+    cursor: pointer;
+    &_active {
+      border: 1px solid $gray-primary;
+    }
+    &:not(:last-child) {
+      margin-bottom: 16px;
+    }
+    img {
+      width: auto;
+      height: auto;
+      object-fit: cover;
+      margin: 0 auto;
+      display: block;
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }
+  &__image {
+    margin-left: 26px;
+    height: 442px;
+    width: 442px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+      width: auto;
+      height: auto;
+      object-fit: cover;
+      margin: 0 auto;
+      display: block;
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }
+}
+
+.product {
+  padding-bottom: 80px;
+  &__block {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 64px;
+  }
+  &__content {
+    margin-bottom: 80px;
+  }
+  &__bottom {
+    margin-top: 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 64px;
+  }
+  &__subtitle {
+    font-size: 22px;
+    line-height: 30px;
+    font-family: $MontBold;
+    color: $gray-primary;
+    padding-bottom: 16px;
+    width: 100%;
+    border-bottom: 1px solid $gray-element;
+    margin-bottom: 32px;
+  }
+  &__descr {
+    font-size: 14px;
+    line-height: 21px;
+    color: $gray-secondary;
+  }
+}
+
+.product-options {
+  width: 320px;
+  margin-top: auto;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  &__buttons {
+    margin-bottom: 32px;
+    display: flex;
+  }
+  &__price {
+    color: $gray-primary;
+    font-size: 32px;
+    line-height: 40px;
+    margin-bottom: 16px;
+    font-family: $MontBold;
+    display: flex;
+    align-items: center;
+    padding-top: 24px;
+    span {
+      color: $gray-secondary;
+      text-decoration: line-through;
+      font-size: 22px;
+      line-height: 28px;
+      margin-left: 10px;
+      font-family: $MontRegular;
+    }
+  }
+}
+
+.product-colors {
+  padding-bottom: 24px;
+  border-bottom: 1px solid $gray-element;
+  span {
+    color: $gray-secondary;
+    font-size: 14px;
+    line-height: 15px;
+    margin-bottom: 10px;
+    display: block;
+  }
+  &__block {
+    display: flex;
+    gap: 0 10px;
+  }
+  &__item {
+    width: 36px;
+    height: 36px;
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.4s;
+    &:hover {
+      border: 2px solid #000;
+    }
+    &_active {
+      border: 2px solid #000;
+    }
+    .circle {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+    }
+  }
+}
+
+.product-memory {
+  padding-top: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid $gray-element;
+  span {
+    color: $gray-secondary;
+    font-size: 14px;
+    line-height: 15px;
+    margin-bottom: 10px;
+    display: block;
+  }
+  &__block {
+    display: flex;
+    gap: 0 10px;
+  }
+  &__item {
+    border: 1px solid $gray-secondary;
+    padding: 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.4s;
+    background: #fff;
+    a {
+      color: $gray-primary;
+      text-decoration: none;
+    }
+    &:hover {
+      border: 1px solid #313237;
+    }
+    &_active {
+      background: #313237;
+      border: 1px solid #313237;
+      color: $white;
+      a {
+        color: $white;
+      }
+    }
+  }
+}
+
+.tech-specs {
+  &__block {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px 0;
+  }
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    span {
+      color: $gray-secondary;
+      font-size: 12px;
+      line-height: 15px;
+    }
+    p {
+      color: $gray-primary;
+      font-size: 12px;
+      line-height: 15px;
+      max-width: 50%;
+      text-align: right;
+    }
+  }
+}

@@ -1,0 +1,46 @@
+@import "../../variables/variables.scss";
+
+.products-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px 16px;
+  &__not-found {
+    font-size: 20px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  &__count {
+    font-size: 14px;
+    line-height: 21px;
+    color: $gray-secondary;
+    margin-bottom: 40px;
+  }
+}
+
+.products-nav {
+  display: flex;
+  margin-bottom: 24px;
+  &__item {
+    display: flex;
+    flex-direction: column;
+    &_sort {
+      width: 176px;
+      margin-right: 16px;
+    }
+    &_pagination {
+      width: 128px;
+    }
+    span {
+      color: $gray-secondary;
+      margin-bottom: 4px;
+      font-size: 12px;
+      line-height: 15px;
+    }
+  }
+
+  .css-1okebmr-indicatorSeparator {
+    display: none;
+  }
+}
