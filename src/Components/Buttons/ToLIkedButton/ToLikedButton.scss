@@ -1,0 +1,16 @@
+@import '../../../Helpers/Helpers.scss';
+
+.liked {
+    font-size: 12px;
+    background-color: #fff;
+
+  &--add {
+    line-height: 10px;
+    background-color: #fff;
+    border: 1px solid $grey-medium;
+  }
+
+//   &--added {
+
+//   }
+}
