@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import './style.scss';
 
 export const Footer: React.FC = () => {
@@ -12,9 +13,9 @@ export const Footer: React.FC = () => {
     <footer className="footer App__footer">
       <div className="container">
         <div className="footer__inner">
-          <a href="/">
+          <Link to="/">
             <img src="img/header-img/LOGO.png" alt="logo" />
-          </a>
+          </Link>
           <ul className="footer__info nav">
             <li className="nav__item footer__info-item">
               <a
