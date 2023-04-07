@@ -134,18 +134,9 @@
 
   &__add {
     @include add-button(40px, 176px, 33px, 118px);
-
-    &--selected {
-      color: #27AE60;
-      background-color: $white;
-    }
   }
 
   &__favourite {
     @include favorite-button(40px, 33px);
-
-    &--selected {
-      background-image: url('../images/buttons/Favourites\ Filled\ \(Heart\ Like\).svg');
-    }
   }
 }

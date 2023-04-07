@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { BackButton } from '../components/BackButton';
 import { CartItem } from '../components/CartItem';
-import { useLocalstorage } from '../utils/cartApi';
+import { useLocalstorage } from '../hooks/useLocalstorage';
 
 export const CartPage: React.FC = () => {
   const [cartList, setCartList] = useLocalstorage('cartList', []);

@@ -2,8 +2,8 @@ import { Details } from '../types/Details';
 import { Phone } from '../types/Phone';
 import { ColorsDetails } from './ColorsDetails';
 import { CapacityDetails } from './CapacityDetails';
+import { useLocalstorage } from '../hooks/useLocalstorage';
 import {
-  useLocalstorage,
   addOneCart,
   cart,
 } from '../utils/cartApi';

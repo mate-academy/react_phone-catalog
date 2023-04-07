@@ -1,9 +1,10 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
-import React from 'react';
+import classNames from 'classnames';
+import React, { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { Phone } from '../types/Phone';
+import { useLocalstorage } from '../hooks/useLocalstorage';
 import {
-  useLocalstorage,
   addOneCart,
   path,
   cart,
@@ -22,6 +23,10 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
 
     setCartList(addOneCart(cartList, cart(phone)));
   };
+
+  const isSelected = useMemo(() => {
+    return cartList.some(item => item.id === phone.id);
+  }, [cartList]);
 
   return (
     <Link
@@ -68,11 +73,14 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
         </div>
         <div className="card-button">
           <button
-            className="card-button__add"
+            className={classNames(
+              'card-button__add',
+              { 'card-button__add--selected': isSelected },
+            )}
             type="button"
             onClick={(event) => handleClick(event)}
           >
-            Add to cart
+            { isSelected ? 'Added to cart' : 'Add to cart'}
           </button>
           <button
             className="card-button__favourite"
