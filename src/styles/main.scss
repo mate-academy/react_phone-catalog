@@ -43,6 +43,14 @@ ul {
   padding: 0;
 }
 
+a {
+  text-decoration: none;
+
+  &:active {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
 p {
   margin: 0;
 }
@@ -84,7 +92,7 @@ p {
 @import "./product-card.scss";
 @import "./product-slider.scss";
 @import "./category-shop.scss";
-@import "./location.scss";
+@import "./breadcrumbs.scss";
 @import "./phones-page.scss";
 @import "./slider-button.scss";
 @import "./select.scss";
@@ -93,3 +101,4 @@ p {
 @import "./product-details-page.scss";
 @import "./color-details.scss";
 @import "./capacity-details.scss";
+@import "./cart-page.scss";

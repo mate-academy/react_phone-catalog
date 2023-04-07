@@ -6,7 +6,7 @@ import {
   currentItems,
 } from '../utils/paginationUtils';
 import { getPhonesList } from '../api';
-import { Location } from '../components/Location';
+import { Breadcrumbs } from '../components/Breadcrumbs';
 import { ProductsList } from '../components/ProductsList';
 import { Pagination } from '../components/Pagination';
 import { Select } from '../components/Select';
@@ -46,14 +46,14 @@ export const PhonesPage: React.FC = () => {
 
   const currentList = useMemo(() => {
     return currentItems(sortedList, +currentPage, perPage);
-  }, [perPage, currentPage, phones]);
+  }, [perPage, sortBy, currentPage, phones]);
 
   return !phones.length
     ? <Loader />
     : (
       <div className="phones-page">
         <div className="phones-page__info-block">
-          <Location phones={phones} />
+          <Breadcrumbs phones={phones} />
           <div className="phone-page-title">
             <p className="phone-page-title__name">Mobile phones</p>
             <div className="phone-page-title__models-count">{`${phones.length} models`}</div>

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { getPhonesList } from '../api';
-import { Location } from '../components/Location';
+import { Breadcrumbs } from '../components/Breadcrumbs';
 import { Loader } from '../components/Loader';
 import { BackButton } from '../components/BackButton';
 import { DetailsProductGallery } from '../components/DetailsProductGallery';
@@ -11,6 +11,8 @@ import { Phone } from '../types/Phone';
 import { Details } from '../types/Details';
 import { DetailsProductAbout } from '../components/DetailsProductAbout';
 import { DetailsProductSpecs } from '../components/DetailsProductSpecs';
+import { ProductSlider } from '../components/ProductsSlider';
+import { randomSequence } from '../utils/detailsUtils';
 
 export const ProductDetailsPage: React.FC = () => {
   const [phones, setPhones] = useState<Phone[]>([]);
@@ -48,7 +50,7 @@ export const ProductDetailsPage: React.FC = () => {
     ? <Loader />
     : (
       <div className="product-details-page">
-        <Location phones={phones} />
+        <Breadcrumbs phones={phones} />
         <BackButton />
         <h1 className="product-details-page__title">
           {productName}
@@ -63,6 +65,10 @@ export const ProductDetailsPage: React.FC = () => {
           <DetailsProductAbout description={details.description} />
           <DetailsProductSpecs details={details} />
         </div>
+        <ProductSlider
+          title="You may also like"
+          phones={randomSequence(phones)}
+        />
       </div>
     );
 };

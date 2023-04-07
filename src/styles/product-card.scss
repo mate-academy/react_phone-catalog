@@ -9,10 +9,6 @@
   border: 1px solid $element;
   text-decoration: none;
 
-  &:active {
-    -webkit-tap-highlight-color: transparent;
-  }
-
   @include onTablet {
     width: 218px;
     height: 458px;
@@ -31,32 +27,21 @@
   }
 
   &__title {
-    display: flex;
-    align-items: center;
     @extend .body_text;
     width: 100%;
-    padding-bottom: 8px;
     color: $primary;
-
-    @include onTablet {
-      padding-bottom: 4px;
-    }
   }
 
   &__details {
     display: flex;
     flex-direction: column;
-    padding-bottom: 16px;
-
-    @include onTablet {
-      padding-bottom: 10px;
-    }
   }
 }
 
 .product-info-wrapper {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 48px 52px 77px 1fr;
   width: 224px;
 
   @include onTablet {
@@ -75,11 +60,9 @@
   display: flex;
   justify-content: left;
   gap: 8px;
-  padding-bottom: 23px;
 
   @include onTablet {
     gap: 5px;
-    padding-bottom: 18px;
   }
 
   &::after {
@@ -152,17 +135,17 @@
   &__add {
     @include add-button(40px, 176px, 33px, 118px);
 
-    // &--selected {
-    //   color: #27AE60;
-    //   background-color: $white;
-    // }
+    &--selected {
+      color: #27AE60;
+      background-color: $white;
+    }
   }
 
   &__favourite {
     @include favorite-button(40px, 33px);
 
-    // &--selected {
-    //   background-image: url('../images/buttons/Favourites\ Filled\ \(Heart\ Like\).svg');
-    // }
+    &--selected {
+      background-image: url('../images/buttons/Favourites\ Filled\ \(Heart\ Like\).svg');
+    }
   }
 }

@@ -12,6 +12,8 @@ export const Pagination: React.FC<Props> = ({
   currentPage,
 }) => {
   const [searchParams] = useSearchParams();
+  const start = 1;
+  const end = total[total.length - 1];
 
   const searchPath = (num: number) => {
     return {
@@ -35,7 +37,10 @@ export const Pagination: React.FC<Props> = ({
     <div className="phones-page__pages" data-cy="pagination">
       <Link
         data-cy="paginationLeft"
-        className="slider-button__left"
+        className={classNames(
+          'slider-button__left',
+          { 'slider-button__left--disabled': currentPage === start },
+        )}
         to={stepBck()}
       />
       <ul className="pagination-block">
@@ -57,7 +62,10 @@ export const Pagination: React.FC<Props> = ({
       </ul>
       <Link
         data-cy="paginationRight"
-        className="slider-button__right"
+        className={classNames(
+          'slider-button__right',
+          { 'slider-button__right--disabled': currentPage === end },
+        )}
         to={stepFwd()}
       />
     </div>

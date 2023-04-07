@@ -17,6 +17,11 @@
   height: 32px;
   text-decoration: none;
 
+  @include onTablet {
+    width: 50px;
+    height: 28px;
+  }
+
   &:active {
     -webkit-tap-highlight-color: transparent;
   }

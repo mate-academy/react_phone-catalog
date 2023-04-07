@@ -14,7 +14,7 @@
     }
 
     &--disabled {
-      @extend %directButton;
+      pointer-events: none;
       background-image: url('../images/buttons/Left_disabled.svg');
     }
   }
@@ -28,7 +28,7 @@
     }
 
     &--disabled {
-      @extend %directButton;
+      pointer-events: none;
       background-image: url('../images/buttons/Right_disabled.svg');
     }
   }

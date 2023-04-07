@@ -22,8 +22,8 @@
   border: 1px solid $element;
 
   @include onTablet {
-    width: 58px;
-    height: 58px;
+    width: 43px;
+    height: 43px;
   }
 }
 
@@ -32,8 +32,8 @@
   height: 464px;
 
   @include onTablet {
-    width: 364px;
-    height: 364px;
+    width: 367px;
+    height: 367px;
   }
 }
 
@@ -54,4 +54,12 @@
 %underline {
   width: 100%;
   border-bottom: 1px solid $element;
+}
+
+%defaultButtonDisable {
+  background: transparent;
+  border: none;
+  text-decoration: none;
+  font-family: inherit;
+  padding: 0;
 }

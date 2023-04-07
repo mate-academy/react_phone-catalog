@@ -5,6 +5,7 @@ import { HomePage } from './pages/HomePage';
 import { Footer } from './components/Footer';
 import { PhonesPage } from './pages/PhonesPage';
 import { ProductDetailsPage } from './pages/ProductDetailsPage';
+import { CartPage } from './pages/CartPage';
 
 // const App = () => {
 //   return (
@@ -34,6 +35,7 @@ const App = () => {
         <Route path="/" element={<HomePage />} />
         <Route path="/phones" element={<PhonesPage />} />
         <Route path="/phones/:productId" element={<ProductDetailsPage />} />
+        <Route path="/Cart" element={<CartPage />} />
         <Route
           path="*"
           element={<h1 className="title">Page not found</h1>}

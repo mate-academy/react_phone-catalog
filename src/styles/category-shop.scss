@@ -34,10 +34,12 @@
   &__picture {
     width: 368px;
     height: 368px;
+    margin-bottom: 24px;
 
     @include onTablet {
       width: 220px;
       height: 220px;
+      margin-bottom: 15px;
     }
 
     &--gray-white {

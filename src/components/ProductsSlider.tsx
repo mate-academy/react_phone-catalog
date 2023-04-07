@@ -5,21 +5,37 @@ import classNames from 'classnames';
 import { ProductCard } from './ProductCard';
 import { Phone } from '../types/Phone';
 import { SliderSizes } from '../types/SliderSizes';
+import { CategoryWidth } from '../types/CategoryWidth';
+import { useWindowWidth } from '../hooks/useWindowWidth';
 
 type Props = {
   title: string;
   phones: Phone[];
-  width: SliderSizes;
 };
 
 export const ProductSlider: React.FC<Props> = ({
   phones,
   title,
-  width,
 }) => {
+  const windowWidth = useWindowWidth();
   const [position, setPosition] = useState(0);
   const [areButtonsDisabled, setAreButtonsDisabled] = useState(false);
   const start = 0;
+
+  const width: SliderSizes = useMemo(() => {
+    return windowWidth < CategoryWidth.desc
+      ? {
+        element: 220,
+        interval: 10,
+        items: 3,
+      }
+      : {
+        element: 272,
+        interval: 16,
+        items: 4,
+      };
+  }, [windowWidth]);
+
   const end = width.items - phones.length;
   const step = width.element + width.interval;
 
@@ -41,7 +57,10 @@ export const ProductSlider: React.FC<Props> = ({
   }, [position]);
 
   const moveFwd = () => {
-    setAreButtonsDisabled(true);
+    if (position !== end) {
+      setAreButtonsDisabled(true);
+    }
+
     if (position - width.items <= end) {
       setPosition(end);
     } else {
@@ -50,7 +69,10 @@ export const ProductSlider: React.FC<Props> = ({
   };
 
   const moveBck = () => {
-    setAreButtonsDisabled(true);
+    if (position !== start) {
+      setAreButtonsDisabled(true);
+    }
+
     if (position + width.items > start) {
       setPosition(start);
     } else {
@@ -67,7 +89,7 @@ export const ProductSlider: React.FC<Props> = ({
         <div className="slider-button">
           <button
             className={classNames(
-              { 'slider-button__left': !isBckDisabled },
+              'slider-button__left',
               { 'slider-button__left--disabled': isBckDisabled },
             )}
             type="button"
@@ -76,7 +98,7 @@ export const ProductSlider: React.FC<Props> = ({
           />
           <button
             className={classNames(
-              { 'slider-button__right': !isFwdDisabled },
+              'slider-button__right',
               { 'slider-button__right--disabled': isFwdDisabled },
             )}
             type="button"

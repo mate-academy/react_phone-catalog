@@ -8,7 +8,7 @@ export const background = (color: keyof typeof Color): any => {
   };
 };
 
-const capitalize
+export const capitalize
 = (word: string): string => word.charAt(0).toUpperCase() + word.slice(1);
 
 export const phoneByColor = (
@@ -50,4 +50,23 @@ export const phoneByCapacity = (
   = phones.find(phone => phone.name === fullName);
 
   return phoneWithNewCapacity?.id;
+};
+
+export const randomSequence = <A>(someArr: A[]): A[] => {
+  const indexNum = someArr.length;
+  const indexArr: number[] = [];
+
+  function getRandomInt(max: number) {
+    return Math.floor(Math.random() * max);
+  }
+
+  do {
+    const generated = getRandomInt(indexNum);
+
+    if (!indexArr.includes(generated)) {
+      indexArr.push(generated);
+    }
+  } while (indexArr.length < indexNum);
+
+  return indexArr.map(index => someArr[index]);
 };

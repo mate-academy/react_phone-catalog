@@ -2,15 +2,26 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Phone } from '../types/Phone';
-
-export const path = process.env.PUBLIC_URL;
+import {
+  useLocalstorage,
+  addOneCart,
+  path,
+  cart,
+} from '../utils/cartApi';
 
 type Props = {
   phone: Phone;
 };
 
 export const ProductCard: React.FC<Props> = ({ phone }) => {
+  const [cartList, setCartList] = useLocalstorage('cartList', []);
   const imagePath = `${path}_new/${phone.image}`;
+
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+
+    setCartList(addOneCart(cartList, cart(phone)));
+  };
 
   return (
     <Link
@@ -59,7 +70,7 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
           <button
             className="card-button__add"
             type="button"
-            onClick={(event) => event.preventDefault()}
+            onClick={(event) => handleClick(event)}
           >
             Add to cart
           </button>

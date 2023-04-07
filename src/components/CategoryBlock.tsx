@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import { HeaderLink } from './HeaderLink';
+import { Link } from 'react-router-dom';
 import { CategoryApi } from '../types/CategoryApi';
 
 type Props = {
@@ -24,11 +24,12 @@ export const CategoryBlock: React.FC<Props> = ({ categoryApi }) => {
               { 'category-block__picture--purple': index === 2 },
             )}
           />
-          <HeaderLink
+          <Link
             to={`/${category.name}`}
-            text={category.title}
             className="category-block__title"
-          />
+          >
+            {category.title}
+          </Link>
           <div className="category-block__info">
             {category.number}
           </div>

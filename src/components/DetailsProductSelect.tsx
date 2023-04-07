@@ -2,6 +2,11 @@ import { Details } from '../types/Details';
 import { Phone } from '../types/Phone';
 import { ColorsDetails } from './ColorsDetails';
 import { CapacityDetails } from './CapacityDetails';
+import {
+  useLocalstorage,
+  addOneCart,
+  cart,
+} from '../utils/cartApi';
 
 type Props = {
   details: Details,
@@ -16,6 +21,13 @@ export const DetailsProductSelect: React.FC<Props> = ({
 }) => {
   const colors = details.colorsAvailable;
   const capacities = details.capacityAvailable;
+  const [cartList, setCartList] = useLocalstorage('cartList', []);
+
+  const handleClick = () => {
+    if (currentPhone !== undefined) {
+      setCartList(addOneCart(cartList, cart(currentPhone)));
+    }
+  };
 
   return (
     <div className="details-select-container">
@@ -42,9 +54,13 @@ export const DetailsProductSelect: React.FC<Props> = ({
         )}
       </div>
       <div className="details-button">
-        <div className="details-button__add">
+        <button
+          className="details-button__add"
+          type="button"
+          onClick={() => handleClick()}
+        >
           Add to cart
-        </div>
+        </button>
         <div className="details-button__favourite" />
       </div>
       <div className="info-block">

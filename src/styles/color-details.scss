@@ -11,6 +11,11 @@
     margin-bottom: 24px;
     padding: 3px;
     list-style: none;
+
+    @include onTablet {
+      gap: 10px;
+      margin-bottom: 18px;
+    }
   }
 }
 

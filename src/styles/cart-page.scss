@@ -1,0 +1,146 @@
+.cart-page {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  margin: 0 152px 0 152px;
+  width: $sectionWidth;
+  min-height: 100vh;
+
+  @include onTablet {
+    margin: 0 82px 0 82x;
+    width: $sectionTabletWidth;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: start;
+    gap: 16px;
+    color: $primary;
+    margin-bottom: 24px;
+  }
+}
+
+.cart-page-container {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  margin-bottom: 87px;
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    list-style: none;
+  }
+}
+
+.cart-block {
+  display: grid;
+  grid-template-columns: 37px 104px 344px 139px 1fr;
+  grid-template-rows: 1fr;
+  padding-left: 27px;
+  padding-right: 40px;
+  border: 1px solid $element;
+  width: 683px;
+  height: 126px;
+
+  & > * {
+    align-self: center;
+  }
+
+  &__cross {
+    @extend %defaultButtonDisable;
+    width: 9px;
+    height: 9px;
+    background-image: url('../images/buttons/Close.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &__image {
+    object-fit: contain;
+    width: 66px;
+    height: 66px;
+  }
+
+  &__model {
+    @extend .body_text;
+    color: $primary;
+  }
+
+  &__price{
+    color: $primary;
+  }
+}
+
+.cart-select {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 96px;
+
+  &__number {
+    @extend .body_text;
+    color: #000;
+  }
+
+  &__minus {
+    @extend %defaultButtonDisable;
+    width: 32px;
+    height: 32px;
+    border: 1px solid $icons;
+    background-image: url('../images/buttons/minus.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+
+    :hover {
+      border: 1px solid $primary;
+    }
+
+    &--disabled {
+      background-image: url('../images/buttons/minus_disabled.svg');
+      border: 1px solid $element;
+    }
+  }
+
+  &__plus {
+    @extend .cart-select__minus;
+    background-image: url('../images/buttons/Plus.svg');
+
+    &--disabled {
+      background-image: url('..//images/buttons/Plus__disabled.svg');
+      border: 1px solid $element;
+    }
+  }
+}
+
+.cart-total {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px;
+  width: 318px;
+  height: 156px;
+  border: 1px solid $element;
+
+  &__price {
+    color: $primary;
+  }
+
+  &__value {
+    color: $secondary;
+    margin-bottom: 24px;
+  }
+
+  &__line {
+    border-bottom: 1px solid $element;
+    width: 100%;
+  }
+
+  &__button {
+    @include add-button(48px, 100%, 38px, 100%);
+  }
+}

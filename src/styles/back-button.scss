@@ -1,4 +1,5 @@
 .back-button {
+  @extend %defaultButtonDisable;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -7,6 +8,15 @@
   gap: 9px;
   width: 47px;
   margin-bottom: 16px;
+
+  // outline: none;
+  // -webkit-appearance: none;
+  // -moz-appearance: none;
+
+  :active{
+    outline: none;
+    background: transparent;
+  }
 
   &__title {
     @extend .small_text;
