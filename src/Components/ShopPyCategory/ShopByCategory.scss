@@ -1,0 +1,24 @@
+@import '../../Helpers//Helpers.scss';
+
+.shopByCategory {
+ width: min-content;
+  margin: 0 auto;
+  margin-top: 50px;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+    gap: 60px;
+
+    @include tablet() {
+      flex-direction: row;
+      gap: 5px;
+    }
+  }
+
+  &__title {
+    font-size: 14px;
+  }
+}

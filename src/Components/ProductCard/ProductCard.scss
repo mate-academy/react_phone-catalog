@@ -1,0 +1,100 @@
+@import '../../Helpers/Helpers.scss';
+
+.productCard {
+  box-sizing: border-box;
+  padding: 20px;
+  min-width: 200px;
+  max-width: 200px;
+  height: 350px;
+  border: 1px solid #eee;
+  box-sizing: 'border-box';
+
+  &__img {
+    width: 100%;
+    height: 140px;
+    object-fit: contain;
+  }
+
+  &__info {
+    border-bottom: 1px solid $grey-lite;
+  }
+
+  &__name {
+    font-size: 12px;
+    line-height: 15px;
+
+    margin: 5px 0;
+  }
+
+  &__prices {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    &--fullPrice {
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 140%;
+      color: $black;
+    }
+
+    &--sale {
+      font-size: 18px;
+      line-height: 28px;
+      text-decoration-line: line-through;
+      color: $grey-medium;
+    }
+  }
+
+  &__list {
+    padding: 0;
+    margin: 0;
+    margin-top: 5px;
+
+    list-style: none;
+
+    >li {
+      display: flex;
+      justify-content: space-between;
+
+      >span {
+        font-size: 10px;
+        font-weight: 600;
+        color: $black;
+      }
+
+      >span.productCard__list-name {
+        color: $grey-dark;
+      }
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+    margin-top: 5px;
+  }
+
+  &__button {
+    &--order {
+      border: 1px solid transparent;
+      width: 100%;
+      color: $white;
+      background-color: $black;
+      font-size: 12px;
+
+      &-added {
+        border-color: $grey-lite;
+        background-color: $white;
+        color: $green;
+      }
+    }
+
+    &-liked {
+      line-height: 12px;
+      background-color: #fff;
+      border: 1px solid $grey-medium;
+    }
+  }
+}

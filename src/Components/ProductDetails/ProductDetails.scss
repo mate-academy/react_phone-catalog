@@ -1,0 +1,213 @@
+@import '../../Helpers/Helpers.scss';
+
+.productDetails {
+  // margin: 10px auto;
+    margin: 10px;
+
+  &__name {
+    color: $black;
+    margin: 0;
+    font-size: 18px;
+    margin-top: 20px;
+  }
+
+  &__pictures {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: 50px;
+    // justify-content: center;
+    // align-items: center;
+
+    @include tablet() {
+        flex-direction: row;
+    }
+  }
+
+  &__list {
+    padding: 0;
+    list-style: none;
+    width: min-content;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 0;
+
+    // width: 30%;
+    // height: 30%;
+
+
+    // max-width: 55px;
+
+    &--color {
+        width: 20px;
+        height: 20px;
+        border: 1px solid $grey-lite;
+        border-radius: 50%;
+        padding: 2px;
+
+        &--active {
+            border-color: $black;
+        }
+
+
+    }
+
+    &-colors {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        margin: 0;
+        padding: 0;
+        padding-bottom: 15px;
+    }
+
+    &-capacity {
+        display: flex;
+        gap: 15px;
+        margin: 0;
+        padding: 0;
+        padding-bottom: 15px;
+    }
+
+    &-item {
+      padding: 5px;
+      border: 1px solid $grey-lite;
+
+      &--active {
+        border-color: $black;
+      }
+    }
+}
+
+  &__img {
+    width:25px;
+    height: 30px;
+    object-fit: contain;
+
+    @include tablet() {
+        width: 40px;
+        height: 60px;
+    }
+
+    &--active {
+        width: 80%;
+        height: 300px;
+        min-width: 200px;
+       object-fit: contain;
+
+       @include tablet() {
+        width: 250px;
+        height: 400px;
+       }
+    }
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+
+    @include tablet() {
+        flex-direction: column;
+        height: min-content;
+    }
+
+    &-title {
+        font-size: 12px;
+        color: $grey-dark;
+        font-weight: 600;
+        margin-bottom: 5px;
+    }
+  }
+
+  &__colors {
+    border-bottom: 1px solid $grey-medium;
+  }
+
+  &__capacity {
+    border-bottom: 1px solid $grey-medium;
+    &-item {
+        padding: 5px 10px;
+        border: 1px solid $grey-lite;
+        text-decoration: none;
+        color: $black;
+        font-size: 0.9em;
+
+        &--active {
+          background-color: $black;
+          color: white;
+        }
+        
+    }
+  }
+
+  &__prices {
+    display: flex;
+    gap: 10px;
+    margin: 10px 0;
+
+    &--full {
+      color: $black;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    &--sale {
+      color: $grey-medium;
+      text-decoration: line-through;
+      font-size: 14px;
+      font-weight: 600;
+
+    }
+  }
+
+  &__wrapper {
+    margin-top: 40px;
+    width: 100%;
+    // display: flex;
+    gap:20px;
+
+    @include tablet() {
+      display: flex;
+    }
+  }
+
+  &__details {
+    margin-top:50px;
+    &-title {
+      color: $black;
+      font-size: 16px;
+      margin: 0;
+      border-bottom: 1px solid $grey-lite;
+    }
+  }
+
+  &__detail {
+    max-width: 400px;
+
+    >h3 {
+      font-size: 16px;
+    }
+
+    >p {
+      font-size: 12px;
+      color: $grey-dark;
+      text-align: justify;
+    }
+  }
+
+  &__about {
+    width: 100%;
+
+    @include tablet() {
+      min-width: 250px;
+    }
+  }
+
+  &__id {
+    color: $grey-dark;
+    font-size: 12px;
+  }
+}

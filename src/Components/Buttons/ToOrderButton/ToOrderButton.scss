@@ -1,0 +1,20 @@
+@import '../../../Helpers/Helpers.scss';
+
+.order {
+  &__button {
+    border: 1px solid transparent;
+    width: 100%;
+    font-size: 12px;
+
+    &--add {
+      color: $white;
+      background-color: $black;
+    }
+    
+    &--added {
+      border-color: $grey-lite;
+      background-color: $white;
+      color: $green;
+    }
+  }
+}
