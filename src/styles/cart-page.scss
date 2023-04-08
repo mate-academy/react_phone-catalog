@@ -4,10 +4,10 @@
   align-items: start;
   margin: 0 152px 0 152px;
   width: $sectionWidth;
-  min-height: 100vh;
+  height: 100vh;
 
   @include onTablet {
-    margin: 0 82px 0 82x;
+    margin: 0 82px 0 82px;
     width: $sectionTabletWidth;
   }
 
@@ -19,6 +19,13 @@
     gap: 16px;
     color: $primary;
     margin-bottom: 24px;
+  }
+
+  &__empty-list-message {
+    @extend %flexCenter;
+    width: 752px;
+    height: 128px;
+    border: 1px solid $element;
   }
 }
 
@@ -46,6 +53,14 @@
   width: 683px;
   height: 126px;
 
+  @include onTablet {
+    width: 421px;
+    height: 86px;
+    grid-template-columns: 25px 50px 200px 85px 1fr;
+    padding-left: 17px;
+    padding-right: 20px;
+  }
+
   & > * {
     align-self: center;
   }
@@ -63,15 +78,30 @@
     object-fit: contain;
     width: 66px;
     height: 66px;
+
+    @include onTablet {
+      width: 40px;
+      height: 40px;
+    }
   }
 
   &__model {
     @extend .body_text;
     color: $primary;
+
+    @include onTablet {
+      font-size: 12px;
+      line-height: 15px;
+    }
   }
 
   &__price{
     color: $primary;
+
+    @include onTablet {
+      font-size: 20px;
+      line-height: 22px;
+    }
   }
 }
 
@@ -82,9 +112,18 @@
   align-items: center;
   width: 96px;
 
+  @include onTablet {
+    width: 60px;
+  }
+
   &__number {
     @extend .body_text;
     color: #000;
+
+    @include onTablet {
+      font-size: 12px;
+      line-height: 15px;
+    }
   }
 
   &__minus {
@@ -95,6 +134,11 @@
     background-image: url('../images/buttons/minus.svg');
     background-repeat: no-repeat;
     background-position: center;
+
+    @include onTablet {
+      width: 20px;
+      height: 20px;
+    }
 
     :hover {
       border: 1px solid $primary;
@@ -126,6 +170,12 @@
   height: 156px;
   border: 1px solid $element;
 
+  @include onTablet {
+    width: 180px;
+    height: 130px;
+    padding: 18px;
+  }
+
   &__price {
     color: $primary;
   }
@@ -142,5 +192,42 @@
 
   &__button {
     @include add-button(48px, 100%, 38px, 100%);
+  }
+}
+
+.notification {
+  position: fixed;
+  @extend %flexCenter;
+  width: 400px;
+  min-height: 120px;
+  padding: 0 16px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  background: rgba(132, 132, 132, 0.3);
+  top: 70px;
+  right: -600px;
+  transition: all 1s ease-in-out;
+  opacity: 0;
+
+  @include onTablet {
+    width: 250px;
+    min-height: 70px;
+  }
+
+  &--active {
+    transform: translate(-650px);
+    opacity: 1;
+  }
+
+  &__title {
+    display: block;
+    color: $primary;
+    text-align: center;
+
+    @include onTablet {
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 15px;
+    }
   }
 }

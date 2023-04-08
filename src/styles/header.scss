@@ -54,3 +54,21 @@
   border-bottom: 3px solid $primary;
   color: $primary;
 }
+
+.header-icon-cart {
+  @extend %headerIcon;
+  background-image: url('../images/icons/Shopping\ bag\ \(Cart\).svg');
+
+  &__circle {
+    @extend %circle;
+  }
+}
+
+.header-icon-favourite {
+  @extend %headerIcon;
+  background-image: url('../images/icons/Favourites\ \(Heart\ Like\).svg');
+
+  &__circle {
+    @extend %circle;
+  }
+}

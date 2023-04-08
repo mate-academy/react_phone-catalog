@@ -1,11 +1,24 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { HeaderLink } from './HeaderLink';
+import { Icon } from './Icon';
+import { useLocalstorage } from '../hooks/useLocalstorage';
 
-const path = process.env.PUBLIC_URL;
-const image = '_new/img/icons/Cart.svg';
+export const CartLink: React.FC = () => {
+  const [cartList] = useLocalstorage('cartList', []);
 
-export const CartLink: React.FC = () => (
-  <HeaderLink to="/Cart" className="header__item">
-    <img src={path + image} alt="Cart" />
-  </HeaderLink>
-);
+  const cartsNumber = useMemo(() => cartList.reduce((total, cur) => {
+    return total + cur.quantity;
+  }, 0), [cartList]);
+
+  return (
+    <HeaderLink
+      to="/Cart"
+      className="header__item"
+    >
+      <Icon
+        cartsNumber={cartsNumber}
+        icon="cart"
+      />
+    </HeaderLink>
+  );
+};

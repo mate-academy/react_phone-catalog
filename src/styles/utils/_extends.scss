@@ -63,3 +63,26 @@
   font-family: inherit;
   padding: 0;
 }
+
+%circle {
+  @extend %flexCenter;
+  position: absolute;
+  left: 50%;
+  bottom: 50%;
+  width: 12px;
+  height: 12px;
+  background-color: red;
+  border: 1px solid white;
+  border-radius: 50%;
+  color: $white;
+  font-size: 9px;
+  line-height: 7px;
+  vertical-align: middle;
+}
+
+%headerIcon {
+  width: 16px;
+  height: 16px;
+  position: relative;
+  background-repeat: no-repeat;
+}
