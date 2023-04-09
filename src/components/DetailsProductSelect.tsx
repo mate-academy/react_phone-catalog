@@ -1,12 +1,13 @@
-import { Details } from '../types/Details';
-import { Phone } from '../types/Phone';
+import { useContext } from 'react';
 import { ColorsDetails } from './ColorsDetails';
 import { CapacityDetails } from './CapacityDetails';
-import { useLocalstorage } from '../hooks/useLocalstorage';
+import { ProductsContext } from '../context/ProductsContext';
 import {
   addOneCart,
   cart,
 } from '../utils/cartApi';
+import { Details } from '../types/Details';
+import { Phone } from '../types/Phone';
 
 type Props = {
   details: Details,
@@ -21,7 +22,7 @@ export const DetailsProductSelect: React.FC<Props> = ({
 }) => {
   const colors = details.colorsAvailable;
   const capacities = details.capacityAvailable;
-  const [cartList, setCartList] = useLocalstorage('cartList', []);
+  const { cartList, setCartList } = useContext(ProductsContext);
 
   const handleClick = () => {
     if (currentPhone !== undefined) {

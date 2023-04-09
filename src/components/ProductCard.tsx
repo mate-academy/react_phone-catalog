@@ -1,9 +1,9 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import classNames from 'classnames';
-import React, { useMemo } from 'react';
+import React, { useContext, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { Phone } from '../types/Phone';
-import { useLocalstorage } from '../hooks/useLocalstorage';
+import { ProductsContext } from '../context/ProductsContext';
 import {
   addOneCart,
   path,
@@ -15,7 +15,7 @@ type Props = {
 };
 
 export const ProductCard: React.FC<Props> = ({ phone }) => {
-  const [cartList, setCartList] = useLocalstorage('cartList', []);
+  const { cartList, setCartList } = useContext(ProductsContext);
   const imagePath = `${path}_new/${phone.image}`;
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {

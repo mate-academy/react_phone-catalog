@@ -1,10 +1,10 @@
-import React, { useMemo } from 'react';
+import React, { useContext, useMemo } from 'react';
 import { HeaderLink } from './HeaderLink';
 import { Icon } from './Icon';
-import { useLocalstorage } from '../hooks/useLocalstorage';
+import { ProductsContext } from '../context/ProductsContext';
 
 export const CartLink: React.FC = () => {
-  const [cartList] = useLocalstorage('cartList', []);
+  const { cartList } = useContext(ProductsContext);
 
   const cartsNumber = useMemo(() => cartList.reduce((total, cur) => {
     return total + cur.quantity;

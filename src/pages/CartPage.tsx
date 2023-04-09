@@ -1,11 +1,16 @@
 import classNames from 'classnames';
-import { useEffect, useMemo, useState } from 'react';
+import {
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
 import { BackButton } from '../components/BackButton';
 import { CartItem } from '../components/CartItem';
-import { useLocalstorage } from '../hooks/useLocalstorage';
+import { ProductsContext } from '../context/ProductsContext';
 
 export const CartPage: React.FC = () => {
-  const [cartList, setCartList] = useLocalstorage('cartList', []);
+  const { cartList } = useContext(ProductsContext);
   const [isNotificated, setIsNotificated] = useState(false);
 
   useEffect(() => {
@@ -33,8 +38,6 @@ export const CartPage: React.FC = () => {
               >
                 <CartItem
                   cart={cart}
-                  setCartList={setCartList}
-                  cartList={cartList}
                 />
               </li>
             ))

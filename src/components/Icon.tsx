@@ -1,5 +1,5 @@
 type Props = {
-  cartsNumber: number,
+  cartsNumber?: number,
   icon: string,
 };
 
@@ -8,7 +8,7 @@ export const Icon: React.FC<Props> = ({
   icon,
 }) => (
   <div className={`header-icon-${icon}`}>
-    {cartsNumber > 0 && (
+    {cartsNumber && cartsNumber > 0 && (
       <div className={`header-icon-${icon}__circle`}>
         <div>{cartsNumber}</div>
       </div>

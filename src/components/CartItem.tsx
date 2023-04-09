@@ -1,22 +1,22 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
-import { Cart } from '../types/Cart';
+import { useContext } from 'react';
 import {
   removeOneCart,
   addOneCart,
   deleteCart,
 } from '../utils/cartApi';
+import { ProductsContext } from '../context/ProductsContext';
+import { Cart } from '../types/Cart';
 
 type Props = {
   cart: Cart,
-  setCartList: (val: Cart[]) => void,
-  cartList: Cart[],
 };
 
 export const CartItem: React.FC<Props> = ({
   cart,
-  setCartList,
-  cartList,
 }) => {
+  const { cartList, setCartList } = useContext(ProductsContext);
+
   return (
     <div className="cart-block">
       <button

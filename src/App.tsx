@@ -6,30 +6,11 @@ import { Footer } from './components/Footer';
 import { PhonesPage } from './pages/PhonesPage';
 import { ProductDetailsPage } from './pages/ProductDetailsPage';
 import { CartPage } from './pages/CartPage';
-
-// const App = () => {
-//   return (
-//     <>
-//       <Header />
-//       <Routes>
-//         <Route path="/" element={<HomePage />} />
-//         <Route path="phones">
-//           <Route index element={<PhonesPage />} />
-//           <Route path=":productId" element={<ProductDetailsPage />} />
-//         </Route>
-//         <Route
-//           path="*"
-//           element={<h1 className="title">Page not found</h1>}
-//         />
-//       </Routes>
-//       <Footer />
-//     </>
-//   );
-// };
+import { ProductProvider } from './context/ProductsContext';
 
 const App = () => {
   return (
-    <>
+    <ProductProvider>
       <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
@@ -42,7 +23,7 @@ const App = () => {
         />
       </Routes>
       <Footer />
-    </>
+    </ProductProvider>
   );
 };
 
