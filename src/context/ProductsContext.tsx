@@ -1,20 +1,38 @@
 import React from 'react';
 import { useLocalstorage } from '../hooks/useLocalstorage';
-import { ProductsContextType } from '../types/ProductsContextType';
+// import {
+//   Cartlist,
+//   SetCartList,
+//   FavouritesList,
+//   SetFavouritesList,
+// } from '../types/ProductsContextType';
+import { Cart } from '../types/Cart';
+
+type Props = {
+  cartList: Cart[],
+  setCartList: (arg: Cart[]) => void,
+  favouritesList: string[],
+  setFavouritesList: (arg: string[]) => void,
+};
 
 export const ProductsContext
-= React.createContext<ProductsContextType>({
+= React.createContext<Props>({
   cartList: [],
   setCartList: () => {},
+  favouritesList: [],
+  setFavouritesList: () => {},
 });
 
 export const ProductProvider: React.FC<React.ReactNode>
 = ({ children }) => {
   const [cartList, setCartList] = useLocalstorage('cartList', []);
+  const [favouritesList, setFavouritesList] = useLocalstorage('favourites', []);
 
   const contextValue = {
     cartList,
     setCartList,
+    favouritesList,
+    setFavouritesList,
   };
 
   return (

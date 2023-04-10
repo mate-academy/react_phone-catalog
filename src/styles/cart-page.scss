@@ -140,7 +140,7 @@
       height: 20px;
     }
 
-    :hover {
+    &:not(.cart-select__minus--disabled):hover {
       border: 1px solid $primary;
     }
 

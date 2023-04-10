@@ -50,7 +50,7 @@ export const ProductDetailsPage: React.FC = () => {
     ? <Loader />
     : (
       <div className="product-details-page">
-        <Breadcrumbs phones={phones} />
+        <Breadcrumbs productList={phones} />
         <BackButton />
         <h1 className="product-details-page__title">
           {productName}

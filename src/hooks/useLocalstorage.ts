@@ -1,12 +1,11 @@
 /* eslint-disable @typescript-eslint/no-shadow */
 import { useState } from 'react';
-import { Cart } from '../types/Cart';
 
-type Setter = [Cart[], (val: Cart[]) => void];
+type T = any[];
 
 export const useLocalstorage
-= (key: string, initialValue: Cart[]): Setter => {
-  const [value, setValue] = useState<Cart[]>(() => {
+= (key: string, initialValue: T): [T, (arg: T) => void] => {
+  const [value, setValue] = useState<T[]>(() => {
     try {
       return JSON.parse(localStorage.getItem(key) || '') || initialValue;
     } catch {
@@ -14,7 +13,7 @@ export const useLocalstorage
     }
   });
 
-  const save = (value: Cart[]) => {
+  const save = (value: T) => {
     setValue(value);
     localStorage.setItem(key, JSON.stringify(value));
   };

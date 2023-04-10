@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import { useContext } from 'react';
+import classNames from 'classnames';
 import {
   removeOneCart,
   addOneCart,
@@ -35,7 +36,10 @@ export const CartItem: React.FC<Props> = ({
       </div>
       <div className="cart-select">
         <button
-          className="cart-select__minus"
+          className={classNames(
+            'cart-select__minus',
+            { 'cart-select__minus--disabled': cart.quantity === 1 },
+          )}
           disabled={cart.quantity === 1}
           type="button"
           onClick={() => setCartList(removeOneCart(cartList, cart))}

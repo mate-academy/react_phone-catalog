@@ -1,0 +1,28 @@
+.favourites-page {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  margin: 0 152px 0 152px;
+  width: $sectionWidth;
+  height: 100vh;
+
+  @include onTablet {
+    margin: 0 82px 0 82px;
+    width: $sectionTabletWidth;
+  }
+
+  &__title {
+    color: $primary;
+    margin-bottom: 8px;
+  }
+
+  &__quantity {
+    @extend .body_text;
+    color: $secondary;
+    margin-bottom: 40px;
+  }
+
+  &__list {
+    @extend .phones-page__list;
+  }
+}

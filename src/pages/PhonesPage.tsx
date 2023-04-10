@@ -53,7 +53,7 @@ export const PhonesPage: React.FC = () => {
     : (
       <div className="phones-page">
         <div className="phones-page__info-block">
-          <Breadcrumbs phones={phones} />
+          <Breadcrumbs productList={phones} />
           <div className="phone-page-title">
             <p className="phone-page-title__name">Mobile phones</p>
             <div className="phone-page-title__models-count">{`${phones.length} models`}</div>

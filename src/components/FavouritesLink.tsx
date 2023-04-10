@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { ProductsContext } from '../context/ProductsContext';
 import { HeaderLink } from './HeaderLink';
+import { Icon } from './Icon';
 
-const path = process.env.PUBLIC_URL;
-const image = '_new/img/icons/Stroke.svg';
+export const FavouritesLink: React.FC = () => {
+  const { favouritesList } = useContext(ProductsContext);
 
-export const FavouritesLink: React.FC = () => (
-  <HeaderLink to="/Favourites" className="header__item">
-    <img src={path + image} alt="favourites" />
-  </HeaderLink>
-);
+  return (
+    <HeaderLink to="/Favourites" className="header__item">
+      <Icon
+        cartsNumber={favouritesList.length}
+        icon="favourites"
+      />
+    </HeaderLink>
+  );
+};

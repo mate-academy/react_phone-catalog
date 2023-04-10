@@ -9,24 +9,42 @@ import {
   path,
   cart,
 } from '../utils/cartApi';
+import { updateFavourites } from '../utils/favouritesApi';
 
 type Props = {
   phone: Phone;
 };
 
 export const ProductCard: React.FC<Props> = ({ phone }) => {
-  const { cartList, setCartList } = useContext(ProductsContext);
+  const {
+    cartList,
+    setCartList,
+    favouritesList,
+    setFavouritesList,
+  } = useContext(ProductsContext);
   const imagePath = `${path}_new/${phone.image}`;
 
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleClickCartButton
+  = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
 
     setCartList(addOneCart(cartList, cart(phone)));
   };
 
-  const isSelected = useMemo(() => {
+  const isSelectedCart = useMemo(() => {
     return cartList.some(item => item.id === phone.id);
   }, [cartList]);
+
+  const handleClickFavouritesButton
+  = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+
+    setFavouritesList(updateFavourites(favouritesList, phone.id));
+  };
+
+  const isSelectedFavourites = useMemo(() => {
+    return favouritesList.includes(phone.id);
+  }, [favouritesList]);
 
   return (
     <Link
@@ -75,17 +93,20 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
           <button
             className={classNames(
               'card-button__add',
-              { 'card-button__add--selected': isSelected },
+              { 'card-button__add--selected': isSelectedCart },
             )}
             type="button"
-            onClick={(event) => handleClick(event)}
+            onClick={(event) => handleClickCartButton(event)}
           >
-            { isSelected ? 'Added to cart' : 'Add to cart'}
+            { isSelectedCart ? 'Added to cart' : 'Add to cart'}
           </button>
           <button
-            className="card-button__favourite"
+            className={classNames(
+              'card-button__favourite',
+              { 'card-button__favourite--selected': isSelectedFavourites },
+            )}
             type="button"
-            onClick={(event) => event.preventDefault()}
+            onClick={(event) => handleClickFavouritesButton(event)}
           />
         </div>
       </div>
