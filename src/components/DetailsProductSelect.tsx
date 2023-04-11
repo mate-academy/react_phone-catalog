@@ -1,4 +1,6 @@
-import { useContext } from 'react';
+/* eslint-disable jsx-a11y/control-has-associated-label */
+import { useContext, useMemo } from 'react';
+import classNames from 'classnames';
 import { ColorsDetails } from './ColorsDetails';
 import { CapacityDetails } from './CapacityDetails';
 import { ProductsContext } from '../context/ProductsContext';
@@ -6,6 +8,7 @@ import {
   addOneCart,
   cart,
 } from '../utils/cartApi';
+import { updateFavourites } from '../utils/favouritesApi';
 import { Details } from '../types/Details';
 import { Phone } from '../types/Phone';
 
@@ -23,12 +26,26 @@ export const DetailsProductSelect: React.FC<Props> = ({
   const colors = details.colorsAvailable;
   const capacities = details.capacityAvailable;
   const { cartList, setCartList } = useContext(ProductsContext);
+  const {
+    favouritesList,
+    setFavouritesList,
+  } = useContext(ProductsContext);
 
-  const handleClick = () => {
+  const handleClickCartButton = () => {
     if (currentPhone !== undefined) {
       setCartList(addOneCart(cartList, cart(currentPhone)));
     }
   };
+
+  const handleClickFavouritesButton = () => {
+    if (currentPhone) {
+      setFavouritesList(updateFavourites(favouritesList, currentPhone.id));
+    }
+  };
+
+  const isSelectedFavourites = useMemo(() => {
+    return currentPhone && favouritesList.includes(currentPhone.id);
+  }, [favouritesList]);
 
   return (
     <div className="details-select-container">
@@ -58,11 +75,18 @@ export const DetailsProductSelect: React.FC<Props> = ({
         <button
           className="details-button__add"
           type="button"
-          onClick={() => handleClick()}
+          onClick={() => handleClickCartButton()}
         >
           Add to cart
         </button>
-        <div className="details-button__favourite" />
+        <button
+          className={classNames(
+            'details-button__favourite',
+            { 'details-button__favourite--selected': isSelectedFavourites },
+          )}
+          type="button"
+          onClick={() => handleClickFavouritesButton()}
+        />
       </div>
       <div className="info-block">
         <div className="info-block__title">

@@ -1,10 +1,18 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 import { HeaderLink } from './HeaderLink';
 import { Logo } from './Logo';
 import { FavouritesLink } from './FavouritesLink';
 import { CartLink } from './CartLink';
+import { SearchBar } from './SearchBar';
+import { QuerryCategories } from '../types/QuerryCategories';
 
 export const Header: React.FC = () => {
+  const location = useLocation();
+  const pathname = location.pathname.slice(1).split('/');
+
+  const category = pathname[0];
+
   return (
     <header className="header">
       <div className="header-block">
@@ -29,6 +37,9 @@ export const Header: React.FC = () => {
         </nav>
       </div>
       <div className="header-block">
+        {Object.values(QuerryCategories).some(item => item === category) && (
+          <SearchBar category={category} />
+        )}
         <FavouritesLink />
         <CartLink />
       </div>

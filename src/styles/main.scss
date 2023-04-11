@@ -13,6 +13,11 @@ body {
   font-style: normal;
 }
 
+#root {
+  display: flex;
+  flex-direction: column;
+}
+
 h1 {
   color: $primary;
   font-weight: 700;
@@ -102,4 +107,5 @@ p {
 @import "./color-details.scss";
 @import "./capacity-details.scss";
 @import "./cart-page.scss";
-@import "./favourites-page.scss"
+@import "./favourites-page.scss";
+@import "./search-bar.scss";

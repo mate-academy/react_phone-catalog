@@ -101,6 +101,7 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
             { isSelectedCart ? 'Added to cart' : 'Add to cart'}
           </button>
           <button
+            data-cy="addToFavorite"
             className={classNames(
               'card-button__favourite',
               { 'card-button__favourite--selected': isSelectedFavourites },

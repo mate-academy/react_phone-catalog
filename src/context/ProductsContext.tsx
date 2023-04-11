@@ -1,11 +1,5 @@
 import React from 'react';
 import { useLocalstorage } from '../hooks/useLocalstorage';
-// import {
-//   Cartlist,
-//   SetCartList,
-//   FavouritesList,
-//   SetFavouritesList,
-// } from '../types/ProductsContextType';
 import { Cart } from '../types/Cart';
 
 type Props = {

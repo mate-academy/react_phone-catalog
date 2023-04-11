@@ -5,6 +5,7 @@ import {
   numberOfPages,
   currentItems,
 } from '../utils/paginationUtils';
+import { sortedList, filteredList } from '../utils/orderedList';
 import { getPhonesList } from '../api';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { ProductsList } from '../components/ProductsList';
@@ -15,24 +16,19 @@ import { Loader } from '../components/Loader';
 import { Phone } from '../types/Phone';
 import { PerPage } from '../types/PerPage';
 import { SortBy } from '../types/SortBy';
+import { SearchKey } from '../types/SearchKey';
 
 export const PhonesPage: React.FC = () => {
   const [phones, setPhones] = useState<Phone[]>([]);
   const [searchParams] = useSearchParams();
-  const currentPage = searchParams.get('page') || '1';
-  const perPage = searchParams.get('perPage') || PerPage.sixteen;
-  const sortBy = searchParams.get('sort');
+  const currentPage = searchParams.get(SearchKey.Page) || '1';
+  const perPage = searchParams.get(SearchKey.Perpage) || PerPage.sixteen;
+  const sortBy = searchParams.get(SearchKey.Sort) as SortBy;
+  const querry = searchParams.get(SearchKey.Querry);
 
-  const sortedList = useMemo(() => {
-    switch (sortBy) {
-      case SortBy.Alphabetically:
-        return [...phones].sort((a, b) => a.name.localeCompare(b.name));
-      case SortBy.Cheapest:
-        return [...phones].sort((a, b) => a.price - b.price);
-      default:
-        return [...phones].sort((a, b) => b.year - a.year);
-    }
-  }, [phones, sortBy]);
+  const orderedList = useMemo(() => {
+    return filteredList(sortedList(phones, sortBy), querry);
+  }, [phones, sortBy, querry]);
 
   useEffect(() => {
     getPhonesList()
@@ -41,12 +37,15 @@ export const PhonesPage: React.FC = () => {
 
   const pagesNumber
   = useMemo(() => {
-    return getNumbers(1, numberOfPages(phones.length, perPage || PerPage.four));
-  }, [perPage, phones]);
+    return getNumbers(
+      1,
+      numberOfPages(orderedList.length, perPage || PerPage.four),
+    );
+  }, [perPage, phones, orderedList]);
 
   const currentList = useMemo(() => {
-    return currentItems(sortedList, +currentPage, perPage);
-  }, [perPage, sortBy, currentPage, phones]);
+    return currentItems(orderedList, +currentPage, perPage);
+  }, [perPage, sortBy, currentPage, phones, orderedList]);
 
   return !phones.length
     ? <Loader />
