@@ -32,10 +32,14 @@ export const DetailsProductSelect: React.FC<Props> = ({
   } = useContext(ProductsContext);
 
   const handleClickCartButton = () => {
-    if (currentPhone !== undefined) {
+    if (currentPhone) {
       setCartList(addOneCart(cartList, cart(currentPhone)));
     }
   };
+
+  const isSelectedCart = useMemo(() => {
+    return currentPhone && cartList.some(item => item.id === currentPhone.id);
+  }, [cartList, currentPhone]);
 
   const handleClickFavouritesButton = () => {
     if (currentPhone) {
@@ -45,18 +49,18 @@ export const DetailsProductSelect: React.FC<Props> = ({
 
   const isSelectedFavourites = useMemo(() => {
     return currentPhone && favouritesList.includes(currentPhone.id);
-  }, [favouritesList]);
+  }, [favouritesList, currentPhone]);
 
   return (
     <div className="details-select-container">
       <ColorsDetails
         colors={colors}
-        name={details.name}
+        id={details.id}
         phones={phones}
       />
       <CapacityDetails
         capacities={capacities}
-        name={details.name}
+        id={details.id}
         phones={phones}
       />
       <div className="details-price">
@@ -73,11 +77,14 @@ export const DetailsProductSelect: React.FC<Props> = ({
       </div>
       <div className="details-button">
         <button
-          className="details-button__add"
+          className={classNames(
+            'details-button__add',
+            { 'details-button__add--selected': isSelectedCart },
+          )}
           type="button"
           onClick={() => handleClickCartButton()}
         >
-          Add to cart
+          { isSelectedCart ? 'Added to cart' : 'Add to cart'}
         </button>
         <button
           className={classNames(

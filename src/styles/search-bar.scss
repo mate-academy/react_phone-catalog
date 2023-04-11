@@ -6,22 +6,35 @@
   height: 100%;
   box-shadow: -1px 0px 0px $element;
 
+  @include onTablet {
+    width: 180px;
+  }
+
   &__input {
+    @extend .body_text;
     height: 100%;
     width: 100%;
     border: none;
     padding: 0;
-    font-family: 'Mont', sans-serif;
-    font-weight: 600;
-    font-size: 18px;
-    line-height: 22px;
     color: $primary;
     padding-left: 24px;
+
+    @include onTablet {
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 15px;
+      padding-left: 15px;
+    }
 
     &::placeholder {
       font-size: 14px;
       color: #b4bdc3;
       line-height: 18px;
+
+      @include onTablet {
+        font-size: 10px;
+        line-height: 15px;
+      }
     }
 
     &:focus {
@@ -34,12 +47,22 @@
     background-image: url('../images/icons/Search.svg');
     background-repeat: no-repeat;
     background-position: center;
+    background-color: $white;
+    border: none;
+
+    @include onTablet {
+      width: 50px;
+    }
   }
 
-  &__cross:-webkit-search-cancel-button {
+  &__cross {
+    align-self: center;
     background-image: url('../images/buttons/Close.svg');
     background-repeat: no-repeat;
     background-position: center;
-    width: 10px
+    background-color: $white;
+    border: none;
+    width: 15px;
+    height: 15px;
   }
 }

@@ -6,13 +6,13 @@ import { phoneByCapacity } from '../utils/detailsUtils';
 
 type Props = {
   capacities: Capacity[],
-  name: string,
+  id: string,
   phones: Phone[],
 };
 
 export const CapacityDetails: React.FC<Props> = ({
   capacities,
-  name,
+  id,
   phones,
 }) => {
   return (
@@ -24,7 +24,7 @@ export const CapacityDetails: React.FC<Props> = ({
         {capacities.map(capacity => (
           <li key={capacity}>
             <NavLink
-              to={`/Phones/${phoneByCapacity(capacity, name, phones)}`}
+              to={`/Phones/${phoneByCapacity(capacity, id, phones)}`}
               className={({ isActive }) => classNames(
                 'capacity',
                 { 'active-capacity': isActive },

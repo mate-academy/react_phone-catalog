@@ -8,10 +8,8 @@ import { SearchBar } from './SearchBar';
 import { QuerryCategories } from '../types/QuerryCategories';
 
 export const Header: React.FC = () => {
-  const location = useLocation();
-  const pathname = location.pathname.slice(1).split('/');
-
-  const category = pathname[0];
+  const { pathname } = useLocation();
+  const category = pathname.slice(1).split('/')[0];
 
   return (
     <header className="header">
@@ -37,7 +35,7 @@ export const Header: React.FC = () => {
         </nav>
       </div>
       <div className="header-block">
-        {Object.values(QuerryCategories).some(item => item === category) && (
+        {Object.values(QuerryCategories).some(item => `/${item}` === pathname) && (
           <SearchBar category={category} />
         )}
         <FavouritesLink />

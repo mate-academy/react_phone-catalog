@@ -9,13 +9,13 @@ import { Phone } from '../types/Phone';
 
 type Props = {
   colors: [keyof typeof Color],
-  name: string,
+  id: string,
   phones: Phone[],
 };
 
 export const ColorsDetails: React.FC<Props> = ({
   colors,
-  name,
+  id,
   phones,
 }) => {
   return (
@@ -28,7 +28,7 @@ export const ColorsDetails: React.FC<Props> = ({
           <li key={color}>
             <NavLink
               style={background(color)}
-              to={`/Phones/${phoneByColor(color, name, phones)}`}
+              to={`/Phones/${phoneByColor(color, id, phones)}`}
               className={({ isActive }) => classNames(
                 'color',
                 { 'active-color': isActive },

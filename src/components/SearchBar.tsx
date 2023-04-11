@@ -1,4 +1,5 @@
-import { useRef } from 'react';
+/* eslint-disable jsx-a11y/control-has-associated-label */
+import { useMemo, useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { SearchKey } from '../types/SearchKey';
 
@@ -15,11 +16,9 @@ export const SearchBar: React.FC<Props> = ({ category }) => {
     return word[0].toLowerCase() + word.slice(1);
   };
 
-  const onQueryParamsUpdate = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const inputValue = event.target.value;
-
-    if (inputValue) {
-      searchParams.set(SearchKey.Querry, inputValue);
+  const handleInput = () => {
+    if (querryRef.current && querryRef.current.value) {
+      searchParams.set(SearchKey.Querry, querryRef.current.value);
     } else {
       searchParams.delete(SearchKey.Querry);
     }
@@ -33,6 +32,16 @@ export const SearchBar: React.FC<Props> = ({ category }) => {
     }
   };
 
+  const isActiveCross = useMemo(() => queryParams.length > 0, [queryParams]);
+
+  const handleCrossButtonClick = () => {
+    if (querryRef.current) {
+      querryRef.current.value = '';
+      searchParams.delete(SearchKey.Querry);
+      setSearchParams(searchParams);
+    }
+  };
+
   return (
     <div className="search-bar">
       <input
@@ -40,11 +49,20 @@ export const SearchBar: React.FC<Props> = ({ category }) => {
         className="search-bar__input"
         value={queryParams}
         placeholder={`Search in ${lowerCase(category)}...`}
-        onChange={onQueryParamsUpdate}
+        onChange={handleInput}
       />
-      <div
+      {isActiveCross && (
+        <button
+          type="button"
+          className="search-bar__cross"
+          onClick={handleCrossButtonClick}
+        />
+      )}
+
+      <button
+        type="button"
         className="search-bar__icon"
-        onClick={() => handleQuerryClick()}
+        onClick={handleQuerryClick}
       />
     </div>
   );

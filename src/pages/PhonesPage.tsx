@@ -75,10 +75,12 @@ export const PhonesPage: React.FC = () => {
           </div>
         </div>
         <ProductsList phones={currentList} />
-        <Pagination
-          total={pagesNumber}
-          currentPage={+currentPage}
-        />
+        {!!pagesNumber.length && (
+          <Pagination
+            total={pagesNumber}
+            currentPage={+currentPage}
+          />
+        )}
       </div>
     );
 };

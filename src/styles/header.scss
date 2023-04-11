@@ -47,6 +47,11 @@
   &__link {
     @extend %flexCenter;
     color: $secondary;
+
+    @include onTablet {
+      font-size: 10px;
+      line-height: 9px;
+    }
   }
 }
 

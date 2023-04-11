@@ -17,37 +17,29 @@ export const phoneByColor = (
   phones: Phone[],
 ): string | undefined => {
   const nameMinusColor
-  = name.includes('Midnight green')
-    ? name.split(' ').slice(0, -2)
-    : name.split(' ').slice(0, -1);
+  = name.split('-').slice(0, -1);
   const nameWithColor
-  = color === 'midnightgreen'
-    ? [...nameMinusColor, 'Midnight green'].join(' ')
-    : [...nameMinusColor, capitalize(color)].join(' ');
-  const phoneWithNewColor = phones.find(phone => phone.name === nameWithColor);
+  = [...nameMinusColor, color].join('-');
+  const phoneWithNewColor
+  = phones.find(phone => phone.phoneId === nameWithColor);
 
   return phoneWithNewColor?.id;
 };
 
 export const phoneByCapacity = (
   capacity: Capacity,
-  name: string,
+  id: string,
   phones: Phone[],
 ): string | undefined => {
   const baseName
-  = name.includes('Midnight green')
-    ? name.split(' ').slice(0, -3)
-    : name.split(' ').slice(0, -2);
+  = id.split('-').slice(0, -2);
 
-  baseName.push(capacity);
+  baseName.push(`${capacity.slice(0, -2)}gb`);
 
-  const fullName
-  = name.includes('Midnight green')
-    ? [...baseName, 'Midnight green'].join(' ')
-    : [...baseName, name.split(' ').slice(-1)].join(' ');
+  const fullName = [...baseName, id.split('-').slice(-1)].join('-');
 
   const phoneWithNewCapacity
-  = phones.find(phone => phone.name === fullName);
+  = phones.find(phone => phone.phoneId === fullName);
 
   return phoneWithNewCapacity?.id;
 };
