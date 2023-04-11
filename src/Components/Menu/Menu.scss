@@ -12,6 +12,7 @@
   &--smooth {
     transform: translateX(0);
     transition: 300ms;
+    overflow: hidden;
   }
 
   &__container {

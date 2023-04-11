@@ -14,7 +14,15 @@ export const querySort = (products: Product[], query: string) => {
 
 // fetch data from server
 export const getProducts = () => {
-  return client.get<Product[]>('/_new/products.json');
+  return client.get<Product[]>('_new/products.json');
+};
+
+// get suggestedProducts `filtering by random`
+export const getSuggestedProducts = async () => {
+  const productsData = await getProducts();
+  const suggestedProducts = [...productsData.sort(() => Math.random() - 0.5)];
+
+  return suggestedProducts;
 };
 
 // filtering data by catagoryes [phones, tablets, accessories]
@@ -22,9 +30,9 @@ export const getPoductsByCategory = (data: Product[], category: string) => {
   return data.filter((el) => el.category === category);
 };
 
-// fetch product by id forom servers
+// fetch product by id from servers
 export const getProductById = (productId: string | null) => {
-  return client.get<ProductDetails>(`/_new/products/${productId}.json`);
+  return client.get<ProductDetails>(`_new/products/${productId}.json`);
 };
 
 // get path name from location

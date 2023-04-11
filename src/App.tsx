@@ -23,7 +23,7 @@ const App = () => {
   const [searchParams] = useSearchParams();
 
   return (
-    <div className="App" id="#up">
+    <div className="App">
       <Header setIsMenu={setIsMenuOpen} isMenu={isMenuOpen} />
 
       {isMenuOpen && (

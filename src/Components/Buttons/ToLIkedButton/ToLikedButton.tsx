@@ -27,8 +27,8 @@ export const ToLikedButton: React.FC<Props> = ({ product }) => {
           src={favoritesProducts.some(
             (item) => item.id === product.id,
           )
-            ? '/Images/Heart--002.svg'
-            : '/Images/Heart--001.svg'}
+            ? 'Images/Heart--002.svg'
+            : 'Images/Heart--001.svg'}
           alt="Hearе"
           style={{ width: '15px', height: '15px' }}
         />

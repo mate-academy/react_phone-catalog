@@ -32,7 +32,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
   return (
     <div className="productCard">
-      <img src={`/_new/${image}`} className="productCard__img" alt="Phone" />
+      <img src={`new/${image}`} className="productCard__img" alt="Phone" />
       <div className="productCard__info">
         <Link
           to={{

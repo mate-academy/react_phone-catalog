@@ -55,8 +55,6 @@ export const ProductPage: React.FC<Props> = ({
   const match = useMatch('/phones/:productId');
   const productId = match?.params.productId || null;
 
-  const suggestedProducts = [...products.sort()];
-
   const loadProductsData = async () => {
     try {
       setIsLoader(true);
@@ -117,7 +115,6 @@ export const ProductPage: React.FC<Props> = ({
           {selectedProduct ? (
             <ProductDetailsPage
               product={selectedProduct}
-              suggestedProducts={suggestedProducts}
             />
           ) : (
             <div className="products__wrapper">

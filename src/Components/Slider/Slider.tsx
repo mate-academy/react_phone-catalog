@@ -17,6 +17,7 @@ export const Slider = () => {
   /* eslint-disable no-return-assign,
     no-param-reassign,
     jsx-a11y/control-has-associated-label,
+    prefer-template
   */
 
   const [offset, setOffset] = useState(0);
@@ -88,7 +89,7 @@ export const Slider = () => {
             {slides.map((el) => (
               <img
                 key={el.id}
-                src={`_new/img/${el.url}`}
+                src={`./new/img/${el.url}`}
                 className="slider__img"
                 alt={`slider Iamge ${el.id}`}
               />

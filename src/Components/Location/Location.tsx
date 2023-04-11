@@ -28,14 +28,14 @@ export const Location = () => {
           className="location__link"
         >
           <img
-            src="/Images/home.svg"
+            src="Images/home.svg"
             alt="home"
             className="location__img"
           />
         </Link>
 
         <img
-          src="/Images/arrow-icon--lite.svg"
+          src="Images/arrow-icon--lite.svg"
           className="location__img--arrow"
           alt="arrow line"
         />
@@ -50,7 +50,7 @@ export const Location = () => {
         {pathProduct && (
           <>
             <img
-              src="/Images/arrow-icon--lite.svg"
+              src="Images/arrow-icon--lite.svg"
               className="location__img--arrow"
               alt="arrow icon"
             />

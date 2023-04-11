@@ -9,14 +9,13 @@ import { Colors } from '../../Helpers/Colors';
 import { preparetedColors } from '../../Helpers/Variables';
 import { ToOrderButton } from '../Buttons/ToOrderButton/toOrderButton';
 import { ToLikedButton } from '../Buttons/ToLIkedButton/ToLikedButton';
-import { getProducts } from '../../Helpers/Helpers';
+import { getSuggestedProducts } from '../../Helpers/Helpers';
 import { Product } from '../../Types/Product';
 import { Carousel } from '../Carousel/Carousel';
 // import { getSuggestedProducts } from '../../Helpers/Helpers';
 
 type Props = {
   product: ProductDetails,
-  suggestedProducts: Product[],
 };
 
 export const ProductDetailsPage: React.FC<Props> = ({ product }) => {
@@ -50,9 +49,9 @@ export const ProductDetailsPage: React.FC<Props> = ({ product }) => {
   const [suggestedProducts, setSuggestedProducts] = useState<Product[]>([]);
 
   const loadSuggestedProducts = async () => {
-    const productsData = await getProducts();
+    const suggestedProductsData = await getSuggestedProducts();
 
-    setSuggestedProducts(productsData);
+    setSuggestedProducts(suggestedProductsData);
   };
 
   useEffect(() => {
@@ -100,7 +99,7 @@ export const ProductDetailsPage: React.FC<Props> = ({ product }) => {
                 onClick={() => onSelectedImage(image)}
               >
                 <img
-                  src={`/_new/${image}`}
+                  src={`./new/${image}`}
                   alt="Phones"
                   className="productDetails__img"
                 />
@@ -108,7 +107,7 @@ export const ProductDetailsPage: React.FC<Props> = ({ product }) => {
             ))}
           </ul>
 
-          <img src={`/_new/${currentImage}`} alt="" className="productDetails__img--active" />
+          <img src={`./new/${currentImage}`} alt="" className="productDetails__img--active" />
         </div>
 
         <div

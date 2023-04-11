@@ -16,6 +16,15 @@ export const Carousel: React.FC<Props> = ({ products, title }) => {
   const [offset, setOffset] = useState(0);
   const [screenWidth] = useState(window.innerWidth);
   const [itemsPerSlide, setItemsPerSlide] = useState(1);
+  const [sliceNum, setSliceNum] = useState(0);
+
+  useEffect(() => {
+    if (window.innerWidth > 400) {
+      setSliceNum(1);
+    } else {
+      setSliceNum(2);
+    }
+  }, [window.innerWidth]);
 
   const max = ((slideWidth * 34) / itemsPerSlide);
   const min = 0;
@@ -61,7 +70,7 @@ export const Carousel: React.FC<Props> = ({ products, title }) => {
               { 'carousel__button--active': offset === min },
             )}
           >
-            <img src="/Images/arrow-icon--left.svg" alt="Arrow icon left" />
+            <img src="Images/arrow-icon--left.svg" alt="Arrow icon left" />
           </button>
 
           <button
@@ -73,7 +82,7 @@ export const Carousel: React.FC<Props> = ({ products, title }) => {
             )}
           >
             <img
-              src="/Images/arrow-icon--left.svg"
+              src="Images/arrow-icon--left.svg"
               alt="Arrow icon right"
               style={{ transform: 'rotate(180deg)' }}
             />
@@ -82,14 +91,21 @@ export const Carousel: React.FC<Props> = ({ products, title }) => {
       </div>
 
       <div className="carousel__container" data-cy="cardsContainer">
-        <div className="carousel__items" style={{ transform: `translateX(-${offset}px)`, transition: '2s' }}>
-          {products.map((product) => (
-            <ProductCard
-              key={product.id}
-              product={product}
-            />
-          ))}
-        </div>
+        {products.length ? (
+          <div
+            className="carousel__items"
+            style={{ transform: `translateX(-${offset}px)`, transition: '2s' }}
+          >
+            {products.slice(sliceNum).map((product) => (
+              <ProductCard
+                key={product.id}
+                product={product}
+              />
+            ))}
+          </div>
+        ) : (
+          <div className="carousel__failed">Failed data</div>
+        )}
       </div>
     </section>
   );

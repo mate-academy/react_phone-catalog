@@ -1,11 +1,11 @@
 import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter as ReactRouter } from 'react-router-dom';
 import App from './App';
 
 ReactDOM.render(
-  <BrowserRouter>
+  <ReactRouter>
     <App />
 
-  </BrowserRouter>,
+  </ReactRouter>,
   document.getElementById('root'),
 );

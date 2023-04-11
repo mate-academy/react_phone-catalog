@@ -66,4 +66,14 @@
     justify-content: center;
     gap: 5px;
   }
+
+  &__failed {
+    font-size: 32px;
+    color: $red;
+    font-weight: 600;
+    line-height: 28px;
+
+    letter-spacing: 20px;
+    text-align: center;
+  }
 }
