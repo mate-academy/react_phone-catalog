@@ -5,14 +5,13 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ProductDetails } from '../../Types/ProductDeteils';
 import { Location } from '../Location/Location';
-import { Colors } from '../../Helpers/Colors';
+import { Colors } from '../../Types/Colors';
 import { preparetedColors } from '../../Helpers/Variables';
 import { ToOrderButton } from '../Buttons/ToOrderButton/toOrderButton';
 import { ToLikedButton } from '../Buttons/ToLIkedButton/ToLikedButton';
 import { getSuggestedProducts } from '../../Helpers/Helpers';
 import { Product } from '../../Types/Product';
 import { Carousel } from '../Carousel/Carousel';
-// import { getSuggestedProducts } from '../../Helpers/Helpers';
 
 type Props = {
   product: ProductDetails,
@@ -84,7 +83,6 @@ export const ProductDetailsPage: React.FC<Props> = ({ product }) => {
 
       <h1 className="productDetails__name">{name}</h1>
       <div className="productDetails__pictures">
-
         <div className="productDetails__shell">
           <ul className="productDetails__list">
             {images.map((image) => (
@@ -107,7 +105,11 @@ export const ProductDetailsPage: React.FC<Props> = ({ product }) => {
             ))}
           </ul>
 
-          <img src={`./new/${currentImage}`} alt="" className="productDetails__img--active" />
+          <img
+            src={`./new/${currentImage}`}
+            alt="product"
+            className="productDetails__img--active"
+          />
         </div>
 
         <div
@@ -122,7 +124,7 @@ export const ProductDetailsPage: React.FC<Props> = ({ product }) => {
               {colorsAvailable.map((colorData) => (
                 <Link
                   to={{
-                    pathname: `/phones/${namespaceId}-${selectedCapacity}-${colorData}`,
+                    pathname: `/phones/${namespaceId}-${selectedCapacity.toLowerCase()}-${colorData}`,
                   }}
                   key={colorData}
                   className={classNames(
@@ -156,7 +158,7 @@ export const ProductDetailsPage: React.FC<Props> = ({ product }) => {
               {capacityAvailable.map((capacityData) => (
                 <Link
                   to={{
-                    pathname: `/phones/${namespaceId}-${capacityData}-${color}`,
+                    pathname: `../${namespaceId}-${capacityData.toLowerCase()}-${color}`,
                   }}
                   key={capacityData}
                   className={classNames(
@@ -174,8 +176,13 @@ export const ProductDetailsPage: React.FC<Props> = ({ product }) => {
           </div>
 
           <div className="productDetails__prices">
-            <span className="productDetails__prices--full">{`$${priceDiscount}`}</span>
-            <span className="productDetails__prices--sale">{`$${priceRegular}`}</span>
+            <span className="productDetails__prices--full">
+              {`$${priceDiscount}`}
+            </span>
+
+            <span className="productDetails__prices--sale">
+              {`$${priceRegular}`}
+            </span>
           </div>
 
           <div style={{ display: 'flex', gap: '10px' }}>
@@ -218,19 +225,16 @@ export const ProductDetailsPage: React.FC<Props> = ({ product }) => {
       <div className="productDetails__wrapper">
         <div className="productDetails__details">
           <h1 className="productDetails__details-title">About</h1>
-
           {description.map((desc) => (
             <div className="productDetails__detail" key={desc.title}>
               <h3>{desc.title}</h3>
               <p>{desc.text}</p>
             </div>
           ))}
-
         </div>
 
         <div className="productDetails__details">
           <h1 className="productDetails__details-title">Tech specs</h1>
-
           <div className="productCard__about productDetails__about">
             <ul className="productCard__list">
               <li>

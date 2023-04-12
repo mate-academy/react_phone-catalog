@@ -1,5 +1,5 @@
 import './ShopByCategory.scss';
-import { categories } from './Categoties';
+import { categories } from '../../Helpers/Variables';
 import { Category } from './Category/Category';
 import { Product } from '../../Types/Product';
 

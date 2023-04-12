@@ -3,14 +3,15 @@ import './Favorites.scss';
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 import { useLocaleStorage } from '../../Helpers/LocaleStorage';
+import { Product } from '../../Types/Product';
 
 export const Favorites = () => {
   // const cartProducts = JSON.parse(localStorage.getItem('orderedItems') || '[]');
   const [
     orderedProducts,
-  ] = useLocaleStorage('orderedItems', []);
+  ] = useLocaleStorage<Product[]>('orderedItems', []);
 
-  const [favoritesProducts] = useLocaleStorage('favoritesItems', []);
+  const [favoritesProducts] = useLocaleStorage<Product[]>('favoritesItems', []);
 
   return (
     <ul className="favorites">

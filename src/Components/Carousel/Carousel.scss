@@ -1,4 +1,4 @@
-@import '../../Helpers/Helpers.scss';
+@import "../../Helpers/Helpers.scss";
 
 .carousel {
   width: 200px;
@@ -13,10 +13,11 @@
     width: 815px;
   }
 
-  &__container{
+  &__container {
     width: 200px;
     margin: 0 auto;
     overflow: scroll;
+    overflow-y: hidden;
 
     @media (min-width: 420px) {
       width: 405px;
@@ -28,7 +29,7 @@
   }
 
   &__title {
-    font-size: 18px;
+    font-size: 14px;
 
     @include tablet() {
       font-size: 32px;

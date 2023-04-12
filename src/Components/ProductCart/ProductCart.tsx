@@ -37,7 +37,7 @@ export const ProductCart: React.FC<Props> = ({ product, onDelete, setSum }) => {
         x
       </button>
 
-      <img src={`_new/${product.image}`} alt="Product" className="productCart__img" />
+      <img src={`./new/${product.image}`} alt="Product" className="productCart__img" />
 
       <span className="productCart__name">{product.name}</span>
 

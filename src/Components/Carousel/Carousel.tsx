@@ -19,10 +19,10 @@ export const Carousel: React.FC<Props> = ({ products, title }) => {
   const [sliceNum, setSliceNum] = useState(0);
 
   useEffect(() => {
-    if (window.innerWidth > 400) {
-      setSliceNum(1);
+    if (window.innerWidth > 420) {
+      setSliceNum(0);
     } else {
-      setSliceNum(2);
+      setSliceNum(1);
     }
   }, [window.innerWidth]);
 

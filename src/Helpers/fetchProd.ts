@@ -4,8 +4,6 @@ function wait(delay: number) {
   });
 }
 
-const BASE_URL = 'https://mate-academy.github.io/react_phone-catalog/';
-
 type RequestMethod = 'GET' | 'POST' | 'PATCH' | 'DELETE';
 
 function request<T>(
@@ -23,7 +21,7 @@ function request<T>(
   }
 
   return wait(300)
-    .then(() => fetch(`${BASE_URL}${url}`, options))
+    .then(() => fetch(`${url}`, options))
     .then(response => {
       if (!response.ok) {
         throw new Error(`${response.status} - ${response.statusText}`);

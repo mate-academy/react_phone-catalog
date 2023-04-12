@@ -6,7 +6,7 @@ import classNames from 'classnames';
 type Props = {
   total: number,
   setPage: (element: number) => string,
-  perPage: any,
+  perPage: number,
   page: string
 };
 
@@ -98,7 +98,6 @@ export const Pagination: React.FC<Props> = ({
           },
         )}
         data-cy="paginationRight"
-
       >
         <img
           src="Images/arrow-icon--left.svg"

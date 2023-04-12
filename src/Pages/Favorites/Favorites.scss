@@ -1,22 +1,22 @@
-@import '../../Helpers/Helpers.scss';
+@import "../../Helpers/Helpers.scss";
 
 .favorite {
-    min-height: calc(100vh - 170px);
-    margin: 0 auto;
+  min-height: calc(100vh - 170px);
+  margin: 0 auto;
 
-
-    &__container {
-        margin-bottom: 50px;
-        >p {
-            color: $grey-dark;
-        }
+  &__container {
+    margin-bottom: 50px;
+        
+    >p {
+      color: $grey-dark;
     }
+  }
 
-    &__wrapper {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 5px;
-        align-items: center;
-        justify-content: center;
-    }
+  &__wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+  }
 }

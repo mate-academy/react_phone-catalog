@@ -1,4 +1,4 @@
-@import '../../Helpers//Helpers.scss';
+@import "../../Helpers//Helpers.scss";
 
 .pagination {
   display: flex;
@@ -22,11 +22,11 @@
     color: $black;
     text-decoration: none;
 
-      &--active {
-        background-color:$black;
-        color: $white;
-      }
+    &--active {
+      background-color: $black;
+      color: $white;
     }
+  }
 
   &__button {
     border: 1px solid $grey-lite;

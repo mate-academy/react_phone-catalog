@@ -1,6 +1,4 @@
-// @import '../../Helpers.scss';
-@import '../../Helpers/Helpers.scss';
-
+@import "../../Helpers/Helpers.scss";
 
 .favorites {
   display: flex;
@@ -23,10 +21,11 @@
   &__item {
     position: relative;
     text-decoration: none;
+
     &--active {
       &::after {
         display: block;
-        content: '';
+        content: "";
         width: 100%;
         height: 3px;
         background-color: $black;

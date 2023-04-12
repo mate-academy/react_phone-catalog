@@ -3,15 +3,7 @@ import './Slider.scss';
 import { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { SliderImg } from '../../Types/SliderImgTypes';
-
-const sliderImages = [
-  { id: 0, url: 'banner-phones.png' },
-  { id: 1, url: 'banner-accessories.png' },
-  { id: 2, url: 'banner-tablets.png' },
-  { id: 3, url: 'category-accessories.png' },
-  { id: 4, url: 'category-phones.png' },
-  { id: 5, url: 'category-tablets.png' },
-];
+import { sliderImages } from '../../Helpers/Variables';
 
 export const Slider = () => {
   /* eslint-disable no-return-assign,
@@ -26,12 +18,12 @@ export const Slider = () => {
   const [screenWidth] = useState(window.innerWidth);
 
   const setScreenWidth = () => {
-    if (screenWidth <= 300) {
-      setSlideWidth(210);
+    if (screenWidth <= 380) {
+      setSlideWidth(222);
     } else if (screenWidth <= 640) {
-      setSlideWidth(310);
+      setSlideWidth(322);
     } else if (screenWidth >= 640 && screenWidth < 1200) {
-      setSlideWidth(560);
+      setSlideWidth(572);
     } else {
       setSlideWidth(750);
     }

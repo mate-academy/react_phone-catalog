@@ -52,7 +52,7 @@ export const ProductPage: React.FC<Props> = ({
     return updateSeachParams(searchParams, { page: element.toString() });
   };
 
-  const match = useMatch('/phones/:productId');
+  const match = useMatch('phones/:productId');
   const productId = match?.params.productId || null;
 
   const loadProductsData = async () => {
@@ -144,7 +144,7 @@ export const ProductPage: React.FC<Props> = ({
                         <Pagination
                           total={totalProducts}
                           setPage={currentPageChange}
-                          perPage={perPage}
+                          perPage={+perPage}
                           page={page}
                         />
                       </>

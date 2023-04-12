@@ -1,8 +1,7 @@
-@import '../../Helpers/Helpers.scss';
+@import "../../Helpers/Helpers.scss";
 
 .productDetails {
-  // margin: 10px auto;
-    margin: 10px;
+  margin: 10px;
 
   &__name {
     color: $black;
@@ -17,10 +16,9 @@
     height: 100%;
     gap: 10px;
     justify-content: space-between;
-    // align-items: center;
 
     @include tablet() {
-        flex-direction: row;
+      flex-direction: row;
     }
   }
 
@@ -42,41 +40,33 @@
     gap: 10px;
     margin: 0;
 
-    // width: 30%;
-    // height: 30%;
-
-
-    // max-width: 55px;
-
     &--color {
-        width: 20px;
-        height: 20px;
-        border: 1px solid $grey-lite;
-        border-radius: 50%;
-        padding: 2px;
+      width: 20px;
+      height: 20px;
+      border: 1px solid $grey-lite;
+      border-radius: 50%;
+      padding: 2px;
 
-        &--active {
-            border-color: $black;
-        }
-
-
+      &--active {
+        border-color: $black;
+      }
     }
 
     &-colors {
-        display: flex;
-        flex-direction: row;
-        gap: 10px;
-        margin: 0;
-        padding: 0;
-        padding-bottom: 15px;
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      padding-bottom: 15px;
     }
 
     &-capacity {
-        display: flex;
-        gap: 15px;
-        margin: 0;
-        padding: 0;
-        padding-bottom: 15px;
+      display: flex;
+      gap: 15px;
+      margin: 0;
+      padding: 0;
+      padding-bottom: 15px;
     }
 
     &-item {
@@ -87,28 +77,28 @@
         border-color: $black;
       }
     }
-}
+  }
 
   &__img {
-    width:25px;
+    width: 25px;
     height: 30px;
     object-fit: contain;
 
     @include tablet() {
-        width: 40px;
-        height: 60px;
+      width: 40px;
+      height: 60px;
     }
 
     &--active {
-        width: 80%;
-        height: 300px;
-        min-width: 200px;
-       object-fit: contain;
+      width: 80%;
+      height: 300px;
+      min-width: 200px;
+      object-fit: contain;
 
-       @include tablet() {
+      @include tablet() {
         width: 250px;
         height: 400px;
-       }
+      }
     }
   }
 
@@ -119,15 +109,15 @@
     gap: 10px;
 
     @include tablet() {
-        flex-direction: column;
-        height: min-content;
+      flex-direction: column;
+      height: min-content;
     }
 
     &-title {
-        font-size: 12px;
-        color: $grey-dark;
-        font-weight: 600;
-        margin-bottom: 5px;
+      font-size: 12px;
+      color: $grey-dark;
+      font-weight: 600;
+      margin-bottom: 5px;
     }
   }
 
@@ -137,18 +127,18 @@
 
   &__capacity {
     border-bottom: 1px solid $grey-medium;
-    &-item {
-        padding: 5px 10px;
-        border: 1px solid $grey-lite;
-        text-decoration: none;
-        color: $black;
-        font-size: 0.9em;
 
-        &--active {
-          background-color: $black;
-          color: white;
-        }
-        
+    &-item {
+      padding: 5px 10px;
+      border: 1px solid $grey-lite;
+      text-decoration: none;
+      color: $black;
+      font-size: 0.9em;
+
+      &--active {
+        background-color: $black;
+        color: white;
+      }
     }
   }
 
@@ -175,8 +165,7 @@
   &__wrapper {
     margin-top: 40px;
     width: 100%;
-    // display: flex;
-    gap:50px;
+    gap: 50px;
 
     @include tablet() {
       display: flex;
@@ -184,7 +173,8 @@
   }
 
   &__details {
-    margin-top:50px;
+    margin-top: 50px;
+
     &-title {
       color: $black;
       font-size: 16px;

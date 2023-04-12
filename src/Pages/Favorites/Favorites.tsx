@@ -6,9 +6,10 @@ import { querySort } from '../../Helpers/Helpers';
 
 import './Favorites.scss';
 import { EmptyPage } from '../EmptyPage/EmptyPage';
+import { Product } from '../../Types/Product';
 
 export const Favorites = () => {
-  const [favoritesProducts] = useLocaleStorage('favoritesItems', []);
+  const [favoritesProducts] = useLocaleStorage<Product[]>('favoritesItems', []);
   const [searchParams] = useSearchParams();
 
   const query = searchParams.get('query') || '';

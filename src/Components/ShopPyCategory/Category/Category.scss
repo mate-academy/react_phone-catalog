@@ -1,21 +1,18 @@
-@import '../../../Helpers/Helpers.scss';
+@import "../../../Helpers/Helpers.scss";
 
 .category {
-  width: calc(650px /3);
-  height: calc(750px /3);
-
+  width: calc(650px / 3);
+  height: calc(750px / 3);
   transition: transform 300ms;
 
   @include tablet {
-    width: calc(600px /3);
-    height: calc(750px /3);
-
+    width: calc(600px / 3);
+    height: calc(750px / 3);
   }
 
   @include desktop() {
-    width: calc(800px /3);
-  height: calc(900px /3);
-
+    width: calc(800px / 3);
+    height: calc(900px / 3);
   }
 
   &:hover {

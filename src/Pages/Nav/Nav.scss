@@ -1,6 +1,4 @@
-// @import '../../Helpers.scss';
-@import '../../Helpers/Helpers.scss';
-
+@import "../../Helpers/Helpers.scss";
 
 .nav {
   margin: 0;
@@ -26,7 +24,7 @@
   }
 
   &__item {
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 12px;
@@ -48,7 +46,7 @@
 
       &:after {
         display: block;
-        content: '';
+        content: "";
         position: absolute;
         top: 34px;
 

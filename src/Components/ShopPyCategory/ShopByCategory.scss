@@ -1,7 +1,7 @@
-@import '../../Helpers//Helpers.scss';
+@import "../../Helpers//Helpers.scss";
 
 .shopByCategory {
- width: min-content;
+  width: min-content;
   margin: 0 auto;
   margin-top: 50px;
 
@@ -20,5 +20,9 @@
 
   &__title {
     font-size: 14px;
+
+    @include tablet() {
+      font-size: 28px;
+    }
   }
 }

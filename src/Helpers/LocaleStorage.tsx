@@ -1,59 +1,112 @@
-// import { values } from "cypress/types/lodash";
-import { useState, useEffect } from 'react';
-import { Product } from '../Types/Product';
-// import { ProductDetails } from '../Types/ProductDeteils';
+import {
+  Dispatch,
+  SetStateAction,
+  useCallback,
+  useEffect,
+  useState,
+} from 'react';
 
-export const useLocaleStorage = (key: string, initialValue: any):
-[Product[], ((value: Product) => void)] => {
-  /* eslint-disable @typescript-eslint/no-unused-expressions */
+import { useEventCallback, useEventListener } from 'usehooks-ts';
 
-  // debugger
-  // const [items, setItem] = useState<Product[]>([] || initialValue);
+declare global {
+  interface WindowEventMap {
+    'local-storage': CustomEvent
+  }
+}
 
-  // // useEffect(() => {
-  // //   setItem(JSON.parse(localStorage.getItem(key) as string) || initialValue)
-  // //   console.log(localStorage.getItem(key))
-  // // }, [])
+type SetValue<T> = Dispatch<SetStateAction<T>>;
 
-  // useEffect(() => {
-  //   localStorage.setItem(key, JSON.stringify(items))
-  // },[items])
+function parseJSON<T>(value: string | null): T | undefined {
+  try {
+    return value === 'undefined' ? undefined : JSON.parse(value ?? '');
+  } catch {
+    throw Error(`parsing error on ${value}`);
 
-  //   // if (!localStorage.getItem(key)) {
-  //   //   localStorage.setItem(key, JSON.stringify([]));
-  //   // }
+    return undefined;
+  }
+}
 
-  //   console.log(items)
-
-  // const save = (value: Product) => {
-  //   // items.some((p) => p.id === value.id)
-  //   //   ? setItem((prev: Product[]) => [...prev.filter((p) => p.id !== value.id)])
-  //     setItem((prev: Product[]) => [...prev, value]);
-
-  //   // localStorage.setItem(key, JSON.stringify(items))
-  // }
-
-  /// /
-
-  const [items, setItem] = useState(() => {
-    if (localStorage.getItem(key) !== null) {
-      return (JSON.parse(localStorage.getItem(key) || '[]'));
+export function useLocaleStorage<T>(
+  key: string, initialValue: T,
+): [T, SetValue<T>] {
+  const readValue = useCallback((): T => {
+    if (typeof window === 'undefined') {
+      return initialValue;
     }
 
-    return initialValue;
+    try {
+      const item = window.localStorage.getItem(key);
+
+      return item ? (parseJSON(item) as T) : initialValue;
+    } catch (error) {
+      throw Error(`Error reading localStorage key “${key}”: ${error}`);
+
+      return initialValue;
+    }
+  }, [initialValue, key]);
+
+  const [storedValue, setStoredValue] = useState<T>(readValue);
+
+  const setValue: SetValue<T> = useEventCallback((value) => {
+    if (typeof window === 'undefined') {
+      throw Error(
+        `Tried setting localStorage key “${key}” even though environment is not a client`,
+      );
+    }
+
+    try {
+      const newValue = value instanceof Function ? value(storedValue) : value;
+
+      window.localStorage.setItem(key, JSON.stringify(newValue));
+      setStoredValue(newValue);
+
+      window.dispatchEvent(new Event('local-storage'));
+    } catch (error) {
+      throw Error(`Error setting localStorage key “${key}”: ${error}`);
+    }
   });
 
   useEffect(() => {
-    localStorage.setItem(key, JSON.stringify(items));
-  }, [items, key]);
+    setStoredValue(readValue());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  const save = (value: Product) => {
-    items.some((p: Product) => p.id === value.id)
-      ? setItem((prev: Product[]) => [...prev.filter((p) => p.id !== value.id)])
-      : setItem((prev: Product[]) => [...prev, value]);
+  const handleStorageChange = useCallback(
+    (event: StorageEvent | CustomEvent) => {
+      if ((event as StorageEvent)?.key && (event as StorageEvent).key !== key) {
+        return;
+      }
 
-    // localStorage.setItem(key, JSON.stringify(items))
-  };
+      setStoredValue(readValue());
+    },
+    [key, readValue],
+  );
 
-  return [items, save];
-};
+  useEventListener('storage', handleStorageChange);
+  useEventListener('local-storage', handleStorageChange);
+
+  return [storedValue, setValue];
+}
+
+//   const [items, setItem] = useState(() => {
+//     if (localStorage.getItem(key)) {
+//       return (JSON.parse(localStorage.getItem(key) || '[]'));
+//     }
+
+//     return initialValue;
+//   });
+
+//   useEffect(() => {
+//     localStorage.setItem(key, JSON.stringify(items));
+//   }, [items, key]);
+
+//   const save = (value: ItemType) => {
+//   //  setItem([...items, value]);
+//    setItem(value);
+
+//    console.log(123)
+//     localStorage.setItem(key, JSON.stringify(items))
+//   };
+
+//   return [items, save];
+// };

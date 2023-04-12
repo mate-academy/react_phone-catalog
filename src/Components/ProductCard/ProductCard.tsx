@@ -87,13 +87,8 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         </ul>
 
         <div className="productCard__buttons">
-
           <ToOrderButton product={product} />
           <ToLikedButton product={product} />
-
-          {/* <button className="productCard__button-liked">
-            <img src="Images/Heart--001.svg" alt="" style={{ width: '15px', height: '15px' }} />
-          </button> */}
         </div>
       </div>
     </div>

@@ -11,11 +11,8 @@ export const Placeholder: React.FC<Props> = ({ title, productsCount }) => {
       <h1>{title}</h1>
 
       <p>
-        {productsCount}
-        {' '}
-        models
+        {`${productsCount} models`}
       </p>
-
     </div>
   );
 };

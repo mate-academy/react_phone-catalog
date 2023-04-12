@@ -24,7 +24,7 @@ export const QueryFiltering = () => {
   }, [name]);
 
   const debounce = (func: (value: string) => void, delay: number) => {
-    let timerId: any;
+    let timerId: number;
 
     return (...args: any) => {
       clearTimeout(timerId);
@@ -59,7 +59,11 @@ export const QueryFiltering = () => {
             onChange={(event) => onQueryChange(event.target.value)}
             placeholder={`Search in ${name}...`}
           />
-          <img src="Images/Search.svg" className="query__img" alt="Search" />
+          <img
+            src="Images/Search.svg"
+            className="query__img"
+            alt="Search"
+          />
         </div>
       )}
     </>

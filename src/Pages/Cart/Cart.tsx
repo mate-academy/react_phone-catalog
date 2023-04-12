@@ -15,7 +15,7 @@ export const Cart = () => {
   const [
     orderedProducts,
     setOrderedProducts,
-  ] = useLocaleStorage('orderedItems', []);
+  ] = useLocaleStorage<Product[]>('orderedItems', []);
 
   const [searchParams] = useSearchParams();
   const [sum, setSum] = useState(totalSum);
@@ -26,7 +26,9 @@ export const Cart = () => {
 
   const onDelete = (product: Product, count: number) => {
     setSum((prev) => prev - (product.price * count));
-    setOrderedProducts(product);
+    setOrderedProducts(
+      [...orderedProducts.filter((item) => item.id !== product.id)],
+    );
   };
 
   useEffect(() => {

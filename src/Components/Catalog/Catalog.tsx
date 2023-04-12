@@ -78,7 +78,6 @@ export const Catalog: React.FC<Props> = ({
       <form method="post" className="catalog__form">
         <div className="catalog__form-wrapper">
           <label htmlFor="perPage" className="catalog__form-item">
-
             <span className="catalog__form-type">items on page</span>
 
             <select
@@ -90,14 +89,12 @@ export const Catalog: React.FC<Props> = ({
             >
               <option value="4">4</option>
               <option value="8">8</option>
-
               <option value="16">16</option>
               <option value={total}>All</option>
             </select>
           </label>
 
           <label htmlFor="perPage" className="catalog__form-item">
-
             <span className="catalog__form-type">Sort by</span>
 
             <select

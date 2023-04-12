@@ -18,15 +18,6 @@ export const HomePage: React.FC<Props> = ({ setIsLoader, isLoader }) => {
   const [phones, setPhones] = useState<Product[]>([]);
   const [tablets, setTablets] = useState<Product[]>([]);
   const [accessories, setAccessories] = useState<Product[]>([]);
-  // const [sliceNum, setSliceNum] = useState(0);
-
-  // useEffect(() => {
-  //   if (window.innerWidth > 400) {
-  //     setSliceNum(1);
-  //   } else {
-  //     setSliceNum(2);
-  //   }
-  // }, [window.innerWidth]);
 
   const preparetedSortedProucts = [...phones].sort((a, b) => {
     return (a.fullPrice - a.price) - (b.fullPrice - b.price);

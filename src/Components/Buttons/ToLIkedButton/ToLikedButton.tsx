@@ -7,13 +7,24 @@ type Props = {
 };
 
 export const ToLikedButton: React.FC<Props> = ({ product }) => {
+  /*
+    eslint-disable @typescript-eslint/indent,
+    react/jsx-indent,
+    @typescript-eslint/no-unused-expressions
+  */
   const [
     favoritesProducts,
     setFavoritesProducts,
-  ] = useLocaleStorage('favoritesItems', []);
+  ] = useLocaleStorage<Product[]>('favoritesItems', []);
 
   const onAddToFavorites = (productData: Product) => {
-    setFavoritesProducts(productData);
+    favoritesProducts.some((item) => item.id === productData.id)
+      ? setFavoritesProducts(
+        [...favoritesProducts.filter(
+          (item: Product) => item.id !== productData.id,
+        )],
+      )
+      : setFavoritesProducts([...favoritesProducts, productData]);
   };
 
   return (

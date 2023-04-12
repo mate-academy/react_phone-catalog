@@ -1,31 +1,27 @@
-@import '../../Helpers/Helpers.scss';
+@import "../../Helpers/Helpers.scss";
 
 .cart {
   display: flex;
   align-content: center;
   min-height: calc(100vh - 200px);
   margin: 10px;
-    &__container {
-        display: flex;
-        justify-content: center;
-        flex-direction: column-reverse;
-        margin: 0 auto;
-        margin-top: 20px;
-        text-align: center;
-        gap: 10px;
 
-        // @include tablet() {
-        //   flex-direction: row;
-        //   justify-content: center;
-        //   gap: 50px;
-        // }
+  &__container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column-reverse;
+    margin: 0 auto;
+    margin-top: 20px;
+    text-align: center;
+    gap: 10px;
 
-        @media (min-width: 700px) {
-          flex-direction: row;
-          justify-content: center;
-          gap: 50px;
-        }
+    @media (min-width: 700px) {
+      flex-direction: row;
+      justify-content: center;
+      gap: 50px;
     }
+  }
+
   &__list {
     display: flex;
     flex-direction: column;
@@ -44,24 +40,16 @@
     padding: 20px;
     margin: 0 auto;
 
-    // @include tablet() {
-    //   width: 20%;
-    //   margin: 0;
-    // }
-
-
     @media (min-width: 700px) {
       width: 20%;
       margin: 0;
     }
 
-
-
     &-wrapper {
       border-bottom: 1px solid $grey-lite;
 
       >p {
-        margin-top: 0px;
+        margin-top: 0;
         margin-bottom: 20px;
         font-size: 12px;
         color: $grey-medium;
@@ -70,7 +58,7 @@
     }
 
     &-price {
-      margin: 0 auto; 
+      margin: 0 auto;
       text-align: center;
       color: $black;
       font-size: 26px;

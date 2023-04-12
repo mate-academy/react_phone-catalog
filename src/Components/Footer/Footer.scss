@@ -1,5 +1,4 @@
-// @import '../../Helpers.scss';
-@import '../../Helpers/Helpers.scss';
+@import "../../Helpers/Helpers.scss";
 
 .footer {
   margin: 0;
@@ -18,7 +17,6 @@
     @include tablet() {
       gap: 30px;
     }
-
   }
 
   &__container {
@@ -32,13 +30,13 @@
     text-decoration: none;
     text-transform: uppercase;
     letter-spacing: 0.04em;
-    font-weight: 500;
+    font-weight: 600;
     font-size: 8px;
     transition: color 300ms;
 
     @media (min-width: 350px) {
       font-weight: 700;
-      font-size: 12px;
+      font-size: 10px;
     }
 
     &:hover {
@@ -66,14 +64,12 @@
     width: 20px;
     height: 20px;
     line-height: 10px;
-    border: 1px solid #E2E6E9;
-
+    border: 1px solid $grey-lite;
     background-color: $white;
 
     @media (min-width: 350px) {
       width: 30px;
       height: 30px;
-
       line-height: 0;
     }
 

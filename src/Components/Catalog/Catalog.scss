@@ -1,47 +1,45 @@
-@import '../../Helpers/Helpers.scss';
+@import "../../Helpers/Helpers.scss";
 
 .catalog {
+  margin-top: 20px;
+
+  &__form {
+    &-wrapper {
+      display: flex;
+      gap: 10px;
+    }
+
+    &-item {
+      width: max-content;
+      display: flex;
+      flex-direction: column;
+    }
+
+    &-type {
+      @extend %smallText;
+      font-size: 12px;
+      color: $grey-dark;
+    }
+
+    &-select {
+      width: max-content;
+      padding: 4px 7px;
+      min-width: 100px;
+      border-radius: 0;
+      border-color: $grey-dark;
+      outline: none;
+      font-size: 12px;
+    }
+  }
+
+  &__container {
+    max-width: 840px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    gap: 10px;
+    justify-content: center;
     margin-top: 20px;
-    &__form {
-
-        &-wrapper {
-            display: flex;
-            gap: 10px;
-        }
-
-        &-item {
-            width: max-content;
-            display: flex;
-            flex-direction: column;
-        }
-
-        &-type {
-            @extend %smallText;
-            font-size: 12px;
-            color: #89939A;
-        }
-
-        &-select {
-            width: max-content;
-            padding: 4px 7px;
-            min-width: 100px;
-            border-radius: 0px;
-            border-color: #89939A;
-            outline: none;
-            font-size: 12px;
-
-        }
-    }
-
-    &__container {
-        max-width: 840px;
-        width: 100%;
-        display: flex;
-        flex-wrap: wrap;
-        margin: 0 auto;
-        gap: 10px;
-        justify-content: center;
-        margin-top: 20px;
-      
-    }
+  }
 }

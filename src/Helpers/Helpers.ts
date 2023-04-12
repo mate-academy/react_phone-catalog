@@ -14,7 +14,7 @@ export const querySort = (products: Product[], query: string) => {
 
 // fetch data from server
 export const getProducts = () => {
-  return client.get<Product[]>('_new/products.json');
+  return client.get<Product[]>('./new/products.json');
 };
 
 // get suggestedProducts `filtering by random`
@@ -32,7 +32,7 @@ export const getPoductsByCategory = (data: Product[], category: string) => {
 
 // fetch product by id from servers
 export const getProductById = (productId: string | null) => {
-  return client.get<ProductDetails>(`_new/products/${productId}.json`);
+  return client.get<ProductDetails>(`./new/products/${productId}.json`);
 };
 
 // get path name from location

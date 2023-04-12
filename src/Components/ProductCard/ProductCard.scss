@@ -1,4 +1,4 @@
-@import '../../Helpers/Helpers.scss';
+@import "../../Helpers/Helpers.scss";
 
 .productCard {
   box-sizing: border-box;
@@ -7,7 +7,6 @@
   max-width: 200px;
   height: 350px;
   border: 1px solid #eee;
-  box-sizing: 'border-box';
 
   &__img {
     width: 100%;
@@ -22,7 +21,6 @@
   &__name {
     font-size: 12px;
     line-height: 15px;
-
     margin: 5px 0;
   }
 
@@ -50,7 +48,6 @@
     padding: 0;
     margin: 0;
     margin-top: 5px;
-
     list-style: none;
 
     >li {

@@ -7,14 +7,24 @@ type Props = {
 };
 
 export const ToOrderButton: React.FC<Props> = ({ product }) => {
-  /* eslint-disable @typescript-eslint/indent, react/jsx-indent */
+  /*
+    eslint-disable @typescript-eslint/indent,
+    react/jsx-indent,
+    @typescript-eslint/no-unused-expressions
+  */
   const [
     orderedProducts,
     setOrderedProducts,
-  ] = useLocaleStorage('orderedItems', []);
+  ] = useLocaleStorage<Product[]>('orderedItems', []);
 
   const addToOrder = (productData: Product) => {
-    setOrderedProducts(productData);
+    orderedProducts.some((item) => item.id === productData.id)
+      ? setOrderedProducts(
+          [...orderedProducts.filter(
+            (item: Product) => item.id !== productData.id,
+          )],
+        )
+      : setOrderedProducts([...orderedProducts, productData]);
   };
 
   return (
@@ -35,7 +45,7 @@ export const ToOrderButton: React.FC<Props> = ({ product }) => {
             className="order__button order__button--added"
             onClick={() => addToOrder(product)}
           >
-            Added to carta √
+            Added ✅
           </button>
         )}
     </>

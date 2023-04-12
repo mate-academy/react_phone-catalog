@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700;800;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700;800;900&display=swap");
 
 $black: #313237;
-$grey-dark: #89939A;
+$grey-dark: #89939a;
 $grey-medium: #b4bdc3;
 $grey-lite: #e2e6e9;
 $white-dark: #fafbfc;
@@ -10,14 +10,32 @@ $green: #27ae60;
 $red: #eb5757;
 
 * {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 14px;
   line-height: 21px;
   letter-spacing: 0;
 }
 
+@mixin mobile {
+  @media (min-width: 320px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: 640px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
 h1 {
-  font-size: 32px;
+  font-size: 28px;
   line-height: 41px;
   font-weight: 700;
 }
@@ -39,31 +57,12 @@ h3 {
   font-size: 12px;
 }
 
-@mixin mobile {
-  @media (min-width: 320px) {
-    @content
-  }
-};
-
-@mixin tablet {
-  @media (min-width: 640px) {
-    @content
-  }
-};
-
-@mixin desktop {
-  @media (min-width: 1200px) {
-    @content
-  }
-}
-
 button {
   cursor: pointer;
-
   transition: 300ms;
 
   &:active {
-      transform: scale(0.9);
+    transform: scale(0.9);
   }
 }
 
@@ -73,7 +72,6 @@ button {
 
   max-width: 900px;
   margin: 0 auto;
-  // min-height: 100vh;
   
   @include tablet() {
     padding: 25px 39px;
