@@ -8,8 +8,8 @@ import { Color } from '../types/Color';
 import { Phone } from '../types/Phone';
 
 type Props = {
-  colors: [keyof typeof Color],
-  id: string,
+  colors?: [keyof typeof Color],
+  id?: string,
   phones: Phone[],
 };
 
@@ -18,13 +18,15 @@ export const ColorsDetails: React.FC<Props> = ({
   id,
   phones,
 }) => {
+  console.log(id, colors, phones);
+
   return (
     <div className="color-details">
       <div className="details-select-container__paragraph">
         Available colors
       </div>
       <ul className="color-details__collection">
-        {colors.map(color => (
+        {colors?.map(color => (
           <li key={color}>
             <NavLink
               style={background(color)}

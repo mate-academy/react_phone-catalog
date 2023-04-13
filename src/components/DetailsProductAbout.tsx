@@ -1,7 +1,7 @@
 import { Description } from '../types/Description';
 
 type Props = {
-  description: Description[];
+  description?: Description[];
 };
 
 export const DetailsProductAbout: React.FC<Props> = ({ description }) => (
@@ -12,7 +12,7 @@ export const DetailsProductAbout: React.FC<Props> = ({ description }) => (
       </h2>
       <div className="details-about-container__underline" />
     </li>
-    {description.map(option => (
+    {description?.map(option => (
       <li key={option.title}>
         <h3 className="details-about-container__subtitle">
           {option.title}

@@ -8,6 +8,7 @@ import { ProductDetailsPage } from './pages/ProductDetailsPage';
 import { CartPage } from './pages/CartPage';
 import { ProductProvider } from './context/ProductsContext';
 import { FavouritesPage } from './pages/FavouritesPage';
+import { NonePage } from './pages/ComingSoonPage';
 
 const App = () => {
   return (
@@ -15,13 +16,20 @@ const App = () => {
       <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/phones" element={<PhonesPage />} />
-        <Route path="/phones/:productId" element={<ProductDetailsPage />} />
+        <Route path="/Phones" element={<PhonesPage />} />
+        <Route path="/Phones/:productId" element={<ProductDetailsPage />} />
         <Route path="/Cart" element={<CartPage />} />
         <Route path="/Favourites" element={<FavouritesPage />} />
+        {['/Tabletes', '/Accessories'].map(path => (
+          <Route
+            key={path}
+            path={path}
+            element={<NonePage text="Our product launch is coming soon..." />}
+          />
+        ))}
         <Route
           path="*"
-          element={<h1 className="title">Page not found</h1>}
+          element={<NonePage text="Page not found" />}
         />
       </Routes>
       <Footer />

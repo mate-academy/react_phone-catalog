@@ -5,8 +5,8 @@ import { Capacity } from '../types/Capacity';
 import { phoneByCapacity } from '../utils/detailsUtils';
 
 type Props = {
-  capacities: Capacity[],
-  id: string,
+  capacities?: Capacity[],
+  id?: string,
   phones: Phone[],
 };
 
@@ -21,7 +21,7 @@ export const CapacityDetails: React.FC<Props> = ({
         Select capacity
       </div>
       <ul className="capacity-details__collection">
-        {capacities.map(capacity => (
+        {capacities?.map(capacity => (
           <li key={capacity}>
             <NavLink
               to={`/Phones/${phoneByCapacity(capacity, id, phones)}`}

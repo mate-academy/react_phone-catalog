@@ -24,7 +24,7 @@ export const CartPage: React.FC = () => {
   }, 0), [cartList]);
 
   return (
-    <div className="cart-page">
+    <main className="cart-page">
       <div className="cart-page__content">
         <BackButton />
         <h1>Cart</h1>
@@ -76,6 +76,6 @@ export const CartPage: React.FC = () => {
           We are sorry, but this feature is not implemented yet
         </h2>
       </div>
-    </div>
+    </main>
   );
 };

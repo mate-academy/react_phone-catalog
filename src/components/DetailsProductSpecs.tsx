@@ -1,7 +1,7 @@
 import { Details } from '../types/Details';
 
 type Props = {
-  details: Details;
+  details: Details | null;
 };
 
 export const DetailsProductSpecs: React.FC<Props> = ({ details }) => (
@@ -16,7 +16,7 @@ export const DetailsProductSpecs: React.FC<Props> = ({ details }) => (
           Screen
         </div>
         <div className="specs-block__text">
-          {details.screen}
+          {details?.screen}
         </div>
       </div>
       <div className="specs-block">
@@ -24,7 +24,7 @@ export const DetailsProductSpecs: React.FC<Props> = ({ details }) => (
           Resolution
         </div>
         <div className="specs-block__text">
-          {details.resolution}
+          {details?.resolution}
         </div>
       </div>
       <div className="specs-block">
@@ -32,7 +32,7 @@ export const DetailsProductSpecs: React.FC<Props> = ({ details }) => (
           RAM
         </div>
         <div className="specs-block__text">
-          {details.ram}
+          {details?.ram}
         </div>
       </div>
       <div className="specs-block">
@@ -40,7 +40,7 @@ export const DetailsProductSpecs: React.FC<Props> = ({ details }) => (
           Screen
         </div>
         <div className="specs-block__text">
-          {details.screen}
+          {details?.screen}
         </div>
       </div>
       <div className="specs-block">
@@ -48,7 +48,7 @@ export const DetailsProductSpecs: React.FC<Props> = ({ details }) => (
           Built in memory
         </div>
         <div className="specs-block__text">
-          {details.capacity}
+          {details?.capacity}
         </div>
       </div>
       <div className="specs-block">
@@ -56,7 +56,7 @@ export const DetailsProductSpecs: React.FC<Props> = ({ details }) => (
           Camera
         </div>
         <div className="specs-block__text">
-          {details.camera}
+          {details?.camera}
         </div>
       </div>
       <div className="specs-block">
@@ -64,7 +64,7 @@ export const DetailsProductSpecs: React.FC<Props> = ({ details }) => (
           Zoom
         </div>
         <div className="specs-block__text">
-          {details.zoom}
+          {details?.zoom}
         </div>
       </div>
       <div className="specs-block">
@@ -72,7 +72,7 @@ export const DetailsProductSpecs: React.FC<Props> = ({ details }) => (
           Cell
         </div>
         <div className="specs-block__text">
-          {details.cell}
+          {details?.cell}
         </div>
       </div>
     </div>

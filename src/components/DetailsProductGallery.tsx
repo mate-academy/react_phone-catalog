@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import { Details } from '../types/Details';
 
 type Props = {
-  details: Details;
+  details: Details | null;
 };
 
 const publicPath = process.env.PUBLIC_URL;
@@ -17,7 +17,7 @@ export const DetailsProductGallery: React.FC<Props> = ({ details }) => {
 
   return (
     <ul className="details-photo-container">
-      {details.images.map((image, index) => (
+      {details?.images.map((image, index) => (
         <li
           key={image}
           className={classNames(
@@ -35,7 +35,7 @@ export const DetailsProductGallery: React.FC<Props> = ({ details }) => {
       ))}
       <li className="details-photo-container__main">
         <img
-          src={`${publicPath}/_new/${details.images[mainIndex]}`}
+          src={`${publicPath}/_new/${details?.images[mainIndex]}`}
           alt="img1"
           className="product-details-page__image-main"
         />

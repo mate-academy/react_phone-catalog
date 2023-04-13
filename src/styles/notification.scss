@@ -1,0 +1,55 @@
+.notification {
+  position: fixed;
+  @extend %flexCenter;
+  width: 400px;
+  min-height: 120px;
+  padding: 0 16px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  background: rgba(132, 132, 132, 0.3);
+  top: 70px;
+  right: -600px;
+  transition: all 1s ease-in-out;
+  opacity: 0;
+
+  @include onTablet {
+    width: 250px;
+    min-height: 70px;
+  }
+
+  &--active {
+    transform: translate(-650px);
+    opacity: 1;
+  }
+
+  &__title {
+    display: block;
+    color: $primary;
+    text-align: center;
+
+    @include onTablet {
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 15px;
+    }
+  }
+}
+
+.notification-error {
+  @extend .notification;
+  flex-direction: row;
+  background: #bc8f8f;
+
+  &--active {
+    transform: translate(-650px);
+    opacity: 1;
+  }
+
+  &__title {
+    @extend .notification__title;
+    color: #ff0000;
+    font-size: 30px;
+    line-height: 32px;
+    font-weight: 700;
+  }
+}

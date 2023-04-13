@@ -9,6 +9,7 @@ import { getPhonesList } from '../api';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { Loader } from '../components/Loader';
 import { ProductCard } from '../components/ProductCard';
+import { Error } from '../components/Error';
 import { ProductsContext } from '../context/ProductsContext';
 import { Phone } from '../types/Phone';
 import { SearchKey } from '../types/SearchKey';
@@ -16,13 +17,30 @@ import { filterFavourites, filteredList } from '../utils/orderedList';
 
 export const FavouritesPage: React.FC = () => {
   const [phones, setPhones] = useState<Phone[]>([]);
+  const [isError, setIsError] = useState(false);
+  const [isFetching, setIsFetching] = useState(false);
   const { favouritesList } = useContext(ProductsContext);
   const [searchParams] = useSearchParams();
   const querry = searchParams.get(SearchKey.Querry);
 
+  const fetchProcess = (api: Phone[]) => {
+    setIsFetching(false);
+    setIsError(false);
+
+    setPhones(api);
+  };
+
+  const errorProcess = () => {
+    setIsFetching(false);
+    setIsError(true);
+  };
+
   useEffect(() => {
+    setIsFetching(true);
+
     getPhonesList()
-      .then(resolve => setPhones(resolve));
+      .then(resolve => fetchProcess(resolve))
+      .catch(errorProcess);
   }, []);
 
   const favouritesPhones = useMemo(() => {
@@ -31,10 +49,11 @@ export const FavouritesPage: React.FC = () => {
       : filterFavourites(phones, favouritesList);
   }, [favouritesList, phones, querry]);
 
-  return !phones.length
+  return isFetching
     ? <Loader />
     : (
-      <div className="favourites-page">
+      <main className="favourites-page">
+        <Error isError={isError} />
         <Breadcrumbs />
         <h1 className="favourites-page__title">
           Favourites
@@ -49,6 +68,6 @@ export const FavouritesPage: React.FC = () => {
             </li>
           ))}
         </ul>
-      </div>
+      </main>
     );
 };

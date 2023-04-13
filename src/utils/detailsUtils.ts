@@ -13,7 +13,7 @@ export const capitalize
 
 export const phoneByColor = (
   color: keyof typeof Color,
-  name: string,
+  name = '',
   phones: Phone[],
 ): string | undefined => {
   const nameMinusColor
@@ -28,7 +28,7 @@ export const phoneByColor = (
 
 export const phoneByCapacity = (
   capacity: Capacity,
-  id: string,
+  id = '',
   phones: Phone[],
 ): string | undefined => {
   const baseName

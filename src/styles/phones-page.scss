@@ -36,6 +36,7 @@
     grid-column-gap: 16px;
     grid-row-gap: 40px;
     list-style: none;
+    min-height: 100vh;
 
     @include onTablet {
       grid-template-columns: repeat(3, 1fr);

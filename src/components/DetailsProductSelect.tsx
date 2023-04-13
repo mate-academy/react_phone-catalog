@@ -13,7 +13,7 @@ import { Details } from '../types/Details';
 import { Phone } from '../types/Phone';
 
 type Props = {
-  details: Details,
+  details: Details | null,
   phones: Phone[],
   currentPhone?: Phone,
 };
@@ -23,8 +23,8 @@ export const DetailsProductSelect: React.FC<Props> = ({
   phones,
   currentPhone,
 }) => {
-  const colors = details.colorsAvailable;
-  const capacities = details.capacityAvailable;
+  const colors = details?.colorsAvailable;
+  const capacities = details?.capacityAvailable;
   const { cartList, setCartList } = useContext(ProductsContext);
   const {
     favouritesList,
@@ -55,23 +55,23 @@ export const DetailsProductSelect: React.FC<Props> = ({
     <div className="details-select-container">
       <ColorsDetails
         colors={colors}
-        id={details.id}
+        id={details?.id}
         phones={phones}
       />
       <CapacityDetails
         capacities={capacities}
-        id={details.id}
+        id={details?.id}
         phones={phones}
       />
       <div className="details-price">
         <div className="details-price__discount">
           $
-          {details.priceDiscount}
+          {details?.priceDiscount}
         </div>
         {currentPhone?.year !== 2019 && (
           <div className="details-price__regular">
             $
-            {details.priceRegular}
+            {details?.priceRegular}
           </div>
         )}
       </div>
@@ -100,7 +100,7 @@ export const DetailsProductSelect: React.FC<Props> = ({
           Screen
         </div>
         <div className="info-block__value">
-          {details.screen}
+          {details?.screen}
         </div>
       </div>
       <div className="info-block">
@@ -108,7 +108,7 @@ export const DetailsProductSelect: React.FC<Props> = ({
           Resolution
         </div>
         <div className="info-block__value">
-          {details.resolution}
+          {details?.resolution}
         </div>
       </div>
       <div className="info-block">
@@ -116,7 +116,7 @@ export const DetailsProductSelect: React.FC<Props> = ({
           Processor
         </div>
         <div className="info-block__value">
-          {details.processor}
+          {details?.processor}
         </div>
       </div>
       <div className="info-block">
@@ -124,7 +124,7 @@ export const DetailsProductSelect: React.FC<Props> = ({
           RAM
         </div>
         <div className="info-block__value">
-          {details.capacity}
+          {details?.capacity}
         </div>
       </div>
     </div>

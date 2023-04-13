@@ -12,6 +12,7 @@ import { ProductsList } from '../components/ProductsList';
 import { Pagination } from '../components/Pagination';
 import { Select } from '../components/Select';
 import { Loader } from '../components/Loader';
+import { Error } from '../components/Error';
 
 import { Phone } from '../types/Phone';
 import { PerPage } from '../types/PerPage';
@@ -20,6 +21,8 @@ import { SearchKey } from '../types/SearchKey';
 
 export const PhonesPage: React.FC = () => {
   const [phones, setPhones] = useState<Phone[]>([]);
+  const [isError, setIsError] = useState(false);
+  const [isFetching, setIsFetching] = useState(false);
   const [searchParams] = useSearchParams();
   const currentPage = searchParams.get(SearchKey.Page) || '1';
   const perPage = searchParams.get(SearchKey.Perpage) || PerPage.sixteen;
@@ -30,9 +33,23 @@ export const PhonesPage: React.FC = () => {
     return filteredList(sortedList(phones, sortBy), querry);
   }, [phones, sortBy, querry]);
 
+  const fetchProcess = (api: Phone[]) => {
+    setIsFetching(false);
+    setIsError(false);
+    setPhones(api);
+  };
+
+  const errorProcess = () => {
+    setIsFetching(false);
+    setIsError(true);
+  };
+
   useEffect(() => {
+    setIsFetching(true);
+
     getPhonesList()
-      .then(resolve => setPhones(resolve));
+      .then(resolve => fetchProcess(resolve))
+      .catch(errorProcess);
   }, []);
 
   const pagesNumber
@@ -47,10 +64,11 @@ export const PhonesPage: React.FC = () => {
     return currentItems(orderedList, +currentPage, perPage);
   }, [perPage, sortBy, currentPage, phones, orderedList]);
 
-  return !phones.length
+  return isFetching
     ? <Loader />
     : (
-      <div className="phones-page">
+      <main className="phones-page">
+        <Error isError={isError} />
         <div className="phones-page__info-block">
           <Breadcrumbs productList={phones} />
           <div className="phone-page-title">
@@ -81,6 +99,6 @@ export const PhonesPage: React.FC = () => {
             currentPage={+currentPage}
           />
         )}
-      </div>
+      </main>
     );
 };

@@ -13,7 +13,7 @@ type Props = {
   phones: Phone[];
 };
 
-export const ProductSlider: React.FC<Props> = ({
+export const ProductsSlider: React.FC<Props> = ({
   phones,
   title,
 }) => {

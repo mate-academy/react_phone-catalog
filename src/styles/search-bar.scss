@@ -49,6 +49,7 @@
     background-position: center;
     background-color: $white;
     border: none;
+    padding: 0;
 
     @include onTablet {
       width: 50px;
