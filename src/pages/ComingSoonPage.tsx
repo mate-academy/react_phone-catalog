@@ -5,9 +5,9 @@ type Props = {
 export const NonePage: React.FC<Props> = ({ text }) => {
   return (
     <main className="coming-soon-page">
-      <span className="coming-soon-page__title">
+      <div className="coming-soon-page__title">
         {text}
-      </span>
+      </div>
     </main>
   );
 };

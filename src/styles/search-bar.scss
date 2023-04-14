@@ -4,7 +4,7 @@
   justify-content: space-between;
   width: 327px;
   height: 100%;
-  box-shadow: -1px 0px 0px $element;
+  box-shadow: -1px 0 0 $element;
 
   @include onTablet {
     width: 180px;
@@ -44,7 +44,7 @@
 
   &__icon {
     width: 64px;
-    background-image: url('../images/icons/Search.svg');
+    background-image: url("../images/icons/Search.svg");
     background-repeat: no-repeat;
     background-position: center;
     background-color: $white;
@@ -58,7 +58,7 @@
 
   &__cross {
     align-self: center;
-    background-image: url('../images/buttons/Close.svg');
+    background-image: url("../images/buttons/Close.svg");
     background-repeat: no-repeat;
     background-position: center;
     background-color: $white;

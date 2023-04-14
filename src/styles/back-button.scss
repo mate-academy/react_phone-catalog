@@ -9,11 +9,7 @@
   width: 47px;
   margin-bottom: 16px;
 
-  // outline: none;
-  // -webkit-appearance: none;
-  // -moz-appearance: none;
-
-  :active{
+  :active {
     outline: none;
     background: transparent;
   }
@@ -27,7 +23,7 @@
   &__vector {
     width: 7px;
     height: 10px;
-    background-image: url('../images/buttons/Left.svg');
+    background-image: url("../images/buttons/Left.svg");
     background-repeat: no-repeat;
   }
 }

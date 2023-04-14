@@ -3,6 +3,7 @@
   justify-content: space-between;
   margin-bottom: 40px;
   width: 100%;
+  min-width: $sectionTabletWidth;
   height: 64px;
   border-bottom: 1px solid $element;
 
@@ -18,7 +19,7 @@
 
   &__item {
     @extend %flexCenter;
-    box-shadow: -1px 0px 0px $element;
+    box-shadow: -1px 0 0 $element;
     width: 64px;
 
     @include onTablet {
@@ -43,7 +44,6 @@
     padding-left: 50px;
   }
 
-
   &__link {
     @extend %flexCenter;
     color: $secondary;
@@ -67,7 +67,7 @@
 
 .header-icon-cart {
   @extend %headerIcon;
-  background-image: url('../images/icons/Shopping\ bag\ \(Cart\).svg');
+  background-image: url("../images/icons/Shopping\ bag\ \(Cart\).svg");
 
   &__circle {
     @extend %circle;
@@ -76,7 +76,7 @@
 
 .header-icon-favourites {
   @extend %headerIcon;
-  background-image: url('../images/icons/Favourites\ \(Heart\ Like\).svg');
+  background-image: url("../images/icons/Favourites\ \(Heart\ Like\).svg");
 
   &__circle {
     @extend %circle;

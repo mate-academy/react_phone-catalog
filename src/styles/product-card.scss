@@ -17,12 +17,12 @@
   &__picture {
     width: 208px;
     height: 208px;
-    padding: 32px 0 24px 0;
+    padding: 32px 0 24px;
 
     @include onTablet {
       width: 185px;
       height: 185px;
-      padding: 25px 0 18px 0;
+      padding: 25px 0 18px;
     }
   }
 

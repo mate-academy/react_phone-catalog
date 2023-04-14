@@ -21,18 +21,14 @@
 
 .color {
   display: block;
-	border-radius: 50%;
-	height: 24px;
-	width: 24px;
+  border-radius: 50%;
+  height: 24px;
+  width: 24px;
   text-decoration: none;
-  box-shadow:
-    0 0 0 2px $white,
-    0 0 0 3px $element;
+  box-shadow: 0 0 0 2px $white, 0 0 0 3px $element;
 
   &:hover {
-    box-shadow:
-      0 0 0 2px $white,
-      0 0 0 3px $icons;
+    box-shadow: 0 0 0 2px $white, 0 0 0 3px $icons;
   }
 
   &:active {
@@ -41,11 +37,9 @@
 }
 
 .active-color {
-  box-shadow:
-    0 0 0 2px $white,
-    0 0 0 3px $primary;
+  box-shadow: 0 0 0 2px $white, 0 0 0 3px $primary;
 
-    &:hover {
-      @extend .active-color;
-    }
+  &:hover {
+    @extend .active-color;
+  }
 }

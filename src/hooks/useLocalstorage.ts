@@ -1,10 +1,8 @@
 /* eslint-disable @typescript-eslint/no-shadow */
 import { useState } from 'react';
 
-type T = any[];
-
 export const useLocalstorage
-= (key: string, initialValue: T): [T, (arg: T) => void] => {
+= <T>(key: string, initialValue: T[]): [T[], (arg: T[]) => void] => {
   const [value, setValue] = useState<T[]>(() => {
     try {
       return JSON.parse(localStorage.getItem(key) || '') || initialValue;
@@ -13,7 +11,7 @@ export const useLocalstorage
     }
   });
 
-  const save = (value: T) => {
+  const save = (value: T[]) => {
     setValue(value);
     localStorage.setItem(key, JSON.stringify(value));
   };

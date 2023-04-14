@@ -3,19 +3,19 @@
 @import "./utils/vars";
 
 @font-face {
-  font-family: 'Mont';
-  src: url('../fonts/Mont-Regular.otf') format('woff');
+  font-family: "Mont";
+  src: url("../fonts/Mont-Regular.otf") format("woff");
 }
 
 body {
   margin: 0;
-  font-family: 'Mont', sans-serif;
+  font-family: "Mont", sans-serif;
   font-style: normal;
 }
 
 #root {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr;
 }
 
 h1 {
@@ -70,7 +70,7 @@ p {
 
 .buttons_text {
   margin: 0;
-  font-family: 'Mont', sans-serif;
+  font-family: "Mont", sans-serif;
   font-weight: 600;
   font-size: 14px;
   line-height: 21px;

@@ -2,10 +2,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0 152px 0 152px;
+  margin: 0 152px;
 
   @include onTablet {
-    margin: 0 82px 0 82x;
+    margin: 0 82px;
   }
 
   &__info-block {
@@ -22,7 +22,7 @@
   &__select-block {
     display: flex;
     flex-direction: row;
-    justify-content:left;
+    justify-content: left;
     gap: 16px;
     margin-bottom: 24px;
   }

@@ -17,29 +17,25 @@ export const ColorsDetails: React.FC<Props> = ({
   colors,
   id,
   phones,
-}) => {
-  console.log(id, colors, phones);
-
-  return (
-    <div className="color-details">
-      <div className="details-select-container__paragraph">
-        Available colors
-      </div>
-      <ul className="color-details__collection">
-        {colors?.map(color => (
-          <li key={color}>
-            <NavLink
-              style={background(color)}
-              to={`/Phones/${phoneByColor(color, id, phones)}`}
-              className={({ isActive }) => classNames(
-                'color',
-                { 'active-color': isActive },
-              )}
-            />
-          </li>
-        ))}
-      </ul>
-      <div className="details-select-container__underline" />
+}) => (
+  <div className="color-details">
+    <div className="details-select-container__paragraph">
+      Available colors
     </div>
-  );
-};
+    <ul className="color-details__collection">
+      {colors?.map(color => (
+        <li key={color}>
+          <NavLink
+            style={background(color)}
+            to={`/Phones/${phoneByColor(color, id, phones)}`}
+            className={({ isActive }) => classNames(
+              'color',
+              { 'active-color': isActive },
+            )}
+          />
+        </li>
+      ))}
+    </ul>
+    <div className="details-select-container__underline" />
+  </div>
+);

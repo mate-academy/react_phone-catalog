@@ -7,7 +7,7 @@
 
   &__left {
     @extend %directButton;
-    background-image: url('../images/buttons/Left.svg');
+    background-image: url("../images/buttons/Left.svg");
 
     &:hover {
       border: 1px solid $primary;
@@ -15,13 +15,13 @@
 
     &--disabled {
       pointer-events: none;
-      background-image: url('../images/buttons/Left_disabled.svg');
+      background-image: url("../images/buttons/Left_disabled.svg");
     }
   }
 
   &__right {
     @extend %directButton;
-    background-image: url('../images/buttons/Right.svg');
+    background-image: url("../images/buttons/Right.svg");
 
     &:hover {
       border: 1px solid $primary;
@@ -29,7 +29,7 @@
 
     &--disabled {
       pointer-events: none;
-      background-image: url('../images/buttons/Right_disabled.svg');
+      background-image: url("../images/buttons/Right_disabled.svg");
     }
   }
 }

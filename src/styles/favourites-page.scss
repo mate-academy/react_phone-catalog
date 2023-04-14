@@ -2,12 +2,12 @@
   display: flex;
   flex-direction: column;
   align-items: start;
-  margin: 0 152px 0 152px;
+  margin: 0 152px;
   width: $sectionWidth;
   min-height: 100vh;
 
   @include onTablet {
-    margin: 0 82px 0 82px;
+    margin: 0 82px;
     width: $sectionTabletWidth;
   }
 

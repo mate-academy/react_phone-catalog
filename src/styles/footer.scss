@@ -4,7 +4,8 @@
   justify-content: center;
   height: 96px;
   width: 100%;
-  box-shadow: 0px -1px 0px $element;
+  min-width: $sectionTabletWidth;
+  box-shadow: 0 -1px 0 $element;
 
   @include onTablet {
     height: 80px;
@@ -30,7 +31,7 @@
   gap: 64px;
 
   @include onTablet {
-    gap: 50px
+    gap: 50px;
   }
 
   &__link {
@@ -59,7 +60,7 @@
     @extend %flexCenter;
     width: 32px;
     height: 32px;
-    border: 1px solid #B4BDC4;
+    border: 1px solid #b4bdc4;
     cursor: pointer;
     background-color: $white;
   }
