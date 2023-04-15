@@ -19,8 +19,9 @@ export const ProductsContext
 
 export const ProductProvider: React.FC<React.ReactNode>
 = ({ children }) => {
-  const [cartList, setCartList] = useLocalstorage<Cart>('cartList', []);
-  const [favouritesList, setFavouritesList]
+  const { value: cartList, save: setCartList }
+  = useLocalstorage<Cart>('cartList', []);
+  const { value: favouritesList, save: setFavouritesList }
   = useLocalstorage<string>('favourites', []);
 
   const contextValue = {

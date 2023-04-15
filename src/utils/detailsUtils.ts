@@ -2,7 +2,8 @@ import { Color } from '../types/Color';
 import { Phone } from '../types/Phone';
 import { Capacity } from '../types/Capacity';
 
-export const background = (color: keyof typeof Color): any => {
+export const background
+= (color: keyof typeof Color): { backgroundColor: string } => {
   return {
     backgroundColor: Color[`${color}`],
   };
@@ -16,10 +17,8 @@ export const phoneByColor = (
   name = '',
   phones: Phone[],
 ): string | undefined => {
-  const nameMinusColor
-  = name.split('-').slice(0, -1);
-  const nameWithColor
-  = [...nameMinusColor, color].join('-');
+  const nameMinusColor = name.split('-').slice(0, -1);
+  const nameWithColor = [...nameMinusColor, color].join('-');
   const phoneWithNewColor
   = phones.find(phone => phone.phoneId === nameWithColor);
 
@@ -31,8 +30,7 @@ export const phoneByCapacity = (
   id = '',
   phones: Phone[],
 ): string | undefined => {
-  const baseName
-  = id.split('-').slice(0, -2);
+  const baseName = id.split('-').slice(0, -2);
 
   baseName.push(`${capacity.slice(0, -2)}gb`);
 

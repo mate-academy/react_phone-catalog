@@ -25,10 +25,10 @@ export const Select: React.FC<Props> = ({
   const [searchParams] = useSearchParams();
   const dropDownRef = useRef<HTMLDivElement | null>(null);
   const optionsRef = useRef<HTMLUListElement | null>(null);
-  let timerId: NodeJS.Timeout;
+  const intervalRef = React.useRef<null | NodeJS.Timeout>(null);
 
   const handleClickDropDown = () => {
-    timerId = setTimeout(() => {
+    intervalRef.current = setTimeout(() => {
       setIsOpen(currentState => !currentState);
     }, 200);
   };
@@ -39,7 +39,7 @@ export const Select: React.FC<Props> = ({
       && dropDownRef
       && !dropDownRef.current?.contains(target as Node))
       || optionsRef.current?.contains(target as Node)) {
-      timerId = setTimeout(() => {
+      intervalRef.current = setTimeout(() => {
         setIsOpen(false);
       }, 200);
     }
@@ -48,7 +48,7 @@ export const Select: React.FC<Props> = ({
   useEffect(() => {
     document.addEventListener('click', handleClickOutside);
     if (!isOpen) {
-      clearTimeout(timerId);
+      clearTimeout(intervalRef.current as NodeJS.Timeout);
     } else {
       optionsRef.current?.focus();
     }
@@ -73,8 +73,8 @@ export const Select: React.FC<Props> = ({
           'select-box',
           { 'long-box': isLong },
         )}
-        onClick={() => handleClickDropDown()}
-        onKeyDown={() => handleClickDropDown()}
+        onClick={handleClickDropDown}
+        onKeyDown={handleClickDropDown}
       >
         <p className="select-box__text-item">
           {current}

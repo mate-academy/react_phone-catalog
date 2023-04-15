@@ -17,7 +17,7 @@ export const BackToTop: React.FC = () => {
       <button
         className="back-to-top__button"
         type="button"
-        onClick={() => handleScroll()}
+        onClick={handleScroll}
       >
         <img src={path + image} alt="back_to_up" />
       </button>

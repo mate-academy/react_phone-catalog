@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { Loader } from '../components/Loader';
@@ -12,13 +12,13 @@ import { DetailsProductAbout } from '../components/DetailsProductAbout';
 import { DetailsProductSpecs } from '../components/DetailsProductSpecs';
 import { ProductsSlider } from '../components/ProductsSlider';
 import { randomSequence } from '../utils/detailsUtils';
-import { useFetch } from '../hooks/useFetch';
+import { usePhones } from '../hooks/usePhones';
 
 export const ProductDetailsPage: React.FC = () => {
   const [details, setDetails] = useState<Details | null>(null);
   const [isErrorDetails, setIsErrorDetails] = useState(false);
   const location = useLocation();
-  const { phones, isErrorPhones } = useFetch();
+  const { phones, isErrorPhones } = usePhones();
 
   const pathArray = location.pathname.slice(1).split('/');
   const productId = pathArray[1];
@@ -27,7 +27,7 @@ export const ProductDetailsPage: React.FC = () => {
   const productName = currentPhone?.name;
   const publicPath = process.env.PUBLIC_URL;
   const infoPath = `${publicPath}/_new/products/${productDetailsPath}.json`;
-  const randomPhones = useMemo(() => randomSequence(phones), [phones]);
+  const randomPhones = randomSequence(phones);
 
   const getDetails = async (path: string): Promise<Details> => {
     const response = await fetch(path);

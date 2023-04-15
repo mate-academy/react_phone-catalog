@@ -2,7 +2,7 @@
 import { useState } from 'react';
 
 export const useLocalstorage
-= <T>(key: string, initialValue: T[]): [T[], (arg: T[]) => void] => {
+= <T>(key: string, initialValue: T[]) => {
   const [value, setValue] = useState<T[]>(() => {
     try {
       return JSON.parse(localStorage.getItem(key) || '') || initialValue;
@@ -16,5 +16,5 @@ export const useLocalstorage
     localStorage.setItem(key, JSON.stringify(value));
   };
 
-  return [value, save];
+  return { value, save };
 };

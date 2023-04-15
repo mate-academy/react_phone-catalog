@@ -16,11 +16,11 @@ import { Error } from '../components/Error';
 import { PerPage } from '../types/PerPage';
 import { SortBy } from '../types/SortBy';
 import { SearchKey } from '../types/SearchKey';
-import { useFetch } from '../hooks/useFetch';
+import { usePhones } from '../hooks/usePhones';
 
 export const PhonesPage: React.FC = () => {
   const [searchParams] = useSearchParams();
-  const { phones, isErrorPhones, isPhonesLoading } = useFetch();
+  const { phones, isErrorPhones, isPhonesLoading } = usePhones();
   const currentPage = searchParams.get(SearchKey.Page) || '1';
   const perPage = searchParams.get(SearchKey.Perpage) || PerPage.sixteen;
   const sortBy = searchParams.get(SearchKey.Sort) as SortBy;
@@ -30,8 +30,7 @@ export const PhonesPage: React.FC = () => {
     return filteredList(sortedList(phones, sortBy), querry);
   }, [phones, sortBy, querry]);
 
-  const pagesNumber
-  = useMemo(() => {
+  const pagesNumber = useMemo(() => {
     return getNumbers(
       1,
       numberOfPages(orderedList.length, perPage || PerPage.four),

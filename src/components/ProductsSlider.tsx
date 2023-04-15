@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
 
 import { ProductCard } from './ProductCard';
@@ -22,19 +22,17 @@ export const ProductsSlider: React.FC<Props> = ({
   const [areButtonsDisabled, setAreButtonsDisabled] = useState(false);
   const start = 0;
 
-  const width: SliderSizes = useMemo(() => {
-    return windowWidth < CategoryWidth.desc
-      ? {
-        element: 220,
-        interval: 10,
-        items: 3,
-      }
-      : {
-        element: 272,
-        interval: 16,
-        items: 4,
-      };
-  }, [windowWidth]);
+  const width: SliderSizes = windowWidth < CategoryWidth.desc
+    ? {
+      element: 220,
+      interval: 10,
+      items: 3,
+    }
+    : {
+      element: 272,
+      interval: 16,
+      items: 4,
+    };
 
   const end = width.items - phones.length;
   const step = width.element + width.interval;
@@ -49,12 +47,9 @@ export const ProductsSlider: React.FC<Props> = ({
     return () => clearTimeout(timerId);
   }, [position]);
 
-  const isFwdDisabled = useMemo(() => {
-    return position === end;
-  }, [position]);
-  const isBckDisabled = useMemo(() => {
-    return position === start;
-  }, [position]);
+  const isFwdDisabled = position === end;
+
+  const isBckDisabled = position === start;
 
   const moveFwd = () => {
     if (position !== end) {
@@ -94,7 +89,7 @@ export const ProductsSlider: React.FC<Props> = ({
             )}
             type="button"
             disabled={areButtonsDisabled}
-            onClick={() => moveBck()}
+            onClick={moveBck}
           />
           <button
             className={classNames(
@@ -103,7 +98,7 @@ export const ProductsSlider: React.FC<Props> = ({
             )}
             type="button"
             disabled={areButtonsDisabled}
-            onClick={() => moveFwd()}
+            onClick={moveFwd}
           />
         </div>
       </div>

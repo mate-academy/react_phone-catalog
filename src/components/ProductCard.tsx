@@ -24,7 +24,7 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
   } = useContext(ProductsContext);
   const imagePath = `${path}_new/${phone.image}`;
 
-  const handleClickCartButton
+  const handleCartButton
   = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
 
@@ -35,7 +35,7 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
     return cartList.some(item => item.id === phone.id);
   }, [cartList]);
 
-  const handleClickFavouritesButton
+  const handleFavouritesButton
   = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
 
@@ -96,7 +96,7 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
               { 'card-button__add--selected': isSelectedCart },
             )}
             type="button"
-            onClick={(event) => handleClickCartButton(event)}
+            onClick={handleCartButton}
           >
             { isSelectedCart ? 'Added to cart' : 'Add to cart'}
           </button>
@@ -107,7 +107,7 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
               { 'card-button__favourite--selected': isSelectedFavourites },
             )}
             type="button"
-            onClick={(event) => handleClickFavouritesButton(event)}
+            onClick={handleFavouritesButton}
           />
         </div>
       </div>

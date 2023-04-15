@@ -54,16 +54,14 @@ export const CategorySlider: React.FC<Props> = ({ sliderWidth }) => {
     return () => {};
   }, [isButtonDisabled]);
 
-  const handleClik = (direction: 'fwd' | 'bck') => {
+  const handleFwdButton = () => {
     setIsButtonDisabled(true);
+    setImageList(current => current.map(item => moveFwd(item)));
+  };
 
-    switch (direction) {
-      case 'fwd':
-        setImageList(current => current.map(item => moveFwd(item)));
-        break;
-      default:
-        setImageList(current => current.map(item => moveBck(item)));
-    }
+  const handleBckButton = () => {
+    setIsButtonDisabled(true);
+    setImageList(current => current.map(item => moveBck(item)));
   };
 
   return (
@@ -72,7 +70,7 @@ export const CategorySlider: React.FC<Props> = ({ sliderWidth }) => {
         className="slider__button"
         type="button"
         disabled={isButtonDisabled}
-        onClick={() => handleClik('bck')}
+        onClick={handleBckButton}
       >
         <img
           src={path + leftButton}
@@ -98,7 +96,7 @@ export const CategorySlider: React.FC<Props> = ({ sliderWidth }) => {
         className="slider__button"
         type="button"
         disabled={isButtonDisabled}
-        onClick={() => handleClik('fwd')}
+        onClick={handleFwdButton}
       >
         <img
           src={path + rightButton}

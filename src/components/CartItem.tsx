@@ -18,13 +18,25 @@ export const CartItem: React.FC<Props> = ({
 }) => {
   const { cartList, setCartList } = useContext(ProductsContext);
 
+  const handleMinusButton = () => {
+    setCartList(removeOneCart(cartList, cart));
+  };
+
+  const handlePlusButton = () => {
+    setCartList(addOneCart(cartList, cart));
+  };
+
+  const handleCrossButton = () => {
+    setCartList(deleteCart(cartList, cart));
+  };
+
   return (
     <div className="cart-block">
       <button
         className="cart-block__cross"
         data-cy="cartDeleteButton"
         type="button"
-        onClick={() => setCartList(deleteCart(cartList, cart))}
+        onClick={handleCrossButton}
       />
       <img
         className="cart-block__image"
@@ -42,7 +54,7 @@ export const CartItem: React.FC<Props> = ({
           )}
           disabled={cart.quantity === 1}
           type="button"
-          onClick={() => setCartList(removeOneCart(cartList, cart))}
+          onClick={handleMinusButton}
         />
         <div className="cart-select__number">
           {cart.quantity}
@@ -50,7 +62,7 @@ export const CartItem: React.FC<Props> = ({
         <button
           className="cart-select__plus"
           type="button"
-          onClick={() => setCartList(addOneCart(cartList, cart))}
+          onClick={handlePlusButton}
         />
       </div>
       <h2 className="cart-block__price">

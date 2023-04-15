@@ -2,7 +2,6 @@ import classNames from 'classnames';
 import {
   useContext,
   useEffect,
-  useMemo,
   useState,
 } from 'react';
 import { BackButton } from '../components/BackButton';
@@ -19,9 +18,9 @@ export const CartPage: React.FC = () => {
     return () => clearTimeout(timerId);
   }, [isNotificated]);
 
-  const totalPrice = useMemo(() => cartList.reduce((total, cur) => {
+  const totalPrice = cartList.reduce((total, cur) => {
     return total + cur.price * cur.quantity;
-  }, 0), [cartList]);
+  }, 0);
 
   return (
     <main className="cart-page">

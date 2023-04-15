@@ -4,7 +4,7 @@ import { Phone } from '../types/Phone';
 export const API_URL
 = 'https://mate-academy.github.io/react_phone-catalog/_new/products.json';
 
-export const useFetch = () => {
+export const usePhones = () => {
   const [phones, setPhones] = useState<Phone[]>([]);
   const [isErrorPhones, setIsErrorPhones] = useState(false);
   const [isPhonesLoading, seIsPhonesLoading] = useState(false);

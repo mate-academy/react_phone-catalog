@@ -47,9 +47,8 @@ export const DetailsProductSelect: React.FC<Props> = ({
     }
   };
 
-  const isSelectedFavourites = useMemo(() => {
-    return currentPhone && favouritesList.includes(currentPhone.id);
-  }, [favouritesList, currentPhone]);
+  const isSelectedFavourites
+  = currentPhone && favouritesList.includes(currentPhone.id);
 
   return (
     <div className="details-select-container">
@@ -82,7 +81,7 @@ export const DetailsProductSelect: React.FC<Props> = ({
             { 'details-button__add--selected': isSelectedCart },
           )}
           type="button"
-          onClick={() => handleClickCartButton()}
+          onClick={handleClickCartButton}
         >
           { isSelectedCart ? 'Added to cart' : 'Add to cart'}
         </button>
@@ -92,7 +91,7 @@ export const DetailsProductSelect: React.FC<Props> = ({
             { 'details-button__favourite--selected': isSelectedFavourites },
           )}
           type="button"
-          onClick={() => handleClickFavouritesButton()}
+          onClick={handleClickFavouritesButton}
         />
       </div>
       <div className="info-block">

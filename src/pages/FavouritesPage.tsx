@@ -10,13 +10,13 @@ import { Error } from '../components/Error';
 import { ProductsContext } from '../context/ProductsContext';
 import { SearchKey } from '../types/SearchKey';
 import { filterFavourites, filteredList } from '../utils/orderedList';
-import { useFetch } from '../hooks/useFetch';
+import { usePhones } from '../hooks/usePhones';
 
 export const FavouritesPage: React.FC = () => {
   const { favouritesList } = useContext(ProductsContext);
   const [searchParams] = useSearchParams();
   const querry = searchParams.get(SearchKey.Querry);
-  const { phones, isErrorPhones, isPhonesLoading } = useFetch();
+  const { phones, isErrorPhones, isPhonesLoading } = usePhones();
 
   const favouritesPhones = useMemo(() => {
     return querry

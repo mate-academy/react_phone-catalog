@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import { CategorySlider } from '../components/CategorySlider';
 import { ProductsSlider } from '../components/ProductsSlider';
 import { ShopCategory } from '../components/ShopCategory';
@@ -7,17 +7,15 @@ import { Loader } from '../components/Loader';
 import { Error } from '../components/Error';
 
 import { CategoryWidth } from '../types/CategoryWidth';
-import { useFetch } from '../hooks/useFetch';
+import { usePhones } from '../hooks/usePhones';
 
 export const HomePage: React.FC = () => {
-  const { phones, isErrorPhones, isPhonesLoading } = useFetch();
+  const { phones, isErrorPhones, isPhonesLoading } = usePhones();
   const windowWidth = useWindowWidth();
 
-  const categorySliderWidth = useMemo(() => {
-    return windowWidth < CategoryWidth.desc
-      ? CategoryWidth.tablet
-      : CategoryWidth.desc;
-  }, [windowWidth]);
+  const categorySliderWidth = windowWidth < CategoryWidth.desc
+    ? CategoryWidth.tablet
+    : CategoryWidth.desc;
 
   const discauntPhones = phones.filter(phone => phone.year < 2019);
   const newModelPhones = phones.filter(phone => phone.year === 2019);
