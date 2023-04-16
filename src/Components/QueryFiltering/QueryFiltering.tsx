@@ -48,6 +48,14 @@ export const QueryFiltering = () => {
     onAppliedQuery(value);
   };
 
+  const onQueryClear = () => {
+    setSearchParams(
+      updateSeachParams(searchParams, { query: null }),
+    );
+
+    setQuery('');
+  };
+
   return (
     <>
       {isQuery && (
@@ -59,11 +67,29 @@ export const QueryFiltering = () => {
             onChange={(event) => onQueryChange(event.target.value)}
             placeholder={`Search in ${name}...`}
           />
-          <img
-            src="Images/Search.svg"
-            className="query__img"
-            alt="Search"
-          />
+
+          {!query.length ? (
+            <img
+              src="Images/Search.svg"
+              className="query__img"
+              alt="Search"
+            />
+          ) : (
+
+            <button
+              type="button"
+              className="query__button"
+              onClick={onQueryClear}
+              data-cy="searchDelete"
+            >
+              <img
+                src="Images/cross-icon--grey.png"
+                alt="Cross"
+                className="query__img--cross"
+              />
+            </button>
+
+          )}
         </div>
       )}
     </>

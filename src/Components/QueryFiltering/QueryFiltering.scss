@@ -29,5 +29,16 @@
   &__img {
     width: 15px;
     height: 15px;
+
+    &--cross {
+      width: 10px;
+      height: 10px;
+    }
+  }
+
+  &__button {
+    background-color: transparent;
+    border: 0;
+    padding: 0;
   }
 }

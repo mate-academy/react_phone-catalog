@@ -22,7 +22,7 @@ export const ProductCart: React.FC<Props> = ({ product, onDelete, setSum }) => {
       setCount(prev => prev - 1);
     }
 
-    if (count === 0) {
+    if (count === 1) {
       onDelete(product, counter);
     }
   };
