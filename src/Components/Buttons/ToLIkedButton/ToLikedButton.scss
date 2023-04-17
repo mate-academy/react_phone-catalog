@@ -8,5 +8,14 @@
     line-height: 10px;
     background-color: #fff;
     border: 1px solid $grey-medium;
+
+    width: 40px;
+    height: 30px;
+    padding: 0;
+    text-align: center;
+
+    >img {
+      text-align: center;
+    }
   }
 }

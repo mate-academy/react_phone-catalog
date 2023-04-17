@@ -41,7 +41,7 @@ export const Cart = () => {
       <div className="container">
         <Location />
         <div className="cart__container">
-          {!orderedProducts.length ? (
+          {!preparetedProdutcs.length ? (
             <EmptyPage />
           ) : (
             <>

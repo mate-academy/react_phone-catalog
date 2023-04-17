@@ -35,6 +35,10 @@
     @media (min-width: 700px) {
       font-size: 12px;
     }
+
+    @media (min-width: 840px) {
+      width: 150px;
+    }
   }
 
   &__button {

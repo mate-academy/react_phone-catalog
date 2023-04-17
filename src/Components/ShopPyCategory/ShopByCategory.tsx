@@ -14,7 +14,7 @@ export const ShopByCategory: React.FC<Props> = (
 ) => {
   return (
     <section className="shopByCategory">
-      <h1 className="shopByCategory__title">Shop by Category</h1>
+      <h1 className="shopByCategory__title">Shop by category</h1>
       <div className="shopByCategory__container">
         {categories.map((category) => {
           const {

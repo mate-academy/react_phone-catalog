@@ -16,8 +16,7 @@
   &__container {
     width: 200px;
     margin: 0 auto;
-    overflow: scroll;
-    overflow-y: hidden;
+    overflow: hidden;
 
     @media (min-width: 420px) {
       width: 405px;

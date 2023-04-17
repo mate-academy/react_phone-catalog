@@ -1,10 +1,11 @@
-@import '../../../Helpers/Helpers.scss';
+@import "../../../Helpers/Helpers.scss";
 
 .order {
   &__button {
     border: 1px solid transparent;
     width: 100%;
-    font-size: 12px;
+    height: 30px;
+    font-size: 11px;
 
     &--add {
       color: $white;

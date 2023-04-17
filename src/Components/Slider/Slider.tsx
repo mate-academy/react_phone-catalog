@@ -19,11 +19,11 @@ export const Slider = () => {
 
   const setScreenWidth = () => {
     if (screenWidth <= 380) {
-      setSlideWidth(222);
+      setSlideWidth(210);
     } else if (screenWidth <= 640) {
-      setSlideWidth(322);
+      setSlideWidth(310);
     } else if (screenWidth >= 640 && screenWidth < 1200) {
-      setSlideWidth(572);
+      setSlideWidth(560);
     } else {
       setSlideWidth(750);
     }

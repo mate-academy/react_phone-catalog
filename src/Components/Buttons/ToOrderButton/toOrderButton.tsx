@@ -45,7 +45,7 @@ export const ToOrderButton: React.FC<Props> = ({ product }) => {
             className="order__button order__button--added"
             onClick={() => addToOrder(product)}
           >
-            Added ✅
+            Added to cart
           </button>
         )}
     </>

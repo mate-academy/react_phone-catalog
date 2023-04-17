@@ -58,7 +58,7 @@ export const HomePage: React.FC<Props> = ({ setIsLoader, isLoader }) => {
 
           <Carousel
             products={preparetedSortedProucts}
-            title="Hot Prices"
+            title="Hot prices"
           />
 
           <ShopByCategory

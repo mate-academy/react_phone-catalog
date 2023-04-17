@@ -19,7 +19,8 @@
   }
 
   &__name {
-    font-size: 12px;
+    font-size: 11px;
+    height: 30px;
     line-height: 15px;
     margin: 5px 0;
   }
@@ -27,7 +28,7 @@
   &__prices {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 7px;
 
     &--fullPrice {
       font-weight: 700;
@@ -37,7 +38,7 @@
     }
 
     &--sale {
-      font-size: 18px;
+      font-size: 15px;
       line-height: 28px;
       text-decoration-line: line-through;
       color: $grey-medium;
@@ -56,7 +57,7 @@
 
       >span {
         font-size: 10px;
-        font-weight: 600;
+        font-weight: 400;
         color: $black;
       }
 
