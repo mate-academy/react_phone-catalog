@@ -22,7 +22,6 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
     setFavouritesList,
   } = useContext(ProductsContext);
   const imagePath = `./assets/${phone.image}`;
-  // const imagePath = `./_new/${phone.image}`;
 
   const handleCartButton
   = (event: React.MouseEvent<HTMLButtonElement>) => {
