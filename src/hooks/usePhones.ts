@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Phone } from '../types/Phone';
 
 export const API_URL
-= '/_new/products.json';
+= 'https://mate-academy.github.io/react_phone-catalog/_new/products.json';
 
 export const usePhones = () => {
   const [phones, setPhones] = useState<Phone[]>([]);
