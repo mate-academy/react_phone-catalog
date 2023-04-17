@@ -28,6 +28,8 @@ export const ProductDetailsPage: React.FC = () => {
   const infoPath = `./_new/products/${productDetailsPath}.json`;
   const randomPhones = randomSequence(phones);
 
+  console.log(productDetailsPath);
+
   const getDetails = async (path: string): Promise<Details> => {
     const response = await fetch(path);
     const detailsData = await response.json();
