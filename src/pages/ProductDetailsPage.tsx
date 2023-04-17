@@ -25,10 +25,8 @@ export const ProductDetailsPage: React.FC = () => {
   const currentPhone = phones.find(phone => phone.id === productId);
   const productDetailsPath = currentPhone?.itemId;
   const productName = currentPhone?.name;
-  const infoPath = `./_new/products/${productDetailsPath}.json`;
+  const infoPath = `../assets/products/${productDetailsPath}.json`;
   const randomPhones = randomSequence(phones);
-
-  console.log(productDetailsPath);
 
   const getDetails = async (path: string): Promise<Details> => {
     const response = await fetch(path);
