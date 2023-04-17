@@ -11,19 +11,19 @@ export const ShopCategory: React.FC<Props> = ({ phonesNumber }) => {
     {
       name: 'phones',
       title: Category.phones,
-      picture: '_new/categories/phones.svg',
+      picture: '/_new/categories/phones.svg',
       number: phonesNumber,
     },
     {
       name: 'tablets',
       title: Category.tablets,
-      picture: '_new/categories/tablets.svg',
+      picture: '/_new/categories/tablets.svg',
       number: 24,
     },
     {
       name: 'accessories',
       title: Category.accessories,
-      picture: '_new/categories/accessories.svg',
+      picture: '/_new/categories/accessories.svg',
       number: 100,
     },
   ];

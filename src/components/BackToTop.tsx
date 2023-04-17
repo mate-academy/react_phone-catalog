@@ -1,7 +1,7 @@
 import React from 'react';
 
 const path = process.env.PUBLIC_URL;
-const image = '_new/img/buttons/VectorUp.svg';
+const image = '/_new/img/buttons/VectorUp.svg';
 
 export const BackToTop: React.FC = () => {
   const handleScroll = () => {

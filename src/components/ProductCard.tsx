@@ -6,7 +6,6 @@ import { Phone } from '../types/Phone';
 import { ProductsContext } from '../context/ProductsContext';
 import {
   addOneCart,
-  path,
   cart,
 } from '../utils/cartApi';
 import { updateFavourites } from '../utils/favouritesApi';
@@ -22,7 +21,7 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
     favouritesList,
     setFavouritesList,
   } = useContext(ProductsContext);
-  const imagePath = `${path}_new/${phone.image}`;
+  const imagePath = `/_new/${phone.image}`;
 
   const handleCartButton
   = (event: React.MouseEvent<HTMLButtonElement>) => {

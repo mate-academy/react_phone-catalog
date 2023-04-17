@@ -7,15 +7,13 @@ type Props = {
   categoryApi: CategoryApi[],
 };
 
-const path = process.env.PUBLIC_URL;
-
 export const CategoryBlock: React.FC<Props> = ({ categoryApi }) => {
   return (
     <ul className="category-shop__container">
       {categoryApi.map((category, index) => (
         <li className="category-block" key={category.title}>
           <img
-            src={path + category.picture}
+            src={category.picture}
             alt={category.title}
             className={classNames(
               'category-block__picture',

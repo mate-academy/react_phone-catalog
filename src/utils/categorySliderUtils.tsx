@@ -1,11 +1,10 @@
 import { Slide } from '../types/Slide';
 
-export const path = process.env.PUBLIC_URL;
-export const leftButton = '_new/img/buttons/VectorLeft.svg';
-export const rightButton = '_new/img/buttons/VectorRight.svg';
-const phones = '_new/img/banner-phones.png';
-const tablets = '_new/img/banner-tablets.png';
-const accessories = '_new/img/banner-accessories.png';
+export const leftButton = '/_new/img/buttons/VectorLeft.svg';
+export const rightButton = '/_new/img/buttons/VectorRight.svg';
+const phones = '/_new/img/banner-phones.png';
+const tablets = '/_new/img/banner-tablets.png';
+const accessories = '/_new/img/banner-accessories.png';
 
 export const sliderList = [accessories, phones, tablets];
 const { length } = sliderList;

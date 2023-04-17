@@ -4,7 +4,6 @@ import { Slide } from '../types/Slide';
 import {
   moveBck,
   moveFwd,
-  path,
   leftButton,
   rightButton,
   sliderList,
@@ -73,7 +72,7 @@ export const CategorySlider: React.FC<Props> = ({ sliderWidth }) => {
         onClick={handleBckButton}
       >
         <img
-          src={path + leftButton}
+          src={leftButton}
           alt="leftButton"
           className="icon-bck"
         />
@@ -83,7 +82,7 @@ export const CategorySlider: React.FC<Props> = ({ sliderWidth }) => {
           {imageList.map(picture => (
             <li key={picture.adress.slice(16, -4)}>
               <img
-                src={path + picture.adress}
+                src={picture.adress}
                 alt="banner"
                 className="album__img"
                 style={slideStyleObject(picture)}
@@ -99,7 +98,7 @@ export const CategorySlider: React.FC<Props> = ({ sliderWidth }) => {
         onClick={handleFwdButton}
       >
         <img
-          src={path + rightButton}
+          src={rightButton}
           alt="rightButton"
           className="icon-fwd"
         />

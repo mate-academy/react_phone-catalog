@@ -46,10 +46,8 @@ export const deleteCart = (list: Cart[], cart: Cart) => {
   return list.filter(item => item.id !== cart.id);
 };
 
-export const path = process.env.PUBLIC_URL;
-
 export const cart = (phone: Phone): Cart => {
-  const imagePath = `${path}_new/${phone.image}`;
+  const imagePath = `/_new/${phone.image}`;
 
   return {
     id: phone.id,
