@@ -1,7 +1,7 @@
 import React from 'react';
 
 const image
-= '_new/img/buttons/VectorUp.svg';
+= '/img/buttons/VectorUp.svg';
 
 export const BackToTop: React.FC = () => {
   const handleScroll = () => {
