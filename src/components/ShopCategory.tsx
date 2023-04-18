@@ -7,7 +7,7 @@ type Props = {
 };
 
 const dom
-= 'https://mate-academy.github.io/react_phone-catalog/_new/categories/';
+= '_new/categories/';
 
 export const ShopCategory: React.FC<Props> = ({ phonesNumber }) => {
   const categoryApi = [

@@ -18,7 +18,7 @@ export const CartItem: React.FC<Props> = ({
 }) => {
   const { cartList, setCartList } = useContext(ProductsContext);
   const cartImage
-  = `https://mate-academy.github.io/react_phone-catalog/_new${cart.image}`;
+  = `${cart.image}`;
 
   const handleMinusButton = () => {
     setCartList(removeOneCart(cartList, cart));

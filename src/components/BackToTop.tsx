@@ -1,8 +1,7 @@
 import React from 'react';
 
 const image
-= 'https://mate-academy.github.io/react_phone-catalog/'
-+ '_new/img/buttons/VectorUp.svg';
+= '_new/img/buttons/VectorUp.svg';
 
 export const BackToTop: React.FC = () => {
   const handleScroll = () => {
