@@ -6,24 +6,27 @@ type Props = {
   phonesNumber: number,
 };
 
+const dom
+= 'https://mate-academy.github.io/react_phone-catalog/_new/categories/';
+
 export const ShopCategory: React.FC<Props> = ({ phonesNumber }) => {
   const categoryApi = [
     {
       name: 'phones',
       title: Category.phones,
-      picture: '/_new/categories/phones.svg',
+      picture: `${dom}phones.svg`,
       number: phonesNumber,
     },
     {
       name: 'tablets',
       title: Category.tablets,
-      picture: '/_new/categories/tablets.svg',
+      picture: `${dom}tablets.svg`,
       number: 24,
     },
     {
       name: 'accessories',
       title: Category.accessories,
-      picture: '/_new/categories/accessories.svg',
+      picture: `${dom}accessories.svg`,
       number: 100,
     },
   ];
