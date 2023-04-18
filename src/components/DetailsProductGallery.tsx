@@ -12,7 +12,7 @@ export const DetailsProductGallery: React.FC<Props> = ({ details }) => {
   const [mainIndex, setMainIndex] = useState(0);
 
   useEffect(() => setMainIndex(0), [details]);
-  const dom = 'https://mate-academy.github.io/react_phone-catalog/_new/'
+  const dom = 'https://mate-academy.github.io/react_phone-catalog/_new/';
 
   return (
     <ul className="details-photo-container">
