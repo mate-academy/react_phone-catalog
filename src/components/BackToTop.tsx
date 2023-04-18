@@ -1,7 +1,8 @@
 import React from 'react';
 
-const path = process.env.PUBLIC_URL;
-const image = '/_new/img/buttons/VectorUp.svg';
+const image
+= 'https://mate-academy.github.io/react_phone-catalog/'
++ '_new/img/buttons/VectorUp.svg';
 
 export const BackToTop: React.FC = () => {
   const handleScroll = () => {
@@ -19,7 +20,7 @@ export const BackToTop: React.FC = () => {
         type="button"
         onClick={handleScroll}
       >
-        <img src={path + image} alt="back_to_up" />
+        <img src={image} alt="back_to_up" />
       </button>
     </div>
   );

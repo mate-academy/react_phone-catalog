@@ -12,6 +12,7 @@ export const DetailsProductGallery: React.FC<Props> = ({ details }) => {
   const [mainIndex, setMainIndex] = useState(0);
 
   useEffect(() => setMainIndex(0), [details]);
+  const dom = 'https://mate-academy.github.io/react_phone-catalog/_new/'
 
   return (
     <ul className="details-photo-container">
@@ -25,7 +26,7 @@ export const DetailsProductGallery: React.FC<Props> = ({ details }) => {
           onClick={() => setMainIndex(index)}
         >
           <img
-            src={`/_new/${image}`}
+            src={`${dom}${image}`}
             alt={`img${index}`}
             className="product-details-page__image-small"
           />
@@ -33,7 +34,7 @@ export const DetailsProductGallery: React.FC<Props> = ({ details }) => {
       ))}
       <li className="details-photo-container__main">
         <img
-          src={`/_new/${details?.images[mainIndex]}`}
+          src={`${dom}${details?.images[mainIndex]}`}
           alt="img1"
           className="product-details-page__image-main"
         />

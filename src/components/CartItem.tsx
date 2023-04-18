@@ -17,6 +17,8 @@ export const CartItem: React.FC<Props> = ({
   cart,
 }) => {
   const { cartList, setCartList } = useContext(ProductsContext);
+  const cartImage
+  = `https://mate-academy.github.io/react_phone-catalog/_new/${cart.image}`;
 
   const handleMinusButton = () => {
     setCartList(removeOneCart(cartList, cart));
@@ -40,7 +42,7 @@ export const CartItem: React.FC<Props> = ({
       />
       <img
         className="cart-block__image"
-        src={cart.image}
+        src={cartImage}
         alt={cart.name}
       />
       <div className="cart-block__model">
