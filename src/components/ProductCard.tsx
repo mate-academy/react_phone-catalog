@@ -21,7 +21,7 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
     favouritesList,
     setFavouritesList,
   } = useContext(ProductsContext);
-  const imagePath = `_new/${phone.image}`;
+  const imagePath = `https://mate-academy.github.io/react_phone-catalog/_new/${phone.image}`;
 
   const handleCartButton
   = (event: React.MouseEvent<HTMLButtonElement>) => {
