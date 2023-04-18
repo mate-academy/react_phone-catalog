@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const image = '/_new/img/icons/LOGO.svg';
+const image
+= 'https://mate-academy.github.io/react_phone-catalog/_new/img/icons/LOGO.svg';
 
 type Props = {
   className: string;
