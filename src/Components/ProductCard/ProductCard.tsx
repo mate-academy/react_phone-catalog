@@ -32,32 +32,33 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
   return (
     <div className="productCard">
-      <img src={`new/${image}`} className="productCard__img" alt="Phone" />
-      <div className="productCard__info">
-        <Link
-          to={{
-            pathname: product.phoneId === selectedProduct ? '/phones' : `/phones/${product.phoneId}`,
-          }}
-          style={{ color: '#000', textDecoration: 'none' }}
-        >
+      <Link
+        to={{
+          pathname: product.phoneId === selectedProduct ? '/phones' : `/phones/${product.phoneId}`,
+        }}
+        style={{ textDecoration: 'none' }}
+        onClick={() => productParamChange(phoneId)}
+      >
+        <img src={`new/${image}`} className="productCard__img" alt="Phone" />
+        <div className="productCard__info">
           <p
             className="productCard__name"
-            onClick={() => productParamChange(phoneId)}
+            style={{ color: '#000' }}
           >
             {name}
           </p>
-        </Link>
 
-        <div className="productCard__prices">
-          <span className="productCard__prices--fullPrice">
-            {`$${price}`}
-          </span>
+          <div className="productCard__prices">
+            <span className="productCard__prices--fullPrice">
+              {`$${price}`}
+            </span>
 
-          <span className="productCard__prices--sale">
-            {`$${fullPrice}`}
-          </span>
+            <span className="productCard__prices--sale">
+              {`$${fullPrice}`}
+            </span>
+          </div>
         </div>
-      </div>
+      </Link>
 
       <div className="productCard__about">
         <ul className="productCard__list">
