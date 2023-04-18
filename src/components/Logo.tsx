@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const image
-= '_new/img/icons/LOGO.svg';
+= 'img/icons/LOGO.svg';
 
 type Props = {
   className: string;
