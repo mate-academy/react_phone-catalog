@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { Loader } from '../components/Loader';
@@ -25,9 +25,8 @@ export const ProductDetailsPage: React.FC = () => {
   const currentPhone = phones.find(phone => phone.id === productId);
   const productDetailsPath = currentPhone?.itemId;
   const productName = currentPhone?.name;
-  // const infoPath = `https://mate-academy.github.io/react_phone-catalog/_new/products/${productDetailsPath}.json`;
   const infoPath = `products/${productDetailsPath}.json`;
-  const randomPhones = randomSequence(phones);
+  const randomPhones = useMemo(() => randomSequence(phones), [phones]);
 
   const getDetails = async (path: string): Promise<Details> => {
     const response = await fetch(path);

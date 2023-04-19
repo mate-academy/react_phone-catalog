@@ -42,8 +42,8 @@ export const phoneByCapacity = (
   return phoneWithNewCapacity?.id;
 };
 
-export const randomSequence = <A>(someArr: A[]): A[] => {
-  const indexNum = someArr.length;
+export const randomSequence = <A>(initial: A[]): A[] => {
+  const indexNum = initial.length;
   const indexArr: number[] = [];
 
   function getRandomInt(max: number) {
@@ -58,5 +58,5 @@ export const randomSequence = <A>(someArr: A[]): A[] => {
     }
   } while (indexArr.length < indexNum);
 
-  return indexArr.map(index => someArr[index]);
+  return indexArr.map(index => initial[index]);
 };
