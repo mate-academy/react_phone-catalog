@@ -47,13 +47,11 @@ export const deleteCart = (list: Cart[], cart: Cart) => {
 };
 
 export const cart = (phone: Phone): Cart => {
-  const imagePath = `/_new/${phone.image}`;
-
   return {
     id: phone.id,
     name: phone.name,
     price: phone.price,
-    image: imagePath,
+    image: phone.image,
     quantity: 1,
   };
 };
