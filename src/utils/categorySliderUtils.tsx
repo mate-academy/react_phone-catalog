@@ -1,12 +1,10 @@
 import { Slide } from '../types/Slide';
 
-const dom = 'https://mate-academy.github.io/react_phone-catalog/';
-
-export const leftButton = '_new/img/buttons/VectorLeft.svg';
-export const rightButton = '_new/img/buttons/VectorRight.svg';
-const phones = `${dom}_new/img/banner-phones.png`;
-const tablets = `${dom}_new/img/banner-tablets.png`;
-const accessories = `${dom}_new/img/banner-accessories.png`;
+export const leftButton = 'img/buttons/VectorLeft.svg';
+export const rightButton = 'img/buttons/VectorRight.svg';
+const phones = 'img/banner-phones.png';
+const tablets = 'img/banner-tablets.png';
+const accessories = 'img/banner-accessories.png';
 
 export const sliderList = [accessories, phones, tablets];
 const { length } = sliderList;

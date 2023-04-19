@@ -17,8 +17,6 @@ export const CartItem: React.FC<Props> = ({
   cart,
 }) => {
   const { cartList, setCartList } = useContext(ProductsContext);
-  const cartImage
-  = `${cart.image}`;
 
   const handleMinusButton = () => {
     setCartList(removeOneCart(cartList, cart));
@@ -32,6 +30,13 @@ export const CartItem: React.FC<Props> = ({
     setCartList(deleteCart(cartList, cart));
   };
 
+  const {
+    image,
+    name,
+    quantity,
+    price,
+  } = cart;
+
   return (
     <div className="cart-block">
       <button
@@ -42,24 +47,24 @@ export const CartItem: React.FC<Props> = ({
       />
       <img
         className="cart-block__image"
-        src={cartImage}
-        alt={cart.name}
+        src={image}
+        alt={name}
       />
       <div className="cart-block__model">
-        {cart.name}
+        {name}
       </div>
       <div className="cart-select">
         <button
           className={classNames(
             'cart-select__minus',
-            { 'cart-select__minus--disabled': cart.quantity === 1 },
+            { 'cart-select__minus--disabled': quantity === 1 },
           )}
-          disabled={cart.quantity === 1}
+          disabled={quantity === 1}
           type="button"
           onClick={handleMinusButton}
         />
         <div className="cart-select__number">
-          {cart.quantity}
+          {quantity}
         </div>
         <button
           className="cart-select__plus"
@@ -68,7 +73,7 @@ export const CartItem: React.FC<Props> = ({
         />
       </div>
       <h2 className="cart-block__price">
-        {`$${cart.price}`}
+        {`$${price}`}
       </h2>
     </div>
   );

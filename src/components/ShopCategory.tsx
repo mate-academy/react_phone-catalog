@@ -7,7 +7,7 @@ type Props = {
 };
 
 const dom
-= '_new/categories/';
+= 'categories/';
 
 export const ShopCategory: React.FC<Props> = ({ phonesNumber }) => {
   const categoryApi = [

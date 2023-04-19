@@ -21,7 +21,6 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
     favouritesList,
     setFavouritesList,
   } = useContext(ProductsContext);
-  // const imagePath = `https://mate-academy.github.io/react_phone-catalog/_new/${phone.image}`;
 
   const handleCartButton
   = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -45,6 +44,18 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
     return favouritesList.includes(phone.id);
   }, [favouritesList]);
 
+  const {
+    image,
+    phoneId,
+    name,
+    price,
+    fullPrice,
+    year,
+    screen,
+    capacity,
+    ram,
+  } = phone;
+
   return (
     <Link
       to={`/Phones/${phone.id}`}
@@ -54,38 +65,38 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
       <div className="product-card__picture">
         <img
           className="product-image"
-          src={phone.image}
-          alt={phone.phoneId}
+          src={image}
+          alt={phoneId}
         />
       </div>
       <div className="product-info-wrapper">
         <div className="product-card__title">
-          <span>{phone.name}</span>
+          <span>{name}</span>
         </div>
         <div className="product-price ">
           <div className="product-price__regular">
             $
-            {phone.price}
+            {price}
           </div>
-          {phone.year !== 2019 && (
+          {year !== 2019 && (
             <div className="product-price__full">
               $
-              {phone.fullPrice}
+              {fullPrice}
             </div>
           )}
         </div>
         <div className="product-card__details">
           <div className="info-block">
             <div className="info-block__title">Screen</div>
-            <div className="info-block__value">{phone.screen}</div>
+            <div className="info-block__value">{screen}</div>
           </div>
           <div className="info-block">
             <div className="info-block__title">Capacity</div>
-            <div className="info-block__value">{phone.capacity}</div>
+            <div className="info-block__value">{capacity}</div>
           </div>
           <div className="info-block">
             <div className="info-block__title">RAM</div>
-            <div className="info-block__value">{phone.ram}</div>
+            <div className="info-block__value">{ram}</div>
           </div>
         </div>
         <div className="card-button">
