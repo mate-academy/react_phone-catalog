@@ -12,13 +12,13 @@ import { DetailsProductAbout } from '../components/DetailsProductAbout';
 import { DetailsProductSpecs } from '../components/DetailsProductSpecs';
 import { ProductsSlider } from '../components/ProductsSlider';
 import { randomSequence } from '../utils/detailsUtils';
-import { usePhones } from '../hooks/usePhones';
+import { useFetch } from '../hooks/useFetch';
 
 export const ProductDetailsPage: React.FC = () => {
   const [details, setDetails] = useState<Details | null>(null);
   const [isErrorDetails, setIsErrorDetails] = useState(false);
   const location = useLocation();
-  const { phones, isErrorPhones } = usePhones();
+  const { phones, isErrorPhones } = useFetch();
 
   const pathArray = location.pathname.slice(1).split('/');
   const productId = pathArray[1];

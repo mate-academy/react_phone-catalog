@@ -16,11 +16,11 @@ import { Error } from '../components/Error';
 import { PerPage } from '../types/PerPage';
 import { SortBy } from '../types/SortBy';
 import { SearchKey } from '../types/SearchKey';
-import { usePhones } from '../hooks/usePhones';
+import { useFetch } from '../hooks/useFetch';
 
 export const PhonesPage: React.FC = () => {
   const [searchParams] = useSearchParams();
-  const { phones, isErrorPhones, isPhonesLoading } = usePhones();
+  const { phones, isErrorPhones, isPhonesLoading } = useFetch();
   const currentPage = searchParams.get(SearchKey.Page) || '1';
   const perPage = searchParams.get(SearchKey.Perpage) || PerPage.sixteen;
   const sortBy = searchParams.get(SearchKey.Sort) as SortBy;

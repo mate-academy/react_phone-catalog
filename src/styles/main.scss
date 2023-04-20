@@ -13,6 +13,10 @@ body {
   font-style: normal;
 }
 
+button {
+  cursor: pointer;
+}
+
 #root {
   display: grid;
   grid-template-rows: 104px auto 96px;

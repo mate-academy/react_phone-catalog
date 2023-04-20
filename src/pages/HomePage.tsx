@@ -7,10 +7,10 @@ import { Loader } from '../components/Loader';
 import { Error } from '../components/Error';
 
 import { CategoryWidth } from '../types/CategoryWidth';
-import { usePhones } from '../hooks/usePhones';
+import { useFetch } from '../hooks/useFetch';
 
 export const HomePage: React.FC = () => {
-  const { phones, isErrorPhones, isPhonesLoading } = usePhones();
+  const { phones, isErrorPhones, isPhonesLoading } = useFetch();
   const windowWidth = useWindowWidth();
 
   const categorySliderWidth = windowWidth < CategoryWidth.desc
