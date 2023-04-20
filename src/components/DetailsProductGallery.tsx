@@ -1,14 +1,15 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import classNames from 'classnames';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Details } from '../types/Details';
 
 type Props = {
   details: Details | null;
 };
 
-export const DetailsProductGallery: React.FC<Props> = ({ details }) => {
+export const DetailsProductGallery: React.FC<Props>
+= React.memo(({ details }) => {
   const [mainIndex, setMainIndex] = useState(0);
 
   useEffect(() => setMainIndex(0), [details]);
@@ -40,4 +41,4 @@ export const DetailsProductGallery: React.FC<Props> = ({ details }) => {
       </li>
     </ul>
   );
-};
+});
