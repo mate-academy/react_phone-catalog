@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { Loader } from '../components/Loader';
 import { BackButton } from '../components/BackButton';
@@ -27,6 +27,7 @@ export const ProductDetailsPage: React.FC = () => {
   const productName = currentPhone?.name;
   const infoPath = `products/${productDetailsPath}.json`;
   const randomPhones = useMemo(() => randomSequence(phones), [phones]);
+  const navigate = useNavigate();
 
   const getDetails = async (path: string): Promise<Details> => {
     const response = await fetch(path);
@@ -41,13 +42,15 @@ export const ProductDetailsPage: React.FC = () => {
   };
 
   const handleDetailsReject = () => {
-    setIsErrorDetails(true);
+    navigate('/notFound');
   };
 
   useEffect(() => {
-    getDetails(infoPath)
-      .then(resolve => handleDetailsResolve(resolve))
-      .catch(handleDetailsReject);
+    if (phones.length) {
+      getDetails(infoPath)
+        .then(resolve => handleDetailsResolve(resolve))
+        .catch(handleDetailsReject);
+    }
   }, [phones, location]);
 
   return !phones.length

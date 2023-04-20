@@ -36,13 +36,18 @@ export const FavouritesPage: React.FC = () => {
         <div className="favourites-page__quantity">
           {`${favouritesPhones.length} items`}
         </div>
-        <ul className="favourites-page__list">
-          {favouritesPhones.map(phone => (
-            <li key={phone.id}>
-              <ProductCard phone={phone} />
-            </li>
-          ))}
-        </ul>
+        {querry && !favouritesPhones.length
+          ? (
+            <h2>No corresponding gadgets</h2>
+          ) : (
+            <ul className="favourites-page__list">
+              {favouritesPhones.map(phone => (
+                <li key={phone.id}>
+                  <ProductCard phone={phone} />
+                </li>
+              ))}
+            </ul>
+          )}
       </main>
     );
 };

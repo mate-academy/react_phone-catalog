@@ -56,13 +56,15 @@ export const CartPage: React.FC = () => {
             {`Total for ${cartList.length} items`}
           </div>
           <div className="cart-total__line" />
-          <button
-            className="cart-total__button"
-            type="button"
-            onClick={() => setIsNotificated(true)}
-          >
-            Checkout
-          </button>
+          {!!cartList.length && (
+            <button
+              className="cart-total__button"
+              type="button"
+              onClick={() => setIsNotificated(true)}
+            >
+              Checkout
+            </button>
+          )}
         </div>
       </div>
       <div

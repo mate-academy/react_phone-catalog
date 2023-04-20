@@ -49,8 +49,12 @@ export const PhonesPage: React.FC = () => {
         <div className="phones-page__info-block">
           <Breadcrumbs productList={phones} />
           <div className="phone-page-title">
-            <p className="phone-page-title__name">Mobile phones</p>
-            <div className="phone-page-title__models-count">{`${phones.length} models`}</div>
+            <p className="phone-page-title__name">
+              Mobile phones
+            </p>
+            <div className="phone-page-title__models-count">
+              {`${phones.length} models`}
+            </div>
           </div>
           <div className="phones-page__select-block">
             <Select

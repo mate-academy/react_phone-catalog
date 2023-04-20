@@ -1,7 +1,6 @@
 .header {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 40px;
   width: 100%;
   min-width: $sectionTabletWidth;
   height: 64px;
@@ -9,7 +8,6 @@
 
   @include onTablet {
     height: 50px;
-    margin-bottom: 30px;
   }
 
   &__logo {

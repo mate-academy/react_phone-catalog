@@ -15,7 +15,12 @@ body {
 
 #root {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-rows: 104px auto 96px;
+  height: 100vh;
+
+  @include onTablet {
+    grid-template-rows: 80px auto 80px;
+  }
 }
 
 h1 {

@@ -7,13 +7,18 @@ type Props = {
 };
 
 export const ProductsList: React.FC<Props> = ({ phones }) => {
-  return (
-    <ul className="phones-page__list" data-cy="productList">
-      {phones.map(card => (
-        <li key={card.id}>
-          <ProductCard phone={card} />
-        </li>
-      ))}
-    </ul>
-  );
+  return !phones.length
+    ? (
+      <h2>
+        No corresponding gadgets
+      </h2>
+    ) : (
+      <ul className="phones-page__list" data-cy="productList">
+        {phones.map(card => (
+          <li key={card.id}>
+            <ProductCard phone={card} />
+          </li>
+        ))}
+      </ul>
+    );
 };

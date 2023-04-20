@@ -4,7 +4,7 @@
   align-items: start;
   margin: 0 152px;
   width: $sectionWidth;
-  min-height: 100vh;
+  justify-self: center;
 
   @include onTablet {
     margin: 0 82px;

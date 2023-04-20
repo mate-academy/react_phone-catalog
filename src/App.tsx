@@ -20,7 +20,7 @@ const App = () => {
         <Route path="/Phones/:productId" element={<ProductDetailsPage />} />
         <Route path="/Cart" element={<CartPage />} />
         <Route path="/Favourites" element={<FavouritesPage />} />
-        {['/Tabletes', '/Accessories'].map(path => (
+        {['/Tabletes', '/Accessories', '/Contacts', '/Rights'].map(path => (
           <Route
             key={path}
             path={path}
