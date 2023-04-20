@@ -1,0 +1,100 @@
+.home-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 152px;
+
+  @include onTablet {
+    margin: 0 82px;
+  }
+}
+
+.slider {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  height: 400px;
+  width: $sectionWidth;
+  margin-bottom: 104px;
+
+  @include onTablet {
+    height: 350px;
+    width: $sliderWidthTablet + 80px;
+    padding: 10px;
+  }
+
+  &__body {
+    width: $sliderWidthDesc;
+    overflow: hidden;
+
+    @include onTablet {
+      width: $sliderWidthTablet;
+    }
+  }
+
+  &__button {
+    @extend %flexCenter;
+    width: 32px;
+    background: $white;
+    border: 1px solid $icons;
+
+    @include onTablet {
+      width: 30px;
+    }
+  }
+}
+
+.album {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+  margin: 0;
+  width: 300%;
+  height: 100%;
+  list-style: none;
+  left: -$sliderWidthDesc;
+
+  @include onTablet {
+    left: -$sliderWidthTablet;
+  }
+
+  &__img {
+    position: absolute;
+    width: $sliderWidthDesc;
+    height: 400px;
+    object-fit: cover;
+    opacity: 1;
+    transform: translate(0);
+    transition: none;
+
+    @include onTablet {
+      height: 350px;
+      width: $sliderWidthTablet;
+    }
+  }
+}
+
+.rectangles {
+  position: absolute;
+  bottom: -18px;
+  transform: translateX(-50%);
+  left: 50%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  margin: auto;
+  list-style: none;
+  gap: 14px;
+  padding: 0;
+
+  &__item {
+    width: 14px;
+    height: 4px;
+    background-image: url("../images/icons/Rectangle_.svg");
+  }
+}
+
+.is-active {
+  background-image: url("../images/icons/Rectangle_active.svg");
+}

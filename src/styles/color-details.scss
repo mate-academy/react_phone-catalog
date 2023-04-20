@@ -1,0 +1,45 @@
+.color-details {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+
+  &__collection {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 14px;
+    margin-bottom: 24px;
+    padding: 3px;
+    list-style: none;
+
+    @include onTablet {
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+  }
+}
+
+.color {
+  display: block;
+  border-radius: 50%;
+  height: 24px;
+  width: 24px;
+  text-decoration: none;
+  box-shadow: 0 0 0 2px $white, 0 0 0 3px $element;
+
+  &:hover {
+    box-shadow: 0 0 0 2px $white, 0 0 0 3px $icons;
+  }
+
+  &:active {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+.active-color {
+  box-shadow: 0 0 0 2px $white, 0 0 0 3px $primary;
+
+  &:hover {
+    @extend .active-color;
+  }
+}

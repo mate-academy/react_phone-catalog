@@ -1,0 +1,11 @@
+.coming-soon-page {
+  width: 100%;
+
+  &__title {
+    font-weight: 700;
+    color: $primary;
+    font-size: 40px;
+    line-height: 50px;
+    margin-left: 100px;
+  }
+}

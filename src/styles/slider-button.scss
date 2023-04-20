@@ -1,0 +1,35 @@
+.slider-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+
+  &__left {
+    @extend %directButton;
+    background-image: url("../images/buttons/Left.svg");
+
+    &:hover {
+      border: 1px solid $primary;
+    }
+
+    &--disabled {
+      pointer-events: none;
+      background-image: url("../images/buttons/Left_disabled.svg");
+    }
+  }
+
+  &__right {
+    @extend %directButton;
+    background-image: url("../images/buttons/Right.svg");
+
+    &:hover {
+      border: 1px solid $primary;
+    }
+
+    &--disabled {
+      pointer-events: none;
+      background-image: url("../images/buttons/Right_disabled.svg");
+    }
+  }
+}

@@ -1,0 +1,88 @@
+@import "./vars";
+@import "./mixins";
+
+%flexCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+%directButton {
+  width: 32px;
+  height: 32px;
+  border: 1px solid $icons;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: $white;
+}
+
+%detailsPhotoSmall {
+  width: 78px;
+  height: 78px;
+  border: 1px solid $element;
+
+  @include onTablet {
+    width: 43px;
+    height: 43px;
+  }
+}
+
+%detailsPhotoBig {
+  width: 464px;
+  height: 464px;
+
+  @include onTablet {
+    width: 367px;
+    height: 367px;
+  }
+}
+
+%cardInfoBlock {
+  @extend .small_text;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 15px;
+  padding-bottom: 8px;
+
+  @include onTablet {
+    height: 12px;
+    padding-bottom: 5px;
+  }
+}
+
+%underline {
+  width: 100%;
+  border-bottom: 1px solid $element;
+}
+
+%defaultButtonDisable {
+  background: transparent;
+  border: none;
+  text-decoration: none;
+  font-family: inherit;
+  padding: 0;
+}
+
+%circle {
+  @extend %flexCenter;
+  position: absolute;
+  left: 50%;
+  bottom: 50%;
+  width: 12px;
+  height: 12px;
+  background-color: red;
+  border: 1px solid white;
+  border-radius: 50%;
+  color: $white;
+  font-size: 9px;
+  line-height: 9px;
+  vertical-align: middle;
+}
+
+%headerIcon {
+  width: 16px;
+  height: 16px;
+  position: relative;
+  background-repeat: no-repeat;
+}

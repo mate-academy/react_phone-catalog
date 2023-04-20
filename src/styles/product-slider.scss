@@ -1,0 +1,49 @@
+.product-slider {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-bottom: 80px;
+
+  @include onTablet {
+    gap: 18px;
+  }
+
+  &__heading {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__window {
+    position: relative;
+    overflow: hidden;
+    width: 1136px;
+    height: 507px;
+
+    @include onTablet {
+      width: 680px;
+      height: 460px;
+    }
+  }
+}
+
+.product-slider-block {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  list-style: none;
+  left: 0;
+  gap: 16px;
+  transform: translate(0);
+  transition: transform 0.8s ease-in-out;
+  padding: 0;
+  margin: 0;
+
+  @include onTablet {
+    gap: 10px;
+  }
+}
+
+.product-slider-title {
+  color: $primary;
+}

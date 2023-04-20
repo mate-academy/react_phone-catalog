@@ -1,0 +1,35 @@
+.breadcrumbs {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-self: flex-start;
+  gap: 13px;
+  margin-bottom: 40px;
+
+  @include onTablet {
+    margin-bottom: 30px;
+  }
+
+  &__home {
+    width: 15px;
+    height: 15px;
+    background-image: url("../images/icons/Home.svg");
+  }
+
+  &__vector {
+    width: 7px;
+    height: 10px;
+    background-image: url("../images/icons/rght.svg");
+    background-repeat: no-repeat;
+  }
+
+  &__path {
+    @extend .small_text;
+    color: $primary;
+    height: 12px;
+
+    &:last-child {
+      color: $secondary;
+    }
+  }
+}

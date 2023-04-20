@@ -1,0 +1,67 @@
+.footer {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  height: 96px;
+  width: 100%;
+  min-width: $sectionTabletWidth;
+  box-shadow: 0 -1px 0 $element;
+
+  @include onTablet {
+    height: 80px;
+  }
+
+  &__logo {
+    @extend %flexCenter;
+    position: absolute;
+    left: 152px;
+    top: 43px;
+
+    @include onTablet {
+      top: 35px;
+      left: 90px;
+    }
+  }
+}
+
+.footer-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 64px;
+
+  @include onTablet {
+    gap: 50px;
+  }
+
+  &__link {
+    @extend %flexCenter;
+    color: $secondary;
+    text-decoration: none;
+  }
+}
+
+.back-to-top {
+  position: absolute;
+  right: 152px;
+  top: 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  color: $secondary;
+
+  @include onTablet {
+    right: 90px;
+    top: 24px;
+  }
+
+  &__button {
+    @extend %flexCenter;
+    width: 32px;
+    height: 32px;
+    border: 1px solid #b4bdc4;
+    cursor: pointer;
+    background-color: $white;
+  }
+}

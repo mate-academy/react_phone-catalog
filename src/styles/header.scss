@@ -1,0 +1,82 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  min-width: $sectionTabletWidth;
+  height: 64px;
+  border-bottom: 1px solid $element;
+
+  @include onTablet {
+    height: 50px;
+  }
+
+  &__logo {
+    @extend %flexCenter;
+    padding-left: 24px;
+  }
+
+  &__item {
+    @extend %flexCenter;
+    box-shadow: -1px 0 0 $element;
+    width: 64px;
+
+    @include onTablet {
+      width: 50px;
+    }
+  }
+
+  &__icon-text {
+    display: inline-block;
+    height: 8px;
+  }
+}
+
+.header-nav {
+  display: flex;
+  gap: 64px;
+  justify-content: space-between;
+  padding-left: 65px;
+
+  @include onTablet {
+    gap: 50px;
+    padding-left: 50px;
+  }
+
+  &__link {
+    @extend %flexCenter;
+    color: $secondary;
+
+    @include onTablet {
+      font-size: 10px;
+      line-height: 9px;
+    }
+  }
+}
+
+.header-block {
+  display: flex;
+}
+
+.active {
+  border-top: 3px solid $white;
+  border-bottom: 3px solid $primary;
+  color: $primary;
+}
+
+.header-icon-cart {
+  @extend %headerIcon;
+  background-image: url("../images/icons/Shopping\ bag\ \(Cart\).svg");
+
+  &__circle {
+    @extend %circle;
+  }
+}
+
+.header-icon-favourites {
+  @extend %headerIcon;
+  background-image: url("../images/icons/Favourites\ \(Heart\ Like\).svg");
+
+  &__circle {
+    @extend %circle;
+  }
+}

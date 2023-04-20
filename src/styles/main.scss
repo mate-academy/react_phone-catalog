@@ -1,0 +1,122 @@
+@import "./utils/extends";
+@import "./utils/mixins";
+@import "./utils/vars";
+
+@font-face {
+  font-family: "Mont";
+  src: url("../fonts/Mont-Regular.otf") format("woff");
+}
+
+body {
+  margin: 0;
+  font-family: "Mont", sans-serif;
+  font-style: normal;
+}
+
+button {
+  cursor: pointer;
+}
+
+#root {
+  display: grid;
+  grid-template-rows: 104px auto 96px;
+  height: 100vh;
+
+  @include onTablet {
+    grid-template-rows: 80px auto 80px;
+  }
+}
+
+h1 {
+  color: $primary;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+h2 {
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 140%;
+  letter-spacing: 0;
+  margin: 0;
+}
+
+h3 {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 26px;
+  letter-spacing: 0;
+  margin: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+
+  &:active {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+p {
+  margin: 0;
+}
+
+.uppercase_text {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.buttons_text {
+  margin: 0;
+  font-family: "Mont", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+}
+
+.body_text {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+}
+
+.small_text {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: 0;
+}
+
+@import "./header.scss";
+@import "./footer.scss";
+@import "./home-page.scss";
+@import "./product-card.scss";
+@import "./product-slider.scss";
+@import "./category-shop.scss";
+@import "./breadcrumbs.scss";
+@import "./phones-page.scss";
+@import "./slider-button.scss";
+@import "./select.scss";
+@import "./loader.scss";
+@import "./back-button.scss";
+@import "./product-details-page.scss";
+@import "./color-details.scss";
+@import "./capacity-details.scss";
+@import "./cart-page.scss";
+@import "./favourites-page.scss";
+@import "./search-bar.scss";
+@import "./notification.scss";
+@import "./coming-soon-page.scss"

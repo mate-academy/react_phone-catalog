@@ -1,0 +1,196 @@
+.cart-page {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  margin: 0 152px;
+  width: $sectionWidth;
+  justify-self: center;
+
+  @include onTablet {
+    margin: 0 82px;
+    width: $sectionTabletWidth;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: start;
+    gap: 16px;
+    color: $primary;
+    margin-bottom: 24px;
+  }
+
+  &__empty-list-message {
+    @extend %flexCenter;
+    width: 752px;
+    height: 128px;
+    border: 1px solid $element;
+  }
+}
+
+.cart-page-container {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  margin-bottom: 87px;
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    list-style: none;
+  }
+}
+
+.cart-block {
+  display: grid;
+  grid-template-columns: 37px 104px 344px 139px 1fr;
+  grid-template-rows: 1fr;
+  padding-left: 27px;
+  padding-right: 40px;
+  border: 1px solid $element;
+  width: 683px;
+  height: 126px;
+
+  @include onTablet {
+    width: 421px;
+    height: 86px;
+    grid-template-columns: 25px 50px 200px 85px 1fr;
+    padding-left: 17px;
+    padding-right: 20px;
+  }
+
+  & > * {
+    align-self: center;
+  }
+
+  &__cross {
+    @extend %defaultButtonDisable;
+    width: 9px;
+    height: 9px;
+    background-image: url("../images/buttons/Close.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &__image {
+    object-fit: contain;
+    width: 66px;
+    height: 66px;
+
+    @include onTablet {
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  &__model {
+    @extend .body_text;
+    color: $primary;
+
+    @include onTablet {
+      font-size: 12px;
+      line-height: 15px;
+    }
+  }
+
+  &__price {
+    color: $primary;
+
+    @include onTablet {
+      font-size: 20px;
+      line-height: 22px;
+    }
+  }
+}
+
+.cart-select {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 96px;
+
+  @include onTablet {
+    width: 60px;
+  }
+
+  &__number {
+    @extend .body_text;
+    color: #000;
+
+    @include onTablet {
+      font-size: 12px;
+      line-height: 15px;
+    }
+  }
+
+  &__minus {
+    @extend %defaultButtonDisable;
+    width: 32px;
+    height: 32px;
+    border: 1px solid $icons;
+    background-image: url("../images/buttons/minus.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+
+    @include onTablet {
+      width: 20px;
+      height: 20px;
+    }
+
+    &:not(.cart-select__minus--disabled):hover {
+      border: 1px solid $primary;
+    }
+
+    &--disabled {
+      background-image: url("../images/buttons/minus_disabled.svg");
+      border: 1px solid $element;
+    }
+  }
+
+  &__plus {
+    @extend .cart-select__minus;
+    background-image: url("../images/buttons/Plus.svg");
+
+    &--disabled {
+      background-image: url("../images/buttons/Plus__disabled.svg");
+      border: 1px solid $element;
+    }
+  }
+}
+
+.cart-total {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px;
+  width: 318px;
+  height: 156px;
+  border: 1px solid $element;
+
+  @include onTablet {
+    width: 180px;
+    height: 130px;
+    padding: 18px;
+  }
+
+  &__price {
+    color: $primary;
+  }
+
+  &__value {
+    color: $secondary;
+    margin-bottom: 24px;
+  }
+
+  &__line {
+    border-bottom: 1px solid $element;
+    width: 100%;
+  }
+
+  &__button {
+    @include add-button(48px, 100%, 38px, 100%);
+  }
+}
