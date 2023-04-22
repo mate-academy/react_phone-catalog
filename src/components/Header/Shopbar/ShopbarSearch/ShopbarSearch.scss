@@ -1,0 +1,12 @@
+@import "../../../../styles/utils/vars";
+
+.shopbar__search {
+  width: 100%;
+  font-size: 14px;
+  padding: 23px 0 23px 23px;
+
+  &::placeholder {
+    font-size: inherit;
+    color: $iconsColor;
+  }
+}

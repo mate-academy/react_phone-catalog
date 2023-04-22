@@ -1,0 +1,9 @@
+@import "../../../styles/utils/mixins";
+
+.nets {
+  @include flexGapAlign(64px);
+}
+
+.net__link {
+  padding: 10px 0;
+}

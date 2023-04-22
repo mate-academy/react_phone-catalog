@@ -1,0 +1,58 @@
+@import "../../../styles/utils/vars";
+@import "../../../styles/utils/mixins";
+
+.main-slider {
+  &__img {
+    height: $mainSlideHeight;
+    width: 100%;
+    object-fit: cover;
+  }
+  
+  &-dots {
+    height: 24px;
+    display: flex !important;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+
+    li {
+      button {
+        @include square(24px);
+
+        &::before {
+          content: "";
+          display: block;
+          width: 14px;
+          height: 4px;
+          background-color: $elementsColor;
+        }
+      }
+    }
+
+    .slick-active {
+      button {
+        &::before {
+          background-color: $primaryColor;
+        }
+      }
+    }
+  }
+}
+
+.slick-slider {
+  margin-top: 16px;
+  height: 432px;
+  display: flex;
+  gap: 16px;
+}
+
+.slick-list {
+  width: $mainSlideWidth;
+  height: $mainSlideHeight !important;
+}
+
+.slick-track {
+  height: 100%;
+}

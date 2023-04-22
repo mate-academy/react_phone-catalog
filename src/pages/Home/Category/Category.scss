@@ -1,0 +1,23 @@
+@import "../../../styles/utils/vars";
+@import "../../../styles/utils/mixins";
+
+.category {
+  &__list {
+    @include flexGapAlign(16px);
+  }
+
+  &__img {
+    margin-bottom: 24px;
+  }
+
+  &__name {
+    font-size: 20px;
+    margin-bottom: 4px;
+  }
+
+  &__models {
+    font-size: 14px;
+    line-height: 21px;
+    color: $secondaryColor;
+  }
+}

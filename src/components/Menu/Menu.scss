@@ -1,0 +1,19 @@
+@import "../../styles/utils/vars";
+@import "../../styles/utils/mixins";
+
+.menu {
+  @include flexCenter;
+  height: 100vh;
+  flex-direction: column;
+  background-color: $elementsColor;
+  overflow-y: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  transform: translateX(100%);
+
+  &-active {
+    transform: translate(0%);
+  }
+}

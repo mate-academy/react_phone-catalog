@@ -1,0 +1,56 @@
+@import "../../../styles/utils/vars";
+@import "../../../styles/utils/mixins";
+
+.cart-item {
+  width: 752px;
+  height: 128px;
+  display: flex;
+  align-items: center;
+  padding: 24px 40px;
+  border: 1px solid $elementsColor;
+
+  &__cancel {
+    margin-right: 24px;
+    @include flexCenter;
+    @include square(24px);
+  }
+
+  &__link {
+    margin-right: 39px;
+    @include flexGapAlign(24px);
+  }
+  
+  &__img {
+    @include square(80px);
+    object-fit: contain;
+    object-position: center;
+  }
+  
+  &__name {
+    width: 295px;
+    font-size: 14px;
+    line-height: 21px;
+  }
+  
+  &__count-block {
+    margin-right: 43px;
+    @include flexGapAlign(5px);
+  }
+  
+  &__count-button {
+    @include iconButton;
+  }
+  
+  &__count {
+    display: flex;
+    justify-content: center;
+    width: 32px;
+    font-size: 14px;
+    color: #000;
+  }
+  
+  &__price {
+    font-weight: 700;
+    font-size: 22px;
+  }
+}

@@ -1,0 +1,14 @@
+@import "../../../styles/utils/vars";
+@import "../../../styles/utils/mixins";
+
+.button-move {
+  @include flexGapAlign(16px);
+
+  &__name {
+    color: $secondaryColor;
+  }
+
+  &__button {
+    @include iconButton;
+  }
+}

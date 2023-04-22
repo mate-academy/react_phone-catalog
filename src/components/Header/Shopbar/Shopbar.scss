@@ -1,0 +1,28 @@
+@import "../../../styles/utils/vars";
+@import "../../../styles/utils/mixins";
+
+.shopbar {
+  height: 65px;
+
+  @include onTablet {
+    height: 100%;
+  }
+
+  &__list {
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  &__item {
+    height: 100%;
+  
+    &-search {
+      padding-right: 24px;
+      @include flexGapAlign(24px);
+      justify-content: space-between;
+      width: 372px;
+      box-shadow: -1px 0 0 $iconsColor;
+    }
+  }
+}

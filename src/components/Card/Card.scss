@@ -1,0 +1,52 @@
+@import "../../styles/utils/vars";
+@import "../../styles/utils/mixins";
+
+.card {
+  width: 272px;
+  height: 507px;
+  padding: 32px 24px 24px;
+  border: 1px solid $elementsColor;
+
+  &__img {
+    @include square(208px);
+    margin: 0 auto;
+    margin-bottom: 24px;
+    object-fit: contain;
+    object-position: center;
+  }
+
+  &__name {
+    height: 42px;
+    font-size: 14px;
+    line-height: 21px;
+    margin-bottom: 7px;
+  }
+
+  &__prices {
+    @include flexGapAlign(8px);
+    margin-bottom: 8px;
+  }
+
+  &__price {
+    font-size: 22px;
+    font-weight: 700;
+  }
+  
+  &__full-price {
+    font-size: 22px;
+    text-decoration-line: line-through;
+    color: $secondaryColor;
+  }
+
+  &__line {
+    margin-bottom: 16px;
+  }
+
+  &__chars {
+    margin-bottom: 16px;
+  }
+
+  &__buttons {
+    @include flexGapAlign(8px);
+  }
+}

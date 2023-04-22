@@ -1,0 +1,15 @@
+@import "../../styles/utils/vars";
+@import "../../styles/utils/mixins";
+
+.search {
+  &__count {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 24px;
+    color: $secondaryColor;
+
+  }
+  &__list {
+    @include primaryGridList;
+  }
+}

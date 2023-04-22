@@ -1,0 +1,36 @@
+@import "../../../styles/utils/vars";
+@import "../../../styles/utils/mixins";
+
+.navbar {
+  margin-bottom: 30px;
+
+  @include onTablet {
+    margin-bottom: 0;
+    height: 100%;
+  }
+
+  &__list {
+    height: 100%;
+    @include flexGapAlign(44px);
+    flex-direction: column;
+
+    @include onTablet {
+      flex-direction: row;
+      gap: 64px;
+    }
+  }
+
+  &__item {
+    height: 100%;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    
+    &-active {
+      color: $primaryColor;
+    }
+  }
+}

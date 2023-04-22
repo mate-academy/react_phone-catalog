@@ -1,0 +1,7 @@
+@import "../../../styles/utils/vars";
+@import "../../../styles/utils/mixins";
+
+.pagination-butt {
+  @include iconButton;
+  user-select: none;
+}

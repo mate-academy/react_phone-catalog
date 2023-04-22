@@ -1,0 +1,33 @@
+@import "../../../../styles/utils/vars";
+@import "../../../../styles/utils/mixins";
+
+.shopbar__item-dyn {
+  @include flexCenter;
+  width: 66px;
+  height: 100%;
+  border: 1px solid $iconsColor;
+
+  @include onTablet {
+    box-shadow: -1px 0 0 $elementsColor;
+    border: none;
+  }
+
+  &__count-block {
+    @include flexCenter;
+    @include square(30px);
+    position: relative;
+  }
+  
+  &__count {
+    @include flexCenter;
+    @include square(14px);
+    font-size: 9px;
+    color: #fff;
+    background-color: $likedColor;
+    border: 1px solid #fff;
+    border-radius: 50px;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}

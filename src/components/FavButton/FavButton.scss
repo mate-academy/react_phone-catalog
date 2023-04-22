@@ -1,0 +1,5 @@
+@import "../../styles/utils/mixins";
+
+.fav-button {
+  @include iconButton(40px, 40px);
+}

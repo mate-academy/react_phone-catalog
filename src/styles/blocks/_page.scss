@@ -1,0 +1,20 @@
+@import "../utils/vars";
+
+.page {
+  font-family: "mont", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: $primaryColor;
+  scroll-behavior: smooth;
+
+  &__title {
+    font-weight: 700;
+    margin-bottom: 24px;
+    font-size: 32px;
+    letter-spacing: -0.01em;
+  }
+
+  &__section {
+    margin-bottom: 80px;
+  }
+}

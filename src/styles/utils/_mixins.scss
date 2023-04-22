@@ -1,0 +1,67 @@
+@import "./vars";
+
+@mixin onTablet {
+  @media (min-width: 793px) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin square($_size) {
+  width: $_size;
+  height: $_size;
+}
+
+@mixin flexCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flexGapAlign($_gap) {
+  display: flex;
+  align-items: center;
+  gap: $_gap;
+}
+
+@mixin iconButton($_width: 32px, $_height: 32px) {
+  @include flexCenter;
+  width: $_width;
+  height: $_height;
+  border: 1px solid $iconsColor;
+  user-select: none;
+}
+
+@mixin disButton {
+  border-color: $elementsColor;
+  pointer-events: none;
+
+  img {
+    filter: invert(89%)
+      sepia(5%)
+      saturate(371%)
+      hue-rotate(198deg)
+      brightness(91%)
+      contrast(91%);
+  }
+}
+
+@mixin primaryButton {
+  background-color: $primaryColor;
+  font-size: 14px;
+  text-align: center;
+  color: #fff;
+}
+
+@mixin primaryGridList {
+  margin-bottom: 40px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 16px;
+  row-gap: 40px;
+}

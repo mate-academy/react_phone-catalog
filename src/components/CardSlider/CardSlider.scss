@@ -1,0 +1,22 @@
+@import "../../styles/utils/vars";
+@import "../../styles/utils/mixins";
+
+.card-slider {
+  &__wrapper {
+    position: relative;
+    overflow: hidden;
+  }
+
+  &__list {
+    display: flex;
+    gap: 16px;
+    transition: transform $primaryDuration;
+  }
+
+  &__butts {
+    @include flexGapAlign(16px);
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+}

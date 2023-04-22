@@ -1,0 +1,93 @@
+@import "../../../styles/utils/vars";
+@import "../../../styles/utils/mixins";
+
+.card-info {
+  width: 320px;
+
+  &__colors {
+    margin-bottom: 24px;
+
+    &__name {
+      color: $secondaryColor;
+      margin-bottom: 8px;
+    }
+
+    &__list {
+      @include flexGapAlign(8px);
+    }
+
+    &__item {
+      border: 1px solid $elementsColor;
+      border-radius: 50px;
+    }
+
+    &__link {
+      display: block;
+      @include square(32px);
+      border: 2px solid #fff;
+      border-radius: 50px;
+    }
+
+    &-active {
+      border-color: #000;
+    }
+  }
+
+  &__line {
+    margin-bottom: 24px;
+  }
+
+  &__capacity {
+    margin-bottom: 24px;
+
+    &__name {
+      color: $secondaryColor;
+      margin-bottom: 8px;
+    }
+
+    &__list {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    &__link {
+      @include flexCenter;
+      width: 63px;
+      height: 32px;
+      font-size: 14px;
+      border: 1px solid $iconsColor;
+    }
+
+    &-active {
+      background-color: $primaryColor;
+      color: #fff;
+    }
+  }
+
+  &__prices {
+    margin-top: 8px;
+    margin-bottom: 16px;
+    @include flexGapAlign(8px);
+  }
+
+  &__price {
+    display: block;
+    font-weight: 700;
+    font-size: 32px;
+    letter-spacing: -0.01em;
+  }
+
+  &__full-price {
+    display: block;
+    font-size: 22px;
+    text-decoration-line: line-through;
+    color: $secondaryColor;
+  }
+
+  &__buttons {
+    margin-bottom: 32px;
+    display: flex;
+    gap: 8px;
+  }
+}
