@@ -21,7 +21,7 @@ export const Footer = memo(() => {
           <ul className="footer__list">
             <li className="footer__item">
               <a
-                href="https://github.com/"
+                href="https://github.com/bogdana18"
                 target="_blank"
                 className="footer__link"
                 rel="noreferrer"
@@ -41,7 +41,7 @@ export const Footer = memo(() => {
             </li>
             <li className="footer__item">
               <a
-                href="https://github.com/"
+                href="https://t.me/lexusenko"
                 target="_blank"
                 className="footer__link"
                 rel="noreferrer"
