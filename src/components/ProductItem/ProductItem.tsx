@@ -38,7 +38,7 @@ export const ProductItem: FC<Props> = ({ product }) => {
       <div className="product-item__container">
         <div className="product-item__content">
           <Link to={`/${category}/${itemId}`} className="product-item__link">
-            <img src={image} alt="phones" className="product-item__img" />
+            <img src={`_new/${image}`} alt="phones" className="product-item__img" />
             <h2 className="product-item__subtitle">{name}</h2>
           </Link>
           <div className="product-item__box-price">
