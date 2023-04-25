@@ -15,7 +15,7 @@ export const ShopByCategory: FC<Props> = ({
   return (
     <div className="shop-by-category">
       <Link to={to} className="shop-by-category__box-img">
-        <img src={`_new/${srcImg}`} alt={title} className="shop-by-category__img" />
+        <img src={`./_new/${srcImg}`} alt={title} className="shop-by-category__img" />
       </Link>
 
       <Link to={to} className="shop-by-category__title">
