@@ -35,34 +35,32 @@ export const Cart: FC<Props> = ({ products }) => {
         {inCartCount === 0 ? (
           <h2 className="cart__not-res">Your cart is empty</h2>
         ) : (
-          <>
-            <div className="cart__content">
-              <div className="cart__products">
-                {products.map((product) => (
-                  <CartItem key={product.id} product={product} />
-                ))}
-              </div>
-              <div className="cart__total-box">
-                <div className="cart__info">
-                  <h2 className="cart__total-price">{`$${totalSum}`}</h2>
-                  <p className="cart__total-count">{`Total for ${inCartCount} items`}</p>
-                </div>
-
-                <button
-                  type="button"
-                  className="cart__button button"
-                  onClick={() => setIsOpenModal(true)}
-                >
-                  Checkout
-                </button>
-                {isOpenModal && (
-                  <div className="cart__modal">
-                    <Modal setIsOpenModal={setIsOpenModal} />
-                  </div>
-                )}
-              </div>
+          <div className="cart__content">
+            <div className="cart__products">
+              {products.map((product) => (
+                <CartItem key={product.id} product={product} />
+              ))}
             </div>
-          </>
+            <div className="cart__total-box">
+              <div className="cart__info">
+                <h2 className="cart__total-price">{`$${totalSum}`}</h2>
+                <p className="cart__total-count">{`Total for ${inCartCount} items`}</p>
+              </div>
+
+              <button
+                type="button"
+                className="cart__button button"
+                onClick={() => setIsOpenModal(true)}
+              >
+                Checkout
+              </button>
+              {isOpenModal && (
+                <div className="cart__modal">
+                  <Modal setIsOpenModal={setIsOpenModal} />
+                </div>
+              )}
+            </div>
+          </div>
         )}
       </div>
     </div>
