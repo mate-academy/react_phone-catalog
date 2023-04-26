@@ -53,7 +53,7 @@ export const Carousel: FC<Props> = ({ images }) => {
 
             return (
               <img
-                src={`${process.env.PUBLIC_URL}/_new/${image}`}
+                src={`_new/${image}`}
                 alt={image}
                 key={image}
                 className={classNames('carousel__img', {
