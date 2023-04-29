@@ -12,6 +12,7 @@ const Favorites = () => {
     <ProductsPage
       isDisPag={favorites.length <= 8}
       isDisSelects
+      isFavorites
       title="Favorites"
       products={products}
       emptyName="Your favorites is empty"

@@ -25,6 +25,7 @@ type Props = {
   isDisPag?: boolean;
   isDisSelects?: boolean;
   emptyName?: string;
+  isFavorites?: boolean;
 };
 
 const ProductsPage: React.FC<Props> = ({
@@ -33,6 +34,7 @@ const ProductsPage: React.FC<Props> = ({
   isDisSelects,
   isDisPag,
   emptyName = 'Not found',
+  isFavorites = false,
 }) => {
   const [searchParams] = useSearchParams();
   const sort = searchParams.get('sort') || sortOptions[0].value;
@@ -96,23 +98,36 @@ const ProductsPage: React.FC<Props> = ({
                   />
                 </div>
               )}
-              <ul data-cy="productList">
-                <TransitionGroup className="products__list">
-                  {visibleProducts.map(product => (
-                    <CSSTransition
-                      key={product.id}
-                      timeout={500}
-                      classNames="item"
-                    >
+              <ul
+                data-cy="productList"
+                className={!isFavorites ? 'products__list' : ''}
+              >
+                {isFavorites
+                  ? (
+                    <TransitionGroup className="products__list">
+                      {visibleProducts.map(product => (
+                        <CSSTransition
+                          key={product.id}
+                          timeout={500}
+                          classNames="item"
+                        >
+                          <li className="products__item">
+                            <Card product={product} />
+                          </li>
+                        </CSSTransition>
+                      ))}
+                    </TransitionGroup>
+                  )
+                  : (
+                    visibleProducts.map(product => (
                       <li className="products__item">
                         <Card product={product} />
                       </li>
-                    </CSSTransition>
-                  ))}
-                </TransitionGroup>
+                    ))
+                  )}
               </ul>
 
-              {!isDisPag && (
+              {(!isDisPag || products.length > 8) && (
                 <Pagination pages={pages} />
               )}
             </>
