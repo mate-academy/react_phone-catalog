@@ -5,29 +5,40 @@
   @include flexCenter;
   width: 66px;
   height: 100%;
-  border: 1px solid $iconsColor;
+  box-shadow: -1px 0 0 $elementsColor;
+  position: relative;
+
+  &::after {
+    @include barAnimation;
+  }
+  
+  &.active {
+    &::after {
+      width: 100%;
+    }
+  }
 
   @include onTablet {
     box-shadow: -1px 0 0 $elementsColor;
     border: none;
   }
 
-  &__count-block {
+  &__count {
     @include flexCenter;
     @include square(30px);
     position: relative;
-  }
-  
-  &__count {
-    @include flexCenter;
-    @include square(14px);
-    font-size: 9px;
-    color: #fff;
-    background-color: $likedColor;
-    border: 1px solid #fff;
-    border-radius: 50px;
-    position: absolute;
-    top: 0;
-    right: 0;
+
+    &__item {
+      @include flexCenter;
+      @include square(14px);
+      font-size: 9px;
+      color: #fff;
+      border: 1px solid #fff;
+      border-radius: 50px;
+      background-color: $likedColor;
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
   }
 }

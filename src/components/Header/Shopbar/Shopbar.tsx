@@ -1,30 +1,27 @@
-import { useContext } from 'react';
+import { useContext, useMemo } from 'react';
 import { useLocation } from 'react-router-dom';
 import './Shopbar.scss';
 
 import { FavoritesContext } from '../../../contexts/FavoritesContext';
 import { CartContext } from '../../../contexts/CartContext';
 
+import { searchAvailableIn } from './constants';
+
 import ShopbarSearch from './ShopbarSearch/ShopbarSearch';
 import ShopbarItemDyn from './ShopbarItemDyn/ShopbarItemDyn';
-
-const searchAvailableIn = [
-  '/phones',
-  '/tablets',
-  '/accessories',
-  '/favorites',
-];
 
 const Shopbar = () => {
   const { favorites } = useContext(FavoritesContext);
   const { cart } = useContext(CartContext);
-  const location = useLocation();
-  const searchIsAvailable = searchAvailableIn.includes(location.pathname);
+  const location = useLocation().pathname;
+  const isSearchAvailable = useMemo(() => {
+    return searchAvailableIn.includes(location);
+  }, [searchAvailableIn, location]);
 
   return (
     <nav className="shopbar">
       <ul className="shopbar__list">
-        {searchIsAvailable && (
+        {isSearchAvailable && (
           <li className="shopbar__item shopbar__item-search">
             <ShopbarSearch />
           </li>

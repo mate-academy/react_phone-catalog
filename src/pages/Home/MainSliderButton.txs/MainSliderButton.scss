@@ -1,9 +1,5 @@
 @import "../../../styles/utils/vars";
-@import "../../../styles/utils/mixins";
 
 .main-slider-button {
-  @include flexCenter;
-  width: 32px;
   height: $mainSlideHeight;
-  border: 1px solid $iconsColor;
 }

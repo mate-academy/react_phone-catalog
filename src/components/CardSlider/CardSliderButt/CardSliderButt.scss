@@ -1,9 +1,0 @@
-@import "../../../styles/utils/mixins";
-
-.card-slider-button {
-  @include iconButton;
-
-  &--dis {
-    @include disButton;
-  }
-}

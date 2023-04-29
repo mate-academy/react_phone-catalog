@@ -1,8 +1,8 @@
 import './Header.scss';
 
 import Logo from '../Logo/Logo';
-import Shopbar from './Shopbar/Shopbar';
 import Navbar from './Navbar/Navbar';
+import Shopbar from './Shopbar/Shopbar';
 
 const Header = () => (
   <header className="header">

@@ -1,0 +1,14 @@
+@import "../../styles/utils/vars";
+
+.empty-modal {
+  padding: 20px;
+  border: 1px solid $iconsColor;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  &__name {
+    font-size: 20px;
+  }
+}

@@ -16,15 +16,13 @@
   }
   
   &__link {
-    @include flexCenter;
-    @include square(32px);
     font-size: 14px;
     text-align: center;
     color: #000;
     border: 1px solid $elementsColor;
     user-select: none;
-  
-    &-active {
+    
+    &.active {
       border-color: $primaryColor;
       color: #fff;
       background-color: $primaryColor;

@@ -35,7 +35,7 @@ const Card: React.FC<Props> = ({
 }) => {
   const charsList = useMemo(() => {
     return createChars(chars, [screen, capacity, ram]);
-  }, [screen, capacity, ram, createChars]);
+  }, [screen, capacity, ram, createChars, chars]);
 
   return (
     <div className="card" data-cy="cardsContainer">

@@ -1,5 +1,9 @@
 import cn from 'classnames';
-import './CardSliderButt.scss';
+
+const buttonClasses = (idDis: boolean) => cn(
+  'button-block',
+  { 'button-dis': idDis },
+);
 
 type Props = {
   img: string;
@@ -10,10 +14,7 @@ type Props = {
 const CardSliderButt: React.FC<Props> = ({ img, isDis, move }) => (
   <button
     type="button"
-    className={cn(
-      'card-slider-button',
-      { 'card-slider-button--dis': isDis },
-    )}
+    className={buttonClasses(isDis)}
     onClick={move}
   >
     <img src={img} alt="icon" />

@@ -29,33 +29,16 @@
   gap: $_gap;
 }
 
-@mixin iconButton($_width: 32px, $_height: 32px) {
-  @include flexCenter;
-  width: $_width;
-  height: $_height;
-  border: 1px solid $iconsColor;
-  user-select: none;
-}
-
-@mixin disButton {
-  border-color: $elementsColor;
-  pointer-events: none;
-
-  img {
-    filter: invert(89%)
-      sepia(5%)
-      saturate(371%)
-      hue-rotate(198deg)
-      brightness(91%)
-      contrast(91%);
-  }
-}
-
 @mixin primaryButton {
   background-color: $primaryColor;
   font-size: 14px;
   text-align: center;
   color: #fff;
+  transition: box-shadow $primaryDuration ease;
+
+  &:hover {
+    box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+  }
 }
 
 @mixin primaryGridList {
@@ -64,4 +47,18 @@
   grid-template-columns: repeat(4, 1fr);
   column-gap: 16px;
   row-gap: 40px;
+}
+
+@mixin barAnimation {
+  content: "";
+  width: 0;
+  height: 3px;
+  background-color: $primaryColor;
+  position: absolute;
+  bottom: -1px;
+  left: 50%;
+  z-index: 10;
+  transform: translateX(-50%);
+  transition-property: color width;
+  transition-duration: $primaryDuration;
 }

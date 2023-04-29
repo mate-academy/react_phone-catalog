@@ -46,6 +46,7 @@ input {
 
 button {
   cursor: pointer;
+  user-select: none;
 }
 
 input,

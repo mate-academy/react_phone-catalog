@@ -6,8 +6,13 @@
     @include flexGapAlign(16px);
   }
 
-  &__img {
+  &__img-block {
     margin-bottom: 24px;
+    overflow: hidden;
+  }
+
+  &__img {
+    transition: transform $primaryDuration;
   }
 
   &__name {
@@ -19,5 +24,9 @@
     font-size: 14px;
     line-height: 21px;
     color: $secondaryColor;
+  }
+
+  &__link:hover &__img {
+    transform: scale(1.1);
   }
 }

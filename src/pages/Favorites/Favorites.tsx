@@ -5,15 +5,16 @@ import { FavoritesContext } from '../../contexts/FavoritesContext';
 const Favorites = () => {
   const { favorites } = useContext(FavoritesContext);
   const products = useMemo(() => {
-    return favorites.map(favorite => favorite.product);
+    return favorites.map(({ product }) => product);
   }, [favorites]);
 
   return (
     <ProductsPage
-      isDisPag
+      isDisPag={favorites.length <= 8}
       isDisSelects
       title="Favorites"
       products={products}
+      emptyName="Your favorites is empty"
     />
   );
 };

@@ -48,9 +48,15 @@ const Category: React.FC<Props> = ({
             count,
           }) => (
             <li key={href} className="category__item">
-              <Link to={href} data-cy="categoryLinksContainer">
+              <Link
+                className="category__link"
+                to={href}
+                data-cy="categoryLinksContainer"
+              >
                 <figure>
-                  <img className="category__img" src={img} alt="category" />
+                  <div className="category__img-block">
+                    <img className="category__img" src={img} alt="category" />
+                  </div>
                   <figcaption>
                     <h3 className="category__name">
                       {title}

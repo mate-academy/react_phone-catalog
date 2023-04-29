@@ -1,6 +1,9 @@
 import cn from 'classnames';
-import './PaginationButt.scss';
 import { SearchLink } from '../../../helpers/searchLink';
+
+const buttonClasses = (isDis: boolean) => cn(
+  'button-block', { 'button-dis': isDis },
+);
 
 type Props = {
   move: number;
@@ -17,10 +20,7 @@ const PaginationButt: React.FC<Props> = ({
   return (
     <SearchLink
       {...props}
-      className={cn(
-        'pagination-butt',
-        { 'button-dis': isDis },
-      )}
+      className={buttonClasses(isDis)}
       params={{ page: `${move}` }}
     >
       <img src={img} alt="icon" />

@@ -12,6 +12,7 @@ const CharsList: React.FC<Props> = ({ list, classes }) => (
     {list.map(({ key, value }) => (
       <li key={key} className="char">
         <span className="char__key">{key}</span>
+
         {Array.isArray(value)
           ? (
             <>

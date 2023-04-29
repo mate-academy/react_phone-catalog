@@ -1,0 +1,15 @@
+@import "../utils/vars";
+
+.button-dis {
+  border-color: $elementsColor;
+  pointer-events: none;
+
+  img {
+    filter: invert(89%)
+      sepia(5%)
+      saturate(371%)
+      hue-rotate(198deg)
+      brightness(91%)
+      contrast(91%);
+  }
+}

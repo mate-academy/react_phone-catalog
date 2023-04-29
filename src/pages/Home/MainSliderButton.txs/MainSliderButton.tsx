@@ -14,7 +14,7 @@ const MainSliderButton: React.FC<Props> = ({ onClick, type }) => {
   return (
     <button
       type="button"
-      className="main-slider-button"
+      className="button-block main-slider-button"
       onClick={onClick}
       aria-label="arrow"
     >

@@ -1,4 +1,8 @@
 .card-details {
+  &__title {
+    margin-bottom: 40px;
+  }
+
   &__main {
     margin-bottom: 80px;
     display: flex;

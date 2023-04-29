@@ -1,0 +1,14 @@
+@import "../utils/vars";
+@import "../utils/mixins";
+
+.button-block {
+  width: 32px;
+  height: 32px;
+  border: 1px solid $iconsColor;
+  transition: border-color $primaryDuration;
+  @include flexCenter;
+
+  &:hover {
+    border-color: $primaryColor;
+  }
+}

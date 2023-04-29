@@ -1,5 +1,11 @@
 import { Link } from 'react-router-dom';
+import cn from 'classnames';
 import './CartItem.scss';
+import { countButton } from './constants';
+
+const buttonClasses = (cond: boolean) => cn(
+  'button-block', { 'button-dis': cond },
+);
 
 type Props = {
   name: string;
@@ -53,9 +59,8 @@ const CartItem: React.FC<Props> = ({
       <div className="cart-item__count-block">
         <button
           type="button"
-          className="cart-item__count-button"
+          className={buttonClasses(count === countButton.min)}
           onClick={() => onChangeCounter(-1)}
-          disabled={count === 1}
         >
           <img src="./icons/minus.svg" alt="icon" />
         </button>
@@ -67,9 +72,8 @@ const CartItem: React.FC<Props> = ({
         </span>
         <button
           type="button"
-          className="cart-item__count-button"
+          className={buttonClasses(count === countButton.max)}
           onClick={() => onChangeCounter(1)}
-          disabled={count === 100}
         >
           <img src="./icons/plus.svg" alt="icon" />
         </button>

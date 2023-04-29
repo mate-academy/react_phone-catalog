@@ -7,8 +7,4 @@
   &__name {
     color: $secondaryColor;
   }
-
-  &__button {
-    @include iconButton;
-  }
 }

@@ -6,11 +6,11 @@
   box-shadow: 0 1px 0 $elementsColor;
 
   &__wrapper {
-    height: 64px;
-    padding-left: 24px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    height: 64px;
+    padding-left: 24px;
   }
 
   &__left {

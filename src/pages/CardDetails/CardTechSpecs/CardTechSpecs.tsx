@@ -2,17 +2,7 @@ import './CardTechSpecs.scss';
 import CharsList from '../../../components/CharsList/CharList';
 import { createChars } from '../../../helpers/createChars';
 import { CardDetail } from '../../../types/CardDetail';
-
-const charsList = [
-  'Screen',
-  'Resolution',
-  'Processor',
-  'RAM',
-  'Built in memory',
-  'Camera',
-  'Zoom',
-  'Cell',
-];
+import { charsList } from './constants';
 
 type Props = {
   cardDetail: CardDetail;

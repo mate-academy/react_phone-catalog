@@ -6,8 +6,12 @@ import './Pagination.scss';
 
 import { SearchLink } from '../../helpers/searchLink';
 import { moveToTop } from '../../helpers/moveToTop';
-
 import PaginationButt from './PaginationButt/PaginationButt';
+
+const linkClasses = (cond: boolean) => cn(
+  'button-block pagination__link',
+  { active: cond },
+);
 
 type Props = {
   pages: number;
@@ -34,10 +38,7 @@ const Pagination: React.FC<Props> = ({ pages }) => {
       {Array.from({ length: pages }).map((_, i) => (
         <li key={unId()} className="pagination__item">
           <SearchLink
-            className={cn(
-              'pagination__link',
-              { 'pagination__link-active': i + 1 === +page },
-            )}
+            className={linkClasses(i + 1 === +page)}
             params={{ page: `${i + 1}` }}
           >
             {i + 1}

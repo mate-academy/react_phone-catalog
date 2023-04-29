@@ -5,6 +5,11 @@ import './CartButton.scss';
 import { CartContext } from '../../contexts/CartContext';
 import { Product } from '../../types/Product';
 
+const buttonClasses = (isAddedCard: boolean) => cn(
+  'cart-button',
+  { active: isAddedCard },
+);
+
 type Props = {
   width?: number;
   height?: number;
@@ -23,7 +28,6 @@ const CartButton: React.FC<Props> = ({
   const isAddedCard = useMemo(() => {
     return cart.find(currCard => currCard.product.name === name);
   }, [cart, name]);
-
   const onToggleHandle = () => {
     if (isAddedCard) {
       delCard(name);
@@ -35,10 +39,7 @@ const CartButton: React.FC<Props> = ({
   return (
     <button
       type="button"
-      className={cn(
-        'cart-button',
-        { 'cart-button--active': isAddedCard },
-      )}
+      className={buttonClasses(!!isAddedCard)}
       style={{ width, height }}
       onClick={onToggleHandle}
     >

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import './CardSlider.scss';
 
 import { Product } from '../../types/Product';
@@ -7,6 +7,7 @@ import Card from '../Card/Card';
 import CardSliderButt from './CardSliderButt/CardSliderButt';
 
 const width = 272 + 16;
+const count = 4;
 
 type Props = {
   products: Product[];
@@ -16,7 +17,9 @@ type Props = {
 const CardSlider: React.FC<Props> = ({ products, title }) => {
   const [offset, setOffset] = useState(0);
   const isLeftDisabled = offset === 0;
-  const isRightDisabled = offset === -(width * (products.length - 4));
+  const isRightDisabled = useMemo(() => {
+    return offset === -(width * (products.length - count));
+  }, [offset, width, products, count]);
 
   const onClickRight = () => {
     setOffset(currOffset => currOffset - width);
@@ -39,7 +42,7 @@ const CardSlider: React.FC<Props> = ({ products, title }) => {
             style={{ transform: `translateX(${offset}px)` }}
           >
             {products.map(product => (
-              <Card key={product.name} product={product} />
+              <Card key={product.id} product={product} />
             ))}
           </ul>
 

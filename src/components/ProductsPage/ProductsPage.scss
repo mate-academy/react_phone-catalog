@@ -20,9 +20,4 @@
   &__list {
     @include primaryGridList;
   }
-
-  &__no {
-    font-size: 20px;
-    color: $secondaryColor;
-  }
 }

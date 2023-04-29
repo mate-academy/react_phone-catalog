@@ -1,14 +1,9 @@
 import './Nets.scss';
-
-const links = [
-  { value: 'github', href: '/git' },
-  { value: 'contacts', href: '/conc' },
-  { value: 'rights', href: '/rig' },
-];
+import { footerLinks } from './constants';
 
 const Nets = () => (
   <ul className="nets">
-    {links.map(({ value, href }) => (
+    {footerLinks.map(({ value, href }) => (
       <li key={href} className="net">
         <a
           className="link net__link"

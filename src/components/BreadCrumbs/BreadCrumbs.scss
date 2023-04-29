@@ -9,9 +9,23 @@
     gap: 8px;
   }
 
+  &__home {
+    transition: transform $primaryDuration;
+
+    &:hover {
+      transform: scale(1.3);
+    }
+  }
+
   &__link {
     align-items: center;
     color: $secondaryColor;
     text-transform: capitalize;
+    pointer-events: none;
+
+    &.active {
+      pointer-events: all;
+      color: $primaryColor;
+    }
   }
 }

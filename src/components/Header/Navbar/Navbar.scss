@@ -28,9 +28,18 @@
     display: flex;
     align-items: center;
     height: 100%;
+    position: relative;
+
+    &::after {
+      @include barAnimation;
+    }
     
-    &-active {
+    &.active {
       color: $primaryColor;
+      
+      &::after {
+        width: 100%;
+      }
     }
   }
 }

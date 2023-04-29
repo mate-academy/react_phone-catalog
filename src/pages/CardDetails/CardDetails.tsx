@@ -15,50 +15,80 @@ import CardAbout from './CardAbout/CardAbout';
 import CardTechSpecs from './CardTechSpecs/CardTechSpecs';
 import CardSlider from '../../components/CardSlider/CardSlider';
 import { ProductsContext } from '../../contexts/ProductsContext';
-import { sortProducts } from '../../helpers/sortProducts';
-import { Sort } from '../../types/Sort';
-import { moveToTop } from '../../helpers/moveToTop';
 import { Product } from '../../types/Product';
+import Back from '../../components/Back/Back';
+import { Categories } from '../../types/Categories';
+import EmptyModal from '../../components/EmptyModal/EmptyModal';
 
-const CardDetails = () => {
+type Props = {
+  category: Categories;
+};
+
+const CardDetails: React.FC<Props> = ({ category }) => {
   const [product, setProduct] = useState<CardDetail | null>(null);
   const [productCard, setProductCard] = useState<Product | null>(null);
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
-  const { phones } = useContext(ProductsContext);
+  const products = useContext(ProductsContext);
+  const availableProducts = useMemo(() => {
+    if (category === Categories.TABLETS) {
+      return products.tablets;
+    }
+
+    if (category === Categories.ACCESSORIES) {
+      return products.accessories;
+    }
+
+    return products.phones;
+  }, [products, category]);
+
   const likeProduct = useMemo(() => {
-    return sortProducts(phones, Sort.PRICE)
-      .reverse()
-      .slice(0, 8);
-  }, [phones]);
+    const randoms: number[] = [];
+
+    for (let i = 0; i < 8; i += 1) {
+      const randomNum = Math.floor(Math.random() * availableProducts.length);
+
+      if (!randoms.includes(randomNum)) {
+        randoms.push(randomNum);
+      } else {
+        i -= 1;
+      }
+    }
+
+    return [...randoms.map(num => (
+      availableProducts[num]
+    ))];
+  }, [availableProducts, id]);
 
   useEffect(() => {
-    moveToTop();
+    setLoading(true);
 
     if (id) {
       getCardDetail(id)
         .then(res => setProduct(res))
         .then(() => {
-          const foundProduct = phones
-            .find(phone => phone.phoneId === id) || null;
+          const foundProduct = availableProducts
+            .find(currProduct => currProduct.phoneId === id) || null;
 
           setProductCard(foundProduct);
         })
         .finally(() => setLoading(false));
     }
-  }, [id, getCardDetail, setLoading, setProduct]);
+  }, [id, availableProducts]);
 
   if (loading) {
     return <Loader />;
   }
 
   if (!product || !productCard) {
-    return <p>No find</p>;
+    return <EmptyModal />;
   }
 
   return (
     <section className="page__section card-details">
       <div className="container">
+        <Back />
+
         <h2 className="page__title card-details__title">
           {product.name}
         </h2>

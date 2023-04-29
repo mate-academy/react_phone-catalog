@@ -1,3 +1,4 @@
+import cn from 'classnames';
 import { useMemo, useContext } from 'react';
 import './FavButton.scss';
 
@@ -17,7 +18,6 @@ const FavButton: React.FC<Props> = ({ product: { name }, product }) => {
   const isFavorite = useMemo(() => {
     return favorites.find(currCard => currCard.product.name === name);
   }, [favorites, name]);
-
   const onToggleHandle = () => {
     if (isFavorite) {
       delFavorite(name);
@@ -29,7 +29,10 @@ const FavButton: React.FC<Props> = ({ product: { name }, product }) => {
   return (
     <button
       type="button"
-      className="fav-button"
+      className={cn(
+        'button-block fav-button',
+        { active: isFavorite },
+      )}
       onClick={onToggleHandle}
       data-cy="addToFavorite"
     >

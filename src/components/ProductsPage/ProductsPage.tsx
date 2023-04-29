@@ -1,5 +1,9 @@
 import { useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import {
+  CSSTransition,
+  TransitionGroup,
+} from 'react-transition-group';
 import './ProductsPage.scss';
 
 import { Sort } from '../../types/Sort';
@@ -11,26 +15,16 @@ import { findValue } from '../../helpers/findValue';
 import Select from '../Select/Select';
 import Card from '../Card/Card';
 import Pagination from '../Pagination/Pagination';
+import EmptyModal from '../EmptyModal/EmptyModal';
 import Search from '../SearchPage/SearchPage';
-
-const sortOptions = [
-  { name: 'Newest', value: 'age' },
-  { name: 'Alphabetically', value: 'name' },
-  { name: 'Cheapest', value: 'price' },
-];
-
-const itemsOptions = [
-  { name: '4', value: '4' },
-  { name: '8', value: '8' },
-  { name: '16', value: '16' },
-  { name: 'All', value: 'all' },
-];
+import { itemsOptions, sortOptions } from './constants';
 
 type Props = {
   products: Product[];
   title: string;
   isDisPag?: boolean;
   isDisSelects?: boolean;
+  emptyName?: string;
 };
 
 const ProductsPage: React.FC<Props> = ({
@@ -38,10 +32,11 @@ const ProductsPage: React.FC<Props> = ({
   title,
   isDisSelects,
   isDisPag,
+  emptyName = 'Not found',
 }) => {
   const [searchParams] = useSearchParams();
   const sort = searchParams.get('sort') || sortOptions[0].value;
-  const items = searchParams.get('items') || itemsOptions[0].value;
+  const items = searchParams.get('items') || itemsOptions[1].value;
   const page = searchParams.get('page') || '1';
   const query = searchParams.get('query') || '';
   const sortedProducts = useMemo(() => {
@@ -78,7 +73,7 @@ const ProductsPage: React.FC<Props> = ({
         </span>
 
         {products.length === 0
-          ? <p className="products__no">Not found</p>
+          ? <EmptyModal name={emptyName} />
           : (
             <>
               {!isDisSelects && (
@@ -101,12 +96,20 @@ const ProductsPage: React.FC<Props> = ({
                   />
                 </div>
               )}
-              <ul className="products__list" data-cy="productList">
-                {visibleProducts.map(product => (
-                  <li key={product.name} className="products__item">
-                    <Card product={product} />
-                  </li>
-                ))}
+              <ul data-cy="productList">
+                <TransitionGroup className="products__list">
+                  {visibleProducts.map(product => (
+                    <CSSTransition
+                      key={product.id}
+                      timeout={500}
+                      classNames="item"
+                    >
+                      <li className="products__item">
+                        <Card product={product} />
+                      </li>
+                    </CSSTransition>
+                  ))}
+                </TransitionGroup>
               </ul>
 
               {!isDisPag && (

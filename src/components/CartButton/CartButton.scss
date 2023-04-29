@@ -4,7 +4,7 @@
 .cart-button {
   @include primaryButton;
 
-  &--active {
+  &.active {
     color: $addedColor;
     background-color: #fff;
     border: 1px solid $elementsColor;

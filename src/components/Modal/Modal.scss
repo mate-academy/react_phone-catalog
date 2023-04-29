@@ -1,0 +1,13 @@
+@import "../../styles/utils/vars";
+@import "../../styles/utils/mixins";
+
+.modal {
+  width: 300px;
+  height: 80px;
+  border: 1px solid $elementsColor;
+  @include flexCenter;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: $likedColor;
+}

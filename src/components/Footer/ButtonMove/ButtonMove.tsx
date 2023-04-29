@@ -1,5 +1,5 @@
-import './ButtonMove.scss';
 import { moveToTop } from '../../../helpers/moveToTop';
+import './ButtonMove.scss';
 
 const ButtonMove = () => (
   <div className="button-move">
@@ -9,7 +9,7 @@ const ButtonMove = () => (
 
     <button
       type="button"
-      className="button-move__button"
+      className="button-block"
       onClick={moveToTop}
     >
       <img src="./icons/up.svg" alt="icon" />

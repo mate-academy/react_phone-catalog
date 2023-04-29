@@ -2,6 +2,7 @@ import {
   Suspense,
   useEffect,
   useState,
+  useCallback,
 } from 'react';
 import './Layout.scss';
 import { Outlet, useLocation } from 'react-router';
@@ -19,23 +20,15 @@ import Footer from '../Footer/Footer';
 import BreadCrumbs from '../BreadCrumbs/BreadCrumbs';
 import Loader from '../Loader/Loader';
 import { Store } from '../../types/Store';
+import { breadAvailableIn } from './constants';
 // import Menu from '../Menu/Menu';
-
-const breadAvailableIn = [
-  '/phones',
-  '/tablets',
-  '/accessories',
-  '/favorites',
-  '/cart',
-];
 
 const Layout = () => {
   const [phones, setPhones] = useState<Product[]>([]);
   const [tablets] = useState<Product[]>([]);
   const [accessories] = useState<Product[]>([]);
   const location = useLocation();
-  const isSearchAvailable = breadAvailableIn.includes(location.pathname);
-  const path = location.pathname.slice(1).split(' ');
+  const isSearchAvailable = !breadAvailableIn.includes(location.pathname);
   const [favorites, setFavorites] = useLocaleStorage<Store[]>(
     [],
     'favorites',
@@ -50,7 +43,7 @@ const Layout = () => {
       .then(res => setPhones(res));
   }, []);
 
-  const setFavorite = (product: Product) => {
+  const setFavorite = useCallback((product: Product) => {
     const newSaveProduct = {
       product: { ...product },
       count: 1,
@@ -60,14 +53,14 @@ const Layout = () => {
     setFavorites((currStores: Store[]) => (
       [...currStores, newSaveProduct]
     ));
-  };
+  }, [favorites]);
 
-  const delFavorite = (cardName: string) => {
+  const delFavorite = useCallback((cardName: string) => {
     setFavorites((currStores: Store[]) => currStores
       .filter(currStore => currStore.product.name !== cardName));
-  };
+  }, [favorites]);
 
-  const addCard = (product: Product) => {
+  const addCard = useCallback((product: Product) => {
     const newSaveProduct = {
       product: { ...product },
       count: 1,
@@ -75,9 +68,14 @@ const Layout = () => {
     };
 
     setCart((currStores: Store[]) => ([...currStores, newSaveProduct]));
-  };
+  }, [cart]);
 
-  const changeCardCount = (id: number, newCount: number) => {
+  const delCard = useCallback((cardName: string) => {
+    setCart((currStores: Store[]) => currStores
+      .filter(currStore => currStore.product.name !== cardName));
+  }, []);
+
+  const changeCardCount = useCallback((id: number, newCount: number) => {
     setCart((currStores: Store[]) => {
       return currStores.map(currStore => {
         if (currStore.id === id) {
@@ -87,12 +85,7 @@ const Layout = () => {
         return currStore;
       });
     });
-  };
-
-  const delCard = (cardName: string) => {
-    setCart((currStores: Store[]) => currStores
-      .filter(currStore => currStore.product.name !== cardName));
-  };
+  }, [cart]);
 
   return (
     <FavoritesContext.Provider value={{
@@ -112,7 +105,7 @@ const Layout = () => {
         <Suspense fallback={<Loader />}>
           {/* <Menu /> */}
           {isSearchAvailable && (
-            <BreadCrumbs path={path} />
+            <BreadCrumbs />
           )}
           <main>
             <ProductsContext.Provider value={{

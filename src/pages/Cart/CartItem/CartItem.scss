@@ -13,6 +13,11 @@
     margin-right: 24px;
     @include flexCenter;
     @include square(24px);
+    transition: transform $primaryDuration;
+
+    &:hover {
+      transform: scale(1.2);
+    }
   }
 
   &__link {
@@ -35,10 +40,6 @@
   &__count-block {
     margin-right: 43px;
     @include flexGapAlign(5px);
-  }
-  
-  &__count-button {
-    @include iconButton;
   }
   
   &__count {

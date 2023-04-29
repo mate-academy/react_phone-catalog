@@ -5,12 +5,7 @@ import './MainSlider.scss';
 
 import { Buttons } from '../../../types/Buttons';
 import MainSliderButton from '../MainSliderButton.txs/MainSliderButton';
-
-const images = [
-  './img/banners/banner-phones.png',
-  './img/banners/banner-tablets.png',
-  './img/banners/banner-accessories.png',
-];
+import { images } from './constants';
 
 const settings = {
   dots: true,

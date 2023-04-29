@@ -4,7 +4,11 @@
 @import "./utils/vars";
 @import "./utils/mixins";
 
+@import "./animation.scss";
+
 @import "./blocks/container";
 @import "./blocks/page";
 @import "./blocks/link";
 @import "./blocks/line";
+@import "./blocks/button-block";
+@import "./blocks/button-dis";
