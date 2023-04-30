@@ -1,0 +1,73 @@
+@import "../../styles/utils";
+
+.product-item {
+  &__button {
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover {
+      box-shadow: 0 3px 13px rgba(23, 32, 49, 0.3);
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    max-width: 272px;
+    border: 1px solid $for-elements;
+    transition: border 0.3s;
+
+    &:hover {
+      border: 1px solid $primary;
+    }
+  }
+
+  &__link {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__img {
+    display: flex;
+    height: 208px;
+    flex-basis: 208px;
+    object-fit: contain;
+    margin-bottom: 24px;
+  }
+
+  &__subtitle {
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 45px;
+    @extend %body-text;
+    color: $primary;
+  }
+
+  &__box-price {
+    border-bottom: 1px solid $for-elements;
+    margin-bottom: 16px;
+  }
+
+  &__price {
+    @extend %h2;
+    color: $primary;
+    margin-right: 8px;
+  }
+
+  &__full-price {
+    @extend %h2-reg;
+    color: $secondary;
+    text-decoration: line-through;
+  }
+
+  &__characteristic {
+    margin-bottom: 16px;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 8px;
+  }
+}

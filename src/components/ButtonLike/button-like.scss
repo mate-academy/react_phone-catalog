@@ -1,0 +1,9 @@
+@import "../../styles/utils";
+
+.button-like {
+  @include square-button(32px);
+
+  &:hover {
+    border: 1px solid $primary;
+  }
+}
