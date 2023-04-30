@@ -32,7 +32,7 @@ export const CartItem: FC<Props> = ({ product }) => {
           <img src={close} alt="close" />
         </button>
         <img
-          src={`_new/${product.image}`}
+          src={`new/${product.image}`}
           alt={product.name}
           className="cart-item__img"
         />
