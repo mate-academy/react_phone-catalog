@@ -49,8 +49,12 @@
 }
 
 .slick-list {
-  width: $mainSlideWidth;
+  width: 100%;
   height: $mainSlideHeight !important;
+
+  @include onTablet {
+    width: $mainSlideWidth;
+  }
 }
 
 .slick-track {

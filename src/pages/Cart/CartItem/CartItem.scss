@@ -2,56 +2,96 @@
 @import "../../../styles/utils/mixins";
 
 .cart-item {
-  width: 752px;
-  height: 128px;
+  width: 100%;
   display: flex;
   align-items: center;
-  padding: 24px 40px;
+  justify-content: space-between;
+  padding: 10px;
   border: 1px solid $elementsColor;
 
+  @include onTablet {
+    width: 752px;
+    height: 128px;
+    padding: 24px 40px;
+  }
+
   &__cancel {
-    margin-right: 24px;
+    padding: 6px;
+    margin-right: 14px;
     @include flexCenter;
     @include square(24px);
-    transition: transform $primaryDuration;
+    transition: filter $primaryDuration;
+
+    @include onTablet {
+      margin-right: 24px;
+    }
 
     &:hover {
-      transform: scale(1.2);
+      filter: brightness(0) saturate(100%) sepia(100%) hue-rotate(200deg);
     }
   }
 
   &__link {
-    margin-right: 39px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 10px;
     @include flexGapAlign(24px);
+
+    @include onTablet {
+      flex-direction: row;
+      margin-right: 39px;
+    }
   }
   
   &__img {
-    @include square(80px);
+    @include square(50px);
     object-fit: contain;
     object-position: center;
+
+    @include onTablet {
+      @include square(80px);
+    }
   }
   
   &__name {
-    width: 295px;
     font-size: 14px;
     line-height: 21px;
+    text-align: center;
+
+    @include onTablet {
+      width: 295px;
+      text-align: start;
+    }
   }
   
   &__count-block {
-    margin-right: 43px;
+    margin-right: 20px;
     @include flexGapAlign(5px);
+
+    @include onTablet {
+      margin-right: 43px;
+    }
   }
   
   &__count {
     display: flex;
     justify-content: center;
-    width: 32px;
+    width: 26px;
     font-size: 14px;
     color: #000;
+
+    @include onTablet {
+      width: 32px;
+    }
   }
   
   &__price {
     font-weight: 700;
-    font-size: 22px;
+    font-size: 16px;
+
+    @include onTablet {
+      font-size: 22px;
+    }
   }
 }

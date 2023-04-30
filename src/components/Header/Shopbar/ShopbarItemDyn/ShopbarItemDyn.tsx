@@ -13,7 +13,11 @@ const linkClasses = ({ isActive }: { isActive: boolean }) => cn(
   { active: isActive },
 );
 
-const ShopbarItemDyn: React.FC<Props> = ({ productsLength, img, to }) => (
+const ShopbarItemDyn: React.FC<Props> = ({
+  productsLength,
+  img,
+  to,
+}) => (
   <NavLink className={linkClasses} to={to}>
     <div className="shopbar__item-dyn__count">
       {!!productsLength && (

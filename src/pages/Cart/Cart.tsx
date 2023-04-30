@@ -1,10 +1,9 @@
 import { useContext, useMemo } from 'react';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import './Cart.scss';
-import {
-  CSSTransition,
-  TransitionGroup,
-} from 'react-transition-group';
+
 import { CartContext } from '../../contexts/CartContext';
+
 import CartItem from './CartItem/CartItem';
 import CartTotal from './CartTotal/CartTotal';
 import Back from '../../components/Back/Back';
@@ -28,7 +27,7 @@ const Cart = () => {
         {!cart.length
           ? <EmptyModal name="Your cart is empty" />
           : (
-            <div className="cart__shop-wrapper">
+            <div className="cart__flex">
               <ul>
                 <TransitionGroup className="cart__list">
                   {cart.map(({

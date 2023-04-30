@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import './CartTotal.scss';
+
 import Modal from '../../../components/Modal/Modal';
 
 type Props = {
@@ -35,10 +36,13 @@ const CartTotal: React.FC<Props> = ({
         <span className="cart-total__price">
           {`$${totalPrice}`}
         </span>
+
         <span className="cart-total__for">
           {`Total for ${visibleCartLength} items`}
         </span>
+
         <div className="line cart-total__line" />
+
         <button
           className="cart-total__checkout"
           type="button"

@@ -9,8 +9,11 @@
 
   &__list {
     display: flex;
-    gap: 16px;
     transition: transform $primaryDuration;
+
+    @include onTablet {
+      gap: 16px;
+    }
   }
 
   &__butts {

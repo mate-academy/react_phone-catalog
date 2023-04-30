@@ -11,14 +11,14 @@
 
   &__price {
     margin-bottom: 8px;
-    font-weight: 700;
     font-size: 32px;
+    font-weight: 700;
   }
 
   &__for {
+    margin-bottom: 24px;
     font-size: 14px;
     color: $secondaryColor;
-    margin-bottom: 24px;
   }
 
   &__line {
@@ -26,8 +26,8 @@
   }
 
   &__checkout {
-    @include primaryButton;
     width: 100%;
     height: 48px;
+    @include primaryButton;
   }
 }

@@ -1,10 +1,14 @@
-@import "../../styles/utils/vars";
 @import "../../styles/utils/mixins";
 
 .cart {
-  &__shop-wrapper {
+  &__flex {
     display: flex;
+    flex-direction: column;
     gap: 16px;
+
+    @include onTablet {
+      flex-direction: row;
+    }
   }
 
   &__list {

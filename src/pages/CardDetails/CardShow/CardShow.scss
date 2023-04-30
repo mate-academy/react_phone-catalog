@@ -3,19 +3,32 @@
 
 .card-show {
   @include flexGapAlign(16px);
+  flex-direction: column-reverse;
+
+  @include onTablet {
+    flex-direction: row;
+  }
 
   &__list {
     @include flexGapAlign(16px);
-    flex-direction: column;
+    flex-direction: row;
+  
+    @include onTablet {
+      flex-direction: column;
+    }
   }
 
   &__button {
-    @include square(80px);
+    @include square(50px);
     border: 1px solid $elementsColor;
     overflow: hidden;
 
-    &-active {
+    &.active {
       border-color: $primaryColor;
+    }
+
+    @include onTablet {
+      @include square(80px);
     }
   }
 
@@ -26,8 +39,13 @@
   }
 
   &__main {
-    @include square(464px);
+    height: 240px;
+    width: 100%;
     object-fit: contain;
     object-position: center;
+
+    @include onTablet {
+      @include square(464px);
+    }
   }
 }

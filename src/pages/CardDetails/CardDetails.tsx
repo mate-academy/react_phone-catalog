@@ -6,18 +6,22 @@ import {
   useContext,
 } from 'react';
 import { useParams } from 'react-router';
+
+import { getCardDetail } from '../../api/api';
+
+import { ProductsContext } from '../../contexts/ProductsContext';
+
 import { CardDetail } from '../../types/CardDetail';
+import { Product } from '../../types/Product';
+import { Categories } from '../../types/Categories';
+
 import CardInfo from './CardInfo/CardInfo';
 import CardShow from './CardShow/CardShow';
-import { getCardDetail } from '../../api/api';
 import Loader from '../../components/Loader/Loader';
 import CardAbout from './CardAbout/CardAbout';
 import CardTechSpecs from './CardTechSpecs/CardTechSpecs';
 import CardSlider from '../../components/CardSlider/CardSlider';
-import { ProductsContext } from '../../contexts/ProductsContext';
-import { Product } from '../../types/Product';
 import Back from '../../components/Back/Back';
-import { Categories } from '../../types/Categories';
 import EmptyModal from '../../components/EmptyModal/EmptyModal';
 
 type Props = {

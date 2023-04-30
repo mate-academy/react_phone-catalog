@@ -11,7 +11,7 @@ const settings = {
   dots: true,
   dotsClass: 'main-slider-dots',
   infinite: true,
-  speed: 500,
+  speed: 400,
   fade: true,
   autoplay: true,
   autoplaySpeed: 5000,

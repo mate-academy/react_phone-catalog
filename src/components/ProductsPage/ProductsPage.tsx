@@ -120,7 +120,7 @@ const ProductsPage: React.FC<Props> = ({
                   )
                   : (
                     visibleProducts.map(product => (
-                      <li className="products__item">
+                      <li key={product.id} className="products__item">
                         <Card product={product} />
                       </li>
                     ))

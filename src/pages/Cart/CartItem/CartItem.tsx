@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import cn from 'classnames';
 import './CartItem.scss';
+
 import { countButton } from './constants';
 
 const buttonClasses = (cond: boolean) => cn(
@@ -8,14 +9,14 @@ const buttonClasses = (cond: boolean) => cn(
 );
 
 type Props = {
+  phoneId: string;
+  id: number;
   name: string;
   image: string;
   price: number;
-  phoneId: string;
   category: string;
-  delCard: (name: string) => void;
   count: number;
-  id: number;
+  delCard: (name: string) => void;
   changeCardCount: (id: number, newCount: number) => void;
 };
 

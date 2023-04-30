@@ -16,9 +16,24 @@
     &-search {
       @include flexGapAlign(24px);
       justify-content: space-between;
-      width: 372px;
+      width: 150px;
       padding-right: 24px;
       box-shadow: -1px 0 0 $elementsColor;
+
+      @include onTablet {
+        width: 372px;
+      }
+    }
+
+    &-menu {
+      @include flexCenter;
+      width: 44px;
+      height: 100%;
+      box-shadow: -1px 0 0 $elementsColor;
+
+      @include onTablet {
+        display: none;
+      }
     }
   }
 }

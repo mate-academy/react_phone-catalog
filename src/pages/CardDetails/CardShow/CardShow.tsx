@@ -4,7 +4,7 @@ import './CardShow.scss';
 
 const classes = (img: string, currImg: string) => cn(
   'card-show__button',
-  { 'card-show__button-active': img === currImg },
+  { active: img === currImg },
 );
 
 type Props = {
@@ -18,10 +18,6 @@ const CardShow: React.FC<Props> = ({ images }) => {
     setMainImg(images[0]);
   }, [images]);
 
-  const onClickHandle = (img: string) => {
-    setMainImg(img);
-  };
-
   if (!mainImg) {
     return null;
   }
@@ -34,7 +30,7 @@ const CardShow: React.FC<Props> = ({ images }) => {
             <button
               type="button"
               className={classes(mainImg, img)}
-              onClick={() => onClickHandle(img)}
+              onClick={() => setMainImg(img)}
             >
               <img className="card-show__img" src={img} alt="product" />
             </button>

@@ -2,10 +2,25 @@
 @import "../../../styles/utils/mixins";
 
 .card-info {
-  width: 320px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @include onTablet {
+    display: block;
+    width: 320px;
+  }
 
   &__colors {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin-bottom: 24px;
+
+    @include onTablet {
+      display: block;
+    }
 
     &__name {
       color: $secondaryColor;
@@ -19,7 +34,7 @@
     &__item {
       border: 1px solid $elementsColor;
       border-radius: 50px;
-      transition: border-color $primaryDuration ease;
+      transition: border-color $primaryDuration;
 
       &:hover {
         border-color: $iconsColor;
@@ -38,12 +53,23 @@
     }
   }
 
+  &__chars {
+    align-self: normal;
+  }
+
   &__line {
     margin-bottom: 24px;
   }
 
   &__capacity {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin-bottom: 24px;
+
+    @include onTablet {
+      display: block;
+    }
 
     &__name {
       color: $secondaryColor;

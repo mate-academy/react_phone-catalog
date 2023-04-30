@@ -2,9 +2,11 @@
 @import "../../../styles/utils/mixins";
 
 .navbar {
+  display: none;
   margin-bottom: 30px;
 
   @include onTablet {
+    display: block;
     margin-bottom: 0;
     height: 100%;
   }

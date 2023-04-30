@@ -1,5 +1,6 @@
 import { useContext, useMemo } from 'react';
 import { useLocation } from 'react-router-dom';
+import { FaBars, FaTimes } from 'react-icons/fa';
 import './Shopbar.scss';
 
 import { FavoritesContext } from '../../../contexts/FavoritesContext';
@@ -9,10 +10,12 @@ import { searchAvailableIn } from './constants';
 
 import ShopbarSearch from './ShopbarSearch/ShopbarSearch';
 import ShopbarItemDyn from './ShopbarItemDyn/ShopbarItemDyn';
+import { MenuContext } from '../../../contexts/MenuContext';
 
 const Shopbar = () => {
   const { favorites } = useContext(FavoritesContext);
   const { cart } = useContext(CartContext);
+  const { isMenu, toggleMenu } = useContext(MenuContext);
   const location = useLocation().pathname;
   const isSearchAvailable = useMemo(() => {
     return searchAvailableIn.includes(location);
@@ -39,6 +42,17 @@ const Shopbar = () => {
             to="/favorites"
             productsLength={favorites.length}
           />
+        </li>
+        <li className="shopbar__item">
+          <button
+            type="button"
+            className="shopbar__item-menu"
+            onClick={toggleMenu}
+          >
+            {isMenu
+              ? <FaTimes />
+              : <FaBars />}
+          </button>
         </li>
       </ul>
     </nav>

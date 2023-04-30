@@ -2,11 +2,19 @@
 @import "../../styles/utils/mixins";
 
 .card {
-  width: 272px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
   height: 507px;
   padding: 32px 24px 24px;
   border: 1px solid $elementsColor;
   transition: box-shadow $primaryDuration;
+
+  @include onTablet {
+    display: block;
+    width: 272px;
+  }
 
   &:hover {
     box-shadow: 0 0 30px -20px $primaryColor;
@@ -48,6 +56,7 @@
   }
 
   &__chars {
+    align-self: normal;
     margin-bottom: 16px;
   }
   

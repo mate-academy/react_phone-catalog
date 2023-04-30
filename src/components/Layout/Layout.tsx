@@ -21,14 +21,16 @@ import BreadCrumbs from '../BreadCrumbs/BreadCrumbs';
 import Loader from '../Loader/Loader';
 import { Store } from '../../types/Store';
 import { breadAvailableIn } from './constants';
-// import Menu from '../Menu/Menu';
+import Menu from '../Menu/Menu';
+import { MenuContext } from '../../contexts/MenuContext';
 
 const Layout = () => {
   const [phones, setPhones] = useState<Product[]>([]);
   const [tablets] = useState<Product[]>([]);
   const [accessories] = useState<Product[]>([]);
-  const location = useLocation();
-  const isSearchAvailable = !breadAvailableIn.includes(location.pathname);
+  const [isMenu, setIsMenu] = useState(false);
+  const location = useLocation().pathname;
+  const isSearchAvailable = !breadAvailableIn.includes(location);
   const [favorites, setFavorites] = useLocaleStorage<Store[]>(
     [],
     'favorites',
@@ -87,6 +89,16 @@ const Layout = () => {
     });
   }, [cart]);
 
+  const toggleMenu = () => {
+    setIsMenu(currIsMenu => !currIsMenu);
+  };
+
+  useEffect(() => {
+    if (isMenu) {
+      setIsMenu(false);
+    }
+  }, [location]);
+
   return (
     <FavoritesContext.Provider value={{
       favorites,
@@ -101,9 +113,15 @@ const Layout = () => {
         changeCardCount,
       }}
       >
-        <Header />
+        <MenuContext.Provider value={{ toggleMenu }}>
+          <Header />
+        </MenuContext.Provider>
+
+        <MenuContext.Provider value={{ isMenu }}>
+          <Menu />
+        </MenuContext.Provider>
+
         <Suspense fallback={<Loader />}>
-          {/* <Menu /> */}
           {isSearchAvailable && (
             <BreadCrumbs />
           )}

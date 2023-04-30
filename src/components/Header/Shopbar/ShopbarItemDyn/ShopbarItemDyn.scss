@@ -3,10 +3,14 @@
 
 .shopbar__item-dyn {
   @include flexCenter;
-  width: 66px;
+  width: 44px;
   height: 100%;
   box-shadow: -1px 0 0 $elementsColor;
   position: relative;
+
+  @include onTablet {
+    width: 66px;
+  }
 
   &::after {
     @include barAnimation;

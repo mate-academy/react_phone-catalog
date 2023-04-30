@@ -7,10 +7,14 @@
 
   &__wrapper {
     display: flex;
+    height: $headerHeightTablet;
     align-items: center;
     justify-content: space-between;
-    height: 64px;
     padding-left: 24px;
+
+    @include onTablet {
+      height: 64px;
+    }
   }
 
   &__left {

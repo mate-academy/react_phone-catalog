@@ -83,7 +83,7 @@ const CardInfo: React.FC<Props> = ({
             >
               <Link
                 className="card-info__capacity__link"
-                to={`/phones/${namespaceId}-${currCapacity.toLowerCase()}-${color}`}
+                to={`/${productCard.category}/${namespaceId}-${currCapacity.toLowerCase()}-${color}`}
               >
                 {currCapacity}
               </Link>

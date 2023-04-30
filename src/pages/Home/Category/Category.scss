@@ -4,6 +4,11 @@
 .category {
   &__list {
     @include flexGapAlign(16px);
+    flex-direction: column;
+
+    @include onTablet {
+      flex-direction: row;
+    }
   }
 
   &__img-block {

@@ -1,7 +1,7 @@
 @import "./vars";
 
 @mixin onTablet {
-  @media (min-width: 793px) {
+  @media (min-width: 760px) {
     @content;
   }
 }
@@ -44,9 +44,13 @@
 @mixin primaryGridList {
   margin-bottom: 40px;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: 1fr;
   column-gap: 16px;
   row-gap: 40px;
+
+  @include onTablet {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 @mixin barAnimation {
