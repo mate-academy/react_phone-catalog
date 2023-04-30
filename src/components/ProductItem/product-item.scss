@@ -1,6 +1,16 @@
 @import "../../styles/utils";
 
 .product-item {
+  &__button {
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover {
+      box-shadow: 0 3px 13px rgba(23, 32, 49, 0.3);
+    }
+  }
+
   &__content {
     display: flex;
     flex-direction: column;

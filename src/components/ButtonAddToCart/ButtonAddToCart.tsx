@@ -14,7 +14,7 @@ export const ButtonAddToCart: FC<Props> = ({ product, isSelected }) => {
   return (
     <button
       type="button"
-      className={classNames('button', {
+      className={classNames('button', 'product-item__button', {
         'button--selected': isSelected,
       })}
       onClick={() => handleToggleAddToCart(product)}
