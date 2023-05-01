@@ -3,7 +3,11 @@
 
 .pagination {
   @include flexCenter;
-  gap: 8px;
+  gap: 5px;
+
+  @include onTablet {
+    gap: 8px;
+  }
 
   &__item {
     &:first-child {

@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import cn from 'classnames';
 import { v4 as unId } from 'uuid';
 import { useSearchParams } from 'react-router-dom';
@@ -20,10 +20,35 @@ type Props = {
 const Pagination: React.FC<Props> = ({ pages }) => {
   const [searchParams] = useSearchParams();
   const page = searchParams.get('page') || '1';
+  const arrayPage = useMemo(() => {
+    return Array.from({ length: pages }).map((_, i) => i + 1);
+  }, [pages]);
+  const [minPag, setMinPage] = useState(0);
+  const [maxPag, setMaxPage] = useState(5);
+  const visiblePags = useMemo(() => {
+    if (arrayPage.length <= 5) {
+      return arrayPage;
+    }
+
+    return arrayPage.slice(minPag, maxPag);
+  }, [arrayPage, minPag, maxPag]);
 
   useEffect(() => {
     moveToTop();
+
+    if (visiblePags[0] === +page && +page !== 1) {
+      setMinPage(currMinPage => currMinPage - 1);
+      setMaxPage(currMaxPage => currMaxPage - 1);
+    } else if (visiblePags[visiblePags.length - 1] === +page
+        && +page !== arrayPage[arrayPage.length - 1]) {
+      setMinPage(currMinPage => currMinPage + 1);
+      setMaxPage(currMaxPage => currMaxPage + 1);
+    }
   }, [page]);
+
+  if (!pages) {
+    return null;
+  }
 
   return (
     <ul className="pagination">
@@ -35,13 +60,13 @@ const Pagination: React.FC<Props> = ({ pages }) => {
           data-cy="paginationLeft"
         />
       </li>
-      {Array.from({ length: pages }).map((_, i) => (
+      {visiblePags.map(num => (
         <li key={unId()} className="pagination__item">
           <SearchLink
-            className={linkClasses(i + 1 === +page)}
-            params={{ page: `${i + 1}` }}
+            className={linkClasses(num === +page)}
+            params={{ page: `${num}` }}
           >
-            {i + 1}
+            {num}
           </SearchLink>
         </li>
       ))}
