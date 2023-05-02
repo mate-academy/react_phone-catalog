@@ -47,15 +47,26 @@ export const Pagination: React.FC<Props> = ({
     setSearchParams(getSearchWith(searchParams, { page: pageNumber }));
   };
 
+  function scrollTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  }
+
   const leftArrowHandle = () => {
     if (page !== null && +page > 1) {
       setSearchParams(getSearchWith(searchParams, { page: `${+page - 1}` }));
+
+      scrollTop();
     }
   };
 
   const rightArrowHandle = () => {
     if (page !== null && +page < pagesCount) {
       setSearchParams(getSearchWith(searchParams, { page: `${+page + 1}` }));
+
+      scrollTop();
     }
   };
 
