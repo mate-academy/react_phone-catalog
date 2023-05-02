@@ -111,7 +111,7 @@ export const ProductDetailsPage: React.FC = () => {
     window.history.back();
   };
 
-  const imagesFolder = '/';
+  const imagesFolder = './';
 
   const addedToCart = cartItems.some((cartItem) => cartItem.id === id);
   const isInFavourites = favouritesItems.some(

@@ -1,15 +1,15 @@
-import { Link, Route, Routes } from 'react-router-dom';
 import { useContext } from 'react';
+import { Link, Route, Routes } from 'react-router-dom';
 import { Nav, NavLink } from '../Nav';
 
-import { ReactComponent as Logo } from '../../images/logo.svg';
 import { ReactComponent as IconHeart } from '../../images/icons/heart_like.svg';
 import {
   ReactComponent as IconCart,
 } from '../../images/icons/shopping_bag_cart.svg';
+import { ReactComponent as Logo } from '../../images/logo.svg';
 
-import { Search } from '../Search';
 import { ShopContext } from '../../cart-context';
+import { Search } from '../Search';
 
 import './Header.scss';
 

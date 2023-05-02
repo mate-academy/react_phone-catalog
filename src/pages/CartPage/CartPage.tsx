@@ -11,8 +11,6 @@ import { ReactComponent as IconClose } from '../../images/icons/close.svg';
 import { ReactComponent as IconMinus } from '../../images/icons/minus.svg';
 import { ReactComponent as IconPlus } from '../../images/icons/plus.svg';
 
-const imagesFolder = '/';
-
 export const CartPage: React.FC = () => {
   const {
     increaseAmount, decreaseAmount, removeFromCart, cartItems,
@@ -81,7 +79,7 @@ export const CartPage: React.FC = () => {
                     />
 
                     <img
-                      src={imagesFolder + imageUrl}
+                      src={`./${imageUrl}`}
                       alt={name}
                       className="cart-item__img"
                     />

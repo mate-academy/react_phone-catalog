@@ -6,7 +6,7 @@ interface Props {
   products: Product[];
 }
 
-const imgesFolder = '/_new/img';
+const imagesFolder = './_new/img';
 
 export const ShopByCategory: React.FC<Props> = ({ products }) => {
   let phonesAmount = 0;
@@ -49,7 +49,7 @@ export const ShopByCategory: React.FC<Props> = ({ products }) => {
                 className="
                   shop-by-category__image
                   shop-by-category__image--phone"
-                src={`${imgesFolder}/category-phones.png`}
+                src={`${imagesFolder}/category-phones.png`}
                 alt="Phones"
               />
             </div>
@@ -75,7 +75,7 @@ export const ShopByCategory: React.FC<Props> = ({ products }) => {
                 className="
                   shop-by-category__image
                   shop-by-category__image--tablet"
-                src={`${imgesFolder}/category-tablets.png`}
+                src={`${imagesFolder}/category-tablets.png`}
                 alt="Tablets"
               />
             </div>
@@ -101,7 +101,7 @@ export const ShopByCategory: React.FC<Props> = ({ products }) => {
                 className="
                   shop-by-category__image
                   shop-by-category__image--accessory"
-                src={`${imgesFolder}/category-accessories.png`}
+                src={`${imagesFolder}/category-accessories.png`}
                 alt="Accessories"
               />
             </div>

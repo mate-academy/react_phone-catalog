@@ -11,8 +11,6 @@ import {
 import { Product } from '../../types/Product';
 import './ProductCard.scss';
 
-const imagesFolder = '/';
-
 interface Props {
   product: Product;
 }
@@ -62,7 +60,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       <div className="product-card__container">
         <Link to={`/${cardLinkSection}/${id}`}>
           <img
-            src={imagesFolder + imageUrl}
+            src={`./${imageUrl}`}
             alt={name}
             className="product-card__image"
           />

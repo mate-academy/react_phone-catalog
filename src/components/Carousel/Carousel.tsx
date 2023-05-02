@@ -11,9 +11,9 @@ import {
 } from '../../images/icons/arrow_right.svg';
 
 const slides = [
-  { url: '/img/slider/1.png' },
-  { url: '/img/slider/2.png' },
-  { url: '/img/slider/3.jpg' },
+  { url: './img/slider/1.png' },
+  { url: './img/slider/2.png' },
+  { url: './img/slider/3.jpg' },
 ];
 
 const TRANSITION_DURATION = 700;
