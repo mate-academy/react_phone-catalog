@@ -1,0 +1,17 @@
+@import "../../helpers/vars.scss";
+
+.return-home-button {
+  padding: 14px 125px;
+  background-color: $c-primary;
+  color: $c-white;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 25px;
+
+  &:hover {
+    box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+  }
+}

@@ -1,0 +1,130 @@
+@import "../../helpers/vars.scss";
+
+.product-card {
+  width: 272px;
+  height: 507px;
+  border: 1px solid $c-elements;
+  padding: 32px 32px 24px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &__image {
+    width: 100%;
+  }
+
+  &__name {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    margin-top: 24px;
+    text-decoration: none;
+    color: $c-primary;
+    display: block;
+  }
+
+  &__price {
+    display: flex;
+    font-size: 22px;
+    margin-top: 6.5px;
+  }
+
+  &__new-price {
+    font-weight: 700;
+    line-height: 140%;
+    width: auto;
+  }
+
+  &__old-price {
+    font-weight: 500;
+    text-decoration: line-through;
+    line-height: 28px;
+    margin-left: 8px;
+    color: $c-secondary;
+  }
+
+  &__info {
+    margin: 6.5px 0 16px;
+    border-top: 1px solid $c-elements;
+    padding-top: 6.5px;
+  }
+
+  &__info-element {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    line-height: 15px;
+
+    &:not(:last-child) {
+      margin-bottom: 8px;
+    }
+  }
+
+  &__info-name {
+    color: $c-secondary;
+  }
+
+  &__buttons {
+    display: flex;
+    height: 40px;
+  }
+
+  &__add-to-cart {
+    cursor: pointer;
+    border: none;
+    background-color: $c-primary;
+    padding: 10px 0;
+    color: white;
+    font-family: "mont", sans-serif;
+    font-size: 14px;
+    line-height: 21px;
+    flex-grow: 1;
+
+    &:hover {
+      box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+    }
+
+    &--is_added {
+      color: $c-green;
+      border: 1px solid $c-elements;
+      background-color: $c-white;
+    }
+  }
+
+  &__add-to-favourites {
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border: 1px solid $c-icons;
+    margin-left: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: none;
+
+    &:hover {
+      border-color: $c-primary;
+
+      & > * {
+        transform: scale(1.2);
+      }
+    }
+  }
+
+  &__add-to-favourites-icon {
+    &--active {
+      animation: fadeIn 0.5s forwards;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0.5;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

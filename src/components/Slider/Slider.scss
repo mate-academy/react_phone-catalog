@@ -1,0 +1,77 @@
+@import "../../helpers/vars.scss";
+
+.slider {
+  width: 1136px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 26px;
+  }
+
+  &__buttons {
+    display: flex;
+  }
+
+  &__window {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  &__container {
+    height: 100%;
+    display: flex;
+    gap: 16px;
+
+    transition: translate;
+    transition-property: transform;
+    transition-timing-function: ease-in-out;
+  }
+
+  &__arrow {
+    border: 1px solid $c-icons;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: none;
+
+    cursor: pointer;
+
+    &--left {
+      margin-right: 16px;
+    }
+
+    &:hover {
+      border: 1px solid $c-primary;
+    }
+
+    &--disabled {
+      border-color: $c-elements;
+      cursor: default;
+
+      &:hover {
+        border-color: $c-elements;
+      }
+    }
+  }
+
+  &__slide {
+    height: 100%;
+  }
+
+  &__arrow-icon {
+    &--disabled {
+      fill: $c-icons;
+    }
+  }
+}

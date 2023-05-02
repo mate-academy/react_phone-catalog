@@ -1,0 +1,61 @@
+@import "../../helpers//vars.scss";
+
+.paggination {
+  display: flex;
+  list-style: none;
+
+  &__element {
+    text-decoration: none;
+    border: 1px solid $c-icons;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 8px;
+    cursor: pointer;
+
+    &--number {
+      color: #000;
+      font-weight: 500;
+      font-size: 14px;
+    }
+
+    &:hover {
+      border-color: $c-primary;
+    }
+
+    &--active {
+      background-color: $c-primary;
+      border: none;
+      color: $c-white;
+    }
+  }
+
+  &__arrow {
+    fill: $c-primary;
+
+    &--disabled {
+      fill: $c-icons;
+    }
+  }
+
+  &__element-arrow {
+    &--left {
+      margin-right: 16px;
+    }
+
+    &--right {
+      margin-left: 8px;
+    }
+
+    &--disabled {
+      cursor: default;
+      border-color: $c-elements;
+
+      &:hover {
+        border-color: $c-elements;
+      }
+    }
+  }
+}

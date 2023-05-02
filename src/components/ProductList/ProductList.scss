@@ -1,0 +1,18 @@
+.product-list {
+  &__products {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px 16px;
+    margin-top: 25px;
+  }
+  
+  &__pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+  }
+
+  &__error {
+    margin-top: 30px;
+  }
+}

@@ -1,0 +1,65 @@
+@import "../../helpers/vars.scss";
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__logo {
+    margin: 0 64px 0 0;
+  }
+
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+
+    &--header {
+      display: none;
+    }
+
+    &--footer {
+      flex-direction: column;
+      margin-top: 50px;
+    }
+  }
+
+  &__item {
+    width: max-content;
+
+    &:not(:last-child) {
+      margin-right: 64px;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    text-transform: uppercase;
+    color: $c-secondary;
+    font-weight: 700;
+    float: left;
+    font-size: 13px;
+    line-height: 150%;
+    letter-spacing: 3px;
+
+    &:hover {
+      color: $c-primary;
+    }
+
+    &--active {
+      color: $c-primary;
+      position: relative;
+
+      &::before {
+        content: "";
+        height: 3px;
+        position: absolute;
+        bottom: -27px;
+        width: 100%;
+
+        background: $c-primary;
+      }
+    }
+  }
+}

@@ -1,0 +1,145 @@
+@import "../../helpers/vars.scss";
+
+.cart-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__container {
+    width: 1140px;
+  }
+
+  &__title {
+    font-size: 32px;
+    margin-top: 40px;
+  }
+
+  &__content {
+    display: flex;
+  }
+
+  &__cart-items {
+    margin-right: 16px;
+  }
+
+  &__checkout-container {
+    border: 1px solid $c-elements;
+    width: 368px;
+    height: 206px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__total-cost {
+    font-weight: 700;
+    font-size: 32px;
+  }
+
+  &__items-amount {
+    font-weight: 500;
+    font-size: 14px;
+    color: $c-secondary;
+    border-bottom: 1px solid $c-elements;
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+    width: 100%;
+    text-align: center;
+  }
+
+  &__checkout-button {
+    padding: 14px 125px;
+    background-color: $c-primary;
+    color: $c-white;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+    }
+  }
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  padding: 31px 40px 31px 28px;
+  fill: $c-icons;
+  border: 1px solid $c-elements;
+  width: 752px;
+
+  &:not(:last-child) {
+    margin-bottom: 16px;
+  }
+
+  &__button {
+    fill: $c-icons;
+    cursor: pointer;
+    transition-duration: 0s;
+    margin-right: 34px;
+
+    &:hover {
+      fill: $c-primary;
+    }
+  }
+
+  &__img {
+    width: 66px;
+    height: 66px;
+
+    margin-right: 31px;
+  }
+
+  &__name {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    width: 295px;
+    margin-right: 48px;
+  }
+
+  &__change-quantity {
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    background: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid $c-icons;
+
+    &:hover {
+      border-color: $c-primary;
+    }
+
+    &--disabled {
+      border-color: $c-elements;
+      cursor: default;
+
+      &:hover {
+        border-color: $c-elements;
+      }
+    }
+  }
+
+  &__quantity {
+    margin: 0 13px;
+  }
+
+  &__button-change-quantity {
+    fill: #000;
+
+    &--disabled {
+      fill: $c-icons;
+    }
+  }
+
+  &__price {
+    font-weight: 700;
+    font-size: 22px;
+    margin-left: 43px;
+  }
+}

@@ -1,0 +1,29 @@
+@import "../../helpers/vars.scss";
+
+.search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  box-shadow: -1px 0 0 $c-elements;
+  padding: 25px;
+
+  &__input {
+    border: none;
+    height: 100%;
+    margin-right: 130px;
+    color: $c-primary;
+
+    outline: none;
+    font-weight: 500;
+    font-family: inherit;
+
+    &::placeholder {
+      color: $c-icons;
+    }
+  }
+
+  &__delete {
+    fill: $c-primary;
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,13 @@
+@import "../../helpers/vars.scss";
+
+.product-filter {
+  margin-top: 40px;
+  display: flex;
+  gap: 16px;
+
+  &__name {
+    color: $c-secondary;
+    font-size: 12px;
+    margin-bottom: 4px;
+  }
+}
