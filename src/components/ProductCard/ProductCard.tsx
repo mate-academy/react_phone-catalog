@@ -11,7 +11,7 @@ import {
 import { Product } from '../../types/Product';
 import './ProductCard.scss';
 
-const imagesFolder = 'http://localhost:3000/';
+const imagesFolder = '/';
 
 interface Props {
   product: Product;

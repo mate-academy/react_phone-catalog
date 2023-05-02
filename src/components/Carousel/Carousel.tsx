@@ -5,15 +5,15 @@ import {
 } from 'react';
 
 import classNames from 'classnames';
+import { ReactComponent as ArrowLeft } from '../../images/icons/arrow-left.svg';
 import {
   ReactComponent as ArrowRight,
 } from '../../images/icons/arrow_right.svg';
-import { ReactComponent as ArrowLeft } from '../../images/icons/arrow-left.svg';
 
 const slides = [
-  { url: 'http://localhost:3000/img/slider/1.png' },
-  { url: 'http://localhost:3000/img/slider/2.png' },
-  { url: 'http://localhost:3000/img/slider/3.jpg' },
+  { url: '/img/slider/1.png' },
+  { url: '/img/slider/2.png' },
+  { url: '/img/slider/3.jpg' },
 ];
 
 const TRANSITION_DURATION = 700;

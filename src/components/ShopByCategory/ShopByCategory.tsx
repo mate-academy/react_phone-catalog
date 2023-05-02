@@ -6,7 +6,7 @@ interface Props {
   products: Product[];
 }
 
-const imgesFolder = 'http://localhost:3000/_new/img';
+const imgesFolder = '/_new/img';
 
 export const ShopByCategory: React.FC<Props> = ({ products }) => {
   let phonesAmount = 0;
