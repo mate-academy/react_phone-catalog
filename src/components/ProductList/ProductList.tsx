@@ -71,8 +71,6 @@ export const ProductList: React.FC<Props> = ({ products }) => {
     }
   }, [perPage, page, newProducts]);
 
-  const total = useMemo(() => newProducts.length, [newProducts]);
-
   if (newProducts.length === 0) {
     return (
       <h1 className="product-list__error">
@@ -89,7 +87,7 @@ export const ProductList: React.FC<Props> = ({ products }) => {
         ))}
       </div>
 
-      {perPage && total > +perPage && (
+      {perPage && (
         <div className="product-list__pagination">
           <Pagination total={newProducts.length} perPage={+perPage} />
         </div>

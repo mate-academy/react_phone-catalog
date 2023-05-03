@@ -7,7 +7,7 @@ import {
 import classNames from 'classnames';
 import { ReactComponent as ArrowLeft } from '../../images/icons/arrow-left.svg';
 import {
-  ReactComponent as ArrowRight,
+  ReactComponent as ArrowRight
 } from '../../images/icons/arrow_right.svg';
 
 const slides = [
@@ -120,6 +120,16 @@ export const Carousel: React.FC = () => {
     };
   }, [handleRightArrowClick]);
 
+  const handleKeyDown = (
+    event: React.KeyboardEvent<HTMLDivElement>,
+    slideIndex: number,
+    handleSlideButtonClick: (index: number) => void,
+  ) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      handleSlideButtonClick(slideIndex);
+    }
+  };
+
   return (
     <div className="carousel">
       <button
@@ -176,9 +186,7 @@ export const Carousel: React.FC = () => {
             aria-label={`Go to slide ${slideIndex + 1}`}
             onClick={() => handleSlideNumberClick(slideIndex)}
             onKeyDown={(event) => {
-              if (event.key === 'Enter' || event.key === ' ') {
-                handleSlideNumberClick(slideIndex);
-              }
+              return handleKeyDown(event, slideIndex, handleSlideNumberClick)
             }}
             tabIndex={0}
           />

@@ -2,8 +2,8 @@ import { Link } from 'react-router-dom';
 import { Nav, NavLink } from '../Nav';
 import './Footer.scss';
 
-import { ReactComponent as Logo } from '../../images/logo.svg';
 import { ReactComponent as ArrowTop } from '../../images/icons/arrow-top.svg';
+import { ReactComponent as Logo } from '../../images/logo.svg';
 
 const navLinks: NavLink[] = [
   {
@@ -49,7 +49,6 @@ export const Footer: React.FC = () => {
           <ArrowTop />
         </button>
       </div>
-
     </footer>
   );
 };

@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { Link, Route, Routes } from 'react-router-dom';
-import { Nav, NavLink } from '../Nav';
+import { linksToHeader, navLinks } from '../../helpers/consts';
+import { Nav } from '../Nav';
 
 import { ReactComponent as IconHeart } from '../../images/icons/heart_like.svg';
 import {
@@ -12,27 +13,6 @@ import { ShopContext } from '../../cart-context';
 import { Search } from '../Search';
 
 import './Header.scss';
-
-const navLinks: NavLink[] = [
-  {
-    path: '/',
-    display: 'Home',
-  },
-  {
-    path: '/phones',
-    display: 'Phones',
-  },
-  {
-    path: '/tablets',
-    display: 'Tablets',
-  },
-  {
-    path: '/accessories',
-    display: 'Accessories',
-  },
-];
-
-const linksToHeader = ['phones', 'tablets', 'accessories', 'favourites'];
 
 export const Header: React.FC = () => {
   const { favouritesItems, cartItems } = useContext(ShopContext);

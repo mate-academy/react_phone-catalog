@@ -6,21 +6,21 @@ import {
   getProductDetails,
   getSuggestedProducts,
 } from '../../api';
-import { ProductDetails } from '../../types/ProductDetails';
-import './ProductDetailsPage.scss';
-
 import { Loader } from '../../components/Loader';
 import {
   Slider,
 } from '../../components/Slider';
+import { capacities, colors } from '../../helpers/consts';
 import {
   ReactComponent as IconArrowRight,
 } from '../../images/icons/arrow_right.svg';
 import { ReactComponent as IconHome } from '../../images/icons/home.svg';
 import { Product } from '../../types/Product';
+import { ProductDetails } from '../../types/ProductDetails';
 import {
   NotFoundPage,
 } from '../NotFoundPage';
+import './ProductDetailsPage.scss';
 
 import { ShopContext } from '../../cart-context';
 import {
@@ -102,10 +102,6 @@ export const ProductDetailsPage: React.FC = () => {
   const {
     price, discount, ram, capacity, id, screen,
   } = product;
-
-  const colors = ['#FCDBC1', '#5F7170', '#4C4C4C', '#F0F0F0'];
-
-  const capacities = ['64 GB', '256 GB', '512 GB'];
 
   const onBackClicked = () => {
     window.history.back();
