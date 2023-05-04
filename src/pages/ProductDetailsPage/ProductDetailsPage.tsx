@@ -15,7 +15,7 @@ import {
   scrollTop,
 } from '../../helpers/consts';
 import {
-  ReactComponent as IconArrowRight
+  ReactComponent as IconArrowRight,
 } from '../../images/icons/arrow_right.svg';
 import { ReactComponent as IconHome } from '../../images/icons/home.svg';
 import { Product } from '../../types/Product';
@@ -25,10 +25,10 @@ import './ProductDetailsPage.scss';
 
 import { ShopContext } from '../../cart-context';
 import {
-  ReactComponent as IconHeartActive
+  ReactComponent as IconHeartActive,
 } from '../../images/icons/heart_like-active.svg';
 import {
-  ReactComponent as IconHeart
+  ReactComponent as IconHeart,
 } from '../../images/icons/heart_like.svg';
 
 export const ProductDetailsPage: React.FC = () => {

@@ -31,6 +31,7 @@ export const Header: React.FC = () => {
         <Routes>
           {linksToHeader.map((link) => (
             <Route
+              key={link}
               path={link}
               element={<Search placeholder={`search in ${link}...`} />}
             />
