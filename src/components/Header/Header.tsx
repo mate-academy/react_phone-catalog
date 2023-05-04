@@ -9,7 +9,9 @@ const Header = () => (
     <div className="header__wrapper">
       <div className="header__left">
         <Logo classNames="header__logo" />
-        <Navbar />
+        <div className="header__nav">
+          <Navbar />
+        </div>
       </div>
 
       <div className="header__right">

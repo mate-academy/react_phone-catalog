@@ -10,10 +10,7 @@
   &__list {
     display: flex;
     transition: transform $primaryDuration;
-
-    @include onTablet {
-      gap: 16px;
-    }
+    gap: 16px;
   }
 
   &__butts {

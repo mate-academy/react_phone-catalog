@@ -2,21 +2,19 @@
 @import "../../../styles/utils/mixins";
 
 .navbar {
-  display: none;
   margin-bottom: 30px;
 
-  @include onTablet {
-    display: block;
+  @include onDesktop {
     margin-bottom: 0;
     height: 100%;
   }
 
   &__list {
-    height: 100%;
     @include flexGapAlign(44px);
     flex-direction: column;
 
-    @include onTablet {
+    @include onDesktop {
+      height: 100%;
       flex-direction: row;
       gap: 64px;
     }
@@ -32,8 +30,10 @@
     height: 100%;
     position: relative;
 
-    &::after {
-      @include barAnimation;
+    @include onDesktop {
+      &::after {
+        @include barAnimation;
+      }
     }
     
     &.active {

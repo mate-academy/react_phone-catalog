@@ -1,5 +1,10 @@
+@import '../utils/mixins';
+
 .container {
-  padding: 0 20px;
   max-width: 1116px;
   margin: 0 auto;
+
+  @media (max-width: 1157px) {
+    padding: 20px;
+  }
 }

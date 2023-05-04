@@ -7,19 +7,24 @@
 
   &__wrapper {
     display: flex;
-    height: $headerHeightTablet;
+    height: $headerHeight;
     align-items: center;
     justify-content: space-between;
     padding-left: 24px;
-
-    @include onTablet {
-      height: 64px;
-    }
   }
 
   &__left {
     height: 100%;
     @include flexGapAlign(64px);
+  }
+
+  &__nav {
+    display: none;
+    height: 100%;
+
+    @include onDesktop {
+      display: block;
+    }
   }
 
   &__logo {

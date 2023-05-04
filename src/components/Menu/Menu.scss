@@ -2,8 +2,9 @@
 @import "../../styles/utils/mixins";
 
 .menu {
+  padding: 20px 0;
   @include flexCenter;
-  margin-top: $headerHeightTablet;
+  margin-top: $headerHeight;
   height: 100vh;
   flex-direction: column;
   background-color: $elementsColor;

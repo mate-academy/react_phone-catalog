@@ -2,10 +2,14 @@
 @import "../../styles/utils/mixins";
 
 .footer {
+  padding: 20px 0;
   box-shadow: 0 -1px 0 $elementsColor;
 
+  @include onTablet {
+    padding: 0;
+  }
+
   &__wrapper {
-    height: 96px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -13,6 +17,7 @@
 
     @include onTablet {
       flex-direction: row;
+      height: 96px;
     }
   }
 

@@ -37,14 +37,14 @@ const CardSlider: React.FC<Props> = ({ products, title }) => {
             {title}
           </h2>
 
-          <ul
+          <div
             className="card-slider__list"
             style={{ transform: `translateX(${offset}px)` }}
           >
             {products.map(product => (
               <Card key={product.id} product={product} />
             ))}
-          </ul>
+          </div>
 
           <div className="card-slider__butts">
             <CardSliderButt

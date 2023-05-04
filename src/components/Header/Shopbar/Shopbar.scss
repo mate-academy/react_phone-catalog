@@ -31,7 +31,7 @@
       height: 100%;
       box-shadow: -1px 0 0 $elementsColor;
 
-      @include onTablet {
+      @include onDesktop {
         display: none;
       }
     }
