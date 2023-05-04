@@ -56,10 +56,20 @@
         height: 3px;
         position: absolute;
         bottom: -27px;
-        width: 100%;
+        animation: fadeIn 0.3s forwards;
 
         background: $c-primary;
       }
     }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 100%;
   }
 }

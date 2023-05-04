@@ -66,6 +66,8 @@ export const ProductDetailsPage: React.FC<Props> = ({ category }) => {
 
         setSuggestedProducts(suggestedProductsData);
 
+        scrollTop();
+
         setTimeout(() => setIsLoading(false), 250);
       } catch {
         if (!suggestedProducts.length) {
@@ -118,8 +120,6 @@ export const ProductDetailsPage: React.FC<Props> = ({ category }) => {
   );
 
   const newPrice = price * (1 - discount / 100);
-
-  scrollTop();
 
   return (
     <>
