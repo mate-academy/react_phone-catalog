@@ -166,9 +166,17 @@
     cursor: pointer;
     border: 1px solid $c-elements;
 
+    &:visited {
+      color: inherit;
+    }
+
     &--active {
       background-color: $c-primary;
       color: $c-white;
+
+      &:visited {
+        color: $c-white;
+      }
     }
 
     &:hover {

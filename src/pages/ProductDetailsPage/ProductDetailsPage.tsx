@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import { useContext, useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import {
   getProductById,
   getProductDetails,
@@ -31,7 +31,11 @@ import {
   ReactComponent as IconHeart,
 } from '../../images/icons/heart_like.svg';
 
-export const ProductDetailsPage: React.FC = () => {
+interface Props {
+  category: string;
+}
+
+export const ProductDetailsPage: React.FC<Props> = ({ category }) => {
   const {
     addToCart,
     cartItems,
@@ -50,6 +54,8 @@ export const ProductDetailsPage: React.FC = () => {
   const [suggestedProducts, setSuggestedProducts] = useState<Product[]>([]);
 
   const [isLoading, setIsLoading] = useState(false);
+
+  const location = useLocation();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -91,11 +97,11 @@ export const ProductDetailsPage: React.FC = () => {
     fetchData();
   }, [productId]);
 
-  if (isLoading || product === null) {
+  if (isLoading) {
     return <Loader />;
   }
 
-  if (!productDetails) {
+  if (!productDetails || product === null) {
     return <NotFoundPage />;
   }
 
@@ -127,7 +133,9 @@ export const ProductDetailsPage: React.FC = () => {
             <IconArrowRight className="path__arrow" />
 
             <Link to="/phones" className="path__link">
-              <div className="path__text">Phones</div>
+              <div className="path__text">
+                {category}
+              </div>
             </Link>
 
             <IconArrowRight className="path__arrow" />
@@ -185,7 +193,7 @@ export const ProductDetailsPage: React.FC = () => {
 
                 <div className="product-details__options-colors">
                   {colors.map((color, index) => (
-                    <div
+                    <Link
                       className={classNames(
                         'product-details__options-color-container',
                         {
@@ -193,12 +201,13 @@ export const ProductDetailsPage: React.FC = () => {
                             index === 0,
                         },
                       )}
+                      to={location.pathname}
                     >
                       <div
                         className="product-details__options-color"
                         style={{ backgroundColor: color }}
                       />
-                    </div>
+                    </Link>
                   ))}
                 </div>
               </div>
@@ -209,19 +218,22 @@ export const ProductDetailsPage: React.FC = () => {
                 </h2>
 
                 <div className="product-details__options-capacities">
-                  {capacities.map((capacityOption, index) => (
-                    <div
-                      className={classNames(
-                        'product-details__options-capacity',
-                        {
-                          'product-details__options-capacity--active':
-                            index === 0,
-                        },
-                      )}
-                    >
-                      {capacityOption}
-                    </div>
-                  ))}
+                  {capacities.map((capacityOption, index) => {
+                    return (
+                      <Link
+                        className={classNames(
+                          'product-details__options-capacity',
+                          {
+                            'product-details__options-capacity--active':
+                              index === 0,
+                          },
+                        )}
+                        to={location.pathname}
+                      >
+                        {capacityOption}
+                      </Link>
+                    );
+                  })}
                 </div>
               </div>
               <div className="product-details__options-section">

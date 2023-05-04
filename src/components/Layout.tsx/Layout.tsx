@@ -1,16 +1,16 @@
 import { Route, Routes } from 'react-router-dom';
-import { Footer } from '../Footer';
-import { Home } from '../../pages/Home';
 import { CartPage } from '../../pages/CartPage';
-import { PhonesPage } from '../../pages/PhonesPage';
-import { TabletsPage } from '../../pages/TabletsPage';
-import { ProductDetailsPage } from '../../pages/ProductDetailsPage';
-import { NotFoundPage } from '../../pages/NotFoundPage';
-import { Header } from '../Header';
 import { FavouritesPage } from '../../pages/FavoritesPage';
+import { Home } from '../../pages/Home';
+import { NotFoundPage } from '../../pages/NotFoundPage';
+import { PhonesPage } from '../../pages/PhonesPage';
+import { ProductDetailsPage } from '../../pages/ProductDetailsPage';
+import { TabletsPage } from '../../pages/TabletsPage';
+import { Footer } from '../Footer';
+import { Header } from '../Header';
 
-import './Layout.scss';
 import { AccessoriesPage } from '../../pages/AccessoriesPage';
+import './Layout.scss';
 
 export const Layout: React.FC = () => {
   return (
@@ -23,19 +23,34 @@ export const Layout: React.FC = () => {
 
           <Route path="phones">
             <Route index element={<PhonesPage />} />
-            <Route path=":productId" element={<ProductDetailsPage />} />
+
+            <Route
+              path=":productId"
+              element={<ProductDetailsPage category="Phones" />}
+            />
+
             <Route path=":slug" element={<PhonesPage />} />
           </Route>
 
           <Route path="tablets">
             <Route index element={<TabletsPage />} />
-            <Route path=":productId" element={<ProductDetailsPage />} />
+
+            <Route
+              path=":productId"
+              element={<ProductDetailsPage category="Tablets" />}
+            />
+
             <Route path=":slug" element={<PhonesPage />} />
           </Route>
 
           <Route path="accessories">
             <Route index element={<AccessoriesPage />} />
-            <Route path=":productId" element={<ProductDetailsPage />} />
+
+            <Route
+              path=":productId"
+              element={<ProductDetailsPage category="Accessories" />}
+            />
+
             <Route path=":slug" element={<AccessoriesPage />} />
           </Route>
 
