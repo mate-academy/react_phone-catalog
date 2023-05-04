@@ -7,7 +7,7 @@ import {
 import classNames from 'classnames';
 import { ReactComponent as ArrowLeft } from '../../images/icons/arrow-left.svg';
 import {
-  ReactComponent as ArrowRight
+  ReactComponent as ArrowRight,
 } from '../../images/icons/arrow_right.svg';
 
 const slides = [
@@ -186,7 +186,7 @@ export const Carousel: React.FC = () => {
             aria-label={`Go to slide ${slideIndex + 1}`}
             onClick={() => handleSlideNumberClick(slideIndex)}
             onKeyDown={(event) => {
-              return handleKeyDown(event, slideIndex, handleSlideNumberClick)
+              return handleKeyDown(event, slideIndex, handleSlideNumberClick);
             }}
             tabIndex={0}
           />

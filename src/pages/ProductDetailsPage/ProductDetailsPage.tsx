@@ -7,27 +7,28 @@ import {
   getSuggestedProducts,
 } from '../../api';
 import { Loader } from '../../components/Loader';
+import { Slider } from '../../components/Slider';
 import {
-  Slider,
-} from '../../components/Slider';
-import { capacities, colors } from '../../helpers/consts';
+  capacities,
+  colors,
+  onBackClicked,
+  scrollTop,
+} from '../../helpers/consts';
 import {
-  ReactComponent as IconArrowRight,
+  ReactComponent as IconArrowRight
 } from '../../images/icons/arrow_right.svg';
 import { ReactComponent as IconHome } from '../../images/icons/home.svg';
 import { Product } from '../../types/Product';
 import { ProductDetails } from '../../types/ProductDetails';
-import {
-  NotFoundPage,
-} from '../NotFoundPage';
+import { NotFoundPage } from '../NotFoundPage';
 import './ProductDetailsPage.scss';
 
 import { ShopContext } from '../../cart-context';
 import {
-  ReactComponent as IconHeartActive,
+  ReactComponent as IconHeartActive
 } from '../../images/icons/heart_like-active.svg';
 import {
-  ReactComponent as IconHeart,
+  ReactComponent as IconHeart
 } from '../../images/icons/heart_like.svg';
 
 export const ProductDetailsPage: React.FC = () => {
@@ -103,10 +104,6 @@ export const ProductDetailsPage: React.FC = () => {
     price, discount, ram, capacity, id, screen,
   } = product;
 
-  const onBackClicked = () => {
-    window.history.back();
-  };
-
   const imagesFolder = './';
 
   const addedToCart = cartItems.some((cartItem) => cartItem.id === id);
@@ -116,9 +113,7 @@ export const ProductDetailsPage: React.FC = () => {
 
   const newPrice = price * (1 - discount / 100);
 
-  window.scrollTo({
-    top: 0,
-  });
+  scrollTop();
 
   return (
     <>
@@ -281,9 +276,7 @@ export const ProductDetailsPage: React.FC = () => {
                   </div>
 
                   <div className="product-details__info-element">
-                    <div className="product-details__info-name">
-                      Resolution
-                    </div>
+                    <div className="product-details__info-name">Resolution</div>
 
                     <div className="product-details__info-value">
                       {productDetails.display.screenResolution}

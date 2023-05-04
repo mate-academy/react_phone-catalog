@@ -5,6 +5,8 @@ import './Footer.scss';
 import { ReactComponent as ArrowTop } from '../../images/icons/arrow-top.svg';
 import { ReactComponent as Logo } from '../../images/logo.svg';
 
+import { scrollTop } from '../../helpers/consts';
+
 const navLinks: NavLink[] = [
   {
     path: 'phones',
@@ -21,13 +23,6 @@ const navLinks: NavLink[] = [
 ];
 
 export const Footer: React.FC = () => {
-  function scrollTop() {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
-  }
-
   return (
     <footer className="footer">
       <Link to="/" className="logo footer__logo">
