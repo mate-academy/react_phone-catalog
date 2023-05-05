@@ -1,0 +1,53 @@
+.banner {
+  &__slider {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    height: 400px;
+    margin-bottom: 18px;
+  }
+
+  &__button {
+    flex-shrink: 0;
+  }
+
+  &__imgs-wrapper {
+    display: flex;
+    flex-grow: 1;
+    overflow: hidden;
+  }
+
+  &__imgs-container {
+    display: flex;
+  }
+
+  &__img {
+    object-fit: cover;
+    object-position: center;
+  }
+
+  &__slides-dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+    list-style: none;
+  }
+
+  &__slide-dot {
+    width: 14px;
+    height: 4px;
+    border: none;
+    background-color: $secondary-color;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &--selected {
+      background-color: $primary-color;
+    }
+
+    &:hover {
+      background-color: $primary-color;
+    }
+  }
+}

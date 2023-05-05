@@ -1,0 +1,16 @@
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 96px;
+  padding: 0 152px;
+  box-shadow: 0 -1px 0 #e2e6e9;
+
+  &__back {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    @extend %small-text;
+    color: $secondary-color;
+  }
+}

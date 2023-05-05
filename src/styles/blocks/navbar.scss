@@ -1,0 +1,40 @@
+.navbar {
+  &__list {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__item {
+    margin-left: 64px;
+  }
+
+  &__link {
+    display: inline-block;
+    position: relative;
+    @extend %uppercase;
+    color: $secondary-color;
+    text-decoration: none;
+    transition: all 0.3s;
+
+    &:hover {
+      color: $primary-color;
+    }
+
+    &--active {
+      color: $primary-color;
+
+      &::after {
+        position: absolute;
+        content: "";
+        left: 0;
+        bottom: -27px;
+        height: 3px;
+        width: 100%;
+        background-color: $primary-color;
+      }
+    }
+  }
+}

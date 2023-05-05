@@ -1,0 +1,115 @@
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  text-decoration: none;
+  font-family: Mont, Helvetica, sans-serif;
+  font-style: normal;
+  @extend %buttons-text;
+  border: 1px solid $icons-color;
+  background-color: $white-color;
+  cursor: pointer;
+  transition: all 0.3s;
+
+  &__back-text {
+    padding-top: 2px;
+  }
+
+  &--back {
+    gap: 4px;
+    width: max-content;
+    height: max-content;
+    border: none;
+    @extend %small-text;
+    color: $secondary-color;
+
+    &:hover {
+      color: $primary-color;
+    }
+  }
+
+  &--delete {
+    width: 16px;
+    height: 16px;
+    font-size: 16px;
+    line-height: 16px;
+    border: none;
+
+    &:hover {
+      color: $primary-color;
+    }
+  }
+
+  &--counter {
+    line-height: 32px;
+  }
+
+  &--dropdown {
+    justify-content: space-between;
+    width: 100%;
+    height: 40px;
+    padding: 0 12px;
+
+    &:hover {
+      border-color: $secondary-color;
+    }
+
+    &-active {
+      border-color: $primary-color;
+    }
+  }
+
+  &--banner {
+    height: 100%;
+  }
+
+  &--number {
+    border-color: $elements-color;
+  }
+
+  &--selected {
+    border: none;
+    color: $white-color;
+    background-color: $primary-color;
+  }
+
+  &--add {
+    width: 100%;
+    height: 100%;
+    color: $white-color;
+    background-color: $primary-color;
+    transition: all 0.5s;
+
+    &:hover {
+      box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+    }
+
+    &-selected {
+      color: $green-color;
+      background-color: $white-color;
+    }
+  }
+
+  &--favorites {
+    min-width: 40px;
+    height: 100%;
+  }
+
+  &--favorites-large {
+    min-width: 48px;
+    height: 100%;
+  }
+
+  &:disabled {
+    border-color: $elements-color;
+    color: $icons-color;
+    cursor: auto;
+  }
+
+  &:hover:not(.button--dropdown, :disabled) {
+    border-color: $primary-color;
+  }
+}

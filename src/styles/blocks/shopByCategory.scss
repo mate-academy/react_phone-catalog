@@ -1,0 +1,49 @@
+.shop-by-category {
+  &__title {
+    margin-bottom: 24px;
+  }
+
+  &__links-container {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__link {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: $primary-color;
+
+    &:hover div:first-child {
+      background-size: 400px 400px;
+    }
+  }
+
+  &__img {
+    height: 368px;
+    width: 368px;
+    margin-bottom: 24px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 368px 368px;
+    transition: all 0.3s;
+
+    &--phones {
+      background-image: url(../../img/category-phones.png);
+    }
+    &--tablets {
+      background-image: url(../../img/category-tablets.png);
+    }
+    &--accessories {
+      background-image: url(../../img/category-accessories.png);
+    }
+  }
+
+  &__name {
+    margin-bottom: 4px;
+  }
+
+  &__quantity {
+    color: $secondary-color;
+  }
+}

@@ -1,0 +1,17 @@
+.pagination {
+  display: flex;
+  list-style: none;
+
+  &__item:first-child {
+    margin-right: 16px;
+  }
+
+  &__item:nth-last-child(2) {
+    margin-right: 16px;
+  }
+
+  &__item:nth-child(n + 2):not(:nth-last-child(-n + 2)) {
+    margin-right: 8px;
+  }
+
+}

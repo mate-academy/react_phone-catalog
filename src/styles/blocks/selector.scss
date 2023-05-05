@@ -1,0 +1,38 @@
+.selector {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  vertical-align: top;
+
+  &__menu {
+    position: absolute;
+    top: 44px;
+    z-index: 20;
+    display: none;
+    width: 100%;
+    padding: 8px 0;
+    background: $white-color;
+    border: 1px solid $elements-color;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+
+    &--is-active {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  &__link {
+    padding: 6px 12px 5px;
+    text-decoration: none;
+    color: $secondary-color;
+
+    &--is-active {
+      color: $primary-color;
+      background-color: $elements-color;
+    }
+
+    &:hover {
+      color: $primary-color;
+    }
+  }
+}
