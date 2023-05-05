@@ -155,6 +155,7 @@ export const Carousel: React.FC = () => {
 
           {slides.map((slide) => (
             <div
+              key={slide.url}
               className="carousel__slide"
               style={{ backgroundImage: `url(${slide.url})` }}
             />

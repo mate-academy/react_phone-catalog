@@ -9,14 +9,19 @@ import {
 } from '../../images/icons/arrow_right.svg';
 import { ReactComponent as IconHome } from '../../images/icons/home.svg';
 
-import { EmptyCategory } from '../../components/EmptyCategory';
+import { ErrorMessage } from '../../components/ErrorMessage/ErrorMessage';
 import { Loader } from '../../components/Loader';
 import { ProductFilter } from '../../components/ProductFilter';
+
+import {
+  emptyCategoryErrorMessage, somethingWentWrongErrorMessage,
+} from '../../helpers/consts';
 
 export const AccessoriesPage: React.FC = () => {
   const [accessories, setAccessories] = useState<Product[]>([]);
 
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -29,6 +34,8 @@ export const AccessoriesPage: React.FC = () => {
 
         setIsLoading(false);
       } catch {
+        setError(true);
+
         if (!accessories.length) {
           setAccessories([]);
         }
@@ -40,12 +47,16 @@ export const AccessoriesPage: React.FC = () => {
 
   const phonesAmount = useMemo(() => accessories.length, [accessories]);
 
+  if (error) {
+    return <ErrorMessage message={somethingWentWrongErrorMessage} reload />;
+  }
+
   if (isLoading) {
     return <Loader />;
   }
 
   if (accessories.length === 0) {
-    return <EmptyCategory />;
+    return <ErrorMessage message={emptyCategoryErrorMessage} />;
   }
 
   return (

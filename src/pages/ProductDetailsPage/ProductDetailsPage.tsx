@@ -13,6 +13,7 @@ import {
   colors,
   onBackClicked,
   scrollTop,
+  somethingWentWrongErrorMessage,
 } from '../../helpers/consts';
 import {
   ReactComponent as IconArrowRight,
@@ -24,12 +25,11 @@ import { NotFoundPage } from '../NotFoundPage';
 import './ProductDetailsPage.scss';
 
 import { ShopContext } from '../../cart-context';
+import { ErrorMessage } from '../../components/ErrorMessage/ErrorMessage';
 import {
   ReactComponent as IconHeartActive,
 } from '../../images/icons/heart_like-active.svg';
-import {
-  ReactComponent as IconHeart,
-} from '../../images/icons/heart_like.svg';
+import { ReactComponent as IconHeart } from '../../images/icons/heart_like.svg';
 
 interface Props {
   category: string;
@@ -54,6 +54,7 @@ export const ProductDetailsPage: React.FC<Props> = ({ category }) => {
   const [suggestedProducts, setSuggestedProducts] = useState<Product[]>([]);
 
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   const location = useLocation();
 
@@ -70,6 +71,8 @@ export const ProductDetailsPage: React.FC<Props> = ({ category }) => {
 
         setTimeout(() => setIsLoading(false), 250);
       } catch {
+        setError(true);
+
         if (!suggestedProducts.length) {
           setSuggestedProducts([]);
         }
@@ -99,8 +102,12 @@ export const ProductDetailsPage: React.FC<Props> = ({ category }) => {
     fetchData();
   }, [productId]);
 
-  if (isLoading) {
+  if (isLoading && !error) {
     return <Loader />;
+  }
+
+  if (error) {
+    return <ErrorMessage message={somethingWentWrongErrorMessage} reload />;
   }
 
   if (!productDetails || product === null) {
@@ -133,9 +140,7 @@ export const ProductDetailsPage: React.FC<Props> = ({ category }) => {
             <IconArrowRight className="path__arrow" />
 
             <Link to="/phones" className="path__link">
-              <div className="path__text">
-                {category}
-              </div>
+              <div className="path__text">{category}</div>
             </Link>
 
             <IconArrowRight className="path__arrow" />
@@ -181,7 +186,7 @@ export const ProductDetailsPage: React.FC<Props> = ({ category }) => {
 
             <img
               src={imagesFolder + mainImage}
-              alt=""
+              alt="Product"
               className="product-details__main-image"
             />
 

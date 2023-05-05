@@ -4,9 +4,7 @@ import { ShopContext } from '../../cart-context';
 import { ProductList } from '../../components/ProductList';
 import { Product } from '../../types/Product';
 
-import {
-  ReturnHomeButton,
-} from '../../components/ReturnHomeButton/ReturnHomeButton';
+import { ErrorMessage } from '../../components/ErrorMessage/ErrorMessage';
 import {
   ReactComponent as IconArrowRight,
 } from '../../images/icons/arrow_right.svg';
@@ -23,15 +21,9 @@ export const FavouritesPage: React.FC = () => {
 
   if (favourites.length === 0) {
     return (
-      <div className="product-page">
-        <div className="product-page__container--error">
-          <h1 className="product-page__title product-page__title--error">
-            You haven&apos;t added any products to your favorites yet.
-          </h1>
-
-          <ReturnHomeButton />
-        </div>
-      </div>
+      <ErrorMessage
+        message="You haven&apos;t added any products to your favorites yet."
+      />
     );
   }
 

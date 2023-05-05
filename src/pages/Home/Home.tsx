@@ -1,16 +1,18 @@
 import { useEffect, useState } from 'react';
-import { Carousel } from '../../components/Carousel';
-import { Product } from '../../types/Product';
 import {
   getBrandNewProducts,
   getHotPriceProducts,
   getProducts,
 } from '../../api';
+import { Carousel } from '../../components/Carousel';
 import { Slider } from '../../components/Slider';
+import { Product } from '../../types/Product';
 
-import './Home.scss';
-import { ShopByCategory } from '../../components/ShopByCategory';
+import { ErrorMessage } from '../../components/ErrorMessage/ErrorMessage';
 import { Loader } from '../../components/Loader';
+import { ShopByCategory } from '../../components/ShopByCategory';
+import { somethingWentWrongErrorMessage } from '../../helpers/consts';
+import './Home.scss';
 
 export const Home: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -18,6 +20,8 @@ export const Home: React.FC = () => {
   const [brandNewProducts, setBrandNewProducts] = useState<Product[]>([]);
 
   const [isLoading, setIsLoading] = useState(false);
+
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -32,6 +36,8 @@ export const Home: React.FC = () => {
 
         setIsLoading(false);
       } catch {
+        setError(true);
+
         if (hotPriceProducts.length) {
           setHotPriceProducts([]);
         }
@@ -52,6 +58,8 @@ export const Home: React.FC = () => {
 
         setProducts(productsData);
       } catch {
+        setError(true);
+
         if (!products.length) {
           setProducts([]);
         }
@@ -60,6 +68,10 @@ export const Home: React.FC = () => {
 
     fetchData();
   }, []);
+
+  if (error) {
+    return <ErrorMessage message={somethingWentWrongErrorMessage} reload />;
+  }
 
   if (isLoading) {
     return <Loader />;

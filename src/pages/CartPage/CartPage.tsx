@@ -4,13 +4,11 @@ import classNames from 'classnames';
 import { ShopContext } from '../../cart-context';
 import './CartPage.scss';
 
-import {
-  ReturnHomeButton,
-} from '../../components/ReturnHomeButton/ReturnHomeButton';
 import { ReactComponent as IconClose } from '../../images/icons/close.svg';
 import { ReactComponent as IconMinus } from '../../images/icons/minus.svg';
 import { ReactComponent as IconPlus } from '../../images/icons/plus.svg';
 
+import { ErrorMessage } from '../../components/ErrorMessage/ErrorMessage';
 import { onBackClicked } from '../../helpers/consts';
 
 export const CartPage: React.FC = () => {
@@ -24,15 +22,7 @@ export const CartPage: React.FC = () => {
 
   if (cartItems.length === 0) {
     return (
-      <div className="product-page">
-        <div className="product-page__container--error">
-          <h1 className="product-page__title product-page__title--error">
-            The cart is empty.
-          </h1>
-
-          <ReturnHomeButton />
-        </div>
-      </div>
+      <ErrorMessage message="The cart is empty" />
     );
   }
 
