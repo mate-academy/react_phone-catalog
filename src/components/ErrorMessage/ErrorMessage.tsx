@@ -14,12 +14,22 @@ export const ErrorMessage: React.FC<Props> = ({ message, reload = false }) => {
   const linkTo = useMemo(() => (reload ? location.pathname : '/'), []);
   const buttonText = useMemo(() => (reload ? 'Reload' : 'Return Home'), []);
 
+  function handleClick() {
+    if (reload) {
+      window.history.go(0);
+    }
+  }
+
   return (
     <div className="error-message">
       <div className="error-message__container">
         <h1 className="error-message__title">{message}</h1>
 
-        <Link className="error-message__button" to={linkTo}>
+        <Link
+          className="error-message__button"
+          to={linkTo}
+          onClick={() => handleClick()}
+        >
           {buttonText}
         </Link>
       </div>
