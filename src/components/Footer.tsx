@@ -13,7 +13,7 @@ export const Footer = () => {
     <footer className="footer">
       <Link to="/">
         <img
-          src="./img/logo.svg"
+          src="./img/Logo.svg"
           alt="Logo"
           className="logo"
         />

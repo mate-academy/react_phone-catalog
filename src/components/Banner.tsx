@@ -5,17 +5,17 @@ export const Banner: FC = () => {
   const images = [
     {
       id: 1,
-      url: './_new/img/banner-phones.png',
+      url: './img/banner-phones.png',
       alt: 'Phones',
     },
     {
       id: 2,
-      url: './_new/img/banner-tablets.png',
+      url: './img/banner-tablets.png',
       alt: 'Tablets',
     },
     {
       id: 3,
-      url: './_new/img/banner-accessories.png',
+      url: './img/banner-accessories.png',
       alt: 'Accessories',
     },
   ];

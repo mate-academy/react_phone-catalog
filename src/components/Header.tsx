@@ -23,7 +23,7 @@ export const Header = () => {
       <div className="header__left">
         <Link to="/">
           <img
-            src="./img/logo.svg"
+            src="./img/Logo.svg"
             alt="Logo"
             className="logo"
           />
