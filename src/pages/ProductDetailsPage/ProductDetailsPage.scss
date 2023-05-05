@@ -129,6 +129,10 @@
     &--active {
       border-color: $c-primary;
     }
+
+    &:hover {
+      border-color: $c-icons;
+    }
   }
 
   &__options-color {
