@@ -1,0 +1,12 @@
+.button-square {
+  @include btn-square(32px);
+
+  &:active {
+    background-color: $c-hover_BG;
+  }
+
+  &--disabled {
+    pointer-events: none;
+    opacity: 0.6;
+  }
+}

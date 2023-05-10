@@ -1,0 +1,37 @@
+@import "../../styles/utils";
+
+.navlink {
+  &__link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    text-transform: uppercase;
+    color: $c-secondary;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 3px;
+      width: 100%;
+      background-color: $c-primary;
+      transition: all 0.3s ease;
+      transform: scale(0);
+    }
+
+    &--active {
+      color: $c-primary;
+
+      &::after {
+        content: "";
+        transform: scale(1);
+      }
+    }
+
+    &:hover {
+      color: $c-primary;
+    }
+  }
+}

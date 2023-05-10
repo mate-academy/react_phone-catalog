@@ -1,0 +1,21 @@
+@import "../../styles/utils";
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid $c-elements;
+  background-color: $c-red;
+
+  &__content {
+    padding: 10px 24px;
+  }
+
+  &__title {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    @extend %small-text;
+    color: $c-white;
+    margin-bottom: 10px;
+  }
+}
