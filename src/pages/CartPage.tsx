@@ -75,33 +75,36 @@ export const CartPage = () => {
                   >
                     <span className="icon icon--close-cart-item" />
                   </button>
-                  <img
-                    src={`./${item.product.imageUrl}`}
-                    alt={item.product.name}
-                    className="cart-page__img"
-                  />
-                  <p className="cart-page__name">{item.product.name}</p>
-                  <div className="cart-page__counter">
-                    <button
-                      className="button button--counter"
-                      type="button"
-                      data-cy="cartDeleteButton"
-                      onClick={subtractCounterHandler(item.id)}
-                      disabled={item.quantity === 1}
-                    >
-                      &#8722;
-                    </button>
-                    <div>{item.quantity}</div>
-                    <button
-                      className="button button--counter"
-                      type="button"
-                      data-cy="cartDeleteButton"
-                      onClick={addCounterHandler(item.id)}
-                    >
-                      +
-                    </button>
+
+                  <div className="cart-page__product-data">
+                    <img
+                      src={`./${item.product.imageUrl}`}
+                      alt={item.product.name}
+                      className="cart-page__img"
+                    />
+                    <p className="cart-page__name">{item.product.name}</p>
+                    <div className="cart-page__counter">
+                      <button
+                        className="button button--counter"
+                        type="button"
+                        data-cy="cartDeleteButton"
+                        onClick={subtractCounterHandler(item.id)}
+                        disabled={item.quantity === 1}
+                      >
+                        &#8722;
+                      </button>
+                      <div>{item.quantity}</div>
+                      <button
+                        className="button button--counter"
+                        type="button"
+                        data-cy="cartDeleteButton"
+                        onClick={addCounterHandler(item.id)}
+                      >
+                        +
+                      </button>
+                    </div>
+                    <h2>{`$${getProductPrice(item)}`}</h2>
                   </div>
-                  <h2>{`$${getProductPrice(item)}`}</h2>
                 </div>
               ))}
             </div>

@@ -3,9 +3,26 @@
   flex-direction: column;
   min-height: 100vh;
 
-  &__main {
+  &__main-container {
+    width: 100%;
     flex-grow: 1;
-    width: 1136px;
+  }
+
+  &__main {
+    max-width: 320px;
     margin: 0 auto;
+    padding: 0 8px;
+
+    @include onSmall {
+      max-width: 576px;
+    }
+
+    @include onMedium {
+      max-width: 864px;
+    }
+
+    @include onLarge {
+      max-width: 1152px;
+    }
   }
 }

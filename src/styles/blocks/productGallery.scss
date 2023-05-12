@@ -23,8 +23,6 @@
     align-items: center;
     justify-content: center;
     padding: 0;
-    width: 80px;
-    height: 80px;
     border: 1px solid $elements-color;
     background-color: $white-color;
     cursor: pointer;
@@ -56,7 +54,7 @@
   }
 
   &__button {
-    width: 80px;
+    width: 100%;
     border: 1px solid $elements-color;
     background-color: $white-color;
     cursor: pointer;

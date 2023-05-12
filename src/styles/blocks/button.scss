@@ -63,7 +63,20 @@
   }
 
   &--banner {
+    width: 18px;
     height: 100%;
+
+    @include onSmall {
+      width: 22px;
+    }
+
+    @include onMedium {
+      width: 26px;
+    }
+
+    @include onLarge {
+      width: 32px;
+    }
   }
 
   &--number {
@@ -78,6 +91,7 @@
 
   &--add {
     width: 100%;
+    flex-grow: 1;
     height: 100%;
     color: $white-color;
     background-color: $primary-color;

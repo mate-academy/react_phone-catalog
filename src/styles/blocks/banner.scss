@@ -2,9 +2,24 @@
   &__slider {
     display: flex;
     justify-content: space-between;
-    gap: 16px;
-    height: 400px;
+    gap: 8px;
+    height: 96px;
     margin-bottom: 18px;
+
+    @include onSmall {
+      height: 190px;
+      gap: 10px;
+    }
+
+    @include onMedium {
+      height: 296px;
+      gap: 12px;
+    }
+
+    @include onLarge {
+      height: 400px;
+      gap: 16px;
+    }
   }
 
   &__button {

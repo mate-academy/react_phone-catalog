@@ -5,7 +5,14 @@
 
   &__links-container {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     gap: 16px;
+
+    @include onSmall {
+      flex-direction: row;
+    }
   }
 
   &__link {
@@ -15,18 +22,49 @@
     color: $primary-color;
 
     &:hover div:first-child {
-      background-size: 400px 400px;
+      background-size: 300px 300px;
+
+      @include onSmall {
+        background-size: 194px 194px;
+      }
+
+      @include onMedium {
+        background-size: 300px 300px;
+      }
+
+      @include onLarge {
+        background-size: 400px 400px;
+      }
     }
   }
 
   &__img {
-    height: 368px;
-    width: 368px;
-    margin-bottom: 24px;
+    height: 272px;
+    width: 272px;
+    margin-bottom: 16px;
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 368px 368px;
+    background-size: 272px 272px;
     transition: all 0.3s;
+
+    @include onSmall {
+      margin-bottom: 24px;
+      height: 176px;
+      width: 176px;
+      background-size: 176px 176px;
+    }
+
+    @include onMedium {
+      height: 272px;
+      width: 272px;
+      background-size: 272px 272px;
+    }
+
+    @include onLarge {
+      height: 368px;
+      width: 368px;
+      background-size: 368px 368px;
+    }
 
     &--phones {
       background-image: url(../../img/category-phones.png);

@@ -118,11 +118,26 @@ export const ProductDetailsPage = () => {
           <h1 className="product-details-page__title">
             {productDetails?.name}
           </h1>
-          <div className="product-details-page__product-container">
-            <div className="product-details-page__product-section">
+          <div
+            className="
+              product-details-page__container
+              product-details-page__container--top-info
+            "
+          >
+            <div
+              className="
+                product-details-page__section
+                product-details-page__section--top-info
+              "
+            >
               <ProductGallery imagesUrl={productDetails.images} />
             </div>
-            <div className="product-details-page__product-section">
+            <div
+              className="
+                product-details-page__section
+                product-details-page__section--top-info
+              "
+            >
               <div className="product-details-page__main-info-container">
                 <div className="product-details-page__main-info">
                   <div className="product-details-page__price-container">
@@ -189,8 +204,18 @@ export const ProductDetailsPage = () => {
                 </div>
               </div>
             </div>
+          </div>
+          <div
+            className="
+              product-details-page__container
+              product-details-page__container--description
+            "
+          >
             <div
-              className="product-details-page__product-section"
+              className="
+                product-details-page__section
+                product-details-page__section--description
+              "
               data-cy="productDescription"
             >
               <h2 className="product-details-page__subtitle">About</h2>
@@ -200,7 +225,12 @@ export const ProductDetailsPage = () => {
               </p>
             </div>
 
-            <div className="product-details-page__product-section">
+            <div
+              className="
+                product-details-page__section
+                product-details-page__section--description
+              "
+            >
               <h2 className="product-details-page__subtitle">Tech specs</h2>
               <hr className="product-details-page__line" />
               <div className="product-details-page__characteristics">

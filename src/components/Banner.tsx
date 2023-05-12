@@ -1,7 +1,9 @@
 import classNames from 'classnames';
 import { FC, useEffect, useState } from 'react';
+import { useResizeDetector } from 'react-resize-detector';
 
 export const Banner: FC = () => {
+  let itemWidth: number;
   const images = [
     {
       id: 1,
@@ -25,7 +27,23 @@ export const Banner: FC = () => {
     ...images,
     { ...images[0], id: images.length + 1 },
   ];
-  const itemWidth = 1040;
+
+  const { width = 0, ref } = useResizeDetector({
+    handleHeight: false,
+    refreshMode: 'debounce',
+    refreshRate: 300,
+  });
+
+  if (width < 560) {
+    itemWidth = 252;
+  } else if (width < 848) {
+    itemWidth = 496;
+  } else if (width < 1136) {
+    itemWidth = 772;
+  } else {
+    itemWidth = 1040;
+  }
+
   const animationDuration = 1000;
   const [currentSlide, setCurrentSlide] = useState(1);
   const [currentDuration, setCurrentDuration] = useState(animationDuration);
@@ -80,7 +98,7 @@ export const Banner: FC = () => {
   }, [currentSlide]);
 
   return (
-    <div className="banner">
+    <div className="banner" ref={ref}>
       <div className="banner__slider">
         <button
           className="banner__button button button--banner"

@@ -1,3 +1,5 @@
+@import "../utils/mixins";
+
 @font-face {
   font-family: Mont;
   font-weight: 500;
@@ -18,21 +20,46 @@
 
 h1 {
   font-weight: 700;
-  font-size: 32px;
-  line-height: 41px;
+  font-size: 26px;
+  line-height: 128%;
   letter-spacing: -0.01em;
+
+  @include onSmall {
+    font-size: 28px;
+  }
+
+  @include onMedium {
+    font-size: 32px;
+  }
 }
 
 h2 {
   font-weight: 700;
-  font-size: 22px;
+  font-size: 18px;
   line-height: 140%;
+
+  @include onSmall {
+    font-size: 20px;
+  }
+
+  @include onMedium {
+    font-size: 22px;
+  }
 }
 
 h3 {
   font-weight: 600;
-  font-size: 20px;
-  line-height: 26px;
+  font-size: 16px;
+  line-height: 130%;
+
+  @include onSmall {
+    font-size: 18px;
+    line-height: 37px;
+  }
+
+  @include onMedium {
+    font-size: 20px;
+  }
 }
 
 %body-text {

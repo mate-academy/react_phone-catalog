@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useResizeDetector } from 'react-resize-detector';
 import { Product } from '../types/Product';
 import { ProductCard } from './ProductCard';
 
@@ -9,13 +10,35 @@ type Props = {
 
 export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
   const [position, setPosition] = useState(0);
-  const step = 4;
-  const frameSize = 4;
+  let frameSize;
   const itemWidth = 272;
   const gap = 16;
   const animationDuration = 1000;
-  const endPosition = (-itemWidth - gap) * (products.length - frameSize);
+
+  const { width = 0, ref } = useResizeDetector({
+    handleHeight: false,
+    refreshMode: 'debounce',
+    refreshRate: 300,
+  });
+
+  const getSliderWidth = (size: number) => {
+    return (itemWidth + gap) * size - gap;
+  };
+
+  if (width < getSliderWidth(2)) {
+    frameSize = 1;
+  } else if (width >= getSliderWidth(2) && width < getSliderWidth(3)) {
+    frameSize = 2;
+  } else if (width >= getSliderWidth(3) && width < getSliderWidth(4)) {
+    frameSize = 3;
+  } else {
+    frameSize = 4;
+  }
+
+  const sliderWidth = getSliderWidth(frameSize);
+  const step = frameSize;
   const shift = (itemWidth + gap) * step;
+  const endPosition = (-itemWidth - gap) * (products.length - frameSize);
 
   const handlerPreviousButton = () => {
     let currentPosition = position;
@@ -35,7 +58,7 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
   };
 
   return (
-    <div className="products-slider">
+    <div className="products-slider" ref={ref}>
       <div className="products-slider__top">
         <h1>{title}</h1>
         <div className="products-slider__buttons">
@@ -65,7 +88,7 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
           </button>
         </div>
       </div>
-      <div className="products-slider__slider">
+      <div className="products-slider__slider" style={{ width: `${sliderWidth}px` }}>
         <ul
           className="products-slider__list"
           style={{

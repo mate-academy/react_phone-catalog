@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import { useState } from 'react';
+import { useResizeDetector } from 'react-resize-detector';
 
 type Props = {
   imagesUrl: string[],
@@ -10,11 +11,18 @@ export const ProductGallery: React.FC<Props> = ({ imagesUrl }) => {
   const altMainPhoto = mainPhoto.match(/[^\\/]+(?=\.\w+$)/) || '';
   const [position, setPosition] = useState(0);
   const frameSize = 4;
-  const itemHeight = 80;
   const gap = 16;
   const animationDuration = 300;
-  const endPosition = (-itemHeight - gap) * (imagesUrl.length - frameSize);
-  const shift = itemHeight + gap;
+
+  const { width, ref } = useResizeDetector({
+    handleHeight: false,
+    refreshMode: 'debounce',
+    refreshRate: 300,
+  });
+
+  const itemSize = width && width < 392 ? 60 : 80;
+  const endPosition = (-itemSize - gap) * (imagesUrl.length - frameSize);
+  const shift = itemSize + gap;
 
   const onClickGalleryItem = (imgUrl: string) => () => {
     if (imgUrl !== mainPhoto) {
@@ -24,10 +32,10 @@ export const ProductGallery: React.FC<Props> = ({ imagesUrl }) => {
 
   const getHeight = () => {
     if (imagesUrl.length > 5) {
-      return frameSize * itemHeight + gap * (frameSize - 1);
+      return frameSize * itemSize + gap * (frameSize - 1);
     }
 
-    return imagesUrl.length * itemHeight + gap * (imagesUrl.length - 1);
+    return imagesUrl.length * itemSize + gap * (imagesUrl.length - 1);
   };
 
   const onClickDown = () => {
@@ -48,7 +56,7 @@ export const ProductGallery: React.FC<Props> = ({ imagesUrl }) => {
   };
 
   return (
-    <div className="product-gallery">
+    <div className="product-gallery" ref={ref}>
       <div className="product-gallery__thumbnails-container">
         {imagesUrl.length > 5 && (
           <button
@@ -92,6 +100,7 @@ export const ProductGallery: React.FC<Props> = ({ imagesUrl }) => {
                       'product-gallery__thumbnail--active': image === mainPhoto,
                     },
                   )}
+                  style={{ width: `${itemSize}px`, height: `${itemSize}px` }}
                   key={image}
                   onClick={onClickGalleryItem(image)}
                 >
