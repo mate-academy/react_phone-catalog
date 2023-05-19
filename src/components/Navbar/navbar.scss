@@ -1,0 +1,15 @@
+@import "../../styles/utils";
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__list {
+    @extend %h1;
+    font-size: 12px;
+    display: flex;
+    gap: 64px;
+    height: $header-height;
+  }
+}

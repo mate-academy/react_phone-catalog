@@ -1,0 +1,19 @@
+@import "../../styles/utils";
+
+.loader {
+  border: 5px solid $c-icons;
+  border-top: 5px solid $c-secondary;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  animation: loader 1s linear infinite;
+}
+
+@keyframes loader {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

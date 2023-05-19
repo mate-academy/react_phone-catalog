@@ -1,0 +1,17 @@
+@import "../../styles/utils";
+
+.not-results {
+  @extend %flex-center;
+  flex-direction: column;
+
+  &__title {
+    @extend %h2;
+    text-transform: uppercase;
+    color: $c-secondary;
+    margin-bottom: 40px;
+  }
+
+  &__button {
+    max-width: 185px;
+  }
+}

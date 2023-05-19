@@ -1,1 +1,12 @@
-// not empty
+@import "./styles/utils";
+@import "./styles/fonts";
+@import "./styles/reset.scss";
+
+@import "./styles/blocks/button-square.scss";
+@import "./styles/blocks/btn.scss";
+@import "./styles/blocks/grid.scss";
+@import "./styles/blocks/title.scss";
+
+iframe {
+  display: none;
+}
