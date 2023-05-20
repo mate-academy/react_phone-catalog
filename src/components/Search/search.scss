@@ -13,7 +13,7 @@
     height: 100%;
     border: none;
     width: 327px;
-    box-shadow: -1px 0px 0px $c-elements;
+    box-shadow: -1px 0 0 $c-elements;
     background-image: url("../../assets/svg/search.svg");
     background-repeat: no-repeat;
     background-position: 290px;
@@ -43,4 +43,4 @@
       display: none;
     }
   }
-};
+}
