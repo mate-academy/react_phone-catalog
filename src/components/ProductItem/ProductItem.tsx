@@ -53,7 +53,12 @@ export const ProductItem: FC<Props> = ({ product }) => {
             <CharacteristicProduct charProd={charProd} />
           </div>
           <div className="product-item__actions">
-            <ButtonAddToCart product={product} isSelected={isSelectedInCart} />
+            <div className="product-item__button-cart">
+              <ButtonAddToCart
+                product={product}
+                isSelected={isSelectedInCart}
+              />
+            </div>
             <ButtonLike product={product} isSelected={isSelectedFav} />
           </div>
         </div>

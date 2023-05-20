@@ -1,5 +1,5 @@
 .button {
-  @include btn(100%, 40px);
+  @include btn(100%, 100%);
 
   &:hover {
     border: 1px solid $c-primary;
