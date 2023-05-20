@@ -1,0 +1,20 @@
+@import "../../styles/utils";
+
+.button-back {
+  @extend %buttons;
+  @extend %flex-center;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+
+  &::after {
+    content: "Back";
+    color: $c-secondary;
+    margin-left: 9px;
+    transition: color 0.3s;
+  }
+
+  &:hover::after {
+    color: $c-primary;
+  }
+}

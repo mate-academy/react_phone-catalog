@@ -1,0 +1,74 @@
+@import "../../styles/utils";
+
+.carousel {
+  &__box {
+    position: relative;
+    display: flex;
+    gap: 16px;
+  }
+
+  &__row {
+    flex-grow: 1;
+    display: flex;
+    height: 432px;
+    order: 2;
+    overflow: hidden;
+  }
+
+  &__img {
+    opacity: 0;
+    height: 0;
+    width: 0;
+    transition: opacity 0.3s;
+
+    &--active {
+      opacity: 1;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+
+  &__button {
+    flex: 0 0 32px;
+    border: 1px solid $c-icons;
+    background-color: transparent;
+    transform: scale(1);
+    transition: all 0.3s ease;
+
+    &:hover {
+      border: 1px solid $c-primary;
+      background-color: $c-hover_BG;
+    }
+
+    &--prev {
+      order: 1;
+    }
+
+    &--next {
+      order: 3;
+    }
+  }
+
+  &__pagination-box {
+    @extend %flex-center;
+    gap: 15px;
+    height: 30px;
+    order: 4;
+  }
+
+  &__item-btn {
+    border: 1px solid transparent;
+    transition: all 0.3s;
+    background-color: $c-elements;
+
+    &:hover {
+      border: 1px solid $c-primary;
+    }
+
+    &--active {
+      background-color: $c-primary;
+    }
+  }
+}

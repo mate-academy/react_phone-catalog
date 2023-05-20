@@ -1,0 +1,27 @@
+@import "../../styles/utils";
+
+.favourites {
+  margin-bottom: 25px;
+
+  &__top-row {
+    margin-top: 25px;
+    margin-bottom: 40px;
+  }
+
+  &__title {
+    margin-bottom: 8px;
+  }
+
+  &__empty-title {
+    @extend %flex-center;
+    @extend %h2;
+    text-transform: uppercase;
+    text-align: center;
+    color: $c-secondary;
+    margin-bottom: 40px;
+  }
+
+  &__count {
+    margin-bottom: 40px;
+  }
+}
