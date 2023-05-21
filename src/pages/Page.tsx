@@ -25,6 +25,7 @@ import { Accessories } from './Accessories';
 import { Cart } from './Cart';
 import { NotFound } from './NotFound';
 import { Favourites } from './Favourites';
+import { Order } from './Order';
 
 export const Page: FC = () => {
   const { pathname } = useLocation();
@@ -203,7 +204,16 @@ export const Page: FC = () => {
               />
             </Route>
 
-            <Route path={Pathname.Cart} element={<Cart products={inCart} />} />
+            <Route path={Pathname.Cart}>
+              <Route
+                index
+                element={<Cart products={inCart} />}
+              />
+              <Route
+                path="order"
+                element={<Order products={inCart} />}
+              />
+            </Route>
 
             <Route path={Pathname.Favourites}>
               <Route index element={<Favourites products={favorites} />} />

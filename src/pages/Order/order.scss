@@ -1,0 +1,261 @@
+@import "../../styles/utils";
+
+.order {
+  margin-bottom: 100px;
+
+  &__navigate {
+    margin-top: 40px;
+    margin-bottom: 16px;
+  }
+
+  &__title {
+    margin-bottom: 30px;
+  }
+
+  &__not-res {
+    @extend %flex-center;
+    @extend %h2;
+    text-transform: uppercase;
+    text-align: center;
+    color: $c-secondary;
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: 1fr 368px;
+    gap: 50px;
+  }
+
+  &__fieldset {
+    border: none;
+    margin: 0;
+    padding: 0;
+    padding-bottom: 30px;
+    border-bottom: 1px solid $c-elements;
+
+    &:last-child {
+      border: none;
+      padding-bottom: none;
+    }
+
+    &-title {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    
+    &-legend {
+      @extend %h2;
+      color: $c-primary;
+      position: relative;
+      line-height: 21px;
+      font-size: 20px;
+      align-items: center;
+    }
+
+    &-number {
+      border-radius: 24px;
+      display: block;
+      line-height: 35px;
+      width: 35px;
+      height: 35px;
+      background-color: $c-elements;
+      text-align: center;
+    }
+
+    &-inputs {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding: 0;
+    }
+
+    &-sText {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      width: 100%;
+      margin-bottom: 20px;
+
+      &-p {
+        color: $c-primary;
+        font-size: 18px;
+        @extend %body-text;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      &-free {
+        @extend %small-text;
+        color: $c-primary;
+      }
+      
+      &-small-p {
+        @extend %small-text;
+        color: $c-primary;
+        opacity: 0.7;
+      }
+
+      &-geo {
+        display: flex;
+        gap: 2px;
+      }
+    }
+
+    &-select {
+      width: 100%;
+      border: 1px solid $c-icons;
+      padding: 10px 12px;
+      @extend %buttons;
+      color: $c-primary;
+      appearance: none;
+      background-image: url(../../assets/svg/arrowDown.svg);
+      background-repeat: no-repeat;
+      background-position: center right 10px;
+      outline: none;
+
+      &:focus {
+        background-image: url(../../assets/svg/arrowUp.svg);
+        background-repeat: no-repeat;
+        background-position: center right 10px;
+      }
+    }
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+    gap: 30px;
+  }
+
+  &__link-des {
+    @extend %small-text;
+    color: $c-primary;
+    text-decoration: underline;
+    opacity: 1;
+  }
+
+  &__label {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    @extend %small-text;
+    font-weight: 500px;
+    line-height: 21px;
+
+    &-mg {
+      margin-bottom: 20px;
+    }
+  }
+
+  &__input {
+    width: 340px;
+    height: 40px;
+    border: 1px solid $c-icons;
+    outline: none;
+    padding: 10px 12px;
+    @extend %small-text;
+    color: $c-primary;
+    appearance: none;
+
+    
+
+    &::placeholder {
+      @extend %small-text;
+      color: $c-secondary;
+      font-size: 14px;
+      line-height: 21px;
+    }
+  }
+
+  &__total-box {
+    align-self: start;
+    padding: 24px;
+    border: 1px solid $c-elements;
+    position: relative;
+  }
+
+  &__statements {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 15px;
+  }
+
+  &__checkbox {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  &__modal {
+    position: absolute;
+    top: 105%;
+    left: 0;
+    width: 100%;
+  }
+
+  &__items {
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 25px;
+    border-bottom: 1px solid $c-elements;
+  }
+
+  &__total-item {
+    display: flex;
+    justify-content: space-between;
+
+    &-name {
+      width: 235px;
+      color: $c-primary;
+      font-size: 18px;
+      line-height: 23px;
+      @extend %body-text;
+    }
+
+    &-price {
+      color: $c-primary;
+      font-size: 18px;
+      line-height: 23px;
+      @extend %body-text;
+    }
+  }
+
+  &__info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid $c-elements;
+    margin-bottom: 24px;
+    padding: 22px 0; 
+  }
+
+  &__total-box-title {
+    @extend %h2;
+    color: $c-primary;
+    margin-bottom: 30px;
+  }
+
+  &__total {
+    @extend %h2;
+    color: $c-primary;
+
+    &-price {
+      @extend %h2;
+      color: $c-primary;
+    }
+  }
+
+  &__button {
+    height: 40px;
+    margin-bottom: 20px;
+  }
+
+  &__suprise {
+    margin-top: 40px;
+  }
+}

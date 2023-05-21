@@ -11,4 +11,8 @@
     color: $c-green;
     border: 1px solid $c-secondary;
   }
+
+  &:disabled {
+    opacity: 0.5;
+  }
 }

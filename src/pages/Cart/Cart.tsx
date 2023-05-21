@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import { Link } from 'react-router-dom';
 import { useAppContext } from '../../context/AppContext';
 import { ProductInCart } from '../../types/ProductInCart';
 import { ButtonBack } from '../../components/ButtonBack';
@@ -14,7 +15,6 @@ export const Cart: FC<Props> = ({
   products,
 }) => {
   const { inCartCount } = useAppContext();
-  // const [isOpenModal, setIsOpenModal] = useState(false);
 
   const totalPrice = () => {
     return products.reduce(
@@ -53,13 +53,12 @@ export const Cart: FC<Props> = ({
                   <p className="cart__total-count">{`Total for ${inCartCount} items`}</p>
                 </div>
 
-                <button
-                  type="button"
+                <Link
+                  to="order"
                   className="cart__button button"
-                  // onClick={() => setIsOpenModal(true)}
                 >
                   Checkout
-                </button>
+                </Link>
               </div>
             </div>
           </>
