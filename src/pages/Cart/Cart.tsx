@@ -14,20 +14,16 @@ export const Cart: FC<Props> = ({ products }) => {
   const { inCartCount } = useAppContext();
   const [isOpenModal, setIsOpenModal] = useState(false);
 
-  const totalPrice = () => {
-    return products.reduce(
-      (acc: number, el: ProductInCart) => acc + el.price * el.count,
-      0,
-    );
-  };
-
-  const totalSum = totalPrice();
+  const totalSum = products.reduce(
+    (acc: number, el: ProductInCart) => acc + el.price * el.count,
+    0,
+  );
 
   return (
     <div className="cart">
       <div className="cart__container">
         <div className="cart__navigate">
-          {' '}
+        &nbsp;
           <ButtonBack />
         </div>
 

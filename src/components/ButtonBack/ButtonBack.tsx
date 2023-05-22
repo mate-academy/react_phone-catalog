@@ -4,13 +4,14 @@ import './button-back.scss';
 
 export const ButtonBack = () => {
   const navigate = useNavigate();
+  const back = () => navigate(-1);
 
   return (
     <button
       type="button"
       className="button-back"
       data-cy="backButton"
-      onClick={() => navigate(-1)}
+      onClick={back}
     >
       <img src={arrowLeft} alt="arrowLeft" />
     </button>

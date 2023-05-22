@@ -14,8 +14,8 @@ type Props = {
 
 export const CartItem: FC<Props> = ({ product }) => {
   const { handleToggleAddToCart, updateCount } = useAppContext();
-
   const [count, setCount] = useState(product.count);
+  const addToCart = () => handleToggleAddToCart(product);
 
   useEffect(() => {
     updateCount(count, product.itemId);
@@ -27,7 +27,7 @@ export const CartItem: FC<Props> = ({ product }) => {
         <button
           type="button"
           className="cart-item__remove"
-          onClick={() => handleToggleAddToCart(product)}
+          onClick={addToCart}
         >
           <img src={close} alt="close" />
         </button>

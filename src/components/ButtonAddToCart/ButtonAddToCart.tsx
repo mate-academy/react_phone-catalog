@@ -10,6 +10,7 @@ type Props = {
 
 export const ButtonAddToCart: FC<Props> = ({ product, isSelected }) => {
   const { handleToggleAddToCart } = useAppContext();
+  const addToCart = () => handleToggleAddToCart(product);
 
   return (
     <button
@@ -17,7 +18,7 @@ export const ButtonAddToCart: FC<Props> = ({ product, isSelected }) => {
       className={classNames('button', {
         'button--selected': isSelected,
       })}
-      onClick={() => handleToggleAddToCart(product)}
+      onClick={addToCart}
     >
       {`${isSelected ? 'Added to cart' : 'Add to cart'}`}
     </button>

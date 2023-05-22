@@ -11,8 +11,9 @@ type Props = {
   products: Product[];
 };
 
+const visibleCount = 4;
+
 export const ProductsSlider: FC<Props> = memo(({ title, products }) => {
-  const visibleCount = 4;
   const [start, setStart] = useState(0);
   const end = start + visibleCount;
 

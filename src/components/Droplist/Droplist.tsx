@@ -1,5 +1,7 @@
 import classNames from 'classnames';
-import { FC, useRef, useState } from 'react';
+import {
+  FC, useRef, useEffect, useState,
+} from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { getSearchWith } from '../../helpers/searchHelper';
 import arrowDown from '../../assets/svg/arrowDown.svg';
@@ -25,17 +27,21 @@ export const Droplist: FC<Props> = ({
   const [value, setValue] = useState(startValue);
   const bntRef = useRef<HTMLButtonElement>(null);
 
-  document.addEventListener('click', (e) => {
-    if (e.target !== bntRef.current) {
-      setIsOpen(false);
-    }
-  });
+  useEffect(() => {
+    document.addEventListener('click', (e) => {
+      if (e.target !== bntRef.current) {
+        setIsOpen(false);
+      }
+    });
 
-  document.addEventListener('keyup', (e) => {
-    if (e.key === 'Tab' || e.key === 'Escape') {
-      setIsOpen(false);
-    }
-  });
+    return () => {
+      document.addEventListener('keyup', (e) => {
+        if (e.key === 'Tab' || e.key === 'Escape') {
+          setIsOpen(false);
+        }
+      });
+    };
+  }, []);
 
   const getSearchParams = (params: string) => {
     if (searchParamsKey === 'perPage') {

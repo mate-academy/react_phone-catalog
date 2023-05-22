@@ -36,14 +36,6 @@ export const Carousel: FC<Props> = ({ images }) => {
       <div className="carousel__box">
         <div className="carousel__row">
           {images.map((image, index) => {
-            if (currentIndex > images.length - 1) {
-              setCurrenIndex(0);
-            }
-
-            if (currentIndex < 0) {
-              setCurrenIndex(images.length - 1);
-            }
-
             return (
               <img
                 src={image}
