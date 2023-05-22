@@ -9,9 +9,9 @@ import { Pathname } from '../../types/Pathname';
 import './home-page.scss';
 
 const imagesBaners = [
-  '_new/img/banner-phones.png',
-  '_new/img/banner-tablets.png',
-  '_new/img/banner-accessories.png',
+  'src/assets/img/banner-phones.png',
+  'src/assets/img/banner-tablets.png',
+  'src/assets/banner-accessories.png',
 ];
 
 type Props = {
