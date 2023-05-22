@@ -9,9 +9,9 @@ import { Pathname } from '../../types/Pathname';
 import './home-page.scss';
 
 const imagesBaners = [
-  'src/assets/img/banner-phones.png',
-  'src/assets/img/banner-tablets.png',
-  'src/assets/banner-accessories.png',
+  'img/banner-phones.png',
+  'img/banner-tablets.png',
+  'img/banner-accessories.png',
 ];
 
 type Props = {
@@ -38,19 +38,19 @@ export const HomePage: FC<Props> = ({ products, countProducts }) => {
         <div className="home-page__categories grid">
           <ShopByCategory
             to={Pathname.Phones}
-            srcImg="_new/img/category-phones+.png"
+            srcImg="img/category-phones+.png"
             title="Mobile phone"
             count={countProducts.phones}
           />
           <ShopByCategory
             to={Pathname.Tablets}
-            srcImg="_new/img/category-tablets+.png"
+            srcImg="img/category-tablets+.png"
             title="Tablets"
             count={countProducts.tablets}
           />
           <ShopByCategory
             to={Pathname.Accessories}
-            srcImg="_new/img/category-accessories+.png"
+            srcImg="img/category-accessories+.png"
             title="Accessories"
             count={countProducts.accessories}
           />
