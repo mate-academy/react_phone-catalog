@@ -7,8 +7,6 @@ export const Breadcrumbs = () => {
     .pathname.split('/')
     .filter((crumb) => crumb !== '');
 
-  let currentLink = '';
-
   return (
     <div className="breadcrumbs" data-cy="breadCrumbs">
       <Link to="/" className="breadcrumbs__home" />
@@ -16,7 +14,7 @@ export const Breadcrumbs = () => {
       {crumbs.map((crumb, index) => {
         const title = crumb.split('-').join(' ');
 
-        currentLink += `/${crumb.toLowerCase()}`;
+        const currentLink = `/${crumb.toLowerCase()}`;
 
         return (
           <Link
