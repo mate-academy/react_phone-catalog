@@ -1,0 +1,19 @@
+.icon-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  border: 1px solid $color-icons;
+
+  &::before {
+    content: "";
+    display: block;
+    width: 16px;
+    height: 16px;
+  }
+
+  &:hover {
+    z-index: 2;
+    border: 1px solid $color-primary;
+  }
+}

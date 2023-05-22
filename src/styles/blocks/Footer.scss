@@ -1,0 +1,87 @@
+.footer {
+  color: $color-secondary;
+  box-shadow: 0 -1px 0 $color-elements;
+  height: 96px;
+
+  &__container {
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+
+  &__logo-link {
+    flex: 0 1 130px;
+
+    @media (max-width: 530px) {
+      flex: 0 1 auto;
+    }
+  }
+
+  &__navbar {
+    height: 100%;
+    margin: 0 auto;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+  }
+
+  &__menu-list {
+    height: 100%;
+    width: 295px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-right: 64px;
+
+    @media (max-width: 740px) {
+      width: 240px;
+      margin-right: 32px;
+    }
+
+    @media (max-width: 530px) {
+      flex-direction: column;
+      height: 80px;
+      width: 100px;
+      margin-right: 0;
+    }
+  }
+
+  &__menu-item {
+    line-height: 200%;
+    &:hover {
+      color: $color-primary;
+    }
+  }
+
+  &__back-top-link {
+    margin-left: auto;
+    margin-right: 0;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: inherit;
+    background-color: inherit;
+    &:hover {
+      color: $color-primary;
+    }
+
+    @media (max-width: 740px) {
+      display: none;
+    }
+  }
+
+  &__back-top-button {
+    width: 32px;
+    height: 32px;
+    margin-left: 16px;
+    background-color: inherit;
+
+    &::before {
+      background: url("../../helpers/icons/Arrow-up.svg") no-repeat center;
+    }
+  }
+}

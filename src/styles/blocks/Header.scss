@@ -1,0 +1,98 @@
+@import "../utils/variables";
+@import "../utils/mixins";
+@import "../blocks/icon-button.scss";
+
+.header {
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: $color-secondary;
+  box-shadow: 0 1px 0 $color-elements;
+  height: 64px;
+
+  &__logo-link {
+    margin-left: 24px;
+    margin-right: 64px;
+
+    @media (max-width: 590px) {
+      margin-right: 32px;
+    }
+  }
+
+  &__navbar {
+    height: 100%;
+    flex: 1 1 auto;
+
+    @include onSmartphone {
+      display: none;
+    }
+  }
+
+  &__menu-list {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+    max-width: 425px;
+  }
+
+  &__menu-item {
+    margin-right: 24px;
+    height: 100%;
+    line-height: 64px;
+    &:hover {
+      color: $color-primary;
+    }
+  }
+
+  &__menu-link {
+    display: block;
+    height: 100%;
+  }
+
+  &__burger {
+    display: none;
+    width: 64px;
+    height: 100%;
+    border: none;
+    box-shadow: 0 0 0 1px $color-elements;
+    background-color: inherit;
+
+    &::before {
+      background: url("../../helpers/icons/Burger.svg") no-repeat;
+    }
+
+    @include onSmartphone {
+      display: flex;
+    }
+  }
+
+  &__favorites-link {
+    width: 64px;
+    height: 100%;
+    border: none;
+    box-shadow: -1px 0 0 $color-elements;
+    margin-right: 0;
+    margin-left: auto;
+    &::before {
+      background: url("../../helpers/icons/Favorites-default.svg") no-repeat;
+    }
+  }
+
+  &__cart-link {
+    width: 64px;
+    height: 100%;
+    border: none;
+    box-shadow: -1px 0 0 $color-elements;
+    &::before {
+      background: url("../../helpers/icons/Cart-default.svg") no-repeat;
+    }
+  }
+}
+
+.is-active {
+  border-bottom: 2px solid $color-primary;
+}

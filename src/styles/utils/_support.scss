@@ -1,0 +1,9 @@
+._container {
+  max-width: 1136px + 80px;
+  padding: 0 40px;
+  margin: 0 auto;
+
+  @include onSmartphone {
+    padding: 0 20px;
+  }
+}
