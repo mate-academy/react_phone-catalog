@@ -1,0 +1,128 @@
+@import "../../utils/variables.scss";
+
+.phone-card {
+  &__phone {
+    width: $productWidth;
+    height: 507px;
+    border: 1px solid $elementsColor;
+    margin-right: 8px;
+
+    transition: border-color 0.3s;
+
+    &:hover {
+      border-color: $mainColor;
+      box-shadow: 3px 8px 12px $iconsColor;
+    }
+  }
+}
+
+.phone {
+  &__container {
+    padding: 24px;
+  }
+
+  &__image {
+    display: flex;
+    align-items: center;
+    object-fit: contain;
+    width: 208px;
+    height: 208px;
+    margin-top: 8px;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    font-size: 14px;
+    line-height: 21px;
+    margin-bottom: 8px;
+    min-height: 42px;
+  }
+
+  &__priceholder {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    gap: 8px;
+    position: relative;
+    margin-bottom: 16px;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      border-radius: 8px;
+      background-color: $elementsColor;
+      height: 1px;
+      opacity: 1;
+    }
+  }
+
+  &__price {
+    font-family: Mont-Bold, sans-serif;
+    font-size: 22px;
+
+    &--old {
+      font-family: Mont-Regular, sans-serif;
+      font-size: 22px;
+      color: $secondaryColor;
+      text-decoration: line-through;
+    }
+  }
+
+  &__description {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    font-family: Mont-SemiBold, sans-serif;
+    margin-bottom: 16px;
+
+    &--names {
+      color: $secondaryColor;
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__button {
+    line-height: 38px;
+    width: 176px;
+    font-family: inherit;
+    font-size: 14px;
+    border: 1px solid $mainColor;
+    background-color: $mainColor;
+    color: $whiteColor;
+
+    transition: background-color 0.3s, color 0.3s;
+
+    &:hover {
+      cursor: pointer;
+      background-color: $whiteColor;
+      color: $mainColor;
+    }
+  }
+
+  &__favourites {
+    height: 41px;
+    width: 41px;
+    background-color: $whiteColor;
+    border: 1px solid $iconsColor;
+
+    background-image: url(../../Icons/favourites.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+
+    transition: background-image 0.3s, border-color 0.3s;
+
+    &:hover {
+      cursor: pointer;
+      border-color: $mainColor;
+      background-image: url(../../Icons/favourites-Filled.svg);
+    }
+  }
+}

@@ -15,7 +15,6 @@ import { FootNavigation } from './components/FootNavigation/FootNavigation';
 
 const App = () => {
   const [phones, setPhones] = useState<Phone[]>([]);
-  // const [error, setError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
   const loadProducts = async () => {

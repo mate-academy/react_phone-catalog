@@ -1,0 +1,110 @@
+@import "../../utils/variables.scss";
+
+.head-navigation {
+  margin-bottom: 40px;
+  padding: 0;
+  height: 65px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 11px;
+
+  border-bottom: 1px solid $elementsColor;
+
+  &__logo {
+    display: flex;
+    margin-left: 24px;
+  }
+
+  &__elemets {
+    display: flex;
+    flex-direction: row;
+    gap: 65px;
+    line-height: 65px;
+  }
+
+  &__element {
+    position: relative;
+    text-decoration: none;
+    color: $secondaryColor;
+    font-family: Mont-Bold, sans-serif;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      border-radius: 8px;
+      background-color: $mainColor;
+      height: 0;
+      opacity: 0;
+      transition: height 0.3s ease, opacity 0.3s ease, color 0.3s;
+    }
+
+    &--active {
+      color: $mainColor;
+  
+      &::after {
+        height: 3px;
+        opacity: 1;
+      }
+    }
+  
+    &:hover {
+      cursor: pointer;
+      color: $mainColor;
+  
+      &::after {
+        height: 3px;
+        opacity: 1;
+      }
+    }
+  }
+
+  &__left {
+    display: flex;
+  }
+}
+
+.elements-border {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 65px;
+  height: 65px;
+  border-right: 1px solid $elementsColor;
+  border-left: 1px solid $elementsColor;
+}
+
+.icon {
+  display: block;
+  width: 15px;
+  height: 15px;
+
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  text-decoration: none;
+
+  &--fav {
+    background-image: url(../../Icons/favourites.svg);
+    transition: background-image 0.3s;
+
+    &:hover {
+      background-image: url(../../Icons/favourites-Filled.svg);
+    }
+  }
+
+  &--bag {
+    background-image: url(../../Icons/shoppingBag.svg);
+    transition: background-color 0.3s, border-radius 0.3s;
+
+    &:hover {
+      background-color: $redColor;
+      border-radius: 5px;
+    }
+  }
+}
