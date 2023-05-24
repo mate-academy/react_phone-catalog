@@ -14,12 +14,14 @@ type Props = {
 export const ButtonLike: FC<Props> = ({ product, isSelected }) => {
   const { handleToggleLike } = useAppContext();
 
+  const handleLike = () => handleToggleLike(product);
+
   return (
     <button
       aria-label="like"
       type="button"
       className="button-like"
-      onClick={() => handleToggleLike(product)}
+      onClick={handleLike}
     >
       {isSelected
         ? (

@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { ChangeEvent, FC, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ButtonBack } from '../../components/ButtonBack';
 import { ProductInCart } from '../../types/ProductInCart';
@@ -12,27 +12,47 @@ type Props = {
 };
 
 export const Order: FC<Props> = ({ products }) => {
-  const totalPrice = () => {
-    return products.reduce(
-      (acc: number, el: ProductInCart) => acc + el.price * el.count, 0,
-    );
-  };
+  const totalSum = products.reduce(
+    (acc: number, el: ProductInCart) => acc + el.price * el.count, 0,
+  );
 
-  const totalSum = totalPrice();
   const { inCartCount } = useAppContext();
 
   const [name, setName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [number, setNumber] = useState('');
-  const [check1, setCheck1] = useState(false);
-  const [check2, setCheck2] = useState(false);
+  const [firstStatement, setFirstStatement] = useState(false);
+  const [secondStatement, setSecondStatement] = useState(false);
   const [end, setEnd] = useState(false);
 
   const valid = name.length < 4 || lastName.length < 4
-  || !email.includes('@') || number.length < 7 || !check1 || !check2;
+  || !email.includes('@') || number.length < 7
+  || !firstStatement || !secondStatement;
 
   const navigate = useNavigate();
+  const handleNavigate = () => navigate('/');
+
+  const handlerNameChange = (ev: ChangeEvent<HTMLInputElement>) => {
+    setName(ev.target.value);
+  };
+
+  const handlerLastNameChange = (ev: ChangeEvent<HTMLInputElement>) => {
+    setLastName(ev.target.value);
+  };
+
+  const handlerEmailChange = (ev: ChangeEvent<HTMLInputElement>) => {
+    setEmail(ev.target.value);
+  };
+
+  const handlerNumberChange = (ev: ChangeEvent<HTMLInputElement>) => {
+    setNumber(ev.target.value);
+  };
+
+  const handleFirstStatement = () => setFirstStatement(!firstStatement);
+  const handleSecondStatement = () => setSecondStatement(!secondStatement);
+
+  const handleEnd = () => setEnd(true);
 
   if (inCartCount === 0) {
     return (
@@ -55,14 +75,14 @@ export const Order: FC<Props> = ({ products }) => {
               Hi
               {` ${name} ${lastName}`}
               !
-              Thank you for testing, you&aposve been absolutely awesome!
+              Thank you for testing, you&apos;ve been absolutely awesome!
               Thanks for your superpowers
               and super positive vibes during testing!
             </div>
             <button
               className="order__button button"
               type="button"
-              onClick={() => navigate('/')}
+              onClick={handleNavigate}
             >
               Go Home
             </button>
@@ -106,7 +126,7 @@ export const Order: FC<Props> = ({ products }) => {
                     className="order__input"
                     min={4}
                     value={name}
-                    onChange={(e) => setName(e.target.value)}
+                    onChange={handlerNameChange}
                     required
                   />
                 </label>
@@ -123,7 +143,7 @@ export const Order: FC<Props> = ({ products }) => {
                     min={4}
                     className="order__input"
                     value={lastName}
-                    onChange={(e) => setLastName(e.target.value)}
+                    onChange={handlerLastNameChange}
                     required
                   />
                 </label>
@@ -136,7 +156,7 @@ export const Order: FC<Props> = ({ products }) => {
                     id="email"
                     className="order__input"
                     value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    onChange={handlerEmailChange}
                     required
                   />
                 </label>
@@ -148,7 +168,7 @@ export const Order: FC<Props> = ({ products }) => {
                     placeholder="Enter phone number"
                     id="number"
                     value={number}
-                    onChange={(e) => setNumber(e.target.value)}
+                    onChange={handlerNumberChange}
                     className="order__input"
                     required
                   />
@@ -214,7 +234,7 @@ export const Order: FC<Props> = ({ products }) => {
                     id="check1"
                     name="check"
                     className="order__check"
-                    onClick={() => setCheck1(!check1)}
+                    onClick={handleFirstStatement}
                     required
                   />
                   <label
@@ -239,7 +259,7 @@ export const Order: FC<Props> = ({ products }) => {
                     id="check1"
                     name="check"
                     className="order__checkbox"
-                    onClick={() => setCheck2(!check2)}
+                    onClick={handleSecondStatement}
                     required
                   />
                   <label
@@ -285,9 +305,7 @@ export const Order: FC<Props> = ({ products }) => {
               type="button"
               className="order__button button"
               disabled={valid}
-              onClick={() => {
-                setEnd(true);
-              }}
+              onClick={handleEnd}
             >
               Confirm Order
             </button>

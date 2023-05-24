@@ -3,6 +3,7 @@ import './not-res.scss';
 
 export const NotResults = () => {
   const navigate = useNavigate();
+  const handleNavigate = () => navigate('/');
 
   return (
     <div className="not-res">
@@ -13,7 +14,7 @@ export const NotResults = () => {
       <button
         className="not-res__button button"
         type="button"
-        onClick={() => navigate('/')}
+        onClick={handleNavigate}
       >
         Go Home
       </button>

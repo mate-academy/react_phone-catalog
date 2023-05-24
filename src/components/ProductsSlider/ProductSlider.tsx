@@ -44,7 +44,7 @@ export const ProductsSlider: FC<Props> = ({
               { 'button-square--disabled': isLeftDisabled },
             )}
             type="button"
-            onClick={() => onClickLeft()}
+            onClick={onClickLeft}
           >
             <img src={arrowLeft} alt={arrowLeft} />
           </button>
@@ -55,7 +55,7 @@ export const ProductsSlider: FC<Props> = ({
               { 'button-square--disabled': isRightDisabled },
             )}
             type="button"
-            onClick={() => onClickRight()}
+            onClick={onClickRight}
           >
             <img src={arrowRigth} alt={arrowRigth} />
           </button>

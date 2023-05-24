@@ -6,11 +6,13 @@ import './buttonBlack.scss';
 export const ButtonBack = () => {
   const navigate = useNavigate();
 
+  const handleNavigate = () => navigate(-1);
+
   return (
     <button
       type="button"
       className="button-back"
-      onClick={() => navigate(-1)}
+      onClick={handleNavigate}
     >
       <img src={arrowLeft} alt="Arrow Left" />
     </button>

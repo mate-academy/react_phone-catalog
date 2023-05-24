@@ -12,6 +12,10 @@ type Props = {
 export const Carousel: FC<Props> = ({ images }) => {
   const [activeIndex, setActiveIndex] = useState(0);
 
+  const handleArrowLeft = () => setActiveIndex(prevState => prevState - 1);
+  const handleArrowRight = () => setActiveIndex(prevState => prevState + 1);
+  const handlePagination = (index: number) => setActiveIndex(index);
+
   useEffect(() => {
     if (activeIndex > images.length - 1) {
       setActiveIndex(0);
@@ -35,38 +39,28 @@ export const Carousel: FC<Props> = ({ images }) => {
     <div className="carousel">
       <div className="carousel__box">
         <div className="carousel__row">
-          {images.map((image, index) => {
-            if (activeIndex > images.length - 1) {
-              setActiveIndex(0);
-            }
-
-            if (activeIndex < 0) {
-              setActiveIndex(images.length - 1);
-            }
-
-            return (
-              <img
-                src={image}
-                alt={image}
-                key={image}
-                className={classNames(
-                  'carousel__img',
-                  { 'carousel__img--active': activeIndex === index },
-                )}
-              />
-            );
-          })}
+          {images.map((image, index) => (
+            <img
+              src={image}
+              alt={image}
+              key={image}
+              className={classNames(
+                'carousel__img',
+                { 'carousel__img--active': activeIndex === index },
+              )}
+            />
+          ))}
         </div>
         <button
           type="button"
-          onClick={() => setActiveIndex(prevState => prevState - 1)}
+          onClick={handleArrowLeft}
           className="carousel__button carousel__button--prev"
         >
           <img src={arrowLeft} alt="arrowLeft" />
         </button>
         <button
           type="button"
-          onClick={() => setActiveIndex(prevState => prevState + 1)}
+          onClick={handleArrowRight}
           className="carousel__button carousel__button--next"
         >
           <img src={arrowRigth} alt="arrowRigth" />
@@ -82,7 +76,7 @@ export const Carousel: FC<Props> = ({ images }) => {
               'carousel__item-btn',
               { 'carousel__item-btn--active': activeIndex === index },
             )}
-            onClick={() => setActiveIndex(index)}
+            onClick={() => handlePagination(index)}
           />
         ))}
       </div>

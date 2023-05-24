@@ -4,6 +4,7 @@ import './notFound.scss';
 
 export const NotFound = () => {
   const navigate = useNavigate();
+  const handleNavigate = () => navigate('/');
 
   return (
     <div className="not-found">
@@ -13,7 +14,7 @@ export const NotFound = () => {
       <button
         className="not-found__button button"
         type="button"
-        onClick={() => navigate('/')}
+        onClick={handleNavigate}
       >
         Go Home
       </button>

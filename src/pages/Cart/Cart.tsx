@@ -16,13 +16,9 @@ export const Cart: FC<Props> = ({
 }) => {
   const { inCartCount } = useAppContext();
 
-  const totalPrice = () => {
-    return products.reduce(
-      (acc: number, el: ProductInCart) => acc + el.price * el.count, 0,
-    );
-  };
-
-  const totalSum = totalPrice();
+  const totalSum = products.reduce(
+    (acc: number, el: ProductInCart) => acc + el.price * el.count, 0,
+  );
 
   return (
     <div className="cart">

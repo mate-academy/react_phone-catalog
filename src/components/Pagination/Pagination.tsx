@@ -20,11 +20,8 @@ export const Pagination: FC<Props> = ({
 }) => {
   const [searchParams] = useSearchParams('');
   const lastPage = Math.ceil(total / perPage);
-  const numberOfPages = [];
-
-  for (let i = 1; i <= lastPage; i += 1) {
-    numberOfPages.push(i.toString());
-  }
+  const numberOfPages = new Array(lastPage)
+    .fill(1).map((_, index) => (index + 1).toString());
 
   return (
     <div className="pagination">

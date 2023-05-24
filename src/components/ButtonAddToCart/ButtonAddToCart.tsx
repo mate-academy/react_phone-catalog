@@ -14,6 +14,8 @@ export const ButtonAddToCart: FC<Props> = ({
 }) => {
   const { handleToggleAddToCart } = useAppContext();
 
+  const handleAddCart = () => handleToggleAddToCart(product);
+
   return (
     <button
       type="button"
@@ -21,7 +23,7 @@ export const ButtonAddToCart: FC<Props> = ({
         'button',
         { 'button--selected': isSelected },
       )}
-      onClick={() => handleToggleAddToCart(product)}
+      onClick={handleAddCart}
     >
       {isSelected ? 'Added to cart' : 'Add to cart'}
     </button>

@@ -1,4 +1,5 @@
 import {
+  ChangeEvent,
   FC, memo, useEffect, useState,
 } from 'react';
 import classNames from 'classnames';
@@ -24,6 +25,10 @@ export const Search: FC = memo(() => {
     setSearchParams(getSearchWith(searchParams, { query: null }));
   };
 
+  const handleSearchChange = (ev: ChangeEvent<HTMLInputElement>) => {
+    setAppliedQuery(ev.target.value);
+  };
+
   return (
     <div className="search">
       <input
@@ -34,9 +39,7 @@ export const Search: FC = memo(() => {
         type="text"
         placeholder={placeholder}
         value={appliedQuery}
-        onChange={(e) => {
-          setAppliedQuery(e.target.value);
-        }}
+        onChange={handleSearchChange}
       />
       <button
         aria-label="reset"

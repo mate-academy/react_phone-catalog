@@ -1,4 +1,6 @@
-import { FC, useRef, useState } from 'react';
+import {
+  FC, useEffect, useRef, useState,
+} from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import classNames from 'classnames';
 import { getSearchWith } from '../../helpers/searchHelper';
@@ -25,18 +27,6 @@ export const Dropdowns: FC<Props> = ({
   const [value, setValue] = useState(startValue);
   const btnRef = useRef<HTMLButtonElement>(null);
 
-  document.addEventListener('click', (e) => {
-    if (e.target !== btnRef.current) {
-      setIsOpen(false);
-    }
-  });
-
-  document.addEventListener('keyup', (e) => {
-    if (e.key === 'Tab' || e.key === 'Escape') {
-      setIsOpen(false);
-    }
-  });
-
   const getSearchParams = (params: string) => {
     if (searchParamsKey === 'perPage') {
       return getSearchWith(searchParams, {
@@ -49,6 +39,34 @@ export const Dropdowns: FC<Props> = ({
       [searchParamsKey]: params,
     });
   };
+
+  useEffect(() => {
+    document.addEventListener('click', (e) => {
+      if (e.target !== btnRef.current) {
+        setIsOpen(false);
+      }
+    });
+
+    document.addEventListener('keyup', (e) => {
+      if (e.key === 'Tab' || e.key === 'Escape') {
+        setIsOpen(false);
+      }
+    });
+
+    return () => {
+      document.removeEventListener('click', (e) => {
+        if (e.target !== btnRef.current) {
+          setIsOpen(false);
+        }
+      });
+
+      document.removeEventListener('keyup', (e) => {
+        if (e.key === 'Tab' || e.key === 'Escape') {
+          setIsOpen(false);
+        }
+      });
+    };
+  }, []);
 
   return (
     <div className="dropdowns">
@@ -75,25 +93,29 @@ export const Dropdowns: FC<Props> = ({
 
       {isOpen && (
         <ul className="dropdowns__list-option">
-          {options.map(option => (
-            <li
-              aria-hidden="true"
-              className="dropdowns__option"
-              key={option}
-              onClick={() => {
-                setValue(option);
-                setIsOpen(false);
-              }}
-            >
-              <Link
-                to={{
-                  search: getSearchParams(option),
-                }}
+          {options.map(option => {
+            const handlerOption = (op: string) => {
+              setValue(op);
+              setIsOpen(false);
+            };
+
+            return (
+              <li
+                aria-hidden="true"
+                className="dropdowns__option"
+                key={option}
+                onClick={() => handlerOption(option)}
               >
-                {option}
-              </Link>
-            </li>
-          ))}
+                <Link
+                  to={{
+                    search: getSearchParams(option),
+                  }}
+                >
+                  {option}
+                </Link>
+              </li>
+            );
+          })}
         </ul>
       )}
     </div>

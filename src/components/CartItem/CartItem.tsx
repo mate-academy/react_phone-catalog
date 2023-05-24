@@ -18,6 +18,10 @@ export const CartItem: FC<Props> = ({
   const { handleToggleAddToCart, updateCount } = useAppContext();
   const [count, setCount] = useState(product.count);
 
+  const handleAddCart = () => handleToggleAddToCart(product);
+  const handleArrowLeft = () => setCount(count - 1);
+  const handleArrowRight = () => setCount(count + 1);
+
   useEffect(() => {
     updateCount(count, product.itemId);
   }, [count, product.itemId]);
@@ -28,7 +32,7 @@ export const CartItem: FC<Props> = ({
         <button
           type="button"
           className="cart-item__remove"
-          onClick={() => handleToggleAddToCart(product)}
+          onClick={handleAddCart}
         >
           <img src={close} alt="Close" />
         </button>
@@ -47,7 +51,7 @@ export const CartItem: FC<Props> = ({
               'button-square',
               { 'button-square--disabled': count === 1 },
             )}
-            onClick={() => setCount(count - 1)}
+            onClick={handleArrowLeft}
           >
             <img src={arrowLeft} alt="Arrow Left" />
           </button>
@@ -55,7 +59,7 @@ export const CartItem: FC<Props> = ({
           <button
             type="button"
             className="cart-item_change-count-btn button-square"
-            onClick={() => setCount(count + 1)}
+            onClick={handleArrowRight}
           >
             <img src={arrowRight} alt="Arrow Right" />
           </button>
