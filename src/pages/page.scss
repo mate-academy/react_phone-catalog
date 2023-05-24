@@ -7,6 +7,11 @@ body {
 [class*="__container"] {
   margin: 0 auto;
   max-width: 1136px;
+
+  @media (max-width: 1135px) {
+    max-width: 100%;
+    overflow: hidden;
+  }
 }
 
 .page {

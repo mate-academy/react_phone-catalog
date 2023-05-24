@@ -3,6 +3,7 @@
 .shop-by-category {
   display: flex;
   flex-direction: column;
+  transition: all 0.3s ease;
 
   &__title {
     @extend %h3;
@@ -25,6 +26,9 @@
 
     &:hover {
       border: 1px solid $c-primary;
+      scale: 1.05;
+      box-shadow: -1px -5px 39px -24px rgba(0,0,0,0.75);
+      overflow: hidden;
     }
   }
 

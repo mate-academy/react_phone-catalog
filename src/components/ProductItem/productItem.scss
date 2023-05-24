@@ -1,6 +1,11 @@
 @import "../../styles/utils";
 
 .product-item {
+  transition: all 0.3s;
+  &:hover {
+    scale: 1.05;
+    box-shadow: -1px -5px 39px -24px rgba(0,0,0,0.75);
+  }
   &__content {
     max-width: 272px;
     display: flex;

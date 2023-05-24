@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, useState, useMemo } from 'react';
 import classNames from 'classnames';
 import { Product } from '../../types/Product';
 import arrowLeft from '../../assets/svg/arrowLeft.svg';
@@ -17,8 +17,20 @@ export const ProductsSlider: FC<Props> = ({
   products,
 }) => {
   const visibleCount = 4;
-  const [start, setStart] = useState(0);
-  const end = start + visibleCount;
+  const widthItem = 272 + 16;
+  const [offset, setOffset] = useState(0);
+  const isLeftDisabled = offset === 0;
+  const isRightDisabled = useMemo(() => {
+    return offset === -(widthItem * (products.length - visibleCount));
+  }, [offset, widthItem, products, visibleCount]);
+
+  const onClickRight = () => {
+    setOffset(currOffset => currOffset - widthItem);
+  };
+
+  const onClickLeft = () => {
+    setOffset(currOffset => currOffset + widthItem);
+  };
 
   return (
     <div className="product-slider">
@@ -29,10 +41,10 @@ export const ProductsSlider: FC<Props> = ({
             aria-label="navigate"
             className={classNames(
               'products-slider__button button-square',
-              { 'button-square--disabled': start <= 0 },
+              { 'button-square--disabled': isLeftDisabled },
             )}
             type="button"
-            onClick={() => setStart((prev) => prev - 1)}
+            onClick={() => onClickLeft()}
           >
             <img src={arrowLeft} alt={arrowLeft} />
           </button>
@@ -40,17 +52,20 @@ export const ProductsSlider: FC<Props> = ({
             aria-label="navigate"
             className={classNames(
               'products-slider__button button-square',
-              { 'button-square--disabled': end > products.length - 1 },
+              { 'button-square--disabled': isRightDisabled },
             )}
             type="button"
-            onClick={() => setStart((prev) => prev + 1)}
+            onClick={() => onClickRight()}
           >
             <img src={arrowRigth} alt={arrowRigth} />
           </button>
         </div>
       </div>
-      <div className="product-slider__products grid">
-        {products.slice(start, end).map((product: Product) => (
+      <div
+        className="product-slider__products grid"
+        style={{ transform: `translateX(${offset}px)` }}
+      >
+        {products.map((product: Product) => (
           <ProductItem key={product.itemId} product={product} />
         ))}
       </div>

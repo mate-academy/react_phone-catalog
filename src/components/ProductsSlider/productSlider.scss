@@ -1,4 +1,7 @@
 .product-slider {
+  transition: all 0.3s;
+  overflow: hidden;
+
   &__top-row {
     display: flex;
     align-items: center;
@@ -8,6 +11,12 @@
 
   &__navigate {
     display: flex;
+    gap: 16px;
+  }
+
+  &__products {
+    display: flex;
+    transition: transform 0.3s;
     gap: 16px;
   }
 }
