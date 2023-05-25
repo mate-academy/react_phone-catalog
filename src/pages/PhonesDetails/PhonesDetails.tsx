@@ -1,6 +1,7 @@
 import { FC, useState, useEffect } from 'react';
 import {
   useLocation,
+  useNavigate,
   useParams,
 } from 'react-router-dom';
 import { Product } from '../../types/Product';
@@ -46,6 +47,7 @@ export const PhonesDetails: FC<Props> = ({ goods }) => {
   }
 
   const { pathname } = useLocation();
+  const navigate = useNavigate();
 
   const loadProduct = async () => {
     try {
@@ -54,6 +56,8 @@ export const PhonesDetails: FC<Props> = ({ goods }) => {
       const productById = await getSuggestedProducts(productId);
 
       setProduct(productById);
+    } catch {
+      navigate('*');
     } finally {
       setIsLoading(false);
     }
