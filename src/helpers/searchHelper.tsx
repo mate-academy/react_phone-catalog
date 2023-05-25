@@ -9,7 +9,7 @@ export function getSearchWith(
   const newParams = new URLSearchParams(currentParams.toString());
 
   Object.entries(paramsToUpdate).forEach(([key, value]) => {
-    if (value === null) {
+    if (!value) {
       newParams.delete(key);
     } else if (Array.isArray(value)) {
       newParams.delete(key);

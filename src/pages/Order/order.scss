@@ -29,14 +29,8 @@
   &__fieldset {
     border: none;
     margin: 0;
-    padding: 0;
-    padding-bottom: 30px;
+    padding: 0 0 30px;
     border-bottom: 1px solid $c-elements;
-
-    &:last-child {
-      border: none;
-      padding-bottom: none;
-    }
 
     &-title {
       display: flex;
