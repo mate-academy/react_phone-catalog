@@ -1,0 +1,30 @@
+@import "../../utils/variables.scss";
+
+.main-navigation {
+  &__content {
+    margin-inline: 60px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+  }
+
+  &__home {
+    display: flex;
+    align-items: center;
+    width: 15px;
+    height: 15px;
+    margin-right: 15px;
+  }
+
+  &__arrow {
+    margin-right: 15px;
+  }
+
+  &__category {
+    text-decoration: none;
+    font-size: 12px;
+    font-family: Mont-SemiBold, sans-serif;
+    color: $secondaryColor;
+  }
+}

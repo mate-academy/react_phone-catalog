@@ -1,1 +1,36 @@
-//
+@import "../../utils/variables.scss";
+
+.phones-page {
+  &__content {
+    margin-left: 60px;
+    display: flex;
+    // align-items: center;
+    flex-direction: column;
+  }
+
+  &__title {
+    font-family: Mont-Bold, sans-serif;
+    font-size: 32px;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 8px;
+  }
+
+  &__subtitle {
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    color: $secondaryColor;
+    margin-bottom: 40px;
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    width: (4 * $productWidth) + (4 * $productMarginRight);
+
+    &--item {
+      margin-bottom: 40px;
+    }
+  }
+}

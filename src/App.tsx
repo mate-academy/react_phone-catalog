@@ -57,10 +57,21 @@ const App = () => {
               />
 
               <Route path="/phones">
-                <Route index element={<PhonesPage />} />
+                <Route
+                  index
+                  element={(
+                    <PhonesPage
+                      phones={phones}
+                    />
+                  )}
+                />
                 <Route
                   path=":productId"
-                  element={<PhonesPage />}
+                  element={(
+                    <PhonesPage
+                      phones={phones}
+                    />
+                  )}
                 />
               </Route>
 

@@ -1,0 +1,34 @@
+@import "../../utils/variables.scss";
+
+.selection {
+  display: flex;
+  gap: 16px;
+
+  margin-bottom: 24px;
+
+  &__sort {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    &--text {
+      font-size: 12px;
+      font-family: Mont-SemiBold, sans-serif;
+      color: $secondaryColor;
+    }
+
+    &--item {
+      height: 40px;
+      width: 180px;
+      border: 1px solid $iconsColor;
+      font-family: inherit;
+      padding-left: 12px;
+    }
+  }
+}
+
+.select {
+  &:focus {
+    border: 1.5px solid $mainColor;
+  }
+}
