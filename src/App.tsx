@@ -1,9 +1,13 @@
 import './App.scss';
+import { ShopContextProvider } from './cart-context';
+import { Layout } from './components/Layout.tsx/Layout';
 
-const App = () => (
-  <div className="App">
-    <h1>React Phone Catalog</h1>
-  </div>
-);
-
-export default App;
+export const App = () => {
+  return (
+    <ShopContextProvider>
+      <div className="page">
+        <Layout />
+      </div>
+    </ShopContextProvider>
+  );
+};

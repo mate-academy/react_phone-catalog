@@ -1,0 +1,79 @@
+@import "../../helpers/vars.scss";
+
+.carousel {
+  width: 1136px;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  &__window {
+    height: 100%;
+    width: 1040px;
+    overflow: hidden;
+  }
+
+  &__container {
+    height: 100%;
+    display: flex;
+
+    transition: translate;
+    transition-property: transform;
+    transition-duration: 400ms;
+    transition-timing-function: ease-in-out;
+  }
+
+  &__arrow {
+    border: 1px solid $c-icons;
+    width: 32px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: none;
+
+    cursor: pointer;
+
+    &--left {
+      margin-right: 16px;
+    }
+
+    &--right {
+      margin-left: 16px;
+    }
+
+    &:hover {
+      border: 1px solid $c-primary;
+    }
+  }
+
+  &__slide {
+    min-width: 1040px;
+    max-width: 100%;
+    height: 100%;
+    background-size: cover;
+  }
+
+  &__number-conrainer {
+    position: absolute;
+    bottom: -18px;
+    left: 50%;
+    transform: translate(-50%, 100%);
+    display: flex;
+    justify-content: center;
+  }
+
+  &__slide-number {
+    cursor: pointer;
+    width: 14px;
+    height: 4px;
+    background: $c-elements;
+    align-self: flex-start;
+    margin-right: 14px;
+
+    &--active {
+      background-color: $c-primary;
+    }
+  }
+}

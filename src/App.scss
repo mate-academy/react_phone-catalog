@@ -1,1 +1,65 @@
-// not empty
+@import "./helpers/vars.scss";
+
+@font-face {
+  font-family: "mont";
+  src: url("./fonts/Mont-Bold.otf");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "mont";
+  src: url("./fonts/Mont-SemiBold.otf");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "mont";
+  src: url("./fonts/Mont-Regular.otf");
+  font-weight: 500;
+  font-style: normal;
+}
+
+.page {
+  font-family: "mont", sans-serif;
+  color: $c-primary;
+  font-weight: 600;
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.page__body {
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  transition: all 0.2s linear;
+}
+
+iframe {
+  display: none;
+}
+
+.arrow--default {
+  fill: $c-primary;
+}
+
+button {
+  font-family: inherit;
+  background: none;
+  border: none;
+}
+
+a {
+  text-decoration: none;
+  font-family: inherit;
+}

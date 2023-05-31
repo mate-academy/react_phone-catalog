@@ -1,0 +1,58 @@
+@import "../../helpers/vars.scss";
+
+.custom-select {
+  position: relative;
+  height: 40px;
+
+  &__button {
+    background: none;
+    font-family: "mont", sans-serif;
+
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    color: $c-primary;
+    font-weight: 600;
+    font-size: 14px;
+
+    padding: 10px 15px 12px;
+    border: 1px solid $c-icons;
+
+    cursor: pointer;
+
+    &:hover {
+      border-color: $c-secondary;
+    }
+  }
+
+  &__options-list {
+    border: 1px solid $c-icons;
+    position: absolute;
+    top: 44px;
+    padding: 8px 0;
+    width: 100%;
+    z-index: 1;
+    background-color: $c-white;
+  }
+
+  &__option {
+    height: 32px;
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    font-size: 14px;
+    color: $c-secondary;
+    background-color: $c-white;
+    padding-left: 12px;
+    cursor: pointer;
+    border: none;
+    width: 100%;
+
+    &:hover {
+      color: $c-primary;
+      background-color: $c-hoverAndBG;
+    }
+  }
+}

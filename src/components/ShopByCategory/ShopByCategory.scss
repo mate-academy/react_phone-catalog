@@ -1,0 +1,69 @@
+@import "../../helpers/vars.scss";
+
+.shop-by-category {
+  &__image-container {
+    width: 368px;
+    height: 368px;
+    overflow: hidden;
+
+    &--phones {
+      background-color: #fcdbc1;
+    }
+
+    &--tablets {
+      background-color: #8d8d92;
+    }
+
+    &--accessories {
+      background-color: #973d5f;
+    }
+  }
+
+  &__image {
+    &--phone {
+      width: 400px;
+      margin-left: 70px;
+      margin-top: 10px;
+    }
+
+    &--tablet {
+      width: 530px;
+      margin-left: 35px;
+      margin-top: 20px;
+    }
+
+    &--accessory {
+      width: 670px;
+      margin-left: 35px;
+      margin-top: 59px;
+    }
+  }
+
+  &__categories {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__category {
+    display: flex;
+    flex-direction: column;
+
+    &:hover {
+      transform: scale(1.01);
+    }
+  }
+
+  &__category-title {
+    margin-top: 24px;
+    text-decoration: none;
+    font-size: 20px;
+    color: $c-primary;
+  }
+
+  &__amount {
+    color: $c-secondary;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+  }
+}

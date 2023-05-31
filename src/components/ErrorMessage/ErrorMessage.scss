@@ -1,0 +1,34 @@
+@import "../../helpers/vars.scss";
+
+.error-message {
+  &__container {
+    margin: 0 auto;
+    width: 1140px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__title {
+    font-size: 32px;
+    margin-top: 40px;
+    text-align: center;
+  }
+
+  &__button {
+    padding: 14px 125px;
+    background-color: $c-primary;
+    color: $c-white;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 25px;
+
+    &:hover {
+      box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+    }
+  }
+}

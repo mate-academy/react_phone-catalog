@@ -1,0 +1,57 @@
+@import "../../helpers/vars.scss";
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  box-shadow: 0 1px 0 $c-elements;
+
+  &__logo {
+    width: 40px;
+    height: 12px;
+    margin-right: 64px;
+    display: flex;
+    align-items: center;
+  }
+
+  &__nav {
+    align-self: start;
+    padding: 22px 0;
+  }
+
+  &__container {
+    display: flex;
+    align-items: center;
+
+    &--left {
+      padding: 23px 24px;
+    }
+  }
+
+  &__icon {
+    padding: 25px;
+    box-shadow: -1px 0 0 $c-elements;
+    cursor: pointer;
+    position: relative;
+  }
+
+  &__items-amount {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    /* делает элемент кругом */
+    background-color: $c-red;
+    /* задает красный цвет фона */
+    border: 1px solid white;
+    position: absolute;
+    top: 22px;
+    right: 19px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $c-white;
+    font-size: 9px;
+  }
+}
