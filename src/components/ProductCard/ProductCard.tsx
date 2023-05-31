@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { useContext } from 'react';
+import { useContext, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { ShopContext } from '../../cart-context';
 import {
@@ -26,15 +26,20 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
   const {
     imageUrl, name, price, discount, screen, capacity, ram, id, type,
-  }
-    = product;
+  } = useMemo(() => product, [product]);
 
-  const addedToCart = cartItems.some((cartItem) => cartItem.id === id);
+  const addedToCart = useMemo(
+    () => cartItems.some((cartItem) => cartItem.id === id),
+    [cartItems],
+  );
   const isInFavourites = favouritesItems.some(
     (favouritesItem) => favouritesItem.id === id,
   );
 
-  const newPrice = price * (1 - discount / 100);
+  const newPrice = useMemo(
+    () => price * (1 - discount / 100),
+    [price, discount],
+  );
 
   let cardLinkSection = '';
 

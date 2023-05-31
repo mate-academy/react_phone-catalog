@@ -1,4 +1,5 @@
 import { useSearchParams } from 'react-router-dom';
+import { useMemo } from 'react';
 import { getSearchWith } from '../../helpers/searchHelper';
 import { CustomSelect } from '../CustomSelect';
 
@@ -20,8 +21,8 @@ const selectOptionsItemsOnPage = [
 export const ProductFilter: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const sortBy = searchParams.get('sortBy');
-  const perPage = searchParams.get('perPage');
+  const sortBy = useMemo(() => searchParams.get('sortBy'), [searchParams]);
+  const perPage = useMemo(() => searchParams.get('perPage'), [searchParams]);
 
   return (
     <div className="product-filter">

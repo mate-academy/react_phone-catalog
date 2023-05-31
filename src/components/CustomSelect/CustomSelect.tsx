@@ -1,4 +1,6 @@
-import { useEffect, useRef, useState } from 'react';
+import {
+  useCallback, useEffect, useRef, useState,
+} from 'react';
 
 import './CustomSelect.scss';
 
@@ -27,10 +29,6 @@ export const CustomSelect: React.FC<Props> = ({
   const [isOpen, setIsOpen] = useState(false);
   const selectRef = useRef<HTMLDivElement>(null);
 
-  const toggle = () => {
-    setIsOpen(!isOpen);
-  };
-
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -48,17 +46,17 @@ export const CustomSelect: React.FC<Props> = ({
     };
   }, [selectRef]);
 
+  const toggle = useCallback(() => {
+    setIsOpen(!isOpen);
+  }, [isOpen]);
+
   return (
     <div
       className="custom-select"
       ref={selectRef}
       style={{ width: `${width}px` }}
     >
-      <button
-        className="custom-select__button"
-        onClick={toggle}
-        type="button"
-      >
+      <button className="custom-select__button" onClick={toggle} type="button">
         <div className="custom-select__text">{value || buttonText}</div>
 
         <ArrowDown />

@@ -54,6 +54,7 @@
       &::before {
         content: "";
         height: 3px;
+        width: 100%;
         position: absolute;
         bottom: -27px;
         animation: fadeIn 0.3s forwards;
@@ -66,10 +67,10 @@
 
 @keyframes fadeIn {
   from {
-    width: 0;
+    transform: scaleX(0);
   }
 
   to {
-    width: 100%;
+    transform: scaleX(1);
   }
 }

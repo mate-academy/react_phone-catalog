@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useCallback, useEffect, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 import classNames from 'classnames';
@@ -13,6 +13,8 @@ import {
   ReactComponent as IconArrowRight,
 } from '../../images/icons/arrow_right.svg';
 
+import { scrollTop } from '../../helpers/consts';
+
 interface Props {
   total: number;
   perPage: number;
@@ -26,7 +28,7 @@ export const Pagination: React.FC<Props> = ({
 }) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const page = searchParams.get('page');
+  const page = useMemo(() => searchParams.get('page'), [searchParams]);
 
   useEffect(() => {
     if (page === null) {
@@ -36,23 +38,24 @@ export const Pagination: React.FC<Props> = ({
     }
   }, []);
 
-  const pagesCount = Math.ceil(total / perPage);
-  const pageNumberArray = [];
+  const pagesCount = useMemo(
+    () => Math.ceil(total / perPage),
+    [total, perPage],
+  );
 
-  for (let i = 1; i <= pagesCount; i += 1) {
-    pageNumberArray.push(i.toString());
-  }
+  const pageNumberArray = useMemo(() => {
+    const result = [];
 
-  const onPageChange = (pageNumber: string) => {
+    for (let i = 1; i <= pagesCount; i += 1) {
+      result.push(i.toString());
+    }
+
+    return result;
+  }, [pagesCount]);
+
+  const onPageChange = useCallback((pageNumber: string) => {
     setSearchParams(getSearchWith(searchParams, { page: pageNumber }));
-  };
-
-  function scrollTop() {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
-  }
+  }, [getSearchWith, searchParams]);
 
   const leftArrowHandle = () => {
     if (page !== null && +page > 1) {

@@ -1,6 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 
-import { useMemo } from 'react';
+import { useCallback, useMemo } from 'react';
 import './ErrorMessage.scss';
 
 interface Props {
@@ -14,11 +14,11 @@ export const ErrorMessage: React.FC<Props> = ({ message, reload = false }) => {
   const linkTo = useMemo(() => (reload ? location.pathname : '/'), []);
   const buttonText = useMemo(() => (reload ? 'Reload' : 'Return Home'), []);
 
-  function handleClick() {
+  const handleClick = useCallback(() => {
     if (reload) {
       window.history.go(0);
     }
-  }
+  }, [reload]);
 
   return (
     <div className="error-message">

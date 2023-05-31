@@ -3,9 +3,11 @@ import './Slider.scss';
 import { useCallback, useMemo, useState } from 'react';
 
 import classNames from 'classnames';
-import { ReactComponent as ArrowLeft } from '../../images/icons/arrow-left.svg';
 import {
-  ReactComponent as ArrowRight,
+  ReactComponent as ArrowLeft
+} from '../../images/icons/arrow-left.svg';
+import {
+  ReactComponent as ArrowRight
 } from '../../images/icons/arrow_right.svg';
 import { Product } from '../../types/Product';
 import { ProductCard } from '../ProductCard';
@@ -37,9 +39,12 @@ export const Slider: React.FC<Props> = ({ products, title }) => {
     });
   }, [offset]);
 
-  const maxOffset = -(SLIDE_WIDTH * (productsLength - 4));
+  const maxOffset = useMemo(
+    () => -(SLIDE_WIDTH * (productsLength - 4)),
+    [SLIDE_WIDTH, productsLength],
+  );
 
-  const handleRightArrowClick = () => {
+  const handleRightArrowClick = useCallback(() => {
     if (!transitionDuration) {
       setTransitionDuration(TRANSITION_DURATION);
     }
@@ -49,10 +54,13 @@ export const Slider: React.FC<Props> = ({ products, title }) => {
 
       return Math.max(newOffset, maxOffset);
     });
-  };
+  }, [transitionDuration, offset, maxOffset]);
 
-  const disableLeftArrowButton = offset === 0;
-  const disableRightArrowButton = offset === maxOffset;
+  const disableLeftArrowButton = useMemo(() => offset === 0, [offset]);
+  const disableRightArrowButton = useMemo(
+    () => offset === maxOffset,
+    [offset, maxOffset],
+  );
 
   return (
     <div className="slider">

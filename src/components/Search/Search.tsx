@@ -1,3 +1,4 @@
+import { useCallback, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { getSearchWith } from '../../helpers/searchHelper';
 
@@ -13,17 +14,20 @@ interface Props {
 export const Search: React.FC<Props> = ({ placeholder }) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const query = searchParams.get('query') || '';
+  const query = useMemo(() => searchParams.get('query') || '', [searchParams]);
 
-  const onQueryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchParams(
-      getSearchWith(searchParams, { query: event.target.value || null }),
-    );
-  };
+  const onQueryChange = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      setSearchParams(
+        getSearchWith(searchParams, { query: event.target.value || null }),
+      );
+    },
+    [searchParams, getSearchWith, query],
+  );
 
-  const clearSearch = () => {
+  const clearSearch = useCallback(() => {
     setSearchParams(getSearchWith(searchParams, { query: '' }));
-  };
+  }, [searchParams, getSearchWith, query]);
 
   return (
     <div className="search">

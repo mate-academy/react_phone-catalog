@@ -120,15 +120,18 @@ export const Carousel: React.FC = () => {
     };
   }, [handleRightArrowClick]);
 
-  const handleKeyDown = (
-    event: React.KeyboardEvent<HTMLDivElement>,
-    slideIndex: number,
-    handleSlideButtonClick: (index: number) => void,
-  ) => {
-    if (event.key === 'Enter' || event.key === ' ') {
-      handleSlideButtonClick(slideIndex);
-    }
-  };
+  const handleKeyDown = useCallback(
+    (
+      event: React.KeyboardEvent<HTMLDivElement>,
+      slideIndex: number,
+      handleSlideButtonClick: (index: number) => void,
+    ) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        handleSlideButtonClick(slideIndex);
+      }
+    },
+    [],
+  );
 
   return (
     <div className="carousel">

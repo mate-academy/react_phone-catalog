@@ -13,16 +13,18 @@ import { ReactComponent as IconHome } from '../../images/icons/home.svg';
 export const FavouritesPage: React.FC = () => {
   const { favouritesItems } = useContext(ShopContext);
 
-  const favourites = favouritesItems
-    .map((item) => item.product)
-    .filter((product): product is Product => product !== null);
+  const favourites = useMemo(() => {
+    return favouritesItems
+      .map((item) => item.product)
+      .filter((product): product is Product => product !== null);
+  }, [favouritesItems]);
 
   const favouritesAmount = useMemo(() => favourites.length, [favourites]);
 
   if (favourites.length === 0) {
     return (
       <ErrorMessage
-        message="You haven&apos;t added any products to your favorites yet."
+        message="You haven't added any products to your favorites yet."
       />
     );
   }

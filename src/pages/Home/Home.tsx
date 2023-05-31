@@ -18,9 +18,7 @@ export const Home: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [hotPriceProducts, setHotPriceProducts] = useState<Product[]>([]);
   const [brandNewProducts, setBrandNewProducts] = useState<Product[]>([]);
-
   const [isLoading, setIsLoading] = useState(false);
-
   const [error, setError] = useState(false);
 
   useEffect(() => {

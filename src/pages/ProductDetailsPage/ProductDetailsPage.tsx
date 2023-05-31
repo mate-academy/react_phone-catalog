@@ -35,6 +35,8 @@ interface Props {
   category: string;
 }
 
+const imagesFolder = './';
+
 export const ProductDetailsPage: React.FC<Props> = ({ category }) => {
   const {
     addToCart,
@@ -50,12 +52,9 @@ export const ProductDetailsPage: React.FC<Props> = ({ category }) => {
   );
   const [product, setProduct] = useState<Product | null>(null);
   const [mainImage, setMainImage] = useState('');
-
   const [suggestedProducts, setSuggestedProducts] = useState<Product[]>([]);
-
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
-
   const location = useLocation();
 
   useEffect(() => {
@@ -118,8 +117,6 @@ export const ProductDetailsPage: React.FC<Props> = ({ category }) => {
   const {
     price, discount, ram, capacity, id, screen,
   } = product;
-
-  const imagesFolder = './';
 
   const addedToCart = cartItems.some((cartItem) => cartItem.id === id);
   const isInFavourites = favouritesItems.some(
@@ -193,7 +190,7 @@ export const ProductDetailsPage: React.FC<Props> = ({ category }) => {
             <div className="product-details__options">
               <div className="product-details__options-section">
                 <h2 className="product-details__options-title">
-                  Available colors
+                  Available colors &#40;Demo&#41;
                 </h2>
 
                 <div className="product-details__options-colors">
@@ -219,7 +216,7 @@ export const ProductDetailsPage: React.FC<Props> = ({ category }) => {
 
               <div className="product-details__options-section">
                 <h2 className="product-details__options-title">
-                  Select capacity
+                  Select capacity &#40;Demo&#41;
                 </h2>
 
                 <div className="product-details__options-capacities">

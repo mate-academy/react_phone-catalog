@@ -1,5 +1,5 @@
-import * as Router from 'react-router-dom';
 import classNames from 'classnames';
+import * as Router from 'react-router-dom';
 import './Nav.scss';
 
 export type NavLink = {
