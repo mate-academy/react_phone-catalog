@@ -57,7 +57,7 @@
         width: 100%;
         position: absolute;
         bottom: -27px;
-        animation: fadeIn 0.3s forwards;
+        animation: slide-in 0.3s forwards;
 
         background: $c-primary;
       }
@@ -65,7 +65,7 @@
   }
 }
 
-@keyframes fadeIn {
+@keyframes slide-in {
   from {
     transform: scaleX(0);
   }

@@ -4,10 +4,10 @@ import { useCallback, useMemo, useState } from 'react';
 
 import classNames from 'classnames';
 import {
-  ReactComponent as ArrowLeft
+  ReactComponent as ArrowLeft,
 } from '../../images/icons/arrow-left.svg';
 import {
-  ReactComponent as ArrowRight
+  ReactComponent as ArrowRight,
 } from '../../images/icons/arrow_right.svg';
 import { Product } from '../../types/Product';
 import { ProductCard } from '../ProductCard';
