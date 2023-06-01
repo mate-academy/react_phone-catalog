@@ -8,7 +8,7 @@ export const NavButtons = () => {
         className="nav-buttons__element"
       >
         <img
-          src="/img/icons/Favourites (Heart Like).png"
+          src="./img/icons/Favourites (Heart Like).png"
           alt="favorities icon"
           className="nav-buttons__icon"
         />
@@ -18,7 +18,7 @@ export const NavButtons = () => {
         className="nav-buttons__element"
       >
         <img
-          src="/img/icons/Shopping bag (Cart).png"
+          src="./img/icons/Shopping bag (Cart).png"
           alt="favorities icon"
           className="nav-buttons__icon"
         />
