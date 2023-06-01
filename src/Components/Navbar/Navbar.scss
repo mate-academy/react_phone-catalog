@@ -1,10 +1,18 @@
-@import '../../Helpers/variables';
+@import "../../Helpers/variables";
 
 .navbar {
   &__list {
     display: flex;
     gap: 60px;
     list-style: none;
+  }
+
+  &__link {
+    color: $color-light-grey;
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
   }
 
   &__element {
@@ -14,7 +22,7 @@
       position: relative;
 
       &::after {
-        content: '';
+        content: "";
         position: absolute;
         top: calc(100% - 3px);
         left: 0;
@@ -24,16 +32,8 @@
       }
 
       .navbar__link {
-        color: $color-grey
+        color: $color-grey;
       }
     }
-  }
-
-  &__link {
-    color: $color-light-grey;
-    font-size: 12px;
-    font-weight: 700;
-    text-decoration: none;
-    text-transform: uppercase;
   }
 }
