@@ -1,8 +1,9 @@
 import './App.scss';
+import { Header } from './Components/Header/Header';
 
 const App = () => (
   <div className="App">
-    <h1>React Phone Catalog</h1>
+    <Header />
   </div>
 );
 

@@ -1,0 +1,35 @@
+@import '../../Helpers/variables';
+
+
+.search {
+  box-shadow: -1px 0px 0px #E2E6E9;
+  padding: 25px;
+  height: 100%;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: calc(100% - 15px - 25px);
+    width: 15px;
+    height: 15px;
+    background: url('https://raw.githubusercontent.com/mate-academy/react_phone-catalog/5fcd3e9161fad0342c3e3dae5491da3aa9334506/public/img/icons/Search.png');
+    background-size: contain;
+  }
+
+  &__input {
+    font-size: 14px;
+    font-weight: 600;
+    width: 200px;
+    border: none;
+    outline: none;
+    margin-right: 50px;
+
+    &::placeholder {
+      color: $color-light-grey-2;
+
+    }
+  }
+}

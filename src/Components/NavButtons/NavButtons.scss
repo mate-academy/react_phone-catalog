@@ -1,0 +1,17 @@
+.nav-buttons {
+  display: flex;
+  height: 100%;
+
+  &__element {
+    display: flex;
+    align-items: center;
+
+    padding: 25px;
+    box-shadow: -1px 0px 0px #E2E6E9;
+  }
+
+  &__icon {
+    width: 15px;
+    height: 15px;
+  }
+}

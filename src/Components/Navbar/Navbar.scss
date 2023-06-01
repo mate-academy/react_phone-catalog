@@ -1,0 +1,39 @@
+@import '../../Helpers/variables';
+
+.navbar {
+  &__list {
+    display: flex;
+    gap: 60px;
+    list-style: none;
+  }
+
+  &__element {
+    padding: 25px 0;
+
+    &--active {
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: calc(100% - 3px);
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: $color-grey;
+      }
+
+      .navbar__link {
+        color: $color-grey
+      }
+    }
+  }
+
+  &__link {
+    color: $color-light-grey;
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+}
