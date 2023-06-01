@@ -8,7 +8,7 @@ export const Header = () => {
     <header className="header">
       <img
         className="header__logo"
-        src="/img/Logo.png"
+        src="./img/Logo.png"
         alt="header logo"
       />
 
