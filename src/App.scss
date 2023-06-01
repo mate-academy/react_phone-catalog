@@ -1,1 +1,11 @@
-// not empty
+.App {
+  font-family: Mont,
+    system-ui,
+    -apple-system,
+    sans-serif;
+
+  &__main {
+    padding: 0 150px;
+    margin-bottom: 80px;
+  }
+}

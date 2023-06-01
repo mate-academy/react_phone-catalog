@@ -1,0 +1,54 @@
+@import "../../styleUtils/_variables.scss";
+
+.cards-container {
+  max-width: 1136px;
+  margin: 0 auto;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: $color-dark;
+  }
+
+  &__controls {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__icon {
+    filter: invert(17%) sepia(1%) saturate(7136%) hue-rotate(193deg)
+      brightness(88%) contrast(86%);
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    background-color: #fff;
+    border: 1px solid $color-light-gray;
+    transition: border 0.5s;
+    cursor: pointer;
+
+    &:hover {
+      border-color: $color-dark;
+    }
+
+    &:disabled {
+      cursor: default;
+      border: 1px solid $color-platinum;
+
+      & .cards-container__icon {
+        filter: invert(91%) sepia(10%) saturate(212%) hue-rotate(164deg)
+          brightness(83%) contrast(86%);
+      }
+    }
+  }
+}

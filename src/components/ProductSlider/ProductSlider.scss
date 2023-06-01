@@ -1,0 +1,9 @@
+.slider {
+  overflow: hidden;
+
+  &__wrapper {
+    transition: all 1s;
+    display: flex;
+    gap: 16px;
+  }
+}
