@@ -1,0 +1,10 @@
+.slider {
+  overflow: hidden;
+
+  &__list {
+    transition: all 1s;
+    list-style: none;
+    padding: 0;
+    display: flex;
+  }
+}
