@@ -16,9 +16,21 @@
   font-weight: 600;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 .App {
   font-family: Mont,
     system-ui,
     -apple-system,
     sans-serif;
+
+  &__header {
+    margin-bottom: 40px;
+  }
+
+  &__main {
+    margin-bottom: 80px;
+  }
 }
