@@ -1,16 +1,16 @@
 import { useState } from 'react';
 
 import { ProductSlider } from '../ProductSlider/ProductSlider';
+
 import leftArrow from '../../assets/banner/l_arrow.svg';
 import rightArrow from '../../assets/banner/r_arrow.svg';
+import img1 from '../../assets/images/banner/banner-phones.png';
+import img2 from '../../assets/images/banner/banner-accessories.png';
+import img3 from '../../assets/images/banner/banner-tablets.png';
 
 import './Banner.scss';
 
-const bannerImages = [
-  './_new/img/banner-phones.png',
-  './_new/img/banner-accessories.png',
-  './_new/img/banner-tablets.png',
-];
+const bannerImages = [img1, img2, img3];
 
 export const Banner = () => {
   const [page, setState] = useState(1);
