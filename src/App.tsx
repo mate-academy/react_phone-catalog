@@ -3,7 +3,6 @@ import { Route, Routes } from 'react-router-dom';
 import { Navbar } from './components/Navbar/Navbar';
 import { Footer } from './components/Footer/Footer';
 import { HomePage } from './routes/HomePage/HomePage';
-import './reset.scss';
 import './App.scss';
 
 const App = () => (

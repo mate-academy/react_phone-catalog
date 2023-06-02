@@ -1,25 +1,3 @@
-@font-face {
-  font-family: "Mont";
-  src: url(./fonts/Mont-Bold.otf);
-  font-weight: bold;
-}
-
-@font-face {
-  font-family: "Mont";
-  src: url(./fonts/Mont-Regular.otf);
-  font-weight: 400;
-}
-
-@font-face {
-  font-family: "Mont";
-  src: url(./fonts/Mont-SemiBold.otf);
-  font-weight: 600;
-}
-
-* {
-  box-sizing: border-box;
-}
-
 .App {
   font-family: Mont,
     system-ui,
