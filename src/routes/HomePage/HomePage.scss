@@ -1,21 +1,9 @@
-.banner {
-  display: flex;
-  gap: 16px;
-  justify-content: center;
-  align-items: center;
-
-  &__image {
-    object-fit: cover;
+.home-page {
+  &__banner {
+    margin-bottom: 82px;
   }
 
-  &__button {
-    transition: border 0.5s;
-    border: 1px solid #b4bdc4;
-    width: 32px;
-    height: 400px;
-
-    &:hover {
-      border: 1px solid #313237;
-    }
+  &__hot {
+    margin-bottom: 80px;
   }
 }
