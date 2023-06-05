@@ -1,0 +1,92 @@
+@import "../../styleUtils/_variables.scss";
+
+.product-card {
+  width: 272px;
+  height: 507px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  color: $primary-text;
+  border: 1px solid $elements;
+
+  &__image {
+    width: 208px;
+    height: 208px;
+    align-self: center;
+    margin-bottom: 24px;
+  }
+
+  &__name {
+    word-wrap: break-word;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    margin-bottom: 7px;
+  }
+
+  &__price {
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 31px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid $elements;
+    margin-bottom: 16px;
+
+    &--strike {
+      margin-left: 8px;
+      text-decoration: line-through;
+      font-weight: 500;
+      line-height: 28px;
+      color: $secondary-text;
+    }
+  }
+
+  &__specification-table {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    margin-bottom: 16px;
+  }
+
+  &__table-row {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__details {
+    color: $secondary-text;
+  }
+
+  &__controls {
+    display: flex;
+    gap: 8px;
+    height: 40px;
+    justify-content: stretch;
+  }
+
+  &__button {
+    flex-basis: 176px;
+    background-color: $primary-text;
+    color: #fff;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+
+    &:hover {
+      box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+    }
+
+    &-icon {
+      width: 40px;
+      border: 1px solid $icons;
+      background-color: #fff;
+
+      &:hover {
+        border-color: $primary-text;
+      }
+    }
+  }
+}
