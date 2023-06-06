@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
 
 import { Banner } from '../../components/Banner/Banner';
-import { CardsContainer } from '../../components/CardsContainer/CardsContainer';
-import { Product } from '../../types/product';
+import {
+  ProductCardsContainer,
+} from '../../components/ProductCardsContainer/ProductCardsContainer';
 import { ShopCategories } from '../../components/ShopCategories/ShopCategories';
+import { Product } from '../../types/product';
 import './HomePage.scss';
 import {
   getBrandNewProducts,
@@ -26,7 +28,7 @@ export const HomePage = () => {
       </div>
 
       <section className="home-page__hot">
-        <CardsContainer title="Hot prices" products={hotProducts} />
+        <ProductCardsContainer title="Hot prices" products={hotProducts} />
       </section>
 
       <section className="home-page__categories">
@@ -34,7 +36,10 @@ export const HomePage = () => {
       </section>
 
       <section className="home-page__new">
-        <CardsContainer title="Brand new models" products={newProducts} />
+        <ProductCardsContainer
+          title="Brand new models"
+          products={newProducts}
+        />
       </section>
     </div>
   );

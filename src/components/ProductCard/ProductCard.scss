@@ -1,6 +1,7 @@
 @import "../../styleUtils/_variables.scss";
 
 .product-card {
+  flex-shrink: 0;
   width: 272px;
   height: 507px;
   padding: 24px;
@@ -68,6 +69,7 @@
   }
 
   &__button {
+    cursor: pointer;
     flex-basis: 176px;
     background-color: $primary-text;
     color: #fff;
@@ -80,6 +82,7 @@
     }
 
     &-icon {
+      cursor: pointer;
       width: 40px;
       border: 1px solid $icons;
       background-color: #fff;

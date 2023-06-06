@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react';
 import classNames from 'classnames';
 
-import { ProductSlider } from '../ProductSlider/ProductSlider';
-
 import leftArrow from '../../assets/l_arrow.svg';
 import rightArrow from '../../assets/r_arrow.svg';
 import img1 from '../../assets/images/banner/banner-phones.png';
@@ -30,7 +28,7 @@ export const Banner = () => {
     const intId = setInterval(() => handleClick(1), 5000);
 
     return () => clearInterval(intId);
-  }, []);
+  }, [page]);
 
   return (
     <section className="banner">
@@ -43,16 +41,22 @@ export const Banner = () => {
           <img src={leftArrow} alt="Banners left arrow button" />
         </button>
         <div className="banner__slider">
-          <ProductSlider page={page}>
+          <ul
+            className="banner__slider-list"
+            style={{ transform: `translateX(${-100 * page}%)` }}
+          >
             {bannerImages.map((image) => (
-              <img
-                key={image}
-                className="banner__image"
-                src={image}
-                alt="Banner element"
-              />
+              <li key={image}>
+                <img
+                  width={1040}
+                  height={400}
+                  className="banner__image"
+                  src={image}
+                  alt="Banner element"
+                />
+              </li>
             ))}
-          </ProductSlider>
+          </ul>
         </div>
         <button
           type="button"

@@ -2,18 +2,21 @@ import './ProductSlider.scss';
 
 type ProductSliderProps = {
   page: number;
-  gap?: number;
+  width: number;
 };
 
 export const ProductSlider: React.FC<ProductSliderProps> = ({
-  page, children, gap,
+  page,
+  width,
+  children,
 }) => (
-  <ul className="slider" style={{ transform: `translateX(${-100 * page}%)`, gap }}>
-    {/* {children} */}
-    {Array.isArray(children) && children.map(child => (
-      <li className="slider__item" key={child.key}>
-        {child}
-      </li>
-    ))}
-  </ul>
+  <div className="slider" style={{ width }}>
+    <div
+      className="slider__wrapper"
+      style={{ transform: `translateX(${-100 * page}%)` }}
+      data-cy="cardsContainer"
+    >
+      {children}
+    </div>
+  </div>
 );

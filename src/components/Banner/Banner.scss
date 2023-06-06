@@ -2,6 +2,7 @@
 
 .banner {
   &__wrapper {
+    margin: 0 auto;
     display: flex;
     gap: 16px;
     justify-content: center;
@@ -10,14 +11,17 @@
   }
 
   &__slider {
-    overflow: hidden;
     width: 1040px;
     height: 400px;
+    overflow: hidden;
+
+    &-list {
+      transition: all 1s;
+      display: flex;
+    }
   }
 
   &__image {
-    width: 1040px;
-    height: 400px;
     object-fit: cover;
   }
 

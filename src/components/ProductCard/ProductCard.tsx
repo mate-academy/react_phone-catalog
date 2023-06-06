@@ -13,8 +13,7 @@ export const ProductCard = ({
 }: ProductCardProps) => {
   return (
     <div className="product-card">
-      <img className="product-card__image" src={imageUrl} alt="phone" />
-
+      <img className="product-card__image" src={imageUrl} alt={name} />
       <p className="product-card__name">{name}</p>
       <p className="product-card__price">
         {`$${price - (price * (discount / 100))}`}
