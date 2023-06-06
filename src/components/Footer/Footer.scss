@@ -35,10 +35,11 @@
     line-height: 15px;
     font-weight: 600;
     color: #89939a;
-    text-decoration: none;
     display: flex;
     align-items: center;
     gap: 16px;
+    border: none;
+    cursor: pointer;
 
     &:hover {
       color: #313237;

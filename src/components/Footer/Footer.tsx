@@ -28,13 +28,21 @@ export const Footer = () => (
       </li>
     </ul>
 
-    <a className="footer__button" href="#nav">
+    <button
+      className="footer__button"
+      type="button"
+      onClick={() => window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'smooth',
+      })}
+    >
       Back to top
       <img
         className="footer__icon"
         src={arrowUp}
         alt="Button that will take you to the top of the page"
       />
-    </a>
+    </button>
   </footer>
 );
