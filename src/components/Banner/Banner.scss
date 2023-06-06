@@ -1,8 +1,13 @@
+@import "../../styleUtils/_variables.scss";
+
 .banner {
-  display: flex;
-  gap: 16px;
-  justify-content: center;
-  align-items: center;
+  &__wrapper {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 18px;
+  }
 
   &__slider {
     overflow: hidden;
@@ -19,12 +24,29 @@
   &__button {
     background-color: white;
     transition: border 0.5s;
-    border: 1px solid #b4bdc4;
+    border: 1px solid $icons;
     width: 32px;
     height: 400px;
+    cursor: pointer;
 
     &:hover {
-      border: 1px solid #313237;
+      border: 1px solid $primary-text;
+    }
+  }
+
+  &__indicator-container {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  &__indicator {
+    width: 14px;
+    height: 4px;
+    background-color: $elements;
+
+    &--active {
+      background-color: $primary-text;
     }
   }
 }
