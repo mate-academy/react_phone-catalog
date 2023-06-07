@@ -1,0 +1,102 @@
+.phones-page,
+.tablets-page,
+.accessories-page {
+
+  &__container {
+    max-width: 1136px;
+    margin: 0 auto;
+  }
+
+  &__ellipsis {
+    display: inline-block;
+    width: 20px;
+    text-align: center;
+  }
+
+  &__title {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 41px;
+    color: rgba(49, 50, 55, 1);
+    margin-bottom: 8px;
+  }
+
+  &__subtitle {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    color: rgba(137, 147, 154, 1);
+    margin-bottom: 40px;
+  }
+
+  &__navigation-filter {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  &__label {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+    color: rgba(137, 147, 154, 1);
+    margin-bottom: 4px;
+  }
+
+  &__sort-by {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__select {
+    width: 176px;
+    min-height: 40px;
+    padding: 12px 10px;
+    border: 1px solid #e2e6e9;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+  }
+
+  &__items-per-page {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__row {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 40px;
+    column-gap: 16px;
+    margin-bottom: 40px;
+  }
+
+  &__pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    gap: 8px;
+    margin-bottom: 80px;
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    border: 1px solid #e2e6e9;
+    background-color: #fff;
+
+    &_l {
+      margin-right: 8px;
+    }
+    
+    &_r {
+      margin-left: 8px;
+    }
+  }
+}
+
+.active {
+  background-color: rgba(49, 50, 55, 1);
+  color: #fff;
+}

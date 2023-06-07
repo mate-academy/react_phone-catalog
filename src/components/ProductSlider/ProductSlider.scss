@@ -1,0 +1,43 @@
+
+.product {
+  &__slider {
+    max-width: 1136px;
+    margin: 0 auto;
+    margin-bottom: 80px;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__title {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 41px;
+    color: rgba(49, 50, 55, 1);
+    margin-bottom: 24px;
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    background-color: #fff;
+    border: 1px solid #e2e6e9;
+  }
+
+  &__next {
+    margin-left: 16px;
+  }
+
+  &__slider-container {
+    overflow: hidden;
+    position: relative;
+  }
+
+  &__row {
+    display: flex;
+    gap: 16px;
+  }
+}

@@ -1,0 +1,35 @@
+.shop-category {
+
+  &__container {
+    max-width: 1136px;
+    margin: 0 auto;
+    margin-bottom: 80px;
+  }
+
+  &__title {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 41px;
+    color: rgba(49, 50, 55, 1);
+    margin-bottom: 24px;
+  }
+
+  &__row {
+    display: flex;
+    gap: 16px;
+  }
+}
+
+.item-shop-category {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 calc((100% - 32px) / 3);
+
+  &__image {
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    margin-bottom: 4px;
+  }
+}
