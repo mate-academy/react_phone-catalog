@@ -12,10 +12,13 @@ import { Phone } from './types/Phone';
 import { getPhones } from './helpers/fetchPhones';
 import { Loader } from './components/Loader/Loader';
 import { FootNavigation } from './components/FootNavigation/FootNavigation';
+import { PhoneDetails } from './pages/PhoneDetailsPage/PhoneDetails';
 
 const App = () => {
   const [phones, setPhones] = useState<Phone[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [searchResults, setSearchResults] = useState(phones);
+  const [searchQuery, setSearchQuery] = useState('');
 
   const loadProducts = async () => {
     setIsLoading(true);
@@ -35,7 +38,13 @@ const App = () => {
 
   return (
     <div className="page">
-      <HeadNavigation />
+      <HeadNavigation
+        phones={phones}
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
+        setSearchResults={setSearchResults}
+        setPhones={setPhones}
+      />
 
       {(isLoading) ? <Loader /> : (
         <>
@@ -62,13 +71,16 @@ const App = () => {
                   element={(
                     <PhonesPage
                       phones={phones}
+                      setPhones={setPhones}
+                      searchResults={searchResults}
+                      searchQuery={searchQuery}
                     />
                   )}
                 />
                 <Route
                   path=":productId"
                   element={(
-                    <PhonesPage
+                    <PhoneDetails
                       phones={phones}
                     />
                   )}

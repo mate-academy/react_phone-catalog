@@ -37,12 +37,16 @@
 
     &--text {
       font-size: 12px;
+      font-family: inherit;
       text-decoration: none;
       color: $secondaryColor;
+      border: none;
+      background-color: $whiteColor;
 
       transition: color 0.3s ease;
 
       &:hover {
+        cursor: pointer;
         color: $mainColor;
       }
     }
@@ -54,10 +58,12 @@
       width: 32px;
       height: 32px;
       border: 1px solid $iconsColor;
+      background-color: $whiteColor;
 
       transition: border-color 0.3s;
 
       &:hover {
+        cursor: pointer;
         border-color: $mainColor;
       }
     }

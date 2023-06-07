@@ -1,10 +1,10 @@
 import './Selection.scss';
-import { ChangeEvent, useEffect } from 'react';
+import { ChangeEvent } from 'react';
 import { Phone } from '../../types/Phone';
 
 type Props = {
   phones: Phone[],
-  setSortedPhones: React.Dispatch<React.SetStateAction<Phone[]>>,
+  setPhones: React.Dispatch<React.SetStateAction<Phone[]>>,
   itemsPerPage: string,
   setItemsPerPage: React.Dispatch<React.SetStateAction<string>>,
   sortOption: string,
@@ -12,35 +12,10 @@ type Props = {
 };
 
 export const Selection: React.FC<Props> = ({
-  phones,
-  setSortedPhones,
   itemsPerPage,
   setItemsPerPage,
-  sortOption,
   setSortOption,
 }) => {
-  const handleSelectionChange = () => {
-    let sorted: Phone[] = [...phones];
-
-    if (sortOption === 'age') {
-      sorted = sorted.sort((a, b) => b.price - a.price);
-    } else if (sortOption === 'name') {
-      sorted = sorted.sort((a, b) => a.name.localeCompare(b.name));
-    } else if (sortOption === 'price') {
-      sorted = sorted.sort((a, b) => a.price - b.price);
-    }
-
-    if (itemsPerPage !== 'all') {
-      sorted = sorted.slice(0, parseInt(itemsPerPage, 10));
-    }
-
-    setSortedPhones(sorted);
-  };
-
-  useEffect(() => {
-    handleSelectionChange();
-  }, [sortOption, itemsPerPage]);
-
   const handleSortChange = (event: ChangeEvent<HTMLSelectElement>) => {
     const selectedOption = event.target.value;
 

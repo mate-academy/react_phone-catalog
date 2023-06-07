@@ -19,4 +19,9 @@
   font-family: Mont-Regular, sans-serif;
   color: $mainColor;
   box-sizing: border-box;
+
+  &__link {
+    text-decoration: none;
+    color: $mainColor;
+  }
 }

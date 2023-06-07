@@ -4,8 +4,20 @@ import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 
 import logo from '../../Icons/logo.svg';
+import { Search } from '../Search/Search';
+import { Phone } from '../../types/Phone';
 
-export const HeadNavigation: React.FC = () => {
+type Props = {
+  phones: Phone[],
+  searchQuery: string,
+  setSearchQuery: React.Dispatch<React.SetStateAction<string>>,
+  setSearchResults: React.Dispatch<React.SetStateAction<Phone[]>>,
+  setPhones: React.Dispatch<React.SetStateAction<Phone[]>>,
+};
+
+export const HeadNavigation: React.FC<Props> = ({
+  phones, setSearchResults, setPhones, searchQuery, setSearchQuery,
+}) => {
   return (
     <div className="head-navigation">
       <div className="head-navigation__elemets">
@@ -51,6 +63,14 @@ export const HeadNavigation: React.FC = () => {
       </div>
 
       <div className="head-navigation__left">
+        <Search
+          phones={phones}
+          searchQuery={searchQuery}
+          setSearchQuery={setSearchQuery}
+          setSearchResults={setSearchResults}
+          setPhones={setPhones}
+        />
+
         <div className="elements-border">
           <a href="/favourites" className="icon icon--fav">
             <p hidden>

@@ -1,5 +1,4 @@
 import './Bottom.scss';
-import { useState, useEffect } from 'react';
 import classNames from 'classnames';
 import leftArrow from '../../Icons/arrow-left-black.svg';
 import rightArrow from '../../Icons/arrow-right-black.svg';
@@ -7,21 +6,19 @@ import { Phone } from '../../types/Phone';
 
 type Props = {
   phones: Phone[],
-  // sortedPhones: Phone[],
   itemsPerPage: string,
-  setSortedPhones: React.Dispatch<React.SetStateAction<Phone[]>>,
+  currentPage: number,
+  setCurrentPage: React.Dispatch<React.SetStateAction<number>>,
 };
 
-// export const Bottom: React.FC<Props> = ({ phones, sortedPhones, itemsPerPage, setSortedPhones }) => {
 export const Bottom: React.FC<Props> = ({
   phones,
   itemsPerPage,
-  setSortedPhones,
+  setCurrentPage,
+  currentPage,
 }) => {
-  const [currentPage, setCurrentPage] = useState(1);
   const maxPagesToShow = 5;
   const totalPages = Math.ceil(phones.length / Number(itemsPerPage || 1));
-  // const sortedPhonesCopy = sortedPhones.slice();
 
   const handlePageClick = (page: number) => {
     setCurrentPage(page);
@@ -38,27 +35,6 @@ export const Bottom: React.FC<Props> = ({
       setCurrentPage((prevPage) => prevPage + 1);
     }
   };
-
-  useEffect(() => {
-    const startIndex = (currentPage - 1) * Number(itemsPerPage);
-    const endIndex = startIndex + Number(itemsPerPage);
-    const visiblePhones = phones.slice(startIndex, endIndex);
-
-    if (JSON.stringify(visiblePhones) !== JSON.stringify(phones)) {
-      setSortedPhones(visiblePhones);
-    }
-  }, [currentPage, phones, itemsPerPage, setSortedPhones]);
-
-  // useEffect(() => {
-  //   const startIndex = (currentPage - 1) * Number(itemsPerPage);
-  //   const endIndex = startIndex + Number(itemsPerPage);
-  //   const sortedPhonesCopy = phones.slice().sort();
-  //   const visiblePhones = sortedPhonesCopy.slice(startIndex, endIndex);
-
-  //   if (JSON.stringify(visiblePhones) !== JSON.stringify(sortedPhonesCopy)) {
-  //     setSortedPhones(visiblePhones);
-  //   }
-  // }, [currentPage, phones, itemsPerPage, setSortedPhones]);
 
   let startPage = Math.max(1, currentPage - Math.floor(maxPagesToShow / 2));
   const endPage = Math.min(startPage + maxPagesToShow - 1, totalPages);

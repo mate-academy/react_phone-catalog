@@ -1,5 +1,6 @@
 import './FootNavigation.scss';
 import logo from '../../Icons/logo.svg';
+import { moveToTop } from '../../helpers/movingToTop';
 
 export const FootNavigation = () => {
   return (
@@ -37,16 +38,21 @@ export const FootNavigation = () => {
         </div>
 
         <div className="footer__action">
-          <a href="/" className="footer__action--text">
+          <button
+            type="button"
+            className="footer__action--text"
+            onClick={moveToTop}
+          >
             Back to top
-          </a>
+          </button>
 
-          <a
-            href="/"
+          <button
+            type="button"
             className="footer__navigation--link footer__action--container"
+            onClick={moveToTop}
           >
             <div className="footer__action--img" />
-          </a>
+          </button>
         </div>
       </div>
     </div>

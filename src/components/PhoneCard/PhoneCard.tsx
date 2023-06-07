@@ -1,4 +1,5 @@
 import './PhoneCard.scss';
+import { Link } from 'react-router-dom';
 import { Phone } from '../../types/Phone';
 
 type Props = {
@@ -14,6 +15,7 @@ export const PhoneCard: React.FC<Props> = ({ phone }) => {
     capacity,
     ram,
     image,
+    phoneId,
   } = phone;
 
   return (
@@ -21,12 +23,13 @@ export const PhoneCard: React.FC<Props> = ({ phone }) => {
       <div className="phone-card__content">
         <div className="phone-card__phone phone">
           <div className="phone__container">
-            {/* <img src='_new/products/phones-photos/apple-iphone-xs/spacegray/01.jpg' alt='phone' className="phone__image" /> */}
-            <img src={`_new/${image}`} alt={name} className="phone__image" />
+            <Link to={`/phones/${phoneId}`} className="page__link">
+              <img src={`_new/${image}`} alt={name} className="phone__image" />
 
-            <p className="phone__title">
-              {name}
-            </p>
+              <p className="phone__title">
+                {name}
+              </p>
+            </Link>
 
             <div className="phone__priceholder">
               <p className="phone__price">

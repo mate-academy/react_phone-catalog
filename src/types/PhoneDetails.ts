@@ -1,6 +1,6 @@
 import { PhoneDescription } from './PhoneDescription';
 
-export interface PhoneDetails {
+export interface ProductDetails {
   id: string;
   name: string;
   capacityAvailable: string[];

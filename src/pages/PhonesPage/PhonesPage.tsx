@@ -5,60 +5,112 @@ import { Bottom } from '../../components/PhonesPageBottom/Bottom';
 import { Selection } from '../../components/Selection/Selection';
 import { Phone } from '../../types/Phone';
 import './PhonesPage.scss';
+import { NoResults } from '../NoResultsPage/NoResults';
 
 type Props = {
   phones: Phone[],
+  setPhones: React.Dispatch<React.SetStateAction<Phone[]>>,
+  searchResults: Phone[],
+  searchQuery: string,
 };
 
-export const PhonesPage: React.FC<Props> = ({ phones }) => {
-  const [sortedPhones, setSortedPhones] = useState<Phone[]>(phones);
+const getSortedPhones = (
+  phones: Phone[],
+  sortOption: string,
+  currentPage: number,
+  itemsPerPage: string,
+) => {
+  let visiblePhones = [...phones];
+
+  visiblePhones.sort((a: Phone, b: Phone) => {
+    if (sortOption === 'name') {
+      return a.name.localeCompare(b.name);
+    }
+
+    if (sortOption === 'price') {
+      return a.price - b.price;
+    }
+
+    if (sortOption === 'age') {
+      return b.price - a.price;
+    }
+
+    return 0;
+  });
+
+  if (itemsPerPage !== 'all') {
+    const startIndex = (currentPage - 1) * Number(itemsPerPage);
+    const endIndex = startIndex + Number(itemsPerPage);
+
+    visiblePhones = visiblePhones.slice(startIndex, endIndex);
+  }
+
+  return visiblePhones;
+};
+
+export const PhonesPage: React.FC<Props> = ({
+  phones,
+  setPhones,
+  searchResults,
+  searchQuery,
+}) => {
   const [itemsPerPage, setItemsPerPage] = useState('all');
   const [sortOption, setSortOption] = useState('name');
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const visiblePhones = getSortedPhones(
+    phones, sortOption, currentPage, itemsPerPage,
+  );
+
+  const noResult = searchResults.length === 0;
 
   return (
     <>
       <div className="phones-page">
-        <MainNavigation />
+        {(noResult && searchQuery.length > 1000) ? <NoResults />
+          : (
+            <>
+              <MainNavigation />
 
-        <div className="phones-page__content">
-          <h1 className="phones-page__title">
-            Mobile phones
-          </h1>
+              <div className="phones-page__content">
+                <h1 className="phones-page__title">
+                  Mobile phones
+                </h1>
 
-          <p className="phones-page__subtitle">
-            {`${phones.length} models`}
-          </p>
+                <p className="phones-page__subtitle">
+                  {`${phones.length} models`}
+                </p>
 
-          <Selection
-            phones={phones}
-            itemsPerPage={itemsPerPage}
-            setItemsPerPage={setItemsPerPage}
-            setSortedPhones={setSortedPhones}
-            sortOption={sortOption}
-            setSortOption={setSortOption}
-          />
+                <Selection
+                  phones={visiblePhones}
+                  itemsPerPage={itemsPerPage}
+                  setItemsPerPage={setItemsPerPage}
+                  setPhones={setPhones}
+                  sortOption={sortOption}
+                  setSortOption={setSortOption}
+                />
 
-          {/* {console.log(sortedPhones.length)} */}
-
-          <div className="phones-page__list">
-            {sortedPhones.map(phone => {
-              return (
-                <div className="phones-page__list--item" key={phone.id}>
-                  <PhoneCard phone={phone} />
+                <div className="phones-page__list">
+                  {visiblePhones.map(phone => {
+                    return (
+                      <div className="phones-page__list--item" key={phone.id}>
+                        <PhoneCard phone={phone} />
+                      </div>
+                    );
+                  })}
                 </div>
-              );
-            })}
-          </div>
 
-          {itemsPerPage !== 'all' && (
-            <Bottom
-              phones={phones}
-              // sortedPhones={sortedPhones}
-              itemsPerPage={itemsPerPage}
-              setSortedPhones={setSortedPhones}
-            />
+                {itemsPerPage !== 'all' && (
+                  <Bottom
+                    phones={phones}
+                    currentPage={currentPage}
+                    setCurrentPage={setCurrentPage}
+                    itemsPerPage={itemsPerPage}
+                  />
+                )}
+              </div>
+            </>
           )}
-        </div>
       </div>
     </>
   );
