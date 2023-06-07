@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { Footer } from './components/Footer/Footer';
 import { Header } from './components/Header/Header';
 import { Homepage } from './components/Homepage/Homepage';
@@ -50,21 +50,21 @@ const App = () => {
               path="/"
               element={<Homepage products={products} />}
             />
-            <Route path="/phones">
+            <Route path="phones">
               <Route index element={<PhonesPage />} />
               <Route
                 path=":productId"
                 element={<ProductDetailsPage products={products} />}
               />
             </Route>
-            <Route path="/tablets">
+            <Route path="tablets">
               <Route index element={<TabletsPage />} />
               <Route
                 path=":productId"
                 element={<ProductDetailsPage products={products} />}
               />
             </Route>
-            <Route path="/accessories">
+            <Route path="accessories">
               <Route index element={<AccessoriesPage />} />
               <Route
                 path=":productId"
@@ -80,6 +80,10 @@ const App = () => {
               element={<Cart />}
             />
             <Route path="*" element={<NotFound />} />
+            <Route
+              path="home"
+              element={<Navigate to="/" replace />}
+            />
           </Routes>
         </ProductDataContext.Provider>
         <Footer />
