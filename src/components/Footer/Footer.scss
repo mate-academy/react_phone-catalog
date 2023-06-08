@@ -28,11 +28,14 @@
   }
 
   &__icon {
+    filter: invert(21%) sepia(0%) saturate(15%) hue-rotate(218deg)
+      brightness(95%) contrast(101%);
     border: 1px solid $color-light-gray;
     padding: 11px;
   }
 
   &__button {
+    background-color: #fff;
     transition: color 0.5s;
     line-height: 15px;
     font-weight: 600;

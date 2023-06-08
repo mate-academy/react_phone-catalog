@@ -47,8 +47,9 @@ export const ProductCardsContainer = ({
             disabled={page === 0}
           >
             <img
+              className="cards-container__icon"
               src={leftArrow}
-              alt="Left arrow button to control the slider"
+              alt="Sliders left arrow button"
             />
           </button>
           <button
@@ -58,8 +59,9 @@ export const ProductCardsContainer = ({
             disabled={page === maxTransition}
           >
             <img
+              className="cards-container__icon"
               src={rightArrow}
-              alt="Right arrow button to control the slider"
+              alt="Sliders right arrow button"
             />
           </button>
         </div>

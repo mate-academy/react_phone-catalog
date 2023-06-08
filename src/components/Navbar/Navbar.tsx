@@ -45,13 +45,13 @@ export const Navbar = () => (
           <img
             className="nav__icon"
             src={favorite}
-            alt="Favorite icon button"
+            alt="Favorites"
           />
         </NavLink>
       </li>
       <li className="nav__item">
         <NavLink title="Cart" className={isLinkActive} to="/cart">
-          <img className="nav__icon" src={cart} alt="Cart icon button" />
+          <img className="nav__icon" src={cart} alt="Cart" />
         </NavLink>
       </li>
     </ul>

@@ -1,8 +1,6 @@
 import { request } from './getRequest';
 import { Product } from '../types/product';
 
-// price - (price * (discount / 100))
-
 export const getHotPriceProducts = () => {
   return request<Product[]>('/products.json')
     .then((products) => products.filter(({ discount }) => discount > 0))

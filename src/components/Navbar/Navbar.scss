@@ -46,11 +46,13 @@
   &__icon {
     display: block;
     border-left: 1px solid #c4c7c9;
-    padding: 23px 24px;
+    padding: 24px;
+    filter: invert(21%) sepia(0%) saturate(15%) hue-rotate(218deg)
+      brightness(95%) contrast(101%);
 
     &:hover {
-      border: 1px solid $color-dark;
-      border-top: none;
+      border-left: 1px solid $color-dark;
+      border-bottom: 1px solid $color-dark;
     }
   }
 }

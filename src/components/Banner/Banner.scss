@@ -38,6 +38,11 @@
     }
   }
 
+  &__icon {
+    filter: invert(21%) sepia(0%) saturate(15%) hue-rotate(218deg)
+      brightness(95%) contrast(101%);
+  }
+
   &__indicator-container {
     display: flex;
     justify-content: center;

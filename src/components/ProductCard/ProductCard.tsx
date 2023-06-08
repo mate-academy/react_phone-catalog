@@ -16,8 +16,10 @@ export const ProductCard = ({
       <img className="product-card__image" src={imageUrl} alt={name} />
       <p className="product-card__name">{name}</p>
       <p className="product-card__price">
-        {`$${price - (price * (discount / 100))}`}
-        {discount > 0 && <span className="product-card__price--strike">{`$${price}`}</span>}
+        {`$${price - price * (discount / 100)}`}
+        {discount > 0 && (
+          <span className="product-card__price--strike">{`$${price}`}</span>
+        )}
       </p>
 
       <table>
@@ -42,11 +44,12 @@ export const ProductCard = ({
           Add to card
         </button>
 
-        <button
-          type="button"
-          className="product-card__button-icon"
-        >
-          <img className="icon" src={hearIcon} alt="Add to favorites icon" />
+        <button type="button" className="product-card__button-icon">
+          <img
+            className="product-card__icon"
+            src={hearIcon}
+            alt="Add to favorites icon"
+          />
         </button>
       </div>
     </div>

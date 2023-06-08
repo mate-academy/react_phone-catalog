@@ -1,3 +1,4 @@
+import { scrollToTop } from '../../helpers/domHelpers';
 import logo from '../../assets/logo.svg';
 import arrowUp from '../../assets/arrow_up.svg';
 import './Footer.scss';
@@ -31,17 +32,13 @@ export const Footer = () => (
     <button
       className="footer__button"
       type="button"
-      onClick={() => window.scrollTo({
-        top: 0,
-        left: 0,
-        behavior: 'smooth',
-      })}
+      onClick={scrollToTop}
     >
       Back to top
       <img
         className="footer__icon"
         src={arrowUp}
-        alt="Button that will take you to the top of the page"
+        alt="Footers up arrow button"
       />
     </button>
   </footer>

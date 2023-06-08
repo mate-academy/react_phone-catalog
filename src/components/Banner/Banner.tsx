@@ -15,7 +15,7 @@ export const Banner = () => {
   const [page, setPage] = useState(1);
 
   const handleClick = (operation: 1 | -1) => {
-    setPage(prevPage => {
+    setPage((prevPage) => {
       if (operation === 1) {
         return prevPage + 1 > 2 ? 0 : prevPage + 1;
       }
@@ -38,7 +38,11 @@ export const Banner = () => {
           className="banner__button"
           onClick={() => handleClick(-1)}
         >
-          <img src={leftArrow} alt="Banners left arrow button" />
+          <img
+            className="banner__icon"
+            src={leftArrow}
+            alt="Banners left arrow button"
+          />
         </button>
         <div className="banner__slider">
           <ul
@@ -63,7 +67,11 @@ export const Banner = () => {
           className="banner__button"
           onClick={() => handleClick(1)}
         >
-          <img src={rightArrow} alt="Banners left arrow button" />
+          <img
+            className="banner__icon"
+            src={rightArrow}
+            alt="Banners left arrow button"
+          />
         </button>
       </div>
 
@@ -77,7 +85,6 @@ export const Banner = () => {
           />
         ))}
       </div>
-
     </section>
   );
 };
