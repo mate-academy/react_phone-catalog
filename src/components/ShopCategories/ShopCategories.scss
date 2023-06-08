@@ -9,7 +9,7 @@
     font-size: 32px;
     line-height: 41px;
     letter-spacing: -0.01em;
-    color: $primary-text;
+    color: $color-dark;
     margin-bottom: 24px;
   }
 
@@ -30,20 +30,20 @@
     background-repeat: no-repeat;
 
     &--phones {
-      background-color: #FCDBC1;
+      background-color: #fcdbc1;
       background-position: 70px 40px;
       background-image: url(../../assets/images/categories/category-phones.png);
     }
 
     &--tablets {
-      background-color: #8D8D92;
+      background-color: #8d8d92;
       background-size: 140%;
       background-position: 40px 50px;
       background-image: url(../../assets/images/categories/category-tablets.png);
     }
 
     &--accessories {
-      background-color: #973D5F;
+      background-color: #973d5f;
       background-image: url(../../assets/images/categories/category-accessories.png);
       background-position: 60px 80px;
       background-size: 170%;
@@ -54,7 +54,7 @@
     font-weight: 600;
     font-size: 20px;
     line-height: 26px;
-    color: $primary-text;
+    color: $color-dark;
     margin-bottom: 4px;
   }
 
@@ -62,6 +62,6 @@
     font-weight: 500;
     font-size: 14px;
     line-height: 21px;
-    color: $secondary-text;
+    color: $color-gray;
   }
 }

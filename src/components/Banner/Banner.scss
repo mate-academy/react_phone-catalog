@@ -28,13 +28,13 @@
   &__button {
     background-color: white;
     transition: border 0.5s;
-    border: 1px solid $icons;
+    border: 1px solid $color-light-gray;
     width: 32px;
     height: 400px;
     cursor: pointer;
 
     &:hover {
-      border: 1px solid $primary-text;
+      border: 1px solid $color-dark;
     }
   }
 
@@ -47,10 +47,10 @@
   &__indicator {
     width: 14px;
     height: 4px;
-    background-color: $elements;
+    background-color: $color-platinum;
 
     &--active {
-      background-color: $primary-text;
+      background-color: $color-dark;
     }
   }
 }

@@ -7,8 +7,8 @@
   padding: 24px;
   display: flex;
   flex-direction: column;
-  color: $primary-text;
-  border: 1px solid $elements;
+  color: $color-dark;
+  border: 1px solid $color-platinum;
 
   &__image {
     width: 208px;
@@ -30,7 +30,7 @@
     font-size: 22px;
     line-height: 31px;
     padding-bottom: 8px;
-    border-bottom: 1px solid $elements;
+    border-bottom: 1px solid $color-platinum;
     margin-bottom: 16px;
 
     &--strike {
@@ -38,7 +38,7 @@
       text-decoration: line-through;
       font-weight: 500;
       line-height: 28px;
-      color: $secondary-text;
+      color: $color-gray;
     }
   }
 
@@ -58,7 +58,7 @@
   }
 
   &__details {
-    color: $secondary-text;
+    color: $color-gray;
   }
 
   &__controls {
@@ -73,7 +73,7 @@
     cursor: pointer;
     border: none;
     flex-basis: 176px;
-    background-color: $primary-text;
+    background-color: $color-dark;
     color: #fff;
     font-weight: 600;
     font-size: 14px;
@@ -90,17 +90,18 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      border: 1px solid $icons;
+      border: 1px solid $color-light-gray;
       background-color: #fff;
 
       &:hover {
-        border-color: $primary-text;
+        border-color: $color-dark;
       }
     }
   }
 
   &__icon {
-    filter: invert(21%) sepia(0%) saturate(15%) hue-rotate(218deg) brightness(95%) contrast(101%);
+    filter: invert(21%) sepia(0%) saturate(15%) hue-rotate(218deg)
+      brightness(95%) contrast(101%);
     width: 15px;
     height: 13.5px;
   }

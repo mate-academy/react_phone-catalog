@@ -1,10 +1,12 @@
+@import "../../styleUtils/_variables.scss";
+
 .footer {
   height: 96px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 152px;
-  color: #89939a;
+  color: $color-gray;
   font-size: 12px;
 
   &__list {
@@ -18,15 +20,15 @@
     letter-spacing: 0.04em;
     text-transform: uppercase;
     text-decoration: none;
-    color: #89939a;
+    color: $color-gray;
 
     &:hover {
-      color: #313237;
+      color: $color-dark;
     }
   }
 
   &__icon {
-    border: 1px solid #b4bdc4;
+    border: 1px solid $color-light-gray;
     padding: 11px;
   }
 
@@ -34,7 +36,7 @@
     transition: color 0.5s;
     line-height: 15px;
     font-weight: 600;
-    color: #89939a;
+    color: $color-gray;
     display: flex;
     align-items: center;
     gap: 16px;
@@ -42,10 +44,10 @@
     cursor: pointer;
 
     &:hover {
-      color: #313237;
+      color: $color-dark;
 
       .footer__icon {
-        border-color: #313237;
+        border-color: $color-dark;
       }
     }
   }
