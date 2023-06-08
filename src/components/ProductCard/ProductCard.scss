@@ -69,7 +69,9 @@
   }
 
   &__button {
+    font-family: Mont, system-ui, -apple-system, sans-serif;
     cursor: pointer;
+    border: none;
     flex-basis: 176px;
     background-color: $primary-text;
     color: #fff;
@@ -84,6 +86,10 @@
     &-icon {
       cursor: pointer;
       width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       border: 1px solid $icons;
       background-color: #fff;
 
@@ -91,5 +97,11 @@
         border-color: $primary-text;
       }
     }
+  }
+
+  &__icon {
+    filter: invert(21%) sepia(0%) saturate(15%) hue-rotate(218deg) brightness(95%) contrast(101%);
+    width: 15px;
+    height: 13.5px;
   }
 }
