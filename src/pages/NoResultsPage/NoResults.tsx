@@ -9,7 +9,7 @@ export const NoResults = () => {
       <h1 className="no-results__title">
         Sorry! No results found
         {' '}
-        :(
+        {':('}
       </h1>
 
       <p className="error__desc">

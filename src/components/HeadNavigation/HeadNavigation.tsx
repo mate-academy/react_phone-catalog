@@ -72,19 +72,26 @@ export const HeadNavigation: React.FC<Props> = ({
         />
 
         <div className="elements-border">
-          <a href="/favourites" className="icon icon--fav">
-            <p hidden>
-              favourites
-            </p>
-          </a>
+          <NavLink
+            to="/favourites"
+            className={({ isActive }) => classNames('icon icon--fav', {
+              'icon--fav--active': isActive,
+            })}
+          />
         </div>
 
         <div className="elements-border">
-          <a href="/shoppingBag" className="icon icon--bag">
+          <NavLink
+            to="/shoppingBag"
+            className={({ isActive }) => classNames('icon icon--bag', {
+              'icon--bag--active': isActive,
+            })}
+          />
+          {/* <a href="/shoppingBag" className="icon icon--bag">
             <p hidden>
               shopping Bag
             </p>
-          </a>
+          </a> */}
         </div>
       </div>
     </div>

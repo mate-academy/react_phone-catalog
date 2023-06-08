@@ -13,6 +13,8 @@ import { getPhones } from './helpers/fetchPhones';
 import { Loader } from './components/Loader/Loader';
 import { FootNavigation } from './components/FootNavigation/FootNavigation';
 import { PhoneDetails } from './pages/PhoneDetailsPage/PhoneDetails';
+import { Favourites } from './pages/FavouritesPage/Favourites';
+import { Cart } from './pages/CartPage/Cart';
 
 const App = () => {
   const [phones, setPhones] = useState<Phone[]>([]);
@@ -103,20 +105,13 @@ const App = () => {
                 />
               </Route>
 
-              {/* <Route path="/favourites">
-              <Route index element={<PhonesPage />} />
-              <Route
-                path=":productId"
-                element={<PhonesPage/>}
-              />
-            </Route>
-            <Route path="/phones">
-              <Route index element={<PhonesPage />} />
-              <Route
-                path=":productId"
-                element={<PhonesPage/>}
-              />
-            </Route> */}
+              <Route path="/favourites">
+                <Route index element={<Favourites />} />
+              </Route>
+
+              <Route path="/shoppingBag">
+                <Route index element={<Cart />} />
+              </Route>
 
               <Route
                 path="*"

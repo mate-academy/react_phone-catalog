@@ -116,13 +116,13 @@ export const PhoneDetails: React.FC<Props> = ({ phones }) => {
                       className="photos__sidebar--wrapper"
                       onClick={() => onClickHandle(image)}
                     >
-                      <img src={`_new/${image}`} alt="phone" className="photos__sidebar--item" />
+                      <img src={`new/${image}`} alt="phone" className="photos__sidebar--item" />
                     </button>
                   ))}
                 </div>
 
                 <div className="photos__main">
-                  <img src={`_new/${mainImg}`} alt="mainPhoto" className="photos__main-photo" />
+                  <img src={`new/${mainImg}`} alt="mainPhoto" className="photos__main-photo" />
                 </div>
               </div>
 

@@ -24,7 +24,7 @@ export const PhoneCard: React.FC<Props> = ({ phone }) => {
         <div className="phone-card__phone phone">
           <div className="phone__container">
             <Link to={`/phones/${phoneId}`} className="page__link">
-              <img src={`_new/${image}`} alt={name} className="phone__image" />
+              <img src={`new/${image}`} alt={name} className="phone__image" />
 
               <p className="phone__title">
                 {name}
