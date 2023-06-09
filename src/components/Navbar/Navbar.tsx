@@ -4,6 +4,7 @@ import logo from '../../assets/logo.svg';
 import favorite from '../../assets/heart.svg';
 import cart from '../../assets/cart.svg';
 import './Navbar.scss';
+import { SearchInput } from '../SearchInput/SearchInput';
 
 const isLinkActive = ({ isActive }: { isActive: boolean }) => `nav__link${isActive ? ' nav__link--active' : ''}`;
 
@@ -41,12 +42,11 @@ export const Navbar = () => (
 
     <ul className="nav__controls">
       <li className="nav__item">
+        <SearchInput />
+      </li>
+      <li className="nav__item">
         <NavLink title="Favorites" className={isLinkActive} to="/favorites">
-          <img
-            className="nav__icon"
-            src={favorite}
-            alt="Favorites"
-          />
+          <img className="nav__icon" src={favorite} alt="Favorites" />
         </NavLink>
       </li>
       <li className="nav__item">
