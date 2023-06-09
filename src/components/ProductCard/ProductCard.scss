@@ -13,13 +13,16 @@
   }
 
   &__image {
+    display: inline-block;
+    text-align: center;
     align-self: center;
     margin-bottom: 20px;
   }
 
   &__img {
-    width: 125px;
-    height: 200px;
+    width: 208px;
+    height: 208px;
+    object-fit: contain;
   }
 
   &__body {

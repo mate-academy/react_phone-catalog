@@ -14,6 +14,8 @@ type Props = {
   selectedCapacity: string | undefined,
   setSelectedCapacity: React.Dispatch<React.SetStateAction<string | undefined>>,
   products: Product[],
+  selectedColor: string | undefined,
+  setSelectedColor: React.Dispatch<React.SetStateAction<string | undefined>>,
 };
 
 export const ProductInfoDetails: React.FC<Props> = ({
@@ -21,6 +23,8 @@ export const ProductInfoDetails: React.FC<Props> = ({
   selectedCapacity,
   setSelectedCapacity,
   products,
+  setSelectedColor,
+  selectedColor,
 }) => {
   const [isClicked, setIsClicked] = useState(false);
   const [isAdded, setIsAdded] = useState(false);
@@ -153,12 +157,17 @@ export const ProductInfoDetails: React.FC<Props> = ({
         </div>
         <div className="product-details-description__colors">
           {productInfo.colorsAvailable.map((color) => (
-            <div
+            // eslint-disable-next-line
+            <button
+              type="button"
               key={color}
-              className="product-details-description__color"
+              className={classNames('product-details-description__color', {
+                'active-color': selectedColor === color,
+              })}
               style={{
                 backgroundColor: color,
               }}
+              onClick={() => setSelectedColor(color)}
             />
           ))}
         </div>
@@ -243,7 +252,7 @@ export const ProductInfoDetails: React.FC<Props> = ({
       >
         ID:
         {' '}
-        {productInfo.id}
+        {productInfo.namespaceId}
       </div>
     </section>
   );

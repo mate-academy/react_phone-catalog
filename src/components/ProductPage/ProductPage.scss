@@ -70,33 +70,4 @@
     column-gap: 16px;
     margin-bottom: 40px;
   }
-
-  &__pagination {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto;
-    gap: 8px;
-    margin-bottom: 80px;
-  }
-
-  &__button {
-    width: 32px;
-    height: 32px;
-    border: 1px solid #e2e6e9;
-    background-color: #fff;
-
-    &_l {
-      margin-right: 8px;
-    }
-    
-    &_r {
-      margin-left: 8px;
-    }
-  }
-}
-
-.active {
-  background-color: rgba(49, 50, 55, 1);
-  color: #fff;
 }

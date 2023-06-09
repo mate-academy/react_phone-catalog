@@ -24,6 +24,10 @@
     flex-direction: column;
     flex: 0 0 calc(30% - 16px);
     gap: 16px;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+    color: rgba(180, 189, 195, 1);
 
     &_small {
       flex: 0 0 calc(10% - 16px);
@@ -147,6 +151,10 @@
 .active-capacity {
   background-color: #313237;
   color: #fff;
+}
+
+.active-color {
+  border: 2px solid rgba(49, 50, 55, 1);
 }
 
 .description-text-template {

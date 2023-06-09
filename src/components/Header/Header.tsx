@@ -74,6 +74,10 @@ export const Header = () => {
     };
   }, []);
 
+  useEffect(() => {
+    setInputValue(query || '');
+  }, [query]);
+
   return (
     <header className="homepage-header">
       <nav className="header-navigation navigation-header">
@@ -81,7 +85,7 @@ export const Header = () => {
           <ul className="navigation-header__list_left">
             <li className="navigation-header__item logo">
               <Link
-                to="/"
+                to="home"
                 className="navigation-header__link"
               >
                 <img
@@ -154,7 +158,7 @@ export const Header = () => {
                   data-cy="NameFilter"
                   type="text"
                   className="navigation-header__input"
-                  placeholder="Search in phones..."
+                  placeholder={`Search in ${location.pathname.substring(1)}...`}
                   value={inputValue}
                   onChange={(event) => {
                     handleInputChange(event.target.value);

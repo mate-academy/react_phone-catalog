@@ -7,9 +7,12 @@
   "license": "GPL-3.0",
   "dependencies": {
     "@cypress/react": "^5.12.4",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
     "@fortawesome/fontawesome-svg-core": "^6.4.0",
     "@fortawesome/free-solid-svg-icons": "^6.4.0",
     "@fortawesome/react-fontawesome": "^0.2.0",
+    "@mui/material": "^5.13.4",
     "bulma": "^0.9.3",
     "classnames": "^2.3.2",
     "react": "^17.0.2",

@@ -21,6 +21,7 @@ type Props = {
 export const ProductDetailsPage: React.FC<Props> = ({ products }) => {
   const [productInfo, setProductInfo] = useState<ProductDetails>();
   const [selectedCapacity, setSelectedCapacity] = useState<string>();
+  const [selectedColor, setSelectedColor] = useState<string>();
   const [isLoading, setIsLoading] = useState(true);
   const { productId } = useParams();
 
@@ -68,6 +69,8 @@ export const ProductDetailsPage: React.FC<Props> = ({ products }) => {
             selectedCapacity={selectedCapacity}
             setSelectedCapacity={setSelectedCapacity}
             products={products}
+            selectedColor={selectedColor}
+            setSelectedColor={setSelectedColor}
           />
           <section
             data-cy="productDescription"

@@ -5,7 +5,6 @@ import { useSearchParams } from 'react-router-dom';
 import {
   updateSearchParams, sortProducts, SortOption,
 } from '../../../helpers/helper';
-import { Pagination } from '../../Pagination/Pagination';
 import { Product } from '../../../types/Products';
 import { ProductCard } from '../../ProductCard/ProductCard';
 import { PageIndicator } from '../../PageIndicator/Phonespage/PageIndicator';
@@ -14,15 +13,16 @@ import {
   ProductDataContext,
 } from '../../ProductDataContext/ProductDataContext';
 import { NoResults } from '../../NoResults/NoResults';
+import { Pagination } from '../../Pagination/Pagination';
+
+type ItemsPerPage = '4' | '8' | '16' | 'All';
 
 export const PhonesPage: React.FC = () => {
   const category = 'phones';
   const [searchParams, setSearchParams] = useSearchParams();
-  const [itemsPerPageValue, setItemsPerPageValue]
-    = useState(searchParams.get('perPage') || '4');
+  const itemsPerPage = searchParams.get('perPage') as ItemsPerPage || '4';
+  const sortPage = searchParams.get('sort') as SortOption || 'age';
   const query = searchParams.get('query');
-  const [sortByValue, setSortByValue]
-    = useState(searchParams.get('sort') || 'age');
   const currentPageFromParams = Number(searchParams.get('page') || '1');
   const [currentPage, setCurrentPage] = useState(currentPageFromParams);
   const products = useContext(ProductDataContext);
@@ -30,15 +30,23 @@ export const PhonesPage: React.FC = () => {
   const handleOnChange = useCallback((
     event: React.ChangeEvent<HTMLSelectElement>,
   ) => {
-    setSortByValue(event.target.value);
-  }, []);
+    const sortByValue = event.target.value;
+
+    searchParams.set('sort', sortByValue);
+    setSearchParams(searchParams);
+  }, [searchParams, setSearchParams]);
 
   const handleItemsPerPage = useCallback((
     event: React.ChangeEvent<HTMLSelectElement>,
   ) => {
-    setItemsPerPageValue(event.target.value);
+    const itemsPerPageValue = event.target.value;
+
+    searchParams.set('perPage', itemsPerPageValue);
+    searchParams.set('page', '1');
+
+    setSearchParams(searchParams);
     setCurrentPage(1);
-  }, []);
+  }, [searchParams, setSearchParams]);
 
   const handlePageChange = useCallback((newPage: number) => {
     setCurrentPage(newPage);
@@ -48,15 +56,14 @@ export const PhonesPage: React.FC = () => {
   }, [searchParams, setSearchParams]);
 
   const paginatePhones = useCallback((phones: Product[]) => {
-    if (itemsPerPageValue === 'All') {
+    if (itemsPerPage === 'All') {
       return phones;
     }
 
-    const startIndex = (currentPage - 1) * parseInt(itemsPerPageValue, 10);
+    const startIndex = (currentPage - 1) * parseInt(itemsPerPage, 10);
 
-    return phones
-      .slice(startIndex, startIndex + parseInt(itemsPerPageValue, 10));
-  }, [itemsPerPageValue, currentPage]);
+    return phones.slice(startIndex, startIndex + parseInt(itemsPerPage, 10));
+  }, [itemsPerPage, currentPage]);
 
   const filteredPhones = useMemo(() => products.filter(
     (product) => product.category === category
@@ -73,10 +80,10 @@ export const PhonesPage: React.FC = () => {
   const paginatedProducts = useMemo(() => paginatePhones(product),
     [paginatePhones, product]);
 
-  const totalPages = useMemo(() => (itemsPerPageValue === 'All'
+  const totalPages = useMemo(() => (itemsPerPage === 'All'
     ? 1
-    : Math.ceil(product.length / parseInt(itemsPerPageValue, 10))
-  ), [itemsPerPageValue, product]);
+    : Math.ceil(product.length / parseInt(itemsPerPage, 10))
+  ), [itemsPerPage, product]);
 
   useEffect(() => {
     if (!searchParams.get('sort')) {
@@ -89,12 +96,6 @@ export const PhonesPage: React.FC = () => {
       setCurrentPage(currentPageFromParams);
     }
   }, [currentPageFromParams]);
-
-  useEffect(() => {
-    searchParams.set('sort', sortByValue);
-    searchParams.set('perPage', itemsPerPageValue);
-    setSearchParams(searchParams);
-  }, [sortByValue, itemsPerPageValue, searchParams, setSearchParams]);
 
   return (
     <main className={`${category}-page`}>
@@ -112,7 +113,7 @@ export const PhonesPage: React.FC = () => {
                   id="sort-by"
                   name="sort-by"
                   onChange={handleOnChange}
-                  value={sortByValue}
+                  value={sortPage}
                 >
                   <option value="age">Newest</option>
                   <option value="price">Cheapest</option>
@@ -126,7 +127,7 @@ export const PhonesPage: React.FC = () => {
                   id="items-per-page"
                   name="items-per-page"
                   onChange={handleItemsPerPage}
-                  value={itemsPerPageValue}
+                  value={itemsPerPage}
                 >
                   <option value="4">4</option>
                   <option value="8">8</option>
@@ -144,7 +145,7 @@ export const PhonesPage: React.FC = () => {
               ))}
             </div>
 
-            {itemsPerPageValue !== 'All' && (
+            {itemsPerPage !== 'All' && (
               <Pagination
                 totalPages={totalPages}
                 currentPage={currentPage}
