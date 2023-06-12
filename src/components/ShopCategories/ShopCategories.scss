@@ -2,7 +2,7 @@
 
 .shop-categories {
   margin: 0 auto;
-  width: 1136px;
+  max-width: 1136px;
 
   &__title {
     font-weight: 700;
@@ -15,38 +15,59 @@
 
   &__container {
     display: flex;
+    justify-content: center;
     gap: 16px;
   }
 
   &__link {
+    flex-basis: 368px;
+    height: 368px;
+    flex-grow: 1;
     text-decoration: none;
   }
 
-  &__image {
-    width: 368px;
-    height: 368px;
+  &__wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
     margin-bottom: 24px;
-    background-size: cover;
-    background-repeat: no-repeat;
+    overflow: hidden;
 
     &--phones {
       background-color: #fcdbc1;
-      background-position: 70px 40px;
-      background-image: url(../../assets/images/categories/category-phones.png);
     }
 
     &--tablets {
       background-color: #8d8d92;
-      background-size: 140%;
-      background-position: 40px 50px;
-      background-image: url(../../assets/images/categories/category-tablets.png);
     }
 
     &--accessories {
       background-color: #973d5f;
-      background-image: url(../../assets/images/categories/category-accessories.png);
-      background-position: 60px 80px;
-      background-size: 170%;
+    }
+  }
+
+  &__image {
+    position: absolute;
+    width: 400px;
+    bottom: 0;
+    right: 0;
+
+    &--phones {
+      width: 350px;
+      bottom: -20%;
+      right: -20%;
+    }
+
+    &--tablets {
+      width: 350px;
+      bottom: -20%;
+      right: -20%;
+    }
+
+    &--accessories {
+      width: 350px;
+      bottom: -20%;
+      right: -20%;
     }
   }
 

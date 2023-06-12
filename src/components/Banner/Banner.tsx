@@ -50,7 +50,7 @@ export const Banner = () => {
             style={{ transform: `translateX(${-100 * page}%)` }}
           >
             {bannerImages.map((image) => (
-              <li key={image}>
+              <li className="banner__item" key={image}>
                 <img
                   width={1040}
                   height={400}

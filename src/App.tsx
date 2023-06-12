@@ -6,21 +6,21 @@ import { HomePage } from './routes/HomePage/HomePage';
 import { PhonesPage } from './routes/PhonesPage/PhonesPage';
 import './App.scss';
 
-const App = () => (
-  <div className="App">
-    <header className="App__header">
+const App = () => {
+  return (
+    <div className="App">
       <Navbar />
-    </header>
 
-    <main className="App__main">
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/phones" element={<PhonesPage />} />
-      </Routes>
-    </main>
+      <main className="App__main">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/phones" element={<PhonesPage />} />
+        </Routes>
+      </main>
 
-    <Footer />
-  </div>
-);
+      <Footer />
+    </div>
+  );
+};
 
 export default App;

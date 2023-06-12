@@ -1,8 +1,7 @@
 @import "../../styleUtils/_variables.scss";
 
 .cards-container {
-  width: 1136px;
-  height: 572px;
+  max-width: 1136px;
   margin: 0 auto;
 
   &__header {

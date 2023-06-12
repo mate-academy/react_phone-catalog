@@ -14,7 +14,6 @@ type CardsContainerProps = {
 };
 
 const width = 1136;
-const toSlide = (272 + 16) / width;
 
 export const ProductCardsContainer = ({
   title,
@@ -22,6 +21,7 @@ export const ProductCardsContainer = ({
 }: CardsContainerProps) => {
   const [page, setPage] = useState(0);
 
+  const toSlide = (272 + 16) / width;
   const maxTransition = toSlide * (products.length - 4);
 
   const handleClick = (operation: 1 | -1) => {

@@ -2,7 +2,6 @@
 
 .banner {
   &__wrapper {
-    margin: 0 auto;
     display: flex;
     gap: 16px;
     justify-content: center;
@@ -11,7 +10,7 @@
   }
 
   &__slider {
-    width: 1040px;
+    max-width: 1040px;
     height: 400px;
     overflow: hidden;
 
@@ -19,6 +18,10 @@
       transition: all 1s;
       display: flex;
     }
+  }
+
+  &__item {
+    width: 100%;
   }
 
   &__image {
