@@ -1,9 +1,11 @@
 .slider {
+  max-width: 1136px;
   overflow: hidden;
 
   &__wrapper {
     transition: all 1s;
     display: flex;
     gap: 16px;
+    margin-right: -16px;
   }
 }

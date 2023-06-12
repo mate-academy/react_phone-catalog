@@ -10,11 +10,10 @@
   &__list {
     display: flex;
     gap: 64px;
-  }
 
-  &__controls {
-    height: 100%;
-    display: flex;
+    &--no-gap {
+      gap: 0;
+    }
   }
 
   &__item {

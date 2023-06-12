@@ -1,15 +1,19 @@
-import {
-  ChangeEvent, useEffect, useRef, useState,
-} from 'react';
-import './FilterSelector.scss';
+import { useSearchParams } from 'react-router-dom';
 import classNames from 'classnames';
-import { Filter, Page } from '../../types/filters';
+import {
+  ChangeEvent, useCallback, useEffect, useRef, useState,
+} from 'react';
+
+import './FilterSelector.scss';
+import { Filter } from '../../types/filters';
 
 type FilterProps = {
   name: string;
   label: string;
   width: number;
-  options: Filter[] | Page[];
+  options: Filter;
+  startValue: string;
+  onChange: (value: string) => void;
 };
 
 export const FilterSelector = ({
@@ -17,12 +21,28 @@ export const FilterSelector = ({
   label,
   width,
   options,
+  startValue,
+  onChange,
 }: FilterProps) => {
   const selector = useRef<HTMLButtonElement>(null);
+
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [selected, setSelected] = useState(
-    typeof options[0] === 'string' ? options[0] : options[0].label,
-  );
+  const [selected, setSelected] = useState<string>(startValue);
+
+  const [filterParams, setFilterParams] = useSearchParams();
+
+  useEffect(() => {
+    const selectedSearchParam = filterParams.get(name);
+
+    if (selectedSearchParam) {
+      setSelected(options[selectedSearchParam]);
+
+      return;
+    }
+
+    filterParams.append(name, selected);
+    setFilterParams(filterParams);
+  }, [filterParams]);
 
   const handleClickOutside = () => {
     if (!dropdownOpen) {
@@ -38,14 +58,18 @@ export const FilterSelector = ({
     };
   }, []);
 
-  const handleClick = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+
     selector?.current?.blur();
-    setSelected(e.target.name);
-  };
+    onChange(value);
+    filterParams.set(name, value);
+    setFilterParams(filterParams);
+  }, []);
 
   return (
     <div className="selector">
-      <label className="selector__label">{[label, name]}</label>
+      <label className="selector__label">{label}</label>
       <div style={{ width }} className="selector__wrapper">
         <button
           onClick={() => setDropdownOpen(true)}
@@ -61,35 +85,18 @@ export const FilterSelector = ({
             'selector__dropdown--active': dropdownOpen,
           })}
         >
-          {options.map((option) => {
-            if (typeof option === 'string') {
-              return (
-                <label key={option} className="selector__option">
-                  <input
-                    onChange={(e) => handleClick(e)}
-                    value={option}
-                    name={option}
-                    type="radio"
-                    className="selector__input"
-                  />
-                  {option}
-                </label>
-              );
-            }
-
-            return (
-              <label key={option.value} className="selector__option">
-                <input
-                  onChange={(e) => handleClick(e)}
-                  value={option.value}
-                  name={option.label}
-                  type="radio"
-                  className="selector__input"
-                />
-                {option.label}
-              </label>
-            );
-          })}
+          {Object.entries(options).map(([key, value]) => (
+            <label key={key} className="selector__option">
+              <input
+                onChange={handleChange}
+                value={key}
+                name={name}
+                type="radio"
+                className="selector__input"
+              />
+              {value}
+            </label>
+          ))}
         </div>
       </div>
     </div>

@@ -1,13 +1,12 @@
 import { useEffect, useState } from 'react';
 import classNames from 'classnames';
 
-import leftArrow from '../../assets/l_arrow.svg';
-import rightArrow from '../../assets/r_arrow.svg';
 import img1 from '../../assets/images/banner/banner-phones.png';
 import img2 from '../../assets/images/banner/banner-accessories.png';
 import img3 from '../../assets/images/banner/banner-tablets.png';
 
 import './Banner.scss';
+import { Button } from '../Button/Button';
 
 const bannerImages = [img1, img2, img3];
 
@@ -33,17 +32,14 @@ export const Banner = () => {
   return (
     <section className="banner">
       <div className="banner__wrapper">
-        <button
-          type="button"
-          className="banner__button"
+        <Button
           onClick={() => handleClick(-1)}
-        >
-          <img
-            className="banner__icon"
-            src={leftArrow}
-            alt="Banners left arrow button"
-          />
-        </button>
+          isDisabled={false}
+          arrow="left"
+          alt="Banners left arrow button"
+          size="big"
+        />
+
         <div className="banner__slider">
           <ul
             className="banner__slider-list"
@@ -62,17 +58,14 @@ export const Banner = () => {
             ))}
           </ul>
         </div>
-        <button
-          type="button"
-          className="banner__button"
+
+        <Button
           onClick={() => handleClick(1)}
-        >
-          <img
-            className="banner__icon"
-            src={rightArrow}
-            alt="Banners left arrow button"
-          />
-        </button>
+          isDisabled={false}
+          arrow="right"
+          alt="Banners right arrow button"
+          size="big"
+        />
       </div>
 
       <div className="banner__indicator-container">

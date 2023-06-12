@@ -4,16 +4,23 @@ import './ProductCard.scss';
 
 type ProductCardProps = {
   product: Product;
+  onLoad: () => void;
 };
 
 export const ProductCard = ({
   product: {
     imageUrl, name, price, screen, capacity, ram, discount,
   },
+  onLoad,
 }: ProductCardProps) => {
   return (
     <div className="product-card">
-      <img className="product-card__image" src={imageUrl} alt={name} />
+      <img
+        onLoad={onLoad}
+        className="product-card__image"
+        src={imageUrl}
+        alt={name}
+      />
       <p className="product-card__name">{name}</p>
       <p className="product-card__price">
         {`$${price - price * (discount / 100)}`}
