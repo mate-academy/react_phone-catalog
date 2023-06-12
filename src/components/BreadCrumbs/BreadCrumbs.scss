@@ -1,0 +1,30 @@
+@import "../../styleUtils/_variables.scss";
+
+.bread-crumbs {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  &__link {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: $color-dark;
+    text-decoration: none;
+
+    &--active {
+      color: $color-light-gray;
+    }
+  }
+
+  &__icon {
+    filter: invert(21%) sepia(0%) saturate(15%) hue-rotate(218deg)
+      brightness(95%) contrast(101%);
+
+    &--gray {
+      margin-right: 15px;
+      filter: invert(84%) sepia(6%) saturate(337%) hue-rotate(164deg)
+        brightness(90%) contrast(86%);
+    }
+  }
+}

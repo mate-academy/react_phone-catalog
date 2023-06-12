@@ -1,0 +1,8 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+@import "./styleUtils/_reset.scss";
+@import "./styleUtils/_fonts.scss";
