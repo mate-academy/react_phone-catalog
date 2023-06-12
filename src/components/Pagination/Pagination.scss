@@ -1,0 +1,47 @@
+@import "../../styleUtils/_variables.scss";
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    background-color: #fff;
+    border: 1px solid $color-light-gray;
+    transition: border 0.5s;
+    cursor: pointer;
+
+    &:hover {
+      border-color: $color-dark;
+    }
+
+    &:disabled {
+      cursor: default;
+      border: 1px solid $color-platinum;
+
+      & .pagination__icon {
+        filter: invert(91%) sepia(10%) saturate(212%) hue-rotate(164deg)
+          brightness(83%) contrast(86%);
+      }
+    }
+
+    &--color {
+      
+      border-color: $color-platinum;
+      color: #000;
+    }
+
+    &--active {
+      border: none;
+      background-color: $color-dark;
+      color: #fff;
+    }
+  }
+
+  &__pages-container {
+    display: flex;
+    gap: 8px;
+  }
+}

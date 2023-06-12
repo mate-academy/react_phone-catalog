@@ -10,6 +10,7 @@ type FilterProps = {
   label: string;
   width: number;
   options: Filter[] | Page[];
+  onChange: (value: string) => void;
 };
 
 export const FilterSelector = ({
@@ -17,6 +18,7 @@ export const FilterSelector = ({
   label,
   width,
   options,
+  onChange,
 }: FilterProps) => {
   const selector = useRef<HTMLButtonElement>(null);
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -38,14 +40,20 @@ export const FilterSelector = ({
     };
   }, []);
 
-  const handleClick = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement>,
+    inputLabel: string,
+  ) => {
+    const { value } = e.target;
+
     selector?.current?.blur();
-    setSelected(e.target.name);
+    onChange(value);
+    setSelected(inputLabel);
   };
 
   return (
     <div className="selector">
-      <label className="selector__label">{[label, name]}</label>
+      <label className="selector__label">{label}</label>
       <div style={{ width }} className="selector__wrapper">
         <button
           onClick={() => setDropdownOpen(true)}
@@ -66,9 +74,10 @@ export const FilterSelector = ({
               return (
                 <label key={option} className="selector__option">
                   <input
-                    onChange={(e) => handleClick(e)}
+                    key={selected}
+                    onChange={(e) => handleChange(e, option)}
                     value={option}
-                    name={option}
+                    name={name}
                     type="radio"
                     className="selector__input"
                   />
@@ -80,9 +89,9 @@ export const FilterSelector = ({
             return (
               <label key={option.value} className="selector__option">
                 <input
-                  onChange={(e) => handleClick(e)}
+                  onChange={(e) => handleChange(e, option.label)}
                   value={option.value}
-                  name={option.label}
+                  name={name}
                   type="radio"
                   className="selector__input"
                 />

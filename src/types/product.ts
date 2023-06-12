@@ -9,4 +9,5 @@ export type Product = {
   id: string;
   type: string;
   snippet: string;
+  age: number
 };

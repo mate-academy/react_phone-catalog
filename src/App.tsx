@@ -4,6 +4,7 @@ import { Navbar } from './components/Navbar/Navbar';
 import { Footer } from './components/Footer/Footer';
 import { HomePage } from './routes/HomePage/HomePage';
 import { PhonesPage } from './routes/PhonesPage/PhonesPage';
+
 import './App.scss';
 
 const App = () => {

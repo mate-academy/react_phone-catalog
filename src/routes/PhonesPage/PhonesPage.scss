@@ -1,4 +1,37 @@
+@import "../../styleUtils/_variables.scss";
+
 .phones-page {
-  width: 1890px;
+  max-width: 1136px;
   margin: 0 auto;
+
+  &__crumbs {
+    margin-top: 25px;
+    margin-bottom: 40px;
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: $color-dark;
+  }
+
+  &__count {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $color-gray;
+    margin-bottom: 40px;
+  }
+
+  &__selectors {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  &__products-list {
+    margin-bottom: 40px;
+  }
 }
