@@ -85,7 +85,6 @@
 
   &__bottom {
     display: flex;
-    align-items: center;
     gap: 8px;
   }
 
@@ -99,6 +98,12 @@
     color: $whiteColor;
 
     transition: background-color 0.3s, color 0.3s;
+
+    &--clicked {
+      border-color: $elementsColor;
+      background-color: $whiteColor;
+      color: $greenColor;
+    }
 
     &:hover {
       cursor: pointer;
@@ -118,6 +123,10 @@
     background-repeat: no-repeat;
 
     transition: background-image 0.3s, border-color 0.3s;
+
+    &--clicked {
+      background-image: url(../../Icons/favourites-Filled.svg);
+    }
 
     &:hover {
       cursor: pointer;

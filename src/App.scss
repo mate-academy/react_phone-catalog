@@ -19,6 +19,8 @@
   font-family: Mont-Regular, sans-serif;
   color: $mainColor;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
 
   &__link {
     text-decoration: none;

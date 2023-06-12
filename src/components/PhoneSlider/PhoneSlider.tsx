@@ -2,14 +2,27 @@ import { useState } from 'react';
 import classNames from 'classnames';
 import { PhoneCard } from '../PhoneCard/PhoneCard';
 import { Phone } from '../../types/Phone';
+import { CartItem } from '../../types/CartItem';
 
 type Props = {
   phones: Phone[],
   products: Phone[],
   title: string,
+  likedProducts: Phone[],
+  setLikedProducts: React.Dispatch<React.SetStateAction<Phone[]>>,
+  cartProducts: CartItem[],
+  setCartProducts: React.Dispatch<React.SetStateAction<CartItem[]>>,
 };
 
-export const PhoneSlider: React.FC<Props> = ({ phones, products, title }) => {
+export const PhoneSlider: React.FC<Props> = ({
+  phones,
+  title,
+  products,
+  likedProducts,
+  setLikedProducts,
+  cartProducts,
+  setCartProducts,
+}) => {
   const visibleCount = 4;
   const [start, setStart] = useState(0);
   const end = start + visibleCount;
@@ -60,7 +73,14 @@ export const PhoneSlider: React.FC<Props> = ({ phones, products, title }) => {
           className="hot-phones__phones"
         >
           {products.slice(start, end).map((phone: Phone) => (
-            <PhoneCard phone={phone} key={phone.id} />
+            <PhoneCard
+              phone={phone}
+              key={phone.id}
+              likedProducts={likedProducts}
+              setLikedProducts={setLikedProducts}
+              cartProducts={cartProducts}
+              setCartProducts={setCartProducts}
+            />
           ))}
         </div>
       </div>

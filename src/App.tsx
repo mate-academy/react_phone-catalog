@@ -15,12 +15,15 @@ import { FootNavigation } from './components/FootNavigation/FootNavigation';
 import { PhoneDetails } from './pages/PhoneDetailsPage/PhoneDetails';
 import { Favourites } from './pages/FavouritesPage/Favourites';
 import { Cart } from './pages/CartPage/Cart';
+import { CartItem } from './types/CartItem';
 
 const App = () => {
   const [phones, setPhones] = useState<Phone[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [searchResults, setSearchResults] = useState(phones);
   const [searchQuery, setSearchQuery] = useState('');
+  const [likedProducts, setLikedProducts] = useState<Phone[]>([]);
+  const [cartProducts, setCartProducts] = useState<CartItem[]>([]);
 
   const loadProducts = async () => {
     setIsLoading(true);
@@ -38,6 +41,26 @@ const App = () => {
     loadProducts();
   }, []);
 
+  useEffect(() => {
+    const savedLikedProducts = localStorage.getItem('likedProducts');
+
+    if (savedLikedProducts) {
+      setLikedProducts(JSON.parse(savedLikedProducts));
+    }
+  }, []);
+
+  useEffect(() => {
+    const savedCartItems = localStorage.getItem('cartItems');
+
+    if (savedCartItems) {
+      setCartProducts(JSON.parse(savedCartItems));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('cartItems', JSON.stringify(cartProducts));
+  }, [cartProducts]);
+
   return (
     <div className="page">
       <HeadNavigation
@@ -46,6 +69,8 @@ const App = () => {
         setSearchQuery={setSearchQuery}
         setSearchResults={setSearchResults}
         setPhones={setPhones}
+        likedProducts={likedProducts}
+        cartProducts={cartProducts}
       />
 
       {(isLoading) ? <Loader /> : (
@@ -57,6 +82,10 @@ const App = () => {
                 element={(
                   <HomePage
                     phones={phones}
+                    likedProducts={likedProducts}
+                    setLikedProducts={setLikedProducts}
+                    cartProducts={cartProducts}
+                    setCartProducts={setCartProducts}
                   />
                 )}
               />
@@ -76,6 +105,10 @@ const App = () => {
                       setPhones={setPhones}
                       searchResults={searchResults}
                       searchQuery={searchQuery}
+                      likedProducts={likedProducts}
+                      setLikedProducts={setLikedProducts}
+                      cartProducts={cartProducts}
+                      setCartProducts={setCartProducts}
                     />
                   )}
                 />
@@ -84,6 +117,10 @@ const App = () => {
                   element={(
                     <PhoneDetails
                       phones={phones}
+                      likedProducts={likedProducts}
+                      setLikedProducts={setLikedProducts}
+                      cartProducts={cartProducts}
+                      setCartProducts={setCartProducts}
                     />
                   )}
                 />
@@ -106,11 +143,29 @@ const App = () => {
               </Route>
 
               <Route path="/favourites">
-                <Route index element={<Favourites />} />
+                <Route
+                  index
+                  element={(
+                    <Favourites
+                      likedProducts={likedProducts}
+                      setLikedProducts={setLikedProducts}
+                      cartProducts={cartProducts}
+                      setCartProducts={setCartProducts}
+                    />
+                  )}
+                />
               </Route>
 
               <Route path="/shoppingBag">
-                <Route index element={<Cart />} />
+                <Route
+                  index
+                  element={(
+                    <Cart
+                      cartProducts={cartProducts}
+                      setCartProducts={setCartProducts}
+                    />
+                  )}
+                />
               </Route>
 
               <Route

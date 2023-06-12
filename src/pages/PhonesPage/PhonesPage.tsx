@@ -4,6 +4,7 @@ import { PhoneCard } from '../../components/PhoneCard/PhoneCard';
 import { Bottom } from '../../components/PhonesPageBottom/Bottom';
 import { Selection } from '../../components/Selection/Selection';
 import { Phone } from '../../types/Phone';
+import { CartItem } from '../../types/CartItem';
 import './PhonesPage.scss';
 import { NoResults } from '../NoResultsPage/NoResults';
 
@@ -12,6 +13,10 @@ type Props = {
   setPhones: React.Dispatch<React.SetStateAction<Phone[]>>,
   searchResults: Phone[],
   searchQuery: string,
+  setLikedProducts: React.Dispatch<React.SetStateAction<Phone[]>>,
+  likedProducts: Phone[],
+  cartProducts: CartItem[],
+  setCartProducts: React.Dispatch<React.SetStateAction<CartItem[]>>,
 };
 
 const getSortedPhones = (
@@ -53,6 +58,10 @@ export const PhonesPage: React.FC<Props> = ({
   setPhones,
   searchResults,
   searchQuery,
+  likedProducts,
+  setLikedProducts,
+  cartProducts,
+  setCartProducts,
 }) => {
   const [itemsPerPage, setItemsPerPage] = useState('all');
   const [sortOption, setSortOption] = useState('name');
@@ -94,7 +103,13 @@ export const PhonesPage: React.FC<Props> = ({
                   {visiblePhones.map(phone => {
                     return (
                       <div className="phones-page__list--item" key={phone.id}>
-                        <PhoneCard phone={phone} />
+                        <PhoneCard
+                          phone={phone}
+                          likedProducts={likedProducts}
+                          setLikedProducts={setLikedProducts}
+                          cartProducts={cartProducts}
+                          setCartProducts={setCartProducts}
+                        />
                       </div>
                     );
                   })}

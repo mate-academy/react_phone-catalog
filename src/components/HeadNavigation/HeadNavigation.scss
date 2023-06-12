@@ -92,9 +92,27 @@
   &--fav {
     background-image: url(../../Icons/favourites.svg);
     transition: background-image 0.3s;
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 38px;
+      left: -25px;
+      right: 0;
+      border-radius: 8px;
+      background-color: $mainColor;
+      height: 0;
+      width: 66px;
+      opacity: 0;
+      transition: height 0.3s ease, opacity 0.3s ease, color 0.3s;
+    }
 
     &--active {
-      background-image: url(../../Icons/favourites-Filled.svg);
+      &::after {
+        height: 3px;
+        opacity: 1;
+      }
     }
 
     &:hover {
@@ -105,10 +123,27 @@
   &--bag {
     background-image: url(../../Icons/shoppingBag.svg);
     transition: background-color 0.3s, border-radius 0.3s;
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 38px;
+      left: -25px;
+      right: 0;
+      border-radius: 8px;
+      background-color: $mainColor;
+      height: 0;
+      width: 65px;
+      opacity: 0;
+      transition: height 0.3s ease, opacity 0.3s ease, color 0.3s;
+    }
 
     &--active {
-      background-color: rgba(235, 87, 87, 0.5);
-      border-radius: 5.5px;
+      &::after {
+        height: 3px;
+        opacity: 1;
+      }
     }
 
     &:hover {
@@ -116,4 +151,21 @@
       border-radius: 5px;
     }
   }
+}
+
+.counter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $redColor;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  text-decoration: none;
+  font-family: Mont-SemiBold, sans-serif;
+  font-size: 7px;
+  color: $whiteColor;
+  position: absolute;
+  top: -5px;
+  left: 8px;
 }

@@ -7,7 +7,7 @@ export const NoResults = () => {
       <img src={noResults} alt="" />
 
       <h1 className="no-results__title">
-        Sorry! No results found
+        Sorry! No results found yet
         {' '}
         :(
       </h1>

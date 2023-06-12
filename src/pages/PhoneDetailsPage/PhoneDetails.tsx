@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react';
 import { MainNavigation } from '../../components/MainNavigation/MainNavigation';
 import './PhoneDetails.scss';
 
-import leftArrow from '../../Icons/arrow-left-black.svg';
 import { Phone } from '../../types/Phone';
 import { PhoneSlider } from '../../components/PhoneSlider/PhoneSlider';
 import { getPhonesDetails } from '../../helpers/fetchPhones';
@@ -11,6 +10,9 @@ import { ProductDetails } from '../../types/PhoneDetails';
 import { Colors } from '../../components/Colors/Colors';
 import { Capacity } from '../../components/Capacity/Capacity';
 import { Loader } from '../../components/Loader/Loader';
+import { CartItem } from '../../types/CartItem';
+import { BackButton } from '../../components/BackButton/BackButton';
+// import { FavouritesButton } from '../../components/FavouritesButton/FavouritesButton';
 
 const findProductById = (itemId = '', products: Phone[]) => {
   return products.find((product) => product.itemId === itemId);
@@ -18,9 +20,19 @@ const findProductById = (itemId = '', products: Phone[]) => {
 
 type Props = {
   phones: Phone[],
+  likedProducts: Phone[],
+  setLikedProducts: React.Dispatch<React.SetStateAction<Phone[]>>,
+  cartProducts: CartItem[],
+  setCartProducts: React.Dispatch<React.SetStateAction<CartItem[]>>,
 };
 
-export const PhoneDetails: React.FC<Props> = ({ phones }) => {
+export const PhoneDetails: React.FC<Props> = ({
+  phones,
+  likedProducts,
+  setLikedProducts,
+  cartProducts,
+  setCartProducts,
+}) => {
   const [isLoading, setIsLoading] = useState(false);
   const [product, setProduct] = useState<ProductDetails | null>(null);
   const [mainImg, setMainImg] = useState<string | null>(null);
@@ -63,10 +75,6 @@ export const PhoneDetails: React.FC<Props> = ({ phones }) => {
     return <Loader />;
   }
 
-  const handleGoBack = () => {
-    window.history.back();
-  };
-
   const shuffleArray = (array: Phone[]) => {
     const shuffledArray = [...array];
 
@@ -91,17 +99,7 @@ export const PhoneDetails: React.FC<Props> = ({ phones }) => {
       {!isLoading && isProduct && (
         <>
           <div className="phones-details__content">
-            <div className="back-btn">
-              <img src={leftArrow} alt="leftArrow" />
-
-              <button
-                type="button"
-                className="back-btn__text"
-                onClick={handleGoBack}
-              >
-                Back
-              </button>
-            </div>
+            <BackButton />
 
             <h1 className="phones-details__title">
               {product.name}
@@ -166,11 +164,11 @@ export const PhoneDetails: React.FC<Props> = ({ phones }) => {
                     Add to cart
                   </button>
 
-                  <button type="button" className="phones-details__favourites">
-                    <p hidden>
-                      favourites
-                    </p>
-                  </button>
+                  {/* <FavouritesButton
+                    likedProducts={likedProducts}
+                    setLikedProducts={setLikedProducts}
+                    // phone={product}
+                  /> */}
                 </div>
 
                 <div className="phones-details__description description">
@@ -289,6 +287,10 @@ export const PhoneDetails: React.FC<Props> = ({ phones }) => {
             phones={phones}
             title="You may also like"
             products={mixedPhones}
+            likedProducts={likedProducts}
+            setLikedProducts={setLikedProducts}
+            cartProducts={cartProducts}
+            setCartProducts={setCartProducts}
           />
         </>
       )}

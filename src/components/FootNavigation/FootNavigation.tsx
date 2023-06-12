@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import './FootNavigation.scss';
 import logo from '../../Icons/logo.svg';
 import { moveToTop } from '../../helpers/movingToTop';
@@ -6,9 +7,9 @@ export const FootNavigation = () => {
   return (
     <div className="footer">
       <div className="footer__content">
-        <a href="/" className="footer__logo">
+        <Link to="/home" className="footer__logo">
           <img src={logo} alt="logo" />
-        </a>
+        </Link>
 
         <div className="footer__navigation">
           <a

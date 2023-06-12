@@ -1,12 +1,25 @@
 import './PhoneCard.scss';
 import { Link } from 'react-router-dom';
 import { Phone } from '../../types/Phone';
+import { FavouritesButton } from '../FavouritesButton/FavouritesButton';
+import { CartButton } from '../CartButton/CartButton';
+import { CartItem } from '../../types/CartItem';
 
 type Props = {
   phone: Phone,
+  setLikedProducts: React.Dispatch<React.SetStateAction<Phone[]>>,
+  likedProducts: Phone[],
+  cartProducts: CartItem[],
+  setCartProducts: React.Dispatch<React.SetStateAction<CartItem[]>>,
 };
 
-export const PhoneCard: React.FC<Props> = ({ phone }) => {
+export const PhoneCard: React.FC<Props> = ({
+  phone,
+  likedProducts,
+  setLikedProducts,
+  cartProducts,
+  setCartProducts,
+}) => {
   const {
     name,
     fullPrice,
@@ -67,15 +80,17 @@ export const PhoneCard: React.FC<Props> = ({ phone }) => {
             </div>
 
             <div className="phone__bottom">
-              <button type="button" className="phone__button">
-                Add to cart
-              </button>
+              <CartButton
+                phone={phone}
+                cartProducts={cartProducts}
+                setCartProducts={setCartProducts}
+              />
 
-              <button type="button" className="phone__favourites">
-                <p hidden>
-                  favourites
-                </p>
-              </button>
+              <FavouritesButton
+                phone={phone}
+                likedProducts={likedProducts}
+                setLikedProducts={setLikedProducts}
+              />
             </div>
           </div>
         </div>

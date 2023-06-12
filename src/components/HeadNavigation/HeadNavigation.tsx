@@ -1,11 +1,12 @@
 import React from 'react';
 import './HeadNavigation.scss';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 
 import logo from '../../Icons/logo.svg';
 import { Search } from '../Search/Search';
 import { Phone } from '../../types/Phone';
+import { CartItem } from '../../types/CartItem';
 
 type Props = {
   phones: Phone[],
@@ -13,17 +14,25 @@ type Props = {
   setSearchQuery: React.Dispatch<React.SetStateAction<string>>,
   setSearchResults: React.Dispatch<React.SetStateAction<Phone[]>>,
   setPhones: React.Dispatch<React.SetStateAction<Phone[]>>,
+  likedProducts: Phone[],
+  cartProducts: CartItem[],
 };
 
 export const HeadNavigation: React.FC<Props> = ({
-  phones, setSearchResults, setPhones, searchQuery, setSearchQuery,
+  phones,
+  setSearchResults,
+  setPhones,
+  searchQuery,
+  setSearchQuery,
+  likedProducts,
+  cartProducts,
 }) => {
   return (
     <div className="head-navigation">
       <div className="head-navigation__elemets">
-        <a href="/" className="head-navigation__logo">
+        <Link to="/home" className="head-navigation__logo">
           <img src={logo} alt="logo" />
-        </a>
+        </Link>
 
         <NavLink
           to="/"
@@ -77,7 +86,11 @@ export const HeadNavigation: React.FC<Props> = ({
             className={({ isActive }) => classNames('icon icon--fav', {
               'icon--fav--active': isActive,
             })}
-          />
+          >
+            {!!likedProducts.length && (
+              <div className="counter">{likedProducts.length}</div>
+            )}
+          </NavLink>
         </div>
 
         <div className="elements-border">
@@ -86,12 +99,11 @@ export const HeadNavigation: React.FC<Props> = ({
             className={({ isActive }) => classNames('icon icon--bag', {
               'icon--bag--active': isActive,
             })}
-          />
-          {/* <a href="/shoppingBag" className="icon icon--bag">
-            <p hidden>
-              shopping Bag
-            </p>
-          </a> */}
+          >
+            {!!cartProducts.length && (
+              <div className="counter">{cartProducts.length}</div>
+            )}
+          </NavLink>
         </div>
       </div>
     </div>

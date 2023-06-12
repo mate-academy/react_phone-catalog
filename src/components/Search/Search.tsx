@@ -1,6 +1,6 @@
 import { useLocation } from 'react-router-dom';
 import search from '../../Icons/search.svg';
-import cross from '../../Icons/close.svg';
+import cross from '../../Icons/closeBlack.svg';
 import { Phone } from '../../types/Phone';
 import './Search.scss';
 
