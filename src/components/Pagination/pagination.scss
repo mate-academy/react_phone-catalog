@@ -1,0 +1,64 @@
+@import '../../styles/main.scss';
+
+.pagination {
+  display: flex;
+  padding-left: 0;
+  border-radius: 0.25rem;
+
+  &__page-link {
+    position: relative;
+    display: block;
+    padding: 0.5rem 0.75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: #007bff;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+  
+    &:hover {
+      z-index: 2;
+      color: blueviolet;
+      text-decoration: none;
+      background-color: grey;
+      border-color: grey;
+    }
+  
+    &:focus {
+      z-index: 2;
+    }
+  }
+
+
+  &__page-item {
+    &:first-child {
+      .page-link {
+        margin-left: 0;
+      }
+    }
+  
+    &.active .page-link {
+      z-index: 1;
+      color: red;
+      background-color: grey;
+    }
+  
+    &.disabled .page-link {
+      color:red;
+      pointer-events: none;
+      // Opinionated: remove the "hand" cursor set previously for .page-link
+      cursor: auto;
+      background-color: grey;
+    }
+  }
+}
+
+
+
+// .page-item.active .page-link {
+//   z-index: 1;
+//   color: #fff;
+//   background-color: #007bff;
+//   border-color: #007bff;
+// }
+
+

@@ -1,0 +1,59 @@
+@import '../../styles/main.scss';
+
+.productsSlider {
+  // box-sizing: border-box;
+  font-family: Mont, sans-serif;
+  display: flex;
+  flex-direction: column;
+
+  // @media (min-width: 1161px) {
+  //   width: 272px * 4 + 16px * 3;
+  // }
+
+  // @media (min-width: 870px) and (max-width: 1160px) {
+  //   width: 272px * 3 + 16px * 2;
+  // }
+
+  // @media (min-width: 581px) and (max-width: 870px) {
+  //   width: 272px * 2 + 16px;
+  // }
+
+  // @media (max-width: 580px) {
+  //   width: 272px
+  // }
+
+  margin-bottom: 80px;
+
+  &__titleContainer {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    @extend %h1-text;
+    color: $colorPrimary;
+  }
+
+  &__btnContainer {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__cardContainer {
+    // display: flex;
+    // box-sizing: content-box;
+    // justify-content: flex-start;
+    // overflow-x: hidden;
+    display: flex;
+    justify-content: flex-start;
+    gap: 16px;
+  }
+
+  &__body {
+    display: flex;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+
+}

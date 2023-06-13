@@ -1,0 +1,39 @@
+@import '../../styles/main.scss';
+
+.accessoriesPage {
+  font-family: Mont, sans-serif;
+
+  &__title {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: #313237;
+    margin-bottom: 8px;
+  }
+
+  &__description {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #89939A;
+    margin-bottom: 40px;
+  }
+
+  &__sortContainer {
+    position: relative;
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+
+    &::after {
+      position: absolute;
+      bottom: -24px;
+      left: 0;
+      right: 0;
+      content: "";
+      height: 1px;
+      background-color: #E2E6E9;
+    }
+  }
+}

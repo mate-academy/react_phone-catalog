@@ -1,0 +1,110 @@
+@import '../../styles/main.scss';
+
+.categorys {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  font-family: Mont, sans-serif;
+  margin-bottom: 80px;
+  transition: all 0.5s;
+
+  // &:hover .categorys__img {
+  //   background-repeat: 20px;
+  // }
+
+  &__title {
+    @extend %h1-text;
+    color: $colorPrimary;
+    margin-bottom: 24px;
+  }
+
+  // &__contentContainer {
+  //   display: flex;
+  //   // justify-content: space-between;
+  //   transition: all 0.5s;
+  // }
+
+  &__content {
+
+    // &__imgContainer {
+    //   // width: 368px;
+    //   // height: 368px;
+    //   height: 368px;
+    //   width: 100%;
+
+    //   background-color: #FCDBC1;
+    //   position: relative;
+    //   margin-bottom: 24px;
+    //   cursor: pointer;
+
+    //   &--tablets {
+    //     background-color: #8D8D92;
+    //   }
+
+    //   &--accessories {
+    //     background-color: #D53C51;
+    //   }
+
+    //   @include tablet {
+    //     height: 230px;
+    //   }
+
+    //   @include desktop {
+    //     height: 368px;
+    //   }
+    // }
+
+    &__img {
+      // position: absolute;
+      // object-fit: scale-down;
+      // object-position: bottom right;
+      // bottom: 0;
+      // right: 0;
+      // width: 85%;
+      // height: 100px;
+
+      // @include tablet {
+      //   width: 50%;
+      // }
+
+      height: 200px;
+      width: 100%;
+      object-fit: scale-down;
+      object-position: bottom right;
+      background-color: #FCDBC1;
+      margin-bottom: 14px;
+
+      &--tablets {
+        background-color: #8D8D92;
+      }
+
+      &--accessories {
+        background-color: #D53C51;
+      }
+
+
+      @include tablet {
+        height: 230px;
+      }
+
+      @include desktop {
+        height: 368px;
+      }
+    }
+
+    &__title {
+      @extend %h3-text;
+
+      color: $colorPrimary;
+      margin-bottom: 4px;
+    }
+
+    &__description {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 21px;
+      color: $colorSecondary;
+    }
+  }
+
+}

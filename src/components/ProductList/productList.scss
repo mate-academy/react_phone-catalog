@@ -1,0 +1,7 @@
+@import '../../styles/main.scss';
+
+.productList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 16px;
+}
