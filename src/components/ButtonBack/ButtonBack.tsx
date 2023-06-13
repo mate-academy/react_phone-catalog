@@ -12,7 +12,7 @@ export const ButtonBack: React.FC = () => {
       onClick={() => navigate(-1)}
     >
       <img
-        src="/img/icons/arrow_left.svg"
+        src="img/icons/arrow_left.svg"
         alt="arrow left"
       />
     </button>

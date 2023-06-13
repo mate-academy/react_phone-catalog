@@ -46,7 +46,7 @@ export const ProductItem: React.FC<Props> = ({
         <div className="product-item__image-container">
           <img
             className="product-item__image"
-            src={`/${image}`}
+            src={`${image}`}
             alt={itemId}
           />
         </div>
@@ -116,7 +116,7 @@ export const ProductItem: React.FC<Props> = ({
           "
         >
           <img
-            src="/img/icons/like.svg"
+            src="img/icons/like.svg"
             alt="like"
           />
         </button>

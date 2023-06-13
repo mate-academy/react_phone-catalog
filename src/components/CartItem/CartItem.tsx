@@ -27,14 +27,14 @@ export const CartItem: React.FC<Props> = ({
         onClick={() => removeProductFromCart(item.phoneId)}
       >
         <img
-          src="/img/icons/close.svg"
+          src="img/icons/close.svg"
           alt="close"
         />
       </button>
 
       <div className="cart-item__image-container">
         <img
-          src={`/${item.image}`}
+          src={`${item.image}`}
           alt={item.name}
           className="cart-item__image"
         />
@@ -59,7 +59,7 @@ export const CartItem: React.FC<Props> = ({
           }}
         >
           <img
-            src="/img/icons/minus.svg"
+            src="img/icons/minus.svg"
             alt="minus"
           />
         </button>
@@ -79,7 +79,7 @@ export const CartItem: React.FC<Props> = ({
           }}
         >
           <img
-            src="/img/icons/plus.svg"
+            src="img/icons/plus.svg"
             alt="plus"
           />
         </button>

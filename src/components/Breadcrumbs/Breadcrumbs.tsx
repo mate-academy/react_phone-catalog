@@ -21,7 +21,7 @@ export const Breadcrumbs: React.FC = () => {
             className="breadcrumb__home-link"
           >
             <img
-              src="/img/icons/home.svg"
+              src="img/icons/home.svg"
               alt="home"
               className="breadcrumb__image"
             />
@@ -37,7 +37,7 @@ export const Breadcrumbs: React.FC = () => {
               className="breadcrumb__item"
             >
               <img
-                src="/img/icons/arrow_disabled.svg"
+                src="img/icons/arrow_disabled.svg"
                 alt="arrow right"
                 className="breadcrumb__image"
               />

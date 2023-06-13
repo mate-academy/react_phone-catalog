@@ -96,7 +96,7 @@ export const ProductDetailsPage: React.FC<Props> = ({
                               onClick={() => onPhotoChange(photoId)}
                             >
                               <img
-                                src={`_new/${details?.images[photoId]}`}
+                                src={`${details?.images[photoId]}`}
                                 alt={details?.images[photoId]}
                                 className="photos__image"
                               />
@@ -107,7 +107,7 @@ export const ProductDetailsPage: React.FC<Props> = ({
 
                       <div className="photos__landscape">
                         <img
-                          src={`_new/${details?.images[currentPhoto]}`}
+                          src={`${details?.images[currentPhoto]}`}
                           alt={details?.name}
                           className="photos__image"
                         />
@@ -196,7 +196,7 @@ export const ProductDetailsPage: React.FC<Props> = ({
                         "
                       >
                         <img
-                          src="/img/icons/like.svg"
+                          src="img/icons/like.svg"
                           alt="like"
                         />
                       </button>

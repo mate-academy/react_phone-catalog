@@ -33,7 +33,7 @@ export const Carousel: React.FC = () => {
             button-square--high
           "
         >
-          <img src="/img/icons/arrow_left.svg" alt="arrow left" />
+          <img src="img/icons/arrow_left.svg" alt="arrow left" />
         </button>
 
         <div className="carousel__slide">
@@ -48,7 +48,7 @@ export const Carousel: React.FC = () => {
 
             return (
               <img
-                src={`/img/${image}`}
+                src={`img/${image}`}
                 className={classNames(
                   'carousel__image',
                   { 'carousel__image--active': index === currentIndex },
@@ -69,7 +69,7 @@ export const Carousel: React.FC = () => {
             button-square--high
           "
         >
-          <img src="/img/icons/arrow_right.svg" alt="arrow right" />
+          <img src="img/icons/arrow_right.svg" alt="arrow right" />
         </button>
       </div>
 

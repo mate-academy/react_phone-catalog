@@ -16,21 +16,21 @@ export const Categories: React.FC<Props> = ({
       <div className="categories__items">
         <Category
           to="/phones"
-          srcImg="/img/category-phones.png"
+          srcImg="img/category-phones.png"
           title="Mobile phones"
           count={phonesCount}
         />
 
         <Category
           to="/tablets"
-          srcImg="/img/category-tablets.png"
+          srcImg="img/category-tablets.png"
           title="Tablets"
           count={0}
         />
 
         <Category
           to="/accessories"
-          srcImg="/img/category-accessories.png"
+          srcImg="img/category-accessories.png"
           title="Accessories"
           count={0}
         />

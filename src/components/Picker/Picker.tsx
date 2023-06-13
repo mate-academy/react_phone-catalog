@@ -41,7 +41,7 @@ export const Picker: React.FC<Props> = ({
         {value}
 
         <img
-          src="/img/icons/arrow_down.svg"
+          src="img/icons/arrow_down.svg"
           className={classNames(
             'picker__arrow',
             { 'picker__arrow--open': isOpen },

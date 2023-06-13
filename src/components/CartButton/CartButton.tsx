@@ -18,7 +18,7 @@ export const CartButton: React.FC<Props> = ({
       )}
     >
       <img
-        src="/img/icons/cart.svg"
+        src="img/icons/cart.svg"
         alt="cart"
       />
 

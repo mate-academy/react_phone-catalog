@@ -43,7 +43,7 @@ export const Pagination: React.FC<Props> = ({
           }}
           aria-disabled={isFirstPage}
         >
-          <img src="/img/icons/arrow_left.svg" alt="arrow left" />
+          <img src="img/icons/arrow_left.svg" alt="arrow left" />
         </Link>
 
         <ul className="pagination__list">
@@ -90,7 +90,7 @@ export const Pagination: React.FC<Props> = ({
           }}
           aria-disabled={isLastPage}
         >
-          <img src="/img/icons/arrow_right.svg" alt="arrow right" />
+          <img src="img/icons/arrow_right.svg" alt="arrow right" />
         </Link>
       </div>
     </>
