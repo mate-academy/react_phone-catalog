@@ -12,7 +12,7 @@ export const AccessoriesPage: React.FC<Props> = ({ accessories }) => {
         <h1 className="accessories-page__title">
           Accessosies page
         </h1>
-      
+
         <div className="accessories-page__description">
           {`${accessories.length} models`}
         </div>

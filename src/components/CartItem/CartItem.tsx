@@ -1,9 +1,8 @@
 import './CartItem.scss';
 
+import classNames from 'classnames';
 import { useState } from 'react';
 import { Product } from '../../types/Product';
-import classNames from 'classnames';
-
 
 type Props = {
   item: Product;

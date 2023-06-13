@@ -1,6 +1,5 @@
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
-// import { useAppDispatch, useAppSelector } from '../../helpers/hooks';
 import { CartItem } from '../../types/CartItem';
 
 type Props = {
@@ -10,9 +9,6 @@ type Props = {
 export const CartButton: React.FC<Props> = ({
   cartItems,
 }) => {
-  // const dispatch = useAppDispatch();
-  // const cartItems = useAppSelector(state => state.cartItems);
-
   return (
     <NavLink
       to="/cart"

@@ -21,7 +21,7 @@ export const CartPage: React.FC<Props> = ({
   const cartTotalPrice = useMemo(
     () => cartItems.reduce((total, item) => total + item.price, 0), [cartItems],
   );
-  
+
   return (
     <section className="page__section cart-page">
       <div className="cart-page__container">
@@ -34,17 +34,18 @@ export const CartPage: React.FC<Props> = ({
         </h1>
 
         <div className="cart-page__content">
-          {!cartItems.length
-            ? (<h2 className="cart-page__notification">Your cart is empty</h2>)
-            : (
-              <div className="cart-page__cart-list">
-                <CartList
-                  cartItems={cartItems}
-                  removeProductFromCart={removeProductFromCart}
-                />
-              </div>
-            )
-          }
+          {(!cartItems.length) ? (
+            <h2 className="cart-page__notification">
+              Your cart is empty
+            </h2>
+          ) : (
+            <div className="cart-page__cart-list">
+              <CartList
+                cartItems={cartItems}
+                removeProductFromCart={removeProductFromCart}
+              />
+            </div>
+          )}
 
           <div className="cart-page__total-box">
             <h1 className="cart-page__total-price">
