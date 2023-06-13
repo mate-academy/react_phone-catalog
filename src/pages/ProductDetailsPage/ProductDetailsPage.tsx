@@ -196,7 +196,7 @@ export const ProductDetailsPage: React.FC<Props> = ({
                         "
                       >
                         <img
-                          src="/_new/img/icons/like.svg"
+                          src="/img/icons/like.svg"
                           alt="like"
                         />
                       </button>

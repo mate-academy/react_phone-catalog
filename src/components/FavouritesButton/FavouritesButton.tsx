@@ -11,7 +11,7 @@ export const FavouritesButton: React.FC = () => {
       )}
     >
       <img
-        src="_new/img/icons/like.svg"
+        src="/img/icons/like.svg"
         alt="like"
       />
     </NavLink>

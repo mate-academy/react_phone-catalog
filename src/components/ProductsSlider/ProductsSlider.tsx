@@ -41,7 +41,7 @@ export const ProductsSlider: React.FC <Props> = ({
             )}
             onClick={() => setFirst((prev) => prev - 1)}
           >
-            <img src="_new/img/icons/arrow_left.svg" alt="arrow left" />
+            <img src="/img/icons/arrow_left.svg" alt="arrow left" />
           </button>
 
           <button
@@ -55,7 +55,7 @@ export const ProductsSlider: React.FC <Props> = ({
             )}
             onClick={() => setFirst((prev) => prev + 1)}
           >
-            <img src="_new/img/icons/arrow_right.svg" alt="arrow right" />
+            <img src="/img/icons/arrow_right.svg" alt="arrow right" />
           </button>
         </div>
       </div>

@@ -61,7 +61,7 @@ export const Footer: React.FC = () => {
             onClick={scrollUp}
           >
             <img
-              src="_new/img/icons/arrow_up.svg"
+              src="/img/icons/arrow_up.svg"
               alt="arrow up"
             />
           </button>
