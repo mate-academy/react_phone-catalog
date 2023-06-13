@@ -1,0 +1,25 @@
+@import "../../styles/utils/extends";
+@import "../../styles/utils/variables";
+
+.products-slider {
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__title {
+    @extend %h1;
+  }
+
+  &__buttons-box {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__product-items {
+    display: flex;
+    gap: 16px;
+    margin-top: 24px;
+  }
+}

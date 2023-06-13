@@ -1,0 +1,10 @@
+@import "../../styles/utils/extends";
+@import "../../styles/utils/variables";
+
+.favourites-page {
+  &__title {
+    @extend %h1;
+    margin-top: 40px;
+    color: $primary;
+  }
+}

@@ -1,0 +1,45 @@
+@import "../../styles/utils/variables";
+@import "../../styles/utils/extends";
+
+.cart-item {
+  display: grid;
+  grid-template-columns: 16px 80px 4fr 1fr 1fr;
+  align-items: center;
+  gap: 24px;
+  padding: 24px 40px 24px 24px;
+  border: 1px solid $elementColor;
+
+  &__image-container {
+    width: 80px;
+    height: 80px;
+    padding: 7px;
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+  }
+
+  &__name {
+    @extend %text;
+  }
+
+  &__count {
+    @extend %text;
+  }
+
+  &__price {
+    @extend %h2;
+    justify-self: end;
+  }
+}

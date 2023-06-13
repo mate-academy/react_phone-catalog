@@ -1,0 +1,55 @@
+@import "../../styles/utils/extends";
+@import "../../styles/utils/variables";
+
+.footer {
+  box-shadow: 0 -1px 0 $elementColor;
+  
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 96px;
+  }
+
+  &__list {
+    @extend %uppercase;
+    display: flex;
+    gap: 64px;
+    list-style: none;
+  }
+
+  &__link {
+    @extend %uppercase;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: $secondary;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+
+  &__button {
+    position: relative;
+    
+    &::after {
+      content: "Back to top";
+      position: absolute;
+      display: flex;
+      align-items: center;
+      right: 100%;
+      width: max-content;
+      height: 100%;
+      margin-right: 16px;
+      @extend %small-text;
+      border: none;
+      background-color: transparent;
+      color: $secondary;
+      transition: all 0.3s;
+    }
+
+    &:hover::after {
+      color: $primary;
+    }
+  }
+}

@@ -1,0 +1,55 @@
+@import "../../styles/utils/extends";
+@import "../../styles/utils/variables";
+
+.category {
+  &__box {
+    display: flex;
+    flex-direction: column;
+    margin-top: 32px;
+  }
+
+  &__image-box {
+    position: relative;
+    width: 368px;
+    height: 368px;
+    border: 1px solid transparent;
+    overflow: hidden;
+    transition: all 0.3s;
+
+    &--phone {
+      background-color: #fcdbc1;
+    }
+
+    &--tablet {
+      background-color: #8d8d92;
+    }
+
+    &--accessory {
+      background-color: #973d5f;
+    }
+
+    &:hover {
+      border: 1px solid $primary;
+    }
+  }
+
+  &__image {
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    width: 100%;
+  }
+
+  &__title {
+    @extend %h3;
+    color: $primary;
+    margin-top: 24px;
+    text-decoration: none;
+  }
+
+  &__discription {
+    @extend %text;
+    margin-top: 4px;
+    color: $secondary;
+  }
+}

@@ -1,0 +1,52 @@
+%h1 {
+  font-family: "Mont Bold", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+}
+
+%h2 {
+  font-family: "Mont Bold", sans-serif;
+  font-size: 22px;
+  line-height: 140%;
+}
+
+%h2-reg {
+  font-family: "Mont Regular", sans-serif;
+  font-size: 22px;
+  line-height: 28px;
+}
+
+%h3 {
+  font-family: "Mont SemiBold", sans-serif;
+  font-size: 20px;
+  line-height: 26px;
+}
+
+%uppercase {
+  font-family: "Mont Bold", sans-serif;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+%button {
+  font-family: "Mont SemiBold", sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+%text {
+  font-family: "Mont Regular", sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+%small-text {
+  font-family: "Mont SemiBold", sans-serif;
+  font-size: 12px;
+  line-height: 15px;
+}

@@ -1,0 +1,21 @@
+@import "../../styles/utils/extends";
+@import "../../styles/utils/variables";
+
+.button-back {
+  display: flex;
+  align-items: center;
+  @extend %small-text;
+  background-color: $white;
+  cursor: pointer;
+
+  &::after {
+    content: "Back";
+    color: $secondary;
+    margin-left: 9px;
+    transition: all 0.3s;
+  }
+
+  &:hover::after {
+    color: $primary;
+  }
+}
