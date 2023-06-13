@@ -1,4 +1,3 @@
-// import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import search from '../../Icons/search.svg';
 import cross from '../../Icons/closeBlack.svg';

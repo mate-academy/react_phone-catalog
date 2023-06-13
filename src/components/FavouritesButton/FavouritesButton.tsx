@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import { Phone } from '../../types/Phone';
 
 type Props = {
-  phone?: Phone, // Make the 'phone' prop optional
+  phone?: Phone,
   setLikedProducts: React.Dispatch<React.SetStateAction<Phone[]>>,
   likedProducts: Phone[],
 };
@@ -39,7 +39,7 @@ export const FavouritesButton: React.FC<Props> = ({
   };
 
   if (!phone) {
-    return null; // Return null if 'phone' is undefined
+    return null;
   }
 
   return (
