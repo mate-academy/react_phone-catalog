@@ -29,7 +29,10 @@ export const PhoneSlider: React.FC<Props> = ({
 
   return (
     <div className="hot-phones">
-      <div className="hot-phones__content">
+      <div
+        className="hot-phones__content"
+        data-cy="productList"
+      >
         <div className="hot-phones__top">
           <h1 className="hot-phones__title title">
             {title}

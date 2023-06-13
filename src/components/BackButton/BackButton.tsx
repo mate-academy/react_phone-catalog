@@ -6,7 +6,7 @@ export const BackButton = () => {
   };
 
   return (
-    <div className="back-btn">
+    <div className="back-btn" data-cy="backButton">
       <img src={leftArrow} alt="leftArrow" />
 
       <button

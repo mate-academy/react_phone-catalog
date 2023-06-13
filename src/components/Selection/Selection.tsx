@@ -29,8 +29,12 @@ export const Selection: React.FC<Props> = ({
   };
 
   return (
-    <div className="selection">
-      <label className="selection__sort selection__sort--text">
+    <div className="selection" data-cy="pagination">
+      <label
+        className="selection__sort
+        selection__sort--text"
+        data-cy="paginationLeft"
+      >
         Sort by
         <select
           onChange={handleSortChange}
@@ -48,7 +52,10 @@ export const Selection: React.FC<Props> = ({
         </select>
       </label>
 
-      <label className="selection__sort selection__sort--text">
+      <label
+        className="selection__sort selection__sort--text"
+        data-cy="paginationRight"
+      >
         Items on page
         <select
           value={itemsPerPage}

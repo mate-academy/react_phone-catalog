@@ -1,3 +1,4 @@
+// import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import search from '../../Icons/search.svg';
 import cross from '../../Icons/closeBlack.svg';
@@ -10,17 +11,25 @@ type Props = {
   setSearchQuery: React.Dispatch<React.SetStateAction<string>>,
   setSearchResults: React.Dispatch<React.SetStateAction<Phone[]>>,
   setPhones: React.Dispatch<React.SetStateAction<Phone[]>>,
+  likedProducts: Phone[],
+  setLikedProducts: React.Dispatch<React.SetStateAction<Phone[]>>,
 };
 
 export const Search: React.FC<Props> = ({
-  phones, searchQuery, setSearchQuery, setPhones, setSearchResults,
+  phones,
+  searchQuery,
+  setSearchQuery,
+  setPhones,
+  setSearchResults,
+  likedProducts,
+  setLikedProducts,
 }) => {
   const location = useLocation();
   const showSearch
     = location.pathname === '/phones'
     || location.pathname === '/tablets'
     || location.pathname === '/accessories'
-    || location.pathname === '/favorites';
+    || location.pathname === '/favourites';
 
   if (!showSearch) {
     return null;
@@ -34,7 +43,7 @@ export const Search: React.FC<Props> = ({
     searchText = 'Search in tablets...';
   } else if (location.pathname === '/accessories') {
     searchText = 'Search in accessories...';
-  } else if (location.pathname === '/favorites') {
+  } else if (location.pathname === '/favourites') {
     searchText = 'Search in favorites...';
   }
 
@@ -46,41 +55,49 @@ export const Search: React.FC<Props> = ({
     const filteredPhones = phones.filter(
       (phone) => phone.name.toLowerCase().includes(query),
     );
+    const filteredLikedPhones = likedProducts.filter(
+      (phone) => phone.name.toLowerCase().includes(query),
+    );
 
     setPhones(filteredPhones);
+    setLikedProducts(filteredLikedPhones);
   };
 
   const handleClearSearch = () => {
     setSearchQuery('');
     setPhones(phones);
+    setLikedProducts(likedProducts);
     setSearchResults([]);
   };
 
-  return (
-    <>
-      <div className="search">
-        <div className="search__content">
-          <input
-            type="text"
-            placeholder={searchText}
-            className="search__input input"
-            value={searchQuery}
-            onChange={handleSearch}
-          />
+  if (!showSearch) {
+    return null;
+  }
 
-          <button
-            type="button"
-            className="search__button button"
-            onClick={handleClearSearch}
-          >
-            {searchQuery ? (
-              <img src={cross} alt="cross" className="search__img" />
-            ) : (
-              <img src={search} alt="search" className="search__img" />
-            )}
-          </button>
-        </div>
+  return (
+    <div className="search">
+      <div className="search__content">
+        <input
+          type="text"
+          placeholder={searchText}
+          className="search__input input"
+          value={searchQuery}
+          onChange={handleSearch}
+        />
+
+        <button
+          type="button"
+          className="search__button button"
+          onClick={handleClearSearch}
+          data-cy="searchDelete"
+        >
+          {searchQuery ? (
+            <img src={cross} alt="cross" className="search__img" />
+          ) : (
+            <img src={search} alt="search" className="search__img" />
+          )}
+        </button>
       </div>
-    </>
+    </div>
   );
 };

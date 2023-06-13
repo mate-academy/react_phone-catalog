@@ -12,7 +12,9 @@ import { Capacity } from '../../components/Capacity/Capacity';
 import { Loader } from '../../components/Loader/Loader';
 import { CartItem } from '../../types/CartItem';
 import { BackButton } from '../../components/BackButton/BackButton';
-// import { FavouritesButton } from '../../components/FavouritesButton/FavouritesButton';
+import { FavouritesButton } from
+  '../../components/FavouritesButton/FavouritesButton';
+import { CartButton } from '../../components/CartButton/CartButton';
 
 const findProductById = (itemId = '', products: Phone[]) => {
   return products.find((product) => product.itemId === itemId);
@@ -91,6 +93,7 @@ export const PhoneDetails: React.FC<Props> = ({
   };
 
   const mixedPhones = shuffleArray([...phones]);
+  const foundPhone = phones.find((phone) => phone.phoneId === product?.id);
 
   return (
     <div className="phones-details">
@@ -160,15 +163,17 @@ export const PhoneDetails: React.FC<Props> = ({
                 </div>
 
                 <div className="phones-details__buttons">
-                  <button type="button" className="phones-details__button">
-                    Add to cart
-                  </button>
+                  <CartButton
+                    cartProducts={cartProducts}
+                    setCartProducts={setCartProducts}
+                    phone={foundPhone}
+                  />
 
-                  {/* <FavouritesButton
+                  <FavouritesButton
                     likedProducts={likedProducts}
                     setLikedProducts={setLikedProducts}
-                    // phone={product}
-                  /> */}
+                    phone={foundPhone}
+                  />
                 </div>
 
                 <div className="phones-details__description description">
@@ -206,7 +211,7 @@ export const PhoneDetails: React.FC<Props> = ({
 
             <div className="phones-details__info info">
               <div className="info__content">
-                <div className="info__about">
+                <div className="info__about" data-cy="productDescription">
                   <h1 className="info__title">
                     About
                   </h1>

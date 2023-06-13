@@ -71,6 +71,7 @@ const App = () => {
         setPhones={setPhones}
         likedProducts={likedProducts}
         cartProducts={cartProducts}
+        setLikedProducts={setLikedProducts}
       />
 
       {(isLoading) ? <Loader /> : (

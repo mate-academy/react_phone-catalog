@@ -15,6 +15,7 @@ type Props = {
   setSearchResults: React.Dispatch<React.SetStateAction<Phone[]>>,
   setPhones: React.Dispatch<React.SetStateAction<Phone[]>>,
   likedProducts: Phone[],
+  setLikedProducts: React.Dispatch<React.SetStateAction<Phone[]>>,
   cartProducts: CartItem[],
 };
 
@@ -26,6 +27,7 @@ export const HeadNavigation: React.FC<Props> = ({
   setSearchQuery,
   likedProducts,
   cartProducts,
+  setLikedProducts,
 }) => {
   return (
     <div className="head-navigation">
@@ -78,6 +80,8 @@ export const HeadNavigation: React.FC<Props> = ({
           setSearchQuery={setSearchQuery}
           setSearchResults={setSearchResults}
           setPhones={setPhones}
+          likedProducts={likedProducts}
+          setLikedProducts={setLikedProducts}
         />
 
         <div className="elements-border">

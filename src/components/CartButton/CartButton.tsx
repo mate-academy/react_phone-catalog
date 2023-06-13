@@ -3,7 +3,7 @@ import { Phone } from '../../types/Phone';
 import { CartItem } from '../../types/CartItem';
 
 type Props = {
-  phone: Phone,
+  phone?: Phone,
   cartProducts: CartItem[],
   setCartProducts: React.Dispatch<React.SetStateAction<CartItem[]>>,
 };
@@ -13,38 +13,39 @@ export const CartButton: React.FC<Props> = ({
   cartProducts,
   setCartProducts,
 }) => {
-  const isInCart = cartProducts.some(
+  const isInCart = phone ? cartProducts.some(
     (cartProduct) => cartProduct.id === phone.id,
-  );
+  ) : false;
 
   const handleAddToCart = () => {
-    setCartProducts((prevCartProducts) => {
-      const existingCartItem = prevCartProducts.find(
-        (cartItem) => cartItem.product.id === phone.id,
-      );
+    if (phone) {
+      setCartProducts((prevCartProducts) => {
+        const existingCartItemIndex = prevCartProducts.findIndex(
+          (cartItem) => cartItem.product.id === phone.id,
+        );
 
-      if (existingCartItem) {
-        return prevCartProducts.map((cartItem) => {
-          if (cartItem.product.id === phone.id) {
-            return {
-              ...cartItem,
-              quantity: cartItem.quantity + 1,
-            };
-          }
+        if (existingCartItemIndex !== -1) {
+          const updatedCartProducts = [...prevCartProducts];
 
-          return cartItem;
-        });
-      }
+          updatedCartProducts.splice(existingCartItemIndex, 1);
 
-      const newCartItem: CartItem = {
-        id: phone.id,
-        quantity: 1,
-        product: phone,
-      };
+          return updatedCartProducts;
+        }
 
-      return [...prevCartProducts, newCartItem];
-    });
+        const newCartItem: CartItem = {
+          id: phone.id,
+          quantity: 1,
+          product: phone,
+        };
+
+        return [...prevCartProducts, newCartItem];
+      });
+    }
   };
+
+  if (!phone) {
+    return null;
+  }
 
   return (
     <div className="cart-button">

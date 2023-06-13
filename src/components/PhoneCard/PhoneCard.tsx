@@ -35,7 +35,10 @@ export const PhoneCard: React.FC<Props> = ({
     <div className="phone-card">
       <div className="phone-card__content">
         <div className="phone-card__phone phone">
-          <div className="phone__container">
+          <div
+            className="phone__container"
+            data-cy="cardsContainer"
+          >
             <Link to={`/phones/${phoneId}`} className="page__link">
               <img src={`new/${image}`} alt={name} className="phone__image" />
 

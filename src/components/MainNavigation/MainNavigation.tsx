@@ -11,7 +11,10 @@ export const MainNavigation = () => {
 
   return (
     <div className="main-navigation">
-      <div className="main-navigation__content">
+      <div
+        className="main-navigation__content"
+        data-cy="breadCrumbs"
+      >
         <Link to="/">
           <img src={home} alt="home" className="main-navigation__home" />
         </Link>

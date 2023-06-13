@@ -13,7 +13,10 @@ export const Category = () => {
         </h1>
 
         <div className="category__images">
-          <div className="category__images--item image">
+          <div
+            className="category__images--item image"
+            data-cy="categoryLinksContainer"
+          >
             <Link to="/phones">
               <img src={phones} alt="phones" className="image" />
             </Link>
@@ -27,7 +30,10 @@ export const Category = () => {
             </p>
           </div>
 
-          <div className="category__image">
+          <div
+            className="category__image"
+            data-cy="categoryLinksContainer"
+          >
             <Link to="/tablets">
               <img src={tablets} alt="tablets" className="image" />
             </Link>
@@ -41,7 +47,10 @@ export const Category = () => {
             </p>
           </div>
 
-          <div className="category__image">
+          <div
+            className="category__image"
+            data-cy="categoryLinksContainer"
+          >
             <Link to="/accessories">
               <img src={accessories} alt="accessories" className="image" />
             </Link>
