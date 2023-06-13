@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
-import { MenuItem } from '../../types/MenuItem';
+import { MenuItem } from '../../helpers/types/MenuItem';
 
 type Props = {
   menuItems: MenuItem[];

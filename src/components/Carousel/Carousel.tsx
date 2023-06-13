@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import {
   RefObject, useEffect, useLayoutEffect, useMemo, useRef, useState,
 } from 'react';
@@ -5,17 +6,17 @@ import {
 const images = [
   {
     idx: 0,
-    src: './_new/img/banner-accessories.png',
+    src: 'img/banners/banner-accessories.png',
     alt: 'Accessories',
   },
   {
     idx: 1,
-    src: './_new/img/banner-phones.png',
+    src: 'img/banners/banner-phones.png',
     alt: 'Phones',
   },
   {
     idx: 2,
-    src: './_new/img/banner-tablets.png',
+    src: 'img/banners/banner-tablets.png',
     alt: 'Tablets',
   },
 ];
@@ -27,6 +28,7 @@ export const Carousel = () => {
   const [containerWidth, setContainerWidth] = useState(0);
   const [currImg, setCurrImg] = useState(1);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [activeImg, setActiveImg] = useState(0);
 
   const slides = useMemo(() => {
     const items = images.map(img => (
@@ -52,27 +54,31 @@ export const Carousel = () => {
         />
       </li>,
     ];
-  }, [...images]);
+  }, []);
 
   const rightSlide = () => {
-    setTransitionDuration(300);
+    setTransitionDuration(1000);
     if (currImg === images.length) {
       setCurrTransitionX((images.length + 1) * containerWidth);
       setCurrImg(1);
+      setActiveImg(0);
     } else {
       setCurrTransitionX((currImg + 1) * containerWidth);
       setCurrImg(currImg + 1);
+      setActiveImg(activeImg + 1);
     }
   };
 
   const leftSlide = () => {
-    setTransitionDuration(300);
+    setTransitionDuration(1000);
     if (currImg === 1) {
       setCurrTransitionX(0);
       setCurrImg(images.length);
+      setActiveImg(images.length - 1);
     } else {
       setCurrTransitionX((currImg - 1) * containerWidth);
       setCurrImg(currImg - 1);
+      setActiveImg(activeImg - 1);
     }
   };
 
@@ -147,6 +153,7 @@ export const Carousel = () => {
           className="carousel__button carousel__button-left icon-button"
           onClick={leftSlide}
         />
+
         <div className="carousel__static-container" ref={container}>
           <ul
             className="carousel__dynamic-container"
@@ -158,6 +165,21 @@ export const Carousel = () => {
             {slides}
           </ul>
         </div>
+
+        <div className="carousel__indicators">
+          {
+            images.map(img => (
+              <span
+                key={img.idx}
+                className={classNames(
+                  'carousel__indicator',
+                  { 'carousel__indicator--is-active': img.idx === activeImg },
+                )}
+              />
+            ))
+          }
+        </div>
+
         <button
           type="button"
           aria-label="Mute volume"

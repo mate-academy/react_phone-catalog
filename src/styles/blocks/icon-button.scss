@@ -4,6 +4,9 @@
   align-items: center;
   position: relative;
   border: 1px solid $color-icons;
+  background-color: inherit;
+  width: 32px;
+  height: 32px;
 
   &::before {
     content: "";
@@ -15,5 +18,14 @@
   &:hover {
     z-index: 2;
     border: 1px solid $color-primary;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+
+    &:hover {
+      border: 1px solid $color-icons;
+      cursor: default;
+    }
   }
 }

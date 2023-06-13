@@ -1,0 +1,84 @@
+.phones-catalog {
+  &__title {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: $color-primary;
+    margin-bottom: 8px;
+  }
+
+  &__amount {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $color-secondary;
+    margin-bottom: 40px;
+  }
+
+  &__dropdowns-container {
+    display: grid;
+    grid-template-columns: 176px 128px;
+    grid-gap: 16px;
+    grid-auto-flow: row;
+    margin-bottom: 24px;
+  }
+
+  &__dropdown-title {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: $color-secondary;
+    margin-bottom: 4px;
+  }
+
+  &__producst-container {
+    margin-bottom: 40px;
+  }
+
+  &__pagination-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 80px;
+  }
+
+  &__button-left {
+    flex-shrink: 0;
+    &::before {
+      background: url("../../helpers/icons/button-left.svg") no-repeat center;
+    }
+  }
+
+  &__button-right {
+    flex-shrink: 0;
+    &::before {
+      background: url("../../helpers/icons/button-right.svg") no-repeat center;
+    }
+  }
+
+  &__pages-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 16px;
+  }
+
+  &__pagination-button {
+    font-size: 14px;
+    line-height: 21px;
+    margin: 4px;
+
+    &::before {
+      width: 0;
+      height: 0;
+    }
+
+    &--is-active {
+      background-color: $color-primary;
+      &:-webkit-any-link {
+        color: $color-white;
+      }
+    }
+  }
+}

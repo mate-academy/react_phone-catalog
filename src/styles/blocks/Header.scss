@@ -27,7 +27,7 @@
     height: 100%;
     flex: 1 1 auto;
 
-    @include onSmartphone {
+    @media (max-width: 940px) {
       display: none;
     }
   }
@@ -59,15 +59,48 @@
     height: 100%;
     border: none;
     box-shadow: 0 0 0 1px $color-elements;
-    background-color: inherit;
 
     &::before {
       background: url("../../helpers/icons/Burger.svg") no-repeat;
     }
 
-    @include onSmartphone {
+    @media (max-width: 940px) {
       display: flex;
     }
+  }
+
+  &__search {
+    width: 64px;
+    height: 100%;
+    flex-grow: 1;
+    max-width: 325px;
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    border-left: 1px solid $color-elements;
+    margin-right: 0;
+    margin-left: auto;
+  }
+
+  &__search-field {
+    width: 100%;
+    margin-right: 10px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 18px;
+
+    &::placeholder {
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 18px;
+      color: $color-icons;
+    }
+  }
+
+  &__search-button {
+    width: 16px;
+    height: 100%;
+    background: url("../../helpers/icons/Close.svg") no-repeat;
   }
 
   &__favorites-link {
@@ -75,11 +108,29 @@
     height: 100%;
     border: none;
     box-shadow: -1px 0 0 $color-elements;
-    margin-right: 0;
-    margin-left: auto;
     &::before {
       background: url("../../helpers/icons/Favorites-default.svg") no-repeat;
     }
+
+    position: relative;
+  }
+
+  &__total-items {
+    position: absolute;
+    display: block;
+    width: 14px;
+    height: 14px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 9px;
+    line-height: 12px;
+    text-align: center;
+    border: 1px solid #fff;
+    background-color: #eb5757;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-100%);
   }
 
   &__cart-link {
