@@ -1,6 +1,6 @@
-import { FC } from 'react'
-import { Footer } from '../Footer'
-import { Header } from '../Header'
+import { FC } from 'react';
+import { Footer } from '../Footer';
+import { Header } from '../Header';
 
 export const Layout: FC = ({ children }) => {
   return (
@@ -9,5 +9,5 @@ export const Layout: FC = ({ children }) => {
       {children}
       <Footer />
     </>
-  )
-}
+  );
+};

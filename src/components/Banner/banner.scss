@@ -1,0 +1,56 @@
+@import '../../base/variables.scss';
+
+.banner {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    overflow: hidden;
+  }
+
+  &__inner {
+    white-space: nowrap;
+    transition: transform 0.5s;
+  }
+
+  &__img {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+  }
+
+  &__indicators {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+  }
+
+  &__indicator {
+    width: 14px;
+    height: 4px;
+    background-color: $elements-color;
+    transition: background-color 0.3s;
+
+    &--active {
+      background-color: $primary-color;
+    }
+  }
+
+  &__button {
+    height: 400px;
+    padding: 0;
+    width: 32px;
+    background-color: $white-color;
+    border: 1px solid $elements-color;
+    transition: border 0.3s;
+    flex-shrink: 0;
+
+    &:hover {
+      border: 1px solid $primary-color;
+    }
+  }
+}

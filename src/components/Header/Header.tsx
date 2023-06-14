@@ -1,6 +1,8 @@
 import classNames from 'classnames';
 import { FC } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { useAppSelector } from '../../app/hooks';
+import { Counter } from '../Counter';
 import './header.scss';
 
 const nav = [
@@ -24,11 +26,13 @@ const nav = [
 
 export const Header: FC = () => {
   const { pathname } = useLocation();
+  const favoriteCounter = useAppSelector(state => state.favoriteCounter.value);
+  const shoppingCounter = useAppSelector(state => state.shoppingCounter.value);
 
   return (
     <header className="header__wrapper">
       <Link to="/" className="header__logo logo">
-        <img src="../../public/_new/img/icons/LOGO.svg" alt="Logo" />
+        <img src="/_new/img/icons/LOGO.svg" alt="Logo" />
       </Link>
 
       <div className="header__content">
@@ -36,13 +40,13 @@ export const Header: FC = () => {
           {nav.map(({ name, to }) => (
             <li
               className={
-                classNames('header__nav-item', { underlined: pathname === to })
+                classNames('header__nav-item', { focused: pathname === to })
               }
               key={name}
             >
               <Link
                 to={to}
-                className="header__nav-link"
+                className={classNames('header__nav-link', { 'header__nav-link--highlighted': pathname === to })}
               >
                 {name}
               </Link>
@@ -56,25 +60,29 @@ export const Header: FC = () => {
             to="/favorites"
             className={
               classNames('header__favorites',
-                { underlined: pathname === '/favorites' })
+                { focused: pathname === '/favorites' })
             }
           >
             <img
-              src="../../public/_new/img/icons/favorites-icon.svg"
+              src="/_new/img/icons/favorites-icon.svg"
               alt="Favorites products"
             />
+
+            <Counter count={favoriteCounter} />
           </Link>
           <Link
             to="/shopping-bag"
             className={
               classNames('header__shopping-bag',
-                { underlined: pathname === '/shopping-bag' })
+                { focused: pathname === '/shopping-bag' })
             }
           >
             <img
-              src="../../public/_new/img/icons/shopping-bag-icon.svg"
+              src="/_new/img/icons/shopping-bag-icon.svg"
               alt="Shopping bag"
             />
+
+            <Counter count={shoppingCounter} />
           </Link>
         </div>
       </div>

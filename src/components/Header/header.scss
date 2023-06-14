@@ -1,3 +1,7 @@
+@import '../../base/variables.scss';
+@import '../../base/mixins.scss';
+@import '../../partials/placeholders.scss';
+
 .header {
   &__logo {
     margin: 0 65px 0 25px;
@@ -6,8 +10,8 @@
   &__wrapper {
     display: flex;
     align-items: center;
-    background-color: #fff;
-    border-bottom: 1px solid #e5e5e5;
+    background-color: $white-color;
+    border-bottom: 1px solid $border-line-color;
   }
 
   &__content {
@@ -25,48 +29,41 @@
   }
 
   &__right-bar {
-    height: 100%;
     display: flex;
   }
 
   &__nav-item {
-    display: flex;
-    align-items: center;
+    @include flex-center;
     height: 100%;
     position: relative;
   }
 
   &__nav-link {
+    @extend %uppercase;
     text-decoration: none;
-    text-transform: uppercase;
-    font-family: "Mont", "Tahoma", "Geneva", "Verdana", sans-serif;
     position: relative;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 12px;
-    line-height: 11px;
-    color: #89939a;
+    color: $secondary-color;
     transition: color 0.5s ease;
 
     &:hover {
-      color: #313237;
-      transition: color 0.5s ease;
+      color: $primary-color;
+    }
+
+    &--highlighted {
+      color: $primary-color;
     }
   }
 
   &__favorites,
   &__shopping-bag {
-    height: 64px;
-    width: 64px;
+    @include flex-center;
+    @include square(64px);
     position: relative;
-    border-left: 1px solid #e5e5e5;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    border-left: 1px solid $border-line-color;
   }
 }
 
-.underlined::after {
+.focused::after {
   content: "";
   position: absolute;
   bottom: 0;
@@ -74,6 +71,6 @@
   display: block;
   width: 100%;
   height: 3px;
-  background-color: #313237;
+  background-color: $primary-color;
   transition: opacity 0.3s ease;
 }

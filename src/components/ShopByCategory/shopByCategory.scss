@@ -1,0 +1,9 @@
+.shop-by-category {
+  display: flex;
+  flex-direction: column;
+
+  &__categories {
+    display: flex;
+    gap: 16px;
+  }
+}

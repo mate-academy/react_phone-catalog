@@ -1,0 +1,101 @@
+@import '../../base/variables.scss';
+@import '../../base/mixins.scss';
+@import '../../partials/placeholders.scss';
+
+.product {
+  box-sizing: border-box;
+  max-width: 290px;
+  height: 507px;
+  padding: 32px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid $elements-color;
+
+  &__link {
+    @include flex-center;
+    flex-direction: column;
+  }
+
+  &__image {
+    @include square(208px);
+    object-fit: contain;
+  }
+
+  &__name {
+    @extend %body-text;
+    margin: 24px 0 0;
+    flex: 1 0 45px;
+  }
+
+  &__prices {
+    display: flex;
+    margin-top: 8px;
+    gap: 8px;
+  }
+
+  &__price {
+    @extend %h2;
+    margin: 0;
+  }
+
+  &__full-price {
+    @extend %h2;
+    font-family: 'Mont-SemiBold';
+    margin: 0;
+    text-decoration: line-through;
+    color: $secondary-color;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    border-top: 1px solid $elements-color;
+    padding-top: 16px;
+
+    &-block {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &-title {
+      @extend %small-text;
+      color: $secondary-color;
+      margin: 0;
+    }
+
+    &-value {
+      @extend %small-text;
+      margin: 0;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    margin-top: 16px;
+    gap: 8px;
+  }
+
+  &__add-to-card {
+    background-color: $primary-color;
+    width: 175px;
+    color: $white-color;
+    transition: box-shadow 0.3s;
+
+    &:hover {
+      @extend %button-product--hover;
+    }
+  }
+
+  &__liked {
+    @include flex-center;
+    @include square(40px);
+    background-color: $white-color;
+    border: 1px solid $icons-color;
+    transition: border 0.3s;
+
+    &:hover {
+      border: 1px solid $primary-color;
+    }
+  }
+}
