@@ -3,20 +3,12 @@ import classNames from 'classnames';
 import {
   Link, NavLink, useLocation, useSearchParams,
 } from 'react-router-dom';
+import { useDebounce } from '../../helpers/useDebounce';
 import { getSearchWith } from '../../helpers/SearchParams';
 import favorite from '../../images/favourites.svg';
 import cart from '../../images/Cart.svg';
 import logo from '../../images/Logo.png';
 import './Header.scss';
-
-// const debounce = (f: Function, delay: number) => {
-//   let timerId: any;
-
-//   return (...args: any) => {
-//     clearInterval(timerId);
-//     timerId = setTimeout(f, delay, ...args)
-//   }
-// }
 
 export const Header = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -25,6 +17,8 @@ export const Header = () => {
   const [inputValue, setInputValue] = useState(query || '');
   const [favouriteCount, setFavouriteCount] = useState(0);
   const [cartCount, setCartCount] = useState(0);
+  const [debouncedInputValue, setDebouncedInputValue] = useState(inputValue);
+  const debouncedValue = useDebounce(debouncedInputValue, 300);
 
   const conditionToRender
     = location.pathname === '/favourites'
@@ -34,14 +28,8 @@ export const Header = () => {
 
   const handleInputChange = (value: string) => {
     setInputValue(value);
-
-    const updatedSearchParams = getSearchWith(searchParams,
-      { query: value || null });
-
-    setSearchParams(new URLSearchParams(updatedSearchParams));
+    setDebouncedInputValue(value);
   };
-
-  // const handleDebounceQuery = useCallback(debounce(handleInputChange, 1000), []);
 
   const handleButtonClick = () => {
     setInputValue('');
@@ -77,6 +65,13 @@ export const Header = () => {
   useEffect(() => {
     setInputValue(query || '');
   }, [query]);
+
+  useEffect(() => {
+    const updatedSearchParams = getSearchWith(searchParams,
+      { query: debouncedValue || null });
+
+    setSearchParams(new URLSearchParams(updatedSearchParams));
+  }, [debouncedValue]);
 
   return (
     <header className="homepage-header">
@@ -162,7 +157,6 @@ export const Header = () => {
                   value={inputValue}
                   onChange={(event) => {
                     handleInputChange(event.target.value);
-                    // handleDebounceQuery(event.target.value)
                   }}
                 />
                 {inputValue && (
