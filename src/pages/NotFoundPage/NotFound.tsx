@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import './NotFound.scss';
 
 export const NotFound = () => {
@@ -15,7 +16,7 @@ export const NotFound = () => {
 
         <p className="error__desc">
           Maybe you want to go back to
-          <a href="/" className="error__link"> Home page </a>
+          <Link to="/home" className="error__link"> Home page </Link>
           ?
         </p>
       </div>

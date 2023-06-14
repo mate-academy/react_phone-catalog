@@ -15,15 +15,17 @@ import { FootNavigation } from './components/FootNavigation/FootNavigation';
 import { PhoneDetails } from './pages/PhoneDetailsPage/PhoneDetails';
 import { Favourites } from './pages/FavouritesPage/Favourites';
 import { Cart } from './pages/CartPage/Cart';
-import { CartItem } from './types/CartItem';
+import { useLocalStorage } from './helpers/useLocalStorage';
 
 const App = () => {
   const [phones, setPhones] = useState<Phone[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [searchResults, setSearchResults] = useState(phones);
   const [searchQuery, setSearchQuery] = useState('');
-  const [likedProducts, setLikedProducts] = useState<Phone[]>([]);
-  const [cartProducts, setCartProducts] = useState<CartItem[]>([]);
+  const [likedProducts, setLikedProducts] = useLocalStorage(
+    [], 'likedProducts',
+  );
+  const [cartProducts, setCartProducts] = useLocalStorage([], 'cartItems');
 
   const loadProducts = async () => {
     setIsLoading(true);
@@ -39,22 +41,6 @@ const App = () => {
 
   useEffect(() => {
     loadProducts();
-  }, []);
-
-  useEffect(() => {
-    const savedLikedProducts = localStorage.getItem('likedProducts');
-
-    if (savedLikedProducts) {
-      setLikedProducts(JSON.parse(savedLikedProducts));
-    }
-  }, []);
-
-  useEffect(() => {
-    const savedCartItems = localStorage.getItem('cartItems');
-
-    if (savedCartItems) {
-      setCartProducts(JSON.parse(savedCartItems));
-    }
   }, []);
 
   useEffect(() => {

@@ -1,10 +1,15 @@
 import { Link } from 'react-router-dom';
 import './Category.scss';
-import phones from './category-photos/phones.png';
+import smartphones from './category-photos/phones.png';
 import tablets from './category-photos/tablets.png';
 import accessories from './category-photos/accessories.png';
+import { Phone } from '../../types/Phone';
 
-export const Category = () => {
+type Props = {
+  phones: Phone[],
+};
+
+export const Category: React.FC<Props> = ({ phones }) => {
   return (
     <div className="category">
       <div className="category__content">
@@ -18,7 +23,7 @@ export const Category = () => {
             data-cy="categoryLinksContainer"
           >
             <Link to="/phones">
-              <img src={phones} alt="phones" className="image" />
+              <img src={smartphones} alt="phones" className="image" />
             </Link>
 
             <h2 className="image__title">
@@ -26,7 +31,9 @@ export const Category = () => {
             </h2>
 
             <p className="image__subtitle">
-              71 models
+              {phones.length}
+              {' '}
+              models
             </p>
           </div>
 

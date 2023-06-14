@@ -35,7 +35,9 @@ export const HomePage: React.FC<Props> = ({
           setCartProducts={setCartProducts}
         />
 
-        <Category />
+        <Category
+          phones={phones}
+        />
 
         <NewModels
           phones={phones}

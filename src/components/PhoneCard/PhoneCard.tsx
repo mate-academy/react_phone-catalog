@@ -60,13 +60,9 @@ export const PhoneCard: React.FC<Props> = ({
             <div className="phone__description">
               <div className="phone__description--names">
                 Screen
-                {' '}
                 <br />
-                {' '}
                 Capacity
-                {' '}
                 <br />
-                {' '}
                 RAM
               </div>
               <div className="phone__description--data">

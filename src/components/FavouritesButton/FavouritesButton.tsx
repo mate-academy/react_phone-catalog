@@ -24,16 +24,10 @@ export const FavouritesButton: React.FC<Props> = ({
         );
 
         setLikedProducts(updatedLikedProducts);
-        localStorage.setItem(
-          'likedProducts', JSON.stringify(updatedLikedProducts),
-        );
       } else {
         const updatedLikedProducts = [...likedProducts, phone];
 
         setLikedProducts(updatedLikedProducts);
-        localStorage.setItem(
-          'likedProducts', JSON.stringify(updatedLikedProducts),
-        );
       }
     }
   };
