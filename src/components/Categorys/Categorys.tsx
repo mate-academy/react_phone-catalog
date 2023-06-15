@@ -11,11 +11,14 @@ type Props = {
 };
 
 export const Categorys: React.FC<Props> = ({ productsData }) => {
-  const mobilePhones = productsData.filter(product => product.category === 'phones');
+  const mobilePhones
+  = productsData.filter(product => product.category === 'phones');
   const countMobilePhones = mobilePhones.length;
-  const tablets = productsData.filter(product => product.category === 'tablets');
+  const tablets
+  = productsData.filter(product => product.category === 'tablets');
   const countTablets = tablets.length;
-  const accessories = productsData.filter(product => product.category === 'accessories');
+  const accessories
+  = productsData.filter(product => product.category === 'accessories');
   const countAccessories = accessories.length;
 
   return (
@@ -24,27 +27,54 @@ export const Categorys: React.FC<Props> = ({ productsData }) => {
 
       <div className="grid">
 
-        <div className="categorys__content grid__item grid__item--tablet-1-2 grid__item--desktop-1-8">
+        <div
+          className="categorys__content
+        grid__item
+        grid__item--tablet-1-2
+        grid__item--desktop-1-8"
+        >
           <Link to="/phones">
-            <img src={CategorysImg1} alt="category image photo" className="categorys__content__img" />
+            <img
+              src={CategorysImg1}
+              alt="category mobile"
+              className="categorys__content__img"
+            />
           </Link>
 
           <h2 className="categorys__content__title">Mobile phones</h2>
           <p className="categorys__content__description">{`${countMobilePhones} models`}</p>
         </div>
 
-        <div className="categorys__content grid__item--tablet-3-4 grid__item--desktop-9-16">
+        <div
+          className="categorys__content
+          grid__item--tablet-3-4
+          grid__item--desktop-9-16"
+        >
           <Link to="/tablets">
-            <img src={CategorysImg2} alt="category image photo" className="categorys__content__img categorys__content__img--tablets" />
+            <img
+              src={CategorysImg2}
+              alt="category tablets"
+              className="categorys__content__img
+              categorys__content__img--tablets"
+            />
           </Link>
 
           <h2 className="categorys__content__title">Tablets</h2>
           <p className="categorys__content__description">{`${countTablets} models`}</p>
         </div>
 
-        <div className="categorys__content grid__item--tablet-5-6 grid__item--desktop-17-24">
+        <div
+          className="categorys__content
+          grid__item--tablet-5-6
+          grid__item--desktop-17-24"
+        >
           <Link to="/accessories">
-            <img src={CategorysImg3} alt="category image photo" className="categorys__content__img categorys__content__img--accessories" />
+            <img
+              src={CategorysImg3}
+              alt="category accessories"
+              className="categorys__content__img
+              categorys__content__img--accessories"
+            />
           </Link>
 
           <h2 className="categorys__content__title">Accessories</h2>

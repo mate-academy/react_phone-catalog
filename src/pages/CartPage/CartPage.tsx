@@ -10,48 +10,78 @@ export const CartPage = () => {
     <div className="cart">
       <h1 className="cart__title">Cart</h1>
       <div className="grid">
-        <div className="cart__productCards grid__item--desktop-1-16 grid__item--tablet-1-12">
+        <div
+          className="cart__productCards
+          grid__item--desktop-1-16
+          grid__item--tablet-1-12"
+        >
           <div className="cart__productCards__card">
             <div className="cart__productCards__card__cross">
-              <img src={Cros} alt="" className="cart__productCards__card__crossImg" />
+              <img
+                src={Cros}
+                alt="product cart"
+                className="cart__productCards__card__crossImg"
+              />
             </div>
 
             <div className="cart__productCards__card__imgContainer">
-              <img src={SmallImg1} alt="" className="cart__productCards__card__img" />
+              <img
+                src={SmallImg1}
+                alt="product cart"
+                className="cart__productCards__card__img"
+              />
             </div>
 
-            <p className="cart__productCards__card__name">Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)</p>
+            <p className="cart__productCards__card__name">
+              Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)
+            </p>
 
             <div className="cart__productCards__card__btnContainer">
               <div className="cart__productCards__card__btnContainer__btn">
-                <img src={Minus} alt="" />
+                <img src={Minus} alt="product cart" />
               </div>
-              <p className="cart__productCards__card__btnContainer__number">1</p>
+              <p className="cart__productCards__card__btnContainer__number">
+                1
+              </p>
               <div className="cart__productCards__card__btnContainer__btn">
-                <img src={Plus} alt="" />
+                <img src={Plus} alt="product cart" />
               </div>
             </div>
 
-            <h2 className="cart__productCards__card__price">$1099</h2>
+            <h2 className="cart__productCards__card__price">
+              $1099
+            </h2>
 
           </div>
 
           <div className="cart__productCards__card">
             <div className="cart__productCards__card__cross">
-              <img src={Cros} alt="" className="cart__productCards__card__crossImg" />
+              <img
+                src={Cros}
+                alt="product cart"
+                className="cart__productCards__card__crossImg"
+              />
             </div>
 
             <div className="cart__productCards__card__imgContainer">
-              <img src={SmallImg3} alt="" className="cart__productCards__card__img" />
+              <img
+                src={SmallImg3}
+                alt="product cart"
+                className="cart__productCards__card__img"
+              />
             </div>
 
-            <p className="cart__productCards__card__name">Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)</p>
+            <p className="cart__productCards__card__name">
+              Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)
+            </p>
 
             <div className="cart__productCards__card__btnContainer">
               <div className="cart__productCards__card__btnContainer__btn">
                 <img src={Minus} alt="" />
               </div>
-              <p className="cart__productCards__card__btnContainer__number">1</p>
+              <p className="cart__productCards__card__btnContainer__number">
+                1
+              </p>
               <div className="cart__productCards__card__btnContainer__btn">
                 <img src={Plus} alt="" />
               </div>
@@ -62,11 +92,15 @@ export const CartPage = () => {
           </div>
         </div>
 
-        <div className="cart__priceContainer grid__item--desktop-17-24 grid__item--tablet-1-12">
+        <div
+          className="cart__priceContainer
+          grid__item--desktop-17-24
+          grid__item--tablet-1-12"
+        >
           <h1 className="cart__priceContainer__totalPrice">$3297</h1>
           <p className="cart__priceContainer__info">Total for 3 items</p>
 
-          <button className="cart__priceContainer__btn">
+          <button type="button" className="cart__priceContainer__btn">
             Checkout
           </button>
         </div>

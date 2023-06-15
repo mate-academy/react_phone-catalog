@@ -34,7 +34,11 @@ export const Footer = () => {
           <div className="footer__btnContainer">
             <p className="footer__btnContainer__text">Back to top</p>
             <div className="footer__btnContainer__imgContainer">
-              <img src={Arrow} alt=" arrow btn" className="footer__btnContainer__img" />
+              <img
+                src={Arrow}
+                alt=" arrow btn"
+                className="footer__btnContainer__img"
+              />
             </div>
           </div>
         </div>

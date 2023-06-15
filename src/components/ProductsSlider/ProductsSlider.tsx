@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import classNames from 'classnames';
 import { useWindowSize } from '../../hooks/useWindowSize';
 import ArrowRight from '../../images/icons/arrow_right_small.svg';
 import ArrowLeftDisabled from '../../images/icons/arrow_left_disabled.svg';
 import './productsSlider.scss';
 import { Phones } from '../../types/Phones';
 import { ProductCard } from '../ProductCard/ProductCard';
-import classNames from 'classnames';
 
 // Third try
 
@@ -38,37 +38,16 @@ export const ProductsSlider: React.FC<Props> = ({ productsData, title }) => {
   } = sliderSettings;
 
   const disablePrevButton = (position <= 0) && !infinity;
-  const disableNextButton = (position >= productsData.length - itemsOnPage) && !infinity;
+  const disableNextButton = (position
+    >= productsData.length - itemsOnPage)
+    && !infinity;
 
-  const slideLimit = -((productsData.length * itemWidth) - (itemWidth * itemsOnPage));
+  const slideLimit = -((productsData.length * itemWidth)
+    - (itemWidth * itemsOnPage));
 
   const transformOptions = (position * itemWidth) >= slideLimit
     ? (position * itemWidth)
     : slideLimit;
-
-  useEffect(() => {
-    sliderWidth();
-  }, [windowWidth.width]);
-
-  useEffect(() => {
-    setPosition(0);
-  }, []);
-
-  const handlePrevBtn = () => {
-    if (position - step >= 0) {
-      setPosition(position - step);
-    } else {
-      setPosition(productsData.length + 1 - itemsOnPage - step);
-    }
-  };
-
-  const handleNextBtn = () => {
-    if ((position + step) < productsData.length + 1 - itemsOnPage) {
-      setPosition(position + step);
-    } else {
-      setPosition(0);
-    }
-  };
 
   const sliderWidth = () => {
     if (windowWidth.width > 1175) {
@@ -97,6 +76,30 @@ export const ProductsSlider: React.FC<Props> = ({ productsData, title }) => {
 
     if (windowWidth.width < 599) {
       setItemsInSlider(1);
+    }
+  };
+
+  useEffect(() => {
+    sliderWidth();
+  }, [windowWidth.width]);
+
+  useEffect(() => {
+    setPosition(0);
+  }, []);
+
+  const handlePrevBtn = () => {
+    if (position - step >= 0) {
+      setPosition(position - step);
+    } else {
+      setPosition(productsData.length + 1 - itemsOnPage - step);
+    }
+  };
+
+  const handleNextBtn = () => {
+    if ((position + step) < productsData.length + 1 - itemsOnPage) {
+      setPosition(position + step);
+    } else {
+      setPosition(0);
     }
   };
 

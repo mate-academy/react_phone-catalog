@@ -1,12 +1,12 @@
 import { useMemo, useState } from 'react';
 // styles & images
+import { Link, useLocation } from 'react-router-dom';
+import classNames from 'classnames';
 import LogoIcon from '../../images/icons/Logo.svg';
 import FavoritesIcon from '../../images/icons/Favourites (Heart Like).svg';
 import CardIcon from '../../images/icons/Shopping bag (Cart).svg';
 import './header.scss';
-import { Link, useLocation } from 'react-router-dom';
 import { Search } from '../Search/Search';
-import classNames from 'classnames';
 
 export const Header = () => {
   const location = useLocation();
@@ -15,7 +15,9 @@ export const Header = () => {
   const phonesLocation = location.pathname.includes('phones');
   const tabletsLocation = location.pathname.includes('tablets');
   const accessoriesLocation = location.pathname.includes('accessories');
-  const searchCondition = phonesLocation || tabletsLocation || accessoriesLocation;
+  const searchCondition = phonesLocation
+  || tabletsLocation
+  || accessoriesLocation;
   const [placeholderValue, setPlaceholderValue] = useState('');
 
   useMemo(() => {
@@ -29,6 +31,8 @@ export const Header = () => {
       default:
         break;
     }
+
+    return searchCondition;
   }, [phonesLocation, tabletsLocation, accessoriesLocation]);
 
   return (
@@ -101,7 +105,11 @@ export const Header = () => {
         <div className="header__iconsBlock">
           <Link to="/favorites">
             <div className="header__iconsFavorites">
-              <img src={FavoritesIcon} alt="Favorites Image" className="header__iconsFavoritesImage" />
+              <img
+                src={FavoritesIcon}
+                alt="Favorites"
+                className="header__iconsFavoritesImage"
+              />
             </div>
           </Link>
 
@@ -115,7 +123,11 @@ export const Header = () => {
         >
           <Link to="/cart">
             <div className="header__iconsCart">
-              <img src={CardIcon} alt="Card Image" className="header__iconsCartImage" />
+              <img
+                src={CardIcon}
+                alt="Cart"
+                className="header__iconsCartImage"
+              />
             </div>
           </Link>
 

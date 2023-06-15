@@ -90,8 +90,16 @@ export const Carousel: React.FC<Props> = ({ slides }) => {
     <div className="carousel">
 
       <div className="carousel__slider">
-        <button type="button" className="carousel__btn" onClick={prevBtn}>
-          <img src={arrowLeft} alt="carousel batton img" className="carousel__btn__image" />
+        <button
+          type="button"
+          className="carousel__btn"
+          onClick={prevBtn}
+        >
+          <img
+            src={arrowLeft}
+            alt="carousel batton img"
+            className="carousel__btn__image"
+          />
         </button>
 
         <div className="carousel__containerOverflow">
@@ -100,13 +108,25 @@ export const Carousel: React.FC<Props> = ({ slides }) => {
             style={carouselImageContainerStyles()}
           >
             {slides.map((_, slideIndex) => (
-              <div key={slideIndex} style={slidesStyles(slideIndex)} className="carousel__img" />
+              <div
+                key={slideIndex}
+                style={slidesStyles(slideIndex)}
+                className="carousel__img"
+              />
             ))}
           </div>
         </div>
 
-        <button type="button" className="carousel__btn" onClick={nextBtn}>
-          <img src={arrowRight} alt="carousel batton img" className="carousel__btn__image" />
+        <button
+          type="button"
+          className="carousel__btn"
+          onClick={nextBtn}
+        >
+          <img
+            src={arrowRight}
+            alt="carousel batton img"
+            className="carousel__btn__image"
+          />
         </button>
       </div>
 

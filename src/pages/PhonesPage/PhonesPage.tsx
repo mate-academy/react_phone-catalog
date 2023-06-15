@@ -4,7 +4,7 @@ import { getData } from '../../api/data';
 import { Phones } from '../../types/Phones';
 import { DataFilters } from '../../components/DataFilters/DataFilters';
 import { ItemsOnPage } from '../../components/ItemsOnPage/ItemsOnPage';
-import ProductList from '../../components/ProductList/ProductList';
+import { ProductList } from '../../components/ProductList/ProductList';
 import { Pagination } from '../../components/Pagination';
 
 export const PhonesPage = () => {
@@ -29,9 +29,10 @@ export const PhonesPage = () => {
     try {
       // setIsPhonesDataLoading(true);
       const dataProducts = await getData();
-      const dataPhones = dataProducts.filter(product => product.category === 'phones');
+      const phones
+      = dataProducts.filter(product => product.category === 'phones');
 
-      setDataPhones(dataPhones);
+      setDataPhones(phones);
     } catch (error) {
       // setIsPhonesDataLoading(false);
     } finally {

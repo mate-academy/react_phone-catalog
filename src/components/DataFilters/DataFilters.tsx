@@ -1,12 +1,12 @@
 import React, {
   useContext, useEffect, useMemo, useState,
 } from 'react';
+import classNames from 'classnames';
 import { Phones } from '../../types/Phones';
 import './dataFilters.scss';
 import ArrowDown from '../../images/icons/arrow_down.svg';
-import classNames from 'classnames';
 import { FilterType } from '../../types/FilterType';
-import { SearchContext } from '../../App';
+import { SearchContext } from '../ContextProvider';
 
 type Props = {
   dataPhones: Phones[],
@@ -18,7 +18,10 @@ type SelectOption = {
   value: string,
 };
 
-export const DataFilters: React.FC<Props> = ({ dataPhones, setFiltredPhones }) => {
+export const DataFilters: React.FC<Props> = ({
+  dataPhones,
+  setFiltredPhones,
+}) => {
   const options = [
     { value: 'all', label: 'All' },
     { value: 'name', label: 'Name' },
@@ -51,11 +54,14 @@ export const DataFilters: React.FC<Props> = ({ dataPhones, setFiltredPhones }) =
 
       switch (typeOfFilter) {
         case FilterType.Age:
-          return dataPhones.sort((a, b) => b.year - a.year) && filterInput;
+          return dataPhones.sort((a, b) => b.year - a.year)
+          && filterInput;
         case FilterType.Name:
-          return dataPhones.sort((a, b) => a.name.localeCompare(b.name)) && filterInput;
+          return dataPhones.sort((a, b) => a.name.localeCompare(b.name))
+          && filterInput;
         case FilterType.Price:
-          return dataPhones.sort((a, b) => b.fullPrice - a.fullPrice) && filterInput;
+          return dataPhones.sort((a, b) => b.fullPrice - a.fullPrice)
+          && filterInput;
         default:
           return item;
       }
@@ -64,8 +70,8 @@ export const DataFilters: React.FC<Props> = ({ dataPhones, setFiltredPhones }) =
     return toFilter;
   }, [typeOfFilter, dataPhones]);
 
-  const filterHendler = (value: string) => {
-    switch (value) {
+  const filterHendler = (filterValue: string) => {
+    switch (filterValue) {
       case 'name':
         return setTypeOfFilter(FilterType.Name);
       case 'age':
@@ -77,6 +83,8 @@ export const DataFilters: React.FC<Props> = ({ dataPhones, setFiltredPhones }) =
       default:
         break;
     }
+
+    return filterValue;
   };
 
   useEffect(() => {
@@ -96,8 +104,10 @@ export const DataFilters: React.FC<Props> = ({ dataPhones, setFiltredPhones }) =
       </p>
       <div
         tabIndex={0}
+        role="button"
         className="dataFilters__container"
         onClick={() => setIsOpen(prev => !prev)}
+        onKeyDown={() => setIsOpen(prev => !prev)}
         onBlur={() => setIsOpen(false)}
       >
         <span className="dataFilters__value">{value?.label}</span>
@@ -117,12 +127,15 @@ export const DataFilters: React.FC<Props> = ({ dataPhones, setFiltredPhones }) =
         )}
         >
           {options.map((option, index) => (
-            <li
+            <button
+              type="button"
               key={option.value}
               className={classNames(
                 'dataFilters__option',
                 { dataFilters__option__selected: isOptionSelected(option) },
-                { dataFilters__option__highlighted: index === highlightedIndex },
+                {
+                  dataFilters__option__highlighted: index === highlightedIndex,
+                },
               )}
               onMouseEnter={() => setHighlightedIndex(index)}
               onClick={e => {
@@ -131,10 +144,16 @@ export const DataFilters: React.FC<Props> = ({ dataPhones, setFiltredPhones }) =
                 setIsOpen(false);
                 filterHendler(option.value);
               }}
+              onKeyDown={e => {
+                e.stopPropagation();
+                selectOption(option);
+                setIsOpen(false);
+                filterHendler(option.value);
+              }}
             >
               {option.label}
 
-            </li>
+            </button>
           ))}
         </ul>
       </div>

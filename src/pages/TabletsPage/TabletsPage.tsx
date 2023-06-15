@@ -1,13 +1,14 @@
-import React, { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import './tabletsPage.scss';
 import { getData } from '../../api/data';
 import { Phones } from '../../types/Phones';
 import { DataFilters } from '../../components/DataFilters/DataFilters';
 import { ItemsOnPage } from '../../components/ItemsOnPage/ItemsOnPage';
-import ProductList from '../../components/ProductList/ProductList';
+import { ProductList } from '../../components/ProductList/ProductList';
+import { Pagination } from '../../components/Pagination';
 
 export const TabletsPage = () => {
-  const [isTabletsDataLoading, setIsTabletsDataLoading] = useState(false);
+  // const [isTabletsDataLoading, setIsTabletsDataLoading] = useState(false);
   const [dataTablets, setDataTablets] = useState<Phones[]>([]);
   const [filtredTablets, setFiltredTablets] = useState<Phones[]>([]);
   const [itemsPerPage, setItemsPerPage] = useState<number>(dataTablets.length);
@@ -21,15 +22,22 @@ export const TabletsPage = () => {
 
   const getTablets = async () => {
     try {
-      setIsTabletsDataLoading(true);
+      // setIsTabletsDataLoading(true);
       const dataProducts = await getData();
-      const dataTablets = dataProducts.filter(product => product.category === 'tablets');
+      const tablets
+        = dataProducts.filter(product => product.category === 'tablets');
 
-      setDataTablets(dataTablets);
+      setDataTablets(tablets);
     } catch (error) {
-      setIsTabletsDataLoading(false);
+      // setIsTabletsDataLoading(false);
     } finally {
-      setIsTabletsDataLoading(false);
+      // setIsTabletsDataLoading(false);
+    }
+  };
+
+  const onPageChange = (page: number) => {
+    if (page !== currentPage) {
+      setCurrentPage(page);
     }
   };
 
@@ -52,6 +60,14 @@ export const TabletsPage = () => {
       </div>
       <ProductList
         dataPhones={filtredTablets}
+      />
+
+      <Pagination
+        itemsPerPage={itemsPerPage}
+        currentPage={currentPage}
+        dataPhones={filtredTablets}
+        onPageChange={onPageChange}
+        setCurrentPage={setCurrentPage}
       />
     </>
   );

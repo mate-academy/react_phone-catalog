@@ -2,16 +2,17 @@ import { useEffect, useState } from 'react';
 import './accessoriesPage.scss';
 import { getData } from '../../api/data';
 import { Phones } from '../../types/Phones';
-import { DataFilters } from '../../components/DataFilters/DataFilters';
 import { ItemsOnPage } from '../../components/ItemsOnPage/ItemsOnPage';
 import { ProductList } from '../../components/ProductList/ProductList';
 import { Pagination } from '../../components/Pagination';
+import { DataFilters } from '../../components/DataFilters/DataFilters';
 
 export const AccessoriesPage = () => {
   // const [isAccesoriesDataLoading, setIsAccesoriesDataLoading] = useState(false);
   const [dataAccessories, setDataAccessories] = useState<Phones[]>([]);
   const [filtredAccessories, setFiltredAccessories] = useState<Phones[]>([]);
-  const [itemsPerPage, setItemsPerPage] = useState<number>(dataAccessories.length);
+  const [itemsPerPage, setItemsPerPage]
+  = useState<number>(dataAccessories.length);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const countAccessories = dataAccessories.length;
 
@@ -24,13 +25,20 @@ export const AccessoriesPage = () => {
     try {
       // setIsAccesoriesDataLoading(true);
       const dataProducts = await getData();
-      const dataAccessories = dataProducts.filter(product => product.category === 'accessories');
+      const accessories = dataProducts.filter(product => product.category
+        === 'accessories');
 
-      setDataAccessories(dataAccessories);
+      setDataAccessories(accessories);
     } catch (error) {
       // setIsAccesoriesDataLoading(false);
     } finally {
       // setIsAccesoriesDataLoading(false);
+    }
+  };
+
+  const onPageChange = (page: number) => {
+    if (page !== currentPage) {
+      setCurrentPage(page);
     }
   };
 
@@ -53,6 +61,14 @@ export const AccessoriesPage = () => {
       </div>
       <ProductList
         dataPhones={filtredAccessories}
+      />
+
+      <Pagination
+        itemsPerPage={itemsPerPage}
+        currentPage={currentPage}
+        dataPhones={filtredAccessories}
+        onPageChange={onPageChange}
+        setCurrentPage={setCurrentPage}
       />
     </>
   );

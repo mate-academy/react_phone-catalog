@@ -1,6 +1,4 @@
-import React from 'react';
 import './favoritesPage.scss';
-import ProductList from '../components/ProductList/ProductList';
 
 export const FavoritesPage = () => {
   return (

@@ -27,7 +27,40 @@ export const HomePage = () => {
 
       setProductsData(getPhonesData);
     } catch (error) {
-      'Error';
+      Error('Error');
+      // setIsPhonesDataLoading(false);
+    } finally {
+      // setIsPhonesDataLoading(false);
+    }
+  };
+
+  const getHotPriceProducts = async () => {
+    try {
+      // setIsPhonesDataLoading(true);
+      const dataHotPrice = await getData();
+
+      // const hotPriceProducts = dataHotPrice.filter(product => product.discount > 0);
+      setHotPriceProducts(dataHotPrice);
+    } catch (error) {
+      Error('Error');
+      // setIsPhonesDataLoading(false);
+    } finally {
+      // setIsPhonesDataLoading(false);
+    }
+  };
+
+  const getBrandNewProducts = async () => {
+    try {
+      // setIsPhonesDataLoading(true);
+      const dataProducts = await getData();
+      const dataNewModels
+      = dataProducts.filter(product => product.year === 2019);
+      const dataNewModelsSorted
+      = [...dataNewModels].sort((a, b) => b.price - a.price);
+
+      setNewModels(dataNewModelsSorted);
+    } catch (error) {
+      Error('Error');
       // setIsPhonesDataLoading(false);
     } finally {
       // setIsPhonesDataLoading(false);
@@ -39,37 +72,6 @@ export const HomePage = () => {
     getHotPriceProducts();
     getBrandNewProducts();
   }, []);
-
-  const getHotPriceProducts = async () => {
-    try {
-      // setIsPhonesDataLoading(true);
-      const dataHotPrice = await getData();
-
-      // const hotPriceProducts = dataHotPrice.filter(product => product.discount > 0);
-      setHotPriceProducts(dataHotPrice);
-    } catch (error) {
-      'Error';
-      // setIsPhonesDataLoading(false);
-    } finally {
-      // setIsPhonesDataLoading(false);
-    }
-  };
-
-  const getBrandNewProducts = async () => {
-    try {
-      // setIsPhonesDataLoading(true);
-      const dataProducts = await getData();
-      const dataNewModels = dataProducts.filter(product => product.year === 2019);
-      const dataNewModelsSorted = [...dataNewModels].sort((a, b) => b.price - a.price);
-
-      setNewModels(dataNewModelsSorted);
-    } catch (error) {
-      'Error';
-      // setIsPhonesDataLoading(false);
-    } finally {
-      // setIsPhonesDataLoading(false);
-    }
-  };
 
   return (
 

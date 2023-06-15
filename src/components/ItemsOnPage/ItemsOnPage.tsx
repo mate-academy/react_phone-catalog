@@ -5,7 +5,7 @@ import './itemsOnPage.scss';
 import { SelectOption } from '../../types/SelectOtion';
 
 type Props = {
-  setItemsPerPage: (item: number)=> void
+  setItemsPerPage: (item: number) => void
 };
 
 export const ItemsOnPage: React.FC<Props> = ({ setItemsPerPage }) => {
@@ -46,10 +46,12 @@ export const ItemsOnPage: React.FC<Props> = ({ setItemsPerPage }) => {
         Items on page
       </p>
       <div
+        role="button"
         tabIndex={0}
         className="itemsOnPage__container"
         onClick={() => setIsOpen(prev => !prev)}
         onBlur={() => setIsOpen(false)}
+        onKeyDown={() => setIsOpen(prev => !prev)}
       >
         <span className="itemsOnPage__value">{value?.label}</span>
         <div>
@@ -68,12 +70,15 @@ export const ItemsOnPage: React.FC<Props> = ({ setItemsPerPage }) => {
         )}
         >
           {options.map((option, index) => (
-            <li
+            <button
+              type="button"
               key={option.value}
               className={classNames(
                 'itemsOnPage__option',
                 { itemsOnPage__option__selected: isOptionSelected(option) },
-                { itemsOnPage__option__highlighted: index === highlightedIndex },
+                {
+                  itemsOnPage__option__highlighted: index === highlightedIndex,
+                },
               )}
               onMouseEnter={() => setHighlightedIndex(index)}
               onClick={e => {
@@ -84,7 +89,7 @@ export const ItemsOnPage: React.FC<Props> = ({ setItemsPerPage }) => {
             >
               {option.label}
 
-            </li>
+            </button>
           ))}
         </ul>
       </div>
