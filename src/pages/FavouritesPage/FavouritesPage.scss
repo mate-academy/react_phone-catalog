@@ -7,4 +7,24 @@
     margin-top: 40px;
     color: $primary;
   }
+
+  &__button-back {
+    margin-top: 8px;
+  }
+
+  &__notification {
+    @extend %h2;
+    color: $secondary;
+    text-align: center;
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(4, 272px);
+    justify-content: center;
+    justify-items: center;
+    margin: 40px 0 80px;
+    row-gap: 40px;
+    column-gap: 16px;
+  }
 }

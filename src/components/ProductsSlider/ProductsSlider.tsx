@@ -8,13 +8,11 @@ import { ProductItem } from '../ProductItem';
 type Props = {
   title: string,
   products: Product[],
-  addProductToCart: (product: Product) => void,
 };
 
 export const ProductsSlider: React.FC <Props> = ({
   title,
   products,
-  addProductToCart,
 }) => {
   const count = 4;
   const [first, setFirst] = useState(0);
@@ -65,7 +63,6 @@ export const ProductsSlider: React.FC <Props> = ({
             <ProductItem
               key={product.itemId}
               product={product}
-              addProductToCart={addProductToCart}
             />
           ))}
         </div>

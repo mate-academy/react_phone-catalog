@@ -1,14 +1,11 @@
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
-import { CartItem } from '../../types/CartItem';
 
-type Props = {
-  cartItems: CartItem[];
-};
+import { useAppSelector } from '../../helpers/hooks';
 
-export const CartButton: React.FC<Props> = ({
-  cartItems,
-}) => {
+export const CartButton: React.FC = () => {
+  const cartItems = useAppSelector(state => state.cart);
+
   return (
     <NavLink
       to="/cart"

@@ -18,7 +18,10 @@ export const Category: React.FC<Props> = ({
 }) => {
   return (
     <div className="category">
-      <div className="category__box">
+      <div
+        className="category__box"
+        data-cy="categoryLinksContainer"
+      >
         <Link
           to={to}
           className="category__link"

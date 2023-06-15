@@ -1,19 +1,12 @@
 import './Header.scss';
 
-import { CartItem } from '../../types/CartItem';
 import { CartButton } from '../CartButton';
 import { FavouritesButton } from '../FavouritesButton';
 import { Logo } from '../Logo';
 import { Navbar } from '../Navbar';
 // import { Search } from '../Search';
 
-type Props = {
-  cartItems: CartItem[];
-};
-
-export const Header: React.FC<Props> = ({
-  cartItems,
-}) => {
+export const Header: React.FC = () => {
   return (
     <header className="page__header header">
       <div className="header__left">
@@ -27,7 +20,7 @@ export const Header: React.FC<Props> = ({
 
         <FavouritesButton />
 
-        <CartButton cartItems={cartItems} />
+        <CartButton />
       </div>
     </header>
   );

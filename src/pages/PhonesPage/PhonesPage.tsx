@@ -6,13 +6,9 @@ import { Breadcrumbs } from '../../components/Breadcrumbs';
 
 type Props = {
   phones: Product[],
-  addProductToCart: (product: Product) => void,
 };
 
-export const PhonesPage: React.FC<Props> = ({
-  phones,
-  addProductToCart,
-}) => {
+export const PhonesPage: React.FC<Props> = ({ phones }) => {
   return (
     <>
       <section className="page__section phones-page">
@@ -32,7 +28,6 @@ export const PhonesPage: React.FC<Props> = ({
           <div className="phones-page__product-list">
             <ProductList
               products={phones}
-              addProductToCart={addProductToCart}
               data-cy="productList"
             />
           </div>

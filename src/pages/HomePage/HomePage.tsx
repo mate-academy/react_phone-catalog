@@ -7,12 +7,10 @@ import { Categories } from '../../components/Categories/Categories';
 
 type Props = {
   products: Product[],
-  addProductToCart: (product: Product) => void,
 };
 
 export const HomePage: React.FC<Props> = ({
   products,
-  addProductToCart,
 }) => {
   return (
     <>
@@ -24,7 +22,6 @@ export const HomePage: React.FC<Props> = ({
             <ProductsSlider
               title="Hot price"
               products={products}
-              addProductToCart={addProductToCart}
             />
           </div>
 
@@ -38,7 +35,6 @@ export const HomePage: React.FC<Props> = ({
             <ProductsSlider
               title="Brand new models"
               products={products}
-              addProductToCart={addProductToCart}
             />
           </div>
         </div>

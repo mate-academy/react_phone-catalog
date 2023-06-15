@@ -3,7 +3,6 @@ import './App.scss';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { getPhones } from './api/api';
-import { useLocalStorage } from './helpers/useLocalStorage';
 import { Product } from './types/Product';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
@@ -18,17 +17,6 @@ import { CartPage } from './pages/CartPage';
 
 export const App: React.FC = () => {
   const [phones, setPhones] = useState<Product[]>([]);
-  const [cartItems, setCartItems] = useLocalStorage('cartItems', []);
-
-  const addProductToCart = (cartItem: Product) => {
-    setCartItems([...cartItems, cartItem]);
-  };
-
-  const removeProductFromCart = (cartItemId: string) => {
-    setCartItems(cartItems.filter(
-      (item: Product) => item.phoneId !== cartItemId,
-    ));
-  };
 
   const getPhonesFromServer = async () => {
     try {
@@ -47,7 +35,7 @@ export const App: React.FC = () => {
   return (
     <>
       <div className="page">
-        <Header cartItems={cartItems} />
+        <Header />
 
         <main className="page__content">
           <Routes>
@@ -55,16 +43,16 @@ export const App: React.FC = () => {
               path="*"
               element={<NotPage />}
             />
-            <Route path="/" element={<HomePage products={phones} addProductToCart={addProductToCart} />} />
+            <Route path="/" element={<HomePage products={phones} />} />
             <Route path="/home" element={<Navigate to="/" replace />} />
             <Route path="/phones">
-              <Route index element={<PhonesPage phones={phones} addProductToCart={addProductToCart} />} />
-              <Route path=":productId" element={<ProductDetailsPage phones={phones} addProductToCart={addProductToCart} />} />
+              <Route index element={<PhonesPage phones={phones} />} />
+              <Route path=":productId" element={<ProductDetailsPage phones={phones} />} />
             </Route>
             <Route path="tablets" element={<TabletsPage tablets={[]} />} />
             <Route path="accessories" element={<AccessoriesPage accessories={[]} />} />
             <Route path="favourites" element={<FavouritesPage />} />
-            <Route path="cart" element={<CartPage cartItems={cartItems} removeProductFromCart={removeProductFromCart} />} />
+            <Route path="cart" element={<CartPage />} />
           </Routes>
         </main>
 

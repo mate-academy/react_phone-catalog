@@ -1,40 +1,45 @@
 import './CartItem.scss';
 
 import classNames from 'classnames';
-import { useState } from 'react';
-import { Product } from '../../types/Product';
+import { useAppDispatch } from '../../helpers/hooks';
+import * as cartActions from '../../features/cart';
+import { Item } from '../../types/Item';
 
 type Props = {
-  item: Product;
-  removeProductFromCart: (id: string) => void;
+  item: Item;
 };
 
-export const CartItem: React.FC<Props> = ({
-  item,
-  removeProductFromCart,
-}) => {
-  const [quantity, setQuantity] = useState(1);
+export const CartItem: React.FC<Props> = ({ item }) => {
+  const dispatch = useAppDispatch();
+  const removeItemFromCart = ((itemId: string) => (
+    dispatch(cartActions.remove(itemId))
+  ));
+
+  const increaseCartItems = ((itemId: string) => (
+    dispatch(cartActions.increase(itemId))
+  ));
+
+  const decreaseCartItems = ((itemId: string) => (
+    dispatch(cartActions.decrease(itemId))
+  ));
 
   return (
     <li className="cart-item">
       <button
+        aria-label="delete"
         type="button"
         className="
           cart-item__button
           button-square
           button-square--close
         "
-        onClick={() => removeProductFromCart(item.phoneId)}
-      >
-        <img
-          src="img/icons/close.svg"
-          alt="close"
-        />
-      </button>
+        onClick={() => removeItemFromCart(item.id)}
+        data-cy="cartDeleteButton"
+      />
 
       <div className="cart-item__image-container">
         <img
-          src={`${item.image}`}
+          src={`${item.imageURL}`}
           alt={item.name}
           className="cart-item__image"
         />
@@ -51,12 +56,10 @@ export const CartItem: React.FC<Props> = ({
             'cart-item__button',
             'button-square',
             {
-              'button-square--disabled': quantity === 1,
+              'button-square--disabled': item.quantity === 1,
             },
           )}
-          onClick={() => {
-            setQuantity(prevCount => prevCount - 1);
-          }}
+          onClick={() => decreaseCartItems(item.id)}
         >
           <img
             src="img/icons/minus.svg"
@@ -65,7 +68,7 @@ export const CartItem: React.FC<Props> = ({
         </button>
 
         <span className="cart-item__count">
-          {quantity}
+          {item.quantity}
         </span>
 
         <button
@@ -74,9 +77,7 @@ export const CartItem: React.FC<Props> = ({
             cart-item__button
             button-square
           "
-          onClick={() => {
-            setQuantity(prevCount => prevCount + 1);
-          }}
+          onClick={() => increaseCartItems(item.id)}
         >
           <img
             src="img/icons/plus.svg"
@@ -86,7 +87,7 @@ export const CartItem: React.FC<Props> = ({
       </div>
 
       <div className="cart-item__price">
-        {`$${quantity * item.price}`}
+        {`$${item.quantity * item.price}`}
       </div>
     </li>
   );

@@ -13,13 +13,9 @@ import { Pagination } from '../Pagination';
 
 type Props = {
   products: Product[],
-  addProductToCart: (product: Product) => void,
 };
 
-export const ProductList: React.FC<Props> = ({
-  products,
-  addProductToCart,
-}) => {
+export const ProductList: React.FC<Props> = ({ products }) => {
   const [searchParams] = useSearchParams();
   const currentPage = Number(searchParams.get('page')) || 1;
   const perPage = Number(searchParams.get('perPage')) || products.length;
@@ -71,7 +67,6 @@ export const ProductList: React.FC<Props> = ({
               <ProductItem
                 key={product.itemId}
                 product={product}
-                addProductToCart={addProductToCart}
               />
             ))}
           </ul>

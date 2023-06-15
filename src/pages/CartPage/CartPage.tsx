@@ -1,32 +1,26 @@
 import './CartPage.scss';
 
 import { useMemo } from 'react';
-import { ButtonBack } from '../../components/ButtonBack';
+import { BackButton } from '../../components/BackButton';
 import { CartList } from '../../components/CartList';
-import { Product } from '../../types/Product';
+import { useAppSelector } from '../../helpers/hooks';
 
-type Props = {
-  cartItems: Product[];
-  removeProductFromCart: (id: string) => void;
-};
+export const CartPage: React.FC = () => {
+  const cartItems = useAppSelector(state => state.cart);
 
-export const CartPage: React.FC<Props> = ({
-  cartItems,
-  removeProductFromCart,
-}) => {
   const cartTotalItems = useMemo(
-    () => cartItems.length, [cartItems],
+    () => cartItems.reduce((totalQuantity, item) => totalQuantity + item.quantity, 0), [cartItems],
   );
 
   const cartTotalPrice = useMemo(
-    () => cartItems.reduce((total, item) => total + item.price, 0), [cartItems],
+    () => cartItems.reduce((totalPrice, item) => totalPrice + item.price * item.quantity, 0), [cartItems],
   );
 
   return (
     <section className="page__section cart-page">
       <div className="cart-page__container">
         <div className="cart-page__button-back">
-          <ButtonBack />
+          <BackButton />
         </div>
 
         <h1 className="cart-page__title">
@@ -40,10 +34,7 @@ export const CartPage: React.FC<Props> = ({
             </h2>
           ) : (
             <div className="cart-page__cart-list">
-              <CartList
-                cartItems={cartItems}
-                removeProductFromCart={removeProductFromCart}
-              />
+              <CartList />
             </div>
           )}
 
@@ -52,7 +43,10 @@ export const CartPage: React.FC<Props> = ({
               {`$${cartTotalPrice}`}
             </h1>
 
-            <div className="cart-page__items-count">
+            <div
+              className="cart-page__items-count"
+              data-cy="productQauntity"
+            >
               {`Total for ${cartTotalItems} items`}
             </div>
 

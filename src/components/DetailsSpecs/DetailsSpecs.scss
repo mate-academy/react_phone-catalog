@@ -1,0 +1,30 @@
+@import "../../styles/utils/extends";
+@import "../../styles/utils/variables";
+
+.specs {
+  &__title {
+    @extend %h2;
+    padding-bottom: 16px;
+    border-bottom: 1px solid $elementColor;
+    color: $primary;
+  }
+
+  &__info {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 8px;
+    width: 100%;
+    margin-top: 32px;
+  }
+
+  &__characteristic {
+    @extend %text;
+    color: $secondary;
+  }
+
+  &__value {
+    @extend %text;
+    justify-self: end;
+    color: $primary;
+  }
+}

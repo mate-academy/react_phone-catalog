@@ -2,17 +2,18 @@ import './ProductItem.scss';
 
 import { Link } from 'react-router-dom';
 
+import classNames from 'classnames';
+import { useAppDispatch, useAppSelector } from '../../helpers/hooks';
+import * as cartActions from '../../features/cart';
+import * as favoritesActions from '../../features/favorites';
+import { Item } from '../../types/Item';
 import { Product } from '../../types/Product';
 
 type Props = {
   product: Product,
-  addProductToCart: (product: Product) => void,
 };
 
-export const ProductItem: React.FC<Props> = ({
-  product,
-  addProductToCart,
-}) => {
+export const ProductItem: React.FC<Props> = ({ product }) => {
   const {
     category,
     image,
@@ -25,8 +26,47 @@ export const ProductItem: React.FC<Props> = ({
     ram,
   } = product;
 
-  const onAddToCart = (item: Product) => {
-    addProductToCart(item);
+  const cartItems = useAppSelector(state => state.cart);
+  const favorites = useAppSelector(state => state.favorites);
+  const dispatch = useAppDispatch();
+  const addItemToCart = ((item: Item) => (
+    dispatch(cartActions.add(item))
+  ));
+
+  const removeItemFromCart = ((id: string) => (
+    dispatch(cartActions.remove(id))
+  ));
+
+  const addItemToFavorites = ((item: Product) => (
+    dispatch(favoritesActions.add(item))
+  ));
+
+  const removeItemFromFavorites = ((id: string) => (
+    dispatch(favoritesActions.remove(id))
+  ));
+
+  const handleToggleCartItems = () => {
+    if (!cartItems.find((item: Item) => item.id === itemId)) {
+      const newItem = {
+        id: itemId,
+        imageURL: image,
+        name,
+        price,
+        quantity: 1,
+      };
+
+      addItemToCart(newItem);
+    } else {
+      removeItemFromCart(itemId);
+    }
+  };
+
+  const handleToggleFavorites = () => {
+    if (!favorites.find((item: Product) => item.itemId === itemId)) {
+      addItemToFavorites(product);
+    } else {
+      removeItemFromFavorites(itemId);
+    }
   };
 
   const scrollUp = () => {
@@ -37,7 +77,10 @@ export const ProductItem: React.FC<Props> = ({
   };
 
   return (
-    <li className="product-item__item">
+    <li
+      className="product-item__item"
+      data-cy="cardsContainer"
+    >
       <Link
         to={`/${category}/${itemId}`}
         className="product-item__link"
@@ -101,25 +144,38 @@ export const ProductItem: React.FC<Props> = ({
       <div className="product-item__buttons">
         <button
           type="button"
-          className="product-item__button button"
-          onClick={() => onAddToCart(product)}
+          className={classNames(
+            'product-item__button',
+            'button',
+            {
+              'button--selected': (cartItems.find((item: Item) => item.id === product?.itemId)),
+            },
+          )}
+          onClick={handleToggleCartItems}
         >
-          Add to cart
+          {
+            (cartItems.find((item: Item) => item.id === product?.itemId))
+              ? 'Added to cart'
+              : 'Add to cart'
+          }
         </button>
 
         <button
+          aria-label="toggle-favorites"
           type="button"
-          className="
-            product-item__button
-            button-square
-            button-square--like
-          "
-        >
-          <img
-            src="img/icons/like.svg"
-            alt="like"
-          />
-        </button>
+          className={classNames(
+            'product-item__button',
+            'button-square',
+            {
+              'button-square--filled': (favorites.find((item: Product) => item.itemId === itemId)),
+            },
+            {
+              'button-square--like': !(favorites.find((item: Product) => item.itemId === itemId)),
+            },
+          )}
+          data-cy="addToFavorite"
+          onClick={handleToggleFavorites}
+        />
       </div>
 
     </li>

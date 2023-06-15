@@ -27,7 +27,7 @@ export const Pagination: React.FC<Props> = ({
     <>
       <div className="pagination">
         <Link
-          data-cy="prevLink"
+          data-cy="paginationLeft"
           className={classNames(
             'pagination__item',
             'button-square',
@@ -74,7 +74,7 @@ export const Pagination: React.FC<Props> = ({
         </ul>
 
         <Link
-          data-cy="nextLink"
+          data-cy="paginationRight"
           className={classNames(
             'pagination__item',
             'button-square',
