@@ -13,7 +13,6 @@ import { HomePage } from './pages/HomePage';
 import { ContextProvider } from './components/ContextProvider/ContextProvider';
 
 const App = () => {
-
   return (
     <div className="App">
       <ContextProvider>

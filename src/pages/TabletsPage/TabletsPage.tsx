@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import './tabletsPage.scss';
 import { getData } from '../../api/data';
 import { Phones } from '../../types/Phones';
-import { DataFilters } from '../../components/DataFilters/DataFilters';
+import { DataFilters } from '../../components/DataFilters';
 import { ItemsOnPage } from '../../components/ItemsOnPage/ItemsOnPage';
 import { ProductList } from '../../components/ProductList/ProductList';
 import { Pagination } from '../../components/Pagination';

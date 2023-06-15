@@ -5,7 +5,7 @@ import { Phones } from '../../types/Phones';
 import { ItemsOnPage } from '../../components/ItemsOnPage/ItemsOnPage';
 import { ProductList } from '../../components/ProductList/ProductList';
 import { Pagination } from '../../components/Pagination';
-import { DataFilters } from '../../components/DataFilters/DataFilters';
+import { DataFilters } from '../../components/DataFilters';
 
 export const AccessoriesPage = () => {
   // const [isAccesoriesDataLoading, setIsAccesoriesDataLoading] = useState(false);

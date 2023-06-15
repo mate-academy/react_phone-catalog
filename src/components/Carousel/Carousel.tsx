@@ -1,17 +1,18 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import './carousel.scss';
-
 import arrowLeft from '../../images/icons/arrow_left.svg';
 import arrowRight from '../../images/icons/arrow_right.svg';
-import { useWindowSize } from '../../hooks/useWindowSize';
+import { setTimeout } from 'timers';
 
 type Props = {
   slides: string[]
 };
 
+// type CarouselButtonType = 'prevBtn' | 'nextBtn';
+
 export const Carousel: React.FC<Props> = ({ slides }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const slideInterval = useRef<null | NodeJS.Timeout>();
+  // const [currentIndex, setCurrentIndex] = useState(0);
+  // const slideInterval = useRef<null | NodeJS.Timeout>();
   // const [sliderWidth, setSliderWidth] = useState(1040);
 
   // const windowElRef = useRef<HTMLElement | null>();
@@ -31,66 +32,109 @@ export const Carousel: React.FC<Props> = ({ slides }) => {
 
   // }, [])
 
-  const sliderWidth = useWindowSize();
+  // const sliderWidth = useWindowSize();
 
-  const stopSlideTimer = () => {
-    if (slideInterval.current) {
-      clearInterval(slideInterval.current);
-    }
-  };
+  // const stopSlideTimer = () => {
+  //   if (slideInterval.current) {
+  //     clearInterval(slideInterval.current);
+  //   }
+  // };
 
-  const startSliderTimer = () => {
-    stopSlideTimer();
+  // const startSliderTimer = () => {
+  //   stopSlideTimer();
 
-    const interval = setInterval(() => {
-      setCurrentIndex(currentIndex => (currentIndex < slides.length - 1 ? currentIndex + 1 : 0));
-    }, 5000);
+  //   const interval = setInterval(() => {
+  //     setCurrentIndex(currentIndex => (currentIndex < slides.length - 1 ? currentIndex + 1 : 0));
+  //   }, 5000);
 
-    slideInterval.current = interval;
-  };
+  //   slideInterval.current = interval;
+  // };
 
-  const prevBtn = () => {
-    startSliderTimer();
-    const index = currentIndex > 0 ? currentIndex - 1 : slides.length - 1;
+  // const prevBtn = () => {
+  //   startSliderTimer();
+  //   const index = currentIndex > 0 ? currentIndex - 1 : slides.length - 1;
 
-    setCurrentIndex(index);
-  };
+  //   setCurrentIndex(index);
+  // };
 
-  const nextBtn = () => {
-    startSliderTimer();
-    const index = currentIndex < slides.length - 1 ? currentIndex + 1 : 0;
+  // const nextBtn = () => {
+  //   startSliderTimer();
+  //   const index = currentIndex < slides.length - 1 ? currentIndex + 1 : 0;
 
-    setCurrentIndex(index);
-  };
+  //   setCurrentIndex(index);
+  // };
 
-  const goToSlide = (slideIndex: number) => {
-    startSliderTimer();
-    setCurrentIndex(slideIndex);
-  };
+  // const goToSlide = (slideIndex: number) => {
+  //   startSliderTimer();
+  //   setCurrentIndex(slideIndex);
+  // };
 
-  // animation styles
-  // const parentWidth = 1040;
+  // // animation styles
+  // // const parentWidth = 1040;
+
+  // const slidesStyles = (slideIndex: number) => ({
+  //   backgroundImage: `url(${slides[slideIndex]})`,
+  // });
+
+  // const carouselImageContainerStyles = () => ({
+  //   width: sliderWidth.width * slides.length,
+  //   transform: `translateX(${-(currentIndex * sliderWidth.width)}px)`,
+  // });
+
+  // useEffect(() => {
+  //   startSliderTimer();
+
+  //   return () => stopSlideTimer();
+  // }, []);
+
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const parentWidth = 1040;
+    const timerRef = useRef<null | NodeJS.Timeout>(null);
+
+  const carouselImageContainerStyles = () => ({
+    width: parentWidth * slides.length,
+    transform: `translateX(${-(currentIndex * parentWidth)}px)`,
+  });
 
   const slidesStyles = (slideIndex: number) => ({
     backgroundImage: `url(${slides[slideIndex]})`,
+    width: `${parentWidth}px`,
   });
 
-  const carouselImageContainerStyles = () => ({
-    width: sliderWidth.width * slides.length,
-    transform: `translateX(${-(currentIndex * sliderWidth.width)}px)`,
-  });
+  const prevBtn = () => {
+    const isFirstSlide = currentIndex === 0;
+    const newIndex = isFirstSlide ? slides.length - 1 : currentIndex - 1;
+    setCurrentIndex(newIndex);
+  };
+
+  const nextBtn = useCallback(() => {
+    const isLastSlide = currentIndex === slides.length - 1;
+    const newIndex = isLastSlide ? 0 : currentIndex + 1;
+    setCurrentIndex(newIndex);
+  }, [currentIndex, slides]);
+
+  const goToSlide = (slideIndex:number) => {
+    setCurrentIndex(slideIndex);
+  };
 
   useEffect(() => {
-    startSliderTimer();
+    if (timerRef.current) {
+      clearTimeout(timerRef.current);
+    }
+    timerRef.current = setTimeout(() => {
+      nextBtn();
+    }, 2000);
 
-    return () => stopSlideTimer();
-  }, []);
+    return () => clearTimeout(timerRef.current as NodeJS.Timeout);
+  }, [nextBtn]);
+
 
   return (
     <div className="carousel">
 
       <div className="carousel__slider">
         <button
+
           type="button"
           className="carousel__btn"
           onClick={prevBtn}
@@ -118,6 +162,7 @@ export const Carousel: React.FC<Props> = ({ slides }) => {
         </div>
 
         <button
+
           type="button"
           className="carousel__btn"
           onClick={nextBtn}

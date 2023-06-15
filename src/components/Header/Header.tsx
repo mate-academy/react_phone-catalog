@@ -6,7 +6,7 @@ import LogoIcon from '../../images/icons/Logo.svg';
 import FavoritesIcon from '../../images/icons/Favourites (Heart Like).svg';
 import CardIcon from '../../images/icons/Shopping bag (Cart).svg';
 import './header.scss';
-import { Search } from '../Search/Search';
+import { Search } from '../Search';
 
 export const Header = () => {
   const location = useLocation();
