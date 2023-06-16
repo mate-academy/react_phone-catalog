@@ -41,9 +41,14 @@
     justify-content: center;
   }
 
+  &__main-image-link {
+    height: 100%;
+  }
+
   &__main-img {
-    max-height: 100%;
-    max-width: 100%;
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
   }
 }
 
@@ -69,6 +74,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    &:hover {
+      cursor: pointer;
+    }
+    
   }
 
   &__small-image-link {
@@ -76,7 +86,7 @@
   }
 
   &__small-img {
-    width: 66px;
+    width: 100%;
     height: 66px;
     object-fit: cover;
   }

@@ -11,7 +11,7 @@ export const Cart: React.FC = () => {
   const [totalItems, setTotalItems] = useState(0);
   const [cartPhones, setCartPhones] = useState<Product []>([]);
   const [checkout, setCheckout] = useState(false);
-  let timeoutId: any = null;
+  let timeoutId: NodeJS.Timeout | null = null;
 
   useEffect(() => {
     const retrievedData = localStorage.getItem('cart');

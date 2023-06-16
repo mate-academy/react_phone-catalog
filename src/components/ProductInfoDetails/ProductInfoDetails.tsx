@@ -121,14 +121,18 @@ export const ProductInfoDetails: React.FC<Props> = ({
         "
       >
         {productInfo.images.map(item => (
-          <div key={item} className="product-details__image">
+          // eslint-disable-next-line
+          <div
+            key={item}
+            className="product-details__image"
+            onClick={(event) => handleChangeMainImage(
+              event,
+              API_PRODUCT_URL + item,
+            )}
+          >
             <button
-              type="button"
               className="product-details__image-link"
-              onClick={(event) => handleChangeMainImage(
-                event,
-                API_PRODUCT_URL + item,
-              )}
+              type="button"
             >
               <img
                 src={API_PRODUCT_URL + item}
@@ -166,7 +170,7 @@ export const ProductInfoDetails: React.FC<Props> = ({
                 'active-color': selectedColor === color,
               })}
               style={{
-                backgroundColor: color,
+                backgroundColor: color === 'midnightgreen' ? '#004953' : color,
               }}
               onClick={() => setSelectedColor(color)}
             />
