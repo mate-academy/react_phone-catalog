@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import home from '../../../images/Home.svg';
+import arrow from '../../../images/Vector (Stroke).svg';
 import './PageIndicator.scss';
 
 type Props = {
@@ -20,11 +21,24 @@ export const PageIndicator: React.FC<Props> = ({
           <img src={home} alt="home" className="indicator-name__img" />
         </Link>
       </div>
-      <div className="indicator-name__arrow">&lt;</div>
-      <Link to={`/${productType.toLowerCase()}`} className="indicator-name__title">{productType}</Link>
+      <img
+        src={arrow}
+        alt="arrowBack"
+        className="indicator-name__arrow"
+      />
+      <Link
+        to={`/${productType.toLowerCase()}`}
+        className="indicator-name__title"
+      >
+        {productType}
+      </Link>
       {productName && (
         <>
-          <div className="indicator-name__arrow">&lt;</div>
+          <img
+            src={arrow}
+            alt="arrowBack"
+            className="indicator-name__arrow"
+          />
           <div className="indicator-name__title">{productName}</div>
         </>
       )}

@@ -19,11 +19,24 @@ export const Footer = () => {
           <a
             className="footer__link"
             href="https://github.com/mate-academy"
+            target="blank"
           >
             Github
           </a>
-          <a className="footer__link" href="/">Contacts</a>
-          <a className="footer__link" href="/">Rights</a>
+          <a
+            className="footer__link"
+            href="https://github.com/mate-academy"
+            target="blank"
+          >
+            Contacts
+          </a>
+          <a
+            className="footer__link"
+            href="https://github.com/mate-academy"
+            target="blank"
+          >
+            Rights
+          </a>
         </div>
         <div className="footer__back-to-top">
           <a

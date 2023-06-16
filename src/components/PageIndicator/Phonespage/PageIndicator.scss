@@ -3,4 +3,11 @@
   align-items: center;
   gap: 8px;
   margin-bottom: 40px;
+ 
+  &__title {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+    color: rgba(137, 147, 154, 1);
+  }
 }

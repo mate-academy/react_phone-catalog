@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import classNames from 'classnames';
 import {
   Link, NavLink, useLocation, useSearchParams,
@@ -8,6 +8,8 @@ import { getSearchWith } from '../../helpers/SearchParams';
 import favorite from '../../images/favourites.svg';
 import cart from '../../images/Cart.svg';
 import logo from '../../images/Logo.png';
+import search from '../../images/search.svg';
+import union from '../../images/Union.svg';
 import './Header.scss';
 
 export const Header = () => {
@@ -19,6 +21,7 @@ export const Header = () => {
   const [cartCount, setCartCount] = useState(0);
   const [debouncedInputValue, setDebouncedInputValue] = useState(inputValue);
   const debouncedValue = useDebounce(debouncedInputValue, 300);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const conditionToRender
     = location.pathname === '/favourites'
@@ -29,6 +32,12 @@ export const Header = () => {
   const handleInputChange = (value: string) => {
     setInputValue(value);
     setDebouncedInputValue(value);
+  };
+
+  const handleSearchClick = () => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
   };
 
   const handleButtonClick = () => {
@@ -155,20 +164,28 @@ export const Header = () => {
                   className="navigation-header__input"
                   placeholder={`Search in ${location.pathname.substring(1)}...`}
                   value={inputValue}
+                  ref={inputRef}
                   onChange={(event) => {
                     handleInputChange(event.target.value);
                   }}
                 />
-                {inputValue && (
+                {inputValue ? (
                   <button
-                    type="button"
-                    className="navigation-header__clear-button"
+                    className="navigation-header__clear-button input-button"
                     onClick={handleButtonClick}
+                    type="button"
                   >
-                    &times;
+                    <img src={union} alt="clearButton" />
+                  </button>
+                ) : (
+                  <button
+                    className="navigation-header__search-button input-button"
+                    onClick={handleSearchClick}
+                    type="button"
+                  >
+                    <img src={search} alt="search" />
                   </button>
                 )}
-
               </li>
             )}
             <li className="navigation-header__item">

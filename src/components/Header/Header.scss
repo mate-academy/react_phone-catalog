@@ -63,29 +63,35 @@
   }
 
   &__input {
+    
     padding: 0 20px;
     height: 100%;
     width: 327px;
-    background-color: #e5e5e554;
     font-size: 14px;
     font-weight: 500;
     line-height: 18px;
     color: rgba(49, 50, 55, 1);
-  }
+    border-left: 1px solid rgb(226, 230, 233);
 
-  &__clear-button {
-    content: "";
-    position: absolute;
-    font-size: 24px;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    border: none;
-    background: none;
-    font-weight: bold;
-    color: rgba(20, 20, 223, 0.75);
-    cursor: pointer;
+    &::placeholder {
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 18px;
+      text-align: left;
+      color: rgba(180, 189, 195, 1);
+    }
   }
+}
+
+.input-button {
+  position: absolute;
+  display: flex;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  background-color: #fff;
+  align-self: center;
 }
 
 .logo {

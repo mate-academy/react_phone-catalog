@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
+import { Link } from 'react-router-dom';
 import { ProductDetails } from '../../types/ProductDetails';
 import { API_PRODUCT_URL } from '../../helpers/helper';
 import favorite from '../../images/favourites.svg';
@@ -157,9 +158,9 @@ export const ProductInfoDetails: React.FC<Props> = ({
         </div>
         <div className="product-details-description__colors">
           {productInfo.colorsAvailable.map((color) => (
-            // eslint-disable-next-line
-            <button
-              type="button"
+            <Link
+              // eslint-disable-next-line
+              to={`/phones/${productInfo.namespaceId}-${productInfo.capacity.toLowerCase()}-${color.toLowerCase()}`}
               key={color}
               className={classNames('product-details-description__color', {
                 'active-color': selectedColor === color,
@@ -176,8 +177,8 @@ export const ProductInfoDetails: React.FC<Props> = ({
         </div>
         <div className="product-details-description__capacity">
           {productInfo.capacityAvailable.map(button => (
-            <button
-              type="button"
+            <Link
+              to={`/phones/${productInfo.namespaceId}-${button.toLowerCase()}-${productInfo.color}`}
               key={button}
               className={classNames(
                 'product-details-description__capacity-available', {
@@ -187,7 +188,7 @@ export const ProductInfoDetails: React.FC<Props> = ({
               onClick={() => setSelectedCapacity(button)}
             >
               {button}
-            </button>
+            </Link>
           ))}
         </div>
         <div className="prices">

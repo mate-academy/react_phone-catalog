@@ -41,12 +41,8 @@
     justify-content: center;
   }
 
-  &__main-image-link {
-    height: 100%;
-  }
-
   &__main-img {
-    height: 100%;
+    max-height: 100%;
     max-width: 100%;
   }
 }
@@ -123,9 +119,13 @@
     border-bottom: 1px solid rgba(226, 230, 233, 1);
     padding-bottom: 24px;
     margin-bottom: 24px;
+    color: #313237;
   }
 
   &__capacity-available {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     flex: 0 0 56px;
     height: 32px;
     font-size: 14px;
@@ -150,7 +150,7 @@
 
 .active-capacity {
   background-color: #313237;
-  color: #fff;
+  color: #fff !important;
 }
 
 .active-color {

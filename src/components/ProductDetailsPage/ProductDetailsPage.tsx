@@ -32,6 +32,8 @@ export const ProductDetailsPage: React.FC<Props> = ({ products }) => {
         const response = await getProductDetails(`${API_PRODUCT_URL}products/${productId}.json`);
 
         setProductInfo(response);
+        setSelectedColor(response.color);
+        setSelectedCapacity(response.capacity);
       } catch (fetchError) {
         throw new Error('Data could not be fetched');
       } finally {
