@@ -1,12 +1,15 @@
 import { FC } from 'react';
 import { Footer } from '../Footer';
 import { Header } from '../Header';
+import './layout.scss';
 
 export const Layout: FC = ({ children }) => {
   return (
     <>
       <Header />
-      {children}
+      <div className="main">
+        {children}
+      </div>
       <Footer />
     </>
   );

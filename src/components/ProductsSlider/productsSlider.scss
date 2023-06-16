@@ -1,6 +1,6 @@
-@import '../../base/variables.scss';
-@import '../../base/mixins.scss';
-@import '../../partials/placeholders.scss';
+@import "../../base/variables.scss";
+@import "../../base/mixins.scss";
+@import "../../partials/placeholders.scss";
 
 .products-slider {
   overflow: hidden;
@@ -35,6 +35,7 @@
   }
 }
 
-.disabled, .disabled:hover {
+.disabled,
+.disabled:hover {
   border: 1px solid $border-line-color;
 }

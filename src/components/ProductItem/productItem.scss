@@ -1,6 +1,6 @@
-@import '../../base/variables.scss';
-@import '../../base/mixins.scss';
-@import '../../partials/placeholders.scss';
+@import "../../base/variables.scss";
+@import "../../base/mixins.scss";
+@import "../../partials/placeholders.scss";
 
 .product {
   box-sizing: border-box;
@@ -40,7 +40,7 @@
 
   &__full-price {
     @extend %h2;
-    font-family: 'Mont-SemiBold';
+    font-family: "Mont-SemiBold", "Times New Roman", Times, serif;
     margin: 0;
     text-decoration: line-through;
     color: $secondary-color;
@@ -77,13 +77,21 @@
   }
 
   &__add-to-card {
+    @extend %buttons-text;
     background-color: $primary-color;
     width: 175px;
     color: $white-color;
-    transition: box-shadow 0.3s;
+    transition: all 0.5s;
 
     &:hover {
       @extend %button-product--hover;
+    }
+
+    &--active,
+    &--active:hover {
+      color: $green-color;
+      background-color: $white-color;
+      border: 1px solid $elements-color;
     }
   }
 
@@ -96,6 +104,11 @@
 
     &:hover {
       border: 1px solid $primary-color;
+    }
+
+    &--active,
+    &--active:hover {
+      border: 1px solid $elements-color;
     }
   }
 }

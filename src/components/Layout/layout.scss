@@ -1,0 +1,6 @@
+@import "../../base/mixins.scss";
+
+.main {
+  @include flex-center;
+  min-height: 90vh;
+}

@@ -1,8 +1,9 @@
-import { Route, Routes } from 'react-router-dom';
+import { Route, Router, Routes } from 'react-router-dom';
 import './base/App.scss';
 import { Suspense } from 'react';
 import { HomePage } from './pages/HomePage';
 import { Layout } from './components/Layout';
+import { Loader } from './components/Loader/Loader';
 
 const App = () => {
   return (
@@ -12,7 +13,7 @@ const App = () => {
           <Route
             path="/"
             element={(
-              <Suspense fallback={<h1>Loading...</h1>}>
+              <Suspense fallback={<Loader />}>
                 <HomePage />
               </Suspense>
             )}
@@ -21,7 +22,8 @@ const App = () => {
           <Route path="/tablets" />
           <Route path="/accessories" />
           <Route path="/favorites" />
-          <Route path="/shopping-bag" />
+          <Route path="/shopping-cart" />
+          <Route path="*" element={<h1>You have reached the wrong path</h1>}/>
         </Routes>
       </Layout>
     </div>

@@ -1,7 +1,7 @@
-@import '../base/variables.scss';
+@import "../base/variables.scss";
 
 %h1 {
-  font-family: 'Mont-Bold';
+  font-family: "Mont-Bold", "Times New Roman", Times, serif;
   font-style: normal;
   font-weight: 700;
   font-size: 32px;
@@ -11,7 +11,7 @@
 }
 
 %h2 {
-  font-family: 'Mont-Bold';
+  font-family: "Mont-Bold", "Times New Roman", Times, serif;
   font-style: normal;
   font-weight: 700;
   font-size: 22px;
@@ -20,7 +20,7 @@
 }
 
 %h3 {
-  font-family: 'Mont-SemiBold';
+  font-family: "Mont-SemiBold", "Times New Roman", Times, serif;
   font-style: normal;
   font-weight: 600;
   font-size: 20px;
@@ -29,7 +29,7 @@
 }
 
 %uppercase {
-  font-family: 'Mont-Bold';
+  font-family: "Mont-Bold", "Times New Roman", Times, serif;
   font-style: normal;
   font-weight: 700;
   font-size: 12px;
@@ -40,7 +40,7 @@
 }
 
 %buttons-text {
-  font-family: 'Mont-Semibold';
+  font-family: "Mont-Semibold", "Times New Roman", Times, serif;
   font-style: normal;
   font-weight: 600;
   font-size: 14px;
@@ -49,7 +49,7 @@
 }
 
 %body-text {
-  font-family: 'Mont-Regular';
+  font-family: "Mont-Regular", "Times New Roman", Times, serif;
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
@@ -58,7 +58,7 @@
 }
 
 %small-text {
-  font-family: 'Mont-Semibold';
+  font-family: "Mont-Semibold", "Times New Roman", Times, serif;
   font-style: normal;
   font-weight: 600;
   font-size: 12px;
@@ -67,14 +67,14 @@
 }
 
 %button-product--hover {
-  box-shadow: 0px 3px 13px rgba(23, 32, 49, 0.26);
+  box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
 }
 
 %button-product--selected {
   border: 1px solid $elements-color;
   color: $green-color;
   text-align: center;
-  font-family: 'Mont-Regular';
+  font-family: "Mont-Regular", "Times New Roman", Times, serif;
   font-style: normal;
   font-weight: 600;
   font-size: 14px;

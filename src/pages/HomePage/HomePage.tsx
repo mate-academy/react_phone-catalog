@@ -1,26 +1,23 @@
+import { Suspense, useMemo } from 'react';
+import useSwr from 'swr';
 import { Banner } from '../../components/Banner';
 import { ProductsSlider } from '../../components/ProductsSlider';
 import { ShopByCategory } from '../../components/ShopByCategory/ShopByCategory';
 import './homepage.scss';
-import { useMemo } from 'react';
 import { Products } from '../../components/Products';
-import useSwr from 'swr';
 import { Product } from '../../types/product';
 import { BASE_URL, fetcher } from '../../api/productsApi';
-import { useLocalStorage } from '../../hooks/useLocalStorage';
+import { Loader } from '../../components/Loader/Loader';
 
-const images = [
+const imagesForBanner = [
   '/_new/img/banner-phones.png',
   '/_new/img/banner-tablets.png',
   '/_new/img/banner-accessories.png',
 ];
 
 export const HomePage = () => {
-  const { data: phones }: { data: Product[] } = useSwr(BASE_URL, fetcher, { suspense: true }); // loading data from api
-
-  const [counter, setCounter] = useLocalStorage('counter', 0);
-
-  console.log(counter);
+  const { data: phones }: { data: Product[] }
+    = useSwr(BASE_URL, fetcher, { suspense: true }); // loading data from api
 
   const hotPricesPhones = useMemo(() => {
     return phones
@@ -43,12 +40,16 @@ export const HomePage = () => {
 
   return (
     <div className="homepage-container">
-      <Banner images={images} />
+      <Banner images={imagesForBanner} />
       {/* // main slider */}
 
-      <ProductsSlider title="Hot Prices" itemsLength={hotPricesPhones.length}>
+      <ProductsSlider 
+        title="Hot Prices"
+        itemsLength={hotPricesPhones.length}
+      >
         <Products products={hotPricesPhones} />
       </ProductsSlider>
+
       <ShopByCategory />
 
       <ProductsSlider

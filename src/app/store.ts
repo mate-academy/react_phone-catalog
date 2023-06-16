@@ -1,11 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
-import favoriteCounterReducer from '../features/favoriteCounter/favoriteCounterSlice';
-import shoppingCounterReducer from '../features/shoppingCounter/shoppingCounter';
+// eslint-disable-next-line max-len
+import favoriteProductsReducer from '../features/favoriteProducts/favoriteProductsSlice';
+import shoppingCounterReducer from '../features/shoppingCart/shoppingCartSlice';
 
 export const store = configureStore({
   reducer: {
-    favoriteCounter: favoriteCounterReducer,
-    shoppingCounter: shoppingCounterReducer,
+    favoriteProducts: favoriteProductsReducer,
+    shoppingCart: shoppingCounterReducer,
   },
 });
 

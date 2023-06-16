@@ -26,8 +26,10 @@ const nav = [
 
 export const Header: FC = () => {
   const { pathname } = useLocation();
-  const favoriteCounter = useAppSelector(state => state.favoriteCounter.value);
-  const shoppingCounter = useAppSelector(state => state.shoppingCounter.value);
+  const favoriteProductsLength
+    = useAppSelector(state => state.favoriteProducts.value).length;
+  const shoppingCartLength
+    = useAppSelector(state => state.shoppingCart.value).length;
 
   return (
     <header className="header__wrapper">
@@ -46,7 +48,12 @@ export const Header: FC = () => {
             >
               <Link
                 to={to}
-                className={classNames('header__nav-link', { 'header__nav-link--highlighted': pathname === to })}
+                className={
+                  classNames(
+                    'header__nav-link',
+                    { 'header__nav-link--highlighted': pathname === to },
+                  )
+                }
               >
                 {name}
               </Link>
@@ -68,7 +75,7 @@ export const Header: FC = () => {
               alt="Favorites products"
             />
 
-            <Counter count={favoriteCounter} />
+            <Counter count={favoriteProductsLength} />
           </Link>
           <Link
             to="/shopping-bag"
@@ -82,7 +89,7 @@ export const Header: FC = () => {
               alt="Shopping bag"
             />
 
-            <Counter count={shoppingCounter} />
+            <Counter count={shoppingCartLength} />
           </Link>
         </div>
       </div>

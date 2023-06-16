@@ -26,18 +26,21 @@ export const Banner: FC<Props> = ({ images }) => {
   }, [activeIndex]);
 
   const handleIndexUpdate = (newIndex: number) => {
+    let updatedIndex = newIndex;
+
     if (newIndex < 0) {
-      newIndex = images.length - 1;
+      updatedIndex = images.length - 1;
     } else if (newIndex >= images.length) {
-      newIndex = 0;
+      updatedIndex = 0;
     }
 
-    setActiveIndex(newIndex);
+    setActiveIndex(updatedIndex);
   };
 
   return (
     <div className="banner">
       <button
+        type="button"
         onClick={() => handleIndexUpdate(activeIndex - 1)}
         className="banner__button"
       >
@@ -50,17 +53,28 @@ export const Banner: FC<Props> = ({ images }) => {
           style={{ transform: `translateX(-${activeIndex * 100}%)` }}
         >
           {images.map(img => (
-            <img className="banner__img" src={img} key={img} />
+            <img
+              className="banner__img"
+              src={img}
+              key={img}
+              alt="Banner"
+            />
           ))}
         </div>
 
         <div className="banner__indicators">
-          {images.map((_img, index) => (
+          {images.map((img, index) => (
             <button
+              type="button"
+              aria-label="Banner indicator"
               className={
-                classNames('banner__indicator', { 'banner__indicator--active': activeIndex === index })
+                classNames(
+                  'banner__indicator', {
+                    'banner__indicator--active': activeIndex === index,
+                  },
+                )
               }
-              key={index}
+              key={img}
               onClick={() => handleIndexUpdate(index)}
             />
           ))}
@@ -68,6 +82,7 @@ export const Banner: FC<Props> = ({ images }) => {
       </div>
 
       <button
+        type="button"
         onClick={() => handleIndexUpdate(activeIndex + 1)}
         className="banner__button"
       >

@@ -26,7 +26,7 @@ export const Category: FC<Props> = ({ source, title, quantity }) => {
         }
       >
         {/* it should be replaced with real link */}
-        <img className="category__image" src={source} alt="Image" />
+        <img className="category__image" src={source} alt="Category" />
       </Link>
 
       <Link to="/phones" className="category__title">{title}</Link>

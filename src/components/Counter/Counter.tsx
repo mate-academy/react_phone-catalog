@@ -1,4 +1,4 @@
-import { useState, FC } from 'react';
+import { FC } from 'react';
 
 import './counter.scss';
 

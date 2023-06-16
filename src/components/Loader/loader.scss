@@ -1,0 +1,113 @@
+$uib-size: 2.8rem;
+$uib-speed: 0.9s;
+$uib-color: #183153;
+
+.dot-spinner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: #{$uib-size};
+  width: #{$uib-size};
+
+  &__dot {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100%;
+    width: 100%;
+
+    &::before {
+      $pulse-scale: 20%;
+      $pulse-opacity: 0.5;
+      content: "";
+      height: $pulse-scale;
+      width: $pulse-scale;
+      border-radius: 50%;
+      background-color: $uib-color;
+      transform: scale(0);
+      opacity: $pulse-opacity;
+      animation: pulse0112 #{$uib-speed} ease-in-out infinite;
+      box-shadow: 0 0 20px rgba(18, 31, 53, 0.3);
+    }
+  }
+}
+
+.dot-spinner__dot:nth-child(2) {
+  transform: rotate(45deg);
+}
+
+.dot-spinner__dot:nth-child(2)::before {
+  $delay: $uib-speed * -0.88;
+  animation-delay: #{$delay};
+}
+
+.dot-spinner__dot:nth-child(3) {
+  transform: rotate(90deg);
+}
+
+.dot-spinner__dot:nth-child(3)::before {
+  $delay: $uib-speed * -0.75;
+  animation-delay: #{$delay};
+}
+
+.dot-spinner__dot:nth-child(4) {
+  transform: rotate(135deg);
+}
+
+.dot-spinner__dot:nth-child(4)::before {
+  $delay: $uib-speed * -0.63;
+  animation-delay: #{$delay};
+}
+
+.dot-spinner__dot:nth-child(5) {
+  transform: rotate(180deg);
+}
+
+.dot-spinner__dot:nth-child(5)::before {
+  $delay: $uib-speed * -0.5;
+  animation-delay: #{$delay};
+}
+
+.dot-spinner__dot:nth-child(6) {
+  transform: rotate(225deg);
+}
+
+.dot-spinner__dot:nth-child(6)::before {
+  $delay: $uib-speed * -0.38;
+  animation-delay: #{$delay};
+}
+
+.dot-spinner__dot:nth-child(7) {
+  transform: rotate(270deg);
+}
+
+.dot-spinner__dot:nth-child(7)::before {
+  $delay: $uib-speed * -0.25;
+  animation-delay: #{$delay};
+}
+
+.dot-spinner__dot:nth-child(8) {
+  transform: rotate(315deg);
+}
+
+.dot-spinner__dot:nth-child(8)::before {
+  $delay: $uib-speed * -0.13;
+  animation-delay: #{$delay};
+}
+
+@keyframes pulse0112 {
+  0%,
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+
+  50% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
