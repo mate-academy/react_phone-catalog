@@ -1,4 +1,4 @@
-.phones-catalog {
+.products-list {
   &__title {
     font-weight: 700;
     font-size: 32px;
@@ -9,11 +9,11 @@
   }
 
   &__amount {
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 21px;
-    color: $color-secondary;
     margin-bottom: 40px;
+  }
+
+  &__serch-result {
+    margin: 24px 0;
   }
 
   &__dropdowns-container {
@@ -43,18 +43,8 @@
     margin-bottom: 80px;
   }
 
-  &__button-left {
+  &__button {
     flex-shrink: 0;
-    &::before {
-      background: url("../../helpers/icons/button-left.svg") no-repeat center;
-    }
-  }
-
-  &__button-right {
-    flex-shrink: 0;
-    &::before {
-      background: url("../../helpers/icons/button-right.svg") no-repeat center;
-    }
   }
 
   &__pages-container {
@@ -76,9 +66,8 @@
 
     &--is-active {
       background-color: $color-primary;
-      &:-webkit-any-link {
-        color: $color-white;
-      }
+      border: 1px solid $color-primary;
+      color: $color-white;
     }
   }
 }

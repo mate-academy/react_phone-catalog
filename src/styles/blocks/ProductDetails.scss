@@ -1,49 +1,25 @@
 .product-details {
   color: $color-secondary;
 
-  &__back {
-    font-weight: 600;
-    font-size: 12px;
-    color: $color-secondary;
-    display: flex;
-    margin-bottom: 16px;
-
-    &::before {
-      content: "";
-      background: url("../../helpers/icons/button-left.svg") no-repeat center;
-      display: block;
-      width: 6px;
-      height: 15px;
-      margin-right: 15px;
-      color: $color-icons;
-    }
-
-    &:hover {
-      color: $color-primary;
-    }
+  &__not-found {
+    color: $color-primary;
+    margin-bottom: 40px;
+    font-weight: 500;
+    font-size: 22px;
   }
 
   &__title {
-    font-weight: 700;
-    font-size: 32px;
-    line-height: 41px;
     margin-bottom: 40px;
-    color: $color-primary;
   }
 
   &__main-block {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    // grid-template-rows: auto auto;
     gap: 80px 64px;
     margin-bottom: 80px;
 
     @media (max-width: 820px) {
       gap: 40px 32px;
-    }
-
-    @media (max-width: 660px) {
-      // grid-template-rows: auto auto auto;
     }
   }
 
@@ -153,6 +129,10 @@
     border: 1px solid $color-elements;
     padding: 2px;
     margin-right: 8px;
+
+    &:hover {
+      border: 1px solid $color-icons;
+    }
   }
 
   &__color-link {
@@ -174,6 +154,10 @@
     color: $color-primary;
     text-transform: uppercase;
     background-color: inherit;
+
+    &:hover {
+      border: 1px solid $color-primary;
+    }
   }
 
   &__price {
@@ -222,10 +206,18 @@
 
   &--is-active-border {
     border: 1px solid $color-primary;
+    &:hover {
+      border: 1px solid $color-primary;
+    }
   }
 
   &--is-active-background {
     color: $color-white;
+    border: 1px solid $color-primary;
     background-color: $color-primary;
+
+    &:hover {
+      border: 1px solid $color-primary;
+    }
   }
 }

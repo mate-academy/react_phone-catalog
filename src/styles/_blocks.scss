@@ -9,10 +9,14 @@
 @import "./blocks/main-product-details.scss";
 @import "./blocks/Category.scss";
 
+@import "./blocks/ProductsPage.scss";
+@import "./blocks/NoResults.scss";
+
 @import "./blocks/page-navigation.scss";
-@import "./blocks/PhonesCatalog.scss";
+@import "./blocks/ProductsList.scss";
 @import "./blocks/products-grid.scss";
 @import "./blocks/Dropdown.scss";
+@import "./blocks/BackLink.scss";
 
 @import "./blocks/ProductDetails.scss";
 
@@ -21,3 +25,6 @@
 @import "./blocks/FavoritesPage.scss";
 
 @import "./blocks/Footer.scss";
+
+@import "./blocks/NotImplemented.scss";
+@import "./blocks/Error.scss";

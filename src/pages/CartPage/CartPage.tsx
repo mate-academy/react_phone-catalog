@@ -1,13 +1,16 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import { useContext, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { BackLink } from '../../components/BackLink';
 import { CartedProduct } from '../../components/CartContext';
+import { NotImplemented } from '../../components/NotImplemented';
+import { useAlert } from '../../helpers/fuctions/useAlert';
 import { Product } from '../../helpers/types/Product';
 
 export const CartPage = () => {
   const { cartedProducts, setCartedProducts } = useContext(CartedProduct);
   const [totalPrice, setTotalPrice] = useState(0);
   const [totalAmount, setTotalAmount] = useState(0);
+  const [isCheckout, setCheckout] = useAlert(false);
 
   const removeCartedProduct = (product: Product) => {
     const arr = cartedProducts.filter(
@@ -22,27 +25,13 @@ export const CartPage = () => {
     setTotalAmount(val => val - product.count);
   };
 
-  // eslint-disable-next-line consistent-return
-  const increase = (product: Product) => {
+  const changeAmount = (product: Product, operation: 'inc' | 'dec') => {
     const arr = cartedProducts.map((pr: Product) => {
       if (pr.itemId === product.itemId) {
-        return { ...product, count: product.count + 1 };
-      }
+        if (operation === 'inc') {
+          return { ...product, count: product.count + 1 };
+        }
 
-      return pr;
-    });
-
-    window.localStorage.setItem(
-      'cartedProducts', JSON.stringify([...arr]),
-    );
-    setCartedProducts(arr);
-    setTotalPrice(val => val + product.price);
-    setTotalAmount(val => val + 1);
-  };
-
-  const decrease = (product: Product) => {
-    const arr = cartedProducts.map((pr: Product) => {
-      if (pr.itemId === product.itemId) {
         return { ...product, count: product.count - 1 };
       }
 
@@ -53,8 +42,16 @@ export const CartPage = () => {
       'cartedProducts', JSON.stringify([...arr]),
     );
     setCartedProducts(arr);
-    setTotalPrice(val => val - product.price);
-    setTotalAmount(val => val - 1);
+
+    if (operation === 'inc') {
+      setTotalPrice(val => val + product.price);
+      setTotalAmount(val => val + 1);
+    }
+
+    if (operation === 'dec') {
+      setTotalPrice(val => val - product.price);
+      setTotalAmount(val => val - 1);
+    }
   };
 
   useEffect(() => {
@@ -69,13 +66,11 @@ export const CartPage = () => {
   return (
     <section className="cart">
       <div className="cart__container _container">
-        <Link to="/phones" className="cart__back">
-          Back
-        </Link>
+        <BackLink />
 
-        <h2 className="cart__title">
+        <h1 className="cart__title">
           Cart
-        </h2>
+        </h1>
 
         {cartedProducts.length === 0 ? (
           <p>Your cart is empty</p>
@@ -88,7 +83,8 @@ export const CartPage = () => {
                     <button
                       aria-label="Mute volume"
                       type="button"
-                      className="cart__close icon-button"
+                      data-cy="cartDeleteButton"
+                      className="cart__close icon-button icon-button--close"
                       onClick={() => removeCartedProduct(product)}
                     />
 
@@ -110,13 +106,13 @@ export const CartPage = () => {
                         className="
                           cart__button
                           icon-button"
-                        onClick={() => decrease(product)}
+                        onClick={() => changeAmount(product, 'dec')}
                         disabled={product.count === 1}
                       >
                         -
                       </button>
 
-                      <p className="cart__count">
+                      <p className="cart__count" data-cy="productQauntity">
                         {product.count}
                       </p>
 
@@ -125,7 +121,7 @@ export const CartPage = () => {
                         className="
                           cart__button
                           icon-button"
-                        onClick={() => increase(product)}
+                        onClick={() => changeAmount(product, 'inc')}
                       >
                         +
                       </button>
@@ -146,6 +142,7 @@ export const CartPage = () => {
                   className="
                     cart__button-checkout
                     icon-button"
+                  onClick={setCheckout}
                 >
                   Checkout
                 </button>
@@ -153,6 +150,8 @@ export const CartPage = () => {
             </div>
           )}
       </div>
+
+      {isCheckout && <NotImplemented callback={setCheckout} />}
     </section>
   );
 };

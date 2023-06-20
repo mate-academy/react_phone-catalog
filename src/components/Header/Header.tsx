@@ -99,6 +99,7 @@ export const Header: React.FC<Props> = ({ menuItems, toggleMenu }) => {
               <button
                 type="button"
                 aria-label="Mute volume"
+                data-cy="searchDelete"
                 className="header__search-button"
                 onClick={handleClick}
               />

@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import {
+import React, {
   RefObject, useEffect, useLayoutEffect, useMemo, useRef, useState,
 } from 'react';
 
@@ -21,7 +21,7 @@ const images = [
   },
 ];
 
-export const Carousel = () => {
+export const Carousel = React.memo(() => {
   const container = useRef() as RefObject<HTMLDivElement>;
   const [currTransitionX, setCurrTransitionX] = useState(0);
   const [transitionDuration, setTransitionDuration] = useState(0);
@@ -29,6 +29,7 @@ export const Carousel = () => {
   const [currImg, setCurrImg] = useState(1);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [activeImg, setActiveImg] = useState(0);
+  const [isClick, setClick] = useState(false);
 
   const slides = useMemo(() => {
     const items = images.map(img => (
@@ -58,6 +59,7 @@ export const Carousel = () => {
 
   const rightSlide = () => {
     setTransitionDuration(1000);
+    setClick(true);
     if (currImg === images.length) {
       setCurrTransitionX((images.length + 1) * containerWidth);
       setCurrImg(1);
@@ -71,6 +73,7 @@ export const Carousel = () => {
 
   const leftSlide = () => {
     setTransitionDuration(1000);
+    setClick(true);
     if (currImg === 1) {
       setCurrTransitionX(0);
       setCurrImg(images.length);
@@ -89,6 +92,15 @@ export const Carousel = () => {
   }, []);
 
   useEffect(() => {
+    setContainerWidth(container.current?.clientWidth || 0);
+    setCurrTransitionX(currImg * containerWidth);
+  }, [windowWidth]);
+
+  useEffect(() => {
+    const width = container.current?.clientWidth || 0;
+
+    setCurrTransitionX(width);
+
     const handleWindowResize = () => {
       setWindowWidth(window.innerWidth);
       setTransitionDuration(0);
@@ -102,19 +114,8 @@ export const Carousel = () => {
   }, []);
 
   useEffect(() => {
-    setContainerWidth(container.current?.clientWidth || 0);
-    setCurrTransitionX(currImg * containerWidth);
-  }, [windowWidth]);
-
-  useEffect(() => {
-    const width = container.current?.clientWidth || 0;
-
-    setCurrTransitionX(width);
-  }, []);
-
-  useEffect(() => {
     const transitionEnd = () => {
-      if (currImg <= 1) {
+      if (currImg <= 1 && isClick) {
         setTransitionDuration(0);
         setCurrTransitionX(currImg * containerWidth);
       }
@@ -132,7 +133,7 @@ export const Carousel = () => {
     };
   }, [currImg]);
 
-  /* useEffect(() => {
+  useEffect(() => {
     const intervalId = setInterval(() => {
       rightSlide();
     }, 5000);
@@ -142,7 +143,7 @@ export const Carousel = () => {
         window.clearInterval(intervalId);
       }
     };
-  }); */
+  });
 
   return (
     <div className="home-page__carousel carousel">
@@ -150,7 +151,11 @@ export const Carousel = () => {
         <button
           type="button"
           aria-label="Mute volume"
-          className="carousel__button carousel__button-left icon-button"
+          className="
+            carousel__button
+            carousel__button-left
+            icon-button--left
+            icon-button"
           onClick={leftSlide}
         />
 
@@ -183,10 +188,14 @@ export const Carousel = () => {
         <button
           type="button"
           aria-label="Mute volume"
-          className="carousel__button carousel__button-right icon-button"
+          className="
+            carousel__button
+            carousel__button-right
+            icon-button--right
+            icon-button"
           onClick={rightSlide}
         />
       </div>
     </div>
   );
-};
+});

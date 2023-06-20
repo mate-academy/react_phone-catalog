@@ -1,16 +1,31 @@
-/* eslint-disable jsx-a11y/anchor-has-content */
-/* eslint-disable jsx-a11y/control-has-associated-label */
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { goTop } from '../../helpers/fuctions/goTop';
+import { useAlert } from '../../helpers/fuctions/useAlert';
+import { NotImplemented } from '../NotImplemented';
 
 export const Footer = () => {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+  const [isAlertShown, setAlertShown] = useAlert(false);
+  const [showTopBtn, setShowTopBtn] = useState(false);
+
+  useEffect(() => {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 400) {
+        setShowTopBtn(true);
+      } else {
+        setShowTopBtn(false);
+      }
+    });
+  }, []);
 
   return (
     <footer className="App__footer footer">
       <div className="footer__container _container">
-        <Link to="/" className="footer__logo-link">
+        <Link
+          to="/"
+          className="footer__logo-link"
+          onClick={goTop}
+        >
           <img
             className="footer__logo-img"
             src="./img/icons/LOGO.svg"
@@ -32,34 +47,48 @@ export const Footer = () => {
             </li>
 
             <li className="footer__menu-item">
-              <Link to="/contacts" className="footer__menu-link">
+              <button
+                type="button"
+                className="footer__menu-link"
+                onClick={setAlertShown}
+              >
                 contacts
-              </Link>
+              </button>
             </li>
 
             <li className="footer__menu-item">
-              <Link to="/rights" className="footer__menu-link">
+              <button
+                type="button"
+                className="footer__menu-link"
+                onClick={setAlertShown}
+              >
                 rights
-              </Link>
+              </button>
             </li>
           </ul>
         </nav>
 
-        <button
-          type="button"
-          className="footer__back-top-link"
-          onClick={scrollToTop}
-        >
-          Back to top
-        </button>
+        {showTopBtn && (
+          <>
+            <button
+              type="button"
+              className="footer__back-top-link"
+              onClick={goTop}
+            >
+              Back to top
+            </button>
 
-        <button
-          type="button"
-          className="footer__back-top-button icon-button"
-          onClick={scrollToTop}
-          aria-label="Mute volume"
-        />
+            <button
+              type="button"
+              className="footer__back-top-button icon-button"
+              onClick={goTop}
+              aria-label="Mute volume"
+            />
+          </>
+        )}
       </div>
+
+      {isAlertShown && <NotImplemented callback={setAlertShown} />}
     </footer>
   );
 };

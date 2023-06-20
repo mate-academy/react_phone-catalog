@@ -7,15 +7,15 @@ import { Header } from './components/Header';
 import { Menu } from './components/Menu';
 import { getProductsFromServer } from './helpers/fuctions/fetchProduct';
 import { HomePage } from './pages/HomePage';
-import { PhonesPage } from './pages/PhonesPage';
+import { ProductsPage } from './pages/ProductsPage';
 import { Product } from './helpers/types/Product';
-import { TabletsPage } from './pages/TabletsPage';
-import { AccessoriesPage } from './pages/AccessoriesPage';
-import { PhonesCatalog } from './components/PhonesCatalog';
+import { ProductsList } from './components/ProductsList';
 import { ProductDetailsPage } from './pages/ProductDetailsPage';
 import { CartPage } from './pages/CartPage';
 import { FavoritesPage } from './pages/FavoritesPage';
 import { CartProvider } from './components/CartContext';
+import { Loader } from './components/Loader';
+import { Error } from './components/Error';
 
 const menuItems = [
   { to: '/', title: 'home' },
@@ -27,20 +27,39 @@ const menuItems = [
 const App = () => {
   const [isActiveMenu, setActiveMenu] = useState(false);
   const [products, setProducts] = useState<Product[] | null>(null);
+  const [isLoading, setLoading] = useState(false);
+  const [isError, setError] = useState(false);
 
   const toggleMenu = () => {
     setActiveMenu(!isActiveMenu);
   };
 
   async function getProducts() {
-    const productsFromServer = await getProductsFromServer();
+    setLoading(true);
+    try {
+      const productsFromServer = await getProductsFromServer();
 
-    setProducts(productsFromServer);
+      setProducts(productsFromServer);
+    } catch (error) {
+      setError(true);
+    } finally {
+      setLoading(false);
+    }
   }
 
   useEffect(() => {
     getProducts();
   }, []);
+
+  if (isLoading) {
+    return <Loader />;
+  }
+
+  if (!isLoading && isError) {
+    return (
+      <Error />
+    );
+  }
 
   return (
     <CartProvider>
@@ -54,18 +73,54 @@ const App = () => {
         <Routes>
           <Route path="/" element={<HomePage products={products} />} />
           <Route path="/home" element={<Navigate to="/" replace />} />
-          <Route path="/phones" element={<PhonesPage />}>
-            <Route index element={<PhonesCatalog />} />
+
+          <Route path="/phones" element={<ProductsPage category="phones" />}>
+            <Route
+              index
+              element={<ProductsList title="Mobile phones" category="phones" />}
+            />
             <Route
               path=":selectedProductId"
               element={<ProductDetailsPage products={products} />}
             />
           </Route>
-          <Route path="/tablets" element={<TabletsPage />} />
-          <Route path="/accessories" element={<AccessoriesPage />} />
+
+          <Route path="/tablets" element={<ProductsPage category="tablets" />}>
+            <Route
+              index
+              element={<ProductsList title="Tablets" category="tablets" />}
+            />
+            <Route
+              path=":selectedProductId"
+              element={<ProductDetailsPage products={products} />}
+            />
+          </Route>
+
+          <Route
+            path="/accessories"
+            element={<ProductsPage category="accessories" />}
+          >
+            <Route
+              index
+              element={
+                <ProductsList title="Accessories" category="accessories" />
+              }
+            />
+            <Route
+              path=":selectedProductId"
+              element={<ProductDetailsPage products={products} />}
+            />
+          </Route>
+
           <Route path="/favorites" element={<FavoritesPage />} />
           <Route path="/cart" element={<CartPage />} />
-          <Route path="*" element={<div>Page not found</div>} />
+          <Route
+            path="*"
+            element={
+              // eslint-disable-next-line max-len
+              <div className="App__not-found"><Error message="Page is not found" /></div>
+            }
+          />
         </Routes>
         <Footer />
       </div>

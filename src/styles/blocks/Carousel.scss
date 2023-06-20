@@ -79,18 +79,11 @@
       grid-column: 1 / 2;
       grid-row: 3 / 4;
     }
-
-    &::before {
-      background: url("../../helpers/icons/button-left.svg") no-repeat center;
-    }
   }
 
   &__button-right {
     grid-column: 3 / 4;
     grid-row: 1 / 2;
-    &::before {
-      background: url("../../helpers/icons/button-right.svg") no-repeat center;
-    }
 
     @include onSmartphone {
       grid-column: 2 / 3;

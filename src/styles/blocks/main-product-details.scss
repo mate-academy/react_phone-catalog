@@ -1,4 +1,7 @@
 .main-product-details {
+  display: flex;
+  flex-direction: column;
+
   &__price {
     font-weight: 700;
     font-size: 22px;
@@ -32,6 +35,10 @@
     &:not(:last-child) {
       margin-bottom: 8px;
     }
+  }
+
+  &__characteristic-title {
+    text-transform: capitalize;
   }
 
   &__characteristic-value {

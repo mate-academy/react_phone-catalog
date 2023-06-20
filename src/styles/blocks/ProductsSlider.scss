@@ -15,15 +15,6 @@
 
   &__button-left {
     margin-right: 16px;
-    &::before {
-      background: url("../../helpers/icons/button-left.svg") no-repeat center;
-    }
-  }
-
-  &__button-right {
-    &::before {
-      background: url("../../helpers/icons/button-right.svg") no-repeat center;
-    }
   }
 
   &__static-container {

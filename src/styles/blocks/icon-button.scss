@@ -15,6 +15,24 @@
     height: 16px;
   }
 
+  &--left {
+    &::before {
+      background: url("../../helpers/icons/button-left.svg") no-repeat center;
+    }
+  }
+
+  &--right {
+    &::before {
+      background: url("../../helpers/icons/button-right.svg") no-repeat center;
+    }
+  }
+
+  &--close {
+    &::before {
+      background: url("../../helpers/icons/Close.svg") no-repeat center;
+    }
+  }
+
   &:hover {
     z-index: 2;
     border: 1px solid $color-primary;
@@ -22,9 +40,9 @@
 
   &:disabled {
     opacity: 0.5;
+    border: 1px solid $color-icons;
 
     &:hover {
-      border: 1px solid $color-icons;
       cursor: default;
     }
   }

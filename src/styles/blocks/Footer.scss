@@ -21,11 +21,6 @@
   &__navbar {
     height: 100%;
     margin: 0 auto;
-    font-weight: 700;
-    font-size: 12px;
-    line-height: 11px;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
     display: flex;
     align-items: center;
   }
@@ -36,7 +31,6 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-right: 64px;
 
     @media (max-width: 740px) {
       width: 240px;
@@ -53,6 +47,20 @@
 
   &__menu-item {
     line-height: 200%;
+    &:hover {
+      color: $color-primary;
+    }
+  }
+
+  &__menu-link {
+    color: inherit;
+    background-color: inherit;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  
     &:hover {
       color: $color-primary;
     }

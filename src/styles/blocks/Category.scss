@@ -1,5 +1,5 @@
 .category {
-  margin-bottom: 80px;
+  margin: 80px 0;
 
   &__header {
     display: flex;
@@ -15,21 +15,13 @@
     color: $color-primary;
   }
 
-  &__button {
-    width: 32px;
-    height: 32px;
-  }
+  &__buttons {
+    display: none;
 
-  &__button-left {
-    margin-right: 16px;
-    &::before {
-      background: url("../../helpers/icons/button-left.svg") no-repeat center;
-    }
-  }
-
-  &__button-right {
-    &::before {
-      background: url("../../helpers/icons/button-right.svg") no-repeat center;
+    @media (max-width: 660px) {
+      display: flex;
+      width: 80px;
+      justify-content: space-between;
     }
   }
 

@@ -12,4 +12,5 @@ export interface Product{
   year: number;
   image: string;
   count: number;
+  [key: string]: number | string;
 }
