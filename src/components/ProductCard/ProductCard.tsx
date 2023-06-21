@@ -4,20 +4,16 @@ import './ProductCard.scss';
 
 type ProductCardProps = {
   product: Product;
-  // eslint-disable-next-line react/require-default-props
-  onLoad?: () => void;
 };
 
 export const ProductCard = ({
   product: {
     imageUrl, name, price, screen, capacity, ram, discount,
   },
-  onLoad,
 }: ProductCardProps) => {
   return (
     <div className="product-card">
       <img
-        onLoad={onLoad}
         className="product-card__image"
         src={imageUrl}
         alt={name}
