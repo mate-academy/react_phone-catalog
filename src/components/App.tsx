@@ -1,9 +1,12 @@
+import { Navbar } from './Navbar/Navbar';
 import './App.scss';
 
-const App = () => (
-  <div className="App">
-    <h1>React Phone Catalog</h1>
-  </div>
-);
+const App = () => {
+  return (
+    <div className="app">
+      <Navbar />
+    </div>
+  );
+};
 
 export default App;

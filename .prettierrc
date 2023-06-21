@@ -3,10 +3,13 @@
   "jsxSingleQuote": false,
   "tabWidth": 2,
   "semi": true,
-  "trailingComma":"all",
+  "trailingComma": "all",
   "bracketSpacing": true,
   "singleAttributePerLine": true,
-  "printWidth": 120,
+  "printWidth": 80,
+  "bracketSameLine": false,
+  "arrowParens": "avoid",
+  "endOfLine": "lf",
   "overrides": [
     {
       "files": "*.scss",

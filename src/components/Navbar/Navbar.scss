@@ -1,0 +1,57 @@
+@import "../../style-utils/_variables.scss";
+
+.nav {
+  height: 64px;
+  padding-left: 24px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #c4c7c9;
+
+  &__list {
+    display: flex;
+    gap: 64px;
+
+    &--no-gap {
+      gap: 0;
+    }
+  }
+
+  &__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__link {
+    transition: color 0.5s;
+    line-height: 64px;
+    font-weight: 700;
+    font-size: 12px;
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: $color-gray;
+
+    &:hover {
+      color: $color-dark;
+    }
+
+    &--active {
+      color: #313237;
+      box-shadow: inset 0 -3px 0 $color-dark;
+    }
+  }
+
+  &__icon {
+    display: block;
+    border-left: 1px solid #c4c7c9;
+    padding: 24px;
+    filter: invert(21%) sepia(0%) saturate(15%) hue-rotate(218deg)
+      brightness(95%) contrast(101%);
+
+    &:hover {
+      border-left: 1px solid $color-dark;
+      border-bottom: 1px solid $color-dark;
+    }
+  }
+}
