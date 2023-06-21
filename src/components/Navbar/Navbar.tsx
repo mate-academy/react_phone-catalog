@@ -38,21 +38,13 @@ export const Navbar = ({ children }: React.PropsWithChildren<NavbarProps>) => {
 
         <li className="nav__item">
           <NavbarLink title="Favorites">
-            <img
-              className="nav__icon"
-              src={favorite}
-              alt="Favorites"
-            />
+            <img className="nav__icon" src={favorite} alt="Favorites" />
           </NavbarLink>
         </li>
 
         <li className="nav__item">
           <NavbarLink title="Cart">
-            <img
-              className="nav__icon"
-              src={cart}
-              alt="Cart"
-            />
+            <img className="nav__icon" src={cart} alt="Cart" />
           </NavbarLink>
         </li>
       </ul>

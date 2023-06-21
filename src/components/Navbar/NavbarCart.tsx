@@ -11,11 +11,7 @@ export const NavbarCart = () => (
 
     <div className="nav__item">
       <NavbarLink title="Cart">
-        <img
-          className="nav__icon"
-          src={cart}
-          alt="Cart"
-        />
+        <img className="nav__icon" src={cart} alt="Cart" />
       </NavbarLink>
     </div>
   </nav>
