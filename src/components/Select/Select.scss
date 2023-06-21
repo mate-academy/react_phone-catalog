@@ -1,0 +1,106 @@
+@import "../../style-utils/_variables.scss";
+
+.select {
+  &__label {
+    display: block;
+    margin-bottom: 4px;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: $color-gray;
+  }
+
+  &__field {
+    font-family: Mont, system-ui, -apple-system, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    color: $color-dark;
+    background-color: transparent;
+    border: none;
+    grid-area: select;
+    width: 100%;
+    height: 100%;
+    appearance: none;
+    padding: 0;
+    outline: none;
+    cursor: pointer;
+  }
+
+  &__active {
+    display: block;
+    padding-left: 12px;
+    text-align: left;
+  }
+
+  &__dropdown {
+    background-color: white;
+    position: absolute;
+    display: none;
+    width: 100%;
+    left: 0;
+    top: 110%;
+    border: 1px solid $color-seasalt;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+
+    &--active {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  &__option {
+    padding-left: 12px;
+    width: 100%;
+    height: 32px;
+    line-height: 32px;
+    font-weight: 500;
+    font-size: 14px;
+    color: $color-gray;
+    cursor: pointer;
+
+    &:hover {
+      color: $color-dark;
+    }
+  }
+
+  &__input {
+    display: none;
+  }
+
+  &__wrapper {
+    position: relative;
+    display: grid;
+    align-items: center;
+    border: 1px solid $color-light-gray;
+    grid-template-areas: "select";
+    height: 40px;
+
+    &:hover {
+      border-color: $color-gray;
+    }
+
+    &::after {
+      content: "";
+      z-index: -1;
+      grid-area: select;
+      justify-self: end;
+      width: 10px;
+      height: 10px;
+      transform: rotate(-90deg);
+      background-repeat: no-repeat;
+      background-image: url("../../assets/l_arrow.svg");
+      margin-right: 15px;
+      filter: invert(93%) sepia(6%) saturate(337%) hue-rotate(163deg)
+        brightness(80%) contrast(93%);
+    }
+
+    &:focus-within {
+      border-color: $color-dark;
+
+      &::after {
+        transform: rotate(90deg);
+      }
+    }
+  }
+}

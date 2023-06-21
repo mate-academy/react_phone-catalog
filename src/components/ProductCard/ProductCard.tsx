@@ -1,5 +1,3 @@
-import { Link } from 'react-router-dom';
-
 import heartIcon from '../../assets/svg/heart.svg';
 import { Product } from '../../types/product';
 import './ProductCard.scss';
@@ -12,12 +10,12 @@ type ProductCardProps = {
 
 export const ProductCard = ({
   product: {
-    imageUrl, name, price, screen, capacity, ram, discount, id,
+    imageUrl, name, price, screen, capacity, ram, discount,
   },
   onLoad,
 }: ProductCardProps) => {
   return (
-    <Link to={`${id}`} className="product-card">
+    <div className="product-card">
       <img
         onLoad={onLoad}
         className="product-card__image"
@@ -62,6 +60,6 @@ export const ProductCard = ({
           />
         </button>
       </div>
-    </Link>
+    </div>
   );
 };
