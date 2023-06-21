@@ -6,7 +6,7 @@ import home from '../../assets/home.svg';
 import rightArrow from '../../assets/r_arrow.svg';
 import './BreadCrumbs.scss';
 
-export const BreadCrumbs = () => {
+export const Breadcrumbs = () => {
   const { pathname } = useLocation();
 
   const locationArray = pathname.slice(1).split('/');
