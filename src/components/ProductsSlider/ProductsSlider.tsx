@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import { FC, useMemo, useState } from 'react';
+import { useAppSelector } from '../../app/hooks';
 import './productsSlider.scss';
 
 interface Props {
@@ -12,6 +13,7 @@ export const ProductsSlider: FC<Props> = ({
   children, title, itemsLength, itemsToShow = 4,
 }) => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const theme = useAppSelector(state => state.theme.value);
   const newItemsLength = useMemo(() => {
     return itemsLength - itemsToShow;
   }, []);
@@ -37,7 +39,7 @@ export const ProductsSlider: FC<Props> = ({
   return (
     <div className="products-slider">
       <div className="products-slider__container">
-        <h1 className="products-slider__title title">{title}</h1>
+        <h1 className={`title title--${theme}`}>{title}</h1>
 
         <div className="products-slider__buttons">
           <button
@@ -45,17 +47,25 @@ export const ProductsSlider: FC<Props> = ({
             onClick={() => updateIndex(activeIndex - 1)}
             className={
               classNames(
-                'products-slider__button',
+                `products-slider__button products-slider__button--${theme}`,
                 { disabled: isFreeLeftSpace },
+                { [`disabled--${theme}`]: isFreeLeftSpace },
               )
             }
             disabled={isFreeLeftSpace}
           >
             {!isFreeLeftSpace ? (
-              <img
-                src="/_new/img/icons/arrow-left.svg"
-                alt="Left arrow"
-              />
+              theme === 'light' ? (
+                <img
+                  src="/_new/img/icons/arrow-left-dark.svg"
+                  alt="Left arrow"
+                />
+              ) : (
+                <img
+                  src="/_new/img/icons/arrow-left-light.svg"
+                  alt="Left arrow"
+                />
+              )
             ) : (
               <img
                 src="/_new/img/icons/arrow-left-disabled.svg"
@@ -69,20 +79,27 @@ export const ProductsSlider: FC<Props> = ({
             onClick={() => updateIndex(activeIndex + 1)}
             className={
               classNames(
-                'products-slider__button',
+                `products-slider__button products-slider__button--${theme}`,
                 { disabled: isFreeRightSpace },
+                { [`disabled--${theme}`]: isFreeRightSpace },
               )
             }
             disabled={isFreeRightSpace}
           >
 
             {!isFreeRightSpace ? (
-              <img
-                src="/_new/img/icons/arrow-right.svg"
-                alt="Right arrow"
-              />
+              theme === 'light' ? (
+                <img
+                  src="/_new/img/icons/arrow-right-dark.svg"
+                  alt="Left arrow"
+                />
+              ) : (
+                <img
+                  src="/_new/img/icons/arrow-right-light.svg"
+                  alt="Left arrow"
+                />
+              )
             ) : (
-
               <img
                 src="/_new/img/icons/arrow-right-disabled.svg"
                 alt="Right arrow"
@@ -94,7 +111,7 @@ export const ProductsSlider: FC<Props> = ({
 
       <div
         className="products-slider__inner"
-        style={{ transform: `translateX(-${activeIndex * 283}px)` }} // gotta play with it more
+        style={{ transform: `translateX(-${activeIndex * 282.9}px)` }}
       >
         {children}
       </div>

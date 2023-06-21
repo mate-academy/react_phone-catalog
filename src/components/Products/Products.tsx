@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { useAppDispatch } from '../../app/hooks';
 // eslint-disable-next-line max-len
 import { addFavoriteProduct, removeFavoriteProduct } from '../../features/favoriteProducts/favoriteProductsSlice';
@@ -39,7 +39,7 @@ export const Products: FC<Props> = ({ products }) => {
       if (category === 'favoriteProducts') {
         dispatch(removeFavoriteProduct(product));
       } else {
-        dispatch(removeProductFromCart(product));
+        dispatch(removeProductFromCart(product.id));
       }
     }
   };

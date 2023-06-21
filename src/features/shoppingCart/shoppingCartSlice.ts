@@ -18,13 +18,21 @@ const shoppingCartSlice = createSlice({
     addProductToCart: (state, action: PayloadAction<Product>) => {
       state.value.push(action.payload);
     },
-    removeProductFromCart: (state, action: PayloadAction<Product>) => {
-      const index = state.value.findIndex(product => {
-        return product.id === action.payload.id;
-      });
+    removeProductFromCart: (state, action: PayloadAction<number>) => {
+      state.value = state.value.filter(prod => prod.id !== action.payload);
+    },
+    addQuantity: (state, action: PayloadAction<number>) => {
+      const product = state.value.find(product => product.id === action.payload);
 
-      if (index !== -1) {
-        state.value.splice(index, 1);
+      if (product) {
+        product.quantity++;
+      }
+    },
+    subtractQuantity: (state, action: PayloadAction<number>) => {
+      const product = state.value.find(product => product.id === action.payload);
+    
+      if (product) {
+        product.quantity--;
       }
     },
   },
@@ -33,5 +41,7 @@ const shoppingCartSlice = createSlice({
 export const {
   addProductToCart,
   removeProductFromCart,
+  addQuantity,
+  subtractQuantity,
 } = shoppingCartSlice.actions;
 export default shoppingCartSlice.reducer;

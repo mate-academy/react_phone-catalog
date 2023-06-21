@@ -1,3 +1,6 @@
+@import '../base/variables.scss';
+@import '../partials/placeholders.scss';
+
 @font-face {
   font-family: "Mont-Regular";
   src: local("Mont-Regular"),
@@ -23,9 +26,26 @@ button {
 
 body {
   margin: 0;
+  overflow-x: hidden;
   padding: 0;
 }
 
 a {
   text-decoration: none;
+}
+
+.App {
+  transition: all 0.3s;
+}
+
+.dark {
+  background-color: $primary-dark-color;
+}
+
+.title {
+  @extend %h1;
+
+  &--dark {
+    color: $white-color;
+  }
 }

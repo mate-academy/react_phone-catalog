@@ -1,0 +1,94 @@
+@import '../../base/mixins.scss';
+@import '../../base/variables.scss';
+@import '../../partials/placeholders.scss';
+
+.shopping-cart {
+  min-width: 1208px;
+
+  &__back-to-home-container {
+    display: flex;
+    line-height: 10px;
+    gap: 10px;
+  }
+
+  &__notification {
+    position: absolute;
+    transition: transform 0.5s;
+    right: 10px;
+    top: 80px;
+  }
+
+  &__back-to-home-link {
+    @extend %small-text;
+    color: $secondary-color;
+  }
+
+  &__container {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__products-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__total {
+    padding: 24px;
+    max-height: 206px;
+    box-sizing: border-box;
+    border: 1px solid $elements-color;
+
+    &--light {
+      border: 1px solid $elements-color;
+    }
+  
+    &--dark {
+      border: 1px solid $hover-dark-color;
+    }
+  }
+
+  &__total-container {
+    @include flex-center;
+    flex-direction: column;
+    padding-bottom: 24px;
+    width: 100%;
+    margin-bottom: 24px;
+
+    &--light {
+      border-bottom: 1px solid $elements-color;
+    }
+
+    &--dark {
+      border-bottom: 1px solid $hover-dark-color;
+    }
+  }
+
+  &__sum {
+    @extend %h1;
+    margin: 0;
+
+    &--dark {
+      color: $hover-color;
+    }
+  }
+
+  &__number-of-items {
+    @extend %body-text;
+    color: $secondary-color;
+    margin: 0;
+  }
+
+  &__checkout {
+    width: 320px;
+    height: 48px;
+    background-color: $primary-color;
+    color: $white-color;
+    transition: box-shadow 0.3s;
+
+    &:hover {
+      @extend %button-product--hover;
+    }
+  }
+}

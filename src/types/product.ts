@@ -1,4 +1,5 @@
 export interface Product {
+  quantity: number;
   id: number,
   category: string,
   phoneId: string,

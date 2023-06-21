@@ -1,4 +1,4 @@
-import { Suspense, useMemo } from 'react';
+import { useMemo } from 'react';
 import useSwr from 'swr';
 import { Banner } from '../../components/Banner';
 import { ProductsSlider } from '../../components/ProductsSlider';
@@ -7,7 +7,6 @@ import './homepage.scss';
 import { Products } from '../../components/Products';
 import { Product } from '../../types/product';
 import { BASE_URL, fetcher } from '../../api/productsApi';
-import { Loader } from '../../components/Loader/Loader';
 
 const imagesForBanner = [
   '/_new/img/banner-phones.png',
@@ -43,7 +42,7 @@ export const HomePage = () => {
       <Banner images={imagesForBanner} />
       {/* // main slider */}
 
-      <ProductsSlider 
+      <ProductsSlider
         title="Hot Prices"
         itemsLength={hotPricesPhones.length}
       >

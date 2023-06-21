@@ -1,0 +1,87 @@
+@import '../../base/mixins.scss';
+@import '../../base/variables.scss';
+@import '../../partials/placeholders.scss';
+
+.product-in-shopping-cart {
+  display: flex;
+  align-items: center;
+  width: 750px;
+  gap: 30px;
+  border: 1px solid $elements-color;
+  padding: 35px;
+  transition: all 0.3s;
+
+  &--light {
+    border: 1px solid $elements-color;
+    
+    &:hover {
+      @extend %button-product--hover;
+    }
+  }
+
+  &--dark {
+    background-color: $primary-color;
+    border: 1px solid $hover-dark-color;
+
+    &:hover {
+      border: 1px solid $icons-dark-color;
+    }
+  }
+
+  &__delete-product {
+    background-color: transparent;
+  }
+
+  &__product-image {
+    @include square(66px);
+    object-fit: contain;
+  }
+
+  &__product-name {
+    @extend %body-text;
+    margin: 0;
+    flex: 1 0;
+
+    &--dark {
+      color: $hover-color;
+    }
+  }
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    width: 230px;
+  }
+
+  &__counter {
+    display: flex;
+    align-items: center;
+    
+    gap: 13px;
+  }
+
+  &__button {
+    @include flex-center;
+    @include square(32px);
+    border: 1px solid $icons-color;
+    background-color: transparent;
+  }
+
+  &__quantity {
+    @extend %body-text;
+    margin: 0;
+    
+    &--dark {
+      color: $hover-color;
+    }
+  }
+
+  &__price {
+    @extend %h2;
+    margin: 0;
+
+    &--dark {
+      color: $hover-color;
+    }
+  }
+}

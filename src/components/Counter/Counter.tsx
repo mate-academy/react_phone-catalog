@@ -4,14 +4,15 @@ import './counter.scss';
 
 interface Props {
   count: number;
+  theme: string;
 }
 
-export const Counter: FC<Props> = ({ count }) => {
+export const Counter: FC<Props> = ({ count, theme }) => {
   return (
     count > 0 ? (
-      <div className="counter">
+      <span className={`counter counter--${theme}`}>
         {count}
-      </div>
+      </span>
     ) : (
       <></>
     )

@@ -20,7 +20,14 @@
     @extend %h3;
     display: inline-block;
     margin: 24px 0 4px;
-    color: $primary-color;
+    
+    &--light {
+      color: $primary-color;
+    }
+
+    &--dark {
+      color: $white-color;
+    }
   }
 
   &__link {

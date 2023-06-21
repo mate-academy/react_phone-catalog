@@ -11,7 +11,14 @@
     left: 0;
     width: 100%;
     height: 96px;
-    border-top: 1px solid $border-line-color;
+    
+    &--light {
+      border-top: 1px solid $border-line-color;
+    }
+
+    &--dark {
+      border-top: 1px solid $border-line-dark-color;
+    }
   }
 
   &__nav-list {
@@ -32,12 +39,19 @@
     @extend %uppercase;
     text-decoration: none;
     position: relative;
-    color: $secondary-color;
     transition: color 0.5s ease;
+    color: $secondary-color;
 
-    &:hover {
-      color: $primary-color;
-      transition: color 0.5s ease;
+    &--light {
+      &:hover {
+        color: $primary-color;
+      }
+    }
+
+    &--dark {
+      &:hover {
+        color: $white-color;
+      }
     }
   }
 
@@ -53,9 +67,26 @@
 
   &__back-to-top-button {
     @include flex-center;
-    border: 1px solid $border-line-color;
     width: 32px;
     height: 32px;
-    background-color: $white-color;
+    transition: all 0.3s;
+    
+    &--light {
+      background-color: $white-color;
+      border: 1px solid $border-line-color;
+
+      &:hover {
+        border: 1px solid $secondary-color;
+      }
+    }
+
+    &--dark {
+      background-color: transparent;
+      border: 1px solid $icons-color;
+
+      &:hover {
+        border: 1px solid $white-color;
+      }
+    }
   }
 }

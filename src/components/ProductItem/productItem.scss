@@ -3,13 +3,29 @@
 @import "../../partials/placeholders.scss";
 
 .product {
-  box-sizing: border-box;
-  max-width: 290px;
-  height: 507px;
-  padding: 32px 24px 24px;
   display: flex;
+  max-width: 273px;
   flex-direction: column;
-  border: 1px solid $elements-color;
+  box-sizing: border-box;
+  padding: 32px 24px 24px;
+  transition: all 0.3s;
+  
+  &--light {
+    border: 1px solid $elements-color;
+    
+    &:hover {
+      @extend %button-product--hover;
+    }
+  }
+
+  &--dark {
+    background-color: $primary-color;
+    border: 1px solid $hover-dark-color;
+
+    &:hover {
+      border: 1px solid $icons-dark-color;
+    }
+  }
 
   &__link {
     @include flex-center;
@@ -25,6 +41,10 @@
     @extend %body-text;
     margin: 24px 0 0;
     flex: 1 0 45px;
+
+    &--dark {
+      color: $hover-color;
+    }
   }
 
   &__prices {
@@ -36,6 +56,10 @@
   &__price {
     @extend %h2;
     margin: 0;
+
+    &--dark {
+      color: $hover-color;
+    }
   }
 
   &__full-price {
@@ -67,6 +91,10 @@
     &-value {
       @extend %small-text;
       margin: 0;
+
+      &--dark {
+        color: $elements-color;
+      }
     }
   }
 
@@ -78,32 +106,65 @@
 
   &__add-to-card {
     @extend %buttons-text;
-    background-color: $primary-color;
     width: 175px;
-    color: $white-color;
     transition: all 0.5s;
 
-    &:hover {
-      @extend %button-product--hover;
+    &--light {
+      background-color: $primary-color;
+      color: $white-color;
+
+      &:hover {
+        @extend %button-product--hover;
+      }
     }
 
-    &--active,
-    &--active:hover {
+    &--dark {
+      color: $primary-color;
+      background-color: $elements-color;
+
+      &:hover {
+        background-color: $white-color;
+      }
+    }
+
+    &--active {
       color: $green-color;
-      background-color: $white-color;
-      border: 1px solid $elements-color;
+      
+      &--light,
+      &--light:hover {
+        background-color: $white-color;
+        border: 1px solid $elements-color;
+      }
+
+      &--dark,
+      &--dark:hover {
+        background-color: $primary-dark-color;
+        border: 1px solid $elements-color;
+      }
     }
   }
 
   &__liked {
     @include flex-center;
     @include square(40px);
-    background-color: $white-color;
-    border: 1px solid $icons-color;
     transition: border 0.3s;
 
-    &:hover {
-      border: 1px solid $primary-color;
+    &--light {
+      background-color: $white-color;
+      border: 1px solid $icons-color;
+
+      &:hover {
+        border: 1px solid $primary-color;
+      }
+    }
+
+    &--dark {
+      background-color: $primary-dark-color;
+      border: 1px solid $icons-dark-color;
+
+      &:hover {
+        border: 1px solid $white-color;
+      }
     }
 
     &--active,

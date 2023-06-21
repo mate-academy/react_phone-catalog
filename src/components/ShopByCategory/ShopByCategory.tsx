@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import { useAppSelector } from '../../app/hooks';
 import { Category } from '../Category/Category';
 import './shopByCategory.scss';
 
@@ -21,9 +22,13 @@ const models = [
 ];
 
 export const ShopByCategory: FC = () => {
+  const theme = useAppSelector(state => state.theme.value);
+  
   return (
     <div className="shop-by-category">
-      <h1>Shop by category</h1>
+      <h1 className={`title title--${theme}`}>
+        Shop by category
+      </h1>
 
       <div className="shop-by-category__categories">
         {models.map(({ source, title, quantity }) => (

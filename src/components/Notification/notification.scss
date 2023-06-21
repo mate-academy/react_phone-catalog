@@ -1,0 +1,15 @@
+@import '../../base/variables.scss';
+@import '../../base/mixins.scss';
+@import '../../partials/placeholders.scss';
+
+.notification {
+  @include flex-center;
+  background-color: rgba(226, 230, 233, 0.4);
+  max-height: 50px;
+  border-radius: 10px;
+  padding: 20px;
+
+  &__message {
+    @extend %h2;
+  }
+}

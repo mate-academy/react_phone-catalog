@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import { FC, useEffect, useState } from 'react';
+import { useAppSelector } from '../../app/hooks';
 import './banner.scss';
 
 interface Props {
@@ -8,6 +9,7 @@ interface Props {
 
 export const Banner: FC<Props> = ({ images }) => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const theme = useAppSelector(state => state.theme.value);
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
@@ -42,9 +44,13 @@ export const Banner: FC<Props> = ({ images }) => {
       <button
         type="button"
         onClick={() => handleIndexUpdate(activeIndex - 1)}
-        className="banner__button"
+        className={`banner__button banner__button--${theme}`}
       >
-        <img src="/_new/img/icons/arrow-left.svg" alt="Left arrow" />
+        {theme === 'light' ? (
+          <img src="/_new/img/icons/arrow-left-dark.svg" alt="Left arrow" />
+        ): (
+          <img src="/_new/img/icons/arrow-left-light.svg" alt="Left arrow" />
+        )}
       </button>
 
       <div className="banner__container">
@@ -69,8 +75,9 @@ export const Banner: FC<Props> = ({ images }) => {
               aria-label="Banner indicator"
               className={
                 classNames(
-                  'banner__indicator', {
+                  `banner__indicator banner__indicator--${theme}`, {
                     'banner__indicator--active': activeIndex === index,
+                    [`banner__indicator--active__${theme}`]: activeIndex === index,
                   },
                 )
               }
@@ -84,9 +91,13 @@ export const Banner: FC<Props> = ({ images }) => {
       <button
         type="button"
         onClick={() => handleIndexUpdate(activeIndex + 1)}
-        className="banner__button"
+        className={`banner__button banner__button--${theme}`}
       >
-        <img src="/_new/img/icons/arrow-right.svg" alt="Right arrow" />
+        {theme === 'light' ? (
+          <img src="/_new/img/icons/arrow-right-dark.svg" alt="Right arrow" />
+        ): (
+          <img src="/_new/img/icons/arrow-right-light.svg" alt="Right arrow" />
+        )}
       </button>
     </div>
   );

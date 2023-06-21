@@ -1,13 +1,18 @@
-import { Route, Router, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import './base/App.scss';
 import { Suspense } from 'react';
 import { HomePage } from './pages/HomePage';
 import { Layout } from './components/Layout';
 import { Loader } from './components/Loader/Loader';
+import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
+import { useAppSelector } from './app/hooks';
+import { ShoppingCartPage } from './pages/ShoppingCartPage';
 
 const App = () => {
+  const theme = useAppSelector(state => state.theme.value);
+
   return (
-    <div className="App">
+    <div className={`App ${theme}`}>
       <Layout>
         <Routes>
           <Route
@@ -22,8 +27,8 @@ const App = () => {
           <Route path="/tablets" />
           <Route path="/accessories" />
           <Route path="/favorites" />
-          <Route path="/shopping-cart" />
-          <Route path="*" element={<h1>You have reached the wrong path</h1>}/>
+          <Route path="/shopping-cart" element={<ShoppingCartPage />} /> 
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Layout>
     </div>

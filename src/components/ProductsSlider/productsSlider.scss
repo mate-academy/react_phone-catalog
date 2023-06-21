@@ -4,7 +4,7 @@
 
 .products-slider {
   overflow: hidden;
-
+  
   &__container {
     display: flex;
     justify-content: space-between;
@@ -25,17 +25,39 @@
 
   &__button {
     @include square(32px);
-    border: 1px solid $icons-color;
-    background-color: $white-color;
-    transition: border 0.3s;
+    transition: all 0.3s;
+    box-sizing: border-box;
 
-    &:hover {
-      border: 1px solid $primary-color;
+    &--light {
+      background-color: $white-color;
+      border: 1px solid $icons-color;
+
+      &:hover {
+        border: 1px solid $secondary-color;
+      }
+    }
+
+    &--dark {
+      background-color: $border-line-dark-color;
+
+      &:hover {
+        background-color: $hover-dark-color;
+      }
     }
   }
 }
 
-.disabled,
-.disabled:hover {
-  border: 1px solid $border-line-color;
+.disabled {
+  cursor: default;
+
+  &--light,
+  &--light:hover {
+    border: 1px solid $elements-color;
+  }
+
+  &--dark,
+  &--dark:hover {
+    background-color: $primary-dark-color;
+    border: 1px solid $border-line-dark-color;
+  }
 }
