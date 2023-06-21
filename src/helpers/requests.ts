@@ -30,3 +30,8 @@ export const getBrandNewProducts = () => {
     .then(itemsWithoutDiscount =>
       itemsWithoutDiscount.sort((a, b) => b.price - a.price));
 };
+
+export const getSelectedTypeProducts = (productType: string) => {
+  return request<Product[]>('/products.json')
+    .then((products) => products.filter(({ type }) => type === productType));
+};

@@ -1,40 +1,40 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
 import { ArrowButton } from '../Button/ArrowButton';
 import { ProductsList } from '../ProductsList/ProductsList';
 import { PaginationButton } from './PaginationButton';
 import { ProductCard } from '../ProductCard/ProductCard';
-
-import { useMyParams } from '../../hooks/useQueryParams';
 import { getNumbers, getItemsToShowIndex } from '../../helpers/pagination';
 import { Product } from '../../types/product';
 import './Pagination.scss';
 
 type PaginationProps = {
   total: number;
-  perPage: string;
   products: Product[];
 };
 
-export const Pagination = ({ total, perPage, products }: PaginationProps) => {
-  const [page, setPage] = useState(1);
-  const { handleQueryParams } = useMyParams('page', `${page}`, value =>
-    setPage(+value));
+export const Pagination = ({ total, products }: PaginationProps) => {
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const handlePageChange = (value: number) => {
-    setPage(value);
-    handleQueryParams(`${value}`);
+    searchParams.set('page', `${value}`);
+    setSearchParams(searchParams);
   };
+
+  const page = Number(searchParams.get('page'));
+
+  const perPage = searchParams.get('perPage');
+
+  const numberOfPages = perPage === 'all' ? 1 : Math.ceil(total / Number(perPage));
+  const pages = getNumbers(1, numberOfPages);
+
+  const [from, to] = getItemsToShowIndex(perPage as string, page, total);
+  const visibleProducts = products.slice(from, to);
 
   useEffect(() => {
     handlePageChange(1);
   }, [perPage]);
-
-  const numberOfPages = perPage === 'all' ? 1 : Math.ceil(total / +perPage);
-  const pages = getNumbers(1, numberOfPages);
-
-  const [from, to] = getItemsToShowIndex(perPage, page, total);
-  const visibleProducts = products.slice(from, to);
 
   return (
     <>

@@ -1,28 +1,24 @@
 import { useSearchParams } from 'react-router-dom';
 import { useEffect } from 'react';
 
-export const useMyParams = (
+export const useQueryParams = (
   name: string,
   startValue: string,
-  handleStateChange: (value: string) => void,
+  handleStateChange?: (value: string) => void,
 ) => {
-  const [params, setParams] = useSearchParams();
+  const [queryParams, setParams] = useSearchParams();
 
   useEffect(() => {
-    const valueFromParams = params.get(name);
+    const valueFromParams = queryParams.get(name);
 
-    if (valueFromParams) {
+    if (valueFromParams && handleStateChange) {
       handleStateChange(valueFromParams);
     } else {
-      params.set(name, startValue);
-      setParams(params);
+      setParams({ name: startValue });
     }
   }, []);
 
-  const handleQueryParams = (value: string) => {
-    params.set(name, value);
-    setParams(params);
-  };
+  const queryParam = queryParams.get(name);
 
-  return { handleQueryParams, params };
+  return [queryParam, setParams];
 };

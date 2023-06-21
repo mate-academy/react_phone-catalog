@@ -2,9 +2,9 @@ import { Link, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
 
 import { capitalizeString } from '../../helpers/stringOperations';
-import home from '../../assets/home.svg';
-import rightArrow from '../../assets/r_arrow.svg';
-import './BreadCrumbs.scss';
+import home from '../../assets/svg/home.svg';
+import rightArrow from '../../assets/svg/r_arrow.svg';
+import './Breadcrumbs.scss';
 
 export const Breadcrumbs = () => {
   const { pathname } = useLocation();

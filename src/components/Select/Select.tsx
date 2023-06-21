@@ -1,22 +1,34 @@
-import { useEffect, useRef, useState } from 'react';
+import {
+  ChangeEvent, useEffect, useRef, useState,
+} from 'react';
 import classNames from 'classnames';
+import { useSearchParams } from 'react-router-dom';
 
+import { Option } from './Option';
 import './Select.scss';
 
 type SelectProps = {
   label: string;
   width: number;
-  currentValue: string;
+  name: string;
+  options: { [key: string]: string };
 };
 
 export const Select = ({
-  label,
-  width,
-  children,
-  currentValue,
-}: React.PropsWithChildren<SelectProps>) => {
-  const buttonEl = useRef<HTMLButtonElement>(null);
+  label, width, name, options,
+}: SelectProps) => {
+  const [searchParams, setSearchParams] = useSearchParams();
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const buttonEl = useRef<HTMLButtonElement>(null);
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { value: optionValue } = e.target;
+
+    searchParams.set(name, optionValue);
+    setSearchParams(searchParams);
+  };
+
+  const selected = options[searchParams.get(name) as string];
 
   useEffect(() => {
     const handleClickOutside = () => {
@@ -46,7 +58,7 @@ export const Select = ({
           type="button"
           className="select__field"
         >
-          <span className="select__active">{currentValue}</span>
+          <span className="select__active">{selected}</span>
         </button>
 
         <div
@@ -54,7 +66,15 @@ export const Select = ({
             'select__dropdown--active': dropdownOpen,
           })}
         >
-          {children}
+          {Object.entries(options).map(([key, value]) => (
+            <Option
+              key={key}
+              label={value}
+              value={key}
+              name={name}
+              onOptionChange={handleChange}
+            />
+          ))}
         </div>
       </div>
     </div>
