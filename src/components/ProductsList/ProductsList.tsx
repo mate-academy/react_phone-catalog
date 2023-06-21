@@ -1,21 +1,14 @@
-import { Product } from '../../types/product';
-import { ProductCard } from '../ProductCard/ProductCard';
-
 import './ProductsList.scss';
 
 type ProductsListProps = {
-  products: Product[];
+  children: React.ReactNode;
 };
 
-export const ProductsList = ({ products }: ProductsListProps) => {
+export const ProductsList = ({ children }: React.PropsWithChildren<ProductsListProps>) => {
   return (
     <>
       <ul className="products-list" data-cy="productList">
-        {products.map(product => (
-          <li key={product.id}>
-            <ProductCard product={product} />
-          </li>
-        ))}
+        {children}
       </ul>
     </>
   );
