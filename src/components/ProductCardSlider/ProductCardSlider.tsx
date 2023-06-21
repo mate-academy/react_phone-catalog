@@ -4,7 +4,6 @@ import { ProductCard } from '../ProductCard/ProductCard';
 import { Product } from '../../types/product';
 import { Slider } from '../Slider/Slider';
 import { ArrowButton } from '../Button/ArrowButton';
-
 import './ProductCardSlider.scss';
 
 type ProductCardSliderProps = {

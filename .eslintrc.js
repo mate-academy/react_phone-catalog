@@ -17,6 +17,7 @@ module.exports = {
         assert: 'either',
       },
     ],
-    'implicit-arrow-linebreak': ['off', 'beside'],
+    'implicit-arrow-linebreak': "off",
+    'max-len': "off",
   },
 };

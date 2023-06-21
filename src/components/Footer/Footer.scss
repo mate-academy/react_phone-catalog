@@ -1,0 +1,62 @@
+@import "../../style-utils/_variables.scss";
+
+.footer {
+  height: 96px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 152px;
+  color: $color-gray;
+  font-size: 12px;
+  box-shadow: 0 -1px 0 #e2e6e9;
+
+  &__list {
+    display: flex;
+    gap: 64px;
+  }
+
+  &__link {
+    transition: color 0.5s;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: $color-gray;
+
+    &:hover {
+      color: $color-dark;
+    }
+  }
+
+  &__icon {
+    filter: invert(21%) sepia(0%) saturate(15%) hue-rotate(218deg)
+      brightness(95%) contrast(101%);
+    border: 1px solid $color-light-gray;
+    padding: 11px;
+  }
+
+  &__button {
+    font-family: Mont,
+      system-ui,
+      -apple-system,
+      sans-serif;
+    background-color: #fff;
+    transition: color 0.5s;
+    line-height: 15px;
+    font-weight: 600;
+    color: $color-gray;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    border: none;
+    cursor: pointer;
+
+    &:hover {
+      color: $color-dark;
+
+      .footer__icon {
+        border-color: $color-dark;
+      }
+    }
+  }
+}

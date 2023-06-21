@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.scss';
 import { HomePage } from '../../Routes/HomePage/HomePage';
+import { Footer } from '../Footer/Footer';
 
 const App = () => {
   return (
@@ -11,6 +12,8 @@ const App = () => {
           element={<HomePage />}
         />
       </Routes>
+
+      <Footer />
     </div>
   );
 };
