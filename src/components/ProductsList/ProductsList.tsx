@@ -82,6 +82,7 @@ export const ProductsList: React.FC<Props> = ({ title, category }) => {
 
   const handlePageSelect = (selectedItem: SelectedItem) => {
     setProductsPerPage(+selectedItem.value);
+    setCurrPage(1);
   };
 
   const changePageBy = (changeBy: number) => {

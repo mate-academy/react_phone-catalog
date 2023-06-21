@@ -5,6 +5,11 @@
   min-height: 513px;
   border: 1px solid $color-elements;
   color: $color-primary;
+
+  &:hover {
+    border: 1px solid $color-primary;
+    box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+  }
   
   &__picture {
     display: block;
