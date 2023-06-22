@@ -1,0 +1,41 @@
+[
+  {
+    "img": "img/logo.png"
+  },
+  {
+    "img": "img/icon/bag.png"
+  },
+  {
+    "img": "img/icon/ChevronArrowDown.png"
+  },
+  {
+    "img": "img/icon/ChevronArrowLeft.png"
+  },
+  {
+    "img": "img/icon/ChevronArrowRight.png"
+  },
+  {
+    "img": "img/icon/ChevronArrowUp.png"
+  },
+  {
+    "img": "img/icon/Close.png"
+  },
+  {
+    "img": "img/icon/Home.png"
+  },
+  {
+    "img": "img/icon/like.png"
+  },
+  {
+    "img": "img/icon/likeRed.png"
+  },
+  {
+    "img": "img/icon/Minus.png"
+  },
+  {
+    "img": "img/icon/Plus.png"
+  },
+  {
+    "img": "img/icon/Search.png"
+  }
+]

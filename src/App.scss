@@ -1,1 +1,326 @@
-// not empty
+@font-face {
+  font-family: 'Mont-700';
+  src: url('../src/fonts/Mont-Bold.otf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Mont-500';
+  src: url('../src/fonts/Mont-Regular.otf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Mont-600';
+  src: url('../src/fonts/Mont-SemiBold.otf') format('truetype');
+}
+
+@mixin inDesktop {
+  @media (min-width: 970px) {
+    @content;
+  }
+}
+
+@mixin inIpad {
+  @media (min-width: 750px) {
+    @content;
+  }
+}
+
+@mixin inSearch {
+  @media (min-width:1090px) {
+    @content;
+  }
+}
+$blackWite:#313237;
+$Grey:#89939A;
+$Wite:#fff;
+
+body {
+  margin: 0;
+}
+.page {
+height: 200vh;
+}
+
+.container {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.header {
+  max-height: 40px;
+  box-sizing: border-box;
+  position: sticky;
+  z-index: 12;
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 0px 1px 0px #E2E6E9;
+  display: flex;
+  justify-content: space-between;
+
+  @include inDesktop {
+    max-height: 64px;
+  }
+  
+  &__buy {
+    display: flex;
+
+    & > div {
+      box-shadow: -1px 0px 0px #E2E6E9;
+    }
+  }
+
+  &__content {
+    padding: 14px 0 14px 24px;
+    display: flex;
+
+    @include inIpad {
+      gap: 64px;
+    }
+
+    @include inDesktop {
+      padding: 24px 0 26px 24px;
+    }
+  }
+
+  &__logo {
+    display: block;
+    background-image: url(./img/logo.png);
+    background-size: contain;
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    height: 12px;
+    width: 40px;
+  }
+
+  &__like {
+    height: 100%;
+  }
+
+  &__btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    position: relative;
+    cursor: pointer;
+
+    background-size: 16px 16px;
+    background-repeat: no-repeat;
+    background-position: center center;
+
+    @include inDesktop {
+      width: 64px;
+    }
+
+    &--like {
+      // background-image: url(./img/icon/like.png);
+    }
+
+    &--cart {
+      // background-image: url(./img/icon/bag.png);
+    }
+
+    &--menu {
+      position: relative;
+
+      @include inDesktop {
+        display: none;
+      }
+  
+      &::after,
+      &::before{
+        content: '';
+        position: absolute;
+        top: 50%;
+        bottom: 50%;
+        display: block;
+        background-color: $blackWite;
+        height: 2px;
+        width: 15px;
+        transition: transform ease 0.3s;
+      }
+
+      &::after {
+        left: 9px;
+        transform: rotate(315deg);
+      }
+  
+      &::before {
+        right: 7px;
+        transform: rotate(-135deg);
+      }
+  
+      &.active::before {
+        transform: rotate(-45deg);
+        right: 7px;
+      }
+  
+      &.active::after {
+        transform: rotate(225deg);
+        left: 9px;
+        
+      }
+
+      @include inDesktop {
+        &::after {
+          left: 20px;
+          transform: rotate(315deg);
+        }
+    
+        &::before {
+          right: 20px;
+          transform: rotate(-135deg);
+        }
+    
+        &.active::before {
+          transform: rotate(-45deg);
+          right: 20px;
+        }
+    
+        &.active::after {
+          transform: rotate(225deg);
+          left: 20px;
+          
+        }
+      }
+  
+      
+    }
+  }
+
+  &__search {
+    width: 210px;
+    display: flex;
+    padding: 12px;
+    justify-content: space-between;
+
+    @include inDesktop {
+      padding: 24px;
+    }
+
+    @include inSearch {
+      width: 320px;
+    }
+  }
+}
+
+.count {
+  position: absolute;
+  height: 12px;
+  width: 12px;
+  background-color: #EB5757;
+  border-radius: 50%;
+  font-family: 'Mont-600', sans-serif;
+  line-height: 12px;
+  text-align: center;
+  font-size: 9px;
+  color: #fff;
+  top: 6px;
+  right: 7px;
+  border: 1px solid #fff;
+
+  @include inDesktop {
+    top: 16px;
+    right: 17px;
+  }
+}
+
+.navigation {
+  height: 12px;
+  display: flex;
+  align-items: center;
+  gap: 64px;
+
+  &--mobiel {
+    background-color: #E2E6E9;
+    position: absolute;
+    height: 60vh;
+    width: 300px;
+    transform: translate(0, -100%);
+    transition: transform ease 0.4s;
+
+    &.active {
+      transform: translate(0, 0);
+    }
+
+    &__list {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    &__item {
+      list-style: none;
+    }
+
+    &__link {
+      font-family: 'Mont-700';
+      text-decoration: none;
+      color: #89939A;
+      text-transform: uppercase;
+
+      &:hover {
+        transition: color ease 0.3s;
+        color: #313237;
+      }
+    }
+  }
+
+  &__list {
+    margin: 0;
+    display: none;
+
+    @include inDesktop {
+      padding: 0;
+      display: flex;
+      align-items: center;
+      gap: 64px;
+    }
+  }
+
+  &__item {
+    list-style: none;
+  }
+
+  &__link {
+    font-family: 'Mont-700';
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 100%;
+    color:$Grey;
+
+    &.active {
+      color: $blackWite;
+    }
+  }
+}
+
+.field {
+  &__search {
+    &--input {
+      outline: none;
+      border: none;
+
+      &::placeholder {
+        font-family: "Mont-600", sans-serif;
+      }
+    }
+
+    &--btn {
+      display: block;
+      padding: 0;
+      height: 16px;
+      width: 16px;
+      border:none;
+      // background-image: url(../public/img/);
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-color: #fff;
+
+      &.close {
+        // background-image: url(./img/icon/Close.png);
+      }
+    }
+  }
+}
