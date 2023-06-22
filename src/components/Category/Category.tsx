@@ -31,9 +31,7 @@ export const Category: React.FC<Props> = ({ phones }) => {
             </h2>
 
             <p className="image__subtitle">
-              {phones.length}
-              {' '}
-              models
+              {`${phones.length} models`}
             </p>
           </div>
 

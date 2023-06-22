@@ -152,13 +152,11 @@ export const PhoneDetails: React.FC<Props> = ({
 
                 <div className="phones-details__price">
                   <h2 className="phones-details__price--cur">
-                    $
-                    {product.priceDiscount}
+                    {`$${product.priceDiscount}`}
                   </h2>
 
                   <p className="phones-details__price--prev">
-                    $
-                    {product.priceRegular}
+                    {`$${product.priceRegular}`}
                   </p>
                 </div>
 
@@ -179,31 +177,21 @@ export const PhoneDetails: React.FC<Props> = ({
                 <div className="phones-details__description description">
                   <div className="description--names">
                     Screen
-                    {' '}
                     <br />
-                    {' '}
                     Resolution
-                    {' '}
                     <br />
                     Processor
-                    {' '}
                     <br />
-                    {' '}
                     RAM
                   </div>
                   <div className="description--data">
-                    {product.screen}
-                    {' '}
+                    {`${product.screen} `}
                     <br />
-                    {product.resolution}
-                    {' '}
+                    {`${product.resolution} `}
                     <br />
-                    {' '}
-                    {product.processor}
-                    {' '}
+                    {`${product.processor} `}
                     <br />
-                    {' '}
-                    {product.ram}
+                    {`${product.ram} `}
                   </div>
                 </div>
               </div>

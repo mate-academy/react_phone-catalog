@@ -29,9 +29,7 @@ export const Favourites: React.FC<Props> = ({
           </h1>
 
           <p className="favourites__subtitle">
-            {likedProducts.length}
-            {' '}
-            items
+            {`${likedProducts.length} items`}
           </p>
 
           {!likedProducts.length ? (

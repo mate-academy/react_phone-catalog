@@ -56,7 +56,7 @@ export const CartButton: React.FC<Props> = ({
           'phone__button--clicked': isInCart,
         })}
       >
-        Add to cart
+        {'Add to cart'}
       </button>
     </div>
   );

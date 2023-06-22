@@ -20,8 +20,7 @@ export const CheckoutModal = () => {
           </div>
 
           <h1 className="modal__title">
-            We are sorry, but this feature is not implemented yet
-            {' :('}
+            {'We are sorry, but this feature is not implemented yet :('}
           </h1>
         </div>
       )}

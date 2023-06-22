@@ -112,8 +112,7 @@ export const Cart: React.FC<Props> = ({ cartProducts, setCartProducts }) => {
                   </div>
 
                   <p className="cart__price">
-                    $
-                    {cartItem.product.price}
+                    {`$${cartItem.product.price}`}
                   </p>
                 </div>
               ))}
@@ -127,16 +126,11 @@ export const Cart: React.FC<Props> = ({ cartProducts, setCartProducts }) => {
                       className="checkout__total"
                       data-cy="productQuantity"
                     >
-                      $
-                      {calculateTotal()}
+                      {`$${calculateTotal()}`}
                     </h1>
 
                     <p className="checkout__subtitle">
-                      Total for
-                      {' '}
-                      {cartProducts.length}
-                      {' '}
-                      items
+                      {`Total for ${cartProducts.length} items`}
                     </p>
 
                     <button
