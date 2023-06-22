@@ -10,6 +10,8 @@ import { SortSelect } from './SortSelect';
 import { PerPageSelect } from './PerPageSelect';
 import { getSelectedTypeProducts } from '../../helpers/requests';
 import './ProductPage.scss';
+import { Navbar } from '../Navbar/Navbar';
+import { SearchBar } from '../SearchBar/SearchBar';
 
 type ProductPageProps = {
   type: 'phone' | 'tablet' | 'accessory';
@@ -25,6 +27,7 @@ export const ProductPage = ({ type, title }: ProductPageProps) => {
 
   useEffect(() => {
     navigate('?sort=age&perPage=all');
+
     setIsLoading(true);
     getSelectedTypeProducts(type)
       .then(setProducts)
@@ -36,25 +39,31 @@ export const ProductPage = ({ type, title }: ProductPageProps) => {
   }
 
   return (
-    <section className="products-page">
-      <div className="products-page__crumbs">
-        <Breadcrumbs />
-      </div>
+    <>
+      <Navbar>
+        <SearchBar />
+      </Navbar>
 
-      <h1 className="products-page__title">{title}</h1>
-      <p className="products-page__count">{`${productsNum} models`}</p>
+      <section className="products-page">
+        <div className="products-page__crumbs">
+          <Breadcrumbs />
+        </div>
 
-      <div className="products-page__selectors">
-        <SortSelect />
+        <h1 className="products-page__title">{title}</h1>
+        <p className="products-page__count">{`${productsNum} models`}</p>
 
-        <PerPageSelect />
-      </div>
+        <div className="products-page__selectors">
+          <SortSelect />
 
-      {isLoading && <Loader />}
+          <PerPageSelect />
+        </div>
 
-      <div className="products-page__products-list">
-        <Pagination products={products} total={productsNum} />
-      </div>
-    </section>
+        {isLoading && <Loader />}
+
+        <div className="products-page__products-list">
+          <Pagination products={products} total={productsNum} />
+        </div>
+      </section>
+    </>
   );
 };

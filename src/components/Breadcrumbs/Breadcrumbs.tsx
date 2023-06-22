@@ -17,14 +17,33 @@ export const Breadcrumbs = () => {
         <img className="bread-crumbs__icon" src={home} alt="Home icon" />
       </Link>
 
-      {locationArray.map((location, i) => (
-        <div key={location}>
-          <img className="bread-crumbs__icon--gray" src={rightArrow} alt="" />
-          <Link className={classNames('bread-crumbs__link', { 'bread-crumbs__link--active': i === locationArray.length - 1 })} to={`/${location}`}>
-            {capitalizeString(location)}
-          </Link>
-        </div>
-      ))}
+      {locationArray.map((location, i) => {
+        const isLast = i === locationArray.length - 1;
+
+        return (
+          <div key={location}>
+            <img className="bread-crumbs__icon--gray" src={rightArrow} alt="" />
+            {isLast ? (
+              <span
+                className={classNames('bread-crumbs__link', {
+                  'bread-crumbs__link--active': isLast,
+                })}
+              >
+                {capitalizeString(location)}
+              </span>
+            ) : (
+              <Link
+                className={classNames('bread-crumbs__link', {
+                  'bread-crumbs__link--active': isLast,
+                })}
+                to={`/${location}`}
+              >
+                {capitalizeString(location)}
+              </Link>
+            )}
+          </div>
+        );
+      })}
     </nav>
   );
 };

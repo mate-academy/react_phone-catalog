@@ -4,7 +4,7 @@ import search from '../../assets/svg/search.svg';
 import close from '../../assets/svg/close.svg';
 import './SearchBar.scss';
 
-export const SearchInput = () => {
+export const SearchBar = () => {
   const [searchInput, setSearchInput] = useState('');
 
   return (
