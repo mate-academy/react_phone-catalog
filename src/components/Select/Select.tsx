@@ -1,6 +1,4 @@
-import {
-  ChangeEvent, useEffect, useRef, useState,
-} from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { useSearchParams } from 'react-router-dom';
 
@@ -14,18 +12,16 @@ type SelectProps = {
   options: { [key: string]: string };
 };
 
-export const Select = ({
-  label, width, name, options,
-}: SelectProps) => {
+export const Select = ({ label, width, name, options }: SelectProps) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const buttonEl = useRef<HTMLButtonElement>(null);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { value: optionValue } = e.target;
 
     searchParams.set(name, optionValue);
     setSearchParams(searchParams);
+    setDropdownOpen(false);
   };
 
   const selected = options[searchParams.get(name) as string];
@@ -44,17 +40,17 @@ export const Select = ({
     };
   }, []);
 
-  if (!dropdownOpen) {
-    buttonEl?.current?.blur();
-  }
-
   return (
     <div className="select">
       <label className="select__label">{label}</label>
-      <div style={{ width }} className="select__wrapper">
+      <div
+        style={{ width }}
+        className={classNames('select__wrapper', {
+          'select__wrapper--active': dropdownOpen,
+        })}
+      >
         <button
           onClick={() => setDropdownOpen(true)}
-          ref={buttonEl}
           type="button"
           className="select__field"
         >

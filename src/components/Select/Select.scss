@@ -95,7 +95,7 @@
         brightness(80%) contrast(93%);
     }
 
-    &:focus-within {
+    &--active:focus-within {
       border-color: $color-dark;
 
       &::after {

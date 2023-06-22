@@ -10,8 +10,6 @@ import { SortSelect } from './SortSelect';
 import { PerPageSelect } from './PerPageSelect';
 import { getSelectedTypeProducts } from '../../helpers/requests';
 import './ProductPage.scss';
-import { ProductCard } from '../ProductCard/ProductCard';
-import { ProductsList } from '../ProductsList/ProductsList';
 
 type ProductPageProps = {
   type: 'phone' | 'tablet' | 'accessory';
@@ -52,17 +50,7 @@ export const ProductPage = ({ type, title }: ProductPageProps) => {
         <PerPageSelect />
       </div>
 
-      {isLoading ? (
-        <Loader />
-      ) : (
-        <ProductsList>
-          {products.map(product => (
-            <li key={product.id}>
-              <ProductCard product={product} />
-            </li>
-          ))}
-        </ProductsList>
-      )}
+      {isLoading && <Loader />}
 
       <div className="products-page__products-list">
         <Pagination products={products} total={productsNum} />

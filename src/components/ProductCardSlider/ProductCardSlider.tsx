@@ -42,6 +42,7 @@ export const ProductCardSlider = ({
             alt="Sliders left arrow button"
             size="small"
           />
+
           <ArrowButton
             onClick={() => handleClick(1)}
             arrow="right"

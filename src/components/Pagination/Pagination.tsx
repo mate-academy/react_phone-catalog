@@ -8,6 +8,7 @@ import { ProductCard } from '../ProductCard/ProductCard';
 import { getNumbers, getItemsToShowIndex } from '../../helpers/pagination';
 import { Product } from '../../types/product';
 import './Pagination.scss';
+import { filterProducts } from '../../helpers/filters';
 
 type PaginationProps = {
   total: number;
@@ -23,14 +24,18 @@ export const Pagination = ({ total, products }: PaginationProps) => {
   };
 
   const page = Number(searchParams.get('page'));
-
   const perPage = searchParams.get('perPage');
+  const activeFilter = searchParams.get('sort');
 
-  const numberOfPages = perPage === 'all' ? 1 : Math.ceil(total / Number(perPage));
+  const numberOfPages
+    = perPage === 'all' ? 1 : Math.ceil(total / Number(perPage));
   const pages = getNumbers(1, numberOfPages);
 
   const [from, to] = getItemsToShowIndex(perPage as string, page, total);
-  const visibleProducts = products.slice(from, to);
+  const visibleProducts = filterProducts(
+    products,
+    activeFilter as string,
+  ).slice(from, to);
 
   useEffect(() => {
     handlePageChange(1);
