@@ -6,13 +6,24 @@
   height: 507px;
   padding: 24px;
   display: flex;
-  flex-direction: column;
   color: $color-dark;
+  flex-direction: column;
   border: 1px solid $color-platinum;
+
+  &__link {
+    text-decoration: none;
+    color: $color-dark;
+    transition: transform 0.1s ease-in-out;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
 
   &__image {
     width: 208px;
     height: 208px;
+    object-fit: contain;
     align-self: center;
     margin-bottom: 24px;
   }

@@ -11,11 +11,10 @@ import './Pagination.scss';
 import { filterProducts } from '../../helpers/filters';
 
 type PaginationProps = {
-  total: number;
   products: Product[];
 };
 
-export const Pagination = ({ total, products }: PaginationProps) => {
+export const Pagination = ({ products }: PaginationProps) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const handlePageChange = (value: number) => {
@@ -23,9 +22,10 @@ export const Pagination = ({ total, products }: PaginationProps) => {
     setSearchParams(searchParams);
   };
 
-  const page = Number(searchParams.get('page'));
+  const total = products.length;
   const perPage = searchParams.get('perPage');
   const activeFilter = searchParams.get('sort');
+  const page = Number(searchParams.get('page'));
 
   const numberOfPages
     = perPage === 'all' ? 1 : Math.ceil(total / Number(perPage));
@@ -45,7 +45,7 @@ export const Pagination = ({ total, products }: PaginationProps) => {
     <>
       <ProductsList>
         {visibleProducts.map(product => (
-          <li key={product.id}>
+          <li key={product.itemId}>
             <ProductCard product={product} />
           </li>
         ))}

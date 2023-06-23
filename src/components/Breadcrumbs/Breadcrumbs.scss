@@ -4,17 +4,17 @@
   display: flex;
   align-items: center;
   gap: 14px;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+
+  &__text {
+    color: $color-light-gray;
+  }
 
   &__link {
-    font-weight: 600;
-    font-size: 12px;
-    line-height: 15px;
     color: $color-dark;
     text-decoration: none;
-
-    &--active {
-      color: $color-light-gray;
-    }
   }
 
   &__icon {

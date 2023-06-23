@@ -12,7 +12,9 @@ type SelectProps = {
   options: { [key: string]: string };
 };
 
-export const Select = ({ label, width, name, options }: SelectProps) => {
+export const Select = ({
+  label, width, name, options,
+}: SelectProps) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [dropdownOpen, setDropdownOpen] = useState(false);
 

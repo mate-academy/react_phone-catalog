@@ -19,5 +19,6 @@ module.exports = {
     ],
     'implicit-arrow-linebreak': "off",
     'max-len': "off",
+    "react/require-default-props": "off"
   },
 };

@@ -14,7 +14,7 @@ import { Navbar } from '../Navbar/Navbar';
 import { SearchBar } from '../SearchBar/SearchBar';
 
 type ProductPageProps = {
-  type: 'phone' | 'tablet' | 'accessory';
+  type: 'phones' | 'tablets' | 'accessories';
   title: string;
 };
 
@@ -61,7 +61,7 @@ export const ProductPage = ({ type, title }: ProductPageProps) => {
         {isLoading && <Loader />}
 
         <div className="products-page__products-list">
-          <Pagination products={products} total={productsNum} />
+          <Pagination products={products} />
         </div>
       </section>
     </>

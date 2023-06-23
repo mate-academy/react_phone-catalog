@@ -1,6 +1,7 @@
 import { Product } from '../types/product';
+import { ProductDetails } from '../types/productDetails';
 
-const API_URL = 'https://mate-academy.github.io/react_phone-catalog/api/';
+const API_URL = 'https://mate-academy.github.io/react_phone-catalog/_new';
 
 const request = <T>(endpoint: string): Promise<T> => {
   return fetch(API_URL + endpoint).then(response => {
@@ -14,24 +15,27 @@ const request = <T>(endpoint: string): Promise<T> => {
 
 export const getHotPriceProducts = () => {
   return request<Product[]>('/products.json')
-    .then(products => products.filter(({ discount }) => discount > 0))
+    .then(products =>
+      products.filter(({ fullPrice, price }) => fullPrice - price > 0))
     .then(itemsWithDiscount =>
       itemsWithDiscount.sort((a, b) => {
-        const aDiff = a.price - a.price - a.price * (a.discount / 100);
-        const bDiff = b.price - b.price - b.price * (b.discount / 100);
+        const aDiff = a.fullPrice - a.price;
+        const bDiff = b.fullPrice - b.price;
 
-        return aDiff - bDiff;
+        return bDiff - aDiff;
       }));
 };
 
 export const getBrandNewProducts = () => {
-  return request<Product[]>('/products.json')
-    .then(products => products.filter(({ discount }) => discount === 0))
-    .then(itemsWithoutDiscount =>
-      itemsWithoutDiscount.sort((a, b) => b.price - a.price));
+  return request<Product[]>('/products.json').then(products =>
+    products.sort((a, b) => b.year - a.year));
 };
 
 export const getSelectedTypeProducts = (productType: string) => {
-  return request<Product[]>('/products.json')
-    .then((products) => products.filter(({ type }) => type === productType));
+  return request<Product[]>('/products.json').then(products =>
+    products.filter(({ category }) => category === productType));
+};
+
+export const getProductDetails = (productId: string) => {
+  return request<ProductDetails>(`/products/${productId}.json`);
 };
