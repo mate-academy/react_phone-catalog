@@ -1,0 +1,19 @@
+@import "../../../style-utils/_variables.scss";
+
+.fav-button {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid $color-light-gray;
+  background-color: #fff;
+
+  &:hover {
+    border-color: $color-dark;
+  }
+
+  &__icon {
+    filter: invert(21%) sepia(0%) saturate(15%) hue-rotate(218deg)
+      brightness(95%) contrast(101%);
+  }
+}

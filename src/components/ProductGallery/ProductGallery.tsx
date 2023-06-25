@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import './ProductGallery.scss';
 import classNames from 'classnames';
+import { Loader } from '../Loader/Loader';
 
 type ProductGalleryProps = {
   images: string[];
@@ -9,7 +10,14 @@ type ProductGalleryProps = {
 };
 
 export const ProductGallery = ({ images, name }: ProductGalleryProps) => {
-  const [selectedImage, setSelectedImage] = useState(images[0]);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [counter, setCounter] = useState(images.length);
+
+  useEffect(() => {
+    if (counter < 2) {
+      setSelectedImage(images[0]);
+    }
+  }, [counter]);
 
   return (
     <div className="product-gallery">
@@ -27,21 +35,25 @@ export const ProductGallery = ({ images, name }: ProductGalleryProps) => {
                 className="product-gallery__slide-image"
                 src={`_new/${image}`}
                 alt=""
+                onLoad={() => setCounter(prevCounter => prevCounter - 1)}
               />
             </button>
           </li>
         ))}
       </ul>
 
-      {selectedImage && (
-        <div className="product-gallery__wrapper">
+      <div className="product-gallery__wrapper">
+        {selectedImage ? (
           <img
+            key={selectedImage}
             className="product-gallery__selected-image"
             src={`_new/${selectedImage}`}
             alt={name}
           />
-        </div>
-      )}
+        ) : (
+          <Loader width={150} />
+        )}
+      </div>
     </div>
   );
 };

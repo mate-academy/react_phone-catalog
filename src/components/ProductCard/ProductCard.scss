@@ -75,45 +75,5 @@
   &__controls {
     display: flex;
     gap: 8px;
-    height: 40px;
-    justify-content: stretch;
-  }
-
-  &__button {
-    font-family: Mont, system-ui, -apple-system, sans-serif;
-    cursor: pointer;
-    border: none;
-    flex-basis: 176px;
-    background-color: $color-dark;
-    color: #fff;
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 21px;
-
-    &:hover {
-      box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
-    }
-
-    &-icon {
-      cursor: pointer;
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid $color-light-gray;
-      background-color: #fff;
-
-      &:hover {
-        border-color: $color-dark;
-      }
-    }
-  }
-
-  &__icon {
-    filter: invert(21%) sepia(0%) saturate(15%) hue-rotate(218deg)
-      brightness(95%) contrast(101%);
-    width: 15px;
-    height: 13.5px;
   }
 }

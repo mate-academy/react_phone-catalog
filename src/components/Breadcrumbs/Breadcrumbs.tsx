@@ -8,10 +8,7 @@ import './Breadcrumbs.scss';
 export const Breadcrumbs = () => {
   const location = useLocation();
 
-  const pathArray = location.pathname.slice(1).split('/');
-  const breadCrumbs = location.state
-    ? [location.state.prevPath, pathArray.at(-1)]
-    : pathArray;
+  const breadCrumbs = location.pathname.slice(1).split('/');
 
   return (
     <nav className="bread-crumbs">

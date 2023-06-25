@@ -1,6 +1,5 @@
 import { Breadcrumbs } from '../Breadcrumbs/Breadcrumbs';
 import { Navbar } from '../Navbar/Navbar';
-import { SearchBar } from '../SearchBar/SearchBar';
 import './NoResults.scss';
 
 type NoResultsProps = {
@@ -9,9 +8,7 @@ type NoResultsProps = {
 
 export const NoResults = ({ categoryName }: NoResultsProps) => (
   <>
-    <Navbar>
-      <SearchBar />
-    </Navbar>
+    <Navbar />
 
     <section className="products-page">
       <div className="products-page__crumbs">

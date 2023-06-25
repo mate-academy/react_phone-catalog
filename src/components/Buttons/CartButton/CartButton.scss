@@ -1,0 +1,16 @@
+@import "../../../style-utils/_variables.scss";
+
+.cart-button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background-color: $color-dark;
+  color: #fff;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+
+  &:hover {
+    box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+  }
+}

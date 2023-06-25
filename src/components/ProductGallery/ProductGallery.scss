@@ -32,6 +32,9 @@
     height: 464px;
     width: 464px;
     align-self: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   &__selected-image {

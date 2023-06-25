@@ -1,6 +1,6 @@
 import classNames from 'classnames';
-import leftArrow from '../../assets/svg/l_arrow.svg';
-import rightArrow from '../../assets/svg/r_arrow.svg';
+import leftArrow from '../../../assets/svg/l_arrow.svg';
+import rightArrow from '../../../assets/svg/r_arrow.svg';
 
 import './ArrowButton.scss';
 

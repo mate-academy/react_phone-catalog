@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { ProductCard } from '../ProductCard/ProductCard';
 import { Product } from '../../types/product';
 import { Slider } from '../Slider/Slider';
-import { ArrowButton } from '../Button/ArrowButton';
+import { ArrowButton } from '../Buttons/ArrowButton/ArrowButton';
 import './ProductCardSlider.scss';
 
 type ProductCardSliderProps = {

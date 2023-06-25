@@ -1,0 +1,67 @@
+@import "../../style-utils/_variables.scss";
+
+.product-details {
+  max-width: 1136px;
+  margin: 0 auto;
+
+  &__back {
+    margin-bottom: 16px;
+  }
+
+  &__name {
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.32px;
+    color: $color-dark;
+    margin-bottom: 40px;
+  }
+
+  &__info {
+    display: flex;
+    gap: 64px;
+    margin-bottom: 80px;
+  }
+
+  &__pickers {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+    margin-bottom: 56px;
+  }
+
+  &__price {
+    font-weight: 700;
+    font-size: 32px;
+    letter-spacing: -0.32px;
+    margin-bottom: 16px;
+
+    &--strike {
+      margin-left: 8px;
+      text-decoration: line-through;
+      font-weight: 500;
+      font-size: 22px;
+      color: $color-gray;
+    }
+  }
+
+  &__controls {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 32px;
+  }
+
+  &__id {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+    color: $color-light-gray;
+  }
+
+  &__title {
+    margin-bottom: 40px;
+  }
+
+  &__specs {
+    width: 512px;
+  }
+}

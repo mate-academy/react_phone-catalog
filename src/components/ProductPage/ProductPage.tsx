@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
 import { Breadcrumbs } from '../Breadcrumbs/Breadcrumbs';
 import { Pagination } from '../Pagination/Pagination';
@@ -9,9 +9,10 @@ import { Loader } from '../Loader/Loader';
 import { SortSelect } from './SortSelect';
 import { PerPageSelect } from './PerPageSelect';
 import { getSelectedTypeProducts } from '../../helpers/requests';
-import './ProductPage.scss';
 import { Navbar } from '../Navbar/Navbar';
 import { SearchBar } from '../SearchBar/SearchBar';
+import { filterProducts } from '../../helpers/filters';
+import './ProductPage.scss';
 
 type ProductPageProps = {
   type: 'phones' | 'tablets' | 'accessories';
@@ -20,9 +21,12 @@ type ProductPageProps = {
 
 export const ProductPage = ({ type, title }: ProductPageProps) => {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
+  const perPage = searchParams.get('perPage') || 'all';
+  const activeSorter = searchParams.get('sort') || 'age';
   const productsNum = products.length;
 
   useEffect(() => {
@@ -58,11 +62,18 @@ export const ProductPage = ({ type, title }: ProductPageProps) => {
           <PerPageSelect />
         </div>
 
-        {isLoading && <Loader />}
-
-        <div className="products-page__products-list">
-          <Pagination products={products} />
-        </div>
+        {isLoading ? (
+          <div className="products-page__loader-wrapper">
+            <Loader width={300} />
+          </div>
+        ) : (
+          <div className="products-page__products-list">
+            <Pagination
+              products={filterProducts(products, activeSorter)}
+              perPage={perPage}
+            />
+          </div>
+        )}
       </section>
     </>
   );

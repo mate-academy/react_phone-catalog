@@ -5,11 +5,6 @@
   margin: 0 auto;
   margin-bottom: 80px;
 
-  &__crumbs {
-    margin-top: 25px;
-    margin-bottom: 40px;
-  }
-
   &__title {
     font-weight: 700;
     font-size: 32px;
@@ -31,6 +26,11 @@
     display: flex;
     gap: 16px;
     margin-bottom: 24px;
+  }
+
+  &__loader-wrapper {
+    display: flex;
+    justify-content: center;
   }
 
   &__products-list {

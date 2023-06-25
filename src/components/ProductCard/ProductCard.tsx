@@ -1,7 +1,8 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-import heartIcon from '../../assets/svg/heart.svg';
 import { Product } from '../../types/product';
+import { CartButton } from '../Buttons/CartButton/CartButton';
+import { FavButton } from '../Buttons/FavButton/FavButton';
 import './ProductCard.scss';
 
 type ProductCardProps = {
@@ -10,14 +11,20 @@ type ProductCardProps = {
 
 export const ProductCard = ({
   product: {
-    image, name, price, screen, capacity, ram, fullPrice, itemId,
+    image,
+    name,
+    price,
+    screen,
+    capacity,
+    ram,
+    fullPrice,
+    itemId,
+    category,
   },
 }: ProductCardProps) => {
-  const location = useLocation();
-
   return (
     <div className="product-card">
-      <Link to={`/product/${itemId}`} className="product-card__link" state={{ prevPath: location.pathname.slice(1) }}>
+      <Link to={`/${category}/${itemId}`} className="product-card__link">
         <img className="product-card__image" src={`_new/${image}`} alt={name} />
 
         <p className="product-card__name">{name}</p>
@@ -47,17 +54,9 @@ export const ProductCard = ({
       </table>
 
       <div className="product-card__controls">
-        <button className="product-card__button" type="button">
-          Add to card
-        </button>
+        <CartButton width={176} height={40} />
 
-        <button type="button" className="product-card__button-icon">
-          <img
-            className="product-card__icon"
-            src={heartIcon}
-            alt="Add to favorites icon"
-          />
-        </button>
+        <FavButton size={40} />
       </div>
     </div>
   );

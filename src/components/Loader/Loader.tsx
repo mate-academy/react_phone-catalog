@@ -1,9 +1,13 @@
 import './Loader.scss';
 
-export const Loader = () => (
+type LoaderProps = {
+  width: number;
+};
+
+export const Loader = ({ width }: LoaderProps) => (
   <img
     className="loader"
-    width={100}
+    width={width}
     src="img/loader.png"
     alt="Loading indicator"
   />

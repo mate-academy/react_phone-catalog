@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import classNames from 'classnames';
 
-import { ArrowButton } from '../Button/ArrowButton';
+import { ArrowButton } from '../Buttons/ArrowButton/ArrowButton';
 import './Banner.scss';
 
 const bannerImages = [

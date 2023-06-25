@@ -1,41 +1,39 @@
-import { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { useEffect } from 'react';
 
-import { ArrowButton } from '../Button/ArrowButton';
+import { ArrowButton } from '../Buttons/ArrowButton/ArrowButton';
 import { ProductsList } from '../ProductsList/ProductsList';
 import { PaginationButton } from './PaginationButton';
 import { ProductCard } from '../ProductCard/ProductCard';
 import { getNumbers, getItemsToShowIndex } from '../../helpers/pagination';
 import { Product } from '../../types/product';
 import './Pagination.scss';
-import { filterProducts } from '../../helpers/filters';
+import { scrollToTop } from '../../helpers/dom';
 
 type PaginationProps = {
   products: Product[];
+  perPage: string;
 };
 
-export const Pagination = ({ products }: PaginationProps) => {
+export const Pagination = ({ products, perPage }: PaginationProps) => {
   const [searchParams, setSearchParams] = useSearchParams();
+  const total = products.length;
+  const page = Number(searchParams.get('page')) || 1;
 
   const handlePageChange = (value: number) => {
-    searchParams.set('page', `${value}`);
-    setSearchParams(searchParams);
+    if (perPage !== 'all') {
+      searchParams.set('page', `${value}`);
+      setSearchParams(searchParams);
+      scrollToTop();
+    }
   };
-
-  const total = products.length;
-  const perPage = searchParams.get('perPage');
-  const activeFilter = searchParams.get('sort');
-  const page = Number(searchParams.get('page'));
 
   const numberOfPages
     = perPage === 'all' ? 1 : Math.ceil(total / Number(perPage));
   const pages = getNumbers(1, numberOfPages);
 
   const [from, to] = getItemsToShowIndex(perPage as string, page, total);
-  const visibleProducts = filterProducts(
-    products,
-    activeFilter as string,
-  ).slice(from, to);
+  const visibleProducts = products.slice(from, to);
 
   useEffect(() => {
     handlePageChange(1);
