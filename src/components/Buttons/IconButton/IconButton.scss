@@ -2,11 +2,14 @@
 
 .button {
   width: 32px;
-  height: 32px;
   background-color: #fff;
   border: 1px solid $color-light-gray;
   transition: border 0.5s;
   cursor: pointer;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   &:hover {
     border-color: $color-dark;
@@ -25,9 +28,5 @@
       filter: invert(91%) sepia(10%) saturate(212%) hue-rotate(164deg)
         brightness(83%) contrast(86%);
     }
-  }
-
-  &--size-b {
-    height: 400px;
   }
 }

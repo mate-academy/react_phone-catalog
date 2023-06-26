@@ -1,0 +1,29 @@
+.cart {
+  max-width: 1136px;
+  margin: 0 auto;
+  padding-top: 40px;
+  padding-bottom: 85px;
+
+  &__back {
+    margin-bottom: 16px;
+  }
+
+  &__title {
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.32px;
+    margin-bottom: 24px;
+  }
+
+  &__container {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+}

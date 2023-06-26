@@ -1,0 +1,43 @@
+@import "../../style-utils/_variables.scss";
+
+.cart-el {
+  display: flex;
+  align-items: center;
+  padding: 30px 40px 30px 25px;
+  border: 1px solid $color-platinum;
+  width: 752px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  color: $color-dark;
+
+  &__delete {
+    border: none;
+    background-color: white;
+  }
+
+  &__img {
+    margin: 0 30px;
+    height: 66px;
+    width: 66px;
+    object-fit: contain;
+  }
+
+  &__controls {
+    display: flex;
+    gap: 13px;
+    align-items: center;
+    margin-left: 50px;
+    margin-right: 45px;
+  }
+
+  &__quantity {
+    color: #000;
+  }
+
+  &__price {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 140%;
+  }
+}

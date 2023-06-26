@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 import classNames from 'classnames';
 
-import { ArrowButton } from '../Buttons/ArrowButton/ArrowButton';
+import { IconButton } from '../Buttons/IconButton/IconButton';
+import leftArrow from '../../assets/svg/l_arrow.svg';
+import rightArrow from '../../assets/svg/r_arrow.svg';
 import './Banner.scss';
 
 const bannerImages = [
@@ -32,12 +34,11 @@ export const Banner = () => {
   return (
     <section className="banner">
       <div className="banner__wrapper">
-        <ArrowButton
+        <IconButton
           onClick={() => handleClick(-1)}
-          isDisabled={false}
-          arrow="left"
+          svg={leftArrow}
           alt="Banners left button"
-          size="big"
+          height={400}
         />
 
         <div className="banner__slider">
@@ -46,10 +47,7 @@ export const Banner = () => {
             style={{ transform: `translateX(${-100 * slide}%)` }}
           >
             {bannerImages.map(image => (
-              <li
-                className="banner__item"
-                key={image}
-              >
+              <li className="banner__item" key={image}>
                 <img
                   width={1040}
                   height={400}
@@ -62,12 +60,10 @@ export const Banner = () => {
           </ul>
         </div>
 
-        <ArrowButton
+        <IconButton
           onClick={() => handleClick(1)}
-          isDisabled={false}
-          arrow="right"
+          svg={rightArrow}
           alt="Banners right button"
-          size="big"
         />
       </div>
 

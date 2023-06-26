@@ -1,14 +1,16 @@
 import { useSearchParams } from 'react-router-dom';
 import { useEffect } from 'react';
 
-import { ArrowButton } from '../Buttons/ArrowButton/ArrowButton';
+import { IconButton } from '../Buttons/IconButton/IconButton';
 import { ProductsList } from '../ProductsList/ProductsList';
 import { PaginationButton } from './PaginationButton';
 import { ProductCard } from '../ProductCard/ProductCard';
+import leftArrow from '../../assets/svg/l_arrow.svg';
+import rightArrow from '../../assets/svg/r_arrow.svg';
 import { getNumbers, getItemsToShowIndex } from '../../helpers/pagination';
+import { scrollToTop } from '../../helpers/dom';
 import { Product } from '../../types/product';
 import './Pagination.scss';
-import { scrollToTop } from '../../helpers/dom';
 
 type PaginationProps = {
   products: Product[];
@@ -52,11 +54,10 @@ export const Pagination = ({ products, perPage }: PaginationProps) => {
       {numberOfPages > 1 && (
         <ul className="pagination" data-cy="pagination">
           <li>
-            <ArrowButton
+            <IconButton
               onClick={() => handlePageChange(page - 1)}
               isDisabled={page === 1}
-              size="small"
-              arrow="left"
+              svg={leftArrow}
               data-cy="paginationLeft"
               alt="Pagination left button"
             />
@@ -77,12 +78,11 @@ export const Pagination = ({ products, perPage }: PaginationProps) => {
           </li>
 
           <li>
-            <ArrowButton
-              data-cy="paginationRight"
+            <IconButton
               onClick={() => handlePageChange(page + 1)}
               isDisabled={page === numberOfPages}
-              size="small"
-              arrow="right"
+              svg={rightArrow}
+              data-cy="paginationRight"
               alt="Pagination right button"
             />
           </li>

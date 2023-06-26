@@ -17,6 +17,7 @@
     border: 1px solid $color-platinum;
     transition: border 0.3s;
     overflow: hidden;
+    background-color: #fff;
 
     &--active {
       border-color: $color-dark;

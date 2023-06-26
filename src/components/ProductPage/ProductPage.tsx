@@ -48,7 +48,7 @@ export const ProductPage = ({ type, title }: ProductPageProps) => {
         <SearchBar />
       </Navbar>
 
-      <section className="products-page">
+      <main className="products-page">
         <div className="products-page__crumbs">
           <Breadcrumbs />
         </div>
@@ -67,14 +67,14 @@ export const ProductPage = ({ type, title }: ProductPageProps) => {
             <Loader width={300} />
           </div>
         ) : (
-          <div className="products-page__products-list">
+          <section className="products-page__products-list">
             <Pagination
               products={filterProducts(products, activeSorter)}
               perPage={perPage}
             />
-          </div>
+          </section>
         )}
-      </section>
+      </main>
     </>
   );
 };
