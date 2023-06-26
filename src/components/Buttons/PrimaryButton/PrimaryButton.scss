@@ -13,4 +13,11 @@
   &:hover {
     box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
   }
+
+  &--selected {
+    color: $color-green;
+    background-color: white;
+    border: 1px solid $color-platinum;
+    z-index: -1;
+  }
 }

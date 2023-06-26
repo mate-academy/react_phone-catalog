@@ -1,10 +1,12 @@
+import classNames from 'classnames';
 import './PrimaryButton.scss';
 
 type PrimaryButtonProps = {
   width: number;
   height: number;
-  children?: React.ReactNode;
   onClick: () => void;
+  children?: React.ReactNode;
+  isActive?: boolean;
 };
 
 export const PrimaryButton = ({
@@ -12,13 +14,15 @@ export const PrimaryButton = ({
   height,
   children,
   onClick,
+  isActive,
 }: PrimaryButtonProps) => (
   <button
     onClick={onClick}
     style={{ width, height }}
-    className="cart-button"
+    className={classNames('cart-button', { 'cart-button--selected': isActive })}
     type="button"
+    disabled={isActive}
   >
-    {children}
+    {isActive ? 'Added to cart' : children}
   </button>
 );

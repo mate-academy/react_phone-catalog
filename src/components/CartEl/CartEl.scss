@@ -14,6 +14,7 @@
   &__delete {
     border: none;
     background-color: white;
+    cursor: pointer;
   }
 
   &__img {
@@ -21,6 +22,10 @@
     height: 66px;
     width: 66px;
     object-fit: contain;
+  }
+
+  &__name {
+    width: 295px;
   }
 
   &__controls {
@@ -33,9 +38,12 @@
 
   &__quantity {
     color: #000;
+    width: 15px;
+    text-align: center;
   }
 
   &__price {
+    width: 60px;
     font-size: 22px;
     font-weight: 700;
     line-height: 140%;

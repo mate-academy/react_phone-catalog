@@ -8,6 +8,5 @@ export type Product = {
   ram: string;
   itemId: string;
   category: string;
-  snippet: string;
   year: number
 };

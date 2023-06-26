@@ -4,13 +4,14 @@ import { Product } from '../../types/product';
 import { PrimaryButton } from '../Buttons/PrimaryButton/PrimaryButton';
 import { FavButton } from '../Buttons/FavButton/FavButton';
 import './ProductCard.scss';
+import { useCart } from '../../contexts/cartContext';
 
 type ProductCardProps = {
   product: Product;
 };
 
-export const ProductCard = ({
-  product: {
+export const ProductCard = ({ product }: ProductCardProps) => {
+  const {
     image,
     name,
     price,
@@ -20,8 +21,10 @@ export const ProductCard = ({
     fullPrice,
     itemId,
     category,
-  },
-}: ProductCardProps) => {
+  } = product;
+  const { addCartItem, cartItems } = useCart();
+  const isInCart = cartItems.some(item => item.id === itemId);
+
   return (
     <div className="product-card">
       <Link to={`/${category}/${itemId}`} className="product-card__link">
@@ -54,7 +57,12 @@ export const ProductCard = ({
       </table>
 
       <div className="product-card__controls">
-        <PrimaryButton onClick={() => {}} width={176} height={40}>
+        <PrimaryButton
+          onClick={() => addCartItem(product)}
+          width={176}
+          height={40}
+          isActive={isInCart}
+        >
           Add to Cart
         </PrimaryButton>
 

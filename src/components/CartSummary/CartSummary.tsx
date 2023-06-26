@@ -1,11 +1,16 @@
 import { PrimaryButton } from '../Buttons/PrimaryButton/PrimaryButton';
 import './CartSummary.scss';
 
-export const CartSummary = () => {
+type CartSummaryProps = {
+  count: number;
+  sumPrice: number;
+};
+
+export const CartSummary = ({ count, sumPrice }: CartSummaryProps) => {
   return (
     <div className="cart-summary">
-      <h2 className="cart-summary__title">3295$</h2>
-      <p className="cart-summary__total">Total for 3 items</p>
+      <h2 className="cart-summary__title">{`$${sumPrice}`}</h2>
+      <p className="cart-summary__total">{`Total for ${count} items`}</p>
 
       <PrimaryButton
         onClick={() =>

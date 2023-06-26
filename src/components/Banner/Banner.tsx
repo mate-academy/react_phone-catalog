@@ -64,6 +64,7 @@ export const Banner = () => {
           onClick={() => handleClick(1)}
           svg={rightArrow}
           alt="Banners right button"
+          height={400}
         />
       </div>
 

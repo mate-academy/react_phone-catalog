@@ -16,6 +16,7 @@ import { Specifications } from '../../types/specifications';
 import { SpecTable } from '../../components/SpecTable/SpecTable';
 import { About } from '../../components/About/About';
 import { Loader } from '../../components/Loader/Loader';
+import { useCart } from '../../contexts/cartContext';
 
 export const ProductDetailsPage = () => {
   const [selectedProduct, setSelectedProduct] = useState<ProductDetails | null>(
@@ -23,6 +24,8 @@ export const ProductDetailsPage = () => {
   );
   const [isLoading, setIsLoading] = useState(false);
   const { productId = '' } = useParams();
+  const { addCartItem, cartItems } = useCart();
+  const isInCart = cartItems.some(item => item.id === productId);
 
   const {
     name = '',
@@ -31,7 +34,7 @@ export const ProductDetailsPage = () => {
     capacityAvailable = [],
     priceRegular = 0,
     priceDiscount = 0,
-    screen,
+    screen = '',
     resolution,
     processor,
     ram,
@@ -96,7 +99,18 @@ export const ProductDetailsPage = () => {
                 </p>
 
                 <div className="product-details__controls">
-                  <PrimaryButton width={263} height={48} onClick={() => {}}>
+                  <PrimaryButton
+                    isActive={isInCart}
+                    width={263}
+                    height={48}
+                    onClick={() =>
+                      addCartItem({
+                        name,
+                        price: priceDiscount,
+                        image: images[0],
+                        itemId: productId,
+                      })}
+                  >
                     Add to cart
                   </PrimaryButton>
 
