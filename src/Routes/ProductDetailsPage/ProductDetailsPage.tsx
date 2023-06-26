@@ -10,7 +10,7 @@ import { CapacityPicker } from '../../components/CapacityPicker/CapacityPicker';
 import { ProductDetails } from '../../types/productDetails';
 import { getProductDetails } from '../../helpers/requests';
 import './ProductDetailsPage.scss';
-import { CartButton } from '../../components/Buttons/CartButton/CartButton';
+import { PrimaryButton } from '../../components/Buttons/PrimaryButton/PrimaryButton';
 import { FavButton } from '../../components/Buttons/FavButton/FavButton';
 import { Specifications } from '../../types/specifications';
 import { SpecTable } from '../../components/SpecTable/SpecTable';
@@ -96,7 +96,10 @@ export const ProductDetailsPage = () => {
                 </p>
 
                 <div className="product-details__controls">
-                  <CartButton width={263} height={48} />
+                  <PrimaryButton width={263} height={48} onClick={() => {}}>
+                    Add to cart
+                  </PrimaryButton>
+
                   <FavButton size={48} />
                 </div>
 

@@ -1,0 +1,22 @@
+@import "../../style-utils/_variables.scss";
+
+.favorites {
+  max-width: 1136px;
+  margin: 0 auto;
+
+  &__title {
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.32px;
+    color: $color-dark;
+    margin-bottom: 8px;
+  }
+
+  &__count {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    color: $color-gray;
+    margin-bottom: 40px;
+  }
+}

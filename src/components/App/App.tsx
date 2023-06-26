@@ -8,6 +8,7 @@ import { TabletsPage } from '../../Routes/TabletsPage/TabletsPage';
 import { AccessoriesPage } from '../../Routes/AccessoriesPage/AccessoriesPage';
 import { ProductDetailsPage } from '../../Routes/ProductDetailsPage/ProductDetailsPage';
 import { CartPage } from '../../Routes/CartPage/CartPage';
+import { FavoritesPage } from '../../Routes/FavoritesPage/FavoritesPage';
 
 const App = () => {
   return (
@@ -28,6 +29,7 @@ const App = () => {
           <Route path=":productId" element={<ProductDetailsPage />} />
         </Route>
         <Route path="cart" element={<CartPage />} />
+        <Route path="favorites" element={<FavoritesPage />} />
       </Routes>
 
       <Footer />

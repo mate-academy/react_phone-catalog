@@ -10,7 +10,7 @@ export const FavButton = ({ size }: FavButtonProps) => (
     <img
       className="fav-button__icon"
       src={heartIcon}
-      alt="Add to favorites icon"
+      alt="Add to favorites"
     />
   </button>
 );

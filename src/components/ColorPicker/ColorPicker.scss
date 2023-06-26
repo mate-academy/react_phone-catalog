@@ -5,10 +5,15 @@
   border-radius: 100%;
   width: 32px;
   height: 32px;
+  padding: 2px;
+  border: 1px solid $color-platinum;
+
+  &:hover {
+    border-color: $color-light-gray;
+  }
 
   &--active {
-    border: 1px solid $color-dark;
-    padding: 2px;
+    border-color: $color-dark;
   }
 
   &__container {

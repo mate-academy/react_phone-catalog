@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 
 import { Product } from '../../types/product';
-import { CartButton } from '../Buttons/CartButton/CartButton';
+import { PrimaryButton } from '../Buttons/PrimaryButton/PrimaryButton';
 import { FavButton } from '../Buttons/FavButton/FavButton';
 import './ProductCard.scss';
 
@@ -54,7 +54,9 @@ export const ProductCard = ({
       </table>
 
       <div className="product-card__controls">
-        <CartButton width={176} height={40} />
+        <PrimaryButton onClick={() => {}} width={176} height={40}>
+          Add to Cart
+        </PrimaryButton>
 
         <FavButton size={40} />
       </div>

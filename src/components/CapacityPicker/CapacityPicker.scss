@@ -10,6 +10,10 @@
   color: $color-dark;
   border: 1px solid $color-light-gray;
 
+  &:hover {
+    border-color: $color-dark;
+  }
+
   &--active {
     background-color: $color-dark;
     color: #fff;
