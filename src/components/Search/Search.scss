@@ -1,0 +1,23 @@
+@import "../../style-utils/_variables.scss";
+
+.search-results {
+  padding-top: 24px;
+
+  &__count {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    color: $color-gray;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: $color-dark;
+    text-align: center;
+    margin-bottom: 80px;
+  }
+}

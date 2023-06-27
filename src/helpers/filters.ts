@@ -1,6 +1,6 @@
 import { Product } from '../types/product';
 
-export const filterProducts = (products: Product[], activeFilter: string) => {
+export const sortProducts = (products: Product[], activeFilter: string) => {
   switch (activeFilter) {
     case 'age':
       return products.sort((a, b) => b.year - a.year);
@@ -11,4 +11,9 @@ export const filterProducts = (products: Product[], activeFilter: string) => {
     default:
       return products;
   }
+};
+
+export const filterProducts = (products: Product[], query: string) => {
+  return products.filter(({ name }) =>
+    name.toLowerCase().includes(query.toLowerCase()));
 };

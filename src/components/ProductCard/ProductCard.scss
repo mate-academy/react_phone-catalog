@@ -8,16 +8,16 @@
   display: flex;
   color: $color-dark;
   flex-direction: column;
+  transition: border 0.1s ease-in-out;
   border: 1px solid $color-platinum;
+
+  &:hover {
+    border-color: $color-dark;
+  }
 
   &__link {
     text-decoration: none;
     color: $color-dark;
-    transition: transform 0.1s ease-in-out;
-
-    &:hover {
-      transform: scale(1.05);
-    }
   }
 
   &__image {

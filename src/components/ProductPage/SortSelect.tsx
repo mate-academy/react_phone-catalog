@@ -1,4 +1,4 @@
-import { Select } from '../Select/Select';
+import { Select } from '../UI/Select/Select';
 
 const sortOptions: { [key: string]: string } = {
   age: 'Newest',

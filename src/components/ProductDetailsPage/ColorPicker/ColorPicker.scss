@@ -1,0 +1,24 @@
+@import "../../../style-utils/_variables.scss";
+
+.color {
+  display: inline-block;
+  border-radius: 100%;
+  width: 32px;
+  height: 32px;
+  padding: 2px;
+  border: 1px solid $color-platinum;
+
+  &:hover {
+    border-color: $color-light-gray;
+  }
+
+  &--active {
+    border-color: $color-dark;
+  }
+
+  &__container {
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+  }
+}

@@ -1,7 +1,10 @@
-import { Logo } from '../Logo';
-import { NavbarLink } from './NavbarLink';
+import { NavLink } from 'react-router-dom';
+import { Logo } from '../UI/Logo';
 import cart from '../../assets/svg/cart.svg';
 import './Navbar.scss';
+
+const isLinkActive = ({ isActive }: { isActive: boolean }) =>
+  `nav__link${isActive ? ' nav__link--active' : ''}`;
 
 export const NavbarCart = () => (
   <nav className="nav">
@@ -10,9 +13,9 @@ export const NavbarCart = () => (
     </div>
 
     <div className="nav__item">
-      <NavbarLink title="Cart">
+      <NavLink className={isLinkActive} to="/cart" title="Cart">
         <img className="nav__icon" src={cart} alt="Cart" />
-      </NavbarLink>
+      </NavLink>
     </div>
   </nav>
 );

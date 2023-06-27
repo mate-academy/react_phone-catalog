@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 
 import { Product } from '../../types/product';
-import { PrimaryButton } from '../Buttons/PrimaryButton/PrimaryButton';
-import { FavButton } from '../Buttons/FavButton/FavButton';
+import { PrimaryButton } from '../UI/PrimaryButton/PrimaryButton';
+import { FavButton } from '../UI/FavButton/FavButton';
 import './ProductCard.scss';
 import { useCart } from '../../contexts/cartContext';
 

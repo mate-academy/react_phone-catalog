@@ -1,0 +1,38 @@
+@import "../../../style-utils/_variables.scss";
+
+.about {
+  color: $color-dark;
+  flex-basis: 50%;
+
+  &__title {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 140%;
+    margin-bottom: 48px;
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    &-title {
+      margin-bottom: 16px;
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    &-text-container {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    &-text {
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 21px;
+      color: $color-gray;
+    }
+  }
+}

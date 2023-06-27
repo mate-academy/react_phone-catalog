@@ -1,21 +1,20 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { BackButton } from '../../components/Buttons/BackButton/BackButton';
-import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
-import { ProductGallery } from '../../components/ProductGallery/ProductGallery';
-import { Navbar } from '../../components/Navbar/Navbar';
-import { ColorPicker } from '../../components/ColorPicker/ColorPicker';
-import { CapacityPicker } from '../../components/CapacityPicker/CapacityPicker';
+import { BackButton } from '../../components/UI/BackButton/BackButton';
+import { Breadcrumbs } from '../../components/UI/Breadcrumbs/Breadcrumbs';
+import { ProductGallery } from '../../components/ProductDetailsPage/ProductGallery/ProductGallery';
+import { ColorPicker } from '../../components/ProductDetailsPage/ColorPicker/ColorPicker';
+import { CapacityPicker } from '../../components/ProductDetailsPage/CapacityPicker/CapacityPicker';
 import { ProductDetails } from '../../types/productDetails';
 import { getProductDetails } from '../../helpers/requests';
 import './ProductDetailsPage.scss';
-import { PrimaryButton } from '../../components/Buttons/PrimaryButton/PrimaryButton';
-import { FavButton } from '../../components/Buttons/FavButton/FavButton';
+import { PrimaryButton } from '../../components/UI/PrimaryButton/PrimaryButton';
+import { FavButton } from '../../components/UI/FavButton/FavButton';
 import { Specifications } from '../../types/specifications';
 import { SpecTable } from '../../components/SpecTable/SpecTable';
-import { About } from '../../components/About/About';
-import { Loader } from '../../components/Loader/Loader';
+import { About } from '../../components/ProductDetailsPage/About/About';
+import { Loader } from '../../components/UI/Loader/Loader';
 import { useCart } from '../../contexts/cartContext';
 
 export const ProductDetailsPage = () => {
@@ -64,83 +63,76 @@ export const ProductDetailsPage = () => {
   }, [productId]);
 
   return (
-    <>
-      <Navbar />
-      <section key={productId} className="product-details">
-        <Breadcrumbs />
+    <main key={productId} className="product-details">
+      <Breadcrumbs />
+      <BackButton />
+      {selectedProduct && (
+        <>
+          <h1 className="product-details__name">
+            {name}
+            {isLoading && <Loader width={25} />}
+          </h1>
 
-        <div className="product-details__back">
-          <BackButton />
-        </div>
+          <div className="product-details__info">
+            <ProductGallery key={productId} images={images} name={name} />
 
-        {selectedProduct && (
-          <>
-            <h1 className="product-details__name">
-              {name}
-              {isLoading && <Loader width={25} />}
-            </h1>
+            <div className="product-details__settings">
+              <div className="product-details__pickers">
+                <ColorPicker colors={colorsAvailable} productId={productId} />
 
-            <div className="product-details__info">
-              <ProductGallery key={productId} images={images} name={name} />
-
-              <div className="product-details__settings">
-                <div className="product-details__pickers">
-                  <ColorPicker colors={colorsAvailable} productId={productId} />
-
-                  <CapacityPicker
-                    capacities={capacityAvailable}
-                    productId={productId}
-                  />
-                </div>
-
-                <p className="product-details__price">
-                  {`$${priceDiscount}`}
-                  <span className="product-details__price--strike">{`$${priceRegular}`}</span>
-                </p>
-
-                <div className="product-details__controls">
-                  <PrimaryButton
-                    isActive={isInCart}
-                    width={263}
-                    height={48}
-                    onClick={() =>
-                      addCartItem({
-                        name,
-                        price: priceDiscount,
-                        image: images[0],
-                        itemId: productId,
-                      })}
-                  >
-                    Add to cart
-                  </PrimaryButton>
-
-                  <FavButton size={48} />
-                </div>
-
-                <SpecTable
-                  style={{ fontSize: 12, fontWeight: 600 }}
-                  specifications={productSpecs}
-                  specCount={4}
+                <CapacityPicker
+                  capacities={capacityAvailable}
+                  productId={productId}
                 />
               </div>
 
-              <p className="product-details__id">{`ID: ${productId}`}</p>
-            </div>
+              <p className="product-details__price">
+                {`$${priceDiscount}`}
+                <span className="product-details__price--strike">{`$${priceRegular}`}</span>
+              </p>
 
-            <div className="product-details__info">
-              <About description={description} />
+              <div className="product-details__controls">
+                <PrimaryButton
+                  isActive={isInCart}
+                  width={263}
+                  height={48}
+                  onClick={() =>
+                    addCartItem({
+                      name,
+                      price: priceDiscount,
+                      image: images[0],
+                      itemId: productId,
+                    })}
+                >
+                  Add to cart
+                </PrimaryButton>
 
-              <div className="product-details__specs">
-                <h2 className="product-details__title">Tech Specs</h2>
-                <SpecTable
-                  style={{ fontSize: 14, fontWeight: 500 }}
-                  specifications={productSpecs}
-                />
+                <FavButton size={48} />
               </div>
+
+              <SpecTable
+                style={{ fontSize: 12, fontWeight: 600 }}
+                specifications={productSpecs}
+                specCount={4}
+              />
             </div>
-          </>
-        )}
-      </section>
-    </>
+
+            <p className="product-details__id">{`ID: ${productId}`}</p>
+          </div>
+
+          <div className="product-details__info">
+            <About description={description} />
+
+            <div className="product-details__specs">
+              <h2 className="product-details__title">Tech Specs</h2>
+              <SpecTable
+                style={{ fontSize: 14, fontWeight: 500 }}
+                specifications={productSpecs}
+              />
+            </div>
+          </div>
+        </>
+      )}
+    </main>
   );
 };

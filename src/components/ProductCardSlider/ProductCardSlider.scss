@@ -1,9 +1,6 @@
 @import "../../style-utils/_variables.scss";
 
 .cards-container {
-  max-width: 1136px;
-  margin: 0 auto;
-
   &__header {
     display: flex;
     justify-content: space-between;

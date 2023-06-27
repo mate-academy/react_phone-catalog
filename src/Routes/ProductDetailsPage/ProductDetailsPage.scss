@@ -1,13 +1,6 @@
 @import "../../style-utils/_variables.scss";
 
 .product-details {
-  max-width: 1136px;
-  margin: 0 auto;
-
-  &__back {
-    margin-bottom: 16px;
-  }
-
   &__name {
     font-size: 32px;
     font-weight: 700;

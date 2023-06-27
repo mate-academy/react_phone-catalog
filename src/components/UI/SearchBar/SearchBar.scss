@@ -1,0 +1,48 @@
+@import "../../../style-utils/_variables.scss";
+
+.search-bar {
+  border-left: 1px solid #c4c7c9;
+  width: 327px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &:focus-within {
+    background-color: $color-seasalt;
+  }
+
+  &__field {
+    font-family: Mont,
+      system-ui,
+      -apple-system,
+      sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 18px;
+    color: $color-dark;
+    padding-left: 24px;
+    border: none;
+    height: 100%;
+    flex-grow: 1;
+    outline: none;
+
+    &:focus {
+      background-color: $color-seasalt;
+    }
+
+    &::placeholder {
+      color: $color-light-gray;
+    }
+  }
+
+  &__button {
+    border: none;
+    background-color: white;
+    padding: 0;
+  }
+
+  &__icon {
+    padding-right: 27px;
+  }
+}

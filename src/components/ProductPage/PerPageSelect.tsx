@@ -1,4 +1,4 @@
-import { Select } from '../Select/Select';
+import { Select } from '../UI/Select/Select';
 
 const perPageOptions: { [key: string]: string } = {
   all: 'all',

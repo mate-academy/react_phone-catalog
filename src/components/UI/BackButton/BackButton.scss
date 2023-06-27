@@ -1,0 +1,22 @@
+@import "../../../style-utils/_variables.scss";
+
+.back {
+  display: flex;
+  gap: 4px;
+  border: none;
+  background-color: #fff;
+  cursor: pointer;
+  align-items: center;
+  padding-bottom: 16px;
+
+  &__icon {
+    filter: invert(21%) sepia(0%) saturate(15%) hue-rotate(218deg)
+      brightness(95%) contrast(101%);
+  }
+
+  &__text {
+    font-size: 12px;
+    font-weight: 600;
+    color: $color-light-gray;
+  }
+}

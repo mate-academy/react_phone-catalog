@@ -1,12 +1,9 @@
+@import "../../style-utils/_variables.scss";
+
 .cart {
-  max-width: 1136px;
-  margin: 0 auto;
   padding-top: 40px;
   padding-bottom: 85px;
-
-  &__back {
-    margin-bottom: 16px;
-  }
+  color: $color-dark;
 
   &__title {
     font-size: 32px;
