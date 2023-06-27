@@ -5,13 +5,7 @@ import { useCart } from '../../contexts/cartContext';
 import './CartPage.scss';
 
 export const CartPage = () => {
-  const { cartItems } = useCart();
-
-  const sumPrice = cartItems.reduce(
-    (acc, curr) => acc + curr.product.price * curr.quantity,
-    0,
-  );
-  const itemsCount = cartItems.reduce((acc, curr) => acc + curr.quantity, 0);
+  const { cartItems, itemsCount, sumPrice } = useCart();
 
   return (
     <div className="cart">

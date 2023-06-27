@@ -13,3 +13,8 @@ export const changeProductId = (
 
   return splittedProductId.join('-').toLocaleLowerCase();
 };
+
+export const getClassNameForNavLink
+  = (className: string) =>
+    ({ isActive }: { isActive: boolean }) =>
+      `${className}${isActive ? ` ${className}--active` : ''}`;

@@ -21,25 +21,21 @@ export const Footer = () => (
       </li>
 
       <li className="footer__item">
-        <a href="#/" className="footer__link">Contacts</a>
+        <a href="#/" className="footer__link">
+          Contacts
+        </a>
       </li>
 
       <li className="footer__item">
-        <a href="#/" className="footer__link">Rights</a>
+        <a href="#/" className="footer__link">
+          Rights
+        </a>
       </li>
     </ul>
 
-    <button
-      className="footer__button"
-      type="button"
-      onClick={scrollToTop}
-    >
+    <button className="footer__button" type="button" onClick={scrollToTop}>
       Back to top
-      <img
-        className="footer__icon"
-        src={arrowUp}
-        alt=""
-      />
+      <img className="footer__icon" src={arrowUp} alt="" />
     </button>
   </footer>
 );

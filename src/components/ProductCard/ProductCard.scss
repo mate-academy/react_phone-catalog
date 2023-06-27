@@ -48,20 +48,8 @@
     }
   }
 
-  &__specification-table {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+  &__spec {
     margin-bottom: 16px;
-  }
-
-  &__table-row {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  &__details {
-    color: $color-gray;
   }
 
   &__controls {

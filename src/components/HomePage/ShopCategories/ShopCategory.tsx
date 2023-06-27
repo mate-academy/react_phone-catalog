@@ -21,7 +21,9 @@ export const ShopCategory = ({
         alt=""
       />
     </div>
+
     <p className="shop-categories__name">{name}</p>
+
     <p className="shop-categories__count">{`${count} models`}</p>
   </Link>
 );

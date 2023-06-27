@@ -1,16 +1,13 @@
 import { NavLink } from 'react-router-dom';
 
 import { ProductSpecPicker } from '../ProductSpecPicker/ProductSpecPicker';
-import { changeProductId } from '../../../helpers/stringOperations';
+import { changeProductId, getClassNameForNavLink } from '../../../helpers/stringOperations';
 import './CapacityPicker.scss';
 
 type CapacityPickerProps = {
   productId: string;
   capacities: string[];
 };
-
-const isLinkActive = ({ isActive }: { isActive: boolean }) =>
-  `capacity${isActive ? ' capacity--active' : ''}`;
 
 export const CapacityPicker = ({
   productId,
@@ -21,7 +18,7 @@ export const CapacityPicker = ({
       <li key={capacity}>
         <NavLink
           replace
-          className={isLinkActive}
+          className={getClassNameForNavLink('capacity')}
           to={`../${changeProductId(productId, -2, capacity)}`}
         >
           {capacity}

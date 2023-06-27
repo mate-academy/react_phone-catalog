@@ -39,7 +39,9 @@ export const CartEl = ({ product, quantity }: CartElProps) => {
           onClick={() => changeItemQuantity(itemId, -1)}
           isDisabled={quantity <= 1}
         />
+
         <p className="cart-el__quantity">{quantity}</p>
+
         <IconButton
           svg={plusIcon}
           alt="Increment quantity"

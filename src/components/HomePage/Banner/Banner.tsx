@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import classNames from 'classnames';
 
 import { IconButton } from '../../UI/IconButton/IconButton';
@@ -15,7 +15,7 @@ const bannerImages = [
 export const Banner = () => {
   const [slide, setSlide] = useState(1);
 
-  const handleClick = (operation: 1 | -1) => {
+  const handleClick = useCallback((operation: 1 | -1) => {
     setSlide(prevSlide => {
       if (operation === 1) {
         return prevSlide + 1 > 2 ? 0 : prevSlide + 1;
@@ -23,7 +23,7 @@ export const Banner = () => {
 
       return prevSlide - 1 < 0 ? 2 : prevSlide - 1;
     });
-  };
+  }, []);
 
   useEffect(() => {
     const intId = setInterval(() => handleClick(1), 5000);

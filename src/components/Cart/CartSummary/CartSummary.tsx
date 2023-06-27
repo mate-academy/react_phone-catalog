@@ -10,6 +10,7 @@ export const CartSummary = ({ count, sumPrice }: CartSummaryProps) => {
   return (
     <div className="cart-summary">
       <h2 className="cart-summary__title">{`$${sumPrice}`}</h2>
+
       <p className="cart-summary__total">{`Total for ${count} items`}</p>
 
       <PrimaryButton

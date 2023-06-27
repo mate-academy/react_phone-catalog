@@ -2,9 +2,7 @@ import { NavLink } from 'react-router-dom';
 import { Logo } from '../UI/Logo';
 import cart from '../../assets/svg/cart.svg';
 import './Navbar.scss';
-
-const isLinkActive = ({ isActive }: { isActive: boolean }) =>
-  `nav__link${isActive ? ' nav__link--active' : ''}`;
+import { getClassNameForNavLink } from '../../helpers/stringOperations';
 
 export const NavbarCart = () => (
   <nav className="nav">
@@ -13,7 +11,7 @@ export const NavbarCart = () => (
     </div>
 
     <div className="nav__item">
-      <NavLink className={isLinkActive} to="/cart" title="Cart">
+      <NavLink className={getClassNameForNavLink('nav__link')} to="/cart" title="Cart">
         <img className="nav__icon" src={cart} alt="Cart" />
       </NavLink>
     </div>

@@ -1,16 +1,13 @@
 import { NavLink } from 'react-router-dom';
 
 import { ProductSpecPicker } from '../ProductSpecPicker/ProductSpecPicker';
-import { changeProductId } from '../../../helpers/stringOperations';
+import { changeProductId, getClassNameForNavLink } from '../../../helpers/stringOperations';
 import './ColorPicker.scss';
 
 type ColorPickerProps = {
   productId: string;
   colors: string[];
 };
-
-const isLinkActive = ({ isActive }: { isActive: boolean }) =>
-  `color${isActive ? ' color--active' : ''}`;
 
 const matchColor = (color: string) => {
   switch (color) {
@@ -31,7 +28,7 @@ export const ColorPicker = ({ productId, colors }: ColorPickerProps) => (
       <li key={color}>
         <NavLink
           replace
-          className={isLinkActive}
+          className={getClassNameForNavLink('color')}
           to={`../${changeProductId(productId, -1, color)}`}
         >
           <div

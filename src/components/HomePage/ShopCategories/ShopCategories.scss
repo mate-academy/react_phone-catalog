@@ -2,9 +2,6 @@
 @import "../../../style-utils/mixins.scss";
 
 .shop-categories {
-  margin: 0 auto;
-  max-width: 1136px;
-
   &__title {
     @include h1;
     margin-bottom: 24px;
@@ -16,9 +13,8 @@
   }
 
   &__link {
-    flex-basis: 368px;
+    flex-basis: 33%;
     height: 368px;
-    flex-grow: 1;
     text-decoration: none;
     margin-bottom: 80px;
   }

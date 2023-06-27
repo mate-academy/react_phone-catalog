@@ -5,9 +5,9 @@ import favorite from '../../assets/svg/heart.svg';
 import cart from '../../assets/svg/cart.svg';
 import './Navbar.scss';
 import { SearchBar } from '../UI/SearchBar/SearchBar';
+import { getClassNameForNavLink } from '../../helpers/stringOperations';
 
-const isLinkActive = ({ isActive }: { isActive: boolean }) =>
-  `nav__link${isActive ? ' nav__link--active' : ''}`;
+const isLinkActive = getClassNameForNavLink('nav__link');
 
 type NavbarProps = {
   isSearchBar: boolean;

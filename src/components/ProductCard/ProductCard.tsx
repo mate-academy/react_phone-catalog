@@ -1,10 +1,12 @@
+import { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 
 import { Product } from '../../types/product';
 import { PrimaryButton } from '../UI/PrimaryButton/PrimaryButton';
 import { FavButton } from '../UI/FavButton/FavButton';
-import './ProductCard.scss';
+import { SpecTable } from '../SpecTable/SpecTable';
 import { useCart } from '../../contexts/cartContext';
+import './ProductCard.scss';
 
 type ProductCardProps = {
   product: Product;
@@ -25,6 +27,15 @@ export const ProductCard = ({ product }: ProductCardProps) => {
   const { addCartItem, cartItems } = useCart();
   const isInCart = cartItems.some(item => item.id === itemId);
 
+  const specsToShow = useMemo(
+    () => ({
+      Screen: screen,
+      Capacity: capacity,
+      RAM: ram,
+    }),
+    [product],
+  );
+
   return (
     <div className="product-card">
       <Link to={`/${category}/${itemId}`} className="product-card__link">
@@ -39,22 +50,15 @@ export const ProductCard = ({ product }: ProductCardProps) => {
         )}
       </p>
 
-      <table>
-        <tbody className="product-card__specification-table">
-          <tr className="product-card__table-row">
-            <td className="product-card__details">Screen</td>
-            <td>{screen}</td>
-          </tr>
-          <tr className="product-card__table-row">
-            <td className="product-card__details">Capacity</td>
-            <td>{capacity}</td>
-          </tr>
-          <tr className="product-card__table-row">
-            <td className="product-card__details">RAM</td>
-            <td>{ram}</td>
-          </tr>
-        </tbody>
-      </table>
+      <div className="product-card__spec">
+        <SpecTable
+          specifications={specsToShow}
+          style={{
+            fontSize: 12,
+            fontWeight: 600,
+          }}
+        />
+      </div>
 
       <div className="product-card__controls">
         <PrimaryButton

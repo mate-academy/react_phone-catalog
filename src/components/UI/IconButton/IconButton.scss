@@ -3,6 +3,7 @@
 
 .button {
   @include flex-center;
+  flex-shrink: 0;
   width: 32px;
   background-color: #fff;
   border: 1px solid $color-light-gray;

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 
 import { ProductCard } from '../ProductCard/ProductCard';
 import { Product } from '../../types/product';
@@ -19,17 +19,22 @@ export const ProductCardSlider = ({
 }: ProductCardSliderProps) => {
   const [slide, setSlide] = useState(0);
 
-  const maxTransition = products.length / 4 - 1;
+  const maxTransition = useMemo(() => products.length / 4 - 1, [products]);
 
-  const handleClick = (operation: 1 | -1) => {
-    setSlide(prevSlide => {
-      if (operation === 1) {
-        return Math.min(maxTransition, prevSlide + 1);
-      }
+  const handleClick = useCallback(
+    (operation: 1 | -1) => {
+      setSlide(prevSlide => {
+        const newSlide = prevSlide + operation;
 
-      return Math.max(0, prevSlide - 1);
-    });
-  };
+        if (operation === 1) {
+          return Math.min(maxTransition, newSlide);
+        }
+
+        return Math.max(0, newSlide);
+      });
+    },
+    [maxTransition],
+  );
 
   return (
     <div className="cards-container">
