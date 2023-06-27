@@ -20,7 +20,7 @@ export const Search = ({ query, products }: SearchProps) => {
           <ProductsList products={queredProducts} />
         </>
       ) : (
-        <h1 className='search-results__title'>No Search Results</h1>
+        <h1 className="search-results__title">No Search Results</h1>
       )}
     </main>
   );

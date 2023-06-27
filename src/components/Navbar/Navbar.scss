@@ -1,4 +1,5 @@
 @import "../../style-utils/_variables.scss";
+@import "../../style-utils/_mixins.scss";
 
 .nav {
   height: 64px;
@@ -17,9 +18,7 @@
   }
 
   &__item {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include flex-center;
   }
 
   &__link {
@@ -37,7 +36,7 @@
     }
 
     &--active {
-      color: #313237;
+      color: $color-dark;
       box-shadow: inset 0 -3px 0 $color-dark;
     }
   }

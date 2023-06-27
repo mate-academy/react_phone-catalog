@@ -18,9 +18,9 @@ export const Breadcrumbs = () => {
 
       {breadCrumbs.map((path, i) => (
         <div key={path}>
-          <img className="bread-crumbs__icon--gray" src={rightArrow} alt="" />
+          <img className="bread-crumbs__icon--color-gray" src={rightArrow} alt="" />
           {i === breadCrumbs.length - 1 ? (
-            <span className="bread-crumbs__text">{capitalizeString(path)}</span>
+            <span>{capitalizeString(path)}</span>
           ) : (
             <Link className="bread-crumbs__link" to={`/${path}`}>
               {capitalizeString(path)}

@@ -76,15 +76,13 @@ export const ProductDetailsPage = () => {
           <div className="product-details__info">
             <ProductGallery key={productId} images={images} name={name} />
 
-            <div className="product-details__settings">
-              <div className="product-details__pickers">
-                <ColorPicker colors={colorsAvailable} productId={productId} />
+            <div>
+              <ColorPicker colors={colorsAvailable} productId={productId} />
 
-                <CapacityPicker
-                  capacities={capacityAvailable}
-                  productId={productId}
-                />
-              </div>
+              <CapacityPicker
+                capacities={capacityAvailable}
+                productId={productId}
+              />
 
               <p className="product-details__price">
                 {`$${priceDiscount}`}

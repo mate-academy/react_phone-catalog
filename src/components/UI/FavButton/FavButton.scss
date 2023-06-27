@@ -1,10 +1,9 @@
 @import "../../../style-utils/_variables.scss";
+@import "../../../style-utils/_mixins.scss";
 
 .fav-button {
+  @include flex-center;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   border: 1px solid $color-light-gray;
   background-color: #fff;
 

@@ -1,17 +1,17 @@
 @font-face {
   font-family: "Mont";
-  src: url("../assets/fonts/Mont-Bold.otf") format("opentype");
+  src: local("Mont"), url("../assets/fonts/Mont-Bold.otf") format("opentype");
   font-weight: bold;
 }
 
 @font-face {
   font-family: "Mont";
-  src: url("../assets/fonts/Mont-Regular.otf") format("opentype");
+  src: local("Mont"), url("../assets/fonts/Mont-Regular.otf") format("opentype");
   font-weight: 400;
 }
 
 @font-face {
   font-family: "Mont";
-  src: url("../assets/fonts/Mont-SemiBold.otf") format("opentype");
+  src: local("Mont"), url("../assets/fonts/Mont-SemiBold.otf") format("opentype");
   font-weight: 600;
 }

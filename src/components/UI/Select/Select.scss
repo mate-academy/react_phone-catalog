@@ -1,20 +1,18 @@
 @import "../../../style-utils/_variables.scss";
+@import "../../../style-utils/mixins.scss";
 
 .select {
   &__label {
+    @include small-text;
     display: block;
     margin-bottom: 4px;
-    font-weight: 600;
-    font-size: 12px;
-    line-height: 15px;
     color: $color-gray;
   }
 
   &__field {
     font-family: Mont, system-ui, -apple-system, sans-serif;
+    @include body-text;
     font-weight: 600;
-    font-size: 14px;
-    line-height: 21px;
     color: $color-dark;
     background-color: transparent;
     border: none;
@@ -54,8 +52,7 @@
     width: 100%;
     height: 32px;
     line-height: 32px;
-    font-weight: 500;
-    font-size: 14px;
+    @include body-text;
     color: $color-gray;
     cursor: pointer;
 

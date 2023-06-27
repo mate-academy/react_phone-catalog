@@ -1,4 +1,6 @@
-import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
+import {
+  Navigate, Route, Routes, useLocation,
+} from 'react-router-dom';
 
 import { HomePage } from '../../Routes/HomePage/HomePage';
 import { Footer } from '../Footer/Footer';
@@ -15,8 +17,8 @@ import './App.scss';
 
 const App = () => {
   const { pathname } = useLocation();
-  const isSearchBar =
-    pathname === ('/phones' || '/tablets' || '/accessories' || '/favorites');
+  const isSearchBar
+    = pathname === ('/phones' || '/tablets' || '/accessories' || '/favorites');
 
   return (
     <div className="app">

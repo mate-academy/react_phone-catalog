@@ -1,4 +1,5 @@
 @import "../../../style-utils/_variables.scss";
+@import "../../../style-utils/mixins.scss";
 
 .search-bar {
   border-left: 1px solid #c4c7c9;
@@ -13,13 +14,9 @@
   }
 
   &__field {
-    font-family: Mont,
-      system-ui,
-      -apple-system,
-      sans-serif;
+    font-family: Mont, system-ui, -apple-system, sans-serif;
+    @include body-text;
     font-weight: 600;
-    font-size: 14px;
-    line-height: 18px;
     color: $color-dark;
     padding-left: 24px;
     border: none;

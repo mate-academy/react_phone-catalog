@@ -5,10 +5,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 152px;
-  color: $color-gray;
-  font-size: 12px;
   box-shadow: 0 -1px 0 #e2e6e9;
+  padding: 0 152px;
 
   &__list {
     display: flex;
@@ -16,12 +14,13 @@
   }
 
   &__link {
-    transition: color 0.5s;
+    font-size: 12px;
     font-weight: 700;
     letter-spacing: 0.04em;
+    color: $color-gray;
     text-transform: uppercase;
     text-decoration: none;
-    color: $color-gray;
+    transition: color 0.5s;
 
     &:hover {
       color: $color-dark;

@@ -1,12 +1,13 @@
 @import "../../../style-utils/_variables.scss";
+@import "../../../style-utils/mixins.scss";
 
 .back {
   display: flex;
+  align-items: center;
   gap: 4px;
   border: none;
   background-color: #fff;
   cursor: pointer;
-  align-items: center;
   padding-bottom: 16px;
 
   &__icon {
@@ -15,8 +16,6 @@
   }
 
   &__text {
-    font-size: 12px;
-    font-weight: 600;
-    color: $color-light-gray;
+    @include small-text;
   }
 }

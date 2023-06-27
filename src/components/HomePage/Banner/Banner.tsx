@@ -49,6 +49,7 @@ export const Banner = () => {
             {bannerImages.map(image => (
               <li className="banner__item" key={image}>
                 <img
+                  loading="eager"
                   width={1040}
                   height={400}
                   className="banner__image"

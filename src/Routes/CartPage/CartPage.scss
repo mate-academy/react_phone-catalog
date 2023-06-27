@@ -1,14 +1,12 @@
 @import "../../style-utils/_variables.scss";
+@import "../../style-utils/mixins.scss";
 
 .cart {
   padding-top: 40px;
   padding-bottom: 85px;
-  color: $color-dark;
 
   &__title {
-    font-size: 32px;
-    font-weight: 700;
-    letter-spacing: -0.32px;
+    @include h1;
     margin-bottom: 24px;
   }
 

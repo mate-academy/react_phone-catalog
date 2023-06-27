@@ -1,15 +1,12 @@
 @import "../../../style-utils/_variables.scss";
+@import "../../../style-utils/mixins.scss";
 
 .shop-categories {
   margin: 0 auto;
   max-width: 1136px;
 
   &__title {
-    font-weight: 700;
-    font-size: 32px;
-    line-height: 41px;
-    letter-spacing: -0.01em;
-    color: $color-dark;
+    @include h1;
     margin-bottom: 24px;
   }
 
@@ -69,17 +66,13 @@
   }
 
   &__name {
-    font-weight: 600;
-    font-size: 20px;
-    line-height: 26px;
+    @include h3;
     color: $color-dark;
     margin-bottom: 4px;
   }
 
   &__count {
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 21px;
+    @include body-text;
     color: $color-gray;
   }
 }

@@ -1,15 +1,13 @@
 @import "../../../style-utils/_variables.scss";
+@import "../../../style-utils/mixins.scss";
 
 .cart-el {
   display: flex;
   align-items: center;
   padding: 30px 40px 30px 25px;
-  border: 1px solid $color-platinum;
   width: 752px;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 21px;
-  color: $color-dark;
+  @include body-text;
+  border: 1px solid $color-platinum;
 
   &__delete {
     border: none;

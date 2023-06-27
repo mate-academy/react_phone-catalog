@@ -1,4 +1,5 @@
 @import "../../style-utils/_variables.scss";
+@import "../../style-utils/mixins.scss";
 
 .cards-container {
   &__header {
@@ -9,11 +10,7 @@
   }
 
   &__title {
-    font-weight: 700;
-    font-size: 32px;
-    line-height: 41px;
-    letter-spacing: -0.01em;
-    color: $color-dark;
+    @include h1;
   }
 
   &__controls {

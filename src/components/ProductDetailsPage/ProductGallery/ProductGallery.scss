@@ -1,4 +1,5 @@
 @import "../../../style-utils/_variables.scss";
+@import "../../../style-utils/_mixins.scss";
 
 .product-gallery {
   display: flex;
@@ -33,15 +34,12 @@
     height: 464px;
     width: 464px;
     align-self: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include flex-center;
   }
 
   &__selected-image {
     height: 100%;
     width: 100%;
     object-fit: contain;
-
   }
 }

@@ -1,21 +1,16 @@
 @import "../../style-utils/_variables.scss";
+@import "../../style-utils/mixins.scss";
 
 .products-page {
   margin-bottom: 80px;
 
   &__title {
-    font-weight: 700;
-    font-size: 32px;
-    line-height: 41px;
-    letter-spacing: -0.01em;
-    color: $color-dark;
+    @include h1;
     margin-bottom: 8px;
   }
 
   &__count {
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 21px;
+    @include body-text;
     color: $color-gray;
     margin-bottom: 40px;
   }
@@ -27,8 +22,7 @@
   }
 
   &__loader-wrapper {
-    display: flex;
-    justify-content: center;
+    @include flex-center;
   }
 
   &__products-list {

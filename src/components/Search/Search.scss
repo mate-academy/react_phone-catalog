@@ -1,22 +1,17 @@
 @import "../../style-utils/_variables.scss";
+@import "../../style-utils/mixins.scss";
 
 .search-results {
   padding-top: 24px;
 
   &__count {
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 21px;
+    @include body-text;
     color: $color-gray;
     margin-bottom: 24px;
   }
 
   &__title {
-    font-weight: 700;
-    font-size: 32px;
-    line-height: 41px;
-    letter-spacing: -0.01em;
-    color: $color-dark;
+    @include h1;
     text-align: center;
     margin-bottom: 80px;
   }

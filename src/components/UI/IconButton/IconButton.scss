@@ -1,15 +1,14 @@
 @import "../../../style-utils/_variables.scss";
+@import "../../../style-utils/_mixins.scss";
 
 .button {
+  @include flex-center;
   width: 32px;
   background-color: #fff;
   border: 1px solid $color-light-gray;
   transition: border 0.5s;
   cursor: pointer;
   padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 
   &:hover {
     border-color: $color-dark;

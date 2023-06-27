@@ -1,5 +1,8 @@
+@import "../../style-utils/_variables.scss";
+
 .app {
-  font-family: Mont, system-ui, -apple-system, sans-serif;
+  font-family: "Mont", system-ui, -apple-system, sans-serif;
+  color: $color-dark;
 
   &__main {
     max-width: 1136px;

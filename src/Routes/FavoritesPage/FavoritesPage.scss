@@ -1,18 +1,14 @@
 @import "../../style-utils/_variables.scss";
+@import "../../style-utils/mixins.scss";
 
 .favorites {
   &__title {
-    font-size: 32px;
-    font-weight: 700;
-    letter-spacing: -0.32px;
-    color: $color-dark;
+    @include h1;
     margin-bottom: 8px;
   }
 
   &__count {
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 21px;
+    @include body-text;
     color: $color-gray;
     margin-bottom: 40px;
   }

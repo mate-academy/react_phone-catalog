@@ -1,18 +1,13 @@
 @import "../../../style-utils/_variables.scss";
+@import "../../../style-utils/mixins.scss";
 
 .bread-crumbs {
+  @include small-text;
   display: flex;
   align-items: center;
   gap: 14px;
-  font-weight: 600;
-  font-size: 12px;
-  line-height: 15px;
   padding-top: 24px;
   padding-bottom: 40px;
-
-  &__text {
-    color: $color-light-gray;
-  }
 
   &__link {
     color: $color-dark;
@@ -23,7 +18,7 @@
     filter: invert(21%) sepia(0%) saturate(15%) hue-rotate(218deg)
       brightness(95%) contrast(101%);
 
-    &--gray {
+    &--color-gray {
       margin-right: 15px;
       filter: invert(84%) sepia(6%) saturate(337%) hue-rotate(164deg)
         brightness(90%) contrast(86%);

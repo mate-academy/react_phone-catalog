@@ -1,11 +1,10 @@
 @import "../../../style-utils/_variables.scss";
+@import "../../../style-utils/mixins.scss";
 
 .capacity {
   display: inline-block;
   text-decoration: none;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 21px;
+  @include body-text;
   padding: 7px 8px 4px;
   color: $color-dark;
   border: 1px solid $color-light-gray;

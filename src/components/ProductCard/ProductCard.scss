@@ -1,12 +1,11 @@
 @import "../../style-utils/_variables.scss";
+@import "../../style-utils/mixins.scss";
 
 .product-card {
   flex-shrink: 0;
   width: 272px;
-  height: 507px;
   padding: 24px;
   display: flex;
-  color: $color-dark;
   flex-direction: column;
   transition: border 0.1s ease-in-out;
   border: 1px solid $color-platinum;
@@ -30,16 +29,12 @@
 
   &__name {
     height: 42px;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 21px;
+    @include body-text;
     margin-bottom: 7px;
   }
 
   &__price {
-    font-weight: 700;
-    font-size: 22px;
-    line-height: 31px;
+    @include h2;
     padding-bottom: 8px;
     border-bottom: 1px solid $color-platinum;
     margin-bottom: 16px;
@@ -57,9 +52,6 @@
     display: flex;
     flex-direction: column;
     gap: 8px;
-    font-weight: 600;
-    font-size: 12px;
-    line-height: 15px;
     margin-bottom: 16px;
   }
 
