@@ -1,0 +1,26 @@
+@import "../../../style-utils/_variables.scss";
+@import "../../../style-utils/_mixins.scss";
+
+.details {
+  &__price {
+    @include h1;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 16px;
+    margin-top: 32px;
+
+    &--strike {
+      text-decoration: line-through;
+      font-weight: 500;
+      font-size: 22px;
+      color: $color-gray;
+    }
+  }
+
+  &__controls {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 32px;
+  }
+}

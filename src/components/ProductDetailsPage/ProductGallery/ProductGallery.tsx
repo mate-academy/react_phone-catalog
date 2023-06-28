@@ -14,7 +14,9 @@ export const ProductGallery = ({ images, name }: ProductGalleryProps) => {
   const [counter, setCounter] = useState(images.length);
 
   useEffect(() => {
-    if (counter < 2) {
+    setSelectedImage(null);
+
+    if (counter === 0) {
       setSelectedImage(images[0]);
     }
   }, [counter]);

@@ -2,12 +2,12 @@ import closeIcon from '../../../assets/svg/close.svg';
 import minusIcon from '../../../assets/svg/minus.svg';
 import plusIcon from '../../../assets/svg/plus.svg';
 import { useCart } from '../../../contexts/cartContext';
-import { CartProduct } from '../../../types/cartItem';
+import { Product } from '../../../types/product';
 import { IconButton } from '../../UI/IconButton/IconButton';
 import './CartEl.scss';
 
 type CartElProps = {
-  product: CartProduct;
+  product: Pick<Product, 'itemId' | 'image' | 'price' | 'name'>;
   quantity: number;
 };
 

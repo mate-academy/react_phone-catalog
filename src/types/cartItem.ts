@@ -1,12 +1,7 @@
-export type CartProduct = {
-  itemId: string;
-  image: string;
-  price: number;
-  name: string;
-};
+import { Product } from './product';
 
 export type CartItem = {
   id: string;
   quantity: number;
-  product: CartProduct;
+  product: Pick<Product, 'itemId' | 'image' | 'price' | 'name'>;
 };

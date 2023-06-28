@@ -1,14 +1,13 @@
-import {
-  createContext, useCallback, useContext, useMemo,
-} from 'react';
+import { createContext, useCallback, useContext, useMemo } from 'react';
 import { ProductDetails } from '../types/productDetails';
 import { Product } from '../types/product';
 import { useLocalStorage } from '../hooks/useLocalStorage';
+import { prepareObject } from '../helpers/object';
 
 type ContextValue = {
   favItems: Product[];
   addFavItem: (product: Product | ProductDetails) => void;
-  deleteFavItem: (productId: string) => void
+  deleteFavItem: (productId: string) => void;
 };
 
 const FavContext = createContext<ContextValue>({
@@ -26,15 +25,7 @@ export const FavoritesProvider = ({
     let favItem = product;
 
     if ('images' in product) {
-      favItem = {
-        image: product.images[0],
-        category: product.images[0].split('/')[1],
-        price: product.priceDiscount,
-        fullPrice: product.priceRegular,
-        itemId: product.id,
-        year: 0,
-        ...product,
-      };
+      favItem = prepareObject(product);
     }
 
     setFavItems(current => current.concat(favItem as Product));

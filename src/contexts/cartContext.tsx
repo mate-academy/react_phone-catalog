@@ -1,17 +1,15 @@
-import {
-  createContext,
-  useCallback,
-  useContext,
-  useMemo,
-} from 'react';
-import { CartItem, CartProduct } from '../types/cartItem';
+import { createContext, useCallback, useContext, useMemo } from 'react';
+import { CartItem } from '../types/cartItem';
 import { useLocalStorage } from '../hooks/useLocalStorage';
+import { ProductDetails } from '../types/productDetails';
+import { Product } from '../types/product';
+import { prepareObject } from '../helpers/object';
 
 type ContextValue = {
   cartItems: CartItem[];
   sumPrice: number;
   itemsCount: number;
-  addCartItem: (product: CartProduct) => void;
+  addCartItem: (product: Product | ProductDetails) => void;
   deleteCartItem: (itemId: string) => void;
   changeItemQuantity: (itemId: string, operation: 1 | -1) => void;
 };
@@ -30,12 +28,22 @@ export const CartProvider = ({
 }: React.PropsWithChildren<React.ReactNode>) => {
   const [cartItems, setCartItems] = useLocalStorage<CartItem[]>('cart', []);
 
-  const addCartItem = useCallback((product: CartProduct) => {
-    const cartItem = {
-      product,
-      id: product.itemId,
-      quantity: 1,
-    };
+  const addCartItem = useCallback((product: Product | ProductDetails) => {
+    let cartItem: CartItem;
+
+    if ('images' in product) {
+      cartItem = {
+        product: prepareObject(product),
+        id: product.id,
+        quantity: 1,
+      };
+    } else {
+      cartItem = {
+        product,
+        id: product.itemId,
+        quantity: 1,
+      };
+    }
 
     setCartItems(current => current.concat(cartItem));
   }, []);
@@ -55,7 +63,8 @@ export const CartProvider = ({
           }
 
           return item;
-        }));
+        }),
+      );
     },
     [],
   );

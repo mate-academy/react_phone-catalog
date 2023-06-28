@@ -1,10 +1,18 @@
+import { useSearchParams } from 'react-router-dom';
 import { ProductsList } from '../../components/ProductsList/ProductsList';
 import { Breadcrumbs } from '../../components/UI/Breadcrumbs/Breadcrumbs';
 import { useFav } from '../../contexts/favContext';
+import { Search } from '../../components/Search/Search';
 import './FavoritesPage.scss';
 
 export const FavoritesPage = () => {
+  const [searchParams] = useSearchParams();
   const { favItems } = useFav();
+  const query = searchParams.get('query') || '';
+
+  if (query) {
+    return <Search query={query} products={favItems} />;
+  }
 
   return (
     <div className="favorites">

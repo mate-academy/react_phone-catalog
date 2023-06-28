@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 
 import { Logo } from '../UI/Logo';
 import favorite from '../../assets/svg/heart.svg';
@@ -6,14 +6,25 @@ import cart from '../../assets/svg/cart.svg';
 import './Navbar.scss';
 import { SearchBar } from '../UI/SearchBar/SearchBar';
 import { getClassNameForNavLink } from '../../helpers/stringOperations';
+import { NavbarCart } from './NavbarCart';
 
 const isLinkActive = getClassNameForNavLink('nav__link');
 
-type NavbarProps = {
-  isSearchBar: boolean;
-};
+const searchbarPathnames = [
+  '/favorites',
+  '/phones',
+  '/tablets',
+  '/accessories',
+];
 
-export const Navbar = ({ isSearchBar }: NavbarProps) => {
+export const Navbar = () => {
+  const { pathname } = useLocation();
+  const isSearchBar = searchbarPathnames.includes(pathname);
+
+  if (pathname === '/cart') {
+    return <NavbarCart />;
+  }
+
   return (
     <nav className="nav">
       <ul className="nav__list">
