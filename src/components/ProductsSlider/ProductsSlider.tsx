@@ -36,6 +36,24 @@ export const ProductsSlider: FC<Props> = ({
     setActiveIndex(updatedIndex);
   };
 
+  const renderArrow = (direction: string) => {
+    if (theme === 'light') {
+      return (
+        <img
+          src={`/_new/img/icons/arrow-${direction}-dark.svg`}
+          alt={`${direction} arrow`}
+        />
+      );
+    }
+
+    return (
+      <img
+        src={`/_new/img/icons/arrow-${direction}-light.svg`}
+        alt={`${direction} arrow`}
+      />
+    );
+  };
+
   return (
     <div className="products-slider">
       <div className="products-slider__container">
@@ -55,17 +73,7 @@ export const ProductsSlider: FC<Props> = ({
             disabled={isFreeLeftSpace}
           >
             {!isFreeLeftSpace ? (
-              theme === 'light' ? (
-                <img
-                  src="/_new/img/icons/arrow-left-dark.svg"
-                  alt="Left arrow"
-                />
-              ) : (
-                <img
-                  src="/_new/img/icons/arrow-left-light.svg"
-                  alt="Left arrow"
-                />
-              )
+              renderArrow('left')
             ) : (
               <img
                 src="/_new/img/icons/arrow-left-disabled.svg"
@@ -88,17 +96,7 @@ export const ProductsSlider: FC<Props> = ({
           >
 
             {!isFreeRightSpace ? (
-              theme === 'light' ? (
-                <img
-                  src="/_new/img/icons/arrow-right-dark.svg"
-                  alt="Left arrow"
-                />
-              ) : (
-                <img
-                  src="/_new/img/icons/arrow-right-light.svg"
-                  alt="Left arrow"
-                />
-              )
+              renderArrow('right')
             ) : (
               <img
                 src="/_new/img/icons/arrow-right-disabled.svg"

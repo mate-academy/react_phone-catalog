@@ -23,7 +23,7 @@ const models = [
 
 export const ShopByCategory: FC = () => {
   const theme = useAppSelector(state => state.theme.value);
-  
+
   return (
     <div className="shop-by-category">
       <h1 className={`title title--${theme}`}>

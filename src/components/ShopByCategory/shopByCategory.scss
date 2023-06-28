@@ -1,6 +1,8 @@
 .shop-by-category {
   display: flex;
   flex-direction: column;
+  margin: 80px 0;
+  gap: 24px;
 
   &__categories {
     display: flex;

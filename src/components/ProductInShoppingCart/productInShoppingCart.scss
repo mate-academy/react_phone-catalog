@@ -1,6 +1,6 @@
-@import '../../base/mixins.scss';
-@import '../../base/variables.scss';
-@import '../../partials/placeholders.scss';
+@import "../../base/mixins.scss";
+@import "../../base/variables.scss";
+@import "../../partials/placeholders.scss";
 
 .product-in-shopping-cart {
   display: flex;
@@ -65,6 +65,16 @@
     @include square(32px);
     border: 1px solid $icons-color;
     background-color: transparent;
+
+    &--disabled {
+      &__light {
+        border: 1px solid $elements-color;
+      }
+
+      &__dark {
+        border: 1px solid $secondary-dark-color;
+      }
+    }
   }
 
   &__quantity {

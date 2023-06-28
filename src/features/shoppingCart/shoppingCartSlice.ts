@@ -19,19 +19,24 @@ const shoppingCartSlice = createSlice({
       state.value.push(action.payload);
     },
     removeProductFromCart: (state, action: PayloadAction<number>) => {
+      // eslint-disable-next-line no-param-reassign
       state.value = state.value.filter(prod => prod.id !== action.payload);
     },
     addQuantity: (state, action: PayloadAction<number>) => {
-      const product = state.value.find(product => product.id === action.payload);
+      const product
+        = state.value.find(prod => prod.id === action.payload);
 
       if (product) {
+        // eslint-disable-next-line no-plusplus
         product.quantity++;
       }
     },
     subtractQuantity: (state, action: PayloadAction<number>) => {
-      const product = state.value.find(product => product.id === action.payload);
-    
+      const product
+        = state.value.find(prod => prod.id === action.payload);
+
       if (product) {
+        // eslint-disable-next-line no-plusplus
         product.quantity--;
       }
     },

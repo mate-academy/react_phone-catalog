@@ -72,7 +72,7 @@
         color: $primary-color;
       }
 
-      &__dark {  
+      &__dark {
         color: $white-color;
       }
     }
@@ -96,6 +96,52 @@
 
     & * {
       @include square(17px);
+    }
+  }
+
+  &__form {
+    display: flex;
+    padding-left: 24px;
+    transition: all 0.5s ease;
+
+    &--light {
+      border-left: 1px solid $border-line-color;
+      background-color: $hover-color;
+    }
+    
+    &--dark {
+      border-left: 1px solid $border-line-dark-color;
+      background-color: $primary-color;
+    }
+    
+    &--without-input {
+      padding: 0;
+      background-color: transparent;
+    }
+
+    & button {
+      @include square(64px);
+      background-color: transparent;
+    }
+  }
+
+  &__search-bar {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    @extend %buttons-text;
+
+    &--dark {
+      color: $hover-color;
+    }
+
+    &--not-visible {
+      position: absolute;
+      z-index: -1;
+    }
+
+    &::placeholder {
+      color: $secondary-color;
     }
   }
 }

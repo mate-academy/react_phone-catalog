@@ -1,57 +1,27 @@
-import { FC, useEffect } from 'react';
-import { useAppDispatch } from '../../app/hooks';
-// eslint-disable-next-line max-len
-import { addFavoriteProduct, removeFavoriteProduct } from '../../features/favoriteProducts/favoriteProductsSlice';
-// eslint-disable-next-line max-len
-import { addProductToCart, removeProductFromCart } from '../../features/shoppingCart/shoppingCartSlice';
-import { useLocalStorage } from '../../hooks/useLocalStorage';
+import { FC } from 'react';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { Product } from '../../types/product';
 import { ProductItem } from '../ProductItem/ProductItem';
+import { addProducts } from '../../helpers/addProducts';
 
 interface Props {
   products: Product[];
 }
 
 export const Products: FC<Props> = ({ products }) => {
-  const [shoppingCart, setShoppingCart]
-    = useLocalStorage('shoppingCart', []);
-  const [favoriteProducts, setFavoriteProducts]
-    = useLocalStorage('favoriteProducts', []);
+  const favoriteProducts
+    = useAppSelector(state => state.favoriteProducts.value);
+  const shoppingCart = useAppSelector(state => state.shoppingCart.value);
   const dispatch = useAppDispatch();
 
-  const addProducts = (
-    existingProducts: Product[],
-    setProducts: (products: Product[]) => void,
-    product: Product,
-    category?: string,
-  ) => {
-    if (!existingProducts.some(pr => pr.id === product.id)) {
-      setProducts([...existingProducts, product]);
-
-      if (category === 'favoriteProducts') {
-        dispatch(addFavoriteProduct(product));
-      } else {
-        dispatch(addProductToCart(product));
-      }
-    } else {
-      setProducts(existingProducts.filter(prod => prod.id !== product.id));
-
-      if (category === 'favoriteProducts') {
-        dispatch(removeFavoriteProduct(product));
-      } else {
-        dispatch(removeProductFromCart(product.id));
-      }
-    }
-  };
-
   const handleAddProductToCart = (product: Product) => {
-    addProducts(shoppingCart, setShoppingCart, product);
+    addProducts(dispatch, shoppingCart, product, 'shoppingCart');
   };
 
   const handleAddProductToFavorites = (product: Product) => {
     addProducts(
+      dispatch,
       favoriteProducts,
-      setFavoriteProducts,
       product,
       'favoriteProducts',
     );
@@ -65,8 +35,6 @@ export const Products: FC<Props> = ({ products }) => {
           key={product.id}
           addToCart={handleAddProductToCart}
           addToFavorites={handleAddProductToFavorites}
-          favoriteProducts={favoriteProducts}
-          shoppingCart={shoppingCart}
         />
       ))}
     </>

@@ -1,26 +1,18 @@
-@import '../../base/mixins.scss';
-@import '../../base/variables.scss';
-@import '../../partials/placeholders.scss';
+@import "../../base/mixins.scss";
+@import "../../base/variables.scss";
+@import "../../partials/placeholders.scss";
 
 .shopping-cart {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
   min-width: 1208px;
-
-  &__back-to-home-container {
-    display: flex;
-    line-height: 10px;
-    gap: 10px;
-  }
 
   &__notification {
     position: absolute;
     transition: transform 0.5s;
     right: 10px;
     top: 80px;
-  }
-
-  &__back-to-home-link {
-    @extend %small-text;
-    color: $secondary-color;
   }
 
   &__container {

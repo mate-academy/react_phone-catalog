@@ -1,0 +1,28 @@
+@import "../../base/mixins.scss";
+@import "../../base/variables.scss";
+@import "../../partials/placeholders.scss";
+
+.favorite-page {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  &__sum {
+    @extend %body-text;
+    margin: 8px 0;
+
+    &--light {
+      color: $secondary-color;
+    }
+
+    &--dark {
+      color: $hover-color;
+    }
+  }
+
+  &__products {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+}

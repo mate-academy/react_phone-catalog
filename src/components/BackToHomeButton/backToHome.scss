@@ -1,0 +1,22 @@
+@import '../../partials/placeholders.scss';
+@import '../../base/variables.scss';
+@import '../../base/mixins.scss';
+
+.back-to-home {
+  display: flex;
+  align-items: center;
+  line-height: 10px;
+  gap: 10px;
+  margin-bottom: 16px;
+
+  &__arrow {
+    @include flex-center;
+    @include square(16px);
+  }
+
+  &__link {
+    @extend %small-text;
+    margin: 0;
+    color: $secondary-color;
+  }
+}

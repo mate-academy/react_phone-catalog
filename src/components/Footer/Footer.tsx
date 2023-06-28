@@ -22,6 +22,7 @@ export const Footer: FC = () => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
   const theme = useAppSelector(state => state.theme.value);
 
   return (
@@ -40,7 +41,7 @@ export const Footer: FC = () => {
             className="footer__nav-item"
             key={name}
           >
-            <Link 
+            <Link
               to={to}
               className={`footer__nav-link footer__nav-link--${theme}`}
             >

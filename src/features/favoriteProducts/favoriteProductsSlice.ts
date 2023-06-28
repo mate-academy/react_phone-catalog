@@ -12,7 +12,7 @@ const initialState: FavoriteProductsState = {
   value: favoriteProducts,
 };
 
-const shoppingCartSlice = createSlice({
+const favoriteProductsSlice = createSlice({
   name: 'favoriteProducts',
   initialState,
   reducers: {
@@ -34,5 +34,5 @@ const shoppingCartSlice = createSlice({
 export const {
   addFavoriteProduct,
   removeFavoriteProduct,
-} = shoppingCartSlice.actions;
-export default shoppingCartSlice.reducer;
+} = favoriteProductsSlice.actions;
+export default favoriteProductsSlice.reducer;

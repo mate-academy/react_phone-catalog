@@ -1,0 +1,212 @@
+@import '../../base/variables.scss';
+@import '../../base/mixins.scss';
+@import '../../partials/placeholders.scss';
+
+.product-details {
+  &__preview-container {
+    display: flex;
+    gap: 64px;
+  }
+
+  &__title {
+    margin-bottom: 40px;
+  }
+
+  &__images-container {
+    display: flex;
+    gap: 27px;
+  }
+
+  &__images-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__image-wrapper {
+    padding: 7px;
+    background-color: $white-color;
+    border: 1px solid $elements-color;
+    transition: all 0.3s;
+    
+    &--active {
+      border: 1px solid $primary-color;
+    }
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__small-image {
+    @include square(65px);
+    object-fit: contain;
+    background-color: $white-color;
+  }
+
+  &__preview-image {
+    @include square(442px);
+    object-fit: contain;
+    background-color: $white-color;
+  }
+
+  &__options {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+
+  &__options-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid $elements-color;
+  }
+
+  &__control-panel-title {
+    @extend %small-text;
+    margin: 0;
+    color: $secondary-color;
+  }
+
+  &__available-colors {
+    display: flex;
+    gap: 10px;
+  }
+
+  &__color-circle-container {
+    padding: 1px;
+    border: 1px solid $elements-color;
+    border-radius: 50%;
+    transition: border 0.3s;
+
+    &:hover {
+      border: 1px solid $secondary-color;
+    }
+
+    &--active,
+    &--active:hover {
+      border: 1px solid $primary-color;
+    }
+  }
+
+  &__color-circle {
+    @include square(30px);
+    border-radius: 50%;
+
+    &--gold {
+      background-color: #fcdbc1;
+    }
+    
+    &--spacegray {
+      background-color: #4c4c4c;
+    }
+
+    &--midnightgreen {
+      background-color: #5f7170;
+    }
+
+    &--silver {
+      background-color: #F0F0F0;
+    }
+
+    &--black {
+      background-color: $primary-dark-color;
+    }
+
+    &--green {
+      background-color: rgb(202, 235, 202);
+    }
+
+    &--yellow {
+      background-color: rgb(236, 236, 127);
+    }
+
+    &--white {
+      background-color: #f0f0f0;
+    }
+
+    &--purple {
+      background-color: rgb(199, 172, 199);
+    }
+
+    &--red {
+      background-color: rgb(212, 80, 80);
+    }
+  }
+
+  &__capacity-options {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__capacity-value {
+    @extend %body-text;
+    color: $primary-color;
+    padding: 7px;
+    border: 1px solid $icons-color;
+    transition: border 0.3s;
+
+    &:hover {
+      border: 1px solid $primary-color;
+    }
+
+    &--active,
+    &--active:hover {
+      background-color: $primary-color;
+      color: $white-color;
+    }
+  }
+
+  &__add-to-cart-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__prices {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  &__discount-price {
+    @extend %h1;
+  }
+
+  &__full-price {
+    @extend %h2;
+    font-family: "Mont-SemiBold", "Times New Roman", Times, serif;
+    text-decoration: line-through;
+    font-weight: 500;
+    color: $secondary-color;
+  }
+
+  &__characteristics {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 32px;
+  }
+
+  &__characteristic {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__name-of-characteristic {
+    @extend %small-text;
+    color: $secondary-color;
+  }
+
+  &__value-of-characteristic {
+    @extend %small-text;
+  }
+
+  &__id {
+    @extend %small-text;
+    color: $secondary-color;
+  }
+}

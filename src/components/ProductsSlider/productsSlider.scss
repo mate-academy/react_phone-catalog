@@ -3,6 +3,9 @@
 @import "../../partials/placeholders.scss";
 
 .products-slider {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
   overflow: hidden;
   
   &__container {

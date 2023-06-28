@@ -1,5 +1,4 @@
-import { FC } from 'react'
-import { Link } from 'react-router-dom';
+import { FC } from 'react';
 import './notification.scss';
 
 interface Props {
@@ -8,8 +7,8 @@ interface Props {
 
 export const Notification: FC<Props> = ({ message }) => {
   return (
-    <div className='notification'>
-      <h2 className='notification__message'>{message}</h2>
+    <div className="notification">
+      <h2 className="notification__message">{message}</h2>
     </div>
-  )
-}
+  );
+};

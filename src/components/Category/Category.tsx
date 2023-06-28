@@ -11,21 +11,21 @@ interface Props {
 }
 
 export const Category: FC<Props> = ({ source, title, quantity }) => {
-  const getTitlePath = (title: string) => {
-    switch (title) {
+  const getTitlePath = (name: string) => {
+    switch (name) {
       case 'Mobile phones':
-        return '/phones'
+        return '/phones';
 
       case 'Tablets':
-        return '/tablets'
+        return '/tablets';
 
       case 'Accessories':
-        return '/accessories'
-    
+        return '/accessories';
+
       default:
         return '';
     }
-  }
+  };
 
   const theme = useAppSelector(state => state.theme.value);
 
@@ -47,7 +47,7 @@ export const Category: FC<Props> = ({ source, title, quantity }) => {
         <img className="category__image" src={source} alt="Category" />
       </Link>
 
-      <Link 
+      <Link
         to={getTitlePath(title)}
         className={`category__title category__title--${theme}`}
       >

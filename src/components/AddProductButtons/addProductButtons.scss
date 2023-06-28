@@ -1,0 +1,86 @@
+@import '../../base/variables.scss';
+@import '../../base/mixins.scss';
+@import '../../partials/placeholders.scss';
+
+.buttons {
+  display: flex;
+  gap: 8px;
+
+  &__add-to-cart {
+    @extend %buttons-text;
+    width: 175px;
+    transition: all 0.5s;
+
+    &--light {
+      background-color: $primary-color;
+      color: $white-color;
+
+      &:hover {
+        @extend %button-product--hover;
+      }
+    }
+
+    &--dark {
+      color: $primary-color;
+      background-color: $elements-color;
+
+      &:hover {
+        background-color: $white-color;
+      }
+    }
+
+    &--active {
+      color: $green-color;
+      
+      &--light,
+      &--light:hover {
+        background-color: $white-color;
+        border: 1px solid $elements-color;
+      }
+
+      &--dark,
+      &--dark:hover {
+        background-color: $primary-dark-color;
+        border: 1px solid $elements-color;
+      }
+    }
+
+    &--long-version {
+      width: 263px;
+      height: 48px;
+    }
+  }
+
+  &__liked {
+    @include flex-center;
+    @include square(40px);
+    transition: border 0.3s;
+
+    &--light {
+      background-color: $white-color;
+      border: 1px solid $icons-color;
+
+      &:hover {
+        border: 1px solid $primary-color;
+      }
+    }
+
+    &--dark {
+      background-color: $primary-dark-color;
+      border: 1px solid $icons-dark-color;
+
+      &:hover {
+        border: 1px solid $white-color;
+      }
+    }
+
+    &--active,
+    &--active:hover {
+      border: 1px solid $elements-color;
+    }
+
+    &--long-version {
+      @include square(48px);
+    }
+  }
+}

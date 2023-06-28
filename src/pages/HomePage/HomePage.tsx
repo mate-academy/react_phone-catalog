@@ -16,7 +16,7 @@ const imagesForBanner = [
 
 export const HomePage = () => {
   const { data: phones }: { data: Product[] }
-    = useSwr(BASE_URL, fetcher, { suspense: true }); // loading data from api
+    = useSwr(`${BASE_URL}.json`, fetcher, { suspense: true }); // loading data from api
 
   const hotPricesPhones = useMemo(() => {
     return phones

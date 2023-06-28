@@ -1,0 +1,194 @@
+import { FC, useEffect, useState } from 'react';
+import useSwr from 'swr';
+import { Link, useLocation } from 'react-router-dom';
+import { fetcher, BASE_URL } from '../../api/productsApi';
+import { PathContainer } from '../../components/PathContainer';
+import { BackToHomeButton } from '../../components/BackToHomeButton/BackToHomeButton';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import './productDetails.scss';
+import classNames from 'classnames';
+import { AddProductButtons } from '../../components/AddProductButtons';
+import { addProducts } from '../../helpers/addProducts';
+import { Product } from '../../types/product';
+import { capitalizeLetter } from '../../helpers/capitalizeLetter';
+
+export const ProductDetailsPage: FC = () => {
+  const { pathname } = useLocation();
+  const { data: product }: { data: any } = useSwr(
+    `${BASE_URL}/${pathname.substring(pathname.lastIndexOf('/') + 1)}.json`,
+    fetcher,
+    { suspense: true },
+  ); // gotta create interface ProductDetails
+  const theme = useAppSelector(state => state.theme.value);
+  const { 
+    name,
+    images,
+    colorsAvailable,
+    capacityAvailable,
+    priceRegular,
+    priceDiscount,
+    description,
+  } = product;
+
+  const [currentImage, setCurrentImage] = useState('');
+  const [currentColor, setCurrentColor] = useState('');
+  const [currentCapacity, setCurrentCapacity] = useState('');
+
+  const favoriteProducts
+  = useAppSelector(state => state.favoriteProducts.value);
+  const shoppingCart = useAppSelector(state => state.shoppingCart.value);
+  const dispatch = useAppDispatch();
+
+  const handleAddProductToCart = (product: Product) => {
+    addProducts(dispatch, shoppingCart, product, 'shoppingCart');
+  };
+
+  const handleAddProductToFavorites = (product: Product) => {
+    addProducts(
+      dispatch,
+      favoriteProducts,
+      product,
+      'favoriteProducts',
+    );
+  };
+
+  useEffect(() => {
+    setCurrentColor(pathname.split('-')[pathname.split('-').length - 1]);
+    setCurrentCapacity(pathname.split('-')[pathname.split('-').length - 2])
+    setCurrentImage(images[0]);
+  }, [pathname])
+
+  return (
+    <div className="product-details">
+      <PathContainer pathArray={['Phones', name]} />
+
+      <BackToHomeButton />
+
+      <h1 className={`product-details__title title title--${theme}`}>{name}</h1>
+
+      <div className="product-details__preview-container">
+        <div className="product-details__images-container">
+          <ul className="product-details__images-list">
+            {images.map((image: string) => (
+              <button
+                className={classNames('product-details__image-wrapper',
+                  { 'product-details__image-wrapper--active': currentImage === image })}
+                key={image}
+                onClick={() => setCurrentImage(image)}
+              >
+                <img
+                  src={`../../../public/_new/${image}`}
+                  alt="Image in the list"
+                  className="product-details__small-image"
+                />
+              </button>
+            ))}
+          </ul>
+
+          <img
+            src={`../../../public/_new/${currentImage}`}
+            className="product-details__preview-image"
+            alt="Preview"
+          />
+        </div>
+        <div className="product-details__control-panel">
+          <div className="product-details__options">
+            <div className="product-details__options-container">
+              <p className="product-details__control-panel-title">Available colors</p>
+              <ul className="product-details__available-colors">
+                {colorsAvailable.map((color: string) => (
+                  <Link
+                    to={pathname.replace(currentColor, color)}
+                    className={classNames('product-details__color-circle-container',
+                    {'product-details__color-circle-container--active': currentColor === color})}
+                    key={color}
+                  >
+                    <div className={`product-details__color-circle product-details__color-circle--${color}`}
+                    />
+                  </Link>
+                ))}
+              </ul>
+            </div>
+            <div className="product-details__options-container">
+              <p className="product-details__control-panel-title">Select capacity</p>
+              <ul className='product-details__capacity-options'>
+                {capacityAvailable.map((capacity: string) => (
+                  <Link
+                    to={pathname.replace(currentCapacity, capacity.toLowerCase())}
+                    className={classNames('product-details__capacity-value', 
+                    {'product-details__capacity-value--active': currentCapacity === capacity.toLowerCase()})}
+                    key={capacity}
+                  >
+                      {capacity}
+                  </Link>
+                ))}
+              </ul>
+            </div>
+          </div>
+          <div className="product-details__add-to-cart-container">
+            <div className="product-details__prices">
+              <h1 className='product-details__discount-price'>{`$${priceDiscount}`}</h1>
+              <h2 className='product-details__full-price'>{`$${priceRegular}`}</h2>
+            </div>
+
+            <AddProductButtons
+              addToCart={handleAddProductToCart}
+              addToFavorites={handleAddProductToFavorites} 
+              product={product}
+              longVersion={true}
+            />
+          </div>
+          <div className="product-details__characteristics">
+            {Object.entries(product).slice(11, 15).map(entry => (
+              <div className="product-details__characteristic" key={String(entry[0])}>
+                <p className='product-details__name-of-characteristic'>
+                  {String(entry[0] === 'ram' 
+                    ? String(entry[0]).toUpperCase() 
+                    : capitalizeLetter(String(entry[0])))}
+                </p>
+                <p className='product-details__value-of-characteristic'>
+                  {String(entry[1])}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+        <p className="product-details__id">ID: 802390</p>
+      </div>
+
+      <div className="product-details__text-container">
+        <div className="product-details__about">
+          <h2 className='product-details__subtitle'>About</h2>
+
+          <div className="product-details__about-container">
+            {description.map((article: { title: string, text: string }) => (
+              <article className='product-details__article'>
+                <h3 className='product-details__article-title'>{article.title}</h3>
+                <p className='product-details__article-text'>{article.text}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+
+        <div className="product-details__tach-specs">
+          <h2 className='product-details__subtitle'>Tech specs</h2>
+
+          <div className="product-details__characteristics">
+            {Object.entries(product).slice(11).map(entry => (
+              <div className="product-details__characteristic" key={String(entry[0])}>
+                <p className='product-details__name-of-characteristic'>
+                  {String(entry[0] === 'ram' 
+                    ? String(entry[0]).toUpperCase() 
+                    : capitalizeLetter(String(entry[0])))}
+                </p>
+                <p className='product-details__value-of-characteristic'>
+                  {String(entry[1])}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
