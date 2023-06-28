@@ -1,4 +1,6 @@
-import { createContext, useCallback, useContext, useMemo } from 'react';
+import {
+  createContext, useCallback, useContext, useMemo,
+} from 'react';
 import { ProductDetails } from '../types/productDetails';
 import { Product } from '../types/product';
 import { useLocalStorage } from '../hooks/useLocalStorage';

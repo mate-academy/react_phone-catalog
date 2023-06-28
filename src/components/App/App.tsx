@@ -12,6 +12,7 @@ import { Footer } from '../Footer/Footer';
 import { CartProvider } from '../../contexts/cartContext';
 import { FavoritesProvider } from '../../contexts/favContext';
 import './App.scss';
+import { ProductsProvider } from '../../contexts/productsContext';
 
 const App = () => (
   <div className="app">
@@ -20,28 +21,28 @@ const App = () => (
         <header className="app__header">
           <Navbar />
         </header>
-
-        <main className="app__main">
-          <Routes>
-            <Route index element={<Navigate to="/home" replace />} />
-            <Route path="home" element={<HomePage />} />
-            <Route path="phones">
-              <Route index element={<PhonesPage />} />
-              <Route path=":productId" element={<ProductDetailsPage />} />
-            </Route>
-            <Route path="tablets">
-              <Route index element={<TabletsPage />} />
-              <Route path=":productId" element={<ProductDetailsPage />} />
-            </Route>
-            <Route path="accessories">
-              <Route index element={<AccessoriesPage />} />
-              <Route path=":productId" element={<ProductDetailsPage />} />
-            </Route>
-            <Route path="cart" element={<CartPage />} />
-            <Route path="favorites" element={<FavoritesPage />} />
-          </Routes>
-        </main>
-
+        <ProductsProvider>
+          <main className="app__main">
+            <Routes>
+              <Route index element={<Navigate to="/home" replace />} />
+              <Route path="home" element={<HomePage />} />
+              <Route path="phones">
+                <Route index element={<PhonesPage />} />
+                <Route path=":productId" element={<ProductDetailsPage />} />
+              </Route>
+              <Route path="tablets">
+                <Route index element={<TabletsPage />} />
+                <Route path=":productId" element={<ProductDetailsPage />} />
+              </Route>
+              <Route path="accessories">
+                <Route index element={<AccessoriesPage />} />
+                <Route path=":productId" element={<ProductDetailsPage />} />
+              </Route>
+              <Route path="cart" element={<CartPage />} />
+              <Route path="favorites" element={<FavoritesPage />} />
+            </Routes>
+          </main>
+        </ProductsProvider>
         <Footer />
       </CartProvider>
     </FavoritesProvider>

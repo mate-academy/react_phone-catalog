@@ -13,27 +13,8 @@ const request = <T>(endpoint: string): Promise<T> => {
   });
 };
 
-export const getHotPriceProducts = () => {
-  return request<Product[]>('/products.json')
-    .then(products =>
-      products.filter(({ fullPrice, price }) => fullPrice - price > 0))
-    .then(itemsWithDiscount =>
-      itemsWithDiscount.sort((a, b) => {
-        const aDiff = a.fullPrice - a.price;
-        const bDiff = b.fullPrice - b.price;
-
-        return bDiff - aDiff;
-      }));
-};
-
-export const getBrandNewProducts = () => {
-  return request<Product[]>('/products.json').then(products =>
-    products.sort((a, b) => b.year - a.year));
-};
-
-export const getSelectedTypeProducts = (productType: string) => {
-  return request<Product[]>('/products.json').then(products =>
-    products.filter(({ category }) => category === productType));
+export const requestProducts = () => {
+  return request<Product[]>('/products.json').then(products => products);
 };
 
 export const getProductDetails = (productId: string) => {

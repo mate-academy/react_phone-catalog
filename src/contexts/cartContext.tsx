@@ -1,4 +1,6 @@
-import { createContext, useCallback, useContext, useMemo } from 'react';
+import {
+  createContext, useCallback, useContext, useMemo,
+} from 'react';
 import { CartItem } from '../types/cartItem';
 import { useLocalStorage } from '../hooks/useLocalStorage';
 import { ProductDetails } from '../types/productDetails';
@@ -63,8 +65,7 @@ export const CartProvider = ({
           }
 
           return item;
-        }),
-      );
+        }));
     },
     [],
   );

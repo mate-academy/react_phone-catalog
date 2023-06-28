@@ -15,5 +15,19 @@ export const sortProducts = (products: Product[], activeFilter: string) => {
 
 export const filterProducts = (products: Product[], query: string) => {
   return products.filter(({ name }) =>
-    name.toLowerCase().includes(query.toLowerCase()));
+    name.toLowerCase().includes(query.toLowerCase()),
+  );
 };
+
+export const getHotPriceProducts = (productsToSort: Product[]) =>
+  productsToSort
+    .sort((a, b) => {
+      const aDiff = a.fullPrice - a.price;
+      const bDiff = b.fullPrice - b.price;
+
+      return aDiff - bDiff;
+    })
+    .slice(0, 8);
+
+export const getBrandNewProducts = (productsToSort: Product[]) =>
+  productsToSort.sort((a, b) => b.year - a.year).slice(0, 8);
