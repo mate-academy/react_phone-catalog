@@ -8,7 +8,6 @@ import { ColorPicker } from '../../components/ProductDetailsPage/ColorPicker/Col
 import { CapacityPicker } from '../../components/ProductDetailsPage/CapacityPicker/CapacityPicker';
 import { ProductDetails } from '../../types/productDetails';
 import { getProductDetails } from '../../helpers/requests';
-import './ProductDetailsPage.scss';
 import { PrimaryButton } from '../../components/UI/PrimaryButton/PrimaryButton';
 import { FavButton } from '../../components/UI/FavButton/FavButton';
 import { Specifications } from '../../types/specifications';
@@ -16,6 +15,7 @@ import { SpecTable } from '../../components/SpecTable/SpecTable';
 import { About } from '../../components/ProductDetailsPage/About/About';
 import { Loader } from '../../components/UI/Loader/Loader';
 import { useCart } from '../../contexts/cartContext';
+import './ProductDetailsPage.scss';
 
 export const ProductDetailsPage = () => {
   const [selectedProduct, setSelectedProduct] = useState<ProductDetails | null>(
@@ -105,7 +105,7 @@ export const ProductDetailsPage = () => {
                   Add to cart
                 </PrimaryButton>
 
-                <FavButton size={48} />
+                <FavButton product={selectedProduct} size={48} productId={productId} />
               </div>
 
               <SpecTable

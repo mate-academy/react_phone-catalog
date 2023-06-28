@@ -3,7 +3,7 @@ import { ProductCard } from '../ProductCard/ProductCard';
 import './ProductsList.scss';
 
 type ProductsListProps = {
-  products: Product[];
+  products: Product[] ;
 };
 
 export const ProductsList = ({ products }: ProductsListProps) => {

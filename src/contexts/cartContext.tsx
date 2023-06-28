@@ -3,9 +3,9 @@ import {
   useCallback,
   useContext,
   useMemo,
-  useState,
 } from 'react';
 import { CartItem, CartProduct } from '../types/cartItem';
+import { useLocalStorage } from '../hooks/useLocalStorage';
 
 type ContextValue = {
   cartItems: CartItem[];
@@ -28,7 +28,7 @@ const CartContext = createContext<ContextValue>({
 export const CartProvider = ({
   children,
 }: React.PropsWithChildren<React.ReactNode>) => {
-  const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const [cartItems, setCartItems] = useLocalStorage<CartItem[]>('cart', []);
 
   const addCartItem = useCallback((product: CartProduct) => {
     const cartItem = {

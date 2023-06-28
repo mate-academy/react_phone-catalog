@@ -2,19 +2,19 @@ import {
   Navigate, Route, Routes, useLocation,
 } from 'react-router-dom';
 
-import { HomePage } from '../../Routes/HomePage/HomePage';
-import { Footer } from '../Footer/Footer';
-import { PhonesPage } from '../../Routes/PhonesPage/PhonesPage';
-import { TabletsPage } from '../../Routes/TabletsPage/TabletsPage';
-import { AccessoriesPage } from '../../Routes/AccessoriesPage/AccessoriesPage';
-import { ProductDetailsPage } from '../../Routes/ProductDetailsPage/ProductDetailsPage';
-import { CartPage } from '../../Routes/CartPage/CartPage';
-import { FavoritesPage } from '../../Routes/FavoritesPage/FavoritesPage';
-import { CartProvider } from '../../contexts/cartContext';
+import { HomePage } from '../../routes/HomePage/HomePage';
+import { PhonesPage } from '../../routes/PhonesPage/PhonesPage';
+import { TabletsPage } from '../../routes/TabletsPage/TabletsPage';
+import { AccessoriesPage } from '../../routes/AccessoriesPage/AccessoriesPage';
+import { ProductDetailsPage } from '../../routes/ProductDetailsPage/ProductDetailsPage';
+import { CartPage } from '../../routes/CartPage/CartPage';
+import { FavoritesPage } from '../../routes/FavoritesPage/FavoritesPage';
 import { NavbarCart } from '../Navbar/NavbarCart';
 import { Navbar } from '../Navbar/Navbar';
-import './App.scss';
+import { Footer } from '../Footer/Footer';
+import { CartProvider } from '../../contexts/cartContext';
 import { FavoritesProvider } from '../../contexts/favContext';
+import './App.scss';
 
 const App = () => {
   const { pathname } = useLocation();

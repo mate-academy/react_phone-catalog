@@ -21,7 +21,6 @@ export const PrimaryButton = ({
     style={{ width, height }}
     className={classNames('cart-button', { 'cart-button--selected': isActive })}
     type="button"
-    disabled={isActive}
   >
     {isActive ? 'Added to cart' : children}
   </button>

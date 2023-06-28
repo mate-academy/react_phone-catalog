@@ -23,7 +23,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
     fullPrice,
     itemId,
     category,
-  } = product;
+  } = product as Product;
   const { addCartItem, cartItems } = useCart();
   const isInCart = cartItems.some(item => item.id === itemId);
 
@@ -70,7 +70,11 @@ export const ProductCard = ({ product }: ProductCardProps) => {
           Add to Cart
         </PrimaryButton>
 
-        <FavButton size={40} />
+        <FavButton
+          product={product}
+          productId={itemId}
+          size={40}
+        />
       </div>
     </div>
   );

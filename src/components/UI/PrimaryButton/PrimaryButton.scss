@@ -19,5 +19,6 @@
     background-color: white;
     border: 1px solid $color-platinum;
     z-index: -1;
+    pointer-events: none;
   }
 }
