@@ -6,7 +6,7 @@ import { AddProductButtons } from '../AddProductButtons';
 import './productItem.scss';
 
 interface Props {
-  product: Product; 
+  product: Product;
   addToCart: (product: Product) => void;
   addToFavorites: (product: Product) => void;
 }
@@ -55,8 +55,8 @@ export const ProductItem: FC<Props> = ({
       >
         {images ? (
           <img className="product__image" src={`_new/${images[0]}`} alt="Phone" />
-          ) : (  
-          <img className="product__image" src={`_new/${image}`} alt="Phone" />
+        ) : (
+          <img className="product__image" src={`/public/_new/${image}`} alt="Phone" />
         )}
         <h2 className={`product__name product__name--${theme}`}>{name}</h2>
       </Link>

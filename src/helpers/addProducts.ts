@@ -1,6 +1,6 @@
-import { addFavoriteProduct, removeFavoriteProduct } from "../features/favoriteProducts/favoriteProductsSlice";
-import { addProductToCart, removeProductFromCart } from "../features/shoppingCart/shoppingCartSlice";
-import { Product } from "../types/product";
+import { addFavoriteProduct, removeFavoriteProduct } from '../features/favoriteProducts/favoriteProductsSlice';
+import { addProductToCart, removeProductFromCart } from '../features/shoppingCart/shoppingCartSlice';
+import { Product } from '../types/product';
 
 export const addProducts = (
   dispatch: (action: any) => void,

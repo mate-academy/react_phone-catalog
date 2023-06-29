@@ -1,5 +1,5 @@
-import classNames from 'classnames'
-import { FC } from 'react'
+import classNames from 'classnames';
+import { FC } from 'react';
 import { useAppSelector } from '../../app/hooks';
 import { Product } from '../../types/product';
 import './addProductButtons.scss';
@@ -11,15 +11,17 @@ interface Props {
   longVersion?: boolean;
 }
 
-export const AddProductButtons: FC<Props> = ({ addToCart, addToFavorites, product, longVersion }) => {
+export const AddProductButtons: FC<Props> = ({
+  addToCart, addToFavorites, product, longVersion,
+}) => {
   const theme = useAppSelector(state => state.theme.value);
   const favoriteProducts
   = useAppSelector(state => state.favoriteProducts.value);
   const shoppingCart = useAppSelector(state => state.shoppingCart.value);
   const favoriteButtonIsClicked = favoriteProducts
-  .some(pr => pr.id === product.id);
-const shoppingCartButtonIsClicked = shoppingCart
-  .some(pr => pr.id === product.id);
+    .some(pr => pr.id === product.id);
+  const shoppingCartButtonIsClicked = shoppingCart
+    .some(pr => pr.id === product.id);
 
   const renderFavoriteIcon = () => {
     if (theme === 'light') {
@@ -77,5 +79,5 @@ const shoppingCartButtonIsClicked = shoppingCart
         )}
       </button>
     </div>
-  )
-}
+  );
+};

@@ -4,6 +4,7 @@
 
 .products-slider {
   display: flex;
+  max-width: 1125px;
   flex-direction: column;
   gap: 24px;
   overflow: hidden;

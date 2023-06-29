@@ -46,6 +46,11 @@
     @include flex-center;
     height: 100%;
     position: relative;
+
+    &::after {
+      @include focused-line;
+      width: 0%;
+    }
   }
 
   &__nav-link {
@@ -96,6 +101,11 @@
 
     & * {
       @include square(17px);
+    }
+
+    &::after {
+      @include focused-line;
+      width: 0%;
     }
   }
 

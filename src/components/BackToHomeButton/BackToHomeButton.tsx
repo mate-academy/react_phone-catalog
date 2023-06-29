@@ -8,7 +8,7 @@ export const BackToHomeButton: FC = () => {
 
   return (
     <Link to="/" className="back-to-home">
-      <span className='back-to-home__arrow'>
+      <span className="back-to-home__arrow">
         {theme === 'light' ? (
           <img
             src="/_new/img/icons/arrow-left-dark.svg"

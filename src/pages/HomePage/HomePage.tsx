@@ -40,7 +40,6 @@ export const HomePage = () => {
   return (
     <div className="homepage-container">
       <Banner images={imagesForBanner} />
-      {/* // main slider */}
 
       <ProductsSlider
         title="Hot Prices"

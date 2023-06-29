@@ -17,7 +17,7 @@ export const ProductInShoppingCart: FC<Props> = ({ product, theme, finalPrice })
   const dispatch = useAppDispatch();
   const shoppingCart = useAppSelector(state => state.shoppingCart.value);
   const {
-    name, image, quantity, id, images, category
+    name, image, quantity, id, images, category,
   } = product;
 
   const handleCounterClick = (productId: number, action: string) => {
@@ -86,22 +86,23 @@ export const ProductInShoppingCart: FC<Props> = ({ product, theme, finalPrice })
         )}
       </button>
 
-    {images ? (
-      <img
-        src={`_new/${images[0]}`}
-        alt="Product"
-        className="product-in-shopping-cart__product-image"
-      /> 
-    ) : (
-      <img
-        src={`_new/${image}`}
-        alt="Product"
-        className="product-in-shopping-cart__product-image"
-      />
-    )}
-      <Link 
-        to={`/${category || 'phones'}/${name.toLowerCase().split(' ').join('-')}`} 
-        className={`product-in-shopping-cart__product-name product-in-shopping-cart__product-name--${theme}`}>
+      {images ? (
+        <img
+          src={`_new/${images[0]}`}
+          alt="Product"
+          className="product-in-shopping-cart__product-image"
+        />
+      ) : (
+        <img
+          src={`_new/${image}`}
+          alt="Product"
+          className="product-in-shopping-cart__product-image"
+        />
+      )}
+      <Link
+        to={`/${category || 'phones'}/${name.toLowerCase().split(' ').join('-')}`}
+        className={`product-in-shopping-cart__product-name product-in-shopping-cart__product-name--${theme}`}
+      >
         {name}
       </Link>
 

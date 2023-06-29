@@ -6,6 +6,7 @@
   &__preview-container {
     display: flex;
     gap: 64px;
+    margin-bottom: 80px;
   }
 
   &__title {
@@ -199,14 +200,69 @@
   &__name-of-characteristic {
     @extend %small-text;
     color: $secondary-color;
+
+    &--thin {
+      font-family: "Mont-Regular", "Times New Roman", Times, serif;
+      font-weight: 500;
+      font-size: 14px;
+    }
   }
 
   &__value-of-characteristic {
     @extend %small-text;
+
+    &--thin {
+      font-family: "Mont-Regular", "Times New Roman", Times, serif;
+      font-weight: 500;
+      font-size: 14px;
+    }
   }
 
   &__id {
     @extend %small-text;
+    margin-left: 67px;
     color: $secondary-color;
+  }
+
+  &__text-container {
+    display: flex;
+    gap: 64px;
+    margin-bottom: 80px;
+  }
+
+  &__subtitle {
+    @extend %h2;
+    margin-bottom: 16px;
+  }
+
+  &__about-container {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    border-top: 1px solid $elements-color;
+    padding-top: 32px;
+  }
+
+  &__article {
+    max-width: 560px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__article-title {
+    @extend %h3;
+  }
+
+  &__article-text {
+    @extend %body-text;
+    color: $secondary-color;
+  }
+
+  &__tech-specs {
+    min-width: 500px; 
+    border-top: 1px solid $elements-color;
+    padding-top: 32px;
+    margin: 0;
   }
 }
