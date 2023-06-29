@@ -8,7 +8,7 @@ import {
 import { Product } from '../types/product';
 import { requestProducts } from '../helpers/requests';
 
-type ProductsMap = {
+export type ProductsMap = {
   phones: Product[];
   tablets: Product[];
   accessories: Product[];

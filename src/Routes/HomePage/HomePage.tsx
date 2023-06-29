@@ -5,7 +5,7 @@ import { useProducts } from '../../contexts/productsContext';
 import { getBrandNewProducts, getHotPriceProducts } from '../../helpers/filters';
 import './HomePage.scss';
 
-export const HomePage = () => {
+const HomePage = () => {
   const { products } = useProducts();
 
   return (
@@ -31,3 +31,5 @@ export const HomePage = () => {
     </div>
   );
 };
+
+export default HomePage;

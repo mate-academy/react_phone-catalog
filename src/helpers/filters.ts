@@ -15,8 +15,7 @@ export const sortProducts = (products: Product[], activeFilter: string) => {
 
 export const filterProducts = (products: Product[], query: string) => {
   return products.filter(({ name }) =>
-    name.toLowerCase().includes(query.toLowerCase()),
-  );
+    name.toLowerCase().includes(query.toLowerCase()));
 };
 
 export const getHotPriceProducts = (productsToSort: Product[]) =>

@@ -9,8 +9,8 @@ import { SpecTable } from '../../components/SpecTable/SpecTable';
 import { About } from '../../components/ProductDetailsPage/About/About';
 import { Loader } from '../../components/UI/Loader/Loader';
 import { Details } from '../../components/ProductDetailsPage/Details/Details';
-import './ProductDetailsPage.scss';
 import { getProductSpecs } from '../../helpers/object';
+import './ProductDetailsPage.scss';
 
 type State = {
   selectedProduct: ProductDetails | null;
@@ -42,7 +42,7 @@ const initialState: State = {
   error: '',
 };
 
-export const ProductDetailsPage = () => {
+const ProductDetailsPage = () => {
   const [{ selectedProduct, isLoading }, dispatch] = useReducer(
     reducer,
     initialState,
@@ -52,10 +52,15 @@ export const ProductDetailsPage = () => {
   const { name = '', description = [] } = selectedProduct || {};
 
   useEffect(() => {
+    const controller = new AbortController();
+    const { signal } = controller;
+
     dispatch({ type: 'loading' });
-    getProductDetails(productId)
+    getProductDetails(productId, signal)
       .then(data => dispatch({ type: 'selectedProduct/loaded', payload: data }))
       .catch(err => dispatch({ type: 'failed', payload: err }));
+
+    return () => controller.abort();
   }, [productId]);
 
   return (
@@ -91,3 +96,5 @@ export const ProductDetailsPage = () => {
     </main>
   );
 };
+
+export default ProductDetailsPage;

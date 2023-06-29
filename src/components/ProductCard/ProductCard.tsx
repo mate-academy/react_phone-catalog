@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { memo } from 'react';
 import { Link } from 'react-router-dom';
 
 import { Product } from '../../types/product';
@@ -12,7 +12,7 @@ type ProductCardProps = {
   product: Product;
 };
 
-export const ProductCard = ({ product }: ProductCardProps) => {
+export const ProductCard = memo(({ product }: ProductCardProps) => {
   const {
     image,
     name,
@@ -23,18 +23,16 @@ export const ProductCard = ({ product }: ProductCardProps) => {
     fullPrice,
     itemId,
     category,
-  } = product as Product;
+  } = product;
   const { addCartItem, cartItems } = useCart();
+
   const isInCart = cartItems.some(item => item.id === itemId);
 
-  const specsToShow = useMemo(
-    () => ({
-      Screen: screen,
-      Capacity: capacity,
-      RAM: ram,
-    }),
-    [product],
-  );
+  const specsToShow = {
+    Screen: screen,
+    Capacity: capacity,
+    RAM: ram,
+  };
 
   return (
     <div className="product-card">
@@ -70,12 +68,8 @@ export const ProductCard = ({ product }: ProductCardProps) => {
           Add to Cart
         </PrimaryButton>
 
-        <FavButton
-          product={product}
-          productId={itemId}
-          size={40}
-        />
+        <FavButton product={product} productId={itemId} size={40} />
       </div>
     </div>
   );
-};
+});

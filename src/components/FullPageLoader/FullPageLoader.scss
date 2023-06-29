@@ -1,0 +1,5 @@
+@import "../../style-utils/mixins.scss";
+
+.page-loader {
+  @include flex-center;
+}

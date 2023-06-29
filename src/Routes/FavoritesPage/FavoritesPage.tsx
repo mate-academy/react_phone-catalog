@@ -5,7 +5,7 @@ import { useFav } from '../../contexts/favContext';
 import { Search } from '../../components/Search/Search';
 import './FavoritesPage.scss';
 
-export const FavoritesPage = () => {
+const FavoritesPage = () => {
   const [searchParams] = useSearchParams();
   const { favItems } = useFav();
   const query = searchParams.get('query') || '';
@@ -25,3 +25,5 @@ export const FavoritesPage = () => {
     </div>
   );
 };
+
+export default FavoritesPage;

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useLocation, useSearchParams } from 'react-router-dom';
 
 import search from '../../../assets/svg/search.svg';
 import close from '../../../assets/svg/close.svg';
@@ -10,6 +10,7 @@ export const SearchBar = () => {
   const [searchQuery, setSearchQuery] = useState(
     () => searchParams.get('query') || '',
   );
+  const { pathname } = useLocation();
 
   const deleteQuery = () => {
     setSearchQuery('');
@@ -39,7 +40,7 @@ export const SearchBar = () => {
         value={searchQuery}
         onChange={e => setSearchQuery(e.target.value)}
         type="text"
-        placeholder="Search in phones..."
+        placeholder={`Search in ${pathname.slice(1)}...`}
       />
 
       {searchQuery ? (

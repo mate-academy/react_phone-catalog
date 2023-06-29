@@ -1,38 +1,37 @@
 import { useMemo } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useLocation, useSearchParams } from 'react-router-dom';
 
-import { Breadcrumbs } from '../UI/Breadcrumbs/Breadcrumbs';
-import { Pagination } from './Pagination/Pagination';
-import { NoResults } from './NoResults/NoResults';
-import { Loader } from '../UI/Loader/Loader';
-import { SortSelect } from './SortSelect';
-import { PerPageSelect } from './PerPageSelect';
+import { Breadcrumbs } from '../../components/UI/Breadcrumbs/Breadcrumbs';
+import { Pagination } from '../../components/ProductPage/Pagination/Pagination';
+import { NoResults } from '../../components/ProductPage/NoResults/NoResults';
+import { Loader } from '../../components/UI/Loader/Loader';
+import { SortSelect } from '../../components/ProductPage/SortSelect';
+import { PerPageSelect } from '../../components/ProductPage/PerPageSelect';
 import { sortProducts } from '../../helpers/filters';
-import { Search } from '../Search/Search';
-import { useProducts } from '../../contexts/productsContext';
+import { Search } from '../../components/Search/Search';
+import { ProductsMap, useProducts } from '../../contexts/productsContext';
 import './ProductPage.scss';
+import { capitalizeString } from '../../helpers/stringOperations';
 
-type ProductPageProps = {
-  type: 'phones' | 'tablets' | 'accessories';
-  title: string;
-};
-
-export const ProductPage = ({ type, title }: ProductPageProps) => {
+const ProductPage = () => {
   const [searchParams] = useSearchParams();
+  const { pathname } = useLocation();
   const { products, isLoading } = useProducts();
+
+  const type = pathname.slice(1);
 
   const perPage = searchParams.get('perPage') || 'all';
   const activeSorter = searchParams.get('sort') || 'age';
   const query = searchParams.get('query') || '';
-  const productsNum = products[type].length;
+  const productsNum = products[type as keyof ProductsMap].length;
 
   const sortedProducts = useMemo(
-    () => sortProducts(products[type], activeSorter),
+    () => sortProducts(products[type as keyof ProductsMap], activeSorter),
     [products, activeSorter],
   );
 
   if (!isLoading && productsNum === 0) {
-    return <NoResults categoryName={title} />;
+    return <NoResults categoryName={capitalizeString(type)} />;
   }
 
   if (query) {
@@ -43,7 +42,7 @@ export const ProductPage = ({ type, title }: ProductPageProps) => {
     <div className="products-page">
       <Breadcrumbs />
 
-      <h1 className="products-page__title">{title}</h1>
+      <h1 className="products-page__title">{capitalizeString(type)}</h1>
       <p className="products-page__count">{`${productsNum} models`}</p>
 
       <div className="products-page__selectors">
@@ -64,3 +63,5 @@ export const ProductPage = ({ type, title }: ProductPageProps) => {
     </div>
   );
 };
+
+export default ProductPage;

@@ -4,7 +4,7 @@ import { CartSummary } from '../../components/Cart/CartSummary/CartSummary';
 import { useCart } from '../../contexts/cartContext';
 import './CartPage.scss';
 
-export const CartPage = () => {
+const CartPage = () => {
   const { cartItems, itemsCount, sumPrice } = useCart();
 
   return (
@@ -30,3 +30,5 @@ export const CartPage = () => {
     </div>
   );
 };
+
+export default CartPage;

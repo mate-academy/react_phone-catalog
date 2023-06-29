@@ -3,10 +3,10 @@ import { NavLink, useLocation } from 'react-router-dom';
 import { Logo } from '../UI/Logo';
 import favorite from '../../assets/svg/heart.svg';
 import cart from '../../assets/svg/cart.svg';
-import './Navbar.scss';
 import { SearchBar } from '../UI/SearchBar/SearchBar';
 import { getClassNameForNavLink } from '../../helpers/stringOperations';
 import { NavbarCart } from './NavbarCart';
+import './Navbar.scss';
 
 const isLinkActive = getClassNameForNavLink('nav__link');
 
@@ -72,7 +72,7 @@ export const Navbar = () => {
       <ul className="nav__list nav__list--no-gap">
         {isSearchBar && (
           <li className="nav__item">
-            <SearchBar />
+            <SearchBar key={pathname} />
           </li>
         )}
 
