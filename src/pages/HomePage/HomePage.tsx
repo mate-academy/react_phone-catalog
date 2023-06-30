@@ -9,9 +9,9 @@ import { Product } from '../../types/product';
 import { BASE_URL, fetcher } from '../../api/productsApi';
 
 const imagesForBanner = [
-  '../_new/img/banner-phones.png',
-  '/public/_new/img/banner-tablets.png',
-  '/public/_new/img/banner-accessories.png',
+  '../public/_new/img/banner-phones.png',
+  './public/_new/img/banner-tablets.png',
+  './_new/img/banner-accessories.png',
 ];
 
 export const HomePage = () => {
