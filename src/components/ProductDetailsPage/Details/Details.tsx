@@ -53,7 +53,6 @@ export const Details = ({ selectedProduct }: DetailsProps) => {
         </div>
 
         <SpecTable
-          style={{ fontSize: 12, fontWeight: 600 }}
           specifications={getProductSpecs(selectedProduct)}
           specCount={4}
         />

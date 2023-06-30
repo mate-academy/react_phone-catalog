@@ -6,7 +6,7 @@ const API_URL = 'https://mate-academy.github.io/react_phone-catalog/_new';
 const request = <T>(endpoint: string, signal?: AbortSignal): Promise<T> => {
   return fetch(API_URL + endpoint, { signal }).then(response => {
     if (!response.ok) {
-      throw new Error();
+      throw new Error(`${response.status}`);
     }
 
     return response.json();

@@ -7,6 +7,8 @@ import { SearchBar } from '../UI/SearchBar/SearchBar';
 import { getClassNameForNavLink } from '../../helpers/stringOperations';
 import { NavbarCart } from './NavbarCart';
 import './Navbar.scss';
+import { useCart } from '../../contexts/cartContext';
+import { useFav } from '../../contexts/favContext';
 
 const isLinkActive = getClassNameForNavLink('nav__link');
 
@@ -21,8 +23,11 @@ export const Navbar = () => {
   const { pathname } = useLocation();
   const isSearchBar = searchbarPathnames.includes(pathname);
 
+  const { cartItems } = useCart();
+  const { favItems } = useFav();
+
   if (pathname === '/cart') {
-    return <NavbarCart />;
+    return <NavbarCart cartCount={cartItems.length} />;
   }
 
   return (
@@ -41,7 +46,7 @@ export const Navbar = () => {
         <li className="nav__item">
           <NavLink
             className={isLinkActive}
-            to="/phones?sort=age&perPage=all"
+            to="/phones"
             title="Phones"
           >
             Phones
@@ -51,7 +56,7 @@ export const Navbar = () => {
         <li className="nav__item">
           <NavLink
             className={isLinkActive}
-            to="/tablets?sort=age&perPage=all"
+            to="/tablets"
             title="Tablets"
           >
             Tablets
@@ -61,7 +66,7 @@ export const Navbar = () => {
         <li className="nav__item">
           <NavLink
             className={isLinkActive}
-            to="/accessories?sort=age&perPage=all"
+            to="/accessories"
             title="Accessories"
           >
             Accessories
@@ -77,14 +82,16 @@ export const Navbar = () => {
         )}
 
         <li className="nav__item">
-          <NavLink className={isLinkActive} to="/favorites" title="Favorites">
+          <NavLink className={getClassNameForNavLink('nav__link', ' nav__link--icon')} to="/favorites" title="Favorites">
             <img className="nav__icon" src={favorite} alt="Favorites" />
+            <span className="nav__count">{favItems.length}</span>
           </NavLink>
         </li>
 
         <li className="nav__item">
-          <NavLink className={isLinkActive} to="/cart" title="Cart">
+          <NavLink className={getClassNameForNavLink('nav__link', ' nav__link--icon')} to="/cart" title="Cart">
             <img className="nav__icon" src={cart} alt="Cart" />
+            <span className="nav__count">{cartItems.length}</span>
           </NavLink>
         </li>
       </ul>

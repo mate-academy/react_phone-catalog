@@ -2,10 +2,11 @@ import './IconButton.scss';
 
 type IconButtonProps = {
   onClick: () => void;
-  svg: string;
   alt: string;
   height?: number;
+  svg?: string;
   isDisabled?: boolean;
+  children?: React.ReactNode;
 };
 
 export const IconButton = ({
@@ -14,7 +15,8 @@ export const IconButton = ({
   alt,
   isDisabled = false,
   height = 32,
-}: IconButtonProps) => {
+  children,
+}: React.PropsWithChildren<IconButtonProps>) => {
   return (
     <button
       style={{ height }}
@@ -23,7 +25,7 @@ export const IconButton = ({
       onClick={onClick}
       disabled={isDisabled}
     >
-      <img className="button__icon" src={svg} alt={alt} />
+      {children || <img className="button__icon" src={svg} alt={alt} />}
     </button>
   );
 };

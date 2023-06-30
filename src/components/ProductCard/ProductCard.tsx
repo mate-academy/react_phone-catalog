@@ -37,7 +37,7 @@ export const ProductCard = memo(({ product }: ProductCardProps) => {
   return (
     <div className="product-card">
       <Link to={`/${category}/${itemId}`} className="product-card__link">
-        <img className="product-card__image" src={`_new/${image}`} alt={name} />
+        <img className="product-card__image" src={image} alt={name} />
 
         <p className="product-card__name">{name}</p>
       </Link>
@@ -49,13 +49,7 @@ export const ProductCard = memo(({ product }: ProductCardProps) => {
       </p>
 
       <div className="product-card__spec">
-        <SpecTable
-          specifications={specsToShow}
-          style={{
-            fontSize: 12,
-            fontWeight: 600,
-          }}
-        />
+        <SpecTable specifications={specsToShow} />
       </div>
 
       <div className="product-card__controls">
@@ -65,7 +59,7 @@ export const ProductCard = memo(({ product }: ProductCardProps) => {
           height={40}
           isActive={isInCart}
         >
-          Add to Cart
+          Add to cart
         </PrimaryButton>
 
         <FavButton product={product} productId={itemId} size={40} />

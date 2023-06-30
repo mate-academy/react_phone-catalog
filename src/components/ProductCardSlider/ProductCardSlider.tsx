@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useState } from 'react';
 
 import { ProductCard } from '../ProductCard/ProductCard';
 import { Product } from '../../types/product';
@@ -19,7 +19,7 @@ export const ProductCardSlider = ({
 }: ProductCardSliderProps) => {
   const [slide, setSlide] = useState(0);
 
-  const maxTransition = useMemo(() => products.length / 4 - 1, [products]);
+  const maxTransition = products.length / 4 - 1;
 
   const handleClick = useCallback(
     (operation: 1 | -1) => {
@@ -46,14 +46,14 @@ export const ProductCardSlider = ({
             onClick={() => handleClick(-1)}
             svg={leftArrow}
             isDisabled={slide === 0}
-            alt="Sliders left arrow button"
+            alt="Slide left"
           />
 
           <IconButton
             onClick={() => handleClick(1)}
             svg={rightArrow}
             isDisabled={slide === maxTransition}
-            alt="Sliders right arrow button"
+            alt="Slide right"
           />
         </div>
       </div>

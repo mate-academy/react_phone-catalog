@@ -24,9 +24,16 @@ export const getHotPriceProducts = (productsToSort: Product[]) =>
       const aDiff = a.fullPrice - a.price;
       const bDiff = b.fullPrice - b.price;
 
-      return aDiff - bDiff;
+      return bDiff - aDiff;
     })
-    .slice(0, 8);
+    .slice(0, 16);
 
 export const getBrandNewProducts = (productsToSort: Product[]) =>
-  productsToSort.sort((a, b) => b.year - a.year).slice(0, 8);
+  productsToSort.sort((a, b) => b.year - a.year).slice(0, 16);
+
+export const getRandomProducts = (products: Product[]) => {
+  return Array.from(
+    { length: 16 },
+    () => products[Math.floor(Math.random() * products.length)],
+  );
+};

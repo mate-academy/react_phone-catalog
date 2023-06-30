@@ -7,19 +7,19 @@ export const ShopCategories = () => {
 
   const categories = [
     {
-      imageUrl: '_new/img/category-phones.png',
+      imageUrl: 'img/category-phones.png',
       name: 'Mobile phones',
       count: products.phones.length,
       to: 'phones',
     },
     {
-      imageUrl: '_new/img/category-tablets.png',
+      imageUrl: 'img/category-tablets.png',
       name: 'Tablets',
       count: products.tablets.length,
       to: 'tablets',
     },
     {
-      imageUrl: '_new/img/category-accessories.png',
+      imageUrl: 'img/category-accessories.png',
       name: 'Accessories',
       count: products.accessories.length,
       to: 'accessories',
@@ -30,7 +30,10 @@ export const ShopCategories = () => {
     <div className="shop-categories">
       <h1 className="shop-categories__title">Shop by category</h1>
 
-      <div className="shop-categories__container">
+      <div
+        className="shop-categories__container"
+        data-cy="categoryLinksContainer"
+      >
         {categories.map(category => (
           <ShopCategory key={category.name} {...category} />
         ))}

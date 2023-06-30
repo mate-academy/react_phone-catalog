@@ -1,6 +1,4 @@
 import closeIcon from '../../../assets/svg/close.svg';
-import minusIcon from '../../../assets/svg/minus.svg';
-import plusIcon from '../../../assets/svg/plus.svg';
 import { useCart } from '../../../contexts/cartContext';
 import { Product } from '../../../types/product';
 import { IconButton } from '../../UI/IconButton/IconButton';
@@ -28,25 +26,29 @@ export const CartEl = ({ product, quantity }: CartElProps) => {
         <img src={closeIcon} alt="Delete item" />
       </button>
 
-      <img className="cart-el__img" src={`_new/${image}`} alt="" />
+      <img className="cart-el__img" src={image} alt="" />
 
       <p className="cart-el__name">{name}</p>
 
       <div className="cart-el__controls">
         <IconButton
-          svg={minusIcon}
           alt="Decrement quantity"
           onClick={() => changeItemQuantity(itemId, -1)}
           isDisabled={quantity <= 1}
-        />
+        >
+          -
+        </IconButton>
 
-        <p className="cart-el__quantity">{quantity}</p>
+        <p data-cy="productQauntity" className="cart-el__quantity">
+          {quantity}
+        </p>
 
         <IconButton
-          svg={plusIcon}
           alt="Increment quantity"
           onClick={() => changeItemQuantity(itemId, 1)}
-        />
+        >
+          +
+        </IconButton>
       </div>
 
       <p className="cart-el__price">{`$${price}`}</p>

@@ -9,16 +9,16 @@ export function getNumbers(from: number, to: number): number[] {
 }
 
 export function getItemsToShowIndex(
-  perPage: string,
+  perPage: string | number,
   currentPage: number,
   total: number,
 ) {
-  if (perPage === 'all') {
+  if (typeof perPage === 'string') {
     return [0, total];
   }
 
-  const itemsTo = Math.min(+perPage * currentPage, total);
-  const itemsFrom = +perPage * (currentPage - 1);
+  const itemsTo = Math.min(perPage * currentPage, total);
+  const itemsFrom = perPage * (currentPage - 1);
 
   return [itemsFrom, itemsTo];
 }

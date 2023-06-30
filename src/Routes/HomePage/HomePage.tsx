@@ -7,6 +7,7 @@ import './HomePage.scss';
 
 const HomePage = () => {
   const { products } = useProducts();
+  const allProducts = Object.values(products).flat();
 
   return (
     <div className="home-page">
@@ -14,7 +15,7 @@ const HomePage = () => {
       <section className="home-page__section">
         <ProductCardSlider
           title="Hot prices"
-          products={getHotPriceProducts(products.phones)}
+          products={getHotPriceProducts(allProducts)}
         />
       </section>
 
@@ -25,7 +26,7 @@ const HomePage = () => {
       <section className="home-page__section">
         <ProductCardSlider
           title="Brand new models"
-          products={getBrandNewProducts(products.phones)}
+          products={getBrandNewProducts(allProducts)}
         />
       </section>
     </div>

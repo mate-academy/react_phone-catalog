@@ -18,6 +18,7 @@ const FavoritesPage = lazy(
   () => import('../../routes/FavoritesPage/FavoritesPage'),
 );
 const ProductPage = lazy(() => import('../../routes/ProductPage/ProductPage'));
+const NotFoundPage = lazy(() => import('../../routes/NotFoundPage/NotFoundPage'));
 
 const App = () => (
   <div className="app">
@@ -30,22 +31,29 @@ const App = () => (
           <main className="app__main">
             <Suspense fallback={<FullPageLoader />}>
               <Routes>
-                <Route index element={<Navigate to="/home" replace />} />
+                <Route index element={<Navigate to="home" replace />} />
                 <Route path="home" element={<HomePage />} />
                 <Route path="phones">
-                  <Route index element={<ProductPage />} />
+                  <Route index element={<ProductPage category="phones" />} />
                   <Route path=":productId" element={<ProductDetailsPage />} />
                 </Route>
                 <Route path="tablets">
-                  <Route index element={<ProductPage />} />
+                  <Route index element={<ProductPage category="tablets" />} />
                   <Route path=":productId" element={<ProductDetailsPage />} />
                 </Route>
                 <Route path="accessories">
-                  <Route index element={<ProductPage />} />
+                  <Route
+                    index
+                    element={<ProductPage category="accessories" />}
+                  />
                   <Route path=":productId" element={<ProductDetailsPage />} />
                 </Route>
                 <Route path="cart" element={<CartPage />} />
                 <Route path="favorites" element={<FavoritesPage />} />
+                <Route
+                  path="*"
+                  element={<NotFoundPage title="Page not found" />}
+                />
               </Routes>
             </Suspense>
           </main>

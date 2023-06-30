@@ -35,7 +35,7 @@ export const ProductGallery = ({ images, name }: ProductGalleryProps) => {
             >
               <img
                 className="product-gallery__slide-image"
-                src={`_new/${image}`}
+                src={image}
                 alt=""
                 onLoad={() => setCounter(prevCounter => prevCounter - 1)}
               />
@@ -49,7 +49,7 @@ export const ProductGallery = ({ images, name }: ProductGalleryProps) => {
           <img
             key={selectedImage}
             className="product-gallery__selected-image"
-            src={`_new/${selectedImage}`}
+            src={selectedImage}
             alt={name}
           />
         ) : (

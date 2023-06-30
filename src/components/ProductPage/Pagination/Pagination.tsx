@@ -2,24 +2,21 @@ import { useSearchParams } from 'react-router-dom';
 import { useEffect } from 'react';
 
 import { IconButton } from '../../UI/IconButton/IconButton';
-import { ProductsList } from '../../ProductsList/ProductsList';
 import { PaginationButton } from './PaginationButton';
 import leftArrow from '../../../assets/svg/l_arrow.svg';
 import rightArrow from '../../../assets/svg/r_arrow.svg';
-import { getNumbers, getItemsToShowIndex } from '../../../helpers/pagination';
+import { getNumbers } from '../../../helpers/pagination';
 import { scrollToTop } from '../../../helpers/dom';
-import { Product } from '../../../types/product';
 import './Pagination.scss';
 
 type PaginationProps = {
-  products: Product[];
-  perPage: string;
+  total: number;
+  perPage: number | string;
+  page: number;
 };
 
-export const Pagination = ({ products, perPage }: PaginationProps) => {
+export const Pagination = ({ total, perPage, page }: PaginationProps) => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const total = products.length;
-  const page = Number(searchParams.get('page')) || 1;
 
   const handlePageChange = (value: number) => {
     if (perPage !== 'all') {
@@ -33,17 +30,12 @@ export const Pagination = ({ products, perPage }: PaginationProps) => {
     = perPage === 'all' ? 1 : Math.ceil(total / Number(perPage));
   const pages = getNumbers(1, numberOfPages);
 
-  const [from, to] = getItemsToShowIndex(perPage as string, page, total);
-  const visibleProducts = products.slice(from, to);
-
   useEffect(() => {
     handlePageChange(1);
   }, [perPage]);
 
   return (
     <>
-      <ProductsList products={visibleProducts} />
-
       {numberOfPages > 1 && (
         <ul className="pagination" data-cy="pagination">
           <li>

@@ -5,11 +5,12 @@ import { IconButton } from '../../UI/IconButton/IconButton';
 import leftArrow from '../../../assets/svg/l_arrow.svg';
 import rightArrow from '../../../assets/svg/r_arrow.svg';
 import './Banner.scss';
+import { Slider } from '../../UI/Slider/Slider';
 
 const bannerImages = [
-  '_new/img/banner-phones.png',
-  '_new/img/banner-tablets.png',
-  '_new/img/banner-accessories.png',
+  'img/banner-phones.png',
+  'img/banner-tablets.png',
+  'img/banner-accessories.png',
 ];
 
 export const Banner = () => {
@@ -41,25 +42,20 @@ export const Banner = () => {
           height={400}
         />
 
-        <div className="banner__slider">
-          <ul
-            className="banner__slider-list"
-            style={{ transform: `translateX(${-100 * slide}%)` }}
-          >
-            {bannerImages.map(image => (
-              <li className="banner__item" key={image}>
-                <img
-                  loading="eager"
-                  width={1040}
-                  height={400}
-                  className="banner__image"
-                  src={image}
-                  alt="Banner object"
-                />
-              </li>
-            ))}
-          </ul>
-        </div>
+        <Slider slide={slide}>
+          {bannerImages.map(image => (
+            <div className="banner__item" key={image}>
+              <img
+                loading="eager"
+                width={1040}
+                height={400}
+                className="banner__image"
+                src={image}
+                alt="Banner object"
+              />
+            </div>
+          ))}
+        </Slider>
 
         <IconButton
           onClick={() => handleClick(1)}

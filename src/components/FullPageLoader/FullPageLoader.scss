@@ -2,4 +2,6 @@
 
 .page-loader {
   @include flex-center;
+  padding-bottom: 80px;
+  padding-top: 40px;
 }

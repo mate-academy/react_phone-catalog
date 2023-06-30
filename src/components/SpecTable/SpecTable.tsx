@@ -3,13 +3,13 @@ import './SpecTable.scss';
 
 type SpecTableProps = {
   specifications: Specifications;
-  style: { fontSize: number; fontWeight: number };
+  style?: { fontSize: number; fontWeight: number };
   specCount?: number;
 };
 
 export const SpecTable = ({
   specifications,
-  style,
+  style = { fontSize: 12, fontWeight: 600 },
   specCount,
 }: SpecTableProps) => (
   <table className="specification-table">

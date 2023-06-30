@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { PrimaryButton } from '../../UI/PrimaryButton/PrimaryButton';
 import './CartSummary.scss';
 
@@ -7,6 +8,8 @@ type CartSummaryProps = {
 };
 
 export const CartSummary = ({ count, sumPrice }: CartSummaryProps) => {
+  const [error, setError] = useState<string | null>(null);
+
   return (
     <div className="cart-summary">
       <h2 className="cart-summary__title">{`$${sumPrice}`}</h2>
@@ -15,12 +18,16 @@ export const CartSummary = ({ count, sumPrice }: CartSummaryProps) => {
 
       <PrimaryButton
         onClick={() =>
-          alert('We are sorry, but this feature is not implemented yet')}
+          setError('We are sorry, but this feature is not implemented yet')}
         width={320}
         height={48}
       >
         Checkout
       </PrimaryButton>
+
+      <p className="cart-summary__error">
+        {error}
+      </p>
     </div>
   );
 };
