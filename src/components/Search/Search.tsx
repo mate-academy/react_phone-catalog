@@ -13,7 +13,7 @@ export const Search = ({ query, products }: SearchProps) => {
   const productsNum = queredProducts.length;
 
   return (
-    <main className="search-results">
+    <section className="search-results">
       {productsNum > 0 ? (
         <>
           <p className="search-results__count">{`${productsNum} results`}</p>
@@ -22,6 +22,6 @@ export const Search = ({ query, products }: SearchProps) => {
       ) : (
         <h1 className="search-results__title">No Search Results</h1>
       )}
-    </main>
+    </section>
   );
 };

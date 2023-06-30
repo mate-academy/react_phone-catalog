@@ -11,7 +11,7 @@ export const Breadcrumbs = () => {
   const breadCrumbs = location.pathname.slice(1).split('/');
 
   return (
-    <nav className="bread-crumbs">
+    <nav className="bread-crumbs" data-cy="breadCrumbs">
       <Link to="/home">
         <img className="bread-crumbs__icon" src={home} alt="Home icon" />
       </Link>

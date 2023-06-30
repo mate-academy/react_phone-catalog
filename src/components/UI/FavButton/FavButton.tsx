@@ -19,11 +19,11 @@ export const FavButton = ({ size, product, productId }: FavButtonProps) => {
 
   return (
     <button
-      onClick={() =>
-        (isFav ? deleteFavItem(productId) : addFavItem(product))}
+      onClick={() => (isFav ? deleteFavItem(productId) : addFavItem(product))}
       style={{ width: size, height: size }}
       type="button"
       className="fav-button"
+      data-cy={!isFav && 'addToFavorite'}
     >
       <img
         className={classNames('fav-button__icon', {

@@ -16,6 +16,7 @@ import './ProductDetailsPage.scss';
 import { getRandomProducts } from '../../helpers/filters';
 import { useProducts } from '../../contexts/productsContext';
 import { ProductCardSlider } from '../../components/ProductCardSlider/ProductCardSlider';
+import { scrollToTop } from '../../helpers/dom';
 
 type State = {
   selectedProduct: ProductDetails | null;
@@ -78,6 +79,8 @@ const ProductDetailsPage = () => {
     getProductDetails(productId, signal)
       .then(data => dispatch({ type: 'selectedProduct/loaded', payload: data }))
       .catch(err => dispatch({ type: 'failed', payload: err.message }));
+
+    scrollToTop();
 
     return () => controller.abort();
   }, [productId]);

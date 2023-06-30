@@ -2,7 +2,6 @@
 @import "../../style-utils/mixins.scss";
 
 .product-card {
-  flex-shrink: 0;
   width: 272px;
   padding: 24px;
   display: flex;
@@ -12,6 +11,7 @@
 
   &:hover {
     border-color: $color-dark;
+    box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
   }
 
   &__link {

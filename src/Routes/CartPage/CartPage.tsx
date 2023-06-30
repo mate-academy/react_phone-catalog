@@ -8,7 +8,7 @@ const CartPage = () => {
   const { cartItems, itemsCount, sumPrice } = useCart();
 
   return (
-    <div className="cart">
+    <section className="cart">
       <BackButton />
       <h1 className="cart__title">Cart</h1>
 
@@ -27,7 +27,7 @@ const CartPage = () => {
       ) : (
         <h2>Your cart is empty</h2>
       )}
-    </div>
+    </section>
   );
 };
 

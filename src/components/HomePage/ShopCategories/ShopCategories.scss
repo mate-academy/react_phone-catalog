@@ -41,23 +41,36 @@
 
   &__image {
     position: absolute;
+    transition: right 0.2s ease-in;
 
     &--phones {
       width: 350px;
       bottom: -20%;
       right: -20%;
+
+      &:hover {
+        right: 0;
+      }
     }
 
     &--tablets {
       width: 500px;
       bottom: -45%;
       right: -45%;
+
+      &:hover {
+        right: -25%;
+      }
     }
 
     &--accessories {
       width: 670px;
       bottom: 0;
       right: -90%;
+
+      &:hover {
+        right: -70%;
+      }
     }
   }
 
