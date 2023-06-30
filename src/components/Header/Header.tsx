@@ -78,14 +78,14 @@ export const Header: FC = () => {
       if (theme === 'light') {
         return (
           <button type="submit">
-            <img src="/_new/img/icons/close-button-dark.svg" alt="Search bar" />
+            <img src="/public/_new/img/icons/close-button-dark.svg" alt="Search bar" />
           </button>
         );
       }
 
       return (
         <button type="submit">
-          <img src="/_new/img/icons/close-button-light.svg" alt="Search bar" />
+          <img src="/public/_new/img/icons/close-button-light.svg" alt="Search bar" />
         </button>
       );
     }
@@ -93,14 +93,14 @@ export const Header: FC = () => {
     if (theme === 'light') {
       return (
         <button type="submit">
-          <img src="/_new/img/icons/search-dark.svg" alt="Search bar" />
+          <img src="/public/_new/img/icons/search-dark.svg" alt="Search bar" />
         </button>
       );
     }
 
     return (
       <button type="submit">
-        <img src="/_new/img/icons/search-light.svg" alt="Search bar" />
+        <img src="/public/_new/img/icons/search-light.svg" alt="Search bar" />
       </button>
     );
   };
@@ -109,9 +109,9 @@ export const Header: FC = () => {
     <header className={`header__wrapper header__wrapper--${theme}`}>
       <Link to="/" className="header__logo logo">
         {theme === 'light' ? (
-          <img src="/_new/img/icons/LOGO-dark.svg" alt="Logo" />
+          <img src="/public/_new/img/icons/LOGO-dark.svg" alt="Logo" />
         ) : (
-          <img src="/_new/img/icons/LOGO-light.svg" alt="Logo" />
+          <img src="/public/_new/img/icons/LOGO-light.svg" alt="Logo" />
         )}
       </Link>
 
@@ -174,12 +174,12 @@ export const Header: FC = () => {
           >
             {theme === 'light' ? (
               <img
-                src="/_new/img/icons/favorites-icon-dark.svg"
+                src="/public/_new/img/icons/favorites-icon-dark.svg"
                 alt="Favorites products"
               />
             ) : (
               <img
-                src="/_new/img/icons/favorites-icon-light.svg"
+                src="/public/_new/img/icons/favorites-icon-light.svg"
                 alt="Favorites products"
               />
             )}
@@ -196,12 +196,12 @@ export const Header: FC = () => {
           >
             {theme === 'light' ? (
               <img
-                src="/_new/img/icons/shopping-bag-icon-dark.svg"
+                src="/public/_new/img/icons/shopping-bag-icon-dark.svg"
                 alt="Shopping bag"
               />
             ) : (
               <img
-                src="/_new/img/icons/shopping-bag-icon-light.svg"
+                src="/public/_new/img/icons/shopping-bag-icon-light.svg"
                 alt="Shopping bag"
               />
             )}
@@ -217,13 +217,13 @@ export const Header: FC = () => {
             {theme === 'light' ? (
               <img
                 className="header__image"
-                src="/_new/img/icons/moon.svg"
+                src="/public/_new/img/icons/moon.svg"
                 alt="Change theme"
               />
             ) : (
               <img
                 className="header__image"
-                src="/_new/img/icons/sun.svg"
+                src="/public/_new/img/icons/sun.svg"
                 alt="Change theme"
               />
             )}

@@ -52,7 +52,7 @@ export const ProductInShoppingCart: FC<Props> = ({ product, theme, finalPrice })
     if (theme === 'light') {
       return (
         <img
-          src="/_new/img/icons/minus-dark.svg"
+          src="/public/_new/img/icons/minus-dark.svg"
           alt="Minus product"
         />
       );
@@ -60,7 +60,7 @@ export const ProductInShoppingCart: FC<Props> = ({ product, theme, finalPrice })
 
     return (
       <img
-        src="/_new/img/icons/minus-light.svg"
+        src="/public/_new/img/icons/minus-light.svg"
         alt="Minus product"
       />
     );
@@ -75,12 +75,12 @@ export const ProductInShoppingCart: FC<Props> = ({ product, theme, finalPrice })
       >
         {theme === 'light' ? (
           <img
-            src="/_new/img/icons/close-button-dark.svg"
+            src="/public/_new/img/icons/close-button-dark.svg"
             alt="Delete product"
           />
         ) : (
           <img
-            src="/_new/img/icons/close-button-light.svg"
+            src="/public/_new/img/icons/close-button-light.svg"
             alt="Delete product"
           />
         )}
@@ -88,13 +88,13 @@ export const ProductInShoppingCart: FC<Props> = ({ product, theme, finalPrice })
 
       {images ? (
         <img
-          src={`_new/${images[0]}`}
+          src={`/public/_new/${images[0]}`}
           alt="Product"
           className="product-in-shopping-cart__product-image"
         />
       ) : (
         <img
-          src={`_new/${image}`}
+          src={`/public/_new/${image}`}
           alt="Product"
           className="product-in-shopping-cart__product-image"
         />
@@ -120,7 +120,7 @@ export const ProductInShoppingCart: FC<Props> = ({ product, theme, finalPrice })
               renderMinusImage()
             ) : (
               <img
-                src="/_new/img/icons/minus-disabled.svg"
+                src="/public/_new/img/icons/minus-disabled.svg"
                 alt="Minus product"
               />
             )}
@@ -132,9 +132,9 @@ export const ProductInShoppingCart: FC<Props> = ({ product, theme, finalPrice })
             className="product-in-shopping-cart__button"
           >
             {theme === 'light' ? (
-              <img src="/_new/img/icons/plus-dark.svg" alt="Minus product" />
+              <img src="/public/_new/img/icons/plus-dark.svg" alt="Minus product" />
             ) : (
-              <img src="/_new/img/icons/plus-light.svg" alt="Minus product" />
+              <img src="/public/_new/img/icons/plus-light.svg" alt="Minus product" />
             )}
           </button>
         </div>

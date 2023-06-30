@@ -40,7 +40,7 @@ export const ProductsSlider: FC<Props> = ({
     if (theme === 'light') {
       return (
         <img
-          src={`/_new/img/icons/arrow-${direction}-dark.svg`}
+          src={`/public/_new/img/icons/arrow-${direction}-dark.svg`}
           alt={`${direction} arrow`}
         />
       );
@@ -48,7 +48,7 @@ export const ProductsSlider: FC<Props> = ({
 
     return (
       <img
-        src={`/_new/img/icons/arrow-${direction}-light.svg`}
+        src={`/public/_new/img/icons/arrow-${direction}-light.svg`}
         alt={`${direction} arrow`}
       />
     );
@@ -76,7 +76,7 @@ export const ProductsSlider: FC<Props> = ({
               renderArrow('left')
             ) : (
               <img
-                src="/_new/img/icons/arrow-left-disabled.svg"
+                src="/public/_new/img/icons/arrow-left-disabled.svg"
                 alt="Left arrow"
               />
             )}
@@ -99,7 +99,7 @@ export const ProductsSlider: FC<Props> = ({
               renderArrow('right')
             ) : (
               <img
-                src="/_new/img/icons/arrow-right-disabled.svg"
+                src="/public/_new/img/icons/arrow-right-disabled.svg"
                 alt="Right arrow"
               />
             )}

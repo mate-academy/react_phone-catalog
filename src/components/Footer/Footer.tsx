@@ -29,9 +29,9 @@ export const Footer: FC = () => {
     <footer className={`footer__wrapper footer__wrapper--${theme}`}>
       <Link to="/" className="footer__logo logo">
         {theme === 'light' ? (
-          <img src="../../public/_new/img/icons/LOGO-dark.svg" alt="Logo" />
+          <img src="/public/_new/img/icons/LOGO-dark.svg" alt="Logo" />
         ) : (
-          <img src="../../public/_new/img/icons/LOGO-light.svg" alt="Logo" />
+          <img src="/public/_new/img/icons/LOGO-light.svg" alt="Logo" />
         )}
       </Link>
 
@@ -62,12 +62,12 @@ export const Footer: FC = () => {
         >
           {theme === 'light' ? (
             <img
-              src="/_new/img/icons/back-to-top-dark.svg"
+              src="/public/_new/img/icons/back-to-top-dark.svg"
               alt="Back to top button"
             />
           ) : (
             <img
-              src="/_new/img/icons/back-to-top-light.svg"
+              src="/public/_new/img/icons/back-to-top-light.svg"
               alt="Back to top button"
             />
           )}

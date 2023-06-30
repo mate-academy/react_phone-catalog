@@ -5,17 +5,17 @@ import './shopByCategory.scss';
 
 const models = [
   {
-    source: '/_new/img/category-phones.png',
+    source: '/public/_new/img/category-phones.png',
     title: 'Mobile phones',
     quantity: 95,
   },
   {
-    source: '/_new/img/category-tablets.png',
+    source: '/public/_new/img/category-tablets.png',
     title: 'Tablets',
     quantity: 0,
   },
   {
-    source: '/_new/img/category-accessories.png',
+    source: '/public/_new/img/category-accessories.png',
     title: 'Accessories',
     quantity: 0,
   },

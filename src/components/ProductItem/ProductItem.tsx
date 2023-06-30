@@ -28,8 +28,6 @@ export const ProductItem: FC<Props> = ({
     ram,
   } = product;
 
-  console.log(priceRegular);
-
   const productFeatures = [
     {
       name: 'Screen',
@@ -54,7 +52,7 @@ export const ProductItem: FC<Props> = ({
         className="product__link"
       >
         {images ? (
-          <img className="product__image" src={`_new/${images[0]}`} alt="Phone" />
+          <img className="product__image" src={`/public/_new/${images[0]}`} alt="Phone" />
         ) : (
           <img className="product__image" src={`/public/_new/${image}`} alt="Phone" />
         )}

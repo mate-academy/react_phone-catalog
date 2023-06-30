@@ -26,12 +26,26 @@
 
   &__image-wrapper {
     padding: 7px;
-    background-color: $white-color;
-    border: 1px solid $elements-color;
     transition: all 0.3s;
     
+    &--light {
+      border: 1px solid $elements-color;
+      background-color: $white-color;
+    }
+
+    &--dark {
+      border: 1px solid $secondary-color;
+      background-color: $primary-color;
+    }
+    
     &--active {
-      border: 1px solid $primary-color;
+      &__light {
+        border: 1px solid $primary-color;
+      }
+
+      &__dark {
+        border: 1px solid $white-color;
+      }
     }
 
     &:hover {
@@ -42,13 +56,27 @@
   &__small-image {
     @include square(65px);
     object-fit: contain;
-    background-color: $white-color;
+    
+    &--light {
+      background-color: $white-color;
+    }
+
+    &--dark {
+      background-color: $primary-color;
+    }
   }
 
   &__preview-image {
     @include square(442px);
     object-fit: contain;
-    background-color: $white-color;
+    
+    &--light {
+      background-color: $white-color;
+    }
+
+    &--dark {
+      background-color: $primary-dark-color;
+    }
   }
 
   &__options {
@@ -63,7 +91,14 @@
     flex-direction: column;
     gap: 8px;
     padding-bottom: 24px;
-    border-bottom: 1px solid $elements-color;
+
+    &--light {
+      border-bottom: 1px solid $elements-color;
+    }
+
+    &--dark {
+      border-bottom: 1px solid $primary-color;
+    }
   }
 
   &__control-panel-title {
@@ -79,17 +114,33 @@
 
   &__color-circle-container {
     padding: 1px;
-    border: 1px solid $elements-color;
     border-radius: 50%;
     transition: border 0.3s;
 
-    &:hover {
-      border: 1px solid $secondary-color;
+    &--light {
+      border: 1px solid $elements-color;
+
+      &:hover {
+        border: 1px solid $secondary-color;
+      }
     }
 
-    &--active,
-    &--active:hover {
-      border: 1px solid $primary-color;
+    &--dark {
+      border: 1px solid $icons-color;
+
+      &:hover {
+        border: 1px solid $elements-color;
+      }
+    }
+
+    &--active {
+      &__light {
+        border: 1px solid $primary-color;
+      }
+
+      &__dark {
+        border: 1px solid $white-color;
+      }
     }
   }
 
@@ -145,19 +196,37 @@
 
   &__capacity-value {
     @extend %body-text;
-    color: $primary-color;
     padding: 7px;
-    border: 1px solid $icons-color;
     transition: border 0.3s;
+    
+    &--light {
+      border: 1px solid $icons-color;
+      color: $primary-color;
 
-    &:hover {
-      border: 1px solid $primary-color;
+      &:hover {
+        border: 1px solid $primary-color;
+      }
     }
 
-    &--active,
-    &--active:hover {
-      background-color: $primary-color;
-      color: $white-color;
+    &--dark {
+      border: 1px solid $primary-color;
+      color: $icons-color;
+
+      &:hover {
+        border: 1px solid $icons-color;
+      }
+    }
+
+    &--active {
+      &__light {
+        background-color: $primary-color;
+        color: $white-color;
+      }
+
+      &__dark {
+        background-color: $white-color;
+        color: $primary-color;
+      }
     }
   }
 
@@ -175,6 +244,10 @@
 
   &__discount-price {
     @extend %h1;
+
+    &--dark {
+      color: $white-color;
+    }
   }
 
   &__full-price {
@@ -215,6 +288,14 @@
       font-family: "Mont-Regular", "Times New Roman", Times, serif;
       font-weight: 500;
       font-size: 14px;
+
+      &__dark {
+        color: $white-color;
+      }
+    }
+
+    &--dark {
+      color: $white-color;
     }
   }
 
@@ -233,14 +314,25 @@
   &__subtitle {
     @extend %h2;
     margin-bottom: 16px;
+    
+    &--dark {
+      color: $white-color;
+    }
   }
 
   &__about-container {
     display: flex;
     flex-direction: column;
     gap: 32px;
-    border-top: 1px solid $elements-color;
     padding-top: 32px;
+    
+    &--light {
+      border-top: 1px solid $elements-color;
+    }
+
+    &--dark {
+      border-top: 1px solid $primary-color;
+    }
   }
 
   &__article {
@@ -252,6 +344,10 @@
 
   &__article-title {
     @extend %h3;
+
+    &--dark {
+      color: $elements-color;
+    }
   }
 
   &__article-text {
@@ -261,8 +357,15 @@
 
   &__tech-specs {
     min-width: 500px; 
-    border-top: 1px solid $elements-color;
     padding-top: 32px;
     margin: 0;
+    
+    &--light {
+      border-top: 1px solid $elements-color;
+    }
+
+    &--dark {
+      border-top: 1px solid $primary-color;
+    }
   }
 }
