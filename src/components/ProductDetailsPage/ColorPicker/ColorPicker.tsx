@@ -23,7 +23,7 @@ const matchColor = (color: string) => {
 };
 
 export const ColorPicker = ({ productId, colors }: ColorPickerProps) => (
-  <ProductSpecPicker title="Avaible colors">
+  <ProductSpecPicker title="Available colors">
     {colors.map(color => (
       <li key={color}>
         <NavLink

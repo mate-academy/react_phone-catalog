@@ -7,13 +7,13 @@ type NotFoundPageProps = {
 };
 
 const NotFoundPage = ({ title }: NotFoundPageProps) => (
-  <div className="not-found">
+  <section className="not-found">
     <h1 className="not-found__title">{title}</h1>
     <Link className="not-found__link" to="/home">
       <img className="not-found__image" src={home} alt="Go to home page" />
       Go back to home page
     </Link>
-  </div>
+  </section>
 );
 
 export default NotFoundPage;

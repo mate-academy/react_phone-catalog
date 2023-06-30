@@ -17,6 +17,7 @@ export type ProductsMap = {
 type ContextValue = {
   products: ProductsMap;
   isLoading: boolean;
+  error: string;
 };
 
 type State = {
@@ -54,7 +55,7 @@ const initialState = {
 export const ProductsProvider = ({
   children,
 }: React.PropsWithChildren<React.ReactNode>) => {
-  const [{ products, isLoading }, dispatch] = useReducer(reducer, initialState);
+  const [{ products, isLoading, error }, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
     dispatch({ type: 'loading' });
@@ -85,6 +86,7 @@ export const ProductsProvider = ({
     () => ({
       products,
       isLoading,
+      error,
     }),
     [products, isLoading],
   );

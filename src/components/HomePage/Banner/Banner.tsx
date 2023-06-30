@@ -42,13 +42,11 @@ export const Banner = () => {
           height={400}
         />
 
-        <Slider slide={slide}>
+        <Slider slide={slide} gap={0}>
           {bannerImages.map(image => (
             <div className="banner__item" key={image}>
               <img
                 loading="eager"
-                width={1040}
-                height={400}
                 className="banner__image"
                 src={image}
                 alt="Banner object"

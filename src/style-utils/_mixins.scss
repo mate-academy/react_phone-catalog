@@ -37,3 +37,15 @@
   justify-content: center;
   align-items: center;
 }
+
+@mixin for-tablets {
+  @media (max-width: 980px) {
+    @content;
+  }
+}
+
+@mixin for-tablets--smaller {
+  @media (max-width: 760px) {
+    @content;
+  }
+}

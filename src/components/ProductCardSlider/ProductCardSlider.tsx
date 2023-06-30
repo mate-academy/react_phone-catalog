@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 import { ProductCard } from '../ProductCard/ProductCard';
 import { Product } from '../../types/product';
@@ -7,6 +7,7 @@ import { IconButton } from '../UI/IconButton/IconButton';
 import leftArrow from '../../assets/svg/l_arrow.svg';
 import rightArrow from '../../assets/svg/r_arrow.svg';
 import './ProductCardSlider.scss';
+import { getVisibleNumberOfProducts } from '../../helpers/dom';
 
 type ProductCardSliderProps = {
   title: string;
@@ -19,7 +20,7 @@ export const ProductCardSlider = ({
 }: ProductCardSliderProps) => {
   const [slide, setSlide] = useState(0);
 
-  const maxTransition = products.length / 4 - 1;
+  const maxTransition = products.length / getVisibleNumberOfProducts() - 1;
 
   const handleClick = useCallback(
     (operation: 1 | -1) => {
@@ -35,6 +36,10 @@ export const ProductCardSlider = ({
     },
     [maxTransition],
   );
+
+  useEffect(() => {
+    setSlide(0);
+  }, [maxTransition]);
 
   return (
     <div className="cards-container">
@@ -58,7 +63,7 @@ export const ProductCardSlider = ({
         </div>
       </div>
 
-      <Slider slide={slide}>
+      <Slider slide={slide} gap={16}>
         {products.map(product => (
           <ProductCard key={product.itemId} product={product} />
         ))}

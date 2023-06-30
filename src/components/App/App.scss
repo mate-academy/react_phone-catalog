@@ -1,4 +1,5 @@
 @import "../../style-utils/_variables.scss";
+@import "../../style-utils/mixins.scss";
 
 .app {
   font-family: "Mont", system-ui, -apple-system, sans-serif;
@@ -7,5 +8,9 @@
   &__main {
     max-width: 1136px;
     margin: 0 auto;
+
+    @include for-tablets {
+      padding: 0 35px;
+    }
   }
 }

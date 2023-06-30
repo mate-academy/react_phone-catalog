@@ -1,4 +1,4 @@
-@import "../../../style-utils/_variables.scss";
+@import "../../style-utils/_variables.scss";
 
 .pagination {
   display: flex;
@@ -9,17 +9,12 @@
     width: 32px;
     height: 32px;
     background-color: #fff;
-    border: 1px solid $color-light-gray;
+    border: 1px solid $color-platinum;
     transition: border 0.5s;
     cursor: pointer;
 
     &:hover {
       border-color: $color-dark;
-    }
-
-    &--color {
-      border-color: $color-platinum;
-      color: #000;
     }
 
     &--active {
@@ -30,7 +25,10 @@
   }
 
   &__pages-container {
+    width: 112px;
     display: flex;
+    justify-content: flex-end;
+    overflow: hidden;
     gap: 8px;
   }
 }
