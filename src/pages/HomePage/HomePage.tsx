@@ -16,6 +16,8 @@ const imagesForBanner = [
   '../_new/img/banner-accessories.png',
   '../public/_new/img/banner-accessories.png',
   'public/_new/img/banner-accessories.png',
+  '/dist/_new/img/banner-accessories.png',
+  './dist/_new/img/banner-accessories.png',
 ];
 
 export const HomePage = () => {
