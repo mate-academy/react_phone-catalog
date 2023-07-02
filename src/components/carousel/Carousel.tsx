@@ -2,8 +2,8 @@ import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation, Pagination } from 'swiper';
 
-import 'swiper/swiper.scss';
-import 'swiper/modules/pagination/pagination.scss';
+import 'swiper/scss';
+import 'swiper/scss/pagination';
 import './Carousel.scss';
 
 import Phones from './assets/banner-phones.png';

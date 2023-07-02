@@ -3,8 +3,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper';
 import { Link } from 'react-router-dom';
 
-import 'swiper/swiper.scss';
-import 'swiper/modules/pagination/pagination.scss';
+import 'swiper/scss';
 import './ProductSlider.scss';
 
 import { ProductCard } from '../card/ProductCard';
