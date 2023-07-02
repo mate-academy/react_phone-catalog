@@ -146,7 +146,7 @@ export const ProductCard: React.FC<Props> = ({
       <div className={styles.image__container}>
         <img
           className={styles.image}
-          src={`/_new/${image}`}
+          src={`${process.env.PUBLIC_URL}/_new/${image}`}
           alt="iphone"
         />
       </div>

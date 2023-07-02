@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "./static/css/main.d215ee50.css",
-    "main.js": "./static/js/main.80d8158d.js",
+    "main.js": "./static/js/main.0c68d536.js",
     "static/media/banner-accessories-new.png": "./static/media/banner-accessories-new.0cdac20947fa028ebb6c.png",
     "static/media/banner-phones.png": "./static/media/banner-phones.b4eeda8bd82b712057a2.png",
     "static/media/banner-Ipads.png": "./static/media/banner-Ipads.df5b73450c9e51d4ad73.png",
@@ -27,10 +27,10 @@
     "static/media/Chevron (Arrow Up).svg": "./static/media/Chevron (Arrow Up).1ea6958a07717117d3d583ab6fe7dcbd.svg",
     "index.html": "./index.html",
     "main.d215ee50.css.map": "./static/css/main.d215ee50.css.map",
-    "main.80d8158d.js.map": "./static/js/main.80d8158d.js.map"
+    "main.0c68d536.js.map": "./static/js/main.0c68d536.js.map"
   },
   "entrypoints": [
     "static/css/main.d215ee50.css",
-    "static/js/main.80d8158d.js"
+    "static/js/main.0c68d536.js"
   ]
 }
