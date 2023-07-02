@@ -1,0 +1,403 @@
+@import "../../styles/variables.scss";
+
+.item-card {
+  margin: 25px auto 80px;
+  width: 1136px;
+  min-height: calc(100vh - 263px);
+}
+
+.item-nav {
+  margin-bottom: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &-icon {
+    path {
+      fill: $secondary;
+    }
+  }
+
+  &-page {
+    font-family: $semi-bold;
+    font-size: $small-text;
+    line-height: $small-line-height;
+    color: $secondary;
+  }
+}
+
+.item-nav:last-child {
+  margin-bottom: 16px;
+}
+
+.title {
+  margin-bottom: 40px;
+  font-family: $bold;
+  font-size: $h1;
+  line-height: $h1-line-height;
+  letter-spacing: 0;
+  color: $primary;
+}
+
+.content {
+  margin-bottom: 80px;
+  display: flex;
+  gap: 64px;
+
+  &-left {
+    width: 559px;
+  }
+
+  &-right {
+    width: 512px;
+  }
+
+  &-images {
+    margin-bottom: 80px;
+    width: 560px;
+    max-height: 480px;
+    display: flex;
+    gap: 16px;
+  }
+
+  &-title {
+    margin-bottom: 16px;
+    font-family: $bold;
+    font-size: $h2;
+    line-height: $h2-line-height;
+    letter-spacing: 0;
+    color: $primary;
+  }
+
+  &-description {
+    margin-bottom: 32px;
+    width: 100%;
+  }
+
+  &-devider {
+    margin-bottom: 32px;
+    width: 100%;
+    height: 1px;
+    background-color: $elements;
+
+    &-right {
+      margin-bottom: 24px;
+    }
+  }
+}
+
+.description {
+  font-family: $regular;
+  font-size: $body-text;
+  line-height: $body-line-height;
+  letter-spacing: 0;
+  color: $secondary;
+
+  &-title {
+    margin-bottom: 16px;
+    font-family: $semi-bold;
+    font-size: $h3;
+    line-height: $h3-line-height;
+    letter-spacing: 0;
+    color: $primary;
+  }
+}
+
+.images {
+  &-left {
+    width: 80px;
+    height: 100%;
+  }
+
+  &-right {
+    width: 464px;
+  }
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  padding: 0 50px;
+  object-fit: contain;
+
+  &-left {
+    margin-bottom: 16px;
+    padding: 5px 10px;
+    width: 80px;
+    height: 80px;
+    border: 1px solid $elements;
+    object-fit: contain;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.options {
+  margin-bottom: 107px;
+  display: flex;
+  justify-content: space-between;
+
+  &-info {
+    width: 320px;
+  }
+
+  &-select {
+    margin-bottom: 24px;
+    width: 100%;
+
+    &:after {
+      margin-bottom: 24px;
+      content: "";
+      width: 100%;
+      height: 1px;
+      background-color: $elements;
+    }
+
+    &:last-child {
+      margin-bottom: 32px;
+    }
+  }
+
+  &-label {
+    margin-bottom: 8px;
+    font-family: $semi-bold;
+    font-size: $small-text;
+    line-height: $small-line-height;
+    color: $secondary;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.color-wrapper {
+  position: relative;
+  padding: 2px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid $elements;
+  transition: box-shadow 0.2s;
+
+  &:hover {
+    cursor: pointer;
+    border-color: $icons;
+    box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+  }
+
+  &-selected {
+    border-color: $primary;
+
+    &:hover {
+      border-color: $primary;
+      box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+    }
+  }
+}
+
+.color {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.black {
+  background-color: #1f2020;
+}
+
+.white {
+  background-color: #fbf7f4;
+}
+
+.rosegold {
+  background-color: #e6c7c2;
+}
+
+.silver {
+  background-color: #ebebe3;
+}
+
+.spacegray {
+  background-color: #52514f;
+}
+
+.gold {
+  background-color: #fbd7bd;
+}
+
+.green {
+  background-color: #aee1cd;
+}
+
+.yellow {
+  background-color: #ffe681;
+}
+
+.purple {
+  background-color: #b8afe6;
+}
+
+.red {
+  background-color: #ba0c2e;
+}
+
+.coral {
+  background-color: #ee7762;
+}
+
+.midnightgreen {
+  background-color: #4e5850;
+}
+
+.capacity {
+  padding: 0 5px;
+  height: 32px;
+  border: 1px solid $icons;
+  font-family: $regular;
+  font-size: $body-text;
+  line-height: 32px;
+  color: $primary;
+
+  &:hover {
+    cursor: pointer;
+    background-color: $primary;
+    color: $white;
+    box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+  }
+
+  &-selected {
+    background-color: $primary;
+    color: $white;
+  }
+}
+
+.container {
+  &-select {
+    display: flex;
+    gap: 8px;
+  }
+
+  &-cart {
+    margin-bottom: 32px;
+  }
+
+  &-button {
+    height: 48px;
+    display: flex;
+    gap: 8px;
+  }
+}
+
+.price {
+  margin-bottom: 16px;
+
+  &-actual {
+    margin-right: 8px;
+    font-family: $bold;
+    font-size: $h1;
+    line-height: $h1-line-height;
+    letter-spacing: 0;
+    color: $primary;
+  }
+
+  &-discount {
+    font-family: $regular;
+    font-size: $h2;
+    line-height: $h2-line-height;
+    letter-spacing: 0;
+    color: $secondary;
+    text-decoration: line-through;
+  }
+}
+
+.button {
+  &-add {
+    width: 262px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: $semi-bold;
+    font-size: $body-text;
+    line-height: $body-line-height;
+    letter-spacing: 0;
+    color: $white;
+    background-color: $primary;
+
+    &:hover {
+      cursor: pointer;
+      box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+    }
+
+    &:active {
+      color: $green;
+      background-color: $white;
+      border: 1px solid $elements;
+    }
+  }
+
+  &-favourites {
+    width: 48px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid $icons;
+
+    &:hover {
+      border: 1px solid $primary;
+      cursor: pointer;
+    }
+
+    &:active {
+      border-color: $elements;
+    }
+  }
+}
+
+.is-button-active {
+  color: $green;
+  background-color: $white;
+  border: 1px solid $elements;
+}
+
+.specs {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+  &-values {
+    .options-label {
+      color: $primary;
+      text-align: end;
+    }
+  }
+
+  &-label {
+    margin-bottom: 8px;
+    font-family: $regular;
+    font-size: $body-text;
+    line-height: $body-line-height;
+    color: $secondary;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.specs-label.value {
+  color: $primary;
+  text-align: end;
+}

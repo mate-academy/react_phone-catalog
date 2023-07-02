@@ -1,0 +1,56 @@
+@import "../../styles/variables.scss";
+
+.pagination {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+
+  &-nav {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $icons;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    path {
+      fill: $primary;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &-pages {
+    display: flex;
+    gap: 8px;
+  }
+
+  .selected {
+    color: $white;
+    border-color: $primary;
+    background-color: $primary;
+
+    &:hover {
+      border-color: $primary;
+    }
+  }
+
+  &-page {
+    width: 32px;
+    height: 32px;
+    font-family: $regular;
+    font-size: $body-text;
+    line-height: 32px;
+    text-align: center;
+    color: black;
+    border: 1px solid $elements;
+
+    &:hover {
+      cursor: pointer;
+      border-color: $icons;
+    }
+  }
+}

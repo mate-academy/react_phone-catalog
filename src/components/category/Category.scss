@@ -1,0 +1,51 @@
+@import "../../styles/variables.scss";
+
+.categories {
+  margin: 0 auto 80px;
+  width: 1136px;
+
+  &-container {
+    display: flex;
+    gap: 16px;
+  }
+
+  &-title {
+    margin-bottom: 24px;
+    font-family: $bold;
+    font-size: 32px;
+    line-height: $h1-line-height;
+    letter-spacing: 0;
+    color: $primary;
+  }
+}
+
+.category {
+  transition: transform 0.3s;
+
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.03);
+  }
+
+  &-image {
+    width: 368px;
+    height: 368px;
+  }
+
+  &-title {
+    margin-bottom: 4px;
+    font-family: $semi-bold;
+    font-size: $h3;
+    line-height: $h3-line-height;
+    color: $primary;
+    text-align: start;
+  }
+
+  &-subtitle {
+    font-family: $regular;
+    font-size: $body-text;
+    line-height: $body-line-height;
+    color: $secondary;
+    text-align: start;
+  }
+}

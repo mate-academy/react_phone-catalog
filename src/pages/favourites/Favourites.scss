@@ -1,0 +1,47 @@
+@import "../../styles/variables.scss";
+
+.favourites {
+  margin: 24px auto 80px;
+  width: 1136px;
+  min-height: calc(100vh - 262px);
+
+  &-nav {
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    &-icon {
+      path {
+        fill: $secondary;
+      }
+    }
+
+    &-page {
+      font-family: $semi-bold;
+      font-size: $small-text;
+      line-height: $small-line-height;
+      color: $secondary;
+    }
+  }
+
+  &-title {
+    margin-bottom: 40px;
+  }
+}
+
+.title {
+  margin-bottom: 8px;
+  font-family: $bold;
+  font-size: 32px;
+  line-height: $h1-line-height;
+  letter-spacing: 0;
+  color: $primary;
+}
+
+.subtitle {
+  font-family: $regular;
+  font-size: $body-text;
+  line-height: $body-line-height;
+  color: $secondary;
+}

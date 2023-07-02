@@ -1,0 +1,191 @@
+@import "../../styles/variables.scss";
+
+.cart {
+  margin: 40px auto 0;
+  width: 1136px;
+  min-height: calc(100vh - 198px);
+}
+
+.breadcrumps {
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.icon {
+  path {
+    fill: $secondary;
+  }
+}
+
+.navlink {
+  font-family: $semi-bold;
+  font-size: $small-text;
+  line-height: $small-line-height;
+  color: $secondary;
+}
+
+.title {
+  margin-bottom: 24px;
+  font-family: $bold;
+  font-size: $h1;
+  line-height: $h1-line-height;
+  letter-spacing: 0;
+  color: $primary;
+}
+
+.cart-container {
+  margin-bottom: 80px;
+  display: flex;
+  gap: 16px;
+}
+
+.products {
+  width: 752px;
+}
+
+.product {
+  margin-bottom: 20px;
+  width: 100%;
+  height: 128px;
+  padding: 24px 40px 24px 24px;
+  display: flex;
+  align-items: center;
+  border: 1px solid $elements;
+
+  &-container {
+    margin-right: 50px;
+    width: 391px;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+  }
+
+  &-controls {
+    margin-right: 42px;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &-image {
+    width: 66px;
+    height: 66px;
+    object-fit: contain;
+  }
+
+  &-name {
+    font-size: $body-text;
+    line-height: $body-line-height;
+    font-family: $regular;
+  }
+
+  &-button {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid $icons;
+    color: $primary;
+    font-size: $h2;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &-count {
+    width: 5px;
+    font-size: $body-text;
+    font-family: $regular;
+    line-height: $body-line-height;
+    color: black;
+  }
+
+  &-price {
+    font-size: $h2;
+    font-family: $bold;
+    line-height: $h2-line-height;
+  }
+}
+
+.is-disabled {
+  color: $icons;
+  border-color: $elements;
+}
+
+.cross {
+  margin-right: 30px;
+  width: 16px;
+  height: 16px;
+
+  path {
+    fill: $secondary;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.sum {
+  width: 368px;
+  height: 206px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid $elements;
+
+  &-total {
+    color: $primary;
+    font-size: $h1;
+    font-family: $bold;
+    letter-spacing: -0.32px;
+  }
+
+  &-subtitle {
+    margin-bottom: 24px;
+    color: $secondary;
+    text-align: center;
+    font-size: $body-text;
+    font-family: $regular;
+    line-height: $body-line-height;
+  }
+
+  &-devider {
+    margin-bottom: 24px;
+    width: 321px;
+    height: 1px;
+    border-bottom: 1px solid $elements;
+  }
+
+  &-button {
+    padding: 14px 126px;
+    width: 320px;
+    height: 48px;
+    background-color: $primary;
+    color: $white;
+    text-align: center;
+    font-family: $semi-bold;
+    font-size: $body-text;
+    line-height: $body-line-height;
+    transition: box-shadow 0.2s;
+
+    &:hover {
+      cursor: pointer;
+      box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+    }
+  }
+}

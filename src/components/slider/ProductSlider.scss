@@ -1,0 +1,77 @@
+@import "../../styles/variables.scss";
+
+.product-slider {
+  margin: 0 auto 80px;
+  width: 1136px;
+}
+
+.product {
+  &-title {
+    margin-bottom: 24px;
+    font-family: $bold;
+    font-size: 32px;
+    line-height: $h1-line-height;
+    letter-spacing: 0;
+    color: $primary;
+  }
+
+  &-title-container {
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &-wrapper {
+    align-items: center;
+  }
+
+  &-slide {
+    height: auto;
+    width: 272px !important;
+  }
+}
+
+.slider {
+  &-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  &-icon {
+    height: 32px;
+    width: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid $icons;
+    transition: border-color 0.3s;
+  
+    path {
+      fill: $primary;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &-container {
+    height: 520px;
+    width: 100%;
+  }
+}
+
+.slider-icon.swiper-button-disabled {
+  border-color: $border;
+
+  path {
+    fill: $border;
+  }
+}
+
+.swiper-wrapper {
+  padding-left: 4px;
+}

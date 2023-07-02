@@ -1,0 +1,108 @@
+@import "../../styles/variables.scss";
+
+.footer {
+  margin: 0 auto;
+  padding: 0 152px;
+  width: $desktop-width;
+  height: $footer-height;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  border-top: 1px solid $border;
+
+  &-button {
+    height: 32px;
+    width: 118px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-decoration: none;
+    font-size: $small-text;
+    line-height: $small-line-height;
+    color: $secondary;
+
+    &-container {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid $elements;
+    
+      svg {
+        path {
+          fill: $primary;
+        }
+      }
+    }
+
+    &:hover {
+      cursor: pointer;
+      color: $primary;
+    }
+  
+    &-icon {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &-link {
+    position: inherit;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $secondary;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: $small-text;
+    line-height: $upper-case-line-height;
+    letter-spacing: $upper-case-lspacing;
+    transition: all 0.3s;
+  
+    &:hover {
+      color: $primary;
+      font-family: $bold;
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+    }
+  }
+}
+
+.logo {
+  height: 24px;
+  width: 40px;
+
+  &-container {
+    height: 100%;
+    width: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.links {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 64px;
+}
+
+.github {
+  width: 50px;
+}
+
+.contacts {
+  width: 72px;
+}
+
+.rights {
+  width: 48px;
+}

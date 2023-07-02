@@ -1,0 +1,44 @@
+@import "./variables.scss";
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: $regular;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+}
+
+a {
+  line-height: 100%;
+  text-align: center;
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  border: none;
+  background-color: transparent;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.title {
+  font-family: $bold;
+  font-size: 32px;
+  line-height: $h1-line-height;
+  letter-spacing: 0;
+  color: $primary;
+}

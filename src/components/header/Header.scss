@@ -1,0 +1,161 @@
+@import "../../styles/variables.scss";
+
+.header {
+  margin: 0 auto;
+  padding-left: 24px;
+  width: $desktop-width;
+  height: $header-height;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid $border;
+
+  &-left-container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 64px;
+  }
+
+  &-right-container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &-search {
+    padding: 24px;
+    width: 328px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5px;
+    border-left: 1px solid $border;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &-text {
+      width: 100%;
+      font-family: $semi-bold;
+      font-size: $body-text;
+      line-height: $body-line-height;
+      color: $primary;
+      outline: none;
+      border: none;
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      &::placeholder {
+        color: $icons;
+      }
+    }
+  }
+
+  &-button-container {
+    width: 66px;
+    height: 100%;
+    border-left: 1px solid $border;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &-button {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.nav {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 64px;
+
+  &-link {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: $regular;
+    color: $secondary;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: $small-text;
+    line-height: $upper-case-line-height;
+    letter-spacing: $upper-case-lspacing;
+    transition: all 0.2s;
+
+    &:hover {
+      color: $primary;
+      font-family: $bold;
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+      border-bottom: 1px solid #000;
+    }
+  }
+}
+
+.home {
+  width: 40px;
+}
+
+.phones {
+  width: 54px;
+}
+
+.tablets {
+  width: 54px;
+}
+
+.accessories {
+  width: 90px;
+}
+
+.logo {
+  height: 24px;
+  width: 40px;
+
+  &-container {
+    height: 100%;
+    width: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.link {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+
+  &:hover {
+    border-bottom: 1px solid #000;
+  }
+}
+
+.is-focused {
+  background: $hoverBG;
+}
+
+.is-active {
+  font-family: $bold;
+  color: $secondary;
+  border-bottom: 1px solid $secondary;
+}

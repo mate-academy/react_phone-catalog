@@ -1,0 +1,94 @@
+@import "../../styles/variables.scss";
+
+.catalog {
+  margin: 24px auto 80px;
+  width: 1136px;
+
+  &-nav {
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    &-icon {
+      path {
+        fill: $secondary;
+      }
+    }
+
+    &-page {
+      font-family: $semi-bold;
+      font-size: $small-text;
+      line-height: $small-line-height;
+      color: $secondary;
+    }
+  }
+
+  &-title {
+    margin-bottom: 40px;
+
+    .title {
+      margin-bottom: 8px;
+      font-family: $bold;
+      font-size: 32px;
+      line-height: $h1-line-height;
+      letter-spacing: 0;
+      color: $primary;
+    }
+
+    .subtitle {
+      font-family: $regular;
+      font-size: $body-text;
+      line-height: $body-line-height;
+      color: $secondary;
+    }
+  }
+
+  &-filters {
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 16px;
+  }
+
+  &-items-list {
+    margin-bottom: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 16px;
+    row-gap: 40px;
+  }
+}
+
+.is-loading {
+  height: calc(100vh - 262px);
+}
+
+.search {
+  margin-bottom: 24px;
+}
+
+.sorting {
+  width: 176px;
+}
+
+.perpage {
+  width: 128px;
+}
+
+.container {
+  margin: 0 auto;
+  position: relative;
+  width: 930px;
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+}
+
+.box {
+  position: absolute;
+  width: calc(33.33% - 10px);
+  margin-bottom: 10px;
+}

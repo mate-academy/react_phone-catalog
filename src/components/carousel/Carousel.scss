@@ -1,0 +1,62 @@
+@import "../../styles/variables.scss";
+
+.carousel {
+  margin: 0 auto 20px;
+  padding-top: 20px;
+  width: 1136px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 16px;
+}
+
+.slider-arrow {
+  height: 400px;
+  width: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid $elements;
+  transition: border-color 0.3s;
+
+  path {
+    fill: $primary;
+  }
+
+  &:hover {
+    cursor: pointer;
+    border-color: $icons;
+  }
+}
+
+.slider-image {
+  height: 400px;
+  width: 1040px;
+  object-fit: cover;
+}
+
+.swiper {
+  &-container {
+    max-width: 1040px;
+  }
+}
+
+.swiper-pagination {
+  position: static;
+}
+
+.swiper-pagination-bullet {
+  margin: 0 7px;
+  width: 14px;
+  height: 4px;
+  border-radius: 0%;
+  background-color: $icons;
+
+  &-active {
+    background-color: $primary;
+  }
+}
+
+.wrapper {
+  padding: 0 !important;
+}
