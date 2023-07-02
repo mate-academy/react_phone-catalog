@@ -253,7 +253,7 @@ const ItemPage: React.FC = () => {
                         <img
                           className="img-left"
                           src={`/_new/${image}`}
-                          alt="iphone 11 pro max gold"
+                          alt={product.name}
                         />
                       </button>
                     ))}

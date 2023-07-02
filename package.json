@@ -18,6 +18,7 @@
     "swiper": "^9.4.1"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@mate-academy/cypress-tools": "^1.0.4",
     "@mate-academy/eslint-config-react": "*",
     "@mate-academy/eslint-config-react-typescript": "*",
