@@ -113,7 +113,7 @@ const Cart: React.FC = () => {
                   <div className="product-container">
                     <img
                       className="product-image"
-                      src={`${process.env.PUBLIC_URL}/_new/${item.product.image}`}
+                      src={`_new/${item.product.image}`}
                       alt="product"
                     />
                     <span className="product-name">

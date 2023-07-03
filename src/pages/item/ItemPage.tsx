@@ -252,7 +252,7 @@ const ItemPage: React.FC = () => {
                       >
                         <img
                           className="img-left"
-                          src={`${process.env.PUBLIC_URL}/_new/${image}`}
+                          src={`_new/${image}`}
                           alt={product.name}
                         />
                       </button>
@@ -262,7 +262,7 @@ const ItemPage: React.FC = () => {
                   <div className="images-right">
                     <img
                       className="img"
-                      src={`${process.env.PUBLIC_URL}/_new/${selectedImage}`}
+                      src={`_new/${selectedImage}`}
                       alt="iphone 11 pro max gold"
                     />
                   </div>
