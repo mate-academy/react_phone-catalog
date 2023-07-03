@@ -10,11 +10,7 @@ export const ShoppingCartPage: FC = () => {
   const shoppingCart = useAppSelector(state => state.shoppingCart.value);
   const sumOfPrices = useMemo(() => {
     return shoppingCart.reduce((previousValue, currentValue) => {
-      const finalPrice = !currentValue.price
-        ? currentValue.priceDiscount
-        : currentValue.price;
-
-      return previousValue + (finalPrice * currentValue.quantity);
+      return previousValue + (currentValue.price * currentValue.quantity);
     }, 0);
   }, [shoppingCart]);
   const quantityOfProductsInShoppingCart = useMemo(() => {
@@ -61,7 +57,6 @@ export const ShoppingCartPage: FC = () => {
               <ProductInShoppingCart
                 key={product.id}
                 product={product}
-                finalPrice={!product.price ? product.priceDiscount : product.price}
                 theme={theme}
               />
             ))}

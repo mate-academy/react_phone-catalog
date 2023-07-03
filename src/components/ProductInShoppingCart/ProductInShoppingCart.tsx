@@ -10,14 +10,13 @@ import './productInShoppingCart.scss';
 interface Props {
   product: Product;
   theme: string;
-  finalPrice: number;
 }
 
-export const ProductInShoppingCart: FC<Props> = ({ product, theme, finalPrice }) => {
+export const ProductInShoppingCart: FC<Props> = ({ product, theme }) => {
   const dispatch = useAppDispatch();
   const shoppingCart = useAppSelector(state => state.shoppingCart.value);
   const {
-    name, image, quantity, id, images, category,
+    name, image, quantity, id, category, price,
   } = product;
 
   const handleCounterClick = (productId: number, action: string) => {
@@ -86,23 +85,15 @@ export const ProductInShoppingCart: FC<Props> = ({ product, theme, finalPrice })
         )}
       </button>
 
-      {images ? (
-        <img
-          src={`/public/_new/${images[0]}`}
-          alt="Product"
-          className="product-in-shopping-cart__product-image"
-        />
-      ) : (
+      <Link
+        to={`/${category || 'phones'}/${name.toLowerCase().split(' ').join('-')}`}
+        className={`product-in-shopping-cart__product-name product-in-shopping-cart__product-name--${theme}`}
+      >
         <img
           src={`/public/_new/${image}`}
           alt="Product"
           className="product-in-shopping-cart__product-image"
         />
-      )}
-      <Link
-        to={`/${category || 'phones'}/${name.toLowerCase().split(' ').join('-')}`}
-        className={`product-in-shopping-cart__product-name product-in-shopping-cart__product-name--${theme}`}
-      >
         {name}
       </Link>
 
@@ -139,7 +130,7 @@ export const ProductInShoppingCart: FC<Props> = ({ product, theme, finalPrice })
           </button>
         </div>
         <h2 className={`product-in-shopping-cart__price product-in-shopping-cart__price--${theme}`}>
-          {`$${finalPrice * quantity}`}
+          {`$${price * quantity}`}
         </h2>
       </div>
     </div>

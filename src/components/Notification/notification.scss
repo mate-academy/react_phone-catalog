@@ -4,10 +4,17 @@
 
 .notification {
   @include flex-center;
-  background-color: rgba(226, 230, 233, 0.4);
   max-height: 50px;
   border-radius: 10px;
   padding: 20px;
+
+  &--light {
+    background-color: rgba(226, 230, 233, 0.4);
+  }
+
+  &--dark {
+    background-color: $elements-color;
+  }
 
   &__message {
     @extend %h2;

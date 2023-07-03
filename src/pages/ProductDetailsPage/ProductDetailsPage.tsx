@@ -1,4 +1,6 @@
-import { FC, useEffect, useState } from 'react';
+import {
+  FC, useEffect, useMemo, useState,
+} from 'react';
 import useSwr from 'swr';
 import { Link, useLocation } from 'react-router-dom';
 import { fetcher, BASE_URL } from '../../api/productsApi';
@@ -34,6 +36,10 @@ export const ProductDetailsPage: FC = () => {
     fetcher,
     { suspense: true },
   );
+
+  const foundProduct = useMemo(() => {
+    return products.find(prod => prod.name === product.name);
+  }, [product, products]);
 
   const theme = useAppSelector(state => state.theme.value);
   const {
@@ -154,12 +160,14 @@ export const ProductDetailsPage: FC = () => {
               <h2 className="product-details__full-price">{`$${priceRegular}`}</h2>
             </div>
 
-            <AddProductButtons
-              addToCart={handleAddProductToCart}
-              addToFavorites={handleAddProductToFavorites}
-              product={product}
-              longVersion
-            />
+            {foundProduct && (
+              <AddProductButtons
+                addToCart={handleAddProductToCart}
+                addToFavorites={handleAddProductToFavorites}
+                product={foundProduct}
+                longVersion
+              />
+            )}
           </div>
           <div className="product-details__characteristics">
             {Object.entries(product).slice(11, 15).map(entry => (
@@ -176,7 +184,10 @@ export const ProductDetailsPage: FC = () => {
             ))}
           </div>
         </div>
-        <p className="product-details__id">ID: 802390</p>
+        <p className="product-details__id">
+          ID:
+          {foundProduct?.id}
+        </p>
       </div>
 
       <div className="product-details__text-container">

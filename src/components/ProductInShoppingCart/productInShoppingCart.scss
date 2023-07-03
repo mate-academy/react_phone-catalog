@@ -39,6 +39,9 @@
 
   &__product-name {
     @extend %body-text;
+    display: flex;
+    align-items: center;
+    gap: 30px;
     margin: 0;
     flex: 1 0;
 

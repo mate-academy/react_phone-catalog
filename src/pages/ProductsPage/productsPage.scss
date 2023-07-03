@@ -1,0 +1,43 @@
+@import "../../base/mixins.scss";
+@import "../../base/variables.scss";
+@import "../../partials/placeholders.scss";
+
+.products-page {
+  display: flex;
+  flex-direction: column;
+  width: 1500px;
+
+  &__quantity {
+    @extend %body-text;
+    color: $secondary-color;
+    margin-bottom: 40px;
+  }
+
+  &__filter-wrapper {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__filter-button-container {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 24px;
+  }
+
+  &__filter-button__description {
+    @extend %small-text;
+    color: $secondary-color;
+  }
+
+  &__products {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+
+  &__pagination {
+    margin: 0 auto;
+  }
+}

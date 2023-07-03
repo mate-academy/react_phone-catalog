@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import { FC, useMemo, useState } from 'react';
 import { useAppSelector } from '../../app/hooks';
+import { renderArrow } from '../../helpers/renderArrow';
 import './productsSlider.scss';
 
 interface Props {
@@ -36,24 +37,6 @@ export const ProductsSlider: FC<Props> = ({
     setActiveIndex(updatedIndex);
   };
 
-  const renderArrow = (direction: string) => {
-    if (theme === 'light') {
-      return (
-        <img
-          src={`/public/_new/img/icons/arrow-${direction}-dark.svg`}
-          alt={`${direction} arrow`}
-        />
-      );
-    }
-
-    return (
-      <img
-        src={`/public/_new/img/icons/arrow-${direction}-light.svg`}
-        alt={`${direction} arrow`}
-      />
-    );
-  };
-
   return (
     <div className="products-slider">
       <div className="products-slider__container">
@@ -73,7 +56,7 @@ export const ProductsSlider: FC<Props> = ({
             disabled={isFreeLeftSpace}
           >
             {!isFreeLeftSpace ? (
-              renderArrow('left')
+              renderArrow('left', theme)
             ) : (
               <img
                 src="/public/_new/img/icons/arrow-left-disabled.svg"
@@ -96,7 +79,7 @@ export const ProductsSlider: FC<Props> = ({
           >
 
             {!isFreeRightSpace ? (
-              renderArrow('right')
+              renderArrow('right', theme)
             ) : (
               <img
                 src="/public/_new/img/icons/arrow-right-disabled.svg"

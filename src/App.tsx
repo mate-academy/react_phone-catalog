@@ -9,6 +9,7 @@ import { useAppSelector } from './app/hooks';
 import { ShoppingCartPage } from './pages/ShoppingCartPage';
 import { FavoritesPage } from './pages/FavoritesPage';
 import { ProductDetailsPage } from './pages/ProductDetailsPage';
+import { ProductsPage } from './pages/ProductsPage';
 
 const App = () => {
   const theme = useAppSelector(state => state.theme.value);
@@ -26,6 +27,14 @@ const App = () => {
             )}
           />
           <Route path="/phones">
+            <Route
+              path=""
+              element={(
+                <Suspense fallback={<Loader />}>
+                  <ProductsPage category="Phones" />
+                </Suspense>
+              )}
+            />
             <Route
               path=":phone"
               element={(

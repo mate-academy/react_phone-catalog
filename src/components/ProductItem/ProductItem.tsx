@@ -18,11 +18,8 @@ export const ProductItem: FC<Props> = ({
     category,
     image,
     name,
-    images,
     price,
     fullPrice,
-    priceRegular,
-    priceDiscount,
     screen,
     capacity,
     ram,
@@ -51,19 +48,15 @@ export const ProductItem: FC<Props> = ({
         to={`/${category || 'phones'}/${name.toLowerCase().split(' ').join('-')}`}
         className="product__link"
       >
-        {images ? (
-          <img className="product__image" src={`/public/_new/${images[0]}`} alt="Phone" />
-        ) : (
-          <img className="product__image" src={`/public/_new/${image}`} alt="Phone" />
-        )}
+        <img className="product__image" src={`/public/_new/${image}`} alt="Phone" />
         <h2 className={`product__name product__name--${theme}`}>{name}</h2>
       </Link>
 
       <div className="product__prices">
         <p className={`product__price product__price--${theme}`}>
-          {`$${!price ? priceDiscount : price}`}
+          {`$${price}`}
         </p>
-        <p className="product__full-price">{`$${!fullPrice ? priceRegular : fullPrice}`}</p>
+        <p className="product__full-price">{`$${fullPrice}`}</p>
       </div>
 
       <div className="product__info">
