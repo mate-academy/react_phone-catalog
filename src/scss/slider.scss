@@ -1,0 +1,46 @@
+@import "./utils/_variables";
+@import "./utils/mixins";
+
+.slider {
+  display: flex;
+  gap: 16px;
+  overflow: hidden;
+  margin-bottom: 16px;
+  
+  &__list {
+    display: flex;
+    overflow: hidden;
+    gap: 16px;
+  }
+
+  &__item {
+    & img {
+      min-width: 1040px;
+      max-width: 1040px;
+      max-height: 400px;
+      min-height: 400px;
+
+      @include onTab {
+        max-width: 600px;
+        min-width: 600px;
+        min-height: 350px;
+        max-height: 350px;
+        gap: 20px;
+      }
+    }
+  }
+
+  &__range {
+    padding: 0;
+    display: flex;
+    gap: 16px;
+    width: fit-content;
+    margin: 0 auto;
+
+    &--item {
+      width: 14px;
+      height: 4px;
+      background-color: $border-color-gray;
+    }
+  }
+}

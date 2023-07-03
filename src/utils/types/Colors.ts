@@ -1,0 +1,15 @@
+export enum Colors {
+  black = '#1F2020',
+  rosegold = '#FAD7BD',
+  gold = '#F5DDC5',
+  silver = '#E4E4E2',
+  spacegray = '#25282A',
+  green = '#AEE1CD',
+  yellow = '#FFE681',
+  white = '#FBF7F4',
+  purple = '#B8AFE6',
+  re = '#E23636',
+  midnightgreen = '#4E5851',
+  coral = '#EE7762',
+  grey = '#535150',
+}

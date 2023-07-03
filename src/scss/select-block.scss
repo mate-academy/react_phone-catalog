@@ -1,0 +1,75 @@
+@import "./utils/_variables";
+@import"./utils/extends";
+@import "./utils/mixins";
+
+.filter {
+  display: flex;
+  gap: 16px;
+
+  &__arrow--up {
+    transform: rotate(180deg);
+  }
+
+  &__wrap {
+    position: relative;
+    margin-bottom: 24px;
+  }
+
+  &__description {
+    @include text(12px, 600, $primary-gray-color);
+    margin-bottom: 4px;
+  }
+
+  &__select {
+    @extend .flex-between-center;
+    @extend .border-gray;
+    height: 40px;
+    padding: 0 16px;
+      
+    &--left {
+      width: 176px;
+    }
+
+    &--right {
+      width: 128px;
+    }
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    &:active {
+      @extend .border-dark;
+    }
+
+    & span {
+      @include text(14px, 600, $primary-dark-color);
+    }
+
+  }
+
+  &__options {
+    position: absolute;
+    z-index: 3;
+    cursor: pointer;
+    top: 65px;
+    width: 100%;
+    background-color: white;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  }
+
+  &__item {
+    color: $primary-gray-color;
+    padding: 10px 16px;
+    cursor: pointer;
+    transition: box-shadow 0.2s ease;
+
+    &:hover {
+      box-shadow: 0 3px 8px rgba(0,0,0,0.25), 0 3px 3px rgba(0,0,0,0.22);
+    }
+
+    &:active {
+      opacity: 0.8;
+    }
+  }
+}

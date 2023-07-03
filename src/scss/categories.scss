@@ -1,0 +1,30 @@
+@import "./utils/_variables";
+@import "./utils/mixins";
+
+.categories {
+  &__items {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__item {
+    text-decoration: none;
+        
+    & img {
+      @include onTab {
+        width: 220px;
+        height: 220px;
+      }
+    }
+        
+    &--title {
+      @include text(20px, 600, $primary-dark-color);
+      text-decoration: none;
+    }
+
+    &--total-amount {
+      @include text(14px, 500, $primary-gray-color);
+      text-decoration: none;
+    }
+  }
+}

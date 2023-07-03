@@ -1,0 +1,16 @@
+@import "./utils/extends";
+@import "./utils/variables";
+
+.arrow__button {
+  @extend .border-gray;
+  min-width: $icon-width;
+  min-height: $icon-width;
+      
+  &--left {
+    transform: rotate(180deg);
+  }
+
+  &--up {
+    transform: rotate(-90deg);
+  }
+}

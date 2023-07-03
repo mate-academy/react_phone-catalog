@@ -1,0 +1,28 @@
+@import "./utils/_variables";
+@import"./utils/extends";
+
+.icon {
+  position: relative;
+  @extend .flex-center;
+  border-left: 1px solid $border-color-gray;
+  padding: 0 25px;
+  height: 100%;
+
+  & img {
+    width: 25px;
+  }
+   
+  &-info__info {
+    position: absolute;
+    @extend .flex-center;
+    left: 53%;
+    bottom: 53%;
+    font-size: 70%;
+    color: #e2e6e9;
+    width: 15px;
+    height: 15px;
+    background: #eb0909;
+    border: 1px solid #fff;
+    border-radius: 50%;
+  }
+}

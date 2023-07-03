@@ -1,0 +1,112 @@
+@import "./utils/extends";
+@import "./utils/mixins";
+@import "./utils/variables";
+
+.cart {
+  display: grid;
+  grid-template-areas: "title title" "list action";
+  gap: 16px;
+  min-width: 100vh;
+
+  @include onTab {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__list {
+    grid-area: list;
+  }
+
+  &__item {
+    @extend .flex-between-center;
+    gap: 40px;
+    margin-bottom: 16px;
+    padding: 48px 40px;
+
+    @include onTab {
+      max-width: 600px;
+    }
+
+    &--img {
+      max-width: 66px;
+      max-height: 66px;
+    }
+
+    &--name {
+      @include text(14px, 500, $primary-dark-color );
+    }
+
+    &--panel {
+      @extend .flex-center;
+      gap: 10px;
+
+      &--name {
+        @extend .flex-center;
+      }
+    }
+
+    &--action {
+      width: 32px;
+      height: 32px;
+      @extend .border-gray;
+      border-radius: 0;
+    }
+
+    &--price {
+      @include text(32px, 700, $primary-dark-color );
+      text-align: center;
+      padding: 8px;
+      margin: 0;
+      margin-left: 43px;
+    }
+
+    &-exit {
+      opacity: 1;
+    }
+
+    &-exit-active {
+      opacity: 0;
+      transition: all 500ms ease-out;
+    }
+  }
+
+  &__total {
+    grid-area: action;
+    padding: 24px;
+    border: 1px solid #e2e6e9;
+    width: 368px;
+    box-sizing: border-box;
+    height: fit-content;
+
+    @include onTab {
+      position: relative;
+      margin: 0 auto;
+    }
+
+    &--amount {
+      border-bottom: 1px solid #e2e6e9;
+      margin-bottom: 24px;
+    }
+
+    & h1 {
+      padding: 0;
+      text-align: center;
+    }
+
+    & p {
+      @include text(14px, 500, $primary-gray-color );
+      padding: 0;
+      margin: 0;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+
+    & button {
+      width: 100%;
+      @extend .flex-center;
+      padding: 14px;
+      background: #313237;
+      color: #fff;
+    }
+  }
+}

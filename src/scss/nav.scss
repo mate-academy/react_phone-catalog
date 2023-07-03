@@ -1,0 +1,44 @@
+@import "./utils/_variables";
+@import "./utils/extends";
+@import "./utils/mixins";
+
+.nav {
+  &__list {
+    position: relative;
+    @extend .flex-between-center;
+    gap: 64px;
+    height: 100%;
+  }
+
+  &__item {
+    position: relative;
+    display: inline-block;
+    padding: 26px 0;
+    width: fit-content;
+
+        
+
+    & a {
+      @include text(12px, 700, $primary-gray-color); 
+      transition: color 0.1s;
+      text-transform: uppercase;
+
+      &:hover {
+        opacity: 0.5;
+      }
+    }
+
+    &--active {
+
+      &:after {
+        position: relative;
+        top: 21px;
+        content: "";
+        display: block;
+        height: 3px;
+        background: $primary-dark-color;
+        border-radius: 2px;
+      }
+    }
+  }
+}

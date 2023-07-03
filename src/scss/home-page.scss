@@ -1,0 +1,14 @@
+@import "./utils/mixins";
+@import "./utils/variables";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  margin: 40px auto 80px ;
+  width: $desktop-width;
+  min-height: 100%;
+  @include onTab {
+    width: $tab-width;
+  }
+}

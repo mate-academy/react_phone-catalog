@@ -1,0 +1,8 @@
+@import "./utils/_variables";
+@import"./utils/extends";
+@import "./utils/mixins";
+
+.logo {
+  @extend .flex-center;
+  @include text(150%, 900, $primary-dark-color);
+}

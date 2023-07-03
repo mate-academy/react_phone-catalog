@@ -1,0 +1,22 @@
+@import "./utils/_variables";
+@import"./utils/extends";
+@import "./utils/mixins";
+
+.footer {
+  border-top: 1px solid $border-color-gray;
+  @extend .flex-center;
+
+  &__container {
+    @extend .flex-between-center;
+    min-width: 1136px;
+  }
+
+  &__action {
+    @extend .flex-between-center;
+    gap: 16px;
+
+    &--description {
+      @include text(12px, 600, $primary-gray-color);
+    }
+  }
+}

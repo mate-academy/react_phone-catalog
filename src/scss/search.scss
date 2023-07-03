@@ -1,0 +1,25 @@
+@import "./utils/_variables";
+@import "./utils/extends";
+
+.search {
+  @extend .flex-between-center;
+  padding: 0 24px;
+  border-left: 1px solid $border-color-gray;
+
+  & img {
+    @extend .flex-between-center;
+  }
+
+  input {
+    outline: none;
+    border: none;
+
+    &::placeholder {
+      color: $border-color-gray;
+    }
+  }
+}
+
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}

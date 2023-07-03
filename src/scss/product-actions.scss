@@ -1,0 +1,34 @@
+.actions {
+  margin-bottom: 8px;
+  display: flex;
+  gap: 6px;
+
+  &--button {
+    width: 85%;
+    height: 40px;
+    background-color: $primary-dark-color;
+    @extend .border-gray;
+    color: #fff;
+         
+    &--disabled {
+      background-color: #fff;
+      color: #27ae60;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &--add-favorite {
+    @extend .flex-center;
+    @extend .border-gray;
+    width: 20%;
+    min-width: $icon-width;
+    height: 40px;
+  }
+
+  &--add-favorite img {
+    width: 15px;
+  }
+}

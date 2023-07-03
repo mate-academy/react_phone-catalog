@@ -1,0 +1,50 @@
+@import "./header.scss";
+@import "home-page.scss";
+@import "./nav.scss";
+@import "./logo.scss";
+@import "./icon.scss";
+@import "./slider.scss";
+@import "./product-card.scss";
+@import "./arrow-button.scss";
+@import "./product-slider..scss";
+@import "./categories.scss";
+@import "./footer.scss";
+@import "./pagination.scss";
+@import "./page-navigation.scss";
+@import "./search.scss";
+@import "./products-page.scss";
+@import "./product-page.scss";
+@import "./cart-page.scss";
+@import "./favourites-page.scss";
+@import "./block-title.scss";
+@import "./select-block.scss";
+@import "./product-actions.scss";
+@import "./top-actions.scss";
+@import "./utils/reset.scss";
+@import "./error.scss";
+
+@font-face {
+  font-family: "Mont";
+  src: url("../fonts/Mont-Regular.otf") format("woff");
+  src: url("../fonts/Mont-Bold.otf") format("woff");
+  src: url("../fonts/Mont-SemiBold.otf") format("woff");
+}
+
+.App {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: 64px 1fr 96px;
+  font-family: "Mont", sans-serif;
+}
+
+.is-active {
+  color: #fff;
+}
+
+.block {
+  display: block;
+}
+
+.none {
+  display: none;
+}
