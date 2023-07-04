@@ -26,7 +26,7 @@ export const HomePage: React.FC<Props> = ({ products }) => {
       <Slider />
       <ProductSlider
         products={lists.hotPriceList}
-        title="Hot Price Slider"
+        title="Hot Prices"
       />
       <Categories itemsLength={products.length} />
 
