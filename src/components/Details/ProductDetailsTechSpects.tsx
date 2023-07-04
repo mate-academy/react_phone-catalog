@@ -1,19 +1,10 @@
 import { Details } from '../../utils/types/Details';
+import { itemsForTech } from '../../utils/listsNames';
 
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 type Props = {
   details : Details,
 };
-
-const itemsForTech
-= ['Screen',
-  'Resolution',
-  'Processor',
-  'RAM',
-  'Built in memory',
-  'Camera',
-  'Zoom',
-  'Cell'];
 
 export const ProductDetailsTechSpects:React.FC<Props> = ({
   details,

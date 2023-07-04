@@ -1,6 +1,6 @@
 import { useLocation, useSearchParams } from 'react-router-dom';
 import { useMemo, useContext, useEffect } from 'react';
-import { Categories } from '../../utils/types/Categgories';
+import { categories } from '../../utils/listsNames';
 import { Product } from '../../utils/types/Product';
 import {
   PageNavigation,
@@ -19,7 +19,7 @@ type Props = {
   products: Product[]
 };
 
-export const ProductsDetailsPage:React.FC<Props> = ({ products }) => {
+export const ProductsPage:React.FC<Props> = ({ products }) => {
   const { itemsOnPage } = useDiviceSize();
   const { isLoading } = useContext(Context);
   const [searchParams, setSearchParams] = useSearchParams();
@@ -30,7 +30,7 @@ export const ProductsDetailsPage:React.FC<Props> = ({ products }) => {
   const Path = useLocation().pathname.slice(1);
 
   const listByCategory = products.filter(({ category }) => category === Path);
-  const developedPages = Object.values(Categories).slice(0, 1);
+  const developedPages = categories.slice(0, 1);
 
   const searchObj = {
     sort,

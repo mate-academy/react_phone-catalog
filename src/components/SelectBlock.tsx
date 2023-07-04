@@ -90,7 +90,6 @@ export const SelectBlock = () => {
           className="filter__description"
         >
           Items on page
-          16
 
         </div>
         <div
@@ -98,7 +97,7 @@ export const SelectBlock = () => {
           onClick={() => setShowRightSelect(!showRightSelect)}
         >
           <span>
-            {itemsOnPage[0]}
+            {perPage || itemsOnPage[0]}
           </span>
           <img
             className={`${showRightSelect && 'filter__arrow--up'}`}

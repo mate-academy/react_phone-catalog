@@ -1,6 +1,6 @@
-@import "./utils/extends";
-@import "./utils/mixins";
-@import "./utils/variables";
+@import "../utils/extends";
+@import "../utils/mixins";
+@import "../utils/variables";
 
 .cart {
   display: grid;
@@ -34,6 +34,11 @@
 
     &--name {
       @include text(14px, 500, $primary-dark-color );
+    }
+  
+    &--quantity {
+      width: 15px;
+      text-align: center
     }
 
     &--panel {

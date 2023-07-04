@@ -49,7 +49,7 @@ export const CartPage: React.FC = () => {
                     alt="icon close"
                   />
                 </button>
-                <img src={`../_new/${item.image}`} alt="" className="cart__item--img" />
+                <img src={`${item.image}`} alt="" className="cart__item--img" />
                 <span className="cart__item--name">{item.name}</span>
                 <div className="cart__item--panel">
                   <button
@@ -60,7 +60,7 @@ export const CartPage: React.FC = () => {
                   >
                     <img src="assests/images/Minus.svg" alt="icon minus" />
                   </button>
-                  <span className="cart__item--name">{item.quantity}</span>
+                  <span className="cart__item--quantity">{item.quantity}</span>
                   <button
                     onClick={() => editCartItem(item, 1)}
                     className="cart__item--action"

@@ -7,15 +7,15 @@ import { PageNavigation, ProductSlider, BlockTitle } from '../index';
 import {
   ProductDetailsGalery, ProductDetailsAbout,
   ProductDetailsCharacteristics, ProductDetailsTechSpects,
-} from '../Details/index';
+} from '../details/index';
 import { getDetails } from '../../utils/getProducts';
-import { DetailsLoader } from '../Details/DetailsLoader';
+import { DetailsLoader } from '../details/DetailsLoader';
 
 type Props = {
   products: Product[];
 };
 
-export const ProductPage: React.FC<Props> = ({ products }) => {
+export const ProductDetailsPage: React.FC<Props> = ({ products }) => {
   const [details, setDetails] = useState<Details>();
   const { id } = useParams();
   const [isLoading, setIsLoading] = useState(false);

@@ -7,11 +7,11 @@ import {
   Search,
 } from './index';
 
-import { Categories } from '../utils/types/Categgories';
+import { categories } from '../utils/listsNames';
 
 export const Header = memo(() => {
   const { pathname } = useLocation();
-  const headerItemsName = ['home', ...Object.values(Categories)];
+  const headerItemsName = ['home', ...categories];
   const showSearch = pathname === '/favourites' || pathname === '/phones';
 
   useEffect(() => {

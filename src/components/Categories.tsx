@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 
 import { memo } from 'react';
-import { Categories as PageCategories } from '../utils/types/Categgories';
+import { categories } from '../utils/listsNames';
 
 type Props = {
   itemsLength: number,
@@ -13,7 +13,7 @@ export const Categories:React.FC<Props> = memo(({ itemsLength }) => {
       <div className="categories__content">
         <h1 className="categories__title">Shop by category</h1>
         <article className="categories__items">
-          {Object.values(PageCategories).map((categorie) => (
+          {categories.map((categorie) => (
             <Link
               to={categorie.toLowerCase()}
               className="categories__item"
@@ -22,7 +22,7 @@ export const Categories:React.FC<Props> = memo(({ itemsLength }) => {
               <img src={`img/${categorie}.png`} alt={`${categorie} foto`} />
               <div className="categories__item--title">{categorie}</div>
               <div className="categories__item--total-amount">
-                {`${categorie === PageCategories.Phones ? itemsLength : 0} models` }
+                {`${categorie === categories[0] ? itemsLength : 0} models` }
               </div>
             </Link>
           ))}

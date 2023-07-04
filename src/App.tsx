@@ -10,8 +10,8 @@ import {
   HomePage,
   CartPage,
   FavouritesPage,
-  ProductsDetailsPage,
-  ProductPage,
+  ProductDetailsPage,
+  ProductsPage,
   ContactsPage,
   RightsPage,
   NotFoundPage,
@@ -22,6 +22,7 @@ import { Cart } from './utils/types/Cart';
 import { Product } from './utils/types/Product';
 import { Context } from './utils/Context';
 import { getProducts } from './utils/getProducts';
+import { categories } from './utils/listsNames';
 
 const App = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -80,8 +81,6 @@ const App = () => {
   useEffect(() => localStorage
     .setItem('cart', JSON.stringify(cartList)), [cartList]);
 
-  const categories = ['phones', 'tablets', 'accessories'];
-
   const path = categories.find(item => pathname.includes(item)) || 'phones';
 
   return (
@@ -119,11 +118,11 @@ const App = () => {
               <Route path={path}>
                 <Route
                   index
-                  element={<ProductsDetailsPage products={products} />}
+                  element={<ProductsPage products={products} />}
                 />
                 <Route
                   path=":id"
-                  element={<ProductPage products={products} />}
+                  element={<ProductDetailsPage products={products} />}
                 />
               </Route>
             </Route>

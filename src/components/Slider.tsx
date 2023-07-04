@@ -1,9 +1,7 @@
 import { useEffect, useState, memo } from 'react';
 import { ArrowButton } from './ArrowButton';
 import { useDiviceSize } from '../utils/useDiviceSize';
-
-const defaultImages = ['accessories', 'phones',
-  'tablets', 'accessories', 'phones'];
+import { defaultImages } from '../utils/listsNames';
 
 export const Slider: React.FC = memo(() => {
   const { main, buttonWidth } = useDiviceSize();

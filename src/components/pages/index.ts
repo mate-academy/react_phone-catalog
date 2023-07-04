@@ -1,8 +1,8 @@
-export { ProductPage } from './ProductPage';
+export { ProductDetailsPage } from './ProductDetailsPage';
 export { CartPage } from './CartPage';
 export { ContactsPage } from './ContactsPage';
 export { FavouritesPage } from './FavouritesPage';
 export { HomePage } from './HomePage';
-export { ProductsDetailsPage } from './ProductsDetailsPage';
+export { ProductsPage } from './ProductsPage';
 export { RightsPage } from './RightsPage';
 export { NotFoundPage } from './NotFoundPage';

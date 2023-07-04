@@ -6,8 +6,7 @@ import { Details } from '../../utils/types/Details';
 import { ProductActions } from '../ProductActions';
 import { Product } from '../../utils/types/Product';
 import { Colors } from '../../utils/types/Colors';
-
-const characteristicsItems = ['Screen', 'Resolution', 'Processor', 'Ram'];
+import { characteristicsItems } from '../../utils/listsNames';
 
 type Props = {
   details : Details;

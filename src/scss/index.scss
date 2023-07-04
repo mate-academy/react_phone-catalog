@@ -1,5 +1,4 @@
 @import "./header.scss";
-@import "home-page.scss";
 @import "./nav.scss";
 @import "./logo.scss";
 @import "./icon.scss";
@@ -12,10 +11,11 @@
 @import "./pagination.scss";
 @import "./page-navigation.scss";
 @import "./search.scss";
-@import "./products-page.scss";
-@import "./product-page.scss";
-@import "./cart-page.scss";
-@import "./favourites-page.scss";
+@import "./pages/cart-page.scss";
+@import "./pages/favourites-page.scss";
+@import "./pages/home-page.scss";
+@import "./pages/product-page.scss";
+@import "./pages/products-page.scss";
 @import "./block-title.scss";
 @import "./select-block.scss";
 @import "./product-actions.scss";
