@@ -1,9 +1,11 @@
+// eslint-disable-next-line max-len
 import { addFavoriteProduct, removeFavoriteProduct } from '../features/favoriteProducts/favoriteProductsSlice';
+// eslint-disable-next-line max-len
 import { addProductToCart, removeProductFromCart } from '../features/shoppingCart/shoppingCartSlice';
 import { Product } from '../types/product';
 
 export const addProducts = (
-  dispatch: (action: any) => void,
+  dispatch: (action: unknown) => void,
   existingProducts: Product[],
   product: Product,
   category: string,

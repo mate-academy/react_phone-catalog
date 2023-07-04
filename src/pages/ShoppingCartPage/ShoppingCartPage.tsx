@@ -3,6 +3,7 @@ import { useAppSelector } from '../../app/hooks';
 import { ProductInShoppingCart } from '../../components/ProductInShoppingCart';
 import { Notification } from '../../components/Notification';
 import './shoppingCartPage.scss';
+// eslint-disable-next-line max-len
 import { BackToHomeButton } from '../../components/BackToHomeButton/BackToHomeButton';
 
 export const ShoppingCartPage: FC = () => {

@@ -81,3 +81,7 @@ export const AddProductButtons: FC<Props> = ({
     </div>
   );
 };
+
+AddProductButtons.defaultProps = {
+  longVersion: false,
+};

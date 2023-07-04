@@ -22,6 +22,7 @@ export const Pagination: FC<Props> = ({
   return (
     <div className="pagination">
       <button
+        type="button"
         className={classNames('pagination__arrow', `pagination__arrow--${theme}`, { disabled: currentPage === 1 },
           { [`disabled--${theme}`]: currentPage === 1 })}
         disabled={currentPage === 1}
@@ -30,15 +31,23 @@ export const Pagination: FC<Props> = ({
         {currentPage !== 1 ? (
           renderArrow('left', theme)
         ) : (
-          <img src="/public/_new/img/icons/arrow-left-disabled.svg" alt="Arrow left disabled" />
+          <img
+            src="/public/_new/img/icons/arrow-left-disabled.svg"
+            alt="Arrow left disabled"
+          />
         )}
       </button>
 
       <div className="pagination__pages">
         {pages.map(page => (
           <button
-            className={classNames('pagination__page', `pagination__page--${theme}`, { 'pagination__page--current-page': currentPage === page },
-              { [`pagination__page--current-page__${theme}`]: currentPage === page })}
+            type="button"
+            className={
+              classNames('pagination__page',
+                `pagination__page--${theme}`,
+                { 'pagination__page--current-page': currentPage === page },
+                { [`pagination__page--current-page__${theme}`]: currentPage === page })
+            }
             key={page}
             onClick={() => handleSetCurrentPage(page)}
           >
@@ -48,15 +57,23 @@ export const Pagination: FC<Props> = ({
       </div>
 
       <button
-        className={classNames('pagination__arrow', `pagination__arrow--${theme}`, { disabled: currentPage === pages.length },
-          { [`disabled--${theme}`]: currentPage === pages.length })}
+        type="button"
+        className={
+          classNames('pagination__arrow',
+            `pagination__arrow--${theme}`,
+            { disabled: currentPage === pages.length },
+            { [`disabled--${theme}`]: currentPage === pages.length })
+        }
         disabled={currentPage === pages.length}
         onClick={() => handleArrowClick('right')}
       >
         {currentPage !== pages.length ? (
           renderArrow('right', theme)
         ) : (
-          <img src="/public/_new/img/icons/arrow-right-disabled.svg" alt="Arrow left disabled" />
+          <img
+            src="/public/_new/img/icons/arrow-right-disabled.svg"
+            alt="Arrow left disabled"
+          />
         )}
       </button>
     </div>

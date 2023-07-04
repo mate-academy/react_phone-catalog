@@ -31,7 +31,8 @@ export const SelectButton: FC<Props> = ({
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (selectButtonRef.current && !selectButtonRef.current.contains(event.target as Node)) {
+      if (selectButtonRef.current
+        && !selectButtonRef.current.contains(event.target as Node)) {
         setToggleSelect(false);
       }
     };
@@ -46,6 +47,7 @@ export const SelectButton: FC<Props> = ({
   return (
     <div className="select" ref={selectButtonRef}>
       <button
+        type="button"
         className={classNames('select__button', `select__button--${theme}`)}
         onClick={handleSelectClick}
       >
@@ -53,13 +55,17 @@ export const SelectButton: FC<Props> = ({
         <img
           src="/public/_new/img/icons/arrow-down-light.svg"
           alt="Arrow down"
-          className={classNames('select__arrow', { 'select__arrow--transformed': toggleSelect })}
+          className={
+            classNames('select__arrow',
+              { 'select__arrow--transformed': toggleSelect })
+          }
         />
       </button>
       {toggleSelect && (
         <ul className={`select__list select__list--${theme}`}>
           {options.map(option => (
             <button
+              type="button"
               className={`select__option select__option--${theme}`}
               key={option}
               onClick={() => handleOptionClick(option)}

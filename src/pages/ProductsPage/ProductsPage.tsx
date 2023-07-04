@@ -7,6 +7,7 @@ import { Pagination } from '../../components/Pagination';
 import { PathContainer } from '../../components/PathContainer';
 import { Products } from '../../components/Products';
 import { SelectButton } from '../../components/SelectButton';
+// eslint-disable-next-line max-len
 import { makeAnArrayByGivenLength } from '../../helpers/makeAnArrayByGivenLength';
 import { Product } from '../../types/product';
 import './productsPage.scss';
@@ -34,9 +35,9 @@ export const ProductsPage: FC<Props> = ({ category }) => {
 
   const handleArrowClick = (direction: string) => {
     if (direction === 'left') {
-      setCurrentPage(currentPage => currentPage - 1);
+      setCurrentPage(page => page - 1);
     } else {
-      setCurrentPage(currentPage => currentPage + 1);
+      setCurrentPage(page => page + 1);
     }
   };
 
@@ -66,7 +67,8 @@ export const ProductsPage: FC<Props> = ({ category }) => {
 
     if (totalItemsOnPage !== 'All') {
       correctedItems = correctedItems
-        .slice(Number(totalItemsOnPage) * (currentPage - 1), currentPage * Number(totalItemsOnPage));
+        .slice(Number(totalItemsOnPage) * (currentPage - 1),
+          currentPage * Number(totalItemsOnPage));
     }
 
     if (searchBar.length) {
@@ -100,7 +102,9 @@ export const ProductsPage: FC<Props> = ({ category }) => {
         <>
           <div className="products-page__filter-wrapper">
             <div className="products-page__filter-button-container">
-              <p className="products-page__filter-button__description">Sort by</p>
+              <p className="products-page__filter-button__description">
+                Sort by
+              </p>
 
               <SelectButton
                 currentOption={sortBy}
@@ -109,7 +113,9 @@ export const ProductsPage: FC<Props> = ({ category }) => {
               />
             </div>
             <div className="products-page__filter-button-container">
-              <p className="products-page__filter-button__description">Items on page</p>
+              <p className="products-page__filter-button__description">
+                Items on page
+              </p>
 
               <SelectButton
                 currentOption={totalItemsOnPage}
@@ -129,7 +135,11 @@ export const ProductsPage: FC<Props> = ({ category }) => {
                 currentPage={currentPage}
                 handleSetCurrentPage={handleSetCurrentPage}
                 handleArrowClick={handleArrowClick}
-                pages={makeAnArrayByGivenLength(Math.ceil(products.length / Number(totalItemsOnPage)))}
+                pages={
+                  makeAnArrayByGivenLength(
+                    Math.ceil(products.length / Number(totalItemsOnPage)),
+                  )
+                }
               />
             )}
           </div>

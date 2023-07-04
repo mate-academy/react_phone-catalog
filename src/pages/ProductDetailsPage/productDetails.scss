@@ -1,6 +1,6 @@
-@import '../../base/variables.scss';
-@import '../../base/mixins.scss';
-@import '../../partials/placeholders.scss';
+@import "../../base/variables.scss";
+@import "../../base/mixins.scss";
+@import "../../partials/placeholders.scss";
 
 .product-details {
   &__preview-container {
@@ -161,7 +161,7 @@
     }
 
     &--silver {
-      background-color: #F0F0F0;
+      background-color: #f0f0f0;
     }
 
     &--black {
@@ -356,7 +356,7 @@
   }
 
   &__tech-specs {
-    min-width: 500px; 
+    min-width: 500px;
     padding-top: 32px;
     margin: 0;
     

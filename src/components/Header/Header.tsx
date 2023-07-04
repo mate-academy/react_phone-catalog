@@ -78,14 +78,20 @@ export const Header: FC = () => {
       if (theme === 'light') {
         return (
           <button type="submit">
-            <img src="/public/_new/img/icons/close-button-dark.svg" alt="Search bar" />
+            <img
+              src="/public/_new/img/icons/close-button-dark.svg"
+              alt="Search bar"
+            />
           </button>
         );
       }
 
       return (
         <button type="submit">
-          <img src="/public/_new/img/icons/close-button-light.svg" alt="Search bar" />
+          <img
+            src="/public/_new/img/icons/close-button-light.svg"
+            alt="Search bar"
+          />
         </button>
       );
     }

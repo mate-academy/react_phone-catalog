@@ -47,9 +47,15 @@ export const Banner: FC<Props> = ({ images }) => {
         className={`banner__button banner__button--${theme}`}
       >
         {theme === 'light' ? (
-          <img src="/public/_new/img/icons/arrow-left-dark.svg" alt="Left arrow" />
+          <img
+            src="/public/_new/img/icons/arrow-left-dark.svg"
+            alt="Left arrow"
+          />
         ) : (
-          <img src="/public/_new/img/icons/arrow-left-light.svg" alt="Left arrow" />
+          <img
+            src="/public/_new/img/icons/arrow-left-light.svg"
+            alt="Left arrow"
+          />
         )}
       </button>
 
@@ -94,9 +100,15 @@ export const Banner: FC<Props> = ({ images }) => {
         className={`banner__button banner__button--${theme}`}
       >
         {theme === 'light' ? (
-          <img src="/public/_new/img/icons/arrow-right-dark.svg" alt="Right arrow" />
+          <img
+            src="/public/_new/img/icons/arrow-right-dark.svg"
+            alt="Right arrow"
+          />
         ) : (
-          <img src="/public/_new/img/icons/arrow-right-light.svg" alt="Right arrow" />
+          <img
+            src="/public/_new/img/icons/arrow-right-light.svg"
+            alt="Right arrow"
+          />
         )}
       </button>
     </div>

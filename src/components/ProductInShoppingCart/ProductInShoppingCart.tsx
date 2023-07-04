@@ -116,16 +116,24 @@ export const ProductInShoppingCart: FC<Props> = ({ product, theme }) => {
               />
             )}
           </button>
-          <p className={`product-in-shopping-cart__quantity product-in-shopping-cart__quantity--${theme}`}>{quantity}</p>
+          <p className={`product-in-shopping-cart__quantity product-in-shopping-cart__quantity--${theme}`}>
+            {quantity}
+          </p>
           <button
             type="button"
             onClick={() => handleCounterClick(id, 'increase')}
             className="product-in-shopping-cart__button"
           >
             {theme === 'light' ? (
-              <img src="/public/_new/img/icons/plus-dark.svg" alt="Minus product" />
+              <img
+                src="/public/_new/img/icons/plus-dark.svg"
+                alt="Minus product"
+              />
             ) : (
-              <img src="/public/_new/img/icons/plus-light.svg" alt="Minus product" />
+              <img
+                src="/public/_new/img/icons/plus-light.svg"
+                alt="Minus product"
+              />
             )}
           </button>
         </div>
