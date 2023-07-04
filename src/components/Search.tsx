@@ -1,10 +1,11 @@
 import { useSearchParams } from 'react-router-dom';
+import { memo } from 'react';
 
 type Props = {
   pathName: string;
 };
 
-export const Search:React.FC<Props> = ({ pathName }) => {
+export const Search:React.FC<Props> = memo(({ pathName }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query') || '';
 
@@ -33,7 +34,7 @@ export const Search:React.FC<Props> = ({ pathName }) => {
           className="cart__item--remove"
         >
           <img
-            src="/assests/images/Close.svg"
+            src="assests/images/Close.svg"
             alt="icon-minus"
           />
         </button>
@@ -42,4 +43,4 @@ export const Search:React.FC<Props> = ({ pathName }) => {
       <img src="assests/images/Search.svg" alt="search icon" />
     </div>
   );
-};
+});

@@ -5,7 +5,6 @@
   display: flex;
   gap: 16px;
   overflow: hidden;
-  margin-bottom: 16px;
   
   &__list {
     display: flex;
@@ -31,11 +30,11 @@
   }
 
   &__range {
-    padding: 0;
     display: flex;
     gap: 16px;
     width: fit-content;
-    margin: 0 auto;
+    padding: 0;
+    margin: 20px auto 70px;
 
     &--item {
       width: 14px;

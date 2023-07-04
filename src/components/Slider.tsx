@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, memo } from 'react';
 import { ArrowButton } from './ArrowButton';
 import { useDiviceSize } from '../utils/useDiviceSize';
 
 const defaultImages = ['accessories', 'phones',
   'tablets', 'accessories', 'phones'];
 
-export const Slider: React.FC = () => {
+export const Slider: React.FC = memo(() => {
   const { main, buttonWidth } = useDiviceSize();
   const { size, gap } = main;
   const numOfImages = 3;
@@ -69,7 +69,7 @@ export const Slider: React.FC = () => {
           {fotoForSlider.map((item, i) => (
 
             <li key={item + item[i - 1]} className="slider__item">
-              <img src={`/_new/img/banner-${item}.png`} alt={item} />
+              <img src={`img/banner-${item}.png`} alt={item} />
             </li>
 
           ))}
@@ -88,4 +88,4 @@ export const Slider: React.FC = () => {
 
     </div>
   );
-};
+});

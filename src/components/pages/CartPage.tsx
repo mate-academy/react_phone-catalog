@@ -45,11 +45,11 @@ export const CartPage: React.FC = () => {
                   className="cart__item--remove"
                 >
                   <img
-                    src="/assests/images/Close.svg"
-                    alt="icon-minus"
+                    src="assests/images/Close.svg"
+                    alt="icon close"
                   />
                 </button>
-                <img src={`/_new/${item.image}`} alt="" className="cart__item--img" />
+                <img src={`../_new/${item.image}`} alt="" className="cart__item--img" />
                 <span className="cart__item--name">{item.name}</span>
                 <div className="cart__item--panel">
                   <button
@@ -58,7 +58,7 @@ export const CartPage: React.FC = () => {
                     className="cart__item--action"
                     type="submit"
                   >
-                    <img src="/assests/images/Minus.svg" alt="icon-minus" />
+                    <img src="assests/images/Minus.svg" alt="icon minus" />
                   </button>
                   <span className="cart__item--name">{item.quantity}</span>
                   <button
@@ -66,7 +66,7 @@ export const CartPage: React.FC = () => {
                     className="cart__item--action"
                     type="submit"
                   >
-                    <img src="/assests/images/Plus.svg" alt="icon-plus" />
+                    <img src="assests/images/Plus.svg" alt="icon plus" />
                   </button>
 
                   <span className="cart__item--price">{`$${item.price}`}</span>

@@ -10,7 +10,7 @@ export const PageNavigation = () => {
     <nav className="page__navigation">
       <div className="page__navigation--path" data-cy="breadCrumbs">
         <Link to="/" className="page__navigation--icon">
-          <img src="/assests/images/Home.svg" alt="icon-home" />
+          <img src="assests/images/Home.svg" alt="icon-home" />
         </Link>
 
         {pathNames.map((item, i) => (
@@ -21,7 +21,7 @@ export const PageNavigation = () => {
               key={item + item[i + 1]}
             >
               <img
-                src="/assests/images/Arrow-right-gray.svg"
+                src="assests/images/Arrow-right-gray.svg"
                 alt="icon-rigth"
               />
             </div>
@@ -38,7 +38,7 @@ export const PageNavigation = () => {
         ))}
       </div>
       <Link to={prevPath || '/'} className="page__navigation--go-back">
-        <img src="/assests/images/Arrow-left.svg" alt="icon-left" />
+        <img src="assests/images/Arrow-left.svg" alt="icon-left" />
         <span data-cy="backButton">back</span>
       </Link>
     </nav>

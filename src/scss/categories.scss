@@ -2,6 +2,7 @@
 @import "./utils/mixins";
 
 .categories {
+  margin-bottom: 80px;
   &__items {
     display: flex;
     gap: 16px;

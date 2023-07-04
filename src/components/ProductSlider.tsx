@@ -1,6 +1,6 @@
-import {
+import React, {
   useContext, useEffect, useMemo,
-  useState,
+  useState, memo,
 } from 'react';
 import { Context } from '../utils/Context';
 import { ArrowButton, ProductCard, Loader } from './index';
@@ -13,7 +13,7 @@ type Props = {
   title: string,
 };
 
-export const ProductSlider:React.FC<Props> = ({
+export const ProductSlider:React.FC<Props> = memo(({
   products,
   title,
 }) => {
@@ -72,4 +72,4 @@ export const ProductSlider:React.FC<Props> = ({
 
     </section>
   );
-};
+});

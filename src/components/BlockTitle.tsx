@@ -1,9 +1,11 @@
+import { memo } from 'react';
+
 type Props = {
   title: string | undefined,
   subtitle:number,
 };
 
-export const BlockTitle:React.FC<Props> = ({ subtitle, title }) => {
+export const BlockTitle:React.FC<Props> = memo(({ subtitle, title }) => {
   return (
     <div className="title">
       <h1 className="title__title">{title}</h1>
@@ -14,4 +16,4 @@ export const BlockTitle:React.FC<Props> = ({ subtitle, title }) => {
       )}
     </div>
   );
-};
+});

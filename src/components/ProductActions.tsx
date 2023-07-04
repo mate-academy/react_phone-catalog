@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, memo } from 'react';
 import classnames from 'classnames';
 import { Context } from '../utils/Context';
 import { Cart } from '../utils/types/Cart';
@@ -8,7 +8,7 @@ type Props = {
   product: Product,
 };
 
-export const ProductActions:React.FC<Props> = ({ product }) => {
+export const ProductActions:React.FC<Props> = memo(({ product }) => {
   const {
     editCartItem,
     cartList,
@@ -46,7 +46,7 @@ export const ProductActions:React.FC<Props> = ({ product }) => {
         onClick={() => addFavourite(product)}
       >
         <img
-          src={`/assests/images/${!checkingAorAvailability(favourites)
+          src={`assests/images/${!checkingAorAvailability(favourites)
             ? 'Favourites.svg'
             : 'Favourites Filled.svg'}`}
           alt="heart-icon"
@@ -54,4 +54,4 @@ export const ProductActions:React.FC<Props> = ({ product }) => {
       </button>
     </div>
   );
-};
+});

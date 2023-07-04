@@ -1,12 +1,13 @@
 import { Link } from 'react-router-dom';
 
+import { memo } from 'react';
 import { Categories as PageCategories } from '../utils/types/Categgories';
 
 type Props = {
   itemsLength: number,
 };
 
-export const Categories:React.FC<Props> = ({ itemsLength }) => {
+export const Categories:React.FC<Props> = memo(({ itemsLength }) => {
   return (
     <section className="categories" data-cy="categoryLinksContainer">
       <div className="categories__content">
@@ -18,7 +19,7 @@ export const Categories:React.FC<Props> = ({ itemsLength }) => {
               className="categories__item"
               key={categorie}
             >
-              <img src={`/_new/img/${categorie}.png`} alt="" />
+              <img src={`img/${categorie}.png`} alt={`${categorie} foto`} />
               <div className="categories__item--title">{categorie}</div>
               <div className="categories__item--total-amount">
                 {`${categorie === PageCategories.Phones ? itemsLength : 0} models` }
@@ -30,4 +31,4 @@ export const Categories:React.FC<Props> = ({ itemsLength }) => {
       </div>
     </section>
   );
-};
+});

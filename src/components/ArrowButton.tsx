@@ -16,7 +16,7 @@ export const ArrowButton: React.FC<Props> = ({
       onClick={onChangePosition}
       disabled={stop}
     >
-      <img src={`/assests/images/Arrow-right${stop ? '-gray' : ''}.svg`} alt="arrow button" />
+      <img src={`assests/images/Arrow-right${stop ? '-gray' : ''}.svg`} alt="arrow button" />
     </button>
   );
 };

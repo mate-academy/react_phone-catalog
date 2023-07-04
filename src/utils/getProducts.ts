@@ -15,6 +15,6 @@ export const getProducts = (): Promise<Product[]> => {
 
 export const getDetails = (id: string | undefined): Promise<Details> => {
   return wait(0)
-    .then(() => fetch(`../_new/products/${id}.json`))
+    .then(() => fetch(`products/${id}.json`))
     .then(response => response.json());
 };

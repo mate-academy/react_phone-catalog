@@ -1,5 +1,5 @@
 import { useLocation } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, memo } from 'react';
 import {
   Nav,
   TopActions,
@@ -9,21 +9,17 @@ import {
 
 import { Categories } from '../utils/types/Categgories';
 
-export const Header = () => {
-  const headerItemsName = ['home', ...Object.values(Categories)];
+export const Header = memo(() => {
   const { pathname } = useLocation();
-
+  const headerItemsName = ['home', ...Object.values(Categories)];
   const showSearch = pathname === '/favourites' || pathname === '/phones';
 
   useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      left: 0,
-    });
-  }, [window.location.pathname]);
+    window.scrollTo({ top: 0 });
+  }, [pathname]);
 
   return (
-    <header className="header" id="top">
+    <header className="header">
       <div className="header__wrap--left">
         <Logo />
         <Nav items={headerItemsName} />
@@ -34,4 +30,4 @@ export const Header = () => {
       </div>
     </header>
   );
-};
+});

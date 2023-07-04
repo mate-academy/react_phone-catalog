@@ -8,11 +8,15 @@ export const Footer = () => {
       <div className="footer__container">
         <Logo />
         <Nav items={footerItems} />
-        <a href="#top" className="footer__action link">
+        <button
+          type="button"
+          onClick={() => window.scrollTo({ top: 0 })}
+          className="footer__action link"
+        >
           <div className="footer__action--description">Go to top</div>
 
           <ArrowButton type="up" />
-        </a>
+        </button>
       </div>
     </footer>
   );

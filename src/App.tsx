@@ -3,8 +3,8 @@ import { useEffect, useState } from 'react';
 import {
   Route,
   Routes,
-  BrowserRouter,
   Navigate,
+  useLocation,
 } from 'react-router-dom';
 import {
   HomePage,
@@ -20,7 +20,6 @@ import {
 import { Header, Footer } from './components/index';
 import { Cart } from './utils/types/Cart';
 import { Product } from './utils/types/Product';
-import { Categories } from './utils/types/Categgories';
 import { Context } from './utils/Context';
 import { getProducts } from './utils/getProducts';
 
@@ -30,6 +29,7 @@ const App = () => {
   const [favourites, setFavouritesList] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setisError] = useState(false);
+  const { pathname } = useLocation();
 
   const editCartItem = (itemToEdit: Cart, num: number | null) => {
     if (num) {
@@ -80,90 +80,91 @@ const App = () => {
   useEffect(() => localStorage
     .setItem('cart', JSON.stringify(cartList)), [cartList]);
 
-  return (
-    <BrowserRouter>
-      <Context.Provider value={{
-        editCartItem,
-        cartList,
-        addFavourite,
-        favourites,
-        isLoading,
-      }}
-      >
-        <div className="App">
-          <Header />
+  const categories = ['phones', 'tablets', 'accessories'];
 
-          <div className="container">
-            {isError
+  const path = categories.find(item => pathname.includes(item)) || 'phones';
+
+  return (
+    <Context.Provider value={{
+      editCartItem,
+      cartList,
+      addFavourite,
+      favourites,
+      isLoading,
+    }}
+    >
+      <div className="App">
+        <Header />
+
+        <div className="container">
+          {isError
               && (
                 <div className="error">
                   Failed to download Product list
                 </div>
               )}
-            <Routes>
+          <Routes>
 
-              <Route
-                path="/"
-                element={(
-                  <HomePage
-                    products={products}
-                  />
-                )}
-              />
-              <Route path="home" element={<Navigate to="/" replace />} />
+            <Route
+              path="/"
+              element={(
+                <HomePage
+                  products={products}
+                />
+              )}
+            />
+            <Route path="home" element={<Navigate to="/" replace />} />
 
-              {Object.values(Categories).map(item => (
-                <Route key={item}>
-                  <Route path={item}>
-                    <Route
-                      index
-                      element={<ProductsDetailsPage products={products} />}
-                    />
-                    <Route
-                      path=":id"
-                      element={<ProductPage products={products} />}
-                    />
-                  </Route>
-                </Route>
-              ))}
+            <Route>
+              <Route path={path}>
+                <Route
+                  index
+                  element={<ProductsDetailsPage products={products} />}
+                />
+                <Route
+                  path=":id"
+                  element={<ProductPage products={products} />}
+                />
+              </Route>
+            </Route>
 
-              <Route
-                path="cart"
-                element={(
-                  <CartPage />
-                )}
-              />
-              <Route
-                path="favourites"
-                element={(
-                  <FavouritesPage />
-                )}
-              />
+            <Route
+              path="cart"
+              element={(
+                <CartPage />
+              )}
+            />
+            <Route
+              path="favourites"
+              element={(
+                <FavouritesPage />
+              )}
+            />
 
-              <Route
-                path="contacts"
-                element={(
-                  <ContactsPage />
-                )}
-              />
+            <Route
+              path="contacts"
+              element={(
+                <ContactsPage />
+              )}
+            />
 
-              <Route
-                path="rights"
-                element={(
-                  <RightsPage />
-                )}
-              />
-              <Route
-                path="*"
-                element={<NotFoundPage />}
-              />
+            <Route
+              path="rights"
+              element={(
+                <RightsPage />
+              )}
+            />
 
-            </Routes>
-          </div>
-          <Footer />
+            <Route
+              path="*"
+              element={<NotFoundPage />}
+            />
+
+          </Routes>
         </div>
-      </Context.Provider>
-    </BrowserRouter>
+        <Footer />
+      </div>
+    </Context.Provider>
   );
 };
 

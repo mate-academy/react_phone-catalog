@@ -13,7 +13,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     <article className="card" data-cy="cardsContainer">
       <Link to={`/phones/${product.itemId}`} className="link">
         <div className="card__image">
-          <img src={`/_new/${product.image}`} alt="" />
+          <img src={product.image} alt="" />
         </div>
 
         <div className="card__title">{product.name}</div>

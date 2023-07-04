@@ -19,14 +19,14 @@ export const ProductDetailsGalery:React.FC<Props> = ({ images }) => {
             className={`details__galery--small--item ${mainImage === image && 'active-border'}`}
             onClick={() => setMainImage(image)}
           >
-            <img src={`/_new/${image}`} alt="foto" />
+            <img src={image} alt="foto" />
           </li>
 
         ))}
       </ul>
 
       <div className="details__galery--large">
-        <img src={`/_new/${mainImage}`} alt="main-foto" />
+        <img src={mainImage} alt="main-foto" />
       </div>
     </section>
   );
