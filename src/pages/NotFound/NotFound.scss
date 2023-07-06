@@ -1,0 +1,13 @@
+@import "../../styles/utils/extends";
+
+.page-not-found {
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+
+  &__title {
+    margin: 0;
+
+    @extend %h1;
+  }
+}

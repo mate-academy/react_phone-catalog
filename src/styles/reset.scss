@@ -1,0 +1,20 @@
+@import "./utils/variables";
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+[class*="__container"] {
+  margin: 0 auto;
+  max-width: 1136px;
+}
+
+.page {
+  min-height: calc(100vh - #{$header-height} - #{$footer-height});
+
+  &__section {
+    margin-bottom: 80px;
+  }
+}

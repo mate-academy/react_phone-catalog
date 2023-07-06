@@ -1,0 +1,73 @@
+@import "../../styles/utils/variables";
+
+.header {
+  display: flex;
+  justify-content: space-between;
+
+  box-shadow: 0px 1px 0px $elements-color;
+
+  &__content {
+    display: flex;
+    align-items: center;
+
+    &--left {
+      margin-left: 24px;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    height: $header-height;
+  }
+
+  &__navlink {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    margin-right: 64px;
+
+    color: $secondary-color;
+    font-family: "Mont Bold", sans-serif;
+    font-size: 12px;
+    line-height: 11px;
+    text-transform: uppercase;
+    text-decoration: none;
+
+    &:hover {
+      color: $primary-color;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+
+      height: 3px;
+      width: 100%;
+
+      background-color: $primary-color;
+      transition: all 0.3s ease-in-out;
+      transform: scale(0);
+    }
+
+    &--active {
+      color: $primary-color;
+
+      &::after {
+        content: "";
+        transform: scale(1);
+      }
+    }
+
+  }
+
+  &__link {
+    display: flex;
+    width: 64px;
+    height: 64px;
+    
+    box-shadow: -1px 0 0 $elements-color;
+  }
+}
