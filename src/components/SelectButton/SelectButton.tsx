@@ -53,7 +53,7 @@ export const SelectButton: FC<Props> = ({
       >
         {currentOption}
         <img
-          src="/public/_new/img/icons/arrow-down-light.svg"
+          src="new/img/icons/arrow-down-light.svg"
           alt="Arrow down"
           className={
             classNames('select__arrow',

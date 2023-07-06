@@ -51,7 +51,7 @@ export const ProductInShoppingCart: FC<Props> = ({ product, theme }) => {
     if (theme === 'light') {
       return (
         <img
-          src="/public/_new/img/icons/minus-dark.svg"
+          src="new/img/icons/minus-dark.svg"
           alt="Minus product"
         />
       );
@@ -59,7 +59,7 @@ export const ProductInShoppingCart: FC<Props> = ({ product, theme }) => {
 
     return (
       <img
-        src="/public/_new/img/icons/minus-light.svg"
+        src="new/img/icons/minus-light.svg"
         alt="Minus product"
       />
     );
@@ -74,12 +74,12 @@ export const ProductInShoppingCart: FC<Props> = ({ product, theme }) => {
       >
         {theme === 'light' ? (
           <img
-            src="/public/_new/img/icons/close-button-dark.svg"
+            src="new/img/icons/close-button-dark.svg"
             alt="Delete product"
           />
         ) : (
           <img
-            src="/public/_new/img/icons/close-button-light.svg"
+            src="new/img/icons/close-button-light.svg"
             alt="Delete product"
           />
         )}
@@ -90,7 +90,7 @@ export const ProductInShoppingCart: FC<Props> = ({ product, theme }) => {
         className={`product-in-shopping-cart__product-name product-in-shopping-cart__product-name--${theme}`}
       >
         <img
-          src={`/public/_new/${image}`}
+          src={`new/${image}`}
           alt="Product"
           className="product-in-shopping-cart__product-image"
         />
@@ -111,7 +111,7 @@ export const ProductInShoppingCart: FC<Props> = ({ product, theme }) => {
               renderMinusImage()
             ) : (
               <img
-                src="/public/_new/img/icons/minus-disabled.svg"
+                src="new/img/icons/minus-disabled.svg"
                 alt="Minus product"
               />
             )}
@@ -126,12 +126,12 @@ export const ProductInShoppingCart: FC<Props> = ({ product, theme }) => {
           >
             {theme === 'light' ? (
               <img
-                src="/public/_new/img/icons/plus-dark.svg"
+                src="new/img/icons/plus-dark.svg"
                 alt="Minus product"
               />
             ) : (
               <img
-                src="/public/_new/img/icons/plus-light.svg"
+                src="new/img/icons/plus-light.svg"
                 alt="Minus product"
               />
             )}

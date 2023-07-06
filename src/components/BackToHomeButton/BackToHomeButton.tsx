@@ -11,12 +11,12 @@ export const BackToHomeButton: FC = () => {
       <span className="back-to-home__arrow">
         {theme === 'light' ? (
           <img
-            src="/public/_new/img/icons/arrow-left-dark.svg"
+            src="new/img/icons/arrow-left-dark.svg"
             alt="Back to home button"
           />
         ) : (
           <img
-            src="/public/_new/img/icons/arrow-left-light.svg"
+            src="new/img/icons/arrow-left-light.svg"
             alt="Back to home button"
           />
         )}

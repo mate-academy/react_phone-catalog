@@ -27,7 +27,7 @@ export const AddProductButtons: FC<Props> = ({
     if (theme === 'light') {
       return (
         <img
-          src="/public/_new/img/icons/favorites-icon-dark.svg"
+          src="new/img/icons/favorites-icon-dark.svg"
           alt="Add to favorite"
         />
       );
@@ -35,7 +35,7 @@ export const AddProductButtons: FC<Props> = ({
 
     return (
       <img
-        src="/public/_new/img/icons/favorites-icon-light.svg"
+        src="new/img/icons/favorites-icon-light.svg"
         alt="Add to favorite"
       />
     );
@@ -73,7 +73,7 @@ export const AddProductButtons: FC<Props> = ({
           renderFavoriteIcon()
         ) : (
           <img
-            src="/public/_new/img/icons/favorites-icon-filled.svg"
+            src="new/img/icons/favorites-icon-filled.svg"
             alt="Add to favorite"
           />
         )}

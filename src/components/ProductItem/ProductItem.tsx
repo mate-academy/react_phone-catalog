@@ -48,7 +48,7 @@ export const ProductItem: FC<Props> = ({
         to={`/${category || 'phones'}/${name.toLowerCase().split(' ').join('-')}`}
         className="product__link"
       >
-        <img className="product__image" src={`/public/_new/${image}`} alt="Phone" />
+        <img className="product__image" src={`new/${image}`} alt="Phone" />
         <h2 className={`product__name product__name--${theme}`}>{name}</h2>
       </Link>
 

@@ -59,7 +59,7 @@ export const ProductsSlider: FC<Props> = ({
               renderArrow('left', theme)
             ) : (
               <img
-                src="/public/_new/img/icons/arrow-left-disabled.svg"
+                src="new/img/icons/arrow-left-disabled.svg"
                 alt="Left arrow"
               />
             )}
@@ -82,7 +82,7 @@ export const ProductsSlider: FC<Props> = ({
               renderArrow('right', theme)
             ) : (
               <img
-                src="/public/_new/img/icons/arrow-right-disabled.svg"
+                src="new/img/icons/arrow-right-disabled.svg"
                 alt="Right arrow"
               />
             )}

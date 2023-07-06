@@ -15,14 +15,14 @@ export const PathContainer: FC<Props> = ({ pathArray }) => {
       {theme === 'light' ? (
         <Link to="/" className="path-container__back-to-home">
           <img
-            src="/public/_new/img/icons/home-dark.svg"
+            src="new/img/icons/home-dark.svg"
             alt="Home icon"
           />
         </Link>
       ) : (
         <Link to="/" className="path-container__back-to-home">
           <img
-            src="/public/_new/img/icons/home-light.svg"
+            src="new/img/icons/home-light.svg"
             alt="Home icon"
           />
         </Link>
@@ -33,14 +33,14 @@ export const PathContainer: FC<Props> = ({ pathArray }) => {
           {theme === 'light' ? (
             <span className="path-container__arrow">
               <img
-                src="/public/_new/img/icons/arrow-right-disabled.svg"
+                src="new/img/icons/arrow-right-disabled.svg"
                 alt="Right arrow"
               />
             </span>
           ) : (
             <span className="path-container__arrow">
               <img
-                src="/public/_new/img/icons/arrow-right-light.svg"
+                src="new/img/icons/arrow-right-light.svg"
                 alt="Right arrow"
               />
             </span>

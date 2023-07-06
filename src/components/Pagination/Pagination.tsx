@@ -32,7 +32,7 @@ export const Pagination: FC<Props> = ({
           renderArrow('left', theme)
         ) : (
           <img
-            src="/public/_new/img/icons/arrow-left-disabled.svg"
+            src="new/img/icons/arrow-left-disabled.svg"
             alt="Arrow left disabled"
           />
         )}
@@ -71,7 +71,7 @@ export const Pagination: FC<Props> = ({
           renderArrow('right', theme)
         ) : (
           <img
-            src="/public/_new/img/icons/arrow-right-disabled.svg"
+            src="new/img/icons/arrow-right-disabled.svg"
             alt="Arrow left disabled"
           />
         )}
