@@ -48,12 +48,12 @@ export const Banner: FC<Props> = ({ images }) => {
       >
         {theme === 'light' ? (
           <img
-            src="new/img/icons/arrow-left-dark.svg"
+            src="/new/img/icons/arrow-left-dark.svg"
             alt="Left arrow"
           />
         ) : (
           <img
-            src="new/img/icons/arrow-left-light.svg"
+            src="../../../public/new/img/icons/arrow-left-light.svg"
             alt="Left arrow"
           />
         )}
@@ -101,12 +101,12 @@ export const Banner: FC<Props> = ({ images }) => {
       >
         {theme === 'light' ? (
           <img
-            src="new/img/icons/arrow-right-dark.svg"
+            src="/public/new/img/icons/arrow-right-dark.svg"
             alt="Right arrow"
           />
         ) : (
           <img
-            src="new/img/icons/arrow-right-light.svg"
+            src="/new/img/icons/arrow-right-light.svg"
             alt="Right arrow"
           />
         )}
