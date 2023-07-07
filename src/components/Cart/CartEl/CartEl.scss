@@ -9,6 +9,10 @@
   @include body-text;
   border: 1px solid $color-platinum;
 
+  @include for-tablets--smaller {
+    width: 550px;
+  }
+
   &__delete {
     border: none;
     background-color: white;

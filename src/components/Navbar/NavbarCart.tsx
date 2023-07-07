@@ -14,7 +14,7 @@ export const NavbarCart = ({ cartCount }: NavbarCartProps) => (
       <Logo />
     </div>
 
-    <div className="nav__item">
+    <div className="nav__item nav__item--align-left">
       <NavLink
         className={getClassNameForNavLink('nav__link', ' nav__link--icon')}
         to="/cart"

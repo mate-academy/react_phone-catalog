@@ -3,11 +3,15 @@
 
 .search-bar {
   border-left: 1px solid #c4c7c9;
+  height: 63px;
   width: 327px;
-  height: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  @include for-tablets {
+    width: 100%;
+  }
 
   &:focus-within {
     background-color: $color-seasalt;
@@ -19,9 +23,8 @@
     font-weight: 600;
     color: $color-dark;
     padding-left: 24px;
-    border: none;
-    height: 100%;
     flex-grow: 1;
+    border: none;
     outline: none;
 
     &:focus {
@@ -35,11 +38,11 @@
 
   &__button {
     border: none;
-    background-color: white;
-    padding: 0;
+    background-color: $color-seasalt;
+    cursor: pointer;
   }
 
   &__icon {
-    padding-right: 27px;
+    padding: 0 20px;
   }
 }

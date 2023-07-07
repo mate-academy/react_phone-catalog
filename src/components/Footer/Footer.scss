@@ -1,4 +1,5 @@
 @import "../../style-utils/_variables.scss";
+@import "../../style-utils/_mixins.scss";
 
 .footer {
   height: 96px;
@@ -8,9 +9,17 @@
   box-shadow: 0 -1px 0 #e2e6e9;
   padding: 0 152px;
 
+  @include for-tablets {
+    padding: 0 20px;
+  }
+
   &__list {
     display: flex;
     gap: 64px;
+
+    @include for-tablets--smaller {
+      gap: 32px;
+    }
   }
 
   &__link {
@@ -49,6 +58,7 @@
     gap: 16px;
     border: none;
     cursor: pointer;
+    flex-shrink: 0;
 
     &:hover {
       color: $color-dark;

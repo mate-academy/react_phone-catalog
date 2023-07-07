@@ -12,5 +12,9 @@
     @include for-tablets {
       padding: 0 35px;
     }
+
+    @include for-tablets--smaller {
+      padding: 0 5px;
+    }
   }
 }
