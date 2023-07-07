@@ -115,7 +115,7 @@ export const ProductDetailsPage: FC = () => {
                 onClick={() => setCurrentImage(image)}
               >
                 <img
-                  src={`../../..new/${image}`}
+                  src={`new/${image}`}
                   alt="List item"
                   className={`product-details__small-image product-details__small-image--${theme}`}
                 />
@@ -124,7 +124,7 @@ export const ProductDetailsPage: FC = () => {
           </ul>
 
           <img
-            src={`../../..new/${currentImage}`}
+            src={`new/${currentImage}`}
             className={`product-details__preview-image product-details__preview-image--${theme}`}
             alt="Preview"
           />

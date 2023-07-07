@@ -2,7 +2,7 @@ export const renderArrow = (direction: string, theme: string) => {
   if (theme === 'light') {
     return (
       <img
-        src={`/public/_new/img/icons/arrow-${direction}-dark.svg`}
+        src={`new/img/icons/arrow-${direction}-dark.svg`}
         alt={`${direction} arrow`}
       />
     );
@@ -10,7 +10,7 @@ export const renderArrow = (direction: string, theme: string) => {
 
   return (
     <img
-      src={`/public/_new/img/icons/arrow-${direction}-light.svg`}
+      src={`new/img/icons/arrow-${direction}-light.svg`}
       alt={`${direction} arrow`}
     />
   );
