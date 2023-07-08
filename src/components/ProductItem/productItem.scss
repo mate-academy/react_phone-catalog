@@ -4,11 +4,26 @@
 
 .product {
   display: flex;
-  max-width: 273px;
   flex-direction: column;
   box-sizing: border-box;
   padding: 32px 24px 24px;
   transition: all 0.3s;
+
+  @include onMobile {
+    width: $widthOnMobile;
+  }
+
+  @include onTablet {
+    width: $widthOnTablet;
+  }
+
+  @include onLaptop {
+    width: $widthOnLaptop;
+  }
+
+  @include onDesktop {
+    width: $widthOnDesktop;
+  }
   
   &--light {
     border: 1px solid $elements-color;

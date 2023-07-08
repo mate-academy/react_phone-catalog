@@ -1,3 +1,27 @@
+@mixin onDesktop {
+  @media (min-width: 1400px) {
+    @content;
+  }
+}
+
+@mixin onLaptop {
+  @media (min-width: 1025px) {
+    @content;
+  }
+}
+
+@mixin onTablet {
+  @media (min-width: 820px) {
+    @content;
+  }
+}
+
+@mixin onMobile {
+  @media (max-width: 820px) {
+    @content;
+  }
+}
+
 @mixin square($side) {
   width: $side;
   height: $side;

@@ -4,10 +4,25 @@
 
 .products-slider {
   display: flex;
-  max-width: 1125px;
   flex-direction: column;
   gap: 24px;
   overflow: hidden;
+
+  @include onMobile {
+    width: 500px;
+  }
+
+  @include onTablet {
+    width: 800px;
+  }
+
+  @include onLaptop {
+    width: 1000px;
+  }
+
+  @include onDesktop {
+    width: 1125px;
+  }
   
   &__container {
     display: flex;

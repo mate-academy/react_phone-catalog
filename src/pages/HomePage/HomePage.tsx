@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import useSwr from 'swr';
 import { Banner } from '../../components/Banner';
 import { ProductsSlider } from '../../components/ProductsSlider';
@@ -45,7 +45,7 @@ export const HomePage = () => {
         title="Hot Prices"
         itemsLength={hotPricesPhones.length}
       >
-        <Products products={hotPricesPhones} />
+        <Products products={hotPricesPhones}/>
       </ProductsSlider>
 
       <ShopByCategory />

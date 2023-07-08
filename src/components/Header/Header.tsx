@@ -149,7 +149,10 @@ export const Header: FC = () => {
         </ul>
 
         <div className="header__right-bar">
-          {pathname !== '/' && pathname !== '/shopping-cart' && (
+          {pathname !== '/' 
+            && pathname !== '/shopping-cart' 
+            && !pathname.includes('/phones/') 
+            && (
             <form
               onSubmit={(e) => handleFormSubmit(e)}
               className={classNames(

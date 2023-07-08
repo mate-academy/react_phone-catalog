@@ -5,7 +5,18 @@
 .products-page {
   display: flex;
   flex-direction: column;
-  width: 1500px;
+
+  @include onTablet {
+    width: 800px;
+  }
+
+  @include onLaptop {
+    width: 1000px;
+  }
+
+  @include onDesktop {
+    width: 1400px;
+  }
 
   &__quantity {
     @extend %body-text;

@@ -1,3 +1,5 @@
+@import '../../base/mixins.scss';
+
 .shop-by-category {
   display: flex;
   flex-direction: column;
@@ -7,5 +9,10 @@
   &__categories {
     display: flex;
     gap: 16px;
+
+    @include onMobile {
+      flex-direction: column;
+      gap: 20px;
+    }
   }
 }

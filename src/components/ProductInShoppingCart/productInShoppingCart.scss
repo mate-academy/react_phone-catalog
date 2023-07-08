@@ -5,11 +5,23 @@
 .product-in-shopping-cart {
   display: flex;
   align-items: center;
-  width: 750px;
   gap: 30px;
   border: 1px solid $elements-color;
-  padding: 35px;
   transition: all 0.3s;
+
+  @include onTablet {
+    padding: 35px;
+  }
+
+  @include onLaptop {
+    padding: 20px;
+    width: 550px;
+  }
+
+  @include onDesktop {
+    padding: 35px;
+    width: 750px;
+  }
 
   &--light {
     border: 1px solid $elements-color;

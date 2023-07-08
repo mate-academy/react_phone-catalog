@@ -3,10 +3,33 @@
 @import "../../partials/placeholders.scss";
 
 .product-details {
+  @include onTablet {
+    width: 800px;
+  }
+
+  @include onLaptop {
+    width: 1000px;
+  }
+
+  @include onDesktop {
+    width: 1400px;
+  }
+
   &__preview-container {
     display: flex;
-    gap: 64px;
     margin-bottom: 80px;
+
+    @include onTablet {
+      gap: 44px;
+    }
+
+    @include onLaptop {
+      gap: 54px;
+    }
+
+    @include onDesktop {
+      gap: 64px;
+    }
   }
 
   &__title {
@@ -15,7 +38,14 @@
 
   &__images-container {
     display: flex;
-    gap: 27px;
+
+    @include onTablet {
+      gap: 5px;
+    }
+
+    @include onDesktop {
+      gap: 27px;
+    }
   }
 
   &__images-list {
@@ -56,6 +86,18 @@
   &__small-image {
     @include square(65px);
     object-fit: contain;
+
+    @include onTablet {
+      @include square(45px);
+    }
+  
+    @include onLaptop {
+      @include square(55px);
+    }
+  
+    @include onDesktop {
+      @include square(65px);
+    }
     
     &--light {
       background-color: $white-color;
@@ -69,6 +111,14 @@
   &__preview-image {
     @include square(442px);
     object-fit: contain;
+
+    @include onTablet {
+      @include square(300px);
+    }
+
+    @include onLaptop {
+      @include square(442px);
+    }
     
     &--light {
       background-color: $white-color;
@@ -301,14 +351,29 @@
 
   &__id {
     @extend %small-text;
-    margin-left: 67px;
     color: $secondary-color;
+
+    @include onTablet {
+      margin-left: 0;
+    }
+
+    @include onDesktop {
+      margin-left: 67px;
+    }
   }
 
   &__text-container {
     display: flex;
     gap: 64px;
     margin-bottom: 80px;
+
+    @include onTablet {
+      flex-direction: column;
+    }    
+
+    @include onDesktop {
+      flex-direction: row;
+    }
   }
 
   &__subtitle {
@@ -325,6 +390,7 @@
     flex-direction: column;
     gap: 32px;
     padding-top: 32px;
+    width: max-content;
     
     &--light {
       border-top: 1px solid $elements-color;

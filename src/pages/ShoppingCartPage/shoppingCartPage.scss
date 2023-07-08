@@ -6,18 +6,38 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
-  min-width: 1500px;
+
+  @include onTablet {
+    width: 800px;
+  }
+
+  @include onLaptop {
+    width: 1050px;
+  }
+
+  @include onDesktop {
+    width: 1400px;
+  }
 
   &__notification {
-    position: absolute;
     transition: transform 0.5s;
     right: 10px;
+    position: fixed;
     top: 80px;
   }
 
   &__container {
     display: flex;
     gap: 16px;
+
+    @include onTablet {
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    @include onLaptop {
+      flex-direction: row;
+    }
   }
 
   &__products-list {
@@ -27,10 +47,22 @@
   }
 
   &__total {
+    @include flex-center;
+    flex-direction: column;
     padding: 24px;
     max-height: 206px;
     box-sizing: border-box;
     border: 1px solid $elements-color;
+
+    @include onTablet {
+      width: 60%;
+      align-self: center;
+    }
+
+    @include onLaptop {
+      width: 30%;
+      align-self: start;
+    }
 
     &--light {
       border: 1px solid $elements-color;
@@ -78,6 +110,14 @@
     background-color: $primary-color;
     color: $white-color;
     transition: box-shadow 0.3s;
+
+    @include onLaptop {
+      width: 260px;
+    }
+
+    @include onDesktop {
+      width: 320px;
+    }
 
     &:hover {
       @extend %button-product--hover;
