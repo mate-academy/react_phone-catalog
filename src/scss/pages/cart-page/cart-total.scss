@@ -45,6 +45,7 @@
     & button {
       width: 100%;
       @extend .flex-center;
+      @include text(14px, 500, #fff);
       padding: 14px;
       background: $primary-dark-color;
       color: #fff;
