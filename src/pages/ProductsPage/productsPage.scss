@@ -6,18 +6,6 @@
   display: flex;
   flex-direction: column;
 
-  @include onTablet {
-    width: 800px;
-  }
-
-  @include onLaptop {
-    width: 1000px;
-  }
-
-  @include onDesktop {
-    width: 1400px;
-  }
-
   &__quantity {
     @extend %body-text;
     color: $secondary-color;
@@ -46,6 +34,18 @@
     flex-wrap: wrap;
     gap: 16px;
     margin-bottom: 40px;
+
+    @include onTablet {
+      width: 800px;
+    }
+
+    @include onLaptop {
+      width: 1000px;
+    }
+
+    @include onDesktop {
+      width: 1400px;
+    }
   }
 
   &__pagination {

@@ -45,8 +45,19 @@
   }
 
   &__product-image {
-    @include square(66px);
     object-fit: contain;
+
+    @include onTablet {
+      @include square(66px);
+    }
+
+    @include onLaptop {
+      @include square(56px);
+    }
+
+    @include onDesktop {
+      @include square(66px);
+    }
   }
 
   &__product-name {
@@ -56,6 +67,14 @@
     gap: 30px;
     margin: 0;
     flex: 1 0;
+
+    @include onLaptop {
+      font-size: 12px;
+    }
+
+    @include onDesktop {
+      font-size: 14px;
+    }
 
     &--dark {
       color: $hover-color;

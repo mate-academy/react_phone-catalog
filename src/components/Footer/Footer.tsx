@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { useAppSelector } from '../../app/hooks';
+import { Logo } from '../Logo';
 import './footer.scss';
 
 const links = [
@@ -27,13 +28,7 @@ export const Footer: FC = () => {
 
   return (
     <footer className={`footer__wrapper footer__wrapper--${theme}`}>
-      <Link to="/" className="footer__logo logo">
-        {theme === 'light' ? (
-          <img src="new/img/icons/LOGO-dark.svg" alt="Logo" />
-        ) : (
-          <img src="new/img/icons/LOGO-light.svg" alt="Logo" />
-        )}
-      </Link>
+      <Logo />
 
       <ul className="footer__nav-list">
         {links.map(({ name, to }) => (

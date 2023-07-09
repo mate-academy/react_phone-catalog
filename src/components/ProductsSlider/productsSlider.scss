@@ -9,7 +9,8 @@
   overflow: hidden;
 
   @include onMobile {
-    width: 500px;
+    margin: 0 auto;
+    width: 273px;
   }
 
   @include onTablet {

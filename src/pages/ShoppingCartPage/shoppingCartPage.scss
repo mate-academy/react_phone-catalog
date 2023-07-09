@@ -12,11 +12,11 @@
   }
 
   @include onLaptop {
-    width: 1050px;
+    width: 1000px;
   }
 
   @include onDesktop {
-    width: 1400px;
+    width: 1200px;
   }
 
   &__notification {

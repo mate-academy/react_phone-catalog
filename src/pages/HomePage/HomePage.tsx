@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import useSwr from 'swr';
 import { Banner } from '../../components/Banner';
 import { ProductsSlider } from '../../components/ProductsSlider';
@@ -37,15 +37,31 @@ export const HomePage = () => {
       });
   }, [phones]); // filtering the brand new models
 
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    handleResize();
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   return (
     <div className="homepage-container">
-      <Banner images={imagesForBanner} />
+      <Banner images={imagesForBanner} phoneVersion={windowWidth <= 820}/>
 
       <ProductsSlider
         title="Hot Prices"
         itemsLength={hotPricesPhones.length}
       >
-        <Products products={hotPricesPhones}/>
+        <Products products={hotPricesPhones} />
       </ProductsSlider>
 
       <ShopByCategory />

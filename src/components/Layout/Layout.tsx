@@ -3,10 +3,14 @@ import { Footer } from '../Footer';
 import { Header } from '../Header';
 import './layout.scss';
 
-export const Layout: FC = ({ children }) => {
+interface Props {
+  setIsMenuClicked: (isMenuButtonClicked: boolean) => void;
+}
+
+export const Layout: FC<Props> = ({ setIsMenuClicked, children }) => {
   return (
     <>
-      <Header />
+      <Header setIsMenuClicked={setIsMenuClicked}/>
       <div className="main">
         {children}
       </div>

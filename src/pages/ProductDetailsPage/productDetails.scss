@@ -3,18 +3,6 @@
 @import "../../partials/placeholders.scss";
 
 .product-details {
-  @include onTablet {
-    width: 800px;
-  }
-
-  @include onLaptop {
-    width: 1000px;
-  }
-
-  @include onDesktop {
-    width: 1400px;
-  }
-
   &__preview-container {
     display: flex;
     margin-bottom: 80px;
@@ -210,6 +198,10 @@
       background-color: #5f7170;
     }
 
+    &--coral {
+      background-color: coral;
+    }
+
     &--silver {
       background-color: #f0f0f0;
     }
@@ -369,7 +361,7 @@
 
     @include onTablet {
       flex-direction: column;
-    }    
+    }
 
     @include onDesktop {
       flex-direction: row;

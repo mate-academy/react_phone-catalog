@@ -5,12 +5,9 @@
 .header {
   transition: all 0.3s;
 
-  &__logo {
-    margin: 0 65px 0 25px;
-  }
-
   &__wrapper {
     display: flex;
+    justify-content: space-between;
     align-items: center;
     
     &--light {
@@ -28,6 +25,10 @@
     display: flex;
     justify-content: space-between;
     width: 100%;
+
+    @include onMobile {
+      width: fit-content;
+    }
   }
 
   &__nav-list {
@@ -36,6 +37,10 @@
     list-style: none;
     padding: 0;
     margin: 0;
+
+    @include onMobile {
+      gap: 30px;
+    }
   }
 
   &__right-bar {
@@ -59,6 +64,10 @@
     position: relative;
     transition: color 0.5s ease;
     color: $secondary-color;
+
+    @include onMobile {
+      font-size: 11px;
+    }
 
     &--light {
       &:hover {

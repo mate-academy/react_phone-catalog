@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import './base/App.scss';
-import { Suspense } from 'react';
+import { Suspense, useState } from 'react';
 import { HomePage } from './pages/HomePage';
 import { Layout } from './components/Layout';
 import { Loader } from './components/Loader/Loader';
@@ -10,13 +10,19 @@ import { ShoppingCartPage } from './pages/ShoppingCartPage';
 import { FavoritesPage } from './pages/FavoritesPage';
 import { ProductDetailsPage } from './pages/ProductDetailsPage';
 import { ProductsPage } from './pages/ProductsPage';
+import { BurgerMenu } from './components/BurgerMenu';
 
 const App = () => {
   const theme = useAppSelector(state => state.theme.value);
+  const [isMenuClicked, setIsMenuClicked] = useState(false);
 
   return (
-    <div className={`App ${theme}`}>
-      <Layout>
+    <div 
+      className={`App ${theme}`}
+    >
+      <Layout
+        setIsMenuClicked={setIsMenuClicked}
+      >
         <Routes>
           <Route
             path="/"
@@ -51,6 +57,10 @@ const App = () => {
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Layout>
+      <BurgerMenu
+        isMenuClicked={isMenuClicked}
+        setIsMenuClicked={setIsMenuClicked}
+      />
     </div>
   );
 };

@@ -1,5 +1,7 @@
 import classNames from 'classnames';
-import { FC, useMemo, useState, useRef } from 'react';
+import {
+  FC, useMemo, useState, useRef, TouchEvent,
+} from 'react';
 import { useAppSelector } from '../../app/hooks';
 import { renderArrow } from '../../helpers/renderArrow';
 import './productsSlider.scss';
@@ -20,6 +22,22 @@ export const ProductsSlider: FC<Props> = ({ children, title, itemsLength }) => {
   const isFreeLeftSpace = useMemo(() => activeIndex === 0, [activeIndex]);
   const sliderRef = useRef<HTMLDivElement>(null);
   const [itemWidth, setItemWidth] = useState(0);
+  const [touchStartX, setTouchStartX] = useState(0);
+
+  const handleTouchStart = (event: TouchEvent<HTMLDivElement>) => {
+    setTouchStartX(event.touches[0].clientX);
+  };
+
+  const handleTouchEnd = (event: TouchEvent<HTMLDivElement>) => {
+    const touchEndX = event.changedTouches[0].clientX;
+    const touchDelta = touchEndX - touchStartX;
+
+    if (touchDelta > 50) {
+      updateIndex(activeIndex - 1);
+    } else if (touchDelta < -50) {
+      updateIndex(activeIndex + 1);
+    }
+  };
 
   const updateIndex = (newIndex: number) => {
     let updatedIndex = newIndex;
@@ -41,6 +59,8 @@ export const ProductsSlider: FC<Props> = ({ children, title, itemsLength }) => {
         setItemWidth(252.5);
       } else if (sliderRef.current.offsetWidth >= 645) {
         setItemWidth(270);
+      } else if (sliderRef.current.offsetWidth <= 645) {
+        setItemWidth(283);
       }
     }
   };
@@ -53,7 +73,7 @@ export const ProductsSlider: FC<Props> = ({ children, title, itemsLength }) => {
     } else {
       updateIndex(activeIndex - 1);
     }
-  }
+  };
 
   return (
     <div className="products-slider" ref={sliderRef}>
@@ -67,14 +87,17 @@ export const ProductsSlider: FC<Props> = ({ children, title, itemsLength }) => {
             className={classNames(
               `products-slider__button products-slider__button--${theme}`,
               { disabled: isFreeLeftSpace },
-              { [`disabled--${theme}`]: isFreeLeftSpace }
+              { [`disabled--${theme}`]: isFreeLeftSpace },
             )}
             disabled={isFreeLeftSpace}
           >
             {!isFreeLeftSpace ? (
               renderArrow('left', theme)
             ) : (
-              <img src="new/img/icons/arrow-left-disabled.svg" alt="Left arrow" />
+              <img
+                src="new/img/icons/arrow-left-disabled.svg"
+                alt="Left arrow"
+              />
             )}
           </button>
 
@@ -84,14 +107,17 @@ export const ProductsSlider: FC<Props> = ({ children, title, itemsLength }) => {
             className={classNames(
               `products-slider__button products-slider__button--${theme}`,
               { disabled: isFreeRightSpace },
-              { [`disabled--${theme}`]: isFreeRightSpace }
+              { [`disabled--${theme}`]: isFreeRightSpace },
             )}
             disabled={isFreeRightSpace}
           >
             {!isFreeRightSpace ? (
               renderArrow('right', theme)
             ) : (
-              <img src="new/img/icons/arrow-right-disabled.svg" alt="Right arrow" />
+              <img
+                src="new/img/icons/arrow-right-disabled.svg"
+                alt="Right arrow"
+              />
             )}
           </button>
         </div>
@@ -99,6 +125,8 @@ export const ProductsSlider: FC<Props> = ({ children, title, itemsLength }) => {
 
       <div
         className="products-slider__inner"
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
         style={{ transform: `translateX(${-activeIndex * itemWidth}px)` }}
       >
         {children}

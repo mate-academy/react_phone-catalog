@@ -37,7 +37,7 @@ export const ShoppingCartPage: FC = () => {
     <div className="shopping-cart">
       <div
         className="shopping-cart__notification"
-        style={{ transform: `translateX(${isCheckoutClicked ? '0' : '110%'})`}}
+        style={{ transform: `translateX(${isCheckoutClicked ? '0' : '110%'})` }}
       >
         <Notification
           message="Sorry, this feature is not available at the moment"

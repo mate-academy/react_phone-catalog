@@ -1,14 +1,16 @@
 import classNames from 'classnames';
-import { FC, useEffect, useState } from 'react';
+import { FC, useEffect, useState, TouchEvent } from 'react';
 import { useAppSelector } from '../../app/hooks';
 import './banner.scss';
 
 interface Props {
-  images: string[]
+  images: string[];
+  phoneVersion?: boolean;
 }
 
-export const Banner: FC<Props> = ({ images }) => {
+export const Banner: FC<Props> = ({ images, phoneVersion }) => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [touchStartX, setTouchStartX] = useState(0);
   const theme = useAppSelector(state => state.theme.value);
 
   useEffect(() => {
@@ -39,27 +41,48 @@ export const Banner: FC<Props> = ({ images }) => {
     setActiveIndex(updatedIndex);
   };
 
+  const handleTouchStart = (event: TouchEvent<HTMLDivElement>) => {
+    setTouchStartX(event.touches[0].clientX);
+  };
+
+  const handleTouchEnd = (event: TouchEvent<HTMLDivElement>) => {
+    const touchEndX = event.changedTouches[0].clientX;
+    const touchDelta = touchEndX - touchStartX;
+
+    if (touchDelta > 50) {
+      handleIndexUpdate(activeIndex - 1);
+    } else if (touchDelta < -50) {
+      handleIndexUpdate(activeIndex + 1);
+    }
+  };
+
   return (
     <div className="banner">
-      <button
-        type="button"
-        onClick={() => handleIndexUpdate(activeIndex - 1)}
-        className={`banner__button banner__button--${theme}`}
-      >
-        {theme === 'light' ? (
-          <img
-            src="new/img/icons/arrow-left-dark.svg"
-            alt="Left arrow"
-          />
-        ) : (
-          <img
-            src="new/img/icons/arrow-left-light.svg"
-            alt="Left arrow"
-          />
-        )}
-      </button>
+      {!phoneVersion && (
+        <button
+          type="button"
+          onClick={() => handleIndexUpdate(activeIndex - 1)}
+          className={`banner__button banner__button--${theme}`}
+        >
+          {theme === 'light' ? (
+            <img
+              src="new/img/icons/arrow-left-dark.svg"
+              alt="Left arrow"
+            />
+          ) : (
+            <img
+              src="new/img/icons/arrow-left-light.svg"
+              alt="Left arrow"
+            />
+          )}
+        </button>
+      )}
 
-      <div className="banner__container">
+      <div
+        className="banner__container"
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+      >
         <div
           className="banner__inner"
           style={{ transform: `translateX(-${activeIndex * 100}%)` }}
@@ -79,14 +102,13 @@ export const Banner: FC<Props> = ({ images }) => {
             <button
               type="button"
               aria-label="Banner indicator"
-              className={
-                classNames(
-                  `banner__indicator banner__indicator--${theme}`, {
-                    'banner__indicator--active': activeIndex === index,
-                    [`banner__indicator--active__${theme}`]: activeIndex === index,
-                  },
-                )
-              }
+              className={classNames(
+                `banner__indicator banner__indicator--${theme}`,
+                {
+                  'banner__indicator--active': activeIndex === index,
+                  [`banner__indicator--active__${theme}`]: activeIndex === index,
+                },
+              )}
               key={img}
               onClick={() => handleIndexUpdate(index)}
             />
@@ -94,23 +116,29 @@ export const Banner: FC<Props> = ({ images }) => {
         </div>
       </div>
 
-      <button
-        type="button"
-        onClick={() => handleIndexUpdate(activeIndex + 1)}
-        className={`banner__button banner__button--${theme}`}
-      >
-        {theme === 'light' ? (
-          <img
-            src="new/img/icons/arrow-right-dark.svg"
-            alt="Right arrow"
-          />
-        ) : (
-          <img
-            src="new/img/icons/arrow-right-light.svg"
-            alt="Right arrow"
-          />
-        )}
-      </button>
+      {!phoneVersion && (
+        <button
+          type="button"
+          onClick={() => handleIndexUpdate(activeIndex + 1)}
+          className={`banner__button banner__button--${theme}`}
+        >
+          {theme === 'light' ? (
+            <img
+              src="new/img/icons/arrow-right-dark.svg"
+              alt="Right arrow"
+            />
+          ) : (
+            <img
+              src="new/img/icons/arrow-right-light.svg"
+              alt="Right arrow"
+            />
+          )}
+        </button>
+      )}
     </div>
   );
+};
+
+Banner.defaultProps = {
+  phoneVersion: false,
 };
