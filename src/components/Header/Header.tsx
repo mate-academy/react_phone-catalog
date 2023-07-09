@@ -38,7 +38,7 @@ export const Header: FC<Props> = ({ setIsMenuClicked }) => {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 820);
+      setIsMobile(window.innerWidth <= 1723);
     };
 
     handleResize();

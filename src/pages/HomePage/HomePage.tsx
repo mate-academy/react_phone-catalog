@@ -55,7 +55,7 @@ export const HomePage = () => {
 
   return (
     <div className="homepage-container">
-      <Banner images={imagesForBanner} phoneVersion={windowWidth <= 820}/>
+      <Banner images={imagesForBanner} phoneVersion={windowWidth <= 1723}/>
 
       <ProductsSlider
         title="Hot Prices"
