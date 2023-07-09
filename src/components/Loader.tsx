@@ -1,5 +1,5 @@
 import ContentLoader from 'react-content-loader';
-import { useDiviceSize } from '../utils/useDiviceSize';
+import { useDiviceSize } from '../utils/useDeviceSize/useDiviceSize';
 
 export const Loader = () => {
   const { main } = useDiviceSize();

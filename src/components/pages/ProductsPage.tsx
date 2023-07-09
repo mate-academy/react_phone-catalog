@@ -13,7 +13,7 @@ import { Pagination } from '../Pagination';
 import { searchActions } from '../../utils/searchActions';
 import { createLoaderList } from '../../utils/createLoaderList';
 import { Context } from '../../utils/Context';
-import { useDiviceSize } from '../../utils/useDiviceSize';
+import { useDiviceSize } from '../../utils/useDeviceSize/useDiviceSize';
 
 type Props = {
   products: Product[]
@@ -48,9 +48,10 @@ export const ProductsPage:React.FC<Props> = ({ products }) => {
 
   useEffect(() => {
     if (query) {
-      searchParams.set('perPage', query
-        ? 'all' : itemsOnPage[0]);
-    } else {
+      searchParams.set('perPage', query ? 'all' : itemsOnPage[0]);
+    }
+
+    if (!query && perPage === 'all') {
       searchParams.delete('perPage');
     }
 

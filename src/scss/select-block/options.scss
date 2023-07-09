@@ -1,0 +1,11 @@
+.filter {
+  &__options {
+    position: absolute;
+    z-index: 3;
+    cursor: pointer;
+    top: 65px;
+    width: 100%;
+    background-color: white;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  }
+}

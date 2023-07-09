@@ -1,0 +1,31 @@
+@import "../../utils/extends";
+@import "../../utils/mixins";
+@import "../../utils/variables";
+
+.details {
+  &__about {
+
+    &--title {
+      @include text(32px, 700, $primary-dark-color);
+      margin-bottom: 32px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid $border-color-gray;
+    }
+
+    &--content {
+      @include onPhone {
+        width: 100%;
+      }
+
+      &--title {
+        margin-bottom: 16px;
+        @include text(20px, 600, $primary-dark-color);
+      }
+
+      &--description {
+        margin-bottom: 32px;
+        @include text(14px, 500, $primary-gray-color);
+      }
+    }
+  }
+}

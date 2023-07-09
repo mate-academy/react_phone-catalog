@@ -2,10 +2,16 @@
   font-size: $size;
   font-weight: $width;
   color: $color;
+  font-family: "Mont", sans-serif;
 }
 
 @mixin onTab {
-  @media (max-width: 1023px) {
+  @media (min-width: 568px) and (max-width: 1023px) {
+    @content;
+  }
+}
+@mixin onPhone {
+  @media (min-width: 320px) and (max-width: 568px) {
     @content;
   }
 }

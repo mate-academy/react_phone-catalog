@@ -1,0 +1,24 @@
+.card {
+  &__image {
+    img {
+      display: block;
+      margin: 0 auto;
+      max-width: 208px;
+      max-height: 208px;
+      transition: transform 0.3s;
+      margin-bottom: 24px;
+      z-index: 2;
+
+      @include onTab {
+        margin-bottom: 12px;
+        max-width: 170px;
+        max-height: 170px;
+      }
+
+      &:hover {
+        transform: scale(150%);
+        z-index: 2;
+      }
+    }
+  }
+}

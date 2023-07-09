@@ -68,9 +68,9 @@ export const CartPage: React.FC = () => {
                   >
                     <img src="assests/images/Plus.svg" alt="icon plus" />
                   </button>
-
-                  <span className="cart__item--price">{`$${item.price}`}</span>
                 </div>
+
+                <span className="cart__item--price">{`$${item.price}`}</span>
               </li>
             </CSSTransition>
           ))}

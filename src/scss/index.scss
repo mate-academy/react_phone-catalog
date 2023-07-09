@@ -1,50 +1,39 @@
-@import "./header.scss";
-@import "./nav.scss";
+@import "./header/header.scss";
+@import "./nav/nav.scss";
 @import "./logo.scss";
 @import "./icon.scss";
-@import "./slider.scss";
-@import "./product-card.scss";
+@import "./slider/slider.scss";
+@import "./product-card/product-card.scss";
 @import "./arrow-button.scss";
 @import "./product-slider..scss";
-@import "./categories.scss";
-@import "./footer.scss";
-@import "./pagination.scss";
+@import "./categories/categories.scss";
+@import "./footer/footer.scss";
+@import "./pagination/pagination.scss";
 @import "./page-navigation.scss";
 @import "./search.scss";
-@import "./pages/cart-page.scss";
-@import "./pages/favourites-page.scss";
-@import "./pages/home-page.scss";
-@import "./pages/product-page.scss";
-@import "./pages/products-page.scss";
+@import "./pages/cart-page/cart-page.scss";
+@import "./pages/favourites-page/favourites-page.scss";
+@import "./pages/home-page/home-page.scss";
+@import "./pages/product-details-page/product-details.scss";
+@import "./pages/products-page/products-page.scss";
 @import "./block-title.scss";
-@import "./select-block.scss";
-@import "./product-actions.scss";
+@import "./select-block/select-block.scss";
+@import "./product-actions/product-actions.scss";
 @import "./top-actions.scss";
 @import "./utils/reset.scss";
 @import "./error.scss";
+@import "./characteristic-item.scss";
 
 @font-face {
   font-family: "Mont";
-  src: url("../fonts/Mont-Regular.otf") format("woff");
-  src: url("../fonts/Mont-Bold.otf") format("woff");
-  src: url("../fonts/Mont-SemiBold.otf") format("woff");
+  src: local("Mont-Regular"), url("../fonts/Mont-Regular.otf") format("woff");
+  src: local("Mont-Bold"), url("../fonts/Mont-Bold.otf") format("woff");
+  src: local("Mont-SemiBold"), url("../fonts/Mont-SemiBold.otf") format("woff");
 }
 
 .App {
   min-height: 100vh;
-  display: grid;
-  grid-template-rows: 64px 1fr 96px;
-  font-family: "Mont", sans-serif;
-}
-
-.is-active {
-  color: #fff;
-}
-
-.block {
-  display: block;
-}
-
-.none {
-  display: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }

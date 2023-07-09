@@ -1,9 +1,9 @@
-import { useEffect, useState, memo } from 'react';
+import { useEffect, useState } from 'react';
 import { ArrowButton } from './ArrowButton';
-import { useDiviceSize } from '../utils/useDiviceSize';
+import { useDiviceSize } from '../utils/useDeviceSize/useDiviceSize';
 import { defaultImages } from '../utils/listsNames';
 
-export const Slider: React.FC = memo(() => {
+export const Slider: React.FC = () => {
   const { main, buttonWidth } = useDiviceSize();
   const { size, gap } = main;
   const numOfImages = 3;
@@ -66,9 +66,11 @@ export const Slider: React.FC = memo(() => {
 
           {fotoForSlider.map((item, i) => (
 
-            <li key={item + item[i - 1]} className="slider__item">
-              <img src={`img/banner-${item}.png`} alt={item} />
-            </li>
+            <li
+              key={item + item[i - 1]}
+              className="slider__item"
+              style={{ backgroundImage: `url("img/banner-${item}.png")` }}
+            />
 
           ))}
         </ul>
@@ -86,4 +88,4 @@ export const Slider: React.FC = memo(() => {
 
     </div>
   );
-});
+};

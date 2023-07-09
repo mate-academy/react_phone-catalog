@@ -9,7 +9,7 @@ export const Nav:React.FC<Props> = ({ items }) => {
   const { pathname } = useLocation();
   const linkPath = (item: string) => {
     if (item === 'github') {
-      return 'https://github.com/LBondarchuk';
+      return 'https://github.com/LBondarchuk/react_phone-catalog/tree/develop';
     }
 
     return item === 'home' ? '/' : item;

@@ -1,0 +1,30 @@
+@import "../utils/_variables";
+@import "../utils/mixins";
+
+@import "./item.scss";
+@import "./options.scss";
+@import "./select.scss";
+
+.filter {
+  display: flex;
+  gap: 16px;
+
+  &__arrow--up {
+    transform: rotate(180deg);
+  }
+
+  &__wrap {
+    position: relative;
+    margin-bottom: 24px;
+  }
+
+  &__description {
+    @include text(12px, 600, $primary-gray-color);
+    margin-bottom: 4px;
+  }
+
+  @include onPhone {
+    display: flex;
+    flex-direction: column;
+  }
+}

@@ -2,6 +2,8 @@
 import { Link } from 'react-router-dom';
 import { Product } from '../utils/types/Product';
 import { ProductActions } from './ProductActions';
+import { cardCharacteeristics } from '../utils/listsNames';
+import { Characteristics } from './Characteristics';
 
 type Props = {
   product: Product;
@@ -31,34 +33,8 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
         </div>
       </Link>
-      <div className="card__characteristics">
-        <div className="card__characteristics--item">
-          <div className="card__characteristics--title">Screen</div>
-          <div className="card__characteristics--characteristic">
-            {product.screen}
-
-          </div>
-        </div>
-
-        <div className="card__characteristics--item">
-          <div className="card__characteristics--title">Capacity</div>
-          <div className="card__characteristics--characteristic">
-            {product.capacity}
-
-          </div>
-        </div>
-
-        <div className="card__characteristics--item">
-          <div className="card__characteristics--title">Ram</div>
-          <div className="card__characteristics--characteristic">
-            {product.ram}
-
-          </div>
-        </div>
-
-        <ProductActions product={product} />
-
-      </div>
+      <ProductActions product={product} />
+      <Characteristics details={product} items={cardCharacteeristics} />
     </article>
 
   );

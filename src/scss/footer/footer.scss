@@ -1,0 +1,18 @@
+@import "../utils/_variables";
+@import "../utils/mixins";
+
+@import "./footer-container.scss";
+@import "./footer-actions.scss";
+
+.footer {
+  position: relative;
+  height: $footer-height;
+  border-top: 1px solid $border-color-gray;
+  padding: 0 20px;
+
+  @include onPhone {
+    flex-direction: column;
+    height: 100vh;
+    background-color: $border-color-gray;
+  }
+}

@@ -1,0 +1,18 @@
+@import "../utils/_variables";
+@import"../utils/extends";
+@import "../utils/mixins";
+
+@import "./pagination-list.scss";
+@import "./pagination-item.scss";
+
+.pagination {
+  @extend .flex-center;
+  @include onTab {
+    gap: 20px;
+  }
+  @include onPhone {
+    gap: 8px;
+  }
+  gap: 16px;
+  margin: 0 auto 80px;
+}

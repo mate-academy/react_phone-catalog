@@ -1,5 +1,6 @@
 @import "./utils/_variables";
 @import"./utils/extends";
+@import"./utils/mixins";
 
 .icon {
   position: relative;
@@ -8,8 +9,16 @@
   padding: 0 25px;
   height: 100%;
 
+  @include onPhone {
+    padding: 0 15px;
+  }
+
   & img {
     width: 25px;
+
+    @include onPhone {
+      width: 18px;
+    }
   }
    
   &-info__info {

@@ -1,0 +1,12 @@
+@import "../utils/mixins";
+
+@import "./nav-list.scss";
+@import "./nav-item.scss";
+
+.nav {
+  @include onPhone {
+    flex-direction: column;
+    left: 0;
+    z-index: 1;
+  }
+}

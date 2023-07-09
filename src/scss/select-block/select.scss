@@ -1,0 +1,32 @@
+@import "../utils/extends";
+@import "../utils/mixins";
+@import "../utils/variables";
+
+.filter {
+  &__select {
+    @extend .flex-between-center;
+    @extend .border-gray;
+    height: 40px;
+    padding: 0 16px;
+      
+    &--left {
+      width: 176px;
+    }
+
+    &--right {
+      width: 128px;
+    }
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    &:active {
+      @extend .border-dark;
+    }
+
+    & span {
+      @include text(14px, 600, $primary-dark-color);
+    }
+  }
+}

@@ -1,0 +1,15 @@
+@import "../utils/mixins";
+
+@import "./categories-item.scss";
+
+.categories {
+  margin-bottom: 80px;
+  &__items {
+    display: flex;
+    gap: 16px;
+
+    @include onPhone {
+      flex-direction: column;
+    }
+  }
+}

@@ -6,7 +6,7 @@ import { Context } from '../utils/Context';
 import { ArrowButton, ProductCard, Loader } from './index';
 import { Product } from '../utils/types/Product';
 import { createLoaderList } from '../utils/createLoaderList';
-import { useDiviceSize } from '../utils/useDiviceSize';
+import { useDiviceSize } from '../utils/useDeviceSize/useDiviceSize';
 
 type Props = {
   products: Product[],

@@ -1,0 +1,35 @@
+@import "../utils/variables";
+@import "../utils/mixins";
+
+.nav {
+  &__item {
+    display: inline-block;
+    align-items: center;
+    width: fit-content;
+
+    & a {
+      @include text(12px, 700, $primary-gray-color); 
+      transition: color 0.1s;
+      text-transform: uppercase;
+      
+      &:hover {
+        opacity: 0.5;
+      }
+      @include onPhone {
+        font-size: 16px;
+      }
+    }
+
+    &--active {
+      &:after {
+        position: relative;
+        top: 21px;
+        content: "";
+        display: block;
+        height: 3px;
+        background: $primary-dark-color;
+        border-radius: 2px;
+      }
+    }
+  }
+}

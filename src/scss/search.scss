@@ -6,6 +6,10 @@
   padding: 0 24px;
   border-left: 1px solid $border-color-gray;
 
+  @include onPhone {
+    padding: 0 10px;
+  }
+
   & img {
     @extend .flex-between-center;
   }
@@ -16,6 +20,10 @@
 
     &::placeholder {
       color: $border-color-gray;
+    }
+
+    @include onPhone {
+      max-width: 100px;
     }
   }
 }

@@ -2,6 +2,7 @@ button {
   cursor: pointer;
   background-color: #fff;
   border: none;
+  padding: 0;
 }
   
 html {
@@ -24,4 +25,8 @@ li {
   
 a {
   text-decoration: none;
+}
+
+body {
+  margin: 0;
 }

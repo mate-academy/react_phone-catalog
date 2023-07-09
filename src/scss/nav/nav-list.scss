@@ -1,0 +1,14 @@
+.nav {
+  &__list {
+    @extend .flex-between-center;
+    gap: 64px;
+    height: 100%;
+
+    @include onPhone {
+      flex-direction: column;
+      margin-top: 100px;
+      height: 50%;
+      width: 100%;
+    }
+  }
+}

@@ -4,7 +4,7 @@ import { useSearchParams } from 'react-router-dom';
 import classnames from 'classnames';
 import { useEffect, useRef, useState } from 'react';
 import { ArrowButton } from './ArrowButton';
-import { useDiviceSize } from '../utils/useDiviceSize';
+import { useDiviceSize } from '../utils/useDeviceSize/useDiviceSize';
 
 type Props = {
   paginationLength: number
@@ -14,17 +14,17 @@ export const Pagination:React.FC<Props> = ({ paginationLength }) => {
   const { buttonWidth, paginationLimit } = useDiviceSize();
   const [searchParams, setSearchParams] = useSearchParams();
   const page = searchParams.get('page') || 1;
-  const [shift, setShift] = useState(0);
-  const lastVisiblePage = useRef(+page);
-  const firstVisiblePage
-  = useRef(0);
+  const perPage = searchParams.get('perPage');
   const paginationGap = 8;
   const step = buttonWidth + paginationGap;
+  const lastVisiblePage = useRef(+page);
+  const firstVisiblePage = useRef(0);
+  const [shift, setShift] = useState(0);
 
   useEffect(() => {
     if (paginationLimit) {
       if (+page > paginationLimit && +page > lastVisiblePage.current) {
-        setShift(prev => prev + step);
+        setShift((+page - paginationLimit) * step);
         lastVisiblePage.current = +page;
         firstVisiblePage.current
          = lastVisiblePage.current - paginationLimit + 1;
@@ -37,6 +37,18 @@ export const Pagination:React.FC<Props> = ({ paginationLength }) => {
       }
     }
   }, [page]);
+
+  useEffect(() => {
+    if (+page === 1 && paginationLimit) {
+      setShift(0);
+      lastVisiblePage.current = +page;
+      firstVisiblePage.current = 0;
+    }
+
+    if (+page > paginationLimit && paginationLimit) {
+      setShift((+page - paginationLimit) * step);
+    }
+  }, [perPage]);
 
   const handleChangePage = (num: number) => {
     searchParams.set('page', `${num}`);
@@ -69,8 +81,6 @@ export const Pagination:React.FC<Props> = ({ paginationLength }) => {
 
     return result;
   };
-
-  useEffect(() => setShift(0), [paginationLimit]);
 
   const paginationList = createPagination();
 

@@ -1,0 +1,26 @@
+@import "../../utils/extends";
+@import "../../utils/mixins";
+@import "../../utils/variables";
+
+@import "./cart-item.scss";
+@import "./cart-total.scss";
+
+.cart {
+  display: grid;
+  grid-template-areas: "title title" "list action";
+  gap: 16px;
+
+  @include onTab {
+    display: flex;
+    flex-direction: column;
+  }
+
+  @include onPhone {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__list {
+    grid-area: list;
+  }
+}

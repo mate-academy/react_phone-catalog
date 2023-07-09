@@ -1,4 +1,5 @@
 export interface Product {
+  [key: string]: string | number,
   year: number,
   category: string,
   capacity: string,

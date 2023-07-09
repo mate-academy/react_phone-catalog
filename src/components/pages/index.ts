@@ -1,4 +1,4 @@
-export { ProductDetailsPage } from './ProductDetailsPage';
+export { ProductDetailsPage } from './DetailsPage/ProductDetailsPage';
 export { CartPage } from './CartPage';
 export { ContactsPage } from './ContactsPage';
 export { FavouritesPage } from './FavouritesPage';

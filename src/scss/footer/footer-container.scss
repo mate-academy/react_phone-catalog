@@ -1,0 +1,19 @@
+@import "../utils/_variables";
+@import "../utils/extends";
+@import "../utils/mixins";
+
+.footer {
+  &__container {
+    @extend .flex-between-center;
+    height: 100%;
+    padding: 0 2;
+  
+    @include onPhone {
+      flex-direction: column;
+      box-sizing: border-box;
+      height: 80vh;
+      padding: 80px 0;
+      background-color: $border-color-gray;
+    }
+  }
+}

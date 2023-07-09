@@ -161,8 +161,8 @@ const App = () => {
 
           </Routes>
         </div>
-        <Footer />
       </div>
+      <Footer />
     </Context.Provider>
   );
 };

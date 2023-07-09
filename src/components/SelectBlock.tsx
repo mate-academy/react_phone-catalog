@@ -4,8 +4,8 @@
 import { useSearchParams } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
 import classnames from 'classnames';
-import { SortBy } from '../utils/SortBy';
-import { useDiviceSize } from '../utils/useDiviceSize';
+import { SortBy } from '../utils/types/SortBy';
+import { useDiviceSize } from '../utils/useDeviceSize/useDiviceSize';
 
 export const SelectBlock = () => {
   const { itemsOnPage } = useDiviceSize();

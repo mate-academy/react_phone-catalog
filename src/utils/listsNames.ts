@@ -13,3 +13,5 @@ export const itemsForTech
   'Camera',
   'Zoom',
   'Cell'];
+
+export const cardCharacteeristics = ['Screen', 'Capacity', 'Ram'];

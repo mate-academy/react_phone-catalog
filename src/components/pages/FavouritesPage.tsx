@@ -13,7 +13,7 @@ export const FavouritesPage = () => {
     .includes(query.toLocaleLowerCase())), [query, favourites]);
 
   return (
-    <main className="favourites">
+    <main className="favourites container">
       <PageNavigation />
       <BlockTitle title="Favourites" subtitle={favourites.length} />
       <section className="favourites__list">
