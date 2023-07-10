@@ -283,7 +283,7 @@ export const ProductDetailsPage: FC = () => {
           </div>
         </div>
 
-        <div className="product-details__tach-specs">
+        <div className="product-details__tech-specs">
           <h2 className={`product-details__subtitle product-details__subtitle--${theme}`}>
             Tech specs
           </h2>

@@ -5,6 +5,23 @@
 .products-page {
   display: flex;
   flex-direction: column;
+  padding: 40px 0 80px;
+
+  @include onMobile {
+    padding: 40px 20px 0;
+  }
+
+  @include onTablet {
+    width: 800px;
+  }
+
+  @include onLaptop {
+    width: 1000px;
+  }
+
+  @include onDesktop {
+    width: 1400px;
+  }
 
   &__quantity {
     @extend %body-text;
@@ -15,13 +32,13 @@
   &__filter-wrapper {
     display: flex;
     gap: 16px;
+    margin-bottom: 24px;
   }
 
   &__filter-button-container {
     display: flex;
     flex-direction: column;
     gap: 4px;
-    margin-bottom: 24px;
   }
 
   &__filter-button__description {
@@ -35,16 +52,8 @@
     gap: 16px;
     margin-bottom: 40px;
 
-    @include onTablet {
-      width: 800px;
-    }
-
-    @include onLaptop {
-      width: 1000px;
-    }
-
-    @include onDesktop {
-      width: 1400px;
+    @include onMobile {
+      justify-content: center;
     }
   }
 

@@ -3,9 +3,22 @@
 @import "../../partials/placeholders.scss";
 
 .product-details {
+  @include onMobile {
+    padding: 40px 20px 0;
+  }
+
+  @include onTablet {
+    padding-top: 40px;
+  }
+
   &__preview-container {
     display: flex;
     margin-bottom: 80px;
+
+    @include onMobile {
+      flex-direction: column;
+      gap: 50px;
+    }
 
     @include onTablet {
       gap: 44px;
@@ -27,6 +40,13 @@
   &__images-container {
     display: flex;
 
+    @include onMobile {
+      flex-direction: column-reverse;
+      gap: 20px;
+      justify-content: center;
+      align-items: center;
+    }
+
     @include onTablet {
       gap: 5px;
     }
@@ -40,6 +60,11 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
+
+    @include onMobile {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
   }
 
   &__image-wrapper {
@@ -72,8 +97,11 @@
   }
 
   &__small-image {
-    @include square(65px);
     object-fit: contain;
+
+    @include onMobile {
+      @include square(50px);
+    }
 
     @include onTablet {
       @include square(45px);
@@ -97,8 +125,11 @@
   }
 
   &__preview-image {
-    @include square(442px);
     object-fit: contain;
+
+    @include onMobile {
+      @include square(300px);
+    }
 
     @include onTablet {
       @include square(300px);
@@ -141,6 +172,7 @@
 
   &__control-panel-title {
     @extend %small-text;
+
     margin: 0;
     color: $secondary-color;
   }
@@ -359,6 +391,10 @@
     gap: 64px;
     margin-bottom: 80px;
 
+    @include onMobile {
+      flex-direction: column;
+    }
+
     @include onTablet {
       flex-direction: column;
     }
@@ -398,6 +434,10 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
+
+    @include onMobile {
+      max-width: 300px;
+    }
   }
 
   &__article-title {
@@ -414,9 +454,16 @@
   }
 
   &__tech-specs {
-    min-width: 500px;
     padding-top: 32px;
     margin: 0;
+
+    @include onMobile {
+      max-width: 300px;
+    }
+
+    @include onTablet {
+      min-width: 500px;
+    }
     
     &--light {
       border-top: 1px solid $elements-color;

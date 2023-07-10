@@ -7,6 +7,10 @@
   flex-direction: column;
   gap: 40px;
 
+  @include onMobile {
+    padding: 40px 20px 0;
+  }
+
   @include onTablet {
     width: 800px;
   }
@@ -36,5 +40,9 @@
     display: flex;
     gap: 16px;
     flex-wrap: wrap;
+
+    @include onMobile {
+      justify-content: center;
+    }
   }
 }

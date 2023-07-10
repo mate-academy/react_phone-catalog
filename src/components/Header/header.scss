@@ -123,6 +123,10 @@
     padding-left: 24px;
     transition: all 0.5s ease;
 
+    @include onMobile {
+      padding-left: 10px;
+    }
+
     &--light {
       border-left: 1px solid $border-line-color;
       background-color: $hover-color;
@@ -149,6 +153,11 @@
     outline: none;
     background-color: transparent;
     @extend %buttons-text;
+
+    @include onMobile {
+      width: 120px;
+      font-size: 12px;
+    }
 
     &--dark {
       color: $hover-color;

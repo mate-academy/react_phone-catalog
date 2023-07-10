@@ -7,6 +7,10 @@
   flex-direction: column;
   gap: 24px;
 
+  @include onMobile {
+    padding: 40px 20px 0;
+  }
+
   @include onTablet {
     width: 800px;
   }
@@ -29,6 +33,11 @@
   &__container {
     display: flex;
     gap: 16px;
+
+    @include onMobile {
+      flex-direction: column;
+      gap: 50px;
+    }
 
     @include onTablet {
       flex-direction: column;
@@ -53,6 +62,11 @@
     max-height: 206px;
     box-sizing: border-box;
     border: 1px solid $elements-color;
+
+    @include onMobile {
+      width: 80%;
+      align-self: center;
+    }
 
     @include onTablet {
       width: 60%;
@@ -110,6 +124,10 @@
     background-color: $primary-color;
     color: $white-color;
     transition: box-shadow 0.3s;
+
+    @include onMobile {
+      width: 200px;
+    }
 
     @include onLaptop {
       width: 260px;

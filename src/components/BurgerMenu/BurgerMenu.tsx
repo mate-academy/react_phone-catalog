@@ -37,8 +37,7 @@ export const BurgerMenu: FC<Props> = ({ isMenuClicked, setIsMenuClicked }) => {
 
   return (
     <div 
-      className={`burger-menu burger-menu--${theme}`}
-      style={{ transform: `translateX(${isMenuClicked ? '0%' : '110%'})` }}
+      className={classNames('burger-menu', `burger-menu--${theme}`, { 'burger-menu--opened': isMenuClicked })}
     >
       <header className={`burger-menu__header burger-menu__header--${theme}`}>
         <Logo header/>

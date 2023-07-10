@@ -9,6 +9,11 @@
   border: 1px solid $elements-color;
   transition: all 0.3s;
 
+  @include onMobile {
+    gap: 20px;
+    padding: 10px;
+  }
+
   @include onTablet {
     padding: 35px;
   }
@@ -47,6 +52,10 @@
   &__product-image {
     object-fit: contain;
 
+    @include onMobile {
+      @include square(70px);
+    }
+
     @include onTablet {
       @include square(66px);
     }
@@ -68,6 +77,12 @@
     margin: 0;
     flex: 1 0;
 
+    @include onMobile {
+      flex-direction: column;
+      gap: 15px;
+      font-size: 10px;
+    }
+
     @include onLaptop {
       font-size: 12px;
     }
@@ -85,12 +100,18 @@
     display: flex;
     justify-content: space-between;
     width: 230px;
+
+    @include onMobile {
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      width: fit-content;
+    }
   }
 
   &__counter {
     display: flex;
     align-items: center;
-    
     gap: 13px;
   }
 

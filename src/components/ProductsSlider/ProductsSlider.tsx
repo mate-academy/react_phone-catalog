@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import {
-  FC, useMemo, useState, useRef, TouchEvent,
+  FC, useMemo, useState, useRef, TouchEvent, useEffect,
 } from 'react';
 import { useAppSelector } from '../../app/hooks';
 import { renderArrow } from '../../helpers/renderArrow';
@@ -74,6 +74,10 @@ export const ProductsSlider: FC<Props> = ({ children, title, itemsLength }) => {
       updateIndex(activeIndex - 1);
     }
   };
+
+  useEffect(() => {
+    getTranslateXValue();
+  }, [sliderRef.current])
 
   return (
     <div className="products-slider" ref={sliderRef}>

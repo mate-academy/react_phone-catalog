@@ -9,6 +9,7 @@
 
   @include onTablet {
     width: 800px;
+    padding-top: 40px;
   }
 
   @include onLaptop {
