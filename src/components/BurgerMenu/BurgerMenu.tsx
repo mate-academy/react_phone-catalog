@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import {
-  FC, useEffect, useMemo, useState,
+  FC, useEffect, useMemo,
 } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
@@ -42,9 +42,10 @@ export const BurgerMenu: FC<Props> = ({ isMenuClicked, setIsMenuClicked }) => {
       className={classNames('burger-menu', `burger-menu--${theme}`, { 'burger-menu--opened': isMenuClicked })}
     >
       <header className={`burger-menu__header burger-menu__header--${theme}`}>
-        <Logo header setIsMenuClicked={setIsMenuClicked}/>
+        <Logo header setIsMenuClicked={setIsMenuClicked} />
 
         <button
+          type="button"
           className={`header__icon header__icon--${theme}`}
           onClick={() => setIsMenuClicked(false)}
         >

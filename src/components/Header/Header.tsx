@@ -173,13 +173,20 @@ export const Header: FC<Props> = ({ setIsMenuClicked }) => {
             )}
           {isMobile ? (
             <button
+              type="button"
               className={`header__icon header__icon--${theme}`}
               onClick={() => setIsMenuClicked(true)}
             >
               {theme === 'light' ? (
-                <img src="new/img/icons/menu-burger-dark.svg" alt="Burger menu" />
+                <img
+                  src="new/img/icons/menu-burger-dark.svg"
+                  alt="Burger menu"
+                />
               ) : (
-                <img src="new/img/icons/menu-burger-light.svg" alt="Burger menu" />
+                <img
+                  src="new/img/icons/menu-burger-light.svg"
+                  alt="Burger menu"
+                />
               )}
             </button>
           ) : (
@@ -225,7 +232,10 @@ export const Header: FC<Props> = ({ setIsMenuClicked }) => {
                   />
                 )}
 
-                <Counter count={quantityOfProductsInShoppingCart} theme={theme} />
+                <Counter
+                  count={quantityOfProductsInShoppingCart}
+                  theme={theme}
+                />
               </Link>
 
               <button

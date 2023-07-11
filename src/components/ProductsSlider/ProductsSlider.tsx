@@ -24,6 +24,18 @@ export const ProductsSlider: FC<Props> = ({ children, title, itemsLength }) => {
   const [itemWidth, setItemWidth] = useState(0);
   const [touchStartX, setTouchStartX] = useState(0);
 
+  const updateIndex = (newIndex: number) => {
+    let updatedIndex = newIndex;
+
+    if (updatedIndex < 0) {
+      updatedIndex = 0;
+    } else if (updatedIndex >= newItemsLength) {
+      updatedIndex = newItemsLength - 1;
+    }
+
+    setActiveIndex(updatedIndex);
+  };
+
   const handleTouchStart = (event: TouchEvent<HTMLDivElement>) => {
     setTouchStartX(event.touches[0].clientX);
   };
@@ -37,18 +49,6 @@ export const ProductsSlider: FC<Props> = ({ children, title, itemsLength }) => {
     } else if (touchDelta < -50) {
       updateIndex(activeIndex + 1);
     }
-  };
-
-  const updateIndex = (newIndex: number) => {
-    let updatedIndex = newIndex;
-
-    if (updatedIndex < 0) {
-      updatedIndex = 0;
-    } else if (updatedIndex >= newItemsLength) {
-      updatedIndex = newItemsLength - 1;
-    }
-
-    setActiveIndex(updatedIndex);
   };
 
   const getTranslateXValue = () => {
@@ -74,7 +74,7 @@ export const ProductsSlider: FC<Props> = ({ children, title, itemsLength }) => {
       updateIndex(activeIndex - 1);
     }
   };
-  
+
   useEffect(() => {
     getTranslateXValue();
   }, [sliderRef.current]);

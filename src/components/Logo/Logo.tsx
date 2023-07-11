@@ -1,7 +1,7 @@
 import classNames from 'classnames';
-import { FC } from 'react'
-import { Link } from 'react-router-dom'
-import { useAppSelector } from '../../app/hooks'
+import { FC } from 'react';
+import { Link } from 'react-router-dom';
+import { useAppSelector } from '../../app/hooks';
 import './logo.scss';
 
 interface Props {
@@ -15,24 +15,24 @@ export const Logo: FC<Props> = ({ header, setIsMenuClicked }) => {
     if (setIsMenuClicked) {
       setIsMenuClicked(false);
     }
-  }
+  };
 
   return (
     <Link
-      to="/" 
-      className={classNames('logo', {'logo--header': header})}
+      to="/"
+      className={classNames('logo', { 'logo--header': header })}
       onClick={handleLogoClick}
     >
-        {theme === 'light' ? (
-          <img src="new/img/icons/LOGO-dark.svg" alt="Logo" />
-        ) : (
-          <img src="new/img/icons/LOGO-light.svg" alt="Logo" />
-        )}
+      {theme === 'light' ? (
+        <img src="new/img/icons/LOGO-dark.svg" alt="Logo" />
+      ) : (
+        <img src="new/img/icons/LOGO-light.svg" alt="Logo" />
+      )}
     </Link>
-  )
-}
+  );
+};
 
 Logo.defaultProps = {
   header: false,
   setIsMenuClicked: () => {},
-}
+};
