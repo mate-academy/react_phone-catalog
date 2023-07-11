@@ -74,10 +74,10 @@ export const ProductsSlider: FC<Props> = ({ children, title, itemsLength }) => {
       updateIndex(activeIndex - 1);
     }
   };
-
+  
   useEffect(() => {
     getTranslateXValue();
-  }, [sliderRef.current])
+  }, [sliderRef.current]);
 
   return (
     <div className="products-slider" ref={sliderRef}>

@@ -6,13 +6,23 @@ import './logo.scss';
 
 interface Props {
   header?: boolean;
+  setIsMenuClicked?: (isMenuClicked: boolean) => void;
 }
 
-export const Logo: FC<Props> = ({ header }) => {
+export const Logo: FC<Props> = ({ header, setIsMenuClicked }) => {
   const theme = useAppSelector(state => state.theme.value);
+  const handleLogoClick = () => {
+    if (setIsMenuClicked) {
+      setIsMenuClicked(false);
+    }
+  }
 
   return (
-    <Link to="/" className={classNames('logo', {'logo--header': header})}>
+    <Link
+      to="/" 
+      className={classNames('logo', {'logo--header': header})}
+      onClick={handleLogoClick}
+    >
         {theme === 'light' ? (
           <img src="new/img/icons/LOGO-dark.svg" alt="Logo" />
         ) : (
@@ -24,4 +34,5 @@ export const Logo: FC<Props> = ({ header }) => {
 
 Logo.defaultProps = {
   header: false,
+  setIsMenuClicked: () => {},
 }

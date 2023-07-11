@@ -1,11 +1,13 @@
 import classNames from 'classnames';
-import { FC, useEffect, useMemo, useState } from 'react'
+import {
+  FC, useEffect, useMemo, useState,
+} from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { toggleTheme } from '../../features/theme/themeSlice';
 import { nav } from '../../utils/navigation';
 import { Counter } from '../Counter';
-import { Logo } from '../Logo'
+import { Logo } from '../Logo';
 import './burgerMenu.scss';
 
 interface Props {
@@ -28,7 +30,7 @@ export const BurgerMenu: FC<Props> = ({ isMenuClicked, setIsMenuClicked }) => {
 
   useEffect(() => {
     document.body.style.overflowY
-      = isMenuClicked ? 'hidden' : 'visible'
+      = isMenuClicked ? 'hidden' : 'visible';
   }, [isMenuClicked]);
 
   const handleSwitchTheme = () => {
@@ -36,11 +38,11 @@ export const BurgerMenu: FC<Props> = ({ isMenuClicked, setIsMenuClicked }) => {
   };
 
   return (
-    <div 
+    <div
       className={classNames('burger-menu', `burger-menu--${theme}`, { 'burger-menu--opened': isMenuClicked })}
     >
       <header className={`burger-menu__header burger-menu__header--${theme}`}>
-        <Logo header/>
+        <Logo header setIsMenuClicked={setIsMenuClicked}/>
 
         <button
           className={`header__icon header__icon--${theme}`}
@@ -117,26 +119,26 @@ export const BurgerMenu: FC<Props> = ({ isMenuClicked, setIsMenuClicked }) => {
       </div>
 
       <ul className="burger-menu__nav-list">
-          {nav.map(({ name, to }) => (
-            <li
-              className='burger-menu__nav-item'
-              key={name}
+        {nav.map(({ name, to }) => (
+          <li
+            className="burger-menu__nav-item"
+            key={name}
+          >
+            <Link
+              onClick={() => setIsMenuClicked(false)}
+              to={to}
+              className={
+                classNames(
+                  `burger-menu__nav-link burger-menu__nav-link--${theme}`,
+                  { [`burger-menu__nav-link--highlighted__${theme}`]: pathname === to || (pathname.includes(to) && to !== '/') },
+                )
+              }
             >
-              <Link
-                onClick={() => setIsMenuClicked(false)}
-                to={to}
-                className={
-                  classNames(
-                    `burger-menu__nav-link burger-menu__nav-link--${theme}`,
-                    { [`burger-menu__nav-link--highlighted__${theme}`]: pathname === to || (pathname.includes(to) && to !== '/') },
-                  )
-                }
-              >
-                {name}
-              </Link>
-            </li>
-          ))}
-        </ul>
+              {name}
+            </Link>
+          </li>
+        ))}
+      </ul>
     </div>
-  )
-}
+  );
+};

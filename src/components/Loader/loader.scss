@@ -1,6 +1,7 @@
 $uib-size: 2.8rem;
 $uib-speed: 0.9s;
 $uib-color: #183153;
+$uib-color--light: #ffffff;
 
 .dot-spinner {
   position: relative;
@@ -32,6 +33,10 @@ $uib-color: #183153;
       opacity: $pulse-opacity;
       animation: pulse0112 #{$uib-speed} ease-in-out infinite;
       box-shadow: 0 0 20px rgba(18, 31, 53, 0.3);
+    }
+
+    &--dark::before {
+      background-color: $uib-color--light;
     }
   }
 }

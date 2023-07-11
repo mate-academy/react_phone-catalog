@@ -57,7 +57,7 @@ export const Header: FC<Props> = ({ setIsMenuClicked }) => {
       initialUrlAddress.current = pathname;
     }
 
-    if (inputRef.current !== null) {
+    if (isSearchBarRequested && inputRef.current) {
       inputRef.current.focus();
     }
   }, [pathname, isSearchBarRequested]);
@@ -115,7 +115,7 @@ export const Header: FC<Props> = ({ setIsMenuClicked }) => {
 
   return (
     <header className={`header__wrapper header__wrapper--${theme}`}>
-      <Logo header/>
+      <Logo header />
 
       <div className="header__content">
         {!isMobile && (
@@ -172,7 +172,7 @@ export const Header: FC<Props> = ({ setIsMenuClicked }) => {
               </form>
             )}
           {isMobile ? (
-            <button 
+            <button
               className={`header__icon header__icon--${theme}`}
               onClick={() => setIsMenuClicked(true)}
             >

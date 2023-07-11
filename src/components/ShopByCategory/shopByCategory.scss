@@ -6,6 +6,11 @@
   margin: 80px 0;
   gap: 24px;
 
+  @include onMobile {
+    justify-content: center;
+    align-items: center;
+  }
+
   &__categories {
     display: flex;
     gap: 16px;
