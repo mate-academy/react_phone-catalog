@@ -1,0 +1,49 @@
+.icon-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  border: 1px solid $color-icons;
+  background-color: inherit;
+  width: 32px;
+  height: 32px;
+
+  &::before {
+    content: "";
+    display: block;
+    width: 16px;
+    height: 16px;
+  }
+
+  &--left {
+    &::before {
+      background: url(../../helpers/img/icons/arrow-prev.svg) no-repeat center;
+    }
+  }
+
+  &--right {
+    &::before {
+      background: url(../../helpers/img/icons/arrow-next.svg) no-repeat center;
+    }
+  }
+
+  &--close {
+    &::before {
+      background: url(../../helpers/img/icons/Close.svg) no-repeat center;
+    }
+  }
+
+  &:hover {
+    z-index: 2;
+    border: 1px solid $color-primary;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    border: 1px solid $color-icons;
+
+    &:hover {
+      cursor: default;
+    }
+  }
+}

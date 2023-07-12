@@ -1,0 +1,36 @@
+.page-navigation {
+  padding-top: 25px;
+  padding-bottom: 40px;
+  display: flex;
+  align-items: center;
+  color: $color-secondary;
+
+  &__home-link {
+    width: 15px;
+    height: 15px;
+    background: url(../../helpers/img/icons/Home.svg) no-repeat center;
+  }
+
+  &__current-page-link {
+    font-weight: 600;
+    font-size: 12px;
+    display: flex;
+    padding-top: 3px;
+    text-decoration: none;
+    color: $color-secondary;
+
+    &:hover {
+      color: $color-primary;
+    }
+
+    &::before {
+      content: "";
+      background: url(../../helpers/img/icons/arrow-next.svg) no-repeat center;
+      display: block;
+      width: 6px;
+      height: 16px;
+      margin: 0 15px;
+      color: $color-icons;
+    }
+  }
+}

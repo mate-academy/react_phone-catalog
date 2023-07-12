@@ -1,0 +1,33 @@
+.product-card {
+  min-height: 513px;
+  padding: 32px 32px 24px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid $color-elements;
+  color: $color-primary;
+
+  &__picture {
+    display: block;
+    margin-bottom: 24px;
+    width: 100%;
+    height: max-content;
+  }
+
+  &__img {
+    display: block;
+    margin: 0 auto;
+    max-height: 208px;
+    object-fit: contain;
+  }
+
+  &__title {
+    display: block;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    margin-bottom: 8px;
+    color: $color-primary;
+    text-decoration: none;
+    flex-grow: 1;
+  }
+}
