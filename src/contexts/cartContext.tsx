@@ -1,11 +1,12 @@
 import {
   createContext, useCallback, useContext, useMemo,
 } from 'react';
-import { CartItem } from '../types/cartItem';
-import { useLocalStorage } from '../hooks/useLocalStorage';
-import { ProductDetails } from '../types/productDetails';
-import { Product } from '../types/product';
-import { prepareObject } from '../helpers/object';
+
+import { CartItem } from '@typings/cartItem';
+import { useLocalStorage } from '@hooks/useLocalStorage';
+import { ProductDetails } from '@typings/productDetails';
+import { Product } from '@typings/product';
+import { prepareObject } from '@helpers/object';
 
 type ContextValue = {
   cartItems: CartItem[];
@@ -56,26 +57,24 @@ export const CartProvider = ({
 
   const changeItemQuantity = useCallback(
     (itemId: string, operation: 1 | -1) => {
-      setCartItems(current =>
-        current.map(item => {
-          if (item.id === itemId) {
-            const newQuantity = item.quantity + operation;
+      setCartItems(current => current.map(item => {
+        if (item.id === itemId) {
+          const newQuantity = item.quantity + operation;
 
-            return { ...item, quantity: newQuantity };
-          }
+          return { ...item, quantity: newQuantity };
+        }
 
-          return item;
-        }));
+        return item;
+      }));
     },
     [],
   );
 
   const sumPrice = useMemo(
-    () =>
-      cartItems.reduce(
-        (acc, curr) => acc + curr.product.price * curr.quantity,
-        0,
-      ),
+    () => cartItems.reduce(
+      (acc, curr) => acc + curr.product.price * curr.quantity,
+      0,
+    ),
     [cartItems],
   );
   const itemsCount = useMemo(

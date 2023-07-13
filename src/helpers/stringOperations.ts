@@ -15,6 +15,4 @@ export const changeProductId = (
 };
 
 export const getClassNameForNavLink
-  = (className: string, modifier?: string) =>
-    ({ isActive }: { isActive: boolean }) =>
-      `${className}${modifier || ''} ${isActive ? `${className}--active` : ''}`;
+  = (className: string, modifier?: string) => ({ isActive }: { isActive: boolean }) => `${className}${modifier || ''} ${isActive ? `${className}--active` : ''}`;

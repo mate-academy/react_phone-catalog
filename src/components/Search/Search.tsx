@@ -1,6 +1,6 @@
-import { filterProducts } from '../../helpers/filters';
-import { Product } from '../../types/product';
-import { ProductsList } from '../ProductsList/ProductsList';
+import { filterProducts } from '@helpers/filters';
+import { Product } from '@typings/product';
+import { ProductsList } from '@components/ProductsList';
 import './Search.scss';
 
 type SearchProps = {

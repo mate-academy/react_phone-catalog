@@ -1,8 +1,8 @@
 import { Link, useLocation } from 'react-router-dom';
 
-import { capitalizeString } from '../../../helpers/stringOperations';
-import home from '../../../assets/svg/home.svg';
-import rightArrow from '../../../assets/svg/r_arrow.svg';
+import { capitalizeString } from '@helpers/stringOperations';
+import home from '@assets/svg/home.svg';
+import rightArrow from '@assets/svg/r_arrow.svg';
 import './Breadcrumbs.scss';
 
 export const Breadcrumbs = () => {
@@ -18,7 +18,11 @@ export const Breadcrumbs = () => {
 
       {breadCrumbs.map((path, i) => (
         <div key={path}>
-          <img className="bread-crumbs__icon--color-gray" src={rightArrow} alt="" />
+          <img
+            className="bread-crumbs__icon--color-gray"
+            src={rightArrow}
+            alt=""
+          />
           {i === breadCrumbs.length - 1 ? (
             <span>{capitalizeString(path)}</span>
           ) : (

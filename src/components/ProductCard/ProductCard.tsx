@@ -1,11 +1,10 @@
 import { memo } from 'react';
 import { Link } from 'react-router-dom';
 
-import { Product } from '../../types/product';
-import { PrimaryButton } from '../UI/PrimaryButton/PrimaryButton';
-import { FavButton } from '../UI/FavButton/FavButton';
-import { SpecTable } from '../SpecTable/SpecTable';
-import { useCart } from '../../contexts/cartContext';
+import { Product } from '@typings/product';
+import { PrimaryButton, FavButton } from '@components/UI';
+import { SpecTable } from '@components/SpecTable/SpecTable';
+import { useCart } from '@contexts/cartContext';
 import './ProductCard.scss';
 
 type ProductCardProps = {

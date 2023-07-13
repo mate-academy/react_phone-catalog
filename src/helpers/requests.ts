@@ -1,5 +1,5 @@
-import { Product } from '../types/product';
-import { ProductDetails } from '../types/productDetails';
+import { Product } from '@typings/product';
+import { ProductDetails } from '@typings/productDetails';
 
 const API_URL = 'https://mate-academy.github.io/react_phone-catalog/_new';
 

@@ -5,8 +5,9 @@ import {
   useMemo,
   useReducer,
 } from 'react';
-import { Product } from '../types/product';
-import { requestProducts } from '../helpers/requests';
+
+import { Product } from '@typings/product';
+import { requestProducts } from '@helpers/requests';
 
 export type ProductsMap = {
   phones: Product[];
@@ -55,7 +56,10 @@ const initialState = {
 export const ProductsProvider = ({
   children,
 }: React.PropsWithChildren<React.ReactNode>) => {
-  const [{ products, isLoading, error }, dispatch] = useReducer(reducer, initialState);
+  const [{ products, isLoading, error }, dispatch] = useReducer(
+    reducer,
+    initialState,
+  );
 
   useEffect(() => {
     dispatch({ type: 'loading' });

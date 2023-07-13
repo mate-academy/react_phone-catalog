@@ -2,16 +2,15 @@ import { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { NavLink, useLocation } from 'react-router-dom';
 
-import favorite from '../../assets/svg/heart.svg';
-import cart from '../../assets/svg/cart.svg';
-import hamburger from '../../assets/svg/hamburger_menu.svg';
-import close from '../../assets/svg/close.svg';
-import { Logo } from '../UI/Logo';
-import { SearchBar } from '../UI/SearchBar/SearchBar';
+import { useCart } from '@contexts/cartContext';
+import { useFav } from '@contexts/favContext';
+import favorite from '@assets/svg/heart.svg';
+import cart from '@assets/svg/cart.svg';
+import hamburger from '@assets/svg/hamburger_menu.svg';
+import close from '@assets/svg/close.svg';
+import { Logo, SearchBar } from '@components/UI';
+import { getClassNameForNavLink } from '@helpers/stringOperations';
 import { NavbarCart } from './NavbarCart';
-import { getClassNameForNavLink } from '../../helpers/stringOperations';
-import { useCart } from '../../contexts/cartContext';
-import { useFav } from '../../contexts/favContext';
 import './Navbar.scss';
 
 const isLinkActive = getClassNameForNavLink('nav__link');
@@ -115,7 +114,11 @@ export const Navbar = () => {
             className="nav__menu-button"
             onClick={handleMenuButtonClick}
           >
-            <img className="nav__icon" src={menuOpen ? close : hamburger} alt="Open nav menu" />
+            <img
+              className="nav__icon"
+              src={menuOpen ? close : hamburger}
+              alt="Open nav menu"
+            />
           </button>
         </li>
       </ul>

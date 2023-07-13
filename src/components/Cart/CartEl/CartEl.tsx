@@ -1,7 +1,7 @@
-import closeIcon from '../../../assets/svg/close.svg';
-import { useCart } from '../../../contexts/cartContext';
-import { Product } from '../../../types/product';
-import { IconButton } from '../../UI/IconButton/IconButton';
+import { IconButton } from '@components/UI';
+import closeIcon from '@assets/svg/close.svg';
+import { useCart } from '@contexts/cartContext';
+import { Product } from '@typings/product';
 import './CartEl.scss';
 
 type CartElProps = {

@@ -1,15 +1,14 @@
 import { Navigate, useSearchParams } from 'react-router-dom';
 import { useEffect, useMemo } from 'react';
 
-import { Breadcrumbs } from '../../components/UI/Breadcrumbs/Breadcrumbs';
-import { Pagination } from '../../components/Pagination/Pagination';
-import { sortProducts } from '../../helpers/filters';
-import { Search } from '../../components/Search/Search';
-import { ProductsMap, useProducts } from '../../contexts/productsContext';
-import { capitalizeString } from '../../helpers/stringOperations';
-import { Select } from '../../components/UI/Select/Select';
-import { scrollToTop } from '../../helpers/dom';
-import NotFoundPage from '../NotFoundPage/NotFoundPage';
+import { Breadcrumbs, Select } from '@components/UI';
+import { Pagination } from '@components/Pagination/Pagination';
+import { Search } from '@components/Search/Search';
+import { ProductsMap, useProducts } from '@contexts/productsContext';
+import { capitalizeString } from '@helpers/stringOperations';
+import { sortProducts } from '@helpers/filters';
+import { scrollToTop } from '@helpers/dom';
+import NotFoundPage from '@routes/NotFoundPage/NotFoundPage';
 import { sortOptions, perPageOptions } from './sorters';
 import './ProductPage.scss';
 

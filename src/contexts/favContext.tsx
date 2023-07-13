@@ -1,10 +1,10 @@
 import {
   createContext, useCallback, useContext, useMemo,
 } from 'react';
-import { ProductDetails } from '../types/productDetails';
-import { Product } from '../types/product';
-import { useLocalStorage } from '../hooks/useLocalStorage';
-import { prepareObject } from '../helpers/object';
+import { ProductDetails } from '@typings/productDetails';
+import { Product } from '@typings/product';
+import { useLocalStorage } from '@hooks/useLocalStorage';
+import { prepareObject } from '@helpers/object';
 
 type ContextValue = {
   favItems: Product[];

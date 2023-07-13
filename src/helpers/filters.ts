@@ -1,4 +1,4 @@
-import { Product } from '../types/product';
+import { Product } from '@typings/product';
 
 export const sortProducts = (products: Product[], activeFilter: string) => {
   switch (activeFilter) {
@@ -14,26 +14,36 @@ export const sortProducts = (products: Product[], activeFilter: string) => {
 };
 
 export const filterProducts = (products: Product[], query: string) => {
-  return products.filter(({ name }) =>
-    name.toLowerCase().includes(query.toLowerCase()));
+  return products.filter(({ name }) => name.toLowerCase().includes(query.toLowerCase()));
 };
 
-export const getHotPriceProducts = (productsToSort: Product[]) =>
-  productsToSort
-    .sort((a, b) => {
-      const aDiff = a.fullPrice - a.price;
-      const bDiff = b.fullPrice - b.price;
+export const getHotPriceProducts = (productsToSort: Product[]) => productsToSort
+  .sort((a, b) => {
+    const aDiff = a.fullPrice - a.price;
+    const bDiff = b.fullPrice - b.price;
 
-      return bDiff - aDiff;
-    })
-    .slice(0, 16);
+    return bDiff - aDiff;
+  })
+  .slice(0, 16);
 
-export const getBrandNewProducts = (productsToSort: Product[]) =>
-  productsToSort.sort((a, b) => b.year - a.year).slice(0, 16);
+export const getBrandNewProducts = (productsToSort: Product[]) => productsToSort.sort((a, b) => b.year - a.year).slice(0, 16);
 
-export const getRandomProducts = (products: Product[]) => {
-  return Array.from(
-    { length: 16 },
-    () => products[Math.floor(Math.random() * products.length)],
-  );
+export const getRandomProducts = (products: Product[]): Product[] => {
+  const numProducts = products.length;
+  const randomProducts: Product[] = [];
+
+  if (numProducts <= 16) {
+    return products;
+  }
+
+  while (randomProducts.length < 16) {
+    const randomIndex = Math.floor(Math.random() * numProducts);
+    const randomProduct = products[randomIndex];
+
+    if (!randomProducts.includes(randomProduct)) {
+      randomProducts.push(randomProduct);
+    }
+  }
+
+  return randomProducts;
 };

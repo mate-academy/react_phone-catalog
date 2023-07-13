@@ -1,4 +1,4 @@
-import { Specifications } from '../../types/specifications';
+import { Specifications } from '@typings/specifications';
 import './SpecTable.scss';
 
 type SpecTableProps = {

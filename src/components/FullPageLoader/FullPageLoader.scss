@@ -1,4 +1,4 @@
-@import "../../style-utils/mixins.scss";
+@import "@css-utils/mixins.scss";
 
 .page-loader {
   @include flex-center;

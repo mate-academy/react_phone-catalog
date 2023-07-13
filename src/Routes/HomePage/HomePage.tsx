@@ -1,8 +1,8 @@
-import { Banner } from '../../components/HomePage/Banner/Banner';
-import { ShopCategories } from '../../components/HomePage/ShopCategories/ShopCategories';
-import { ProductCardSlider } from '../../components/ProductCardSlider/ProductCardSlider';
-import { useProducts } from '../../contexts/productsContext';
-import { getBrandNewProducts, getHotPriceProducts } from '../../helpers/filters';
+import { Banner } from '@components/HomePage/Banner/Banner';
+import { ShopCategories } from '@components/HomePage/ShopCategories/ShopCategories';
+import { ProductCardSlider } from '@components/ProductCardSlider/ProductCardSlider';
+import { useProducts } from '@contexts/productsContext';
+import { getBrandNewProducts, getHotPriceProducts } from '@helpers/filters';
 import './HomePage.scss';
 
 const HomePage = () => {

@@ -1,7 +1,6 @@
-import { BackButton } from '../../components/UI/BackButton/BackButton';
-import { CartEl } from '../../components/Cart/CartEl/CartEl';
-import { CartSummary } from '../../components/Cart/CartSummary/CartSummary';
-import { useCart } from '../../contexts/cartContext';
+import { BackButton } from '@components/UI/BackButton/BackButton';
+import { CartEl, CartSummary } from '@components/Cart';
+import { useCart } from '@contexts/cartContext';
 import './CartPage.scss';
 
 const CartPage = () => {

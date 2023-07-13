@@ -1,5 +1,5 @@
 import './ShopCategories.scss';
-import { useProducts } from '../../../contexts/productsContext';
+import { useProducts } from '@contexts/productsContext';
 import { ShopCategory } from './ShopCategory';
 
 export const ShopCategories = () => {

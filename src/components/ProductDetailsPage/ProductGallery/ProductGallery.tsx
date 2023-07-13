@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
-
-import './ProductGallery.scss';
 import classNames from 'classnames';
-import { Loader } from '../../UI/Loader/Loader';
+
+import { Loader } from '@components/UI';
+import './ProductGallery.scss';
 
 type ProductGalleryProps = {
   images: string[];

@@ -1,0 +1,1 @@
+export { SpecTable } from './SpecTable';

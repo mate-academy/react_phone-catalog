@@ -1,22 +1,19 @@
 import { useEffect, useMemo, useReducer } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { BackButton } from '../../components/UI/BackButton/BackButton';
-import { Breadcrumbs } from '../../components/UI/Breadcrumbs/Breadcrumbs';
-import { ProductDetails } from '../../types/productDetails';
-import { getProductDetails } from '../../helpers/requests';
-import { SpecTable } from '../../components/SpecTable/SpecTable';
-import { About } from '../../components/ProductDetailsPage/About/About';
-import { Loader } from '../../components/UI/Loader/Loader';
-import { Details } from '../../components/ProductDetailsPage/Details/Details';
-import { getProductSpecs } from '../../helpers/object';
-import { FullPageLoader } from '../../components/FullPageLoader/FullPageLoader';
-import NotFoundPage from '../NotFoundPage/NotFoundPage';
+import { BackButton, Breadcrumbs, Loader } from '@components/UI';
+import { About, Details } from '@components/ProductDetailsPage';
+import { SpecTable } from '@components/SpecTable';
+import { ProductDetails } from '@typings/productDetails';
+import { getProductDetails } from '@helpers/requests';
+import { getProductSpecs } from '@helpers/object';
+import { FullPageLoader } from '@components/FullPageLoader';
+import NotFoundPage from '@routes/NotFoundPage/NotFoundPage';
 import './ProductDetailsPage.scss';
-import { getRandomProducts } from '../../helpers/filters';
-import { useProducts } from '../../contexts/productsContext';
-import { ProductCardSlider } from '../../components/ProductCardSlider/ProductCardSlider';
-import { scrollToTop } from '../../helpers/dom';
+import { getRandomProducts } from '@helpers/filters';
+import { useProducts } from '@contexts/productsContext';
+import { ProductCardSlider } from '@components/ProductCardSlider';
+import { scrollToTop } from '@helpers/dom';
 
 type State = {
   selectedProduct: ProductDetails | null;

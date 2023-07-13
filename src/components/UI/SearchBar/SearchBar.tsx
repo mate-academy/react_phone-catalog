@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
 
-import search from '../../../assets/svg/search.svg';
-import close from '../../../assets/svg/close.svg';
+import search from '@assets/svg/search.svg';
+import close from '@assets/svg/close.svg';
 import './SearchBar.scss';
 
 export const SearchBar = () => {

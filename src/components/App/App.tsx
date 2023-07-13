@@ -1,26 +1,26 @@
 import { Suspense, lazy } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 
-import { Navbar } from '../Navbar/Navbar';
-import { Footer } from '../Footer/Footer';
-import { CartProvider } from '../../contexts/cartContext';
-import { FavoritesProvider } from '../../contexts/favContext';
-import { ProductsProvider } from '../../contexts/productsContext';
-import { FullPageLoader } from '../FullPageLoader/FullPageLoader';
+import { Navbar } from '@components/Navbar';
+import { Footer } from '@components/Footer';
+import { FullPageLoader } from '@components/FullPageLoader';
+import {
+  CartProvider,
+  ProductsProvider,
+  FavoritesProvider,
+} from '@contexts/index';
 import './App.scss';
 
-const HomePage = lazy(() => import('../../routes/HomePage/HomePage'));
+const HomePage = lazy(() => import('@routes/HomePage/HomePage'));
 const ProductDetailsPage = lazy(
-  () => import('../../routes/ProductDetailsPage/ProductDetailsPage'),
+  () => import('@routes/ProductDetailsPage/ProductDetailsPage'),
 );
-const CartPage = lazy(() => import('../../routes/CartPage/CartPage'));
-const FavoritesPage = lazy(
-  () => import('../../routes/FavoritesPage/FavoritesPage'),
-);
-const ProductPage = lazy(() => import('../../routes/ProductPage/ProductPage'));
-const NotFoundPage = lazy(() => import('../../routes/NotFoundPage/NotFoundPage'));
+const CartPage = lazy(() => import('@routes/CartPage/CartPage'));
+const FavoritesPage = lazy(() => import('@routes/FavoritesPage/FavoritesPage'));
+const ProductPage = lazy(() => import('@routes/ProductPage/ProductPage'));
+const NotFoundPage = lazy(() => import('@routes/NotFoundPage/NotFoundPage'));
 
-const App = () => (
+export const App = () => (
   <div className="app">
     <FavoritesProvider>
       <CartProvider>
@@ -63,5 +63,3 @@ const App = () => (
     </FavoritesProvider>
   </div>
 );
-
-export default App;

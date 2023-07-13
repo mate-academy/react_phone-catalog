@@ -1,6 +1,6 @@
-import { Product } from '../types/product';
-import { ProductDetails } from '../types/productDetails';
-import { Specifications } from '../types/specifications';
+import { Product } from '@typings/product';
+import { ProductDetails } from '@typings/productDetails';
+import { Specifications } from '@typings/specifications';
 
 export const prepareObject = (product: ProductDetails): Product => {
   return {

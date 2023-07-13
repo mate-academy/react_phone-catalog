@@ -2,13 +2,13 @@ import { useSearchParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import classNames from 'classnames';
 
-import { IconButton } from '../UI/IconButton/IconButton';
-import { ProductsList } from '../ProductsList/ProductsList';
-import leftArrow from '../../assets/svg/l_arrow.svg';
-import rightArrow from '../../assets/svg/r_arrow.svg';
-import { getItemsToShowIndex } from '../../helpers/pagination';
-import { scrollToTop } from '../../helpers/dom';
-import { Product } from '../../types/product';
+import { IconButton } from '@components/UI';
+import { ProductsList } from '@components/ProductsList';
+import leftArrow from '@assets/svg/l_arrow.svg';
+import rightArrow from '@assets/svg/r_arrow.svg';
+import { getItemsToShowIndex } from '@helpers/pagination';
+import { scrollToTop } from '@helpers/dom';
+import { Product } from '@typings/product';
 import './Pagination.scss';
 
 type PaginationProps = {
@@ -59,20 +59,19 @@ export const Pagination = ({ total, sortedProducts }: PaginationProps) => {
           <li>
             <ul className="pagination__pages-container">
               {Array.from({ length: 5 }, (v, i) => i + page - 2).map(
-                pageNumber =>
-                  (pageNumber <= 0 || pageNumber > numberOfPages ? null : (
-                    <li key={pageNumber} className="pagination__page">
-                      <button
-                        type="button"
-                        className={classNames('pagination__button', {
-                          'pagination__button--active': pageNumber === page,
-                        })}
-                        onClick={() => handlePageChange(pageNumber)}
-                      >
-                        {pageNumber}
-                      </button>
-                    </li>
-                  )),
+                pageNumber => (pageNumber <= 0 || pageNumber > numberOfPages ? null : (
+                  <li key={pageNumber} className="pagination__page">
+                    <button
+                      type="button"
+                      className={classNames('pagination__button', {
+                        'pagination__button--active': pageNumber === page,
+                      })}
+                      onClick={() => handlePageChange(pageNumber)}
+                    >
+                      {pageNumber}
+                    </button>
+                  </li>
+                )),
               )}
             </ul>
           </li>

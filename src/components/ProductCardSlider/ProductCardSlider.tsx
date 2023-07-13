@@ -1,13 +1,12 @@
 import { useCallback, useEffect, useState } from 'react';
 
-import { ProductCard } from '../ProductCard/ProductCard';
-import { Product } from '../../types/product';
-import { Slider } from '../UI/Slider/Slider';
-import { IconButton } from '../UI/IconButton/IconButton';
-import leftArrow from '../../assets/svg/l_arrow.svg';
-import rightArrow from '../../assets/svg/r_arrow.svg';
+import { ProductCard } from '@components/ProductCard';
+import { Product } from '@typings/product';
+import { Slider, IconButton } from '@components/UI';
+import leftArrow from '@assets/svg/l_arrow.svg';
+import rightArrow from '@assets/svg/r_arrow.svg';
+import { getVisibleNumberOfProducts } from '@helpers/dom';
 import './ProductCardSlider.scss';
-import { getVisibleNumberOfProducts } from '../../helpers/dom';
 
 type ProductCardSliderProps = {
   title: string;

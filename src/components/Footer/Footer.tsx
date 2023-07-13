@@ -1,7 +1,7 @@
-import { scrollToTop } from '../../helpers/dom';
-import arrowUp from '../../assets/svg/arrow_up.svg';
+import { scrollToTop } from '@helpers/dom';
+import { Logo } from '@components/UI';
+import arrowUp from '@assets/svg/arrow_up.svg';
 import './Footer.scss';
-import { Logo } from '../UI/Logo';
 
 export const Footer = () => (
   <footer className="footer">

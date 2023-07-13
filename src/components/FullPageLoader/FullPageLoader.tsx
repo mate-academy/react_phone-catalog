@@ -1,4 +1,4 @@
-import { Loader } from '../UI/Loader/Loader';
+import { Loader } from '@components/UI';
 import './FullPageLoader.scss';
 
 export const FullPageLoader = () => (

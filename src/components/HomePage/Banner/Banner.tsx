@@ -1,11 +1,10 @@
 import { useCallback, useEffect, useState } from 'react';
 import classNames from 'classnames';
 
-import { IconButton } from '../../UI/IconButton/IconButton';
-import leftArrow from '../../../assets/svg/l_arrow.svg';
-import rightArrow from '../../../assets/svg/r_arrow.svg';
+import { IconButton, Slider } from '@components/UI';
+import leftArrow from '@assets/svg/l_arrow.svg';
+import rightArrow from '@assets/svg/r_arrow.svg';
 import './Banner.scss';
-import { Slider } from '../../UI/Slider/Slider';
 
 const bannerImages = [
   'img/banner-phones.png',

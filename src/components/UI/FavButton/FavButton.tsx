@@ -1,9 +1,10 @@
 import classNames from 'classnames';
-import heartIcon from '../../../assets/svg/heart.svg';
-import heartRedIcon from '../../../assets/svg/heart_red.svg';
-import { useFav } from '../../../contexts/favContext';
-import { Product } from '../../../types/product';
-import { ProductDetails } from '../../../types/productDetails';
+
+import heartIcon from '@assets/svg/heart.svg';
+import heartRedIcon from '@assets/svg/heart_red.svg';
+import { useFav } from '@contexts/favContext';
+import { Product } from '@typings/product';
+import { ProductDetails } from '@typings/productDetails';
 import './FavButton.scss';
 
 type FavButtonProps = {

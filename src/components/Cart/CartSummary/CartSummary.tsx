@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { PrimaryButton } from '../../UI/PrimaryButton/PrimaryButton';
+
+import { PrimaryButton } from '@components/UI';
 import './CartSummary.scss';
 
 type CartSummaryProps = {
@@ -17,17 +18,15 @@ export const CartSummary = ({ count, sumPrice }: CartSummaryProps) => {
       <p className="cart-summary__total">{`Total for ${count} items`}</p>
 
       <PrimaryButton
-        onClick={() =>
-          setError('We are sorry, but this feature is not implemented yet')}
+        // eslint-disable-next-line max-len
+        onClick={() => setError('We are sorry, but this feature is not implemented yet')}
         width={320}
         height={48}
       >
         Checkout
       </PrimaryButton>
 
-      <p className="cart-summary__error">
-        {error}
-      </p>
+      <p className="cart-summary__error">{error}</p>
     </div>
   );
 };

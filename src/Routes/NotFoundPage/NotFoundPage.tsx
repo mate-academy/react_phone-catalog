@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import home from '../../assets/svg/home.svg';
+
+import home from '@assets/svg/home.svg';
 import './NotFoundPage.scss';
 
 type NotFoundPageProps = {

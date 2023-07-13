@@ -1,12 +1,9 @@
-import { useCart } from '../../../contexts/cartContext';
-import { getProductSpecs } from '../../../helpers/object';
-import { ProductDetails } from '../../../types/productDetails';
-import { SpecTable } from '../../SpecTable/SpecTable';
-import { FavButton } from '../../UI/FavButton/FavButton';
-import { PrimaryButton } from '../../UI/PrimaryButton/PrimaryButton';
-import { CapacityPicker } from '../CapacityPicker/CapacityPicker';
-import { ColorPicker } from '../ColorPicker/ColorPicker';
-import { ProductGallery } from '../ProductGallery/ProductGallery';
+import { SpecTable } from '@components/SpecTable';
+import { FavButton, PrimaryButton } from '@components/UI';
+import { useCart } from '@contexts/cartContext';
+import { getProductSpecs } from '@helpers/object';
+import { ProductDetails } from '@typings/productDetails';
+import { CapacityPicker, ColorPicker, ProductGallery } from '..';
 import './Details.scss';
 
 type DetailsProps = {

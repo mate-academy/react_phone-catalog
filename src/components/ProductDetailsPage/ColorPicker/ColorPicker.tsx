@@ -1,7 +1,10 @@
 import { NavLink } from 'react-router-dom';
 
-import { ProductSpecPicker } from '../ProductSpecPicker/ProductSpecPicker';
-import { changeProductId, getClassNameForNavLink } from '../../../helpers/stringOperations';
+import {
+  changeProductId,
+  getClassNameForNavLink,
+} from '@helpers/stringOperations';
+import { ProductSpecPicker } from '..';
 import './ColorPicker.scss';
 
 type ColorPickerProps = {

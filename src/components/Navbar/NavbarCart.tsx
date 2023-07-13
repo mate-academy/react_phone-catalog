@@ -1,8 +1,9 @@
 import { NavLink } from 'react-router-dom';
-import { Logo } from '../UI/Logo';
-import cart from '../../assets/svg/cart.svg';
+
+import { Logo } from '@components/UI';
+import cart from '@assets/svg/cart.svg';
+import { getClassNameForNavLink } from '@helpers/stringOperations';
 import './Navbar.scss';
-import { getClassNameForNavLink } from '../../helpers/stringOperations';
 
 type NavbarCartProps = {
   cartCount: number;

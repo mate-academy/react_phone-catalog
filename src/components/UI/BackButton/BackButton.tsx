@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 
-import leftArrow from '../../../assets/svg/l_arrow.svg';
+import leftArrow from '@assets/svg/l_arrow.svg';
 import './BackButton.scss';
 
 export const BackButton = () => {

@@ -1,8 +1,9 @@
 import { useSearchParams } from 'react-router-dom';
-import { ProductsList } from '../../components/ProductsList/ProductsList';
-import { Breadcrumbs } from '../../components/UI/Breadcrumbs/Breadcrumbs';
-import { useFav } from '../../contexts/favContext';
-import { Search } from '../../components/Search/Search';
+
+import { ProductsList } from '@components/ProductsList/ProductsList';
+import { Breadcrumbs } from '@components/UI/Breadcrumbs/Breadcrumbs';
+import { useFav } from '@contexts/favContext';
+import { Search } from '@components/Search/Search';
 import './FavoritesPage.scss';
 
 const FavoritesPage = () => {
