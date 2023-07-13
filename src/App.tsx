@@ -1,9 +1,26 @@
 import './App.scss';
 
-const App = () => (
-  <div className="App">
-    <h1>React Phone Catalog</h1>
-  </div>
-);
+import React from 'react';
 
-export default App;
+import {
+  RouterProvider,
+} from 'react-router-dom';
+
+import NightsStayIcon from '@mui/icons-material/NightsStay';
+
+import { Header } from './components/Header/Header';
+import { Footer } from './components/Footer/Footer';
+import { appRoutes } from './Routes/Routes';
+
+export const App: React.FC = () => {
+  return (
+    <div className="App">
+      <Header />
+      <NightsStayIcon />
+      <React.StrictMode>
+        <RouterProvider router={appRoutes} />
+      </React.StrictMode>
+      <Footer />
+    </div>
+  );
+};

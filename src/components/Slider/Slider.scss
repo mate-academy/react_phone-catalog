@@ -1,0 +1,30 @@
+.slider {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  margin-bottom: 104px;
+
+  gap: 16px;
+
+  &--with-margin {
+    margin-top: 40px;
+  }
+
+  &__img {
+    display: block;
+    height: 400px;
+    width: 1040px;
+
+    object-fit: cover;
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+
+    border: 1px solid #89939a;
+  }
+}
