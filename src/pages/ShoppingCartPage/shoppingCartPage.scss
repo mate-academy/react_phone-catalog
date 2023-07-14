@@ -13,6 +13,7 @@
 
   @include onTablet {
     width: 800px;
+    padding-top: 40px;
   }
 
   @include onLaptop {
@@ -26,6 +27,8 @@
   &__notification {
     transition: transform 0.5s;
     position: fixed;
+    right: 0;
+    top: 80px;
   }
 
   &__container {

@@ -1,5 +1,7 @@
 import classNames from 'classnames';
-import { FC, useEffect, useState, TouchEvent } from 'react';
+import {
+  FC, useEffect, useState, TouchEvent,
+} from 'react';
 import { useAppSelector } from '../../app/hooks';
 import './banner.scss';
 

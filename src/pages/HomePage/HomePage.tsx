@@ -7,16 +7,11 @@ import './homepage.scss';
 import { Products } from '../../components/Products';
 import { Product } from '../../types/product';
 import { BASE_URL, fetcher } from '../../api/productsApi';
-
-const imagesForBanner = [
-  'new/img/banner-phones.png',
-  'new/img/banner-tablets.png',
-  'new/img/banner-accessories.png',
-];
+import { imagesForBanner } from '../../utils/imagesForBanner';
 
 export const HomePage = () => {
   const { data: phones }: { data: Product[] }
-    = useSwr(`${BASE_URL}.json`, fetcher, { suspense: true }); // loading data from api
+    = useSwr(`${BASE_URL}.json`, fetcher, { suspense: true });
 
   const hotPricesPhones = useMemo(() => {
     return phones
@@ -28,14 +23,14 @@ export const HomePage = () => {
       .sort((firstPhone, secondPhone) => {
         return secondPhone.fullPrice - firstPhone.fullPrice;
       });
-  }, [phones]); // filtering hot prices phones
+  }, [phones]);
 
   const brandNewPhones = useMemo(() => {
     return phones
       .filter((phone) => {
         return phone.year > 2018;
       });
-  }, [phones]); // filtering the brand new models
+  }, [phones]);
 
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 

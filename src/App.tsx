@@ -17,7 +17,7 @@ const App = () => {
   const [isMenuClicked, setIsMenuClicked] = useState(false);
 
   return (
-    <div 
+    <div
       className={`App ${theme}`}
     >
       <Layout

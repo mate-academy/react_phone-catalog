@@ -10,10 +10,10 @@ interface Props {
 export const Layout: FC<Props> = ({ setIsMenuClicked, children }) => {
   return (
     <>
-      <Header setIsMenuClicked={setIsMenuClicked}/>
-      <div className="main">
+      <Header setIsMenuClicked={setIsMenuClicked} />
+      <main className="main">
         {children}
-      </div>
+      </main>
       <Footer />
     </>
   );
