@@ -1,6 +1,7 @@
 .App {
   display: grid;
   grid-template-rows: auto 1fr auto;
+  width: 100%;
   min-height: 100vh;
   font-family: "Mont", sans-serif;
   scroll-behavior: smooth;

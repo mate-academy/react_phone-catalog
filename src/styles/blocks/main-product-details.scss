@@ -69,4 +69,10 @@
       background: url(../../helpers/img/icons/Favourites.svg) no-repeat 50%;
     }
   }
+
+  &--is-selected-fav {
+    &::before {
+      background: url(../../helpers/img/icons/FavFilled.svg) no-repeat 50%;
+    }
+  }
 }
