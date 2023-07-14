@@ -36,7 +36,7 @@ export const paginationLimit = {
   tab: Math.ceil(
     (main.tab.size - ((buttonWidth + main.tab.gap) * 2)) / (buttonWidth + 8),
   ),
-  desktop: 0,
+  desktop: 30,
 };
 
 export const itemsOnPage = {

@@ -1,4 +1,5 @@
 @import "./utils/mixins";
+@import "./utils/variables";
 
 .product-slider {
   overflow: hidden;
@@ -11,6 +12,7 @@
   }
 
   &__title {
+    @include text (32px, 700, $primary-dark-color);
     margin: 0;
   }
 

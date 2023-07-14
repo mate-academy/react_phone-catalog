@@ -6,13 +6,20 @@
 @import "./pagination-item.scss";
 
 .pagination {
+  position: relative;
   @extend .flex-center;
+  gap: 16px;
+  margin: 0 auto 80px;
+
   @include onTab {
     gap: 20px;
   }
+
   @include onPhone {
     gap: 8px;
   }
-  gap: 16px;
-  margin: 0 auto 80px;
+}
+
+.right-button {
+  position: relative;
 }

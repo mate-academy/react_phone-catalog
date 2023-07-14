@@ -1,8 +1,9 @@
 @import "../utils/variables";
+@import "../utils/mixins";
 
 .filter {
   &__item {
-    color: $primary-gray-color;
+    @include text(14px, 600, $primary-gray-color );
     padding: 10px 16px;
     cursor: pointer;
     transition: box-shadow 0.2s ease;

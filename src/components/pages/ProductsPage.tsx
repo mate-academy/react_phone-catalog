@@ -87,7 +87,7 @@ export const ProductsPage:React.FC<Props> = ({ products }) => {
           subtitle={0}
           title={developedPages[0] === Path
             ? 'No matches found'
-            : 'Page under development...'}
+            : 'Product category will be added soon...'}
         />
       )}
 

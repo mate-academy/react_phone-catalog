@@ -21,6 +21,9 @@ export const Pagination:React.FC<Props> = ({ paginationLength }) => {
   const firstVisiblePage = useRef(0);
   const [shift, setShift] = useState(0);
 
+  const showLastItem = lastVisiblePage.current !== paginationLength
+  && paginationLength > paginationLimit;
+
   useEffect(() => {
     if (paginationLimit) {
       if (+page > paginationLimit && +page > lastVisiblePage.current) {
@@ -56,13 +59,10 @@ export const Pagination:React.FC<Props> = ({ paginationLength }) => {
   };
 
   const createPagination = () => {
-    if (!paginationLength) {
-      return (<li className="pagination__item is-active">1</li>);
-    }
-
     const result = [];
 
-    for (let i = 0; i < paginationLength; i += 1) {
+    for (let i = 0; i < (showLastItem
+      ? paginationLength - 1 : paginationLength); i += 1) {
       result.push(
         <li
           key={i + 1}
@@ -74,7 +74,6 @@ export const Pagination:React.FC<Props> = ({ paginationLength }) => {
           style={{ left: -shift }}
         >
           {i + 1}
-
         </li>,
       );
     }
@@ -85,20 +84,47 @@ export const Pagination:React.FC<Props> = ({ paginationLength }) => {
   const paginationList = createPagination();
 
   return (
-    <section className="pagination">
+    <section
+      className="pagination"
+      style={{ left: showLastItem ? -step / 2 : 0 }}
+    >
       <ArrowButton
         type="left"
         stop={+page === 1}
         onChangePosition={() => handleChangePage(+page - 1)}
       />
-      <ul className="pagination__list">
+      <ul
+        className="pagination__list"
+      >
         {paginationList}
       </ul>
-      <ArrowButton
-        type="right"
-        stop={+page === paginationLength}
-        onChangePosition={() => handleChangePage(+page + 1)}
-      />
+      <div
+        className="right-button"
+        style={{ left: showLastItem ? step : 0 }}
+      >
+        {showLastItem && paginationLimit !== 0
+      && (
+        <button
+          type="button"
+          className="pagination__item"
+          style={{
+            position: 'absolute',
+            left: -step,
+          }}
+          onClick={() => handleChangePage(paginationLength)}
+        >
+          {+page !== paginationLength - 1 && '...'}
+          {paginationLength}
+        </button>
+      )}
+        <ArrowButton
+          type="right"
+          stop={+page === paginationLength}
+          onChangePosition={() => handleChangePage(+page + 1)}
+        />
+      </div>
+
     </section>
+
   );
 };

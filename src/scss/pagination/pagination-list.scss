@@ -4,14 +4,6 @@
   &__list {
     display: flex;
     gap: 8px;
-    @include onTab {
-      max-width: 85%;
-      overflow: hidden;
-    }
-
-    @include onPhone {
-      width: 85%;
-      overflow: hidden;
-    }
+    overflow: hidden;
   }
 }

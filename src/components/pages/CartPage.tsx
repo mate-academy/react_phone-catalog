@@ -1,4 +1,6 @@
-import { useMemo, useContext } from 'react';
+import {
+  useMemo, useContext, useState, useEffect,
+} from 'react';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import { Cart } from '../../utils/types/Cart';
 import { Context } from '../../utils/Context';
@@ -6,6 +8,7 @@ import { BlockTitle } from '../BlockTitle';
 
 export const CartPage: React.FC = () => {
   const { cartList, editCartItem } = useContext(Context);
+  const [shift, setShift] = useState(-700);
 
   const handleRemoveItem = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
@@ -20,6 +23,12 @@ export const CartPage: React.FC = () => {
       .reduce((acum, item) => acum + item.price * item.quantity, 0);
   }, [cartList]);
 
+  useEffect(() => {
+    const timerId = setTimeout(() => setShift(-700), 5000);
+
+    return () => clearTimeout(timerId);
+  }, [shift]);
+
   return (
     <main className="cart">
       <BlockTitle title="Cart" subtitle={cartList.length} />
@@ -28,7 +37,17 @@ export const CartPage: React.FC = () => {
           <h1>{`$${totalAmount}`}</h1>
           <p>{`Total for ${cartList.length} items`}</p>
         </div>
-        {cartList.length > 0 && (<button type="submit">Checkout</button>)}
+        {cartList.length > 0 && (
+          <button
+            type="button"
+            onClick={() => setShift(18)}
+          >
+            Checkout
+          </button>
+        )}
+      </div>
+      <div className="cart__total--message" style={{ right: shift }}>
+        <span>The option will be available soon</span>
       </div>
       <ul className="cart__list">
         <TransitionGroup className="cart__list">
@@ -40,7 +59,7 @@ export const CartPage: React.FC = () => {
             >
               <li className="cart__item" key={item.id}>
                 <button
-                  type="submit"
+                  type="button"
                   onClick={(e) => handleRemoveItem(e, item)}
                   className="cart__item--remove"
                 >

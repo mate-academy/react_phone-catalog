@@ -1,5 +1,6 @@
 @import "./utils/_variables";
 @import "./utils/extends";
+@import "./utils/mixins";
 
 .search {
   @extend .flex-between-center;
@@ -17,9 +18,14 @@
   input {
     outline: none;
     border: none;
+    width: 327px;
 
     &::placeholder {
-      color: $border-color-gray;
+      @include text (14px, 600, $primary-gray-color);
+    }
+
+    @include onTab {
+      width: 130px;
     }
 
     @include onPhone {

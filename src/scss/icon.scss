@@ -14,11 +14,7 @@
   }
 
   & img {
-    width: 25px;
-
-    @include onPhone {
-      width: 18px;
-    }
+    width: 15px;
   }
    
   &-info__info {
@@ -28,9 +24,9 @@
     bottom: 53%;
     font-size: 70%;
     color: #e2e6e9;
-    width: 15px;
-    height: 15px;
-    background: #eb0909;
+    width: 13px;
+    height: 13px;
+    background: #eb5757;
     border: 1px solid #fff;
     border-radius: 50%;
   }

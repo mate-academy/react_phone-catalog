@@ -16,7 +16,7 @@
     }
 
     & span {
-      color: $primary-gray-color;
+      @include text (12px, 600, $primary-gray-color);
     }
   }
 

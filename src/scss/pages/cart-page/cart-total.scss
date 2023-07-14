@@ -50,5 +50,22 @@
       background: $primary-dark-color;
       color: #fff;
     }
+
+    &--message {
+      position: absolute;
+      @extend .flex-center;
+      transition: right 0.8s ease;
+      width: 500px;
+      height: 100px;
+      border: 1px solid $border-color-gray;
+
+      @include onPhone {
+        width: 300px;
+      }
+
+      & span {
+        @include text (14px, 600, $primary-gray-color);
+      }
+    }
   }
 }

@@ -1,9 +1,15 @@
 @import "../utils/mixins";
+@import "../utils/variables";
 
 @import "./categories-item.scss";
 
 .categories {
   margin-bottom: 80px;
+
+  &__title {
+    @include text (32px, 700, $primary-dark-color);
+  }
+
   &__items {
     display: flex;
     gap: 16px;
