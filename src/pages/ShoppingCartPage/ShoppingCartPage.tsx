@@ -67,7 +67,7 @@ export const ShoppingCartPage: FC = () => {
             <div className={`shopping-cart__total-container shopping-cart__total-container--${theme}`}>
               <h1 className={`shopping-cart__sum shopping-cart__sum--${theme}`}>{`$${sumOfPrices}`}</h1>
               <p className="shopping-cart__number-of-items">
-                {`Total for ${quantityOfProductsInShoppingCart} items`}
+                {`Total for ${quantityOfProductsInShoppingCart} item${quantityOfProductsInShoppingCart > 1 ? 's' : ''}`}
               </p>
             </div>
             <button
