@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Product } from '../../types/Product';
 import { MainProductDetails } from '../MainProductDetails';
 import { goTop } from '../../helpers/goTop';
@@ -14,12 +14,14 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     { name: 'RAM', value: product.ram },
   ];
 
+  const location = useLocation();
+
   return (
     <div
       className="product-card"
     >
       <Link
-        to={`${product.phoneId}`}
+        to={location.pathname === '/' ? `phones/${product.phoneId}` : `${product.phoneId}`}
         className="product-card__picture"
         onClick={goTop}
       >
