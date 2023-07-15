@@ -1,6 +1,4 @@
-import {
-  useEffect, useMemo, useRef, useState,
-} from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import classnames from 'classnames';
 import { Product } from '../../../utils/types/Product';
@@ -20,7 +18,6 @@ type Props = {
 export const ProductDetailsPage: React.FC<Props> = ({ products }) => {
   const [details, setDetails] = useState<Details>();
   const { id } = useParams();
-  const refPrevId = useRef('');
   const [isLoading, setIsLoading] = useState(false);
 
   const currentProduct = useMemo(() => {
@@ -33,13 +30,7 @@ export const ProductDetailsPage: React.FC<Props> = ({ products }) => {
     }, 100);
 
     getDetails(id)
-      .then((response) => {
-        setDetails(response);
-        refPrevId.current = window.location.hash;
-      })
-      .catch(() => {
-        (window.location.hash = refPrevId.current);
-      })
+      .then((response) => setDetails(response))
       .finally(() => {
         clearInterval(Id);
         setIsLoading(false);
@@ -58,7 +49,12 @@ export const ProductDetailsPage: React.FC<Props> = ({ products }) => {
       </div>
       <div className={`details ${details && !isLoading ? 'block' : 'none'}`}>
         <PageNavigation />
-        <BlockTitle title={currentProduct?.name} subtitle={0} />
+        <BlockTitle
+          title={currentProduct?.name
+            ? currentProduct?.name
+            : 'The address is not correct'}
+          subtitle={0}
+        />
         <div className="details__blocks">
           {details && currentProduct
           && (
