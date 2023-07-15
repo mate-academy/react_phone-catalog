@@ -4,6 +4,7 @@
 
 .notification {
   @include flex-center;
+  align-self: center;
   max-height: 50px;
   border-radius: 10px;
   padding: 20px;

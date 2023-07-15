@@ -11,6 +11,7 @@ import { FavoritesPage } from './pages/FavoritesPage';
 import { ProductDetailsPage } from './pages/ProductDetailsPage';
 import { ProductsPage } from './pages/ProductsPage';
 import { BurgerMenu } from './components/BurgerMenu';
+import { Notification } from './components/Notification';
 
 const App = () => {
   const theme = useAppSelector(state => state.theme.value);
@@ -50,8 +51,16 @@ const App = () => {
               )}
             />
           </Route>
-          <Route path="/tablets" />
-          <Route path="/accessories" />
+          <Route
+            path="/tablets" 
+            element={
+              <Notification message="Tablets will be added soon"/>
+            }
+          />
+          <Route path="/accessories" element={
+              <Notification message="Accessories will be added soon"/>
+            }
+          />
           <Route path="/favorites" element={<FavoritesPage />} />
           <Route path="/shopping-cart" element={<ShoppingCartPage />} />
           <Route path="*" element={<NotFoundPage />} />
