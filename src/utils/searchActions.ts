@@ -22,7 +22,8 @@ const SortList = (list: Product[], sortBy: string | null) => {
 const filterByQuery = (list: Product[], query: string) => {
   return list.filter(product => product.name
     .toLocaleLowerCase()
-    .replaceAll(' ', '').includes(query.toLocaleLowerCase()));
+    .replaceAll(' ', '').includes(query.toLocaleLowerCase()
+      .replaceAll(' ', '')));
 };
 
 const sliceProductList = (list: Product[], page: string, perPage: string) => {

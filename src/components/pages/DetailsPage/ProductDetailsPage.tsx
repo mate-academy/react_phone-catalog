@@ -1,4 +1,6 @@
-import { useEffect, useMemo, useState } from 'react';
+import {
+  useEffect, useMemo, useRef, useState,
+} from 'react';
 import { useParams } from 'react-router-dom';
 import classnames from 'classnames';
 import { Product } from '../../../utils/types/Product';
@@ -18,6 +20,7 @@ type Props = {
 export const ProductDetailsPage: React.FC<Props> = ({ products }) => {
   const [details, setDetails] = useState<Details>();
   const { id } = useParams();
+  const refPrevId = useRef('');
   const [isLoading, setIsLoading] = useState(false);
 
   const currentProduct = useMemo(() => {
@@ -30,7 +33,13 @@ export const ProductDetailsPage: React.FC<Props> = ({ products }) => {
     }, 100);
 
     getDetails(id)
-      .then((response) => setDetails(response))
+      .then((response) => {
+        setDetails(response);
+        refPrevId.current = window.location.hash;
+      })
+      .catch(() => {
+        (window.location.hash = refPrevId.current);
+      })
       .finally(() => {
         clearInterval(Id);
         setIsLoading(false);
