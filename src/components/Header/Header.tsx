@@ -1,10 +1,14 @@
 import React from 'react';
 
-import { FavButton } from '../Buttons/FavButton';
+import { useSelector } from 'react-redux';
 import { CartButton } from '../Buttons/CardButton';
 import { Logo } from '../Logo/Logo';
 
+import favsIcon from '../../imgs/Favourites (Heart Like).svg';
+
 export const Header: React.FC = () => {
+  const favs = useSelector((state: any) => state.favorites);
+
   return (
     <div className="header" id="headerNavBar">
       <nav className="header__nav">
@@ -47,7 +51,11 @@ export const Header: React.FC = () => {
       </nav>
 
       <div className="header__buttons">
-        <FavButton />
+        <a href="/favorites">
+          <img src={favsIcon} alt="" />
+
+          {favs.length}
+        </a>
         <CartButton />
       </div>
     </div>

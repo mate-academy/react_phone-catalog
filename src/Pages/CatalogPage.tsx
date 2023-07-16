@@ -1,10 +1,14 @@
 import {
   useLocation, useParams, useSearchParams,
 } from 'react-router-dom';
-import { ChangeEvent, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Catalog } from '../components/Catalog/Catalog';
 
 import { Pagination } from '../components/Pagination/Pagination';
+import { Dropdown } from '../components/Dropdown/Dropdown';
+
+const FILTER_SORT = ['age', 'price', 'name'];
+const FILTER_QUANTITY = ['16', '8', '4'];
 
 export const CatalogPage: React.FC = () => {
   const location = useLocation();
@@ -17,7 +21,7 @@ export const CatalogPage: React.FC = () => {
   const [sort, setSort] = useState('');
   const [quantity, setQuantity] = useState(16);
 
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
 
   useEffect(() => {
     setSort(searchParams.get('sort') || 'age');
@@ -32,22 +36,6 @@ export const CatalogPage: React.FC = () => {
     );
   }
 
-  const onSortHandler = (e: ChangeEvent<HTMLSelectElement>) => {
-    const { value } = e.target;
-
-    setSearchParams({
-      sort: `${value}`,
-    });
-  };
-
-  const onQuantityHandler = (e: ChangeEvent<HTMLSelectElement>) => {
-    const { value } = e.target;
-
-    setSearchParams({
-      perPage: `${value}`,
-    });
-  };
-
   const onGetListLength = (number: number) => {
     setLiftedListLength(number);
   };
@@ -55,31 +43,8 @@ export const CatalogPage: React.FC = () => {
   return (
     <div className="container">
       <div className="filter">
-        <select
-          className="filter__select"
-          value={sort}
-          onChange={onSortHandler}
-        >
-          <option value="age">
-            Age
-          </option>
-          <option value="name">
-            Name
-          </option>
-          <option value="price">
-            Price
-          </option>
-        </select>
-
-        <select
-          className="filter__select"
-          value={quantity}
-          onChange={onQuantityHandler}
-        >
-          <option value="16">16</option>
-          <option value="8">8</option>
-          <option value="4">4</option>
-        </select>
+        <Dropdown list={FILTER_SORT} type="sort" />
+        <Dropdown list={FILTER_QUANTITY} type="perPage" />
       </div>
 
       <Catalog

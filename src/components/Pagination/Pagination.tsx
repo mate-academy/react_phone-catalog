@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import './Pagination.scss';
 import { Link, useSearchParams } from 'react-router-dom';
@@ -11,53 +11,60 @@ type Props = {
   currPage: number,
 };
 
-export const Pagination: React.FC<Props> = ({
-  total,
-  perPage,
-  currPage,
-}) => {
-  const [currentPage, setCurrentPage] = useState(1);
-
+export const Pagination: React.FC<Props> = ({ total, perPage, currPage }) => {
+  const [currentPage, setCurrentPage] = useState(currPage || 1);
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const list = Math.ceil(total / perPage);
-
-  const сurrentVisiblePages = [];
+  const totalPages = Math.ceil(total / perPage);
+  const visiblePages: number[] = [];
 
   useEffect(() => {
-    if (currPage) {
-      setCurrentPage(currPage);
-    }
+    setCurrentPage(currPage || 1);
   }, [currPage]);
 
-  if (list <= 1) {
+  if (totalPages <= 1) {
     return null;
   }
 
-  if (currPage > list) {
-    setSearchParams({
-      page: '1',
-    });
+  if (currPage > totalPages) {
+    setSearchParams({ page: '1' });
   }
 
-  for (let i = 1; i <= list; i += 1) {
-    сurrentVisiblePages.push(i);
+  for (let i = 1; i <= totalPages; i += 1) {
+    visiblePages.push(i);
   }
 
   const leftHandler = () => {
-    setCurrentPage(prev => prev - 1);
+    getSearchWith(searchParams, { page: `${currentPage - 1}` });
   };
 
   const rightHandler = () => {
-    setCurrentPage(prev => prev + 1);
+    setSearchParams({ page: `${currentPage + 1}` });
   };
+
+  let currentVisiblePages: number[];
+
+  if (currentPage > 3) {
+    currentVisiblePages = visiblePages.slice(currentPage - 3, currentPage + 1);
+  } else {
+    currentVisiblePages = visiblePages.slice(0, 4);
+  }
 
   return (
     <div className="pagination">
-      <ArrowButton direction="left" handler={leftHandler} />
+      {currentPage > 1
+        && (
+          <Link
+            to={{
+              search: getSearchWith(searchParams, { page: `${currentPage + 1}` }),
+            }}
+          >
+            <ArrowButton direction="left" handler={leftHandler} />
+          </Link>
+        )}
 
       <ul className="pagination__list">
-        {сurrentVisiblePages.map(number => (
+        {currentVisiblePages.map(number => (
           <li
             key={number}
             className={classNames('pagination__item', {
@@ -78,7 +85,15 @@ export const Pagination: React.FC<Props> = ({
         ))}
       </ul>
 
-      <ArrowButton direction="right" handler={rightHandler} />
+      {currentPage < Math.max(...visiblePages) && (
+        <Link
+          to={{
+            search: getSearchWith(searchParams, { page: `${currentPage + 1}` }),
+          }}
+        >
+          <ArrowButton direction="right" handler={rightHandler} />
+        </Link>
+      )}
     </div>
   );
 };

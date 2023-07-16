@@ -9,8 +9,9 @@ import { AddCartButton } from '../Buttons/AddCartButton';
 import { FavButton } from '../Buttons/FavButton';
 
 import './cardPage.scss';
-import { getDescription } from '../../api/getData';
+import { getDescription, getProducts } from '../../api/getData';
 import { PhoneInfo } from '../../type/PhoneInfo';
+import { Phone } from '../../type/Phone';
 
 const TECH_SPECS: string[] = [
   'screen',
@@ -25,13 +26,23 @@ const TECH_SPECS: string[] = [
 export const CardPage: React.FC = () => {
   const params = useParams();
 
-  const [description, setDescription] = useState<PhoneInfo>();
+  const [currentProduct, setProduct] = useState<Phone | null>(null);
+  const [description, setDescription] = useState<PhoneInfo | null>(null);
   const [currentMainPhoto, setCurrentMainPhoto] = useState('');
 
-  const getData = async (indemnificator: string) => {
-    const response = await getDescription(indemnificator);
+  const getData = async (id: string) => {
+    try {
+      const responseForDescription = await getDescription(id);
+      const responseForProductList = await getProducts();
 
-    setDescription(response);
+      const getCurrentProduct = responseForProductList
+        .find(product => product.itemId === id) || null;
+
+      setDescription(responseForDescription);
+      setProduct(getCurrentProduct);
+    } catch {
+      throw new Error('Didn\'t catch data');
+    }
   };
 
   useEffect(() => {
@@ -44,7 +55,7 @@ export const CardPage: React.FC = () => {
     return str.charAt(0).toUpperCase() + str.slice(1);
   }
 
-  if (description === undefined) {
+  if (description === null || currentProduct === null) {
     return null;
   }
 
@@ -67,11 +78,11 @@ export const CardPage: React.FC = () => {
             <ul className="photos__list">
               {description.images.map(img => (
                 <li
-                  onClick={() => onPhotoHandler(img)}
                   className="photos__item"
                   key={img}
                 >
                   <img
+                    onClick={() => onPhotoHandler(img)}
                     src={correctSrc(img)}
                     alt=""
                     className="photos__link"
@@ -98,7 +109,11 @@ export const CardPage: React.FC = () => {
 
                 <ul className="description__colors-list">
                   {description.colorsAvailable.map(color => (
-                    <li className="description__colors-item" key={color}>
+                    <li
+                      className={classNames('description__colors-item',
+                        { active__color: description.color === color })}
+                      key={color}
+                    >
                       <Link
                         className={`description__color ${color}`}
                         to={`/phones/${description.namespaceId}-${description.capacity.toLocaleLowerCase()}-${color}`}
@@ -143,8 +158,8 @@ export const CardPage: React.FC = () => {
               </div>
 
               <div className="description__buttons">
-                <AddCartButton />
-                <FavButton />
+                <AddCartButton phone={currentProduct} />
+                <FavButton phone={currentProduct} />
               </div>
 
               <ul className="description__info">

@@ -27,7 +27,7 @@ export const Catalog: React.FC<Props> = ({
 
   const data = async () => {
     try {
-      await setFetchingData(true);
+      setFetchingData(true);
 
       const result = await getProducts();
 
@@ -35,11 +35,11 @@ export const Catalog: React.FC<Props> = ({
         element.category === `${category}` && element.capacity.length > 0
       ));
 
-      setCatalog(await getCatalog);
+      setCatalog(getCatalog);
 
-      await onGetListLength(getCatalog.length);
+      onGetListLength(getCatalog.length);
 
-      await setFetchingData(false);
+      setFetchingData(false);
     } catch {
       throw new Error('Hello, Mario, HotPrices comp');
     }
@@ -73,7 +73,7 @@ export const Catalog: React.FC<Props> = ({
             <LinearProgress color="secondary" />
           </div>
         )
-        : listOfResults.map(item => (
+        : listOfResults.map((item: Phone) => (
           <Card card={item} key={item.id} />
         ))}
     </div>

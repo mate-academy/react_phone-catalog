@@ -5,6 +5,7 @@ import {
 import { Home } from '../Pages/Home';
 import { CatalogPage } from '../Pages/CatalogPage';
 import { CardPage } from '../components/cardPage/CardPage';
+import { Cart } from '../components/Cart/Cart';
 
 export const appRoutes = createBrowserRouter([
   {
@@ -18,5 +19,9 @@ export const appRoutes = createBrowserRouter([
   {
     path: '/phones/:id',
     element: <CardPage />,
+  },
+  {
+    path: '/cart',
+    element: <Cart />,
   },
 ]);

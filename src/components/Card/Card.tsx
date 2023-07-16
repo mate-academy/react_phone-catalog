@@ -38,7 +38,9 @@ export const Card: React.FC<Props> = ({ card }) => {
             className="card__img"
           />
         </div>
+
         <h2 className="card__name">{name}</h2>
+
         <h3 className="card__price">
           $
           {price}
@@ -61,8 +63,8 @@ export const Card: React.FC<Props> = ({ card }) => {
       </div>
 
       <div className="card__menu">
-        <AddCartButton />
-        <FavButton />
+        <AddCartButton phone={card} />
+        <FavButton phone={card} />
       </div>
     </div>
   );
