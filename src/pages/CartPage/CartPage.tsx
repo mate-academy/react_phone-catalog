@@ -8,41 +8,6 @@ import { CartItem } from '../../components/CartItem/CartItem';
 export const CartPage: React.FC = () => {
   const { isLoading, cart } = useContext(Context);
   const [isOpenModal, setIsOpenModal] = useState(false);
-  /* const [cartList, setCartList] = useState<Product[]>([]);
-
-  function getUniqueItems(arr: Product[], getId: (item: Product) => string) {
-    const visibleItems: Record<string, boolean> = {};
-
-    return arr.filter((item) => {
-      const key = getId(item);
-
-      if (visibleItems[key]) {
-        return false;
-      }
-
-      visibleItems[key] = true;
-
-      return true;
-    });
-  }
-
-  const cartItems = () => {
-    const list = getUniqueItems(cart, (item: Product) => item.id);
-
-    setCartList(list);
-  };
-
-  useEffect(() => {
-    cartItems();
-  }, [cart.length]); */
-
-  /* const totalPrice = () => {
-    const currentItems = JSON.parse(localStorage.getItem('cart') || '[]');
-
-    return currentItems.reduce(
-      (sum: number, current: Product) => sum + current.price, 0,
-    );
-  }; */
 
   const totalPrice = cart.length === 0 ? 0 : cart.map((item) => {
     const priceAfterDiscount = item.price * ((100 - item.discount) / 100);

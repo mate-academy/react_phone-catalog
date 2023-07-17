@@ -3,9 +3,9 @@ import classNames from 'classnames';
 import './BannerSlider.scss';
 
 const BannerImages = [
-  'img/banner1.jpg',
-  'img/banner2.jpg',
-  'img/banner3.jpg',
+  'img/Banner1.jpg',
+  'img/Banner2.jpg',
+  'img/Banner3.jpg',
 ];
 
 export const BannerSlider: React.FC = () => {

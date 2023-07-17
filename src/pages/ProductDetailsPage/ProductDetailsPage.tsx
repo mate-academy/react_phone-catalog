@@ -28,7 +28,6 @@ export const ProductDetailsPage: React.FC = () => {
   } = useContext(Context);
   const { productId = '' } = useParams();
   const location = useLocation();
-  // const [productInfo, setProductInfo] = useState<ProductDetails>();
   const [selectedImage, setSelectedImage] = useState(
     selectedProduct?.images[0],
   );

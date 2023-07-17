@@ -41,22 +41,6 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   const isInFavs = favorite.length > 0
     ? favorite.find(item => item.id === id) : false;
 
-  const getProductLink = (searchProduct: Product) => {
-    switch (searchProduct.type) {
-      case 'phone':
-        return `../phones/${searchProduct.id}`;
-
-      case 'tablet':
-        return `../tablets/${searchProduct.id}`;
-
-      case 'accessories':
-        return `../accessories/${searchProduct.id}`;
-
-      default:
-        return '';
-    }
-  };
-
   const currentProduct = products.find(
     productCard => productCard.id === id,
   );
@@ -87,7 +71,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     <div className="product-card">
       <div className="product-card__container" data-cy="cardsContainer">
         <Link
-          to={getProductLink(product)}
+          to={`/${product.type}s/${product.id}`}
           className="product-card__link"
           onClick={() => currentProduct && getCardDetails(currentProduct.id)}
         >
