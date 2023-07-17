@@ -1,0 +1,21 @@
+@import "../../main.scss";
+
+.backButton {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+  padding: 10px 20px;
+  width: 50px;
+  height: 30px;
+  background-color: $color-white;
+  background-image: url("../../images/ArrowLeft.svg");
+  background-position: left;
+  background-repeat: no-repeat;
+  border: 0;
+  color: $color-secondary;
+  cursor: pointer;
+
+  &:hover {
+    color: $color-primary;
+  }
+}

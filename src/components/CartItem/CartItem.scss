@@ -1,0 +1,121 @@
+@import "../../main.scss";
+
+.cart {
+  &__empty-title {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+    padding-top: 16px;
+    color: $color-primary;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    border: 1px solid $color-elements;
+    transition: all 0.5s;
+    padding: 24px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &:hover {
+      box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+    }
+
+    &__icon {
+      background-color: $color-white;
+      border: none;
+      transition: all 0.5s;
+      cursor: pointer;
+
+      &--close {
+        display: block;
+        background-position: center;
+        background-repeat: no-repeat;
+        @include squareSize(16px);
+        border: 1px solid $color-icons;
+        background-image: url(../../images/Close.svg);
+      }
+    }
+  }
+
+  &__image {
+    height: 100%;
+    &--container {
+      @include squareSize(80px);
+      padding: 7px;
+    }
+  }
+
+  &__item-title {
+    width: 295px;
+  }
+
+  &__buttons {
+    display: flex;
+    align-items: center;
+
+    &__icon {
+      border: 1px solid $color-icons;
+      transition: all 0.5s;
+      background-color: $color-white;
+      cursor: pointer;
+
+      &:hover {
+        border-color: $color-icons;
+      }
+
+      &:hover:disabled {
+        border-color: $color-elements;
+      }
+
+      &--substract {
+        display: block;
+        background-position: center;
+        background-repeat: no-repeat;
+        @include squareSize(32px);
+        border: 1px solid $color-icons;
+        background-image: url(../../images/Minus.svg);
+      }
+
+      &--add {
+        display: block;
+        background-position: center;
+        background-repeat: no-repeat;
+        @include squareSize(32px);
+        border: 1px solid $color-icons;
+        background-image: url(../../images/Plus.svg);
+      }
+    }
+  }
+
+  &__quantity {
+    min-width: 32px;
+    width: 100%;
+    text-align: center;
+    color: #000;
+  }
+
+  &__price {
+    min-width: 60px;
+    @extend %h2-text;
+    color: $color-primary;
+  }
+
+  &__empty-phrase {
+    width: 100%;
+    margin-top: 30px;
+    @extend %h1-text;
+    text-align: center;
+    color: $color-primary;
+  }
+}

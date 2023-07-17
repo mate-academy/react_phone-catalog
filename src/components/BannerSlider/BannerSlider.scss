@@ -1,0 +1,70 @@
+@import "../../main.scss";
+
+.banner {
+  &__container {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 8px;
+  }
+
+  &__images {
+    display: flex;
+    height: 400px;
+    order: 2;
+  }
+
+  &__image {
+    opacity: 0;
+    height: 0;
+    width: 0;
+    transition: opacity 0.3s;
+
+    &--active {
+      opacity: 1;
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  &__button {
+    flex: 0 0 32px;
+    border: 1px solid $color-icons;
+    background-color: $color-white;
+    transition: all 0.3s ease;
+
+    &:hover {
+      border: 1px solid $color-primary;
+    }
+
+    &--prev {
+      order: 1;
+    }
+
+    &--next {
+      order: 3;
+    }
+  }
+
+  &__pagination-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    height: 24px;
+    margin-bottom: 72px;
+  }
+
+  &__button-pg {
+    border: 1px solid transparent;
+    transition: all 0.3s;
+    background-color: $color-elements;
+
+    &:hover {
+      border: 1px solid $color-primary;
+    }
+
+    &--active {
+      background-color: $color-primary;
+    }
+  }
+}

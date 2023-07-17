@@ -1,0 +1,259 @@
+@import "../../main.scss";
+
+.product-details {
+  margin-bottom: 80px;
+
+  &__title {
+    @extend %h1-text;
+    margin-bottom: 40px;
+    color: $color-primary;
+  }
+
+  &__content {
+    margin-bottom: 80px;
+  }
+
+  &__top {
+    display: grid;
+    grid-template-columns: repeat(24, 1fr);
+    column-gap: 16px;
+    margin-bottom: 80px;
+  }
+
+  &__slider {
+    grid-column: 1 / 13;
+  }
+
+  &__action {
+    grid-column: 14 / 21;
+  }
+
+  &__colors {
+    margin-bottom: 48px;
+  }
+
+  &__small-text {
+    @extend %small-text;
+    color: $color-secondary;
+    margin-bottom: 8px;
+  }
+
+  &__select-buttons {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__select {
+    border-bottom: 1px solid $color-elements;
+    padding-bottom: 24px;
+    &:first-child {
+      margin-bottom: 24px;
+    }
+
+    margin-bottom: 32px;
+  }
+
+  &__prices {
+    border-bottom: 1px solid $color-elements;
+    padding-bottom: 4px;
+    margin-bottom: 16px;
+  }
+
+  &__price {
+    @extend %h2-text;
+    color: $color-primary;
+    margin-right: 8px;
+  }
+
+  &__discount {
+    @extend %h2-text;
+    color: $color-secondary;
+    text-decoration: line-through;
+  }
+
+  &__actions-button {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 32px;
+  }
+
+  &__features {
+    display: flex;
+    justify-content: space-between;
+    text-transform: capitalize;
+    width: 100%;
+  }
+
+  &__list {
+    @extend %small-text;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    list-style: none;
+  }
+
+  &__key {
+    color: $color-secondary;
+  }
+
+  &__value {
+    color: $color-primary;
+    text-align: right;
+  }
+
+  &__botom {
+    display: grid;
+    grid-template-columns: repeat(24, 1fr);
+    column-gap: 16px;
+  }
+
+  &__subtitle {
+    @extend %h2-text;
+    padding-bottom: 16px;
+    border-bottom: 1px solid $color-elements;
+    margin-bottom: 32px;
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__info-title {
+    @extend %h3-text;
+    padding-bottom: 16px;
+    color: $color-primary;
+  }
+
+  &__info-text {
+    color: $color-secondary;
+  }
+
+  &__description {
+    grid-column: 1 / 13;
+  }
+
+  &__tech-specs {
+    grid-column: 14 / 25;
+  }
+}
+
+.slider {
+  display: flex;
+  width: 100%;
+  height: 464px;
+  gap: 16px;
+
+  &__col {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__button {
+    border: 1px solid $color-icons;
+    height: 80px;
+    width: 80px;
+    background-size: contain;
+    transition: all 0.3s;
+
+    &:hover {
+      border: 1px solid $color-primary;
+    }
+
+    &--active {
+      border: 1px solid $color-primary;
+    }
+  }
+
+  &__main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1 1 auto;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: 0.2s ease;
+  }
+}
+
+.colors {
+  list-style: none;
+
+  &__item-circle {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $color-elements;
+    border-radius: 36px;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &--is-active {
+      border-color: $color-primary;
+    }
+
+    &:hover {
+      border-color: $color-primary;
+    }
+  }
+
+  &__item {
+    width: 28px;
+    height: 28px;
+    border: 2px solid $color-white;
+    border-radius: 36px;
+
+    &--pink {
+      background-color: #fcdbc1;
+    }
+
+    &--grey {
+      background-color: #5f7170;
+    }
+
+    &--black {
+      background-color: #4c4c4c;
+    }
+
+    &--white {
+      background-color: #f0f0f0;
+    }
+
+  }
+}
+
+.capacity {
+  &__list {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 32px;
+    padding-bottom: 24px;
+
+    border-bottom: 1px solid $color-elements;
+    list-style-type: none;
+  }
+
+  &__item {
+    padding: 8px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $color-primary;
+    background-color: $color-white;
+    border: 1px solid $color-icons;
+
+    transition: all 0.3s;
+    cursor: pointer;
+
+    &:hover {
+      border-color: $color-primary;
+    }
+
+    &--is-active {
+      color: $color-white;
+      background-color: $color-primary;
+    }
+  }
+}

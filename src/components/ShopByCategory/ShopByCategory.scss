@@ -1,0 +1,49 @@
+@import "../../main.scss";
+
+.categories {
+  margin-bottom: 80px;
+
+  &__title {
+    @extend %h1-text;
+    margin-bottom: 24px;
+  }
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__image {
+    @include squareSize(368px);
+    margin-bottom: 14px;
+    object-fit: scale-down;
+    background-position: bottom right;
+  }
+
+  &__item {
+    text-decoration: none;
+  }
+
+  &__name {
+    @extend %h3-text;
+    margin-bottom: 4px;
+    color: $color-primary;
+  }
+
+  &__count {
+    color: $color-secondary;
+  }
+
+  &__item-container {
+    transition: all 0.5s;
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(0.95);
+    }
+
+    &:hover .categories__image {
+      box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+    }
+  }
+}

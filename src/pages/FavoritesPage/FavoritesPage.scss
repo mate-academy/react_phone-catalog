@@ -1,0 +1,33 @@
+@import "../../main.scss";
+
+.favourites {
+  margin-bottom: 80px;
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 40px;
+    column-gap: 16px;
+  }
+
+  &__top {
+    margin: 25px 0 40px;
+  }
+
+  &__title {
+    margin-bottom: 8px;
+  }
+
+  &__empty-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @extend %h2-text;
+    color: $color-secondary;
+    margin-bottom: 40px;
+  }
+
+  &__count {
+    margin-bottom: 40px;
+    color: $color-secondary;
+  }
+}

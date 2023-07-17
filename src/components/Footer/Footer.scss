@@ -1,0 +1,55 @@
+@import "../../main.scss";
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 96px;
+  box-sizing: border-box;
+  border-top: 1px solid $color-elements;
+
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1136px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  &__nav {
+    display: flex;
+    gap: 64px;
+  }
+
+  &__link {
+    @extend %uppercase-text;
+    color: $color-secondary;
+    text-decoration: none;
+  }
+}
+
+.button-top {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  cursor: pointer;
+  font-family: "Mont", arial, helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  text-decoration: none;
+
+  &__text {
+    color: $color-secondary;
+  }
+
+  &__icon {
+    display: block;
+    background-position: center;
+    background-repeat: no-repeat;
+    @include squareSize(32px);
+    border: 1px solid $color-icons;
+    background-image: url(../../images/ArrowUp.svg);
+  }
+}

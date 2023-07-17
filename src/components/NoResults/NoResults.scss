@@ -1,0 +1,37 @@
+@import "../../main.scss";
+
+.noresults {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  &__title {
+    @extend %h2-text;
+    text-transform: uppercase;
+    color: $color-secondary;
+    margin-bottom: 40px;
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    @extend %buttons-text;
+
+    width: 176px;
+    height: 40px;
+    background-color: $color-primary;
+    color: $color-white;
+    border: none;
+    outline: none;
+
+    &:hover {
+      color: $color-white;
+      background-color: $color-primary;
+      box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+    }
+  }
+}
