@@ -44,15 +44,6 @@ export const ProductDetailsPage: React.FC = () => {
 
   const newPrice = product ? priceWithDiscount(product) : 0;
 
-  const featuresShort = {
-    keys: ['screen', 'resolution', 'processor', 'RAM'],
-    values: [
-      `${selectedProduct?.display.screenSize}`,
-      `${selectedProduct?.display.screenResolution}`,
-      `${selectedProduct?.hardware.cpu}`,
-      `${selectedProduct?.storage.ram}`],
-  };
-
   const featuresLong = {
     keys: ['screen', 'resolution', 'processor', 'RAM', 'built in memory',
       'android', 'bluetooth', 'battery'],
@@ -226,7 +217,7 @@ export const ProductDetailsPage: React.FC = () => {
 
                 <div className="product-details__features">
                   <ul className="product-details__list">
-                    {featuresShort.keys.map((key) => (
+                    {featuresLong.keys.slice(0, 4).map((key) => (
                       <li key={key} className="product-details__key">
                         {key}
                       </li>
@@ -234,7 +225,7 @@ export const ProductDetailsPage: React.FC = () => {
                   </ul>
 
                   <ul className="product-details__list">
-                    {featuresShort.values.map((value) => (
+                    {featuresLong.values.slice(0, 4).map((value) => (
                       <li key={value} className="product-details__value">
                         {value}
                       </li>

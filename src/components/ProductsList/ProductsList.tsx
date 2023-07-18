@@ -27,13 +27,13 @@ export const ProductsList: React.FC<Props> = ({ title, products }) => {
   const getSortedProducts = (productsList: Product[]) => {
     let sortedProducts = [...productsList];
 
-    if (sort === 'age') {
+    if (sort === 'newest') {
       sortedProducts = sortedProducts.sort(
         (product1, product2) => product1.age - product2.age,
       );
     }
 
-    if (sort === 'name') {
+    if (sort === 'alphabetically') {
       sortedProducts = sortedProducts.sort(
         (product1, product2) => product1.name.localeCompare(product2.name),
       );
