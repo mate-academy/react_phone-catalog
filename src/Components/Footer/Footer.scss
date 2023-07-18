@@ -1,0 +1,142 @@
+html {
+  scroll-behavior: smooth;
+}
+
+.header-position {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+}
+
+.footer {
+  height: 96px;
+  box-shadow: 0px -1px 0px 0px #E2E6E9;
+  background: #FFFFFF;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 90px;
+
+  &__FirstChild {
+    display: flex;
+    align-items: center;
+    gap: 64px;
+
+  }
+
+  &__FirstChild-nav {
+    &-list {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      list-style: none;
+      font-size: 12px;
+      font-family: "Mont-Regular", sans-serif;
+      font-weight: 700;
+      text-transform: uppercase;
+      line-height: 5.5;
+      letter-spacing: 0.48;
+      word-wrap: break-word;
+      overflow: hidden;
+    }
+
+    &-link {
+      display: flex;
+      position: relative;
+      text-decoration: none;
+      color: #89939A;
+      transition: .3s;
+
+      &:hover {
+        color: #313237;
+      }
+    }
+  }
+
+  &__FirstChild-nav-item:not(:last-child) {
+
+    margin-right: 64px;
+  }
+
+  &__LastChild-arrow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    background: #FFF;
+    border: 1px solid #B4BDC3;
+    transition: .3s;
+
+    &:hover {
+      box-shadow: 1px 0px 0px 0px #b7bcc0;
+      box-shadow: -1px 0px 0px 0px #b7bcc0;
+    }
+
+    &:focus {
+      box-shadow: 1px 0px 0px 0px #747779;
+      box-shadow: -1px 0px 0px 0px #747779;
+
+    }
+
+    &:active {
+      box-shadow: 1px 0px 0px 0px #000000;
+      box-shadow: -1px 0px 0px 0px #000000;
+
+
+    }
+
+  }
+}
+
+.arrow-svg {
+  cursor: pointer;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 20px;
+  width: 23px;
+}
+
+.arrow-button {
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  cursor: pointer;
+}
+
+.logoImage {
+  height: 24px;
+  width: 40px;
+  background-repeat: no-repeat;
+  transition: .3s;
+
+  &:hover {
+    height: 32px;
+    width: 48px;
+    cursor: pointer;
+  }
+}
+
+.footer__ThridChild {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.footer-p {
+  color: #89939A;
+  text-align: right;
+  font-size: 12px;
+  font-family: "Mont-Regular", sans-serif;
+  font-weight: 600;
+}
+
+.is-activ {
+  display: flex;
+  position: relative;
+  text-decoration: none;
+  color: #313237;
+  transition: .3s;
+}

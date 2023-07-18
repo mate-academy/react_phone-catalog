@@ -1,0 +1,18 @@
+.mainBlockForBasket {
+  margin: 40px 0;
+
+  &-active {
+    height: 55vh;
+  }
+}
+
+.h1ForBasket {
+  margin: 16px 105px;
+  color: var(--gray-primary, #313237);
+  font-family: "Mont-Regular", sans-serif;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -0.32px;
+}

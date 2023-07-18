@@ -1,0 +1,120 @@
+.shopByCategory {
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto 80px;
+}
+
+.shopByCategory__title {
+  color: #313237;
+  font-size: 32px;
+  font-family: "Mont-Regular", sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.32px;
+}
+
+.main-container {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.shopByCategory__container {
+  display: flex;
+  flex-direction: column;
+}
+
+.shopByCategory__container-image-1 {
+  overflow: hidden;
+  background-color: #FCDBC1;
+  position: relative;
+  height: 390px;
+  width: 390px;
+  border: 1px solid black;
+  transition: .3s;
+
+  &:hover {
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+  }
+}
+
+.shopByCategory__container-image-2 {
+  background-color: #89939A;
+  overflow: hidden;
+  position: relative;
+  height: 390px;
+  width: 390px;
+  border: 1px solid black;
+  transition: .3s;
+
+  &:hover {
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+  }
+
+}
+
+.shopByCategory__container-image-3 {
+  background-color: rgba(92, 16, 36, 0.736);
+  overflow: hidden;
+  position: relative;
+  height: 390px;
+  width: 390px;
+  border: 1px solid black;
+  transition: .3s;
+
+  &:hover {
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+  }
+
+}
+
+.Images-for-shopByCategory-1 {
+  position: absolute;
+  bottom: -20%;
+  right: -25%;
+  height: 470px;
+  object-fit: contain;
+}
+
+.Images-for-shopByCategory-2 {
+  position: absolute;
+  bottom: -23%;
+  right: -25%;
+  height: 470px;
+  object-fit: contain;
+}
+
+.Images-for-shopByCategory-3 {
+  position: absolute;
+  bottom: -3%;
+  right: -106%;
+  height: 370px;
+  object-fit: contain;
+}
+
+// .Images-for-shopByCategory-3 {
+//   height: 490px;
+
+// }
+
+.shopByCategory-text {
+  color: #313237;
+  font-size: 20px;
+  font-weight: 600;
+  font-family: "Mont-Regular", sans-serif;
+  margin-top: 8px;
+}
+
+.quantity-models {
+  color: #89939A;
+  font-size: 14px;
+  font-family: "Mont-Regular", sans-serif;
+  font-weight: 500;
+  line-height: 21px;
+  margin: 0;
+}
+
+.text-container {
+  display: flex;
+  flex-direction: column;
+}
