@@ -1,0 +1,28 @@
+@import "../../styles/global-imports";
+
+.GoBackButton {
+  display: flex;
+  align-items: center;
+
+  @extend %small-text;
+
+  background-color: transparent;
+
+  color: $c-secondary;
+
+  cursor: pointer;
+
+  @include hover(color, $c-primary);
+
+  &::before {
+    content: "";
+    position: relative;
+    right: 4px;
+    width: 16px;
+    height: 16px;
+    box-sizing: border-box;
+    display: inline-block;
+    background: no-repeat center url("../../images/icons/Arrow.svg");
+    transform: rotate(180deg);
+  }
+}

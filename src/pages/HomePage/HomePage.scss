@@ -1,0 +1,70 @@
+@import "../../styles/global-imports";
+
+.HomePage {
+  padding-top: 40px;
+
+  &__carousel-container {
+    margin-bottom: 72px;
+  }
+
+  &__shop-by-category {
+    & > h1 {
+      position: static;
+      margin-bottom: 24px;
+    }
+
+    &-container {
+      display: flex;
+      gap: 16px;
+
+      & > li {
+        position: relative;
+        max-width: 368px;
+
+        flex-grow: 1;
+      }
+
+      & > li:first-child > a {
+        background-color: #f8dbc1;
+        background-image: url("../../images/category-phones.png");
+      }
+
+      & > li:nth-child(2) > a {
+        background-color: #8d8d92;
+        background-image: url("../../images/category-tablets.png");
+      }
+
+      & > li:nth-child(3) > a {
+        background-color: #973d5f;
+        background-image: url("../../images/category-accessories.png");
+      }
+
+      & > li > a > h3 {
+        position: absolute;
+        bottom: 25px;
+
+        width: 100%;
+        padding-top: 24px;
+      }
+
+      & > li > p {
+        display: inline-block;
+        margin-top: 54px;
+
+        @extend %body-text;
+        color: $c-secondary;
+      }
+    }
+
+    &-link {
+      height: 368px;
+      padding-right: 100%;
+
+      background: no-repeat right bottom;
+    }
+  }
+
+  &__brand-new {
+    margin-bottom: 0;
+  }
+}

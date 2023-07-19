@@ -1,0 +1,92 @@
+@import "../../styles/global-imports";
+
+.DropdownSelect {
+  display: inline-block;
+  width: 176px;
+
+  &__label {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+
+    @extend %small-text;
+    color: $c-secondary;
+
+    & > ul {
+      position: absolute;
+      width: 100%;
+      margin-top: 4px;
+      padding-block: 8px;
+
+      box-sizing: border-box;
+
+      border: 1px solid $c-elements;
+      box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
+      background-color: $c-white;
+
+      opacity: 0;
+      pointer-events: none;
+
+      z-index: 1;
+
+      transform: translateY(-20px);
+
+      transition: opacity $effect-duration, transform $effect-duration;
+
+      & > li {
+        @extend %body-text;
+        color: $c-secondary;
+        cursor: pointer;
+
+        transition: color $effect-duration, background-color $effect-duration;
+
+        &:hover {
+          color: $c-primary;
+
+          background-color: $c-background;
+        }
+
+        & > a {
+          width: 100%;
+          padding: 6px 12px 5px;
+
+          box-sizing: border-box;
+
+          font-family: inherit;
+          color: inherit;
+          vertical-align: baseline;
+        }
+      }
+    }
+  }
+
+  &__select {
+    width: 100%;
+    height: 40px;
+    margin-top: 4px;
+    padding: 10px 12px 9px;
+
+    box-sizing: border-box;
+    @extend %buttons;
+
+    color: $c-primary;
+
+    border: 1px solid $c-icons;
+    cursor: pointer;
+    appearance: none;
+
+    background: no-repeat url("../../images/icons/arrow-down.svg");
+    background-position: right 12px top 12px;
+  }
+
+  &.is-active > label > &__select {
+    background-image: url("../../images/icons/arrow-up.svg");
+  }
+
+  &.is-active > label > ul {
+    opacity: 1;
+    pointer-events: all;
+
+    transform: translateY(0);
+  }
+}

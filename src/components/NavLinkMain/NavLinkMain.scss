@@ -1,0 +1,56 @@
+@import "../../styles/global-imports";
+
+.NavLinkMain {
+  position: relative;
+
+  color: $c-secondary;
+
+  transition: all $effect-duration;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+
+    display: block;
+    height: 3px;
+    width: 100%;
+
+    opacity: 0;
+
+    background-color: $c-primary;
+
+    transition: opacity $effect-duration;
+  }
+
+  &:hover,
+  &.is-active {
+    color: $c-primary;
+
+    &::after {
+      opacity: 1;
+    }
+  }
+
+  &--text {
+    padding: 27px 0 26px;
+  }
+
+  &--cart,
+  &--favourite {
+    width: 64px;
+    height: 64px;
+
+    box-shadow: -1px 0 0 0 $c-elements;
+
+    background: no-repeat center;
+  }
+
+  &--favourite {
+    background-image: url("../../images/icons/Favourites.svg");
+  }
+
+  &--cart {
+    background-image: url("../../images/icons/Cart.svg");
+  }
+}

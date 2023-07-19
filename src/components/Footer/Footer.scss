@@ -1,0 +1,46 @@
+@import "../../styles/global-imports";
+
+.Footer {
+  padding-block: 16px;
+  @include contentPaddingInline;
+
+  box-shadow: 0 -1px 0 0 $c-elements;
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__list {
+    display: flex;
+    gap: 64px;
+  }
+
+  &__list-item {
+    @extend %uppercase;
+
+    color: $c-secondary;
+
+    & a {
+      padding: 10px;
+
+      @include hover(color, $c-primary);
+    }
+  }
+
+  &__anchor {
+    display: flex;
+    align-items: center;
+  }
+
+  &__anchor-text {
+    margin-right: 16px;
+
+    @extend %small-text;
+
+    color: $c-secondary;
+
+    user-select: none;
+  }
+}

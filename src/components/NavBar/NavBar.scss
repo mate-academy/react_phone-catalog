@@ -1,0 +1,13 @@
+@import "../../styles/global-imports";
+
+.Navbar {
+  &__list {
+    display: flex;
+    align-items: center;
+    gap: 64px;
+  }
+
+  &__item {
+    @extend %uppercase;
+  }
+}

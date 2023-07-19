@@ -1,0 +1,10 @@
+.section {
+  position: relative;
+  margin-bottom: 80px;
+
+  &__title {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+}

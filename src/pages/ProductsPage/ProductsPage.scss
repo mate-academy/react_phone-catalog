@@ -1,0 +1,44 @@
+@import "../../styles/global-imports";
+
+.ProductsPage {
+  padding-top: 24px;
+
+  &__breadcrumbs {
+    margin-bottom: 40px;
+  }
+
+  &__title {
+    margin-bottom: 40px;
+
+    & > h1 {
+      margin-bottom: 8px;
+    }
+
+    & > p {
+      @extend %body-text;
+
+      color: $c-secondary;
+    }
+  }
+
+  &__actions {
+    display: inline-block;
+    margin-bottom: 24px;
+
+    & > *:first-child {
+      margin-right: 16px;
+    }
+
+    &.disabled .DropdownSelect__select {
+      pointer-events: none;
+
+      color: $c-icons;
+
+      border-color: $c-elements;
+    }
+  }
+
+  &__product-list {
+    margin-bottom: 40px;
+  }
+}

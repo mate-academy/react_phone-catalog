@@ -1,0 +1,17 @@
+@import "./global-imports";
+@import "./blocks/section.scss";
+
+html {
+  scroll-behavior: smooth;
+}
+
+a {
+  display: inline-block;
+  vertical-align: middle;
+
+  color: $c-secondary;
+}
+
+img {
+  vertical-align: middle;
+}
