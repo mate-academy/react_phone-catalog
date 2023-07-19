@@ -76,8 +76,13 @@ export const CartPage: React.FC = () => {
                     onClick={() => editCartItem(item, -1)}
                     className="cart__item--action"
                     type="submit"
+                    style={{
+                      pointerEvents: item.quantity === 1
+                        ? 'none'
+                        : 'all',
+                    }}
                   >
-                    <img src="assests/images/Minus.svg" alt="icon minus" />
+                    <img src={`assests/images/${item.quantity === 1 ? 'Minus-disabled' : 'Minus'}.svg`} alt="icon minus" />
                   </button>
                   <span className="cart__item--quantity">{item.quantity}</span>
                   <button

@@ -46,6 +46,7 @@
     &--quantity {
       width: 15px;
       text-align: center;
+      @include text(14px, 500, $primary-dark-color);
     }
 
     &--panel {
