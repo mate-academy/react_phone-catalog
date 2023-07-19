@@ -1,6 +1,7 @@
 import { Route, Routes, useLocation } from 'react-router-dom';
 import './App.scss';
 import { useEffect } from 'react';
+import { FavoriteContextProvider } from './FavoriteContext';
 import { HomePAge } from './Components/Pages/HomePage/HomePage';
 import { Header } from './Components/Header/Header';
 import { NotFoundPage } from './Components/Pages/NotFoundPage/NotFoundPage';
@@ -21,54 +22,56 @@ export const App = () => {
 
   return (
     <>
-      <Header searchValue="" setSearchValue={() => null} />
+      <FavoriteContextProvider>
+        <Header searchValue="" setSearchValue={() => null} />
 
-      <div className="main">
-        <Routes>
-          <Route path="/" element={<HomePAge />} />
-          <Route path="/phones" element={<PhonesPage />} />
-          <Route path="/phones/:id" element={<PhonePreview />} />
-          <Route
-            path="/tablets"
-            element={(
-              <NotFoundPage
-                title="Tables"
-                h1="Tablet page under construction"
-                text="
+        <div className="main">
+          <Routes>
+            <Route path="/" element={<HomePAge />} />
+            <Route path="/phones" element={<PhonesPage />} />
+            <Route path="/phones/:id" element={<PhonePreview />} />
+            <Route
+              path="/tablets"
+              element={(
+                <NotFoundPage
+                  title="Tables"
+                  h1="Tablet page under construction"
+                  text="
               the tablet page is not ready yet, we suggest you return to the"
-              />
-            )}
-          />
-          <Route
-            path="/accessories"
-            element={(
-              <NotFoundPage
-                title="Accessories"
-                h1="Accessories page under construction"
-                text="
+                />
+              )}
+            />
+            <Route
+              path="/accessories"
+              element={(
+                <NotFoundPage
+                  title="Accessories"
+                  h1="Accessories page under construction"
+                  text="
               accessories page is not ready yet, we suggest you return to the"
-              />
-            )}
-          />
-          <Route path="/favorite" element={<Favorite />} />
-          <Route path="/basket" element={<Basket />} />
-          <Route path="/contacts" element={<ContactsPage />} />
-          <Route path="/rights" element={<Rights />} />
-          <Route
-            path="*"
-            element={(
-              <NotFoundPage
-                title="Page Not Found!"
-                h1="Page Not Found!"
-                text="sorry, it looks like you got lost,
+                />
+              )}
+            />
+            <Route path="/favorite" element={<Favorite />} />
+            <Route path="/basket" element={<Basket />} />
+            <Route path="/contacts" element={<ContactsPage />} />
+            <Route path="/rights" element={<Rights />} />
+            <Route
+              path="*"
+              element={(
+                <NotFoundPage
+                  title="Page Not Found!"
+                  h1="Page Not Found!"
+                  text="sorry, it looks like you got lost,
                we suggest you return to the"
-              />
-            )}
-          />
-        </Routes>
-      </div>
+                />
+              )}
+            />
+          </Routes>
+        </div>
 
-      <Footer />
+        <Footer />
+      </FavoriteContextProvider>
     </>
   );
 };

@@ -1,16 +1,16 @@
 import { ProductCards } from '../../ProductCards/ProductCards';
 import './Favorite.scss';
 import products from '../../../_new/products.json';
+import { useFavoriteContext } from '../../../FavoriteContext'; // Укажите правильный путь к FavoriteContext
 
 export const BlockFavorite = () => {
-  const Ids = JSON.parse(localStorage.getItem('ids') || '[]');
-  const filtration = products.filter((product) => Ids.includes(product.id));
+  const { favorites } = useFavoriteContext();
+  const filtration = products.filter(
+    (product) => favorites.includes(product.id.toString()),
+  );
 
   return (
-    <div
-      className={`blockFavorite ${Ids.length === 0 ? 'blockFavorite-active' : ''}`}
-    >
-
+    <div className={`blockFavorite ${favorites.length === 0 ? 'blockFavorite-active' : ''}`}>
       {filtration.map((product) => (
         <ProductCards key={product.id} product={product} />
       ))}

@@ -3,9 +3,10 @@ import { Link } from 'react-router-dom';
 import { BlockFavorite } from './BlockFavorite';
 import HomeImage from './FavoriteImage/Home.svg';
 import Arrowimage from './FavoriteImage/Arrow.svg';
+import { useFavoriteContext } from '../../../FavoriteContext';
 
 export const Favorite = () => {
-  const Ids = JSON.parse(localStorage.getItem('ids') || '[]');
+  const { favoritesLength } = useFavoriteContext();
 
   return (
     <>
@@ -29,7 +30,7 @@ export const Favorite = () => {
           >
             Favourites
           </h1>
-          <p className="favoriteMainBlock__text">{`${Ids.length} items`}</p>
+          <p className="favoriteMainBlock__text">{`${favoritesLength} items`}</p>
         </div>
       </div>
 

@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
 import heartImage from './ProductsCardsFavoriteImage/heart.svg';
 import './ProductsCardsFavorite.scss';
 import { Product } from '../Product';
+import { useFavoriteContext } from '../../../FavoriteContext'; // Укажите правильный путь к FavoriteContext
 
 interface ProductFavoriteProps {
   product: Product;
@@ -9,32 +9,18 @@ interface ProductFavoriteProps {
 
 export const ProductsCardsFavorite = ({ product }: ProductFavoriteProps) => {
   const { id } = product;
-
-  const [isFavorite, setIsFavorite] = useState(false);
-  const [favorites, setFavorites] = useState<string[]>([]);
-
-  useEffect(() => {
-    const localStorageIds = JSON.parse(localStorage.getItem('ids') || '[]');
-
-    setFavorites(localStorageIds);
-    setIsFavorite(localStorageIds.includes(id.toString()));
-  }, [id]);
+  const {
+    favorites,
+    addToFavorites,
+    removeFromFavorites,
+  } = useFavoriteContext();
+  const isFavorite = favorites.includes(id.toString());
 
   const handleToggleFavorite = () => {
-    setIsFavorite((prevState) => !prevState);
-
-    if (favorites.includes(id.toString())) {
-      const updatedFavorites = favorites.filter(
-        (favId) => favId !== id.toString(),
-      );
-
-      setFavorites(updatedFavorites);
-      localStorage.setItem('ids', JSON.stringify(updatedFavorites));
+    if (isFavorite) {
+      removeFromFavorites(id.toString());
     } else {
-      const updatedFavorites = [...favorites, id.toString()];
-
-      setFavorites(updatedFavorites);
-      localStorage.setItem('ids', JSON.stringify(updatedFavorites));
+      addToFavorites(id.toString());
     }
   };
 
