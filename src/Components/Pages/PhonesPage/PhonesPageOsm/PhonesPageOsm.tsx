@@ -214,7 +214,7 @@ export const PhonesPageOsm: React.FC<PhonesPageOSMProps> = ({ products }) => {
 // import { Link } from 'react-router-dom';
 // import { ProductCards } from '../../../ProductCards/ProductCards';
 // import { NotFoundPage } from '../../NotFoundPage/NotFoundPage';
-// import products from '../../../../api/_new/products.json';
+// import products from '../../../../api/new/products.json';
 // import HomeImage from './PhonesPageOsmImage/Home.svg';
 // import Arrowimage from './PhonesPageOsmImage/Arrow.svg';
 // import './PhonesPageOsm.scss';

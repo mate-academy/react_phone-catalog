@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { ProductCards } from '../../../ProductCards/ProductCards';
-import products from '../../../../_new/products.json';
+import products from '../../../../new/products.json';
 import './HotPrice.scss';
 import ArrowImage from './HotPriceImage/Arrow.svg';
 

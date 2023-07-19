@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Header } from '../../Header/Header';
 import { PhonesPageOsm } from './PhonesPageOsm/PhonesPageOsm';
 import { NotFoundPage } from '../NotFoundPage/NotFoundPage';
-import products from '../../../_new/products.json';
+import products from '../../../new/products.json';
 
 export const PhonesPage = () => {
   const [search, setSearch] = useState('');

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import producs from '../../../../../_new/products.json';
+import producs from '../../../../../new/products.json';
 import FirstImage from './ShopByCategoryImage/1.png';
 import TwoImage from './ShopByCategoryImage/2.png';
 import ThridImage from './ShopByCategoryImage/3.png';

@@ -32,7 +32,7 @@ export const ProductCards = ({ product }: ProductCardsProps) => {
                 pathname: `/phones/${phoneId}`,
               }}
             >
-              <img src={`./_new/${image}`} className="card__image" alt={name} />
+              <img src={`./new/${image}`} className="card__image" alt={name} />
             </Link>
           </div>
           <div className="card__info">

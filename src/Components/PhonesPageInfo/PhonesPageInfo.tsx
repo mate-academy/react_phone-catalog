@@ -69,7 +69,7 @@ export const PhonesPageInfo = ({ info }: InfoProps) => {
     id,
   } = info || {};
 
-  const [mainImage, setMainImage] = useState(`./_new/${images[0]}`);
+  const [mainImage, setMainImage] = useState(`./new/${images[0]}`);
   const [selectedColor, setSelectedColor] = useState(
     color || colorsAvailable[0],
   );
@@ -80,13 +80,13 @@ export const PhonesPageInfo = ({ info }: InfoProps) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    setMainImage(`./_new/${images[0]}`);
+    setMainImage(`./new/${images[0]}`);
     setSelectedColor(color || colorsAvailable[0]);
     setSelectedGb(capacity || capacityAvailable[0]);
   }, [info?.id]);
 
   const handleImageClick = (index: number) => {
-    setMainImage(`./_new/${images[index]}`);
+    setMainImage(`./new/${images[index]}`);
   };
 
   const handleColorClick = (clickedColor: string) => {
@@ -184,7 +184,7 @@ export const PhonesPageInfo = ({ info }: InfoProps) => {
                 >
                   <img
                     className="page__Blocks-header-images"
-                    src={`./_new/${image}`}
+                    src={`./new/${image}`}
                     alt={`Thumbnail ${index}`}
                   />
                 </button>

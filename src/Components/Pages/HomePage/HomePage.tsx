@@ -5,7 +5,7 @@ import { ShopByCategory } from './ShopByCategory/ShopByCategory';
 // import { Footer } from '../../Footer/Footer';
 import './HomePage.scss';
 // import { ProductCards } from '../../ProductCards/ProductCards';
-// import products from '../../../api/_new/products.json';
+// import products from '../../../api/new/products.json';
 
 export const HomePAge = () => {
   return (

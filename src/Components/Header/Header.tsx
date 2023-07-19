@@ -49,8 +49,6 @@ export const Header = ({ searchValue, setSearchValue }: HeaderProps) => {
 
   const { favoritesLength } = useFavoriteContext();
 
-  console.log(favoritesLength);
-
   return (
     <header className="header">
       <div className={`header__FirstChild ${isHomePage ? 'is-home-page' : ''}`}>
@@ -128,5 +126,3 @@ export const Header = ({ searchValue, setSearchValue }: HeaderProps) => {
     </header>
   );
 };
-
-// ${Ids.length >= 1 ? 'ellipse-icon' : ''}

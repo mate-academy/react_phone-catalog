@@ -1,6 +1,6 @@
 import { ProductCards } from '../../ProductCards/ProductCards';
 import './Favorite.scss';
-import products from '../../../_new/products.json';
+import products from '../../../new/products.json';
 import { useFavoriteContext } from '../../../FavoriteContext';
 
 export const BlockFavorite = () => {
