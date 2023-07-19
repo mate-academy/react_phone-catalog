@@ -4,6 +4,7 @@ import { HeaderSearch } from './HeaderSearch';
 import HeartImage from './HeaderImage/heart.svg';
 import BasketImage from './HeaderImage/basket.svg';
 import LogoImage from './HeaderImage/LOGO.svg';
+import { useFavoriteContext } from '../../FavoriteContext';
 
 interface HeaderProps {
   searchValue: string;
@@ -46,7 +47,9 @@ export const Header = ({ searchValue, setSearchValue }: HeaderProps) => {
     }
   }
 
-  // const Ids = JSON.parse(localStorage.getItem('ids') || '[]');
+  const { favoritesLength } = useFavoriteContext();
+
+  console.log(favoritesLength);
 
   return (
     <header className="header">
@@ -107,6 +110,14 @@ export const Header = ({ searchValue, setSearchValue }: HeaderProps) => {
           <NavLink to="/favorite" className="heartLink">
             <img className={`heart-svg ${isHomePage ? 'is-home-page' : ''}`} src={HeartImage} alt="heart" />
           </NavLink>
+
+          {favoritesLength >= 1
+              && (
+                <div className="circle-for-header">
+                  <p className="counter-for-header">{favoritesLength}</p>
+                </div>
+              )}
+
         </div>
         <div className={`header__LastChild-basket ${location.pathname === '/basket' ? 'is-activ' : ''}`}>
           <NavLink to="/basket" className="basketLink">

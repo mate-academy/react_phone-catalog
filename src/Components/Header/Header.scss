@@ -145,11 +145,39 @@
 }
 
 .heart-svg {
+  position: relative;
   background-size: cover;
   background-repeat: no-repeat;
   height: 20px;
   width: 23px;
 }
+
+.circle-for-header {
+  border: 1px solid #FFF;
+  position: absolute;
+  top: 12px;
+  left: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: red;
+  height: 14px;
+  width: 14px;
+  border-radius: 50%;
+}
+
+.counter-for-header {
+  color: #FFF;
+  text-align: center;
+  font-family: "Mont-Regular", sans-serif;
+  font-size: 9px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin: 0;
+  text-decoration: none;
+}
+
 
 .basket-svg {
   background-size: cover;
