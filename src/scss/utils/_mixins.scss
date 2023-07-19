@@ -1,8 +1,9 @@
-@mixin text($size, $width, $color) {
+@mixin text($size, $weight, $color) {
   font-size: $size;
-  font-weight: $width;
+  font-weight: $weight;
   color: $color;
   font-family: "Mont", sans-serif;
+
 }
 
 @mixin onTab {

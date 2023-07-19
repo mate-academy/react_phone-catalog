@@ -16,12 +16,12 @@
     }
 
     & span {
-      @include text (12px, 600, $primary-gray-color);
+      @include text (12px, 500, $primary-gray-color);
     }
   }
 
   &--text {
-    @include text(12px, 600, $primary-gray-color);
+    @include text(12px, 500, $primary-gray-color);
   }
 
   &--go-back {
@@ -29,7 +29,7 @@
     gap: 8px;
 
     & span {
-      @include text(12px, 600, $primary-gray-color);
+      @include text(12px, 500, $primary-gray-color);
     }
   }
 }

@@ -17,7 +17,7 @@
     }
         
     &--title {
-      @include text(20px, 600, $primary-dark-color);
+      @include text(20px, 500, $primary-dark-color);
       text-decoration: none;
     }
 

@@ -7,20 +7,20 @@ export const TopActions = () => {
 
   return (
     <div className="top-actions">
-      <div className="icon icon-info">
+      <Link to="/favourites" className="icon icon-info">
         {favourites.length > 0
         && <div className="icon-info__info">{favourites.length}</div>}
-        <Link to="/favourites">
-          <img src="assests/images/Favourites.svg" alt="heart icon" />
-        </Link>
-      </div>
-      <div className="icon icon-info">
+
+        <img src="assests/images/Favourites.svg" alt="heart icon" />
+      </Link>
+
+      <Link to="/cart" className="icon icon-info">
         {cartList.length > 0
         && <div className="icon-info__info">{cartList.length}</div>}
-        <Link to="/cart">
-          <img src="assests/images/Cart.svg" alt="cart icon" />
-        </Link>
-      </div>
+
+        <img src="assests/images/Cart.svg" alt="cart icon" />
+      </Link>
+
     </div>
   );
 };

@@ -23,13 +23,7 @@
 @import "./utils/reset.scss";
 @import "./error.scss";
 @import "./characteristic-item.scss";
-
-@font-face {
-  font-family: "Mont";
-  src: local("Mont-Regular"), url("../fonts/Mont-Regular.otf") format("woff");
-  src: local("Mont-Bold"), url("../fonts/Mont-Bold.otf") format("woff");
-  src: local("Mont-SemiBold"), url("../fonts/Mont-SemiBold.otf") format("woff");
-}
+@import "./fonts.scss";
 
 .App {
   min-height: 100vh;

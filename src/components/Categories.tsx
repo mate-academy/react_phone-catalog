@@ -20,7 +20,9 @@ export const Categories:React.FC<Props> = memo(({ itemsLength }) => {
               key={categorie}
             >
               <img src={`img/${categorie}.png`} alt={`${categorie} foto`} />
-              <div className="categories__item--title">{categorie}</div>
+              <div className="categories__item--title">
+                {categorie[0].toUpperCase() + categorie.slice(1)}
+              </div>
               <div className="categories__item--total-amount">
                 {`${categorie === categories[0] ? itemsLength : 0} models` }
               </div>

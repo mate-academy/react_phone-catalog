@@ -16,7 +16,7 @@
     }
 
     &--without-discont {
-      @include text(22px, 700, $primary-gray-color);
+      @include text(22px, 500, $primary-gray-color);
       margin-left: 8px;
       text-decoration-line: line-through;
     }

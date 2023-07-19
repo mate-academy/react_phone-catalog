@@ -26,7 +26,7 @@
     }
 
     & span {
-      @include text(14px, 600, $primary-dark-color);
+      @include text(14px, 500, $primary-dark-color);
     }
   }
 }

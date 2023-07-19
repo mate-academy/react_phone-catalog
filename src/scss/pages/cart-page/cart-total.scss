@@ -45,7 +45,7 @@
     & button {
       width: 100%;
       @extend .flex-center;
-      @include text(14px, 500, #fff);
+      @include text(14px, 600, #fff);
       padding: 14px;
       background: $primary-dark-color;
       color: #fff;
@@ -64,7 +64,7 @@
       }
 
       & span {
-        @include text (14px, 600, $primary-gray-color);
+        @include text (14px, 500, $primary-gray-color);
       }
     }
   }

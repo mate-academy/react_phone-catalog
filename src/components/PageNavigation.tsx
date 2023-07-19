@@ -26,12 +26,12 @@ export const PageNavigation = () => {
               />
             </div>
             {item === pathNames[pathNames.length - 1]
-              ? <span key={item}>{item}</span>
+              ? <span key={item}>{item[0].toUpperCase() + item.slice(1)}</span>
               : (
                 <Link
                   to={`/${pathNames.slice(0, pathNames.indexOf(item) + 1).join('/')}`}
                 >
-                  {item}
+                  {item[0].toUpperCase() + item.slice(1)}
                 </Link>
               )}
           </>
@@ -39,7 +39,7 @@ export const PageNavigation = () => {
       </div>
       <Link to={prevPath || '/'} className="page__navigation--go-back">
         <img src="assests/images/Arrow-left.svg" alt="icon-left" />
-        <span data-cy="backButton">back</span>
+        <span data-cy="backButton">Back</span>
       </Link>
     </nav>
   );

@@ -35,7 +35,7 @@ export const CartPage: React.FC = () => {
       <div className="cart__total">
         <div className="cart__total--amount">
           <h1>{`$${totalAmount}`}</h1>
-          <p>{`Total for ${cartList.length} items`}</p>
+          <p>{`Total for ${cartList.reduce((acum, { quantity }) => acum + quantity, 0)} items`}</p>
         </div>
         {cartList.length > 0 && (
           <button

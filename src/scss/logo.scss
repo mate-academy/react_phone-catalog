@@ -4,6 +4,5 @@
 
 .logo {
   @extend .flex-center;
-  @include text(150%, 900, $primary-dark-color);
   z-index: 1;
 }

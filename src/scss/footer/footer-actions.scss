@@ -14,7 +14,7 @@
     }
 
     &--description {
-      @include text(12px, 600, $primary-gray-color);
+      @include text(12px, 500, $primary-gray-color);
       @include onPhone {
         font-size: 14px;
       }

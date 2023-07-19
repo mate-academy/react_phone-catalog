@@ -8,6 +8,7 @@
 
   &__title {
     @include text (32px, 700, $primary-dark-color);
+    font-style: normal;
   }
 
   &__items {

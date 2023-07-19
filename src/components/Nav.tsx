@@ -24,13 +24,13 @@ export const Nav:React.FC<Props> = ({ items }) => {
             className={
               classnames(
                 'nav__item', {
-                  'nav__item--active': item === pathname.slice(1)
+                  'nav__item--active': item.toLowerCase() === pathname.slice(1)
                   || (item === 'home' && pathname === '/'),
                 },
               )
             }
           >
-            <Link to={`${linkPath(item)}`}>{item}</Link>
+            <Link to={`${linkPath(item.toLowerCase())}`}>{item}</Link>
           </li>
         ))}
       </ul>

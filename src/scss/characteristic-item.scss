@@ -8,12 +8,12 @@
     margin-bottom: 8px;
   
     &--name {
-      @include text(12px, 600, $primary-gray-color);
+      @include text(12px, 500, $primary-gray-color);
     }
   
     &--characteristic {
       position: relative;
-      @include text(12px, 600, $primary-dark-color);
+      @include text(12px, 500, $primary-dark-color);
       bottom: 0;
     }
   }
