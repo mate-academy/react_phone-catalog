@@ -1,22 +1,38 @@
-import { useState } from 'react';
+import { useFavoriteContext } from '../../../FavoriteContext';
+import { Product } from '../Product';
 import './ProductsCardsButton.scss';
 
-export const ProductsCardsButton = () => {
-  const [isAddedToCart, setIsAddedToCart] = useState(false);
+interface ProductFavoriteProps {
+  product: Product;
+}
 
-  const handleAddToCart = () => {
-    setIsAddedToCart((prevState: unknown) => !prevState);
+export const ProductsCardsButton = ({ product }: ProductFavoriteProps) => {
+  const { id } = product;
+
+  const {
+    basket,
+    addToBasket,
+    removeFromBasket,
+  } = useFavoriteContext();
+  const isBasket = basket.includes(id.toString());
+
+  const handleToggleBasket = () => {
+    if (isBasket) {
+      removeFromBasket(id.toString());
+    } else {
+      addToBasket(id.toString());
+    }
   };
 
   return (
     <button
       type="button"
-      className={`card__buy-button ${isAddedToCart ? 'is-activeButton' : ''
+      className={`card__buy-button ${isBasket ? 'is-activeButton' : ''
       }`}
-      onClick={handleAddToCart}
-      // disabled={isAddedToCart}
+      onClick={handleToggleBasket}
+    // disabled={isAddedToCart}
     >
-      {isAddedToCart ? 'Added to cart' : 'Add to cart'}
+      {isBasket ? 'Added to cart' : 'Add to cart'}
     </button>
   );
 };

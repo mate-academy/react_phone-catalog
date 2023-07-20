@@ -47,7 +47,7 @@ export const Header = ({ searchValue, setSearchValue }: HeaderProps) => {
     }
   }
 
-  const { favoritesLength } = useFavoriteContext();
+  const { favoritesLength, basketLength } = useFavoriteContext();
 
   return (
     <header className="header">
@@ -121,6 +121,13 @@ export const Header = ({ searchValue, setSearchValue }: HeaderProps) => {
           <NavLink to="/basket" className="basketLink">
             <img className="basket-svg" src={BasketImage} alt="basket" />
           </NavLink>
+
+          {basketLength >= 1
+              && (
+                <div className="circle-for-header">
+                  <p className="counter-for-header">{basketLength}</p>
+                </div>
+              )}
         </div>
       </div>
     </header>

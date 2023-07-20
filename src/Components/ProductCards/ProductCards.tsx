@@ -55,7 +55,7 @@ export const ProductCards = ({ product }: ProductCardsProps) => {
             </div>
 
             <div className="block-for-button">
-              <ProductsCardsButton />
+              <ProductsCardsButton product={product} />
               <ProductsCardsFavorite product={product} />
             </div>
           </div>
