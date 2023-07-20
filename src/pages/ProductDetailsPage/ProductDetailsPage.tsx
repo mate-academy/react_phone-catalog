@@ -108,23 +108,9 @@ export const ProductDetailsPage = () => {
     setFavourites([...favourites, productId]);
   };
 
-  const onSetImageId = (id: number) => {
+  const onDispatchAction = (type: ActionType, id: number) => {
     dispatch({
-      type: ActionType.changedImage,
-      value: id,
-    });
-  };
-
-  const onSetColorId = (id: number) => {
-    dispatch({
-      type: ActionType.changedColor,
-      value: id,
-    });
-  };
-
-  const onSetCapacityId = (id: number) => {
-    dispatch({
-      type: ActionType.changedCapacity,
+      type,
       value: id,
     });
   };
@@ -167,7 +153,11 @@ export const ProductDetailsPage = () => {
                     <li key={imgUrl}>
                       <button
                         type="button"
-                        onClick={onSetImageId.bind(null, index)}
+                        onClick={onDispatchAction.bind(
+                          null,
+                          ActionType.changedImage,
+                          index,
+                        )}
                         className={classNames(
                           'ProductDetailsPage__thumbnail-button',
                           { active: imageId === index },
@@ -202,7 +192,10 @@ export const ProductDetailsPage = () => {
                           { active: colorId === 0 },
                           'ProductDetailsPage__colorPicker-1',
                         )}
-                        onClick={() => onSetColorId(0)}
+                        onClick={() => onDispatchAction(
+                          ActionType.changedColor,
+                          0,
+                        )}
                       />
                     </li>
                     <li>
@@ -212,7 +205,10 @@ export const ProductDetailsPage = () => {
                           { active: colorId === 1 },
                           'ProductDetailsPage__colorPicker-2',
                         )}
-                        onClick={() => onSetColorId(1)}
+                        onClick={() => onDispatchAction(
+                          ActionType.changedColor,
+                          1,
+                        )}
                       />
                     </li>
                     <li>
@@ -222,7 +218,10 @@ export const ProductDetailsPage = () => {
                           { active: colorId === 2 },
                           'ProductDetailsPage__colorPicker-3',
                         )}
-                        onClick={() => onSetColorId(2)}
+                        onClick={() => onDispatchAction(
+                          ActionType.changedColor,
+                          2,
+                        )}
                       />
                     </li>
                     <li>
@@ -232,7 +231,10 @@ export const ProductDetailsPage = () => {
                           { active: colorId === 3 },
                           'ProductDetailsPage__colorPicker-4',
                         )}
-                        onClick={() => onSetColorId(3)}
+                        onClick={() => onDispatchAction(
+                          ActionType.changedColor,
+                          3,
+                        )}
                       />
                     </li>
                   </ul>
@@ -250,7 +252,10 @@ export const ProductDetailsPage = () => {
                         className={classNames(
                           { active: capacityId === 0 },
                         )}
-                        onClick={() => onSetCapacityId(0)}
+                        onClick={() => onDispatchAction(
+                          ActionType.changedCapacity,
+                          0,
+                        )}
                       >
                         64 GB
                       </Button>
@@ -261,7 +266,10 @@ export const ProductDetailsPage = () => {
                         className={classNames(
                           { active: capacityId === 1 },
                         )}
-                        onClick={() => onSetCapacityId(1)}
+                        onClick={() => onDispatchAction(
+                          ActionType.changedCapacity,
+                          1,
+                        )}
                       >
                         256 GB
                       </Button>
@@ -272,7 +280,10 @@ export const ProductDetailsPage = () => {
                         className={classNames(
                           { active: capacityId === 2 },
                         )}
-                        onClick={() => onSetCapacityId(2)}
+                        onClick={() => onDispatchAction(
+                          ActionType.changedCapacity,
+                          2,
+                        )}
                       >
                         512 GB
                       </Button>

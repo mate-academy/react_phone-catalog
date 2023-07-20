@@ -3,6 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import './DropdownSelect.scss';
 import classNames from 'classnames';
 import { SearchLink } from '../SearchLink/SearchLink';
+import { getSearchWith } from '../../helpers/searchHelper';
 
 type Props = {
   paramName: string;
@@ -29,13 +30,19 @@ export const DropdownSelect: React.FC<Props> = ({
   const options = React.Children.toArray(children) as Option[];
 
   const handleSetValue = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setSearchParams({ sort: event.target.value });
+    const params = {
+      [paramName]: event.target.value,
+    };
+
+    setSearchParams(
+      getSearchWith(searchParams, params),
+    );
   };
 
   const handleToggleDropdown = (e: React.MouseEvent) => {
     e.preventDefault();
 
-    setIsActive(prev => !prev);
+    setIsActive(active => !active);
   };
 
   const handleLinkClick = () => {

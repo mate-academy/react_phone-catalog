@@ -8,7 +8,7 @@ export const Breadcrumbs = () => {
   let currentpath = '';
 
   const crumbs = location.pathname.split('/')
-    .filter(crumb => crumb !== '')
+    .filter(crumb => !!crumb)
     .map((crumb, index, arr) => {
       currentpath += `/${crumb}`;
 

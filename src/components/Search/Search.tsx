@@ -38,12 +38,22 @@ export const Search = () => {
     const { value } = event.target;
 
     setQuery(value);
-    applyQuery(getSearchWith(searchParams, { query: value.trim() || null }));
+
+    const params = {
+      query: value.trim() || null,
+    };
+
+    applyQuery(
+      getSearchWith(searchParams, params),
+    );
   };
 
   const onClearQuery = () => {
     setQuery('');
-    setSearchParams(getSearchWith(searchParams, { query: null }));
+
+    setSearchParams(
+      getSearchWith(searchParams, { query: null }),
+    );
   };
 
   return (

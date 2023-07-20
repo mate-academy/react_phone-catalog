@@ -9,6 +9,7 @@ import { normalizeValue } from '../../helpers/normalizeValue';
 import {
   NoSearchResults,
 } from '../../components/NoSearchResults/NoSearchResults';
+import { GoBackButton } from '../../components/GoBackButton/GoBackButton';
 
 export const Favourites = () => {
   const { favourites } = useContext(FavouriteContext);
@@ -39,6 +40,10 @@ export const Favourites = () => {
     <div className="Favourites container">
       <div className="Favourites__breadcrumbs">
         <Breadcrumbs />
+      </div>
+
+      <div className="Favourites__return">
+        <GoBackButton />
       </div>
 
       <div className="Favourites__title">

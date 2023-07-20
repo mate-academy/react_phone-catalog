@@ -18,6 +18,8 @@ import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 import { normalizeValue } from '../../helpers/normalizeValue';
 import { getTitle } from '../../helpers/getTitle';
 import { NoResults } from '../../components/NoResults/NoResults';
+import { ProductType } from '../../types/ProductType';
+import { getCategoryName } from '../../helpers/getCategoryName';
 
 enum SortValue {
   age = 'age',
@@ -26,7 +28,7 @@ enum SortValue {
 }
 
 type Props = {
-  productType: 'phone' | 'tablet' | 'accessory';
+  productType: ProductType;
 };
 
 export const ProductsPage: React.FC<Props> = ({ productType }) => {
@@ -82,22 +84,6 @@ export const ProductsPage: React.FC<Props> = ({ productType }) => {
   }, [sortBy, itemsFrom, itemsTo, sortedProducts]);
 
   const title = getTitle(productType);
-
-  const getCategoryName = (type: string) => {
-    switch (type) {
-      case 'phone':
-        return 'phones';
-
-      case 'tablet':
-        return 'tablets';
-
-      case 'accessory':
-        return 'accessories';
-
-      default:
-        return '';
-    }
-  };
 
   const categoryName = getCategoryName(productType);
 

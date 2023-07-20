@@ -1,15 +1,15 @@
 import { ProductType } from '../types/ProductType';
 
-export const getTitle = (type: ProductType) => {
+export const getCategoryName = (type: ProductType) => {
   switch (type) {
     case ProductType.phone:
-      return 'Mobile phones';
+      return 'phones';
 
     case ProductType.tablet:
-      return 'Tablets';
+      return 'tablets';
 
     case ProductType.accessory:
-      return 'Accessories';
+      return 'accessories';
 
     default:
       return '';

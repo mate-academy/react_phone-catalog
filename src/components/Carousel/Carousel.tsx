@@ -59,7 +59,7 @@ export const Carousel = () => {
         <div className="Carousel__image-container">
           <ul
             className="Carousel__image-list"
-            style={{ transform/* , width: itemWidth * 3 */ }}
+            style={{ transform }}
           >
             <li>
               <Link to="/phones" className="Carousel__link">

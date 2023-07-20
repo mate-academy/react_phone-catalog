@@ -2,7 +2,7 @@
 import { useState, useContext, useMemo } from 'react';
 import classNames from 'classnames';
 import './Cart.scss';
-import { /* useNavigate, */ useOutletContext } from 'react-router-dom';
+import { useOutletContext } from 'react-router-dom';
 import { Button } from '../../components/Button/Button';
 import { GoBackButton } from '../../components/GoBackButton/GoBackButton';
 import { Product } from '../../types/Product';
@@ -34,8 +34,6 @@ export const Cart = () => {
       };
     });
   });
-
-  // const navigate = useNavigate();
 
   const totalPrice = useMemo(() => {
     return cartItems.reduce((acc, curr) => {

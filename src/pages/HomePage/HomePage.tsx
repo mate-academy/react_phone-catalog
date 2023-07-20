@@ -7,6 +7,7 @@ import { ProductSlider } from '../../components/ProductsSlider/ProductsSlider';
 
 import { Product } from '../../types/Product';
 import { calculateDiscount } from '../../helpers/calculateDiscount';
+import { getProductsCount } from '../../helpers/getProductsCount';
 
 export const HomePage = () => {
   const products = useOutletContext<Product[]>();
@@ -20,6 +21,10 @@ export const HomePage = () => {
     return products.filter(product => !product.discount)
       .sort((a, b) => b.price - a.price);
   }, [products]);
+
+  const phonesCount = getProductsCount(products, 'phone');
+  const tabletsCount = getProductsCount(products, 'tablet');
+  const accessoriesCount = getProductsCount(products, 'accessory');
 
   return (
     <div className="HomePage container">
@@ -57,7 +62,7 @@ export const HomePage = () => {
             </Link>
 
             <p>
-              95 models
+              {`${phonesCount} models`}
             </p>
           </li>
           <li>
@@ -71,7 +76,7 @@ export const HomePage = () => {
             </Link>
 
             <p>
-              24 models
+              {`${tabletsCount} models`}
             </p>
           </li>
           <li>
@@ -85,7 +90,7 @@ export const HomePage = () => {
             </Link>
 
             <p>
-              100 models
+              {`${accessoriesCount} models`}
             </p>
           </li>
         </ul>

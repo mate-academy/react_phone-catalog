@@ -31,12 +31,12 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
   const itemPath = getItemPath(product);
 
-  const itemInCart = cart.some(cartItem => cartItem.id === product.id);
+  const isItemInCart = cart.some(cartItem => cartItem.id === product.id);
 
-  const itemInFavourites = favourites.includes(product.id);
+  const isItemInFavourites = favourites.includes(product.id);
 
   const onAddToCart = () => {
-    if (itemInCart) {
+    if (isItemInCart) {
       return;
     }
 
@@ -47,7 +47,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   };
 
   const onAddToFavourites = () => {
-    if (itemInFavourites) {
+    if (isItemInFavourites) {
       setFavourites(
         favourites.filter(item => item !== product.id),
       );
@@ -110,11 +110,11 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           <Button
             content="cart"
             className={classNames(
-              { active: itemInCart },
+              { active: isItemInCart },
             )}
             onClick={onAddToCart}
           >
-            {itemInCart
+            {isItemInCart
               ? 'Added to cart'
               : 'Add to cart'}
           </Button>
@@ -123,7 +123,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
             content="favourite"
             data-cy="addToFavorite"
             className={classNames(
-              { active: itemInFavourites },
+              { active: isItemInFavourites },
             )}
             onClick={onAddToFavourites}
           />
