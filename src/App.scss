@@ -1,6 +1,19 @@
 @import "./styles/normalize.scss";
-
-@import "./components/header/header.scss";
-@import "./components/Slider/Slider.scss";
-
+@import "./styles/utils/utils.scss";
 @import "./styles/utils/fonts";
+@import "./styles/arrowButton.scss";
+@import "./styles/button.scss";
+@import "./styles/card.scss";
+@import "./styles/cardPage.scss";
+@import "./styles/Cart.scss";
+@import "./styles/catalog.scss";
+@import "./styles/CatalogShortCut.scss";
+@import "./styles/categories.scss";
+@import "./styles/dropdown.scss";
+@import "./styles/footer.scss";
+@import "./styles/header.scss";
+@import "./styles/HistoryBackPusher.scss";
+@import "./styles/NavigationField.scss";
+@import "./styles/Pagination.scss";
+@import "./styles/ProductField.scss";
+@import "./styles/Slider.scss";

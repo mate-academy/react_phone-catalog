@@ -1,27 +1,18 @@
 import {
-  createBrowserRouter,
+  Route,
+  Routes,
 } from 'react-router-dom';
 
-import { Home } from '../Pages/Home';
+import { HomePage } from '../Pages/HomePage';
 import { CatalogPage } from '../Pages/CatalogPage';
-import { CardPage } from '../components/cardPage/CardPage';
-import { Cart } from '../components/Cart/Cart';
+import { CardPage } from '../Pages/CardPage';
+import { CartPage } from '../Pages/CartPage';
 
-export const appRoutes = createBrowserRouter([
-  {
-    path: '/',
-    element: <Home />,
-  },
-  {
-    path: ':category',
-    element: <CatalogPage />,
-  },
-  {
-    path: '/phones/:id',
-    element: <CardPage />,
-  },
-  {
-    path: '/cart',
-    element: <Cart />,
-  },
-]);
+export const AppRoutes = () => (
+  <Routes>
+    <Route path="/" element={<HomePage />} />
+    <Route path=":category" element={<CatalogPage />} />
+    <Route path="/:category/:id" element={<CardPage />} />
+    <Route path="/cart" element={<CartPage />} />
+  </Routes>
+);

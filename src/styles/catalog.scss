@@ -1,0 +1,115 @@
+@import "./utils/utils.scss";
+
+.catalog {
+  &__nav {
+    display: flex;
+
+    flex-direction: row;
+    justify-content: flex-start;
+
+    align-items: center;
+
+    gap: 14px;
+
+    margin-bottom: 40px;
+
+    margin-top: 25px;
+
+    &--info {
+      display: flex;
+
+      flex-direction: row;
+      align-items: center;
+      gap: 14px;
+
+      color: $color-secondary;
+
+      &-text {
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 15px;
+      }
+    }
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 41px;
+
+    letter-spacing: -0.01em;
+
+    color: $color-primary;
+  }
+
+  &__quantity {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+
+    color: $color-secondary;
+  }
+
+  &__content {
+    display: grid;
+
+    grid-template-columns: repeat(auto-fill, 250px);
+    row-gap: 40px;
+    column-gap: 16px;
+    justify-content: center;
+
+    margin-top: 25px;
+
+    @include onDesktop {
+      grid-template-columns: repeat(auto-fill, 270px);
+    }
+  }
+
+  &__filters {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+  }
+
+  &__homeIcon {
+    width: 16px;
+    height: 16px;
+
+    object-fit: contain;
+  }
+
+  &__loading {
+    width: 100%;
+    height: 100vh;
+
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.filter {
+  color: $color-secondary;
+
+  display: flex;
+  flex-direction: row;
+
+  gap: 16px;
+
+  &__select {
+    background-color: transparent;
+    padding: 10px 83px 10px 10px;
+    border: 1px solid #b4bdc4;
+
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+
+    color: $color-primary;
+
+    &:focus {
+      outline: none;
+    }
+
+    position: relative;
+  }
+}

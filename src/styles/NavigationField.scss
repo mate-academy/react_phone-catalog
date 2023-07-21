@@ -1,0 +1,38 @@
+.NavigationField {
+  display: flex;
+
+  flex-direction: row;
+  justify-content: flex-start;
+  width: 100%;
+  height: 21px;
+
+  margin-bottom: 40px;
+
+  gap: 8px;
+
+  color: $color-secondary;
+
+  &__button--home {
+    display: block;
+    width: 16px;
+    height: 16px;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    line-height: 16px;
+    gap: 8px;
+  }
+
+  &__item {
+    &:hover {
+      color: $color-primary;
+    }
+  }
+
+  &__arrow {
+    padding-right: 8px;
+  }
+}

@@ -2,10 +2,11 @@ import {
   useLocation, useParams, useSearchParams,
 } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { Catalog } from '../components/Catalog/Catalog';
+import { Catalog } from '../components/Catalog';
 
-import { Pagination } from '../components/Pagination/Pagination';
-import { Dropdown } from '../components/Dropdown/Dropdown';
+import { Pagination } from '../components/Pagination';
+import { Dropdown } from '../components/Dropdown';
+import { NavigationField } from '../components/NavigationField';
 
 const FILTER_SORT = ['age', 'price', 'name'];
 const FILTER_QUANTITY = ['16', '8', '4'];
@@ -42,6 +43,7 @@ export const CatalogPage: React.FC = () => {
 
   return (
     <div className="container">
+      <NavigationField />
       <div className="filter">
         <Dropdown list={FILTER_SORT} type="sort" />
         <Dropdown list={FILTER_QUANTITY} type="perPage" />
