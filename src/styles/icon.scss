@@ -1,0 +1,66 @@
+@import "./utils/utils.scss";
+
+.icon {
+  display: block;
+
+  &__image {
+    --logo-height: 100px;
+    --logo-width: 140px;
+    --height-404: 200px;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    &--logo {
+      width: var(--logo-width);
+      height: var(--logo-height);
+
+      background-image: url("../images/logo.svg");
+
+      @include onTablet {
+        --logo-height: 120px;
+        --logo-width: 150px;
+      }
+
+      @include onDesktop {
+        --logo-height: 140px;
+      }
+    }
+
+    &--burger {
+      height: 24px;
+      background-image: url("../images/burger.svg");
+    }
+
+    &--404 {
+      height: var(--height-404);
+      background-image: url("../images/404.svg");
+
+      @include onTablet {
+        --height-404: 350px;
+      }
+    }
+
+    &--instagram {
+      width: 40px;
+      height: 40px;
+
+      background-image: url("../images/social/instagram.svg");
+    }
+
+    &--tikTok {
+      width: 40px;
+      height: 40px;
+
+      background-image: url("../images/social/tikTok.svg");
+    }
+
+    &--pinterest {
+      width: 40px;
+      height: 40px;
+
+      background-image: url("../images/social/pinterest.svg");
+    }
+  }
+}

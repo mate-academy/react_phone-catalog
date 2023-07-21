@@ -1,0 +1,22 @@
+@import "./media.scss";
+
+@mixin default {
+  display: block;
+  padding: 20px 0;
+
+  font-size: 18px;
+  font-weight: 500;
+  color: $black-800;
+
+  text-decoration: none;
+  text-align: center;
+  text-decoration: none;
+
+  @include onDesktop {
+    transition: color $animationDuration;
+
+    &:hover {
+      color: $red-600;
+    }
+  }
+}

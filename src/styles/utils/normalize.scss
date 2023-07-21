@@ -1,0 +1,36 @@
+@import "../utils/mixins.scss";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+
+  margin: 0;
+  padding: 0;
+
+  font: inherit;
+
+  @include onDesktop {
+    cursor: url("../../images/cursor.png"), auto;
+  }
+}
+
+img,
+picture,
+svg,
+video {
+  display: block;
+  min-width: 100%;
+}
+
+.app {
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+iframe {
+  display: none;
+}

@@ -1,0 +1,13 @@
+@import "../../styles/utils/utils.scss";
+@import "./MainButton/MainButton.scss";
+
+.button {
+  padding: 16px 36px;
+
+  text-align: center;
+  text-decoration: none;
+
+  @include onDesktop {
+    padding: 16px 12px;
+  }
+}

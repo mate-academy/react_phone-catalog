@@ -1,0 +1,60 @@
+@import "../../App.scss";
+
+.header {
+
+  &__nav-list {
+    --burger-width: 24px;
+
+    padding-top: 20px;
+    list-style: none;
+
+    @include onTablet {
+      grid-column: 1/5;
+    }
+
+    @include onDesktop {
+      grid-column: 1/13;
+    }
+
+    &--mobile {
+      display: grid;
+      grid-template-columns: var(--burger-width) 1fr min-content;
+      align-items: center;
+      justify-items: center;
+
+      @include onTablet {
+        --burger-width: 32px;
+      }
+
+      @include onDesktop {
+        display: none;
+      }
+    }
+
+    &--desktop {
+      display: none;
+
+      @include onDesktop {
+        display: grid;
+        align-items: center;
+      }
+    }
+  }
+
+  &__nav-list-item {
+    width: 100%;
+
+    &--mobile {
+
+      &:nth-child(2) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  }
+
+  &__nav-list-link {
+    @include default;
+  }
+}

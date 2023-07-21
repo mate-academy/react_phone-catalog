@@ -1,0 +1,9 @@
+@import "./utils/mixins.scss";
+
+.page {
+  font-family: 'IBM Plex Mono', monospace;
+
+  &__section {
+    margin-top: 100px;
+  }
+}

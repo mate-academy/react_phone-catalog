@@ -1,9 +1,15 @@
+import React from 'react';
+import { Outlet as Main } from 'react-router-dom';
+
+import { Header } from './components/Header/Header';
+import { Footer } from './components/Footer/Footer';
+
 import './App.scss';
 
-const App = () => (
-  <div className="App">
-    <h1>React Phone Catalog</h1>
+export const App: React.FC = () => (
+  <div className="app">
+    <Header />
+    <Main />
+    <Footer />
   </div>
 );
-
-export default App;
