@@ -38,7 +38,7 @@ export const BannerSlider = () => {
   const handleGoNext = () => setCurrentIndex(prev => prev + 1);
 
   return (
-    <div className="page__section banner-slider">
+    <section className="page__section banner-slider">
       <div className="banner-slider__container">
         <div className="banner-slider__img-container">
           {images.map((image, index) => (
@@ -80,6 +80,6 @@ export const BannerSlider = () => {
           />
         ))}
       </div>
-    </div>
+    </section>
   );
 };

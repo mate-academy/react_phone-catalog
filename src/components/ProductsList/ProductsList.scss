@@ -1,0 +1,41 @@
+@import "../../styles/utils/extends";
+@import "../../styles/utils/variables";
+
+.products-list {
+
+  &__header {
+    margin: 0 0 40px;
+  }
+
+  &__title {
+    @extend %h1;
+
+    margin: 0 0 8px;
+  }
+
+  &__qty {
+    @extend %body-text;
+
+    margin: 0 0 40px;
+    color: $secondary-color;
+  }
+
+  &__filters {
+    position: relative;
+
+    display: flex;
+    margin-bottom: 24px;
+  }
+
+  &__drop-down-container {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    margin-right: 16px;
+  }
+
+  &__main-content {
+    margin-bottom: 40px;
+  }
+}

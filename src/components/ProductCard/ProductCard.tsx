@@ -11,18 +11,12 @@ type Props = {
 };
 
 const getGridColumn = (index: number) => {
-  switch (index) {
-    case 0:
-      return '1-6';
-    case 1:
-      return '7-12';
-    case 2:
-      return '13-18';
-    case 3:
-      return '19-24';
-    default:
-      return '0';
-  }
+  const itemsInRow = 4;
+  const rowIndex = index % itemsInRow;
+  const start = rowIndex * 6 + 1;
+  const end = rowIndex * 6 + 6;
+
+  return `${start}-${end}`;
 };
 
 export const ProductCard: FC<Props> = ({ product, index }) => {
@@ -76,8 +70,16 @@ export const ProductCard: FC<Props> = ({ product, index }) => {
       </div>
 
       <div className="product-card__actions">
-        <button type="button" className="product-card__add-to-cart">Add to cart</button>
-        <button type="button" className="product-card__add-to-favourites square-button square-button--big">
+        <button
+          type="button"
+          className="product-card__add-to-cart rectangular-button"
+        >
+          Add to cart
+        </button>
+        <button
+          type="button"
+          className="product-card__add-to-favourites square-button square-button--big"
+        >
           <img src="icons/favourites.svg" alt="next button" />
         </button>
       </div>

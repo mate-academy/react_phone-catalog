@@ -4,6 +4,7 @@ html,
 body {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 [class*="__container"] {
@@ -13,6 +14,10 @@ body {
 
 .page {
   min-height: calc(100vh - #{$header-height} - #{$footer-height});
+
+  &__container {
+    padding-top: 24px;
+  }
 
   &__section {
     margin-bottom: 80px;

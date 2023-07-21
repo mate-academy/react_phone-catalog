@@ -21,7 +21,10 @@ export const ShopByCategory: FC<Props> = ({ products }) => {
   return (
     <section className="page__section shop-by-category">
       <h1 className="shop-by-category__title">Shop by category</h1>
-      <div className="shop-by-category__container">
+      <div
+        className="shop-by-category__container"
+        data-cy="categoryLinksContainer"
+      >
         <div className="shop-by-category__card">
           <Link
             to="phones"

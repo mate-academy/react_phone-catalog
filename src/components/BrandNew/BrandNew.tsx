@@ -11,7 +11,7 @@ export const BrandNew: FC<Props> = ({ products }) => {
   const brandNewProducts = getBrandNewProducts(products);
 
   return (
-    <section className="page__section">
+    <section className="page__section slider">
       <ProductsSlider
         products={brandNewProducts}
         title="Brand new models"

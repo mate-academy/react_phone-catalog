@@ -1,7 +1,8 @@
 import { FC } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import './Header.scss';
 import classNames from 'classnames';
+import { SearchBar } from '../SearchBar';
 
 type Props = {
   to: string,
@@ -20,6 +21,10 @@ export const PageNavLink: FC<Props> = ({ to, text }) => (
 );
 
 export const Header: FC = () => {
+  const { pathname } = useLocation();
+
+  const showSearchbar = pathname !== '/' && pathname !== '/cart';
+
   return (
     <header className="header">
       <div className="header__content header__content--left">
@@ -37,6 +42,7 @@ export const Header: FC = () => {
         </nav>
       </div>
       <div className="header__content header__content--right">
+        {showSearchbar && <SearchBar />}
         <Link to="/#favourites" className="header__link">
           <img
             className="icon icon--favourites"

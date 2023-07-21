@@ -1,5 +1,5 @@
-@import '../../styles/utils/extends';
-@import '../../styles/utils/variables';
+@import "../../styles/utils/extends";
+@import "../../styles/utils/variables";
 
 .shop-by-category {
   &__title {
@@ -41,7 +41,7 @@
     background-position-x: 22px;
     background-position-y: 20px;
     background-size: 546px;
-    background-color: #8D8D92;
+    background-color: #8d8d92;
   }
 
   &__img-accessories {
@@ -49,7 +49,7 @@
     background-position-x: 30px;
     background-position-y: 53px;
     background-size: 682px;
-    background-color: #973D5F;
+    background-color: #973d5f;
   }
 
   &__subtitle-link {

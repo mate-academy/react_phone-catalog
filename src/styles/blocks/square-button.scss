@@ -1,3 +1,5 @@
+@import "../utils/variables";
+
 .square-button {
   width: 32px;
   height: 32px;
@@ -20,5 +22,10 @@
   &--disabled {
     pointer-events: none;
     opacity: 0.6;
+  }
+
+  &--selected {
+    color: $white-color;
+    background-color: $primary-color;
   }
 }

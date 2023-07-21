@@ -1,10 +1,11 @@
 @import "../../styles/utils/variables";
+@import "../../styles/utils/extends";
 
 .header {
   display: flex;
   justify-content: space-between;
 
-  box-shadow: 0px 1px 0px $elements-color;
+  box-shadow: 0 1px 0 $elements-color;
 
   &__content {
     display: flex;
@@ -21,6 +22,8 @@
   }
 
   &__navlink {
+    @extend %uppercase;
+
     position: relative;
 
     display: flex;
@@ -28,10 +31,6 @@
     margin-right: 64px;
 
     color: $secondary-color;
-    font-family: "Mont Bold", sans-serif;
-    font-size: 12px;
-    line-height: 11px;
-    text-transform: uppercase;
     text-decoration: none;
 
     &:hover {
@@ -60,14 +59,13 @@
         transform: scale(1);
       }
     }
-
   }
 
   &__link {
     display: flex;
     width: 64px;
     height: 64px;
-    
-    box-shadow: -1px 0 0 $elements-color;
+    box-sizing: border-box;
+    border-left: 1px solid $elements-color;
   }
 }

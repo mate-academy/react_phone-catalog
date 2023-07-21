@@ -1,0 +1,17 @@
+@import "../utils/variables";
+@import "../utils/extends";
+
+.rectangular-button {
+  @extend %button-text;
+
+  border: 0;
+
+  color: $white-color;
+  background-color: $primary-color;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+    transition: box-shadow 0.3s ease-in-out;
+  }
+}

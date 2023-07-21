@@ -11,7 +11,7 @@ export const HotPrices: FC<Props> = ({ products }) => {
   const hotPriceProducts = getHotPriceProducts(products);
 
   return (
-    <section className="page__section">
+    <section className="page__section slider">
       <ProductsSlider
         products={hotPriceProducts}
         title="Hot prices"
