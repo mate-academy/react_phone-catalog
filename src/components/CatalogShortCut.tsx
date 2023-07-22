@@ -12,7 +12,7 @@ type Props = {
 export const CatalogShortCut: React.FC<Props> = ({ list, title }) => {
   const [quantityBrand, setQuantityBrand] = useState(4);
 
-  const hotPrices = useMemo(() => (
+  const listToShow = useMemo(() => (
     [...list].slice(quantityBrand - 4, quantityBrand)
   ), [list, quantityBrand]);
 
@@ -51,7 +51,7 @@ export const CatalogShortCut: React.FC<Props> = ({ list, title }) => {
       </div>
 
       <div className="CatalogShortCut__cards">
-        {hotPrices.map(phone => <Card card={phone} key={phone.id} />)}
+        {listToShow.map(phone => <Card card={phone} key={phone.id} />)}
       </div>
     </div>
   );

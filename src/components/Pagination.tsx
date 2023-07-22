@@ -67,7 +67,7 @@ export const Pagination: React.FC<Props> = ({ total, perPage, currPage }) => {
           <li
             key={number}
             className={classNames('pagination__item', {
-              active: currentPage === number,
+              current: currentPage === number,
             })}
           >
             <Link
@@ -75,7 +75,7 @@ export const Pagination: React.FC<Props> = ({ total, perPage, currPage }) => {
                 search: getSearchWith(searchParams, { page: `${number}` }),
               }}
               className={classNames('pagination__link', {
-                active: currentPage === number,
+                current: currentPage === number,
               })}
             >
               {number}

@@ -26,7 +26,7 @@ export const ShortInfo: React.FC<ShortInfoProps> = ({
             {description.colorsAvailable.map(color => (
               <li
                 className={classNames('description__colors-item',
-                  { active__color: description.color === color })}
+                  { current__color: description.color === color })}
                 key={color}
               >
                 <Link
@@ -54,7 +54,7 @@ export const ShortInfo: React.FC<ShortInfoProps> = ({
                 <Link
                   className={classNames(
                     'description__capacity-link',
-                    { active: description.capacity === capacity },
+                    { current: description.capacity === capacity },
                   )}
                   to={`/phones/${description.namespaceId}-${capacity.toLocaleLowerCase()}-${description.color}`}
                 >

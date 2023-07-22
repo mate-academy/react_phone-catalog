@@ -11,7 +11,7 @@ export const HistoryBackPusher: React.FC = () => {
   };
 
   return (
-    <div className="HistoryBackPusher">
+    <div className="HistoryBackPusher" data-cy="backButton">
       <img
         src={left}
         alt="left"

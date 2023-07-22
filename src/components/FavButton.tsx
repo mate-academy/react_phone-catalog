@@ -37,6 +37,7 @@ export const FavButton: React.FC<Props> = ({ phone }) => {
       type="button"
       className="button button__fav"
       onClick={() => handler(phone)}
+      data-cy="addToFavorite"
     >
       <img src={isFav ? favoriteFilled : favorite} alt="" />
     </button>

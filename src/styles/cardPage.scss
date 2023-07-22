@@ -120,8 +120,7 @@
       border: 1px solid $gray-icons-placeholders;
 
       &:hover {
-        border: 1px solid
-        $color-primary;
+        border: 1px solid $color-primary;
       }
     }
   }
@@ -169,10 +168,6 @@
     justify-content: space-between;
 
     gap: 64px;
-  }
-
-  &__about {
-    border-bottom: 1px solid #e2e6e9;
   }
 }
 
@@ -236,6 +231,8 @@
     line-height: 21px;
     color: #89939a;
     padding-bottom: 32px;
+
+    border: none;
   }
 }
 
@@ -290,7 +287,7 @@
   }
 }
 
-.active {
+.current {
   color: #fff;
 
   background-color: $color-primary;
@@ -298,7 +295,7 @@
   border: 1px solid $color-primary;
 }
 
-.active__color {
+.current__color {
   border: 1px solid $color-primary;
 }
 

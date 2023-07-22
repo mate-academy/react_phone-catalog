@@ -1,14 +1,16 @@
 import React from 'react';
 
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 import { useSelector } from 'react-redux';
+import classNames from 'classnames';
 import logo from '../imgs/LOGO.svg';
 
 import cart from '../imgs/icons/Shopping bag (Cart).svg';
 
 import favsIcon from '../imgs/icons/Favourites (Heart Like).svg';
 import { RootState } from '../Reducer/store';
+import { SearchField } from './SearchField';
 
 export const Header: React.FC = () => {
   const favsList = useSelector((state: RootState) => state.favorites);
@@ -23,51 +25,82 @@ export const Header: React.FC = () => {
 
         <ul className="header__menu">
           <li className="header__item">
-            <Link
+            <NavLink
               to="/"
-              className="header__link"
+              className={({ isActive }) => classNames(
+                'header__link',
+                { 'header__link--active': isActive },
+              )}
             >
               Home
-            </Link>
+            </NavLink>
           </li>
           <li className="header__item">
-            <Link
-              to="/phones"
+            <NavLink
+              to="/categories/phones"
               className="header__link"
             >
               Phones
-            </Link>
+            </NavLink>
           </li>
           <li className="header__item">
-            <Link
-              to="/tablets"
-              className="header__link"
+            <NavLink
+              to="/categories/tablets"
+              className={({ isActive }) => classNames(
+                'header__link',
+                { 'header__link--active': isActive },
+              )}
             >
               Tablets
-            </Link>
+            </NavLink>
           </li>
           <li className="header__item">
-            <Link
-              to="/accessories"
-              className="header__link"
+            <NavLink
+              to="/categories/accessories"
+              className={({ isActive }) => classNames(
+                'header__link',
+                { 'header__link--active': isActive },
+              )}
             >
               Accessories
-            </Link>
+            </NavLink>
           </li>
         </ul>
       </nav>
 
       <div className="header__buttons">
-        <Link to="/favorites">
-          <button type="button" className="button button__cart" data-counter={`${favsList.length}`}>
+        <SearchField />
+
+        <NavLink
+          to="/categories/favorites"
+          className={({ isActive }) => classNames(
+            'header__buttons--link',
+            { 'header__buttons--link--active': isActive },
+          )}
+        >
+          <button
+            type="button"
+            className="button button__cart"
+            data-counter={`${favsList.length}`}
+          >
             <img src={favsIcon} alt="" className="button__cart--image" />
           </button>
-        </Link>
-        <Link to="/cart">
-          <button type="button" className="button button__cart" data-counter={`${cartList.length}`}>
+        </NavLink>
+        <NavLink
+          to="/cart"
+          className={({ isActive }) => classNames(
+            'header__buttons--link',
+            { 'header__buttons--link--active': isActive },
+          )}
+        >
+          <button
+            type="button"
+            className="button button__cart"
+            data-counter={`${cartList.length}`}
+          >
             <img src={cart} alt="" className="button__cart--image" />
           </button>
-        </Link>
+        </NavLink>
       </div>
     </div>
   );

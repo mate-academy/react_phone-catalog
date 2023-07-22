@@ -13,10 +13,6 @@ html {
   scroll-behavior: smooth;
 }
 
-img > svg:hover {
-  fill: peru;
-}
-
 .body--with-menu {
   overflow: hidden;
 
@@ -29,7 +25,7 @@ img > svg:hover {
   display: flex;
   flex-direction: column;
 
-  min-height: 505px;
+  min-height: calc(100vh - 200px);
 
   max-width: 320px;
   margin: 0 auto;

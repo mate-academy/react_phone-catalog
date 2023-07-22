@@ -11,10 +11,20 @@
   gap: 21px;
 
   min-width: 400px;
+  transition-duration: 0.3s;
+
+  &:hover {
+    box-shadow: 1px 3px 13px 1px rgba(23, 32, 49, 0.26);
+    transform: scale(1.02);
+  }
 
   &__cross {
     width: 16px;
     height: 16px;
+
+    &:hover {
+      transform: scale(1.2);
+    }
   }
 
   &__image {

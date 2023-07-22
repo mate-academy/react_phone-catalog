@@ -10,11 +10,13 @@ import { ShortInfo } from '../components/ShortInfo';
 import { AboutSection } from '../components/AboutSection';
 import { TechSpecsSection } from '../components/TechSpecsSection';
 import { HistoryBackPusher } from '../components/HistoryBackPusher';
+import { CatalogShortCut } from '../components/CatalogShortCut';
 
 export const CardPage: React.FC = () => {
   const params = useParams();
 
   const [isLoading, setIsLoading] = useState(true);
+  const [products, setProdcuts] = useState<Phone[]>([]);
   const [currentProduct, setCurrentProduct] = useState<Phone | null>(null);
   const [description, setDescription] = useState<PhoneInfo | null>(null);
 
@@ -28,6 +30,7 @@ export const CardPage: React.FC = () => {
         .find(product => product.itemId === id) || null;
 
       setDescription(responseForDescription);
+      setProdcuts(responseForProductList);
       setCurrentProduct(getCurrentProduct);
       setIsLoading(false);
     } catch {
@@ -40,6 +43,8 @@ export const CardPage: React.FC = () => {
       getData(params.id);
     }
   }, [params.id]);
+
+  const randomProducts = [...products].sort(() => 0.5 - Math.random());
 
   if (description === null || currentProduct === null || isLoading) {
     return (
@@ -67,6 +72,10 @@ export const CardPage: React.FC = () => {
         <AboutSection description={description} />
         <TechSpecsSection description={description} />
       </div>
+      <CatalogShortCut
+        list={randomProducts}
+        title="You may also like"
+      />
     </div>
   );
 };

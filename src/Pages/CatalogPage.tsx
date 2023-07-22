@@ -1,5 +1,5 @@
 import {
-  useLocation, useParams, useSearchParams,
+  useLocation, useSearchParams,
 } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { Catalog } from '../components/Catalog';
@@ -15,27 +15,19 @@ export const CatalogPage: React.FC = () => {
   const location = useLocation();
   const page = new URLSearchParams(location.search).get('page') || '1';
 
-  const { category } = useParams();
-
   const [liftedListLength, setLiftedListLength] = useState(0);
 
   const [sort, setSort] = useState('');
   const [quantity, setQuantity] = useState(16);
+  const [query, setQuery] = useState('');
 
   const [searchParams] = useSearchParams();
 
   useEffect(() => {
     setSort(searchParams.get('sort') || 'age');
     setQuantity(Number(searchParams.get('perPage') || '16'));
+    setQuery(searchParams.get('query') || '');
   }, [page, searchParams]);
-
-  if (!category) {
-    return (
-      <div>
-        WHOOPS
-      </div>
-    );
-  }
 
   const onGetListLength = (number: number) => {
     setLiftedListLength(number);
@@ -50,10 +42,10 @@ export const CatalogPage: React.FC = () => {
       </div>
 
       <Catalog
-        category={category || ''}
         onGetListLength={onGetListLength}
         sort={sort}
         quantity={quantity}
+        query={query}
         currPage={Number(page)}
       />
 

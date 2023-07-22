@@ -1,33 +1,39 @@
 import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useParams, useSearchParams } from 'react-router-dom';
 
 import { useSelector } from 'react-redux';
 
 import { LinearProgress } from '@mui/material';
 
+import swal from 'sweetalert';
 import { getProducts } from '../api/getData';
 
 import { Card } from './Card';
 
 import { Phone } from '../type/Phone';
 import { RootState } from '../Reducer/store';
+import { NoResult } from './NoResult';
 
 type Props = {
   onGetListLength: (number: number) => void;
-  category: string;
   sort: string;
   quantity: number;
   currPage: number;
+  query: string;
 };
 
 export const Catalog: React.FC<Props> = ({
-  category,
   onGetListLength,
   sort,
   quantity,
   currPage,
+  query,
 }) => {
   const [catalog, setCatalog] = useState<Phone[]>([]);
+  const { category } = useParams();
+
+  const [searchParams, setSearchParams] = useSearchParams();
+
   const favorites = useSelector((state: RootState) => state.favorites);
 
   const [fetchingData, setFetchingData] = useState(true);
@@ -40,9 +46,8 @@ export const Catalog: React.FC<Props> = ({
 
       const result = await getProducts();
 
-      const getCatalog = result.filter(element => (
-        element.category === `${category}` && element.capacity.length > 0
-      ));
+      const getCatalog = result
+        .filter((element) => element.category === category);
 
       setCatalog(getCatalog);
 
@@ -50,12 +55,16 @@ export const Catalog: React.FC<Props> = ({
 
       setFetchingData(false);
     } catch {
-      throw new Error('Hello, Mario, HotPrices comp');
+      swal({
+        icon: 'error',
+        title: 'Empty list, Data Error!',
+        text: 'Try again in 5 minutes',
+      });
     }
   };
 
   useEffect(() => {
-    if (location.pathname === '/favorites') {
+    if (location.pathname === '/categories/favorites') {
       setFetchingData(true);
 
       setCatalog(favorites);
@@ -66,9 +75,13 @@ export const Catalog: React.FC<Props> = ({
     } else {
       data();
     }
-  }, [location]);
 
-  const listOfResults = [...catalog].sort((el1, el2) => {
+    if (!searchParams.get('query')) {
+      setSearchParams({ query: '' });
+    }
+  }, [category]);
+
+  let listOfResults = [...catalog].sort((el1, el2) => {
     switch (sort) {
       case 'age':
         return el2.year - el1.year;
@@ -84,6 +97,12 @@ export const Catalog: React.FC<Props> = ({
     }
   }).slice(currPage * quantity - quantity, currPage * quantity);
 
+  if (query) {
+    listOfResults = listOfResults
+      .filter((element) => element.name.toLowerCase()
+        .includes(query.toLowerCase()));
+  }
+
   if (fetchingData) {
     return (
       <div className="container" style={{ margin: '25px 0px' }}>
@@ -94,9 +113,11 @@ export const Catalog: React.FC<Props> = ({
 
   return (
     <div className="catalog__content" data-cy="productList">
-      {listOfResults.map((item: Phone) => (
-        <Card card={item} key={item.id} />
-      ))}
+      {listOfResults.length ? listOfResults.map((item: Phone) => (
+        <Card card={item} key={item.itemId} />
+      )) : (
+        <NoResult />
+      )}
     </div>
   );
 };
