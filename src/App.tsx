@@ -1,6 +1,7 @@
 import { Route, Routes, useLocation } from 'react-router-dom';
 import './App.scss';
 import { useEffect } from 'react';
+// import { Product } from './Components/ProductCards/Product';
 import { FavoriteContextProvider } from './FavoriteContext';
 import { HomePAge } from './Components/Pages/HomePage/HomePage';
 import { Header } from './Components/Header/Header';
@@ -12,6 +13,7 @@ import { Favorite } from './Components/Pages/Favorite/Favorite';
 import { Basket } from './Components/Pages/Basket/Basket';
 import { Rights } from './Components/Pages/Rights/Rights';
 import { Footer } from './Components/Footer/Footer';
+// import { BlockBasket } from './Components/Pages/Basket/BlockBasket';
 
 export const App = () => {
   const location = useLocation();
@@ -52,6 +54,14 @@ export const App = () => {
                 />
               )}
             />
+            {/* <Route
+              path="/basketBlock"
+              element={(
+                <BlockBasket
+                  product={product}
+                />
+              )}
+            /> */}
             <Route path="/favorite" element={<Favorite />} />
             <Route path="/basket" element={<Basket />} />
             <Route path="/contacts" element={<ContactsPage />} />

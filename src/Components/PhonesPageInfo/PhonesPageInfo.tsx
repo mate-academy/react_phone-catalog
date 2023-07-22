@@ -312,7 +312,6 @@ export const PhonesPageInfo = ({ info }: InfoProps) => {
               </div>
 
               <div className="contant-Tech">
-
                 <section className="contant-Tech__section">
                   <div className="block-page">
                     <div className="psge__info-all-left">
@@ -325,7 +324,6 @@ export const PhonesPageInfo = ({ info }: InfoProps) => {
                       <p className="por-left">Zoom</p>
                       <p className="por-left">Cell</p>
                     </div>
-
                     <div className="psge__info-all-right">
                       <p className="por-right">{screen}</p>
                       <p className="por-right">{resolution}</p>
@@ -336,7 +334,6 @@ export const PhonesPageInfo = ({ info }: InfoProps) => {
                       <p className="por-right">{zoom}</p>
                       <p className="por-right">{cell?.join(' , ')}</p>
                     </div>
-
                   </div>
                 </section>
               </div>

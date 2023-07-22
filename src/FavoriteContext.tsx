@@ -27,6 +27,17 @@ export const useFavoriteContext = () => {
   return context;
 };
 
+export const useBasketContext = () => {
+  const context = useContext(FavoriteContext);
+
+  if (!context) {
+    throw new
+    Error('useBasketContext must be used within a FavoriteContextProvider');
+  }
+
+  return context;
+};
+
 export const FavoriteContextProvider: React.FC = ({ children }) => {
   const [favorites, setFavorites] = useState<string[]>([]);
   const [basket, setBasket] = useState<string[]>([]);
