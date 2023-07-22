@@ -14,10 +14,27 @@
 
   z-index: $z-index--2;
   transform: translateX(-100%);
-  transition: transform $animationDuration;
 
   &--active {
     transform: translateX(0);
+  }
+
+  &-enter {
+    opacity: 0;
+
+    &-active {
+      opacity: 1;
+      transition: opacity 200ms;
+    }
+  }
+
+  &-exit {
+    opacity: 1;
+
+    &-active {
+      opacity: 0;
+      transition: opacity 200ms;
+    }
   }
 
   &__nav-list {

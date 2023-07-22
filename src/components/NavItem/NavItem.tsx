@@ -13,6 +13,7 @@ type Props = {
   defaultLinkClass: string,
   mobileClass?: string,
   desktopClass?: string,
+  onClick?: () => void,
 };
 
 export const NavItem: React.FC<Props> = ({
@@ -22,6 +23,7 @@ export const NavItem: React.FC<Props> = ({
   defaultLinkClass,
   mobileClass = '',
   desktopClass = '',
+  onClick = () => {},
 }) => {
   return (
     <li
@@ -44,6 +46,7 @@ export const NavItem: React.FC<Props> = ({
           <NavLink
             to={setUrl(item)}
             className="icon"
+            onClick={onClick}
           >
             <div className={`icon__image ${item}`} />
           </NavLink>

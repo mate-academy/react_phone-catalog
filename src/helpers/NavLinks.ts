@@ -19,7 +19,6 @@ export const HEADER_DESKTOP_NAV_ITEMS = [
 ];
 
 export const BURGER_NAV_ITEMS = [
-  NavLinks.Burger,
   NavLinks.Logo,
   NavLinks.Close,
 ];
