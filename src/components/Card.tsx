@@ -26,7 +26,7 @@ export const Card: React.FC<Props> = ({ card }) => {
     setLoadingPicture(true);
   }, [loadingPicture]);
 
-  const correctUrl = `/new/${image}`;
+  const correctUrl = `public/_new/${image}`;
 
   return (
     <div className="card" data-cy="cardsContainer">
