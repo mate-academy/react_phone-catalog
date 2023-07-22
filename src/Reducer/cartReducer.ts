@@ -1,14 +1,14 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Phone } from '../type/Phone';
+import { Products } from '../type/Products';
 
-const initialState: Phone[] = [];
+const initialState: Products[] = [];
 
 const favoritesSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
     deleteCart: (state, action: PayloadAction<string>) => {
-      return state.filter((phone: Phone) => phone.itemId !== action.payload);
+      return state.filter((phone: Products) => phone.itemId !== action.payload);
     },
     incrementProductCount: (state, action: PayloadAction<string>) => {
       const correctProduct = state
@@ -26,7 +26,7 @@ const favoritesSlice = createSlice({
         toUpdate.count -= 1;
       }
     },
-    addCart: (state, action: PayloadAction<Phone>) => {
+    addCart: (state, action: PayloadAction<Products>) => {
       return [...state, { ...action.payload, count: 1 }];
     },
   },

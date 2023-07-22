@@ -1,9 +1,9 @@
-import { Phone } from '../type/Phone';
+import { Products } from '../type/Products';
 import { PhoneInfo } from '../type/PhoneInfo';
 import { client } from '../utils/fetchClient';
 
 export const getProducts = async () => {
-  return client.get<Phone[]>('/products.json');
+  return client.get<Products[]>('/products.json');
 };
 
 export const getDescription = async (id: string) => {

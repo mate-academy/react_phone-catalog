@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import { Phone } from '../type/Phone';
+import { Products } from '../type/Products';
 import { FavButton } from './FavButton';
 import { AddCartButton } from './AddCartButton';
 
 type Props = {
-  card: Phone;
+  card: Products;
 };
 
 export const Card: React.FC<Props> = ({ card }) => {
@@ -30,7 +30,7 @@ export const Card: React.FC<Props> = ({ card }) => {
 
   return (
     <div className="card" data-cy="cardsContainer">
-      <Link to={`/phones/${itemId}`} className="card__content">
+      <Link to={`/categories/phones/${itemId}`} className="card__content">
         <div className="card__img-container">
           <img
             src={correctUrl}

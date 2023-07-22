@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import Swal from 'sweetalert';
 import Confetti from 'react-confetti';
 import { useState } from 'react';
-import { Phone } from '../type/Phone';
+import { Products } from '../type/Products';
 
 import { ProductField } from './ProductField';
 import { RootState } from '../Reducer/store';
@@ -14,7 +14,7 @@ export const Cart: React.FC = () => {
 
   const totalPrice = cart.reduce(
     (accumulator: number,
-      currentValue: Phone) => {
+      currentValue: Products) => {
       return accumulator + currentValue.price * currentValue.count;
     },
     0,
@@ -35,7 +35,7 @@ export const Cart: React.FC = () => {
 
       <div className="cart__content">
         <ul className="cart__list">
-          {cart.length ? cart.map((product: Phone) => (
+          {cart.length ? cart.map((product: Products) => (
             <ProductField product={product} key={product.itemId} />
           )) : <span>Your cart is empty</span>}
         </ul>

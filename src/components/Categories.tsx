@@ -7,14 +7,14 @@ import mobile from '../imgs/categories/mobile.png';
 import teblets from '../imgs/categories/tablets.png';
 import accessories from '../imgs/categories/accessories.png';
 
-import { Phone } from '../type/Phone';
+import { Products } from '../type/Products';
 import { getProducts } from '../api/getData';
 
 export const Categories: React.FC = () => {
-  const [list, setList] = useState<Phone[]>([]);
+  const [list, setList] = useState<Products[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  const getLengthByCategory = (arr: Phone[], category: string) => {
+  const getLengthByCategory = (arr: Products[], category: string) => {
     return arr.filter(product => product.category === category).length;
   };
 

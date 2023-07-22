@@ -1,4 +1,4 @@
-import { Phone } from '../type/Phone';
+import { Products } from '../type/Products';
 
 const BASE_URL = 'https://mate-academy.github.io/react_phone-catalog/_new';
 
@@ -10,7 +10,7 @@ function wait(delay: number) {
 
 type RequestMethod = 'GET' | 'POST' | 'PATCH' | 'DELETE';
 
-type Data = Phone | Partial<Phone> | null;
+type Data = Products | Partial<Products> | null;
 
 function request<T>(
   url: string,

@@ -1,13 +1,13 @@
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import { PhoneInfo } from '../type/PhoneInfo';
-import { Phone } from '../type/Phone';
+import { Products } from '../type/Products';
 import { AddCartButton } from './AddCartButton';
 import { FavButton } from './FavButton';
 
 interface ShortInfoProps {
   description: PhoneInfo;
-  currentProduct: Phone;
+  currentProduct: Products;
 }
 
 export const ShortInfo: React.FC<ShortInfoProps> = ({

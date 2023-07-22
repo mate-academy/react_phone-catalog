@@ -1,11 +1,11 @@
 import { useMemo, useState, useCallback } from 'react';
 import arrowRight from '../imgs/icons/arrow-right.svg';
 import arrowLeft from '../imgs/icons/arrow-left.svg';
-import { Phone } from '../type/Phone';
+import { Products } from '../type/Products';
 import { Card } from './Card';
 
 type Props = {
-  list: Phone[];
+  list: Products[];
   title: string;
 };
 

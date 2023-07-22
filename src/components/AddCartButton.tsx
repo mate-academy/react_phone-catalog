@@ -5,10 +5,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import classNames from 'classnames';
 import { addCart, deleteCart } from '../Reducer/cartReducer';
 
-import { Phone } from '../type/Phone';
+import { Products } from '../type/Products';
 
 type Props = {
-  phone: Phone;
+  phone: Products;
 };
 
 export const AddCartButton: React.FC<Props> = ({ phone }) => {
@@ -17,12 +17,14 @@ export const AddCartButton: React.FC<Props> = ({ phone }) => {
   const cart = useSelector((state: any) => state.cart);
 
   useEffect(() => {
-    setIsAdded(cart.find((product: Phone) => product.itemId === phone.itemId));
+    setIsAdded(
+      cart.find((product: Products) => product.itemId === phone.itemId),
+    );
   }, [cart]);
 
   const dispatch = useDispatch();
 
-  const handler = (product: Phone) => {
+  const handler = (product: Products) => {
     if (isAdded) {
       dispatch(deleteCart(product.itemId));
     } else {

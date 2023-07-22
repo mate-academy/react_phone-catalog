@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { LinearProgress } from '@mui/material';
 import { getDescription, getProducts } from '../api/getData';
 import { PhoneInfo } from '../type/PhoneInfo';
-import { Phone } from '../type/Phone';
+import { Products } from '../type/Products';
 import { PhotoGallery } from '../components/PhotoGallery';
 import { NavigationField } from '../components/NavigationField';
 import { ShortInfo } from '../components/ShortInfo';
@@ -16,8 +16,8 @@ export const CardPage: React.FC = () => {
   const params = useParams();
 
   const [isLoading, setIsLoading] = useState(true);
-  const [products, setProdcuts] = useState<Phone[]>([]);
-  const [currentProduct, setCurrentProduct] = useState<Phone | null>(null);
+  const [products, setProdcuts] = useState<Products[]>([]);
+  const [currentProduct, setCurrentProduct] = useState<Products | null>(null);
   const [description, setDescription] = useState<PhoneInfo | null>(null);
 
   const getData = async (id: string) => {

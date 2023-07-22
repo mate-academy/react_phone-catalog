@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useLocation, useParams, useSearchParams } from 'react-router-dom';
+import { useParams, useSearchParams } from 'react-router-dom';
 
 import { useSelector } from 'react-redux';
 
@@ -10,7 +10,7 @@ import { getProducts } from '../api/getData';
 
 import { Card } from './Card';
 
-import { Phone } from '../type/Phone';
+import { Products } from '../type/Products';
 import { RootState } from '../Reducer/store';
 import { NoResult } from './NoResult';
 
@@ -29,7 +29,7 @@ export const Catalog: React.FC<Props> = ({
   currPage,
   query,
 }) => {
-  const [catalog, setCatalog] = useState<Phone[]>([]);
+  const [catalog, setCatalog] = useState<Products[]>([]);
   const { category } = useParams();
 
   const [searchParams, setSearchParams] = useSearchParams();
@@ -37,8 +37,6 @@ export const Catalog: React.FC<Props> = ({
   const favorites = useSelector((state: RootState) => state.favorites);
 
   const [fetchingData, setFetchingData] = useState(true);
-
-  const location = useLocation();
 
   const data = async () => {
     try {
@@ -64,7 +62,7 @@ export const Catalog: React.FC<Props> = ({
   };
 
   useEffect(() => {
-    if (location.pathname === '/categories/favorites') {
+    if (category === 'favorites') {
       setFetchingData(true);
 
       setCatalog(favorites);
@@ -113,7 +111,7 @@ export const Catalog: React.FC<Props> = ({
 
   return (
     <div className="catalog__content" data-cy="productList">
-      {listOfResults.length ? listOfResults.map((item: Phone) => (
+      {listOfResults.length ? listOfResults.map((item: Products) => (
         <Card card={item} key={item.itemId} />
       )) : (
         <NoResult />

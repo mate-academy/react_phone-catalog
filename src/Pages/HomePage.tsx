@@ -2,14 +2,14 @@ import React, { useEffect, useState } from 'react';
 
 import { getProducts } from '../api/getData';
 
-import { Phone } from '../type/Phone';
+import { Products } from '../type/Products';
 
 import { Slider } from '../components/Slider';
 import { CatalogShortCut } from '../components/CatalogShortCut';
 import { Categories } from '../components/Categories';
 
 export const HomePage: React.FC = () => {
-  const [list, setList] = useState<Phone[]>([]);
+  const [list, setList] = useState<Products[]>([]);
 
   const data = async () => {
     try {

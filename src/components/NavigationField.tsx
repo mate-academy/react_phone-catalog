@@ -25,7 +25,7 @@ export const NavigationField: React.FC = () => {
 
       <ul className="NavigationField__list">
         <li className="NavigationField__item">
-          <Link to={`/${category}`}>
+          <Link to={`/categories/${category}`}>
             <img src={right} alt="right" className="NavigationField__arrow" />
             {toUpperCaseFirstLetter(category || '')}
           </Link>
@@ -33,7 +33,7 @@ export const NavigationField: React.FC = () => {
 
         <li>
           {id && (
-            <Link to={`/${category}/${id}`}>
+            <Link to={`/categories/${category}/${id}`}>
               <img src={right} alt="right" className="NavigationField__arrow" />
               {getCorrectIdName(id)}
             </Link>

@@ -8,10 +8,10 @@ import {
   incrementProductCount,
   discernmentProductCount,
 } from '../Reducer/cartReducer';
-import { Phone } from '../type/Phone';
+import { Products } from '../type/Products';
 
 type Props = {
-  product: Phone;
+  product: Products;
 };
 
 export const ProductField: React.FC<Props> = ({ product }) => {

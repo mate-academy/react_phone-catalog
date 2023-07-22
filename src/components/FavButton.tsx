@@ -6,11 +6,11 @@ import favoriteFilled
   from '../imgs/icons/Favourites Filled (Heart Like).svg';
 
 import { addFavorites, deleteFavorite } from '../Reducer/favoritesReducer';
-import { Phone } from '../type/Phone';
+import { Products } from '../type/Products';
 import { RootState } from '../Reducer/store';
 
 type Props = {
-  phone: Phone;
+  phone: Products;
 };
 
 export const FavButton: React.FC<Props> = ({ phone }) => {
@@ -21,10 +21,10 @@ export const FavButton: React.FC<Props> = ({ phone }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    setIsFav(favs.some((fav: Phone) => fav.itemId === phone.itemId));
+    setIsFav(favs.some((fav: Products) => fav.itemId === phone.itemId));
   }, [favs]);
 
-  const handler = (product: Phone) => {
+  const handler = (product: Products) => {
     if (isFav) {
       dispatch(deleteFavorite(product.id));
     } else {
