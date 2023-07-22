@@ -12,8 +12,8 @@ import { NotFoundPage } from '../Pages/NotFoundPage';
 export const AppRoutes = () => (
   <Routes>
     <Route path="/" element={<HomePage />} />
-    <Route path="categories/:category" element={<CatalogPage />} />
-    <Route path="categories/:category/:id" element={<CardPage />} />
+    <Route path=":category" element={<CatalogPage />} />
+    <Route path=":category/:id" element={<CardPage />} />
     <Route path="/cart" element={<CartPage />} />
     <Route path="*" element={<NotFoundPage />} />
   </Routes>

@@ -43,7 +43,7 @@ export const Categories: React.FC = () => {
       <h3 className="categories__title">Shop by category</h3>
 
       <div className="categories__content">
-        <Link to="/categories/phones" className="categories__container">
+        <Link to="/phones" className="categories__container">
           <div className="categories__img-box categories__img-box-mobile">
             <img src={mobile} alt="" className="categories__img" />
           </div>
@@ -59,7 +59,7 @@ export const Categories: React.FC = () => {
           </span>
         </Link>
 
-        <Link to="/categories/tablets" className="categories__container">
+        <Link to="/tablets" className="categories__container">
           <div className="categories__img-box categories__img-box-tablets">
             <img src={teblets} alt="" className="categories__img" />
           </div>
@@ -75,7 +75,7 @@ export const Categories: React.FC = () => {
           </span>
         </Link>
 
-        <Link to="/categories/accessories" className="categories__container">
+        <Link to="/accessories" className="categories__container">
           <div className="categories__img-box categories__img-box-accessories">
             <img src={accessories} alt="" className="categories__img" />
           </div>

@@ -37,7 +37,7 @@ export const Header: React.FC = () => {
           </li>
           <li className="header__item">
             <NavLink
-              to="/categories/phones"
+              to="/phones"
               className="header__link"
             >
               Phones
@@ -45,7 +45,7 @@ export const Header: React.FC = () => {
           </li>
           <li className="header__item">
             <NavLink
-              to="/categories/tablets"
+              to="/tablets"
               className={({ isActive }) => classNames(
                 'header__link',
                 { 'header__link--active': isActive },
@@ -56,7 +56,7 @@ export const Header: React.FC = () => {
           </li>
           <li className="header__item">
             <NavLink
-              to="/categories/accessories"
+              to="/accessories"
               className={({ isActive }) => classNames(
                 'header__link',
                 { 'header__link--active': isActive },
@@ -72,7 +72,7 @@ export const Header: React.FC = () => {
         <SearchField />
 
         <NavLink
-          to="/categories/favorites"
+          to="/favorites"
           className={({ isActive }) => classNames(
             'header__buttons--link',
             { 'header__buttons--link--active': isActive },

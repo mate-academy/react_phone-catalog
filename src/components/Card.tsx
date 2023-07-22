@@ -30,7 +30,7 @@ export const Card: React.FC<Props> = ({ card }) => {
 
   return (
     <div className="card" data-cy="cardsContainer">
-      <Link to={`/categories/phones/${itemId}`} className="card__content">
+      <Link to={`/phones/${itemId}`} className="card__content">
         <div className="card__img-container">
           <img
             src={correctUrl}
