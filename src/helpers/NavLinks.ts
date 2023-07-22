@@ -18,6 +18,21 @@ export const HEADER_DESKTOP_NAV_ITEMS = [
   NavLinks.Profile,
 ];
 
+export const BURGER_NAV_ITEMS = [
+  NavLinks.Burger,
+  NavLinks.Logo,
+  NavLinks.Close,
+];
+
+export const BURGER_ITEMS = [
+  NavLinks.NewArrivals,
+  NavLinks.AllGender,
+  NavLinks.LookBook,
+  NavLinks.Delivering,
+  NavLinks.WishList,
+  NavLinks.Profile,
+];
+
 export const FOOTER_NAV_ITEMS = [
   NavLinks.Logo,
   NavLinks.NewArrivals,

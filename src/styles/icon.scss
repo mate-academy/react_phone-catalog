@@ -62,5 +62,12 @@
 
       background-image: url("../images/social/pinterest.svg");
     }
+
+    &--close {
+      width: 16px;
+      height: 16px;
+
+      background-image: url("../images/close.svg");
+    }
   }
 }

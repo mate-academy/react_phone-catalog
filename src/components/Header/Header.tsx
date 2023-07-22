@@ -1,9 +1,12 @@
 import React from 'react';
-import { NavItem } from '../NavItem/NavItem';
+
 import {
   HEADER_MOBILE_NAV_ITEMS,
   HEADER_DESKTOP_NAV_ITEMS,
 } from '../../helpers/NavLinks';
+
+import { NavItem } from '../NavItem/NavItem';
+
 import './Header.scss';
 
 export const Header: React.FC = React.memo(() => (

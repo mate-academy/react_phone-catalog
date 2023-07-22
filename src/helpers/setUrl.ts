@@ -1,6 +1,7 @@
 export const setUrl = (item: string) => {
   switch (true) {
-    case item.includes('logo'): {
+    case item.includes('logo'):
+    case item.includes('close'): {
       return '/';
     }
 

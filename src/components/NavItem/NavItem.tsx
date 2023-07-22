@@ -38,7 +38,8 @@ export const NavItem: React.FC<Props> = ({
         || item.includes('burger')
         || item.includes('instagram')
         || item.includes('tikTok')
-        || item.includes('pinterest'))
+        || item.includes('pinterest')
+        || item.includes('close'))
         ? (
           <NavLink
             to={setUrl(item)}

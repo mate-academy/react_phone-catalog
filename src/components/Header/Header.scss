@@ -3,8 +3,6 @@
 .header {
 
   &__nav-list {
-    --burger-width: 24px;
-
     padding-top: 20px;
     list-style: none;
 
@@ -18,12 +16,12 @@
 
     &--mobile {
       display: grid;
-      grid-template-columns: var(--burger-width) 1fr min-content;
+      grid-template-columns: $burger-width 1fr min-content;
       align-items: center;
       justify-items: center;
 
       @include onTablet {
-        --burger-width: 32px;
+        $burger-width: 32px;
       }
 
       @include onDesktop {

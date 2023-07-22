@@ -14,4 +14,5 @@ export enum NavLinks {
   Instagram = 'icon__image--instagram',
   TikTok = 'icon__image--tikTok',
   Pinterest = 'icon__image--pinterest',
+  Close = 'icon__image--close',
 }
