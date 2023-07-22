@@ -1,0 +1,62 @@
+@import "../../variables.scss";
+
+.product-photos {
+  display: flex;
+
+  &__photo-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-right: 16px;
+    margin-bottom: 16px;
+
+    height: 80px;
+    width: 80px;
+
+    border: 1.5px solid #e2e6e9;
+    cursor: pointer;
+    transition: border-color 0.3s;
+
+    &:not(.product-photos__photo-item--active):hover {
+      border-color: $grey-secondary-color;
+    }
+
+    &--active {
+      border-color: $grey-primary-color;
+    }
+  }
+
+  &__photo-item-box {
+    display: flex;
+    justify-content: center;
+    width: 66px;
+    height: 66px;
+  }
+
+  &__main-photo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 464px;
+    width: 464px;
+
+    margin-right: 64px;
+
+    // border: 1px solid $grey-secondary-color;
+  }
+
+  &__main-photo-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 442px;
+    width: 442px;
+
+  }
+
+  &__main-photo-img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+}

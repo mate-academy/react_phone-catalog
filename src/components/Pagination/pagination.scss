@@ -1,0 +1,120 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // margin: 0 auto;
+
+  // &__button {
+  //   display: flex;
+  //   justify-content: center;
+  //   align-items: center;
+  //   width: 32px;
+  //   height: 32px;
+
+  //   border: 1px solid #b4bdc4;
+  // }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    background-color: #fff;
+    border: 1px solid #b4bdc4;
+
+    transition: all 0.3s;
+    background-repeat: no-repeat;
+    background-position: center;
+
+  }
+
+  &__button-left {
+    background-image: url(../../images/Icons/button_banner_left.svg);
+
+    &:not(.pagination__button-left--disabled):hover {
+      border-color: #313237;
+    }
+
+    &--disabled {
+      // margin-right: 16px;
+      border-color: #e2e6e9;
+      cursor: default;
+      pointer-events: none;
+
+      background-image: url(../../images/Icons/button_arrow_left.svg);
+    }
+  }
+
+  &__button-right {
+    background-image: url(../../images/Icons/button_banner_right.svg);
+
+    &:not(.pagination__button-right--disabled):hover {
+      border-color: #313237;
+    }
+
+    &--disabled {
+      border-color: #e2e6e9;
+      cursor: default;
+      pointer-events: none;
+
+      background-image: url(../../images/Icons/button_arrow_right.svg);
+    }
+  }
+
+  // &__button-left {
+  //   margin-right: 16px;
+  // }
+
+  // &__button-right {
+  //   margin-left: 16px;
+  // }
+
+  &__list {
+    display: flex;
+    margin: 0 16px;
+  }
+
+  &__item {
+    margin-right: 8px;
+
+    &--active {
+      color: #fff;
+      background-color: #313237;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &__link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 32px;
+    height: 32px;
+
+    border: 1px solid #b4bdc4;
+    transition: all 0.3s;
+
+    &:hover {
+      border-color: #313237;
+    }
+
+    &--active {
+      color: #fff;
+      background-color: #313237;
+    }
+  }
+
+  &__break {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 16px;
+    height: 32px;
+  }
+}

@@ -1,0 +1,49 @@
+@import "../../variables.scss";
+
+.product-capacitys {
+  // width: 100%;
+  // display: block;
+  padding-bottom: 24px;
+  border-bottom: 1.5px solid #e2e6e9;
+
+  &__title {
+    margin: 0 0 8px;
+    font-family: $font-semibold;
+    color: $grey-secondary-color;
+  }
+
+  &__list {
+    display: flex;
+  }
+
+  &__item {
+    width: 32px;
+    height: 32px;
+    background-color: gray;
+
+  }
+
+  &__link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 8px;
+    width: 56px;
+    height: 32px;
+    padding: 2px;
+
+    border: 1.5px solid #b4bdc3;
+
+    transition: border-color 0.3s;
+
+    &:not(.product-colors__link--active):hover {
+      border-color: $grey-primary-color;
+    }
+
+    &--active {
+      color: #fff;
+      background-color: $grey-primary-color;
+      border-color: $grey-primary-color;
+    }
+  }
+}

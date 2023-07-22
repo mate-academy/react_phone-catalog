@@ -1,0 +1,35 @@
+.products-page {
+
+  &__content {
+    width: 1136px;
+  }
+
+  &__nav {
+    margin: 24px 0 40px;
+  }
+
+  &__title {
+    margin: 0 0 8px;
+  }
+
+  &__quantity-info {
+    margin: 0 0 40px;
+    font-size: 14px;
+    color: $grey-secondary-color;
+  }
+
+  &__sort {
+    width: 176px;
+    height: 40px;
+    cursor: pointer;
+
+    border: 1px solid #b4bdc4;
+  }
+
+  &__sort-label {
+    display: block;
+    margin-bottom: 4px;
+    font-family: $font-semibold;
+    color: $grey-secondary-color;
+  }
+}
