@@ -6,7 +6,8 @@ import { useFavoriteContext } from '../../../FavoriteContext';
 export const BlockFavorite = () => {
   const { favorites } = useFavoriteContext();
   const filtration = products.filter(
-    (product) => favorites.includes(product.phoneId.toString()),
+    (product) => favorites.includes(product.id.toString())
+      || favorites.includes(product.phoneId.toString()),
   );
 
   return (

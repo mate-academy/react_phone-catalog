@@ -20,7 +20,7 @@ export const Header = ({ searchValue, setSearchValue }: HeaderProps) => {
   const tablets = location.pathname === '/tablets';
   const accessories = location.pathname === '/accessories';
   const basket = location.pathname === '/basket';
-  const favorite = location.pathname === '/favorite';
+  const favorite = location.pathname === '/favorites';
   // const [showSearch, setShowSearch] = useState(!isHomePage);
 
   let search = '';
@@ -98,8 +98,8 @@ export const Header = ({ searchValue, setSearchValue }: HeaderProps) => {
             />
           )}
 
-        <div className={`header__LastChild-heart ${location.pathname === '/favorite' ? 'is-activ' : ''}`}>
-          <NavLink to="/favorite" className="heartLink">
+        <div className={`header__LastChild-heart ${location.pathname === '/favorites' ? 'is-activ' : ''}`}>
+          <NavLink to="/favorites" className="heartLink">
             <img className={`heart-svg ${isHomePage ? 'is-home-page' : ''}`} src={HeartImage} alt="heart" />
           </NavLink>
 

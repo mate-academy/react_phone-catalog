@@ -4,7 +4,7 @@ import { useFavoriteContext } from '../../../FavoriteContext';
 import products from '../../../new/products.json';
 import { NotFoundPage } from '../NotFoundPage/NotFoundPage';
 import './Basket.scss';
-import { BasketButton } from './BasketButton/BasketButton';
+import { BasketButton } from './BasketButton';
 import PrevArrow from './BasketImage/PrevArrow.svg';
 import { BlockBasket } from './BlockBasket';
 

@@ -1,1 +1,0 @@
-import './SortCards.scss';

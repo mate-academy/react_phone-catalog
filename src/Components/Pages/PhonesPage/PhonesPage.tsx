@@ -1,6 +1,6 @@
 import './PhonesPage.scss';
 import { useState } from 'react';
-import { Header } from '../../Header/Header';
+import { Header } from '../../Header';
 import { PhonesPageOsm } from './PhonesPageOsm/PhonesPageOsm';
 import { NotFoundPage } from '../NotFoundPage/NotFoundPage';
 import products from '../../../new/products.json';

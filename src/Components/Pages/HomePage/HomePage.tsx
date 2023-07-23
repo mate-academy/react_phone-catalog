@@ -1,13 +1,10 @@
 import { Header } from '../../Header/Header';
 import { Slider } from './Slider';
-import { HotPrices } from './HotPrice/HotPrice';
+import { HotPrices } from './HotPrice';
 import { ShopByCategory } from './ShopByCategory/ShopByCategory';
-// import { Footer } from '../../Footer/Footer';
 import './HomePage.scss';
-// import { ProductCards } from '../../ProductCards/ProductCards';
-// import products from '../../../api/new/products.json';
 
-export const HomePAge = () => {
+export const HomePage = () => {
   return (
     <>
       <Header searchValue="" setSearchValue={() => null} />
