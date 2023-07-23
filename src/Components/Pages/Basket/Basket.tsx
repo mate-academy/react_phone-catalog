@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useFavoriteContext } from '../../../FavoriteContext';
 import products from '../../../new/products.json';
@@ -8,19 +9,24 @@ import PrevArrow from './BasketImage/PrevArrow.svg';
 import { BlockBasket } from './BlockBasket';
 
 export const Basket = () => {
+  const [sumPrice, setSumPrice] = useState(0);
   const navigation = useNavigate();
   const { basketLength } = useFavoriteContext();
   const { basket } = useFavoriteContext();
 
   const filtration = products.filter(
-    (product) => basket.includes(product.id.toString()),
+    (product) => basket.includes(product.phoneId.toString())
+    || basket.includes(product.phoneId.toString()),
   );
 
-  let sumPrice = 0;
+  useEffect(() => {
+    let totalPrice = 0;
 
-  filtration.forEach((product) => {
-    sumPrice += product.price;
-  });
+    filtration.forEach((product) => {
+      totalPrice += product.price;
+    });
+    setSumPrice(totalPrice);
+  }, [filtration]);
 
   return (
     <>
@@ -55,7 +61,7 @@ export const Basket = () => {
               className="blockBasket"
             >
               {filtration.map((product) => (
-                <BlockBasket key={product.id} product={product} />
+                <BlockBasket key={product.phoneId} product={product} />
               ))}
             </div>
 

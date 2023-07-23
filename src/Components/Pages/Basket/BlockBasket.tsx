@@ -13,7 +13,6 @@ interface ProductCardsProps {
 
 export const BlockBasket = ({ product }: ProductCardsProps) => {
   const {
-    id,
     phoneId,
     price,
     image,
@@ -25,17 +24,18 @@ export const BlockBasket = ({ product }: ProductCardsProps) => {
     removeFromBasket,
   } = useBasketContext();
 
-  const isBasket = basket.includes(id.toString());
+  const isBasket = basket.includes(phoneId.toString())
+   || basket.includes(phoneId.toString());
   const [phoneModelCountInBasket, setPhoneModelCountInBasket]
    = useState<number>(
-     basket.filter((productId) => productId === id.toString()).length,
+     basket.filter((productId) => productId === phoneId.toString()).length,
    );
 
   const updatedPrice = price * phoneModelCountInBasket;
 
   const handleDeleteClick = () => {
     if (isBasket) {
-      removeFromBasket(id.toString());
+      removeFromBasket(phoneId.toString());
     }
   };
 
@@ -51,7 +51,7 @@ export const BlockBasket = ({ product }: ProductCardsProps) => {
 
   return (
     <>
-      <div className="MainBlockBasket" key={id}>
+      <div className="MainBlockBasket" key={phoneId}>
         <div className="block__MainBlockBasket-left-rigth">
           <div className="BlockBasket-first">
             <div className="BlockBasket-first__creff">

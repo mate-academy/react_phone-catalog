@@ -25,7 +25,7 @@ export const Header = ({ searchValue, setSearchValue }: HeaderProps) => {
 
   let search = '';
 
-  if (!isHomePage && !contacts && !rights) {
+  if (!isHomePage && !contacts && !rights && !favorite && !basket) {
     switch (true) {
       case phone:
         search = 'Search in phones...';
@@ -35,12 +35,6 @@ export const Header = ({ searchValue, setSearchValue }: HeaderProps) => {
         break;
       case accessories:
         search = 'Search in accessories...';
-        break;
-      case basket:
-        search = 'Search in basket...';
-        break;
-      case favorite:
-        search = 'Search in favorite...';
         break;
       default:
         break;

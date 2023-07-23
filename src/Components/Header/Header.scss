@@ -150,6 +150,10 @@
   background-repeat: no-repeat;
   height: 20px;
   width: 23px;
+
+  &:hover {
+    animation: bounce 1s;
+  }
 }
 
 .circle-for-header {
@@ -184,6 +188,10 @@
   background-repeat: no-repeat;
   height: 20px;
   width: 23px;
+
+  &:hover {
+    animation: bounce 1s;
+  }
 }
 
 .logoImage {
@@ -225,4 +233,25 @@
 .search-input:focus,
 .search-input.has-value {
   color: var(--gray-primary, #313237);
+}
+
+@keyframes bounce {
+
+  0%,
+  20%,
+  60%,
+  100% {
+    transform: translateY(0);
+    transform: translateY(0);
+  }
+
+  40% {
+    transform: translateY(-10px);
+    transform: translateY(-10px);
+  }
+
+  80% {
+    transform: translateY(-5px);
+    transform: translateY(-5px);
+  }
 }

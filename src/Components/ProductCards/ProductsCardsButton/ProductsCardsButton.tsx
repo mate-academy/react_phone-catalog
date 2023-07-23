@@ -7,20 +7,20 @@ interface ProductFavoriteProps {
 }
 
 export const ProductsCardsButton = ({ product }: ProductFavoriteProps) => {
-  const { id } = product;
+  const { phoneId } = product;
 
   const {
     basket,
     addToBasket,
     removeFromBasket,
   } = useFavoriteContext();
-  const isBasket = basket.includes(id.toString());
+  const isBasket = basket.includes(phoneId.toString());
 
   const handleToggleBasket = () => {
     if (isBasket) {
-      removeFromBasket(id.toString());
+      removeFromBasket(phoneId.toString());
     } else {
-      addToBasket(id.toString());
+      addToBasket(phoneId.toString());
     }
   };
 

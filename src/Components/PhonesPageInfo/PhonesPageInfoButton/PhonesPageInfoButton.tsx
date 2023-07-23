@@ -1,22 +1,42 @@
-import { useState } from 'react';
+import { useBasketContext } from '../../../FavoriteContext';
 import './PhonesPageInfoButton.scss';
 
-export const PhonesPageInfoButton = () => {
-  const [isAddedToCart, setIsAddedToCart] = useState(false);
+interface Info {
+  id: string;
+}
 
-  const handleAddToCart = () => {
-    setIsAddedToCart((prevState: unknown) => !prevState);
+interface InfoProps {
+  info: Info;
+}
+
+export const PhonesPageInfoButton = ({ info }: InfoProps) => {
+  const { id } = info;
+
+  const {
+    basket,
+    addToBasket,
+    removeFromBasket,
+  } = useBasketContext();
+
+  const isBasket = basket.includes(id.toString());
+
+  const handleToggleBasket = () => {
+    if (isBasket) {
+      removeFromBasket(id.toString());
+    } else {
+      addToBasket(id.toString());
+    }
   };
 
   return (
     <button
       type="button"
-      className={`card__buy-buttons ${isAddedToCart ? 'is-activeButton' : ''
+      className={`card__buy-buttons ${isBasket ? 'is-activeButton' : ''
       }`}
-      onClick={handleAddToCart}
+      onClick={handleToggleBasket}
     // disabled={isAddedToCart}
     >
-      {isAddedToCart ? 'Added to cart' : 'Add to cart'}
+      {isBasket ? 'Added to cart' : 'Add to cart'}
     </button>
   );
 };
