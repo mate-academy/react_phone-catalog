@@ -4,6 +4,10 @@ import logo from '../imgs/LOGO.svg';
 import { ArrowButton } from './ArrowButton';
 
 export const Footer: React.FC = () => {
+  const handleClick = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <footer className="footer">
       <div className="footer__content">
@@ -31,12 +35,11 @@ export const Footer: React.FC = () => {
 
         <div className="footer__button">
           <span className="footer__button-text">Back to top</span>
-          <Link
-            to="#headerNavBar"
+          <div
             className="footer__button-arrow"
           >
-            <ArrowButton direction="up" />
-          </Link>
+            <ArrowButton direction="up" handler={handleClick} />
+          </div>
         </div>
       </div>
     </footer>
