@@ -36,7 +36,7 @@ export const ProductField: React.FC<Props> = ({ product }) => {
       </button>
 
       <img
-        src={`../_new/${product.image}`}
+        src={`new/${product.image}`}
         alt=""
         className="productField__image"
       />
