@@ -1,0 +1,86 @@
+@mixin bgr-img() {
+  background: center/contain no-repeat;
+};
+
+@mixin button-transparent($width: 32px, $height: 32px) {
+  height: $height;
+  width: $width;
+  color: $main-gray-color;
+  border: 1px solid $light-gray-color;
+  background-color: transparent;
+  position: relative;
+  transition: all 0.3s;
+
+  &::before {
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    display: block;
+    content: "";
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    @include bgr-img;
+  }
+
+  &:hover {
+    border-color: #000;
+  }
+};
+
+@mixin button-gray($width: 176px, $height: 40px) {
+  height: $height;
+  width: $width;
+  background-color: $main-gray-color;
+  color: #fff;
+  text-align: center;
+  @extend %buttons;
+  border: none;
+  box-shadow: none;
+  transition: all 0.3s;
+
+  &:hover {
+    box-shadow: 0px 3px 13px 0px rgba(23, 32, 49, 0.26);
+  }
+
+  &:active,
+  &:focus {
+    color: $accent-green;
+    background-color: #fff;
+    border: 1px solid $borders-gray-color;
+    box-shadow: none;
+  }
+}
+
+@mixin button-arrows($width: 32px, $height: 32px) {
+  @include button-transparent;
+  height: 32px;
+
+  &_prev {
+    margin-right: 16px;
+
+    &::before {
+      background-image: url($arrow-left);
+    }
+
+    &.disabled::before {
+      background-image: url($arrow-left-light);
+    }
+  }
+
+  &_next {
+    margin-right: 16px;
+
+    &::before {
+      background-image: url($arrow-right);
+    }
+
+    &.disabled::before {
+      background-image: url($arrow-right-light);
+    }
+  }
+
+  &.disabled {
+    pointer-events: none;
+  }
+};

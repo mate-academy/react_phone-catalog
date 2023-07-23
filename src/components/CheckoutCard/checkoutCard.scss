@@ -1,0 +1,63 @@
+@import "../../../styles/common";
+
+.checkout-card {
+  display: flex;
+  border: 1px solid $borders-gray-color;
+  padding: 30px;
+  margin-bottom: 16px;
+  align-items: center;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &__button-remove {
+    border: none;
+    height: 16px;
+    width: 16px;
+    @include bgr-img;
+    background-image: url($icon-close-light-gray);
+    margin-right: 30px;
+    transition: all 0.3s;
+
+    &:hover {
+      background-image: url($icon-close);
+      transform: scale(1.05);
+    }
+  }
+  
+  &__img {
+    width: 66px;
+    height: 66px;
+    object-fit: contain;
+    margin-right: 30px;
+  }
+
+  &__title {
+    width: 295px;
+    @extend %body-text;
+    color: $main-gray-color;
+    margin-right: 50px;
+  }
+
+  &__actions {
+    display: flex;
+    height: 32px;
+    align-items: center;
+  }
+
+  &__button {
+    @include button-arrows;
+  }
+
+  &__count {
+    margin-right: 16px;
+    @extend %body-text;
+    color: #000;
+  }
+
+  &__price {
+    @extend %h2;
+    color: $main-gray-color;
+  }
+}

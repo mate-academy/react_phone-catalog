@@ -1,0 +1,36 @@
+@import "../../../styles/common";
+
+.card {
+  position: relative;
+  background-color: #fff;
+  border: 1px solid $borders-gray-color;
+  transition: all 0.3s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  width: 270px;
+  padding: 24px;
+
+  &:hover {
+    scale: 1.05;
+    box-shadow: -1px -5px 39px -24px rgba(0,0,0,0.75);
+  }
+
+  &__image {
+    height: 208px;
+    width: 208px;
+    object-fit: contain;
+  }
+
+  &__title {
+    margin-top: 24px;
+    color: $main-gray-color;
+    @extend %body-text;
+  }
+
+  &__price {
+    margin: 32px 0 6px;
+    border-bottom: 1px solid $borders-gray-color;
+  }
+}

@@ -1,0 +1,12 @@
+@import "/styles/common";
+
+.no-results {
+
+  &__title {
+    @extend %h2;
+    text-align: center;
+    color: $second-gray-color;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+}

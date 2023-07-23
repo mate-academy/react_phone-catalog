@@ -1,0 +1,34 @@
+@import "/styles/common";
+
+.not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin-top: 50px;
+
+  &__title {
+    @extend %h2;
+    text-align: center;
+    color: $second-gray-color;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  &__button {
+    @include button-gray;
+    height: 40px;
+    max-width: 185px;
+    text-transform: uppercase;
+
+    &:hover,
+    &:active,
+    &:focus {
+      background-color: $main-gray-color;
+      color: #fff;
+    }
+  }
+}

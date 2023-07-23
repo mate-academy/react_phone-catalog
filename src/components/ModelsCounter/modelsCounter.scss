@@ -1,0 +1,7 @@
+@import "../../../styles/common";
+
+.models {
+  @extend %body-text;
+  color: $second-gray-color;
+  margin-bottom: 40px;
+}

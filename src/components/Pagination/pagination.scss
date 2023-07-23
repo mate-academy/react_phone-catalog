@@ -1,0 +1,53 @@
+@import "../../../styles/common";
+
+.pagination,
+.pagination__item,
+.pagination__link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pagination {
+  grid-gap: 16px;
+  gap: 16px;
+
+  &__list {
+    display: flex;
+    grid-gap: 8px;
+    gap: 8px;
+  }
+
+  &__arrow {
+    @include button-arrows;
+
+    &_prev,
+    &_next {
+      margin-right: 0;
+    }
+  }
+
+  &__item {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $light-gray-color;
+    background-color: transparent;
+    transition: all 0.3s;
+    fill: $main-gray-color;
+
+    &:hover {
+      border-color: $main-gray-color;
+    }
+  }
+
+  &__link {
+    width: 100%;
+    height: 100%;
+    color: $main-gray-color;
+
+    &.active {
+      background-color: $main-gray-color;
+      color: #fff;
+    }
+  }
+}

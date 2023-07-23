@@ -1,0 +1,79 @@
+@import "../../../styles/common";
+
+.dropdown {
+  position: relative;
+
+  &_sort {
+    width: 176px;
+    margin-right: 24px;
+  }
+
+  &_items {
+    width: 128px;
+  }
+
+  &__label {
+    @extend %uppercase;
+    color: $second-gray-color;
+    margin-bottom: 4px;
+  }
+
+  &__select {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid $light-gray-color;
+    background-color: #fafbfc;
+    padding: 10px;
+    height: 40px;
+    width: 100%;
+    outline: none;
+    color: $main-gray-color;
+    text-transform: capitalize;
+    transition: 0.3s;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    &:hover {
+      border: 1px solid $main-gray-color;
+    }
+  }
+
+  &__arrow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 16px;
+    height: 16px;
+    transition: transform 0.3s;
+    @include bgr-img;
+    background-image: url("https://i.gstatvb.com/7b0c5a911403e372d5b0aace017605fc1689328395.rng.png");
+
+    &_opened {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__list {
+    position: absolute;
+    text-transform: capitalize;
+    z-index: 1;
+    width: 100%;
+    margin-top: 4px;
+    background-color: #fff;
+    border: 1px solid $borders-gray-color;
+    box-shadow: 0 2px 15px 0 rgba(0,0,0,0.05);
+  }
+
+  &__link {
+    width: 100%;
+    padding: 6px 12px;
+    color: $second-gray-color;
+    transition: all 0.3s linear;
+
+    &.active {
+      color: $main-gray-color;
+    }
+  }
+}

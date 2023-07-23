@@ -1,0 +1,69 @@
+@import "../../../styles/common";
+
+.cart {
+  display: flex;
+
+  &__products {
+    display: flex;
+    flex-direction: column;
+    margin-right: 24px;
+  }
+
+  &__container {
+    padding: 24px;
+    width: 368px;
+    height: min-content;
+    border: 1px solid $borders-gray-color;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__budget {
+    @extend %h1;
+    text-transform: capitalize;
+    margin-bottom: -4px;
+  }
+
+  &__text {
+    @extend %body-text;
+    color: $second-gray-color;
+    width: 100%;
+    text-align: center;
+    padding-bottom: 24px;
+    border-bottom: 1px solid $borders-gray-color;
+    margin-bottom: 24px;
+  }
+
+  &__checkout {
+    @include button-gray;
+    width: 320px;
+    height: 48px;
+
+    &:hover,
+    &:active,
+    &:focus {
+      background-color: $main-gray-color;
+      color: #fff;
+    }
+  }
+
+  &__popup {
+    position: fixed;
+    top: 100px;
+    right: 40px;
+    width: 200px;
+    height: min-content;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid $accent-green;
+    background-color: #fafbfc;
+    color: $accent-green;
+    transition: all 0.3s linear;
+    transform: translateX(150%);
+
+    &_shown {
+      transform: translateX(0);
+    }
+  }
+}

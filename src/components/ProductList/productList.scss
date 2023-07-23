@@ -1,0 +1,35 @@
+@import "../../../styles/common";
+
+.product-list {
+
+  &__container {
+    display: flex;
+    align-self: center;
+    margin-bottom: 40px;
+  }
+
+  &__content {
+    margin-bottom: 40px;
+    display: grid;
+    align-items: center;
+    // grid-template-columns: 1 1fr;
+    grid-template-columns: repeat(4,1fr);
+    grid-column-gap: 16px;
+    column-gap: 16px;
+    grid-row-gap: 40px;
+    row-gap: 40px;
+  }
+
+  &__item {
+    cursor: pointer;
+    height: 100%;
+  }
+
+  &__dropdowns {
+    display: flex;
+  }
+
+  &__pagination {
+    margin-top: 24px;
+  }
+}

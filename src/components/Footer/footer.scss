@@ -1,0 +1,24 @@
+@import "../../../styles/common";
+
+.footer {
+  border-top: 1px solid $borders-gray-color;
+  height: 96px;
+
+  &__container {
+    height: 100%;
+    width: 100%;
+    max-width: 1150px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__logo {
+    background: center/contain no-repeat url("https://i.gstatvb.com/c389a77ca305ee5d9f0ee6f87f74fcfb1688922827.rng.png");
+    height: 24px;
+    width: 40px;
+    margin: 0 64px 0 8px;
+  }
+}

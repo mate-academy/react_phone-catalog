@@ -1,0 +1,19 @@
+@import "/styles/common";
+
+.page {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+  overflow-y: scroll;
+
+  &__main {
+    flex-grow: 1;
+    padding: 24px 0 80px;
+  }
+
+  &__container {
+    max-width: 1120px;
+    margin: 0 auto;
+  }
+}
