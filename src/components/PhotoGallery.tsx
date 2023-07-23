@@ -10,10 +10,10 @@ export const PhotoGallery: React.FC<PhotoGalleryProps> = ({ images }) => {
   const [
     currentMainPhoto,
     setCurrentMainPhoto,
-  ] = useState(`../../_new/${images[0]}`);
+  ] = useState(`new/${images[0]}`);
 
   const correctSrc = (str: string) => {
-    return `../../_new/${str}`;
+    return `new/${str}`;
   };
 
   const onPhotoHandler = (str: string) => {
