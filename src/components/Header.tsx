@@ -4,6 +4,7 @@ import { Link, NavLink } from 'react-router-dom';
 
 import { useSelector } from 'react-redux';
 import classNames from 'classnames';
+import { useTranslation } from 'react-i18next';
 import logo from '../imgs/LOGO.svg';
 
 import cart from '../imgs/icons/Shopping bag (Cart).svg';
@@ -11,10 +12,13 @@ import cart from '../imgs/icons/Shopping bag (Cart).svg';
 import favsIcon from '../imgs/icons/Favourites (Heart Like).svg';
 import { RootState } from '../Reducer/store';
 import { SearchField } from './SearchField';
+import { LanguageSwitcher } from './LanguageSwitcher';
 
 export const Header: React.FC = () => {
   const favsList = useSelector((state: RootState) => state.favorites);
   const cartList = useSelector((state: RootState) => state.cart);
+
+  const { t } = useTranslation();
 
   return (
     <div className="header" id="headerNavBar">
@@ -32,7 +36,7 @@ export const Header: React.FC = () => {
                 { 'header__link--active': isActive },
               )}
             >
-              Home
+              {t('home')}
             </NavLink>
           </li>
           <li className="header__item">
@@ -40,7 +44,7 @@ export const Header: React.FC = () => {
               to="/phones"
               className="header__link"
             >
-              Phones
+              {t('phones')}
             </NavLink>
           </li>
           <li className="header__item">
@@ -51,7 +55,7 @@ export const Header: React.FC = () => {
                 { 'header__link--active': isActive },
               )}
             >
-              Tablets
+              {t('tablets')}
             </NavLink>
           </li>
           <li className="header__item">
@@ -62,13 +66,14 @@ export const Header: React.FC = () => {
                 { 'header__link--active': isActive },
               )}
             >
-              Accessories
+              {t('accessories')}
             </NavLink>
           </li>
         </ul>
       </nav>
 
       <div className="header__buttons">
+        <LanguageSwitcher />
         <SearchField />
 
         <NavLink

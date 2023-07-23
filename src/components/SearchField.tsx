@@ -1,6 +1,7 @@
 import React, { ChangeEvent, useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
+import { useTranslation } from 'react-i18next';
 import searchIcon from '../imgs/icons/Search.svg';
 import cross from '../imgs/icons/Close.svg';
 
@@ -8,6 +9,7 @@ export const SearchField: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [isActive, setIsActive] = useState(false);
   const [params, setParams] = useSearchParams();
+  const { t } = useTranslation();
 
   const handleSearchInput = (event: ChangeEvent<HTMLInputElement>) => {
     const query = event.target.value;
@@ -48,7 +50,7 @@ export const SearchField: React.FC = () => {
         type="text"
         value={searchQuery}
         onChange={handleSearchInput}
-        placeholder="Search in phones..."
+        placeholder={t('search')}
         className="SearchField__input"
       />
       <img src={searchIcon} alt="search" />

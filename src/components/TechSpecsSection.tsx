@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { PhoneInfo } from '../type/PhoneInfo';
 import { toUpperCaseFirstLetter } from '../utils/helpers';
 
@@ -16,9 +17,11 @@ type Props = {
 };
 
 export const TechSpecsSection: React.FC<Props> = ({ description }) => {
+  const { t } = useTranslation();
+
   return (
     <div className="tech description__tech">
-      <h2 className="tech__title">Tech specs</h2>
+      <h2 className="tech__title">{t('techSpecs')}</h2>
       <ul className="tech__list">
         {TECH_SPECS.map(spec => (
           <li className="tech__item" key={spec}>

@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import classNames from 'classnames';
+import { useTranslation } from 'react-i18next';
 import { addCart, deleteCart } from '../Reducer/cartReducer';
 
 import { Products } from '../type/Products';
@@ -15,6 +16,8 @@ export const AddCartButton: React.FC<Props> = ({ phone }) => {
   const [isAdded, setIsAdded] = useState(false);
 
   const cart = useSelector((state: any) => state.cart);
+
+  const { t } = useTranslation();
 
   useEffect(() => {
     setIsAdded(
@@ -42,7 +45,7 @@ export const AddCartButton: React.FC<Props> = ({ phone }) => {
       type="button"
       onClick={() => handler(phone)}
     >
-      {isAdded ? 'Added to cart' : 'Add to Cart'}
+      {isAdded ? t('addedToCart') : t('addToCart')}
     </button>
   );
 };

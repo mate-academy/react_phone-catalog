@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import logo from '../imgs/LOGO.svg';
 
 import { ArrowButton } from './ArrowButton';
@@ -7,6 +8,8 @@ export const Footer: React.FC = () => {
   const handleClick = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
+  const { t } = useTranslation();
 
   return (
     <footer className="footer">
@@ -26,15 +29,15 @@ export const Footer: React.FC = () => {
             </Link>
           </li>
           <li className="footer__item">
-            <Link to="#/" className="footer__link">contacts</Link>
+            <Link to="#/" className="footer__link">{t('contacts')}</Link>
           </li>
           <li className="footer__item">
-            <Link to="#/" className="footer__link">rights</Link>
+            <Link to="#/" className="footer__link">{t('rights')}</Link>
           </li>
         </ul>
 
         <div className="footer__button">
-          <span className="footer__button-text">Back to top</span>
+          <span className="footer__button-text">{t('backToTop')}</span>
           <div
             className="footer__button-arrow"
           >

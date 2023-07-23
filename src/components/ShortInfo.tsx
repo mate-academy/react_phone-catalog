@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
+import { useTranslation } from 'react-i18next';
 import { PhoneInfo } from '../type/PhoneInfo';
 import { Products } from '../type/Products';
 import { AddCartButton } from './AddCartButton';
@@ -14,12 +15,14 @@ export const ShortInfo: React.FC<ShortInfoProps> = ({
   description,
   currentProduct,
 }) => {
+  const { t } = useTranslation();
+
   return (
     <div className="description__short-info">
       <div className="description__filter">
         <div className="description__colors">
           <span className="description__colors-title">
-            Available colors
+            {t('colors')}
           </span>
 
           <ul className="description__colors-list">
@@ -42,7 +45,7 @@ export const ShortInfo: React.FC<ShortInfoProps> = ({
           <span
             className="description__capacity-text"
           >
-            Select capacity
+            {t('selectCapacity')}
           </span>
 
           <ul className="description__capacity-list">
@@ -79,7 +82,7 @@ export const ShortInfo: React.FC<ShortInfoProps> = ({
 
         <ul className="description__info">
           <li className="description__info-str">
-            <span>Screen</span>
+            <span>{t('screen')}</span>
             <span
               className="description__info-str-value"
             >
@@ -88,7 +91,7 @@ export const ShortInfo: React.FC<ShortInfoProps> = ({
           </li>
 
           <li className="description__info-str">
-            <span>Resolution</span>
+            <span>{t('resolution')}</span>
             <span
               className="description__info-str-value"
             >
@@ -97,7 +100,7 @@ export const ShortInfo: React.FC<ShortInfoProps> = ({
           </li>
 
           <li className="description__info-str">
-            <span>Processor</span>
+            <span>{t('processor')}</span>
             <span
               className="description__info-str-value"
             >
@@ -106,7 +109,7 @@ export const ShortInfo: React.FC<ShortInfoProps> = ({
           </li>
 
           <li className="description__info-str">
-            <span>RAM</span>
+            <span>{t('ram')}</span>
             <span
               className="description__info-str-value"
             >

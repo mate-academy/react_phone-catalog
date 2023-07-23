@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { PhoneInfo } from '../type/PhoneInfo';
 
 type Props = {
@@ -6,9 +7,11 @@ type Props = {
 };
 
 export const AboutSection: React.FC<Props> = ({ description }) => {
+  const { t } = useTranslation();
+
   return (
     <div className="about description__about" data-cy="productDescription">
-      <h2 className="about__title">About</h2>
+      <h2 className="about__title">{t('about')}</h2>
       {description.description.map(section => (
         <div
           key={section.title}

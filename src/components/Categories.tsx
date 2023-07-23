@@ -3,6 +3,7 @@ import { LinearProgress } from '@mui/material';
 
 import swal from 'sweetalert';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import mobile from '../imgs/categories/mobile.png';
 import teblets from '../imgs/categories/tablets.png';
 import accessories from '../imgs/categories/accessories.png';
@@ -17,6 +18,8 @@ export const Categories: React.FC = () => {
   const getLengthByCategory = (arr: Products[], category: string) => {
     return arr.filter(product => product.category === category).length;
   };
+
+  const { t } = useTranslation();
 
   const getAmount = async () => {
     try {
@@ -48,14 +51,14 @@ export const Categories: React.FC = () => {
             <img src={mobile} alt="" className="categories__img" />
           </div>
 
-          <p className="categories__type">Mobile Phones</p>
+          <p className="categories__type">{t('phones')}</p>
 
           <span className="categories__quantity">
             {isLoading
               ? <LinearProgress />
               : getLengthByCategory(list, 'phones')}
             {' '}
-            models
+            {t('models')}
           </span>
         </Link>
 
@@ -64,14 +67,14 @@ export const Categories: React.FC = () => {
             <img src={teblets} alt="" className="categories__img" />
           </div>
 
-          <p className="categories__type">Tablets</p>
+          <p className="categories__type">{t('tablets')}</p>
 
           <span className="categories__quantity">
             {isLoading
               ? <LinearProgress />
               : getLengthByCategory(list, 'tablets')}
             {' '}
-            models
+            {t('models')}
           </span>
         </Link>
 
@@ -80,7 +83,7 @@ export const Categories: React.FC = () => {
             <img src={accessories} alt="" className="categories__img" />
           </div>
 
-          <p className="categories__type">Accessories</p>
+          <p className="categories__type">{t('accessories')}</p>
 
           <span className="categories__quantity">
             {isLoading
@@ -88,7 +91,7 @@ export const Categories: React.FC = () => {
               : getLengthByCategory(list, 'accessories')
               || '0'}
             {' '}
-            models
+            {t('models')}
           </span>
         </Link>
       </div>

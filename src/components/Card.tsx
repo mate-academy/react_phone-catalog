@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
+import { useTranslation } from 'react-i18next';
 import { Products } from '../type/Products';
 import { FavButton } from './FavButton';
 import { AddCartButton } from './AddCartButton';
@@ -20,13 +21,9 @@ export const Card: React.FC<Props> = ({ card }) => {
     image,
   } = card;
 
-  const [loadingPicture, setLoadingPicture] = useState(false);
-
-  useEffect(() => {
-    setLoadingPicture(true);
-  }, [loadingPicture]);
-
   const correctUrl = `new/${image}`;
+
+  const { t } = useTranslation();
 
   return (
     <div className="card" data-cy="cardsContainer">
@@ -42,22 +39,21 @@ export const Card: React.FC<Props> = ({ card }) => {
         <h2 className="card__name">{name}</h2>
 
         <h3 className="card__price">
-          $
-          {price}
+          {`$${price}`}
         </h3>
       </Link>
 
       <div className="card__info">
         <div className="card__info-str">
-          <span>Screen</span>
+          <span>{t('screen')}</span>
           <span className="card__info-str-value">{screen}</span>
         </div>
         <div className="card__info-str">
-          <span>Capacity</span>
+          <span>{t('capacity')}</span>
           <span className="card__info-str-value">{capacity}</span>
         </div>
         <div className="card__info-str">
-          <span>RAM</span>
+          <span>{t('ram')}</span>
           <span className="card__info-str-value">{ram}</span>
         </div>
       </div>

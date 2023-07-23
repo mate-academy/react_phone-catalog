@@ -2,6 +2,7 @@ import {
   useLocation, useParams, useSearchParams,
 } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Catalog } from '../components/Catalog';
 
 import { Pagination } from '../components/Pagination';
@@ -36,6 +37,8 @@ export const CatalogPage: React.FC = () => {
     setLiftedListLength(number);
   };
 
+  const { t } = useTranslation();
+
   return (
     <div className="container">
       <NavigationField />
@@ -43,25 +46,25 @@ export const CatalogPage: React.FC = () => {
         <h1
           className="catalog__title"
         >
-          {toUpperCaseFirstLetter(category || '')}
+          {toUpperCaseFirstLetter(t(`${category}`))}
         </h1>
         <span className="catalog__subtitle">
           {liftedListLength}
           {' '}
-          models
+          {t('models')}
         </span>
       </div>
       <div className="filter">
         <Dropdown
           list={FILTER_SORT}
           type="sort"
-          title="Sort by"
+          title={t('sortBy')}
         />
 
         <Dropdown
           list={FILTER_QUANTITY}
           type="perPage"
-          title="Items on page"
+          title={t('itemsOnPage')}
         />
       </div>
 
