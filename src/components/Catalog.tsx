@@ -93,13 +93,18 @@ export const Catalog: React.FC<Props> = ({
       default:
         return el2.price - el1.price;
     }
-  }).slice(currPage * quantity - quantity, currPage * quantity);
+  });
 
   if (query) {
     listOfResults = listOfResults
       .filter((element) => element.name.toLowerCase()
         .includes(query.toLowerCase()));
+
+    onGetListLength(listOfResults.length);
   }
+
+  listOfResults = listOfResults
+    .slice(currPage * quantity - quantity, currPage * quantity);
 
   if (fetchingData) {
     return (

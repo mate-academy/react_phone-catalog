@@ -1,5 +1,5 @@
 import {
-  useLocation, useSearchParams,
+  useLocation, useParams, useSearchParams,
 } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { Catalog } from '../components/Catalog';
@@ -7,6 +7,7 @@ import { Catalog } from '../components/Catalog';
 import { Pagination } from '../components/Pagination';
 import { Dropdown } from '../components/Dropdown';
 import { NavigationField } from '../components/NavigationField';
+import { toUpperCaseFirstLetter } from '../utils/helpers';
 
 const FILTER_SORT = ['age', 'price', 'name'];
 const FILTER_QUANTITY = ['16', '8', '4'];
@@ -20,6 +21,8 @@ export const CatalogPage: React.FC = () => {
   const [sort, setSort] = useState('');
   const [quantity, setQuantity] = useState(16);
   const [query, setQuery] = useState('');
+
+  const { category } = useParams();
 
   const [searchParams] = useSearchParams();
 
@@ -36,9 +39,30 @@ export const CatalogPage: React.FC = () => {
   return (
     <div className="container">
       <NavigationField />
+      <div className="catalog__top">
+        <h1
+          className="catalog__title"
+        >
+          {toUpperCaseFirstLetter(category || '')}
+        </h1>
+        <span className="catalog__subtitle">
+          {liftedListLength}
+          {' '}
+          models
+        </span>
+      </div>
       <div className="filter">
-        <Dropdown list={FILTER_SORT} type="sort" />
-        <Dropdown list={FILTER_QUANTITY} type="perPage" />
+        <Dropdown
+          list={FILTER_SORT}
+          type="sort"
+          title="Sort by"
+        />
+
+        <Dropdown
+          list={FILTER_QUANTITY}
+          type="perPage"
+          title="Items on page"
+        />
       </div>
 
       <Catalog

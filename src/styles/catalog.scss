@@ -32,14 +32,25 @@
     }
   }
 
+  &__top {
+    margin-bottom: 40px;
+  }
+
   &__title {
-    font-weight: 700;
-    font-size: 32px;
-    line-height: 41px;
-
-    letter-spacing: -0.01em;
-
     color: $color-primary;
+
+    font-size: 32px;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.32px;
+  }
+
+  &__subtitle {
+    color: $color-secondary;
+
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
   }
 
   &__quantity {
