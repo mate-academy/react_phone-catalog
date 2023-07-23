@@ -6,13 +6,13 @@ import { useFavoriteContext } from '../../../FavoriteContext';
 export const BlockFavorite = () => {
   const { favorites } = useFavoriteContext();
   const filtration = products.filter(
-    (product) => favorites.includes(product.id.toString()),
+    (product) => favorites.includes(product.phoneId.toString()),
   );
 
   return (
     <div className={`blockFavorite ${favorites.length === 0 ? 'blockFavorite-active' : ''}`}>
       {filtration.map((product) => (
-        <ProductCards key={product.id} product={product} />
+        <ProductCards key={product.phoneId} product={product} />
       ))}
     </div>
   );

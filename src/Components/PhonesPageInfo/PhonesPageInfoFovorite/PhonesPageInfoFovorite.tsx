@@ -1,12 +1,32 @@
-import { useState } from 'react';
+import { useFavoriteContext } from '../../../FavoriteContext';
 import heartImage from './PhonesPageInfoFavoriteImages/heart.svg';
 import './PhonesPageInfoFovorite.scss';
 
-export const PhonesPageInfoFovorite = () => {
-  const [isFavorite, setIsFavorite] = useState(false);
+interface Info {
+  id: string;
+}
+
+interface InfoProps {
+  info: Info;
+}
+
+export const PhonesPageInfoFovorite = ({ info }: InfoProps) => {
+  const { id } = info;
+
+  const {
+    favorites,
+    addToFavorites,
+    removeFromFavorites,
+  } = useFavoriteContext();
+
+  const isFavorite = favorites.includes(id.toString());
 
   const handleToggleFavorite = () => {
-    setIsFavorite((prevState) => !prevState);
+    if (isFavorite) {
+      removeFromFavorites(id.toString());
+    } else {
+      addToFavorites(id.toString());
+    }
   };
 
   return (

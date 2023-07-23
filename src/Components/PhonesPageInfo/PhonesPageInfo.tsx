@@ -237,7 +237,7 @@ export const PhonesPageInfo = ({ info }: InfoProps) => {
 
               <div className="productsPriceButtons">
                 <PhonesPageInfoButton info={info} />
-                <PhonesPageInfoFovorite />
+                <PhonesPageInfoFovorite info={info} />
               </div>
 
               <div className="Info-Block">

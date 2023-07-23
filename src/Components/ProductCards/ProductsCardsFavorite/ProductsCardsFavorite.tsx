@@ -8,19 +8,19 @@ interface ProductFavoriteProps {
 }
 
 export const ProductsCardsFavorite = ({ product }: ProductFavoriteProps) => {
-  const { id } = product;
+  const { phoneId } = product;
   const {
     favorites,
     addToFavorites,
     removeFromFavorites,
   } = useFavoriteContext();
-  const isFavorite = favorites.includes(id.toString());
+  const isFavorite = favorites.includes(phoneId.toString());
 
   const handleToggleFavorite = () => {
     if (isFavorite) {
-      removeFromFavorites(id.toString());
+      removeFromFavorites(phoneId.toString());
     } else {
-      addToFavorites(id.toString());
+      addToFavorites(phoneId.toString());
     }
   };
 
