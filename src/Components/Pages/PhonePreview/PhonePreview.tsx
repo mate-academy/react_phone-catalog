@@ -7,19 +7,19 @@ export const PhonePreview: FC = () => {
   const { id = '' } = useParams<{ id: string }>();
   const navigate = useNavigate();
 
+  const fetchData = async (paramId: string) => {
+    try {
+      const res = await fetch(`https://mate-academy.github.io/react_phone-catalog/_new/products/${paramId}.json`, { method: 'GET' });
+      const body = await res.json();
+
+      setItem(body);
+    } catch (err) {
+      navigate('*');
+    }
+  };
+
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetch(`https://mate-academy.github.io/react_phone-catalog/_new/products/${id}.json`, { method: 'GET' });
-        const body = await res.json();
-
-        setItem(body);
-      } catch (err) {
-        <h1>Error</h1>;
-      }
-    };
-
-    fetchData();
+    fetchData(id);
   }, [id]);
 
   const handleColorClick = (color: string) => {

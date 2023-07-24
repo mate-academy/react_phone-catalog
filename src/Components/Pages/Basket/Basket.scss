@@ -59,6 +59,21 @@
   }
 }
 
+.iconsFromBasketNot {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: none;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  border: 1px solid var(--gray-icons-placeholders, #B4BDC3);
+  align-items: center;
+  cursor: pointer;
+  transition: .3s;
+
+}
+
 .iconsFromBasket-close {
   border: none;
   background: none;

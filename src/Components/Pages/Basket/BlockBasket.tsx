@@ -25,11 +25,11 @@ export const BlockBasket = ({ product }: ProductCardsProps) => {
   } = useBasketContext();
 
   const isBasket = basket.includes(phoneId.toString())
-   || basket.includes(phoneId.toString());
+    || basket.includes(phoneId.toString());
   const [phoneModelCountInBasket, setPhoneModelCountInBasket]
-   = useState<number>(
-     basket.filter((productId) => productId === phoneId.toString()).length,
-   );
+    = useState<number>(
+      basket.filter((productId) => productId === phoneId.toString()).length,
+    );
 
   const updatedPrice = price * phoneModelCountInBasket;
 
@@ -83,17 +83,32 @@ export const BlockBasket = ({ product }: ProductCardsProps) => {
 
           <div className="BlockBasket-two">
             <div className="BlockBasket-two__creff">
-              <button
-                type="button"
-                className="iconsFromBasket"
-                onClick={handleMinusClick}
-              >
-                <img
-                  className="iconsFromBasket__icon"
-                  src={Minus}
-                  alt=""
-                />
-              </button>
+              {phoneModelCountInBasket <= 1 ? (
+                <button
+                  type="button"
+                  className="iconsFromBasketNot"
+                  onClick={handleMinusClick}
+                >
+                  <img
+                    className="iconsFromBasket__icon"
+                    src={Minus}
+                    alt=""
+                  />
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  className="iconsFromBasket"
+                  onClick={handleMinusClick}
+                >
+                  <img
+                    className="iconsFromBasket__icon"
+                    src={Minus}
+                    alt=""
+                  />
+                </button>
+              )}
+
               <p
                 className="BlockBasket-two__creff-count"
               >
