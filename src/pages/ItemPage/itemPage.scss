@@ -146,8 +146,9 @@
 
   &-list {
     height: 440px;
-    width: min-content;
+    width: max-content;
     overflow-y: hidden;
+    margin-right: 20px;
   }
 }
 
@@ -252,6 +253,7 @@
     display: flex;
     height: unset;
     margin: 0 auto;
+    margin-right: 0;
 
     .image {
       margin-right: 16px;

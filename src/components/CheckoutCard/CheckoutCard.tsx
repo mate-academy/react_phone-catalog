@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import { ProductInCart } from '../../types/Product';
 import { AppContext } from '../../context/AppContextProvider';
 import './checkoutCard.scss';
+import { Link } from 'react-router-dom';
 
 export type Props = {
   item: ProductInCart;
@@ -43,9 +44,9 @@ export const CheckoutCard:React.FC<Props> = ({ item }) => {
           src={item.image}
           className="checkout-card__img"
         />
-        <p className="checkout-card__title">
+        <Link className="checkout-card__title" to={`/${item.category}/${item.itemId}`}>
           {item.name}
-        </p>
+        </Link>
       </div>
       <div className="checkout-card__container">
         <div className="checkout-card__actions">

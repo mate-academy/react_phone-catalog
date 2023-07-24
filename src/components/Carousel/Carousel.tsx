@@ -41,7 +41,7 @@ export const Carousel: React.FC = () => {
         <img
           className="carousel__image"
           alt={`banner_${banners[currentImageIndex]}`}
-          src={`/img/banners/${banners[currentImageIndex]}.png`}
+          src={`./img/carousel/${banners[currentImageIndex]}.png`}
         />
         {/* eslint-disable-next-line */}
         <button
