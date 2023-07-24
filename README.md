@@ -118,4 +118,3 @@ to links container.
 1. Implement `Phone was not found` state for the `PhoneDetailsPage` if there is no phone with a given `phoneId` on the server
 
 
-https://nazar-medushevskyi.github.io/react_phone-catalog
