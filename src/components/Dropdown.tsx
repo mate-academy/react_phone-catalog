@@ -2,6 +2,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import { Link, useSearchParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { getSearchWith } from '../utils/searchHelper';
 import { toUpperCaseFirstLetter } from '../utils/helpers';
 
@@ -15,9 +16,11 @@ export const Dropdown: React.FC<Props> = ({ list, type, title }) => {
   const [searchParams] = useSearchParams();
   const [value, setValue] = useState('');
 
+  const { t, i18n } = useTranslation();
+
   useEffect(() => {
-    setValue(toUpperCaseFirstLetter(searchParams.get(`${type}`) || list[0]));
-  }, []);
+    setValue(toUpperCaseFirstLetter(t(`${searchParams.get(`${type}`) || list[0]}`)));
+  }, [i18n.language]);
 
   return (
     <div>
@@ -26,7 +29,7 @@ export const Dropdown: React.FC<Props> = ({ list, type, title }) => {
 
       <div className="dropdown">
         <button className="dropbtn" type="button">
-          {value}
+          {t(`${value}`)}
         </button>
         <div className="dropdown-content">
           {list.map((item: string) => (
@@ -35,11 +38,11 @@ export const Dropdown: React.FC<Props> = ({ list, type, title }) => {
                 search: getSearchWith(searchParams, { [type]: `${item}` }),
               }}
               onClick={() => {
-                setValue(toUpperCaseFirstLetter(item));
+                setValue(item);
               }}
               key={`${item}`}
             >
-              {toUpperCaseFirstLetter(item)}
+              {t(`${item}`)}
             </Link>
           ))}
         </div>
