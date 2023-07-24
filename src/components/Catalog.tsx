@@ -75,7 +75,22 @@ export const Catalog: React.FC<Props> = ({
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [category]);
 
-  let listOfResults = [...catalog].sort((el1, el2) => {
+  let listOfResults: Products[] = [];
+
+  const processQuery = (str: string) => {
+    const processedQuery = str ? str.toLowerCase().split(' ') : [];
+
+    const filteredResults = catalog.filter((element) => processedQuery
+      .every(word => element.name.toLowerCase().includes(word)));
+
+    onGetListLength(filteredResults.length);
+
+    return filteredResults;
+  };
+
+  listOfResults = processQuery(query);
+
+  listOfResults = [...listOfResults].sort((el1, el2) => {
     switch (sort) {
       case 'age':
         return el2.year - el1.year;
@@ -90,14 +105,6 @@ export const Catalog: React.FC<Props> = ({
         return el2.price - el1.price;
     }
   });
-
-  if (query) {
-    listOfResults = listOfResults
-      .filter((element) => element.name.toLowerCase()
-        .includes(query.toLowerCase()));
-
-    onGetListLength(listOfResults.length);
-  }
 
   listOfResults = listOfResults
     .slice(currPage * quantity - quantity, currPage * quantity);
