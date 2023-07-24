@@ -25,7 +25,7 @@ export const NavigationField: React.FC = () => {
 
       <ul className="NavigationField__list">
         <li className="NavigationField__item">
-          <Link to={`/categories/${category}`}>
+          <Link to={`/${category}`}>
             <img src={right} alt="right" className="NavigationField__arrow" />
             {toUpperCaseFirstLetter(category || '')}
           </Link>

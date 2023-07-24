@@ -13,7 +13,7 @@ type Props = {
 };
 
 export const AddCartButton: React.FC<Props> = ({ phone }) => {
-  const [isAdded, setIsAdded] = useState(false);
+  const [isAdded, setIsAdded] = useState<boolean>();
 
   const cart = useSelector((state: any) => state.cart);
 

@@ -19,6 +19,7 @@ export const Pagination: React.FC<Props> = ({ total, perPage, currPage }) => {
 
   useEffect(() => {
     setCurrentPage(currPage || 1);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [currPage]);
 
   if (totalPages <= 1) {

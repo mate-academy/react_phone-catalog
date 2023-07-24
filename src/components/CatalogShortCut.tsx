@@ -1,4 +1,4 @@
-import { useMemo, useState, useCallback } from 'react';
+import React, { useState } from 'react';
 import arrowRight from '../imgs/icons/arrow-right.svg';
 import arrowLeft from '../imgs/icons/arrow-left.svg';
 import { Products } from '../type/Products';
@@ -10,19 +10,16 @@ type Props = {
 };
 
 export const CatalogShortCut: React.FC<Props> = ({ list, title }) => {
-  const [quantityBrand, setQuantityBrand] = useState(4);
+  const [translateXValue, setTranslateXValue] = useState(0);
+  const width = 272;
 
-  const listToShow = useMemo(() => (
-    [...list].slice(quantityBrand - 4, quantityBrand)
-  ), [list, quantityBrand]);
-
-  const onAddQuantity = useCallback(() => {
-    setQuantityBrand(prev => prev + 1);
-  }, []);
-
-  const onRemoveQuantity = useCallback(() => {
-    setQuantityBrand(prev => prev - 1);
-  }, []);
+  const handleArrowClick = (direction: 'left' | 'right') => {
+    if (direction === 'right') {
+      setTranslateXValue((prev) => prev - width - 16);
+    } else {
+      setTranslateXValue((prev) => prev + width + 16);
+    }
+  };
 
   return (
     <div className="CatalogShortCut">
@@ -33,8 +30,8 @@ export const CatalogShortCut: React.FC<Props> = ({ list, title }) => {
           <button
             type="button"
             className="CatalogShortCut__button"
-            onClick={onRemoveQuantity}
-            disabled={quantityBrand === 4}
+            onClick={() => handleArrowClick('left')}
+            disabled={translateXValue === 0}
           >
             <img src={arrowLeft} alt="" />
           </button>
@@ -42,8 +39,7 @@ export const CatalogShortCut: React.FC<Props> = ({ list, title }) => {
           <button
             type="button"
             className="CatalogShortCut__button"
-            onClick={onAddQuantity}
-            disabled={quantityBrand === list.length}
+            onClick={() => handleArrowClick('right')}
           >
             <img src={arrowRight} alt="" />
           </button>
@@ -51,7 +47,14 @@ export const CatalogShortCut: React.FC<Props> = ({ list, title }) => {
       </div>
 
       <div className="CatalogShortCut__cards">
-        {listToShow.map(phone => <Card card={phone} key={phone.id} />)}
+        <div
+          className="CatalogShortCut__cards-inner"
+          style={{ transform: `translateX(${translateXValue}px)` }}
+        >
+          {list.map((phone) => (
+            <Card card={phone} key={phone.itemId} />
+          ))}
+        </div>
       </div>
     </div>
   );

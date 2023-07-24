@@ -2,9 +2,7 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-
   margin-bottom: 104px;
-
   gap: 16px;
 
   &--with-margin {
@@ -12,11 +10,20 @@
   }
 
   &__img {
-    display: block;
-    height: 400px;
     width: 1040px;
-
     object-fit: cover;
+
+    &-container {
+      height: 400px;
+      overflow: hidden;
+      width: 1040px;
+
+      &-inner {
+        display: flex;
+        flex-direction: row;
+        transition-duration: 0.3s;
+      }
+    }
   }
 
   &__button {
@@ -24,7 +31,6 @@
     justify-content: center;
     align-items: center;
     width: 32px;
-
     border: 1px solid #89939a;
   }
 }

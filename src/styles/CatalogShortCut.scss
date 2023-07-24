@@ -5,6 +5,7 @@
   align-items: center;
 
   margin-bottom: 80px;
+  overflow-y: visible;
 
   &__title {
     width: 100%;
@@ -48,7 +49,19 @@
   &__cards {
     display: flex;
     flex-direction: row;
+    align-items: flex-end;
 
-    gap: 16px;
+    min-height: 537px;
+
+    width: 1152px;
+    overflow-y: visible;
+    overflow-x: hidden;
+
+    &-inner {
+      display: flex;
+      gap: 16px;
+      flex-direction: row;
+      transition-duration: 0.3s;
+    }
   }
 }

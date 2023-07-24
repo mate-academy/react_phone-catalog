@@ -42,6 +42,8 @@ export const CardPage: React.FC = () => {
     if (params.id) {
       getData(params.id);
     }
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [params.id]);
 
   const randomProducts = [...products].sort(() => 0.5 - Math.random());
