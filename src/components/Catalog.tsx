@@ -71,6 +71,8 @@ export const Catalog: React.FC<Props> = ({
     } else {
       data();
     }
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [category]);
 
   let listOfResults = [...catalog].sort((el1, el2) => {
