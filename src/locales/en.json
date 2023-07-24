@@ -16,7 +16,7 @@
   "models": "models",
   "sortBy": "Sort by",
   "itemsOnPage": "Items on page",
-  "search": "Search in phones...",
+  "search": "Search in {{ category }}...",
   "colors": "Available colors",
   "back": "Back",
   "resolution": "Resolution",

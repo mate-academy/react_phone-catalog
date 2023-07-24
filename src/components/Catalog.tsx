@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams, useSearchParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 import { useSelector } from 'react-redux';
 
@@ -31,8 +31,6 @@ export const Catalog: React.FC<Props> = ({
 }) => {
   const [catalog, setCatalog] = useState<Products[]>([]);
   const { category } = useParams();
-
-  const [searchParams, setSearchParams] = useSearchParams();
 
   const favorites = useSelector((state: RootState) => state.favorites);
 
@@ -72,10 +70,6 @@ export const Catalog: React.FC<Props> = ({
       setFetchingData(false);
     } else {
       data();
-    }
-
-    if (!searchParams.get('query')) {
-      setSearchParams({ query: '' });
     }
   }, [category]);
 
