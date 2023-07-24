@@ -34,3 +34,16 @@
     border-bottom: 1px solid $borders-gray-color;
   }
 }
+
+@media #{$tablet-media-query} {
+
+  .card {
+    width: 250px;
+
+    &__title,
+    &__price,
+    &__properties {
+      margin-top: 16px;
+    }
+  }
+}

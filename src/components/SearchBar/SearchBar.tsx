@@ -12,41 +12,63 @@ export const SearchBar: React.FC = () => {
   const debounceSearch = useDebounce(appliedQuery, 500) || null;
   const pathnameNormalized = pathname.substring(1);
   const isInputEmpty = appliedQuery.length === 0;
+  const [isSearchOpened, setIsSearchOpened] = useState(false);
 
   useEffect(() => {
     setSearchParams(getSearchWith(searchParams, { query: debounceSearch }));
   }, [debounceSearch]);
 
+  const handleClearSearchInput = () => {
+    setAppliedQuery('');
+    setSearchParams(getSearchWith(searchParams, { query: null }));
+    setIsSearchOpened(false);
+  };
+
+  useEffect(() => {
+    handleClearSearchInput();
+  }, [pathname]);
+
   const handleChangeSearchInput = (ev: React.ChangeEvent<HTMLInputElement>) => {
     setAppliedQuery(ev.target.value);
   };
 
-  const handleClearSearchInput = () => {
-    setAppliedQuery('');
-    setSearchParams(getSearchWith(searchParams, { query: null }));
+  const toggleSearch = () => {
+    setIsSearchOpened(!isSearchOpened);
   };
 
   return (
-    <div className="search-bar">
-      <input
-        type="text"
-        placeholder={`Search in ${pathnameNormalized}`}
-        value={appliedQuery}
-        onChange={handleChangeSearchInput}
-        className="search-bar__input"
-      />
+    <>
+      <div className={classNames(
+        'search-bar',
+        { 'search-bar_opened': isSearchOpened },
+      )}
+      >
+        <input
+          type="text"
+          placeholder={`Search in ${pathnameNormalized}`}
+          value={appliedQuery}
+          onChange={handleChangeSearchInput}
+          className="search-bar__input"
+        />
+        {/* eslint-disable-next-line */}
+        <button
+          data-cy="searchDelete"
+          type="button"
+          className={classNames(
+            'search-bar__button',
+            isInputEmpty
+              ? 'search-bar__button_search'
+              : 'search-bar__button_close',
+          )}
+          onClick={handleClearSearchInput}
+        />
+      </div>
       {/* eslint-disable-next-line */}
       <button
-        data-cy="searchDelete"
         type="button"
-        className={classNames(
-          'search-bar__button',
-          isInputEmpty
-            ? 'search-bar__button_search'
-            : 'search-bar__button_close',
-        )}
-        onClick={handleClearSearchInput}
+        className="search-bar__icon"
+        onClick={toggleSearch}
       />
-    </div>
+    </>
   );
 };

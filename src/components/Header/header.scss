@@ -1,5 +1,13 @@
 @import "../../../styles/common";
 
+@mixin button-header {
+  height: 64px;
+  width: 64px;
+  border: 1px solid $borders-gray-color;
+  position: relative;
+  padding: 25px;
+}
+
 .header {
   border-bottom: 1px solid $borders-gray-color;
   height: 64px;
@@ -10,6 +18,10 @@
   &__content {
     display: flex;
     align-items: center;
+  }
+
+  &__menu {
+    display: none;
   }
 
   &__logo {
@@ -24,11 +36,8 @@
   }
 
   &__link {
-    height: 64px;
-    width: 64px;
-    border: 1px solid $borders-gray-color;
+    @include button-header;
     position: relative;
-    padding: 25px;
 
     &.selected {
       border-bottom: 3px solid $main-gray-color;
@@ -73,6 +82,10 @@
     line-height: 9px;
     transform: translate(-50%,-50%);
   }
+
+  &__menu-open-button {
+    display: none;
+  }
 }
 
 .nav {
@@ -99,5 +112,91 @@
     &:hover {
       color: #000;
     }
+  }
+}
+
+@media #{$desktop-smallest-media-query} {
+
+  .header {
+
+    &__menu-open-button {
+      display: block;
+      @include button-header;
+      @include bgr-img;
+      background-image: url($icon-menu);
+      background-size: 20px 20px;
+    }
+
+    & .nav {
+      display: none;
+    }
+  }
+
+  .header__menu {
+    position: fixed;
+    top: 64px;
+    left: 0;
+    right: 0;
+    width: 100vw;
+    height: calc(100vh - 64px);
+    z-index: 1;
+    overflow-y: auto;
+    transform: translateX(100%);
+    transition: transform 0.3s;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 64px;
+
+    &.header__menu_opened {
+      transform: translateX(0);
+    }
+
+    & .nav {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+
+      &__item {
+        padding: 16px 0;
+        margin: 8px 0;
+      }
+    }
+
+    & .header__container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      width: 100%;
+    }
+
+    & .header__link {
+      width: 100%;
+
+      & .header__count {
+        top: 40%;
+        left: 50%;
+      }
+    }
+  }
+}
+
+@media #{$tablet-media-query} {
+
+  .nav {
+    flex-direction: column;
+
+    &__item {
+      padding: 16px 0;
+      margin: 8px 0;
+    }
+  }
+}
+
+@media #{$phone-media-query} {
+
+  .header .header__link {
+    display: none;
   }
 }

@@ -12,3 +12,14 @@
     margin-bottom: 0;
   }
 }
+
+@media #{$phone-media-query} {
+
+  .section {
+    margin-bottom: 60px;
+
+    &__title {
+      text-align: center;
+    }
+  }
+}

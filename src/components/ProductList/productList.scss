@@ -10,13 +10,11 @@
 
   &__content {
     margin-bottom: 40px;
-    display: grid;
+    display: flex;
     align-items: center;
-    // grid-template-columns: 1 1fr;
-    grid-template-columns: repeat(4,1fr);
-    grid-column-gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
     column-gap: 16px;
-    grid-row-gap: 40px;
     row-gap: 40px;
   }
 
@@ -31,5 +29,25 @@
 
   &__pagination {
     margin-top: 24px;
+  }
+}
+
+@media #{$phone-media-query} {
+
+  .product-list {
+
+    &__content {
+      flex-direction: column;
+    }
+
+    &__dropdowns {
+      flex-direction: column;
+      margin: 0 auto;
+  
+      & .dropdown_items {
+        width: 176px;
+        margin-top: 20px;
+      }
+    }
   }
 }

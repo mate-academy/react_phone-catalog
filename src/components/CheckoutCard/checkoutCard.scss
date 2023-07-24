@@ -11,6 +11,12 @@
     margin-bottom: 0;
   }
 
+  &__content,
+  &__container {
+    display: flex;
+    align-items: center;
+  }
+
   &__button-remove {
     border: none;
     height: 16px;
@@ -44,6 +50,7 @@
     display: flex;
     height: 32px;
     align-items: center;
+    margin-right: 16px;
   }
 
   &__button {
@@ -59,5 +66,34 @@
   &__price {
     @extend %h2;
     color: $main-gray-color;
+  }
+}
+
+@media #{$tablet-media-query} {
+
+  .checkout-card {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    grid-gap: 16px;
+    gap: 16px;
+    padding: 16px;
+
+    &__button-remove {
+      margin-bottom: 24px;
+    }
+
+    &__content,
+    &__container {
+      width: 100%;
+      justify-content: space-between;
+      grid-gap: 16px;
+      gap: 16px;
+    }
+
+    &__actions,
+    &__title {
+      margin: 0 0 16px;
+    }
   }
 }

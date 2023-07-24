@@ -126,3 +126,13 @@
     }
   }
 }
+
+@media #{$tablet-media-query} {
+
+  .button {
+
+    &_scroll {
+      margin-left: 84px;
+    }
+  }
+}

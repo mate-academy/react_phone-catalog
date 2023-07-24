@@ -52,3 +52,24 @@
     }
   }
 }
+
+@media #{$phone-media-query} {
+
+  .carousel {
+    height: unset;
+
+    &__content {
+      height: unset;
+    }
+
+    &__image {
+      width: 100%;
+      height: 300px;
+      margin: 0;
+    }
+
+    &__button {
+      display: none;
+    }
+  }
+}

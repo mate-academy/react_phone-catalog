@@ -37,37 +37,41 @@ export const CheckoutCard:React.FC<Props> = ({ item }) => {
         className="checkout-card__button-remove"
         onClick={() => toggleToCart(item)}
       />
-      <img
-        alt={item.name}
-        src={item.image}
-        className="checkout-card__img"
-      />
-      <p className="checkout-card__title">
-        {item.name}
-      </p>
-      <div className="checkout-card__actions">
-        {/* eslint-disable-next-line */}
-        <button
-          type="button"
-          className={classNames(
-            'checkout-card__button checkout-card__button_prev',
-            { disabled: count === 1 },
-          )}
-          onClick={handleDecrease}
+      <div className="checkout-card__content">
+        <img
+          alt={item.name}
+          src={item.image}
+          className="checkout-card__img"
         />
-        <div className="checkout-card__count">
-          {count}
-        </div>
-        {/* eslint-disable-next-line */}
-        <button
-          type="button"
-          className="checkout-card__button checkout-card__button_next"
-          onClick={handleIncrease}
-        />
+        <p className="checkout-card__title">
+          {item.name}
+        </p>
       </div>
-      <p className="checkout-card__price">
-        {`$${totalPrice()}`}
-      </p>
+      <div className="checkout-card__container">
+        <div className="checkout-card__actions">
+          {/* eslint-disable-next-line */}
+          <button
+            type="button"
+            className={classNames(
+              'checkout-card__button checkout-card__button_prev',
+              { disabled: count === 1 },
+            )}
+            onClick={handleDecrease}
+          />
+          <div className="checkout-card__count">
+            {count}
+          </div>
+          {/* eslint-disable-next-line */}
+          <button
+            type="button"
+            className="checkout-card__button checkout-card__button_next"
+            onClick={handleIncrease}
+          />
+        </div>
+        <p className="checkout-card__price">
+          {`$${totalPrice()}`}
+        </p>
+      </div>
     </div>
   );
 };

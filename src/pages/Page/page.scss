@@ -6,6 +6,7 @@
   justify-content: space-between;
   height: 100vh;
   overflow-y: scroll;
+  min-width: 320px;
 
   &__main {
     flex-grow: 1;
@@ -13,7 +14,15 @@
   }
 
   &__container {
-    max-width: 1120px;
+    max-width: 1130px;
     margin: 0 auto;
+  }
+}
+
+@media #{$desktop-smallest-media-query} {
+
+  .page__container {
+    max-width: unset;
+    padding: 0 24px;
   }
 }

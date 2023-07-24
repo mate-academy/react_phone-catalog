@@ -39,4 +39,41 @@
       background-image: url($icon-close);
     }
   }
+
+  &__icon {
+    display: none;
+  }
+}
+
+@media #{$tablet-media-query} {
+
+  .search-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 64px;
+    z-index: 1;
+    transform: translateX(100%);
+    transition: transform 0.3s;
+    background-color: #fff;
+    border: 2px solid $main-gray-color;
+
+    &_opened {
+      transform: translateX(0);
+    }
+
+    &__icon {
+      display: block;
+      height: 64px;
+      width: 64px;
+      border: 1px solid $borders-gray-color;
+      position: relative;
+      padding: 25px;
+      @include bgr-img;
+      background-image: url($icon-search);
+      background-size: 20px 20px;
+    }
+  }
 }
