@@ -1,6 +1,5 @@
 import { useTranslation } from 'react-i18next';
 import { PhoneInfo } from '../type/PhoneInfo';
-import { toUpperCaseFirstLetter } from '../utils/helpers';
 
 const TECH_SPECS: string[] = [
   'screen',
@@ -25,7 +24,7 @@ export const TechSpecsSection: React.FC<Props> = ({ description }) => {
       <ul className="tech__list">
         {TECH_SPECS.map(spec => (
           <li className="tech__item" key={spec}>
-            <span className="tech__spec">{toUpperCaseFirstLetter(spec)}</span>
+            <span className="tech__spec">{t(`${spec}`.toLowerCase())}</span>
             <span className="tech__value">{description[spec]}</span>
           </li>
         ))}
