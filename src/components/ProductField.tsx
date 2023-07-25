@@ -35,13 +35,22 @@ export const ProductField: React.FC<Props> = ({ product }) => {
         <img src={cross} alt="" />
       </button>
 
-      <img
-        src={`new/${product.image}`}
-        alt=""
-        className="productField__image"
-      />
+      <Link
+        to={`/${product.category}/${product.itemId}`}
+      >
+        <img
+          src={`new/${product.image}`}
+          alt=""
+          className="productField__image"
+        />
+      </Link>
 
-      <Link to={`/${product.category}/${product.itemId}`} className="productField__name">{product.name}</Link>
+      <Link
+        to={`/${product.category}/${product.itemId}`}
+        className="productField__name"
+      >
+        {product.name}
+      </Link>
 
       <div className="productField__quantity">
         <button
