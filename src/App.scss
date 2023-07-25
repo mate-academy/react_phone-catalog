@@ -1,1 +1,16 @@
-// not empty
+@import "./styles/normalize.scss";
+@import "./styles/fonts.scss";
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  margin: auto 0;
+}
+
+footer {
+  margin-top: auto;
+}

@@ -1,0 +1,52 @@
+.footer {
+  height: 96px;
+  box-shadow: 0 -1px 0 #e1e5e8;
+  padding: 40px 0;
+  color: #89939a;
+
+  &__content {
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__logo {
+    display: block;
+  }
+
+  &__menu {
+    display: flex;
+    gap: 64px;
+  }
+
+  &__item {
+    &:hover {
+      color: #000;
+    }
+  }
+
+  &__button {
+    display: flex;
+    gap: 16px;
+
+    &-text {
+      display: flex;
+      align-items: center;
+    }
+
+    &-btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 32px;
+      min-height: 32px;
+      max-height: 100%;
+      background: none;
+
+      border: 1px solid #b4bcc3;
+
+      cursor: pointer;
+    }
+  }
+}

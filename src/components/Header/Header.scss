@@ -1,0 +1,113 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  height: 64px;
+
+  padding-left: 24px;
+
+  box-shadow: 1px 1px 1px #e1e5e8;
+
+  &__logo {
+    display: block;
+    height: 24px;
+    width: 40px;
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+
+  &__menu {
+    display: flex;
+    gap: 64px;
+
+    font-family: "MontBold", sans-serif;
+
+    margin-left: 64px;
+  }
+
+  &__item {
+    color: #89939a;
+    position: relative;
+  }
+
+  &__link {
+    padding: 23px 0;
+    display: block;
+
+    transition-duration: 0.3s;
+
+    &:hover {
+      color: #000;
+    }
+
+    &::after {
+      content: "";
+      width: 1px;
+      height: 3px;
+
+      transition-duration: 0.3s;
+    }
+
+    &--active {
+      color: #000;
+
+      transition-duration: 0.3s;
+    }
+
+    &--active::after {
+      content: "";
+      position: absolute;
+      display: block;
+      width: 100%;
+      height: 3px;
+      bottom: 0;
+
+      background-color: #000;
+    }
+
+    &:hover::after {
+      content: "";
+      position: absolute;
+      display: block;
+      width: 100%;
+      height: 3px;
+      bottom: 0;
+
+      background-color: #000;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 64px;
+    width: 64px;
+    position: relative;
+
+    border: 1px solid #e2e6e9;
+    border-bottom: 1px solid transparent;
+    border-right: 1px solid transparent;
+
+    &:hover {
+      border-color: #000;
+      border-bottom: 1px solid #000;
+      border-right: 1px solid #000;
+    }
+  }
+
+  &-image {
+    display: block;
+    width: 16px;
+    height: 16px;
+  }
+}
