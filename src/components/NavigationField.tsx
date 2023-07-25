@@ -1,5 +1,6 @@
 import { Link, useParams } from 'react-router-dom';
 
+import { useTranslation } from 'react-i18next';
 import {
   toUpperCaseFirstLetter,
 } from '../utils/helpers';
@@ -10,6 +11,8 @@ import right from '../imgs/icons/Chevron (Arrow Right).svg';
 
 export const NavigationField: React.FC = () => {
   const { category, id } = useParams();
+
+  const { t } = useTranslation();
 
   const getCorrectIdName = (str: string) => {
     const result = str.split('-').map(word => toUpperCaseFirstLetter(word));
@@ -27,7 +30,7 @@ export const NavigationField: React.FC = () => {
         <li className="NavigationField__item">
           <Link to={`/${category}`}>
             <img src={right} alt="right" className="NavigationField__arrow" />
-            {toUpperCaseFirstLetter(category || '')}
+            {t(`${category}`)}
           </Link>
         </li>
 
