@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { t } from 'i18next';
+import { useTranslation } from 'react-i18next';
 import { getProducts } from '../api/getData';
 
 import { Products } from '../type/Products';
@@ -11,6 +11,8 @@ import { Categories } from '../components/Categories';
 
 export const HomePage: React.FC = () => {
   const [list, setList] = useState<Products[]>([]);
+
+  const { t } = useTranslation();
 
   const data = async () => {
     try {
