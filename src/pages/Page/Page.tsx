@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import { AppProvider } from '../../context/AppContextProvider';
 import { Product, ProductInCart } from '../../types/Product';
 import { getProducts } from '../../api/fetchData';
@@ -29,6 +29,9 @@ export const Page: React.FC = () => {
   });
   const [favorites, setFavorites] = useLocalStorage('favorites', []);
   const [cart, setCart] = useLocalStorage('cart', []);
+  const { pathname } = useLocation();
+
+  const pathnameNormalized = pathname === '/' ? 'home' : pathname.substring(1);
 
   async function loadProducts() {
     setIsLoading(true);
@@ -120,7 +123,9 @@ export const Page: React.FC = () => {
         <ScrollToTop />
         <Header />
         <main className="page__main">
-          <div className="page__container">
+          <div
+            className={`page__container page__container_${pathnameNormalized}`}
+          >
             <Routes>
               <Route path={PathnamesApp.Home}>
                 <Route

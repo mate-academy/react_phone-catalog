@@ -1,0 +1,49 @@
+@import "../../../styles/common";
+
+.icon {
+  @include button-header;
+  position: relative;
+
+  &.selected {
+    border-bottom: 3px solid $main-gray-color;
+  }
+
+  &__img {
+    height: 20px;
+    width: 20px;
+    margin: 0 auto;
+    @include bgr-img;
+
+    &_favorites {
+      background-image: url($icon-fav);
+    }
+
+    &_cart {
+      background-image: url($icon-cart);
+    }
+  }
+
+  &__count {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 8px;
+    display: block;
+    width: 16px;
+    height: 16px;
+    color: #fff;
+    text-align: center;
+    border: 1.5px solid #fff;
+    border-radius: 50%;
+    background-color: $accent-red;
+  }
+
+  &__text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 9px;
+    line-height: 9px;
+    transform: translate(-50%,-50%);
+  }
+}

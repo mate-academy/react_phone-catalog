@@ -83,3 +83,10 @@
     pointer-events: none;
   }
 };
+
+@mixin button-header {
+  height: 64px;
+  width: 64px;
+  position: relative;
+  padding: 25px;
+}

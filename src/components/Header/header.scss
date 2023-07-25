@@ -1,13 +1,5 @@
 @import "../../../styles/common";
 
-@mixin button-header {
-  height: 64px;
-  width: 64px;
-  border: 1px solid $borders-gray-color;
-  position: relative;
-  padding: 25px;
-}
-
 .header {
   border-bottom: 1px solid $borders-gray-color;
   height: 64px;
@@ -33,54 +25,6 @@
 
   &__container {
     display: flex;
-  }
-
-  &__link {
-    @include button-header;
-    position: relative;
-
-    &.selected {
-      border-bottom: 3px solid $main-gray-color;
-    }
-  }
-
-  &__icon {
-    height: 20px;
-    width: 20px;
-    margin: 0 auto;
-    @include bgr-img;
-
-    &_favorites {
-      background-image: url($icon-fav);
-    }
-
-    &_cart {
-      background-image: url($icon-cart);
-    }
-  }
-
-  &__count {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    right: 8px;
-    display: block;
-    width: 16px;
-    height: 16px;
-    color: #fff;
-    text-align: center;
-    border: 1.5px solid #fff;
-    border-radius: 50%;
-    background-color: $accent-red;
-  }
-
-  &__text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    font-size: 9px;
-    line-height: 9px;
-    transform: translate(-50%,-50%);
   }
 
   &__menu-open-button {
@@ -122,6 +66,7 @@
     &__menu-open-button {
       display: block;
       @include button-header;
+      border: none;
       @include bgr-img;
       background-image: url($icon-menu);
       background-size: 20px 20px;
@@ -130,15 +75,27 @@
     & .nav {
       display: none;
     }
+
+    &__box {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      margin-bottom: 64px;
+
+      & .header__menu-open-button {
+        background-image: url($icon-close);
+      }
+    }
   }
 
   .header__menu {
     position: fixed;
-    top: 64px;
+    top: 0;
     left: 0;
     right: 0;
     width: 100vw;
-    height: calc(100vh - 64px);
+    height: 100vh;
     z-index: 1;
     overflow-y: auto;
     transform: translateX(100%);
@@ -147,8 +104,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    padding-top: 64px;
 
     &.header__menu_opened {
       transform: translateX(0);
@@ -171,10 +126,10 @@
       width: 100%;
     }
 
-    & .header__link {
+    & .icon {
       width: 100%;
 
-      & .header__count {
+      & .icon__count {
         top: 40%;
         left: 50%;
       }
@@ -191,12 +146,5 @@
       padding: 16px 0;
       margin: 8px 0;
     }
-  }
-}
-
-@media #{$phone-media-query} {
-
-  .header .header__link {
-    display: none;
   }
 }

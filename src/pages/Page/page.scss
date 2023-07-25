@@ -21,8 +21,27 @@
 
 @media #{$desktop-smallest-media-query} {
 
-  .page__container {
-    max-width: unset;
-    padding: 0 24px;
+  .page {
+
+    &__container {
+      max-width: unset;
+      padding: 0 24px;
+
+      &_home {
+        padding: 0;
+      
+        & .section {
+          padding: 0 24px;
+
+          &:first-child {
+            padding: 0;
+
+            & .section__title {
+              padding: 0 24px;
+            }
+          }
+        }
+      }
+    }
   }
 }

@@ -66,11 +66,7 @@
 
     &__icon {
       display: block;
-      height: 64px;
-      width: 64px;
-      border: 1px solid $borders-gray-color;
-      position: relative;
-      padding: 25px;
+      @include button-header;
       @include bgr-img;
       background-image: url($icon-search);
       background-size: 20px 20px;

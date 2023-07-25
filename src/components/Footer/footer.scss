@@ -41,3 +41,10 @@
     }
   }
 }
+
+@supports (-webkit-touch-callout: none) {
+
+  .footer {
+    padding-bottom: 100px;
+  }
+}

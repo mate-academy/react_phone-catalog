@@ -14,7 +14,7 @@ import { Loader } from '../../components/Loader';
 import { SecondNavBar } from '../../components/SecondNavBar/SecondNavBar';
 /* eslint-disable-next-line */
 import { ButtonAddToCart } from '../../components/ButtonAddToCart/ButtonAddToCart';
-import { ProductsSlider } from '../../components/ProductsSlider/ProductsSlider';
+import { SlickSlider } from '../../components/SlickSlider/SlickSlider';
 import './itemPage.scss';
 
 const calcValueSpecification = (
@@ -262,9 +262,9 @@ export const ItemPage: React.FC<Props> = ({ products }) => {
 
       {!isLoading && (
         <section className="section">
-          <ProductsSlider
+          <h1 className="section__title">You may also like</h1>
+          <SlickSlider
             products={products}
-            title="You may also like"
             sortBy={SortType.Random}
           />
         </section>

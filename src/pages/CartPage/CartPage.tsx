@@ -31,7 +31,7 @@ export const CartPage:React.FC = () => {
   }, [isPopupShown]);
 
   return (
-    <>
+    <div className="page__cart">
       <SecondNavBar />
       <h1 className="main-title">Cart</h1>
       <ModelsCounter number={cart.length} />
@@ -71,6 +71,6 @@ export const CartPage:React.FC = () => {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 };

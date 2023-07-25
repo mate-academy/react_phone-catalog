@@ -1,0 +1,39 @@
+@import "/styles/common";
+
+.slick {
+
+  &-slider {
+    padding: 0 10px;
+    position: relative;
+  }
+
+  &-arrow {
+    @include button-transparent;
+    height: 32px;
+    position: absolute;
+    top: 50%;
+  }
+
+  &-prev {
+    margin-right: 16px;
+
+    &::before {
+      background-image: url($arrow-left);
+    }
+
+    &.disabled::before {
+      background-image: url($arrow-left-light);
+    }
+  }
+
+  &-next {
+
+    &::before {
+      background-image: url($arrow-right);
+    }
+
+    &.disabled::before {
+      background-image: url($arrow-right-light);
+    }
+  }
+}

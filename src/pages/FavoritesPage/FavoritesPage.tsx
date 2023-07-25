@@ -10,7 +10,7 @@ export const FavoritesPage:React.FC = () => {
   const { favorites } = useContext(AppContext);
 
   return (
-    <>
+    <div className="page__favorites">
       <SecondNavBar />
       <h1 className="main-title">Favorites</h1>
       <ModelsCounter number={favorites.length} />
@@ -22,6 +22,6 @@ export const FavoritesPage:React.FC = () => {
       ) : (
         <ProductList products={favorites} />
       )}
-    </>
+    </div>
   );
 };

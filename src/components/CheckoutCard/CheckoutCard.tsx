@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import { ProductInCart } from '../../types/Product';
 import { AppContext } from '../../context/AppContextProvider';
 import './checkoutCard.scss';
-import { Link } from 'react-router-dom';
 
 export type Props = {
   item: ProductInCart;
