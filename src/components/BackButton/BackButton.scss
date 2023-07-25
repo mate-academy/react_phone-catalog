@@ -1,0 +1,21 @@
+@import "../../styles/main.scss";
+
+.back-button {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 16px;
+  padding: 0;
+
+  @extend %body-small-text;
+  color: $secondary-color;
+  text-decoration: none;
+  background: none;
+  border: none;
+  transition: all 0.5s;
+
+  &:hover {
+    color: $primary-color;
+    cursor: pointer;
+  }
+}

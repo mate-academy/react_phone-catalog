@@ -1,0 +1,77 @@
+@import "../../styles/main.scss";
+
+.banner {
+  &__container {
+    display: flex;
+    margin-bottom: 180px;
+    gap: 16px;
+
+    @include onDesktop {
+      position: relative;
+      margin-bottom: 18px;
+    }
+  }
+
+  &__button {
+    display: none;
+
+    @include onDesktop {
+      display: block;
+      width: 32px;
+      padding: 0 8px;
+      background-color: $white-color;
+      border: 1px solid $elements-color;
+      transition: border-color 0.5s;
+      cursor: pointer;
+
+      &:hover {
+        border-color: $primary-color;
+      }
+    }
+  }
+
+  &__content {
+    position: absolute;
+    left: 0;
+    top: 65px;
+    height: 200px;
+    width: 100%;
+
+    @include onDesktop {
+      position: relative;
+      top: 0;
+      height: 400px;
+    }
+  }
+
+  &__image {
+    position: absolute;
+    @include squareSize(100%);
+    object-fit: cover;
+    transition: opacity 0.5s;
+    opacity: 0;
+
+    &--active {
+      opacity: 1;
+    }
+  }
+
+  &__move {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+
+    &__item {
+      width: 14px;
+      height: 4px;
+      background-color: $elements-color;
+      border-color: transparent;
+      transition: background-color 0.5s;
+      cursor: pointer;
+
+      &--active {
+        background-color: $primary-color;
+      }
+    }
+  }
+}

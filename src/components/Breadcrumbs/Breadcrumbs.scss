@@ -1,0 +1,22 @@
+@import "../../styles/main.scss";
+
+.page-status {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  margin-bottom: 24px;
+  @extend %body-small-text;
+
+  @include onDesktop {
+    margin-bottom: 40px;
+  }
+
+  &__title {
+    color: $secondary-color;
+  }
+
+  &__link-title {
+    color: $primary-color;
+    text-decoration: none;
+  }
+}

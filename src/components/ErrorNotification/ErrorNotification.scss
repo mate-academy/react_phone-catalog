@@ -1,0 +1,8 @@
+@import "../../styles//main.scss";
+
+.notification {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  @extend %h1-text;
+}

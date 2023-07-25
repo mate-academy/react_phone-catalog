@@ -1,0 +1,325 @@
+@import "../../styles/main.scss";
+
+.product-details {
+  &__title {
+    margin-bottom: 20px;
+
+    @include onDesktop {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__main-details,
+  &__additional-details {
+    margin-bottom: 40px;
+
+    @include onDesktop {
+      margin-bottom: 80px;
+    }
+  }
+}
+
+.main-details {
+  &__product-id {
+    display: flex;
+    justify-content: flex-end;
+    @extend %body-small-text;
+    color: $icons-color;
+  }
+}
+
+.product-images {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 16px;
+  margin-bottom: 26px;
+
+  @include onDesktop {
+    justify-content: center;
+    margin-bottom: 0;
+  }
+
+  &__main-image {
+    width: 184px;
+    height: 264px;
+
+    @include onDesktop {
+      @include squareSize(464px);
+    }
+  }
+
+}
+
+.main-image {
+  width: 184px;
+  height: 264px;
+  object-fit: contain;
+  object-position: center;
+
+  @include onDesktop {
+    @include squareSize(464px);
+  }
+}
+
+.small-images {
+  overflow: hidden;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    gap: 16px;
+    @include squareSize(80px);
+  }
+
+  &__image {
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+    padding: 8px;
+    width: 100%;
+    min-height: 100%;
+    border: 1px solid #c4c4c4;
+    cursor: pointer;
+    transition: all 0.5s;
+
+    &--active {
+      border: 1px solid $primary-color;
+    }
+
+    &:hover {
+      border: 1px solid $primary-color;
+    }
+  }
+}
+
+.images-slider {
+  &__button {
+    width: 80px;
+    box-sizing: border-box;
+    background-color: $white-color;
+    border: 1px solid $icons-color;
+    cursor: pointer;
+    transition: all 0.5s;
+
+    &--prev {
+      margin-bottom: 16px;
+    }
+
+    &--icon {
+      margin: 0 auto;
+    }
+
+    &:disabled {
+      border-color: $elements-color;
+      cursor: default;
+    }
+  }
+}
+
+.specifications {
+  display: flex;
+  flex-direction: column;
+
+  &__name {
+    margin-bottom: 8px;
+    @extend %body-small-text;
+    color: $secondary-color;
+  }
+
+  &__buttons {
+    margin-bottom: 42px;
+
+    @include onDesktop {
+      margin-bottom: 32px;
+    }
+  }
+}
+
+.colors {
+  position: relative;
+
+  &__list {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid $elements-color;
+    list-style: none;
+  }
+
+  &__item-circle {
+    @include squareSize(32px);
+    border: 1px solid $elements-color;
+    border-radius: 50px;
+    transition: all 0.5s;
+
+    &:hover {
+      border-color: $secondary-color;
+    }
+
+    &--active {
+      border-color: $primary-color;
+
+      &:hover {
+        border-color: $primary-color;
+      }
+    }
+  }
+
+  &__item {
+    display: block;
+    @include squareSize(28px);
+    border: 2px solid $white-color;
+    border-radius: 50px;
+  }
+}
+
+.capacity {
+  position: relative;
+
+  &__list {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 32px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid $elements-color;
+    list-style: none;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid $icons-color;
+    transition: all 0.5s;
+
+    &:hover {
+      border-color: $secondary-color;
+    }
+
+    &--active {
+      border-color: $primary-color;
+      background-color: $primary-color;
+  
+      &:hover {
+        border-color: $primary-color;
+      }
+    }
+  }
+
+  &__link {
+    padding: 8px;
+    @extend %body-text;
+    color: $primary-color;
+    text-decoration: none;
+
+    &--active {
+      color: $white-color;
+    }
+  }
+}
+
+.price {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  padding-bottom: 6px;
+
+  &__discountPrice {
+    @extend %h1-text;
+  }
+
+  &__priceRegular {
+    @extend %h2-text;
+    font-weight: $font-weight-regular;
+    color: $secondary-color;
+    text-decoration: line-through;
+  }
+}
+
+.short-spec {
+  &__list {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    @extend %body-small-text;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &--name {
+      color: $secondary-color;
+    }
+
+    &--value {
+      color: $primary-color;
+    }
+  }
+}
+
+.additional-details {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  margin-bottom: 0;
+
+  &__title {
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid $elements-color;
+    @extend %h2-text;
+
+    @include onDesktop {
+      margin-bottom: 32px;
+      padding-bottom: 16px;
+    }
+  }
+}
+
+.about {
+  margin-bottom: 32px;
+
+  @include onDesktop {
+    margin-bottom: 0;
+  }
+
+  &__text {
+    margin-bottom: 32px;
+  
+    &:last-child {
+      margin-bottom: 0;
+    }
+  
+    &-name {
+      margin-bottom: 8px;
+      @extend %h3-text;
+
+      @include onDesktop {
+        margin-bottom: 16px;
+      }
+    }
+  
+    &-description {
+      @extend %body-text;
+      color: $secondary-color;
+    }
+  }
+}
+
+.tech-specs {
+  margin-bottom: 24px;
+
+  @include onDesktop {
+    margin-bottom: 0;
+  }
+}

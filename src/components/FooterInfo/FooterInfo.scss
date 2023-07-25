@@ -1,0 +1,31 @@
+@import "../../styles/main.scss";
+
+.footer {
+  &__info {
+    display: flex;
+    margin: 0 auto;
+    gap: 16px;
+
+    @include onDesktop {
+      gap: 64px;
+    }
+  }
+
+  &__link {
+    display: flex;
+    gap: 64px;
+    @extend %uppercase-text;
+    font-size: 8px;
+    text-decoration: none;
+    color: $secondary-color;
+    transition: color 0.5s;
+
+    @include onDesktop {
+      font-size: 12px;
+    }
+
+    &:hover {
+      color: $primary-color;
+    }
+  }
+}

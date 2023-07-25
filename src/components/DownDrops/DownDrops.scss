@@ -1,0 +1,85 @@
+@import "../../styles/main.scss";
+
+.selector {
+  display: flex;
+  justify-content: flex-start;
+  gap: 16px;
+
+  &__title {
+    margin-bottom: 4px;
+    @extend %body-small-text;
+    color: $secondary-color;
+  }
+}
+
+.filter {
+  position: relative;
+  margin-bottom: 24px;
+
+  &__button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 132px;
+    height: 40px;
+    padding: 0;
+    margin-bottom: 4px;
+    border: 1px solid $icons-color;
+    background-color: $white-color;
+    cursor: pointer;
+
+    @include onDesktop {
+      width: 176px;
+    }
+
+    &:hover {
+      border-color: $secondary-color;
+    }
+
+    &:focus {
+      border-color: $primary-color;
+    }
+  }
+
+  &__selectedValue {
+    padding-left: 8px;
+    @extend %button-text;
+    color: $primary-color;
+
+    @include onDesktop {
+      padding-left: 12px;
+    }
+  }
+
+  &__arrow {
+    margin-right: 16px;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: 100%;
+    padding: 8px 0;
+    box-sizing: border-box;
+    border: 1px solid $elements-color;
+    background-color: $white-color;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    z-index: 1;
+    transition: all 1.2s;
+  }
+
+  &__value {
+    padding: 5px 0 5px 12px;
+    @extend %body-text;
+    color: $secondary-color;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.5s;
+
+    &:hover {
+      color: $primary-color;
+    }
+  }
+}

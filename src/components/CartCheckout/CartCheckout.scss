@@ -1,0 +1,44 @@
+@import "../../styles/main.scss";
+
+.checkout {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    border: 1px solid $elements-color;
+  }
+
+  &__total-price {
+    display: flex;
+    justify-content: center;
+    @extend %h1-text;
+  }
+
+  &__total-items {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid $elements-color;
+    @extend %body-text;
+    color: $secondary-color;
+  }
+
+  &__button {
+    max-width: 300px;
+    height: 48px;
+    @extend %button-text;
+    color: $white-color;
+    background-color: $primary-color;
+    border: none;
+    cursor: pointer;
+
+    @include onDesktop {
+      max-width: 320px;
+    }
+
+    &:hover {
+      box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+    }
+  }
+}

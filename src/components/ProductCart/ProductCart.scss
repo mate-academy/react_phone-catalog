@@ -1,0 +1,176 @@
+@import "../../styles/main.scss";
+
+.cart {
+  &__empty-title {
+    display: flex;
+    justify-content: center;
+    padding-top: 70px;
+    @extend %h1-text;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+    margin-bottom: 16px;
+    border: 1px solid $elements-color;
+    list-style: none;
+    transition: all 0.5s;
+
+    @include onDesktop {
+      flex-direction: row;
+      padding: 24px 40px 24px 24px;
+    }
+
+    &:hover {
+      box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+    }
+
+    &--delete {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 24px;
+      padding: 0;
+      background-color: $white-color;
+      border: none;
+      cursor: pointer;
+      transition: box-shadow 0.5s;
+
+      @include onDesktop {
+        margin-right: 24px;
+        margin-bottom: 0;
+      }
+
+      &:hover {
+        border-bottom: 1px solid $elements-color;
+        box-shadow: 5px 5px 5px $icons-color;
+      }
+    }
+
+    &--name {
+      width: 120px;
+      margin-bottom: 14px;
+      text-align: center;
+      overflow: hidden;
+      @extend %body-text;
+      color: $primary-color;
+
+      @include onDesktop {
+        width: 295px;
+        margin-right: 48px;
+        margin-bottom: 0;
+      }
+    }
+  }
+  
+  &__image {
+    height: 100%;
+
+    &--container {
+      display: flex;
+      justify-content: center;
+      @include squareSize(80px);
+      margin-bottom: 14px;
+
+      @include onDesktop {
+        margin-right: 24px;
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__buttons {
+    margin-bottom: 14px;
+
+    @include onDesktop {
+      margin-right: 42px;
+      margin-bottom: 0;
+    }
+  }
+
+  &__amount {
+    margin-right: 14px;
+
+    @extend %body-text;
+    color: #000;
+  }
+
+  &__price {
+    @extend %h2-text;
+  }
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include squareSize(32px);
+    margin-right: 14px;
+    border: 1px solid $icons-color;
+    background-color: $white-color;
+    cursor: pointer;
+    transition: border-color 0.5s;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &:hover {
+      border-color: $primary-color;
+    }
+
+    &:disabled {
+      border-color: $elements-color;
+      cursor: default;
+    }
+  }
+}
+
+.item {
+  animation: fadeInSlideIn 0.5s ease-in-out;
+
+  &-enter {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  &-enter-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+  }
+
+  &-exit {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  &-exit-active {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+  }
+}
+
+@keyframes fadeInSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

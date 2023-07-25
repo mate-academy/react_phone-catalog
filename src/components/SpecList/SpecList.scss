@@ -1,0 +1,29 @@
+@import "../../styles/main.scss";
+
+.full-spec {
+  &__list {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    gap: 14px;
+    @extend %body-text;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &--name {
+      color: $secondary-color;
+    }
+
+    &--value {
+      color: $primary-color;
+    }
+  }
+}

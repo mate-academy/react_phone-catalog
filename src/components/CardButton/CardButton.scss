@@ -1,0 +1,65 @@
+@import "../../styles/main.scss";
+
+.card-button {
+  display: flex;
+  gap: 8px;
+
+  &__add-cart {
+    padding: 0;
+    color: $white-color;
+    outline: none;
+    border: none;
+    background-color: $primary-color;
+    cursor: pointer;
+    @extend %button-text;
+
+    &--small {
+      width: 176px;
+      height: 40px;
+    }
+
+    &--big {
+      width: 263px;
+      height: 48px;
+    }
+
+    &--selected {
+      border: 1px solid $icons-color;
+      background-color: $white-color;
+      color: $green-color;
+    }
+
+    &:hover {
+      color: $white-color;
+      background-color: $primary-color;
+      box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+    }
+  }
+
+  &__add-favorites {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    background-color: $white-color;
+    border: 1px solid $icons-color;
+    cursor: pointer;
+    transition: all 0.5s;
+
+    &--small {
+      @include squareSize(40px);
+    }
+
+    &--big {
+      @include squareSize(48px);
+    }
+
+    &--selected {
+      border-color: $elements-color;
+    }
+
+    &:hover {
+      border-color: $primary-color;
+    }
+  }
+}

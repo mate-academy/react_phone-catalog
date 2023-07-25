@@ -1,0 +1,27 @@
+@import "../../styles/main.scss";
+
+.top-actions {
+  &__item {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    &-count {
+      position: absolute;
+      top: 14px;
+      right: 17px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      @include squareSize(14px);
+      background-color: $red-color;
+      border: 1px solid $white-color;
+      border-radius: 50%;
+
+      @extend %body-small-text;
+      font-size: 9px;
+      line-height: 9px;
+      color: $white-color;
+    }
+  }
+}

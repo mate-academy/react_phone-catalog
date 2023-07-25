@@ -1,0 +1,27 @@
+@import "../../styles/main.scss";
+
+.products {
+  display: grid;
+
+  &__title {
+    margin-bottom: 8px;
+  }
+
+  &__total {
+    @extend %body-text;
+    color: $secondary-color;
+    margin-bottom: 40px;
+  }
+
+  &__items {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin: 0 0 40px;
+  }
+}
