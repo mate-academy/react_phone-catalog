@@ -42,7 +42,7 @@ export const Footer: FC = () => {
               <li className="footer__FirstChild-nav-item">
                 <Link
                   to="/contacts"
-                  className={`footer__FirstChild-nav-link ${location.pathname === '/contacts' ? 'is-activ' : ''}`}
+                  className={`footer__FirstChild-nav-link ${location.pathname === '/contacts' ? 'is-activee' : ''}`}
                 >
                   Contacts
                 </Link>
@@ -50,7 +50,7 @@ export const Footer: FC = () => {
               <li className="footer__FirstChild-nav-item">
                 <Link
                   to="/rights"
-                  className={`footer__FirstChild-nav-link ${location.pathname === '/rights' ? 'is-activ' : ''}`}
+                  className={`footer__FirstChild-nav-link ${location.pathname === '/rights' ? 'is-activee' : ''}`}
                 >
                   rights
                 </Link>

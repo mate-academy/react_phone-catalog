@@ -51,7 +51,10 @@ export const Header = ({ searchValue, setSearchValue }: HeaderProps) => {
             <img className={`logoImage ${isHomePage ? 'is-home-page' : ''}`} src={LogoImage} alt="Logo" />
           </NavLink>
         </div>
-        <nav className="header__FirstChild-nav">
+        <nav
+          data-cy="categoryLinksContainer"
+          className="header__FirstChild-nav"
+        >
           <ul className="header__FirstChild-nav-list">
             <li className="header__FirstChild-nav-item">
               <NavLink to="/" className={`header__FirstChild-nav-link ${isHomePage ? 'is-active' : ''}`}>
@@ -104,11 +107,11 @@ export const Header = ({ searchValue, setSearchValue }: HeaderProps) => {
           </NavLink>
 
           {favoritesLength >= 1
-              && (
-                <div className="circle-for-header">
-                  <p className="counter-for-header">{favoritesLength}</p>
-                </div>
-              )}
+            && (
+              <div className="circle-for-header">
+                <p className="counter-for-header">{favoritesLength}</p>
+              </div>
+            )}
 
         </div>
         <div className={`header__LastChild-basket ${location.pathname === '/cart' ? 'is-activ' : ''}`}>
@@ -117,11 +120,11 @@ export const Header = ({ searchValue, setSearchValue }: HeaderProps) => {
           </NavLink>
 
           {basketLength >= 1
-              && (
-                <div className="circle-for-header">
-                  <p className="counter-for-header">{basketLength}</p>
-                </div>
-              )}
+            && (
+              <div className="circle-for-header">
+                <p className="counter-for-header">{basketLength}</p>
+              </div>
+            )}
         </div>
       </div>
     </header>
