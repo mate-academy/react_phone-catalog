@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import { useTranslation } from 'react-i18next';
+import swal from 'sweetalert';
 import { getProducts } from '../api/getData';
 
 import { Products } from '../type/Products';
@@ -20,7 +21,11 @@ export const HomePage: React.FC = () => {
 
       setList(await res);
     } catch {
-      throw new Error('Hello, Mario, HotPrices comp');
+      swal({
+        icon: 'error',
+        title: 'Something goes wrong!',
+        text: 'Try in a few!',
+      });
     }
   };
 
