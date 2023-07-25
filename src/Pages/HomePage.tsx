@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
+import { t } from 'i18next';
 import { getProducts } from '../api/getData';
 
 import { Products } from '../type/Products';
@@ -35,12 +36,12 @@ export const HomePage: React.FC = () => {
     <div className="container">
       <Slider />
       <CatalogShortCut
-        title="Hot Price"
+        title={t('hotPrice')}
         list={getHotPriceProducts}
       />
       <Categories />
       <CatalogShortCut
-        title="Brand New"
+        title={t('brandNew')}
         list={getBrandNew}
       />
     </div>
