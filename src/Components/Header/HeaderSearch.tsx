@@ -39,6 +39,7 @@ export const HeaderSearch = (
       />
       {searchValue ? (
         <img
+          data-cy="searchDelete"
           src={iconClose}
           alt="Close"
           className="search-icon"

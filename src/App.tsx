@@ -52,7 +52,7 @@ export const App = () => {
             )}
           />
           <Route path="/favorites" element={<Favorite />} />
-          <Route path="/basket" element={<Basket />} />
+          <Route path="/cart" element={<Basket />} />
           <Route path="/contacts" element={<ContactsPage />} />
           <Route path="/rights" element={<Rights />} />
           <Route

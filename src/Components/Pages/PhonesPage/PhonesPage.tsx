@@ -7,7 +7,8 @@ import products from '../../../new/products.json';
 
 export const PhonesPage = () => {
   const [search, setSearch] = useState('');
-  const searchQuery = search.trim().toUpperCase();
+  const searchQueries = search.trim().toUpperCase().split(' ');
+
   const visibleProducts = products.filter(product => {
     const {
       name,
@@ -22,7 +23,7 @@ export const PhonesPage = () => {
       year,
     } = product;
 
-    return [
+    const values = [
       name.toUpperCase(),
       phoneId.toUpperCase(),
       itemId.toUpperCase(),
@@ -33,7 +34,11 @@ export const PhonesPage = () => {
       color.toUpperCase(),
       ram.toUpperCase(),
       year.toString(),
-    ].some(value => value.includes(searchQuery));
+    ];
+
+    return searchQueries.every(
+      query => values.some(value => value.includes(query)),
+    );
   });
 
   return (
@@ -45,7 +50,7 @@ export const PhonesPage = () => {
         <NotFoundPage
           title="?"
           h1="Nothing found"
-          text="sorry, we did not find anything, we suggest you return to the "
+          text="Sorry, we did not find anything. We suggest you return to the "
         />
       )}
     </>

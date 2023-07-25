@@ -10,8 +10,6 @@ export const BlockFavorite = () => {
       || favorites.includes(product.phoneId.toString()),
   );
 
-  console.log(filtration);
-
   return (
     <div className={`blockFavorite ${favorites.length === 0 ? 'blockFavorite-active' : ''}`}>
       {filtration.map((product) => (

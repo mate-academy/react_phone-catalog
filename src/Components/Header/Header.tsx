@@ -19,7 +19,7 @@ export const Header = ({ searchValue, setSearchValue }: HeaderProps) => {
   const phone = location.pathname === '/phones';
   const tablets = location.pathname === '/tablets';
   const accessories = location.pathname === '/accessories';
-  const basket = location.pathname === '/basket';
+  const basket = location.pathname === '/cart';
   const favorite = location.pathname === '/favorites';
   // const [showSearch, setShowSearch] = useState(!isHomePage);
 
@@ -111,8 +111,8 @@ export const Header = ({ searchValue, setSearchValue }: HeaderProps) => {
               )}
 
         </div>
-        <div className={`header__LastChild-basket ${location.pathname === '/basket' ? 'is-activ' : ''}`}>
-          <NavLink to="/basket" className="basketLink">
+        <div className={`header__LastChild-basket ${location.pathname === '/cart' ? 'is-activ' : ''}`}>
+          <NavLink to="/cart" className="basketLink">
             <img className="basket-svg" src={BasketImage} alt="basket" />
           </NavLink>
 

@@ -16,7 +16,7 @@ export const Basket = () => {
 
   const filtration = products.filter(
     (product) => basket.includes(product.phoneId.toString())
-    || basket.includes(product.phoneId.toString()),
+      || basket.includes(product.phoneId.toString()),
   );
 
   useEffect(() => {
@@ -67,7 +67,12 @@ export const Basket = () => {
 
             <div className="block-for-Checkout">
               <h1 className="block-for-Checkout-price">{`$${sumPrice}`}</h1>
-              <p className="block-for-Checkout-text">{`Total for ${basket.length} items`}</p>
+              <p
+                className="block-for-Checkout-text"
+                data-cy="productQauntity"
+              >
+                {`Total for ${basket.length} items`}
+              </p>
               <BasketButton />
             </div>
           </div>

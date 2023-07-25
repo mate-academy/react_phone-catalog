@@ -26,11 +26,11 @@ export const ProductsCardsButton = ({ product }: ProductFavoriteProps) => {
 
   return (
     <button
+      data-cy="backButton"
       type="button"
       className={`card__buy-button ${isBasket ? 'is-activeButton' : ''
       }`}
       onClick={handleToggleBasket}
-    // disabled={isAddedToCart}
     >
       {isBasket ? 'Added to cart' : 'Add to cart'}
     </button>

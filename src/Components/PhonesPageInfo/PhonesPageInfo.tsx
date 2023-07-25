@@ -288,7 +288,7 @@ export const PhonesPageInfo = ({ info }: InfoProps) => {
                 <h2 className="page__Blocks-info-about-title">About</h2>
               </div>
 
-              <div className="content">
+              <div data-cy="productDescription" className="content">
                 <section className="content-1 all-for0content" key="content-1">
                   <h3 className="contant-title">{info.description[0].title}</h3>
                   <p className="contant-text">{info.description[0].text[0]}</p>
@@ -311,7 +311,7 @@ export const PhonesPageInfo = ({ info }: InfoProps) => {
                 <h1 className="page__Blocks-info-about-title">Tech specs</h1>
               </div>
 
-              <div className="contant-Tech">
+              <div className="contant-Tech" data-cy="productDescription">
                 <section className="contant-Tech__section">
                   <div className="block-page">
                     <div className="psge__info-all-left">

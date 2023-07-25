@@ -26,6 +26,7 @@ export const ProductsCardsFavorite = ({ product }: ProductFavoriteProps) => {
 
   return (
     <div
+      data-cy="addToFavorite"
       className={`hear-image-cadr ${isFavorite ? 'is-activeButton' : ''}`}
       onClick={handleToggleFavorite}
       onKeyDown={handleToggleFavorite}

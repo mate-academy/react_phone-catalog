@@ -31,6 +31,7 @@ export const PhonesPageInfoFovorite = ({ info }: InfoProps) => {
 
   return (
     <div
+      data-cy="addToFavorite"
       className={`hear-image-card ${isFavorite ? 'is-activeButton' : ''
       }`}
       onClick={handleToggleFavorite}

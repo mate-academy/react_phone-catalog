@@ -13,7 +13,7 @@ export const ShopByCategory = () => {
     <div className="shopByCategory">
       <h1 className="shopByCategory__title">{titleForComponent}</h1>
 
-      <div className="main-container">
+      <div data-cy="categoryLinksContainer" className="main-container">
 
         <div className="shopByCategory__container">
           <Link to="/phones">

@@ -115,7 +115,7 @@ export const PhonesPageOsm: React.FC<PhonesPageOSMProps> = ({ products }) => {
         </p>
       </div>
 
-      <div className="blockForSortOnPhonePage">
+      <div data-cy="pagination" className="blockForSortOnPhonePage">
         <div className="block-for-sort-index">
           <select
             value={selectedSort}
@@ -143,7 +143,7 @@ export const PhonesPageOsm: React.FC<PhonesPageOSMProps> = ({ products }) => {
       </div>
 
       <div className="container-for-productt">
-        <div className="product-grid">
+        <div data-cy="productList" className="product-grid">
           {filteredProducts.map((product) => (
             <ProductCards key={product.id} product={product} />
           ))}
@@ -154,6 +154,7 @@ export const PhonesPageOsm: React.FC<PhonesPageOSMProps> = ({ products }) => {
         <div className="block-for-numbers-index">
           <button
             type="button"
+            data-cy="paginationLeft"
             className="pagination-button"
             onClick={() => handlePageChange(currentPage - 1)}
             disabled={!showPreviousButton}
@@ -198,6 +199,7 @@ export const PhonesPageOsm: React.FC<PhonesPageOSMProps> = ({ products }) => {
           ))}
           <button
             type="button"
+            data-cy="paginationRight"
             className="pagination-button"
             onClick={() => handlePageChange(currentPage + 1)}
             disabled={!showNextButton}

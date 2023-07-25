@@ -25,7 +25,11 @@ export const ProductCards = ({ product }: ProductCardsProps) => {
   return (
     <div className="glav">
       <main className="main">
-        <div className="card" key={id}>
+        <div
+          className="card"
+          data-cy="cardsContainer"
+          key={id}
+        >
           <div className="card__image-block">
             <Link
               to={{

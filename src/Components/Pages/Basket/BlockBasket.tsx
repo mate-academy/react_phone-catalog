@@ -51,12 +51,13 @@ export const BlockBasket = ({ product }: ProductCardsProps) => {
 
   return (
     <>
-      <div className="MainBlockBasket" key={phoneId}>
+      <div className="MainBlockBasket" key={phoneModelCountInBasket}>
         <div className="block__MainBlockBasket-left-rigth">
           <div className="BlockBasket-first">
             <div className="BlockBasket-first__creff">
               <button
                 type="button"
+                data-cy="cartDeleteButton"
                 className="iconsFromBasket-close"
                 onClick={handleDeleteClick}
               >

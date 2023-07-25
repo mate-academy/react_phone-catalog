@@ -30,6 +30,7 @@ export const PhonesPageInfoButton = ({ info }: InfoProps) => {
 
   return (
     <button
+      data-cy="backButton"
       type="button"
       className={`card__buy-buttons ${isBasket ? 'is-activeButton' : ''
       }`}
