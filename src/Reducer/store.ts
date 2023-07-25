@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import { Action } from 'redux';
 
 import rootReducer from './reducers';
+import { Products } from '../type/Products';
 
 const persistConfig = {
   key: 'root',
@@ -26,8 +27,8 @@ export type AppDispatch = typeof store.dispatch;
 export type AppThunk<ReturnType = void> = ThunkAction<
 ReturnType,
 RootState,
-unknown,
-Action<string>
+Action<string>,
+Action<Products>
 >;
 
 export const useAppDispatch = () => useDispatch<AppDispatch>();

@@ -78,14 +78,6 @@ export const SearchField: React.FC = () => {
 
   return (
     <div className="SearchField">
-      {!!searchQuery.length && (
-        <button
-          type="button"
-          onClick={() => handleResetQuery()}
-        >
-          <img src={cross} alt="close" />
-        </button>
-      )}
       <input
         type="text"
         value={searchQuery}
@@ -93,7 +85,14 @@ export const SearchField: React.FC = () => {
         placeholder={t('search', { category: getCorrectCategory() })}
         className="SearchField__input"
       />
-      <img src={searchIcon} alt="search" />
+      {searchQuery.length ? (
+        <button
+          type="button"
+          onClick={() => handleResetQuery()}
+        >
+          <img src={cross} alt="close" />
+        </button>
+      ) : <img src={searchIcon} alt="search" />}
     </div>
   );
 };
