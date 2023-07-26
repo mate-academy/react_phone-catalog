@@ -1,0 +1,95 @@
+.home-page {
+  padding-inline: 152px;
+
+  &__preview-slider {
+    margin-bottom: 72px;
+  }
+  &__hot-prices {
+    margin-bottom: 80px;
+  }
+  &__shop-by-category {
+    margin-bottom: 80px;
+  }
+
+  &__brand-new {
+    margin-bottom: 80px;
+  }
+}
+
+.preview-slider {
+  display: flex;
+  height: 400px;
+  gap: 16px;
+  margin-top: 40px;
+
+  &__button {
+    width: 32px;
+    background: #FFF;
+    border: 1px solid #B4BDC3;
+  }
+
+  &__container {
+  }
+
+  &__picture {
+    width: 1040px;
+    height: 400px;
+
+    background-color: gray;
+  }
+}
+
+.pagination {
+  text-align: center;
+  &__link {
+    text-decoration: none;
+    padding-inline: 10px;
+  }
+}
+
+.hot-prices {
+  &__title {
+    font-family: Mont-Bold;
+  }
+}
+
+.shop-by-category {
+  &__title {
+    font-family: Mont-Bold;
+  }
+  &__container {
+    display: flex;
+    gap: 16px;
+  }
+}
+
+.category {
+  &__link {
+    display: inline-block;
+    box-sizing: border-box;
+    height: 368px;
+    margin-bottom: 24px;
+  }
+  &__title {
+    margin: 0;
+
+    font-family: Mont-SemiBold;
+    color: var(--gray-primary, #313237);
+
+    /* H3 */
+    font-size: 20px;
+    line-height: normal;
+  }
+  &__description {
+    margin: 0;
+    color: var(--gray-secondary, #89939A);
+
+    /* Body text 14 */
+    font-size: 14px;
+    line-height: 21px; /* 150% */
+  }
+}
+
+.brand-new {
+  font-family: Mont-Bold;
+}

@@ -1,0 +1,97 @@
+.product-card {
+  box-sizing: border-box;
+  width: 272px;
+  height: 507px;
+  border: 1px solid var(--gray-elements, #E2E6E9);
+  background: var(--gray-white, #FFF);
+  padding: 32px 32px 24px;
+
+  &__phone-img {
+    width: 208px;
+    height: 208px;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    color: var(--gray-primary, #313237);
+
+    font-size: 14px;
+    line-height: 21px; /* 150% */
+  }
+
+  &__price {
+    display: inline-block;
+    margin: 0;
+    color: var(--gray-primary, #313237);
+    margin-right: 8px;
+
+    /* H2 */
+    font-family: Mont-Bold;
+    font-size: 22px;
+    line-height: 140%; /* 30.8px */
+
+    &--discount {
+      color: var(--gray-secondary, #89939A);
+      font-family: Mont-SemiBold;
+      line-height: normal;
+      text-decoration-line: line-through;
+    }
+  }
+
+  &__description-phone {
+  }
+
+  &__container {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__add-to-card {
+    box-sizing: border-box;
+    width: 176px;
+    height: 40px;
+    background-color: #313237;
+
+    color: var(--gray-white, #FFF);
+    font-family: Mont-SemiBold;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px; /* 150% */
+  }
+
+  &__add-to-favorites {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    gap: 8px;
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--gray-icons-placeholders, #B4BDC3);
+  }
+}
+
+.description-phone {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  border-top: 1px solid #E2E6E9;
+  margin-block: 8px 16px;
+  padding-top: 16px;
+
+  /* Small text 12 */
+  font-family: Mont-SemiBold;
+  font-size: 12px;
+
+  &--title {
+    color: var(--gray-secondary, #89939A);
+  }
+
+  &--value {
+
+  }
+}
+
+.add-to-favorites__icon {
+  width: 16px;
+  height: 16px;
+}

@@ -1,0 +1,59 @@
+.phone-page {
+  padding-inline: 152px;
+  &__title {
+    margin: 0;
+    margin-bottom: 8px;
+    color: var(--gray-primary, #313237);
+
+    /* H1 */
+    font-family: Mont-Bold;
+    font-size: 32px;
+    line-height: normal;
+    letter-spacing: -0.32px;
+  }
+  &__amount-phone-text {
+    margin: 0;
+    margin-bottom: 40px;
+    color: var(--gray-secondary, #89939A);
+
+    /* Body text 14 */
+    font-size: 14px;
+    line-height: 21px; /* 150% */
+  }
+  &__filter {
+
+  }
+}
+
+.filter {
+  display: flex;
+  gap: 16px;
+  &__title {
+    margin: 0;
+    margin-bottom: 4px;
+    color: var(--gray-secondary, #89939A);
+
+    /* Small text 12 */
+    font-family: Mont-SemiBold;
+    font-size: 12px;
+    font-style: normal;
+    line-height: normal;
+  }
+  &__selector {
+    width: 174px;
+    height: 40px;
+    flex-shrink: 0;
+    padding: 10px 12px 9px;
+    font-family: Mont-Regular;
+    border: 1px solid #B4BDC3;
+
+    &--items {
+      padding: 10px 12px 9px;
+      height: 40px;
+
+      &:hover {
+        background-color: var(--gray-background, #FAFBFC);;
+      }
+    }
+  }
+}
