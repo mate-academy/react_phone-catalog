@@ -16,6 +16,10 @@
   &__items {
     display: flex;
     justify-content: center;
+
+    @include onDesktop {
+      justify-content: left;
+    }
   }
 
   &__container {

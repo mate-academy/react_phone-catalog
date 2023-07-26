@@ -87,6 +87,8 @@
     }
 
     &:hover {
+      cursor: pointer;
+
       @include onDesktop {
         border-color: $icons-color;
       }

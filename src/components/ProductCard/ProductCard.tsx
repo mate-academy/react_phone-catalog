@@ -3,6 +3,7 @@ import { Product } from '../../types/Product';
 import { CardButton } from '../CardButton';
 import { useAppDispatch } from '../../app/hooks';
 import { getDetails } from '../../features/selectedProductSlice';
+import { scrollToTop } from '../../utils/scrollToTop';
 import './ProductCard.scss';
 
 type Props = {
@@ -27,14 +28,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   const handleSelectProduct = () => {
     dispatch(getDetails(itemId));
 
-    const scrollToTop = () => {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth',
-      });
-    };
-
-    return scrollToTop();
+    scrollToTop();
   };
 
   return (

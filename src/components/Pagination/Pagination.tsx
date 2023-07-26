@@ -1,10 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import classNames from 'classnames';
 import { Icon } from '../Icon';
 import { IconType } from '../../types/Icon';
 import { getSearchWith } from '../../utils/searchHelper';
 import { getNumbers } from '../../utils/getNumbers';
+import { scrollToTop } from '../../utils/scrollToTop';
 import { useWindowSize } from '../../app/hooks';
 import { SIZE_DESKTOP_WIDE, SIZE_MOBILE } from '../../app/consts';
 import './Pagination.scss';
@@ -18,20 +19,19 @@ export const Pagination: React.FC<Props> = ({ total }) => {
   const { width } = useWindowSize();
 
   const [searchParams] = useSearchParams();
-  const page = searchParams.get('page') || '1';
+  const page = Number(searchParams.get('page') || '1');
   const perPage = searchParams.get('perPage') || '';
 
-  const [visiblePages, setVisiblePages] = useState<number[]>([]);
-  const [currentPageRange, setCurrentPageRange] = useState(1);
-  const [pageRange] = useState(4);
+  const [currentPage, setCurrentPage] = useState(page);
+
+  const pageRange = (width < SIZE_MOBILE) ? 4 : 9;
+
+  const rangeToShow = Math.ceil(currentPage / pageRange);
+  const [currentPageRange, setCurrentPageRange] = useState(rangeToShow);
 
   const maxPages = perPage
     ? Math.ceil(total / +perPage)
     : 0;
-
-  const currentPage = page
-    ? +page
-    : null;
 
   const pages = maxPages > 1
     ? getNumbers(1, maxPages)
@@ -40,18 +40,60 @@ export const Pagination: React.FC<Props> = ({ total }) => {
   const disabledNextButton = currentPage === pages.length;
   const disabledPrevButton = currentPage === 1;
 
-  const handleChangePage = (pageNumber: number) => {
-    if (page === `${pageNumber}`) {
+  const visiblePages = useMemo(() => {
+    const startIndex = (currentPageRange - 1) * pageRange;
+    const endIndex = Math.min(startIndex + pageRange, maxPages);
+    let pagesToShow: Array<number | string> = (pages.length === 1)
+      ? pages
+      : pages.slice(startIndex, endIndex);
+
+    if (width > SIZE_DESKTOP_WIDE) {
+      if (endIndex < maxPages) {
+        pagesToShow = [
+          ...pagesToShow, '...', pages[pages.length - 1],
+        ];
+      }
+    }
+
+    return pagesToShow;
+  }, [currentPage, currentPageRange, pageRange, maxPages, width]);
+
+  const handleChangePage = (pageNumber: number | string) => {
+    if (page === pageNumber) {
       return;
     }
 
-    const newParams = getSearchWith(
-      searchParams, {
-        page: `${pageNumber}`,
-      },
-    );
+    if (pageNumber === '...') {
+      const nextRangeStart = currentPageRange * pageRange + 1;
 
-    navigate({ search: newParams });
+      if (nextRangeStart <= maxPages) {
+        setCurrentPageRange(prevRange => prevRange + 1);
+        handleChangePage(nextRangeStart);
+
+        const newParams = getSearchWith(
+          searchParams,
+          {
+            page: `${nextRangeStart}`,
+          },
+        );
+
+        navigate({ search: newParams });
+      } else {
+        setCurrentPageRange(Math.ceil(maxPages / pageRange));
+        handleChangePage(maxPages);
+      }
+    } else {
+      const newParams = getSearchWith(
+        searchParams, {
+          page: `${pageNumber}`,
+        },
+      );
+
+      setCurrentPageRange(rangeToShow + 1);
+      navigate({ search: newParams });
+    }
+
+    scrollToTop();
   };
 
   const handlePrevButton = () => {
@@ -65,6 +107,8 @@ export const Pagination: React.FC<Props> = ({ total }) => {
 
       handleChangePage(currentPage - 1);
     }
+
+    scrollToTop();
   };
 
   const handleNextButton = () => {
@@ -77,27 +121,25 @@ export const Pagination: React.FC<Props> = ({ total }) => {
 
       handleChangePage(currentPage + 1);
     }
+
+    scrollToTop();
   };
 
   useEffect(() => {
-    if (width < SIZE_MOBILE) {
-      const startIndex = (currentPageRange - 1) * pageRange;
-      const endIndex = Math.min(startIndex + pageRange, maxPages);
-      const pagesToShow = pages.slice(startIndex, endIndex);
-
-      setVisiblePages(pagesToShow);
+    if (currentPage !== page) {
+      setCurrentPage(page);
     }
-  }, [currentPageRange, maxPages, pageRange, width]);
+  }, [page]);
 
   useEffect(() => {
     setCurrentPageRange(1);
   }, [perPage]);
 
   useEffect(() => {
-    if (width > SIZE_DESKTOP_WIDE) {
-      setVisiblePages(pages);
+    if (currentPageRange !== rangeToShow) {
+      setCurrentPageRange(rangeToShow);
     }
-  }, [width, visiblePages]);
+  }, [currentPageRange]);
 
   return (
     <ul className="pagination">
@@ -125,7 +167,7 @@ export const Pagination: React.FC<Props> = ({ total }) => {
               'pagination__pages',
               { 'pagination__pages--active': numberPage === currentPage },
             )}
-            onClick={() => handleChangePage(numberPage)}
+            onClick={() => handleChangePage(numberPage as number)}
           >
             {numberPage}
           </button>

@@ -11,8 +11,9 @@ import { getDetails } from '../../features/selectedProductSlice';
 import { Slider } from '../../types/Slider';
 
 export const ProductDetailsPage = () => {
-  const { loaded, isError } = useAppSelector(state => state.selectedProduct);
   const dispatch = useAppDispatch();
+
+  const { loaded, isError } = useAppSelector(state => state.selectedProduct);
 
   const { productId = '' } = useParams();
 

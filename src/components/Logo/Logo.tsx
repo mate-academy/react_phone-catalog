@@ -1,14 +1,8 @@
 import { Link } from 'react-router-dom';
+import { scrollToTop } from '../../utils/scrollToTop';
 import './Logo.scss';
 
 export const Logo: React.FC = () => {
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
-  };
-
   return (
     <Link
       to="/"

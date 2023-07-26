@@ -45,6 +45,7 @@ const selectedProductSlice = createSlice({
       ...state,
       product: action.payload,
       loaded: true,
+      isError: null,
     }));
 
     builder.addCase(getDetails.rejected, (state) => ({
