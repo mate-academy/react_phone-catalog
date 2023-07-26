@@ -18,7 +18,7 @@ export const PhonesPageInfoButton = ({ info }: InfoProps) => {
     removeFromBasket,
   } = useBasketContext();
 
-  const isBasket = basket.includes(id.toString());
+  const isBasket = basket.some((item) => item.id === id.toString());
 
   const handleToggleBasket = () => {
     if (isBasket) {

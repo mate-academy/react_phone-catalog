@@ -9,33 +9,47 @@ import PrevArrow from './BasketImage/PrevArrow.svg';
 import { BlockBasket } from './BlockBasket';
 
 export const Basket = () => {
+  const { basket, basketLength } = useFavoriteContext();
   const [sumPrice, setSumPrice] = useState(0);
   const navigation = useNavigate();
-  const { basketLength } = useFavoriteContext();
-  const { basket } = useFavoriteContext();
+
+  const getTotalQuantity = () => {
+    let totalQuantity = 0;
+
+    basket.forEach((product) => {
+      totalQuantity += product.quantity;
+    });
+
+    return totalQuantity;
+  };
 
   const filtration = products.filter(
-    (product) => basket.includes(product.phoneId.toString())
-      || basket.includes(product.phoneId.toString()),
+    (product) => basket.some((item) => item.id === product.phoneId.toString()),
   );
 
   useEffect(() => {
     let totalPrice = 0;
 
     filtration.forEach((product) => {
-      totalPrice += product.price;
+      const phoneId = product.phoneId.toString();
+      const productInBasket = basket.find((item) => item.id === phoneId);
+
+      if (productInBasket) {
+        totalPrice += product.price * productInBasket.quantity;
+      }
     });
+
     setSumPrice(totalPrice);
-  }, [filtration]);
+  }, [basket, filtration]);
 
   return (
     <>
       {basketLength < 1 ? (
         <NotFoundPage
-          title="Basket"
+          title="Cart"
           h1="Basket Products not found"
-          text="The products are not selected.
-       To make a choice, please return to the"
+          text="The products are not selected. To make a choice,
+           please return to the"
         />
       ) : (
         <>
@@ -52,14 +66,10 @@ export const Basket = () => {
             </div>
           </div>
 
-          <h1 className="h1ForBasket">
-            Cart
-          </h1>
+          <h1 className="h1ForBasket">Cart</h1>
 
           <div className={`block-for-contentBasket ${filtration.length < 4 ? 'isActive-forVH' : ''}`}>
-            <div
-              className="blockBasket"
-            >
+            <div className="blockBasket">
               {filtration.map((product) => (
                 <BlockBasket key={product.phoneId} product={product} />
               ))}
@@ -67,11 +77,8 @@ export const Basket = () => {
 
             <div className="block-for-Checkout">
               <h1 className="block-for-Checkout-price">{`$${sumPrice}`}</h1>
-              <p
-                className="block-for-Checkout-text"
-                data-cy="productQauntity"
-              >
-                {`Total for ${basket.length} items`}
+              <p className="block-for-Checkout-text" data-cy="productQauntity">
+                {`Total for ${getTotalQuantity()} items`}
               </p>
               <BasketButton />
             </div>
@@ -79,6 +86,5 @@ export const Basket = () => {
         </>
       )}
     </>
-
   );
 };

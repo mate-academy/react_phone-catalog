@@ -1,6 +1,6 @@
 import './Basket.scss';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+// import { useState } from 'react';
 import { Product } from '../../ProductCards/Product';
 import Plus from './BasketImage/Plus.svg';
 import Minus from './BasketImage/Minus.svg';
@@ -22,36 +22,37 @@ export const BlockBasket = ({ product }: ProductCardsProps) => {
   const {
     basket,
     removeFromBasket,
+    removeFromAllB,
+    addToBasket,
   } = useBasketContext();
 
-  const isBasket = basket.includes(phoneId.toString())
-    || basket.includes(phoneId.toString());
-  const [phoneModelCountInBasket, setPhoneModelCountInBasket]
-    = useState<number>(
-      basket.filter((productId) => productId === phoneId.toString()).length,
-    );
+  const isBasket = basket.some((item) => item.id === phoneId.toString());
 
-  const updatedPrice = price * phoneModelCountInBasket;
+  const phoneModelInBasket = basket.find(
+    (item) => item.id === phoneId.toString(),
+  );
+
+  const updatedPrice = price * (phoneModelInBasket?.quantity || 0);
 
   const handleDeleteClick = () => {
     if (isBasket) {
-      removeFromBasket(phoneId.toString());
+      removeFromAllB(phoneId.toString());
     }
   };
 
   const handleMinusClick = () => {
-    if (phoneModelCountInBasket > 1) {
-      setPhoneModelCountInBasket((prevCount) => prevCount - 1);
+    if (phoneModelInBasket && phoneModelInBasket.quantity > 1) {
+      removeFromBasket(phoneId.toString());
     }
   };
 
   const handlePlusClick = () => {
-    setPhoneModelCountInBasket((prevCount) => prevCount + 1);
+    addToBasket(phoneId.toString());
   };
 
   return (
     <>
-      <div className="MainBlockBasket" key={phoneModelCountInBasket}>
+      <div className="MainBlockBasket" key={phoneId}>
         <div className="block__MainBlockBasket-left-rigth">
           <div className="BlockBasket-first">
             <div className="BlockBasket-first__creff">
@@ -65,7 +66,6 @@ export const BlockBasket = ({ product }: ProductCardsProps) => {
                   src={CLose}
                   alt=""
                   className="iconsFromBasket__icon"
-
                 />
               </button>
             </div>
@@ -84,7 +84,7 @@ export const BlockBasket = ({ product }: ProductCardsProps) => {
 
           <div className="BlockBasket-two">
             <div className="BlockBasket-two__creff">
-              {phoneModelCountInBasket <= 1 ? (
+              {phoneModelInBasket && phoneModelInBasket.quantity <= 1 ? (
                 <button
                   type="button"
                   className="iconsFromBasketNot"
@@ -110,10 +110,8 @@ export const BlockBasket = ({ product }: ProductCardsProps) => {
                 </button>
               )}
 
-              <p
-                className="BlockBasket-two__creff-count"
-              >
-                {phoneModelCountInBasket}
+              <p className="BlockBasket-two__creff-count">
+                {phoneModelInBasket ? phoneModelInBasket.quantity : 0}
               </p>
               <button
                 type="button"

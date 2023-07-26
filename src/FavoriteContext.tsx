@@ -3,25 +3,26 @@ import React, {
 } from 'react';
 
 interface FavoriteContextValue {
-  basket: string[];
+  basket: { id: string; price: number; quantity: number }[];
   favorites: string[];
   addToFavorites: (productId: string) => void;
   removeFromFavorites: (productId: string) => void;
   addToBasket: (productId: string) => void;
   removeFromBasket: (productId: string) => void;
+  removeFromAllB: (productId: string) => void;
   favoritesLength: number;
   basketLength: number;
 }
 
-const FavoriteContext
-= createContext<FavoriteContextValue | undefined>(undefined);
+const FavoriteContext = createContext<FavoriteContextValue
+| undefined>(undefined);
 
 export const useFavoriteContext = () => {
   const context = useContext(FavoriteContext);
 
   if (!context) {
-    throw new
-    Error('useFavoriteContext must be used within a FavoriteContextProvider');
+    throw new Error(`useFavoriteContext must be used within 
+    a FavoriteContextProvider`);
   }
 
   return context;
@@ -31,8 +32,8 @@ export const useBasketContext = () => {
   const context = useContext(FavoriteContext);
 
   if (!context) {
-    throw new
-    Error('useBasketContext must be used within a FavoriteContextProvider');
+    throw new Error(`useBasketContext must be used 
+    within a FavoriteContextProvider`);
   }
 
   return context;
@@ -40,7 +41,8 @@ export const useBasketContext = () => {
 
 export const FavoriteContextProvider: React.FC = ({ children }) => {
   const [favorites, setFavorites] = useState<string[]>([]);
-  const [basket, setBasket] = useState<string[]>([]);
+  const [basket, setBasket] = useState<
+  { id: string; price: number; quantity: number }[]>([]);
 
   const addToFavorites = (productId: string) => {
     setFavorites((prevFavorites) => [...prevFavorites, productId]);
@@ -53,12 +55,37 @@ export const FavoriteContextProvider: React.FC = ({ children }) => {
   };
 
   const addToBasket = (productId: string) => {
-    setBasket((prevBasket) => [...prevBasket, productId]);
+    const existingProduct = basket.find((product) => product.id === productId);
+
+    if (existingProduct) {
+      setBasket((prevBasket) => prevBasket.map(
+        (product) => (product.id === productId
+          ? { ...product, quantity: product.quantity + 1 }
+          : product),
+      ));
+    } else {
+      setBasket((prevBasket) => [
+        ...prevBasket,
+        {
+          id: productId,
+          price: 0,
+          quantity: 1,
+        },
+      ]);
+    }
   };
 
   const removeFromBasket = (productId: string) => {
+    setBasket((prevBasket) => prevBasket
+      .map((product) => (product.id === productId
+        ? { ...product, quantity: product.quantity - 1 }
+        : product))
+      .filter((product) => product.quantity > 0));
+  };
+
+  const removeFromAllB = (productId: string) => {
     setBasket((prevBasket) => prevBasket.filter(
-      (favId) => favId !== productId,
+      (product) => product.id !== productId,
     ));
   };
 
@@ -97,6 +124,7 @@ export const FavoriteContextProvider: React.FC = ({ children }) => {
     removeFromFavorites,
     addToBasket,
     removeFromBasket,
+    removeFromAllB,
     favoritesLength,
     basketLength,
   };

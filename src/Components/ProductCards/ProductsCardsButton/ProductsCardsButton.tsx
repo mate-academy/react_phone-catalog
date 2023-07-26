@@ -14,7 +14,7 @@ export const ProductsCardsButton = ({ product }: ProductFavoriteProps) => {
     addToBasket,
     removeFromBasket,
   } = useFavoriteContext();
-  const isBasket = basket.includes(phoneId.toString());
+  const isBasket = basket.some((item) => item.id === phoneId.toString());
 
   const handleToggleBasket = () => {
     if (isBasket) {
