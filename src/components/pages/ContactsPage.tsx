@@ -1,10 +1,10 @@
 import { BlockTitle } from '../index';
-import { PageNavigation } from '../PageNavigation';
+import { BreadCrumbs } from '../BreadCrumbs';
 
 export const ContactsPage = () => {
   return (
     <>
-      <PageNavigation />
+      <BreadCrumbs />
       <BlockTitle title="Page under development..." subtitle={0} />
     </>
   );

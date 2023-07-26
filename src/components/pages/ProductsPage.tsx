@@ -3,9 +3,9 @@ import { useMemo, useContext, useEffect } from 'react';
 import { categories } from '../../utils/listsNames';
 import { Product } from '../../utils/types/Product';
 import {
-  PageNavigation,
-  ProductCard,
-  SelectBlock,
+  BreadCrumbs,
+  Card,
+  Dropdowns,
   BlockTitle,
   Loader,
 } from '../index';
@@ -61,7 +61,7 @@ export const ProductsPage:React.FC<Props> = ({ products }) => {
   return (
     <main className="products">
 
-      <PageNavigation />
+      <BreadCrumbs />
       {developedPages[0] === Path
       && (
         <>
@@ -69,7 +69,7 @@ export const ProductsPage:React.FC<Props> = ({ products }) => {
             subtitle={listByCategory.length}
             title={Path.replace(Path[0], Path[0].toUpperCase())}
           />
-          <SelectBlock />
+          <Dropdowns />
         </>
       )}
 
@@ -78,7 +78,7 @@ export const ProductsPage:React.FC<Props> = ({ products }) => {
           {isLoading
             ? loaderList
             : listToRender.map(product => (
-              <ProductCard key={product.id} product={product} />
+              <Card key={product.id} product={product} />
             ))}
         </div>
       ))

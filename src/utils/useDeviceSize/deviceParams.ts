@@ -15,7 +15,7 @@ export const main = {
   },
 };
 
-export const productSlider = {
+export const Slider = {
   phone: {
     step: main.phone.size + main.phone.gap - (buttonWidth * 3),
     items: 1,

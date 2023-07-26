@@ -1,7 +1,6 @@
 export const categories = ['phones', 'tablets', 'accessories'];
 export const footerItems = ['github', 'contacts', 'rights'];
-export const defaultImages = ['accessories', 'phones',
-  'tablets', 'accessories', 'phones'];
+export const banerImages = ['phones', 'tablets', 'accessories'];
 export const characteristicsItems
 = ['Screen', 'Resolution', 'Processor', 'Ram'];
 export const itemsForTech

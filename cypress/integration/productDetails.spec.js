@@ -41,13 +41,13 @@ describe('Product details', () => {
             .should('eq', 'http://localhost:3000/#/');
     });
 
-    it('should have "Breadcrumbs" element implemented', () => {
+    it('should have "BreadCrumbss" element implemented', () => {
         page.getProduct();
 
-        cy.getByDataCy('breadCrumbs')
+        cy.getByDataCy('BreadCrumbss')
             .find('a[href="#/"]');
 
-        cy.getByDataCy('breadCrumbs')
+        cy.getByDataCy('BreadCrumbss')
             .find('a[href="#/tablets"]');
     });
 });

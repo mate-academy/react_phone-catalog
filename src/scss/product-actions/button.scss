@@ -9,7 +9,7 @@
     background-color: $primary-dark-color;
     @extend .border-gray;
     color: #fff;
-    @include text(14px, 600, #fff);
+    @include text(14px, 500, #fff);
          
     &--disabled {
       background-color: #fff;

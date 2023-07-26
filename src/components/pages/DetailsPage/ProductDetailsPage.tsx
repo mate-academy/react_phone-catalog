@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import classnames from 'classnames';
 import { Product } from '../../../utils/types/Product';
 import { Details } from '../../../utils/types/Details';
-import { PageNavigation, ProductSlider, BlockTitle } from '../../index';
+import { BreadCrumbs, Slider, BlockTitle } from '../../index';
 import {
   ProductDetailsGalery, ProductDetailsAbout,
   ProductDetailsCharacteristics, ProductDetailsTechSpects,
@@ -48,7 +48,7 @@ export const ProductDetailsPage: React.FC<Props> = ({ products }) => {
 
       </div>
       <div className={`details ${details && !isLoading ? 'block' : 'none'}`}>
-        <PageNavigation />
+        <BreadCrumbs />
         <BlockTitle
           title={currentProduct?.name
             ? currentProduct?.name
@@ -75,7 +75,7 @@ export const ProductDetailsPage: React.FC<Props> = ({ products }) => {
           )}
 
         </div>
-        <ProductSlider products={products} title="You mau also like" />
+        <Slider products={products} title="You mau also like" />
       </div>
 
     </main>

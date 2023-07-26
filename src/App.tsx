@@ -1,3 +1,4 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './scss/index.scss';
 import { useEffect, useState } from 'react';
 import {
@@ -95,7 +96,7 @@ const App = () => {
       <div className="App">
         <Header />
 
-        <div className="container">
+        <div className="page-container">
           {isError
               && (
                 <div className="error">

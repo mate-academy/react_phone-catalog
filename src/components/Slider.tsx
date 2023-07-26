@@ -1,91 +1,77 @@
-import { useEffect, useState } from 'react';
-import { ArrowButton } from './ArrowButton';
+import React, {
+  useContext, useEffect, useMemo,
+  useState, memo,
+} from 'react';
+import { Context } from '../utils/Context';
+import { ArrowButton, Card, Loader } from './index';
+import { Product } from '../utils/types/Product';
+import { createLoaderList } from '../utils/createLoaderList';
 import { useDiviceSize } from '../utils/useDeviceSize/useDiviceSize';
-import { defaultImages } from '../utils/listsNames';
+import { Transition } from './IntersectionTransition';
 
-export const Slider: React.FC = () => {
-  const { main, buttonWidth } = useDiviceSize();
-  const { size, gap } = main;
-  const numOfImages = 3;
-  const step = size - (buttonWidth * 2) - (gap);
-  const [fotoForSlider, setFotoForSlider] = useState(defaultImages);
-  const [shift, setShift] = useState(-step);
-  const [cssTransition, setCssTransition] = useState('all 1s ease');
-  const [delay, setDelay] = useState(false);
+type Props = {
+  products: Product[],
+  title: string,
+};
 
-  useEffect(() => setShift(-step), [step]);
+export const Slider:React.FC<Props> = memo(({
+  products,
+  title,
+}) => {
+  const { SliderData } = useDiviceSize();
+  const { step, items } = SliderData;
+  const { isLoading } = useContext(Context);
 
-  const onChangePosition = (num: number) => {
-    setDelay(true);
-    setCssTransition('all 1s ease');
-    setShift(prev => prev + num);
-    setFotoForSlider(defaultImages);
-
-    setTimeout(() => {
-      if (shift === -step && num > 0) {
-        setShift(-step * numOfImages);
-        setCssTransition('none');
-      }
-
-      if (shift === -step * numOfImages && num < 0) {
-        setShift(-step);
-        setCssTransition('none');
-      }
-
-      setDelay(false);
-    }, 1000);
-  };
-
-  const createRangeList = () => {
-    const list = [];
-
-    for (let i = 1; i < fotoForSlider.length - 1; i += 1) {
-      list.push(<li
-        key={fotoForSlider[i]}
-        className={`slider__range--item ${-i === shift / step && 'is-active'}`}
-      />);
+  const [sliderPosition, setSliderPosition] = useState(-20);
+  const minPosition = 0;
+  const maxPosition = (-step * (products.length / items) + step);
+  const handleChangeProsition = (num : number) => {
+    if ((sliderPosition + num) < maxPosition) {
+      setSliderPosition(maxPosition);
+    } else if ((sliderPosition + num) > minPosition && num > 0) {
+      setSliderPosition(minPosition);
+    } else {
+      setSliderPosition(prev => prev + num);
     }
-
-    return list;
   };
 
-  const rangeList = createRangeList();
+  useEffect(() => setSliderPosition(0), [SliderData]);
+
+  const loaderList = useMemo(() => createLoaderList(4)
+    .map(() => <Loader />), []);
 
   return (
-    <div>
+    <Transition>
       <section className="slider">
-        <ArrowButton
-          type="left"
-          stop={delay}
-          onChangePosition={() => onChangePosition(step)}
-        />
-        <ul
-          className="slider__list"
-          style={{ marginLeft: shift, transition: cssTransition }}
-        >
-
-          {fotoForSlider.map((item, i) => (
-
-            <li
-              key={item + item[i - 1]}
-              className="slider__item"
-              style={{ backgroundImage: `url("img/banner-${item}.png")` }}
+        <div className="slider__description">
+          <h1 className="slider__title">{title}</h1>
+          <nav className="slider__navigation">
+            <ArrowButton
+              type="left"
+              stop={sliderPosition === minPosition}
+              onChangePosition={() => handleChangeProsition(step)}
             />
-
-          ))}
-        </ul>
-
-        <ArrowButton
-          type="right"
-          stop={delay}
-          onChangePosition={() => onChangePosition(-step)}
-        />
+            <ArrowButton
+              type="right"
+              stop={sliderPosition === maxPosition}
+              onChangePosition={() => handleChangeProsition(-step)}
+            />
+          </nav>
+        </div>
+        <div
+          className="slider__content"
+          style={{ marginLeft: sliderPosition }}
+        >
+          {isLoading
+            ? loaderList
+            : products.map(product => (
+              <Card
+                key={product.id}
+                product={product}
+              />
+            ))}
+        </div>
       </section>
-
-      <ul className="slider__range">
-        {rangeList}
-      </ul>
-
-    </div>
+    </Transition>
   );
-};
+});

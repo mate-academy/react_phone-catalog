@@ -1,7 +1,7 @@
 import { useContext, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
-import { ProductCard, PageNavigation, BlockTitle } from '../index';
+import { Card, BreadCrumbs, BlockTitle } from '../index';
 import { Context } from '../../utils/Context';
 
 export const FavouritesPage = () => {
@@ -14,7 +14,7 @@ export const FavouritesPage = () => {
 
   return (
     <main className="favourites container">
-      <PageNavigation />
+      <BreadCrumbs />
       <BlockTitle title="Favourites" subtitle={favourites.length} />
       <section className="favourites__list">
         <TransitionGroup className="favourites__list" data-cy="addToFavorite">
@@ -26,7 +26,7 @@ export const FavouritesPage = () => {
                 classNames="favourites__item"
               >
                 <div className="favourites__item">
-                  <ProductCard product={product} />
+                  <Card product={product} />
                 </div>
               </CSSTransition>
             ))}

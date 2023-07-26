@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import {
   buttonWidth,
   main,
-  productSlider,
+  Slider,
   itemsOnPage,
   paginationLimit,
 } from './deviceParams';
@@ -32,7 +32,7 @@ export function useDiviceSize() {
     device,
     buttonWidth,
     main: main[device],
-    productSliderData: productSlider[device],
+    SliderData: Slider[device],
     itemsOnPage: itemsOnPage[device],
     paginationLimit: paginationLimit[device],
   };

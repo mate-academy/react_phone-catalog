@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
 import { Product } from '../../utils/types/Product';
-import { Slider, ProductSlider, Categories } from '../index';
+import { Baner, Slider, Categories } from '../index';
+import { Transition } from '../IntersectionTransition';
 
 type Props = {
   products: Product[];
@@ -23,14 +24,15 @@ export const HomePage: React.FC<Props> = ({ products }) => {
 
   return (
     <main>
-      <Slider />
-      <ProductSlider
+      <Baner />
+      <Slider
         products={lists.hotPriceList}
         title="Hot Prices"
       />
-      <Categories itemsLength={products.length} />
-
-      <ProductSlider
+      <Transition>
+        <Categories itemsLength={products.length} />
+      </Transition>
+      <Slider
         products={lists.brandList}
         title="Brand new models"
       />

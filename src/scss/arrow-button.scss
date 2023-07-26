@@ -2,6 +2,9 @@
 @import "./utils/variables";
 
 .arrow__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   @extend .border-gray;
   min-width: $icon-width;
   min-height: $icon-width;

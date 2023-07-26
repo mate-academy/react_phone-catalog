@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
-
 import { memo } from 'react';
+import { useInView } from 'react-intersection-observer';
 import { categories } from '../utils/listsNames';
 
 type Props = {
@@ -8,12 +8,17 @@ type Props = {
 };
 
 export const Categories:React.FC<Props> = memo(({ itemsLength }) => {
+  const { ref, inView } = useInView({
+    threshold: 0.1,
+    triggerOnce: true,
+  });
+
   return (
-    <section className="categories" data-cy="categoryLinksContainer">
+    <section className="categories" data-cy="categoryLinksContainer" ref={ref}>
       <div className="categories__content">
         <h1 className="categories__title">Shop by category</h1>
         <article className="categories__items">
-          {categories.map((categorie) => (
+          {inView && categories.map((categorie) => (
             <Link
               to={categorie.toLowerCase()}
               className="categories__item"

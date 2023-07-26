@@ -1,3 +1,7 @@
+@import "./variable";
+@import "./extends";
+@import "./mixins";
+
 button {
   cursor: pointer;
   background-color: #fff;
@@ -22,11 +26,39 @@ li {
   text-decoration: none;
   color: transparent;
 }
-  
+
 a {
   text-decoration: none;
 }
 
 body {
   margin: 0;
+}
+
+.btn-primary {
+  font-family: "Mont", sans-serif;
+  @extend .border-gray;
+  border-radius: 0;
+  --bs-btn-color: $primary-dark-color;
+  --bs-btn-bg: #fff;
+  --bs-btn-hover-color: $primary-dark-color;
+  --bs-btn-hover-bg: #fff;
+  --bs-btn-hover-border-color: $primary-dark-color;
+  --bs-btn-active-color: $primary-dark-color;
+  --bs-btn-active-bg: #fff;
+  --bs-btn-active-border-color: $border-color-gray;
+  --bs-btn-disabled-color: #fff;
+  --bs-btn-disabled-bg: #fff;
+  --bs-btn-disabled-border-color: $primary-dark-color;
+  padding-right: 150px;
+
+  @include onPhone {
+    padding-right: 100px;
+  }
+}
+
+.dropdown-menu {
+  border-radius: 0;
+  --bs-dropdown-link-active-color: $primary-dark-color;
+  --bs-dropdown-link-active-bg: #fff;
 }
