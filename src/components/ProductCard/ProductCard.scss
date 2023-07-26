@@ -1,0 +1,117 @@
+.ProductCard {
+  padding: 24px;
+  color: #313237;
+  max-width: 272px;
+  max-height: 507px;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__photo {
+    width: 208px;
+    height: 208px;
+  }
+
+  &__img {
+    display: block;
+    height: 100%;
+    width: 100%;
+  }
+
+  &__title {
+    margin-top: 24px;
+    height: 40px;
+
+    font-size: 14px;
+    font-style: normal;
+    line-height: 21px;
+  }
+
+  &__price {
+    display: flex;
+    gap: 8px;
+
+    margin-top: 5px;
+    padding-bottom: 5px;
+
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 140%;
+
+    box-shadow: 0 1px 0 0 #e2e6e9;
+
+    &-normal {
+      font-family: "MontBold", Helvetica, sans-serif;
+    }
+
+    &-discounted {
+      color: #89939a;
+      letter-spacing: 0;
+      text-decoration: line-through;
+    }
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 16px;
+
+    &-item {
+      display: flex;
+      justify-content: space-between;
+
+      &__name {
+        color: #89939a;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+      }
+
+      &__value {
+        color: #313237;
+        font-family: "MontSemiBold", Helvetica, sans-serif;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+      }
+    }
+  }
+
+  &__buttons {
+    margin-top: 16px;
+    display: flex;
+    gap: 8px;
+
+    &-cart {
+      width: 176px;
+      height: 40px;
+      background: none;
+
+      font-family: "MontSemiBold", Helvetica, sans-serif;
+      color: #fff;
+      background-color: #313237;
+
+      cursor: pointer;
+    }
+
+    &-fav {
+      width: 40px;
+      height: 40px;
+
+      background: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      border: 1px solid #b4bcc3;
+
+      cursor: pointer;
+    }
+  }
+}

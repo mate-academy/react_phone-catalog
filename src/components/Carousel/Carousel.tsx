@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import cn from 'classnames';
 
 import './Carousel.scss';
@@ -34,6 +34,12 @@ export const Carousel: React.FC = () => {
     }
   };
 
+  useEffect(() => {
+    const interval = setInterval(nextSlide, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="carousel">
       <div className="carousel__content">
@@ -47,7 +53,7 @@ export const Carousel: React.FC = () => {
               className="carousel__image"
               key={imageUrl}
               style={{
-                display: index === activeSlideIndex ? 'inline-block' : 'none',
+                opacity: index === activeSlideIndex ? 1 : 0,
               }}
             >
               <img

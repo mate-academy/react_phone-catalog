@@ -16,12 +16,13 @@
   }
 
   &__image {
-    position: "absolute";
+    position: absolute;
     top: 0;
     left: 0;
     height: 400px;
     width: 1040px;
-    transition: "opacity 0.5s ease-in-out";
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
   }
 
   &__img {
@@ -58,4 +59,8 @@
 
 .active {
   background-color: #313237;
+}
+
+.carousel__image.active {
+  opacity: 1;
 }

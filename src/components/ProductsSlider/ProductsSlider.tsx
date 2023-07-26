@@ -4,23 +4,15 @@ import arrowLeft from '../../images/arrows/arrow-left.svg';
 import arrowRight from '../../images/arrows/arrow-right.svg';
 
 import './ProductsSlider.scss';
-
-const cardData = [
-  { id: 1, content: 'Card 1' },
-  { id: 2, content: 'Card 2' },
-  { id: 3, content: 'Card 3' },
-  { id: 4, content: 'Card 4' },
-  { id: 5, content: 'Card 5' },
-  { id: 6, content: 'Card 6' },
-  { id: 7, content: 'Card 7' },
-  { id: 8, content: 'Card 8' },
-];
+import { Product } from '../../types/Product';
+import { ProductCard } from '../ProductCard/ProductCard';
 
 type Props = {
   title: string;
+  products: Product[];
 };
 
-export const ProductsSlider: React.FC<Props> = ({ title }) => {
+export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
   const [startIndex, setStartIndex] = useState(0);
 
   const handlePrevClick = () => {
@@ -30,11 +22,11 @@ export const ProductsSlider: React.FC<Props> = ({ title }) => {
   const handleNextClick = () => {
     setStartIndex((prevStartIndex) => Math.min(
       prevStartIndex + 1,
-      cardData.length - 4,
+      products.length - 4,
     ));
   };
 
-  const visibleCards = cardData.slice(startIndex, startIndex + 4);
+  const visibleCards = products.slice(startIndex, startIndex + 4);
 
   return (
     <div className="ProductsSlider">
@@ -53,7 +45,7 @@ export const ProductsSlider: React.FC<Props> = ({ title }) => {
           <button
             type="button"
             onClick={handleNextClick}
-            disabled={startIndex === cardData.length - 4}
+            disabled={startIndex === products.length - 4}
             className="ProductsSlider__button"
           >
             <img src={arrowRight} alt="arrow-right" />
@@ -61,10 +53,10 @@ export const ProductsSlider: React.FC<Props> = ({ title }) => {
         </div>
       </div>
 
-      <div className="ProductsSlider__cards">
+      <div className="ProductsSlider__cards" data-cy="cardsContainer">
         {visibleCards.map((card) => (
           <div className="ProductsSlider__card" key={card.id}>
-            {card.content}
+            <ProductCard product={card} />
           </div>
         ))}
       </div>
