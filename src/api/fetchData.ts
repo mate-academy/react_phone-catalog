@@ -20,3 +20,13 @@ export const getProducts = () => {
 export const getProductById = (id: string) => {
   return request<DetailedProduct>(`/products/${id}.json`);
 };
+
+export const getProductByCategory = (categoryName: string) => {
+  return getProducts()
+    .then(products => {
+      const productsInCategory = products
+        .filter(product => product.category === categoryName);
+
+      return productsInCategory;
+    });
+};

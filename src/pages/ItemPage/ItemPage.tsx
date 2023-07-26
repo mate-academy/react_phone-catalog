@@ -134,24 +134,30 @@ export const ItemPage: React.FC<Props> = ({ products }) => {
                   <div className="product-details__images-container">
                     <div className="image-list">
                       {product.images.map(img => (
-                        /* eslint-disable-next-line */
-                        <img
-                          key={img}
-                          alt="product"
-                          src={`${img}`}
-                          className={classNames(
-                            'image image_small',
-                            { active: img === mainImg },
-                          )}
+                        <button
+                          type="button"
+                          className="image-list__box"
                           onClick={() => onChangeImage(img)}
-                        />
+                        >
+                          <img
+                            key={img}
+                            alt="product"
+                            src={`${img}`}
+                            className={classNames(
+                              'image image_small',
+                              { active: img === mainImg },
+                            )}
+                          />
+                        </button>
                       ))}
                     </div>
-                    <img
-                      alt="product main"
-                      src={`${mainImg}`}
-                      className="image image_main"
-                    />
+                    <div className="image__box">
+                      <img
+                        alt="product main"
+                        src={`${mainImg}`}
+                        className="image image_main"
+                      />
+                    </div>
                   </div>
                 )}
               </div>

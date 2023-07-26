@@ -134,6 +134,7 @@ export const Page: React.FC = () => {
                     <HomePage
                       products={phones}
                       productsCounter={productsCounter}
+                      isLoading={isLoading}
                     />
                   )}
                 />
@@ -141,10 +142,7 @@ export const Page: React.FC = () => {
                   <Route
                     index
                     element={(
-                      <CategoryPage
-                        products={phones}
-                        isLoading={isLoading}
-                      />
+                      <CategoryPage />
                     )}
                   />
                   <Route
@@ -155,19 +153,13 @@ export const Page: React.FC = () => {
                 <Route
                   path={PathnamesApp.Tablets}
                   element={(
-                    <CategoryPage
-                      products={tablets}
-                      isLoading={isLoading}
-                    />
+                    <CategoryPage />
                   )}
                 />
                 <Route
                   path={PathnamesApp.Accessories}
                   element={(
-                    <CategoryPage
-                      products={accessories}
-                      isLoading={isLoading}
-                    />
+                    <CategoryPage />
                   )}
                 />
                 <Route

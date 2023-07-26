@@ -8,11 +8,13 @@ import { Pagination } from '../Pagination/Pagination';
 import { ProductCard } from '../ProductCard/ProductCard';
 import { NoSearchResults } from '../NoSearchResults/NoSearchResults';
 import './productList.scss';
+import { Loader } from '../Loader';
 
 export type Props = {
   products: Product[],
   isSortDropdownShown?: boolean,
   isPaginationShown?: boolean,
+  handleVisibleProductsNumber:(number: number) => void,
 };
 
 export const itemsOptions = ['4', '8', '16', 'All'];
@@ -21,8 +23,10 @@ export const ProductList: React.FC<Props> = ({
   products,
   isSortDropdownShown,
   isPaginationShown,
+  handleVisibleProductsNumber,
 }) => {
   const [searchParams] = useSearchParams();
+  const [isLoading, setIsLoading] = useState(false);
   const itemsOnPage = Number(searchParams.get('itemsOnPage'))
     || products.length;
   const sortBy = searchParams.get('sort') || '';
@@ -49,7 +53,19 @@ export const ProductList: React.FC<Props> = ({
   );
 
   useEffect(() => {
+    setIsLoading(true);
+
+    if (handleVisibleProductsNumber) {
+      handleVisibleProductsNumber(sortedProducts.length);
+    }
+
     setVisibleProducts(sortedProducts.slice(start, end));
+
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 500);
+
+    return () => clearTimeout(timer);
   }, [products, sortBy, itemsOnPage, page, query]);
 
   const startSortValue = sortBy.length === 0 ? 'Choose an option' : sortBy;
@@ -59,7 +75,9 @@ export const ProductList: React.FC<Props> = ({
 
   return (
     <>
-      {visibleProducts.length > 0 && (
+      {isLoading && <Loader />}
+
+      {visibleProducts.length > 0 && !isLoading && (
         <div className="product-list">
           {(isPaginationShown || isSortDropdownShown) && (
             <div className="product-list__container">
@@ -110,7 +128,7 @@ export const ProductList: React.FC<Props> = ({
         </div>
       )}
 
-      {productsByQuery(query).length === 0 && (
+      {productsByQuery(query).length === 0 && !isLoading && (
         <NoSearchResults />
       )}
     </>

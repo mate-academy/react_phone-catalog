@@ -29,8 +29,6 @@ export const Header: React.FC = () => {
     setIsMenuOpened(!isMenuOpened);
   };
 
-  localStorage.clear();
-
   return (
     <>
       <div

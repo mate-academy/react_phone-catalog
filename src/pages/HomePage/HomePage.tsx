@@ -5,6 +5,7 @@ import { Product } from '../../types/Product';
 import { SortType } from '../../types/SortType';
 import './homePage.scss';
 import { SlickSlider } from '../../components/SlickSlider/SlickSlider';
+import { Loader } from '../../components/Loader/Loader';
 
 export type Props = {
   products: Product[],
@@ -13,33 +14,44 @@ export type Props = {
     tablets: number,
     accessories: number,
   },
+  isLoading: boolean,
 };
 
-export const HomePage: React.FC<Props> = ({ products, productsCounter }) => {
+export const HomePage: React.FC<Props> = ({
+  products,
+  productsCounter,
+  isLoading,
+}) => {
   return (
-    <div className="page__home">
-      <section className="section">
-        <h1 className="section__title">Welcome to my store!</h1>
-        <Carousel />
-      </section>
-      <section className="section">
-        <h1 className="section__title">Hot prices</h1>
-        <SlickSlider
-          products={products}
-          sortBy={SortType.MaxDiscount}
-        />
-      </section>
-      <section className="section">
-        <h1 className="section__title">Shop by category</h1>
-        <CategoriesList productsCounter={productsCounter} />
-      </section>
-      <section className="section">
-        <h1 className="section__title">Brand new models</h1>
-        <SlickSlider
-          products={products}
-          sortBy={SortType.Newest}
-        />
-      </section>
-    </div>
+    <>
+      {!isLoading ? (
+        <div className="page__home">
+          <section className="section">
+            <h1 className="section__title">Welcome to my store!</h1>
+            <Carousel />
+          </section>
+          <section className="section">
+            <h1 className="section__title">Hot prices</h1>
+            <SlickSlider
+              products={products}
+              sortBy={SortType.MaxDiscount}
+            />
+          </section>
+          <section className="section">
+            <h1 className="section__title">Shop by category</h1>
+            <CategoriesList productsCounter={productsCounter} />
+          </section>
+          <section className="section">
+            <h1 className="section__title">Brand new models</h1>
+            <SlickSlider
+              products={products}
+              sortBy={SortType.Newest}
+            />
+          </section>
+        </div>
+      ) : (
+        <Loader />
+      )}
+    </>
   );
 };

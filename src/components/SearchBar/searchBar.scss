@@ -14,6 +14,7 @@
     outline: none;
     border: none;
     border-left: 1px solid $borders-gray-color;
+    border-right: 1px solid $borders-gray-color;
 
     &::placeholder {
       color: $light-gray-color;
@@ -67,6 +68,7 @@
     &__icon {
       display: block;
       @include button-header;
+      border: none;
       @include bgr-img;
       background-image: url($icon-search);
       background-size: 20px 20px;

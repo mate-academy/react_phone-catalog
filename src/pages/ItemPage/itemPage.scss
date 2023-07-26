@@ -78,8 +78,8 @@
 
   &__images-container {
     display: flex;
-    justify-content: space-between;
-    width: min-content;
+    width: 100%;
+    gap: 16px;
   }
 
   &__action {
@@ -114,26 +114,24 @@
 }
 
 .image {
+  object-fit: contain;
+  object-position: center;
+  height: 100%;
+  width: 100%;
 
-  &_main {
-    height: 440px;
-    width: 440px;
-    object-fit: contain;
+  &__box {
+    flex-shrink: 0;
+    width: 100%;
+    max-height: 400px;
+    max-width: 400px;
+    aspect-ratio: 1/1;
+    margin-bottom: 0;
   }
 
   &_small {
-    padding: 10px;
-    width: 90px;
-    height: 90px;
-    object-fit: contain;
-    margin-bottom: 10px;
     border: 1px solid #c4c4c4;
     transition: all 0.3s;
     cursor: pointer;
-
-    &:last-child {
-      margin-bottom: 0;
-    }
 
     &:hover {
       border-color: #000;
@@ -145,10 +143,18 @@
   }
 
   &-list {
-    height: 440px;
-    width: max-content;
-    overflow-y: hidden;
-    margin-right: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    grid-gap: 8px;
+    gap: 8px;
+
+    &__box {
+      max-height: 50px;
+      aspect-ratio: 1/1;
+      background: transparent;
+      border: 1px solid #e2e6e9;
+    }
   }
 }
 
@@ -224,24 +230,34 @@
 }
 
 @media #{$desktop-media-query} {
-
-  .page__item {
-    max-width: 650px;
+  .product-details {
+    max-width: 700px;
     margin: 0 auto;
   }
+
+  .image__box {
+    max-height: 275px;
+    max-width: 275px;
+  }
+}
+
+@media #{$tablet-media-query} {
 
   .product-details {
     display: flex;
     flex-direction: column;
     align-items: center;
+    max-width: 280px;
 
     &__row {
       display: flex;
       flex-direction: column;
+      width: 100%;
     }
 
     &__images-container {
       flex-direction: column-reverse;
+      width: 100%;
     }
 
     &__action {
@@ -250,25 +266,6 @@
   }
 
   .image-list {
-    display: flex;
-    height: unset;
-    margin: 0 auto;
-    margin-right: 0;
-
-    .image {
-      margin-right: 16px;
-    }
-  }
-
-  .image_main {
-    margin-bottom: 20px;
-  }
-}
-
-@media #{$tablet-media-query} {
-
-  .page__item {
-    max-width: 650px;
-    margin: 0 auto;
+    flex-direction: row;
   }
 }

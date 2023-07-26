@@ -3,7 +3,7 @@
   "homepage": "https://anastasiya145.github.io/react_phone-catalog",
   "version": "0.1.0",
   "keywords": [],
-  "author": "Mate Academy",
+  "author": "Anastasiya Ivanova",
   "license": "GPL-3.0",
   "dependencies": {
     "@cypress/react": "^5.12.4",
