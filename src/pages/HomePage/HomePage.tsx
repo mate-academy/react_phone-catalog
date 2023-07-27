@@ -1,8 +1,8 @@
 import React from 'react';
-import { Carousel } from '../components/Carousel/Carousel';
-import { ProductsSlider } from '../components/ProductsSlider/ProductsSlider';
-import { Product } from '../types/Product';
-import { ShopByCategory } from '../components/ShopByCategory/ShopByCategory';
+import { Carousel } from '../../components/Carousel/Carousel';
+import { ProductsSlider } from '../../components/ProductsSlider/ProductsSlider';
+import { Product } from '../../types/Product';
+import { ShopByCategory } from '../../components/ShopByCategory/ShopByCategory';
 
 type Props = {
   products: Product[];

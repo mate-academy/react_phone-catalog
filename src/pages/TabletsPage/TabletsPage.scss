@@ -1,0 +1,19 @@
+.TabletsPage {
+  &__title {
+    margin-top: 40px;
+    color: #313237;
+
+    font-family: "MontBold", Helvetica, sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.32px;
+  }
+
+  &__list {
+    display: flex;
+    gap: 16px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+  }
+}
