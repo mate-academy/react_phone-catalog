@@ -1,97 +1,19 @@
-@import "./helpers/fonts.scss";
-@import "./variables.scss";
-
-@import "./components/Header/header.scss";
-@import "./components/Footer/footer.scss";
-@import "./helpers/link.scss";
-@import "./components/Banner/banner.scss";
-@import "./components/ProductsSlider/ProductsSlider.scss";
-@import "./components/ProductCard/productCard.scss";
-// @import "./components/ProductHotList/productHotList.scss";
-@import "./components/Category/category.scss";
-@import "./pages/HomePage/homePage.scss";
-@import "./pages/PhonesPage/phonesPage.scss";
-@import "./components/ProductsList/productList.scss";
-@import "./components/DropDown/dropDown.scss";
-@import "./components/Pagination/pagination.scss";
-@import "./components/ProductsPage/productsPage.scss";
-// @import "./components/ButtonCart/buttonCart.scss";
-
-* {
-  box-sizing: border-box;
-}
-
-html,
-body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: $font-regular;
-  color: $grey-primary-color;
-
-  font-size: 12px;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-ul {
-  margin: 0;
-  padding: 0;
-}
-
-li {
-  list-style: none;
-}
-
-button {
-  cursor: pointer;
-  border: 0;
-  padding: 0;
-  background-color: inherit;
-  font-family: inherit;
-}
-
-p,
-h2 {
-  margin: 0;
-  padding: 0;
-}
-
-h1 {
-  // margin: 0;
-  // padding: 0;
-  font-family: $font-bold;
-  font-size: 32px;
-  line-height: 41px;
-  letter-spacing: -0.01em;
-}
-
-h3 {
-  font-family: $font-semibold;
-  font-size: 20px;
-  line-height: 26px;
-  letter-spacing: 0;
-}
+@import "./helpers/styles/fonts.scss";
+@import "./helpers/styles/variables.scss";
+@import "./helpers/styles/reset.scss";
 
 .App {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-}
 
-.main-section {
-  flex: 1 0 auto;
-  display: flex;
-  // justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 80px;
-  // height: 100vh;
-  // overflow-y: scroll;
+  &__main-section {
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 80px;
+  }
 
   &__content {
     display: flex;
@@ -101,12 +23,3 @@ h3 {
     max-width: 1136px;
   }
 }
-
-// .test {
-
-//   width: 200px;
-//   height: 200px;
-
-//   background-color: aquamarine;
-//   background-image: url(./images/Icons/Favourites_Heart-Like.svg);
-// }

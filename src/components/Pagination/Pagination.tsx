@@ -1,4 +1,4 @@
-// import classNames from 'classnames';
+import './Pagination.scss';
 import { Link, useSearchParams } from 'react-router-dom';
 import classNames from 'classnames';
 import { getNumbers } from '../../helpers/getNumbers';
@@ -9,74 +9,6 @@ type Props = {
   perPage: number,
   currentPage: number
 };
-
-// export const Pagination: React.FC<Props> = ({
-//   total,
-//   perPage,
-//   currentPage,
-// }) => {
-//   const [searchParams] = useSearchParams();
-
-//   const totalPages = Math.ceil(total / perPage);
-//   const pageNumbers = getNumbers(1, totalPages);
-//   const isFirstPage = currentPage === 1;
-//   const isLastPage = currentPage === totalPages;
-
-//   return (
-//     <div className="pagination">
-//       <Link
-//         className={classNames('pagination__button', 'pagination__button-left', {
-//           'pagination__button-left--disabled': isFirstPage,
-//         })}
-//         data-cy="paginationLeft"
-//         to={{
-//           search: getSearchWith(
-//             searchParams,
-//             { page: (currentPage - 1).toString() },
-//           ),
-//         }}
-//         aria-disabled={isFirstPage}
-//       />
-
-//       <ul className="pagination__list">
-//         {pageNumbers.map(pageNumber => (
-//           <li
-//             className={classNames('pagination__item', {
-//               'pagination__item--active': currentPage === pageNumber,
-//             })}
-//             key={pageNumber}
-//           >
-//             <Link
-//               className="pagination__link"
-//               to={{
-//                 search: getSearchWith(
-//                   searchParams,
-//                   { page: pageNumber.toString() },
-//                 ),
-//               }}
-//             >
-//               {pageNumber}
-//             </Link>
-//           </li>
-//         ))}
-//       </ul>
-
-//       <Link
-//         className={classNames('pagination__button',
-//           'pagination__button-right',
-//           { 'pagination__button-right--disabled': isLastPage })}
-//         data-cy="paginationRight"
-//         to={{
-//           search: getSearchWith(
-//             searchParams,
-//             { page: (currentPage + 1).toString() },
-//           ),
-//         }}
-//         aria-disabled={isLastPage}
-//       />
-//     </div>
-//   );
-// };
 
 export const Pagination: React.FC<Props> = ({
   totalItems,
@@ -89,16 +21,13 @@ export const Pagination: React.FC<Props> = ({
   const isFirstPage = currentPage === 1;
   const isLastPage = currentPage === totalPages;
 
-  // Calculate the range of page numbers to display
   let startPage = Math.max(1, currentPage - 2);
   const endPage = Math.min(startPage + 4, totalPages);
 
-  // Adjust the startPage and endPage if there are not enough pages
   if (endPage - startPage < 4) {
     startPage = Math.max(1, endPage - 4);
   }
 
-  // Generate the array of page numbers to render
   const pageNumbers = getNumbers(startPage, endPage);
 
   return (

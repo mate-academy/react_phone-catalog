@@ -1,9 +1,13 @@
-/* eslint-disable max-len */
+import './HomePage.scss';
 import { useEffect, useState } from 'react';
 import { Banner } from '../../components/Banner/Banner';
 import { ProductsSlider } from '../../components/ProductsSlider/ProductsSlider';
 import { Product } from '../../types/Product';
-import { getAllProducts, getBrandNewProducts, getHotPriceProducts } from '../../helpers/FetchProducts';
+import {
+  getAllProducts,
+  getBrandNewProducts,
+  getHotPriceProducts,
+} from '../../helpers/FetchProducts';
 import { Loader } from '../../components/Loader';
 import { Category } from '../../components/Category/Category';
 import { ProductSection } from '../../types/ProductSection';
@@ -50,9 +54,6 @@ export const HomePage = () => {
     fetchAllProducts();
   }, []);
 
-  // console.log(hotProducts);
-  // console.log(error);
-
   return (
     <section className="home-page">
       <Banner />
@@ -82,7 +83,6 @@ export const HomePage = () => {
           <Loader />
         )}
       </div>
-
     </section>
   );
 };

@@ -1,3 +1,5 @@
+@import "../../helpers/styles/variables.scss";
+
 .footer {
   display: flex;
   justify-content: center;
@@ -7,7 +9,7 @@
   width: 100%;
 
   background: #fff;
-  box-shadow: 0 -1px 0 #e2e6e9;
+  box-shadow: 0 -1px 0 $grey-elements;
 
   font-family: $font-regular;
   font-size: 12px;
@@ -21,7 +23,6 @@
 
   &__nav {
     display: flex;
-
   }
 
   &__nav-link {
@@ -42,59 +43,23 @@
     }
   }
 
-  // &__button {
-  //   display: flex;
-  //   // justify-content: center;
-  //   align-items: center;
-
-  //   line-height: 15px;
-  //   font-family: $font-semibold;
-  //   color: $grey-secondary-color;
-
-  //   &:hover {
-  //     color: $grey-primary-color;
-  //   }
-  // }
-
-  //   &__button {
-  //     display: flex;
-  //     align-items: center;
-  //     line-height: 15px;
-  //     font-family: $font-semibold;
-  //     color: $grey-secondary-color;
-
-  //     transition: all 0.3s;
-
-  //     &:hover {
-  //       color: $grey-primary-color;
-
-  //       & .footer__button-img {
-  //         border-color: #313237;
-  //       }
-  //     }
-  //   }
-
-  // &__button-img {
-  //   width: 32px;
-  //   height: 32px;
-  //   margin-left: 16px;
-
-  //   border: 1px solid #b4bdc3;
-  // }
   &__button-img {
     width: 32px;
     height: 32px;
     margin-left: 16px;
-    border: 1px solid #b4bdc3;
+
+    border: 1px solid $grey-icons;
     transition: border-color 0.3s;
   }
 
   &__button {
     display: flex;
     align-items: center;
+
     line-height: 15px;
     font-family: $font-semibold;
     color: $grey-secondary-color;
+
     transition: color 0.3s;
 
     &:hover {

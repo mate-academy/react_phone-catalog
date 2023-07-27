@@ -1,3 +1,5 @@
+@import "../../helpers/styles/variables.scss";
+
 .product-card {
   display: flex;
   flex-direction: column;
@@ -5,7 +7,6 @@
   width: 272px;
   height: 507px;
   padding: 32px 24px 24px;
-  // gap: 16px;
 
   border: 1px solid #e2e6e9;
   transition: all 0.3s;
@@ -22,7 +23,6 @@
   &__img {
     margin: 0 auto;
     margin-bottom: 24px;
-
     height: 208px;
 
     object-fit: contain;
@@ -44,12 +44,13 @@
   }
 
   &__price-discount {
-    color: #e2e6e9;
+    color: $grey-elements;
     text-decoration: line-through;
   }
 
   &__price-regular {
     margin-right: 8px;
+
     font-family: $font-bold;
     font-size: 22px;
     color: $grey-primary-color;
@@ -84,32 +85,10 @@
     width: 176px;
     height: 40px;
     margin-right: 8px;
-
-    // color: #fff;
-
-    // background-color: $grey-primary-color;
-    // transition: all 0.3s;
-
-    // &:hover {
-    //   box-shadow: 0px 3px 13px rgba(23, 32, 49, 0.26);
-    // }
-
   }
 
   &__button-fav {
     width: 40px;
     height: 40px;
-
-    // background-image: url(../../images/Icons/Favourites_Heart-Like.svg);
-    // background-repeat: no-repeat;
-    // background-position: center;
-    // border: 1px solid #b4bdc4;
-    // background-color: #fff;
-
-    // transition: all 0.3s;
-
-    // &:hover {
-    //   border: 1px solid #313237
-    // }
   }
 }

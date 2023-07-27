@@ -74,24 +74,3 @@ export const CartContextProvider: React.FC<Props> = ({ children }) => {
     </CartContext.Provider>
   );
 };
-
-// export const CartContextProvider: React.FC<Props> = ({ children }) => {
-//   // const [cart, setCart] = useLocalStorage<CartItem[]>('cart', []);
-
-//   const [cart, setCart] = useState<CartItem[]>([]);
-
-//   const addToCart = (cartItem: CartItem) => {
-//     setCart((prevCart) => [...prevCart, cartItem]);
-//   };
-
-//   const removeFromCart = (productId: string) => {
-//     setCart((prevCart) => prevCart.filter(item => (
-//       item.product.itemId !== productId)));
-//   };
-
-//   return (
-//     <CartContext.Provider value={{ cart, addToCart, removeFromCart }}>
-//       {children}
-//     </CartContext.Provider>
-//   );
-// };

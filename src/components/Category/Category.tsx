@@ -1,6 +1,7 @@
+import './Category.scss';
 import { Link } from 'react-router-dom';
 import { Product } from '../../types/Product';
-// import phonesImg from "./"
+
 type Props = {
   products: Product[]
 };
@@ -82,7 +83,6 @@ export const Category: React.FC<Props> = ({ products }) => {
           </p>
         </Link>
       </div>
-
     </div>
   );
 };

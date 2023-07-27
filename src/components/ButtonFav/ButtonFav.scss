@@ -1,4 +1,4 @@
-@import "../../variables.scss";
+@import "../../helpers/styles/variables.scss";
 
 .button-fav {
   width: 100%;
@@ -7,7 +7,7 @@
   background-image: url(../../images/Icons/Favourites_Heart-Like.svg);
   background-repeat: no-repeat;
   background-position: center;
-  border: 1px solid #b4bdc4;
+  border: 1px solid $grey-icons;
   background-color: #fff;
 
   transition: all 0.3s;

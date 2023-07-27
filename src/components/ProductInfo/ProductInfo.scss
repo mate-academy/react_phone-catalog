@@ -1,4 +1,4 @@
-@import "../../variables.scss";
+@import "../../helpers/styles/variables.scss";
 
 .product-info {
   display: flex;
@@ -7,7 +7,7 @@
   &__title {
     padding-bottom: 16px;
 
-    border-bottom: 1px solid #e2e6e9;
+    border-bottom: 1px solid $grey-elements;
     font-family: $font-bold;
     font-size: 22px;
   }
@@ -38,13 +38,8 @@
   }
 
   &__tech-specs {
-    // width: 100%;
     width: 512px;
   }
-
-  // &__tech-list {
-
-  // }
 
   &__tech-item {
     display: flex;
@@ -53,6 +48,7 @@
 
   &__tech-item-title {
     margin-bottom: 8px;
+
     color: $grey-secondary-color;
     font-size: 14px;
     line-height: 21px;

@@ -1,3 +1,4 @@
+import './DropDown.scss';
 import { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { Link, useSearchParams } from 'react-router-dom';
@@ -32,12 +33,6 @@ export const DropDown: React.FC<Props> = ({
     setIsOpen(false);
   };
 
-  // const handleBlur = () => {
-  //   setTimeout(() => {
-  //     setIsOpen(false);
-  //   }, 200);
-  // };
-
   useEffect(() => {
     const valueFromParams = searchParams.get(searchName);
 
@@ -59,7 +54,6 @@ export const DropDown: React.FC<Props> = ({
         className="drop-down__header"
         type="button"
         onClick={toggleDropDown}
-        // onBlur={handleBlur}
       >
         <span className="drop-down__current">{selectOption}</span>
         <div

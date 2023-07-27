@@ -1,3 +1,5 @@
+@import "../../helpers/styles/variables.scss";
+
 .drop-down {
   width: 182px;
   position: relative;
@@ -9,16 +11,15 @@
 
   &__header {
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
     width: 182px;
     margin-bottom: 4px;
 
-    border: 1px solid #b4bdc4;
-    cursor: pointer;
-
     font-family: $font-semibold;
 
+    border: 1px solid #b4bdc4;
+    cursor: pointer;
   }
 
   &__icon {
@@ -58,13 +59,13 @@
     width: 100%;
     padding-left: 12px;
     height: 32px;
+
     font-size: 14px;
     cursor: pointer;
-
     transition: all 0.3s;
 
     &:hover {
-      background-color: #fafbfc;
+      background-color: $grey-background;
     }
   }
 }

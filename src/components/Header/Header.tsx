@@ -1,12 +1,21 @@
+import './Header.scss';
 import { useContext } from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
 import { CartContext } from '../contexts/CartContextProvider';
 import { FavContext } from '../contexts/FavContextProvider';
+import { Search } from '../Search/Search';
 
 export const Header = () => {
   const { cart } = useContext(CartContext);
   const { favourites } = useContext(FavContext);
+  const location = useLocation();
+  const { pathname } = location;
+
+  const isPathPhones = pathname === '/phones';
+  const isPathFav = pathname === '/favourites';
+  const isPathTablets = pathname === '/tablets';
+  const isPathAccessories = pathname === '/accessories';
 
   return (
     <header className="header header--margin-bottom">
@@ -77,6 +86,10 @@ export const Header = () => {
       </div>
 
       <div className="header__choosed">
+        {(isPathPhones || isPathTablets || isPathAccessories || isPathFav) && (
+          <Search />
+        )}
+
         <NavLink
           className={({ isActive }) => classNames(
             'header__link',
@@ -123,7 +136,6 @@ export const Header = () => {
             </div>
           )}
         </NavLink>
-
       </div>
     </header>
   );

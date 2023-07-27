@@ -1,4 +1,5 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
+import './ProductsSlider.scss';
 import { useState } from 'react';
 import classNames from 'classnames';
 
@@ -16,8 +17,9 @@ const gap = 16;
 
 export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
   const [position, setPosition] = useState(0);
+  const visibleProducts = products.slice(0, 21);
 
-  const maxPosition = -(products.length * (cardWidth + gap)
+  const maxPosition = -(visibleProducts.length * (cardWidth + gap)
     - 4 * (cardWidth + gap));
 
   const clickNext = () => {
@@ -73,10 +75,10 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
         style={{
           transform: `translateX(${position}px)`,
           transition: 'transform 0.5s',
-          width: cardWidth * products.length,
+          width: cardWidth * visibleProducts.length,
         }}
       >
-        {products.map(product => {
+        {visibleProducts.map(product => {
           return (
             <li
               className="slider__item"

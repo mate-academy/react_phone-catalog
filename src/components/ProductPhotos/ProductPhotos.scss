@@ -1,4 +1,4 @@
-@import "../../variables.scss";
+@import "../../helpers/styles/variables.scss";
 
 .product-photos {
   display: flex;
@@ -7,10 +7,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
     margin-right: 16px;
     margin-bottom: 16px;
-
     height: 80px;
     width: 80px;
 
@@ -40,10 +38,7 @@
     align-items: center;
     height: 464px;
     width: 464px;
-
     margin-right: 64px;
-
-    // border: 1px solid $grey-secondary-color;
   }
 
   &__main-photo-box {
@@ -52,7 +47,6 @@
     align-items: center;
     height: 442px;
     width: 442px;
-
   }
 
   &__main-photo-img {

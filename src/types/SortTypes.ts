@@ -4,19 +4,6 @@ export enum SortTypes {
   Cheapest = 'Cheapest',
 }
 
-// export const sortParam = [
-//   { Newest: 'Newest' },
-//   { Alphabetically: 'Alphabetically' },
-//   { Cheapest: 'Cheapest' },
-// ];
-
-// export const itemsOnPage = [
-//   { All: 'All' },
-//   { Four: '4' },
-//   { Eight: '8' },
-//   { Eight: '16' },
-// ];
-
 export interface Option {
   label: string;
   value: string;

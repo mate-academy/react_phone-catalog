@@ -1,3 +1,4 @@
+import './ProductCard.scss';
 import { Link } from 'react-router-dom';
 import { Product } from '../../types/Product';
 import { ProductSection } from '../../types/ProductSection';

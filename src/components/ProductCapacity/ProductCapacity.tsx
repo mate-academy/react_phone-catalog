@@ -1,6 +1,4 @@
 import { Link } from 'react-router-dom';
-// import classNames from 'classnames';
-
 import './ProductCapacity.scss';
 import classNames from 'classnames';
 import { getCorrectProductLink } from '../../helpers/getCorrectLink';
@@ -28,7 +26,6 @@ export const ProductCapacity: React.FC<Props> = ({
             <Link
               to={`../${getCorrectProductLink(productDetails, undefined, capacity)}`}
               key={capacity}
-              // className="product-capacitys__link"
               className={classNames('product-capacitys__link', {
                 'product-capacitys__link--active': isActive,
               })}

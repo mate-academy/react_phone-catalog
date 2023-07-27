@@ -1,18 +1,9 @@
+@import "../../helpers/styles/variables.scss";
+
 .pagination {
   display: flex;
   justify-content: center;
   align-items: center;
-  // margin: 0 auto;
-
-  // &__button {
-  //   display: flex;
-  //   justify-content: center;
-  //   align-items: center;
-  //   width: 32px;
-  //   height: 32px;
-
-  //   border: 1px solid #b4bdc4;
-  // }
 
   &__button {
     display: flex;
@@ -21,7 +12,7 @@
     width: 32px;
     height: 32px;
     background-color: #fff;
-    border: 1px solid #b4bdc4;
+    border: 1px solid $grey-icons;
 
     transition: all 0.3s;
     background-repeat: no-repeat;
@@ -33,13 +24,12 @@
     background-image: url(../../images/Icons/button_banner_left.svg);
 
     &:not(.pagination__button-left--disabled):hover {
-      border-color: #313237;
+      border-color: $grey-primary-color;
     }
 
     &--disabled {
-      // margin-right: 16px;
-      border-color: #e2e6e9;
-      cursor: default;
+      border-color: $grey-elements;
+      cursor: none;
       pointer-events: none;
 
       background-image: url(../../images/Icons/button_arrow_left.svg);
@@ -50,25 +40,17 @@
     background-image: url(../../images/Icons/button_banner_right.svg);
 
     &:not(.pagination__button-right--disabled):hover {
-      border-color: #313237;
+      border-color: $grey-primary-color;
     }
 
     &--disabled {
-      border-color: #e2e6e9;
-      cursor: default;
+      border-color: $grey-elements;
+      cursor: none;
       pointer-events: none;
 
       background-image: url(../../images/Icons/button_arrow_right.svg);
     }
   }
-
-  // &__button-left {
-  //   margin-right: 16px;
-  // }
-
-  // &__button-right {
-  //   margin-left: 16px;
-  // }
 
   &__list {
     display: flex;
@@ -80,7 +62,7 @@
 
     &--active {
       color: #fff;
-      background-color: #313237;
+      background-color: $grey-primary-color;
     }
 
     &:last-child {
@@ -96,16 +78,16 @@
     width: 32px;
     height: 32px;
 
-    border: 1px solid #b4bdc4;
+    border: 1px solid $grey-icons;
     transition: all 0.3s;
 
     &:hover {
-      border-color: #313237;
+      border-color: $grey-primary-color;
     }
 
     &--active {
       color: #fff;
-      background-color: #313237;
+      background-color: $grey-primary-color;
     }
   }
 

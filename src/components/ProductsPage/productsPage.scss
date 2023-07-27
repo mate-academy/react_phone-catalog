@@ -1,3 +1,5 @@
+@import "../../helpers/styles/variables.scss";
+
 .products-page {
 
   &__content {
@@ -23,7 +25,7 @@
     height: 40px;
     cursor: pointer;
 
-    border: 1px solid #b4bdc4;
+    border: 1px solid $grey-icons;
   }
 
   &__sort-label {

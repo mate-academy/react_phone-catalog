@@ -1,9 +1,11 @@
+@import "../../helpers/styles/variables.scss";
+
 .category {
   &__img-box {
     width: 368px;
     height: 368px;
-    overflow: hidden;
 
+    overflow: hidden;
     transition: all 0.3s;
 
     &:hover {
@@ -23,15 +25,6 @@
       background-color: #973d5f;
     }
   }
-
-  // &__img {
-  // transition: all 0.3s;
-
-  //   &:hover {
-  //     transform: scale(106%);
-  //     right: 20px;
-  //   }
-  // }
 
   &__title {
     margin-bottom: 24px;

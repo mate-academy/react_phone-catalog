@@ -3,7 +3,6 @@ import { BackButton } from '../../components/BackButton/BackButton';
 import './CartPage.scss';
 import { CartItemList } from '../../components/CartItemList/CartItemList';
 import { CartContext } from '../../components/contexts/CartContextProvider';
-// import { getCartTotalPrice } from '../../helpers/getCartTotalPrice';
 import { CartInfo } from '../../components/CartInfo/CartInfo';
 
 export const CartPage = () => {
@@ -24,13 +23,11 @@ export const CartPage = () => {
             </div>
 
             <CartInfo />
-
           </>
         ) : (
           <h2 className="cart-page__message">Your cart is empty</h2>
         )}
       </div>
-
     </section>
   );
 };

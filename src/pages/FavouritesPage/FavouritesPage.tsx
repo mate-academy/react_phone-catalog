@@ -16,24 +16,11 @@ export const FavouritesPage = () => {
 
       <div className="favourites__count">
         {` ${favourites.length} ${favourites.length > 1 ? 'items' : 'item'}`}
-
       </div>
 
       <div className="favourites__list">
         <FavItemList />
       </div>
-
-      {/* <ul>
-        {favourites.map(product => {
-          return (
-            <li
-              key={product.itemId}
-            >
-              <ProductCard product={product} />
-            </li>
-          );
-        })}
-      </ul> */}
     </section>
   );
 };

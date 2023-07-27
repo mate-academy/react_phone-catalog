@@ -39,7 +39,6 @@ export const CartItem: React.FC<Props> = ({
 
   return (
     <li
-      // key={cartItem.id}
       className="cart-item"
     >
       <button
@@ -74,10 +73,8 @@ export const CartItem: React.FC<Props> = ({
           <button
             type="button"
             disabled={cartItem.quantity === 1}
-            // className="cart__button-quantity cart__quantity-decrease"
             className={classNames(
               'cart-item__button',
-              // 'cart__button-quantity',
               'cart-item__button-decrease',
               {
                 'cart-item__button-decrease--disabled': cartItem.quantity === 1,

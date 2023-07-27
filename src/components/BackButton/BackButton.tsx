@@ -1,6 +1,5 @@
 import './BackButton.scss';
 import arrowLeft from '../../images/Icons/button_banner_left.svg';
-// import './ProductDetailsPage.scss';
 
 export const BackButton = () => {
   const goBack = () => (

@@ -1,4 +1,5 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
+import './Banner.scss';
 import classNames from 'classnames';
 import { useEffect, useState } from 'react';
 
@@ -96,7 +97,6 @@ export const Banner = () => {
           />
         ))}
       </div>
-
     </div>
   );
 };

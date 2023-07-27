@@ -1,3 +1,5 @@
+@import "../../helpers/styles/variables.scss";
+
 .banner {
   display: flex;
   justify-content: space-between;
@@ -28,7 +30,7 @@
     justify-content: center;
     height: 100%;
     width: 32px;
-    border: 1px solid #b4bdc4;
+    border: 1px solid $grey-icons;
     background-color: #fff;
 
     transition: all 0.3s;
@@ -43,11 +45,6 @@
       background-image: url(../../images/Icons/button_banner_left.svg);
       background-repeat: no-repeat;
       background-position: center;
-      // &::after {
-      //   background-image: url(..//imgFigma/Icons/button_banner_left.svg);
-
-      //   // background: url(/imgFigma/Icons/button_banner_left.svg);
-      // }
     }
 
     &--right {
@@ -56,12 +53,6 @@
       background-image: url(../../images/Icons/button_banner_right.svg);
       background-repeat: no-repeat;
       background-position: center;
-      // &::after {
-      //   // background-image: url(/imgFigma/Icons/button_banner_right.svg);
-      //   // background: url(..//imgFigma/Icons/button_banner_left.svg);
-
-      // }
-
     }
   }
 
@@ -75,7 +66,6 @@
     position: absolute;
     left: 48%;
     top: 522px;
-
   }
 
   &__indicator {
@@ -83,12 +73,11 @@
     height: 4px;
     margin-right: 14px;
 
+    background-color: $grey-elements;
     transition: all 0.5s;
 
-    background-color: #e2e6e9;
-
     &:hover {
-      background-color: #b4bdc3;
+      background-color: $grey-icons;
     }
 
     &:last-child {
@@ -96,8 +85,7 @@
     }
 
     &--active {
-      background-color: #313237;
-
+      background-color: $grey-primary-color;
     }
   }
 }

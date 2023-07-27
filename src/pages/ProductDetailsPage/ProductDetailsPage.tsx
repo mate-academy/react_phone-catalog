@@ -20,6 +20,8 @@ import { ButtonFav } from '../../components/ButtonFav/ButtonFav';
 import { Product } from '../../types/Product';
 import { ProductsSlider } from '../../components/ProductsSlider/ProductsSlider';
 import { ProductSection } from '../../types/ProductSection';
+import { Loader } from '../../components/Loader';
+import { PageNotFound } from '../PageNotFound/PageNotFound';
 
 export const ProductDetailsPage = () => {
   const location = useLocation();
@@ -90,15 +92,9 @@ export const ProductDetailsPage = () => {
   const mainImg = mainPhoto || '';
   const capacitys = productDetails?.capacityAvailable || [];
 
-  // console.log(isError, isLoading);
-
   const handlePhotoClick = (photo: string) => {
     setMainPhoto(photo);
   };
-
-  // getCorrectLink(productId);
-
-  // console.log('productId:', productId);
 
   return (
     <section className="product-details">
@@ -113,107 +109,112 @@ export const ProductDetailsPage = () => {
         <BackButton />
       </div>
 
-      <h1 className="product-details__title">
-        {productDetails?.name}
-      </h1>
+      {!product && <PageNotFound />}
+
+      {!isError && isLoading && <Loader />}
       {!isError && !isLoading && (
-        <div className="product-details__presentation">
-          <ProductPhotos
-            photos={images}
-            mainPhoto={mainImg}
-            handlePhotoClick={handlePhotoClick}
-          />
+        <>
+          <h1 className="product-details__title">
+            {productDetails?.name}
+          </h1>
 
-          <div className="product-details__main-info">
-            <div className="product-details__colors">
-              {productDetails && (
-                <ProductColor
-                  colors={colors}
-                  productDetails={productDetails}
-                  // productId={productId}
-                  currentColor={currentColor}
-                />
-              )}
-            </div>
+          <div className="product-details__presentation">
+            <ProductPhotos
+              photos={images}
+              mainPhoto={mainImg}
+              handlePhotoClick={handlePhotoClick}
+            />
 
-            <div className="product-details__capacitys">
-              {productDetails && (
-                <ProductCapacity
-                  productDetails={productDetails}
-                  capacitys={capacitys}
-                />
-              )}
-            </div>
-
-            <div className="product-details__price">
-              <h1 className="product-details__current-price">
-                {`$${productDetails?.priceDiscount}`}
-              </h1>
-              <div className="product-details__full-price">
-                {`$${productDetails?.priceRegular}`}
-              </div>
-            </div>
-
-            <div className="product-details__actions">
-              <div className="product-details__button">
-                {product && (
-                  <ButtonCart
-                    product={product}
+            <div className="product-details__main-info">
+              <div className="product-details__colors">
+                {productDetails && (
+                  <ProductColor
+                    colors={colors}
+                    productDetails={productDetails}
+                    currentColor={currentColor}
                   />
                 )}
               </div>
-              <div className="product-details__fav">
-                {product && (
-                  <ButtonFav
-                    product={product}
+
+              <div className="product-details__capacitys">
+                {productDetails && (
+                  <ProductCapacity
+                    productDetails={productDetails}
+                    capacitys={capacitys}
                   />
                 )}
-
               </div>
-            </div>
 
-            <ul className="product-details__info">
-              <li className="product-details__info-item">
-                <div className="product-details__info-title">Screen</div>
-                <div className="product-details__info-value">
-                  {productDetails?.screen}
+              <div className="product-details__price">
+                <h1 className="product-details__current-price">
+                  {`$${productDetails?.priceDiscount}`}
+                </h1>
+                <div className="product-details__full-price">
+                  {`$${productDetails?.priceRegular}`}
                 </div>
-              </li>
-              <li className="product-details__info-item">
-                <div className="product-details__info-title">Resolution</div>
-                <div className="product-details__info-value">
-                  {productDetails?.resolution}
+              </div>
+
+              <div className="product-details__actions">
+                <div className="product-details__button">
+                  {product && (
+                    <ButtonCart
+                      product={product}
+                    />
+                  )}
                 </div>
-              </li>
-              <li className="product-details__info-item">
-                <div className="product-details__info-title">Processor</div>
-                <div className="product-details__info-value">
-                  {productDetails?.processor}
+                <div className="product-details__fav">
+                  {product && (
+                    <ButtonFav
+                      product={product}
+                    />
+                  )}
+
                 </div>
-              </li>
-              <li className="product-details__info-item">
-                <div className="product-details__info-title">RAM</div>
-                <div className="product-details__info-value">
-                  {productDetails?.ram}
-                </div>
-              </li>
-            </ul>
+              </div>
+
+              <ul className="product-details__info">
+                <li className="product-details__info-item">
+                  <div className="product-details__info-title">Screen</div>
+                  <div className="product-details__info-value">
+                    {productDetails?.screen}
+                  </div>
+                </li>
+                <li className="product-details__info-item">
+                  <div className="product-details__info-title">Resolution</div>
+                  <div className="product-details__info-value">
+                    {productDetails?.resolution}
+                  </div>
+                </li>
+                <li className="product-details__info-item">
+                  <div className="product-details__info-title">Processor</div>
+                  <div className="product-details__info-value">
+                    {productDetails?.processor}
+                  </div>
+                </li>
+                <li className="product-details__info-item">
+                  <div className="product-details__info-title">RAM</div>
+                  <div className="product-details__info-value">
+                    {productDetails?.ram}
+                  </div>
+                </li>
+              </ul>
+            </div>
           </div>
-        </div>
-      )}
 
-      <div className="product-details__additional-info">
-        {productDetails && (
-          <ProductInfo
-            details={productDetails}
+          <div className="product-details__additional-info">
+            {productDetails && (
+              <ProductInfo
+                details={productDetails}
+              />
+            )}
+          </div>
+
+          <ProductsSlider
+            title={ProductSection.RandomProducts}
+            products={products}
           />
-        )}
-      </div>
-
-      <ProductsSlider
-        title={ProductSection.RandomProducts}
-        products={products}
-      />
+        </>
+      )}
     </section>
   );
 };

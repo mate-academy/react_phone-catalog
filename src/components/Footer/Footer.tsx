@@ -1,3 +1,4 @@
+import './Footer.scss';
 import { Link } from 'react-router-dom';
 import arrowUp from '../../images/Icons/arrow_up--dark.svg';
 

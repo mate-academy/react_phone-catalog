@@ -1,21 +1,13 @@
-// /* eslint-disable max-len */
 import { Link, useLocation } from 'react-router-dom';
-// import { BreadcrumbsType } from '../../types/Breadcrumbs';
 import './Breadcrumbs.scss';
 import classNames from 'classnames';
-
 import home from '../../images/Icons/Home.svg';
 import arrowRight from '../../images/Icons/button_arrow_right.svg';
 import { getCorrectTitle } from '../../helpers/getCorrectTitle';
 
-// type Props = {
-//   breadcrumbs: BreadcrumbsType[]
-// };
-
 export const Breadcrumbs = () => {
   const location = useLocation();
   const { pathname } = location;
-
   const pastnameSegments = pathname.split('/')
     .filter(segment => segment !== '');
 

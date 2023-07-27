@@ -1,15 +1,14 @@
-@import "../../variables.scss";
+@import "../../helpers/styles/variables.scss";
 
 .cart-item {
   display: flex;
+  align-items: center;
   margin-bottom: 16px;
   padding: 24px;
-  // justify-content: center;
-  align-items: center;
   width: 100%;
-  // height: 128px;
 
-  border: 1px solid #e2e6e9;
+  border: 1px solid $grey-elements;
+
   transition: all 0.3s;
 
   &:hover {
@@ -27,11 +26,11 @@
 
   &__img-box {
     display: flex;
+    justify-content: center;
+    align-items: center;
     margin-right: 24px;
     width: 80px;
     height: 80px;
-    justify-content: center;
-    align-items: center;
   }
 
   &__img {
@@ -49,6 +48,7 @@
   &__price {
     display: flex;
     align-items: center;
+
     font-family: $font-bold;
     font-size: 22px;
     line-height: 140%;
@@ -72,12 +72,13 @@
     margin: 0;
     width: 32px;
     height: 32px;
-    border: 1px solid #b4bdc3;
+
+    border: 1px solid $grey-icons;
 
     transition: border-color 0.3s;
 
     &:not(.cart-item__button-decrease--disabled):hover {
-      border-color: #313237;
+      border-color: $grey-primary-color;
     }
   }
 
@@ -97,6 +98,5 @@
   &__amount {
     display: flex;
     justify-content: space-between;
-    // width: 100%;
   }
 }

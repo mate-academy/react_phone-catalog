@@ -1,15 +1,16 @@
+@import "../../helpers/styles/variables.scss";
+
 .product-list {
 
   &__items {
-    display: flex;
     width: 1136px;
+    display: flex;
     flex-wrap: wrap;
     margin-bottom: 40px;
   }
 
   &__item {
     display: block;
-    // gap: 16px;
     margin-right: 16px;
     margin-bottom: 16px;
 
@@ -20,7 +21,7 @@
 
   &__drop-downs {
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     margin-bottom: 24px;
   }
 

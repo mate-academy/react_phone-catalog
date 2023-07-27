@@ -2,21 +2,18 @@ import './ProductColor.scss';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import { getCorrectColor } from '../../helpers/getCorrectColor';
-// import { getColorLink } from '../../helpers/getColorLink';
 import { getCorrectProductLink } from '../../helpers/getCorrectLink';
 import { ProductDetails } from '../../types/ProductDetails';
 
 type Props = {
   productDetails: ProductDetails,
   colors: string[],
-  // productId: string,
   currentColor: string,
 };
 
 export const ProductColor: React.FC<Props> = ({
   productDetails,
   colors,
-  // productId,
   currentColor,
 }) => {
   return (
@@ -32,11 +29,9 @@ export const ProductColor: React.FC<Props> = ({
             <Link
               to={`../${getCorrectProductLink(productDetails, color)}`}
               key={color}
-              // className="product-details__color-link"
               className={classNames('product-colors__link', {
                 'product-colors__link--active': isActive,
               })}
-
             >
               <div
                 className="product-colors__color"

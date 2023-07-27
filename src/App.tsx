@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import {
   Routes, Route, Navigate,
 } from 'react-router-dom';
@@ -10,7 +9,8 @@ import { PhonesPage } from './pages/PhonesPage/PhonesPage';
 import { TabletsPage } from './pages/TabletsPage/TabletsPage';
 import { PageNotFound } from './pages/PageNotFound/PageNotFound';
 import { AccessorysPage } from './pages/AccessorysPage/AccessorysPage';
-import { ProductDetailsPage } from './pages/ProductDetailsPage/ProductDetailsPage';
+import { ProductDetailsPage } from
+  './pages/ProductDetailsPage/ProductDetailsPage';
 import { CartPage } from './pages/CartPage/CartPage';
 import { FavouritesPage } from './pages/FavouritesPage/FavouritesPage';
 
@@ -19,8 +19,8 @@ const App = () => (
     <div className="App__header">
       <Header />
     </div>
-    <section className="main-section">
-      <div className="main-section__content">
+    <section className="App__main-section">
+      <div className="Appn__content">
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="home" element={<Navigate to="/" replace />} />

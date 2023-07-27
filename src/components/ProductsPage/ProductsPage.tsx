@@ -1,3 +1,4 @@
+import './ProductsPage.scss';
 import { ProductsList } from '../ProductsList/ProductsList';
 import { Loader } from '../Loader';
 import { Product } from '../../types/Product';
@@ -21,13 +22,10 @@ export const ProductsPage: React.FC<Props> = ({
 }) => {
   return (
     <section className="products-page">
-
       <div className="products-page__nav">
         <Breadcrumbs />
       </div>
-
       <div className="products-page__content">
-
         {isLoading && !isError ? (
           <Loader />
         ) : (
@@ -37,9 +35,7 @@ export const ProductsPage: React.FC<Props> = ({
                 <h1 className="products-page__title">
                   {title}
                 </h1>
-                <p className="products-page__quantity-info">
-                  {`${products.length} models`}
-                </p>
+
                 {!isLoading && !isError && (
                   <ProductsList
                     isLoading={isLoading}
@@ -53,7 +49,6 @@ export const ProductsPage: React.FC<Props> = ({
             )}
           </>
         )}
-
       </div>
     </section>
   );
