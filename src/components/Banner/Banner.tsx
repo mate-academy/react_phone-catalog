@@ -2,13 +2,22 @@
 import './Banner.scss';
 import classNames from 'classnames';
 import { useEffect, useState } from 'react';
+import bannerImg1 from '../../images/img/banner-phones.png';
+import bannerImg2 from '../../images/img/banner-accessories.png';
+import bannerImg3 from '../../images/img/banner-tablets.png';
 
 export const Banner = () => {
   const [position, setPosition] = useState(0);
+  // const bannerImgs = [
+  //   './_new/img/banner-phones.png',
+  //   './_new/img/banner-accessories.png',
+  //   './_new/img/banner-tablets.png',
+  // ];
+
   const bannerImgs = [
-    '/_new/img/banner-phones.png',
-    '/_new/img/banner-accessories.png',
-    '/_new/img/banner-tablets.png',
+    bannerImg1,
+    bannerImg2,
+    bannerImg3,
   ];
 
   const imgWidth = 1040;
