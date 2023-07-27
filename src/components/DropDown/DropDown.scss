@@ -1,0 +1,61 @@
+.DropDown {
+  position: relative;
+
+  &__select {
+    font-family: "MontSemiBold", Helvetica, sans-serif;
+    border: 1px solid #b4bdc3;
+    width: 176px;
+    height: 40px;
+
+    font-size: 14px;
+    font-style: normal;
+    line-height: 21px;
+    padding: 10px 0 10px 12px;
+    outline: none;
+    cursor: pointer;
+
+    background-image: url("../../images/arrows/arrow-down.svg");
+    background-repeat: no-repeat;
+    background-position: calc(100% - 12px) center;
+    background-size: 16px 16px;
+    padding-right: 18px;
+
+    &--is-active {
+      background-image: url("../../images/arrows/arrow-up.svg");
+    }
+
+    &:hover {
+      border-color: #000;
+    }
+  }
+
+  &__list {
+    position: absolute;
+    list-style: none;
+    background-color: #fff;
+    border: 1px solid #b4bdc3;
+    z-index: 1;
+  }
+
+  &__item {
+    width: 175px;
+    height: 40px;
+    padding: 10px 0 10px 12px;
+    cursor: pointer;
+    font-size: 14px;
+
+    &:hover {
+      background-color: #f0f0f0;
+    }
+
+    &--selected {
+      background-color: #313237;
+      color: #fff;
+
+      &:hover {
+        background-color: #313237;
+        box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+      }
+    }
+  }
+}

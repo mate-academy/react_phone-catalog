@@ -42,15 +42,21 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         <div className="ProductCard__details">
           <div className="ProductCard__details-item">
             <div className="ProductCard__details-item__name">Screen</div>
-            <div className="ProductCard__details-item__value">{screen}</div>
+            <div className="ProductCard__details-item__value">
+              {screen || 'unknown'}
+            </div>
           </div>
           <div className="ProductCard__details-item">
             <div className="ProductCard__details-item__name">Capacity</div>
-            <div className="ProductCard__details-item__value">{capacity}</div>
+            <div className="ProductCard__details-item__value">
+              {capacity || 'unknown'}
+            </div>
           </div>
           <div className="ProductCard__details-item">
             <div className="ProductCard__details-item__name">RAM</div>
-            <div className="ProductCard__details-item__value">{ram}</div>
+            <div className="ProductCard__details-item__value">
+              {ram || 'unknown'}
+            </div>
           </div>
         </div>
 

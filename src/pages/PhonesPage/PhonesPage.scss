@@ -1,0 +1,73 @@
+.PhonesPage {
+  &__title {
+    margin-top: 40px;
+    color: #313237;
+
+    font-family: "MontBold", Helvetica, sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.32px;
+  }
+
+  &__subtitle {
+    color: #89939a;
+
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+  }
+
+  &__filters {
+    display: flex;
+    margin-top: 40px;
+    gap: 16px;
+  }
+
+  &__pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    gap: 8px;
+  }
+
+  &__button {
+    border: 1px solid #e2e6e9;
+    background: none;
+    height: 32px;
+    width: 32px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &-prev {
+      margin-right: 8px;
+    }
+
+    &-next {
+      margin-left: 8px;
+    }
+  }
+
+  &__label {
+    color: #89939a;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+}
+
+.active {
+  background-color: #313237;
+  color: #fff;
+}
+
+.ProductsList {
+  display: flex;
+  gap: 16px;
+  margin-top: 24px;
+
+  flex-wrap: wrap;
+}
