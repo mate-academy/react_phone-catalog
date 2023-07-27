@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import classNames from 'classnames';
 import { Product } from '../../types/Product';
 import { sortProducts } from '../../helpers/sortHelper';
 import { Dropdown } from '../Dropdown/Dropdown';
@@ -96,6 +97,19 @@ export const ProductList: React.FC<Props> = ({
                     options={itemsOptions}
                     startValue={startItemsValue}
                     searchParamsKey="itemsOnPage"
+                  />
+                </div>
+              )}
+              {isPaginationBarShown && (
+                <div className={classNames(
+                  'product-list__pagination',
+                  'product-list__pagination_top',
+                )}
+                >
+                  <Pagination
+                    total={sortedProducts.length}
+                    itemsOnPage={itemsOnPage}
+                    currentPage={page}
                   />
                 </div>
               )}

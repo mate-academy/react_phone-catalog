@@ -16,7 +16,7 @@
   }
 
   &__logo {
-    background: center/contain no-repeat url("https://i.gstatvb.com/c389a77ca305ee5d9f0ee6f87f74fcfb1688922827.rng.png");
+    background: center/contain no-repeat url($logo);
     height: 24px;
     width: 40px;
     margin: 0 64px 0 8px;

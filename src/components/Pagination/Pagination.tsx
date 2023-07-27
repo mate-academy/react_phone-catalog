@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import classNames from 'classnames';
 import { getSearchWith } from '../../helpers/searchHelper';
@@ -10,6 +10,8 @@ export type Props = {
   currentPage: number,
 };
 
+const DEFAULT_VISIBLE_PAGES = 4;
+
 export const Pagination: React.FC<Props> = ({
   total,
   itemsOnPage,
@@ -17,8 +19,28 @@ export const Pagination: React.FC<Props> = ({
 }) => {
   const [searchParams, setSearchParams] = useSearchParams('');
   const lastPage = Math.ceil(total / itemsOnPage);
-  const numberOfPages = new Array(lastPage)
-    .fill(1).map((_, index) => (index + 1));
+  const [visiblePages, setVisiblePages] = useState<number[]>([]);
+
+  useEffect(() => {
+    const adjacentPages = Math.round(DEFAULT_VISIBLE_PAGES / 2);
+    let startPage = Math.max(1, currentPage - adjacentPages);
+    let endPage = Math.min(lastPage, currentPage + adjacentPages);
+
+    while (endPage - startPage < DEFAULT_VISIBLE_PAGES) {
+      if (startPage > 1) {
+        startPage -= 1;
+      } else if (endPage < lastPage) {
+        endPage += 1;
+      } else {
+        break;
+      }
+    }
+
+    const numberOfPages = [...Array(endPage - startPage + 1)]
+      .map((_, index) => startPage + index);
+
+    setVisiblePages(numberOfPages);
+  }, [currentPage, lastPage]);
 
   useEffect(() => {
     if (currentPage > lastPage) {
@@ -46,7 +68,7 @@ export const Pagination: React.FC<Props> = ({
       />
 
       <ul className="pagination__list">
-        {numberOfPages.map(pageNumber => (
+        {visiblePages.map(pageNumber => (
           <li key={pageNumber} className="pagination__item">
             <Link
               to={{

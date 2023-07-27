@@ -83,6 +83,39 @@
   }
 };
 
+@mixin button-more-less($width: 32px, $height: 32px) {
+  @include button-transparent;
+  height: 32px;
+
+  &:before {
+    width: unset;
+    height: unset;
+    font-family: inherit;
+    font-size: 14px;
+    color: $main-gray-color;
+  }
+
+  &.disabled::before {
+    color: $light-gray-color;
+  }
+
+  &_prev {
+    margin-right: 16px;
+
+    &::before {
+      content: "-";
+    }
+  }
+
+  &_next::before {
+    content: "+";
+  }
+
+  &.disabled {
+    pointer-events: none;
+  }
+};
+
 @mixin button-header {
   height: 64px;
   width: 64px;

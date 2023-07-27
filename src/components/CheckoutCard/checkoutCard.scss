@@ -54,7 +54,12 @@
   }
 
   &__button {
-    @include button-arrows;
+    @include button-more-less;
+
+    &_prev {
+      content: "+";
+
+    }
   }
 
   &__count {

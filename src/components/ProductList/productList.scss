@@ -28,6 +28,10 @@
 
   &__pagination {
     margin-top: 24px;
+
+    &_top {
+      display: none;
+    }
   }
 }
 
@@ -39,6 +43,10 @@
       flex-direction: column;
     }
 
+    &__container {
+      flex-direction: column;
+    }
+
     &__dropdowns {
       flex-direction: column;
       margin: 0 auto;
@@ -47,6 +55,10 @@
         width: 176px;
         margin-top: 20px;
       }
+    }
+
+    &__pagination_top {
+      display: block;
     }
   }
 }

@@ -12,6 +12,12 @@
   grid-gap: 16px;
   gap: 16px;
 
+  // &__container {
+  //   max-width: 200px;
+  //   overflow-x: hidden;
+  //   transition: transform 0.3s ease;
+  // }
+
   &__list {
     display: flex;
     grid-gap: 8px;
