@@ -4,7 +4,8 @@ import { HeaderSearch } from './HeaderSearch';
 import HeartImage from './HeaderImage/heart.svg';
 import BasketImage from './HeaderImage/basket.svg';
 import LogoImage from './HeaderImage/LOGO.svg';
-import { useFavoriteContext } from '../../FavoriteContext';
+import { useFavoriteContext }
+  from '../../core/context/FavoriteContext/FavoriteContext';
 
 interface HeaderProps {
   searchValue: string;
@@ -21,7 +22,6 @@ export const Header = ({ searchValue, setSearchValue }: HeaderProps) => {
   const accessories = location.pathname === '/accessories';
   const basket = location.pathname === '/cart';
   const favorite = location.pathname === '/favorites';
-  // const [showSearch, setShowSearch] = useState(!isHomePage);
 
   let search = '';
 

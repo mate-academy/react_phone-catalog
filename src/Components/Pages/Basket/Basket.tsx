@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useFavoriteContext } from '../../../FavoriteContext';
+import { useFavoriteContext } from '../../../core/context/FavoriteContext/FavoriteContext';
 import products from '../../../new/products.json';
 import { NotFoundPage } from '../NotFoundPage/NotFoundPage';
 import './Basket.scss';

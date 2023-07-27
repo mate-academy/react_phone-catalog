@@ -5,7 +5,7 @@ import { Product } from '../../ProductCards/Product';
 import Plus from './BasketImage/Plus.svg';
 import Minus from './BasketImage/Minus.svg';
 import CLose from './BasketImage/Close.svg';
-import { useBasketContext } from '../../../FavoriteContext';
+import { useBasketContext } from '../../../core/context/FavoriteContext/FavoriteContext';
 
 interface ProductCardsProps {
   product: Product,

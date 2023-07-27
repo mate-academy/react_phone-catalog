@@ -1,7 +1,7 @@
 import { Route, Routes, useLocation } from 'react-router-dom';
 import './App.scss';
 import { useEffect } from 'react';
-import { FavoriteContextProvider } from './FavoriteContext';
+import { FavoriteContextProvider } from './core/context/FavoriteContext/FavoriteContext';
 import { HomePage } from './Components/Pages/HomePage';
 import { Header } from './Components/Header';
 import { NotFoundPage } from './Components/Pages/NotFoundPage';

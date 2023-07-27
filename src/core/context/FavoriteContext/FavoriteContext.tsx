@@ -2,27 +2,31 @@ import React, {
   createContext, useContext, useEffect, useState,
 } from 'react';
 
-interface FavoriteContextValue {
-  basket: { id: string; price: number; quantity: number }[];
-  favorites: string[];
-  addToFavorites: (productId: string) => void;
-  removeFromFavorites: (productId: string) => void;
-  addToBasket: (productId: string) => void;
-  removeFromBasket: (productId: string) => void;
-  removeFromAllB: (productId: string) => void;
-  favoritesLength: number;
-  basketLength: number;
-}
+import { FavoriteContextValue } from './types';
 
-const FavoriteContext = createContext<FavoriteContextValue
-| undefined>(undefined);
+const noop = () => {
+  //
+};
+
+const FavoriteContext = createContext<FavoriteContextValue>({
+  basket: [],
+  favorites: [],
+  addToBasket: noop,
+  addToFavorites: noop,
+  removeFromFavorites: noop,
+  removeFromBasket: noop,
+  removeFromAllB: noop,
+  favoritesLength: 0,
+  basketLength: 0,
+});
 
 export const useFavoriteContext = () => {
   const context = useContext(FavoriteContext);
 
   if (!context) {
-    throw new Error(`useFavoriteContext must be used within 
-    a FavoriteContextProvider`);
+    throw new Error(
+      'useFavoriteContext must be used within a FavoriteContextProvider',
+    );
   }
 
   return context;
@@ -32,8 +36,9 @@ export const useBasketContext = () => {
   const context = useContext(FavoriteContext);
 
   if (!context) {
-    throw new Error(`useBasketContext must be used 
-    within a FavoriteContextProvider`);
+    throw new Error(
+      'useBasketContext must be used within a FavoriteContextProvider',
+    );
   }
 
   return context;
@@ -42,7 +47,7 @@ export const useBasketContext = () => {
 export const FavoriteContextProvider: React.FC = ({ children }) => {
   const [favorites, setFavorites] = useState<string[]>([]);
   const [basket, setBasket] = useState<
-  { id: string; price: number; quantity: number }[]>([]);
+  FavoriteContextValue['basket']>([]);
 
   const addToFavorites = (productId: string) => {
     setFavorites((prevFavorites) => [...prevFavorites, productId]);

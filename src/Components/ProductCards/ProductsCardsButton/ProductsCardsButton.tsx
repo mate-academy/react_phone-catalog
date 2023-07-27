@@ -1,4 +1,4 @@
-import { useFavoriteContext } from '../../../FavoriteContext';
+import { useFavoriteContext } from '../../../core/context/FavoriteContext/FavoriteContext';
 import { Product } from '../Product';
 import './ProductsCardsButton.scss';
 

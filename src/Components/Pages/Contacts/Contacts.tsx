@@ -8,7 +8,6 @@ import github from './ContactsImage/github.svg';
 import gmail from './ContactsImage/gmail.svg';
 import Linkdn from './ContactsImage/Linkdn.svg';
 import phone from './ContactsImage/phone.svg';
-import slack from './ContactsImage/slack.svg';
 import telegram from './ContactsImage/telegram.svg';
 import instagram from './ContactsImage/instagram.svg';
 
@@ -38,11 +37,6 @@ const contactData = [
     image: phone,
     text: '+380 999 580 209',
     linkImage: 'tel:+380999580209',
-  },
-  {
-    image: slack,
-    text: 'Nazar Medushevskyi',
-    linkImage: 'https://github.com/nazar-medushevskyi',
   },
   {
     image: telegram,

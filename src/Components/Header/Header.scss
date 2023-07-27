@@ -201,15 +201,12 @@
   transition: .3s;
 
   &:hover {
-    height: 32px;
-    width: 48px;
     cursor: pointer;
   }
 }
 
 .color-toggle {
   background-color: blue;
-  /* Цвет по умолчанию */
   color: white;
   padding: 10px;
   border: none;
@@ -218,7 +215,6 @@
 
 .color-toggle.gray {
   background-color: gray;
-  /* Цвет при выбранном состоянии */
 }
 
 .search-input {
