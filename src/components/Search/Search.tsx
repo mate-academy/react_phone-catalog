@@ -1,28 +1,11 @@
 import { useLocation } from 'react-router-dom';
 import search from '../../Icons/search.svg';
 import cross from '../../Icons/closeBlack.svg';
-import { Phone } from '../../types/Phone';
 import './Search.scss';
+import { setQuery, setResults } from '../../features/search';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
 
-type Props = {
-  phones: Phone[],
-  searchQuery: string,
-  setSearchQuery: React.Dispatch<React.SetStateAction<string>>,
-  setSearchResults: React.Dispatch<React.SetStateAction<Phone[]>>,
-  setPhones: React.Dispatch<React.SetStateAction<Phone[]>>,
-  likedProducts: Phone[],
-  setLikedProducts: React.Dispatch<React.SetStateAction<Phone[]>>,
-};
-
-export const Search: React.FC<Props> = ({
-  phones,
-  searchQuery,
-  setSearchQuery,
-  setPhones,
-  setSearchResults,
-  likedProducts,
-  setLikedProducts,
-}) => {
+export const Search: React.FC = () => {
   const location = useLocation();
   const showSearch
     = location.pathname === '/phones'
@@ -46,32 +29,19 @@ export const Search: React.FC<Props> = ({
     searchText = 'Search in favorites...';
   }
 
+  const searchQuery = useAppSelector((state) => state.search.query);
+  const dispatch = useAppDispatch();
+
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     const query = event.target.value.trim().toLowerCase();
 
-    setSearchQuery(query);
-
-    const filteredPhones = phones.filter(
-      (phone) => phone.name.toLowerCase().includes(query),
-    );
-    const filteredLikedPhones = likedProducts.filter(
-      (phone) => phone.name.toLowerCase().includes(query),
-    );
-
-    setPhones(filteredPhones);
-    setLikedProducts(filteredLikedPhones);
+    dispatch(setQuery(query));
   };
 
   const handleClearSearch = () => {
-    setSearchQuery('');
-    setPhones(phones);
-    setLikedProducts(likedProducts);
-    setSearchResults([]);
+    dispatch(setQuery(''));
+    dispatch(setResults([]));
   };
-
-  if (!showSearch) {
-    return null;
-  }
 
   return (
     <div className="search">

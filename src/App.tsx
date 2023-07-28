@@ -16,16 +16,33 @@ import { PhoneDetails } from './pages/PhoneDetailsPage/PhoneDetails';
 import { Favourites } from './pages/FavouritesPage/Favourites';
 import { Cart } from './pages/CartPage/Cart';
 import { useLocalStorage } from './helpers/useLocalStorage';
+import { useAppSelector } from './app/hooks';
+
+const visiblePhones = (query: string, phones: Phone[]) => {
+  const formattedQuery = query.trim().toLowerCase();
+
+  return phones.filter(
+    phone => phone.name.toLowerCase().includes(formattedQuery),
+  );
+};
+
+const visibleLikedPhones = (query: string, phones: Phone[]) => {
+  const formattedQuery = query.trim().toLowerCase();
+
+  return phones.filter(
+    phone => phone.name.toLowerCase().includes(formattedQuery),
+  );
+};
 
 const App = () => {
   const [phones, setPhones] = useState<Phone[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [searchResults, setSearchResults] = useState(phones);
-  const [searchQuery, setSearchQuery] = useState('');
   const [likedProducts, setLikedProducts] = useLocalStorage(
     [], 'likedProducts',
   );
   const [cartProducts, setCartProducts] = useLocalStorage([], 'cartItems');
+
+  const searchQuery = useAppSelector((state) => state.search.query);
 
   const loadProducts = async () => {
     setIsLoading(true);
@@ -47,17 +64,14 @@ const App = () => {
     localStorage.setItem('cartItems', JSON.stringify(cartProducts));
   }, [cartProducts]);
 
+  const visiblePhonesItems = visiblePhones(searchQuery, phones);
+  const visibleLikedItems = visibleLikedPhones(searchQuery, likedProducts);
+
   return (
     <div className="page">
       <HeadNavigation
-        phones={phones}
-        searchQuery={searchQuery}
-        setSearchQuery={setSearchQuery}
-        setSearchResults={setSearchResults}
-        setPhones={setPhones}
         likedProducts={likedProducts}
         cartProducts={cartProducts}
-        setLikedProducts={setLikedProducts}
       />
 
       {(isLoading) ? <Loader /> : (
@@ -88,10 +102,8 @@ const App = () => {
                   index
                   element={(
                     <PhonesPage
-                      phones={phones}
+                      phones={visiblePhonesItems}
                       setPhones={setPhones}
-                      searchResults={searchResults}
-                      searchQuery={searchQuery}
                       likedProducts={likedProducts}
                       setLikedProducts={setLikedProducts}
                       cartProducts={cartProducts}
@@ -134,7 +146,7 @@ const App = () => {
                   index
                   element={(
                     <Favourites
-                      likedProducts={likedProducts}
+                      likedProducts={visibleLikedItems}
                       setLikedProducts={setLikedProducts}
                       cartProducts={cartProducts}
                       setCartProducts={setCartProducts}

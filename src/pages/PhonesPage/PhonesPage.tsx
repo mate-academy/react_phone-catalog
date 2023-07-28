@@ -11,8 +11,6 @@ import { NoResults } from '../NoResultsPage/NoResults';
 type Props = {
   phones: Phone[],
   setPhones: React.Dispatch<React.SetStateAction<Phone[]>>,
-  searchResults: Phone[],
-  searchQuery: string,
   setLikedProducts: React.Dispatch<React.SetStateAction<Phone[]>>,
   likedProducts: Phone[],
   cartProducts: CartItem[],
@@ -56,8 +54,6 @@ const getSortedPhones = (
 export const PhonesPage: React.FC<Props> = ({
   phones,
   setPhones,
-  searchResults,
-  searchQuery,
   likedProducts,
   setLikedProducts,
   cartProducts,
@@ -71,12 +67,12 @@ export const PhonesPage: React.FC<Props> = ({
     phones, sortOption, currentPage, itemsPerPage,
   );
 
-  const noResult = searchResults.length === 0;
+  // const noResult = searchResults.length === 0;
 
   return (
     <>
       <div className="phones-page">
-        {(noResult && searchQuery.length > 1000) ? <NoResults />
+        {!phones.length ? <NoResults />
           : (
             <>
               <MainNavigation />

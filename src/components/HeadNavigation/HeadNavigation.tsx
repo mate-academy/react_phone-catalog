@@ -9,25 +9,13 @@ import { Phone } from '../../types/Phone';
 import { CartItem } from '../../types/CartItem';
 
 type Props = {
-  phones: Phone[],
-  searchQuery: string,
-  setSearchQuery: React.Dispatch<React.SetStateAction<string>>,
-  setSearchResults: React.Dispatch<React.SetStateAction<Phone[]>>,
-  setPhones: React.Dispatch<React.SetStateAction<Phone[]>>,
   likedProducts: Phone[],
-  setLikedProducts: React.Dispatch<React.SetStateAction<Phone[]>>,
   cartProducts: CartItem[],
 };
 
 export const HeadNavigation: React.FC<Props> = ({
-  phones,
-  setSearchResults,
-  setPhones,
-  searchQuery,
-  setSearchQuery,
   likedProducts,
   cartProducts,
-  setLikedProducts,
 }) => {
   return (
     <div className="head-navigation">
@@ -74,15 +62,7 @@ export const HeadNavigation: React.FC<Props> = ({
       </div>
 
       <div className="head-navigation__left">
-        <Search
-          phones={phones}
-          searchQuery={searchQuery}
-          setSearchQuery={setSearchQuery}
-          setSearchResults={setSearchResults}
-          setPhones={setPhones}
-          likedProducts={likedProducts}
-          setLikedProducts={setLikedProducts}
-        />
+        <Search />
 
         <div className="elements-border">
           <NavLink

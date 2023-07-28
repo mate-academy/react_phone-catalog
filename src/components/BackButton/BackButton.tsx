@@ -14,7 +14,7 @@ export const BackButton = () => {
         className="back-btn__text"
         onClick={handleGoBack}
       >
-        {'Back'}
+        Back
       </button>
     </div>
   );
