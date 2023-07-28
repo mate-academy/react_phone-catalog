@@ -1,0 +1,80 @@
+@import "./utils/utils.scss";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "Mont", sans-serif;
+  @extend %body-text;
+  color: $color-primary;
+  scroll-behavior: smooth;
+}
+
+.body--with-menu {
+  overflow: hidden;
+
+  @include onTablet {
+    overflow: initial;
+  }
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+
+  min-height: calc(100vh - 200px);
+
+  max-width: 320px;
+  margin: 0 auto;
+  padding: 0 20px;
+
+  @include onTablet {
+    max-width: 700px;
+  }
+
+  @include onDesktop {
+    max-width: 1170px;
+  }
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  display: inline-flex;
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  display: inline-flex;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+input {
+  display: block;
+  border: none;
+  color: inherit;
+  font-family: inherit;
+  font-weight: inherit;
+
+  &:focus {
+    outline: none;
+  }
+
+  &::placeholder {
+    color: inherit;
+    font-family: inherit;
+    font-weight: inherit;
+  }
+}
