@@ -1,4 +1,4 @@
-export interface ProductDetails{
+export interface ProdDetails{
   additionalFeatures: string;
   android: { os: string, ui: string };
   availability: string[];

@@ -24,20 +24,51 @@
   // }
 
   &__item {
-    // @for $start from 1 through 2 {
-    //   @for $end from $start through 2 {
-    //     &--#{$start}-#{$end} {
-    //       grid-column: #{$start} / #{$end + 1};
-    //     }
-    //   }
-    // }
+    @for $start from 1 through 2 {
+      @for $end from $start through 2 {
+        &--#{$start}-#{$end} {
+          grid-column: #{$start} / #{$end + 1};
+        }
+      }
+    }
 
-    // @for $start from 1 through 6 {
-    //   @for $end from $start through 6 {
+    @for $start from 1 through 12 {
+      @for $end from $start through 12 {
+        &--#{$start}-#{$end} {
+          grid-column: #{$start} / #{$end + 1};
+        }
+      }
+    }
+
+    @for $start from 3 through 12 {
+      @for $end from $start through 12 {
+        &--#{$start}-#{$end} {
+          grid-column: #{$start} / #{$end + 1};
+        }
+      }
+    }
+
+    @for $start from 14 through 20 {
+      @for $end from $start through 20 {
+        &--#{$start}-#{$end} {
+          grid-column: #{$start} / #{$end + 1};
+        }
+      }
+    }
+
+    @for $start from 14 through 24 {
+      @for $end from $start through 24 {
+        &--#{$start}-#{$end} {
+          grid-column: #{$start} / #{$end + 1};
+        }
+      }
+    }
+    // @for $start from 3 through 12 {
+    //   @for $end from $start through 12 {
     //     &--tablet-#{$start}-#{$end} {
-    //       @include onTablet {
-    //         grid-column: #{$start} / #{$end + 1};
-    //       }
+    //       // @include onTablet {
+    //       grid-column: #{$start} / #{$end + 1};
+    //       // }
     //     }
     //   }
     // }

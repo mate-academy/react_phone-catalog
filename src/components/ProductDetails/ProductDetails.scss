@@ -1,0 +1,139 @@
+@import "../../styles/utils/extends";
+@import "../../styles/utils/variables";
+
+.product-details {
+
+  &__top {
+    margin-bottom: 80px !important;
+  }
+
+  &__title {
+    @extend %h1;
+
+    margin-top: 0;
+    margin-bottom: 40px;
+  }
+
+  &__image-button {
+    margin-bottom: 16px;
+    width: 80px;
+    height: 80px;
+    border: 1px solid $elements-color;
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    cursor: pointer;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &--selected {
+      border-color: $primary-color;
+    }
+  }
+
+  &__image-main {
+    padding: 11px;
+    width: 464px;
+    height: 464px;
+    box-sizing: border-box;
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-origin: content-box;
+  }
+
+  &__price-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  &__price {
+    @extend %h1;
+
+    margin-right: 8px;
+
+    &--crossed-out {
+      @extend %h2;
+
+      position: relative;
+
+      font-family: "Mont", sans-serif;
+      color: $secondary-color;
+
+      &::after {
+        content: "";
+
+        position: absolute;
+        bottom: 55%;
+        left: 0;
+
+        height: 2px;
+        width: 100%;
+
+        background-color: $secondary-color;
+      }
+    }
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 32px;
+  }
+
+  &__add-to-cart {
+    width: 100%;
+  }
+
+  &__spec {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 16px;
+  }
+
+  &__spec-list {
+    @extend %small-text;
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+
+    &--detailed {
+      // @extend %body-text;
+
+      font-family: "Mont", sans-serif;
+      font-size: 14px;
+      line-height: 21px;
+    }
+  }
+
+  &__spec-name {
+    margin-bottom: 8px;
+    color: $secondary-color;
+  }
+
+  &__spec-value {
+    margin-bottom: 8px;
+    text-align: right;
+  }
+
+  &__subtitle {
+    @extend %h2;
+
+    margin: 0 0  32px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid $elements-color;
+  }
+
+  &__description {
+    @extend %body-text;
+
+    color: $secondary-color;
+  }
+}

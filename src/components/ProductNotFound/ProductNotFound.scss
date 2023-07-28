@@ -1,0 +1,15 @@
+@import "../../styles/utils/extends";
+
+.product-not-found {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+
+  &__title {
+    margin: 0 0 40px;
+
+    @extend %h1;
+  }
+}

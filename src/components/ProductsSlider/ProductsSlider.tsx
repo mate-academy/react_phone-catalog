@@ -45,7 +45,7 @@ export const ProductsSlider: FC<Props> = ({
           </button>
         </div>
       </div>
-      <div className="slider__grid">
+      <div className="slider__content">
         <ul className="grid" data-cy="cardsContainer">
           {products.slice(start, end).map((product, index) => (
             <ProductCard product={product} key={product.id} index={index} />

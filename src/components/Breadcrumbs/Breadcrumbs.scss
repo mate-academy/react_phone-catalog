@@ -16,12 +16,18 @@
   &__page-name {
     @extend  %small-text;
 
+    margin-right: 10px;
     height: 16px;
     line-height: 19px;
-    
+
     text-transform: capitalize;
-    pointer-events: none;
     text-decoration: none;
-    color: $secondary-color;
+    pointer-events: auto;
+    color: $primary-color;
+
+    &:last-child {
+      pointer-events: none;
+      color: $secondary-color;
+    }
   }
 }

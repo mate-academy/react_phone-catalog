@@ -4,7 +4,8 @@ import { editProductName } from '../../helpers/editProductName';
 import './Breadcrumbs.scss';
 
 export const Breadcrumbs: FC = () => {
-  const location = useLocation().pathname.slice(1).split('/');
+  const location = useLocation().pathname;
+  const breadcrumbsArr = location.slice(1).split('/');
 
   return (
     <div className="breadcrumbs" data-cy="breadCrumbs">
@@ -12,7 +13,7 @@ export const Breadcrumbs: FC = () => {
         <img src="icons/home.svg" alt="link to home page" />
       </Link>
 
-      {location.map(value => (
+      {breadcrumbsArr.map(value => (
         <NavLink className="breadcrumbs__page-name" key={value} to={`/${value}`}>
           <img
             className="breadcrumbs__arrow"

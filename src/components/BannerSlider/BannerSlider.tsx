@@ -57,7 +57,7 @@ export const BannerSlider = () => {
           className="banner-slider__button banner-slider__prev-button"
           onClick={handleGoPrevious}
         >
-          <img src="icons/leftArrow.svg" alt="previous banner" />
+          <img src="../icons/leftArrow.svg" alt="previous banner" />
         </button>
         <button
           type="button"

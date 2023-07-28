@@ -8,7 +8,7 @@ import {
 import { Header } from './components/Header';
 import { HomePage } from './pages/HomePage/HomePage';
 import { Footer } from './components/Footer';
-import { NotFound } from './pages/NotFound';
+import { NotFoundPage } from './pages/NotFoundPage';
 import { PhonesPage } from './pages/PhonesPage';
 import { TabletsPage } from './pages/TabletsPage';
 import { AccessoriesPage } from './pages/AccessoriesPage';
@@ -16,6 +16,8 @@ import { getProducts } from './helpers/fetchClient';
 import { Product } from './types/Product';
 import { Loader } from './components/Loader/Loader';
 import { FavouritesPage } from './pages/FavouritesPage/FavouritesPage';
+import { ProductDetailsPage } from './pages/ProductDetailsPage';
+
 // import { useLocalStorage } from './hooks/useLocalStorage';
 
 export const App: React.FC = () => {
@@ -65,18 +67,30 @@ export const App: React.FC = () => {
                 element={<PhonesPage products={products} />}
               />
               <Route
+                path="phones/:productId"
+                element={<ProductDetailsPage products={products} />}
+              />
+              <Route
                 path="tablets"
                 element={<TabletsPage products={products} />}
+              />
+              <Route
+                path="tablets/:productId"
+                element={<ProductDetailsPage products={products} />}
               />
               <Route
                 path="accessories"
                 element={<AccessoriesPage products={products} />}
               />
               <Route
+                path="accessories/:ProductId"
+                element={<ProductDetailsPage products={products} />}
+              />
+              <Route
                 path="favourites"
                 element={<FavouritesPage products={products} />}
               />
-              <Route path="*" element={<NotFound />} />
+              <Route path="*" element={<NotFoundPage />} />
               <Route path="home" element={<Navigate to="/" replace />} />
             </Routes>
           </div>

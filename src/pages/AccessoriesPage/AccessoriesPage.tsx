@@ -1,7 +1,9 @@
 import { FC } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { Product } from '../../types/Product';
 import { ProductsList } from '../../components/ProductsList';
 import { getAccessories } from '../../helpers/getAccessories';
+import { Search } from '../../components/Search';
 
 type Props = {
   products: Product[],
@@ -9,8 +11,16 @@ type Props = {
 
 export const AccessoriesPage: FC<Props> = ({ products }) => {
   const accessories = getAccessories(products);
+  const [searchParams] = useSearchParams();
+  const query = searchParams.get('query') || '';
 
   return (
-    <ProductsList products={accessories} title="Accessories" />
+    <>
+      {query ? (
+        <Search products={accessories} title="Search" />
+      ) : (
+        <ProductsList products={accessories} title="Accessories" />
+      )}
+    </>
   );
 };

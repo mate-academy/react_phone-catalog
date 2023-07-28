@@ -2,7 +2,7 @@
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { Product } from '../../types/Product';
-
+import { getProductPath } from '../../helpers/getProductPath';
 import './ProductCard.scss';
 
 type Props = {
@@ -31,11 +31,37 @@ export const ProductCard: FC<Props> = ({ product, index }) => {
     ram,
   } = product;
 
+  // console.log(getProductPath(product));
+
+  // const generateSlugForProduct = (
+  //   { type1, id1 }: Pick<Product, 'type1' | 'id1'>,
+  // ) => {
+  //   let directory: string;
+
+  //   switch (type1) {
+  //     case 'phone':
+  //       directory = 'phones';
+  //       break;
+  //     case 'tablet':
+  //       directory = 'tablets';
+  //       break;
+  //     case 'accessory':
+  //       directory = 'accessories';
+  //       break;
+  //     default:
+  //       return '/';
+  //   }
+
+  //   return `/${directory}/${id1}`;
+  // };
+
+  // const slug = generateSlugForProduct({ type, id });
+  // const { pathname } = useLocation();
   const discountPrice = Math.round(price * (1 - 0.01 * discount));
 
   return (
     <div className={`product-card grid__item grid__item--desktop-${getGridColumn(index)}`}>
-      <Link to="/" className="product-card__link">
+      <Link to={`/${getProductPath(product)}`} className="product-card__link">
         <div className="product-card__image-container">
           <img
             className="product-card__image"
@@ -76,12 +102,14 @@ export const ProductCard: FC<Props> = ({ product, index }) => {
         >
           Add to cart
         </button>
-        <button
-          type="button"
-          className="product-card__add-to-favourites square-button square-button--big"
-        >
-          <img src="icons/favourites.svg" alt="next button" />
-        </button>
+        <div className="product-card__button-container">
+          <button
+            type="button"
+            className="product-card__add-to-favourites square-button square-button--medium"
+          >
+            <img src="icons/favourites.svg" alt="next button" />
+          </button>
+        </div>
       </div>
     </div>
   );

@@ -2,6 +2,13 @@ import { FC } from 'react';
 import './Footer.scss';
 
 export const Footer: FC = () => {
+  const handleBackToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
   return (
     <footer className="footer">
       <div className="footer__container">
@@ -24,7 +31,11 @@ export const Footer: FC = () => {
             Rights
           </a>
         </nav>
-        <button type="button" className="footer__button square-button">
+        <button
+          type="button"
+          className="footer__button square-button"
+          onClick={handleBackToTop}
+        >
           <img
             src="icons/topArrow.svg"
             className="footer__top"

@@ -4,6 +4,7 @@
 .rectangular-button {
   @extend %button-text;
 
+  // width: 100%;
   border: 0;
 
   color: $white-color;
