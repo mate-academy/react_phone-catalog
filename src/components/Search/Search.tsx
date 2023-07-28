@@ -6,6 +6,9 @@ import { setQuery, setResults } from '../../features/search';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 
 export const Search: React.FC = () => {
+  const searchQuery = useAppSelector((state) => state.search.query);
+  const dispatch = useAppDispatch();
+  
   const location = useLocation();
   const showSearch
     = location.pathname === '/phones'
@@ -28,9 +31,6 @@ export const Search: React.FC = () => {
   } else if (location.pathname === '/favourites') {
     searchText = 'Search in favorites...';
   }
-
-  const searchQuery = useAppSelector((state) => state.search.query);
-  const dispatch = useAppDispatch();
 
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     const query = event.target.value.trim().toLowerCase();
