@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
-import './secondNavBar.scss';
+import './breadCrumbs.scss';
 
-export const SecondNavBar: React.FC = () => {
+export const BreadCrumbs: React.FC = () => {
   const breadcrumbs = useLocation().pathname.split('/')
     .filter(item => item !== '');
 

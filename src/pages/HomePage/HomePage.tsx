@@ -1,11 +1,11 @@
 import React from 'react';
 import { CategoriesList } from '../../components/CategoriesList/CategoriesList';
-import { Carousel } from '../../components/Carousel/Carousel';
 import { Product } from '../../types/Product';
 import { SortType } from '../../types/SortType';
-import './homePage.scss';
 import { SlickSlider } from '../../components/SlickSlider/SlickSlider';
 import { Loader } from '../../components/Loader/Loader';
+import { SlickCarousel } from '../../components/SlickCarousel/SlickCarousel';
+import './homePage.scss';
 
 export type Props = {
   products: Product[],
@@ -28,7 +28,7 @@ export const HomePage: React.FC<Props> = ({
         <div className="page__home">
           <section className="section">
             <h1 className="section__title">Welcome to my store!</h1>
-            <Carousel />
+            <SlickCarousel />
           </section>
           <section className="section">
             <h1 className="section__title">Hot prices</h1>

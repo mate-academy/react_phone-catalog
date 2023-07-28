@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Product } from '../../types/Product';
-import { SecondNavBar } from '../../components/SecondNavBar/SecondNavBar';
+import { BreadCrumbs } from '../../components/BreadCrumbs/BreadCrumbs';
 import { NotFound } from '../../components/NotFound/NotFound';
 import { ModelsCounter } from '../../components/ModelsCounter/ModelsCounter';
 import { ProductList } from '../../components/ProductList/ProductList';
@@ -42,7 +42,7 @@ export const CategoryPage:React.FC = () => {
 
       {!isLoading && (
         <div className={`page__${categoryName}`}>
-          <SecondNavBar />
+          <BreadCrumbs />
           <h1 className="main-title">{categoryName}</h1>
           <ModelsCounter number={productCount} />
 

@@ -1,0 +1,30 @@
+@import "../../../styles/common";
+
+.slick-carousel {
+
+  .slick-slider {
+    padding: 0;
+  }
+
+  .slick-dots li button:before {
+    font-size: 16px;
+    color: $main-gray-color;
+  }
+
+  .slick-dots li.slick-active button:before {
+    opacity: 1;
+  }
+
+  .slick-slide {
+    aspect-ratio: 2/1;
+    overflow: hidden;
+
+    img {
+      object-fit: cover;
+    }
+  }
+
+  .slick-dots {
+    bottom: -36px;
+  }
+}

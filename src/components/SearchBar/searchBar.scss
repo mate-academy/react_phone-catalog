@@ -66,6 +66,7 @@
     }
 
     &__icon {
+      top: 4px;
       display: block;
       @include button-header;
       border: none;

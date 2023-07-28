@@ -58,10 +58,12 @@ export const SlickSlider: React.FC<Props> = ({ products, sortBy }) => {
   };
 
   return (
-    <Slider {...settings}>
-      {visibleProducts.map((item: Product) => (
-        <ProductCard key={item.id} product={item} />
-      ))}
-    </Slider>
+    <div className="product-slider">
+      <Slider {...settings}>
+        {visibleProducts.map((item: Product) => (
+          <ProductCard key={item.id} product={item} />
+        ))}
+      </Slider>
+    </div>
   );
 };

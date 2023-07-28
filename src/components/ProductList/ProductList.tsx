@@ -1,4 +1,9 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, {
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import { useSearchParams } from 'react-router-dom';
 import classNames from 'classnames';
 import { Product } from '../../types/Product';
@@ -53,8 +58,14 @@ export const ProductList: React.FC<Props> = ({
     [sortBy, products, query],
   );
 
+  const isRenderedRef = useRef(false);
+
   useEffect(() => {
-    setIsLoading(true);
+    if (!isRenderedRef.current) {
+      isRenderedRef.current = true;
+    } else {
+      setIsLoading(true);
+    }
 
     if (handleVisibleProductsNumber) {
       handleVisibleProductsNumber(sortedProducts.length);

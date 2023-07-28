@@ -11,7 +11,7 @@ import { ProductPrice } from '../../components/ProductPrice/ProductPrice';
 import { PropertyList } from '../../components/PropertyList/PropertyList';
 import { getProductById } from '../../api/fetchData';
 import { Loader } from '../../components/Loader';
-import { SecondNavBar } from '../../components/SecondNavBar/SecondNavBar';
+import { BreadCrumbs } from '../../components/BreadCrumbs/BreadCrumbs';
 /* eslint-disable-next-line */
 import { ButtonAddToCart } from '../../components/ButtonAddToCart/ButtonAddToCart';
 import { SlickSlider } from '../../components/SlickSlider/SlickSlider';
@@ -110,6 +110,10 @@ export const ItemPage: React.FC<Props> = ({ products }) => {
     setMainImg(img);
   };
 
+  const goToPreviusPage = () => {
+    window.history.go(-1);
+  };
+
   return (
     <div className="page__item">
       {isLoading && (
@@ -120,10 +124,16 @@ export const ItemPage: React.FC<Props> = ({ products }) => {
 
       {!isLoading && isProductFind && (
         <>
-          <SecondNavBar />
+          <BreadCrumbs />
 
           <div className="product-details__back">
-            <Link to="/" className="product-details__link-back">Back</Link>
+            <button
+              type="button"
+              className="product-details__button-back"
+              onClick={goToPreviusPage}
+            >
+              Back
+            </button>
           </div>
 
           <div className="product-details">
@@ -136,13 +146,13 @@ export const ItemPage: React.FC<Props> = ({ products }) => {
                       {product.images.map(img => (
                         <button
                           type="button"
+                          key={img}
                           className="image-list__box"
                           onClick={() => onChangeImage(img)}
                         >
                           <img
-                            key={img}
                             alt="product"
-                            src={`${img}`}
+                            src={img}
                             className={classNames(
                               'image image_small',
                               { active: img === mainImg },

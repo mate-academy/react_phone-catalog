@@ -24,7 +24,9 @@
     margin-bottom: 16px;
   }
 
-  &__link-back {
+  &__button-back {
+    background: none;
+    border: none;
     color: $main-gray-color;
     @extend %small-text;
 

@@ -2,9 +2,9 @@ import React, { useContext, useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { AppContext } from '../../context/AppContextProvider';
 import { ProductInCart } from '../../types/Product';
-import { SecondNavBar } from '../../components/SecondNavBar/SecondNavBar';
 import { ModelsCounter } from '../../components/ModelsCounter/ModelsCounter';
 import { NotFound } from '../../components/NotFound/NotFound';
+import { BreadCrumbs } from '../../components/BreadCrumbs/BreadCrumbs';
 import { CheckoutCard } from '../../components/CheckoutCard/CheckoutCard';
 import './cartPage.scss';
 
@@ -32,7 +32,7 @@ export const CartPage:React.FC = () => {
 
   return (
     <div className="page__cart">
-      <SecondNavBar />
+      <BreadCrumbs />
       <h1 className="main-title">Cart</h1>
       <ModelsCounter number={cart.length} />
 

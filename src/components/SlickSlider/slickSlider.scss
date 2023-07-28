@@ -1,69 +1,72 @@
 @import "/styles/common";
 
-.slick {
-
-  &-list {
-    overflow: hidden;
-  }
-
-  &-track {
-    display: flex;
-    align-items: flex-start;
-  }
-
-  &-slider {
-    padding: 0 10px;
-    position: relative;
-  }
-
-  &-slide {
-    margin-right: 16px;
-  }
-
-  &-arrow {
-    @include button-transparent;
-    height: 32px;
-    position: absolute;
-    top: 50%;
-    background-color: #fff;
-    z-index: 2;
-
-    &:hover,
-    &:active,
-    &:focus {
+.product-slider {
+  
+  .slick {
+  
+    &-list {
+      overflow: hidden;
+    }
+  
+    &-track {
+      display: flex;
+      align-items: flex-start;
+    }
+  
+    &-slider {
+      padding: 0 10px;
+      position: relative;
+    }
+  
+    &-slide {
+      margin-right: 16px;
+    }
+  
+    &-arrow {
+      @include button-transparent;
+      height: 32px;
+      position: absolute;
+      top: 50%;
       background-color: #fff;
+      z-index: 2;
+  
+      &:hover,
+      &:active,
+      &:focus {
+        background-color: #fff;
+      }
     }
-  }
-
-  &-prev {
-    margin-right: 16px;
-    left: 0;
-
-    &::before {
-      background-image: url($arrow-left);
+  
+    &-prev {
+      margin-right: 16px;
+      left: 0;
+  
+      &::before {
+        background-image: url($arrow-left);
+      }
+  
+      &.disabled::before {
+        background-image: url($arrow-left-light);
+      }
     }
-
-    &.disabled::before {
-      background-image: url($arrow-left-light);
-    }
-  }
-
-  &-next {
-    right: 0;
-
-    &::before {
-      background-image: url($arrow-right);
-    }
-
-    &.disabled::before {
-      background-image: url($arrow-right-light);
+  
+    &-next {
+      right: 0;
+  
+      &::before {
+        background-image: url($arrow-right);
+      }
+  
+      &.disabled::before {
+        background-image: url($arrow-right-light);
+      }
     }
   }
 }
 
 @media #{$tablet-media-query} {
 
-  .slick-track {
+  .product-slider .slick-track {
     gap: 16px;
   }
 }
