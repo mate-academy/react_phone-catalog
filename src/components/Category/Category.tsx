@@ -1,6 +1,9 @@
 import './Category.scss';
 import { Link } from 'react-router-dom';
 import { Product } from '../../types/Product';
+import phonesImg from '../../images/img/category-phones.png';
+import tabletsImg from '../../images/img/category-tablets.png';
+import accessoriesImg from '../../images/img/category-accessories.png';
 
 type Props = {
   products: Product[]
@@ -32,7 +35,7 @@ export const Category: React.FC<Props> = ({ products }) => {
         >
           <div className="category__img-box category__img-box--phones">
             <img
-              src="/_new/img/category-phones.png"
+              src={phonesImg}
               alt="category phone"
               className="category__img category__img-phones"
             />
@@ -51,7 +54,7 @@ export const Category: React.FC<Props> = ({ products }) => {
         >
           <div className="category__img-box category__img-box--tablets">
             <img
-              src="/_new/img/category-tablets.png"
+              src={tabletsImg}
               alt="category phone"
               className="category__img category__img-tablets"
             />
@@ -70,7 +73,7 @@ export const Category: React.FC<Props> = ({ products }) => {
         >
           <div className="category__img-box category__img-box--accessories">
             <img
-              src="/_new/img/category-accessories.png"
+              src={accessoriesImg}
               alt="category phone"
               className="category__img category__img-accessories"
             />

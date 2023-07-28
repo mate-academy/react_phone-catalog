@@ -5,6 +5,9 @@ import classNames from 'classnames';
 import { CartContext } from '../contexts/CartContextProvider';
 import { FavContext } from '../contexts/FavContextProvider';
 import { Search } from '../Search/Search';
+import logo from '../../images/LOGO.svg';
+import favImg from '../../images/Icons/Favourites_Heart-Like.svg';
+import cartImg from '../../images/Icons/Shopping-bag_Cart.svg';
 
 export const Header = () => {
   const { cart } = useContext(CartContext);
@@ -25,7 +28,7 @@ export const Header = () => {
             to="/"
           >
             <img
-              src="/imgFigma/LOGO.svg"
+              src={logo}
               alt="logo"
             />
           </Link>
@@ -103,7 +106,7 @@ export const Header = () => {
           to="favourites"
         >
           <img
-            src="/imgFigma/Icons/Favourites (Heart Like).svg"
+            src={favImg}
             alt="favourites"
           />
 
@@ -127,7 +130,7 @@ export const Header = () => {
           to="cart"
         >
           <img
-            src="/imgFigma/Icons/Shopping bag (Cart).svg"
+            src={cartImg}
             alt="cart"
           />
           {cart.length > 0 && (
