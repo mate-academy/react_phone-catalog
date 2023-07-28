@@ -36,7 +36,6 @@ export const CartItem: React.FC<Props> = ({
   const handleQuantityMinus = (productId: string) => {
     changeQuantity(productId, Action.Decrease);
   };
-  // {`/_new/${image}`}
 
   return (
     <li

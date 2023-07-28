@@ -22,7 +22,6 @@ export const ProductCard: React.FC<Props> = ({ product, title }) => {
     phoneId,
     image,
   } = product;
-  // {`_new/${image}`}
 
   return (
     <div

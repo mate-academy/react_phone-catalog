@@ -8,11 +8,6 @@ import bannerImg3 from '../../images/img/banner-tablets.png';
 
 export const Banner = () => {
   const [position, setPosition] = useState(0);
-  // const bannerImgs = [
-  //   './_new/img/banner-phones.png',
-  //   './_new/img/banner-accessories.png',
-  //   './_new/img/banner-tablets.png',
-  // ];
 
   const bannerImgs = [
     bannerImg1,
