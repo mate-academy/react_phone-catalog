@@ -13,7 +13,7 @@ type Props = {
 const PICTURE_SIZE = 1040;
 const INTERVAL_DELAY = 5000;
 
-export const PreviewSlider: React.FC<Props> = ({ children }) => {
+export const PreviewSlider: React.FC<Props> = React.memo(({ children }) => {
   const [pages, setPages] = useState<JSX.Element[]>(children);
   const [offset, setOffset] = useState(0);
   const [activeIndex, setActiveIndex] = useState(0); // Track the active slide index
@@ -126,4 +126,4 @@ export const PreviewSlider: React.FC<Props> = ({ children }) => {
       </button>
     </>
   );
-};
+});

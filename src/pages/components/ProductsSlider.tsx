@@ -1,8 +1,8 @@
+// import { ProductCard } from './ProductCard';
 import {
   FC, cloneElement, useEffect, useState,
 } from 'react';
 import '../../styles/styles.scss';
-import { ProductCard } from './ProductCard';
 
 type Props = {
   children: JSX.Element[];
@@ -26,6 +26,7 @@ export const ProductsSlider: FC<Props> = ({ children }) => {
 
       return newOffset;
     });
+    console.log('handleLeftClick')
   }
 
   function handleRightClick() {
@@ -38,6 +39,7 @@ export const ProductsSlider: FC<Props> = ({ children }) => {
 
       return newOffset;
     });
+    console.log('handleRightClick')
   }
 
   useEffect(() => {
@@ -57,6 +59,7 @@ export const ProductsSlider: FC<Props> = ({ children }) => {
   useEffect(() => {
     setProducts(children);
   }, [children]);
+  console.log(products)
 
   return (
     <div className="products-slider">
@@ -77,13 +80,7 @@ export const ProductsSlider: FC<Props> = ({ children }) => {
         </button>
       </div>
       <div className="products-slider__container-products">
-        {products.map(product => {
-          return (
-            <div key={product.key}>
-              <ProductCard product={product.props.children} />
-            </div>
-          );
-        })}
+        {products}
       </div>
     </div>
   );

@@ -8,6 +8,7 @@ import { PreviewSlider } from './components/PreviewSlider';
 // import { ProductCard } from './components/ProductCard';
 import { getPhones } from '../api/phone';
 import { Phone } from '../types/Phone';
+import { ProductCard } from './components/ProductCard';
 
 export const HomePage: React.FC = () => {
   const [phones, setPhones] = useState<Phone[]>([]);
@@ -67,9 +68,10 @@ export const HomePage: React.FC = () => {
           <ProductsSlider>
             {phones.map(product => {
               return (
-                <div key={product.id}>
-                  {product}
-                </div>
+                <ProductCard
+                  key={product.id}
+                  product={product}
+                />
               );
             })}
           </ProductsSlider>
