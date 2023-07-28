@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import { BlockFavorite } from './BlockFavorite';
 import HomeImage from './FavoriteImage/Home.svg';
 import Arrowimage from './FavoriteImage/Arrow.svg';
-import { useFavoriteContext } from '../../../core/context/FavoriteContext/FavoriteContext';
+import { useFavoriteContext }
+  from '../../../core/context/FavoriteContext/FavoriteContext';
 import { NotFoundPage } from '../NotFoundPage/NotFoundPage';
 
 export const Favorite = () => {

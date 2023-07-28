@@ -1,7 +1,8 @@
 import heartImage from './ProductsCardsFavoriteImage/heart.svg';
 import './ProductsCardsFavorite.scss';
 import { Product } from '../Product';
-import { useFavoriteContext } from '../../../core/context/FavoriteContext/FavoriteContext'; // Укажите правильный путь к FavoriteContext
+import { useFavoriteContext }
+  from '../../../core/context/FavoriteContext/FavoriteContext'; // Укажите правильный путь к FavoriteContext
 
 interface ProductFavoriteProps {
   product: Product;

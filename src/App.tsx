@@ -1,17 +1,21 @@
 import { Route, Routes, useLocation } from 'react-router-dom';
 import './App.scss';
 import { useEffect } from 'react';
-import { FavoriteContextProvider } from './core/context/FavoriteContext/FavoriteContext';
-import { HomePage } from './Components/Pages/HomePage';
-import { Header } from './Components/Header';
-import { NotFoundPage } from './Components/Pages/NotFoundPage';
-import { PhonesPage } from './Components/Pages/PhonesPage';
-import { PhonePreview } from './Components/Pages/PhonePreview';
-import { ContactsPage } from './Components/Pages/Contacts';
-import { Favorite } from './Components/Pages/Favorite';
-import { Basket } from './Components/Pages/Basket';
-import { Rights } from './Components/Pages/Rights/Rights';
-import { Footer } from './Components/Footer';
+import { FavoriteContextProvider }
+  from './core/context/FavoriteContext/FavoriteContext';
+import {
+  Header,
+  HomePage,
+  NotFoundPage,
+  PhonePreview,
+  PhonesPage,
+  ContactsPage,
+  Favorite,
+  Basket,
+  Rights,
+  Footer,
+}
+  from './Components';
 
 export const App = () => {
   const location = useLocation();

@@ -1,4 +1,5 @@
-import { useFavoriteContext } from '../../../core/context/FavoriteContext/FavoriteContext';
+import { useFavoriteContext }
+  from '../../../core/context/FavoriteContext/FavoriteContext';
 import heartImage from './PhonesPageInfoFavoriteImages/heart.svg';
 import './PhonesPageInfoFovorite.scss';
 

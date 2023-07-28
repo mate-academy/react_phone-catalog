@@ -5,7 +5,8 @@ import { Product } from '../../ProductCards/Product';
 import Plus from './BasketImage/Plus.svg';
 import Minus from './BasketImage/Minus.svg';
 import CLose from './BasketImage/Close.svg';
-import { useBasketContext } from '../../../core/context/FavoriteContext/FavoriteContext';
+import { useBasketContext }
+  from '../../../core/context/FavoriteContext/FavoriteContext';
 
 interface ProductCardsProps {
   product: Product,
@@ -21,9 +22,8 @@ export const BlockBasket = ({ product }: ProductCardsProps) => {
 
   const {
     basket,
-    removeFromBasket,
-    removeFromAllB,
-    addToBasket,
+    changeQuantity,
+    removeFromAllBasket,
   } = useBasketContext();
 
   const isBasket = basket.some((item) => item.id === phoneId.toString());
@@ -36,18 +36,18 @@ export const BlockBasket = ({ product }: ProductCardsProps) => {
 
   const handleDeleteClick = () => {
     if (isBasket) {
-      removeFromAllB(phoneId.toString());
+      removeFromAllBasket(phoneId.toString());
     }
   };
 
   const handleMinusClick = () => {
     if (phoneModelInBasket && phoneModelInBasket.quantity > 1) {
-      removeFromBasket(phoneId.toString());
+      changeQuantity(phoneId.toString(), -1);
     }
   };
 
   const handlePlusClick = () => {
-    addToBasket(phoneId.toString());
+    changeQuantity(phoneId.toString(), +1);
   };
 
   return (

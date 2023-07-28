@@ -1,4 +1,5 @@
-import { useBasketContext } from '../../../core/context/FavoriteContext/FavoriteContext';
+import { useBasketContext }
+  from '../../../core/context/FavoriteContext/FavoriteContext';
 import './PhonesPageInfoButton.scss';
 
 interface Info {

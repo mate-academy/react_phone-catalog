@@ -1,4 +1,5 @@
 import './Header.scss';
+import cn from 'classnames';
 import { NavLink, useLocation } from 'react-router-dom';
 import { HeaderSearch } from './HeaderSearch';
 import HeartImage from './HeaderImage/heart.svg';
@@ -11,6 +12,13 @@ interface HeaderProps {
   searchValue: string;
   setSearchValue: (search: string) => void;
 }
+
+const ROUTES_CONFIG = [
+  { path: '/', label: 'Home' },
+  { path: '/phones', label: 'Phones' },
+  { path: '/tablets', label: 'Tablets' },
+  { path: '/accessories', label: 'Accessories' },
+];
 
 export const Header = ({ searchValue, setSearchValue }: HeaderProps) => {
   const location = useLocation();
@@ -45,10 +53,14 @@ export const Header = ({ searchValue, setSearchValue }: HeaderProps) => {
 
   return (
     <header className="header">
-      <div className={`header__FirstChild ${isHomePage ? 'is-home-page' : ''}`}>
+      <div className={cn('header__FirstChild', { 'is-home-page': isHomePage })}>
         <div className="header__FirstChild-logo">
           <NavLink to="/" className="logoLink">
-            <img className={`logoImage ${isHomePage ? 'is-home-page' : ''}`} src={LogoImage} alt="Logo" />
+            <img
+              className={cn('logoImage', { 'is-home-page': isHomePage })}
+              src={LogoImage}
+              alt="Logo"
+            />
           </NavLink>
         </div>
         <nav
@@ -56,37 +68,18 @@ export const Header = ({ searchValue, setSearchValue }: HeaderProps) => {
           className="header__FirstChild-nav"
         >
           <ul className="header__FirstChild-nav-list">
-            <li className="header__FirstChild-nav-item">
-              <NavLink to="/" className={`header__FirstChild-nav-link ${isHomePage ? 'is-active' : ''}`}>
-                Home
-              </NavLink>
-            </li>
-            <li className="header__FirstChild-nav-item">
-              <NavLink
-                to="/phones"
-                className={({ isActive }) => {
-                  return `header__FirstChild-nav-link ${isActive ? 'is-active' : ''}`;
-                }}
-              >
-                Phones
-              </NavLink>
-            </li>
-            <li className="header__FirstChild-nav-item">
-              <NavLink
-                to="/tablets"
-                className={`header__FirstChild-nav-link ${location.pathname === '/tablets' ? 'is-active' : ''}`}
-              >
-                Tablets
-              </NavLink>
-            </li>
-            <li className="header__FirstChild-nav-item">
-              <NavLink
-                to="/accessories"
-                className={`header__FirstChild-nav-link ${location.pathname === '/accessories' ? 'is-active' : ''}`}
-              >
-                Accessories
-              </NavLink>
-            </li>
+            {ROUTES_CONFIG.map(el => (
+              <li className="header__FirstChild-nav-item">
+                <NavLink
+                  to={el.path}
+                  className={({ isActive }) => cn(
+                    'header__FirstChild-nav-link', { 'is-active': isActive },
+                  )}
+                >
+                  {el.label}
+                </NavLink>
+              </li>
+            ))}
           </ul>
         </nav>
       </div>
@@ -101,7 +94,9 @@ export const Header = ({ searchValue, setSearchValue }: HeaderProps) => {
             />
           )}
 
-        <div className={`header__LastChild-heart ${location.pathname === '/favorites' ? 'is-activ' : ''}`}>
+        <div className={cn('header__LastChild-heart',
+          { 'is-activ': favorite })}
+        >
           <NavLink to="/favorites" className="heartLink">
             <img className={`heart-svg ${isHomePage ? 'is-home-page' : ''}`} src={HeartImage} alt="heart" />
           </NavLink>
@@ -114,7 +109,9 @@ export const Header = ({ searchValue, setSearchValue }: HeaderProps) => {
             )}
 
         </div>
-        <div className={`header__LastChild-basket ${location.pathname === '/cart' ? 'is-activ' : ''}`}>
+        <div className={cn('header__LastChild-basket',
+          { 'is-activ': basket })}
+        >
           <NavLink to="/cart" className="basketLink">
             <img className="basket-svg" src={BasketImage} alt="basket" />
           </NavLink>
