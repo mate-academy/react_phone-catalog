@@ -1,7 +1,7 @@
 // Breadcrumbs.js
 import { FC } from 'react';
 import BreadcrumbItem from './BreadcrumbItem';
-import '../../styles/blocks/breadcrumb.scss';
+import '../../styles/styles.scss';
 
 type Props = {
   items: { text: string; link: string; }[],

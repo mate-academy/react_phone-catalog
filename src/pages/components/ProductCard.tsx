@@ -1,16 +1,22 @@
 import { FC } from 'react';
-import '../../styles/blocks/product-card.scss';
+import { Phone } from '../../types/Phone';
+import '../../styles/styles.scss';
 
-export const ProductCard: FC = () => {
+type Props = {
+  product: Phone;
+};
+
+export const ProductCard: FC<Props> = ({ product }) => {
   return (
-    <div className="product-card">
+    <div className="product-card" key={product.id}>
       <img
-        src="images/product-card-img.png"
+        src={product.imageUrl}
         alt="Phone"
         className="product-card__phone-img"
       />
       <h2 className="product-card__title">
-        Apple iPhone Xs 64GB Silver (iMT9G2FS/A)
+        {/* Apple iPhone Xs 64GB Silver (iMT9G2FS/A) */}
+        {product.name}
       </h2>
       <p className="product-card__price">$799</p>
       <p className="product-card__price product-card__price--discount">$899</p>

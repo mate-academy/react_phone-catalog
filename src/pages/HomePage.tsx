@@ -1,50 +1,78 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { FC } from 'react';
+import React, { useState, useEffect } from 'react';
 
-// import { useSwiper } from 'swiper/react';
 import { ProductsSlider } from './components/ProductsSlider';
-import '../styles/blocks/home-page.scss';
-import { Slider } from './components/Slider';
+import '../styles/styles.scss';
 
-import slides from '../api/banners.json';
+import { PreviewSlider } from './components/PreviewSlider';
+// import { ProductCard } from './components/ProductCard';
+import { getPhones } from '../api/phone';
+import { Phone } from '../types/Phone';
 
-export const HomePage: FC = () => {
-  // const swiper = useSwiper();
+export const HomePage: React.FC = () => {
+  const [phones, setPhones] = useState<Phone[]>([]);
+
+  const images = [
+    { imgUrl: 'images/BannerHomePage.png', id: '01' },
+    { imgUrl: 'images/BannerHomePage.png', id: '02' },
+    { imgUrl: 'images/BannerHomePage.png', id: '03' },
+  ];
+
+  // const products = [
+  //   { id: '1', value: <ProductCard /> },
+  //   { id: '2', value: <ProductCard /> },
+  //   { id: '3', value: <ProductCard /> },
+  //   { id: '4', value: <ProductCard /> },
+  //   { id: '5', value: <ProductCard /> },
+  //   { id: '6', value: <ProductCard /> },
+  //   { id: '7', value: <ProductCard /> },
+  //   { id: '8', value: <ProductCard /> },
+  // ];
+
+  async function loadedPhones() {
+    try {
+      const result = await getPhones();
+
+      setPhones(result);
+    } catch (error) {
+      // eslint-disable-next-line no-console
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    loadedPhones();
+  }, []);
 
   return (
     <>
       <div className="home-page">
-
         <div className="home-page__preview-slider preview-slider">
-
-          <button
-            // onClick={() => swiper.slideNext()}
-            type="button"
-            className="preview-slider__button"
-          >
-            <img src="images/icons/ArrowLeft.svg" alt="" />
-          </button>
-          <div className="preview-slider__container">
-            <div className="preview-slider__picture">
-              <Slider slides={slides} />
-
-            </div>
-            <div className="picture__pagination pagination">
-              <a href="#" className="pagination__link">1</a>
-              <a href="#" className="pagination__link">2</a>
-              <a href="#" className="pagination__link">3</a>
-            </div>
-          </div>
-          <button type="button" className="preview-slider__button">
-            <img src="images/icons/ArrowRight.svg" alt="" />
-          </button>
+          <PreviewSlider>
+            {images.map((img, index) => (
+              <img
+                className={`picture-${index}`}
+                src={img.imgUrl}
+                alt="Banner"
+                key={img.id}
+              />
+            ))}
+          </PreviewSlider>
         </div>
 
         <div className="home-page__hot-prices hot-prices">
           <h1 className="hot-prices__title">
             Hot prices
           </h1>
-          <ProductsSlider />
+          <ProductsSlider>
+            {phones.map(product => {
+              return (
+                <div key={product.id}>
+                  {product}
+                </div>
+              );
+            })}
+          </ProductsSlider>
         </div>
 
         <div className="home-page__shop-by-category shop-by-category">
@@ -96,7 +124,13 @@ export const HomePage: FC = () => {
           <h1 className="brand-new__title">
             Brand new models
           </h1>
-          <ProductsSlider />
+          {/* <ProductsSlider>
+            {products.map(product => (
+              <div key={product.id}>
+                {product.value}
+              </div>
+            ))}
+          </ProductsSlider> */}
         </div>
       </div>
 

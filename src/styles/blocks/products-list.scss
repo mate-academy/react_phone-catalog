@@ -1,6 +1,10 @@
 .products-list {
   display: flex;
   flex-wrap: wrap;
+  max-width: 1136px;
+
+  gap: 16px;
+  padding: 0;
   &__item {
     list-style: none;
   }

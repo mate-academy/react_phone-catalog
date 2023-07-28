@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { FC } from 'react';
-import '../../styles/blocks/header.scss';
+import '../../styles/styles.scss';
 
 export const Header: FC = () => {
   return (

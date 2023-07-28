@@ -1,6 +1,10 @@
 .breadcrumb {
   &__breadcrumb-list {
+    display: flex;
+    gap: 8px;
+    align-items: center;
     list-style: none;
+    padding: 0;
   }
   &__breadcrumb-item {
 
@@ -8,7 +12,15 @@
 }
 
 .breadcrumb-item {
-  &__link {
 
+  &__link {
+    height: 16px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    text-decoration: none;
+    color: var(--gray-secondary, #89939A);
+    font-family: Mont-SemiBold;
+    font-size: 12px;
   }
 }

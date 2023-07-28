@@ -1,22 +1,20 @@
 import { FC } from 'react';
 import Breadcrumbs from './components/Breadcrumbs';
-import { ProductsList } from './components/ProductsList';
-import '../styles/blocks/phones-page.scss';
+// import { ProductsList } from './components/ProductsList';
+import '../styles/styles.scss';
 
 export const PhonesPage: FC = () => {
   const breadcrumbItems = [
     { text: 'Home', link: '/' },
-    { text: 'Category', link: '/category' },
-    { text: 'Subcategory', link: '/category/subcategory' },
-    { text: 'Current Page', link: '/category/subcategory/current-page' },
+    { text: 'Phones', link: '/phones' },
   ];
 
   return (
-    <div className="phone-page">
+    <div className="phones-page">
       <Breadcrumbs items={breadcrumbItems} />
-      <h1 className="phone-page__title">Mobile phones</h1>
-      <p className="phone-page__amount-phone-text">95 models</p>
-      <div className="phone-page__filter filter">
+      <h1 className="phones-page__title">Mobile phones</h1>
+      <p className="phones-page__amount-phone-text">95 models</p>
+      <div className="phones-page__filter filter">
         <div className="filter__container">
           <h2 className="filter__title">Sort by</h2>
           <select
@@ -27,7 +25,7 @@ export const PhonesPage: FC = () => {
             <option
               className="filter__selector--items"
               value="age"
-              selected
+              // selected
             >
               Newest
             </option>
@@ -62,7 +60,7 @@ export const PhonesPage: FC = () => {
             <option
               className="filter__selector--items"
               value="16"
-              selected
+              // selected
             >
               16
             </option>
@@ -75,7 +73,7 @@ export const PhonesPage: FC = () => {
           </select>
         </div>
       </div>
-      <ProductsList />
+      {/* <ProductsList /> */}
     </div>
   );
 };

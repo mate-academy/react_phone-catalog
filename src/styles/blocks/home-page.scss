@@ -1,5 +1,5 @@
 .home-page {
-  padding-inline: 152px;
+  @include pageMaxWidth;
 
   &__preview-slider {
     margin-bottom: 72px;
@@ -26,6 +26,7 @@
     width: 32px;
     background: #FFF;
     border: 1px solid #B4BDC3;
+    cursor: pointer;
   }
 
   &__container {
@@ -39,11 +40,25 @@
   }
 }
 
+.picture {
+  display: flex;
+  overflow: hidden;
+}
+
 .pagination {
   text-align: center;
-  &__link {
-    text-decoration: none;
-    padding-inline: 10px;
+  &__indicator {
+    cursor: pointer;
+    width: 15px;
+    height: 5px;
+    background-color: #B4BDC3;
+    border: #B4BDC3;
+    margin-inline: 5px;
+
+    &--active {
+      background-color: black;
+
+    }
   }
 }
 
