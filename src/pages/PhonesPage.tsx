@@ -1,13 +1,74 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import Breadcrumbs from './components/Breadcrumbs';
-// import { ProductsList } from './components/ProductsList';
+import { ProductsList } from './components/ProductsList';
+// eslint-disable-next-line import/no-cycle
+import CustomSelect from './components/CustomSelect';
+import { Phone } from '../types/Phone';
+
 import '../styles/styles.scss';
 
-export const PhonesPage: FC = () => {
+type Props = {
+  phones: Phone[];
+};
+
+export enum SortByOptions {
+  AGE = 'age',
+  NAME = 'name',
+  PRICE = 'price',
+}
+
+export const PhonesPage: FC<Props> = ({ phones }) => {
+  const [selectedOptions, setSelectedOptions] = useState({
+    sortBy: 'age',
+    itemsShow: '16',
+  });
+
   const breadcrumbItems = [
     { text: 'Home', link: '/' },
     { text: 'Phones', link: '/phones' },
   ];
+
+  const sortByOptions = ['age', 'name', 'price'];
+  const itemsOnPageOptions = ['4', '8', '16', 'all'];
+
+  function getVisiblePhones(arr: Phone[]) {
+    let result: Phone[] = [];
+
+    switch (selectedOptions.sortBy) {
+      case SortByOptions.AGE:
+        result = arr.sort((a, b) => a.year - b.year);
+        break;
+      case SortByOptions.NAME:
+        result = arr.sort((a, b) => a.name.localeCompare(b.name));
+        break;
+      case SortByOptions.PRICE:
+        result = arr.sort((a, b) => a.price - b.price);
+        break;
+
+      default:
+        break;
+    }
+
+    switch (selectedOptions.itemsShow) {
+      case '4':
+        result = result.filter((_, index) => index < 4);
+        break;
+      case '8':
+        result = result.filter((_, index) => index < 8);
+
+        break;
+      case '16':
+        result = result.filter((_, index) => index < 16);
+        break;
+      case 'all':
+      default:
+        return result;
+    }
+
+    return result;
+  }
+
+  const visiblePhones = getVisiblePhones(phones);
 
   return (
     <div className="phones-page">
@@ -17,7 +78,12 @@ export const PhonesPage: FC = () => {
       <div className="phones-page__filter filter">
         <div className="filter__container">
           <h2 className="filter__title">Sort by</h2>
-          <select
+          <CustomSelect
+            options={sortByOptions}
+            defaultOption="Select an option"
+            onChange={setSelectedOptions}
+          />
+          {/* <select
             className="filter__selector"
             name="sort-by"
             id="sort"
@@ -41,11 +107,16 @@ export const PhonesPage: FC = () => {
             >
               Cheapest
             </option>
-          </select>
+          </select> */}
         </div>
         <div className="filter__container">
           <h2 className="filter__title">Items on page</h2>
-          <select
+          <CustomSelect
+            options={itemsOnPageOptions}
+            defaultOption="Select an option"
+            onChange={setSelectedOptions}
+          />
+          {/* <select
             className="filter__selector"
             name="items-on-page"
             id="sort"
@@ -70,10 +141,10 @@ export const PhonesPage: FC = () => {
             >
               ALL
             </option>
-          </select>
+          </select> */}
         </div>
       </div>
-      {/* <ProductsList /> */}
+      <ProductsList products={visiblePhones} />
     </div>
   );
 };

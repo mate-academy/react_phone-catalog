@@ -1,18 +1,20 @@
 // import { ProductCard } from './ProductCard';
 import {
-  FC, cloneElement, useEffect, useState,
+  FC, useEffect, useState,
 } from 'react';
 import '../../styles/styles.scss';
+import { Phone } from '../../types/Phone';
+import { ProductCard } from './ProductCard';
 
 type Props = {
-  children: JSX.Element[];
+  phones: Phone[];
 };
 
 const PICTURE_SIZE = 272 + 16; // 272px cardsize + 16px gap between product-cards
 const VISIBLE_SIZE_ROW = 1136; // 1136px visible length of Home-page;
 
-export const ProductsSlider: FC<Props> = ({ children }) => {
-  const [products, setProducts] = useState<JSX.Element[]>([]);
+export const ProductsSlider: FC<Props> = ({ phones }) => {
+  const [products, setProducts] = useState<Phone[]>([]);
   const [offset, setOffset] = useState(0);
 
   function handleLeftClick() {
@@ -26,7 +28,6 @@ export const ProductsSlider: FC<Props> = ({ children }) => {
 
       return newOffset;
     });
-    console.log('handleLeftClick')
   }
 
   function handleRightClick() {
@@ -39,27 +40,11 @@ export const ProductsSlider: FC<Props> = ({ children }) => {
 
       return newOffset;
     });
-    console.log('handleRightClick')
   }
 
   useEffect(() => {
-    setProducts((prev) => {
-      return prev.map((child) => {
-        return cloneElement(child, {
-          key: child.key,
-          style: {
-            transition: '500ms',
-            transform: `translateX(${offset}px)`,
-          },
-        });
-      });
-    });
-  }, [offset]);
-
-  useEffect(() => {
-    setProducts(children);
-  }, [children]);
-  console.log(products)
+    setProducts(phones);
+  }, [phones]);
 
   return (
     <div className="products-slider">
@@ -80,7 +65,17 @@ export const ProductsSlider: FC<Props> = ({ children }) => {
         </button>
       </div>
       <div className="products-slider__container-products">
-        {products}
+        {products.map(product => (
+          <div
+            key={product.id}
+            style={{
+              transition: '500ms',
+              transform: `translateX(${offset}px)`,
+            }}
+          >
+            <ProductCard product={product} />
+          </div>
+        ))}
       </div>
     </div>
   );

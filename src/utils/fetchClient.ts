@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // eslint-disable-next-line max-len
-const BASE_URL = 'https://mate-academy.github.io/react_phone-catalog/api';
+const BASE_URL = 'https://mate-academy.github.io/react_phone-catalog';
 
 // returns a promise resolved after a given delay
 function wait(delay: number) {

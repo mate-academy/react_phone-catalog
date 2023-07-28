@@ -1,0 +1,43 @@
+/* Basic styling for the custom select container */
+.custom-select {
+  position: relative;
+  display: inline-block;
+  border: 1px solid #ccc;
+  padding: 8px;
+  cursor: pointer;
+}
+
+/* Styling for the selected option */
+.selected-option {
+  padding: 4px;
+
+}
+
+/* Styling for the options list */
+.options {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 4px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  list-style: none;
+  padding: 0;
+}
+
+/* Styling for individual options */
+.options li {
+  padding: 4px 8px;
+  cursor: pointer;
+
+}
+
+/* Show options list on focus or click */
+.custom-select:focus .options {
+  display: block;
+}
+
+.options--opened {
+  display: block;
+}

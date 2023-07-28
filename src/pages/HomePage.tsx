@@ -1,17 +1,24 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 import { ProductsSlider } from './components/ProductsSlider';
 import '../styles/styles.scss';
 
 import { PreviewSlider } from './components/PreviewSlider';
-// import { ProductCard } from './components/ProductCard';
-import { getPhones } from '../api/phone';
 import { Phone } from '../types/Phone';
-import { ProductCard } from './components/ProductCard';
 
-export const HomePage: React.FC = () => {
-  const [phones, setPhones] = useState<Phone[]>([]);
+type Props = {
+  phones: Phone[];
+};
+
+export const HomePage: React.FC<Props> = ({ phones }) => {
+  const hotPricePhones = [...phones].sort(
+    (a: Phone, b: Phone) => +a.fullPrice - +b.fullPrice,
+  );
+
+  const brandNewModels = [...phones].sort(
+    (a: Phone, b: Phone) => +a.year - +b.year,
+  );
 
   const images = [
     { imgUrl: 'images/BannerHomePage.png', id: '01' },
@@ -29,21 +36,6 @@ export const HomePage: React.FC = () => {
   //   { id: '7', value: <ProductCard /> },
   //   { id: '8', value: <ProductCard /> },
   // ];
-
-  async function loadedPhones() {
-    try {
-      const result = await getPhones();
-
-      setPhones(result);
-    } catch (error) {
-      // eslint-disable-next-line no-console
-      console.log(error);
-    }
-  }
-
-  useEffect(() => {
-    loadedPhones();
-  }, []);
 
   return (
     <>
@@ -65,16 +57,7 @@ export const HomePage: React.FC = () => {
           <h1 className="hot-prices__title">
             Hot prices
           </h1>
-          <ProductsSlider>
-            {phones.map(product => {
-              return (
-                <ProductCard
-                  key={product.id}
-                  product={product}
-                />
-              );
-            })}
-          </ProductsSlider>
+          <ProductsSlider phones={hotPricePhones} />
         </div>
 
         <div className="home-page__shop-by-category shop-by-category">
@@ -126,13 +109,7 @@ export const HomePage: React.FC = () => {
           <h1 className="brand-new__title">
             Brand new models
           </h1>
-          {/* <ProductsSlider>
-            {products.map(product => (
-              <div key={product.id}>
-                {product.value}
-              </div>
-            ))}
-          </ProductsSlider> */}
+          <ProductsSlider phones={brandNewModels} />
         </div>
       </div>
 

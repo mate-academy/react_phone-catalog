@@ -10,7 +10,7 @@ export const ProductCard: FC<Props> = ({ product }) => {
   return (
     <div className="product-card" key={product.id}>
       <img
-        src={product.imageUrl}
+        src={product.image}
         alt="Phone"
         className="product-card__phone-img"
       />
@@ -18,8 +18,8 @@ export const ProductCard: FC<Props> = ({ product }) => {
         {/* Apple iPhone Xs 64GB Silver (iMT9G2FS/A) */}
         {product.name}
       </h2>
-      <p className="product-card__price">$799</p>
-      <p className="product-card__price product-card__price--discount">$899</p>
+      <p className="product-card__price">{`${product.price}$`}</p>
+      <p className="product-card__price product-card__price--discount">{`${product.fullPrice}$`}</p>
       <dl className="product-card__description-phone description-phone">
         <dt className="description-phone--title">Screen</dt>
         <dd className="description-phone--value">5.8” OLED</dd>
