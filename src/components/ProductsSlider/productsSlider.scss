@@ -1,0 +1,36 @@
+@import "/styles/common";
+
+.slider {
+  overflow: hidden;
+
+  &__container {
+    height: 550px;
+  }
+
+  &__nav {
+    display: flex;
+  }
+
+  &__cards {
+    display: flex;
+    height: 100%;
+    gap: 10px;
+    padding: 0 10px;
+    transition: transform 0.3s ease;
+  }
+
+  &__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    @extend %h1;
+  }
+
+  &__button {
+    @include button-arrows;
+  }
+}

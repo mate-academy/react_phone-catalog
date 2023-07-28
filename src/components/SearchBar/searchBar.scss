@@ -1,0 +1,78 @@
+@import "../../../styles/common";
+
+.search-bar {
+  height: 100%;
+  width: 320px;
+  position: relative;
+
+  &__input {
+    color: $light-gray-color;
+    @extend %body-text;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    outline: none;
+    border: none;
+    border-left: 1px solid $borders-gray-color;
+    border-right: 1px solid $borders-gray-color;
+
+    &::placeholder {
+      color: $light-gray-color;
+    }
+  }
+
+  &__button {
+    position: absolute;
+    top: 50%;
+    right: 24px;
+    transform: translateY(-50%);
+    border: none;
+    cursor: pointer;
+    width: 16px;
+    height: 16px;
+    @include bgr-img;
+
+    &_search {
+      background-image: url($icon-search);
+    }
+
+    &_close {
+      background-image: url($icon-close);
+    }
+  }
+
+  &__icon {
+    display: none;
+  }
+}
+
+@media #{$tablet-media-query} {
+
+  .search-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 64px;
+    z-index: 1;
+    transform: translateX(100%);
+    transition: transform 0.3s;
+    background-color: #fff;
+    border: 2px solid $main-gray-color;
+
+    &_opened {
+      transform: translateX(0);
+    }
+
+    &__icon {
+      top: 4px;
+      display: block;
+      @include button-header;
+      border: none;
+      @include bgr-img;
+      background-image: url($icon-search);
+      background-size: 20px 20px;
+    }
+  }
+}

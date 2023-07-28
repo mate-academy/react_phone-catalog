@@ -1,0 +1,50 @@
+@import "../../../styles/common";
+
+.footer {
+  border-top: 1px solid $borders-gray-color;
+  height: 96px;
+
+  &__container {
+    height: 100%;
+    width: 100%;
+    max-width: 1150px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__logo {
+    background: center/contain no-repeat url($logo);
+    height: 24px;
+    width: 40px;
+    margin: 0 64px 0 8px;
+  }
+}
+
+@media #{$tablet-media-query} {
+
+  .footer {
+    height: min-content;
+    padding: 20px 0;
+
+    &__container {
+      flex-direction: column;
+      align-items: unset;
+      padding: 0 24px;
+    }
+
+    &__logo {
+      margin: 0;
+      margin-bottom: 16px;
+    }
+  }
+}
+
+@supports (-webkit-touch-callout: none) {
+
+  .footer {
+    padding-bottom: 100px;
+  }
+}

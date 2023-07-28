@@ -1,0 +1,138 @@
+@import './mixins.scss';
+@import './variables.scss';
+
+.button {
+  @include button-transparent;
+
+  &_scroll {
+
+    &::before {
+      background-image: url($arrow-top);
+    }
+
+    &:after {
+      content: "Back to top";
+      position: absolute;
+      width: max-content;
+      right: 100%;
+      top: 8px;
+      display: block;
+      margin-right: 16px;
+      align-items: center;
+      background-color: transparent;
+      @extend %small-text;
+      color: $second-gray-color;
+      margin-right: 16px;
+      transition: all 0.3s;
+    }
+
+    &:hover {
+      border-color: #000;
+
+      &::after {
+        color: $main-gray-color;
+      }
+    }
+  }
+
+  &_like {
+    width: 40px;
+    height: 40px;
+    border-color: $borders-gray-color;
+    
+    &::before {
+      background-image: url($heart-gray-icon);
+    }
+
+    &.selected::before {
+      background-image: url($heart-red-icon);
+    } 
+  }
+
+  &_like--long {
+    width: 64px;
+    height: 64px;
+    border-color: $borders-gray-color;
+  }
+
+  &_cart {
+    width: 64px;
+    height: 64px;
+    border-color: $borders-gray-color;
+    
+    &::before {
+      background-image: url("https://i.gstatvb.com/971cae570aad5e050cfd09d9d4d295ea1689103935.rng.png");
+    }
+  }
+
+  &_add-to-cart {
+    @include button-gray;
+    margin-right: 8px;
+
+    &.selected {
+      width: 176px;
+      height: 40px;
+      color: $accent-green;
+      background-color: #fff;
+      border: 1px solid $borders-gray-color;
+      margin-right: 8px;
+    }
+  }
+
+  &_circle {
+    flex: 0 0 auto;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    outline: 1px solid $borders-gray-color;
+    margin-right: 8px;
+    transition: all .3s;
+
+    &::before {
+      content: none;
+    }
+  
+    &.active,
+    &:hover {
+      border: 2px solid #fff;
+      outline: 1px solid $main-gray-color;
+    }
+
+    &.active {
+      pointer-events: none;
+    }
+  }
+
+  &_square {
+    width: min-content;
+    height: min-content;
+    padding: 8px;
+    margin-right: 8px;
+    transition: all 0.3s;
+
+    &::before {
+      content: none;
+    }
+
+    &:hover {
+      border-color: #000;
+    }
+  
+    &.active {
+      color: #fff;
+      border-color: transparent;
+      background-color: $main-gray-color;
+    }
+  }
+}
+
+@media #{$tablet-media-query} {
+
+  .button {
+
+    &_scroll {
+      margin-left: 84px;
+    }
+  }
+}

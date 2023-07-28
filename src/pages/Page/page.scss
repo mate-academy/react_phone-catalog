@@ -1,0 +1,47 @@
+@import "/styles/common";
+
+.page {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+  overflow-y: scroll;
+  min-width: 320px;
+
+  &__main {
+    flex-grow: 1;
+    padding: 24px 0 80px;
+  }
+
+  &__container {
+    max-width: 1130px;
+    margin: 0 auto;
+  }
+}
+
+@media #{$desktop-smallest-media-query} {
+
+  .page {
+
+    &__container {
+      max-width: unset;
+      padding: 0 24px;
+
+      &_home {
+        padding: 0;
+      
+        & .section {
+          padding: 0 24px;
+
+          &:first-child {
+            padding: 0;
+
+            & .section__title {
+              padding: 0 24px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,64 @@
+@import "../../../styles/common";
+
+.product-list {
+
+  &__container {
+    display: flex;
+    align-self: center;
+    margin-bottom: 40px;
+  }
+
+  &__content {
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    column-gap: 16px;
+    row-gap: 40px;
+  }
+
+  &__item {
+    cursor: pointer;
+    height: 100%;
+  }
+
+  &__dropdowns {
+    display: flex;
+  }
+
+  &__pagination {
+    margin-top: 24px;
+
+    &_top {
+      display: none;
+    }
+  }
+}
+
+@media #{$phone-media-query} {
+
+  .product-list {
+
+    &__content {
+      flex-direction: column;
+    }
+
+    &__container {
+      flex-direction: column;
+    }
+
+    &__dropdowns {
+      flex-direction: column;
+      margin: 0 auto;
+  
+      & .dropdown_items {
+        width: 176px;
+        margin-top: 20px;
+      }
+    }
+
+    &__pagination_top {
+      display: block;
+    }
+  }
+}

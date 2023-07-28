@@ -1,0 +1,19 @@
+@import "../../../styles/common";
+
+.category-card {
+  height: 100%;
+  width: 100%;
+  justify-content: flex-start;
+  cursor: pointer;
+  transition: all 0.3s;
+
+  &:hover {
+    scale: 1.05;
+  }
+
+  &__title {
+    @extend %h3;
+    color: $main-gray-color;
+    margin-top: 24px;
+  }
+}

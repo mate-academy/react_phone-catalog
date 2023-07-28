@@ -1,0 +1,150 @@
+@import "../../../styles/common";
+
+.header {
+  border-bottom: 1px solid $borders-gray-color;
+  height: 64px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  &__content {
+    display: flex;
+    align-items: center;
+  }
+
+  &__menu {
+    display: none;
+  }
+
+  &__logo {
+    background: center/contain no-repeat url($logo);
+    height: 24px;
+    width: 40px;
+    margin: 0 64px 0 26px;
+  }
+
+  &__container {
+    display: flex;
+  }
+
+  &__menu-open-button {
+    display: none;
+  }
+}
+
+.nav {
+  display: flex;
+
+  &__item {
+    cursor: pointer;
+    padding: 24px 0;
+    margin-right: 64px;
+    height: 100%;
+    @extend %uppercase;
+    color: $second-gray-color;
+    transition: color 0.3s;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &.selected {
+      color: $main-gray-color;
+      border-bottom: 3px solid $main-gray-color;
+    }
+
+    &:hover {
+      color: #000;
+    }
+  }
+}
+
+@media #{$desktop-smallest-media-query} {
+
+  .header {
+
+    &__menu-open-button {
+      display: block;
+      @include button-header;
+      border: none;
+      @include bgr-img;
+      background-image: url($icon-menu);
+      background-size: 20px 20px;
+    }
+
+    & .nav {
+      display: none;
+    }
+
+    &__box {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      margin-bottom: 64px;
+
+      & .header__menu-open-button {
+        background-image: url($icon-close);
+      }
+    }
+  }
+
+  .header__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+    overflow-y: auto;
+    transform: translateX(100%);
+    transition: transform 0.3s;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &.header__menu_opened {
+      transform: translateX(0);
+    }
+
+    & .nav {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+
+      &__item {
+        padding: 16px 0;
+        margin: 8px 0;
+      }
+    }
+
+    & .header__container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      width: 100%;
+    }
+
+    & .icon {
+      width: 100%;
+
+      & .icon__count {
+        top: 40%;
+        left: 50%;
+      }
+    }
+  }
+}
+
+@media #{$tablet-media-query} {
+
+  .nav {
+    flex-direction: column;
+
+    &__item {
+      padding: 16px 0;
+      margin: 8px 0;
+    }
+  }
+}

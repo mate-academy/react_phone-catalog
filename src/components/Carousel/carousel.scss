@@ -1,0 +1,75 @@
+@import "../../../styles/common";
+
+.carousel {
+  height: 432px;
+
+  &__content {
+    display: flex;
+    height: 100%;
+  }
+
+  &__image {
+    width: calc(100% - 96px);
+    height: 100%;
+    object-fit: cover;
+    margin: 0 16px;
+    transition: opacity 0.5s ease;
+  }
+
+  &__button {
+    cursor: pointer;
+    @include button-transparent;
+    height: 100%;
+
+    &_prev::before {
+      background-image: url($arrow-left);
+    }
+  
+    &_next::before {
+      background-image: url($arrow-right);
+    }
+  }
+}
+
+.carousel-pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+
+  &__item {
+    width: 20px;
+    height: 6px;
+    margin-right: 20px;
+    background-color: $borders-gray-color;
+    border: none;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &.selected {
+      background-color: $main-gray-color;
+    }
+  }
+}
+
+@media #{$tablet-media-query} {
+
+  .carousel {
+    height: unset;
+
+    &__content {
+      height: unset;
+    }
+
+    &__image {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+    }
+
+    &__button {
+      display: none;
+    }
+  }
+}

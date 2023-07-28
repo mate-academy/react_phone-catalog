@@ -1,0 +1,18 @@
+@import "../../../styles/common";
+
+.product-category {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 140px;
+}
+
+@media #{$phone-media-query} {
+
+  .product-category {
+    display: block;
+    grid-template-columns: unset;
+    gap: unset;
+    margin-bottom: 0;
+  }
+}

@@ -1,0 +1,104 @@
+@import "../../../styles/common";
+
+.checkout-card {
+  display: flex;
+  border: 1px solid $borders-gray-color;
+  padding: 30px;
+  margin-bottom: 16px;
+  align-items: center;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &__content,
+  &__container {
+    display: flex;
+    align-items: center;
+  }
+
+  &__button-remove {
+    border: none;
+    height: 16px;
+    width: 16px;
+    @include bgr-img;
+    background-image: url($icon-close-light-gray);
+    margin-right: 30px;
+    transition: all 0.3s;
+
+    &:hover {
+      background-image: url($icon-close);
+      transform: scale(1.05);
+    }
+  }
+  
+  &__img {
+    width: 66px;
+    height: 66px;
+    object-fit: contain;
+    margin-right: 30px;
+  }
+
+  &__title {
+    width: 295px;
+    @extend %body-text;
+    color: $main-gray-color;
+    margin-right: 50px;
+  }
+
+  &__actions {
+    display: flex;
+    height: 32px;
+    align-items: center;
+    margin-right: 16px;
+  }
+
+  &__button {
+    @include button-more-less;
+
+    &_prev {
+      content: "+";
+
+    }
+  }
+
+  &__count {
+    margin-right: 16px;
+    @extend %body-text;
+    color: #000;
+  }
+
+  &__price {
+    @extend %h2;
+    color: $main-gray-color;
+  }
+}
+
+@media #{$tablet-media-query} {
+
+  .checkout-card {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    grid-gap: 16px;
+    gap: 16px;
+    padding: 16px;
+
+    &__button-remove {
+      margin-bottom: 24px;
+    }
+
+    &__content,
+    &__container {
+      width: 100%;
+      justify-content: space-between;
+      grid-gap: 16px;
+      gap: 16px;
+    }
+
+    &__actions,
+    &__title {
+      margin: 0 0 16px;
+    }
+  }
+}

@@ -1,0 +1,25 @@
+@import "../../../styles/common";
+
+.section {
+  margin-bottom: 80px;
+
+  &__title {
+    @extend %h1;
+    margin-bottom: 24px;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+@media #{$phone-media-query} {
+
+  .section {
+    margin-bottom: 60px;
+
+    &__title {
+      text-align: center;
+    }
+  }
+}

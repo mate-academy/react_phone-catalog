@@ -1,0 +1,273 @@
+@import "/styles/common";
+
+.page__title {
+  @extend %h2-reg;
+  text-align: center;
+  text-transform: uppercase;
+  color: $accent-red;
+  background-color: rgba(249,205,205,0.2);
+  border: 1px solid $accent-red;
+  border-radius: 15px;
+  padding: 24px;
+  max-width: 360px;
+  margin: 64px auto;
+}
+
+.product-details {
+  
+  &__back {
+    align-items: center;
+    @extend %small-text;
+    color: $light-gray-color;
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 16px;
+  }
+
+  &__button-back {
+    background: none;
+    border: none;
+    color: $main-gray-color;
+    @extend %small-text;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      width: 16px;
+      height: 16px;
+      @include bgr-img;
+      background-image: url($arrow-left);
+    }
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__title {
+    @extend %h1;
+    margin-bottom: 40px;
+  }
+
+  &__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    justify-content: space-between;
+    margin-bottom: 80px;
+  }
+
+  &__section {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  &__subtitle {
+    width: 100%;
+    text-align: left;
+    @extend %h2;
+    padding-bottom: 16px;
+    margin-bottom: 32px;
+    border-bottom: 1px solid $borders-gray-color;
+  }
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__images-container {
+    display: flex;
+    width: 100%;
+    gap: 16px;
+  }
+
+  &__action {
+    width: 320px;
+
+    & .buttons-container {
+      height: 48px;
+      width: 100%;
+
+      & .button_add-to-cart {
+        height: 100%;
+        width: calc(100% - 56px);
+      }
+
+      & .button_like {
+        height: 48px;
+        width: 48px;
+      }
+    }
+
+    & .price__text_bold {
+      @extend %h1;
+    }
+  }
+
+  &__select {
+    width: 100%;
+    height: min-content;
+    padding-bottom: 24px;
+    border-bottom: 1px solid $borders-gray-color;
+  }
+}
+
+.image {
+  object-fit: contain;
+  object-position: center;
+  height: 100%;
+  width: 100%;
+
+  &__box {
+    flex-shrink: 0;
+    width: 100%;
+    max-height: 400px;
+    max-width: 400px;
+    aspect-ratio: 1/1;
+    margin-bottom: 0;
+  }
+
+  &_small {
+    border: 1px solid #c4c4c4;
+    transition: all 0.3s;
+    cursor: pointer;
+
+    &:hover {
+      border-color: #000;
+    }
+  }
+
+  &.active {
+    border-color: #000;
+  }
+
+  &-list {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    grid-gap: 8px;
+    gap: 8px;
+
+    &__box {
+      max-height: 50px;
+      aspect-ratio: 1/1;
+      background: transparent;
+      border: 1px solid #e2e6e9;
+    }
+  }
+}
+
+.colors {
+
+  &__title {
+    @extend %small-text;
+    margin-bottom: 8px;
+    color: $second-gray-color;
+  }
+
+  &__list {
+    display: flex;
+    grid-gap: 8px;
+    gap: 8px;
+  }
+}
+
+.capacity {
+
+  &__title {
+    @extend %small-text;
+    margin: 24px 0 8px;
+    color: $second-gray-color;
+  }
+
+  &__list {
+    display: flex;
+  }
+}
+
+.description {
+  
+  &__item {
+    margin-bottom: 32px;
+  }
+
+  &__title {
+    @extend %h3;
+    margin-bottom: 16px;
+  }
+
+  &__text {
+    @extend %body-text;
+    color: $second-gray-color;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.tech-specifications {
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+  }
+
+  &__text {
+    @extend %body-text;
+    color: $second-gray-color;
+
+    &--bold {
+      color: inherit;
+    }
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+@media #{$desktop-media-query} {
+  .product-details {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .image__box {
+    max-height: 275px;
+    max-width: 275px;
+  }
+}
+
+@media #{$tablet-media-query} {
+
+  .product-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 280px;
+
+    &__row {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    &__images-container {
+      flex-direction: column-reverse;
+      width: 100%;
+    }
+
+    &__action {
+      width: 100%;
+    }
+  }
+
+  .image-list {
+    flex-direction: row;
+  }
+}

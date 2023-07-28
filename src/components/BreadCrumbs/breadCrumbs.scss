@@ -1,0 +1,46 @@
+@import "/styles/common";
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 40px;
+
+  &__home {
+    height: 16px;
+    width: 16px;
+    @include bgr-img;
+    background-image: url($icon-home);
+  }
+    
+  &__list {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__link {
+    align-items: center;
+    @extend %small-text;
+    color: $main-gray-color;
+    text-transform: capitalize;
+    display: flex;
+    gap: 8px;
+
+    &::before {
+      content: "";
+      width: 16px;
+      height: 16px;
+      @include bgr-img;
+      background-image: url($arrow-right);
+      color: $light-gray-color;
+      font-weight: 300;
+    }
+
+    &.disabled {
+      pointer-events: none;
+      color: $light-gray-color;
+    }
+  }
+}

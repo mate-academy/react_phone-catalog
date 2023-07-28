@@ -1,0 +1,31 @@
+@import "/styles/common";
+
+.properties {
+  margin-top: 32px;
+
+  &__item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 8px;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &-list {
+      border-top: 1px solid $borders-gray-color;
+      padding-top: 16px;
+      margin-top: 6px;
+    }
+  }
+
+  &__text {
+    @extend %small-text;
+    color: $main-gray-color;
+
+    &_light-gray {
+      color: $second-gray-color;
+    }
+  }
+}

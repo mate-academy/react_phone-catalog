@@ -1,9 +1,10 @@
-import './App.scss';
+import React from 'react';
+import { Page } from './pages/Page/Page';
 
-const App = () => (
-  <div className="App">
-    <h1>React Phone Catalog</h1>
-  </div>
-);
-
-export default App;
+export const App: React.FC = () => {
+  return (
+    <div className="App">
+      <Page />
+    </div>
+  );
+};
