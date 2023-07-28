@@ -12,6 +12,7 @@ export const ProductPhotos: React.FC<Props> = ({
   mainPhoto,
   handlePhotoClick,
 }) => {
+  // {`./_new/${img}`}
   return (
     <div className="product-photos">
       <ul className="product-photos__list">
@@ -27,7 +28,7 @@ export const ProductPhotos: React.FC<Props> = ({
             <div className="product-photos__photo-item-box">
               <img
                 className="product-photos__img"
-                src={`./_new/${img}`}
+                src={`./new/${img}`}
                 alt="product img"
               />
             </div>
