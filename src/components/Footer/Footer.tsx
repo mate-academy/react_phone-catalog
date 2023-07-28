@@ -1,6 +1,7 @@
 import './Footer.scss';
 import { Link } from 'react-router-dom';
 import arrowUp from '../../images/Icons/arrow_up--dark.svg';
+import logo from '../../images/LOGO.svg';
 
 export const Footer = () => {
   const handleBackToTop = () => {
@@ -18,7 +19,7 @@ export const Footer = () => {
             to="/"
           >
             <img
-              src="/imgFigma/LOGO.svg"
+              src={logo}
               alt="logo"
             />
           </Link>
