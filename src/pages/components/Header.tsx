@@ -1,27 +1,32 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { FC } from 'react';
+import {
+  NavLink, useLocation,
+} from 'react-router-dom';
 import '../../styles/styles.scss';
 
 export const Header: FC = () => {
+  const location = useLocation();
+
   return (
     <header className="header">
       <div className="header__content">
         <nav className="header__nav nav">
-          <a href="#" className="nav__link">
-            <img src="images/LOGO.png" alt="Logo" />
-          </a>
-          <a href="#" className="nav__link">
+          <NavLink to="/" className="nav__link">
+            <img src="images/logo.jpg" alt="Logo" />
+          </NavLink>
+          <NavLink to="/" className="nav__link">
             home
-          </a>
-          <a href="#" className="nav__link">
+          </NavLink>
+          <NavLink to={`/phones${location.search.toString()}`} className="nav__link">
             Phones
-          </a>
-          <a href="#" className="nav__link">
+          </NavLink>
+          <NavLink to="/tablets" className="nav__link">
             tablets
-          </a>
-          <a href="#" className="nav__link">
+          </NavLink>
+          <NavLink to="/accessories" className="nav__link">
             accessories
-          </a>
+          </NavLink>
         </nav>
         <div
           className="

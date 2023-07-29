@@ -1,42 +1,65 @@
-import { FC, useState, useEffect } from 'react';
-
+import { FC, useEffect } from 'react';
+import {
+  Navigate, Route, Routes,
+} from 'react-router-dom';
 import './App.scss';
 
 import { Header } from './pages/components/Header';
 import { HomePage } from './pages/HomePage';
 import { PhonesPage } from './pages/PhonesPage';
 import { Footer } from './pages/components/Footer';
-import { getPhones } from './api/phone';
-import { Phone } from './types/Phone';
-// import { ProductDetailsPage } from './pages/ProductDetailsPage';
+import { ProductDetailsPage } from './pages/ProductDetailsPage';
+import { useAppDispatch } from './app/hooks';
+import { incrementAsync as loadedPhones } from './features/phones/phonesSlice';
 
-const App: FC = () => {
-  const [phones, setPhones] = useState<Phone[]>([]);
-
-  async function loadedPhones() {
-    try {
-      const result = await getPhones();
-
-      setPhones(result);
-    } catch (error) {
-      // eslint-disable-next-line no-console
-      console.log(error);
-    }
-  }
+export const App: FC = () => {
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
-    loadedPhones();
+    dispatch(loadedPhones());
   }, []);
 
   return (
     <div className="App">
-      <Header />
-      <HomePage phones={phones} />
-      <PhonesPage phones={phones} />
-      {/* <ProductDetailsPage /> */}
-      <Footer />
+      <Routes>
+        <Route
+          path="/"
+          element={(
+            <>
+              <Header />
+              <HomePage />
+              <Footer />
+            </>
+          )}
+        />
+        <Route path="home" element={<Navigate to="/" replace />} />
+        <Route path="phones">
+          <Route
+            index
+            element={(
+              <>
+                <Header />
+                <PhonesPage />
+                <Footer />
+              </>
+            )}
+          />
+          <Route
+            path="/phones/:productId"
+            element={(
+              <>
+                <Header />
+                <ProductDetailsPage />
+                <Footer />
+              </>
+            )}
+          />
+        </Route>
+        <Route
+          path="*"
+          element={<h1 className="title">Page not found</h1>}
+        />
+      </Routes>
     </div>
   );
 };
-
-export default App;

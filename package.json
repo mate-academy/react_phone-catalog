@@ -7,10 +7,14 @@
   "license": "GPL-3.0",
   "dependencies": {
     "@cypress/react": "^5.12.4",
+    "@reduxjs/toolkit": "^1.9.5",
+    "@types/react-redux": "^7.1.25",
     "bulma": "^0.9.3",
     "classnames": "^2.3.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-redux": "^8.1.1",
+    "react-router-dom": "^6.14.2",
     "react-scripts": "^4.0.3"
   },
   "devDependencies": {
@@ -23,7 +27,7 @@
     "@mate-academy/stylelint-config": "*",
     "@types/node": "^17.0.23",
     "@types/react": "^17.0.43",
-    "@types/react-dom": "^17.0.14",
+    "@types/react-dom": "^18.2.7",
     "@types/react-slick": "^0.23.10",
     "cypress": "^9.5.3",
     "eslint": "^7.32.0",

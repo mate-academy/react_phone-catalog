@@ -1,42 +1,67 @@
 /* Basic styling for the custom select container */
 .custom-select {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  width: 176px;
+  height: 40px;
+  padding:  10px 0 9px 12px;
+  flex-shrink: 0;
   position: relative;
-  display: inline-block;
   border: 1px solid #ccc;
-  padding: 8px;
   cursor: pointer;
+
+  color: var(--gray-primary, #313237);
+
+  /* Buttons */
+  font-family: Mont-SemiBold;
+  font-size: 14px;
+  font-style: normal;
+  line-height: 21px; /* 150% */
 }
 
 /* Styling for the selected option */
 .selected-option {
-  padding: 4px;
+  // padding: 4px;
 
 }
 
 /* Styling for the options list */
 .options {
+  box-sizing: border-box;
+  width: 176px;
+
   display: none;
   position: absolute;
   top: 100%;
   left: 0;
-  margin-top: 4px;
+  margin: 0 4px 0 0;
   background-color: #fff;
   border: 1px solid #ccc;
   list-style: none;
-  padding: 0;
+  padding: 8px 1px;
+
+  &__option {
+    box-sizing: border-box;
+
+    color: #89939A;
+    width: 176px;
+    height: 32px;
+    padding:  6px 0 5px 12px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #FAFBFC;
+      color: #313237;
+    }
+  }
 }
 
-/* Styling for individual options */
-.options li {
-  padding: 4px 8px;
-  cursor: pointer;
-
-}
 
 /* Show options list on focus or click */
-.custom-select:focus .options {
-  display: block;
-}
+// .custom-select:focus .options {
+//   display: block;
+// }
 
 .options--opened {
   display: block;

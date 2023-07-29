@@ -1,4 +1,143 @@
 .product-details-page {
   @include pageMaxWidth;
+  &__link-move-back {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    text-decoration: none;
+    color: var(--gray-secondary, #89939A);
 
+    /* Small text 12 */
+    font-family: Mont-SemiBold;
+    font-size: 12px;
+    font-style: normal;
+    line-height: normal;
+  }
+
+  &__title {
+    color: var(--gray-primary, #313237);
+
+    font-family: Mont-Bold;
+    font-size: 32px;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: -0.32px;
+  }
+
+  &__product-section {
+  }
+}
+
+.link-move-back__arrow {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.product-section {
+  display: flex;
+  &__gallery {
+  }
+  &__choose-section {
+
+  }
+}
+
+.gallery {
+  display: flex;
+  &__small-img-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  &__big-img-container {
+
+  }
+}
+
+.small-img-container {
+  &__img {
+    width: 80px;
+    height: 80px;
+    flex-shrink: 0;
+  }
+}
+
+.big-img-container {
+  padding: 11px;
+  margin-inline: 28px 75px;
+  &__big-img {
+    width: 442px;
+    height: 442px;
+    flex-shrink: 0;
+  }
+}
+
+.choose-section {
+  .__colors-picker {
+
+  }
+}
+.colors-picker {
+  &__title {
+    color: var(--gray-secondary, #89939A);
+
+    /* Small text 12 */
+    font-family: Mont-SemiBold;
+    font-size: 12px;
+    font-style: normal;
+    line-height: normal;
+  }
+  &__items-colors {
+    list-style: none;
+    padding: 0;
+  }
+  &__list {
+    display: flex;
+    padding: 0;
+    gap: 8px;
+  }
+}
+
+.items-colors {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  margin: 0;
+  background-color: #E2E6E9;
+  &:hover {
+    background-color: #313237;
+  }
+
+  &__color {
+    box-sizing: border-box;
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    width: 29px;
+    height: 29px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    margin: 0;
+    border: 2px solid #fff;
+
+    &--1 {
+      background-color: #FCDBC1;
+    }
+    &--2 {
+      background-color: #5F7170;
+
+    }
+    &--3 {
+      background-color: #4C4C4C;
+    }
+    &--4 {
+      background-color: #F0F0F0;
+    }
+  }
 }

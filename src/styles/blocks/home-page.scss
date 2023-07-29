@@ -32,7 +32,7 @@
   &__container {
   }
 
-  &__picture {
+  &__pictures {
     width: 1040px;
     height: 400px;
 
@@ -40,9 +40,12 @@
   }
 }
 
-.picture {
+.pictures {
   display: flex;
   overflow: hidden;
+  &__picture {
+    width: 1040px;
+  }
 }
 
 .pagination {

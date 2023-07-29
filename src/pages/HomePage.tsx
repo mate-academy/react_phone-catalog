@@ -6,24 +6,37 @@ import '../styles/styles.scss';
 
 import { PreviewSlider } from './components/PreviewSlider';
 import { Phone } from '../types/Phone';
+import { useAppSelector } from '../app/hooks';
+import { AsyncStatus } from '../types/AsyncStatus';
+import { Loader } from './components/Loader';
 
-type Props = {
-  phones: Phone[];
-};
+// type Props = {
+//   phones: Phone[];
+// };
 
-export const HomePage: React.FC<Props> = ({ phones }) => {
+export const HomePage: React.FC = () => {
+  const phones: Phone[] = useAppSelector(state => state.phones.value);
+  const statusLadingPhones = useAppSelector(state => state.phones.status);
+
   const hotPricePhones = [...phones].sort(
-    (a: Phone, b: Phone) => +a.fullPrice - +b.fullPrice,
+    (a: Phone, b: Phone) => {
+      const aValue = (a.fullPrice - a.price) / a.fullPrice;
+      const bValue = (b.fullPrice - b.price) / b.fullPrice;
+
+      return aValue - bValue;
+    },
   );
 
   const brandNewModels = [...phones].sort(
-    (a: Phone, b: Phone) => +a.year - +b.year,
+    (a: Phone, b: Phone) => +b.year - +a.year,
   );
 
   const images = [
-    { imgUrl: 'images/BannerHomePage.png', id: '01' },
-    { imgUrl: 'images/BannerHomePage.png', id: '02' },
-    { imgUrl: 'images/BannerHomePage.png', id: '03' },
+    { imgUrl: 'images/banner-phones.png', id: '01' },
+    { imgUrl: 'images/banner-phones.png', id: '02' },
+    { imgUrl: 'images/banner-phones.png', id: '03' },
+    // { imgUrl: 'images/banner-accessories.png', id: '01' },
+    // { imgUrl: 'images/banner-tablets.png', id: '03' },
   ];
 
   // const products = [
@@ -42,9 +55,9 @@ export const HomePage: React.FC<Props> = ({ phones }) => {
       <div className="home-page">
         <div className="home-page__preview-slider preview-slider">
           <PreviewSlider>
-            {images.map((img, index) => (
+            {images.map(img => (
               <img
-                className={`picture-${index}`}
+                className="pictures__picture"
                 src={img.imgUrl}
                 alt="Banner"
                 key={img.id}
@@ -57,7 +70,11 @@ export const HomePage: React.FC<Props> = ({ phones }) => {
           <h1 className="hot-prices__title">
             Hot prices
           </h1>
-          <ProductsSlider phones={hotPricePhones} />
+          {statusLadingPhones === AsyncStatus.LOADING ? (
+            <Loader />
+          ) : (
+            <ProductsSlider phones={hotPricePhones} />
+          )}
         </div>
 
         <div className="home-page__shop-by-category shop-by-category">
@@ -109,7 +126,11 @@ export const HomePage: React.FC<Props> = ({ phones }) => {
           <h1 className="brand-new__title">
             Brand new models
           </h1>
-          <ProductsSlider phones={brandNewModels} />
+          {statusLadingPhones === AsyncStatus.LOADING ? (
+            <Loader />
+          ) : (
+            <ProductsSlider phones={brandNewModels} />
+          )}
         </div>
       </div>
 

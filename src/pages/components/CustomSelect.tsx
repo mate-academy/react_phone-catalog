@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import {
-  Dispatch, FC, SetStateAction, useState,
+  Dispatch, FC, SetStateAction, useState, useEffect,
 } from 'react';
 import classNames from 'classnames';
 // eslint-disable-next-line import/no-cycle
@@ -37,9 +37,43 @@ const CustomSelect: FC<Props> = ({ options, defaultOption, onChange }) => {
     }
   };
 
+  const selectorText = (optionValue: string) => {
+    switch (optionValue) {
+      case 'age':
+        return 'Newest';
+      case 'price':
+        return 'Cheapest';
+      case 'name':
+        return 'Alphabetically';
+
+      default:
+        return optionValue.toUpperCase();
+    }
+  };
+
+  // Add an event listener to the document body to handle clicks outside the selector
+  useEffect(() => {
+    const handleOutsideClick = (event: MouseEvent) => {
+      const target = event.target as HTMLElement;
+      const customSelect = document.querySelectorAll('.custom-select');
+
+      if (customSelect
+          && !customSelect[0]?.contains(target)
+          && !customSelect[1]?.contains(target)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.body.addEventListener('click', handleOutsideClick);
+
+    return () => {
+      document.body.removeEventListener('click', handleOutsideClick);
+    };
+  }, []);
+
   return (
     <div className="custom-select" onClick={toggleDropdown}>
-      <div className="selected-option">{selectedOption}</div>
+      <div className="selected-option">{selectorText(selectedOption)}</div>
       {isOpen && (
         <ul className={classNames(
           'options',
@@ -48,11 +82,11 @@ const CustomSelect: FC<Props> = ({ options, defaultOption, onChange }) => {
         >
           {options.map((option: string) => (
             <li
-              // className=
+              className="options__option"
               key={option}
               onClick={() => handleOptionClick(option)}
             >
-              {option}
+              {selectorText(option)}
             </li>
           ))}
         </ul>

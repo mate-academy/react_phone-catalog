@@ -22,5 +22,9 @@
     color: var(--gray-secondary, #89939A);
     font-family: Mont-SemiBold;
     font-size: 12px;
+
+    &::first-letter {
+      text-transform: capitalize;
+    }
   }
 }

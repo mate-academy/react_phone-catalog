@@ -6,6 +6,11 @@
   background: var(--gray-white, #FFF);
   padding: 32px 32px 24px;
 
+  &__link {
+    text-decoration: none;
+    color: var(--gray-primary, #313237);
+  }
+
   &__phone-img {
     width: 208px;
     height: 208px;
@@ -17,6 +22,9 @@
 
     font-size: 14px;
     line-height: 21px; /* 150% */
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
   &__price {

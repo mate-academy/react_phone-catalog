@@ -1,6 +1,7 @@
 // BreadcrumbItem.js
 import { FC } from 'react';
 import '../../styles/styles.scss';
+import { NavLink } from 'react-router-dom';
 
 type Props = {
   text: string,
@@ -8,18 +9,22 @@ type Props = {
 };
 
 const BreadcrumbItem: FC<Props> = ({ text, link }) => {
+  const capitalizeFirstLetter = (str: string) => {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  };
+
   return (
     <>
-      {(text === 'Home') ? (
-        <a className="breadcrumb-item__link" href={link}>
+      {(text === '') ? (
+        <NavLink className="breadcrumb-item__link" to="/">
           <img src="images/icons/Home.svg" alt="Home icon" />
-        </a>
+        </NavLink>
       ) : (
         <>
-          <a className="breadcrumb-item__link" href={link}>
+          <NavLink className="breadcrumb-item__link" to={`${link}`}>
             <img src="images/icons/ArrowRight.svg" alt="Arrow right" />
-            {text}
-          </a>
+            {capitalizeFirstLetter(text)}
+          </NavLink>
         </>
       )}
     </>

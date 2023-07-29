@@ -102,7 +102,7 @@ export const PreviewSlider: React.FC<Props> = React.memo(({ children }) => {
         <img src="images/icons/ArrowLeft.svg" alt="" />
       </button>
       <div className="preview-slider__container">
-        <div className="preview-slider__picture picture">{pages}</div>
+        <div className="preview-slider__pictures pictures">{pages}</div>
         <div className="preview-slider__pagination pagination">
           {pages.map((page, index) => (
             <button
