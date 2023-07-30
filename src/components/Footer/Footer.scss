@@ -22,18 +22,14 @@
 
   &__item {
     &:hover {
-      color: #000;
+      color: #313237;
     }
   }
 
   &__button {
     display: flex;
     gap: 16px;
-
-    &-text {
-      display: flex;
-      align-items: center;
-    }
+    cursor: pointer;
 
     &-btn {
       display: flex;
@@ -45,8 +41,20 @@
       background: none;
 
       border: 1px solid #b4bcc3;
+    }
 
-      cursor: pointer;
+    &:hover {
+      color: #313237;
+
+      .footer__button-btn {
+        border-color: #313237;
+        cursor: pointer;
+      }
+    }
+
+    &-text {
+      display: flex;
+      align-items: center;
     }
   }
 }

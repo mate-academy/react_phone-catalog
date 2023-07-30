@@ -8,6 +8,7 @@ import arrowRight from '../../images/arrows/arrow-right.svg';
 import { DropDown } from '../../components/DropDown/DropDown';
 
 import './PhonesPage.scss';
+import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 
 type Props = {
   phones: Product[];
@@ -105,7 +106,7 @@ export const PhonesPage: React.FC<Props> = ({ phones }) => {
           <h1>Loading...</h1>
         ) : (
           <div className="PhonesPage__content">
-            <div style={{ marginTop: 24 }}>navigation</div>
+            <Breadcrumbs />
             <h1 className="PhonesPage__title">Mobile phones</h1>
 
             <h3 className="PhonesPage__subtitle">{`${phonesLength} models`}</h3>

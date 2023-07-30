@@ -11,6 +11,8 @@ import { Footer } from './components/Footer/Footer';
 import { getProducts } from './api/products';
 import { Product } from './types/Product';
 import { ProductType } from './types/ProductType';
+import { ProductDetailsPage }
+  from './pages/ProductDetailsPage/ProductDetailsPage';
 
 import './App.scss';
 
@@ -31,13 +33,17 @@ const App: React.FC = () => {
     loadProducts();
   }, []);
 
-  const phones = products.filter(product => product.type === ProductType.phone);
+  const phones = products.filter(
+    (product) => product.type === ProductType.phone,
+  );
   const tablets = products.filter(
-    product => product.type === ProductType.tablet,
+    (product) => product.type === ProductType.tablet,
   );
   const accessories = products.filter(
-    product => product.type === ProductType.accessory,
+    (product) => product.type === ProductType.accessory,
   );
+
+  const suggestedProducts = [...products].sort(() => Math.random() - 0.5);
 
   return (
     <div className="app">
@@ -51,6 +57,35 @@ const App: React.FC = () => {
           <Route
             path="/accessories"
             element={<AccessoriesPage accessories={accessories} />}
+          />
+          <Route
+            path="/phones/:productId"
+            element={(
+              <ProductDetailsPage
+                products={phones}
+                suggestedProducts={suggestedProducts}
+              />
+            )}
+          />
+
+          <Route
+            path="/tablets/:productId"
+            element={(
+              <ProductDetailsPage
+                products={tablets}
+                suggestedProducts={suggestedProducts}
+              />
+            )}
+          />
+
+          <Route
+            path="/accessories/:productId"
+            element={(
+              <ProductDetailsPage
+                products={accessories}
+                suggestedProducts={suggestedProducts}
+              />
+            )}
           />
         </Routes>
       </main>

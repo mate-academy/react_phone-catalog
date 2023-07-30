@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -7,6 +9,10 @@ import arrowBtn from '../../images/footer-button.svg';
 import './Footer.scss';
 
 export const Footer: React.FC = () => {
+  const handlScrollToTop = () => {
+    window.scrollTo({ top: 0, left: 0 });
+  };
+
   return (
     <footer className="footer">
       <div className="container">
@@ -17,17 +23,23 @@ export const Footer: React.FC = () => {
 
           <ul className="footer__menu">
             <li className="footer__item">
-              <Link to="https://github.com/sheva10barca">Github</Link>
+              <Link to="https://github.com/sheva10barca" target="_blank">
+                Github
+              </Link>
             </li>
             <li className="footer__item">
-              <Link to="/contacts">Contacts</Link>
+              <Link to="/contacts" target="_blank">
+                Contacts
+              </Link>
             </li>
             <li className="footer__item">
-              <Link to="/rights">Rights</Link>
+              <Link to="/rights" target="_blank">
+                Rights
+              </Link>
             </li>
           </ul>
 
-          <div className="footer__button">
+          <div className="footer__button" onClick={handlScrollToTop}>
             <div className="footer__button-text">Back to top</div>
             <div className="footer__button-arrow">
               <button type="button" className="footer__button-btn">
