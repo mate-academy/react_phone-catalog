@@ -23,9 +23,9 @@ export const ProductDetailsPage: FC = () => {
   );
 
   useEffect(() => {
-    if (selectedProduct) {
+    if (productCard) {
       window.localStorage.setItem(
-        'productCard', JSON.stringify(selectedProduct),
+        'productCard', JSON.stringify(productCard),
       );
     }
 
@@ -39,12 +39,20 @@ export const ProductDetailsPage: FC = () => {
   }, []);
 
   useEffect(() => {
-    if (productCard) {
-      dispatch(loadPhoneDetails(productCard.id));
-    }
-  }, [productCard]);
+    if (selectedProduct) {
+      dispatch(loadPhoneDetails(selectedProduct.id));
+      window.localStorage.setItem('productCard', JSON.stringify(phoneDetails));
+      if (window.localStorage.getItem('productCard')) {
+        const savedCard = window.localStorage.getItem('productCard') || '';
 
-  const isLoading = !productCard || phoneDetailsStatus === AsyncStatus.LOADING || !phoneDetails;
+        if (savedCard.length > 0) {
+          setProductCard(JSON.parse(savedCard));
+        }
+      }
+    }
+  }, [selectedProduct]);
+
+  const isLoading = phoneDetailsStatus === AsyncStatus.LOADING || !productCard || !phoneDetails;
 
   return (
     <div className="product-details-page">
@@ -52,7 +60,7 @@ export const ProductDetailsPage: FC = () => {
         <Loader />
       ) : (
         <>
-          <Breadcrumbs productName={productCard.name} />
+          <Breadcrumbs productName={phoneDetails.name} />
           <Link className="product-details-page__link-move-back link-move-back" to="..">
             <img className="link-move-back__arrow" src="images/icons/ArrowLeft-dark.svg" alt="Back button" />
             Back
@@ -96,41 +104,45 @@ export const ProductDetailsPage: FC = () => {
               <div className="choose-section__capasity-picker capasity-picker">
                 <h2 className="capasity-picker__title">Select capacity</h2>
                 <ul className="capasity-picker__list">
-                  <li className="capasity-picker__items">64 GB</li>
+                  <li className="capasity-picker__items capasity-picker__items--active">64 GB</li>
                   <li className="capasity-picker__items">256 GB</li>
                   <li className="capasity-picker__items">512 GB</li>
                 </ul>
               </div>
               <div className="choose-section__buy-buttons buy-buttons">
-                <p className="buy-buttons__price">$1099</p>
-                <p className="buy-buttons__price buy-buttons__price--discount">$1199</p>
-                <button
-                  className="buy-buttons__add-to-card"
-                  type="button"
-                >
-                  Add to cart
-                </button>
-                <a
-                  href="http://"
-                  className="buy-buttons__add-to-favorites add-to-favorites"
-                >
-                  <img
-                    className="add-to-favorites__icon"
-                    src="images/icons/HeartLike.svg"
-                    alt="icon"
-                  />
-                </a>
+                <div className="buy-buttons__prices-amount prices-amount">
+                  <p className="prices-amount__price">$1099</p>
+                  <p className="prices-amount__price prices-amount__price--discount">$1199</p>
+                </div>
+                <div className="buy-buttons__buttons-buy-like buttons-buy-like">
+                  <button
+                    className="buttons-buy-like__add-to-card"
+                    type="button"
+                  >
+                    Add to cart
+                  </button>
+                  <a
+                    href="http://"
+                    className="buttons-buy-like__add-to-favorites add-to-favorites"
+                  >
+                    <img
+                      className="add-to-favorites__icon"
+                      src="images/icons/HeartLike.svg"
+                      alt="icon"
+                    />
+                  </a>
+                </div>
               </div>
-              <div className="choose-section__description description">
-                <dl className="product-card__description-phone description-phone">
-                  <dt className="description-phone--title">Screen</dt>
-                  <dd className="description-phone--value">6.5” OLED</dd>
-                  <dt className="description-phone--title">Resolution</dt>
-                  <dd className="description-phone--value">2688x1242</dd>
-                  <dt className="description-phone--title">Processor</dt>
-                  <dd className="description-phone--value">Apple A12 Bionic</dd>
-                  <dt className="description-phone--title">RAM</dt>
-                  <dd className="description-phone--value">3 GB</dd>
+              <div className="choose-section__details-product details-product">
+                <dl className="details-product__description-product description-product">
+                  <dt className="description-product--title">Screen</dt>
+                  <dd className="description-product--value">6.5” OLED</dd>
+                  <dt className="description-product--title">Resolution</dt>
+                  <dd className="description-product--value">2688x1242</dd>
+                  <dt className="description-product--title">Processor</dt>
+                  <dd className="description-product--value">Apple A12 Bionic</dd>
+                  <dt className="description-product--title">RAM</dt>
+                  <dd className="description-product--value">3 GB</dd>
                 </dl>
               </div>
             </div>
@@ -140,9 +152,9 @@ export const ProductDetailsPage: FC = () => {
               <h2 className="article-about__title">About</h2>
               <h3 className="article-about__sub-title">And then there was Pro</h3>
               <p className="article-about__text">
-                A transformative triple‑camera system that adds tons of capability without complexity.
+                <p>A transformative triple‑camera system that adds tons of capability without complexity.</p>
 
-                An unprecedented leap in battery life. And a mind‑blowing chip that doubles down on machine learning and pushes the boundaries of what a smartphone can do. Welcome to the first iPhone powerful enough to be called Pro.
+                <p>An unprecedented leap in battery life. And a mind‑blowing chip that doubles down on machine learning and pushes the boundaries of what a smartphone can do. Welcome to the first iPhone powerful enough to be called Pro.</p>
               </p>
               <h3 className="article-about__sub-title">Camera</h3>
               <p className="article-about__text">
@@ -153,29 +165,30 @@ export const ProductDetailsPage: FC = () => {
                 iPhone 11 Pro lets you capture videos that are beautifully true to life, with greater detail and smoother motion. Epic processing power means it can shoot 4K video with extended dynamic range and cinematic video stabilization — all at 60 fps. You get more creative control, too, with four times more scene and powerful new editing tools to play with.
               </p>
             </article>
-            <article className="product-articles__tech-specs">
-              <dl className="tech-specs__description-product description-product">
-                <dt className="description-product--title">Screen</dt>
-                <dd className="description-product--value">6.5” OLED</dd>
-                <dt className="description-product--title">Resolution</dt>
-                <dd className="description-product--value">2688x1242</dd>
-                <dt className="description-product--title">Processor</dt>
-                <dd className="description-product--value">Apple A12 Bionic</dd>
-                <dt className="description-product--title">RAM</dt>
-                <dd className="description-product--value">3 GB</dd>
-                <dt className="description-product--title">Built in memory</dt>
-                <dd className="description-product--value">64 GB</dd>
-                <dt className="description-product--title">Camera</dt>
-                <dd className="description-product--value">12 Mp + 12 Mp + 12 Mp (Triple)</dd>
-                <dt className="description-product--title">Zoom</dt>
-                <dd className="description-product--value">Optical, 2x</dd>
-                <dt className="description-product--title">Cell</dt>
-                <dd className="description-product--value">GSM, LTE, UMTS</dd>
+            <article className="product-articles__tech-specs tech-specs">
+              <h2 className="tech-specs__title">Tech specs</h2>
+              <dl className="tech-specs__tech-specs-list tech-specs-list">
+                <dt className="tech-specs-list--title">Screen</dt>
+                <dd className="tech-specs-list--value">6.5” OLED</dd>
+                <dt className="tech-specs-list--title">Resolution</dt>
+                <dd className="tech-specs-list--value">2688x1242</dd>
+                <dt className="tech-specs-list--title">Processor</dt>
+                <dd className="tech-specs-list--value">Apple A12 Bionic</dd>
+                <dt className="tech-specs-list--title">RAM</dt>
+                <dd className="tech-specs-list--value">3 GB</dd>
+                <dt className="tech-specs-list--title">Built in memory</dt>
+                <dd className="tech-specs-list--value">64 GB</dd>
+                <dt className="tech-specs-list--title">Camera</dt>
+                <dd className="tech-specs-list--value">12 Mp + 12 Mp + 12 Mp (Triple)</dd>
+                <dt className="tech-specs-list--title">Zoom</dt>
+                <dd className="tech-specs-list--value">Optical, 2x</dd>
+                <dt className="tech-specs-list--title">Cell</dt>
+                <dd className="tech-specs-list--value">GSM, LTE, UMTS</dd>
               </dl>
             </article>
           </section>
           <div className="product-details-page__you-may-like you-may-like">
-            <h2 className="you-may-like">You may also like</h2>
+            <h2 className="you-may-like__title">You may also like</h2>
             <ProductsSlider phones={brandNewModels} />
           </div>
         </>
