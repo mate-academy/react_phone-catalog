@@ -15,7 +15,6 @@ import { BackButton } from '../../components/BackButton/BackButton';
 import { FavouritesButton } from
   '../../components/FavouritesButton/FavouritesButton';
 import { CartButton } from '../../components/CartButton/CartButton';
-// import { useMemo } from 'react';
 
 const findProductById = (itemId = '', products: Phone[]) => {
   return products.find((product) => product.itemId === itemId);
@@ -78,24 +77,7 @@ export const PhoneDetails: React.FC<Props> = ({
     return <Loader />;
   }
 
-  // const shuffleArray = (array: Phone[]) => {
-  //   const shuffledArray = [...array];
-
-  //   // eslint-disable-next-line no-plusplus
-  //   for (let i = shuffledArray.length - 1; i > 0; i--) {
-  //     const randomIndex = Math.floor(Math.random() * (i + 1));
-
-  //     [shuffledArray[i], shuffledArray[randomIndex]] = [
-  //       shuffledArray[randomIndex], shuffledArray[i],
-  //     ];
-  //   }
-
-  //   return shuffledArray;
-  // };
-
-  // const mixedPhones = useMemo(() => shuffleArray([...phones]), [phones]);
-
-  const mixedPhones = phones.sort((a: Phone, b:Phone) => b.year - a.year)
+  const mixedPhones = phones.sort((a: Phone, b:Phone) => b.year - a.year);
 
   const foundPhone = phones.find((phone) => phone.phoneId === product?.id);
 
