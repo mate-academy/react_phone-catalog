@@ -1,0 +1,20 @@
+.AddToFavButton {
+  border: 1px solid #b4bdc3;
+  height: 40px;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: none;
+
+  cursor: pointer;
+
+  &:hover {
+    border-color: #313237;
+  }
+}
+
+.selected {
+  border-color: #e2e6e9;
+}

@@ -1,4 +1,7 @@
 .TabletsPage {
+  display: flex;
+  flex-grow: 1;
+
   &__title {
     margin-top: 40px;
     color: #313237;

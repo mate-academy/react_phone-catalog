@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
-import cn from 'classnames';
 
 import { Product } from '../../types/Product';
+
 import { ProductCard } from '../../components/ProductCard/ProductCard';
-import arrowLeft from '../../images/arrows/arrow-left.svg';
-import arrowRight from '../../images/arrows/arrow-right.svg';
 import { DropDown } from '../../components/DropDown/DropDown';
+import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
+import { Pagination } from '../../components/Pagination/Pagination';
 
 import './PhonesPage.scss';
-import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 
 type Props = {
   phones: Product[];
@@ -70,35 +69,6 @@ export const PhonesPage: React.FC<Props> = ({ phones }) => {
   const endIndex = startIndex + pageSize;
   const visiblePhones = sortedPhones.slice(startIndex, endIndex);
 
-  const handlePaginationButtonClick = (page: number) => {
-    setCurrentPage(page);
-  };
-
-  const generatePageNumbers = () => {
-    const totalPageCount = Math.ceil(phonesLength / pageSize);
-    const pageNumbers = [];
-
-    for (let i = 1; i <= totalPageCount; i += 1) {
-      pageNumbers.push(i);
-    }
-
-    return pageNumbers;
-  };
-
-  const handlePaginationLeftClick = () => {
-    if (currentPage > 1) {
-      setCurrentPage((prevPage) => prevPage - 1);
-    }
-  };
-
-  const handlePaginationRightClick = () => {
-    const maxPage = Math.ceil(phonesLength / pageSize);
-
-    if (currentPage < maxPage) {
-      setCurrentPage((prevPage) => prevPage + 1);
-    }
-  };
-
   return (
     <div className="PhonesPage">
       <div className="container">
@@ -148,40 +118,12 @@ export const PhonesPage: React.FC<Props> = ({ phones }) => {
             </div>
 
             {showPagination && (
-              <div className="PhonesPage__pagination" data-cy="pagination">
-                <button
-                  type="button"
-                  className="PhonesPage__button PhonesPage__button-prev"
-                  onClick={handlePaginationLeftClick}
-                  data-cy="paginationLeft"
-                >
-                  <img src={arrowLeft} alt="previous page button" />
-                </button>
-                {generatePageNumbers().map((pageNumber) => (
-                  <button
-                    type="button"
-                    key={pageNumber}
-                    className={cn(
-                      'PhonesPage__button',
-                      'PhonesPage__button-page',
-                      {
-                        active: currentPage === pageNumber,
-                      },
-                    )}
-                    onClick={() => handlePaginationButtonClick(pageNumber)}
-                  >
-                    {pageNumber}
-                  </button>
-                ))}
-                <button
-                  type="button"
-                  className="PhonesPage__button PhonesPage__button-next"
-                  onClick={handlePaginationRightClick}
-                  data-cy="paginationRight"
-                >
-                  <img src={arrowRight} alt="next page button" />
-                </button>
-              </div>
+              <Pagination
+                currentPage={currentPage}
+                pageSize={pageSize}
+                phonesLength={phonesLength}
+                setCurrentPage={setCurrentPage}
+              />
             )}
           </div>
         )}

@@ -23,11 +23,16 @@
     width: 1040px;
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
+
+    // &.active {
+    //   opacity: 1;
+    // }
   }
 
   &__img {
     height: 400px;
     width: 1040px;
+    object-fit: cover;
   }
 
   &__button {
@@ -54,13 +59,9 @@
     width: 14px;
 
     cursor: pointer;
+
+    &.active {
+      background-color: #313237;
+    }
   }
-}
-
-.active {
-  background-color: #313237;
-}
-
-.carousel__image.active {
-  opacity: 1;
 }

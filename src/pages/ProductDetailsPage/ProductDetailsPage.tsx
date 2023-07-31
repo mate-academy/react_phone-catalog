@@ -8,10 +8,13 @@ import { ProductsSlider } from '../../components/ProductsSlider/ProductsSlider';
 import { Product } from '../../types/Product';
 import { BackButton } from '../../components/BackButton/BackButton';
 import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
-
-import favIcon from '../../images/heart.svg';
-import './ProductDetailsPage.scss';
 import { getDiscount } from '../../helpers/getDiscount';
+import { AddToCartButton }
+  from '../../components/AddToCartButton/AddToCartButton';
+import { AddToFavButton }
+  from '../../components/AddToFavButton/AddToFavButton';
+
+import './ProductDetailsPage.scss';
 
 type Props = {
   suggestedProducts: Product[];
@@ -92,7 +95,6 @@ export const ProductDetailsPage: React.FC<Props> = ({
 
               <div className="ProductDetailsPage__current">
                 <img
-                  className="ProductDetailsPage__current-img"
                   src={currentImage}
                   alt="main img"
                 />
@@ -142,12 +144,8 @@ export const ProductDetailsPage: React.FC<Props> = ({
                   )}
                 </div>
                 <div className="ProductDetailsPage__buttons buttons">
-                  <button type="button" className="buttons__add">
-                    Add to cart
-                  </button>
-                  <button type="button" className="buttons__fav">
-                    <img src={favIcon} alt="favIcon" />
-                  </button>
+                  <AddToCartButton />
+                  <AddToFavButton />
                 </div>
                 <div className="ProductDetailsPage__details details">
                   <div className="details__item">

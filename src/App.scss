@@ -7,10 +7,11 @@
   min-height: 100vh;
 }
 
-main {
-  margin: auto 0;
+.main {
   padding: 0 152px;
-
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 footer {

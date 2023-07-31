@@ -7,7 +7,8 @@ import { ProductDetails } from '../../types/ProductDetails';
 import { getProduct } from '../../api/products';
 import { ProductType } from '../../types/ProductType';
 
-import heart from '../../images/heart.svg';
+import { AddToCartButton } from '../AddToCartButton/AddToCartButton';
+import { AddToFavButton } from '../AddToFavButton/AddToFavButton';
 import './ProductCard.scss';
 
 type Props = {
@@ -66,7 +67,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     <div className="ProductCard">
       <div className="ProductCard__content">
         <Link to={`/${productType}/${id}`} state={productWithDetails} className="ProductCard__photo">
-          <img src={`../../${imageUrl}`} alt="product" className="ProductCard__img" />
+          <img src={imageUrl} alt="product" className="ProductCard__img" />
         </Link>
 
         <div className="ProductCard__title">{name}</div>
@@ -100,12 +101,8 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         </div>
 
         <div className="ProductCard__buttons">
-          <button className="ProductCard__buttons-cart" type="button">
-            Add to cart
-          </button>
-          <button className="ProductCard__buttons-fav" type="button">
-            <img src={heart} alt="heart" />
-          </button>
+          <AddToCartButton />
+          <AddToFavButton />
         </div>
       </div>
     </div>

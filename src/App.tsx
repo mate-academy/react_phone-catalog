@@ -13,6 +13,7 @@ import { Product } from './types/Product';
 import { ProductType } from './types/ProductType';
 import { ProductDetailsPage }
   from './pages/ProductDetailsPage/ProductDetailsPage';
+import { CartPage } from './pages/CartPage/CartPage';
 
 import './App.scss';
 
@@ -49,9 +50,16 @@ const App: React.FC = () => {
     <div className="app">
       <Header />
 
-      <main>
+      <main className="main">
         <Routes>
-          <Route path="/" element={<HomePage products={products} />} />
+          <Route
+            path="/"
+            element={(
+              <HomePage
+                products={products}
+              />
+            )}
+          />
           <Route path="/phones" element={<PhonesPage phones={phones} />} />
           <Route path="/tablets" element={<TabletsPage tablets={tablets} />} />
           <Route
@@ -86,6 +94,11 @@ const App: React.FC = () => {
                 suggestedProducts={suggestedProducts}
               />
             )}
+          />
+
+          <Route
+            path="/cart"
+            element={<CartPage />}
           />
         </Routes>
       </main>

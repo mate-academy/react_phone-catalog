@@ -1,4 +1,7 @@
 .PhonesPage {
+  display: flex;
+  flex-grow: 1;
+
   &__title {
     margin-top: 40px;
     color: #313237;
@@ -24,32 +27,6 @@
     gap: 16px;
   }
 
-  &__pagination {
-    display: flex;
-    justify-content: center;
-    margin-top: 40px;
-    gap: 8px;
-  }
-
-  &__button {
-    border: 1px solid #e2e6e9;
-    background: none;
-    height: 32px;
-    width: 32px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    &-prev {
-      margin-right: 8px;
-    }
-
-    &-next {
-      margin-left: 8px;
-    }
-  }
-
   &__label {
     color: #89939a;
     font-size: 12px;
@@ -57,11 +34,6 @@
     font-weight: 600;
     line-height: normal;
   }
-}
-
-.active {
-  background-color: #313237;
-  color: #fff;
 }
 
 .ProductsList {

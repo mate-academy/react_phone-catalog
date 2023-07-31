@@ -49,10 +49,9 @@
     height: 442px;
     margin-right: 75px;
 
-    &-img {
-      height: 100%;
-      width: 100%;
-    }
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   &__characteristics {
@@ -211,27 +210,6 @@
 .buttons {
   display: flex;
   gap: 8px;
-
-  &__add {
-    width: 263px;
-    height: 48px;
-    background-color: #313237;
-    color: #fff;
-    font-family: "MontSemiBold", Helvetica, sans-serif;
-
-    cursor: pointer;
-    font-size: 14px;
-    line-height: 21px;
-  }
-
-  &__fav {
-    width: 48px;
-    height: 48px;
-    border: 1px solid #b4bdc3;
-    background: none;
-
-    cursor: pointer;
-  }
 }
 
 .details {
@@ -259,6 +237,7 @@
 
   &__value {
     color: #313237;
+    text-align: end;
   }
 }
 

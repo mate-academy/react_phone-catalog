@@ -90,31 +90,5 @@
     margin-top: 16px;
     display: flex;
     gap: 8px;
-
-    &-cart {
-      width: 176px;
-      height: 40px;
-      background: none;
-
-      font-family: "MontSemiBold", Helvetica, sans-serif;
-      color: #fff;
-      background-color: #313237;
-
-      cursor: pointer;
-    }
-
-    &-fav {
-      width: 40px;
-      height: 40px;
-
-      background: none;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      border: 1px solid #b4bcc3;
-
-      cursor: pointer;
-    }
   }
 }

@@ -6,6 +6,7 @@ import { ShopByCategory } from '../../components/ShopByCategory/ShopByCategory';
 
 type Props = {
   products: Product[];
+
 };
 
 export const HomePage: React.FC<Props> = ({ products }) => {
@@ -21,7 +22,10 @@ export const HomePage: React.FC<Props> = ({ products }) => {
     <div className="container">
       <Carousel />
 
-      <ProductsSlider title="Hot prices" products={getHotPriceProducts} />
+      <ProductsSlider
+        title="Hot prices"
+        products={getHotPriceProducts}
+      />
 
       <ShopByCategory products={products} />
 
