@@ -1,34 +1,28 @@
-import { useContext, useMemo } from 'react';
-import { useOutletContext, useSearchParams } from 'react-router-dom';
+import { useMemo } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import './Favourites.scss';
 import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 import { ProductsList } from '../../components/ProductsList/ProductsList';
-import { FavouriteContext } from '../../components/GlobalFavouritesProvider';
-import { Product } from '../../types/Product';
 import { normalizeValue } from '../../helpers/normalizeValue';
 import {
   NoSearchResults,
 } from '../../components/NoSearchResults/NoSearchResults';
 import { GoBackButton } from '../../components/GoBackButton/GoBackButton';
+import { useAppSelector } from '../../app/hooks';
 
 export const Favourites = () => {
-  const { favourites } = useContext(FavouriteContext);
-  const products = useOutletContext<Product[]>();
+  const favourites = useAppSelector(state => state.favourites);
   const [searchParams] = useSearchParams();
   const query = searchParams.get('query') || '';
 
-  const items = useMemo(() => {
-    return products.filter(product => favourites.includes(product.id));
-  }, [favourites]);
-
   const filteredItems = useMemo(() => {
-    return items.filter(item => {
+    return favourites.filter(item => {
       const normalizedQuery = normalizeValue(query);
       const normalizedName = normalizeValue(item.name);
 
       return normalizedName.includes(normalizedQuery);
     });
-  }, [items, query]);
+  }, [favourites, query]);
 
   const filteredItemsCount = filteredItems.length;
 
@@ -62,7 +56,7 @@ export const Favourites = () => {
         <NoSearchResults category="favourites" />
       )}
 
-      {!items.length && !query
+      {!favourites.length && !query
         ? (
           <h2 className="Favourites__no-items-message">
             No favourite items

@@ -1,9 +1,9 @@
 import { useMemo } from 'react';
 import classNames from 'classnames';
-import { useOutletContext, useSearchParams } from 'react-router-dom';
+import { /* useOutletContext, */ useSearchParams } from 'react-router-dom';
 import './ProductsPage.scss';
 
-import { Product } from '../../types/Product';
+// import { Product } from '../../types/Product';
 
 import { ProductsList } from '../../components/ProductsList/ProductsList';
 import { DropdownSelect } from '../../components/DropdownSelect/DropdownSelect';
@@ -20,6 +20,8 @@ import { getTitle } from '../../helpers/getTitle';
 import { NoResults } from '../../components/NoResults/NoResults';
 import { ProductType } from '../../types/ProductType';
 import { getCategoryName } from '../../helpers/getCategoryName';
+import { useGetProductsQuery } from '../../features/api/apiSlice';
+import { Loader } from '../../components/Loader';
 
 enum SortValue {
   age = 'age',
@@ -32,13 +34,16 @@ type Props = {
 };
 
 export const ProductsPage: React.FC<Props> = ({ productType }) => {
-  const products = useOutletContext<Product[]>();
+  const { data: products = [], isLoading } = useGetProductsQuery();
   const [searchParams] = useSearchParams();
 
   const sortBy = searchParams.get('sort') || '';
   const perPage = searchParams.get('perPage') || '';
   const currentPage = +(searchParams.get('page') || '') || 1;
   const query = searchParams.get('query') || '';
+
+  const title = getTitle(productType);
+  const categoryName = getCategoryName(productType);
 
   const productsByType = useMemo(() => {
     return products.filter(product => product.type === productType);
@@ -73,19 +78,13 @@ export const ProductsPage: React.FC<Props> = ({ productType }) => {
   }, [sortBy, filteredProducts]);
 
   const totalItemsCount = sortedProducts.length;
-
   const itemsPerPage = getItemsPerPage(perPage, totalItemsCount);
-
   const itemsFrom = itemsPerPage * currentPage - (itemsPerPage - 1);
   const itemsTo = Math.min(itemsPerPage * currentPage, totalItemsCount);
 
   const visibleItems = useMemo(() => {
     return sortedProducts.slice(itemsFrom - 1, itemsTo);
   }, [sortBy, itemsFrom, itemsTo, sortedProducts]);
-
-  const title = getTitle(productType);
-
-  const categoryName = getCategoryName(productType);
 
   return (
     <div className="ProductsPage container">
@@ -127,11 +126,13 @@ export const ProductsPage: React.FC<Props> = ({ productType }) => {
         <NoSearchResults category={categoryName} />
       )}
 
-      {!totalItemsCount && !query && (
+      {!totalItemsCount && !query && !isLoading && (
         <NoResults category={categoryName} />
       )}
 
-      {!!totalItemsCount && (
+      {isLoading && <Loader />}
+
+      {!!totalItemsCount && !isLoading && (
         <section>
           <div className="ProductsPage__product-list">
             <ProductsList items={visibleItems} />

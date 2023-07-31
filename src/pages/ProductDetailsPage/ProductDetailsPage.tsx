@@ -1,55 +1,54 @@
-import {
-  useState,
-  useEffect,
-  useMemo,
-  useContext,
-} from 'react';
-import {
-  useOutletContext,
-  useParams,
-} from 'react-router-dom';
+/* eslint-disable jsx-a11y/control-has-associated-label */
+import { useEffect, useMemo, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import classNames from 'classnames';
 import './ProductDetailsPage.scss';
-import { getProduct } from '../../api/products';
 import { Loader } from '../../components/Loader';
-import { ProductDetails } from '../../types/ProductDetails';
 import { Button } from '../../components/Button/Button';
-import { Product } from '../../types/Product';
-import { calculateDiscount } from '../../helpers/calculateDiscount';
 import { ProductSlider } from '../../components/ProductsSlider/ProductsSlider';
 import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 import { GoBackButton } from '../../components/GoBackButton/GoBackButton';
-import { CartContext } from '../../components/GlobalCartProvider';
-import { FavouriteContext } from '../../components/GlobalFavouritesProvider';
-import { ActionType, useProductReducer } from '../../hooks/useProductReducer';
+import { Product } from '../../types/Product';
+import { calculateDiscount } from '../../helpers/calculateDiscount';
+import { isItemIncluded } from '../../helpers/isItemIncluded';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { add as addToCart } from '../../features/cart/cartSlice';
+import {
+  add as addFavourite,
+  remove as removeFavourite,
+} from '../../features/favourites/favouritesSlice';
+import {
+  useGetProductDetailsQuery,
+  useGetProductsQuery,
+} from '../../features/api/apiSlice';
 
 export const ProductDetailsPage = () => {
-  const products = useOutletContext<Product[]>();
-  const [isLoading, setIsLoading] = useState(true);
-  const [productNotFound, setProductNotFound] = useState(false);
-
-  const [
-    productDetails,
-    setProductDetails,
-  ] = useState<ProductDetails | null>(null);
-
-  const [{
-    colorId,
-    capacityId,
-    imageId,
-  }, dispatch] = useProductReducer();
-
+  const { data: products = [] } = useGetProductsQuery();
   const { productId = '' } = useParams();
+  const {
+    data: productDetails,
+    isLoading,
+    isFetching,
+    isError: productNotFound,
+  } = useGetProductDetailsQuery(productId);
 
-  const { cart, setCart } = useContext(CartContext);
-  const { favourites, setFavourites } = useContext(FavouriteContext);
+  const [imageId, setImageId] = useState(0);
+  const [capacityId, setCapacityId] = useState(0);
+  const [colorId, setClolorId] = useState(0);
 
-  const itemInCart = cart.some(cartItem => cartItem.id === productId);
-  const itemInFavourites = favourites.includes(productId);
+  const capacities = ['64 GB', '256 GB', '512 GB'];
+  const colors = ['#fcdbc1', '#5f7170', '#4c4c4c', '#f0f0f0'];
+
+  const cart = useAppSelector(state => state.cart);
+  const favourites = useAppSelector(state => state.favourites);
+  const dispatch = useAppDispatch();
+
+  const isItemInCart = isItemIncluded(cart, productId);
+  const isItemInFavourites = isItemIncluded(favourites, productId);
 
   const product = useMemo(() => {
     return products.find(item => item.id === productId);
-  }, [products]);
+  }, [products]) as Product;
 
   const sellPrice = useMemo(() => {
     if (product) {
@@ -63,56 +62,26 @@ export const ProductDetailsPage = () => {
     return products.slice(4, 16);
   }, [products]);
 
-  const loadProduct = async () => {
-    setIsLoading(true);
-
-    try {
-      const productFromServer = await getProduct(productId);
-
-      setProductDetails(productFromServer);
-    } catch {
-      setProductNotFound(true);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
   useEffect(() => {
-    if (products.length) {
-      loadProduct();
-    }
-
     window.scrollTo(0, 0);
   }, [productId]);
 
   const onAddtoCart = () => {
-    if (itemInCart) {
+    if (isItemInCart) {
       return;
     }
 
-    setCart([...cart, {
-      id: productId,
-      quantity: 1,
-    }]);
+    dispatch(addToCart(product));
   };
 
   const onAddToFavourites = () => {
-    if (itemInFavourites) {
-      setFavourites(
-        favourites.filter(id => id !== productId),
-      );
+    if (isItemInFavourites) {
+      dispatch(removeFavourite(product.id));
 
       return;
     }
 
-    setFavourites([...favourites, productId]);
-  };
-
-  const onDispatchAction = (type: ActionType, id: number) => {
-    dispatch({
-      type,
-      value: id,
-    });
+    dispatch(addFavourite(product));
   };
 
   return (
@@ -131,13 +100,13 @@ export const ProductDetailsPage = () => {
         </h1>
       )}
 
-      {isLoading && (
+      {(isLoading || isFetching) && (
         <div className="ProductDetailsPage__loader">
           <Loader />
         </div>
       )}
 
-      {!isLoading && !productNotFound && (
+      {!isLoading && !isFetching && !productNotFound && (
         <>
           <div className="ProductDetailsPage__content">
             <section
@@ -153,11 +122,7 @@ export const ProductDetailsPage = () => {
                     <li key={imgUrl}>
                       <button
                         type="button"
-                        onClick={onDispatchAction.bind(
-                          null,
-                          ActionType.changedImage,
-                          index,
-                        )}
+                        onClick={() => setImageId(index)}
                         className={classNames(
                           'ProductDetailsPage__thumbnail-button',
                           { active: imageId === index },
@@ -185,58 +150,19 @@ export const ProductDetailsPage = () => {
                   </p>
 
                   <ul>
-                    <li>
-                      <Button
-                        content="color"
-                        className={classNames(
-                          { active: colorId === 0 },
-                          'ProductDetailsPage__colorPicker-1',
-                        )}
-                        onClick={() => onDispatchAction(
-                          ActionType.changedColor,
-                          0,
-                        )}
-                      />
-                    </li>
-                    <li>
-                      <Button
-                        content="color"
-                        className={classNames(
-                          { active: colorId === 1 },
-                          'ProductDetailsPage__colorPicker-2',
-                        )}
-                        onClick={() => onDispatchAction(
-                          ActionType.changedColor,
-                          1,
-                        )}
-                      />
-                    </li>
-                    <li>
-                      <Button
-                        content="color"
-                        className={classNames(
-                          { active: colorId === 2 },
-                          'ProductDetailsPage__colorPicker-3',
-                        )}
-                        onClick={() => onDispatchAction(
-                          ActionType.changedColor,
-                          2,
-                        )}
-                      />
-                    </li>
-                    <li>
-                      <Button
-                        content="color"
-                        className={classNames(
-                          { active: colorId === 3 },
-                          'ProductDetailsPage__colorPicker-4',
-                        )}
-                        onClick={() => onDispatchAction(
-                          ActionType.changedColor,
-                          3,
-                        )}
-                      />
-                    </li>
+                    {colors.map((color, index) => (
+                      <li key={color}>
+                        <Button
+                          variant="color"
+                          className={classNames(
+                            { active: colorId === index },
+                          )}
+                          onClick={() => setClolorId(index)}
+                        >
+                          <span style={{ backgroundColor: color }} />
+                        </Button>
+                      </li>
+                    ))}
                   </ul>
                 </div>
 
@@ -246,48 +172,19 @@ export const ProductDetailsPage = () => {
                   </p>
 
                   <ul>
-                    <li>
-                      <Button
-                        content="text"
-                        className={classNames(
-                          { active: capacityId === 0 },
-                        )}
-                        onClick={() => onDispatchAction(
-                          ActionType.changedCapacity,
-                          0,
-                        )}
-                      >
-                        64 GB
-                      </Button>
-                    </li>
-                    <li>
-                      <Button
-                        content="text"
-                        className={classNames(
-                          { active: capacityId === 1 },
-                        )}
-                        onClick={() => onDispatchAction(
-                          ActionType.changedCapacity,
-                          1,
-                        )}
-                      >
-                        256 GB
-                      </Button>
-                    </li>
-                    <li>
-                      <Button
-                        content="text"
-                        className={classNames(
-                          { active: capacityId === 2 },
-                        )}
-                        onClick={() => onDispatchAction(
-                          ActionType.changedCapacity,
-                          2,
-                        )}
-                      >
-                        512 GB
-                      </Button>
-                    </li>
+                    {capacities.map((capacity, index) => (
+                      <li key={capacity}>
+                        <Button
+                          variant="text"
+                          className={classNames(
+                            { active: capacityId === index },
+                          )}
+                          onClick={() => setCapacityId(index)}
+                        >
+                          {capacity}
+                        </Button>
+                      </li>
+                    ))}
                   </ul>
                 </div>
 
@@ -306,24 +203,24 @@ export const ProductDetailsPage = () => {
 
                   <div className="ProductDetailsPage__buttons">
                     <Button
-                      content="cart"
+                      variant="cart"
                       className={classNames(
                         'ProductDetailsPage__button-cart',
-                        { active: itemInCart },
+                        { active: isItemInCart },
                       )}
                       onClick={onAddtoCart}
                     >
-                      {itemInCart
+                      {isItemInCart
                         ? 'Added to cart'
                         : 'Add to cart'}
                     </Button>
 
                     <Button
-                      content="favourite"
+                      variant="favourite"
                       data-cy="addToFavorite"
                       className={classNames(
                         'ProductDetailsPage__button-favourite',
-                        { active: itemInFavourites },
+                        { active: isItemInFavourites },
                       )}
                       onClick={onAddToFavourites}
                     />

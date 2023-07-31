@@ -1,80 +1,42 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
-import { useState, useContext, useMemo } from 'react';
+import {
+  useState,
+  useMemo,
+} from 'react';
 import classNames from 'classnames';
 import './Cart.scss';
-import { useOutletContext } from 'react-router-dom';
 import { Button } from '../../components/Button/Button';
 import { GoBackButton } from '../../components/GoBackButton/GoBackButton';
-import { Product } from '../../types/Product';
 import { calculateDiscount } from '../../helpers/calculateDiscount';
-import { CartContext } from '../../components/GlobalCartProvider';
 import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
-
-type CartItem = {
-  id: string,
-  quantity: number,
-  product: Product,
-};
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import {
+  decreaseQuantity,
+  increaseQuantity,
+  remove,
+} from '../../features/cart/cartSlice';
 
 export const Cart = () => {
-  const products = useOutletContext<Product[]>();
-  const { cart, setCart } = useContext(CartContext);
   const [isActive, setIsActive] = useState(false);
-  const [cartItems, setCartItems] = useState<CartItem[]>(() => {
-    if (!products.length) {
-      return [];
-    }
-
-    return cart.map(cartItem => {
-      const product = products.find(p => p.id === cartItem.id) as Product;
-
-      return {
-        ...cartItem,
-        product,
-      };
-    });
-  });
+  const cart = useAppSelector(state => state.cart);
+  const dispatch = useAppDispatch();
 
   const totalPrice = useMemo(() => {
-    return cartItems.reduce((acc, curr) => {
+    return cart.reduce((acc, curr) => {
       return acc + (calculateDiscount(curr.product) * curr.quantity);
     }, 0);
-  }, [cartItems]);
+  }, [cart]);
 
   const handleDeleteItem = (id: string) => {
-    setCartItems(
-      cartItems.filter(item => item.id !== id),
-    );
-
-    setCart(cart.filter(item => item.id !== id));
+    dispatch(remove(id));
   };
 
-  const onChangeQuantity = (itemId: string, sign: number) => {
-    setCartItems(
-      cartItems.map(item => {
-        if (item.id !== itemId) {
-          return item;
-        }
+  const handleIncreaseQuantity = (itemId: string) => {
+    dispatch(increaseQuantity(itemId));
+  };
 
-        return {
-          ...item,
-          quantity: item.quantity + sign,
-        };
-      }),
-    );
-
-    setCart(
-      cart.map(cartItem => {
-        if (cartItem.id !== itemId) {
-          return cartItem;
-        }
-
-        return {
-          ...cartItem,
-          quantity: cartItem.quantity + sign,
-        };
-      }),
-    );
+  const handleDecreaseQuantity = (itemId: string) => {
+    dispatch(decreaseQuantity(itemId));
   };
 
   const handleCheckout = () => {
@@ -111,7 +73,7 @@ export const Cart = () => {
         </h2>
       </div>
 
-      {!cartItems.length
+      {!cart.length
         ? (
           <h2 className="Cart__no-items-message">
             Your cart is empty 🧐
@@ -121,7 +83,7 @@ export const Cart = () => {
           <div className="Cart__content grid">
             <div className="Cart__products">
               <ul className="Cart__products-list">
-                {cartItems.map(item => (
+                {cart.map(item => (
                   <li className="Cart__products-item" key={item.id}>
                     <div className="Cart__item">
                       <button
@@ -144,10 +106,10 @@ export const Cart = () => {
 
                       <div className="Cart__item-quantity">
                         <Button
-                          content="quantity"
+                          variant="quantity"
                           sign="minus"
                           disabled={item.quantity === 1}
-                          onClick={() => onChangeQuantity(item.id, -1)}
+                          onClick={() => handleDecreaseQuantity(item.id)}
                         />
 
                         <span
@@ -157,9 +119,9 @@ export const Cart = () => {
                         </span>
 
                         <Button
-                          content="quantity"
+                          variant="quantity"
                           sign="plus"
-                          onClick={() => onChangeQuantity(item.id, 1)}
+                          onClick={() => handleIncreaseQuantity(item.id)}
                         />
                       </div>
 
@@ -181,11 +143,11 @@ export const Cart = () => {
               </h2>
 
               <p>
-                {`Total for ${cartItems.length} items`}
+                {`Total for ${cart.length} items`}
               </p>
 
               <Button
-                content="cart"
+                variant="cart"
                 onClick={handleCheckout}
                 disabled={isActive}
               >

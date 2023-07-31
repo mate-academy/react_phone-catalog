@@ -50,7 +50,7 @@ export const Carousel = () => {
     <div className="Carousel">
       <div className="Carousel__container">
         <Button
-          content="arrow"
+          variant="arrow"
           arrowDirection="left"
           className="Carousel__button"
           onClick={handleSlideLeft}
@@ -92,7 +92,7 @@ export const Carousel = () => {
         </div>
 
         <Button
-          content="arrow"
+          variant="arrow"
           className="Carousel__button"
           onClick={handleSlideRight}
         />

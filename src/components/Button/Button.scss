@@ -48,8 +48,6 @@
     background: no-repeat center url("../../images/icons/Arrow.svg");
 
     &:disabled {
-      border-color: $c-elements;
-
       background-image: url("../../images/icons/Arrow_disabled.svg");
     }
 
@@ -119,11 +117,10 @@
       border-color: $c-primary;
     }
 
-    &::after {
-      content: "";
+    & > span {
+      display: inline-block;
       width: 26px;
       height: 26px;
-      display: inline-block;
 
       border-radius: 50%;
     }
@@ -141,9 +138,10 @@
         background-image: url("../../images/icons/icon-minus-disabled.png");
       }
     }
+  }
 
-    &:disabled {
-      border-color: $c-elements;
-    }
+  &--arrow:disabled,
+  &--quantity:disabled {
+    border-color: $c-elements;
   }
 }

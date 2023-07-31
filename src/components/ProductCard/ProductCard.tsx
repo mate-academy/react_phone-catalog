@@ -1,13 +1,16 @@
 import './ProductCard.scss';
-import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import { Button } from '../Button/Button';
 import { Product } from '../../types/Product';
 import { calculateDiscount } from '../../helpers/calculateDiscount';
-import { getItemPath } from '../../helpers/getItemPath';
-import { CartContext } from '../GlobalCartProvider';
-import { FavouriteContext } from '../GlobalFavouritesProvider';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { add as addToCart } from '../../features/cart/cartSlice';
+import {
+  add as addToFavourites,
+  remove as removeFavourite,
+} from '../../features/favourites/favouritesSlice';
+import { isItemIncluded } from '../../helpers/isItemIncluded';
 
 type Props = {
   product: Product;
@@ -15,7 +18,9 @@ type Props = {
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
   const {
+    id,
     name,
+    type,
     price,
     discount,
     screen,
@@ -24,38 +29,33 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     imageUrl,
   } = product;
 
-  const { cart, setCart } = useContext(CartContext);
-  const { favourites, setFavourites } = useContext(FavouriteContext);
+  const cart = useAppSelector(state => state.cart);
+  const favourites = useAppSelector(state => state.favourites);
+  const dispatch = useAppDispatch();
 
   const sellPrice = calculateDiscount(product);
+  const itemPath = `/${type}s/${id}`;
 
-  const itemPath = getItemPath(product);
+  const isItemInCart = isItemIncluded(cart, id);
 
-  const isItemInCart = cart.some(cartItem => cartItem.id === product.id);
-
-  const isItemInFavourites = favourites.includes(product.id);
+  const isItemInFavourites = isItemIncluded(favourites, id);
 
   const onAddToCart = () => {
     if (isItemInCart) {
       return;
     }
 
-    setCart([...cart, {
-      id: product.id,
-      quantity: 1,
-    }]);
+    dispatch(addToCart(product));
   };
 
   const onAddToFavourites = () => {
     if (isItemInFavourites) {
-      setFavourites(
-        favourites.filter(item => item !== product.id),
-      );
+      dispatch(removeFavourite(id));
 
       return;
     }
 
-    setFavourites([...favourites, product.id]);
+    dispatch(addToFavourites(product));
   };
 
   return (
@@ -108,7 +108,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
         <div className="ProductCard__buttons">
           <Button
-            content="cart"
+            variant="cart"
             className={classNames(
               { active: isItemInCart },
             )}
@@ -120,7 +120,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           </Button>
 
           <Button
-            content="favourite"
+            variant="favourite"
             data-cy="addToFavorite"
             className={classNames(
               { active: isItemInFavourites },

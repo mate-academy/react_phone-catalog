@@ -1,15 +1,14 @@
 import './Header.scss';
-import { useContext, useMemo } from 'react';
-import classNames from 'classnames';
+import { useMemo } from 'react';
 import { NavBar } from '../NavBar/NavBar';
 import { NavLinkMain } from '../NavLinkMain/NavLinkMain';
-import { CartContext } from '../GlobalCartProvider';
-import { FavouriteContext } from '../GlobalFavouritesProvider';
 import { Search } from '../Search/Search';
+import { useAppSelector } from '../../app/hooks';
+import { Counter } from '../Counter/Counter';
 
 export const Header = () => {
-  const { cart } = useContext(CartContext);
-  const { favourites } = useContext(FavouriteContext);
+  const cart = useAppSelector(state => state.cart);
+  const favourites = useAppSelector(state => state.favourites);
 
   const cartItemsCount = useMemo(() => {
     return cart.reduce((acc, curr) => {
@@ -34,28 +33,14 @@ export const Header = () => {
           to="favourites"
           type="favourite"
         >
-          <span
-            className={classNames(
-              'Header__items-count',
-              { active: !!favouriteItemsCount },
-            )}
-          >
-            {favouriteItemsCount}
-          </span>
+          <Counter count={favouriteItemsCount} />
         </NavLinkMain>
 
         <NavLinkMain
           to="cart"
           type="cart"
         >
-          <span
-            className={classNames(
-              'Header__items-count',
-              { active: !!cartItemsCount },
-            )}
-          >
-            {cartItemsCount}
-          </span>
+          <Counter count={cartItemsCount} />
         </NavLinkMain>
       </div>
     </header>

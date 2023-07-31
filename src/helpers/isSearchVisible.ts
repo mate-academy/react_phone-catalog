@@ -1,6 +1,6 @@
 import { Location } from 'react-router-dom';
 
-export const searchIsActive = (location: Location) => {
+export const isSearchVisible = (location: Location) => {
   const crumbs = location.pathname.split('/');
 
   const activePages = ['phones', 'tablets', 'accessories', 'favourites'];

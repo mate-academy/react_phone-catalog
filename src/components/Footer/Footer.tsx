@@ -46,7 +46,7 @@ nazarkharkevych/react_phone-catalog/blob/master/LICENSE`}
             Back to top
           </span>
           <Button
-            content="arrow"
+            variant="arrow"
             arrowDirection="top"
             onClick={() => window.scrollTo(0, 0)}
           />

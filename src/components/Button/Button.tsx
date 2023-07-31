@@ -4,14 +4,14 @@ import classNames from 'classnames';
 import './Button.scss';
 
 type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
-  content?: 'arrow' | 'cart' | 'favourite' | 'color' | 'text' | 'quantity';
+  variant?: 'arrow' | 'cart' | 'favourite' | 'color' | 'text' | 'quantity';
   sign?: 'plus' | 'minus';
   arrowDirection?: 'top' | 'left';
 };
 
 export const Button: React.FC<Props> = ({
   className = '',
-  content,
+  variant: content,
   sign,
   arrowDirection,
   ...props

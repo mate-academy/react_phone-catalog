@@ -1,4 +1,10 @@
-import React, { useState } from 'react';
+/* eslint-disable consistent-return */
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  MutableRefObject,
+} from 'react';
 import { useSearchParams } from 'react-router-dom';
 import './DropdownSelect.scss';
 import classNames from 'classnames';
@@ -24,10 +30,11 @@ export const DropdownSelect: React.FC<Props> = ({
 }) => {
   const [isActive, setIsActive] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
-
   const selectValue = searchParams.get(paramName) || '';
 
   const options = React.Children.toArray(children) as Option[];
+
+  const ref = useRef<HTMLDivElement>() as MutableRefObject<HTMLDivElement>;
 
   const handleSetValue = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const params = {
@@ -49,11 +56,31 @@ export const DropdownSelect: React.FC<Props> = ({
     setIsActive(false);
   };
 
+  useEffect(() => {
+    if (!isActive) {
+      return;
+    }
+
+    const handleDocumentClick = (event: MouseEvent) => {
+      if (!ref.current.contains(event.target as Node)) {
+        setIsActive(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleDocumentClick);
+
+    return () => {
+      document.removeEventListener('mousedown', handleDocumentClick);
+    };
+  }, [isActive]);
+
   return (
-    <div className={classNames(
-      'DropdownSelect',
-      { 'is-active': isActive },
-    )}
+    <div
+      ref={ref}
+      className={classNames(
+        'DropdownSelect',
+        { 'is-active': isActive },
+      )}
     >
       <label
         htmlFor={paramName}

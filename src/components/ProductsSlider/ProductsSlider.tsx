@@ -35,14 +35,14 @@ export const ProductSlider: React.FC<Props> = ({
         <div className="ProductsSlider__buttons">
           <Button
             disabled={itemsScrolled === 0}
-            content="arrow"
+            variant="arrow"
             arrowDirection="left"
             onClick={handleSlideLeft}
           />
 
           <Button
             disabled={itemsScrolled === itemsCount - 4}
-            content="arrow"
+            variant="arrow"
             onClick={handleSlideRight}
           />
         </div>

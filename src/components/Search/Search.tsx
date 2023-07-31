@@ -9,7 +9,7 @@ import {
   useMemo,
   useState,
 } from 'react';
-import { searchIsActive } from '../../helpers/searchIsActive';
+import { isSearchVisible } from '../../helpers/isSearchVisible';
 import { debounceQuery } from '../../helpers/debounceQuery';
 import { getSearchWith } from '../../helpers/searchHelper';
 
@@ -25,12 +25,12 @@ export const Search = () => {
     setQuery(queryParam);
   }, [currentPath]);
 
-  const isActive = useMemo(() => {
-    return searchIsActive(location);
-  }, [location]);
+  const isVisible = useMemo(() => {
+    return isSearchVisible(location);
+  }, [currentPath]);
 
   const applyQuery = useCallback(
-    debounceQuery(setSearchParams, 700),
+    debounceQuery(setSearchParams, 600),
     [currentPath],
   );
 
@@ -60,16 +60,15 @@ export const Search = () => {
     <div
       className={classNames(
         'Search',
-        { isActive },
+        { isVisible },
       )}
-      key={currentPath}
     >
       <input
         type="text"
         value={query}
         className={classNames(
           'Search__input',
-          { 'has-icon': query === '' },
+          { 'has-icon': !query },
         )}
         placeholder={`Search in ${currentPath}...`}
         onChange={onQueryChange}
