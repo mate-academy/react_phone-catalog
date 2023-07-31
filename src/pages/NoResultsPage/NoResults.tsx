@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import './NoResults.scss';
 import noResults from '../../Icons/noResults.png';
 
@@ -12,7 +13,7 @@ export const NoResults = () => {
 
       <p className="error__desc">
         Maybe you want to go back to
-        <a href="/" className="error__link"> Home page </a>
+        <a href="https://danylopasko.github.io/react_phone-catalog/#/" className="error__link"> Home page </a>
         ?
       </p>
     </div>
