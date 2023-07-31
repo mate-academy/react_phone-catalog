@@ -1,0 +1,11 @@
+.no-results {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  min-height: 400px;
+
+  &__title {
+    text-align: center;
+  }
+}
