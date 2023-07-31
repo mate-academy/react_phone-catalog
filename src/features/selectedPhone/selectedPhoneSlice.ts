@@ -1,10 +1,10 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 /* eslint-disable no-param-reassign */
-import { Phone } from '../../types/Phone';
+import { Product } from '../../types/Product';
 import { SelectedStatus } from '../../types/SelectedStatus';
 
 export interface SelectedPhoneReducer {
-  value: Phone | null,
+  value: Product | null,
   status: SelectedStatus
 }
 
@@ -17,7 +17,7 @@ const selectedPhoneReducer = createSlice({
   name: 'selectedPhone',
   initialState,
   reducers: {
-    setPhone: (state, action: PayloadAction<Phone>) => {
+    setPhone: (state, action: PayloadAction<Product>) => {
       state.status = SelectedStatus.SELECTED;
       state.value = action.payload;
     },

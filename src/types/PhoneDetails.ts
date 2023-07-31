@@ -2,6 +2,7 @@ export type PhoneDetails = {
   id: string,
   namespaceId: string,
   name: string,
+  capacity: string,
   capacityAvailable: string[],
   priceRegular: number,
   priceDiscount: number,
@@ -14,7 +15,8 @@ export type PhoneDetails = {
     { title: string, text: string[] },
   ],
   screen: string,
-  resolution: string
+  resolution: string,
+  processor: string,
   ram: string,
   camera: string,
   zoom: string,

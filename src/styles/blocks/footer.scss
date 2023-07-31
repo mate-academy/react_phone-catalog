@@ -26,9 +26,15 @@
     gap: 64px;
   }
   &__backtotop-button {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 32px;
     height: 32px;
-    position: relative;
+    background-color: #fff;
+    border: 1px solid #B4BDC3;
+    cursor: pointer;
     &::before {
       content: 'Back to top';
       position: absolute;

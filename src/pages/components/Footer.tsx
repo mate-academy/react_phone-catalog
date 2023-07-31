@@ -6,6 +6,14 @@ import {
 import '../../styles/styles.scss';
 
 export const Footer: FC = () => {
+  // Function to scroll back to top when the button is clicked
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
   return (
     <footer className="footer">
       <Link to="/" className="footer__link">
@@ -16,9 +24,13 @@ export const Footer: FC = () => {
         <Link to="/" className="footer__link">Contacts</Link>
         <Link to="/" className="footer__link">rights</Link>
       </div>
-      <a href="#" className="footer__backtotop-button" type="button">
-        <img src="images/icons/ArrowUp.svg" alt="Back to top" />
-      </a>
+      <button
+        className="footer__backtotop-button"
+        type="button"
+        onClick={scrollToTop}
+      >
+        <img src="images/icons/ArrowUpDark.svg" alt="Back to top" />
+      </button>
     </footer>
   );
 };

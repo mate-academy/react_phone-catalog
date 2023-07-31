@@ -11,12 +11,20 @@ import { Footer } from './pages/components/Footer';
 import { ProductDetailsPage } from './pages/ProductDetailsPage';
 import { useAppDispatch } from './app/hooks';
 import { incrementAsync as loadedPhones } from './features/phones/phonesSlice';
+import { FavoritesPage } from './pages/FavoritesPage';
+import { CardPage } from './pages/CardPage';
+import { TabletsPage } from './pages/TabletsPage';
+import {
+  incrementAsync as loadedProducts,
+} from './features/products/productsSlice';
+import { AccessoriesPage } from './pages/AccessoriesPage';
 
 export const App: FC = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
     dispatch(loadedPhones());
+    dispatch(loadedProducts());
   }, []);
 
   return (
@@ -55,6 +63,70 @@ export const App: FC = () => {
             )}
           />
         </Route>
+        <Route path="tablets">
+          <Route
+            index
+            element={(
+              <>
+                <Header />
+                <TabletsPage />
+                <Footer />
+              </>
+            )}
+          />
+          <Route
+            path="/tablets/:productId"
+            element={(
+              <>
+                <Header />
+                <ProductDetailsPage />
+                <Footer />
+              </>
+            )}
+          />
+        </Route>
+        <Route path="accessories">
+          <Route
+            index
+            element={(
+              <>
+                <Header />
+                <AccessoriesPage />
+                <Footer />
+              </>
+            )}
+          />
+          <Route
+            path="/accessories/:productId"
+            element={(
+              <>
+                <Header />
+                <ProductDetailsPage />
+                <Footer />
+              </>
+            )}
+          />
+        </Route>
+        <Route
+          path="favorites"
+          element={(
+            <>
+              <Header />
+              <FavoritesPage />
+              <Footer />
+            </>
+          )}
+        />
+        <Route
+          path="card"
+          element={(
+            <>
+              <Header />
+              <CardPage />
+              <Footer />
+            </>
+          )}
+        />
         <Route
           path="*"
           element={<h1 className="title">Page not found</h1>}

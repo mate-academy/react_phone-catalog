@@ -1,4 +1,4 @@
-export type Phone = {
+export type Product = {
   id: string,
   category: string,
   phoneId: string,
@@ -9,8 +9,13 @@ export type Phone = {
   screen: string,
   capacity: string,
   color: string,
-  imageUrl: string,
   ram: string
   year: number,
+  age: number,
+  type: string
   image: string,
+  imageUrl: string,
+  imgUrl: string,
+  snippet: string,
+  discount: number,
 };

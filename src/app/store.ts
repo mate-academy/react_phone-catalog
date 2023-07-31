@@ -6,12 +6,29 @@ import {
 import {
   reducer as phoneDetailsReducer,
 } from '../features/PhoneDetails/phoneDetailsSlice';
+import {
+  reducer as phonesFavoritesReducer,
+} from '../features/PhonesFavorites/phonesFavoritesSlice';
+import {
+  reducer as phonesCardedReducer,
+} from '../features/PhonesInCard/phonesInCardSlice';
+import {
+  reducer as searchBarReducer,
+} from '../features/SearchBar/searchBarSlice';
+import {
+  reducer as productsReducer,
+} from '../features/products/productsSlice';
 
 export const store = configureStore({
   reducer: {
     phones: phonesReducer,
     selectedPhone: selectedPhoneReducer,
     phoneDetails: phoneDetailsReducer,
+    phonesFavorites: phonesFavoritesReducer,
+    phonesCarded: phonesCardedReducer,
+    searchBar: searchBarReducer,
+    products: productsReducer,
+
   },
 });
 

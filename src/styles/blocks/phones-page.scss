@@ -1,9 +1,10 @@
 .phones-page {
   @include pageMaxWidth;
-  max-width: 1440px;
+  flex-grow: 1;
   box-sizing: border-box;
   padding-inline: 152px;
-  margin: auto;
+  margin: 0;
+  margin-bottom: 80px;
   &__title {
     margin: 0;
     margin-bottom: 8px;
@@ -26,6 +27,15 @@
   }
   &__filter {
 
+  }
+  &__result-items {
+    margin-block: 24px;
+    color: var(--gray-secondary, #89939A);
+
+    /* Body text 14 */
+    font-size: 14px;
+    font-style: normal;
+    line-height: 21px; /* 150% */
   }
 }
 

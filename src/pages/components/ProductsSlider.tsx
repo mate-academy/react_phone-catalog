@@ -3,18 +3,18 @@ import {
   FC, useEffect, useState,
 } from 'react';
 import '../../styles/styles.scss';
-import { Phone } from '../../types/Phone';
+import { Product } from '../../types/Product';
 import { ProductCard } from './ProductCard';
 
 type Props = {
-  phones: Phone[];
+  phones: Product[];
 };
 
 const PICTURE_SIZE = 272 + 16; // 272px cardsize + 16px gap between product-cards
 const VISIBLE_SIZE_ROW = 1136; // 1136px visible length of Home-page;
 
 export const ProductsSlider: FC<Props> = ({ phones }) => {
-  const [products, setProducts] = useState<Phone[]>([]);
+  const [products, setProducts] = useState<Product[]>([]);
   const [offset, setOffset] = useState(0);
 
   function handleLeftClick() {

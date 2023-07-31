@@ -1,0 +1,24 @@
+.favorites-page {
+  @include pageMaxWidth;
+  flex-grow: 1;
+  margin: 0;
+  padding-bottom: 80px;
+  &__title {
+    margin-block: 40px 8px;
+    color: var(--gray-primary, #313237);
+
+    /* H1 */
+    font-family: Mont-Bold;
+    font-size: 32px;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: -0.32px;
+  }
+  &__items-amount {
+    color: var(--gray-secondary, #89939A);
+
+    font-size: 14px;
+    font-style: normal;
+    line-height: 21px; /* 150% */
+  }
+}

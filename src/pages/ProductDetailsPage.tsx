@@ -1,58 +1,79 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable max-len */
 import { FC, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import classNames from 'classnames';
 import Breadcrumbs from './components/Breadcrumbs';
 import '../styles/styles.scss';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
-import { Phone } from '../types/Phone';
+import { Product } from '../types/Product';
 import { Loader } from './components/Loader';
-import { ProductsSlider } from './components/ProductsSlider';
 import { incrementAsync as loadPhoneDetails } from '../features/PhoneDetails/phoneDetailsSlice';
 import { AsyncStatus } from '../types/AsyncStatus';
+import { ProductsSlider } from './components/ProductsSlider';
+import { PhoneDetails } from '../types/PhoneDetails';
 
 export const ProductDetailsPage: FC = () => {
   const selectedProduct = useAppSelector(state => state.selectedPhone.value);
-  const [productCard, setProductCard] = useState<Phone | null>(selectedProduct);
   const phones = useAppSelector(state => state.phones.value);
+  const statusPhone = useAppSelector(state => state.phones.status);
   const dispatch = useAppDispatch();
   const phoneDetails = useAppSelector(state => state.phoneDetails.value);
   const phoneDetailsStatus = useAppSelector(state => state.phoneDetails.status);
+  const [productCard, setProductCard] = useState<PhoneDetails | null>(() => {
+    const storedValue = window.localStorage.getItem('productCard');
 
-  const brandNewModels = [...phones].sort(
-    (a: Phone, b: Phone) => +b.year - +a.year,
-  );
-
-  useEffect(() => {
-    if (productCard) {
-      window.localStorage.setItem(
-        'productCard', JSON.stringify(productCard),
-      );
+    if (storedValue !== null) {
+      return JSON.parse(storedValue);
     }
 
-    if (window.localStorage.getItem('productCard')) {
-      const savedCard = window.localStorage.getItem('productCard') || '';
+    return null;
+  });
 
-      if (savedCard.length > 0) {
-        setProductCard(JSON.parse(savedCard));
-      }
+  const [brandNewModels, setBrandNewModels] = useState<Product[]>([]);
+
+  useEffect(() => {
+    if (selectedProduct !== null) {
+      dispatch(loadPhoneDetails(selectedProduct.phoneId));
     }
   }, []);
 
   useEffect(() => {
-    if (selectedProduct) {
-      dispatch(loadPhoneDetails(selectedProduct.id));
+    if (phones.length > 0) {
+      const res = [...phones].sort(
+        (a: Product, b: Product) => +b.year - +a.year,
+      );
+
+      setBrandNewModels(res);
+    }
+  }, [phones]);
+
+  useEffect(() => {
+    if (phoneDetailsStatus === AsyncStatus.IDLE && Array.isArray(phoneDetails) === false && phoneDetails !== null) {
       window.localStorage.setItem('productCard', JSON.stringify(phoneDetails));
       if (window.localStorage.getItem('productCard')) {
-        const savedCard = window.localStorage.getItem('productCard') || '';
+        const savedCard = window.localStorage.getItem('productCard');
 
-        if (savedCard.length > 0) {
+        if (savedCard) {
           setProductCard(JSON.parse(savedCard));
         }
       }
     }
-  }, [selectedProduct]);
+  }, [phoneDetails]);
 
-  const isLoading = phoneDetailsStatus === AsyncStatus.LOADING || !productCard || !phoneDetails;
+  const isLoading = phoneDetailsStatus === AsyncStatus.LOADING || !productCard || !phoneDetails || statusPhone === AsyncStatus.LOADING;
+
+  const [bigImgIndex, setBigImgIndex] = useState(0);
+  const [capacityIndex, setCapacityIndex] = useState(0);
+
+  function handleGalleryImg(index: number) {
+    setBigImgIndex(index);
+  }
+
+  function handleCapacityItem(index: number) {
+    setCapacityIndex(index);
+  }
 
   return (
     <div className="product-details-page">
@@ -60,27 +81,31 @@ export const ProductDetailsPage: FC = () => {
         <Loader />
       ) : (
         <>
-          <Breadcrumbs productName={phoneDetails.name} />
+          <Breadcrumbs />
           <Link className="product-details-page__link-move-back link-move-back" to="..">
             <img className="link-move-back__arrow" src="images/icons/ArrowLeft-dark.svg" alt="Back button" />
             Back
           </Link>
           <h1 className="product-details-page__title">
-            {phoneDetails.name}
+            {productCard.name}
           </h1>
           <section
             className="product-details-page__product-section product-section"
           >
             <div className="product-section__gallery gallery">
               <div className="gallery__small-img-container small-img-container">
-                <img className="small-img-container__img" src="img/phones/apple-iphone-11/black/00.jpg" alt="Phoduct" />
-                <img className="small-img-container__img" src="img/phones/apple-iphone-11/black/00.jpg" alt="Phoduct" />
-                <img className="small-img-container__img" src="img/phones/apple-iphone-11/black/00.jpg" alt="Phoduct" />
-                <img className="small-img-container__img" src="img/phones/apple-iphone-11/black/00.jpg" alt="Phoduct" />
-                <img className="small-img-container__img" src="img/phones/apple-iphone-11/black/00.jpg" alt="Phoduct" />
+                {productCard.images.map((img, index) => (
+                  <img
+                    className="small-img-container__img"
+                    src={img}
+                    alt="Phoduct"
+                    key={img}
+                    onClick={() => handleGalleryImg(index)}
+                  />
+                ))}
               </div>
               <div className="gallery__big-img-container big-img-container">
-                <img className="big-img-container__big-img" src="img/phones/apple-iphone-11/black/00.jpg" alt="Phoduct" />
+                <img className="big-img-container__big-img" src={productCard.images[bigImgIndex]} alt="Phoduct" />
               </div>
             </div>
             <div className="product-section__choose-section choose-section">
@@ -104,15 +129,25 @@ export const ProductDetailsPage: FC = () => {
               <div className="choose-section__capasity-picker capasity-picker">
                 <h2 className="capasity-picker__title">Select capacity</h2>
                 <ul className="capasity-picker__list">
-                  <li className="capasity-picker__items capasity-picker__items--active">64 GB</li>
-                  <li className="capasity-picker__items">256 GB</li>
-                  <li className="capasity-picker__items">512 GB</li>
+                  {productCard.capacityAvailable.map((item, index) => (
+                    <li
+                      key={item}
+                      className={classNames(
+                        'capasity-picker__items ',
+                        { 'capasity-picker__items--active': index === capacityIndex },
+                      )}
+                      onClick={() => handleCapacityItem(index)}
+                    >
+                      {item}
+                    </li>
+
+                  ))}
                 </ul>
               </div>
               <div className="choose-section__buy-buttons buy-buttons">
                 <div className="buy-buttons__prices-amount prices-amount">
-                  <p className="prices-amount__price">$1099</p>
-                  <p className="prices-amount__price prices-amount__price--discount">$1199</p>
+                  <p className="prices-amount__price">{`${productCard.priceDiscount}$`}</p>
+                  <p className="prices-amount__price prices-amount__price--discount">{`${productCard.priceRegular}$`}</p>
                 </div>
                 <div className="buy-buttons__buttons-buy-like buttons-buy-like">
                   <button
@@ -136,13 +171,13 @@ export const ProductDetailsPage: FC = () => {
               <div className="choose-section__details-product details-product">
                 <dl className="details-product__description-product description-product">
                   <dt className="description-product--title">Screen</dt>
-                  <dd className="description-product--value">6.5” OLED</dd>
+                  <dd className="description-product--value">{productCard.screen}</dd>
                   <dt className="description-product--title">Resolution</dt>
-                  <dd className="description-product--value">2688x1242</dd>
+                  <dd className="description-product--value">{productCard.resolution}</dd>
                   <dt className="description-product--title">Processor</dt>
-                  <dd className="description-product--value">Apple A12 Bionic</dd>
+                  <dd className="description-product--value">{productCard.processor}</dd>
                   <dt className="description-product--title">RAM</dt>
-                  <dd className="description-product--value">3 GB</dd>
+                  <dd className="description-product--value">{productCard.ram}</dd>
                 </dl>
               </div>
             </div>
@@ -150,46 +185,44 @@ export const ProductDetailsPage: FC = () => {
           <section className="product-details-page__product-articles product-articles">
             <article className="product-articles__article-about article-about">
               <h2 className="article-about__title">About</h2>
-              <h3 className="article-about__sub-title">And then there was Pro</h3>
-              <p className="article-about__text">
-                <p>A transformative triple‑camera system that adds tons of capability without complexity.</p>
-
-                <p>An unprecedented leap in battery life. And a mind‑blowing chip that doubles down on machine learning and pushes the boundaries of what a smartphone can do. Welcome to the first iPhone powerful enough to be called Pro.</p>
-              </p>
-              <h3 className="article-about__sub-title">Camera</h3>
-              <p className="article-about__text">
-                Meet the first triple‑camera system to combine cutting‑edge technology with the legendary simplicity of iPhone. Capture up to four times more scene. Get beautiful images in drastically lower light. Shoot the highest‑quality video in a smartphone — then edit with the same tools you love for photos. You’ve never shot with anything like it.
-              </p>
-              <h3 className="article-about__sub-title">Shoot it. Flip it. Zoom it. Crop it. Cut it. Light it. Tweak it. Love it.</h3>
-              <p className="article-about__text">
-                iPhone 11 Pro lets you capture videos that are beautifully true to life, with greater detail and smoother motion. Epic processing power means it can shoot 4K video with extended dynamic range and cinematic video stabilization — all at 60 fps. You get more creative control, too, with four times more scene and powerful new editing tools to play with.
-              </p>
+              {productCard.description.map(article => (
+                <div key={article.title}>
+                  <h3 className="article-about__sub-title">{article.title}</h3>
+                  {article.text.map(text => (
+                    <p className="article-about__text" key={text}>
+                      {text}
+                    </p>
+                  ))}
+                </div>
+              ))}
             </article>
             <article className="product-articles__tech-specs tech-specs">
               <h2 className="tech-specs__title">Tech specs</h2>
               <dl className="tech-specs__tech-specs-list tech-specs-list">
                 <dt className="tech-specs-list--title">Screen</dt>
-                <dd className="tech-specs-list--value">6.5” OLED</dd>
+                <dd className="tech-specs-list--value">{productCard.screen}</dd>
                 <dt className="tech-specs-list--title">Resolution</dt>
-                <dd className="tech-specs-list--value">2688x1242</dd>
+                <dd className="tech-specs-list--value">{productCard.resolution}</dd>
                 <dt className="tech-specs-list--title">Processor</dt>
-                <dd className="tech-specs-list--value">Apple A12 Bionic</dd>
+                <dd className="tech-specs-list--value">{productCard.processor}</dd>
                 <dt className="tech-specs-list--title">RAM</dt>
-                <dd className="tech-specs-list--value">3 GB</dd>
+                <dd className="tech-specs-list--value">{productCard.ram}</dd>
                 <dt className="tech-specs-list--title">Built in memory</dt>
-                <dd className="tech-specs-list--value">64 GB</dd>
+                <dd className="tech-specs-list--value">{productCard.capacity}</dd>
                 <dt className="tech-specs-list--title">Camera</dt>
-                <dd className="tech-specs-list--value">12 Mp + 12 Mp + 12 Mp (Triple)</dd>
+                <dd className="tech-specs-list--value">{productCard.camera}</dd>
                 <dt className="tech-specs-list--title">Zoom</dt>
-                <dd className="tech-specs-list--value">Optical, 2x</dd>
+                <dd className="tech-specs-list--value">{productCard.zoom}</dd>
                 <dt className="tech-specs-list--title">Cell</dt>
-                <dd className="tech-specs-list--value">GSM, LTE, UMTS</dd>
+                <dd className="tech-specs-list--value">{productCard.cell}</dd>
               </dl>
             </article>
           </section>
           <div className="product-details-page__you-may-like you-may-like">
             <h2 className="you-may-like__title">You may also like</h2>
-            <ProductsSlider phones={brandNewModels} />
+            {statusPhone === AsyncStatus.IDLE && brandNewModels.length && (
+              <ProductsSlider phones={brandNewModels} />
+            )}
           </div>
         </>
       )}

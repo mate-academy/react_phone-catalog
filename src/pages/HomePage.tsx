@@ -1,25 +1,26 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
-
-import { ProductsSlider } from './components/ProductsSlider';
+import { Link } from 'react-router-dom';
 import '../styles/styles.scss';
-
+import { ProductsSlider } from './components/ProductsSlider';
 import { PreviewSlider } from './components/PreviewSlider';
-import { Phone } from '../types/Phone';
+import { Product } from '../types/Product';
 import { useAppSelector } from '../app/hooks';
 import { AsyncStatus } from '../types/AsyncStatus';
 import { Loader } from './components/Loader';
 
-// type Props = {
-//   phones: Phone[];
-// };
-
 export const HomePage: React.FC = () => {
-  const phones: Phone[] = useAppSelector(state => state.phones.value);
+  const phones: Product[] = useAppSelector(state => state.phones.value);
   const statusLadingPhones = useAppSelector(state => state.phones.status);
+  const tabletsAmount = useAppSelector(
+    state => state.products.value,
+  ).filter(p => p.type === 'tablet').length;
+  const accessoryAmount = useAppSelector(
+    state => state.products.value,
+  ).filter(p => p.type === 'accessory').length;
 
   const hotPricePhones = [...phones].sort(
-    (a: Phone, b: Phone) => {
+    (a: Product, b: Product) => {
       const aValue = (a.fullPrice - a.price) / a.fullPrice;
       const bValue = (b.fullPrice - b.price) / b.fullPrice;
 
@@ -28,27 +29,14 @@ export const HomePage: React.FC = () => {
   );
 
   const brandNewModels = [...phones].sort(
-    (a: Phone, b: Phone) => +b.year - +a.year,
+    (a: Product, b: Product) => +b.year - +a.year,
   );
 
   const images = [
     { imgUrl: 'images/banner-phones.png', id: '01' },
     { imgUrl: 'images/banner-phones.png', id: '02' },
     { imgUrl: 'images/banner-phones.png', id: '03' },
-    // { imgUrl: 'images/banner-accessories.png', id: '01' },
-    // { imgUrl: 'images/banner-tablets.png', id: '03' },
   ];
-
-  // const products = [
-  //   { id: '1', value: <ProductCard /> },
-  //   { id: '2', value: <ProductCard /> },
-  //   { id: '3', value: <ProductCard /> },
-  //   { id: '4', value: <ProductCard /> },
-  //   { id: '5', value: <ProductCard /> },
-  //   { id: '6', value: <ProductCard /> },
-  //   { id: '7', value: <ProductCard /> },
-  //   { id: '8', value: <ProductCard /> },
-  // ];
 
   return (
     <>
@@ -81,43 +69,43 @@ export const HomePage: React.FC = () => {
           <h2 className="shop-by-category__title">Shop by category</h2>
           <div className="shop-by-category__container">
             <div className="shop-by-category__category category">
-              <a href="http://" className="category__link">
+              <Link to="phones" className="category__link">
                 <img
                   src="images/preview-category-phone.png"
                   alt="Phone Category"
                   className="category__img"
                 />
-              </a>
+              </Link>
               <h3 className="category__title">
                 Mobile phones
               </h3>
-              <p className="category__description">95 models</p>
+              <p className="category__description">{`${phones.length} models`}</p>
             </div>
             <div className="shop-by-category__category category">
-              <a href="http://" className="category__link">
+              <Link to="tablets" className="category__link">
                 <img
                   src="images/preview-category-tablets.png"
                   alt="Phone Category"
                   className="category__img"
                 />
-              </a>
+              </Link>
               <h3 className="category__title">
                 Tablets
               </h3>
-              <p className="category__description">24 models</p>
+              <p className="category__description">{`${tabletsAmount} models`}</p>
             </div>
             <div className="shop-by-category__category category">
-              <a href="http://" className="category__link">
+              <Link to="accessories" className="category__link">
                 <img
                   src="images/preview-category-accessories.png"
                   alt="Phone Category"
                   className="category__img"
                 />
-              </a>
+              </Link>
               <h3 className="category__title">
                 Accessories
               </h3>
-              <p className="category__description">100 models</p>
+              <p className="category__description">{`${accessoryAmount} models`}</p>
             </div>
           </div>
         </div>
