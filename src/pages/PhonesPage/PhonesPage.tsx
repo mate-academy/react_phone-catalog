@@ -67,8 +67,6 @@ export const PhonesPage: React.FC<Props> = ({
     phones, sortOption, currentPage, itemsPerPage,
   );
 
-  // const noResult = searchResults.length === 0;
-
   return (
     <>
       <div className="phones-page">

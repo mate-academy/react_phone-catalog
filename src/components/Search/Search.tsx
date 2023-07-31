@@ -8,7 +8,7 @@ import { useAppDispatch, useAppSelector } from '../../app/hooks';
 export const Search: React.FC = () => {
   const searchQuery = useAppSelector((state) => state.search.query);
   const dispatch = useAppDispatch();
-  
+
   const location = useLocation();
   const showSearch
     = location.pathname === '/phones'
