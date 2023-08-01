@@ -5,15 +5,17 @@ import { HomePage } from './pages/HomePage/HomePage';
 import { PhonesPage } from './pages/PhonesPage/PhonesPage';
 import { TabletsPage } from './pages/TabletsPage/TabletsPage';
 import { AccessoriesPage } from './pages/AccessoriesPage/AccessoriesPage';
+import { CartPage } from './pages/CartPage/CartPage';
+import { ProductDetailsPage }
+  from './pages/ProductDetailsPage/ProductDetailsPage';
+
+import { CartProvider } from './components/CartProvider/CartProvider';
 import { Header } from './components/Header/Header';
 import { Footer } from './components/Footer/Footer';
 
 import { getProducts } from './api/products';
 import { Product } from './types/Product';
 import { ProductType } from './types/ProductType';
-import { ProductDetailsPage }
-  from './pages/ProductDetailsPage/ProductDetailsPage';
-import { CartPage } from './pages/CartPage/CartPage';
 
 import './App.scss';
 
@@ -48,62 +50,57 @@ const App: React.FC = () => {
 
   return (
     <div className="app">
-      <Header />
+      <CartProvider>
+        <Header />
 
-      <main className="main">
-        <Routes>
-          <Route
-            path="/"
-            element={(
-              <HomePage
-                products={products}
-              />
-            )}
-          />
-          <Route path="/phones" element={<PhonesPage phones={phones} />} />
-          <Route path="/tablets" element={<TabletsPage tablets={tablets} />} />
-          <Route
-            path="/accessories"
-            element={<AccessoriesPage accessories={accessories} />}
-          />
-          <Route
-            path="/phones/:productId"
-            element={(
-              <ProductDetailsPage
-                products={phones}
-                suggestedProducts={suggestedProducts}
-              />
-            )}
-          />
+        <main className="main">
+          <Routes>
+            <Route path="/" element={<HomePage products={products} />} />
+            <Route path="/phones" element={<PhonesPage phones={phones} />} />
+            <Route
+              path="/tablets"
+              element={<TabletsPage tablets={tablets} />}
+            />
+            <Route
+              path="/accessories"
+              element={<AccessoriesPage accessories={accessories} />}
+            />
+            <Route
+              path="/phones/:productId"
+              element={(
+                <ProductDetailsPage
+                  products={phones}
+                  suggestedProducts={suggestedProducts}
+                />
+              )}
+            />
 
-          <Route
-            path="/tablets/:productId"
-            element={(
-              <ProductDetailsPage
-                products={tablets}
-                suggestedProducts={suggestedProducts}
-              />
-            )}
-          />
+            <Route
+              path="/tablets/:productId"
+              element={(
+                <ProductDetailsPage
+                  products={tablets}
+                  suggestedProducts={suggestedProducts}
+                />
+              )}
+            />
 
-          <Route
-            path="/accessories/:productId"
-            element={(
-              <ProductDetailsPage
-                products={accessories}
-                suggestedProducts={suggestedProducts}
-              />
-            )}
-          />
+            <Route
+              path="/accessories/:productId"
+              element={(
+                <ProductDetailsPage
+                  products={accessories}
+                  suggestedProducts={suggestedProducts}
+                />
+              )}
+            />
 
-          <Route
-            path="/cart"
-            element={<CartPage />}
-          />
-        </Routes>
-      </main>
+            <Route path="/cart" element={<CartPage />} />
+          </Routes>
+        </main>
 
-      <Footer />
+        <Footer />
+      </CartProvider>
     </div>
   );
 };

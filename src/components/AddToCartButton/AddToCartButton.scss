@@ -18,10 +18,10 @@
   &:hover {
     box-shadow: 0 3px 13px #171f3042;
   }
-}
 
-.added {
-  border: 1px solid #e2e6e9;
-  color: #27ae60;
-  background-color: transparent;
+  &.added {
+    border: 1px solid #e2e6e9;
+    color: #27ae60;
+    background-color: transparent;
+  }
 }

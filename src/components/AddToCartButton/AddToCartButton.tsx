@@ -1,22 +1,33 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import cn from 'classnames';
+
+import { CartContext } from '../CartProvider/CartProvider';
 
 import './AddToCartButton.scss';
 
-export const AddToCartButton: React.FC = () => {
-  const [added, setAdded] = useState(false);
+type Props = {
+  handleAddToCart: () => void;
+  id: string;
+};
+
+export const AddToCartButton: React.FC<Props> = ({ handleAddToCart, id }) => {
+  const { productsInCart } = useContext(CartContext);
+
+  const isItemInCart = productsInCart.some(
+    (cartItem) => cartItem.id === id && cartItem.quantity !== 0,
+  );
 
   return (
     <button
       type="button"
       className={cn('AddToCartButton', {
-        added,
+        added: isItemInCart,
       })}
       onClick={() => {
-        setAdded(!added);
+        handleAddToCart();
       }}
     >
-      {added ? 'Selected' : 'Add to cart'}
+      {isItemInCart ? 'Added to cart' : 'Add to cart'}
     </button>
   );
 };

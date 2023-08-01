@@ -10,4 +10,5 @@ export interface Product {
   screen: string;
   snippet: string;
   type: string;
+  quantity: number;
 }

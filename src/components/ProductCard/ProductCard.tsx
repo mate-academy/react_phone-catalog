@@ -1,14 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import { getDiscount } from '../../helpers/getDiscount';
-import { Product } from '../../types/Product';
-import { ProductDetails } from '../../types/ProductDetails';
-import { getProduct } from '../../api/products';
-import { ProductType } from '../../types/ProductType';
-
+import { CartContext } from '../CartProvider/CartProvider';
 import { AddToCartButton } from '../AddToCartButton/AddToCartButton';
 import { AddToFavButton } from '../AddToFavButton/AddToFavButton';
+
+import { getProduct } from '../../api/products';
+import { getDiscount } from '../../helpers/getDiscount';
+
+import { Product } from '../../types/Product';
+import { ProductDetails } from '../../types/ProductDetails';
+import { ProductType } from '../../types/ProductType';
+
 import './ProductCard.scss';
 
 type Props = {
@@ -27,6 +30,8 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     imageUrl,
     type,
   } = product;
+
+  const { productsInCart, setProductsInCart } = useContext(CartContext);
 
   const discountedPrice = getDiscount(price, discount);
 
@@ -62,6 +67,25 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   };
 
   const productType = getTypeOfProduct(type);
+
+  const isItemInCart = productsInCart.some(cartItem => cartItem.id === id);
+
+  const handleAddToCart = () => {
+    if (isItemInCart) {
+      const updatedCart = productsInCart.filter(cartItem => cartItem.id !== id);
+
+      setProductsInCart(updatedCart);
+
+      return;
+    }
+
+    const newProd = {
+      ...product,
+      quantity: 1,
+    };
+
+    setProductsInCart([...productsInCart, newProd]);
+  };
 
   return (
     <div className="ProductCard">
@@ -101,7 +125,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         </div>
 
         <div className="ProductCard__buttons">
-          <AddToCartButton />
+          <AddToCartButton handleAddToCart={handleAddToCart} id={id} />
           <AddToFavButton />
         </div>
       </div>

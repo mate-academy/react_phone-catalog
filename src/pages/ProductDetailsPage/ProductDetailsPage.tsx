@@ -1,18 +1,20 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { ProductDetails } from '../../types/ProductDetails';
 
 import { ProductsSlider } from '../../components/ProductsSlider/ProductsSlider';
-import { Product } from '../../types/Product';
 import { BackButton } from '../../components/BackButton/BackButton';
 import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
-import { getDiscount } from '../../helpers/getDiscount';
+import { CartContext } from '../../components/CartProvider/CartProvider';
 import { AddToCartButton }
   from '../../components/AddToCartButton/AddToCartButton';
 import { AddToFavButton }
   from '../../components/AddToFavButton/AddToFavButton';
+
+import { ProductDetails } from '../../types/ProductDetails';
+import { Product } from '../../types/Product';
+import { getDiscount } from '../../helpers/getDiscount';
 
 import './ProductDetailsPage.scss';
 
@@ -42,6 +44,7 @@ export const ProductDetailsPage: React.FC<Props> = ({
 
   const [currentImage, setCurrentImage] = useState(images[0]);
   const [currentProduct, setCurrentProduct] = useState<Product>();
+  const { productsInCart, setProductsInCart } = useContext(CartContext);
 
   const getCurrentProduct = () => {
     const prod = products.find((product) => product.id === id);
@@ -64,6 +67,27 @@ export const ProductDetailsPage: React.FC<Props> = ({
   const discountedPrice
     = currentProduct
     && getDiscount(currentProduct.price, currentProduct.discount);
+
+  const isItemInCart = productsInCart.some(cartItem => cartItem.id === id);
+
+  const handleAddToCart = () => {
+    if (isItemInCart) {
+      const updatedCart = productsInCart.filter(cartItem => cartItem.id !== id);
+
+      setProductsInCart(updatedCart);
+
+      return;
+    }
+
+    if (currentProduct) {
+      const newProd = {
+        ...currentProduct,
+        quantity: 1,
+      };
+
+      setProductsInCart([...productsInCart, newProd]);
+    }
+  };
 
   return (
     <div className="ProductDetailsPage">
@@ -144,7 +168,7 @@ export const ProductDetailsPage: React.FC<Props> = ({
                   )}
                 </div>
                 <div className="ProductDetailsPage__buttons buttons">
-                  <AddToCartButton />
+                  <AddToCartButton handleAddToCart={handleAddToCart} id={id} />
                   <AddToFavButton />
                 </div>
                 <div className="ProductDetailsPage__details details">
