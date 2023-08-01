@@ -33,7 +33,7 @@ export const Search: React.FC = () => {
   }
 
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const query = event.target.value.trim().toLowerCase();
+    const query = event.target.value.toLowerCase();
 
     dispatch(setQuery(query));
   };

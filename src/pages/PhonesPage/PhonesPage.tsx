@@ -7,6 +7,7 @@ import { Phone } from '../../types/Phone';
 import { CartItem } from '../../types/CartItem';
 import './PhonesPage.scss';
 import { NoResults } from '../NoResultsPage/NoResults';
+import { useAppSelector } from '../../app/hooks';
 
 type Props = {
   phones: Phone[],
@@ -17,13 +18,24 @@ type Props = {
   setCartProducts: React.Dispatch<React.SetStateAction<CartItem[]>>,
 };
 
-const getSortedPhones = (
+const getSortedAndFilteredPhones = (
   phones: Phone[],
   sortOption: string,
   currentPage: number,
   itemsPerPage: string,
+  searchQuery: string
 ) => {
   let visiblePhones = [...phones];
+
+  if (searchQuery) {
+    const formattedQuery = searchQuery.trim().toLowerCase();
+    const searchWords = formattedQuery.split(/\s+/);
+
+    return phones.filter(phone => {
+      const phoneName = phone.name.toLowerCase();
+      return searchWords.every(word => phoneName.includes(word));
+    });
+  }
 
   visiblePhones.sort((a: Phone, b: Phone) => {
     if (sortOption === 'name') {
@@ -62,15 +74,20 @@ export const PhonesPage: React.FC<Props> = ({
   const [itemsPerPage, setItemsPerPage] = useState('all');
   const [sortOption, setSortOption] = useState('name');
   const [currentPage, setCurrentPage] = useState(1);
+  const searchQuery = useAppSelector((state) => state.search.query).trim();
 
-  const visiblePhones = getSortedPhones(
-    phones, sortOption, currentPage, itemsPerPage,
+  const visiblePhones = getSortedAndFilteredPhones(
+    phones,
+    sortOption,
+    currentPage,
+    itemsPerPage,
+    searchQuery
   );
 
   return (
     <>
       <div className="phones-page">
-        {!phones.length ? <NoResults />
+        {!visiblePhones.length ? <NoResults />
           : (
             <>
               <MainNavigation />
@@ -81,7 +98,7 @@ export const PhonesPage: React.FC<Props> = ({
                 </h1>
 
                 <p className="phones-page__subtitle">
-                  {`${phones.length} models`}
+                  {`${visiblePhones.length} models`}
                 </p>
 
                 <Selection

@@ -18,14 +18,6 @@ import { Cart } from './pages/CartPage/Cart';
 import { useLocalStorage } from './helpers/useLocalStorage';
 import { useAppSelector } from './app/hooks';
 
-const visiblePhones = (query: string, phones: Phone[]) => {
-  const formattedQuery = query.trim().toLowerCase();
-
-  return phones.filter(
-    phone => phone.name.toLowerCase().includes(formattedQuery),
-  );
-};
-
 const visibleLikedPhones = (query: string, phones: Phone[]) => {
   const formattedQuery = query.trim().toLowerCase();
 
@@ -64,7 +56,6 @@ const App = () => {
     localStorage.setItem('cartItems', JSON.stringify(cartProducts));
   }, [cartProducts]);
 
-  const visiblePhonesItems = visiblePhones(searchQuery, phones);
   const visibleLikedItems = visibleLikedPhones(searchQuery, likedProducts);
 
   return (
@@ -102,7 +93,7 @@ const App = () => {
                   index
                   element={(
                     <PhonesPage
-                      phones={visiblePhonesItems}
+                      phones={phones}
                       setPhones={setPhones}
                       likedProducts={likedProducts}
                       setLikedProducts={setLikedProducts}
