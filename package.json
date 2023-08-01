@@ -7,15 +7,20 @@
   "license": "GPL-3.0",
   "dependencies": {
     "@cypress/react": "^5.12.4",
+    "@reduxjs/toolkit": "^1.9.5",
     "bulma": "^0.9.3",
     "classnames": "^2.3.2",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-redux": "^8.1.1",
     "react-router-dom": "^6.14.2",
     "react-scripts": "^4.0.3",
-    "sort-by": "^1.2.0"
+    "redux": "^4.2.1",
+    "redux-persist": "^6.0.0",
+    "sort-by": "^1.2.0",
+    "sweetalert": "^2.1.2"
   },
   "devDependencies": {
     "@cypress/webpack-dev-server": "^1.8.4",

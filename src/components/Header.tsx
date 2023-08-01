@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import classNames from 'classnames';
-import logo from '../images/icons/LOGO.svg';
+import logo from '../images/Logo.svg';
 import favIcon from '../images/icons/Favourites.svg';
 import cart from '../images/icons/Cart.svg';
 

@@ -1,5 +1,6 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../images/icons/LOGO.svg';
+import logo from '../images/Logo.svg';
 import arrow from '../images/icons/Arrow_up.svg';
 
 export const Footer: React.FC = () => {
@@ -11,13 +12,13 @@ export const Footer: React.FC = () => {
     <footer className="footer">
       <div className="footer__content">
         <Link to="/" className="header__logo">
-          <img src={logo} alt="" />
+          <img src={logo} alt="logo" />
         </Link>
 
         <ul className="footer__menu">
           <li className="footer__item">
             <Link
-              to="https://github.com/vasyliev-anton"
+              to="https://github.com/8Melya8"
               className="footer__link"
               target="__blank"
             >
@@ -38,7 +39,7 @@ export const Footer: React.FC = () => {
             className="footer__button-arrow"
           >
             <button
-              className="arrowButton"
+              className="arrow--button"
               type="button"
               onClick={handleClick}
             >
