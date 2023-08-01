@@ -8,8 +8,9 @@ import { AccessoriesPage } from './pages/AccessoriesPage/AccessoriesPage';
 import { CartPage } from './pages/CartPage/CartPage';
 import { ProductDetailsPage }
   from './pages/ProductDetailsPage/ProductDetailsPage';
+import { FavoritesPage } from './pages/FavoritesPage/FavoritesPage';
 
-import { CartProvider } from './components/CartProvider/CartProvider';
+import { CartProvider } from './providers/CartProvider/CartProvider';
 import { Header } from './components/Header/Header';
 import { Footer } from './components/Footer/Footer';
 
@@ -18,6 +19,7 @@ import { Product } from './types/Product';
 import { ProductType } from './types/ProductType';
 
 import './App.scss';
+import { FavProvider } from './providers/FavProvider/FavProvider';
 
 const App: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -51,55 +53,58 @@ const App: React.FC = () => {
   return (
     <div className="app">
       <CartProvider>
-        <Header />
+        <FavProvider>
+          <Header />
 
-        <main className="main">
-          <Routes>
-            <Route path="/" element={<HomePage products={products} />} />
-            <Route path="/phones" element={<PhonesPage phones={phones} />} />
-            <Route
-              path="/tablets"
-              element={<TabletsPage tablets={tablets} />}
-            />
-            <Route
-              path="/accessories"
-              element={<AccessoriesPage accessories={accessories} />}
-            />
-            <Route
-              path="/phones/:productId"
-              element={(
-                <ProductDetailsPage
-                  products={phones}
-                  suggestedProducts={suggestedProducts}
-                />
-              )}
-            />
+          <main className="main">
+            <Routes>
+              <Route path="/" element={<HomePage products={products} />} />
+              <Route path="/phones" element={<PhonesPage phones={phones} />} />
+              <Route
+                path="/tablets"
+                element={<TabletsPage tablets={tablets} />}
+              />
+              <Route
+                path="/accessories"
+                element={<AccessoriesPage accessories={accessories} />}
+              />
+              <Route
+                path="/phones/:productId"
+                element={(
+                  <ProductDetailsPage
+                    products={phones}
+                    suggestedProducts={suggestedProducts}
+                  />
+                )}
+              />
 
-            <Route
-              path="/tablets/:productId"
-              element={(
-                <ProductDetailsPage
-                  products={tablets}
-                  suggestedProducts={suggestedProducts}
-                />
-              )}
-            />
+              <Route
+                path="/tablets/:productId"
+                element={(
+                  <ProductDetailsPage
+                    products={tablets}
+                    suggestedProducts={suggestedProducts}
+                  />
+                )}
+              />
 
-            <Route
-              path="/accessories/:productId"
-              element={(
-                <ProductDetailsPage
-                  products={accessories}
-                  suggestedProducts={suggestedProducts}
-                />
-              )}
-            />
+              <Route
+                path="/accessories/:productId"
+                element={(
+                  <ProductDetailsPage
+                    products={accessories}
+                    suggestedProducts={suggestedProducts}
+                  />
+                )}
+              />
 
-            <Route path="/cart" element={<CartPage />} />
-          </Routes>
-        </main>
+              <Route path="/cart" element={<CartPage />} />
+              <Route path="/favorites" element={<FavoritesPage />} />
+            </Routes>
+          </main>
 
-        <Footer />
+          <Footer />
+        </FavProvider>
       </CartProvider>
     </div>
   );

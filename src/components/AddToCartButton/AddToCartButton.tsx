@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import cn from 'classnames';
 
-import { CartContext } from '../CartProvider/CartProvider';
+import { CartContext } from '../../providers/CartProvider/CartProvider';
 
 import './AddToCartButton.scss';
 
@@ -21,7 +21,7 @@ export const AddToCartButton: React.FC<Props> = ({ handleAddToCart, id }) => {
     <button
       type="button"
       className={cn('AddToCartButton', {
-        added: isItemInCart,
+        isItemInCart,
       })}
       onClick={() => {
         handleAddToCart();

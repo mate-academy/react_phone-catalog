@@ -1,13 +1,14 @@
 import React, { useContext, useState } from 'react';
 
-import { CartContext } from '../../components/CartProvider/CartProvider';
+import { CartContext } from '../../providers/CartProvider/CartProvider';
+
 import { BackButton } from '../../components/BackButton/BackButton';
 import { CartItem } from '../../components/CartItem/CartItem';
+import { Popup } from '../../components/Popup/Popup';
 
 import { getDiscount } from '../../helpers/getDiscount';
 
 import './CartPage.scss';
-import { Popup } from '../../components/Popup/Popup';
 
 export const CartPage: React.FC = () => {
   const { productsInCart } = useContext(CartContext);
@@ -31,6 +32,7 @@ export const CartPage: React.FC = () => {
       <div className="container">
         <div className="CartPage__content">
           <BackButton />
+
           {totalQuantity === 0 ? (
             <h1 className="CartPage__title">Your cart is empty</h1>
           ) : (

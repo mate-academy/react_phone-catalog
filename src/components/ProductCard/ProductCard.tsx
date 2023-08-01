@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import { CartContext } from '../CartProvider/CartProvider';
+import { CartContext } from '../../providers/CartProvider/CartProvider';
 import { AddToCartButton } from '../AddToCartButton/AddToCartButton';
 import { AddToFavButton } from '../AddToFavButton/AddToFavButton';
 
@@ -13,6 +13,7 @@ import { ProductDetails } from '../../types/ProductDetails';
 import { ProductType } from '../../types/ProductType';
 
 import './ProductCard.scss';
+import { FavContext } from '../../providers/FavProvider/FavProvider';
 
 type Props = {
   product: Product;
@@ -32,6 +33,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   } = product;
 
   const { productsInCart, setProductsInCart } = useContext(CartContext);
+  const { favoriteProducts, setFavoriteProducts } = useContext(FavContext);
 
   const discountedPrice = getDiscount(price, discount);
 
@@ -87,6 +89,22 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     setProductsInCart([...productsInCart, newProd]);
   };
 
+  const isItemFav = favoriteProducts.some(favProd => favProd.id === id);
+
+  const handleAddToFavorites = () => {
+    if (isItemFav) {
+      const updatedFavorites = favoriteProducts.filter(
+        favProd => favProd.id !== id,
+      );
+
+      setFavoriteProducts(updatedFavorites);
+
+      return;
+    }
+
+    setFavoriteProducts([...favoriteProducts, product]);
+  };
+
   return (
     <div className="ProductCard">
       <div className="ProductCard__content">
@@ -126,7 +144,10 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
         <div className="ProductCard__buttons">
           <AddToCartButton handleAddToCart={handleAddToCart} id={id} />
-          <AddToFavButton />
+          <AddToFavButton
+            handleAddToFavorites={handleAddToFavorites}
+            isItemFav={isItemFav}
+          />
         </div>
       </div>
     </div>

@@ -1,8 +1,11 @@
 import React from 'react';
 
 import { Product } from '../../types/Product';
+
 import { ProductCard } from '../../components/ProductCard/ProductCard';
 import { NoResults } from '../../components/NoResults/NoResults';
+import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
+import { BackButton } from '../../components/BackButton/BackButton';
 
 import './TabletsPage.scss';
 
@@ -17,6 +20,9 @@ export const TabletsPage: React.FC<Props> = ({ tablets }) => (
         <NoResults category="Tablets" />
       ) : (
         <div className="TabletsPage__content">
+          <Breadcrumbs />
+          <BackButton />
+
           <h1 className="TabletsPage__title">Tablets</h1>
 
           <div className="TabletsPage__list" data-cy="productList">

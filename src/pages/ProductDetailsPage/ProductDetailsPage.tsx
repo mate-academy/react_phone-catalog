@@ -6,7 +6,7 @@ import { useLocation } from 'react-router-dom';
 import { ProductsSlider } from '../../components/ProductsSlider/ProductsSlider';
 import { BackButton } from '../../components/BackButton/BackButton';
 import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
-import { CartContext } from '../../components/CartProvider/CartProvider';
+import { CartContext } from '../../providers/CartProvider/CartProvider';
 import { AddToCartButton }
   from '../../components/AddToCartButton/AddToCartButton';
 import { AddToFavButton }
@@ -17,6 +17,7 @@ import { Product } from '../../types/Product';
 import { getDiscount } from '../../helpers/getDiscount';
 
 import './ProductDetailsPage.scss';
+import { FavContext } from '../../providers/FavProvider/FavProvider';
 
 type Props = {
   suggestedProducts: Product[];
@@ -44,7 +45,9 @@ export const ProductDetailsPage: React.FC<Props> = ({
 
   const [currentImage, setCurrentImage] = useState(images[0]);
   const [currentProduct, setCurrentProduct] = useState<Product>();
+
   const { productsInCart, setProductsInCart } = useContext(CartContext);
+  const { favoriteProducts, setFavoriteProducts } = useContext(FavContext);
 
   const getCurrentProduct = () => {
     const prod = products.find((product) => product.id === id);
@@ -86,6 +89,24 @@ export const ProductDetailsPage: React.FC<Props> = ({
       };
 
       setProductsInCart([...productsInCart, newProd]);
+    }
+  };
+
+  const isItemFav = favoriteProducts.some(favProd => favProd.id === id);
+
+  const handleAddToFavorites = () => {
+    if (isItemFav) {
+      const updatedFavorites = favoriteProducts.filter(
+        favProd => favProd.id !== id,
+      );
+
+      setFavoriteProducts(updatedFavorites);
+
+      return;
+    }
+
+    if (currentProduct) {
+      setFavoriteProducts([...favoriteProducts, currentProduct]);
     }
   };
 
@@ -169,7 +190,10 @@ export const ProductDetailsPage: React.FC<Props> = ({
                 </div>
                 <div className="ProductDetailsPage__buttons buttons">
                   <AddToCartButton handleAddToCart={handleAddToCart} id={id} />
-                  <AddToFavButton />
+                  <AddToFavButton
+                    handleAddToFavorites={handleAddToFavorites}
+                    isItemFav={isItemFav}
+                  />
                 </div>
                 <div className="ProductDetailsPage__details details">
                   <div className="details__item">

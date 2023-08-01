@@ -1,22 +1,23 @@
-.TabletsPage {
-  display: flex;
-  flex-grow: 1;
-
+.FavoritesPage {
   &__title {
-    margin-top: 20px;
+    margin-top: 40px;
     color: #313237;
-
     font-family: "MontBold", Helvetica, sans-serif;
     font-size: 32px;
-    font-weight: 700;
-    line-height: normal;
     letter-spacing: -0.32px;
   }
 
+  &__quantity {
+    margin-top: 8px;
+    color: #89939a;
+    font-size: 14px;
+    line-height: 21px;
+  }
+
   &__list {
+    margin-top: 40px;
     display: flex;
     gap: 16px;
-    margin-top: 20px;
     flex-wrap: wrap;
   }
 }

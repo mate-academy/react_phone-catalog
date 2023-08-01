@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import cn from 'classnames';
 
 import favIcon from '../../images/heart.svg';
@@ -6,18 +6,25 @@ import favIconSelected from '../../images/heart-selected.svg';
 
 import './AddToFavButton.scss';
 
-export const AddToFavButton: React.FC = () => {
-  const [selected, setSelected] = useState(false);
+type Props = {
+  handleAddToFavorites: () => void;
+  isItemFav: boolean;
+};
 
+export const AddToFavButton: React.FC<Props> = ({
+  handleAddToFavorites,
+  isItemFav,
+}) => {
   return (
     <button
       type="button"
       className={cn('AddToFavButton', {
-        selected,
+        isItemFav,
       })}
-      onClick={() => setSelected(!selected)}
+      onClick={handleAddToFavorites}
+      data-cy="addToFavorite"
     >
-      <img src={selected ? favIconSelected : favIcon} alt="favIcon" />
+      <img src={isItemFav ? favIconSelected : favIcon} alt="favIcon" />
     </button>
   );
 };

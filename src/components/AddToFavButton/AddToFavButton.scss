@@ -13,8 +13,8 @@
   &:hover {
     border-color: #313237;
   }
-}
 
-.selected {
-  border-color: #e2e6e9;
+  &.isItemFav {
+    border-color: #e2e6e9;
+  }
 }

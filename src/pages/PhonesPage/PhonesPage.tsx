@@ -8,6 +8,7 @@ import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 import { Pagination } from '../../components/Pagination/Pagination';
 
 import './PhonesPage.scss';
+import { BackButton } from '../../components/BackButton/BackButton';
 
 type Props = {
   phones: Product[];
@@ -77,6 +78,7 @@ export const PhonesPage: React.FC<Props> = ({ phones }) => {
         ) : (
           <div className="PhonesPage__content">
             <Breadcrumbs />
+            <BackButton />
             <h1 className="PhonesPage__title">Mobile phones</h1>
 
             <h3 className="PhonesPage__subtitle">{`${phonesLength} models`}</h3>
