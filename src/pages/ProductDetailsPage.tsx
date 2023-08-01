@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable max-len */
 import { FC, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
 import Breadcrumbs from './components/Breadcrumbs';
 import '../styles/styles.scss';
@@ -32,6 +32,7 @@ export const ProductDetailsPage: FC = () => {
   });
 
   const [brandNewModels, setBrandNewModels] = useState<Product[]>([]);
+  const location = useLocation();
 
   useEffect(() => {
     if (selectedProduct !== null) {
@@ -48,6 +49,12 @@ export const ProductDetailsPage: FC = () => {
       setBrandNewModels(res);
     }
   }, [phones]);
+
+  useEffect(() => {
+    if (selectedProduct !== null) {
+      dispatch(loadPhoneDetails(selectedProduct.phoneId));
+    }
+  }, [location.pathname.split('/')[2]]);
 
   useEffect(() => {
     if (phoneDetailsStatus === AsyncStatus.IDLE && Array.isArray(phoneDetails) === false && phoneDetails !== null) {
