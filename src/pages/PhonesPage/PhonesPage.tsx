@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useMemo } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
 import { Product } from '../../types/Product';
 
@@ -8,7 +9,7 @@ import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 import { Pagination } from '../../components/Pagination/Pagination';
 
 import './PhonesPage.scss';
-import { BackButton } from '../../components/BackButton/BackButton';
+import { getSearchWith } from '../../helpers/searchHelper';
 
 type Props = {
   phones: Product[];
@@ -23,52 +24,93 @@ const sortOptions = [
 const smallestPageSize = 4;
 
 export const PhonesPage: React.FC<Props> = ({ phones }) => {
-  const [sortBy, setSortBy] = useState('age');
-  const [pageSize, setPageSize] = useState(smallestPageSize);
-  const [currentPage, setCurrentPage] = useState(1);
+  // const [sortBy, setSortBy] = useState('age');
+  // const [pageSize, setPageSize] = useState(smallestPageSize);
+  // const [currentPage, setCurrentPage] = useState(1);
 
-  const phonesLength = phones.length;
-  const pageSizes = [smallestPageSize, 8, phonesLength]; // add 16 when will be more phones on API
-  const showPagination = phonesLength > smallestPageSize
-    && pageSize !== phonesLength;
+  const [searchParams, setSearchParams] = useSearchParams();
+  const query = searchParams.get('query') || '';
+
+  const sortBy = searchParams.get('sortBy') || 'age';
+  const pageSize = searchParams.get('pageSize') || smallestPageSize;
+  const currentPage = searchParams.get('currentPage') || 1;
+
+  // if (!pageSize) {
+  //   pageSize = smallestPageSize;
+  // }
+  // if (!currentPage) {
+  //   currentPage = 1;
+  // }
 
   const handleSortChange = (newValue: string) => {
-    setSortBy(newValue);
+    // setSortBy(newValue);
+
+    setSearchParams(
+      getSearchWith(
+        searchParams,
+        {
+          sortBy: newValue || null,
+          currentPage: '1' || null,
+        },
+      ),
+    );
   };
 
   const handlePageSizeChange = (
     newValue: string,
   ) => {
-    setPageSize(parseInt(newValue, 10));
-    setCurrentPage(1);
+    // setPageSize(parseInt(newValue, 10));
+    // setCurrentPage(1);
+
+    setSearchParams(
+      getSearchWith(
+        searchParams,
+        {
+          pageSize: newValue || null,
+          currentPage: '1',
+        },
+      ),
+    );
   };
 
-  const sortPhones = () => {
-    const sortedPhones = [...phones];
+  const filteredPhones = useMemo(() => {
+    return phones.filter(phone => {
+      const normalizedQuery = query.toLowerCase().trim();
+      const normalizedName = phone.name.toLowerCase().trim();
+
+      return normalizedName.includes(normalizedQuery);
+    });
+  }, [phones, query]);
+
+  const sortedPhones = useMemo(() => {
+    const phonesCopy = [...filteredPhones];
 
     switch (sortBy) {
-      case 'age':
-        sortedPhones.sort((a, b) => b.age - a.age);
-        break;
       case 'name':
-        sortedPhones.sort((a, b) => a.name.localeCompare(b.name));
+        phonesCopy.sort((a, b) => a.name.localeCompare(b.name));
         break;
+
       case 'price':
-        sortedPhones.sort((a, b) => a.price - b.price);
+        phonesCopy.sort((a, b) => a.price - b.price);
         break;
+
+      case 'age':
       default:
-        sortedPhones.sort((a, b) => b.age - a.age);
+        phonesCopy.sort((a, b) => b.age - a.age);
         break;
     }
 
-    return sortedPhones;
-  };
+    return phonesCopy;
+  }, [sortBy, filteredPhones]);
 
-  const sortedPhones = sortPhones();
+  const startIndex = (+currentPage - 1) * +pageSize;
+  const endIndex = startIndex + +pageSize;
+  const visiblePhones = sortedPhones.slice(startIndex, +endIndex);
 
-  const startIndex = (currentPage - 1) * pageSize;
-  const endIndex = startIndex + pageSize;
-  const visiblePhones = sortedPhones.slice(startIndex, endIndex);
+  const phonesLength = sortedPhones.length;
+  const pageSizes = [smallestPageSize, 8, phonesLength]; // add 16 when will be more phones on API
+  const showPagination = phonesLength > smallestPageSize
+    && +pageSize !== +phonesLength;
 
   return (
     <div className="PhonesPage">
@@ -78,7 +120,7 @@ export const PhonesPage: React.FC<Props> = ({ phones }) => {
         ) : (
           <div className="PhonesPage__content">
             <Breadcrumbs />
-            <BackButton />
+
             <h1 className="PhonesPage__title">Mobile phones</h1>
 
             <h3 className="PhonesPage__subtitle">{`${phonesLength} models`}</h3>
@@ -119,12 +161,12 @@ export const PhonesPage: React.FC<Props> = ({ phones }) => {
               ))}
             </div>
 
-            {showPagination && (
+            {showPagination && phonesLength > 0 && (
               <Pagination
-                currentPage={currentPage}
-                pageSize={pageSize}
+                currentPage={+currentPage}
+                pageSize={+pageSize}
                 phonesLength={phonesLength}
-                setCurrentPage={setCurrentPage}
+                // setCurrentPage={setCurrentPage}
               />
             )}
           </div>

@@ -1,6 +1,9 @@
 import React from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link, useLocation } from 'react-router-dom';
 import cn from 'classnames';
+
+import { Search } from '../Search/Search';
+import { locationsForSearch } from '../../helpers/locationsForSearch';
 
 import logo from '../../images/logo.svg';
 import favoritesImg from '../../images/header-buttons/favorites-default.svg';
@@ -9,6 +12,12 @@ import bagImg from '../../images/header-buttons/shopping-bag.svg';
 import './Header.scss';
 
 export const Header: React.FC = () => {
+  const currentLocation = useLocation();
+
+  const showSearch = locationsForSearch.some(
+    location => location === currentLocation.pathname,
+  );
+
   return (
     <header className="header">
       <nav className="header__nav">
@@ -65,6 +74,7 @@ export const Header: React.FC = () => {
       </nav>
 
       <div className="header__buttons">
+        {showSearch && <Search />}
         <NavLink to="/favorites" className="header__button">
           <img
             src={favoritesImg}
