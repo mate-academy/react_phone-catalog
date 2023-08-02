@@ -1,4 +1,5 @@
-import React, { useContext } from 'react';
+import React, { useContext, useMemo } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
 import { FavContext } from '../../providers/FavProvider/FavProvider';
 
@@ -9,6 +10,18 @@ import './FavoritesPage.scss';
 
 export const FavoritesPage: React.FC = () => {
   const { favoriteProducts } = useContext(FavContext);
+
+  const [searchParams] = useSearchParams();
+  const query = searchParams.get('query') || '';
+
+  const filteredFavorites = useMemo(() => {
+    return favoriteProducts.filter(favProd => {
+      const normalizedQuery = query.toLowerCase().trim();
+      const normalizedName = favProd.name.toLowerCase().trim();
+
+      return normalizedName.includes(normalizedQuery);
+    });
+  }, [favoriteProducts, query]);
 
   return (
     <div className="FavoritesPage">
@@ -25,10 +38,10 @@ export const FavoritesPage: React.FC = () => {
           {favoriteProducts.length > 0 && (
             <>
               <h1 className="FavoritesPage__title">Favorites</h1>
-              <div className="FavoritesPage__quantity">{`${favoriteProducts.length} items`}</div>
+              <div className="FavoritesPage__quantity">{`${filteredFavorites.length} items`}</div>
 
               <div className="FavoritesPage__list">
-                {favoriteProducts.map((favProduct) => (
+                {filteredFavorites.map((favProduct) => (
                   <ProductCard product={favProduct} key={favProduct.id} />
                 ))}
               </div>

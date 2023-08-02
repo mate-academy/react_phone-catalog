@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useMemo } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
 import { Product } from '../../types/Product';
 
@@ -13,25 +14,39 @@ type Props = {
   tablets: Product[];
 };
 
-export const TabletsPage: React.FC<Props> = ({ tablets }) => (
-  <div className="TabletsPage">
-    <div className="container">
-      {tablets.length === 0 ? (
-        <NoResults category="Tablets" />
-      ) : (
-        <div className="TabletsPage__content">
-          <Breadcrumbs />
-          <BackButton />
+export const TabletsPage: React.FC<Props> = ({ tablets }) => {
+  const [searchParams] = useSearchParams();
+  const query = searchParams.get('query') || '';
 
-          <h1 className="TabletsPage__title">Tablets</h1>
+  const filteredTablets = useMemo(() => {
+    return tablets.filter(tablet => {
+      const normalizedQuery = query.toLowerCase().trim();
+      const normalizedName = tablet.name.toLowerCase().trim();
 
-          <div className="TabletsPage__list" data-cy="productList">
-            {tablets.map((tablet) => (
-              <ProductCard product={tablet} key={tablet.id} />
-            ))}
+      return normalizedName.includes(normalizedQuery);
+    });
+  }, [tablets, query]);
+
+  return (
+    <div className="TabletsPage">
+      <div className="container">
+        {tablets.length === 0 ? (
+          <NoResults category="Tablets" />
+        ) : (
+          <div className="TabletsPage__content">
+            <Breadcrumbs />
+            <BackButton />
+
+            <h1 className="TabletsPage__title">Tablets</h1>
+
+            <div className="TabletsPage__list" data-cy="productList">
+              {filteredTablets.map((tablet) => (
+                <ProductCard product={tablet} key={tablet.id} />
+              ))}
+            </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
-  </div>
-);
+  );
+};

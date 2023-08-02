@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useMemo, useState } from 'react';
 
 import { CartContext } from '../../providers/CartProvider/CartProvider';
 
@@ -19,9 +19,12 @@ export const CartPage: React.FC = () => {
       + getDiscount(currentValue.price, currentValue.discount)
       * currentValue.quantity, 0,
   );
-  const totalQuantity = productsInCart.reduce(
-    (prevValue, currentValue) => prevValue + currentValue.quantity, 0,
-  );
+
+  const totalQuantity = useMemo(() => {
+    return productsInCart.reduce((prevValue, currentValue) => {
+      return prevValue + currentValue.quantity;
+    }, 0);
+  }, [productsInCart]);
 
   const handleShowPopup = () => {
     setShowPopup((prev) => !prev);

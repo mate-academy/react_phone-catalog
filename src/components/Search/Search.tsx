@@ -18,10 +18,10 @@ export const Search: React.FC = () => {
     const normalizedQuery = event.target.value.toLowerCase();
 
     setSearchParams(
-      getSearchWith(
-        searchParams,
-        { query: normalizedQuery || null, currentPage: '1' },
-      ),
+      getSearchWith(searchParams, {
+        query: normalizedQuery || null,
+        currentPage: '1',
+      }),
     );
   };
 

@@ -2,6 +2,7 @@ import React, { useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 import { Product } from '../../types/Product';
+import { getSearchWith } from '../../helpers/searchHelper';
 
 import { ProductCard } from '../../components/ProductCard/ProductCard';
 import { DropDown } from '../../components/DropDown/DropDown';
@@ -9,7 +10,6 @@ import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 import { Pagination } from '../../components/Pagination/Pagination';
 
 import './PhonesPage.scss';
-import { getSearchWith } from '../../helpers/searchHelper';
 
 type Props = {
   phones: Product[];
@@ -24,10 +24,6 @@ const sortOptions = [
 const smallestPageSize = 4;
 
 export const PhonesPage: React.FC<Props> = ({ phones }) => {
-  // const [sortBy, setSortBy] = useState('age');
-  // const [pageSize, setPageSize] = useState(smallestPageSize);
-  // const [currentPage, setCurrentPage] = useState(1);
-
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query') || '';
 
@@ -35,16 +31,7 @@ export const PhonesPage: React.FC<Props> = ({ phones }) => {
   const pageSize = searchParams.get('pageSize') || smallestPageSize;
   const currentPage = searchParams.get('currentPage') || 1;
 
-  // if (!pageSize) {
-  //   pageSize = smallestPageSize;
-  // }
-  // if (!currentPage) {
-  //   currentPage = 1;
-  // }
-
   const handleSortChange = (newValue: string) => {
-    // setSortBy(newValue);
-
     setSearchParams(
       getSearchWith(
         searchParams,
@@ -59,9 +46,6 @@ export const PhonesPage: React.FC<Props> = ({ phones }) => {
   const handlePageSizeChange = (
     newValue: string,
   ) => {
-    // setPageSize(parseInt(newValue, 10));
-    // setCurrentPage(1);
-
     setSearchParams(
       getSearchWith(
         searchParams,
@@ -166,7 +150,6 @@ export const PhonesPage: React.FC<Props> = ({ phones }) => {
                 currentPage={+currentPage}
                 pageSize={+pageSize}
                 phonesLength={phonesLength}
-                // setCurrentPage={setCurrentPage}
               />
             )}
           </div>

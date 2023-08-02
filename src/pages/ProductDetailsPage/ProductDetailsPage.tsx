@@ -3,6 +3,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
+import { FavContext } from '../../providers/FavProvider/FavProvider';
+
 import { ProductsSlider } from '../../components/ProductsSlider/ProductsSlider';
 import { BackButton } from '../../components/BackButton/BackButton';
 import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
@@ -17,7 +19,6 @@ import { Product } from '../../types/Product';
 import { getDiscount } from '../../helpers/getDiscount';
 
 import './ProductDetailsPage.scss';
-import { FavContext } from '../../providers/FavProvider/FavProvider';
 
 type Props = {
   suggestedProducts: Product[];
@@ -281,7 +282,10 @@ export const ProductDetailsPage: React.FC<Props> = ({
             />
           </div>
         ) : (
-          <h1>Loading...</h1>
+          <>
+            <BackButton />
+            <h1 className="ProductDetailsPage__title">Phone was not found</h1>
+          </>
         )}
       </div>
     </div>
