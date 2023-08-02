@@ -23,7 +23,7 @@ const getSortedAndFilteredPhones = (
   sortOption: string,
   currentPage: number,
   itemsPerPage: string,
-  searchQuery: string
+  searchQuery: string,
 ) => {
   let visiblePhones = [...phones];
 
@@ -33,6 +33,7 @@ const getSortedAndFilteredPhones = (
 
     return phones.filter(phone => {
       const phoneName = phone.name.toLowerCase();
+
       return searchWords.every(word => phoneName.includes(word));
     });
   }
@@ -81,7 +82,7 @@ export const PhonesPage: React.FC<Props> = ({
     sortOption,
     currentPage,
     itemsPerPage,
-    searchQuery
+    searchQuery,
   );
 
   return (

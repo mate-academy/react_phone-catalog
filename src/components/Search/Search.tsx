@@ -45,7 +45,7 @@ export const Search: React.FC = () => {
 
   return (
     <div className="search">
-      <div className="search__content">
+      <label className="search__content">
         <input
           type="text"
           placeholder={searchText}
@@ -66,7 +66,7 @@ export const Search: React.FC = () => {
             <img src={search} alt="search" className="search__img" />
           )}
         </button>
-      </div>
+      </label>
     </div>
   );
 };
