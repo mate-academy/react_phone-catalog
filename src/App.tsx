@@ -61,49 +61,55 @@ const App: React.FC = () => {
 
           <main className="main">
             <Routes>
-              <Route path="/" element={<HomePage products={products} />} />
-              <Route path="/phones" element={<PhonesPage phones={phones} />} />
-              <Route
-                path="/tablets"
-                element={<TabletsPage tablets={tablets} />}
-              />
-              <Route
-                path="/accessories"
-                element={<AccessoriesPage accessories={accessories} />}
-              />
-              <Route
-                path="/phones/:productId"
-                element={(
-                  <ProductDetailsPage
-                    products={phones}
-                    suggestedProducts={suggestedProducts}
-                  />
-                )}
-              />
+              <Route path="/">
+                <Route index element={<HomePage products={products} />} />
 
-              <Route
-                path="/tablets/:productId"
-                element={(
-                  <ProductDetailsPage
-                    products={tablets}
-                    suggestedProducts={suggestedProducts}
+                <Route path="phones">
+                  <Route index element={<PhonesPage phones={phones} />} />
+                  <Route
+                    path=":productId"
+                    element={(
+                      <ProductDetailsPage
+                        products={phones}
+                        suggestedProducts={suggestedProducts}
+                      />
+                    )}
                   />
-                )}
-              />
+                </Route>
 
-              <Route
-                path="/accessories/:productId"
-                element={(
-                  <ProductDetailsPage
-                    products={accessories}
-                    suggestedProducts={suggestedProducts}
+                <Route path="tablets">
+                  <Route index element={<TabletsPage tablets={tablets} />} />
+                  <Route
+                    path=":productId"
+                    element={(
+                      <ProductDetailsPage
+                        products={tablets}
+                        suggestedProducts={suggestedProducts}
+                      />
+                    )}
                   />
-                )}
-              />
+                </Route>
 
-              <Route path="/cart" element={<CartPage />} />
-              <Route path="/favorites" element={<FavoritesPage />} />
-              <Route path="*" element={<NotFoundPage />} />
+                <Route path="accessories">
+                  <Route
+                    index
+                    element={<AccessoriesPage accessories={accessories} />}
+                  />
+                  <Route
+                    path=":productId"
+                    element={(
+                      <ProductDetailsPage
+                        products={accessories}
+                        suggestedProducts={suggestedProducts}
+                      />
+                    )}
+                  />
+                </Route>
+
+                <Route path="cart" element={<CartPage />} />
+                <Route path="favorites" element={<FavoritesPage />} />
+                <Route path="*" element={<NotFoundPage />} />
+              </Route>
             </Routes>
           </main>
 

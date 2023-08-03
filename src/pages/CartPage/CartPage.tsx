@@ -11,6 +11,8 @@ import { CartItem } from '../../components/CartItem/CartItem';
 import { Popup } from '../../components/Popup/Popup';
 
 import { getDiscount } from '../../helpers/getDiscount';
+import { useDisableScrollOnPopup }
+  from '../../helpers/useDisableScrollOnPopup';
 
 import './CartPage.scss';
 
@@ -33,6 +35,8 @@ export const CartPage: React.FC = () => {
   const handleShowPopup = () => {
     setShowPopup((prev) => !prev);
   };
+
+  useDisableScrollOnPopup(showPopup);
 
   return (
     <div className="CartPage">

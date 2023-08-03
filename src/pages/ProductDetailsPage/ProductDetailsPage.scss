@@ -162,6 +162,7 @@
   }
 
   &__link {
+    background: none;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -171,7 +172,6 @@
 
     color: #313237;
     font-size: 14px;
-    font-weight: 500;
     line-height: 21px;
 
     border: 1px solid #b4bdc3;

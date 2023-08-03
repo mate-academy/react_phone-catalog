@@ -13,10 +13,13 @@ import { AddToCartButton }
   from '../../components/AddToCartButton/AddToCartButton';
 import { AddToFavButton }
   from '../../components/AddToFavButton/AddToFavButton';
+import { Popup } from '../../components/Popup/Popup';
 
 import { ProductDetails } from '../../types/ProductDetails';
 import { Product } from '../../types/Product';
 import { getDiscount } from '../../helpers/getDiscount';
+import { useDisableScrollOnPopup }
+  from '../../helpers/useDisableScrollOnPopup';
 
 import './ProductDetailsPage.scss';
 
@@ -46,6 +49,7 @@ export const ProductDetailsPage: React.FC<Props> = ({
 
   const [currentImage, setCurrentImage] = useState(images[0]);
   const [currentProduct, setCurrentProduct] = useState<Product>();
+  const [showPopup, setShowPopup] = useState(false);
 
   const { productsInCart, setProductsInCart } = useContext(CartContext);
   const { favoriteProducts, setFavoriteProducts } = useContext(FavContext);
@@ -111,6 +115,12 @@ export const ProductDetailsPage: React.FC<Props> = ({
     }
   };
 
+  const handleShowPopup = () => {
+    setShowPopup((prev) => !prev);
+  };
+
+  useDisableScrollOnPopup(showPopup);
+
   return (
     <div className="ProductDetailsPage">
       <div className="container">
@@ -150,36 +160,68 @@ export const ProductDetailsPage: React.FC<Props> = ({
                 <div className="ProductDetailsPage__colors colors">
                   <div className="colors__text">Available colors</div>
                   <div className="colors__list">
-                    <div className="colors__link colors__link-active">
+                    <button
+                      className="colors__link colors__link-active"
+                      type="button"
+                      onClick={handleShowPopup}
+                    >
                       <div
                         className="colors__link-color colors__link-color--1"
                       />
-                    </div>
-                    <div className="colors__link">
+                    </button>
+                    <button
+                      className="colors__link"
+                      type="button"
+                      onClick={handleShowPopup}
+                    >
                       <div
                         className="colors__link-color colors__link-color--2"
                       />
-                    </div>
-                    <div className="colors__link">
+                    </button>
+                    <button
+                      className="colors__link"
+                      type="button"
+                      onClick={handleShowPopup}
+                    >
                       <div
                         className="colors__link-color colors__link-color--3"
                       />
-                    </div>
-                    <div className="colors__link">
+                    </button>
+                    <button
+                      className="colors__link"
+                      type="button"
+                      onClick={handleShowPopup}
+                    >
                       <div
                         className="colors__link-color colors__link-color--4"
                       />
-                    </div>
+                    </button>
                   </div>
                 </div>
                 <div className="ProductDetailsPage__capacities capacities">
                   <div className="capacities__text">Select capacity</div>
                   <div className="capacities__list">
-                    <div className="capacities__link capacities__link-active">
+                    <button
+                      type="button"
+                      onClick={handleShowPopup}
+                      className="capacities__link capacities__link-active"
+                    >
                       64 GB
-                    </div>
-                    <div className="capacities__link">256 GB</div>
-                    <div className="capacities__link">512 GB</div>
+                    </button>
+                    <button
+                      type="button"
+                      onClick={handleShowPopup}
+                      className="capacities__link"
+                    >
+                      256 GB
+                    </button>
+                    <button
+                      type="button"
+                      onClick={handleShowPopup}
+                      className="capacities__link"
+                    >
+                      512 GB
+                    </button>
                   </div>
                 </div>
                 <div className="ProductDetailsPage__price price">
@@ -287,6 +329,8 @@ export const ProductDetailsPage: React.FC<Props> = ({
             <h1 className="ProductDetailsPage__title">Phone was not found</h1>
           </>
         )}
+
+        {showPopup && <Popup onClose={handleShowPopup} />}
       </div>
     </div>
   );
