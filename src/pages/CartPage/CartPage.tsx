@@ -3,6 +3,7 @@ import React, {
   useMemo,
   useState,
 } from 'react';
+import { Link } from 'react-router-dom';
 
 import { CartContext } from '../../providers/CartProvider/CartProvider';
 
@@ -45,7 +46,26 @@ export const CartPage: React.FC = () => {
           <BackButton />
 
           {totalQuantity === 0 ? (
-            <h1 className="CartPage__title">Your cart is empty</h1>
+            <h1 className="CartPage__title CartPage__title--no-products">
+              Your cart is empty. Maybe you want to choose something in
+              {' '}
+              <Link className="CartPage__link" to="/phones">
+                Phones
+              </Link>
+              ,
+              {' '}
+              <Link className="CartPage__link" to="/tablets">
+                Tablets
+              </Link>
+              {' '}
+              or
+              {' '}
+              <Link className="CartPage__link" to="/accessories">
+                Accessories
+              </Link>
+              {' '}
+              ?
+            </h1>
           ) : (
             <>
               <h1 className="CartPage__title">Cart</h1>

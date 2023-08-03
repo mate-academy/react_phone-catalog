@@ -11,6 +11,10 @@
     font-family: "MontBold", Helvetica, sans-serif;
     font-size: 32px;
     letter-spacing: -0.32px;
+
+    &--no-products {
+      text-align: center;
+    }
   }
 
   &__list {
@@ -74,6 +78,50 @@
       &:hover {
         box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
       }
+    }
+  }
+
+  &__link {
+    color: #eb5757;
+    border-bottom: 2px solid transparent;
+    position: relative;
+    padding: 13px 0;
+    display: inline-block;
+
+    transition-duration: 0.3s;
+
+    &:hover {
+      color: #ad3232;
+    }
+
+    &::after {
+      content: "";
+      width: 1px;
+      height: 3px;
+
+      transition-duration: 0.3s;
+    }
+
+    &--active::after {
+      content: "";
+      position: absolute;
+      display: block;
+      width: 100%;
+      height: 3px;
+      bottom: 0;
+
+      background-color: #ad3232;
+    }
+
+    &:hover::after {
+      content: "";
+      position: absolute;
+      display: block;
+      width: 100%;
+      height: 3px;
+      bottom: 0;
+
+      background-color: #ad3232;
     }
   }
 }

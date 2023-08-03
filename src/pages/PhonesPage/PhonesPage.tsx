@@ -8,6 +8,8 @@ import { ProductCard } from '../../components/ProductCard/ProductCard';
 import { DropDown } from '../../components/DropDown/DropDown';
 import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 import { Pagination } from '../../components/Pagination/Pagination';
+import { NoSearchResults }
+  from '../../components/NoSearchResults/NoSearchResults';
 
 import './PhonesPage.scss';
 
@@ -99,8 +101,8 @@ export const PhonesPage: React.FC<Props> = ({ phones }) => {
   return (
     <div className="PhonesPage">
       <div className="container">
-        {phones.length === 0 ? (
-          <h1>Loading...</h1>
+        {visiblePhones.length === 0 && query ? (
+          <NoSearchResults />
         ) : (
           <div className="PhonesPage__content">
             <Breadcrumbs />

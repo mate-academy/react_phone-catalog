@@ -7,6 +7,8 @@ import { ProductCard } from '../../components/ProductCard/ProductCard';
 import { NoResults } from '../../components/NoResults/NoResults';
 import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 import { BackButton } from '../../components/BackButton/BackButton';
+import { NoSearchResults }
+  from '../../components/NoSearchResults/NoSearchResults';
 
 import './TabletsPage.scss';
 
@@ -30,9 +32,13 @@ export const TabletsPage: React.FC<Props> = ({ tablets }) => {
   return (
     <div className="TabletsPage">
       <div className="container">
-        {tablets.length === 0 ? (
+        {filteredTablets.length === 0 && query && (
+          <NoSearchResults />
+        )}
+
+        {filteredTablets.length === 0 && !query ? (
           <NoResults category="Tablets" />
-        ) : (
+        ) : filteredTablets.length > 0 && (
           <div className="TabletsPage__content">
             <Breadcrumbs />
             <BackButton />
