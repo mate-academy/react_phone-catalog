@@ -2,87 +2,57 @@
 import { FC, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/styles.scss';
+// eslint-disable-next-line import/no-cycle
 import { CardedProduct } from './components/CardedProduct';
 import { Product } from '../types/Product';
 import { useAppSelector } from '../app/hooks';
 
-type SavedCard = {
+export type SavedCard = {
   id: string,
   amount: number,
   value: Product,
 };
 
+export enum KeyJson {
+  CARD = 'cardedPhones',
+}
+
 export const CardPage: FC = () => {
   const cardedPhones = useAppSelector(state => state.phonesCarded.value);
   const [savedCards, setSavedCards] = useState<SavedCard[]>(() => {
-    const savedOrderedCards = window.localStorage.getItem('cardedPhones');
+    const savedOrderedCards = window.localStorage.getItem(KeyJson.CARD);
 
     if (savedOrderedCards) {
       return JSON.parse(savedOrderedCards);
     }
 
-    const saveCard = (): SavedCard[] => {
-      const result = cardedPhones.map(phone => (
-        {
-          id: phone.id,
-          amount: 1,
-          value: phone,
-        }
-      ));
-
-      return result;
-    };
-
-    const res = saveCard();
-
-    return res;
+    return [];
   });
-  const [totalItems, setTotalItems] = useState<number>(savedCards.length || 0);
-  const [totalAmount, setTotalAmount] = useState<number>(() => {
-    const result = window.localStorage.getItem('totalAmount') || 0;
+  const [totalItems, setTotalItems] = useState<number>(() => {
+    const savedOrderedCards = window.localStorage.getItem(KeyJson.CARD);
 
-    return +result;
+    if (savedOrderedCards) {
+      return JSON.parse(savedOrderedCards).reduce(
+        (a: number, i: SavedCard) => a + i.amount, 0,
+      );
+    }
+
+    return cardedPhones.length;
+  });
+  const [totalAmount, setTotalAmount] = useState<number>(() => {
+    const savedOrderedCards = window.localStorage.getItem(KeyJson.CARD);
+
+    if (savedOrderedCards) {
+      return JSON.parse(savedOrderedCards).reduce(
+        (a: number, i: SavedCard) => a + (i.amount * i.value.price), 0,
+      );
+    }
+
+    return cardedPhones.reduce((a, i) => a + i.price, 0);
   });
 
   useEffect(() => {
-    const alredySavedCardsJSON = window.localStorage.getItem('cardedPhones');
-
-    if (cardedPhones && cardedPhones.length > 0 && alredySavedCardsJSON) {
-      const alredySavedCards: SavedCard[] = JSON.parse(alredySavedCardsJSON);
-      const newCardsForSave: SavedCard[] = [];
-      const result = alredySavedCards.map(card => {
-        if (cardedPhones.find(phone => phone.id === card.id)) {
-          return {
-            ...card,
-            amount: card.amount + 1,
-          };
-        }
-
-        return card;
-      });
-
-      cardedPhones.forEach(phone => {
-        if (result.find(card => card.id === phone.id)) {
-          newCardsForSave.push({
-            id: phone.id,
-            amount: 1,
-            value: phone,
-          });
-        }
-      });
-
-      if ([...result, ...newCardsForSave].length > 0) {
-        window.localStorage.setItem(
-          'cardedPhones', JSON.stringify([...result, ...newCardsForSave]),
-        );
-
-        const getItem = window.localStorage.getItem('cardedPhones');
-
-        if (getItem) {
-          setSavedCards(JSON.parse(getItem));
-        }
-      }
-    } else {
+    if (savedCards.length === 0 && cardedPhones) {
       const newCardForSaveFromZero = cardedPhones.map(phone => (
         {
           id: phone.id,
@@ -91,28 +61,49 @@ export const CardPage: FC = () => {
         }
       ));
 
-      if (newCardForSaveFromZero.length > 0) {
-        window.localStorage.setItem(
-          'savedCards', JSON.stringify(newCardForSaveFromZero),
-        );
-      }
+      setSavedCards(newCardForSaveFromZero);
+      window.localStorage.setItem(
+        KeyJson.CARD, JSON.stringify(newCardForSaveFromZero),
+      );
 
-      const getItem = window.localStorage.getItem('cardedPhones');
+      const priceCards = newCardForSaveFromZero.reduce(
+        (a, i) => a + i.value.price, 0,
+      );
 
-      if (getItem) {
-        setSavedCards(JSON.parse(getItem));
-      }
+      setTotalAmount(priceCards);
+      setTotalItems(newCardForSaveFromZero.length);
     }
 
-    setTotalAmount(
-      savedCards.reduce(
-        (
-          sum: number, card: SavedCard,
-        ) => sum + (+card.value.price * card.amount), 0,
-      ),
-    );
-    setTotalItems(savedCards.reduce((accom, card) => accom + +card.amount, 0));
-  }, [cardedPhones || savedCards]);
+    if (savedCards.length > 0) {
+      const alredySavedCardsJSON = window.localStorage.getItem(KeyJson.CARD);
+
+      if (alredySavedCardsJSON) {
+        const alredySavedCards: SavedCard[] = JSON.parse(alredySavedCardsJSON);
+        const newCardsForSave: SavedCard[] = [];
+
+        cardedPhones.forEach(phone => {
+          if (alredySavedCards.every(card => card.id !== phone.id)) {
+            newCardsForSave.push({
+              id: phone.id,
+              amount: 1,
+              value: phone,
+            });
+          }
+        });
+
+        window.localStorage.setItem(
+          KeyJson.CARD, JSON.stringify([...savedCards, ...newCardsForSave]),
+        );
+        setSavedCards(prev => ([...prev, ...newCardsForSave]));
+        const priceNewCards = newCardsForSave.reduce(
+          (a, i) => a + i.value.price, 0,
+        );
+
+        setTotalAmount(prev => (prev + priceNewCards));
+        setTotalItems(prev => prev + newCardsForSave.length);
+      }
+    }
+  }, []);
 
   return (
     <div className="card-page">
@@ -125,28 +116,31 @@ export const CardPage: FC = () => {
         Back
       </Link>
       <h1 className="card-page__title">Cart</h1>
-      {savedCards
-        && savedCards.length === 0
-        && <h1 className="info-messages">Add something to card...</h1>}
-      <div className="card-page__order-content order-content">
-        <ul className="order-content__list-ored">
-          {savedCards.map(phone => (
-            <li className="order-content__item-ored item-ored" key={phone.id}>
-              <CardedProduct
-                product={phone.value}
-                onTotalAmount={setTotalAmount}
-              />
-            </li>
-          ))}
-        </ul>
-        <div className="order-content__checkout-block checkout-block">
-          <p className="checkout-block__total-price-amout">{`$${totalAmount}`}</p>
-          <p className="checkout-block__total-items-amout">{`Total for ${totalItems} items`}</p>
-          <button type="button" className="checkout-block__checkout-button">
-            Checkout
-          </button>
+      {savedCards.length < 0 ? (
+        <h1 className="info-messages">Add something to card...</h1>
+      ) : (
+        <div className="card-page__order-content order-content">
+          <ul className="order-content__list-ored">
+            {savedCards.map(phone => (
+              <li className="order-content__item-ored item-ored" key={phone.id}>
+                <CardedProduct
+                  card={phone}
+                  onTotalAmount={setTotalAmount}
+                  onTotalItem={setTotalItems}
+                  onSavedCards={setSavedCards}
+                />
+              </li>
+            ))}
+          </ul>
+          <div className="order-content__checkout-block checkout-block">
+            <p className="checkout-block__total-price-amout">{`$${totalAmount}`}</p>
+            <p className="checkout-block__total-items-amout">{`Total for ${totalItems} items`}</p>
+            <button type="button" className="checkout-block__checkout-button">
+              Checkout
+            </button>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };

@@ -2,14 +2,19 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 /* eslint-disable no-param-reassign */
 import { Product } from '../../types/Product';
 import { SelectedStatus } from '../../types/SelectedStatus';
+// eslint-disable-next-line import/no-cycle
+import { KeyJson, SavedCard } from '../../pages/CardPage';
 
 export interface CardPhoneReducer {
   value: Product[],
   status: SelectedStatus
 }
+const localeStorage = window.localStorage.getItem(KeyJson.CARD);
 
 const initialState: CardPhoneReducer = {
-  value: [],
+  value: localeStorage ? JSON.parse(localeStorage).map(
+    (card: SavedCard) => card.value,
+  ) : [],
   status: SelectedStatus.UNSELECTED,
 };
 
