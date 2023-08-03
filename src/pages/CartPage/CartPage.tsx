@@ -1,4 +1,8 @@
-import React, { useContext, useMemo, useState } from 'react';
+import React, {
+  useContext,
+  useMemo,
+  useState,
+} from 'react';
 
 import { CartContext } from '../../providers/CartProvider/CartProvider';
 

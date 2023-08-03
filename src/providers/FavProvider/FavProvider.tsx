@@ -1,6 +1,7 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo } from 'react';
 
 import { Product } from '../../types/Product';
+import { useLocalStorage } from '../../utils/useLocalStorage';
 
 type ProviderProps = {
   children: React.ReactNode;
@@ -17,7 +18,8 @@ export const FavContext = React.createContext<ContextProps>({
 });
 
 export const FavProvider: React.FC<ProviderProps> = ({ children }) => {
-  const [favoriteProducts, setFavoriteProducts] = useState<Product[]>([]);
+  const [favoriteProducts, setFavoriteProducts]
+    = useLocalStorage('favorites', []);
 
   const value = useMemo(() => (
     { favoriteProducts, setFavoriteProducts }), [favoriteProducts]);
