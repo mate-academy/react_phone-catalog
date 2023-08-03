@@ -28,7 +28,6 @@ export const store = configureStore({
     phonesCarded: phonesCardedReducer,
     searchBar: searchBarReducer,
     products: productsReducer,
-
   },
 });
 

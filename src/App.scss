@@ -1,14 +1,14 @@
 @font-face {
   font-family: Mont-Regular;
-  src: url('../src/fonts/Mont-Regular.otf')  format('truetype');
+  src: url("../src/fonts/Mont-Regular.otf")  format("truetype");
 }
 @font-face {
   font-family: Mont-SemiBold;
-  src: url('../src/fonts/Mont-SemiBold.otf')  format('truetype');
+  src: url("../src/fonts/Mont-SemiBold.otf")  format("truetype");
 }
 @font-face {
   font-family: Mont-Bold;
-  src: url('../src/fonts/Mont-Bold.otf')  format('truetype');
+  src: url("../src/fonts/Mont-Bold.otf")  format("truetype");
 }
 
 html,
@@ -18,10 +18,9 @@ body {
 }
 
 .App {
-  font-family: Mont-Regular;
+  font-family: Mont-Regular, Arial, Helvetica, sans-serif;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  min-height: 100vh; 
-
+  min-height: 100vh;
 }

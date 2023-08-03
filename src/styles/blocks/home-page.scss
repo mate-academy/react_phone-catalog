@@ -24,19 +24,15 @@
 
   &__button {
     width: 32px;
-    background: #FFF;
-    border: 1px solid #B4BDC3;
+    background: $gray-white;
+    border: 1px solid #b4bdc3;
     cursor: pointer;
-  }
-
-  &__container {
   }
 
   &__pictures {
     width: 1040px;
     height: 400px;
-
-    background-color: gray;
+    background-color: #808080;
   }
 }
 
@@ -54,26 +50,25 @@
     cursor: pointer;
     width: 15px;
     height: 5px;
-    background-color: #B4BDC3;
-    border: #B4BDC3;
+    background-color: #b4bdc3;
+    border: #b4bdc3;
     margin-inline: 5px;
 
     &--active {
       background-color: black;
-
     }
   }
 }
 
 .hot-prices {
   &__title {
-    font-family: Mont-Bold;
+    font-family: Mont-Bold, Arial, Helvetica, sans-serif;
   }
 }
 
 .shop-by-category {
   &__title {
-    font-family: Mont-Bold;
+    font-family: Mont-Bold, Arial, Helvetica, sans-serif;
   }
   &__container {
     display: flex;
@@ -91,8 +86,8 @@
   &__title {
     margin: 0;
 
-    font-family: Mont-SemiBold;
-    color: var(--gray-primary, #313237);
+    font-family: Mont-SemiBold, Arial, Helvetica, sans-serif;
+    color: $gray-primary;
 
     /* H3 */
     font-size: 20px;
@@ -100,7 +95,7 @@
   }
   &__description {
     margin: 0;
-    color: var(--gray-secondary, #89939A);
+    color: $gray-secondary;
 
     /* Body text 14 */
     font-size: 14px;
@@ -109,5 +104,5 @@
 }
 
 .brand-new {
-  font-family: Mont-Bold;
+  font-family: Mont-Bold, Arial, Helvetica, sans-serif;
 }

@@ -6,9 +6,6 @@
     list-style: none;
     padding: 0;
   }
-  &__breadcrumb-item {
-
-  }
 }
 
 .breadcrumb-item {
@@ -19,8 +16,8 @@
     gap: 8px;
     align-items: center;
     text-decoration: none;
-    color: var(--gray-secondary, #89939A);
-    font-family: Mont-SemiBold;
+    color: var(--gray-secondary, #89939a);
+    font-family: Mont-SemiBold, Arial, Helvetica, sans-serif;
     font-size: 12px;
 
     &::first-letter {

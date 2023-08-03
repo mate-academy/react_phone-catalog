@@ -6,14 +6,13 @@
   justify-content: space-between;
   align-items: center;
 
-  background: var(--gray-white, #FFF);
-  box-shadow: 0px -1px 0px 0px #E2E6E9;
+  background: #fff;
+  box-shadow: 0 -1px 0 0 #e2e6e9;
   &__link {
     text-decoration: none;
-    color: var(--gray-secondary, #89939A);
+    color: $gray-secondary;
 
-    /* Uppercase */
-    font-family: Mont-Bold;
+    font-family: Mont-Bold, Arial, Helvetica, sans-serif;
     font-size: 12px;
     font-style: normal;
     font-weight: 700;
@@ -33,18 +32,18 @@
     width: 32px;
     height: 32px;
     background-color: #fff;
-    border: 1px solid #B4BDC3;
+    border: 1px solid #b4bdc3;
     cursor: pointer;
     &::before {
-      content: 'Back to top';
+      content: "Back to top";
       position: absolute;
       width: max-content;
       right: 48px;
 
-      color: var(--gray-secondary, #89939A);
+      color: $gray-secondary;
 
       /* Small text 12 */
-      font-family: Mont-SemiBold;
+      font-family: Mont-SemiBold, Arial, Helvetica, sans-serif;
       font-size: 12px;
       font-style: normal;
       line-height: normal;

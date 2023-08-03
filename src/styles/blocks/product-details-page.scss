@@ -5,19 +5,19 @@
     align-items: center;
     gap: 4px;
     text-decoration: none;
-    color: var(--gray-secondary, #89939A);
+    color: $gray-secondary;
 
     /* Small text 12 */
-    font-family: Mont-SemiBold;
+    font-family: Mont-SemiBold, Arial, Helvetica, sans-serif;
     font-size: 12px;
     font-style: normal;
     line-height: normal;
   }
 
   &__title {
-    color: var(--gray-primary, #313237);
+    color: $gray-primary;
 
-    font-family: Mont-Bold;
+    font-family: Mont-Bold, Arial, Helvetica, sans-serif;
     font-size: 32px;
     font-style: normal;
     line-height: normal;
@@ -43,18 +43,15 @@
 
 .product-section {
   display: flex;
-  &__gallery {
-  }
-  &__choose-section {
-
-  }
 }
+
 .choose-section {
   &__colors-picker {
     padding-bottom: 24px;
-    border-bottom: 1px solid #E2E6E9;;
+    border-bottom: 1px solid #e2e6e9;
   }
 }
+
 .gallery {
   display: flex;
   &__small-img-container {
@@ -62,9 +59,6 @@
     flex-direction: column;
     gap: 16px;
     cursor: pointer;
-  }
-  &__big-img-container {
-
   }
 }
 
@@ -94,10 +88,10 @@
 
 .colors-picker {
   &__title {
-    color: var(--gray-secondary, #89939A);
+    color: $gray-secondary;
 
     /* Small text 12 */
-    font-family: Mont-SemiBold;
+    font-family: Mont-SemiBold, Arial, Helvetica, sans-serif;
     font-size: 12px;
     font-style: normal;
     line-height: normal;
@@ -111,7 +105,6 @@
     padding: 0;
     gap: 8px;
     margin: 0;
-
   }
 }
 
@@ -125,7 +118,7 @@
   height: 32px;
   padding: 0;
   margin: 0;
-  background-color: #E2E6E9;
+  background-color: #e2e6e9;
   &:hover {
     background-color: #313237;
   }
@@ -143,29 +136,29 @@
     border: 2px solid #fff;
 
     &--1 {
-      background-color: #FCDBC1;
+      background-color: #fcdbc1;
     }
     &--2 {
-      background-color: #5F7170;
+      background-color: #5f7170;
 
     }
     &--3 {
-      background-color: #4C4C4C;
+      background-color: #4c4c4c;
     }
     &--4 {
-      background-color: #F0F0F0;
+      background-color: #f0f0f0;
     }
   }
 }
 
 .capasity-picker {
   padding-bottom: 24px;
-  border-bottom: 1px solid #E2E6E9;
+  border-bottom: 1px solid #e2e6e9;
   &__title {
-    color: var(--gray-secondary, #89939A);
+    color: $gray-secondary;
 
     /* Small text 12 */
-    font-family: Mont-SemiBold;
+    font-family: Mont-SemiBold, Arial, Helvetica, sans-serif;
     font-size: 12px;
     font-style: normal;
     line-height: normal;
@@ -185,12 +178,12 @@
     width: 63px;
     height: 32px;
     flex-shrink: 0;
-    border: 1px solid var(--gray-icons-placeholders, #B4BDC3);
+    border: 1px solid $gray-icons-placeholders;
     &:hover {
-      border-color: var(--gray-primary, #313237);
+      border-color: $gray-primary;
     }
     &--active {
-      background-color: var(--gray-primary, #313237);
+      background-color: $gray-primary;
       color: #fff;
     }
   }
@@ -201,27 +194,25 @@
     display: flex;
     gap: 8px;
   }
-  &__buttons-buy-like {
-
-  }
 }
+
 .prices-amount {
   display: flex;
   align-items: center;
   margin-block: 32px 16px;
   &__price {
     margin: 0;
-    color: var(--gray-primary, #313237);
+    color: $gray-primary;
 
     /* H1 */
-    font-family: Mont-Bold;
+    font-family: Mont-Bold, Arial, Helvetica, sans-serif;
     font-size: 32px;
     font-style: normal;
     line-height: normal;
     letter-spacing: -0.32px;
     &--discount {
-      color: var(--gray-secondary, #89939A);
-      font-family: Mont-Regular;
+      color: $gray-secondary;
+      font-family: Mont-Regular, Arial, Helvetica, sans-serif;
       font-size: 22px;
       font-style: normal;
       line-height: normal;
@@ -237,10 +228,10 @@
     width: 263px;
     height: 48px;
     flex-shrink: 0;
-    background-color: var(--gray-primary, #313237);
-    color: var(--gray-white, #FFF);
+    background-color: $gray-primary;
+    color: $gray-white;
     text-align: center;
-    font-family: Mont-SemiBold;
+    font-family: Mont-SemiBold, Arial, Helvetica, sans-serif;
     font-size: 14px;
     font-style: normal;
     line-height: 21px; /* 150% */
@@ -253,7 +244,7 @@
     width: 48px;
     height: 48px;
     flex-shrink: 0;
-    border: 1px solid #B4BDC3;
+    border: 1px solid #b4bdc3;
     &:hover {
       border-color: #313237;
     }
@@ -274,14 +265,11 @@
   row-gap: 8px;
 
   /* Small text 12 */
-  font-family: Mont-SemiBold;
+  font-family: Mont-SemiBold, Arial, Helvetica, sans-serif;
   font-size: 12px;
 
   &--title {
-    color: var(--gray-secondary, #89939A);
-
-  }
-  &--value {
+    color: $gray-secondary;
 
   }
 }
@@ -292,39 +280,36 @@
   &__article-about {
     width: 559px;
   }
-  &__tech-specs {
-
-  }
 }
 
 .article-about {
   &__title {
     padding-bottom: 6px;
-    border-bottom: 1px solid #E2E6E9;
-    color: var(--gray-primary, #313237);
+    border-bottom: 1px solid #e2e6e9;
+    color: $gray-primary;
     margin-bottom: 32px;
 
     /* H2 */
-    font-family: Mont-Bold;
+    font-family: Mont-Bold, Arial, Helvetica, sans-serif;
     font-size: 22px;
     font-style: normal;
     line-height: 140%; /* 30.8px */
   }
   &__sub-title {
-    color: var(--gray-primary, #313237);
+    color: $gray-primary;
     margin-block: 32px 16px;
 
     /* H3 */
-    font-family: Mont-SemiBold;
+    font-family: Mont-SemiBold, Arial, Helvetica, sans-serif;
     font-size: 20px;
     font-style: normal;
     line-height: normal;
   }
   &__text {
-    color: #89939A;
+    color: #89939a;
 
     /* Body text 14 */
-    font-family: Mont-Regular;
+    font-family: Mont-Regular, Arial, Helvetica, sans-serif;
     font-size: 14px;
     font-style: normal;
     line-height: 21px; /* 150% */
@@ -335,12 +320,12 @@
   width: 512px;
   &__title {
     padding-bottom: 6px;
-    border-bottom: 1px solid #E2E6E9;
-    color: var(--gray-primary, #313237);
+    border-bottom: 1px solid #e2e6e9;
+    color: $gray-primary;
     margin-bottom: 32px;
 
     /* H2 */
-    font-family: Mont-Bold;
+    font-family: Mont-Bold, Arial, Helvetica, sans-serif;
     font-size: 22px;
     font-style: normal;
     line-height: 140%; /* 30.8px */
@@ -351,12 +336,13 @@
     row-gap: 8px;
   }
 }
+
 .tech-specs-list {
   &--title {
-    color: var(--gray-secondary, #89939A);
+    color: $gray-secondary;
 
     /* Body text 14 */
-    font-family: Mont-Regular;
+    font-family: Mont-Regular, Arial, Helvetica, sans-serif;
     font-size: 14px;
     font-style: normal;
     line-height: 21px; /* 150% */
@@ -368,10 +354,10 @@
 
 .you-may-like {
   &__title {
-    color: var(--gray-primary, #313237);
+    color: $gray-primary;
 
     /* H1 */
-    font-family: Mont-Bold;
+    font-family: Mont-Bold, Arial, Helvetica, sans-serif;
     font-size: 32px;
     font-style: normal;
     line-height: normal;

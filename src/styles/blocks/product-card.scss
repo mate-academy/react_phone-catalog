@@ -2,13 +2,13 @@
   box-sizing: border-box;
   width: 272px;
   height: 507px;
-  border: 1px solid var(--gray-elements, #E2E6E9);
-  background: var(--gray-white, #FFF);
+  border: 1px solid $gray-elements;
+  background: $gray-white;
   padding: 32px 32px 24px;
 
   &__link {
     text-decoration: none;
-    color: var(--gray-primary, #313237);
+    color: $gray-primary;
   }
 
   &__phone-img {
@@ -20,8 +20,12 @@
   }
 
   &__title {
-    font-family: Mont-Regular;
-    color: var(--gray-primary, #313237);
+    display: block;
+    min-height: 42px;
+    margin: 0;
+    margin-bottom: 8px;
+    font-family: Mont-Regular, Arial, Helvetica, sans-serif;
+    color: $gray-primary;
 
     font-size: 14px;
     line-height: 21px; /* 150% */
@@ -33,23 +37,20 @@
   &__price {
     display: inline-block;
     margin: 0;
-    color: var(--gray-primary, #313237);
+    color: $gray-primary;
     margin-right: 8px;
 
     /* H2 */
-    font-family: Mont-Bold;
+    font-family: Mont-Bold, Arial, Helvetica, sans-serif;
     font-size: 22px;
     line-height: 140%; /* 30.8px */
 
     &--discount {
-      color: var(--gray-secondary, #89939A);
-      font-family: Mont-SemiBold;
+      color: $gray-secondary;
+      font-family: Mont-SemiBold, Arial, Helvetica, sans-serif;
       line-height: normal;
       text-decoration-line: line-through;
     }
-  }
-
-  &__description-phone {
   }
 
   &__container {
@@ -63,19 +64,20 @@
     height: 40px;
     background-color: #313237;
 
-    color: var(--gray-white, #FFF);
-    font-family: Mont-SemiBold;
+    color: $gray-white;
+    font-family: Mont-SemiBold, Arial, Helvetica, sans-serif;
     font-size: 14px;
     font-weight: 600;
     line-height: 21px; /* 150% */
+    cursor: pointer;
 
     &--is-added {
-      color: #27AE60;
-      background-color: #E2E6E9;
-      border: 1px solid var(--gray-elements, #E2E6E9);
+      color: #27ae60;
+      background-color: #e2e6e9;
+      border: 1px solid $gray-elements;
     }
     &:hover {
-      box-shadow: 0px 3px 13px 0px rgba(23, 32, 49, 0.26);
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
     }
   }
 
@@ -87,7 +89,7 @@
     gap: 8px;
     width: 40px;
     height: 40px;
-    border: 1px solid var(--gray-icons-placeholders, #B4BDC3);
+    border: 1px solid $gray-icons-placeholders;
     background-color: #fff;
 
     cursor: pointer;
@@ -100,20 +102,15 @@
 .description-phone {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  border-top: 1px solid #E2E6E9;
+  border-top: 1px solid #e2e6e9;
   margin-block: 8px 16px;
   padding-top: 16px;
 
-  /* Small text 12 */
-  font-family: Mont-SemiBold;
+  font-family: Mont-SemiBold, Arial, Helvetica, sans-serif;
   font-size: 12px;
 
   &--title {
-    color: var(--gray-secondary, #89939A);
-  }
-
-  &--value {
-
+    color: $gray-secondary;
   }
 }
 

@@ -7,24 +7,21 @@
     display: flex;
     align-items: center;
     text-decoration: none;
-    color: var(--gray-secondary, #89939A);
+    color: var(--gray-secondary, #89939a);
     margin-bottom: 16px;
 
     /* Small text 12 */
-    font-family: Mont-SemiBold;
+    font-family: Mont-SemiBold, Arial, Helvetica, sans-serif;
     font-size: 12px;
     font-style: normal;
     line-height: normal;
-    &--img{
-
-    }
   }
   &__title {
     margin-bottom: 24px;
-    color: var(--gray-primary, #313237);
+    color: $gray-primary;
 
     /* H1 */
-    font-family: Mont-Bold;
+    font-family: Mont-Bold, Arial, Helvetica, sans-serif;
     font-size: 32px;
     font-style: normal;
     line-height: normal;
@@ -58,12 +55,12 @@
     width: 368px;
     height: 206px;
     flex-shrink: 0;
-    border: 1px solid var(--gray-elements, #E2E6E9);
+    border: 1px solid $gray-elements;
   }
 }
 
 .item-ored {
-  border: 1px solid var(--gray-elements, #E2E6E9);
+  border: 1px solid $gray-elements;
   &__delete-button {
     background-color: transparent;
     border: 0;
@@ -81,10 +78,10 @@
     width: 295px;
     margin-left: 49px;
 
-    color: var(--gray-primary, #313237);
+    color: $gray-primary;
 
     /* Body text 14 */
-    font-family: Mont-Regular;
+    font-family: Mont-Regular, Arial, Helvetica, sans-serif;
     font-size: 14px;
     font-style: normal;
     line-height: 21px; /* 150% */
@@ -95,17 +92,21 @@
     height: 32px;
     flex-shrink: 0;
     background-color: #fff;
-    border: 1px solid var(--gray-elements, #E2E6E9);
+    border: 1px solid $gray-elements;
+    cursor: pointer;
+    &:hover {
+      border-color: $gray-primary;
+    }
   }
   &__count-value {
     margin-inline: 13px;
   }
   &__price-product {
     margin-inline: 43px 40px;
-    color: var(--gray-primary, #313237);
+    color: $gray-primary;
 
     /* H2 */
-    font-family: Mont-Bold;
+    font-family: Mont-Bold, Arial, Helvetica, sans-serif;
     font-size: 22px;
     font-style: normal;
     line-height: 140%; /* 30.8px */
@@ -116,10 +117,10 @@
   &__total-price-amout {
     margin: 0;
     margin-top: 24px;
-    color: var(--gray-primary, #313237);
+    color: $gray-primary;
 
     /* H1 */
-    font-family: Mont-Bold;
+    font-family: Mont-Bold, Arial, Helvetica, sans-serif;
     font-size: 32px;
     font-style: normal;
     line-height: normal;
@@ -131,8 +132,8 @@
     margin: 0;
     padding-bottom: 24px;
     margin-bottom: 24px;
-    border-bottom: 1px solid #E2E6E9;;
-    color: var(--gray-secondary, #89939A);
+    border-bottom: 1px solid #e2e6e9;
+    color: $gray-secondary;
     text-align: center;
 
     /* Body text 14 */
@@ -146,6 +147,6 @@
     flex-shrink: 0;
     bottom: 0;
     background-color: #313237;
-    color: #FFFFFF;
+    color: #fff;
   }
 }

@@ -1,38 +1,38 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { FC, useEffect, useState } from 'react';
+import {
+  FC, useEffect, useMemo, useState,
+} from 'react';
 import { useSearchParams } from 'react-router-dom';
-
 import Breadcrumbs from './components/Breadcrumbs';
 import { ProductsList } from './components/ProductsList';
 // eslint-disable-next-line import/no-cycle
 import CustomSelect from './components/CustomSelect';
-
 import '../styles/styles.scss';
 import { Pagination } from './components/Pagination';
-import { useAppDispatch, useAppSelector } from '../app/hooks';
+import {
+  updateStateProductsAndUrl,
+  useAppDispatch,
+  useAppSelector,
+} from '../app/hooks';
 import { Loader } from './components/Loader';
 import { AsyncStatus } from '../types/AsyncStatus';
 import {
   incrementAsync as loadedProducts,
 } from '../features/products/productsSlice';
 import { Product } from '../types/Product';
-
-export enum SortByOptions {
-  AGE = 'age',
-  NAME = 'name',
-  PRICE = 'price',
-}
+import { SortByOptions } from '../types/SortByOptions';
+import { SelectAmountItems } from '../types/SelectAmountItems';
+import { filteringVisibleSearchedProducts } from '../app/utils';
+import { itemsOnPageOptions, sortByOptions } from '../types/SelectOptionsArr';
 
 export const AccessoriesPage: FC = () => {
   const products: Product[] = useAppSelector(state => state.products.value);
   const statusLadingProducts = useAppSelector(state => state.products.status);
   const [selectedOptions, setSelectedOptions] = useState({
-    sortBy: 'age',
-    itemsShow: '16',
+    sortBy: SortByOptions.AGE,
+    itemsShow: SelectAmountItems.SIXTEEN,
   });
   const [visibleProducts, setVisibleProducts] = useState<Product[]>([]);
-  const sortByOptions = ['age', 'name', 'price'];
-  const itemsOnPageOptions = ['4', '8', '16', 'all'];
   const [currentPage, setCurrentPage] = useState(1);
   const lastPhoneIndex = currentPage * +`${selectedOptions.itemsShow === 'all' ? Infinity : selectedOptions.itemsShow}`;
   const firstPhoneIndex = lastPhoneIndex - +selectedOptions.itemsShow;
@@ -43,91 +43,61 @@ export const AccessoriesPage: FC = () => {
 
   const paginate = (pagenumber: number) => setCurrentPage(pagenumber);
 
-  function getVisibleProducts(arr: Product[]) {
-    let result: Product[] = [...arr.filter(
-      product => product.type === 'accessory',
-    )];
-
-    switch (selectedOptions.sortBy) {
-      case SortByOptions.AGE:
-        result = result.sort((a, b) => b.age - a.age);
-        break;
-      case SortByOptions.NAME:
-        result = result.sort((a, b) => a.name.localeCompare(b.name));
-        break;
-      case SortByOptions.PRICE:
-        result = result.sort((a, b) => a.price - b.price);
-        break;
-
-      default:
-        break;
-    }
-
-    return result;
-  }
-
   useEffect(() => {
     dispatch(loadedProducts());
   }, []);
 
   useEffect(() => {
-    if (statusLadingProducts === AsyncStatus.IDLE && products.length > 0) {
-      const result = getVisibleProducts(products);
-
-      setVisibleProducts(result);
-    }
-
-    const params = new URLSearchParams();
-
-    params.set('page', currentPage.toString());
-    params.set('sort', selectedOptions.sortBy);
-    params.set('perPage', selectedOptions.itemsShow);
-    setSearchParams(params);
+    updateStateProductsAndUrl(
+      setVisibleProducts,
+      products,
+      selectedOptions,
+      statusLadingProducts,
+      currentPage,
+      setSearchParams,
+    );
   }, [products]);
 
   useEffect(() => {
-    if (statusLadingProducts === AsyncStatus.IDLE && products.length > 0) {
-      const result = getVisibleProducts(products);
-
-      setVisibleProducts(result);
-    }
-
-    const params = new URLSearchParams();
-
-    params.set('page', `${currentPage}`);
-    params.set('sort', selectedOptions.sortBy);
-    params.set('perPage', selectedOptions.itemsShow);
-
-    setSearchParams(params);
+    updateStateProductsAndUrl(
+      setVisibleProducts,
+      products,
+      selectedOptions,
+      statusLadingProducts,
+      currentPage,
+      setSearchParams,
+    );
+    setCurrentPage(1);
   }, [selectedOptions]);
 
   useEffect(() => {
-    if (statusLadingProducts === AsyncStatus.IDLE && products.length > 0) {
-      const result = getVisibleProducts(products);
-
-      setVisibleProducts(result);
-    }
-
-    const params = new URLSearchParams();
-
-    params.set('page', `${currentPage}`);
-    params.set('sort', selectedOptions.sortBy);
-    params.set('perPage', selectedOptions.itemsShow);
-    setSearchParams(params);
+    updateStateProductsAndUrl(
+      setVisibleProducts,
+      products,
+      selectedOptions,
+      statusLadingProducts,
+      currentPage,
+      setSearchParams,
+    );
   }, [currentPage]);
 
-  const phonesSearched = visibleProducts.filter((product) => {
-    if (searchBarValue.trim() === '') {
-      return true;
-    }
+  const accessoriesSearched = useMemo(() => {
+    return filteringVisibleSearchedProducts(visibleProducts, searchBarValue);
+  }, [searchBarValue]);
 
-    const queryWords = searchBarValue.toLowerCase().split(' ');
-    const productName = product.name.toLowerCase();
+  const accessoriesSliced = searchBarValue
+    ? accessoriesSearched.slice(firstPhoneIndex, lastPhoneIndex).filter(
+      p => p.type === 'accessory',
+    )
+    : visibleProducts.slice(firstPhoneIndex, lastPhoneIndex).filter(
+      p => p.type === 'accessory',
+    );
 
-    return queryWords.every((word) => productName.includes(word));
-  });
-
-  const phonesSliced = phonesSearched.slice(firstPhoneIndex, lastPhoneIndex);
+  const accessoriesLenght = useMemo(() => {
+    return visibleProducts.filter(
+      p => p.type === 'accessory',
+    ).length;
+  }, [visibleProducts]);
 
   return (
     <div className="phones-page">
@@ -136,9 +106,9 @@ export const AccessoriesPage: FC = () => {
           <Breadcrumbs />
           <h1 className="phones-page__title">Accessories</h1>
           <p className="phones-page__amount-phone-text">
-            {`${phonesSearched.length} models`}
+            {`${accessoriesLenght} models`}
           </p>
-          {visibleProducts.length > 0 && (
+          {accessoriesLenght > 0 && (
             <div className="phones-page__filter filter">
               <div className="filter__container">
                 <h2 className="filter__title">Sort by</h2>
@@ -160,18 +130,18 @@ export const AccessoriesPage: FC = () => {
           )}
         </>
       ) : (
-        <p className="phones-page__result-items">{`${phonesSearched.length} results`}</p>
+        <p className="phones-page__result-items">{`${accessoriesSearched.length} results`}</p>
       )}
 
       {statusLadingProducts === AsyncStatus.LOADING ? (
         <Loader />
       ) : (
         <>
-          <ProductsList products={phonesSliced} />
-          {!searchBarValue && visibleProducts.length > 0 && (
+          <ProductsList products={accessoriesSliced} />
+          {!searchBarValue && accessoriesLenght > accessoriesSliced.length && (
             <Pagination
               phonesPepPege={+selectedOptions.itemsShow}
-              totalPhones={phonesSearched.length}
+              totalPhones={accessoriesLenght}
               onPaginate={paginate}
             />
           )}

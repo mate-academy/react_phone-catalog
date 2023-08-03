@@ -5,28 +5,20 @@
   align-items: center;
   width: 176px;
   height: 40px;
-  padding:  10px 0 9px 12px;
+  padding: 10px 0 9px 12px;
   flex-shrink: 0;
   position: relative;
   border: 1px solid #ccc;
   cursor: pointer;
 
-  color: var(--gray-primary, #313237);
+  color: $gray-primary;
 
-  /* Buttons */
-  font-family: Mont-SemiBold;
+  font-family: Mont-SemiBold, Arial, Helvetica, sans-serif;
   font-size: 14px;
   font-style: normal;
   line-height: 21px; /* 150% */
 }
 
-/* Styling for the selected option */
-.selected-option {
-  // padding: 4px;
-
-}
-
-/* Styling for the options list */
 .options {
   box-sizing: border-box;
   width: 176px;
@@ -44,24 +36,18 @@
   &__option {
     box-sizing: border-box;
 
-    color: #89939A;
+    color: #89939a;
     width: 176px;
     height: 32px;
-    padding:  6px 0 5px 12px;
+    padding: 6px 0 5px 12px;
     cursor: pointer;
 
     &:hover {
-      background-color: #FAFBFC;
+      background-color: #fafbfc;
       color: #313237;
     }
   }
 }
-
-
-/* Show options list on focus or click */
-// .custom-select:focus .options {
-//   display: block;
-// }
 
 .options--opened {
   display: block;

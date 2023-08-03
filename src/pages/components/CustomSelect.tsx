@@ -6,13 +6,16 @@ import {
 } from 'react';
 import classNames from 'classnames';
 // eslint-disable-next-line import/no-cycle
-import { SortByOptions } from '../PhonesPage';
 import '../../styles/styles.scss';
+import { SortByOptions } from '../../types/SortByOptions';
+import { SelectAmountItems } from '../../types/SelectAmountItems';
 
 type Props = {
-  options: string[],
+  options: { text: string, value: string }[],
   defaultOption: string,
-  onChange: Dispatch<SetStateAction<{ sortBy: string; itemsShow: string; }>>;
+  onChange: Dispatch<SetStateAction<{
+    sortBy: SortByOptions, itemsShow: SelectAmountItems,
+  }>>;
 };
 
 const CustomSelect: FC<Props> = ({ options, defaultOption, onChange }) => {
@@ -32,7 +35,8 @@ const CustomSelect: FC<Props> = ({ options, defaultOption, onChange }) => {
           || SortByOptions.PRICE === option) {
         onChange((prev) => ({ ...prev, sortBy: option }));
       } else {
-        onChange((prev) => ({ ...prev, itemsShow: option }));
+        onChange((prev) => (
+          { ...prev, itemsShow: option as SelectAmountItems }));
       }
     }
   };
@@ -80,13 +84,13 @@ const CustomSelect: FC<Props> = ({ options, defaultOption, onChange }) => {
           { 'options--opened': isOpen },
         )}
         >
-          {options.map((option: string) => (
+          {options.map((option) => (
             <li
               className="options__option"
-              key={option}
-              onClick={() => handleOptionClick(option)}
+              key={option.text}
+              onClick={() => handleOptionClick(option.value)}
             >
-              {selectorText(option)}
+              {option.text}
             </li>
           ))}
         </ul>

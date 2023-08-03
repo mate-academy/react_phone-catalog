@@ -11,21 +11,19 @@
     height: 64px;
     width: 99%;
     border: 0;
+    background-color: $gray-white;
+    box-shadow: -1px 0 0 0 #e2e6e9;
 
-    background-color: var(--gray-white, #FFF);
-    box-shadow: -1px 0px 0px 0px #E2E6E9;
-
-    color: var(--gray-icons-placeholders, #B4BDC3);
-
-    font-family: Mont-SemiBold;
+    color: $gray-icons-placeholders;
+    font-family: Mont-SemiBold, Arial, Helvetica, sans-serif;
     font-size: 14px;
     font-style: normal;
     line-height: normal;
 
     &:focus {
-      color: var(--gray-primary, #313237);
-      background-color: var(--gray-background, #FAFBFC);
-      box-shadow: -1px 0px 0px 0px #E2E6E9;
+      color: $gray-primary;
+      background-color: $gray-background;
+      box-shadow: -1px 0 0 0 #e2e6e9;
       outline: 0;
     }
   }
@@ -38,4 +36,3 @@
     left: 287px;
   }
 }
-
