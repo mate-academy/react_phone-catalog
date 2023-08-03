@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
+import classNames from 'classnames';
 import arrowRight from '../images/icons/Arrow_right.svg';
-import arrowLeft from '../images/icons/Arrow_left.svg';
 import { Products } from '../type/Products';
 import { Card } from './Card';
 
 type Props = {
+  title: string,
   list: Products[];
 };
 
-export const HotPrice: React.FC<Props> = ({ list }) => {
+export const CatalogProducts: React.FC<Props> = ({ title, list }) => {
   const [translateXValue, setTranslateXValue] = useState(0);
   const width = 272;
 
@@ -21,23 +22,30 @@ export const HotPrice: React.FC<Props> = ({ list }) => {
   };
 
   return (
-    <div className="HotPrice">
-      <div className="HotPrice__top">
-        <h1 className="HotPrice__title">Hot prices</h1>
+    <div className="catalog-products">
+      <div className="catalog-products__top">
+        <h1 className="catalog-products__title">{title}</h1>
 
-        <div className="HotPrice__buttons">
+        <div className="catalog-products__buttons">
           <button
             type="button"
-            className="HotPrice__button"
+            className="catalog-products__button"
             onClick={() => handleArrowClick('left')}
             disabled={translateXValue === 0}
           >
-            <img src={arrowLeft} alt="" />
+            <img
+              src={arrowRight}
+              alt=""
+              className={classNames('catalog-products__button-left', {
+                'catalog-products__button-left--noActive':
+                translateXValue === 0,
+              })}
+            />
           </button>
 
           <button
             type="button"
-            className="HotPrice__button"
+            className="catalog-products__button"
             onClick={() => handleArrowClick('right')}
           >
             <img src={arrowRight} alt="" />
@@ -45,9 +53,9 @@ export const HotPrice: React.FC<Props> = ({ list }) => {
         </div>
       </div>
 
-      <div className="HotPrice__cards">
+      <div className="catalog-products__cards">
         <div
-          className="HotPrice__cards-inner"
+          className="catalog-products__cards-inner"
           style={{ transform: `translateX(${translateXValue}px)` }}
         >
           {list.map((phone) => (

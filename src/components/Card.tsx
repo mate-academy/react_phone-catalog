@@ -20,7 +20,7 @@ export const Card: React.FC<Props> = ({ card }) => {
     image,
   } = card;
 
-  const correctUrl = `new/${image}`;
+  const correctUrl = `_new/${image}`;
 
   return (
     <div className="card" data-cy="cardsContainer">

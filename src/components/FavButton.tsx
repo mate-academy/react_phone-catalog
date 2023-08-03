@@ -1,5 +1,5 @@
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
 
 import favorite from '../images/icons/Favourites.svg';
 import favoriteFilled

@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import swal from 'sweetalert';
 import { Slider } from '../components/Slider';
-import { HotPrice } from '../components/HotPrice';
+import { CatalogProducts } from '../components/CatalogProducts';
 import { Products } from '../type/Products';
 import { getProducts } from '../api/getData';
+import { Categories } from '../components/Categories';
 
 export const Home: React.FC = () => {
   const [list, setList] = useState<Products[]>([]);
@@ -26,10 +27,18 @@ export const Home: React.FC = () => {
     data();
   }, []);
 
+  const getHotPriceProducts = list.filter(element => (
+    element.category === 'phones' && element.capacity.length > 0
+  ));
+
+  const getBrandNew = list.sort((elem1, elem2) => elem2.price - elem1.price);
+
   return (
-    <div>
+    <div className="container">
       <Slider />
-      <HotPrice list={list} />
+      <CatalogProducts list={getHotPriceProducts} title="Hot price" />
+      <Categories />
+      <CatalogProducts list={getBrandNew} title="Shop by category" />
     </div>
   );
 };

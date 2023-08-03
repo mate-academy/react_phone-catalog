@@ -1,0 +1,29 @@
+.NoResult {
+  &__title {
+    font-size: 24px;
+    margin: 40px 0;
+  }
+
+  &__link {
+    color: $color-secondary;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 150px;
+    border-radius: 30px;
+    border: 1px solid $color-secondary;
+
+    &:hover {
+      border-color: $color-primary;
+      color: $color-primary;
+      transform: translateY(-1px);
+      box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.25);
+    }
+
+    &:active {
+      transform: translateY(1px);
+    }
+
+  }
+}

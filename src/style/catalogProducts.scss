@@ -1,4 +1,4 @@
-.HotPrice {
+.catalog-products {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -41,6 +41,14 @@
     width: 32px;
     height: 32px;
 
+    &-left {
+      transform: scale(-1);
+
+      &--noActive {
+        opacity: 0.3;
+      }
+    }
+
     &:hover {
       border: 1px solid $gray-icons-placeholders;
     }
@@ -53,7 +61,7 @@
 
     min-height: 537px;
 
-    width: 1152px;
+    width: 100%;
     overflow-y: visible;
     overflow-x: hidden;
 

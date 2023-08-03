@@ -1,12 +1,12 @@
 .slider {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  margin-bottom: 18px;
-  gap: 16px;
+  margin: 40px 0 80px;
 
-  &--with-margin {
-    margin-top: 40px;
+  &__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 18px;
+    gap: 16px;
   }
 
   &__img {
@@ -32,6 +32,14 @@
     align-items: center;
     width: 32px;
     border: 1px solid #89939a;
+
+    &--left {
+      transform: scale(-1);
+    }
+  }
+
+  &__button-img--activity {
+    opacity: 0.3;
   }
 }
 

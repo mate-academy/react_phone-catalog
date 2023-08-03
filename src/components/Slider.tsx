@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
-import arrowLeft from '../images/icons/Arrow_left.svg';
 import arrowRight from '../images/icons/Arrow_right.svg';
 import banner1 from '../images/banners/banner1.png';
 import banner2 from '../images/banners/banner2.png';
@@ -23,21 +22,28 @@ export const Slider: React.FC = () => {
       setTranslateXValue((prev) => prev - width);
     } else {
       setActiveImg(activeImg - 1);
-      setTranslateXValue((prev) => prev + width);
+      setTranslateXValue(prev => prev + width);
     }
   };
 
   return (
-    <>
-      <div className="slider slider--with-margin">
+    <div className="slider">
+      <div className="slider__container">
         <button
           className="slider__button slider__button--left"
           type="button"
           onClick={() => handleArrowClick('left')}
           disabled={translateXValue === 0}
         >
-          <img src={arrowLeft} alt="button left" />
+          <img
+            src={arrowRight}
+            alt="button left"
+            className={classNames({
+              'slider__button-img--activity': translateXValue === 0,
+            })}
+          />
         </button>
+
         <div className="slider__img-container">
           <div
             className="slider__img-container-inner"
@@ -46,6 +52,7 @@ export const Slider: React.FC = () => {
             {slides.map((img) => (
               <>
                 <img
+                  key={img.length}
                   className="slider__img"
                   src={img}
                   alt="banner"
@@ -54,13 +61,21 @@ export const Slider: React.FC = () => {
             ))}
           </div>
         </div>
+
         <button
           className="slider__button slider__button--right"
           type="button"
           onClick={() => handleArrowClick('right')}
           disabled={translateXValue === -1 * (width * (slides.length - 1))}
         >
-          <img src={arrowRight} alt="button right" />
+          <img
+            src={arrowRight}
+            alt="button left"
+            className={classNames({
+              'slider__button-img--activity':
+              translateXValue === -1 * (width * (slides.length - 1)),
+            })}
+          />
         </button>
       </div>
 
@@ -75,6 +90,6 @@ export const Slider: React.FC = () => {
           />
         ))}
       </div>
-    </>
+    </div>
   );
 };

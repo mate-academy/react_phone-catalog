@@ -1,13 +1,15 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import classNames from 'classnames';
 import logo from '../images/Logo.svg';
 import favIcon from '../images/icons/Favourites.svg';
 import cart from '../images/icons/Cart.svg';
+import { RootState } from '../Reducers/store';
 
 export const Header: React.FC = () => {
-  const favsList = [];
-  const cartList = [];
+  const favsList = useSelector((state: RootState) => state.favorites);
+  const cartList = useSelector((state: RootState) => state.cart);
 
   return (
     <header className="header">
