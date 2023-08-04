@@ -9,7 +9,7 @@ type Props = {
   products: Product[];
 };
 
-export const ShopByCategory: React.FC<Props> = ({ products }) => {
+export const ShopByCategory: React.FC<Props> = React.memo(({ products }) => {
   const getLengthByCategory = (
     arrProducts: Product[],
     type: ProductType,
@@ -66,4 +66,4 @@ export const ShopByCategory: React.FC<Props> = ({ products }) => {
       </div>
     </div>
   );
-};
+});

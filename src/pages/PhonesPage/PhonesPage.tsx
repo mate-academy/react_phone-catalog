@@ -3,6 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 
 import { Product } from '../../types/Product';
 import { getSearchWith } from '../../helpers/searchHelper';
+import { sortOptions } from '../../helpers/sortOptions';
 
 import { ProductCard } from '../../components/ProductCard/ProductCard';
 import { DropDown } from '../../components/DropDown/DropDown';
@@ -16,12 +17,6 @@ import './PhonesPage.scss';
 type Props = {
   phones: Product[];
 };
-
-const sortOptions = [
-  { value: 'age', label: 'Newest' },
-  { value: 'name', label: 'Alphabetically' },
-  { value: 'price', label: 'Cheapest' },
-];
 
 const smallestPageSize = 4;
 
@@ -91,7 +86,9 @@ export const PhonesPage: React.FC<Props> = React.memo(({ phones }) => {
 
   const startIndex = (+currentPage - 1) * +pageSize;
   const endIndex = startIndex + +pageSize;
-  const visiblePhones = sortedPhones.slice(startIndex, +endIndex);
+  const visiblePhones = useMemo(() => {
+    return sortedPhones.slice(startIndex, +endIndex);
+  }, [sortedPhones, startIndex, endIndex]);
 
   const phonesLength = sortedPhones.length;
   const pageSizes = [smallestPageSize, 8, phonesLength]; // add 16 when will be more phones on API
