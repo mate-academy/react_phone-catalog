@@ -1,0 +1,83 @@
+@import "../../style/fonts/fonts.scss";
+@import "../../style/variables/variables.scss";
+
+.custom-select {
+  position: relative;
+}
+
+.filter {
+  &__item {
+    background: $Wite;
+    border: none;
+    padding: 9px 12px;
+    font-family: "Mont-500", sans-serif;
+    color: $Grey;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: left;
+    transition: 0.3s;
+    list-style: none;
+
+    &:hover {
+      transition: 0.3s;
+      color: $blackWite;
+    }
+
+    &.active {
+      color: #000;
+    }
+  }
+  
+  &__block {
+    border: 1px solid #b4bdc3;
+    background-color: #fff;
+    width: 176px;
+    padding: 9px 12px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    color: $blackWite;
+    font-size: 14px;
+    font-family: "Mont-600", sans-serif;
+    line-height: 21px;
+
+    &-sort {
+      display: none;
+      width: 100%;
+      position: absolute;
+      flex-direction: column;
+      top: 40px;
+      left: 0;
+      border: 1px solid #b4bdc3;
+      color: $Grey;
+      background: #fff;
+      cursor: pointer;
+      padding: 0;
+
+      &.active {
+        display: flex;
+      }
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      display: block;
+      width: 16px;
+      height: 16px;
+      background-image: url(../../icon/ChevronArrowDown.png);
+      background-size: cover;
+      background-position: center center;
+      right: 12px;
+      transform: rotate(0);
+      transition: 0.3s;
+    }
+
+    &.active {
+      &::after {
+        transform: rotate(180deg);
+        transition: 0.3s;
+      }
+    }
+  }
+}
