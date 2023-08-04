@@ -1,6 +1,11 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-import React, { useContext, useEffect, useState } from 'react';
+import React, {
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
 import { useLocation } from 'react-router-dom';
 
 import { FavContext } from '../../providers/FavProvider/FavProvider';
@@ -28,7 +33,7 @@ type Props = {
   products: Product[];
 };
 
-export const ProductDetailsPage: React.FC<Props> = ({
+export const ProductDetailsPage: React.FC<Props> = React.memo(({
   suggestedProducts,
   products,
 }) => {
@@ -120,6 +125,10 @@ export const ProductDetailsPage: React.FC<Props> = ({
   };
 
   useDisableScrollOnPopup(showPopup);
+
+  const correctedSuggestedProducts = useMemo(() => {
+    return suggestedProducts.filter(prod => prod.id !== currentProduct?.id);
+  }, [suggestedProducts, currentProduct]);
 
   return (
     <div className="ProductDetailsPage">
@@ -319,7 +328,7 @@ export const ProductDetailsPage: React.FC<Props> = ({
 
             <ProductsSlider
               title="You may also like"
-              products={suggestedProducts}
+              products={correctedSuggestedProducts}
               key={id}
             />
           </div>
@@ -334,4 +343,4 @@ export const ProductDetailsPage: React.FC<Props> = ({
       </div>
     </div>
   );
-};
+});

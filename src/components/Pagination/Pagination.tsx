@@ -30,7 +30,7 @@ export const Pagination: React.FC<Props> = ({
         className="Pagination__button Pagination__button--prev"
         data-cy="paginationLeft"
         to={{
-          search: getSearchWith(searchParams, { currentPage: `${currentPage - 1}` }),
+          search: getSearchWith(searchParams, { currentPage: currentPage !== 1 ? `${currentPage - 1}` : '1' }),
         }}
       >
         <img src={arrowLeft} alt="previous page button" />
@@ -52,7 +52,7 @@ export const Pagination: React.FC<Props> = ({
         className="Pagination__button Pagination__button--next"
         data-cy="paginationRight"
         to={{
-          search: getSearchWith(searchParams, { currentPage: `${currentPage + 1}` }),
+          search: getSearchWith(searchParams, { currentPage: currentPage !== pages.length ? `${currentPage + 1}` : `${pages.length}` }),
         }}
       >
         <img src={arrowRight} alt="next page button" />

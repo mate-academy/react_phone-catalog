@@ -25,7 +25,7 @@ const sortOptions = [
 
 const smallestPageSize = 4;
 
-export const PhonesPage: React.FC<Props> = ({ phones }) => {
+export const PhonesPage: React.FC<Props> = React.memo(({ phones }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query') || '';
 
@@ -159,4 +159,4 @@ export const PhonesPage: React.FC<Props> = ({ phones }) => {
       </div>
     </div>
   );
-};
+});

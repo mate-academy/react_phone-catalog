@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { CartContext } from '../../providers/CartProvider/CartProvider';
+
+import { FavContext } from '../../providers/FavProvider/FavProvider';
 import { AddToCartButton } from '../AddToCartButton/AddToCartButton';
 import { AddToFavButton } from '../AddToFavButton/AddToFavButton';
 
@@ -13,13 +15,12 @@ import { ProductDetails } from '../../types/ProductDetails';
 import { ProductType } from '../../types/ProductType';
 
 import './ProductCard.scss';
-import { FavContext } from '../../providers/FavProvider/FavProvider';
 
 type Props = {
   product: Product;
 };
 
-export const ProductCard: React.FC<Props> = ({ product }) => {
+export const ProductCard: React.FC<Props> = React.memo(({ product }) => {
   const {
     name,
     price,
@@ -40,18 +41,26 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   const [productWithDetails, setProductWithDetails]
     = useState<ProductDetails | null>(null);
 
-  const loadProduct = async () => {
-    try {
-      const productFromServer = await getProduct(id);
-
-      setProductWithDetails(productFromServer);
-    } catch {
-      throw new Error('Loading Error');
-    }
-  };
-
   useEffect(() => {
+    let isMounted = true;
+
+    const loadProduct = async () => {
+      try {
+        const productFromServer = await getProduct(id);
+
+        if (isMounted) {
+          setProductWithDetails(productFromServer);
+        }
+      } catch {
+        throw new Error('Loading Error');
+      }
+    };
+
     loadProduct();
+
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   const getTypeOfProduct = (prodType: string) => {
@@ -112,7 +121,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           <img src={imageUrl} alt="product" className="ProductCard__img" />
         </Link>
 
-        <div className="ProductCard__title">{name}</div>
+        <div className="ProductCard__title">{name || ''}</div>
 
         <div className="ProductCard__price">
           <div className="ProductCard__price-normal">{`$${discountedPrice}`}</div>
@@ -152,4 +161,4 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       </div>
     </div>
   );
-};
+});

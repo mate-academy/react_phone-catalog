@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 import { FavProvider } from './providers/FavProvider/FavProvider';
@@ -37,21 +37,31 @@ const App: React.FC = () => {
     }
   };
 
+  const phones = useMemo(() => {
+    return products.filter(
+      (product) => product.type === ProductType.phone,
+    );
+  }, [products]);
+
+  const tablets = useMemo(() => {
+    return products.filter(
+      (product) => product.type === ProductType.tablet,
+    );
+  }, [products]);
+
+  const accessories = useMemo(() => {
+    return products.filter(
+      (product) => product.type === ProductType.accessory,
+    );
+  }, [products]);
+
+  const suggestedProducts = useMemo(() => {
+    return [...products].sort(() => Math.random() - 0.5);
+  }, [products]);
+
   useEffect(() => {
     loadProducts();
   }, []);
-
-  const phones = products.filter(
-    (product) => product.type === ProductType.phone,
-  );
-  const tablets = products.filter(
-    (product) => product.type === ProductType.tablet,
-  );
-  const accessories = products.filter(
-    (product) => product.type === ProductType.accessory,
-  );
-
-  const suggestedProducts = [...products].sort(() => Math.random() - 0.5);
 
   return (
     <div className="app">

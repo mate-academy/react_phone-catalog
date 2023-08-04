@@ -16,7 +16,7 @@ type Props = {
   tablets: Product[];
 };
 
-export const TabletsPage: React.FC<Props> = ({ tablets }) => {
+export const TabletsPage: React.FC<Props> = React.memo(({ tablets }) => {
   const [searchParams] = useSearchParams();
   const query = searchParams.get('query') || '';
 
@@ -55,4 +55,4 @@ export const TabletsPage: React.FC<Props> = ({ tablets }) => {
       </div>
     </div>
   );
-};
+});

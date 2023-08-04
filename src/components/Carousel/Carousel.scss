@@ -23,10 +23,6 @@
     width: 1040px;
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
-
-    // &.active {
-    //   opacity: 1;
-    // }
   }
 
   &__img {
@@ -41,6 +37,11 @@
     border: 1px solid #b4bdc3;
 
     cursor: pointer;
+    transition-duration: 0.3s;
+
+    &:hover {
+      border-color: #313237;
+    }
   }
 
   &__dots {

@@ -26,7 +26,23 @@
     height: 32px;
     background: none;
 
+    border: 1px solid #b4bdc3;
+
     cursor: pointer;
+
+    transition-duration: 0.3s;
+
+    &.disabled {
+      border-color: #e2e6e9;
+    }
+
+    &.disabled:hover {
+      border-color: #e2e6e9;
+    }
+
+    &:hover {
+      border-color: #313237;
+    }
   }
 
   &__cards {

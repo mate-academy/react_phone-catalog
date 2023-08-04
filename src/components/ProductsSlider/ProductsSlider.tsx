@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
+import cn from 'classnames';
+
+import { Product } from '../../types/Product';
+import { ProductCard } from '../ProductCard/ProductCard';
 
 import arrowLeft from '../../images/arrows/arrow-left.svg';
 import arrowRight from '../../images/arrows/arrow-right.svg';
 
 import './ProductsSlider.scss';
-import { Product } from '../../types/Product';
-import { ProductCard } from '../ProductCard/ProductCard';
 
 type Props = {
   title: string;
@@ -28,6 +30,9 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
 
   const visibleCards = products.slice(startIndex, startIndex + 4);
 
+  const isPrevButtonDisabled = startIndex === 0;
+  const isNextButtonDisabled = startIndex === products.length - 4;
+
   return (
     <div className="ProductsSlider">
       <div className="ProductsSlider__content">
@@ -37,16 +42,20 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
           <button
             type="button"
             onClick={handlePrevClick}
-            disabled={startIndex === 0}
-            className="ProductsSlider__button"
+            disabled={isPrevButtonDisabled}
+            className={cn('ProductsSlider__button', {
+              disabled: isPrevButtonDisabled,
+            })}
           >
             <img src={arrowLeft} alt="arrow-left" />
           </button>
           <button
             type="button"
             onClick={handleNextClick}
-            disabled={startIndex === products.length - 4}
-            className="ProductsSlider__button"
+            disabled={isNextButtonDisabled}
+            className={cn('ProductsSlider__button', {
+              disabled: isNextButtonDisabled,
+            })}
           >
             <img src={arrowRight} alt="arrow-right" />
           </button>
