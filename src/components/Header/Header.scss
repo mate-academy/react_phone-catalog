@@ -101,6 +101,8 @@
 
     background: no-repeat center;
 
+    transition-duration: 0.3s;
+
     &--fav {
       background-image: url("../../images/header-buttons/favorites-default.svg");
     }

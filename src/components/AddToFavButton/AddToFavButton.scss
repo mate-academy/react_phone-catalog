@@ -10,11 +10,18 @@
 
   cursor: pointer;
 
-  &:hover {
-    border-color: #313237;
-  }
+  transition-duration: 0.3s;
+
+  background-image: url("../../images/heart.svg");
+  background-repeat: no-repeat;
+  background-position: center;
 
   &.isItemFav {
     border-color: #e2e6e9;
+    background-image: url("../../images/heart-selected.svg");
+  }
+
+  &:hover {
+    border-color: #313237;
   }
 }

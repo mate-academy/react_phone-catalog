@@ -3,17 +3,23 @@
   align-items: center;
   box-shadow: -1px 0 0 #e2e6e9;
   position: relative;
+  border: 1px solid transparent;
 
   &__input {
     width: 327px;
     padding: 22px 0 22px 24px;
     background: none;
     background-color: #fafbfc;
-    border: none;
+    border: 1px solid transparent;
     font-family: "MontSemiBold", Helvetica, sans-serif;
     font-size: 14px;
     color: #313237;
     letter-spacing: 0;
+    border-bottom: #e2e6e9;
+  }
+
+  &:focus {
+    border: 1px solid #313237;
   }
 
   &__btn {

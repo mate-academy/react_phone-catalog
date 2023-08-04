@@ -23,6 +23,11 @@
 
     display: flex;
     flex-direction: column;
+    transition-duration: 0.3s;
+
+    &:hover {
+      transform: scale(1.04);
+    }
 
     &-photo {
       height: 368px;

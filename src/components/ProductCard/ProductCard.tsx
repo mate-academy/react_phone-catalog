@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { RotatingLines } from 'react-loader-spinner';
 
 import { CartContext } from '../../providers/CartProvider/CartProvider';
 
@@ -35,33 +36,34 @@ export const ProductCard: React.FC<Props> = React.memo(({ product }) => {
 
   const { productsInCart, setProductsInCart } = useContext(CartContext);
   const { favoriteProducts, setFavoriteProducts } = useContext(FavContext);
-
-  const discountedPrice = getDiscount(price, discount);
+  const [isLoading, setIsLoading] = useState(false);
 
   const [productWithDetails, setProductWithDetails]
-    = useState<ProductDetails | null>(null);
+    = useState<ProductDetails>();
 
   useEffect(() => {
-    let isMounted = true;
+    setIsLoading(true);
 
     const loadProduct = async () => {
       try {
-        const productFromServer = await getProduct(id);
+        const productFromServer = await getProduct(product.id);
 
-        if (isMounted) {
-          setProductWithDetails(productFromServer);
-        }
+        setProductWithDetails(productFromServer);
       } catch {
         throw new Error('Loading Error');
+      } finally {
+        setIsLoading(false);
       }
     };
 
     loadProduct();
 
     return () => {
-      isMounted = false;
+      setIsLoading(false);
     };
   }, []);
+
+  const discountedPrice = getDiscount(price, discount);
 
   const getTypeOfProduct = (prodType: string) => {
     switch (prodType) {
@@ -117,47 +119,59 @@ export const ProductCard: React.FC<Props> = React.memo(({ product }) => {
   return (
     <div className="ProductCard">
       <div className="ProductCard__content">
-        <Link to={`/${productType}/${id}`} state={productWithDetails} className="ProductCard__photo">
-          <img src={imageUrl} alt="product" className="ProductCard__img" />
-        </Link>
-
-        <div className="ProductCard__title">{name || ''}</div>
-
-        <div className="ProductCard__price">
-          <div className="ProductCard__price-normal">{`$${discountedPrice}`}</div>
-          {discount > 0 && (
-            <div className="ProductCard__price-discounted">{`$${price}`}</div>
-          )}
-        </div>
-
-        <div className="ProductCard__details">
-          <div className="ProductCard__details-item">
-            <div className="ProductCard__details-item__name">Screen</div>
-            <div className="ProductCard__details-item__value">
-              {screen || 'unknown'}
-            </div>
-          </div>
-          <div className="ProductCard__details-item">
-            <div className="ProductCard__details-item__name">Capacity</div>
-            <div className="ProductCard__details-item__value">
-              {capacity || 'unknown'}
-            </div>
-          </div>
-          <div className="ProductCard__details-item">
-            <div className="ProductCard__details-item__name">RAM</div>
-            <div className="ProductCard__details-item__value">
-              {ram || 'unknown'}
-            </div>
-          </div>
-        </div>
-
-        <div className="ProductCard__buttons">
-          <AddToCartButton handleAddToCart={handleAddToCart} id={id} />
-          <AddToFavButton
-            handleAddToFavorites={handleAddToFavorites}
-            isItemFav={isItemFav}
+        {isLoading ? (
+          <RotatingLines
+            strokeColor="#EB5757"
+            strokeWidth="5"
+            animationDuration="0.75"
+            width="66"
+            visible={isLoading}
           />
-        </div>
+        ) : (
+          <>
+            <Link to={`/${productType}/${id}`} state={productWithDetails} className="ProductCard__photo">
+              <img src={imageUrl} alt="product" className="ProductCard__img" />
+            </Link>
+
+            <div className="ProductCard__title">{name}</div>
+
+            <div className="ProductCard__price">
+              <div className="ProductCard__price-normal">{`$${discountedPrice}`}</div>
+              {discount > 0 && (
+                <div className="ProductCard__price-discounted">{`$${price}`}</div>
+              )}
+            </div>
+
+            <div className="ProductCard__details">
+              <div className="ProductCard__details-item">
+                <div className="ProductCard__details-item__name">Screen</div>
+                <div className="ProductCard__details-item__value">
+                  {screen || 'unknown'}
+                </div>
+              </div>
+              <div className="ProductCard__details-item">
+                <div className="ProductCard__details-item__name">Capacity</div>
+                <div className="ProductCard__details-item__value">
+                  {capacity || 'unknown'}
+                </div>
+              </div>
+              <div className="ProductCard__details-item">
+                <div className="ProductCard__details-item__name">RAM</div>
+                <div className="ProductCard__details-item__value">
+                  {ram || 'unknown'}
+                </div>
+              </div>
+            </div>
+
+            <div className="ProductCard__buttons">
+              <AddToCartButton handleAddToCart={handleAddToCart} id={id} />
+              <AddToFavButton
+                handleAddToFavorites={handleAddToFavorites}
+                isItemFav={isItemFav}
+              />
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

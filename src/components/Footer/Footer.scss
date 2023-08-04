@@ -22,6 +22,8 @@
   }
 
   &__item {
+    transition-duration: 0.3s;
+
     &:hover {
       color: #313237;
     }
@@ -31,6 +33,8 @@
     display: flex;
     gap: 16px;
     cursor: pointer;
+
+    transition-duration: 0.3s;
 
     &-btn {
       display: flex;
@@ -42,6 +46,8 @@
       background: none;
 
       border: 1px solid #b4bcc3;
+
+      transition-duration: 0.3s;
     }
 
     &:hover {

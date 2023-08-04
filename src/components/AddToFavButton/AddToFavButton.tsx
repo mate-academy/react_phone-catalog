@@ -1,8 +1,6 @@
+/*  eslint-disable jsx-a11y/control-has-associated-label */
 import React from 'react';
 import cn from 'classnames';
-
-import favIcon from '../../images/heart.svg';
-import favIconSelected from '../../images/heart-selected.svg';
 
 import './AddToFavButton.scss';
 
@@ -23,8 +21,6 @@ export const AddToFavButton: React.FC<Props> = ({
       })}
       onClick={handleAddToFavorites}
       data-cy="addToFavorite"
-    >
-      <img src={isItemFav ? favIconSelected : favIcon} alt="favIcon" />
-    </button>
+    />
   );
 };

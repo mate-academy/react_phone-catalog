@@ -20,6 +20,8 @@
     background-size: 16px 16px;
     padding-right: 18px;
 
+    transition-duration: 0.3s;
+
     &--is-active {
       background-image: url("../../images/arrows/arrow-up.svg");
     }

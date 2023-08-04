@@ -133,7 +133,7 @@ export const ProductDetailsPage: React.FC<Props> = React.memo(({
   return (
     <div className="ProductDetailsPage">
       <div className="container">
-        {currentProduct ? (
+        {currentProduct || propsData ? (
           <div className="ProductDetailsPage__content">
             <Breadcrumbs />
 
@@ -236,7 +236,7 @@ export const ProductDetailsPage: React.FC<Props> = React.memo(({
                 <div className="ProductDetailsPage__price price">
                   <div className="price__normal">{`$${discountedPrice}`}</div>
 
-                  {currentProduct?.discount > 0 && (
+                  {currentProduct && currentProduct?.discount > 0 && (
                     <div className="price__without-discount">{`$${currentProduct.price}`}</div>
                   )}
                 </div>
