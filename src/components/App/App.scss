@@ -1,6 +1,6 @@
-@import '../../style/fonts/fonts.scss';
-@import '../../style/mixin/mixin.scss';
-@import '../../style/variables/variables.scss';
+@import "../../style/fonts/fonts.scss";
+@import "../../style/mixin/mixin.scss";
+@import "../../style/variables/variables.scss";
 
 html {
   scroll-behavior: smooth;
@@ -25,7 +25,7 @@ body {
   &__count {
     color: $Grey;
     font-size: 14px;
-    font-family: 'Mont-500';
+    font-family: "Mont-500", sans-serif;
     line-height: 21px;
 
     &--margin {
@@ -36,7 +36,7 @@ body {
 
   &__title {
     font-size: 32px;
-    font-family: 'Mont-700';
+    font-family: "Mont-700", sans-serif;
     letter-spacing: -0.32px;
   }
 
@@ -67,7 +67,7 @@ body {
   z-index: 12;
   width: 100%;
   background-color: #fff;
-  box-shadow: 0px 1px 0px #E2E6E9;
+  box-shadow: 0 1px 0 #e2e6e9;
   display: flex;
   justify-content: space-between;
   margin-bottom: 25px;
@@ -78,6 +78,7 @@ body {
   
   &__buy {
     display: flex;
+    box-shadow: -1px 0 0 #e2e6e9;
   }
 
   &__content {
@@ -101,7 +102,7 @@ body {
     align-items: center;
     width: 40px;
     position: relative;
-    box-shadow: -1px 0px 0px #E2E6E9;
+    box-shadow: -1px 0 0 #e2e6e9;
 
     background-size: 16px 16px;
     background-repeat: no-repeat;
@@ -130,8 +131,8 @@ body {
       }
   
       &::after,
-      &::before{
-        content: '';
+      &::before {
+        content: "";
         position: absolute;
         top: 50%;
         bottom: 50%;
@@ -225,9 +226,9 @@ body {
   position: absolute;
   height: 12px;
   width: 12px;
-  background-color: #EB5757;
+  background-color: #eb5757;
   border-radius: 50%;
-  font-family: 'Mont-600', sans-serif;
+  font-family: "Mont-600", sans-serif;
   line-height: 12px;
   text-align: center;
   font-size: 9px;
@@ -249,7 +250,7 @@ body {
 
   &--mobiel {
     z-index: 1;
-    background-color: #E2E6E9;
+    background-color: #e2e6e9;
     position: absolute;
     height: 60vh;
     width: 300px;
@@ -272,9 +273,9 @@ body {
     }
 
     &__link {
-      font-family: 'Mont-700';
+      font-family: "Mont-700", sans-serif;
       text-decoration: none;
-      color: #89939A;
+      color: #89939a;
       text-transform: uppercase;
       transition: 0.3s;
 
@@ -310,19 +311,19 @@ body {
   }
 
   &__link {
-    font-family: 'Mont-700';
+    font-family: "Mont-700", sans-serif;
     text-transform: uppercase;
     text-decoration: none;
     font-size: 12px;
     line-height: 100%;
-    color:$Grey;
+    color: $Grey;
 
     &.active {
       color: $blackWite;
       position: relative;
 
       &::before {
-        content: '';
+        content: "";
         position: absolute;
         display: block;
         width: 100%;
@@ -355,7 +356,7 @@ body {
       padding: 0;
       height: 16px;
       width: 16px;
-      border:none;
+      border: none;
       background-image: url(../../icon/Search.png);
       background-repeat: no-repeat;
       background-size: cover;
@@ -372,7 +373,7 @@ body {
 .footer {
   height: 96px;
   box-sizing: border-box;
-  box-shadow: 0px -1px 0px 0px #E2E6E9;
+  box-shadow: 0 -1px 0 0 #e2e6e9;
 
   &__nav {
     display: none;
@@ -387,7 +388,7 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items:center;
+    align-items: center;
   }
 
   &__list {
@@ -403,7 +404,7 @@ body {
     text-decoration: none;
     color: $Grey;
     font-size: 12px;
-    font-family: 'Mont-700', sans-serif;
+    font-family: "Mont-700", sans-serif;
     line-height: 11px;
     letter-spacing: 0.48px;
     text-transform: uppercase;
@@ -415,7 +416,7 @@ body {
   }
 
   &__back {
-    font-family: 'Mont-600',sans-serif;
+    font-family: "Mont-600", sans-serif;
     font-style: normal;
     font-size: 12px;
     line-height: 15px;

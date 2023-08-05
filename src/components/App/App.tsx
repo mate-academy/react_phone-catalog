@@ -8,6 +8,7 @@ import {
   Navigate,
   Link,
   useSearchParams,
+  useLocation,
 } from 'react-router-dom';
 import {
   useAppDispatch,
@@ -29,11 +30,11 @@ const BackToTop = () => {
 };
 
 const pageArr = ['phones', 'tablets', 'accessories', 'favorites'];
-const locationName = window.location.pathname.split('/');
 
 const App = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const dispatch = useAppDispatch();
+  const location = useLocation();
 
   const [menu, setMenu] = useState(false);
   const [searchValue, setSearchValue]
@@ -58,11 +59,11 @@ const App = () => {
     }
   });
 
-  const checkPageForSearch:boolean = pageArr.includes(locationName[1])
-    && locationName.length <= 2;
+  const locationName = location.pathname.split('/')[1];
+  const checkPageForSearch:boolean = pageArr.includes(locationName);
 
-  const checkedBasketPage:boolean = 'favorites'
-    .includes(locationName[1]);
+  const checkedBasketPage:boolean = 'cart'
+    .includes(locationName);
 
   const querySearch = (text: string) => {
     if (!text) {
@@ -180,7 +181,7 @@ const App = () => {
                   'field__search--input',
                   { close: query.length > 0 },
                 )}
-                placeholder={`Search in ${locationName[1]}...`}
+                placeholder={`Search in ${locationName}...`}
                 value={searchValue}
                 onChange={onChangeSearch}
               />
@@ -188,6 +189,7 @@ const App = () => {
               <button
                 className={classNames(
                   'field__search--input',
+                  'field__search--btn',
                   { close: query.length > 0 },
                 )}
                 onClick={onClickDeteleSearchValue}
@@ -198,7 +200,7 @@ const App = () => {
             </div>
           )}
 
-          {checkedBasketPage && (
+          {!checkedBasketPage && (
             <div className="header__btn header__btn--like">
               {favoriteProduct.favoriteItem.length > 0 && (
                 <>
