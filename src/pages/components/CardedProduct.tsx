@@ -3,10 +3,11 @@
 import { FC } from 'react';
 import { useAppDispatch } from '../../app/hooks';
 import {
+  decrease,
+  increase,
   unsetFromCardPhone,
 } from '../../features/PhonesInCard/phonesInCardSlice';
 import { SavedCard } from '../../types/SavedCard';
-// eslint-disable-next-line import/no-cycle
 
 type Props = {
   card: SavedCard,
@@ -21,7 +22,17 @@ export const CardedProduct: FC<Props> = ({
     dispatch(unsetFromCardPhone(card.value));
   };
 
-  const handleCounter = () => {
+  const handleCounter = (type: string) => {
+    switch (type) {
+      case 'decrease':
+        dispatch(decrease(card));
+        break;
+      case 'increase':
+        dispatch(increase(card));
+        break;
+      default:
+        break;
+    }
   };
 
   return (
@@ -48,7 +59,7 @@ export const CardedProduct: FC<Props> = ({
       <button
         className="item-ored__product-count-deg"
         type="button"
-        onClick={() => handleCounter()}
+        onClick={() => handleCounter('decrease')}
       >
         -
       </button>
@@ -56,7 +67,7 @@ export const CardedProduct: FC<Props> = ({
       <button
         type="button"
         className="item-ored__product-count-inc"
-        onClick={() => handleCounter()}
+        onClick={() => handleCounter('increase')}
       >
         +
       </button>

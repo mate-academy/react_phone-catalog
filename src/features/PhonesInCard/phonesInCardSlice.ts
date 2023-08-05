@@ -23,6 +23,31 @@ const cardedPhoneReducer = createSlice({
   name: 'cardedPhones',
   initialState,
   reducers: {
+    increase: (state, action: PayloadAction<SavedCard>) => {
+      state.value = state.value.map(card => {
+        if (action.payload.id === card.id) {
+          return {
+            ...card,
+            amount: card.amount + 1,
+          };
+        }
+
+        return card;
+      });
+    },
+    decrease: (state, action: PayloadAction<SavedCard>) => {
+      state.value = state.value.map(card => {
+        if (action.payload.id === card.id) {
+          return {
+            ...card,
+            amount: Math.min(card.amount - 1, 1),
+          };
+        }
+
+        return card;
+      });
+    },
+
     setInCardPhone: (state, action: PayloadAction<Product>) => {
       state.status = SelectedStatus.SELECTED;
       state.value.push({
@@ -42,5 +67,5 @@ const cardedPhoneReducer = createSlice({
 
 export const { reducer } = cardedPhoneReducer;
 export const {
-  setInCardPhone, unsetFromCardPhone,
+  setInCardPhone, unsetFromCardPhone, increase, decrease,
 } = cardedPhoneReducer.actions;
