@@ -5,9 +5,27 @@
   margin: auto;
 }
 
+@mixin paddingInline($value) {
+  padding-inline: $value;
+}
+@mixin width($value) {
+  width: $value;
+}
+@mixin hight($value) {
+  height: $value;
+}
+
 $gray-elements: #e2e6e9;
 $gray-primary: #313237;
 $gray-secondary: #89939a;
 $gray-white: #fff;
 $gray-background: #fafbfc;
 $gray-icons-placeholders: #b4bdc3;
+
+$breakpoint__xl: 1400px;
+$breakpoint__l: 1024px;
+$breakpoint__m: 767px;
+$breakpoint__s: 576px;
+$breakpoint__sx: 300px;
+
+$paddingLaptop: 52px;

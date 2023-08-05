@@ -16,21 +16,23 @@ export const Footer: FC = () => {
 
   return (
     <footer className="footer">
-      <Link to="/" className="footer__link">
-        <img src="images/logo.jpg" alt="Logo" />
-      </Link>
-      <div className="footer__container">
-        <Link to="/" className="footer__link">Github</Link>
-        <Link to="/" className="footer__link">Contacts</Link>
-        <Link to="/" className="footer__link">rights</Link>
+      <div className="footer__content">
+        <Link to="/" className="footer__link">
+          <img src="images/logo.jpg" alt="Logo" />
+        </Link>
+        <div className="footer__container">
+          <Link to="/" className="footer__link">Github</Link>
+          <Link to="/" className="footer__link">Contacts</Link>
+          <Link to="/" className="footer__link">rights</Link>
+        </div>
+        <button
+          className="footer__backtotop-button"
+          type="button"
+          onClick={scrollToTop}
+        >
+          <img src="images/icons/ArrowUpDark.svg" alt="Back to top" />
+        </button>
       </div>
-      <button
-        className="footer__backtotop-button"
-        type="button"
-        onClick={scrollToTop}
-      >
-        <img src="images/icons/ArrowUpDark.svg" alt="Back to top" />
-      </button>
     </footer>
   );
 };

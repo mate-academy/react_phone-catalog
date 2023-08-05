@@ -10,7 +10,7 @@ type Props = {
   children: JSX.Element[];
 };
 
-const PICTURE_SIZE = 1040;
+const PICTURE_SIZE = 100;
 const INTERVAL_DELAY = 5000;
 
 export const PreviewSlider: React.FC<Props> = React.memo(({ children }) => {
@@ -85,7 +85,7 @@ export const PreviewSlider: React.FC<Props> = React.memo(({ children }) => {
           key: child.key,
           style: {
             transition: '500ms',
-            transform: `translateX(${offset}px)`,
+            transform: `translateX(${offset}%)`,
           },
         });
       });

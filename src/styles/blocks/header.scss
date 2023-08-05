@@ -1,16 +1,15 @@
 .header {
+  background: $gray-white;
+  box-shadow: 0 1px 0 0 #d2e6e9;
   &__content {
+    @include pageMaxWidth;
     display: flex;
     justify-content: space-between;
     align-items: center;
     text-transform: uppercase;
     height: 64px;
-    background: $gray-white;
-    box-shadow: 0 1px 0 0 #d2e6e9;
-  }
-
-  &__nav {
-    margin-left: 24px;
+    border-right: 1px solid #d2e6e9;
+    margin: auto;
   }
 
   &__favorites-card-buttons {
@@ -36,6 +35,12 @@
     &--active {
       color: $gray-primary;
       border-bottom: 3px solid $gray-primary;
+    }
+  }
+  &__burger-menu-button {
+    opacity: 1;
+    &--is-active {
+      opacity: 0;
     }
   }
 }

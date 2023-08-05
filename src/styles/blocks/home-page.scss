@@ -1,6 +1,5 @@
 .home-page {
   @include pageMaxWidth;
-
   &__preview-slider {
     margin-bottom: 72px;
   }
@@ -18,9 +17,9 @@
 
 .preview-slider {
   display: flex;
-  height: 400px;
   gap: 16px;
   margin-top: 40px;
+  height: 400px;
 
   &__button {
     width: 32px;
@@ -30,9 +29,11 @@
   }
 
   &__pictures {
-    width: 1040px;
-    height: 400px;
+    width: 100%;
     background-color: #808080;
+  }
+  &__container {
+    width: 1040px;
   }
 }
 
@@ -40,7 +41,8 @@
   display: flex;
   overflow: hidden;
   &__picture {
-    width: 1040px;
+    width: 100%;
+    object-fit: fill;
   }
 }
 
@@ -80,7 +82,7 @@
   &__link {
     display: inline-block;
     box-sizing: border-box;
-    height: 368px;
+    height: fit-content;
     margin-bottom: 24px;
   }
   &__title {

@@ -1,4 +1,5 @@
 @import "./utils/mixins";
+@import "./utils/media_breakpoints.scss";
 
 @import "./blocks/breadcrumb";
 @import "./blocks/header";
@@ -16,3 +17,6 @@
 @import "./blocks/cart-page";
 @import "./blocks/info-messages";
 @import "./blocks/pop-up";
+@import "./blocks/burger-menu";
+
+@import "./blocks/home-page-media";
