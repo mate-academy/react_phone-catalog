@@ -45,6 +45,10 @@ export const ProductCard: FC<Props> = ({ product }) => {
       return true;
     }
 
+    if (cardedPhones.some(p => product.id === p.id)) {
+      return true;
+    }
+
     return false;
   });
 
@@ -74,11 +78,30 @@ export const ProductCard: FC<Props> = ({ product }) => {
   };
 
   const handleCardedProducts = () => {
-    if (cardedPhones.find(card => card.id === product.itemId)) {
+    if (
+      product.itemId !== undefined
+       && cardedPhones.find(card => card.id === product.itemId)
+    ) {
       dispatch(unsetFromCardPhone(product));
       setIsCarded(false);
+    } else if (
+      product.id.length !== undefined
+       && cardedPhones.find(card => card.id === product.id)
+    ) {
+      const oldApiProduct = {
+        ...product,
+        itemId: product.id,
+      };
+
+      dispatch(unsetFromCardPhone(oldApiProduct));
+      setIsCarded(false);
     } else {
-      dispatch(setInCardPhone(product));
+      const productToSave = product.itemId === undefined ? {
+        ...product,
+        itemId: product.id,
+      } : product;
+
+      dispatch(setInCardPhone(productToSave));
       setIsCarded(true);
     }
   };
