@@ -235,6 +235,7 @@ export const ProductsList: React.FC<Props> = ({ query }) => {
                 onBlurBlock={onBlurSort}
               />
             </div>
+
             <div className="filter__wrapper">
               <span className="filter__title">Items on page</span>
 
