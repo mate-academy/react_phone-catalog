@@ -24,10 +24,15 @@ import { SortByOptions } from '../types/SortByOptions';
 import { SelectAmountItems } from '../types/SelectAmountItems';
 import { filteringVisibleSearchedProducts } from '../app/utils';
 import { itemsOnPageOptions, sortByOptions } from '../types/SelectOptionsArr';
+import {
+  productsSelector,
+  productsStatusSelector,
+  searchBarSelector,
+} from '../app/selector';
 
 export const AccessoriesPage: FC = () => {
-  const products: Product[] = useAppSelector(state => state.products.value);
-  const statusLadingProducts = useAppSelector(state => state.products.status);
+  const products: Product[] = useAppSelector(productsSelector);
+  const statusLadingProducts = useAppSelector(productsStatusSelector);
   const [selectedOptions, setSelectedOptions] = useState({
     sortBy: SortByOptions.AGE,
     itemsShow: SelectAmountItems.SIXTEEN,
@@ -39,24 +44,13 @@ export const AccessoriesPage: FC = () => {
   // eslint-disable-next-line @typescript-eslint/naming-convention
   const [_, setSearchParams] = useSearchParams();
   const dispatch = useAppDispatch();
-  const searchBarValue = useAppSelector(state => state.searchBar.value);
+  const searchBarValue = useAppSelector(searchBarSelector);
 
   const paginate = (pagenumber: number) => setCurrentPage(pagenumber);
 
   useEffect(() => {
     dispatch(loadedProducts());
   }, []);
-
-  useEffect(() => {
-    updateStateProductsAndUrl(
-      setVisibleProducts,
-      products,
-      selectedOptions,
-      statusLadingProducts,
-      currentPage,
-      setSearchParams,
-    );
-  }, [products]);
 
   useEffect(() => {
     updateStateProductsAndUrl(
@@ -79,25 +73,19 @@ export const AccessoriesPage: FC = () => {
       currentPage,
       setSearchParams,
     );
-  }, [currentPage]);
+  }, [currentPage, products]);
 
   const accessoriesSearched = useMemo(() => {
-    return filteringVisibleSearchedProducts(visibleProducts, searchBarValue);
-  }, [searchBarValue]);
-
-  const accessoriesSliced = searchBarValue
-    ? accessoriesSearched.slice(firstPhoneIndex, lastPhoneIndex).filter(
-      p => p.type === 'accessory',
-    )
-    : visibleProducts.slice(firstPhoneIndex, lastPhoneIndex).filter(
+    return filteringVisibleSearchedProducts(
+      visibleProducts, searchBarValue,
+    ).filter(
       p => p.type === 'accessory',
     );
+  }, [products]);
 
-  const accessoriesLenght = useMemo(() => {
-    return visibleProducts.filter(
-      p => p.type === 'accessory',
-    ).length;
-  }, [visibleProducts]);
+  const accessoriesSliced = accessoriesSearched.slice(
+    firstPhoneIndex, lastPhoneIndex,
+  );
 
   return (
     <div className="phones-page">
@@ -106,9 +94,9 @@ export const AccessoriesPage: FC = () => {
           <Breadcrumbs />
           <h1 className="phones-page__title">Accessories</h1>
           <p className="phones-page__amount-phone-text">
-            {`${accessoriesLenght} models`}
+            {`${accessoriesSearched.length} models`}
           </p>
-          {accessoriesLenght > 0 && (
+          {accessoriesSearched.length > 0 && (
             <div className="phones-page__filter filter">
               <div className="filter__container">
                 <h2 className="filter__title">Sort by</h2>
@@ -138,10 +126,12 @@ export const AccessoriesPage: FC = () => {
       ) : (
         <>
           <ProductsList products={accessoriesSliced} />
-          {!searchBarValue && accessoriesLenght > accessoriesSliced.length && (
+          {!searchBarValue
+          && accessoriesSearched.length > accessoriesSliced.length
+          && (
             <Pagination
               phonesPepPege={+selectedOptions.itemsShow}
-              totalPhones={accessoriesLenght}
+              totalPhones={visibleProducts.length}
               onPaginate={paginate}
             />
           )}

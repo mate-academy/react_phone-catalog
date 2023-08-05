@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import {
-  FC, useEffect, useMemo, useState,
+  FC, useEffect, useState,
 } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
@@ -25,10 +25,15 @@ import { SelectAmountItems } from '../types/SelectAmountItems';
 import { filteringVisibleSearchedProducts } from '../app/utils';
 import { itemsOnPageOptions, sortByOptions } from '../types/SelectOptionsArr';
 import CustomSelect from './components/CustomSelect';
+import {
+  productsSelector,
+  productsStatusSelector,
+  searchBarSelector,
+} from '../app/selector';
 
 export const TabletsPage: FC = () => {
-  const products: Product[] = useAppSelector(state => state.products.value);
-  const statusLadingProducts = useAppSelector(state => state.products.status);
+  const products: Product[] = useAppSelector(productsSelector);
+  const statusLadingProducts = useAppSelector(productsStatusSelector);
   const [selectedOptions, setSelectedOptions] = useState({
     sortBy: SortByOptions.AGE,
     itemsShow: SelectAmountItems.SIXTEEN,
@@ -40,23 +45,12 @@ export const TabletsPage: FC = () => {
   // eslint-disable-next-line @typescript-eslint/naming-convention
   const [_, setSearchParams] = useSearchParams();
   const dispatch = useAppDispatch();
-  const searchBarValue = useAppSelector(state => state.searchBar.value);
+  const searchBarValue = useAppSelector(searchBarSelector);
   const paginate = (pagenumber: number) => setCurrentPage(pagenumber);
 
   useEffect(() => {
     dispatch(loadedProducts());
   }, []);
-
-  useEffect(() => {
-    updateStateProductsAndUrl(
-      setVisibleProducts,
-      products,
-      selectedOptions,
-      statusLadingProducts,
-      currentPage,
-      setSearchParams,
-    );
-  }, [products]);
 
   useEffect(() => {
     updateStateProductsAndUrl(
@@ -80,29 +74,15 @@ export const TabletsPage: FC = () => {
       currentPage,
       setSearchParams,
     );
-  }, [currentPage]);
+  }, [currentPage, products]);
 
-  const tabletsSearched = useMemo(() => {
-    return filteringVisibleSearchedProducts(
-      visibleProducts, searchBarValue,
-    ).filter(
-      p => p.type === 'tablet',
-    );
-  }, [searchBarValue]);
+  const tabletsSearched = filteringVisibleSearchedProducts(
+    visibleProducts, searchBarValue,
+  ).filter(
+    p => p.type === 'tablet',
+  );
 
-  const tabletsSliced = searchBarValue
-    ? tabletsSearched.slice(firstPhoneIndex, lastPhoneIndex).filter(
-      p => p.type === 'tablet',
-    )
-    : visibleProducts.slice(firstPhoneIndex, lastPhoneIndex).filter(
-      p => p.type === 'tablet',
-    );
-
-  const amountModels = useMemo(() => {
-    return visibleProducts.filter(
-      p => p.type === 'tablet',
-    ).length;
-  }, [visibleProducts]);
+  const tabletsSliced = tabletsSearched.slice(firstPhoneIndex, lastPhoneIndex);
 
   return (
     <div className="phones-page">
@@ -111,26 +91,28 @@ export const TabletsPage: FC = () => {
           <Breadcrumbs />
           <h1 className="phones-page__title">Tablets</h1>
           <p className="phones-page__amount-phone-text">
-            {`${amountModels} models`}
+            {`${tabletsSearched.length} models`}
           </p>
-          <div className="phones-page__filter filter">
-            <div className="filter__container">
-              <h2 className="filter__title">Sort by</h2>
-              <CustomSelect
-                options={sortByOptions}
-                defaultOption={selectedOptions.sortBy}
-                onChange={setSelectedOptions}
-              />
+          {tabletsSearched.length > 0 && (
+            <div className="phones-page__filter filter">
+              <div className="filter__container">
+                <h2 className="filter__title">Sort by</h2>
+                <CustomSelect
+                  options={sortByOptions}
+                  defaultOption={selectedOptions.sortBy}
+                  onChange={setSelectedOptions}
+                />
+              </div>
+              <div className="filter__container">
+                <h2 className="filter__title">Items on page</h2>
+                <CustomSelect
+                  options={itemsOnPageOptions}
+                  defaultOption={selectedOptions.itemsShow}
+                  onChange={setSelectedOptions}
+                />
+              </div>
             </div>
-            <div className="filter__container">
-              <h2 className="filter__title">Items on page</h2>
-              <CustomSelect
-                options={itemsOnPageOptions}
-                defaultOption={selectedOptions.itemsShow}
-                onChange={setSelectedOptions}
-              />
-            </div>
-          </div>
+          )}
         </>
       ) : (
         <p className="phones-page__result-items">{`${tabletsSearched.length} results`}</p>
@@ -141,10 +123,10 @@ export const TabletsPage: FC = () => {
       ) : (
         <>
           <ProductsList products={tabletsSliced} />
-          {!searchBarValue && amountModels > tabletsSliced.length && (
+          {!searchBarValue && tabletsSearched.length > tabletsSliced.length && (
             <Pagination
               phonesPepPege={+selectedOptions.itemsShow}
-              totalPhones={amountModels}
+              totalPhones={tabletsSearched.length}
               onPaginate={paginate}
             />
           )}

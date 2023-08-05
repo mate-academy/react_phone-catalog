@@ -10,7 +10,7 @@ type Props = {
   phones: Product[];
 };
 
-const PICTURE_SIZE = 272 + 16; // 272px cardsize + 16px gap between product-cards
+const PICTURE_SIZE = 288; // 272px cardsize + 16px gap between product-cards
 const VISIBLE_SIZE_ROW = 1136; // 1136px visible length of Home-page;
 
 export const ProductsSlider: FC<Props> = ({ phones }) => {

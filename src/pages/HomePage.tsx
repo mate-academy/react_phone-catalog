@@ -8,16 +8,21 @@ import { Product } from '../types/Product';
 import { useAppSelector } from '../app/hooks';
 import { AsyncStatus } from '../types/AsyncStatus';
 import { Loader } from './components/Loader';
+import {
+  phonesSelector,
+  phonesStatusSelector,
+  productsSelector,
+} from '../app/selector';
 
 export const HomePage: React.FC = () => {
-  const phones: Product[] = useAppSelector(state => state.phones.value);
-  const statusLadingPhones = useAppSelector(state => state.phones.status);
-  const tabletsAmount = useAppSelector(
-    state => state.products.value,
-  ).filter(p => p.type === 'tablet').length;
-  const accessoryAmount = useAppSelector(
-    state => state.products.value,
-  ).filter(p => p.type === 'accessory').length;
+  const phones: Product[] = useAppSelector(phonesSelector);
+  const statusLadingPhones = useAppSelector(phonesStatusSelector);
+  const tabletsAmount = useAppSelector(productsSelector).filter(
+    p => p.type === 'tablet',
+  ).length;
+  const accessoryAmount = useAppSelector(productsSelector).filter(
+    p => p.type === 'accessory',
+  ).length;
 
   const hotPricePhones = [...phones].sort(
     (a: Product, b: Product) => {

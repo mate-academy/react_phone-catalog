@@ -148,5 +148,10 @@
     bottom: 0;
     background-color: #313237;
     color: #fff;
+
+    &:hover {
+      background-color: #fff;
+      color: #313237;
+    }
   }
 }

@@ -7,11 +7,12 @@ import {
   setSearchingValue, unsetSearchingValue,
 } from '../../features/SearchBar/searchBarSlice';
 import '../../styles/styles.scss';
+import { searchBarSelector } from '../../app/selector';
 
 export const SearchBar: FC = () => {
   const dispatch = useAppDispatch();
   const location = useLocation();
-  const searchValue = useAppSelector(state => state.searchBar.value);
+  const searchValue = useAppSelector(searchBarSelector);
   const [valueInput, setValueInput] = useState('');
 
   const handleSearchCheange = (
@@ -45,7 +46,7 @@ export const SearchBar: FC = () => {
             ? 'Search in favourites...'
             : 'Search in phones...'
         }
-        onChange={(event => handleSearchCheange(event))}
+        onChange={handleSearchCheange}
       />
       <button
         className="search-bar__clear-button"

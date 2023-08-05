@@ -6,6 +6,9 @@ import '../styles/styles.scss';
 import { CardedProduct } from './components/CardedProduct';
 import { Product } from '../types/Product';
 import { useAppSelector } from '../app/hooks';
+import { PopUp } from './components/PopUp';
+// eslint-disable-next-line import/no-cycle
+import { phoneCardSelector } from '../app/selector';
 
 export type SavedCard = {
   id: string,
@@ -15,10 +18,11 @@ export type SavedCard = {
 
 export enum KeyJson {
   CARD = 'cardedPhones',
+  DETAILS = 'productDetails',
 }
 
 export const CardPage: FC = () => {
-  const cardedPhones = useAppSelector(state => state.phonesCarded.value);
+  const cardedPhones = useAppSelector(phoneCardSelector);
   const [savedCards, setSavedCards] = useState<SavedCard[]>(() => {
     const savedOrderedCards = window.localStorage.getItem(KeyJson.CARD);
 
@@ -50,6 +54,11 @@ export const CardPage: FC = () => {
 
     return cardedPhones.reduce((a, i) => a + i.price, 0);
   });
+  const [popUpState, setPopUpState] = useState(false);
+
+  const handlePopUp = () => {
+    setPopUpState(true);
+  };
 
   useEffect(() => {
     if (savedCards.length === 0 && cardedPhones) {
@@ -107,6 +116,8 @@ export const CardPage: FC = () => {
 
   return (
     <div className="card-page">
+      {popUpState && (<PopUp setPopUpState={setPopUpState} />)}
+
       <Link className="card-page__back-link" to="..">
         <img
           className="card-page__back-link--img"
@@ -135,7 +146,11 @@ export const CardPage: FC = () => {
           <div className="order-content__checkout-block checkout-block">
             <p className="checkout-block__total-price-amout">{`$${totalAmount}`}</p>
             <p className="checkout-block__total-items-amout">{`Total for ${totalItems} items`}</p>
-            <button type="button" className="checkout-block__checkout-button">
+            <button
+              type="button"
+              className="checkout-block__checkout-button"
+              onClick={() => handlePopUp()}
+            >
               Checkout
             </button>
           </div>

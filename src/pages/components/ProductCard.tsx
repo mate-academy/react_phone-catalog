@@ -15,6 +15,13 @@ import {
 import {
   setInCardPhone, unsetFromCardPhone,
 } from '../../features/PhonesInCard/phonesInCardSlice';
+import { KeyJson, SavedCard } from '../CardPage';
+import {
+  favoriteProductsSelector,
+  phoneCardSelector,
+  selectedPhoneSelector,
+  selectedPhoneStatusSelector,
+} from '../../app/selector';
 
 type Props = {
   product: Product;
@@ -22,13 +29,9 @@ type Props = {
 
 export const ProductCard: FC<Props> = ({ product }) => {
   const dispatch = useAppDispatch();
-  const selectedPhoneId = useAppSelector(
-    state => state.selectedPhone.value?.id,
-  );
-  const statusSelectedPhone = useAppSelector(
-    state => state.selectedPhone.status,
-  );
-  const favoritesPhones = useAppSelector(state => state.phonesFavorites.value);
+  const selectedPhoneId = useAppSelector(selectedPhoneSelector)?.id;
+  const statusSelectedPhone = useAppSelector(selectedPhoneStatusSelector);
+  const favoritesPhones = useAppSelector(favoriteProductsSelector);
   const [isFavorite, setIsFavorite] = useState(() => {
     if (favoritesPhones.some(p => product.id === p.id)) {
       return true;
@@ -36,7 +39,7 @@ export const ProductCard: FC<Props> = ({ product }) => {
 
     return false;
   });
-  const cardedPhones = useAppSelector(state => state.phonesCarded.value);
+  const cardedPhones = useAppSelector(phoneCardSelector);
   const [isCarded, setIsCarded] = useState(() => {
     if (cardedPhones.some(p => product.id === p.id)) {
       return true;
@@ -45,44 +48,55 @@ export const ProductCard: FC<Props> = ({ product }) => {
     return false;
   });
 
-  function handleSelectingProduct(payload: Product) {
+  const handleSelectingProduct = () => {
     switch (statusSelectedPhone) {
       case SelectedStatus.SELECTED:
         dispatch(unsetPhone());
         break;
 
       case SelectedStatus.UNSELECTED:
-        dispatch(setPhone(payload));
+        dispatch(setPhone(product));
         break;
 
       default:
         break;
     }
 
-    if (selectedPhoneId !== payload.id) {
-      dispatch(setPhone(payload));
+    if (selectedPhoneId !== product.id) {
+      dispatch(setPhone(product));
     }
-  }
+  };
 
-  function handleFavoritesProducts(payload: Product) {
+  const handleFavoritesProducts = () => {
     if (favoritesPhones.find(p => p.id === product.id)) {
-      dispatch(unsetFavoritePhone(payload));
+      dispatch(unsetFavoritePhone(product));
       setIsFavorite(false);
     } else {
-      dispatch(setFavoritePhone(payload));
+      dispatch(setFavoritePhone(product));
       setIsFavorite(true);
     }
-  }
+  };
 
-  function handleCardedProducts(payload: Product) {
+  const handleCardedProducts = () => {
     if (cardedPhones.find(p => p.id === product.id)) {
-      dispatch(unsetFromCardPhone(payload));
+      dispatch(unsetFromCardPhone(product));
       setIsCarded(false);
+      const cardsFromStorageJSON = window.localStorage.getItem(KeyJson.CARD);
+
+      if (cardsFromStorageJSON) {
+        const filteredCards = JSON.parse(
+          cardsFromStorageJSON,
+        ).filter((c: SavedCard) => c.id !== product.id);
+
+        window.localStorage.setItem(
+          KeyJson.CARD, JSON.stringify(filteredCards),
+        );
+      }
     } else {
-      dispatch(setInCardPhone(payload));
+      dispatch(setInCardPhone(product));
       setIsCarded(true);
     }
-  }
+  };
 
   const price = product.discount
     ? product.price - product.discount
@@ -94,7 +108,7 @@ export const ProductCard: FC<Props> = ({ product }) => {
       <Link
         className="product-card__link"
         to={`/phones/${product.phoneId}`}
-        onClick={() => (handleSelectingProduct(product))}
+        onClick={handleSelectingProduct}
       >
 
         <img
@@ -128,14 +142,14 @@ export const ProductCard: FC<Props> = ({ product }) => {
             { 'product-card__add-to-card--is-added': isCarded },
           )}
           type="button"
-          onClick={() => handleCardedProducts(product)}
+          onClick={handleCardedProducts}
         >
           Add to cart
         </button>
         <button
           type="button"
           className="product-card__add-to-favorites add-to-favorites"
-          onClick={() => handleFavoritesProducts(product)}
+          onClick={handleFavoritesProducts}
         >
           <img
             className="add-to-favorites__icon"

@@ -13,16 +13,26 @@ import { incrementAsync as loadPhoneDetails } from '../features/PhoneDetails/pho
 import { AsyncStatus } from '../types/AsyncStatus';
 import { ProductsSlider } from './components/ProductsSlider';
 import { PhoneDetails } from '../types/PhoneDetails';
+import {
+  phonesDetaildStatusSelector,
+  phonesDetailsSelector,
+  phonesSelector,
+  phonesStatusSelector,
+  selectedPhoneSelector,
+} from '../app/selector';
+import { setInCardPhone, unsetFromCardPhone } from '../features/PhonesInCard/phonesInCardSlice';
+import { KeyJson, SavedCard } from './CardPage';
+import { incrementAsync } from '../features/phones/phonesSlice';
 
 export const ProductDetailsPage: FC = () => {
-  const selectedProduct = useAppSelector(state => state.selectedPhone.value);
-  const phones = useAppSelector(state => state.phones.value);
-  const statusPhone = useAppSelector(state => state.phones.status);
   const dispatch = useAppDispatch();
-  const phoneDetails = useAppSelector(state => state.phoneDetails.value);
-  const phoneDetailsStatus = useAppSelector(state => state.phoneDetails.status);
-  const [productCard, setProductCard] = useState<PhoneDetails | null>(() => {
-    const storedValue = window.localStorage.getItem('productCard');
+  const selectedProduct = useAppSelector(selectedPhoneSelector);
+  const phonesFromServer = useAppSelector(phonesSelector);
+  const statusPhones = useAppSelector(phonesStatusSelector);
+  const phoneDetails = useAppSelector(phonesDetailsSelector);
+  const phoneDetailsStatus = useAppSelector(phonesDetaildStatusSelector);
+  const [productDetails, setProductDetails] = useState<PhoneDetails | null>(() => {
+    const storedValue = window.localStorage.getItem(KeyJson.DETAILS);
 
     if (storedValue !== null) {
       return JSON.parse(storedValue);
@@ -33,22 +43,71 @@ export const ProductDetailsPage: FC = () => {
 
   const [brandNewModels, setBrandNewModels] = useState<Product[]>([]);
   const location = useLocation();
+  const [isCarded, setIsCarded] = useState<boolean>(() => {
+    const savedCardJSON = window.localStorage.getItem(KeyJson.CARD);
+
+    if (savedCardJSON) {
+      return JSON.parse(savedCardJSON).some(
+        (card: SavedCard) => phoneDetails?.id === card.value.id,
+      );
+    }
+
+    return false;
+  });
+
+  const handleCardedProducts = () => {
+    setIsCarded(prev => !prev);
+    const savedCardsJSON = window.localStorage.getItem(KeyJson.CARD);
+
+    if (savedCardsJSON && selectedProduct) {
+      const savedCards = JSON.parse(savedCardsJSON);
+
+      if (savedCards.find((card: SavedCard) => card.id === selectedProduct?.id)) {
+        const newsavedCards = savedCards.filter((card: SavedCard) => card.id !== selectedProduct?.id);
+
+        dispatch(unsetFromCardPhone(selectedProduct));
+        window.localStorage.setItem(KeyJson.CARD, JSON.stringify(newsavedCards));
+      } else {
+        const newSave = {
+          id: selectedProduct.id,
+          amount: 1,
+          value: selectedProduct,
+        };
+
+        if (selectedProduct) {
+          dispatch(setInCardPhone(selectedProduct));
+        }
+
+        window.localStorage.setItem(KeyJson.CARD, JSON.stringify([...savedCards, newSave]));
+      }
+    } else {
+      const phone = phonesFromServer.find((p: Product) => p.id === selectedProduct?.id);
+
+      if (selectedProduct) {
+        dispatch(setInCardPhone(selectedProduct));
+      }
+
+      window.localStorage.setItem(KeyJson.CARD, JSON.stringify({
+        id: 1,
+        amount: 1,
+        value: phone,
+      }));
+    }
+  };
 
   useEffect(() => {
-    if (selectedProduct !== null) {
-      dispatch(loadPhoneDetails(selectedProduct.phoneId));
-    }
+    dispatch(incrementAsync());
   }, []);
 
   useEffect(() => {
-    if (phones.length > 0) {
-      const res = [...phones].sort(
+    if (phonesFromServer.length > 0) {
+      const res = [...phonesFromServer].sort(
         (a: Product, b: Product) => +b.year - +a.year,
       );
 
       setBrandNewModels(res);
     }
-  }, [phones]);
+  }, [phonesFromServer]);
 
   useEffect(() => {
     if (selectedProduct !== null) {
@@ -57,19 +116,24 @@ export const ProductDetailsPage: FC = () => {
   }, [location.pathname.split('/')[2]]);
 
   useEffect(() => {
-    if (phoneDetailsStatus === AsyncStatus.IDLE && Array.isArray(phoneDetails) === false && phoneDetails !== null) {
-      window.localStorage.setItem('productCard', JSON.stringify(phoneDetails));
-      if (window.localStorage.getItem('productCard')) {
-        const savedCard = window.localStorage.getItem('productCard');
+    if (phoneDetailsStatus === AsyncStatus.IDLE
+      && Array.isArray(phoneDetails) === false
+      && phoneDetails !== null) {
+      window.localStorage.setItem(KeyJson.DETAILS, JSON.stringify(phoneDetails));
+      if (window.localStorage.getItem(KeyJson.DETAILS)) {
+        const savedCard = window.localStorage.getItem(KeyJson.DETAILS);
 
         if (savedCard) {
-          setProductCard(JSON.parse(savedCard));
+          setProductDetails(JSON.parse(savedCard));
         }
       }
     }
   }, [phoneDetails]);
 
-  const isLoading = phoneDetailsStatus === AsyncStatus.LOADING || !productCard || !phoneDetails || statusPhone === AsyncStatus.LOADING;
+  const isLoadingLoad = phoneDetailsStatus === AsyncStatus.LOADING
+    || !productDetails
+    || !phoneDetails
+    || statusPhones === AsyncStatus.LOADING;
 
   const [bigImgIndex, setBigImgIndex] = useState(0);
   const [capacityIndex, setCapacityIndex] = useState(0);
@@ -84,7 +148,7 @@ export const ProductDetailsPage: FC = () => {
 
   return (
     <div className="product-details-page">
-      {isLoading ? (
+      {isLoadingLoad ? (
         <Loader />
       ) : (
         <>
@@ -94,14 +158,14 @@ export const ProductDetailsPage: FC = () => {
             Back
           </Link>
           <h1 className="product-details-page__title">
-            {productCard.name}
+            {productDetails.name}
           </h1>
           <section
             className="product-details-page__product-section product-section"
           >
             <div className="product-section__gallery gallery">
               <div className="gallery__small-img-container small-img-container">
-                {productCard.images.map((img, index) => (
+                {productDetails.images.map((img, index) => (
                   <img
                     className="small-img-container__img"
                     src={img}
@@ -112,7 +176,7 @@ export const ProductDetailsPage: FC = () => {
                 ))}
               </div>
               <div className="gallery__big-img-container big-img-container">
-                <img className="big-img-container__big-img" src={productCard.images[bigImgIndex]} alt="Phoduct" />
+                <img className="big-img-container__big-img" src={productDetails.images[bigImgIndex]} alt="Phoduct" />
               </div>
             </div>
             <div className="product-section__choose-section choose-section">
@@ -136,7 +200,7 @@ export const ProductDetailsPage: FC = () => {
               <div className="choose-section__capasity-picker capasity-picker">
                 <h2 className="capasity-picker__title">Select capacity</h2>
                 <ul className="capasity-picker__list">
-                  {productCard.capacityAvailable.map((item, index) => (
+                  {productDetails.capacityAvailable.map((item, index) => (
                     <li
                       key={item}
                       className={classNames(
@@ -153,13 +217,17 @@ export const ProductDetailsPage: FC = () => {
               </div>
               <div className="choose-section__buy-buttons buy-buttons">
                 <div className="buy-buttons__prices-amount prices-amount">
-                  <p className="prices-amount__price">{`${productCard.priceDiscount}$`}</p>
-                  <p className="prices-amount__price prices-amount__price--discount">{`${productCard.priceRegular}$`}</p>
+                  <p className="prices-amount__price">{`${productDetails.priceDiscount}$`}</p>
+                  <p className="prices-amount__price prices-amount__price--discount">{`${productDetails.priceRegular}$`}</p>
                 </div>
                 <div className="buy-buttons__buttons-buy-like buttons-buy-like">
                   <button
-                    className="buttons-buy-like__add-to-card"
+                    className={classNames(
+                      'buttons-buy-like__add-to-card',
+                      { 'buttons-buy-like__add-to-card--is-added': isCarded },
+                    )}
                     type="button"
+                    onClick={handleCardedProducts}
                   >
                     Add to cart
                   </button>
@@ -178,13 +246,13 @@ export const ProductDetailsPage: FC = () => {
               <div className="choose-section__details-product details-product">
                 <dl className="details-product__description-product description-product">
                   <dt className="description-product--title">Screen</dt>
-                  <dd className="description-product--value">{productCard.screen}</dd>
+                  <dd className="description-product--value">{productDetails.screen}</dd>
                   <dt className="description-product--title">Resolution</dt>
-                  <dd className="description-product--value">{productCard.resolution}</dd>
+                  <dd className="description-product--value">{productDetails.resolution}</dd>
                   <dt className="description-product--title">Processor</dt>
-                  <dd className="description-product--value">{productCard.processor}</dd>
+                  <dd className="description-product--value">{productDetails.processor}</dd>
                   <dt className="description-product--title">RAM</dt>
-                  <dd className="description-product--value">{productCard.ram}</dd>
+                  <dd className="description-product--value">{productDetails.ram}</dd>
                 </dl>
               </div>
             </div>
@@ -192,7 +260,7 @@ export const ProductDetailsPage: FC = () => {
           <section className="product-details-page__product-articles product-articles">
             <article className="product-articles__article-about article-about">
               <h2 className="article-about__title">About</h2>
-              {productCard.description.map(article => (
+              {productDetails.description.map(article => (
                 <div key={article.title}>
                   <h3 className="article-about__sub-title">{article.title}</h3>
                   {article.text.map(text => (
@@ -207,27 +275,27 @@ export const ProductDetailsPage: FC = () => {
               <h2 className="tech-specs__title">Tech specs</h2>
               <dl className="tech-specs__tech-specs-list tech-specs-list">
                 <dt className="tech-specs-list--title">Screen</dt>
-                <dd className="tech-specs-list--value">{productCard.screen}</dd>
+                <dd className="tech-specs-list--value">{productDetails.screen}</dd>
                 <dt className="tech-specs-list--title">Resolution</dt>
-                <dd className="tech-specs-list--value">{productCard.resolution}</dd>
+                <dd className="tech-specs-list--value">{productDetails.resolution}</dd>
                 <dt className="tech-specs-list--title">Processor</dt>
-                <dd className="tech-specs-list--value">{productCard.processor}</dd>
+                <dd className="tech-specs-list--value">{productDetails.processor}</dd>
                 <dt className="tech-specs-list--title">RAM</dt>
-                <dd className="tech-specs-list--value">{productCard.ram}</dd>
+                <dd className="tech-specs-list--value">{productDetails.ram}</dd>
                 <dt className="tech-specs-list--title">Built in memory</dt>
-                <dd className="tech-specs-list--value">{productCard.capacity}</dd>
+                <dd className="tech-specs-list--value">{productDetails.capacity}</dd>
                 <dt className="tech-specs-list--title">Camera</dt>
-                <dd className="tech-specs-list--value">{productCard.camera}</dd>
+                <dd className="tech-specs-list--value">{productDetails.camera}</dd>
                 <dt className="tech-specs-list--title">Zoom</dt>
-                <dd className="tech-specs-list--value">{productCard.zoom}</dd>
+                <dd className="tech-specs-list--value">{productDetails.zoom}</dd>
                 <dt className="tech-specs-list--title">Cell</dt>
-                <dd className="tech-specs-list--value">{productCard.cell}</dd>
+                <dd className="tech-specs-list--value">{productDetails.cell}</dd>
               </dl>
             </article>
           </section>
           <div className="product-details-page__you-may-like you-may-like">
             <h2 className="you-may-like__title">You may also like</h2>
-            {statusPhone === AsyncStatus.IDLE && brandNewModels.length && (
+            {statusPhones === AsyncStatus.IDLE && brandNewModels.length && (
               <ProductsSlider phones={brandNewModels} />
             )}
           </div>

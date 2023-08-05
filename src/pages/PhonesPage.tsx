@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import {
-  FC, useEffect, useMemo, useState,
+  FC, useEffect, useState,
 } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
@@ -26,10 +26,11 @@ import { SortByOptions } from '../types/SortByOptions';
 import { SelectAmountItems } from '../types/SelectAmountItems';
 import { filteringVisibleSearchedProducts } from '../app/utils';
 import { itemsOnPageOptions, sortByOptions } from '../types/SelectOptionsArr';
+import { phonesSelector, phonesStatusSelector } from '../app/selector';
 
 export const PhonesPage: FC = () => {
-  const phones: Product[] = useAppSelector(state => state.phones.value);
-  const statusLadingPhones = useAppSelector(state => state.phones.status);
+  const phones: Product[] = useAppSelector(phonesSelector);
+  const statusLadingPhones = useAppSelector(phonesStatusSelector);
   const [selectedOptions, setSelectedOptions] = useState({
     sortBy: SortByOptions.AGE,
     itemsShow: SelectAmountItems.SIXTEEN,
@@ -58,17 +59,6 @@ export const PhonesPage: FC = () => {
       currentPage,
       setSearchParams,
     );
-  }, [phones]);
-
-  useEffect(() => {
-    updateStateProductsAndUrl(
-      setVisiblePhones,
-      phones,
-      selectedOptions,
-      statusLadingPhones,
-      currentPage,
-      setSearchParams,
-    );
 
     setCurrentPage(1);
   }, [selectedOptions]);
@@ -82,15 +72,13 @@ export const PhonesPage: FC = () => {
       currentPage,
       setSearchParams,
     );
-  }, [currentPage]);
+  }, [currentPage, phones]);
 
-  const phonesSearched = useMemo(() => {
-    return filteringVisibleSearchedProducts(visiblePhones, searchBarValue);
-  }, [searchBarValue]);
+  const phonesSearched = filteringVisibleSearchedProducts(
+    visiblePhones, searchBarValue,
+  );
 
-  const phonesSliced = searchBarValue
-    ? phonesSearched.slice(firstPhoneIndex, lastPhoneIndex)
-    : visiblePhones.slice(firstPhoneIndex, lastPhoneIndex);
+  const phonesSliced = phonesSearched.slice(firstPhoneIndex, lastPhoneIndex);
 
   return (
     <div className="phones-page">

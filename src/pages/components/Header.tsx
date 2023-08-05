@@ -7,15 +7,19 @@ import '../../styles/styles.scss';
 import classNames from 'classnames';
 import { SearchBar } from './SearchBar';
 import { useAppSelector } from '../../app/hooks';
+import { KeyJson } from '../CardPage';
+import {
+  favoriteProductsSelector,
+  phoneCardSelector,
+} from '../../app/selector';
 
 export const Header: FC = () => {
   const location = useLocation();
-  const productsInCardCount = useAppSelector(
-    state => state.phonesCarded.value,
-  ).length;
-  const productsFavoriteCount = useAppSelector(
-    state => state.phonesFavorites.value,
-  ).length;
+  const initialState = useAppSelector(phoneCardSelector).length;
+  const productsInCardCount = window.localStorage.getItem(KeyJson.CARD)
+    ? JSON.parse(window.localStorage.getItem(KeyJson.CARD) as string).length
+    : initialState;
+  const productsFavoriteCount = useAppSelector(favoriteProductsSelector).length;
 
   const showSearchBar = location.pathname === '/favorites'
   || location.pathname === '/phones'

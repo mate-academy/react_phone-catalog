@@ -236,6 +236,14 @@
     font-style: normal;
     line-height: 21px; /* 150% */
     cursor: pointer;
+    &--is-added {
+      color: #27ae60;
+      background-color: #e2e6e9;
+      border: 1px solid $gray-elements;
+    }
+    &:hover {
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+    }
   }
   &__add-to-favorites {
     display: flex;
@@ -245,6 +253,7 @@
     height: 48px;
     flex-shrink: 0;
     border: 1px solid #b4bdc3;
+    cursor: pointer;
     &:hover {
       border-color: #313237;
     }

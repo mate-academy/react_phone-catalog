@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import { reducer as phonesReducer } from '../features/phones/phonesSlice';
 import {
@@ -19,17 +20,17 @@ import {
   reducer as productsReducer,
 } from '../features/products/productsSlice';
 
-export const store = configureStore({
-  reducer: {
-    phones: phonesReducer,
-    selectedPhone: selectedPhoneReducer,
-    phoneDetails: phoneDetailsReducer,
-    phonesFavorites: phonesFavoritesReducer,
-    phonesCarded: phonesCardedReducer,
-    searchBar: searchBarReducer,
-    products: productsReducer,
-  },
-});
+const reducer = {
+  phones: phonesReducer,
+  selectedPhone: selectedPhoneReducer,
+  phoneDetails: phoneDetailsReducer,
+  phonesFavorites: phonesFavoritesReducer,
+  phonesCarded: phonesCardedReducer,
+  searchBar: searchBarReducer,
+  products: productsReducer,
+};
+
+export const store = configureStore({ reducer });
 
 export type AppDispatch = typeof store.dispatch;
 export type RootState = ReturnType<typeof store.getState>;

@@ -30,6 +30,10 @@ export function filteringVisibleSearchedProducts(
   visibleProducts: Product[],
   searchBarValue: string,
 ): Product[] {
+  if (!searchBarValue) {
+    return visibleProducts;
+  }
+
   return visibleProducts.filter((product) => {
     if (searchBarValue.trim() === '') {
       return true;

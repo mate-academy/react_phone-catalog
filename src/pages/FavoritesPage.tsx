@@ -2,21 +2,16 @@ import { FC } from 'react';
 import Breadcrumbs from './components/Breadcrumbs';
 import { ProductsList } from './components/ProductsList';
 import { useAppSelector } from '../app/hooks';
+import { filteringVisibleSearchedProducts } from '../app/utils';
+import { favoriteProductsSelector, searchBarSelector } from '../app/selector';
 
 export const FavoritesPage: FC = () => {
-  const favoritesPhones = useAppSelector(state => state.phonesFavorites.value);
-  const searchBarValue = useAppSelector(state => state.searchBar.value);
+  const favoritesPhones = useAppSelector(favoriteProductsSelector);
+  const searchBarValue = useAppSelector(searchBarSelector);
 
-  const phonesSearched = favoritesPhones.filter((product) => {
-    if (searchBarValue.trim() === '') {
-      return true;
-    }
-
-    const queryWords = searchBarValue.toLowerCase().split(' ');
-    const productName = product.name.toLowerCase();
-
-    return queryWords.every((word) => productName.includes(word));
-  });
+  const phonesSearched = filteringVisibleSearchedProducts(
+    favoritesPhones, searchBarValue,
+  );
 
   return (
     <div className="favorites-page">
