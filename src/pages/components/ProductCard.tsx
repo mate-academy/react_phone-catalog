@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 
@@ -7,7 +7,7 @@ import '../../styles/styles.scss';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { SelectedStatus } from '../../types/SelectedStatus';
 import {
-  setPhone, unsetPhone,
+  setPhone,
 } from '../../features/selectedPhone/selectedPhoneSlice';
 import {
   setFavoritePhone, unsetFavoritePhone,
@@ -15,13 +15,13 @@ import {
 import {
   setInCardPhone, unsetFromCardPhone,
 } from '../../features/PhonesInCard/phonesInCardSlice';
-import { KeyJson, SavedCard } from '../CardPage';
 import {
   favoriteProductsSelector,
   phoneCardSelector,
   selectedPhoneSelector,
   selectedPhoneStatusSelector,
 } from '../../app/selector';
+import { KeyJson } from '../../types/KeyJson';
 
 type Props = {
   product: Product;
@@ -41,7 +41,7 @@ export const ProductCard: FC<Props> = ({ product }) => {
   });
   const cardedPhones = useAppSelector(phoneCardSelector);
   const [isCarded, setIsCarded] = useState(() => {
-    if (cardedPhones.some(p => product.id === p.id)) {
+    if (cardedPhones.some(p => product.itemId === p.id)) {
       return true;
     }
 
@@ -50,10 +50,6 @@ export const ProductCard: FC<Props> = ({ product }) => {
 
   const handleSelectingProduct = () => {
     switch (statusSelectedPhone) {
-      case SelectedStatus.SELECTED:
-        dispatch(unsetPhone());
-        break;
-
       case SelectedStatus.UNSELECTED:
         dispatch(setPhone(product));
         break;
@@ -78,25 +74,18 @@ export const ProductCard: FC<Props> = ({ product }) => {
   };
 
   const handleCardedProducts = () => {
-    if (cardedPhones.find(p => p.id === product.id)) {
+    if (cardedPhones.find(card => card.id === product.itemId)) {
       dispatch(unsetFromCardPhone(product));
       setIsCarded(false);
-      const cardsFromStorageJSON = window.localStorage.getItem(KeyJson.CARD);
-
-      if (cardsFromStorageJSON) {
-        const filteredCards = JSON.parse(
-          cardsFromStorageJSON,
-        ).filter((c: SavedCard) => c.id !== product.id);
-
-        window.localStorage.setItem(
-          KeyJson.CARD, JSON.stringify(filteredCards),
-        );
-      }
     } else {
       dispatch(setInCardPhone(product));
       setIsCarded(true);
     }
   };
+
+  useEffect(() => {
+    window.localStorage.setItem(KeyJson.CARD, JSON.stringify(cardedPhones));
+  }, [cardedPhones]);
 
   const price = product.discount
     ? product.price - product.discount

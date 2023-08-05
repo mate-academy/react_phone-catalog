@@ -1,110 +1,35 @@
 /* eslint-disable import/no-cycle */
 /* eslint-disable @typescript-eslint/no-use-before-define */
-import { FC, useEffect, useReducer } from 'react';
-import { Product } from '../../types/Product';
+import { FC } from 'react';
 import { useAppDispatch } from '../../app/hooks';
 import {
   unsetFromCardPhone,
 } from '../../features/PhonesInCard/phonesInCardSlice';
+import { SavedCard } from '../../types/SavedCard';
 // eslint-disable-next-line import/no-cycle
-import { KeyJson, SavedCard } from '../CardPage';
 
 type Props = {
   card: SavedCard,
-  onTotalAmount: React.Dispatch<React.SetStateAction<number>>,
-  onTotalItem: React.Dispatch<React.SetStateAction<number>>,
-  onSavedCards: React.Dispatch<React.SetStateAction<SavedCard[]>>,
 };
-
-function reducer(
-  state: {
-    count: number,
-  },
-  action: {
-    type: string,
-  },
-) {
-  switch (action.type) {
-    case 'increment':
-      return { count: state.count + 1 };
-    case 'decrement':
-      return { count: state.count - 1 };
-    default:
-      throw new Error();
-  }
-}
 
 export const CardedProduct: FC<Props> = ({
   card,
-  onTotalAmount,
-  onTotalItem,
-  onSavedCards,
 }) => {
-  const initialState = { count: card.amount };
-  const [state, dispatcher] = useReducer(reducer, initialState);
   const dispatch = useAppDispatch();
 
-  const handleUnsetProduct = (good: Product) => {
-    dispatch(unsetFromCardPhone(good));
-    onTotalAmount(prev => (prev - (state.count * card.value.price)));
-    onTotalItem(prev => (prev - state.count));
-    const cardsFromStorageJSON = window.localStorage.getItem(KeyJson.CARD);
-
-    if (cardsFromStorageJSON) {
-      const filteredCards = JSON.parse(
-        cardsFromStorageJSON,
-      ).filter((c: SavedCard) => c.id !== card.id);
-
-      window.localStorage.setItem(KeyJson.CARD, JSON.stringify(filteredCards));
-      onSavedCards(filteredCards);
-    }
+  const handleUnsetProduct = () => {
+    dispatch(unsetFromCardPhone(card.value));
   };
 
-  const handleCounter = (actionType: string) => {
-    switch (actionType) {
-      case 'decrement':
-        if (state.count > 1) {
-          onTotalAmount(prev => (prev - +card.value.price));
-          dispatcher({ type: actionType });
-          onTotalItem(prev => (prev - 1));
-        }
-
-        break;
-      case 'increment':
-        onTotalAmount(prev => (prev + +card.value.price));
-        dispatcher({ type: actionType });
-        onTotalItem(prev => (prev + 1));
-        break;
-      default:
-        break;
-    }
+  const handleCounter = () => {
   };
-
-  useEffect(() => {
-    const savedCard = window.localStorage.getItem(KeyJson.CARD);
-
-    if (savedCard) {
-      const update = JSON.parse(savedCard).map((currentCard: SavedCard) => {
-        if (card.id === currentCard.id) {
-          return {
-            ...currentCard,
-            amount: state.count,
-          };
-        }
-
-        return currentCard;
-      });
-
-      window.localStorage.setItem(KeyJson.CARD, JSON.stringify(update));
-    }
-  }, [state.count]);
 
   return (
     <>
       <button
         className="item-ored__delete-button"
         type="button"
-        onClick={() => handleUnsetProduct(card.value)}
+        onClick={() => handleUnsetProduct()}
       >
         <img
           className="item-ored__delete-button--icon"
@@ -123,15 +48,15 @@ export const CardedProduct: FC<Props> = ({
       <button
         className="item-ored__product-count-deg"
         type="button"
-        onClick={() => handleCounter('decrement')}
+        onClick={() => handleCounter()}
       >
         -
       </button>
-      <p className="item-ored__count-value">{state.count}</p>
+      <p className="item-ored__count-value">{card.amount}</p>
       <button
         type="button"
         className="item-ored__product-count-inc"
-        onClick={() => handleCounter('increment')}
+        onClick={() => handleCounter()}
       >
         +
       </button>

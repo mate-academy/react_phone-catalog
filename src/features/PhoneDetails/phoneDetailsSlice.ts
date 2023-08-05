@@ -1,21 +1,26 @@
+/* eslint-disable import/no-cycle */
 /* eslint-disable no-param-reassign */
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { PhoneDetails } from '../../types/PhoneDetails';
 import { getPhoneDetails } from '../../api/phone';
 import { AsyncStatus } from '../../types/AsyncStatus';
+import { KeyJson } from '../../types/KeyJson';
 
 export interface PhonesState {
   value: PhoneDetails | null,
   status: AsyncStatus,
 }
+const localeStorage = window.localStorage.getItem(KeyJson.DETAILS);
 
 const initialState: PhonesState = {
-  value: null,
+  value: localeStorage
+    ? JSON.parse(localeStorage)
+    : null,
   status: AsyncStatus.IDLE,
 };
 
 export const incrementAsync = createAsyncThunk(
-  'phones/fetchPhones',
+  'phoneDetails/fetchPhones',
   async (phoneId: string) => {
     const phoneDetails = await getPhoneDetails(phoneId);
 

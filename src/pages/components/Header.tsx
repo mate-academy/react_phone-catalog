@@ -7,7 +7,6 @@ import '../../styles/styles.scss';
 import classNames from 'classnames';
 import { SearchBar } from './SearchBar';
 import { useAppSelector } from '../../app/hooks';
-import { KeyJson } from '../CardPage';
 import {
   favoriteProductsSelector,
   phoneCardSelector,
@@ -15,10 +14,7 @@ import {
 
 export const Header: FC = () => {
   const location = useLocation();
-  const initialState = useAppSelector(phoneCardSelector).length;
-  const productsInCardCount = window.localStorage.getItem(KeyJson.CARD)
-    ? JSON.parse(window.localStorage.getItem(KeyJson.CARD) as string).length
-    : initialState;
+  const productsInCardCount = useAppSelector(phoneCardSelector).length;
   const productsFavoriteCount = useAppSelector(favoriteProductsSelector).length;
 
   const showSearchBar = location.pathname === '/favorites'

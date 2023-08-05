@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable max-len */
 import { FC, useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import Breadcrumbs from './components/Breadcrumbs';
 import '../styles/styles.scss';
@@ -12,8 +12,9 @@ import { Loader } from './components/Loader';
 import { incrementAsync as loadPhoneDetails } from '../features/PhoneDetails/phoneDetailsSlice';
 import { AsyncStatus } from '../types/AsyncStatus';
 import { ProductsSlider } from './components/ProductsSlider';
-import { PhoneDetails } from '../types/PhoneDetails';
 import {
+  favoriteProductsSelector,
+  phoneCardSelector,
   phonesDetaildStatusSelector,
   phonesDetailsSelector,
   phonesSelector,
@@ -21,8 +22,9 @@ import {
   selectedPhoneSelector,
 } from '../app/selector';
 import { setInCardPhone, unsetFromCardPhone } from '../features/PhonesInCard/phonesInCardSlice';
-import { KeyJson, SavedCard } from './CardPage';
-import { incrementAsync } from '../features/phones/phonesSlice';
+import { incrementAsync as loadPhones } from '../features/phones/phonesSlice';
+import { KeyJson } from '../types/KeyJson';
+import { setFavoritePhone, unsetFavoritePhone } from '../features/PhonesFavorites/phonesFavoritesSlice';
 
 export const ProductDetailsPage: FC = () => {
   const dispatch = useAppDispatch();
@@ -31,109 +33,64 @@ export const ProductDetailsPage: FC = () => {
   const statusPhones = useAppSelector(phonesStatusSelector);
   const phoneDetails = useAppSelector(phonesDetailsSelector);
   const phoneDetailsStatus = useAppSelector(phonesDetaildStatusSelector);
-  const [productDetails, setProductDetails] = useState<PhoneDetails | null>(() => {
-    const storedValue = window.localStorage.getItem(KeyJson.DETAILS);
-
-    if (storedValue !== null) {
-      return JSON.parse(storedValue);
-    }
-
-    return null;
-  });
-
+  const cardedPhones = useAppSelector(phoneCardSelector);
+  const favoritesPhones = useAppSelector(favoriteProductsSelector);
   const [brandNewModels, setBrandNewModels] = useState<Product[]>([]);
-  const location = useLocation();
-  const [isCarded, setIsCarded] = useState<boolean>(() => {
-    const savedCardJSON = window.localStorage.getItem(KeyJson.CARD);
-
-    if (savedCardJSON) {
-      return JSON.parse(savedCardJSON).some(
-        (card: SavedCard) => phoneDetails?.id === card.value.id,
-      );
-    }
-
-    return false;
-  });
+  // const location = useLocation();
 
   const handleCardedProducts = () => {
-    setIsCarded(prev => !prev);
-    const savedCardsJSON = window.localStorage.getItem(KeyJson.CARD);
+    if (phoneDetails && phonesFromServer) {
+      const currentPhone = phonesFromServer.find(p => p.itemId === phoneDetails.id);
 
-    if (savedCardsJSON && selectedProduct) {
-      const savedCards = JSON.parse(savedCardsJSON);
-
-      if (savedCards.find((card: SavedCard) => card.id === selectedProduct?.id)) {
-        const newsavedCards = savedCards.filter((card: SavedCard) => card.id !== selectedProduct?.id);
-
-        dispatch(unsetFromCardPhone(selectedProduct));
-        window.localStorage.setItem(KeyJson.CARD, JSON.stringify(newsavedCards));
-      } else {
-        const newSave = {
-          id: selectedProduct.id,
-          amount: 1,
-          value: selectedProduct,
-        };
-
-        if (selectedProduct) {
-          dispatch(setInCardPhone(selectedProduct));
+      if (currentPhone) {
+        if (cardedPhones.some(card => card.id === currentPhone.itemId)) {
+          dispatch(unsetFromCardPhone(currentPhone));
+        } else {
+          dispatch(setInCardPhone(currentPhone));
         }
-
-        window.localStorage.setItem(KeyJson.CARD, JSON.stringify([...savedCards, newSave]));
       }
-    } else {
-      const phone = phonesFromServer.find((p: Product) => p.id === selectedProduct?.id);
+    }
+  };
 
-      if (selectedProduct) {
-        dispatch(setInCardPhone(selectedProduct));
+  const handleFavoritesProducts = () => {
+    if (phoneDetails || phonesFromServer) {
+      const currentPhone = phonesFromServer.find(p => p.itemId === phoneDetails?.id);
+
+      if (currentPhone) {
+        if (favoritesPhones.find(p => p.id === currentPhone.id)) {
+          dispatch(unsetFavoritePhone(currentPhone));
+        } else {
+          dispatch(setFavoritePhone(currentPhone));
+        }
       }
-
-      window.localStorage.setItem(KeyJson.CARD, JSON.stringify({
-        id: 1,
-        amount: 1,
-        value: phone,
-      }));
     }
   };
 
   useEffect(() => {
-    dispatch(incrementAsync());
+    dispatch(loadPhones());
+    if (selectedProduct) {
+      dispatch(loadPhoneDetails(selectedProduct.itemId));
+    }
   }, []);
 
   useEffect(() => {
-    if (phonesFromServer.length > 0) {
-      const res = [...phonesFromServer].sort(
-        (a: Product, b: Product) => +b.year - +a.year,
-      );
-
-      setBrandNewModels(res);
-    }
-  }, [phonesFromServer]);
-
-  useEffect(() => {
-    if (selectedProduct !== null) {
-      dispatch(loadPhoneDetails(selectedProduct.phoneId));
-    }
-  }, [location.pathname.split('/')[2]]);
-
-  useEffect(() => {
-    if (phoneDetailsStatus === AsyncStatus.IDLE
-      && Array.isArray(phoneDetails) === false
-      && phoneDetails !== null) {
+    if (phoneDetails && phoneDetailsStatus === AsyncStatus.IDLE) {
       window.localStorage.setItem(KeyJson.DETAILS, JSON.stringify(phoneDetails));
-      if (window.localStorage.getItem(KeyJson.DETAILS)) {
-        const savedCard = window.localStorage.getItem(KeyJson.DETAILS);
-
-        if (savedCard) {
-          setProductDetails(JSON.parse(savedCard));
-        }
-      }
     }
   }, [phoneDetails]);
 
-  const isLoadingLoad = phoneDetailsStatus === AsyncStatus.LOADING
-    || !productDetails
-    || !phoneDetails
-    || statusPhones === AsyncStatus.LOADING;
+  useEffect(() => {
+    if (statusPhones === AsyncStatus.IDLE) {
+      const sortByYear = [...phonesFromServer].sort(
+        (a: Product, b: Product) => b.year - a.year,
+      );
+
+      setBrandNewModels(sortByYear);
+    }
+  }, [phonesFromServer]);
+
+  const isLoading = phoneDetailsStatus === AsyncStatus.LOADING
+    || statusPhones === AsyncStatus.LOADING || !phoneDetails || !phonesFromServer;
 
   const [bigImgIndex, setBigImgIndex] = useState(0);
   const [capacityIndex, setCapacityIndex] = useState(0);
@@ -148,7 +105,7 @@ export const ProductDetailsPage: FC = () => {
 
   return (
     <div className="product-details-page">
-      {isLoadingLoad ? (
+      {isLoading ? (
         <Loader />
       ) : (
         <>
@@ -158,14 +115,14 @@ export const ProductDetailsPage: FC = () => {
             Back
           </Link>
           <h1 className="product-details-page__title">
-            {productDetails.name}
+            {phoneDetails.name}
           </h1>
           <section
             className="product-details-page__product-section product-section"
           >
             <div className="product-section__gallery gallery">
               <div className="gallery__small-img-container small-img-container">
-                {productDetails.images.map((img, index) => (
+                {phoneDetails.images.map((img, index) => (
                   <img
                     className="small-img-container__img"
                     src={img}
@@ -176,7 +133,7 @@ export const ProductDetailsPage: FC = () => {
                 ))}
               </div>
               <div className="gallery__big-img-container big-img-container">
-                <img className="big-img-container__big-img" src={productDetails.images[bigImgIndex]} alt="Phoduct" />
+                <img className="big-img-container__big-img" src={phoneDetails.images[bigImgIndex]} alt="Phoduct" />
               </div>
             </div>
             <div className="product-section__choose-section choose-section">
@@ -200,7 +157,7 @@ export const ProductDetailsPage: FC = () => {
               <div className="choose-section__capasity-picker capasity-picker">
                 <h2 className="capasity-picker__title">Select capacity</h2>
                 <ul className="capasity-picker__list">
-                  {productDetails.capacityAvailable.map((item, index) => (
+                  {phoneDetails.capacityAvailable.map((item, index) => (
                     <li
                       key={item}
                       className={classNames(
@@ -217,42 +174,47 @@ export const ProductDetailsPage: FC = () => {
               </div>
               <div className="choose-section__buy-buttons buy-buttons">
                 <div className="buy-buttons__prices-amount prices-amount">
-                  <p className="prices-amount__price">{`${productDetails.priceDiscount}$`}</p>
-                  <p className="prices-amount__price prices-amount__price--discount">{`${productDetails.priceRegular}$`}</p>
+                  <p className="prices-amount__price">{`${phoneDetails.priceDiscount}$`}</p>
+                  <p className="prices-amount__price prices-amount__price--discount">{`${phoneDetails.priceRegular}$`}</p>
                 </div>
                 <div className="buy-buttons__buttons-buy-like buttons-buy-like">
                   <button
                     className={classNames(
                       'buttons-buy-like__add-to-card',
-                      { 'buttons-buy-like__add-to-card--is-added': isCarded },
+                      {
+                        'buttons-buy-like__add-to-card--is-added': cardedPhones.some(
+                          card => phoneDetails.id === card.value.itemId,
+                        ),
+                      },
                     )}
                     type="button"
                     onClick={handleCardedProducts}
                   >
                     Add to cart
                   </button>
-                  <a
-                    href="http://"
+                  <button
+                    onClick={handleFavoritesProducts}
+                    type="button"
                     className="buttons-buy-like__add-to-favorites add-to-favorites"
                   >
                     <img
                       className="add-to-favorites__icon"
-                      src="images/icons/HeartLike.svg"
+                      src={favoritesPhones.some(p => phoneDetails.id === p.itemId) ? 'images/icons/HeartLikeFilled.svg' : 'images/icons/HeartLike.svg'}
                       alt="icon"
                     />
-                  </a>
+                  </button>
                 </div>
               </div>
               <div className="choose-section__details-product details-product">
                 <dl className="details-product__description-product description-product">
                   <dt className="description-product--title">Screen</dt>
-                  <dd className="description-product--value">{productDetails.screen}</dd>
+                  <dd className="description-product--value">{phoneDetails.screen}</dd>
                   <dt className="description-product--title">Resolution</dt>
-                  <dd className="description-product--value">{productDetails.resolution}</dd>
+                  <dd className="description-product--value">{phoneDetails.resolution}</dd>
                   <dt className="description-product--title">Processor</dt>
-                  <dd className="description-product--value">{productDetails.processor}</dd>
+                  <dd className="description-product--value">{phoneDetails.processor}</dd>
                   <dt className="description-product--title">RAM</dt>
-                  <dd className="description-product--value">{productDetails.ram}</dd>
+                  <dd className="description-product--value">{phoneDetails.ram}</dd>
                 </dl>
               </div>
             </div>
@@ -260,7 +222,7 @@ export const ProductDetailsPage: FC = () => {
           <section className="product-details-page__product-articles product-articles">
             <article className="product-articles__article-about article-about">
               <h2 className="article-about__title">About</h2>
-              {productDetails.description.map(article => (
+              {phoneDetails.description.map(article => (
                 <div key={article.title}>
                   <h3 className="article-about__sub-title">{article.title}</h3>
                   {article.text.map(text => (
@@ -275,21 +237,21 @@ export const ProductDetailsPage: FC = () => {
               <h2 className="tech-specs__title">Tech specs</h2>
               <dl className="tech-specs__tech-specs-list tech-specs-list">
                 <dt className="tech-specs-list--title">Screen</dt>
-                <dd className="tech-specs-list--value">{productDetails.screen}</dd>
+                <dd className="tech-specs-list--value">{phoneDetails.screen}</dd>
                 <dt className="tech-specs-list--title">Resolution</dt>
-                <dd className="tech-specs-list--value">{productDetails.resolution}</dd>
+                <dd className="tech-specs-list--value">{phoneDetails.resolution}</dd>
                 <dt className="tech-specs-list--title">Processor</dt>
-                <dd className="tech-specs-list--value">{productDetails.processor}</dd>
+                <dd className="tech-specs-list--value">{phoneDetails.processor}</dd>
                 <dt className="tech-specs-list--title">RAM</dt>
-                <dd className="tech-specs-list--value">{productDetails.ram}</dd>
+                <dd className="tech-specs-list--value">{phoneDetails.ram}</dd>
                 <dt className="tech-specs-list--title">Built in memory</dt>
-                <dd className="tech-specs-list--value">{productDetails.capacity}</dd>
+                <dd className="tech-specs-list--value">{phoneDetails.capacity}</dd>
                 <dt className="tech-specs-list--title">Camera</dt>
-                <dd className="tech-specs-list--value">{productDetails.camera}</dd>
+                <dd className="tech-specs-list--value">{phoneDetails.camera}</dd>
                 <dt className="tech-specs-list--title">Zoom</dt>
-                <dd className="tech-specs-list--value">{productDetails.zoom}</dd>
+                <dd className="tech-specs-list--value">{phoneDetails.zoom}</dd>
                 <dt className="tech-specs-list--title">Cell</dt>
-                <dd className="tech-specs-list--value">{productDetails.cell}</dd>
+                <dd className="tech-specs-list--value">{phoneDetails.cell}</dd>
               </dl>
             </article>
           </section>
