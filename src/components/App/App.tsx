@@ -63,7 +63,7 @@ const App = () => {
   const checkPageForSearch:boolean = pageArr.includes(locationName);
 
   const checkedBasketPage:boolean = 'cart'
-    .includes(locationName);
+    .includes(locationName) && locationName !== '';
 
   const querySearch = (text: string) => {
     if (!text) {
