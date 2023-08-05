@@ -32,11 +32,11 @@ export const TabletsPage: React.FC<Props> = React.memo(({ tablets }) => {
   return (
     <div className="TabletsPage">
       <div className="container">
-        {filteredTablets.length === 0 && query && (
+        {!filteredTablets.length && query && (
           <NoSearchResults />
         )}
 
-        {filteredTablets.length === 0 && !query ? (
+        {!filteredTablets.length && !query ? (
           <NoResults category="Tablets" />
         ) : filteredTablets.length > 0 && (
           <div className="TabletsPage__content">

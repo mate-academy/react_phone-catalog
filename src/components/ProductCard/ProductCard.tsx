@@ -129,9 +129,15 @@ export const ProductCard: React.FC<Props> = React.memo(({ product }) => {
           />
         ) : (
           <>
-            <Link to={`/${productType}/${id}`} state={productWithDetails} className="ProductCard__photo">
-              <img src={imageUrl} alt="product" className="ProductCard__img" />
-            </Link>
+            {productWithDetails && (
+              <Link to={`/${productType}/${id}`} state={productWithDetails} className="ProductCard__photo">
+                <img
+                  src={imageUrl}
+                  alt="product"
+                  className="ProductCard__img"
+                />
+              </Link>
+            )}
 
             <div className="ProductCard__title">{name}</div>
 
