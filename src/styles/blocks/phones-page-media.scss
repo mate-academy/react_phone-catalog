@@ -1,0 +1,70 @@
+@include desktop() {
+  .phones-page {
+    @include paddingInline($paddingLaptop);
+    @include width($breakpoint__l);
+  }
+  .search-bar {
+    width: 268px;
+    &__clear-button {
+      left: 231px;
+    }
+  }
+}
+
+@include laptop() {
+  .phones-page {
+    @include paddingInline(0);
+    @include width($breakpoint__m);
+  }
+  .search-bar {
+    width: 188px;
+    &__clear-button {
+      left: 159px;
+    }
+    &__search-bar-input {
+      padding-left: 12px;
+    }
+  }
+}
+
+@include tablet() {
+  .phones-page {
+    @include paddingInline(10);
+    @include width($breakpoint__s);
+  }
+  .search-bar {
+    width: 268px;
+    &__clear-button {
+      left: 231px;
+    }
+    &__search-bar-input {
+      padding-left: 24px;
+    }
+  }
+}
+
+@include mobile() {
+  .phones-page {
+    @include paddingInline(10);
+    @include width($breakpoint__sx);
+  }
+  .search-bar {
+    width: 178px;
+    &__clear-button {
+      left: 149px;
+    }
+    &__search-bar-input {
+      padding-left: 12px;
+      font-size: 12px;
+    }
+  }
+  .custom-select {
+    width: 132px;
+  }
+  .favorites-card-buttons__link {
+    width: 43px;
+  }
+  .favorites-card-buttons__amount-of-products {
+    left: 23px;
+  }
+}

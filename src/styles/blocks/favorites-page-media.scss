@@ -1,0 +1,24 @@
+@include desktop() {
+  .favorites-page {
+    @include paddingInline($paddingLaptop);
+    width: $breakpoint__l;
+  }
+}
+@include laptop() {
+  .favorites-page {
+    @include paddingInline(0);
+    width: $breakpoint__m;
+  }
+}
+@include tablet() {
+  .favorites-page {
+    @include paddingInline(10);
+    @include width($breakpoint__s);
+  }
+}
+@include mobile() {
+  .favorites-page {
+    @include paddingInline(10);
+    @include width($breakpoint__sx);
+  }
+}

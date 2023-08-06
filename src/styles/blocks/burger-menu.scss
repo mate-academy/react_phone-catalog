@@ -60,5 +60,9 @@
     line-height: 22px; /* 91.667% */
     letter-spacing: 0.48px;
     text-transform: uppercase;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }

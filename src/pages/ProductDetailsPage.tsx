@@ -251,7 +251,16 @@ export const ProductDetailsPage: FC = () => {
                 <dt className="tech-specs-list--title">Zoom</dt>
                 <dd className="tech-specs-list--value">{phoneDetails.zoom}</dd>
                 <dt className="tech-specs-list--title">Cell</dt>
-                <dd className="tech-specs-list--value">{phoneDetails.cell}</dd>
+                <dd className="tech-specs-list--value">
+                  {
+                    phoneDetails.cell.map((item, index) => (
+                      <p key={item} className="tech-specs-list--value-cell">
+                        {`${item}${index !== phoneDetails.cell.length - 1 ? ',' : ''}`}
+                      </p>
+                    ))
+                  }
+
+                </dd>
               </dl>
             </article>
           </section>

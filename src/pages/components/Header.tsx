@@ -24,9 +24,9 @@ export const Header: FC = () => {
 
   useEffect(() => {
     if (isBurgerMenu) {
-      document.body.style.overflow = 'hidden'; // Disable scrolling
+      document.body.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = 'auto'; // Enable scrolling
+      document.body.style.overflow = 'auto';
     }
   }, [isBurgerMenu]);
 

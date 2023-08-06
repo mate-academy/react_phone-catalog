@@ -1,0 +1,90 @@
+@include desktop() {
+  .card-page {
+    @include paddingInline($paddingLaptop);
+    width: $breakpoint__l;
+  }
+  .order-content__item-ored {
+    width: 602px;
+  }
+  .order-content__checkout-block {
+    width: 298px;
+  }
+  .checkout-block__checkout-button {
+    width: 90%;
+  }
+}
+@include laptop() {
+  .card-page {
+    @include paddingInline(0);
+    width: $breakpoint__m;
+  }
+  .order-content__item-ored {
+    width: 513px;
+    height: 100px;
+  }
+  .order-content__checkout-block {
+    width: 234px;
+  }
+  .checkout-block__checkout-button {
+    width: 90%;
+  }
+  .item-ored__product-img {
+    margin-left: 15px;
+  }
+  .item-ored__delete-button {
+    margin-left: 15px;
+  }
+  .item-ored__product-name {
+    margin-left: 20px;
+    width: 178px;
+  }
+  .item-ored__price-product {
+    margin-inline: 21px 20px;
+  }
+}
+@include tablet() {
+  .card-page {
+    @include paddingInline(10);
+    @include width($breakpoint__s);
+  }
+  .card-page__order-content {
+    flex-direction: column;
+  }
+  .order-content__item-ored {
+    width: 100%;
+  }
+  .order-content__checkout-block {
+    width: 100%;
+  }
+}
+@include mobile() {
+  .card-page {
+    @include paddingInline(10);
+    @include width($breakpoint__sx);
+  }
+  .order-content__item-ored {
+    flex-direction: column;
+    height: 328px;
+    justify-content: center;
+    gap: 10px;
+    padding-top: 10px;
+  }
+  .item-ored__product-name {
+    margin-left: 49px;
+  }
+  .img-container {
+    flex-direction: row-reverse;
+    gap: 10px;
+  }
+  .item-ored__product-img {
+    margin-top: 30px;
+    width: 100px;
+    height: 100px;
+  }
+  .item-ored__product-name {
+    margin-block: 5px;
+  }
+  .item-ored__price-product {
+    margin-block: 5px;
+  }
+}

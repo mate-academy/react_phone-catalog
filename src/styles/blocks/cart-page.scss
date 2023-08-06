@@ -1,7 +1,8 @@
 .card-page {
   @include pageMaxWidth;
+  width: 1440px;
+  margin: auto;
   padding-block: 40px 87px;
-  margin: 0;
   flex-grow: 1;
   &__back-link {
     display: flex;
@@ -113,6 +114,13 @@
   }
 }
 
+.count-container {
+  display: flex;
+  align-items: center;
+}
+.img-container {
+  display: flex;
+}
 .checkout-block {
   &__total-price-amout {
     margin: 0;
@@ -128,7 +136,7 @@
   }
   &__total-items-amout {
     box-sizing: border-box;
-    width: 321px;
+    width: 90%;
     margin: 0;
     padding-bottom: 24px;
     margin-bottom: 24px;

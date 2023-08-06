@@ -37,40 +37,44 @@ export const CardedProduct: FC<Props> = ({
 
   return (
     <>
-      <button
-        className="item-ored__delete-button"
-        type="button"
-        onClick={() => handleUnsetProduct()}
-      >
+      <div className="img-container">
+        <button
+          className="item-ored__delete-button"
+          type="button"
+          onClick={() => handleUnsetProduct()}
+        >
+          <img
+            className="item-ored__delete-button--icon"
+            src="images/icons/CloseButton.svg"
+            alt="Close"
+          />
+        </button>
         <img
-          className="item-ored__delete-button--icon"
-          src="images/icons/CloseButton.svg"
-          alt="Close"
+          className="item-ored__product-img"
+          src={card.value.image || card.value.imageUrl}
+          alt="Phone"
         />
-      </button>
-      <img
-        className="item-ored__product-img"
-        src={card.value.image || card.value.imageUrl}
-        alt="Phone"
-      />
+      </div>
       <h2 className="item-ored__product-name">
         {card.value.name}
       </h2>
-      <button
-        className="item-ored__product-count-deg"
-        type="button"
-        onClick={() => handleCounter('decrease')}
-      >
-        -
-      </button>
-      <p className="item-ored__count-value">{card.amount}</p>
-      <button
-        type="button"
-        className="item-ored__product-count-inc"
-        onClick={() => handleCounter('increase')}
-      >
-        +
-      </button>
+      <div className="count-container">
+        <button
+          className="item-ored__product-count-deg"
+          type="button"
+          onClick={() => handleCounter('decrease')}
+        >
+          -
+        </button>
+        <p className="item-ored__count-value">{card.amount}</p>
+        <button
+          type="button"
+          className="item-ored__product-count-inc"
+          onClick={() => handleCounter('increase')}
+        >
+          +
+        </button>
+      </div>
       <p className="item-ored__price-product">{`$${card.value.price}`}</p>
     </>
   );

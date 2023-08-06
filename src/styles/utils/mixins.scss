@@ -9,7 +9,7 @@
   padding-inline: $value;
 }
 @mixin width($value) {
-  width: $value;
+  max-width: $value;
 }
 @mixin hight($value) {
   height: $value;

@@ -1,8 +1,11 @@
 .favorites-page {
   @include pageMaxWidth;
+  width: 1440px;
+  margin: auto;
   flex-grow: 1;
-  margin: 0;
   padding-bottom: 80px;
+  display: flex;
+  flex-direction: column;
   &__title {
     margin-block: 40px 8px;
     color: $gray-primary;

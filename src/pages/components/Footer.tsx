@@ -21,8 +21,19 @@ export const Footer: FC = () => {
           <img src="images/logo.jpg" alt="Logo" />
         </Link>
         <div className="footer__container">
-          <Link to="/" className="footer__link">Github</Link>
-          <Link to="/" className="footer__link">Contacts</Link>
+          <Link
+            to="https://github.com/MykolaButylkov/react_phone-catalog"
+            className="footer__link"
+            target="_blank"
+          >
+            Github
+          </Link>
+          <Link
+            to="mailto:mykola.butylkov@gmail.com"
+            className="footer__link"
+          >
+            Contacts
+          </Link>
           <Link to="/" className="footer__link">rights</Link>
         </div>
         <button

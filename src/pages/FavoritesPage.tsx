@@ -15,12 +15,14 @@ export const FavoritesPage: FC = () => {
 
   return (
     <div className="favorites-page">
-      <Breadcrumbs />
-      <h1 className="favorites-page__title">Favourites</h1>
-      <p className="favorites-page__items-amount">
-        {`${favoritesPhones.length} items`}
-      </p>
-      <ProductsList products={phonesSearched} />
+      <div className="container-favorite-page">
+        <Breadcrumbs />
+        <h1 className="favorites-page__title">Favourites</h1>
+        <p className="favorites-page__items-amount">
+          {`${favoritesPhones.length} items`}
+        </p>
+        <ProductsList products={phonesSearched} />
+      </div>
     </div>
   );
 };

@@ -359,6 +359,12 @@
   }
   &--value {
     text-align: end;
+    display: flex;
+    justify-content: end;
+    flex-wrap: wrap;
+    &-cell {
+      margin: 1px;
+    }
   }
 }
 

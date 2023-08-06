@@ -3,6 +3,9 @@
     @include paddingInline($paddingLaptop);
     @include width($breakpoint__l);
   }
+  .nav {
+    gap: 32px;
+  }
   .home-page {
     @include paddingInline($paddingLaptop);
     @include width($breakpoint__l);
