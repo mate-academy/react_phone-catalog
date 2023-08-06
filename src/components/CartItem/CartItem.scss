@@ -1,3 +1,5 @@
+@import "../../styles/mixins.scss";
+
 .CartItem {
   display: flex;
   align-items: center;
@@ -7,6 +9,21 @@
   width: 752px;
   padding-left: 24px;
   padding-right: 24px;
+
+  @include onTablet {
+    width: 562px;
+  }
+
+  @include onMobile {
+    height: 100%;
+    width: fit-content;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    gap: 15px;
+    padding: 15px;
+  }
 
   &__remove-btn {
     display: flex;
@@ -22,6 +39,10 @@
     width: 66px;
 
     margin-left: 30px;
+
+    @include onMobile {
+      margin: 0;
+    }
   }
 
   &__img {
@@ -35,6 +56,11 @@
     margin-left: 30px;
     font-size: 14px;
     line-height: 21px;
+
+    @include onMobile {
+      margin: 0;
+      text-align: center;
+    }
   }
 
   &__decrease {
@@ -47,6 +73,10 @@
     border: 1px solid #e2e6e9;
     cursor: pointer;
     background: none;
+
+    @include onMobile {
+      margin: 0;
+    }
   }
 
   &__quantity {
@@ -55,6 +85,10 @@
     align-items: center;
     height: 21px;
     margin-left: 13px;
+
+    @include onMobile {
+      margin: 0;
+    }
   }
 
   &__increase {
@@ -67,6 +101,10 @@
     align-items: center;
     cursor: pointer;
     background: none;
+
+    @include onMobile {
+      margin: 0;
+    }
   }
 
   &__price {
@@ -77,5 +115,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    @include onMobile {
+      margin: 0;
+    }
   }
 }

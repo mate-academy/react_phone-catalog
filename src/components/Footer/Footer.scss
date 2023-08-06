@@ -1,15 +1,26 @@
+@import "../../styles/mixins.scss";
+
 .footer {
   height: 96px;
   box-shadow: 0 -1px 0 #e1e5e8;
-  padding: 40px 0;
+  padding: 40px 20px;
   color: #89939a;
   flex-shrink: 0;
+
+  @include onMobile {
+    height: max-content;
+  }
 
   &__content {
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    @include onMobile {
+      gap: 20px;
+      flex-direction: column;
+    }
   }
 
   &__logo {
@@ -19,6 +30,12 @@
   &__menu {
     display: flex;
     gap: 64px;
+
+    @include onMobile {
+      gap: 10px;
+      flex-direction: column;
+      align-items: center;
+    }
   }
 
   &__item {

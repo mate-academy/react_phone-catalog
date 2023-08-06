@@ -32,26 +32,28 @@ export const TabletsPage: React.FC<Props> = React.memo(({ tablets }) => {
   return (
     <div className="TabletsPage">
       <div className="container">
-        {!filteredTablets.length && query && (
-          <NoSearchResults />
-        )}
+        <div className="TabletsPage__content">
+          {!filteredTablets.length && query && (
+            <NoSearchResults />
+          )}
 
-        {!filteredTablets.length && !query ? (
-          <NoResults category="Tablets" />
-        ) : filteredTablets.length > 0 && (
-          <div className="TabletsPage__content">
-            <Breadcrumbs />
-            <BackButton />
+          {!filteredTablets.length && !query ? (
+            <NoResults category="Tablets" />
+          ) : filteredTablets.length > 0 && (
+            <div className="TabletsPage__content">
+              <Breadcrumbs />
+              <BackButton />
 
-            <h1 className="TabletsPage__title">Tablets</h1>
+              <h1 className="TabletsPage__title">Tablets</h1>
 
-            <div className="TabletsPage__list" data-cy="productList">
-              {filteredTablets.map((tablet) => (
-                <ProductCard product={tablet} key={tablet.id} />
-              ))}
+              <div className="TabletsPage__list" data-cy="productList">
+                {filteredTablets.map((tablet) => (
+                  <ProductCard product={tablet} key={tablet.id} />
+                ))}
+              </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </div>
   );

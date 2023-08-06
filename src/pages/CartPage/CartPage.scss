@@ -1,8 +1,28 @@
+@import "../../styles/mixins.scss";
+
 .CartPage {
+  padding: 0 20px;
+
+  &__content {
+    @include onTablet {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
   &__blocks {
     display: flex;
     gap: 16px;
     margin-top: 24px;
+
+    @include onTablet {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
   }
 
   &__title {
@@ -22,6 +42,11 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
+
+    @include onTablet {
+      justify-content: center;
+      align-items: center;
+    }
   }
 
   &__checkout {
@@ -32,6 +57,11 @@
     width: 368px;
     height: 206px;
     border: 1px solid #e2e6e9;
+
+    @include onMobile {
+      width: fit-content;
+      padding: 10px;
+    }
 
     &-content {
       display: flex;

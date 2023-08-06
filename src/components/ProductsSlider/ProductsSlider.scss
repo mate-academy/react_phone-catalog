@@ -1,5 +1,11 @@
+@import "../../styles/mixins.scss";
+
 .ProductsSlider {
   margin-top: 100px;
+
+  @include onTablet {
+    margin-top: 60px;
+  }
 
   &__content {
     display: flex;
@@ -14,6 +20,10 @@
     font-style: normal;
     line-height: normal;
     letter-spacing: -0.32px;
+
+    @include onMobile {
+      font-size: 26px;
+    }
   }
 
   &__buttons {
@@ -43,17 +53,27 @@
     &:hover {
       border-color: #313237;
     }
+
+    @include onMobile {
+      width: 26px;
+      height: 26px;
+    }
   }
 
   &__cards {
     display: flex;
     margin-top: 24px;
     gap: 16px;
+
+    @include onTablet {
+      justify-content: center;
+      flex-wrap: wrap;
+    }
   }
 
-  &__card {
-    padding: 10px;
-    width: 272px;
-    height: 507px;
-  }
+  // &__card {
+  //   padding: 10px;
+  //   width: 272px;
+  //   height: 507px;
+  // }
 }

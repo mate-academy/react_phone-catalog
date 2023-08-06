@@ -1,8 +1,9 @@
+@import "../../styles/mixins.scss";
+
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-shrink: 0;
 
   height: 64px;
 
@@ -10,16 +11,41 @@
 
   box-shadow: 1px 1px 1px #e1e5e8;
 
+  @include onTablet {
+    padding: 0 0 0 15px;
+  }
+
+  @include onMobile {
+    padding: 0 20px;
+  }
+
   &__logo {
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 24px;
     width: 40px;
+
+    @include onTablet {
+      width: 35px;
+    }
+
+    &-img {
+      @include onTablet {
+        width: 35px;
+      }
+    }
   }
 
   &__nav {
     display: flex;
     align-items: center;
     height: 100%;
+
+    @include onMobile {
+      width: 100%;
+      justify-content: space-between;
+    }
   }
 
   &__menu {
@@ -29,11 +55,24 @@
     font-family: "MontBold", sans-serif;
 
     margin-left: 64px;
+
+    @include onTablet {
+      margin-left: 25px;
+      gap: 25px;
+    }
+
+    @include onMobile {
+      display: none;
+    }
   }
 
   &__item {
     color: #89939a;
     position: relative;
+
+    @include onTablet {
+      font-size: 14px;
+    }
   }
 
   &__link {
@@ -85,6 +124,14 @@
 
   &__buttons {
     display: flex;
+
+    @include onTablet {
+      margin-left: 20px;
+    }
+
+    @include onMobile {
+      display: none;
+    }
   }
 
   &__button {
@@ -144,5 +191,122 @@
     display: block;
     width: 16px;
     height: 16px;
+  }
+
+  &__mobile {
+    display: none;
+
+    @include onMobile {
+      display: flex;
+    }
+  }
+
+  &__burger {
+    display: none;
+    background: none;
+    border: none;
+
+    cursor: pointer;
+
+    @include onMobile {
+      display: flex;
+    }
+  }
+
+  .mobile {
+    display: none;
+
+    &__menu {
+      display: none;
+    }
+
+    &__buttons {
+      display: none;
+    }
+
+    &.show {
+      display: flex;
+      flex-direction: column;
+      gap: 50px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #fafbfc;
+      z-index: 9999;
+      overflow: hidden;
+
+      .mobile__menu {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        font-family: "MontBold", Helvetica, sans-serif;
+        font-size: 18px;
+      }
+
+      .mobile__header {
+        height: 64px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 20px;
+        box-shadow: 1px 1px 1px #e1e5e8;
+      }
+
+      .mobile__burger {
+        background: none;
+        border: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        cursor: pointer;
+      }
+
+      .mobile__logo {
+        width: 35px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &-img {
+          width: 35px;
+        }
+      }
+
+      .mobile__search {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .mobile__buttons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
+      }
+
+      .mobile__button {
+        border: 1px solid #b4bdc3;
+
+        transition-duration: 0.3s;
+
+        &:hover {
+          transform: scale(1.05);
+        }
+      }
+
+      .mobile__item {
+        transition-duration: 0.3s;
+
+        &:hover {
+          transform: scale(1.05);
+        }
+      }
+    }
   }
 }

@@ -22,7 +22,7 @@ export const HomePage: React.FC<Props> = React.memo(({ products }) => {
   }, [products]);
 
   return (
-    <div className="container">
+    <>
       <Carousel />
 
       <ProductsSlider
@@ -33,6 +33,6 @@ export const HomePage: React.FC<Props> = React.memo(({ products }) => {
       <ShopByCategory products={products} />
 
       <ProductsSlider title="Brand new models" products={getBrandNewProducts} />
-    </div>
+    </>
   );
 });

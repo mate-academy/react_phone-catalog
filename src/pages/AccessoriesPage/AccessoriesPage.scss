@@ -1,7 +1,14 @@
+@import "../../styles/mixins.scss";
+
 .AccessoriesPage {
   &__content {
     display: flex;
     flex-direction: column;
+
+    @include onTablet {
+      justify-content: center;
+      align-items: center;
+    }
   }
 
   &__title {

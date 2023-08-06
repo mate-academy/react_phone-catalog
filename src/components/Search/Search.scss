@@ -1,9 +1,15 @@
+@import "../../styles/mixins.scss";
+
 .Search {
   display: flex;
   align-items: center;
   box-shadow: -1px 0 0 #e2e6e9;
   position: relative;
   border: 1px solid transparent;
+
+  @include onMobile {
+    box-shadow: rgba(100, 100, 111, 0.2) 0 7px 29px 0;
+  }
 
   &__input {
     width: 327px;
@@ -16,6 +22,11 @@
     color: #313237;
     letter-spacing: 0;
     border-bottom: #e2e6e9;
+
+    @include onTablet {
+      width: 200px;
+      padding-left: 16px;
+    }
   }
 
   &:focus {
@@ -31,5 +42,9 @@
     top: 24px;
     right: 24px;
     cursor: pointer;
+
+    @include onTablet {
+      right: 16px;
+    }
   }
 }

@@ -1,4 +1,15 @@
+@import "../../styles/mixins.scss";
+
 .FavoritesPage {
+  &__content {
+    @include onTablet {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
   &__title {
     margin-top: 40px;
     color: #313237;
@@ -23,6 +34,10 @@
     display: flex;
     gap: 16px;
     flex-wrap: wrap;
+
+    @include onTablet {
+      justify-content: center;
+    }
   }
 
   &__link {

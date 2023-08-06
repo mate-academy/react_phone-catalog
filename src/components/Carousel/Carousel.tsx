@@ -41,47 +41,57 @@ export const Carousel: React.FC = () => {
   }, []);
 
   return (
-    <div className="carousel">
-      <div className="carousel__content">
-        <button onClick={prevSlide} className="carousel__button" type="button">
-          <img src={arrowLeft} alt="arrow-left" />
-        </button>
+    <div className="container">
+      <div className="carousel">
+        <div className="carousel__content">
+          <button
+            onClick={prevSlide}
+            className="carousel__button"
+            type="button"
+          >
+            <img src={arrowLeft} alt="arrow-left" />
+          </button>
 
-        <div className="carousel__images">
-          {slideImages.map((imageUrl, index) => (
-            <div
-              className="carousel__image"
-              key={imageUrl}
-              style={{
-                opacity: index === activeSlideIndex ? 1 : 0,
-              }}
-            >
-              <img
-                src={imageUrl}
-                alt={`Slide ${index + 1}`}
-                className="carousel__img"
-              />
-            </div>
-          ))}
+          <div className="carousel__images">
+            {slideImages.map((imageUrl, index) => (
+              <div
+                className="carousel__image"
+                key={imageUrl}
+                style={{
+                  opacity: index === activeSlideIndex ? 1 : 0,
+                }}
+              >
+                <img
+                  src={imageUrl}
+                  alt={`Slide ${index + 1}`}
+                  className="carousel__img"
+                />
+              </div>
+            ))}
+          </div>
+
+          <button
+            onClick={nextSlide}
+            className="carousel__button"
+            type="button"
+          >
+            <img src={arrowRight} alt="arrow-right" />
+          </button>
         </div>
 
-        <button onClick={nextSlide} className="carousel__button" type="button">
-          <img src={arrowRight} alt="arrow-right" />
-        </button>
-      </div>
-
-      <div className="carousel__dots">
-        {slideImages.map((_imageUrl, index) => (
-          // eslint-disable-next-line jsx-a11y/no-static-element-interactions
-          <div
-            onKeyDown={(event) => handleDotKeyDown(event, index)}
-            className={cn('carousel__dot', {
-              active: index === activeSlideIndex,
-            })}
-            key={_imageUrl}
-            onClick={() => setActiveSlideIndex(index)}
-          />
-        ))}
+        <div className="carousel__dots">
+          {slideImages.map((_imageUrl, index) => (
+            // eslint-disable-next-line jsx-a11y/no-static-element-interactions
+            <div
+              onKeyDown={(event) => handleDotKeyDown(event, index)}
+              className={cn('carousel__dot', {
+                active: index === activeSlideIndex,
+              })}
+              key={_imageUrl}
+              onClick={() => setActiveSlideIndex(index)}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );

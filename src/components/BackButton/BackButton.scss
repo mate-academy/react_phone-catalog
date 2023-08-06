@@ -1,3 +1,5 @@
+@import "../../styles/mixins.scss";
+
 .BackButton {
   height: 16px;
   width: 66px;
@@ -11,6 +13,14 @@
   border: none;
 
   cursor: pointer;
+
+  @include onTablet {
+    margin-top: 20px;
+  }
+
+  @include onMobile {
+    margin-top: 40px;
+  }
 
   &__text {
     font-family: "MontSemiBold", Helvetica, sans-serif;

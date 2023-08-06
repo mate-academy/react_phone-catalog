@@ -1,7 +1,13 @@
+@import "../../styles/mixins.scss";
+
 .ShopByCategory {
   margin-top: 80px;
   display: flex;
   flex-direction: column;
+
+  @include onTablet {
+    margin-top: 50px;
+  }
 
   &__title {
     color: #313237;
@@ -9,12 +15,27 @@
     font-family: "MontBold", Helvetica, sans-serif;
     font-size: 32px;
     letter-spacing: -0.32px;
+
+    @include onMobile {
+      font-size: 26px;
+    }
   }
 
   &__links {
     margin-top: 24px;
     display: flex;
     gap: 16px;
+
+    @include onTablet {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    @include onMobile {
+      flex-wrap: nowrap;
+      flex-direction: column;
+      align-items: center;
+    }
   }
 
   &__link {
@@ -25,6 +46,11 @@
     flex-direction: column;
     transition-duration: 0.3s;
 
+    @include onMobile {
+      width: 250px;
+      height: 300px;
+    }
+
     &:hover {
       transform: scale(1.04);
     }
@@ -33,6 +59,11 @@
       height: 368px;
       width: 368px;
       background-repeat: no-repeat;
+
+      @include onMobile {
+        width: 100%;
+        height: 100%;
+      }
 
       &__phones {
         background-color: #fcdbc1;

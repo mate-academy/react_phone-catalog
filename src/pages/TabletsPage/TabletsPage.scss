@@ -1,3 +1,5 @@
+@import "../../styles/mixins.scss";
+
 .TabletsPage {
   &__title {
     margin-top: 20px;
@@ -15,5 +17,18 @@
     gap: 16px;
     margin-top: 20px;
     flex-wrap: wrap;
+
+    @include onTablet {
+      justify-content: center;
+    }
+  }
+
+  &__content {
+    @include onTablet {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
   }
 }

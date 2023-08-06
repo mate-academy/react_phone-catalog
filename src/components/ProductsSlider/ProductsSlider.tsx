@@ -36,40 +36,42 @@ export const ProductsSlider: React.FC<Props> = React.memo(
     const isNextButtonDisabled = startIndex === products.length - 4;
 
     return (
-      <div className="ProductsSlider">
-        <div className="ProductsSlider__content">
-          <h2 className="ProductsSlider__title">{title}</h2>
+      <div className="container">
+        <div className="ProductsSlider">
+          <div className="ProductsSlider__content">
+            <h2 className="ProductsSlider__title">{title}</h2>
 
-          <div className="ProductsSlider__buttons">
-            <button
-              type="button"
-              onClick={handlePrevClick}
-              disabled={isPrevButtonDisabled}
-              className={cn('ProductsSlider__button', {
-                disabled: isPrevButtonDisabled,
-              })}
-            >
-              <img src={arrowLeft} alt="arrow-left" />
-            </button>
-            <button
-              type="button"
-              onClick={handleNextClick}
-              disabled={isNextButtonDisabled}
-              className={cn('ProductsSlider__button', {
-                disabled: isNextButtonDisabled,
-              })}
-            >
-              <img src={arrowRight} alt="arrow-right" />
-            </button>
-          </div>
-        </div>
-
-        <div className="ProductsSlider__cards" data-cy="cardsContainer">
-          {visibleCards.map((card) => (
-            <div className="ProductsSlider__card" key={card.id}>
-              <ProductCard product={card} />
+            <div className="ProductsSlider__buttons">
+              <button
+                type="button"
+                onClick={handlePrevClick}
+                disabled={isPrevButtonDisabled}
+                className={cn('ProductsSlider__button', {
+                  disabled: isPrevButtonDisabled,
+                })}
+              >
+                <img src={arrowLeft} alt="arrow-left" />
+              </button>
+              <button
+                type="button"
+                onClick={handleNextClick}
+                disabled={isNextButtonDisabled}
+                className={cn('ProductsSlider__button', {
+                  disabled: isNextButtonDisabled,
+                })}
+              >
+                <img src={arrowRight} alt="arrow-right" />
+              </button>
             </div>
-          ))}
+          </div>
+
+          <div className="ProductsSlider__cards" data-cy="cardsContainer">
+            {visibleCards.map((card) => (
+              <div className="ProductsSlider__card" key={card.id}>
+                <ProductCard product={card} />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     );

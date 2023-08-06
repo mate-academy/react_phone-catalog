@@ -153,7 +153,11 @@ export const ProductDetailsPage: React.FC<Props> = React.memo(
                 </ul>
 
                 <div className="ProductDetailsPage__current">
-                  <img src={currentImage} alt="main img" />
+                  <img
+                    src={currentImage}
+                    alt="main img"
+                    className="ProductDetailsPage__current-img"
+                  />
                 </div>
 
                 <div className="ProductDetailsPage__characteristics">

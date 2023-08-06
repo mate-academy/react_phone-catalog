@@ -1,4 +1,5 @@
 @import "./fonts.scss";
+@import "./mixins.scss";
 
 * {
   margin: 0;
@@ -8,6 +9,7 @@
 
 body {
   margin: 0;
+  padding: 0;
 }
 
 html {
@@ -27,4 +29,12 @@ a {
 .container {
   margin: 0 auto;
   max-width: 1136px;
+
+  @include onTablet {
+    padding: 0 40px;
+  }
+
+  @include onMobile {
+    padding: 0 20px;
+  }
 }

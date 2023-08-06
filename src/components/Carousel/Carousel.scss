@@ -1,3 +1,5 @@
+@import "../../styles/mixins.scss";
+
 .carousel {
   display: flex;
   flex-direction: column;
@@ -13,6 +15,16 @@
     height: 400px;
     width: 1040px;
     position: relative;
+
+    @include onTablet {
+      height: 230px;
+      width: 550px;
+    }
+
+    @include onMobile {
+      height: 150px;
+      width: 210px;
+    }
   }
 
   &__image {
@@ -23,12 +35,32 @@
     width: 1040px;
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
+
+    @include onTablet {
+      height: 230px;
+      width: 550px;
+    }
+
+    @include onMobile {
+      height: 150px;
+      width: 100%;
+    }
   }
 
   &__img {
     height: 400px;
     width: 1040px;
     object-fit: cover;
+
+    @include onTablet {
+      height: 230px;
+      width: 550px;
+    }
+
+    @include onMobile {
+      height: 150px;
+      width: 100%;
+    }
   }
 
   &__button {
@@ -41,6 +73,10 @@
 
     &:hover {
       border-color: #313237;
+    }
+
+    @include onMobile {
+      width: 18px;
     }
   }
 
