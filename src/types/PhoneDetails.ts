@@ -21,44 +21,4 @@ export type PhoneDetails = {
   camera: string,
   zoom: string,
   cell: string[],
-  // old api
-  additionalFeatures: string,
-  android: {
-    os: string,
-    ui: string,
-  },
-  availability: string[],
-  battery: {
-    standbyTime: string,
-    talkTime: string,
-    type: string,
-  },
-  connectivity: {
-    bluetooth: string,
-    cell: string,
-    gps: string,
-    infrared: boolean,
-    wifi: string,
-  },
-  display: {
-    screenResolution: string,
-    screenSize: string,
-    touchScreen: boolean,
-  },
-  hardware: {
-    accelerometer: boolean,
-    audioJack: string,
-    cpu: string,
-    fmRadio: boolean,
-    physicalKeyboard: boolean,
-    usb: string,
-  },
-  sizeAndWeight: {
-    dimensions: string[],
-    weight: string,
-  },
-  storage: {
-    flash: string,
-    ram: string,
-  },
 };

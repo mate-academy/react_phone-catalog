@@ -9,23 +9,25 @@ import { Product } from '../../types/Product';
 type Props = {
   phoneDetails: PhoneDetails,
   bigImgIndex: number,
+  capacityIndex: number,
   onGalleryImg: (index: number) => void,
+  onCapacityItem: (index: number) => void,
   cardedPhones: SavedCard[],
   onCardedProducts: () => void,
   favoritesPhones: Product[],
   onFavoritesProducts: () => void,
-  selectedProduct: Product | null,
 };
 
-export const DesriptionOldApi: FC<Props> = ({
+export const DesriptionNewApi: FC<Props> = ({
   phoneDetails,
   bigImgIndex,
+  capacityIndex,
   onGalleryImg,
+  onCapacityItem,
   cardedPhones,
   onCardedProducts,
   favoritesPhones,
   onFavoritesProducts,
-  selectedProduct,
 }) => {
   return (
     <>
@@ -70,12 +72,33 @@ export const DesriptionOldApi: FC<Props> = ({
               </li>
             </ul>
           </div>
+          {phoneDetails.capacityAvailable && (
+            <div className="choose-section__capasity-picker capasity-picker">
+              <h2 className="capasity-picker__title">Select capacity</h2>
+              <ul className="capasity-picker__list">
+                {phoneDetails.capacityAvailable.map((item, index) => (
+                  <li
+                    key={item}
+                    className={classNames(
+                      'capasity-picker__items ',
+                      {
+                        'capasity-picker__items--active':
+                        index === capacityIndex,
+                      },
+                    )}
+                    onClick={() => onCapacityItem(index)}
+                  >
+                    {item}
+                  </li>
+
+                ))}
+              </ul>
+            </div>
+          )}
           <div className="choose-section__buy-buttons buy-buttons">
             <div className="buy-buttons__prices-amount prices-amount">
-              <p className="prices-amount__price">
-                {`${selectedProduct ? selectedProduct.price - selectedProduct.discount : phoneDetails.priceDiscount}$`}
-              </p>
-              <p className="prices-amount__price prices-amount__price--discount">{`${selectedProduct ? selectedProduct.price : phoneDetails.priceRegular}$`}</p>
+              <p className="prices-amount__price">{`${phoneDetails.priceDiscount}$`}</p>
+              <p className="prices-amount__price prices-amount__price--discount">{`${phoneDetails.priceRegular}$`}</p>
             </div>
             <div className="buy-buttons__buttons-buy-like buttons-buy-like">
               <button
@@ -85,7 +108,7 @@ export const DesriptionOldApi: FC<Props> = ({
                     'buttons-buy-like__add-to-card--is-added':
                     cardedPhones.some(
                       card => phoneDetails.id === card.value.itemId
-                      || phoneDetails.id === card.value.id,
+                    || phoneDetails.id === card.id,
                     ),
                   },
                 )}
@@ -118,22 +141,20 @@ export const DesriptionOldApi: FC<Props> = ({
             description-product"
             >
 
-              <dt className="description-product--title">Android</dt>
+              <dt className="description-product--title">Screen</dt>
               <dd className="description-product--value">
-                {`${phoneDetails.android.os}, ${phoneDetails.android.ui}`}
+                {phoneDetails.screen}
               </dd>
-              <dt className="description-product--title">Availability</dt>
+              <dt className="description-product--title">Resolution</dt>
               <dd className="description-product--value">
-                {`${phoneDetails.availability}`}
+                {phoneDetails.resolution}
               </dd>
-              <dt className="description-product--title">Battery</dt>
+              <dt className="description-product--title">Processor</dt>
               <dd className="description-product--value">
-                {`${phoneDetails.battery.standbyTime} ${phoneDetails.battery.talkTime} ${phoneDetails.battery.type} `}
+                {phoneDetails.processor}
               </dd>
-              <dt className="description-product--title">Camera</dt>
-              <dd className="description-product--value">
-                {`${phoneDetails.camera}`}
-              </dd>
+              <dt className="description-product--title">RAM</dt>
+              <dd className="description-product--value">{phoneDetails.ram}</dd>
             </dl>
           </div>
         </div>
@@ -145,57 +166,60 @@ export const DesriptionOldApi: FC<Props> = ({
       >
         <article className="product-articles__article-about article-about">
           <h2 className="article-about__title">About</h2>
-          <h3 className="article-about__sub-title">
-            Description
-          </h3>
-          <p
-            className="article-about__text"
-            key={phoneDetails.description[0].title}
-          >
-            {phoneDetails.description}
-          </p>
-
+          {Array.isArray(phoneDetails.description)
+          && phoneDetails.description.map(article => (
+            <div key={article.title}>
+              <h3 className="article-about__sub-title">
+                {article.title && article.title}
+              </h3>
+              {article.text.map(text => (
+                <p className="article-about__text" key={text}>
+                  {text}
+                </p>
+              ))}
+            </div>
+          ))}
         </article>
         <article className="product-articles__tech-specs tech-specs">
           <h2 className="tech-specs__title">Tech specs</h2>
-          <dl className="tech-specs__tech-specs-list tech-specs-list">
-            <dt className="tech-specs-list--title">Dispay</dt>
-            <dd className="tech-specs-list--value">
-              {`${phoneDetails.display.screenResolution} ${phoneDetails.display.screenSize} ${phoneDetails.display.touchScreen}`}
-            </dd>
-            <dt className="tech-specs-list--title">Resolution</dt>
-            <dd className="tech-specs-list--value">
-              {phoneDetails.resolution}
-            </dd>
-            <dt className="tech-specs-list--title">Processor</dt>
-            <dd className="tech-specs-list--value">
-              {phoneDetails.processor}
-            </dd>
-            <dt className="tech-specs-list--title">RAM</dt>
-            <dd className="tech-specs-list--value">{phoneDetails.ram}</dd>
-            <dt className="tech-specs-list--title">Built in memory</dt>
-            <dd className="tech-specs-list--value">
-              {phoneDetails.capacity}
-            </dd>
-            <dt className="tech-specs-list--title">Camera</dt>
-            <dd className="tech-specs-list--value">
-              {phoneDetails.camera}
-            </dd>
-            <dt className="tech-specs-list--title">Zoom</dt>
-            <dd className="tech-specs-list--value">{phoneDetails.zoom}</dd>
-            <dt className="tech-specs-list--title">Cell</dt>
-            <dd className="tech-specs-list--value">
-              {phoneDetails.cell ? (
-                phoneDetails.cell.map((item, index) => (
-                  <p key={item} className="tech-specs-list--value-cell">
-                    {`${item}${index !== phoneDetails.cell.length - 1 ? ',' : ''}`}
-                  </p>
-                ))
-              ) : (
-                ''
-              )}
-            </dd>
-          </dl>
+          {phoneDetails.cell && (
+            <dl className="tech-specs__tech-specs-list tech-specs-list">
+              <dt className="tech-specs-list--title">Screen</dt>
+              <dd className="tech-specs-list--value">{phoneDetails.screen}</dd>
+              <dt className="tech-specs-list--title">Resolution</dt>
+              <dd className="tech-specs-list--value">
+                {phoneDetails.resolution}
+              </dd>
+              <dt className="tech-specs-list--title">Processor</dt>
+              <dd className="tech-specs-list--value">
+                {phoneDetails.processor}
+              </dd>
+              <dt className="tech-specs-list--title">RAM</dt>
+              <dd className="tech-specs-list--value">{phoneDetails.ram}</dd>
+              <dt className="tech-specs-list--title">Built in memory</dt>
+              <dd className="tech-specs-list--value">
+                {phoneDetails.capacity}
+              </dd>
+              <dt className="tech-specs-list--title">Camera</dt>
+              <dd className="tech-specs-list--value">
+                {phoneDetails.camera}
+              </dd>
+              <dt className="tech-specs-list--title">Zoom</dt>
+              <dd className="tech-specs-list--value">{phoneDetails.zoom}</dd>
+              <dt className="tech-specs-list--title">Cell</dt>
+              <dd className="tech-specs-list--value">
+                {phoneDetails.cell ? (
+                  phoneDetails.cell.map((item, index) => (
+                    <p key={item} className="tech-specs-list--value-cell">
+                      {`${item}${index !== phoneDetails.cell.length - 1 ? ',' : ''}`}
+                    </p>
+                  ))
+                ) : (
+                  ''
+                )}
+              </dd>
+            </dl>
+          )}
         </article>
       </section>
     </>

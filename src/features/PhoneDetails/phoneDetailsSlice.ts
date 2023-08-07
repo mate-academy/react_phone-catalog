@@ -6,6 +6,7 @@ import { getPhoneDetails, getProductDetails } from '../../api/phone';
 import { AsyncStatus } from '../../types/AsyncStatus';
 import { KeyJson } from '../../types/KeyJson';
 import { phoneDetailsSameType } from '../../app/helpers';
+import { Product } from '../../types/Product';
 
 export interface PhonesState {
   value: PhoneDetails | null,
@@ -31,10 +32,14 @@ export const incrementAsync = createAsyncThunk(
 
 export const incrementAsyncOld = createAsyncThunk(
   'phoneDetails/fetchPhonesOld',
-  async (phoneId: string) => {
-    const phoneDetails = await getProductDetails(phoneId);
+  async (phone: Product) => {
+    const phoneDetails = await getProductDetails(phone.id);
+    const sameTypeDetails = phoneDetailsSameType({
+      ...phoneDetails,
+      id: phone.id,
+    }, phone);
 
-    return phoneDetails;
+    return sameTypeDetails;
   },
 );
 
@@ -60,7 +65,7 @@ const phoneDetaildSlice = createSlice({
       })
       .addCase(incrementAsyncOld.fulfilled, (state, action) => {
         state.status = AsyncStatus.IDLE;
-        state.value = phoneDetailsSameType(action.payload);
+        state.value = action.payload;
       })
       .addCase(incrementAsyncOld.rejected, (state) => {
         state.status = AsyncStatus.FAILED;

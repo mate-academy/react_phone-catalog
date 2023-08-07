@@ -25,8 +25,7 @@ import { setInCardPhone, unsetFromCardPhone } from '../features/PhonesInCard/pho
 import { incrementAsync as loadPhones } from '../features/phones/phonesSlice';
 import { KeyJson } from '../types/KeyJson';
 import { setFavoritePhone, unsetFavoritePhone } from '../features/PhonesFavorites/phonesFavoritesSlice';
-import { DesriptionNewApi } from './components/DesriptionNewApi';
-import { DesriptionOldApi } from './components/DesriptionOldApi';
+import { DesriptionNewApi } from './components/DesriptionApi';
 import { incrementAsync as loadProducts } from '../features/products/productsSlice';
 
 export const ProductDetailsPage: FC = () => {
@@ -94,7 +93,7 @@ export const ProductDetailsPage: FC = () => {
       if (selectedProduct.itemId) {
         dispatch(loadPhoneDetails(selectedProduct.itemId));
       } else {
-        dispatch(incrementAsyncOld(selectedProduct.id));
+        dispatch(incrementAsyncOld(selectedProduct));
       }
     }
   }, []);
@@ -112,7 +111,6 @@ export const ProductDetailsPage: FC = () => {
       }
     }
   }, [phoneDetails]);
-
   useEffect(() => {
     if (statusPhones === AsyncStatus.IDLE) {
       const sortByYear = [...phonesFromServer].sort(
@@ -151,31 +149,17 @@ export const ProductDetailsPage: FC = () => {
           <h1 className="product-details-page__title">
             {phoneDetails.name}
           </h1>
-          {phoneDetails.capacity ? (
-            <DesriptionNewApi
-              bigImgIndex={bigImgIndex}
-              phoneDetails={phoneDetails}
-              capacityIndex={capacityIndex}
-              onGalleryImg={handleGalleryImg}
-              onCapacityItem={handleCapacityItem}
-              cardedPhones={cardedPhones}
-              onCardedProducts={handleCardedProducts}
-              favoritesPhones={favoritesPhones}
-              onFavoritesProducts={handleFavoritesProducts}
-            />
-          ) : (
-            <DesriptionOldApi
-              bigImgIndex={bigImgIndex}
-              phoneDetails={phoneDetails}
-              onGalleryImg={handleGalleryImg}
-              cardedPhones={cardedPhones}
-              onCardedProducts={handleCardedProducts}
-              favoritesPhones={favoritesPhones}
-              onFavoritesProducts={handleFavoritesProducts}
-              selectedProduct={selectedProduct}
-            />
-          )}
-
+          <DesriptionNewApi
+            bigImgIndex={bigImgIndex}
+            phoneDetails={phoneDetails}
+            capacityIndex={capacityIndex}
+            onGalleryImg={handleGalleryImg}
+            onCapacityItem={handleCapacityItem}
+            cardedPhones={cardedPhones}
+            onCardedProducts={handleCardedProducts}
+            favoritesPhones={favoritesPhones}
+            onFavoritesProducts={handleFavoritesProducts}
+          />
           <div className="product-details-page__you-may-like you-may-like">
             <h2 className="you-may-like__title">You may also like</h2>
             {statusPhones === AsyncStatus.IDLE && brandNewModels.length && (

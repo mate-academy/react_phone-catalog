@@ -108,6 +108,7 @@
   .gallery__small-img-container {
     flex-direction: row;
     gap: 0;
+    flex-wrap: wrap;
   }
   .colors-picker__list {
     gap: 4px;

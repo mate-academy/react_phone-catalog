@@ -362,8 +362,10 @@
     display: flex;
     justify-content: end;
     flex-wrap: wrap;
+    font-size: 14px;
     &-cell {
       margin: 1px;
+      font-size: 14px;
     }
   }
 }
