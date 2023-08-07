@@ -20,7 +20,12 @@ export const Pagination: React.FC<Props> = ({
   const [params] = useSearchParams();
   const page = params.get('page') || 1;
 
-  for (let i = 1; i <= Math.ceil(totalPhones / phonesPepPege); i++) {
+  const totalPages = Math.ceil(totalPhones / phonesPepPege);
+  const maxPageToShow = 5;
+  const startPage = Math.max(1, +page - Math.floor(maxPageToShow / 2));
+  const endPage = Math.min(totalPages, startPage + maxPageToShow - 1);
+
+  for (let i = startPage; i <= endPage; i++) {
     pageNumers.push(i);
   }
 

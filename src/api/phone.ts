@@ -10,6 +10,10 @@ export const getPhoneDetails = (phoneId: string) => {
   return client.get<PhoneDetails>(`/_new/products/${phoneId}.json`);
 };
 
+export const getProductDetails = (phoneId: string) => {
+  return client.get<PhoneDetails>(`/api/products/${phoneId}.json`);
+};
+
 export const getProducts = () => {
   return client.get<Product[]>('/api/products.json');
 };

@@ -1,5 +1,5 @@
 /* eslint-disable no-prototype-builtins */
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/styles.scss';
 // eslint-disable-next-line import/no-cycle
@@ -16,6 +16,18 @@ export const CardPage: FC = () => {
   const handlePopUp = () => {
     setPopUpState(true);
   };
+
+  useEffect(() => {
+    if (popUpState) {
+      document.body.style.overflow = 'hidden';
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+  }, [popUpState]);
 
   return (
     <div className="card-page">

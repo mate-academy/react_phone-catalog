@@ -9,6 +9,9 @@
       left: 231px;
     }
   }
+  .pagination {
+    @include width($breakpoint__l);
+  }
 }
 
 @include laptop() {
@@ -24,6 +27,10 @@
     &__search-bar-input {
       padding-left: 12px;
     }
+  }
+  .pagination {
+    @include width($breakpoint__s);
+    gap: 9px;
   }
 }
 
@@ -41,6 +48,7 @@
       padding-left: 24px;
     }
   }
+
 }
 
 @include mobile() {

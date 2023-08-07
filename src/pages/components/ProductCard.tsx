@@ -119,7 +119,7 @@ export const ProductCard: FC<Props> = ({ product }) => {
     <div className="product-card" key={product.id}>
       <Link
         className="product-card__link"
-        to={`/phones/${product.phoneId}`}
+        to={`/${product.phoneId ? 'phones' : 'tablets'}/${product.phoneId || product.id}`}
         onClick={handleSelectingProduct}
       >
 

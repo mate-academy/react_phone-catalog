@@ -51,7 +51,7 @@ const cardedPhoneReducer = createSlice({
     setInCardPhone: (state, action: PayloadAction<Product>) => {
       state.status = SelectedStatus.SELECTED;
       state.value.push({
-        id: action.payload.itemId,
+        id: action.payload.itemId ? action.payload.itemId : action.payload.id,
         amount: 1,
         value: action.payload,
       });
@@ -59,7 +59,13 @@ const cardedPhoneReducer = createSlice({
     unsetFromCardPhone: (state, action: PayloadAction<Product>) => {
       state.status = SelectedStatus.UNSELECTED;
       state.value = state.value.filter(
-        phone => phone.id !== action.payload.itemId,
+        phone => {
+          if (action.payload.itemId) {
+            return phone.id !== action.payload.itemId;
+          }
+
+          return phone.id !== action.payload.id;
+        },
       );
     },
   },

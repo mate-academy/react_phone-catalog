@@ -2,9 +2,10 @@
 /* eslint-disable no-param-reassign */
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { PhoneDetails } from '../../types/PhoneDetails';
-import { getPhoneDetails } from '../../api/phone';
+import { getPhoneDetails, getProductDetails } from '../../api/phone';
 import { AsyncStatus } from '../../types/AsyncStatus';
 import { KeyJson } from '../../types/KeyJson';
+import { phoneDetailsSameType } from '../../app/helpers';
 
 export interface PhonesState {
   value: PhoneDetails | null,
@@ -28,6 +29,15 @@ export const incrementAsync = createAsyncThunk(
   },
 );
 
+export const incrementAsyncOld = createAsyncThunk(
+  'phoneDetails/fetchPhonesOld',
+  async (phoneId: string) => {
+    const phoneDetails = await getProductDetails(phoneId);
+
+    return phoneDetails;
+  },
+);
+
 const phoneDetaildSlice = createSlice({
   name: 'phoneDetails',
   initialState,
@@ -43,6 +53,16 @@ const phoneDetaildSlice = createSlice({
         state.value = action.payload;
       })
       .addCase(incrementAsync.rejected, (state) => {
+        state.status = AsyncStatus.FAILED;
+      })
+      .addCase(incrementAsyncOld.pending, (state) => {
+        state.status = AsyncStatus.LOADING;
+      })
+      .addCase(incrementAsyncOld.fulfilled, (state, action) => {
+        state.status = AsyncStatus.IDLE;
+        state.value = phoneDetailsSameType(action.payload);
+      })
+      .addCase(incrementAsyncOld.rejected, (state) => {
         state.status = AsyncStatus.FAILED;
       });
   },
