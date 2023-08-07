@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable max-len */
 import { FC, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import Breadcrumbs from './components/Breadcrumbs';
 import '../styles/styles.scss';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
@@ -39,6 +39,7 @@ export const ProductDetailsPage: FC = () => {
   const cardedPhones = useAppSelector(phoneCardSelector);
   const favoritesPhones = useAppSelector(favoriteProductsSelector);
   const [brandNewModels, setBrandNewModels] = useState<Product[]>([]);
+  const location = useLocation().pathname.split('/')[2];
 
   const handleCardedProducts = () => {
     if (phoneDetails && phonesFromServer) {
@@ -97,6 +98,18 @@ export const ProductDetailsPage: FC = () => {
       }
     }
   }, []);
+
+  useEffect(() => {
+    dispatch(loadProducts());
+    dispatch(loadPhones());
+    if (selectedProduct) {
+      if (selectedProduct.itemId) {
+        dispatch(loadPhoneDetails(selectedProduct.itemId));
+      } else {
+        dispatch(incrementAsyncOld(selectedProduct));
+      }
+    }
+  }, [location]);
 
   useEffect(() => {
     if (phoneDetails && phoneDetailsStatus === AsyncStatus.IDLE) {
