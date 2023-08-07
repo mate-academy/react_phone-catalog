@@ -19,6 +19,8 @@ import {
 import { NotFound } from './components/NotFound/NotFound';
 import { useAppDispatch } from './app/hooks';
 import { set } from './features/productsSlice';
+import { AuthForm } from './components/AuthForm/AuthForm';
+import { CreateAccount } from './components/CreateAccount/CreateAccount';
 
 const App = () => {
   const dispatch = useAppDispatch();
@@ -81,6 +83,8 @@ const App = () => {
             path="home"
             element={<Navigate to="/" replace />}
           />
+          <Route path="authentication" element={<AuthForm />} />
+          <Route path="create-account" element={<CreateAccount />} />
         </Routes>
         <Footer />
       </div>

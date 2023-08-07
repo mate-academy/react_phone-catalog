@@ -2,28 +2,27 @@ import {
   useEffect, useState, useCallback, useMemo,
 } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import {
-  updateSearchParams, sortProducts,
-} from '../helpers/helper';
-import { Pagination } from '../components/Pagination/Pagination';
+import { updateSearchParams, sortProducts } from '../helpers/helper';
+import { useAppSelector } from '../app/hooks';
 import { Product } from '../types/Products';
+import { SortOption } from '../types/SortOption';
+import { ItemsPerPage } from '../types/ItemsPerPage';
 import { ProductCard } from '../components/ProductCard/ProductCard';
 import { PageIndicator } from '../components/PageIndicator/PageIndicator';
 import './ProductPage.scss';
 import { NoResults } from '../components/NoResults/NoResults';
-import { useAppSelector } from '../app/hooks';
-import { SortOption } from '../types/SortOption';
-
-type ItemsPerPage = '4' | '8' | '16' | 'All';
+import { Pagination } from '../components/Pagination/Pagination';
+import { SelectTemplate } from '../components/SelectTemplate/SelectTemplate';
 
 export const AccessoriesPage: React.FC = () => {
   const category = 'accessories';
+  const { products } = useAppSelector(state => state.products);
   const [searchParams, setSearchParams] = useSearchParams();
   const itemsPerPage = searchParams.get('perPage') as ItemsPerPage || '4';
+  const sortPage = searchParams.get('sort') as SortOption || 'age';
   const query = searchParams.get('query');
   const currentPageFromParams = Number(searchParams.get('page') || '1');
   const [currentPage, setCurrentPage] = useState(currentPageFromParams);
-  const { products } = useAppSelector(state => state.products);
 
   const handleOnChange = useCallback((
     event: React.ChangeEvent<HTMLSelectElement>,
@@ -104,34 +103,18 @@ export const AccessoriesPage: React.FC = () => {
         {product.length > 0 ? (
           <>
             <div className={`${category}-page__navigation-filter`}>
-              <div className={`${category}-page__sort-by`}>
-                <label className={`${category}-page__label`} htmlFor="sort-by">Sort by:</label>
-                <select
-                  className={`${category}-page__select`}
-                  id="sort-by"
-                  name="sort-by"
-                  onChange={handleOnChange}
-                >
-                  <option value="age">Newest</option>
-                  <option value="price">Cheapest</option>
-                  <option value="name">Alphabetically</option>
-                </select>
-              </div>
-              <div className={`${category}-page__items-per-page`}>
-                <label className={`${category}-page__label`} htmlFor="items-per-page">Items per page:</label>
-                <select
-                  className={`${category}-page__select`}
-                  id="items-per-page"
-                  name="items-per-page"
-                  onChange={handleItemsPerPage}
-                  value={itemsPerPage}
-                >
-                  <option value="4">4</option>
-                  <option value="8">8</option>
-                  <option value="16">16</option>
-                  <option value="All">All</option>
-                </select>
-              </div>
+              <SelectTemplate
+                category={category}
+                onChange={handleOnChange}
+                value={sortPage}
+                sortBy="age"
+              />
+              <SelectTemplate
+                category={category}
+                onChange={handleItemsPerPage}
+                value={itemsPerPage}
+                sortBy="page"
+              />
             </div>
             <div data-cy="productList" className={`${category}-page__row`}>
               {paginatedProducts?.map((item) => (
