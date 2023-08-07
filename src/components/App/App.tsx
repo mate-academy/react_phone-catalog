@@ -13,7 +13,9 @@ import {
 import {
   useAppDispatch,
   useAppSelector,
-  useDebounce,
+
+  useDebounceValue,
+
   useLocaleStorage,
 } from '../../app/hooks';
 import { basketItems, favoriteItems } from '../../app/store';
@@ -39,10 +41,12 @@ const App = () => {
   const [menu, setMenu] = useState(false);
   const [searchValue, setSearchValue]
     = useState(searchParams.get('query') || '');
+  const debouncedValue = useDebounceValue(searchValue, 2000);
 
   const query = searchParams.get('query') || '';
 
   const refMenu = useRef<HTMLElement>(null);
+  const refBtnMenu = useRef<HTMLButtonElement>(null);
   const favoriteProduct = useAppSelector(favoriteItems);
   const basketProduct = useAppSelector(basketItems);
 
@@ -75,8 +79,6 @@ const App = () => {
     setSearchParams(searchParams);
   };
 
-  const debounceQuery = useDebounce(querySearch, 2000);
-
   const onChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
   };
@@ -88,8 +90,8 @@ const App = () => {
   };
 
   useEffect(() => {
-    debounceQuery(searchValue);
-  }, [searchValue]);
+    querySearch(debouncedValue);
+  }, [debouncedValue]);
 
   useEffect(() => {
     dispatch(addAllFavorite(favorite));
@@ -98,7 +100,8 @@ const App = () => {
 
   useEffect(() => {
     const handleOutClickMenu = (e: MouseEvent) => {
-      if (refMenu.current && !refMenu.current.contains(e.target as Node)) {
+      if (refMenu.current && !refMenu.current.contains(e.target as Node)
+      && refBtnMenu.current && !refBtnMenu.current.contains(e.target as Node)) {
         setMenu(false);
       }
     };
@@ -241,6 +244,7 @@ const App = () => {
             onClick={() => setMenu(!menu)}
             type="button"
             aria-label="btn"
+            ref={refBtnMenu}
           />
         </div>
       </header>
@@ -327,7 +331,7 @@ const App = () => {
             />
             <Route path="/home" element={<Navigate to="/" replace />} />
 
-            <Route path="phones">
+            <Route path="/phones">
               <Route
                 index
                 element={(
@@ -344,7 +348,7 @@ const App = () => {
               />
             </Route>
 
-            <Route path="tablets">
+            <Route path="/tablets">
               <Route
                 index
                 element={(
@@ -361,7 +365,7 @@ const App = () => {
               />
             </Route>
 
-            <Route path="accessories">
+            <Route path="/accessories">
               <Route
                 index
                 element={(
@@ -379,13 +383,13 @@ const App = () => {
             </Route>
 
             <Route
-              path="favorites"
+              path="/favorites"
               element={
                 <ProductsList query={query} />
               }
             />
 
-            <Route path="cart" element={<PageCart />} />
+            <Route path="/cart" element={<PageCart />} />
           </Routes>
         </div>
       </main>

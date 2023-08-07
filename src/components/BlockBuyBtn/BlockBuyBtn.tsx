@@ -67,6 +67,7 @@ export const BlockBuyBtn: React.FC<Props> = ({ item }) => {
         {basket.some((i) => i.id === item.id) ? 'Selected' : 'Add to cart'}
         {findProduct
           && Object.hasOwnProperty.call(findProduct, 'quantity')
+          && findProduct.quantity > 1
           ? `(${findProduct.quantity})`
           : ''}
       </button>

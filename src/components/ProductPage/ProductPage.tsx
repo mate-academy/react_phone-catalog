@@ -43,13 +43,15 @@ export const ProductPage = () => {
   useEffect(() => {
     getProducts()
       .then(prod => setAllProducts(prod));
+  }, []);
 
+  useEffect(() => {
     getItemProduct(id)
       .then(prod => {
         setProduct(prod);
         setActiveImg(prod.images[0]);
       });
-  }, []);
+  }, [id]);
 
   const nextImg = (img: string, arr: string[]) => {
     const checked = arr.findIndex(imges => imges === img) === arr.length - 1;
@@ -92,7 +94,7 @@ export const ProductPage = () => {
         <span className="breadcrumbs__arrow" />
 
         {arrLocation.map(l => (
-          <>
+          <span key={l}>
             <Link to={{ pathname: `/${l}` }} className="breadcrumbs__location">
               {l.slice(0, 1).toUpperCase() + l.slice(1)}
             </Link>
@@ -100,7 +102,7 @@ export const ProductPage = () => {
             {l !== arrLocation[arrLocation.length - 1] && (
               <span className="breadcrumbs__arrow" />
             )}
-          </>
+          </span>
         ))}
       </div>
 

@@ -76,7 +76,7 @@ export const PageCart = () => {
 
         <button
           className="breadcrumbs__go-back"
-          onClick={() => handGoBack()}
+          onClick={handGoBack}
           type="button"
         >
           Back

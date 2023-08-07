@@ -1,27 +1,25 @@
 import {
-  useCallback,
-  useRef,
+  useEffect,
   useState,
 } from 'react';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from './store';
 
 // eslint-disable-next-line
-export function useDebounce<T extends (...args: any[]) => void>(callback: T, delay: number) : (...args: Parameters<T>) => void {
-  const timer = useRef<NodeJS.Timeout | undefined>();
+export function useDebounceValue(value: string, delay: number) {
+  const [debouncedValue, setDebouncedValue] = useState(value);
 
-  return useCallback(
-    (...args: Parameters<T>) => {
-      if (timer.current) {
-        clearTimeout(timer.current);
-      }
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedValue(value);
+    }, delay);
 
-      timer.current = setTimeout(() => {
-        callback(...args);
-      }, delay);
-    },
-    [callback, delay],
-  );
+    return () => {
+      clearTimeout(handler);
+    };
+  }, [value, delay]);
+
+  return debouncedValue;
 }
 
 export function useLocaleStorage<T>(

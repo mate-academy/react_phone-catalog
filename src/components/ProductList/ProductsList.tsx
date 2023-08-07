@@ -27,6 +27,7 @@ export const ProductsList: React.FC<Props> = ({ query }) => {
 
   const [items, setItems] = useState<Product[]>([]);
   const [visibleProd, setVisibleProd] = useState<Product[]>([]);
+  const [filterProducts, setFilterProducts] = useState<Product[]>([]);
 
   const { favoriteItem } = useAppSelector(favoriteItems);
 
@@ -106,6 +107,8 @@ export const ProductsList: React.FC<Props> = ({ query }) => {
     const cloneP = [...items];
     const filterProduct = cloneP
       .filter((c) => c.name.toLowerCase().includes(query.toLowerCase()));
+
+    setFilterProducts(filterProduct);
 
     const sortedProducts = filterProduct.sort((p1, p2) => {
       switch (sort.toLowerCase()) {
@@ -202,7 +205,11 @@ export const ProductsList: React.FC<Props> = ({ query }) => {
   }
 
   return (
-    <>
+    <div
+      className={
+        classNames({ 'main__not-found': visibleProd.length === 0 })
+      }
+    >
       <div className="breadcrumbs">
         <Link to="/home" className="breadcrumbs__home" />
         <span className="breadcrumbs__arrow" />
@@ -258,7 +265,7 @@ export const ProductsList: React.FC<Props> = ({ query }) => {
               ))}
             </ul>
           </div>
-          {perPage !== 'All' && +perPage < items.length && (
+          {perPage !== 'All' && +perPage < filterProducts.length && (
             <div className="mobiel__pagination pagination">
               <ul className="pagination__list">
                 <li className="pagination__item">
@@ -302,6 +309,6 @@ export const ProductsList: React.FC<Props> = ({ query }) => {
       ) : (
         <h1 className="page__title">Product not found</h1>
       )}
-    </>
+    </div>
   );
 };
