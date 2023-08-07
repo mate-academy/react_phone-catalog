@@ -41,10 +41,22 @@
     height: 16px;
     top: 24px;
     right: 24px;
-    cursor: pointer;
 
     @include onTablet {
       right: 16px;
     }
+  }
+
+  &__delete {
+    height: 16px;
+    width: 16px;
+    background: none;
+    background-image: url("../../images/cross.svg");
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    cursor: pointer;
   }
 }

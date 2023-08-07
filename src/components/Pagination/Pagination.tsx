@@ -10,19 +10,19 @@ import arrowRight from '../../images/arrows/arrow-right.svg';
 import './Pagination.scss';
 
 type Props = {
-  phonesLength: number;
+  productsLength: number;
   pageSize: number;
   currentPage: number;
 };
 
 export const Pagination: React.FC<Props> = ({
-  phonesLength,
+  productsLength,
   pageSize,
   currentPage,
 }) => {
   const [searchParams] = useSearchParams();
 
-  const pages = generatePageNumbers(phonesLength, pageSize);
+  const pages = generatePageNumbers(productsLength, pageSize);
 
   return (
     <div className="Pagination" data-cy="pagination">

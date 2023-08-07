@@ -1,4 +1,9 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, {
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import { Link } from 'react-router-dom';
 import { RotatingLines } from 'react-loader-spinner';
 
@@ -14,6 +19,8 @@ import { getDiscount } from '../../helpers/getDiscount';
 import { Product } from '../../types/Product';
 import { ProductDetails } from '../../types/ProductDetails';
 import { ProductType } from '../../types/ProductType';
+
+import errorIcon from '../../images/error.svg';
 
 import './ProductCard.scss';
 
@@ -37,6 +44,7 @@ export const ProductCard: React.FC<Props> = React.memo(({ product }) => {
   const { productsInCart, setProductsInCart } = useContext(CartContext);
   const { favoriteProducts, setFavoriteProducts } = useContext(FavContext);
   const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
 
   const [productWithDetails, setProductWithDetails]
     = useState<ProductDetails>();
@@ -50,7 +58,7 @@ export const ProductCard: React.FC<Props> = React.memo(({ product }) => {
 
         setProductWithDetails(productFromServer);
       } catch {
-        throw new Error('Loading Error');
+        setIsError(true);
       } finally {
         setIsLoading(false);
       }
@@ -116,10 +124,22 @@ export const ProductCard: React.FC<Props> = React.memo(({ product }) => {
     setFavoriteProducts([...favoriteProducts, product]);
   };
 
+  const topRef = useRef<HTMLDivElement>(null);
+
   return (
-    <div className="ProductCard">
+    <div className="ProductCard" ref={topRef}>
       <div className="ProductCard__content">
-        {isLoading ? (
+        {isError && (
+          <div className="ProductCard__error">
+            <img
+              src={errorIcon}
+              alt="error"
+              className="ProductCard__error-img"
+            />
+            <h2>Product download error</h2>
+          </div>
+        )}
+        {isLoading && !isError ? (
           <RotatingLines
             strokeColor="#EB5757"
             strokeWidth="5"
@@ -127,10 +147,19 @@ export const ProductCard: React.FC<Props> = React.memo(({ product }) => {
             width="66"
             visible={isLoading}
           />
-        ) : (
+        ) : !isError && (
           <>
             {productWithDetails && (
-              <Link to={`/${productType}/${id}`} state={productWithDetails} className="ProductCard__photo">
+              <Link
+                to={`/${productType}/${id}`}
+                state={productWithDetails}
+                className="ProductCard__photo"
+                onClick={() => {
+                  window.scrollTo({
+                    top: 0,
+                  });
+                }}
+              >
                 <img
                   src={imageUrl}
                   alt="product"

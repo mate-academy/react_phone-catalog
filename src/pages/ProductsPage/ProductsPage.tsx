@@ -12,15 +12,19 @@ import { Pagination } from '../../components/Pagination/Pagination';
 import { NoSearchResults }
   from '../../components/NoSearchResults/NoSearchResults';
 
-import './PhonesPage.scss';
+import './ProductsPage.scss';
+import { NoResults } from '../../components/NoResults/NoResults';
 
 type Props = {
-  phones: Product[];
+  products: Product[];
+  title: string;
 };
 
 const smallestPageSize = 4;
 
-export const PhonesPage: React.FC<Props> = React.memo(({ phones }) => {
+export const ProductsPage: React.FC<Props> = React.memo((
+  { products, title },
+) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query') || '';
 
@@ -54,64 +58,71 @@ export const PhonesPage: React.FC<Props> = React.memo(({ phones }) => {
     );
   };
 
-  const filteredPhones = useMemo(() => {
-    return phones.filter(phone => {
+  const filteredProducts = useMemo(() => {
+    return products.filter(product => {
       const normalizedQuery = query.toLowerCase().trim();
-      const normalizedName = phone.name.toLowerCase().trim();
+      const normalizedName = product.name.toLowerCase().trim();
 
       return normalizedName.includes(normalizedQuery);
     });
-  }, [phones, query]);
+  }, [products, query]);
 
-  const sortedPhones = useMemo(() => {
-    const phonesCopy = [...filteredPhones];
+  const sortedProducts = useMemo(() => {
+    const productsCopy = [...filteredProducts];
 
     switch (sortBy) {
       case 'name':
-        phonesCopy.sort((a, b) => a.name.localeCompare(b.name));
+        productsCopy.sort((a, b) => a.name.localeCompare(b.name));
         break;
 
       case 'price':
-        phonesCopy.sort((a, b) => a.price - b.price);
+        productsCopy.sort((a, b) => a.price - b.price);
         break;
 
       case 'age':
       default:
-        phonesCopy.sort((a, b) => b.age - a.age);
+        productsCopy.sort((a, b) => b.age - a.age);
         break;
     }
 
-    return phonesCopy;
-  }, [sortBy, filteredPhones]);
+    return productsCopy;
+  }, [sortBy, filteredProducts]);
 
   const startIndex = (+currentPage - 1) * +pageSize;
   const endIndex = startIndex + +pageSize;
-  const visiblePhones = useMemo(() => {
-    return sortedPhones.slice(startIndex, +endIndex);
-  }, [sortedPhones, startIndex, endIndex]);
+  const visibleProducts = useMemo(() => {
+    return sortedProducts.slice(startIndex, +endIndex);
+  }, [sortedProducts, startIndex, endIndex]);
 
-  const phonesLength = sortedPhones.length;
-  const pageSizes = [smallestPageSize, 8, phonesLength]; // add 16 when will be more phones on API
-  const showPagination = phonesLength > smallestPageSize
-    && +pageSize !== +phonesLength;
+  const productsLength = sortedProducts.length;
+  const pageSizes = [smallestPageSize, 8, productsLength]; // add 16 when will be more phones on API
+  const showPagination = productsLength > smallestPageSize
+    && +pageSize !== +productsLength;
 
   return (
-    <div className="PhonesPage">
+    <div className="ProductsPage">
       <div className="container">
-        {visiblePhones.length === 0 && query ? (
+        {!visibleProducts.length && !query && (
+          <>
+            <Breadcrumbs />
+            <NoResults category={title} />
+          </>
+        )}
+
+        {!visibleProducts.length && query ? (
           <NoSearchResults />
-        ) : (
-          <div className="PhonesPage__content">
+        ) : !!visibleProducts.length && (
+          <div className="ProductsPage__content">
             <Breadcrumbs />
 
-            <h1 className="PhonesPage__title">Mobile phones</h1>
+            <h1 className="ProductsPage__title">{title}</h1>
 
-            <h3 className="PhonesPage__subtitle">{`${phonesLength} models`}</h3>
+            <h3 className="ProductsPage__subtitle">{`${productsLength} models`}</h3>
 
-            <div className="PhonesPage__filters">
-              <div className="PhonesPage__filter">
+            <div className="ProductsPage__filters">
+              <div className="ProductsPage__filter">
                 <div
-                  className="PhonesPage__label"
+                  className="ProductsPage__label"
                 >
                   Sort by
                 </div>
@@ -121,16 +132,16 @@ export const PhonesPage: React.FC<Props> = React.memo(({ phones }) => {
                   onChange={handleSortChange}
                 />
               </div>
-              <div className="PhonesPage__filter">
+              <div className="ProductsPage__filter">
                 <div
-                  className="PhonesPage__label"
+                  className="ProductsPage__label"
                 >
                   Items on page
                 </div>
                 <DropDown
                   options={pageSizes.map((size) => ({
                     value: String(size),
-                    label: size === phonesLength ? 'All' : String(size),
+                    label: size === productsLength ? 'All' : String(size),
                   }))}
                   value={String(pageSize)}
                   onChange={handlePageSizeChange}
@@ -139,16 +150,16 @@ export const PhonesPage: React.FC<Props> = React.memo(({ phones }) => {
             </div>
 
             <div className="ProductsList" data-cy="productList">
-              {visiblePhones.map((phone) => (
-                <ProductCard product={phone} key={phone.id} />
+              {visibleProducts.map((product) => (
+                <ProductCard product={product} key={product.id} />
               ))}
             </div>
 
-            {showPagination && phonesLength > 0 && (
+            {showPagination && productsLength > 0 && (
               <Pagination
                 currentPage={+currentPage}
                 pageSize={+pageSize}
-                phonesLength={phonesLength}
+                productsLength={productsLength}
               />
             )}
           </div>

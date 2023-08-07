@@ -54,6 +54,10 @@ export const Header: React.FC = () => {
     };
   }, [showMobileMenu]);
 
+  const handleLinkClick = () => {
+    setShowMobileMenu(false);
+  };
+
   return (
     <header className="header">
       <nav className="header__nav">
@@ -78,7 +82,7 @@ export const Header: React.FC = () => {
         })}
         >
           <div className="mobile__header">
-            <Link to="/" className="mobile__logo">
+            <Link to="/" className="mobile__logo" onClick={handleLinkClick}>
               <img
                 src={logo}
                 alt="logo"
@@ -106,6 +110,7 @@ export const Header: React.FC = () => {
                   'header__link',
                   { 'header__link--active': isActive },
                 )}
+                onClick={handleLinkClick}
               >
                 Home
               </NavLink>
@@ -117,6 +122,7 @@ export const Header: React.FC = () => {
                   'header__link',
                   { 'header__link--active': isActive },
                 )}
+                onClick={handleLinkClick}
               >
                 Phones
               </NavLink>
@@ -128,6 +134,7 @@ export const Header: React.FC = () => {
                   'header__link',
                   { 'header__link--active': isActive },
                 )}
+                onClick={handleLinkClick}
               >
                 Tablets
               </NavLink>
@@ -139,6 +146,7 @@ export const Header: React.FC = () => {
                   'header__link',
                   { 'header__link--active': isActive },
                 )}
+                onClick={handleLinkClick}
               >
                 Accessories
               </NavLink>
@@ -149,6 +157,7 @@ export const Header: React.FC = () => {
             <NavLink
               to="/favorites"
               className="header__button header__button--fav mobile__button"
+              onClick={handleLinkClick}
             >
               <span className={cn('header__quantity', {
                 active: favItemsQuantity > 0,
@@ -160,6 +169,7 @@ export const Header: React.FC = () => {
             <NavLink
               to="/cart"
               className="header__button header__button--cart mobile__button"
+              onClick={handleLinkClick}
             >
               <span className={cn('header__quantity', {
                 active: cartItemsQuantity > 0,

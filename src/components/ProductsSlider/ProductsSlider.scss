@@ -11,6 +11,10 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    @include onMobile {
+      justify-content: center;
+    }
   }
 
   &__title {
@@ -29,6 +33,10 @@
   &__buttons {
     display: flex;
     gap: 16px;
+
+    @include onMobile {
+      display: none;
+    }
   }
 
   &__button {
@@ -70,10 +78,4 @@
       flex-wrap: wrap;
     }
   }
-
-  // &__card {
-  //   padding: 10px;
-  //   width: 272px;
-  //   height: 507px;
-  // }
 }

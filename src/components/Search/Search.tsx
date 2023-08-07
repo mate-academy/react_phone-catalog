@@ -1,12 +1,9 @@
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useCallback, useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
 
 import { getSearchWith } from '../../helpers/searchHelper';
 import { debounce } from '../../helpers/debounce';
 
-import crossIcon from '../../images/cross.svg';
 import searchIcon from '../../images/search.svg';
 
 import './Search.scss';
@@ -26,14 +23,12 @@ export const Search: React.FC = () => {
   );
 
   const handleQueryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const normalizedQuery = event.target.value.toLowerCase();
-
     applyQuery(getSearchWith(searchParams, {
-      query: normalizedQuery || null,
+      query: event.target.value || null,
       currentPage: '1',
     }));
 
-    setAppliedQuery(normalizedQuery);
+    setAppliedQuery(event.target.value);
   };
 
   const handleClearQuery = () => {
@@ -53,11 +48,12 @@ export const Search: React.FC = () => {
       />
       <button className="Search__btn" type="button">
         {query ? (
-          <img
-            src={crossIcon}
-            alt="close"
+          <button
+            type="button"
+            className="Search__delete"
             data-cy="searchDelete"
             onClick={handleClearQuery}
+            aria-label="searchDelete"
           />
         ) : (
           <img src={searchIcon} alt="search" />
