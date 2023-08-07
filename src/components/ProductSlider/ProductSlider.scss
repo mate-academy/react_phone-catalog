@@ -1,10 +1,8 @@
 
-.product {
-  &__slider {
-    max-width: 1136px;
-    margin: 0 auto;
-    margin-bottom: 80px;
-  }
+.product-slider {
+  max-width: 1136px;
+  margin: 0 auto;
+  margin-bottom: 80px;
 
   &__header {
     display: flex;

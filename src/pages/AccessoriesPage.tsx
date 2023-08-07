@@ -1,30 +1,29 @@
 import {
-  useEffect, useState, useCallback, useMemo, useContext,
+  useEffect, useState, useCallback, useMemo,
 } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import {
-  updateSearchParams, sortProducts, SortOption,
-} from '../../../helpers/helper';
-import { Pagination } from '../../Pagination/Pagination';
-import { Product } from '../../../types/Products';
-import { ProductCard } from '../../ProductCard/ProductCard';
-import { PageIndicator } from '../../PageIndicator/Phonespage/PageIndicator';
-import '../ProductPage.scss';
-import {
-  ProductDataContext,
-} from '../../ProductDataContext/ProductDataContext';
-import { NoResults } from '../../NoResults/NoResults';
+  updateSearchParams, sortProducts,
+} from '../helpers/helper';
+import { Pagination } from '../components/Pagination/Pagination';
+import { Product } from '../types/Products';
+import { ProductCard } from '../components/ProductCard/ProductCard';
+import { PageIndicator } from '../components/PageIndicator/PageIndicator';
+import './ProductPage.scss';
+import { NoResults } from '../components/NoResults/NoResults';
+import { useAppSelector } from '../app/hooks';
+import { SortOption } from '../types/SortOption';
 
 type ItemsPerPage = '4' | '8' | '16' | 'All';
 
-export const TabletsPage: React.FC = () => {
-  const category = 'tablets';
+export const AccessoriesPage: React.FC = () => {
+  const category = 'accessories';
   const [searchParams, setSearchParams] = useSearchParams();
   const itemsPerPage = searchParams.get('perPage') as ItemsPerPage || '4';
   const query = searchParams.get('query');
   const currentPageFromParams = Number(searchParams.get('page') || '1');
   const [currentPage, setCurrentPage] = useState(currentPageFromParams);
-  const products = useContext(ProductDataContext);
+  const { products } = useAppSelector(state => state.products);
 
   const handleOnChange = useCallback((
     event: React.ChangeEvent<HTMLSelectElement>,

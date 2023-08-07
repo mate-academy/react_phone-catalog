@@ -1,7 +1,6 @@
 import { ProductDetails } from '../types/ProductDetails';
 import { Product } from '../types/Products';
-
-export type SortOption = 'age' | 'price' | 'name';
+import { SortOption } from '../types/SortOption';
 
 export const API_URL
   = 'https://mate-academy.github.io/react_phone-catalog/_new/products.json';

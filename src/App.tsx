@@ -1,36 +1,34 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { Footer } from './components/Footer/Footer';
 import { Header } from './components/Header/Header';
-import { Homepage } from './components/Homepage/Homepage';
+import { Homepage } from './pages/Homepage';
 import {
   ProductDetailsPage,
-} from './components/ProductDetailsPage/ProductDetailsPage';
+} from './components/ProductDetails/ProductDetailsPage';
 import { API_URL, getProducts } from './helpers/helper';
-import { Product } from './types/Products';
 import './App.scss';
 import { Favoutires } from './components/Favourites/Favourites';
 import { Cart } from './components/Cart/Cart';
-import {
-  ProductDataContext,
-} from './components/ProductDataContext/ProductDataContext';
 import { ScrollToTop } from './helpers/ScrollToTop';
-import { PhonesPage } from './components/ProductPage/PhonesPage/PhonesPage';
-import { TabletsPage } from './components/ProductPage/TabletsPage/TabletsPage';
+import { PhonesPage } from './pages/PhonesPage';
+import { TabletsPage } from './pages/TabletsPage';
 import {
   AccessoriesPage,
-} from './components/ProductPage/AccessoriesPage/AccessoriesPage';
+} from './pages/AccessoriesPage';
 import { NotFound } from './components/NotFound/NotFound';
+import { useAppDispatch } from './app/hooks';
+import { set } from './features/productsSlice';
 
 const App = () => {
-  const [products, setProducts] = useState<Product[]>([]);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     async function fetchData() {
       try {
         const response = await getProducts(API_URL);
 
-        setProducts(response);
+        dispatch(set(response));
       } catch (fetchError) {
         throw new Error('Data could not be fetched');
       }
@@ -44,48 +42,46 @@ const App = () => {
       <ScrollToTop />
       <div className="wrapper">
         <Header />
-        <ProductDataContext.Provider value={products}>
-          <Routes>
+        <Routes>
+          <Route
+            path="/"
+            element={<Homepage />}
+          />
+          <Route path="phones">
+            <Route index element={<PhonesPage />} />
             <Route
-              path="/"
-              element={<Homepage products={products} />}
+              path=":productId"
+              element={<ProductDetailsPage />}
             />
-            <Route path="phones">
-              <Route index element={<PhonesPage />} />
-              <Route
-                path=":productId"
-                element={<ProductDetailsPage products={products} />}
-              />
-            </Route>
-            <Route path="tablets">
-              <Route index element={<TabletsPage />} />
-              <Route
-                path=":productId"
-                element={<ProductDetailsPage products={products} />}
-              />
-            </Route>
-            <Route path="accessories">
-              <Route index element={<AccessoriesPage />} />
-              <Route
-                path=":productId"
-                element={<ProductDetailsPage products={products} />}
-              />
-            </Route>
+          </Route>
+          <Route path="tablets">
+            <Route index element={<TabletsPage />} />
             <Route
-              path="favourites"
-              element={<Favoutires />}
+              path=":productId"
+              element={<ProductDetailsPage />}
             />
+          </Route>
+          <Route path="accessories">
+            <Route index element={<AccessoriesPage />} />
             <Route
-              path="cart"
-              element={<Cart />}
+              path=":productId"
+              element={<ProductDetailsPage />}
             />
-            <Route path="*" element={<NotFound />} />
-            <Route
-              path="home"
-              element={<Navigate to="/" replace />}
-            />
-          </Routes>
-        </ProductDataContext.Provider>
+          </Route>
+          <Route
+            path="favourites"
+            element={<Favoutires />}
+          />
+          <Route
+            path="cart"
+            element={<Cart />}
+          />
+          <Route path="*" element={<NotFound />} />
+          <Route
+            path="home"
+            element={<Navigate to="/" replace />}
+          />
+        </Routes>
         <Footer />
       </div>
     </div>

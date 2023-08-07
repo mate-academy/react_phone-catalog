@@ -58,12 +58,13 @@ export const Pagination: React.FC<Props> = ({
         &lt;
       </button>
 
-      {pages.map((page) => (
+      {pages.map((page, index) => (
         typeof page === 'number'
           ? (
             <button
               type="button"
-              key={page}
+              // eslint-disable-next-line react/no-array-index-key
+              key={`${page}_${index}`}
               onClick={() => handlePageChange(page)}
               className={classNames('pagination__button', {
                 active: currentPage === page,
@@ -74,7 +75,8 @@ export const Pagination: React.FC<Props> = ({
           )
           : (
             <div
-              key={page}
+              // eslint-disable-next-line react/no-array-index-key
+              key={`${page}_${index}`}
               className="dots"
             >
               ...

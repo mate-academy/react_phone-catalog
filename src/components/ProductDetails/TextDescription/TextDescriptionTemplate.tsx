@@ -1,3 +1,5 @@
+import './TextDescriptionTemplate.scss';
+
 type Props = {
   text: string;
   value: string;

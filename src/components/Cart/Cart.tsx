@@ -18,6 +18,12 @@ export const Cart: React.FC = () => {
     const cartFromStorage = retrievedData ? JSON.parse(retrievedData) : [];
 
     setCartPhones(cartFromStorage);
+
+    return () => {
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
+    };
   }, []);
 
   const calculateTotal = (cartArray: Product[]) => {
@@ -54,14 +60,6 @@ export const Cart: React.FC = () => {
       setCheckout(false);
     }, 3000);
   };
-
-  useEffect(() => {
-    return () => {
-      if (timeoutId) {
-        clearTimeout(timeoutId);
-      }
-    };
-  }, []);
 
   return (
     <main className="cart-page">

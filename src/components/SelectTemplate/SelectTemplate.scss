@@ -1,0 +1,31 @@
+.phones-page,
+.tablets-page,
+.accessories-page {
+  &__label {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+    color: rgba(137, 147, 154, 1);
+    margin-bottom: 4px;
+  }
+
+  &__sort-by {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__select {
+    width: 176px;
+    min-height: 40px;
+    padding: 12px 10px;
+    border: 1px solid #e2e6e9;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+  }
+
+  &__items-per-page {
+    display: flex;
+    flex-direction: column;
+  }
+}

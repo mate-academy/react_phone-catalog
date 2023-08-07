@@ -1,46 +1,36 @@
 import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
-import { ProductDetails } from '../../types/ProductDetails';
-import { API_PRODUCT_URL } from '../../helpers/helper';
-import favorite from '../../images/favourites.svg';
-import favouriteAdded from '../../images/favourites-added.svg';
-import { Product } from '../../types/Products';
-import {
-  TextDescriptionTemplate,
-} from '../TextDescription/TextDescriptionTemplate';
+import { API_PRODUCT_URL } from '../../../helpers/helper';
+import favorite from '../../../images/favourites.svg';
+import favouriteAdded from '../../../images/favourites-added.svg';
+import { Product } from '../../../types/Products';
+import { TechSpecs } from '../TechSpecs/TechSpecs';
+import { useAppDispatch, useAppSelector } from '../../../app/hooks';
+import { setCapacity, setColor } from '../../../features/productInfoSlice';
 
-type Props = {
-  productInfo: ProductDetails,
-  selectedCapacity: string | undefined,
-  setSelectedCapacity: React.Dispatch<React.SetStateAction<string | undefined>>,
-  products: Product[],
-  selectedColor: string | undefined,
-  setSelectedColor: React.Dispatch<React.SetStateAction<string | undefined>>,
-};
-
-export const ProductInfoDetails: React.FC<Props> = ({
-  productInfo,
-  selectedCapacity,
-  setSelectedCapacity,
-  products,
-  setSelectedColor,
-  selectedColor,
-}) => {
+export const ProductInfoDetails = () => {
+  const dispatch = useAppDispatch();
+  const { products } = useAppSelector(state => state.products);
+  const {
+    productInfo,
+    selectedCapacity,
+    selectedColor,
+  } = useAppSelector(state => state.productInfo);
   const [isClicked, setIsClicked] = useState(false);
   const [isAdded, setIsAdded] = useState(false);
   const [mainImage, setMainImage]
-    = useState(API_PRODUCT_URL + productInfo.images[0]);
+    = useState(API_PRODUCT_URL + productInfo?.images[0]);
 
   const productToAdd = products
-    .find(product => product.phoneId === productInfo.id);
+    .find(product => product.phoneId === productInfo?.id);
 
   const saveFavouriteOnClick = () => {
     const favourites = localStorage.getItem('favourites');
     const favouritesArray = favourites ? JSON.parse(favourites) : [];
 
     const favouriteProductToAdd = products
-      .find(product => product.phoneId === productInfo.id);
+      .find(product => product.phoneId === productInfo?.id);
 
     if (favouriteProductToAdd) {
       const index = favouritesArray
@@ -91,10 +81,10 @@ export const ProductInfoDetails: React.FC<Props> = ({
   };
 
   useEffect(() => {
-    setMainImage(API_PRODUCT_URL + productInfo.images[0]);
+    setMainImage(API_PRODUCT_URL + productInfo?.images[0]);
 
     const productsToAdd = products
-      .find(product => product.phoneId === productInfo.id);
+      .find(product => product.phoneId === productInfo?.id);
 
     if (!productsToAdd) {
       return;
@@ -110,6 +100,10 @@ export const ProductInfoDetails: React.FC<Props> = ({
     setIsClicked(cartArray
       .some((product: Product) => product.id === productsToAdd.id));
   }, [productInfo, products]);
+
+  if (!productInfo) {
+    return null;
+  }
 
   return (
     <section className="product-info__row">
@@ -172,7 +166,7 @@ export const ProductInfoDetails: React.FC<Props> = ({
               style={{
                 backgroundColor: color === 'midnightgreen' ? '#004953' : color,
               }}
-              onClick={() => setSelectedColor(color)}
+              onClick={() => dispatch(setColor(color))}
             />
           ))}
         </div>
@@ -189,7 +183,7 @@ export const ProductInfoDetails: React.FC<Props> = ({
                   'active-capacity': selectedCapacity === button,
                 },
               )}
-              onClick={() => setSelectedCapacity(button)}
+              onClick={() => dispatch(setCapacity(button))}
             >
               {button}
             </Link>
@@ -232,21 +226,14 @@ export const ProductInfoDetails: React.FC<Props> = ({
             />
           </button>
         </div>
-        <TextDescriptionTemplate
-          text="Screen"
-          value={productInfo.screen}
-        />
-        <TextDescriptionTemplate
-          text="Resolution"
-          value={productInfo.resolution}
-        />
-        <TextDescriptionTemplate
-          text="Processor"
-          value={productInfo.processor}
-        />
-        <TextDescriptionTemplate
-          text="RAM"
-          value={productInfo.ram}
+        <TechSpecs
+          productInfo={productInfo}
+          specs={[
+            { key: 'screen', label: 'Screen' },
+            { key: 'resolution', label: 'Resolution' },
+            { key: 'processor', label: 'Processor' },
+            { key: 'ram', label: 'RAM' },
+          ]}
         />
       </div>
       <div className="

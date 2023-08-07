@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { ProductCard } from '../ProductCard/ProductCard';
-import { PageIndicator } from '../PageIndicator/Phonespage/PageIndicator';
+import { PageIndicator } from '../PageIndicator/PageIndicator';
 import { Product } from '../../types/Products';
 import { NoResults } from '../NoResults/NoResults';
 
@@ -12,10 +12,13 @@ export const Favoutires: React.FC = () => {
   const [searchParams] = useSearchParams();
   const query = searchParams.get('query');
 
-  const filteredByQueryPhones = favouritePhones.filter((product) => (
-    query === null
-    || query === ''
-    || product.name.toLowerCase().includes(query.toLowerCase())));
+  const filteredByQueryPhones = useMemo(() => {
+    return favouritePhones.filter((product) => (
+      query === null
+      || query === ''
+      || product.name.toLowerCase().includes(query.toLowerCase())
+    ));
+  }, [favouritePhones, query]);
 
   return (
     <main className="phones-page">

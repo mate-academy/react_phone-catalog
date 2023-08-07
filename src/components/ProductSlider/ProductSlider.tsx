@@ -30,29 +30,29 @@ export const ProductsSlider = React.memo(({ title, products }: Props) => {
   };
 
   return (
-    <div className="product__slider">
-      <div className="product__header">
-        <div className="product__title">{title}</div>
-        <div className="product__buttons">
+    <div className="product-slider">
+      <div className="product-slider__header">
+        <div className="product-slider__title">{title}</div>
+        <div className="product-slider__buttons">
           <button
             type="button"
-            className="product__prev product__button"
+            className="product-slider__prev product-slider__button"
             onClick={prevSlide}
           >
             &lt;
           </button>
           <button
             type="button"
-            className="product__next product__button"
+            className="product-slider__next product-slider__button"
             onClick={nextSlide}
           >
             &gt;
           </button>
         </div>
       </div>
-      <div className="product__slider-container">
+      <div className="product-slider__slider-container">
         <div
-          className="product__row"
+          className="product-slider__row"
           style={{
             transform: `translateX(${translateX}px)`,
             transition: 'transform ease-out 0.45s',

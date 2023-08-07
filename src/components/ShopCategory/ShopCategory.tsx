@@ -1,21 +1,19 @@
+import { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import phones_banner from '../../images/phones-banner.png';
 import tablets_banner from '../../images/tablets-banner.png';
 import accessories_banner from '../../images/accessories-banner.png';
-import { Product } from '../../types/Products';
 import './ShopCategory.scss';
+import { useAppSelector } from '../../app/hooks';
 
-type Props = {
-  products: Product[],
-};
-
-export const ShopCategory: React.FC<Props> = ({ products }) => {
-  const phonesDescription = [...products]
-    .filter(item => item.category === 'phones');
-  const tabletsDescription = [...products]
-    .filter(item => item.category === 'tablets');
-  const accessoriesDescription = [...products]
-    .filter(item => item.category === 'accessories');
+export const ShopCategory = () => {
+  const { products } = useAppSelector(state => state.products);
+  const phonesDescription = useMemo(() => [...products]
+    .filter(item => item.category === 'phones'), [products]);
+  const tabletsDescription = useMemo(() => [...products]
+    .filter(item => item.category === 'tablets'), [products]);
+  const accessoriesDescription = useMemo(() => [...products]
+    .filter(item => item.category === 'accessories'), [products]);
 
   return (
     <div
