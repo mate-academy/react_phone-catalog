@@ -51,9 +51,17 @@
     font-size: 12px;
     text-decoration: none;
   }
+
+  &__block {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
 }
 
 .main {
+  min-height: calc(100vh - 185px);
+
   &__head {
     display: flex;
     justify-content: space-between;

@@ -94,7 +94,7 @@ export const ProductPage = () => {
         <span className="breadcrumbs__arrow" />
 
         {arrLocation.map(l => (
-          <span key={l}>
+          <span key={l} className="breadcrumbs__block">
             <Link to={{ pathname: `/${l}` }} className="breadcrumbs__location">
               {l.slice(0, 1).toUpperCase() + l.slice(1)}
             </Link>

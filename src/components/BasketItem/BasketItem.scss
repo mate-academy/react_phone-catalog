@@ -17,6 +17,10 @@
     @media (min-width: 600px) {
       flex-direction: row;
     }
+    @media (min-width: 1090px) {
+      justify-content:baseline;
+      gap: 12px;
+    }
   }
 
   &__main-info {
