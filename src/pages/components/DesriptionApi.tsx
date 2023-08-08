@@ -125,7 +125,8 @@ export const DesriptionNewApi: FC<Props> = ({
                 type="button"
                 onClick={onCardedProducts}
               >
-                Add to cart
+                { cardedPhones.some(card => card.id === phoneDetails.id)
+                  ? 'Remove form card' : 'Add to cart' }
               </button>
               <button
                 onClick={onFavoritesProducts}
