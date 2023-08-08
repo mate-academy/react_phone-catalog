@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import { FC, useState } from 'react';
+import { FC } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import {
@@ -13,19 +13,16 @@ export const SearchBar: FC = () => {
   const dispatch = useAppDispatch();
   const location = useLocation();
   const searchValue = useAppSelector(searchBarSelector);
-  const [valueInput, setValueInput] = useState('');
 
   const handleSearchCheange = (
     event: React.ChangeEvent<HTMLInputElement>,
   ) => {
     dispatch(setSearchingValue(event.target.value));
-    setValueInput(event.target.value);
   };
 
   const clearSearch = () => {
     if (searchValue) {
       dispatch(unsetSearchingValue());
-      setValueInput('');
     }
   };
 
@@ -40,7 +37,7 @@ export const SearchBar: FC = () => {
         type="text"
         name="search"
         id="search"
-        value={valueInput}
+        value={searchValue}
         placeholder={
           location.pathname === '/favorites'
             ? 'Search in favourites...'

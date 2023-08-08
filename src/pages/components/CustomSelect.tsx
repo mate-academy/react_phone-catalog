@@ -11,7 +11,7 @@ import { SortByOptions } from '../../types/SortByOptions';
 import { SelectAmountItems } from '../../types/SelectAmountItems';
 
 type Props = {
-  options: { text: string, value: string }[],
+  options: { text: string, value: SortByOptions | SelectAmountItems }[],
   defaultOption: string,
   onChange: Dispatch<SetStateAction<{
     sortBy: SortByOptions, itemsShow: SelectAmountItems,
@@ -20,38 +20,34 @@ type Props = {
 
 const CustomSelect: FC<Props> = ({ options, defaultOption, onChange }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(defaultOption);
+  const [selectedOption, setSelectedOption] = useState(() => {
+    if (defaultOption === SortByOptions.AGE) {
+      return 'Newest';
+    }
+
+    return defaultOption;
+  });
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
 
-  const handleOptionClick = (option: string) => {
-    setSelectedOption(option);
+  const handleOptionClick = (
+    option: { text: string, value: SortByOptions | SelectAmountItems },
+  ) => {
+    setSelectedOption(option.text);
+
     setIsOpen(false);
     if (onChange) {
-      if (SortByOptions.AGE === option
-          || SortByOptions.NAME === option
-          || SortByOptions.PRICE === option) {
-        onChange((prev) => ({ ...prev, sortBy: option }));
+      if (SortByOptions.AGE === option.value
+          || SortByOptions.NAME === option.value
+          || SortByOptions.PRICE === option.value) {
+        onChange((prev) => (
+          { ...prev, sortBy: option.value as SortByOptions }));
       } else {
         onChange((prev) => (
-          { ...prev, itemsShow: option as SelectAmountItems }));
+          { ...prev, itemsShow: option.value as SelectAmountItems }));
       }
-    }
-  };
-
-  const selectorText = (optionValue: string) => {
-    switch (optionValue) {
-      case 'age':
-        return 'Newest';
-      case 'price':
-        return 'Cheapest';
-      case 'name':
-        return 'Alphabetically';
-
-      default:
-        return optionValue.toUpperCase();
     }
   };
 
@@ -77,7 +73,7 @@ const CustomSelect: FC<Props> = ({ options, defaultOption, onChange }) => {
 
   return (
     <div className="custom-select" onClick={toggleDropdown}>
-      <div className="selected-option">{selectorText(selectedOption)}</div>
+      <div className="selected-option">{selectedOption}</div>
       {isOpen && (
         <ul className={classNames(
           'options',
@@ -88,7 +84,7 @@ const CustomSelect: FC<Props> = ({ options, defaultOption, onChange }) => {
             <li
               className="options__option"
               key={option.text}
-              onClick={() => handleOptionClick(option.value)}
+              onClick={() => handleOptionClick(option)}
             >
               {option.text}
             </li>

@@ -80,7 +80,6 @@
   width: 442px;
 
   &__big-img {
-    width: 350px;
     height: 442px;
     flex-shrink: 0;
   }
@@ -102,6 +101,7 @@
   }
   &__list {
     display: flex;
+    flex-wrap: wrap;
     padding: 0;
     gap: 8px;
     margin: 0;
@@ -135,18 +135,9 @@
     margin: 0;
     border: 2px solid #fff;
 
-    &--1 {
-      background-color: #fcdbc1;
-    }
-    &--2 {
-      background-color: #5f7170;
-
-    }
-    &--3 {
-      background-color: #4c4c4c;
-    }
-    &--4 {
-      background-color: #f0f0f0;
+    &--active {
+      transform: scale(1.1);
+      border-color: #313237;
     }
   }
 }

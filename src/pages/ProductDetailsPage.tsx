@@ -139,6 +139,7 @@ export const ProductDetailsPage: FC = () => {
 
   const [bigImgIndex, setBigImgIndex] = useState(0);
   const [capacityIndex, setCapacityIndex] = useState(0);
+  const [colorIndex, setColorIndex] = useState(0);
 
   const handleGalleryImg = (index: number) => {
     setBigImgIndex(index);
@@ -146,6 +147,10 @@ export const ProductDetailsPage: FC = () => {
 
   const handleCapacityItem = (index: number) => {
     setCapacityIndex(index);
+  };
+
+  const handleColorItem = (index: number) => {
+    setColorIndex(index);
   };
 
   return (
@@ -172,6 +177,8 @@ export const ProductDetailsPage: FC = () => {
             onCardedProducts={handleCardedProducts}
             favoritesPhones={favoritesPhones}
             onFavoritesProducts={handleFavoritesProducts}
+            onColorItem={handleColorItem}
+            colorIndex={colorIndex}
           />
           <div className="product-details-page__you-may-like you-may-like">
             <h2 className="you-may-like__title">You may also like</h2>

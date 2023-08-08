@@ -1,6 +1,6 @@
 import { FC, useEffect } from 'react';
 import {
-  Navigate, Route, Routes,
+  Navigate, Route, Routes, useLocation,
 } from 'react-router-dom';
 import './App.scss';
 
@@ -9,7 +9,7 @@ import { HomePage } from './pages/HomePage';
 import { PhonesPage } from './pages/PhonesPage';
 import { Footer } from './pages/components/Footer';
 import { ProductDetailsPage } from './pages/ProductDetailsPage';
-import { useAppDispatch } from './app/hooks';
+import { useAppDispatch, useAppSelector } from './app/hooks';
 import { incrementAsync as loadedPhones } from './features/phones/phonesSlice';
 import { FavoritesPage } from './pages/FavoritesPage';
 import { CardPage } from './pages/CardPage';
@@ -18,9 +18,19 @@ import {
   incrementAsync as loadedProducts,
 } from './features/products/productsSlice';
 import { AccessoriesPage } from './pages/AccessoriesPage';
+import { searchBarSelector } from './app/selector';
+import { unsetSearchingValue } from './features/SearchBar/searchBarSlice';
 
 export const App: FC = () => {
   const dispatch = useAppDispatch();
+  const locationPathName = useLocation().pathname;
+  const searchBarValue = useAppSelector(searchBarSelector);
+
+  useEffect(() => {
+    if (searchBarValue) {
+      dispatch(unsetSearchingValue());
+    }
+  }, [locationPathName]);
 
   useEffect(() => {
     dispatch(loadedPhones());

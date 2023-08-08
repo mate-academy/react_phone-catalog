@@ -16,6 +16,8 @@ type Props = {
   onCardedProducts: () => void,
   favoritesPhones: Product[],
   onFavoritesProducts: () => void,
+  onColorItem: (index: number) => void,
+  colorIndex: number,
 };
 
 export const DesriptionNewApi: FC<Props> = ({
@@ -28,6 +30,8 @@ export const DesriptionNewApi: FC<Props> = ({
   onCardedProducts,
   favoritesPhones,
   onFavoritesProducts,
+  onColorItem,
+  colorIndex,
 }) => {
   return (
     <>
@@ -58,18 +62,24 @@ export const DesriptionNewApi: FC<Props> = ({
           <div className="choose-section__colors-picker colors-picker">
             <h2 className="colors-picker__title">Available colors</h2>
             <ul className="colors-picker__list">
-              <li className="colors-picker__items-colors items-colors">
-                <div className="items-colors__color items-colors__color--1" />
-              </li>
-              <li className="colors-picker__items-colors items-colors">
-                <div className="items-colors__color items-colors__color--2" />
-              </li>
-              <li className="colors-picker__items-colors items-colors">
-                <div className="items-colors__color items-colors__color--3" />
-              </li>
-              <li className="colors-picker__items-colors items-colors">
-                <div className="items-colors__color items-colors__color--4" />
-              </li>
+              {phoneDetails.colorsAvailable.map((color, index) => (
+                <li
+                  key={color}
+                  className="colors-picker__items-colors items-colors"
+                  onClick={() => onColorItem(index)}
+                >
+                  <div
+                    className={classNames(
+                      'items-colors__color',
+                      { 'items-colors__color--active': colorIndex === index },
+                    )}
+                    style={{
+                      backgroundColor: `${color}`,
+                    }}
+                  />
+                </li>
+
+              ))}
             </ul>
           </div>
           {phoneDetails.capacityAvailable && (

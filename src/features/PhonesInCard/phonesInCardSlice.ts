@@ -40,7 +40,7 @@ const cardedPhoneReducer = createSlice({
         if (action.payload.id === card.id) {
           return {
             ...card,
-            amount: Math.min(card.amount - 1, 1),
+            amount: Math.max(card.amount - 1, 1),
           };
         }
 

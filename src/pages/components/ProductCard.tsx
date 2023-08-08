@@ -132,13 +132,14 @@ export const ProductCard: FC<Props> = ({ product }) => {
           {product.name}
         </h2>
       </Link>
-
-      <p className="product-card__price">{`${price}$`}</p>
-      {price !== fullPrice && (
-        <p className="product-card__price product-card__price--discount">
-          {`${fullPrice}$`}
-        </p>
-      )}
+      <div className="container-price">
+        <p className="product-card__price">{`${price}$`}</p>
+        {price !== fullPrice && (
+          <p className="product-card__price product-card__price--discount">
+            {`${fullPrice}$`}
+          </p>
+        )}
+      </div>
       <dl className="product-card__description-phone description-phone">
         <dt className="description-phone--title">Screen</dt>
         <dd className="description-phone--value">{product.screen}</dd>
@@ -156,7 +157,7 @@ export const ProductCard: FC<Props> = ({ product }) => {
           type="button"
           onClick={handleCardedProducts}
         >
-          Add to cart
+          { !isCarded ? 'Add to cart' : 'Remove form card'}
         </button>
         <button
           type="button"
