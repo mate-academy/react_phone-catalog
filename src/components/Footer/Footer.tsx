@@ -17,7 +17,7 @@ export const Footer: React.FC = () => {
     <footer className="footer">
       <div className="container">
         <div className="footer__content">
-          <Link to="/" className="footer__logo">
+          <Link to="/" className="footer__logo" onClick={handlScrollToTop}>
             <img src={logo} alt="logo" />
           </Link>
 

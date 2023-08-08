@@ -8,7 +8,11 @@ import searchIcon from '../../images/search.svg';
 
 import './Search.scss';
 
-export const Search: React.FC = () => {
+type Props = {
+  setShowMobileMenu?: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+export const Search: React.FC<Props> = ({ setShowMobileMenu }) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const query = searchParams.get('query') || '';
@@ -22,6 +26,14 @@ export const Search: React.FC = () => {
     debounce(setSearchParams, 1000), [currentPath],
   );
 
+  const handleShowMobileMenu = useCallback(
+    debounce(() => {
+      if (setShowMobileMenu) {
+        setShowMobileMenu(false);
+      }
+    }, 1000), [],
+  );
+
   const handleQueryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     applyQuery(getSearchWith(searchParams, {
       query: event.target.value || null,
@@ -29,12 +41,17 @@ export const Search: React.FC = () => {
     }));
 
     setAppliedQuery(event.target.value);
+    handleShowMobileMenu();
   };
 
   const handleClearQuery = () => {
     setAppliedQuery('');
 
     setSearchParams(getSearchWith(searchParams, { query: null }));
+
+    if (setShowMobileMenu) {
+      setShowMobileMenu(false);
+    }
   };
 
   return (
@@ -46,7 +63,7 @@ export const Search: React.FC = () => {
         value={appliedQuery}
         onChange={(event) => handleQueryChange(event)}
       />
-      <button className="Search__btn" type="button">
+      <div className="Search__btn">
         {query ? (
           <button
             type="button"
@@ -58,7 +75,11 @@ export const Search: React.FC = () => {
         ) : (
           <img src={searchIcon} alt="search" />
         )}
-      </button>
+      </div>
     </div>
   );
+};
+
+Search.defaultProps = {
+  setShowMobileMenu: undefined,
 };

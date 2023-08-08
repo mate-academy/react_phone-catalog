@@ -101,7 +101,7 @@ export const Header: React.FC = () => {
           </div>
 
           <div className="mobile__search">
-            {showSearch && <Search />}
+            {showSearch && <Search setShowMobileMenu={setShowMobileMenu} />}
           </div>
           <ul className="mobile__menu">
             <li className="mobile__item">
