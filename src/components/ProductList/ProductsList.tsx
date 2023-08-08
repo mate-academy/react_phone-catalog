@@ -168,7 +168,13 @@ export const ProductsList: React.FC<Props> = ({ query }) => {
     } else {
       setItems(favoriteItem);
     }
-  }, [firstLocation, favoriteItem]);
+  }, [firstLocation]);
+
+  useEffect(() => {
+    if (firstLocation === 'favorites') {
+      setItems(favoriteItem);
+    }
+  }, [favoriteItem]);
 
   useEffect(() => {
     sortVisibleProd();
@@ -182,7 +188,7 @@ export const ProductsList: React.FC<Props> = ({ query }) => {
   const pageTitle = () => {
     switch (firstLocation) {
       case 'phones':
-        return 'Mobiel phones';
+        return 'Mobile phones';
 
       case 'tablets':
         return 'Tablets';
