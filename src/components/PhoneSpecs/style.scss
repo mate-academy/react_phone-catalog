@@ -1,0 +1,21 @@
+@import "../../styles/index.scss";
+
+.specification {
+  &__listItem {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  &__name {
+    @extend %bodyText;
+    color: $c-secondary;
+  }
+
+  &__value {
+    @extend %bodyText;
+    color: $c-primary;
+  }
+}

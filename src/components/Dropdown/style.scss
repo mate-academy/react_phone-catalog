@@ -1,0 +1,57 @@
+@import "../../styles/index.scss";
+
+.dropdown {
+  box-sizing: border-box;
+  text-align: left;
+  border: 1px solid $c-icons;
+  position: relative;
+  width: 176px;
+  @extend %buttons;
+  @include hover(border-color, $c-secondary);
+  &__input {
+    padding: 10px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    user-select: none;
+  }
+
+  &__tool {
+    background-image: url("../../images/icons/arrowDown.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 16px;
+    height: 16px;
+    &--active {
+      background-image: url("../../images/icons/arrowUp.svg");
+    }
+  }
+
+  &__menu {
+    position: absolute;
+    transform: translate(-1px, 4px);
+    width: 100%;
+    border: 1px solid $c-elements;
+    box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
+    overflow: auto;
+    background-color: #fff;
+    z-index: 1;
+    &Item {
+      padding: 5px 12px;
+      cursor: pointer;
+      color: $c-secondary;
+      font-size: 14px;
+      font-family: inherit;
+      font-weight: 500;
+      line-height: 21px;
+      &:first-child {
+        margin-top: 8px;
+      }
+      &:last-child {
+        margin-bottom: 8px;
+      }
+      @include hover(background-color, $c-background);
+      @include hover(color, $c-primary);
+    }
+  }
+}

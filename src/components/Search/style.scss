@@ -1,0 +1,77 @@
+@import "../../styles/index.scss";
+
+.search {
+  box-sizing: border-box;
+  max-width: 327px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: -1px 0 0 0 $c-elements;
+  &__form {
+    position: relative;
+    @include onMobile {
+      position: absolute;
+      right: 0;
+      top: 65px;
+    }
+  }
+}
+
+.control {
+  &__input {
+    display: block;
+    padding: 22px 24px;
+    @include onMobile {
+      padding: 20px 5px;
+    }
+    @extend %buttons;
+    color: $c-primary;
+    line-height: normal;
+    border: none;
+    &::placeholder {
+      color: $c-icons;
+    }
+    &:focus {
+      outline: none;
+      background-color: $c-background;
+    }
+  }
+
+  &__icons {
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    z-index: 2;
+    transform: translate(-16px, -8px);
+  }
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    background-size: contain;
+    background-repeat: no-repeat;
+    transition: all 0.3s ease-in-out;
+    &--deleteIcon {
+      background-image: url("../../images/icons/close.svg");
+      cursor: pointer;
+      &:hover {
+        background-image: url("../../images/icons/close_active.svg");
+      }
+    }
+    &--searchLoop {
+      background-image: url("../../images/icons/search.svg");
+    }
+  }
+
+  &__delete {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+  }
+}

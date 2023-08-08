@@ -1,0 +1,18 @@
+@import "../../styles/index.scss";
+
+.back {
+  padding-left: 8px;
+  @extend %smallText;
+  color: $c-secondary;
+  background-color: transparent;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+  @include hover (color, $c-primary);
+  &::before {
+    content: "<";
+    position: relative;
+    right: 8px;
+    color: $c-primary;
+  }
+}

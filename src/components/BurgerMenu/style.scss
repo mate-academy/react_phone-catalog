@@ -1,0 +1,77 @@
+@import "../../styles/index.scss";
+
+.btn {
+  display: none;
+  @include on820Max {
+    display: block;
+  }
+  position: absolute;
+  border: none;
+  background-color: transparent;
+  box-sizing: border-box;
+  top: 12px;
+  padding: 15px 0;
+  left: 88px;
+  cursor: pointer;
+  z-index: 4;
+  &__burger {
+    &,
+    &::before,
+    &::after {
+      transition: all 0.3s ease-in-out;
+      width: 2rem;
+      height: 4px;
+      border-radius: 10px;
+      background-color: $c-secondary;
+    }
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+    }
+    &::before {
+      transform: translateY(-10px);
+    }
+    &::after {
+      transform: translateY(10px);
+    }
+  }
+  &:hover {
+    .btn__burger {
+      &,
+      &::before,
+      &::after {
+        transition: all 0.3s ease-in-out;
+        background-color: $c-primary;
+      }
+    }
+  }
+
+  &__burgerClose {
+    &,
+    &::before,
+    &::after {
+      transition: all 0.3s ease-in-out;
+      width: 2rem;
+      height: 4px;
+      border-radius: 10px;
+      background-color: $c-secondary;
+    }
+    background-color: transparent;
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+    }
+    &::before {
+      transform: rotate(-45deg);
+
+    }
+    &::after {
+      transform: rotate(45deg);
+    }
+  }
+}

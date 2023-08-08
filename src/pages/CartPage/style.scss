@@ -1,0 +1,31 @@
+@import "../../styles/index.scss";
+
+.cartPage {
+  &__backLink {
+    margin: 40px 0 16px;
+  }
+
+  &__title {
+    @extend %h1;
+    margin: 0 0 24px;
+  }
+
+  &__content {
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 16px;
+
+    @include onTablet {
+      grid-template-columns: auto 2fr;
+    }
+
+    @include onMiniTablet {
+      grid-template: 1fr / 1fr;
+    }
+
+    @include onMobile {
+      grid-template: 1fr / 1fr;
+    }
+  }
+}

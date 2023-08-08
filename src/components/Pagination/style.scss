@@ -1,0 +1,69 @@
+@import "../../styles/index.scss";
+
+.pagination {
+  box-sizing: border-box;
+  &__links {
+    box-sizing: border-box;
+    padding-left: 0;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+
+    @include onMobile {
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    @include onMiniTablet {
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    @include onTablet {
+      flex-wrap: wrap;
+    }
+  }
+
+  &__link {
+    box-sizing: border-box;
+    position: relative;
+    display: block;
+    @extend %bodyText;
+    text-decoration: none;
+    line-height: 32px;
+    height: 32px;
+    width: 32px;
+    text-align: center;
+    color: #000;
+    background-color: #fff;
+    border: 1px solid $c-elements;
+    @include hover(border-color, $c-primary);
+  }
+
+  &__itemLi {
+    box-sizing: border-box;
+    margin-right: 8px;
+    &:first-child {
+      margin-right: 16px;
+    }
+    &:last-child() {
+      margin-left: 8px;
+      margin-right: 0;
+    }
+    &--disabled {
+      .pagination__link--prev,
+      .pagination__link--next {
+        cursor: auto;
+        color: $c-icons;
+        border-color: $c-elements;
+        pointer-events: none;
+      }
+    }
+
+    &--active {
+      .pagination__link {
+        color: #fff;
+        background-color: $c-primary;
+        border: 1px solid $c-primary;
+      }
+    }
+  }
+}

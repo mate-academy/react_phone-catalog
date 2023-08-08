@@ -1,0 +1,26 @@
+@import "../../styles/index.scss";
+
+.footer {
+  height: 96px;
+  line-height: 96px;
+  &__items {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &__link {
+    margin-right: 64px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 12px;
+    color: $c-secondary;
+    @include hover(color, $c-primary);
+    &:last-child {
+      margin-right: 0;
+    }
+    @include onMobile {
+      margin-right: 12px;
+    }
+  }
+}

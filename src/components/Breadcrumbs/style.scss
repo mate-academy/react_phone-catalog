@@ -1,0 +1,42 @@
+@import "../../styles/index.scss";
+
+.breadcrumbs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  &__home {
+    display: grid;
+    place-items: center;
+  }
+
+  &__link,
+  &__text {
+    margin-left: 24px;
+    @extend %smallText;
+    font-weight: 600;
+    text-decoration: none;
+    position: relative;
+  }
+
+  &__link {
+    color: $c-primary;
+    cursor: pointer;
+  }
+  &__text {
+    color: $c-secondary;
+  }
+
+  &__link::before,
+  &__text::before {
+    box-sizing: border-box;
+    position: absolute;
+    content: url("../../images/icons/arrowRightGray.svg");
+    left: -16px;
+    top: 0;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 16px;
+    height: 16px;
+  }
+}

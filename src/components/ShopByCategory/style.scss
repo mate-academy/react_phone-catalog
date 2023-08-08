@@ -1,0 +1,28 @@
+@import "../../styles/index.scss";
+
+.categories {
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+}
+
+.list {
+  &__item {
+    margin-bottom: 80px;
+    @include onTablet {
+      margin-bottom: 40px;
+      width: 100%;
+    }
+    @include onMiniTablet {
+      margin-bottom: 30px;
+      width: 100%;
+    }
+    @include onMobile {
+      margin-bottom: 20px;
+      width: 100%;
+    }
+  }
+}

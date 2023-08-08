@@ -1,0 +1,176 @@
+@import "../../styles/index.scss";
+
+.productCard {
+  display: block;
+  box-sizing: border-box;
+  width: 272px;
+  border: 1px solid $c-elements;
+  padding: 32px 24px 24px;
+
+  &__link {
+    text-decoration: none;
+  }
+
+  &__underline {
+    display: inline-block;
+    border-bottom: 1px solid $c-elements;
+    height: 1px;
+    width: 100%;
+    margin-bottom: 16px;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__button-add {
+    width: 176px;
+    background-color: $c-primary;
+    color: #fff;
+    font-weight: 600;
+    line-height: 21px;
+    font-size: 14px;
+    text-align: center;
+    padding: 8px 0;
+    border: 1px solid transparent;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    &:hover {
+      box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+    }
+    &--includes {
+      background-color: #fff;
+      border: 1px solid $c-elements;
+      color: $c-added;
+    }
+  }
+
+  &__button-favorite {
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    border: 1px solid $c-icons;
+    cursor: pointer;
+    background-color: #fff;
+    transition: all 0.3s ease-in-out;
+    position: relative;
+
+    .icon {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      transform: translateY(2px);
+      transition: all 0.3s ease-in-out;
+      &-hearth {
+        background-image: url("../../images/icons/favorites.svg");
+        &--selected {
+          background-image: url("../../images/icons/favoritesSelected.svg");
+        }
+      }
+    }
+    &:hover,
+    &:focus {
+      border: 1px solid $c-primary;
+    }
+  }
+
+  &__image {
+    display: flex;
+    margin: 0 auto 24px;
+    height: 208px;
+    width: 208px;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+    position: relative;
+    transform: translateX(-50%);
+    top: 50%;
+    left: 50%;
+  }
+
+  &__nameWrapper {
+    height: 42px;
+    display: flex;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  &__name {
+    font-family: "Mont", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    color: $c-primary;
+  }
+
+  &__prices {
+    font-size: 22px;
+    line-height: 28px;
+  }
+
+  &__specs {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.price {
+  margin-bottom: 6px;
+  &__current {
+    font-weight: 700;
+    color: $c-primary;
+    padding-right: 8px;
+    &::before {
+      content: "$";
+    }
+  }
+
+  &__old {
+    font-weight: 500;
+    color: $c-secondary;
+    text-decoration-line: line-through;
+    &::before {
+      content: "$";
+    }
+  }
+}
+
+.details {
+  font-size: 12px;
+  line-height: 15px;
+  margin-bottom: 16px;
+  font-weight: 600;
+  &__parts {
+    color: $c-secondary;
+  }
+
+  &__part {
+    margin: 0 0 8px;
+  }
+
+  &__values {
+    text-align: right;
+    color: $c-primary;
+  }
+
+  &__value {
+    margin: 0 0 8px;
+  }
+}
+
+.image {
+  &__item {
+    max-width: none;
+    min-width: auto;
+    min-height: auto;
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}

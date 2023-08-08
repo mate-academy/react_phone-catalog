@@ -1,0 +1,14 @@
+@import "../../styles/index.scss";
+
+.content-header {
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0 1px 0 $c-elements;
+  &__part {
+    display: flex;
+    &--left {
+      padding-left: 24px;
+      align-items: start;
+    }
+  }
+}

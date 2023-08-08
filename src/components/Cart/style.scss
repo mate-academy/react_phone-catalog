@@ -1,0 +1,57 @@
+@import "../../styles/index.scss";
+
+.cart {
+  margin: auto 0;
+  box-shadow: -1px 0 0 $c-elements;
+  &__link {
+    display: block;
+    background-image: url("../../images/icons/cart.svg");
+    @extend %buttonSVG;
+    text-decoration: none;
+    height: 64px;
+    width: 64px;
+    position: relative;
+    &--active {
+      color: $c-primary;
+      position: relative;
+      &::after {
+        content: "";
+        position: absolute;
+        background-color: $c-primary;
+        height: 3px;
+        width: 100%;
+        left: 0;
+        bottom: -1px;
+      }
+    }
+    &Value {
+      line-height: 14px;
+      text-align: center;
+      font-family: Mont, sans-serif;
+      font-size: 9px;
+      font-weight: 600;
+      color: #fff;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(0%, -100%);
+      width: 14px;
+      height: 14px;
+    }
+    &--contain {
+      &::before {
+        content: " ";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(0%, -100%);
+        border-radius: 50%;
+        box-sizing: border-box;
+        width: 14px;
+        height: 14px;
+        border: 1px solid #fff;
+        background-color: $c-danger;
+      }
+    }
+  }
+}
