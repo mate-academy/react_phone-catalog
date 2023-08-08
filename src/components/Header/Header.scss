@@ -1,0 +1,126 @@
+.header {
+  height: 65px;
+  border-bottom: 1px solid #e2e6e9;
+  z-index: 0;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+
+  &__menu {
+    display: flex;
+    flex-direction: row;
+  }
+
+  &__logo {
+    height: 24px;
+    width: 40px;
+    margin: 20px 24px;
+  }
+
+  &__link {
+    font-family: "Mont", sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 0.04em;
+    color: #89939a;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 20px 13px;
+    transition: transform 0.3s;
+    cursor: pointer;
+    margin-left: 42px;
+
+    &:first-of-type {
+      margin: 0;
+    }
+
+    &:hover,
+    &:active {
+      color: #313237;
+      position: relative;
+    }
+  }
+
+  &__form {
+    width: 327px;
+    border: 1px solid #e2e6e9;
+    padding: 22px 23px;
+    position: relative;
+
+    &::after {
+      content: "";
+      background-image: url(./Search.svg);
+      background-size: 16px;
+      background-repeat: no-repeat;
+      position: absolute;
+      top: 50%; /* вертикально по центру */
+      right: 23px; /* Відступ праворуч */
+      transform: translateY(-50%); /* Зсув на половину висоти для центрування */
+      width: 16px;
+      height: 16px;
+    }
+  }
+}
+
+.nav__link .is-active-link {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    background-color: #313237;
+    border-radius: 8px;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+  }
+}
+
+.search,
+.search:active {
+  width: 100%;
+  font-family: "Mont", sans-serif;
+  color: #b4bdc3;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 18px;
+  letter-spacing: 0;
+  text-align: left;
+  border: none;
+  outline: none;
+}
+
+.logo {
+  display: flex;
+  background-image: url(./icon_logo.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 40px;
+  height: 24px;
+}
+
+.icon {
+  display: flex;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 66px;
+  height: 64px;
+
+  &-favourites {
+    background-image: url(./Favourites.svg);
+  }
+  &-cart {
+    background-image: url(./Cart.svg);
+  }
+  &-back {
+    background-image: url(../Footer/button-back.svg);
+    width: 32px;
+    height: 32px;
+  }
+
+}

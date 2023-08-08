@@ -1,0 +1,44 @@
+.footer {
+  display: flex;
+  justify-content: space-between;
+  height: 96px;
+  border-top: 1px solid #e2e6e9;
+  align-items: center;
+  margin: 0 152px;
+
+  &__logo {
+    display: flex;
+  }
+
+  &__menu {
+    width: 293px;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.button {
+  display: flex;
+  justify-content: space-between;
+  width: 118px;
+  height: 32px;
+  border: none;
+  background: none;
+  cursor: pointer;
+
+  &__text {
+    font-family: "Mont", sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 32px;
+    letter-spacing: 0;
+    text-align: left;
+    align-items: center;
+  }
+
+  &-link {
+    text-decoration: none;
+    font-family: "Mont", sans-serif;
+    font-size: 12px;
+  }
+}
