@@ -1,7 +1,8 @@
 import React, { useMemo } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useParams, useSearchParams } from 'react-router-dom';
 
 import { Product } from '../../types/Product';
+import { ProductType } from '../../types/ProductType';
 import { getSearchWith } from '../../helpers/searchHelper';
 import { sortOptions } from '../../helpers/sortOptions';
 
@@ -11,19 +12,18 @@ import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 import { Pagination } from '../../components/Pagination/Pagination';
 import { NoSearchResults }
   from '../../components/NoSearchResults/NoSearchResults';
+import { NoResults } from '../../components/NoResults/NoResults';
 
 import './ProductsPage.scss';
-import { NoResults } from '../../components/NoResults/NoResults';
 
 type Props = {
   products: Product[];
-  title: string;
 };
 
 const smallestPageSize = 4;
 
 export const ProductsPage: React.FC<Props> = React.memo((
-  { products, title },
+  { products },
 ) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query') || '';
@@ -31,6 +31,37 @@ export const ProductsPage: React.FC<Props> = React.memo((
   const sortBy = searchParams.get('sortBy') || 'age';
   const pageSize = searchParams.get('pageSize') || smallestPageSize;
   const currentPage = searchParams.get('currentPage') || 1;
+
+  const { category } = useParams();
+
+  let title = '' || 'Page';
+
+  const categoryProducts = useMemo(() => {
+    const validCategories = ['phones', 'tablets', 'accessories'];
+
+    if (category && validCategories.includes(category)) {
+      return products.filter((product) => {
+        switch (category) {
+          case 'phones':
+            title = 'Mobile phones';
+
+            return product.type === ProductType.phone;
+          case 'tablets':
+            title = 'Tablets';
+
+            return product.type === ProductType.tablet;
+          case 'accessories':
+            title = 'Accessories';
+
+            return product.type === ProductType.accessory;
+          default:
+            return false;
+        }
+      });
+    }
+
+    return [];
+  }, [products, category]);
 
   const handleSortChange = (newValue: string) => {
     setSearchParams(
@@ -59,13 +90,13 @@ export const ProductsPage: React.FC<Props> = React.memo((
   };
 
   const filteredProducts = useMemo(() => {
-    return products.filter(product => {
+    return categoryProducts.filter(product => {
       const normalizedQuery = query.toLowerCase().trim();
       const normalizedName = product.name.toLowerCase().trim();
 
       return normalizedName.includes(normalizedQuery);
     });
-  }, [products, query]);
+  }, [categoryProducts, query]);
 
   const sortedProducts = useMemo(() => {
     const productsCopy = [...filteredProducts];

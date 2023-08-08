@@ -28,12 +28,11 @@ import { useDisableScrollOnPopup } from '../../helpers/useDisableScrollOnPopup';
 import './ProductDetailsPage.scss';
 
 type Props = {
-  suggestedProducts: Product[];
   products: Product[];
 };
 
 export const ProductDetailsPage: React.FC<Props> = React.memo(
-  ({ suggestedProducts, products }) => {
+  ({ products }) => {
     const location = useLocation();
     const propsData: ProductDetails = location.state;
 
@@ -120,9 +119,11 @@ export const ProductDetailsPage: React.FC<Props> = React.memo(
 
     useDisableScrollOnPopup(showPopup);
 
-    const correctedSuggestedProducts = useMemo(() => {
-      return suggestedProducts.filter((prod) => prod.id !== currentProduct?.id);
-    }, [suggestedProducts, currentProduct]);
+    const suggestedProducts = useMemo(() => {
+      const shuffledProducts = [...products].sort(() => Math.random() - 0.5);
+
+      return shuffledProducts.filter((prod) => prod.id !== currentProduct?.id);
+    }, [products, currentProduct]);
 
     return (
       <div className="ProductDetailsPage">
@@ -273,7 +274,12 @@ export const ProductDetailsPage: React.FC<Props> = React.memo(
                   </div>
                 </div>
 
-                <div className="ProductDetailsPage__id">{`ID: ${propsData?.id}`}</div>
+                <div className="ProductDetailsPage__id">
+                  <div className="ProductDetailsPage__id-name">ID:</div>
+                  <div className="ProductDetailsPage__id-value">
+                    {propsData?.id}
+                  </div>
+                </div>
               </div>
 
               <div className="ProductDetailsPage__info">
@@ -346,7 +352,7 @@ export const ProductDetailsPage: React.FC<Props> = React.memo(
 
               <ProductsSlider
                 title="You may also like"
-                products={correctedSuggestedProducts}
+                products={suggestedProducts}
                 key={propsData?.id}
               />
             </div>

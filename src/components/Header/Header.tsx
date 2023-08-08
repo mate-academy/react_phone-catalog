@@ -79,6 +79,7 @@ export const Header: React.FC = () => {
 
         <div className={cn('header__mobile mobile', {
           show: showMobileMenu,
+          'show-menu': showMobileMenu,
         })}
         >
           <div className="mobile__header">
@@ -106,10 +107,7 @@ export const Header: React.FC = () => {
             <li className="mobile__item">
               <NavLink
                 to="/"
-                className={({ isActive }) => cn(
-                  'header__link',
-                  { 'header__link--active': isActive },
-                )}
+                className="header__link"
                 onClick={handleLinkClick}
               >
                 Home
@@ -118,10 +116,7 @@ export const Header: React.FC = () => {
             <li className="mobile__item">
               <NavLink
                 to="/phones"
-                className={({ isActive }) => cn(
-                  'header__link',
-                  { 'header__link--active': isActive },
-                )}
+                className="header__link"
                 onClick={handleLinkClick}
               >
                 Phones
@@ -130,10 +125,7 @@ export const Header: React.FC = () => {
             <li className="mobile__item">
               <NavLink
                 to="/tablets"
-                className={({ isActive }) => cn(
-                  'header__link',
-                  { 'header__link--active': isActive },
-                )}
+                className="header__link"
                 onClick={handleLinkClick}
               >
                 Tablets
@@ -142,10 +134,7 @@ export const Header: React.FC = () => {
             <li className="mobile__item">
               <NavLink
                 to="/accessories"
-                className={({ isActive }) => cn(
-                  'header__link',
-                  { 'header__link--active': isActive },
-                )}
+                className="header__link"
                 onClick={handleLinkClick}
               >
                 Accessories

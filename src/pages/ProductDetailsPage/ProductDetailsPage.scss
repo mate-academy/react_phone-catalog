@@ -126,6 +126,13 @@
     color: #b4bdc3;
     font-family: "MontSemiBold", Helvetica, sans-serif;
     font-size: 12px;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+
+    &-value {
+      min-width: fit-content;
+    }
 
     @include onTablet {
       margin-top: 40px;
