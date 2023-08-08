@@ -24,7 +24,7 @@
 @include laptop() {
   .phones-page {
     @include paddingInline(0);
-    @include width($breakpoint__m);
+    width: $breakpoint__m;
   }
   .search-bar {
     width: 188px;
