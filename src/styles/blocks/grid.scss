@@ -40,6 +40,24 @@
       }
     }
 
+    @for $start from 1 through 16 {
+      @for $end from $start through 16 {
+        &--#{$start}-#{$end} {
+          grid-column: #{$start} / #{$end + 1};
+        }
+      }
+    }
+
+    @for $start from 1 through 24 {
+      @for $end from $start through 24 {
+        &--desktop-#{$start}-#{$end} {
+          @include onDesktop {
+            grid-column: #{$start} / #{$end + 1};
+          }
+        }
+      }
+    }
+
     @for $start from 3 through 12 {
       @for $end from $start through 12 {
         &--#{$start}-#{$end} {
@@ -73,12 +91,10 @@
     //   }
     // }
 
-    @for $start from 1 through 24 {
+    @for $start from 17 through 24 {
       @for $end from $start through 24 {
-        &--desktop-#{$start}-#{$end} {
-          @include onDesktop {
-            grid-column: #{$start} / #{$end + 1};
-          }
+        &--#{$start}-#{$end} {
+          grid-column: #{$start} / #{$end + 1};
         }
       }
     }

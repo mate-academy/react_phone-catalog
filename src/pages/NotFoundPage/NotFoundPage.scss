@@ -2,12 +2,13 @@
 
 .page-not-found {
   display: flex;
-  justify-content: center;
   margin-top: 100px;
+  flex-direction: column;
+  align-items: center;
 
   &__title {
-    margin: 0;
-
     @extend %h1;
+
+    margin-bottom: 40px;
   }
 }

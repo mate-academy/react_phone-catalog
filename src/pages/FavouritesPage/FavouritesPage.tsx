@@ -1,16 +1,21 @@
-import { FC } from 'react';
-import { Product } from '../../types/Product';
+import { useContext } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { ProductsList } from '../../components/ProductsList';
-import { getPhones } from '../../helpers/getPhones';
+import { FavContext } from '../../context/FavContext';
+import { Search } from '../../components/Search';
 
-type Props = {
-  products: Product[],
-};
-
-export const FavouritesPage: FC<Props> = ({ products }) => {
-  const phones = getPhones(products);
+export const FavouritesPage = () => {
+  const { favourites } = useContext(FavContext);
+  const [searchParams] = useSearchParams();
+  const query = searchParams.get('query') || '';
 
   return (
-    <ProductsList products={phones} title="Mobile phones" />
+    <>
+      {query ? (
+        <Search products={favourites} />
+      ) : (
+        <ProductsList products={favourites} title="Favourites" />
+      )}
+    </>
   );
 };

@@ -17,13 +17,13 @@ import { Product } from './types/Product';
 import { Loader } from './components/Loader/Loader';
 import { FavouritesPage } from './pages/FavouritesPage/FavouritesPage';
 import { ProductDetailsPage } from './pages/ProductDetailsPage';
-
-// import { useLocalStorage } from './hooks/useLocalStorage';
+import { FavProvider } from './context/FavContext';
+import { CartProvider } from './context/CartContext';
+import { CartPage } from './pages/CartPage';
 
 export const App: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [products, setProducts] = useState<Product[]>([]);
-  // const [favourites, setFavourites] = useLocalStorage('favourites', []);
 
   const loadProducts = async () => {
     setIsLoading(true);
@@ -31,6 +31,8 @@ export const App: React.FC = () => {
       const productsFromServer = await getProducts();
 
       setProducts(productsFromServer);
+    } catch {
+      throw new Error('Loading Error');
     } finally {
       setIsLoading(false);
     }
@@ -52,50 +54,58 @@ export const App: React.FC = () => {
 
   return (
     <div className="App">
-      <Header />
+      <CartProvider>
+        <FavProvider>
+          <Header />
 
-      {isLoading ? (<Loader />) : (
-        <main className="page">
-          <div className="page__container">
-            <Routes>
-              <Route
-                path="/"
-                element={<HomePage products={products} />}
-              />
-              <Route
-                path="phones"
-                element={<PhonesPage products={products} />}
-              />
-              <Route
-                path="phones/:productId"
-                element={<ProductDetailsPage products={products} />}
-              />
-              <Route
-                path="tablets"
-                element={<TabletsPage products={products} />}
-              />
-              <Route
-                path="tablets/:productId"
-                element={<ProductDetailsPage products={products} />}
-              />
-              <Route
-                path="accessories"
-                element={<AccessoriesPage products={products} />}
-              />
-              <Route
-                path="accessories/:ProductId"
-                element={<ProductDetailsPage products={products} />}
-              />
-              <Route
-                path="favourites"
-                element={<FavouritesPage products={products} />}
-              />
-              <Route path="*" element={<NotFoundPage />} />
-              <Route path="home" element={<Navigate to="/" replace />} />
-            </Routes>
-          </div>
-        </main>
-      )}
+          <main className="page">
+            {isLoading ? (<Loader />) : (
+              <div className="page__container">
+                <Routes>
+                  <Route
+                    path="/"
+                    element={<HomePage products={products} />}
+                  />
+                  <Route
+                    path="phones"
+                    element={<PhonesPage products={products} />}
+                  />
+                  <Route
+                    path="phones/:productId"
+                    element={<ProductDetailsPage products={products} />}
+                  />
+                  <Route
+                    path="tablets"
+                    element={<TabletsPage products={products} />}
+                  />
+                  <Route
+                    path="tablets/:productId"
+                    element={<ProductDetailsPage products={products} />}
+                  />
+                  <Route
+                    path="accessories"
+                    element={<AccessoriesPage products={products} />}
+                  />
+                  <Route
+                    path="accessories/:ProductId"
+                    element={<ProductDetailsPage products={products} />}
+                  />
+                  <Route
+                    path="favourites"
+                    element={<FavouritesPage />}
+                  />
+                  <Route
+                    path="cart"
+                    element={<CartPage />}
+                  />
+                  <Route path="*" element={<NotFoundPage />} />
+                  <Route path="home" element={<Navigate to="/" replace />} />
+                </Routes>
+              </div>
+            )}
+          </main>
+        </FavProvider>
+      </CartProvider>
 
       <Footer />
     </div>

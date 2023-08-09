@@ -1,0 +1,90 @@
+@import "../../styles/utils/variables";
+@import "../../styles/utils/extends";
+
+.cart-card {
+
+  &__item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    width: 752px;
+    height: 128px;
+    border: 1px solid $elements-color;
+    margin-bottom: 16px;
+    padding-left: 24px;
+    padding-right: 30px;
+
+    &:hover {
+      box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  &__delete-button {
+    margin-right: 30px;
+    padding: 6px;
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
+  }
+
+  &__cross-image {
+    display: block;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+  }
+
+  &__image {
+    margin-right: 24px;
+    width: 80px;
+    height: 80px;
+  }
+
+  &__name {
+    @extend %body-text;
+
+    width: 300px;
+  }
+
+  &__quantity-container {
+    display: flex;
+    align-items: center;
+  }
+
+  &__button:first-child {
+    margin-right: 8px;
+  }
+
+  &__button:last-child {
+    margin-left: 8px;
+  }
+
+  &__quantity {
+    @extend %body-text;
+
+    width: 16px;
+    text-align: center;
+  }
+
+  &__price {
+    @extend %h2;
+
+    width: 60px;
+
+  }
+}

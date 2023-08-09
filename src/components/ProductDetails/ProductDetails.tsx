@@ -1,9 +1,16 @@
 /* eslint-disable max-len */
-import { FC, useEffect, useState } from 'react';
-import className from 'classnames';
+import {
+  FC,
+  useContext,
+  useEffect,
+  useState,
+} from 'react';
+import classNames from 'classnames';
 import { ProdDetails } from '../../types/ProdDetails';
 import { Product } from '../../types/Product';
 import './ProductDetails.scss';
+import { FavContext } from '../../context/FavContext';
+import { CartContext } from '../../context/CartContext';
 
 type Props = {
   details: ProdDetails,
@@ -35,6 +42,26 @@ export const ProductDetails: FC<Props> = ({ details, product }) => {
     setSelectedImage(images[0]);
   }, [images[0]]);
 
+  const { cartItems, addToCart, removeFromCart } = useContext(CartContext);
+  const isInCart = cartItems.find(item => item.product.id === product.id);
+  const handleAddToCart = () => {
+    if (isInCart) {
+      removeFromCart(product.id);
+    } else {
+      addToCart(product);
+    }
+  };
+
+  const { favourites, addToFav, removeFromFav } = useContext(FavContext);
+  const isFavourite = favourites.find(({ id }) => id === product.id);
+  const handleFavStatus = () => {
+    if (isFavourite) {
+      removeFromFav(product.id);
+    } else {
+      addToFav(product);
+    }
+  };
+
   return (
     <section className="page__section slider">
       <h1 className="product-details__title">{name}</h1>
@@ -47,7 +74,7 @@ export const ProductDetails: FC<Props> = ({ details, product }) => {
               <button
                 key={image}
                 type="button"
-                className={className('product-details__image-button', {
+                className={classNames('product-details__image-button', {
                   'product-details__image-button--selected':
                     image === selectedImage,
                 })}
@@ -82,16 +109,24 @@ export const ProductDetails: FC<Props> = ({ details, product }) => {
             <div className="product-details__actions">
               <button
                 type="button"
-                className="product-details__add-to-cart rectangular-button"
+                // className="product-details__add-to-cart rectangular-button"
+                className={classNames('product-details__add-to-cart', {
+                  'product-details__add-to-cart--active': isInCart,
+                })}
+                onClick={handleAddToCart}
               >
-                Add to cart
+                {isInCart ? 'Added to cart' : 'Add to cart'}
               </button>
               <div className="product-details__button-container">
                 <button
                   type="button"
-                  className="product-details__add-to-favourites square-button square-button--large"
+                  // className="product-details__add-to-favourites square-button square-button--large"
+                  className={classNames('product-details__add-to-fav square-button square-button--large', {
+                    'square-button--active product-details__add-to-fav--active': isFavourite,
+                  })}
+                  onClick={handleFavStatus}
                 >
-                  <img src="icons/favourites.svg" alt="next button" />
+                  {/* <img src="icons/favourites.svg" alt="next button" /> */}
                 </button>
               </div>
             </div>

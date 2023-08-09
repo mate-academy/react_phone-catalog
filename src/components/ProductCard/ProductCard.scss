@@ -105,10 +105,41 @@
     justify-content: space-between;
   }
 
+  &__add-to-fav {
+    background-image: url(../../icons/heart.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+
+    &--active {
+      background-image: url(../../icons/redHeart.svg);
+    }
+  }
+
   &__add-to-cart {
     @extend %button-text;
 
     margin-right: 8px;
     width: 100%;
+    border: 0;
+
+    color: $white-color;
+    background-color: $primary-color;
+    cursor: pointer;
+
+    &:hover {
+      border: 1px solid $primary-color;
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+      transition: box-shadow 0.3s ease-in-out;
+    }
+
+    &--active {
+      border: 1px solid $elements-color;
+      color: $green-color;
+      background-color: $white-color;
+
+      &:hover {
+        box-shadow: none;
+      }
+    }
   }
 }

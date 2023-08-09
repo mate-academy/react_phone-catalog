@@ -55,11 +55,11 @@ export const ProductDetailsPage: FC<Props> = ({ products }) => {
         <ProductNotFound />
       ) : (
         <>
-          <Breadcrumbs />
-          <BackButton />
           {isLoading && <Loader />}
           {details && selectedProduct && (
             <>
+              <Breadcrumbs />
+              <BackButton />
               <ProductDetails details={details} product={selectedProduct} />
               <Recommendations products={products} />
             </>

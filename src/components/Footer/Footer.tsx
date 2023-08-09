@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import { Link } from 'react-router-dom';
 import './Footer.scss';
 
 export const Footer: FC = () => {
@@ -12,24 +13,24 @@ export const Footer: FC = () => {
   return (
     <footer className="footer">
       <div className="footer__container">
-        <a href="/#" className="logo">
+        <Link to="/#" className="logo">
           <img
             src="icons/logo.svg"
             alt="logo"
           />
-        </a>
+        </Link>
         <nav className="footer__nav">
-          <a href="/#" className="footer__navlink">
+          <Link to="https://github.com/ifuride" className="footer__navlink">
             Github
-          </a>
+          </Link>
 
-          <a href="/#" className="footer__navlink">
+          <Link to="https://github.com/ifuride" className="footer__navlink">
             Contacts
-          </a>
+          </Link>
 
-          <a href="/#" className="footer__navlink">
+          <Link to="https://github.com/ifuride" className="footer__navlink">
             Rights
-          </a>
+          </Link>
         </nav>
         <button
           type="button"

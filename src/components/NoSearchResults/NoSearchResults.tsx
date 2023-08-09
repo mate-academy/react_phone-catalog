@@ -1,13 +1,14 @@
-import { FC } from 'react';
-import './NotFoundPage.scss';
 import { useNavigate } from 'react-router-dom';
+import './NoSearchResults.scss';
 
-export const NotFoundPage: FC = () => {
+export const NoSearchResults = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="page-not-found">
-      <h1 className="page-not-found__title">Page not found</h1>
+    <div className="no-results">
+      <h2 className="no-results__title">
+        No matches were found. Please try again or go to the Home page.
+      </h2>
       <button
         type="button"
         className="no-results__button rectangular-button"

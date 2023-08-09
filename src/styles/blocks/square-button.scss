@@ -7,8 +7,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
   background-color: transparent;
   cursor: pointer;
+
+  transition: all 0.3s;
 
   &:hover {
     border: 1px solid $primary-color;
@@ -32,5 +35,9 @@
   &--selected {
     color: $white-color;
     background-color: $primary-color;
+  }
+
+  &--active {
+    border: 1px solid $elements-color;
   }
 }

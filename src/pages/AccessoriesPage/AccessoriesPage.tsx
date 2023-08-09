@@ -17,7 +17,7 @@ export const AccessoriesPage: FC<Props> = ({ products }) => {
   return (
     <>
       {query ? (
-        <Search products={accessories} title="Search" />
+        <Search products={accessories} />
       ) : (
         <ProductsList products={accessories} title="Accessories" />
       )}

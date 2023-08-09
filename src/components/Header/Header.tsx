@@ -1,8 +1,10 @@
-import { FC } from 'react';
+import { FC, useContext } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import './Header.scss';
 import classNames from 'classnames';
 import { SearchBar } from '../SearchBar';
+import { FavContext } from '../../context/FavContext';
+import { CartContext } from '../../context/CartContext';
 
 type Props = {
   to: string,
@@ -21,9 +23,16 @@ export const PageNavLink: FC<Props> = ({ to, text }) => (
 );
 
 export const Header: FC = () => {
+  const { favourites } = useContext(FavContext);
+  const { cartItems } = useContext(CartContext);
   const { pathname } = useLocation();
+  const pageName = pathname.split('/').pop();
 
-  const showSearchbar = pathname !== '/' && pathname !== '/cart';
+  const showSearchbar = ['phones', 'tablets', 'accessories', 'favourites']
+    .includes(pageName || '');
+
+  const productsQuantity = cartItems
+    .reduce((total, cartItem) => total + cartItem.quantity, 0);
 
   return (
     <header className="header">
@@ -43,20 +52,36 @@ export const Header: FC = () => {
       </div>
       <div className="header__content header__content--right">
         {showSearchbar && <SearchBar />}
-        <Link to="/#favourites" className="header__link">
+        <NavLink
+          to="/favourites"
+          className={({ isActive }) => classNames('header__link', {
+            'header__link--active': isActive,
+          })}
+        >
           <img
             className="icon icon--favourites"
             src="icons/favourites.svg"
             alt=""
           />
-        </Link>
-        <Link to="/#cart" className="header__link">
+          {favourites.length > 0 && (
+            <div className="header__icon-count">{favourites.length}</div>
+          )}
+        </NavLink>
+        <NavLink
+          to="/cart"
+          className={({ isActive }) => classNames('header__link', {
+            'header__link--active': isActive,
+          })}
+        >
           <img
             className="icon icon--cart"
             src="icons/cart.svg"
             alt="shopping cart"
           />
-        </Link>
+          {cartItems.length > 0 && (
+            <div className="header__icon-count">{productsQuantity}</div>
+          )}
+        </NavLink>
       </div>
     </header>
   );

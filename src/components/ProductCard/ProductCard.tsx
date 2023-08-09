@@ -1,8 +1,11 @@
 /* eslint-disable max-len */
-import { FC } from 'react';
+import { FC, useContext } from 'react';
 import { Link } from 'react-router-dom';
+import classNames from 'classnames';
 import { Product } from '../../types/Product';
 import { getProductPath } from '../../helpers/getProductPath';
+import { FavContext } from '../../context/FavContext';
+import { CartContext } from '../../context/CartContext';
 import './ProductCard.scss';
 
 type Props = {
@@ -21,6 +24,7 @@ const getGridColumn = (index: number) => {
 
 export const ProductCard: FC<Props> = ({ product, index }) => {
   const {
+    id,
     imageUrl,
     name,
     snippet,
@@ -31,32 +35,26 @@ export const ProductCard: FC<Props> = ({ product, index }) => {
     ram,
   } = product;
 
-  // console.log(getProductPath(product));
+  const { favourites, addToFav, removeFromFav } = useContext(FavContext);
+  const isFavourite = favourites.find(item => item.id === id);
+  const handleFavStatus = () => {
+    if (isFavourite) {
+      removeFromFav(id);
+    } else {
+      addToFav(product);
+    }
+  };
 
-  // const generateSlugForProduct = (
-  //   { type1, id1 }: Pick<Product, 'type1' | 'id1'>,
-  // ) => {
-  //   let directory: string;
+  const { cartItems, addToCart, removeFromCart } = useContext(CartContext);
+  const isInCart = cartItems.find(item => item.id === id);
+  const handleAddToCart = () => {
+    if (isInCart) {
+      removeFromCart(id);
+    } else {
+      addToCart(product);
+    }
+  };
 
-  //   switch (type1) {
-  //     case 'phone':
-  //       directory = 'phones';
-  //       break;
-  //     case 'tablet':
-  //       directory = 'tablets';
-  //       break;
-  //     case 'accessory':
-  //       directory = 'accessories';
-  //       break;
-  //     default:
-  //       return '/';
-  //   }
-
-  //   return `/${directory}/${id1}`;
-  // };
-
-  // const slug = generateSlugForProduct({ type, id });
-  // const { pathname } = useLocation();
   const discountPrice = Math.round(price * (1 - 0.01 * discount));
 
   return (
@@ -69,7 +67,7 @@ export const ProductCard: FC<Props> = ({ product, index }) => {
             alt={snippet}
           />
         </div>
-        <h4 className="product-card__title">{name}</h4>
+        <div className="product-card__title">{name}</div>
       </Link>
       <div className="product-card__price-container">
         {discount ? (
@@ -98,17 +96,22 @@ export const ProductCard: FC<Props> = ({ product, index }) => {
       <div className="product-card__actions">
         <button
           type="button"
-          className="product-card__add-to-cart rectangular-button"
+          className={classNames('product-card__add-to-cart', {
+            'product-card__add-to-cart--active': isInCart,
+          })}
+          onClick={handleAddToCart}
         >
-          Add to cart
+          {isInCart ? 'Added to cart' : 'Add to cart'}
         </button>
         <div className="product-card__button-container">
           <button
             type="button"
-            className="product-card__add-to-favourites square-button square-button--medium"
-          >
-            <img src="icons/favourites.svg" alt="next button" />
-          </button>
+            className={classNames('product-card__add-to-fav square-button square-button--medium', {
+              'square-button--active product-card__add-to-fav--active': isFavourite,
+            })}
+            onClick={handleFavStatus}
+            aria-label="add to favourites"
+          />
         </div>
       </div>
     </div>

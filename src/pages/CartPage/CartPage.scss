@@ -1,0 +1,10 @@
+@import "../../styles/utils/extends";
+
+.cart {
+
+  &__title {
+    @extend %h1;
+
+    margin-bottom: 24px;
+  }
+}

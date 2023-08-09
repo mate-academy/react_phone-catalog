@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useLocation, useSearchParams } from 'react-router-dom';
 import { Product } from '../../types/Product';
 import { DropdownMenu } from '../DropdownMenu';
 import { ProductCard } from '../ProductCard';
@@ -7,9 +7,9 @@ import { Pagination } from '../Pagination';
 import { getVisibleProducts } from '../../helpers/getVisibleProducts';
 import { getNumbers } from '../../helpers/getNumbers';
 import { Filter } from '../../types/Filter';
-import './ProductsList.scss';
 import { NoResults } from '../NoResults';
 import { Breadcrumbs } from '../Breadcrumbs';
+import './ProductsList.scss';
 
 type Props = {
   products: Product[],
@@ -74,6 +74,12 @@ export const ProductsList: FC<Props> = ({ products, title }) => {
     currentPage,
   );
 
+  const { pathname } = useLocation();
+  const pageName = pathname.split('/').pop();
+
+  const showFilters = ['phones', 'tablets', 'accessories']
+    .includes(pageName || '');
+
   return (
     <section className="products-list__container">
       <Breadcrumbs />
@@ -84,30 +90,33 @@ export const ProductsList: FC<Props> = ({ products, title }) => {
 
       {total > 0 ? (
         <>
-          <div className="products-list__filters">
-            <div className="products-list__drop-down-container">
-              <DropdownMenu
-                title="Sort by"
-                options={sortOptions}
-                initialValue={
-                  findFilterName(selectedSortOption, sortOptions) || 'Newest'
-                }
-                searchParamsKey="sort"
-              />
-            </div>
+          {showFilters && (
+            <div className="products-list__filters">
+              <div className="products-list__drop-down-container">
+                <DropdownMenu
+                  title="Sort by"
+                  options={sortOptions}
+                  initialValue={
+                    findFilterName(selectedSortOption, sortOptions) || 'Newest'
+                  }
+                  searchParamsKey="sort"
+                />
+              </div>
 
-            <div className="products-list__drop-down-container">
-              <DropdownMenu
-                title="Items on page"
-                options={itemsPerPageOptions}
-                initialValue={
-                  findFilterName(selectedItemsPerPage, itemsPerPageOptions)
-                    || '16'
-                }
-                searchParamsKey="perPage"
-              />
+              <div className="products-list__drop-down-container">
+                <DropdownMenu
+                  title="Items on page"
+                  options={itemsPerPageOptions}
+                  initialValue={
+                    findFilterName(selectedItemsPerPage, itemsPerPageOptions)
+                      || '16'
+                  }
+                  searchParamsKey="perPage"
+                />
+              </div>
             </div>
-          </div>
+          )}
+
           <div className="products-list__main-content" data-cy="productList">
             <ul className="grid" data-cy="cardsContainer">
               {visibleItems.map((product, index) => (

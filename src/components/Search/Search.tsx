@@ -3,14 +3,13 @@ import { useSearchParams } from 'react-router-dom';
 import { Product } from '../../types/Product';
 import { searchProducts } from '../../helpers/searchProducts';
 import { ProductCard } from '../ProductCard';
-import { NoResults } from '../NoResults';
+import { NoSearchResults } from '../NoSearchResults';
 
 type Props = {
   products: Product[],
-  title: string,
 };
 
-export const Search: FC<Props> = ({ products, title }) => {
+export const Search: FC<Props> = ({ products }) => {
   const [searchParams] = useSearchParams();
   const query = searchParams.get('query') || '';
 
@@ -34,7 +33,7 @@ export const Search: FC<Props> = ({ products, title }) => {
           </div>
         </>
       ) : (
-        <NoResults title={title} />
+        <NoSearchResults />
       )}
     </section>
   );

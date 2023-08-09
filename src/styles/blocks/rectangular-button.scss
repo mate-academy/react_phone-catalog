@@ -5,7 +5,7 @@
   @extend %button-text;
 
   // width: 100%;
-  border: 0;
+  border: 1px solid $primary-color;
 
   color: $white-color;
   background-color: $primary-color;

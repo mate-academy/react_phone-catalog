@@ -62,10 +62,56 @@
   }
 
   &__link {
+    position: relative;
+
     display: flex;
     width: 64px;
     height: 64px;
     box-sizing: border-box;
     border-left: 1px solid $elements-color;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+
+      height: 3px;
+      width: 100%;
+
+      background-color: $primary-color;
+      transition: all 0.3s ease-in-out;
+      transform: scale(0);
+    }
+
+    &--active {
+      color: $primary-color;
+
+      &::after {
+        content: "";
+        transform: scale(1);
+      }
+    }
+  }
+
+  &__icon-count {
+    position: absolute;
+    left: 34px;
+    top: 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    
+    color: $white-color;
+    background-color: $red-color;
+    text-decoration: none;
+
+    font-family: "Mont Bold";
+    font-weight: 600;
+    font-size: 9px;
   }
 }
