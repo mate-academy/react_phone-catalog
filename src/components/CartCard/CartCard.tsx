@@ -40,6 +40,7 @@ export const CartCard: FC<Props> = ({ cartItem }) => {
           type="button"
           className="cart-card__delete-button"
           onClick={() => handleRemoveFromCart(id)}
+          data-cy="cartDeleteButton"
         >
           <img
             className="cart-card__cross-image"

@@ -7,19 +7,12 @@ import { getProductPath } from '../../helpers/getProductPath';
 import { FavContext } from '../../context/FavContext';
 import { CartContext } from '../../context/CartContext';
 import './ProductCard.scss';
+import { getGridColumn } from '../../helpers/getGridColumn';
+import { applyDiscount } from '../../helpers/applyDiscount';
 
 type Props = {
   product: Product,
   index: number,
-};
-
-const getGridColumn = (index: number) => {
-  const itemsInRow = 4;
-  const rowIndex = index % itemsInRow;
-  const start = rowIndex * 6 + 1;
-  const end = rowIndex * 6 + 6;
-
-  return `${start}-${end}`;
 };
 
 export const ProductCard: FC<Props> = ({ product, index }) => {
@@ -37,6 +30,7 @@ export const ProductCard: FC<Props> = ({ product, index }) => {
 
   const { favourites, addToFav, removeFromFav } = useContext(FavContext);
   const isFavourite = favourites.find(item => item.id === id);
+
   const handleFavStatus = () => {
     if (isFavourite) {
       removeFromFav(id);
@@ -46,6 +40,7 @@ export const ProductCard: FC<Props> = ({ product, index }) => {
   };
 
   const { cartItems, addToCart, removeFromCart } = useContext(CartContext);
+
   const isInCart = cartItems.find(item => item.id === id);
   const handleAddToCart = () => {
     if (isInCart) {
@@ -55,10 +50,13 @@ export const ProductCard: FC<Props> = ({ product, index }) => {
     }
   };
 
-  const discountPrice = Math.round(price * (1 - 0.01 * discount));
+  const discountPrice = applyDiscount(product);
 
   return (
-    <div className={`product-card grid__item grid__item--desktop-${getGridColumn(index)}`}>
+    <div
+      className={`product-card grid__item grid__item--desktop-${getGridColumn(index)}`}
+      data-cy="cardsContainer"
+    >
       <Link to={`/${getProductPath(product)}`} className="product-card__link">
         <div className="product-card__image-container">
           <img
@@ -111,6 +109,7 @@ export const ProductCard: FC<Props> = ({ product, index }) => {
             })}
             onClick={handleFavStatus}
             aria-label="add to favourites"
+            data-cy="addToFavorite"
           />
         </div>
       </div>

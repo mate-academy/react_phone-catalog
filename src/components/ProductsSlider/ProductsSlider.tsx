@@ -2,7 +2,6 @@ import { FC, useState } from 'react';
 import classNames from 'classnames';
 import { Product } from '../../types/Product';
 import { ProductCard } from '../ProductCard';
-
 import './ProductsSlider.scss';
 
 type Props = {
@@ -18,6 +17,9 @@ export const ProductsSlider: FC<Props> = ({
   const visibleCount = 4;
   const end = start + visibleCount;
 
+  const handleShowPrev = () => setStart((prev) => prev - 1);
+  const handleShowNext = () => setStart((prev) => prev + 1);
+
   return (
     <>
       <div className="slider__header">
@@ -30,7 +32,7 @@ export const ProductsSlider: FC<Props> = ({
             className={classNames('slider__button square-button', {
               'square-button--disabled': start === 0,
             })}
-            onClick={() => setStart((prev) => prev - 1)}
+            onClick={handleShowPrev}
           >
             <img src="icons/leftArrow.svg" alt="next button" />
           </button>
@@ -39,7 +41,7 @@ export const ProductsSlider: FC<Props> = ({
             className={classNames('slider__button square-button', {
               'square-button--disabled': end === products.length,
             })}
-            onClick={() => setStart((prev) => prev + 1)}
+            onClick={handleShowNext}
           >
             <img src="icons/rightArrow.svg" alt="previous button" />
           </button>

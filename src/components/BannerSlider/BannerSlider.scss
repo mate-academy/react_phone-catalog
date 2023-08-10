@@ -1,10 +1,10 @@
 @import "../../styles/utils/variables";
 
 .banner-slider {
-  margin-top: 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 16px;
 
   &__container {
     display: flex;
@@ -19,12 +19,14 @@
   &__img {
     width: 0;
     height: 0;
+
     opacity: 0;
     transition: opacity 0.3s;
 
     &--active {
       width: 1040px;
       height: 400px;
+
       opacity: 1;
       object-fit: cover;
       object-position: center;
@@ -34,6 +36,7 @@
   &__button {
     width: 32px;
     border: 1px solid $icons-color;
+
     background-color: $white-color;
     cursor: pointer;
 
@@ -62,9 +65,9 @@
   &__dot-button {
     width: 14px;
     height: 4px;
-    background-color: $elements-color;
-    border: none;
+    border: 0;
 
+    background-color: $elements-color;
     cursor: pointer;
 
     &--active {

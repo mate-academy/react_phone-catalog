@@ -138,11 +138,9 @@
     list-style: none;
 
     &--detailed {
-      // @extend %body-text;
-
+      line-height: 21px;
       font-family: "Mont", sans-serif;
       font-size: 14px;
-      line-height: 21px;
     }
   }
 

@@ -3,6 +3,7 @@ import './ProductNotFound.scss';
 
 export const ProductNotFound = () => {
   const navigate = useNavigate();
+  const handleGoHome = () => navigate('/');
 
   return (
     <div className="product-not-found">
@@ -12,7 +13,7 @@ export const ProductNotFound = () => {
       <button
         type="button"
         className="no-results__button rectangular-button"
-        onClick={() => navigate('/')}
+        onClick={handleGoHome}
       >
         Visit Home page
       </button>

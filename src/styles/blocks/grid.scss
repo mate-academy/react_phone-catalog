@@ -2,26 +2,10 @@
   display: grid;
   grid-template-columns: repeat(24, 1fr);
   gap: 40px 16px;
-  transition: transform 1s;
-
   margin: 0;
   padding: 0;
 
-  @include onTablet {
-    grid-template-columns: repeat(24, 1fr);
-  }
-
-  @include onDesktop {
-    grid-template-columns: repeat(24, 1fr);
-  }
-
-  // &--desktop {
-  //   display: block;
-
-  //   @include onDesktop {
-  //     display: grid;
-  //   }
-  // }
+  transition: transform 1s;
 
   &__item {
     @for $start from 1 through 2 {
@@ -81,15 +65,6 @@
         }
       }
     }
-    // @for $start from 3 through 12 {
-    //   @for $end from $start through 12 {
-    //     &--tablet-#{$start}-#{$end} {
-    //       // @include onTablet {
-    //       grid-column: #{$start} / #{$end + 1};
-    //       // }
-    //     }
-    //   }
-    // }
 
     @for $start from 17 through 24 {
       @for $end from $start through 24 {

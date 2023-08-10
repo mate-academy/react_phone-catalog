@@ -4,6 +4,7 @@
 .shop-by-category {
   &__title {
     @extend %h1;
+
     margin: 0 0 24px;
   }
 
@@ -58,11 +59,13 @@
 
   &__subtitle {
     @extend %h3;
+
     margin: 0;
   }
 
   &__qty {
     @extend %body-text;
+    
     color: $secondary-color;
   }
 }

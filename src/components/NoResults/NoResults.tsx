@@ -8,6 +8,7 @@ type Props = {
 
 export const NoResults: FC<Props> = ({ title }) => {
   const navigate = useNavigate();
+  const handleGoHome = () => navigate('/');
 
   return (
     <div className="no-results">
@@ -15,7 +16,7 @@ export const NoResults: FC<Props> = ({ title }) => {
       <button
         type="button"
         className="no-results__button rectangular-button"
-        onClick={() => navigate('/')}
+        onClick={handleGoHome}
       >
         Visit Home page
       </button>

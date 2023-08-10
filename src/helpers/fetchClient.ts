@@ -24,17 +24,5 @@ const request = (url: string) => {
     });
 };
 
-// function print(value: Product[]) {
-//   console.log(value);
-// }
-
-// function logError(error: Error) {
-//   console.warn('Error occured:', error);
-// }
-
-// getProducts()
-//   .then(print);
-//   // .catch(logError);
-
 export const getProducts = () => request('');
 export const getProductDetails = (id: string) => request(`/${id}`);

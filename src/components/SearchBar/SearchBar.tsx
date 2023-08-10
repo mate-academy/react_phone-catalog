@@ -32,10 +32,6 @@ export const SearchBar: FC = () => {
         pathname: currentPathname,
         search: currentSearchParams.toString(),
       });
-
-      // setSearchParams(
-      //  getSearchWith(searchParams, { query: curQuery || null }),
-      // );
     }, 500),
     [],
   );
@@ -73,6 +69,7 @@ export const SearchBar: FC = () => {
           'search__button--disabled': !query,
         })}
         onClick={onQueryReset}
+        data-cy="searchDelete"
       >
         {query ? (
           <img

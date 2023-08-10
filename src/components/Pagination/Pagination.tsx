@@ -3,7 +3,6 @@ import classNames from 'classnames';
 import { Link, useSearchParams } from 'react-router-dom';
 import { getSearchWith } from '../../helpers/searchHelper';
 import './Pagination.scss';
-import '../../styles/blocks/square-button.scss';
 
 type Props = {
   currentPage: number,
@@ -28,6 +27,7 @@ export const Pagination: FC<Props> = ({
           className={classNames('pagination__nav-button square-button', {
             'square-button--disabled': currentPage === 1,
           })}
+          data-cy="paginationLeft"
         >
           <img src="icons/leftArrow.svg" alt="previous button" />
         </Link>
@@ -61,6 +61,7 @@ export const Pagination: FC<Props> = ({
           className={classNames('pagination__nav-button square-button', {
             'square-button--disabled': currentPage === pageQty.length,
           })}
+          data-cy="paginationRight"
         >
           <img src="icons/rightArrow.svg" alt="next button" />
         </Link>

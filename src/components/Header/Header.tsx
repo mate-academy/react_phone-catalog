@@ -1,26 +1,11 @@
 import { FC, useContext } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import './Header.scss';
 import classNames from 'classnames';
 import { SearchBar } from '../SearchBar';
 import { FavContext } from '../../context/FavContext';
 import { CartContext } from '../../context/CartContext';
-
-type Props = {
-  to: string,
-  text: string,
-};
-
-export const PageNavLink: FC<Props> = ({ to, text }) => (
-  <NavLink
-    to={to}
-    className={({ isActive }) => classNames('header__navlink', {
-      'header__navlink--active': isActive,
-    })}
-  >
-    {text}
-  </NavLink>
-);
+import { PageNavLink } from '../PageNavLink';
+import './Header.scss';
 
 export const Header: FC = () => {
   const { favourites } = useContext(FavContext);

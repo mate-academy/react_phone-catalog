@@ -58,7 +58,6 @@ const findFilterName = (value: string, optionsArray: Filter[]) => {
 
 export const ProductsList: FC<Props> = ({ products, title }) => {
   const [searchParams] = useSearchParams();
-  // const query = searchParams.get('query') || '';
   const selectedSortOption = searchParams.get('sort') || sortOptions[0].value;
   const selectedItemsPerPage = searchParams.get('perPage')
     || itemsPerPageOptions[2].value;
@@ -117,8 +116,8 @@ export const ProductsList: FC<Props> = ({ products, title }) => {
             </div>
           )}
 
-          <div className="products-list__main-content" data-cy="productList">
-            <ul className="grid" data-cy="cardsContainer">
+          <div className="products-list__main-content">
+            <ul className="grid" data-cy="productList">
               {visibleItems.map((product, index) => (
                 <ProductCard product={product} key={product.id} index={index} />
               ))}

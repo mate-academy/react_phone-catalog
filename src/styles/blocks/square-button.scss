@@ -1,16 +1,15 @@
 @import "../utils/variables";
 
 .square-button {
-  width: 32px;
-  height: 32px;
-  border: 1px solid $icons-color;
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid $icons-color;
 
   background-color: transparent;
   cursor: pointer;
-
   transition: all 0.3s;
 
   &:hover {

@@ -1,4 +1,9 @@
-import { FC, useState } from 'react';
+import {
+  FC,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import className from 'classnames';
 import { getSearchWith } from '../../helpers/searchHelper';
@@ -18,14 +23,30 @@ export const DropdownMenu: FC<Props> = ({
   initialValue,
   searchParamsKey,
 }) => {
-  const [searchParams] = useSearchParams();
   const [isOpen, setIsOpen] = useState(false);
+  const [searchParams] = useSearchParams();
+  const buttonRef = useRef<HTMLDivElement | null>(null);
+
   const toggleList = () => {
     setIsOpen((state) => !state);
   };
 
+  useEffect(() => {
+    const collapseDropdownHandler = (e: MouseEvent) => {
+      if (buttonRef.current && !buttonRef.current.contains(e.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', collapseDropdownHandler);
+
+    return () => {
+      document.removeEventListener('mousedown', collapseDropdownHandler);
+    };
+  }, []);
+
   return (
-    <div className="dropdown-menu">
+    <div className="dropdown-menu" ref={buttonRef}>
       <span className="dropdown-menu__title">{title}</span>
       <button
         type="button"

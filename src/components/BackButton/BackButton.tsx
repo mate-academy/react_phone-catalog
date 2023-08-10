@@ -3,13 +3,14 @@ import './BackButton.scss';
 
 export const BackButton = () => {
   const navigate = useNavigate();
+  const handleGoBack = () => navigate(-1);
 
   return (
     <button
       data-cy="backButton"
       type="button"
       className="back-button"
-      onClick={() => navigate(-1)}
+      onClick={handleGoBack}
     >
       Back
     </button>

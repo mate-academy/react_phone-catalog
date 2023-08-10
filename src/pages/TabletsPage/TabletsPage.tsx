@@ -1,25 +1,46 @@
-import { FC } from 'react';
+import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Product } from '../../types/Product';
 import { ProductsList } from '../../components/ProductsList';
 import { getTablets } from '../../helpers/getTablets';
 import { Search } from '../../components/Search';
+import { getProducts } from '../../helpers/fetchClient';
+import { Loader } from '../../components/Loader';
 
-type Props = {
-  products: Product[],
-};
-
-export const TabletsPage: FC<Props> = ({ products }) => {
-  const tablets = getTablets(products);
+export const TabletsPage = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [products, setProducts] = useState<Product[]>([]);
   const [searchParams] = useSearchParams();
   const query = searchParams.get('query') || '';
 
+  const loadTablets = async () => {
+    setIsLoading(true);
+    try {
+      const productsFromServer = await getProducts();
+      const tablets = getTablets(productsFromServer);
+
+      setProducts(tablets);
+    } catch {
+      throw new Error('Loading Error');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    loadTablets();
+  }, []);
+
   return (
     <>
-      {query ? (
-        <Search products={tablets} />
-      ) : (
-        <ProductsList products={tablets} title="Tablets" />
+      {isLoading ? (<Loader />) : (
+        <>
+          {query ? (
+            <Search products={products} />
+          ) : (
+            <ProductsList products={products} title="Tablets" />
+          )}
+        </>
       )}
     </>
   );

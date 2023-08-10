@@ -1,30 +1,47 @@
-import { FC } from 'react';
+import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Product } from '../../types/Product';
 import { Search } from '../../components/Search';
 import { ProductsList } from '../../components/ProductsList';
 import { getPhones } from '../../helpers/getPhones';
+import { getProducts } from '../../helpers/fetchClient';
+import { Loader } from '../../components/Loader';
 
-type Props = {
-  products: Product[],
-};
-
-export const PhonesPage: FC<Props> = ({ products }) => {
-  const phones = getPhones(products);
+export const PhonesPage = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [products, setProducts] = useState<Product[]>([]);
   const [searchParams] = useSearchParams();
   const query = searchParams.get('query') || '';
 
+  const loadPhones = async () => {
+    setIsLoading(true);
+    try {
+      const productsFromServer = await getProducts();
+      const phones = getPhones(productsFromServer);
+
+      setProducts(phones);
+    } catch {
+      throw new Error('Loading Error');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    loadPhones();
+  }, []);
+
   return (
     <>
-      {query ? (
-        <Search products={phones} />
-      ) : (
-        <ProductsList products={phones} title="Mobile phones" />
+      {isLoading ? (<Loader />) : (
+        <>
+          {query ? (
+            <Search products={products} />
+          ) : (
+            <ProductsList products={products} title="Mobile phones" />
+          )}
+        </>
       )}
     </>
   );
 };
-
-// Create getPhones API call fetching the products with the type: phone
-// Add ProductsList with data-cy="productList" attribute showing all the phones
-// Implement a Loader to show it while waiting for the data from server

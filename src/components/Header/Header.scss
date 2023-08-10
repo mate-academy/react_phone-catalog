@@ -21,46 +21,6 @@
     height: $header-height;
   }
 
-  &__navlink {
-    @extend %uppercase;
-
-    position: relative;
-
-    display: flex;
-    align-items: center;
-    margin-right: 64px;
-
-    color: $secondary-color;
-    text-decoration: none;
-
-    &:hover {
-      color: $primary-color;
-    }
-
-    &::after {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      left: 0;
-
-      height: 3px;
-      width: 100%;
-
-      background-color: $primary-color;
-      transition: all 0.3s ease-in-out;
-      transform: scale(0);
-    }
-
-    &--active {
-      color: $primary-color;
-
-      &::after {
-        content: "";
-        transform: scale(1);
-      }
-    }
-  }
-
   &__link {
     position: relative;
 
@@ -105,12 +65,12 @@
     width: 14px;
     height: 14px;
     border-radius: 50%;
-    
+
     color: $white-color;
     background-color: $red-color;
     text-decoration: none;
 
-    font-family: "Mont Bold";
+    font-family: "Mont Bold", sans-serif;
     font-weight: 600;
     font-size: 9px;
   }

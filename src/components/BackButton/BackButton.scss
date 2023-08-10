@@ -6,6 +6,7 @@
   align-items: center;
   margin-bottom: 16px;
   border: 0;
+
   color: $secondary-color;
   background-color: transparent;
   cursor: pointer;
@@ -15,6 +16,7 @@
     display: block;
     width: 16px;
     height: 16px;
+    
     background-image: url(../../icons/leftArrow.svg);
     background-repeat: no-repeat;
     background-position: left center;

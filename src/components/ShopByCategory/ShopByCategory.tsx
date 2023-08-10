@@ -6,7 +6,6 @@ import {
   getPhonesQty,
   getTabletsQty,
 } from '../../helpers/getModelsQty';
-
 import './ShopByCategory.scss';
 
 type Props = {

@@ -2,9 +2,9 @@
 
 .page-not-found {
   display: flex;
-  margin-top: 100px;
   flex-direction: column;
   align-items: center;
+  margin-top: 100px;
 
   &__title {
     @extend %h1;

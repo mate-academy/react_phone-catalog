@@ -8,6 +8,7 @@
   align-items: center;
   box-sizing: border-box;
   height: 206px;
+  margin-bottom: 16px;
   padding: 24px;
   border: 1px solid $elements-color;
 
@@ -34,5 +35,15 @@
   &__button {
     width: 100%;
     padding: 14px 0;
+  }
+
+  &__warning {
+    @extend %body-text;
+
+    border: 1px solid $elements-color;
+    padding: 24px;
+
+    text-align: center;
+    color: $red-color;
   }
 }

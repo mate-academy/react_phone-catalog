@@ -8,9 +8,10 @@ import {
 import classNames from 'classnames';
 import { ProdDetails } from '../../types/ProdDetails';
 import { Product } from '../../types/Product';
-import './ProductDetails.scss';
 import { FavContext } from '../../context/FavContext';
 import { CartContext } from '../../context/CartContext';
+import './ProductDetails.scss';
+import { applyDiscount } from '../../helpers/applyDiscount';
 
 type Props = {
   details: ProdDetails,
@@ -36,7 +37,6 @@ export const ProductDetails: FC<Props> = ({ details, product }) => {
   } = product;
 
   const [selectedImage, setSelectedImage] = useState(images[0]);
-  const discountPrice = Math.round(price * (1 - 0.01 * discount));
 
   useEffect(() => {
     setSelectedImage(images[0]);
@@ -62,8 +62,10 @@ export const ProductDetails: FC<Props> = ({ details, product }) => {
     }
   };
 
+  const discountPrice = applyDiscount(product);
+
   return (
-    <section className="page__section slider">
+    <section className="page__section product-details">
       <h1 className="product-details__title">{name}</h1>
       <div className="product-details__content">
         <div className="grid product-details__top">
@@ -109,7 +111,6 @@ export const ProductDetails: FC<Props> = ({ details, product }) => {
             <div className="product-details__actions">
               <button
                 type="button"
-                // className="product-details__add-to-cart rectangular-button"
                 className={classNames('product-details__add-to-cart', {
                   'product-details__add-to-cart--active': isInCart,
                 })}
@@ -120,14 +121,13 @@ export const ProductDetails: FC<Props> = ({ details, product }) => {
               <div className="product-details__button-container">
                 <button
                   type="button"
-                  // className="product-details__add-to-favourites square-button square-button--large"
                   className={classNames('product-details__add-to-fav square-button square-button--large', {
                     'square-button--active product-details__add-to-fav--active': isFavourite,
                   })}
                   onClick={handleFavStatus}
-                >
-                  {/* <img src="icons/favourites.svg" alt="next button" /> */}
-                </button>
+                  aria-label="like button"
+                  data-cy="addToFavorite"
+                />
               </div>
             </div>
 
@@ -158,7 +158,10 @@ export const ProductDetails: FC<Props> = ({ details, product }) => {
         </div>
 
         <div className="grid product-details__bottom">
-          <div className="product-details__about grid__item--desktop-1-12">
+          <div
+            className="product-details__about grid__item--desktop-1-12"
+            data-cy="productDescription"
+          >
             <h2 className="product-details__subtitle">About</h2>
             <div className="product-details__description">{description}</div>
           </div>

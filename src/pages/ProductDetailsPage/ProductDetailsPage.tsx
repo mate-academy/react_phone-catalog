@@ -1,11 +1,10 @@
 import {
-  FC,
   useEffect,
   useMemo,
   useState,
 } from 'react';
 import { useParams } from 'react-router-dom';
-import { getProductDetails } from '../../helpers/fetchClient';
+import { getProductDetails, getProducts } from '../../helpers/fetchClient';
 import { Loader } from '../../components/Loader';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { BackButton } from '../../components/BackButton';
@@ -15,15 +14,29 @@ import { Product } from '../../types/Product';
 import { ProductNotFound } from '../../components/ProductNotFound';
 import { Recommendations } from '../../components/Recommendations';
 
-type Props = {
-  products: Product[],
-};
-
-export const ProductDetailsPage: FC<Props> = ({ products }) => {
+export const ProductDetailsPage = () => {
+  const [products, setProducts] = useState<Product[]>([]);
   const [details, setDetails] = useState<ProdDetails | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [notFound, setNotFound] = useState(false);
   const { productId } = useParams();
+
+  const loadProducts = async () => {
+    setIsLoading(true);
+    try {
+      const productsFromServer = await getProducts();
+
+      setProducts(productsFromServer);
+    } catch {
+      throw new Error('Loading Error');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    loadProducts();
+  }, []);
 
   const loadProductDetails = async () => {
     setIsLoading(true);
@@ -45,9 +58,6 @@ export const ProductDetailsPage: FC<Props> = ({ products }) => {
   const selectedProduct = useMemo(() => {
     return products.find(product => product.id === productId);
   }, [products, productId]);
-
-  // console.log(products);
-  // console.log(selectedProduct);
 
   return (
     <section className="product-details__container">

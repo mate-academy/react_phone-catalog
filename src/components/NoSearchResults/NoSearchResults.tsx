@@ -1,8 +1,8 @@
 import { useNavigate } from 'react-router-dom';
-import './NoSearchResults.scss';
 
 export const NoSearchResults = () => {
   const navigate = useNavigate();
+  const handleGoHome = () => navigate('/');
 
   return (
     <div className="no-results">
@@ -12,7 +12,7 @@ export const NoSearchResults = () => {
       <button
         type="button"
         className="no-results__button rectangular-button"
-        onClick={() => navigate('/')}
+        onClick={handleGoHome}
       >
         Visit Home page
       </button>

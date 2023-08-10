@@ -3,7 +3,6 @@ import classNames from 'classnames';
 import bannerPhones from './img/banner-phones.png';
 import bannerTablets from './img/banner-tablets.png';
 import bannerAccessories from './img/banner-accessories.png';
-
 import './BannerSlider.scss';
 
 const images = [

@@ -19,7 +19,7 @@ export const CartPage = () => {
           <CartInfo />
         </div>
       ) : (
-        <h2 className="no-results__title">Your shopping cart is empty</h2>
+        <h2 className="no-results__title">Your cart is empty</h2>
       )}
     </section>
   );

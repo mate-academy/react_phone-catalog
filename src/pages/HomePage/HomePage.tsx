@@ -1,21 +1,43 @@
-import { FC } from 'react';
+import { useEffect, useState } from 'react';
 import { Product } from '../../types/Product';
+import { Loader } from '../../components/Loader';
 import { BannerSlider } from '../../components/BannerSlider';
 import { HotPrices } from '../../components/HotPrices';
 import { ShopByCategory } from '../../components/ShopByCategory';
 import { BrandNew } from '../../components/BrandNew';
+import { getProducts } from '../../helpers/fetchClient';
 
-type Props = {
-  products: Product[],
-};
+export const HomePage = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [products, setProducts] = useState<Product[]>([]);
 
-export const HomePage: FC<Props> = ({ products }) => {
+  const loadProducts = async () => {
+    setIsLoading(true);
+    try {
+      const productsFromServer = await getProducts();
+
+      setProducts(productsFromServer);
+    } catch {
+      throw new Error('Loading Error');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    loadProducts();
+  }, []);
+
   return (
     <>
-      <BannerSlider />
-      <HotPrices products={products} />
-      <ShopByCategory products={products} />
-      <BrandNew products={products} />
+      {isLoading ? (<Loader />) : (
+        <>
+          <BannerSlider />
+          <HotPrices products={products} />
+          <ShopByCategory products={products} />
+          <BrandNew products={products} />
+        </>
+      )}
     </>
   );
 };
