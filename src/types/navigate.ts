@@ -1,3 +1,7 @@
+import phonesCategory from '../images/img/category-phones.png';
+import tabletsCategory from '../images/img/category-tablets.png';
+import accessoriesCategory from '../images/img/category-accessories.png';
+
 export enum Status {
   Home = 'home',
   Phones = 'phones',
@@ -29,7 +33,7 @@ export const categories = [
     pathTo: '/phones',
     title: `Mobile ${Status.Phones}`,
     subtitle: '95 models',
-    imgPath: `_new/img/category-${Status.Phones}.png`,
+    imgPath: phonesCategory,
     bgColorImg: '#FCDBC1',
     width: '386px',
     height: '457px',
@@ -40,7 +44,7 @@ export const categories = [
     pathTo: '/tablets',
     title: Status.Tablets,
     subtitle: '24 models',
-    imgPath: `_new/img/category-${Status.Tablets}.png`,
+    imgPath: tabletsCategory,
     bgColorImg: '#89939A',
     width: '546px',
     height: '546px',
@@ -51,7 +55,7 @@ export const categories = [
     pathTo: '/accessories',
     title: Status.Accessories,
     subtitle: '100 models',
-    imgPath: `_new/img/category-${Status.Accessories}.png`,
+    imgPath: accessoriesCategory,
     bgColorImg: '#ac385e',
     width: 'auto',
     height: '300px',

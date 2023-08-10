@@ -1,4 +1,3 @@
-// import { Goods } from '../types/goods';
 import { Phone } from '../types/phone';
 import { PhoneDetails } from '../types/phoneDetails';
 import { client } from '../utils/fetchClient';
@@ -11,55 +10,6 @@ export const getPhoneDetails = (phoneId: string) => {
   return client.get<PhoneDetails>(`/${phoneId}.json`);
 };
 
-export function changePath(
-  dataToChange: Phone[],
-  on = 'img/phones/',
-  to = '_new/img/phones/',
-): Phone[] {
-  const dataWithChangePath = dataToChange.map(el => {
-    const path = el.image.replaceAll(on, to);
-
-    return { ...el, image: path };
-  });
-
-  return dataWithChangePath;
-}
-
-export const getHotPriceProducts = (data: Phone[], isChangePath = true) => {
-  const sortedData = [...data].sort((a, b) => {
-    const absolutelyDiscountA = a.fullPrice - a.price;
-    const absolutelyDiscountB = b.fullPrice - b.price;
-
-    return (absolutelyDiscountB - absolutelyDiscountA);
-  });
-
-  if (isChangePath) {
-    return changePath(sortedData);
-  }
-
-  return sortedData;
-};
-
-export const getBrandNewProducts = (data: Phone[], isChangePath = true) => {
-  const sortedData = [...data].sort((a, b) => b.price - a.price);
-
-  if (isChangePath) {
-    return changePath(sortedData);
-  }
-
-  return sortedData;
-};
-
-export const getProductsSortByName = (data: Phone[], isChangePath = true) => {
-  const sortedData = [...data].sort((a, b) => a.name.localeCompare(b.name));
-
-  if (isChangePath) {
-    return changePath(sortedData);
-  }
-
-  return sortedData;
-};
-
 export const randomizeData = (data: Phone[]) => {
   const newArray = [...data];
 
@@ -69,13 +19,12 @@ export const randomizeData = (data: Phone[]) => {
     [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
   }
 
-  return changePath(newArray);
+  return newArray;
 };
 
 export const getSortedProducts = (
   data: Phone[],
   sortBy: string,
-  isChangePath = true,
 ) => {
   const sortedData = [...data].sort((a, b) => {
     const absolutelyDiscountA = a.fullPrice - a.price;
@@ -96,44 +45,5 @@ export const getSortedProducts = (
     }
   });
 
-  if (isChangePath) {
-    return changePath(sortedData);
-  }
-
   return sortedData;
 };
-
-// export const getData = () => {
-//   return client.get<Goods[]>('.json');
-// };
-
-// export const getHotPriceProducts = (data: Goods[]) => {
-//   const filteredData = data.filter((item) => item.discount > 0);
-//   const sortedData = filteredData.sort((a, b) => {
-//     const absolutelyDiscountA = (a.price / 100) * a.discount;
-//     const absolutelyDiscountB = (b.price / 100) * b.discount;
-
-//     return (absolutelyDiscountB - absolutelyDiscountA);
-//   });
-
-//   const dataWithChangePath = sortedData.map(el => {
-//     const path = el.imageUrl.replaceAll('/phones/', '/products/');
-
-//     return { ...el, imageUrl: path };
-//   });
-
-//   return (dataWithChangePath);
-// };
-
-// export const getBrandNewProducts = (data: Goods[]) => {
-//   const filteredData = data.filter((item) => item.discount === 0);
-//   const sortedData = filteredData.sort((a, b) => b.price - a.price);
-
-//   const dataWithChangePath = sortedData.map(el => {
-//     const path = el.imageUrl.replaceAll('/phones/', '/products/');
-
-//     return { ...el, imageUrl: path };
-//   });
-
-//   return (dataWithChangePath);
-// };

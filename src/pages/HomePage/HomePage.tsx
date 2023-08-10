@@ -2,8 +2,7 @@ import { useEffect, useState } from 'react';
 import './style.scss';
 import {
   getData,
-  getHotPriceProducts,
-  getBrandNewProducts,
+  getSortedProducts,
 } from '../../api/dataOfProducts';
 import { Phone } from '../../types/phone';
 import { ProductsSlider } from '../../components/ProductsSlider';
@@ -18,8 +17,8 @@ export const HomePage = () => {
   const loadGoods = async () => {
     try {
       const dataFromServer = await getData();
-      const dataHotGoods = getHotPriceProducts(dataFromServer);
-      const dataBrandNew = getBrandNewProducts(dataFromServer);
+      const dataHotGoods = getSortedProducts(dataFromServer, 'hotPrice');
+      const dataBrandNew = getSortedProducts(dataFromServer, 'new');
 
       setHotGoods(dataHotGoods);
       setNewGoods(dataBrandNew);

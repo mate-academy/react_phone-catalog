@@ -72,7 +72,7 @@ export const PhonesPage = () => {
 
   const updateStateBySort = (sorting: string) => {
     if (phones) {
-      const dataNew = getSortedProducts(phones, sorting, false);
+      const dataNew = getSortedProducts(phones, sorting);
 
       setSortBy(sorting);
       setPhones(dataNew);

@@ -64,7 +64,7 @@ export const SliderBanner: React.FC<Props> = ({ dataSlider }) => {
             }
           >
             <img
-              src={`${process.env.PUBLIC_URL}${elem}`}
+              src={`${elem}`}
               alt={elem}
             />
           </div>

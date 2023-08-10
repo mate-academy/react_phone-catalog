@@ -2,10 +2,8 @@ import { useContext, useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 import { PhoneDetails } from '../../types/phoneDetails';
-// import { ButtonsAdd } from '../ButtonsAdd';
 import { DescriptionList } from '../DescriptionList';
 import { PhoneSpecs } from '../PhoneSpecs';
-
 import './style.scss';
 import { Back } from '../Back';
 import { Breadcrumbs } from '../Breadcrumbs';
@@ -89,7 +87,6 @@ export const CurrentPhone: React.FC<Props> = ({
         type: 'UPDATE_FAVORITES',
         payload: favoriteItems
           .filter((el) => el.phoneId !== id),
-        // .filter((el) => el.favoriteItem.phoneId !== phoneId),
       });
     } else {
       dispatch({
@@ -97,7 +94,6 @@ export const CurrentPhone: React.FC<Props> = ({
         payload: favoriteItems
           .concat(phoneData[phoneData
             .findIndex(el => el.phoneId === id)]),
-        // payload: [...favoriteItems, { favoriteItem: data, discount }],
       });
     }
   };
@@ -105,10 +101,6 @@ export const CurrentPhone: React.FC<Props> = ({
   useEffect(() => {
     setCurrentPhoto(`_new/${images[0]}`);
   }, [images]);
-
-  // useEffect(() => {
-  //   loadPhonDetails();
-  // }, [phoneId]);
 
   const inCart = cartItems.some((el) => (
     el.id === phoneId
@@ -164,7 +156,7 @@ export const CurrentPhone: React.FC<Props> = ({
             />
           </div>
         </div>
-        {/* // ! start info -> move to some component */}
+
         <div className="phoneDetails__info">
           <div className="phoneDetails__infoSelect infoSelect">
             <h5 className="infoSelect__text">
@@ -178,7 +170,7 @@ export const CurrentPhone: React.FC<Props> = ({
                   key={colorItem}
                 >
                   <Link
-                    to={`../${namespaceId}-${capacity}-${colorItem}`}
+                    to={`../${namespaceId}-${capacity.toLowerCase()}-${colorItem}`}
                     className="infoSelect__color"
                     style={{ backgroundColor: colorItem }}
                   />
@@ -199,7 +191,7 @@ export const CurrentPhone: React.FC<Props> = ({
                   className="infoSelect__capacity"
                 >
                   <Link
-                    to={`../${namespaceId}-${capacityModel}-${color}`}
+                    to={`../${namespaceId}-${capacityModel.toLowerCase()}-${color}`}
                     className={classNames('infoSelect__capacitiesBtn', {
                       'infoSelect__capacitiesBtn--selected':
                       capacity === capacityModel,

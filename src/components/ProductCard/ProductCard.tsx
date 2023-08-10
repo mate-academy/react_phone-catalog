@@ -86,7 +86,7 @@ export const ProductCard: React.FC<Props> = ({ data, discount = true }) => {
       <Link to={`/phones/${phoneId}`} className="productCard__link">
         <div className="productCard__image image">
           <img
-            src={image}
+            src={`_new/${image}`}
             alt={name}
             className="image__item"
           />
