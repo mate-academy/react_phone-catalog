@@ -1,14 +1,16 @@
-export const makeUrl = (word: string) => {
-  let result = word[0].toLowerCase();
+export const makeUrl = (param: string) => {
+  let result = '';
+  const normalizedParam = param.toLowerCase();
 
-  for (let index = 1; index < word.length; index += 1) {
-    if (word[index] === ' ') {
-      result += word[index + 1].toUpperCase() + word.slice(index + 2);
+  for (let index = 0; index < normalizedParam.length; index += 1) {
+    if (normalizedParam[index] === ' ') {
+      result += normalizedParam[index + 1].toUpperCase()
+      + normalizedParam.slice(index + 2);
 
       return result;
     }
 
-    result += word[index];
+    result += normalizedParam[index].toLowerCase();
   }
 
   return result;

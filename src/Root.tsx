@@ -7,7 +7,6 @@ import {
 } from 'react-router-dom';
 import { App } from './App';
 import { HomePage } from './pages/HomePage/HomePage';
-import { Burger } from './components/Burger/Burger';
 import { Page404 } from './pages/Page404/Page404';
 
 export const Root: React.FC = () => (
@@ -25,11 +24,6 @@ export const Root: React.FC = () => (
         <Route
           path="home"
           element={<Navigate to="/" replace />}
-        />
-
-        <Route
-          path=":burger"
-          element={<Burger />}
         />
 
         <Route

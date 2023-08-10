@@ -1,4 +1,6 @@
 import React from 'react';
+import classNames from 'classnames';
+
 import { Link } from 'react-router-dom';
 
 import '../Button.scss';
@@ -16,7 +18,10 @@ export const MainButton: React.FC<Props> = ({
 }) => (
   <Link
     to={where}
-    className={`button button--main ${className}`}
+    className={classNames(
+      'button button--main',
+      className,
+    )}
   >
     <p className="button--main__text">
       {text}

@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 
 import { MainButton } from '../../components/Buttons/MainButton/MainButton';
 
-import { NavLinks } from '../../types/NavLinks';
 import { ButtonText } from '../../types/ButtonText';
 
 import './Page404.scss';
@@ -16,9 +15,7 @@ export const Page404: React.FC = React.memo(() => (
           <Link
             to="/"
             className="icon page404__icon"
-          >
-            <div className={`icon__image ${NavLinks.NotFound}`} />
-          </Link>
+          />
 
           <p className="page404__text">
             Sorry, we couldn`t find this page
