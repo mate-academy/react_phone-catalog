@@ -44,11 +44,14 @@ export const CurrentPhone: React.FC<Props> = ({
 
   const { cartItems, favoriteItems } = useContext(StateContext);
   const dispatch = useContext(DispatchContext);
+  // eslint-disable-next-line max-len
+  const partImgPath = 'https://mate-academy.github.io/react_phone-catalog/_new/';
+  const startImg = partImgPath + images[0];
 
-  const [currentPhoto, setCurrentPhoto] = useState<string>(`_new/${images[0]}`);
+  const [currentPhoto, setCurrentPhoto] = useState<string>(startImg);
 
   const changeBigPhoto = (path: string) => {
-    const imgPath = `_new/${path}`;
+    const imgPath = `${partImgPath + path}`;
 
     setCurrentPhoto(imgPath);
   };
@@ -99,7 +102,7 @@ export const CurrentPhone: React.FC<Props> = ({
   };
 
   useEffect(() => {
-    setCurrentPhoto(`_new/${images[0]}`);
+    setCurrentPhoto(startImg);
   }, [images]);
 
   const inCart = cartItems.some((el) => (
@@ -138,7 +141,7 @@ export const CurrentPhone: React.FC<Props> = ({
                     onClick={() => changeBigPhoto(photo)}
                   >
                     <img
-                      src={`_new/${photo}`}
+                      src={`${partImgPath}/${photo}`}
                       alt=""
                       className="phoneDetails__listItemImage"
                     />

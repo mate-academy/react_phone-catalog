@@ -25,8 +25,8 @@ export const CartItem: React.FC<Props> = ({
 
   const dispatch = useContext(DispatchContext);
   const { cartItems } = useContext(StateContext);
-
   const realPrice = discount ? price : fullPrice;
+  const imgPath = `https://mate-academy.github.io/react_phone-catalog/_new/${image}`;
 
   const removeItem = (idItem: string) => {
     dispatch({
@@ -70,7 +70,7 @@ export const CartItem: React.FC<Props> = ({
 
         <div className="cartItem__imgContainer">
           <img
-            src={`_new/${image}`}
+            src={imgPath}
             alt=""
             className="cartItem__img"
           />

@@ -81,12 +81,16 @@ export const ProductCard: React.FC<Props> = ({ data, discount = true }) => {
     }
   };
 
+  // ? why this path don't working?
+  // const imgPath = `./_new/${image}`;
+  const imgPath = `https://mate-academy.github.io/react_phone-catalog/_new/${image}`;
+
   return (
     <div className="productCard">
       <Link to={`/phones/${phoneId}`} className="productCard__link">
         <div className="productCard__image image">
           <img
-            src={`_new/${image}`}
+            src={imgPath}
             alt={name}
             className="image__item"
           />
