@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 
 import { ApiProduct } from '../../types/ApiProduct';
 
@@ -7,8 +7,6 @@ type Props = {
 };
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
-  const isReduction = useContext(ReductionContext);
-
   const {
     imageUrl,
     name,
@@ -40,7 +38,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         <p className="product-card__price">
           {`$${Math.round(price * (0.1 - discount / 1000)) * 10 - 1}`}
 
-          {isReduction && (
+          {!!discount && (
             <span className="product-card__full-price">
               {` $${price - 1}`}
             </span>
