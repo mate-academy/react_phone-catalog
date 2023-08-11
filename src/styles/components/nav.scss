@@ -1,0 +1,32 @@
+.nav {
+  &__list {
+    display: flex;
+  }
+
+  &__item {
+    margin: 0 32px;
+  }
+
+  &__link {
+    display: block;
+    @include uppercase-text;
+    line-height: 64px;
+    color: $secondary;
+
+    &:hover {
+      color: $primary;
+    }
+
+    &--active {
+      color: $primary;
+
+      &::after {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 3px;
+        background-color: $primary;
+      }
+    }
+  }
+}

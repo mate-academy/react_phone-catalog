@@ -1,0 +1,64 @@
+.slider {
+  &--first {
+    margin-bottom: 72px;
+  }
+
+  &__panel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    @include main-title;
+    letter-spacing: -0.32px;
+    color: $primary;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__button {
+    width: var(--button-width);
+    height: var(--button-width);
+    border: 1px solid $icons;
+
+    &--left {
+      background: url(../../img/icons/chevron-arrow-left-hover.svg) no-repeat center;
+
+      &:disabled {
+        background: url(../../img/icons/chevron-arrow-left.svg) no-repeat center;
+      }
+    }
+
+    &--right {
+      background: url(../../img/icons/chevron-arrow-right-hover.svg) no-repeat center;
+
+      &:disabled {
+        background: url(../../img/icons/chevron-arrow-right.svg) no-repeat center;
+      }
+    }
+
+    &:hover {
+      border-color: $primary;
+    }
+
+    &:disabled {
+      border-color: $elements;
+    }
+  }
+
+  &__track-container {
+    overflow: hidden;
+  }
+  
+  &__track {
+    position: relative;
+    display: flex;
+    flex-flow: row nowrap;
+    transition: transform $duration;
+  }
+}

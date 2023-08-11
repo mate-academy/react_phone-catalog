@@ -1,0 +1,92 @@
+.photos {
+  margin-bottom: 72px;
+  
+  &__container {
+    display: flex;
+    gap: var(--gap);
+    margin-bottom: 8px;
+    width: 100%;
+  }
+
+  &__button {
+    width: var(--button-width);
+    height: 400px;
+    background-color: $white;
+    border: 1px solid $icons;
+
+    &--left {
+      background: url("../../img/icons/chevron-arrow-left-hover.svg") no-repeat center;
+
+      &:disabled {
+        background: url("../../img/icons/chevron-arrow-left.svg") no-repeat center;
+      }
+    }
+
+    &--right {
+      background: url("../../img/icons/chevron-arrow-right-hover.svg") no-repeat center;
+
+      &:disabled {
+        background: url("../../img/icons/chevron-arrow-right.svg") no-repeat center;
+      }
+    }
+
+    &:hover {
+      border-color: $primary;
+    }
+
+    &:disabled {
+      border-color: $elements;
+    }
+  }
+
+  &__slider-track {
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    width: calc(100% - 2 * (var(--gap) + var(--button-width)));
+  }
+  
+  &__photo {
+    position: absolute;
+    opacity: 0;
+    min-width: 100%;
+    max-width: 100%;
+    height: 400px;
+    object-fit: cover;
+    object-position: center;
+    transition: all $duration;
+
+    &--prev {
+      left: -100%;
+    }
+
+    &--current {
+      left: 0;
+      opacity: 1;
+    }
+
+    &--next {
+      left: 100%;
+    }
+  }
+
+  &__dots {
+    box-sizing: border-box;
+    display: flex;
+    gap: $dot-width;
+    margin: 0 auto;
+    padding: 10px 5px;
+    width: 80px;
+  }
+
+  &__dot {
+    height: 4px;
+    width: $dot-width;
+    background-color: $elements;
+
+    &--active {
+      background-color: $primary;
+      transition: background-color $duration;
+    }
+  }
+}

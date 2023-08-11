@@ -1,0 +1,22 @@
+.footer-button {
+  @include small-text;
+  display: flex;
+  align-items: center;
+  color: $secondary;
+
+  &__icon {
+    margin-left: 16px;
+    width: 32px;
+    height: 32px;
+    border: 1px solid $icons;
+    background: url("../../img/icons/chevron-arrow-up-hover.svg") no-repeat center;
+  }
+
+  &:hover {
+    color: $primary;
+
+    & .footer-button__icon {
+      border: 1px solid $primary;
+    }
+  }
+}

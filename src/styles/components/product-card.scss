@@ -1,0 +1,102 @@
+.product-card {
+  --block-size: 8px;
+
+  box-sizing: border-box;
+  position: relative;
+  flex: 0 0 calc((100% - 3 * var(--gap)) / 4);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-right: 16px;
+  padding: var(--button-width) var(--button-width) 24px;
+  border: 1px solid $elements;
+
+  &__image {
+    width: 100%;
+    margin-bottom: calc(3 * var(--block-size));
+  }
+
+  &__name {
+    @include body-text;
+    margin-bottom: var(--block-size);
+  }
+
+  &__price {
+    @include big-title;
+  }
+
+  &__full-price {
+    margin-bottom: var(--block-size);
+    font-weight: 500;
+    text-decoration: line-through;
+    color: $secondary;
+  }
+
+  &__line {
+    margin-bottom: calc(2 * var(--block-size));
+    height: 1px;
+    background-color: $elements;
+  }
+
+  &__text-box {
+    @include small-text;
+    justify-content: space-between;
+    display: flex;
+    margin-bottom: var(--block-size);
+
+    &:last-child {
+      margin-bottom: calc(2 * var(--block-size));
+    }
+  }
+
+  &__param-name {
+    color: $secondary;
+  }
+
+  &__interaction-block {
+    display: flex;
+    gap: var(--block-size);
+  }
+
+  &__cart-button {
+    @include buttons-text;
+    width: 100%;
+    height: calc(5 * var(--block-size));
+    color: $white;
+    background-color: $primary;
+    border: 0;
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+    }
+
+    &--selected {
+      color: $green;
+      background-color: $white;
+      border: 1px solid $elements;
+    }
+  }
+
+  &__favourites-button {
+    padding: 12px;
+    width: calc(5 * var(--block-size));
+    height: calc(5 * var(--block-size));
+    background-color: $white;
+    border: 1px solid $icons;
+
+    &:hover {
+      border: 1px solid $primary;
+    }
+  }
+
+  &__favourites-icon {
+    width: 12px;
+    height: 12px;
+    background: url(../../img/icons/favourites.svg) no-repeat center;
+    background-size: contain;
+
+    &--selected {
+      background-image: url(../../img/icons/favourites-filled.svg);
+    }
+  }
+}

@@ -1,0 +1,44 @@
+@mixin main-title {
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+}
+
+@mixin big-title {
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 31px;
+}
+
+@mixin small-title {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 26px;
+}
+
+@mixin uppercase-text {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+@mixin buttons-text {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+@mixin body-text {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+@mixin small-text {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+}

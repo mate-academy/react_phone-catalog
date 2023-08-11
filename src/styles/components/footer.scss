@@ -1,0 +1,14 @@
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 $page-padding;
+  height: 96px;
+  box-shadow: 0 -1px 0 0 $elements;
+
+  &__nav {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}

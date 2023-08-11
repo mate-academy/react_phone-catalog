@@ -1,0 +1,69 @@
+.categories {
+  margin-bottom: 72px;
+
+  &__title {
+    @include main-title;
+    margin-bottom: 24px;
+    letter-spacing: -0.32px;
+  }
+
+  &__container {
+    display: flex;
+    gap: $gap;
+  }
+
+  &__link {
+    width: 33.3%;
+
+    &--1:hover {
+      background-color: #fcdbc144;
+    }
+
+    &--2:hover {
+      background-color: #8d8d9244;
+    }
+
+    &--3:hover {
+      background-color: #973d5f44;
+    }
+  }
+
+  &__image {
+    margin-bottom: 24px;
+    padding-top: 100%;
+    width: 100%;
+
+    &--1 {
+      background-image: url("../../img/categories/category-phones.png");
+      background-size: 100%;
+      background-repeat: no-repeat;
+      background-color: #fcdbc1;
+    }
+
+    &--2 {
+      background-image: url("../../img/categories/category-tablets.png");
+      background-size: 200%;
+      background-repeat: no-repeat;
+      background-color: #8d8d92;
+    }
+
+    &--3 {
+      background-image: url("../../img/categories/category-accessories.png");
+      background-position: -5% 150%;
+      background-size: 200%;
+      background-repeat: no-repeat;
+      background-color: #973d5f;
+    }
+  }
+
+  &__category {
+    @include small-title;
+    margin-bottom: 4px;
+    color: $primary;
+  }
+
+  &__count {
+    @include body-text;
+    color: $secondary;
+  }
+}
