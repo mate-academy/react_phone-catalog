@@ -50,6 +50,7 @@
   }
 
   &__burgerClose {
+    background-color: transparent;
     &,
     &::before,
     &::after {
@@ -57,14 +58,13 @@
       width: 2rem;
       height: 4px;
       border-radius: 10px;
-      background-color: $c-secondary;
     }
-    background-color: transparent;
     &::before,
     &::after {
       content: "";
       position: absolute;
       left: 0;
+      background-color: $c-secondary;
     }
     &::before {
       transform: rotate(-45deg);

@@ -57,21 +57,20 @@ export const CartTotal = () => {
 
         <span className="totalCart__line" />
 
-        {clicked ? (
+        {clicked && (
           <div className="totalCart__message">
             We are sorry
             but this feature
             is not implemented yet
           </div>
-        ) : (
-          <button
-            className="totalCart__btn"
-            type="button"
-            onClick={() => setClicked(true)}
-          >
-            Checkout
-          </button>
         )}
+        <button
+          className="totalCart__btn"
+          type="button"
+          onClick={() => setClicked(true)}
+        >
+          Checkout
+        </button>
       </div>
     </div>
   );

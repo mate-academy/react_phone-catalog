@@ -1,0 +1,26 @@
+@import "../../styles/index.scss";
+
+.banner {
+  display: grid;
+  place-items: center;
+  text-align: center;
+
+  &__link {
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    color: $c-added;
+    @include hover(border-bottom-color, $c-primary);
+  }
+
+  &__pageName {
+    color: $c-danger;
+  }
+
+  &__text {
+    margin-bottom: 6px;
+  }
+
+  &__textSecond {
+    margin-top: 0;
+  }
+}
