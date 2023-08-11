@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './Breadcrumbs.scss';
 import { getFormattedCrumb } from '../../helpers/getFormattedCrumb';
@@ -5,30 +6,32 @@ import { getFormattedCrumb } from '../../helpers/getFormattedCrumb';
 export const Breadcrumbs = () => {
   const location = useLocation();
 
-  let currentpath = '';
+  const crumbs = useMemo(() => {
+    let currentpath = '';
 
-  const crumbs = location.pathname.split('/')
-    .filter(crumb => !!crumb)
-    .map((crumb, index, arr) => {
-      currentpath += `/${crumb}`;
+    return location.pathname.split('/')
+      .filter(crumb => !!crumb)
+      .map((crumb, index, arr) => {
+        currentpath += `/${crumb}`;
 
-      const formattedCrumb = getFormattedCrumb(crumb);
+        const formattedCrumb = getFormattedCrumb(crumb);
 
-      return (
-        <li
-          key={crumb}
-          className="Breadcrumbs__item"
-        >
-          {index !== arr.length - 1
-            ? (
-              <Link to={currentpath}>
-                {formattedCrumb}
-              </Link>
-            )
-            : formattedCrumb}
-        </li>
-      );
-    });
+        return (
+          <li
+            key={crumb}
+            className="Breadcrumbs__item"
+          >
+            {index !== arr.length - 1
+              ? (
+                <Link to={currentpath}>
+                  {formattedCrumb}
+                </Link>
+              )
+              : formattedCrumb}
+          </li>
+        );
+      });
+  }, [location]);
 
   return (
     <div className="Breadcrumbs" data-cy="breadCrumbs">

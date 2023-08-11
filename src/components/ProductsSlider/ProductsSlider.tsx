@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { Product } from '../../types/Product';
 import { Button } from '../Button/Button';
 import { ProductCard } from '../ProductCard/ProductCard';
@@ -16,9 +16,15 @@ export const ProductSlider: React.FC<Props> = ({
   const itemWidth = 272;
   const gap = 16;
   const itemsCount = products.length;
-  const carouselWidth = itemsCount * itemWidth + gap * (itemsCount - 1);
 
-  const scrolledWidth = itemsScrolled * itemWidth + itemsScrolled * gap;
+  const carouselWidth = useMemo(() => {
+    return itemsCount * itemWidth + gap * (itemsCount - 1);
+  }, []);
+
+  const scrolledWidth = useMemo(() => {
+    return itemsScrolled * itemWidth + itemsScrolled * gap;
+  }, [itemsScrolled]);
+
   const transform = `translate(-${scrolledWidth}px, 0)`;
 
   const handleSlideLeft = () => {

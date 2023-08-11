@@ -10,6 +10,11 @@ import BannerPhone from '../../images/banner-phones.png';
 import BannerTablets from '../../images/banner-tablets.png';
 import BannerAccessories from '../../images/banner-accessories.png';
 
+enum CurrentImage {
+  First = 0,
+  Last = 2,
+}
+
 export const Carousel = () => {
   const [imagesScrolled, setImagesScrolled] = useState(0);
 
@@ -18,7 +23,7 @@ export const Carousel = () => {
 
   const handleSlideLeft = () => {
     setImagesScrolled(images => {
-      if (images === 0) {
+      if (images === CurrentImage.First) {
         return 2;
       }
 
@@ -28,7 +33,7 @@ export const Carousel = () => {
 
   const handleSlideRight = () => {
     setImagesScrolled(images => {
-      if (images === 2) {
+      if (images === CurrentImage.Last) {
         return 0;
       }
 
@@ -44,7 +49,7 @@ export const Carousel = () => {
     return () => {
       clearInterval(intervalId);
     };
-  }, []);
+  }, [imagesScrolled]);
 
   return (
     <div className="Carousel">

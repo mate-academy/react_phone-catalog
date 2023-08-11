@@ -1,4 +1,5 @@
 import './Pagination.scss';
+import { useMemo } from 'react';
 import classNames from 'classnames';
 import { getNumbers } from '../../helpers/getNumbers';
 import { SearchLink } from '../SearchLink/SearchLink';
@@ -14,8 +15,13 @@ export const Pagintaion: React.FC<Props> = ({
   perPage,
   currentPage,
 }) => {
-  const numberOfPages = Math.ceil(total / perPage);
-  const pages = getNumbers(1, numberOfPages);
+  const numberOfPages = useMemo(() => {
+    return Math.ceil(total / perPage);
+  }, [total, perPage]);
+
+  const pages = useMemo(() => {
+    return getNumbers(1, numberOfPages);
+  }, [numberOfPages]);
 
   return (
     <ul className="Pagination" data-cy="pagination">

@@ -7,8 +7,6 @@
 
   flex-shrink: 0;
 
-  box-sizing: border-box;
-
   background-color: transparent;
   border: 1px solid $c-elements;
 
@@ -65,7 +63,6 @@
     min-height: 40px;
 
     background-color: $c-primary;
-
     border: 1px solid $c-primary;
 
     @extend %buttons;
@@ -78,11 +75,8 @@
     &.active,
     &:active {
       background-color: $c-white;
-
       border-color: $c-elements;
-
       color: $c-green;
-
       box-shadow: none;
     }
   }

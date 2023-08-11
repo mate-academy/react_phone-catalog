@@ -19,7 +19,10 @@ export const Search = () => {
   const [query, setQuery] = useState(queryParam);
 
   const location = useLocation();
-  const currentPath = location.pathname.split('/')[1];
+
+  const currentPath = useMemo(() => {
+    return location.pathname.split('/')[1];
+  }, [location]);
 
   useEffect(() => {
     setQuery(queryParam);

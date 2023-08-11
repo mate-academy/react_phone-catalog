@@ -16,7 +16,6 @@
 
     & > p {
       @extend %body-text;
-
       color: $c-secondary;
     }
   }
@@ -31,9 +30,7 @@
 
     &.disabled .DropdownSelect__select {
       pointer-events: none;
-
       color: $c-icons;
-
       border-color: $c-elements;
     }
   }

@@ -1,9 +1,7 @@
 import { useMemo } from 'react';
 import classNames from 'classnames';
-import { /* useOutletContext, */ useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import './ProductsPage.scss';
-
-// import { Product } from '../../types/Product';
 
 import { ProductsList } from '../../components/ProductsList/ProductsList';
 import { DropdownSelect } from '../../components/DropdownSelect/DropdownSelect';
@@ -12,21 +10,18 @@ import {
   NoSearchResults,
 } from '../../components/NoSearchResults/NoSearchResults';
 
-import { getItemsPerPage } from '../../helpers/getItemsPerPage';
 import { calculateDiscount } from '../../helpers/calculateDiscount';
 import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 import { normalizeValue } from '../../helpers/normalizeValue';
-import { getTitle } from '../../helpers/getTitle';
 import { NoResults } from '../../components/NoResults/NoResults';
 import { ProductType } from '../../types/ProductType';
-import { getCategoryName } from '../../helpers/getCategoryName';
 import { useGetProductsQuery } from '../../features/api/apiSlice';
 import { Loader } from '../../components/Loader';
 
 enum SortValue {
-  age = 'age',
-  name = 'name',
-  price = 'price',
+  Age = 'age',
+  Name = 'name',
+  Price = 'price',
 }
 
 type Props = {
@@ -42,8 +37,16 @@ export const ProductsPage: React.FC<Props> = ({ productType }) => {
   const currentPage = +(searchParams.get('page') || '') || 1;
   const query = searchParams.get('query') || '';
 
-  const title = getTitle(productType);
-  const categoryName = getCategoryName(productType);
+  const title = {
+    [ProductType.Phone]: 'Mobile phones',
+    [ProductType.Tablet]: 'Tablets',
+    [ProductType.Accessory]: 'Accessories',
+  };
+  const categoryName = {
+    [ProductType.Phone]: 'phones',
+    [ProductType.Tablet]: 'tablets',
+    [ProductType.Accessory]: 'accessories',
+  };
 
   const productsByType = useMemo(() => {
     return products.filter(product => product.type === productType);
@@ -62,13 +65,13 @@ export const ProductsPage: React.FC<Props> = ({ productType }) => {
     const copy = [...filteredProducts];
 
     switch (sortBy) {
-      case SortValue.age:
+      case SortValue.Age:
         return copy.sort((a, b) => a.age - b.age);
 
-      case SortValue.name:
+      case SortValue.Name:
         return copy.sort((a, b) => a.name.localeCompare(b.name));
 
-      case SortValue.price:
+      case SortValue.Price:
         return copy
           .sort((a, b) => calculateDiscount(a) - calculateDiscount(b));
 
@@ -78,9 +81,21 @@ export const ProductsPage: React.FC<Props> = ({ productType }) => {
   }, [sortBy, filteredProducts]);
 
   const totalItemsCount = sortedProducts.length;
-  const itemsPerPage = getItemsPerPage(perPage, totalItemsCount);
-  const itemsFrom = itemsPerPage * currentPage - (itemsPerPage - 1);
-  const itemsTo = Math.min(itemsPerPage * currentPage, totalItemsCount);
+  const itemsPerPage: { [key: string]: number } = {
+    all: totalItemsCount,
+    4: 4,
+    16: 16,
+    8: 8,
+    '': 8,
+  };
+
+  const itemsFrom = useMemo(() => {
+    return itemsPerPage[perPage] * currentPage - (itemsPerPage[perPage] - 1);
+  }, [currentPage, perPage]);
+
+  const itemsTo = useMemo(() => {
+    return Math.min(itemsPerPage[perPage] * currentPage, totalItemsCount);
+  }, [perPage, currentPage, totalItemsCount]);
 
   const visibleItems = useMemo(() => {
     return sortedProducts.slice(itemsFrom - 1, itemsTo);
@@ -93,7 +108,7 @@ export const ProductsPage: React.FC<Props> = ({ productType }) => {
       </div>
 
       <div className="ProductsPage__title">
-        <h1>{title}</h1>
+        <h1>{title[productType]}</h1>
         <p>{`${totalItemsCount} models`}</p>
       </div>
 
@@ -122,12 +137,12 @@ export const ProductsPage: React.FC<Props> = ({ productType }) => {
         </DropdownSelect>
       </div>
 
-      {!totalItemsCount && query && (
-        <NoSearchResults category={categoryName} />
+      {!totalItemsCount && query && !isLoading && (
+        <NoSearchResults category={categoryName[productType]} />
       )}
 
       {!totalItemsCount && !query && !isLoading && (
-        <NoResults category={categoryName} />
+        <NoResults category={categoryName[productType]} />
       )}
 
       {isLoading && <Loader />}
@@ -141,7 +156,7 @@ export const ProductsPage: React.FC<Props> = ({ productType }) => {
           {totalItemsCount > 3 && (
             <Pagintaion
               total={totalItemsCount}
-              perPage={itemsPerPage}
+              perPage={itemsPerPage[perPage]}
               currentPage={currentPage}
             />
           )}

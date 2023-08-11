@@ -19,7 +19,6 @@
 
   &__list-item {
     @extend %uppercase;
-
     color: $c-secondary;
 
     & a {
@@ -38,7 +37,6 @@
     margin-right: 16px;
 
     @extend %small-text;
-
     color: $c-secondary;
 
     user-select: none;

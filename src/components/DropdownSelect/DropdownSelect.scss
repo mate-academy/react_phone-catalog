@@ -18,19 +18,15 @@
       margin-top: 4px;
       padding-block: 8px;
 
-      box-sizing: border-box;
-
       border: 1px solid $c-elements;
       box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
       background-color: $c-white;
 
       opacity: 0;
       pointer-events: none;
-
       z-index: 1;
 
       transform: translateY(-20px);
-
       transition: opacity $effect-duration, transform $effect-duration;
 
       & > li {
@@ -42,15 +38,12 @@
 
         &:hover {
           color: $c-primary;
-
           background-color: $c-background;
         }
 
         & > a {
           width: 100%;
           padding: 6px 12px 5px;
-
-          box-sizing: border-box;
 
           font-family: inherit;
           color: inherit;
@@ -66,15 +59,12 @@
     margin-top: 4px;
     padding: 10px 12px 9px;
 
-    box-sizing: border-box;
     @extend %buttons;
 
     color: $c-primary;
-
     border: 1px solid $c-icons;
     cursor: pointer;
     appearance: none;
-
     background: no-repeat url("../../images/icons/arrow-down.svg");
     background-position: right 12px top 12px;
   }

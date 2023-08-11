@@ -1,5 +1,5 @@
 export enum ProductType {
-  phone = 'phone',
-  tablet = 'tablet',
-  accessory = 'accessory',
+  Phone = 'phone',
+  Tablet = 'tablet',
+  Accessory = 'accessory',
 }

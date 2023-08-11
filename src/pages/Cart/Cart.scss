@@ -23,16 +23,12 @@
     padding: 100px;
 
     background-color: #fff;
-
     box-shadow: rgba(50, 50, 93, 0.25) 0 50px 100px -20px,
       rgba(0, 0, 0, 0.3) 0 30px 60px -30px;
-
     z-index: 1;
     opacity: 0;
     pointer-events: none;
-
     border: 1px solid $c-elements;
-
     transition: opacity $effect-duration;
 
     & > h2 {
@@ -78,13 +74,9 @@
       padding-bottom: 24px;
       margin-bottom: 24px;
 
-      box-sizing: border-box;
-
       @extend %body-text;
-
       color: $c-secondary;
       text-align: center;
-
       border-bottom: 1px solid $c-elements;
     }
 

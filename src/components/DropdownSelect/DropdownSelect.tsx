@@ -4,6 +4,7 @@ import React, {
   useEffect,
   useRef,
   MutableRefObject,
+  useMemo,
 } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import './DropdownSelect.scss';
@@ -32,7 +33,9 @@ export const DropdownSelect: React.FC<Props> = ({
   const [searchParams, setSearchParams] = useSearchParams();
   const selectValue = searchParams.get(paramName) || '';
 
-  const options = React.Children.toArray(children) as Option[];
+  const options = useMemo(() => {
+    return React.Children.toArray(children) as Option[];
+  }, []);
 
   const ref = useRef<HTMLDivElement>() as MutableRefObject<HTMLDivElement>;
 

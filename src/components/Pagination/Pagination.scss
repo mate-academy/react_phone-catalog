@@ -9,13 +9,11 @@
     width: 32px;
     height: 32px;
     padding: 6px 0 4px;
-    box-sizing: border-box;
 
     @extend %body-text;
     text-align: center;
 
     border: 1px solid $c-elements;
-
     transition: all $effect-duration;
 
     &:hover {
@@ -36,17 +34,13 @@
 
   &__item.disabled > a {
     border-color: $c-elements;
-
     background-image: url("../../images/icons/Arrow_disabled.svg");
-
     pointer-events: none;
   }
 
   &__item.active > a {
     border-color: $c-primary;
-
     background-color: $c-primary;
-
     color: $c-white;
   }
 }

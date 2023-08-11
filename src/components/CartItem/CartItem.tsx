@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import './CartItem.scss';
+import { useMemo } from 'react';
 import { useAppDispatch } from '../../app/hooks';
 import {
   CartItemType,
@@ -18,6 +19,10 @@ export const CartItem: React.FC<Props> = ({ item }) => {
   const dispatch = useAppDispatch();
 
   const { id, imageUrl, name } = item.product;
+
+  const cartItemPrice = useMemo(() => {
+    return calculateDiscount(item.product);
+  }, []);
 
   return (
     <div className="CartItem">
@@ -62,7 +67,7 @@ export const CartItem: React.FC<Props> = ({ item }) => {
 
       <div className="CartItem__price">
         <h2>
-          {`$${calculateDiscount(item.product)}`}
+          {`$${cartItemPrice}`}
         </h2>
       </div>
 

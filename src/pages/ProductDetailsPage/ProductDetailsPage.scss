@@ -29,7 +29,6 @@
 
   &__thumbnail-button {
     border: 1px solid $c-border;
-
     background: none;
 
     @include hover(border-color, $c-icons);
@@ -44,8 +43,6 @@
     max-height: 80px;
     width: 100%;
     padding: 7px;
-
-    box-sizing: border-box;
 
     cursor: pointer;
   }
@@ -65,8 +62,6 @@
   &__selectors {
     margin-bottom: 24px;
     padding-bottom: 24px;
-
-    box-sizing: border-box;
 
     border-bottom: 1px solid $c-elements;
 
@@ -141,8 +136,6 @@
     &-subtitle {
       @extend %h2;
       padding-bottom: 16px;
-
-      box-sizing: border-box;
 
       border-bottom: 1px solid $c-elements;
     }

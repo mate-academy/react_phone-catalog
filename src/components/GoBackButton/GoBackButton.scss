@@ -7,9 +7,7 @@
   @extend %small-text;
 
   background-color: transparent;
-
   color: $c-secondary;
-
   cursor: pointer;
 
   @include hover(color, $c-primary);
