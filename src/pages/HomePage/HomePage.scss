@@ -30,22 +30,26 @@
 
       & > li:first-child > a {
         background-color: #f8dbc1;
-        background-image: url("../../images/category-phones.png");
       }
 
       & > li:nth-child(2) > a {
         background-color: #8d8d92;
-        background-image: url("../../images/category-tablets.png");
       }
 
       & > li:nth-child(3) > a {
         background-color: #973d5f;
-        background-image: url("../../images/category-accessories.png");
+      }
+
+      & > li > a > img {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        height: 100%;
       }
 
       & > li > a > h3 {
         position: absolute;
-        bottom: 25px;
+        top: 100%;
         width: 100%;
         padding-top: 24px;
       }
@@ -60,8 +64,11 @@
     }
 
     &-link {
-      height: 368px;
-      padding-right: 100%;
+      position: relative;
+      width: 100%;
+      max-height: 368px;
+      min-width: 200px;
+      padding-bottom: 100%;
 
       background: no-repeat right bottom;
     }

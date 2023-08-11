@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import './CartItem.scss';
 import { useMemo } from 'react';
+import { Link } from 'react-router-dom';
 import { useAppDispatch } from '../../app/hooks';
 import {
   CartItemType,
@@ -18,7 +19,13 @@ type Props = {
 export const CartItem: React.FC<Props> = ({ item }) => {
   const dispatch = useAppDispatch();
 
-  const { id, imageUrl, name } = item.product;
+  const {
+    id,
+    imageUrl,
+    name,
+    type,
+  } = item.product;
+  const itemPath = `/${type}s/${id}`;
 
   const cartItemPrice = useMemo(() => {
     return calculateDiscount(item.product);
@@ -33,16 +40,16 @@ export const CartItem: React.FC<Props> = ({ item }) => {
         onClick={() => dispatch(remove(id))}
       />
 
-      <div className="CartItem__image">
+      <Link to={itemPath} className="CartItem__image">
         <img
           src={imageUrl}
           alt={name}
         />
-      </div>
+      </Link>
 
-      <div className="CartItem__title">
+      <Link to={itemPath} className="CartItem__title">
         {name}
-      </div>
+      </Link>
 
       <div className="CartItem__quantity">
         <Button

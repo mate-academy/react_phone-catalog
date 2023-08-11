@@ -10,6 +10,10 @@ import { getProductsCount } from '../../helpers/getProductsCount';
 import { useGetProductsQuery } from '../../features/api/apiSlice';
 import { Loader } from '../../components/Loader';
 
+import phones from '../../images/category-phones.png';
+import tablets from '../../images/category-tablets.png';
+import accessories from '../../images/category-accessories.png';
+
 export const HomePage = () => {
   const { data: products = [], isLoading } = useGetProductsQuery();
 
@@ -73,6 +77,7 @@ export const HomePage = () => {
                   to="/phones"
                   className="HomePage__shop-by-category-link"
                 >
+                  <img src={phones} alt="phones" />
                   <h3>
                     Mobile phones
                   </h3>
@@ -87,6 +92,7 @@ export const HomePage = () => {
                   to="/tablets"
                   className="HomePage__shop-by-category-link"
                 >
+                  <img src={tablets} alt="tablets" />
                   <h3>
                     Tablets
                   </h3>
@@ -101,6 +107,7 @@ export const HomePage = () => {
                   to="/accessories"
                   className="HomePage__shop-by-category-link"
                 >
+                  <img src={accessories} alt="accessories" />
                   <h3>
                     Accessories
                   </h3>
