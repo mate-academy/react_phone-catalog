@@ -2,7 +2,7 @@ import { Resolutions } from '../types/Resolutions';
 
 export const getScreenType = () => {
   switch (true) {
-    case window.matchMedia('(min-width: 1280px)').matches: {
+    case window.matchMedia('(min-width: 1366px)').matches: {
       return Resolutions.Desktop;
     }
 

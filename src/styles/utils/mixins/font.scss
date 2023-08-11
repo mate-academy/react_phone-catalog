@@ -1,21 +1,23 @@
 @import "./media.scss";
 
-@mixin default {
-  display: block;
-  padding: 20px 0;
+@mixin NavLink {
+  padding: 8px 0;
 
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 500;
-  color: $black-800;
-
   text-decoration: none;
-  text-align: center;
+
+  color: $black-800;
+  transition: color $animationDuration;
 
   @include onDesktop {
-    transition: color $animationDuration;
+    display: block;
+
+    font-size: 18px;
+    text-align: center;
 
     &:hover {
-      color: $red-600;
+      color: $red-700;
     }
   }
 }

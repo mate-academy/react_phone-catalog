@@ -1,0 +1,20 @@
+@mixin selectAfter {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  display: block;
+  content: "";
+
+  width: 16px;
+  height: 16px;
+
+  background-image: url("../../../images/selectAfter.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+@mixin selectAfterHover {
+  background-image: url("../../../images/selectAfterHover.svg");
+}

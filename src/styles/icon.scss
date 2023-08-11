@@ -1,16 +1,18 @@
 @import "./utils.scss";
 
 .icon {
+  fill: $red-600;
+  transition: fill $animationDuration;
 
-  &--logo {
-    height: 100px;
-
-    fill: $red-600;
-    transition: fill $animationDuration;
+  @include onDesktop {
 
     &:hover {
       fill: $red-700;
     }
+  }
+
+  &--logo {
+    height: 100px;
   }
 
   &--burger {
