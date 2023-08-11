@@ -13,6 +13,7 @@ import { App } from './App';
 import { CartPage } from './pages/CartPage';
 import { GlobalStateProvider } from './components/Store';
 import { FavoritesPage } from './pages/FavoritesPage';
+import { PageNotFound } from './pages/PageNotFound';
 
 const Root = () => (
   <GlobalStateProvider>
@@ -32,7 +33,7 @@ const Root = () => (
           <Route path="cart" element={<CartPage />} />
           <Route path="favorites" element={<FavoritesPage />} />
 
-          <Route path="*" element={<p>Page not found</p>} />
+          <Route path="*" element={<PageNotFound />} />
         </Route>
 
       </Routes>

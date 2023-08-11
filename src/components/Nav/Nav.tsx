@@ -10,6 +10,26 @@ export const Nav = () => {
   const [isNav, setIsNav] = useState(false);
   const location = useLocation();
 
+  const handlerScroll = (condition:boolean) => {
+    const scroll = condition ? 'hidden' : '';
+
+    if (scroll === 'hidden') {
+      const fullWidth = window.innerWidth;
+      const partWidth = window.document.documentElement.clientWidth;
+      const padding = String(fullWidth - partWidth).concat('px');
+
+      window.document.body.style.paddingRight = padding;
+    } else {
+      window.document.body.style.paddingRight = '0';
+    }
+
+    window.document.body.style.overflow = scroll;
+  };
+
+  useEffect(() => {
+    handlerScroll(isNav);
+  }, [isNav]);
+
   useEffect(() => {
     setIsNav(false);
   }, [location]);
