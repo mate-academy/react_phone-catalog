@@ -1,0 +1,85 @@
+%h1 {
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  color: $c-primary;
+  font-family: "Mont Bold", sans-serif;
+}
+
+%h2 {
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 31px;
+  color: $c-primary;
+  font-family: "Mont Bold", sans-serif;
+}
+
+%h3 {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 26px;
+  color: $c-primary;
+  font-family: "Mont SemiBold", sans-serif;
+}
+
+%body-text {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  color: $c-primary;
+  font-family: "Mont Regular", sans-serif;
+}
+
+%small-text {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  color: $c-primary;
+  font-family: "Mont SemiBold", sans-serif;
+}
+
+%uppercase {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 11px;
+  font-family: "Mont Bold", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+%buttons {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  font-family: "Mont SemiBold", sans-serif;
+}
+
+%specs-table {
+  width: 100%;
+
+  & tbody {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  & tr {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  & td {
+    @extend %small-text;
+    max-width: 50%;
+  }
+
+  & td:first-child {
+    color: $c-secondary;
+  }
+
+  & td:nth-child(2) {
+    color: $c-primary;
+    text-align: right;
+  }
+}

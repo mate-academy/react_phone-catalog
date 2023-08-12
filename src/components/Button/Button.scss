@@ -1,0 +1,138 @@
+@import "../../styles/global-imports";
+
+.Button {
+  position: relative;
+  width: 32px;
+  height: 32px;
+
+  flex-shrink: 0;
+
+  box-sizing: border-box;
+
+  background-color: transparent;
+  border: 1px solid $c-elements;
+
+  cursor: pointer;
+
+  @include hover(border-color, $c-primary);
+
+  &:disabled {
+    cursor: default;
+  }
+
+  &--arrow,
+  &--favourite,
+  &--quantity {
+    border-color: $c-icons;
+  }
+
+  &--text {
+    width: auto;
+    height: auto;
+    max-height: 32px;
+    padding: 6px 8px 4px;
+
+    @extend %body-text;
+    text-align: center;
+
+    &:active {
+      border-color: $c-primary;
+
+      color: $c-white;
+    }
+  }
+
+  &--arrow {
+    background: no-repeat center url("../../icons/Chevron\ \(Arrow\ Right\).svg");
+
+    &:disabled {
+      background-image: url("../../icons/Slider\ button\ -\ Disabled\ \(right\).svg");
+    }
+
+    &-top {
+      transform: rotate(-90deg);
+    }
+
+    &-left {
+      transform: rotate(180deg);
+    }
+  }
+
+  &--cart {
+    min-width: 176px;
+    min-height: 40px;
+    
+    background-color: $c-primary;
+
+    border: 1px solid $c-primary;
+
+    @extend %buttons;
+    color: $c-white;
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+    }
+
+    &.active,
+    &:active {
+      background-color: $c-white;
+      border-color: $c-elements;
+      color: $c-green;
+      box-shadow: none;
+    }
+  }
+
+  &--favourite {
+    min-width: 40px;
+    min-height: 40px;
+
+    background: no-repeat center url("../../icons/Favourites\ +\ Counter\ \(Heart\ Like\).svg");
+
+    &.active,
+    &:active {
+      border-color: $c-elements;
+
+      background-image: url("../../icons/Favourites\ Filled\ \(Heart\ Like\).svg");
+    }
+  }
+
+  &--color {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 50%;
+    border-color: $c-elements;
+
+    &:hover {
+      border-color: $c-icons;
+    }
+
+    &.active {
+      border-color: $c-primary;
+    }
+
+    & > span {
+      display: inline-block;
+      width: 26px;
+      height: 26px;
+
+      border-radius: 50%;
+    }
+  }
+
+  &--quantity {
+    &-plus {
+      background: no-repeat center url("../../icons/Plus.svg");
+    }
+
+    &-minus {
+      background: no-repeat center url("../../icons/Minus.svg");
+    }
+  }
+
+  &--arrow:disabled,
+  &--quantity:disabled {
+    border-color: $c-elements;
+  }
+}

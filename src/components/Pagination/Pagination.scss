@@ -1,0 +1,52 @@
+@import "../../styles/global-imports";
+
+.Pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+
+  &__link {
+    width: 32px;
+    height: 32px;
+    padding: 6px 0 4px;
+    box-sizing: border-box;
+
+    @extend %body-text;
+    text-align: center;
+
+    border: 1px solid $c-elements;
+
+    transition: all $effect-duration;
+
+    &:hover {
+      border-color: $c-primary;
+    }
+
+    &--prev,
+    &--next {
+      border: 1px solid $c-icons;
+
+      background: no-repeat center url("../../icons/Chevron\ \(Arrow\ Right\).svg");
+    }
+
+    &--prev {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__item.disabled > a {
+    border-color: $c-elements;
+
+    background-image: url("../../icons/Slider\ button\ -\ Disabled\ \(right\).svg");
+
+    pointer-events: none;
+  }
+
+  &__item.active > a {
+    border-color: $c-primary;
+
+    background-color: $c-primary;
+
+    color: $c-white;
+  }
+}
