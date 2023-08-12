@@ -13,7 +13,7 @@ export const TabletsPage = () => {
 
   return (
     <div className="container">
-      <h1 className="name__page">Mobile phones</h1>
+      <h1 className="name__page">Tablets</h1>
       <p className="count__page">
         {`${tablets.length} models`}
       </p>
