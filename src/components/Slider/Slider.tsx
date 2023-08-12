@@ -2,16 +2,14 @@ import { useEffect, useState } from 'react';
 
 import './Slider.scss';
 
-import photo1 from './photo_1.jpg';
-import photo2 from './photo_2.jpg';
-import photo3 from './photo_3.jpg';
-import photo4 from './photo_4.jpg';
+import photo1 from './banner-phones.png';
+import photo2 from './banner-tablets.png';
+import photo3 from './banner-accessories.png';
 
 const photos = [
   photo1,
   photo2,
   photo3,
-  photo4,
 ];
 
 export const Slider = () => {
@@ -90,12 +88,6 @@ export const Slider = () => {
           aria-label="button"
           className={`slider__button-down ${activeIndex === 2 ? 'is-active' : ''}`}
           onClick={() => handleButtonDownClick(2)}
-        />
-        <button
-          type="button"
-          aria-label="button"
-          className={`slider__button-down ${activeIndex === 3 ? 'is-active' : ''}`}
-          onClick={() => handleButtonDownClick(3)}
         />
       </div>
     </div>

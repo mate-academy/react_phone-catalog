@@ -6,8 +6,12 @@ import './Header.scss';
 export const Header = () => {
   const location = useLocation();
 
+  const isPhonesPage = location.pathname === '/phones';
+  const isTabletsPage = location.pathname === '/tablets';
+  const isAccessoriesPage = location.pathname === '/accessories';
+
   return (
-    <header className="header" id="header">
+    <header className="header">
       <nav className="header__nav nav">
         <div className="nav__menu">
           <NavLink to="/" className="nav__logo">
@@ -24,7 +28,7 @@ export const Header = () => {
           <NavLink
             to="phones"
             className={classNames('nav__link', {
-              'is-active-link': location.pathname === '/phones',
+              'is-active-link': isPhonesPage,
             })}
           >
             Phones
@@ -32,7 +36,7 @@ export const Header = () => {
           <NavLink
             to="tablets"
             className={classNames('nav__link', {
-              'is-active-link': location.pathname === '/tablets',
+              'is-active-link': isTabletsPage,
             })}
           >
             Tablets
@@ -40,20 +44,40 @@ export const Header = () => {
           <NavLink
             to="accessories"
             className={classNames('nav__link', {
-              'is-active-link': location.pathname === '/accessories',
+              'is-active-link': isAccessoriesPage,
             })}
           >
             Accessories
           </NavLink>
         </div>
         <div className="nav__menu">
-          <form className="nav__form">
-            <input
-              type="text"
-              className="search"
-              placeholder="Search in phones..."
-            />
-          </form>
+          {isPhonesPage && (
+            <form className="nav__form">
+              <input
+                type="text"
+                className="search"
+                placeholder="Search in phones..."
+              />
+            </form>
+          )}
+          {isTabletsPage && (
+            <form className="nav__form">
+              <input
+                type="text"
+                className="search"
+                placeholder="Search in tablets..."
+              />
+            </form>
+          )}
+          {isAccessoriesPage && (
+            <form className="nav__form">
+              <input
+                type="text"
+                className="search"
+                placeholder="Search in accessories..."
+              />
+            </form>
+          )}
           <NavLink to="favourites" className="icon__favourites">
             <span className="icon icon-favourites" />
           </NavLink>

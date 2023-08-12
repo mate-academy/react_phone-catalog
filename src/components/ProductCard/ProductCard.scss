@@ -1,0 +1,117 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #f3f3f3;
+  height: 100%;
+
+  &__img {
+    width: 208px;
+    height: 208px;
+    margin: 32px auto 0;
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+    font-family: "Mont", sans-serif;
+    font-style: normal;
+    border-bottom: 1px solid #e2e6e9;
+    margin: 24px 24px 0;
+  }
+
+  &__title {
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    height: 42px;
+  }
+
+  &__price {
+    margin-bottom: 8px;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 140%;
+
+    &--discount {
+      color: #89939a;
+      text-decoration: line-through;
+    }
+
+  }
+
+  &__details {
+    margin: 16px 24px 0;
+  }
+
+  &__detail {
+    display: flex;
+    justify-content: space-between;
+    font-family: "Mont", sans-serif;
+    margin-bottom: 8px;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    color: #89939a;
+
+    &:nth-last-child(1) {
+      margin-bottom: 0;
+    }
+
+    &-value {
+      color: #313237;
+    }
+  }
+
+  &__link {
+    margin: 16px  24px 24px;
+    display: flex;
+    justify-content: space-between;
+
+    &-cart {
+      width: 176px;
+      height: 40px;
+      background: #313237;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      transform: transition 0.3s;
+
+      &:hover {
+        box-shadow: 0 3px 13px 0 #172031;
+      }
+
+      &-selected {
+        // background: #313237;
+        color: #27ae60;
+        border: 1px solid #e2e6e9;
+        background: none;
+      }
+    }
+
+    &-like {
+      height: 40px;
+      width: 40px;
+      background-image: url(../../components/Header/Favourites.svg);
+      background-repeat: no-repeat;
+      background-size: cover;
+      border: 1px solid #b4bdc3;
+      cursor: pointer;
+      transform: transition 0.3s;
+
+      &:hover {
+        border: 1px solid #313237;
+      }
+
+      &-selected {
+        height: 40px;
+        width: 40px;
+        background-image: url(./toFovouritesAdded.svg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        border: 1px solid #e2e6e9;
+      }
+    }
+  }
+}

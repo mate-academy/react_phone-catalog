@@ -46,7 +46,8 @@
 
   &__form {
     width: 327px;
-    border: 1px solid #e2e6e9;
+    border-right: 1px solid #e2e6e9;
+    border-left: 1px solid #e2e6e9;
     padding: 22px 23px;
     position: relative;
 
@@ -77,6 +78,9 @@
     bottom: 0;
     left: 0;
     z-index: 1;
+    height: 0;
+    opacity: 0;
+    transition: height 0.3s ease, opacity 0.3s ease, color 0.3s;
   }
 }
 

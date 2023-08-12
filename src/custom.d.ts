@@ -3,4 +3,18 @@ declare module '*.svg' {
   export default content;
 }
 
-declare module '*.jpg';
+declare module '*.jpg' {
+  const content: React.FC<
+  ImgHTMLAttributes<HTMLImageElement>,
+  HTMLImageElement
+  >;
+  export default content;
+}
+
+declare module '*.png' {
+  const content: React.FC<
+  ImgHTMLAttributes<HTMLImageElement>,
+  HTMLImageElement
+  >;
+  export default content;
+}
