@@ -14,7 +14,9 @@ export const TabletsPage = () => {
   return (
     <div className="container">
       <h1 className="name__page">Mobile phones</h1>
-      <p className="count__page">{tablets.length}</p>
+      <p className="count__page">
+        {`${tablets.length} models`}
+      </p>
       {tablets.length
         && (
           <ProductList products={tablets} />
