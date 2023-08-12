@@ -1,0 +1,93 @@
+@import "../../_utils";
+
+.button {
+  @include flexCenter;
+  width: 64px;
+  height: 64px;
+  background-color: $c-white;
+
+  cursor: pointer;
+
+  &--burger-menu,
+  &--close-menu {
+    border-left: 1px solid $c-elements;
+  }
+
+  &--banner-arrow {
+    flex-shrink: 0;
+    width: 32px;
+    height: 400px;
+
+    border: 1px solid $c-icons;
+
+    @include hover(border-color, $c-primary);
+  }
+
+  &--slider-arrow {
+    width: 32px;
+    height: 32px;
+
+    border: 1px solid $c-icons;
+
+    @include hover(border-color, $c-primary);
+
+    &--disabled {
+      border-color: $c-elements;
+
+      cursor: not-allowed;
+
+      &:hover {
+        border-color: $c-elements;
+      }
+    }
+  }
+
+  &--add-to-cart {
+    width: 176px;
+    height: 40px;
+
+    background-color: $c-primary;
+    color: $c-white;
+
+    @extend %buttons-text;
+
+    transition: all 0.4s;
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+    }
+
+    &--active {
+      border: 1px solid $c-elements;
+
+      background-color: $c-white;
+      color: $c-green;
+    }
+  }
+
+  &--favorites {
+    width: 40px;
+    height: 40px;
+
+    border: 1px solid $c-icons;
+
+    @include hover(border-color, $c-primary);
+
+    &--active {
+      border-color: $c-elements;
+
+      &:hover {
+        border-color: $c-elements;
+      }
+    }
+  }
+
+  &--back-to-top {
+    width: 32px;
+    height: 32px;
+
+    border: 1px solid $c-icons;
+
+    @include hover(border-color, $c-primary);
+  }
+}

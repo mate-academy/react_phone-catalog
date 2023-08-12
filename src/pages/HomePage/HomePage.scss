@@ -1,0 +1,23 @@
+@import "../../_utils";
+
+.home-page {
+  padding: 0 25px;
+  margin: 0 auto;
+
+  @include onTablet {
+    max-width: 700px;
+    padding: 0;
+  }
+
+  @include onDesktop {
+    max-width: 1000px;
+  }
+
+  @media (min-width: 1440px) {
+    max-width: 1136px;
+  }
+
+  &__section {
+    margin-bottom: 80px;
+  }
+}

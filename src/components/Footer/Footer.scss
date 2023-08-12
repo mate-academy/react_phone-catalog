@@ -1,0 +1,34 @@
+@import "../../_utils";
+
+.footer {
+  @include flexCenter;
+  justify-content: space-around;
+  height: 96px;
+  padding: 60px 0;
+
+  border-top: 1px solid $c-elements;
+
+  @include onTablet {
+    padding: 0;
+  }
+
+  &__list {
+    @include flexCenter;
+    flex-direction: column;
+    gap: 14px;
+
+    list-style: none;
+
+    @include onTablet {
+      gap: 64px;
+      flex-direction: row;
+    }
+  }
+
+  &__link {
+    @extend %uppercase;
+    color: $c-secondary;
+
+    @include hover(color, $c-primary);
+  }
+}

@@ -1,0 +1,72 @@
+@import "../../_utils";
+
+.header {
+  margin-bottom: 20px;
+
+  background-color: #fff;
+  border-bottom: 1px solid $c-elements;
+
+  @include onDesktop {
+    margin-bottom: 40px;
+  }
+
+  &__content {
+    @include flexCenter;
+    justify-content: space-between;
+    height: 65px;
+  }
+
+  &__left-bar {
+    @include flexCenter;
+  }
+
+  &__right-bar {
+    @include flexCenter;
+  }
+
+  &__top-actions {
+    position: relative;
+
+    @include flexCenter;
+    width: 64px;
+    height: 64px;
+
+    &--search,
+    &--favorites,
+    &--cart {
+      border-left: 1px solid $c-elements;
+    }
+
+    @include onTablet {
+      &::after {
+        content: "";
+
+        position: absolute;
+        bottom: 0;
+        left: 0;
+
+        width: 0;
+        height: 3px;
+
+        background-color: $c-icons;
+
+        transition: width 0.3s;
+      }
+
+      &:hover {
+        &::after {
+          width: 100%;
+        }
+      }
+
+      &--active {
+        &::after {
+          width: 100%;
+          background-color: $c-primary;
+
+          transition: background-color 0.3s;
+        }
+      }
+    }
+  }
+}

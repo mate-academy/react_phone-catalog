@@ -1,0 +1,73 @@
+@import "../../_utils";
+
+.card {
+  width: 272px;
+  padding: 32px 24px 24px;
+
+  border: 1px solid $c-elements;
+
+  @include hover(box-shadow, 0 3px 13px 0 rgba(23, 32, 49, 0.26));
+
+  &__img {
+    display: block;
+    width: 208px;
+    height: 208px;
+    margin: 0 auto 24px;
+    object-fit: contain;
+  }
+
+  &__title {
+    height: 42px;
+    margin-bottom: 8px;
+
+    @extend %body-text;
+  }
+
+  &__price {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  &__price-discount {
+    @extend %h2;
+    font-family: "Mont-SemiBold", "Times New Roman", Times, serif;
+    color: $c-secondary;
+    text-decoration-line: line-through;
+  }
+
+  &__price-regular {
+    @extend %h2;
+  }
+
+  &__specs-container {
+    padding-top: 16px;
+    margin-bottom: 16px;
+
+    border-top: 1px solid $c-elements;
+  }
+
+  &__specs {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__specs-title {
+    @extend %small-text;
+    color: $c-secondary;
+  }
+
+  &__specs-value {
+    @extend %small-text;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+  }
+}

@@ -1,0 +1,70 @@
+@import "../../_utils";
+
+.header {
+  background-color: #fff;
+  border-bottom: 1px solid $c-elements;
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 65px;
+  }
+
+  &__left-bar {
+    display: flex;
+    align-items: center;
+  }
+
+  &__right-bar {
+    display: flex;
+  }
+
+  &__icon {
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 65px;
+    height: 65px;
+
+    &::after {
+      content: "";
+
+      position: absolute;
+      bottom: 0;
+      left: 0;
+
+      width: 0;
+      height: 3px;
+
+      background-color: $c-icons;
+
+      transition: width 0.3s;
+    }
+
+    &:hover {
+      &::after {
+        width: 100%;
+      }
+    }
+
+    &--favorites {
+      border-left: 1px solid $c-elements;
+    }
+
+    &--cart {
+      border-left: 1px solid $c-elements;
+    }
+
+    &--active {
+      &::after {
+        width: 100%;
+        background-color: $c-primary;
+
+        transition: background-color 0.3s;
+      }
+    }
+  }
+}
