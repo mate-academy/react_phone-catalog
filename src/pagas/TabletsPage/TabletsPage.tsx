@@ -1,6 +1,8 @@
 import { ProductList } from '../../components/ProductList';
 import { Product } from '../../types/Product';
 
+import './TabletsPage.scss';
+
 export const TabletsPage = () => {
   const storedProducts = localStorage.getItem('products');
   const products = storedProducts ? JSON.parse(storedProducts) : [];
@@ -11,8 +13,8 @@ export const TabletsPage = () => {
 
   return (
     <div className="container">
-      <h1>Mobile phones</h1>
-      <p>{tablets.length}</p>
+      <h1 className="name__page">Mobile phones</h1>
+      <p className="count__page">{tablets.length}</p>
       {tablets.length
         && (
           <ProductList products={tablets} />
