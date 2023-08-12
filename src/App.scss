@@ -12,8 +12,6 @@
     min-height: calc(100vh - #{$header-height} - #{$footer-height});
     padding-bottom: 80px;
 
-    box-sizing: border-box;
-
     @include contentPaddingInline;
   }
 
