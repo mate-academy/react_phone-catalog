@@ -11,6 +11,7 @@ export const ProductList : React.FC<Props> = ({ products }) => {
   return (
     <div
       data-cy="cardsContainer"
+      className="list"
     >
       <ul className="product">
         {products.map((product) => (
