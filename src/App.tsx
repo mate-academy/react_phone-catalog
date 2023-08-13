@@ -40,16 +40,7 @@ export const App: React.FC = () => {
           />
         )}
       </Transition>
-      {/* {isMenuOpened && screenType !== Resolutions.Desktop && (
-        <Burger
-          isMenuOpened={isMenuOpened}
-          setIsMenuOpened={setIsMenuOpened}
-          screenType={screenType}
-          setScreenType={setScreenType}
-        />
-      )} */}
       <Main />
-
       <Footer
         setIsMenuOpened={setIsMenuOpened}
       />
