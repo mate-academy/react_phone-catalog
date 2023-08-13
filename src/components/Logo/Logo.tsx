@@ -4,16 +4,18 @@ import { NavLink } from 'react-router-dom';
 
 type Props = {
   className: string,
+  setIsMenuOpened: (param: boolean) => void,
 };
 
-export const Logo: React.FC<Props> = React.memo(({ className }) => {
+export const Logo: React.FC<Props> = React.memo(({ className, setIsMenuOpened }) => {
   return (
     <NavLink
       className={className}
       to="/"
+      onClick={() => setIsMenuOpened(false)}
     >
       <svg
-        className="icon icon--logo"
+        className="icon icon--logo icon--animated"
         width="185"
         height="143"
         viewBox="0 0 185 143"

@@ -1,7 +1,10 @@
 @import "../../styles/utils.scss";
 
 .footer {
-  padding-bottom: 60px;
+  margin-top: 150px;
+  padding: 60px 0;
+
+  border-top: 2px solid $black-500;
 
   &__content {
     display: grid;
@@ -69,7 +72,7 @@
     @include NavLink;
   }
 
-  &__lang-wrapper {
+  &__lang-container {
     width: 100%;
     grid-column: 1/2;
 
@@ -98,7 +101,7 @@
     }
   }
 
-  &__social-list-wrapper {
+  &__social-list-container {
     grid-column: 2/3;
     grid-row: 2/2;
 

@@ -2,18 +2,8 @@
 
 .page404 {
 
-  &__content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  &__inner-content {
-    position: relative;
-    width: 100%;
-  }
-
   &__icon {
+
     @include onTablet {
       grid-column: 1/5;
     }
@@ -24,28 +14,28 @@
   }
 
   &__text {
+    font-size: 16px;
+    font-weight: 500;
     text-align: center;
 
     @include onTablet {
-      grid-column: 2/4;
-      font-size: 24px;
+      grid-column: 1/5;
     }
 
     @include onDesktop {
-      grid-column: 4/10;
+      grid-column: 1/13;
     }
   }
 
   &__button {
-    bottom: -80px;
+    top: 60%;
 
     @include onTablet {
-      grid-column: 2/4;
+      top: 75%;
     }
 
     @include onDesktop {
       grid-column: 6/8;
-      bottom: -40px;
     }
   }
 }

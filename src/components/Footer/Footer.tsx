@@ -9,9 +9,13 @@ import { Logo } from '../Logo/Logo';
 
 import './Footer.scss';
 
-export const Footer: React.FC = React.memo(() => {
+type Props = {
+  setIsMenuOpened: (param: boolean | ((prevState: boolean) => boolean)) => void,
+};
+
+export const Footer: React.FC<Props> = React.memo(({ setIsMenuOpened }) => {
   return (
-    <footer className="footer page__section">
+    <footer className="footer">
       <div className="container">
         <div className="footer__content">
           <nav className="footer__nav">
@@ -19,6 +23,7 @@ export const Footer: React.FC = React.memo(() => {
               <li className="footer__nav-list-item">
                 <Logo
                   className="footer__nav-list-link"
+                  setIsMenuOpened={() => setIsMenuOpened(false)}
                 />
               </li>
 
@@ -38,7 +43,7 @@ export const Footer: React.FC = React.memo(() => {
             </ul>
           </nav>
 
-          <div className="footer__lang-wrapper">
+          <div className="footer__lang-container">
             <button
               className="footer__lang-button"
               type="button"
@@ -47,7 +52,7 @@ export const Footer: React.FC = React.memo(() => {
             </button>
           </div>
 
-          <div className="footer__social-list-wrapper">
+          <div className="footer__social-list-container">
             <ul className="footer__social-list">
               <li className="footer__social-list-item">
                 <Link
@@ -55,7 +60,7 @@ export const Footer: React.FC = React.memo(() => {
                   target="_blank"
                 >
                   <svg
-                    className="icon"
+                    className="icon icon--animated"
                     width="40"
                     height="40"
                     viewBox="0 0 40 40"
@@ -86,7 +91,7 @@ export const Footer: React.FC = React.memo(() => {
                   target="_blank"
                 >
                   <svg
-                    className="icon"
+                    className="icon icon--animated"
                     width="40"
                     height="40"
                     viewBox="0 0 40 40"
@@ -105,11 +110,11 @@ export const Footer: React.FC = React.memo(() => {
 
               <li className="footer__social-list-item">
                 <Link
-                  to="https://www.tiktok.com/"
+                  to="https://www.pinterest.com/"
                   target="_blank"
                 >
                   <svg
-                    className="icon"
+                    className="icon icon--animated"
                     width="40"
                     height="40"
                     viewBox="0 0 40 40"

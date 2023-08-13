@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import { getScreenType } from '../../helpers/getScreenType';
@@ -16,10 +16,19 @@ import { Logo } from '../Logo/Logo';
 
 import './Header.scss';
 
-export const Header: React.FC = React.memo(() => {
-  const [screenType, setScreenType] = useState(getScreenType());
-  const [isMenuOpened] = useState(false);
+type Props = {
+  isMenuOpened?: boolean,
+  setIsMenuOpened?: (param: boolean | ((prevState: boolean) => boolean)) => void,
+  screenType?: Resolutions,
+  setScreenType?: (param: Resolutions) => void,
+};
 
+export const Header: React.FC<Props> = React.memo(({
+  isMenuOpened = false,
+  setIsMenuOpened = () => {},
+  screenType = Resolutions.Mobile,
+  setScreenType = () => {},
+}) => {
   const handleResize = () => setScreenType(getScreenType());
 
   useEffect(() => {
@@ -40,8 +49,8 @@ export const Header: React.FC = React.memo(() => {
             {screenType !== Resolutions.Desktop && (
               <li className="header__nav-list-item">
                 <button
-                  className="header__nav-list-button"
                   type="button"
+                  onClick={() => setIsMenuOpened(prevState => !prevState)}
                 >
                   <svg
                     className="icon icon--burger"
@@ -97,6 +106,7 @@ export const Header: React.FC = React.memo(() => {
             <li className="header__nav-list-item">
               <Logo
                 className="header__nav-list-link"
+                setIsMenuOpened={() => setIsMenuOpened(false)}
               />
             </li>
 
@@ -130,8 +140,34 @@ export const Header: React.FC = React.memo(() => {
               <li className="header__nav-list-link">
                 <button
                   type="button"
+                  onClick={() => setIsMenuOpened(false)}
                 >
-                  Close
+                  <svg
+                    className="icon icon--burger"
+                    width="29"
+                    height="29"
+                    viewBox="0 0 29 29"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <line
+                      x1="1.62025"
+                      y1="27.1522"
+                      x2="26.8334"
+                      y2="1.93909"
+                      stroke="black"
+                      strokeWidth="3"
+                    />
+
+                    <line
+                      x1="2.06066"
+                      y1="1.93934"
+                      x2="27.2738"
+                      y2="27.1525"
+                      stroke="black"
+                      strokeWidth="3"
+                    />
+                  </svg>
                 </button>
               </li>
             )}
