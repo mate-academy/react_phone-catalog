@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Transition, TransitionStatus } from 'react-transition-group';
 import { Outlet as Main } from 'react-router-dom';
 
 import { getScreenType } from './helpers/getScreenType';
@@ -22,15 +23,33 @@ export const App: React.FC = () => {
         screenType={screenType}
         setScreenType={setScreenType}
       />
-      {isMenuOpened && screenType !== Resolutions.Desktop && (
+
+      <Transition
+        in={isMenuOpened && screenType !== Resolutions.Desktop}
+        timeout={300}
+        mountOnEnter
+        unmountOnExit
+      >
+        {(state: TransitionStatus) => (
+          <Burger
+            classNames={`burger burger--${state}`}
+            isMenuOpened={isMenuOpened}
+            setIsMenuOpened={setIsMenuOpened}
+            screenType={screenType}
+            setScreenType={setScreenType}
+          />
+        )}
+      </Transition>
+      {/* {isMenuOpened && screenType !== Resolutions.Desktop && (
         <Burger
           isMenuOpened={isMenuOpened}
           setIsMenuOpened={setIsMenuOpened}
           screenType={screenType}
           setScreenType={setScreenType}
         />
-      )}
+      )} */}
       <Main />
+
       <Footer
         setIsMenuOpened={setIsMenuOpened}
       />

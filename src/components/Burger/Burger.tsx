@@ -11,6 +11,7 @@ import { Header } from '../Header/Header';
 import './Burger.scss';
 
 type Props = {
+  classNames: string,
   isMenuOpened: boolean,
   setIsMenuOpened: (
     param: boolean | ((prevState: boolean) => boolean)
@@ -20,13 +21,14 @@ type Props = {
 };
 
 export const Burger: React.FC<Props> = React.memo(({
+  classNames,
   isMenuOpened,
   setIsMenuOpened,
   screenType,
   setScreenType,
 }) => {
   return (
-    <div className="burger">
+    <div className={classNames}>
       <Header
         isMenuOpened={isMenuOpened}
         setIsMenuOpened={setIsMenuOpened}

@@ -28,6 +28,26 @@
       }
     }
 
+    &:nth-child(2) {
+      display: flex;
+      justify-content: center;
+
+      .header__nav-list-link {
+        display: block;
+        width: min-content;
+      }
+
+      @include onDesktop {
+        display: list-item;
+        justify-content: flex-start;
+
+        .header__nav-list-link {
+          display: inline;
+          width: auto;
+        }
+      }
+    }
+
     &:last-child {
       .header__nav-list-link {
         text-align: right;

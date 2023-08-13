@@ -8,7 +8,7 @@ import './Page404.scss';
 
 export const Page404: React.FC = React.memo(() => (
   <section className="page404 page__section">
-    <div className="container grid">
+    <div className="container grid page404__content">
       <svg
         className="icon icon--404 page404__icon"
         width="492"

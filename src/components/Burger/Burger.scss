@@ -9,6 +9,17 @@
 
   background-color: $black-100;
   z-index: $z-index--2;
+  transition: transform $animationDuration ease-in-out;
+
+  &--entering,
+  &--entered {
+    transform: translateX(0);
+  }
+
+  &--exiting,
+  &--exited {
+    transform: translateX(-100%);
+  }
 
   &__nav {
     margin-top: 32px;

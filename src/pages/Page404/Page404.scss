@@ -2,6 +2,10 @@
 
 .page404 {
 
+  &__content {
+    position: relative;
+  }
+
   &__icon {
 
     @include onTablet {
@@ -28,11 +32,7 @@
   }
 
   &__button {
-    top: 60%;
-
-    @include onTablet {
-      top: 75%;
-    }
+    top: 110%;
 
     @include onDesktop {
       grid-column: 6/8;
