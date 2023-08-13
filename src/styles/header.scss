@@ -1,0 +1,31 @@
+.header {
+  height: 65px;
+  margin: 0 auto 24px;
+
+  &__form {
+    box-sizing: border-box;
+
+    height: 32.5px;
+    width: 327px;
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+
+    position: absolute;
+    left: 1000px;
+  }
+
+  &__input {
+    font-weight: 400;
+    font-size: 14px;
+    color: #343434;
+    outline: none;
+    border: none;
+    max-width: max-content;
+    padding-right: 130px;
+
+    &::-webkit-input-placeholder {
+      color: $c-secondary;
+    }
+  }
+}

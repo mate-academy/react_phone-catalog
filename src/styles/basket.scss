@@ -1,0 +1,134 @@
+.basket {
+  &__container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__cart {
+    width: 704px;
+    height: 66px;
+    display: flex;
+    align-items: center;
+    padding: 31px 24px;
+
+    border: 1px solid $c-secondary;
+    margin-bottom: 16px;
+    position: relative;
+
+    &-img {
+      width: 66px;
+      height: 66px;
+      object-fit: contain;
+      padding-right: 31px;
+    }
+
+    &-title {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 21px;
+      color: $c-primary;
+      display: block;
+      padding-right: 120px;
+    }
+
+    &-button {
+      width: 32px;
+      height: 32px;
+      border: 1px solid $c-secondary;
+      cursor: pointer;
+      background-color: $c-white;
+
+      &--cres {
+        border: none;
+        background-color: $c-white;
+        margin-right: 31px;
+        padding: 0;
+        cursor: pointer;
+      }
+
+      &--remove {
+        margin-right: 13px;
+        position: absolute;
+        right: 190px;
+      }
+
+      &--add {
+        margin-left: 13px;
+        margin-right: 48px;
+        position: absolute;
+        right: 100px;
+      }
+    }
+
+    &-count {
+      position: absolute;
+      right: 190px;
+    }
+
+    &-price {
+      color: $c-primary;
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 140%;
+      position: absolute;
+      right: 50px;
+    }
+  }
+
+  &__checkout {
+    width: 500px;
+    height: 230px;
+    box-sizing: border-box;
+    padding: 24px;
+    border: 1px solid $c-secondary;
+
+    &-text {
+      color: $c-gray-middle;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 21px;
+      margin: 0;
+      padding-bottom: 58px;
+    }
+
+    &-price {
+      color: $c-primary;
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: -0.32px;
+      display: block;
+      text-align: center;
+      margin: 0 auto;
+    }
+
+    &-button {
+      background-color: $c-primary;
+      width: 320px;
+      height: 48px;
+      display: block;
+      margin: 0 auto;
+      box-sizing: border-box;
+      border: none;
+      position: relative;
+      cursor: pointer;
+
+      &::before {
+        content: "";
+        width: 320px;
+        height: 1px;
+        background: $c-gray-light;
+        position: absolute;
+        transform: translate(-129px, -50px);
+      }
+
+      &--text {
+        text-decoration: none;
+        color: $c-white;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 21px;
+      }
+    }
+  }
+}

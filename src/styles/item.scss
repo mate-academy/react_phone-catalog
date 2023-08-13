@@ -1,0 +1,247 @@
+.item {
+  overflow-y: hidden;
+
+  &__link {
+    color: $c-gray-middle;
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    position: relative;
+    display: block;
+    padding-left: 20px;
+
+    &::before {
+      content: url(../images/arrowLeft.svg);
+      width: 16px;
+      height: 16px;
+      position: absolute;
+      transform: translate(-20px);
+    }
+  }
+
+  &__list {
+    &--img {
+      display: flex;
+      flex-direction: column;
+      width: max-content;
+      padding-right: 60px;
+      justify-content: space-between;
+    }
+
+    &--main {
+      display: flex;
+      padding-bottom: 81px;
+    }
+
+    &--price {
+      display: flex;
+      align-items: center;
+      margin-bottom: 16px;
+      position: relative;
+
+      &::before {
+        content: "";
+        width: 320px;
+        height: 1px;
+        background: $c-gray-light;
+        position: absolute;
+        transform: translateY(-40px);
+      }
+
+    }
+
+    &--buttons {
+      display: flex;
+      margin-bottom: 56px;
+    }
+
+    &--colors {
+      display: flex;
+      position: relative;
+      margin-bottom: 24px;
+
+      &::after {
+        content: "";
+        width: 320px;
+        height: 1px;
+        background: $c-gray-light;
+        position: absolute;
+        transform: translateY(70px);
+      }
+    }
+  }
+
+  &__list-img {
+    width: 90px;
+    height: 90px;
+    padding: 7px;
+    object-fit: contain;
+    box-sizing: border-box;
+
+    &:hover {
+      border: 1px solid #c4c4c4;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 16px;
+    }
+
+  }
+
+  &-main-img {
+    width: 331px;
+    max-height: 442px;
+    padding-right: 90px;
+    object-fit: contain;
+    object-position: center;
+  }
+
+  &-title {
+    padding-bottom: 47px;
+  }
+
+  &__text--secondary {
+    color: $c-gray-middle;
+    font-size: 12px;
+    font-weight: 600;
+    display: block;
+  }
+
+  &__color {
+    width: 32px;
+    height: 32px;
+    margin: 8px 8px 24px 0;
+    border: none;
+    background-color: $c-white;
+  }
+
+  &__button {
+    width: max-content;
+    height: 32px;
+    color: $c-primary;
+    box-sizing: border-box;
+    border: 1px solid $c-secondary;
+    background-color: $c-white;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    margin-right: 8px;
+
+    &:hover {
+      background: var(--gray-primary, $c-primary);
+      color: $c-white;
+    }
+  }
+
+  &__price {
+    letter-spacing: -0.32px;
+    color: $c-gray-middle;
+    font-size: 22px;
+    font-weight: 500;
+    text-decoration: line-through;
+    padding-right: 8px;
+    margin: 0;
+
+    &--discount {
+      color: $c-primary;
+      font-weight: 700;
+      font-size: 32px;
+      text-decoration: none;
+    }
+  }
+
+  &__description {
+    display: flex;
+    padding-bottom: 80px;
+
+    &--1 {
+      max-width: 500px;
+      display: block;
+      padding-right: 70px;
+    }
+
+    &-title {
+      color: $c-primary;
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 140%;
+      display: block;
+      margin-bottom: 50px;
+
+      &::before {
+        content: "";
+        height: 1px;
+        width: 500px;
+        background: $c-gray-light;
+        position: absolute;
+        transform: translateY(50px);
+      }
+    }
+
+    &-text {
+      &--main {
+        color: $c-primary;
+        font-size: 20px;
+        font-weight: 600;
+        line-height: normal;
+      }
+
+      &--secondary {
+        color: $c-gray-middle;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 21px;
+      }
+    }
+  }
+
+  &__recommends {
+    padding-bottom: 80px;
+
+    &-container {
+      display: flex;
+    }
+
+    &-title {
+      color: $c-primary;
+      font-size: 32px;
+      font-weight: 700;
+      line-height: normal;
+      letter-spacing: -0.32px;
+      display: block;
+      padding-bottom: 24px;
+      margin: 0;
+
+    }
+
+    &-phone {
+      &:not(:last-child) {
+        padding-right: 16px;
+      }
+    }
+  }
+
+  &__table {
+    border-spacing: 6px;
+    padding-bottom: 8px;
+
+    &-property {
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 15px;
+      text-align: left;
+      padding-right: 200px;
+      color: $c-gray-middle;
+      display: block;
+      width: max-content;
+    }
+
+    &-value {
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 15px;
+      color: $c-primary;
+      text-align: right;
+    }
+  }
+}

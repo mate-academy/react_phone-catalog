@@ -1,0 +1,52 @@
+.nav {
+  height: 65px;
+  display: flex;
+  align-items: center;
+
+  border-bottom: 1px solid $c-secondary;
+  margin-bottom: 40px;
+  font-family: Mont, sans-serif;
+
+  &-container {
+    padding: 0 25px;
+  }
+
+  &__icon {
+    &--logo {
+      background-image: url(../images/LOGO.svg);
+      background-size: cover;
+      background-repeat: no-repeat;
+      height: 11px;
+      width: 40px;
+      position: relative;
+    }
+  }
+
+  &__list {
+    width: 297px;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    left: 150px;
+    padding: 0;
+  }
+
+  &__item {
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 0.04em;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $c-gray-middle;
+    transition: all 0.3s;
+
+    &:hover {
+      color: $c-primary;
+    }
+  }
+}

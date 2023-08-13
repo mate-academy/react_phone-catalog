@@ -1,0 +1,108 @@
+.shop {
+  &__catalog {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1136px;
+  }
+
+  &__card {
+    display: block;
+
+    width: 275px;
+    height: 510px;
+
+    border: 1px solid $c-gray-light;
+
+    margin-bottom: 40px;
+
+    &__container {
+      padding: 32px 24px 24px;
+      position: relative;
+
+    }
+
+    &-title {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 21px;
+      color: $c-primary;
+      display: block;
+      text-decoration: none;
+    }
+
+    &__photo {
+      padding-bottom: 24px;
+      object-position: center;
+      object-fit: contain;
+      width: 172px;
+      height: 208px;
+      display: block;
+      margin: 0 auto;
+    }
+
+    &__prices {
+      display: flex;
+      padding-bottom: 16px;
+      position: absolute;
+      top: 305px;
+
+      &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        background: $c-secondary;
+        width: 205px;
+        height: 1px;
+        transform: translateY(33px);
+      }
+    }
+
+    &-price {
+      font-weight: 700;
+      font-size: 22px;
+      line-height: 140%;
+      color: $c-primary;
+      padding-right: 8px;
+
+      &--crossed {
+        font-weight: 500;
+        font-size: 22px;
+        line-height: 28px;
+        text-decoration-line: line-through;
+        color: $c-gray-middle;
+      }
+    }
+
+    &__description {
+      border-spacing: 6px;
+      padding-bottom: 8px;
+      position: absolute;
+      top: 350px;
+
+      &-property {
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 15px;
+        text-align: left;
+        padding-right: 75px;
+        color: $c-gray-middle;
+        display: block;
+        width: max-content;
+      }
+
+      &-value {
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 15px;
+        color: $c-primary;
+        text-align: right;
+      }
+    }
+
+    &__buttons {
+      position: absolute;
+      top: 440px;
+    }
+  }
+}

@@ -1,0 +1,56 @@
+.icon {
+
+  &--hidden {
+    display: none;
+  }
+
+  &--elipse {
+    position: absolute;
+    top: -5px;
+    left: 33px;
+    z-index: 2;
+
+    &--2 {
+      left: 100px;
+    }
+  }
+
+  &--logo {
+    background-image: url(../images/LOGO.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 11px;
+    width: 40px;
+  }
+
+  &-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 128px;
+
+    position: absolute;
+    left: 1400px;
+  }
+
+  width: 22px;
+  height: 19px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  &-link {
+    display: block;
+
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      background: $c-gray-light;
+      width: 73px;
+      height: 1px;
+      transform: rotate(90deg) translate(10px, 45px);
+      margin-left: -10px;
+    }
+  }
+}

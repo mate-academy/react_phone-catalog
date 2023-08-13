@@ -1,1 +1,37 @@
-// not empty
+@font-face {
+  font-family: Mont;
+  src: url(../src/fonts/Mont-Regular.otf);
+}
+
+@font-face {
+  font-family: Mont;
+  src: url(../src/fonts/Mont-SemiBold.otf);
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url(../src/fonts/Mont-Bold.otf);
+  font-weight: 800;
+}
+
+@import "../src/styles/utils/vars";
+@import "../src/styles/utils/mixins";
+
+@import "../src/styles/page.scss";
+@import "../src/styles/nav.scss";
+@import "../src/styles/container.scss";
+@import "../src/styles/button.scss";
+@import "../src/styles/shop.scss";
+@import "../src/styles/category.scss";
+@import "../src/styles/icon.scss";
+@import "../src/styles/footer.scss";
+@import "../src/styles/filter.scss";
+@import "../src/styles/error.scss";
+@import "../src/styles/basket.scss";
+@import "../src/styles/header.scss";
+@import "../src/styles/item.scss";
+@import "../src/styles/pagination.scss";
+@import "../src/styles/slider.scss";
+@import "../src/styles/notFound.scss";
+@import "../src/styles/loader.scss";

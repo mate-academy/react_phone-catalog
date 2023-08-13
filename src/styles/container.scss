@@ -1,0 +1,12 @@
+.container {
+  padding: 0 152px;
+
+  &--footer {
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: $footer-height / 2;
+    margin: $footer-height / 4 0;
+  }
+}

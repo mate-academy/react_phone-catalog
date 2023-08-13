@@ -1,0 +1,62 @@
+.category {
+  &__catalog {
+    display: flex;
+  }
+
+  &__card {
+    width: 368px;
+    height: 422px;
+    margin-right: 8px;
+    margin-bottom: 80px;
+
+    &__img {
+      width: 400px;
+      height: 400px;
+      background-repeat: no-repeat;
+      padding-bottom: 54px;
+
+      &--tablets {
+        background-image: url("../images/category-tablets.png");
+        transform: translate(22px, 74px);
+      }
+
+      &--accessories {
+        background-image: url("../images/category-asc.png");
+        transform: translate(0, 54px);
+      }
+
+      &--phones {
+        background-image: url("../images/category-phones.png");
+        transform: translate(73px, 62px);
+      }
+    }
+
+    &--phones {
+      background-color: #fcdbc1;
+    }
+
+    &--tablets {
+      background-color: #8d8d92;
+    }
+
+    &--accessories {
+      background-color: #973d5f;
+    }
+
+    &-title {
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 26px;
+      color: $c-primary;
+      padding-bottom: 4px;
+    }
+
+    &-link {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 21px;
+      color: $c-gray-middle;
+      text-decoration: none;
+    }
+  }
+}

@@ -1,0 +1,44 @@
+body {
+  margin: 0;
+}
+
+.page {
+  font-family: Mont, sans-serif;
+  scroll-behavior: smooth;
+  transition: all 0.3s;
+
+  &__body {
+    margin: 0;
+  }
+
+  &__section {
+    margin-bottom: 80px;
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: $c-primary;
+    display: block;
+
+    &--filter {
+      padding-bottom: 8px;
+      margin: 0;
+    }
+  }
+
+  &__link {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $c-gray-middle;
+    text-decoration: none;
+
+    &--filter {
+      display: block;
+      padding-bottom: 40px;
+    }
+  }
+}
