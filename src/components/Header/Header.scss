@@ -15,11 +15,23 @@
     }
   }
 
-  &__nav-list-item {
-    width: 100%;
-  }
-
   &__nav-list-link {
     @include NavLink;
+  }
+
+  &__nav-list-item {
+    width: 100%;
+
+    &:first-child {
+      .header__nav-list-link {
+        text-align: left;
+      }
+    }
+
+    &:last-child {
+      .header__nav-list-link {
+        text-align: right;
+      }
+    }
   }
 }
