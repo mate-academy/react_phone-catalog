@@ -47,9 +47,9 @@ export const Selector: React.FC<Props> = ({
 
         <img
           src={areOptionsOpen ? (
-            './img/icons/chevron-arrow-up.svg'
+            '../src/img/icons/chevron-arrow-up.svg'
           ) : (
-            './img/icons/chevron-arrow-down.svg'
+            '../src/img/icons/chevron-arrow-down.svg'
           )}
           alt="open options"
           className="products-list__icon"
