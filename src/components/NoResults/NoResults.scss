@@ -1,0 +1,15 @@
+.NoResults {
+  display: flex;
+  align-items: center;
+  height: 100%;
+
+  &__title {
+    margin-top: 20px;
+
+    color: #313237;
+
+    font-family: "MontBold", Helvetica, sans-serif;
+
+    font-size: 40px;
+  }
+}

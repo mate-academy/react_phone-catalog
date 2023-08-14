@@ -1,0 +1,402 @@
+@import "../../styles/mixins.scss";
+
+.ProductDetailsPage {
+  &__content {
+    display: flex;
+    flex-direction: column;
+
+    @include onTablet {
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  &__title {
+    color: #313237;
+    font-family: "MontBold", Helvetica, sans-serif;
+    font-size: 32px;
+    line-height: normal;
+    letter-spacing: -0.32px;
+
+    margin-top: 16px;
+
+    @include onTablet {
+      text-align: center;
+    }
+  }
+
+  &__main {
+    margin-top: 40px;
+    display: flex;
+
+    @include onTablet {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-right: 25px;
+
+    @include onTablet {
+      margin: 0;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }
+
+  &__photo {
+    width: 78px;
+    height: 78px;
+    border: 1px solid #c4c4c4;
+    object-fit: cover;
+
+    cursor: pointer;
+
+    .active {
+      border-color: #313237;
+    }
+
+    &-img {
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  &__current {
+    width: 442px;
+    height: 442px;
+    margin-right: 75px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include onTablet {
+      margin: 15px 0 0;
+
+      width: 342px;
+      height: 342px;
+    }
+
+    &-img {
+      @include onTablet {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+  &__characteristics {
+    width: 320px;
+    margin-right: 130px;
+
+    @include onTablet {
+      margin: 0;
+    }
+  }
+
+  &__capacities {
+    margin-top: 24px;
+  }
+
+  &__price {
+    margin-top: 32px;
+
+    @include onTablet {
+      margin-top: 20px;
+    }
+  }
+
+  &__buttons {
+    margin-top: 16px;
+  }
+
+  &__details {
+    margin-top: 32px;
+  }
+
+  &__id {
+    color: #b4bdc3;
+    font-family: "MontSemiBold", Helvetica, sans-serif;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+
+    &-value {
+      min-width: fit-content;
+    }
+
+    @include onTablet {
+      margin-top: 40px;
+    }
+  }
+
+  &__info {
+    margin-top: 80px;
+    display: flex;
+    gap: 65px;
+
+    @include onTablet {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-top: 30px;
+      gap: 30px;
+    }
+  }
+}
+
+.colors {
+  border-bottom: 1px solid #c4c4c4;
+  padding-bottom: 24px;
+
+  &__text {
+    color: #89939a;
+    font-family: "MontSemiBold", Helvetica, sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    line-height: normal;
+
+    @include onTablet {
+      margin-top: 20px;
+      text-align: center;
+    }
+  }
+
+  &__list {
+    margin-top: 8px;
+    display: flex;
+    gap: 8px;
+
+    @include onTablet {
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  &__link {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid #e2e6e9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &-active {
+      border-color: #313237;
+    }
+
+    &-color {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    &-color--1 {
+      background-color: #fcdbc1;
+    }
+    &-color--2 {
+      background-color: #5f7170;
+    }
+    &-color--3 {
+      background-color: #4c4c4c;
+    }
+    &-color--4 {
+      background-color: #f0f0f0;
+    }
+  }
+}
+
+.capacities {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  padding-bottom: 24px;
+  border-bottom: 1px solid #c4c4c4;
+
+  @include onTablet {
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__text {
+    color: #89939a;
+    font-family: "MontSemiBold", Helvetica, sans-serif;
+    font-size: 12px;
+    line-height: normal;
+  }
+
+  &__list {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__link {
+    background: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 63px;
+    height: 32px;
+    cursor: pointer;
+
+    color: #313237;
+    font-size: 14px;
+    line-height: 21px;
+
+    border: 1px solid #b4bdc3;
+
+    &-active {
+      color: #fff;
+      background-color: #313237;
+    }
+  }
+}
+
+.price {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  height: 41px;
+
+  @include onTablet {
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__normal {
+    color: #313237;
+    font-family: "MontBold", Helvetica, sans-serif;
+
+    font-size: 32px;
+    line-height: normal;
+    letter-spacing: -0.32px;
+  }
+
+  &__without-discount {
+    color: #89939a;
+    font-size: 22px;
+    font-weight: 500;
+    line-height: normal;
+    text-decoration: line-through;
+  }
+}
+
+.buttons {
+  display: flex;
+  gap: 8px;
+
+  @include onTablet {
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    font-family: "MontSemiBold", Helvetica, sans-serif;
+    font-size: 12px;
+
+    &--tech {
+      font-size: 14px;
+      font-family: "MontRegular", Helvetica, sans-serif;
+      font-weight: 500;
+      line-height: 21px;
+    }
+  }
+
+  &__name {
+    color: #89939a;
+  }
+
+  &__value {
+    color: #313237;
+    text-align: end;
+  }
+}
+
+.about {
+  width: 560px;
+
+  @include onTablet {
+    width: 400px;
+  }
+
+  @include onMobile {
+    width: 320px;
+  }
+
+  &__title {
+    font-family: "MontBold", Helvetica, sans-serif;
+    color: #313237;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #e2e6e9;
+
+    font-size: 22px;
+    line-height: 140%;
+
+    @include onTablet {
+      text-align: center;
+    }
+  }
+
+  &__description {
+    margin-top: 32px;
+    color: #89939a;
+    font-family: "MontRegular", Helvetica, sans-serif;
+
+    font-size: 14px;
+    line-height: 21px;
+
+    @include onTablet {
+      text-align: center;
+    }
+  }
+}
+
+.tech {
+  width: 512px;
+
+  @include onTablet {
+    width: 400px;
+  }
+
+  @include onMobile {
+    width: 320px;
+  }
+
+  &__title {
+    font-family: "MontBold", Helvetica, sans-serif;
+    color: #313237;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #e2e6e9;
+
+    font-size: 22px;
+    line-height: 140%;
+
+    @include onTablet {
+      text-align: center;
+    }
+  }
+
+  &__details {
+    margin-top: 25px;
+  }
+}
