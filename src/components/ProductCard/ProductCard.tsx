@@ -10,6 +10,7 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
   return (
     <div
       className="card"
+      data-cy="cardsContainer"
     >
       <img
         className="card__img"

@@ -11,5 +11,9 @@
     margin-right: 16px;
     width: 272px;
     border: 1px solid rgba(180, 189, 195, 1);
+
+    &:nth-child(4n) {
+      margin-right: 0;
+    }
   }
 }

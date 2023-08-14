@@ -10,7 +10,7 @@ interface Props {
 export const ProductList : React.FC<Props> = ({ products }) => {
   return (
     <div
-      data-cy="cardsContainer"
+      data-cy="productList"
     >
       <ul className="product">
         {products.map((product) => (
