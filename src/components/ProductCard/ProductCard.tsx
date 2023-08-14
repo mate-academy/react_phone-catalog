@@ -39,9 +39,13 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           {`$${Math.round(price * (0.1 - discount / 1000)) * 10 - 1}`}
 
           {!!discount && (
-            <span className="product-card__full-price">
-              {` $${price - 1}`}
-            </span>
+            <>
+              {' '}
+
+              <span className="product-card__full-price">
+                {`$${price - 1}`}
+              </span>
+            </>
           )}
         </p>
 

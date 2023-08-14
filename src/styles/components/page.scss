@@ -1,5 +1,12 @@
 .page {
+  position: relative;
+  min-height: 100vh;
+
   &__main-container {
-    padding: 40px $page-padding 80px;
+    @include page-sizes;
+  }
+
+  &__phones {
+    @include page-sizes;
   }
 }

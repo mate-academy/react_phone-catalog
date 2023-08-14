@@ -29,23 +29,19 @@ export const ProductsSlider = () => {
     getHotPriceProducts()
       .then(setProducts)
       .catch(() => new Error('Loading products error'));
+
+    return () => setProducts(products);
   }, []);
 
   useEffect(() => {
     if (translate === 0) {
       setIsLeftButtonDisabled(true);
-
-      return;
-    }
-
-    if ((products.length - 4) * elementWidth === -translate) {
+    } else if ((products.length - 4) * elementWidth === -translate) {
       setIsRightButtonDisabled(true);
-
-      return;
+    } else {
+      setIsLeftButtonDisabled(false);
+      setIsRightButtonDisabled(false);
     }
-
-    setIsLeftButtonDisabled(false);
-    setIsRightButtonDisabled(false);
   }, [translate]);
 
   const onLeftClick = () => {

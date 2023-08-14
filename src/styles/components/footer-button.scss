@@ -6,8 +6,8 @@
 
   &__icon {
     margin-left: 16px;
-    width: 32px;
-    height: 32px;
+    width: $button-width;
+    height: $button-width;
     border: 1px solid $icons;
     background: url("../../img/icons/chevron-arrow-up-hover.svg") no-repeat center;
   }

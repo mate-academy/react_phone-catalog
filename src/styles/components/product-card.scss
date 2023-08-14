@@ -1,24 +1,25 @@
 .product-card {
-  --block-size: 8px;
-
   box-sizing: border-box;
   position: relative;
-  flex: 0 0 calc((100% - 3 * var(--gap)) / 4);
+  flex: 0 0 $card-width;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin-right: 16px;
-  padding: var(--button-width) var(--button-width) 24px;
+  padding: $button-width $button-width 24px;
+  width: $card-width;
   border: 1px solid $elements;
 
   &__image {
-    width: 100%;
-    margin-bottom: calc(3 * var(--block-size));
+    position: relative;
+    left: 50%;
+    margin-bottom: 3 * $block-size;
+    max-height: 208px;
+    transform: translateX(-50%);
   }
 
   &__name {
     @include body-text;
-    margin-bottom: var(--block-size);
+    margin-bottom: $block-size;
   }
 
   &__price {
@@ -26,14 +27,14 @@
   }
 
   &__full-price {
-    margin-bottom: var(--block-size);
+    margin-bottom: $block-size;
     font-weight: 500;
     text-decoration: line-through;
     color: $secondary;
   }
 
   &__line {
-    margin-bottom: calc(2 * var(--block-size));
+    margin-bottom: 2 * $block-size;
     height: 1px;
     background-color: $elements;
   }
@@ -42,10 +43,10 @@
     @include small-text;
     justify-content: space-between;
     display: flex;
-    margin-bottom: var(--block-size);
+    margin-bottom: $block-size;
 
     &:last-child {
-      margin-bottom: calc(2 * var(--block-size));
+      margin-bottom: 2 * $block-size;
     }
   }
 
@@ -55,16 +56,17 @@
 
   &__interaction-block {
     display: flex;
-    gap: var(--block-size);
+    gap: $block-size;
   }
 
   &__cart-button {
     @include buttons-text;
     width: 100%;
-    height: calc(5 * var(--block-size));
+    height: 5 * $block-size;
     color: $white;
     background-color: $primary;
     border: 0;
+    cursor: pointer;
 
     &:hover {
       box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
@@ -79,10 +81,11 @@
 
   &__favourites-button {
     padding: 12px;
-    width: calc(5 * var(--block-size));
-    height: calc(5 * var(--block-size));
+    width: 5 * $block-size;
+    height: 5 * $block-size;
     background-color: $white;
     border: 1px solid $icons;
+    cursor: pointer;
 
     &:hover {
       border: 1px solid $primary;

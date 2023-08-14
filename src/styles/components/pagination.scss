@@ -1,0 +1,50 @@
+.pagination {
+  &__container {
+    display: flex;
+    gap: $block-size;
+    margin: 40px auto 0;
+    width: max-content;
+    height: 32px;
+  }
+
+  &__button {
+    box-sizing: border-box;
+    width: $button-width;
+    height: $button-width;
+    border: 1px solid $icons;
+    background-color: $white;
+    cursor: pointer;
+
+    &--active {
+      color: $white;
+      background-color: $primary;
+      border: 0;
+    }
+
+    &:hover {
+      border-color: $primary;
+    }
+
+    &--left {
+      background: url("../../img/icons/chevron-arrow-left-hover.svg") no-repeat center;
+      margin-right: 8px;
+
+      &:disabled {
+        background-image: url("../../img/icons//chevron-arrow-left.svg");
+        border-color: $elements;
+        cursor: default;
+      }
+    }
+
+    &--right {
+      background: url("../../img/icons/chevron-arrow-right-hover.svg") no-repeat center;
+      margin-left: 8px;
+
+      &:disabled {
+        background-image: url("../../img/icons//chevron-arrow-right.svg");
+        border-color: $elements;
+        cursor: default;
+      }
+    }
+  }
+}

@@ -7,8 +7,13 @@ $white: #fff;
 $green: #27ae60;
 $red: #eb5757;
 
+$card-width: 272px;
 $page-padding: 152px;
 $button-width: 32px;
 $gap: 16px;
 $dot-width: 14px;
 $duration: 1s;
+$block-size: 8px;
+$footer-height: 96px;
+
+$width: 4 * $card-width + 3 * $gap;

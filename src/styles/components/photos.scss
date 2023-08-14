@@ -1,18 +1,20 @@
 .photos {
   margin-bottom: 72px;
+  width: 4 * $card-width + 3 * $gap;
   
   &__container {
     display: flex;
-    gap: var(--gap);
+    gap: $gap;
     margin-bottom: 8px;
     width: 100%;
   }
 
   &__button {
-    width: var(--button-width);
+    width: $button-width;
     height: 400px;
     background-color: $white;
     border: 1px solid $icons;
+    cursor: pointer;
 
     &--left {
       background: url("../../img/icons/chevron-arrow-left-hover.svg") no-repeat center;
@@ -36,6 +38,7 @@
 
     &:disabled {
       border-color: $elements;
+      cursor: default;
     }
   }
 
@@ -43,7 +46,7 @@
     overflow: hidden;
     position: relative;
     display: flex;
-    width: calc(100% - 2 * (var(--gap) + var(--button-width)));
+    width: $width - 2 * ($gap + $button-width);
   }
   
   &__photo {

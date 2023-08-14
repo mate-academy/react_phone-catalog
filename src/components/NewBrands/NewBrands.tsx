@@ -28,6 +28,8 @@ export const NewBrands = () => {
     getBrandNewProducts()
       .then(setProducts)
       .catch(() => new Error('Loading products error'));
+
+    return () => setProducts([]);
   }, []);
 
   useEffect(() => {
@@ -59,7 +61,7 @@ export const NewBrands = () => {
     <div className="slider">
       <div className="slider__panel">
         <h2 className="slider__title">
-          Hot prices
+          Brands new models
         </h2>
 
         <div className="slider__buttons">

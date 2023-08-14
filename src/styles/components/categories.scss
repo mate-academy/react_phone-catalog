@@ -13,18 +13,22 @@
   }
 
   &__link {
-    width: 33.3%;
+    width: $width / 3;
+    transition: all $duration;
 
     &--1:hover {
       background-color: #fcdbc144;
+      transform: scale(0.9);
     }
 
     &--2:hover {
       background-color: #8d8d9244;
+      transform: scale(0.9);
     }
 
     &--3:hover {
       background-color: #973d5f44;
+      transform: scale(0.9);
     }
   }
 

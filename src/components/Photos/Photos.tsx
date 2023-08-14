@@ -34,9 +34,12 @@ export const Photos = () => {
     }
 
     setIsDisabled(true);
-    setTimeout(() => {
+
+    const timeout = setTimeout(() => {
       setIsDisabled(false);
     }, duration);
+
+    return () => clearTimeout(timeout);
   }, [currentPhotoIndex]);
 
   const onLeftClick = () => {

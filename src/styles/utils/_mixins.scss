@@ -42,3 +42,9 @@
   font-size: 12px;
   line-height: 15px;
 }
+
+@mixin page-sizes {
+  padding: 40px 0 (80px + $footer-height);
+  margin: 0 auto;
+  width: $width;
+}

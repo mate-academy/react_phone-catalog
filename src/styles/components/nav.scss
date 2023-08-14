@@ -8,8 +8,8 @@
   }
 
   &__link {
-    display: block;
     @include uppercase-text;
+    display: block;
     line-height: 64px;
     color: $secondary;
 

@@ -4,10 +4,12 @@ import { FooterNav } from '../FooterNav';
 
 export const Footer = () => (
   <footer className="footer">
-    <FooterLogo />
+    <div className="footer__container">
+      <FooterLogo />
 
-    <FooterNav />
+      <FooterNav />
 
-    <FooterButton />
+      <FooterButton />
+    </div>
   </footer>
 );

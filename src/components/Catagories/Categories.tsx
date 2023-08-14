@@ -35,6 +35,12 @@ export const Categories = () => {
       .catch(() => {
         throw new Error('Loading product error');
       });
+
+    return () => {
+      setTabletsCount(0);
+      setAccessoriesCount(0);
+      setPhonesCount(0);
+    };
   }, []);
 
   return (

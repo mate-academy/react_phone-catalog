@@ -20,11 +20,12 @@
     display: flex;
     gap: 16px;
   }
-
+  
   &__button {
-    width: var(--button-width);
-    height: var(--button-width);
+    width: $button-width;
+    height: $button-width;
     border: 1px solid $icons;
+    cursor: pointer;
 
     &--left {
       background: url(../../img/icons/chevron-arrow-left-hover.svg) no-repeat center;
@@ -48,6 +49,7 @@
 
     &:disabled {
       border-color: $elements;
+      cursor: default;
     }
   }
 
@@ -59,6 +61,7 @@
     position: relative;
     display: flex;
     flex-flow: row nowrap;
+    gap: $gap;
     transition: transform $duration;
   }
 }
