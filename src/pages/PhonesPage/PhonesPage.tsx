@@ -2,10 +2,10 @@ import { useEffect, useState } from 'react';
 
 import { getPhones } from '../../functions/getPhones';
 
-import { ProductsList } from '../../components/ProductsList';
-import { Loader } from '../../components/Loader';
-
 import { Phone } from '../../types/Phone';
+import { Content } from '../../components/Content';
+
+const title = 'Mobile phones';
 
 export const PhonesPage = () => {
   const [phones, setPhones] = useState<Phone[] | null>(null);
@@ -27,22 +27,10 @@ export const PhonesPage = () => {
   }, []);
 
   return (
-    <div className="phones page__phones">
-      {!isLoading ? (
-        <>
-          <h1 className="phones__title">
-            Mobile phones
-          </h1>
-
-          <p className="phones__count">
-            {`${phones?.length} models`}
-          </p>
-
-          <ProductsList products={phones} />
-        </>
-      ) : (
-        <Loader />
-      )}
-    </div>
+    <Content
+      products={phones}
+      isLoading={isLoading}
+      title={title}
+    />
   );
 };

@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
+import { ProductCard } from '../ProductCard';
 import { PhoneCard } from '../PhoneCard';
 import { Selector } from '../Selector';
 import { Pagination } from '../Pagination';
 
 import { Phone } from '../../types/Phone';
+import { ApiProduct } from '../../types/ApiProduct';
 
 type Props = {
-  products: Phone[] | null;
+  products: ApiProduct[] | Phone[] | null;
 };
 
 const sortLabels = ['Newest', 'Alphabetically', 'Cheapest'];
@@ -19,7 +21,7 @@ const labels = ['Sort by', 'Items on page'];
 
 const valuesKeys = ['sort', 'perPage', 'page'];
 
-export const ProductsList: React.FC<Props> = ({ products }) => {
+export const List: React.FC<Props> = ({ products }) => {
   const [sortedBy, setSortedBy] = useState('age');
   const [perPage, setPerPage] = useState('16');
   const [pagesCount, setPagesCount] = useState(1);
@@ -50,7 +52,15 @@ export const ProductsList: React.FC<Props> = ({ products }) => {
           return product1.name.localeCompare(product2.name);
 
         case 'age':
-          return product2.year - product1.year;
+          if ('year' in product1 && 'year' in product2) {
+            return product2.year - product1.year;
+          }
+
+          if ('age' in product1 && 'age' in product2) {
+            return product2.age - product1.age;
+          }
+
+          return 0;
 
         case 'price':
           return product1.price - product2.price;
@@ -122,7 +132,13 @@ export const ProductsList: React.FC<Props> = ({ products }) => {
 
       <div className="products-list__container">
         {visibleProducts?.map(
-          product => <PhoneCard key={product.id} product={product} />,
+          product => {
+            if ('age' in product) {
+              return <ProductCard key={product.id} product={product} />;
+            }
+
+            return <PhoneCard key={product.id} product={product} />;
+          },
         )}
       </div>
 

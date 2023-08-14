@@ -1,0 +1,7 @@
+.no-results {
+  @include small-title;
+  display: block;
+  width: 100%;
+  text-align: center;
+  color: $secondary;
+}
