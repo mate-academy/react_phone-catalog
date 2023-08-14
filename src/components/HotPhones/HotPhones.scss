@@ -36,11 +36,13 @@
 
     &-right {
       background: url(./Slider-button-Default-right.svg);
+      transform: none;
       background-repeat: no-repeat;
       background-size: cover;
 
       &--disabled {
         background: url(./Slider_button_Disabled_right.svg);
+        transform: scaleX(-1);
         background-size: cover;
         background-repeat: no-repeat;
       }
