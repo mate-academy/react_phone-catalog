@@ -24,7 +24,7 @@ export const PhoneCard: React.FC<Props> = ({ product }) => {
     >
       <div className="product-card__container">
         <img
-          src={`../src/new/${image}`}
+          src={`./${image}`}
           alt={name}
           className="product-card__image"
         />
