@@ -14,9 +14,11 @@ export const HotPhones: React.FC<Props> = ({ phones }) => {
   const [start, setStart] = useState(0);
   const end = start + visibleCards;
 
-  const sortedphones = phones.sort((a, b) => (
+  const sortedPhones = phones.sort((a, b) => (
     (b.discount) - (a.discount)
   ));
+
+  const arrLength = sortedPhones.length;
 
   return (
     <div className="container">
@@ -34,7 +36,7 @@ export const HotPhones: React.FC<Props> = ({ phones }) => {
                 },
               )}
               type="button"
-              onClick={() => setStart((prev) => prev - 1)}
+              onClick={() => setStart((prev) => Math.max(prev - 1, 0))}
               disabled={start === 0}
             >
               <p hidden>
@@ -44,11 +46,13 @@ export const HotPhones: React.FC<Props> = ({ phones }) => {
             <button
               className={classNames(
                 'hot-phones__button hot-phones__button-right', {
-                  'hot-phones__button-right--disabled': end === 0,
+                  'hot-phones__button-right--disabled': end >= arrLength,
                 },
               )}
               type="button"
-              onClick={() => setStart((prev) => prev + 1)}
+              onClick={() => setStart((prev) => Math.min(
+                prev + 1, arrLength - visibleCards,
+              ))}
               disabled={end === 0}
             >
               <p hidden>
@@ -59,7 +63,7 @@ export const HotPhones: React.FC<Props> = ({ phones }) => {
         </div>
         <div className="hot-phones__phones">
           <ul className="product">
-            {sortedphones.slice(start, end).map((phone: Product) => (
+            {sortedPhones.slice(start, end).map((phone: Product) => (
               <li
                 className="product__item"
                 key={phone.id}
