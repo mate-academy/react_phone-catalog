@@ -14,9 +14,10 @@ export const Basket: React.FC<Props> = ({
   removeIphone,
 }) => {
   const sum = phonesToBuy.reduce((prev, current) => prev + current.price, 0);
+
   const baseUrl = 'https://mate-academy.github.io/react_phone-catalog/_new/';
-  const [count] = useState(1);
   const [total, setTotal] = useState(sum);
+  const [totalItems, setTotalItems] = useState(0);
   const [counts, setCounts] = useState(phonesToBuy.map(() => 1));
 
   const handleAdd = (index: number) => {
@@ -28,6 +29,7 @@ export const Basket: React.FC<Props> = ({
       const selectedPhone = phonesToBuy[index];
 
       setTotal(prevTotal => prevTotal + selectedPhone.price);
+      setTotalItems(prevTotalItems => prevTotalItems + 1);
 
       return newCounts;
     });
@@ -44,6 +46,7 @@ export const Basket: React.FC<Props> = ({
       const selectedPhone = phonesToBuy[index];
 
       setTotal(prevTotal => prevTotal - selectedPhone.price);
+      setTotalItems(prevTotalItems => prevTotalItems - 1);
 
       return newCounts;
     });
@@ -130,9 +133,15 @@ export const Basket: React.FC<Props> = ({
           <div className="basket__checkout">
             <p className="basket__checkout-price">{`$${total}`}</p>
             <p className="basket__checkout-text">
+              {/* Total for
+              {' '}
+              {phonesToBuy.length + totalItems}
+              {' '}
+              items */}
+
               Total for
               {' '}
-              {count}
+              {totalItems + phonesToBuy.length}
               {' '}
               items
             </p>

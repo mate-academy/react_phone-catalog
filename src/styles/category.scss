@@ -49,6 +49,9 @@
       line-height: 26px;
       color: $c-primary;
       padding-bottom: 4px;
+      display: block;
+      text-decoration: none;
+      cursor: pointer;
     }
 
     &-link {

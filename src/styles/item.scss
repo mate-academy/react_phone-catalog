@@ -113,6 +113,7 @@
     margin: 8px 8px 24px 0;
     border: none;
     background-color: $c-white;
+    cursor: pointer;
   }
 
   &__button {
@@ -126,6 +127,8 @@
     font-weight: 500;
     line-height: 21px;
     margin-right: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
 
     &:hover {
       background: var(--gray-primary, $c-primary);

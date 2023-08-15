@@ -38,15 +38,29 @@
     font-size: 12px;
     line-height: 11px;
     letter-spacing: 0.04em;
+
+    &:not(:last-child) {
+      padding-right: 64px;
+    }
   }
 
   &__link {
     text-decoration: none;
     color: $c-gray-middle;
+    position: relative;
     transition: all 0.3s;
+    font-weight: 800;
 
     &:hover {
-      color: $c-primary;
+      &::after {
+        content: "";
+        display: block;
+        height: 2px;
+        width: 100%;
+        background-color: $c-primary;
+        position: absolute;
+        top: 37.5px;
+      }
     }
   }
 }

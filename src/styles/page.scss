@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  overflow-x: hidden;
 }
 
 .page {
@@ -41,4 +42,9 @@ body {
       padding-bottom: 40px;
     }
   }
+}
+
+.block {
+  display: block;
+  margin: 0 auto;
 }

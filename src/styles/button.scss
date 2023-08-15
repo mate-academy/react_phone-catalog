@@ -27,7 +27,6 @@
     &--descr {
       width: 263px;
       margin-right: 8px;
-
     }
 
     &--selected {
@@ -50,13 +49,21 @@
     background-color: $c-white;
   }
 
+  &--pagination {
+    width: 32px;
+    height: 32px;
+    background-color: $c-white;
+    color: $c-white;
+    border: 1px solid $c-gray-light;
+    box-sizing: border-box;
+  }
+
   &__link {
     text-decoration: none;
     font-weight: 600;
     font-size: 14px;
     line-height: 21px;
     text-align: center;
-    color: $c-white;
   }
 
   &__like-icon {
@@ -71,6 +78,13 @@
 
     &--descr {
       padding-bottom: 40px;
+    }
+
+    &--home-page {
+      width: 80px;
+      padding-bottom: 28px;
+      position: relative;
+      left: 88%;
     }
   }
 }

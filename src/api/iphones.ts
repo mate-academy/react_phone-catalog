@@ -79,9 +79,9 @@ export function getAll(): Promise<Iphone[]> {
 export const getNewIphones = () => {
   return getAll()
     .then(items => items.sort((a, b) => {
-      return a.year - b.year;
+      return b.year - a.year;
     }))
-    .then(items => items.slice(0, 4));
+    .then(items => items.slice(0, 12));
 };
 
 export const getHotPrice = () => {
@@ -89,6 +89,6 @@ export const getHotPrice = () => {
     .then(items => items.sort((a, b) => {
       return ((b.price - b.fullPrice) / b.fullPrice) * 100
         - ((a.price - a.fullPrice) / a.fullPrice) * 100;
-    }))
-    .then(items => items.slice(0, 8));
+    }));
+  // .then(items => items.slice(0, 8));
 };

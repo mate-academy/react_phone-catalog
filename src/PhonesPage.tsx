@@ -5,6 +5,7 @@ import { Iphone } from './types/Iphone';
 import { ShopCard } from './ShopCard';
 import { getAll } from './api/iphones';
 import { Pagination } from './Pagination';
+import { Loader } from './Loader';
 
 type Props = {
   selectPhone: (iphoneId: string) => void,
@@ -51,7 +52,7 @@ export const PhonesPage: React.FC<Props> = ({
       });
 
     const filteredIphones = iphones.filter(iphone => (
-      iphone.name.toLowerCase().includes(iphoneTitle.toLowerCase()) // iphoneTitle is from input value
+      iphone.name.toLowerCase().includes(iphoneTitle.toLowerCase())
     ));
 
     return sortedIphones && filteredIphones;
@@ -60,7 +61,7 @@ export const PhonesPage: React.FC<Props> = ({
   let itemsToShow: Iphone[] = [];
 
   if (perPage === 'all') {
-    itemsToShow = visibleItems; // Display all iPhones without slicing
+    itemsToShow = visibleItems;
   } else {
     const startIndex = (currentPage - 1) * +perPage;
     const endIndex = Math.min(startIndex + +perPage, visibleItems.length);
@@ -181,16 +182,20 @@ export const PhonesPage: React.FC<Props> = ({
         </div>
         <div className="shop__catalog">
 
-          {itemsToShow.map((iphone: Iphone) => (
-            <ShopCard
-              key={iphone.id}
-              iphone={iphone}
-              selectPhone={selectPhone}
-              selectedIphoneId={selectedIphoneId}
-              selectPhoneToBuy={selectPhoneToBuy}
-              selectedIphoneIdToBuy={selectedIphoneIdToBuy}
-            />
-          ))}
+          {itemsToShow.length > 0 ? (
+            itemsToShow.map((iphone: Iphone) => (
+              <ShopCard
+                key={iphone.id}
+                iphone={iphone}
+                selectPhone={selectPhone}
+                selectedIphoneId={selectedIphoneId}
+                selectPhoneToBuy={selectPhoneToBuy}
+                selectedIphoneIdToBuy={selectedIphoneIdToBuy}
+              />
+            ))
+          ) : (
+            <Loader />
+          )}
         </div>
         {perPage !== 'all'
                 && (

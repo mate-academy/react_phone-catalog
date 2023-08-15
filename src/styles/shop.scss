@@ -8,18 +8,19 @@
 
   &__card {
     display: block;
-
     width: 275px;
     height: 510px;
-
     border: 1px solid $c-gray-light;
-
     margin-bottom: 40px;
+    transition: all 0.3s;
+
+    &:hover {
+      box-shadow: 2px 5px 5px 2px rgba(0,0,0,0.52);
+    }
 
     &__container {
       padding: 32px 24px 24px;
       position: relative;
-
     }
 
     &-title {

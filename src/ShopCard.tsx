@@ -10,6 +10,8 @@ type Props = {
   selectedIphoneId: string | null,
   selectPhoneToBuy: (iphoneId: string) => void,
   selectedIphoneIdToBuy: string | null,
+  // eslint-disable-next-line react/require-default-props
+  iphoneTitleRef?: () => void,
 };
 
 export const ShopCard: React.FC<Props> = ({
@@ -18,6 +20,7 @@ export const ShopCard: React.FC<Props> = ({
   selectedIphoneId,
   selectPhoneToBuy,
   selectedIphoneIdToBuy,
+  iphoneTitleRef,
 }) => {
   const baseUrl = 'https://mate-academy.github.io/react_phone-catalog/_new/';
   const [isLiked, setIsLiked] = useState(false);
@@ -35,6 +38,7 @@ export const ShopCard: React.FC<Props> = ({
         <NavLink
           className="shop__card-title"
           to={`/phones/${iphone.phoneId}`}
+          ref={iphoneTitleRef}
         >
           {iphone.name}
         </NavLink>
