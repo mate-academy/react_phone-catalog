@@ -1,1 +1,25 @@
-// not empty
+@import "./helpers/styles/fonts.scss";
+@import "./helpers/styles/variables.scss";
+@import "./helpers/styles/reset.scss";
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  &__main-section {
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 80px;
+  }
+
+  &__content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    max-width: 1136px;
+  }
+}
