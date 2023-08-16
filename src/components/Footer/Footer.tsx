@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import './Footer.scss';
 import arrowUp from '../../images/Icons/arrow_up--dark.svg';
 import logo from '../../images/LOGO.svg';
@@ -14,7 +15,11 @@ export const Footer = () => {
     <footer className="footer">
       <div className="footer__content">
         <div className="footer__logo">
-          <a href="/">
+          {/* Изменим ссылку здесь */}
+          <a
+            href="https://artyomwhite.github.io/react_phone-catalog/"
+            className="footer__logo-link"
+          >
             <img src={logo} alt="logo" />
           </a>
         </div>
