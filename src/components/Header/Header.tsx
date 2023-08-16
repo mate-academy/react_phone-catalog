@@ -1,10 +1,11 @@
+/* eslint-disable max-len */
 import './Header.scss';
 import { useContext } from 'react';
 import { NavLink, Link, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
 import { CartContext } from '../contexts/CartContextProvider';
 import { FavContext } from '../contexts/FavContextProvider';
-import Search from '../Search/Search';
+import { Search } from '../Search/Search';
 import logo from '../../images/LOGO.svg';
 import favImg from '../../images/Icons/Favourites_Heart-Like.svg';
 import cartImg from '../../images/Icons/Shopping-bag_Cart.svg';
@@ -25,60 +26,41 @@ export const Header = () => {
       <div className="header__nav">
         <div className="header__logo">
           <Link to="/">
-            <img
-              src={logo}
-              alt="logo"
-            />
+            <img src={logo} alt="logo" />
           </Link>
         </div>
 
         <NavLink
-          className={({ isActive }) => classNames(
-            'header__link',
-            'header__main-nav-link',
-            {
-              'header__main-nav-link--is-active': isActive,
-            },
-          )}
+          className={({ isActive }) => classNames('header__link', 'header__main-nav-link', {
+            'header__main-nav-link--is-active': isActive,
+          })}
           to="/"
         >
           home
         </NavLink>
 
         <NavLink
-          className={({ isActive }) => classNames(
-            'header__link',
-            'header__main-nav-link',
-            {
-              'header__main-nav-link--is-active': isActive,
-            },
-          )}
+          className={({ isActive }) => classNames('header__link', 'header__main-nav-link', {
+            'header__main-nav-link--is-active': isActive,
+          })}
           to="/phones"
         >
           phones
         </NavLink>
 
         <NavLink
-          className={({ isActive }) => classNames(
-            'header__link',
-            'header__main-nav-link',
-            {
-              'header__main-nav-link--is-active': isActive,
-            },
-          )}
+          className={({ isActive }) => classNames('header__link', 'header__main-nav-link', {
+            'header__main-nav-link--is-active': isActive,
+          })}
           to="/tablets"
         >
           tablets
         </NavLink>
 
         <NavLink
-          className={({ isActive }) => classNames(
-            'header__link',
-            'header__main-nav-link',
-            {
-              'header__main-nav-link--is-active': isActive,
-            },
-          )}
+          className={({ isActive }) => classNames('header__link', 'header__main-nav-link', {
+            'header__main-nav-link--is-active': isActive,
+          })}
           to="/accessories"
         >
           accessories
