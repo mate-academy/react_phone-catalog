@@ -1,7 +1,7 @@
 type Description = {
   title: string;
   text: string;
-}
+};
 
 export type PhoneInfo = {
   id: string;
@@ -22,4 +22,4 @@ export type PhoneInfo = {
   camera: string;
   zoom: string;
   cell: string[];
-}
+};
