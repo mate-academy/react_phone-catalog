@@ -203,6 +203,7 @@
 
     &-container {
       display: flex;
+      justify-content: space-between;
     }
 
     &-title {
@@ -214,13 +215,6 @@
       display: block;
       padding-bottom: 24px;
       margin: 0;
-
-    }
-
-    &-phone {
-      &:not(:last-child) {
-        padding-right: 16px;
-      }
     }
   }
 
