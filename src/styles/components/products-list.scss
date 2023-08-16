@@ -38,6 +38,7 @@
     background-color: $white;
     border: 1px solid $icons;
     color: $primary;
+    transition: all $half-duration;
     cursor: pointer;
 
     &:hover {
@@ -72,6 +73,7 @@
     color: $secondary;
     background-color: $white;
     border: 0;
+    transition: all $half-duration;
     cursor: pointer;
 
     &:hover {

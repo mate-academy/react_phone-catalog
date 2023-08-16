@@ -1,12 +1,13 @@
-import { getProducts } from './getProducts';
+import { getPhones } from './getPhones';
 
-import { ApiProduct } from '../types/ApiProduct';
+import { Phone } from '../types/Phone';
 
 export const getBrandNewProducts = () => {
-  return getProducts()
-    .then((products: ApiProduct[]) => products
-      .filter(({ discount }) => discount === 0)
+  return getPhones()
+    .then((products: Phone[]) => products
+      .filter(product => product.year === 2019)
       .sort((product1, product2) => (
-        product2.price - product1.price
-      )));
+        product2.fullPrice - product1.fullPrice
+      ))
+      .slice(0, 12));
 };

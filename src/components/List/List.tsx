@@ -1,16 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
-import { ProductCard } from '../ProductCard';
 import { PhoneCard } from '../PhoneCard';
 import { Selector } from '../Selector';
 import { Pagination } from '../Pagination';
 
 import { Phone } from '../../types/Phone';
-import { ApiProduct } from '../../types/ApiProduct';
 
 type Props = {
-  products: ApiProduct[] | Phone[] | null;
+  products: Phone[] | null;
 };
 
 const sortLabels = ['Newest', 'Alphabetically', 'Cheapest'];
@@ -52,15 +50,7 @@ export const List: React.FC<Props> = ({ products }) => {
           return product1.name.localeCompare(product2.name);
 
         case 'age':
-          if ('year' in product1 && 'year' in product2) {
-            return product2.year - product1.year;
-          }
-
-          if ('age' in product1 && 'age' in product2) {
-            return product2.age - product1.age;
-          }
-
-          return 0;
+          return product2.year - product1.year;
 
         case 'price':
           return product1.price - product2.price;
@@ -96,11 +86,11 @@ export const List: React.FC<Props> = ({ products }) => {
     setSearchParams(params);
   };
 
-  const handlePage = (page: string) => () => {
+  const handlePage = (listPage: string) => () => {
     const params = new URLSearchParams(searchParams);
 
-    setCurrentPage(page);
-    params.set('page', page);
+    setCurrentPage(listPage);
+    params.set('page', listPage);
 
     setSearchParams(params);
   };
@@ -132,13 +122,9 @@ export const List: React.FC<Props> = ({ products }) => {
 
       <div className="products-list__container">
         {visibleProducts?.map(
-          product => {
-            if ('age' in product) {
-              return <ProductCard key={product.id} product={product} />;
-            }
-
-            return <PhoneCard key={product.id} product={product} />;
-          },
+          product => (
+            <PhoneCard key={product.id} product={product} />
+          ),
         )}
       </div>
 

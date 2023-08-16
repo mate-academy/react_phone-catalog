@@ -6,17 +6,17 @@ import {
   useState,
 } from 'react';
 
-import { getHotPriceProducts } from '../../functions/getHotPriceProducts';
+import { getSuggestedProducts } from '../../functions/getSuggestedProducts';
 
 import { Phone } from '../../types/Phone';
 
 import { SliderContent } from '../SliderContent';
 
-const title = 'Hot prices';
+const title = 'You may also like';
 
 const gap = 16;
 
-export const ProductsSlider = () => {
+export const Like = () => {
   const [products, setProducts] = useState<Phone[]>([]);
   const [translate, setTranslate] = useState(0);
   const [isLeftButtonDisabled, setIsLeftButtonDisabled] = useState(false);
@@ -29,7 +29,7 @@ export const ProductsSlider = () => {
   const elementWidth = useMemo(() => (blockWidth + gap) / 4, [blockWidth]);
 
   useEffect(() => {
-    getHotPriceProducts()
+    getSuggestedProducts()
       .then(setProducts)
       .catch(() => new Error('Loading products error'));
 
@@ -56,7 +56,7 @@ export const ProductsSlider = () => {
   };
 
   return (
-    <div className="slider slider--first">
+    <div className="slider">
       <SliderContent
         title={title}
         onLeftClick={onLeftClick}

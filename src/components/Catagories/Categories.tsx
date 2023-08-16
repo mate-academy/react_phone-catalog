@@ -1,10 +1,8 @@
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
-import { getProducts } from '../../functions/getProducts';
 import { getPhones } from '../../functions/getPhones';
 
-import { ApiProduct } from '../../types/ApiProduct';
 import { Phone } from '../../types/Phone';
 
 export const Categories = () => {
@@ -13,19 +11,6 @@ export const Categories = () => {
   const [phonesCount, setPhonesCount] = useState(0);
 
   useEffect(() => {
-    getProducts()
-      .then((products: ApiProduct[]) => {
-        setTabletsCount(products.filter(
-          product => product.type === 'tablet',
-        ).length);
-        setAccessoriesCount(products.filter(
-          product => product.type === 'accessories',
-        ).length);
-      })
-      .catch(() => {
-        throw new Error('Loading product error');
-      });
-
     getPhones()
       .then((products: Phone[]) => {
         setPhonesCount(products.filter(

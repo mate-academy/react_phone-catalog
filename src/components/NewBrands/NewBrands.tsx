@@ -6,14 +6,18 @@ import {
   useState,
 } from 'react';
 
-import { ApiProduct } from '../../types/ApiProduct';
-import { ProductCard } from '../ProductCard';
+import { Phone } from '../../types/Phone';
+
 import { getBrandNewProducts } from '../../functions/getBrandNewProducts';
+
+import { SliderContent } from '../SliderContent';
+
+const title = 'Brands new models';
 
 const gap = 16;
 
 export const NewBrands = () => {
-  const [products, setProducts] = useState<ApiProduct[]>([]);
+  const [products, setProducts] = useState<Phone[]>([]);
   const [translate, setTranslate] = useState(0);
   const [isLeftButtonDisabled, setIsLeftButtonDisabled] = useState(false);
   const [isRightButtonDisabled, setIsRightButtonDisabled] = useState(false);
@@ -59,48 +63,16 @@ export const NewBrands = () => {
 
   return (
     <div className="slider">
-      <div className="slider__panel">
-        <h2 className="slider__title">
-          Brands new models
-        </h2>
-
-        <div className="slider__buttons">
-          <button
-            className="slider__button slider__button--left"
-            type="button"
-            aria-label="Left button"
-            onClick={onLeftClick}
-            disabled={isLeftButtonDisabled}
-          />
-
-          <button
-            className="slider__button slider__button--right"
-            type="button"
-            aria-label="Right button"
-            onClick={onRightClick}
-            disabled={isRightButtonDisabled}
-          />
-        </div>
-      </div>
-
-      <div
-        className="slider__track-container"
-        ref={ref}
-      >
-        <div
-          className="slider__track"
-          style={{ transform: `translate(${translate}px)` }}
-        >
-          {products.map(product => {
-            return (
-              <ProductCard
-                product={product}
-                key={product.id}
-              />
-            );
-          })}
-        </div>
-      </div>
+      <SliderContent
+        title={title}
+        onLeftClick={onLeftClick}
+        onRightClick={onRightClick}
+        isLeftButtonDisabled={isLeftButtonDisabled}
+        isRightButtonDisabled={isRightButtonDisabled}
+        reference={ref}
+        translate={translate}
+        products={products}
+      />
     </div>
   );
 };

@@ -9,4 +9,8 @@
   &__phones {
     @include page-sizes;
   }
+
+  &__details {
+    @include page-sizes;
+  }
 }

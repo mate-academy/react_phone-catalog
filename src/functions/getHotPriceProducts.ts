@@ -1,12 +1,13 @@
-import { getProducts } from './getProducts';
+import { getPhones } from './getPhones';
 
-import { ApiProduct } from '../types/ApiProduct';
+import { Phone } from '../types/Phone';
 
 export const getHotPriceProducts = () => {
-  return getProducts()
-    .then((products: ApiProduct[]) => products
-      .filter(({ discount }) => discount > 0)
+  return getPhones()
+    .then((products: Phone[]) => products
       .sort((product1, product2) => (
-        product2.price * product2.discount - product1.price * product1.discount
-      )));
+        product2.fullPrice - product1.fullPrice
+          + product1.price - product2.price
+      ))
+      .slice(0, 12));
 };

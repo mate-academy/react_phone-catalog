@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import { Phone } from '../../types/Phone';
 
@@ -15,6 +16,7 @@ export const PhoneCard: React.FC<Props> = ({ product }) => {
     screen,
     capacity,
     ram,
+    phoneId,
   } = product;
 
   return (
@@ -22,7 +24,10 @@ export const PhoneCard: React.FC<Props> = ({ product }) => {
       className="product-card"
       data-cy="cardsContainer"
     >
-      <div className="product-card__container">
+      <Link
+        to={`/phones/${phoneId}`}
+        className="product-card__container"
+      >
         <img
           src={`./${image}`}
           alt={name}
@@ -32,7 +37,7 @@ export const PhoneCard: React.FC<Props> = ({ product }) => {
         <p className="product-card__name">
           {name}
         </p>
-      </div>
+      </Link>
 
       <div className="product-card__container">
         <p className="product-card__price">

@@ -7,6 +7,8 @@ import { Content } from '../../components/Content';
 
 const title = 'Mobile phones';
 
+const page = 'phones';
+
 export const PhonesPage = () => {
   const [phones, setPhones] = useState<Phone[] | null>(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -28,6 +30,7 @@ export const PhonesPage = () => {
 
   return (
     <Content
+      page={page}
       products={phones}
       isLoading={isLoading}
       title={title}

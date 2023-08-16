@@ -4,9 +4,9 @@ import cn from 'classnames';
 const dotsId = [0, 1, 2];
 
 const photos = [
-  './img/img/banner-phones.png',
-  './img/img/banner-tablets.png',
-  './img/img/banner-accessories.png',
+  './img/photos/banner-phones.png',
+  './img/photos/banner-tablets.png',
+  './img/photos/banner-accessories.png',
 ].map((url) => {
   return (
     <img

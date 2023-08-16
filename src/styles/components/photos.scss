@@ -14,6 +14,7 @@
     height: 400px;
     background-color: $white;
     border: 1px solid $icons;
+    transition: all $half-duration;
     cursor: pointer;
 
     &--left {

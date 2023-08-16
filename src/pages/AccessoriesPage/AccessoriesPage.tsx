@@ -1,23 +1,25 @@
 import { useEffect, useState } from 'react';
 
-import { getProducts } from '../../functions/getProducts';
+import { getPhones } from '../../functions/getPhones';
 
-import { ApiProduct } from '../../types/ApiProduct';
+import { Phone } from '../../types/Phone';
 import { Content } from '../../components/Content';
 
 const title = 'Accessories';
 
+const page = 'accessories';
+
 export const AccessoriesPage = () => {
-  const [accessories, setAccessories] = useState<ApiProduct[] | null>(null);
+  const [accessories, setAccessories] = useState<Phone[] | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
 
-    getProducts()
-      .then((products: ApiProduct[]) => {
+    getPhones()
+      .then((products: Phone[]) => {
         setAccessories(products.filter(
-          product => product.type === 'accessories',
+          product => product.category === 'accessories',
         ));
       })
       .catch(() => {
@@ -28,6 +30,7 @@ export const AccessoriesPage = () => {
 
   return (
     <Content
+      page={page}
       products={accessories}
       isLoading={isLoading}
       title={title}

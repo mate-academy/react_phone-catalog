@@ -1,0 +1,261 @@
+.product-details {
+  &__title {
+    @include main-title;
+    margin-bottom: 40px;
+  }
+
+  &__interaction-block {
+    display: flex;
+    margin-bottom: 5 * $gap;
+  }
+
+  &__images {
+    display: flex;
+    flex-direction: column;
+    gap: $gap;
+    margin-right: $gap;
+  }
+
+  &__image-button {
+    padding: 7px;
+    width: 5 * $gap;
+    height: 5 * $gap;
+    background-color: $white;
+    border: 1px solid $elements;
+    transition: all $half-duration;
+    cursor: pointer;
+
+    &:hover {
+      border-color: $primary;
+    }
+  }
+  
+  &__image-icon {
+    max-width: 100%;
+    max-height: 100%;
+  }
+  
+  &__current-image {
+    box-sizing: border-box;
+    position: relative;
+    margin-right: 4 * $gap;
+    padding: 11px;
+    width: 29 * $gap;
+    height: 29 * $gap;
+  }
+
+  &__phone-image {
+    position: relative;
+    left: 50%;
+    top: 50%;
+    max-width: 100%;
+    max-height: 100%;
+    transform: translate(-50%, -50%);
+  }
+
+  &__interaction {
+    width: 20 * $gap;
+    margin-right: 2 * $gap;
+  }
+
+  &__select-container {
+    margin-bottom: 3 * $block-size;
+  }
+
+  &__name {
+    @include small-text;
+    margin-bottom: $block-size;
+    color: $secondary;
+  }
+
+  &__select-buttons {
+    display: flex;
+    gap: $block-size;
+  }
+
+  &__color {
+    box-sizing: border-box;
+    height: 4 * $block-size;
+    width: 4 * $block-size;
+    border: 1px solid $elements;
+    border-radius: 50%;
+    transition: all $half-duration;
+
+    &:hover {
+      border-color: $icons;
+    }
+
+    &--active {
+      border-color: $primary;
+
+      &:hover {
+        border-color: $primary;
+      }
+    }
+  }
+
+  &__color-border {
+    box-sizing: border-box;
+    display: block;
+    height: 4 * $block-size - 2px;
+    width: 4 * $block-size - 2px;
+    border-radius: 50%;
+    border: 2px solid $white;
+  }
+
+  &__capacity {
+    @include body-text;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    padding: 7px 8px 4px;
+    height: 4 * $block-size;
+    color: $primary;
+    border: 1px solid $icons;
+    transition: all $half-duration;
+
+    &:hover {
+      border-color: $primary;
+    }
+
+    &--active {
+      color: $white;
+      border: 0;
+      background-color: $primary;
+    }
+  }
+
+  &__line {
+    margin-bottom: 3 * $block-size;
+    width: 100%;
+    height: 1px;
+    background-color: $elements;
+
+    &--bigger {
+      margin-bottom: 4 * $block-size;
+    }
+  }
+
+  &__price-block {
+    margin-bottom: 4 * $block-size;
+  }
+
+  &__price {
+    @include main-title;
+    margin-bottom: 2 * $block-size;
+  }
+  
+  &__regular-price {
+    @include big-title;
+    font-weight: 500;
+    text-decoration: line-through;
+    color: $secondary;
+    vertical-align: middle;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: $block-size;
+  }
+
+  &__cart-button {
+    @include buttons-text;
+    box-sizing: border-box;
+    display: block;
+    width: 33 * $block-size;
+    height: 6 * $block-size;
+    color: $white;
+    background-color: $primary;
+    border: 0;
+    transition: all $half-duration;
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: $cart-button-shadow;
+    }
+  }
+
+  &__favourites-button {
+    box-sizing: border-box;
+    display: block;
+    padding: 2 * $block-size;
+    width: 6 * $block-size;
+    height: 6 * $block-size;
+    background-color: $white;
+    border: 1px solid $icons;
+    transition: all $half-duration;
+    cursor: pointer;
+
+    &:hover {
+      border-color: $primary;
+    }
+  }
+
+  &__favourites-icon {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__info-row {
+    @include small-text;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: $block-size;
+  }
+
+  &__info-name {
+    color: $secondary;
+  }
+
+  &__text-block {
+    display: flex;
+    gap: 4 * $gap;
+    margin-bottom: 80px;
+  }
+
+  &__description {
+    width: 35 * $gap;
+  }
+
+  &__text-subtitle {
+    @include big-title;
+    margin-bottom: $gap;
+  }
+
+  &__description-block {
+    margin-bottom: 2 * $gap;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__description-title {
+    @include small-title;
+    margin-bottom: $gap;
+  }
+
+  &__description-text {
+    @include body-text;
+    color: $secondary;
+  }
+
+  &__specs {
+    width: 32 * $gap;
+  }
+
+  &__specs-row {
+    @include body-text;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: $block-size;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__specs-name {
+    color: $secondary;
+  }
+}

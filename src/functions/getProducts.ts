@@ -17,7 +17,3 @@ export const request = (url: string) => {
       return response.json();
     });
 };
-
-export const getProducts = () => {
-  return request('api/products.json');
-};

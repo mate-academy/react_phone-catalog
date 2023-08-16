@@ -8,7 +8,16 @@
   padding: $button-width $button-width 24px;
   width: $card-width;
   border: 1px solid $elements;
+  transition: all $half-duration;
+  
+  &:hover {
+    box-shadow: $cart-button-shadow;
+  }
 
+  &__container {
+    color: inherit;
+  }
+  
   &__image {
     position: relative;
     left: 50%;
@@ -16,7 +25,7 @@
     max-height: 208px;
     transform: translateX(-50%);
   }
-
+  
   &__name {
     @include body-text;
     margin-bottom: $block-size;
@@ -66,6 +75,7 @@
     color: $white;
     background-color: $primary;
     border: 0;
+    transition: all $half-duration;
     cursor: pointer;
 
     &:hover {
@@ -85,6 +95,7 @@
     height: 5 * $block-size;
     background-color: $white;
     border: 1px solid $icons;
+    transition: all $half-duration;
     cursor: pointer;
 
     &:hover {

@@ -13,6 +13,7 @@
     height: $button-width;
     border: 1px solid $icons;
     background-color: $white;
+    transition: all $half-duration;
     cursor: pointer;
 
     &--active {
