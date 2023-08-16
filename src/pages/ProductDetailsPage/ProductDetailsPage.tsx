@@ -20,7 +20,8 @@ import {
   remove as removeFavourite,
 } from '../../features/favourites/favouritesSlice';
 import {
-  useGetProductDetailsQuery, useGetProductsQuery,
+  useGetProductDetailsQuery,
+  useGetProductsQuery,
 } from '../../features/api/apiSlice';
 import './ProductDetailsPage.scss';
 
@@ -45,12 +46,17 @@ export const ProductDetailsPage = () => {
   const favourites = useAppSelector(state => state.favourites);
   const dispatch = useAppDispatch();
 
-  const isItemInCart = isItemIncluded(cart, productId);
-  const isItemInFavourites = isItemIncluded(favourites, productId);
+  const isItemInCart = useMemo(() => {
+    return isItemIncluded(cart, productId);
+  }, [cart, productId]);
+
+  const isItemInFavourites = useMemo(() => {
+    return isItemIncluded(favourites, productId);
+  }, [favourites, productId]);
 
   const product = useMemo(() => {
     return products.find(item => item.id === productId);
-  }, [products]) as Product;
+  }, [products, productId]) as Product;
 
   const sellPrice = useMemo(() => {
     if (product) {

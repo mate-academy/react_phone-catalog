@@ -8,7 +8,6 @@ import {
   useMemo,
   useState,
 } from 'react';
-
 import { SearchIsActive } from '../../utils/searchIsActive';
 import { debounceQuery } from '../../utils/debounceQuery';
 import { getSearchWith } from '../../utils/searchHelper';

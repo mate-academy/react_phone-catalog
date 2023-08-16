@@ -79,8 +79,13 @@ export const ProductsPage: React.FC<Props> = ({ productType }) => {
   const totalItemsCount = sortedProducts.length;
   const itemsPerPage = getItemsPerPage(perPage, totalItemsCount);
 
-  const itemsFrom = itemsPerPage * currentPage - (itemsPerPage - 1);
-  const itemsTo = Math.min(itemsPerPage * currentPage, totalItemsCount);
+  const itemsFrom = useMemo(() => {
+    return itemsPerPage * currentPage - (itemsPerPage - 1);
+  }, [currentPage, perPage]);
+
+  const itemsTo = useMemo(() => {
+    return Math.min(itemsPerPage * currentPage, totalItemsCount);
+  }, [perPage, currentPage, totalItemsCount]);
 
   const visibleItems = useMemo(() => {
     return sortedProducts.slice(itemsFrom - 1, itemsTo);

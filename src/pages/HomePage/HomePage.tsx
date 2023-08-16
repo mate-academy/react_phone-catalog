@@ -9,6 +9,10 @@ import { getProductsCount } from '../../utils/getProductsCount';
 import { useGetProductsQuery } from '../../features/api/apiSlice';
 import { Loader } from '../../components/Loader/Loader';
 
+import phones from '../../images/phone.png';
+import tablets from '../../images/tablet.png';
+import accessories from '../../images/accessories.png';
+
 export const HomePage = () => {
   const { data: products = [], isLoading } = useGetProductsQuery();
 
@@ -22,9 +26,17 @@ export const HomePage = () => {
       .sort((a, b) => b.price - a.price);
   }, [products]);
 
-  const phonesCount = getProductsCount(products, 'phone');
-  const tabletsCount = getProductsCount(products, 'tablet');
-  const accessoriesCount = getProductsCount(products, ' accessory');
+  const phonesCount = useMemo(() => {
+    return getProductsCount(products, 'phone');
+  }, [products]);
+
+  const tabletsCount = useMemo(() => {
+    return getProductsCount(products, 'tablet');
+  }, [products]);
+
+  const accessoriesCount = useMemo(() => {
+    getProductsCount(products, 'accessory');
+  }, [products]);
 
   return (
     <div className="HomePage container">
@@ -64,6 +76,7 @@ export const HomePage = () => {
                   to="/phones"
                   className="HomePage__shop-by-category-link"
                 >
+                  <img src={phones} alt="phones" />
                   <h3>
                     Mobile phones
                   </h3>
@@ -79,6 +92,7 @@ export const HomePage = () => {
                   to="/tablets"
                   className="HomePage__shop-by-category-link"
                 >
+                  <img src={tablets} alt="tablets" />
                   <h3>
                     Tablets
                   </h3>
@@ -94,6 +108,7 @@ export const HomePage = () => {
                   to="/accessories"
                   className="HomePage__shop-by-category-link"
                 >
+                  <img src={accessories} alt="accessories" />
                   <h3>
                     Accessories
                   </h3>

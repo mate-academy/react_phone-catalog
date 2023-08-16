@@ -1,4 +1,5 @@
 import './ProductCard.scss';
+import { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import { Button } from '../Button/Button';
@@ -33,12 +34,18 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   const favourites = useAppSelector(state => state.favourites);
   const dispatch = useAppDispatch();
 
-  const sellPrice = calculateDiscount(product);
+  const sellPrice = useMemo(() => {
+    return calculateDiscount(product);
+  }, []);
   const itemPath = `/${type}s/${id}`;
 
-  const isItemInCart = isItemIncluded(cart, id);
+  const isItemInCart = useMemo(() => {
+    return isItemIncluded(cart, id);
+  }, [cart]);
 
-  const isItemInFavourites = isItemIncluded(favourites, id);
+  const isItemInFavourites = useMemo(() => {
+    return isItemIncluded(favourites, id);
+  }, [cart]);
 
   const onAddToCart = () => {
     if (isItemInCart) {
