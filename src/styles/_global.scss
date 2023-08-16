@@ -1,6 +1,10 @@
 @import "./global-imports";
 @import "./blocks/sections.scss";
 
+* {
+  box-sizing: border-box;
+}
+
 html {
   scroll-behavior: smooth;
 }

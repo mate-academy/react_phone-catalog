@@ -45,7 +45,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
   const isItemInFavourites = useMemo(() => {
     return isItemIncluded(favourites, id);
-  }, [cart]);
+  }, [favourites]);
 
   const onAddToCart = () => {
     if (isItemInCart) {

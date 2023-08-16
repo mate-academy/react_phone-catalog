@@ -9,7 +9,6 @@
     width: 32px;
     height: 32px;
     padding: 6px 0 4px;
-    box-sizing: border-box;
 
     @extend %body-text;
     text-align: center;
@@ -44,9 +43,7 @@
 
   &__item.active > a {
     border-color: $c-primary;
-
     background-color: $c-primary;
-
     color: $c-white;
   }
 }

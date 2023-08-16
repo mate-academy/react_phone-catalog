@@ -26,17 +26,9 @@ export const HomePage = () => {
       .sort((a, b) => b.price - a.price);
   }, [products]);
 
-  const phonesCount = useMemo(() => {
-    return getProductsCount(products, 'phone');
-  }, [products]);
-
-  const tabletsCount = useMemo(() => {
-    return getProductsCount(products, 'tablet');
-  }, [products]);
-
-  const accessoriesCount = useMemo(() => {
-    getProductsCount(products, 'accessory');
-  }, [products]);
+  const phonesCount = getProductsCount(products, 'phone');
+  const tabletsCount = getProductsCount(products, 'tablet');
+  const accessoriesCount = getProductsCount(products, 'accessory');
 
   return (
     <div className="HomePage container">
