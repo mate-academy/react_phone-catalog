@@ -13,8 +13,6 @@ import { PhoneInfo } from '../../types/PhoneInfo';
 
 import { colors } from '../../services/colors';
 
-const page = 'phones';
-
 export const PhoneDetailsPage = () => {
   const [phone, setPhone] = useState<PhoneInfo | null>(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -58,7 +56,7 @@ export const PhoneDetailsPage = () => {
       <Loader />
     ) : (
       <div className="product-details page__details">
-        <Breadcrumbs name={phone?.name} />
+        <Breadcrumbs name={phone?.name || ''} />
 
         <BackButton />
 
@@ -342,7 +340,7 @@ export const PhoneDetailsPage = () => {
           </div>
         </div>
 
-        <Like page={page} />
+        <Like />
       </div>
     )
   );
