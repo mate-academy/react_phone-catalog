@@ -26,7 +26,7 @@ export const Content: React.FC<Props> = ({
 
     {!isLoading && (
       <>
-        <Breadcrumbs />
+        <Breadcrumbs name="" />
 
         <h1 className="phones__title">
           {title}

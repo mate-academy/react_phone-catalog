@@ -10,7 +10,7 @@ type Props = {
   name: string;
 };
 
-export const Breadcrumbs: React.FC<Props> = ({ name = '' }) => {
+export const Breadcrumbs: React.FC<Props> = ({ name }) => {
   const location = useLocation();
 
   const page = useMemo(() => (
