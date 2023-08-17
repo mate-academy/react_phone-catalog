@@ -1,0 +1,35 @@
+.footer {
+  box-shadow: 0 -1px 0 0 $gray;
+
+  &__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+  }
+
+  &__navList {
+    display: flex;
+    gap: 64px;
+  }
+
+  &__navItem {
+    padding: 42px 0;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 11px;
+    color: $gray-secondary;
+    letter-spacing: 0.48px;
+    text-transform: uppercase;
+    transition: all 0.3s ease-in;
+
+    &:hover {
+      color: $gray-primary;
+    }
+  }
+}

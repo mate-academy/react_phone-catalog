@@ -1,8 +1,18 @@
 import './App.scss';
+import { Footer } from './components/Footer/Footer';
+import { NavBar } from './components/NavBar/NavBar';
 
 const App = () => (
   <div className="App">
-    <h1>React Phone Catalog</h1>
+    <header className="header">
+      <NavBar />
+    </header>
+
+    <footer className="footer">
+      <div className="container">
+        <Footer />
+      </div>
+    </footer>
   </div>
 );
 

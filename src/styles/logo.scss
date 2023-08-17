@@ -1,0 +1,13 @@
+.logo {
+  display: flex;
+  align-content: center;
+
+  &__img {
+    display: block;
+    background-image: url("../assets/logo.svg");
+    background-repeat: no-repeat;
+    width: 40px;
+    height: 24px;
+    margin-top: 10px;
+  }
+}

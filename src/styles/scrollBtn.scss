@@ -1,0 +1,35 @@
+.scrollUp {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  &__container {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+  }
+
+  &__arrow {
+    width: 32px;
+    height: 32px;
+    background-image: url("../assets/scrollButton.svg");
+    transition: all 0.3s ease-in;
+
+    &:hover {
+      transform: translateY(-0.2em);
+      box-shadow: 0 0.5em 0.5em -0.4em $gray-secondary;
+    }
+  }
+
+  &__text {
+    color: $gray-secondary;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: normal;
+    transition: all 0.3s ease-in;
+
+    &:hover {
+      color: $gray-primary;
+    }
+  }
+}
