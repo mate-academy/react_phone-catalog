@@ -32,7 +32,8 @@ export const Header:React.FC = () => {
     const target = event.target as HTMLButtonElement;
 
     if (target.classList.contains('favorite-button')
-      || target.classList.contains('button')) {
+      || target.classList.contains('button')
+      || target.classList.contains('cart-item__left-part__name')) {
       setClickCounter(prev => prev + 1);
     }
   });
@@ -86,7 +87,7 @@ export const Header:React.FC = () => {
               <div className="icon icon--cart header__icon__image" />
               {cartLength > 0 && (
                 <span className="header__icon__amount">
-                  {cartLength}
+                  {cartIsActive ? '' : cartLength}
                 </span>
               )}
             </div>

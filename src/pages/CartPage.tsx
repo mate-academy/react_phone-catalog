@@ -75,6 +75,8 @@ export const CartPage = () => {
 
     setListOfProducts(newList);
     setVisibleProducts(getUniqueItems(newList));
+
+    localStorage.removeItem('cartList');
     localStorage.setItem('cartList', JSON.stringify(newList));
   };
 

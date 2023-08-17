@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import { useState } from 'react';
-import { cartListAdded } from '../helpers/cartTab';
+import { cartListAdded, checkIsSelected } from '../helpers/cartTab';
 
 type Props = {
   id: string,
@@ -14,7 +14,7 @@ export const AddToCartButton: React.FC<Props> = ({
   const [
     isInCart,
     setIsInCart,
-  ] = useState<boolean>(false);
+  ] = useState<boolean>(checkIsSelected(id));
   const handleAddToCart = () => {
     setIsInCart(true);
     cartListAdded(id);

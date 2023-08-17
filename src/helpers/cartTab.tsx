@@ -1,8 +1,8 @@
 import { Product } from '../types/Product';
 
-const catalog: Product[] = JSON.parse(
-  localStorage.getItem('fullList') || '',
-);
+const catalog: Product[] = localStorage.getItem('fullList')
+  ? JSON.parse(localStorage.getItem('fullList') || '')
+  : [];
 
 export const selectedList: Product[] = localStorage.getItem('cartList')
   ? JSON.parse(localStorage.getItem('cartList') || '')
