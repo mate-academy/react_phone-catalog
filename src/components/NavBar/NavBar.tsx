@@ -13,21 +13,21 @@ export const NavBar = () => {
 
         <NavLink
           to="/"
-          className={`navbar__item ${location.pathname === '/' ? 'active' : ''}`}
+          className={`navbar__item ${location.pathname === '/' ? 'navbar__item--active' : ''}`}
         >
           home
         </NavLink>
 
         <NavLink
           to="/phones"
-          className={`navbar__item ${location.pathname === '/phones' ? 'active' : ''}`}
+          className={`navbar__item ${location.pathname === '/phones' ? 'navbar__item--active' : ''}`}
         >
           phones
         </NavLink>
 
         <NavLink
           to="/accessories"
-          className={`navbar__item ${location.pathname === '/accessories' ? 'active' : ''}`}
+          className={`navbar__item ${location.pathname === '/accessories' ? 'navbar__item--active' : ''}`}
         >
           accessories
         </NavLink>
@@ -44,7 +44,6 @@ export const NavBar = () => {
           <div className="navbar__icon--cart" />
         </Link>
       </div>
-
     </nav>
   );
 };

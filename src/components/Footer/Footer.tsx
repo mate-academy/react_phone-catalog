@@ -10,8 +10,9 @@ export const Footer = () => (
       <nav className="footer__nav">
         <ul className="footer__navList">
           <NavLink
-            to="/github"
+            to="https://github.com/Ir-ra/react_phone-catalog"
             className="footer__navItem"
+            target="_blank"
           >
             Github
           </NavLink>
