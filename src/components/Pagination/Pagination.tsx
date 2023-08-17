@@ -33,6 +33,7 @@ export const Pagintaion: React.FC<Props> = ({
         <SearchLink
           data-cy="paginationLeft"
           className="Pagination__link Pagination__link--prev"
+          aria-label="pagination-left"
           params={{ page: `${currentPage - 1}` }}
         />
       </li>
@@ -60,6 +61,7 @@ export const Pagintaion: React.FC<Props> = ({
         <SearchLink
           data-cy="paginationRight"
           className="Pagination__link Pagination__link--next"
+          aria-label="pagination-right"
           params={{ page: `${currentPage + 1}` }}
         />
       </li>

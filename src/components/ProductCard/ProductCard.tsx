@@ -73,6 +73,8 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
             <img
               className="ProductCard__image"
               src={imageUrl}
+              width="208"
+              height="208"
               alt="product"
             />
           </Link>
@@ -96,7 +98,10 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           )}
         </div>
 
-        <table className="ProductCard__specs-table">
+        <table
+          className="ProductCard__specs-table"
+          role="presentation"
+        >
           <tbody>
             <tr>
               <td>Screen</td>
@@ -129,6 +134,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           <Button
             variant="favourite"
             data-cy="addToFavorite"
+            aria-label="add-favourite"
             className={classNames(
               { active: isItemInFavourites },
             )}

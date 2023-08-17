@@ -57,6 +57,7 @@ export const Carousel = () => {
         <Button
           variant="arrow"
           arrowDirection="left"
+          aria-label="carosuel-left"
           className="Carousel__button"
           onClick={handleSlideLeft}
         />
@@ -69,6 +70,7 @@ export const Carousel = () => {
             <li>
               <Link to="/phones" className="Carousel__link">
                 <img
+                  height="400"
                   src={BannerPhone}
                   alt="Phones"
                   className="Carousel__image"
@@ -78,6 +80,7 @@ export const Carousel = () => {
             <li>
               <Link to="/tablets" className="Carousel__link">
                 <img
+                  height="400"
                   src={BannerTablets}
                   alt="Tablets"
                   className="Carousel__image"
@@ -87,6 +90,7 @@ export const Carousel = () => {
             <li>
               <Link to="/accessories" className="Carousel__link">
                 <img
+                  height="400"
                   src={BannerAccessories}
                   alt="Accessories"
                   className="Carousel__image"
@@ -99,6 +103,7 @@ export const Carousel = () => {
         <Button
           variant="arrow"
           className="Carousel__button"
+          aria-label="carosuel-right"
           onClick={handleSlideRight}
         />
       </div>
@@ -106,6 +111,7 @@ export const Carousel = () => {
       <div className="Carousel__badges">
         <button
           type="button"
+          aria-label="carousel-show-first"
           className={classNames(
             'Carousel__badge',
             { 'Carousel__badge--active': imagesScrolled === 0 },
@@ -114,6 +120,7 @@ export const Carousel = () => {
         />
         <button
           type="button"
+          aria-label="carousel-show-second"
           className={classNames(
             'Carousel__badge',
             { 'Carousel__badge--active': imagesScrolled === 1 },
@@ -122,6 +129,7 @@ export const Carousel = () => {
         />
         <button
           type="button"
+          aria-label="carousel-show-third"
           className={classNames(
             'Carousel__badge',
             { 'Carousel__badge--active': imagesScrolled === 2 },

@@ -43,12 +43,14 @@ export const ProductSlider: React.FC<Props> = ({
             disabled={itemsScrolled === 0}
             variant="arrow"
             arrowDirection="left"
+            aria-label="slide-left"
             onClick={handleSlideLeft}
           />
 
           <Button
             disabled={itemsScrolled === itemsCount - 4}
             variant="arrow"
+            aria-label="slide-right"
             onClick={handleSlideRight}
           />
         </div>

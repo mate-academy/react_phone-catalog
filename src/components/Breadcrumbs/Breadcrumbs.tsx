@@ -40,6 +40,7 @@ export const Breadcrumbs = () => {
           <Link
             to="/home"
             className="Breadcrumbs__home-link"
+            aria-label="home"
           />
         </li>
         {crumbs}

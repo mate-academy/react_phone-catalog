@@ -100,9 +100,9 @@ export const ProductDetailsPage = () => {
       </div>
 
       {productNotFound && (
-        <h1 className="ProductDetailsPage__not-found">
+        <h2 className="ProductDetailsPage__not-found">
           Product was not found
-        </h1>
+        </h2>
       )}
 
       {(isLoading || isFetching) && (
@@ -136,6 +136,8 @@ export const ProductDetailsPage = () => {
                         <img
                           src={imgUrl}
                           alt="thumbnail"
+                          width="80"
+                          height="78"
                           className="ProductDetailsPage__thumbnail"
                         />
                       </button>
@@ -145,7 +147,11 @@ export const ProductDetailsPage = () => {
               </aside>
 
               <div className="ProductDetailsPage__image-main">
-                <img src={productDetails?.images[imageId]} alt="product" />
+                <img
+                  src={productDetails?.images[imageId]}
+                  alt="product"
+                  width="464"
+                />
               </div>
 
               <div className="ProductDetailsPage__actions">
@@ -159,6 +165,7 @@ export const ProductDetailsPage = () => {
                       <li key={color}>
                         <Button
                           variant="color"
+                          aria-label={`choose-color-${color}`}
                           className={classNames(
                             { active: colorId === index },
                           )}
@@ -181,6 +188,7 @@ export const ProductDetailsPage = () => {
                       <li key={capacity}>
                         <Button
                           variant="text"
+                          aria-label={`choose-capacity-${capacity}`}
                           className={classNames(
                             { active: capacityId === index },
                           )}
@@ -223,6 +231,7 @@ export const ProductDetailsPage = () => {
                     <Button
                       variant="favourite"
                       data-cy="addToFavorite"
+                      aria-label="add-favourite"
                       className={classNames(
                         'ProductDetailsPage__button-favourite',
                         { active: isItemInFavourites },
@@ -233,7 +242,10 @@ export const ProductDetailsPage = () => {
                 </div>
 
                 <div className="ProductDetailsPage__specs-small">
-                  <table className="ProductDetailsPage__specs-table">
+                  <table
+                    className="ProductDetailsPage__specs-table"
+                    role="presentation"
+                  >
                     <tbody>
                       <tr>
                         <td>Screen</td>
@@ -260,7 +272,7 @@ export const ProductDetailsPage = () => {
             </section>
 
             <div className="ProductDetailsPage__details grid section">
-              <section
+              <div
                 className="ProductDetailsPage__about"
                 data-cy="productDescription"
               >
@@ -270,13 +282,16 @@ export const ProductDetailsPage = () => {
                 <p className="ProductDetailsPage__about-description">
                   {productDetails?.description}
                 </p>
-              </section>
+              </div>
 
-              <section className="ProductDetailsPage__techspecs">
+              <div className="ProductDetailsPage__techspecs">
                 <p className="ProductDetailsPage__about-subtitle">
                   Tech specs
                 </p>
-                <table className="ProductDetailsPage__techspecs-table">
+                <table
+                  className="ProductDetailsPage__techspecs-table"
+                  role="presentation"
+                >
                   <tbody>
                     <tr>
                       <td>Screen</td>
@@ -314,7 +329,7 @@ export const ProductDetailsPage = () => {
                     </tr>
                   </tbody>
                 </table>
-              </section>
+              </div>
             </div>
           </div>
 

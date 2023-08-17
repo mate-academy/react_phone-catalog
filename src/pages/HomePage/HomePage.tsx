@@ -49,14 +49,14 @@ export const HomePage = () => {
 
       {!isLoading && (
         <>
-          <section className="HomePage__carousel-container">
+          <div className="HomePage__carousel-container">
             <Carousel />
-          </section>
+          </div>
 
           <section className="section">
-            <h1 className="section__title">
+            <h2 className="section__title">
               Hot prices
-            </h1>
+            </h2>
 
             <ProductSlider
               products={hotPriceProducts}
@@ -64,9 +64,9 @@ export const HomePage = () => {
           </section>
 
           <section className="HomePage__shop-by-category section">
-            <h1 className="section__title">
+            <h2 className="section__title">
               Shop by category
-            </h1>
+            </h2>
 
             <ul
               className="HomePage__shop-by-category-container"
@@ -77,7 +77,10 @@ export const HomePage = () => {
                   to="/phones"
                   className="HomePage__shop-by-category-link"
                 >
-                  <img src={phones} alt="phones" />
+                  <img
+                    src={phones}
+                    alt="phones"
+                  />
                   <h3>
                     Mobile phones
                   </h3>
@@ -92,7 +95,10 @@ export const HomePage = () => {
                   to="/tablets"
                   className="HomePage__shop-by-category-link"
                 >
-                  <img src={tablets} alt="tablets" />
+                  <img
+                    src={tablets}
+                    alt="tablets"
+                  />
                   <h3>
                     Tablets
                   </h3>
@@ -107,7 +113,10 @@ export const HomePage = () => {
                   to="/accessories"
                   className="HomePage__shop-by-category-link"
                 >
-                  <img src={accessories} alt="accessories" />
+                  <img
+                    src={accessories}
+                    alt="accessories"
+                  />
                   <h3>
                     Accessories
                   </h3>
@@ -121,9 +130,9 @@ export const HomePage = () => {
           </section>
 
           <section className="HomePage__brand-new section">
-            <h1 className="section__title">
+            <h2 className="section__title">
               Brand new models
-            </h1>
+            </h2>
 
             <ProductSlider
               products={brandNewProducts}

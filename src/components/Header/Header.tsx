@@ -32,6 +32,7 @@ export const Header = () => {
         <NavLinkMain
           to="favourites"
           type="favourite"
+          aria-label="favourites"
         >
           <Counter count={favouriteItemsCount} />
         </NavLinkMain>
@@ -39,6 +40,7 @@ export const Header = () => {
         <NavLinkMain
           to="cart"
           type="cart"
+          aria-label="cart"
         >
           <Counter count={cartItemsCount} />
         </NavLinkMain>

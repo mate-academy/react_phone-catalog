@@ -148,7 +148,7 @@ export const ProductsPage: React.FC<Props> = ({ productType }) => {
       {isLoading && <Loader />}
 
       {!!totalItemsCount && !isLoading && (
-        <section>
+        <>
           <div className="ProductsPage__product-list">
             <ProductsList items={visibleItems} />
           </div>
@@ -160,7 +160,7 @@ export const ProductsPage: React.FC<Props> = ({ productType }) => {
               currentPage={currentPage}
             />
           )}
-        </section>
+        </>
       )}
     </div>
   );

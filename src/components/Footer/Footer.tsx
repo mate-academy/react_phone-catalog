@@ -42,12 +42,14 @@ nazarkharkevych/react_phone-catalog/blob/master/LICENSE`}
         </div>
 
         <div className="Footer__anchor">
-          <span className="Footer__anchor-text">
+          <strong className="Footer__anchor-text">
             Back to top
-          </span>
+          </strong>
+
           <Button
             variant="arrow"
             arrowDirection="top"
+            aria-label="scroll-top"
             onClick={() => window.scrollTo(0, 0)}
           />
         </div>

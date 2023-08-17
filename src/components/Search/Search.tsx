@@ -68,6 +68,7 @@ export const Search = () => {
     >
       <input
         type="text"
+        aria-label="search"
         value={query}
         className={classNames(
           'Search__input',
@@ -79,6 +80,7 @@ export const Search = () => {
       <button
         type="button"
         data-cy="searchDelete"
+        aria-label="clear-search"
         className={classNames(
           'Search__clear-button',
           { isActive: query !== '' },

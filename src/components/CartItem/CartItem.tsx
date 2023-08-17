@@ -37,6 +37,7 @@ export const CartItem: React.FC<Props> = ({ item }) => {
         className="CartItem__delete"
         type="button"
         data-cy="cartDeleteButton"
+        aria-label="delete"
         onClick={() => dispatch(remove(id))}
       />
 
@@ -44,6 +45,8 @@ export const CartItem: React.FC<Props> = ({ item }) => {
         <img
           src={imageUrl}
           alt={name}
+          width="66"
+          height="66"
         />
       </Link>
 
@@ -55,6 +58,7 @@ export const CartItem: React.FC<Props> = ({ item }) => {
         <Button
           variant="quantity"
           sign="minus"
+          aria-label="quantity-decrease"
           disabled={item.quantity === 1}
           onClick={() => dispatch(decreaseQuantity(id))}
         />
@@ -68,6 +72,7 @@ export const CartItem: React.FC<Props> = ({ item }) => {
         <Button
           variant="quantity"
           sign="plus"
+          aria-label="quantity-increase"
           onClick={() => dispatch(increaseQuantity(id))}
         />
       </div>
