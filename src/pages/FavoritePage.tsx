@@ -5,9 +5,9 @@ import { Navigation } from '../components/Navigation';
 import { Product } from '../types/Product';
 
 export const FavoritePage: React.FC = () => {
-  const catalog: Product[] = JSON.parse(
-    localStorage.getItem('fav') || '',
-  );
+  const catalog: Product[] = localStorage.getItem('fav')
+    ? JSON.parse(localStorage.getItem('fav') || '')
+    : [];
   const [sortedCatalog, setSortedCatalog] = useState<Product[]>([...catalog]);
   const amount = sortedCatalog.length;
   const [searchParams] = useSearchParams();

@@ -8,9 +8,9 @@ export const CartPage = () => {
     localStorage.getItem('fullList') || '',
   );
 
-  const selectedList: Product[] = JSON.parse(
-    localStorage.getItem('cartList') || '',
-  );
+  const selectedList: Product[] = localStorage.getItem('cartList')
+    ? JSON.parse(localStorage.getItem('cartList') || '')
+    : [];
 
   const getUniqueItems = (initialArray: Product[]) => {
     return initialArray.filter((
