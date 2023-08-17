@@ -47,8 +47,8 @@
   &__item--desktop {
 
     @include onDesktopSmall {
-      @for $start from 1 through 12 {
-        @for $end from $start through 12 {
+      @for $start from 1 through 24 {
+        @for $end from $start through 24 {
           &--#{$start}-#{$end} {
             grid-column: #{$start} / #{$end + 1};
           }

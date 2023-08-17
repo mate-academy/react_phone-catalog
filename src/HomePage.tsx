@@ -106,63 +106,45 @@ export const HomePage: React.FC<Props> = ({
       <section className="page page__body page__section category">
         <h1 className="page__title">Shop by category</h1>
         <div className="category__catalog">
-          <div className="category__card category__card--phones">
-            <div className="category__card__img
-            category__card__img--phones"
-            />
+          <div className="category__card">
+            <div className="category__card--phones" />
+            <div className="category__card__img category__card__img--phones" />
             <NavLink
-              className="category__card-title"
               to="/phones"
+              className="category__card__link-container"
             >
-              Phones
+              <p className="category__card__link--main">Phones</p>
+              <p className="category__card__link--secondary"> 95 models </p>
             </NavLink>
+
+          </div>
+
+          <div className="category__card">
+            <div className="category__card--tablets" />
+            <div className="category__card__img category__card__img--tablets" />
             <NavLink
-              to="/phones"
-              className="category__card-link"
+              to="/tablets"
+              className="category__card__link-container"
             >
-              100 models
+              <p className="category__card__link--main">Tablets</p>
+              <p className="category__card__link--secondary"> 85 models </p>
             </NavLink>
           </div>
 
-          <div className="category__card category__card--tablets">
-            <div className="category__card__img
-            category__card__img--tablets"
-            />
-            <NavLink
-              className="category__card-title"
-              to="/tablets"
-            >
-              Tablets
-            </NavLink>
+          <div className="category__card">
+            <div className="category__card--accessories" />
+            <div className="category__card__img category__card__img--accessories" />
             <NavLink
               to="/tablets"
-              className="category__card-link"
+              className="category__card__link-container"
             >
-              24 models
-            </NavLink>
-          </div>
-
-          <div className="category__card category__card--accessories">
-            <div className="category__card__img
-            category__card__img--accessories"
-            />
-            <NavLink
-              className="category__card-title"
-              to="/phones"
-            >
-              Accessories
-            </NavLink>
-            <NavLink
-              to="/accessories"
-              className="category__card-link"
-            >
-              100 models
+              <p className="category__card__link--main">Accessories</p>
+              <p className="category__card__link--secondary"> 60 models </p>
             </NavLink>
           </div>
 
         </div>
       </section>
-
       <section className="page page__body page__section new-models">
         <div className="page__section-container">
           <h1 className="page__title">

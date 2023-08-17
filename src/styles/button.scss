@@ -74,14 +74,19 @@
 
   &__container {
     display: flex;
-    justify-content: space-between;
 
     &--descr {
       padding-bottom: 40px;
     }
 
     &--home-page {
+      display: none;
       width: 80px;
+
+      @include onTablet {
+        display: flex;
+        justify-content: space-between;
+      }
     }
   }
 }

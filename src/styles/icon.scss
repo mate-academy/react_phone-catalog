@@ -6,7 +6,7 @@
 
   &--elipse {
     position: absolute;
-    top: -5px;
+    bottom: 30px;
     left: 33px;
     z-index: 2;
 
@@ -15,22 +15,13 @@
     }
   }
 
-  &--logo {
-    background-image: url(../images/LOGO.svg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 11px;
-    width: 40px;
-  }
-
   &-container {
     display: flex;
     justify-content: space-around;
     align-items: center;
     width: 128px;
-
     position: absolute;
-    left: 1400px;
+    left: 90%;
   }
 
   width: 22px;

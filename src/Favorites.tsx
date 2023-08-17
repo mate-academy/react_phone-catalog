@@ -67,17 +67,20 @@ export const Favorites: React.FC<Props> = ({
             items
           </a>
 
-          <div className="shop__catalog">
+          <div className="shop__catalog shop__catalog--favorites">
 
             {favorites.map((iphone) => {
               return (
-                <ShopCard
-                  iphone={iphone}
-                  selectPhone={selectPhone}
-                  selectedIphoneId={selectedIphoneId}
-                  selectPhoneToBuy={selectPhoneToBuy}
-                  selectedIphoneIdToBuy={selectedIphoneIdToBuy}
-                />
+                <div className="shop__catalog--favorites-item">
+                  <ShopCard
+                    iphone={iphone}
+                    selectPhone={selectPhone}
+                    selectedIphoneId={selectedIphoneId}
+                    selectPhoneToBuy={selectPhoneToBuy}
+                    selectedIphoneIdToBuy={selectedIphoneIdToBuy}
+                  />
+
+                </div>
               );
             })}
 

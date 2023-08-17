@@ -168,9 +168,11 @@ export const PhoneDescription: React.FC<Props> = ({
       </h1>
       {loading ? (<Loader />) : (
         <>
-          <div className="item__list--main">
+          <article className="grid item__article ">
             <div
-              className="item__list--img"
+              className="item__list--img grid__item
+              grid__item--tablet--1-2
+              grid__item--desktop--1-2"
             >
               <a
                 href={`${baseUrl}${selectedIphone?.images[0]}`}
@@ -221,10 +223,14 @@ export const PhoneDescription: React.FC<Props> = ({
             <img
               src={`${baseUrl}${selectedIphone?.images[0]}`}
               alt="img1"
-              className="item-main-img"
+              className="item-main-img grid__item
+              grid__item--desktop--4-10"
             />
 
-            <div className="item__list--description">
+            <div className="item__list--description grid__item
+            grid__item--tablet--3-6
+            grid__item--desktop--14-20"
+            >
               <div className="item__text--secondary">
                 Available colors
               </div>
@@ -384,9 +390,14 @@ export const PhoneDescription: React.FC<Props> = ({
               </table>
             </div>
 
-          </div>
-          <div className="item__description item__description-container">
-            <div className="item__description--1">
+          </article>
+          <article className="item__article
+          grid
+          item__description item__description-container"
+          >
+            <div className="item__description--1
+            grid__item--desktop--1-12"
+            >
               <h2 className="item__description-title">About</h2>
               <h3 className="item__description-text item__description-text--main">
                 And then there was Pro
@@ -409,7 +420,10 @@ export const PhoneDescription: React.FC<Props> = ({
                 iPhone 11 Pro lets you capture videos that are beautifully true to life, with greater detail and smoother motion. Epic processing power means it can shoot 4K video with extended dynamic range and cinematic video stabilization — all at 60 fps. You get more creative control, too, with four times more scene and powerful new editing tools to play with.
               </p>
             </div>
-            <div className="item__description--2">
+            <div className="item__description--2 grid__item
+            grid__item--tablet--1-6
+            grid__item--desktop--14-24"
+            >
               <h2 className="item__description-title">Tech specs</h2>
               <table className="item__table">
                 <tbody>
@@ -449,8 +463,8 @@ export const PhoneDescription: React.FC<Props> = ({
               </table>
 
             </div>
-          </div>
-          <article className="item__recommends">
+          </article>
+          <article className="item__article item__recommends">
             <h1 className="item__recommends-title">
               You may also like
             </h1>

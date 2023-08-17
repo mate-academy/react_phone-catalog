@@ -1,28 +1,139 @@
 .header {
   height: 65px;
   margin: 0 auto 40px;
+  width: 100%;
+
+  &::after {
+    content: "";
+    display: block;
+    height: 1px;
+    background-color: $c-gray-light;
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    padding: 0 24px;
+    height: 65px;
+
+    &__list {
+      display: flex;
+      list-style: none;
+      position: relative;
+
+      &-item {
+        &:not(:last-child) {
+          padding-right: 20px;
+
+          @include onDesktopSmall {
+            padding-right: 64px;
+          }
+        }
+      }
+
+      &-link {
+        margin-top: 50px;
+        height: 65px;
+        text-decoration: none;
+        color: $c-gray-middle;
+        font-family: Mont, sans-serif;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: 11px;
+        letter-spacing: 0.48px;
+        text-transform: uppercase;
+        display: block;
+        position: relative;
+
+        &:hover,
+        &:focus {
+          &::after {
+            content: "";
+            display: block;
+            height: 3px;
+            width: 100%;
+            background-color: $c-primary;
+            position: absolute;
+            top: 37.5px;
+          }
+        }
+
+      }
+
+    }
+
+    &__icon {
+
+      &-container {
+        display: none;
+
+        @include onTablet {
+          display: flex;
+          align-items: center;
+          height: 65px;
+          width: 130px;
+          justify-content: space-around;
+          border-left: 1px solid $c-gray-light;
+        }
+
+        position: absolute;
+        right: 1%;
+      }
+
+      &-item {
+        height: 65px;
+        display: flex;
+        align-items: center;
+
+        &--2 {
+          border-left: 1px solid $c-gray-light;
+          padding-left: 24px;
+        }
+      }
+    }
+  }
+
+  &__icon {
+    &--logo {
+      background-image: url(../images/LOGO.svg);
+      background-size: cover;
+      background-repeat: no-repeat;
+      height: 11px;
+      width: 40px;
+      margin-right: 20px;
+
+      @include onTablet {
+        margin-right: 64px;
+      }
+    }
+  }
 
   &__form {
     box-sizing: border-box;
-
-    height: 32.5px;
-    width: 327px;
+    height: 65px;
+    max-width: 327px;
     vertical-align: middle;
-    display: flex;
-    align-items: center;
+    display: none;
 
-    position: absolute;
-    left: 1000px;
+    @include onDesktopSmall {
+      position: absolute;
+      right: 10%;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-left: 1px solid $c-gray-light;
+    }
   }
 
   &__input {
     font-weight: 400;
     font-size: 14px;
-    color: #343434;
+    color: $c-primary;
     outline: none;
     border: none;
     max-width: max-content;
-    padding-right: 130px;
 
     &::-webkit-input-placeholder {
       color: $c-secondary;

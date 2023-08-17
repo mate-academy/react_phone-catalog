@@ -3,7 +3,17 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    max-width: 1136px;
+    max-width: 1296px;
+
+    &--favorites {
+      justify-content: flex-start;
+      flex-wrap: wrap;
+
+      &-item {
+        margin-right: 47.5px;
+      }
+    }
+
   }
 
   &__card {
@@ -15,7 +25,7 @@
     transition: all 0.3s;
 
     &:hover {
-      box-shadow: 2px 5px 5px 2px rgba(0,0,0,0.52);
+      box-shadow: 2px 5px 5px 2px rgba(0, 0, 0, 0.52);
     }
 
     &__container {

@@ -1,9 +1,9 @@
 .top-slider {
+
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
-  // left: -85px;
   left: -35px;
 
   &__slider {
@@ -12,7 +12,19 @@
 
   &__images {
     margin-inline: 16px;
-    width: 1040px;
+    width: 100vw;
+
+    @include onTablet {
+      width: 500px;
+      height: 400px;
+    }
+
+    @include onDesktopSmall {
+      width: 1040px;
+      height: 400px;
+
+    }
+
     height: 400px;
     overflow: hidden;
 
@@ -68,15 +80,19 @@
 .arrow {
   &__box {
     border: 1px solid $c-gray-light;
-    height: 400px;
     width: 32px;
     background-color: $c-white;
+    display: none;
 
     transition: border-color 0.3s;
 
     &:hover {
       cursor: pointer;
       border-color: $c-primary;
+    }
+
+    @include onTablet {
+      display: block;
     }
   }
 }
