@@ -1,0 +1,34 @@
+.banner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+
+  &__main {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__cover {
+    height: 400px;
+    display: flex;
+  }
+
+  &__list {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 0;
+    overflow: hidden;
+    width: 1040px;
+  }
+
+  &__image {
+    width: 1040px;
+  }
+
+  &__icon {
+    height: 400px;
+  }
+}

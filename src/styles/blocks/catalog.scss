@@ -1,0 +1,9 @@
+.catalog {
+  &__items {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 40px;
+    column-gap: 16px;
+    padding-top: 24px;
+  }
+}

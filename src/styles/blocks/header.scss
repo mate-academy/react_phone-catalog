@@ -1,0 +1,117 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid $gray-elements;
+  box-sizing: border-box;
+
+  &__left {
+    display: flex;
+    gap: 64px;
+    padding-left: 24px;
+    color: $gray-secondary;
+  }
+
+  &__link {
+    box-sizing: border-box;
+    padding-top: 25px;
+    height: 64px;
+  }
+
+  &__link.active,
+  &__link:hover {
+    &::after {
+      content: "";
+      width: inherit;
+      height: 3px;
+      display: block;
+      margin-top: 25px;
+      background-color: $gray-primary;
+    }
+  }
+
+  &__search {
+    display: flex;
+    align-items: center;
+    height: 64px;
+    padding: 0 24px;
+    border-left: 1px solid $gray-elements;
+
+    &:hover {
+      background-color: $gray-background;
+    }
+
+    &__input {
+      width: 275px;
+      outline-style: none;
+      border: none;
+      color: $gray-primary;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: inherit;
+
+      &::placeholder {
+        color: $gray-icons;
+      }
+
+    }
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+    height: 64px;
+  }
+
+  &__icon {
+    width: 64px;
+    height: inherit;
+    border-left: 1px solid $gray-elements;
+
+    &__cover {
+      position: absolute;
+    }
+
+    &__image {
+      position: relative;
+      left: 24px;
+    }
+  
+    &__amount {
+      display: block;
+      position: relative;
+      z-index: 2;
+      bottom: 45px;
+      left: 35px;
+
+      width: 14px;
+      height: 14px;
+
+      color: $white;
+      font-size: 9px;
+      font-weight: 600;
+      line-height: 14px;
+      text-align: center;
+
+      box-sizing: border-box;
+      border: 1.3px solid $white;
+      border-radius: 70%;
+      background-color: $red;
+    }
+  
+    &::after {
+      content: "";
+      width: inherit;
+      height: 3px;
+      display: block;
+      position: absolute;
+      top: 62px;
+    }
+    
+    &.active,
+    &:hover {
+      &::after {
+        background-color: $gray-primary;
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+.navigation {
+  margin: 0 auto;
+  padding-top: 24px;
+  max-width: 1136px;
+  display: flex;
+  gap: 8px;
+
+  &__list {
+    display: flex;
+    gap: 8px;
+    list-style: none;
+    line-height: 16px;
+    align-items: self-end;
+  }
+}

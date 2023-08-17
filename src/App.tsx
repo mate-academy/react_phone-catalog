@@ -1,9 +1,21 @@
-import './App.scss';
+import React from 'react';
+import { AppRoutes } from './Routes/Route';
+import { Header } from './components/Header';
+import { Footer } from './components/Footer';
+import './styles/App.scss';
 
-const App = () => (
-  <div className="App">
-    <h1>React Phone Catalog</h1>
-  </div>
-);
+export const App: React.FC = () => {
+  return (
+    <div className="App">
+      <Header />
+
+      <React.StrictMode>
+        <AppRoutes />
+      </React.StrictMode>
+
+      <Footer />
+    </div>
+  );
+};
 
 export default App;

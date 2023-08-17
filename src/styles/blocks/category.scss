@@ -1,0 +1,67 @@
+.category {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__cards {
+    display: flex;
+    gap: 16px;
+    position: relative;
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    position: relative;
+
+    &__content {
+      overflow: hidden;
+      width: 368px;
+      height: 368px;
+      position: relative;
+      box-sizing: border-box;
+
+      &:hover {
+        border: 1px solid $gray-primary;
+      }
+    }
+
+    &__image {
+      position: absolute;
+
+      &--phone {
+        left: 75px;
+        top: 25px;
+        height: 457px;
+      }
+
+      &--tablet {
+        left: 20px;
+        top: 35px;
+        height: 546px;
+      }
+
+      &--acc {
+        left: 50px;
+        top: 75px;
+        height: 295px;
+      }
+    }
+
+    &--beige {
+      background-color: #fcdbc1;
+      border: 1px solid #fcdbc1;
+    }
+  
+    &--gray {
+      background-color: #8d8d92;
+      border: 1px solid #8d8d92;
+    }
+  
+    &--red {
+      background-color: #973d5f;
+      border: 1px solid #973d5f;
+    }
+  }
+}

@@ -1,0 +1,20 @@
+.card-loaders {
+  display: flex;
+  gap: 16px;
+
+  &__loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 272px;
+    height: 507px;
+    border: 1px solid $gray-elements;
+    box-sizing: border-box;
+  }
+}
+
+.banner-loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

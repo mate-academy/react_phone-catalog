@@ -1,0 +1,56 @@
+.page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 0 auto;
+  gap: 80px;
+  max-width: 1136px;
+  padding-top: 40px;
+  overflow: hidden;
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 24px;
+    overflow: hidden;
+    width: 1136px;
+  
+    &__header {
+      display: flex;
+      justify-content: space-between;
+  
+      &__arrows {
+        display: flex;
+        gap: 16px;
+      }
+    }
+
+    &__cards {
+      display: flex;
+      gap: 16px;
+      list-style: none;
+      padding-left: 0;
+    }
+  }
+
+  &__loading {
+    height: calc(100vh - 205px);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 36px;
+  }
+
+  &__subtitle {
+    color: $gray-secondary;
+    padding-top: 8px;
+  }
+
+  &__catalog {
+    width: 100%;
+  }
+}
