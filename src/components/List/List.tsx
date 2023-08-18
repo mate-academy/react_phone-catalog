@@ -61,7 +61,7 @@ export const List: React.FC<Props> = ({ products }) => {
     });
 
     const filtered = (perPage === 'all')
-      ? (sorted || null)
+      ? (sorted?.slice(0) || null)
       : sorted
         ?.slice((+currentPage - 1) * +perPage, +currentPage * +perPage) || null;
 
@@ -123,7 +123,10 @@ export const List: React.FC<Props> = ({ products }) => {
       <div className="products-list__container">
         {visibleProducts?.map(
           product => (
-            <PhoneCard key={product.id} product={product} />
+            <PhoneCard
+              key={product.id}
+              product={product}
+            />
           ),
         )}
       </div>

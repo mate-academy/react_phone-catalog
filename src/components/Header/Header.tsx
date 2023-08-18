@@ -1,20 +1,33 @@
+import { useLocation } from 'react-router-dom';
+
 import { Nav } from '../Nav';
-import { Favourites } from '../Favourites';
-import { Logo } from '../Logo/Logo';
-import { Cart } from '../Cart';
+import { Logo } from '../Logo';
+import { HeaderButton } from '../HeaderButton';
 
-export const Header = () => (
-  <header className="header">
-    <div className="header__nav-container">
-      <Logo />
+import { HeaderButtonIcon } from '../../types/HeaderButtonIcon';
 
-      <Nav />
-    </div>
+export const Header = () => {
+  const location = useLocation();
 
-    <div className="header__button-container">
-      <Favourites />
+  const isCartPage = location.pathname.includes('cart');
 
-      <Cart />
-    </div>
-  </header>
-);
+  return (
+    <header className="header">
+      <div className="header__nav-container">
+        <Logo />
+
+        {!isCartPage && (
+          <Nav />
+        )}
+      </div>
+
+      <div className="header__button-container">
+        {!isCartPage && (
+          <HeaderButton type={HeaderButtonIcon.Favourites} />
+        )}
+
+        <HeaderButton type={HeaderButtonIcon.Cart} />
+      </div>
+    </header>
+  );
+};

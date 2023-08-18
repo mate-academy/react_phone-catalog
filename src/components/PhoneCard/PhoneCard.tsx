@@ -1,13 +1,23 @@
-import React from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
+import classNames from 'classnames';
+
+import { addToCartStorage } from '../../functions/addToCartStorage';
+import { removeFromCartStorage } from '../../functions/removeFromCartStorage';
 
 import { Phone } from '../../types/Phone';
+
+import { CartStorageContext } from '../../contexts/CartStorageContext';
 
 type Props = {
   product: Phone;
 };
 
 export const PhoneCard: React.FC<Props> = ({ product }) => {
+  const [isAddedToCart, setIsAddedToCart] = useState(false);
+
+  const cartStorage = useContext(CartStorageContext);
+
   const {
     image,
     name,
@@ -18,6 +28,12 @@ export const PhoneCard: React.FC<Props> = ({ product }) => {
     ram,
     phoneId,
   } = product;
+
+  useEffect(() => {
+    setIsAddedToCart(cartStorage.some((
+      { id }: { id: string },
+    ) => id === product.id));
+  }, []);
 
   return (
     <div
@@ -87,12 +103,32 @@ export const PhoneCard: React.FC<Props> = ({ product }) => {
         </div>
 
         <div className="product-card__interaction-block">
-          <button
-            className="product-card__cart-button"
-            type="button"
-          >
-            Add to cart
-          </button>
+          {isAddedToCart ? (
+            <button
+              className={classNames(
+                'product-card__cart-button',
+                'product-card__cart-button--added',
+              )}
+              type="button"
+              onClick={removeFromCartStorage(
+                product,
+                setIsAddedToCart,
+              )}
+            >
+              Added to cart
+            </button>
+          ) : (
+            <button
+              className="product-card__cart-button"
+              type="button"
+              onClick={addToCartStorage(
+                product,
+                setIsAddedToCart,
+              )}
+            >
+              Add to cart
+            </button>
+          )}
 
           <button
             className="product-card__favourites-button"

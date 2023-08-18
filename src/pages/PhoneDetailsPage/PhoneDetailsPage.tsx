@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import classNames from 'classnames';
 
@@ -7,20 +7,46 @@ import { Like } from '../../components/Like';
 import { BackButton } from '../../components/BackButton';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 
+import { getPhones } from '../../functions/getPhones';
 import { getPhoneInfo } from '../../functions/getProductInfo';
+import { addToCartStorage } from '../../functions/addToCartStorage';
+import { removeFromCartStorage } from '../../functions/removeFromCartStorage';
 
 import { PhoneInfo } from '../../types/PhoneInfo';
+import { Phone } from '../../types/Phone';
 
 import { colors } from '../../services/colors';
 
+import { CartStorageContext } from '../../contexts/CartStorageContext';
+
 export const PhoneDetailsPage = () => {
-  const [phone, setPhone] = useState<PhoneInfo | null>(null);
+  const [phoneInfo, setPhoneInfo] = useState<PhoneInfo | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [currentImage, setCurrentImage] = useState('');
   const [currentCapacity, setCurrentCapacity] = useState('');
   const [currentColor, setCurrentColor] = useState('');
+  const [isAddedToCart, setIsAddedToCart] = useState(false);
+  const [phone, setPhone] = useState<Phone | null>(null);
+
+  const cartStorage = useContext(CartStorageContext);
 
   const { productId } = useParams();
+
+  useEffect(() => {
+    setIsAddedToCart(cartStorage.some((
+      { product }: { product: Phone },
+    ) => product.phoneId === phoneInfo?.id));
+
+    getPhones()
+      .then(phones => {
+        setPhone(phones.find((
+          desiredPhone: Phone,
+        ) => desiredPhone.phoneId === productId));
+      })
+      .catch(() => {
+        throw new Error('Loading phones error');
+      });
+  }, [phoneInfo]);
 
   useEffect(() => {
     const specs = productId?.split('-');
@@ -34,7 +60,7 @@ export const PhoneDetailsPage = () => {
 
     getPhoneInfo(productId || '')
       .then(currentPhone => {
-        setPhone(currentPhone);
+        setPhoneInfo(currentPhone);
         setCurrentImage(currentPhone.images[0]);
       })
       .catch(() => {
@@ -56,17 +82,17 @@ export const PhoneDetailsPage = () => {
       <Loader />
     ) : (
       <div className="product-details page__details">
-        <Breadcrumbs name={phone?.name || ''} />
+        <Breadcrumbs name={phoneInfo?.name || ''} />
 
         <BackButton />
 
         <h1 className="product-details__title">
-          {phone?.name}
+          {phoneInfo?.name}
         </h1>
 
         <div className="product-details__interaction-block">
           <div className="product-details__images">
-            {phone?.images.map(image => (
+            {phoneInfo?.images.map(image => (
               <button
                 type="button"
                 className="product-details__image-button"
@@ -85,7 +111,7 @@ export const PhoneDetailsPage = () => {
           <div className="product-details__current-image">
             <img
               src={`./${currentImage}`}
-              alt={phone?.name}
+              alt={phoneInfo?.name}
               className="product-details__phone-image"
             />
           </div>
@@ -97,7 +123,7 @@ export const PhoneDetailsPage = () => {
               </p>
 
               <ul className="product-details__select-buttons">
-                {phone?.colorsAvailable.map(color => (
+                {phoneInfo?.colorsAvailable.map(color => (
                   <li
                     key={color}
                     className={classNames(
@@ -127,7 +153,7 @@ export const PhoneDetailsPage = () => {
               </p>
 
               <div className="product-details__select-buttons">
-                {phone?.capacityAvailable.map(capacity => (
+                {phoneInfo?.capacityAvailable.map(capacity => (
                   <Link
                     to={`${link}-${capacity.toLowerCase()}-${currentColor}`}
                     className={classNames(
@@ -152,20 +178,40 @@ export const PhoneDetailsPage = () => {
 
             <div className="product-details__price-block">
               <p className="product-details__price">
-                {`$${Math.round((phone?.priceDiscount || 0) / 10) * 10 - 1} `}
+                {`$${Math.round((phoneInfo?.priceDiscount || 0) / 10) * 10 - 1} `}
 
                 <span className="product-details__regular-price">
-                  {`$${Math.round((phone?.priceRegular || 0) / 10) * 10 - 1}`}
+                  {`$${Math.round((phoneInfo?.priceRegular || 0) / 10) * 10 - 1}`}
                 </span>
               </p>
 
               <div className="product-details__buttons">
-                <button
-                  type="button"
-                  className="product-details__cart-button"
-                >
-                  Add to cart
-                </button>
+                {isAddedToCart ? (
+                  <button
+                    className={classNames(
+                      'product-details__cart-button',
+                      'product-details__cart-button--added',
+                    )}
+                    type="button"
+                    onClick={removeFromCartStorage(
+                      phone,
+                      setIsAddedToCart,
+                    )}
+                  >
+                    Added to cart
+                  </button>
+                ) : (
+                  <button
+                    className="product-details__cart-button"
+                    type="button"
+                    onClick={addToCartStorage(
+                      phone,
+                      setIsAddedToCart,
+                    )}
+                  >
+                    Add to cart
+                  </button>
+                )}
 
                 <button
                   type="button"
@@ -185,7 +231,7 @@ export const PhoneDetailsPage = () => {
                 </p>
 
                 <p className="product-details__info-value">
-                  {phone?.screen}
+                  {phoneInfo?.screen}
                 </p>
               </div>
 
@@ -195,7 +241,7 @@ export const PhoneDetailsPage = () => {
                 </p>
 
                 <p className="product-details__info-value">
-                  {phone?.resolution}
+                  {phoneInfo?.resolution}
                 </p>
               </div>
 
@@ -205,7 +251,7 @@ export const PhoneDetailsPage = () => {
                 </p>
 
                 <p className="product-details__info-value">
-                  {phone?.processor}
+                  {phoneInfo?.processor}
                 </p>
               </div>
 
@@ -215,7 +261,7 @@ export const PhoneDetailsPage = () => {
                 </p>
 
                 <p className="product-details__info-value">
-                  {phone?.ram}
+                  {phoneInfo?.ram}
                 </p>
               </div>
             </div>
@@ -235,7 +281,7 @@ export const PhoneDetailsPage = () => {
               className="product-details__line product-details__line--bigger"
             />
 
-            {phone?.description.map(description => (
+            {phoneInfo?.description.map(description => (
               <div
                 className="product-details__description-block"
                 key={description.title}
@@ -264,7 +310,7 @@ export const PhoneDetailsPage = () => {
               </p>
 
               <p className="product-details__specs-value">
-                {phone?.screen}
+                {phoneInfo?.screen}
               </p>
             </div>
 
@@ -274,7 +320,7 @@ export const PhoneDetailsPage = () => {
               </p>
 
               <p className="product-details__specs-value">
-                {phone?.resolution}
+                {phoneInfo?.resolution}
               </p>
             </div>
 
@@ -284,7 +330,7 @@ export const PhoneDetailsPage = () => {
               </p>
 
               <p className="product-details__specs-value">
-                {phone?.processor}
+                {phoneInfo?.processor}
               </p>
             </div>
 
@@ -294,7 +340,7 @@ export const PhoneDetailsPage = () => {
               </p>
 
               <p className="product-details__specs-value">
-                {phone?.ram}
+                {phoneInfo?.ram}
               </p>
             </div>
 
@@ -304,7 +350,7 @@ export const PhoneDetailsPage = () => {
               </p>
 
               <p className="product-details__specs-value">
-                {phone?.capacity}
+                {phoneInfo?.capacity}
               </p>
             </div>
 
@@ -314,7 +360,7 @@ export const PhoneDetailsPage = () => {
               </p>
 
               <p className="product-details__specs-value">
-                {phone?.camera}
+                {phoneInfo?.camera}
               </p>
             </div>
 
@@ -324,7 +370,7 @@ export const PhoneDetailsPage = () => {
               </p>
 
               <p className="product-details__specs-value">
-                {phone?.zoom}
+                {phoneInfo?.zoom}
               </p>
             </div>
 
@@ -334,7 +380,7 @@ export const PhoneDetailsPage = () => {
               </p>
 
               <p className="product-details__specs-value">
-                {phone?.cell}
+                {phoneInfo?.cell}
               </p>
             </div>
           </div>

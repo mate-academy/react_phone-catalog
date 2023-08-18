@@ -9,6 +9,7 @@
 
   &__link {
     @include uppercase-text;
+    position: relative;
     display: block;
     line-height: 64px;
     color: $secondary;
@@ -23,6 +24,8 @@
 
       &::after {
         content: "";
+        position: absolute;
+        bottom: 0;
         display: block;
         width: 100%;
         height: 3px;

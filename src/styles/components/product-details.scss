@@ -173,6 +173,12 @@
     &:hover {
       box-shadow: $cart-button-shadow;
     }
+
+    &--added {
+      color: $green;
+      background-color: $white;
+      border: 1px solid $elements;
+    }
   }
 
   &__favourites-button {

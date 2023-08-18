@@ -13,4 +13,8 @@
   &__details {
     @include page-sizes;
   }
+
+  &__cart {
+    @include page-sizes;
+  }
 }
