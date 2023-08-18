@@ -1,0 +1,46 @@
+.hot-phones {
+  &__top {
+    display: flex;
+    justify-content: space-between;
+
+  }
+
+  &__title {
+    margin-bottom: 24px;
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+
+    &-left {
+      margin-right: 16px;
+      background: url(./Slider-button-Default-right.svg);
+      transform: scaleX(-1);
+      background-size: cover;
+      background-repeat: no-repeat;
+
+      &--disabled {
+        background: url(./Slider_button_Disabled_right.svg);
+        transform: none;
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+    }
+
+    &-right {
+      background: url(./Slider-button-Default-right.svg);
+      transform: none;
+      background-repeat: no-repeat;
+      background-size: cover;
+
+      &--disabled {
+        background: url(./Slider_button_Disabled_right.svg);
+        transform: scaleX(-1);
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+    }
+  }
+}

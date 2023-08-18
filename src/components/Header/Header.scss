@@ -66,7 +66,7 @@
   }
 }
 
-.nav__link .is-active-link {
+.is-active-link {
   position: relative;
 
   &::after {
@@ -77,9 +77,9 @@
     width: 100%;
     bottom: 0;
     left: 0;
-    z-index: 1;
-    height: 0;
-    opacity: 0;
+    z-index: 2;
+    height: 3px;
+    opacity: 1;
     transition: height 0.3s ease, opacity 0.3s ease, color 0.3s;
   }
 }

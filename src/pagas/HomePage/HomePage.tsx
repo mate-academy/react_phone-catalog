@@ -1,4 +1,5 @@
 import { HotPhones } from '../../components/HotPhones';
+import { NewPhones } from '../../components/NewPhones';
 import { Slider } from '../../components/Slider';
 import { Product } from '../../types/Product';
 
@@ -14,6 +15,7 @@ export const HomePage = () => {
     <>
       <Slider />
       <HotPhones phones={phones} />
+      <NewPhones phones={phones} />
     </>
   );
 };

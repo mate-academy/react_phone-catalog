@@ -6,6 +6,7 @@ import './Header.scss';
 export const Header = () => {
   const location = useLocation();
 
+  const isHomePage = location.pathname === '/';
   const isPhonesPage = location.pathname === '/phones';
   const isTabletsPage = location.pathname === '/tablets';
   const isAccessoriesPage = location.pathname === '/accessories';
@@ -20,7 +21,7 @@ export const Header = () => {
           <NavLink
             to="home"
             className={classNames('nav__link', {
-              'is-active-link': location.pathname === '/home',
+              'is-active-link': isHomePage,
             })}
           >
             Home

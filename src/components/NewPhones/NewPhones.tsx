@@ -2,20 +2,20 @@ import { useState } from 'react';
 import { ProductCard } from '../ProductCard';
 import { Product } from '../../types/Product';
 
-import './HotPhones.scss';
+import './NewPhones.scss';
 import { ProductsSlider } from '../ProductsSlider';
 
 interface Props {
   phones: Product[];
 }
 
-export const HotPhones: React.FC<Props> = ({ phones }) => {
+export const NewPhones: React.FC<Props> = ({ phones }) => {
   const visibleCards = 4;
   const [start, setStart] = useState(0);
   const end = start + visibleCards;
 
   const sortedPhones = phones.sort((a, b) => (
-    (b.discount) - (a.discount)
+    (b.age) - (a.age)
   ));
 
   const arrLength = sortedPhones.length;
@@ -24,7 +24,7 @@ export const HotPhones: React.FC<Props> = ({ phones }) => {
     <div className="container">
       <div className="hot-phones">
         <ProductsSlider
-          title="Hot prices"
+          title="Brand new models"
           visibleCards={visibleCards}
           start={start}
           setStart={setStart}
