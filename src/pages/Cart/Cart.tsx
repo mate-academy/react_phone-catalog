@@ -7,22 +7,21 @@ import { calculateDiscount } from '../../utils/calculateDiscount';
 import { Crumbs } from '../../components/Crumbs/Crumbs';
 import { useAppSelector } from '../../app/hooks';
 import { CartItem } from '../../components/CartItem/CartItem';
-import { Product } from '../../types/Product';
 
 export const Cart = () => {
   const cart = useAppSelector(state => state.cart);
   const [isActive, setIsActive] = useState(false);
 
   const totalPrice = useMemo(() => {
-    return cart.reduce(
-      (acc: number, curr:
-      { product: { price: number; discount: number; };
-        quantity: number;
-      }) => {
-        return acc
-      + (calculateDiscount(curr.product) * curr.quantity);
-      }, 0,
-    );
+    return cart.reduce((acc, curr) => {
+      return acc + (calculateDiscount(curr.product) * curr.quantity);
+    }, 0);
+  }, [cart]);
+
+  const totalItemsCount = useMemo(() => {
+    return cart.reduce((acc, item) => {
+      return item.quantity + acc;
+    }, 0);
   }, [cart]);
 
   const handleCheckout = () => {
@@ -67,17 +66,11 @@ export const Cart = () => {
           <div className="Cart__content grid">
             <div className="Cart__products">
               <ul className="Cart__products-list">
-                {cart.map(
-                  (item: {
-                    id: string;
-                    quantity: number;
-                    product: Product;
-                  }) => (
-                    <li key={item.id}>
-                      <CartItem item={item} />
-                    </li>
-                  ),
-                )}
+                {cart.map(item => (
+                  <li key={item.id}>
+                    <CartItem item={item} />
+                  </li>
+                ))}
               </ul>
             </div>
 
@@ -85,7 +78,7 @@ export const Cart = () => {
               <h2>{`$${totalPrice}`}</h2>
 
               <p>
-                {`Total for ${cart.length} items`}
+                {`Total for ${totalItemsCount} items`}
               </p>
 
               <Button

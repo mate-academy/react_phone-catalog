@@ -3,6 +3,9 @@ import { Logo } from '../Logo/Logo';
 import './Footer.scss';
 
 export const Footer: React.FC = () => {
+  /* eslint-disable-next-line max-len */
+  const rights = 'https://github.com/gabriella135/react_phone-catalog/blob/master/LICENSE';
+
   return (
     <footer className="Footer">
       <div className="Footer__content container">
@@ -32,8 +35,7 @@ export const Footer: React.FC = () => {
               <a
                 rel="noreferrer"
                 target="_blank"
-                href={`https://github.com/
-                gabriella135/react_phone-catalog/blob/master/LICENSE`}
+                href={rights}
               >
                 Rights
               </a>
