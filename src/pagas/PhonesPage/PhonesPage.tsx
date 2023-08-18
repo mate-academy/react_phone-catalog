@@ -15,7 +15,7 @@ export const PhonesPage = () => {
     <div className="container">
       <h1 className="name__page">Mobile phones</h1>
       <p className="count__page">
-        {`${phones.length} models`}
+        {`${phones.length} ${phones.length <= 1 ? 'model' : 'models'}`}
       </p>
       {phones.length
         && (

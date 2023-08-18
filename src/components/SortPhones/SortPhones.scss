@@ -1,0 +1,45 @@
+.sortedProduct {
+  display: flex;
+  justify-content: space-between;
+
+  &__block {
+    display: flex;
+    flex-direction: row;
+  }
+
+  &__link {
+    text-decoration: none;
+  }
+
+  &__title {
+    color: #313237;
+    font-family: "Mont", sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+
+  &__count {
+    color: #89939a;
+    font-family: "Mont", sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 21px; /* 150% */
+  }
+
+  &__photo {
+    height: 368px;
+    width: 368px;
+    background: #d53c51;
+    overflow: hidden;
+    margin-bottom: 24px;
+
+  }
+
+  &__img {
+    width: 100%;
+    height: auto;
+  }
+}

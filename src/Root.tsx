@@ -11,6 +11,8 @@ import { ErrorPage } from './pagas/ErrorPage';
 import { PhonesPage } from './pagas/PhonesPage';
 import { TabletsPage } from './pagas/TabletsPage';
 import { AccessoriesPage } from './pagas/AccessoriesPage';
+import { FavoritesPage } from './pagas/FavoritesPage';
+import { CartPage } from './pagas/CartPage';
 
 export const Root = () => {
   return (
@@ -28,6 +30,12 @@ export const Root = () => {
           </Route>
           <Route path="/accessories">
             <Route index element={<AccessoriesPage />} />
+          </Route>
+          <Route path="/favourites">
+            <Route index element={<FavoritesPage />} />
+          </Route>
+          <Route path="/cart">
+            <Route index element={<CartPage />} />
           </Route>
 
           <Route path="*" element={<ErrorPage />} />

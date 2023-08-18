@@ -13,7 +13,7 @@ export const AccessoriesPage = () => {
     <div className="container">
       <h1 className="name__page">Accessories</h1>
       <p className="count__page">
-        {`${accessories.length} models`}
+        {`${accessories.length} ${accessories.length <= 1 ? 'model' : 'models'}`}
       </p>
       {accessories.length
         ? (

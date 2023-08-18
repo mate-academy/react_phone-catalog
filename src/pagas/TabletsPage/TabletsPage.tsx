@@ -15,7 +15,7 @@ export const TabletsPage = () => {
     <div className="container">
       <h1 className="name__page">Tablets</h1>
       <p className="count__page">
-        {`${tablets.length} models`}
+        {`${tablets.length} ${tablets.length <= 1 ? 'model' : 'models'}`}
       </p>
       {tablets.length
         && (
