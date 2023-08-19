@@ -1,0 +1,25 @@
+@import "../../styles/global-imports";
+
+.ProductsSlider {
+  &__slider {
+    position: relative;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 28px;
+    justify-content: flex-end;
+  }
+
+  &__content {
+    overflow: hidden;
+
+    &-list {
+      display: flex;
+      gap: 16px;
+
+      transition: transform 1s ease;
+    }
+  }
+}
