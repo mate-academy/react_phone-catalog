@@ -1,8 +1,10 @@
 import { useContext, useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
 import { getPhones } from '../../functions/getPhones';
 
 import { Phone } from '../../types/Phone';
+
 import { Content } from '../../components/Content';
 
 import {
@@ -16,10 +18,16 @@ const title = 'Mobile phones';
 
 export const PhonesPage = () => {
   const [phones, setPhones] = useState<Phone[] | null>(null);
+  const [visiblePhones, setVisiblePhones] = useState<Phone[] | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [isNoSearchResults, setIsNoSearchResults] = useState(false);
 
   const setCartStorage = useContext(HandleCartStorageContext);
   const setFavouritesStorage = useContext(HandleFavouritesStorageContext);
+
+  const [searchParams] = useSearchParams();
+
+  const query = searchParams.get('query')?.split('+').join(' ') || '';
 
   useEffect(() => {
     setIsLoading(true);
@@ -41,9 +49,20 @@ export const PhonesPage = () => {
       .finally(() => setIsLoading(false));
   }, []);
 
+  useEffect(() => {
+    const filteredProducts = phones?.filter(product => (
+      product.name.trim().toLowerCase().includes(query.toLowerCase())
+    ));
+
+    setVisiblePhones(filteredProducts || []);
+
+    setIsNoSearchResults(!filteredProducts?.length && !!phones?.length);
+  }, [query, phones]);
+
   return (
     <Content
-      products={phones}
+      isNoSearchResults={isNoSearchResults}
+      products={visiblePhones}
       isLoading={isLoading}
       title={title}
     />

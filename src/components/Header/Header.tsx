@@ -3,13 +3,14 @@ import { useLocation } from 'react-router-dom';
 import { Nav } from '../Nav';
 import { Logo } from '../Logo';
 import { HeaderButton } from '../HeaderButton';
+import { Search } from '../Search';
 
 import { HeaderButtonIcon } from '../../types/HeaderButtonIcon';
 
 export const Header = () => {
   const location = useLocation();
 
-  const isCartPage = location.pathname.includes('cart');
+  const isCartPage = location.pathname === '/cart';
 
   return (
     <header className="header">
@@ -22,6 +23,8 @@ export const Header = () => {
       </div>
 
       <div className="header__button-container">
+        <Search />
+
         {!isCartPage && (
           <HeaderButton type={HeaderButtonIcon.Favourites} />
         )}

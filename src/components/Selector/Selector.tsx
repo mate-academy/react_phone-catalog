@@ -44,14 +44,11 @@ export const Selector: React.FC<Props> = ({
       >
         {value}
 
-        <img
-          src={areOptionsOpen ? (
-            './img/icons/chevron-arrow-up.svg'
-          ) : (
-            './img/icons/chevron-arrow-down.svg'
+        <div
+          className={cn(
+            'products-list__icon',
+            { 'products-list__icon--active': areOptionsOpen },
           )}
-          alt="open options"
-          className="products-list__icon"
         />
       </button>
 

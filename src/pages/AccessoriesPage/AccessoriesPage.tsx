@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
 import { getPhones } from '../../functions/getPhones';
 
@@ -16,10 +17,19 @@ const title = 'Accessories';
 
 export const AccessoriesPage = () => {
   const [accessories, setAccessories] = useState<Phone[] | null>(null);
+  const [
+    visibleAccessories,
+    setVisibleAccessories,
+  ] = useState<Phone[] | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [isNoSearchResults, setIsNoSearchResults] = useState(false);
 
   const setCartStorage = useContext(HandleCartStorageContext);
   const setFavouritesStorage = useContext(HandleFavouritesStorageContext);
+
+  const [searchParams] = useSearchParams();
+
+  const query = searchParams.get('query')?.split('+').join(' ') || '';
 
   useEffect(() => {
     setIsLoading(true);
@@ -41,9 +51,20 @@ export const AccessoriesPage = () => {
       .finally(() => setIsLoading(false));
   }, []);
 
+  useEffect(() => {
+    const filteredProducts = accessories?.filter(product => (
+      product.name.trim().toLowerCase().includes(query.toLowerCase())
+    ));
+
+    setVisibleAccessories(filteredProducts || []);
+
+    setIsNoSearchResults(!filteredProducts?.length && !!accessories?.length);
+  }, [query, accessories]);
+
   return (
     <Content
-      products={accessories}
+      isNoSearchResults={isNoSearchResults}
+      products={visibleAccessories}
       isLoading={isLoading}
       title={title}
     />

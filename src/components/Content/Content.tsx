@@ -5,6 +5,7 @@ import { Loader } from '../Loader';
 
 import { NoResults } from '../NoResults';
 import { Breadcrumbs } from '../Breadcrumbs';
+import { NoSearchResults } from '../NoSearchResults';
 
 import { Phone } from '../../types/Phone';
 
@@ -12,12 +13,14 @@ type Props = {
   products: Phone[] | null;
   isLoading: boolean;
   title: string;
+  isNoSearchResults: boolean;
 };
 
 export const Content: React.FC<Props> = ({
   products,
   isLoading,
   title,
+  isNoSearchResults,
 }) => (
   <div className="phones page__phones">
     {isLoading && (
@@ -36,10 +39,16 @@ export const Content: React.FC<Props> = ({
           {`${products?.length} model${products?.length === 1 ? '' : 's'}`}
         </p>
 
-        {!products?.length ? (
+        {!isNoSearchResults && !products?.length && (
           <NoResults title={title} />
-        ) : (
+        )}
+
+        {!isNoSearchResults && !!products?.length && (
           <List products={products} />
+        )}
+
+        {isNoSearchResults && (
+          <NoSearchResults title={title} />
         )}
       </>
     )}
