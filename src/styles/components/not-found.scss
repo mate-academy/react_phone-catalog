@@ -1,0 +1,9 @@
+.not-found {
+  &__title {
+    @include main-title;
+    padding-top: 250px;
+    width: 100%;
+    text-align: center;
+    color: $primary;
+  }
+}

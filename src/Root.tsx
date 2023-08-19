@@ -14,6 +14,7 @@ import { AccessoriesPage } from './pages/AccessoriesPage';
 import { PhoneDetailsPage } from './pages/PhoneDetailsPage';
 import { CartPage } from './pages/CartPage';
 import { FavouritesPage } from './pages/FavouritesPage';
+import { NotFoundPage } from './pages/NotFoundPage';
 
 export const Root = () => (
   <Router>
@@ -23,17 +24,29 @@ export const Root = () => (
 
         <Route path="home" element={<Navigate to="/" replace />} />
 
-        <Route path="phones" element={<PhonesPage />} />
+        <Route path="phones">
+          <Route index element={<PhonesPage />} />
 
-        <Route path="tablets" element={<TabletsPage />} />
+          <Route path=":productId" element={<PhoneDetailsPage />} />
+        </Route>
 
-        <Route path="accessories" element={<AccessoriesPage />} />
+        <Route path="tablets">
+          <Route index element={<TabletsPage />} />
 
-        <Route path="phones/:productId" element={<PhoneDetailsPage />} />
+          <Route path=":productId" element={<PhoneDetailsPage />} />
+        </Route>
+
+        <Route path="accessories">
+          <Route index element={<AccessoriesPage />} />
+
+          <Route path=":productId" element={<PhoneDetailsPage />} />
+        </Route>
 
         <Route path="cart" element={<CartPage />} />
 
         <Route path="favourites" element={<FavouritesPage />} />
+
+        <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>
   </Router>

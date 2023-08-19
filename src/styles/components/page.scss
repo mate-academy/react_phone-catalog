@@ -2,19 +2,11 @@
   position: relative;
   min-height: 100vh;
 
-  &__main-container {
-    @include page-sizes;
-  }
-
-  &__phones {
-    @include page-sizes;
-  }
-
-  &__details {
-    @include page-sizes;
-  }
-
-  &__cart {
+  &__main-container,
+  &__phones,
+  &__details,
+  &__cart,
+  &__not-found {
     @include page-sizes;
   }
 }
