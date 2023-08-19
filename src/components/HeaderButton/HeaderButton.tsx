@@ -5,6 +5,9 @@ import classNames from 'classnames';
 import { HeaderButtonIcon } from '../../types/HeaderButtonIcon';
 
 import { CartStorageContext } from '../../contexts/CartStorageContext';
+import {
+  FavouritesStorageContext,
+} from '../../contexts/FavouritesStorageContext';
 
 const returnClassName = ({ isActive }: { isActive: boolean }) => (
   classNames(
@@ -21,17 +24,18 @@ export const HeaderButton: React.FC<Props> = ({ type }) => {
   const [totalQuantity, setTotalQuantity] = useState(0);
 
   const cartStorage = useContext(CartStorageContext);
+  const favouritesStorage = useContext(FavouritesStorageContext);
 
   useEffect(() => {
     const count = (type === HeaderButtonIcon.Favourites)
-      ? cartStorage.length
+      ? favouritesStorage.length
       : cartStorage.reduce(((
         total: number,
         { quantity }: { quantity: number },
       ) => total + quantity), 0);
 
     setTotalQuantity(count);
-  }, [cartStorage]);
+  }, [cartStorage, favouritesStorage]);
 
   return (
     <NavLink to={`/${type}`} className={returnClassName}>

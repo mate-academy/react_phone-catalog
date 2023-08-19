@@ -33,7 +33,7 @@ export const Content: React.FC<Props> = ({
         </h1>
 
         <p className="phones__count">
-          {`${products?.length} models`}
+          {`${products?.length} model${products?.length === 1 ? '' : 's'}`}
         </p>
 
         {!products?.length ? (

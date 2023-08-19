@@ -5,9 +5,6 @@ import classNames from 'classnames';
 import { addToCartStorage } from '../../functions/addToCartStorage';
 import { removeFromCartStorage } from '../../functions/removeFromCartStorage';
 import { addToFavouritesStorage } from '../../functions/addToFavouritesStorage';
-import {
-  removeFromFavouritesStorage,
-} from '../../functions/removeFromFavouritesStorage';
 
 import { Phone } from '../../types/Phone';
 
@@ -18,9 +15,13 @@ import {
 
 type Props = {
   product: Phone;
+  updateFavourites: (product: Phone) => () => void;
 };
 
-export const PhoneCard: React.FC<Props> = ({ product }) => {
+export const FavouritesCard: React.FC<Props> = ({
+  product,
+  updateFavourites,
+}) => {
   const [isAddedToCart, setIsAddedToCart] = useState(false);
   const [isAddedToFavourites, setIsAddedToFavourites] = useState(false);
 
@@ -147,10 +148,7 @@ export const PhoneCard: React.FC<Props> = ({ product }) => {
             type="button"
             className="product-card__favourites-button"
             onClick={isAddedToFavourites
-              ? removeFromFavouritesStorage(
-                product,
-                setIsAddedToFavourites,
-              )
+              ? updateFavourites(product)
               : addToFavouritesStorage(
                 product,
                 setIsAddedToFavourites,

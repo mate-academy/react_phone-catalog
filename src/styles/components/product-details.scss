@@ -200,6 +200,12 @@
   &__favourites-icon {
     width: 100%;
     height: 100%;
+    background: url(../../img/icons/favourites.svg) no-repeat center;
+    background-size: contain;
+
+    &--added {
+      background-image: url(../../img/icons/favourites-filled.svg);
+    }
   }
 
   &__info-row {

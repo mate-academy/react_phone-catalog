@@ -1,3 +1,18 @@
 .favourites {
-  color: green;
+  &__title {
+    @include main-title;
+    margin-bottom: $block-size;
+  }
+  
+  &__count {
+    @include body-text;
+    color: $secondary;
+    margin-bottom: 5 * $block-size;
+  }
+
+  &__products {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px $gap;
+  }
 }

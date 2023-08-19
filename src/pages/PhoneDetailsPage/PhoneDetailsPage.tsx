@@ -11,6 +11,10 @@ import { getPhones } from '../../functions/getPhones';
 import { getPhoneInfo } from '../../functions/getProductInfo';
 import { addToCartStorage } from '../../functions/addToCartStorage';
 import { removeFromCartStorage } from '../../functions/removeFromCartStorage';
+import {
+  removeFromFavouritesStorage,
+} from '../../functions/removeFromFavouritesStorage';
+import { addToFavouritesStorage } from '../../functions/addToFavouritesStorage';
 
 import { PhoneInfo } from '../../types/PhoneInfo';
 import { Phone } from '../../types/Phone';
@@ -18,6 +22,15 @@ import { Phone } from '../../types/Phone';
 import { colors } from '../../services/colors';
 
 import { CartStorageContext } from '../../contexts/CartStorageContext';
+import {
+  FavouritesStorageContext,
+} from '../../contexts/FavouritesStorageContext';
+import {
+  HandleCartStorageContext,
+} from '../../contexts/HandleCartStorageContext';
+import {
+  HandleFavouritesStorageContext,
+} from '../../contexts/HandleFavouritesStorageContext';
 
 export const PhoneDetailsPage = () => {
   const [phoneInfo, setPhoneInfo] = useState<PhoneInfo | null>(null);
@@ -26,9 +39,20 @@ export const PhoneDetailsPage = () => {
   const [currentCapacity, setCurrentCapacity] = useState('');
   const [currentColor, setCurrentColor] = useState('');
   const [isAddedToCart, setIsAddedToCart] = useState(false);
+  const [isAddedToFavourites, setIsAddedToFavourites] = useState(false);
   const [phone, setPhone] = useState<Phone | null>(null);
 
   const cartStorage = useContext(CartStorageContext);
+  const favouritesStorage = useContext(FavouritesStorageContext);
+  const setCartStorage = useContext(HandleCartStorageContext);
+  const setFavouritesStorage = useContext(HandleFavouritesStorageContext);
+
+  useEffect(() => {
+    setCartStorage(JSON.parse(localStorage.getItem('cart') || '[]'));
+    setFavouritesStorage(
+      JSON.parse(localStorage.getItem('favourites') || '[]'),
+    );
+  }, []);
 
   const { productId } = useParams();
 
@@ -36,6 +60,10 @@ export const PhoneDetailsPage = () => {
     setIsAddedToCart(cartStorage.some((
       { product }: { product: Phone },
     ) => product.phoneId === phoneInfo?.id));
+
+    setIsAddedToFavourites(favouritesStorage.some(product => (
+      product.phoneId === phoneInfo?.id
+    )));
 
     getPhones()
       .then(phones => {
@@ -216,9 +244,25 @@ export const PhoneDetailsPage = () => {
                 <button
                   type="button"
                   className="product-details__favourites-button"
+                  onClick={isAddedToFavourites
+                    ? removeFromFavouritesStorage(
+                      phone,
+                      setIsAddedToFavourites,
+                    )
+                    : addToFavouritesStorage(
+                      phone,
+                      setIsAddedToFavourites,
+                    )}
                 >
                   <div
-                    className="product-card__favourites-icon"
+                    className={classNames(
+                      'product-details__favourites-icon',
+                      {
+                        'product-details__favourites-icon--added': (
+                          isAddedToFavourites
+                        ),
+                      },
+                    )}
                   />
                 </button>
               </div>
