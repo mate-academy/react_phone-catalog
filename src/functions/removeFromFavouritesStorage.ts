@@ -2,7 +2,8 @@ import { Phone } from '../types/Phone';
 
 export const removeFromFavouritesStorage = (
   product: Phone | null,
-  setIsAddedToFavourites?: React.Dispatch<React.SetStateAction<boolean>>,
+  setFavouritesStorage: React.Dispatch<React.SetStateAction<Phone[]>>,
+  setIsAddedToFavourites: React.Dispatch<React.SetStateAction<boolean>>,
 ) => () => {
   const storage = JSON.parse(localStorage.getItem('favourites') || '[]');
 
@@ -12,11 +13,9 @@ export const removeFromFavouritesStorage = (
 
   storage.splice(index, 1);
 
-  if (setIsAddedToFavourites) {
-    setIsAddedToFavourites(false);
-  }
+  setIsAddedToFavourites(false);
 
   localStorage.setItem('favourites', JSON.stringify(storage));
 
-  return storage;
+  setFavouritesStorage(storage);
 };

@@ -15,6 +15,12 @@ import { CartStorageContext } from '../../contexts/CartStorageContext';
 import {
   FavouritesStorageContext,
 } from '../../contexts/FavouritesStorageContext';
+import {
+  HandleFavouritesStorageContext,
+} from '../../contexts/HandleFavouritesStorageContext';
+import {
+  HandleCartStorageContext,
+} from '../../contexts/HandleCartStorageContext';
 
 type Props = {
   product: Phone;
@@ -26,6 +32,8 @@ export const PhoneCard: React.FC<Props> = ({ product }) => {
 
   const cartStorage = useContext(CartStorageContext);
   const favouritesStorage = useContext(FavouritesStorageContext);
+  const setFavouritesStorage = useContext(HandleFavouritesStorageContext);
+  const setCartStorage = useContext(HandleCartStorageContext);
 
   const {
     image,
@@ -125,6 +133,7 @@ export const PhoneCard: React.FC<Props> = ({ product }) => {
               type="button"
               onClick={removeFromCartStorage(
                 product,
+                setCartStorage,
                 setIsAddedToCart,
               )}
             >
@@ -137,6 +146,7 @@ export const PhoneCard: React.FC<Props> = ({ product }) => {
               onClick={addToCartStorage(
                 product,
                 setIsAddedToCart,
+                setCartStorage,
               )}
             >
               Add to cart
@@ -149,10 +159,12 @@ export const PhoneCard: React.FC<Props> = ({ product }) => {
             onClick={isAddedToFavourites
               ? removeFromFavouritesStorage(
                 product,
+                setFavouritesStorage,
                 setIsAddedToFavourites,
               )
               : addToFavouritesStorage(
                 product,
+                setFavouritesStorage,
                 setIsAddedToFavourites,
               )}
           >

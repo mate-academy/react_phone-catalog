@@ -54,12 +54,6 @@ export const CartPage = () => {
     return () => clearTimeout(timeout);
   }, []);
 
-  const updateCart = (product: Phone) => () => {
-    const updatedCart = removeFromCartStorage(product);
-
-    setCartStorage(updatedCart);
-  };
-
   const changeQuantity = (
     product: Phone,
     quantity: number,
@@ -112,7 +106,10 @@ export const CartPage = () => {
                       type="button"
                       className="cart__delete-button"
                       aria-label="Delete"
-                      onClick={updateCart(product)}
+                      onClick={removeFromCartStorage(
+                        product,
+                        setCartStorage,
+                      )}
                       data-cy="cartDeleteButton"
                     />
 

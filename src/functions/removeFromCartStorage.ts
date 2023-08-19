@@ -1,7 +1,9 @@
+import { CartType } from '../types/CartType';
 import { Phone } from '../types/Phone';
 
 export const removeFromCartStorage = (
   product: Phone | null,
+  setCartStorage: React.Dispatch<React.SetStateAction<CartType[]>>,
   setIsAddedToCart?: React.Dispatch<React.SetStateAction<boolean>>,
 ) => () => {
   const storage = JSON.parse(localStorage.getItem('cart') || '[]');
@@ -18,5 +20,5 @@ export const removeFromCartStorage = (
 
   localStorage.setItem('cart', JSON.stringify(storage));
 
-  return storage;
+  setCartStorage(storage);
 };

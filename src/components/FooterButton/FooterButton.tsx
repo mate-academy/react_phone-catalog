@@ -1,9 +1,17 @@
-import { Link } from 'react-router-dom';
+export const FooterButton = () => {
+  const scrollUp = () => {
+    window.scrollTo({ top: 0 });
+  };
 
-export const FooterButton = () => (
-  <Link to="/" className="footer-button">
-    Back to top
+  return (
+    <button
+      type="button"
+      className="footer-button"
+      onClick={scrollUp}
+    >
+      Back to top
 
-    <div className="footer-button__icon" />
-  </Link>
-);
+      <div className="footer-button__icon" />
+    </button>
+  );
+};

@@ -1,13 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
 
 import { BackButton } from '../../components/BackButton';
-import { FavouritesCard } from '../../components/FavouritesCard';
-
-import { Phone } from '../../types/Phone';
-
-import {
-  removeFromFavouritesStorage,
-} from '../../functions/removeFromFavouritesStorage';
 
 import {
   FavouritesStorageContext,
@@ -18,6 +11,7 @@ import {
 import {
   HandleCartStorageContext,
 } from '../../contexts/HandleCartStorageContext';
+import { PhoneCard } from '../../components/PhoneCard';
 
 export const FavouritesPage = () => {
   const [totalQuantity, setTotalQuantity] = useState(0);
@@ -39,12 +33,6 @@ export const FavouritesPage = () => {
     setTotalQuantity(favouritesStorage.length);
   }, [favouritesStorage]);
 
-  const updateFavourites = (product: Phone) => () => {
-    const updatedCart = removeFromFavouritesStorage(product);
-
-    setFavouritesStorage(updatedCart);
-  };
-
   return (
     <div className="favourites page__cart">
       <BackButton />
@@ -65,10 +53,9 @@ export const FavouritesPage = () => {
         ) : (
           <div className="favourites__products">
             {favouritesStorage.map(product => (
-              <FavouritesCard
+              <PhoneCard
                 key={product.id}
                 product={product}
-                updateFavourites={updateFavourites}
               />
             ))}
           </div>

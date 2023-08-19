@@ -223,6 +223,7 @@ export const PhoneDetailsPage = () => {
                     type="button"
                     onClick={removeFromCartStorage(
                       phone,
+                      setCartStorage,
                       setIsAddedToCart,
                     )}
                   >
@@ -235,6 +236,7 @@ export const PhoneDetailsPage = () => {
                     onClick={addToCartStorage(
                       phone,
                       setIsAddedToCart,
+                      setCartStorage,
                     )}
                   >
                     Add to cart
@@ -247,10 +249,12 @@ export const PhoneDetailsPage = () => {
                   onClick={isAddedToFavourites
                     ? removeFromFavouritesStorage(
                       phone,
+                      setFavouritesStorage,
                       setIsAddedToFavourites,
                     )
                     : addToFavouritesStorage(
                       phone,
+                      setFavouritesStorage,
                       setIsAddedToFavourites,
                     )}
                 >

@@ -3,6 +3,9 @@
   display: flex;
   align-items: center;
   color: $secondary;
+  background-color: $white;
+  border: 0;
+  transition: all $half-duration;
 
   &__icon {
     margin-left: 16px;
@@ -10,6 +13,7 @@
     height: $button-width;
     border: 1px solid $icons;
     background: url("../../img/icons/chevron-arrow-up-hover.svg") no-repeat center;
+    transition: all $half-duration;
   }
 
   &:hover {
