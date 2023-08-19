@@ -1,4 +1,9 @@
-import { useContext, useEffect, useState } from 'react';
+import {
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 import { BackButton } from '../../components/BackButton';
@@ -29,6 +34,9 @@ export const FavouritesPage = () => {
   const favouritesStorage = useContext(FavouritesStorageContext);
   const setFavouritesStorage = useContext(HandleFavouritesStorageContext);
   const setCartStorage = useContext(HandleCartStorageContext);
+  const [appliedQuery, setAppliedQuery] = useState('');
+
+  const timerId = useRef(0);
 
   const [searchParams] = useSearchParams();
 
@@ -48,12 +56,20 @@ export const FavouritesPage = () => {
   }, [favouritesStorage]);
 
   useEffect(() => {
+    timerId.current = window.setTimeout(() => {
+      setAppliedQuery(query);
+    }, 1000);
+
+    return () => clearTimeout(timerId.current);
+  }, [query]);
+
+  useEffect(() => {
     const filteredProducts = favouritesStorage?.filter(product => (
-      product.name.trim().toLowerCase().includes(query.toLowerCase())
+      product.name.trim().toLowerCase().includes(appliedQuery.toLowerCase())
     ));
 
     setVisibleFavourites(filteredProducts || []);
-  }, [query, favouritesStorage]);
+  }, [appliedQuery, favouritesStorage]);
 
   return (
     <div className="favourites page__cart">
@@ -67,26 +83,28 @@ export const FavouritesPage = () => {
         {`${visibleFavourites?.length} item${visibleFavourites?.length === 1 ? '' : 's'}`}
       </p>
 
-      {(favouritesStorage.length !== visibleFavourites?.length) ? (
-        <NoSearchResults title={title} />
-      ) : (
-        <div className="favourites__container">
-          {!totalQuantity ? (
-            <div className="no-results">
-              Favourites not found
-            </div>
-          ) : (
-            <div className="favourites__products">
-              {visibleFavourites?.map(product => (
-                <PhoneCard
-                  key={product.id}
-                  product={product}
-                />
-              ))}
-            </div>
-          )}
-        </div>
-      )}
+      <div className="favourites__container">
+        {!totalQuantity && (
+          <div className="no-results">
+            Favourites not found
+          </div>
+        )}
+
+        {!!totalQuantity && !visibleFavourites?.length && (
+          <NoSearchResults title={title} />
+        )}
+
+        {!!totalQuantity && !!visibleFavourites?.length && (
+          <div className="favourites__products">
+            {visibleFavourites?.map(product => (
+              <PhoneCard
+                key={product.id}
+                product={product}
+              />
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 };

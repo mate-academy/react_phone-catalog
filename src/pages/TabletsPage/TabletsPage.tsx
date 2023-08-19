@@ -1,4 +1,9 @@
-import { useContext, useEffect, useState } from 'react';
+import {
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 import { getPhones } from '../../functions/getPhones';
@@ -20,9 +25,12 @@ export const TabletsPage = () => {
   const [visibleTablets, setVisibleTablets] = useState<Phone[] | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isNoSearchResults, setIsNoSearchResults] = useState(false);
+  const [appliedQuery, setAppliedQuery] = useState('');
 
   const setCartStorage = useContext(HandleCartStorageContext);
   const setFavouritesStorage = useContext(HandleFavouritesStorageContext);
+
+  const timerId = useRef(0);
 
   const [searchParams] = useSearchParams();
 
@@ -49,14 +57,22 @@ export const TabletsPage = () => {
   }, []);
 
   useEffect(() => {
+    timerId.current = window.setTimeout(() => {
+      setAppliedQuery(query);
+    }, 1000);
+
+    return () => clearTimeout(timerId.current);
+  }, [query]);
+
+  useEffect(() => {
     const filteredProducts = tablets?.filter(product => (
-      product.name.trim().toLowerCase().includes(query.toLowerCase())
+      product.name.trim().toLowerCase().includes(appliedQuery.toLowerCase())
     ));
 
     setVisibleTablets(filteredProducts || []);
 
     setIsNoSearchResults(!filteredProducts?.length && !!tablets?.length);
-  }, [query, tablets]);
+  }, [appliedQuery, tablets]);
 
   return (
     <Content

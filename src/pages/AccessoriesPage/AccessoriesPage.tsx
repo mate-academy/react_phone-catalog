@@ -1,4 +1,9 @@
-import { useContext, useEffect, useState } from 'react';
+import {
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 import { getPhones } from '../../functions/getPhones';
@@ -23,9 +28,12 @@ export const AccessoriesPage = () => {
   ] = useState<Phone[] | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isNoSearchResults, setIsNoSearchResults] = useState(false);
+  const [appliedQuery, setAppliedQuery] = useState('');
 
   const setCartStorage = useContext(HandleCartStorageContext);
   const setFavouritesStorage = useContext(HandleFavouritesStorageContext);
+
+  const timerId = useRef(0);
 
   const [searchParams] = useSearchParams();
 
@@ -52,14 +60,22 @@ export const AccessoriesPage = () => {
   }, []);
 
   useEffect(() => {
+    timerId.current = window.setTimeout(() => {
+      setAppliedQuery(query);
+    }, 1000);
+
+    return () => clearTimeout(timerId.current);
+  }, [query]);
+
+  useEffect(() => {
     const filteredProducts = accessories?.filter(product => (
-      product.name.trim().toLowerCase().includes(query.toLowerCase())
+      product.name.trim().toLowerCase().includes(appliedQuery.toLowerCase())
     ));
 
     setVisibleAccessories(filteredProducts || []);
 
     setIsNoSearchResults(!filteredProducts?.length && !!accessories?.length);
-  }, [query, accessories]);
+  }, [appliedQuery, accessories]);
 
   return (
     <Content
