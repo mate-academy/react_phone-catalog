@@ -3,12 +3,20 @@
   flex-direction: column;
   align-items: center;
   gap: 24px;
-  width: 272px;
+  width: 262px;
   height: 507px;
   border: 1px solid $gray-elements;
   background: $white;
   padding: 32px 24px 24px;
   box-sizing: border-box;
+
+  @include onTablet {
+    width: 310px;
+  }
+
+  @include onDesktop {
+    width: 272px;
+  }
 
   &:hover {
     border: 1px solid $gray-secondary;
@@ -63,6 +71,14 @@
       display: flex;
       justify-content: space-between;
       width: 224px;
+
+      @include onTablet {
+        width: 250px;
+      }
+    
+      @include onDesktop {
+        width: 224px;
+      }
     }
 
     &__data {
@@ -73,5 +89,6 @@
   &__footer {
     display: flex;
     gap: 8px;
+    justify-content: space-between;
   }
 }

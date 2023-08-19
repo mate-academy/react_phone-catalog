@@ -15,8 +15,11 @@ export const ItemsSlider:React.FC<Props> = ({
   isLoading,
 }) => {
   const [itemId, setItemId] = useState<number>(0);
+  const cardSize = (window.innerWidth > 1240) ? 288 : 350;
+  const cardPerScroll = (window.innerWidth > 1240) ? 4 : 2;
+  const transformStyle = `translateX(${cardSize * -itemId}px)`;
   const handleContentScroll = (side: number) => {
-    setItemId(prevState => prevState + (4 * side));
+    setItemId(prevState => prevState + (cardPerScroll * side));
     document.querySelector('.page__content__cards')?.scrollTo({
       left: -100,
       behavior: 'smooth',
@@ -27,7 +30,7 @@ export const ItemsSlider:React.FC<Props> = ({
     <section className="page__content">
       <div className="page__content__header">
         <h1>{title}</h1>
-        {itemsList.length > 4 && (
+        {itemsList.length > cardPerScroll && (
           <div className="page__content__header__arrows">
             <button
               type="button"
@@ -41,21 +44,23 @@ export const ItemsSlider:React.FC<Props> = ({
               aria-label="slider-button"
               className="slider-button slider-button__right"
               onClick={() => handleContentScroll(1)}
-              disabled={itemId >= itemsList.length - 4}
+              disabled={itemId >= itemsList.length - cardPerScroll}
             />
           </div>
         )}
       </div>
       {isLoading && (
         <div className="card-loaders">
-          {[1, 2, 3, 4].map((loader) => (
-            <div
-              className="card card-loaders__loader"
-              key={loader}
-            >
-              <FadeLoader color="gray" />
-            </div>
-          ))}
+          {Array
+            .from({ length: cardPerScroll }, (_, i) => i + 1)
+            .map((loader) => (
+              <div
+                className="card card-loaders__loader"
+                key={loader}
+              >
+                <FadeLoader color="gray" />
+              </div>
+            ))}
         </div>
       )}
       <div>
@@ -65,7 +70,7 @@ export const ItemsSlider:React.FC<Props> = ({
               key={item.id}
               style={{
                 transition: '500ms',
-                transform: `translateX(${288 * -itemId}px)`,
+                transform: transformStyle,
               }}
             >
               <Card item={item} hasDiscont />

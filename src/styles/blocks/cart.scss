@@ -1,7 +1,19 @@
 .cart {
   display: flex;
   gap: 16px;
-  width: 100%;
+  flex-direction: column;
+
+  @include onDesktop {
+    flex-direction: row;
+  }
+
+  @include onTablet {
+    min-height: calc(100vh - 235px);
+  }
+
+  @include onDesktop {
+    min-height: calc(100vh - 290px);
+  }
 
   &__title {
     padding: 16px 0 24px;
@@ -14,11 +26,26 @@
     padding: 24px;
     box-sizing: border-box;
     border: 1px solid $gray-elements;
+
+    @include onTablet {
+      padding: 20px;
+    }
+
+    @include onDesktop {
+      padding: 24px;
+    }
   }
 
   &__empty {
-    width: 752px;
-    height: 128px;
+    @include onTablet {
+      width: 600px;
+      height: 115px;
+    }
+
+    @include onDesktop {
+      width: 752px;
+      height: 128px;
+    }
   }
 
   &__items {
@@ -28,11 +55,25 @@
   }
 
   &__total {
-    padding-top: 95px;
-    
+    @include onTablet {
+      padding-top: 16px;
+    }
+
+    @include onDesktop {
+      padding-top: 95px;
+    }
     &__info {
       width: 368px;
       height: 206px;
+
+      @include onTablet {
+        width: 600px;
+      }
+  
+      @include onDesktop {
+        width: 368px;
+        height: 206px;
+      }
 
       display: flex;
       flex-direction: column;
@@ -50,6 +91,14 @@
           width: 321px;
           height: 1px;
           background-color: $gray-elements;
+
+          @include onTablet {
+            width: 550px;
+          }
+      
+          @include onDesktop {
+            width: 321px;
+          }
         }
       }
 

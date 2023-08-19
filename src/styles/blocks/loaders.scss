@@ -2,6 +2,14 @@
   display: flex;
   gap: 16px;
 
+  @include onTablet {
+    gap: 40px;
+  }
+
+  @include onDesktop {
+    gap: 16px;
+  }
+
   &__loader {
     display: flex;
     justify-content: center;
@@ -10,6 +18,14 @@
     height: 507px;
     border: 1px solid $gray-elements;
     box-sizing: border-box;
+
+    @include onTablet {
+      width: 310px;
+    }
+  
+    @include onDesktop {
+      width: 272px;
+    }
   }
 }
 

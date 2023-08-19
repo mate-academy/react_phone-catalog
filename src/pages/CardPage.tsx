@@ -106,7 +106,12 @@ export const CardPage: React.FC = () => {
         <main className="page cardPage">
           <section className="cardPage__title">
             <HistoryBackButton />
-            <h1>{currentProduct.name}</h1>
+            <div className="cardPage__title__zone">
+              <h1>{currentProduct.name}</h1>
+              <p className="cardPage__title__id text__small">
+                {`ID: ${currentProduct.id}`}
+              </p>
+            </div>
           </section>
           <section className="cardPage__props">
             <div className="cardPage__props__images">
@@ -217,7 +222,7 @@ export const CardPage: React.FC = () => {
                   ))}
                 </div>
               </div>
-              <p className="text__small">
+              <p className="cardPage__props__info__id text__small">
                 {`ID: ${currentProduct.id}`}
               </p>
             </div>

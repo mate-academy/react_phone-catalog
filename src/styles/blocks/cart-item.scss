@@ -1,13 +1,29 @@
 .cart-item {
   display: flex;
   justify-content: space-between;
-  width: 752px;
-  height: 128px;
+
+  @include onTablet {
+    width: 600px;
+    height: 115px;
+  }
+
+  @include onDesktop {
+    width: 752px;
+    height: 128px;
+  }
 
   &__left-part {
     display: flex;
-    gap: 24px;
+    gap: 14px;
     align-items: center;
+
+    @include onTablet {
+      gap: 20px;
+    }
+
+    @include onDesktop {
+      gap: 24px;
+    }
 
     &__image-cover {
       display: flex;
@@ -22,16 +38,28 @@
     }
   
     &__name {
-      width: 295px;
+      width: 175px;
+
+      @include onDesktop {
+        width: 295px;
+      }
     }
   }
 
   &__right-part {
     display: flex;
-    width: 200px;
     justify-content: space-between;
     align-items: center;
     padding-right: 16px;
+    width: 150px;
+
+    @include onTablet {
+      width: 190px;
+    }
+
+    @include onDesktop {
+      width: 200px;
+    }
 
     &__buttons {
       display: flex;

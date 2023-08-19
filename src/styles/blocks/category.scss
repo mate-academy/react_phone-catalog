@@ -22,6 +22,16 @@
       position: relative;
       box-sizing: border-box;
 
+      @include onTablet {
+        width: 204px;
+        height: 304px;
+      }
+
+      @include onDesktop {
+        width: 368px;
+        height: 368px;
+      }
+
       &:hover {
         border: 1px solid $gray-primary;
       }
@@ -34,18 +44,48 @@
         left: 75px;
         top: 25px;
         height: 457px;
+
+        @include onTablet {
+          left: 25px;
+          top: 0;
+        }
+
+        @include onDesktop {
+          left: 75px;
+          top: 25px;
+        }
       }
 
       &--tablet {
-        left: 20px;
+        left: 75px;
         top: 35px;
         height: 546px;
+
+        @include onTablet {
+          left: 25px;
+          top: 10px;
+        }
+
+        @include onDesktop {
+          left: 75px;
+          top: 35px;
+        }
       }
 
       &--acc {
         left: 50px;
         top: 75px;
         height: 295px;
+
+        @include onTablet {
+          left: 50px;
+          top: 50px;
+        }
+
+        @include onDesktop {
+          left: 50px;
+          top: 75px;
+        }
       }
     }
 

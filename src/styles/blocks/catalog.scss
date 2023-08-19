@@ -2,8 +2,16 @@
   &__items {
     display: flex;
     flex-wrap: wrap;
-    row-gap: 40px;
-    column-gap: 16px;
+    gap: 20px;
     padding-top: 24px;
+
+    @include onTablet {
+      gap: 40px;
+    }
+
+    @include onDesktop {
+      column-gap: 16px;
+      row-gap: 40px;
+    }
   }
 }

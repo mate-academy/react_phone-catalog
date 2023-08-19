@@ -8,7 +8,7 @@ export const Banner = () => {
   ];
 
   const [bannerId, setBannerId] = useState<number>(-1);
-
+  const bannerWidth = (window.innerWidth > 1240) ? 1040 : 560;
   const handleBannerScroll = (side: number) => {
     setBannerId(prevId => {
       let newValue = 0;
@@ -72,7 +72,7 @@ export const Banner = () => {
                 key={image}
                 style={{
                   transition: '500ms',
-                  transform: `translateX(${1040 * -bannerId}px)`,
+                  transform: `translateX(${bannerWidth * -bannerId}px)`,
                 }}
               >
                 <img

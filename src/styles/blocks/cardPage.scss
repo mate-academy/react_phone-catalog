@@ -4,11 +4,29 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
+
+    &__zone {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    &__id {
+      @include onDesktop {
+        display: none;
+      }
+    }
   }
 
   &__props {
     display: flex;
-    gap: 64px;
+    gap: 40px;
+    flex-direction: column;
+
+    @include onDesktop {
+      flex-direction: row;
+      gap: 64px;
+    }
 
     &__images {
       display: flex;
@@ -65,7 +83,16 @@
         display: flex;
         flex-direction: column;
         gap: 24px;
+
         width: 320px;
+
+        @include onTablet {
+          width: 660px;
+        }
+
+        @include onDesktop {
+          width: 320px;
+        }
       }
 
       &__section {
@@ -145,13 +172,26 @@
       &__title {
         color: $gray-secondary;
       }
+
+      &__id {
+        display: none;
+
+        @include onDesktop {
+          display: block;
+        }
+      }
     }
   }
 
   &__details {
     display: flex;
     gap: 64px;
-    
+    flex-direction: column;
+
+    @include onDesktop {
+      flex-direction: row;
+    }
+
     &__left {
       display: flex;
       flex-direction: column;

@@ -6,15 +6,31 @@
 
   &__left {
     display: flex;
-    gap: 64px;
     padding-left: 24px;
     color: $gray-secondary;
+    gap: 25px;
+
+    @include onTablet {
+      gap: 30px;
+    }
+
+    @include onDesktop {
+      gap: 64px;
+    }
   }
 
   &__link {
     box-sizing: border-box;
     padding-top: 25px;
     height: 64px;
+
+    @include onTablet {
+      padding-top: 27px;
+    }
+
+    @include onDesktop {
+      padding-top: 25px;
+    }
   }
 
   &__link.active,
@@ -33,26 +49,41 @@
     display: flex;
     align-items: center;
     height: 64px;
-    padding: 0 24px;
     border-left: 1px solid $gray-elements;
+    padding: 0 10px;
+
+    @include onTablet {
+      padding: 0 14px;
+    }
+
+    @include onDesktop {
+      padding: 0 24px;
+    }
 
     &:hover {
       background-color: $gray-background;
     }
 
     &__input {
-      width: 275px;
       outline-style: none;
       border: none;
       color: $gray-primary;
       font-size: 14px;
       font-weight: 600;
       background-color: inherit;
+      width: 85px;
+
+      @include onTablet {
+        width: 150px;
+      }
+  
+      @include onDesktop {
+        width: 275px;
+      }
 
       &::placeholder {
         color: $gray-icons;
       }
-
     }
   }
 
