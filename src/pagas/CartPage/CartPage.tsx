@@ -2,4 +2,4 @@ export const CartPage = () => {
   return (
     <></>
   );
-}
+};
