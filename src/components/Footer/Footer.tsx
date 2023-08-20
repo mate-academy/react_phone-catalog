@@ -2,6 +2,8 @@ import { NavLink } from 'react-router-dom';
 import { Logo } from '../Logo/Logo';
 import { ScrollBtn } from './ScrollBtn';
 
+const gitHubLink = 'https://github.com/Ir-ra/react_phone-catalog';
+
 export const Footer = () => (
   <>
     <div className="footer__container">
@@ -10,7 +12,7 @@ export const Footer = () => (
       <nav className="footer__nav">
         <ul className="footer__navList">
           <NavLink
-            to="https://github.com/Ir-ra/react_phone-catalog"
+            to={gitHubLink}
             className="footer__navItem"
             target="_blank"
           >

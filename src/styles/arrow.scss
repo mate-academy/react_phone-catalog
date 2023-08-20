@@ -1,0 +1,13 @@
+.arrow {
+  display: block;
+  width: 16px;
+  height: 16px;
+
+  &--left {
+    background-image: url("../assets/arrow_left.svg");
+  }
+
+  &--right {
+    background-image: url("../assets/arrow_right.svg");
+  }
+}

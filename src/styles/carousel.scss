@@ -1,0 +1,134 @@
+.carousel {
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
+  height: 400px;
+  margin: 40px auto 0;
+
+  &__button {
+    height: 400px;
+    width: 32px;
+    background-color: transparent;
+    border: 1px solid $gray-icons-placeholders;
+
+    &:hover {
+      border-color: $gray-primary;
+    }
+  }
+
+  &__list {
+    display: flex;
+    overflow: hidden;
+    list-style: none;
+    padding: 0;
+  }
+
+  &__main {
+    display: flex;
+    height: auto;
+    max-width: 1040px;
+    width: 1040px;
+    margin: 0 16px;
+    overflow: hidden;
+
+    &--photos {
+      display: block;
+      height: 400px;
+      width: 1040px;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+
+  &__dots {
+    position: absolute;
+    top: 522px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &__dot {
+    width: 14px;
+    height: 4px;
+    margin-right: 14px;
+
+    background-color: lightgrey;
+    border: none;
+    transition: all 0.5s;
+
+    &--active {
+      background-color: black;
+    }
+
+    &:hover {
+      background-color: black;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+.banner {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+  overflow: hidden;
+  height: 400px;
+  width: 100%;
+
+  &__caroucel {
+    display: flex;
+    height: 100%;
+    max-width: 1040px;
+    margin: 0 16px;
+    overflow: hidden;
+  }
+
+  &__list {
+    display: flex;
+  }
+
+  &__button {
+    height: 400px;
+    width: 32px;
+    background-color: transparent;
+    border: 1px solid $gray-icons-placeholders;
+  }
+
+  &__img {
+    height: 400px;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  &__indicators {
+    position: absolute;
+    left: 50%;
+    // top: 522px;
+    bottom: -90px;
+  }
+
+  &__indicator {
+    width: 14px;
+    height: 4px;
+    margin-right: 14px;
+
+    background-color: lightgrey;
+    border: none;
+    transition: all 0.3s ease-in;
+
+    &:hover {
+      background-color: $gray-primary;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &--active {
+      background-color: $gray-primary;
+    }
+  }
+}

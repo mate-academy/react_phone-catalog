@@ -26,6 +26,13 @@ export const NavBar = () => {
         </NavLink>
 
         <NavLink
+          to="/tablets"
+          className={`navbar__item ${location.pathname === '/tablets' ? 'navbar__item--active' : ''}`}
+        >
+          tablets
+        </NavLink>
+
+        <NavLink
           to="/accessories"
           className={`navbar__item ${location.pathname === '/accessories' ? 'navbar__item--active' : ''}`}
         >
