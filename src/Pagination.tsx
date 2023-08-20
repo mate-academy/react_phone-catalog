@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 type Props = {
   total: number,
@@ -13,17 +13,20 @@ export const Pagination: React.FC<Props> = ({
   currentPage,
   onPageChange,
 }) => {
+  const [activePage, setActivePage] = useState(currentPage);
   const totalPages = Math.ceil(total / perPage);
 
   const handlePrevPage = () => {
     if (currentPage > 1) {
       onPageChange(currentPage - 1);
+      setActivePage(currentPage - 1);
     }
   };
 
   const handleNextPage = () => {
     if (currentPage < totalPages) {
       onPageChange(currentPage + 1);
+      setActivePage(currentPage + 1);
     }
   };
 
@@ -68,12 +71,15 @@ export const Pagination: React.FC<Props> = ({
           .from({ length: totalPages }, (_, index) => index + 1).map((page) => (
             <li
               key={page}
-              className={`pagination__list--numbers ${currentPage === page ? 'active' : ''}`}
+              className={`pagination__list--numbers ${activePage === page ? 'pagination__button--active' : ''}`}
             >
               <button
                 type="button"
                 className="pagination__button pagination__button--numbers"
-                onClick={() => onPageChange(page)}
+                onClick={() => {
+                  onPageChange(page);
+                  setActivePage(page);
+                }}
                 data-cy={`page-${page}`}
               >
                 {page}

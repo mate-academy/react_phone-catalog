@@ -206,7 +206,6 @@ export const PhonesPage: React.FC<Props> = ({
                     onPageChange={handlePageChange}
                   />
                 )}
-
       </section>
     </>
 
