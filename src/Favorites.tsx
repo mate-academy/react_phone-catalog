@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Iphone } from './types/Iphone';
 import { ShopCard } from './ShopCard';
 import { NotFoundItems } from './NotFound';
@@ -8,8 +8,8 @@ type Props = {
   favorites: Iphone[],
   selectPhoneToBuy: (iphoneId: string) => void,
   selectedIphoneIdToBuy: string | null,
-  selectPhone: (iphoneId: string) => void, // +
-  selectedIphoneId: string | null, // +
+  selectPhone: (iphoneId: string) => void,
+  selectedIphoneId: string | null,
 };
 
 export const Favorites: React.FC<Props> = ({
@@ -19,6 +19,10 @@ export const Favorites: React.FC<Props> = ({
   selectPhone,
   selectedIphoneId,
 }) => {
+  useEffect(() => {
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+  }, [favorites]);
+
   return (
     favorites.length > 0
       ? (

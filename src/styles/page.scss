@@ -18,7 +18,6 @@ body {
     &-container {
       display: flex;
       justify-content: space-between;
-      max-width: 1296px;
       align-items: center;
     }
   }
@@ -30,6 +29,13 @@ body {
     letter-spacing: -0.01em;
     color: $c-primary;
     display: block;
+    margin: 0 auto 24px;
+    text-align: center;
+
+    @include onTablet {
+      margin: 0 0 24px;
+      text-align: start;
+    }
 
     &--filter {
       padding-bottom: 8px;

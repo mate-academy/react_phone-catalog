@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 /* eslint-disable operator-assignment */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Iphone } from './types/Iphone';
 import { NotFoundItems } from './NotFound';
@@ -14,6 +14,10 @@ export const Basket: React.FC<Props> = ({
   phonesToBuy,
   removeIphone,
 }) => {
+  useEffect(() => {
+    localStorage.setItem('phonesToBuy', JSON.stringify(phonesToBuy));
+  }, [phonesToBuy]);
+
   const sum = phonesToBuy.reduce((prev, current) => prev + current.price, 0);
 
   const baseUrl = 'https://mate-academy.github.io/react_phone-catalog/_new/';

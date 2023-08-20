@@ -26,6 +26,25 @@ const App = () => {
     getAll().then((items) => setIphones(items));
   }, []);
 
+  useEffect(() => {
+    const savedFavorites = localStorage.getItem('favorites');
+
+    if (savedFavorites) {
+      setFavorites(JSON.parse(savedFavorites));
+    }
+
+    const savedIphonesToBuy = localStorage.getItem('iphonesToBuy');
+
+    if (savedIphonesToBuy) {
+      setIphonesToBuy(JSON.parse(savedIphonesToBuy));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+    localStorage.setItem('iphonesToBuy', JSON.stringify(iphonesToBuy));
+  }, [favorites, iphonesToBuy]);
+
   const handleRemoveIphone = (iphoneId: string) => {
     setIphonesToBuy(iphonesToBuy.filter(iphone => iphoneId !== iphone.id));
   };

@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 import { Iphone } from './types/Iphone';
@@ -25,6 +25,55 @@ export const ShopCard: React.FC<Props> = ({
   const baseUrl = 'https://mate-academy.github.io/react_phone-catalog/_new/';
   const [isLiked, setIsLiked] = useState(false);
   const [isSelectedToCart, setIsSelectedToCart] = useState(false);
+
+  useEffect(() => {
+    const likedState = localStorage.getItem('likedPhones');
+    const cartState = localStorage.getItem('cartPhones');
+
+    if (likedState) {
+      const likedPhones = JSON.parse(likedState);
+
+      setIsLiked(likedPhones.includes(iphone.id));
+    }
+
+    if (cartState) {
+      const cartPhones = JSON.parse(cartState);
+
+      setIsSelectedToCart(cartPhones.includes(iphone.id));
+    }
+  }, []);
+
+  useEffect(() => {
+    if (isLiked !== null) {
+      const likedState = localStorage.getItem('likedPhones');
+      let likedPhones = likedState ? JSON.parse(likedState) : [];
+
+      if (isLiked) {
+        likedPhones.push(iphone.id);
+      } else {
+        const updatedLikedPhones = likedPhones.filter((id: string) => id !== iphone.id);
+
+        likedPhones = updatedLikedPhones;
+      }
+
+      localStorage.setItem('likedPhones', JSON.stringify(likedPhones));
+    }
+
+    if (isSelectedToCart !== null) {
+      const cartState = localStorage.getItem('cartPhones');
+      let cartPhones = cartState ? JSON.parse(cartState) : [];
+
+      if (isSelectedToCart) {
+        cartPhones.push(iphone.id);
+      } else {
+        const updatedCartPhones = cartPhones.filter((id: string) => id !== iphone.id);
+
+        cartPhones = updatedCartPhones;
+      }
+
+      localStorage.setItem('cartPhones', JSON.stringify(cartPhones));
+    }
+  }, [isLiked, isSelectedToCart]);
 
   return (
     <div className="shop__card">
