@@ -38,10 +38,20 @@ export const List: React.FC<Props> = ({ products }) => {
   }, []);
 
   useEffect(() => {
-    setPagesCount((perPage === 'all')
-      ? 1
-      : Math.ceil((products?.length || 0) / +perPage));
-  }, [perPage, searchParams]);
+    if (perPage === 'all') {
+      setPagesCount(1);
+
+      return;
+    }
+
+    const newPagesCount = Math.ceil((products?.length || 0) / +perPage);
+
+    if (newPagesCount < +currentPage) {
+      setCurrentPage('1');
+    }
+
+    setPagesCount(newPagesCount);
+  }, [perPage, searchParams, products]);
 
   useEffect(() => {
     const sorted = products?.sort((product1, product2) => {
