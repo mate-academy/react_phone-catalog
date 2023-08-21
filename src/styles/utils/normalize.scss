@@ -9,10 +9,11 @@
   padding: 0;
 
   font: inherit;
+  scrollbar-width: none;
 
-  @include onDesktop {
-    cursor: url("../../images/cursor.png"), auto;
-  }
+  // @include onDesktop {
+  //   cursor: url("../../images/cursor.png"), auto;
+  // }
 }
 
 img,

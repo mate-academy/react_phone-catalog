@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 import { BURGER_NAV_LINKS } from '../../helpers/NavLinks';
 import { makeUrl } from '../../helpers/makeUrl';
@@ -27,6 +28,8 @@ export const Burger: React.FC<Props> = React.memo(({
   screenType,
   setScreenType,
 }) => {
+  const { t } = useTranslation();
+
   return (
     <div className={classNames}>
       <Header
@@ -49,7 +52,7 @@ export const Burger: React.FC<Props> = React.memo(({
                   to={makeUrl(link)}
                   onClick={() => setIsMenuOpened(false)}
                 >
-                  {link}
+                  {t(link)}
                 </NavLink>
               </li>
             ))}

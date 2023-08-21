@@ -38,8 +38,7 @@
       }
 
       @include onDesktop {
-        display: list-item;
-        justify-content: flex-start;
+        text-align: center;
 
         .header__nav-list-link {
           display: inline;

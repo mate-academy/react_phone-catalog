@@ -1,0 +1,71 @@
+@import "../../styles/utils.scss";
+
+.langDropdown {
+  position: relative;
+  width: 50%;
+
+  font-size: 18px;
+  font-weight: 400;
+
+  &__button {
+    position: relative;
+    width: 100%;
+
+    text-align: left;
+    cursor: pointer;
+
+    &::after {
+      @include selectAfter;
+
+      left: 150%;
+
+      @include onDesktop {
+        left: 100%;
+      }
+    }
+
+    &:hover {
+
+      &::after {
+        @include selectAfterHover;
+      }
+    }
+  }
+
+  &__list {
+    width: 100%;
+    position: absolute;
+    top: 32px;
+
+    list-style: none;
+    transition: opacity $animationDuration;
+
+    &--entering,
+    &--entered {
+      opacity: 1;
+    }
+
+    &--exiting,
+    &--exited {
+      opacity: 0;
+    }
+  }
+
+  &__list-item {
+    width: 100%;
+    padding: 8px 0;
+    border-top: 1px solid $black-500;
+  }
+
+  &__list-item-button {
+    width: 100%;
+
+    text-align: left;
+    transition: color $animationDuration;
+    cursor: pointer;
+
+    &:hover {
+      color: $red-700;
+    }
+  }
+}

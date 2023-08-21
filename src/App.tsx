@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, Suspense } from 'react';
 import { Transition, TransitionStatus } from 'react-transition-group';
 import { Outlet as Main } from 'react-router-dom';
 
@@ -16,34 +16,36 @@ export const App: React.FC = () => {
   const [isMenuOpened, setIsMenuOpened] = useState(false);
 
   return (
-    <div className="app">
-      <Header
-        isMenuOpened={isMenuOpened}
-        setIsMenuOpened={setIsMenuOpened}
-        screenType={screenType}
-        setScreenType={setScreenType}
-      />
+    <Suspense fallback="...loading">
+      <div className="app">
+        <Header
+          isMenuOpened={isMenuOpened}
+          setIsMenuOpened={setIsMenuOpened}
+          screenType={screenType}
+          setScreenType={setScreenType}
+        />
 
-      <Transition
-        in={isMenuOpened && screenType !== Resolutions.Desktop}
-        timeout={300}
-        mountOnEnter
-        unmountOnExit
-      >
-        {(state: TransitionStatus) => (
-          <Burger
-            classNames={`burger burger--${state}`}
-            isMenuOpened={isMenuOpened}
-            setIsMenuOpened={setIsMenuOpened}
-            screenType={screenType}
-            setScreenType={setScreenType}
-          />
-        )}
-      </Transition>
-      <Main />
-      <Footer
-        setIsMenuOpened={setIsMenuOpened}
-      />
-    </div>
+        <Transition
+          in={isMenuOpened && screenType !== Resolutions.Desktop}
+          timeout={300}
+          mountOnEnter
+          unmountOnExit
+        >
+          {(state: TransitionStatus) => (
+            <Burger
+              classNames={`burger burger--${state}`}
+              isMenuOpened={isMenuOpened}
+              setIsMenuOpened={setIsMenuOpened}
+              screenType={screenType}
+              setScreenType={setScreenType}
+            />
+          )}
+        </Transition>
+        <Main />
+        <Footer
+          setIsMenuOpened={setIsMenuOpened}
+        />
+      </div>
+    </Suspense>
   );
 };

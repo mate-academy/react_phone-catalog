@@ -1,6 +1,7 @@
 /* eslint-disable max-len */
 import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 import { getScreenType } from '../../helpers/getScreenType';
 import { makeUrl } from '../../helpers/makeUrl';
@@ -9,6 +10,7 @@ import {
   HEADER_RIGHT_NAV_LINKS,
 } from '../../helpers/NavLinks';
 
+import '../../i18n';
 import { Resolutions } from '../../types/Resolutions';
 import { NavLink as HeaderLink } from '../../types/NavLink';
 
@@ -30,6 +32,7 @@ export const Header: React.FC<Props> = React.memo(({
   setScreenType = () => {},
 }) => {
   const handleResize = () => setScreenType(getScreenType());
+  const { t } = useTranslation();
 
   useEffect(() => {
     window.addEventListener('resize', handleResize);
@@ -98,7 +101,7 @@ export const Header: React.FC<Props> = React.memo(({
                     className="header__nav-list-link"
                     to={makeUrl(link)}
                   >
-                    {link}
+                    {t(link)}
                   </NavLink>
                 </li>
               ))}
@@ -120,7 +123,7 @@ export const Header: React.FC<Props> = React.memo(({
                     className="header__nav-list-link"
                     to={makeUrl(link)}
                   >
-                    {link}
+                    {t(link)}
                   </NavLink>
                 </li>
               ))}
@@ -131,7 +134,7 @@ export const Header: React.FC<Props> = React.memo(({
                   className="header__nav-list-link"
                   to={makeUrl(HeaderLink.Bag)}
                 >
-                  {HeaderLink.Bag}
+                  {t(HeaderLink.Bag)}
                 </NavLink>
               </li>
             )}

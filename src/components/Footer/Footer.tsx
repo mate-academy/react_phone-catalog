@@ -1,6 +1,7 @@
 /* eslint-disable max-len */
 import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 import { makeUrl } from '../../helpers/makeUrl';
 import { FOOTER_NAV_LINKS } from '../../helpers/NavLinks';
@@ -8,12 +9,15 @@ import { FOOTER_NAV_LINKS } from '../../helpers/NavLinks';
 import { Logo } from '../Logo/Logo';
 
 import './Footer.scss';
+import { LangDropdown } from '../LangDropdown/LangDropdown';
 
 type Props = {
   setIsMenuOpened: (param: boolean | ((prevState: boolean) => boolean)) => void,
 };
 
 export const Footer: React.FC<Props> = React.memo(({ setIsMenuOpened }) => {
+  const { t } = useTranslation();
+
   return (
     <footer className="footer">
       <div className="container">
@@ -36,7 +40,7 @@ export const Footer: React.FC<Props> = React.memo(({ setIsMenuOpened }) => {
                     className="footer__nav-list-link"
                     to={makeUrl(link)}
                   >
-                    {link}
+                    {t(link)}
                   </NavLink>
                 </li>
               ))}
@@ -44,12 +48,9 @@ export const Footer: React.FC<Props> = React.memo(({ setIsMenuOpened }) => {
           </nav>
 
           <div className="footer__lang-container">
-            <button
-              className="footer__lang-button"
-              type="button"
-            >
-              English
-            </button>
+            <LangDropdown
+              rootClassName="footer"
+            />
           </div>
 
           <div className="footer__social-list-container">
@@ -150,14 +151,14 @@ export const Footer: React.FC<Props> = React.memo(({ setIsMenuOpened }) => {
             {' '}
             {`Kuroso, ${new Date().toDateString().slice(11)}`}
             <br />
-            Design & Development -
-            {' '}
+            {t('About')}
+            {' - '}
             <Link
               className="footer__copyright-link"
               to="https://github.com/Vo7kov"
               target="_blank"
             >
-              Jegor Volkov
+              {t('Author')}
             </Link>
           </p>
         </div>
