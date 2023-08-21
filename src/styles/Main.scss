@@ -1,0 +1,116 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  margin-top: 72px;
+
+  .section {
+    &__title {
+      margin-bottom: 24px;
+    }
+  }
+
+  .browse-products {
+    display: flex;
+    gap: 16px;
+
+    &__product {
+      width: 272px;
+      height: 500px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border: 1px solid #E2E6E9;
+
+      .product__wrapper {
+        padding: 32px 32px 24px;
+      }
+
+      &--image {
+        max-width: 208px;
+        max-height: 208px;
+        margin-bottom: 24px;
+      }
+
+      &--name {
+        color: #313237;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 21px;
+        margin-bottom: 8px; /* 150% */
+      }
+
+      &--price {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid #E2E6E9;
+      }
+
+      &--old-price{
+        color: #89939A;
+        font-size: 22px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        // text-decoration-line: strikethrough;
+        text-decoration: line-through;
+      }
+
+      &--features {
+        margin-top: 16px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      &--feature {
+        display: flex;
+        justify-content: space-between;
+
+        font-size: 12px;
+        font-weight: 600;
+        line-height: normal;
+
+        &-title {
+          line-height: normal;
+          color: #89939A;
+        }
+
+        &-value {
+          color: #313237;
+        }
+      }
+
+      &--buttons {
+        margin-top: 16px;
+        display: flex;
+        gap: 8px;
+      }
+
+      &--add-to-cart {
+        width: 176px;
+        height: 40px;
+        padding: 10px 48px;
+        background: #313237;
+
+        color: #FFF;
+        text-align: center;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 21px;
+      }
+
+      &--add-to-favorites {
+        width: 40px;
+        height: 40px;
+        background: transparent;
+        border: 1px solid #b4bdc3
+      }
+    }
+  }
+}
