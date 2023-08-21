@@ -1,8 +1,12 @@
 %h1 {
   font-family: "Mont", sans-serif;
-  font-size: 28px;
+  font-size: 26px;
   font-weight: 700;
   letter-spacing: -0.32px;
+
+  @include onTablet {
+    font-size: 28px;
+  }
 
   @include onDesktop {
     font-size: 32px;

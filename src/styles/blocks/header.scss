@@ -6,26 +6,60 @@
 
   &__left {
     display: flex;
-    padding-left: 24px;
+    padding-left: 20px;
     color: $gray-secondary;
-    gap: 25px;
 
     @include onTablet {
       gap: 30px;
+      padding-left: 24px;
     }
 
     @include onDesktop {
       gap: 64px;
+    }
+
+    &__menu {
+      display: none;
+      gap: 25px;
+
+      @include onTablet {
+        gap: 30px;
+        display: inherit;
+      }
+
+      @include onDesktop {
+        gap: 64px;
+      }
+    }
+
+    &__dropdown-menu {
+      display: flex;
+      justify-content: center;
+      width: calc(100vw - 175px);
+
+      @include onTablet {
+        display: none;
+      }
+
+      &__title {
+        padding-top: 25px;
+        color: $gray-secondary;
+
+        &.active {
+          color: $gray-primary;
+        }
+      }
     }
   }
 
   &__link {
     box-sizing: border-box;
     padding-top: 25px;
-    height: 64px;
+    height: 54px;
 
     @include onTablet {
       padding-top: 27px;
+      height: 64px;
     }
 
     @include onDesktop {
@@ -48,12 +82,14 @@
   &__search {
     display: flex;
     align-items: center;
-    height: 64px;
+    height: 54px;
     border-left: 1px solid $gray-elements;
-    padding: 0 10px;
+    padding: 0 8px;
+    position: relative;
 
     @include onTablet {
       padding: 0 14px;
+      height: 64px;
     }
 
     @include onDesktop {
@@ -68,10 +104,10 @@
       outline-style: none;
       border: none;
       color: $gray-primary;
-      font-size: 14px;
+      font-size: 12px;
       font-weight: 600;
       background-color: inherit;
-      width: 85px;
+      width: 125px;
 
       @include onTablet {
         width: 150px;
@@ -90,13 +126,21 @@
   &__right {
     display: flex;
     align-items: center;
-    height: 64px;
+    height: 54px;
+
+    @include onTablet {
+      height: 64px;
+    }
   }
 
   &__icon {
-    width: 64px;
+    width: 54px;
     height: inherit;
     border-left: 1px solid $gray-elements;
+
+    @include onTablet {
+      width: 64px;
+    }
 
     &__cover {
       position: absolute;
@@ -104,29 +148,42 @@
 
     &__image {
       position: relative;
-      left: 24px;
+      left: 19px;
+
+      @include onTablet {
+        left: 24px;
+      }
     }
   
     &__amount {
       display: block;
       position: relative;
       z-index: 2;
-      bottom: 45px;
-      left: 35px;
+      bottom: 40px;
+      left: 30px;
 
-      width: 14px;
-      height: 14px;
+      width: 12px;
+      height: 12px;
 
       color: $white;
-      font-size: 9px;
+      font-size: 8px;
       font-weight: 600;
-      line-height: 14px;
+      line-height: 12px;
       text-align: center;
 
       box-sizing: border-box;
-      border: 1.3px solid $white;
+      border: 1px solid $white;
       border-radius: 70%;
       background-color: $red;
+
+      @include onTablet {
+        left: 35px;
+        bottom: 45px;
+        width: 14px;
+        height: 14px;
+        line-height: 14px;
+        font-size: 9px;
+      }
     }
   
     &::after {
@@ -135,7 +192,11 @@
       height: 3px;
       display: block;
       position: absolute;
-      top: 62px;
+      top: 52px;
+
+      @include onTablet {
+        top: 62px;
+      }
     }
     
     &.active,

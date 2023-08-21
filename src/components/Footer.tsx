@@ -10,6 +10,7 @@ export const Footer = () => {
       <div className="footer__left">
         <NavLink className="logo" to="/" />
       </div>
+
       <div className="footer__centre">
         <Link className="text__uppercase" to="/github">
           github

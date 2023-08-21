@@ -10,12 +10,20 @@
   }
 
   &--cart {
-    height: 64px;
+    height: 54px;
+
+    @include onTablet {
+      height: 64px;
+    }
     background-image: url(../../images/icons/cart.svg);
   }
 
   &--favorites {
-    height: 64px;
+    height: 54px;
+
+    @include onTablet {
+      height: 64px;
+    }
     background-image: url(../../images/icons/heart.svg);
   }
 
@@ -52,6 +60,11 @@
     width: 80px;
     height: 24px;
     cursor: auto;
+
+    @include onTablet {
+      width: 80px;
+      height: 24px;
+    }
 
     &--0 {
       background-image: url(../../images/icons/dots.svg);

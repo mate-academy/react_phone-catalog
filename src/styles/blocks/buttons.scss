@@ -31,13 +31,18 @@
 }
 
 .slider-button {
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
   box-sizing: border-box;
   border: 1px solid $gray-icons;
   background-color: #fff;
   background-repeat: no-repeat;
   background-position: center;
+
+  @include onTablet {
+    width: 32px;
+    height: 32px;
+  }
 
   &:hover {
     cursor: pointer;
@@ -136,4 +141,14 @@
 .close-button {
   border: none;
   background-color: inherit;
+  position: absolute;
+  right: 8px;
+
+  @include onTablet {
+    right: 14px;
+  }
+
+  @include onDesktop {
+    right: 24px;
+  }
 }

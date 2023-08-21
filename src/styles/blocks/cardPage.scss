@@ -7,11 +7,18 @@
 
     &__zone {
       display: flex;
-      justify-content: space-between;
-      align-items: baseline;
+      flex-direction: column;
+
+      @include onTablet {
+        flex-direction: row;
+        align-items: baseline;
+        justify-content: space-between;
+      }
     }
 
     &__id {
+      text-align: end;
+
       @include onDesktop {
         display: none;
       }
@@ -20,8 +27,13 @@
 
   &__props {
     display: flex;
-    gap: 40px;
+    gap: 30px;
+    justify-content: center;
     flex-direction: column;
+
+    @include onTablet {
+      gap: 40px;
+    }
 
     @include onDesktop {
       flex-direction: row;
@@ -30,20 +42,38 @@
 
     &__images {
       display: flex;
-      gap: 16px;
+      gap: 12px;
+      flex-direction: column;
+
+      @include onTablet {
+        flex-direction: row;
+        gap: 16px;
+      }
 
       &__small {
         display: flex;
-        flex-direction: column;
-        gap: 16px;
-        width: 80px;
+        flex-direction: row;
+        gap: 12px;
+        width: 60px;
+
+        @include onTablet {
+          flex-direction: column;
+          width: 80px;
+          gap: 16px;
+        }
       }
 
       &__big {
         display: flex;
-        width: 442px;
-        height: 442px;
         justify-content: center;
+
+        width: 265px;
+        height: 265px;
+
+        @include onTablet {
+          width: 442px;
+          height: 442px;
+        }
       }
     }
 
@@ -51,8 +81,13 @@
       display: flex;
       justify-content: center;
       border: 1px solid $gray-elements;
-      width: 80px;
-      height: 80px;
+      width: 60px;
+      height: 60px;
+
+      @include onTablet {
+        width: 80px;
+        height: 80px;
+      }
 
       &:hover {
         border: 1px solid $gray-primary;
@@ -65,26 +100,39 @@
     }
 
     &__image--small {
-      max-height: 80px;
-      max-width: 80px;
+      max-height: 65px;
+      max-width: 65px;
+
+      @include onTablet {
+        max-height: 80px;
+        max-width: 80px;
+      }
     }
 
     &__image--big {
-      height: 442px;
+      height: 265px;
       padding: 11px;
+
+      @include onTablet {
+        height: 442px;
+      }
     }
 
     &__info {
       display: flex;
       justify-content: space-between;
-      width: 512px;
+      width: 275px;
+      
+      @include onTablet {
+        width: 512px;
+      }
 
       &__sections {
         display: flex;
         flex-direction: column;
         gap: 24px;
 
-        width: 320px;
+        width: 275px;
 
         @include onTablet {
           width: 660px;
@@ -196,7 +244,11 @@
       display: flex;
       flex-direction: column;
       gap: 32px;
-      width: 560px;
+      width: 275px;
+
+      @include onTablet {
+        width: 560px;
+      }
 
       &__block {
         display: flex;
@@ -209,7 +261,11 @@
       display: flex;
       flex-direction: column;
       gap: 32px;
-      width: 512px;
+      width: 275px;
+
+      @include onTablet {
+        width: 512px;
+      }
 
       &__block {
         display: flex;
@@ -230,6 +286,15 @@
 
     &__gray-text {
       color: $gray-secondary;
+    }
+
+    &__info {
+      max-width: 150px;
+      text-align: end;
+
+      @include onTablet {
+        max-width: max-content;
+      }
     }
   }
 }

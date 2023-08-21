@@ -8,7 +8,21 @@ export const Banner = () => {
   ];
 
   const [bannerId, setBannerId] = useState<number>(-1);
-  const bannerWidth = (window.innerWidth > 1240) ? 1040 : 560;
+  let bannerWidth = 400;
+
+  switch (true) {
+    case window.innerWidth > 1280:
+      bannerWidth = 1040;
+      break;
+
+    case window.innerWidth > 768:
+      bannerWidth = 560;
+      break;
+
+    default:
+      break;
+  }
+
   const handleBannerScroll = (side: number) => {
     setBannerId(prevId => {
       let newValue = 0;

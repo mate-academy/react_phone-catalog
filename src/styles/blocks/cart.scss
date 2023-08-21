@@ -2,10 +2,7 @@
   display: flex;
   gap: 16px;
   flex-direction: column;
-
-  @include onDesktop {
-    flex-direction: row;
-  }
+  min-height: calc(100vh - 180px);
 
   @include onTablet {
     min-height: calc(100vh - 235px);
@@ -13,6 +10,7 @@
 
   @include onDesktop {
     min-height: calc(100vh - 290px);
+    flex-direction: row;
   }
 
   &__title {
@@ -23,7 +21,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 24px;
+    padding: 16px;
     box-sizing: border-box;
     border: 1px solid $gray-elements;
 
@@ -37,6 +35,9 @@
   }
 
   &__empty {
+    width: 275px;
+    height: 170px;
+
     @include onTablet {
       width: 600px;
       height: 115px;
@@ -62,8 +63,9 @@
     @include onDesktop {
       padding-top: 95px;
     }
+
     &__info {
-      width: 368px;
+      width: 275px;
       height: 206px;
 
       @include onTablet {
@@ -88,7 +90,7 @@
         gap: 24px;
 
         &__line {
-          width: 321px;
+          width: 225px;
           height: 1px;
           background-color: $gray-elements;
 
@@ -103,9 +105,14 @@
       }
 
       &__button {
-        width: 320px;
-        height: 48px;
-        flex-shrink: 0;
+        width: 225px;
+        height: 40px;
+
+        @include onTablet {
+          width: 320px;
+          height: 48px;
+          flex-shrink: 0;
+        }
       }
     }
   }

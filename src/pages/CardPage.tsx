@@ -263,7 +263,7 @@ export const CardPage: React.FC = () => {
                     <p className="text__body cardPage__details__gray-text">
                       {propsTitle(prop)}
                     </p>
-                    <p className="text__body">
+                    <p className="text__body cardPage__details__info">
                       {prop === 'cell'
                         ? description.cell.join(', ')
                         : description[prop]}

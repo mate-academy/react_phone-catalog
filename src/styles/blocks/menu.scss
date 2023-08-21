@@ -1,0 +1,27 @@
+.menu {
+  z-index: 3;
+  top: 56px;
+  right: 25px;
+  position: fixed;
+
+  &__cover {
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    padding-top: 24px;
+
+    &.active {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      align-items: center;
+      background-color: $white;
+    }
+  }
+
+  &__line {
+    width: 225px;
+    height: 1px;
+    background-color: $gray-elements;
+  }
+}

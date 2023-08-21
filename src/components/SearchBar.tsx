@@ -35,7 +35,9 @@ export const SearchBar: React.FC<Props> = ({ category }) => {
           className="icon icon--close close-button"
           onClick={clearQuery}
         />
-      ) : <p className="icon icon--search" />}
+      ) : (
+        window.innerWidth > 768 && <p className="icon icon--search" />
+      )}
     </div>
   );
 };

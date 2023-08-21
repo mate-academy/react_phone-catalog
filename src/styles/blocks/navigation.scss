@@ -3,6 +3,7 @@
   padding-top: 24px;
   display: flex;
   gap: 8px;
+  align-items: center;
 
   max-width: 280px;
   
@@ -15,9 +16,12 @@
   }
   &__list {
     display: flex;
+    align-items: center;
     gap: 8px;
     list-style: none;
     line-height: 16px;
-    align-items: self-end;
+    @include onTablet {
+      align-items: self-end;
+    }
   }
 }

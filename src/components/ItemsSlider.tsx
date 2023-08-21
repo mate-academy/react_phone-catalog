@@ -15,8 +15,24 @@ export const ItemsSlider:React.FC<Props> = ({
   isLoading,
 }) => {
   const [itemId, setItemId] = useState<number>(0);
-  const cardSize = (window.innerWidth > 1240) ? 288 : 350;
-  const cardPerScroll = (window.innerWidth > 1240) ? 4 : 2;
+  let cardSize = 272;
+  let cardPerScroll = 1;
+
+  switch (true) {
+    case window.innerWidth > 1280:
+      cardSize = 288;
+      cardPerScroll = 4;
+      break;
+
+    case window.innerWidth > 768:
+      cardSize = 350;
+      cardPerScroll = 2;
+      break;
+
+    default:
+      break;
+  }
+
   const transformStyle = `translateX(${cardSize * -itemId}px)`;
   const handleContentScroll = (side: number) => {
     setItemId(prevState => prevState + (cardPerScroll * side));

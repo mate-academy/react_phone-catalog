@@ -6,11 +6,15 @@
 
   &__main {
     display: flex;
-    gap: 16px;
+    gap: 12px;
+
+    @include onTablet {
+      gap: 16px;
+    }
   }
 
   &__cover {
-    height: 400px;
+    height: 240px;
     display: flex;
 
     @include onTablet {
@@ -29,7 +33,7 @@
     align-items: center;
     padding-left: 0;
     overflow: hidden;
-    width: 1040px;
+    width: 220px;
 
     @include onTablet {
       width: 560px;
@@ -41,7 +45,8 @@
   }
 
   &__image {
-    width: 1040px;
+    width: 400px;
+    min-height: 240px;
 
     @include onTablet {
       width: 560px;
@@ -54,9 +59,11 @@
   }
 
   &__icon {
-    height: 400px;
+    width: 18px;
+    height: 240px;
 
     @include onTablet {
+      width: 32px;
       height: 280px;
     }
 

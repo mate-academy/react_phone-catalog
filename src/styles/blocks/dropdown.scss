@@ -22,9 +22,15 @@
   }
 
   &__item {
-    width: 176px;
+    width: 136px;
+
+    @include onTablet {
+      width: 176px;
+      padding: 6px 12px;
+    }
+
     height: 40px;
-    padding: 6px 12px;
+    padding: 6px 8px;
     box-sizing: border-box;
     display: flex;
     align-items: center;
@@ -37,15 +43,20 @@
   }
 
   &__button {
-    width: 176px;
+    width: 136px;
     height: 40px;
     display: flex;
-    padding: 6px 12px;
+    padding: 6px 8px;
     box-sizing: border-box;
     justify-content: space-between;
     align-items: center;
     background-color: $white;
     border: 1px solid $gray-icons;
+
+    @include onTablet {
+      width: 176px;
+      padding: 6px 12px;
+    }
 
     &__arrow {
       transform: rotate(-90deg);

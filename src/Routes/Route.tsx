@@ -9,9 +9,6 @@ import { CardPage } from '../pages/CardPage';
 import { FavoritePage } from '../pages/FavoritePage';
 import { CartPage } from '../pages/CartPage';
 import { NotFoundPage } from '../pages/NotFoundPage';
-// import { useState } from 'react';
-// import { Product } from '../types/Product';
-// export const [favItems, setFavItems] = useState<Product[]>([]);
 
 export const AppRoutes = () => {
   return (

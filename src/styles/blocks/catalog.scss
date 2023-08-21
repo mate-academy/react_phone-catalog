@@ -1,6 +1,7 @@
 .catalog {
   &__items {
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
     gap: 20px;
     padding-top: 24px;

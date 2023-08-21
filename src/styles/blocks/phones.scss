@@ -13,7 +13,11 @@
 
     &__dropdowns {
       display: flex;
-      gap: 16px;
+      gap: 8px;
+
+      @include onTablet {
+        gap: 16px;
+      }
     }
   }
 
@@ -33,6 +37,9 @@
       &__paggination {
         display: flex;
         gap: 8px;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
       }
     }
   }

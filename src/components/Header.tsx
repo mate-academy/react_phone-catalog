@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import { SearchBar } from './SearchBar';
 import { selectedList } from '../helpers/cartTab';
 import { favList } from '../helpers/favoriteTab';
+import { Menu } from './Menu';
 
 const linkClassNames = (
   { isActive } : { isActive : boolean },
@@ -13,11 +14,15 @@ const iconClassNames = (
   { isActive } : { isActive : boolean },
 ) => classNames('header__icon', { active: isActive });
 
+const headerLinks = ['home', 'phones', 'tablets', 'accessories'];
+
 export const Header:React.FC = () => {
   const { pathname } = useLocation();
   const searchBarIsPresent
     = pathname === '/phones' || pathname === '/favorites';
   const cartIsActive = pathname === '/cart';
+
+  const menuIsPresent = pathname === '/';
 
   const [clickCounter, setClickCounter] = useState<number>(0);
   const [cartLength, setCartLength] = useState<number>(0);
@@ -38,6 +43,8 @@ export const Header:React.FC = () => {
     }
   });
 
+  const [isMenuOpened, setMenuOpened] = useState<boolean>(false);
+
   return (
     <header className="header">
       <div className="header__left">
@@ -46,18 +53,34 @@ export const Header:React.FC = () => {
         ) : (
           <>
             <NavLink className="logo" to="/" />
-            <NavLink className={linkClassNames} to="/">
-              home
-            </NavLink>
-            <NavLink className={linkClassNames} to="/phones">
-              phones
-            </NavLink>
-            <NavLink className={linkClassNames} to="/tablets">
-              tablets
-            </NavLink>
-            <NavLink className={linkClassNames} to="/accessories">
-              accessories
-            </NavLink>
+            <div className="header__left__menu">
+              {headerLinks.map(link => (
+                <NavLink
+                  key={link}
+                  className={linkClassNames}
+                  to={link !== 'home' ? `/${link}` : '/'}
+                >
+                  {link}
+                </NavLink>
+              ))}
+            </div>
+
+            {menuIsPresent && (
+              <div className="header__left__dropdown-menu">
+                <div
+                  role="presentation"
+                  className={classNames(
+                    'text__uppercase', 'header__left__dropdown-menu__title', {
+                      active: isMenuOpened,
+                    },
+                  )}
+                  onClick={() => setMenuOpened(state => !state)}
+                >
+                  menu
+                </div>
+                <Menu isMenuOpened={isMenuOpened} />
+              </div>
+            )}
           </>
         )}
       </div>

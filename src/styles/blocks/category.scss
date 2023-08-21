@@ -7,18 +7,27 @@
     display: flex;
     gap: 16px;
     position: relative;
+    flex-direction: column;
+
+    @include onTablet {
+      flex-direction: row;
+    }
   }
 
   &__card {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 16px;
     position: relative;
+
+    @include onTablet {
+      gap: 24px;
+    }
 
     &__content {
       overflow: hidden;
-      width: 368px;
-      height: 368px;
+      width: 262px;
+      height: 204px;
       position: relative;
       box-sizing: border-box;
 
@@ -41,13 +50,12 @@
       position: absolute;
 
       &--phone {
-        left: 75px;
-        top: 25px;
+        left: 35px;
+        top: 0;
         height: 457px;
 
         @include onTablet {
           left: 25px;
-          top: 0;
         }
 
         @include onDesktop {
@@ -57,8 +65,8 @@
       }
 
       &--tablet {
-        left: 75px;
-        top: 35px;
+        left: 35px;
+        top: 5px;
         height: 546px;
 
         @include onTablet {
@@ -74,16 +82,14 @@
 
       &--acc {
         left: 50px;
-        top: 75px;
+        top: 40px;
         height: 295px;
 
         @include onTablet {
-          left: 50px;
           top: 50px;
         }
 
         @include onDesktop {
-          left: 50px;
           top: 75px;
         }
       }
