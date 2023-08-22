@@ -1,0 +1,23 @@
+@mixin onPhone {
+  @media (max-width: 599px) {
+    @content;
+  }
+}
+
+@mixin onTablet {
+  @media (min-width: 600px) and (max-width: 1023px) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin top-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
