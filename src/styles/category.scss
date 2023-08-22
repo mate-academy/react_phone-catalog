@@ -1,4 +1,9 @@
 .category {
+  display: flex;
+  flex-direction: column;
+  max-width: 1136px;
+  margin: 0 auto;
+  padding-bottom: 80px ;
   &__catalog {
 
     @include onTablet {

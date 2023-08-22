@@ -13,6 +13,7 @@
   &__nav {
     display: flex;
     align-items: center;
+    align-content: center;
     padding: 0 24px;
     height: 65px;
 
@@ -20,6 +21,11 @@
       display: flex;
       list-style: none;
       position: relative;
+      height: 65px;
+      align-items: center;
+
+      margin: 0;
+      padding: 0;
 
       &-item {
         &:not(:last-child) {
@@ -28,6 +34,19 @@
           @include onDesktopSmall {
             padding-right: 64px;
           }
+        }
+
+        a.active {
+          &::after {
+            content: "";
+            display: block;
+            height: 3px;
+            width: 100%;
+            background-color: $c-primary;
+            position: absolute;
+            top: 37.5px;
+          }
+
         }
       }
 
@@ -38,7 +57,6 @@
         color: $c-gray-middle;
         font-family: Mont, sans-serif;
         font-size: 12px;
-        font-style: normal;
         font-weight: 800;
         line-height: 11px;
         letter-spacing: 0.48px;
@@ -46,8 +64,7 @@
         display: block;
         position: relative;
 
-        &:hover,
-        &:focus {
+        &:hover {
           &::after {
             content: "";
             display: block;
@@ -58,7 +75,6 @@
             top: 37.5px;
           }
         }
-
       }
 
     }
@@ -66,16 +82,12 @@
     &__icon {
 
       &-container {
-        display: none;
-
-        @include onTablet {
-          display: flex;
-          align-items: center;
-          height: 65px;
-          width: 130px;
-          justify-content: space-around;
-          border-left: 1px solid $c-gray-light;
-        }
+        display: flex;
+        align-items: center;
+        height: 65px;
+        width: 130px;
+        justify-content: space-around;
+        border-left: 1px solid $c-gray-light;
 
         position: absolute;
         right: 1%;
@@ -101,7 +113,7 @@
       background-repeat: no-repeat;
       height: 11px;
       width: 40px;
-      margin-right: 20px;
+      margin-right: 10px;
 
       @include onTablet {
         margin-right: 64px;

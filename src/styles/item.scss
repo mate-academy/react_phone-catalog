@@ -1,10 +1,11 @@
 .item {
   &__article {
+    max-width: 1136px;
     padding-bottom: 80px;
+    margin: 0 auto;
   }
 
   &__list {
-
     &--img {
       display: none;
 
@@ -64,12 +65,6 @@
     object-fit: contain;
     object-position: center;
     max-height: 442px;
-
-    display: none;
-
-    @include onDesktopSmall {
-      display: block;
-    }
   }
 
   &__text--secondary {

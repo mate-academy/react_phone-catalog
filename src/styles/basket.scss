@@ -1,78 +1,44 @@
 .basket {
+  padding-bottom: 80px;
+
   &__container {
+
     @include onDesktopSmall {
       display: flex;
+      max-width: 1136px;
+      margin: 0 auto;
       justify-content: space-between;
     }
   }
 
-  &__cart {
+  &__items-container {
+    width: 700px;
+  }
 
-    &--tablet {
-      display: none;
+  &__item {
+    border: 1px solid $c-gray-light;
+    width: 650px;
 
-      @include onTablet {
-        display: block;
-      }
-    }
-
-    &--mobile {
-      display: block;
-      width: 480px;
-      height: 150px;
-      border: 1px solid $c-gray-light;
-      padding: 10px 15px;
-      margin-bottom: 20px;
-
-      &--first-row {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-
-        &-item {
-          display: flex;
-          align-items: center;
-        }
-      }
-
-      &--second-row {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-
-        &__button-container {
-          display: flex;
-          width: 100px;
-          justify-content: space-between;
-          align-items: center;
-        }
-      }
-
-      @include onTablet {
-        display: none;
-      }
-    }
-
-    display: block;
-    padding: 31px 24px;
-
-    border: 1px solid $c-secondary;
+    max-width: 852px;
+    height: 128px;
+    display: flex;
+    align-items: center;
+    align-self: center;
+    justify-content: space-between;
     margin-bottom: 16px;
-    position: relative;
+    padding: 24px;
 
-    @include onTablet {
-      display: flex;
-      align-items: center;
-      flex-direction: row;
+    &-button {
+      width: 32px;
+      height: 32px;
+      border: 1px solid $c-secondary;
+      cursor: pointer;
+      background-color: $c-white;
 
-      width: 604px;
-      height: 66px;
-
-    }
-
-    @include onDesktopSmall {
-      width: 704px;
-
+      &--cres {
+        border: none;
+        background-color: white;
+      }
     }
 
     &-img {
@@ -86,57 +52,23 @@
       }
     }
 
-    &-title {
-      font-weight: 500;
-      font-size: 14px;
-      line-height: 21px;
-      color: $c-primary;
-
-      @include onTablet {
-        display: block;
-      }
+    &--first-row {
+      display: flex;
+      align-items: center;
     }
 
-    &-button {
-      width: 32px;
-      height: 32px;
-      border: 1px solid $c-secondary;
-      cursor: pointer;
-      background-color: $c-white;
+    &--second-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
 
-      &--cres {
-        border: none;
-        background-color: $c-white;
-        margin-right: 31px;
-        padding: 0;
-        cursor: pointer;
+      &__button-container {
+        display: flex;
+        width: 80px;
+        justify-content: space-between;
+        align-items: center;
+        padding-right: 5px;
       }
-
-      &--remove {
-        margin-right: 13px;
-
-        @include onTablet {
-          position: absolute;
-          right: 30%;
-        }
-
-        @include onDesktopSmall {
-          right: 26%;
-
-        }
-      }
-
-      &--add {
-        margin-left: 13px;
-        margin-right: 48px;
-        position: absolute;
-        right: 100px;
-      }
-    }
-
-    &-count {
-      position: absolute;
-      right: 190px;
     }
 
     &-price {
@@ -144,20 +76,18 @@
       font-size: 22px;
       font-weight: 700;
       line-height: 140%;
-      position: absolute;
-      right: 50px;
     }
   }
 
   &__checkout {
-    width: 510px;
-    height: 230px;
-    box-sizing: border-box;
+    max-width: 752px;
+    width: 650px;
+    height: 190px;
+    border: 1px solid $c-gray-light;
     padding: 24px;
-    border: 1px solid $c-secondary;
 
-    @include onTablet {
-      width: 500px;
+    @include onDesktopSmall {
+      width: 368px;
     }
 
     &-text {

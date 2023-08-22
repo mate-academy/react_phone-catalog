@@ -5,10 +5,6 @@
     padding: 0 60px;
   }
 
-  @include onDesktopSmall {
-    padding: 0 152px;
-  }
-
   &--footer {
     display: flex;
     align-items: center;

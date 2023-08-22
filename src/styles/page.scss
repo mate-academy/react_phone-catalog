@@ -8,7 +8,7 @@ body {
   transition: all 0.3s;
 
   &__body {
-    margin: 0;
+    margin: 0 auto;
   }
 
   &__section {
@@ -19,6 +19,8 @@ body {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      max-width: 1136px;
+      margin: 0 auto;
     }
   }
 
@@ -29,7 +31,7 @@ body {
     letter-spacing: -0.01em;
     color: $c-primary;
     display: block;
-    margin: 0 auto 24px;
+    margin: 0 auto;
     text-align: center;
 
     @include onTablet {

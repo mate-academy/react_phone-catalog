@@ -7,6 +7,8 @@
   &__list {
     list-style: none;
     display: flex;
+    max-width: 1136px;
+    margin: 0 auto;
 
     &--numbers {
       &:not(:last-child) {
