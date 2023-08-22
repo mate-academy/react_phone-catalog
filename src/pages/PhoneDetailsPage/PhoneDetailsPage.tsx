@@ -173,7 +173,14 @@ export const PhoneDetailsPage = () => {
                       >
                         <Link
                           to={`${link}-${currentCapacity.toLowerCase()}-${color}`}
-                          className="product-details__color-border"
+                          className={classNames(
+                            'product-details__color-border',
+                            {
+                              'product-details__color-border--active': (
+                                color === currentColor
+                              ),
+                            },
+                          )}
                           style={{ backgroundColor: colors[color] }}
                         />
                       </li>

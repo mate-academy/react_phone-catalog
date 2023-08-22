@@ -6,6 +6,7 @@
   background-color: $white;
   border: 0;
   transition: all $half-duration;
+  cursor: pointer;
 
   &__icon {
     margin-left: 16px;

@@ -58,6 +58,10 @@ export const Photos = () => {
     return () => clearInterval(interval);
   }, [currentPhotoIndex]);
 
+  const onPhotoChoose = (dotId: number) => () => {
+    setCurrentPhotoIndex(dotId);
+  };
+
   return (
     <div className="photos">
       <div className="photos__container">
@@ -113,11 +117,18 @@ export const Photos = () => {
 
       <div className="photos__dots">
         {dotsId.map(id => (
-          <div
+          <button
             key={id}
-            className={cn('photos__dot', {
-              'photos__dot--active': id === currentPhotoIndex,
-            })}
+            type="button"
+            aria-label={`Photo ${id + 1}`}
+            className={cn(
+              'photos__dot',
+              {
+                'photos__dot--active': id === currentPhotoIndex,
+              },
+            )}
+            onClick={onPhotoChoose(id)}
+            disabled={isDisabled}
           />
         ))}
       </div>

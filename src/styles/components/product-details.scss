@@ -87,7 +87,7 @@
 
     &--active {
       border-color: $primary;
-
+      
       &:hover {
         border-color: $primary;
       }
@@ -101,6 +101,10 @@
     width: 4 * $block-size - 2px;
     border-radius: 50%;
     border: 2px solid $white;
+
+    &--active {
+      cursor: default;
+    }
   }
 
   &__capacity {
@@ -122,6 +126,7 @@
       color: $white;
       border: 0;
       background-color: $primary;
+      cursor: default;
     }
   }
 

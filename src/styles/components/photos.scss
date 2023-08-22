@@ -77,20 +77,28 @@
   &__dots {
     box-sizing: border-box;
     display: flex;
-    gap: $dot-width;
+    gap: 4px;
     margin: 0 auto;
-    padding: 10px 5px;
     width: 80px;
   }
-
+  
   &__dot {
-    height: 4px;
-    width: $dot-width;
+    height: 3 * $block-size;
+    width: 3 * $block-size;
     background-color: $elements;
+    border-width: 10px 5px;
+    border-color: $white;
+    border-style: solid;
+    cursor: pointer;
+
+    &:disabled {
+      cursor: default;
+    }
 
     &--active {
       background-color: $primary;
       transition: background-color $duration;
+      cursor: default;
     }
   }
 }
