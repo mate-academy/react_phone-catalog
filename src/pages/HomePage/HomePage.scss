@@ -1,1 +1,15 @@
-@import "../../App.scss";
+@import "../../styles/utils.scss";
+
+.homePage {
+
+  &__player {
+
+    @include onTablet {
+      grid-column: 1/5;
+    }
+
+    @include onDesktop {
+      grid-column: 1/13;
+    }
+  }
+}
