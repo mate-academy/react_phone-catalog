@@ -1,4 +1,4 @@
-export const locales: Record<string, string> = {
+export const LOCALES: Record<string, string> = {
   en: 'English',
   et: 'Eesti',
   uk: 'Українська',

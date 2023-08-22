@@ -3,7 +3,7 @@ import { Transition, TransitionStatus } from 'react-transition-group';
 import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
 
-import { locales } from '../../helpers/Langs';
+import { LOCALES } from '../../helpers/Locales';
 
 import './LangDropdown.scss';
 
@@ -13,12 +13,12 @@ type Props = {
 
 export const LangDropdown: React.FC<Props> = React.memo(({ rootClassName }) => {
   const [isListShowed, setIsListShowed] = useState(false);
-  const [settedLang, setSettedLang] = useState('English');
+  const [settedLang, setSettedLang] = useState(LOCALES.en);
   const { i18n } = useTranslation();
 
   const handleLangButtonChange = (lang: string) => {
     const selectedKey
-      = Object.keys(locales).find(key => locales[key] === lang);
+      = Object.keys(LOCALES).find(key => LOCALES[key] === lang);
 
     setSettedLang(lang);
     i18n.changeLanguage(selectedKey);
@@ -26,7 +26,7 @@ export const LangDropdown: React.FC<Props> = React.memo(({ rootClassName }) => {
   };
 
   const getLangs
-    = () => Object.values(locales).filter(lang => settedLang !== lang);
+    = () => Object.values(LOCALES).filter(lang => settedLang !== lang);
 
   return (
     <div
