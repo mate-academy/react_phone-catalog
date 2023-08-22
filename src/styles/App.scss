@@ -2,6 +2,7 @@
 @import './Aside.scss';
 @import './typography.scss';
 @import './Main.scss';
+@import './Footer.scss';
 
 @font-face {
   font-family: 'Mont';
@@ -37,7 +38,67 @@ button {
   cursor: pointer;
 }
 
+.slider-button {
+  width: 32px;
+  height: 32px;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border: 1px solid #B4BDC3;
+
+  &:disabled {
+    border: 1px solid #E2E6E9;
+  }
+}
+
 $header-height: 64px;
+
+.home-link {
+  background-image: url('../assets/icons/logo.svg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  display: block;
+  width: 48px;
+}
+
+.nav {
+  &__list {
+    display: flex;
+    gap: 64px;
+  }
+
+  &__link {
+    color: #89939A;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 11px;
+    letter-spacing: 0.48px;
+    text-transform: uppercase;
+
+    display: flex;
+    align-items: center;
+    height: $header-height;
+    position: relative;
+  }
+
+  &__link.is-active {
+    color: #313237;
+  }
+
+  &__link.is-active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: #313237;
+    border-radius: 5px;
+  }
+}
 
 .container {
   margin-inline: auto;
@@ -68,46 +129,14 @@ $header-height: 64px;
 
   &__nav {
     height: $header-height;
-    .nav {
-      &__list {
-        display: flex;
-        gap: 64px;
-      }
-
-      &__link {
-        color: #313237;
-        font-size: 12px;
-        font-style: normal;
-        font-weight: 700;
-        line-height: 11px;
-        letter-spacing: 0.48px;
-        text-transform: uppercase;
-
-        display: flex;
-        align-items: center;
-        height: $header-height;
-        position: relative;
-      }
-
-      &__link.is-active::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        display: block;
-        height: 3px;
-        width: 100%;
-        background-color: #313237;
-        border-radius: 5px;
-      }
-    }
   }
 
   &__home-link {
-    background-image: url('../assets/icons/logo.svg');
-    background-repeat: no-repeat;
-    background-position: center center;
-    display: block;
-    width: 48px;
+    // background-image: url('../assets/icons/logo.svg');
+    // background-repeat: no-repeat;
+    // background-position: center center;
+    // display: block;
+    // width: 48px;
     height: $header-height;
   }
 

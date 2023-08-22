@@ -3,11 +3,39 @@
   flex-direction: column;
   gap: 80px;
   margin-top: 72px;
+  margin-bottom: 80px;
 
   .section {
-    &__title {
+    // &__title {
+    //   margin-bottom: 24px;
+    // }
+
+    &__top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       margin-bottom: 24px;
     }
+
+    &__buttons-container {
+      display: flex;
+      gap: 16px;
+    }
+
+    // &__button {
+    //   width: 32px;
+    //   height: 32px;
+    //   background-color: transparent;
+    //   display: flex;
+    //   justify-content: center;
+    //   align-items: center;
+
+    //   border: 1px solid #B4BDC3;
+
+    //   &:disabled {
+    //     border: 1px solid #E2E6E9;
+    //   }
+    // }
   }
 
   .browse-products {
@@ -32,21 +60,24 @@
         margin-bottom: 24px;
       }
 
+      &--info {
+        height: 72px;
+        border-bottom: 1px solid #E2E6E9;
+        padding-bottom: 8px;
+      }
+
       &--name {
         color: #313237;
         font-size: 14px;
         font-style: normal;
         font-weight: 500;
-        line-height: 21px;
-        margin-bottom: 8px; /* 150% */
+        // line-height: 21px;
       }
 
       &--price {
         display: flex;
         align-items: center;
         gap: 8px;
-        padding-bottom: 8px;
-        border-bottom: 1px solid #E2E6E9;
       }
 
       &--old-price{
@@ -60,7 +91,7 @@
       }
 
       &--features {
-        margin-top: 16px;
+        padding-top: 16px;
         width: 100%;
         display: flex;
         flex-direction: column;
@@ -110,6 +141,46 @@
         height: 40px;
         background: transparent;
         border: 1px solid #b4bdc3
+      }
+    }
+  }
+
+  .categories {
+    display: flex;
+    gap: 16px;
+
+    &-title {
+      margin-bottom: 24px;
+    }
+
+    .category-photo {
+      width: 368px;
+      height: 368px;
+      margin-bottom: 24px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      transition: .5s;
+
+      &:hover {
+        transform: scale(1.02);
+      }
+    }
+
+    &__mobile {
+      &--photo {
+        background-color: #fcdbc1;
+        background-image: url('../assets/images/categories/mobile.jpg');
+        background-position-x: 66px;
+      }
+    }
+    &__tablets {
+      &--photo {
+        background: url('../assets/images/categories/tablets.jpg')
+      }
+    }
+    &__accessories {
+      &--photo {
+        background: url('../assets/images/categories/accessories.jpg')
       }
     }
   }
