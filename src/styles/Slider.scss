@@ -1,0 +1,157 @@
+.slider {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 20px;
+  width: 100%;
+  margin-bottom: 50px;
+
+  &--photos {
+    height: 432px;
+  }
+
+  &--phones {
+    height: 630px;
+  }
+
+  &__content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  &__subtitle {
+    color: #313237;
+    font-size: 32px;
+    line-height: 41px;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  &__container {
+    overflow: hidden;
+    position: relative;
+    height: 432px;
+    width: 100%;
+    display: flex;
+    flex-grow: 1;
+  }
+
+  &__photos {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    
+
+    &--phones {
+      top: 0;
+      left: 0;
+      position: absolute;
+      gap: 25px;
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 432px;
+    width: 1068px;
+    background-image: url("../images/Banner.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0;
+
+    transition: opacity 0.3s;
+
+    &:nth-child(2) {
+      background-image: url("../images/Tablets.jpg");
+      background-position: top;
+    }
+
+    &:nth-child(3) {
+      background-image: url("../images/Phones.jpg");
+      background-position: top;
+    }
+
+    &--active {
+      opacity: 1;
+    }
+  }
+
+  &__button_container {
+    display: flex;
+    gap: 20px;
+    padding-top: 15px;
+  }
+
+  &__button {
+    cursor: pointer;
+    height: 100%;
+    width: 60px;
+    background-color: #fff;
+    border: 1px solid #b4bdc3;
+    box-shadow: 0 0 2px 0 #00000032;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 10px;
+
+    transition: border-color 0.3s, box-shadow 0.3s;
+
+    &--phones {
+      background-size: 6px;
+      width: 32px;
+      height: 32px;
+    }
+
+    &:hover {
+      border-color: #89939a;
+      box-shadow: 0 0 2px 0 #0000007d;
+    }
+      
+    &--disabled {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    &:nth-child(3) {
+      background-image: url("../images/StrokeRight.svg");
+    }
+
+    &:nth-child(2) {
+      background-image: url("../images/StrokeRight.svg");
+    }
+  
+    &:nth-child(1) {
+      background-image: url("../images/StrokeLeft.svg");
+    }
+  }
+
+  &__indicator_container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 100px;
+  }
+
+  &__indicator {
+    height: 5px;
+    width: 15px;
+    background-color: #e2e6e9;
+
+    transition: background-color 0.3s;
+
+    &--active {
+      background-color: #313237;
+    }
+  }
+}
