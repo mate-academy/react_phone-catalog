@@ -8,7 +8,7 @@ import { Product } from '../types/Product';
 import { ProductInfo } from '../types/ProductInfo';
 import { customColors } from '../helpers/customColors';
 
-import { ItemsSlider } from '../components/ItemsSlider';
+import { ProductsSlider } from '../components/ProductsSlider';
 import { Navigation } from '../components/Navigation';
 import { HistoryBackButton } from '../components/HistoryBackButton';
 import { FavoriteButton } from '../components/FavoriteButton';
@@ -273,7 +273,7 @@ export const CardPage: React.FC = () => {
               </div>
             </div>
           </section>
-          <ItemsSlider
+          <ProductsSlider
             title="You may also like"
             itemsList={properties.filter(item => item.id !== currentProduct.id)}
             isLoading={false}

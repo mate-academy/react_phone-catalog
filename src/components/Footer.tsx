@@ -1,4 +1,9 @@
-import { Link, NavLink } from 'react-router-dom';
+import classNames from 'classnames';
+import { NavLink } from 'react-router-dom';
+
+const linkClassNames = (
+  { isActive } : { isActive : boolean },
+) => classNames('footer__link text__uppercase', { active: isActive });
 
 export const Footer = () => {
   const scrollToTop = () => {
@@ -12,15 +17,18 @@ export const Footer = () => {
       </div>
 
       <div className="footer__centre">
-        <Link className="text__uppercase" to="/github">
+        <NavLink
+          className={linkClassNames}
+          to="https://github.com/ihorivna007/react_phone-catalog/tree/develop"
+        >
           github
-        </Link>
-        <Link className="text__uppercase" to="/contacts">
+        </NavLink>
+        <NavLink className={linkClassNames} to="/contacts">
           contacts
-        </Link>
-        <Link className="text__uppercase" to="/rights">
+        </NavLink>
+        <NavLink className={linkClassNames} to="/rights">
           rights
-        </Link>
+        </NavLink>
       </div>
 
       <div className="footer__right">

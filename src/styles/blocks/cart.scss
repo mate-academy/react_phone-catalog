@@ -2,10 +2,10 @@
   display: flex;
   gap: 16px;
   flex-direction: column;
-  min-height: calc(100vh - 180px);
+  min-height: calc(100vh - 190px);
 
   @include onTablet {
-    min-height: calc(100vh - 235px);
+    min-height: calc(100vh - 250px);
   }
 
   @include onDesktop {

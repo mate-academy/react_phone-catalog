@@ -8,6 +8,7 @@
 
     @include onTablet {
       gap: 40px;
+      justify-content: start;
     }
 
     @include onDesktop {

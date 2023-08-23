@@ -6,6 +6,8 @@ type Props = {
 };
 const headerLinks = ['home', 'phones', 'tablets', 'accessories'];
 const footerLinks = ['github', 'contacts', 'rights'];
+const githubLink
+  = 'https://github.com/ihorivna007/react_phone-catalog/tree/develop';
 
 export const Menu:React.FC<Props> = ({ isMenuOpened }) => (
   <div className="menu">
@@ -30,7 +32,7 @@ export const Menu:React.FC<Props> = ({ isMenuOpened }) => (
         <NavLink
           key={link}
           className="text__uppercase"
-          to={`/${link}`}
+          to={link === 'github' ? githubLink : `/${link}`}
         >
           {link}
         </NavLink>

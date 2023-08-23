@@ -6,11 +6,11 @@ import { SearchLink } from './SearchLink';
 const sortByCategories = [
   'Default',
   'Newest',
-  'Lowest Price',
-  'Highest Price',
+  'Alphabetically',
+  'Cheapest',
 ];
 
-const itemsOnPage = [8, 12, 16, 24];
+const itemsOnPage = [4, 8, 16, 'All'];
 
 type Props = {
   type: string,
@@ -24,7 +24,7 @@ export const Dropdown:React.FC<Props> = ({
   const [searchParams] = useSearchParams();
   const params = isSortBy
     ? searchParams.get(type) || 'Default'
-    : parseInt(searchParams.get(type) || '12', 10);
+    : searchParams.get(type) || '8';
 
   const title = isSortBy ? 'Sort By' : 'Items on page';
   const category = isSortBy ? sortByCategories : itemsOnPage;

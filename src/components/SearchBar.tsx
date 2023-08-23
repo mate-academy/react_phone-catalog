@@ -15,6 +15,9 @@ export const SearchBar: React.FC<Props> = ({ category }) => {
       { query: event.target.value || null }));
   };
 
+  const mobileVersion = window.innerWidth <= 768;
+  const placeholder = mobileVersion ? 'on page' : `in ${category}`;
+
   const clearQuery = () => {
     setSearchParams(getSearchWith(searchParams, { query: '' }));
   };
@@ -24,7 +27,7 @@ export const SearchBar: React.FC<Props> = ({ category }) => {
       <input
         className="header__search__input"
         type="text"
-        placeholder={`Search in ${category}...`}
+        placeholder={`Search ${placeholder}...`}
         onChange={handleSearchBar}
         value={query}
       />
@@ -35,9 +38,7 @@ export const SearchBar: React.FC<Props> = ({ category }) => {
           className="icon icon--close close-button"
           onClick={clearQuery}
         />
-      ) : (
-        window.innerWidth > 768 && <p className="icon icon--search" />
-      )}
+      ) : <p className="icon icon--search" />}
     </div>
   );
 };

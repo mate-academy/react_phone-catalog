@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { getProducts } from '../api/getData';
 import { Product } from '../types/Product';
-import { ItemsSlider } from '../components/ItemsSlider';
+import { ProductsSlider } from '../components/ProductsSlider';
 import { Banner } from '../components/Banner';
 import { Category } from '../components/Category';
 
@@ -45,7 +45,7 @@ export const HomePage: React.FC = () => {
     <main className="page">
       <Banner />
 
-      <ItemsSlider
+      <ProductsSlider
         title="Hot price"
         itemsList={hotPriceList}
         isLoading={isLoading}
@@ -53,7 +53,7 @@ export const HomePage: React.FC = () => {
 
       <Category />
 
-      <ItemsSlider
+      <ProductsSlider
         title="Brand new models"
         itemsList={newModelsList}
         isLoading={isLoading}

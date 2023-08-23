@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import FadeLoader from 'react-spinners/FadeLoader';
 import { Product } from '../types/Product';
-import { Card } from './Card';
+import { Card } from './ProductCard';
 
 type Props = {
   title: string,
@@ -9,7 +9,7 @@ type Props = {
   isLoading: boolean,
 };
 
-export const ItemsSlider:React.FC<Props> = ({
+export const ProductsSlider: React.FC<Props> = ({
   title,
   itemsList,
   isLoading,

@@ -23,5 +23,9 @@ export const cartListAdded = (cartId: string) => {
 };
 
 export const checkIsSelected = (id: string) => {
-  return !!findItem(selectedList, id);
+  if (selectedList.length > 0) {
+    return !!findItem(selectedList, id);
+  }
+
+  return false;
 };

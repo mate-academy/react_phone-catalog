@@ -45,6 +45,14 @@ export const Banner = () => {
   };
 
   useEffect(() => {
+    const interval = setInterval(() => {
+      handleBannerScroll(1);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
     const dots = document.querySelector('.banner__dots');
 
     switch (bannerId) {

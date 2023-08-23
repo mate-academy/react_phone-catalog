@@ -15,11 +15,12 @@ const iconClassNames = (
 ) => classNames('header__icon', { active: isActive });
 
 const headerLinks = ['home', 'phones', 'tablets', 'accessories'];
+const pageWithSearchBar = ['/phones', '/tablets', '/accessories', '/favorites'];
 
 export const Header:React.FC = () => {
   const { pathname } = useLocation();
   const searchBarIsPresent
-    = pathname === '/phones' || pathname === '/favorites';
+    = pageWithSearchBar.includes(pathname);
   const cartIsActive = pathname === '/cart';
 
   const menuIsPresent = pathname === '/';

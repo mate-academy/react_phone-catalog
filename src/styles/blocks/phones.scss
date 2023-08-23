@@ -31,15 +31,15 @@
     &__buttons {
       display: flex;
       justify-content: center;
-      width: 100%;
       gap: 16px;
+      width: 100%;
 
       &__paggination {
         display: flex;
         gap: 8px;
         flex-wrap: wrap;
         justify-content: center;
-        width: 100%;
+        width: max-content;
       }
     }
   }
