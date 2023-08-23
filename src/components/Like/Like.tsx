@@ -26,7 +26,21 @@ export const Like = () => {
 
   const blockWidth = ref.current?.clientWidth || 0;
 
-  const elementWidth = useMemo(() => (blockWidth + gap) / 4, [blockWidth]);
+  const elementWidth = useMemo(() => {
+    if (blockWidth === (71 * gap)) {
+      return (blockWidth + gap) / 4;
+    }
+
+    if (blockWidth === (53 * gap)) {
+      return (blockWidth + gap) / 3;
+    }
+
+    if (blockWidth === (35 * gap)) {
+      return (blockWidth + gap) / 2;
+    }
+
+    return blockWidth + gap;
+  }, [blockWidth]);
 
   useEffect(() => {
     getSuggestedProducts()

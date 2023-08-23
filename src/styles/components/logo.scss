@@ -1,7 +1,7 @@
 .logo {
   display: flex;
   height: 24px;
-  width: 40px;
+  width: 5 * $block-size;
   align-self: center;
 
   &__image {

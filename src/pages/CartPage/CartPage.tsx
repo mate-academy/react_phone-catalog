@@ -104,7 +104,10 @@ export const CartPage = () => {
                   <div className="cart__product-info">
                     <button
                       type="button"
-                      className="cart__delete-button"
+                      className={classNames(
+                        'cart__delete-button',
+                        'cart__delete-button--tablet',
+                      )}
                       aria-label="Delete"
                       onClick={removeFromCartStorage(
                         product,
@@ -154,6 +157,17 @@ export const CartPage = () => {
                         onClick={changeQuantity(product, quantity, 'plus')}
                       />
                     </div>
+
+                    <button
+                      type="button"
+                      className="cart__delete-button cart__delete-button--phone"
+                      aria-label="Delete"
+                      onClick={removeFromCartStorage(
+                        product,
+                        setCartStorage,
+                      )}
+                      data-cy="cartDeleteButton"
+                    />
                   </div>
 
                   <div className="cart__product-price">

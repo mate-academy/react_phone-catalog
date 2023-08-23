@@ -1,12 +1,21 @@
+import { useContext } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import classNames from 'classnames';
+
+import {
+  HandleIsMenuActiveContext,
+} from '../../contexts/HandleIsMenuActiveContext';
 
 export const Search = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
+  const setIsMenuActive = useContext(HandleIsMenuActiveContext);
+
   const location = useLocation();
 
   const query = searchParams.get('query') || '';
+
+  const onClick = () => setIsMenuActive(false);
 
   const isSearch = (location.pathname === '/favourites')
     || (location.pathname === '/phones')
@@ -29,6 +38,8 @@ export const Search = () => {
     const params = new URLSearchParams(searchParams);
 
     params.delete('query');
+
+    setSearchParams(params);
   };
 
   return (
@@ -47,6 +58,7 @@ export const Search = () => {
         placeholder={`Search in ${location.pathname.slice(1)}...`}
         onChange={handleQuery}
         value={query}
+        onClick={onClick}
       />
 
       {query ? (

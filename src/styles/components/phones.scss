@@ -1,13 +1,20 @@
 .phones {
   &__title {
-    @include main-title;
-    margin-bottom: 8px;
-    letter-spacing: -0.32px;
+    @include big-title;
+    margin-bottom: $block-size;
+    
+    @include tablet {
+      @include main-title;
+    }
   }
 
   &__count {
     @include body-text;
-    margin-bottom: 40px;
+    margin-bottom: 3 * $block-size;
     color: $secondary;
+    
+    @include small-desktop {
+      margin-bottom: 5 * $block-size;
+    }
   }
 }

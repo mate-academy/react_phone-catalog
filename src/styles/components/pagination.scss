@@ -4,17 +4,24 @@
     gap: $block-size;
     margin: 40px auto 0;
     width: max-content;
-    height: 32px;
   }
 
   &__button {
-    box-sizing: border-box;
-    width: $button-width;
-    height: $button-width;
+    @include small-text;
+    align-items: center;
+    width: 3 * $block-size;
+    height: 3 * $block-size;
+    line-height: 14px;
+    color: $primary;
     border: 1px solid $icons;
     background-color: $white;
-    transition: all $half-duration;
     cursor: pointer;
+    
+    @include tablet {
+      @include body-text;
+      width: $button-width;
+      height: $button-width;
+    }
 
     &--active {
       color: $white;
@@ -28,7 +35,7 @@
 
     &--left {
       background: url("../../img/icons/chevron-arrow-left-hover.svg") no-repeat center;
-      margin-right: 8px;
+      margin-right: $block-size;
 
       &:disabled {
         background-image: url("../../img/icons//chevron-arrow-left.svg");
@@ -39,13 +46,21 @@
 
     &--right {
       background: url("../../img/icons/chevron-arrow-right-hover.svg") no-repeat center;
-      margin-left: 8px;
+      margin-left: $block-size;
 
       &:disabled {
         background-image: url("../../img/icons//chevron-arrow-right.svg");
         border-color: $elements;
         cursor: default;
       }
+    }
+
+    &:nth-child(2) {
+      margin-right: $block-size;
+    }
+
+    &:nth-child(6) {
+      margin-left: $block-size;
     }
   }
 }

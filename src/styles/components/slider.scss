@@ -1,6 +1,10 @@
 .slider {
   &--first {
-    margin-bottom: 72px;
+    margin-bottom: 5 * $block-size;
+
+    @include small-desktop {
+      margin-bottom: 9 * $block-size;
+    }
   }
 
   &__panel {
@@ -11,21 +15,34 @@
   }
 
   &__title {
-    @include main-title;
+    @include big-title;
     color: $primary;
+    
+    @include tablet {
+      @include main-title;
+    }
   }
 
   &__buttons {
     display: flex;
-    gap: 16px;
+    gap: $block-size;
+    
+    @include tablet {
+      gap: $gap;
+    }
   }
   
   &__button {
-    width: $button-width;
-    height: $button-width;
+    width: 3 * $block-size;
+    height: 3 * $block-size;
     border: 1px solid $icons;
     transition: all $half-duration;
     cursor: pointer;
+    
+    @include tablet {
+      width: $button-width;
+      height: $button-width;
+    }
 
     &--left {
       background: url(../../img/icons/chevron-arrow-left-hover.svg) no-repeat center;

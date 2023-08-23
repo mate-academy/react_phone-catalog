@@ -2,7 +2,11 @@
   @include small-text;
   display: flex;
   gap: $block-size;
-  margin-bottom: 40px;
+  margin-bottom: 3 * $block-size;
+
+  @include small-desktop {
+    margin-bottom: 5 * $block-size;
+  }
 
   &__home {
     display: block;

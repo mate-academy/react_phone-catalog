@@ -1,10 +1,26 @@
 .nav {
-  &__list {
-    display: flex;
+  display: none;
+
+  @include desktop {
+    display: block;
   }
 
-  &__item {
-    margin: 0 32px;
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    width: $card-width;
+
+    @include tablet {
+      gap: $gap;
+    }
+
+    @include small-desktop {
+      gap: 4 * $gap;
+    }
+
+    @include desktop {
+      margin: 0 (2 * $gap);
+    }
   }
 
   &__link {

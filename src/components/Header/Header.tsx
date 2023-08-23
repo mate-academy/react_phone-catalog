@@ -1,36 +1,51 @@
+import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import { Nav } from '../Nav';
 import { Logo } from '../Logo';
 import { HeaderButton } from '../HeaderButton';
 import { Search } from '../Search';
+import { Menu } from '../Menu';
 
 import { HeaderButtonIcon } from '../../types/HeaderButtonIcon';
 
+import { IsMenuActiveContext } from '../../contexts/IsMenuActiveContext';
+import {
+  HandleIsMenuActiveContext,
+} from '../../contexts/HandleIsMenuActiveContext';
+
 export const Header = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   const location = useLocation();
 
   const isCartPage = location.pathname === '/cart';
 
   return (
     <header className="header">
-      <div className="header__nav-container">
-        <Logo />
+      <HandleIsMenuActiveContext.Provider value={setIsMenuOpen}>
+        <div className="header__nav-container">
+          <IsMenuActiveContext.Provider value={isMenuOpen}>
+            <Menu />
+          </IsMenuActiveContext.Provider>
 
-        {!isCartPage && (
-          <Nav />
-        )}
-      </div>
+          <Logo />
 
-      <div className="header__button-container">
-        <Search />
+          {!isCartPage && (
+            <Nav />
+          )}
+        </div>
 
-        {!isCartPage && (
-          <HeaderButton type={HeaderButtonIcon.Favourites} />
-        )}
+        <div className="header__button-container">
+          <Search />
 
-        <HeaderButton type={HeaderButtonIcon.Cart} />
-      </div>
+          {!isCartPage && (
+            <HeaderButton type={HeaderButtonIcon.Favourites} />
+          )}
+
+          <HeaderButton type={HeaderButtonIcon.Cart} />
+        </div>
+      </HandleIsMenuActiveContext.Provider>
     </header>
   );
 };

@@ -2,7 +2,11 @@
   &__container {
     display: flex;
     flex-wrap: wrap;
-    gap: 40px $gap;
+    gap: 2 * $block-size;
+    
+    @include small-desktop {
+      gap: (5 * $block-size) (2 * $block-size);
+    }
   }
 
   &__sort-form {

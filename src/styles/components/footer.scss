@@ -2,21 +2,42 @@
   position: absolute;
   bottom: 0;
   width: 100%;
-  padding: 32px 0;
+  padding: (2 * $gap) 0 (6 * $gap);
   box-shadow: 0 -1px 0 0 $elements;
+
+  @include tablet {
+    padding: (2 * $gap) 0;
+  }
   
   &__container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin: 0 auto;
-    width: 4 * $card-width + 3 * $gap;
+    width: $card-width;
+    
+    @include tablet {
+      width: $tablet-width;
+    }
 
+    @include small-desktop {
+      width: $small-desktop-width;
+    }
+
+    @include desktop {
+      width: $width;
+    }
   }
 
   &__nav {
+    display: block;
     position: absolute;
+    top: 5 * $gap;
     left: 50%;
     transform: translateX(-50%);
+
+    @include tablet {
+      top: $gap;
+    }
   }
 }

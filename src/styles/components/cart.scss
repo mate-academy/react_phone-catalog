@@ -1,34 +1,61 @@
 .cart {
   &__title {
-    @include main-title;
+    @include big-title;
     margin-bottom: 3 * $block-size;
+    
+    @include tablet {
+      @include main-title;
+    }
   }
 
   &__container {
     display: flex;
+    flex-direction: column;
     gap: $gap;
+    
+    @include small-desktop {
+      gap: 5 * $block-size;
+    }
+    
+    @include desktop {
+      flex-direction: row;
+      gap: $gap;
+    }
   }
 
   &__products {
     display: flex;
     flex-direction: column;
     gap: $gap;
-    width: 47 * $gap;
+    width: 100%;
+    
+    @include desktop {
+      width: 47 * $gap;
+    }
   }
   
   &__product {
     box-sizing: border-box;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    gap: 3 * $block-size;
     align-items: center;
     padding: (3 * $block-size);
-    padding-right: (5 * $block-size);
     width: 100%;
     border: 1px solid $elements;
+
+    @include small-desktop {
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 0;
+      padding-right: (5 * $block-size);
+    }
   }
 
   &__product-info {
     display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
     align-items: center;
     gap: 3 * $block-size;
   }
@@ -45,21 +72,52 @@
     &:hover {
       background-image: url(../../img/icons/close-hover.svg);
     }
+
+    &--phone {
+      @include tablet {
+        display: none;
+      }
+    }
+
+    &--tablet {
+      display: none;
+
+      @include tablet {
+        display: block;
+      }
+    }
   }
 
   &__name {
     @include body-text;
-    margin-right: 3 * $block-size;
-    width: 37 * $block-size;
     color: $primary;
+    text-align: center;
+    
+    @include tablet {
+      width: 29 * $block-size;
+      text-align: left;
+    }
+    
+    @include small-desktop {
+      width: 49 * $block-size;
+    }
+    
+    @include desktop {
+      width: 37 * $block-size;
+    }
   }
 
   &__image-container {
     box-sizing: border-box;
     position: relative;
     padding: 7px;
-    width: 5 * $gap;
-    height: 5 * $gap;
+    width: 14 * $gap;
+    height: 14 * $gap;
+    
+    @include tablet {
+      width: 5 * $gap;
+      height: 5 * $gap;
+    }
   }
 
   &__image {
@@ -125,8 +183,12 @@
     gap: 3 * $block-size;
     padding: 3 * $block-size;
     height: fit-content;
-    width: 23 * $gap;
+    width: 100%;
     border: 1px solid $elements;
+    
+    @include desktop {
+      width: 23 * $gap;
+    }
   }
 
   &__total-price {

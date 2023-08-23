@@ -1,19 +1,37 @@
 .categories {
-  margin-bottom: 72px;
+  margin-bottom: 5 * $block-size;
+
+  @include small-desktop {
+    margin-bottom: 9 * $block-size;
+  }
 
   &__title {
-    @include main-title;
+    @include big-title;
     margin-bottom: 24px;
+    
+    @include tablet {
+      @include main-title;
+    }
   }
 
   &__container {
     display: flex;
-    gap: $gap;
+    flex-direction: column;
+    gap: 2 * $gap;
+    
+    @include small-desktop {
+      flex-direction: row;
+      gap: $gap;
+    }
   }
 
   &__link {
-    width: $width / 3;
+    width: 100%;
     transition: all $half-duration;
+    
+    @include small-desktop {
+      width: $width / 3;
+    }
 
     &--1:hover {
       background-color: #fcdbc144;

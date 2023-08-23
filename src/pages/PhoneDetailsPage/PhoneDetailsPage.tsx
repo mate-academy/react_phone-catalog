@@ -131,7 +131,14 @@ export const PhoneDetailsPage = () => {
                 {phoneInfo?.images.map(image => (
                   <button
                     type="button"
-                    className="product-details__image-button"
+                    className={classNames(
+                      'product-details__image-button',
+                      {
+                        'product-details__image-button--selected': (
+                          image === currentImage
+                        ),
+                      },
+                    )}
                     key={image}
                     onClick={handleCurrentImage(image)}
                   >

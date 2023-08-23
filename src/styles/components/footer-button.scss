@@ -9,6 +9,7 @@
   cursor: pointer;
 
   &__icon {
+    box-sizing: border-box;
     margin-left: 16px;
     width: $button-width;
     height: $button-width;

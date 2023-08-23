@@ -1,5 +1,11 @@
 .header-button {
   position: relative;
+  display: none;
+  transition: all $half-duration;
+
+  @include tablet {
+    display: block;
+  }
 
   &__icon {
     position: relative;
@@ -8,14 +14,18 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-
+    
     &--cart {
       background: url("../../img/icons/cart.svg") no-repeat center;
     }
-
+    
     &--favourites {
       background: url("../../img/icons/favourites.svg") no-repeat center;
     }
+  }
+  
+  &:hover {
+    background-color: $hover;
   }
 
   &--active {
@@ -27,6 +37,11 @@
       width: 100%;
       height: 3px;
       background-color: $primary;
+    }
+
+    &:hover {
+      background-color: $white;
+      cursor: default;
     }
   }
 

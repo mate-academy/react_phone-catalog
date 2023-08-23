@@ -1,31 +1,61 @@
 .product-details {
   &__title {
-    @include main-title;
-    margin-bottom: 40px;
+    @include big-title;
+    margin-bottom: 3 * $block-size;
+    
+    @include tablet {
+      @include main-title;
+    }
+    
+    @include small-desktop {
+      margin-bottom: 5 * $block-size;
+    }
   }
 
   &__interaction-block {
     display: flex;
-    margin-bottom: 5 * $gap;
+    flex-wrap: wrap;
+    gap: (5 * $block-size) 0;
+    justify-content: space-between;
+    margin-bottom: 5 * $block-size;
+    
+    @include small-desktop {
+      gap: 0;
+      margin-bottom: 5 * $gap;
+    }
   }
 
   &__images {
     display: flex;
     flex-direction: column;
-    gap: $gap;
+    gap: $block-size;
     margin-right: $gap;
+    
+    @include tablet {
+      gap: $gap;
+    }
   }
 
   &__image-button {
-    padding: 7px;
-    width: 5 * $gap;
-    height: 5 * $gap;
+    width: 3 * $gap;
+    height: 3 * $gap;
+    padding: 3px;
     background-color: $white;
     border: 1px solid $elements;
-    transition: all $half-duration;
+    transition: border $half-duration;
     cursor: pointer;
+    
+    @include tablet {
+      width: 5 * $gap;
+      height: 5 * $gap;
+      padding: 7px;
+    }
 
     &:hover {
+      border-color: $primary;
+    }
+
+    &--selected {
       border-color: $primary;
     }
   }
@@ -38,10 +68,25 @@
   &__current-image {
     box-sizing: border-box;
     position: relative;
-    margin-right: 4 * $gap;
-    padding: 11px;
-    width: 29 * $gap;
-    height: 29 * $gap;
+    padding: 7px;
+    width: 13 * $gap;
+    height: 17 * $gap;
+    
+    @include tablet {
+      padding: 11px;
+      width: 29 * $gap;
+      height: 29 * $gap;
+    }
+    
+    @include small-desktop {
+      width: 24 * $gap;
+      margin-right: 3 * $gap;
+    }
+    
+    @include desktop {
+      width: 29 * $gap;
+      margin-right: 4 * $gap;
+    }
   }
 
   &__phone-image {
@@ -54,8 +99,11 @@
   }
 
   &__interaction {
-    width: 20 * $gap;
-    margin-right: 2 * $gap;
+    width: 100%;
+
+    @include small-desktop {
+      width: 20 * $gap;
+    }
   }
 
   &__select-container {
@@ -167,13 +215,17 @@
     @include buttons-text;
     box-sizing: border-box;
     display: block;
-    width: 33 * $block-size;
+    width: 27 * $block-size;
     height: 6 * $block-size;
     color: $white;
     background-color: $primary;
     border: 0;
     transition: all $half-duration;
     cursor: pointer;
+
+    @include tablet {
+      width: 33 * $block-size;
+    }
 
     &:hover {
       box-shadow: $cart-button-shadow;
@@ -226,12 +278,26 @@
 
   &__text-block {
     display: flex;
-    gap: 4 * $gap;
-    margin-bottom: 80px;
+    flex-direction: column;
+    gap: 5 * $block-size;
+    margin-bottom: 10 * $block-size;
+    
+    @include small-desktop {
+      flex-direction: row;
+      gap: 4 * $gap;
+    }
   }
 
   &__description {
-    width: 35 * $gap;
+    width: 100%;
+
+    @include small-desktop {
+      width: 26 * $gap;
+    }
+    
+    @include desktop {
+      width: 35 * $gap;
+    }
   }
 
   &__text-subtitle {
@@ -258,7 +324,15 @@
   }
 
   &__specs {
-    width: 32 * $gap;
+    width: 100%;
+
+    @include small-desktop {
+      width: 23 * $gap;
+    }
+
+    @include desktop {
+      width: 32 * $gap;
+    }
   }
 
   &__specs-row {

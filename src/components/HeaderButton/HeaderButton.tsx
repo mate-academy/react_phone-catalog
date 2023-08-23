@@ -8,6 +8,9 @@ import { CartStorageContext } from '../../contexts/CartStorageContext';
 import {
   FavouritesStorageContext,
 } from '../../contexts/FavouritesStorageContext';
+import {
+  HandleIsMenuActiveContext,
+} from '../../contexts/HandleIsMenuActiveContext';
 
 const returnClassName = ({ isActive }: { isActive: boolean }) => (
   classNames(
@@ -25,6 +28,9 @@ export const HeaderButton: React.FC<Props> = ({ type }) => {
 
   const cartStorage = useContext(CartStorageContext);
   const favouritesStorage = useContext(FavouritesStorageContext);
+  const setIsMenuActive = useContext(HandleIsMenuActiveContext);
+
+  const onClick = () => setIsMenuActive(false);
 
   useEffect(() => {
     const count = (type === HeaderButtonIcon.Favourites)
@@ -38,7 +44,11 @@ export const HeaderButton: React.FC<Props> = ({ type }) => {
   }, [cartStorage, favouritesStorage]);
 
   return (
-    <NavLink to={`/${type}`} className={returnClassName}>
+    <NavLink
+      to={`/${type}`}
+      className={returnClassName}
+      onClick={onClick}
+    >
       <div
         className={classNames(
           'header-button__icon',

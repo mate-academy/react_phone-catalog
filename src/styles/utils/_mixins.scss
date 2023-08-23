@@ -43,8 +43,39 @@
   line-height: 15px;
 }
 
+@mixin desktop {
+  @media (min-width: 1280px) {
+    @content;
+  }
+}
+
+@mixin small-desktop {
+  @media (min-width: 960px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: 640px) {
+    @content;
+  }
+}
+
 @mixin page-sizes {
-  padding: 40px 0 (80px + $footer-height);
   margin: 0 auto;
-  width: $width;
+  padding: (5 * $block-size) 0 (28 * $block-size);
+  width: $card-width;
+  
+  @include tablet {
+    padding-bottom: 22 * $block-size;
+    width: $tablet-width;
+  }
+
+  @include small-desktop {
+    width: $small-desktop-width;
+  }
+
+  @include desktop {
+    width: $width;
+  }
 }

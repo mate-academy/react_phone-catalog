@@ -13,10 +13,14 @@ export const Pagination: React.FC<Props> = ({
   onClick,
 }) => {
   const returnButtons = (count: number) => {
-    const pages = [];
+    let pages = [1, +currentPage - 1, +currentPage, +currentPage + 1, count];
 
-    for (let i = 1; i <= count; i += 1) {
-      pages.push(i);
+    if (+currentPage === 1 || +currentPage === 2) {
+      pages = [1, 2, 3, 4, count];
+    }
+
+    if (+currentPage === count - 1 || +currentPage === count) {
+      pages = [1, count - 3, count - 2, count - 1, count];
     }
 
     return pages.map(page => (
@@ -31,6 +35,7 @@ export const Pagination: React.FC<Props> = ({
       >
         {page}
       </button>
+      // console.log(page)
     ));
   };
 
