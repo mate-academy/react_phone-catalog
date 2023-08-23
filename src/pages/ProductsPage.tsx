@@ -18,7 +18,9 @@ type Props = {
 
 export const ProductsPage: React.FC<Props> = ({ title, category }) => {
   const [catalog, setCatalog] = useState<Product[]>(
-    JSON.parse(localStorage.getItem(category) || ''),
+    localStorage.getItem(category)
+      ? JSON.parse(localStorage.getItem(category) || '')
+      : [],
   );
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
