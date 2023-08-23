@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import { Nav } from '../Nav';
@@ -16,6 +16,14 @@ import {
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.classList.add('body-overflow');
+    } else {
+      document.body.classList.remove('body-overflow');
+    }
+  }, [isMenuOpen]);
 
   const location = useLocation();
 
