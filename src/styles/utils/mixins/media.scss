@@ -1,5 +1,17 @@
+@mixin onMobileLarge {
+  @media (min-width: 480px) {
+    @content;
+  }
+}
+
 @mixin onTablet {
   @media (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin onTabletLarge {
+  @media (min-width: 1000px) {
     @content;
   }
 }
