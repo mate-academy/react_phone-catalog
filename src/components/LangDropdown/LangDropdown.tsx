@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Transition, TransitionStatus } from 'react-transition-group';
 import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
+import { useSearchParams } from 'react-router-dom';
 
 import { LOCALES } from '../../helpers/Locales';
 
@@ -12,21 +13,32 @@ type Props = {
 };
 
 export const LangDropdown: React.FC<Props> = React.memo(({ rootClassName }) => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const settedLang = searchParams.get('lang') || 'en';
+
   const [isListShowed, setIsListShowed] = useState(false);
-  const [settedLang, setSettedLang] = useState(LOCALES.en);
   const { i18n } = useTranslation();
 
   const handleLangButtonChange = (lang: string) => {
-    const selectedKey
-      = Object.keys(LOCALES).find(key => LOCALES[key] === lang);
+    const selectedLocale = Object.keys(LOCALES)
+      .find(locale => LOCALES[locale] === lang) || 'en';
+    const params = new URLSearchParams(searchParams);
 
-    setSettedLang(lang);
-    i18n.changeLanguage(selectedKey);
+    params.set('lang', selectedLocale);
+    setSearchParams(params);
+
+    i18n.changeLanguage(selectedLocale);
     setIsListShowed(false);
   };
 
-  const getLangs
-    = () => Object.values(LOCALES).filter(lang => settedLang !== lang);
+  const getLangs = () => Object.values(LOCALES)
+    .filter(lang => LOCALES[settedLang] !== lang);
+
+  useEffect(() => {
+    if (settedLang) {
+      i18n.changeLanguage(settedLang);
+    }
+  }, [settedLang, i18n]);
 
   return (
     <div
@@ -41,7 +53,7 @@ export const LangDropdown: React.FC<Props> = React.memo(({ rootClassName }) => {
         type="button"
         onClick={() => setIsListShowed(prevState => !prevState)}
       >
-        {settedLang}
+        {LOCALES[settedLang]}
       </button>
 
       <Transition
