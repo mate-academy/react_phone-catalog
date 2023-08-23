@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { useSearchParams } from 'react-router-dom';
 
 import { LOCALES } from '../../helpers/Locales';
+import { getSearchWith } from '../../helpers/getSearchWith';
 
 import './LangDropdown.scss';
 
@@ -19,26 +20,29 @@ export const LangDropdown: React.FC<Props> = React.memo(({ rootClassName }) => {
   const [isListShowed, setIsListShowed] = useState(false);
   const { i18n } = useTranslation();
 
+  useEffect(() => {
+    if (settedLang) {
+      i18n.changeLanguage(settedLang);
+    }
+  }, [settedLang, i18n]);
+
+  const setSearchWith = (params: any) => {
+    const search = getSearchWith(params, searchParams);
+
+    setSearchParams(search);
+  };
+
   const handleLangButtonChange = (lang: string) => {
     const selectedLocale = Object.keys(LOCALES)
       .find(locale => LOCALES[locale] === lang) || 'en';
-    const params = new URLSearchParams(searchParams);
 
-    params.set('lang', selectedLocale);
-    setSearchParams(params);
-
+    setSearchWith({ lang: selectedLocale });
     i18n.changeLanguage(selectedLocale);
     setIsListShowed(false);
   };
 
   const getLangs = () => Object.values(LOCALES)
     .filter(lang => LOCALES[settedLang] !== lang);
-
-  useEffect(() => {
-    if (settedLang) {
-      i18n.changeLanguage(settedLang);
-    }
-  }, [settedLang, i18n]);
 
   return (
     <div
