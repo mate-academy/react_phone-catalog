@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 import React, { useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 import { getScreenType } from '../../helpers/getScreenType';
@@ -33,6 +33,7 @@ export const Header: React.FC<Props> = React.memo(({
 }) => {
   const handleResize = () => setScreenType(getScreenType());
   const { t } = useTranslation();
+  const [searchParams] = useSearchParams();
 
   useEffect(() => {
     window.addEventListener('resize', handleResize);
@@ -99,7 +100,10 @@ export const Header: React.FC<Props> = React.memo(({
                 >
                   <NavLink
                     className="header__nav-list-link"
-                    to={makeUrl(link)}
+                    to={{
+                      pathname: makeUrl(link),
+                      search: searchParams.toString(),
+                    }}
                   >
                     {t(link)}
                   </NavLink>
@@ -121,7 +125,10 @@ export const Header: React.FC<Props> = React.memo(({
                 >
                   <NavLink
                     className="header__nav-list-link"
-                    to={makeUrl(link)}
+                    to={{
+                      pathname: makeUrl(link),
+                      search: searchParams.toString(),
+                    }}
                   >
                     {t(link)}
                   </NavLink>
@@ -132,7 +139,10 @@ export const Header: React.FC<Props> = React.memo(({
               <li className="header__nav-list-item">
                 <NavLink
                   className="header__nav-list-link"
-                  to={makeUrl(HeaderLink.Bag)}
+                  to={{
+                    pathname: makeUrl(HeaderLink.Bag),
+                    search: searchParams.toString(),
+                  }}
                 >
                   {t(HeaderLink.Bag)}
                 </NavLink>

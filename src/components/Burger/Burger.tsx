@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 import { BURGER_NAV_LINKS } from '../../helpers/NavLinks';
@@ -29,6 +29,7 @@ export const Burger: React.FC<Props> = React.memo(({
   setScreenType,
 }) => {
   const { t } = useTranslation();
+  const [searchParams] = useSearchParams();
 
   return (
     <div className={classNames}>
@@ -49,7 +50,10 @@ export const Burger: React.FC<Props> = React.memo(({
               >
                 <NavLink
                   className="burger__nav-list-link"
-                  to={makeUrl(link)}
+                  to={{
+                    pathname: makeUrl(link),
+                    search: searchParams.toString(),
+                  }}
                   onClick={() => setIsMenuOpened(false)}
                 >
                   {t(link)}

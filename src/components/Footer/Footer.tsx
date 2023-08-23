@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 import React from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 import { makeUrl } from '../../helpers/makeUrl';
@@ -17,6 +17,7 @@ type Props = {
 
 export const Footer: React.FC<Props> = React.memo(({ setIsMenuOpened }) => {
   const { t } = useTranslation();
+  const [searchParams] = useSearchParams();
 
   return (
     <footer className="footer">
@@ -38,7 +39,10 @@ export const Footer: React.FC<Props> = React.memo(({ setIsMenuOpened }) => {
                 >
                   <NavLink
                     className="footer__nav-list-link"
-                    to={makeUrl(link)}
+                    to={{
+                      pathname: makeUrl(link),
+                      search: searchParams.toString(),
+                    }}
                   >
                     {t(link)}
                   </NavLink>
