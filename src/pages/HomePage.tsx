@@ -29,6 +29,14 @@ export const HomePage: React.FC = () => {
 
   localStorage.setItem('fullList', JSON.stringify(fullList));
 
+  const tabs = ['phones', 'tablets', 'accessories'];
+
+  tabs.forEach(tab => {
+    const list = fullList.filter(item => item.category === tab);
+
+    localStorage.setItem(tab, JSON.stringify(list));
+  });
+
   const hotPriceList = useMemo(() => [...fullList]
     .sort((item1, item2) => {
       return (item2.fullPrice - item2.price) - (item1.fullPrice - item1.price);
