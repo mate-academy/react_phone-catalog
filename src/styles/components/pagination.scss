@@ -59,7 +59,7 @@
       margin-right: $block-size;
     }
 
-    &:nth-child(6) {
+    &:nth-last-child(2) {
       margin-left: $block-size;
     }
   }

@@ -23,6 +23,14 @@ export const Pagination: React.FC<Props> = ({
       pages = [1, count - 3, count - 2, count - 1, count];
     }
 
+    if (count < 5) {
+      pages = [];
+
+      for (let i = 1; i <= count; i += 1) {
+        pages.push(i);
+      }
+    }
+
     return pages.map(page => (
       <button
         className={cn(
