@@ -2,12 +2,28 @@
   display: block;
   width: 16px;
   height: 16px;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding-inline: 6px;
 
   &--left {
     background-image: url("../assets/arrow_left.svg");
   }
 
+  &--left-disabled {
+    background-image: url("../assets/arrow_left_dis.svg");
+  }
+
   &--right {
     background-image: url("../assets/arrow_right.svg");
+  }
+
+  &--right-disabled {
+    background-image: url("../assets/arrow_right_dis.svg");
+  }
+
+  &--up {
+    background-image: url("../assets/arrow-up.svg");
+    padding: 0;
   }
 }

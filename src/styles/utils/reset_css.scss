@@ -4,12 +4,6 @@
   border: none;
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
 /* Links */
 
 a,
@@ -31,6 +25,8 @@ h6,
 p {
   font-size: inherit;
   font-weight: inherit;
+  margin: 0;
+  padding: 0;
 }
 
 ul,

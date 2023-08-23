@@ -21,7 +21,7 @@ export const ScrollBtn = () => {
         className="scrollUp__container"
         onClick={scrollToTop}
       >
-        <div className="scrollUp__arrow" />
+        <div className="arrow arrow--up" />
       </button>
     </>
   );

@@ -1,13 +1,19 @@
 @import "../src/styles/utils/variables";
+@import "../src/styles/utils/extends";
 @import "../src/styles/utils/reset_css.scss";
 
 @import "../src/styles/navBar.scss";
 @import "../src/styles/footer.scss";
+@import "../src/styles/carousel.scss";
+@import "../src/styles/productSlider.scss";
+@import "../src/styles/productCard.scss";
+
 @import "../src/styles/scrollBtn.scss";
 @import "../src/styles/logo.scss";
 @import "../src/styles/searchBar.scss";
-@import "../src/styles/carousel.scss";
 @import "../src/styles/arrow.scss";
+@import "../src/styles/mainButton.scss";
+@import "../src/styles/addFav.scss";
 
 iframe {
   display: none;
@@ -18,12 +24,11 @@ iframe {
   font-style: normal;
   display: grid;
   grid-template-rows: 1fr auto;
-  // min-height: 100vh;
+  min-height: 100vh;
 }
 
 .container {
   margin: 0 auto;
-  max-width: 1020px;
   padding: 0 152px;
   scroll-behavior: smooth;
 

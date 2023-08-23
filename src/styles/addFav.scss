@@ -1,0 +1,26 @@
+.addFav {
+  display: block;
+  width: 40px;
+  height: 40px;
+  padding: 12px;
+  border: 1px solid $gray-icons-placeholders;
+  transition: all 0.3s ease-in;
+
+  &:hover {
+    border-color: $gray-primary ;
+  }
+
+  &--heart {
+    width: 16px;
+    height: 16px;
+    background-image: url("./../assets/favourites.svg");
+    background-position: center;
+  }
+
+  &--heart_selected {
+    width: 16px;
+    height: 16px;
+    background-image: url("./../assets/favourites-red.svg");
+    background-position: center;
+  }
+}

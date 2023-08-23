@@ -4,18 +4,10 @@
   gap: 16px;
 
   &__container {
-    background-color: transparent;
-    border: none;
-    padding: 0;
-  }
-
-  &__arrow {
     width: 32px;
     height: 32px;
-    background-image: url("../assets/arrow-up.svg");
-    background-repeat: no-repeat;
-    background-position: center;
     background-color: transparent;
+    padding: 8px;
     border: 1px solid $gray-icons-placeholders;
     transition: all 0.3s ease-in;
 

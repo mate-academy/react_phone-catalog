@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
 
-type Props = {
-  images: string[];
-};
+export const Carousel: React.FC = () => {
+  const [images] = useState<string[]>([
+    'accessories.png',
+    'phones.png',
+    'tablets.png',
+  ]);
 
-export const Carousel: React.FC<Props> = ({
-  images,
-}) => {
   const [currIndex, setCurrIndex] = useState(0);
   const frameSize = 1040;
   const itemWidth = 1040;
@@ -93,7 +93,7 @@ export const Carousel: React.FC<Props> = ({
           <button
             key={img}
             type="button"
-            aria-label="dots"
+            aria-label="carousel__dots"
             className={classNames('carousel__dot', {
               'carousel__dot--active': ind === currIndex,
             })}

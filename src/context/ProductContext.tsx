@@ -6,10 +6,12 @@ const PRODUCTS_URL = 'https://mate-academy.github.io/react_phone-catalog/api/pro
 
 type ContextItems = {
   products: Product[];
+  // getHotPriceProducts: () => void;
 };
 
 export const ProductsContext = React.createContext<ContextItems>({
   products: [],
+  // getHotPriceProducts: () => { },
 });
 
 type Props = {
@@ -35,6 +37,22 @@ export const ProductsProvider: React.FC<Props> = ({
 
     fetchProducts();
   }, []);
+
+  // const getHotPriceProducts = (prods: Product[]) => {
+  //   const discountedProducts = prods
+  //     .filter(p => p.discount !== 0);
+
+  //   discountedProducts.sort((a, b) => {
+  //     const discountA = a.price * (a.discount / 100);
+  //     const discountB = b.price * (b.discount / 100);
+
+  //     return discountB - discountA;
+  //   });
+
+  //   return discountedProducts;
+  // };
+
+  // const hotProceProducts = getHotPriceProducts();
 
   return (
     <ProductsContext.Provider value={{ products }}>
