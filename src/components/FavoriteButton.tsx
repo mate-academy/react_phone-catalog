@@ -25,6 +25,7 @@ export const FavoriteButton: React.FC<Props> = ({
       type="button"
       aria-label="favorite-button"
       onClick={handleFavoriteButton}
+      value={id}
       className={classNames('favorite-button', {
         active: isFavorite,
         'favorite-button--big': bigButton,

@@ -24,6 +24,22 @@ export const FavoritePage: React.FC = () => {
     );
   }, [query]);
 
+  const [selectedId, setSelectedId] = useState<string>('1');
+
+  useEffect(() => {
+    setSortedCatalog(favorites => favorites.filter(
+      item => !item.id.includes(selectedId),
+    ));
+  }, [selectedId]);
+
+  document.addEventListener('click', (event: Event) => {
+    const target = event.target as HTMLButtonElement;
+
+    if (target.classList.contains('favorite-button')) {
+      setSelectedId(target.value);
+    }
+  });
+
   return (
     <main>
       <Navigation />
