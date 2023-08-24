@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { VirtuosoGrid } from 'react-virtuoso';
 
 import { getData } from '../../helpers/httpClient';
 import { makeAlt } from '../../helpers/makeAlt';
@@ -10,50 +11,23 @@ import { ErrorMessage } from '../../components/ErrorMessage/ErrorMessage';
 import './LookBookPage.scss';
 
 export const LookBookPage: React.FC = React.memo(() => {
-  const [photos, setPhotos] = useState<Preview[] | []>([]);
+  const [photos, setPhotos] = useState<Preview[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [hasError, setHasError] = useState(false);
   const [updatedAt, setUpdatedAt] = useState(new Date());
 
+  const [totalItemsCount, setTotalItemsCount] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
-  const [fetching, setFetching] = useState(false);
 
   const ITEMS_PER_PAGE = 6;
-
-  const scrollHandler = () => {
-    if (
-      document.documentElement.scrollHeight
-      - (
-        document.documentElement.scrollTop
-        + window.innerHeight
-      ) < 100
-    ) {
-      setFetching(true);
-    }
-  };
-
-  const reload = () => {
-    setHasError(false);
-    setUpdatedAt(new Date());
-  };
-
-  useEffect(() => {
-    document.addEventListener('scroll', scrollHandler);
-
-    return () => document.removeEventListener('scroll', scrollHandler);
-  }, []);
-
-  useEffect(() => {
-    if (fetching) {
-      setCurrentPage(prevState => prevState + 1);
-    }
-  }, [fetching]);
 
   useEffect(() => {
     setIsLoading(true);
 
     getData<Preview[]>('previews')
       .then(response => {
+        setTotalItemsCount(response.length);
+
         setPhotos(prevPhotos => [
           ...prevPhotos,
           ...response.slice(
@@ -64,15 +38,24 @@ export const LookBookPage: React.FC = React.memo(() => {
       })
       .catch(() => setHasError(true))
       .finally(() => setIsLoading(false));
-  }, [updatedAt, fetching]);
+  }, [updatedAt, currentPage]);
+
+  const loadMore = () => {
+    if (ITEMS_PER_PAGE * currentPage >= totalItemsCount) {
+      return;
+    }
+
+    setCurrentPage(prevPage => prevPage + 1);
+  };
+
+  const reload = () => {
+    setHasError(false);
+    setUpdatedAt(new Date());
+  };
 
   return (
     <main className="lookBook">
       <div className="container grid">
-        {isLoading && (
-          <Loader />
-        )}
-
         {hasError && (
           <ErrorMessage
             rootClassName="lookBook__items"
@@ -80,33 +63,35 @@ export const LookBookPage: React.FC = React.memo(() => {
           />
         )}
 
-        {!isLoading && photos.length > 0 && (
-          <main
-            className="lookBook"
-          >
-            <section
-              className="lookBook__section"
-            >
-              <ul className="lookBook__section-list">
-                {photos.map(photo => {
-                  const { link, id } = photo;
+        {photos.length > 0 && (
+          <section className="lookBook__section">
+            <VirtuosoGrid
+              style={{
+                height: 'min-content',
+              }}
+              data={photos}
+              useWindowScroll
+              totalCount={photos.length}
+              overscan={6}
+              listClassName="lookBook__section-list"
+              itemClassName="lookBook__section-list-item"
+              endReached={loadMore}
+              components={{
+                Footer: () => (isLoading ? (<Loader />) : null),
+              }}
+              itemContent={(index, photo) => {
+                const { link } = photo;
 
-                  return (
-                    <li
-                      className="lookBook__section-list-item"
-                      key={id}
-                    >
-                      <img
-                        className="lookBook__section-list-item-image"
-                        src={link}
-                        alt={makeAlt(link)}
-                      />
-                    </li>
-                  );
-                })}
-              </ul>
-            </section>
-          </main>
+                return (
+                  <img
+                    className="lookBook__section-list-item-image"
+                    src={link}
+                    alt={makeAlt(link)}
+                  />
+                );
+              }}
+            />
+          </section>
         )}
       </div>
     </main>
