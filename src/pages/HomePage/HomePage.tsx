@@ -7,10 +7,11 @@ import { makeAlt } from '../../helpers/makeAlt';
 import { getData } from '../../helpers/httpClient';
 
 import { NavLink } from '../../types/NavLink';
+import { Preview } from '../../types/Preview';
 
 import { Player } from '../../components/Player/Player';
 import { Loader } from '../../components/Loader/Loader';
-import { MainButton } from '../../components/Buttons/MainButton/MainButton';
+import { ErrorMessage } from '../../components/ErrorMessage/ErrorMessage';
 
 import './HomePage.scss';
 
@@ -18,7 +19,7 @@ export const HomePage: React.FC = React.memo(() => {
   const [searchParams] = useSearchParams();
   const { t } = useTranslation();
 
-  const [previews, setPreviews] = useState<string[] | []>([]);
+  const [previews, setPreviews] = useState<Preview[] | []>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [hasError, setHasError] = useState(false);
   const [updatedAt, setUpdatedAt] = useState(new Date());
@@ -26,7 +27,7 @@ export const HomePage: React.FC = React.memo(() => {
   useEffect(() => {
     setIsLoading(true);
 
-    getData<string[]>('previews')
+    getData<Preview[]>('previews')
       .then(response => setPreviews(response.slice(0, 6)))
       .catch(() => setHasError(true))
       .finally(() => setIsLoading(false));
@@ -68,39 +69,35 @@ export const HomePage: React.FC = React.memo(() => {
           )}
 
           {hasError && (
-            <div className="homePage__gallery-error-container grid">
-              <p className="homePage__gallery-error-text">
-                {t('Later')}
-              </p>
-
-              <MainButton
-                className="homePage__gallery-error-button"
-                button
-                text={t('LaterButton')}
-                onClick={reload}
-              />
-            </div>
+            <ErrorMessage
+              reload={reload}
+              rootClassName="homePage__gallery"
+            />
           )}
 
           {!isLoading && previews.length > 0 && (
             <ul className="homePage__gallery-list">
-              {previews.map(preview => (
-                <li
-                  className="homePage__gallery-list-item"
-                  key={preview}
-                >
-                  <button
-                    className="homePage__gallery-list-item-button"
-                    type="button"
+              {previews.map(preview => {
+                const { link, id } = preview;
+
+                return (
+                  <li
+                    className="homePage__gallery-list-item"
+                    key={id}
                   >
-                    <img
-                      className="homePage__gallery-list-item-image"
-                      src={preview}
-                      alt={makeAlt(preview)}
-                    />
-                  </button>
-                </li>
-              ))}
+                    <button
+                      className="homePage__gallery-list-item-button"
+                      type="button"
+                    >
+                      <img
+                        className="homePage__gallery-list-item-image"
+                        src={link}
+                        alt={makeAlt(link)}
+                      />
+                    </button>
+                  </li>
+                );
+              })}
             </ul>
           )}
         </section>

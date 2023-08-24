@@ -1,0 +1,37 @@
+@import "../../styles/utils.scss";
+
+.lookBook {
+
+  &__items-error-container {
+    position: relative;
+
+    @include onTablet {
+      grid-column: 1/5;
+    }
+
+    @include onDesktop {
+      grid-column: 1/13;
+    }
+  }
+
+  &__items-error-text {
+    text-align: center;
+
+    @include onTablet {
+      grid-column: 1/5;
+    }
+
+    @include onDesktop {
+      grid-column: 1/13;
+    }
+  }
+
+  &__items-error-button {
+    top: 36px;
+
+    @include onDesktop {
+      grid-column: 6/8;
+      top: 36px;
+    }
+  }
+}

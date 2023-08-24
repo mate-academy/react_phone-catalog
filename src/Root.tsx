@@ -6,8 +6,10 @@ import {
   Navigate,
 } from 'react-router-dom';
 import { App } from './App';
+
 import { HomePage } from './pages/HomePage/HomePage';
 import { Page404 } from './pages/Page404/Page404';
+import { LookBookPage } from './pages/LookBookPage/LookBookPage';
 
 export const Root: React.FC = () => (
   <Router>
@@ -24,6 +26,11 @@ export const Root: React.FC = () => (
         <Route
           path="home"
           element={<Navigate to="/" replace />}
+        />
+
+        <Route
+          path="lookBook"
+          element={<LookBookPage />}
         />
 
         <Route
