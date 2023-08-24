@@ -19,9 +19,7 @@ const App = () => (
     </main>
 
     <footer className="footer">
-      <div className="container">
-        <Footer />
-      </div>
+      <Footer />
     </footer>
   </div>
 );

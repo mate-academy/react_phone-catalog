@@ -4,11 +4,13 @@ import { Product } from '../../types/Product';
 import { ProductCard } from '../ProductCard/ProductCard';
 
 type Props = {
-  hotPriceProducts: Product[];
+  products: Product[];
+  title: string;
 };
 
 export const ProductSlider: React.FC<Props> = ({
-  hotPriceProducts,
+  products: hotPriceProducts,
+  title,
 }) => {
   const [currIndex, setCurrIndex] = useState(0);
   const itemWidth = 272;
@@ -38,7 +40,7 @@ export const ProductSlider: React.FC<Props> = ({
     <div className="productSlider">
       <div className="productSlider__top">
         <h2 className="productSlider__top--title">
-          Hot prices
+          {title}
         </h2>
         <div className="productSlider__top--buttons">
           <button

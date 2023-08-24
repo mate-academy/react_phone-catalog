@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
 
-export const Carousel: React.FC = () => {
+export const Slider: React.FC = () => {
   const [images] = useState<string[]>([
     'accessories.png',
     'phones.png',

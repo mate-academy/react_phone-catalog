@@ -1,0 +1,92 @@
+.category {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 1155px;
+
+  &__links {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__photoContainer {
+    display: block;
+    box-sizing: border-box;
+    width: 368px;
+    height: 368px;
+    overflow: hidden;
+    margin-bottom: 24px;
+    position: relative;
+
+    &--phones {
+      background-color: bisque;
+    }
+
+    &--tablets {
+      background-color: gray;
+    }
+
+    &--accessories {
+      background-color: #ad3a49;
+    }
+  }
+
+  &__photo {
+    width: 386px;
+    height: 457px;
+
+    object-fit: cover;
+    object-position: left;
+    position: relative;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.07);
+    }
+
+    &--phones {
+      top: 4px;
+      left: 45px;
+      object-fit: cover;
+    }
+
+    &--tablets {
+      top: 20px;
+      left: 25px;
+      object-fit: cover;
+    }
+
+    &--accessories {
+      width: auto;
+      height: 320px;
+      top: 45px;
+      left: 26px;
+      object-fit: cover;
+    }
+  }
+
+  &__main-title {
+    @extend %title-text;
+  }
+
+  &__title {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: normal;
+    color: $gray-primary;
+    margin-bottom: 4px;
+  }
+
+  &__subtitle {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    color: $gray-secondary;
+  }
+}

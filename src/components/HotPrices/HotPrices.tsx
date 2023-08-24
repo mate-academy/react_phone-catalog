@@ -1,4 +1,3 @@
-import { Carousel } from '../Carousel/Carousel';
 import { useProducts } from '../../context/ProductContext';
 import { Product } from '../../types/Product';
 import { ProductSlider } from '../ProductSlider/ProductSlider';
@@ -21,12 +20,13 @@ export const HotPrices = () => {
   };
 
   const hotPriceProducts = getHotPriceProducts(products);
+  const title = 'Hot prices';
 
   return (
     <div className="container">
-      <Carousel />
       <ProductSlider
-        hotPriceProducts={hotPriceProducts}
+        products={hotPriceProducts}
+        title={title}
       />
     </div>
   );

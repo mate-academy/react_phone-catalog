@@ -7,6 +7,7 @@
 @import "../src/styles/carousel.scss";
 @import "../src/styles/productSlider.scss";
 @import "../src/styles/productCard.scss";
+@import "../src/styles/shopByCategory.scss";
 
 @import "../src/styles/scrollBtn.scss";
 @import "../src/styles/logo.scss";
@@ -28,7 +29,7 @@ iframe {
 }
 
 .container {
-  margin: 0 auto;
+  margin: 0 auto 80px;
   padding: 0 152px;
   scroll-behavior: smooth;
 

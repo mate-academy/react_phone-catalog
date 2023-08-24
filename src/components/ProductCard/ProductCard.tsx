@@ -22,6 +22,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   return (
     <div
       className="card card--slider"
+      data-cy="cardsContainer"
     >
       <div className="card__imgContainer">
         <img
