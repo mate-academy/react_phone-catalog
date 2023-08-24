@@ -83,11 +83,15 @@ export const LookBookPage: React.FC = React.memo(() => {
                 const { link } = photo;
 
                 return (
-                  <img
-                    className="lookBook__section-list-item-image"
-                    src={link}
-                    alt={makeAlt(link)}
-                  />
+                  <React.Fragment
+                    key={index}
+                  >
+                    <img
+                      className="lookBook__section-list-item-image"
+                      src={link}
+                      alt={makeAlt(link)}
+                    />
+                  </React.Fragment>
                 );
               }}
             />
