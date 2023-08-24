@@ -17,6 +17,13 @@ export const HeadNavigation: React.FC<Props> = ({
   likedProducts,
   cartProducts,
 }) => {
+  const navigationLinks = [
+    { to: '/', text: 'home' },
+    { to: '/phones', text: 'Phones' },
+    { to: '/tablets', text: 'tablets' },
+    { to: '/accessories', text: 'accessories' },
+  ];
+
   return (
     <div className="head-navigation">
       <div className="head-navigation__elemets">
@@ -24,41 +31,19 @@ export const HeadNavigation: React.FC<Props> = ({
           <img src={logo} alt="logo" />
         </Link>
 
-        <NavLink
-          to="/"
-          className={({ isActive }) => classNames('head-navigation__element', {
-            'head-navigation__element--active': isActive,
-          })}
-        >
-          home
-        </NavLink>
-
-        <NavLink
-          to="/phones"
-          className={({ isActive }) => classNames('head-navigation__element', {
-            'head-navigation__element--active': isActive,
-          })}
-        >
-          Phones
-        </NavLink>
-
-        <NavLink
-          to="/tablets"
-          className={({ isActive }) => classNames('head-navigation__element', {
-            'head-navigation__element--active': isActive,
-          })}
-        >
-          tablets
-        </NavLink>
-
-        <NavLink
-          to="/accessories"
-          className={({ isActive }) => classNames('head-navigation__element', {
-            'head-navigation__element--active': isActive,
-          })}
-        >
-          accessories
-        </NavLink>
+        {navigationLinks.map(({ to, text }) => (
+          <NavLink
+            key={text}
+            to={to}
+            className={
+              ({ isActive }) => classNames('head-navigation__element', {
+                'head-navigation__element--active': isActive,
+              })
+            }
+          >
+            {text}
+          </NavLink>
+        ))}
       </div>
 
       <div className="head-navigation__left">

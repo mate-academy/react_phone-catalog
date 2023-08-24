@@ -14,14 +14,15 @@ export const Colors: React.FC<Props> = ({
   return (
     <div className="colours__content">
       {colours.map(colour => (
-        <div className={classNames('colours__wrapper', {
-          'colours__wrapper--current': colour === currColor,
-        })}
+        <div
+          className={classNames('colours__wrapper', {
+            'colours__wrapper--current': colour === currColor,
+          })}
+          key={colour}
         >
           <Link
             to={`/phones/${product}-${capacity.toLowerCase()}-${colour}`}
             className={`colours__colour colours__colour--${colour}`}
-            key={colour}
           >
             <p hidden>
               {colour}

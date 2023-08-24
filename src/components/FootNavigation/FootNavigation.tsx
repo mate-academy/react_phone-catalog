@@ -4,6 +4,12 @@ import logo from '../../Icons/logo.svg';
 import { moveToTop } from '../../helpers/movingToTop';
 
 export const FootNavigation = () => {
+  const navigationItems = [
+    'Github',
+    'Contacts',
+    'Rights',
+  ];
+
   return (
     <div className="footer">
       <div className="footer__content">
@@ -12,30 +18,17 @@ export const FootNavigation = () => {
         </Link>
 
         <div className="footer__navigation">
-          <a
-            href="https://github.com/vpdrabynko"
-            target="_blank"
-            className="footer__navigation--item footer__navigation--link"
-            rel="noreferrer"
-          >
-            Github
-          </a>
-          <a
-            href="https://github.com/vpdrabynko"
-            target="_blank"
-            className="footer__navigation--item footer__navigation--link"
-            rel="noreferrer"
-          >
-            Contacts
-          </a>
-          <a
-            href="https://github.com/vpdrabynko"
-            target="_blank"
-            className="footer__navigation--item footer__navigation--link"
-            rel="noreferrer"
-          >
-            rights
-          </a>
+          {navigationItems.map(label => (
+            <a
+              key={label}
+              href="https://github.com/vpdrabynko"
+              target="_blank"
+              className="footer__navigation--item footer__navigation--link"
+              rel="noreferrer"
+            >
+              {label}
+            </a>
+          ))}
         </div>
 
         <div className="footer__action">
