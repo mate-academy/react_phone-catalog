@@ -3,18 +3,18 @@ import { useEffect, useMemo, useState } from 'react';
 import { getNewProducts, getProductsWithDiscount } from '../../api/getProducts';
 import SectionTopBar from '../SectionTopBar';
 import ProductCard from '../ProductCard';
-import { Phone } from '../../types/Phone';
+import { Product } from '../../types/Phone';
 
 const Main = () => {
   const [
     productsWithDiscount,
     setProductsWithDiscount,
-  ] = useState<Phone[] | null>(null);
+  ] = useState<Product[] | null>(null);
 
   const [
     newProducts,
     setNewProducts,
-  ] = useState<Phone[] | null>(null);
+  ] = useState<Product[] | null>(null);
 
   const [currentIndexOfHot, setCurrentIndexOfHot] = useState(0);
   const [currentIndexOfNew, setCurrentIndexOfNew] = useState(0);
@@ -48,7 +48,7 @@ const Main = () => {
         />
 
         <div className="browse-products">
-          {visibleHotPrices?.map((product: Phone) => {
+          {visibleHotPrices?.map((product: Product) => {
             return <ProductCard key={product.id} product={product} />;
           })}
         </div>
@@ -101,7 +101,7 @@ const Main = () => {
         />
 
         <div className="browse-products">
-          {visibleNew?.slice(0, 4).map((product: Phone) => {
+          {visibleNew?.slice(0, 4).map((product: Product) => {
             return <ProductCard key={product.id} product={product} />;
           })}
         </div>

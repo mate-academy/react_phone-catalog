@@ -1,4 +1,4 @@
-export type Phone = {
+export type Product = {
   age: number,
   capacity: string,
   discount: number,

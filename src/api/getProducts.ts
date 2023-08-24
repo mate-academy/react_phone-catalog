@@ -1,6 +1,12 @@
+/* eslint-disable max-len */
 /* eslint-disable no-console */
+import { Product } from '../types/Phone';
 
-import { Phone } from '../types/Phone';
+export enum ProductType {
+  PHONE = 'phone',
+  TABLET = 'tablet',
+  ACCESSORY = 'accessory',
+}
 
 export async function getProducts() {
   try {
@@ -24,7 +30,7 @@ export async function getProductsWithDiscount() {
     const data = await response.json();
 
     const discountedProducts = data
-      .filter((product: Phone) => product.discount);
+      .filter((product: Product) => product.discount);
 
     return discountedProducts;
   } catch (err) {
@@ -42,9 +48,9 @@ export async function getNewProducts() {
     const data = await response.json();
 
     const newProducts = data
-      .filter((product: Phone) => product.discount === 0);
+      .filter((product: Product) => product.discount === 0);
 
-    newProducts.sort((product1: Phone, product2: Phone) => {
+    newProducts.sort((product1: Product, product2: Product) => {
       return product2.price - product1.price;
     });
 
@@ -52,5 +58,36 @@ export async function getNewProducts() {
   } catch (err) {
     console.log(err);
     throw err;
+  }
+}
+
+export async function getProductsWithType(type: ProductType) {
+  try {
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    const response = await fetch(
+      'https://mate-academy.github.io/react_phone-catalog/api/products.json',
+    );
+    const data = await response.json();
+
+    const phonesOnly = data.filter((product: Product) => product.type === type);
+
+    return phonesOnly;
+  } catch (err) {
+    console.log(err);
+    throw err;
+  }
+}
+
+export async function getSingleProduct(id: string) {
+  try {
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    const response = await fetch(`https://mate-academy.github.io/react_phone-catalog/api/products/${id}.json`);
+
+    const data = await response.json();
+
+    return data;
+  } catch (error) {
+    console.error('An error occurred:', error);
+    throw error;
   }
 }

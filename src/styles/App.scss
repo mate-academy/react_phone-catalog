@@ -3,6 +3,9 @@
 @import './typography.scss';
 @import './Main.scss';
 @import './Footer.scss';
+@import './ProductPage.scss';
+@import './Loader.scss';
+@import './AsideRoute.scss';
 
 @font-face {
   font-family: 'Mont';
@@ -34,8 +37,12 @@ body {
   font-family: Mont;
 }
 
-button {
+button, label, select, img {
   cursor: pointer;
+
+  &:disabled {
+    cursor:auto;
+  }
 }
 
 .slider-button {
@@ -61,6 +68,26 @@ $header-height: 64px;
   background-position: center center;
   display: block;
   width: 48px;
+}
+
+
+.link-go-back {
+  display: flex;
+  align-items: center;
+  height: 16px;
+
+  &__caption {
+    color: var(--gray-secondary, #89939A);
+    /* Small text 12 */
+    font-family: Mont;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+
+    &:hover {
+      color: var(--gray-primary, #313237);
+    }
+  }
 }
 
 .nav {

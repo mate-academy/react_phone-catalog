@@ -1,6 +1,22 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
 import { Link, NavLink } from 'react-router-dom';
+import classnames from 'classnames';
 
-const Header = () => {
+interface NavLinkIsActive {
+  isActive: boolean;
+}
+
+interface HeaderProps {
+  setSearchQuery: React.Dispatch<React.SetStateAction<string>>;
+}
+
+const navLinkClassName = ({ isActive }: NavLinkIsActive) => {
+  return (
+    classnames('nav__link', { 'is-active': isActive })
+  );
+};
+
+const Header: React.FC<HeaderProps> = ({ setSearchQuery }) => {
   return (
     <header className="header">
       <Link to="/" className="header__home-link home-link" />
@@ -9,25 +25,37 @@ const Header = () => {
         <nav className="header__nav nav">
           <ul className="nav__list">
             <li className="nav__item">
-              <NavLink className="nav__link is-active" to="/">
+              <NavLink
+                className={({ isActive }) => navLinkClassName({ isActive })}
+                to="/"
+              >
                 Home
               </NavLink>
             </li>
 
             <li className="nav__item">
-              <NavLink className="nav__link" to="/phones">
+              <NavLink
+                className={({ isActive }) => navLinkClassName({ isActive })}
+                to="/phones"
+              >
                 Phones
               </NavLink>
             </li>
 
             <li className="nav__item">
-              <NavLink className="nav__link" to="">
+              <NavLink
+                className={({ isActive }) => navLinkClassName({ isActive })}
+                to="/tablets"
+              >
                 Tablets
               </NavLink>
             </li>
 
             <li className="nav__item">
-              <NavLink className="nav__link" to="">
+              <NavLink
+                className={({ isActive }) => navLinkClassName({ isActive })}
+                to="/accessories"
+              >
                 Accessories
               </NavLink>
             </li>
@@ -35,7 +63,7 @@ const Header = () => {
         </nav>
 
         <section className="header__header-bar">
-          {/* <form
+          <form
             className="header__search"
             onSubmit={(event) => event.preventDefault()}
           >
@@ -43,13 +71,14 @@ const Header = () => {
               type="search"
               placeholder="Search in phones..."
               className="header__search--bar"
+              onChange={event => setSearchQuery(event.target.value)}
             />
             <button
               type="submit"
               className="header__search--button"
-              onClick={() => console.log('hello world')}
+              // onClick={() => console.log('hello world')}
             />
-          </form> */}
+          </form>
           <NavLink
             to="/favorites"
             className="header__favorites shopping-icon"

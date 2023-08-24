@@ -1,78 +1,83 @@
 /* eslint-disable max-len */
+
 import React from 'react';
-import { Phone } from '../types/Phone';
+import { Link, useLocation } from 'react-router-dom';
+import { Product } from '../types/Phone';
+import '../styles/App.scss';
+import '../styles/ProductCard.scss';
+import { getPrevPrice } from '../utils/getPrevPrice';
 
 interface Props {
-  product: Phone;
+  product: Product;
 }
 
-const getPrevPrice = (price: number, discount: number) => {
-  if (discount === 0) {
-    return price;
-  }
-
-  return price + (price / 100) * discount;
-};
-
 const ProductCard: React.FC<Props> = ({ product }) => {
+  const location = useLocation();
+
   const {
     capacity,
     discount,
-    // id,
+    id,
     // imageUrl,
     name,
     price,
     ram,
     screen,
+    // type,
   } = product;
 
   return (
-    <article data-cy="cardsContainer" className="browse-products__product">
+    <article data-cy="cardsContainer" className="browse-products__product product-card">
       <div className="product__wrapper">
         <img
-          className="browse-products__product--image"
+          className="product-card__product--image"
           src="https://placehold.co/208x208/png"
-          alt=""
+          alt={`${name}`}
         />
-        <div className="browse-products__product--info">
-          <p className="browse-products__product--name">{name}</p>
-          <div className="browse-products__product--price">
-            <h3 className="browse-products__product--new-price">
+        <div className="product-card--info">
+          <Link
+            to={`${location.pathname}/${id}`}
+            className="product-card--name"
+          >
+            {name}
+          </Link>
+          <div className="product-card--price">
+            <h3 className="product-card--new-price">
               {`$${price}`}
             </h3>
             {discount !== 0 && (
-              <p className="browse-products__product--old-price">
+              <p className="product-card--old-price">
                 {`$${getPrevPrice(price, discount)}`}
               </p>
             )}
           </div>
         </div>
-        <div className="browse-products__product--features">
-          <div className="browse-products__product--feature">
-            <h4 className="browse-products__product--feature-title">Screen</h4>
-            <p className="browse-products__product--feature-value">{screen}</p>
+        <div className="product-card--features">
+          <div className="product-card--feature">
+            <h4 className="product-card--feature-title">Screen</h4>
+            <p className="product-card--feature-value">{screen}</p>
           </div>
-          <div className="browse-products__product--feature">
-            <p className="browse-products__product--feature-title">Capacity</p>
-            <p className="browse-products__product--feature-value">
+          <div className="product-card--feature">
+            <p className="product-card--feature-title">Capacity</p>
+            <p className="product-card--feature-value">
               {capacity}
             </p>
           </div>
-          <div className="browse-products__product--feature">
-            <p className="browse-products__product--feature-title">RAM</p>
-            <p className="browse-products__product--feature-value">{ram}</p>
+          <div className="product-card--feature">
+            <p className="product-card--feature-title">RAM</p>
+            <p className="product-card--feature-value">{ram}</p>
           </div>
         </div>
-        <div className="browse-products__product--buttons">
+        <div className="product-card--buttons">
           <button
             type="button"
-            className="browse-products__product--add-to-cart"
+            className="product-card--add-to-cart"
           >
             Add to cart
           </button>
           <button
             type="button"
-            className="browse-products__product--add-to-favorites"
+            className="product-card--add-to-favorites"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
