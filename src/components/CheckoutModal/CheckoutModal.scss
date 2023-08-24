@@ -1,0 +1,39 @@
+@import "../../utils/variables.scss";
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  background-color: #eb57573d;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 5px 7px 20px $iconsColor;
+
+  &__wrapper {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 25px;
+    height: 25px;
+    border: 1px solid #cd4d4d;
+    background-color: $whiteColor;
+    border-radius: 50%;
+
+    transition: transform 0.3s;
+
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.1);
+    }
+  }
+
+  &__title {
+    font-family: Mont-SemiBold, sans-serif;
+    font-size: 20px;
+    color: #cd4d4d;
+  }
+}
