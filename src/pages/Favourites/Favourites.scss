@@ -1,0 +1,7 @@
+@import '../../style/main.scss';
+
+.favourites {
+  @include flex-center;
+
+  height: 100vh;
+}

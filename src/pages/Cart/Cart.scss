@@ -1,0 +1,7 @@
+@import "../../style/main.scss";
+
+.cart {
+  @include flex-center;
+
+  height: 100vh;
+}

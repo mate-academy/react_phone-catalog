@@ -1,0 +1,10 @@
+@import '../../style/main.scss';
+
+.nav-icon {
+  @include flex-center;
+
+  width: 64px;
+  border-left: 1px solid $elements;
+  position: relative;
+
+}
