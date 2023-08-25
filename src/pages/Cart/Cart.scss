@@ -3,5 +3,5 @@
 .cart {
   @include flex-center;
 
-  height: 100vh;
+  height: $pageHeight;
 }

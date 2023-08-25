@@ -1,6 +1,7 @@
+@import "../../style/main.scss";
+
 .tablets {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex-center;
+
+  height: $pageHeight;
 }

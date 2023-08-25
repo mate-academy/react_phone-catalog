@@ -1,0 +1,7 @@
+@import '../../style/main.scss';
+
+.not-found {
+  @include flex-center;
+
+  height: $pageHeight;
+}

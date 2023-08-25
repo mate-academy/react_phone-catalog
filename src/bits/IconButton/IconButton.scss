@@ -1,0 +1,20 @@
+@import "../../style/main.scss";
+
+.icon-button {
+  @include flex-center;
+
+  width: 32px;
+  height: 32px;
+  border: 1px solid $elements;
+  background-color: #fff;
+
+  &:hover {
+    border-color: $main-font-color;
+
+    @include transition-03s;
+  }
+
+  &:active {
+    background-color: $main-font-color;
+  }
+}

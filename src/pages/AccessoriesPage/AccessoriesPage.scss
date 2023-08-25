@@ -1,5 +1,7 @@
+@import '../../style/main.scss';
+
 .accessories {
-  height: 100vh;
+  height: $pageHeight;
   display: flex;
   justify-content: center;
   align-items: center;

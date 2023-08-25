@@ -1,11 +1,10 @@
 @import "../../style/main.scss";
 
 .nav {
+  @include flex-between;
+
   box-sizing: border-box;
   height: 64px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   padding-left: 24px;
 
   &__logo {
@@ -58,9 +57,8 @@
   }
 
   &__leftside {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    @include flex-between;
+
     width: 500px;
   }
 

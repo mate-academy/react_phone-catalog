@@ -1,6 +1,7 @@
+@import '../../style/main.scss';
+
 .phones {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex-center;
+
+  height: $pageHeight;
 }

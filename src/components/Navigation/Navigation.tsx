@@ -4,12 +4,28 @@ import { pages } from '../../Root';
 import './Navigation.scss';
 import { NavIcon } from '../NavIcon';
 
+const NAV_LINKS_TO_HIDE = ['*', 'cart', 'favourites'];
+
 export const Navigation = () => {
   const navbarItemClass = ({ isActive }: {
     isActive: boolean
   }) => classNames('nav__link', {
     'nav__link--is-active': isActive,
   });
+
+  const renderNavLink = () => {
+    return Object.keys(pages).map(link => {
+      if (!NAV_LINKS_TO_HIDE.includes(link)) {
+        return (
+          <NavLink key={link} to={link} className={navbarItemClass}>
+            {link}
+          </NavLink>
+        );
+      }
+
+      return null;
+    });
+  };
 
   return (
     <nav className="nav">
@@ -25,18 +41,7 @@ export const Navigation = () => {
           />
         </Link>
 
-        {Object.keys(pages).map(link => {
-          return link === '*' || link === 'cart' || link === 'favourites'
-            ? null
-            : (
-              <NavLink
-                to={link}
-                className={navbarItemClass}
-              >
-                {link}
-              </NavLink>
-            );
-        })}
+        {renderNavLink()}
       </div>
 
       <div className="nav__rigthside">
