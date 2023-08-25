@@ -4,11 +4,9 @@
   gap: 16px;
 
   &__container {
-    width: 32px;
-    height: 32px;
+    @extend %button;
     background-color: transparent;
     padding: 8px;
-    border: 1px solid $gray-icons-placeholders;
     transition: all 0.3s ease-in;
 
     &:hover {

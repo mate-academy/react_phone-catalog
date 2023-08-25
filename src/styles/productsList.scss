@@ -18,7 +18,7 @@
     row-gap: 40px;
     justify-content: center;
     align-content: center;
-    margin: 0 auto;
+    margin: 0 auto 40px;
   }
 
   &__card {
@@ -31,6 +31,11 @@
   &__sort {
     display: flex;
     margin-bottom: 24px;
+  }
+
+  &__sortBy {
+    display: flex;
+    gap: 16px;
   }
 
   &__form {

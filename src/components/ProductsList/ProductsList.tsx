@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { useEffect, useState } from 'react';
 import { useProducts } from '../../context/ProductContext';
 import { Product } from '../../types/Product';
@@ -5,6 +6,7 @@ import { Loader } from '../Loader/Loader';
 import { ProductCard } from '../ProductCard/ProductCard';
 import { sortingProducts } from '../../utils/sortingProducts';
 import { SortType } from '../../types/sortType';
+import { Pagination } from '../Pagination/Pagination';
 
 export const getPhones = (prods: Product[]) => {
   const phones = prods.filter(p => p.type === 'phone');
@@ -16,7 +18,6 @@ export const ProductsList = () => {
   const { products } = useProducts();
   const [isLoading, setLoading] = useState(true);
   const [sortBy, setSortBy] = useState('0');
-
   const phones = getPhones(products);
   const sortedPhones = sortingProducts(phones, sortBy);
 
@@ -25,6 +26,27 @@ export const ProductsList = () => {
 
     setSortBy(selectedSort);
   };
+
+  const [perPage, setPerPage] = useState(8);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const handlePerPage = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setPerPage(+event.target.value);
+    setCurrentPage(1);
+  };
+
+  const handleCurrentPage = (page: number) => {
+    if (currentPage !== page) {
+      setCurrentPage(page);
+    }
+  };
+
+  const startItem = ((currentPage - 1) * perPage);
+  const endItem = (currentPage * perPage) > sortedPhones.length
+    ? sortedPhones.length
+    : startItem + perPage;
+
+  const arrOfPerPageItems = sortedPhones.slice(startItem, endItem);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -46,10 +68,7 @@ export const ProductsList = () => {
           <div className="productsList__sort">
             <div className="productsList__sortBy">
               <form action="" className="productsList__form">
-                <label
-                  htmlFor="sortSelect"
-                  className="productsList__label"
-                >
+                <label htmlFor="sortSelect" className="productsList__label">
                   Sort by
                 </label>
 
@@ -83,16 +102,40 @@ export const ProductsList = () => {
                   </option>
                 </select>
               </form>
+
+              <form className="productsList__form">
+                <label htmlFor="perPageSelector" className="productsList__label">
+                  Items on page
+                </label>
+
+                <select
+                  id="perPageSelector"
+                  className="productsList__select"
+                  value={perPage}
+                  onChange={(event) => handlePerPage(event)}
+                >
+                  <option className="productsList__option" value="4">4</option>
+                  <option className="productsList__option" value="8">8</option>
+                  <option className="productsList__option" value="16">16</option>
+                  <option className="productsList__option" value="all">all</option>
+                </select>
+              </form>
             </div>
           </div>
 
           <div className="productsList__cards">
-            {sortedPhones.map(phone => (
+            {arrOfPerPageItems.map(phone => (
               <div className="productsList__card" key={phone.id}>
                 <ProductCard product={phone} />
               </div>
             ))}
           </div>
+          <Pagination
+            total={sortedPhones.length}
+            perPage={perPage}
+            currentPage={currentPage}
+            onPageChange={handleCurrentPage}
+          />
         </div>
       )}
 

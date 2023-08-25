@@ -4,3 +4,9 @@
   line-height: normal;
   letter-spacing: -0.32px;
 }
+
+%button {
+  width: 32px;
+  height: 32px;
+  border: 1px solid $gray-icons-placeholders;
+}

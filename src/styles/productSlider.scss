@@ -24,12 +24,10 @@
   }
 
   &__button {
-    height: 32px;
-    width: 32px;
     margin: 0;
     padding: 0;
     background-color: transparent;
-    border: 1px solid $gray-icons-placeholders;
+    @extend %button;
 
     &:hover {
       border-color: $gray-primary;
