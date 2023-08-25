@@ -141,7 +141,7 @@ const App = () => {
                 />
               </Route>
 
-              <Route path="/favourites">
+              <Route path="/favorites">
                 <Route
                   index
                   element={(

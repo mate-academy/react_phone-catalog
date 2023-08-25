@@ -51,7 +51,7 @@ export const HeadNavigation: React.FC<Props> = ({
 
         <div className="elements-border">
           <NavLink
-            to="/favourites"
+            to="/favorites"
             className={({ isActive }) => classNames('icon icon--fav', {
               'icon--fav--active': isActive,
             })}

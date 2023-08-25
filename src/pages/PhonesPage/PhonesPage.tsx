@@ -68,59 +68,57 @@ export const PhonesPage: React.FC<Props> = ({
   );
 
   return (
-    <>
-      <div className="phones-page">
-        {!phones.length ? <NoResults />
-          : (
-            <>
-              <MainNavigation />
+    <div className="phones-page">
+      {!phones.length ? <NoResults />
+        : (
+          <>
+            <MainNavigation />
 
-              <div className="phones-page__content">
-                <h1 className="phones-page__title">
-                  Mobile phones
-                </h1>
+            <div className="phones-page__content">
+              <h1 className="phones-page__title">
+                Mobile phones
+              </h1>
 
-                <p className="phones-page__subtitle">
-                  {`${phones.length} models`}
-                </p>
+              <p className="phones-page__subtitle">
+                {`${phones.length} models`}
+              </p>
 
-                <Selection
-                  phones={visiblePhones}
-                  itemsPerPage={itemsPerPage}
-                  setItemsPerPage={setItemsPerPage}
-                  setPhones={setPhones}
-                  sortOption={sortOption}
-                  setSortOption={setSortOption}
-                />
+              <Selection
+                phones={visiblePhones}
+                itemsPerPage={itemsPerPage}
+                setItemsPerPage={setItemsPerPage}
+                setPhones={setPhones}
+                sortOption={sortOption}
+                setSortOption={setSortOption}
+              />
 
-                <div className="phones-page__list">
-                  {visiblePhones.map(phone => {
-                    return (
-                      <div className="phones-page__list--item" key={phone.id}>
-                        <PhoneCard
-                          phone={phone}
-                          likedProducts={likedProducts}
-                          setLikedProducts={setLikedProducts}
-                          cartProducts={cartProducts}
-                          setCartProducts={setCartProducts}
-                        />
-                      </div>
-                    );
-                  })}
-                </div>
-
-                {itemsPerPage !== 'all' && (
-                  <Bottom
-                    phones={phones}
-                    currentPage={currentPage}
-                    setCurrentPage={setCurrentPage}
-                    itemsPerPage={itemsPerPage}
-                  />
-                )}
+              <div className="phones-page__list">
+                {visiblePhones.map(phone => {
+                  return (
+                    <div className="phones-page__list--item" key={phone.id}>
+                      <PhoneCard
+                        phone={phone}
+                        likedProducts={likedProducts}
+                        setLikedProducts={setLikedProducts}
+                        cartProducts={cartProducts}
+                        setCartProducts={setCartProducts}
+                      />
+                    </div>
+                  );
+                })}
               </div>
-            </>
-          )}
-      </div>
-    </>
+
+              {itemsPerPage !== 'all' && (
+                <Bottom
+                  phones={phones}
+                  currentPage={currentPage}
+                  setCurrentPage={setCurrentPage}
+                  itemsPerPage={itemsPerPage}
+                />
+              )}
+            </div>
+          </>
+        )}
+    </div>
   );
 };

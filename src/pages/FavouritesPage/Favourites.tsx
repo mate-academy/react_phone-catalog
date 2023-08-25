@@ -25,7 +25,7 @@ export const Favourites: React.FC<Props> = ({
 
         <div className="favourites__content">
           <h1 className="favourites__title">
-            Favourites
+            Favorites
           </h1>
 
           <p className="favourites__subtitle">
