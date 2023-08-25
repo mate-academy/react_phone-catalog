@@ -1,0 +1,143 @@
+.cart {
+  margin-top: 40px;
+
+  &__title {
+    margin-top: 16px;
+  }
+
+  &__container {
+    display: flex;
+    gap: 16px;
+    margin-top: 24px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__product {
+    display: flex;
+    align-items: center;
+    padding: 0 48px 0 24px;
+    width: 752px;
+    height: 128px;
+    border: 1px solid var(--gray-elements, #E2E6E9);
+    justify-content: space-between;
+
+    &--wrapper {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+
+    &--side-panel {
+      display: flex;
+      gap: 48px;
+    }
+
+    &--close-button {
+      width: 16px;
+      height: 16px;
+      background: transparent;
+      border-radius: 5px;
+
+      &:hover {
+        background: rgba(187, 187, 187, 0.192)
+      }
+    }
+
+    &--name {
+      max-width: 295px;
+      color: var(--gray-primary, #313237);
+      /* Body text 14 */
+      font-family: Mont;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 21px;
+    }
+
+    &--amount-control {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    &--amount-button {
+      width: 32px;
+      height: 32px;
+      background: transparent;
+      border: 1px solid var(--gray-icons-placeholders, #B4BDC3);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    &--price {
+      color: var(--gray-primary, #313237);
+      /* H2 */
+      font-family: Mont;
+      font-size: 22px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 140%; /* 30.8px */
+    }
+  }
+
+  &__purchase {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    width: 368px;
+    height: 206px;
+    border: 1px solid var(--gray-elements, #E2E6E9);
+
+    &--total {
+      text-align: center;
+      width: 100%;
+      border-bottom: 1px solid var(--gray-elements, #E2E6E9);
+      &--amount {
+        color: var(--gray-secondary, #89939A);
+        text-align: center;
+        /* Body text 14 */
+        font-family: Mont;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 21px;
+        padding-bottom: 24px;
+      }
+    }
+
+    &--checkout {
+      width: 100% !important;
+      height: 48px !important;
+
+      color: var(--gray-white, #FFF);
+      text-align: center;
+      font-family: Mont;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 21px;
+    }
+  }
+
+  &__empty-cart-message {
+    font-family: Mont;
+    padding-top: 20px;
+    font-size: 18px;
+    font-weight: 600;
+  }
+}
+
+.feature-is-not-available {
+  font-family: Mont;
+  font-size: 12px;
+  color: gray;
+  margin-block: 10px;
+}

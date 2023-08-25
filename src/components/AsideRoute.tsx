@@ -1,22 +1,31 @@
-import React from 'react';
+import { useMemo } from 'react';
+import { Link } from 'react-router-dom';
 import { HouseIcon, IconSlideRight } from '../utils/Icons';
 import { Product } from '../types/Phone';
 import { ProductType } from '../api/getProducts';
 
 interface Props {
-  // pageTitle: string;
+  pageTitle?: string;
   productName?: string;
-  product: Product;
+  product?: Product;
 }
 
-const AsideRoute: React.FC<Props> = ({ product, productName }) => {
-  const pageTitle = product.type !== ProductType.ACCESSORY ? `${product.type[0].toUpperCase() + product.type.slice(1)}s` : 'Accessories';
+const AsideRoute: React.FC<Props> = ({ pageTitle, product, productName }) => {
+  const title = useMemo(() => {
+    if (product) {
+      return product.type !== ProductType.ACCESSORY ? `${product.type[0].toUpperCase() + product.type.slice(1)}s` : 'Accessories';
+    }
+
+    return pageTitle;
+  }, [product, pageTitle]);
 
   return (
-    <div className="aside-route">
-      <HouseIcon />
+    <aside className="aside-route">
+      <Link to="/"><HouseIcon /></Link>
+
       <IconSlideRight />
-      <p className="aside-route__page-title">{pageTitle}</p>
+
+      <p className="aside-route__page-title">{title}</p>
       {productName
       && (
         <>
@@ -24,7 +33,7 @@ const AsideRoute: React.FC<Props> = ({ product, productName }) => {
           <p className="aside-route__product-name">{productName}</p>
         </>
       )}
-    </div>
+    </aside>
   );
 };
 

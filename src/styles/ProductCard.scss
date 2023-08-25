@@ -94,6 +94,19 @@
     &:hover {
       box-shadow: 0px 3px 13px 0px rgba(23, 32, 49, 0.26);
     }
+
+    &--added {
+      width: 176px;
+      height: 40px;
+      padding: 10px 30px;
+      background-color: transparent;
+      color: var(--green-2, #27AE60);
+      font-family: Mont;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 21px;
+      border: 1px solid var(--gray-elements, #E2E6E9);
+    }
   }
 
   &--add-to-favorites {

@@ -15,6 +15,8 @@ import PhonesPage from './components/pages/PhonesPage';
 import TabletsPage from './components/pages/TabletsPage';
 import AccessoriesPage from './components/pages/AccessoriesPage';
 import ProductPage from './components/pages/ProductPage';
+import Favorite from './components/pages/Favorite';
+import Cart from './components/Cart';
 
 const PageRouter = () => {
   const [searchQuery, setSearchQuery] = useState<string>('');
@@ -32,6 +34,8 @@ const PageRouter = () => {
         <Route path="/phones/:productId" element={<ProductPage />} />
         <Route path="/tablets/:productId" element={<ProductPage />} />
         <Route path="/accessories/:productId" element={<ProductPage />} />
+        <Route path="/favorites" element={<Favorite />} />
+        <Route path="/shopping-cart" element={<Cart />} />
       </Routes>
       <Footer />
     </Router>

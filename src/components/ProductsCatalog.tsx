@@ -7,6 +7,7 @@ import ProductCard from './ProductCard';
 import { IconSlideLeft, IconSlideRight } from '../utils/Icons';
 import { SortType } from '../types/SortType';
 import AsideRoute from './AsideRoute';
+// import { ProductType } from '../api/getProducts';
 
 interface Props {
   title: string;
@@ -60,6 +61,18 @@ const ProductsCatalog: React.FC<Props> = ({ products, title }) => {
     });
   },
   [sortQuery, products, currentPage, productsPerPage]);
+
+  // const routeTitle = useMemo(() => {
+  //   if (products[0].type === ProductType.PHONE) {
+  //     return 'Phones';
+  //   }
+
+  //   if (products[0].type === ProductType.TABLET) {
+  //     return 'Tablets';
+  //   }
+
+  //   return 'Accessories';
+  // }, [products]);
 
   const buttons = useMemo(() => {
     const totalPages = Math.ceil(products.length / productsPerPage);

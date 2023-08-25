@@ -62,7 +62,7 @@ const ProductPage = () => {
 
   return !isLoading && currentProductFeatures && currentProduct ? (
     <main className="main-product-page container">
-      <AsideRoute product={products[0]} productName={currentProduct.name} />
+      <AsideRoute product={currentProduct} productName={currentProduct.name} />
 
       <Link to="/" className="link-go-back">
         <IconSlideLeft />
