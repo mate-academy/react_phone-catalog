@@ -5,14 +5,19 @@ import AsideRoute from '../AsideRoute';
 import ProductCard from '../ProductCard';
 import { LocaleDataTypes } from '../../utils/localeStorage';
 
-/* eslint-disable no-console */
-const Favorite = () => {
-  const products = localStorage.getItem(LocaleDataTypes.FAVORITES);
+interface FavoritesProps {
+  setCurrentProduct: React.Dispatch<React.SetStateAction<string>>
+}
 
-  const favoriteProducts: Product[] | null = products ? Object.values(JSON.parse(products)) : null;
+/* eslint-disable no-console */
+const Favorite: React.FC<FavoritesProps> = ({ setCurrentProduct }) => {
+  const products = localStorage.getItem(LocaleDataTypes.FAVORITES);
+  const favoriteProducts: Product[] = products ? Object.values(JSON.parse(products)) : [];
   const [visibleProducts, setVisibleProducts] = useState<Product[]>([]);
 
   useEffect(() => {
+    setCurrentProduct('favorites');
+
     if (favoriteProducts) {
       setVisibleProducts([...favoriteProducts]);
     }
@@ -33,7 +38,7 @@ const Favorite = () => {
 
         <div className="added-items catalog">
           {visibleProducts?.map((product) => (
-            <ProductCard key={product.id} product={product} />
+            <ProductCard key={product.id} product={product} setVisibleProducts={setVisibleProducts} />
           ))}
         </div>
       </section>

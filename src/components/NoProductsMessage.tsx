@@ -7,7 +7,9 @@ interface Props {
 
 const NoProductsMessage: React.FC<Props> = ({ title }) => {
   return (
-    <h1 className="no-products-title container">{`${title} are not available yet.`}</h1>
+    <main className="main">
+      <h1 className="no-products-title container">{`${title} are not available yet.`}</h1>
+    </main>
   );
 };
 

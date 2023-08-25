@@ -4,27 +4,21 @@
 // import React from 'react'
 
 import { useEffect, useMemo, useState } from 'react';
-// import { useParams } from 'react-router-dom';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import SectionTopBar from '../SectionTopBar';
 import { Product } from '../../types/Phone';
 import {
-  // ProductType,
   getProducts,
-  // getProductsWithType,
   getSingleProduct,
 } from '../../api/getProducts';
 import ProductCard from '../ProductCard';
 import { ProductFeatures } from '../../types/ProductFeatures';
 import Loader from '../Loader';
 import { getPrevPrice } from '../../utils/getPrevPrice';
-import { IconSlideLeft } from '../../utils/Icons';
 import AsideRoute from '../AsideRoute';
-
-// const images = ['https://imgd.aeplcdn.com/1056x594/n/cw/ec/44686/activa-6g-right-front-three-quarter.jpeg?q=75&q=75', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwLCJLAkkHvZLGCy_zRGHTDaeQCiaHZAn3HBdskrYU24R9wWkiC7wa8PvEefHnWeiKQug&usqp=CAU', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOKSs05sHWtPpkha6yJZwU4R_4WJox85ZiDjL2TpkzzpViTcE9NzEdn3wwng3Fj3g4GhE&usqp=CAU', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-VLcXcsu6HZeRmdLu21uqglf_JCtHwRj80LyQfVGGir363JkDLKRpH02977LIFat-A10&usqp=CAU', 'https://media.zigcdn.com/media/content/2013/Mar/honda-activa-het-update-action-side-shot-roadtest-2132013-thumb.jpg'];
+import GoBackLink from '../GoBackLink';
 
 const ProductPage = () => {
-  // const type = ProductType.PHONE;
   const [products, setProducts] = useState<Product[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const productsPerPage = 4;
@@ -64,10 +58,7 @@ const ProductPage = () => {
     <main className="main-product-page container">
       <AsideRoute product={currentProduct} productName={currentProduct.name} />
 
-      <Link to="/" className="link-go-back">
-        <IconSlideLeft />
-        <span className="link-go-back__caption">Back</span>
-      </Link>
+      <GoBackLink />
 
       <section className="section-product">
         <h1 className="section-product__title">
@@ -168,7 +159,7 @@ const ProductPage = () => {
         <article className="section-product__description">
           <h3 className="section-product__description--title">About</h3>
 
-          <p className="section-product__description--paragraph">
+          <p className="section-product__description--paragraph" data-cy="productDescription">
             {currentProductFeatures.description}
           </p>
         </article>

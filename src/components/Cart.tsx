@@ -1,22 +1,21 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
-/* eslint-disable max-len */
-// import { useEffect, useState } from 'react';
-// import { Product } from '../types/Phone';
 import { useEffect, useMemo, useState } from 'react';
-import { Link } from 'react-router-dom';
-import {
-  CloseIcon, IconSlideLeft, MinusIcon, PlusIcon,
-} from '../utils/Icons';
+// import {
+//   CloseIcon, MinusIcon, PlusIcon,
+// } from '../utils/Icons';
 import { Product } from '../types/Phone';
-import { LocaleDataTypes, setFavorite } from '../utils/localeStorage';
+import {
+  LocaleDataTypes, setStorage,
+} from '../utils/localeStorage';
+import GoBackLink from './GoBackLink';
+import CartProduct from './CartProduct';
 
 const Cart = () => {
   const products = localStorage.getItem(LocaleDataTypes.CART);
-
-  const productsFromCart: Product[] = products ? Object.values(JSON.parse(products)) : [];
-
+  const productsFromCart: Product[] = products
+    ? Object.values(JSON.parse(products))
+    : [];
   const [visibleProducts, setVisibleProducts] = useState<Product[]>([]);
-
   const [isMessageVisible, setIsMessageVisible] = useState<boolean>(false);
 
   const handleCheckoutButton = () => {
@@ -26,21 +25,29 @@ const Cart = () => {
   };
 
   useEffect(() => {
-    // if (productsFromCart) {
     setVisibleProducts(productsFromCart);
-    // }
   }, []);
 
   const totalPrice = useMemo(() => visibleProducts?.reduce((acc, product) => {
-    return acc + product.price;
-  }, 0), [visibleProducts?.length]);
+    return acc + product.price * product.amount;
+  }, 0), [visibleProducts]);
+
+  const totalAmount = useMemo(() => visibleProducts?.reduce((acc, product) => {
+    return acc + product.amount;
+  }, 0), [visibleProducts]);
+
+  const updateProductAmount = (productId: string, newAmount: number) => {
+    const updatedProducts = visibleProducts
+      .map((product) => (product.id === productId
+        ? { ...product, amount: newAmount }
+        : product));
+
+    setVisibleProducts(updatedProducts);
+  };
 
   return (
     <main className="cart container">
-      <Link to="/" className="link-go-back">
-        <IconSlideLeft />
-        <span className="link-go-back__caption">Back</span>
-      </Link>
+      <GoBackLink />
 
       <section className="section">
         <h1 className="section__title cart__title">Cart</h1>
@@ -48,49 +55,18 @@ const Cart = () => {
         {visibleProducts.length > 0
           ? (
             <div className="cart__container">
-              {/* <div className="cart__content"> */}
-              {/* {visibleProducts.map((product) => ( */}
               <div className="cart__content">
-                {visibleProducts.map((product: Product) => (
-                  <article key={product.id} className="cart__product">
-                    <div className="cart__product--wrapper">
-                      <button
-                        type="button"
-                        className="cart__product--close-button"
-                        onClick={() => {
-                          setFavorite(product.id, LocaleDataTypes.CART);
-                          setVisibleProducts(prevProds => [...prevProds].filter(prevProduct => prevProduct.id !== product.id));
-                        }}
-                      >
-                        <CloseIcon />
-                      </button>
-                      <img
-                        src="https://placehold.co/66x66"
-                        alt=""
-                        className="cart__product--photo"
-                      />
-                      <p className="cart__product--name">
-                        {product.name}
-                      </p>
-                    </div>
-
-                    <div className="cart__product--side-panel">
-                      <div className="cart__product--amount-control">
-                        <button type="button" className="cart__product--amount-button">
-                          <MinusIcon color="#E2E6E9" />
-                        </button>
-                        <p className="cart__product--products-amount">1</p>
-                        <button type="button" className="cart__product--amount-button">
-                          <PlusIcon />
-                        </button>
-                      </div>
-                      <p className="cart__product--price">
-                        $
-                        {product.price}
-                      </p>
-                    </div>
-                  </article>
-                ))}
+                {visibleProducts.map((product: Product) => {
+                  return (
+                    <CartProduct
+                      key={product.id}
+                      product={product}
+                      setStorage={setStorage}
+                      setVisibleProducts={setVisibleProducts}
+                      updateProductAmount={updateProductAmount}
+                    />
+                  );
+                })}
               </div>
 
               <article className="cart__purchase">
@@ -102,7 +78,7 @@ const Cart = () => {
                   <p className="cart__purchase--total--amount">
                     {visibleProducts.length === 1
                       ? 'Total for 1 item'
-                      : `Total for ${visibleProducts.length} items`}
+                      : `Total for ${totalAmount} items`}
                   </p>
                 </div>
 
@@ -114,6 +90,7 @@ const Cart = () => {
                   ) : (
                     <button
                       type="button"
+                      // eslint-disable-next-line max-len
                       className="cart__purchase--checkout product-card--add-to-cart"
                       onClick={() => handleCheckoutButton()}
                     >
@@ -121,13 +98,10 @@ const Cart = () => {
                     </button>
                   )}
               </article>
-              {/* )) */}
             </div>
           ) : (
-            <p className="cart__empty-cart-message">Your shopping cart is empty.</p>
+            <p className="cart__empty-cart-message">Your cart is empty</p>
           )}
-
-        {/* </div> */}
       </section>
     </main>
   );

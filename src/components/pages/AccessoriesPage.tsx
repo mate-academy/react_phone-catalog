@@ -9,7 +9,7 @@ import { CatalogProps } from '../../types/CatalogProps';
 import { filteredProductsByName } from '../../utils/filterProductsByName';
 import Loader from '../Loader';
 
-const AccessoriesPage: React.FC<CatalogProps> = ({ searchQuery }) => {
+const AccessoriesPage: React.FC<CatalogProps> = ({ searchQuery, setCurrentProduct }) => {
   const [products, setProducts] = useState<Product[]>([]);
   const title = 'Accessories';
 
@@ -17,6 +17,7 @@ const AccessoriesPage: React.FC<CatalogProps> = ({ searchQuery }) => {
 
   useEffect(() => {
     getProductsWithType(ProductType.ACCESSORY).then(productsFromApi => setProducts(productsFromApi)).finally(() => setIsLoading(false));
+    setCurrentProduct('accessories');
   }, []);
 
   const filteredProducts = useMemo(() => filteredProductsByName(products, searchQuery), [searchQuery, products]);

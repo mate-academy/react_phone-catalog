@@ -20,7 +20,7 @@ const AsideRoute: React.FC<Props> = ({ pageTitle, product, productName }) => {
   }, [product, pageTitle]);
 
   return (
-    <aside className="aside-route">
+    <aside className="aside-route" data-cy="breadCrumbs">
       <Link to="/"><HouseIcon /></Link>
 
       <IconSlideRight />

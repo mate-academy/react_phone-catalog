@@ -2,6 +2,10 @@
 import { Link, NavLink } from 'react-router-dom';
 
 const Footer = () => {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <footer className="footer">
       <div className="container">
@@ -10,17 +14,17 @@ const Footer = () => {
           <nav className="footer__nav nav">
             <ul className="nav__list">
               <li className="nav__item">
-                <NavLink className="nav__link" to="/">
+                <NavLink className="nav__link" to="https://github.com/vetal-hovenko/react_phone-catalog">
                   Github
                 </NavLink>
               </li>
               <li className="nav__item">
-                <NavLink className="nav__link" to="/">
+                <NavLink className="nav__link" to="/contacts">
                   Contacts
                 </NavLink>
               </li>
               <li className="nav__item">
-                <NavLink className="nav__link" to="/">
+                <NavLink className="nav__link" to="/contacts">
                   Rights
                 </NavLink>
               </li>
@@ -30,7 +34,11 @@ const Footer = () => {
             <p className="footer__back--caption">
               Back to top
             </p>
-            <button type="button" className="footer__back--button slider-button">
+            <button
+              type="button"
+              className="footer__back--button slider-button"
+              onClick={() => scrollToTop()}
+            >
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
                 <path
                   fillRule="evenodd"

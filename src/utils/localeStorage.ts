@@ -7,22 +7,58 @@ export enum LocaleDataTypes {
   CART = 'cart',
 }
 
-export function setFavorite(id: string, data: LocaleDataTypes) {
+export function setStorage(id: string, data: LocaleDataTypes) {
   getProducts().then((products) => {
-    const favorite = products.find((product: Product) => product.id === id);
+    const product = products.find((p: Product) => p.id === id);
 
-    const favorites = localStorage.getItem(data);
+    const productsList = localStorage.getItem(data);
 
-    const favoritesObj = favorites ? JSON.parse(favorites) : {};
+    const productsListObj = productsList ? JSON.parse(productsList) : {};
 
-    if (favoritesObj[id]) {
-      delete favoritesObj[id];
-      localStorage.setItem(data, JSON.stringify(favoritesObj));
+    if (productsListObj[id]) {
+      delete productsListObj[id];
+      localStorage.setItem(data, JSON.stringify(productsListObj));
     } else {
-      favoritesObj[id] = favorite;
-      localStorage.setItem(data, JSON.stringify(favoritesObj));
+      productsListObj[id] = product;
+      localStorage.setItem(data, JSON.stringify(productsListObj));
     }
   });
+}
+
+export function addProductToCart(id: string) {
+  const productsFromCart = localStorage.getItem(LocaleDataTypes.CART);
+
+  const productsListObj = productsFromCart
+    ? JSON.parse(productsFromCart)
+    : {};
+
+  if (productsListObj[id]) {
+    productsListObj[id].amount += 1;
+    localStorage.setItem(LocaleDataTypes.CART, JSON.stringify(productsListObj));
+  }
+}
+
+export function removeProductFromCart(id: string) {
+  const productsFromCart = localStorage.getItem(LocaleDataTypes.CART);
+
+  const productsListObj = productsFromCart
+    ? JSON.parse(productsFromCart)
+    : {};
+
+  if (productsListObj[id]) {
+    productsListObj[id].amount -= 1;
+    localStorage.setItem(LocaleDataTypes.CART, JSON.stringify(productsListObj));
+  }
+}
+
+export function getAmountOfProducts(id: string): number {
+  const productsFromCart = localStorage.getItem(LocaleDataTypes.CART);
+
+  const product = productsFromCart
+    ? JSON.parse(productsFromCart)[id]
+    : 0;
+
+  return product.amount || 1;
 }
 
 export function isAdded(id: string, data: LocaleDataTypes) {

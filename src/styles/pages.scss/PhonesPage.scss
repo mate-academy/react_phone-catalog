@@ -72,7 +72,31 @@
         font-weight: 600;
         line-height: 21px; /* 150% */
         // border: 1px solid var(--gray-icons-placeholders, #B4BDC3);
-        border: 1px solid #b4bdc3
+        border: 1px solid #b4bdc3;
+
+        &:hover {
+          border: 1px solid var(--gray-secondary, #89939A);
+        }
+
+        &:focus {
+          border: 1px solid var(--gray-primary, #313237);
+          outline: none;
+        }
+      }
+
+      &--select option {
+        font-family: Mont;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 21px;
+        color: var(--gray-secondary, #89939A);
+        height: 50px;
+        // background-color: red;
+
+        &:hover {
+          color: var(--gray-primary, #313237);
+        }
       }
     }
 

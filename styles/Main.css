@@ -1,0 +1,51 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  margin-top: 72px;
+}
+.main .categories {
+  display: flex;
+  gap: 16px;
+}
+.main .categories-title {
+  margin-bottom: 24px;
+}
+.main .categories .category-photo {
+  width: 368px;
+  height: 368px;
+  margin-bottom: 24px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  transition: 0.5s;
+}
+.main .categories .category-photo:hover {
+  transform: scale(1.02);
+}
+.main .categories__mobile--photo {
+  background-color: #fcdbc1;
+  background-image: url("../assets/images/categories/mobile.jpg");
+  background-position-x: 66px;
+}
+.main .categories__tablets--photo {
+  background: url("../assets/images/categories/tablets.jpg");
+}
+.main .categories__accessories--photo {
+  background: url("../assets/images/categories/accessories.jpg");
+}
+
+.browse-products {
+  display: flex;
+  gap: 16px;
+}
+
+.section__top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+.section__buttons-container {
+  display: flex;
+  gap: 16px;
+}

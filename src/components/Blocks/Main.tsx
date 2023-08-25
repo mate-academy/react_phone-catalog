@@ -19,16 +19,6 @@ const productsAmountInfo = (products: Product[] | undefined) => {
 };
 
 const Main = () => {
-  // const [
-  //   productsWithDiscount,
-  //   setProductsWithDiscount,
-  // ] = useState<Product[] | null>(null);
-
-  // const [
-  //   newProducts,
-  //   setNewProducts,
-  // ] = useState<Product[] | null>(null);
-
   const [products, setProducts] = useState<Product[] | null>(null);
 
   const [currentIndexOfHot, setCurrentIndexOfHot] = useState(0);
@@ -36,8 +26,6 @@ const Main = () => {
   const productsPerPage = 4;
 
   useEffect(() => {
-    // getProductsWithDiscount().then((productsFromAPI) => setProductsWithDiscount(productsFromAPI));
-    // getNewProducts().then((productsFromAPI) => setNewProducts(productsFromAPI));
     getProducts().then((productsFromAPI) => setProducts(productsFromAPI));
   }, []);
 
@@ -62,7 +50,6 @@ const Main = () => {
       <section className="section">
         <SectionTopBar
           title="Hot prices"
-          // productsLength={productsWithDiscount?.length || 0}
           currentIndex={currentIndexOfHot}
           setCurrentIndex={setCurrentIndexOfHot}
           productsPerPage={productsPerPage}
@@ -79,7 +66,7 @@ const Main = () => {
       <section className="section">
         <h2 className="section__title categories-title">Shop by category</h2>
 
-        <div className="categories">
+        <div className="categories" data-cy="categoryLinksContainer">
           <article className="categories__mobile">
             <Link to="/phones">
               <div className="categories__mobile--photo category-photo" />

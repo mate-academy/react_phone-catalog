@@ -20,21 +20,22 @@ import Cart from './components/Cart';
 
 const PageRouter = () => {
   const [searchQuery, setSearchQuery] = useState<string>('');
+  const [currentProduct, setCurrentProduct] = useState<string>('');
 
   return (
     <Router>
-      <Header setSearchQuery={setSearchQuery} />
+      <Header setSearchQuery={setSearchQuery} currentProduct={currentProduct} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Navigate replace to="/" />} />
 
-        <Route path="/phones" element={<PhonesPage searchQuery={searchQuery} />} />
-        <Route path="/tablets" element={<TabletsPage searchQuery={searchQuery} />} />
-        <Route path="/accessories" element={<AccessoriesPage searchQuery={searchQuery} />} />
+        <Route path="/phones" element={<PhonesPage searchQuery={searchQuery} setCurrentProduct={setCurrentProduct} />} />
+        <Route path="/tablets" element={<TabletsPage searchQuery={searchQuery} setCurrentProduct={setCurrentProduct} />} />
+        <Route path="/accessories" element={<AccessoriesPage searchQuery={searchQuery} setCurrentProduct={setCurrentProduct} />} />
         <Route path="/phones/:productId" element={<ProductPage />} />
         <Route path="/tablets/:productId" element={<ProductPage />} />
         <Route path="/accessories/:productId" element={<ProductPage />} />
-        <Route path="/favorites" element={<Favorite />} />
+        <Route path="/favorites" element={<Favorite setCurrentProduct={setCurrentProduct} />} />
         <Route path="/shopping-cart" element={<Cart />} />
       </Routes>
       <Footer />

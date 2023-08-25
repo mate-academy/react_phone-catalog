@@ -9,5 +9,6 @@ export type Product = {
   ram: string,
   screen: string,
   snippet: string,
-  type: string
+  type: string,
+  amount: number
 };

@@ -27,7 +27,7 @@
     font-size: 14px;
     font-style: normal;
     font-weight: 500;
-    // line-height: 21px;
+    line-height: 21px;
   }
 
   &--price {
@@ -42,7 +42,6 @@
     font-style: normal;
     font-weight: 500;
     line-height: normal;
-    // text-decoration-line: strikethrough;
     text-decoration: line-through;
   }
 
@@ -57,7 +56,6 @@
   &--feature {
     display: flex;
     justify-content: space-between;
-
     font-size: 12px;
     font-weight: 600;
     line-height: normal;
@@ -65,9 +63,11 @@
     &-title {
       line-height: normal;
       color: #89939A;
+      font-family: Mont;
     }
 
     &-value {
+      font-family: Mont;
       color: #313237;
     }
   }

@@ -24,12 +24,29 @@
   box-sizing: border-box;
 }
 
+html {
+  height: 100vh;
+}
+
+$header-height: 64px;
+$footer-height: 96px;
+
+#root {
+  min-height: 100vh;
+  font-family: Mont;
+}
+
 body {
   margin: 0;
   font-family: Mont;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+}
+
+main {
+  min-height: calc(100vh - #{$header-height} - #{$footer-height})
+}
+
+footer {
+  height: $footer-height;
 }
 
 button, label, select, img {
@@ -38,10 +55,6 @@ button, label, select, img {
   &:disabled {
     cursor:auto;
   }
-}
-
-footer {
-  flex-shrink: 0;
 }
 
 @import './reset.scss';
@@ -53,6 +66,7 @@ footer {
 @import './Loader.scss';
 @import './AsideRoute.scss';
 @import './pages.scss/Cart.scss';
+@import './CustomSelect.scss';
 
 
 .slider-button {
@@ -70,8 +84,6 @@ footer {
   }
 }
 
-$header-height: 64px;
-
 .home-link {
   background-image: url('../assets/icons/logo.svg');
   background-repeat: no-repeat;
@@ -80,19 +92,18 @@ $header-height: 64px;
   width: 48px;
 }
 
-
-.link-go-back {
+.go-back {
   display: flex;
+  gap: 4px;
   align-items: center;
-  height: 16px;
 
-  &__caption {
+  &__button {
     color: var(--gray-secondary, #89939A);
-    /* Small text 12 */
     font-family: Mont;
-    font-size: 12px;
+    font-size: 14px;
     font-style: normal;
     font-weight: 600;
+    background-color: transparent;
 
     &:hover {
       color: var(--gray-primary, #313237);
@@ -111,6 +122,7 @@ $header-height: 64px;
   }
 
   &__link {
+    font-family: Mont;
     color: #89939A;
     font-size: 12px;
     font-style: normal;
@@ -151,6 +163,10 @@ $header-height: 64px;
 .shopping-icon {
   width: 16px;
   height: 16px;
+
+  &--is-active {
+    border-bottom: 3px solid  var(--gray-primary, #313237);
+  }
 }
 
 .header {
@@ -206,6 +222,14 @@ $header-height: 64px;
       width: 100%;
       padding: 24px;
       font-size: 14px;
+      border-bottom: 1px solid #E2E6E9;
+
+      &::placeholder {
+        font-family: Mont;
+        font-weight: 600;
+
+        color: rgb(194, 194, 194);
+      }
     }
 
     &--button {

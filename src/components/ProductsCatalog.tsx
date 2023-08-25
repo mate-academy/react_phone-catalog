@@ -4,9 +4,14 @@ import classNames from 'classnames';
 import { Product } from '../types/Phone';
 // import { ProductType, getProductsWithType } from '../api/getProducts';
 import ProductCard from './ProductCard';
-import { IconSlideLeft, IconSlideRight } from '../utils/Icons';
+import {
+  IconSlideLeft, IconSlideRight,
+} from '../utils/Icons';
 import { SortType } from '../types/SortType';
 import AsideRoute from './AsideRoute';
+import { selectAmountLink, selectSortLink } from '../utils/selectLinks';
+import CustomSelect from './CustomSelect';
+// import { useSearchParams } from 'react-router-dom';
 // import { ProductType } from '../api/getProducts';
 
 interface Props {
@@ -22,7 +27,7 @@ const {
 } = SortType;
 
 const ProductsCatalog: React.FC<Props> = ({ products, title }) => {
-  const [productsPerPage, setProductsPerPage] = useState<number>(16);
+  const [productsPerPage, setProductsPerPage] = useState<number>(4);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [sortQuery, setSortQuery] = useState<SortType>(NEWEST);
 
@@ -62,18 +67,6 @@ const ProductsCatalog: React.FC<Props> = ({ products, title }) => {
   },
   [sortQuery, products, currentPage, productsPerPage]);
 
-  // const routeTitle = useMemo(() => {
-  //   if (products[0].type === ProductType.PHONE) {
-  //     return 'Phones';
-  //   }
-
-  //   if (products[0].type === ProductType.TABLET) {
-  //     return 'Tablets';
-  //   }
-
-  //   return 'Accessories';
-  // }, [products]);
-
   const buttons = useMemo(() => {
     const totalPages = Math.ceil(products.length / productsPerPage);
 
@@ -81,7 +74,7 @@ const ProductsCatalog: React.FC<Props> = ({ products, title }) => {
   }, [products, productsPerPage]);
 
   return (
-    <main className="main-catalog container">
+    <main className="main-catalog container" data-cy="productList">
       {products.length > 0 && <AsideRoute product={products[0]} />}
 
       <section className="section-catalog">
@@ -95,7 +88,22 @@ const ProductsCatalog: React.FC<Props> = ({ products, title }) => {
         </p>
 
         <div className="section-catalog__items-displaying">
-          <label htmlFor="sort" className="section-catalog__items-displaying--wrapper">
+          <CustomSelect
+            title="Sort by"
+            searchParam="sort"
+            selectSortLink={selectSortLink}
+            setSortQuery={setSortQuery}
+            setProductsPerPage={null}
+          />
+
+          <CustomSelect
+            title="Items on page"
+            searchParam="items-per-page"
+            selectSortLink={selectAmountLink}
+            setSortQuery={null}
+            setProductsPerPage={setProductsPerPage}
+          />
+          {/* <label htmlFor="sort" className="section-catalog__items-displaying--wrapper">
             Sort by
 
             <select
@@ -109,9 +117,9 @@ const ProductsCatalog: React.FC<Props> = ({ products, title }) => {
               <option value="price-asc">Cheapest</option>
               <option value="price-desc">Most expensive</option>
             </select>
-          </label>
+          </label> */}
 
-          <label htmlFor="amount" className="section-catalog__items-displaying--wrapper">
+          {/* <label htmlFor="amount" className="section-catalog__items-displaying--wrapper">
             Items on page
 
             <select
@@ -126,7 +134,7 @@ const ProductsCatalog: React.FC<Props> = ({ products, title }) => {
               <option value="16">16</option>
               <option value="All ">All</option>
             </select>
-          </label>
+          </label> */}
         </div>
 
         <div className="section-catalog__products catalog">
@@ -137,12 +145,13 @@ const ProductsCatalog: React.FC<Props> = ({ products, title }) => {
 
         {buttons.length > 1
         && (
-          <div className="section-catalog__pagination">
+          <div className="section-catalog__pagination" data-cy="pagination">
             <button
               className="slider-button"
               type="button"
               disabled={currentPage === 1}
               onClick={() => setCurrentPage(currentPage - 1)}
+              data-cy="paginationLeft"
             >
               <IconSlideLeft />
             </button>
@@ -165,6 +174,7 @@ const ProductsCatalog: React.FC<Props> = ({ products, title }) => {
               type="button"
               disabled={currentPage === buttons.length}
               onClick={() => setCurrentPage(currentPage + 1)}
+              data-cy="paginationRight"
             >
               <IconSlideRight />
             </button>
