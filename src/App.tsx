@@ -3,6 +3,7 @@ import './App.scss';
 import { Footer } from './components/Footer/Footer';
 import { NavBar } from './components/NavBar/NavBar';
 import { HomePage } from './pages/HomePage';
+import { PhonesPage } from './pages/PhonesPage';
 
 const App = () => (
   <div className="App">
@@ -15,6 +16,8 @@ const App = () => (
         <Route path="/" element={<HomePage />} />
         <Route index element={<HomePage />} />
         <Route path="/home" element={<Navigate to="/" replace />} />
+
+        <Route path="/phones" element={<PhonesPage />} />
       </Routes>
     </main>
 

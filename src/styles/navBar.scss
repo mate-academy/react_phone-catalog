@@ -57,6 +57,7 @@
     display: block;
     padding: 24px;
     border-right: 1px solid $gray;
+    border-left: 1px solid $gray;
 
     &--favs {
       background-image: url("../assets/favourites.svg");

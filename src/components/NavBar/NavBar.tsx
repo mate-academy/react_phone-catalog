@@ -1,10 +1,11 @@
 import { Link, NavLink, useLocation } from 'react-router-dom';
-
+import classNames from 'classnames';
 import { SearchForm } from './SearchForm';
 import { Logo } from '../Logo/Logo';
 
 export const NavBar = () => {
   const location = useLocation();
+  const shouldShowSearchForm = location.pathname !== '/';
 
   return (
     <nav className="navbar">
@@ -13,21 +14,27 @@ export const NavBar = () => {
 
         <NavLink
           to="/"
-          className={`navbar__item ${location.pathname === '/' ? 'navbar__item--active' : ''}`}
+          className={classNames('navbar__item', {
+            'navbar__item--active': location.pathname === '/',
+          })}
         >
           home
         </NavLink>
 
         <NavLink
           to="/phones"
-          className={`navbar__item ${location.pathname === '/phones' ? 'navbar__item--active' : ''}`}
+          className={classNames('navbar__item', {
+            'navbar__item--active': location.pathname === '/phones',
+          })}
         >
           phones
         </NavLink>
 
         <NavLink
           to="/tablets"
-          className={`navbar__item ${location.pathname === '/tablets' ? 'navbar__item--active' : ''}`}
+          className={classNames('navbar__item', {
+            'navbar__item--active': location.pathname === '/tablets',
+          })}
         >
           tablets
         </NavLink>
@@ -41,7 +48,7 @@ export const NavBar = () => {
       </ul>
 
       <div className="navbar__icons">
-        <SearchForm />
+        {shouldShowSearchForm && <SearchForm />}
 
         <Link to="/" className="navbar__icon">
           <div className="navbar__icon--favs" />

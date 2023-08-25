@@ -1,11 +1,15 @@
 import { Link } from 'react-router-dom';
+import { useProducts } from '../../context/ProductContext';
+import { getPhones } from '../ProductsList/ProductsList';
 
 export const ShopByCategory = () => {
+  const { products } = useProducts();
+  const phones = getPhones(products);
   const data = [
     {
       img: 'phones.png',
       title: 'Mobile phones',
-      quantity: '95 models',
+      quantity: `${phones.length} models`,
     },
     {
       img: 'tablets.png',

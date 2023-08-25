@@ -86,7 +86,7 @@ export const ProductSlider: React.FC<Props> = ({
               style={{
                 transform: `translateX(-${currIndex * (itemWidth + gap)}px)`,
                 transition: `${animationDuration}ms`,
-                width: `${(itemWidth + gap)}px`,
+                width: `${(itemWidth)}px`,
               }}
             >
               <ProductCard product={product} />
