@@ -47,7 +47,7 @@ export const PhoneSlider: React.FC<Props> = ({
                 },
               )}
               onClick={() => setStart((prev) => prev - 1)}
-              disabled={start === 0}
+              disabled={!start}
             >
               <p hidden>
                 left button
@@ -63,7 +63,7 @@ export const PhoneSlider: React.FC<Props> = ({
                 },
               )}
               onClick={() => setStart((prev) => prev + 1)}
-              disabled={end === 0}
+              disabled={!end}
             >
               <p hidden>
                 right button

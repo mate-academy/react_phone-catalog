@@ -48,6 +48,10 @@ export const Cart: React.FC<Props> = ({ cartProducts, setCartProducts }) => {
     setCartProducts(updatedCartItems);
   };
 
+  const totalItemsCount = cartProducts.reduce(
+    (totalCount, cartItem) => totalCount + cartItem.quantity, 0,
+  );
+
   return (
     <div className="cart">
       <div className="cart__content">
@@ -130,7 +134,7 @@ export const Cart: React.FC<Props> = ({ cartProducts, setCartProducts }) => {
                     </h1>
 
                     <p className="checkout__subtitle">
-                      {`Total for ${cartProducts.length} items`}
+                      {`Total for ${totalItemsCount} items`}
                     </p>
 
                     <button

@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useParams, Navigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { MainNavigation } from '../../components/MainNavigation/MainNavigation';
 import './PhoneDetails.scss';
@@ -39,6 +39,8 @@ export const PhoneDetails: React.FC<Props> = ({
   const [product, setProduct] = useState<ProductDetails | null>(null);
   const [mainImg, setMainImg] = useState<string | null>(null);
   const { productId = '' } = useParams();
+  const [phoneCheck, setPhoneCheck] = useState(null);
+  const [notFound, setNotFound] = useState(false);
 
   const loadProduct = async () => {
     try {
@@ -65,6 +67,28 @@ export const PhoneDetails: React.FC<Props> = ({
     }
   }, [product?.images]);
 
+  useEffect(() => {
+    async function fetchPhone() {
+      try {
+        const fetchedPhone = await getPhonesDetails(productId);
+
+        if (!fetchedPhone) {
+          setNotFound(true);
+        } else {
+          setPhoneCheck(fetchedPhone);
+        }
+      } catch (error) {
+        setNotFound(true);
+      }
+    }
+
+    fetchPhone();
+  }, [productId]);
+
+  if (notFound) {
+    return <Navigate to="/not-found" />;
+  }
+
   const onClickHandle = (img: string) => {
     setMainImg(img);
   };
@@ -73,11 +97,11 @@ export const PhoneDetails: React.FC<Props> = ({
     return null;
   }
 
-  if (isLoading) {
+  if (isLoading && !phoneCheck) {
     return <Loader />;
   }
 
-  const mixedPhones = phones.sort((a: Phone, b:Phone) => b.year - a.year);
+  const mixedPhones = phones.sort((a: Phone, b: Phone) => b.year - a.year);
 
   const foundPhone = phones.find((phone) => phone.phoneId === product?.id);
 

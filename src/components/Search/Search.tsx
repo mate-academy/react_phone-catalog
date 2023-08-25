@@ -22,14 +22,21 @@ export const Search: React.FC = () => {
 
   let searchText = '';
 
-  if (location.pathname === '/phones') {
-    searchText = 'Search in phones...';
-  } else if (location.pathname === '/tablets') {
-    searchText = 'Search in tablets...';
-  } else if (location.pathname === '/accessories') {
-    searchText = 'Search in accessories...';
-  } else if (location.pathname === '/favourites') {
-    searchText = 'Search in favorites...';
+  switch (location.pathname) {
+    case '/phones':
+      searchText = 'Search in phones...';
+      break;
+    case '/tablets':
+      searchText = 'Search in tablets...';
+      break;
+    case '/accessories':
+      searchText = 'Search in accessories...';
+      break;
+    case '/favourites':
+      searchText = 'Search in favorites...';
+      break;
+    default:
+      break;
   }
 
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
