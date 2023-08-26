@@ -18,7 +18,7 @@ interface CardProductProps {
 const CartProduct: React.FC<CardProductProps> = ({
   product, setStorage, setVisibleProducts, updateProductAmount,
 }) => {
-  const { id, name, price } = product;
+  const { id, name, price, imageUrl } = product;
   const [
     currentAmount, setCurrentAmount,
   ] = useState<number>(getAmountOfProducts(id));
@@ -40,8 +40,8 @@ const CartProduct: React.FC<CardProductProps> = ({
           <CloseIcon />
         </button>
         <img
-          src="https://placehold.co/66x66"
-          alt=""
+          src={imageUrl}
+          alt={name}
           className="cart__product--photo"
         />
         <p className="cart__product--name">{name}</p>
@@ -59,7 +59,7 @@ const CartProduct: React.FC<CardProductProps> = ({
             }}
             disabled={currentAmount === 1}
           >
-            <MinusIcon color="#E2E6E9" />
+            <MinusIcon color={currentAmount === 1 ? '#E2E6E9' : '#313237'} />
           </button>
 
           <p

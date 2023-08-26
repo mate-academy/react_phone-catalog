@@ -16,7 +16,6 @@
     }
 
     &--other * {
-      background-color: red;
       width: 76px;
       height: 76px;
     }
@@ -30,7 +29,6 @@
     &--is-shown {
       width: 442px;
       height: 442px;
-      background-color: yellow;
     }
 
     &--small {
@@ -58,19 +56,18 @@
     max-width: 500px;
 
     &--title {
-      color: #313237;
+      color: $dark-gray;
       font-family: Mont;
       font-size: 22px;
       font-style: normal;
       font-weight: 700;
       line-height: 140%;
-      border-bottom: 1px solid #e2e6e9;
+      border-bottom: 1px solid $light-gray;
       padding-bottom: 16px;
     }
 
     &--paragraph {
-      color: #89939A;
-      /* Body text 14 */
+      color: $gray-secondary;
       font-family: Mont;
       font-size: 14px;
       font-style: normal;
@@ -89,8 +86,7 @@
       justify-content: space-between;
 
       &--name {
-        color: var(--gray-secondary, #89939A);
-        /* Body text 14 */
+        color: var(--gray-secondary, $gray-secondary);
         font-family: Mont;
         font-size: 14px;
         font-style: normal;
@@ -99,9 +95,8 @@
       }
 
       &--value {
-        color: var(--gray-primary, #313237);
+        color: var(--gray-primary, $dark-gray);
         text-align: right;
-        /* Body text 14 */
         font-family: Mont;
         font-size: 14px;
         font-style: normal;

@@ -1,35 +1,8 @@
-/* eslint-disable max-len */
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { IconSlideLeft, IconSlideRight } from '../../utils/Icons';
-
-const banner1 = '../assets/images/banner1.jpg';
-const banner2 = '../assets/images/banner2.jpg';
-const banner3 = '../assets/images/banner3.jpg';
-// import banner1 from '../assets/images/banner1.jpg';
-// import banner2 from '../assets/images/banner2.jpg';
-// import banner3 from '../assets/images/banner3.png';
-
-const getImageSource = (index: number) => {
-  switch (index) {
-    case 1:
-      return banner1;
-    case 2:
-      return banner2;
-    default:
-      return banner3;
-  }
-};
 
 const Aside = () => {
   const [imageIndex, setImageIndex] = useState(1);
-  const imageSource = useMemo(() => getImageSource(imageIndex), [imageIndex]);
-
-  const divStyle = useMemo(
-    () => ({
-      backgroundImage: `url(${imageSource})`,
-    }),
-    [imageIndex, imageSource],
-  );
 
   const barColor = useMemo(() => (index: number) => {
     if (imageIndex === index) {
@@ -40,6 +13,20 @@ const Aside = () => {
   },
   [imageIndex]);
 
+  const advanceImage = () => {
+    if (imageIndex === 3) {
+      setImageIndex(1);
+    } else {
+      setImageIndex(imageIndex + 1);
+    }
+  };
+
+  useEffect(() => {
+    const interval = setInterval(advanceImage, 5000);
+
+    return () => clearInterval(interval);
+  }, [imageIndex]);
+
   return (
     <aside className="banner">
       <div className="container">
@@ -47,21 +34,25 @@ const Aside = () => {
           <button
             type="button"
             className="banner__slide-left slide-switcher"
-            onClick={() => setImageIndex(imageIndex - 1)}
-            disabled={imageIndex === 1}
+            onClick={() => {
+              if (imageIndex === 1) {
+                setImageIndex(3);
+              } else {
+                setImageIndex(imageIndex - 1);
+              }
+            }}
           >
             <IconSlideLeft />
           </button>
 
           <div className="banner__phones-images">
-            <div className="banner__image" style={divStyle} />
+            <div className={`banner__image banner-image banner-image--${imageIndex}`} />
           </div>
 
           <button
             type="button"
             className="banner__slide-right slide-switcher"
-            onClick={() => setImageIndex(imageIndex + 1)}
-            disabled={imageIndex === 3}
+            onClick={() => advanceImage()}
           >
             <IconSlideRight />
           </button>

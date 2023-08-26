@@ -1,5 +1,5 @@
 .footer {
-  box-shadow: 0px -1px 0px 0px #E2E6E9;
+  box-shadow: 0px -1px 0px 0px $light-gray;
   margin-top: 80px;
 
   &__content {
@@ -20,7 +20,7 @@
 
     &--caption {
       font-family: Mont;
-      color: #89939A;
+      color: $gray-secondary;
       font-size: 12px;
       font-style: normal;
       font-weight: 600;

@@ -10,6 +10,7 @@ export enum LocaleDataTypes {
 export function setStorage(id: string, data: LocaleDataTypes) {
   getProducts().then((products) => {
     const product = products.find((p: Product) => p.id === id);
+    const newProduct = { amount: 1, ...product };
 
     const productsList = localStorage.getItem(data);
 
@@ -19,7 +20,7 @@ export function setStorage(id: string, data: LocaleDataTypes) {
       delete productsListObj[id];
       localStorage.setItem(data, JSON.stringify(productsListObj));
     } else {
-      productsListObj[id] = product;
+      productsListObj[id] = newProduct;
       localStorage.setItem(data, JSON.stringify(productsListObj));
     }
   });

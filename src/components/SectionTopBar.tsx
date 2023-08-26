@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import React from 'react';
 import { Product } from '../types/Phone';
 import { IconSlideLeft, IconSlideRight } from '../utils/Icons';
@@ -6,14 +5,13 @@ import { IconSlideLeft, IconSlideRight } from '../utils/Icons';
 interface Props {
   title: string;
   currentIndex: number;
-  setCurrentIndex:React.Dispatch<React.SetStateAction<number>>
-  // productsLength: number;
+  setCurrentIndex:React.Dispatch<React.SetStateAction<number>>;
   productsPerPage: number;
   filteredProducts: Product[]
 }
 
 const SectionTopBar: React.FC<Props> = ({
-  title, currentIndex, setCurrentIndex, productsPerPage, filteredProducts, // productsLength
+  title, currentIndex, setCurrentIndex, productsPerPage, filteredProducts,
 }) => {
   const maxIndex = filteredProducts.length - productsPerPage;
 
@@ -30,11 +28,21 @@ const SectionTopBar: React.FC<Props> = ({
       <h2 className="section__title">{title}</h2>
 
       <div className="section__buttons-container">
-        <button disabled={currentIndex === 0} type="button" className="section__button slider-button" onClick={prevSlide}>
+        <button
+          disabled={currentIndex === 0}
+          type="button"
+          className="section__button slider-button"
+          onClick={() => prevSlide}
+        >
           <IconSlideLeft />
         </button>
 
-        <button disabled={currentIndex === maxIndex} type="button" className="section__button slider-button" onClick={nextSlide}>
+        <button
+          disabled={currentIndex === maxIndex}
+          type="button"
+          className="section__button slider-button"
+          onClick={() => nextSlide}
+        >
           <IconSlideRight />
         </button>
       </div>

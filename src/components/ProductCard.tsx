@@ -1,11 +1,7 @@
-/* eslint-disable max-len */
-
 import React, { useState } from 'react';
 import classNames from 'classnames';
 import { Link, useLocation } from 'react-router-dom';
 import { Product } from '../types/Phone';
-import '../styles/App.scss';
-import '../styles/ProductCard.scss';
 import { getPrevPrice } from '../utils/getPrevPrice';
 import { LocaleDataTypes, isAdded, setStorage } from '../utils/localeStorage';
 import { RedHeart, WhiteHeart } from '../utils/Icons';
@@ -22,32 +18,43 @@ const ProductCard: React.FC<Props> = ({ product, setVisibleProducts }) => {
     capacity,
     discount,
     id,
-    // imageUrl,
+    imageUrl,
     name,
     price,
     ram,
     screen,
-    // type,
   } = product;
 
-  const [isFavorite, setIsFavorite] = useState<boolean>(isAdded(id, LocaleDataTypes.FAVORITES));
-  const [isAddedToCart, setIsAddedToCart] = useState<boolean>(isAdded(id, LocaleDataTypes.CART));
+  const [
+    isFavorite,
+    setIsFavorite,
+  ] = useState<boolean>(isAdded(id, LocaleDataTypes.FAVORITES));
+
+  const [
+    isAddedToCart,
+    setIsAddedToCart,
+  ] = useState<boolean>(isAdded(id, LocaleDataTypes.CART));
 
   const handleFavoriteButtonClick = () => {
     setStorage(id, LocaleDataTypes.FAVORITES);
     setIsFavorite(!isAdded(id, LocaleDataTypes.FAVORITES));
 
     if (setVisibleProducts) {
-      setVisibleProducts(prevProds => [...prevProds].filter(prevProduct => prevProduct.id !== product.id));
+      setVisibleProducts(prevProds => [...prevProds].filter(
+        prevProduct => prevProduct.id !== product.id,
+      ));
     }
   };
 
   return (
-    <article data-cy="cardsContainer" className="browse-products__product product-card">
+    <article
+      data-cy="cardsContainer"
+      className="browse-products__product product-card"
+    >
       <div className="product__wrapper">
         <img
-          className="product-card__product--image"
-          src="https://placehold.co/208x208/png"
+          className="product-card--image"
+          src={`${imageUrl}`}
           alt={`${name}`}
         />
         <div className="product-card--info">
@@ -70,8 +77,16 @@ const ProductCard: React.FC<Props> = ({ product, setVisibleProducts }) => {
         </div>
         <div className="product-card--features">
           <div className="product-card--feature">
-            <h4 className="product-card--feature-title">{screen && 'Screen'}</h4>
-            <p className="product-card--feature-value">{screen || 'No information'}</p>
+            <h4
+              className="product-card--feature-title"
+            >
+              Screen
+            </h4>
+            <p
+              className="product-card--feature-value"
+            >
+              {screen || 'No information'}
+            </p>
           </div>
 
           <div className="product-card--feature">
@@ -82,7 +97,11 @@ const ProductCard: React.FC<Props> = ({ product, setVisibleProducts }) => {
           </div>
           <div className="product-card--feature">
             <p className="product-card--feature-title">RAM</p>
-            <p className="product-card--feature-value">{ram || 'No information'}</p>
+            <p
+              className="product-card--feature-value"
+            >
+              {ram || 'No information'}
+            </p>
           </div>
         </div>
         <div className="product-card--buttons">

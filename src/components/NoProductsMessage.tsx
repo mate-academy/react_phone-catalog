@@ -1,5 +1,4 @@
 import React from 'react';
-import '../styles/NoProductMessage.scss';
 
 interface Props {
   title: string;

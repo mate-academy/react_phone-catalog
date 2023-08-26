@@ -1,11 +1,11 @@
 import Aside from '../Blocks/Aside';
-import Main from '../Blocks/Main';
+import HomePage from '../Blocks/HomePage';
 
 const Home = () => {
   return (
     <>
       <Aside />
-      <Main />
+      <HomePage />
     </>
   );
 };

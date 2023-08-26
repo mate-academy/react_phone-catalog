@@ -9,16 +9,51 @@ interface SelectProps {
   searchParam: string;
   selectSortLink: SelectSortLink[] | SelectAmountLink[];
   setSortQuery: React.Dispatch<React.SetStateAction<SortType>> | null;
-  setProductsPerPage: React.Dispatch<React.SetStateAction<number>> | null
+  setProductsPerPage: React.Dispatch<React.SetStateAction<number>> | null;
+  sortQuery: SortType;
+  productsPerPage: number
 }
 
+const sortQueryTitle = (query: SortType) => {
+  switch (query) {
+    case SortType.NAME: {
+      return 'Alphabetically';
+    }
+
+    case SortType.PRICE_ASC: {
+      return 'Cheapest';
+    }
+
+    case SortType.PRICE_DESC: {
+      return 'Most expensive';
+    }
+
+    default:
+    case SortType.NEWEST: {
+      return 'Newest';
+    }
+  }
+};
+
 const CustomSelect: React.FC<SelectProps> = ({
-  selectSortLink, setSortQuery, setProductsPerPage, searchParam, title,
+  selectSortLink,
+  setSortQuery,
+  setProductsPerPage,
+  searchParam,
+  title,
+  sortQuery,
+  productsPerPage,
 }) => {
   const [searchParams] = useSearchParams();
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
-  const [currentSort, setCurrentSort] = useState<string>('Newest');
-  const [currentAmount, setCurrentAmount] = useState<string>('4');
+
+  const [currentSort, setCurrentSort] = useState<string>(
+    sortQueryTitle(sortQuery),
+  );
+  const [currentAmount, setCurrentAmount] = useState<string>(
+    productsPerPage.toString(),
+  );
+
   const location = useLocation();
 
   const generateSelectURL = (value: SortType | string) => {
@@ -31,6 +66,20 @@ const CustomSelect: React.FC<SelectProps> = ({
     }
 
     return `${location.pathname}?${currentParams.toString()}`;
+  };
+
+  const handleLinkClick = (link: SelectAmountLink | SelectSortLink) => {
+    if (setSortQuery) {
+      setSortQuery(link.value as SortType);
+      setCurrentSort(link.title);
+    }
+
+    if (setProductsPerPage) {
+      setProductsPerPage(Number(link.value));
+      setCurrentAmount(link.value);
+    }
+
+    setIsDropdownOpen(false);
   };
 
   return (
@@ -63,19 +112,7 @@ const CustomSelect: React.FC<SelectProps> = ({
               <Link
                 to={generateSelectURL(link.value)}
                 className="custom-select__option--link"
-                onClick={() => {
-                  if (setSortQuery) {
-                    setSortQuery(link.value as SortType);
-                    setCurrentSort(link.title);
-                  }
-
-                  if (setProductsPerPage) {
-                    setProductsPerPage(Number(link.value));
-                    setCurrentAmount(link.value);
-                  }
-
-                  setIsDropdownOpen(false);
-                }}
+                onClick={() => handleLinkClick(link)}
               >
                 {link.title}
               </Link>

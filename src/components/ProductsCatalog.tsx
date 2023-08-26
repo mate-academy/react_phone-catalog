@@ -1,8 +1,7 @@
-/* eslint-disable max-len */
 import React, { useState, useMemo } from 'react';
 import classNames from 'classnames';
+import { useSearchParams } from 'react-router-dom';
 import { Product } from '../types/Phone';
-// import { ProductType, getProductsWithType } from '../api/getProducts';
 import ProductCard from './ProductCard';
 import {
   IconSlideLeft, IconSlideRight,
@@ -11,8 +10,6 @@ import { SortType } from '../types/SortType';
 import AsideRoute from './AsideRoute';
 import { selectAmountLink, selectSortLink } from '../utils/selectLinks';
 import CustomSelect from './CustomSelect';
-// import { useSearchParams } from 'react-router-dom';
-// import { ProductType } from '../api/getProducts';
 
 interface Props {
   title: string;
@@ -27,9 +24,20 @@ const {
 } = SortType;
 
 const ProductsCatalog: React.FC<Props> = ({ products, title }) => {
-  const [productsPerPage, setProductsPerPage] = useState<number>(4);
+  const [searchParams] = useSearchParams();
+  const initialAmount = searchParams.get('items-per-page');
+  const initialSortQuery = searchParams.get('sort');
+
+  const [
+    productsPerPage,
+    setProductsPerPage,
+  ] = useState<number>(initialAmount ? +initialAmount : 4);
+
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const [sortQuery, setSortQuery] = useState<SortType>(NEWEST);
+
+  const [
+    sortQuery, setSortQuery,
+  ] = useState<SortType>(initialSortQuery as SortType || NEWEST);
 
   const currentIndex = useMemo(() => {
     if (currentPage === 1) {
@@ -40,7 +48,9 @@ const ProductsCatalog: React.FC<Props> = ({ products, title }) => {
   }, [currentPage, productsPerPage]);
 
   const visibleProducts = useMemo(() => {
-    const productsOnPage = products.slice(currentIndex, currentIndex + productsPerPage);
+    const productsOnPage = products.slice(
+      currentIndex, currentIndex + (productsPerPage || -1),
+    );
 
     return [...productsOnPage].sort((product1: Product, product2: Product) => {
       switch (sortQuery) {
@@ -94,6 +104,8 @@ const ProductsCatalog: React.FC<Props> = ({ products, title }) => {
             selectSortLink={selectSortLink}
             setSortQuery={setSortQuery}
             setProductsPerPage={null}
+            sortQuery={sortQuery}
+            productsPerPage={productsPerPage}
           />
 
           <CustomSelect
@@ -102,39 +114,9 @@ const ProductsCatalog: React.FC<Props> = ({ products, title }) => {
             selectSortLink={selectAmountLink}
             setSortQuery={null}
             setProductsPerPage={setProductsPerPage}
+            sortQuery={sortQuery}
+            productsPerPage={productsPerPage}
           />
-          {/* <label htmlFor="sort" className="section-catalog__items-displaying--wrapper">
-            Sort by
-
-            <select
-              name="sort-order"
-              id="sort"
-              className="section-catalog__items-displaying--select"
-              onChange={(event) => setSortQuery(event.target.value as SortType)}
-            >
-              <option value="age">Newest</option>
-              <option value="name">Alphabetically</option>
-              <option value="price-asc">Cheapest</option>
-              <option value="price-desc">Most expensive</option>
-            </select>
-          </label> */}
-
-          {/* <label htmlFor="amount" className="section-catalog__items-displaying--wrapper">
-            Items on page
-
-            <select
-              name="amount"
-              id="amount"
-              className="section-catalog__items-displaying--select"
-              defaultValue={productsPerPage.toString()}
-              onChange={(event) => setProductsPerPage(+event.target.value || products.length)}
-            >
-              <option value="4">4</option>
-              <option value="8">8</option>
-              <option value="16">16</option>
-              <option value="All ">All</option>
-            </select>
-          </label> */}
         </div>
 
         <div className="section-catalog__products catalog">

@@ -95,7 +95,7 @@
   width: 40px;
   height: 40px;
   background: transparent;
-  border: 1px solid #b4bdc3;
+  border: 1px solid $icons-border;
   display: flex;
   justify-content: center;
   align-items: center;

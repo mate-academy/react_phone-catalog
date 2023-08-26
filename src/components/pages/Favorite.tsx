@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import { useState, useEffect } from 'react';
 import { Product } from '../../types/Phone';
 import AsideRoute from '../AsideRoute';
@@ -9,10 +8,13 @@ interface FavoritesProps {
   setCurrentProduct: React.Dispatch<React.SetStateAction<string>>
 }
 
-/* eslint-disable no-console */
 const Favorite: React.FC<FavoritesProps> = ({ setCurrentProduct }) => {
   const products = localStorage.getItem(LocaleDataTypes.FAVORITES);
-  const favoriteProducts: Product[] = products ? Object.values(JSON.parse(products)) : [];
+
+  const favoriteProducts: Product[] = products
+    ? Object.values(JSON.parse(products))
+    : [];
+
   const [visibleProducts, setVisibleProducts] = useState<Product[]>([]);
 
   useEffect(() => {
@@ -38,7 +40,11 @@ const Favorite: React.FC<FavoritesProps> = ({ setCurrentProduct }) => {
 
         <div className="added-items catalog">
           {visibleProducts?.map((product) => (
-            <ProductCard key={product.id} product={product} setVisibleProducts={setVisibleProducts} />
+            <ProductCard
+              key={product.id}
+              product={product}
+              setVisibleProducts={setVisibleProducts}
+            />
           ))}
         </div>
       </section>

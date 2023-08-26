@@ -116,7 +116,7 @@ input[type=search]::-webkit-search-results-decoration {
   width: 32px;
   height: 400px;
   background-color: rgb(248, 248, 248);
-  border: 1px solid #B4BDC3;
+  border: 1px solid $icons-border;
 }
 .slide-switcher:disabled {
   background-color: white;
@@ -278,7 +278,7 @@ h3 {
 }
 .section-product__description--paragraph {
   color: #89939A;
-  /* Body text 14 */
+
   font-family: Mont;
   font-size: 14px;
   font-style: normal;
@@ -296,7 +296,7 @@ h3 {
 }
 .section-product__description--feature--name {
   color: var(--gray-secondary, #89939A);
-  /* Body text 14 */
+
   font-family: Mont;
   font-size: 14px;
   font-style: normal;
@@ -306,7 +306,7 @@ h3 {
 .section-product__description--feature--value {
   color: var(--gray-primary, #313237);
   text-align: right;
-  /* Body text 14 */
+
   font-family: Mont;
   font-size: 14px;
   font-style: normal;
@@ -491,7 +491,7 @@ h3 {
 .cart__product--name {
   max-width: 295px;
   color: var(--gray-primary, #313237);
-  /* Body text 14 */
+
   font-family: Mont;
   font-size: 14px;
   font-style: normal;
@@ -507,19 +507,19 @@ h3 {
   width: 32px;
   height: 32px;
   background: transparent;
-  border: 1px solid var(--gray-icons-placeholders, #B4BDC3);
+  border: 1px solid var(--gray-icons-placeholders, $icons-border);
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .cart__product--price {
   color: var(--gray-primary, #313237);
-  /* H2 */
+
   font-family: Mont;
   font-size: 22px;
   font-style: normal;
   font-weight: 700;
-  line-height: 140%; /* 30.8px */
+  line-height: 140%;
 }
 .cart__purchase {
   padding: 24px;
@@ -539,7 +539,7 @@ h3 {
 .cart__purchase--total--amount {
   color: var(--gray-secondary, #89939A);
   text-align: center;
-  /* Body text 14 */
+
   font-family: Mont;
   font-size: 14px;
   font-style: normal;
@@ -579,7 +579,7 @@ h3 {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid #B4BDC3;
+  border: 1px solid $icons-border;
 }
 .slider-button:disabled {
   border: 1px solid #E2E6E9;
@@ -600,7 +600,6 @@ h3 {
 }
 .link-go-back__caption {
   color: var(--gray-secondary, #89939A);
-  /* Small text 12 */
   font-family: Mont;
   font-size: 12px;
   font-style: normal;

@@ -14,6 +14,7 @@ $aside-height: 400px;
     width: 1040px;
 
     background-size: contain;
+    background-position: center center;
     background-repeat: no-repeat;
   }
 
@@ -32,11 +33,19 @@ $aside-height: 400px;
   width: 32px;
   height: $aside-height;
 
-  background-color: rgb(248, 248, 248);
-  // border: 1px solid var(--gray-icons-placeholders, #B4BDC3);
-  border: 1px solid #B4BDC3;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid $icons-border;
+}
 
-  &:disabled {
-    background-color: white;
+.banner-image {
+  &--1 {
+    background-image: url('../../assets/images/banner1.jpg');
+  }
+  &--2 {
+    background-image: url('../../assets/images/banner2.jpg');
+  }
+  &--3 {
+    background-image: url('../../assets/images/banner3.png');
   }
 }
+

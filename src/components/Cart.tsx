@@ -1,8 +1,4 @@
-/* eslint-disable jsx-a11y/control-has-associated-label */
 import { useEffect, useMemo, useState } from 'react';
-// import {
-//   CloseIcon, MinusIcon, PlusIcon,
-// } from '../utils/Icons';
 import { Product } from '../types/Phone';
 import {
   LocaleDataTypes, setStorage,

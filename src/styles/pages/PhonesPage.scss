@@ -1,3 +1,5 @@
+@import '../vars.scss';
+
 .catalog {
   display: grid;
   grid-template-columns: repeat(4, 272px);
@@ -10,18 +12,16 @@
   height: 32px;
   background: transparent;
 
-  // border: 1px solid var(--gray-elements, #E2E6E9);
-  border: 1px solid #e2e6e9;
+  border: 1px solid $light-gray;
 
   &:hover {
-    // border: 1px solid var(--gray-primary, #313237);
-    border: 1px solid #313237;
+    border: 1px solid $dark-gray;
   }
 }
 
 .button-is-active {
   color: #fff;
-  background-color: #313237;
+  background-color: $dark-gray;
 }
 
 .main-catalog {
@@ -29,9 +29,7 @@
 
   .section-catalog {
     &__caption {
-      // color: var(--gray-secondary, #89939A);
-      /* Body text 14 */
-      color: #89939A;
+      color: $gray-secondary;
       font-family: Mont;
       font-size: 14px;
       font-style: normal;
@@ -49,9 +47,7 @@
         flex-direction: column;
         gap: 4px;
 
-        // color: var(--gray-secondary, #89939A);
-        color: #89939A;
-        /* Small text 12 */
+        color: $gray-secondary;
         font-family: Mont;
         font-size: 12px;
         font-style: normal;
@@ -63,23 +59,20 @@
         width: 176px;
         height: 40px;
         padding: 10px;
-        // color: var(--gray-primary, #313237);
-        /* Buttons */
-        color: #313237;
+        color: $dark-gray;
         font-family: Mont;
         font-size: 14px;
         font-style: normal;
         font-weight: 600;
-        line-height: 21px; /* 150% */
-        // border: 1px solid var(--gray-icons-placeholders, #B4BDC3);
-        border: 1px solid #b4bdc3;
+        line-height: 21px;
+        border: 1px solid $icons-border;
 
         &:hover {
-          border: 1px solid var(--gray-secondary, #89939A);
+          border: 1px solid var(--gray-secondary, $gray-secondary);
         }
 
         &:focus {
-          border: 1px solid var(--gray-primary, #313237);
+          border: 1px solid var(--gray-primary, $dark-gray);
           outline: none;
         }
       }
@@ -90,12 +83,11 @@
         font-style: normal;
         font-weight: 500;
         line-height: 21px;
-        color: var(--gray-secondary, #89939A);
+        color: var(--gray-secondary, $gray-secondary);
         height: 50px;
-        // background-color: red;
 
         &:hover {
-          color: var(--gray-primary, #313237);
+          color: var(--gray-primary, $dark-gray);
         }
       }
     }

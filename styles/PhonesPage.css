@@ -25,7 +25,7 @@
   margin-top: 80px;
 }
 .main-catalog .section-catalog__caption {
-  /* Body text 14 */
+
   color: #89939A;
   font-family: Mont;
   font-size: 14px;
@@ -43,7 +43,6 @@
   flex-direction: column;
   gap: 4px;
   color: #89939A;
-  /* Small text 12 */
   font-family: Mont;
   font-size: 12px;
   font-style: normal;
@@ -54,14 +53,13 @@
   width: 176px;
   height: 40px;
   padding: 10px;
-  /* Buttons */
   color: #313237;
   font-family: Mont;
   font-size: 14px;
   font-style: normal;
   font-weight: 600;
-  line-height: 21px; /* 150% */
-  border: 1px solid #b4bdc3;
+  line-height: 21px;
+  border: 1px solid $icons-border;
 }
 .main-catalog .section-catalog__products {
   margin-top: 24px;

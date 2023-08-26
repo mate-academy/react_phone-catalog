@@ -59,7 +59,7 @@
 }
 .section-product__description--paragraph {
   color: #89939A;
-  /* Body text 14 */
+
   font-family: Mont;
   font-size: 14px;
   font-style: normal;
@@ -77,7 +77,7 @@
 }
 .section-product__description--feature--name {
   color: var(--gray-secondary, #89939A);
-  /* Body text 14 */
+
   font-family: Mont;
   font-size: 14px;
   font-style: normal;
@@ -87,7 +87,7 @@
 .section-product__description--feature--value {
   color: var(--gray-primary, #313237);
   text-align: right;
-  /* Body text 14 */
+
   font-family: Mont;
   font-size: 14px;
   font-style: normal;

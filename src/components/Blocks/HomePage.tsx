@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ProductType, getProducts } from '../../api/getProducts';
@@ -18,7 +17,7 @@ const productsAmountInfo = (products: Product[] | undefined) => {
   return `${products.length} models`;
 };
 
-const Main = () => {
+const HomePage = () => {
   const [products, setProducts] = useState<Product[] | null>(null);
 
   const [currentIndexOfHot, setCurrentIndexOfHot] = useState(0);
@@ -29,11 +28,25 @@ const Main = () => {
     getProducts().then((productsFromAPI) => setProducts(productsFromAPI));
   }, []);
 
-  const productsWithDiscount = useMemo(() => products?.filter((product) => product.discount > 0), [products]);
-  const newProducts = useMemo(() => products?.filter((product) => product.discount === 0), [products]);
-  const phones = useMemo(() => products?.filter((product) => product.type === ProductType.PHONE), [products]);
-  const tablets = useMemo(() => products?.filter((product) => product.type === ProductType.TABLET), [products]);
-  const accessories = useMemo(() => products?.filter((product) => product.type === ProductType.ACCESSORY), [products]);
+  const productsWithDiscount = useMemo(() => products?.filter(
+    (product) => product.discount > 0,
+  ), [products]);
+
+  const newProducts = useMemo(() => products?.filter(
+    (product) => product.discount === 0,
+  ), [products]);
+
+  const phones = useMemo(() => products?.filter(
+    (product) => product.type === ProductType.PHONE,
+  ), [products]);
+
+  const tablets = useMemo(() => products?.filter(
+    (product) => product.type === ProductType.TABLET,
+  ), [products]);
+
+  const accessories = useMemo(() => products?.filter(
+    (product) => product.type === ProductType.ACCESSORY,
+  ), [products]);
 
   const visibleHotPrices = useMemo(() => productsWithDiscount?.slice(
     currentIndexOfHot, currentIndexOfHot + productsPerPage,
@@ -108,7 +121,6 @@ const Main = () => {
       <section className="section">
         <SectionTopBar
           title="Brand new models"
-          // productsLength={newProducts?.length || 0}
           currentIndex={currentIndexOfNew}
           setCurrentIndex={setCurrentIndexOfNew}
           productsPerPage={productsPerPage}
@@ -125,4 +137,4 @@ const Main = () => {
   );
 };
 
-export default Main;
+export default HomePage;

@@ -13,7 +13,9 @@ interface Props {
 const AsideRoute: React.FC<Props> = ({ pageTitle, product, productName }) => {
   const title = useMemo(() => {
     if (product) {
-      return product.type !== ProductType.ACCESSORY ? `${product.type[0].toUpperCase() + product.type.slice(1)}s` : 'Accessories';
+      return product.type !== ProductType.ACCESSORY
+        ? `${product.type[0].toUpperCase() + product.type.slice(1)}s`
+        : 'Accessories';
     }
 
     return pageTitle;

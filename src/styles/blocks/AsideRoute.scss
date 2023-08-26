@@ -5,7 +5,7 @@
 }
 
 .aside-route * {
-  color: var(--gray-secondary, #89939A);
+  color: var(--gray-secondary, $gray-secondary);
   font-family: Mont;
   font-size: 12px;
   font-style: normal;
@@ -13,6 +13,6 @@
   line-height: normal;
 
   &:hover {
-    color: var(--gray-primary, #313237);
+    color: var(--gray-primary, $dark-gray);
   }
 }
