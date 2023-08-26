@@ -49,14 +49,13 @@
       border-radius: 5px;
 
       &:hover {
-        background: rgba(187, 187, 187, 0.192)
+        background: rgba(187, 187, 187, 0.19);
       }
     }
 
     &--name {
       max-width: 295px;
       color: var(--gray-primary, $dark-gray);
-      font-family: Mont;
       font-size: 14px;
       font-style: normal;
       font-weight: 500;
@@ -81,7 +80,6 @@
 
     &--price {
       color: var(--gray-primary, $dark-gray);
-      font-family: Mont;
       font-size: 22px;
       font-style: normal;
       font-weight: 700;
@@ -106,7 +104,6 @@
       &--amount {
         color: var(--gray-secondary, $gray-secondary);
         text-align: center;
-        font-family: Mont;
         font-size: 14px;
         font-style: normal;
         font-weight: 500;
@@ -119,9 +116,8 @@
       width: 100% !important;
       height: 48px !important;
 
-      color: var(--gray-white, #FFF);
+      color: var(--gray-white, #fff);
       text-align: center;
-      font-family: Mont;
       font-size: 14px;
       font-style: normal;
       font-weight: 600;
@@ -130,7 +126,6 @@
   }
 
   &__empty-cart-message {
-    font-family: Mont;
     padding-top: 20px;
     font-size: 18px;
     font-weight: 600;
@@ -138,7 +133,6 @@
 }
 
 .feature-is-not-available {
-  font-family: Mont;
   font-size: 12px;
   color: gray;
   margin-block: 10px;

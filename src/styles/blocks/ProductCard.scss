@@ -1,4 +1,8 @@
-@import '../vars.scss';
+@import "../vars.scss";
+
+.product-card * {
+  font-family: "Mont";
+}
 
 .product-card {
   width: 272px;
@@ -38,7 +42,7 @@
     gap: 8px;
   }
 
-  &--old-price{
+  &--old-price {
     color: $gray-secondary;
     font-size: 22px;
     font-style: normal;
@@ -65,11 +69,9 @@
     &-title {
       line-height: normal;
       color: $gray-secondary;
-      font-family: Mont;
     }
 
     &-value {
-      font-family: Mont;
       color: $dark-gray;
     }
   }
@@ -85,7 +87,6 @@
     height: 40px;
     padding: 10px 30px;
     background: $dark-gray;
-    font-family: Mont;
 
     color: #fff;
     text-align: center;
@@ -95,7 +96,7 @@
     line-height: 21px;
 
     &:hover {
-      box-shadow: 0px 3px 13px 0px rgba(23, 32, 49, 0.26);
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
     }
 
     &--added {
@@ -103,7 +104,6 @@
       height: 40px;
       background-color: transparent;
       color: #27ae60;
-      font-family: Mont;
       font-size: 14px;
       font-weight: 600;
       line-height: 21px;

@@ -6,7 +6,7 @@
   }
 
   &__link {
-    font-family: Mont;
+    font-family: "Mont";
     color: $gray-secondary;
     font-size: 12px;
     font-style: normal;
@@ -26,7 +26,7 @@
   }
 
   &__link.is-active::after {
-    content: '';
+    content: "";
     position: absolute;
     bottom: 0;
     display: block;
@@ -42,7 +42,6 @@
   max-width: 1136px;
   width: 100%;
 }
-
 
 .shopping-icon {
   width: 16px;
@@ -66,7 +65,7 @@
     color: white;
     bottom: 50%;
     left: 50%;
-    font-family: Mont;
+    font-family: "Mont";
     font-size: 9px;
     font-style: normal;
     font-weight: 600;
@@ -78,7 +77,7 @@
   width: 100%;
   padding-left: 24px;
   display: flex;
-  box-shadow: 0px 1px 0px 0px $light-gray;
+  box-shadow: 0 1px 0 0 $light-gray;
 
   &__wrapper {
     width: 100%;
@@ -102,7 +101,7 @@
   }
 
   &__header-bar *:not(.header__search--button) {
-    box-shadow: -1px 0px 0px 0px $light-gray;
+    box-shadow: -1px 0 0 0 $light-gray;
   }
 
   &__header-bar a {
@@ -125,7 +124,7 @@
       border-bottom: 1px solid $light-gray;
 
       &::placeholder {
-        font-family: Mont;
+        font-family: "Mont";
         font-weight: 600;
 
         color: rgb(194, 194, 194);
@@ -135,7 +134,7 @@
     &--button {
       background-color: transparent;
       display: block;
-      background-image: url('../../assets/icons/search.svg');
+      background-image: url("../../assets/icons/search.svg");
       background-repeat: no-repeat;
       width: 64px;
       background-position: center center;
@@ -143,10 +142,10 @@
   }
 
   &__favorites {
-    background-image: url('../../assets/icons/favorites.svg');
+    background-image: url("../../assets/icons/favorites.svg");
   }
 
   &__shopping-cart {
-    background-image: url('../../assets/icons/cart.svg');
+    background-image: url("../../assets/icons/cart.svg");
   }
 }

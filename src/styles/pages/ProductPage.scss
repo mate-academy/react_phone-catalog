@@ -1,3 +1,7 @@
+* {
+  font-family: "Mont";
+}
+
 .section-product {
   display: grid;
   grid-template-columns: repeat(2, 50%);
@@ -57,7 +61,6 @@
 
     &--title {
       color: $dark-gray;
-      font-family: Mont;
       font-size: 22px;
       font-style: normal;
       font-weight: 700;
@@ -68,7 +71,6 @@
 
     &--paragraph {
       color: $gray-secondary;
-      font-family: Mont;
       font-size: 14px;
       font-style: normal;
       font-weight: 500;
@@ -87,7 +89,6 @@
 
       &--name {
         color: var(--gray-secondary, $gray-secondary);
-        font-family: Mont;
         font-size: 14px;
         font-style: normal;
         font-weight: 500;
@@ -97,7 +98,6 @@
       &--value {
         color: var(--gray-primary, $dark-gray);
         text-align: right;
-        font-family: Mont;
         font-size: 14px;
         font-style: normal;
         font-weight: 500;

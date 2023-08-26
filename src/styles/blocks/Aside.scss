@@ -39,13 +39,12 @@ $aside-height: 400px;
 
 .banner-image {
   &--1 {
-    background-image: url('../../assets/images/banner1.jpg');
+    background-image: url("../../assets/images/banner1.jpg");
   }
   &--2 {
-    background-image: url('../../assets/images/banner2.jpg');
+    background-image: url("../../assets/images/banner2.jpg");
   }
   &--3 {
-    background-image: url('../../assets/images/banner3.png');
+    background-image: url("../../assets/images/banner3.png");
   }
 }
-

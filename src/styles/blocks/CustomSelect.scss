@@ -1,29 +1,27 @@
+.custom-select * {
+  font-family: "Mont";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
 .custom-select {
   position: relative;
 
   &__caption {
     color: $gray-secondary;
-    font-family: Mont;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
     padding-bottom: 8px;
   }
 
   &__frame {
     background-color: white;
-    font-family: Mont;
     display: flex;
     justify-content: space-between;
     width: 176px;
     height: 40px;
     padding: 10px;
     color: $dark-gray;
-    font-family: Mont;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 600;
     line-height: 21px;
     border: 1px solid $icons-border;
 
@@ -60,16 +58,13 @@
 
     &:hover {
       color: var(--gray-primary, $dark-gray);
-      border: 0.5px solid rgba(0, 0, 0, 0.181);
+      border: 0.5px solid rgba(0, 0, 0, 0.18);
       transform: scale(1.05);
       z-index: 1;
     }
 
     &--link {
       width: 100%;
-      font-family: Mont;
-      font-size: 14px;
-      font-style: normal;
       font-weight: 500;
       line-height: 21px;
     }

@@ -6,7 +6,6 @@ import React, {
 
 import { ProductType, getProductsWithType } from '../../api/getProducts';
 import { Product } from '../../types/Phone';
-import '../../styles/pages/PhonesPage.scss';
 import ProductsCatalog from '../ProductsCatalog';
 import NoProductsMessage from '../NoProductsMessage';
 import { CatalogProps } from '../../types/CatalogProps';

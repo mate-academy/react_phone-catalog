@@ -18,7 +18,7 @@
       margin-bottom: 24px;
       background-size: contain;
       background-repeat: no-repeat;
-      transition: .5s;
+      transition: 0.5s;
 
       &:hover {
         transform: scale(1.02);
@@ -28,18 +28,18 @@
     &__mobile {
       &--photo {
         background-color: #fcdbc1;
-        background-image: url('../../assets/images/categories/mobile.jpg');
+        background-image: url("../../assets/images/categories/mobile.jpg");
         background-position-x: 66px;
       }
     }
     &__tablets {
       &--photo {
-        background: url('../../assets/images/categories/tablets.jpg')
+        background: url("../../assets/images/categories/tablets.jpg");
       }
     }
     &__accessories {
       &--photo {
-        background: url('../../assets/images/categories/accessories.jpg')
+        background: url("../../assets/images/categories/accessories.jpg");
       }
     }
   }

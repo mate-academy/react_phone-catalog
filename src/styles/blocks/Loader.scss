@@ -1,11 +1,6 @@
 $size: 80px;
 $animation-duration: 2s;
 
-* {
-  font-family: 'Albert Sans', sans-serif;
-  font-size: inherit;
-}
-
 .scene {
   position: relative;
   z-index: 2;
@@ -38,7 +33,7 @@ $animation-duration: 2s;
   position: absolute;
   inset: 0;
   background: rgb(213, 213, 213);
-  border: solid 1px rgba(0, 0, 0, 0.492);
+  border: solid 1px rgba(0, 0, 0, 0.49);
 
   &.shadow {
     transform: translateZ(-$size);
@@ -85,17 +80,17 @@ $animation-duration: 2s;
 
 @keyframes bouncing {
   0% {
-    transform: translateY(-$size*.5);
+    transform: translateY(-$size*0.5);
     animation-timing-function: cubic-bezier(0.76, 0.05, 0.86, 0.06);
   }
 
   45% {
-    transform: translateY($size*.5);
+    transform: translateY($size*0.5);
     animation-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
   }
 
   100% {
-    transform: translateY(-$size*.5);
+    transform: translateY(-$size*0.5);
     animation-timing-function: cubic-bezier(0.76, 0.05, 0.86, 0.06);
   }
 }
@@ -104,18 +99,18 @@ $animation-duration: 2s;
   0% {
     transform: translateZ(-$size) scale(1.3);
     animation-timing-function: cubic-bezier(0.76, 0.05, 0.86, 0.06);
-    opacity: .05;
+    opacity: 0.05;
   }
 
   45% {
     transform: translateZ(0);
     animation-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
-    opacity: .3;
+    opacity: 0.3;
   }
 
   100% {
     transform: translateZ(-$size) scale(1.3);
     animation-timing-function: cubic-bezier(0.76, 0.05, 0.86, 0.06);
-    opacity: .05;
+    opacity: 0.05;
   }
 }

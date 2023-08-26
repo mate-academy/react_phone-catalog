@@ -2,6 +2,8 @@
 /* eslint-disable no-console */
 import { Product } from '../types/Phone';
 
+const PRODUCT_LIST_LINK = 'https://mate-academy.github.io/react_phone-catalog/api/products.json';
+
 export enum ProductType {
   PHONE = 'phone',
   TABLET = 'tablet',
@@ -10,9 +12,7 @@ export enum ProductType {
 
 export async function getProducts() {
   try {
-    const response = await fetch(
-      'https://mate-academy.github.io/react_phone-catalog/api/products.json',
-    );
+    const response = await fetch(PRODUCT_LIST_LINK);
     const data = response.json();
 
     return await data;
@@ -24,9 +24,7 @@ export async function getProducts() {
 
 export async function getProductsWithDiscount() {
   try {
-    const response = await fetch(
-      'https://mate-academy.github.io/react_phone-catalog/api/products.json',
-    );
+    const response = await fetch(PRODUCT_LIST_LINK);
     const data = await response.json();
 
     const discountedProducts = data
@@ -41,9 +39,7 @@ export async function getProductsWithDiscount() {
 
 export async function getNewProducts() {
   try {
-    const response = await fetch(
-      'https://mate-academy.github.io/react_phone-catalog/api/products.json',
-    );
+    const response = await fetch(PRODUCT_LIST_LINK);
 
     const data = await response.json();
 
@@ -64,9 +60,7 @@ export async function getNewProducts() {
 export async function getProductsWithType(type: ProductType) {
   try {
     await new Promise(resolve => setTimeout(resolve, 1000));
-    const response = await fetch(
-      'https://mate-academy.github.io/react_phone-catalog/api/products.json',
-    );
+    const response = await fetch(PRODUCT_LIST_LINK);
     const data = await response.json();
 
     const phonesOnly = data.filter((product: Product) => product.type === type);

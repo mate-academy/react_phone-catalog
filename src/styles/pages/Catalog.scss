@@ -30,7 +30,6 @@
   .section-catalog {
     &__caption {
       color: $gray-secondary;
-      font-family: Mont;
       font-size: 14px;
       font-style: normal;
       font-weight: 500;
@@ -48,47 +47,10 @@
         gap: 4px;
 
         color: $gray-secondary;
-        font-family: Mont;
         font-size: 12px;
         font-style: normal;
         font-weight: 600;
         line-height: normal;
-      }
-
-      &--select {
-        width: 176px;
-        height: 40px;
-        padding: 10px;
-        color: $dark-gray;
-        font-family: Mont;
-        font-size: 14px;
-        font-style: normal;
-        font-weight: 600;
-        line-height: 21px;
-        border: 1px solid $icons-border;
-
-        &:hover {
-          border: 1px solid var(--gray-secondary, $gray-secondary);
-        }
-
-        &:focus {
-          border: 1px solid var(--gray-primary, $dark-gray);
-          outline: none;
-        }
-      }
-
-      &--select option {
-        font-family: Mont;
-        font-size: 14px;
-        font-style: normal;
-        font-weight: 500;
-        line-height: 21px;
-        color: var(--gray-secondary, $gray-secondary);
-        height: 50px;
-
-        &:hover {
-          color: var(--gray-primary, $dark-gray);
-        }
       }
     }
 

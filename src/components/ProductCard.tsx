@@ -53,58 +53,58 @@ const ProductCard: React.FC<Props> = ({ product, setVisibleProducts }) => {
       className="browse-products__product product-card"
     >
       <div className="product__wrapper">
-        <img
-          className="product-card--image"
-          src={`${imageUrl}`}
-          alt={`${name}`}
-        />
-        <div className="product-card--info">
-          <Link
-            to={`${location.pathname}/${id}`}
-            className="product-card--name"
-          >
-            {name}
-          </Link>
-          <div className="product-card--price">
-            <h3 className="product-card--new-price">
-              {`$${price}`}
-            </h3>
-            {discount !== 0 && (
-              <p className="product-card--old-price">
-                {`$${getPrevPrice(price, discount)}`}
+        <Link to={`${location.pathname}/${id}`}>
+          <img
+            className="product-card--image"
+            src={`${imageUrl}`}
+            alt={`${name}`}
+          />
+          <div className="product-card--info">
+            <p
+              className="product-card--name"
+            >
+              {name}
+            </p>
+            <div className="product-card--price">
+              <h3 className="product-card--new-price">
+                {`$${price}`}
+              </h3>
+              {discount !== 0 && (
+                <p className="product-card--old-price">
+                  {`$${getPrevPrice(price, discount)}`}
+                </p>
+              )}
+            </div>
+          </div>
+          <div className="product-card--features">
+            <div className="product-card--feature">
+              <h4
+                className="product-card--feature-title"
+              >
+                Screen
+              </h4>
+              <p
+                className="product-card--feature-value"
+              >
+                {screen || 'No information'}
               </p>
-            )}
+            </div>
+            <div className="product-card--feature">
+              <p className="product-card--feature-title">Capacity</p>
+              <p className="product-card--feature-value">
+                {capacity || 'No information'}
+              </p>
+            </div>
+            <div className="product-card--feature">
+              <p className="product-card--feature-title">RAM</p>
+              <p
+                className="product-card--feature-value"
+              >
+                {ram || 'No information'}
+              </p>
+            </div>
           </div>
-        </div>
-        <div className="product-card--features">
-          <div className="product-card--feature">
-            <h4
-              className="product-card--feature-title"
-            >
-              Screen
-            </h4>
-            <p
-              className="product-card--feature-value"
-            >
-              {screen || 'No information'}
-            </p>
-          </div>
-
-          <div className="product-card--feature">
-            <p className="product-card--feature-title">Capacity</p>
-            <p className="product-card--feature-value">
-              {capacity || 'No information'}
-            </p>
-          </div>
-          <div className="product-card--feature">
-            <p className="product-card--feature-title">RAM</p>
-            <p
-              className="product-card--feature-value"
-            >
-              {ram || 'No information'}
-            </p>
-          </div>
-        </div>
+        </Link>
         <div className="product-card--buttons">
           <button
             type="button"

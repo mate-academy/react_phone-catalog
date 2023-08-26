@@ -43,22 +43,6 @@ const TabletsPage: React.FC<CatalogProps> = ({
           ))}
     </>
   );
-  //   )
-  //   !isLoading
-  //     ? (
-  //       products.length > 0
-  //         ? (
-  //           <ProductsCatalog
-  //             title={title}
-  //             products={filteredProducts}
-  //           />
-  //         ) : (
-  //           <NoProductsMessage title={title} />
-  //         )
-  //     ) : (
-  //       <Loader />
-  //     )
-  // );
 };
 
 export default TabletsPage;
