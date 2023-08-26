@@ -33,8 +33,11 @@ const PhonesPage: React.FC<CatalogProps> = ({
   ), [searchQuery, products]);
 
   return (
-    !isLoading
-      ? (
+    <>
+      {isLoading && (<Loader />)}
+
+      {!isLoading
+      && (
         products.length > 0
           ? (
             <ProductsCatalog
@@ -43,10 +46,8 @@ const PhonesPage: React.FC<CatalogProps> = ({
             />
           ) : (
             <NoProductsMessage title={title} />
-          )
-      ) : (
-        <Loader />
-      )
+          ))}
+    </>
   );
 };
 

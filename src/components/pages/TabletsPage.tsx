@@ -27,8 +27,11 @@ const TabletsPage: React.FC<CatalogProps> = ({
   ), [searchQuery, products]);
 
   return (
-    !isLoading
-      ? (
+    <>
+      {isLoading && (<Loader />)}
+
+      {!isLoading
+      && (
         products.length > 0
           ? (
             <ProductsCatalog
@@ -37,11 +40,25 @@ const TabletsPage: React.FC<CatalogProps> = ({
             />
           ) : (
             <NoProductsMessage title={title} />
-          )
-      ) : (
-        <Loader />
-      )
+          ))}
+    </>
   );
+  //   )
+  //   !isLoading
+  //     ? (
+  //       products.length > 0
+  //         ? (
+  //           <ProductsCatalog
+  //             title={title}
+  //             products={filteredProducts}
+  //           />
+  //         ) : (
+  //           <NoProductsMessage title={title} />
+  //         )
+  //     ) : (
+  //       <Loader />
+  //     )
+  // );
 };
 
 export default TabletsPage;
