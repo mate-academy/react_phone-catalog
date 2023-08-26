@@ -1,18 +1,31 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
-  HashRouter as Router,
   Routes,
   Route,
   Navigate,
+  useSearchParams,
 } from 'react-router-dom';
 import { App } from './App';
 
 import { HomePage } from './pages/HomePage/HomePage';
 import { Page404 } from './pages/Page404/Page404';
 import { LookBookPage } from './pages/LookBookPage/LookBookPage';
+import { getSearchWith } from './helpers/getSearchWith';
 
-export const Root: React.FC = () => (
-  <Router>
+export const Root: React.FC = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const setSearchWith = (params: any) => {
+    const search = getSearchWith(params, searchParams);
+
+    setSearchParams(search);
+  };
+
+  useEffect(() => {
+    setSearchWith({ page: null });
+  }, []);
+
+  return (
     <Routes>
       <Route
         path="/"
@@ -39,5 +52,5 @@ export const Root: React.FC = () => (
         />
       </Route>
     </Routes>
-  </Router>
-);
+  );
+};

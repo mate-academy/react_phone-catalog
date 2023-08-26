@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { VirtuosoGrid } from 'react-virtuoso';
+import { useSearchParams } from 'react-router-dom';
 
 import { getData } from '../../helpers/httpClient';
 import { makeAlt } from '../../helpers/makeAlt';
+import { getSearchWith } from '../../helpers/getSearchWith';
+import { makeCLassWithIteration } from '../../helpers/makeClassWithIteration';
+
 import { Preview } from '../../types/Preview';
 
 import { Loader } from '../../components/Loader/Loader';
@@ -11,15 +15,41 @@ import { ErrorMessage } from '../../components/ErrorMessage/ErrorMessage';
 import './LookBookPage.scss';
 
 export const LookBookPage: React.FC = React.memo(() => {
+  const [searchParams, setSearchParams] = useSearchParams();
+
   const [photos, setPhotos] = useState<Preview[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [hasError, setHasError] = useState(false);
   const [updatedAt, setUpdatedAt] = useState(new Date());
 
-  const [totalItemsCount, setTotalItemsCount] = useState(0);
-  const [currentPage, setCurrentPage] = useState(1);
-
   const ITEMS_PER_PAGE = 6;
+  const [totalItemsCount, setTotalItemsCount] = useState(0);
+  const currentPage = +(searchParams.get('page') || 1);
+
+  const setSearchWith = (params: any) => {
+    const search = getSearchWith(params, searchParams);
+
+    setSearchParams(search);
+  };
+
+  const loadMore = () => {
+    if (ITEMS_PER_PAGE * currentPage >= totalItemsCount) {
+      return;
+    }
+
+    setSearchWith({ page: currentPage + 1 });
+  };
+
+  const reload = () => {
+    setHasError(false);
+    setUpdatedAt(new Date());
+  };
+
+  useEffect(() => {
+    return () => {
+      setSearchWith({ page: null });
+    };
+  }, []);
 
   useEffect(() => {
     setIsLoading(true);
@@ -40,22 +70,11 @@ export const LookBookPage: React.FC = React.memo(() => {
       .finally(() => setIsLoading(false));
   }, [updatedAt, currentPage]);
 
-  const loadMore = () => {
-    if (ITEMS_PER_PAGE * currentPage >= totalItemsCount) {
-      return;
-    }
-
-    setCurrentPage(prevPage => prevPage + 1);
-  };
-
-  const reload = () => {
-    setHasError(false);
-    setUpdatedAt(new Date());
-  };
-
   return (
     <main className="lookBook">
-      <div className="container grid">
+      <div
+        className="container grid"
+      >
         {hasError && (
           <ErrorMessage
             rootClassName="lookBook__items"
@@ -74,7 +93,10 @@ export const LookBookPage: React.FC = React.memo(() => {
               totalCount={photos.length}
               overscan={6}
               listClassName="lookBook__section-list"
-              itemClassName="lookBook__section-list-item"
+              itemClassName={makeCLassWithIteration(
+                'lookBook__section-list-item',
+                currentPage,
+              )}
               endReached={loadMore}
               components={{
                 Footer: () => (isLoading ? (<Loader />) : null),

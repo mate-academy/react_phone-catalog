@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useSearchParams } from 'react-router-dom';
 
 type Props = {
   className: string,
@@ -8,10 +8,15 @@ type Props = {
 };
 
 export const Logo: React.FC<Props> = React.memo(({ className, setIsMenuOpened }) => {
+  const [searchParams] = useSearchParams();
+
   return (
     <NavLink
       className={className}
-      to="/"
+      to={{
+        pathname: '/',
+        search: searchParams.toString(),
+      }}
       onClick={() => setIsMenuOpened(false)}
     >
       <svg
