@@ -14,7 +14,12 @@
   border:
     1px solid var(--gray-elements, #E2E6E9);
   margin-bottom: 40px;
+  transition: .3s;
 
+
+  &:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  }
 }
 
 .block__MainBlockBasket-left-rigth {
