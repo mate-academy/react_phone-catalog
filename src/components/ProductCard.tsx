@@ -8,6 +8,7 @@ import { RedHeart, WhiteHeart } from '../utils/Icons';
 
 interface Props {
   product: Product;
+  // eslint-disable-next-line react/require-default-props
   setVisibleProducts?: React.Dispatch<React.SetStateAction<Product[]>>
 }
 

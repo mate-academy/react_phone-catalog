@@ -18,7 +18,12 @@ interface CardProductProps {
 const CartProduct: React.FC<CardProductProps> = ({
   product, setStorage, setVisibleProducts, updateProductAmount,
 }) => {
-  const { id, name, price, imageUrl } = product;
+  const {
+    id,
+    name,
+    price,
+    imageUrl,
+  } = product;
   const [
     currentAmount, setCurrentAmount,
   ] = useState<number>(getAmountOfProducts(id));
