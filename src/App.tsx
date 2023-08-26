@@ -17,7 +17,7 @@ import { Cart } from './Cart';
 import { Footer } from './Footer';
 
 const App = () => {
-  const { activeProduct, setQuery } = useContext(Context);
+  const { setQuery } = useContext(Context);
   const { pathname } = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
   const [filterType, setFilterType] = useState('');
@@ -25,6 +25,7 @@ const App = () => {
   const perPage = searchParams.get('perPage' || '');
   const sort = searchParams.get('sort' || '');
   const filterQuery = searchParams.get('query' || '');
+  const a = JSON.parse(localStorage.getItem('product') as string) || null;
   const updateSearch = (params: {
     [key: string]: number[] | string[] | string | null
   }) => {
@@ -80,11 +81,6 @@ const App = () => {
         />
 
         <Route
-          path={`/${activeProduct?.id}`}
-          element={<Navigate to={`/${activeProduct?.type}s/${activeProduct?.id}`} replace />}
-        />
-
-        <Route
           path="/phones"
           element={(
             <main style={{ flexGrow: 1 }}>
@@ -105,7 +101,7 @@ const App = () => {
         />
 
         <Route
-          path={`/phones/:${activeProduct?.id}`}
+          path={`/phones/:${a?.id}`}
           element={(
             <main style={{ flexGrow: 1 }}>
               <Navigation

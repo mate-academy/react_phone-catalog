@@ -7,10 +7,12 @@ type ContextProps = {
   setQuery(string: string): void,
   activeProduct: Product | null,
   setActiveProduct(product: Product): void,
-  chosenProducts: string[],
-  setChosenProducts(productIds: string[]): void,
+  chosenProducts: Product[],
+  setChosenProducts(products: Product[]): void,
   productsToBuy: CartProduct[],
   setProductsToBuy(products: CartProduct[]): void,
+  loadingItem: number | null,
+  setLoadingItem(number: number | null): void,
 };
 
 type ProviderProps = {
@@ -26,13 +28,16 @@ export const Context = React.createContext<ContextProps>({
   setChosenProducts: () => {},
   productsToBuy: [],
   setProductsToBuy: () => {},
+  loadingItem: null,
+  setLoadingItem: () => {},
 });
 
 export const Provider: React.FC<ProviderProps> = ({ children }) => {
   const [query, setQuery] = useState('');
   const [activeProduct, setActiveProduct] = useState<Product | null>(null);
-  const [chosenProducts, setChosenProducts] = useState<string[]>([]);
+  const [chosenProducts, setChosenProducts] = useState<Product[]>([]);
   const [productsToBuy, setProductsToBuy] = useState<CartProduct[]>([]);
+  const [loadingItem, setLoadingItem] = useState<null | number>(null);
   const contextValue = {
     query,
     setQuery,
@@ -42,6 +47,8 @@ export const Provider: React.FC<ProviderProps> = ({ children }) => {
     setChosenProducts,
     productsToBuy,
     setProductsToBuy,
+    loadingItem,
+    setLoadingItem,
   };
 
   return (

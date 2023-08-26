@@ -1,13 +1,16 @@
 import classNames from 'classnames';
-import { useContext, useState } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router';
-import { Context } from './Context';
 import { Loader } from './Loader';
+import { Context } from './Context';
 import { CartProduct } from './types/CartProduct';
+import {
+  setCartItemsToLocaleStorage,
+  getCartItemsFromLocaleStorage,
+} from './utils/updateLocaleStorage';
 
 export const Cart = () => {
-  const { productsToBuy, setProductsToBuy } = useContext(Context);
-  const [loadingItem, setLoadingItem] = useState<null | number>(null);
+  const { setProductsToBuy, loadingItem, setLoadingItem } = useContext(Context);
   const [isLoading, setIsLoading] = useState(false);
   const history = useNavigate();
 
@@ -15,11 +18,13 @@ export const Cart = () => {
     setLoadingItem(index);
 
     setTimeout(() => {
-      setProductsToBuy([
-        ...productsToBuy.slice(0, index),
-        ...productsToBuy.slice(index + 1),
+      const toBuy = ([
+        ...getCartItemsFromLocaleStorage('toBuy').slice(0, index),
+        ...getCartItemsFromLocaleStorage('toBuy').slice(index + 1),
       ]);
 
+      setCartItemsToLocaleStorage('toBuy', toBuy);
+      setProductsToBuy(toBuy);
       setLoadingItem(null);
     }, 1000);
   };
@@ -30,11 +35,14 @@ export const Cart = () => {
       quantity: num,
     };
 
-    setProductsToBuy([
-      ...productsToBuy.slice(0, index),
+    const toBuy = ([
+      ...getCartItemsFromLocaleStorage('toBuy').slice(0, index),
       newItem,
-      ...productsToBuy.slice(index + 1),
+      ...getCartItemsFromLocaleStorage('toBuy').slice(index + 1),
     ]);
+
+    setCartItemsToLocaleStorage('toBuy', toBuy);
+    setProductsToBuy(toBuy);
   };
 
   const getRealPrice = (price: number, discount: number) => {
@@ -44,7 +52,7 @@ export const Cart = () => {
   const getCost = () => {
     let cost = 0;
 
-    productsToBuy.forEach(product => {
+    getCartItemsFromLocaleStorage('toBuy').forEach(product => {
       if (product.product.discount === 0) {
         cost += (product.product.price * product.quantity);
       } else {
@@ -61,20 +69,20 @@ export const Cart = () => {
   const getQuantity = () => {
     let quantity = 0;
 
-    productsToBuy.forEach(product => {
+    getCartItemsFromLocaleStorage('toBuy').forEach(product => {
       quantity += product.quantity;
     });
 
     return quantity;
   };
 
-  useState(() => {
+  useEffect(() => {
     setIsLoading(true);
 
     setTimeout(() => {
       setIsLoading(false);
     }, 500);
-  });
+  }, []);
 
   return (
     <div className="cart">
@@ -97,10 +105,10 @@ export const Cart = () => {
         </div>
       )}
 
-      {(productsToBuy.length > 0 && !isLoading) && (
+      {(getCartItemsFromLocaleStorage('toBuy').length > 0 && !isLoading) && (
         <div className="cart__container">
           <div className="cart__products">
-            {productsToBuy.map((item, index) => (
+            {getCartItemsFromLocaleStorage('toBuy').map((item, index) => (
               index !== loadingItem ? (
                 <div className="cart__item">
                   <div className="cart__content">
@@ -246,7 +254,7 @@ export const Cart = () => {
         </div>
       )}
 
-      {(productsToBuy.length === 0 && !isLoading) && (
+      {(getCartItemsFromLocaleStorage('toBuy').length === 0 && !isLoading) && (
         <h2 className="cart__title cart__title--error">
           Products not found
         </h2>

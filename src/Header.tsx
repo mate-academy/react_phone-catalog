@@ -2,6 +2,10 @@ import { useContext, useMemo } from 'react';
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 import { Context } from './Context';
+import {
+  getCartItemsFromLocaleStorage,
+  getFavouritesFromLocaleStorage,
+} from './utils/updateLocaleStorage';
 
 type Props = {
   filterType: string,
@@ -19,8 +23,6 @@ export const Header: React.FC<Props> = ({
   const {
     query,
     setQuery,
-    chosenProducts,
-    productsToBuy,
   } = useContext(Context);
 
   useMemo(() => {
@@ -118,9 +120,9 @@ export const Header: React.FC<Props> = ({
             to="/favourites"
           >
             <div className="header__stroke" />
-            {chosenProducts.length > 0 && (
+            {getFavouritesFromLocaleStorage('favourites').length > 0 && (
               <div className="header__circle">
-                {chosenProducts.length}
+                {getFavouritesFromLocaleStorage('favourites').length}
               </div>
             )}
           </NavLink>
@@ -132,9 +134,9 @@ export const Header: React.FC<Props> = ({
             to="/cart"
           >
             <div className="header__bag" />
-            {productsToBuy.length > 0 && (
+            {getCartItemsFromLocaleStorage('toBuy').length > 0 && (
               <div className="header__circle">
-                {productsToBuy.length}
+                {getCartItemsFromLocaleStorage('toBuy').length}
               </div>
             )}
           </NavLink>

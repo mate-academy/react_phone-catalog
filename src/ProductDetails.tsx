@@ -1,10 +1,8 @@
 import {
   useState,
   useEffect,
-  useContext,
 } from 'react';
 import classNames from 'classnames';
-import { Context } from './Context';
 import { Product } from './types/Product';
 import { Details } from './types/Details';
 import { Loader } from './Loader';
@@ -16,7 +14,6 @@ type Props = {
 };
 
 export const ProductDetails: React.FC<Props> = ({ pathname }) => {
-  const { activeProduct } = useContext(Context);
   const avaliebleColors = ['#f0f0f0', '#000', '#62849c', '#96999b'];
   const avaliebleCapacity = [64, 264, 512];
   const [isLoading, setIsLoading] = useState(false);
@@ -26,6 +23,7 @@ export const ProductDetails: React.FC<Props> = ({ pathname }) => {
   const [activeColor, setActiveColor] = useState(avaliebleColors[0]);
   const [activeCapacity, setActiveCapacity] = useState(avaliebleCapacity[0]);
   const [isPhotoActive, setIsPhotoActive] = useState(false);
+  const activeProduct = JSON.parse(localStorage.getItem('product') as string);
   const display = details?.display.screenResolution.slice(
     details?.display.screenResolution.indexOf('(') + 1,
     details?.display.screenResolution.length - 1,

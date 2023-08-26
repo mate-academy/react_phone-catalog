@@ -3,45 +3,32 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Context } from './Context';
 import { Product } from './types/Product';
+import {
+  setCartItemsToLocaleStorage,
+  getCartItemsFromLocaleStorage,
+  setFavouritesTolocaleStorage,
+  getFavouritesFromLocaleStorage,
+} from './utils/updateLocaleStorage';
 
 type Props = {
   product: Product | null,
+  favouritesTimeout?: number
 };
 
-export const ProductCard: React.FC<Props> = ({ product }) => {
+export const ProductCard: React.FC<Props> = ({
+  product,
+  favouritesTimeout,
+}) => {
   const {
-    setActiveProduct,
-    chosenProducts,
     setChosenProducts,
-    productsToBuy,
     setProductsToBuy,
+    setLoadingItem,
   } = useContext(Context);
 
-  const addProductIds = (
-    event: React.SyntheticEvent,
-    device: Product,
-    products: string[],
-    addProduct: (productNames: string[]) => void,
-  ) => {
-    event.preventDefault();
-
-    if (products.includes(device.id)) {
-      addProduct([
-        ...products.slice(0, [...products].indexOf(device.id)),
-        ...products.slice([...products].indexOf(device.id) + 1),
-      ]);
-    } else {
-      addProduct([
-        ...products,
-        device.id,
-      ]);
-    }
-  };
-
-  const addToCart = (id: string) => {
+  const findProductOnCart = (id: string) => {
     let match = false;
 
-    productsToBuy.forEach(device => {
+    getCartItemsFromLocaleStorage('toBuy').forEach(device => {
       if (device.id === id) {
         match = true;
 
@@ -54,13 +41,69 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     return match;
   };
 
+  const findProductOnFavourites = (id: string) => {
+    let match = false;
+
+    if (getFavouritesFromLocaleStorage('favourites').length > 0) {
+      getFavouritesFromLocaleStorage('favourites').map(device => {
+        if (device.id === id) {
+          match = true;
+
+          return match;
+        }
+
+        return match;
+      });
+    }
+
+    return match;
+  };
+
+  const updateFavourites = (event: React.SyntheticEvent, item: Product) => {
+    event.preventDefault();
+
+    let ProductIndex = 0;
+
+    getFavouritesFromLocaleStorage('favourites').map((device, index) => {
+      if (device.id === item.id) {
+        ProductIndex = index;
+      }
+
+      return null;
+    });
+
+    if (findProductOnFavourites(item.id) === false) {
+      const toFavourites = [
+        ...getFavouritesFromLocaleStorage('favourites'),
+        item,
+      ];
+
+      setChosenProducts(toFavourites);
+      setFavouritesTolocaleStorage('favourites', toFavourites);
+    } else {
+      setLoadingItem(ProductIndex);
+
+      const toFavourites = [
+        ...getFavouritesFromLocaleStorage('favourites').slice(0, ProductIndex),
+        ...getFavouritesFromLocaleStorage('favourites').slice(ProductIndex + 1),
+      ];
+
+      setChosenProducts(toFavourites as Product[]);
+
+      setTimeout(() => {
+        setFavouritesTolocaleStorage('favourites', toFavourites);
+        setLoadingItem(null);
+      }, favouritesTimeout);
+    }
+  };
+
   return (
     product && (
       <Link
         className="product__link"
-        to={`/${product.id}`}
+        to={`/${product.type}s/${product.id}`}
         onClick={() => {
-          setActiveProduct(product);
+          localStorage.setItem('product', JSON.stringify(product));
         }}
       >
         {product && (
@@ -103,25 +146,28 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
                   'product__button_add',
                   {
                     'product__button_add--active':
-                    addToCart(product.id) === true,
+                    findProductOnCart(product.id) === true,
                   },
                 )}
                 onClick={(event) => {
                   event.preventDefault();
 
-                  if (addToCart(product.id) === false) {
-                    setProductsToBuy([
-                      ...productsToBuy,
+                  if (findProductOnCart(product.id) === false) {
+                    const toBuy = [
+                      ...getCartItemsFromLocaleStorage('toBuy'),
                       {
                         id: product.id,
                         quantity: 1,
                         product,
                       },
-                    ]);
+                    ];
+
+                    setCartItemsToLocaleStorage('toBuy', toBuy);
+                    setProductsToBuy(toBuy);
                   }
                 }}
               >
-                {addToCart(product.id) === true
+                {findProductOnCart(product.id) === true
                   ? 'Added to cart'
                   : 'Add to cart'}
               </button>
@@ -132,15 +178,10 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
                   'product__button_favourites',
                   {
                     'product__button_favourites--active':
-                    chosenProducts.includes(product.id),
+                    findProductOnFavourites(product.id),
                   },
                 )}
-                onClick={(event) => addProductIds(
-                  event,
-                  product,
-                  chosenProducts,
-                  setChosenProducts,
-                )}
+                onClick={(event) => updateFavourites(event, product)}
               />
             </div>
           </div>
@@ -148,4 +189,8 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       </Link>
     )
   );
+};
+
+ProductCard.defaultProps = {
+  favouritesTimeout: 0,
 };
