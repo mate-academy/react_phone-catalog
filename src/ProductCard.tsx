@@ -3,6 +3,7 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Context } from './Context';
 import { Product } from './types/Product';
+import { CartProduct } from './types/CartProduct';
 import {
   setCartItemsToLocaleStorage,
   getCartItemsFromLocaleStorage,
@@ -97,6 +98,24 @@ export const ProductCard: React.FC<Props> = ({
     }
   };
 
+  const updateCart = (event: React.SyntheticEvent, item: Product) => {
+    event.preventDefault();
+
+    if (findProductOnCart(item.id) === false) {
+      const toBuy = [
+        ...getCartItemsFromLocaleStorage('toBuy'),
+        {
+          id: item.id,
+          quantity: 1,
+          item,
+        },
+      ] as CartProduct[];
+
+      setCartItemsToLocaleStorage('toBuy', toBuy);
+      setProductsToBuy(toBuy);
+    }
+  };
+
   return (
     product && (
       <Link
@@ -149,23 +168,7 @@ export const ProductCard: React.FC<Props> = ({
                     findProductOnCart(product.id) === true,
                   },
                 )}
-                onClick={(event) => {
-                  event.preventDefault();
-
-                  if (findProductOnCart(product.id) === false) {
-                    const toBuy = [
-                      ...getCartItemsFromLocaleStorage('toBuy'),
-                      {
-                        id: product.id,
-                        quantity: 1,
-                        product,
-                      },
-                    ];
-
-                    setCartItemsToLocaleStorage('toBuy', toBuy);
-                    setProductsToBuy(toBuy);
-                  }
-                }}
+                onClick={(event) => updateCart(event, product)}
               >
                 {findProductOnCart(product.id) === true
                   ? 'Added to cart'

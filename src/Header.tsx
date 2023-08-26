@@ -25,6 +25,16 @@ export const Header: React.FC<Props> = ({
     setQuery,
   } = useContext(Context);
 
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setQuery(event.target.value);
+
+    if (event.target.value) {
+      updateSearch({ query: event.target.value });
+    } else {
+      updateSearch({ query: null });
+    }
+  };
+
   useMemo(() => {
     if (filterQuery) {
       setQuery(filterQuery);
@@ -102,15 +112,7 @@ export const Header: React.FC<Props> = ({
             placeholder={`Search in ${filterType}...`}
             disabled={filterType === ''}
             value={query}
-            onChange={(event) => {
-              setQuery(event.target.value);
-
-              if (event.target.value) {
-                updateSearch({ query: event.target.value });
-              } else {
-                updateSearch({ query: null });
-              }
-            }}
+            onChange={handleInputChange}
           />
           <NavLink
             className={({ isActive }) => classNames(

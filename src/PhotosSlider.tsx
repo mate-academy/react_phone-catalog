@@ -4,6 +4,18 @@ import classNames from 'classnames';
 export const PhotosSlider: React.FC = () => {
   const [activeImage, setActiveImage] = useState(1);
 
+  const handleScroll = (
+    imageToSet: number,
+    currentImage: number,
+    direction: number,
+  ) => {
+    if (activeImage === currentImage) {
+      setActiveImage(imageToSet);
+    } else {
+      setActiveImage(activeImage + direction);
+    }
+  };
+
   useEffect(() => {
     const timer = setInterval(() => {
       setActiveImage(prevImage => {
@@ -16,7 +28,7 @@ export const PhotosSlider: React.FC = () => {
     }, 5000);
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [activeImage]);
 
   return (
     <>
@@ -25,13 +37,7 @@ export const PhotosSlider: React.FC = () => {
           type="button"
           aria-label="Scroll left"
           className="slider__button slider__button--photos"
-          onClick={() => {
-            if (activeImage === 1) {
-              setActiveImage(3);
-            } else {
-              setActiveImage(activeImage - 1);
-            }
-          }}
+          onClick={() => handleScroll(3, 1, -1)}
         />
         <div className="slider__container">
           {[1, 2, 3].map(imageNumber => (
@@ -47,13 +53,7 @@ export const PhotosSlider: React.FC = () => {
           type="button"
           aria-label="Scroll right"
           className="slider__button slider__button--photos"
-          onClick={() => {
-            if (activeImage === 3) {
-              setActiveImage(1);
-            } else {
-              setActiveImage(activeImage + 1);
-            }
-          }}
+          onClick={() => handleScroll(1, 3, +1)}
         />
       </div>
       <div className="slider__indicator_container">
