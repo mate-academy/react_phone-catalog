@@ -1,0 +1,59 @@
+.selector {
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: normal;
+  }
+
+  &__button {
+    display: flex;
+    justify-content: space-between;
+    width: 176px;
+    height: 40px;
+    margin-bottom: 4px;
+    padding: 10px 12px;
+    border: 1px solid $gray-icons-placeholders;
+  }
+
+  &__iconContainer {
+    transform: translateY(-15%);
+    pointer-events: none;
+    width: 32px;
+    height: 32px;
+
+    &--icon {
+      width: 32px;
+      height: 32px;
+      background-image: url("../assets/arrow_down_dis.svg");
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+  }
+
+  &__options {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 176px;
+    box-sizing: border-box;
+    border: 1px solid $gray;
+    background: $main-white;
+    box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
+  }
+
+  &__option {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    padding: 6px 12px;
+    color: $gray-secondary;
+
+    &:hover {
+      color: $gray-primary;
+      font-weight: 600;
+    }
+  }
+}

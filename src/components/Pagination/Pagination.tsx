@@ -3,7 +3,7 @@ import { getNumbers } from '../../utils/getNumber';
 
 type Props = {
   total: number;
-  perPage: number;
+  perPage: string;
   currentPage: number;
   onPageChange: (page: number) => void;
 };
@@ -20,7 +20,7 @@ export const Pagination: React.FC<Props> = ({
     }
   };
 
-  const lastPage = Math.ceil(total / perPage);
+  const lastPage = Math.ceil(total / +perPage);
   const arrOfPages = getNumbers(1, lastPage);
 
   const handleClickRight = () => {

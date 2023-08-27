@@ -37,28 +37,4 @@
     display: flex;
     gap: 16px;
   }
-
-  &__form {
-    display: flex;
-    flex-direction: column;
-  }
-
-  &__label {
-    font-size: 12px;
-    font-weight: 500;
-    line-height: normal;
-  }
-
-  &__select {
-    border: 1px solid $gray-icons-placeholders;
-    width: 176px;
-    height: 40px;
-    padding: 10px 12px;
-  }
-
-  &__option {
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 21px;
-  }
 }

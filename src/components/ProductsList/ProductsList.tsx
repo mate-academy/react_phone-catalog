@@ -7,12 +7,18 @@ import { ProductCard } from '../ProductCard/ProductCard';
 import { sortingProducts } from '../../utils/sortingProducts';
 import { SortType } from '../../types/sortType';
 import { Pagination } from '../Pagination/Pagination';
+import { Selector } from '../Selector/Selector';
 
 export const getPhones = (prods: Product[]) => {
   const phones = prods.filter(p => p.type === 'phone');
 
   return phones;
 };
+
+const sortSortBy = ['Newest', 'Alphabetically', 'Cheapest'];
+const sortValues = ['age', 'name', 'price'];
+const itemsPerPage = ['4', '8', '16', 'all'];
+const labels = ['Sort by', 'Items on page'];
 
 export const ProductsList = () => {
   const { products } = useProducts();
@@ -27,11 +33,16 @@ export const ProductsList = () => {
     setSortBy(selectedSort);
   };
 
-  const [perPage, setPerPage] = useState(8);
+  const [perPage, setPerPage] = useState('8');
   const [currentPage, setCurrentPage] = useState(1);
 
   const handlePerPage = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setPerPage(+event.target.value);
+    if (event.target.value === 'all') {
+      setPerPage(sortedPhones.length.toString());
+    } else {
+      setPerPage(event.target.value);
+    }
+
     setCurrentPage(1);
   };
 
@@ -41,12 +52,12 @@ export const ProductsList = () => {
     }
   };
 
-  const startItem = ((currentPage - 1) * perPage);
-  const endItem = (currentPage * perPage) > sortedPhones.length
+  const startItem = ((currentPage - 1) * +perPage);
+  const endItem = (currentPage * +perPage) > sortedPhones.length
     ? sortedPhones.length
     : startItem + perPage;
 
-  const arrOfPerPageItems = sortedPhones.slice(startItem, endItem);
+  const arrOfPerPageItems = sortedPhones.slice(startItem, +endItem);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -67,59 +78,21 @@ export const ProductsList = () => {
 
           <div className="productsList__sort">
             <div className="productsList__sortBy">
-              <form action="" className="productsList__form">
-                <label htmlFor="sortSelect" className="productsList__label">
-                  Sort by
-                </label>
+              <Selector
+                sortBy={sortBy}
+                label={labels[0]}
+                handleChange={handleSortChange}
+                sortKeys={sortSortBy}
+                sortValues={sortValues}
+              />
 
-                <select
-                  name="sortSelect"
-                  id="sortSelect"
-                  className="productsList__select"
-                  value={sortBy}
-                  onChange={handleSortChange}
-                >
-                  {sortBy === '0' && <option value="0">Choose</option>}
-                  <option
-                    className="productsList__option"
-                    value="name"
-                  >
-                    Alphabetically
-                  </option>
-
-                  <option
-                    className="productsList__option"
-                    value="age"
-                  >
-                    Newest
-                  </option>
-
-                  <option
-                    className="productsList__option"
-                    value="price"
-                  >
-                    Cheapest
-                  </option>
-                </select>
-              </form>
-
-              <form className="productsList__form">
-                <label htmlFor="perPageSelector" className="productsList__label">
-                  Items on page
-                </label>
-
-                <select
-                  id="perPageSelector"
-                  className="productsList__select"
-                  value={perPage}
-                  onChange={(event) => handlePerPage(event)}
-                >
-                  <option className="productsList__option" value="4">4</option>
-                  <option className="productsList__option" value="8">8</option>
-                  <option className="productsList__option" value="16">16</option>
-                  <option className="productsList__option" value="all">all</option>
-                </select>
-              </form>
+              <Selector
+                sortBy={perPage}
+                label={labels[1]}
+                handleChange={(event) => handlePerPage(event)}
+                sortKeys={itemsPerPage}
+                sortValues={itemsPerPage}
+              />
             </div>
           </div>
 
