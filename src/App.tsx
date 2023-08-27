@@ -1,4 +1,5 @@
 import { useMemo, useState, useContext } from 'react';
+import { useNavigate } from 'react-router';
 import {
   Navigate,
   Route,
@@ -19,13 +20,16 @@ import { Footer } from './Footer';
 const App = () => {
   const { setQuery } = useContext(Context);
   const { pathname } = useLocation();
+  const history = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const [filterType, setFilterType] = useState('');
   const page = searchParams.get('page' || '');
   const perPage = searchParams.get('perPage' || '');
   const sort = searchParams.get('sort' || '');
   const filterQuery = searchParams.get('query' || '');
-  const a = JSON.parse(localStorage.getItem('product') as string) || null;
+  const activeProduct = JSON.parse(
+    localStorage.getItem('product') as string,
+  ) || null;
   const updateSearch = (params: {
     [key: string]: number[] | string[] | string | null
   }) => {
@@ -49,6 +53,10 @@ const App = () => {
   useMemo(() => {
     if (pathname === '/phones') {
       setFilterType('phones');
+    } else if (pathname === '/tablets') {
+      setFilterType('tablets');
+    } else if (pathname === '/accessories') {
+      setFilterType('accessories');
     } else if (pathname === '/favourites') {
       setFilterType('favourites');
     } else {
@@ -57,6 +65,7 @@ const App = () => {
 
     setQuery('');
     updateSearch({ query: null });
+    history(-1);
   }, [pathname]);
 
   return (
@@ -67,108 +76,143 @@ const App = () => {
         updateSearch={updateSearch}
       />
 
-      <Routes>
-        <Route
-          path="/"
-          element={(
-            <Home pathname={pathname} />
-          )}
-        />
+      <main style={{ flexGrow: 1 }}>
+        <Routes>
+          <Route
+            path="/"
+            element={(
+              <Home pathname={pathname} />
+            )}
+          />
 
-        <Route
-          path="/home"
-          element={<Navigate to="/" replace />}
-        />
+          <Route
+            path="/home"
+            element={<Navigate to="/" replace />}
+          />
 
-        <Route
-          path="/phones"
-          element={(
-            <main style={{ flexGrow: 1 }}>
-              <Navigation
-                pathname={pathname}
-              />
-              <Products
-                productType="Mobile Phones"
-                pathname={pathname}
-                type="phone"
-                updateSearch={updateSearch}
-                page={page}
-                sort={sort}
-                perPage={perPage}
-              />
-            </main>
-          )}
-        />
+          <Route
+            path="/phones"
+            element={(
+              <>
+                <Navigation
+                  pathname={pathname}
+                />
+                <Products
+                  productType="Mobile Phones"
+                  pathname={pathname}
+                  type="phone"
+                  updateSearch={updateSearch}
+                  page={page}
+                  sort={sort}
+                  perPage={perPage}
+                />
+              </>
+            )}
+          />
 
-        <Route
-          path={`/phones/:${a?.id}`}
-          element={(
-            <main style={{ flexGrow: 1 }}>
-              <Navigation
-                pathname={pathname}
-              />
-              <ProductDetails pathname={pathname} />
-            </main>
-          )}
-        />
+          <Route
+            path={`/phones/:${activeProduct?.id}`}
+            element={(
+              <>
+                <Navigation
+                  pathname={pathname}
+                />
+                <ProductDetails pathname={pathname} />
+              </>
+            )}
+          />
 
-        <Route
-          path="/tablets"
-          element={(
-            <main style={{ flexGrow: 1 }}>
-              <Navigation
-                pathname={pathname}
-              />
-              <Products
-                productType="Tablets"
-                pathname={pathname}
-                type="tablet"
-                updateSearch={updateSearch}
-                page={page}
-                sort={sort}
-                perPage={perPage}
-              />
-            </main>
-          )}
-        />
+          <Route
+            path="/tablets"
+            element={(
+              <>
+                <Navigation
+                  pathname={pathname}
+                />
+                <Products
+                  productType="Tablets"
+                  pathname={pathname}
+                  type="tablet"
+                  updateSearch={updateSearch}
+                  page={page}
+                  sort={sort}
+                  perPage={perPage}
+                />
+              </>
+            )}
+          />
 
-        <Route
-          path="/accessories"
-          element={(
-            <main style={{ flexGrow: '1' }}>
-              <Navigation
-                pathname={pathname}
-              />
-            </main>
-          )}
-        />
+          <Route
+            path={`/tablets/:${activeProduct?.id}`}
+            element={(
+              <>
+                <Navigation
+                  pathname={pathname}
+                />
+                <ProductDetails pathname={pathname} />
+              </>
+            )}
+          />
 
-        <Route
-          path="/favourites"
-          element={(
-            <main style={{ flexGrow: '1' }}>
-              <Navigation
-                pathname={pathname}
-              />
-              <Favourites />
-            </main>
-          )}
-        />
+          <Route
+            path="/accessories"
+            element={(
+              <>
+                <Navigation
+                  pathname={pathname}
+                />
+                <Products
+                  productType="Accessories"
+                  pathname={pathname}
+                  type="accessory"
+                  updateSearch={updateSearch}
+                  page={page}
+                  sort={sort}
+                  perPage={perPage}
+                />
+              </>
+            )}
+          />
 
-        <Route
-          path="/cart"
-          element={(
-            <main style={{ flexGrow: '1' }}>
-              <Cart />
-            </main>
-          )}
-        />
+          <Route
+            path={`/accessories/:${activeProduct?.id}`}
+            element={(
+              <>
+                <Navigation
+                  pathname={pathname}
+                />
+                <ProductDetails pathname={pathname} />
+              </>
+            )}
+          />
 
-        <Route
-          path="/*"
-          element={<p>Page not found</p>}
-        />
-      </Routes>
+          <Route
+            path="/favourites"
+            element={(
+              <>
+                <Navigation
+                  pathname={pathname}
+                />
+                <Favourites />
+              </>
+            )}
+          />
+
+          <Route
+            path="/cart"
+            element={(
+              <>
+                <Cart />
+              </>
+            )}
+          />
+
+          <Route
+            path="/*"
+            element={<p>Page not found</p>}
+          />
+        </Routes>
+      </main>
 
       <Footer />
     </div>

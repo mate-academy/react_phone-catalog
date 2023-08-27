@@ -9,8 +9,12 @@ import { Loader } from './Loader';
 import { getFavouritesFromLocaleStorage } from './utils/updateLocaleStorage';
 
 export const Favourites = () => {
-  const { chosenProducts, loadingItem } = useContext(Context);
+  const { loadingItem, query } = useContext(Context);
   const [isLoading, setIsLoading] = useState(false);
+  const filteredProducts = getFavouritesFromLocaleStorage('favourites')
+    .filter(
+      product => product.name.toLowerCase().includes(query.toLowerCase()),
+    );
 
   useEffect(() => {
     setIsLoading(true);
@@ -32,7 +36,7 @@ export const Favourites = () => {
         </div>
       ) : (
         <div className="favourites__amount">
-          {chosenProducts.length !== 1 ? `${chosenProducts.length} models` : `${chosenProducts.length} model`}
+          {filteredProducts.length !== 1 ? `${filteredProducts.length} models` : `${filteredProducts.length} model`}
         </div>
       )}
 
@@ -44,9 +48,9 @@ export const Favourites = () => {
             </div>
           )}
 
-          {(getFavouritesFromLocaleStorage('favourites').length > 0
+          {(filteredProducts.length > 0
             && !isLoading) && (
-            getFavouritesFromLocaleStorage('favourites').map((
+            filteredProducts.map((
               product,
               index,
             ) => (

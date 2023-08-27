@@ -12,6 +12,7 @@ import { Product } from './types/Product';
 import { getNumbers } from './utils/getNumbers';
 import { Loader } from './Loader';
 import { getProducts } from './api/products';
+import { NoResults } from './NoResults';
 
 type Props = {
   productType: string,
@@ -47,7 +48,7 @@ export const Products: React.FC<Props> = ({
   let pagesAmount = 0;
   let itemsPerPage = [...products];
 
-  const get = async () => {
+  const getDevices = async () => {
     setIsLoading(true);
     setIsError(false);
 
@@ -100,7 +101,7 @@ export const Products: React.FC<Props> = ({
   };
 
   useEffect(() => {
-    get();
+    getDevices();
 
     return (
       updateSearch({
@@ -112,20 +113,22 @@ export const Products: React.FC<Props> = ({
   }, [pathname]);
 
   useMemo(() => {
-    if (sort) {
-      setSortOrder(sort[0].toUpperCase() + sort.slice(1));
-    }
+    if (pathname) {
+      if (sort) {
+        setSortOrder(sort[0].toUpperCase() + sort.slice(1));
+      }
 
-    if (page) {
-      setCurrentPage(Number(page));
-    }
+      if (page) {
+        setCurrentPage(Number(page));
+      }
 
-    if (perPage) {
-      setPhonesPerPage(Number(perPage));
-    }
+      if (perPage) {
+        setPhonesPerPage(Number(perPage));
+      }
 
-    setIsSortDropdownActive(false);
-    setIsPageDropdownActive(false);
+      setIsSortDropdownActive(false);
+      setIsPageDropdownActive(false);
+    }
   }, [sort, page, perPage, pathname]);
 
   if (query) {
@@ -296,7 +299,7 @@ export const Products: React.FC<Props> = ({
         </p>
       )}
 
-      {(!isLoading && !isError) && (
+      {(!isLoading && !isError && filteredProducts.length > 0) && (
         <>
           <div className="products__container">
             <div className="products__list">
@@ -379,6 +382,10 @@ export const Products: React.FC<Props> = ({
             </div>
           )}
         </>
+      )}
+
+      {(!isLoading && !isError && filteredProducts.length === 0) && (
+        <NoResults />
       )}
     </div>
   );
