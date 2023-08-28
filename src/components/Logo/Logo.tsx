@@ -2,6 +2,8 @@
 import React from 'react';
 import { NavLink, useSearchParams } from 'react-router-dom';
 
+import { resetSearchParams } from '../../helpers/resetSearchParams';
+
 type Props = {
   className: string,
   setIsMenuOpened: (param: boolean) => void,
@@ -15,7 +17,7 @@ export const Logo: React.FC<Props> = React.memo(({ className, setIsMenuOpened })
       className={className}
       to={{
         pathname: '/',
-        search: searchParams.toString(),
+        search: resetSearchParams(searchParams),
       }}
       onClick={() => setIsMenuOpened(false)}
     >

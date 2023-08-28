@@ -9,6 +9,7 @@ import {
   HEADER_LEFT_NAV_LINKS,
   HEADER_RIGHT_NAV_LINKS,
 } from '../../helpers/NavLinks';
+import { resetSearchParams } from '../../helpers/resetSearchParams';
 
 import '../../i18n';
 import { Resolutions } from '../../types/Resolutions';
@@ -102,7 +103,7 @@ export const Header: React.FC<Props> = React.memo(({
                     className="header__nav-list-link"
                     to={{
                       pathname: makeUrl(link),
-                      search: searchParams.toString(),
+                      search: resetSearchParams(searchParams),
                     }}
                   >
                     {t(link)}
@@ -127,7 +128,7 @@ export const Header: React.FC<Props> = React.memo(({
                     className="header__nav-list-link"
                     to={{
                       pathname: makeUrl(link),
-                      search: searchParams.toString(),
+                      search: resetSearchParams(searchParams),
                     }}
                   >
                     {t(link)}
@@ -141,7 +142,7 @@ export const Header: React.FC<Props> = React.memo(({
                   className="header__nav-list-link"
                   to={{
                     pathname: makeUrl(HeaderLink.Bag),
-                    search: searchParams.toString(),
+                    search: resetSearchParams(searchParams),
                   }}
                 >
                   {t(HeaderLink.Bag)}

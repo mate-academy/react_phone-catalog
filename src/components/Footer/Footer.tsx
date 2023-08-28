@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 
 import { makeUrl } from '../../helpers/makeUrl';
 import { FOOTER_NAV_LINKS } from '../../helpers/NavLinks';
+import { resetSearchParams } from '../../helpers/resetSearchParams';
 
 import { Logo } from '../Logo/Logo';
 
@@ -41,7 +42,7 @@ export const Footer: React.FC<Props> = React.memo(({ setIsMenuOpened }) => {
                     className="footer__nav-list-link"
                     to={{
                       pathname: makeUrl(link),
-                      search: searchParams.toString(),
+                      search: resetSearchParams(searchParams),
                     }}
                   >
                     {t(link)}

@@ -46,12 +46,6 @@ export const LookBookPage: React.FC = React.memo(() => {
   };
 
   useEffect(() => {
-    return () => {
-      setSearchWith({ page: null });
-    };
-  }, []);
-
-  useEffect(() => {
     setIsLoading(true);
 
     getData<Preview[]>('previews')
@@ -72,9 +66,7 @@ export const LookBookPage: React.FC = React.memo(() => {
 
   return (
     <main className="lookBook">
-      <div
-        className="container grid"
-      >
+      <div className="container grid">
         {hasError && (
           <ErrorMessage
             rootClassName="lookBook__items"
