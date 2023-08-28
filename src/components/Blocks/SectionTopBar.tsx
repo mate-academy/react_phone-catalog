@@ -1,6 +1,6 @@
 import React from 'react';
-import { Product } from '../types/Phone';
-import { IconSlideLeft, IconSlideRight } from '../utils/Icons';
+import { Product } from '../../types/Phone';
+import { IconSlideLeft, IconSlideRight } from '../../utils/Icons';
 
 interface Props {
   title: string;
@@ -32,7 +32,7 @@ const SectionTopBar: React.FC<Props> = ({
           disabled={currentIndex === 0}
           type="button"
           className="section__button slider-button"
-          onClick={() => prevSlide}
+          onClick={prevSlide}
         >
           <IconSlideLeft />
         </button>
@@ -41,7 +41,7 @@ const SectionTopBar: React.FC<Props> = ({
           disabled={currentIndex === maxIndex}
           type="button"
           className="section__button slider-button"
-          onClick={() => nextSlide}
+          onClick={nextSlide}
         >
           <IconSlideRight />
         </button>

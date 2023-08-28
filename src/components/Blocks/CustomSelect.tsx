@@ -1,17 +1,18 @@
 import { useState } from 'react';
 import { Link, useLocation, useSearchParams } from 'react-router-dom';
-import { IconSlideDown, IconSlideUp } from '../utils/Icons';
-import { SortType } from '../types/SortType';
-import { SelectAmountLink, SelectSortLink } from '../utils/selectLinks';
+import { IconSlideDown, IconSlideUp } from '../../utils/Icons';
+import { SortType } from '../../types/SortType';
+import { SelectAmountLink, SelectSortLink } from '../../utils/selectLinks';
 
 interface SelectProps {
   title: string;
   searchParam: string;
   selectSortLink: SelectSortLink[] | SelectAmountLink[];
-  setSortQuery: React.Dispatch<React.SetStateAction<SortType>> | null;
-  setProductsPerPage: React.Dispatch<React.SetStateAction<number>> | null;
+  setSortQuery?: React.Dispatch<React.SetStateAction<SortType>>;
+  setProductsPerPage?: React.Dispatch<React.SetStateAction<number>>;
   sortQuery: SortType;
-  productsPerPage: number
+  productsLength?: number;
+  productsPerPage?: number;
 }
 
 const sortQueryTitle = (query: SortType) => {
@@ -42,17 +43,18 @@ const CustomSelect: React.FC<SelectProps> = ({
   searchParam,
   title,
   sortQuery,
+  productsLength,
   productsPerPage,
 }) => {
   const [searchParams] = useSearchParams();
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
-
   const [currentSort, setCurrentSort] = useState<string>(
     sortQueryTitle(sortQuery),
   );
-  const [currentAmount, setCurrentAmount] = useState<string>(
-    productsPerPage.toString(),
-  );
+  const [
+    currentAmount,
+    setCurrentAmount,
+  ] = useState<string>(productsPerPage ? productsPerPage.toString() : 'All');
 
   const location = useLocation();
 
@@ -74,8 +76,8 @@ const CustomSelect: React.FC<SelectProps> = ({
       setCurrentSort(link.title);
     }
 
-    if (setProductsPerPage) {
-      setProductsPerPage(Number(link.value));
+    if (setProductsPerPage && productsLength) {
+      setProductsPerPage(Number(link.value) || productsLength);
       setCurrentAmount(link.value);
     }
 

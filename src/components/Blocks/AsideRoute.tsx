@@ -1,8 +1,9 @@
 import { useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import { HouseIcon, IconSlideRight } from '../utils/Icons';
-import { Product } from '../types/Phone';
-import { ProductType } from '../api/getProducts';
+import { HouseIcon, IconSlideRight } from '../../utils/Icons';
+import { Product } from '../../types/Phone';
+import { ProductType } from '../../api/getProducts';
+import { generateUrlPath } from '../../utils/generateUrlPath';
 
 interface Props {
   pageTitle?: string;
@@ -27,7 +28,12 @@ const AsideRoute: React.FC<Props> = ({ pageTitle, product, productName }) => {
 
       <IconSlideRight />
 
-      <p className="aside-route__page-title">{title}</p>
+      <Link
+        to={`/${generateUrlPath(product?.type as ProductType)}`}
+        className="aside-route__page-title"
+      >
+        {title}
+      </Link>
       {productName
       && (
         <>

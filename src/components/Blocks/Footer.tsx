@@ -16,18 +16,29 @@ const Footer = () => {
               <li className="nav__item">
                 <NavLink
                   className="nav__link"
-                  to="https://github.com/vetal-hovenko/react_phone-catalog"
+                  // eslint-disable-next-line max-len
+                  to="https://github.com/vetal-hovenko/react_phone-catalog/tree/develop"
+                  target="_blank"
                 >
                   Github
                 </NavLink>
               </li>
               <li className="nav__item">
-                <NavLink className="nav__link" to="/contacts">
+                <NavLink
+                  className="nav__link"
+                  to="https://github.com/vetal-hovenko"
+                  target="_blank"
+                >
                   Contacts
                 </NavLink>
               </li>
               <li className="nav__item">
-                <NavLink className="nav__link" to="/contacts">
+                <NavLink
+                  className="nav__link"
+                  // eslint-disable-next-line max-len
+                  to="https://github.com/mate-academy/react_phone-catalog/tree/master"
+                  target="_blank"
+                >
                   Rights
                 </NavLink>
               </li>

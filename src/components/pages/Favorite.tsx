@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Product } from '../../types/Phone';
-import AsideRoute from '../AsideRoute';
-import ProductCard from '../ProductCard';
+import AsideRoute from '../Blocks/AsideRoute';
+import ProductCard from '../Blocks/ProductCard';
 import { LocaleDataTypes } from '../../utils/localeStorage';
 
 interface FavoritesProps {

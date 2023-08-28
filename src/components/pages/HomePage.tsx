@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ProductType, getProducts } from '../../api/getProducts';
-import SectionTopBar from '../SectionTopBar';
-import ProductCard from '../ProductCard';
+import SectionTopBar from '../Blocks/SectionTopBar';
+import ProductCard from '../Blocks/ProductCard';
 import { Product } from '../../types/Phone';
 
 const productsAmountInfo = (products: Product[] | undefined) => {

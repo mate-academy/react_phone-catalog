@@ -5,13 +5,15 @@
 }
 
 .aside-route * {
-  color: var(--gray-secondary, $gray-secondary);
+  color: $gray-secondary;
   font-family: "Mont";
   font-size: 12px;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
+}
 
+.aside-route__page-title {
   &:hover {
     color: var(--gray-primary, $dark-gray);
   }

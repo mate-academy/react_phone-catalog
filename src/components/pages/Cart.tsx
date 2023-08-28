@@ -1,10 +1,10 @@
 import { useEffect, useMemo, useState } from 'react';
-import { Product } from '../types/Phone';
+import { Product } from '../../types/Phone';
 import {
   LocaleDataTypes, setStorage,
-} from '../utils/localeStorage';
-import GoBackLink from './GoBackLink';
-import CartProduct from './CartProduct';
+} from '../../utils/localeStorage';
+import GoBackLink from '../Blocks/GoBackLink';
+import CartProduct from '../Blocks/CartProduct';
 
 const Cart = () => {
   const products = localStorage.getItem(LocaleDataTypes.CART);
@@ -72,7 +72,7 @@ const Cart = () => {
                     {totalPrice}
                   </h2>
                   <p className="cart__purchase--total--amount">
-                    {visibleProducts.length === 1
+                    {totalAmount === 1
                       ? 'Total for 1 item'
                       : `Total for ${totalAmount} items`}
                   </p>

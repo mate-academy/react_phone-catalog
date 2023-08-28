@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { IconSlideLeft, IconSlideRight } from '../../utils/Icons';
 
-const Aside = () => {
+const AsideBanner = () => {
   const [imageIndex, setImageIndex] = useState(1);
 
   const barColor = useMemo(() => (index: number) => {
@@ -14,11 +14,9 @@ const Aside = () => {
   [imageIndex]);
 
   const advanceImage = () => {
-    if (imageIndex === 3) {
-      setImageIndex(1);
-    } else {
-      setImageIndex(imageIndex + 1);
-    }
+    const nextIndex = imageIndex === 3 ? 1 : imageIndex + 1;
+
+    setImageIndex(nextIndex);
   };
 
   useEffect(() => {
@@ -76,4 +74,4 @@ const Aside = () => {
   );
 };
 
-export default Aside;
+export default AsideBanner;

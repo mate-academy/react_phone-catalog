@@ -6,24 +6,30 @@ import {
 } from 'react-router-dom';
 import { useState } from 'react';
 
+import './styles/App.scss';
+
 import Header from './components/Blocks/Header';
 import Home from './components/pages/Home';
-import './styles/App.scss';
 import Footer from './components/Blocks/Footer';
 import PhonesPage from './components/pages/PhonesPage';
 import TabletsPage from './components/pages/TabletsPage';
 import AccessoriesPage from './components/pages/AccessoriesPage';
 import ProductPage from './components/pages/ProductPage';
 import Favorite from './components/pages/Favorite';
-import Cart from './components/Cart';
+import Cart from './components/pages/Cart';
+import PageNotFound from './components/pages/PageNotFound';
 
-const PageRouter = () => {
+const App = () => {
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [currentProduct, setCurrentProduct] = useState<string>('');
 
   return (
     <Router>
-      <Header setSearchQuery={setSearchQuery} currentProduct={currentProduct} />
+      <Header
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
+        currentProduct={currentProduct}
+      />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Navigate replace to="/" />} />
@@ -60,7 +66,6 @@ const PageRouter = () => {
         <Route path="/phones/:productId" element={<ProductPage />} />
         <Route path="/tablets/:productId" element={<ProductPage />} />
         <Route path="/accessories/:productId" element={<ProductPage />} />
-        <Route path="/favorites/:productId" element={<ProductPage />} />
         <Route
           path="/favorites"
           element={(
@@ -70,10 +75,11 @@ const PageRouter = () => {
           )}
         />
         <Route path="/shopping-cart" element={<Cart />} />
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
       <Footer />
     </Router>
   );
 };
 
-export default PageRouter;
+export default App;

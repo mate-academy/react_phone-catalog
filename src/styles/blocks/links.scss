@@ -1,0 +1,26 @@
+.home-link {
+  background-image: url("../../assets/icons/logo.svg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  display: block;
+  width: 48px;
+}
+
+.go-back {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+
+  &__button {
+    color: $gray-secondary;
+    font-family: "Mont";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    background-color: transparent;
+
+    &:hover {
+      color: var(--gray-primary, $dark-gray);
+    }
+  }
+}

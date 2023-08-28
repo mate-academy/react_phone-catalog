@@ -1,0 +1,13 @@
+.slider-button {
+  width: 32px;
+  height: 32px;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid $icons-border;
+
+  &:disabled {
+    border: 1px solid $light-gray;
+  }
+}

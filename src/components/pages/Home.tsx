@@ -1,10 +1,10 @@
-import Aside from '../Blocks/Aside';
-import HomePage from '../Blocks/HomePage';
+import AsideBanner from '../Blocks/AsideBanner';
+import HomePage from './HomePage';
 
 const Home = () => {
   return (
     <>
-      <Aside />
+      <AsideBanner />
       <HomePage />
     </>
   );

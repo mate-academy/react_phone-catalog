@@ -1,7 +1,6 @@
 .custom-select * {
   font-family: "Mont";
   font-size: 14px;
-  font-style: normal;
   font-weight: 600;
   line-height: normal;
 }
@@ -66,7 +65,7 @@
     &--link {
       width: 100%;
       font-weight: 500;
-      line-height: 21px;
+      line-height: 180%;
     }
   }
 }

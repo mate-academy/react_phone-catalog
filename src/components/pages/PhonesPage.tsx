@@ -6,11 +6,11 @@ import React, {
 
 import { ProductType, getProductsWithType } from '../../api/getProducts';
 import { Product } from '../../types/Phone';
-import ProductsCatalog from '../ProductsCatalog';
-import NoProductsMessage from '../NoProductsMessage';
+import ProductsCatalog from '../Blocks/ProductsCatalog';
+import NoProductsMessage from './NoProductsMessage';
 import { CatalogProps } from '../../types/CatalogProps';
 import { filteredProductsByName } from '../../utils/filterProductsByName';
-import Loader from '../Loader';
+import Loader from '../Blocks/Loader';
 
 const PhonesPage: React.FC<CatalogProps> = ({
   searchQuery, setCurrentProduct,

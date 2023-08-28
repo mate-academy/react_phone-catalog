@@ -1,12 +1,15 @@
 import { useState } from 'react';
-import { Product } from '../types/Phone';
-import { CloseIcon, MinusIcon, PlusIcon } from '../utils/Icons';
+import { Link } from 'react-router-dom';
+import { Product } from '../../types/Phone';
+import { CloseIcon, MinusIcon, PlusIcon } from '../../utils/Icons';
 import {
   LocaleDataTypes,
   addProductToCart,
   getAmountOfProducts,
   removeProductFromCart,
-} from '../utils/localeStorage';
+} from '../../utils/localeStorage';
+import { generateUrlPath } from '../../utils/generateUrlPath';
+import { ProductType } from '../../api/getProducts';
 
 interface CardProductProps {
   product: Product;
@@ -23,33 +26,45 @@ const CartProduct: React.FC<CardProductProps> = ({
     name,
     price,
     imageUrl,
+    type,
   } = product;
   const [
     currentAmount, setCurrentAmount,
   ] = useState<number>(getAmountOfProducts(id));
 
+  const handleDelete = () => {
+    setStorage(id, LocaleDataTypes.CART);
+    setVisibleProducts((prevProds) => [...prevProds].filter(
+      (prevProduct) => prevProduct.id !== id,
+    ));
+  };
+
   return (
     <article key={id} className="cart__product">
-      <div className="cart__product--wrapper">
+      <div
+        className="cart__product--wrapper"
+      >
         <button
           type="button"
           className="cart__product--close-button"
-          onClick={() => {
-            setStorage(id, LocaleDataTypes.CART);
-            setVisibleProducts((prevProds) => [...prevProds].filter(
-              (prevProduct) => prevProduct.id !== id,
-            ));
-          }}
+          onClick={() => handleDelete()}
           data-cy="cartDeleteButton"
         >
           <CloseIcon />
         </button>
-        <img
-          src={imageUrl}
-          alt={name}
-          className="cart__product--photo"
-        />
-        <p className="cart__product--name">{name}</p>
+
+        <Link
+          to={`/${generateUrlPath(type as ProductType)}/${id}`}
+          className="cart__product--link"
+        >
+          <img
+            src={imageUrl}
+            alt={name}
+            className="cart__product--photo"
+          />
+
+          <p className="cart__product--name">{name}</p>
+        </Link>
       </div>
 
       <div className="cart__product--side-panel">

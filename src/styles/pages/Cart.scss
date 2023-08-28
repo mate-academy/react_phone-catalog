@@ -37,6 +37,12 @@
       align-items: center;
     }
 
+    &--link {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
     &--side-panel {
       display: flex;
       gap: 48px;

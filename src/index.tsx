@@ -1,8 +1,8 @@
 import ReactDOM from 'react-dom';
 import './styles/App.scss';
-import PageRouter from './PageRouter';
+import App from './App';
 
 ReactDOM.render(
-  <PageRouter />,
+  <App />,
   document.getElementById('root'),
 );

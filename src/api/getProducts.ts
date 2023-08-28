@@ -85,3 +85,28 @@ export async function getSingleProduct(id: string) {
     throw error;
   }
 }
+
+export async function getSuggestedProducts() {
+  try {
+    const response = await fetch(PRODUCT_LIST_LINK);
+    const data = await response.json();
+    const shuffledProducts = [...data];
+
+    for (let i = shuffledProducts.length - 1; i > 0; i -= 1) {
+      const j = Math.floor(Math.random() * (i + 1));
+
+      [
+        shuffledProducts[i],
+        shuffledProducts[j],
+      ] = [
+        shuffledProducts[j],
+        shuffledProducts[i],
+      ];
+    }
+
+    return shuffledProducts;
+  } catch (err) {
+    console.log(err);
+    throw err;
+  }
+}

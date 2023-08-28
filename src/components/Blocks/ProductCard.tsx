@@ -1,20 +1,21 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
-import { Link, useLocation } from 'react-router-dom';
-import { Product } from '../types/Phone';
-import { getPrevPrice } from '../utils/getPrevPrice';
-import { LocaleDataTypes, isAdded, setStorage } from '../utils/localeStorage';
-import { RedHeart, WhiteHeart } from '../utils/Icons';
+import { Link } from 'react-router-dom';
+import { Product } from '../../types/Phone';
+import { getPrevPrice } from '../../utils/getPrevPrice';
+import {
+  LocaleDataTypes, isAdded, setStorage,
+} from '../../utils/localeStorage';
+import { RedHeart, WhiteHeart } from '../../utils/Icons';
+import { generateUrlPath } from '../../utils/generateUrlPath';
+import { ProductType } from '../../api/getProducts';
 
 interface Props {
   product: Product;
-  // eslint-disable-next-line react/require-default-props
   setVisibleProducts?: React.Dispatch<React.SetStateAction<Product[]>>
 }
 
 const ProductCard: React.FC<Props> = ({ product, setVisibleProducts }) => {
-  const location = useLocation();
-
   const {
     capacity,
     discount,
@@ -24,6 +25,7 @@ const ProductCard: React.FC<Props> = ({ product, setVisibleProducts }) => {
     price,
     ram,
     screen,
+    type,
   } = product;
 
   const [
@@ -53,7 +55,7 @@ const ProductCard: React.FC<Props> = ({ product, setVisibleProducts }) => {
       className="browse-products__product product-card"
     >
       <div className="product__wrapper">
-        <Link to={`${location.pathname}/${id}`}>
+        <Link to={`/${generateUrlPath(type as ProductType)}/${id}`}>
           <img
             className="product-card--image"
             src={`${imageUrl}`}
@@ -120,6 +122,7 @@ const ProductCard: React.FC<Props> = ({ product, setVisibleProducts }) => {
             type="button"
             className="product-card--add-to-favorites"
             onClick={() => handleFavoriteButtonClick()}
+            data-cy="addToFavorite"
           >
             {isFavorite ? <RedHeart /> : <WhiteHeart />}
           </button>
@@ -127,6 +130,10 @@ const ProductCard: React.FC<Props> = ({ product, setVisibleProducts }) => {
       </div>
     </article>
   );
+};
+
+ProductCard.defaultProps = {
+  setVisibleProducts: undefined,
 };
 
 export default ProductCard;

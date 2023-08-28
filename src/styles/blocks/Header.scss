@@ -37,11 +37,11 @@
   }
 }
 
-.container {
-  margin-inline: auto;
-  max-width: 1136px;
-  width: 100%;
-}
+// .container {
+//   margin-inline: auto;
+//   max-width: 1136px;
+//   width: 100%;
+// }
 
 .shopping-icon {
   width: 16px;
@@ -116,12 +116,12 @@
     display: flex;
     width: 328px;
     justify-content: space-between;
+    height: $header-height;
 
     &--bar {
       width: 100%;
       padding: 24px;
       font-size: 14px;
-      border-bottom: 1px solid $light-gray;
 
       &::placeholder {
         font-family: "Mont";
@@ -134,10 +134,16 @@
     &--button {
       background-color: transparent;
       display: block;
-      background-image: url("../../assets/icons/search.svg");
       background-repeat: no-repeat;
       width: 64px;
       background-position: center center;
+    }
+
+    .search-products {
+      background-image: url("../../assets/icons/search.svg");
+    }
+    .cancel-search {
+      background-image: url("../../assets/icons/close.svg");
     }
   }
 

@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { IconSlideLeft } from '../utils/Icons';
+import { IconSlideLeft } from '../../utils/Icons';
 
 const GoBackLink = () => {
   const navigate = useNavigate();

@@ -1,5 +1,8 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
-import { Link, NavLink, useLocation } from 'react-router-dom';
+import {
+  Link, NavLink, useLocation, useSearchParams,
+} from 'react-router-dom';
+import { useEffect } from 'react';
 import classnames from 'classnames';
 import { LocaleDataTypes } from '../../utils/localeStorage';
 
@@ -9,6 +12,7 @@ interface NavLinkIsActive {
 
 interface HeaderProps {
   setSearchQuery: React.Dispatch<React.SetStateAction<string>>;
+  searchQuery: string;
   currentProduct: string;
 }
 
@@ -22,7 +26,9 @@ const shoppingIconClassName = ({ isActive }: NavLinkIsActive) => {
   return `shopping-icon${classnames({ '--is-active': isActive })}`;
 };
 
-const Header: React.FC<HeaderProps> = ({ setSearchQuery, currentProduct }) => {
+const Header: React.FC<HeaderProps> = ({
+  setSearchQuery, currentProduct, searchQuery,
+}) => {
   const location = useLocation();
 
   const isShoppingCartActive = () => {
@@ -56,6 +62,20 @@ const Header: React.FC<HeaderProps> = ({ setSearchQuery, currentProduct }) => {
   const productsFromFavorites = dataFromFavorites
     ? Object.keys(JSON.parse(dataFromFavorites))
     : [];
+
+  const [searchParams, setSearchParams] = useSearchParams('');
+
+  useEffect(() => {
+    const updatedSearchParams = new URLSearchParams(searchParams);
+
+    if (searchQuery) {
+      updatedSearchParams.set('search', searchQuery);
+    } else {
+      updatedSearchParams.delete('search');
+    }
+
+    setSearchParams(updatedSearchParams);
+  }, [searchQuery]);
 
   return (
     <header className="header">
@@ -117,9 +137,20 @@ const Header: React.FC<HeaderProps> = ({ setSearchQuery, currentProduct }) => {
               className="header__search--bar"
               onChange={event => setSearchQuery(event.target.value)}
             />
+
+            {searchQuery.length > 0
+            && (
+              <button
+                type="submit"
+                className="header__search--button cancel-search"
+                onClick={() => setSearchQuery('')}
+                data-cy="searchDelete"
+              />
+            )}
+
             <button
               type="submit"
-              className="header__search--button"
+              className="header__search--button search-products"
             />
           </form>
           <NavLink

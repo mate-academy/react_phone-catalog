@@ -22,12 +22,18 @@
 
 @import "./vars.scss";
 @import "./reset.scss";
+@import "./blocks/container.scss";
+@import "./blocks/links.scss";
+@import "./blocks/slider-button.scss";
+
 @import "./blocks/Aside.scss";
 @import "./typography.scss";
 @import "./blocks/Header.scss";
 @import "./blocks/Main.scss";
 @import "./blocks/Footer.scss";
 @import "./pages/ProductPage.scss";
+@import "./pages/Favorites.scss";
+@import "./pages/NotFound.scss";
 @import "./blocks/Loader.scss";
 @import "./blocks/AsideRoute.scss";
 @import "./pages/Cart.scss";
@@ -45,7 +51,6 @@ html {
 
 #root {
   min-height: 100vh;
-  font-family: "Mont";
 }
 
 body {
@@ -59,60 +64,4 @@ main {
 
 footer {
   height: $footer-height;
-}
-
-button,
-label,
-select,
-img {
-  cursor: pointer;
-
-  &:disabled {
-    cursor: auto;
-  }
-}
-
-.slider-button {
-  width: 32px;
-  height: 32px;
-  background-color: transparent;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid $icons-border;
-
-  &:disabled {
-    border: 1px solid $light-gray;
-  }
-}
-
-.home-link {
-  background-image: url("../assets/icons/logo.svg");
-  background-repeat: no-repeat;
-  background-position: center center;
-  display: block;
-  width: 48px;
-}
-
-.go-back {
-  display: flex;
-  gap: 4px;
-  align-items: center;
-
-  &__button {
-    color: var(--gray-secondary, $gray-secondary);
-    font-family: "Mont";
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 600;
-    background-color: transparent;
-
-    &:hover {
-      color: var(--gray-primary, $dark-gray);
-    }
-  }
-}
-
-.added-items {
-  margin-top: 40px;
 }
