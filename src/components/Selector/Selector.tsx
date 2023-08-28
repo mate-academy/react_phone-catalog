@@ -49,7 +49,7 @@ export const Selector: React.FC<Props> = ({
       </button>
 
       {isOpen && (
-        <div className="selector__options">
+        <ul className="selector__options">
           {sortKeys.map((selector, i) => (
             <button
               className={`selector__option ${sortBy === sortValues[i]
@@ -62,7 +62,7 @@ export const Selector: React.FC<Props> = ({
               {selector}
             </button>
           ))}
-        </div>
+        </ul>
       )}
     </div>
   );

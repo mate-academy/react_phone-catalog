@@ -6,6 +6,7 @@
     font-size: 12px;
     font-weight: 500;
     line-height: normal;
+    margin-bottom: 4px;
   }
 
   &__button {
@@ -37,6 +38,9 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    position: absolute;
+    top: 238px;
+    z-index: 1;
     width: 176px;
     box-sizing: border-box;
     border: 1px solid $gray;
@@ -45,6 +49,8 @@
   }
 
   &__option {
+    display: flex;
+    width: 176px;
     font-size: 14px;
     font-weight: 500;
     line-height: 21px;

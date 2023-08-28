@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
 import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { useProducts } from '../../context/ProductContext';
 import { Product } from '../../types/Product';
 import { Loader } from '../Loader/Loader';
@@ -22,8 +23,15 @@ const labels = ['Sort by', 'Items on page'];
 
 export const ProductsList = () => {
   const { products } = useProducts();
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const initialSort = queryParams.get('sort') || 'age';
+
   const [isLoading, setLoading] = useState(true);
-  const [sortBy, setSortBy] = useState('0');
+  const [sortBy, setSortBy] = useState(initialSort);
+  const [perPage, setPerPage] = useState('8');
+  const [currentPage, setCurrentPage] = useState(1);
+
   const phones = getPhones(products);
   const sortedPhones = sortingProducts(phones, sortBy);
 
@@ -31,10 +39,9 @@ export const ProductsList = () => {
     const selectedSort = event.target.value as SortType;
 
     setSortBy(selectedSort);
+    queryParams.set('sort', selectedSort);
+    window.history.replaceState({}, '', `${window.location.pathname}?${queryParams}`);
   };
-
-  const [perPage, setPerPage] = useState('8');
-  const [currentPage, setCurrentPage] = useState(1);
 
   const handlePerPage = (event: React.ChangeEvent<HTMLSelectElement>) => {
     if (event.target.value === 'all') {
@@ -52,6 +59,13 @@ export const ProductsList = () => {
     }
   };
 
+  useEffect(() => {
+    setSortBy(initialSort);
+  }, [location.search]);
+
+  // console.log('location', location);
+  // console.log('location.search', location.search);
+
   const startItem = ((currentPage - 1) * +perPage);
   const endItem = (currentPage * +perPage) > sortedPhones.length
     ? sortedPhones.length
@@ -68,7 +82,7 @@ export const ProductsList = () => {
   }, []);
 
   return (
-    <div className="container">
+    <>
       {isLoading ? <Loader /> : (
         <div className="productsList" data-cy="productList">
           <h2 className="productsList__title">
@@ -85,7 +99,9 @@ export const ProductsList = () => {
                 sortKeys={sortSortBy}
                 sortValues={sortValues}
               />
+            </div>
 
+            <div className="productsList__perPage">
               <Selector
                 sortBy={perPage}
                 label={labels[1]}
@@ -111,7 +127,6 @@ export const ProductsList = () => {
           />
         </div>
       )}
-
-    </div>
+    </>
   );
 };
