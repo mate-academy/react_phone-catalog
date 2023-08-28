@@ -16,6 +16,7 @@ import { ProductDetails } from './ProductDetails';
 import { Favourites } from './Favourites';
 import { Cart } from './Cart';
 import { Footer } from './Footer';
+import { ProductTypes } from './types/productTypes';
 
 const App = () => {
   const { setQuery } = useContext(Context);
@@ -98,7 +99,7 @@ const App = () => {
                   pathname={pathname}
                 />
                 <Products
-                  productType="Mobile Phones"
+                  productType={ProductTypes.phones}
                   pathname={pathname}
                   type="phone"
                   updateSearch={updateSearch}
@@ -130,7 +131,7 @@ const App = () => {
                   pathname={pathname}
                 />
                 <Products
-                  productType="Tablets"
+                  productType={ProductTypes.tablets}
                   pathname={pathname}
                   type="tablet"
                   updateSearch={updateSearch}
@@ -162,7 +163,7 @@ const App = () => {
                   pathname={pathname}
                 />
                 <Products
-                  productType="Accessories"
+                  productType={ProductTypes.accessories}
                   pathname={pathname}
                   type="accessory"
                   updateSearch={updateSearch}
@@ -218,4 +219,5 @@ const App = () => {
     </div>
   );
 };
+
 export default App;

@@ -13,9 +13,10 @@ import { getNumbers } from './utils/getNumbers';
 import { Loader } from './Loader';
 import { getProducts } from './api/products';
 import { NoResults } from './NoResults';
+import { ProductTypes } from './types/productTypes';
 
 type Props = {
-  productType: string,
+  productType: ProductTypes,
   pathname: string,
   type: string,
   updateSearch(params: {
@@ -385,7 +386,7 @@ export const Products: React.FC<Props> = ({
       )}
 
       {(!isLoading && !isError && filteredProducts.length === 0) && (
-        <NoResults />
+        <NoResults productType={productType} />
       )}
     </div>
   );

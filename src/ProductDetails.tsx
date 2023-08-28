@@ -8,6 +8,7 @@ import { Details } from './types/Details';
 import { Loader } from './Loader';
 import { getDetails } from './api/products';
 import { ProductsSlider } from './ProductsSlider';
+import { GoBack } from './GoBack';
 
 type Props = {
   pathname: string,
@@ -64,6 +65,7 @@ export const ProductDetails: React.FC<Props> = ({ pathname }) => {
 
   return (
     <div className="details">
+      <GoBack />
       <h1 className="details__title">{activeProduct?.name}</h1>
 
       {isLoading && (

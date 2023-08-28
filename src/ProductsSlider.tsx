@@ -28,7 +28,7 @@ export const ProductsSlider: React.FC<Props> = ({
     272 * products.length) + (25 * (products.length - 1)
   );
 
-  const getFilteredProducts = async () => {
+  const getSuggestedProducts = async () => {
     setIsLoading(true);
     setIsError(false);
 
@@ -94,7 +94,7 @@ export const ProductsSlider: React.FC<Props> = ({
   };
 
   useEffect(() => {
-    getFilteredProducts();
+    getSuggestedProducts();
   }, [pathname]);
 
   return (

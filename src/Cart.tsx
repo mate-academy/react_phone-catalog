@@ -1,9 +1,9 @@
 import classNames from 'classnames';
 import { useState, useContext, useEffect } from 'react';
-import { useNavigate } from 'react-router';
 import { Loader } from './Loader';
 import { Context } from './Context';
 import { CartProduct } from './types/CartProduct';
+import { GoBack } from './GoBack';
 import {
   setCartItemsToLocaleStorage,
   getCartItemsFromLocaleStorage,
@@ -12,7 +12,6 @@ import {
 export const Cart = () => {
   const { setProductsToBuy, loadingItem, setLoadingItem } = useContext(Context);
   const [isLoading, setIsLoading] = useState(false);
-  const history = useNavigate();
 
   const remove = (index: number) => {
     setLoadingItem(index);
@@ -86,17 +85,7 @@ export const Cart = () => {
 
   return (
     <div className="cart">
-      <div className="cart__goGack_container">
-        <div className="cart__goGack_arrow" />
-        <button
-          type="button"
-          aria-label="Go back"
-          className="cart__goGack_button"
-          onClick={() => history(-2)}
-        >
-          Back
-        </button>
-      </div>
+      <GoBack />
       <h1 className="cart__title">Cart</h1>
 
       {isLoading && (
