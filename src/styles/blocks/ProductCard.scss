@@ -1,7 +1,5 @@
-@import "../vars.scss";
-
 .product-card * {
-  font-family: "Mont";
+  font-family: "Mont", sans-serif;
 }
 
 @keyframes cardAnimation {

@@ -6,7 +6,7 @@
   }
 
   &__link {
-    font-family: "Mont";
+    font-family: "Mont", sans-serif;
     color: $gray-secondary;
     font-size: 12px;
     font-style: normal;
@@ -65,7 +65,7 @@
     color: white;
     bottom: 50%;
     left: 50%;
-    font-family: "Mont";
+    font-family: "Mont", sans-serif;
     font-size: 9px;
     font-style: normal;
     font-weight: 600;
@@ -124,7 +124,7 @@
       font-size: 14px;
 
       &::placeholder {
-        font-family: "Mont";
+        font-family: "Mont", sans-serif;
         font-weight: 600;
 
         color: rgb(194, 194, 194);

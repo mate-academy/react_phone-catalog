@@ -22,6 +22,14 @@ const AsideRoute: React.FC<Props> = ({ pageTitle, product, productName }) => {
     return pageTitle;
   }, [product, pageTitle]);
 
+  const link = useMemo(() => {
+    if (pageTitle) {
+      return pageTitle.toLowerCase();
+    }
+
+    return generateUrlPath(product?.type as ProductType);
+  }, [pageTitle]);
+
   return (
     <aside className="aside-route" data-cy="breadCrumbs">
       <Link to="/"><HouseIcon /></Link>
@@ -29,7 +37,7 @@ const AsideRoute: React.FC<Props> = ({ pageTitle, product, productName }) => {
       <IconSlideRight />
 
       <Link
-        to={`/${generateUrlPath(product?.type as ProductType)}`}
+        to={`/${link}`}
         className="aside-route__page-title"
       >
         {title}
