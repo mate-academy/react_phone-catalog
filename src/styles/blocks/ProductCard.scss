@@ -2,16 +2,6 @@
   font-family: "Mont", sans-serif;
 }
 
-@keyframes cardAnimation {
-  from {
-    opacity: 0.5;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
 .product-card {
   width: 272px;
   height: 500px;
@@ -22,8 +12,6 @@
 
   .product__wrapper {
     padding: 32px 32px 24px;
-
-    animation: cardAnimation 0.3s;
   }
 
   &--image {

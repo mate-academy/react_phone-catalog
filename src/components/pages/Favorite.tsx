@@ -1,28 +1,17 @@
-import { useState, useEffect } from 'react';
-import { Product } from '../../types/Phone';
+import { useEffect } from 'react';
 import AsideRoute from '../Blocks/AsideRoute';
 import ProductCard from '../Blocks/ProductCard';
-import { LocaleDataTypes } from '../../utils/localeStorage';
+import { useProductsContext } from '../../utils/ProductsContext';
 
 interface FavoritesProps {
   setCurrentProduct: React.Dispatch<React.SetStateAction<string>>
 }
 
 const Favorite: React.FC<FavoritesProps> = ({ setCurrentProduct }) => {
-  const products = localStorage.getItem(LocaleDataTypes.FAVORITES);
-
-  const favoriteProducts: Product[] = products
-    ? Object.values(JSON.parse(products))
-    : [];
-
-  const [visibleProducts, setVisibleProducts] = useState<Product[]>([]);
+  const { favoriteProducts } = useProductsContext();
 
   useEffect(() => {
     setCurrentProduct('favorites');
-
-    if (favoriteProducts) {
-      setVisibleProducts([...favoriteProducts]);
-    }
   }, []);
 
   return (
@@ -35,15 +24,14 @@ const Favorite: React.FC<FavoritesProps> = ({ setCurrentProduct }) => {
         </h1>
 
         <p className="section-catalog__caption">
-          {`${visibleProducts?.length} items`}
+          {`${favoriteProducts?.length} items`}
         </p>
 
         <div className="added-items catalog">
-          {visibleProducts?.map((product) => (
+          {favoriteProducts?.map((product) => (
             <ProductCard
               key={product.id}
               product={product}
-              setVisibleProducts={setVisibleProducts}
             />
           ))}
         </div>

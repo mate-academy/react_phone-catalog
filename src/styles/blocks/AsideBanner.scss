@@ -2,24 +2,42 @@ $aside-height: 400px;
 
 .banner {
   margin-top: 40px;
-  width: 100%;
 
   .wrapper {
     display: flex;
-    gap: 16px;
+    justify-content: space-between;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  &__images-wrapper {
+    display: flex;
+    width: 3120px;
+
+    transition: transform 1s;
   }
 
   &__image {
-    height: 400px;
+    height: $aside-height;
     width: 1040px;
 
     background-size: contain;
     background-position: center center;
     background-repeat: no-repeat;
+
+    &--1 {
+      background-image: url("../../assets/images/banner1.jpg");
+    }
+    &--2 {
+      background-image: url("../../assets/images/banner2.jpg");
+    }
+    &--3 {
+      background-image: url("../../assets/images/banner3.png");
+    }
   }
 
   &__phones-images {
-    display: flex;
+    max-width: 1040px;
     overflow: hidden;
   }
 
@@ -35,16 +53,4 @@ $aside-height: 400px;
 
   background-color: rgb(255, 255, 255);
   border: 1px solid $icons-border;
-}
-
-.banner-image {
-  &--1 {
-    background-image: url("../../assets/images/banner1.jpg");
-  }
-  &--2 {
-    background-image: url("../../assets/images/banner2.jpg");
-  }
-  &--3 {
-    background-image: url("../../assets/images/banner3.png");
-  }
 }

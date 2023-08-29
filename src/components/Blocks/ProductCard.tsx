@@ -9,13 +9,13 @@ import {
 import { RedHeart, WhiteHeart } from '../../utils/Icons';
 import { generateUrlPath } from '../../utils/generateUrlPath';
 import { ProductType } from '../../api/getProducts';
+import { useProductsContext } from '../../utils/ProductsContext';
 
 interface Props {
   product: Product;
-  setVisibleProducts?: React.Dispatch<React.SetStateAction<Product[]>>
 }
 
-const ProductCard: React.FC<Props> = ({ product, setVisibleProducts }) => {
+const ProductCard: React.FC<Props> = ({ product }) => {
   const {
     capacity,
     discount,
@@ -38,15 +38,37 @@ const ProductCard: React.FC<Props> = ({ product, setVisibleProducts }) => {
     setIsAddedToCart,
   ] = useState<boolean>(isAdded(id, LocaleDataTypes.CART));
 
-  const handleFavoriteButtonClick = () => {
+  const {
+    cartProducts,
+    setCartProducts,
+    favoriteProducts,
+    setFavoriteProducts,
+  } = useProductsContext();
+
+  const handleFavoriteButton = () => {
+    if (isFavorite) {
+      setFavoriteProducts(prevProds => (
+        prevProds.filter(prod => prod.id !== id)
+      ));
+    } else {
+      setFavoriteProducts([...favoriteProducts, product]);
+    }
+
     setStorage(id, LocaleDataTypes.FAVORITES);
     setIsFavorite(!isAdded(id, LocaleDataTypes.FAVORITES));
+  };
 
-    if (setVisibleProducts) {
-      setVisibleProducts(prevProds => [...prevProds].filter(
-        prevProduct => prevProduct.id !== product.id,
+  const handleAddToCart = () => {
+    if (isAddedToCart) {
+      setCartProducts(prevProds => (
+        prevProds.filter(prod => prod.id !== id)
       ));
+    } else {
+      setCartProducts([...cartProducts, { ...product, amount: 1 }]);
     }
+
+    setStorage(id, LocaleDataTypes.CART);
+    setIsAddedToCart(!isAdded(id, LocaleDataTypes.CART));
   };
 
   return (
@@ -111,17 +133,14 @@ const ProductCard: React.FC<Props> = ({ product, setVisibleProducts }) => {
           <button
             type="button"
             className={`product-card--add-to-cart${classNames({ '--added': isAddedToCart })}`}
-            onClick={() => {
-              setStorage(id, LocaleDataTypes.CART);
-              setIsAddedToCart(!isAdded(id, LocaleDataTypes.CART));
-            }}
+            onClick={() => handleAddToCart()}
           >
             {isAddedToCart ? 'Added to cart' : 'Add to cart'}
           </button>
           <button
             type="button"
             className="product-card--add-to-favorites"
-            onClick={() => handleFavoriteButtonClick()}
+            onClick={() => handleFavoriteButton()}
             data-cy="addToFavorite"
           >
             {isFavorite ? <RedHeart /> : <WhiteHeart />}
@@ -130,10 +149,6 @@ const ProductCard: React.FC<Props> = ({ product, setVisibleProducts }) => {
       </div>
     </article>
   );
-};
-
-ProductCard.defaultProps = {
-  setVisibleProducts: undefined,
 };
 
 export default ProductCard;

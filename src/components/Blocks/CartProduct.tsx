@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { Product } from '../../types/Phone';
 import { CloseIcon, MinusIcon, PlusIcon } from '../../utils/Icons';
 import {
-  LocaleDataTypes,
   addProductToCart,
   getAmountOfProducts,
   removeProductFromCart,
@@ -13,13 +12,12 @@ import { ProductType } from '../../api/getProducts';
 
 interface CardProductProps {
   product: Product;
-  setStorage: (id: string, data: LocaleDataTypes) => void;
-  setVisibleProducts: React.Dispatch<React.SetStateAction<Product[]>>;
+  handleDelete: (id: string) => void;
   updateProductAmount: (productId: string, newAmount: number) => void;
 }
 
 const CartProduct: React.FC<CardProductProps> = ({
-  product, setStorage, setVisibleProducts, updateProductAmount,
+  product, handleDelete, updateProductAmount,
 }) => {
   const {
     id,
@@ -32,13 +30,6 @@ const CartProduct: React.FC<CardProductProps> = ({
     currentAmount, setCurrentAmount,
   ] = useState<number>(getAmountOfProducts(id));
 
-  const handleDelete = () => {
-    setStorage(id, LocaleDataTypes.CART);
-    setVisibleProducts((prevProds) => [...prevProds].filter(
-      (prevProduct) => prevProduct.id !== id,
-    ));
-  };
-
   return (
     <article key={id} className="cart__product">
       <div
@@ -47,7 +38,7 @@ const CartProduct: React.FC<CardProductProps> = ({
         <button
           type="button"
           className="cart__product--close-button"
-          onClick={() => handleDelete()}
+          onClick={() => handleDelete(id)}
           data-cy="cartDeleteButton"
         >
           <CloseIcon />

@@ -1,17 +1,20 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { Product } from '../../types/Phone';
 import {
-  LocaleDataTypes, setStorage,
+  LocaleDataTypes,
+  setStorage,
 } from '../../utils/localeStorage';
 import GoBackLink from '../Blocks/GoBackLink';
 import CartProduct from '../Blocks/CartProduct';
+import { useProductsContext } from '../../utils/ProductsContext';
 
 const Cart = () => {
-  const products = localStorage.getItem(LocaleDataTypes.CART);
-  const productsFromCart: Product[] = products
-    ? Object.values(JSON.parse(products))
-    : [];
-  const [visibleProducts, setVisibleProducts] = useState<Product[]>([]);
+  const {
+    cartProducts,
+    setCartProducts,
+    totalAmountInCart,
+  } = useProductsContext();
+
   const [isMessageVisible, setIsMessageVisible] = useState<boolean>(false);
 
   const handleCheckoutButton = () => {
@@ -20,25 +23,24 @@ const Cart = () => {
     setTimeout(() => setIsMessageVisible(false), 4000);
   };
 
-  useEffect(() => {
-    setVisibleProducts(productsFromCart);
-  }, []);
-
-  const totalPrice = useMemo(() => visibleProducts?.reduce((acc, product) => {
+  const totalPrice = useMemo(() => cartProducts?.reduce((acc, product) => {
     return acc + product.price * product.amount;
-  }, 0), [visibleProducts]);
-
-  const totalAmount = useMemo(() => visibleProducts?.reduce((acc, product) => {
-    return acc + product.amount;
-  }, 0), [visibleProducts]);
+  }, 0), [cartProducts]);
 
   const updateProductAmount = (productId: string, newAmount: number) => {
-    const updatedProducts = visibleProducts
+    const updatedProducts = cartProducts
       .map((product) => (product.id === productId
         ? { ...product, amount: newAmount }
         : product));
 
-    setVisibleProducts(updatedProducts);
+    setCartProducts(updatedProducts);
+  };
+
+  const handleDelete = (id: string) => {
+    setStorage(id, LocaleDataTypes.CART);
+    setCartProducts((prevProds) => [...prevProds].filter(
+      (prevProduct) => prevProduct.id !== id,
+    ));
   };
 
   return (
@@ -48,17 +50,16 @@ const Cart = () => {
       <section className="section">
         <h1 className="section__title cart__title">Cart</h1>
 
-        {visibleProducts.length > 0
+        {cartProducts.length > 0
           ? (
             <div className="cart__container">
               <div className="cart__content">
-                {visibleProducts.map((product: Product) => {
+                {cartProducts.map((product: Product) => {
                   return (
                     <CartProduct
                       key={product.id}
                       product={product}
-                      setStorage={setStorage}
-                      setVisibleProducts={setVisibleProducts}
+                      handleDelete={handleDelete}
                       updateProductAmount={updateProductAmount}
                     />
                   );
@@ -72,9 +73,9 @@ const Cart = () => {
                     {totalPrice}
                   </h2>
                   <p className="cart__purchase--total--amount">
-                    {totalAmount === 1
+                    {totalAmountInCart === 1
                       ? 'Total for 1 item'
-                      : `Total for ${totalAmount} items`}
+                      : `Total for ${totalAmountInCart} items`}
                   </p>
                 </div>
 

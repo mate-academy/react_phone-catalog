@@ -8,7 +8,6 @@ import {
   getSingleProduct,
   getSuggestedProducts,
 } from '../../api/getProducts';
-import ProductCard from '../Blocks/ProductCard';
 import { ProductFeatures } from '../../types/ProductFeatures';
 import Loader from '../Blocks/Loader';
 import { getPrevPrice } from '../../utils/getPrevPrice';
@@ -21,6 +20,7 @@ import {
   setStorage,
 } from '../../utils/localeStorage';
 import PhoneNotFound from './ProductNotFound';
+import BrowseProducts from '../Blocks/BrowseProducts';
 
 const ProductPage = () => {
   const productsPerPage = 4;
@@ -55,11 +55,6 @@ const ProductPage = () => {
   const currentProduct = useMemo(() => products
     .find((productFromAPI => productFromAPI.id === currentProductFeatures?.id)),
   [currentProductFeatures]);
-
-  const visibleProducts = useMemo(
-    () => products?.slice(currentIndex, currentIndex + productsPerPage),
-    [products, currentIndex],
-  );
 
   const [srcOfShownImage, setSrcOfShownImage] = useState('');
 
@@ -237,7 +232,7 @@ const ProductPage = () => {
             </article>
           </section>
 
-          <section className="section section-other">
+          <section className="section">
             <SectionTopBar
               title="You may also like"
               currentIndex={currentIndex}
@@ -246,11 +241,10 @@ const ProductPage = () => {
               filteredProducts={products}
             />
 
-            <div className="browse-products">
-              {visibleProducts?.map((product: Product) => {
-                return <ProductCard key={product.id} product={product} />;
-              })}
-            </div>
+            <BrowseProducts
+              visibleProducts={products}
+              index={currentIndex}
+            />
           </section>
         </main>
       )}

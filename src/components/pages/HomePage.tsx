@@ -2,8 +2,8 @@ import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ProductType, getProducts } from '../../api/getProducts';
 import SectionTopBar from '../Blocks/SectionTopBar';
-import ProductCard from '../Blocks/ProductCard';
 import { Product } from '../../types/Phone';
+import BrowseProducts from '../Blocks/BrowseProducts';
 
 const productsAmountInfo = (products: Product[] | undefined) => {
   if (products?.length === 0 || !products) {
@@ -28,35 +28,30 @@ const HomePage = () => {
     getProducts().then((productsFromAPI) => setProducts(productsFromAPI));
   }, []);
 
-  const productsWithDiscount = useMemo(() => products?.filter(
-    (product) => product.discount > 0,
-  ), [products]);
+  const productsWithDiscount = useMemo(
+    () => products?.filter((product) => product.discount > 0),
+    [products],
+  );
 
-  const newProducts = useMemo(() => products?.filter(
-    (product) => product.discount === 0,
-  ), [products]);
+  const newProducts = useMemo(
+    () => products?.filter((product) => product.discount === 0),
+    [products],
+  );
 
-  const phones = useMemo(() => products?.filter(
-    (product) => product.type === ProductType.PHONE,
-  ), [products]);
+  const phones = useMemo(
+    () => products?.filter((product) => product.type === ProductType.PHONE),
+    [products],
+  );
 
-  const tablets = useMemo(() => products?.filter(
-    (product) => product.type === ProductType.TABLET,
-  ), [products]);
+  const tablets = useMemo(
+    () => products?.filter((product) => product.type === ProductType.TABLET),
+    [products],
+  );
 
-  const accessories = useMemo(() => products?.filter(
-    (product) => product.type === ProductType.ACCESSORY,
-  ), [products]);
-
-  const visibleHotPrices = useMemo(() => productsWithDiscount?.slice(
-    currentIndexOfHot, currentIndexOfHot + productsPerPage,
-  ),
-  [productsWithDiscount, currentIndexOfHot]);
-
-  const visibleNew = useMemo(() => newProducts?.slice(
-    currentIndexOfNew, currentIndexOfNew + productsPerPage,
-  ),
-  [newProducts, currentIndexOfNew]);
+  const accessories = useMemo(
+    () => products?.filter((product) => product.type === ProductType.ACCESSORY),
+    [products],
+  );
 
   return (
     <main className="main container">
@@ -69,11 +64,10 @@ const HomePage = () => {
           filteredProducts={productsWithDiscount || []}
         />
 
-        <div className="browse-products">
-          {visibleHotPrices?.map((product: Product) => {
-            return <ProductCard key={product.id} product={product} />;
-          })}
-        </div>
+        <BrowseProducts
+          visibleProducts={productsWithDiscount || []}
+          index={currentIndexOfHot}
+        />
       </section>
 
       <section className="section">
@@ -127,11 +121,10 @@ const HomePage = () => {
           filteredProducts={newProducts || []}
         />
 
-        <div className="browse-products">
-          {visibleNew?.slice(0, 4).map((product: Product) => {
-            return <ProductCard key={product.id} product={product} />;
-          })}
-        </div>
+        <BrowseProducts
+          visibleProducts={newProducts || []}
+          index={currentIndexOfNew}
+        />
       </section>
     </main>
   );

@@ -45,9 +45,16 @@
   }
 }
 
+.slider-wrapper {
+  max-width: 100%;
+  overflow: hidden;
+}
+
 .browse-products {
   display: flex;
   gap: 16px;
+
+  transition: transform 0.7s;
 }
 
 .section {

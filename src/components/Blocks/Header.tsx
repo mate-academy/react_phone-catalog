@@ -4,7 +4,7 @@ import {
 } from 'react-router-dom';
 import { useEffect } from 'react';
 import classnames from 'classnames';
-import { LocaleDataTypes } from '../../utils/localeStorage';
+import { useProductsContext } from '../../utils/ProductsContext';
 
 interface NavLinkIsActive {
   isActive: boolean;
@@ -52,16 +52,7 @@ const Header: React.FC<HeaderProps> = ({
     return { visibility: 'hidden' };
   };
 
-  const dataFromCart = localStorage.getItem(LocaleDataTypes.CART);
-  const dataFromFavorites = localStorage.getItem(LocaleDataTypes.FAVORITES);
-
-  const productsFromCart = dataFromCart
-    ? Object.keys(JSON.parse(dataFromCart))
-    : [];
-
-  const productsFromFavorites = dataFromFavorites
-    ? Object.keys(JSON.parse(dataFromFavorites))
-    : [];
+  const { totalAmountInCart, totalAmountOfFavorites } = useProductsContext();
 
   const [searchParams, setSearchParams] = useSearchParams('');
 
@@ -158,12 +149,12 @@ const Header: React.FC<HeaderProps> = ({
             className={({ isActive }) => `header__favorites ${shoppingIconClassName({ isActive })}`}
             style={isShoppingCartActive() as React.CSSProperties}
           >
-            {productsFromFavorites.length > 0
+            {totalAmountOfFavorites > 0
             && (
               <p
                 className="shopping-icon__amount"
               >
-                {productsFromFavorites.length}
+                {totalAmountOfFavorites}
               </p>
             )}
           </NavLink>
@@ -171,12 +162,12 @@ const Header: React.FC<HeaderProps> = ({
             to="/shopping-cart"
             className={({ isActive }) => `header__shopping-cart ${shoppingIconClassName({ isActive })}`}
           >
-            {productsFromCart.length > 0
+            {totalAmountInCart > 0
             && (
               <p
                 className="shopping-icon__amount"
               >
-                {productsFromCart.length}
+                {totalAmountInCart}
               </p>
             )}
           </NavLink>

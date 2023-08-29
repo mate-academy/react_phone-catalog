@@ -1,4 +1,6 @@
 
+$hover-gray: rgb(126, 126, 126);
+
 .nav {
   &__list {
     display: flex;
@@ -19,6 +21,25 @@
     align-items: center;
     height: $header-height;
     position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      display: block;
+      height: 3px;
+      width: 0;
+      background-color: $hover-gray;
+      border-radius: 5px;
+      left: 50%;
+      transform: translateX(-50%);
+      transition: width 0.3s ease;
+    }
+
+    &:hover::after {
+      transform-origin: center;
+      width: 100%;
+    }
   }
 
   &__link.is-active {
@@ -37,19 +58,13 @@
   }
 }
 
-// .container {
-//   margin-inline: auto;
-//   max-width: 1136px;
-//   width: 100%;
-// }
-
 .shopping-icon {
   width: 16px;
   height: 16px;
   position: relative;
 
   &--is-active {
-    border-bottom: 3px solid  var(--gray-primary, $dark-gray);
+    border-bottom: 3px solid $dark-gray;
     position: relative;
   }
 
@@ -60,16 +75,24 @@
     position: absolute;
     width: 14px;
     height: 14px;
-    background-color: #eb5757;
+    background-color: #00866e;
     border-radius: 50%;
-    color: white;
+    color: rgb(255, 255, 255);
     bottom: 50%;
     left: 50%;
     font-family: "Mont", sans-serif;
-    font-size: 9px;
+    font-size: 10px;
     font-style: normal;
     font-weight: 600;
 
+  }
+
+  &:hover {
+    border-bottom: 3px solid  $hover-gray;
+
+    .shopping-icon__amount {
+      visibility: hidden;
+    }
   }
 }
 

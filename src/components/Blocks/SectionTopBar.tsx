@@ -7,13 +7,19 @@ interface Props {
   currentIndex: number;
   setCurrentIndex:React.Dispatch<React.SetStateAction<number>>;
   productsPerPage: number;
-  filteredProducts: Product[]
+  filteredProducts: Product[];
 }
 
 const SectionTopBar: React.FC<Props> = ({
-  title, currentIndex, setCurrentIndex, productsPerPage, filteredProducts,
+  title,
+  currentIndex,
+  setCurrentIndex,
+  productsPerPage,
+  filteredProducts,
 }) => {
-  const maxIndex = filteredProducts.length - productsPerPage;
+  const maxIndex = (
+    filteredProducts.length / productsPerPage
+  ) <= currentIndex + 1;
 
   const nextSlide = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1));
@@ -38,7 +44,7 @@ const SectionTopBar: React.FC<Props> = ({
         </button>
 
         <button
-          disabled={currentIndex === maxIndex}
+          disabled={maxIndex}
           type="button"
           className="section__button slider-button"
           onClick={nextSlide}
