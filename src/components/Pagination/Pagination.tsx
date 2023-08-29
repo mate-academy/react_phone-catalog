@@ -6,6 +6,10 @@ import {
 import classNames from 'classnames';
 import './Pagination.scss';
 import { getNumber, getSearchWith } from '../../helpers/helper';
+import arrowLeft from '../../image/arrow-left.svg';
+import arrowLeftDisabled from '../../image/arrow-left-disabled.svg';
+import arrowRight from '../../image/arrow-right.svg';
+import arrowRightDisabled from '../../image/arrow-right-disabled.svg';
 
 const defaultPage = '1';
 
@@ -54,13 +58,13 @@ export const Pagination: React.FC<Props> = React.memo(({ countPagination }) => {
       >
         {isDisabledPrev ? (
           <img
-            src="/image/arrow-left-disabled.svg"
+            src={arrowLeftDisabled}
             alt="arrow"
             className="icon__arrow"
           />
         ) : (
           <img
-            src="/image/arrow-left.svg"
+            src={arrowLeft}
             alt="arrow"
             className="icon__arrow"
           />
@@ -105,13 +109,13 @@ export const Pagination: React.FC<Props> = React.memo(({ countPagination }) => {
       >
         {isDisabledNext ? (
           <img
-            src="/image/arrow-right-disabled.svg"
+            src={arrowRightDisabled}
             alt="arrow"
             className="icon__arrow"
           />
         ) : (
           <img
-            src="/image/arrow-right.svg"
+            src={arrowRight}
             alt="arrow"
             className="icon__arrow"
           />

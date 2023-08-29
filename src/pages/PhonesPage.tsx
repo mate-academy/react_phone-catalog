@@ -13,6 +13,8 @@ import { Breadcrumbs } from '../components/Breadcrumbs';
 import { NoSearchResults } from '../components/NoSearchResults';
 import { Pagination } from '../components/Pagination';
 import { DEFAULT_PER_PAGE, DEFAULT_SORT } from '../helpers/constants';
+import arrowUp from '../image/arrow-up.svg';
+import arrowDown from '../image/arrow-down.svg';
 
 type Sort = {
   Newest: string,
@@ -29,7 +31,7 @@ const SortBy: Sort = {
 const items = ['4', '8', '16', 'All'];
 
 export const PhonesPage = () => {
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const [phones, setPhones] = useState<Phone[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isOpen, setIsOpen] = useState<Dropdown>(false);
@@ -76,6 +78,8 @@ export const PhonesPage = () => {
     const query = searchParams.get('query');
 
     if (query) {
+      setSearchParams(getSearchWith(searchParams, { page: '1' }));
+
       return newPhones.filter(phone => (
         phone.name.toLowerCase().includes(query.toLowerCase())
       ));
@@ -172,9 +176,9 @@ export const PhonesPage = () => {
                     </span>
                     <span className="dropdown__icon">
                       {isOpen === 'Sort by' ? (
-                        <img src="/image/arrow-up.svg" alt="arrow-up" />
+                        <img src={arrowUp} alt="arrow-up" />
                       ) : (
-                        <img src="/image/arrow-down.svg" alt="arrow-down" />
+                        <img src={arrowDown} alt="arrow-down" />
                       )}
                     </span>
                   </button>
@@ -222,9 +226,9 @@ export const PhonesPage = () => {
                     </span>
                     <span className="dropdown__icon">
                       {isOpen === 'Items on page' ? (
-                        <img src="/image/arrow-up.svg" alt="arrow-up" />
+                        <img src={arrowUp} alt="arrow-up" />
                       ) : (
-                        <img src="/image/arrow-down.svg" alt="arrow-down" />
+                        <img src={arrowDown} alt="arrow-down" />
                       )}
                     </span>
                   </button>

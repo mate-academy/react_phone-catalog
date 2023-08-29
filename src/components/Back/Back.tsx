@@ -4,6 +4,7 @@ import {
   useLocation,
 } from 'react-router-dom';
 import './Back.scss';
+import arrowLeft from '../../image/arrow-left.svg';
 
 export const Back = React.memo(() => {
   const { state } = useLocation();
@@ -18,7 +19,7 @@ export const Back = React.memo(() => {
       data-cy="backButton"
     >
       <img
-        src="./image/arrow-left.svg"
+        src={arrowLeft}
         alt="arrow"
         className="back__arrow"
       />

@@ -6,11 +6,16 @@ import {
 import classNames from 'classnames';
 import './Slider.scss';
 import { Link } from 'react-router-dom';
+import phones from '../../image/banner-phones.png';
+import tablets from '../../image/banner-tablets.png';
+import accessories from '../../image/banner-accessories.png';
+import arrowLeft from '../../image/arrow-left.svg';
+import arrowRight from '../../image/arrow-right.svg';
 
 const images = [
-  '/_new/img/banner-phones.png',
-  '/_new/img/banner-tablets.png',
-  '/_new/img/banner-accessories.png',
+  phones,
+  tablets,
+  accessories,
 ];
 
 const IMAGE_WIDTH = 1040;
@@ -62,7 +67,7 @@ export const Slider = () => {
           className="slider__btn slider__btn-prev"
           onClick={handlePrev}
         >
-          <img src="/image/arrow-left.svg" alt="" />
+          <img src={arrowLeft} alt="" />
         </button>
 
         <div className="slider__image-wrapper">
@@ -94,7 +99,7 @@ export const Slider = () => {
           className="slider__btn slider__btn-next"
           onClick={handleNext}
         >
-          <img src="/image/arrow-right.svg" alt="" />
+          <img src={arrowRight} alt="" />
         </button>
       </div>
 

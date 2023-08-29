@@ -11,6 +11,10 @@ import {
   getHotPriceProducts,
   getSuggestedProducts,
 } from '../../helpers/htmlClient';
+import arrowLeft from '../../image/arrow-left.svg';
+import arrowLeftDisabled from '../../image/arrow-left-disabled.svg';
+import arrowRight from '../../image/arrow-right.svg';
+import arrowRightDisabled from '../../image/arrow-right-disabled.svg';
 
 type Props = {
   section: 'Hot prices' | 'Brand new models' | 'You may also like',
@@ -119,13 +123,13 @@ export const ProductsSlider: React.FC<Props> = React.memo(({ section }) => {
           >
             {isDisabledPrev ? (
               <img
-                src="/image/arrow-left-disabled.svg"
+                src={arrowLeftDisabled}
                 alt="arrow"
                 className="icon__arrow"
               />
             ) : (
               <img
-                src="/image/arrow-left.svg"
+                src={arrowLeft}
                 alt="arrow"
                 className="icon__arrow"
               />
@@ -139,13 +143,13 @@ export const ProductsSlider: React.FC<Props> = React.memo(({ section }) => {
           >
             {isDisabledNext ? (
               <img
-                src="/image/arrow-right-disabled.svg"
+                src={arrowRightDisabled}
                 alt="arrow"
                 className="icon__arrow"
               />
             ) : (
               <img
-                src="/image/arrow-right.svg"
+                src={arrowRight}
                 alt="arrow"
                 className="icon__arrow"
               />

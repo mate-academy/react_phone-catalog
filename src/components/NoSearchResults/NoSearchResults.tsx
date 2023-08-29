@@ -1,3 +1,5 @@
+import noResults from '../../image/noResults.png';
+
 export const NoSearchResults = () => (
   <main className="main">
     <section className="main__no-results">
@@ -5,7 +7,7 @@ export const NoSearchResults = () => (
         Sorry! No results found yet...
       </h1>
       <img
-        src="/image/noResults.png"
+        src={noResults}
         alt="No results"
         className="main__no-results-image"
       />

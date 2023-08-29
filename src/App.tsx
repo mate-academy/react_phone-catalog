@@ -9,6 +9,10 @@ import classNames from 'classnames';
 import './App.scss';
 import { LocalContext } from './LocalContext';
 import { Search } from './components/Search';
+import logo from './image/logo.svg';
+import favoritesIcon from './image/favorites.svg';
+import cartIcon from './image/cart.svg';
+import arrowUp from './image/arrow-up.svg'
 
 const getNavLinkClass = ({ isActive }: { isActive: boolean }) => classNames(
   'nav__link',
@@ -37,7 +41,7 @@ const App = () => {
         <div className="header__left">
           <div className="logo header__logo">
             <Link to="/" className="logo__link">
-              <img src="./image/logo.svg" alt="logo" />
+              <img src={logo} alt="logo" />
             </Link>
           </div>
           {pathname !== '/cart' && (
@@ -69,7 +73,7 @@ const App = () => {
           {pathname !== '/cart' && (
             <NavLink to="/favorites" className={getIconLinkClass}>
               <img
-                src="./image/favorites.svg"
+                src={favoritesIcon}
                 alt="favorites"
                 className="header__image"
               />
@@ -87,7 +91,7 @@ const App = () => {
             state={{ pathname, search }}
           >
             <img
-              src="./image/cart.svg"
+              src={cartIcon}
               alt="cart"
               className="header__image"
             />
@@ -105,7 +109,7 @@ const App = () => {
       <footer className="footer">
         <div className="footer__content">
           <Link to="/" className="logo">
-            <img src="./image/logo.svg" alt="logo" />
+            <img src={logo} alt="logo" />
           </Link>
 
           <nav className="nav">
@@ -143,7 +147,7 @@ const App = () => {
               onClick={handleScroll}
             >
               <img
-                src="./image/arrow-up.svg"
+                src={arrowUp}
                 alt="arrow"
                 className="icon__arrow"
               />

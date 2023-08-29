@@ -2,6 +2,8 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './Breadcrumbs.scss';
 import classNames from 'classnames';
+import home from '../../image/home.svg';
+import arrowRightDisabled from '../../image/arrow-right-disabled.svg';
 
 type Props = {
   currentPage: string;
@@ -18,7 +20,7 @@ export const Breadcrumbs: React.FC<Props> = React.memo(({ currentPage }) => {
           return (
             <React.Fragment key={crumb}>
               <Link to="/" className="breadcrumbs__home">
-                <img src="/image/home.svg" alt="home" />
+                <img src={home} alt="home" />
               </Link>
             </React.Fragment>
           );
@@ -27,7 +29,10 @@ export const Breadcrumbs: React.FC<Props> = React.memo(({ currentPage }) => {
         if (index === params.length - 1 && currentPage) {
           return (
             <React.Fragment key={crumb}>
-              <img src="/image/arrow-right-disabled.svg" alt="arrow-right" />
+              <img
+                src={arrowRightDisabled}
+                alt="arrow-right"
+              />
               <Link
                 to={`/${params.slice(1, index + 1).join('/')}`}
                 className={classNames(
@@ -50,7 +55,10 @@ export const Breadcrumbs: React.FC<Props> = React.memo(({ currentPage }) => {
 
         return (
           <React.Fragment key={crumb}>
-            <img src="/image/arrow-right-disabled.svg" alt="arrow-right" />
+            <img
+              src={arrowRightDisabled}
+              alt="arrow-right"
+            />
             <Link
               to={`/${params.slice(1, index + 1).join('/')}`}
               className={classNames(

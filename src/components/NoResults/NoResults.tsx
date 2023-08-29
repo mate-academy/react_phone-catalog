@@ -1,3 +1,5 @@
+import noResults from '../../image/noResults.png';
+
 type Props = {
   category: string
 };
@@ -9,7 +11,7 @@ export const NoResults: React.FC<Props> = ({ category }) => {
         {`Your ${category} is empty`}
       </h1>
       <img
-        src="/image/noResults.png"
+        src={noResults}
         alt="No results"
         className="main__no-results-image"
       />

@@ -4,6 +4,9 @@ import { Phone } from '../types/Phone';
 import { Slider } from '../components/Slider';
 import { ProductsSlider } from '../components/ProductsSlider';
 import { getPhones } from '../helpers/htmlClient';
+import bannerPhones from '../image/banner-phones.png';
+import bannerTablets from '../image/banner-tablets.png';
+import bannerAccessories from '../image/banner-accessories.png';
 
 export const HomePage = () => {
   const [phones, setPhones] = useState<Phone[]>([]);
@@ -33,7 +36,7 @@ export const HomePage = () => {
           <div>
             <Link to="/phones" className="category__item">
               <img
-                src="./_new/img/category-phones.png"
+                src={bannerPhones}
                 alt="phones"
                 className="category__image"
               />
@@ -46,7 +49,7 @@ export const HomePage = () => {
           <div>
             <Link to="/tablets" className="category__item">
               <img
-                src="./_new/img/category-tablets.png"
+                src={bannerTablets}
                 alt="tablets"
                 className="category__image"
               />
@@ -59,7 +62,7 @@ export const HomePage = () => {
           <div>
             <Link to="/accessories" className="category__item">
               <img
-                src="./_new/img/category-accessories.png"
+                src={bannerAccessories}
                 alt="accessories"
                 className="category__image"
               />
