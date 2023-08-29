@@ -1,0 +1,35 @@
+.galary {
+  display: flex;
+  gap: 23px;
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__link {
+    display: block;
+    border: 1px solid $elements-color;
+    width: 80px;
+    height: 80px;
+    padding: 7px;
+
+    &--selected {
+      border-color: $primery-color;
+    }
+  }
+
+  &__image {
+    width: 66px;
+    height: 66px;
+    object-fit: contain;
+    object-position: center;
+  }
+
+  &__main-image {
+    width: 468px;
+    height: 468px;
+    object-fit: contain;
+  }
+}

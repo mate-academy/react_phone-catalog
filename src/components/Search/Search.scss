@@ -1,0 +1,38 @@
+@import "../../styles/utils/variables";
+
+.search {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-left: 1px solid $elements-color ;
+  width: 327px;
+  height: 64px;
+  padding: 0 24px;
+
+  &__input {
+    border: none;
+    outline: none;
+    background-color: $hoverAndBg-color;
+    font-family: inherit;
+    font-weight: 600;
+
+    &::placeholder {
+      color: $icons-color;
+    }
+  }
+
+  &__button {
+    border: none;
+    width: 16px;
+    height: 16px;
+    background-color: $hoverAndBg-color;
+    background-image: url("../../image/search.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+
+    &--focus {
+      background-image: url("../../image/close.svg");
+    }
+  }
+}

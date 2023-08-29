@@ -1,0 +1,25 @@
+@import "../../styles/utils/variables";
+
+.back {
+  display: flex;
+  align-items: center;
+  border: none;
+  width: 66px;
+  height: 16px;
+  padding: 0;
+  background-color: $hoverAndBg-color;
+  cursor: pointer;
+
+  &__arrow {
+    margin-right: 4px;
+  }
+
+  &__text {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: $secondary-color;
+  }
+
+  margin-bottom: 16px;
+}

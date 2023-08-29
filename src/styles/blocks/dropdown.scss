@@ -1,0 +1,86 @@
+.dropdown {
+  display: flex;
+  gap: 16px;
+
+  &__menu {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__description {
+    margin-bottom: 4px;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: $secondary-color;
+  }
+
+  &__button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid $icons-color;
+    width: 176px;
+    height: 40px;
+    padding: 0 12px;
+    background-color: $hoverAndBg-color;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 600;
+
+    @include hover(border-color, $secondary-color);
+
+    &:focus {
+      border-color: $primery-color;
+    }
+
+    &--count {
+      width: 128px;
+    }
+  }
+
+  &__icon {
+    height: 16px;
+  }
+
+  &__content {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+    transform: translateY(63px);
+    transition: all 0.35s;
+    width: 176px;
+    background-color: $hoverAndBg-color;
+
+    &--count {
+      width: 128px;
+    }
+
+    &--open {
+      z-index: 1;
+      opacity: 1;
+      border: 1px solid $elements-color;
+      padding: 8px 0;
+    }
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    height: 32px;
+    padding-left: 12px;
+  }
+
+  &__link {
+    display: none;
+    width: 100%;
+    color: $secondary-color;
+
+    @include hover(color, $primery-color);
+
+    &--active {
+      display: block;
+    }
+  }
+}

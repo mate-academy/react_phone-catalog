@@ -1,0 +1,71 @@
+@import "../../styles/utils/variables";
+@import "../../styles/utils/mixins";
+
+.slider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__wrapper {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 8px;
+  }
+
+  &__image-wrapper {
+    display: flex;
+    overflow: hidden;
+    width: 1040px;
+    height: 400px;
+  }
+
+  &__image {
+    display: block;
+    width: 1040px;
+    height: 400px;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  &__btn {
+    border: 1px solid $icons-color;
+    width: 32px;
+    height: 400px;
+    background-color: $hoverAndBg-color;
+    cursor: pointer;
+
+    @include hover(border-color, $primery-color);
+  }
+
+  &__dots {
+    display: flex;
+    gap: 4px;
+  }
+
+  &__button {
+    position: relative;
+    border: 1px solid $hoverAndBg-color;
+    width: 24px;
+    height: 24px;
+    background-color: $hoverAndBg-color;
+    cursor: pointer;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      display: block;
+      transform: translate(-50%, -50%);
+      width: 14px;
+      height: 4px;
+      background-color: $elements-color;
+    }
+
+    &-active {
+      &::after {
+        background-color: $primery-color;
+      }
+    }
+  }
+}

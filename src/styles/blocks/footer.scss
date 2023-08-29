@@ -1,0 +1,12 @@
+.footer {
+  display: flex;
+  justify-content: center;
+  border-top: 1px solid $elements-color;
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 1136px;
+  }
+}

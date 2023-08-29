@@ -1,0 +1,176 @@
+.detail {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 80px 64px;
+  max-width: 1136px;
+
+  &__right {
+    display: grid;
+    grid-template-columns: repeat(11, 1fr);
+    gap: 16px;
+  }
+
+  &__info {
+    grid-column: 1 / 8;
+  }
+
+  &__wrapper {
+    margin-bottom: 24px;
+  }
+
+  &__text {
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: $secondary-color;
+  }
+
+  &__colors {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+
+  &__color {
+    display: flex;
+    border: 1px solid $elements-color;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+
+    &:hover {
+      border-color: $icons-color;
+    }
+
+    &--active {
+      border-color: $primery-color;
+
+      &:hover {
+        border-color: $primery-color;
+      }
+    }
+  }
+
+  &__circle {
+    display: block;
+    border: 2px solid $hoverAndBg-color;
+    border-radius: 50%;
+    width: 100%;
+  }
+
+  &__line {
+    height: 1px;
+    background-color: $elements-color;
+  }
+
+  &__capacities {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+
+  &__capacity {
+    border: 1px solid $icons-color;
+    min-width: min-content;
+    height: 32px;
+    padding: 4px 8px 7px;
+    color: inherit;
+
+    &:hover {
+      border-color: $primery-color;
+    }
+
+    &--active {
+      border-color: $primery-color;
+      background-color: $primery-color;
+      color: $white-color;
+    }
+  }
+
+  &__price-block {
+    margin: 32px 0;
+  }
+
+  &__prices {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  &__price {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+
+  &__full-price {
+    font-size: 22px;
+    line-height: 28px;
+    text-decoration: line-through;
+    color: $secondary-color;
+  }
+
+  &__chars {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__char {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__char-name {
+    font-weight: 600;
+    color: $secondary-color;
+  }
+
+  &__param {
+    font-weight: 600;
+  }
+
+  &__id {
+    grid-column: 8 / 12;
+  }
+
+  &__title {
+    margin-bottom: 16px;
+    font-weight: 700;
+    font-style: 22px;
+    line-height: 31px;
+  }
+
+  &__about {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__subtitle {
+    margin-bottom: 16px;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 26px;
+  }
+
+  &__description {
+    color: $secondary-color;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 25px;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+  }
+}
