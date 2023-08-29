@@ -74,7 +74,7 @@ const App = () => {
             )}
           />
           <Route
-            path="/shopping-cart"
+            path="/cart"
             element={(
               <Cart />
             )}

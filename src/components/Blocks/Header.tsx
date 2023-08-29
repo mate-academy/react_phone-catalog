@@ -159,7 +159,7 @@ const Header: React.FC<HeaderProps> = ({
             )}
           </NavLink>
           <NavLink
-            to="/shopping-cart"
+            to="/cart"
             className={({ isActive }) => `header__shopping-cart ${shoppingIconClassName({ isActive })}`}
           >
             {totalAmountInCart > 0

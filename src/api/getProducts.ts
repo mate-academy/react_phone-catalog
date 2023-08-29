@@ -92,8 +92,6 @@ export async function getSuggestedProducts() {
     const data = await response.json();
     const shuffledProducts = [...data];
 
-    console.log(shuffledProducts);
-
     for (let i = shuffledProducts.length - 1; i > 0; i -= 1) {
       const j = Math.floor(Math.random() * (i + 1));
 
