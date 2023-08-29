@@ -18,7 +18,7 @@ export const Breadcrumbs: React.FC<Props> = React.memo(({ currentPage }) => {
           return (
             <React.Fragment key={crumb}>
               <Link to="/" className="breadcrumbs__home">
-                <img src="/image/home.svg" alt="" />
+                <img src="/image/home.svg" alt="home" />
               </Link>
             </React.Fragment>
           );
@@ -27,7 +27,7 @@ export const Breadcrumbs: React.FC<Props> = React.memo(({ currentPage }) => {
         if (index === params.length - 1 && currentPage) {
           return (
             <React.Fragment key={crumb}>
-              <img src="/image/arrow-right-disabled.svg" alt="" />
+              <img src="/image/arrow-right-disabled.svg" alt="arrow-right" />
               <Link
                 to={`/${params.slice(1, index + 1).join('/')}`}
                 className={classNames(
@@ -50,7 +50,7 @@ export const Breadcrumbs: React.FC<Props> = React.memo(({ currentPage }) => {
 
         return (
           <React.Fragment key={crumb}>
-            <img src="/image/arrow-right-disabled.svg" alt="" />
+            <img src="/image/arrow-right-disabled.svg" alt="arrow-right" />
             <Link
               to={`/${params.slice(1, index + 1).join('/')}`}
               className={classNames(

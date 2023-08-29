@@ -34,7 +34,7 @@ export const HomePage = () => {
             <Link to="/phones" className="category__item">
               <img
                 src="./_new/img/category-phones.png"
-                alt=""
+                alt="phones"
                 className="category__image"
               />
             </Link>
@@ -47,7 +47,7 @@ export const HomePage = () => {
             <Link to="/tablets" className="category__item">
               <img
                 src="./_new/img/category-tablets.png"
-                alt=""
+                alt="tablets"
                 className="category__image"
               />
             </Link>
@@ -60,7 +60,7 @@ export const HomePage = () => {
             <Link to="/accessories" className="category__item">
               <img
                 src="./_new/img/category-accessories.png"
-                alt=""
+                alt="accessories"
                 className="category__image"
               />
             </Link>

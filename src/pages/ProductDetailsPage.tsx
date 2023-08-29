@@ -138,7 +138,7 @@ export const ProductDetailsPage = () => {
                     >
                       <img
                         src={`/_new/${image}`}
-                        alt=""
+                        alt={image}
                         className="galary__image"
                       />
                     </Link>
@@ -147,7 +147,11 @@ export const ProductDetailsPage = () => {
               </ul>
 
               <div className="galary__main-image">
-                <img className="galary__main-image" src={`/_new/${mainImage}`} alt="" />
+                <img
+                  src={`/_new/${mainImage}`}
+                  alt={mainImage}
+                  className="galary__main-image"
+                />
               </div>
             </div>
 

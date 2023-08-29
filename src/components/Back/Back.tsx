@@ -18,7 +18,7 @@ export const Back = React.memo(() => {
       data-cy="backButton"
     >
       <img
-        src="../image/arrow-left.svg"
+        src="./image/arrow-left.svg"
         alt="arrow"
         className="back__arrow"
       />

@@ -80,7 +80,7 @@ export const Slider = () => {
                 <Link to={`/${link}`}>
                   <img
                     src={image}
-                    alt=""
+                    alt={image}
                     className="slider__image"
                   />
                 </Link>

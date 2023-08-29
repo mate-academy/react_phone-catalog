@@ -172,9 +172,9 @@ export const PhonesPage = () => {
                     </span>
                     <span className="dropdown__icon">
                       {isOpen === 'Sort by' ? (
-                        <img src="/image/arrow-up.svg" alt="" />
+                        <img src="/image/arrow-up.svg" alt="arrow-up" />
                       ) : (
-                        <img src="/image/arrow-down.svg" alt="" />
+                        <img src="/image/arrow-down.svg" alt="arrow-down" />
                       )}
                     </span>
                   </button>
@@ -222,9 +222,9 @@ export const PhonesPage = () => {
                     </span>
                     <span className="dropdown__icon">
                       {isOpen === 'Items on page' ? (
-                        <img src="/image/arrow-up.svg" alt="" />
+                        <img src="/image/arrow-up.svg" alt="arrow-up" />
                       ) : (
-                        <img src="/image/arrow-down.svg" alt="" />
+                        <img src="/image/arrow-down.svg" alt="arrow-down" />
                       )}
                     </span>
                   </button>
