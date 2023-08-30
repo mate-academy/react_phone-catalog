@@ -1,9 +1,9 @@
 import './App.scss';
-import { ProductCard } from './components/ProductCard';
+import { Header } from './components/Header';
 
 const App = () => (
   <div className="App">
-    <ProductCard />
+    <Header />
   </div>
 );
 

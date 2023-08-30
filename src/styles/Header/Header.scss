@@ -1,0 +1,77 @@
+.header {
+  height: 64px;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 1px 0 0 #{$elements-color};
+  border-bottom: 1px solid #{$elements-color};
+  padding-left: 24px;
+
+  &__actions {
+    display: flex;
+    text-indent: -99999px;
+  }
+
+  &__fav {
+    width: 64px;
+    height: 64px;
+    background: center no-repeat url(../../images/favourites-icon.svg);
+    border: 1px solid #{$elements-color};
+  }
+
+  &__cart {
+    width: 64px;
+    height: 64px;
+    background: center no-repeat url(../../images/shop-card-icon.svg);
+    border: 1px solid #{$elements-color};
+  }
+}
+
+.nav {
+  box-sizing: bor;
+  display: flex;
+  align-items: center;
+  gap: 64px;
+
+  &__list {
+    padding: 0;
+    display: flex;
+    gap: 64px;
+    list-style: none;
+  }
+
+  &__link {
+    position: relative;
+    display: block;
+    box-sizing: border-box;
+    padding: 28px 0;
+    text-decoration: none;
+    @include uppercaseTextStyling;
+    color: #{$secondary-color};
+    transition: all 0.4s ease;
+
+    &::after {
+      content: "";
+      position: absolute;
+      display: block;
+      bottom: 0;
+      left: 0;
+      height: 4px;
+      width: 100%;
+      background-color: #{$primary-color};
+      opacity: 0;
+
+      transition: opacity 0.4s ease;
+    }
+
+    &:hover {
+      color: #{$primary-color};
+
+      &::after {
+        opacity: 1;
+      }
+    }
+  }
+}
