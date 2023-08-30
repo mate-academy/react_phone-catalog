@@ -26,13 +26,13 @@
     width: 16px;
     height: 16px;
     background-color: $hoverAndBg-color;
-    background-image: url(../../image/search.svg);
+    background-image: url(../../images/search.svg);
     background-repeat: no-repeat;
     background-position: center;
     cursor: pointer;
 
     &--focus {
-      background-image: url(../../image/close.svg);
+      background-image: url(../../images/close.svg);
     }
   }
 }

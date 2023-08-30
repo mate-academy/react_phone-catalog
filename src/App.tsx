@@ -9,10 +9,10 @@ import classNames from 'classnames';
 import './App.scss';
 import { LocalContext } from './LocalContext';
 import { Search } from './components/Search';
-import logo from './image/logo.svg';
-import favoritesIcon from './image/favorites.svg';
-import cartIcon from './image/cart.svg';
-import arrowUp from './image/arrow-up.svg'
+import logo from './images/logo.svg';
+import favoritesIcon from './images/favorites.svg';
+import cartIcon from './images/cart.svg';
+import arrowUp from './images/arrow-up.svg';
 
 const getNavLinkClass = ({ isActive }: { isActive: boolean }) => classNames(
   'nav__link',

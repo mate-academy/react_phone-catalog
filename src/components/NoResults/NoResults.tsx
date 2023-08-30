@@ -1,4 +1,4 @@
-import noResults from '../../image/noResults.png';
+import noResults from '../../images/noResults.png';
 
 type Props = {
   category: string

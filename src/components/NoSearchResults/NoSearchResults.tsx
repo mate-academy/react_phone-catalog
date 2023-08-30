@@ -1,4 +1,4 @@
-import noResults from '../../image/noResults.png';
+import noResults from '../../images/noResults.png';
 
 export const NoSearchResults = () => (
   <main className="main">

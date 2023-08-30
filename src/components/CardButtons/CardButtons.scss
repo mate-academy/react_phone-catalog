@@ -36,7 +36,7 @@
     width: 40px;
     height: 40px;
     background-color: $hoverAndBg-color;
-    background-image: url(../../image/favorites.svg);
+    background-image: url(../../images/favorites.svg);
     background-repeat: no-repeat;
     background-position: center;
     cursor: pointer;
@@ -50,7 +50,7 @@
 
     &--selected {
       border-color: $elements-color;
-      background-image: url(../../image/favourites-hover.svg);
+      background-image: url(../../images/favourites-hover.svg);
     }
   }
 }

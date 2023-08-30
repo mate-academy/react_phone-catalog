@@ -11,10 +11,10 @@ import {
   getHotPriceProducts,
   getSuggestedProducts,
 } from '../../helpers/htmlClient';
-import arrowLeft from '../../image/arrow-left.svg';
-import arrowLeftDisabled from '../../image/arrow-left-disabled.svg';
-import arrowRight from '../../image/arrow-right.svg';
-import arrowRightDisabled from '../../image/arrow-right-disabled.svg';
+import arrowLeft from '../../images/arrow-left.svg';
+import arrowLeftDisabled from '../../images/arrow-left-disabled.svg';
+import arrowRight from '../../images/arrow-right.svg';
+import arrowRightDisabled from '../../images/arrow-right-disabled.svg';
 
 type Props = {
   section: 'Hot prices' | 'Brand new models' | 'You may also like',

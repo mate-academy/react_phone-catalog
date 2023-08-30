@@ -4,9 +4,9 @@ import { Phone } from '../types/Phone';
 import { Slider } from '../components/Slider';
 import { ProductsSlider } from '../components/ProductsSlider';
 import { getPhones } from '../helpers/htmlClient';
-import bannerPhones from '../image/banner-phones.png';
-import bannerTablets from '../image/banner-tablets.png';
-import bannerAccessories from '../image/banner-accessories.png';
+import bannerPhones from '../images/category-phones.png';
+import bannerTablets from '../images/category-tablets.png';
+import bannerAccessories from '../images/category-accessories.png';
 
 export const HomePage = () => {
   const [phones, setPhones] = useState<Phone[]>([]);

@@ -13,8 +13,8 @@ import { Breadcrumbs } from '../components/Breadcrumbs';
 import { NoSearchResults } from '../components/NoSearchResults';
 import { Pagination } from '../components/Pagination';
 import { DEFAULT_PER_PAGE, DEFAULT_SORT } from '../helpers/constants';
-import arrowUp from '../image/arrow-up.svg';
-import arrowDown from '../image/arrow-down.svg';
+import arrowUp from '../images/arrow-up.svg';
+import arrowDown from '../images/arrow-down.svg';
 
 type Sort = {
   Newest: string,

@@ -6,11 +6,11 @@ import {
 import classNames from 'classnames';
 import './Slider.scss';
 import { Link } from 'react-router-dom';
-import phones from '../../image/banner-phones.png';
-import tablets from '../../image/banner-tablets.png';
-import accessories from '../../image/banner-accessories.png';
-import arrowLeft from '../../image/arrow-left.svg';
-import arrowRight from '../../image/arrow-right.svg';
+import phones from '../../images/banner-phones.png';
+import tablets from '../../images/banner-tablets.png';
+import accessories from '../../images/banner-accessories.png';
+import arrowLeft from '../../images/arrow-left.svg';
+import arrowRight from '../../images/arrow-right.svg';
 
 const images = [
   phones,

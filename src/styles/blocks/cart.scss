@@ -30,7 +30,7 @@
     width: 16px;
     height: 16px;
     background-color: $hoverAndBg-color;
-    background-image: url(../../image/close.svg);
+    background-image: url(../../images/close.svg);
     background-repeat: no-repeat;
     cursor: pointer;
 
@@ -38,7 +38,7 @@
 
     &--message {
       background-color: $red-color;
-      background-image: url(../../image/close-message.svg);
+      background-image: url(../../images/close-message.svg);
     }
   }
 
@@ -73,16 +73,16 @@
     @include hover(border-color, $primery-color);
 
     &--minus {
-      background-image: url(../../image/minus.svg);
+      background-image: url(../../images/minus.svg);
     }
 
     &--plus {
-      background-image: url(../../image/plus.svg);
+      background-image: url(../../images/plus.svg);
     }
 
     &--disabled {
       border-color: $elements-color;
-      background-image: url(../../image/minus-disabled.svg);
+      background-image: url(../../images/minus-disabled.svg);
       cursor: no-drop;
 
       @include hover(border-color, $elements-color);

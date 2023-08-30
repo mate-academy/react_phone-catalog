@@ -2,8 +2,8 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './Breadcrumbs.scss';
 import classNames from 'classnames';
-import home from '../../image/home.svg';
-import arrowRightDisabled from '../../image/arrow-right-disabled.svg';
+import home from '../../images/home.svg';
+import arrowRightDisabled from '../../images/arrow-right-disabled.svg';
 
 type Props = {
   currentPage: string;

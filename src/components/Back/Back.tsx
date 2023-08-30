@@ -4,7 +4,7 @@ import {
   useLocation,
 } from 'react-router-dom';
 import './Back.scss';
-import arrowLeft from '../../image/arrow-left.svg';
+import arrowLeft from '../../images/arrow-left.svg';
 
 export const Back = React.memo(() => {
   const { state } = useLocation();
