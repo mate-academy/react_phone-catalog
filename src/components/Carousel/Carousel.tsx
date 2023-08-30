@@ -3,12 +3,16 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import './Carousel.scss';
+import { useSwipeable } from 'react-swipeable';
 
 import { Button } from '../Button/Button';
 
-import BannerPhone from '../../images/banner-phones.png';
-import BannerTablets from '../../images/banner-tablets.png';
-import BannerAccessories from '../../images/banner-accessories.png';
+// import BannerPhone from '../../images/banner-phones.png';
+// import BannerTablets from '../../images/banner-tablets.png';
+// import BannerAccessories from '../../images/banner-accessories.png';
+import BannerPhone from '../../images/banner-phones-mob.jpg';
+import BannerTablets from '../../images/banner-tablets-mob.jpg';
+import BannerAccessories from '../../images/banner-accessories-mob.jpg';
 
 enum CurrentImage {
   First = 0,
@@ -51,8 +55,16 @@ export const Carousel = () => {
     };
   }, [imagesScrolled]);
 
+  const mobileHandlers = useSwipeable({
+    onSwipedLeft: () => handleSlideRight(),
+    onSwipedRight: () => handleSlideLeft(),
+    trackMouse: true,
+  });
+
   return (
-    <div className="Carousel">
+    <div
+      className="Carousel"
+    >
       <div className="Carousel__container">
         <Button
           variant="arrow"
@@ -66,11 +78,11 @@ export const Carousel = () => {
           <ul
             className="Carousel__image-list"
             style={{ transform }}
+            {...mobileHandlers}
           >
             <li>
               <Link to="/phones" className="Carousel__link">
                 <img
-                  height="400"
                   src={BannerPhone}
                   alt="Phones"
                   className="Carousel__image"
@@ -80,7 +92,6 @@ export const Carousel = () => {
             <li>
               <Link to="/tablets" className="Carousel__link">
                 <img
-                  height="400"
                   src={BannerTablets}
                   alt="Tablets"
                   className="Carousel__image"
@@ -90,7 +101,6 @@ export const Carousel = () => {
             <li>
               <Link to="/accessories" className="Carousel__link">
                 <img
-                  height="400"
                   src={BannerAccessories}
                   alt="Accessories"
                   className="Carousel__image"
@@ -137,7 +147,6 @@ export const Carousel = () => {
           onClick={() => setImagesScrolled(2)}
         />
       </div>
-
     </div>
   );
 };

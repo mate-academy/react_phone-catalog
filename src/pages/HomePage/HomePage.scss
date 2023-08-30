@@ -1,10 +1,18 @@
 @import "../../styles/global-imports";
 
 .HomePage {
-  padding-top: 40px;
+  padding-top: 15px;
+
+  @include onMediumScreen {
+    padding-top: 40px;
+  }
 
   &__carousel-container {
-    margin-bottom: 72px;
+    margin-bottom: 30px;
+
+    @include onMediumScreen {
+      margin-bottom: 72px;
+    }
   }
 
   &__loader {
@@ -12,19 +20,24 @@
   }
 
   &__shop-by-category {
+    margin-bottom: 150px;
+
     & > h2 {
       position: static;
       margin-bottom: 24px;
     }
 
-    &-container {
+    &-list {
       display: flex;
-      gap: 16px;
+      gap: 10px;
+
+      @include onMediumScreen {
+        gap: 16px;
+      }
 
       & > li {
         position: relative;
         max-width: 368px;
-
         flex-grow: 1;
       }
 
@@ -44,22 +57,30 @@
         position: absolute;
         right: 0;
         bottom: 0;
+        width: auto;
         height: 100%;
       }
 
-      & > li > a > h3 {
+      & > li > a > div {
         position: absolute;
         top: 100%;
         width: 100%;
         padding-top: 24px;
-      }
 
-      & > li > p {
-        display: inline-block;
-        margin-top: 54px;
+        text-align: left;
 
-        @extend %body-text;
-        color: $c-secondary;
+        & > h3 {
+          font-size: 15px;
+
+          @include onMediumScreen {
+            font-size: 20px;
+          }
+        }
+
+        & > p {
+          @extend %body-text;
+          color: $c-secondary;
+        }
       }
     }
 
@@ -67,9 +88,9 @@
       position: relative;
       width: 100%;
       max-height: 368px;
-      min-width: 200px;
       padding-bottom: 100%;
 
+      text-align: right;
       background: no-repeat right bottom;
     }
   }

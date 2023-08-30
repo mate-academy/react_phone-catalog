@@ -1,6 +1,12 @@
 @import "../../styles/global-imports";
 
 .Navbar {
+  display: none;
+
+  @include onMediumScreen {
+    display: block;
+  }
+
   &__list {
     display: flex;
     align-items: center;

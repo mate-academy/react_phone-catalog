@@ -1,0 +1,29 @@
+@import "../../styles/global-imports";
+
+.MobileCarousel {
+  display: block;
+  grid-column: 1 / -1;
+  margin-bottom: 20px;
+
+  overflow: hidden;
+
+  &__list {
+    display: flex;
+
+    transition: transform 1s ease;
+
+    & > li {
+      min-width: 100%;
+      text-align: center;
+
+      & > img {
+        width: 100%;
+        max-width: 500px;
+      }
+    }
+  }
+
+  @include onMediumScreen {
+    display: none;
+  }
+}

@@ -1,15 +1,11 @@
 import './NavBar.scss';
 
 import { NavLinkMain } from '../NavLinkMain/NavLinkMain';
-import { Logo } from '../Logo/Logo';
 
 export const NavBar = () => {
   return (
     <nav className="Navbar">
       <ul className="Navbar__list">
-        <li className="Navbar__item">
-          <Logo />
-        </li>
         <li className="Navbar__item">
           <NavLinkMain
             type="text"

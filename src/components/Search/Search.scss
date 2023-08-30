@@ -2,8 +2,15 @@
 
 .Search {
   position: relative;
+  flex: 0 1 327px;
+
   opacity: 0;
   pointer-events: none;
+  box-shadow: 1px 0 0 0 $c-elements;
+
+  @include onMediumScreen {
+    margin-left: auto;
+  }
 
   &.isVisible {
     opacity: 1;
@@ -11,9 +18,10 @@
   }
 
   &__input {
-    min-width: 327px;
     height: 100%;
-    padding: 22px 0 22px 24px;
+    width: 100%;
+    min-width: 0;
+    padding: 20px 0 20px 15px;
 
     font-family: "Mont Semibold", sans-serif;
     font-size: 14px;
@@ -21,6 +29,14 @@
 
     border: none;
     box-shadow: -1px 0 0 0 $c-elements;
+
+    @include onMediumScreen {
+      padding: 22px 0 22px 24px;
+    }
+
+    @include onDesktop {
+      min-width: 327px;
+    }
 
     &.has-icon {
       background: no-repeat url("../../images/icons/icon-search.svg");

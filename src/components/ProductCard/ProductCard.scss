@@ -2,27 +2,37 @@
 
 .ProductCard {
   display: inline-block;
-  padding: 31px 23px 23px;
-  box-sizing: content-box;
+  padding: 20px;
+  width: 100%;
 
   border: 1px solid $c-elements;
 
+  @include onMediumScreen {
+    padding: 31px 23px 23px;
+  }
+
   &__content {
-    max-width: 224px;
     height: 100%;
   }
 
   &__image-container {
-    min-height: 208px;
     margin-bottom: 24px;
 
     text-align: center;
+
+    & > a {
+      @include onMediumScreen {
+        padding: 0 8px;
+      }
+    }
   }
 
   &__image {
     width: 100%;
     max-width: 208px;
     max-height: 208px;
+
+    user-select: none;
   }
 
   &__title {

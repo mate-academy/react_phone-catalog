@@ -12,23 +12,50 @@
     margin-bottom: 16px;
   }
 
+  &__content {
+    margin-bottom: 80px;
+  }
+
   &__title {
     grid-column: 1 / -1;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
+
+    @include onMediumScreen {
+      margin-bottom: 40px;
+    }
   }
 
   &__thumbnails {
-    grid-column: 1 / 3;
+    display: none;
+    grid-column: 1 / -1;
+    grid-row: 3 / 4;
+    margin-bottom: 20px;
+
+    @include onMediumScreen {
+      display: block;
+      grid-column: 1 / 2;
+      grid-row: auto;
+      margin-bottom: 0;
+    }
+
+    @include onDesktop {
+      grid-column: 1 / 3;
+    }
 
     & > ul {
       display: flex;
-      flex-direction: column;
+      justify-content: center;
       gap: 16px;
+
+      @include onMediumScreen {
+        flex-direction: column;
+      }
     }
   }
 
   &__thumbnail-button {
     border: 1px solid $c-border;
+    padding: 7px;
     background: none;
 
     @include hover(border-color, $c-icons);
@@ -39,25 +66,55 @@
   }
 
   &__thumbnail {
-    max-width: 80px;
-    max-height: 80px;
+    max-width: 64px;
+    min-width: 54px;
     width: 100%;
     height: 100%;
-    padding: 7px;
 
     cursor: pointer;
   }
 
   &__image-main {
-    grid-column: 3 / 13;
+    display: none;
+    grid-column: 1 / -1;
+    margin-bottom: 20px;
+
+    text-align: center;
+
+    @include onMediumScreen {
+      display: block;
+      grid-column: 2 / 8;
+      margin-bottom: 0;
+    }
+
+    @include onDesktop {
+      grid-column: 3 / 10;
+    }
+
+    @include onLargeDesktop {
+      grid-column: 4 / 14;
+    }
 
     & > img {
       width: 100%;
+      max-width: 464px;
     }
   }
 
   &__actions {
-    grid-column: 14 / 21;
+    grid-column: 1 / -1;
+
+    @include onMediumScreen {
+      grid-column: 8 / -1;
+    }
+
+    @include onDesktop {
+      grid-column: 11 / -4;
+    }
+
+    @include onLargeDesktop {
+      grid-column: 15 / 22;
+    }
   }
 
   &__selectors {
@@ -79,7 +136,9 @@
     }
 
     &:nth-child(2) {
-      margin-bottom: 32px;
+      @include onMediumScreen {
+        margin-bottom: 32px;
+      }
     }
   }
 
@@ -87,7 +146,11 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    margin-bottom: 16px;
+    margin-bottom: 8px;
+
+    @include onMediumScreen {
+      margin-bottom: 16px;
+    }
 
     &-sell {
       @extend %h1;
@@ -107,19 +170,34 @@
     gap: 8px;
   }
 
+  &__button-cart,
+  &__button-favourite {
+    min-height: 48px;
+  }
+
   &__button-cart {
     width: auto;
-    min-height: 48px;
     flex-grow: 1;
+    max-width: 263px;
   }
 
   &__button-favourite {
-    min-width: 48px;
-    min-height: 48px;
+    max-width: 48px;
   }
 
   &__actions-container {
-    margin-bottom: 32px;
+    @include onMediumScreen {
+      display: block;
+      margin-bottom: 32px;
+    }
+  }
+
+  &__specs-small {
+    display: none;
+
+    @include onMediumScreen {
+      display: block;
+    }
   }
 
   &__specs-table,
@@ -128,7 +206,21 @@
   }
 
   &__about {
-    grid-column: 1 / 13;
+    grid-column: 1 / -1;
+    margin-bottom: 20px;
+
+    @include onMediumScreen {
+      grid-column: 1 / 6;
+      margin-bottom: 0;
+    }
+
+    @include onDesktop {
+      grid-column: 1 / 10;
+    }
+
+    @include onLargeDesktop {
+      grid-column: 1 / 13;
+    }
 
     & > p:first-child {
       margin-bottom: 32px;
@@ -149,7 +241,19 @@
   }
 
   &__techspecs {
-    grid-column: 14 / -1;
+    grid-column: 1 / -1;
+
+    @include onMediumScreen {
+      grid-column: 7 / -1;
+    }
+
+    @include onDesktop {
+      grid-column: 11 / -1;
+    }
+
+    @include onLargeDesktop {
+      grid-column: 14 / -1;
+    }
 
     & > p:first-child {
       margin-bottom: 25px;
@@ -164,9 +268,13 @@
 
   &__suggested {
     position: relative;
+
     & > h2 {
-      position: absolute;
       @extend %h1;
+
+      @include onMediumScreen {
+        position: absolute;
+      }
     }
   }
 

@@ -6,11 +6,25 @@
 
   box-shadow: 0 1px 0 0 $c-elements;
 
+  @include onMediumScreen {
+    justify-content: initial;
+  }
+
   &__navigation {
-    margin-left: 24px;
+    display: flex;
+    gap: 64px;
+    margin: 0 10px;
+
+    @include onMediumScreen {
+      margin: 0 24px;
+    }
   }
 
   &__actions {
-    display: flex;
+    display: none;
+
+    @include onMediumScreen {
+      display: flex;
+    }
   }
 }

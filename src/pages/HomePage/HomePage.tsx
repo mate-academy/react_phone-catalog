@@ -68,65 +68,70 @@ export const HomePage = () => {
               Shop by category
             </h2>
 
-            <ul
-              className="HomePage__shop-by-category-container"
-              data-cy="categoryLinksContainer"
-            >
-              <li>
-                <Link
-                  to="/phones"
-                  className="HomePage__shop-by-category-link"
-                >
-                  <img
-                    src={phones}
-                    alt="phones"
-                  />
-                  <h3>
-                    Mobile phones
-                  </h3>
-                </Link>
-
-                <p>
-                  {`${phonesCount} models`}
-                </p>
-              </li>
-              <li>
-                <Link
-                  to="/tablets"
-                  className="HomePage__shop-by-category-link"
-                >
-                  <img
-                    src={tablets}
-                    alt="tablets"
-                  />
-                  <h3>
-                    Tablets
-                  </h3>
-                </Link>
-
-                <p>
-                  {`${tabletsCount} models`}
-                </p>
-              </li>
-              <li>
-                <Link
-                  to="/accessories"
-                  className="HomePage__shop-by-category-link"
-                >
-                  <img
-                    src={accessories}
-                    alt="accessories"
-                  />
-                  <h3>
-                    Accessories
-                  </h3>
-                </Link>
-
-                <p>
-                  {`${accessoriesCount} models`}
-                </p>
-              </li>
-            </ul>
+            <div className="HomePage__shop-by-category-container">
+              <ul
+                className="HomePage__shop-by-category-list"
+                data-cy="categoryLinksContainer"
+              >
+                <li>
+                  <Link
+                    to="/phones"
+                    className="HomePage__shop-by-category-link"
+                  >
+                    <img
+                      src={phones}
+                      alt="phones"
+                    />
+                    <div>
+                      <h3>
+                        Mobile phones
+                      </h3>
+                      <p>
+                        {`${phonesCount} models`}
+                      </p>
+                    </div>
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/tablets"
+                    className="HomePage__shop-by-category-link"
+                  >
+                    <img
+                      src={tablets}
+                      alt="tablets"
+                    />
+                    <div>
+                      <h3>
+                        Tablets
+                      </h3>
+                      <p>
+                        {`${tabletsCount} models`}
+                      </p>
+                    </div>
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/accessories"
+                    className="HomePage__shop-by-category-link"
+                  >
+                    <img
+                      src={accessories}
+                      alt="accessories"
+                    />
+                    <div>
+                      <h3>
+                        Accessories
+                      </h3>
+                      <p>
+                        {`${accessoriesCount} models`}
+                      </p>
+                    </div>
+                  </Link>
+                </li>
+              </ul>
+            </div>
           </section>
 
           <section className="HomePage__brand-new section">

@@ -33,56 +33,59 @@ export const CartItem: React.FC<Props> = ({ item }) => {
 
   return (
     <div className="CartItem">
-      <button
-        className="CartItem__delete"
-        type="button"
-        data-cy="cartDeleteButton"
-        aria-label="delete"
-        onClick={() => dispatch(remove(id))}
-      />
-
-      <Link to={itemPath} className="CartItem__image">
-        <img
-          src={imageUrl}
-          alt={name}
-          width="66"
-          height="66"
-        />
-      </Link>
-
-      <Link to={itemPath} className="CartItem__title">
-        {name}
-      </Link>
-
-      <div className="CartItem__quantity">
-        <Button
-          variant="quantity"
-          sign="minus"
-          aria-label="quantity-decrease"
-          disabled={item.quantity === 1}
-          onClick={() => dispatch(decreaseQuantity(id))}
+      <div className="CartItem__body">
+        <button
+          className="CartItem__delete"
+          type="button"
+          data-cy="cartDeleteButton"
+          aria-label="delete"
+          onClick={() => dispatch(remove(id))}
         />
 
-        <span
-          data-cy="productQauntity"
-        >
-          {item.quantity}
-        </span>
+        <Link to={itemPath} className="CartItem__image">
+          <img
+            src={imageUrl}
+            alt={name}
+            width="66"
+            height="66"
+          />
+        </Link>
 
-        <Button
-          variant="quantity"
-          sign="plus"
-          aria-label="quantity-increase"
-          onClick={() => dispatch(increaseQuantity(id))}
-        />
+        <Link to={itemPath} className="CartItem__title">
+          {name}
+        </Link>
       </div>
 
-      <div className="CartItem__price">
-        <h2>
-          {`$${cartItemPrice}`}
-        </h2>
-      </div>
+      <div className="CartItem__total">
+        <div className="CartItem__quantity">
+          <Button
+            variant="quantity"
+            sign="minus"
+            aria-label="quantity-decrease"
+            disabled={item.quantity === 1}
+            onClick={() => dispatch(decreaseQuantity(id))}
+          />
 
+          <span
+            data-cy="productQauntity"
+          >
+            {item.quantity}
+          </span>
+
+          <Button
+            variant="quantity"
+            sign="plus"
+            aria-label="quantity-increase"
+            onClick={() => dispatch(increaseQuantity(id))}
+          />
+        </div>
+
+        <div className="CartItem__price">
+          <h2>
+            {`$${cartItemPrice}`}
+          </h2>
+        </div>
+      </div>
     </div>
   );
 };

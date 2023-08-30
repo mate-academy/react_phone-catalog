@@ -21,6 +21,7 @@ import {
   useGetProductDetailsQuery,
   useGetProductsQuery,
 } from '../../features/api/apiSlice';
+import { MobileCarousel } from '../../components/MobileCarousel/MobileCarousel';
 
 export const ProductDetailsPage = () => {
   const { data: products = [] } = useGetProductsQuery();
@@ -154,51 +155,55 @@ export const ProductDetailsPage = () => {
                 />
               </div>
 
+              <MobileCarousel images={productDetails?.images as string[]} />
+
               <div className="ProductDetailsPage__actions">
-                <div className="ProductDetailsPage__selectors">
-                  <p>
-                    Available colors
-                  </p>
+                <div className="ProductDetailsPage__customize">
+                  <div className="ProductDetailsPage__selectors">
+                    <p>
+                      Available colors
+                    </p>
 
-                  <ul>
-                    {colors.map((color, index) => (
-                      <li key={color}>
-                        <Button
-                          variant="color"
-                          aria-label={`choose-color-${color}`}
-                          className={classNames(
-                            { active: colorId === index },
-                          )}
-                          onClick={() => setClolorId(index)}
-                        >
-                          <span style={{ backgroundColor: color }} />
-                        </Button>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                    <ul>
+                      {colors.map((color, index) => (
+                        <li key={color}>
+                          <Button
+                            variant="color"
+                            aria-label={`choose-color-${color}`}
+                            className={classNames(
+                              { active: colorId === index },
+                            )}
+                            onClick={() => setClolorId(index)}
+                          >
+                            <span style={{ backgroundColor: color }} />
+                          </Button>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
 
-                <div className="ProductDetailsPage__selectors">
-                  <p>
-                    Select capacity
-                  </p>
+                  <div className="ProductDetailsPage__selectors">
+                    <p>
+                      Select capacity
+                    </p>
 
-                  <ul>
-                    {capacities.map((capacity, index) => (
-                      <li key={capacity}>
-                        <Button
-                          variant="text"
-                          aria-label={`choose-capacity-${capacity}`}
-                          className={classNames(
-                            { active: capacityId === index },
-                          )}
-                          onClick={() => setCapacityId(index)}
-                        >
-                          {capacity}
-                        </Button>
-                      </li>
-                    ))}
-                  </ul>
+                    <ul>
+                      {capacities.map((capacity, index) => (
+                        <li key={capacity}>
+                          <Button
+                            variant="text"
+                            aria-label={`choose-capacity-${capacity}`}
+                            className={classNames(
+                              { active: capacityId === index },
+                            )}
+                            onClick={() => setCapacityId(index)}
+                          >
+                            {capacity}
+                          </Button>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
 
                 <div className="ProductDetailsPage__actions-container">
@@ -271,7 +276,7 @@ export const ProductDetailsPage = () => {
               </div>
             </section>
 
-            <div className="ProductDetailsPage__details grid section">
+            <div className="ProductDetailsPage__details grid">
               <div
                 className="ProductDetailsPage__about"
                 data-cy="productDescription"

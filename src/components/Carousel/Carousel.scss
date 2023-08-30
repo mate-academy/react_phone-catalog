@@ -2,10 +2,12 @@
 
 .Carousel {
   &__container {
-    margin-bottom: 8px;
-    display: flex;
-    justify-content: center;
-    gap: 16px;
+    @include onMediumScreen {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 8px;
+    }
   }
 
   &__image-container {
@@ -39,7 +41,12 @@
   }
 
   &__button {
-    height: auto;
+    display: none;
+
+    @include onMediumScreen {
+      display: block;
+      height: auto;
+    }
   }
 
   &__badges {

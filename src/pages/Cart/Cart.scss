@@ -17,10 +17,12 @@
 
   &__checkout-message {
     position: absolute;
-    left: 50px;
-    right: 50px;
+    left: 25px;
+    right: 25px;
     margin-top: -10px;
-    padding: 100px;
+    padding: 50px;
+
+    text-align: center;
 
     background-color: #fff;
     box-shadow: rgba(50, 50, 93, 0.25) 0 50px 100px -20px,
@@ -31,9 +33,19 @@
     border: 1px solid $c-elements;
     transition: opacity $effect-duration;
 
+    @include onMediumScreen {
+      left: 50px;
+      right: 50px;
+      padding: 100px;
+    }
+
     & > h2 {
-      padding-block: 40px;
-      padding-left: 100px;
+      font-size: 20px;
+
+      @include onMediumScreen {
+        padding-block: 40px;
+        font-size: 22px;
+      }
     }
 
     &.active {
@@ -50,7 +62,17 @@
   }
 
   &__products {
-    grid-column: 1 / 17;
+    margin-bottom: 20px;
+    grid-column: 1 / -1;
+
+    @include onDesktop {
+      grid-column: 1 / 13;
+      margin-bottom: 0;
+    }
+
+    @include onLargeDesktop {
+      grid-column: 1 / 17;
+    }
 
     &-list {
       display: flex;
@@ -60,10 +82,23 @@
   }
 
   &__checkout {
-    grid-column: -9 / -1;
+    grid-column: 1 / -1;
     padding: 24px;
+    max-height: 209px;
 
     border: 1px solid $c-elements;
+
+    @include onMediumScreen {
+      grid-column: 2 / -2;
+    }
+
+    @include onDesktop {
+      grid-column: 13 / -1;
+    }
+
+    @include onLargeDesktop {
+      grid-column: -9 / -1;
+    }
 
     & > h2 {
       @extend %h1;
@@ -83,12 +118,15 @@
     & > button {
       width: 100%;
       min-height: 48px;
-      padding: 14px 0 13px;
+      padding: 13px 0 12px;
     }
   }
 
   &__products,
   &__checkout {
-    min-width: max-content;
+
+    @include onMediumScreen {
+      min-width: max-content;
+    }
   }
 }

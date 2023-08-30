@@ -5,6 +5,8 @@ import { NavLinkMain } from '../NavLinkMain/NavLinkMain';
 import { Search } from '../Search/Search';
 import { useAppSelector } from '../../app/hooks';
 import { Counter } from '../Counter/Counter';
+import { Logo } from '../Logo/Logo';
+import { Menu } from '../Menu/Menu';
 
 export const Header = () => {
   const cart = useAppSelector(state => state.cart);
@@ -23,12 +25,14 @@ export const Header = () => {
   return (
     <header className="Header">
       <div className="Header__navigation">
+        <Logo />
+
         <NavBar />
       </div>
 
-      <div className="Header__actions">
-        <Search />
+      <Search />
 
+      <div className="Header__actions">
         <NavLinkMain
           to="favourites"
           type="favourite"
@@ -45,6 +49,8 @@ export const Header = () => {
           <Counter count={cartItemsCount} />
         </NavLinkMain>
       </div>
+
+      <Menu />
     </header>
   );
 };

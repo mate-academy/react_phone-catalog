@@ -1,10 +1,14 @@
 %h1 {
   font-weight: 700;
-  font-size: 32px;
+  font-size: 28px;
   line-height: 41px;
   letter-spacing: -0.01em;
   color: $c-primary;
   font-family: "Mont Bold", sans-serif;
+
+  @include onMediumScreen {
+    font-size: 32px;
+  }
 }
 
 %h2 {

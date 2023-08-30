@@ -1,15 +1,24 @@
-@mixin contentPaddingInline() {
-  padding-inline: 152px;
-}
-
-@mixin container() {
-  max-width: 1136px;
-  margin: 0 auto;
-}
-
 @mixin hover($property, $toValue) {
   transition: #{$property}, $effect-duration;
   &:hover {
     #{$property}: $toValue;
+  }
+}
+
+@mixin onMediumScreen {
+  @media (min-width: 900px) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: 1280px) {
+    @content;
+  }
+}
+
+@mixin onLargeDesktop {
+  @media (min-width: 1440px) {
+    @content;
   }
 }

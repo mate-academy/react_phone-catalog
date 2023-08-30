@@ -1,15 +1,17 @@
 @import "../../styles/global-imports";
 
 .ProductsSlider {
-  &__slider {
-    position: relative;
-  }
+  position: relative;
 
   &__buttons {
-    display: flex;
+    display: none;
     gap: 16px;
     margin-bottom: 28px;
     justify-content: flex-end;
+
+    @include onMediumScreen {
+      display: flex;
+    }
   }
 
   &__content {
@@ -19,7 +21,11 @@
       display: flex;
       gap: 16px;
 
-      transition: transform 1s ease;
+      // transition: transform 1s ease;
+
+      & > li {
+        width: 100%;
+      }
     }
   }
 }

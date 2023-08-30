@@ -2,10 +2,8 @@
 
 .Button {
   position: relative;
-  width: 32px;
-  height: 32px;
-
-  flex-shrink: 0;
+  width: 100%;
+  min-height: 32px;
 
   background-color: transparent;
   border: 1px solid $c-elements;
@@ -27,8 +25,8 @@
   &--text {
     width: auto;
     height: auto;
-    max-height: 32px;
-    padding: 6px 8px 4px;
+    max-width: none;
+    padding: 5px 8px 4px;
 
     @extend %body-text;
     text-align: center;
@@ -43,6 +41,9 @@
   }
 
   &--arrow {
+    max-width: 32px;
+    min-width: 32px;
+
     background: no-repeat center url("../../images/icons/Arrow.svg");
 
     &:disabled {
@@ -59,7 +60,6 @@
   }
 
   &--cart {
-    min-width: 176px;
     min-height: 40px;
 
     background-color: $c-primary;
@@ -82,7 +82,7 @@
   }
 
   &--favourite {
-    min-width: 40px;
+    max-width: 40px;
     min-height: 40px;
 
     background: no-repeat center url("../../images/icons/Favourites.svg");
@@ -99,6 +99,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 0 2px;
 
     border-radius: 50%;
     border-color: $c-elements;
@@ -121,6 +122,8 @@
   }
 
   &--quantity {
+    min-width: 32px;
+
     &-plus {
       background: no-repeat center url("../../images/icons/icon-plus.svg");
     }
