@@ -30,9 +30,11 @@
 }
 
 .nav {
-  box-sizing: bor;
+  flex-grow: 1;
+  box-sizing: border-box;
   display: flex;
   align-items: center;
+  margin: 0;
   gap: 64px;
 
   &__list {
@@ -42,11 +44,18 @@
     list-style: none;
   }
 
+  &__item {
+    position: relative;
+    box-sizing: border-box;
+    height: 64px;
+    padding-top: 27px;
+  }
+
   &__link {
     position: relative;
-    display: block;
+    height: 100%;
     box-sizing: border-box;
-    padding: 28px 0;
+    display: block;
     text-decoration: none;
     @include uppercaseTextStyling;
     color: #{$secondary-color};
@@ -66,7 +75,8 @@
       transition: opacity 0.4s ease;
     }
 
-    &:hover {
+    &:hover,
+    &--is-active {
       color: #{$primary-color};
 
       &::after {
