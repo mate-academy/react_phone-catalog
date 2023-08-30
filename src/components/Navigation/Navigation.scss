@@ -23,6 +23,8 @@
     letter-spacing: 0.04em;
     padding: 24px 0;
 
+    @include transition-03s;
+
     &::after {
       content: "";
       position: absolute;
