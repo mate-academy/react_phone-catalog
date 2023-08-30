@@ -1,4 +1,5 @@
 import { Link, NavLink } from 'react-router-dom';
+
 import { IconSlideUp } from '../../utils/Icons';
 
 const Footer = () => {

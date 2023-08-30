@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
+
+import { ProductType } from '../../api/getProducts';
+
 import { Product } from '../../types/Phone';
-import { getPrevPrice } from '../../utils/getPrevPrice';
+
 import {
   LocaleDataTypes, isAdded, setStorage,
 } from '../../utils/localeStorage';
+import { getPrevPrice } from '../../utils/getPrevPrice';
 import { RedHeart, WhiteHeart } from '../../utils/Icons';
 import { generateUrlPath } from '../../utils/generateUrlPath';
-import { ProductType } from '../../api/getProducts';
 import { useProductsContext } from '../../utils/ProductsContext';
 
 interface Props {

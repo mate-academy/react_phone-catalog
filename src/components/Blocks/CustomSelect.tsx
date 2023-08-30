@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { Link, useLocation, useSearchParams } from 'react-router-dom';
-import { IconSlideDown, IconSlideUp } from '../../utils/Icons';
+
 import { SortType } from '../../types/SortType';
+
+import { IconSlideDown, IconSlideUp } from '../../utils/Icons';
 import { SelectAmountLink, SelectSortLink } from '../../utils/selectLinks';
 
 interface SelectProps {

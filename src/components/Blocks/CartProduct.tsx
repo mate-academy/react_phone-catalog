@@ -1,6 +1,10 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+
+import { ProductType } from '../../api/getProducts';
+
 import { Product } from '../../types/Phone';
+
 import { CloseIcon, MinusIcon, PlusIcon } from '../../utils/Icons';
 import {
   addProductToCart,
@@ -8,7 +12,6 @@ import {
   removeProductFromCart,
 } from '../../utils/localeStorage';
 import { generateUrlPath } from '../../utils/generateUrlPath';
-import { ProductType } from '../../api/getProducts';
 
 interface CardProductProps {
   product: Product;
@@ -29,6 +32,18 @@ const CartProduct: React.FC<CardProductProps> = ({
   const [
     currentAmount, setCurrentAmount,
   ] = useState<number>(getAmountOfProducts(id));
+
+  const handleRemove = () => {
+    removeProductFromCart(id);
+    setCurrentAmount(currentAmount - 1);
+    updateProductAmount(id, currentAmount - 1);
+  };
+
+  const handleIncreaseAmount = () => {
+    addProductToCart(id);
+    setCurrentAmount(currentAmount + 1);
+    updateProductAmount(id, currentAmount + 1);
+  };
 
   return (
     <article key={id} className="cart__product">
@@ -63,11 +78,7 @@ const CartProduct: React.FC<CardProductProps> = ({
           <button
             type="button"
             className="cart__product--amount-button slider-button"
-            onClick={() => {
-              removeProductFromCart(id);
-              setCurrentAmount(currentAmount - 1);
-              updateProductAmount(id, currentAmount - 1);
-            }}
+            onClick={() => handleRemove()}
             disabled={currentAmount === 1}
           >
             <MinusIcon color={currentAmount === 1 ? '#E2E6E9' : '#313237'} />
@@ -83,11 +94,7 @@ const CartProduct: React.FC<CardProductProps> = ({
           <button
             type="button"
             className="cart__product--amount-button slider-button"
-            onClick={() => {
-              addProductToCart(id);
-              setCurrentAmount(currentAmount + 1);
-              updateProductAmount(id, currentAmount + 1);
-            }}
+            onClick={() => handleIncreaseAmount()}
           >
             <PlusIcon />
           </button>

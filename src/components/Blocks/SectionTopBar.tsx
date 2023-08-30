@@ -1,5 +1,7 @@
 import React from 'react';
+
 import { Product } from '../../types/Phone';
+
 import { IconSlideLeft, IconSlideRight } from '../../utils/Icons';
 
 interface Props {

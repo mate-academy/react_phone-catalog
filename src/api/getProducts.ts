@@ -86,11 +86,13 @@ export async function getSingleProduct(id: string) {
   }
 }
 
-export async function getSuggestedProducts() {
+export async function getSuggestedProducts(id: string) {
   try {
     const response = await fetch(PRODUCT_LIST_LINK);
     const data = await response.json();
-    const shuffledProducts = [...data];
+    const shuffledProducts = [...data]
+      .filter(shuffledProduct => shuffledProduct.id !== id)
+      .slice(0, 8);
 
     for (let i = shuffledProducts.length - 1; i > 0; i -= 1) {
       const j = Math.floor(Math.random() * (i + 1));

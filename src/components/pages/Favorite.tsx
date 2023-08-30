@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
 import AsideRoute from '../Blocks/AsideRoute';
 import ProductCard from '../Blocks/ProductCard';
+import GoBackLink from '../Blocks/GoBackLink';
+
 import { useProductsContext } from '../../utils/ProductsContext';
 
 interface FavoritesProps {
@@ -17,6 +19,8 @@ const Favorite: React.FC<FavoritesProps> = ({ setCurrentProduct }) => {
   return (
     <main className="main-catalog container">
       <AsideRoute pageTitle="Favorites" />
+
+      <GoBackLink />
 
       <section className="section-catalog">
         <h1 className="section-catalog__title">

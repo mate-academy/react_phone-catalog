@@ -1,9 +1,12 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ProductType, getProducts } from '../../api/getProducts';
+
 import SectionTopBar from '../Blocks/SectionTopBar';
-import { Product } from '../../types/Phone';
 import BrowseProducts from '../Blocks/BrowseProducts';
+
+import { ProductType, getProducts } from '../../api/getProducts';
+
+import { Product } from '../../types/Phone';
 
 const productsAmountInfo = (products: Product[] | undefined) => {
   if (products?.length === 0 || !products) {

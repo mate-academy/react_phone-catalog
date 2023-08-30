@@ -1,9 +1,12 @@
 import { useMemo } from 'react';
 import { Link } from 'react-router-dom';
+
 import { HouseIcon, IconSlideRight } from '../../utils/Icons';
-import { Product } from '../../types/Phone';
-import { ProductType } from '../../api/getProducts';
 import { generateUrlPath } from '../../utils/generateUrlPath';
+
+import { Product } from '../../types/Phone';
+
+import { ProductType } from '../../api/getProducts';
 
 interface Props {
   pageTitle?: string;

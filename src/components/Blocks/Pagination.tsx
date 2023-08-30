@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
+
 import { IconSlideLeft, IconSlideRight } from '../../utils/Icons';
 
 interface Props {
@@ -11,16 +12,18 @@ interface Props {
 const Pagination: React.FC<Props> = ({
   currentPage, setCurrentPage, buttons,
 }) => {
+  const handlePageChange = (newPage: number) => {
+    setCurrentPage(newPage);
+    window.scrollTo(0, 270);
+  };
+
   return (
     <div className="section-catalog__pagination" data-cy="pagination">
       <button
         className="slider-button"
         type="button"
         disabled={currentPage === 1}
-        onClick={() => {
-          setCurrentPage(currentPage - 1);
-          window.scrollTo(0, 270);
-        }}
+        onClick={() => handlePageChange(currentPage - 1)}
         data-cy="paginationLeft"
       >
         <IconSlideLeft
@@ -33,10 +36,7 @@ const Pagination: React.FC<Props> = ({
           <button
             key={button}
             type="button"
-            onClick={() => {
-              setCurrentPage(button);
-              window.scrollTo(0, 270);
-            }}
+            onClick={() => handlePageChange(button)}
             className={`page-button${classNames({ ' button-is-active': currentPage === button })}`}
           >
             {button}
@@ -48,10 +48,7 @@ const Pagination: React.FC<Props> = ({
         className="slider-button"
         type="button"
         disabled={currentPage === buttons.length}
-        onClick={() => {
-          setCurrentPage(currentPage + 1);
-          window.scrollTo(0, 270);
-        }}
+        onClick={() => handlePageChange(currentPage + 1)}
         data-cy="paginationRight"
       >
         <IconSlideRight

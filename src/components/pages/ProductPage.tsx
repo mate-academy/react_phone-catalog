@@ -1,18 +1,23 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import { useEffect, useMemo, useState } from 'react';
+import classNames from 'classnames';
 import { useParams } from 'react-router-dom';
+
 import SectionTopBar from '../Blocks/SectionTopBar';
+import Loader from '../Blocks/Loader';
+import AsideRoute from '../Blocks/AsideRoute';
+import GoBackLink from '../Blocks/GoBackLink';
+
 import { Product } from '../../types/Phone';
+import { ProductFeatures } from '../../types/ProductFeatures';
+
 import {
+  getProducts,
   getSingleProduct,
   getSuggestedProducts,
 } from '../../api/getProducts';
-import { ProductFeatures } from '../../types/ProductFeatures';
-import Loader from '../Blocks/Loader';
 import { getPrevPrice } from '../../utils/getPrevPrice';
-import AsideRoute from '../Blocks/AsideRoute';
-import GoBackLink from '../Blocks/GoBackLink';
 import { RedHeart, WhiteHeart } from '../../utils/Icons';
 import {
   LocaleDataTypes,
@@ -21,22 +26,38 @@ import {
 } from '../../utils/localeStorage';
 import PhoneNotFound from './ProductNotFound';
 import BrowseProducts from '../Blocks/BrowseProducts';
+import { useProductsContext } from '../../utils/ProductsContext';
 
 const ProductPage = () => {
   const productsPerPage = 4;
-  const [products, setProducts] = useState<Product[]>([]);
+  const [allProducts, setAllProducts] = useState<Product[]>([]);
+  const [suggestedProducts, setSuggestedProducts] = useState<Product[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [srcOfShownImage, setSrcOfShownImage] = useState('');
 
+  const [
+    isFavorite,
+    setIsFavorite,
+  ] = useState<boolean>(false);
+  const [
+    isInCart,
+    setIsInCart,
+  ] = useState<boolean>(false);
   const [currentProductFeatures, setCurrentProductFeatures]
     = useState<ProductFeatures | null>(null);
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isProductOnServer, setIsProductOnServer] = useState<boolean>(true);
-
   const { productId } = useParams();
 
+  const { setFavoriteProducts, setCartProducts } = useProductsContext();
+
   useEffect(() => {
+    setCurrentIndex(0);
     setIsLoading(true);
+
+    getProducts().then(products => setAllProducts(products));
+
     getSingleProduct(productId || '')
       .then((productFromAPI) => setCurrentProductFeatures(productFromAPI))
       .catch(() => {
@@ -44,30 +65,69 @@ const ProductPage = () => {
         setIsLoading(false);
       })
       .finally(() => setIsLoading(false));
-  }, []);
 
-  useEffect(() => {
     window.scrollTo(0, 0);
-    getSuggestedProducts()
-      .then((productsFromAPI) => setProducts(productsFromAPI));
-  }, []);
+  }, [productId]);
 
-  const currentProduct = useMemo(() => products
+  const currentProduct = useMemo(() => allProducts
     .find((productFromAPI => productFromAPI.id === currentProductFeatures?.id)),
-  [currentProductFeatures]);
-
-  const [srcOfShownImage, setSrcOfShownImage] = useState('');
-
-  const [
-    isFavorite,
-    setIsFavorite,
-  ] = useState<boolean>(false);
+  [currentProductFeatures, allProducts]);
 
   useEffect(() => {
     if (currentProduct) {
       setIsFavorite(isAdded(currentProduct.id, LocaleDataTypes.FAVORITES));
+      setIsInCart(isAdded(currentProduct.id, LocaleDataTypes.CART));
     }
+
+    getSuggestedProducts(currentProduct?.id as string)
+      .then((productsFromAPI) => setSuggestedProducts(productsFromAPI));
   }, [currentProduct]);
+
+  const handleAddToFavorite = () => {
+    if (currentProduct) {
+      if (isFavorite) {
+        setFavoriteProducts(
+          prevProds => [...prevProds].filter(
+            product => product.id !== currentProduct.id,
+          ),
+        );
+      } else {
+        setFavoriteProducts(
+          prevProds => [...prevProds, currentProduct],
+        );
+      }
+
+      setStorage(
+        currentProduct.id, LocaleDataTypes.FAVORITES,
+      );
+      setIsFavorite(
+        !isAdded(currentProduct.id, LocaleDataTypes.FAVORITES),
+      );
+    }
+  };
+
+  const handleAddToCart = () => {
+    if (currentProduct) {
+      if (isInCart) {
+        setCartProducts(
+          prevProds => [...prevProds].filter(
+            product => product.id !== currentProduct.id,
+          ),
+        );
+      } else {
+        setCartProducts(
+          prevProds => [...prevProds, { ...currentProduct, amount: 1 }],
+        );
+      }
+
+      setStorage(
+        currentProduct.id, LocaleDataTypes.CART,
+      );
+      setIsInCart(
+        !isAdded(currentProduct.id, LocaleDataTypes.CART),
+      );
+    }
+  };
 
   const isProductFound = isProductOnServer
   && currentProduct
@@ -77,7 +137,7 @@ const ProductPage = () => {
     <>
       {isLoading && <Loader />}
       {!isProductFound && !isLoading && <PhoneNotFound />}
-      {isProductFound
+      {isProductFound && !isLoading
       && (
         <main className="main-product-page container">
           <AsideRoute
@@ -132,8 +192,9 @@ const ProductPage = () => {
               <div className="section-product__buttons product-card--buttons">
                 <button
                   type="button"
-                  className="product-card--add-to-cart"
+                  className={`product-card--add-to-cart${classNames({ '--added': isInCart })}`}
                   style={{ width: '263px', height: '48px' }}
+                  onClick={() => handleAddToCart()}
                 >
                   Add to cart
                 </button>
@@ -141,14 +202,7 @@ const ProductPage = () => {
                   type="button"
                   className="product-card--add-to-favorites"
                   style={{ width: '48px', height: '48px' }}
-                  onClick={() => {
-                    setStorage(
-                      currentProduct.id, LocaleDataTypes.FAVORITES,
-                    );
-                    setIsFavorite(
-                      !isAdded(currentProduct.id, LocaleDataTypes.FAVORITES),
-                    );
-                  }}
+                  onClick={() => handleAddToFavorite()}
                 >
                   {isFavorite ? <RedHeart /> : <WhiteHeart />}
                 </button>
@@ -238,11 +292,11 @@ const ProductPage = () => {
               currentIndex={currentIndex}
               setCurrentIndex={setCurrentIndex}
               productsPerPage={productsPerPage}
-              filteredProducts={products}
+              filteredProducts={suggestedProducts}
             />
 
             <BrowseProducts
-              visibleProducts={products}
+              visibleProducts={suggestedProducts}
               index={currentIndex}
             />
           </section>

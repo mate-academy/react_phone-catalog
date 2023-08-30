@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { getProducts } from '../api/getProducts';
 import { Product } from '../types/Phone';
 

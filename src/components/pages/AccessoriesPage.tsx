@@ -1,11 +1,15 @@
 import { useEffect, useState, useMemo } from 'react';
-import { Product } from '../../types/Phone';
-import { ProductType, getProductsWithType } from '../../api/getProducts';
+
 import ProductsCatalog from '../Blocks/ProductsCatalog';
-import NoProductsMessage from './NoProductsMessage';
-import { CatalogProps } from '../../types/CatalogProps';
-import { filteredProductsByName } from '../../utils/filterProductsByName';
 import Loader from '../Blocks/Loader';
+import NoProductsMessage from './NoProductsMessage';
+
+import { Product } from '../../types/Phone';
+import { CatalogProps } from '../../types/CatalogProps';
+
+import { ProductType, getProductsWithType } from '../../api/getProducts';
+
+import { filteredProductsByName } from '../../utils/filterProductsByName';
 
 const AccessoriesPage: React.FC<CatalogProps> = ({
   searchQuery, setCurrentProduct,

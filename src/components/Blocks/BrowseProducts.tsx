@@ -1,6 +1,9 @@
 import React from 'react';
+
 import ProductCard from './ProductCard';
+
 import { Product } from '../../types/Phone';
+
 import { transformStyle } from '../../utils/transformStyle';
 
 interface Props {

@@ -1,13 +1,16 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { Product } from '../../types/Phone';
+
 import ProductCard from './ProductCard';
-import { SortType } from '../../types/SortType';
 import AsideRoute from './AsideRoute';
-import { selectAmountLink, selectSortLink } from '../../utils/selectLinks';
+
+import { Product } from '../../types/Phone';
+import { SortType } from '../../types/SortType';
 import CustomSelect from './CustomSelect';
-import Pagination from './Pagination';
 import NoSearchResults from './NoSearchResult';
+import Pagination from './Pagination';
+
+import { selectAmountLink, selectSortLink } from '../../utils/selectLinks';
 
 interface Props {
   title: string;

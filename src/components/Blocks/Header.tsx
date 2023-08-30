@@ -4,6 +4,7 @@ import {
 } from 'react-router-dom';
 import { useEffect } from 'react';
 import classnames from 'classnames';
+
 import { useProductsContext } from '../../utils/ProductsContext';
 
 interface NavLinkIsActive {

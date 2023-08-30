@@ -1,11 +1,14 @@
 import { useMemo, useState } from 'react';
+
+import GoBackLink from '../Blocks/GoBackLink';
+import CartProduct from '../Blocks/CartProduct';
+
 import { Product } from '../../types/Phone';
+
 import {
   LocaleDataTypes,
   setStorage,
 } from '../../utils/localeStorage';
-import GoBackLink from '../Blocks/GoBackLink';
-import CartProduct from '../Blocks/CartProduct';
 import { useProductsContext } from '../../utils/ProductsContext';
 
 const Cart = () => {
