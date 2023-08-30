@@ -48,7 +48,7 @@ export const Header: React.FC<Props> = ({
           <li>
             <NavLink
               className="header__link"
-              to="/home"
+              to="/"
             >
               <div className="header__image" />
             </NavLink>
