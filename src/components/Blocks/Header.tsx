@@ -126,6 +126,7 @@ const Header: React.FC<HeaderProps> = ({
               type="search"
               placeholder={`Search in ${currentProduct}...`}
               className="header__search--bar"
+              value={searchQuery}
               onChange={event => setSearchQuery(event.target.value)}
             />
 

@@ -24,7 +24,7 @@ const AsideBanner = () => {
   };
 
   const prevImage = () => {
-    const prevIndex = imageIndex === 0 ? 3 : imageIndex - 1;
+    const prevIndex = imageIndex === 0 ? 2 : imageIndex - 1;
 
     setImageIndex(prevIndex);
   };

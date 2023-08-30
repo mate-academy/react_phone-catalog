@@ -4,6 +4,19 @@
   background-position: center center;
   display: block;
   width: 48px;
+
+  &:hover {
+    animation: spin 0.7s linear;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotateX(0deg);
+  }
+  100% {
+    transform: rotateX(360deg);
+  }
 }
 
 .go-back {

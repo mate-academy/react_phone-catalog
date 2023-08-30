@@ -87,7 +87,6 @@ const ProductsCatalog: React.FC<Props> = ({ products, title }) => {
   }, [products, productsPerPage]);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
     const updatedSearchParams = new URLSearchParams(searchParams);
 
     updatedSearchParams.set('page', currentPage.toString());

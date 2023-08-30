@@ -15,6 +15,7 @@
 
   &__back {
     display: flex;
+    flex-direction: row-reverse;
     gap: 16px;
     align-items: center;
 
@@ -25,6 +26,12 @@
       font-style: normal;
       font-weight: 600;
       line-height: normal;
+      transition: transform 0.3s, color 0.3s;
+    }
+
+    &--button:hover + &--caption {
+      transform: scale(1.2);
+      color: black;
     }
   }
 }

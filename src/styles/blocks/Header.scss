@@ -84,14 +84,14 @@ $hover-gray: rgb(126, 126, 126);
     font-size: 10px;
     font-style: normal;
     font-weight: 600;
-
+    transition: opacity 0.5s;
   }
 
   &:hover {
     border-bottom: 3px solid  $hover-gray;
 
     .shopping-icon__amount {
-      visibility: hidden;
+      opacity: 0;
     }
   }
 }

@@ -17,10 +17,15 @@ const Pagination: React.FC<Props> = ({
         className="slider-button"
         type="button"
         disabled={currentPage === 1}
-        onClick={() => setCurrentPage(currentPage - 1)}
+        onClick={() => {
+          setCurrentPage(currentPage - 1);
+          window.scrollTo(0, 270);
+        }}
         data-cy="paginationLeft"
       >
-        <IconSlideLeft />
+        <IconSlideLeft
+          color={currentPage === 1 ? '#B4BDC4' : '#313237'}
+        />
       </button>
 
       <div className="section-catalog__pagination--wrapper">
@@ -28,7 +33,10 @@ const Pagination: React.FC<Props> = ({
           <button
             key={button}
             type="button"
-            onClick={() => setCurrentPage(button)}
+            onClick={() => {
+              setCurrentPage(button);
+              window.scrollTo(0, 270);
+            }}
             className={`page-button${classNames({ ' button-is-active': currentPage === button })}`}
           >
             {button}
@@ -40,10 +48,15 @@ const Pagination: React.FC<Props> = ({
         className="slider-button"
         type="button"
         disabled={currentPage === buttons.length}
-        onClick={() => setCurrentPage(currentPage + 1)}
+        onClick={() => {
+          setCurrentPage(currentPage + 1);
+          window.scrollTo(0, 270);
+        }}
         data-cy="paginationRight"
       >
-        <IconSlideRight />
+        <IconSlideRight
+          color={currentPage === buttons.length ? '#B4BDC4' : '#313237'}
+        />
       </button>
     </div>
   );

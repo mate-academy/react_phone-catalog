@@ -45,9 +45,6 @@ const Footer = () => {
             </ul>
           </nav>
           <div className="footer__back">
-            <p className="footer__back--caption">
-              Back to top
-            </p>
             <button
               type="button"
               className="footer__back--button slider-button"
@@ -55,6 +52,10 @@ const Footer = () => {
             >
               <IconSlideUp />
             </button>
+
+            <p className="footer__back--caption">
+              Back to top
+            </p>
           </div>
         </div>
       </div>

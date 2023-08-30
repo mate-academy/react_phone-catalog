@@ -62,7 +62,7 @@ const CartProduct: React.FC<CardProductProps> = ({
         <div className="cart__product--amount-control">
           <button
             type="button"
-            className="cart__product--amount-button"
+            className="cart__product--amount-button slider-button"
             onClick={() => {
               removeProductFromCart(id);
               setCurrentAmount(currentAmount - 1);
@@ -82,7 +82,7 @@ const CartProduct: React.FC<CardProductProps> = ({
 
           <button
             type="button"
-            className="cart__product--amount-button"
+            className="cart__product--amount-button slider-button"
             onClick={() => {
               addProductToCart(id);
               setCurrentAmount(currentAmount + 1);

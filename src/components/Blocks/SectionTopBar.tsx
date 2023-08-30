@@ -40,7 +40,9 @@ const SectionTopBar: React.FC<Props> = ({
           className="section__button slider-button"
           onClick={prevSlide}
         >
-          <IconSlideLeft />
+          <IconSlideLeft
+            color={currentIndex === 0 ? '#B4BDC4' : '#313237'}
+          />
         </button>
 
         <button
@@ -49,7 +51,9 @@ const SectionTopBar: React.FC<Props> = ({
           className="section__button slider-button"
           onClick={nextSlide}
         >
-          <IconSlideRight />
+          <IconSlideRight
+            color={maxIndex ? '#B4BDC4' : '#313237'}
+          />
         </button>
       </div>
     </div>

@@ -53,4 +53,9 @@ $aside-height: 400px;
 
   background-color: rgb(255, 255, 255);
   border: 1px solid $icons-border;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: rgba(218, 255, 253, 0.53);
+  }
 }

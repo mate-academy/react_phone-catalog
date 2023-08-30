@@ -85,7 +85,7 @@
     height: 40px;
     padding: 10px 30px;
     background: $dark-gray;
-
+    animation: colorChange 0.3s ease;
     color: #fff;
     text-align: center;
     font-size: 14px;
@@ -93,8 +93,19 @@
     font-weight: 600;
     line-height: 21px;
 
+    transition: box-shadow 0.5s ease-in-out;
+
     &:hover {
-      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.52);
+    }
+
+    @keyframes colorChange {
+      0% {
+        color: $dark-gray;
+      }
+      100% {
+        color: #fff;
+      }
     }
 
     &--added {
@@ -105,7 +116,13 @@
       font-size: 14px;
       font-weight: 600;
       line-height: 21px;
-      border: 1px solid var(--gray-elements, $light-gray);
+      border: 1px solid $light-gray;
+
+      transition: color 0.3s ease-in-out;
+
+      &:hover {
+        color: red;
+      }
     }
   }
 
@@ -117,9 +134,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: transform 0.1s ease;
 
     &:hover {
       border: 1px solid $dark-gray;
+    }
+
+    &:active {
+      border: none;
+      transform: scale(1.1);
     }
   }
 }
