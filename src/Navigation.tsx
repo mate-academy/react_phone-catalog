@@ -10,7 +10,9 @@ export const Navigation: React.FC<Props> = ({ pathname }) => {
 
   return (
     <div className="navigation">
-      <div className="navigation__icon" />
+      <NavLink to="/">
+        <div className="navigation__icon" />
+      </NavLink>
       <div className="navigation__location">
 
         <div className="navigation__arrow" />

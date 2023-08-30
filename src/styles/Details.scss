@@ -217,6 +217,15 @@
     color: #fff;
     justify-content: center;
     align-items: center;
+    border: none;
+
+    transition: border 0.3s, background-color 0.3s, color 0.3s;
+
+    &--active {
+      border: 1px solid #e2e6e9;
+      background-color: #fff;
+      color: #27ae60;
+    }
   }
 
   &__button_favourites {
@@ -225,6 +234,7 @@
     height: 48px;
     width: 48px;
     border: 1px solid #b4bdc3;
+    background-color: #fff;
     background-image: url(".././images/Stroke.svg");
     background-position: center;
     background-repeat: no-repeat;
@@ -232,6 +242,10 @@
     margin-left: 16px;
 
     transition: border-color 0.3s;
+
+    &--active {
+      background-image: url(".././images/StrokeRed.svg");
+    }
 
     &:hover {
       border-color: #313237;

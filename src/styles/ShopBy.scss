@@ -25,6 +25,13 @@
     overflow: hidden;
     margin-bottom: 30px;
 
+    transition: border-color 0.3s, box-shadow 0.3s;
+
+    &:hover {
+      border-color: #a4a7aa;
+      box-shadow: 0 2px 15px 0 #00000069;
+    }
+
     &::after {
       content: "";
       display: block;
@@ -56,7 +63,7 @@
     }
   }
 
-  &__link {
+  &__subtitle {
     display: block;
     text-decoration: none;
     color: #313237;

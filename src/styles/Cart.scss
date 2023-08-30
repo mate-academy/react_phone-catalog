@@ -3,37 +3,6 @@
   font-family: "Montserrat", sans-serif;
   padding: 0 178px;
 
-  &__goGack_container {
-    display: flex;
-    flex-direction: row;
-    margin: 20px 0 25px;
-  }
-
-  &__goGack_arrow {
-    width: 16px;
-    height: 16px;
-    background-image: url("../images/StrokeLeft.svg");
-    background-position: center;
-    background-size: 6px;
-    background-repeat: no-repeat;
-  }
-
-  &__goGack_button {
-    font-weight: 600;
-    font-size: 13px;
-    line-height: 15px;
-    color: #89939a;
-    background-color: #fff;
-    border: none;
-    cursor: pointer;
-
-    transition: color 0.3s;
-
-    &:hover {
-      color: #313237;
-    }
-  }
-
   &__title {
     color: #313237;
     font-size: 32px;

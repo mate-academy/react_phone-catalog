@@ -52,12 +52,12 @@ export const Cart = () => {
     let cost = 0;
 
     getCartItemsFromLocaleStorage('toBuy').forEach(product => {
-      if (product.product.discount === 0) {
-        cost += (product.product.price * product.quantity);
+      if (product.item.discount === 0) {
+        cost += (product.item.price * product.quantity);
       } else {
         cost += (getRealPrice(
-          product.product.price,
-          product.product.discount,
+          product.item.price,
+          product.item.discount,
         ) * product.quantity);
       }
     });
@@ -109,11 +109,11 @@ export const Cart = () => {
                     />
                     <img
                       className="cart__image"
-                      src={item.product.imageUrl
+                      src={item.item.imageUrl
                         .split('phones').join('products')}
-                      alt={`${item.product.id}`}
+                      alt={`${item.item.id}`}
                     />
-                    <h4 className="cart__subtitle">{item.product.name}</h4>
+                    <h4 className="cart__subtitle">{item.item.name}</h4>
                   </div>
                   <div className="cart__amount">
                     <div className="cart__quantity">
@@ -150,10 +150,10 @@ export const Cart = () => {
                       />
                     </div>
 
-                    {item.product.discount === 0 ? (
-                      <div className="cart__price">{`$${item.product.price}`}</div>
+                    {item.item.discount === 0 ? (
+                      <div className="cart__price">{`$${item.item.price}`}</div>
                     ) : (
-                      <div className="cart__price">{`$${getRealPrice(item.product.price, item.product.discount)}`}</div>
+                      <div className="cart__price">{`$${getRealPrice(item.item.price, item.item.discount)}`}</div>
                     )}
                   </div>
                 </div>
@@ -169,11 +169,11 @@ export const Cart = () => {
                       />
                       <img
                         className="cart__image"
-                        src={item.product.imageUrl
+                        src={item.item.imageUrl
                           .split('phones').join('products')}
-                        alt={`${item.product.id}`}
+                        alt={`${item.item.id}`}
                       />
-                      <h4 className="cart__subtitle">{item.product.name}</h4>
+                      <h4 className="cart__subtitle">{item.item.name}</h4>
                     </div>
                     <div className="cart__amount">
                       <div className="cart__quantity">
@@ -210,10 +210,10 @@ export const Cart = () => {
                         />
                       </div>
 
-                      {item.product.discount === 0 ? (
-                        <div className="cart__price">{`$${item.product.price}`}</div>
+                      {item.item.discount === 0 ? (
+                        <div className="cart__price">{`$${item.item.price}`}</div>
                       ) : (
-                        <div className="cart__price">{`$${getRealPrice(item.product.price, item.product.discount)}`}</div>
+                        <div className="cart__price">{`$${getRealPrice(item.item.price, item.item.discount)}`}</div>
                       )}
                     </div>
                   </div>
