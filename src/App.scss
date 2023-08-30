@@ -1,6 +1,5 @@
 @import "./utils/_normalize";
 @import "./utils/_reset";
-@import "./utils/_vars";
 
 @font-face {
   font-family: "Mont-Regular";
@@ -17,6 +16,9 @@
   src: url("fonts/Mont-SemiBold.otf") format("truetype");
 }
 
-body {
+.App {
+  display: flex;
+  flex-direction: column;
   min-width: 320px;
+  min-height: 100vh;
 }

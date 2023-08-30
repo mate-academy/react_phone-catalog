@@ -57,7 +57,7 @@ export const Banner: FC = () => {
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       handleButtonClick(1);
-    }, 60000);
+    }, 5000);
 
     return () => clearTimeout(timeoutId);
   }, [handleButtonClick]);
@@ -66,10 +66,9 @@ export const Banner: FC = () => {
     <div className="banner">
       {!isMobile && (
         <Button
-          content="icon"
-          iconType="arrow-left"
           className="banner-arrow"
-          event={() => handleButtonClick(-1)}
+          iconType="arrow-left"
+          onClick={() => handleButtonClick(-1)}
         />
       )}
 
@@ -110,10 +109,9 @@ export const Banner: FC = () => {
 
       {!isMobile && (
         <Button
-          content="icon"
-          iconType="arrow-right"
           className="banner-arrow"
-          event={() => handleButtonClick(1)}
+          iconType="arrow-right"
+          onClick={() => handleButtonClick(1)}
         />
       )}
     </div>

@@ -1,18 +1,49 @@
-import { FC, useState } from 'react';
+import { FC, useMemo } from 'react';
 import classNames from 'classnames';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { Button } from '../Button/Button';
 import { Product } from '../../types/Product';
-import { SectionNames } from '../../types/SectionNames';
+import { SectionName } from '../../types/SectionName';
+import { addToCart, removeFromCard } from '../../features/cartSlice';
+import {
+  addFavoriteProduct,
+  removeFavoriteProduct,
+} from '../../features/favoritesSlice';
 
 import './ProductCard.scss';
 
 type Props = {
-  sectionTitle: SectionNames;
+  sectionTitle: SectionName;
   product: Product;
 };
 
 export const ProductCard: FC<Props> = ({ sectionTitle, product }) => {
-  const [isTest, setIsTest] = useState(false);
+  const dispatch = useAppDispatch();
+  const { favorites } = useAppSelector(state => state.favorites);
+  const { cartItems } = useAppSelector(state => state.cart);
+
+  const isFavorite = useMemo(() => {
+    return favorites.some(item => item.id === product.id);
+  }, [favorites]);
+  const isInCart = useMemo(() => {
+    return cartItems.some(item => item.id === product.id);
+  }, [cartItems]);
+
+  const handleAddToFavoritesClick = () => {
+    if (!isFavorite) {
+      dispatch(addFavoriteProduct(product));
+    } else {
+      dispatch(removeFavoriteProduct(product));
+    }
+  };
+
+  const handleAddToCartClick = () => {
+    if (!isInCart) {
+      dispatch(addToCart({ ...product, quantity: 1 }));
+    } else {
+      dispatch(removeFromCard(product));
+    }
+  };
 
   const {
     image,
@@ -35,7 +66,7 @@ export const ProductCard: FC<Props> = ({ sectionTitle, product }) => {
       <h2 className="card__title">{name}</h2>
 
       <div className="card__price">
-        {sectionTitle === SectionNames.BrandNew ? (
+        {sectionTitle === SectionName.BrandNew ? (
           <p className="card__price-regular">{`$${fullPrice}`}</p>
         ) : (
           <>
@@ -63,18 +94,19 @@ export const ProductCard: FC<Props> = ({ sectionTitle, product }) => {
 
       <div className="card__buttons">
         <Button
-          content={isTest ? 'Added to cart' : 'Add to cart'}
+          content={isInCart ? 'Added to cart' : 'Add to cart'}
           className={classNames('add-to-cart', {
-            'button--add-to-cart--active': isTest,
+            'button--add-to-cart--active': isInCart,
           })}
+          onClick={handleAddToCartClick}
         />
         <Button
-          content="icon"
-          iconType={isTest ? 'favorites-filled' : 'favorites'}
+          dataCy="addToFavorite"
           className={classNames('favorites', {
-            'button--favorites--active': isTest,
+            'button--favorites--active': isFavorite,
           })}
-          event={() => setIsTest(curr => !curr)}
+          iconType={isFavorite ? 'favorites-filled' : 'favorites'}
+          onClick={handleAddToFavoritesClick}
         />
       </div>
     </div>

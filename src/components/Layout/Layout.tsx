@@ -1,32 +1,28 @@
 import { FC, useEffect, useState } from 'react';
+import { useAppDispatch } from '../../app/hooks';
 import { Header } from '../Header/Header';
 import { Footer } from '../Footer/Footer';
 import { PhoneCatalogContext } from '../../context/PhoneCatalogContext';
-import { getProducts } from '../../api/products';
-import { Product } from '../../types/Product';
-// import { HeaderMobile } from '../HeaderMobile/HeaderMobile';
+import { MenuMobile } from '../MenuMobile/MenuMobile';
+import { productsAsync } from '../../features/productsSlice';
 
-type Props = {
-  onMobileClicked: (isMenuClicked: boolean) => void;
-};
-
-export const Layout: FC<Props> = ({ children, onMobileClicked }) => {
-  const [width, setWidth] = useState(window.innerWidth);
+export const Layout: FC = ({ children }) => {
+  const dispatch = useAppDispatch();
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [isMenuClicked, setIsMenuClicked] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  const [products, setProducts] = useState<Product[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    if (width < 768) {
+    if (windowWidth < 768) {
       setIsMobile(true);
     } else {
       setIsMobile(false);
     }
-  }, [width]);
+  }, [windowWidth]);
 
   useEffect(() => {
     const handleResize = () => {
-      setWidth(window.innerWidth);
+      setWindowWidth(window.innerWidth);
     };
 
     window.addEventListener('resize', handleResize);
@@ -37,36 +33,24 @@ export const Layout: FC<Props> = ({ children, onMobileClicked }) => {
   }, []);
 
   useEffect(() => {
-    // setIsLoading(true);
-    getProducts()
-      .then(res => {
-        setProducts(res);
-      })
-      .finally(() => setIsLoading(false));
+    dispatch(productsAsync());
   }, []);
 
   return (
     <PhoneCatalogContext.Provider value={{
-      width,
-      products,
-      isLoading,
+      windowWidth,
       isMobile,
+      isMenuClicked,
+      setIsMenuClicked,
     }}
     >
-      <p>
-        Width:
-        {' '}
-        {width}
-      </p>
-      <Header
-        isMobile={isMobile}
-        windowWidth={width}
-        onMobileClicked={onMobileClicked}
-      />
-      <main>
+      <Header />
+      <main style={{ flex: 1 }}>
         {children}
       </main>
       <Footer />
+
+      <MenuMobile />
     </PhoneCatalogContext.Provider>
   );
 };

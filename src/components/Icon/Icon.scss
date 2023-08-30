@@ -13,11 +13,11 @@
     background-image: url(/icons/search.svg);
   }
 
-  &--close {
+  &--remove {
     width: 19px;
     height: 19px;
 
-    background-image: url(/icons/close.svg);
+    background-image: url(/icons/remove.svg);
 
     &:hover {
       animation: move 0.3s linear;
@@ -49,6 +49,10 @@
     background-image: url(/icons/arrow-up.svg);
   }
 
+  &--arrow-down {
+    background-image: url(/icons/arrow-down.svg);
+  }
+
   &--arrow-left {
     background-image: url(/icons/arrow-left.svg);
   }
@@ -63,5 +67,21 @@
 
   &--arrow-right-disabled {
     background-image: url(/icons/arrow-right-disabled.svg);
+  }
+
+  &--home {
+    background-image: url(/icons/home.svg);
+  }
+
+  &--minus {
+    background-image: url(/icons/minus.svg);
+  }
+
+  &--minus-disabled {
+    background-image: url(/icons/minus-disabled.svg);
+  }
+
+  &--plus {
+    background-image: url(/icons/plus.svg);
   }
 }

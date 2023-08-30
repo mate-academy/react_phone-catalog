@@ -24,19 +24,19 @@ export const ProductsSlider: FC<Props> = ({ children, title, itemsLength }) => {
   const [touchStartX, setTouchStartX] = useState(0);
   const [itemsPerSlide, setItemsPerSlide] = useState(4);
 
-  const { width, isMobile } = useContext(PhoneCatalogContext);
+  const { windowWidth, isMobile } = useContext(PhoneCatalogContext);
 
   useEffect(() => {
-    if (width < 768) {
+    if (windowWidth < 768) {
       setItemsPerSlide(1);
-    } else if (width < 1024) {
+    } else if (windowWidth < 1024) {
       setItemsPerSlide(2);
-    } else if (width < 1440) {
+    } else if (windowWidth < 1440) {
       setItemsPerSlide(3);
     } else {
       setItemsPerSlide(4);
     }
-  }, [width]);
+  }, [windowWidth]);
 
   const calculateMaxEndIndex = useCallback(() => {
     return itemsLength - itemsPerSlide;
@@ -94,26 +94,24 @@ export const ProductsSlider: FC<Props> = ({ children, title, itemsLength }) => {
         <h1 className="products-slider__title">{title}</h1>
         <div className="products-slider__buttons">
           <Button
-            content="icon"
-            iconType={isLeftButtonDisabled
-              ? 'arrow-left-disabled'
-              : 'arrow-left'}
             className={classNames('slider-arrow', {
               'button--slider-arrow--disabled': isLeftButtonDisabled,
             })}
+            iconType={isLeftButtonDisabled
+              ? 'arrow-left-disabled'
+              : 'arrow-left'}
             disabled={isLeftButtonDisabled}
-            event={() => handleButtonClick(-1)}
+            onClick={() => handleButtonClick(-1)}
           />
           <Button
-            content="icon"
-            iconType={isRightButtonDisabled
-              ? 'arrow-right-disabled'
-              : 'arrow-right'}
             className={classNames('slider-arrow', {
               'button--slider-arrow--disabled': isRightButtonDisabled,
             })}
+            iconType={isRightButtonDisabled
+              ? 'arrow-right-disabled'
+              : 'arrow-right'}
             disabled={isRightButtonDisabled}
-            event={() => handleButtonClick(1)}
+            onClick={() => handleButtonClick(1)}
           />
         </div>
       </div>

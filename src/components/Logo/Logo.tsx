@@ -1,16 +1,15 @@
-import { FC } from 'react';
+import { FC, useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { PhoneCatalogContext } from '../../context/PhoneCatalogContext';
 
 import './Logo.scss';
 
-type Props = {
-  onMenuClicked?: (isMenuClicked: boolean) => void;
-};
+export const Logo: FC = () => {
+  const { setIsMenuClicked } = useContext(PhoneCatalogContext);
 
-export const Logo: FC<Props> = ({ onMenuClicked }) => {
   const handleLogoClick = () => {
-    if (onMenuClicked) {
-      onMenuClicked(false);
+    if (setIsMenuClicked) {
+      setIsMenuClicked(false);
     }
   };
 
@@ -27,8 +26,4 @@ export const Logo: FC<Props> = ({ onMenuClicked }) => {
       />
     </Link>
   );
-};
-
-Logo.defaultProps = {
-  onMenuClicked: () => {},
 };

@@ -1,16 +1,22 @@
-import { FC, useContext, useMemo } from 'react';
+import { FC, useMemo } from 'react';
+import { useAppSelector } from '../../app/hooks';
 import { Banner } from '../../components/Banner/Banner';
-
-import './HomePage.scss';
-import { PhoneCatalogContext } from '../../context/PhoneCatalogContext';
-import { ProductsList } from '../../components/Products/Products';
+import { ProductsList } from '../../components/ProductsList/ProductsList';
 import { ProductsSlider } from '../../components/ProductsSlider/ProductsSlider';
-import { SectionNames } from '../../types/SectionNames';
+import { SectionName } from '../../types/SectionName';
 import { Loader } from '../../components/Loader';
 import { ShopByCategory } from '../../components/ShopByCategory/ShopByCategory';
+import { Notification } from '../../components/Notification/Notification';
+import { NotificationMessage } from '../../types/NotificationMessage';
+
+import './HomePage.scss';
 
 export const HomePage: FC = () => {
-  const { products } = useContext(PhoneCatalogContext);
+  const {
+    products,
+    isLoading,
+    hasError,
+  } = useAppSelector(store => store.products);
 
   const hotPriceProducts = useMemo(() => {
     return [...products].sort((a, b) => {
@@ -34,18 +40,21 @@ export const HomePage: FC = () => {
       </section>
 
       <section className="home-page__section hot-prices">
-        {hotPriceProducts.length ? (
+        {isLoading && <Loader />}
+
+        {hasError
+          && <Notification message={NotificationMessage.FetchError} />}
+
+        {!isLoading && !hasError && !!hotPriceProducts.length && (
           <ProductsSlider
-            title={SectionNames.HotPrice}
+            title={SectionName.HotPrice}
             itemsLength={hotPriceProducts.length}
           >
             <ProductsList
-              sectionTitle={SectionNames.HotPrice}
+              sectionTitle={SectionName.HotPrice}
               products={hotPriceProducts}
             />
           </ProductsSlider>
-        ) : (
-          <Loader />
         )}
       </section>
 
@@ -54,18 +63,21 @@ export const HomePage: FC = () => {
       </section>
 
       <section className="home-page__section brand-new">
-        {hotPriceProducts.length ? (
+        {isLoading && <Loader />}
+
+        {hasError
+          && <Notification message={NotificationMessage.FetchError} />}
+
+        {!isLoading && !hasError && !!brandNewProducts.length && (
           <ProductsSlider
-            title={SectionNames.BrandNew}
+            title={SectionName.BrandNew}
             itemsLength={brandNewProducts.length}
           >
             <ProductsList
-              sectionTitle={SectionNames.BrandNew}
+              sectionTitle={SectionName.BrandNew}
               products={brandNewProducts}
             />
           </ProductsSlider>
-        ) : (
-          <Loader />
         )}
       </section>
     </div>

@@ -5,8 +5,9 @@
   padding: 32px 24px 24px;
 
   border: 1px solid $c-elements;
+  animation: $initialAnimation;
 
-  @include hover(box-shadow, 0 3px 13px 0 rgba(23, 32, 49, 0.26));
+  @include hover(box-shadow, $primaryShadowBox);
 
   &__img {
     display: block;

@@ -68,6 +68,8 @@
   }
 
   &__icon {
+    position: relative;
+
     @include flexCenter;
     width: 64px;
     height: 64px;

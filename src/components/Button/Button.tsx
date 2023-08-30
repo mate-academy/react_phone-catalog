@@ -4,36 +4,44 @@ import { Icon } from '../Icon/Icon';
 import './Button.scss';
 
 type Props = {
-  content: string;
-  iconType?: string;
+  dataCy?: string | null;
   className: string;
+  content?: string;
+  iconType?: string;
+  iconPosition?: 'left' | 'right';
   disabled?: boolean;
-  event?: () => void;
+  onClick?: () => void;
 };
 
 export const Button: FC<Props> = ({
+  dataCy,
+  className,
   content,
   iconType = '',
-  className,
+  iconPosition,
   disabled,
-  event,
+  onClick,
 }) => {
   return (
     <button
       type="button"
+      data-cy={dataCy}
       className={`button button--${className}`}
       disabled={disabled}
-      onClick={event}
+      onClick={onClick}
     >
-      {content === 'icon'
-        ? <Icon type={iconType} />
-        : content}
+      {iconPosition === 'left' && iconType && <Icon type={iconType} />}
+      {content}
+      {iconPosition === 'right' && iconType && <Icon type={iconType} />}
     </button>
   );
 };
 
 Button.defaultProps = {
+  dataCy: null,
+  content: '',
   iconType: '',
+  iconPosition: 'left',
   disabled: false,
-  event: () => {},
+  onClick: () => {},
 };

@@ -1,14 +1,17 @@
 import { FC } from 'react';
 import { ProductCard } from '../ProductCard/ProductCard';
 import { Product } from '../../types/Product';
-import { SectionNames } from '../../types/SectionNames';
+import { SectionName } from '../../types/SectionName';
 
 type Props = {
-  sectionTitle: SectionNames;
+  sectionTitle?: SectionName;
   products: Product[];
 };
 
-export const ProductsList: FC<Props> = ({ sectionTitle, products }) => {
+export const ProductsList: FC<Props> = ({
+  sectionTitle = SectionName.RandomProducts,
+  products,
+}) => {
   return (
     <>
       {products.map(product => (
@@ -20,4 +23,8 @@ export const ProductsList: FC<Props> = ({ sectionTitle, products }) => {
       ))}
     </>
   );
+};
+
+ProductsList.defaultProps = {
+  sectionTitle: SectionName.RandomProducts,
 };

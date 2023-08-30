@@ -2,14 +2,21 @@
 
 .button {
   @include flexCenter;
-  width: 64px;
-  height: 64px;
+
   background-color: $c-white;
 
   cursor: pointer;
 
+  &--search,
+  &--remove {
+    width: 64px;
+    height: 64px;
+  }
+
   &--burger-menu,
   &--close-menu {
+    width: 64px;
+    height: 64px;
     border-left: 1px solid $c-elements;
   }
 
@@ -23,7 +30,9 @@
     @include hover(border-color, $c-primary);
   }
 
-  &--slider-arrow {
+  &--slider-arrow,
+  &--subtract-quantity,
+  &--add-quantity {
     width: 32px;
     height: 32px;
 
@@ -54,7 +63,7 @@
     transition: all 0.4s;
 
     &:hover {
-      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+      box-shadow: $primaryShadowBox;
     }
 
     &--active {
@@ -89,5 +98,59 @@
     border: 1px solid $c-icons;
 
     @include hover(border-color, $c-primary);
+  }
+
+  &--back {
+    justify-content: unset;
+    gap: 4px;
+    margin-bottom: 16px;
+
+    color: $c-secondary;
+    @extend %small-text;
+    line-height: 6px;
+
+    @include hover(color, $c-primary);
+  }
+
+  &--checkout {
+    width: 100%;
+    height: 48px;
+
+    background-color: $c-primary;
+    color: $c-white;
+
+    @extend %buttons-text;
+
+    @include hover(box-shadow, $primaryShadowBox);
+
+    @include onTablet {
+      width: 320px;
+    }
+  }
+
+  &--dropdown {
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px;
+
+    border: 1px solid $c-icons;
+
+    @extend %buttons-text;
+
+    @include hover(border-color, $c-secondary);
+
+    :last-child {
+      transition: transform 0.3s;
+    }
+
+    &-focus {
+      &:focus {
+        border-color: $c-primary;
+
+        :last-child {
+          transform: rotate(180deg);
+        }
+      }
+    }
   }
 }

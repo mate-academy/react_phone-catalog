@@ -1,19 +1,18 @@
-import { FC, useEffect } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { FC, useEffect, useContext } from 'react';
+import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 import { navigation } from '../../utils/navigation';
 import { Logo } from '../Logo/Logo';
-import { Icon } from '../Icon/Icon';
+import { Button } from '../Button/Button';
+import { Favorites } from '../Favorites/Favorites';
+import { Cart } from '../Cart/Cart';
+import { PhoneCatalogContext } from '../../context/PhoneCatalogContext';
 
 import './MenuMobile.scss';
-import { Button } from '../Button/Button';
 
-type Props = {
-  isMenuClicked: boolean,
-  setIsMenuClicked: (isMenuClicked: boolean) => void;
-};
+export const MenuMobile: FC = () => {
+  const { isMenuClicked, setIsMenuClicked } = useContext(PhoneCatalogContext);
 
-export const MenuMobile: FC<Props> = ({ isMenuClicked, setIsMenuClicked }) => {
   useEffect(() => {
     document.body.style.overflowY = isMenuClicked ? 'hidden' : 'visible';
 
@@ -38,13 +37,12 @@ export const MenuMobile: FC<Props> = ({ isMenuClicked, setIsMenuClicked }) => {
       )}
     >
       <div className="menu-mobile__top">
-        <Logo onMenuClicked={setIsMenuClicked} />
+        <Logo />
 
         <Button
-          content="icon"
-          iconType="close"
           className="close-menu"
-          event={() => setIsMenuClicked(false)}
+          iconType="remove"
+          onClick={() => setIsMenuClicked(false)}
         />
       </div>
 
@@ -70,20 +68,8 @@ export const MenuMobile: FC<Props> = ({ isMenuClicked, setIsMenuClicked }) => {
         </ul>
 
         <div className="menu-mobile__icons">
-          <Link
-            className="menu-mobile__icon"
-            to="/favorites"
-            onClick={() => setIsMenuClicked(false)}
-          >
-            <Icon type="favorites" />
-          </Link>
-          <Link
-            className="menu-mobile__icon"
-            to="/shopping-cart"
-            onClick={() => setIsMenuClicked(false)}
-          >
-            <Icon type="cart" />
-          </Link>
+          <Favorites />
+          <Cart />
         </div>
       </div>
     </nav>

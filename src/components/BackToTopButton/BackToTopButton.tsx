@@ -15,10 +15,9 @@ export const BackToTopButton: FC = () => {
       </span>
 
       <Button
-        content="icon"
-        iconType="arrow-up"
         className="back-to-top"
-        event={scrollToTop}
+        iconType="arrow-up"
+        onClick={scrollToTop}
       />
     </div>
   );

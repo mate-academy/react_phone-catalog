@@ -1,0 +1,71 @@
+@import "../../utils";
+
+.pagination {
+  @include flexCenter;
+
+  &__list {
+    @include flexCenter;
+    gap: 8px;
+    margin: 0 8px;
+
+    list-style: none;
+
+    @include onTablet {
+      margin: 0 16px;
+    }
+  }
+
+  &__button {
+    @include flexCenter;
+    width: 32px;
+    height: 32px;
+
+    border: 1px solid $c-icons;
+
+    transition: all 0.3s;
+
+    &:hover {
+      border-color: $c-primary;
+    }
+
+    &--disabled {
+      border-color: $c-elements;
+
+      pointer-events: none;
+    }
+  }
+
+  &__link {
+    @include flexCenter;
+    width: 32px;
+    height: 32px;
+
+    border: 1px solid $c-elements;
+
+    @extend %body-text;
+    line-height: 6px;
+
+    transition: all 0.3s;
+
+    &:hover {
+      border-color: $c-primary;
+    }
+
+    &--active {
+      border: none;
+      background-color: $c-primary;
+      color: $c-white;
+    }
+  }
+
+  &__gap {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    height: 32px;
+
+    @include onTablet {
+      width: 32px;
+    }
+  }
+}

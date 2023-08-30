@@ -1,5 +1,4 @@
 import { FC } from 'react';
-import classNames from 'classnames';
 
 import './Icon.scss';
 
@@ -9,10 +8,9 @@ type Props = {
 
 export const Icon: FC<Props> = ({ type }) => {
   return (
-    <span className={classNames(
-      'icon',
-      `icon--${type}`,
-    )}
+    <span
+      className={`icon icon--${type}`}
+      aria-label={`${type} icon`}
     />
   );
 };

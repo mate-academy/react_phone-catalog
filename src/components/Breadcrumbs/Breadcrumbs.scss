@@ -1,0 +1,33 @@
+@import "../../utils";
+
+.breadcrumbs {
+  &__list {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    list-style: none;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__text {
+    color: $c-primary;
+    @extend %small-text;
+    line-height: 6px;
+
+    @include hover(color, $c-primary-bright);
+
+    &--active {
+      color: $c-secondary;
+      cursor: default;
+
+      &:hover {
+        color: $c-secondary;
+      }
+    }
+  }
+}

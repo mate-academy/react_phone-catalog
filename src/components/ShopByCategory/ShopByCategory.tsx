@@ -1,13 +1,13 @@
-import { FC, useCallback, useContext } from 'react';
+import { FC, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { categoryLinks } from '../../utils/categoryLinks';
-import { PhoneCatalogContext } from '../../context/PhoneCatalogContext';
 import { ProductCategory } from '../../types/ProductCategory';
 
 import './ShopByCategory.scss';
+import { useAppSelector } from '../../app/hooks';
 
 export const ShopByCategory: FC = () => {
-  const { products } = useContext(PhoneCatalogContext);
+  const { products } = useAppSelector(store => store.products);
 
   const getProductsLength = useCallback((category: ProductCategory) => {
     return products.filter(product => product.category === category).length;
@@ -23,6 +23,7 @@ export const ShopByCategory: FC = () => {
       >
         {categoryLinks.map(({ name, to, img }) => (
           <div
+            key={name}
             className="shop-by-category__card"
           >
             <Link

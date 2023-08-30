@@ -1,14 +1,8 @@
 @import "../../_utils";
 
 .header {
-  margin-bottom: 20px;
-
   background-color: #fff;
   border-bottom: 1px solid $c-elements;
-
-  @include onDesktop {
-    margin-bottom: 40px;
-  }
 
   &__content {
     @include flexCenter;

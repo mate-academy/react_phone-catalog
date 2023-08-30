@@ -1,0 +1,48 @@
+@import "../../_utils";
+
+.cartItem {
+  @include flexCenter;
+  flex-wrap: wrap;
+  gap: 30px;
+  width: 752px;
+  padding: 31px 40px 31px 24px;
+
+  border: 1px solid $c-elements;
+
+  @include hover(box-shadow, $primaryShadowBox);
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    width: 230px;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    gap: 30px;
+
+    @extend %body-text;
+  }
+
+  &__img {
+    width: 66px;
+    height: 66px;
+    object-fit: contain;
+  }
+
+  &__count {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+  }
+
+  &__quantity {
+    @extend %body-text;
+  }
+
+  &__price-regular {
+    @extend %h2;
+  }
+}

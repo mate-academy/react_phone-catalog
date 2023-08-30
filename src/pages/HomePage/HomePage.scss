@@ -2,7 +2,7 @@
 
 .home-page {
   padding: 0 25px;
-  margin: 0 auto;
+  margin: 20px auto 0;
 
   @include onTablet {
     max-width: 700px;
@@ -10,7 +10,8 @@
   }
 
   @include onDesktop {
-    max-width: 1000px;
+    max-width: 900px;
+    margin-top: 40px;
   }
 
   @media (min-width: 1440px) {
@@ -19,5 +20,6 @@
 
   &__section {
     margin-bottom: 80px;
+    animation: $initialAnimation;
   }
 }

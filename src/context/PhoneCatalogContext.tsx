@@ -1,16 +1,15 @@
 import { createContext } from 'react';
-import { Product } from '../types/Product';
 
 interface PhoneCatalogContextType {
-  width: number;
-  products: Product[];
-  isLoading: boolean;
+  windowWidth: number;
   isMobile: boolean;
+  isMenuClicked: boolean;
+  setIsMenuClicked: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const PhoneCatalogContext = createContext<PhoneCatalogContextType>({
-  width: window.innerWidth,
-  products: [],
-  isLoading: true,
+  windowWidth: window.innerWidth,
   isMobile: false,
+  isMenuClicked: false,
+  setIsMenuClicked: () => {},
 });

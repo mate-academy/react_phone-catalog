@@ -48,7 +48,7 @@
       border-top-left-radius: 40px;
       border-bottom-right-radius: 40px;
       transform: scale(1.05);
-      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+      box-shadow: $primaryShadowBox;
     }
   }
 
@@ -84,7 +84,7 @@
     object-position: 0 35px;
 
     @include onDesktop {
-      object-position: 0 45px;
+      object-position: 30px 45px;
     }
   }
 
