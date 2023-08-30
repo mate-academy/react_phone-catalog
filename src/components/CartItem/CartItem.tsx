@@ -43,7 +43,7 @@ export const CartItem: FC<Props> = ({ product }) => {
         className="cartItem__link"
       >
         <img
-          src={`_new/${image}`}
+          src={`new/${image}`}
           alt={name}
           className="cartItem__img"
         />

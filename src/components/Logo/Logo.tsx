@@ -20,7 +20,7 @@ export const Logo: FC = () => {
       onClick={handleLogoClick}
     >
       <img
-        src="_new/img/icons/logo.svg"
+        src="new/img/icons/logo.svg"
         alt="Logo"
         className="logo__image"
       />

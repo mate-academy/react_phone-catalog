@@ -58,7 +58,7 @@ export const ProductCard: FC<Props> = ({ sectionTitle, product }) => {
   return (
     <div className="card" data-cy="cardsContainer">
       <img
-        src={`_new/${image}`}
+        src={`new/${image}`}
         alt={name}
         className="card__img"
       />
