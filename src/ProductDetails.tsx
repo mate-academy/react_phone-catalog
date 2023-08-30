@@ -11,13 +11,12 @@ import { getDetails } from './api/products';
 import { ProductsSlider } from './ProductsSlider';
 import { GoBack } from './GoBack';
 import { Context } from './Context';
-import { CartProduct } from './types/CartProduct';
 import {
-  setCartItemsToLocaleStorage,
-  getCartItemsFromLocaleStorage,
-  setFavouritesTolocaleStorage,
-  getFavouritesFromLocaleStorage,
-} from './utils/updateLocaleStorage';
+  findProductOnCart,
+  findProductOnFavourites,
+  updateCart,
+  updateFavourites,
+} from './utils/productManipulations';
 
 type Props = {
   pathname: string,
@@ -74,96 +73,6 @@ export const ProductDetails: React.FC<Props> = ({
       setIsError(false);
     } finally {
       setIsLoading(false);
-    }
-  };
-
-  const findProductOnCart = (id: string) => {
-    let match = false;
-
-    getCartItemsFromLocaleStorage('toBuy').forEach(device => {
-      if (device.id === id) {
-        match = true;
-
-        return match;
-      }
-
-      return match;
-    });
-
-    return match;
-  };
-
-  const findProductOnFavourites = (id: string) => {
-    let match = false;
-
-    if (getFavouritesFromLocaleStorage('favourites').length > 0) {
-      getFavouritesFromLocaleStorage('favourites').map(device => {
-        if (device.id === id) {
-          match = true;
-
-          return match;
-        }
-
-        return match;
-      });
-    }
-
-    return match;
-  };
-
-  const updateFavourites = (event: React.SyntheticEvent, item: Product) => {
-    event.preventDefault();
-
-    let ProductIndex = 0;
-
-    getFavouritesFromLocaleStorage('favourites').map((device, index) => {
-      if (device.id === item.id) {
-        ProductIndex = index;
-      }
-
-      return null;
-    });
-
-    if (findProductOnFavourites(item.id) === false) {
-      const toFavourites = [
-        ...getFavouritesFromLocaleStorage('favourites'),
-        item,
-      ];
-
-      setChosenProducts(toFavourites);
-      setFavouritesTolocaleStorage('favourites', toFavourites);
-    } else {
-      setLoadingItem(ProductIndex);
-
-      const toFavourites = [
-        ...getFavouritesFromLocaleStorage('favourites').slice(0, ProductIndex),
-        ...getFavouritesFromLocaleStorage('favourites').slice(ProductIndex + 1),
-      ];
-
-      setChosenProducts(toFavourites as Product[]);
-
-      setTimeout(() => {
-        setFavouritesTolocaleStorage('favourites', toFavourites);
-        setLoadingItem(null);
-      }, favouritesTimeout);
-    }
-  };
-
-  const updateCart = (event: React.SyntheticEvent, item: Product) => {
-    event.preventDefault();
-
-    if (findProductOnCart(item.id) === false) {
-      const toBuy = [
-        ...getCartItemsFromLocaleStorage('toBuy'),
-        {
-          id: item.id,
-          quantity: 1,
-          item,
-        },
-      ] as CartProduct[];
-
-      setCartItemsToLocaleStorage('toBuy', toBuy);
-      setProductsToBuy(toBuy);
     }
   };
 
@@ -324,7 +233,11 @@ export const ProductDetails: React.FC<Props> = ({
                       findProductOnCart(activeProduct.id) === true,
                     },
                   )}
-                  onClick={(event) => updateCart(event, activeProduct)}
+                  onClick={(event) => updateCart(
+                    setProductsToBuy,
+                    event,
+                    activeProduct,
+                  )}
                 >
                   {findProductOnCart(activeProduct.id) === true
                     ? 'Added to cart'
@@ -340,7 +253,13 @@ export const ProductDetails: React.FC<Props> = ({
                       findProductOnFavourites(activeProduct.id),
                     },
                   )}
-                  onClick={(event) => updateFavourites(event, activeProduct)}
+                  onClick={(event) => updateFavourites(
+                    setChosenProducts,
+                    setLoadingItem,
+                    event,
+                    activeProduct,
+                    favouritesTimeout,
+                  )}
                 />
               </div>
 
