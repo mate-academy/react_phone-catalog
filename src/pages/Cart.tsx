@@ -92,7 +92,7 @@ export const Cart = () => {
                   >
                     <img
                       className="cart__image"
-                      src={`./_new/${image}`}
+                      src={`new/${image}`}
                       alt={name}
                     />
                   </Link>

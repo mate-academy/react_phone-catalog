@@ -67,7 +67,7 @@ export const Slider = () => {
           className="slider__btn slider__btn-prev"
           onClick={handlePrev}
         >
-          <img src={arrowLeft} alt="" />
+          <img src={arrowLeft} alt="arrow" />
         </button>
 
         <div className="slider__image-wrapper">
@@ -99,7 +99,7 @@ export const Slider = () => {
           className="slider__btn slider__btn-next"
           onClick={handleNext}
         >
-          <img src={arrowRight} alt="" />
+          <img src={arrowRight} alt="arrow" />
         </button>
       </div>
 

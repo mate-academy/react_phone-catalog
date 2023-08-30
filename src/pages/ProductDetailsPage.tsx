@@ -137,7 +137,7 @@ export const ProductDetailsPage = () => {
                       onClick={() => setMainImage(image)}
                     >
                       <img
-                        src={`./_new/${image}`}
+                        src={`new/${image}`}
                         alt={image}
                         className="galary__image"
                       />
@@ -148,7 +148,7 @@ export const ProductDetailsPage = () => {
 
               <div className="galary__main-image">
                 <img
-                  src={`./_new/${mainImage}`}
+                  src={`new/${mainImage}`}
                   alt={mainImage}
                   className="galary__main-image"
                 />

@@ -28,7 +28,7 @@ export const ProductCard: React.FC<Props> = ({ card }) => {
       >
         <img
           className="card__image"
-          src={`./_new/${image}`}
+          src={`new/${image}`}
           alt={name}
         />
       </Link>
