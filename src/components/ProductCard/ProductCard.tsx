@@ -1,11 +1,11 @@
 import { useContext } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Phone } from '../../types/Phone';
-import './ProductCard.scss';
 import { StoragesContext } from '../../Context/StoragesContext';
 import { ButtonAndLike } from '../ButtonAndLike/ButtonAndLike';
 import { ButtonsSize } from '../../enum/ButtonsSize';
 import { IMG_LINK } from '../../utils/fetchClient';
+import './ProductCard.scss';
 
 type Props = {
   phone: Phone;

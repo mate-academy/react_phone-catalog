@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { StoragesContext } from '../../Context/StoragesContext';
 import './CartCard.scss';
+import { IMG_LINK } from '../../utils/fetchClient';
 
 export const CartCard = () => {
   const {
@@ -40,7 +41,7 @@ export const CartCard = () => {
               />
 
               <img
-                src={`/_new/${product.image}`}
+                src={IMG_LINK + product.image}
                 alt={product.name}
                 width="66"
                 height="66"

@@ -2,20 +2,24 @@ import { CategoryCard } from '../CategoryCard';
 import { useFetch } from '../../hooks/useFetch';
 import { Fetch } from '../../enum/Fetch';
 import './CategoryList.scss';
+// eslint-disable-next-line max-len
+import accessoriesImg from '../../images/shopByCategory/AccessoriesCategory.jpg';
+import phonesImg from '../../images/shopByCategory/phonesCategory.jpg';
+import tabletsImg from '../../images/shopByCategory/tabletsCategory.jpg';
 
 const CATEGORY = [
   {
-    img: '/_new/img/shopByCategory/phonesCategory.jpg',
+    img: phonesImg,
     title: 'Mobile phones',
     to: '/phones',
   },
   {
-    img: '/_new/img/shopByCategory/tabletsCategory.jpg',
+    img: tabletsImg,
     title: 'Tablets',
     to: '/tablets',
   },
   {
-    img: '/_new/img/shopByCategory/AccessoriesCategory.jpg',
+    img: accessoriesImg,
     title: 'Accessories',
     to: '/accessories',
   },

@@ -31,6 +31,10 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Navigate to="/" replace />} />
+          <Route
+            path="/react_phone-catalog"
+            element={<Navigate to="/" replace />}
+          />
           <Route path="/phones">
             <Route index element={<Phones />} />
             <Route path=":id" element={<ProductDetails />} />

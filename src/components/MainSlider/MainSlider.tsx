@@ -2,18 +2,21 @@ import classNames from 'classnames';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './MainSlider.scss';
+import phones from '../../images/slider/banner-phones.png';
+import tablets from '../../images/slider/banner-tablets.png';
+import accessories from './slider/banner-accessories.png';
 
 const IMAGES = [
   {
-    img: '/_new/img/slider/banner-phones.png',
+    img: phones,
     to: '/phones',
   },
   {
-    img: '/_new/img/slider/banner-tablets.png',
+    img: tablets,
     to: '/tablets',
   },
   {
-    img: '/_new/img/slider/banner-accessories.png',
+    img: accessories,
     to: '/accessories',
   },
 ];
