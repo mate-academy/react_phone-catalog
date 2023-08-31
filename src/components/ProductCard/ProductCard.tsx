@@ -5,6 +5,7 @@ import './ProductCard.scss';
 import { StoragesContext } from '../../Context/StoragesContext';
 import { ButtonAndLike } from '../ButtonAndLike/ButtonAndLike';
 import { ButtonsSize } from '../../enum/ButtonsSize';
+import { IMG_LINK } from '../../utils/fetchClient';
 
 type Props = {
   phone: Phone;
@@ -36,7 +37,7 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
           state={{ name, search, pathname }}
         >
           <img
-            src={`./_new/${image}`}
+            src={IMG_LINK + image}
             width={208}
             height={208}
             alt={name}

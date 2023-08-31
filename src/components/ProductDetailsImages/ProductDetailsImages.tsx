@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './ProductDetailsImages.scss';
+import { IMG_LINK } from '../../utils/fetchClient';
 
 type Props = {
   images: string[],
@@ -20,7 +21,7 @@ export const ProductDetailsImages: React.FC<Props> = ({ images }) => {
               onClick={() => setCurrentTitleImage(image)}
             >
               <img
-                src={`/_new/${image}`}
+                src={IMG_LINK + image}
                 width="66px"
                 height="66px"
                 alt="phone"
@@ -32,7 +33,7 @@ export const ProductDetailsImages: React.FC<Props> = ({ images }) => {
       </div>
 
       <img
-        src={`/_new/${currentTitleImage}`}
+        src={IMG_LINK + currentTitleImage}
         alt="phone"
         width="442"
         height="442"
