@@ -20,6 +20,7 @@
 
       border: 1px solid $c-elements;
       box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
+      -webkit-box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
       background-color: $c-white;
 
       opacity: 0;

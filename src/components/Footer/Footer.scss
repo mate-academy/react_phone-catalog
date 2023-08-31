@@ -4,6 +4,7 @@
   padding: 10px 0;
 
   box-shadow: 0 -1px 0 0 $c-elements;
+  -webkit-box-shadow: 0 -1px 0 0 $c-elements;
 
   @include onMediumScreen {
     padding: 16px 0;
