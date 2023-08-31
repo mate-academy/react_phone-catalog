@@ -4,7 +4,6 @@ import { getProducts } from '../../api/products';
 import {
   BannerSlider,
   ProductsSlider,
-  // ProductCard,
   Wrapper,
 } from '../../components';
 import { Product } from '../../types/Product';

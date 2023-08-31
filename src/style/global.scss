@@ -1,4 +1,6 @@
-body {
+@import "./variables.scss";
+
+* {
   box-sizing: border-box;
-  font-family: 'Mont-Regular';
+  font-family: $font-regular;
 }

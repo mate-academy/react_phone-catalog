@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import './ProductsSlider.scss';
-import { Product } from '../../types';
-import { ProductCard } from '../ProductCard';
+import { IconButtonType, Product } from '../../types';
 import { IconButton } from '../../bits';
-import { IconButtonType } from '../../types/enums/IconButtonType';
+import { ProductCard } from '../ProductCard';
 
 type Props = {
   products: Product[],
@@ -28,7 +27,7 @@ export const ProductsSlider: React.FC<Props> = ({ products, title }) => {
         <div className="products-slider__buttons">
           <IconButton
             type={IconButtonType.arrowBack}
-            disabled={start === 0}
+            disabled={!start}
             handler={handleVisibleProducts('dec')}
           />
 
