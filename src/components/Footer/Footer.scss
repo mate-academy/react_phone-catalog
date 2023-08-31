@@ -1,0 +1,56 @@
+@import "../../utils/colors";
+@import "../../utils/vars";
+@import "../../utils/extends";
+
+.Footer {
+  width: 100%;
+  box-shadow: 0px -1px 0px 0px $color-elements-light-gray;
+
+  &__content {
+    height: $footer-height;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__links {
+    display: flex;
+    gap: 64px;
+  }
+}
+
+.back-to-top {
+  color: $color-secondary-gray;
+  font-weight: 600;
+  font-size: 12px;
+  transition:  $transition;
+
+  &__label {
+    display: flex;
+    align-items: center;
+  }
+
+  &__text {
+    margin-right: 16px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__button {
+    @extend %arrow-button;
+  }
+
+  &:hover {
+    color: $color-primary-dark-gray;
+
+    .back-to-top__button {
+      border-color:  $color-primary-dark-gray;
+    }
+  }
+}
+
+.FooterLink {
+  @extend %navlink;
+}

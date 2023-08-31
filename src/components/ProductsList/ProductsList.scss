@@ -1,0 +1,20 @@
+.ProductsList {
+  &__dropdowns {
+    margin-bottom: 24px;
+    display: flex;
+    gap: 16px;
+  }
+
+  &__products {
+    margin-bottom: 40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 272px);
+    justify-content: space-between;
+    row-gap: 40px;
+  }
+
+  &__pagination {
+    width: max-content;
+    margin: 0 auto;
+  }
+}

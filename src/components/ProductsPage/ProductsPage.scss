@@ -1,0 +1,30 @@
+@import "../../utils/colors";
+@import "../../utils/vars";
+@import "../../utils/extends";
+
+.ProductsPage {
+  &__content {
+    padding: 24px 0 80px;
+  }
+
+  &__section {
+    margin-bottom: 40px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__title {
+    @extend %page-title;
+    margin: 0 0 8px;
+  }
+
+  &__error-title {
+    @extend %page-error-title;
+  }
+
+  &__amount {
+    @extend %product-amount;
+  }
+}

@@ -1,0 +1,33 @@
+@import "../../utils/colors";
+@import "../../utils/vars";
+@import "../../utils/extends";
+
+.NotFoundPage {
+  &__content {
+    padding-top: 40px;
+    text-align: center;
+  }
+
+
+  &__title {
+    font-size: 64px;
+    margin: 0 0 20px;
+  }
+
+  &__subtitle {
+    @extend %page-error-title;
+    margin: 0 0 14px;
+    text-transform: uppercase;
+  }
+
+  &__paragpraph {
+    font-size: 20px;
+    color: $color-secondary-gray;
+    margin-bottom: 40px;
+  }
+
+  &__button {
+    @extend %button-with-text;
+    padding: 14px 20px;
+  }
+}

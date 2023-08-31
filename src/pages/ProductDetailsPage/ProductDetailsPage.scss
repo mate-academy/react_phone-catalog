@@ -1,0 +1,39 @@
+@import "../../utils/colors";
+@import "../../utils/vars";
+@import "../../utils/extends";
+
+.ProductDetailsPage {
+  &__content {
+    padding: 24px 0 80px;
+  }
+
+  &__breadcrumbs {
+    margin-bottom: 40px;
+  }
+
+  &__back-button {
+    margin-bottom: 16px;
+  }
+}
+
+.ProductNotFound {
+  margin-top: 50px;
+  text-align: center;
+
+  &__title {
+    font-size: 64px;
+    margin: 0 0 20px;
+  }
+
+  &__paragpraph {
+    color: $color-secondary-gray;
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 40px;
+  }
+
+  &__button {
+    @extend %button-with-text;
+    padding: 14px 20px;
+  }
+}

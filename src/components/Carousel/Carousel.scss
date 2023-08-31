@@ -1,0 +1,58 @@
+@import "../../utils/colors";
+@import "../../utils/vars";
+@import "../../utils/extends";
+
+.Carousel {
+  height: 400px;
+
+  &__slide {
+    background-position: center;
+
+    &--phones {
+      background-image: url('./banners/banner-phones.png');
+    }
+
+    &--tablets{
+      background-image: url('./banners/banner-tablets.png');
+    }
+
+    &--accessories {
+      background-image: url('./banners/banner-accessories.png');
+    }
+  }
+
+  &__button {
+    @extend %button;
+    width: 32px;
+    height: 400px;
+
+    &--prev {
+      background-image: url('../../icons/arrow-left.svg');
+    }
+
+    &--next {
+      background-image: url('../../icons/arrow-right.svg');
+    }
+  }
+}
+
+.each-slide-effect > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  height: 400px;
+  width: 1040px;
+  margin: 0 auto;
+}
+
+.react-slideshow-container+ul.indicators {
+  gap: 14px;
+}
+
+.react-slideshow-container+ul.indicators .each-slideshow-indicator:before {
+    width: 14px;
+    height: 4px;
+    border-radius: 0%;
+    background-color: $color-primary-dark-gray;
+}

@@ -1,0 +1,58 @@
+@import "../../utils/colors";
+@import "../../utils/vars";
+@import "../../utils/extends";
+
+.CategoryList {
+  &__title {
+    margin-bottom: 24px;
+    @extend %page-title;
+  }
+
+  &__links {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.CategoryLink {
+  &__title {
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  &__img {
+    display: block;
+    width: 368px;
+    height: 368px;
+    margin-bottom: 24px;
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    transition: $transition;
+
+    &:hover {
+      transform: scale(0.98);
+    }
+
+    &--phones {
+      background-image: url(./images/category-phones.png);
+      background-color: #FCDBC1;
+    }
+
+    &--tablets {
+      background-image: url(./images/category-tablets.png);
+
+      background-color: #8D8D92;
+      ;
+    }
+
+    &--accessories {
+      background-image: url(./images/category-accessories.png);
+      background-color: #D53C51;
+      ;
+    }
+  }
+
+  &__amount {
+    @extend %product-amount;
+  }
+}

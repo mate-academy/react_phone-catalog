@@ -1,0 +1,133 @@
+@import "../../utils/colors";
+@import "../../utils/vars";
+@import "../../utils/extends";
+
+.ProductDetails {
+  &__title {
+    @extend %page-title;
+    margin-bottom: 40px;
+  }
+
+  &__main-details {
+    margin-bottom: 80px;
+    display: grid;
+    grid-template-columns: repeat(24, 32px);
+    column-gap: 16px;
+  }
+
+  &__image-selection {
+    grid-column: 1 / 3;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__image {
+    background-size: cover;
+    background-origin: content-box;
+    background-repeat: no-repeat;
+  }
+
+  &__arrow-button {
+    background-position: center;
+    background-repeat: no-repeat;
+
+    &--prev {
+      background-image: url("../../icons/arrow-gray-up.svg");
+    }
+
+    &--next {
+      background-image: url('../../icons/arrow-gray-down.svg');
+    }
+  }
+
+  &__image-button {
+    height: 80px;
+    width: 100%;
+    padding: 7px;
+    box-sizing: border-box;
+    background-color: #fff;
+    margin-bottom: 16px;
+    border: 1px solid $color-elements-light-gray;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &:hover {
+      transform: scale(105%);
+    }
+
+    &--selected {
+      border-color: $color-secondary-gray;
+    }
+  }
+
+  &__selected-image {
+    box-sizing: border-box;
+    grid-column: 3 / 13;
+    height: 464px;
+    padding: 11px;
+    transition: background-image 0.2s;
+  }
+
+  &__main-description {
+    grid-column: 14 / 21;
+  }
+
+  &__price-section {
+    margin-bottom: 16px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  &__price {
+    @extend %page-title;
+  }
+
+  &__initial-price {
+    margin-left: 8px;
+    color: $color-secondary-gray;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 28px;
+    text-decoration-line: line-through;
+  }
+
+  &__actions {
+    height: 60px;
+    margin-bottom: 32px;
+  }
+
+  &__additional-info {
+    display: flex;
+    gap: 64px;
+  }
+
+  &__about,
+  &__tech-specs {
+    width: 50%;
+  }
+
+  &__subtitle {
+    margin: 0 0 32px;
+    padding-bottom: 16px;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 140%;
+    border-bottom: 1px solid $color-elements-light-gray;
+  }
+
+  &__about-text {
+    color: $color-secondary-gray;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+  }
+
+  &__suggestions {
+    margin-top: 80px;
+  }
+}
