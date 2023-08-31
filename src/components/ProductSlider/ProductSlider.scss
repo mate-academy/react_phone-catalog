@@ -1,0 +1,39 @@
+.slider {
+  &__section {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+
+    &__title {
+      font-family: Mont-Bold, sans-serif;
+      font-size: 32px;
+      line-height: 41px;
+      letter-spacing: -0.32px;
+    }
+
+    &__buttons {
+      display: flex;
+      gap: 16px;
+    }
+  }
+}
+
+.slider__products {
+  display: flex;
+  gap: 16px;
+  position: relative;
+  overflow: hidden;
+  height: 508px;
+
+  &__container {
+    display: flex;
+    gap: 16px;
+    position: absolute;
+    transition: all 1s ease;
+  }
+}

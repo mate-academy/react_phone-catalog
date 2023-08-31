@@ -1,0 +1,38 @@
+@import "../../styles/vars.scss";
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+
+  &__btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid $elements-color;
+    color: $primary-color;
+    background-color: $white-color;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.55s ease;
+
+    &:hover {
+      border: 1px solid $primary-color;
+    }
+
+    &--is-active {
+      background-color: $primary-color;
+      color: $white-color;
+    }
+  }
+
+  &__prev {
+    margin-right: 8px;
+  }
+
+  &__next {
+    margin-left: 8px;
+  }
+}

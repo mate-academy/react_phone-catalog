@@ -1,1 +1,126 @@
-// not empty
+@import "./styles/arrow.scss";
+@import "./styles/vars.scss";
+
+@font-face {
+  font-family: Mont-Bold;
+  src: url("./fonts/Mont-Bold.otf");
+}
+
+@font-face {
+  font-family: Mont-Regular;
+  src: url("./fonts/Mont-Regular.otf");
+}
+
+@font-face {
+  font-family: Mont-SemiBold;
+  src: url("./fonts/Mont-SemiBold.otf");
+}
+
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+}
+
+iframe {
+  display: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body > #root > div {
+  height: 100vh;
+}
+
+body,
+h1,
+h2,
+h3,
+ul,
+p {
+  margin: 0;
+  font-family: Mont-Regular, sans-serif;
+  font-size: 12px;
+  list-style: none;
+  outline: none;
+  text-decoration: none;
+}
+
+.page {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  margin: auto;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin-bottom: 80px;
+    padding-top: 24px;
+
+    &--home {
+      gap: 80px;
+      padding-top: 40px;
+    }
+  }
+
+  &__logo {
+    &--header {
+      display: flex;
+      padding-left: 24px;
+    }
+
+    &--footer {
+      display: flex;
+      padding-left: 0;
+    }
+
+    &--icon {
+      padding: 16px 40px;
+      text-decoration: none;
+      background-image: url("./images/LOGO.svg");
+      background-position: center;
+      background-size: initial;
+      background-repeat: no-repeat;
+    }
+  }
+
+  &__section {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    &__header {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &__buttons {
+      display: flex;
+      gap: 16px;
+    }
+
+    &__title {
+      font-family: Mont-Bold, sans-serif;
+      font-size: 32px;
+      line-height: 41px;
+      letter-spacing: -0.32px;
+    }
+  }
+}
+
+.main {
+  &__container {
+    padding: 0 150px;
+    max-width: 1440px;
+    margin: auto;
+    position: relative;
+  }
+}

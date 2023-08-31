@@ -1,0 +1,38 @@
+@import "../../styles/vars.scss";
+
+.product-card {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+
+  &__small-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__small-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 80px;
+    background-color: $white-color;
+    border: 1px solid #c4c4c4;
+    cursor: pointer;
+  }
+
+  &__small-img {
+    object-fit: contain;
+    transition: all 0.35s ease;
+
+    &:hover {
+      width: 75px;
+      height: 75px;
+    }
+  }
+
+  &__big-img {
+    object-fit: contain;
+  }
+}

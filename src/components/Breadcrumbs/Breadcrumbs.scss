@@ -1,0 +1,39 @@
+@import "../../styles/vars.scss";
+
+.bread-crumbs {
+  display: flex;
+  gap: 8px;
+
+  &__home {
+    width: 16px;
+    height: 16px;
+    background-image: url("../../images/icons/Home.svg");
+  }
+
+  &__link {
+    display: flex;
+    align-self: center;
+    text-decoration: none;
+    font-family: Mont-SemiBold, sans-serif;
+    line-height: 19px;
+    font-size: 12px;
+    color: $primary-color;
+    text-transform: capitalize;
+  }
+
+  &__arrow {
+    width: 16px;
+    height: 16px;
+    background-image: url("../../images/icons/arrow-right-gray.svg");
+  }
+
+  &__paragraph {
+    display: flex;
+    align-self: center;
+    font-family: Mont-SemiBold, sans-serif;
+    line-height: 19px;
+    font-size: 12px;
+    color: $secondary-color;
+    text-transform: capitalize;
+  }
+}

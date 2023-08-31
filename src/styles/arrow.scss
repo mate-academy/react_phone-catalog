@@ -1,0 +1,49 @@
+@import "./vars.scss";
+
+.arrow {
+  width: 32px;
+  height: 32px;
+  color: $primary-color;
+  background-color: $white-color;
+  border: 1px solid $elements-color;
+
+  position: relative;
+  background-position: center;
+  background-size: initial;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  transition: all 0.35s ease;
+
+  &:hover {
+    border: 1px solid $primary-color;
+  }
+
+  &--right {
+    background-image: url("../images/icons/arrow-right.svg");
+
+    &--is-disabled {
+      background-image: url("../images/icons/arrow-right-gray.svg");
+
+      &:hover {
+        border: 1px solid $elements-color;
+      }
+    }
+  }
+
+  &--left {
+    background-image: url("../images/icons/arrow-left.svg");
+
+    &--is-disabled {
+      background-image: url("../images/icons/arrow-left-gray.svg");
+
+      &:hover {
+        border: 1px solid $elements-color;
+      }
+    }
+  }
+
+  &--up {
+    padding: 15px;
+    background-image: url("../images/icons/Arrow-up.svg");
+  }
+}

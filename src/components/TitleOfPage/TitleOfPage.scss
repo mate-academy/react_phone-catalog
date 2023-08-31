@@ -1,0 +1,64 @@
+@import "../../styles/vars.scss";
+
+.title-of-page {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+
+  &__container {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 16px;
+  }
+
+  &__paragraph {
+    font-size: 14px;
+    color: $secondary-color;
+  }
+
+  &__back-link {
+    padding: 0;
+    font-size: 12px;
+    height: 13px;
+    color: $secondary-color;
+    background-color: $white-color;
+    border: none;
+    cursor: pointer;
+
+    &:hover {
+      color: $primary-color;
+    }
+  }
+
+  &__arrow {
+    width: 16px;
+    height: 16px;
+    color: $primary-color;
+    border: none;
+    background-color: $white-color;
+    cursor: pointer;
+
+    background-image: url("../../images/icons/arrow-left.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__title {
+    font-family: Mont-Bold, sans-serif;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.32px;
+  }
+}

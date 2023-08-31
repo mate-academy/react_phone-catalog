@@ -1,0 +1,28 @@
+@import "../../styles/vars.scss";
+
+.footer {
+  border-top: 1px solid $elements-color;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1440px;
+    margin: auto;
+  }
+
+  &__list {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.35s ease;
+  }
+}

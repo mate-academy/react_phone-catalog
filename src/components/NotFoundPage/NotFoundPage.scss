@@ -1,0 +1,11 @@
+.not-found {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 200px;
+
+  &__title {
+    font-family: Mont-Bold, sans-serif;
+    font-size: 72px;
+  }
+}
