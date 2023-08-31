@@ -1,9 +1,30 @@
 import './App.scss';
+import { Route, Routes } from 'react-router-dom';
+import { Navigation } from './Components/Header';
+import { HomePage } from './Pages/Home';
+import { NotFound } from './Pages/NotFound';
+import { PhonesPage } from './Pages/Phones';
+import { TabletsPage } from './Pages/Tablets';
+import { AccessoriesPage } from './Pages/Accessories';
+import { FavouritesPage } from './Pages/Favourites';
+import { ShoppingPage } from './Pages/Shopping';
 
-const App = () => (
-  <div className="App">
-    <h1>React Phone Catalog</h1>
-  </div>
-);
+export const App = () => {
+  return (
+    <div className="App">
+      <Navigation />
 
-export default App;
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+
+        <Route path="/Phones" element={<PhonesPage />} />
+        <Route path="/Tablets" element={<TabletsPage />} />
+        <Route path="/Accessories" element={<AccessoriesPage />} />
+        <Route path="/Favourites" element={<FavouritesPage />} />
+        <Route path="/Shopping" element={<ShoppingPage />} />
+
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </div>
+  );
+};
