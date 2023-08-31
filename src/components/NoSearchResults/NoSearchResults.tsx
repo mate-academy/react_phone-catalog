@@ -26,7 +26,6 @@ export const NoSearchResults = () => {
       <p className="NoSearchResults__paragpraph">
         Seems like we couldn&apos;t find any products matching your search.
       </p>
-
       <button
         type="button"
         className="NoSearchResults__button"
