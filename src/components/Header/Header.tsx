@@ -1,11 +1,10 @@
 import { useLocation } from 'react-router-dom';
-
 import { Logo } from '../Logo';
 import { Nav } from '../Nav';
 import { SavedProductsButton } from '../SavedProductsButton';
+import { SearchBar } from '../SearchBar';
 
 import './Header.scss';
-import { SearchBar } from '../SearchBar';
 
 export const Header = () => {
   const { pathname } = useLocation();
@@ -13,7 +12,7 @@ export const Header = () => {
 
   const showSearchBar = pathname !== '/'
     && pathname !== '/cart'
-    && nestingDepth === 1; // only show searchbar if it's a products page, not details
+    && nestingDepth === 1;
 
   return (
     <header className="Header">

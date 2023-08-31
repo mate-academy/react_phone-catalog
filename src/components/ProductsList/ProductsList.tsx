@@ -2,8 +2,6 @@ import { useEffect, useRef, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Product } from '../../types/Product';
 import { ProductCard } from '../ProductCard';
-
-import './ProductsList.scss';
 import {
   findAppliedValueName,
   getPerPageNumber,
@@ -17,6 +15,8 @@ import { getSortedProducts } from '../../helpers/utils';
 import { Dropdown } from '../Dropdown';
 import { Pagination } from '../Pagination';
 import { NoSearchResults } from '../NoSearchResults';
+
+import './ProductsList.scss';
 
 type Props = {
   products: Product[];

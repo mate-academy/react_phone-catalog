@@ -18,7 +18,7 @@ export const CategoryLink: React.FC<Props> = ({ type, amount }) => {
         to={path}
         className={`CategoryLink__img CategoryLink__img--${type}`}
       >
-        {}
+        {' '}
       </NavLink>
 
       <NavLink

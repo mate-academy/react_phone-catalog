@@ -1,4 +1,5 @@
 import { Direction } from './utils';
+
 import './ProductsSlider.scss';
 
 type Props = {
@@ -11,17 +12,15 @@ export const SliderButton: React.FC<Props> = ({
   direction,
   handleClick,
   disabled = false,
-}) => {
-  return (
-    <button
-      type="button"
-      className={`SliderButton SliderButton--${direction}`}
-      onClick={() => {
-        handleClick(direction);
-      }}
-      disabled={disabled}
-    >
-      {' '}
-    </button>
-  );
-};
+}) => (
+  <button
+    type="button"
+    className={`SliderButton SliderButton--${direction}`}
+    onClick={() => {
+      handleClick(direction);
+    }}
+    disabled={disabled}
+  >
+    {' '}
+  </button>
+);

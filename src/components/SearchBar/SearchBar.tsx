@@ -7,6 +7,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import debounce from 'lodash/debounce';
 import classNames from 'classnames';
 import { generatePlaceHolderText, MAX_SEARCH_CHARS } from './utils';
+
 import './SearchBar.scss';
 
 export const SearchBar = () => {

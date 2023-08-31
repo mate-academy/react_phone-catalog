@@ -58,7 +58,7 @@ export const CartItem: React.FC<Props> = ({ product }) => {
           className="CartItem__remove-button"
           onClick={handleDeleteItem}
         >
-          { }
+          {' '}
         </button>
         <Link
           to={slug}

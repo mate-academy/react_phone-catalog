@@ -18,7 +18,8 @@ export const Pagination: React.FC<Props> = ({
   const totalPages = Math.ceil(totalProducts / perPage);
   const pageButtons = Array.from({ length: totalPages }, (_, i) => i + 1);
 
-  const handleClick = () => setPage(`${page - 1}`);
+  const handlePrevClick = () => setPage(`${page - 1}`);
+  const handleNextClick = () => setPage(`${page + 1}`);
   const handleSelect = (value: number) => () => {
     setPage(`${value}`);
   };
@@ -29,7 +30,7 @@ export const Pagination: React.FC<Props> = ({
         type="button"
         data-cy="paginationLeft"
         className="Pagination__button Pagination__button--prev"
-        onClick={handleClick}
+        onClick={handlePrevClick}
         disabled={page <= 1}
       >
         {' '}
@@ -53,7 +54,7 @@ export const Pagination: React.FC<Props> = ({
         type="button"
         data-cy="paginationRight"
         className="Pagination__button Pagination__button--next"
-        onClick={() => setPage(`${page + 1}`)}
+        onClick={handleNextClick}
         disabled={page >= totalPages}
       >
         {' '}
