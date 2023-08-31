@@ -4,6 +4,9 @@ h1,
 h2,
 h3,
 nav,
+header,
+img,
+div,
 p,
 a,
 button {
@@ -11,4 +14,7 @@ button {
   margin: 0;
 }
 
+* {
+  box-sizing: border-box;
+}
 

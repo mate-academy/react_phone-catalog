@@ -3,6 +3,7 @@ import './Footer.scss';
 import { FooterNavigation } from '../FooterNavigation';
 import { IconButton } from '../../bits';
 import { Wrapper } from '../Wrapper';
+import { IconButtonType } from '../../types/enums/IconButtonType';
 
 export const Footer = () => {
   return (
@@ -20,7 +21,7 @@ export const Footer = () => {
 
           <div className="footer__button-box">
             <span className="footer__button-title">back to top</span>
-            <IconButton iconClass="footer__button-icon" />
+            <IconButton type={IconButtonType.arrowUp} />
           </div>
         </div>
 

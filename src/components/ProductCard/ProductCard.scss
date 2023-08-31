@@ -1,0 +1,95 @@
+@import "/src/style/main.scss";
+
+.product-card {
+  box-sizing: border-box;
+  width: 272px;
+  height: 507px;
+  border: 1px solid $elements;
+  padding: 32px 24px 24px 24px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  &__img {
+    width: 208px;
+    min-height: 208px;
+    object-fit: cover;
+    object-position: center;
+    margin-bottom: 24px;
+  }
+
+  &__name {
+    min-height: 44px;
+    font-size: 14px;
+    line-height: 21px;
+    margin-bottom: 8px;
+  }
+
+  &__price-block {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-bottom: 8px;
+    position: relative;
+    margin-bottom: 16px;
+
+    &::after {
+      content: "";
+      position: absolute;
+      height: 1px;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background-color: $elements;
+    }
+  }
+
+  &__price-w-discount {
+    font-family: $font-bold;
+    font-size: 22px;
+    line-height: 140%;
+    margin-right: 8px;
+  }
+
+  &__price {
+    color: $secondary-font-color;
+    font-size: 22px;
+    text-decoration-line: line-through;
+  }
+
+  &__specs {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 1fr 1fr 1fr;
+    row-gap: 8px;
+    font-family: $font-semi-bold;
+    font-size: 12px;
+    line-height: normal;
+    color: $secondary-font-color;
+    margin-bottom: 16px;
+
+    &--right {
+      text-align: end;
+      color: $main-font-color
+    }
+  }
+
+  &__buttons-block {
+    width: 100%;
+    @include flex-between;
+    gap: 8px;
+  }
+
+  &__button-icon {
+    background-image: url(../../assets/icons/fav.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+
+    &:active {
+      background-image: url(../../assets/icons/favFilled.svg);
+    }
+  }
+}

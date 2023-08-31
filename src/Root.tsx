@@ -30,7 +30,7 @@ export const Root = () => (
       <Route path="/" element={<App />}>
         <Route index element={<HomePage />} />
         {Object.entries(pages).map(route => (
-          <Route path={route[0]} element={route[1]} />
+          <Route key={route[0]} path={route[0]} element={route[1]} />
         ))}
       </Route>
     </Routes>

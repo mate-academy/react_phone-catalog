@@ -6,15 +6,81 @@
   width: 32px;
   height: 32px;
   border: 1px solid $elements;
-  background-color: #fff;
+  background-color: $font-white;
 
   &:hover {
     border-color: $main-font-color;
-
     @include transition-03s;
+  }
+
+  &:disabled {
+    border: 1px solid $elements;
   }
 
   &:active {
     background-color: $main-font-color;
+  }
+
+  &--fav {
+    width: 40px;
+    height: 40px;
+    background-image: url(../../assets/icons/fav.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+
+    &:active {
+      background-color: $font-white;
+      background-image: url(../../assets/icons/favFilled.svg);
+    }
+  }
+
+  &--arrow-up {
+    background-image: url(../../assets/icons/arrowUpFilled.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+
+    &:disabled {
+      background-image: url(../../assets/icons/arrowUp.svg);
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    &:active {
+      background-image: url(../../assets/icons/arrowUpWhite.svg);
+    }
+  }
+
+  &--arrow-next {
+    background-image: url(../../assets/icons/arrowUpFilled.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    transform: rotate(90deg);
+
+    &:disabled {
+      background-image: url(../../assets/icons/arrowUp.svg);
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    &:active {
+      background-image: url(../../assets/icons/arrowUpWhite.svg);
+    }
+  }
+
+  &--arrow-back {
+    background-image: url(../../assets/icons/arrowUpFilled.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    transform: rotate(-90deg);
+
+    &:disabled {
+      background-image: url(../../assets/icons/arrowUp.svg);
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    &:active {
+      background-image: url(../../assets/icons/arrowUpWhite.svg);
+    }
   }
 }

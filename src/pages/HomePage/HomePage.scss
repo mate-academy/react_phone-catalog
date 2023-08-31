@@ -1,7 +1,7 @@
-@import '../../style/main.scss';
+@import "../../style/main.scss";
 
 .home {
-  @include flex-center;
-
-  height: $pageHeight;
+  display: flex;
+  flex-direction: column;
+  padding-top: 40px;
 }

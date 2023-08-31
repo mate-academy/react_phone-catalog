@@ -1,0 +1,29 @@
+@import "/src/style/main.scss";
+
+.products-slider {
+  width: 1140px;
+  overflow: hidden;
+
+  &__upper {
+    @include flex-between;
+
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    font-family: $font-bold;
+    font-size: 32px;
+    letter-spacing: -0.32px;
+    text-transform: capitalize;
+  }
+
+  &__buttons {
+    @include flex-between;
+    width: 80px;
+  }
+
+  &__list {
+    @include flex-between;
+    gap: 16px;
+  }
+}

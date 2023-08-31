@@ -9,7 +9,7 @@ const images = {
   accessories: '_new/img/banner-accessories.png',
 };
 
-const IMAGE_CHANGE_INTERVAL = 3000;
+const IMAGE_CHANGE_INTERVAL = 5000;
 
 export const BannerSlider = () => {
   const [position, setPosition] = useState<Direction | number>(0);
@@ -30,8 +30,8 @@ export const BannerSlider = () => {
 
     if (action === 'back') {
       if (currentSlideIndex <= 0) {
-        setCurrentSlide(0);
-        setPosition(0);
+        setCurrentSlide(imagesEntries.length - 1);
+        setPosition(Direction.next * (imagesEntries.length - 1));
       } else {
         setCurrentSlide(prev => prev - 1);
         setPosition(prev => prev + Direction.back);
@@ -60,10 +60,11 @@ export const BannerSlider = () => {
         <div className="banner-slider__img-container">
           {imagesEntries.map(image => (
             <div
+              key={image[0]}
               className="banner-slider__picture"
               style={{
                 transform: `translate(${position}px)`,
-                transition: '0.7s',
+                transition: '0.7s ease',
               }}
             >
               <img

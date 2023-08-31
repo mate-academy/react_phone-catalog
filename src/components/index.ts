@@ -4,3 +4,5 @@ export { NavIcon } from './NavIcon';
 export { Header } from './Header';
 export { Wrapper } from './Wrapper';
 export { BannerSlider } from './BannerSlider';
+export { ProductCard } from './ProductCard';
+export { ProductsSlider } from './ProductsSlider';
