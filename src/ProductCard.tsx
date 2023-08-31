@@ -3,6 +3,7 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Context } from './Context';
 import { Product } from './types/Product';
+import { LocaleStorageTypes } from './types/LocaleStorageTypes';
 import {
   findProductOnCart,
   findProductOnFavourites,
@@ -31,7 +32,9 @@ export const ProductCard: React.FC<Props> = ({
         className="product__link"
         to={`/${product.type}s/${product.id}`}
         onClick={() => {
-          localStorage.setItem('product', JSON.stringify(product));
+          localStorage.setItem(
+            LocaleStorageTypes.product, JSON.stringify(product),
+          );
         }}
       >
         {product && (

@@ -4,6 +4,7 @@ import {
   useEffect,
   useContext,
 } from 'react';
+import { useLocation } from 'react-router-dom';
 import classNames from 'classnames';
 import { Context } from './Context';
 import { ProductCard } from './ProductCard';
@@ -14,14 +15,11 @@ import { Loader } from './Loader';
 import { getProducts } from './api/products';
 import { NoResults } from './NoResults';
 import { ProductTypes } from './types/productTypes';
+import { useUpdateSearch } from './utils/hooks';
 
 type Props = {
   productType: ProductTypes,
-  pathname: string,
   type: string,
-  updateSearch(params: {
-    [key: string]: number[] | string[] | string | null
-  }): void,
   page: string | null,
   perPage: string | null,
   sort: string | null,
@@ -29,14 +27,13 @@ type Props = {
 
 export const Products: React.FC<Props> = ({
   productType,
-  pathname,
   type,
-  updateSearch,
   page,
   perPage,
   sort,
 }) => {
   const { query } = useContext(Context);
+  const { pathname } = useLocation();
   const [products, setProducts] = useState<Product[] | []>([]);
   const [phonesPerPage, setPhonesPerPage] = useState(8);
   const [currentPage, setCurrentPage] = useState(1);
@@ -48,6 +45,7 @@ export const Products: React.FC<Props> = ({
   let filteredProducts = [...products];
   let pagesAmount = 0;
   let itemsPerPage = [...products];
+  const updateSearch = useUpdateSearch();
 
   const getDevices = async () => {
     setIsLoading(true);

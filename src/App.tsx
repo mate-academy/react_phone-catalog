@@ -17,39 +17,24 @@ import { Favourites } from './Favourites';
 import { Cart } from './Cart';
 import { Footer } from './Footer';
 import { ProductTypes } from './types/productTypes';
+import { SearchTypes } from './types/SearchTypes';
+import { LocaleStorageTypes } from './types/LocaleStorageTypes';
+import { useUpdateSearch } from './utils/hooks';
 
 const App = () => {
   const { setQuery } = useContext(Context);
   const { pathname } = useLocation();
   const history = useNavigate();
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const [filterType, setFilterType] = useState('');
-  const page = searchParams.get('page' || '');
-  const perPage = searchParams.get('perPage' || '');
-  const sort = searchParams.get('sort' || '');
-  const filterQuery = searchParams.get('query' || '');
+  const page = searchParams.get(SearchTypes.page) || '';
+  const perPage = searchParams.get(SearchTypes.perPage) || '';
+  const sort = searchParams.get(SearchTypes.sort) || '';
+  const filterQuery = searchParams.get(SearchTypes.query) || '';
   const activeProduct = JSON.parse(
-    localStorage.getItem('product') as string,
+    localStorage.getItem(LocaleStorageTypes.product) as string,
   ) || null;
-  const updateSearch = (params: {
-    [key: string]: number[] | string[] | string | null
-  }) => {
-    Object.entries(params).forEach(([key, value]) => {
-      if (value === null) {
-        searchParams.delete(key);
-      } else if (Array.isArray(value)) {
-        searchParams.delete(key);
-
-        value.forEach(part => {
-          searchParams.append(key, String(part));
-        });
-      } else {
-        searchParams.set(key, value);
-      }
-
-      setSearchParams(searchParams);
-    });
-  };
+  const updateSearch = useUpdateSearch();
 
   useMemo(() => {
     if (pathname === '/phones') {
@@ -74,7 +59,6 @@ const App = () => {
       <Header
         filterType={filterType}
         filterQuery={filterQuery}
-        updateSearch={updateSearch}
       />
 
       <main style={{ flexGrow: 1 }}>
@@ -82,7 +66,7 @@ const App = () => {
           <Route
             path="/"
             element={(
-              <Home pathname={pathname} />
+              <Home />
             )}
           />
 
@@ -95,14 +79,10 @@ const App = () => {
             path="/phones"
             element={(
               <>
-                <Navigation
-                  pathname={pathname}
-                />
+                <Navigation />
                 <Products
                   productType={ProductTypes.phones}
-                  pathname={pathname}
                   type="phone"
-                  updateSearch={updateSearch}
                   page={page}
                   sort={sort}
                   perPage={perPage}
@@ -115,10 +95,8 @@ const App = () => {
             path={`/phones/:${activeProduct?.id}`}
             element={(
               <>
-                <Navigation
-                  pathname={pathname}
-                />
-                <ProductDetails pathname={pathname} />
+                <Navigation />
+                <ProductDetails />
               </>
             )}
           />
@@ -127,14 +105,10 @@ const App = () => {
             path="/tablets"
             element={(
               <>
-                <Navigation
-                  pathname={pathname}
-                />
+                <Navigation />
                 <Products
                   productType={ProductTypes.tablets}
-                  pathname={pathname}
                   type="tablet"
-                  updateSearch={updateSearch}
                   page={page}
                   sort={sort}
                   perPage={perPage}
@@ -147,10 +121,8 @@ const App = () => {
             path={`/tablets/:${activeProduct?.id}`}
             element={(
               <>
-                <Navigation
-                  pathname={pathname}
-                />
-                <ProductDetails pathname={pathname} />
+                <Navigation />
+                <ProductDetails />
               </>
             )}
           />
@@ -159,14 +131,10 @@ const App = () => {
             path="/accessories"
             element={(
               <>
-                <Navigation
-                  pathname={pathname}
-                />
+                <Navigation />
                 <Products
                   productType={ProductTypes.accessories}
-                  pathname={pathname}
                   type="accessory"
-                  updateSearch={updateSearch}
                   page={page}
                   sort={sort}
                   perPage={perPage}
@@ -179,10 +147,8 @@ const App = () => {
             path={`/accessories/:${activeProduct?.id}`}
             element={(
               <>
-                <Navigation
-                  pathname={pathname}
-                />
-                <ProductDetails pathname={pathname} />
+                <Navigation />
+                <ProductDetails />
               </>
             )}
           />
@@ -191,9 +157,7 @@ const App = () => {
             path="/favourites"
             element={(
               <>
-                <Navigation
-                  pathname={pathname}
-                />
+                <Navigation />
                 <Favourites />
               </>
             )}

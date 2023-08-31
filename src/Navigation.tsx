@@ -1,11 +1,11 @@
-import { NavLink } from 'react-router-dom';
+import {
+  NavLink,
+  useLocation,
+} from 'react-router-dom';
 import classNames from 'classnames';
 
-type Props = {
-  pathname: string,
-};
-
-export const Navigation: React.FC<Props> = ({ pathname }) => {
+export const Navigation = () => {
+  const { pathname } = useLocation();
   const nav = pathname.split('/');
 
   return (

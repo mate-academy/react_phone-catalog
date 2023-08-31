@@ -1,5 +1,6 @@
 import { Product } from '../types/Product';
 import { CartProduct } from '../types/CartProduct';
+import { LocaleStorageTypes } from '../types/LocaleStorageTypes';
 import {
   setCartItemsToLocaleStorage,
   getCartItemsFromLocaleStorage,
@@ -10,7 +11,7 @@ import {
 export const findProductOnCart = (id: string) => {
   let match = false;
 
-  getCartItemsFromLocaleStorage('toBuy').forEach(device => {
+  getCartItemsFromLocaleStorage(LocaleStorageTypes.toBuy).forEach(device => {
     if (device.id === id) {
       match = true;
 
@@ -26,8 +27,12 @@ export const findProductOnCart = (id: string) => {
 export const findProductOnFavourites = (id: string) => {
   let match = false;
 
-  if (getFavouritesFromLocaleStorage('favourites').length > 0) {
-    getFavouritesFromLocaleStorage('favourites').map(device => {
+  if (getFavouritesFromLocaleStorage(
+    LocaleStorageTypes.favourites,
+  ).length > 0) {
+    getFavouritesFromLocaleStorage(
+      LocaleStorageTypes.favourites,
+    ).map(device => {
       if (device.id === id) {
         match = true;
 
@@ -52,7 +57,9 @@ export const updateFavourites = (
 
   let ProductIndex = 0;
 
-  getFavouritesFromLocaleStorage('favourites').map((device, index) => {
+  getFavouritesFromLocaleStorage(
+    LocaleStorageTypes.favourites,
+  ).map((device, index) => {
     if (device.id === item.id) {
       ProductIndex = index;
     }
@@ -62,24 +69,28 @@ export const updateFavourites = (
 
   if (findProductOnFavourites(item.id) === false) {
     const toFavourites = [
-      ...getFavouritesFromLocaleStorage('favourites'),
+      ...getFavouritesFromLocaleStorage(LocaleStorageTypes.favourites),
       item,
     ];
 
     setChosenProducts(toFavourites);
-    setFavouritesTolocaleStorage('favourites', toFavourites);
+    setFavouritesTolocaleStorage(LocaleStorageTypes.favourites, toFavourites);
   } else {
     setLoadingItem(ProductIndex);
 
     const toFavourites = [
-      ...getFavouritesFromLocaleStorage('favourites').slice(0, ProductIndex),
-      ...getFavouritesFromLocaleStorage('favourites').slice(ProductIndex + 1),
+      ...getFavouritesFromLocaleStorage(
+        LocaleStorageTypes.favourites,
+      ).slice(0, ProductIndex),
+      ...getFavouritesFromLocaleStorage(
+        LocaleStorageTypes.favourites,
+      ).slice(ProductIndex + 1),
     ];
 
     setChosenProducts(toFavourites as Product[]);
 
     setTimeout(() => {
-      setFavouritesTolocaleStorage('favourites', toFavourites);
+      setFavouritesTolocaleStorage(LocaleStorageTypes.favourites, toFavourites);
       setLoadingItem(null);
     }, favouritesTimeout);
   }
@@ -94,7 +105,7 @@ export const updateCart = (
 
   if (findProductOnCart(item.id) === false) {
     const toBuy = [
-      ...getCartItemsFromLocaleStorage('toBuy'),
+      ...getCartItemsFromLocaleStorage(LocaleStorageTypes.toBuy),
       {
         id: item.id,
         quantity: 1,
@@ -102,7 +113,7 @@ export const updateCart = (
       },
     ] as CartProduct[];
 
-    setCartItemsToLocaleStorage('toBuy', toBuy);
+    setCartItemsToLocaleStorage(LocaleStorageTypes.toBuy, toBuy);
     setProductsToBuy(toBuy);
   }
 };

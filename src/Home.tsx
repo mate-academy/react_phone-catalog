@@ -1,14 +1,13 @@
+import { useLocation } from 'react-router-dom';
 import { PhotosSlider } from './PhotosSlider';
 import { ProductsSlider } from './ProductsSlider';
 import { ShopBy } from './ShopBy';
 
-type Props = {
-  pathname: string,
-};
+export const Home = () => {
+  const { pathname } = useLocation();
 
-export const Home: React.FC<Props> = ({ pathname }) => (
-  <div className="home">
-    <>
+  return (
+    <div className="home">
       <PhotosSlider />
       <ProductsSlider
         pathname={pathname}
@@ -23,6 +22,6 @@ export const Home: React.FC<Props> = ({ pathname }) => (
         dicount={false}
         random={false}
       />
-    </>
-  </div>
-);
+    </div>
+  );
+};

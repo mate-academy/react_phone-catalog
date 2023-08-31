@@ -7,14 +7,16 @@ import { Context } from './Context';
 import { ProductCard } from './ProductCard';
 import { Loader } from './Loader';
 import { getFavouritesFromLocaleStorage } from './utils/updateLocaleStorage';
+import { LocaleStorageTypes } from './types/LocaleStorageTypes';
 
 export const Favourites = () => {
   const { loadingItem, query } = useContext(Context);
   const [isLoading, setIsLoading] = useState(false);
-  const filteredProducts = getFavouritesFromLocaleStorage('favourites')
-    .filter(
-      product => product.name.toLowerCase().includes(query.toLowerCase()),
-    );
+  const filteredProducts = getFavouritesFromLocaleStorage(
+    LocaleStorageTypes.favourites,
+  ).filter(
+    product => product.name.toLowerCase().includes(query.toLowerCase()),
+  );
 
   useEffect(() => {
     setIsLoading(true);
@@ -71,7 +73,9 @@ export const Favourites = () => {
             ))
           )}
 
-          {(getFavouritesFromLocaleStorage('favourites').length === 0
+          {(getFavouritesFromLocaleStorage(
+            LocaleStorageTypes.favourites,
+          ).length === 0
             && !isLoading) && (
             <h2 className="favourites__title favourites__title--error">
               Favourites not found

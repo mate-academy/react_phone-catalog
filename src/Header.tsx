@@ -2,28 +2,27 @@ import { useContext, useMemo } from 'react';
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 import { Context } from './Context';
+import { useUpdateSearch } from './utils/hooks';
 import {
   getCartItemsFromLocaleStorage,
   getFavouritesFromLocaleStorage,
 } from './utils/updateLocaleStorage';
+import { LocaleStorageTypes } from './types/LocaleStorageTypes';
 
 type Props = {
   filterType: string,
   filterQuery: string | null,
-  updateSearch(params: {
-    [key: string]: number[] | string[] | string | null
-  }): void,
 };
 
 export const Header: React.FC<Props> = ({
   filterType,
   filterQuery,
-  updateSearch,
 }) => {
   const {
     query,
     setQuery,
   } = useContext(Context);
+  const updateSearch = useUpdateSearch();
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(event.target.value);
@@ -122,9 +121,13 @@ export const Header: React.FC<Props> = ({
             to="/favourites"
           >
             <div className="header__stroke" />
-            {getFavouritesFromLocaleStorage('favourites').length > 0 && (
+            {getFavouritesFromLocaleStorage(
+              LocaleStorageTypes.favourites,
+            ).length > 0 && (
               <div className="header__circle">
-                {getFavouritesFromLocaleStorage('favourites').length}
+                {getFavouritesFromLocaleStorage(
+                  LocaleStorageTypes.favourites,
+                ).length}
               </div>
             )}
           </NavLink>
@@ -136,9 +139,13 @@ export const Header: React.FC<Props> = ({
             to="/cart"
           >
             <div className="header__bag" />
-            {getCartItemsFromLocaleStorage('toBuy').length > 0 && (
+            {getCartItemsFromLocaleStorage(
+              LocaleStorageTypes.toBuy,
+            ).length > 0 && (
               <div className="header__circle">
-                {getCartItemsFromLocaleStorage('toBuy').length}
+                {getCartItemsFromLocaleStorage(
+                  LocaleStorageTypes.toBuy,
+                ).length}
               </div>
             )}
           </NavLink>

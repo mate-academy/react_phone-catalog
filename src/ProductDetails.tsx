@@ -3,9 +3,11 @@ import {
   useEffect,
   useContext,
 } from 'react';
+import { useLocation } from 'react-router-dom';
 import classNames from 'classnames';
 import { Product } from './types/Product';
 import { Details } from './types/Details';
+import { LocaleStorageTypes } from './types/LocaleStorageTypes';
 import { Loader } from './Loader';
 import { getDetails } from './api/products';
 import { ProductsSlider } from './ProductsSlider';
@@ -19,12 +21,10 @@ import {
 } from './utils/productManipulations';
 
 type Props = {
-  pathname: string,
   favouritesTimeout?: number,
 };
 
 export const ProductDetails: React.FC<Props> = ({
-  pathname,
   favouritesTimeout,
 }) => {
   const avaliebleColors = ['#f0f0f0', '#000', '#62849c', '#96999b'];
@@ -34,6 +34,7 @@ export const ProductDetails: React.FC<Props> = ({
     setProductsToBuy,
     setLoadingItem,
   } = useContext(Context);
+  const { pathname } = useLocation();
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [details, setDetails] = useState<Details | null>(null);
@@ -41,7 +42,9 @@ export const ProductDetails: React.FC<Props> = ({
   const [activeColor, setActiveColor] = useState(avaliebleColors[0]);
   const [activeCapacity, setActiveCapacity] = useState(avaliebleCapacity[0]);
   const [isPhotoActive, setIsPhotoActive] = useState(false);
-  const activeProduct = JSON.parse(localStorage.getItem('product') as string);
+  const activeProduct = JSON.parse(
+    localStorage.getItem(LocaleStorageTypes.product) as string,
+  );
   const display = details?.display.screenResolution.slice(
     details?.display.screenResolution.indexOf('(') + 1,
     details?.display.screenResolution.length - 1,
