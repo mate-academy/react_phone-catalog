@@ -25,12 +25,12 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       <img
         className="product-card__img"
         alt={name}
-        src={`${imageUrl}`}
+        src={`./${imageUrl}`}
       />
       <h3 className="product-card__name">{name}</h3>
       <div className="product-card__price-block">
         <p className="product-card__price-w-discount">{`$${getPriceWithDiscount()}`}</p>
-        {discount !== 0 && (<p className="product-card__price">{`$${price}`}</p>)}
+        {!discount && (<p className="product-card__price">{`$${price}`}</p>)}
       </div>
 
       <div className="product-card__specs">
