@@ -11,7 +11,7 @@
   }
 
   &__title {
-   @extend %page-title;
+    @extend %page-title;
   }
 
   &__buttons {
@@ -43,7 +43,7 @@
   }
 
   &:disabled {
-    background-image: url('../../icons/arrow-gray-up.svg');
+    background-image: url(../../icons/arrow-gray-up.svg);
     border-color: $color-elements-light-gray;
     cursor: unset;
   }

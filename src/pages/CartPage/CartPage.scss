@@ -27,7 +27,7 @@
     display: flex;
     flex-direction: column;
 
-    &>* {
+    & > * {
       margin-bottom: 16px;
     }
 
@@ -94,7 +94,7 @@
     height: 10px;
     margin-right: 27px;
     border: none;
-    background-image: url('../../icons/Close.svg');
+    background-image: url(../../icons/Close.svg);
   }
 
   &__product-img {
@@ -129,17 +129,17 @@
     width: 32px;
 
     &--remove {
-      background-image: url('../../icons/Minus.svg');
+      background-image: url(../../icons/Minus.svg);
 
       &:disabled {
-        background-image: url('../../icons/Minus-gray.svg');
+        background-image: url(../../icons/Minus-gray.svg);
         border-color: $color-icons-placeholders-gray;
         cursor: unset;
       }
     }
 
     &--add {
-      background-image: url('../../icons/Plus.svg');
+      background-image: url(../../icons/Plus.svg);
     }
   }
 

@@ -44,13 +44,13 @@
     width: 15px;
     position: absolute;
     top: 50%;
+    transform: translateY(-50%);
     right: 25px;
-    cursor: pointer;
     background-color: transparent;
     background-image: url(../../icons/Close.svg);
     background-repeat: no-repeat;
-    background-position: center center;
+    background-position: center;
     border: none;
-    transform: translateY(-50%);
+    cursor: pointer;
   }
 }

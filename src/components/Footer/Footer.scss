@@ -4,7 +4,7 @@
 
 .Footer {
   width: 100%;
-  box-shadow: 0px -1px 0px 0px $color-elements-light-gray;
+  box-shadow: 0 -1px 0 0 $color-elements-light-gray;
 
   &__content {
     height: $footer-height;
@@ -23,7 +23,7 @@
   color: $color-secondary-gray;
   font-weight: 600;
   font-size: 12px;
-  transition:  $transition;
+  transition: $transition;
 
   &__label {
     display: flex;
@@ -46,7 +46,7 @@
     color: $color-primary-dark-gray;
 
     .back-to-top__button {
-      border-color:  $color-primary-dark-gray;
+      border-color: $color-primary-dark-gray;
     }
   }
 }

@@ -5,7 +5,7 @@
 .Pagination {
   display: flex;
 
-  & >* {
+  & > * {
     margin-right: 8px;
   }
 
@@ -18,13 +18,6 @@
     margin-right: 0;
   }
 
-  &__button,
-  &__page-button {
-    &:hover {
-      border-color: $color-primary-dark-gray;
-    }
-  }
-
   &__button {
     @extend %arrow-button;
 
@@ -34,12 +27,6 @@
 
     &--next {
       transform: rotate(90deg);
-    }
-
-    &:disabled {
-      background-image: url('../../icons/arrow-gray-up.svg');
-      border-color: $color-elements-light-gray;
-      cursor: unset;
     }
   }
 
@@ -53,5 +40,18 @@
       background-color: $color-primary-dark-gray;
       cursor: unset;
     }
+  }
+
+  &__button,
+  &__page-button {
+    &:hover {
+      border-color: $color-primary-dark-gray;
+    }
+  }
+
+  &__button:disabled {
+    background-image: url(../../icons/arrow-gray-up.svg);
+    border-color: $color-elements-light-gray;
+    cursor: unset;
   }
 }

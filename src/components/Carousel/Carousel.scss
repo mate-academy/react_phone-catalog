@@ -9,15 +9,15 @@
     background-position: center;
 
     &--phones {
-      background-image: url('./banners/banner-phones.png');
+      background-image: url(./banners/banner-phones.png);
     }
 
-    &--tablets{
-      background-image: url('./banners/banner-tablets.png');
+    &--tablets {
+      background-image: url(./banners/banner-tablets.png);
     }
 
     &--accessories {
-      background-image: url('./banners/banner-accessories.png');
+      background-image: url(./banners/banner-accessories.png);
     }
   }
 
@@ -27,11 +27,11 @@
     height: 400px;
 
     &--prev {
-      background-image: url('../../icons/arrow-left.svg');
+      background-image: url(../../icons/arrow-left.svg);
     }
 
     &--next {
-      background-image: url('../../icons/arrow-right.svg');
+      background-image: url(../../icons/arrow-right.svg);
     }
   }
 }
@@ -46,13 +46,13 @@
   margin: 0 auto;
 }
 
-.react-slideshow-container+ul.indicators {
+.react-slideshow-container + ul.indicators {
   gap: 14px;
 }
 
-.react-slideshow-container+ul.indicators .each-slideshow-indicator:before {
-    width: 14px;
-    height: 4px;
-    border-radius: 0%;
-    background-color: $color-primary-dark-gray;
+.react-slideshow-container + ul.indicators .each-slideshow-indicator:before {
+  width: 14px;
+  height: 4px;
+  border-radius: 0%;
+  background-color: $color-primary-dark-gray;
 }

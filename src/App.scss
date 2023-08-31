@@ -1,4 +1,4 @@
-@import './utils/colors';
+@import "./utils/colors";
 
 @font-face {
   font-family: "Mont";
@@ -39,10 +39,6 @@ body {
   color: $color-primary-dark-gray;
 }
 
-.App {
-
-}
-
 .container {
   margin: 0 auto;
   max-width: 1136px;
@@ -63,7 +59,9 @@ ul {
   list-style: none;
 }
 
-p, ul, li {
+p,
+ul,
+li {
   margin: 0;
   padding: 0;
 }

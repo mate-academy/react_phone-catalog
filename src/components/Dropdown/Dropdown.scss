@@ -14,7 +14,6 @@
   &__title {
     display: block;
     margin-bottom: 4px;
-    font-style: normal;
     font-weight: 600;
     font-size: 12px;
     line-height: 15px;
@@ -30,12 +29,12 @@
     font-weight: 600;
     line-height: 21px;
     text-align: left;
-    background-image: url('../../icons/arrow-gray-down.svg');
+    background-image: url(../../icons/arrow-gray-down.svg);
     background-position: right 16px center;
 
     &--selected {
       border-color: $color-primary-dark-gray;
-      background-image: url('../../icons/arrow-gray-up.svg');
+      background-image: url(../../icons/arrow-gray-up.svg);
     }
 
     &:hover {

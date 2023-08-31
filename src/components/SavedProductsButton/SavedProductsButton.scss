@@ -16,7 +16,7 @@
   &__container {
     width: 64px;
     height: 64px;
-    box-shadow: -1px 0px 0px 0px #E2E6E9;
+    box-shadow: -1px 0 0 0 #e2e6e9;
   }
 
   &__amount {
@@ -38,7 +38,7 @@
 
   &--selected {
     &::after {
-     @extend %underline;
+      @extend %underline;
     }
   }
 
