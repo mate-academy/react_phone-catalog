@@ -36,7 +36,7 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
           state={{ name, search, pathname }}
         >
           <img
-            src={`/_new/${image}`}
+            src={`${image}`}
             width={208}
             height={208}
             alt={name}
