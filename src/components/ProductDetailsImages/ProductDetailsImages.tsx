@@ -9,8 +9,6 @@ type Props = {
 export const ProductDetailsImages: React.FC<Props> = ({ images }) => {
   const [currentTitleImage, setCurrentTitleImage] = useState(images[0]);
 
-  console.log(IMG_LINK + currentTitleImage);
-
   return (
     <div className="product-card">
       <div className="product-card__container">
