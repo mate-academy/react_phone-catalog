@@ -1,3 +1,4 @@
+import './ProductsSlider.scss';
 import {
   useEffect,
   useMemo,
@@ -6,14 +7,13 @@ import {
 } from 'react';
 import { throttle } from 'lodash';
 import { useSwipeable } from 'react-swipeable';
-import { getWidthHandler } from '../../helpers/getWidthHandler';
+import { getWidthHandler } from '@/helpers/getWidthHandler';
 
-import { Product } from '../../types/Product';
-import { Button } from '../Button/Button';
-import { ProductCard } from '../ProductCard/ProductCard';
-import './ProductsSlider.scss';
-import { NoResults } from '../NoResults/NoResults';
-import { Loader } from '../Loader';
+import { Product } from '@/types/Product';
+import { Button } from '@/components/Button';
+import { ProductCard } from '@/components/ProductCard';
+import { NoResults } from '@/components/NoResults';
+import { Loader } from '@/components/Loader';
 
 type Props = {
   products: Product[];
@@ -34,7 +34,6 @@ export const ProductSlider: React.FC<Props> = ({
 }) => {
   const [itemsScrolled, setItemsScrolled] = useState(0);
   const [containerWidth, setContainerWidth] = useState(0);
-  const [transition, setTransition] = useState('transform 1s ease');
   const containerRef = useRef<HTMLDivElement>(null);
 
   const gap = 16;
@@ -73,11 +72,7 @@ export const ProductSlider: React.FC<Props> = ({
   }, [itemsScrolled, itemWidth, itemsInFrame]);
 
   useEffect(() => {
-    const widthHandler = getWidthHandler(
-      containerRef,
-      setContainerWidth,
-      setTransition,
-    );
+    const widthHandler = getWidthHandler(containerRef, setContainerWidth);
     const throttledWidthHandler = throttle(widthHandler, 200);
 
     throttledWidthHandler();
@@ -145,7 +140,6 @@ export const ProductSlider: React.FC<Props> = ({
               data-cy="cardsContainer"
               style={{
                 width: carouselWidth,
-                transition,
                 transform: `translate(-${scrolledWidth}px, 0)`,
               }}
               {...mobileHandlers}

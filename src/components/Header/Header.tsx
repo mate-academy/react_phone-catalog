@@ -1,12 +1,12 @@
 import './Header.scss';
 import { useMemo } from 'react';
-import { NavBar } from '../NavBar/NavBar';
-import { NavLinkMain } from '../NavLinkMain/NavLinkMain';
-import { Search } from '../Search/Search';
-import { useAppSelector } from '../../app/hooks';
-import { Counter } from '../Counter/Counter';
-import { Logo } from '../Logo/Logo';
-import { Menu } from '../Menu/Menu';
+import { NavBar } from '@/components/NavBar';
+import { NavLinkMain } from '@/components/NavLinkMain';
+import { Search } from '@/components/Search';
+import { useAppSelector } from '@/app/hooks';
+import { Counter } from '@/components/Counter';
+import { Logo } from '@/components/Logo';
+import { Menu } from '@/components/Menu';
 
 export const Header = () => {
   const cart = useAppSelector(state => state.cart);

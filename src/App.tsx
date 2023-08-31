@@ -1,10 +1,10 @@
-import { Outlet } from 'react-router-dom';
 import './App.scss';
+import { Outlet } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from './app/store';
 
-import { Header } from './components/Header/Header';
-import { Footer } from './components/Footer/Footer';
+import { Header } from './components/Header';
+import { Footer } from './components/Footer';
 
 const App = () => {
   return (

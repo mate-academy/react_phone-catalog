@@ -2,16 +2,16 @@ import './ProductCard.scss';
 import { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
-import { Button } from '../Button/Button';
-import { Product } from '../../types/Product';
-import { calculateDiscount } from '../../helpers/calculateDiscount';
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { add as addToCart } from '../../features/cart/cartSlice';
+import { Button } from '@/components/Button';
+import { Product } from '@/types/Product';
+import { calculateDiscount } from '@/helpers/calculateDiscount';
+import { useAppDispatch, useAppSelector } from '@/app/hooks';
+import { add as addToCart } from '@/features/cart/cartSlice';
 import {
   add as addToFavourites,
   remove as removeFavourite,
-} from '../../features/favourites/favouritesSlice';
-import { isItemIncluded } from '../../helpers/isItemIncluded';
+} from '@/features/favourites/favouritesSlice';
+import { isItemIncluded } from '@/helpers/isItemIncluded';
 
 type Props = {
   product: Product;

@@ -1,17 +1,16 @@
-/* eslint-disable import/no-cycle */
-import { RootState } from '../app/store';
+import { RootState } from '@/app/store';
 
 export const loadState = () => {
   try {
     const serializedState = localStorage.getItem('state');
 
     if (!serializedState) {
-      return undefined;
+      return;
     }
 
     return JSON.parse(serializedState);
   } catch {
-    return undefined;
+    return;
   }
 };
 

@@ -1,4 +1,4 @@
-/* eslint-disable consistent-return */
+import './DropdownSelect.scss';
 import React, {
   useState,
   useEffect,
@@ -7,10 +7,9 @@ import React, {
   useMemo,
 } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import './DropdownSelect.scss';
 import classNames from 'classnames';
-import { SearchLink } from '../SearchLink/SearchLink';
-import { getSearchWith } from '../../helpers/searchHelper';
+import { SearchLink } from '@/components/SearchLink';
+import { getSearchWith } from '@/helpers/searchHelper';
 
 type Props = {
   paramName: string;
@@ -23,6 +22,10 @@ type Option = {
     children: string,
   }
 };
+
+enum Page {
+  First = '1',
+}
 
 export const DropdownSelect: React.FC<Props> = ({
   children,
@@ -105,7 +108,7 @@ export const DropdownSelect: React.FC<Props> = ({
           {options.map(({ props }) => (
             <li key={props.value}>
               <SearchLink
-                params={{ [paramName]: props.value, page: '1' }}
+                params={{ [paramName]: props.value, page: Page.First }}
                 onClick={handleLinkClick}
               >
                 {props.children}

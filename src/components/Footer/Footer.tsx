@@ -1,8 +1,14 @@
-import { Button } from '../Button/Button';
-import { Logo } from '../Logo/Logo';
+import { Button } from '@/components/Button';
+import { Logo } from '@/components/Logo';
 import './Footer.scss';
 
+enum Links {
+  Github = 'https://github.com/nazarkharkevych/react_phone-catalog',
+}
+
 export const Footer: React.FC = () => {
+  const rights = `${Links.Github}/blob/master/LICENSE`;
+
   return (
     <footer
       className="Footer"
@@ -16,7 +22,7 @@ export const Footer: React.FC = () => {
               <a
                 rel="noreferrer"
                 target="_blank"
-                href="https://github.com/nazarkharkevych/react_phone-catalog"
+                href={Links.Github}
               >
                 Github
               </a>
@@ -32,8 +38,7 @@ export const Footer: React.FC = () => {
               <a
                 rel="noreferrer"
                 target="_blank"
-                href={`https://github.com/
-nazarkharkevych/react_phone-catalog/blob/master/LICENSE`}
+                href={rights}
               >
                 Rights
               </a>

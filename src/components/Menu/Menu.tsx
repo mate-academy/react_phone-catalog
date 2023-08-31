@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/control-has-associated-label */
 import { Link } from 'react-router-dom';
 import './Menu.scss';
 import classNames from 'classnames';
@@ -6,15 +5,32 @@ import { useState } from 'react';
 
 export const Menu: React.FC = () => {
   const [isActive, setIsActive] = useState(false);
-  const paths
-    = ['home', 'phones', 'tablets', 'accessories', 'cart', 'favourites'];
+  const body = document.body;
+  const paths = [
+    'home',
+    'phones',
+    'tablets',
+    'accessories',
+    'cart',
+    'favourites'
+  ];
+
+  const handleOpenMenu = () => {
+    setIsActive(true);
+    body.classList.add('with-menu');
+  };
+
+  const handleCloseMenu = () => {
+    setIsActive(false);
+    body.classList.remove('with-menu');
+  };
 
   return (
     <div className="Menu">
       <button
         type="button"
         className="Menu__open"
-        onClick={() => setIsActive(true)}
+        onClick={handleOpenMenu}
       />
 
       <div className={classNames(
@@ -26,14 +42,17 @@ export const Menu: React.FC = () => {
           <button
             type="button"
             className="Menu__close"
-            onClick={() => setIsActive(false)}
+            onClick={handleCloseMenu}
           />
         </div>
 
         <ul className="Menu__list">
           {paths.map(path => (
             <li key={path} className="Menu__item">
-              <Link to={path} onClick={() => setIsActive(false)}>
+              <Link
+                to={path}
+                onClick={handleCloseMenu}
+              >
                 {path[0].toUpperCase() + path.slice(1)}
               </Link>
             </li>

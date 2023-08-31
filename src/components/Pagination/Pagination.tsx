@@ -1,14 +1,18 @@
 import './Pagination.scss';
 import { useMemo } from 'react';
 import classNames from 'classnames';
-import { getNumbers } from '../../helpers/getNumbers';
-import { SearchLink } from '../SearchLink/SearchLink';
+import { getNumbers } from '@/helpers/getNumbers';
+import { SearchLink } from '@/components/SearchLink';
 
 type Props = {
   total: number;
   perPage: number;
   currentPage: number;
 };
+
+enum CurrentPage {
+  First = 1,
+}
 
 export const Pagintaion: React.FC<Props> = ({
   total,
@@ -27,7 +31,7 @@ export const Pagintaion: React.FC<Props> = ({
     <ul className="Pagination" data-cy="pagination">
       <li className={classNames(
         'Pagination__item',
-        { disabled: currentPage === 1 },
+        { disabled: currentPage === CurrentPage.First },
       )}
       >
         <SearchLink

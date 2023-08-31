@@ -1,6 +1,5 @@
 import { NavLink, NavLinkProps } from 'react-router-dom';
 import classNames from 'classnames';
-
 import './NavLinkMain.scss';
 
 type Props = NavLinkProps & {

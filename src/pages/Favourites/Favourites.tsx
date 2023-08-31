@@ -1,14 +1,12 @@
 import { useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import './Favourites.scss';
-import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
-import { ProductsList } from '../../components/ProductsList/ProductsList';
-import { normalizeValue } from '../../helpers/normalizeValue';
-import {
-  NoSearchResults,
-} from '../../components/NoSearchResults/NoSearchResults';
-import { GoBackButton } from '../../components/GoBackButton/GoBackButton';
-import { useAppSelector } from '../../app/hooks';
+import { Breadcrumbs } from '@/components/Breadcrumbs';
+import { ProductsList } from '@/components/ProductsList';
+import { NoSearchResults } from '@/components/NoSearchResults';
+import { GoBackButton } from '@/components/GoBackButton';
+import { useAppSelector } from '@/app/hooks';
+import { normalizeValue } from '@/helpers/normalizeValue';
 
 export const Favourites = () => {
   const favourites = useAppSelector(state => state.favourites);

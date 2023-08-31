@@ -1,30 +1,33 @@
-/* eslint-disable jsx-a11y/control-has-associated-label */
 import './CartItem.scss';
 import { useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import { useAppDispatch } from '../../app/hooks';
+import { useAppDispatch } from '@/app/hooks';
 import {
   CartItemType,
   decreaseQuantity,
   increaseQuantity,
   remove,
-} from '../../features/cart/cartSlice';
-import { calculateDiscount } from '../../helpers/calculateDiscount';
-import { Button } from '../Button/Button';
+} from '@/features/cart/cartSlice';
+import { calculateDiscount } from '@/helpers/calculateDiscount';
+import { Button } from '@/components/Button';
 
 type Props = {
   item: CartItemType;
 };
 
+enum Quantity {
+  One = 1,
+}
+
 export const CartItem: React.FC<Props> = ({ item }) => {
   const dispatch = useAppDispatch();
-
   const {
     id,
     imageUrl,
     name,
     type,
   } = item.product;
+
   const itemPath = `/${type}s/${id}`;
 
   const cartItemPrice = useMemo(() => {
@@ -62,7 +65,7 @@ export const CartItem: React.FC<Props> = ({ item }) => {
             variant="quantity"
             sign="minus"
             aria-label="quantity-decrease"
-            disabled={item.quantity === 1}
+            disabled={item.quantity === Quantity.One}
             onClick={() => dispatch(decreaseQuantity(id))}
           />
 

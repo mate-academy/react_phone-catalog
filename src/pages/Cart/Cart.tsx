@@ -4,12 +4,12 @@ import {
 } from 'react';
 import classNames from 'classnames';
 import './Cart.scss';
-import { Button } from '../../components/Button/Button';
-import { GoBackButton } from '../../components/GoBackButton/GoBackButton';
-import { calculateDiscount } from '../../helpers/calculateDiscount';
-import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
-import { useAppSelector } from '../../app/hooks';
-import { CartItem } from '../../components/CartItem/CartItem';
+import { Button } from '@/components/Button';
+import { GoBackButton } from '@/components/GoBackButton';
+import { calculateDiscount } from '@/helpers/calculateDiscount';
+import { Breadcrumbs } from '@/components/Breadcrumbs';
+import { useAppSelector } from '@/app/hooks';
+import { CartItem } from '@/components/CartItem';
 
 export const Cart = () => {
   const [isActive, setIsActive] = useState(false);

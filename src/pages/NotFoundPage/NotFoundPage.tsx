@@ -1,4 +1,4 @@
-import { GoBackButton } from '../../components/GoBackButton/GoBackButton';
+import { GoBackButton } from '@/components/GoBackButton';
 import './NotFoundPage.scss';
 
 export const NotFoundPage = () => {

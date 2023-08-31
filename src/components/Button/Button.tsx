@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/control-has-associated-label */
 import { ButtonHTMLAttributes } from 'react';
 import classNames from 'classnames';
 import './Button.scss';

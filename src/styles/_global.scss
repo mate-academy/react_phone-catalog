@@ -9,6 +9,10 @@ html {
   scroll-behavior: smooth;
 }
 
+body.with-menu {
+  overflow: hidden;
+}
+
 a {
   display: inline-block;
   vertical-align: middle;

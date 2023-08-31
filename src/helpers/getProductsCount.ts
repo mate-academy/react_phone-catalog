@@ -1,4 +1,4 @@
-import { Product } from '../types/Product';
+import { Product } from '@/types/Product';
 
 export const getProductsCount = (products: Product[], productType: string) => {
   return products.reduce((acc, curr) => {

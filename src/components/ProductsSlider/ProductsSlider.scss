@@ -1,4 +1,4 @@
-@import "../../styles/global-imports";
+@import "@/styles/global-imports";
 
 .ProductsSlider {
   position: relative;
@@ -21,7 +21,7 @@
       display: flex;
       gap: 16px;
 
-      // transition: transform 1s ease;
+      transition: transform 1s ease;
 
       & > li {
         width: 100%;

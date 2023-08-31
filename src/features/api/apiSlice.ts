@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { Product } from '../../types/Product';
-import { ProductDetails } from '../../types/ProductDetails';
+import { Product } from '@/types/Product';
+import { ProductDetails } from '@/types/ProductDetails';
 
 const BASE_URL
   = 'https://mate-academy.github.io/react_phone-catalog/api/products';

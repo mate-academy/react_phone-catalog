@@ -1,27 +1,33 @@
-/* eslint-disable jsx-a11y/control-has-associated-label */
+import './ProductDetailsPage.scss';
 import { useEffect, useMemo, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import classNames from 'classnames';
-import './ProductDetailsPage.scss';
-import { Loader } from '../../components/Loader';
-import { Button } from '../../components/Button/Button';
-import { ProductSlider } from '../../components/ProductsSlider/ProductsSlider';
-import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
-import { GoBackButton } from '../../components/GoBackButton/GoBackButton';
-import { Product } from '../../types/Product';
-import { calculateDiscount } from '../../helpers/calculateDiscount';
-import { isItemIncluded } from '../../helpers/isItemIncluded';
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { add as addToCart } from '../../features/cart/cartSlice';
+
+import { Loader } from '@/components/Loader';
+import { Button } from '@/components/Button';
+import { ProductSlider } from '@/components/ProductsSlider';
+import { Breadcrumbs } from '@/components/Breadcrumbs';
+import { GoBackButton } from '@/components/GoBackButton';
+import { MobileCarousel } from '@/components/MobileCarousel';
+
+import { Product } from '@/types/Product';
+import { calculateDiscount } from '@/helpers/calculateDiscount';
+import { isItemIncluded } from '@/helpers/isItemIncluded';
+import { useAppDispatch, useAppSelector } from '@/app/hooks';
+import { add as addToCart } from '@/features/cart/cartSlice';
 import {
   add as addFavourite,
   remove as removeFavourite,
-} from '../../features/favourites/favouritesSlice';
+} from '@/features/favourites/favouritesSlice';
 import {
   useGetProductDetailsQuery,
   useGetProductsQuery,
-} from '../../features/api/apiSlice';
-import { MobileCarousel } from '../../components/MobileCarousel/MobileCarousel';
+} from '@/features/api/apiSlice';
+
+enum SuggestedProductsRange {
+  From = 4,
+  To = 16,
+}
 
 export const ProductDetailsPage = () => {
   const { data: products = [] } = useGetProductsQuery();
@@ -65,7 +71,10 @@ export const ProductDetailsPage = () => {
   }, [product]);
 
   const suggestedProducts = useMemo(() => {
-    return products.slice(4, 16);
+    return products.slice(
+      SuggestedProductsRange.From,
+      SuggestedProductsRange.To
+    );
   }, [products]);
 
   useEffect(() => {

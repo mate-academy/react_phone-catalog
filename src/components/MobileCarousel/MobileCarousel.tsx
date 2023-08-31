@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useSwipeable } from 'react-swipeable';
 import './MobileCarousel.scss';
+import { CurrentImage } from '@/types/CurrentImage';
 
 type Props = {
   images: string[];
@@ -10,7 +11,7 @@ export const MobileCarousel: React.FC<Props> = ({ images }) => {
   const [currentImage, setCurrentImage] = useState(0);
 
   const handleSlideRight = () => {
-    if (currentImage === images?.length - 1) {
+    if (currentImage === images.length - 1) {
       return;
     }
 
@@ -18,7 +19,7 @@ export const MobileCarousel: React.FC<Props> = ({ images }) => {
   };
 
   const handleSlideLeft = () => {
-    if (currentImage === 0) {
+    if (currentImage === CurrentImage.First) {
       return;
     }
 

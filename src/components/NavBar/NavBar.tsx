@@ -1,6 +1,5 @@
 import './NavBar.scss';
-
-import { NavLinkMain } from '../NavLinkMain/NavLinkMain';
+import { NavLinkMain } from '@/components/NavLinkMain';
 
 export const NavBar = () => {
   return (

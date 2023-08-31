@@ -3,20 +3,18 @@ import classNames from 'classnames';
 import { useSearchParams } from 'react-router-dom';
 import './ProductsPage.scss';
 
-import { ProductsList } from '../../components/ProductsList/ProductsList';
-import { DropdownSelect } from '../../components/DropdownSelect/DropdownSelect';
-import { Pagintaion } from '../../components/Pagination/Pagination';
-import {
-  NoSearchResults,
-} from '../../components/NoSearchResults/NoSearchResults';
+import { ProductsList } from '@/components/ProductsList';
+import { DropdownSelect } from '@/components/DropdownSelect';
+import { Pagintaion } from '@/components/Pagination';
+import { NoSearchResults } from '@/components/NoSearchResults';
+import { Breadcrumbs } from '@/components/Breadcrumbs';
+import { NoResults } from '@/components/NoResults';
+import { Loader } from '@/components/Loader';
 
-import { calculateDiscount } from '../../helpers/calculateDiscount';
-import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
-import { normalizeValue } from '../../helpers/normalizeValue';
-import { NoResults } from '../../components/NoResults/NoResults';
-import { ProductType } from '../../types/ProductType';
-import { useGetProductsQuery } from '../../features/api/apiSlice';
-import { Loader } from '../../components/Loader';
+import { calculateDiscount } from '@/helpers/calculateDiscount';
+import { normalizeValue } from '@/helpers/normalizeValue';
+import { ProductType } from '@/types/ProductType';
+import { useGetProductsQuery } from '@/features/api/apiSlice';
 
 enum SortValue {
   Age = 'age',
@@ -36,6 +34,7 @@ export const ProductsPage: React.FC<Props> = ({ productType }) => {
   const perPage = searchParams.get('perPage') || '';
   const currentPage = +(searchParams.get('page') || '') || 1;
   const query = searchParams.get('query') || '';
+  const minimalItemsCount = 3;
 
   const title = {
     [ProductType.Phone]: 'Mobile phones',
@@ -137,31 +136,31 @@ export const ProductsPage: React.FC<Props> = ({ productType }) => {
         </DropdownSelect>
       </div>
 
-      {!totalItemsCount && query && !isLoading && (
-        <NoSearchResults category={categoryName[productType]} />
-      )}
+      {!totalItemsCount && (
+        query
+          ? <NoSearchResults category={categoryName[productType]} />
+          : !isLoading && <NoResults category={categoryName[productType]} />
+        )}
 
-      {!totalItemsCount && !query && !isLoading && (
-        <NoResults category={categoryName[productType]} />
-      )}
+      {isLoading
+        ? <Loader />
+        : (
+          !!totalItemsCount && (
+            <>
+              <div className="ProductsPage__product-list">
+                <ProductsList items={visibleItems} />
+              </div>
 
-      {isLoading && <Loader />}
-
-      {!!totalItemsCount && !isLoading && (
-        <>
-          <div className="ProductsPage__product-list">
-            <ProductsList items={visibleItems} />
-          </div>
-
-          {totalItemsCount > 3 && (
-            <Pagintaion
-              total={totalItemsCount}
-              perPage={itemsPerPage[perPage]}
-              currentPage={currentPage}
-            />
-          )}
-        </>
-      )}
+              {totalItemsCount > minimalItemsCount && (
+                <Pagintaion
+                  total={totalItemsCount}
+                  perPage={itemsPerPage[perPage]}
+                  currentPage={currentPage}
+                />
+              )}
+            </>
+          )
+        )}
     </div>
   );
 };

@@ -1,34 +1,25 @@
-/* eslint-disable jsx-a11y/control-has-associated-label */
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import './Carousel.scss';
 import { useSwipeable } from 'react-swipeable';
 
-import { Button } from '../Button/Button';
+import { Button } from '@/components/Button';
+import { CarouselImage } from '@/types/CarouselImage';
+import { CurrentImage } from '@/types/CurrentImage';
 
-// import BannerPhone from '../../images/banner-phones.png';
-// import BannerTablets from '../../images/banner-tablets.png';
-// import BannerAccessories from '../../images/banner-accessories.png';
-import BannerPhone from '../../images/banner-phones-mob.jpg';
-import BannerTablets from '../../images/banner-tablets-mob.jpg';
-import BannerAccessories from '../../images/banner-accessories-mob.jpg';
+type Props = {
+  images: CarouselImage[],
+};
 
-enum CurrentImage {
-  First = 0,
-  Last = 2,
-}
-
-export const Carousel = () => {
+export const Carousel: React.FC<Props> = ({ images }) => {
   const [imagesScrolled, setImagesScrolled] = useState(0);
-
-  const scrolledWidth = imagesScrolled * 100;
-  const transform = `translate(-${scrolledWidth}%, 0)`;
+  const transform = `translate(-${imagesScrolled * 100}%, 0)`;
 
   const handleSlideLeft = () => {
     setImagesScrolled(images => {
       if (images === CurrentImage.First) {
-        return 2;
+        return CurrentImage.Last;
       }
 
       return images - 1;
@@ -38,7 +29,7 @@ export const Carousel = () => {
   const handleSlideRight = () => {
     setImagesScrolled(images => {
       if (images === CurrentImage.Last) {
-        return 0;
+        return CurrentImage.First;
       }
 
       return images + 1;
@@ -80,33 +71,23 @@ export const Carousel = () => {
             style={{ transform }}
             {...mobileHandlers}
           >
-            <li>
-              <Link to="/phones" className="Carousel__link">
-                <img
-                  src={BannerPhone}
-                  alt="Phones"
-                  className="Carousel__image"
-                />
-              </Link>
-            </li>
-            <li>
-              <Link to="/tablets" className="Carousel__link">
-                <img
-                  src={BannerTablets}
-                  alt="Tablets"
-                  className="Carousel__image"
-                />
-              </Link>
-            </li>
-            <li>
-              <Link to="/accessories" className="Carousel__link">
-                <img
-                  src={BannerAccessories}
-                  alt="Accessories"
-                  className="Carousel__image"
-                />
-              </Link>
-            </li>
+            {images.map(({ link, alt, images }) => (
+              <li key={alt}>
+                <Link to={link} className="Carousel__link">
+                  <picture>
+                    <source
+                      media="(min-width:901px)"
+                      srcSet={images[0]}
+                    />
+                    <img
+                      src={images[1]}
+                      alt={alt}
+                      className="Carousel__image"
+                    />
+                  </picture>
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
 
@@ -119,33 +100,18 @@ export const Carousel = () => {
       </div>
 
       <div className="Carousel__badges">
-        <button
-          type="button"
-          aria-label="carousel-show-first"
-          className={classNames(
-            'Carousel__badge',
-            { 'Carousel__badge--active': imagesScrolled === 0 },
-          )}
-          onClick={() => setImagesScrolled(0)}
-        />
-        <button
-          type="button"
-          aria-label="carousel-show-second"
-          className={classNames(
-            'Carousel__badge',
-            { 'Carousel__badge--active': imagesScrolled === 1 },
-          )}
-          onClick={() => setImagesScrolled(1)}
-        />
-        <button
-          type="button"
-          aria-label="carousel-show-third"
-          className={classNames(
-            'Carousel__badge',
-            { 'Carousel__badge--active': imagesScrolled === 2 },
-          )}
-          onClick={() => setImagesScrolled(2)}
-        />
+        {[0, 1, 2].map(badgeNumber => (
+          <button
+            key={badgeNumber}
+            type="button"
+            aria-label={`carousel-show-${badgeNumber + 1}-image`}
+            className={classNames(
+              'Carousel__badge',
+              { 'Carousel__badge--active': imagesScrolled === badgeNumber },
+            )}
+            onClick={() => setImagesScrolled(badgeNumber)}
+          />
+        ))}
       </div>
     </div>
   );

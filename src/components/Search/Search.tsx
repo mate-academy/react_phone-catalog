@@ -9,9 +9,9 @@ import {
   useMemo,
   useState,
 } from 'react';
-import { isSearchVisible } from '../../helpers/isSearchVisible';
-import { debounceQuery } from '../../helpers/debounceQuery';
-import { getSearchWith } from '../../helpers/searchHelper';
+import { isSearchVisible } from '@/helpers/isSearchVisible';
+import { debounceQuery } from '@/helpers/debounceQuery';
+import { getSearchWith } from '@/helpers/searchHelper';
 
 export const Search = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -83,7 +83,7 @@ export const Search = () => {
         aria-label="clear-search"
         className={classNames(
           'Search__clear-button',
-          { isActive: query !== '' },
+          { isActive: !!query },
         )}
         onClick={onClearQuery}
       />
