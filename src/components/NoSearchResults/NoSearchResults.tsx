@@ -16,6 +16,10 @@ export const NoSearchResults = () => {
     });
   };
 
+  const handleClick = () => {
+    resetSearchQuery();
+  };
+
   return (
     <div className="NoSearchResults">
       <h1 className="NoSearchResults__title">Oops!</h1>
@@ -26,9 +30,7 @@ export const NoSearchResults = () => {
       <button
         type="button"
         className="NoSearchResults__button"
-        onClick={() => {
-          resetSearchQuery();
-        }}
+        onClick={handleClick}
       >
         Reset your search
       </button>

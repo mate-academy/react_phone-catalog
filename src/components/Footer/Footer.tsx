@@ -27,10 +27,8 @@ export const Footer = () => {
   }
 
   useEffect(() => {
-    // check if page has scroll after the first render
     checkIfPageHasScroll();
 
-    // subscribing to resize event to check if scroll appears after resizing
     window.addEventListener('resize', checkIfPageHasScroll);
 
     return () => {
@@ -43,7 +41,6 @@ export const Footer = () => {
     setHasVerticalScroll(document.body.scrollHeight > window.innerHeight);
   }, [pathname]);
 
-  // Showing "back to top" button on page scroll is a good insurance
   window.addEventListener('scroll', checkIfPageHasScroll);
 
   const handleClick = () => {
