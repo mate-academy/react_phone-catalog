@@ -13,6 +13,9 @@ import { useGetProductsQuery } from '@/features/api/apiSlice';
 import phones from '@/images/category-phones.png';
 import tablets from '@/images/category-tablets.png';
 import accessories from '@/images/category-accessories.png';
+import BannerPhones from '@/images/banner-phones.png';
+import BannerTablets from '@/images/banner-tablets.png';
+import BannerAccessories from '@/images/banner-accessories.png';
 import BannerPhoneMobile from '@/images/banner-phones-mob.jpg';
 import BannerTabletsMobile from '@/images/banner-tablets-mob.jpg';
 import BannerAccessoriesMobile from '@/images/banner-accessories-mob.jpg';
@@ -23,17 +26,17 @@ export const HomePage = () => {
     {
       link: '/phones',
       alt: 'Phones',
-      images: ['_new/img/banner-phones.png', BannerPhoneMobile],
+      images: [BannerPhones, BannerPhoneMobile],
     },
     {
       link: '/tablets',
       alt: 'Tablets',
-      images: ['_new/img/banner-tablets.png', BannerTabletsMobile],
+      images: [BannerTablets, BannerTabletsMobile],
     },
     {
       link: '/accessories',
       alt: 'Accessories',
-      images: ['_new/img/banner-accessories.png', BannerAccessoriesMobile],
+      images: [BannerAccessories, BannerAccessoriesMobile],
     },
   ];
 
