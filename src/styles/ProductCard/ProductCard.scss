@@ -1,7 +1,7 @@
 .card {
   width: 272px;
   box-sizing: border-box;
-  padding: 32px 24px 24px;
+  padding: 32px 27px 24px;
   border: 1px solid #{$elements-color};
 
   &__image {
@@ -87,6 +87,8 @@
     color: #fff;
     border: none;
 
+    transition: 0.2s ease;
+
     &:hover {
       box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
     }
@@ -106,6 +108,8 @@
     border: 1px solid #{$icons-placeholders-color};
     background: center no-repeat url("../../images/favourites-icon.svg");
     background-color: #fff;
+
+    transition: 0.4s ease;
 
     &:hover {
       border-color: #{$primary-color};

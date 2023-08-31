@@ -19,7 +19,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
       <p className="card__title">{name}</p>
 
-      <p className="card__price">{`&${price}`}</p>
+      <p className="card__price">{`$${price}`}</p>
 
       <div className="card__info-container">
         <div className="card__info-titles">
