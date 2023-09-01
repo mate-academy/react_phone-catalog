@@ -70,7 +70,7 @@ export const BannerSlider = () => {
               <img
                 className="banner-slider__img"
                 alt={image[0]}
-                src={image[1]}
+                src={`./${image[1]}`}
               />
             </div>
           ))}

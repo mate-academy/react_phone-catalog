@@ -25,7 +25,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       <img
         className="product-card__img"
         alt={name}
-        src={`${imageUrl}`}
+        src={`./${imageUrl}`}
       />
       <h3 className="product-card__name">{name}</h3>
       <div className="product-card__price-block">
@@ -47,7 +47,6 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
         <IconButton type={IconButtonType.fav} />
       </div>
-
     </div>
   );
 };
