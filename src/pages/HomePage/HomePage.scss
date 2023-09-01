@@ -4,4 +4,18 @@
   display: flex;
   flex-direction: column;
   padding-top: 40px;
+
+  &__banner-container {
+    margin-top: 40px;
+    margin-bottom: 72px;
+  }
+
+  &__hot-prices-container {
+    margin-top: 80px;
+    margin-bottom: 80px;
+  }
+
+  &__brand-new-container {
+    margin-bottom: 80px;
+  }
 }

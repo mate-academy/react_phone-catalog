@@ -20,19 +20,25 @@ export const HomePage = () => {
   return (
     <div className="home">
       <Wrapper>
-        <BannerSlider />
+        <div className="home__banner-container">
+          <BannerSlider />
+        </div>
 
         <Categories />
 
-        <ProductsSlider
-          products={products}
-          title="hot prices"
-        />
+        <div className="home__hot-prices-container">
+          <ProductsSlider
+            products={products}
+            title="hot prices"
+          />
+        </div>
 
-        <ProductsSlider
-          products={products}
-          title="brand new models"
-        />
+        <div className="home__brand-new-container">
+          <ProductsSlider
+            products={products}
+            title="brand new models"
+          />
+        </div>
       </Wrapper>
     </div>
   );
