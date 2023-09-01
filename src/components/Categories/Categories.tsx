@@ -2,7 +2,7 @@ import './Categories.scss';
 import { CategoryItem } from './components/CategoryItem';
 
 const categories = {
-  phones: '_new/img/category-phones.png',
+  phones: '/_new/img/category-phones.png',
   tablets: '/img/category-tablets.png',
   accessories: '/img/category-accessories.png',
 };
