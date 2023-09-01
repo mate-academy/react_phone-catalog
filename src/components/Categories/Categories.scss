@@ -1,0 +1,18 @@
+@import "/src/style/main.scss";
+
+.categories {
+  display: flex;
+  flex-direction: column;
+
+  &__list {
+    display: flex;
+    align-items: center;
+  }
+
+  &__img {
+    width: 368px;
+    height: 368px;
+    object-fit: cover;
+    object-position: left top;
+  }
+}

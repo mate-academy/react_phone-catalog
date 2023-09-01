@@ -3,6 +3,7 @@ import './HomePage.scss';
 import { getProducts } from '../../api/products';
 import {
   BannerSlider,
+  Categories,
   ProductsSlider,
   Wrapper,
 } from '../../components';
@@ -21,9 +22,17 @@ export const HomePage = () => {
       <Wrapper>
         <BannerSlider />
 
+        <Categories />
+
         <ProductsSlider
           products={products}
           title="hot prices"
+        />
+
+        <ProductsSlider
+          products={products}
+          title="brand new models"
+
         />
       </Wrapper>
     </div>

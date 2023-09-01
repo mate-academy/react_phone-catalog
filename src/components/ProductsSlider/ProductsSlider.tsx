@@ -21,7 +21,10 @@ export const ProductsSlider: React.FC<Props> = ({ products, title }) => {
   };
 
   return (
-    <div className="products-slider">
+    <div
+      className="products-slider"
+      data-cy="cardsContainer"
+    >
       <div className="products-slider__upper">
         <h2 className="products-slider__title">{title}</h2>
         <div className="products-slider__buttons">

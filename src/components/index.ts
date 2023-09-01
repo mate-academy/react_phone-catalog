@@ -5,3 +5,4 @@ export { Header } from './Header';
 export { Wrapper } from './Wrapper';
 export { BannerSlider } from './BannerSlider';
 export { ProductsSlider } from './ProductsSlider';
+export { Categories } from './Categories';
