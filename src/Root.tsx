@@ -12,7 +12,7 @@ import { NotFoundPage } from './pages/NotFoundPage';
 
 export const Root = () => (
   <Routes>
-    <Route path="/" element={<App />}>
+    <Route path="/react_phone-catalog/" element={<App />}>
       <Route index element={<HomePage />} />
 
       <Route path="phones">
