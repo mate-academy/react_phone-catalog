@@ -1,7 +1,8 @@
+import '../../styles/ProductSlider/ProductSlider.scss';
 import { useState } from 'react';
-import classNames from 'classnames';
 import { Product } from '../../types/product';
 import { ProductCard } from '../ProductCard';
+import { Button } from '../Button';
 
 type Props = {
   title: string;
@@ -33,34 +34,18 @@ export const ProductSlider: React.FC<Props> = ({
         <h2 className="product-slider__title">{title}</h2>
 
         <div className="product-slider__buttons">
-          <button
-            type="button"
-            className={classNames(
-              'product-slider__button',
-              'product-slider__button--left',
-              {
-                disabled: page === 0,
-              },
-            )}
-            onClick={handleSlideLeft}
+          <Button
+            content="arrow"
+            arrowDirection="left"
             disabled={page === 0}
-          >
-            &lt;
-          </button>
-          <button
-            type="button"
-            className={classNames(
-              'product-slider__button',
-              'product-slider__button--right',
-              {
-                disabled: page === pages,
-              },
-            )}
-            onClick={handleSlideRight}
+            onClick={handleSlideLeft}
+          />
+          <Button
+            content="arrow"
+            arrowDirection="right"
             disabled={page === pages}
-          >
-            &gt;
-          </button>
+            onClick={handleSlideRight}
+          />
         </div>
       </div>
 

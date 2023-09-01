@@ -1,0 +1,38 @@
+@import "../utils/variables.scss";
+@import "../utils/mixins.scss";
+
+.banner {
+  position: relative;
+  width: 1136px;
+
+  &__carousel-container {
+    position: relative;
+    height: 400px;
+    display: flex;
+    gap: 16px;
+  }
+
+  &__image {
+    width: 1040px;
+    height: 400px;
+    object-fit: cover;
+  }
+
+  &__badges {
+    margin-top: 18px;
+    display: flex;
+    justify-content: center;
+    gap: 19px;
+  }
+
+  &__badge {
+    width: 9px;
+    height: 4px;
+    border: none;
+    background-color: #{$elements-color};
+
+    &.active {
+      background-color: #{$primary-color};
+    }
+  }
+}

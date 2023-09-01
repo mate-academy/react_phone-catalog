@@ -1,3 +1,6 @@
+@import "../utils/variables.scss";
+@import "../utils/mixins.scss";
+
 .product-slider {
   width: 1136px;
   overflow: hidden;
@@ -15,31 +18,11 @@
   }
 
   &__buttons {
+    position: relative;
+    height: 32px;
+    width: 80px;
     display: flex;
     gap: 16px;
-  }
-
-  &__button {
-    width: 32px;
-    height: 32px;
-    border: 1px solid #{$icons-placeholders-color};
-    background: center no-repeat url("../../images/arrow-right.svg") #fff;
-    text-indent: -99999px;
-    cursor: pointer;
-
-    &:hover {
-      border-color: #{$primary-color};
-    }
-
-    &--left {
-      transform: rotate(180deg);
-    }
-
-    &.disabled {
-      background-image: url("../../images/arrow-right-disabled.svg");
-      border-color: #{$elements-color};
-      cursor: default;
-    }
   }
 
   &__card-container {

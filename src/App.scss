@@ -1,9 +1,6 @@
 @import "./styles/utils/variables.scss";
 @import "./styles/utils/mixins.scss";
-@import "./styles/ProductCard/ProductCard.scss";
-@import "./styles/NavBarItem/NavBarItem.scss";
-@import "./styles/Header/Header.scss";
-@import "./styles/ProductSlider/ProductSlider.scss";
+@import "~bootstrap/scss/bootstrap";
 
 body {
   margin: 0;

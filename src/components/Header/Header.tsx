@@ -1,3 +1,4 @@
+import '../../styles/Header/Header.scss';
 import logo from '../../images/logo.svg';
 import { NavBarItem } from '../NavBarItem';
 
