@@ -7,6 +7,10 @@ const categories = {
   accessories: '/img/category-accessories.png',
 };
 
+const hiphop = process.env.PUBLIC_URL + categories.phones;
+
+console.log('hh', hiphop);
+
 const categoriesArray = Object.entries(categories);
 
 export const Categories = () => {
@@ -20,7 +24,7 @@ export const Categories = () => {
         {categoriesArray.map(category => (
           <CategoryItem
             category={category[0]}
-            link={category[1]}
+            link={process.env.PUBLIC_URL + category[1]}
           />
         ))}
       </div>
