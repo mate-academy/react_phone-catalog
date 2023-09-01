@@ -3,8 +3,8 @@ import { CategoryItem } from './components/CategoryItem';
 
 const categories = {
   phones: '/_new/img/category-phones.png',
-  tablets: '/img/category-tablets.png',
-  accessories: '/img/category-accessories.png',
+  tablets: '/_new/img/category-tablets.png',
+  accessories: '/_new/img/category-accessories.png',
 };
 
 const categoriesArray = Object.entries(categories);
@@ -19,8 +19,9 @@ export const Categories = () => {
       <div className="categories__list">
         {categoriesArray.map(category => (
           <CategoryItem
+            key={category[0]}
             category={category[0]}
-            link={process.env.PUBLIC_URL + category[1]}
+            link={category[1]}
           />
         ))}
       </div>

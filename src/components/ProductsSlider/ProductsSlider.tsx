@@ -46,7 +46,10 @@ export const ProductsSlider: React.FC<Props> = ({ products, title }) => {
         className="products-slider__list"
       >
         {products.slice(start, end).map(prod => (
-          <ProductCard product={prod} />
+          <ProductCard
+            product={prod}
+            key={prod.id}
+          />
         ))}
       </div>
 

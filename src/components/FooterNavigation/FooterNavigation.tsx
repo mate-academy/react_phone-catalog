@@ -10,6 +10,7 @@ export const FooterNavigation = () => {
   const linksRender = () => {
     return Object.entries(links).map(link => (
       <a
+        key={link[0]}
         className="footer-nav__link"
         href={link[1]}
         target="_blank"
