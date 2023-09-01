@@ -1,10 +1,8 @@
 import './Categories.scss';
 import { CategoryItem } from './components/CategoryItem';
 
-const API_URL = 'https://mate-academy.github.io/react_phone-catalog/_new/';
-
 const categories = {
-  phones: '/img/category-phones.png',
+  phones: '_new/img/category-phones.png',
   tablets: '/img/category-tablets.png',
   accessories: '/img/category-accessories.png',
 };
@@ -22,7 +20,7 @@ export const Categories = () => {
         {categoriesArray.map(category => (
           <CategoryItem
             category={category[0]}
-            link={`${API_URL}${category[1]}`}
+            link={category[1]}
           />
         ))}
       </div>

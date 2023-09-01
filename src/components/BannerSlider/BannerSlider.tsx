@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import './BannerSlider.scss';
 import { SideButton, Dots } from './components';
 import { Direction } from '../../types/enums/Direction';
@@ -14,6 +14,8 @@ const IMAGE_CHANGE_INTERVAL = 5000;
 export const BannerSlider = () => {
   const [position, setPosition] = useState<Direction | number>(0);
   const [currentSlideIndex, setCurrentSlide] = useState(0);
+
+  const imgContainerRef = useRef(null);
 
   const imagesEntries = Object.entries(images);
 
@@ -57,7 +59,10 @@ export const BannerSlider = () => {
           handleSlide={handleSlide}
         />
 
-        <div className="banner-slider__img-container">
+        <div
+          className="banner-slider__img-container"
+          ref={imgContainerRef}
+        >
           {imagesEntries.map(image => (
             <div
               key={image[0]}

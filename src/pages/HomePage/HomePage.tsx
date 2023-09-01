@@ -32,7 +32,6 @@ export const HomePage = () => {
         <ProductsSlider
           products={products}
           title="brand new models"
-
         />
       </Wrapper>
     </div>
