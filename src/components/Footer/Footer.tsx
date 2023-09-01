@@ -59,14 +59,8 @@ export const Footer = () => {
           </div>
 
           <ul className="footer__list">
-            <li className="footer__item">
-              <button
-                type="button"
-                className="titles__link titles__link--back-to"
-                onClick={() => setScroll(!scroll)}
-              >
-                Back to top
-              </button>
+            <li className="footer__back-to">
+              Back to top
             </li>
 
             <li className="footer__item">

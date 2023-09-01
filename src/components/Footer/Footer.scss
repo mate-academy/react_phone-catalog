@@ -3,6 +3,16 @@
 .footer {
   border-top: 1px solid $elements-color;
 
+  &__back-to {
+    padding: 41px 0;
+    font-family: Mont-Bold, sans-serif;
+    line-height: 12px;
+    color: $secondary-color;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: color 0.35s ease;
+  }
+
   &__container {
     display: flex;
     justify-content: space-between;
@@ -26,3 +36,4 @@
     transition: all 0.35s ease;
   }
 }
+
