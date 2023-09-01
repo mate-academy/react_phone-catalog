@@ -7,10 +7,6 @@ const categories = {
   accessories: '/img/category-accessories.png',
 };
 
-const hiphop = process.env.PUBLIC_URL + categories.phones;
-
-console.log('hh', hiphop);
-
 const categoriesArray = Object.entries(categories);
 
 export const Categories = () => {
