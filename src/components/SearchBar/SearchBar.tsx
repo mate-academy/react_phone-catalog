@@ -6,7 +6,7 @@ import React, {
 import { useLocation, useNavigate } from 'react-router-dom';
 import debounce from 'lodash/debounce';
 import classNames from 'classnames';
-import { generatePlaceHolderText, MAX_SEARCH_CHARS } from './utils';
+import { generatePlaceHolderText } from './utils';
 
 import './SearchBar.scss';
 
@@ -48,10 +48,6 @@ export const SearchBar = () => {
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newQuery = e.target.value.trimStart();
-
-    if (newQuery.length >= MAX_SEARCH_CHARS) {
-      return;
-    }
 
     setSearchQuery(newQuery);
     applyQuery(newQuery, pathname, searchParams);

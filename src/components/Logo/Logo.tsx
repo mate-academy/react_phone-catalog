@@ -6,7 +6,7 @@ export const Logo = () => (
   <Link to="/" className="Logo">
     <img
       className="Logo__img"
-      src="../public/Logo.svg"
+      src="./Logo.svg"
       alt="logo"
     />
   </Link>

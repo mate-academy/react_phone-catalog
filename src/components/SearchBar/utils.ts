@@ -1,5 +1,3 @@
-export const MAX_SEARCH_CHARS = 10;
-
 export const generatePlaceHolderText = (pathname: string) => {
   switch (pathname) {
     case '/phones':

@@ -14,7 +14,7 @@ type Props = {
   isRandom?: boolean;
 };
 
-export const ProductCard: React.FC<Props> = ({ product, isRandom = false }) => {
+export const ProductCard: React.FC<Props> = ({ product }) => {
   const {
     imageUrl,
     name,
@@ -42,7 +42,8 @@ export const ProductCard: React.FC<Props> = ({ product, isRandom = false }) => {
       <div className="ProductCard__img-container">
         <Link to={slug} onClick={handleClick}>
           <img
-            src={isRandom ? `../${imageUrl}` : imageUrl}
+            // src={isRandom ? `../${imageUrl}` : imageUrl}
+            src={imageUrl}
             alt={name}
             className="ProductCard__img"
           />
