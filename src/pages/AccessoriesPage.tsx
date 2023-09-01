@@ -2,9 +2,10 @@ import { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { ProductsList } from '../components/ProductsList/ProductsList';
 import { useProducts } from '../context/ProductContext';
-import { getPhones } from '../utils/getProducts';
+import { getAccessories } from '../utils/getProducts';
+import { NoResults } from '../components/NoResults/NoResults';
 
-export const PhonesPage = () => {
+export const AccessoriesPage = () => {
   const { pathname } = useLocation();
   const { products } = useProducts();
 
@@ -12,8 +13,8 @@ export const PhonesPage = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  const phones = getPhones(products);
-  const title = 'Mobile phones';
+  const accessories = getAccessories(products);
+  const title = 'Accessories';
 
   return (
     <div className="container">
@@ -26,7 +27,12 @@ export const PhonesPage = () => {
           {pathname.slice(1, 2).toUpperCase() + pathname.slice(2)}
         </span>
       </div>
-      <ProductsList products={phones} title={title} />
+
+      {accessories.length === 0 ? (
+        <NoResults />
+      ) : (
+        <ProductsList products={accessories} title={title} />
+      )}
     </div>
   );
 };

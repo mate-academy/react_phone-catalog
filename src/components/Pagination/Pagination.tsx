@@ -47,7 +47,7 @@ export const Pagination: React.FC<Props> = ({
           <a
             data-cy="paginationLeft"
             className="pagination__btn"
-            href="#prev"
+            href={`#${+currentPage}`}
             aria-disabled="true"
             onClick={handleClickLeft}
           >
@@ -88,7 +88,7 @@ export const Pagination: React.FC<Props> = ({
           <a
             data-cy="paginationRight"
             className="pagination__btn"
-            href="#next"
+            href={`#${+currentPage}`}
             aria-disabled="false"
             onClick={handleClickRight}
           >

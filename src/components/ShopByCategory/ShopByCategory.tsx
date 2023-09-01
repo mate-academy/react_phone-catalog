@@ -1,10 +1,12 @@
 import { Link } from 'react-router-dom';
 import { useProducts } from '../../context/ProductContext';
-import { getPhones } from '../ProductsList/ProductsList';
+import { getAccessories, getPhones, getTablets } from '../../utils/getProducts';
 
 export const ShopByCategory = () => {
   const { products } = useProducts();
   const phones = getPhones(products);
+  const tablets = getTablets(products);
+  const accessories = getAccessories(products);
   const data = [
     {
       img: 'phones.png',
@@ -14,12 +16,12 @@ export const ShopByCategory = () => {
     {
       img: 'tablets.png',
       title: 'Tablets',
-      quantity: '24 models',
+      quantity: `${tablets.length} models`,
     },
     {
       img: 'accessories.png',
       title: 'Accessories',
-      quantity: '100 models',
+      quantity: `${accessories.length} models`,
     },
   ];
 

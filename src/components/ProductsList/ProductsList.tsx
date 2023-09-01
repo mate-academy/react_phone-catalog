@@ -1,77 +1,85 @@
 /* eslint-disable max-len */
 import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
-import { useProducts } from '../../context/ProductContext';
-import { Product } from '../../types/Product';
+import { useSearchParams } from 'react-router-dom';
 import { Loader } from '../Loader/Loader';
 import { ProductCard } from '../ProductCard/ProductCard';
 import { sortingProducts } from '../../utils/sortingProducts';
 import { SortType } from '../../types/sortType';
-import { Pagination } from '../Pagination/Pagination';
 import { Selector } from '../Selector/Selector';
-
-export const getPhones = (prods: Product[]) => {
-  const phones = prods.filter(p => p.type === 'phone');
-
-  return phones;
-};
+import { Pagination } from '../Pagination/Pagination';
+import { getSearchWith } from '../../utils/getSearchWith';
+import { Product } from '../../types/Product';
 
 const sortSortBy = ['Newest', 'Alphabetically', 'Cheapest'];
-const sortValues = ['age', 'name', 'price'];
-const itemsPerPage = ['4', '8', '16', 'all'];
+const sortingValues = ['age', 'name', 'price'];
+const itemsOnPageARR = ['4', '8', '16', 'all'];
 const labels = ['Sort by', 'Items on page'];
 
-export const ProductsList = () => {
-  const { products } = useProducts();
-  const location = useLocation();
-  const queryParams = new URLSearchParams(location.search);
-  const initialSort = queryParams.get('sort') || 'age';
+type Props = {
+  products: Product[];
+  title: string;
+};
+
+type SearchParams = {
+  sort?: string;
+  perPage?: string;
+  page?: string;
+};
+
+export const ProductsList: React.FC<Props> = ({ products, title }) => {
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const sort = searchParams.get('sort') || 'age';
+  const itemsPerPage = searchParams.get('perPage') || '8';
+  const page = parseInt(searchParams.get('page') || '1', 10);
+
+  function setSearchWith(params: SearchParams) {
+    const search = getSearchWith(params, searchParams);
+
+    setSearchParams(search);
+  }
 
   const [isLoading, setLoading] = useState(true);
-  const [sortBy, setSortBy] = useState(initialSort);
-  const [perPage, setPerPage] = useState('8');
-  const [currentPage, setCurrentPage] = useState(1);
+  const [sortBy, setSortBy] = useState(sort);
+  const [itemsOnPage, setItemsOnPage] = useState(itemsPerPage);
+  const [currentPage, setCurrentPage] = useState(page);
 
-  const phones = getPhones(products);
-  const sortedPhones = sortingProducts(phones, sortBy);
+  const sortedProducts = sortingProducts(products, sortBy);
 
-  const handleSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+  const handleSort = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedSort = event.target.value as SortType;
 
     setSortBy(selectedSort);
-    queryParams.set('sort', selectedSort);
-    window.history.replaceState({}, '', `${window.location.pathname}?${queryParams}`);
+    setSearchWith({ sort: event.target.value || undefined });
   };
 
   const handlePerPage = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    if (event.target.value === 'all') {
-      setPerPage(sortedPhones.length.toString());
+    const perPageValue = event.target.value;
+
+    if (perPageValue === 'all') {
+      setItemsOnPage(sortedProducts.length.toString());
     } else {
-      setPerPage(event.target.value);
+      setItemsOnPage(perPageValue);
     }
 
     setCurrentPage(1);
+    setSearchWith({ perPage: event.target.value || undefined });
   };
 
-  const handleCurrentPage = (page: number) => {
-    if (currentPage !== page) {
-      setCurrentPage(page);
+  const handleCurrentPage = (currPage: number) => {
+    if (currentPage !== currPage) {
+      setCurrentPage(currPage);
     }
+
+    setSearchWith({ page: currPage.toString() || undefined });
   };
 
-  useEffect(() => {
-    setSortBy(initialSort);
-  }, [location.search]);
+  const startItem = ((currentPage - 1) * +itemsOnPage);
+  const endItem = (currentPage * +itemsOnPage) > sortedProducts.length
+    ? sortedProducts.length
+    : startItem + +itemsOnPage;
 
-  // console.log('location', location);
-  // console.log('location.search', location.search);
-
-  const startItem = ((currentPage - 1) * +perPage);
-  const endItem = (currentPage * +perPage) > sortedPhones.length
-    ? sortedPhones.length
-    : startItem + perPage;
-
-  const arrOfPerPageItems = sortedPhones.slice(startItem, +endItem);
+  const arrOfSortedItems = sortedProducts.slice(startItem, +endItem);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -86,42 +94,42 @@ export const ProductsList = () => {
       {isLoading ? <Loader /> : (
         <div className="productsList" data-cy="productList">
           <h2 className="productsList__title">
-            Mobile phones
+            {title}
           </h2>
-          <p className="productsList__subtitle">{`${phones.length} models`}</p>
+          <p className="productsList__subtitle">{`${products.length} models`}</p>
 
           <div className="productsList__sort">
             <div className="productsList__sortBy">
               <Selector
                 sortBy={sortBy}
                 label={labels[0]}
-                handleChange={handleSortChange}
+                handleChange={handleSort}
                 sortKeys={sortSortBy}
-                sortValues={sortValues}
+                sortValues={sortingValues}
               />
             </div>
 
             <div className="productsList__perPage">
               <Selector
-                sortBy={perPage}
+                sortBy={itemsOnPage}
                 label={labels[1]}
                 handleChange={(event) => handlePerPage(event)}
-                sortKeys={itemsPerPage}
-                sortValues={itemsPerPage}
+                sortKeys={itemsOnPageARR}
+                sortValues={itemsOnPageARR}
               />
             </div>
           </div>
 
           <div className="productsList__cards">
-            {arrOfPerPageItems.map(phone => (
+            {arrOfSortedItems.map(phone => (
               <div className="productsList__card" key={phone.id}>
                 <ProductCard product={phone} />
               </div>
             ))}
           </div>
           <Pagination
-            total={sortedPhones.length}
-            perPage={perPage}
+            total={sortedProducts.length}
+            perPage={itemsOnPage}
             currentPage={currentPage}
             onPageChange={handleCurrentPage}
           />

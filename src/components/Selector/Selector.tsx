@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 type Props = {
-  sortBy: string | number;
+  sortBy: string;
   label: string;
   handleChange: React.Dispatch<React.ChangeEvent<HTMLSelectElement>>;
   sortKeys: string[];

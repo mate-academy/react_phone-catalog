@@ -4,6 +4,8 @@ import { Footer } from './components/Footer/Footer';
 import { NavBar } from './components/NavBar/NavBar';
 import { HomePage } from './pages/HomePage';
 import { PhonesPage } from './pages/PhonesPage';
+import { TabletsPage } from './pages/TabletsPage';
+import { AccessoriesPage } from './pages/AccessoriesPage';
 
 const App = () => (
   <div className="App">
@@ -18,6 +20,8 @@ const App = () => (
         <Route path="/home" element={<Navigate to="/" replace />} />
 
         <Route path="/phones" element={<PhonesPage />} />
+        <Route path="tablets" element={<TabletsPage />} />
+        <Route path="accessories" element={<AccessoriesPage />} />
       </Routes>
     </main>
 

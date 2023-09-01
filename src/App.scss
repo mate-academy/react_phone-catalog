@@ -53,6 +53,13 @@ iframe {
       background-size: cover;
     }
   }
+
+  &__text {
+    color: $gray-secondary;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: normal;
+  }
 }
 
 .container {
@@ -71,4 +78,10 @@ iframe {
 
 .main {
   min-height: 100vh;
+}
+
+.noResults {
+  font-size: 32px;
+  letter-spacing: 0.32px;
+  font-weight: 600;
 }
