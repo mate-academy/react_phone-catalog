@@ -6,6 +6,13 @@ import { Wrapper } from '../Wrapper';
 import { IconButtonType } from '../../types/enums/IconButtonType';
 
 export const Footer = () => {
+  const handleBackToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
   return (
     <footer className="footer">
       <Wrapper>
@@ -21,12 +28,14 @@ export const Footer = () => {
 
           <div className="footer__button-box">
             <span className="footer__button-title">back to top</span>
-            <IconButton type={IconButtonType.arrowUp} />
+            <IconButton
+              type={IconButtonType.arrowUp}
+              handler={handleBackToTop}
+            />
           </div>
         </div>
 
       </Wrapper>
-
     </footer>
   );
 };
