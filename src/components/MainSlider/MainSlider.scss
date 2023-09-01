@@ -11,6 +11,10 @@
   justify-content: center;
   gap: 16px;
 
+  &__image {
+    object-fit: cover;
+  }
+
   &__container {
     display: flex;
     height: 400px;
@@ -24,14 +28,6 @@
       height: 400px;
       position: absolute;
       transition: all 1s ease;
-    }
-
-    &-image {
-      width: 1040px;
-      height: 400px;
-      background-position: center;
-      background-size: cover;
-      background-repeat: no-repeat;
     }
   }
 

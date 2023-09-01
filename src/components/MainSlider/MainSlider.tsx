@@ -87,12 +87,15 @@ export const MainSlider = () => {
             }}
           >
             {IMAGES.map(slideImg => (
-              <Link
-                to={slideImg.to}
-                key={slideImg.img}
-                className="slider__container-image"
-                style={{ backgroundImage: `url(${slideImg.img})` }}
-              />
+              <Link to={slideImg.to} key={slideImg.img}>
+                <img
+                  src={slideImg.img}
+                  alt="category of products"
+                  width={1040}
+                  height={400}
+                  className="slider__image"
+                />
+              </Link>
             ))}
           </ul>
         </div>
