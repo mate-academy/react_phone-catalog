@@ -50,7 +50,6 @@ export const ImagesSection: React.FC<Props> = ({
                 'ProductDetails__image-button',
                 { 'ProductDetails__image-button--selected': isSelected },
               )}
-              // style={{ backgroundImage: `url(../${path})` }}
               style={{ backgroundImage: `url(${path})` }}
               onClick={handleImgSelect(path)}
             >
@@ -73,7 +72,6 @@ export const ImagesSection: React.FC<Props> = ({
       </div>
       <div
         className="ProductDetails__image ProductDetails__selected-image"
-        // style={{ backgroundImage: `url(../${selectedImage})` }}
         style={{ backgroundImage: `url(${selectedImage})` }}
       >
         {' '}

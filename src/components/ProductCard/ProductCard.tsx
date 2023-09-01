@@ -11,7 +11,6 @@ import './ProductCard.scss';
 
 type Props = {
   product: Product;
-  isRandom?: boolean;
 };
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
@@ -42,7 +41,6 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       <div className="ProductCard__img-container">
         <Link to={slug} onClick={handleClick}>
           <img
-            // src={isRandom ? `../${imageUrl}` : imageUrl}
             src={imageUrl}
             alt={name}
             className="ProductCard__img"

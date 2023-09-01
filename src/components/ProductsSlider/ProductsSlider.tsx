@@ -34,7 +34,6 @@ export const ProductsSlider: React.FC<Props> = ({
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState('');
-  const isRandom = filter === 'random';
 
   const [lastVisibleCard, setLastVisibleCard] = useState(cardsPerPage);
   const totalCards = products.length;
@@ -109,10 +108,7 @@ export const ProductsSlider: React.FC<Props> = ({
           >
             {products.map(product => (
               <div key={product.id} style={styles}>
-                <ProductCard
-                  product={product}
-                  isRandom={isRandom}
-                />
+                <ProductCard product={product} />
               </div>
             ))}
           </div>
