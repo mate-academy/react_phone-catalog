@@ -12,8 +12,6 @@ import { NotFoundPage } from './pages/NotFoundPage';
 
 export const Root = () => (
   <Routes>
-    <Route path="*" element={<NotFoundPage />} />
-
     <Route path="/" element={<App />}>
       <Route index element={<HomePage />} />
 
@@ -34,6 +32,8 @@ export const Root = () => (
 
       <Route path="favourites" element={<FavouritesPage />} />
       <Route path="cart" element={<CartPage />} />
+
+      <Route path="*" element={<NotFoundPage />} />
     </Route>
   </Routes>
 );
