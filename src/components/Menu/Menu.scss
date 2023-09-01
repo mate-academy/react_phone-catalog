@@ -66,6 +66,11 @@
     text-transform: uppercase;
     text-align: center;
 
+    &:nth-last-child(-n + 2) {
+      display: flex;
+      justify-content: center;
+    }
+
     &:active {
       background-color: $c-background;
     }

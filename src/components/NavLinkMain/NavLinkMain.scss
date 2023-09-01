@@ -32,21 +32,8 @@
     padding: 27px 0 26px;
   }
 
-  &--cart,
-  &--favourite {
-    min-width: 64px;
-    min-height: 64px;
-
+  &--icon {
     box-shadow: -1px 0 0 0 $c-elements;
     -webkit-box-shadow: -1px 0 0 0 $c-elements;
-    background: no-repeat center;
-  }
-
-  &--favourite {
-    background-image: url("../../images/icons/Favourites.svg");
-  }
-
-  &--cart {
-    background-image: url("../../images/icons/Cart.svg");
   }
 }

@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import './NavLinkMain.scss';
 
 type Props = NavLinkProps & {
-  type: 'text' | 'cart' | 'favourite';
+  type: 'text' | 'icon';
 };
 
 export const NavLinkMain: React.FC<Props> = ({

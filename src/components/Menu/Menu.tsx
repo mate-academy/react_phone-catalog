@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import './Menu.scss';
 import classNames from 'classnames';
 import { useState } from 'react';
+import { IconWithCounter } from '../IconWithCounter';
 
 export const Menu: React.FC = () => {
   const [isActive, setIsActive] = useState(false);
@@ -11,8 +12,8 @@ export const Menu: React.FC = () => {
     'phones',
     'tablets',
     'accessories',
-    'cart',
-    'favourites'
+    'favourites',
+    'cart'
   ];
 
   const handleOpenMenu = () => {
@@ -55,6 +56,9 @@ export const Menu: React.FC = () => {
               >
                 {path[0].toUpperCase() + path.slice(1)}
               </Link>
+              {(path === 'favourites' || path === 'cart') && (
+                <IconWithCounter type={path} />
+              )}
             </li>
           ))}
         </ul>
