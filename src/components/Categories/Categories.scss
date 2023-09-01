@@ -4,15 +4,19 @@
   display: flex;
   flex-direction: column;
 
-  &__list {
-    display: flex;
-    align-items: center;
+  &__upper {
+    margin-bottom: 24px;
   }
 
-  &__img {
-    width: 368px;
-    height: 368px;
-    object-fit: cover;
-    object-position: left top;
+  &__title {
+    font-size: 32px;
+    font-family: $font-bold;
+    letter-spacing: -0.32px;
+  }
+
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 }

@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
 import './Categories.scss';
+import { CategoryItem } from './components/CategoryItem';
 
 const categories = {
   phones: '_new/img/category-phones.png',
@@ -13,21 +13,15 @@ export const Categories = () => {
   return (
     <div className="categories">
       <div className="categories__upper">
-        <h2 className="categories__title">shop by category</h2>
+        <h2 className="categories__title">Shop by category</h2>
       </div>
 
       <div className="categories__list">
         {categoriesArray.map(category => (
-          <Link
-            to={category[0]}
-            key={category[0]}
-          >
-            <img
-              className="categories__img"
-              alt={category[0]}
-              src={category[1]}
-            />
-          </Link>
+          <CategoryItem
+            category={category[0]}
+            link={category[1]}
+          />
         ))}
       </div>
     </div>
