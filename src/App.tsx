@@ -1,10 +1,10 @@
 import './App.scss';
-import { Banner } from './components/Banner';
+import { Footer } from './components/Footer';
 
 const App = () => {
   return (
     <div className="App">
-      <Banner />
+      <Footer />
     </div>
   );
 };

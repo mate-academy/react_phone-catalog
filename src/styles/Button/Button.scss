@@ -2,8 +2,8 @@
 @import "../utils/mixins.scss";
 
 .button {
-  height: 100%;
-  width: 100%;
+  height: 32px;
+  width: 32px;
   border: 1px solid #{$icons-placeholders-color};
   background: center no-repeat #fff;
   cursor: pointer;
@@ -21,6 +21,10 @@
 
     &-left {
       transform: rotate(180deg);
+    }
+
+    &-upper {
+      transform: rotate(-90deg);
     }
 
     &:disabled {

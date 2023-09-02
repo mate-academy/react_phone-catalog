@@ -4,7 +4,7 @@ import '../../styles/Button/Button.scss';
 
 type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
   content: 'arrow';
-  arrowDirection?: 'right' | 'left';
+  arrowDirection?: 'right' | 'left' | 'upper';
 };
 
 export const Button: React.FC<Props> = ({

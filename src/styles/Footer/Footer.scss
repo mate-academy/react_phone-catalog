@@ -1,0 +1,44 @@
+@import "../utils/variables.scss";
+@import "../utils/mixins.scss";
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 96px;
+  padding: 0 152px;
+  border-top: 1px solid #{$elements-color};
+  box-shadow: 0 -1px 0 0 #{$elements-color};
+
+  &__links {
+    display: flex;
+    gap: 64px;
+  }
+
+  &__link {
+    @include uppercaseTextStyling;
+    color: #{$secondary-color};
+    text-decoration: none;
+    transition: all 0.4s ease;
+
+    &:hover {
+      transition: all 0.4s ease;
+      color: #{$primary-color};
+    }
+  }
+
+  &__button-container {
+    width: 118px;
+    display: flex;
+    gap: 16px;
+    justify-content: space-between;
+    align-content: center;
+  }
+
+  &__top-caption {
+    @include smallTextStyling;
+    color: #{$secondary-color};
+    margin: 0;
+    line-height: 32px;
+  }
+}
