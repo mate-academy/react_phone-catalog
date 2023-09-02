@@ -1,10 +1,10 @@
 import './App.scss';
-import { Footer } from './components/Footer';
+import { HomePage } from './pages/HomePage/HomePage';
 
 const App = () => {
   return (
     <div className="App">
-      <Footer />
+      <HomePage />
     </div>
   );
 };

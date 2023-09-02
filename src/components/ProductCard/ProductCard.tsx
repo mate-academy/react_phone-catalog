@@ -1,4 +1,4 @@
-import '../../styles/ProductCard/ProductCard.scss';
+import '../../styles/components/ProductCard/ProductCard.scss';
 import { Product } from '../../types/product';
 
 type Props = {

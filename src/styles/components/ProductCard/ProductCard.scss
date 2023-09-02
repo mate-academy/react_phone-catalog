@@ -1,5 +1,5 @@
-@import "../utils/variables.scss";
-@import "../utils/mixins.scss";
+@import "../../utils/mixins.scss";
+@import "../../utils/variables.scss";
 
 .card {
   width: 272px;
@@ -109,7 +109,7 @@
     height: 40px;
     text-indent: -9000px;
     border: 1px solid #{$icons-placeholders-color};
-    background: center no-repeat url("../../images/favourites-icon.svg");
+    background: center no-repeat url("../../../images/favourites-icon.svg");
     background-color: #fff;
 
     transition: 0.4s ease;
@@ -119,7 +119,7 @@
     }
 
     &--is-active {
-      background: center no-repeat url("../../images/favourites-icon-active.svg");
+      background: center no-repeat url("../../../images/favourites-icon-active.svg");
     }
   }
 }

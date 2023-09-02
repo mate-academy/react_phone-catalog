@@ -1,4 +1,4 @@
-import '../../styles/Footer/Footer.scss';
+import '../../styles/components/Footer/Footer.scss';
 import logo from '../../images/logo.svg';
 
 import { Button } from '../Button';
@@ -16,14 +16,16 @@ export const Footer: React.FC = () => {
         <a href="aaa" className="footer__link">Rights</a>
       </div>
 
-      <div className="footer__button-container">
+      <div className="footer__buttons-container">
         <p className="footer__top-caption">Back to top</p>
 
-        <Button
-          content="arrow"
-          arrowDirection="upper"
-          className="footer__button"
-        />
+        <div className="footer__button-container">
+          <Button
+            content="arrow"
+            arrowDirection="upper"
+            className="footer__button"
+          />
+        </div>
       </div>
     </footer>
   );

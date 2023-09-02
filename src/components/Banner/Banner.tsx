@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
-import '../../styles/Banner/Banner.scss';
+import '../../styles/components/Banner/Banner.scss';
 import Carousel, { CarouselRef } from 'react-bootstrap/Carousel';
 
 import { useState, useRef } from 'react';

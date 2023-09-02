@@ -1,4 +1,4 @@
-import '../../styles/ProductSlider/ProductSlider.scss';
+import '../../styles/components/ProductSlider/ProductSlider.scss';
 import { useState } from 'react';
 import { Product } from '../../types/product';
 import { ProductCard } from '../ProductCard';
@@ -31,7 +31,7 @@ export const ProductSlider: React.FC<Props> = ({
   return (
     <section className="product-slider">
       <div className="product-slider__header-container">
-        <h2 className="product-slider__title">{title}</h2>
+        <h1 className="product-slider__title">{title}</h1>
 
         <div className="product-slider__buttons">
           <Button

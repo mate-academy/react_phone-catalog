@@ -1,6 +1,6 @@
 import { ButtonHTMLAttributes } from 'react';
 import classNames from 'classnames';
-import '../../styles/Button/Button.scss';
+import '../../styles/components/Button/Button.scss';
 
 type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
   content: 'arrow';

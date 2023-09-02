@@ -1,9 +1,9 @@
-@import "../utils/variables.scss";
-@import "../utils/mixins.scss";
+@import "../../utils/mixins.scss";
+@import "../../utils/variables.scss";
 
 .button {
-  height: 32px;
-  width: 32px;
+  height: 100%;
+  width: 100%;
   border: 1px solid #{$icons-placeholders-color};
   background: center no-repeat #fff;
   cursor: pointer;
@@ -17,7 +17,7 @@
   }
 
   &--arrow {
-    background-image: url("../../images/arrow-right.svg");
+    background-image: url("../../../images/arrow-right.svg");
 
     &-left {
       transform: rotate(180deg);
@@ -28,7 +28,7 @@
     }
 
     &:disabled {
-      background-image: url("../../images/arrow-right-disabled.svg");
+      background-image: url("../../../images/arrow-right-disabled.svg");
       border-color: #{$elements-color};
     }
   }

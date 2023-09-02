@@ -1,3 +1,6 @@
+@import "../../utils/mixins.scss";
+@import "../../utils/variables.scss";
+
 .nav-item {
   position: relative;
   height: 100%;
@@ -7,6 +10,7 @@
   @include uppercaseTextStyling;
   color: #{$secondary-color};
   transition: 0.4s ease;
+  padding-top: 2px;
 
   &-fav,
   &-cart {
@@ -18,11 +22,11 @@
   }
 
   &-fav {
-    background-image: url("../../images/favourites-icon.svg");
+    background-image: url("../../../images/favourites-icon.svg");
   }
 
   &-cart {
-    background-image: url("../../images/shop-card-icon.svg");
+    background-image: url("../../../images/shop-card-icon.svg");
   }
 
   &::after {

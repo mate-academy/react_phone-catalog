@@ -1,5 +1,5 @@
-@import "../utils/variables.scss";
-@import "../utils/mixins.scss";
+@import "../../utils/mixins.scss";
+@import "../../utils/variables.scss";
 
 .banner {
   position: relative;
@@ -10,6 +10,11 @@
     height: 400px;
     display: flex;
     gap: 16px;
+  }
+
+  &__button {
+    height: 100%;
+    width: 100%;
   }
 
   &__image {

@@ -1,4 +1,4 @@
-import '../../styles/NavBarItem/NavBarItem.scss';
+import '../../styles/components/NavBarItem/NavBarItem.scss';
 import { NavLink, NavLinkProps } from 'react-router-dom';
 import classNames from 'classnames';
 

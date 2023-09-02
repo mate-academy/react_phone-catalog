@@ -1,5 +1,5 @@
-@import "../utils/variables.scss";
-@import "../utils/mixins.scss";
+@import "../../utils/mixins.scss";
+@import "../../utils/variables.scss";
 
 .footer {
   display: flex;
@@ -27,12 +27,17 @@
     }
   }
 
-  &__button-container {
+  &__buttons-container {
     width: 118px;
     display: flex;
     gap: 16px;
     justify-content: space-between;
     align-content: center;
+  }
+
+  &__button-container {
+    width: 32px;
+    height: 32px;
   }
 
   &__top-caption {
