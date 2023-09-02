@@ -1,5 +1,10 @@
 import classNames from 'classnames';
-import { useCallback, useContext, useState } from 'react';
+import {
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from 'react';
 import { NavLink, useLocation, useSearchParams } from 'react-router-dom';
 import './Navbar.scss';
 import debounce from 'lodash.debounce';
@@ -11,15 +16,21 @@ const getActiveTitle = ({ isActive }: { isActive: boolean }) => (
 
 export const Navbar = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [debQuery, setDebQuery] = useState(searchParams.get('query') || '');
   const { likesStorage, cartStorage } = useContext(StoragesContext);
   const { pathname } = useLocation();
+  const [debQuery, setDebQuery] = useState(searchParams.get('query') || '');
+
   const isVisibleSearch = pathname === '/phones' || pathname === '/favorites'
     || pathname === '/tablets' || pathname === '/accessories';
 
-  const applyQuery = useCallback(debounce(setSearchParams, 1000), []);
+  const applyQuery = useCallback(debounce(setSearchParams, 1000), [pathname]);
+
+  useEffect(() => {
+    setDebQuery(searchParams.get('query') || '');
+  }, [pathname]);
 
   const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setDebQuery(event.target.value);
     const params = new URLSearchParams(searchParams);
 
     params.set('page', '1');
@@ -31,7 +42,6 @@ export const Navbar = () => {
     }
 
     applyQuery(params);
-    setDebQuery(event.target.value);
   };
 
   const handleClearSearchBar = () => {
@@ -98,7 +108,6 @@ export const Navbar = () => {
             type="search"
             placeholder="Search in phones..."
             value={debQuery}
-            hidden={false}
             onChange={handleInput}
             className="search__input search__input--underline"
           />
@@ -123,15 +132,15 @@ export const Navbar = () => {
               'icon icon--heart',
               { 'icon--is-active': isActive },
             )}
-          />
-
-          {likesStorage.length > 0 && (
-            <span className="fav-qnty">
-              <p className="fav-qnty__num">
-                {likesStorage.length}
-              </p>
-            </span>
-          )}
+          >
+            {likesStorage.length > 0 && (
+              <span className="fav-qnty">
+                <p className="fav-qnty__num">
+                  {likesStorage.length}
+                </p>
+              </span>
+            )}
+          </NavLink>
         </div>
 
         <div className="icon__container">

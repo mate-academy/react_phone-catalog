@@ -1,4 +1,4 @@
-import { useSearchParams } from 'react-router-dom';
+import { useLocation, useSearchParams } from 'react-router-dom';
 import { useMemo, useRef } from 'react';
 import { ProductList } from '../components/ProductList';
 import { Pagination } from '../components/Pagination';
@@ -27,7 +27,8 @@ export const Phones = () => {
   const [searchParams] = useSearchParams();
   const sort = searchParams.get('sort') || '';
   const query = searchParams.get('query') || '';
-  const perPage = searchParams.get('perPage') || '';
+  const perPage = searchParams.get('perPage') || '16';
+  const { pathname } = useLocation();
 
   const handleSelect = (key: string, value: string) => {
     const param = new URLSearchParams(searchParams);
@@ -42,8 +43,12 @@ export const Phones = () => {
   };
 
   const visiblePhones = useMemo(() => {
-    const newPhones = [...phones].filter(phone => phone.name
-      .toLowerCase().includes(query.trim().toLocaleLowerCase()));
+    let newPhones = [...phones];
+
+    if (pathname === '/phones') {
+      newPhones = newPhones.filter(phone => phone.name
+        .toLowerCase().includes(query.trim().toLocaleLowerCase()));
+    }
 
     if (!sort) {
       newPhones.sort((a, b) => b.year - a.year);

@@ -10,7 +10,7 @@
     color: $secondary-color;
     text-transform: uppercase;
     text-decoration: none;
-    transition: color 0.35s ease;
+    transition: all 0.35s ease;
   }
 
   &__container {
@@ -22,6 +22,7 @@
 
   &__list {
     display: flex;
+    flex-direction: row-reverse;
     align-items: center;
     gap: 16px;
     list-style: none;
@@ -33,7 +34,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: all 0.35s ease;
+
+    &:hover + .footer__back-to {
+      transform: perspective(30px) translateZ(5px);
+      color: $primary-color;
+    }
   }
 }
-

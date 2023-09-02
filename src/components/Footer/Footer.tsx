@@ -59,10 +59,6 @@ export const Footer = () => {
           </div>
 
           <ul className="footer__list">
-            <li className="footer__back-to">
-              Back to top
-            </li>
-
             <li className="footer__item">
               <button
                 type="button"
@@ -71,6 +67,11 @@ export const Footer = () => {
                 onClick={() => setScroll(!scroll)}
               />
             </li>
+
+            <li className="footer__back-to">
+              Back to top
+            </li>
+
           </ul>
         </div>
       </div>
