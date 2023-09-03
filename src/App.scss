@@ -1,4 +1,6 @@
 @import "./utils/colors";
+@import "./utils/vars";
+@import "./utils/mixins";
 
 @font-face {
   font-family: "Mont";
@@ -47,6 +49,10 @@ body {
 
   &--with-min-height {
     min-height: calc(100vh - 64px - 96px);
+
+    @include onPhone {
+      min-height: calc(100vh - 50px - 56px);
+    }
   }
 }
 

@@ -1,11 +1,16 @@
 @import "../../utils/colors";
 @import "../../utils/vars";
 @import "../../utils/extends";
+@import "../../utils/mixins";
 
 .Nav {
   display: flex;
   align-items: center;
   gap: 64px;
+
+  @include onPhone {
+    flex-direction: column;
+  }
 }
 
 .NavButton {

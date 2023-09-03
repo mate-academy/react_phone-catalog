@@ -1,23 +1,20 @@
 @import "../../utils/colors";
 @import "../../utils/vars";
 @import "../../utils/extends";
+@import "../../utils/mixins";
 
 .NoSearchResults {
   text-align: center;
-  
+
   &__title {
-    font-size: 64px;
-    margin: 0 0 20px;
+    @extend %page-error-title;
   }
 
   &__paragpraph {
-    font-size: 20px;
-    color: $color-secondary-gray;
-    margin-bottom: 40px;
+    @extend %page-error-paragraph;
   }
 
   &__button {
-    @extend %button-with-text;
-    padding: 14px 20px;
+    @extend %error-button;
   }
 }

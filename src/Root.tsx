@@ -2,6 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 
 import { App } from './App';
 import { HomePage } from './pages/HomePage/HomePage';
+import { Menu } from './components/Menu';
 import { PhonesPage } from './pages/PhonesPage';
 import { ProductDetailsPage } from './pages/ProductDetailsPage';
 import { AccessoriesPage } from './pages/AccessoriesPage';
@@ -32,6 +33,8 @@ export const Root = () => (
 
       <Route path="favourites" element={<FavouritesPage />} />
       <Route path="cart" element={<CartPage />} />
+
+      <Route path="/menu" element={<Menu />} />
 
       <Route path="*" element={<NotFoundPage />} />
     </Route>

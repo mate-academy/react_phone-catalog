@@ -1,14 +1,23 @@
 @import "../../utils/colors";
 @import "../../utils/vars";
 @import "../../utils/extends";
+@import "../../utils/mixins";
 
 .Dropdown {
   width: 180px;
   display: inline-block;
   position: relative;
 
+  @include onPhone {
+    width: 130px;
+  }
+
   &--small {
     width: 128px;
+
+    @include onPhone {
+      width: 100px;
+    }
   }
 
   &__title {

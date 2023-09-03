@@ -1,5 +1,5 @@
 @mixin onTablet {
-  @media (min-width: 744px) {
+  @media (max-width: 1024px) {
     @content;
   }
 }

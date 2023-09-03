@@ -1,3 +1,5 @@
+@import "../../utils/mixins";
+
 .ProductsList {
   &__dropdowns {
     margin-bottom: 24px;
@@ -11,6 +13,12 @@
     grid-template-columns: repeat(auto-fill, 272px);
     justify-content: space-between;
     row-gap: 40px;
+
+    @include onPhone {
+      justify-content: center;
+      row-gap: 20px;
+      column-gap: 20px;
+    }
   }
 
   &__pagination {

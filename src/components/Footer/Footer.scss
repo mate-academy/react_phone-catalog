@@ -1,21 +1,31 @@
 @import "../../utils/colors";
 @import "../../utils/vars";
 @import "../../utils/extends";
+@import "../../utils/mixins";
 
 .Footer {
   width: 100%;
   box-shadow: 0 -1px 0 0 $color-elements-light-gray;
 
   &__content {
-    height: $footer-height;
+    height: 96px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    @include onPhone {
+      height: 56px;
+    }
   }
 
   &__links {
     display: flex;
     gap: 64px;
+
+    @include onPhone {
+      gap: 8px;
+      align-items: center;
+    }
   }
 }
 
@@ -25,6 +35,10 @@
   font-size: 12px;
   transition: $transition;
 
+  @include onPhone {
+    font-size: 10px;
+  }
+
   &__label {
     display: flex;
     align-items: center;
@@ -33,6 +47,10 @@
   &__text {
     margin-right: 16px;
 
+    @include onPhone {
+      margin-right: 8px;
+    }
+
     &:hover {
       cursor: pointer;
     }
@@ -40,6 +58,10 @@
 
   &__button {
     @extend %arrow-button;
+    @include onPhone {
+      width: 18px;
+      height: 18px;
+    }
   }
 
   &:hover {
@@ -53,4 +75,9 @@
 
 .FooterLink {
   @extend %navlink;
+
+  @include onPhone {
+    font-size: 10px;
+    line-height: 10px;
+  }
 }

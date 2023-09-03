@@ -1,6 +1,7 @@
 @import "../../utils/colors";
 @import "../../utils/vars";
 @import "../../utils/extends";
+@import "../../utils/mixins";
 
 .ProductsSlider {
   &__top {
@@ -8,6 +9,10 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 24px;
+
+    @include onPhone {
+      margin-bottom: 10px;
+    }
   }
 
   &__title {

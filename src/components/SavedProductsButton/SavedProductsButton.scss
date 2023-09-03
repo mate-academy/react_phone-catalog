@@ -1,6 +1,7 @@
 @import "../../utils/colors";
 @import "../../utils/vars";
 @import "../../utils/extends";
+@import "../../utils/mixins";
 
 .SavedProductsButton {
   display: block;
@@ -13,10 +14,19 @@
   z-index: 100;
   position: relative;
 
+  @include onPhone {
+    width: 50px;
+  }
+
   &__container {
     width: 64px;
     height: 64px;
     box-shadow: -1px 0 0 0 #e2e6e9;
+
+    @include onPhone {
+      width: 50px;
+      height: 50px;
+    }
   }
 
   &__amount {

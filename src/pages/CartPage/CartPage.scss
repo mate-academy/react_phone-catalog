@@ -1,6 +1,7 @@
 @import "../../utils/colors";
 @import "../../utils/vars";
 @import "../../utils/extends";
+@import "../../utils/mixins";
 
 .CartPage {
   &__content {
@@ -20,6 +21,11 @@
     display: grid;
     grid-template-columns: 2fr 1fr;
     grid-gap: 16px;
+
+    @include onPhone {
+      display: flex;
+      flex-direction: column;
+    }
   }
 
   &__products {
@@ -34,6 +40,10 @@
     &:last-child {
       margin-bottom: 0;
     }
+
+    @include onPhone {
+      width: 100%;
+    }
   }
 
   &__checkout {
@@ -43,6 +53,10 @@
     padding: 24px;
     text-align: center;
     border: 1px solid $color-elements-light-gray;
+
+    @include onPhone {
+      width: 100%;
+    }
   }
 
   &__amount {
@@ -83,6 +97,14 @@
   padding: 24px 30px;
   border: 1px solid $color-elements-light-gray;
 
+  @include onPhone {
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  padding: 14px 10px;
+
+  }
+
   &__section {
     display: flex;
     align-items: center;
@@ -95,6 +117,11 @@
     margin-right: 27px;
     border: none;
     background-image: url(../../icons/Close.svg);
+
+    @include onPhone {
+      margin-right: 8px;
+
+    }
   }
 
   &__product-img {
@@ -107,6 +134,13 @@
     background-origin: content-box;
     background-repeat: no-repeat;
     cursor: pointer;
+
+    @include onPhone {
+      height: 40px;
+    width: 40px;
+    margin-right: 14px;
+
+    }
   }
 
   &__product-name {
@@ -114,6 +148,11 @@
     font-weight: 500;
     font-size: 14px;
     line-height: 21px;
+
+    @include onPhone {
+      width: auto;
+
+    }
   }
 
   &__quantity-section {

@@ -1,9 +1,14 @@
 @import "../../utils/colors";
 @import "../../utils/vars";
 @import "../../utils/extends";
+@import "../../utils/mixins";
 
 .Carousel {
   height: 400px;
+
+  @include onPhone {
+    height: 500px;
+  }
 
   &__slide {
     background-position: center;
@@ -26,6 +31,12 @@
     width: 32px;
     height: 400px;
 
+
+  @include onPhone {
+    width: 20px;
+    height: 500px;
+  }
+
     &--prev {
       background-image: url(../../icons/arrow-left.svg);
     }
@@ -44,6 +55,12 @@
   height: 400px;
   width: 1040px;
   margin: 0 auto;
+
+
+  @include onPhone {
+    width: 700px;
+    height: 500px;
+  }
 }
 
 .react-slideshow-container + ul.indicators {

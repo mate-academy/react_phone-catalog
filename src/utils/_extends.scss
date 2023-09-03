@@ -1,3 +1,6 @@
+@import "./colors";
+@import "./mixins";
+
 %navlink {
   display: flex;
   position: relative;
@@ -45,6 +48,11 @@
   width: 32px;
   height: 32px;
   background-image: url("../icons/arrow-black.svg");
+
+  @include onPhone {
+    width: 22px;
+    height: 22px;
+  }
 }
 
 %button-with-text {
@@ -75,11 +83,49 @@
   font-size: 32px;
   font-weight: 700;
   letter-spacing: -0.32px;
+
+  @include onPhone {
+    font-size: 22px;
+  }
 }
 
 %page-error-title {
+  font-size: 64px;
+  margin: 0 0 20px;
+
+  @include onPhone {
+    font-size: 48px;
+    margin-bottom: 10px;
+  }
+}
+
+%page-error-subtitle {
   text-align: center;
   font-size: 32px;
+
+  @include onPhone {
+    font-size: 22px;
+  }
+}
+
+%page-error-paragraph {
+  font-size: 20px;
+  color: $color-secondary-gray;
+  margin-bottom: 40px;
+
+  @include onPhone {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+}
+
+%error-button {
+  @extend %button-with-text;
+  padding: 14px 20px;
+
+  @include onPhone {
+    padding: 12px 16px;
+  }
 }
 
 %product-amount {

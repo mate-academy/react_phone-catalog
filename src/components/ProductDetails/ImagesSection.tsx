@@ -44,6 +44,7 @@ export const ImagesSection: React.FC<Props> = ({
 
           return (
             <button
+              key={path}
               type="button"
               className={classnames(
                 'ProductDetails__image',

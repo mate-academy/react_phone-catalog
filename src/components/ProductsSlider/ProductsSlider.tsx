@@ -28,8 +28,13 @@ export const ProductsSlider: React.FC<Props> = ({
   const {
     cardWidth,
     cardGap,
-    cardsPerPage,
   } = sliderSettings;
+
+  let { cardsPerPage } = sliderSettings;
+
+  if (window.innerWidth < 745) {
+    cardsPerPage = 1;
+  }
 
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);

@@ -1,0 +1,14 @@
+@import "../../utils/colors";
+@import "../../utils/vars";
+@import "../../utils/extends";
+@import "../../utils/mixins";
+
+.Menu {
+  background-color: #fff;
+  text-transform: uppercase;
+  z-index: 2;
+
+  &__content {
+    padding: 24px;
+  }
+}

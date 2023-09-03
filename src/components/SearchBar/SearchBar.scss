@@ -1,5 +1,7 @@
 @import "../../utils/colors";
 @import "../../utils/vars";
+@import "../../utils/extends";
+@import "../../utils/mixins";
 
 .SearchBar {
   position: relative;
@@ -10,7 +12,7 @@
     font-family: "Mont", sans-serif;
     font-weight: 600;
     font-size: 14px;
-    padding: 0 0 0 27px;
+    padding: 0 0 0 26px;
     color: $color-primary-dark-gray;
     border: none;
     box-sizing: border-box;
@@ -36,12 +38,19 @@
     &--has-text {
       background-image: none;
     }
+
+    @include onPhone {
+      width: 130px;
+      padding: 0 14px 0 8px;
+      font-size: 10px;
+      background-image: none;
+    }
   }
 
   &__clear-button {
     padding: 0;
-    height: 15px;
-    width: 15px;
+    height: 14px;
+    width: 14px;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -52,5 +61,12 @@
     background-position: center;
     border: none;
     cursor: pointer;
+
+    @include onPhone {
+      height: 8px;
+    width: 8px;
+      background-size: 8px 8px;
+      right: 4px;
+    }
   }
 }

@@ -9,24 +9,20 @@
   }
 
   &__title {
-    font-size: 64px;
-    margin: 0 0 20px;
+    @extend %page-error-title;
   }
 
   &__subtitle {
-    @extend %page-error-title;
+    @extend %page-error-subtitle;
     margin: 0 0 14px;
     text-transform: uppercase;
   }
 
   &__paragpraph {
-    font-size: 20px;
-    color: $color-secondary-gray;
-    margin-bottom: 40px;
+    @extend %page-error-paragraph;
   }
 
   &__button {
-    @extend %button-with-text;
-    padding: 14px 20px;
+    @extend %error-button;
   }
 }

@@ -1,6 +1,7 @@
 @import "../../utils/colors";
 @import "../../utils/vars";
 @import "../../utils/extends";
+@import "../../utils/mixins";
 
 .Pagination {
   display: flex;
@@ -27,6 +28,10 @@
 
     &--next {
       transform: rotate(90deg);
+    }
+
+    @include onPhone {
+      margin-top: 6px;
     }
   }
 

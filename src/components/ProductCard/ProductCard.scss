@@ -1,4 +1,5 @@
 @import "../../utils/colors";
+@import "../../utils/vars";
 
 .ProductCard {
   width: 272px;
@@ -15,6 +16,11 @@
   &__img {
     width: 100%;
     height: 100%;
+    transition: $transition;
+
+    &:hover {
+      transform: scale(0.98);
+    }
   }
 
   &__name {

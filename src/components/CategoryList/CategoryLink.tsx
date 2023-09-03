@@ -21,16 +21,19 @@ export const CategoryLink: React.FC<Props> = ({ type, amount }) => {
         {' '}
       </NavLink>
 
-      <NavLink
-        to={path}
-        className="CategoryLink__title"
-      >
-        {title}
-      </NavLink>
+      <div className="CategoryLink__text">
+        <NavLink
+          to={path}
+          className="CategoryLink__title"
+        >
+          {title}
+        </NavLink>
 
-      <p className="CategoryLink__amount">
-        {`${amount} model${amount !== 1 ? 's' : ''}`}
-      </p>
+        <p className="CategoryLink__amount">
+          {`${amount} model${amount !== 1 ? 's' : ''}`}
+        </p>
+      </div>
+
     </div>
   );
 };
