@@ -5,7 +5,6 @@ import {
   Route,
   Routes,
   useLocation,
-  useSearchParams,
 } from 'react-router-dom';
 import { Context } from './Context';
 import { Header } from './Header';
@@ -25,7 +24,7 @@ const App = () => {
   const { setQuery } = useContext(Context);
   const { pathname } = useLocation();
   const history = useNavigate();
-  const [searchParams] = useSearchParams();
+  const { updateSearch, searchParams } = useUpdateSearch();
   const [filterType, setFilterType] = useState('');
   const page = searchParams.get(SearchTypes.page) || '';
   const perPage = searchParams.get(SearchTypes.perPage) || '';
@@ -34,7 +33,6 @@ const App = () => {
   const activeProduct = JSON.parse(
     localStorage.getItem(LocaleStorageTypes.product) as string,
   ) || null;
-  const updateSearch = useUpdateSearch();
 
   useMemo(() => {
     if (pathname === '/phones') {

@@ -3,7 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 export const useUpdateSearch = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  return (params: {
+  const updateSearch = (params: {
     [key: string]: number[] | string[] | string | null
   }) => {
     Object.entries(params).forEach(([key, value]) => {
@@ -22,4 +22,6 @@ export const useUpdateSearch = () => {
       setSearchParams(searchParams);
     });
   };
+
+  return { updateSearch, searchParams };
 };

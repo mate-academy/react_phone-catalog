@@ -1,4 +1,4 @@
-import { useContext, useMemo } from 'react';
+import { useContext, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 import { Context } from './Context';
@@ -22,7 +22,7 @@ export const Header: React.FC<Props> = ({
     query,
     setQuery,
   } = useContext(Context);
-  const updateSearch = useUpdateSearch();
+  const { updateSearch } = useUpdateSearch();
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(event.target.value);
@@ -34,7 +34,7 @@ export const Header: React.FC<Props> = ({
     }
   };
 
-  useMemo(() => {
+  useEffect(() => {
     if (filterQuery) {
       setQuery(filterQuery);
     }

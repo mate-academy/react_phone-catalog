@@ -1,5 +1,4 @@
 import {
-  useMemo,
   useState,
   useEffect,
   useContext,
@@ -45,7 +44,7 @@ export const Products: React.FC<Props> = ({
   let filteredProducts = [...products];
   let pagesAmount = 0;
   let itemsPerPage = [...products];
-  const updateSearch = useUpdateSearch();
+  const { updateSearch } = useUpdateSearch();
 
   const getDevices = async () => {
     setIsLoading(true);
@@ -111,7 +110,7 @@ export const Products: React.FC<Props> = ({
     );
   }, [pathname]);
 
-  useMemo(() => {
+  useEffect(() => {
     if (pathname) {
       if (sort) {
         setSortOrder(sort[0].toUpperCase() + sort.slice(1));

@@ -22,10 +22,13 @@ export const ProductsSlider: React.FC<Props> = ({
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [products, setProducts] = useState<Product[] | []>([]);
-  const step = (272 + 25) * 4;
-  const frameSize = (272 * 4) + (25 * 3);
+  const cardWidth = 275;
+  const gap = 25;
+  const cardsPerPage = 4;
+  const step = (cardWidth + gap) * cardsPerPage;
+  const frameSize = (cardWidth * cardsPerPage) + (gap * cardsPerPage - 1);
   const productCardsLength = (
-    272 * products.length) + (25 * (products.length - 1)
+    cardWidth * products.length) + (gap * (products.length - 1)
   );
 
   const getSuggestedProducts = async () => {

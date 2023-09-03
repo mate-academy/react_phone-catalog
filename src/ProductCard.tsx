@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Context } from './Context';
 import { Product } from './types/Product';
@@ -25,6 +25,15 @@ export const ProductCard: React.FC<Props> = ({
     setProductsToBuy,
     setLoadingItem,
   } = useContext(Context);
+  let isProductOnCart = false;
+  let isProductOnFavourites = false;
+
+  useEffect(() => {
+    if (product) {
+      isProductOnCart = findProductOnCart(product.id);
+      isProductOnFavourites = findProductOnFavourites(product.id);
+    }
+  }, [product]);
 
   return (
     product && (
@@ -77,7 +86,7 @@ export const ProductCard: React.FC<Props> = ({
                   'product__button_add',
                   {
                     'product__button_add--active':
-                    findProductOnCart(product.id) === true,
+                    isProductOnCart,
                   },
                 )}
                 onClick={(event) => updateCart(
@@ -86,7 +95,7 @@ export const ProductCard: React.FC<Props> = ({
                   product,
                 )}
               >
-                {findProductOnCart(product.id) === true
+                {isProductOnCart
                   ? 'Added to cart'
                   : 'Add to cart'}
               </button>
@@ -97,7 +106,7 @@ export const ProductCard: React.FC<Props> = ({
                   'product__button_favourites',
                   {
                     'product__button_favourites--active':
-                    findProductOnFavourites(product.id),
+                    isProductOnFavourites,
                   },
                 )}
                 onClick={(event) => updateFavourites(
