@@ -7,8 +7,10 @@ type Props = {
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
   const {
-    name, imageUrl, price, screen, capacity, ram,
+    name, imageUrl, price, discount, screen, capacity, ram,
   } = product;
+
+  const actualPrice = price - (price * discount) / 100;
 
   return (
     <div className="card">
@@ -20,7 +22,16 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
       <p className="card__title">{name}</p>
 
-      <p className="card__price">{`$${price}`}</p>
+      <div className="card__price-container">
+        <p className="card__actual-price">{`$${actualPrice}`}</p>
+
+        <p
+          className="card__initial-price"
+          hidden={discount === 0}
+        >
+          {`$${price}`}
+        </p>
+      </div>
 
       <div className="card__info-container">
         <div className="card__info-titles">

@@ -1,10 +1,11 @@
 import './App.scss';
-import { CartTotal } from './components/CartTotal';
+import { ProductCard } from './components/ProductCard';
+import { getProduct } from './utils/product-mocks';
 
 const App = () => {
   return (
     <div className="App">
-      <CartTotal price={4000} quantity={4} />
+      <ProductCard product={getProduct()} />
     </div>
   );
 };

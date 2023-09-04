@@ -20,9 +20,11 @@
     margin: 24px 0 0;
   }
 
-  &__price {
+  &__price-container {
     position: relative;
     margin: 6.5px 0 0;
+    display: flex;
+    gap: 8px;
     padding-bottom: 6.5px;
 
     @include h2TextStyling;
@@ -37,6 +39,17 @@
       height: 1px;
       background-color: #{$elements-color};
     }
+  }
+
+  &__actual-price {
+    margin: 0;
+  }
+
+  &__initial-price {
+    margin: 0;
+    font-weight: 500;
+    color: #{$secondary-color};
+    text-decoration: line-through;
   }
 
   &__info-container {

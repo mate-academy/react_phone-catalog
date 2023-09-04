@@ -11,7 +11,7 @@ export const getProduct = (): Product => {
     name: 'Iphone',
     snippet: 'aaa',
     price: 700,
-    discount: 0,
+    discount: 10,
     screen: 'Some screen',
     capacity: 'Some capacity',
     ram: 'Some ram',
