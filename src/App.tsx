@@ -1,4 +1,4 @@
-import { useMemo, useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import {
   Navigate,
@@ -34,7 +34,7 @@ const App = () => {
     localStorage.getItem(LocaleStorageTypes.product) as string,
   ) || null;
 
-  useMemo(() => {
+  useEffect(() => {
     if (pathname === '/phones') {
       setFilterType('phones');
     } else if (pathname === '/tablets') {
