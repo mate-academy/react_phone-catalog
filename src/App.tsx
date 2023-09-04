@@ -1,10 +1,10 @@
 import './App.scss';
-import { HomePage } from './pages/HomePage/HomePage';
+import { CartItem } from './components/CartItem';
 
 const App = () => {
   return (
     <div className="App">
-      <HomePage />
+      <CartItem price={700} />
     </div>
   );
 };

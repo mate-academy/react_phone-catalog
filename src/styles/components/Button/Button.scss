@@ -8,12 +8,13 @@
   background: center no-repeat #fff;
   cursor: pointer;
 
-  &:disabled {
-    cursor: default;
-  }
-
   &:hover {
     border-color: #{$primary-color};
+  }
+
+  &:disabled {
+    cursor: default;
+    border-color: #{$elements-color};
   }
 
   &--arrow {
@@ -29,7 +30,18 @@
 
     &:disabled {
       background-image: url("../../../images/arrow-right-disabled.svg");
-      border-color: #{$elements-color};
+    }
+  }
+
+  &--math {
+    background-image: url("../../../images/plus.svg");
+
+    &-minus {
+      background-image: url("../../../images/minus.svg");
+
+      &:disabled {
+        background-image: url("../../../images/minus-disabled.svg");
+      }
     }
   }
 }

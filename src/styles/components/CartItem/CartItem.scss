@@ -1,0 +1,57 @@
+@import "../../utils/mixins.scss";
+@import "../../utils/variables.scss";
+
+.cart-item {
+  width: 752px;
+  height: 128px;
+  display: flex;
+  align-items: center;
+  border: 1px solid #{$elements-color};
+  padding: 0 24px 0 40px;
+
+  &__discard-button {
+    width: 16px;
+    height: 16px;
+    background: center no-repeat url("../../../images/close-icon.svg") transparent;
+    border: none;
+    opacity: 0.5;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  &__image {
+    width: 66px;
+    height: 66px;
+    margin-left: 31px;
+    object-fit: cover;
+  }
+
+  &__title {
+    margin: 0 0 0 31px;
+    @include bodyTextStyling;
+  }
+
+  &__buttons-container {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    margin-left: 49px;
+  }
+
+  &__button-container {
+    width: 32px;
+    height: 32px;
+  }
+
+  &__items-quantity {
+    margin: 0;
+    @include bodyTextStyling;
+  }
+
+  &__total-price {
+    margin: 0 0 0 43px;
+    @include h2TextStyling;
+  }
+}

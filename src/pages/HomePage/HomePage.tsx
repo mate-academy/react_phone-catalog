@@ -4,40 +4,13 @@ import { Footer } from '../../components/Footer';
 import { Header } from '../../components/Header';
 import { Banner } from '../../components/Banner';
 import { ProductSlider } from '../../components/ProductSlider';
-import { Product } from '../../types/product';
 
 import phonesImg from '../../images/phones-block.png';
 import tabletsImg from '../../images/tablets-block.png';
 import accessoriesImg from '../../images/accessories-block.png';
+import { getProducts } from '../../utils/product-mocks';
 
 export const HomePage: React.FC = () => {
-  const product: Product = {
-    age: 0,
-    id: 'aaa',
-    type: 'aaa',
-    imageUrl: 'aaa',
-    name: 'Iphone',
-    snippet: 'aaa',
-    price: 700,
-    discount: 0,
-    screen: 'Some screen',
-    capacity: 'Some capacity',
-    ram: 'Some ram',
-  };
-
-  const products = [
-    product,
-    product,
-    product,
-    product,
-    product,
-    product,
-    product,
-    product,
-    product,
-    product,
-  ];
-
   return (
     <>
       <Header />
@@ -47,7 +20,7 @@ export const HomePage: React.FC = () => {
 
         <ProductSlider
           title="Hot prices"
-          products={products}
+          products={getProducts(9)}
         />
 
         <section className="main__category-links">
@@ -94,7 +67,7 @@ export const HomePage: React.FC = () => {
 
         <ProductSlider
           title="Brand new models"
-          products={products}
+          products={getProducts(9)}
         />
       </main>
 

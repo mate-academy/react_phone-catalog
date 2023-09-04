@@ -3,13 +3,15 @@ import classNames from 'classnames';
 import '../../styles/components/Button/Button.scss';
 
 type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
-  content: 'arrow';
+  content: 'arrow' | 'math';
   arrowDirection?: 'right' | 'left' | 'upper';
+  sign?: 'plus' | 'minus';
 };
 
 export const Button: React.FC<Props> = ({
   content,
   arrowDirection,
+  sign,
   ...props
 }) => {
   return (
@@ -20,6 +22,7 @@ export const Button: React.FC<Props> = ({
         'button',
         `button--${content}`,
         { [`button--arrow-${arrowDirection}`]: arrowDirection },
+        { [`button--math-${sign}`]: sign },
       )}
     />
   );
