@@ -1,21 +1,14 @@
-import { useEffect, useState } from 'react';
 import './HomePage.scss';
-import { getProducts } from '../../api/products';
 import {
   BannerSlider,
   Categories,
   ProductsSlider,
   Wrapper,
 } from '../../components';
-import { Product } from '../../types/Product';
+import { useProducts } from '../../context';
 
 export const HomePage = () => {
-  const [products, setProducts] = useState<Product []>([]);
-
-  useEffect(() => {
-    getProducts()
-      .then(setProducts);
-  }, []);
+  const { products } = useProducts();
 
   return (
     <div className="home">

@@ -13,6 +13,7 @@ import {
 } from './pages';
 import { Cart } from './pages/Cart';
 import { Favourites } from './pages/Favourites';
+import { ProductsProvider } from './context/productsContext';
 
 export const pages = {
   home: <HomePage />,
@@ -25,14 +26,17 @@ export const pages = {
 };
 
 export const Root = () => (
-  <Router>
-    <Routes>
-      <Route path="/" element={<App />}>
-        <Route index element={<HomePage />} />
-        {Object.entries(pages).map(route => (
-          <Route key={route[0]} path={route[0]} element={route[1]} />
-        ))}
-      </Route>
-    </Routes>
-  </Router>
+  <ProductsProvider>
+    <Router>
+      <Routes>
+        <Route path="/" element={<App />}>
+          <Route index element={<HomePage />} />
+          {Object.entries(pages).map(route => (
+            <Route key={route[0]} path={route[0]} element={route[1]} />
+          ))}
+        </Route>
+      </Routes>
+    </Router>
+  </ProductsProvider>
+
 );
