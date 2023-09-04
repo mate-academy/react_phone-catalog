@@ -1,6 +1,6 @@
 import { BrandNewModels } from '../Components/BrandNewModels';
 import { HotPrices } from '../Components/HotPrices';
-import { ShopByCategory } from '../Components/ShopByCategory';
+import { Categories } from '../Components/Categories';
 import { Banner } from '../Components/Slider';
 
 export const HomePage = () => {
@@ -12,7 +12,7 @@ export const HomePage = () => {
 
         <HotPrices />
 
-        <ShopByCategory />
+        <Categories />
 
         <BrandNewModels />
       </div>

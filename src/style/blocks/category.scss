@@ -1,0 +1,50 @@
+.category {
+  display: flex;
+  gap: 16px;
+
+
+  &__title {
+    margin: 0 0 8px;
+
+    color: $gray-primary;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+  }
+
+  &__presence {
+    margin: 0;
+
+    color: $gray-secondary;
+
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+  }
+
+  &__phones {
+    width: 368px;
+    height: 368px;
+    margin: 0 0 24px;
+    background: #FCDBC1;
+
+    &--img {
+      
+    }
+
+  }
+
+  &__tablets {
+    width: 368px;
+    height: 368px;
+    margin: 0 0 24px;
+    background: #8D8D92;
+  }
+
+  &__accessories {
+    width: 368px;
+    height: 368px;
+    margin: 0 0 24px;
+    background: #973D5F;
+  }
+}

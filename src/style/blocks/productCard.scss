@@ -1,11 +1,18 @@
 .product {
-  margin-bottom: 22px;
+  margin-bottom: 80px;
+  display: flex;
+  gap: 16px;
+
 
   &__card {
     width: 272px;
     height: 507px;
     border: 1px solid $color-shadow;
     background: $gray-white;
+
+    &:last-child {
+      margin-right: 0;
+    }
   }
 
   &__photo {
@@ -56,7 +63,6 @@
       font-weight: 500;
       line-height: normal;
       text-decoration: line-through;
-      // text-decoration-color: #; /* Колір лінії */
     }
 
     &::after {
@@ -119,6 +125,35 @@
     &--value {
       margin: 0;
       color: $gray-primary;
+    }
+  }
+
+  &__button {
+    display: flex;
+    margin: 8px 0 0;
+    align-items: center;
+    justify-content: space-between;
+
+    &--add {
+      width: 176px;
+      height: 40px;
+      color: $gray-white;
+      background: $gray-primary;
+      border: none;
+    }
+
+    &--favourites {
+      width: 40px;
+      height: 40px;
+      color: $gray-primary;
+      background-color: $gray-white;
+      border: solid 1px $gray-icons-placeholders;
+
+      background-repeat: no-repeat;
+      background-position: center;
+      position: relative;
+      box-shadow: -1px 0 0 0 $color-shadow;
+      background-image: url("../../images/icons/Favourites.svg");
     }
   }
 }
