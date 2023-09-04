@@ -11,35 +11,34 @@ type Props = {
 export const ProductCard: React.FC<Props> = ({ product }) => {
   const {
     name,
-    imageUrl,
+    image,
+    fullPrice,
     price,
-    discount,
+    ram,
+    capacity,
+    screen,
   } = product;
-
-  const getPriceWithDiscount = () => {
-    return price - ((price / 100) * discount);
-  };
 
   return (
     <div className="product-card">
       <img
         className="product-card__img"
         alt={name}
-        src={`./${imageUrl}`}
+        src={`./_new/${image}`}
       />
       <h3 className="product-card__name">{name}</h3>
       <div className="product-card__price-block">
-        <p className="product-card__price-w-discount">{`$${getPriceWithDiscount()}`}</p>
-        {!discount && (<p className="product-card__price">{`$${price}`}</p>)}
+        <p className="product-card__price-w-discount">{`$${price}`}</p>
+        <p className="product-card__price">{`$${fullPrice}`}</p>
       </div>
 
       <div className="product-card__specs">
         <p>Screen</p>
-        <p className="product-card__specs--right">5.8” OLED</p>
+        <p className="product-card__specs--right">{screen}</p>
         <p>Capacity</p>
-        <p className="product-card__specs--right">64 GB</p>
+        <p className="product-card__specs--right">{capacity}</p>
         <p>RAM</p>
-        <p className="product-card__specs--right">4 GB</p>
+        <p className="product-card__specs--right">{ram}</p>
       </div>
 
       <div className="product-card__buttons-block">

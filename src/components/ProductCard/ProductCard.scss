@@ -13,7 +13,7 @@
   &__img {
     width: 208px;
     min-height: 208px;
-    object-fit: cover;
+    object-fit: contain;
     object-position: center;
     margin-bottom: 24px;
   }
