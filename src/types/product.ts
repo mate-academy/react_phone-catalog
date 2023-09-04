@@ -1,7 +1,13 @@
+export enum ProductType {
+  PHONE = 'phone',
+  TABLET = 'tablet',
+  ACCESSORY = 'accessory',
+}
+
 export type Product = {
   age: number;
   id: string;
-  type: string;
+  type: ProductType;
   imageUrl: string;
   name: string;
   snippet: string;

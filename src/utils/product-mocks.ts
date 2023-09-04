@@ -1,4 +1,4 @@
-import { Product } from '../types/product';
+import { Product, ProductType } from '../types/product';
 
 import phoneImg from '../images/some-phone.png';
 
@@ -6,7 +6,7 @@ export const getProduct = (): Product => {
   return {
     age: 0,
     id: 'aaa',
-    type: 'aaa',
+    type: 'phone' as ProductType,
     imageUrl: phoneImg,
     name: 'Iphone',
     snippet: 'aaa',
