@@ -1,0 +1,42 @@
+.container--hot {
+  margin: 0 auto;
+}
+
+.hot {
+  margin-bottom: 24px;
+
+  &__prices {
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+  }
+}
+
+.button {
+  background: #fff;
+  border: 1px solid #E2E6E9;
+  height: 32px;
+  width: 32px;
+
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+  background-color: $gray-white;
+  
+  &__left {
+    margin-right: 16px;
+    background-image: url(../../images/icons/ArrowLeftDisabled.svg);
+    
+    &--active {
+      background-image: url(../../images/icons/AroowLeft.svg);
+    }
+  }
+
+  &__right {
+    background-image: url(../../images/icons/ArrowRightDisabled.svg);
+    
+    &--active {
+      background-image: url(../../images/icons/ArrowRight.svg); 
+    }
+  }
+}

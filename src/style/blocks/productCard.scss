@@ -1,0 +1,124 @@
+.product {
+  margin-bottom: 22px;
+  &__card {
+    width: 272px;
+    height: 507px;
+    border: 1px solid var(--gray-elements, #E2E6E9);
+    background: var(--gray-white, #FFF);
+  }
+
+  &__photo {
+    display: flex;
+    margin: 32px 32px 0;
+
+
+    &--img {
+      margin: auto;
+      max-width: 208px;
+      max-height: 208px;
+    }
+  }
+
+  &__description {
+    display: block;
+    margin: 24px 24px 0;
+  }
+
+  &__text--body {
+    width: 224px;
+    margin-top: 6px;
+
+    color: $gray-primary;
+
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 21px;
+  }
+
+  &__price {
+    display: flex;
+    position: relative;
+    margin-top: 6px;
+    gap: 8px;
+    align-items: center;
+
+    &--current {
+      margin: 0;
+      color: $gray-primary;
+      font-weight: 700;
+      line-height: 140%;
+    }
+
+    &--discount {
+      margin: 0;
+      color: $gray-secondary;
+      font-weight: 500;
+      line-height: normal;
+      text-decoration: line-through;
+      // text-decoration-color: #; /* Колір лінії */
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -7px;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background-color: $gray-secondary;
+    }
+
+  }
+
+  &__screen {
+    display: flex;
+    margin: 23px 0 0;
+    align-items: center;
+    justify-content: space-between;
+
+    &--name {
+      margin: 0;
+      color: $gray-secondary;
+    }
+
+    &--value {
+      margin: 0;
+      color: $gray-primary;
+    }
+  }
+
+  &__capacity {
+    display: flex;
+    margin: 8px 0 0;
+    align-items: center;
+    justify-content: space-between;
+
+    &--name {
+      margin: 0;
+      color: $gray-secondary;
+    }
+
+    &--value {
+      margin: 0;
+      color: $gray-primary;
+    }
+  }
+
+  &__ram {
+    display: flex;
+    margin: 8px 0 0;
+    align-items: center;
+    justify-content: space-between;
+
+    &--name {
+      margin: 0;
+      color: $gray-secondary;
+    }
+
+    &--value {
+      margin: 0;
+      color: $gray-primary;
+    }
+  }
+}

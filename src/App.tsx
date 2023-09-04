@@ -1,6 +1,6 @@
 import './App.scss';
 import { Route, Routes } from 'react-router-dom';
-import { Navigation } from './Components/Header';
+import { Navigation } from './Components/Navigation';
 import { HomePage } from './Pages/Home';
 import { NotFound } from './Pages/NotFound';
 import { PhonesPage } from './Pages/Phones';
