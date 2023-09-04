@@ -12,6 +12,10 @@ type Props = {
   random: boolean,
 };
 
+const cardWidth = 275;
+const gap = 25;
+const cardsPerPage = 4;
+
 export const ProductsSlider: React.FC<Props> = ({
   pathname,
   title,
@@ -22,9 +26,6 @@ export const ProductsSlider: React.FC<Props> = ({
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [products, setProducts] = useState<Product[] | []>([]);
-  const cardWidth = 275;
-  const gap = 25;
-  const cardsPerPage = 4;
   const step = (cardWidth + gap) * cardsPerPage;
   const frameSize = (cardWidth * cardsPerPage) + (gap * cardsPerPage - 1);
   const productCardsLength = (
