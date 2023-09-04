@@ -2,7 +2,6 @@
   display: flex;
   gap: 16px;
 
-
   &__title {
     margin: 0 0 8px;
 
@@ -26,11 +25,9 @@
     width: 368px;
     height: 368px;
     margin: 0 0 24px;
-    background: #FCDBC1;
-
-    &--img {
-      
-    }
+    background: #fcdbc1;
+    overflow: hidden;
+    position: relative;
 
   }
 
@@ -38,13 +35,18 @@
     width: 368px;
     height: 368px;
     margin: 0 0 24px;
-    background: #8D8D92;
+    background: #8d8d92;
+    overflow: hidden;
+    position: relative;
+
   }
 
   &__accessories {
     width: 368px;
     height: 368px;
     margin: 0 0 24px;
-    background: #973D5F;
+    background: #973d5f;
+    overflow: hidden;
+
   }
 }

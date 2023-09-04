@@ -1,7 +1,7 @@
 import '../style/main.scss';
 import imgPhones from '../images/categories/Phones.png';
-// import imgTablets from '../images/categories/Tablets.png';
-// import imgAccessories from '../images/categories/Accessories.png';
+import imgTablets from '../images/categories/Tablets.png';
+import imgAccessories from '../images/categories/Accessories.png';
 
 export const Categories = () => {
   return (
@@ -31,7 +31,7 @@ export const Categories = () => {
           <div className="category__tablets">
             <img
               className="category__tablets--img"
-              // src={imgTablets}
+              src={imgTablets}
               alt="Tablets"
             />
           </div>
@@ -49,7 +49,7 @@ export const Categories = () => {
           <div className="category__accessories">
             <img
               className="category__accessories--img"
-              // src={imgAccessories}
+              src={imgAccessories}
               alt="Accessories"
             />
           </div>
