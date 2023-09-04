@@ -1,16 +1,16 @@
 .product {
   margin-bottom: 22px;
+
   &__card {
     width: 272px;
     height: 507px;
-    border: 1px solid var(--gray-elements, #E2E6E9);
-    background: var(--gray-white, #FFF);
+    border: 1px solid $color-shadow;
+    background: $gray-white;
   }
 
   &__photo {
     display: flex;
     margin: 32px 32px 0;
-
 
     &--img {
       margin: auto;

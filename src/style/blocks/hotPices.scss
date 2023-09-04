@@ -14,7 +14,7 @@
 
 .button {
   background: #fff;
-  border: 1px solid #E2E6E9;
+  border: 1px solid $color-shadow;
   height: 32px;
   width: 32px;
 
@@ -22,11 +22,11 @@
   background-position: center;
   position: relative;
   background-color: $gray-white;
-  
+
   &__left {
     margin-right: 16px;
     background-image: url(../../images/icons/ArrowLeftDisabled.svg);
-    
+
     &--active {
       background-image: url(../../images/icons/AroowLeft.svg);
     }
@@ -34,9 +34,9 @@
 
   &__right {
     background-image: url(../../images/icons/ArrowRightDisabled.svg);
-    
+
     &--active {
-      background-image: url(../../images/icons/ArrowRight.svg); 
+      background-image: url(../../images/icons/ArrowRight.svg);
     }
   }
 }
