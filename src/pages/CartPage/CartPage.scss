@@ -1,7 +1,4 @@
-@import "../../utils/colors";
-@import "../../utils/vars";
-@import "../../utils/extends";
-@import "../../utils/mixins";
+@import "../../utils/utils";
 
 .CartPage {
   &__content {
@@ -101,8 +98,7 @@
     flex-direction: column;
     gap: 10px;
     align-items: flex-start;
-  padding: 14px 10px;
-
+    padding: 14px 10px;
   }
 
   &__section {
@@ -120,7 +116,6 @@
 
     @include onPhone {
       margin-right: 8px;
-
     }
   }
 
@@ -137,9 +132,8 @@
 
     @include onPhone {
       height: 40px;
-    width: 40px;
-    margin-right: 14px;
-
+      width: 40px;
+      margin-right: 14px;
     }
   }
 
@@ -151,7 +145,6 @@
 
     @include onPhone {
       width: auto;
-
     }
   }
 

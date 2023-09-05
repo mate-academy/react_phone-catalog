@@ -1,7 +1,4 @@
-@import "../../utils/colors";
-@import "../../utils/vars";
-@import "../../utils/extends";
-@import "../../utils/mixins";
+@import "../../utils/utils";
 
 .Carousel {
   height: 400px;
@@ -31,11 +28,10 @@
     width: 32px;
     height: 400px;
 
-
-  @include onPhone {
-    width: 20px;
-    height: 500px;
-  }
+    @include onPhone {
+      width: 20px;
+      height: 500px;
+    }
 
     &--prev {
       background-image: url(../../icons/arrow-left.svg);
@@ -55,7 +51,6 @@
   height: 400px;
   width: 1040px;
   margin: 0 auto;
-
 
   @include onPhone {
     width: 700px;

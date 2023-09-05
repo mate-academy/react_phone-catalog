@@ -1,7 +1,4 @@
-@import "../../utils/colors";
-@import "../../utils/vars";
-@import "../../utils/extends";
-@import "../../utils/mixins";
+@import "../../utils/utils";
 
 .ProductDetailsPage {
   &__content {
@@ -26,7 +23,7 @@
   text-align: center;
 
   &__title {
-   @extend %page-error-title;
+    @extend %page-error-title;
   }
 
   &__paragpraph {
