@@ -5,6 +5,10 @@
   align-items: center;
   gap: 64px;
 
+  @include onTablet {
+    gap: 18px;
+  }
+
   @include onPhone {
     flex-direction: column;
   }

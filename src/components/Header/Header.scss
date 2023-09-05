@@ -35,6 +35,10 @@
   &__logo-container {
     margin-right: 64px;
 
+    @include onTablet {
+      margin-right: 20px;
+    }
+
     @include onPhone {
       margin-right: 0;
     }

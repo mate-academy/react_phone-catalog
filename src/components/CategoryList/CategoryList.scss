@@ -24,11 +24,20 @@
   width: 368px;
   height: 368px;
 
+  &:not(:last-child) {
+    margin-right: 10px;
+  }
+
+  @include onTablet {
+    height: 268px;
+  }
+
   @include onPhone {
     width: 100%;
     height: auto;
 
     & > * {
+      margin-right: 0;
       margin-bottom: 10px;
     }
   }
@@ -47,9 +56,11 @@
     background-position: right bottom;
     transition: $transition;
 
+    @include onTablet {
+      background-size: 220px 230px;
+    }
+
     @include onPhone {
-      background-size: contain;
-      width: 100%;
       height: 270px;
     }
 

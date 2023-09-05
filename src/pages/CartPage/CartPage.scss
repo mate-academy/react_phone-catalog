@@ -19,14 +19,15 @@
     grid-template-columns: 2fr 1fr;
     grid-gap: 16px;
 
-    @include onPhone {
+    @include onTablet {
       display: flex;
       flex-direction: column;
+      align-items: center;
     }
   }
 
   &__products {
-    width: 752px;
+    max-width: 752px;
     display: flex;
     flex-direction: column;
 
@@ -51,8 +52,8 @@
     text-align: center;
     border: 1px solid $color-elements-light-gray;
 
-    @include onPhone {
-      width: 100%;
+    @include onTablet {
+      max-width: 348px;
     }
   }
 

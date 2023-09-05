@@ -49,11 +49,10 @@
   justify-content: center;
   background-size: cover;
   height: 400px;
-  width: 1040px;
+  width: 100%;
   margin: 0 auto;
 
   @include onPhone {
-    width: 700px;
     height: 500px;
   }
 }

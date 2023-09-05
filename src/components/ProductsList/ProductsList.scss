@@ -14,8 +14,12 @@
     justify-content: space-between;
     row-gap: 40px;
 
-    @include onPhone {
+    @include onTablet {
       justify-content: center;
+      column-gap: 40px;
+    }
+
+    @include onPhone {
       row-gap: 20px;
       column-gap: 20px;
     }

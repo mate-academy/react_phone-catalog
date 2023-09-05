@@ -32,8 +32,12 @@ export const ProductsSlider: React.FC<Props> = ({
 
   let { cardsPerPage } = sliderSettings;
 
-  if (window.innerWidth < 745) {
+  if (window.innerWidth < 600) {
     cardsPerPage = 1;
+  } else if (window.innerWidth < 884) {
+    cardsPerPage = 2;
+  } else if (window.innerHeight < 1120) {
+    cardsPerPage = 3;
   }
 
   const [products, setProducts] = useState<Product[]>([]);

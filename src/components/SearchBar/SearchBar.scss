@@ -36,6 +36,11 @@
       background-image: none;
     }
 
+    @include onTablet {
+      width: 226px;
+      padding-left: 16px;
+    }
+
     @include onPhone {
       width: 130px;
       padding: 0 14px 0 8px;
