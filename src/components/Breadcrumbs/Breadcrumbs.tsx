@@ -18,4 +18,4 @@ export const Breadcrumbs = memo(() => {
       </ul>
     </div>
   );
-})
+});
