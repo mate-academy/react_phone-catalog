@@ -1,9 +1,8 @@
-import { memo } from 'react';
 import { Link } from 'react-router-dom';
 import './Breadcrumbs.scss';
-import { BreadcrumbsLinks } from './BreadcrumbsLinks';
+import { BreadcrumbsParts } from './BreadcrumbsParts';
 
-export const Breadcrumbs = memo(() => {
+export const Breadcrumbs = () => {
   return (
     <div className="Breadcrumbs" data-cy="breadCrumbs">
       <ul className="Breadcrumbs__list">
@@ -14,8 +13,8 @@ export const Breadcrumbs = memo(() => {
             aria-label="home"
           />
         </li>
-        <BreadcrumbsLinks />
+        <BreadcrumbsParts />
       </ul>
     </div>
   );
-});
+};
