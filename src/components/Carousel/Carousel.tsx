@@ -12,33 +12,40 @@ type Props = {
   images: CarouselImage[],
 };
 
+enum Direction {
+  left = 'left',
+  right = 'right',
+}
+
 export const Carousel: React.FC<Props> = ({ images }) => {
   const [imagesScrolled, setImagesScrolled] = useState(0);
   const transform = `translate(-${imagesScrolled * 100}%, 0)`;
+  const badges = [0, 1, 2];
 
-  const handleSlideLeft = () => {
+  const handleSlide = (direction: Direction) => {
     setImagesScrolled(images => {
-      if (images === CurrentImage.First) {
-        return CurrentImage.Last;
+      switch (true) {
+        case direction === Direction.left: {
+          return images === CurrentImage.First
+            ? CurrentImage.Last
+            : images - 1;
+        }
+
+        case direction === Direction.right: {
+          return images === CurrentImage.Last
+            ? CurrentImage.First
+            : images + 1
+        }
+
+        default:
+          return images;
       }
-
-      return images - 1;
-    });
-  };
-
-  const handleSlideRight = () => {
-    setImagesScrolled(images => {
-      if (images === CurrentImage.Last) {
-        return CurrentImage.First;
-      }
-
-      return images + 1;
     });
   };
 
   useEffect(() => {
     const intervalId = setInterval(() => {
-      handleSlideRight();
+      handleSlide(Direction.right);
     }, 5000);
 
     return () => {
@@ -47,8 +54,8 @@ export const Carousel: React.FC<Props> = ({ images }) => {
   }, [imagesScrolled]);
 
   const mobileHandlers = useSwipeable({
-    onSwipedLeft: () => handleSlideRight(),
-    onSwipedRight: () => handleSlideLeft(),
+    onSwipedLeft: () => handleSlide(Direction.right),
+    onSwipedRight: () => handleSlide(Direction.left),
     trackMouse: true,
   });
 
@@ -62,7 +69,7 @@ export const Carousel: React.FC<Props> = ({ images }) => {
           arrowDirection="left"
           aria-label="carosuel-left"
           className="Carousel__button"
-          onClick={handleSlideLeft}
+          onClick={() => handleSlide(Direction.left)}
         />
 
         <div className="Carousel__image-container">
@@ -95,12 +102,12 @@ export const Carousel: React.FC<Props> = ({ images }) => {
           variant="arrow"
           className="Carousel__button"
           aria-label="carosuel-right"
-          onClick={handleSlideRight}
+          onClick={() => handleSlide(Direction.right)}
         />
       </div>
 
       <div className="Carousel__badges">
-        {[0, 1, 2].map(badgeNumber => (
+        {badges.map(badgeNumber => (
           <button
             key={badgeNumber}
             type="button"
