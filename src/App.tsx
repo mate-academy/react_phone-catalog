@@ -8,6 +8,7 @@ import { TabletsPage } from './Pages/Tablets';
 import { AccessoriesPage } from './Pages/Accessories';
 import { FavouritesPage } from './Pages/Favourites';
 import { ShoppingPage } from './Pages/Shopping';
+import { Footer } from './Components/Footer';
 
 export const App = () => {
   return (
@@ -25,6 +26,8 @@ export const App = () => {
 
         <Route path="*" element={<NotFound />} />
       </Routes>
+
+      <Footer />
     </div>
   );
 };

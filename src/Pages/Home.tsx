@@ -2,23 +2,19 @@ import { NewModels } from '../Components/NewModels';
 import { HotPrices } from '../Components/HotPrices';
 import { Categories } from '../Components/Categories';
 import { Slider } from '../Components/Slider';
-import { Footer } from '../Components/Footer';
 
 export const HomePage = () => {
   return (
-    <>
-      <div className="container">
+    <div className="container">
 
-        <Slider />
+      <Slider />
 
-        <HotPrices />
+      <HotPrices />
 
-        <Categories />
+      <Categories />
 
-        <NewModels />
+      <NewModels />
 
-        <Footer />
-      </div>
-    </>
+    </div>
   );
 };
