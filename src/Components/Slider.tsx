@@ -1,8 +1,6 @@
-// /* eslint-disable jsx-a11y/control-has-associated-label */
 import React, { useState } from 'react';
 import classNames from 'classnames';
 import '../style/main.scss';
-// import { client } from '../utils/fetchClient';
 import bannerPhones from '../images/banner/banner-phones.png';
 import bannerTablets from '../images/banner/banner-tablets.png';
 import bannerAccessories from '../images/banner/banner-accessories.png';
@@ -13,7 +11,7 @@ const IMAGES = [
   { id: 2, url: bannerAccessories },
 ];
 
-export const Banner: React.FC = () => {
+export const Slider: React.FC = () => {
   const [currentIndex, setcurrentIndex] = useState(IMAGES[0].id);
 
   const preperaBanner = IMAGES.filter(img => img.id === currentIndex);

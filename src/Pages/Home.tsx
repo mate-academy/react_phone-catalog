@@ -1,21 +1,24 @@
-import { BrandNewModels } from '../Components/BrandNewModels';
+import { NewModels } from '../Components/NewModels';
 import { HotPrices } from '../Components/HotPrices';
 import { Categories } from '../Components/Categories';
-import { Banner } from '../Components/Slider';
+import { Slider } from '../Components/Slider';
+import { Footer } from '../Components/Footer';
 
 export const HomePage = () => {
   return (
-    <div className="main">
+    <>
       <div className="container">
 
-        <Banner />
+        <Slider />
 
         <HotPrices />
 
         <Categories />
 
-        <BrandNewModels />
+        <NewModels />
+
+        <Footer />
       </div>
-    </div>
+    </>
   );
 };

@@ -1,8 +1,9 @@
 import '../style/main.scss';
+import { ProductCard } from './ProductCard';
 
-export const BrandNewModels = () => {
+export const NewModels = () => {
   return (
-    <div className="container--brand">
+    <div className="container--hot">
       <div className="hot__prices">
         <h1>Brand new models</h1>
 
@@ -20,7 +21,7 @@ export const BrandNewModels = () => {
         </div>
       </div>
 
-      {/* <ProductCard /> */}
+      <ProductCard />
 
     </div>
   );
