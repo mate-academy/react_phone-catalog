@@ -5,7 +5,7 @@ import { Slider } from '../Components/Slider';
 
 export const HomePage = () => {
   return (
-    <div className="container">
+    <main>
 
       <Slider />
 
@@ -15,6 +15,6 @@ export const HomePage = () => {
 
       <NewModels />
 
-    </div>
+    </main>
   );
 };

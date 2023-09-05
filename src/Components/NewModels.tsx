@@ -1,5 +1,5 @@
 import '../style/main.scss';
-import { ProductCard } from './ProductCard';
+// import { ProductCard } from './ProductCard';
 
 export const NewModels = () => {
   return (
@@ -21,7 +21,7 @@ export const NewModels = () => {
         </div>
       </div>
 
-      <ProductCard />
+      {/* <ProductCard /> */}
 
     </div>
   );
