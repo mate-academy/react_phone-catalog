@@ -1,0 +1,17 @@
+@import "../../../styles/utils/extends";
+
+.button {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+
+  @extend %standard-button-behavior;
+
+  &:disabled &__image {
+    opacity: 0.3;
+  }
+}

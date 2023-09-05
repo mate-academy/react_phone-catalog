@@ -1,0 +1,18 @@
+@import "../../../styles/utils/variables";
+@import "../../../styles/utils/extends";
+
+.add-to-cart-button {
+  @extend %main-button-styles;
+
+  &--selected {
+    border: 1px solid $color-elements;
+    color: $color-green;
+    background-color: $color-white;
+    transition: all 0.3s;
+
+    &:hover {
+      background-color: $color-hover;
+      box-shadow: none;
+    }
+  }
+}

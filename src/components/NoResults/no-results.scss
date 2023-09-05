@@ -1,0 +1,9 @@
+.no-results {
+  font-size: 32px;
+  font-weight: 700;
+  text-align: center;
+
+  &::first-letter {
+    text-transform: uppercase;
+  }
+}

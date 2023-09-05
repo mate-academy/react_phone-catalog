@@ -1,0 +1,36 @@
+@import "../../styles/utils/variables";
+@import "../../styles/utils/extends";
+
+.nav-link {
+  position: relative;
+  color: $color-secondary;
+  transition: all 0.3s;
+
+  &::after {
+    @extend %nav-link-decoration;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  &:hover {
+    color: $color-primary;
+    background-color: $color-hover;
+
+    &::after {
+      opacity: 1;
+    }
+  }
+
+  &--active {
+    color: $color-primary;
+
+    &:hover {
+      background-color: $color-white;
+    }
+
+    &::after {
+      @extend %nav-link-decoration;
+      opacity: 1;
+    }
+  }
+}

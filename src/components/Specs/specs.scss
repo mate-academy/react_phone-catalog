@@ -1,0 +1,47 @@
+@import "../../styles/utils/variables";
+
+.specs {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__name {
+    &-medium {
+      font-size: 12px;
+      line-height: 15px;
+      color: $color-secondary;
+    }
+
+    &-large {
+      font-size: 14px;
+      line-height: 21px;
+      font-weight: 500;
+      color: $color-secondary;
+    }
+  }
+
+  &__value {
+    &-medium {
+      font-size: 12px;
+      line-height: 15px;
+      color: $color-primary;
+    }
+
+    &-large {
+      font-size: 14px;
+      line-height: 21px;
+      font-weight: 500;
+      color: $color-primary;
+    }
+  }
+}

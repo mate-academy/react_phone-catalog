@@ -1,0 +1,22 @@
+@import "./variables";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "Mont", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: $color-primary;
+}
+
+body,
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}

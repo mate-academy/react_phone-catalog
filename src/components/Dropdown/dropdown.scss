@@ -1,0 +1,77 @@
+@import "../../styles/utils/variables";
+@import "../../styles/utils//extends";
+
+.dropdown {
+  position: relative;
+  margin-bottom: 24px;
+
+  &--sorter {
+    width: 176px;
+  }
+
+  &--paginator {
+    width: 128px;
+  }
+
+  &__title {
+    margin-bottom: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+    color: $color-secondary;
+  }
+
+  &__button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 40px;
+    padding: 1px 12px 0;
+    text-align-last: left;
+    font-family: "Mont", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+
+    &:focus {
+      border-color: $color-primary;
+    }
+
+    @extend %standard-button-behavior;
+  }
+
+  &__menu {
+    position: absolute;
+    top: 63px;
+    padding: 8px 0;
+    margin: 0;
+    width: 100%;
+    list-style: none;
+    border: 1px solid $color-elements;
+    background-color: $color-white;
+    box-shadow: 0 2px 15px 0 rgba(226, 230, 233, 1);
+  }
+
+  &__item {
+    height: 32px;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding-left: 12px;
+    font-weight: 500;
+    line-height: 21px;
+    text-decoration: none;
+    color: $color-secondary;
+    transition: all 0.3s;
+
+    &:hover {
+      color: $color-primary;
+      background-color: $color-hover;
+    }
+  }
+}
