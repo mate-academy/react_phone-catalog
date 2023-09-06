@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { MainButton } from '../Buttons/MainButton';
 import { AddToFav } from '../Buttons/AddToFav';
 import { Product } from '../../types/Product';
@@ -8,26 +9,38 @@ type Props = {
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
   const {
-    imageUrl,
+    image,
     name,
     price,
-    discount,
+    fullPrice,
     screen,
     capacity,
     ram,
+    itemId,
+    category,
   } = product;
 
-  const priceAfterDiscount = price - price * (discount / 100);
+  let categoryType = '';
+
+  if (category === 'phones') {
+    categoryType = 'phones';
+  } else if (category === 'tablets') {
+    categoryType = 'tablets';
+  } else {
+    categoryType = 'accessories';
+  }
 
   return (
-    <div
+
+    <Link
+      to={`/${categoryType}/${itemId}`}
       className="card"
       data-cy="cardsContainer"
     >
       <div className="card__imgContainer">
         <img
           className="card__img"
-          src={imageUrl}
+          src={`_new/${image}`}
           alt={name}
         />
       </div>
@@ -39,11 +52,9 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
         <div className="card__price">
           <p className="card__price--new">
-            {`$${discount ? priceAfterDiscount : price}`}
+            {`$${price}`}
           </p>
-          {!!discount && (
-            <p className="card__price--old">{`$${price}`}</p>
-          )}
+          <p className="card__price--old">{`$${fullPrice}`}</p>
         </div>
 
         <div className="card__description">
@@ -69,6 +80,6 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           <AddToFav />
         </div>
       </div>
-    </div>
+    </Link>
   );
 };

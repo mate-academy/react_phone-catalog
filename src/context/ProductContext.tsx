@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Product } from '../types/Product';
 
 // eslint-disable-next-line max-len
-const PRODUCTS_URL = 'https://mate-academy.github.io/react_phone-catalog/api/products.json';
+const PRODUCTS_URL = 'https://mate-academy.github.io/react_phone-catalog/_new/products.json';
 
 type ContextItems = {
   products: Product[];

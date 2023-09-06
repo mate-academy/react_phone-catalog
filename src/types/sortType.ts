@@ -1,5 +1,5 @@
 export enum SortType {
-  Newest = 'age',
+  Newest = 'year',
   Alphabetically = 'name',
   Cheapest = 'price',
 }

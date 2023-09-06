@@ -6,6 +6,7 @@ import { HomePage } from './pages/HomePage';
 import { PhonesPage } from './pages/PhonesPage';
 import { TabletsPage } from './pages/TabletsPage';
 import { AccessoriesPage } from './pages/AccessoriesPage';
+import { ProductDetailsPage } from './pages/ProductDetailsPage';
 
 const App = () => (
   <div className="App">
@@ -17,11 +18,20 @@ const App = () => (
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route index element={<HomePage />} />
-        <Route path="/home" element={<Navigate to="/" replace />} />
+        <Route path="home" element={<Navigate to="/" replace />} />
 
-        <Route path="/phones" element={<PhonesPage />} />
-        <Route path="tablets" element={<TabletsPage />} />
+        <Route path="phones">
+          <Route index element={<PhonesPage />} />
+          <Route path=":itemId" element={<ProductDetailsPage />} />
+        </Route>
+
+        <Route path="tablets">
+          <Route index element={<TabletsPage />} />
+          <Route path=":itemId" element={<ProductDetailsPage />} />
+        </Route>
+
         <Route path="accessories" element={<AccessoriesPage />} />
+
       </Routes>
     </main>
 

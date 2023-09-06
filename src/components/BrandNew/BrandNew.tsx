@@ -5,8 +5,9 @@ import { ProductSlider } from '../ProductSlider/ProductSlider';
 export const BrandNew = () => {
   const { products } = useProducts();
   const getBrandNewProducts = (prods: Product[]) => {
+    const maxYear = Math.max(...prods.map(p => p.year));
     const newProducts = prods
-      .filter(p => p.discount === 0);
+      .filter(p => p.year === maxYear);
 
     newProducts.sort((a, b) => {
       const productA = a.price;

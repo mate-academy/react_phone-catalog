@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { useProducts } from '../context/ProductContext';
 import { ProductsList } from '../components/ProductsList/ProductsList';
 import { getTablets } from '../utils/getProducts';
+import { NoResults } from '../components/NoResults/NoResults';
 
 export const TabletsPage = () => {
   const { pathname } = useLocation();
@@ -26,7 +27,11 @@ export const TabletsPage = () => {
           {pathname.slice(1, 2).toUpperCase() + pathname.slice(2)}
         </span>
       </div>
-      <ProductsList products={tablets} title={title} />
+      {tablets.length === 0 ? (
+        <NoResults />
+      ) : (
+        <ProductsList products={tablets} title={title} />
+      )}
     </div>
   );
 };

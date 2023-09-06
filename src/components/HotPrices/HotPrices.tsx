@@ -7,11 +7,11 @@ export const HotPrices = () => {
 
   const getHotPriceProducts = (prods: Product[]) => {
     const discountedProducts = prods
-      .filter(p => p.discount !== 0);
+      .filter(p => p.fullPrice !== p.price);
 
     discountedProducts.sort((a, b) => {
-      const discountA = a.price * (a.discount / 100);
-      const discountB = b.price * (b.discount / 100);
+      const discountA = a.fullPrice - a.price;
+      const discountB = b.fullPrice - b.price;
 
       return discountB - discountA;
     });
