@@ -1,10 +1,15 @@
 import ReactDOM from 'react-dom';
+import {
+  HashRouter as Router,
+} from 'react-router-dom';
 
-import App from './App';
+import { Root } from './Root';
 
 import './styles/main.scss';
 
 ReactDOM.render(
-  <App />,
+  <Router>
+    <Root />
+  </Router>,
   document.getElementById('root'),
 );

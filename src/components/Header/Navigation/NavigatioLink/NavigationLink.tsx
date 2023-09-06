@@ -23,7 +23,3 @@ export const NavigationLink: React.FC<Props> = ({
     {children}
   </NavLink>
 );
-
-// export const NavigationLink = () => (
-//   <h1>Nav links</h1>
-// );

@@ -1,0 +1,48 @@
+@import "../../../../styles/global-imports";
+
+.NavigationLink {
+  position: relative;
+  color: $c-secondary;
+
+  transition: all $effect-duration;
+
+  &::after {
+    display: block;
+
+    content: "";
+    position: absolute;
+    bottom: 0;
+
+    height: 3px;
+    width: 100%;
+
+    opacity: 0;
+    background-color: $c-primary;
+
+    transition: opacity $effect-duration;
+  }
+
+  &:hover,
+  &.is-active {
+    color: $c-primary;
+
+    &::after {
+      opacity: 1;
+    }
+  }
+
+  &--text {
+    padding: 24px 0;
+  }
+
+  &--icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 18px 24px;
+
+    border: 1px solid $c-elements;
+    border-bottom: none;
+  }
+}

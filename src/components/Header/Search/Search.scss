@@ -7,13 +7,11 @@
   opacity: 0;
   pointer-events: none;
   box-shadow: 1px 0 0 0 $c-elements;
-  -webkit-box-shadow: 1px 0 0 0 $c-elements;
 
   @include onMediumScreen {
     margin-left: auto;
 
     box-shadow: none;
-    -webkit-box-shadow: none;
   }
 
   &.isVisible {
@@ -21,9 +19,8 @@
     pointer-events: all;
   }
 
-  &__input {
-    height: 100%;
-    width: 100%;
+  &--input {
+    width: 90%;
     min-width: 0;
     padding: 20px 0 20px 15px;
 
@@ -33,7 +30,6 @@
 
     border: none;
     box-shadow: -1px 0 0 0 $c-elements;
-    -webkit-box-shadow: -1px 0 0 0 $c-elements;
 
     @include onMediumScreen {
       padding: 22px 0 22px 24px;
@@ -51,9 +47,14 @@
     &::placeholder {
       color: $c-icons;
     }
+
+    &:focus {
+      background-color: $c-hover_bg;
+      outline: none;
+    }
   }
 
-  &__clear-button {
+  &--clear-button {
     display: none;
     position: absolute;
     top: 24px;

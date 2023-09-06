@@ -4,7 +4,7 @@ import './Navigation.scss';
 const NAVIGATION_PAGES = ['home', 'phones', 'tablets', 'accessories'];
 
 export const Navigation = () => (
-  <nav className="Navigtion">
+  <nav className="Navigation">
     <ul className="Navigation__list">
       {NAVIGATION_PAGES.map(currentPage => (
         <li className="Navigation__item">
@@ -18,8 +18,4 @@ export const Navigation = () => (
       ))}
     </ul>
   </nav>
-  // <>
-  //   <NavigationLink />
-  //   <h1>Navigation</h1>
-  // </>
 );

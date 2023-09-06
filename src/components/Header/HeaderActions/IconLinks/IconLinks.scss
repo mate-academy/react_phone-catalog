@@ -1,0 +1,11 @@
+@import "../../../../styles/global-imports";
+
+.IconLinks {
+  position: relative;
+  display: inline-block;
+
+  @include onMediumScreen {
+    display: block;
+    margin: 0;
+  }
+}
