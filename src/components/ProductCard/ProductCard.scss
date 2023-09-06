@@ -1,7 +1,6 @@
 @import "/src/style/main.scss";
 
 .product-card {
-  box-sizing: border-box;
   width: 272px;
   height: 507px;
   border: 1px solid $elements;
@@ -9,6 +8,12 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+  text-decoration: none;
+  color: $main-font-color;
+
+  &:visited {
+    color: $main-font-color;
+  }
 
   &__img {
     width: 208px;

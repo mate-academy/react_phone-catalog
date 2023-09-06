@@ -6,3 +6,4 @@ export { Wrapper } from './Wrapper';
 export { BannerSlider } from './BannerSlider';
 export { ProductsSlider } from './ProductsSlider';
 export { Categories } from './Categories';
+export { PathDisplay } from './PathDisplay';

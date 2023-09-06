@@ -4,7 +4,7 @@ import { pages } from '../../Root';
 import './Navigation.scss';
 import { NavIcon } from '../NavIcon';
 
-const NAV_LINKS_TO_HIDE = ['*', 'cart', 'favourites'];
+const NAV_LINKS_TO_HIDE = ['*', 'cart', 'favourites', 'productId'];
 
 export const Navigation = () => {
   const navbarItemClass = ({ isActive }: {

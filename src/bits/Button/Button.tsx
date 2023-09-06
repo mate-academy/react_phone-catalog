@@ -5,7 +5,6 @@ import { ButtonType } from '../../types/enums/ButtonType';
 
 type Props = {
   size: ButtonType,
-
 };
 
 export const Button: React.FC<Props> = ({ size }) => {
@@ -14,7 +13,7 @@ export const Button: React.FC<Props> = ({ size }) => {
       type="button"
       className={classNames('button', {
         'button--cart': size === ButtonType.cart,
-        'button--large': size === ButtonType.large,
+        ' button--cart button--cart--large': size === ButtonType.large,
       })}
     />
   );

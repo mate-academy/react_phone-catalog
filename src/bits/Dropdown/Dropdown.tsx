@@ -41,7 +41,7 @@ export const Dropdown: React.FC<Props> = ({
         onBlur={() => setDropOptions(false)}
       >
         <>
-          {selected}
+          <div className="dropdown__selected">{selected}</div>
           {dropOptions && (
             <ul
               className="dropdown__options"

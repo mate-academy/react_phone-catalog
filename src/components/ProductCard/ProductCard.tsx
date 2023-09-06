@@ -1,4 +1,5 @@
 // import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Button, IconButton } from '../../bits';
 import { ButtonType, Product } from '../../types';
 import { IconButtonType } from '../../types/enums/IconButtonType';
@@ -17,10 +18,14 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     ram,
     capacity,
     screen,
+    phoneId,
   } = product;
 
   return (
-    <div className="product-card">
+    <Link
+      to={`/phones/${phoneId}`}
+      className="product-card"
+    >
       <img
         className="product-card__img"
         alt={name}
@@ -46,6 +51,6 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
         <IconButton type={IconButtonType.fav} />
       </div>
-    </div>
+    </Link>
   );
 };

@@ -1,7 +1,9 @@
 @import "../../style/main.scss";
 
 .tablets {
-  @include flex-center;
-
   height: $pageHeight;
+
+  &__path-container {
+    margin-top: 24px;
+  }
 }

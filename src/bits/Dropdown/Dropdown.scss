@@ -14,17 +14,19 @@
   }
 
   &__input {
-    width: 176px;
     height: 40px;
     padding: 12px;
     font-size: 14px;
     color: $secondary-font-color;
-    box-sizing: border-box;
     border: 1px solid $icons;
     position: relative;
     background-image: url("../../assets/icons/arrowDown.svg");
     background-position: right 12px center;
     background-repeat: no-repeat;
+  }
+
+  &__selected {
+    color: $main-font-color;
   }
 
   &__options {

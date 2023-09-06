@@ -10,6 +10,7 @@ import {
   TabletsPage,
   AccessoriesPage,
   NotFound,
+  ProductDetailsPage,
 } from './pages';
 import { Cart } from './pages/Cart';
 import { Favourites } from './pages/Favourites';
@@ -31,8 +32,18 @@ export const Root = () => (
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<HomePage />} />
+
+          <Route path="/phones">
+            <Route index element={<PhonesPage />} />
+            <Route path=":productId" element={<ProductDetailsPage />} />
+          </Route>
+
           {Object.entries(pages).map(route => (
-            <Route key={route[0]} path={route[0]} element={route[1]} />
+            <Route
+              key={route[0]}
+              path={route[0]}
+              element={route[1]}
+            />
           ))}
         </Route>
       </Routes>

@@ -1,0 +1,33 @@
+@import "/src/style/main.scss";
+
+.capacity {
+  width: 320px;
+  padding: 24px 0;
+  border-bottom: 1px solid $elements;
+
+  &__list {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__btn {
+    background-color: $font-white;
+    color: $main-font-color;
+    text-align: center;
+    font-size: 14px;
+    line-height: 21px;
+    border: 1px solid $elements;
+    padding: 8px;
+    transition: 0.3s ease;
+
+    &:hover {
+      border-color: $main-font-color;
+      transition: 0.3s ease;
+    }
+
+    &--current {
+      background-color: $main-font-color;
+      color: $font-white;
+    }
+  }
+}

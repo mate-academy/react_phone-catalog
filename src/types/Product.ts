@@ -1,3 +1,5 @@
+import { ProductDescription } from './ProductDescription';
+
 export interface Product {
   capacity: string,
   color: string,
@@ -16,4 +18,16 @@ export interface Product {
   discount: number,
   screen: string,
   ram: string,
+  camera: string,
+  capacityAvailable: string[],
+  cell: string[],
+  colorsAvailable: string[],
+  description: ProductDescription [],
+  images: string [],
+  namespaceId: string,
+  priceDiscount: number,
+  priceRegular: number,
+  processor: string,
+  resolution: string,
+  zoom: string,
 }

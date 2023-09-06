@@ -3,4 +3,5 @@ export enum IconButtonType {
   arrowNext = 'arrow-next',
   arrowUp = 'arrow-up',
   fav = 'fav',
+  favLarge = 'fav--large',
 }

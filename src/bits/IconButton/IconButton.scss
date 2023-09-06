@@ -35,6 +35,20 @@
     }
   }
 
+  &--fav--large {
+    width: 48px;
+    height: 48px;
+    background-image: url(../../assets/icons/fav.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+
+    &:active {
+      background-color: $font-white;
+      background-image: url(../../assets/icons/favFilled.svg);
+      border-color: $elements;
+    }
+  }
+
   &--arrow-up {
     background-image: url(../../assets/icons/arrowUpFilled.svg);
     background-position: center;
